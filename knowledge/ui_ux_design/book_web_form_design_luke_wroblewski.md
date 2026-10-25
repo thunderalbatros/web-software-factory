@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Web Form Design: Filling in the Blanks
+﻿# 📚 Libro Completo: Web Form Design: Filling in the Blanks
 
-**Alcance:** Fuente bibliográfica completa sobre Ergonomía de Formularios Web, Reducción de Fricción en Reclamos/Inscripciones, Validación en Línea y Conversión (Web Form Design: Filling in the Blanks — Luke Wroblewski). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Ergonomía de Formularios Web, Reducción de Fricción en Reclamos/Inscripciones, Validación en Línea y Conversión (Web Form Design: Filling in the Blanks — Luke Wroblewski). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Luke Wroblewski  
 > **Dominio:** Ergonomía de Formularios Web, Reducción de Fricción en Reclamos/Inscripciones, Validación en Línea y Conversión  

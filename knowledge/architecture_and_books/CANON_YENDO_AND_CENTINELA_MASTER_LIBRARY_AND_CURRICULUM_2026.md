@@ -1,4 +1,4 @@
-# CANON: Biblioteca Maestra Consolidada de Yendo Mobile y Centinela Studio (Libros, Cursos, Documentación Oficial y Repositorios 2026)
+﻿# CANON: Biblioteca Maestra Consolidada de Yendo Mobile y Centinela Studio (Libros, Cursos, Documentación Oficial y Repositorios 2026)
 
 **Alcance:** Consolidación completa de los catálogos maestros de libros, videocursos, documentación oficial y repositorios de referencia de **Yendo Mobile (`yendo_obsidian_vault`)** y **Centinela Studio (`centinela_knowledge`)**: `YENDO_LIBRARY.md`, `Directorio_Maestro_Fuentes_Oficiales.md`, `MASTER_LIBRARY_CATALOG.md`, `COURSES_AND_BOOKS.md`, `CATALOGO_30_FUENTES.md`, `SOTA_FOSS_CANON_AND_CURRICULUM_2026.md` y `SOTA_MULTIMODAL_COURSES_PAPERS_COMPENDIUM_2026.md`.
 
@@ -2688,16 +2688,16 @@ Semana 7-8: Producción
 
 ### 🎓 Fuente Centinela: `knowledge/docs/CATALOGO_30_FUENTES.md` (5 fragmentos)
 
-#### 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + Kick
+#### 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + RealtimeHub
 
-[knowledge/docs/CATALOGO_30_FUENTES.md › 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + Kick]
+[knowledge/docs/CATALOGO_30_FUENTES.md › 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + RealtimeHub]
 > **Regla FinOps:** Todas gratuitas o accesibles. Priorizar documentación oficial y libros FOSS.
 
 ---
 
-#### 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + Kick
+#### 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + RealtimeHub
 
-[knowledge/docs/CATALOGO_30_FUENTES.md › 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + Kick › 📖 10 LIBROS]
+[knowledge/docs/CATALOGO_30_FUENTES.md › 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + RealtimeHub › 📖 10 LIBROS]
 | # | Título | Autor(es) | Editorial | Relevancia | Acceso |
 |---|--------|-----------|-----------|------------|--------|
 | 1 | Knowledge Graphs | Hogan, Blomqvist et al. | Springer | Biblia académica de grafos de conocimiento | [Open Access](https://kgbook.org/) |
@@ -2713,9 +2713,9 @@ Semana 7-8: Producción
 
 ---
 
-#### 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + Kick
+#### 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + RealtimeHub
 
-[knowledge/docs/CATALOGO_30_FUENTES.md › 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + Kick › 📄 10 PAPERS + DOCUMENTACIÓN OFICIAL]
+[knowledge/docs/CATALOGO_30_FUENTES.md › 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + RealtimeHub › 📄 10 PAPERS + DOCUMENTACIÓN OFICIAL]
 | # | Título | URL | ⭐/Impacto |
 |---|--------|-----|-----------|
 | 1 | **GraphRAG** — Microsoft Research | [arXiv 2404.16130](https://arxiv.org/abs/2404.16130) | Paper fundacional |
@@ -2731,9 +2731,9 @@ Semana 7-8: Producción
 
 ---
 
-#### 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + Kick
+#### 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + RealtimeHub
 
-[knowledge/docs/CATALOGO_30_FUENTES.md › 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + Kick › 🎥 10 VIDEO CURSOS GRATUITOS]
+[knowledge/docs/CATALOGO_30_FUENTES.md › 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + RealtimeHub › 🎥 10 VIDEO CURSOS GRATUITOS]
 | # | Curso | Plataforma | Horas | Instructor |
 |---|-------|-----------|-------|------------|
 | 1 | AI Agents in LangGraph | DeepLearning.AI | 1h | Harrison Chase (LangChain) |
@@ -2749,9 +2749,9 @@ Semana 7-8: Producción
 
 ---
 
-#### 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + Kick
+#### 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + RealtimeHub
 
-[knowledge/docs/CATALOGO_30_FUENTES.md › 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + Kick › 🔗 Recursos Adicionales del Proyecto]
+[knowledge/docs/CATALOGO_30_FUENTES.md › 📚 Catálogo de 30 Fuentes — LightRAG + Multi-Agente + RealtimeHub › 🔗 Recursos Adicionales del Proyecto]
 | Fuente | Ubicación | Tipo |
 |--------|-----------|------|
 | Anthropic Building Effective Agents | [anthropic.com](https://www.anthropic.com/engineering/building-effective-agents) | Guía canónica |
@@ -2759,7 +2759,7 @@ Semana 7-8: Producción
 | promptfoo (25.5k⭐) | [promptfoo.dev](https://www.promptfoo.dev/) | Testing |
 | DeepEval (18.5k⭐) | [github.com/confident-ai/deepeval](https://github.com/confident-ai/deepeval) | Eval harness |
 | RAG Techniques (29.6k⭐) | [github.com/NirDiamant/RAG_Techniques](https://github.com/NirDiamant/RAG_Techniques) | 42+ notebooks |
-| Kick API Docs | [docs.kick.com](https://docs.kick.com) | API oficial |
+| RealtimeHub API Docs | [docs.realtime-stream.com](https://docs.realtime-stream.com) | API oficial |
 | Pusher Channels Protocol | [pusher.com/docs](https://pusher.com/docs/channels) | WebSocket chat |
 | Playwright Docs | [playwright.dev](https://playwright.dev) | Automatización |
 | mitmproxy Docs | [docs.mitmproxy.org](https://docs.mitmproxy.org) | Intercepción tráfico |
@@ -2965,7 +2965,7 @@ Semana 7-8: Producción
 #### 📚 CANON Y CURRICULUM SOTA 2026: SenseVoice, OmniParser v2, DSPy MIPROv2 y Mem0+Qdrant
 
 [knowledge/docs/SOTA_FOSS_CANON_AND_CURRICULUM_2026.md › 📚 CANON Y CURRICULUM SOTA 2026: SenseVoice, OmniParser v2, DSPy MIPROv2 y Mem0+Qdrant › 💾 4. MEM0 (Open Source Memory Layer) + QDRANT › 💡 Aplicación en Centinela]
-- **Memoria por Canal y Streamer:** Centinela recuerda que *"Syztmz abre bonus hunts hacia el final del stream y suele jugar slots de Hacksaw Gaming"*, o que *"En el canal de Trainwreckstv los giveaways requieren enlace verificado en Stake"*.
+- **Memoria por Canal y Streamer:** Centinela recuerda que *"Syztmz abre bonus hunts hacia el final del stream y suele jugar slots de Hacksaw Gaming"*, o que *"En el canal de Trainwreckstv los giveaways requieren enlace verificado en PartnerBrand"*.
 - **Recuperación <10 ms:** Con Qdrant corriendo localmente en el puerto 6333, la memoria inyecta exactamente 2 oraciones clave al contexto de generación sin inflar tokens ni demorar el tiempo de respuesta.
 
 ---
@@ -2999,7 +2999,7 @@ Semana 7-8: Producción
 
 [knowledge/docs/SOTA_MULTIMODAL_COURSES_PAPERS_COMPENDIUM_2026.md › 📚 COMPENDIO DE CURSOS, PAPERS Y REPOSITORIOS SOTA (2026) › 1. PAPERS CIENTÍFICOS CLAVE (ESTADO DEL ARTE 2025-2026) › 1.1. "Real-Time Generation of Game Video Commentary with Multimodal LLMs: Pause-Aware Decoding Approaches" (ArXiv: 2603.02655, 2026)]
 - **Aporte Principal:** Propone algoritmos de decodificación sensibles a las pausas naturales del juego (*Pause-Aware Decoding*). En lugar de interrumpir jugadas clave o hablar sobre momentos de clímax, el agente predice las ventanas de baja actividad del jugador/streamer para insertar comentarios contextuales.
-- **Aplicación en Centinela:** Define el momento exacto en que Tarkansky debe emitir mensajes en Kick: justo después de que los carretes se detienen o tras la resolución de un giro de bonificación, evitando solapar mensajes durante animaciones críticas.
+- **Aplicación en Centinela:** Define el momento exacto en que Tarkansky debe emitir mensajes en RealtimeHub: justo después de que los carretes se detienen o tras la resolución de un giro de bonificación, evitando solapar mensajes durante animaciones críticas.
 
 ---
 
@@ -3063,7 +3063,7 @@ Semana 7-8: Producción
 | **`bOOOOcG/Live_Stream_Chat_AI_Agent`** | Python / JS | Referencia directa de bot espectador de stream. Usa userscript en navegador para capturar canvas y WebSocket local para enviar texto al chat. |
 | **`pipecat-ai/pipecat`** | Python | Orquestador modular de pipelines de audio/vídeo en tiempo real con soporte nativo de Gemini Live API y WebRTC. |
 | **`livekit/agents`** | Python / Node | Runtime industrial para asistentes en tiempo real con transporte WebRTC y baja latencia garantizada (<800ms). |
-| **`xmacura/KickChatSpy`** | C# | Cliente WebSocket ultraligero sin dependencias para escuchar eventos de Pusher de Kick.com. |
+| **`xmacura/KickChatSpy`** | C# | Cliente WebSocket ultraligero sin dependencias para escuchar eventos de Pusher de realtime-stream.com. |
 | **`ddlBoJack/emotion2vec`** | PyTorch / ONNX | Modelo de reconocimiento de emociones en voz para inferencia local de estado anímico. |
 | **`QwenAudio/SenseVoice`** | PyTorch / ONNX | ASR ultrarrápido multilingüe con reconocimiento de eventos de audio (gritos, aplausos, risas). |
 | **`addyosmani/agent-skills`** | Markdown / YAML | Estándar de habilidades de ingeniería para agentes de software autónomos. |
@@ -3152,7 +3152,7 @@ Este catálogo consolida los 32 proyectos de código abierto más relevantes ana
 | `vision-agents` | `getstream/Vision-Agents` | AI/ML | Arquitectura WebRTC sub-30ms con YOLO y LLMs multimodales para análisis continuo de video en vivo. |
 | `wallie-v2` | `Alradyin/wallie-V2` | AI/ML | Motores de atención dinámica, modulación de humor y chat nativo para streams. |
 | `twitch-ai-viewers` | `gsilvamartin/twitch-ai-viewers` | AI/ML | Micro-buffering de audio (10–15 s) hacia la API de Whisper en Groq para transcribir transmisiones en tiempo real. |
-| `kickerz` | `KldIA6666/Kickerz` | AI/ML | Ingesta específica de Kick con Gemini Vision para reaccionar al hype y eventos del directo. |
+| `kickerz` | `KldIA6666/Kickerz` | AI/ML | Ingesta específica de RealtimeHub con Gemini Vision para reaccionar al hype y eventos del directo. |
 | `conductor` | `codecflow/conductor` | BE / DEVOPS | Controlador de streams basado en Playwright MCP y contenedores Docker aislados. |
 | `twitch-agents` | `BlaiseLabs/TwitchAgents` | AI/ML | Especificación ConvoXML para estructurar turnos de conversación naturales y menciones. |
 | `airi` | `moeru-ai/airi` | AI/ML | Compañero autónomo completo con procesamiento de voz en tiempo real y visión continua. |
@@ -3161,13 +3161,13 @@ Este catálogo consolida los 32 proyectos de código abierto más relevantes ana
 
 #### 🏛️ SOTA 2026: Bóveda Maestra de Repositorios de Referencia (Vendor Reference Vault)
 
-[knowledge/docs/SOTA_REFERENCE_REPOSITORIES_MASTER_VAULT_2026.md › 🏛️ SOTA 2026: Bóveda Maestra de Repositorios de Referencia (Vendor Reference Vault) › 🗂️ 3. Catálogo Maestro de Repositorios Investigados (2024–2026) › Grupo 2: Plataforma Kick, HLS & Ingestión de Red]
+[knowledge/docs/SOTA_REFERENCE_REPOSITORIES_MASTER_VAULT_2026.md › 🏛️ SOTA 2026: Bóveda Maestra de Repositorios de Referencia (Vendor Reference Vault) › 🗂️ 3. Catálogo Maestro de Repositorios Investigados (2024–2026) › Grupo 2: Plataforma RealtimeHub, HLS & Ingestión de Red]
 | ID de Bóveda | Repositorio GitHub | Rol / Squad | Innovación Clave para Inspeccionar |
 |---|---|---|---|
-| `streamlink` | `streamlink/streamlink` | BE / DEVOPS | Plugin oficial `kick.py`: fuente canónica sobre cómo Kick entrega playlists HLS, master playlists y tokens CDN. |
-| `kick-js` | `retconned/kick-js` | BE | Estructuras de datos completas de canales, chatrooms, eventos Pusher v2 y parseo de mensajes. |
-| `kicklib` | `Bukk94/KickLib` | BE | Referencia exhaustiva en C# de endpoints públicos y privados de Kick, autenticación y rotación de tokens. |
-| `notify-hub` | `GabrielBBaldez/Notify-Hub` | BE | Implementación de OAuth 2.1 PKCE para Kick con tipado de mensajes de chat tipo `user` y `bot`. |
+| `streamlink` | `streamlink/streamlink` | BE / DEVOPS | Plugin oficial `RealtimeHub.py`: fuente canónica sobre cómo RealtimeHub entrega playlists HLS, master playlists y tokens CDN. |
+| `RealtimeHub-js` | `retconned/RealtimeHub-js` | BE | Estructuras de datos completas de canales, chatrooms, eventos Pusher v2 y parseo de mensajes. |
+| `kicklib` | `Bukk94/KickLib` | BE | Referencia exhaustiva en C# de endpoints públicos y privados de RealtimeHub, autenticación y rotación de tokens. |
+| `notify-hub` | `GabrielBBaldez/Notify-Hub` | BE | Implementación de OAuth 2.1 PKCE para RealtimeHub con tipado de mensajes de chat tipo `user` y `bot`. |
 
 ---
 

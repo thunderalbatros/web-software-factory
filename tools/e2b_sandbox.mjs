@@ -1,5 +1,5 @@
-/**
- * HuntHub — Safe Cloud Code Sandbox Runner (E2B Sandbox)
+﻿/**
+ * WebFactory — Safe Cloud Code Sandbox Runner (E2B Sandbox)
  * =============================================================================
  * Allows agents to safely execute code experiments, test untrusted logic,
  * and run mathematical/scraping simulations in an isolated remote VM.

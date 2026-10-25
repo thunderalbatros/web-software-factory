@@ -1,6 +1,6 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
- * HuntHub & DiggityBets — Addy Osmani Unified Quality Gate
+ * Web Software Factory Studio — Addy Osmani Unified Quality Gate
  * Combines:
  *   1. Floor Guard (addyosmani/agent-skills -> constraint-driven-development)
  *   2. Agentic SEO Checker (addyosmani/agentic-seo -> 100-point AEO score)

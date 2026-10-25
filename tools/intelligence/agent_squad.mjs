@@ -1,4 +1,4 @@
-/**
+﻿/**
  * tools/intelligence/agent_squad.mjs — Autonomous Agent Squad Orchestrator
  * =============================================================================
  * Orchestrates multi-agent specialized squads based on:
@@ -30,7 +30,7 @@ export const SQUADS = {
   squad_1: {
     id: "squad_1",
     name: "Squad 1 — Research & Sourcing",
-    mission: "Gathers primary documentation, audits licenses, verifies Kick API contracts, and prevents hallucinations.",
+    mission: "Gathers primary documentation, audits licenses, verifies RealtimeHub API contracts, and prevents hallucinations.",
     skills: ["research-mode", "kb-retrieval", "firecrawl", "finops-context-budget"]
   },
   squad_2: {
@@ -41,9 +41,9 @@ export const SQUADS = {
   },
   squad_3: {
     id: "squad_3",
-    name: "Squad 3 — Kick Integration & Protocols",
+    name: "Squad 3 — RealtimeHub Integration & Protocols",
     mission: "Maintains Pusher WS chat connections, Webhooks RSA signature verification, and OAuth 2.1 PKCE.",
-    skills: ["kick-api", "kick-api-contracts", "channel-points-bridge", "moderation-guard"]
+    skills: ["RealtimeHub-api", "RealtimeHub-api-contracts", "channel-points-bridge", "moderation-guard"]
   },
   squad_4: {
     id: "squad_4",

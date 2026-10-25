@@ -1,4 +1,4 @@
-[
+﻿[
   {
     "timestamp": "2026-10-20T06:19:32.652Z",
     "baselineScore": 99.4,
@@ -16,11 +16,11 @@
         "confidence": 0.98
       },
       {
-        "id": "TG-INSTINCT-kick-compliance-zero-custody",
+        "id": "TG-INSTINCT-RealtimeHub-compliance-zero-custody",
         "targetSkill": ".agents/skills/continuous-learning-instincts/SKILL.md",
         "defect": "Recurring operational pattern [compliance_rule] requires permanent zero-regression enforcement.",
-        "rootCause": "Empirical evidence (AGENTS.md Section 2.2, test/phase1-stake-auth.test.ts) confirms high leverage.",
-        "gradientPatch": "Zero Custody & 100% Free Spectator Participation: Strict compliance with Kick ToS and gambling regulations. No buy-ins, no custody of viewer crypto/fiat. Prizes awarded out-of-band.",
+        "rootCause": "Empirical evidence (AGENTS.md Section 2.2, test/phase1-PartnerBrand-auth.test.ts) confirms high leverage.",
+        "gradientPatch": "Zero Custody & 100% Free Spectator Participation: Strict compliance with RealtimeHub ToS and gambling regulations. No buy-ins, no custody of viewer crypto/fiat. Prizes awarded out-of-band.",
         "confidence": 0.98
       },
       {
@@ -90,11 +90,11 @@
         "confidence": 0.98
       },
       {
-        "id": "TG-INSTINCT-kick-compliance-zero-custody",
+        "id": "TG-INSTINCT-RealtimeHub-compliance-zero-custody",
         "targetSkill": ".agents/skills/continuous-learning-instincts/SKILL.md",
         "defect": "Recurring operational pattern [compliance_rule] requires permanent zero-regression enforcement.",
-        "rootCause": "Empirical evidence (AGENTS.md Section 2.2, test/phase1-stake-auth.test.ts) confirms high leverage.",
-        "gradientPatch": "Zero Custody & 100% Free Spectator Participation: Strict compliance with Kick ToS and gambling regulations. No buy-ins, no custody of viewer crypto/fiat. Prizes awarded out-of-band.",
+        "rootCause": "Empirical evidence (AGENTS.md Section 2.2, test/phase1-PartnerBrand-auth.test.ts) confirms high leverage.",
+        "gradientPatch": "Zero Custody & 100% Free Spectator Participation: Strict compliance with RealtimeHub ToS and gambling regulations. No buy-ins, no custody of viewer crypto/fiat. Prizes awarded out-of-band.",
         "confidence": 0.98
       },
       {
@@ -172,11 +172,11 @@
         "confidence": 0.98
       },
       {
-        "id": "TG-INSTINCT-kick-compliance-zero-custody",
+        "id": "TG-INSTINCT-RealtimeHub-compliance-zero-custody",
         "targetSkill": ".agents/skills/continuous-learning-instincts/SKILL.md",
         "defect": "Recurring operational pattern [compliance_rule] requires permanent zero-regression enforcement.",
-        "rootCause": "Empirical evidence (AGENTS.md Section 2.2, test/phase1-stake-auth.test.ts) confirms high leverage.",
-        "gradientPatch": "Zero Custody & 100% Free Spectator Participation: Strict compliance with Kick ToS and gambling regulations. No buy-ins, no custody of viewer crypto/fiat. Prizes awarded out-of-band.",
+        "rootCause": "Empirical evidence (AGENTS.md Section 2.2, test/phase1-PartnerBrand-auth.test.ts) confirms high leverage.",
+        "gradientPatch": "Zero Custody & 100% Free Spectator Participation: Strict compliance with RealtimeHub ToS and gambling regulations. No buy-ins, no custody of viewer crypto/fiat. Prizes awarded out-of-band.",
         "confidence": 0.98
       },
       {

@@ -1,6 +1,6 @@
-# 📚 Libro Completo: El Diseño Emocional: Por qué nos gustan (o no) los objetos cotidianos
+﻿# 📚 Libro Completo: El Diseño Emocional: Por qué nos gustan (o no) los objetos cotidianos
 
-**Alcance:** Fuente bibliográfica completa sobre Los Tres Niveles del Diseño Emocional: Visceral (Impacto Estético), Conductual (Fluidez y Función) y Reflexivo (Identidad y Orgullo) (El Diseño Emocional: Por qué nos gustan (o no) los objetos cotidianos — Don Norman). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Los Tres Niveles del Diseño Emocional: Visceral (Impacto Estético), Conductual (Fluidez y Función) y Reflexivo (Identidad y Orgullo) (El Diseño Emocional: Por qué nos gustan (o no) los objetos cotidianos — Don Norman). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Don Norman  
 > **Dominio:** Los Tres Niveles del Diseño Emocional: Visceral (Impacto Estético), Conductual (Fluidez y Función) y Reflexivo (Identidad y Orgullo)  

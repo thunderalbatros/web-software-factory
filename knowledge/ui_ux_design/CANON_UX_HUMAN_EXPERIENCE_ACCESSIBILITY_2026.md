@@ -1,4 +1,4 @@
----
+﻿---
 version: 1.1.0
 tipo: research
 tags:
@@ -13,13 +13,13 @@ ultima_revision: 2026-10-17
 # 🧠 Tratado Canónico: Experiencia Humana, Heurística Empírica y Accesibilidad Web Universal (2026)
 
 ## 1. Visión y Objetivos Fundacionales
-La arquitectura de HuntHub Web prioriza interfaces web inmersivas, claras y de alto rendimiento para transmisiones en vivo y participación de espectadores. Este tratado integra las **10 Heurísticas de Usabilidad de Nielsen Norman Group**, las **Leyes de UX**, la accesibilidad universal **WCAG 2.2 AAA**, el diseño inclusivo moderno, el sistema ergonómico de modo oscuro OLED y la filosofía de claridad instantánea (*"Don't Make Me Think"* de Steve Krug) adaptada a aplicaciones web interactivas y overlays de OBS.
+La arquitectura de WebFactory Web prioriza interfaces web inmersivas, claras y de alto rendimiento para transmisiones en vivo y participación de espectadores. Este tratado integra las **10 Heurísticas de Usabilidad de Nielsen Norman Group**, las **Leyes de UX**, la accesibilidad universal **WCAG 2.2 AAA**, el diseño inclusivo moderno, el sistema ergonómico de modo oscuro OLED y la filosofía de claridad instantánea (*"Don't Make Me Think"* de Steve Krug) adaptada a aplicaciones web interactivas y overlays de OBS.
 
 ---
 
 ## 2. Principios de Interacción y Accesibilidad Web
 
-### 2.1 Las 10 Heurísticas de Usabilidad (Jakob Nielsen) aplicadas a HuntHub Web
+### 2.1 Las 10 Heurísticas de Usabilidad (Jakob Nielsen) aplicadas a WebFactory Web
 1. **Visibilidad del Estado del Sistema:** Feedback síncrono (< 100ms) en cada acción (ruleta girando, votos de chat recibidos, estado de rondas en vivo, micro-animaciones con WAAPI).
 2. **Correspondencia entre el Sistema y el Mundo Real:** Lenguaje directo, claro y predecible ("Girar Ruleta", "Verificar Apuesta", "Unirse al Torneo", "Retirar"), evitando ambigüedades técnicas.
 3. **Control y Libertad del Usuario:** Posibilidad de cancelar acciones pendientes, alternar modos de vista (Overlays compactos vs Dashboard completo) y cerrar modales con la tecla `Escape` o clic exterior.
@@ -33,7 +33,7 @@ La arquitectura de HuntHub Web prioriza interfaces web inmersivas, claras y de a
 
 ### 2.2 Leyes Psicológicas de UX en la Web
 - **Ley de Fitts:** Botones de acción primaria (`#spin-btn`, `#join-btn`) con hitboxes generosas (mínimo 44 × 44 px en desktop y 48 × 48 px en mobile web) con estados de foco visibles.
-- **Ley de Hick:** Reducción de opciones de menú y configuración a agrupaciones semánticas claras (Ruleta, Torneo 1v1, Bonushunts, Ajustes).
+- **Ley de Hick:** Reducción de opciones de menú y configuración a agrupaciones semánticas claras (Ruleta, Torneo 1v1, feature-modules, Ajustes).
 - **Ley de Miller:** Límites de elementos activos por vista en paneles de control (7 ± 2 elementos por agrupación visual) para evitar fatiga cognitiva del streamer en vivo.
 - **Ley de Jakob:** Los usuarios pasan la mayor parte de su tiempo en otros sitios web; los patrones de navegación, inputs numéricos y modales deben comportarse de forma estándar y predecible.
 
@@ -44,7 +44,7 @@ La arquitectura de HuntHub Web prioriza interfaces web inmersivas, claras y de a
 
 ### 2.4 Ergonomía Visual: Dark Casino Theme
 - **Color Base:** #0a0d14 / #10141e (Superficies oscuras con bajo consumo y descanso visual).
-- **Acento Primario:** #53fc18 (Verde neón Kick / high-visibility).
+- **Acento Primario:** #53fc18 (Verde neón RealtimeHub / high-visibility).
 - **Acento Secundario:** #ffd700 (Dorado de victoria / torneos).
 - **Superficies Elevadas:** Translucidez sutil de cristal (*Glassmorphism* controlado con `backdrop-filter: blur(12px)` y bordes sutiles de 1px) con mínimo impacto en GPU para overlays de OBS.
 
@@ -52,7 +52,7 @@ La arquitectura de HuntHub Web prioriza interfaces web inmersivas, claras y de a
 
 ## 3. Matriz de Fuentes Canónicas Indexadas
 
-| # | Título de la Fuente | URL Canónica | Rol en HuntHub Web |
+| # | Título de la Fuente | URL Canónica | Rol en WebFactory Web |
 | :-: | :--- | :--- | :--- |
 | **31** | NN/g 10 Usability Heuristics | [nngroup.com/.../ten-usability-heuristics](https://www.nngroup.com/articles/ten-usability-heuristics/) | Marco de evaluación heurística para flujos y pantallas. |
 | **32** | W3C WCAG 2.2 Recommendation | [w3.org/TR/WCAG22](https://www.w3.org/TR/WCAG22/) | Estándar internacional de accesibilidad web Nivel AAA. |

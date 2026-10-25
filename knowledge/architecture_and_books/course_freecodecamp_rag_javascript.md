@@ -1,7 +1,7 @@
-# 🎓 Video Curso: Build and Deploy a RAG Chatbot with JavaScript, LangChain.js, Next.js, Vercel, OpenAI
+﻿# 🎓 Video Curso: Build and Deploy a RAG Chatbot with JavaScript, LangChain.js, Next.js, Vercel, OpenAI
 
 
-**Alcance:** Videocurso completo de freeCodeCamp sobre construcción de sistemas RAG en JavaScript/Node.js con motores vectoriales. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+**Alcance:** Videocurso completo de freeCodeCamp sobre construcción de sistemas RAG en JavaScript/Node.js con motores vectoriales. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 > **Institución / Autor:** freeCodeCamp.org  
 > **Fuente URL:** https://www.youtube.com/watch?v=d-VKYF4Zow0  

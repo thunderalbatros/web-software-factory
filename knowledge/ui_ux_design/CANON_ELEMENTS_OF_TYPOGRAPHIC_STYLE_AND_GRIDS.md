@@ -1,4 +1,4 @@
----
+﻿---
 version: 1.0.0
 tipo: research
 tags:
@@ -26,9 +26,9 @@ Bringhurst establece que el ritmo tipográfico debe gobernarse por principios an
 
 ---
 
-## 2. La Proporción Áurea ($\phi = 1.618$) en la Jerarquía de Textos de HuntHub Web
+## 2. La Proporción Áurea ($\phi = 1.618$) en la Jerarquía de Textos de WebFactory Web
 
-En lugar de elegir tamaños de fuente aleatorios (12, 14, 17, 21), HuntHub Web adopta una **escala modular armónica basada en la Proporción Áurea y la escala Mayor Tercera (1.25 / 1.618)**:
+En lugar de elegir tamaños de fuente aleatorios (12, 14, 17, 21), WebFactory Web adopta una **escala modular armónica basada en la Proporción Áurea y la escala Mayor Tercera (1.25 / 1.618)**:
 
 | Nivel de Token | Tamaño de Fuente (pt) | Line Height (Interlineado) | Familia Tipográfica | Uso en la plataforma web |
 | :--- | :--- | :--- | :--- | :--- |
@@ -45,7 +45,7 @@ En lugar de elegir tamaños de fuente aleatorios (12, 14, 17, 21), HuntHub Web a
 
 Beth Tondreau detalla cómo las grillas modulares generan cohesión visual subconsciente y eliminan la ambigüedad en el diseño de layouts.
 
-### Reglas de la Grilla HuntHub Web:
+### Reglas de la Grilla WebFactory Web:
 1. **Espaciado Múltiplo de 8 (y 4 para micro-alineación):**
    - Márgenes laterales de pantalla: `16dp` o `24dp`.
    - Separación entre tarjetas: `16dp`.

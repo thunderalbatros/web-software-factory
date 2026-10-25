@@ -1,6 +1,6 @@
-# CANON: Optimización de Cloudflare D1, Workers Paid (USD 5/mes), FinOps Guardrails, Smart Placement y Cifrado en Reposo (2026)
+﻿# CANON: Optimización de Cloudflare D1, Workers Paid (USD 5/mes), FinOps Guardrails, Smart Placement y Cifrado en Reposo (2026)
 
-**Alcance:** Aplicable a la arquitectura de borde en Cloudflare Workers (`worker/index.js`, `wrangler.toml`), base de datos serverless SQLite Cloudflare D1 (`hunthub_production`), sincronización de baja latencia entre USA (OBS Studio Browser Sources en `overlay-*` y `wheel-*`) y Argentina (`#control-panel`, `#admin-hub`), clientes web en `site/js/`, y protección criptográfica de credenciales OAuth 2.1 en `kv_store`. Relacionado con [[CANON_OPEN_BOOKS_WEB_SECURITY_OWASP_AND_SQLITE_INTERNALS_2026]], [[CANON_QASIMHBTI_BOOKS_SQLITE_SCALABILITY_EDGE_CACHE_AND_ALGORITHMS_2026]], [[CANON_POEAA_FOWLER_GOOS_FREEMAN_C4_SIMON_BROWN_AND_FUNCTIONAL_CORE_2026]], [[CANON_CYBERSECURITY_DEVSECOPS_2026]] y [[CANON_AGENT_TOKEN_EFFICIENCY_ANTIGRAVITY_2026-10-24]].
+**Alcance:** Aplicable a la arquitectura de borde en Cloudflare Workers (`worker/index.js`, `wrangler.toml`), base de datos serverless SQLite Cloudflare D1 (`WebFactory_production`), sincronización de baja latencia entre USA (OBS Studio Browser Sources en `overlay-*` y `wheel-*`) y Argentina (`#control-panel`, `#admin-hub`), clientes web en `site/js/`, y protección criptográfica de credenciales OAuth 2.1 en `kv_store`. Relacionado con [[CANON_OPEN_BOOKS_WEB_SECURITY_OWASP_AND_SQLITE_INTERNALS_2026]], [[CANON_QASIMHBTI_BOOKS_SQLITE_SCALABILITY_EDGE_CACHE_AND_ALGORITHMS_2026]], [[CANON_POEAA_FOWLER_GOOS_FREEMAN_C4_SIMON_BROWN_AND_FUNCTIONAL_CORE_2026]], [[CANON_CYBERSECURITY_DEVSECOPS_2026]] y [[CANON_AGENT_TOKEN_EFFICIENCY_ANTIGRAVITY_2026-10-24]].
 
 ---
 
@@ -70,7 +70,7 @@ Cuando múltiples fuentes de navegador en OBS Studio (ubicadas en el mismo PoP d
 - **Anti-patrón:** Consultar `caches.default` pero ejecutar igualmente `SELECT ... FROM kv_store` en D1 en cada petición.
 - **Patrón Óptimo (*Micro-TTL Coalescing*):**
   1. Mantener un sello temporal `lastOverlayD1ReadAt` en el isolate.
-  2. Si `Date.now() - lastOverlayD1ReadAt < 1200` (`1.2s`), retornar instantáneamente el objeto en memoria `globalThis.__HUNTHUB_OVERLAY_SYNC__` (**0 lecturas D1, latencia `< 1 ms`**).
+  2. Si `Date.now() - lastOverlayD1ReadAt < 1200` (`1.2s`), retornar instantáneamente el objeto en memoria `globalThis.__WebFactory_OVERLAY_SYNC__` (**0 lecturas D1, latencia `< 1 ms`**).
   3. En cualquier mutación `POST` (`writeOverlaySyncState`, `writeDuoQueues`), actualizar inmediatamente la memoria del isolate, `caches.default` y D1 (*Write-Through*), fijando `lastOverlayD1ReadAt = Date.now()`.
   4. **Resultado:** En el PoP que origina el cambio la propagación es de `0 ms`; en PoPs remotos (Argentina ↔ EE. UU.) la convergencia máxima es $\le 1.2\text{ s}$, colapsando 10 peticiones por segundo en **1 única consulta a D1 cada 1.2 segundos**.
 

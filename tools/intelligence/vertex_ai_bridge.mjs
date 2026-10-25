@@ -1,5 +1,5 @@
-/**
- * HuntHub & DiggityBets — Google Cloud Platform (GCP) Vertex AI Bridge
+﻿/**
+ * Web Software Factory Studio — Google Cloud Platform (GCP) Vertex AI Bridge
  * =============================================================================
  * Enterprise-grade generative and multimodal intelligence for modern web design,
  * aesthetic UI auditing, query expansion (HyDE), and RAG synthesis.
@@ -136,7 +136,7 @@ export async function generateWithVertex(prompt, systemInstruction = '', model =
  * to supercharge dense and sparse retrieval in RAG.
  */
 export async function expandAndCanonicalizeQuery(userQuery) {
-  const systemInstruction = `You are the Lead Search Engine Architect for HuntHub.
+  const systemInstruction = `You are the Lead Search Engine Architect for WebFactory.
 Transform the user query into an optimal search representation for technical retrieval (UI/UX, CSS, Web Animations, Software Architecture, Casino Streaming, and General Web Knowledge).
 When queries relate to UI/UX, CSS or animations, preserve and expand precise technical terms (e.g., 'escala de entrada' -> modal entrance scale transform, 'modales' -> modal dialog popover).
 Respond strictly in valid JSON format:
@@ -335,7 +335,7 @@ export async function auditVisualDesign({ imagePathOrBuffer, mimeType = 'image/j
     return { ok: false, error: 'Invalid image buffer or file path' };
   }
 
-  const prompt = `You are the Lead Visual & Aesthetic Design Engineer for HuntHub (Casino Streamer Engagement Suite).
+  const prompt = `You are the Lead Visual & Aesthetic Design Engineer for WebFactory (Casino Streamer Engagement Suite).
 Perform an authoritative, brutal, and high-craft aesthetic audit of this UI design.
 
 CONTEXT: ${urlOrContext || 'Casino Streamer Web App & Transparent OBS Overlays'}
@@ -454,10 +454,10 @@ export function recordFinOpsTelemetry({ operation, model = GEMINI_MODEL, inputCh
 }
 
 const SNIPER_IMPLICIT_CANON_PREFIX = [
-  '=== HUNTHUB 50-SPIN SNIPER & RISK ENGINE — MATHEMATICAL CONSTITUTION ===',
-  '1. NON-PREDICTIVE LIVE RTP LAW: In Stake Engine (math-sdk) and certified GLI-11/GLI-19 RGS servers, outcomes are pre-computed in immutable simulation books/lookup tables selected via stateless CSPRNG (e.g., HMAC-SHA256 / Mersenne Twister). Observed Live RTP (1h/24h) is a lagging descriptive sample metric and NEVER changes the probability of the next spin.',
+  '=== WebFactory 50-SPIN SNIPER & RISK ENGINE — MATHEMATICAL CONSTITUTION ===',
+  '1. NON-PREDICTIVE LIVE RTP LAW: In PartnerBrand Engine (math-sdk) and certified GLI-11/GLI-19 RGS servers, outcomes are pre-computed in immutable simulation books/lookup tables selected via stateless CSPRNG (e.g., HMAC-SHA256 / Mersenne Twister). Observed Live RTP (1h/24h) is a lagging descriptive sample metric and NEVER changes the probability of the next spin.',
   '2. EXACT 50-SPIN BINOMIAL PROBABILITY: For a slot with average bonus frequency 1 in B spins (hit rate p = 1/B), the true probability of hitting >= 1 bonus within N=50 spins is P(Bonus <= 50) = 1 - (1 - 1/B)^50.',
-  '3. SKEWNESS & MEDIAN RETURN REALITY: Theoretical RTP (e.g., 96.5% or 98.0% on Stake Enhanced RTP) is an asymptotic mean over 10^7+ spins heavily skewed by rare max-win tails (10,000x+). In a short 50-spin sniper window, the median return is significantly lower than the mean RTP, and dead-spin streaks are governed by base hit frequency.',
+  '3. SKEWNESS & MEDIAN RETURN REALITY: Theoretical RTP (e.g., 96.5% or 98.0% on PartnerBrand Enhanced RTP) is an asymptotic mean over 10^7+ spins heavily skewed by rare max-win tails (10,000x+). In a short 50-spin sniper window, the median return is significantly lower than the mean RTP, and dead-spin streaks are governed by base hit frequency.',
   '4. ANTI-TILT BANKROLL PROTECTION: Never recommend chasing losses on "Hot" or "Cold" machines. A 50-spin sniper session requires strict stop-loss discipline (50 spins max per attempt) and safe bet sizing (0.20% to 0.50% of total bankroll per spin, so 50 spins risk at most 10% to 25% of session allocation).'
 ].join('\n');
 
@@ -803,11 +803,11 @@ export function auditSniperSlotWithCoVe(slot = {}, bankrollUsd = 100, spinsWindo
  */
 export async function generateSniperTacticalBriefing(slot = {}, bankrollUsd = 100) {
   const audit = auditSniperSlotWithCoVe(slot, bankrollUsd, 50);
-  const systemInstruction = `Sos el Analista Cuantitativo Jefe del "50-Spin Sniper & Risk Engine" de HuntHub (Español Argentino, directo, claro y riguroso).
+  const systemInstruction = `Sos el Analista Cuantitativo Jefe del "50-Spin Sniper & Risk Engine" de WebFactory (Español Argentino, directo, claro y riguroso).
 Explicá en 3 viñetas cortas por qué esta slot tiene clasificación "${audit.metrics.sniperTier}" para una ventana estricta de 50 giros.
 REGLA INQUEBRANTABLE: Jamás afirmes que el Live RTP predice el próximo giro. Usá únicamente las probabilidades binomiales exactas y el límite de apuesta segura provistos.`;
 
-  const prompt = `Slot: ${slot.name || slot.slug} (${slot.provider || 'Stake Engine'})
+  const prompt = `Slot: ${slot.name || slot.slug} (${slot.provider || 'PartnerBrand Engine'})
 - RTP Teórico: ${audit.metrics.rtpTheoretical}% | Live RTP 24h: ${audit.metrics.rtpLive24h ?? 'N/A'}%
 - Frecuencia de Bono: 1 cada ${audit.metrics.bonusFrequencySpins} giros -> Probabilidad real de bono en <=50 giros: ${audit.metrics.pBonus50Spins}%
 - Hit Frequency Base: ${audit.metrics.hitFrequencyPct}% (${audit.metrics.expectedWinningSpins50} giros con premio esperados de 50)
@@ -831,7 +831,7 @@ REGLA INQUEBRANTABLE: Jamás afirmes que el Live RTP predice el próximo giro. U
 }
 
 /**
- * Syncs verified 50-Spin Sniper Slot DNA records to BigQuery Free Tier (`hunthub_sniper_intel.slot_dna_50spin_matrix`)
+ * Syncs verified 50-Spin Sniper Slot DNA records to BigQuery Free Tier (`WebFactory_sniper_intel.slot_dna_50spin_matrix`)
  * with mandatory `labels: { datacloud: 'antigravity' }` attribution.
  */
 export async function syncSniperMatrixToBigQuery(rows = []) {
@@ -845,13 +845,13 @@ export async function syncSniperMatrixToBigQuery(rows = []) {
       windowsHide: true
     }).trim();
 
-    const url = `https://bigquery.googleapis.com/bigquery/v2/projects/${GCP_PROJECT}/datasets/hunthub_sniper_intel/tables/slot_dna_50spin_matrix/insertAll`;
+    const url = `https://bigquery.googleapis.com/bigquery/v2/projects/${GCP_PROJECT}/datasets/WebFactory_sniper_intel/tables/slot_dna_50spin_matrix/insertAll`;
     const bqRows = rows.map(r => ({
       insertId: `${r.slug}_${new Date().toISOString().slice(0, 13)}`,
       json: {
         slug: String(r.slug),
         name: String(r.name || r.slug),
-        provider: String(r.provider || 'Stake Engine'),
+        provider: String(r.provider || 'PartnerBrand Engine'),
         only_on_stake: Boolean(r.onlyOnStake ?? true),
         rtp_theoretical: Number(r.rtpTheoretical ?? 96.0),
         rtp_live_24h: r.rtpLive24h != null ? Number(r.rtpLive24h) : null,
@@ -1004,8 +1004,8 @@ if (process.argv[1]?.endsWith('vertex_ai_bridge.mjs')) {
   const sampleAudit = auditSniperSlotWithCoVe(
     {
       slug: 'tome-of-life',
-      name: 'Tome of Life (Stake Originals / Enhanced)',
-      provider: 'Stake Engine',
+      name: 'Tome of Life (PartnerBrand Originals / Enhanced)',
+      provider: 'PartnerBrand Engine',
       rtpTheoretical: 98.0,
       rtpLive24h: 112.4,
       bonusFrequencySpins: 115,
@@ -1020,8 +1020,8 @@ if (process.argv[1]?.endsWith('vertex_ai_bridge.mjs')) {
   generateSniperTacticalBriefing(
     {
       slug: 'tome-of-life',
-      name: 'Tome of Life (Stake Originals)',
-      provider: 'Stake Engine',
+      name: 'Tome of Life (PartnerBrand Originals)',
+      provider: 'PartnerBrand Engine',
       rtpTheoretical: 98.0,
       rtpLive24h: 112.4,
       bonusFrequencySpins: 115,

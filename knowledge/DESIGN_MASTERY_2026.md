@@ -1,4 +1,4 @@
-# DESIGN MASTERY 2026: 12 Open-Source Libraries for High-End Motion & Graphics
+﻿# DESIGN MASTERY 2026: 12 Open-Source Libraries for High-End Motion & Graphics
 
 > **Scope:** Canonical architectural and technical manual for the 12 open-source repositories installed in `references/design-mastery/`.  
 > **Target Environment:** 100% Vanilla JS/CSS, Zero heavy runtime, OBS browser overlays (≤5% CPU budget), HP 250 G8 notebook compatibility.
@@ -12,7 +12,7 @@
   - `Proton.Attraction(targetVector, force, radius, life, easing)`: Magnetizes particles toward coordinates.
   - `Proton.CanvasRenderer(canvas)` / `Proton.WebGLRenderer(canvas)`: Lightweight rendering pipelines.
   - `Proton.Span(min, max)`: Uniform distribution for velocity, angles, and life spans.
-- **Application in DiggityBets:**
+- **Application in client-portal:**
   - **Directed Magnet Coin Flight to $DIG Balance:** When a spectator wins $DIG or redeems faucet points, gold coins emit from the center and curve upward into `#topbar-dig-balance-pill`, triggering a scale pop on impact.
 - **Canonical Code Recipe:**
   ```javascript
@@ -51,7 +51,7 @@
   - `<canvas class="glslCanvas" data-fragment="..."></canvas>` or `new Canvas(canvasElement, options)`.
   - Built-in uniforms: `u_time` (float elapsed seconds), `u_resolution` (vec2 viewport), `u_mouse` (vec2 coords).
   - Dynamic parameters: `glsl.setUniform('u_gold_shimmer', 0.85)`.
-- **Application in DiggityBets:**
+- **Application in client-portal:**
   - Ambient vault smoke, iridescent gold borders, and live neon broadcast glows on stream overlays.
 
 ---
@@ -67,7 +67,7 @@
     return mix(cFrom, cTo, progress);
   }
   ```
-- **Application in DiggityBets:**
+- **Application in client-portal:**
   - Studio-grade broadcast transitions in `overlay-battle.html` and `overlay-tourney.html` (CrossZoom, DirectionalWarp, Luma, Burn) when moving between rounds or crowning the Reigning King.
 
 ---
@@ -80,7 +80,7 @@
   - `image1`, `image2`: Source and target textures.
   - `displacementImage`: Grayscale distortion map (e.g., fluid ripples, smoke waves).
   - `intensity`: Distortion amplitude multiplier (`0.2` to `0.5` recommended for subtle luxury).
-- **Application in DiggityBets:**
+- **Application in client-portal:**
   - Slot game cards in 1v1 Battle and Rewards Store item hover transitions.
 
 ---
@@ -91,7 +91,7 @@
 - **Key Functions:**
   - `animate({ from, to, type: 'spring', stiffness: 300, damping: 20, mass: 1, onUpdate })`.
   - `animate({ from, velocity: 500, type: 'decay', power: 0.8, timeConstant: 350, onUpdate })`.
-- **Application in DiggityBets:**
+- **Application in client-portal:**
   - Precise deceleration curve for `wheel-duo` and `wheel-solo`, tactile spring bounces on "BIG WIN!" modals, and floating menu expansion.
 
 ---
@@ -102,8 +102,8 @@
 - **Key Middleware:**
   - `computePosition(referenceEl, floatingEl, { placement: 'bottom-start', middleware: [offset(8), flip(), shift({ padding: 6 })] })`.
   - `autoUpdate(referenceEl, floatingEl, updateCallback)`: Automatically recalculates on scroll or window resize.
-- **Application in DiggityBets:**
-  - Collapsible PORTAL navigation tooltip tags, user session dropdown (`@tarkansky` / `@diggitybets`), and Stake multiplier popovers.
+- **Application in client-portal:**
+  - Collapsible PORTAL navigation tooltip tags, user session dropdown (`@tarkansky` / `@client-portal`), and PartnerBrand multiplier popovers.
 
 ---
 
@@ -114,8 +114,8 @@
   - `loop: true`: Seamless infinite carousel.
   - `rubberband: true`: iOS-style elastic resistance on boundary drags.
   - `slides: { perView: 'auto', spacing: 16 }`.
-- **Application in DiggityBets:**
-  - Ticker of recent $DIG jackpot winners, live chat prize feeds, and horizontal carousel of "Only on Stake" curated slots.
+- **Application in client-portal:**
+  - Ticker of recent $DIG jackpot winners, live chat prize feeds, and horizontal carousel of "Only on PartnerBrand" curated slots.
 
 ---
 
@@ -125,7 +125,7 @@
 - **Key Functions:**
   - `calculateTypeScale({ minWidth: 320, maxWidth: 1440, minFontSize: 16, maxFontSize: 18, minTypeScale: 1.2, maxTypeScale: 1.25 })`.
   - `calculateSpaceScale()`: Fluid padding and gaps.
-- **Application in DiggityBets:**
+- **Application in client-portal:**
   - Eliminates the need for 80% browser zoom: ensures `#watch` layout fits perfectly at 100% zoom across 1366x768 up to 2560x1440.
 
 ---
@@ -146,7 +146,7 @@
 - **Key Structure:**
   - `const space = new CanvasSpace('#canvas').setup({ resize: true }); const form = space.getForm();`.
   - `space.add({ animate: (time, ftime) => { form.line([...]); } }); space.play();`.
-- **Application in DiggityBets:**
+- **Application in client-portal:**
   - Real-time volatility charts, RTP bell curves in Slot Radar & Lab, and leaderboard interactive rank graphs.
 
 ---
@@ -156,7 +156,7 @@
 - **Core Purpose:** Reordering lists with native FLIP animation in pure Vanilla JS.
 - **Key Options:**
   - `Sortable.create(el, { animation: 150, ghostClass: 'sortable-ghost', onEnd: (evt) => { ... } })`.
-- **Application in DiggityBets:**
+- **Application in client-portal:**
   - Reordering Bonus Hunt slot opening order in Streamer Control Panel, re-arranging bracket participants, and custom dashboard layout.
 
 ---
@@ -167,7 +167,7 @@
 - **Key Pseudo-Elements:**
   - `::view-transition-old(root)` and `::view-transition-new(root)`.
   - Shared element tagging: `view-transition-name: section-header`.
-- **Application in DiggityBets:**
+- **Application in client-portal:**
   - Seamless SPA tab switching between PORTAL views (Watch, Bonus Hunt, Tourney, House Games, Profile) with 60 FPS cross-fade and zero flicker.
 
 ---

@@ -1,4 +1,4 @@
----
+﻿---
 name: security-audit
 description: "Security guidance and vulnerability review for codebases, APIs, services, CLI tools, libraries, and daemons."
 ---
@@ -67,4 +67,4 @@ The parent creates and is the only writer of shared run files:
 ---
 
 ## Progressive Disclosure Reference
-For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/streamerbot/.agents/skills/security-audit/references/full-guide.md).
+For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/web-software-factory/.agents/skills/security-audit/references/full-guide.md).

@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Designing Interfaces: Patterns for Effective Interaction Design
+﻿# 📚 Libro Completo: Designing Interfaces: Patterns for Effective Interaction Design
 
-**Alcance:** Fuente bibliográfica completa sobre Patrones de Diseño de Interacción, Navegación, Tablas de Datos, Dashboards, Modales y Controles Visuales (Designing Interfaces: Patterns for Effective Interaction Design — Jenifer Tidwell (O'Reilly)). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Patrones de Diseño de Interacción, Navegación, Tablas de Datos, Dashboards, Modales y Controles Visuales (Designing Interfaces: Patterns for Effective Interaction Design — Jenifer Tidwell (O'Reilly)). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Jenifer Tidwell (O'Reilly)  
 > **Dominio:** Patrones de Diseño de Interacción, Navegación, Tablas de Datos, Dashboards, Modales y Controles Visuales  

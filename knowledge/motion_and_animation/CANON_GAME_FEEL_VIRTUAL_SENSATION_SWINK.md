@@ -1,4 +1,4 @@
----
+﻿---
 version: 1.1.0
 tipo: research
 tags:
@@ -39,10 +39,10 @@ Steve Swink define el **Game Feel** como la experiencia táctil, kinestésica e 
 
 ---
 
-## 3. Calibración Canónica de Animaciones Web en HuntHub
+## 3. Calibración Canónica de Animaciones Web en WebFactory
 
 ```javascript
-// Configuración Canónica de Transiciones y Curvas de Easing en HuntHub Web
+// Configuración Canónica de Transiciones y Curvas de Easing en WebFactory Web
 export const WEB_EASINGS = {
   // Para giros de ruleta de alta tensión (anticipación y frenado suave)
   rouletteSpin: 'cubic-bezier(0.22, 1, 0.36, 1)',

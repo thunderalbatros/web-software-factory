@@ -1,4 +1,4 @@
----
+﻿---
 name: web-quality-skills
 description: "Measurement-first Web Quality and Core Web Vitals optimization (LCP, INP, CLS) based on addyosmani/web-quality-skills and."
 ---
@@ -13,14 +13,14 @@ Never invent, guess, or hallucinate performance numbers (e.g. claiming "LCP impr
 
 ## Core Web Vitals Thresholds (75th Percentile)
 
-| Metric | Target | Key Engineering Rules in HuntHub / DiggityBets |
+| Metric | Target | Key Engineering Rules in Web Software Factory Studio |
 | :--- | :--- | :--- |
-| **LCP** (Largest Contentful Paint) | `≤ 2.5s` | Preconnect Google Fonts & Kick/Stake CDNs; avoid render-blocking scripts; inline SVG placeholders for empty corners. |
+| **LCP** (Largest Contentful Paint) | `≤ 2.5s` | Preconnect Google Fonts & RealtimeHub/PartnerBrand CDNs; avoid render-blocking scripts; inline SVG placeholders for empty corners. |
 | **INP** (Interaction to Next Paint) | `≤ 200ms` (`≤ 150ms` in Control Panel) | Use ON/OFF module switches (`[data-cp-module-toggle]`) to keep inactive game DOM collapsed (`display: none`); apply `contain: layout style;` to `.glass-panel` cards; keep click handlers non-blocking. |
 | **CLS** (Cumulative Layout Shift) | `≤ 0.1` (`≤ 0.05` target) | Always set explicit `width`, `height`, and `aspect-ratio: 180 / 236` on slot cover images (`<img>`) and reserve dimensions for wheel canvases (`width="250" height="250"`). |
 
 ## Page Visibility Governor (`addyosmani/visibly.js` Pattern)
 
-When `document.hidden === true` (the browser tab is minimized or behind OBS/Stake):
+When `document.hidden === true` (the browser tab is minimized or behind OBS/PartnerBrand):
 - Pause non-essential decorative animations and particle loops (`document.body.classList.add('is-tab-hidden')`).
-- Keep the Kick Pusher WebSocket (`!battle`, `!sr`, `!tourney`, `!guess`) and `BroadcastChannel` / Edge sync active so zero viewer commands are missed.
+- Keep the RealtimeHub Pusher WebSocket (`!battle`, `!sr`, `!tourney`, `!guess`) and `BroadcastChannel` / Edge sync active so zero viewer commands are missed.

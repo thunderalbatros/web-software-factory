@@ -1,6 +1,6 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
- * HuntHub / DiggityBets — Qdrant Cloud & Obsidian Vault Curated Knowledge Migrator
+ * Web Software Factory Studio — Qdrant Cloud & Obsidian Vault Curated Knowledge Migrator
  * --------------------------------------------------------------------------------
  * Audits both Qdrant Cloud collections (`yendo_obsidian_vault` & `centinela_knowledge`)
  * and the primary local Obsidian vault (`C:\Users\tomas\yendo_mobile\.knowledge`),
@@ -39,7 +39,7 @@ function loadEnv() {
 
 const SCOPE_HEADERS = {
   ui_ux_design:
-    '> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y DiggityBets.\n\n',
+    '> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.\n\n',
   motion_and_animation:
     '> **Alcance:** Literatura canónica y tratados técnicos de animación a 60 FPS, shaders GPU, física de resortes (spring physics), arte técnico 3D y micro-interacciones fluidas para sitios web modernos y overlays OBS.\n\n',
   architecture_and_books:
@@ -47,7 +47,7 @@ const SCOPE_HEADERS = {
   cybersecurity:
     '> **Alcance:** Literatura canónica de ciberseguridad web, criptografía aplicada, protección de identidad OAuth 2.1, defensa XSS/CSP/CSRF y blindaje de aplicaciones en tiempo real.\n\n',
   streaming_and_overlays:
-    '> **Alcance:** Documentación técnica y contratos de Kick.com API v2, dinámicas matemáticas de RTP/volatilidad de slots, sistemas de lealtad y arquitectura de overlays de baja latencia.\n\n',
+    '> **Alcance:** Documentación técnica y contratos de realtime-stream.com API v2, dinámicas matemáticas de RTP/volatilidad de slots, sistemas de lealtad y arquitectura de overlays de baja latencia.\n\n',
 };
 
 function injectScopeHeader(content, category) {
@@ -195,7 +195,7 @@ function buildVideoCoursesCompendium() {
   const sections = [
     '# Compendio Maestro de 55 Videocursos Técnicos Analizados (UI/UX, Motion 60-FPS, Shaders, Game Design & Agentes IA)',
     '',
-    '> **Alcance:** Literatura canónica de arquitectura de software, código limpio, sistemas de diseño UI/UX, animaciones a 60 FPS, física de resortes, MDA Game Design y orquestación de agentes IA extraída de las 55 video-masterclasses de `yendo_obsidian_vault` para la Software Factory Web y DiggityBets.',
+    '> **Alcance:** Literatura canónica de arquitectura de software, código limpio, sistemas de diseño UI/UX, animaciones a 60 FPS, física de resortes, MDA Game Design y orquestación de agentes IA extraída de las 55 video-masterclasses de `yendo_obsidian_vault` para la Software Factory Web y client-portal.',
     '',
     'Este documento consolida las lecciones técnicas, fórmulas de animación, principios de diseño gráfico y patrones de ingeniería extraídos de 55 videocursos técnicos y conferencias internacionales.',
     '',

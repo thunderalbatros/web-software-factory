@@ -1,4 +1,4 @@
-**Alcance:** Síntesis de cursos universitarios de ciberseguridad (MIT 6.858 Computer Systems Security, Stanford CS253 Web Security). (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Síntesis de cursos universitarios de ciberseguridad (MIT 6.858 Computer Systems Security, Stanford CS253 Web Security). (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 version: 1.0.0

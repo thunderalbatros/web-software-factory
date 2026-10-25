@@ -1,4 +1,4 @@
-**Alcance:** Síntesis matemática de la proporción áurea aplicada a grillas CSS, espaciado, jerarquía de tarjetas y balance óptico. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Síntesis matemática de la proporción áurea aplicada a grillas CSS, espaciado, jerarquía de tarjetas y balance óptico. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 version: 1.0.0

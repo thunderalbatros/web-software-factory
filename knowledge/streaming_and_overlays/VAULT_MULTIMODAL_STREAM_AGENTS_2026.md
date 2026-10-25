@@ -1,4 +1,4 @@
-# 🧠 SOTA Multimodal Stream Agents & Autonomous Computer-Use Vault (2026)
+﻿# 🧠 SOTA Multimodal Stream Agents & Autonomous Computer-Use Vault (2026)
 
 > **Documento:** `knowledge/papers/SOTA_MULTIMODAL_STREAM_AGENTS_VAULT_2026.md`  
 > **Fecha:** Octubre 2026 | **Investigación:** CTO HITL (Tomás) + Equipo de Agentes Centinela  
@@ -14,7 +14,7 @@ Para construir al **espectador y copiloto de streams más humanizado, empático,
 ┌─────────────────────────────────────────────────────────────────────────┐
 │                    ARQUITECTURA DUPLEX CENTINELA (2026)                 │
 └─────────────────────────────────────────────────────────────────────────┘
-        STREAM EN VIVO (Kick / HLS / WebSocket / Screen / Audio)
+        STREAM EN VIVO (RealtimeHub / HLS / WebSocket / Screen / Audio)
                                    │
              ┌─────────────────────┴─────────────────────┐
              ▼                                           ▼
@@ -31,7 +31,7 @@ Para construir al **espectador y copiloto de streams más humanizado, empático,
              │                                           │
              └─────────────────────┬─────────────────────┘
                                    ▼
-         DESPACHO HUMANO & REACCIÓN EN TIEMPO REAL (HITL / Kick)
+         DESPACHO HUMANO & REACCIÓN EN TIEMPO REAL (HITL / RealtimeHub)
 ```
 
 ---

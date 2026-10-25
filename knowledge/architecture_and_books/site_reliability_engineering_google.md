@@ -1,4 +1,4 @@
-**Alcance:** Libro completo Site Reliability Engineering (Google SRE): presupuestos de error, SLOs, eliminación de toil y respuesta a incidentes. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Libro completo Site Reliability Engineering (Google SRE): presupuestos de error, SLOs, eliminación de toil y respuesta a incidentes. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 titulo: "Site Reliability Engineering: How Google Runs Production Systems"

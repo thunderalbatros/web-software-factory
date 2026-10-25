@@ -1,7 +1,7 @@
-# 🎓 Video Curso: LangGraph Complete Course for Beginners – Complex AI Agents with Python
+﻿# 🎓 Video Curso: LangGraph Complete Course for Beginners – Complex AI Agents with Python
 
 
-**Alcance:** Videocurso completo de freeCodeCamp sobre grafos de estado agénticos, memoria persistente y agentes conversacionales. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+**Alcance:** Videocurso completo de freeCodeCamp sobre grafos de estado agénticos, memoria persistente y agentes conversacionales. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 > **Institución / Autor:** freeCodeCamp.org  
 > **Fuente URL:** https://www.youtube.com/watch?v=jGg_1h0qzaM  

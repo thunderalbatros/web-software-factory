@@ -1,4 +1,4 @@
----
+﻿---
 name: design
 description: "Designs modular high-level architectures from functional requirements and produces design documents for each module."
 ---
@@ -67,4 +67,4 @@ Present your full understanding to the user for validation using `AskUserQuestio
 ---
 
 ## Progressive Disclosure Reference
-For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/streamerbot/.agents/skills/modularity/references/full-guide.md).
+For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/web-software-factory/.agents/skills/modularity/references/full-guide.md).

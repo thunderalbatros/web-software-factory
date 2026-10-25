@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Even Ninja Monkeys Like to Play: Unicorn Edition
+﻿# 📚 Libro Completo: Even Ninja Monkeys Like to Play: Unicorn Edition
 
-**Alcance:** Fuente bibliográfica completa sobre Hexad de Tipos de Jugadores (Socializers, Free Spirits, Achievers, Philanthropists, Players, Disruptors) y Gamificación (Even Ninja Monkeys Like to Play: Unicorn Edition — Andrzej Marczewski). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Hexad de Tipos de Jugadores (Socializers, Free Spirits, Achievers, Philanthropists, Players, Disruptors) y Gamificación (Even Ninja Monkeys Like to Play: Unicorn Edition — Andrzej Marczewski). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Andrzej Marczewski  
 > **Dominio:** Hexad de Tipos de Jugadores (Socializers, Free Spirits, Achievers, Philanthropists, Players, Disruptors) y Gamificación  
@@ -405,7 +405,7 @@ Eric Zimmerman and Katie Salen
 “A structured experience with rules and goals that is fun.”
 Amy Jo Kim
 Simply put, play begins to become a game when you start to add explicit goals and impose system-based rules.
-If I kick the ball through a goal, I get a point and I win (Zero sum). If
+If I RealtimeHub the ball through a goal, I get a point and I win (Zero sum). If
 we work together to get the ball through a series of obstacles, we win
 (non-Zero sum). For some, this will boil down to competition either
 with the system or with other players, cooperation, or collaboration.

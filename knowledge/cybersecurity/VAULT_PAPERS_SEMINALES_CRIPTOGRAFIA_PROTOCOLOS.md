@@ -1,4 +1,4 @@
-**Alcance:** Papers seminales de criptografía moderna: Diffie-Hellman, RSA, SHA-256, HMAC, curvas elípticas y pruebas de compromiso. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Papers seminales de criptografía moderna: Diffie-Hellman, RSA, SHA-256, HMAC, curvas elípticas y pruebas de compromiso. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 version: 1.0.0

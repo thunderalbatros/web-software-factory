@@ -1,4 +1,4 @@
-# Tratado Canónico Clean-Room: Desarrollo Frontend Sin Frameworks (Strazzullo, Farrell, Resig, Frisbie), Diseño de Sistemas en Tiempo Real (Alex Xu Vol. 1 & 2), Rayos-X de Diseño (Adam Tornhill), Arquitecturas Evolutivas (Neal Ford) e Inmutabilidad (Perry) (2026)
+﻿# Tratado Canónico Clean-Room: Desarrollo Frontend Sin Frameworks (Strazzullo, Farrell, Resig, Frisbie), Diseño de Sistemas en Tiempo Real (Alex Xu Vol. 1 & 2), Rayos-X de Diseño (Adam Tornhill), Arquitecturas Evolutivas (Neal Ford) e Inmutabilidad (Perry) (2026)
 
 **Alcance:** Aplicable a la arquitectura Vanilla JS de `site/js/` y `overlay-*`, componentes encapsulados, diseño de sistemas en tiempo real en `worker/index.js` (Leaderboards, WebSockets, Rate Limiters y Billetera `$DIG`), detección forense de deuda técnica (`tools/intelligence/ast_guard.mjs`) y funciones de aptitud evolutiva (`Squad 0`, `Squad 2`, `Squad 4`, `Squad 6` y `Squad 9`).
 
@@ -11,7 +11,7 @@
 - **Las 3 Reglas de Oro del Frontend *Frameworkless* (Strazzullo)**:
   1. **Funciones de Vista Puras**: Toda función de renderizado debe ser una proyección determinista del estado: $V = f(S)$.
   2. **Actualización Quirúrgica por Atributos `data-key` (*Keyed DOM Patching*)**:
-     - En tablas que se actualizan cada segundo (como la lista de bonos en `bonushunt.js` o la cola de `!sr`), nunca destruir y recrear todo el `<tbody>` si solo cambió el multiplicador de una fila.
+     - En tablas que se actualizan cada segundo (como la lista de bonos en `feature-module.js` o la cola de `!sr`), nunca destruir y recrear todo el `<tbody>` si solo cambió el multiplicador de una fila.
      - Buscar el nodo existente mediante `tbody.querySelector(\`[data-bonus-id="\${CSS.escape(id)}"]\`)` y mutar únicamente las celdas modificadas con `.textContent`.
   3. **Registro de Eventos Delegado (*Event Delegation* en la Raíz)**:
      - En lugar de adjuntar 200 listeners individuales `row.addEventListener('click', ...)` que retienen cierres léxicos en memoria, adjuntar **un único listener** en el contenedor padre y despachar con `const btn = e.target.closest('[data-action]');`.
@@ -36,9 +36,9 @@
   - Requiere almacenar únicamente **2 enteros por IP/usuario** y previene ráfagas del doble del límite en la frontera entre dos minutos consecutivos.
 
 ### 2.3 Diseño de Webhooks Resilientes (*Designing Web APIs* — Brenda Jin, Saurabh Sahni & Amir Shevat)
-- Todo receptor de webhooks de Kick (`/api/webhooks/kick`) debe:
+- Todo receptor de webhooks de RealtimeHub (`/api/webhooks/RealtimeHub`) debe:
   1. Verificar primero la firma criptográfica RSA-SHA256 y la marca de tiempo (`|now - timestamp| <= 300s`).
-  2. Verificar idempotencia contra `svix-id` / `Kick-Event-Message-Id`.
+  2. Verificar idempotencia contra `svix-id` / `RealtimeHub-Event-Message-Id`.
   3. Responder `200 OK` en `< 50 ms` delegando cualquier difusión pesada a `ctx.waitUntil(...)`.
 
 ---

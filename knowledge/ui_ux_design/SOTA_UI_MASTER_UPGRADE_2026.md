@@ -1,4 +1,4 @@
----
+﻿---
 version: 1.1.0
 tipo: research
 tags:
@@ -19,7 +19,7 @@ ultima_revision: 2026-10-17
 
 ## 📺 1. Los Referentes Mundiales de Design Engineering & Web Motion
 
-| # | Referente / Canal | Especialidad Técnica | Enfoque en HuntHub Web |
+| # | Referente / Canal | Especialidad Técnica | Enfoque en WebFactory Web |
 | :---: | :--- | :--- | :--- |
 | **1** | **Emil Kowalski** | Creador de Sonner y Animations on the Web | Micro-interacciones táctiles, físicas de resorte y transiciones fluidas en el DOM. |
 | **2** | **Rauno Freiberg** | Design Engineer en Linear | Interfaces ultra-densas, tipografía matemática y micro-feedback invisible. |
@@ -62,7 +62,7 @@ ultima_revision: 2026-10-17
 
 ---
 
-## ⚙️ 3. Pila Tecnológica Canónica de HuntHub Web
+## ⚙️ 3. Pila Tecnológica Canónica de WebFactory Web
 
 1. **Estructura y Semántica:** HTML5 semántico (`<main>`, `<nav>`, `<section>`, `<dialog>`, `aria-*`).
 2. **Estilizado y Diseño:** Vanilla CSS moderno con Custom Properties (CSS variables), CSS Grid (Bento layouts), Flexbox y Container Queries.

@@ -1,7 +1,7 @@
-# CANON: Animations on the Web — Masterclass & Motion Engineering
+﻿# CANON: Animations on the Web — Masterclass & Motion Engineering
 > **Author:** Emil Kowalski (Design Engineer at Linear, Creator of Sonner, Vaul & animations.dev)  
 > **Category:** Motion Design, UI Micro-Interactions & GPU Animation  
-> **Target Audience:** HuntHub Frontend Engineers & Motion Subagents  
+> **Target Audience:** WebFactory Frontend Engineers & Motion Subagents  
 
 ---
 
@@ -121,7 +121,7 @@ Respect users with vestibular disorders or motion sensitivities. Never disable t
 
 ---
 
-## 5. Direct Application to HuntHub Overlays & Mobile Site
+## 5. Direct Application to WebFactory Overlays & Mobile Site
 
 1. **CS:GO / Slot Wheels:** Use ease-out quint `cubic-bezier(0.12, 0.8, 0.2, 1)` for the final reel tick deceleration to generate peak spectator tension.
 2. **Battle / Tournament Modals:** Use the `scale(0.94)` entrance with `translateY(10px)` instead of sliding in from outside the screen.

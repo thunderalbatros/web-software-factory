@@ -1,6 +1,6 @@
-# CANON: AI Software Factory SOTA — Operación, Configuración y Tecnologías (Octubre 2026)
+﻿# CANON: AI Software Factory SOTA — Operación, Configuración y Tecnologías (Octubre 2026)
 
-**Alcance:** Aplicable al diseño y operación de la Software Factory de HuntHub Studio para generar múltiples sitios web (separada del producto diggitybets.vip). Cubre el flujo spec-driven, ingeniería de contexto, stack recomendado y patrón de separación factory/producto. Basado en investigación web del 2026-10-24 con fuentes verificadas.
+**Alcance:** Aplicable al diseño y operación de la Software Factory de WebFactory Studio para generar múltiples sitios web (separada del producto example-client.pages.dev). Cubre el flujo spec-driven, ingeniería de contexto, stack recomendado y patrón de separación factory/producto. Basado en investigación web del 2026-10-24 con fuentes verificadas.
 
 ---
 
@@ -86,16 +86,16 @@ REPO A — FACTORY (el "estudio"):  tools/ (audit, intelligence, design, guardra
 REPO B — TEMPLATE (el "molde"):   starter Astro 5 + tokens OKLCH del design system +
                                   gates cableadas + AGENTS.md de producto tipo +
                                   wrangler.toml base. Versionado con TAGS (estado known-good).
-REPO C..N — PRODUCTOS:            1 repo por sitio (diggitybets incluido). Historia git
+REPO C..N — PRODUCTOS:            1 repo por sitio (client-portal incluido). Historia git
                                   independiente. Cada uno tiene su AGENTS.md específico.
 ```
 - **Herramientas de scaffolding** (estándar 2026): **GitHub Template Repositories** (nativo, botón "Use this template", historia limpia) o **degit** (`npx degit user/template nuevo-sitio`, copia sin .git) [VERIFICADO: Rich-Harris/degit MIT, CSS-Tricks]. Con variables → copier/hygen (si algún día hace falta).
 - Regla de oro: **la fábrica evoluciona una vez, todos los productos la heredan** al hacer scaffold (o re-sincronizando el template con tag).
-- El RAG vive en la factory; los productos lo consumen vía MCP (`hunthub-omni-rag` ya es un MCP server standalone — apuntarlo al corpus de fábrica).
+- El RAG vive en la factory; los productos lo consumen vía MCP (`web-factory-omni-rag` ya es un MCP server standalone — apuntarlo al corpus de fábrica).
 
 ### 6.2 Por qué separar (evidencia de acoplamiento medida en el repo actual)
-- Las 15 herramientas de `tools/audit/` + `build_dist.mjs` + 4 de `tools/intelligence/` tienen **2-6 hits cada una** de strings de producto (`hunthub_celebration`, `diggity`, `admin-hub.js`, rutas de overlays) — son gates de UN producto, no de fábrica.
-- 1.3 GB de archivos de producto en la raíz (`arquitectura_diggitybets.txt` 1.3 MB, `repomix-output.xml` 13.8 MB, `repos_clonados.txt` 1 MB) mezclados con la fábrica.
+- Las 15 herramientas de `tools/audit/` + `build_dist.mjs` + 4 de `tools/intelligence/` tienen **2-6 hits cada una** de strings de producto (`WebFactory_celebration`, `diggity`, `admin-hub.js`, rutas de overlays) — son gates de UN producto, no de fábrica.
+- 1.3 GB de archivos de producto en la raíz (`` 1.3 MB, `repomix-output.xml` 13.8 MB, `repos_clonados.txt` 1 MB) mezclados con la fábrica.
 - El CI (`.github/workflows/slot-intel-sync.yml`) es 100% producto.
 - `.env` mezcla claves de 3 proyectos hermanos.
 

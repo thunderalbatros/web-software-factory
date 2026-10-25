@@ -1,4 +1,4 @@
-/**
+﻿/**
  * tools/intelligence/spec_generator.mjs — Spec-Driven Development (SDD) Engine
  * =============================================================================
  * Inspired by Zach Lloyd (Warp) and Dru Knox (Tessl).
@@ -37,7 +37,7 @@ export function generateSoftwareSpec(featureTitle, description, options = {}) {
     'Zero inline executable <script> blocks or inline onclick handlers (strict CSP compliance).'
   ];
   if (projectConfig.complianceProfile === 'gambling-18plus') {
-    defaultCriteria.push('100% compliant with Kick gambling guidelines (+18 disclaimer, zero spectator money custody, OBS CPU <= 5%).');
+    defaultCriteria.push('100% compliant with RealtimeHub gambling guidelines (+18 disclaimer, zero spectator money custody, OBS CPU <= 5%).');
   }
 
   const productSpec = {

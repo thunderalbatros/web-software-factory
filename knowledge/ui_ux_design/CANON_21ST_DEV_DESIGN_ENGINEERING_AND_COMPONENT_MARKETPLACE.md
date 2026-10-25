@@ -1,8 +1,8 @@
-# CANON: 21st.dev — The npm for Design Engineers & Component Ecosystem (2026)
+﻿# CANON: 21st.dev — The npm for Design Engineers & Component Ecosystem (2026)
 
 > **Autor/Organización:** Serafim Kovalchuk (`serafimcloud`), 21st Labs (`github.com/21st-dev`)  
 > **Área:** UI/UX Design Engineering, Component Registries, AI-Assisted Front-End, Micro-Interactions  
-> **Alcance en HuntHub / DiggityBets:** Suite Web, Overlays de OBS, Paneles de Control del Streamer  
+> **Alcance en Web Software Factory Studio:** Suite Web, Overlays de OBS, Paneles de Control del Streamer  
 > **Estado:** Ingestado y Activo en Centinela RAG y Suite de Skills  
 
 ---
@@ -29,11 +29,11 @@ Reúne los mejores patrones de la comunidad moderna:
 
 ---
 
-## 3. Estado en HuntHub: ¿Le estamos sacando el jugo?
+## 3. Estado en WebFactory: ¿Le estamos sacando el jugo?
 
 ### 3.1 Lo que ya hemos implementado con éxito
 1. **Electric Border / Border Beam:** Adaptado en el panel de King of the Hill (`#pub-koth-announcement-banner`) y en las esquinas de duelo de `overlay-battle/`, utilizando conic-gradients animados por WAAPI/CSS para 0% de sobrecarga de CPU en OBS.
-2. **NumberFlow / Animated Counter:** Implementado en los KPIs de `overlay-bonushunt/` y en el acumulador de racha del trono 1v1.
+2. **NumberFlow / Animated Counter:** Implementado en los KPIs de `overlay-feature-module/` y en el acumulador de racha del trono 1v1.
 3. **Cartas Holográficas con Brillo 3D (HoloCard Glare):** Inspiradas en las cartas interactivas de 21st.dev para mostrar las slots en formato vertical 3:4 (180x236).
 4. **Clonado en Base de Referencias:** Ya teníamos clonado el repositorio oficial en `references/ui-kb/1-design-systems-and-skills/magic-mcp/`.
 
@@ -51,12 +51,12 @@ Para sacarle el 100% del jugo a esta tecnología en nuestro flujo de trabajo:
 
 ## 4. Protocolo de Adaptación a Vanilla CSS & $0 Budget
 
-Dado que HuntHub opera bajo un presupuesto estricto de **$0 USD** y un requerimiento crítico de **≤5% de uso de CPU dentro de OBS Studio (HP 250 G8)**:
+Dado que WebFactory opera bajo un presupuesto estricto de **$0 USD** y un requerimiento crítico de **≤5% de uso de CPU dentro de OBS Studio (HP 250 G8)**:
 1. **Cero Dependencias Pesadas:** Cuando se extrae un componente de 21st.dev escrito en React/Framer Motion, el agente lo traduce a HTML5 semántico + Vanilla CSS (`@keyframes`, CSS Custom Properties) o Web Animations API (WAAPI).
-2. **Paleta Unificada Dark Glassmorphism:** Todos los tokens de Tailwind (`bg-zinc-900`, `border-amber-500`) se mapean a los tokens nativos de HuntHub:
+2. **Paleta Unificada Dark Glassmorphism:** Todos los tokens de Tailwind (`bg-zinc-900`, `border-amber-500`) se mapean a los tokens nativos de WebFactory:
    - `--bg-card: rgba(18, 26, 43, 0.75)`
    - `--gold: #ffd700`
-   - `--kick-green: #53fc18`
+   - `--RealtimeHub-green: #53fc18`
    - `--cyan: #00e5ff`
    - `--magenta: #ff2a5f`
 3. **Presupuesto Cromático 90/8/2:** 90% fondo oscuro/vidrio, 8% información de contraste blanco/gris, 2% acento vibrante (oro/verde/cyan).

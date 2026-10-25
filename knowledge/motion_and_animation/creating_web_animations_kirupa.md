@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Creating Web Animations: Bringing Your UIs to Life
+﻿# 📚 Libro Completo: Creating Web Animations: Bringing Your UIs to Life
 
-**Alcance:** Fuente bibliográfica completa sobre CSS Transitions, Keyframe Animations, WAAPI & 60-FPS Web Motion (Creating Web Animations: Bringing Your UIs to Life — Kirupa Chinnathambi (O'Reilly)). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre CSS Transitions, Keyframe Animations, WAAPI & 60-FPS Web Motion (Creating Web Animations: Bringing Your UIs to Life — Kirupa Chinnathambi (O'Reilly)). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Kirupa Chinnathambi (O'Reilly)  
 > **Dominio:** CSS Transitions, Keyframe Animations, WAAPI & 60-FPS Web Motion  
@@ -663,7 +663,7 @@ You’ve just learned the basics of how to define a simple CSS transition. Just 
 
 So far, we’ve created our animations and transitions by specifying only a handful of things: the properties to animate, the initial and final property values, and the duration. The exact syntax was different depending on whether we were dealing with a CSS animation or a transition, but the general ingredients were the same. The end result was an animation.
 
- In this chapter, we are going to add one more ingredient into the mix. We are going to kick things up a few notches by using something known as a  timing function (also referred to as an  easing function ). In the following sections, you’re going to learn all about them!
+ In this chapter, we are going to add one more ingredient into the mix. We are going to RealtimeHub things up a few notches by using something known as a  timing function (also referred to as an  easing function ). In the following sections, you’re going to learn all about them!
 
  
 
@@ -1837,7 +1837,7 @@ In some cases, a transition or animation you declare in CSS will be good enough.
 
  Animations are very specific in what they do. The reason is that the @keyframes  rule clearly lays out the path your animation will take as it is running. Every property value that will get affected is defined in your keyframes. There is no room for interpretation or alteration. Attempting to change your keyframes in JavaScript requires a very complicated series of steps that involves actually modifying the @keyframes style rule itself. If you’ve ever had to manipulate CSS that lives inside a style rule, you know that it is pretty unintuitive. If you’ve never done that before, it is definitely worth trying at least once…and only once.
 
- In contrast to the predefined path of an animation is the transition. Transitions are not as well defined as they may seem. Your transition will kick in when a property it is listening for changes. As you saw earlier, the transition doesn’t care how the properties it is listening for changes. As long as the property changes somehow, the transition will get to work. This means that for interactive scenarios that don’t involve a predefined starting and ending point, you can do a lot of interesting things by deferring all transition-related heavy lifting by setting the transition property in CSS and manipulating all of the values the transition is listening for using JavaScript. We’ll be seeing a lot of this in the future.
+ In contrast to the predefined path of an animation is the transition. Transitions are not as well defined as they may seem. Your transition will RealtimeHub in when a property it is listening for changes. As you saw earlier, the transition doesn’t care how the properties it is listening for changes. As long as the property changes somehow, the transition will get to work. This means that for interactive scenarios that don’t involve a predefined starting and ending point, you can do a lot of interesting things by deferring all transition-related heavy lifting by setting the transition property in CSS and manipulating all of the values the transition is listening for using JavaScript. We’ll be seeing a lot of this in the future.
 
  
 
@@ -5172,7 +5172,7 @@ We are almost done here. This time, I’m actually serious. We just looked at ho
  } 
  
 
-Notice that we have defined a transition to kick into high gear when the transform property is modified. Guess what our JavaScript is doing? You are setting the transform property! Your CSS transition detects this change and takes care of sliding your content. All you had to do was add a few lines of JavaScript (and many lines of vendor prefixing fun!) to make it all work. I don’t know about you, but I think that is just amazing. This is something that you couldn’t have imagined doing a few years ago without having to exert a lot of effort and write code to handle the actual sliding. This is what makes our content slider sweet.
+Notice that we have defined a transition to RealtimeHub into high gear when the transform property is modified. Guess what our JavaScript is doing? You are setting the transform property! Your CSS transition detects this change and takes care of sliding your content. All you had to do was add a few lines of JavaScript (and many lines of vendor prefixing fun!) to make it all work. I don’t know about you, but I think that is just amazing. This is something that you couldn’t have imagined doing a few years ago without having to exert a lot of effort and write code to handle the actual sliding. This is what makes our content slider sweet.
 
 Is All This Code Necessary?
 

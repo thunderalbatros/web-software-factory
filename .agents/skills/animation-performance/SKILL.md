@@ -1,4 +1,4 @@
----
+﻿---
 name: animation-performance
 description: "Keep web animations inside the frame budget — animate composite-only properties, keep motion off the main thread when the page is."
 ---
@@ -67,4 +67,4 @@ Two things decide whether you stay inside the budget:
 ---
 
 ## Progressive Disclosure Reference
-For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/streamerbot/.agents/skills/animation-performance/references/full-guide.md).
+For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/web-software-factory/.agents/skills/animation-performance/references/full-guide.md).

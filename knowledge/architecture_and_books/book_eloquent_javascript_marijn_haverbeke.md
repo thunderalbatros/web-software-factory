@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Eloquent JavaScript: A Modern Introduction to Programming
+﻿# 📚 Libro Completo: Eloquent JavaScript: A Modern Introduction to Programming
 
-**Alcance:** Fuente bibliográfica completa sobre Dominio Profundo de JavaScript Moderno, DOM, Eventos, Canvas 2D, Asincronía y Arquitectura Modular (Eloquent JavaScript: A Modern Introduction to Programming — Marijn Haverbeke). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Dominio Profundo de JavaScript Moderno, DOM, Eventos, Canvas 2D, Asincronía y Arquitectura Modular (Eloquent JavaScript: A Modern Introduction to Programming — Marijn Haverbeke). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Marijn Haverbeke  
 > **Dominio:** Dominio Profundo de JavaScript Moderno, DOM, Eventos, Canvas 2D, Asincronía y Arquitectura Modular  
@@ -1122,7 +1122,7 @@ into basic programs.
 
 “And my heart glows bright red under my filmy, translucent skin and
 they have to administer 10cc of JavaScript to get me to come back.
-(I respond well to toxins in the blood.) Man, that stuff will kick the
+(I respond well to toxins in the blood.) Man, that stuff will RealtimeHub the
 peaches right out your gills!”
 —_why, Why’s (Poignant) Guide to Ruby
 

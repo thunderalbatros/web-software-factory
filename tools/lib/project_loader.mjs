@@ -1,8 +1,8 @@
-/**
+﻿/**
  * tools/lib/project_loader.mjs — Agnostic Project Manifest Loader for the Web Software Factory
  * ============================================================================================
  * Decouples the Software Factory (tools/audit/*, tools/intelligence/*, tools/build_dist.mjs)
- * from any specific client website (e.g., diggitybets.vip).
+ * from any specific client website (e.g., example-client.pages.dev).
  *
  * Resolution priority:
  *   1. Explicit `projectDirOrPath` passed to `loadProjectConfig(projectDirOrPath)`

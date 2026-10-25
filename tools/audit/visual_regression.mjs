@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
  * tools/audit/visual_regression.mjs — PQC Deterministic Component Testbench & Pixelmatch Regression Harness
  * ==========================================================================================================
@@ -67,7 +67,7 @@ function buildTestbenchHtml() {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HuntHub — Deterministic Component Testbench Sandbox</title>
+  <title>WebFactory — Deterministic Component Testbench Sandbox</title>
   <link rel="stylesheet" href="/site/css/style.css" />
   <style>
     *, *::before, *::after {
@@ -186,7 +186,7 @@ function buildTestbenchHtml() {
     <!-- 1. Site Topbar Component -->
     <section class="tb-stage" data-testbench="site-topbar" aria-label="Topbar Sandbox">
       <header class="tb-topbar site-topbar">
-        <span class="tb-brand">DIGGITYBETS // HUNTHUB</span>
+        <span class="tb-brand">WEB SOFTWARE FACTORY // SANDBOX</span>
         <div style="display:flex;gap:8px;align-items:center;">
           <span class="tb-pill" data-dynamic-mask="true">12,450 $DIG</span>
           <span class="tb-pill" style="background:rgba(255,184,0,0.15);color:#ffb800;">+18 FREE PLAY</span>
@@ -218,7 +218,7 @@ function buildTestbenchHtml() {
           <span style="color:#ffb800;">ZERO CUSTODY</span>
         </div>
         <h2 class="tb-card-title">Sunday Streamer Giveaway</h2>
-        <p style="margin:0;font-size:12px;color:#9ba3b8;">100% Free entry via Kick chat command. Prizes delivered out-of-band by streamer.</p>
+        <p style="margin:0;font-size:12px;color:#9ba3b8;">100% Free entry via RealtimeHub chat command. Prizes delivered out-of-band by streamer.</p>
         <div class="tb-btn">VERIFY FAIRNESS SEED</div>
       </div>
     </section>

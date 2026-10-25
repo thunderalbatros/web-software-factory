@@ -1,4 +1,4 @@
----
+﻿---
 name: self-evolving-factory
 description: "Operates the Gate-Governed Self-Evolving Web Software Factory loop, including the SHA-256 Immutable Constitution Guard,."
 ---
@@ -27,4 +27,4 @@ description: "Operates the Gate-Governed Self-Evolving Web Software Factory loop
 3. **Verificador Sustituto (*SkillSmith Surrogate Verifier*)**:
    - Toda mutación en un `SKILL.md` o nuevo documento en `knowledge/` se valida ejecutando `rag_pipeline.mjs --rebuild` y `eval_matrix.mjs`. Si el puntaje global cae o se rompe alguna Golden Query, el cambio se revierte automáticamente (*Atomic Rollback*).
 4. **Explorador Ambiental (*Tech Scout Agent*)**:
-   - Vigila nuevas librerías open-source, especificaciones CSS/W3C/WebGPU y actualizaciones de Cloudflare/Kick aplicando el **Filtro Triple** (`USD 0`, licencia `MIT/Apache-2.0/BSD`, `<= 5% OBS CPU`).
+   - Vigila nuevas librerías open-source, especificaciones CSS/W3C/WebGPU y actualizaciones de Cloudflare/RealtimeHub aplicando el **Filtro Triple** (`USD 0`, licencia `MIT/Apache-2.0/BSD`, `<= 5% OBS CPU`).

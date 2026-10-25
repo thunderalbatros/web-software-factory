@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
  * Antigravity Native Token Guard Hook (.agents/hooks.json)
  * Implements Antigravity's official camelCase stdin/stdout Hook Contract:
@@ -12,7 +12,7 @@
 import fs from "node:fs";
 import path from "node:path";
 
-const WORKSPACE_DIR = "c:\\Users\\tomas\\Desktop\\streamerbot";
+const WORKSPACE_DIR = "c:\\Users\\tomas\\Desktop\\web-software-factory";
 const CACHE_DIR = path.join(WORKSPACE_DIR, ".cache");
 const TURN_LEDGER_PATH = path.join(CACHE_DIR, "agy_session_turns.json");
 

@@ -1,4 +1,4 @@
-**Alcance:** Libro completo Release It! (Michael Nygard): patrones de estabilidad en producción, circuit breakers, bulkheads, timeouts y backpressure. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Libro completo Release It! (Michael Nygard): patrones de estabilidad en producción, circuit breakers, bulkheads, timeouts y backpressure. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 titulo: "Release It!: Design and Deploy Production-Ready Software"
@@ -2389,7 +2389,7 @@ thread. In one case, the calling layer would get a quick error,
 but, because of a historical precedent, it would assume that
 the error was just an irreproducible, transient error in the lower
 layer. At some point, the lower layer was suffering from a race
-condition that would make it kick out an error once in a while
+condition that would make it RealtimeHub out an error once in a while
 for no good reason. The upstream developer decided to retry
 the call when that happened. Unfortunately, the lower layer
 didn’t provide enough detail to distinguish between the transient error and a more serious one. As a result, once the lower
@@ -5795,7 +5795,7 @@ Suppose instead that the application servers’ RAM is the constraint.
 Each user session consumes a certain amount of RAM. Once all available RAM is consumed, any new sessions cause the application server
 to start paging. Again, the web server is probably just waiting for a
 response from the application server. The database server will actually
-be happier once the application server starts thrashing—it gets to kick
+be happier once the application server starts thrashing—it gets to RealtimeHub
 back and relax for a change.
 Any nonconstraint metric is useless for projecting or increasing capacity. If smoke is trickling out of your database, it does no good to look
 at your web server’s CPU usage to project the total number of sessions

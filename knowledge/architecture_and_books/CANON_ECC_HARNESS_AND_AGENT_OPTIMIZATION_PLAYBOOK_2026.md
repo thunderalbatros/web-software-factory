@@ -1,4 +1,4 @@
-# CANON ECC HARNESS AND AGENT OPTIMIZATION PLAYBOOK 2026
+﻿# CANON ECC HARNESS AND AGENT OPTIMIZATION PLAYBOOK 2026
 
 > **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
 
@@ -67,7 +67,7 @@ Inspirado en la skill `verification-loop` de ECC:
 [knowledge/docs/ECC_HARNESS_AND_AGENT_OPTIMIZATION_PLAYBOOK_2026.md › 📘 Playbook de Optimización del Equipo de Agentes y Arquitectura Harness (Inspirado en affaan-m/ECC 2026) › 2. Los 4 Pilares de ECC Adaptados a Centinela › Pilar 4: Control Autónomo del Agente vs Control HITL (DEC-035)]
 Inspirado en `autonomous-agent-harness` y `operator-approval-loop` de ECC:
 - **Lo que el equipo de agentes ejecuta de forma 100% autónoma:**
-  1. Preflight pre-sesión (`autopilot:preflight`): validación de salud cloud, refresh de tokens Kick si expiran, escaneo de radar.
+  1. Preflight pre-sesión (`autopilot:preflight`): validación de salud cloud, refresh de tokens RealtimeHub si expiran, escaneo de radar.
   2. Detección y clasificación de señales sensoriales (audio, OCR, chat).
   3. Formateo y particionado de datos para BigQuery (`shadow:prep`).
   4. Ejecución de benchmarks y tests de regresión (`bench`, `vitest`).
@@ -80,7 +80,7 @@ Inspirado en `autonomous-agent-harness` y `operator-approval-loop` de ECC:
 ---
 
 [knowledge/docs/ECC_HARNESS_AND_AGENT_OPTIMIZATION_PLAYBOOK_2026.md › 📘 Playbook de Optimización del Equipo de Agentes y Arquitectura Harness (Inspirado en affaan-m/ECC 2026) › 3. Optimización del Oráculo Predictivo (Lecciones de ECC y FOSS) › Problema Identificado en Centinela]
-En transmisiones de slots de Kick, expresiones como:
+En transmisiones de slots de RealtimeHub, expresiones como:
 - *"Bonus buy!"*
 - *"Nice roll"*
 - *"Balance drop"*

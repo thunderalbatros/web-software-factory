@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Effective TypeScript: 62 Specific Ways to Improve Your TypeScript
+﻿# 📚 Libro Completo: Effective TypeScript: 62 Specific Ways to Improve Your TypeScript
 
-**Alcance:** Fuente bibliográfica completa sobre Ingeniería Avanzada en TypeScript, Diseño de Tipos Estrictos, Contratos de API y Prevención de Bugs en Runtime (Effective TypeScript: 62 Specific Ways to Improve Your TypeScript — Dan Vanderkam (O'Reilly)). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Ingeniería Avanzada en TypeScript, Diseño de Tipos Estrictos, Contratos de API y Prevención de Bugs en Runtime (Effective TypeScript: 62 Specific Ways to Improve Your TypeScript — Dan Vanderkam (O'Reilly)). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Dan Vanderkam (O'Reilly)  
 > **Dominio:** Ingeniería Avanzada en TypeScript, Diseño de Tipos Estrictos, Contratos de API y Prevención de Bugs en Runtime  

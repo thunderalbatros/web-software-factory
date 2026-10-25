@@ -1,8 +1,8 @@
-/**
- * HuntHub — Serper High-Speed Web Intelligence & Search
+﻿/**
+ * WebFactory — Serper High-Speed Web Intelligence & Search
  * =============================================================================
  * Real-time Google search for latest casino releases, slot mechanics, RTP data,
- * and Kick developer documentation updates.
+ * and RealtimeHub developer documentation updates.
  * =============================================================================
  */
 
@@ -61,7 +61,7 @@ export async function searchWeb(query, limit = 5) {
 
 // CLI runner
 if (process.argv.includes('--test')) {
-  const q = process.argv[3] || 'site:stake.krd "Only on Stake" 2026';
+  const q = process.argv[3] || 'site:PartnerBrand.krd "Only on PartnerBrand" 2026';
   console.log(`🔍 Searching via Serper: "${q}"...`);
   searchWeb(q, 3)
     .then(data => {

@@ -1,8 +1,8 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
  * tools/agent_factory.mjs — Autonomous Agent Factory Command Center
  * =============================================================================
- * Unified CLI interface for the HuntHub Autonomous Agent Team.
+ * Unified CLI interface for the WebFactory Autonomous Agent Team.
  * 
  * Commands:
  *   node tools/agent_factory.mjs status        # View squads, rules, and memory
@@ -39,7 +39,7 @@ const X = "\x1b[0m";
 switch (cmd) {
   case "status": {
     console.log(`\n${B}======================================================${X}`);
-    console.log(`🤖 HUNTHUB AUTONOMOUS AGENT FACTORY — STATUS (2026)`);
+    console.log(`🤖 WebFactory AUTONOMOUS AGENT FACTORY — STATUS (2026)`);
     console.log(`${B}======================================================${X}\n`);
 
     console.log(`${G}ACTIVE AGENT SQUADS:${X}`);

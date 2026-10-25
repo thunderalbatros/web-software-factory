@@ -1,12 +1,12 @@
-# BigQuery Analytics, Behavioral Cloning and LLM Post-Training for Autonomous Agents
+﻿# BigQuery Analytics, Behavioral Cloning and LLM Post-Training for Autonomous Agents
 
-**Alcance:** Guía técnica de post-entrenamiento y telemetría analítica para agentes autónomos. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+**Alcance:** Guía técnica de post-entrenamiento y telemetría analítica para agentes autónomos. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ## A Comprehensive Guide to Turning Human Demonstrations into 24/7 Production Intelligence
 
 **Authors:** Google Cloud Platform GenAI Architecture Group, Stanford NLP Lab & Centinela Autonomous Systems  
 **Publication Year:** 2026 | **Edition:** 1st Advanced Edition  
-**Repository & Practical Alignment:** Centinela Studio Kick Agent System  
+**Repository & Practical Alignment:** Centinela Studio RealtimeHub Agent System  
 
 ---
 

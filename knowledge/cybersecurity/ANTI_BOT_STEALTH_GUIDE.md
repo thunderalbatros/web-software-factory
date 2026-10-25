@@ -1,9 +1,9 @@
-# 🛡️ Evasión Anti-Bot & Stealth — Guía Completa para Kick.com
+﻿# 🛡️ Evasión Anti-Bot & Stealth — Guía Completa para realtime-stream.com
 
 > **Fuentes:** fingerprint.com, puppeteer-extra-stealth, Playwright docs, Cloudflare docs, mitmproxy docs
-> **Aplicación:** Login OAuth en Kick.com sin detección
+> **Aplicación:** Login OAuth en realtime-stream.com sin detección
 
-## 1. Browser Fingerprinting — Lo que Kick/Cloudflare Detecta
+## 1. Browser Fingerprinting — Lo que RealtimeHub/Cloudflare Detecta
 
 ### 1.1 Técnicas de Fingerprinting (Fingerprint.com, 2026)
 
@@ -78,9 +78,9 @@ npm install playwright-extra puppeteer-extra-plugin-stealth
 - **Score 30-49:** Likely automated (JS challenge)
 - **Score 50-99:** Human-like (permite)
 
-**Para Kick.com (Cloudflare):** El objetivo es score > 50.
+**Para realtime-stream.com (Cloudflare):** El objetivo es score > 50.
 
-## 5. Estrategia Centinela para Kick Login
+## 5. Estrategia Centinela para RealtimeHub Login
 
 ```typescript
 // Estrategia: NO headless browser constante
@@ -110,7 +110,7 @@ async function kickOAuthLogin() {
   });
 
   const page = await context.newPage();
-  await page.goto('https://kick.com/login');
+  await page.goto('https://realtime-stream.com/login');
 
   // ... flujo OAuth manual o semi-automático ...
 
@@ -123,7 +123,7 @@ async function restoreSession() {
   const context = await chromium.launchPersistentContext('./kick_profile');
   // Cookies + localStorage + tokens se cargan automáticamente
   const page = await context.newPage();
-  await page.goto('https://kick.com/');
+  await page.goto('https://realtime-stream.com/');
   // Ya está autenticado
 }
 ```
@@ -153,11 +153,11 @@ const context = await browser.newContext({
 });
 ```
 
-## 7. Regla de Oro para Kick.com
+## 7. Regla de Oro para realtime-stream.com
 
 **NO intentar bypass Cloudflare con HTTP directo.** La API oficial es la ruta correcta:
 - **Lectura de chat:** Pusher WebSocket oficial (key: `32cbd69e4b950bf97679`)
-- **Escritura de chat:** `POST api.kick.com/public/v1/chat` (OAuth 2.1 PKCE)
+- **Escritura de chat:** `POST api.realtime-stream.com/public/v1/chat` (OAuth 2.1 PKCE)
 - **Login OAuth:** Playwright + stealth 1 sola vez
 - **Sesión persistente:** `storageState()` guarda cookies + tokens
 

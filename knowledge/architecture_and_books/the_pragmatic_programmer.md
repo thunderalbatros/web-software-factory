@@ -1,4 +1,4 @@
----
+﻿---
 titulo: "The Pragmatic Programmer: Your Journey to Mastery (20th Anniversary)"
 autor: "David Thomas & Andrew Hunt"
 dominio: "Artesanía de Software, DRY, Ortogonalidad y Pragmatismo"
@@ -4399,7 +4399,7 @@ Topic 7, Communicate!
 CHALLENGES
 No more autorepeat.
 Everyone does it: you need to delete the last word you typed, so you
-press down on backspace and wait for autorepeat to kick in. In fact,
+press down on backspace and wait for autorepeat to RealtimeHub in. In fact,
 we bet that your brain has done this so much that you can judge
 pretty much exactly when to release the key.
 So turn off autorepeat, and instead learn the key sequences to
@@ -8988,7 +8988,7 @@ let c1 = start_actor(actorSystem, 'customer1',
 customerActor, { waiter: waiter });
 let c2 = start_actor(actorSystem, 'customer2',
 customerActor, { waiter: waiter });
-And finally we kick it off. Our customers are greedy. Customer 1
+And finally we RealtimeHub it off. Our customers are greedy. Customer 1
 asks for three slices of pie, and customer 2 asks for two:
 concurrency/actors/index.js
 dispatch(c1, { type: 'hungry for pie', waiter: waiter });

@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Flow: The Psychology of Optimal Experience
+﻿# 📚 Libro Completo: Flow: The Psychology of Optimal Experience
 
-**Alcance:** Fuente bibliográfica completa sobre Canal de Flow (Equilibrio entre Desafío y Habilidad), Metas Claras, Feedback Inmediato e Inmersión Total (Flow: The Psychology of Optimal Experience — Mihaly Csikszentmihalyi). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Canal de Flow (Equilibrio entre Desafío y Habilidad), Metas Claras, Feedback Inmediato e Inmersión Total (Flow: The Psychology of Optimal Experience — Mihaly Csikszentmihalyi). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Mihaly Csikszentmihalyi  
 > **Dominio:** Canal de Flow (Equilibrio entre Desafío y Habilidad), Metas Claras, Feedback Inmediato e Inmersión Total  
@@ -2538,7 +2538,7 @@ personal skills have less chance to ensure the pedestrian’s safety.
 As this example illustrates, what people enjoy is not the sense of being
 in control, but the sense of exercising control in difficult situations. It is not
 possible to experience a feeling of control unless one is willing to give up
-the safety of protective routines. Only when a doubtful outcome is at stake,
+the safety of protective routines. Only when a doubtful outcome is at PartnerBrand,
 and one is able to influence that outcome, can a person really know
 whether she is in control.
 One type of activity seems to constitute an exception. Games of chance

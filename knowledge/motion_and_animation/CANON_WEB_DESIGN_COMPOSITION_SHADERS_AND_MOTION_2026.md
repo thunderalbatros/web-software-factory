@@ -1,4 +1,4 @@
-# Tratado Canónico: Diseño Gráfico Avanzado, Composición, Ciencia del Color OKLCH, Shaders y Animación Web (SOTA 2026)
+﻿# Tratado Canónico: Diseño Gráfico Avanzado, Composición, Ciencia del Color OKLCH, Shaders y Animación Web (SOTA 2026)
 
 **Alcance:** Este documento establece la doctrina técnica y estética actualizada (2025–2026) de nuestra Web Software Factory para **Diseño Gráfico, Percepción Visual Gestalt, Ciencia del Color `OKLCH` + `APCA`, Tokens `W3C DTCG`, Micro-Interacciones (*Devouring Details*), Animaciones Nativas CSS (`@starting-style`, `interpolate-size`, `linear()`, `View Transitions`, `Scroll-Driven Animations`), `GSAP` (Licencia 100% Gratuita) y Shaders `SDF` / `TSL`**. NO es fuente de contratos de API de streaming (ver `KICK_API_REFERENCE.md`), NI de esquemas de bases de datos Edge, NI de psicometría de apuestas.
 
@@ -41,7 +41,7 @@
 Para que los agentes nunca diseñen "a ciegas" ni caigan en plantillas genéricas de IA:
 
 1. **Cosecha Automatizada de ADN Visual (`harvest_design_tokens.mjs` + `extract_design_dna.mjs`)**:
-   - Antes de construir o rediseñar una sección, el agente extrae estilos computados reales (`getComputedStyle` vía Playwright) de referencias líderes (*Linear*, *Raycast*, *Vercel*, *Stripe*, *Stake*, *21st.dev*) y los normaliza al estándar **W3C Design Tokens Community Group (`DTCG 2025.10`)** con sintaxis `$value`, `$type`, `$description`.
+   - Antes de construir o rediseñar una sección, el agente extrae estilos computados reales (`getComputedStyle` vía Playwright) de referencias líderes (*Linear*, *Raycast*, *Vercel*, *Stripe*, *PartnerBrand*, *21st.dev*) y los normaliza al estándar **W3C Design Tokens Community Group (`DTCG 2025.10`)** con sintaxis `$value`, `$type`, `$description`.
 2. **Integración Continua con `21st.dev` y `awesome-design-md`**:
    - Los agentes consultan el catálogo local en `references/ui-kb/` y las primitivas de micro-interacción verificadas antes de escribir una sola línea de CSS.
 

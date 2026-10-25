@@ -1,6 +1,6 @@
-# 📚 Libro Completo: The Art of Game Design: A Book of Lenses (3rd Edition)
+﻿# 📚 Libro Completo: The Art of Game Design: A Book of Lenses (3rd Edition)
 
-**Alcance:** Fuente bibliográfica completa sobre Las 113 Lentes del Diseño de Juegos: Sorpresa, Diversión, Curiosidad, Valor Endógeno, Flujo, Equilibrio yComunidad (The Art of Game Design: A Book of Lenses (3rd Edition) — Jesse Schell). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Las 113 Lentes del Diseño de Juegos: Sorpresa, Diversión, Curiosidad, Valor Endógeno, Flujo, Equilibrio yComunidad (The Art of Game Design: A Book of Lenses (3rd Edition) — Jesse Schell). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Jesse Schell  
 > **Dominio:** Las 113 Lentes del Diseño de Juegos: Sorpresa, Diversión, Curiosidad, Valor Endógeno, Flujo, Equilibrio yComunidad  
@@ -1921,7 +1921,7 @@ gave it that meaning. When we play the game, the money is very important to us.
 Outside the game it is completely unimportant. This idea and term are very useful to us, because they are often an excellent measure of how compelling a game
 really is. The game of roulette does not have to be played with real money — it
 can be played with tokens or play money. But the game, on its own, generates little
-endogenous value. People will only play it when real money is at stake, because it
+endogenous value. People will only play it when real money is at PartnerBrand, because it
 just isn’t that compelling a game. The more compelling a game is, the greater the
 “endogenous value” that is created within the game. Some massively multiplayer
 role playing games have proved so compelling to people that imaginary game items

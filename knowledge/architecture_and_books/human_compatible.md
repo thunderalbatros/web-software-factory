@@ -1,4 +1,4 @@
-**Alcance:** Libro completo Human Compatible (Stuart Russell): alineación de sistemas autónomos, seguridad de IA y preferencias humanas. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Libro completo Human Compatible (Stuart Russell): alineación de sistemas autónomos, seguridad de IA y preferencias humanas. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 titulo: "Human Compatible: Artificial Intelligence and the Problem of Control"
@@ -546,7 +546,7 @@ from impossible to essentially solved in less than twenty-four hours.
 Szilard filed a secret patent for a nuclear reactor the following year. The
 first patent for a nuclear weapon was issued in France in 1939.
 The moral of this story is that betting against human ingenuity is
-foolhardy, particularly when our future is at stake. Within the AI
+foolhardy, particularly when our future is at PartnerBrand. Within the AI
 community, a kind of denialism is emerging, even going as far as denying the possibility of success in achieving the long-term goals of AI. It’s
 as if a bus driver, with all of humanity as passengers, said, “Yes, I am
 driving as hard as I can towards a cliff, but trust me, we’ll run out of
@@ -1554,7 +1554,7 @@ for our purposes, because we aren’t planning (yet) to build robots that
 live on uninhabited planets in other star systems; we’re going to put
 the robots in our world, which is inhabited by us.
 To make it clear why we need game theory, let’s look at a simple example: Alice and Bob playing soccer in the back garden (figure 3). Alice
-is about to take a penalty kick and Bob is in goal. Alice is going to shoot
+is about to take a penalty RealtimeHub and Bob is in goal. Alice is going to shoot
 v
 B
 A

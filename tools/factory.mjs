@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
  * tools/factory.mjs — Unified Web Software Factory CLI (ISO/IEC 26550 + Spec-Kit SDD + 5-Gate QA)
  * ===============================================================================================
@@ -330,11 +330,11 @@ async function main() {
         new Set(['node_modules', '.git'])
       );
     }
-    // Copy tools excluding diggity-stake-companion product extension
+    // Copy tools excluding legacy-product-extension product extension
     copyDirectoryClean(
       path.join(FACTORY_ROOT, 'tools'),
       path.join(destRoot, 'tools'),
-      new Set(['node_modules', '.git', 'dist', 'diggity-stake-companion', 'sync_live_casino_intel.mjs'])
+      new Set(['node_modules', '.git', 'dist', 'legacy-product-extension', 'sync_live_casino_intel.mjs'])
     );
     for (const fileName of ['package.json', 'CONSTRAINTS.md', '.antigravityignore', '.gitignore', '.mcp.json']) {
       if (fs.existsSync(path.join(FACTORY_ROOT, fileName))) {
@@ -353,7 +353,7 @@ async function main() {
 
 ## 1. Context & Architecture
 - **Role:** Domain Engineering Studio (\`ISO/IEC 26550\`) that scaffolds, specifies (\`spec-kit\`), builds, and audits high-converting websites (\`templates/astro-edge\` & \`templates/vanilla-edge\`) inside \`projects/<slug>\` or external client repositories.
-- **Hardware & FinOps:** Lightweight Node.js + Cloudflare Workers Static Assets + D1/SQLite, zero Docker, surgical file reads (\`StartLine\`/\`EndLine\` <= 160 lines), query \`Omni-RAG v5\` (\`hunthub-omni-rag\`) first.
+- **Hardware & FinOps:** Lightweight Node.js + Cloudflare Workers Static Assets + D1/SQLite, zero Docker, surgical file reads (\`StartLine\`/\`EndLine\` <= 160 lines), query \`Omni-RAG v5\` (\`web-factory-omni-rag\`) first.
 - **Fact Tagging:** \`[VERIFICADO: source, date]\` for verified facts; \`[ASUNCIÓN]\` for unverified claims.
 
 ## 2. Core CLI Commands (\`tools/factory.mjs\`)

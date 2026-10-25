@@ -1,4 +1,4 @@
-// Visual Auditor (Playwright + system Chrome). Zero download, zero cost.
+﻿// Visual Auditor (Playwright + system Chrome). Zero download, zero cost.
 // Usage:  node tools/audit/visual_audit.mjs [baseUrl]    (default http://127.0.0.1:3000, auto-starts local server if needed)
 // Output: tools/audit/out/<view>-<width>.png  +  tools/audit/out/report.json  (exit 1 if any BLOCKER)
 import { chromium } from 'playwright-core';
@@ -71,7 +71,7 @@ const VIEWPORTS = [{ w: 1440, h: 900 }, { w: 768, h: 1024 }, { w: 390, h: 844 }]
 const VIEWS = Array.isArray(projectCfg.views) && projectCfg.views.length > 0
   ? projectCfg.views
   : (projectCfg.complianceProfile === 'gambling-18plus'
-    ? ['watch', 'bonushunt', 'tournament', 'house-games', 'store', 'stake-leaderboard', 'bounties', 'leaderboard', 'profile', 'admin']
+    ? ['watch', 'feature-module', 'tournament', 'house-games', 'store', 'metrics-leaderboard', 'bounties', 'leaderboard', 'profile', 'admin']
     : ['home']);
 const CHROME = [
   'C:/Program Files/Google/Chrome/Application/chrome.exe',
@@ -221,7 +221,7 @@ function pageChecks() {
     }
   }
 
-  // 12. Watch Section Purity (Kick live player + original Socials/Stake only, no duplicate command sidebars)
+  // 12. Watch Section Purity (RealtimeHub live player + original Socials/PartnerBrand only, no duplicate command sidebars)
   const watchSec = document.querySelector('#watch');
   if (watchSec && visible(watchSec)) {
     const forbiddenPanels = watchSec.querySelectorAll('.stream-chat-commands, .chat-commands-panel, .command-side-panel, .extra-commands');
@@ -277,7 +277,7 @@ function pageChecks() {
   }
 
   // 15. Anti-3D Deformation Guard (Interactive cards must use pure vertical levitation, never 3D tilt/skew matrix3d)
-  for (const card of document.querySelectorAll('.bounty-card-3d, .kick-podium-card, .store-voucher-card')) {
+  for (const card of document.querySelectorAll('.bounty-card-3d, .RealtimeHub-podium-card, .store-voucher-card')) {
     if (!visible(card)) continue;
     const tf = getComputedStyle(card).transform;
     if (tf && tf.startsWith('matrix3d(')) {
@@ -355,18 +355,18 @@ for (const vp of VIEWPORTS) {
     }
   });
   page.on('pageerror', e => report.console.push(`[${vp.w}] PAGEERROR ${e.message.slice(0, 200)}`));
-  page.on('response', r => { if (r.status() >= 400 && !/kick\.com|fonts\.g|imgix|pusher\.app/.test(r.url())) report.failedRequests.push(`[${vp.w}] ${r.status()} ${r.url().slice(0, 140)}`); });
-  page.on('requestfailed', r => { const u = r.url(); if (!/kick\.com|fonts\.g|imgix|pusher\.app/.test(u)) report.failedRequests.push(`[${vp.w}] ${u.slice(0, 140)}`); });
+  page.on('response', r => { if (r.status() >= 400 && !/RealtimeHub\.com|fonts\.g|imgix|pusher\.app/.test(r.url())) report.failedRequests.push(`[${vp.w}] ${r.status()} ${r.url().slice(0, 140)}`); });
+  page.on('requestfailed', r => { const u = r.url(); if (!/RealtimeHub\.com|fonts\.g|imgix|pusher\.app/.test(u)) report.failedRequests.push(`[${vp.w}] ${u.slice(0, 140)}`); });
   await page.goto(BASE + '/#watch', { waitUntil: 'domcontentloaded', timeout: 60000 });
   await page.waitForTimeout(1200);
   for (const v of VIEWS) {
     await page.evaluate(id => {
       if (id === 'admin') {
-        localStorage.setItem('hunthub_is_admin', 'true');
-        localStorage.setItem('hunthub_kick_username', 'diggitybets');
-        localStorage.setItem('hunthub_kick_logged_in', 'true');
+        localStorage.setItem('WebFactory_is_admin', 'true');
+        localStorage.setItem('WebFactory_kick_username', 'client-portal');
+        localStorage.setItem('WebFactory_kick_logged_in', 'true');
         if (window.userStore) {
-          window.userStore.username = 'diggitybets';
+          window.userStore.username = 'client-portal';
           window.userStore.isLoggedIn = true;
           if (typeof window.userStore.syncUI === 'function') window.userStore.syncUI();
         }

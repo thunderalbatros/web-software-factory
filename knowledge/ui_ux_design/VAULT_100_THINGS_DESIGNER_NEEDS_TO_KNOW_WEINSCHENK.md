@@ -1,4 +1,4 @@
-**Alcance:** Síntesis de 100 Things Every Designer Needs to Know About People (Susan Weinschenk): visión foveal/periférica, carga cognitiva y dopamina. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Síntesis de 100 Things Every Designer Needs to Know About People (Susan Weinschenk): visión foveal/periférica, carga cognitiva y dopamina. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 version: 1.0.0

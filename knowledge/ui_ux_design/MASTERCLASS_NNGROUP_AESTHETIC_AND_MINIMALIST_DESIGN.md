@@ -1,4 +1,4 @@
-**Alcance:** Masterclass de Nielsen Norman Group (NN/g): Heurística #8 de Diseño Estético y Minimalista, relación señal-ruido y jerarquía visual. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Masterclass de Nielsen Norman Group (NN/g): Heurística #8 de Diseño Estético y Minimalista, relación señal-ruido y jerarquía visual. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 version: 1.0.0

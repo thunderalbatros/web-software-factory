@@ -1,10 +1,10 @@
-# 🎙️ Keyword Spotting (KWS) Sub-100ms en Edge Streaming Audio (SOTA 2024–2026)
+﻿# 🎙️ Keyword Spotting (KWS) Sub-100ms en Edge Streaming Audio (SOTA 2024–2026)
 
 ## 1. Resumen Ejecutivo y Arquitectura KWS Edge
-El Keyword Spotting (KWS) en streaming de baja latencia es el pilar sensorial auditivo para la detección de eventos de alerta crítica en transmisiones en vivo (Kick). Mientras que pipelines completos de transcripción ASR (como Whisper tiny/large o Moonshine) imponen ventanas acústicas de 1.5 a 4.0 segundos para decodificar oraciones completas, un motor KWS dedicado procesa streams continuos de audio PCM mono de 16 kHz en ventanas deslizantes de **80 ms (1,280 muestras @ 16 kHz)**, logrando latencias de inferencia de **< 100 ms** directamente sobre la CPU local mediante ONNX Runtime.
+El Keyword Spotting (KWS) en streaming de baja latencia es el pilar sensorial auditivo para la detección de eventos de alerta crítica en transmisiones en vivo (RealtimeHub). Mientras que pipelines completos de transcripción ASR (como Whisper tiny/large o Moonshine) imponen ventanas acústicas de 1.5 a 4.0 segundos para decodificar oraciones completas, un motor KWS dedicado procesa streams continuos de audio PCM mono de 16 kHz en ventanas deslizantes de **80 ms (1,280 muestras @ 16 kHz)**, logrando latencias de inferencia de **< 100 ms** directamente sobre la CPU local mediante ONNX Runtime.
 
 ```
-[Kick Stream PCM 16kHz]
+[RealtimeHub Stream PCM 16kHz]
           │ (Buffer de 80ms / 1280 samples)
           ▼
    ┌─────────────────────────────────────────────────────────────┐

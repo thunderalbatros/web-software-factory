@@ -1,4 +1,4 @@
----
+﻿---
 name: cto-hitl-visual-gate
 description: "Enforces the 5-Stage Automated Pre-HITL Visual Quality Gate (AST + Playwright 4-Viewport Geometry & break-ui + CDP 60-FPS."
 ---
@@ -12,7 +12,7 @@ El CTO HITL es el Director de Arte y Producto de última instancia, **NO un test
 
 1. **Compuerta 1 — AST, Tokens & Compositor CSS (`node tools/audit/code_clean_audit.mjs` + `node tools/audit/security_and_motion_audit.mjs`)**:
    - Cero `@keyframes` animando `top`, `left`, `width`, `height` o `margin` (solo `transform` y `opacity` en GPU).
-   - Cero deformaciones `matrix3d` en tarjetas informativas (`.bounty-card-3d`, `.kick-podium-card`, `.store-voucher-card`).
+   - Cero deformaciones `matrix3d` en tarjetas informativas (`.bounty-card-3d`, `.RealtimeHub-podium-card`, `.store-voucher-card`).
    - 100% sanitización XSS (`window.escapeHTML` / `textContent`).
 2. **Compuerta 2 — Geometría Matemática Multi-Viewport & Estrés `break-ui` (`node tools/audit/visual_audit.mjs`)**:
    - Verificación en **Desktop (`1440x900`)**, **Laptop (`1366x768`)**, **Tablet (`768x1024`)** y **Mobile (`390x844`)**:

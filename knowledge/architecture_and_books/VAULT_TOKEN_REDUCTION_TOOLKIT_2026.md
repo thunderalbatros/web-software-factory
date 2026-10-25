@@ -1,13 +1,13 @@
-# TOKEN REDUCTION TOOLKIT 2026 — rtk · graphify · caveman · ponytail + prompt caching
+﻿# TOKEN REDUCTION TOOLKIT 2026 — rtk · graphify · caveman · ponytail + prompt caching
 
 
-**Alcance:** Técnicas de compresión de contexto, presupuesto de tokens FinOps y poda de prompts para equipos de agentes. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+**Alcance:** Técnicas de compresión de contexto, presupuesto de tokens FinOps y poda de prompts para equipos de agentes. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 > **ANCLA DE ALCANCE (LEC-015):** este documento es la fuente canónica de las herramientas de
 > reducción de tokens del equipo de DESARROLLO (rtk, Graphify, Caveman, Ponytail) y del prompt
 > caching de Anthropic en Cline. NO es fuente de precios de VM GCP (ver `knowledge/GCP_PRICING_REFERENCE.md`),
 > NO describe el runtime de Centinela (que sigue Vertex AI/Groq por DEC-005/011/018), NO trata de
-> Kick API (ver skill `kick-api-contracts`) y NO sustituye al RAG Qdrant para documentación
+> RealtimeHub API (ver skill `RealtimeHub-api-contracts`) y NO sustituye al RAG Qdrant para documentación
 > (`centinela_knowledge`, ver skill `kb-retrieval`). Instalado y verificado el 2026-10-08.
 
 ## Contexto: dos capas de ahorro que NO compiten

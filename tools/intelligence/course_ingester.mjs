@@ -1,6 +1,6 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
- * HuntHub & DiggityBets — Software Factory Video Course & Masterclass Ingester
+ * Web Software Factory Studio — Software Factory Video Course & Masterclass Ingester
  * =============================================================================
  * Ported & Upgraded from Centinela Studio (tools/ingest-course.mjs).
  * Extracts full YouTube or SRT transcripts with [MM:SS] / [HH:MM:SS] timestamps,
@@ -137,7 +137,7 @@ export function formatTranscriptToMarkdown(title, author, videoUrl, segments, do
   const header = [
     `# 🎓 Video Curso / Masterclass: ${title}`,
     ``,
-    `**Alcance:** Transcripción técnica de clase magistral sobre ${domain} (${title} — ${author}). Aplicable a la Software Factory Web y DiggityBets.`,
+    `**Alcance:** Transcripción técnica de clase magistral sobre ${domain} (${title} — ${author}). Aplicable a la Software Factory Web y client-portal.`,
     ``,
     `> **Institución / Autor:** ${author}  `,
     `> **Fuente URL:** ${videoUrl}  `,

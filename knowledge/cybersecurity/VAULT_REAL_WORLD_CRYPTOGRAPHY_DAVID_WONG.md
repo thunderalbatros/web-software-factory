@@ -1,4 +1,4 @@
-**Alcance:** Síntesis de Real-World Cryptography (David Wong): funciones hash, MACs, firmas digitales, CSPRNG, TLS y protocolos autenticados. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Síntesis de Real-World Cryptography (David Wong): funciones hash, MACs, firmas digitales, CSPRNG, TLS y protocolos autenticados. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 version: 1.0.0

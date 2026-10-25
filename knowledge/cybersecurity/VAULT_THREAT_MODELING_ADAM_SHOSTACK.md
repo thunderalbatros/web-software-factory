@@ -1,4 +1,4 @@
-**Alcance:** Síntesis de Threat Modeling: Designing for Security (Adam Shostack): metodología STRIDE, árboles de ataque y mitigación temprana. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Síntesis de Threat Modeling: Designing for Security (Adam Shostack): metodología STRIDE, árboles de ataque y mitigación temprana. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 version: 1.0.0

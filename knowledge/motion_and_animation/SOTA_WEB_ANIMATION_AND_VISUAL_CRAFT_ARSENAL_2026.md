@@ -1,4 +1,4 @@
-# SOTA 2025/2026: Web Animation, Aesthetics & Visual Craft Open-Source Arsenal
+﻿# SOTA 2025/2026: Web Animation, Aesthetics & Visual Craft Open-Source Arsenal
 
 > **Classification:** Canon Treatise & Tool Arsenal  
 > **Target:** Modern Aesthetics, Low-CPU Web Overlays, Smooth Physics & Tactile Micro-Interactions  
@@ -18,7 +18,7 @@
   - SVG path morphing, SVG line drawing, and numeric value tweens.
   - Fine-grained timeline sequencing with execution loop priority control.
   - Zero external dependencies.
-- **Best Use Case in HuntHub:** Tournament 8-bracket animations, giveaway wheel spins, staggered battle cards, coordinated entrance timelines.
+- **Best Use Case in WebFactory:** Tournament 8-bracket animations, giveaway wheel spins, staggered battle cards, coordinated entrance timelines.
 
 ### 1.2 Motion (formerly Framer Motion) — Vanilla JS Core
 - **Repo:** `https://github.com/motiondivision/motion`
@@ -27,7 +27,7 @@
   - Native browser WAAPI acceleration (120 FPS on compositor thread).
   - Physics-based spring animations (`stiffness`, `damping`, `mass`).
   - Gesture handling (drag, tap, hover with inertial physics).
-- **Best Use Case in HuntHub:** Draggable betting chips, swipeable mobile prediction cards, springy tactile modal entries.
+- **Best Use Case in WebFactory:** Draggable betting chips, swipeable mobile prediction cards, springy tactile modal entries.
 
 ### 1.3 Auto-Animate (`@formkit/auto-animate`)
 - **Repo:** `https://github.com/formkit/auto-animate`
@@ -35,7 +35,7 @@
 - **Size:** 2.3 KB gzip.
 - **Core Strengths:**
   - 1-line zero-config DOM list animation. Automatically computes FLIP transitions when children are added, removed, or reordered.
-- **Best Use Case in HuntHub:** Live leaderboard rankings, prediction participant lists that shift positions in real time.
+- **Best Use Case in WebFactory:** Live leaderboard rankings, prediction participant lists that shift positions in real time.
 
 ### 1.4 Lenis (`@darkroom.engineering/lenis`)
 - **Repo:** `https://github.com/darkroomengineering/lenis`
@@ -44,7 +44,7 @@
 - **Core Strengths:**
   - Buttery-smooth momentum scrolling without breaking native accessibility, URL anchors, or `position: sticky`.
   - Eliminates frame desync between scroll position, DOM overlays, and WebGL canvases.
-- **Best Use Case in HuntHub:** Smooth high-craft scrolling on the public website and streamer admin dashboard.
+- **Best Use Case in WebFactory:** Smooth high-craft scrolling on the public website and streamer admin dashboard.
 
 ---
 

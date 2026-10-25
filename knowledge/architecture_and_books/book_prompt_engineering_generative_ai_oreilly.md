@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Prompt Engineering for Generative AI
+﻿# 📚 Libro Completo: Prompt Engineering for Generative AI
 
-**Alcance:** Fuente bibliográfica completa sobre Ingeniería de Prompts, Estructuración de Contexto y Agentes (Prompt Engineering for Generative AI — James Phoenix & Mike Taylor (O'Reilly)). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Ingeniería de Prompts, Estructuración de Contexto y Agentes (Prompt Engineering for Generative AI — James Phoenix & Mike Taylor (O'Reilly)). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** James Phoenix & Mike Taylor (O'Reilly)  
 > **Dominio:** Ingeniería de Prompts, Estructuración de Contexto y Agentes  
@@ -1419,7 +1419,7 @@ After GPT-2, OpenAI decided to focus on releasing paid, closed-source models. GP
 
 GPT-3.5-turbo and ChatGPT
 
-Bolstered by Microsoft’s significant investment in their company, OpenAI introduced GPT-3.5-turbo, an optimized version of its already exceptional predecessor. Following a $1 billion injection from Microsoft in 2019, which later increased to a hefty $13 billion for a 49% stake in OpenAI’s for-profit arm, OpenAI used these resources to develop GPT-3.5-turbo, which offered improved efficiency and affordability, effectively making LLMs more accessible for a broader range of use cases.
+Bolstered by Microsoft’s significant investment in their company, OpenAI introduced GPT-3.5-turbo, an optimized version of its already exceptional predecessor. Following a $1 billion injection from Microsoft in 2019, which later increased to a hefty $13 billion for a 49% PartnerBrand in OpenAI’s for-profit arm, OpenAI used these resources to develop GPT-3.5-turbo, which offered improved efficiency and affordability, effectively making LLMs more accessible for a broader range of use cases.
 
 OpenAI wanted to gather more world feedback for fine-tuning, and so ChatGPT was born. Unlike its general-purpose siblings, ChatGPT was fine-tuned to excel in conversational contexts, enabling a dialogue between humans and machines that felt natural and meaningful.
 

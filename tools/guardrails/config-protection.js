@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
  * ECC Guardrail: config-protection.js
  * Verifies that critical environment and configuration files are present and valid.
@@ -29,18 +29,18 @@ const CHECKS = [
     required: true,
     validator: (content) => {
       const pkg = JSON.parse(content);
-      return pkg.name === 'hunthub-core' && pkg.scripts && pkg.scripts.test;
+      return pkg.name === 'web-software-factory-studio' && pkg.scripts && pkg.scripts.test;
     }
   },
   {
     path: 'AGENTS.md',
     required: true,
-    validator: (content) => content.includes('HuntHub') && content.includes('Zero heavy runtime')
+    validator: (content) => content.includes('WebFactory') && content.includes('Zero heavy runtime')
   },
   {
     path: '.agents/agency/ORGANIZATION.md',
     required: true,
-    validator: (content) => content.includes('HuntHub Web Studio')
+    validator: (content) => content.includes('WebFactory Web Studio')
   }
 ];
 

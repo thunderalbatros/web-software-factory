@@ -1,4 +1,4 @@
----
+﻿---
 name: emil-design-eng
 description: "This skill encodes Emil Kowalski's philosophy on UI polish, component design, animation decisions, and the invisible details that."
 ---
@@ -67,4 +67,4 @@ Before writing any animation code, answer these questions in order:
 ---
 
 ## Progressive Disclosure Reference
-For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/streamerbot/.agents/skills/emil-design-eng/references/full-guide.md).
+For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/web-software-factory/.agents/skills/emil-design-eng/references/full-guide.md).

@@ -1,4 +1,4 @@
-# Tratado Canónico Clean-Room: Patrones de Arquitectura Empresarial (Fowler PoEAA), TDD Guiado por Pruebas (Freeman & Pryce GOOS), Modelo C4 (Simon Brown), Inyección de Dependencias (Seemann), Functional Core / Imperative Shell (Granin) y Flujo Unidireccional Redux (2026)
+﻿# Tratado Canónico Clean-Room: Patrones de Arquitectura Empresarial (Fowler PoEAA), TDD Guiado por Pruebas (Freeman & Pryce GOOS), Modelo C4 (Simon Brown), Inyección de Dependencias (Seemann), Functional Core / Imperative Shell (Granin) y Flujo Unidireccional Redux (2026)
 
 **Alcance:** Aplicable a la arquitectura de dominio de `worker/index.js`, `site/js/*.js`, diseño de pruebas de extremo a extremo (`Squad 6`), documentación visual de arquitectura (`Squad 0` & `Squad 7`) y gestión de estado predecible en el cliente (`Squad 4`). Sintetiza en sala limpia (*Clean-Room*) los modelos de *Patterns of Enterprise Application Architecture* (*Martin Fowler*), *Growing Object-Oriented Software, Guided by Tests* (*Freeman & Pryce*), *Software Architecture for Developers Vol. 1 & 2 / C4 Model* (*Simon Brown*), *Dependency Injection Principles, Practices, and Patterns* (*Mark Seemann*), *Functional Design and Architecture* (*Alexander Granin*) y *Redux in Action* (*Garreau & Faurot*).
 
@@ -19,7 +19,7 @@
 - **Unit of Work (Unidad de Trabajo)**:
   - En lugar de disparar múltiples `await env.DB.prepare(...).run()` sueltos durante una petición HTTP, acumular todas las mutaciones (`insert`, `update`, `delete`) en un arreglo de sentencias preparadas y ejecutarlas atómicamente al final del caso de uso mediante `await env.DB.batch(statements)`.
 - **Optimistic Offline Lock (Bloqueo Optimista con Columna `version`)**:
-  - Para evitar el problema de *Lost Update* cuando el streamer y un moderador editan simultáneamente una cacería de bonos (`bonushunt`):
+  - Para evitar el problema de *Lost Update* cuando el streamer y un moderador editan simultáneamente una cacería de bonos (`feature-module`):
   ```sql
   UPDATE bonus_hunt_state
   SET payload_json = ?1, version = version + 1, updated_at = ?2
@@ -39,11 +39,11 @@
   2. **Bucle Interno (Pruebas Unitarias Rápidas)**: Verifica cómo colaboran los objetos y funciones puras.
 
 ### 2.2 Regla de Oro de GOOS: *"Only Mock Types That You Own"* (Solo Simula Tipos que Te Pertenecen)
-- **Peligro de simular APIs de terceros**: Si un test simula directamente `fetch('https://api.kick.com/public/v1/...')`, el test se acopla a detalles HTTP externos y puede pasar aunque nuestro código use mal la respuesta real.
+- **Peligro de simular APIs de terceros**: Si un test simula directamente `fetch('https://api.realtime-stream.com/public/v1/...')`, el test se acopla a detalles HTTP externos y puede pasar aunque nuestro código use mal la respuesta real.
 - **Solución Hexagonal (Puertos y Adaptadores)**:
   1. Definir una interfaz propia del dominio (`KickGatewayPort` con métodos como `verifyWebhookSignature()`, `sendChatMessage()`, `fetchChannelInfo()`).
   2. En pruebas unitarias de dominio, usar un `FakeKickGateway` en memoria.
-  3. Probar el `HttpKickGatewayAdapter` real por separado con *Contract Tests* contra payloads capturados de la documentación oficial de Kick (`kick-api-contracts`).
+  3. Probar el `HttpKickGatewayAdapter` real por separado con *Contract Tests* contra payloads capturados de la documentación oficial de RealtimeHub (`RealtimeHub-api-contracts`).
 
 ### 2.3 Patrón *Test Data Builder* para Pruebas Legibles
 - En lugar de instanciar objetos gigantes con 20 campos irrelevantes en cada test, usar constructores fluidos con valores por defecto sensatos:
@@ -61,13 +61,13 @@
 
 ### 3.1 Los 4 Niveles de Abstracción del Modelo C4 (Zoom tipo Google Maps)
 Todo documento de arquitectura en `docs/` o artefacto de la fábrica debe usar la jerarquía **C4** en diagramas Mermaid:
-1. **Nivel 1 — *System Context* (Contexto del Sistema)**: Muestra a `HuntHub / DiggityBets` como una caja central rodeada por sus actores (Streamer, Moderadores, Espectadores de Kick, OBS Studio) y sistemas externos (Kick API / Pusher, Cloudflare Edge).
+1. **Nivel 1 — *System Context* (Contexto del Sistema)**: Muestra a `Web Software Factory Studio` como una caja central rodeada por sus actores (Streamer, Moderadores, Espectadores de RealtimeHub, OBS Studio) y sistemas externos (RealtimeHub API / Pusher, Cloudflare Edge).
 2. **Nivel 2 — *Containers* (Contenedores Ejecutables / Almacenes)**: Muestra las unidades de despliegue reales:
    - `SPA Web Portal & Admin Hub` (`site/`),
    - `8 OBS Browser Source Overlays` (`overlay-*/`),
    - `Cloudflare Worker API & WebSocket Hub` (`worker/index.js`),
-   - `Cloudflare D1 SQLite Database` (`hunthub_production`).
-3. **Nivel 3 — *Components* (Componentes Internos de un Contenedor)**: Qué módulos existen dentro del Worker (`WebhookVerifier`, `BonusHuntEngine`, `CrowdGameArbitrator`, `RateLimiter`) o dentro del Frontend (`UserStore`, `AdminHub`, `MotionFX`, `AudioLimiter`).
+   - `Cloudflare D1 SQLite Database` (`WebFactory_production`).
+3. **Nivel 3 — *Components* (Componentes Internos de un Contenedor)**: Qué módulos existen dentro del Worker (`WebhookVerifier`, `feature-moduleEngine`, `CrowdGameArbitrator`, `RateLimiter`) o dentro del Frontend (`UserStore`, `AdminHub`, `MotionFX`, `AudioLimiter`).
 4. **Nivel 4 — *Code* (Código)**: Solo para algoritmos críticos (ej. máquina de estados de un juego o grafo AST generado automáticamente por `CodeGraph`).
 
 ### 3.2 *Risk-Storming* Colaborativo entre Agentes (`Squad 0` + `Squad 6`)

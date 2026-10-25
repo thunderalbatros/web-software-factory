@@ -1,4 +1,4 @@
-# CANON SOTA DEVELOPERS AND ENGINEERING PLAYBOOK 2026
+﻿# CANON SOTA DEVELOPERS AND ENGINEERING PLAYBOOK 2026
 
 > **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
 
@@ -37,7 +37,7 @@ Este documento sintetiza sus metodologías, arquitecturas de software, algoritmo
   * **Execution Sandboxing:** Ejecución de código y herramientas en contenedores o sandboxes aislados con límites estrictos de CPU y memoria.
 * **Impacto Directo y Mapeo en Centinela:**
   * **Desacoplamiento Sensorial y de Chat:** El `SensoryActor` (visión + audio) publica eventos en un bus asíncrono hacia el `PersonaActor` (Tarkansky) y el `SniperActor` (reclamos P0). Esto elimina cualquier bloqueo del event-loop de Node.js, manteniendo la latencia del WebSocket de Pusher en <1 ms.
-  * **Auditoría Interna de Mensajes:** Un mini-agente evaluador en memoria valida que el mensaje saliente no contenga alucinaciones ni lenguaje prohibido antes de tocar la API de Kick.
+  * **Auditoría Interna de Mensajes:** Un mini-agente evaluador en memoria valida que el mensaje saliente no contenga alucinaciones ni lenguaje prohibido antes de tocar la API de RealtimeHub.
 
 ---
 
@@ -49,7 +49,7 @@ Este documento sintetiza sus metodologías, arquitecturas de software, algoritmo
   * **Evaluación RAG Automatizada (Tríada de TruLens / Ragas):** Medición programática de Context Relevance, Groundedness y Answer Relevance.
 * **Impacto Directo y Mapeo en Centinela:**
   * **Indexación Jerárquica del Catálogo de Slots:** Dividir el catálogo de 30+ slots en nodos de proveedor (Pragmatic, Hacksaw), mecánicas de bonificación y volatilidad. El bot consulta primero el índice general de la slot y solo baja a reglas específicas si el streamer abre un bonus.
-  * **Router de Conocimiento RAG:** Si la pregunta del chat es sobre una regla general de Kick, consulta la KB interna de Qdrant; si es sobre la slot en pantalla, consulta el slot-catalog en RAM en 0.2 ms.
+  * **Router de Conocimiento RAG:** Si la pregunta del chat es sobre una regla general de RealtimeHub, consulta la KB interna de Qdrant; si es sobre la slot en pantalla, consulta el slot-catalog en RAM en 0.2 ms.
 
 ---
 
@@ -130,7 +130,7 @@ Este documento sintetiza sus metodologías, arquitecturas de software, algoritmo
 * **Metodología & Tecnologías Centrales:**
   * **Inferencia Local en WebAssembly / ONNX Runtime Web:** Ejecución de modelos ligeros directamente en el hilo de ejecución web con cero telemetría externa y mínimo consumo de energía.
 * **Impacto Directo y Mapeo en Centinela:**
-  * **Inyección de Scripts Livianos en Chromium:** En el módulo de presencia (`presence-keeper.mjs`), inyectar micro-scripts de detección en el DOM de Kick vía Playwright para escuchar eventos del reproductor sin sobrecargar el proceso principal de Node.js.
+  * **Inyección de Scripts Livianos en Chromium:** En el módulo de presencia (`presence-keeper.mjs`), inyectar micro-scripts de detección en el DOM de RealtimeHub vía Playwright para escuchar eventos del reproductor sin sobrecargar el proceso principal de Node.js.
 
 ---
 
@@ -169,7 +169,7 @@ Este documento sintetiza sus metodologías, arquitecturas de software, algoritmo
 
 [knowledge/docs/SOTA_DEVELOPERS_AND_ENGINEERING_PLAYBOOK_2026.md › 🧠 PLAYBOOK CANÓNICO DE INGENIERÍA SOTA (2024–2026): DESARROLLADORES LÍDERES, METODOLOGÍAS Y OPTIMIZACIÓN CRÍTICA PARA CENTINELA › 📋 MATRIZ DE ADOPCIÓN DE METODOLOGÍAS EN CENTINELA STUDIO]
 | **Tim Conkling** | Ollama Modelfile declarativo | Contenedorización de parámetros de personalidad | ✅ **Adoptado (`tarkansky-dna.json`)** |
-| **Marc-A. Brothier** | WebAssembly ligero en navegador | Scripts stealth inyectados en la sesión de Kick | ✅ **Adoptado (`presence-keeper.mjs`)** |
+| **Marc-A. Brothier** | WebAssembly ligero en navegador | Scripts stealth inyectados en la sesión de RealtimeHub | ✅ **Adoptado (`presence-keeper.mjs`)** |
 | **Nils Reimers** | Sentence-Transformers (Bi + Cross-Encoder)| RAG de 2 etapas (Búsqueda semántica + Reranker) | ✅ **Adoptado (`kb-core.mjs`)** |
 | **Yury Malkov** | Grafo HNSW para búsqueda logarítmica | Indexación vectorial ultra-rápida en Qdrant | ✅ **Adoptado (`centinela_knowledge`)** |
 

@@ -1,4 +1,4 @@
-# CANON: Software Product Line Engineering (ISO/IEC 26550) & Agentic Web Software Factories (2026)
+﻿# CANON: Software Product Line Engineering (ISO/IEC 26550) & Agentic Web Software Factories (2026)
 
 > **Scope:** Canonical architectural treatise for Squad 0–9 on Software Product Line Engineering (SPLE), ISO/IEC 26550, Greenfield & Short *Software Factories*, Clements & Northrop *Product Lines*, Pohl *Variability Management*, and Spec-Driven Multi-Project Web Delivery (`factory.project.json` + `spec-kit`).
 > **Sources Verified:** ISO/IEC 26550 Reference Model; Jack Greenfield & Keith Short (*Software Factories*, Wiley); Paul Clements & Linda Northrop (*Software Product Lines: Practices and Patterns*, CMU SEI); Klaus Pohl, Günter Böckle & Frank van der Linden (*Software Product Line Engineering*, Springer); GitHub `spec-kit` (MIT); ThoughtWorks Technology Radar (2025–2026) `[VERIFICADO: 2026-10-25]`.
@@ -52,9 +52,9 @@ Builds and maintains reusable assets that are **100% agnostic of any single clie
 - **`templates/`:** Versioned, pre-audited starter molds (`templates/vanilla-edge`, `templates/astro-edge`).
 - **`tools/audit/` & `tools/intelligence/`:** Static, visual, accessibility, and compliance verifiers parameterized by the active project manifest.
 
-### 2.2 Application Engineering (Individual Websites: `diggitybets.vip`, `client-2`, ..., `client-N`)
+### 2.2 Application Engineering (Individual Websites: `example-client.pages.dev`, `client-2`, ..., `client-N`)
 Builds a specific website by binding variability points declared in `factory.project.json`:
-- **Product #1 (`diggitybets.vip`):** Binds `archetype: "streamer-casino-suite"`, `complianceProfile: "gambling-18plus"`, 8 OBS overlays, and Kick OAuth/Bot invariants.
+- **Product #1 (`example-client.pages.dev`):** Binds `archetype: "streamer-casino-suite"`, `complianceProfile: "gambling-18plus"`, 8 OBS overlays, and RealtimeHub OAuth/Bot invariants.
 - **Product #2..N (SaaS, E-Commerce, Corporate, Portfolio):** Binds `archetype: "saas-b2b" | "ecommerce" | "marketing"`, `complianceProfile: "standard-web"`, zero OBS overlays, and standard WCAG 2.2 AA + AEO + CWV invariants.
 
 ---
@@ -78,7 +78,7 @@ Every variation point between two client websites is governed by an explicit **B
 A common failure mode in web agencies is **"Clone-and-Own Drift"**: developers fix bugs inside Client Site B, and Client Site A or future Client Site C never benefit.
 To prevent drift, the Factory enforces the **Dual-Loop Re-Investment Law**:
 1. **If an improvement or bugfix is domain-generic** (e.g., a better CSP header in `_headers`, a faster OKLCH glassmorphism utility, a new Playwright layout-shift detector, or a new skill in `.agents/skills/`): it **MUST** be committed to the **Factory Studio / Templates (`templates/*`, `tools/*`, `knowledge/*`)**.
-2. **If an improvement is strictly business-specific** (e.g., a slot bonus hunt calculator for `diggitybets.vip` or a custom pricing calculator for a B2B SaaS client): it stays inside that **Product's directory/repository** and is declared in its `factory.project.json`.
+2. **If an improvement is strictly business-specific** (e.g., a slot bonus hunt calculator for `example-client.pages.dev` or a custom pricing calculator for a B2B SaaS client): it stays inside that **Product's directory/repository** and is declared in its `factory.project.json`.
 
 ---
 

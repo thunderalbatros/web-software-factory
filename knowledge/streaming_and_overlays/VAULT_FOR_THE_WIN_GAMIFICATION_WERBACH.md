@@ -1,4 +1,4 @@
-**Alcance:** Síntesis de For the Win (Kevin Werbach): jerarquía Dinámicas-Mecánicas-Componentes (DMC), bucles de actividad y progresión. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Síntesis de For the Win (Kevin Werbach): jerarquía Dinámicas-Mecánicas-Componentes (DMC), bucles de actividad y progresión. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 version: 1.0.0

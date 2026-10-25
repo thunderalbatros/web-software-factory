@@ -1,4 +1,4 @@
-/**
+﻿/**
  * tools/intelligence/instincts_engine.mjs
  * =============================================================================
  * SOTA Agentic Memory & Continuous Evolution Engine (2026)
@@ -49,14 +49,14 @@ const DEFAULT_TEMPORAL_GRAPH = {
       evidence: "core/src/index.ts, site/js/chat.js, dist/ build cleanly"
     },
     {
-      id: "kick-compliance-zero-custody",
+      id: "RealtimeHub-compliance-zero-custody",
       type: "compliance_rule",
       title: "Zero Custody & 100% Free Spectator Participation",
       valid_from: "2026-10-15T00:00:00.000Z",
       valid_until: null,
       status: "ACTIVE",
-      rationale: "Strict compliance with Kick ToS and gambling regulations. No buy-ins, no custody of viewer crypto/fiat. Prizes awarded out-of-band.",
-      evidence: "AGENTS.md Section 2.2, test/phase1-stake-auth.test.ts"
+      rationale: "Strict compliance with RealtimeHub ToS and gambling regulations. No buy-ins, no custody of viewer crypto/fiat. Prizes awarded out-of-band.",
+      evidence: "AGENTS.md Section 2.2, test/phase1-PartnerBrand-auth.test.ts"
     },
     {
       id: "obs-cpu-budget-le-5pct",
@@ -95,9 +95,9 @@ const DEFAULT_TEMPORAL_GRAPH = {
       valid_from: "2026-08-01T00:00:00.000Z",
       valid_until: "2026-10-15T00:00:00.000Z",
       status: "INVALIDATED",
-      superseded_by: "stake-vip-and-diggitybets-internal-store",
-      rationale: "Rainbet is no longer the active sponsor. The project operates exclusively with Stake VIP referral linking and DiggityBets virtual $DIG economy.",
-      evidence: "test/phase1-stake-auth.test.ts, site/index.html"
+      superseded_by: "PartnerBrand-vip-and-client-portal-internal-store",
+      rationale: "Rainbet is no longer the active sponsor. The project operates exclusively with PartnerBrand VIP referral linking and client-portal virtual $DIG economy.",
+      evidence: "test/phase1-PartnerBrand-auth.test.ts, site/index.html"
     },
     {
       id: "mobile-react-native-expo-framework",
@@ -107,7 +107,7 @@ const DEFAULT_TEMPORAL_GRAPH = {
       valid_until: "2026-10-17T19:00:00.000Z",
       status: "INVALIDATED",
       superseded_by: "stack-vanilla-web-obs",
-      rationale: "Belongs exclusively to Yendo Mobile. HuntHub / DiggityBets is strictly a Web Application and OBS Streaming Suite.",
+      rationale: "Belongs exclusively to Yendo Mobile. Web Software Factory Studio is strictly a Web Application and OBS Streaming Suite.",
       evidence: "Purge commit 1ba5dc1"
     }
   ]

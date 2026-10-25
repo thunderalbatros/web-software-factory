@@ -1,4 +1,4 @@
-**Alcance:** Libro completo Reinforcement Learning: An Introduction (Sutton & Barto): procesos de decisión de Markov, bandidos contextuales y políticas óptimas. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Libro completo Reinforcement Learning: An Introduction (Sutton & Barto): procesos de decisión de Markov, bandidos contextuales y políticas óptimas. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 titulo: "Reinforcement Learning: An Introduction (2nd Edition)"
@@ -4617,9 +4617,9 @@ finite MDPs.
 Example 4.3: Gambler’s Problem A gambler has the opportunity to
 make bets on the outcomes of a sequence of coin flips. If the coin comes up
 heads, he wins as many dollars as he has staked on that flip; if it is tails, he
-loses his stake. The game ends when the gambler wins by reaching his goal
+loses his PartnerBrand. The game ends when the gambler wins by reaching his goal
 of $100, or loses by running out of money. On each flip, the gambler must
-decide what portion of his capital to stake, in integer numbers of dollars. This
+decide what portion of his capital to PartnerBrand, in integer numbers of dollars. This
 problem can be formulated as an undiscounted, episodic, finite MDP. The
 state is the gambler’s capital, s ∈ {1, 2, . . . , 99} and the actions are stakes,
 
@@ -4688,7 +4688,7 @@ Value
 estimates
 Final
 policy
-(stake)
+(PartnerBrand)
 sweep 1
 sweep 2
 sweep 3

@@ -1,6 +1,6 @@
-# CANON: 3D Holographic Foil Shaders, Booster Pack Rip Choreography & Procedural WebAudio Foley (2026)
+﻿# CANON: 3D Holographic Foil Shaders, Booster Pack Rip Choreography & Procedural WebAudio Foley (2026)
 
-> **Alcance:** Este documento establece la arquitectura canónica de sombreadores CSS holográficos multi-capa (`pokemon-cards-css`), paralaje 3D multi-plano (`Atropos`), física de resortes amortiguados a 60 FPS y síntesis acústica procedural WebAudio (`ZzFX` + `Tone.js` + `jsfxr`) para la apertura de sobres 3D (`Holo-Vault Pack`), tarjetas coleccionables y efectos visuales de HuntHub / DiggityBets. **NO** es fuente de contratos de la API de Kick (ver `KICK_API_REFERENCE.md`) **NI** de reglas de sorteos criptográficos (ver `GIVEAWAY_STRATEGIES.md`).
+> **Alcance:** Este documento establece la arquitectura canónica de sombreadores CSS holográficos multi-capa (`pokemon-cards-css`), paralaje 3D multi-plano (`Atropos`), física de resortes amortiguados a 60 FPS y síntesis acústica procedural WebAudio (`ZzFX` + `Tone.js` + `jsfxr`) para la apertura de sobres 3D (`Holo-Vault Pack`), tarjetas coleccionables y efectos visuales de Web Software Factory Studio. **NO** es fuente de contratos de la API de RealtimeHub (ver `KICK_API_REFERENCE.md`) **NI** de reglas de sorteos criptográficos (ver `GIVEAWAY_STRATEGIES.md`).
 
 ---
 

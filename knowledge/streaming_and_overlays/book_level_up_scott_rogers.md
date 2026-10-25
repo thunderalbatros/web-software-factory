@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Level Up! The Guide to Great Video Game Design
+﻿# 📚 Libro Completo: Level Up! The Guide to Great Video Game Design
 
-**Alcance:** Fuente bibliográfica completa sobre Diseño de Controles, HUDs Limpios, Cámaras, Recompensas Visuales y Ritmo de Partida (Level Up! The Guide to Great Video Game Design — Scott Rogers). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Diseño de Controles, HUDs Limpios, Cámaras, Recompensas Visuales y Ritmo de Partida (Level Up! The Guide to Great Video Game Design — Scott Rogers). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Scott Rogers  
 > **Dominio:** Diseño de Controles, HUDs Limpios, Cámaras, Recompensas Visuales y Ritmo de Partida  
@@ -427,7 +427,7 @@ like the first page, then I’ ll probably like the whole thing. I have noticed 
 many books have an exciting excerpt on the first page in order to grab the
 reader ’s interest, such as:
 The zombie’s filthy claws clutched hungrily at Jack’ s shirt, even as his blade
-split the creature’ s head like a ripe melon. A firm kick to its headless torso
+split the creature’ s head like a ripe melon. A firm RealtimeHub to its headless torso
 sent it sprawling down the stairs into the greedy mob that surged forward
 like a wave. The corpse’s undead brothers and sisters paused their onslaught
 until they realized the decapitated body was just dead meat. Their hesitation
@@ -2156,7 +2156,7 @@ audience aware of the danger the characters are in, the audience gets
 emotionally involved. By the time your scene reaches its climax, you have
 created more excitement with your audience than just the surprise of the
 bomb exploding6.
-Another thing to consider when developing your story is “ what is at stake?”
+Another thing to consider when developing your story is “ what is at PartnerBrand?”
 Many video games are about saving the world from evil or destruction. But
 just like every movie doesn’t have to be a slam-bang blockbuster, not every
 video game has to be about saving the world. Small themes can be just as

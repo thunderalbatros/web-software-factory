@@ -1,6 +1,6 @@
-# Tratado Canónico de Libros Abiertos: Game Programming Patterns (Nystrom), The Nature of Code (Shiffman), Exploring JS ES2025 (Rauschmayer), Crafting Interpreters & WebGL2 Fundamentals (2026)
+﻿# Tratado Canónico de Libros Abiertos: Game Programming Patterns (Nystrom), The Nature of Code (Shiffman), Exploring JS ES2025 (Rauschmayer), Crafting Interpreters & WebGL2 Fundamentals (2026)
 
-**Alcance:** Aplicable a la arquitectura de juegos interactivos y overlays (`overlay-*`, `wheel-*`, `site/js/house-games.js`, `site/js/motion-fx.js`), optimización del motor V8 de JavaScript (`site/js/`, `worker/index.js`), parsers léxicos/AST de comandos de Kick (`tools/intelligence/ast_guard.mjs`) y físicas procedimentales 2D/3D. Prohibido crear objetos efímeros dentro de bucles `requestAnimationFrame` a 60 FPS; usar siempre el patrón `Object Pool` y `Dirty Flag`.
+**Alcance:** Aplicable a la arquitectura de juegos interactivos y overlays (`overlay-*`, `wheel-*`, `site/js/house-games.js`, `site/js/motion-fx.js`), optimización del motor V8 de JavaScript (`site/js/`, `worker/index.js`), parsers léxicos/AST de comandos de RealtimeHub (`tools/intelligence/ast_guard.mjs`) y físicas procedimentales 2D/3D. Prohibido crear objetos efímeros dentro de bucles `requestAnimationFrame` a 60 FPS; usar siempre el patrón `Object Pool` y `Dirty Flag`.
 
 ---
 
@@ -24,7 +24,7 @@
   - Acumular el tiempo real transcurrido $\Delta t = \min(\text{now} - \text{lastTime}, 0.1\text{ s})$ (el tope de `100ms` evita la *"espiral de la muerte"* cuando la pestaña vuelve de estar oculta en segundo plano) e interpolar el estado visual con $\alpha = \text{accumulator} / \text{FIXED\_STEP}$.
 
 ### 1.4 Patrón *Command* y *Event Queue* (Determinismo en Juegos *Crowd-Play*)
-- Cada acción de un espectador en el chat de Kick (`!bet`, `!mine`, `!cashout`, `!sr`) se encapsula como un objeto comando inmutable `{ id, userId, command, payload, timestamp }` encolado en un *Ring Buffer* desacoplado de la vista, permitiendo validación por lotes, auditoría *Provably Fair* y reproducción determinista.
+- Cada acción de un espectador en el chat de RealtimeHub (`!bet`, `!mine`, `!cashout`, `!sr`) se encapsula como un objeto comando inmutable `{ id, userId, command, payload, timestamp }` encolado en un *Ring Buffer* desacoplado de la vista, permitiendo validación por lotes, auditoría *Provably Fair* y reproducción determinista.
 
 ---
 
@@ -54,7 +54,7 @@
 
 ### 3.2 Nuevas Primitivas Nativas `ES2024 / ES2025` de Alto Rendimiento
 - **`Object.groupBy(items, callback)`**: Agrupación nativa en C++ para clasificar bonos por proveedor o solicitudes por estado sin librerías externas.
-- **`Set.prototype.intersection()`, `difference()`, `union()`**: Operaciones matemáticas de conjuntos en $O(\min(|A|, |B|))$ para cruzar participantes activos del chat de Kick con usuarios verificados.
+- **`Set.prototype.intersection()`, `difference()`, `union()`**: Operaciones matemáticas de conjuntos en $O(\min(|A|, |B|))$ para cruzar participantes activos del chat de RealtimeHub con usuarios verificados.
 - **`Promise.withResolvers()`**: Control limpio de promesas diferidas en colas de animación y reconexiones WebSocket.
 
 ---
@@ -62,7 +62,7 @@
 ## 4. *Crafting Interpreters* — Robert Nystrom & *WebGL2 Fundamentals*
 
 ### 4.1 Escaneo Léxico en Una Sola Pasada (*Single-Pass Scanner*) para Comandos de Chat
-- En lugar de encadenar 25 expresiones regulares complejas sobre cada mensaje del chat de Kick (que arriesgan *Catastrophic Backtracking / ReDoS*), un *Scanner* de puntero único (`start`, `current`, `peek()`) extrae el comando (`!sr`, `!guess`, `!bounty`) y sus argumentos en tiempo estrictamente lineal **$O(n)$** con límite duro de longitud (`<= 300 chars`).
+- En lugar de encadenar 25 expresiones regulares complejas sobre cada mensaje del chat de RealtimeHub (que arriesgan *Catastrophic Backtracking / ReDoS*), un *Scanner* de puntero único (`start`, `current`, `peek()`) extrae el comando (`!sr`, `!guess`, `!bounty`) y sus argumentos en tiempo estrictamente lineal **$O(n)$** con límite duro de longitud (`<= 300 chars`).
 
 ### 4.2 Renderizado Instanciado (*Instanced Drawing*) y *Offscreen Buffers*
 - Cuando se dibujan decenas de elementos repetidos en 2D/WebGL (como las divisiones de una ruleta o monedas `$DIG`), pre-renderizar la geometría/textura una sola vez en un `<canvas>` fuera de pantalla de `64x64` píxeles y proyectarla mediante transformaciones matriciales reduce las llamadas de sombreado en un **96%**.

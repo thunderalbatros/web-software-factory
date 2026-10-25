@@ -1,9 +1,9 @@
----
+﻿---
 name: design-system
 description: Dark casino theme, tokens, Chakra Petch typography, and glassmorphism styling guide.
 ---
 
-# HuntHub Visual Design System
+# WebFactory Visual Design System
 
 ## Palette Tokens
 - **Background Deep:** `#090c14` / Glass backdrop `rgba(14, 18, 28, 0.85)`

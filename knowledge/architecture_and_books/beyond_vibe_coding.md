@@ -1,4 +1,4 @@
-**Alcance:** Libro completo Beyond Vibe Coding (O'Reilly): ingeniería de software asistida por IA con disciplina arquitectónica, pruebas y verificación. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Libro completo Beyond Vibe Coding (O'Reilly): ingeniería de software asistida por IA con disciplina arquitectónica, pruebas y verificación. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 titulo: "Beyond Vibe Coding: The AI-Era Developer's Guide"

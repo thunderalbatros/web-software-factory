@@ -1,10 +1,10 @@
-# Matt Pocock: Engineering Arsenal, Repositories & Agent Methodologies (2026)
+﻿# Matt Pocock: Engineering Arsenal, Repositories & Agent Methodologies (2026)
 
 > **Subject:** In-depth architectural analysis of Matt Pocock's open-source repositories, AI engineering tools, and developer philosophies.  
 > **Profile Reference:** [https://github.com/mattpocock?tab=repositories](https://github.com/mattpocock?tab=repositories)  
 > **Key Projects:** Sandcastle (`@ai-hero/sandcastle`), Skills (`mattpocock/skills`), `ts-reset`, Total TypeScript, and AI Hero.  
 > **Date:** October 2026  
-> **Status:** Canonical Knowledge Asset for HuntHub / DiggityBets.
+> **Status:** Canonical Knowledge Asset for Web Software Factory Studio.
 
 ---
 
@@ -104,13 +104,13 @@ His work centers on two complementary domains:
 
 ---
 
-## 4. Integration into HuntHub / DiggityBets
+## 4. Integration into Web Software Factory Studio
 
-- **Skill Deployment:** HuntHub incorporates Matt Pocock's patterns into:
-  - [`.agents/skills/sandboxed-experiments/SKILL.md`](file:///c:/Users/tomas/Desktop/streamerbot/.agents/skills/sandboxed-experiments/SKILL.md) (Sandcastle worktree isolation).
-  - [`.agents/skills/grill-me/SKILL.md`](file:///c:/Users/tomas/Desktop/streamerbot/.agents/skills/grill-me/SKILL.md) (Interactive alignment interview).
-  - [`.agents/skills/test-driven-development/SKILL.md`](file:///c:/Users/tomas/Desktop/streamerbot/.agents/skills/test-driven-development/SKILL.md) (Red-Green-Refactor).
-  - [`tools/sandbox.mjs`](file:///c:/Users/tomas/Desktop/streamerbot/tools/sandbox.mjs) (Local CLI for worktree creation and teardown).
+- **Skill Deployment:** WebFactory incorporates Matt Pocock's patterns into:
+  - [`.agents/skills/sandboxed-experiments/SKILL.md`](file:///c:/Users/tomas/Desktop/web-software-factory/.agents/skills/sandboxed-experiments/SKILL.md) (Sandcastle worktree isolation).
+  - [`.agents/skills/grill-me/SKILL.md`](file:///c:/Users/tomas/Desktop/web-software-factory/.agents/skills/grill-me/SKILL.md) (Interactive alignment interview).
+  - [`.agents/skills/test-driven-development/SKILL.md`](file:///c:/Users/tomas/Desktop/web-software-factory/.agents/skills/test-driven-development/SKILL.md) (Red-Green-Refactor).
+  - [`tools/sandbox.mjs`](file:///c:/Users/tomas/Desktop/web-software-factory/tools/sandbox.mjs) (Local CLI for worktree creation and teardown).
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #architecture_and_books

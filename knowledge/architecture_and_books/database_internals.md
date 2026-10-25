@@ -1,4 +1,4 @@
-**Alcance:** Libro completo Database Internals (Alex Petrov): motores de almacenamiento B-Tree, LSM-Trees, WAL, concurrencia y sistemas distribuidos. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Libro completo Database Internals (Alex Petrov): motores de almacenamiento B-Tree, LSM-Trees, WAL, concurrencia y sistemas distribuidos. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 titulo: "Database Internals: A Deep Dive into How Distributed Data Systems Work"

@@ -1,6 +1,6 @@
-# Compendio Maestro de 55 Videocursos Técnicos Analizados (UI/UX, Motion 60-FPS, Shaders, Game Design & Agentes IA)
+﻿# Compendio Maestro de 55 Videocursos Técnicos Analizados (UI/UX, Motion 60-FPS, Shaders, Game Design & Agentes IA)
 
-> **Alcance:** Literatura canónica de arquitectura de software, código limpio, sistemas de diseño UI/UX, animaciones a 60 FPS, física de resortes, MDA Game Design y orquestación de agentes IA extraída de las 55 video-masterclasses de `yendo_obsidian_vault` para la Software Factory Web y DiggityBets.
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, sistemas de diseño UI/UX, animaciones a 60 FPS, física de resortes, MDA Game Design y orquestación de agentes IA extraída de las 55 video-masterclasses de `yendo_obsidian_vault` para la Software Factory Web y client-portal.
 
 Este documento consolida las lecciones técnicas, fórmulas de animación, principios de diseño gráfico y patrones de ingeniería extraídos de 55 videocursos técnicos y conferencias internacionales.
 

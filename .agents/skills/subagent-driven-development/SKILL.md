@@ -1,4 +1,4 @@
----
+﻿---
 name: subagent-driven-development
 description: Use when executing implementation plans with independent tasks in the current session
 ---
@@ -67,4 +67,4 @@ digraph process {
 ---
 
 ## Progressive Disclosure Reference
-For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/streamerbot/.agents/skills/subagent-driven-development/references/full-guide.md).
+For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/web-software-factory/.agents/skills/subagent-driven-development/references/full-guide.md).

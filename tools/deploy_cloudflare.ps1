@@ -1,9 +1,9 @@
-# HuntHub - Automated Cloudflare Deploy Script (100% Free Plan)
+﻿# WebFactory - Automated Cloudflare Deploy Script (100% Free Plan)
 $ErrorActionPreference = 'Stop'
 $Root = Split-Path -Parent $PSScriptRoot
 
 Write-Host "==========================================================" -ForegroundColor Cyan
-Write-Host "   HUNTHUB — DESPLIEGUE A CLOUDFLARE (100% GRATIS)       " -ForegroundColor Yellow
+Write-Host "   WebFactory — DESPLIEGUE A CLOUDFLARE (100% GRATIS)       " -ForegroundColor Yellow
 Write-Host "==========================================================" -ForegroundColor Cyan
 Write-Host ""
 

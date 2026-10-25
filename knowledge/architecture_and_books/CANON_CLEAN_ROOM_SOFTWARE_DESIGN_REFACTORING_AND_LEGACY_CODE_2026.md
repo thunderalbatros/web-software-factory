@@ -1,4 +1,4 @@
-# Tratado Canónico Clean-Room: Filosofía de Diseño de Software (Ousterhout), Refactorización Avanzada (Fowler, Feathers, Kerievsky), Unit Testing (Khorikov), Observabilidad y Chaos Engineering (2026)
+﻿# Tratado Canónico Clean-Room: Filosofía de Diseño de Software (Ousterhout), Refactorización Avanzada (Fowler, Feathers, Kerievsky), Unit Testing (Khorikov), Observabilidad y Chaos Engineering (2026)
 
 **Alcance:** Aplicable a la arquitectura modular, refactorización de archivos grandes (`site/js/`, `worker/index.js`), diseño de pruebas automatizadas y resiliencia operativa de la Web Software Factory (`Squad 0`, `Squad 2`, `Squad 4`, `Squad 6`, `Squad 7` y `Squad 9`). Sintetiza en sala limpia (*Clean-Room*) los principios de ingeniería públicos de Ousterhout, Fowler, Feathers, Kerievsky, Khorikov, Majors y Rosenthal.
 
@@ -58,7 +58,7 @@ Una prueba solo merece existir en nuestra fábrica si maximiza el producto de:
   1. **Desconexión abrupta del WebSocket** $\rightarrow$ Reconexión automática con *exponential backoff* + *jitter* (`1s, 2s, 4s, 8s... max 30s`).
   2. **Respuesta HTTP `500 / 429 / Timeout` del Worker** $\rightarrow$ Mantener el último estado válido renderizado (*Stale-If-Error*).
   3. **JSON corrupto o campos faltantes (`null / undefined`)** $\rightarrow$ Esquema `Valibot` con valores por defecto seguros (`v.fallback(...)`).
-  4. **Sobrecarga de mensajes del chat de Kick (`50 msgs/seg`)** $\rightarrow$ *Ring Buffer* acotado y *batching* por `requestAnimationFrame`.
+  4. **Sobrecarga de mensajes del chat de RealtimeHub (`50 msgs/seg`)** $\rightarrow$ *Ring Buffer* acotado y *batching* por `requestAnimationFrame`.
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_ELITE_MULTI_AGENT_WEB_SOFTWARE_FACTORY_TOPOLOGY_2026]] · [[CANON_QASIMHBTI_BOOKS_SQLITE_SCALABILITY_EDGE_CACHE_AND_ALGORITHMS_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_TIDY_FIRST_KENT_BECK]] · [[clean_architecture]] · #architecture #testing #sre

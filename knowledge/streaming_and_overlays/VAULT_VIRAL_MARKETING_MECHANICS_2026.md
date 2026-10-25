@@ -1,4 +1,4 @@
-**Alcance:** Ingeniería de viralidad, coeficientes K, compartición social de victorias y retención de comunidades digitales. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Ingeniería de viralidad, coeficientes K, compartición social de victorias y retención de comunidades digitales. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 version: 1.0.0

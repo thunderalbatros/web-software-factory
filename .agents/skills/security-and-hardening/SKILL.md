@@ -1,4 +1,4 @@
----
+﻿---
 name: security-and-hardening
 description: "Hardens code against vulnerabilities."
 ---
@@ -67,4 +67,4 @@ If you can't name the trust boundaries for a feature, you're not ready to secure
 ---
 
 ## Progressive Disclosure Reference
-For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/streamerbot/.agents/skills/security-and-hardening/references/full-guide.md).
+For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/web-software-factory/.agents/skills/security-and-hardening/references/full-guide.md).

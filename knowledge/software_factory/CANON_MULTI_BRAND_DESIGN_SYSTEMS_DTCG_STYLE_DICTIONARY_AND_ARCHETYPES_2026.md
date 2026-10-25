@@ -1,4 +1,4 @@
-# CANON: Multi-Brand Design Systems (W3C DTCG 2025.10, Style Dictionary v4, OKLCH & Industry Archetypes)
+﻿# CANON: Multi-Brand Design Systems (W3C DTCG 2025.10, Style Dictionary v4, OKLCH & Industry Archetypes)
 
 > **Scope:** Canonical design engineering guide for Squad 1, Squad 4, Squad 5, and Squad 8 on theming and crafting bespoke, non-generic websites across diverse industries using a unified 3-Tier W3C DTCG Token Architecture.
 > **Sources Verified:** W3C Design Tokens Community Group (`DTCG 2025.10` Format Module); Style Dictionary v4 ESM Architecture; Björn Ottosson (OKLCH Perceptual Color Space); Myndex APCA Contrast (`Lc`); Utopia Fluid Responsive Design (`clamp()`); Alla Kholmatova (*Design Systems*); Adam Wathan & Steve Schoger (*Refactoring UI*) `[VERIFICADO: 2026-10-25]`.
@@ -28,7 +28,7 @@ When `node tools/factory.mjs new <slug> --archetype <type>` is invoked, Squad 4 
 | **`ecommerce-luxury` / `hospitality`** | Warm obsidian (`L=0.14, C=0.01, H=65`) or warm ivory (`L=0.97, C=0.012, H=80`); Champagne Gold (`L=0.80, C=0.12, H=85`) | Editorial High-Contrast Serif (`Playfair Display` / `Instrument Serif`) + Humanist Sans | Editorial full-bleed imagery, generous negative space (De-Boxing), subtle `240ms` ease-out reveals |
 | **`healthcare` / `legal` / `corporate`** | High-trust daylight surface (`L=0.985, C=0.004, H=220`); Deep Navy (`L=0.28, C=0.08, H=245`) + Teal trust accent (`L=0.62, C=0.14, H=195`) | Neo-Grotesque Sans + Clear Reading Serif | High-scannability F-pattern hierarchy, APCA `Lc >= 75` body text, instant appointment/lead booking |
 | **`creative-portfolio` / `agency`** | Deep carbon (`L=0.11, C=0.005, H=0`) + Electric Acid/Coral focal (`L=0.78, C=0.20, H=115/35`) | Expressive Display Grotesque (`Syne` / `Space Grotesk`) + Technical Mono | Kinetic typography, `@starting-style` view transitions, 60-FPS composite-only parallax |
-| **`streamer-casino-suite`** (`diggitybets`) | Deep obsidian (`L=0.12, C=0.02, H=265`) + Gold (`H=85`) + Kick Neon Green (`L=0.86, C=0.24, H=142`) | `Chakra Petch` Display + `Inter` UI + `JetBrains Mono` | Real-time edge telemetry, Provably Fair HUDs, 1920x1080 OBS overlays (`<=5% CPU`) |
+| **`streamer-casino-suite`** (`client-portal`) | Deep obsidian (`L=0.12, C=0.02, H=265`) + Gold (`H=85`) + RealtimeHub Neon Green (`L=0.86, C=0.24, H=142`) | `Chakra Petch` Display + `Inter` UI + `JetBrains Mono` | Real-time edge telemetry, Provably Fair HUDs, 1920x1080 OBS overlays (`<=5% CPU`) |
 
 ---
 

@@ -1,4 +1,4 @@
-**Alcance:** Patrones de diseño de enjambres de agentes, enrutamiento semántico y memoria episódica. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Patrones de diseño de enjambres de agentes, enrutamiento semántico y memoria episódica. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 version: 1.0.0

@@ -1,4 +1,4 @@
-**Alcance:** Masterclass de Frontend Masters: diseño de sistemas frontend, virtualización del DOM, presupuesto de memoria y rendimiento a 60 FPS. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Masterclass de Frontend Masters: diseño de sistemas frontend, virtualización del DOM, presupuesto de memoria y rendimiento a 60 FPS. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 version: 1.0.0

@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Game Mechanics: Advanced Game Design
+﻿# 📚 Libro Completo: Game Mechanics: Advanced Game Design
 
-**Alcance:** Fuente bibliográfica completa sobre Economías Internas de Juegos, Bucles de Retroalimentación Positiva/Negativa, Balance Matemático y Progresión (Game Mechanics: Advanced Game Design — Ernest Adams & Joris Dormans). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Economías Internas de Juegos, Bucles de Retroalimentación Positiva/Negativa, Balance Matemático y Progresión (Game Mechanics: Advanced Game Design — Ernest Adams & Joris Dormans). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Ernest Adams & Joris Dormans  
 > **Dominio:** Economías Internas de Juegos, Bucles de Retroalimentación Positiva/Negativa, Balance Matemático y Progresión  

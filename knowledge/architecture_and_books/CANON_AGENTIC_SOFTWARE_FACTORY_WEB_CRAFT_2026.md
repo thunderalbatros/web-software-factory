@@ -1,6 +1,6 @@
-# CANON AGENTIC SOFTWARE FACTORY & WEB CRAFT 2026: Metodología, Arquitectura y Manufactura de Software de Élite Mediante IA Agéntica
+﻿# CANON AGENTIC SOFTWARE FACTORY & WEB CRAFT 2026: Metodología, Arquitectura y Manufactura de Software de Élite Mediante IA Agéntica
 
-> **Alcance:** Tratado canónico para la orquestación y operación de la Software Factory de HuntHub / DiggityBets (`Squad 0` a `Squad 7`), definiendo la metodología de producción de sitios web modernos, elegantes, minimalistas, fluidos, hiper-eficientes y blindados contra vulnerabilidades mediante agentes autónomos coordinados.  
+> **Alcance:** Tratado canónico para la orquestación y operación de la Software Factory de Web Software Factory Studio (`Squad 0` a `Squad 7`), definiendo la metodología de producción de sitios web modernos, elegantes, minimalistas, fluidos, hiper-eficientes y blindados contra vulnerabilidades mediante agentes autónomos coordinados.  
 > **Protocolo LEC-015:** Documento de Explicación Canónica y Referencia Metodológica.  
 > **Restricciones Duras:** Presupuesto $0 permanente, ejecución liviana en host notebook (HP 250 G8), OBS Browser Sources ≤ 5% CPU, cero fugas de secretos y cero licencias comerciales restrictivas.
 
@@ -31,7 +31,7 @@ graph TD
     B --> C[Squad 4: Layout Primitives & De-boxing]
     B --> D[Squad 2: Backend Edge & SQLite D1]
     C --> E[Squad 5: 60 FPS WAAPI & Shaders]
-    D --> F[Squad 3: Protocolos Kick & WebSockets]
+    D --> F[Squad 3: Protocolos RealtimeHub & WebSockets]
     E --> G[Línea de Verificación Automatizada]
     F --> G
     G --> H[Playwright CDP + Telemetría de Renderizado]
@@ -67,7 +67,7 @@ graph TD
 * Servidores sin estado basados en Cloudflare Workers, activos estáticos servidos directamente en el Edge con Cloudflare Workers Static Assets, y persistencia relacional con Cloudflare D1 (Serverless SQLite). Consultas atómicas por lotes (`db.batch`) y preparado estricto de sentencias SQL.
 
 ### Invariante 6: DevSecOps Zero-Trust y Ciberseguridad Agéntica
-* **Sanitización Extrema:** Ninguna cadena proveniente de usuarios o chat de Kick se inserta mediante `innerHTML` sin pasar por `window.escapeHTML` y `DOMPurify`.
+* **Sanitización Extrema:** Ninguna cadena proveniente de usuarios o chat de RealtimeHub se inserta mediante `innerHTML` sin pasar por `window.escapeHTML` y `DOMPurify`.
 * **Content Security Policy (CSP) Hermética:** Restricción estricta de fuentes de scripts, estilos, conexiones y frames.
 * **Criptografía Verificable:** Sorteos y juegos de azar con equidad demostrable (*Provably Fair*) mediante esquemas Commit-Reveal con `HMAC-SHA256` y semillas revelables.
 * **Cero Secretos en Git:** Tokens y credenciales viven exclusivamente en `.dev.vars` o variables de entorno en Cloudflare.
@@ -165,7 +165,7 @@ La Software Factory opera bajo una regla de **cumplimiento estricto de licencias
 * **W3C & WHATWG**: Especificaciones oficiales de CSS3 (Transforms, Grid, Flexbox, Transitions, Animations) y HTML5 Semántico.
 * **MDN Web Docs (Mozilla Developer Network)**: Referencia técnica de Web APIs, Web Audio API, Canvas 2D y Web Animations API (WAAPI).
 * **Cloudflare Developer Platform Docs**: Arquitectura de Cloudflare Workers, Cloudflare D1 (SQLite en Edge) y Workers Static Assets.
-* **Kick.com Official Developer Docs (KickEngineering/KickDevDocs)**: Contratos de API v1, flujo OAuth 2.1 PKCE y especificación de eventos Pusher y Webhooks.
+* **realtime-stream.com Official Developer Docs (KickEngineering/KickDevDocs)**: Contratos de API v1, flujo OAuth 2.1 PKCE y especificación de eventos Pusher y Webhooks.
 * **OWASP Foundation**: Application Security Verification Standard (ASVS v4.0), Cross-Site Scripting (XSS) Prevention Cheat Sheet y Content Security Policy Guidelines.
 
 ---

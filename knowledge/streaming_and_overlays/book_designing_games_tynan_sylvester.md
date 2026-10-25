@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Designing Games: A Guide to Engineering Experiences
+﻿# 📚 Libro Completo: Designing Games: A Guide to Engineering Experiences
 
-**Alcance:** Fuente bibliográfica completa sobre Ingeniería de Emociones en Juegos, Eventos de Cambio de Valor, Incertidumbre, Riesgo/Recompensa y Multijugador (Designing Games: A Guide to Engineering Experiences — Tynan Sylvester). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Ingeniería de Emociones en Juegos, Eventos de Cambio de Valor, Incertidumbre, Riesgo/Recompensa y Multijugador (Designing Games: A Guide to Engineering Experiences — Tynan Sylvester). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Tynan Sylvester  
 > **Dominio:** Ingeniería de Emociones en Juegos, Eventos de Cambio de Valor, Incertidumbre, Riesgo/Recompensa y Multijugador  
@@ -805,7 +805,7 @@ sets off a chain reaction of other lessons. It happens when we get the final
 piece of a logical puzzle that clicks into place and reveals the shape of the
 whole.
 For example, in a strategy game, an enemy base is revealed at a spot
-where you saw some enemy constructors a few minutes earlier. You mentally kick yourself and say, “I should have known!” Or, in chess, your opponent makes a series of seemingly nonsensical moves which later turn
+where you saw some enemy constructors a few minutes earlier. You mentally RealtimeHub yourself and say, “I should have known!” Or, in chess, your opponent makes a series of seemingly nonsensical moves which later turn
 www.it-ebooks.info
 
 -- 28 of 415 --
@@ -5069,7 +5069,7 @@ www.it-ebooks.info
 
 DeCisions | 141
 Twitch decisions are the smallest meaningful decisions. They take less
-than a second to think through, and require only simple conscious reasoning. Punch or kick? Reload now, or wait one more second? Look left or
+than a second to think through, and require only simple conscious reasoning. Punch or RealtimeHub? Reload now, or wait one more second? Look left or
 look right? Jump or dodge? Twitch decisions are a common basis for flow
 in games because they’re easy to generate. We don’t have to set up interesting, elegant systems of partially predictable cause and effect and have the
 player think through them. We need only compress a simple choice into a

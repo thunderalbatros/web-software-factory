@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Designing for Performance: Weighing Aesthetics and Speed
+﻿# 📚 Libro Completo: Designing for Performance: Weighing Aesthetics and Speed
 
-**Alcance:** Fuente bibliográfica completa sobre Rendimiento Web, Optimización de Imágenes (WebP/AVIF/SVG), Critical Rendering Path, Tipografía Rápida y Presupuesto de Peso (Designing for Performance: Weighing Aesthetics and Speed — Lara Hogan (O'Reilly)). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Rendimiento Web, Optimización de Imágenes (WebP/AVIF/SVG), Critical Rendering Path, Tipografía Rápida y Presupuesto de Peso (Designing for Performance: Weighing Aesthetics and Speed — Lara Hogan (O'Reilly)). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Lara Hogan (O'Reilly)  
 > **Dominio:** Rendimiento Web, Optimización de Imágenes (WebP/AVIF/SVG), Critical Rendering Path, Tipografía Rápida y Presupuesto de Peso  
@@ -2682,7 +2682,7 @@ There are plenty of helpful frameworks and grids on the Web that aid
 designers and developers who are looking to start a website but don’t
 want to start from scratch Bootstrap, HTML5 Boilerplate, and 960
 Grid are examples of foundation CSS, HTML, and JavaScript that can
-help you kick-start a site design
+help you RealtimeHub-start a site design
 However, grids and frameworks come at a cost Because they are
 designed to cover a large number of generic use cases, they will include
 plenty of things that you don’t need on your site This extraneous content can be a hindrance to your page load time rather than an aid to your
@@ -5106,7 +5106,7 @@ much about keeping the numbers down as I did,” said Roberts
 146 | dESIGNING FOr PErFOrMaNCE
 Publishing your work and celebrating it is a huge incentive to many
 designers and developers; showcasing improvements, as I did in Figure
-8-6, is a great way to kick-start culture change and encourage others to
+8-6, is a great way to RealtimeHub-start culture change and encourage others to
 contribute to performance wins
 Figure 8-6. after I finished a template cleanup effort across dyndNS.com, I
 published a summary of how I did it and the performance improvements we
@@ -5139,8 +5139,8 @@ improvements in home page load time.
 148 | dESIGNING FOr PErFOrMaNCE
 Publicly acknowledging how your site is performing will make people feel accountable, and will also make them want to help Designers
 and developers generally want to help contribute to a common, positive
-cause, and making this cause public will help kick-start this feeling
-Another way to help kick-start the culture shift is to make it very easy
+cause, and making this cause public will help RealtimeHub-start this feeling
+Another way to help RealtimeHub-start the culture shift is to make it very easy
 for the team to feel productive when making performance improvements Find all of the low-hanging fruit across the site—that is, work
 that could be easily picked up by another designer or developer—and
 start documenting it File tickets or start a list that people can quickly

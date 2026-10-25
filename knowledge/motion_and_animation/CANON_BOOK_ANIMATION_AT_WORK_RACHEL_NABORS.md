@@ -1,4 +1,4 @@
----
+﻿---
 version: 1.1.0
 tipo: research
 tags:
@@ -23,7 +23,7 @@ El movimiento en interfaces web no es decoración accesoria, es infraestructura 
 - **Perceptual Continuity:** El usuario nunca pierde el rastro visual de los elementos clave tras una acción interactiva.
 - **Cognitive Bridge:** Reducción de la carga mental al suavizar transiciones de estado complejas en tiempo real.
 
-## 🚀 Aplicación en Arquitectura Web & HuntHub
+## 🚀 Aplicación en Arquitectura Web & WebFactory
 - **Transiciones en Ruleta y Torneos:** Uso de Web Animations API (WAAPI) y CSS Transitions para animar el carrusel de premios y los cuadros del torneo a 60 FPS sin bloquear el hilo principal de JavaScript.
 - **Overlays para OBS:** Animaciones fluidas basadas exclusivamente en `transform` y `opacity` con menos del 5% de uso de CPU.
 

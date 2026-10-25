@@ -1,4 +1,4 @@
-**Alcance:** Pipeline de optimización GPU para animaciones web y 3D: presupuesto de 16.6ms, reducción de draw calls y aislamiento de capas. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Pipeline de optimización GPU para animaciones web y 3D: presupuesto de 16.6ms, reducción de draw calls y aislamiento de capas. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 version: 1.0.0

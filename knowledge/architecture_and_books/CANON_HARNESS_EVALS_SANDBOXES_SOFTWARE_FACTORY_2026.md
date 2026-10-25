@@ -1,9 +1,9 @@
-# Canon 2026: Harness Engineering, Evals, Sandboxes & Autonomous Software Factories
+﻿# Canon 2026: Harness Engineering, Evals, Sandboxes & Autonomous Software Factories
 
 > **Scope:** Canonical engineering specification synthesizing Harness Engineering, AI Evaluation Frameworks, Sandboxing Runtimes, and Open-Source Software Factory Architecture.  
 > **Primary Sources:** WalkingLabs (*Learn Harness Engineering*), DeepLearning.AI (*Building Agentic Workflows with LangGraph*, *Automated Testing for LLMs*), Supabase (*Local Docker & Deterministic Migrations*), E2B (*Building Coding Agents with Tool Execution*), Anthropic (*Model Context Protocol*), Confident AI (*DeepEval*), Exploding Gradients (*Ragas*), and Langfuse.  
 > **Date:** October 2026  
-> **Status:** Canonical — Ground Truth for all HuntHub / DiggityBets Agents.
+> **Status:** Canonical — Ground Truth for all Web Software Factory Studio Agents.
 
 ---
 
@@ -142,13 +142,13 @@ To build a fully autonomous, production-grade software factory, the following fi
 
 ---
 
-## 5. Architectural Implementation in HuntHub / DiggityBets
+## 5. Architectural Implementation in Web Software Factory Studio
 
-The HuntHub project integrates these principles under strict hardware and budget constraints (HP 250 G8 notebook, Windows, 0 USD budget, zero credit card requirement):
+The WebFactory project integrates these principles under strict hardware and budget constraints (HP 250 G8 notebook, Windows, 0 USD budget, zero credit card requirement):
 
 ```
 ┌────────────────────────────────────────────────────────────────────────┐
-│               HUNTHUB AUTONOMOUS FACTORY ARCHITECTURE                  │
+│               WebFactory AUTONOMOUS FACTORY ARCHITECTURE                  │
 ├────────────────────────────────────────────────────────────────────────┤
 │ 1. REPO-MAP & AST PARSER                                               │
 │    • ast-grep + Tree-sitter + MiniSearch in rag_pipeline.mjs           │

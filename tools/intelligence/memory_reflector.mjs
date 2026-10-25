@@ -1,4 +1,4 @@
-/**
+﻿/**
  * tools/intelligence/memory_reflector.mjs — Procedural Memory & Instincts Reflector
  * =============================================================================
  * Inspired by LangMem and Mem0 adaptive procedural memory.
@@ -98,8 +98,8 @@ export function reflectAndConsolidate() {
       title: "Method Renaming Aliases on Class Prototypes",
       confidence: 0.95,
       rationale: "When refactoring methods in public client controllers, provide a prototype alias to prevent runtime PAGEERROR exceptions when older modules or event handlers invoke the previous symbol name.",
-      evidence: "site/js/admin-hub.js renderHuntAdmin -> renderBonusHuntAdmin",
-      code_pattern: `renderHuntAdmin() {\n  this.renderBonusHuntAdmin();\n}`,
+      evidence: "site/js/admin-hub.js renderHuntAdmin -> renderfeature-moduleAdmin",
+      code_pattern: `renderHuntAdmin() {\n  this.renderfeature-moduleAdmin();\n}`,
       anti_pattern: "Renaming methods without aliases in large multi-view web applications."
     }
   ];

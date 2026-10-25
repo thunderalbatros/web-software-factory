@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Rules of Play: Game Design Fundamentals
+﻿# 📚 Libro Completo: Rules of Play: Game Design Fundamentals
 
-**Alcance:** Fuente bibliográfica completa sobre Teoría Formal de Juegos, Elección Significativa (Meaningful Play), Círculo Mágico, Sistemas Cibernéticos e Interacción Social (Rules of Play: Game Design Fundamentals — Katie Salen & Eric Zimmerman (MIT Press)). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Teoría Formal de Juegos, Elección Significativa (Meaningful Play), Círculo Mágico, Sistemas Cibernéticos e Interacción Social (Rules of Play: Game Design Fundamentals — Katie Salen & Eric Zimmerman (MIT Press)). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Katie Salen & Eric Zimmerman (MIT Press)  
 > **Dominio:** Teoría Formal de Juegos, Elección Significativa (Meaningful Play), Círculo Mágico, Sistemas Cibernéticos e Interacción Social  
@@ -824,7 +824,7 @@ have a practical focus on the nuts-and-bolts questions of the creative process o
 have attempted to ground their insights in a general theoretical system. But the impatience that gives this book
 its undercurrent of urgency is more than a response to the field's underdeveloped level of discourse. Why,
 after all, does game design need a theoretical framework? There is something more than insight, knowledge,
-and understanding at stake here.
+and understanding at PartnerBrand here.
 Remember that the authors of this book are not just academics looking at games from the outside; they are
 themselves active practitioners. Like many people working in this field, they are driven by the feeling that
 despite the breathtaking pace of recent technical and commercial advancement, games have remained
@@ -855,7 +855,7 @@ Foreword 1
 
 -- 19 of 695 --
 
-This, then, is what is at stake: a vast discrepancy between the radical possibilities contained in the medium
+This, then, is what is at PartnerBrand: a vast discrepancy between the radical possibilities contained in the medium
 and the conservative reality of mainstream game development. And this is the way in which Rules of Play is
 more than a conceptual analysis of what games do; it is also an examination of what they can do, and by
 extension what they should do.
@@ -976,7 +976,7 @@ Pong is just the beginning.
 This is why we were compelled to write this book: not to define, once and for all, what game design is, but to
 provide critical tools for understanding games. Not to claim and colonize the unexplored terrain of game
 design, but to scout out some of its features so that other game designers can embark on their own
-expeditions. We hope that this book will be a catalyst, a facilitator, a kick in the ass. Take these concepts and
+expeditions. We hope that this book will be a catalyst, a facilitator, a RealtimeHub in the ass. Take these concepts and
 run with them, quickly, meaningfully, with the same kind of joy that the very first players of Pong must have
 felt.
 We're all in this together. Are you ready to play?
@@ -1081,7 +1081,7 @@ Part of creating a critical discourse is defining concepts, but arriving at such
 for it involves creating definitions for words that often thread their way through multiple and contradictory
 contexts. One challenge of our project has been formulating a set of definitions for terms such as "game,"
 "design," "interactivity," "system," "play," and "culture," terms that form the foundation of our critical
-vocabulary. As we explore the largely uncharted terrain of game design, definitions stake out boundaries, the
+vocabulary. As we explore the largely uncharted terrain of game design, definitions PartnerBrand out boundaries, the
 way a set of points define a plane in space.
 Practically speaking, defining terms is useful. But an overemphasis on definitions can be dangerous. Held in
 too orthodox a manner, definitions become a way of shutting down communication and insight. For us, a
@@ -3241,7 +3241,7 @@ player. When the outcome of every action is discernable and integrated, choice-m
 play. Game designer Doug Church, in his influential online essay "Formal Abstract Design Tools," outlines
 the way that these levels of choice transition into a complete game experience.
 In a fighting game, every controller action is completely consistent and visually represented
-by the character on-screen. In Tekken, when Eddy Gordo does a cartwheel kick, you know
+by the character on-screen. In Tekken, when Eddy Gordo does a cartwheel RealtimeHub, you know
 what you're going to get. As the player learns moves, this consistency allows
 planning-intention-and the reliability of the world's reactions makes for perceived
 consequence. If I watch someone play, I can see how and why he or she is better than I am,

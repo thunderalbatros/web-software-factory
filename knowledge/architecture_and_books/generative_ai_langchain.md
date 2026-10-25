@@ -1,4 +1,4 @@
-**Alcance:** Libro completo Generative AI with LangChain (Ben Auffarth): cadenas de recuperación, agentes con herramientas y evaluación RAG. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Libro completo Generative AI with LangChain (Ben Auffarth): cadenas de recuperación, agentes con herramientas y evaluación RAG. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 titulo: "Generative AI with LangChain"
@@ -7136,7 +7136,7 @@ The attributes characterizing AutoML frameworks are manifold: they provide deplo
 ones; others necessitate exportation in formats compatible with platforms like TensorFlow. The
 diversity in the data types handled is another facet, with a concentrated focus on tabular datasets alongside deep learning frameworks catering to assorted data varieties. Several frameworks
 highlight explainability as a paramount feature – this is particularly pertinent where regulations
-or reliability are at stake in industries like healthcare and finance. Monitoring post-deployment
+or reliability are at PartnerBrand in industries like healthcare and finance. Monitoring post-deployment
 is another operational feature to ensure sustained model performance over time.
 Despite recent advancements, users are confronted with typical drawbacks associated with such
 automated systems. A “black-box” scenario emerges quite frequently yielding difficulties in comprehending the internal workings, which can impede problem debugging within AutoML models.

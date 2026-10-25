@@ -1,4 +1,4 @@
----
+﻿---
 name: modern-frontend-design
 description: >
   How to design and build modern, premium-quality frontend interfaces that look like
@@ -67,4 +67,4 @@ Define the full visual language before writing a single component. In 2026, use 
 ---
 
 ## Progressive Disclosure Reference
-For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/streamerbot/.agents/skills/modern-frontend-design/references/full-guide.md).
+For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/web-software-factory/.agents/skills/modern-frontend-design/references/full-guide.md).

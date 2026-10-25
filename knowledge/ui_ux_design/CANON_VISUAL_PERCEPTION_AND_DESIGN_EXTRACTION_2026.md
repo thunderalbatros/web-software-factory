@@ -1,4 +1,4 @@
-# CANON SOTA 2026: Percepción Visual, Minería de Referencias y Extracción de Sistemas de Diseño para Agentes de IA
+﻿# CANON SOTA 2026: Percepción Visual, Minería de Referencias y Extracción de Sistemas de Diseño para Agentes de IA
 
 > **Área:** Visual Web Agents, Multimodal GUI Understanding, Design Token Extraction & Visual Benchmarking  
 > **Estado:** Documento Canónico de Conocimiento del Equipo de Agentes  
@@ -84,7 +84,7 @@ Para que los agentes busquen referencias idóneas en cada caso de uso, el equipo
 | **[Godly.website](https://godly.website)** | Sitios web con dirección de arte premiada y micro-interacciones | Para layouts asimétricos, tipografía expresiva, animaciones y transiciones de estado. |
 | **[Awwwards](https://www.awwwards.com)** | Estándar global de diseño interactivo y 3D web | Para referencias de WebGL, WebGPU, efectos de cursor y scroll narrativo. |
 | **[Mobbin](https://mobbin.com)** | Patrones reales de interfaces web y móviles | Para resolver flujos de usuario complejos (autenticación, tablas de transacciones, modales). |
-| **Líderes de la Industria (Benchmarks Directos):** | Stake.com, Roobet, Rollbit, CSGOEmpire, Linear.app, Vercel, Apple | Referencias directas para casino, streaming de alta energía, dashboards analíticos y micro-interacciones táctiles. |
+| **Líderes de la Industria (Benchmarks Directos):** | partner-platform.com, Roobet, Rollbit, CSGOEmpire, Linear.app, Vercel, Apple | Referencias directas para casino, streaming de alta energía, dashboards analíticos y micro-interacciones táctiles. |
 
 ---
 
@@ -98,7 +98,7 @@ Al comparar nuestro sitio contra una referencia de alta gama, el VLM o agente ev
 2. **Presupuesto Cromático (Regla 90/8/2):**
    - 90% fondos oscuros profundos (`#06080D`, `#0B0F19`).
    - 8% superficies intermedias de cristal y bordes semitransparentes.
-   - 2% acentos de alta saturación (Dorado `#FFD700`, Verde Kick `#53FC18`, Cyan `#00E5FF`).
+   - 2% acentos de alta saturación (Dorado `#FFD700`, Verde RealtimeHub `#53FC18`, Cyan `#00E5FF`).
 3. **Profundidad Física y Materiales:**
    - ¿Se utilizan bordes de luz (`inset 0 1px 0 rgba(255,255,255,0.12)`) en vez de sombras oscuras invisibles?
    - ¿El glassmorphism tiene saturación de color (`saturate(180%)`) y textura de ruido anti-banding?

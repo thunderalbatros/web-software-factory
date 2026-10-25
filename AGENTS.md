@@ -1,11 +1,11 @@
-# AGENTS.md — Web Software Factory Studio (Multi-Project ISO/IEC 26550)
+﻿# AGENTS.md — Web Software Factory Studio (Multi-Project ISO/IEC 26550)
 
 > **Studio:** Independent Multi-Project Web Software Factory (`web-software-factory`)
 > **Communication Rule:** Argentine Spanish with the user; English for code, commits, identifiers, and tests.
 
 ## 1. Context & Architecture
 - **Role:** Domain Engineering Studio (`ISO/IEC 26550`) that scaffolds, specifies (`spec-kit`), builds, and audits high-converting websites (`templates/astro-edge` & `templates/vanilla-edge`) inside `projects/<slug>` or external client repositories.
-- **Hardware & FinOps:** Lightweight Node.js + Cloudflare Workers Static Assets + D1/SQLite, zero Docker, surgical file reads (`StartLine`/`EndLine` <= 160 lines), query `Omni-RAG v5` (`hunthub-omni-rag`) first.
+- **Hardware & FinOps:** Lightweight Node.js + Cloudflare Workers Static Assets + D1/SQLite, zero Docker, surgical file reads (`StartLine`/`EndLine` <= 160 lines), query `Omni-RAG v5` (`web-factory-omni-rag`) first.
 - **Fact Tagging:** `[VERIFICADO: source, date]` for verified facts; `[ASUNCIÓN]` for unverified claims.
 
 ## 2. Core CLI Commands (`tools/factory.mjs`)

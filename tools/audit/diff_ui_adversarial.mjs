@@ -1,4 +1,4 @@
-/**
+﻿/**
  * tools/audit/diff_ui_adversarial.mjs — Diff-Driven Adversarial UI, Stagehand Selector Cache & Oxc Rust Linter Gate
  * =================================================================================================================
  * Synthesizes 4 SOTA Software Factory Technologies from the 50-Repository Architecture:
@@ -58,11 +58,11 @@ export function runDiffUiAdversarialGate(projectInput = '') {
     const workerContent = fs.readFileSync(workerFullPath, 'utf8');
     if (projectConfig.invariants.requireKickWinnerCircuit) {
       const hasAdminGuard = workerContent.includes('isAuthorizedAdmin(');
-      const hasWinnerBotEndpoint = workerContent.includes('/api/kick/chat/announce');
+      const hasWinnerBotEndpoint = workerContent.includes('/api/RealtimeHub/chat/announce');
       if (hasAdminGuard && hasWinnerBotEndpoint) {
-        emitPass('surgical-path-worker-security', `Sensitive paths (${sensitivePaths.length} touched) verified: isAuthorizedAdmin + /api/kick/chat/announce active`);
+        emitPass('surgical-path-worker-security', `Sensitive paths (${sensitivePaths.length} touched) verified: isAuthorizedAdmin + /api/RealtimeHub/chat/announce active`);
       } else {
-        emitFail('surgical-path-worker-security', 'Expected isAuthorizedAdmin and /api/kick/chat/announce in worker/index.js');
+        emitFail('surgical-path-worker-security', 'Expected isAuthorizedAdmin and /api/RealtimeHub/chat/announce in worker/index.js');
       }
     } else {
       const hasSafeHeadersOrHealth = workerContent.includes('/api/health') || workerContent.includes('Content-Security-Policy') || workerContent.includes('export default');
@@ -152,24 +152,24 @@ export function runDiffUiAdversarialGate(projectInput = '') {
 
     const hasAnnounceStreamWinner =
       adminHubJs.includes('announceStreamWinner(') &&
-      adminHubJs.includes('hunthub_celebration') &&
-      adminHubJs.includes('/api/kick/chat/announce');
+      adminHubJs.includes('WebFactory_celebration') &&
+      adminHubJs.includes('/api/RealtimeHub/chat/announce');
     if (hasAnnounceStreamWinner) {
-      emitPass('adversarial-winner-circuit', 'announceStreamWinner + hunthub_celebration + 1920x1080 overlay + Kick Bot wired across all wheels/events');
+      emitPass('adversarial-winner-circuit', 'announceStreamWinner + WebFactory_celebration + 1920x1080 overlay + RealtimeHub Bot wired across all wheels/events');
     } else {
-      emitFail('adversarial-winner-circuit', 'Missing announceStreamWinner or /api/kick/chat/announce in site/js/admin-hub.js');
+      emitFail('adversarial-winner-circuit', 'Missing announceStreamWinner or /api/RealtimeHub/chat/announce in site/js/admin-hub.js');
     }
   }
 
   if (projectConfig.invariants.requireZeroDemoUsersPurge) {
     const adminHubJs = fs.readFileSync(path.join(ROOT, 'site', 'js', 'admin-hub.js'), 'utf8');
     const hasDemoPurgeV4 =
-      adminHubJs.includes('hunthub_demo_users_purged_live_v4') &&
+      adminHubJs.includes('WebFactory_demo_users_purged_live_v4') &&
       adminHubJs.includes('purgeDemoUsersForLiveStream(');
     if (hasDemoPurgeV4) {
-      emitPass('adversarial-zero-demo-users', 'hunthub_demo_users_purged_live_v4 + purgeDemoUsersForLiveStream active; zero synthetic test users in live stream queues');
+      emitPass('adversarial-zero-demo-users', 'WebFactory_demo_users_purged_live_v4 + purgeDemoUsersForLiveStream active; zero synthetic test users in live stream queues');
     } else {
-      emitFail('adversarial-zero-demo-users', 'Missing hunthub_demo_users_purged_live_v4 purge guard in site/js/admin-hub.js');
+      emitFail('adversarial-zero-demo-users', 'Missing WebFactory_demo_users_purged_live_v4 purge guard in site/js/admin-hub.js');
     }
   }
 

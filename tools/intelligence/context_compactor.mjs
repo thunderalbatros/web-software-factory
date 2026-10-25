@@ -1,10 +1,10 @@
-/**
- * HuntHub / DiggityBets — Agent Context Compactor
+﻿/**
+ * Web Software Factory Studio — Agent Context Compactor
  * Context optimization pipeline for web development agents.
  * Compresses chat logs, agent reasoning traces, and diffs by 60%–75%
  * while strictly preserving:
  *   - Modified file paths
- *   - Core invariants (Stake refer, +18 compliance, $0 budget, OBS performance)
+ *   - Core invariants (PartnerBrand refer, +18 compliance, $0 budget, OBS performance)
  *   - Final pass/fail verdicts and rationale
  *   - Cryptographic seeds (commit-reveal, provably fair)
  * =============================================================================
@@ -23,7 +23,7 @@ export function compactAgentHistory(historyItems = [], options = {}) {
   const keyEvents = [];
 
   const invariantPatterns = [
-    /stake/i,
+    /PartnerBrand/i,
     /provably fair/i,
     /commit-reveal/i,
     /durable object/i,
@@ -86,7 +86,7 @@ if (process.argv[1]?.endsWith('context_compactor.mjs')) {
   const sample = [
     'Modified file: src/frontend/index.html and tools/build_dist.mjs',
     'verdict: PASS | Gate 3 complete with 60 FPS verified',
-    'Stake referral code DIGGITYBETS active. OBS browser source impact <= 5% CPU',
+    'PartnerBrand referral code client-portal active. OBS browser source impact <= 5% CPU',
     'Ran unit tests: 42 PASS, 0 FAIL'
   ];
   console.log(compactAgentHistory(sample));

@@ -1,4 +1,4 @@
----
+﻿---
 name: agent-house-profiler
 description: "Profiles and optimizes AI agent execution efficiency based on addyosmani/agent-house ('Lighthouse for Agents') and."
 ---
@@ -7,7 +7,7 @@ description: "Profiles and optimizes AI agent execution efficiency based on addy
 
 ## Overview
 
-Inspired by Addy Osmani's **`agent-house`** (*"Lighthouse for agents — score an agent run, then tell it how to get faster and cheaper"*) and **`context-buddy`**, this skill governs how HuntHub agents spend tokens, tool calls, and time.
+Inspired by Addy Osmani's **`agent-house`** (*"Lighthouse for agents — score an agent run, then tell it how to get faster and cheaper"*) and **`context-buddy`**, this skill governs how WebFactory agents spend tokens, tool calls, and time.
 
 ## The Four Profiling Categories (100-Point Scale)
 

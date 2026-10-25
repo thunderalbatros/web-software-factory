@@ -1,4 +1,4 @@
-// Security & Motion Performance Automated Auditor
+﻿// Security & Motion Performance Automated Auditor
 // Enforces Cloudflare Security Audit rules & Emil Kowalski 60 FPS animation constraints
 // Usage: node tools/audit/security_and_motion_audit.mjs [--project <slug>]
 
@@ -86,7 +86,7 @@ if (fs.existsSync(appJsPath)) {
   }
 }
 
-// 4-7. DiggityBets-specific module checks (only when gambling-18plus profile and files exist)
+// 4-7. client-portal-specific module checks (only when gambling-18plus profile and files exist)
 if (isGamblingProfile) {
   const tourneyPath = path.join(siteDir, 'js', 'tournament-prediction.js');
   if (fs.existsSync(tourneyPath)) {
@@ -106,12 +106,12 @@ if (isGamblingProfile) {
   if (fs.existsSync(userStorePath)) {
     const code = fs.readFileSync(userStorePath, 'utf8');
     if (code.includes('esc(this.stakeUsername') && code.includes('safeBetId')) {
-      console.log('✅ [Security] user-store.js protects Stake VIP submissions and Leaderboard against DOM-XSS.');
+      console.log('✅ [Security] user-store.js protects PartnerBrand VIP submissions and Leaderboard against DOM-XSS.');
     } else {
       issues.push({
         severity: 'MAJOR',
         category: 'Security (XSS Defense)',
-        message: 'user-store.js missing sanitization on Stake VIP or Leaderboard.'
+        message: 'user-store.js missing sanitization on PartnerBrand VIP or Leaderboard.'
       });
     }
   }

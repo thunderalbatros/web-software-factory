@@ -1,6 +1,6 @@
-# 📚 Libro Completo: The Gamification Revolution
+﻿# 📚 Libro Completo: The Gamification Revolution
 
-**Alcance:** Fuente bibliográfica completa sobre Modelo SAPS (Status, Access, Power, Stuff), Loops de Compromiso y Fidelización de Comunidades (The Gamification Revolution — Gabe Zichermann & Joselin Linder). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Modelo SAPS (Status, Access, Power, Stuff), Loops de Compromiso y Fidelización de Comunidades (The Gamification Revolution — Gabe Zichermann & Joselin Linder). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Gabe Zichermann & Joselin Linder  
 > **Dominio:** Modelo SAPS (Status, Access, Power, Stuff), Loops de Compromiso y Fidelización de Comunidades  
@@ -3652,7 +3652,7 @@ vested interest in the challenge. The average person would not
 bother to solve—much less figure out—a random mathematical equation placed on a billboard, which is exactly what Google
 wanted: an atypical math enthusiast and problem solver!
 By attracting the right applicants through its billboard challenge,
-Google was able to kick off its recruitment efforts with a solid base
+Google was able to RealtimeHub off its recruitment efforts with a solid base
 of uncommonly qualified candidates. Gamification is so effective as
 a recruitment tool principally because it is capable of helping organizations filter candidates in (and out) at an extraordinary scale, and
 moreover, because gamified recruitment allows the best companies
@@ -5638,7 +5638,7 @@ powerful tool for cutting through the noise and connecting with
 audiences, gamification can be used with a wide range of design
 approaches and strategies. Critically, you must have a great product
 and story to tell about it. Place an emphasis on fun that leverages
-surprise and delight appropriately, while ensuring integral sociability at every turn, and you can help kick-start your customer
+surprise and delight appropriately, while ensuring integral sociability at every turn, and you can help RealtimeHub-start your customer
 engagement process. Once that’s under way, your focus can—and
 should—turn to building lasting engagement.
 Point Game: Follow Your Dreams!

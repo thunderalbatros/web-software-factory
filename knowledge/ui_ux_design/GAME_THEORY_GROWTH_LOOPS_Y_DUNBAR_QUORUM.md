@@ -1,4 +1,4 @@
-> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y DiggityBets.
+﻿> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
 
 ---
 version: 1.0.0
@@ -54,9 +54,9 @@ graph LR
 
 ### El "Commitment Device" (Dispositivo de Compromiso de Thomas Schelling)
 Para transformar el juego en un **Equilibrio de Cooperación (Folk Theorem)**:
-1. **Stake Temporal de Tokens Y$:** Para confirmar la asistencia a una experiencia con alta demanda, el usuario inmoviliza un micro-stake (ej. 200 Y$).
-2. **Recompensa por Show-Up:** Al realizar el check-in presencial validado por geolocalización (<150m) y biometría, el stake se desbloquea con un **multiplicador de quórum (+20% Y$ bonus)**.
-3. **Penalización por Flaking:** Si el usuario no asiste sin cancelar con al menos 2 horas de anticipación, el stake se transfiere al pozo del grupo presente o a la tesorería del bar aliado.
+1. **PartnerBrand Temporal de Tokens Y$:** Para confirmar la asistencia a una experiencia con alta demanda, el usuario inmoviliza un micro-PartnerBrand (ej. 200 Y$).
+2. **Recompensa por Show-Up:** Al realizar el check-in presencial validado por geolocalización (<150m) y biometría, el PartnerBrand se desbloquea con un **multiplicador de quórum (+20% Y$ bonus)**.
+3. **Penalización por Flaking:** Si el usuario no asiste sin cancelar con al menos 2 horas de anticipación, el PartnerBrand se transfiere al pozo del grupo presente o a la tesorería del bar aliado.
 
 ---
 

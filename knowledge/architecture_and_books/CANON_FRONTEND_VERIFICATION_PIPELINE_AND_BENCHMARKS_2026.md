@@ -1,6 +1,6 @@
-# Tratado Canónico: Frontend Verification Pipeline, Visual Snapshot Regression & SOTA Benchmarks (2025–2026)
+﻿# Tratado Canónico: Frontend Verification Pipeline, Visual Snapshot Regression & SOTA Benchmarks (2025–2026)
 
-**Alcance:** Este documento establece la arquitectura canónica del **Pipeline de Verificación Frontend Automatizado**, **Regresión Visual de Píxeles (Playwright + Pixelmatch)**, **Compuertas de Fusión Calificadas para Producción (PQC — Production-Qualified Change Merge Gates)** y el estado del arte de los **Benchmarks Agénticos Frontend (Design2Code, Design Arena, SWE-bench Multimodal, WebArena)** para la Software Factory de HuntHub / DiggityBets. NO es fuente de tokens de diseño CSS (ver `site/css/design-tokens.css` y `DESIGN_MASTERY_2026.md`), NI de orquestación RAG (ver `CANON_SELF_EVOLVING_SOFTWARE_FACTORY_AND_SPECULATIVE_RAG_2026.md`), NI de matemáticas de azar (ver `CANON_PROVABLY_FAIR_GAMES_2026.md`).
+**Alcance:** Este documento establece la arquitectura canónica del **Pipeline de Verificación Frontend Automatizado**, **Regresión Visual de Píxeles (Playwright + Pixelmatch)**, **Compuertas de Fusión Calificadas para Producción (PQC — Production-Qualified Change Merge Gates)** y el estado del arte de los **Benchmarks Agénticos Frontend (Design2Code, Design Arena, SWE-bench Multimodal, WebArena)** para la Software Factory de Web Software Factory Studio. NO es fuente de tokens de diseño CSS (ver `site/css/design-tokens.css` y `DESIGN_MASTERY_2026.md`), NI de orquestación RAG (ver `CANON_SELF_EVOLVING_SOFTWARE_FACTORY_AND_SPECULATIVE_RAG_2026.md`), NI de matemáticas de azar (ver `CANON_PROVABLY_FAIR_GAMES_2026.md`).
 
 ---
 
@@ -89,7 +89,7 @@ Cuando Pixelmatch detecta una discrepancia superior al umbral (`maxDiffPixelRati
 
 `[VERIFICADO: Stanford SALT Lab Design2Code 2024, Design Arena 2025, SWE-bench Multimodal 2025]`
 
-| Benchmark / Entorno | Creador / Año | Enfoque Evaluado | Métrica Principal | Aplicabilidad en HuntHub |
+| Benchmark / Entorno | Creador / Año | Enfoque Evaluado | Métrica Principal | Aplicabilidad en WebFactory |
 | :--- | :--- | :--- | :--- | :--- |
 | **Design2Code** | Stanford University (SALT Lab), 2024 | Conversión directa de capturas de diseño (screenshots) a código HTML/CSS ejecutable. | Block-Match Rate, Visual CLIP Score, CW-SSIM, TreeBLEU. | Evaluación del agente diseñador visual y consistencia de maquetado. |
 | **Design Arena** | DesignArena.ai, 2025 | Competencia ciega y crowdsourced de agentes en generación de UIs interactivas, componentes y aplicaciones web completas. | Elo Rating en Frontend, Websites y UI Components. | Referencia de patrones de micro-interacción y modernidad de componentes. |
@@ -101,7 +101,7 @@ Cuando Pixelmatch detecta una discrepancia superior al umbral (`maxDiffPixelRati
 
 ## 4. Pipeline de Fusión Calificada para Producción (PQC Gate)
 
-`[VERIFICADO: Augmented Engineering Standards 2026, HuntHub Architecture]`
+`[VERIFICADO: Augmented Engineering Standards 2026, WebFactory Architecture]`
 
 Para que un parche o nueva funcionalidad desarrollada por un agente de la Software Factory sea apta para producción, debe superar secuencialmente 5 compuertas:
 
@@ -151,7 +151,7 @@ Para que un parche o nueva funcionalidad desarrollada por un agente de la Softwa
 
 ---
 
-## 5. Implementación Concreta en el Arsenal de HuntHub ($0 / Host Ligero)
+## 5. Implementación Concreta en el Arsenal de WebFactory ($0 / Host Ligero)
 
 1. **Herramienta de Regresión Visual (`tools/audit/visual_regression.mjs`)**:
    - Corre sobre `Playwright` nativo ya instalado en el workspace.

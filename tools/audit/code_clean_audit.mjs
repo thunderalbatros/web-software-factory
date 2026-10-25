@@ -1,6 +1,6 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
- * DiggityBets / HuntHub — AI Clean Code, AST Anti-Pattern & 60-FPS Motion Architecture Auditor
+ * Web Software Factory Studio — AI Clean Code, AST Anti-Pattern & 60-FPS Motion Architecture Auditor
  * Usage: node tools/audit/code_clean_audit.mjs
  * Outputs: tools/audit/out/clean-code-report.json (0-100 Score + actionable findings)
  */
@@ -28,7 +28,7 @@ function addFinding(severity, category, file, line, message, fixHint) {
 function collectFiles(dir, exts, result = []) {
   if (!fs.existsSync(dir)) return result;
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (entry.name === 'node_modules' || entry.name === '.git' || entry.name === 'dist' || entry.name === 'references' || entry.name === 'vendor' || entry.name === 'stake-games') continue;
+    if (entry.name === 'node_modules' || entry.name === '.git' || entry.name === 'dist' || entry.name === 'references' || entry.name === 'vendor' || entry.name === 'PartnerBrand-games') continue;
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) {
       collectFiles(full, exts, result);

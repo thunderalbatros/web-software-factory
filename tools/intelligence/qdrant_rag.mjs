@@ -1,5 +1,5 @@
-/**
- * HuntHub — Qdrant Cloud Vector Search & RAG Module
+﻿/**
+ * WebFactory — Qdrant Cloud Vector Search & RAG Module
  * =============================================================================
  * Connects directly to Qdrant Vector Cloud cluster with zero bloat.
  * =============================================================================

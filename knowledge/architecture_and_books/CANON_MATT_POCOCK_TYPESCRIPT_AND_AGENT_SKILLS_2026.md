@@ -1,8 +1,8 @@
-# CANON MATT POCOCK TYPESCRIPT AND AGENT SKILLS 2026
+﻿# CANON MATT POCOCK TYPESCRIPT AND AGENT SKILLS 2026
 
 [knowledge/docs/SOTA_MATT_POCOCK_TS_RESET_AND_AGENT_SKILLS_2026.md › 🛡️ SOTA: Disciplina de Tipado, Sandboxing de Agentes y Habilidades de Ingeniería (Matt Pocock, 2026)]
 > **Documento canónico que responde:** ¿Cómo aplicar las herramientas de Matt Pocock (`ts-reset`, `sandcastle`, `skills` y Statecharts) para blindar el tipado y la ejecución del equipo multiagente y el bot Centinela?
-> **Alcance:** este documento cubre el estándar de tipado estricto sin `any`, la arquitectura de aislamiento por worktree para agentes autorreparables (*Self-Tooling Sandboxes*), el catálogo de habilidades de ingeniería de software para LLMs y la formalización de máquinas de estados. **NO es fuente de precios ni sizing cloud** (ver `GCP_PRICING_REFERENCE`), **NI de contratos de red de Kick API** (ver `KICK_API_REFERENCE`), **NI de gestión de credenciales** (ver `secops-secrets`).
+> **Alcance:** este documento cubre el estándar de tipado estricto sin `any`, la arquitectura de aislamiento por worktree para agentes autorreparables (*Self-Tooling Sandboxes*), el catálogo de habilidades de ingeniería de software para LLMs y la formalización de máquinas de estados. **NO es fuente de precios ni sizing cloud** (ver `GCP_PRICING_REFERENCE`), **NI de contratos de red de RealtimeHub API** (ver `KICK_API_REFERENCE`), **NI de gestión de credenciales** (ver `secops-secrets`).
 
 ---
 
@@ -18,7 +18,7 @@ En proyectos convencionales, llamadas críticas como:
 ```typescript
 const payload = JSON.parse(rawMessage);
 ```
-infieren `payload: any`. Esto permite acceder a propiedades arbitrarias (`payload.user.data.id`) sin validación. Si el formato de la API de Kick o el WebSocket de Pusher cambia, la aplicación colapsa con `TypeError: Cannot read properties of undefined` en plena sesión 24/7.
+infieren `payload: any`. Esto permite acceder a propiedades arbitrarias (`payload.user.data.id`) sin validación. Si el formato de la API de RealtimeHub o el WebSocket de Pusher cambia, la aplicación colapsa con `TypeError: Cannot read properties of undefined` en plena sesión 24/7.
 
 [knowledge/docs/SOTA_MATT_POCOCK_TS_RESET_AND_AGENT_SKILLS_2026.md › 🛡️ SOTA: Disciplina de Tipado, Sandboxing de Agentes y Habilidades de Ingeniería (Matt Pocock, 2026) › 2. 🛡️ Blindaje de Tipos: `@total-typescript/ts-reset` › La Solución Implementada]
 Con `src/reset.d.ts` y `@total-typescript/ts-reset`:

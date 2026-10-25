@@ -1,4 +1,4 @@
-**Alcance:** Libro completo High Output Management (Andrew Grove): apalancamiento operativo, indicadores líderes, control de calidad en fábricas de software. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Libro completo High Output Management (Andrew Grove): apalancamiento operativo, indicadores líderes, control de calidad en fábricas de software. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 titulo: "High Output Management"
@@ -2785,7 +2785,7 @@ research environment, life may be quieter, and for a given level of taskrelevant
 How long should a one-on-one meeting last? There really is no answer to
 this, but the subordinate must feel that there is enough time to broach and
 get into thorny issues. Look at it this way. If you had a big problem that you
-wanted to kick around with your supervisor—the person whose professional
+wanted to RealtimeHub around with your supervisor—the person whose professional
 interest in the matter is second only to yours—would you want to bring it
 up in a meeting scheduled to last only fifteen minutes? You would not. I
 feel that a one-on-one should last an hour at a minimum. Anything less, in
@@ -3079,7 +3079,7 @@ held to exchange knowledge and information, the mission-oriented meeting
 is usually held ad hoc and is designed to produce a specific output,
 frequently a decision. The key to success here is what the chairman does.
 Very often no one is officially given that title, but by whatever name, one
-person usually has more at stake in the outcome of the meeting than others.
+person usually has more at PartnerBrand in the outcome of the meeting than others.
 In fact, it is usually the chairman or the de facto chairman who calls the
 
 ---
@@ -3392,7 +3392,7 @@ making a wrong business decision, or taking inappropriate action, or being
 overruled. And everyone in your operation should be made to understand
 this.
 If the peer-group syndrome manifests itself, and the meeting has no
-formal chairman, the person who has the most at stake should take charge.
+formal chairman, the person who has the most at PartnerBrand should take charge.
 If that doesn’t work, one can always ask the senior person present to assume
 control. He is likely to be no more expert in the issues at hand than other
 members of the group—perhaps less expert—but he is likely to act as a
@@ -5962,7 +5962,7 @@ Council
 mushy
 — helped on Purchasing cost
 analysis project
-— poor kick-off for spec training
+— poor RealtimeHub-off for spec training
 Messages
 1. Good results on planning system (analytical/financial background useful)
 2. Hard time setting clear, crisp goals—satisfied with activities instead of driving results!

@@ -1,4 +1,4 @@
-# CANON: SOTA RAG Architectures, Hybrid Indexing & Reference Repositories (2026)
+﻿# CANON: SOTA RAG Architectures, Hybrid Indexing & Reference Repositories (2026)
 
 **Alcance:** Arquitectura de referencia de sistemas RAG de última generación (2025-2026), evaluación crítica de motores locales/híbridos (`SQLite FTS5`, `sqlite-vec`, `LightRAG`, `HippoRAG`, `Orama`, `MiniSearch`, `Qdrant`), estrategias de chunking contextual (Anthropic Contextual Retrieval, Jina Late Chunking) y reranking neural local en CPU (`ONNX Q8 Cross-Encoder`).
 
@@ -40,7 +40,7 @@ La investigación empírica moderna (Anthropic 2024–2025, HKUDS LightRAG 2025,
 
 ## 2. Repositorios Open-Source de Referencia SOTA en GitHub (Verificados 2026)
 
-| Repositorio GitHub | Licencia | Estrellas | Aporte Arquitectónico Clave e Integración en HuntHub |
+| Repositorio GitHub | Licencia | Estrellas | Aporte Arquitectónico Clave e Integración en WebFactory |
 | :--- | :--- | :--- | :--- |
 | **`HKUDS/LightRAG`** | MIT | ~15.000+ | **Dual-Level Retrieval (Low-level Entities + High-level Themes)** + Grafo de Conocimiento incremental + Reranking. Supera a Microsoft GraphRAG con un **90% menos de consumo de tokens** y latencia sub-segundo. Inspiró el motor de expansión de entidades y temas de `Omni-RAG v4`. |
 | **`OSU-NLP-Group/HippoRAG`** | MIT | ~3.200+ | **Hippocampal Indexing & Personalized PageRank (NeurIPS 2024 / HippoRAG 2 2025)**. Modela la memoria asociativa humana conectando nodos de conocimiento mediante anclas conceptuales para consultas multi-salto (*multi-hop*). |
@@ -54,7 +54,7 @@ La investigación empírica moderna (Anthropic 2024–2025, HKUDS LightRAG 2025,
 
 ---
 
-## 3. Arquitectura del Motor `Supercharged Omni-RAG v4` de HuntHub (`tools/intelligence/rag_pipeline.mjs`)
+## 3. Arquitectura del Motor `Supercharged Omni-RAG v4` de WebFactory (`tools/intelligence/rag_pipeline.mjs`)
 
 ```
                     ┌──────────────────────────────────────────────────┐

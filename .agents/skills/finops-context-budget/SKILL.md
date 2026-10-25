@@ -1,6 +1,6 @@
----
+﻿---
 name: finops-context-budget
-description: "Disciplina de presupuesto de contexto y coste para el equipo de desarrollo web de HuntHub."
+description: "Disciplina de presupuesto de contexto y coste para el equipo de desarrollo web de WebFactory."
 ---
 
 # FinOps — Presupuesto de Contexto y Coste

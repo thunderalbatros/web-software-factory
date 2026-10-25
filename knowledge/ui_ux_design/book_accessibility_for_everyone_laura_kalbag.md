@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Accessibility for Everyone
+﻿# 📚 Libro Completo: Accessibility for Everyone
 
-**Alcance:** Fuente bibliográfica completa sobre Accesibilidad Web Universal (WCAG), Diseño Inclusivo, Lectores de Pantalla, Contraste y Ergonomía de Teclado (Accessibility for Everyone — Laura Kalbag (A Book Apart)). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Accesibilidad Web Universal (WCAG), Diseño Inclusivo, Lectores de Pantalla, Contraste y Ergonomía de Teclado (Accessibility for Everyone — Laura Kalbag (A Book Apart)). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Laura Kalbag (A Book Apart)  
 > **Dominio:** Accesibilidad Web Universal (WCAG), Diseño Inclusivo, Lectores de Pantalla, Contraste y Ergonomía de Teclado  

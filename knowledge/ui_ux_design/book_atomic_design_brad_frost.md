@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Atomic Design (Edición Español)
+﻿# 📚 Libro Completo: Atomic Design (Edición Español)
 
-**Alcance:** Fuente bibliográfica completa sobre Metodología Atomic Design: Átomos, Moléculas, Organismos, Plantillas y Páginas para Sistemas de Diseño Web (Atomic Design (Edición Español) — Brad Frost). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Metodología Atomic Design: Átomos, Moléculas, Organismos, Plantillas y Páginas para Sistemas de Diseño Web (Atomic Design (Edición Español) — Brad Frost). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Brad Frost  
 > **Dominio:** Metodología Atomic Design: Átomos, Moléculas, Organismos, Plantillas y Páginas para Sistemas de Diseño Web  

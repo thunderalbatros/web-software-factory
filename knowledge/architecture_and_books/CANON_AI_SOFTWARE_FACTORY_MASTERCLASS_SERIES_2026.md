@@ -1,4 +1,4 @@
-# Canon: Masterclass Series — Industrial AI Software Factories (2026)
+﻿# Canon: Masterclass Series — Industrial AI Software Factories (2026)
 
 > **Curaduría:** Antigravity Tech Lead & SOTA Research Squad  
 > **Fuente:** Análisis e ingesta exhaustiva de 8 conferencias y masterclasses canónicas de líderes de la industria (Cursor, Warp, Factory.ai, Tessl, theSeniorDev, David Ondrej, Leon van Zyl, How I AI).  
@@ -131,7 +131,7 @@ Como explica **theSeniorDev** y **Zach Lloyd (Warp)**:
 
 ## 3. Matriz Comparativa: Nuestra Arquitectura vs. El Modelo Canónico
 
-| Componente de Software Factory | Estado Canónico (Cursor / Warp / Tessl) | Estado Actual en HuntHub / DiggityBets | Brecha / Oportunidad de Evolución |
+| Componente de Software Factory | Estado Canónico (Cursor / Warp / Tessl) | Estado Actual en Web Software Factory Studio | Brecha / Oportunidad de Evolución |
 | :--- | :--- | :--- | :--- |
 | **Entorno Aislado** | Sandboxes efímeros / MicroVMs | `tools/lib/sandcastle-runner.mjs` (Git Worktrees `.sandboxes/`) | ✅ Superado: 0 MB de consumo en idle, sin Docker. |
 | **Integridad Simbólica y AST** | Serena-MCP / ast-grep | `tools/intelligence/ast_guard.mjs` (0 ReDoS, 0 Missing Methods) | ✅ Implementado: Detección estática de métodos y XSS. |

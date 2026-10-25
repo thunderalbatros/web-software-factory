@@ -1,6 +1,6 @@
-# 📚 Libro Completo: The Gamer's Brain: How Neuroscience and UX Can Impact Video Game Design
+﻿# 📚 Libro Completo: The Gamer's Brain: How Neuroscience and UX Can Impact Video Game Design
 
-**Alcance:** Fuente bibliográfica completa sobre Neurociencia Aplicada a UX, Percepción, Memoria de Trabajo, Atención, Motivación y Onboarding de Juegos (The Gamer's Brain: How Neuroscience and UX Can Impact Video Game Design — Celia Hodent). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Neurociencia Aplicada a UX, Percepción, Memoria de Trabajo, Atención, Motivación y Onboarding de Juegos (The Gamer's Brain: How Neuroscience and UX Can Impact Video Game Design — Celia Hodent). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Celia Hodent  
 > **Dominio:** Neurociencia Aplicada a UX, Percepción, Memoria de Trabajo, Atención, Motivación y Onboarding de Juegos  

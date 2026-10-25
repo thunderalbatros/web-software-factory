@@ -1,6 +1,6 @@
-# UI RECIPES CATALOG — Semantic Intent-to-Code Mapping (2026)
+﻿# UI RECIPES CATALOG — Semantic Intent-to-Code Mapping (2026)
 
-> **Purpose:** Instant lookup catalog for Antigravity and HuntHub agents.  
+> **Purpose:** Instant lookup catalog for Antigravity and WebFactory agents.  
 > Whenever a prompt describes a visual effect or interaction, find the exact formula and file path in `< 1 second`.
 
 ---

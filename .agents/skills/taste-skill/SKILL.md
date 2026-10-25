@@ -1,4 +1,4 @@
----
+﻿---
 name: design-taste-frontend
 description: "Anti-slop frontend skill for landing pages, portfolios, and redesigns."
 ---
@@ -67,4 +67,4 @@ After the design read, set three dials. Every layout, motion, and density decisi
 ---
 
 ## Progressive Disclosure Reference
-For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/streamerbot/.agents/skills/taste-skill/references/full-guide.md).
+For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/web-software-factory/.agents/skills/taste-skill/references/full-guide.md).

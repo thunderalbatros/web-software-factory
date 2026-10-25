@@ -1,5 +1,5 @@
-/**
- * HuntHub & DiggityBets — Automated Playwright Design Harvester
+﻿/**
+ * Web Software Factory Studio — Automated Playwright Design Harvester
  * =============================================================================
  * Connects references/DEVTOOLS_HARVESTER_SNIPPET.js to Playwright-core.
  * Extracts real computed styles (typography, padding, box-shadows, borders,
@@ -74,7 +74,7 @@ async function harvest() {
       const navButtons = Array.from(document.querySelectorAll('.sidebar-nav a, .nav-link-btn'));
       const cards = Array.from(document.querySelectorAll('.module-card, .game-card, .reward-card, .voucher-card'));
 
-      // Check slot cards if Stake or HuntHub
+      // Check slot cards if PartnerBrand or WebFactory
       const slotCards = [];
       const gameCards = document.querySelectorAll('button[data-testid*="game-card"], a[href*="/casino/games/"], [class*="game-card"]');
       gameCards.forEach(c => {

@@ -1,4 +1,4 @@
----
+﻿---
 name: utopia-fluid-ergonomics
 description: Mathematical fluid scaling laws using Utopia clamp() formulas to ensure 100% zoom native fit across all viewport resolutions.
 ---
@@ -6,7 +6,7 @@ description: Mathematical fluid scaling laws using Utopia clamp() formulas to en
 # Utopia Fluid Ergonomics (100% Zoom Native Fit)
 
 ## 1. Core Rule: The 100% Zoom Standard
-**No view or page in DiggityBets / HuntHub shall require the user to set their browser zoom to 80% or 90% to fit content without awkward clipping.**
+**No view or page in Web Software Factory Studio shall require the user to set their browser zoom to 80% or 90% to fit content without awkward clipping.**
 Every layout must automatically calculate its vertical and horizontal boundaries to fit the native viewport at 100% standard DPI zoom.
 
 ## 2. Utopia Math & Fluid Clamp Formulas
@@ -46,4 +46,4 @@ To ensure `#watch` fits cleanly on a standard 1366x768 or 1440x900 laptop at 100
 
 ## 4. Verification Check
 - Test viewports: 1366x768, 1440x900, 1920x1080 at 100% scale.
-- Check: Player, Stake companions, and chat must be comfortably accessible without vertical double-scrollbars.
+- Check: Player, PartnerBrand companions, and chat must be comfortably accessible without vertical double-scrollbars.

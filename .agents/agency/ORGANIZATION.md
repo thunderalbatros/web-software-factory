@@ -1,7 +1,7 @@
-# Web Software Factory Studio — Virtual AI Agency Blueprint (SOTA 2026)
+﻿# Web Software Factory Studio — Virtual AI Agency Blueprint (SOTA 2026)
 
 > **Model:** Anthropic *Orchestrator-Workers* + *Evaluator-Optimizer* + *ISO/IEC 26550 SPLE* + *Paperclip Virtual Agency*  
-> **Status:** Active Multi-Project Operational Model (`diggitybets.vip` + Client Product Line)  
+> **Status:** Active Multi-Project Operational Model (`example-client.pages.dev` + Client Product Line)  
 > **Host Environment:** Windows / Antigravity IDE (Zero Daemon Overhead, Sub-500ms Rust/Zig Gates)
 
 ---

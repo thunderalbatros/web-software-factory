@@ -1,4 +1,4 @@
----
+﻿---
 name: copywriting
 description: "When the user wants to write, rewrite, or improve marketing copy for any page, including homepage, landing pages, pricing pages,."
 ---
@@ -67,4 +67,4 @@ If they include a writing sample, match its average sentence length, punctuation
 ---
 
 ## Progressive Disclosure Reference
-For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/streamerbot/.agents/skills/copywriting/references/full-guide.md).
+For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/web-software-factory/.agents/skills/copywriting/references/full-guide.md).

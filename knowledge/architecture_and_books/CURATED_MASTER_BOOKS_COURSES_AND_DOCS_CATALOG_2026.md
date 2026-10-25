@@ -1,6 +1,6 @@
-# CATÁLOGO MAESTRO CURADO: Libros, Documentación Oficial y Videocursos Gratuitos (Filtro de Calidad 2026)
+﻿# CATÁLOGO MAESTRO CURADO: Libros, Documentación Oficial y Videocursos Gratuitos (Filtro de Calidad 2026)
 
-**Alcance:** Aplicable a todos los Squads de la Software Factory Web y HuntHub / DiggityBets (`Squad 0` a `Squad 7`) como mapa de fuentes primarias verificadas de ingeniería web minimalista, animaciones 60 FPS, shaders, WebAudio, ciberseguridad, juegos interactivos para espectadores de Kick.com, gamificación, psicología del juego y marketing CRO.
+**Alcance:** Aplicable a todos los Squads de la Software Factory Web y Web Software Factory Studio (`Squad 0` a `Squad 7`) como mapa de fuentes primarias verificadas de ingeniería web minimalista, animaciones 60 FPS, shaders, WebAudio, ciberseguridad, juegos interactivos para espectadores de realtime-stream.com, gamificación, psicología del juego y marketing CRO.
 
 > **[VERIFICADO: GitHub Stars + Goodreads/O'Reilly Ratings + W3C/MDN/OWASP Primary Docs + Multi-Vault Migration, 2026-10-19]**
 
@@ -9,7 +9,7 @@
 ## 1. Filtro de Calidad y Confiabilidad Aplicado
 
 Toda fuente de conocimiento incorporada en el cerebro **Supercharged Omni-RAG v3** (`19,543` chunks contextuales, `100.0% Hit@5` en las 16 consultas doradas bilingües, `MRR: 0.906`) pasó por tres criterios obligatorios:
-1. **Autoridad y Reputación (Estrellas / Citaciones / Reseñas)**: Repositorios con miles de estrellas en GitHub, estándares oficiales (W3C, WHATWG, OWASP, MDN, web.dev, Cloudflare, Kick Dev Docs) o libros de referencia con calificación `>= 4.4 / 5.0`.
+1. **Autoridad y Reputación (Estrellas / Citaciones / Reseñas)**: Repositorios con miles de estrellas en GitHub, estándares oficiales (W3C, WHATWG, OWASP, MDN, web.dev, Cloudflare, RealtimeHub Dev Docs) o libros de referencia con calificación `>= 4.4 / 5.0`.
 2. **Vigencia Tecnológica (2025–2026)**: Prioridad a APIs nativas modernas (`@starting-style`, `content-visibility`, `View Transitions API`, `WAAPI`, `TrustedTypes`, `Cloudflare Durable Objects SQLite + Hibernation`, `OAuth 2.1 PKCE`).
 3. **Alineación con Restricciones Duras (`AGENTS.md` + `LEC-015`)**: Costo `$0` permanente sin tarjeta, licencias permisivas (`MIT`, `Apache-2.0`, `BSD`, `CC0`), consumo `<= 5% CPU` en OBS sobre HP 250 G8 y sanitización de términos ajenos con cabecera obligatoria `**Alcance:**`.
 

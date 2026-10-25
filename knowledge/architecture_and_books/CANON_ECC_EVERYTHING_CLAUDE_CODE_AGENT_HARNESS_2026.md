@@ -1,7 +1,7 @@
-# CANON: Everything Claude Code (ECC) — Autonomous Agent Harness & Continuous Learning Architecture (2026)
+﻿# CANON: Everything Claude Code (ECC) — Autonomous Agent Harness & Continuous Learning Architecture (2026)
 
 > **Origin:** `affaan-m/ECC` (Everything Claude Code) by Affaan Mustafa  
-> **Adaptation:** HuntHub / DiggityBets Engineering Suite & Google Antigravity IDE  
+> **Adaptation:** Web Software Factory Studio Engineering Suite & Google Antigravity IDE  
 > **Status:** Canonical Knowledge Base Document (Ingested for Centinela RAG & Multi-Agent Swarm)  
 > **Classification:** Software Engineering / Autonomous Agent Harnesses / Operational Discipline  
 
@@ -58,14 +58,14 @@ Every production task executed within the ECC harness follows an immutable 7-sta
 
 ## 3. Specialized Subagents Taxonomy (ECC Squad Mapping)
 
-ECC defines 71 specialized agent personas. In the HuntHub / DiggityBets architecture, these are mapped into 8 operational squads:
+ECC defines 71 specialized agent personas. In the Web Software Factory Studio architecture, these are mapped into 8 operational squads:
 
 | Squad | ECC Personas | Core Mandate & Triggers |
 |:---|:---|:---|
 | **Squad 0 — Manager / Tech Lead** | `planner`, `architect`, `agent-evaluator` | Work breakdown, Gate approvals, ADR generation, trade-off scoring. |
 | **Squad 1 — Research & Docs** | `docs-lookup`, `doc-updater`, `conversation-analyzer` | Ingesting official API facts, documenting architecture, auditing sessions. |
 | **Squad 2 — Architecture & Backend** | `type-design-analyzer`, `silent-failure-hunter` | Invariant design, Cloudflare Durable Objects, zero swallowed errors. |
-| **Squad 3 — Kick Integration & Bots** | `prediction-market-risk-review`, `security-reviewer` | Webhook verification, chat-to-earn rate limits, zero financial custody. |
+| **Squad 3 — RealtimeHub Integration & Bots** | `prediction-market-risk-review`, `security-reviewer` | Webhook verification, chat-to-earn rate limits, zero financial custody. |
 | **Squad 4 — Frontend & Admin** | `code-simplifier`, `refactor-cleaner` | Mobile-first dashboard, dead code elimination, clean component boundaries. |
 | **Squad 5 — Visual & Motion** | `a11y-architect`, `performance-optimizer` | 60 FPS WAAPI motion, composite-only CSS, OBS ≤5% CPU budget, WCAG AA. |
 | **Squad 6 — QA & Verification** | `tdd-guide`, `build-error-resolver`, `e2e-runner` | Unit/property tests, automated build fixing, browser simulation. |
@@ -86,8 +86,8 @@ confidence: 0.95
 domain: "math-and-currency"
 source: "session-observation"
 scope: project
-project_id: "streamerbot-hunthub"
-project_name: "HuntHub & DiggityBets"
+project_id: "web-software-factory-WebFactory"
+project_name: "Web Software Factory Studio"
 ---
 
 # Multi-Locale Web Currency Parsing
@@ -146,7 +146,7 @@ For live stream casino, predictions, and engagement suites, ECC provides the `pr
 
 ---
 
-## 8. HuntHub Implementation Status
+## 8. WebFactory Implementation Status
 
 | Component | Status | Location in Workspace |
 |:---|:---|:---|

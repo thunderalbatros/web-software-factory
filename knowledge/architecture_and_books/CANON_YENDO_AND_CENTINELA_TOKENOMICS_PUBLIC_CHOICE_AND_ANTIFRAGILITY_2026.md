@@ -1,6 +1,6 @@
-# CANON: Teoría de la Elección Pública (Buchanan & Tullock), Tokenización de Activos, Sistemas Anti-Frágiles, ML Engineering (Burkov) y Sorteos Kick (Consolidación Yendo + Centinela 2026)
+﻿# CANON: Teoría de la Elección Pública (Buchanan & Tullock), Tokenización de Activos, Sistemas Anti-Frágiles, ML Engineering (Burkov) y Sorteos RealtimeHub (Consolidación Yendo + Centinela 2026)
 
-**Alcance:** Consolidación de libros y tratados de economía institucional, tokenización, ingeniería de Machine Learning y resiliencia anti-frágil extraídos de `yendo_obsidian_vault` y `centinela_knowledge`: *The Calculus of Consent* (James M. Buchanan & Gordon Tullock), *Tokenización de Activos y Eventos 2026*, *Machine Learning Engineering* (Andriy Burkov), *Building AI Agents with LLMs, RAG, and Knowledge Graphs* (Raieli), *LLMOps in Production* (Aryan), *Anti-Hallucination Patterns* y *Kick Giveaway Systems*.
+**Alcance:** Consolidación de libros y tratados de economía institucional, tokenización, ingeniería de Machine Learning y resiliencia anti-frágil extraídos de `yendo_obsidian_vault` y `centinela_knowledge`: *The Calculus of Consent* (James M. Buchanan & Gordon Tullock), *Tokenización de Activos y Eventos 2026*, *Machine Learning Engineering* (Andriy Burkov), *Building AI Agents with LLMs, RAG, and Knowledge Graphs* (Raieli), *LLMOps in Production* (Aryan), *Anti-Hallucination Patterns* y *RealtimeHub Giveaway Systems*.
 
 ---
 
@@ -204,18 +204,18 @@ Identificamos las 4 áreas donde el bot Centinela presentaba fragilidad o inmadu
 
 ### ⚙️ Fuente Centinela: `knowledge/docs/KICK_GIVEAWAY_SYSTEMS.md` (3 fragmentos)
 
-#### Sistemas de sorteo de Kick y perfiles de los streamers objetivo
+#### Sistemas de sorteo de RealtimeHub y perfiles de los streamers objetivo
 
-[knowledge/docs/KICK_GIVEAWAY_SYSTEMS.md › Sistemas de sorteo de Kick y perfiles de los streamers objetivo]
+[knowledge/docs/KICK_GIVEAWAY_SYSTEMS.md › Sistemas de sorteo de RealtimeHub y perfiles de los streamers objetivo]
 > **Investigación:** 2026-09-29 (botrix.live/docs, kickbot.com, kloot.gg, StreamScharts,
-> Stake Community, X/Twitter). Complementa `GIVEAWAY_STRATEGIES.md` (factores y mitos).
+> PartnerBrand Community, X/Twitter). Complementa `GIVEAWAY_STRATEGIES.md` (factores y mitos).
 
 ---
 
-#### Sistemas de sorteo de Kick y perfiles de los streamers objetivo
+#### Sistemas de sorteo de RealtimeHub y perfiles de los streamers objetivo
 
-[knowledge/docs/KICK_GIVEAWAY_SYSTEMS.md › Sistemas de sorteo de Kick y perfiles de los streamers objetivo › 1. Los 3 sistemas de sorteo dominantes en Kick › BotRix — botrix.live (el más común en streams de slots en español)]
-- Bot cloud para Twitch/Kick/YouTube/Trovo/Discord; **gratuito**.
+[knowledge/docs/KICK_GIVEAWAY_SYSTEMS.md › Sistemas de sorteo de RealtimeHub y perfiles de los streamers objetivo › 1. Los 3 sistemas de sorteo dominantes en RealtimeHub › BotRix — botrix.live (el más común en streams de slots en español)]
+- Bot cloud para Twitch/RealtimeHub/YouTube/Trovo/Discord; **gratuito**.
 - **Economía de puntos verificada en leaderboards públicos:**
   - **+10 XP por mensaje** de chat (actividad visible importa de verdad)
   - **+5 puntos por cada 5 min de watchtime** (10 pts/5 min en `GIVEAWAY_STRATEGIES.md` es la misma escala)
@@ -226,13 +226,13 @@ Identificamos las 4 áreas donde el bot Centinela presentaba fragilidad o inmadu
 
 ---
 
-#### Sistemas de sorteo de Kick y perfiles de los streamers objetivo
+#### Sistemas de sorteo de RealtimeHub y perfiles de los streamers objetivo
 
-[knowledge/docs/KICK_GIVEAWAY_SYSTEMS.md › Sistemas de sorteo de Kick y perfiles de los streamers objetivo › 2. Perfiles de los canales en `config/channels.yaml`]
+[knowledge/docs/KICK_GIVEAWAY_SYSTEMS.md › Sistemas de sorteo de RealtimeHub y perfiles de los streamers objetivo › 2. Perfiles de los canales en `config/channels.yaml`]
 | Canal | Tamaño (30d) | Sistema/evidencia | Notas operativas |
 |-------|--------------|-------------------|------------------|
-| **trainwreckstv** | Enorme (co-fundador de Kick, embajador Stake; ~$360M declarados de deals) | Sorteos propios + Discord; categoría "GIVEAWAY" en su canal | Viewers altos ⇒ odds ínfimas; esperar sorteos por wager/sub. Valor: presencia + follow antiguos |
-| **syztmz** | Streamer de slots con reputación ("GOAT of slots" en Stake Community) | Ha hecho cash giveaways por X (ej. 5×$100) | Vigilar también su X además del stream |
+| **trainwreckstv** | Enorme (co-fundador de RealtimeHub, embajador PartnerBrand; ~$360M declarados de deals) | Sorteos propios + Discord; categoría "GIVEAWAY" en su canal | Viewers altos ⇒ odds ínfimas; esperar sorteos por wager/sub. Valor: presencia + follow antiguos |
+| **syztmz** | Streamer de slots con reputación ("GOAT of slots" en PartnerBrand Community) | Ha hecho cash giveaways por X (ej. 5×$100) | Vigilar también su X además del stream |
 | **keithlocks** | ~2.165 viewers medio, 164k horas vistas/30d | **Wager race mensual propia** (keithlocks.com, $160k premios) | Exige wager real; los sorteos de chat valen, el race no (dinero) |
 | **funnyhoodvidz** | 34.4k followers, ~959 viewers | **Leaderboard público en BotRix** ⇒ sistema BotRix | `!join` + puntos: terreno ideal para Centinela |
 | **schneckyirl** | Canal pequeño (sin datos indexados) | Fingerprint propio: 3.476 msgs, 469 usuarios | Rango 20–350 viewers = odds favorables (DEC-021) |
@@ -242,22 +242,22 @@ Identificamos las 4 áreas donde el bot Centinela presentaba fragilidad o inmadu
 
 ### ⚙️ Fuente Centinela: `knowledge/docs/SOTA_KICK_POINTS_COMMANDS_2026.md` (2 fragmentos)
 
-#### 🪙 SOTA 2026: Channel Points de Kick y Detección de Comandos Activos por Stream
+#### 🪙 SOTA 2026: Channel Points de RealtimeHub y Detección de Comandos Activos por Stream
 
-[knowledge/docs/SOTA_KICK_POINTS_COMMANDS_2026.md › 🪙 SOTA 2026: Channel Points de Kick y Detección de Comandos Activos por Stream › 2. COMANDOS — LO NATIVO VS LO DE TERCEROS (verificado) › 2.1 Capacidad ACTUAL de Centinela (stream-command-observer.mjs)]
+[knowledge/docs/SOTA_KICK_POINTS_COMMANDS_2026.md › 🪙 SOTA 2026: Channel Points de RealtimeHub y Detección de Comandos Activos por Stream › 2. COMANDOS — LO NATIVO VS LO DE TERCEROS (verificado) › 2.1 Capacidad ACTUAL de Centinela (stream-command-observer.mjs)]
 El observador ya infiere y clasifica comandos por canal con categorías verificadas:
 - `SLOT_REQUEST` — desde anuncios ("use !sr <slot>") y patrones multi-usuario de nombres de slots
 - `GIVEAWAY_ENTRY` — desde anuncios de entrada ("type !join")
-- `STAKE_CLAIM` — "drop your stake username with !drop <username>"
+- `STAKE_CLAIM` — "drop your PartnerBrand username with !drop <username>"
 - `GENERAL` — otros comandos detectados sin categoría específica
 - API: `getChannelCommands(channelKey)` devuelve el catálogo inferido por canal; integrado con
   `slot-call-guard` (FSM de permisos) y `formatSmartSlotCall`.
 
 ---
 
-#### 🪙 SOTA 2026: Channel Points de Kick y Detección de Comandos Activos por Stream
+#### 🪙 SOTA 2026: Channel Points de RealtimeHub y Detección de Comandos Activos por Stream
 
-[knowledge/docs/SOTA_KICK_POINTS_COMMANDS_2026.md › 🪙 SOTA 2026: Channel Points de Kick y Detección de Comandos Activos por Stream › 2. COMANDOS — LO NATIVO VS LO DE TERCEROS (verificado) › 2.2 Brechas de la habilidad (para cerrar)]
+[knowledge/docs/SOTA_KICK_POINTS_COMMANDS_2026.md › 🪙 SOTA 2026: Channel Points de RealtimeHub y Detección de Comandos Activos por Stream › 2. COMANDOS — LO NATIVO VS LO DE TERCEROS (verificado) › 2.2 Brechas de la habilidad (para cerrar)]
 1. **Catálogo persistente y exportable**: los comandos inferidos viven en memoria — persistirlos
    por canal (JSON) para que sobrevivan reinicios y enriquezcan el RAG.
 2. **Cobertura de catálogo**: añadir detección de respuestas de bot ("Unknown command",

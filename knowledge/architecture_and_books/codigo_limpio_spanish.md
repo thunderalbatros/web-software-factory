@@ -1,4 +1,4 @@
-**Alcance:** Libro completo Código Limpio (Robert C. Martin): principios de código limpio, funciones cohesivas, nombres semánticos, manejo de errores y refactorización. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Libro completo Código Limpio (Robert C. Martin): principios de código limpio, funciones cohesivas, nombres semánticos, manejo de errores y refactorización. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 titulo: "Código Limpio: Manual de estilo para el desarrollo ágil de software"

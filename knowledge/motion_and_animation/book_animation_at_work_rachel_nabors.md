@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Animation at Work
+﻿# 📚 Libro Completo: Animation at Work
 
-**Alcance:** Fuente bibliográfica completa sobre Animación Web Funcional, Percepción Humana del Movimiento, Transiciones Cognitivas y Coreografía de UI (Animation at Work — Rachel Nabors (A Book Apart)). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Animación Web Funcional, Percepción Humana del Movimiento, Transiciones Cognitivas y Coreografía de UI (Animation at Work — Rachel Nabors (A Book Apart)). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Rachel Nabors (A Book Apart)  
 > **Dominio:** Animación Web Funcional, Percepción Humana del Movimiento, Transiciones Cognitivas y Coreografía de UI  

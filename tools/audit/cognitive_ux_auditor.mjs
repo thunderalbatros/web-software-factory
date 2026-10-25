@@ -1,11 +1,11 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
- * HuntHub & DiggityBets — Software Factory Cognitive UX & Dark-Pattern Auditor
+ * Web Software Factory Studio — Software Factory Cognitive UX & Dark-Pattern Auditor
  * =============================================================================
  * Ported & Web-Adapted from Yendo Mobile (tools/vision/cognitive_ux_auditor.js).
  * Audits HTML/JS/CSS source and DOM metadata across 4 cognitive dimensions:
  *   1. UXBench (CVPR 2026): Modal Escape Integrity (PopupNoClose, PopupStack)
- *   2. UIGuard (ACM UIST): Anti-Dark-Pattern & Kick Compliance Guard
+ *   2. UIGuard (ACM UIST): Anti-Dark-Pattern & RealtimeHub Compliance Guard
  *      - Zero paid entry fees ("pay to enter", "buy ticket with money")
  *      - Zero confirm-shaming copy
  *   3. Fitts's Law & Touch/Click Target Ergonomics
@@ -32,7 +32,7 @@ const COMPLIANCE_AND_DARK_PATTERNS = [
     id: 'PAID_ENTRY_VIOLATION',
     severity: 'CRITICAL',
     regex: /\b(entrada paga|pagar para participar|comprar boleto con dinero|paid entry fee)\b/i,
-    explanation: 'Kick Compliance Rule 2.2: All spectator participation must be 100% free ($0).'
+    explanation: 'RealtimeHub Compliance Rule 2.2: All spectator participation must be 100% free ($0).'
   },
   {
     id: 'CONFIRM_SHAMING',

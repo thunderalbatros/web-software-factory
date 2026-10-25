@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Frontend Architecture for Design Systems
+﻿# 📚 Libro Completo: Frontend Architecture for Design Systems
 
-**Alcance:** Fuente bibliográfica completa sobre Arquitectura CSS Escalable, Sistemas de Diseño Modulares, Documentación Viva y Pruebas Visuales Automatizadas (Frontend Architecture for Design Systems — Micah Godbolt (O'Reilly)). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Arquitectura CSS Escalable, Sistemas de Diseño Modulares, Documentación Viva y Pruebas Visuales Automatizadas (Frontend Architecture for Design Systems — Micah Godbolt (O'Reilly)). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Micah Godbolt (O'Reilly)  
 > **Dominio:** Arquitectura CSS Escalable, Sistemas de Diseño Modulares, Documentación Viva y Pruebas Visuales Automatizadas  
@@ -1820,7 +1820,7 @@ beep’” helped guide the animators and writters of each cartoon to create a
 consistent and cohesive universe.
 Whether the story was authentic or not, it was this consistent and cohesive
 universe that I wanted to create for my own team. I knew that the only way
-we could avoid writing a swift road-runner kick to the coyote’s jaw,
+we could avoid writing a swift road-runner RealtimeHub to the coyote’s jaw,
 followed by a fowl cry of “can’t catch me, sucker!” would be to distill the
 rules that govern our design system into a small, palatable list of Road
 Runner Rules.

@@ -1,6 +1,6 @@
-# CANON: Visual SOTA Hunt — Repositorios Nuevos y Estrategias Visuales (Octubre 2026)
+﻿# CANON: Visual SOTA Hunt — Repositorios Nuevos y Estrategias Visuales (Octubre 2026)
 
-**Alcance:** Aplicable al desarrollo visual de HuntHub/DiggityBets (site vanilla JS en `site/`, overlays OBS en `overlay-*`/`wheel-*`, QA visual en `tools/audit/`, skills de agentes en `.agents/skills/`). Prohibido adoptar dependencias con licencia no permisiva o con costo.
+**Alcance:** Aplicable al desarrollo visual de Web Software Factory Studio (site vanilla JS en `site/`, overlays OBS en `overlay-*`/`wheel-*`, QA visual en `tools/audit/`, skills de agentes en `.agents/skills/`). Prohibido adoptar dependencias con licencia no permisiva o con costo.
 
 > **Origen:** Cacería exhaustiva de repositorios (2026-10-24) priorizando lanzamientos de los últimos 6 meses (abril→octubre 2026). Todos los repos están clonados en `references/hunt-2026-10/` (shallow). Licencias verificadas en el archivo LICENSE de cada repo.
 
@@ -18,14 +18,14 @@
   - **Critique** (`capabilities/critique.md`): encontrar qué cambiar primero, con evidencia; evaluación heurística.
   - **QA** (`capabilities/qa.md`): verificar una build contra el diseño.
 - **Módulos de conocimiento:** product, UX, UI, interaction, forms, content, accessibility, responsive, design system, frontend, **anti-slop** (anti-genérico).
-- **Uso exacto en HuntHub:** invocar la skill (o mencionar "RYUX") antes de cualquier tarea de UI: el Orchestrator la usa para `Analyze` de vistas existentes (`site/`), el Senior Frontend para `Build`, y el QA Auditor para `Critique`/`QA` — complementa (no reemplaza) las gates automáticas de Squad 6 y el `cto-hitl-visual-gate`. Aporta el "por qué" de diseño con evidencia que las gates de pixel/geometry no capturan.
+- **Uso exacto en WebFactory:** invocar la skill (o mencionar "RYUX") antes de cualquier tarea de UI: el Orchestrator la usa para `Analyze` de vistas existentes (`site/`), el Senior Frontend para `Build`, y el QA Auditor para `Critique`/`QA` — complementa (no reemplaza) las gates automáticas de Squad 6 y el `cto-hitl-visual-gate`. Aporta el "por qué" de diseño con evidencia que las gates de pixel/geometry no capturan.
 - **Sinergia:** completa el hueco entre `design-critique` (skill existente) y `Gemini VLM UI Critic`: RYUX estructura el razonamiento del crítico; el VLM aporta la percepción visual de píxeles.
 
 ### 1.2 modern-frontend-design v3.0.0 — Playbook de diseño frontend premium [NUEVO <6mo] [VERIFICADO: MIT, clonado 2026-10-24]
 - **Fuente:** `deveshpunjabi/modern-frontend-skill` → instalado en `.agents/skills/modern-frontend-design/` (84 KB).
 - **Qué es:** SKILL.md con referencias sobre cómo lograr UIs "premium 2026": sistema de motion, liquid glass, scroll animations, design tokens, hero sections, jerarquía tipográfica.
 - **Advertencia de contexto:** sus ejemplos de scaffold usan Tailwind/Next.js — **prohibido copiar la parte de framework** (regla del proyecto: vanilla JS). El valor está en `references/` (motion, tokens, patrones visuales) que son agnósticos del framework.
-- **Uso exacto en HuntHub:** para el `senior-coder`/`ux-designer` como manual de estética al diseñar vistas nuevas del sitio o overlays; fusionar sus patrones con el Design DNA local (OKLCH 90/8/2, Utopia clamp()).
+- **Uso exacto en WebFactory:** para el `senior-coder`/`ux-designer` como manual de estética al diseñar vistas nuevas del sitio o overlays; fusionar sus patrones con el Design DNA local (OKLCH 90/8/2, Utopia clamp()).
 
 ## 2. Repos clonados como referencia (sin instalar)
 
@@ -39,7 +39,7 @@
 
 ### 2.3 dmtrKovalenko/odiff [ESTABLECIDO] [VERIFICADO: MIT, 2021→2026]
 - Diff de imágenes SIMD-first (Zig compilado vía npm `odiff-bin`), diseñado para screenshots: mucho más rápido que pixelmatch en imágenes grandes (18M+ px escala mejor según benchmarks vizzly.dev/wopee.io).
-- **Uso en HuntHub:** candidato P2 para reemplazar/complementar `pixelmatch` en `tools/audit/diff_ui_adversarial.mjs` y `visual_regression.mjs` cuando las capturas 1920x1080 de las gates tarden. Instalación futura: `npm i -D odiff-bin` + adaptar el caller (es binario CLI: no cambia la lógica, solo el motor de diff). **No instalado hoy** — pendiente de Gate (cambio de código en QA).
+- **Uso en WebFactory:** candidato P2 para reemplazar/complementar `pixelmatch` en `tools/audit/diff_ui_adversarial.mjs` y `visual_regression.mjs` cuando las capturas 1920x1080 de las gates tarden. Instalación futura: `npm i -D odiff-bin` + adaptar el caller (es binario CLI: no cambia la lógica, solo el motor de diff). **No instalado hoy** — pendiente de Gate (cambio de código en QA).
 
 ## 3. Actualizaciones de lo ya clonado (mantenimiento del arsenal existente)
 
@@ -67,7 +67,7 @@
 - **`odiff-bin` (SIMD Zig):** Instalado en `tools/audit/package.json` y activo como motor primario en `tools/audit/visual_regression.mjs` con fallback automático a `pixelmatch`.
 - **`ryux_design_gate.mjs` (`RYUX v2.14.2` + `modern-frontend-design v3.0.0`):** Gate determinista conectado a `node tools/factory.mjs gate` y `node tools/factory.mjs visual-gate`.
 - **`awesome-design-skills` (67 Estilos MIT):** Conectado a `node tools/factory.mjs styles` y `node tools/factory.mjs new <slug> --style <estilo>` (copia bajo demanda el estilo seleccionado a `.specify/memory/style-guide.md`).
-- **Arsenal Visual de Producción (`diggitybets.vip` + `templates/`):**
+- **Arsenal Visual de Producción (`example-client.pages.dev` + `templates/`):**
   - `uPlot` (`site/js/vendor/uPlot.iife.min.js`) cableado con *lazy-load* en `site/js/diggity-intel-suite.js` para el simulador de 50 tiros.
   - `View Transitions API` (`document.startViewTransition` + `@view-transition { navigation: auto; }`) activa en `site/js/app.js`, `site/css/style.css` y ambos moldes (`vanilla-edge` / `astro-edge`).
   - `3D Specular Tilt` delegado (`init3DTouchTilt` en `site/js/motion-fx.js`) y `CSS Scroll-Driven Animations` (`@supports (animation-timeline: view())`) activos.

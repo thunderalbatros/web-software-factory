@@ -1,4 +1,4 @@
----
+﻿---
 name: continuous-learning-instincts
 description: "Sistema de memoria continua e instintos operacionales inspirado en affaan-m/ECC (Continuous Learning v2)."
 ---
@@ -54,7 +54,7 @@ import { registerInstinct } from './tools/lib/instincts-engine.mjs';
 
 registerInstinct({
   domain: 'networking',
-  trigger: 'Falta de broadcaster_user_id en chatrooms dinámicos de Kick',
+  trigger: 'Falta de broadcaster_user_id en chatrooms dinámicos de RealtimeHub',
   action: 'Resolver vía activeSubscriptions.meta o endpoint público /api/v2/channels/{slug}',
   confidence: 0.95,
   evidence: 'Eliminó errores HTTP 403 y 400 en canales dinámicos'

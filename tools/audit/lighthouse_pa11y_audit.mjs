@@ -1,6 +1,6 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
- * DiggityBets / HuntHub — Google Lighthouse (0-100) & Pa11y (WCAG2AA) Automated Super-Auditor
+ * Web Software Factory Studio — Google Lighthouse (0-100) & Pa11y (WCAG2AA) Automated Super-Auditor
  * Integrates:
  *   1. Google Lighthouse (Apache-2.0): Performance, Accessibility, Best Practices, SEO (0-100 scores + actionable diagnostics)
  *   2. Pa11y (WCAG2AA via HTML_CodeSniffer + axe-core): Multi-view accessibility & UI ergonomics sweep
@@ -126,7 +126,7 @@ const debugPort = 9344;
 const { proc: chromeProc, userDataDir } = launchHeadlessChrome(debugPort);
 
 let lighthouseSummary = null;
-const pa11yViews = ['#watch', '#bounties', '#stake-leaderboard', '#leaderboard', '#bonushunt', '#tournament', '#house-games', '#store'];
+const pa11yViews = ['#watch', '#bounties', '#metrics-leaderboard', '#leaderboard', '#feature-module', '#tournament', '#house-games', '#store'];
 const pa11yResults = [];
 
 try {
@@ -229,7 +229,7 @@ fs.writeFileSync(path.join(outDir, 'lighthouse-pa11y-report.json'), JSON.stringi
 
 // Also generate human-readable Markdown summary
 const mdLines = [
-  '# DiggityBets — Google Lighthouse & Pa11y Automated Audit Report',
+  '# client-portal — Google Lighthouse & Pa11y Automated Audit Report',
   '',
   `Generated: \`${fullReport.generatedAt}\``,
   '',

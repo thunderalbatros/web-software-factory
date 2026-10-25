@@ -1,4 +1,4 @@
-# 📚 Libro Completo: Laws of UX: Using Psychology to Design Better Products & Services
+﻿# 📚 Libro Completo: Laws of UX: Using Psychology to Design Better Products & Services
 
 > **Autor:** Jon Yablonski  
 > **Archivo Fuente:** `Laws-of-UX-Jon-Yablonski.pdf`  
@@ -3579,7 +3579,7 @@ leadership and stakeholders outside of the immediate team, as they will
 bring a different perspective that’s also valuable. The more people you can
 get involved, the easier it will be to ensure widespread adoption.
 Align and define
-Once the team is identified, it’s time to carve out some time and kick
+Once the team is identified, it’s time to carve out some time and RealtimeHub
 things off by first aligning on success criteria. This means not only creating
 a shared understanding of design principles and the purpose they serve,
 but also defining the goals of the exercise—for example, defining what

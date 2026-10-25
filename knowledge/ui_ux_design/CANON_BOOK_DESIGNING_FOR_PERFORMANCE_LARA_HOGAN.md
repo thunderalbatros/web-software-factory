@@ -1,4 +1,4 @@
----
+﻿---
 version: 1.1.0
 tipo: research
 tags:
@@ -24,7 +24,7 @@ Guía práctica para equilibrar riqueza visual estética con velocidad de respue
 - **Frame Rate Stability:** Renderizado fluido a 60 FPS en OBS Browser Sources y navegadores cliente.
 - **Composite-Only Properties:** Animación exclusiva de `transform` y `opacity` para evitar reflows y repaints costosos.
 
-## 🚀 Aplicación en Arquitectura Web & HuntHub
+## 🚀 Aplicación en Arquitectura Web & WebFactory
 - **OBS Overlays Ligeros:** Impacto de CPU $\le 5\%$ en transmisiones en vivo mediante animaciones aceleradas por GPU (`transform`, `opacity`) y Web Audio sintetizado en tiempo real.
 - **Optimización de Core Web Vitals:** Largest Contentful Paint (LCP) < 1.2s e Interaction to Next Paint (INP) < 50ms para interacción instantánea del espectador.
 - **Zero Bloat:** Interfaces ligeras sin frameworks sobredimensionados, utilizando HTML5 semántico, Vanilla CSS y ES Modules nativos.

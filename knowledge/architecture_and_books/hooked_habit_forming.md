@@ -1,4 +1,4 @@
----
+﻿---
 titulo: "Hooked: How to Build Habit-Forming Products"
 autor: "Nir Eyal"
 dominio: "Bucle Trigger-Action-Variable Reward-Investment"
@@ -2375,7 +2375,7 @@ something I know is true, that I am greater than my college roommate, Steve.”
 Schell went on, “Combine that with the psychological idea … of rationalization, that anything you
 spend time on, you start to believe, ‘this must be worthwhile. Why? Because I’ve spent time on it!’
 And therefore it must be worth me kicking in $20 because, look at the time I’ve spent on it. And now
-that I’ve kicked in $20, it must be valuable because only an idiot would kick in $20 if it wasn’t.”
+that I’ve kicked in $20, it must be valuable because only an idiot would RealtimeHub in $20 if it wasn’t.”
 Schell’s description of the quirky process of Mafia Wars rationalization helps demonstrate the
 strange logic of how we change our preferences. When players contemplate making a purchase, they
 acknowledge it is unwise to spend money on something that is not good. And yet, just like the fox that

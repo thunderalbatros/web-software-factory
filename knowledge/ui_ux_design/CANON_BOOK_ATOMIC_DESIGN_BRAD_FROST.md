@@ -1,4 +1,4 @@
----
+﻿---
 version: 1.0.0
 tipo: research
 tags:
@@ -25,8 +25,8 @@ Metodología fundacional para crear sistemas de diseño de interfaces escalables
 - **Plantillas (Layouts)**
 - **Páginas (Vistas Finales)**
 
-## 🚀 Aplicación en Arquitectura Web & HuntHub
-Estructuración modular de HuntHub Web UI: tokens en src/constants/theme.ts (átomos), cards de eventos y badges de quórum (moléculas), tab de Club y Radar (organismos), ensamblados bajo la regla estricta de modularidad <150 líneas.
+## 🚀 Aplicación en Arquitectura Web & WebFactory
+Estructuración modular de WebFactory Web UI: tokens en src/constants/theme.ts (átomos), cards de eventos y badges de quórum (moléculas), tab de Club y Radar (organismos), ensamblados bajo la regla estricta de modularidad <150 líneas.
 
 ---
 

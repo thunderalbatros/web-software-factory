@@ -1,12 +1,12 @@
----
+﻿---
 id: multi-locale-currency-parsing
 trigger: "when parsing numbers, balance amounts, currency, bets, or chat guesses"
 confidence: 0.95
 domain: "math-and-currency"
 source: "session-observation"
 scope: project
-project_id: "streamerbot-hunthub"
-project_name: "HuntHub & DiggityBets"
+project_id: "web-software-factory-WebFactory"
+project_name: "Web Software Factory Studio"
 ---
 
 # International Multi-Locale Currency & Numerical Parsing

@@ -1,4 +1,4 @@
----
+﻿---
 name: break-ui
 description: "Try to break a piece of UI by feeding it worst-case data — long names, unbreakable emails, one-letter names, missing fields, huge."
 ---
@@ -67,4 +67,4 @@ Also cover the cases that aren't one dataset:
 ---
 
 ## Progressive Disclosure Reference
-For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/streamerbot/.agents/skills/break-ui/references/full-guide.md).
+For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/web-software-factory/.agents/skills/break-ui/references/full-guide.md).

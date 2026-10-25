@@ -1,4 +1,4 @@
----
+﻿---
 name: vanilla-motion-choreography
 description: "Architectural bridge for extracting React/Framer/MagicUI animation patterns into lightweight (<80 lines) pure Vanilla JS and CSS."
 ---
@@ -6,7 +6,7 @@ description: "Architectural bridge for extracting React/Framer/MagicUI animation
 # Vanilla Motion Choreography (React to Vanilla Bridge)
 
 ## 1. Core Rule: Zero-React Runtime Invariant
-DiggityBets operates under strict 0-cost, lightweight constraints (≤5% CPU for OBS browser sources, zero bundler overhead for spectators).
+client-portal operates under strict 0-cost, lightweight constraints (≤5% CPU for OBS browser sources, zero bundler overhead for spectators).
 **Never introduce React or heavy virtual DOM runtimes to achieve motion.**
 Whenever a component from `references/clones/magicui`, `references/clones/motion-primitives`, or `references/clones/react-bits` is desired:
 1. Extract the underlying CSS `@keyframes`.

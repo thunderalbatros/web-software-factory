@@ -1,4 +1,4 @@
-/**
+﻿/**
  * tools/intelligence/eval_matrix.mjs — Multi-Dimensional Eval Matrix
  * =============================================================================
  * Inspired by Promptfoo, addyosmani/agent-house, and Eval-Harness EDD.
@@ -46,11 +46,11 @@ export async function runEvalMatrix(projectInput = '') {
 
   const ragQueries = [
     { q: "OBS Browser Source performance impact budget", expectedKeyword: "cpu" },
-    { q: "Kick compliance spectator zero custody", expectedKeyword: "free" },
-    { q: "juegos interactivos en vivo para espectadores de kick", expectedKeyword: "mines" },
+    { q: "RealtimeHub compliance spectator zero custody", expectedKeyword: "free" },
+    { q: "juegos interactivos en vivo para espectadores de RealtimeHub", expectedKeyword: "mines" },
     { q: "marco octalysis gamificación recompensas variables", expectedKeyword: "hooked" },
     { q: "marketing conversion cro afiliados aversion a la perdida", expectedKeyword: "cialdini" },
-    { q: "sistema de bountys only on stake tiers multiplicador", expectedKeyword: "bet_id" },
+    { q: "sistema de bountys only on PartnerBrand tiers multiplicador", expectedKeyword: "bet_id" },
     { q: "ciberseguridad defensa xss trustedtypes csp oauth", expectedKeyword: "dompurify" },
     { q: "animaciones 60fps emil kowalski modal entrance scale waapi", expectedKeyword: "0.95" },
     { q: "shaders glsl bordes laser webaudio dynamicscompressor", expectedKeyword: "zzfx" },

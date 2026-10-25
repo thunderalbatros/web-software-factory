@@ -1,6 +1,6 @@
-# CANON: SOTA Agent Team Topology & 2026 Web Software Factory Stack Audit
+﻿# CANON: SOTA Agent Team Topology & 2026 Web Software Factory Stack Audit
 
-> **Scope:** Canonical architecture and operational doctrine for our Multi-Project Web Software Factory (`web-software-factory` & `streamerbot`), covering 2026 multi-agent topologies, Rust/Zig zero-daemon verification engines, CSS Baseline 2026 primitives, Speculation Rules (`0ms` prerender), Playwright Accessibility-Tree (`AX`) snapshots, and Agentic SEO (`llms.txt` / `llms-full.txt`).
+> **Scope:** Canonical architecture and operational doctrine for our Multi-Project Web Software Factory (`web-software-factory` & `web-software-factory`), covering 2026 multi-agent topologies, Rust/Zig zero-daemon verification engines, CSS Baseline 2026 primitives, Speculation Rules (`0ms` prerender), Playwright Accessibility-Tree (`AX`) snapshots, and Agentic SEO (`llms.txt` / `llms-full.txt`).
 
 ---
 

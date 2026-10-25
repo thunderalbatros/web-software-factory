@@ -1,6 +1,6 @@
-# 🎓 Master Course: End-to-End LLM Post-Training — From BigQuery to Autonomous 24/7 Production
+﻿# 🎓 Master Course: End-to-End LLM Post-Training — From BigQuery to Autonomous 24/7 Production
 
-**Alcance:** Videocurso técnico sobre pipelines de post-entrenamiento y mejora continua de agentes en producción. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+**Alcance:** Videocurso técnico sobre pipelines de post-entrenamiento y mejora continua de agentes en producción. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ## Video Course Transcript & Practical Implementation Manual (2026 Edition)
 

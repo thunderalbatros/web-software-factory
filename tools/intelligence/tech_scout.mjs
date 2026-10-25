@@ -1,4 +1,4 @@
-/**
+﻿/**
  * tools/intelligence/tech_scout.mjs — Autonomous Tech Scout Agent (Phase 4)
  * ============================================================================
  * Scans, filters, and catalogs SOTA 2025-2026 Web Technologies, W3C CSS Specs,
@@ -50,7 +50,7 @@ const CURATED_SOTA_RADAR_2026 = [
   {
     id: 'valibot-edge-schema',
     name: 'Valibot v1 Modular Schema Validation (~1.2 KB)',
-    domain: 'Squad 2 & 3 — Cloudflare Edge & Kick Webhooks',
+    domain: 'Squad 2 & 3 — Cloudflare Edge & RealtimeHub Webhooks',
     source: 'https://github.com/fabian-hiller/valibot',
     verifiedDate: '2026-10-20',
     license: 'MIT',
@@ -59,7 +59,7 @@ const CURATED_SOTA_RADAR_2026 = [
     obsCpuImpactPct: 0.0,
     requiresDaemon: false,
     status: 'ADOPTED',
-    summary: 'Tree-shakeable schema validation for Worker endpoints and Kick payloads with 90% smaller bundle footprint than Zod.'
+    summary: 'Tree-shakeable schema validation for Worker endpoints and RealtimeHub payloads with 90% smaller bundle footprint than Zod.'
   },
   {
     id: 'zzfx-webaudio-limiter',
@@ -164,7 +164,7 @@ export async function runTechScout() {
 
   // Generate LEC-015 compliant Markdown Radar Report
   const mdLines = [
-    `# TECH SCOUT RADAR 2026 — SOTA Web Software Factory Technologies (HuntHub / DiggityBets)`,
+    `# TECH SCOUT RADAR 2026 — SOTA Web Software Factory Technologies (Web Software Factory Studio)`,
     ``,
     `> **Generated:** ${state.timestamp}  `,
     `> **Triple Filter Enforcement:** Cost = $0 USD (Zero Credit Card) | Permissive License (MIT/Apache-2.0/BSD/CC0/W3C) | OBS CPU <= 5.0% on HP 250 G8`,

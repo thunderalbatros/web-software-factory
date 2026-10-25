@@ -1,5 +1,5 @@
-/**
- * HuntHub — Firecrawl Fast Dynamic Scraping Engine
+﻿/**
+ * WebFactory — Firecrawl Fast Dynamic Scraping Engine
  * =============================================================================
  * Connects to Firecrawl API to scrape dynamic JavaScript casino websites,
  * extract game releases, terms, and metadata with clean markdown formatting.
@@ -65,7 +65,7 @@ export async function scrapeUrl(url, options = {}) {
 
 // CLI runner
 if (process.argv.includes('--test')) {
-  const target = process.argv[3] || 'https://stake.krd/es/casino/group/only-on-stake?sort=newest';
+  const target = process.argv[3] || 'https://PartnerBrand.krd/es/casino/group/only-on-PartnerBrand?sort=newest';
   console.log(`🕷️ Testing Firecrawl on ${target}...`);
   scrapeUrl(target)
     .then(data => {

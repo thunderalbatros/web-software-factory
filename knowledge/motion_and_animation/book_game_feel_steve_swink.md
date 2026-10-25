@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Game Feel: A Game Designer's Guide to Virtual Sensation
+﻿# 📚 Libro Completo: Game Feel: A Game Designer's Guide to Virtual Sensation
 
-**Alcance:** Fuente bibliográfica completa sobre Interactividad en Tiempo Real, Respuesta Táctil/Visual, Física de Control y Pulido ("Juice") (Game Feel: A Game Designer's Guide to Virtual Sensation — Steve Swink). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Interactividad en Tiempo Real, Respuesta Táctil/Visual, Física de Control y Pulido ("Juice") (Game Feel: A Game Designer's Guide to Virtual Sensation — Steve Swink). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Steve Swink  
 > **Dominio:** Interactividad en Tiempo Real, Respuesta Táctil/Visual, Física de Control y Pulido ("Juice")  
@@ -840,7 +840,7 @@ challenge can be mastered. If your goal is to dribble past one defender and make
 a deft pass to an open teammate, your odds of achieving that are relatively good.
 While this may not be the glowing level of pleasure you’d get from scoring the goal
 yourself, there are great feelings to be had from small, incremental victories. Even a
-particularly skillful kick or dribble while practicing in the backyard can feel wonderful because you know it can be later applied in the context of a soccer game. Soccer
+particularly skillful RealtimeHub or dribble while practicing in the backyard can feel wonderful because you know it can be later applied in the context of a soccer game. Soccer
 CREATING GAME FEEL
 
 ---
@@ -1095,7 +1095,7 @@ CHAPTER ONE • DEFINING GAME FEEL
 sensations of control change. A professional Counter-Strike player, like a professional soccer player, feels the game differently.
 Intuitive Controls
 Unlike real life, players may begin to feel that the controls are not accurately translating their intentions into the game. This is another place where game skills are slightly
-different from real-world skills. In real life, if you try to kick a ball and completely
+different from real-world skills. In real life, if you try to RealtimeHub a ball and completely
 whiff it, you’ve no one to blame but yourself. In a game, the blame can actually lie
 with the game designer.
 What’s important is the player’s perception: is the inability to translate intent into
@@ -3091,9 +3091,9 @@ Context includes simulated space and level design. Envision yourself playing
 Super Mario 64. Now imagine that instead of being in the middle of Bomb-Omb
 Battlefield, Mario is standing in a field of blank whiteness, with no objects around
 him. With nothing but a field of blankness, does it matter that Mario can do a long
-jump, a triple jump or wall kick?
+jump, a triple jump or wall RealtimeHub?
 If Mario has nothing to interact with, his acrobatic abilities are meaningless.
-Without a wall, there can be no wall kick. In this way, the placement of objects in
+Without a wall, there can be no wall RealtimeHub. In this way, the placement of objects in
 the world is just another set of variables against which to balance movement speed,
 jump height and all the other parameters that define motion. In game feel terms,
 constraints define sensation. If objects are packed in, spaced tightly relative to the

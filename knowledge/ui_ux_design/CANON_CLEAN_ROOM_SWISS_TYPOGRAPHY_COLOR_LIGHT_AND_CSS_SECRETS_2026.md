@@ -1,4 +1,4 @@
-# Tratado Canónico Clean-Room: Color y Luz (Albers, Gurney, Arnheim), Tipografía Suiza (Ruder, Tschichold, Vignelli, Samara), CSS Moderno (Grant, Lea Verou), Micro-Interacciones (Saffer) y Componentes Inclusivos (Pickering) (2026)
+﻿# Tratado Canónico Clean-Room: Color y Luz (Albers, Gurney, Arnheim), Tipografía Suiza (Ruder, Tschichold, Vignelli, Samara), CSS Moderno (Grant, Lea Verou), Micro-Interacciones (Saffer) y Componentes Inclusivos (Pickering) (2026)
 
 **Alcance:** Aplicable al diseño gráfico, sistema cromático `90/8/2` en `OKLCH`, jerarquía tipográfica, grillas suizas, hojas de estilo en `site/css/` y `overlay-*/style.css`, micro-interacciones y accesibilidad `WCAG AA / APCA` (`Squad 4` & `Squad 6`). Sintetiza en sala limpia (*Clean-Room*) los principios científicos, ópticos y matemáticos de Albers, Gurney, Arnheim, Ruder, Tschichold, Vignelli, Samara, Grant, Verou, Saffer y Pickering, integrándose con la tetralogía Clean-Room: [[CANON_CLEAN_ROOM_SOFTWARE_DESIGN_REFACTORING_AND_LEGACY_CODE_2026]] (*Ousterhout Deep Modules*, Fowler, Feathers), [[CANON_CLEAN_ROOM_SVG_ANIMATIONS_GAME_AUDIO_AND_REALTIME_RENDERING_2026]] (*ACES Filmic Tone Mapping*, Drasner, Williams) y [[CANON_CLEAN_ROOM_WEB_SECURITY_OAUTH2_BUG_HUNTING_AND_VIRTUAL_ECONOMIES_2026]] (*TOCTOU double-spend*, *Lehdonvirta Virtual Economies*).
 
@@ -9,7 +9,7 @@
 ### 1.1 Ley de Contraste Simultáneo e Irradiación de Albers en Superficies Oscuras (Tetralogía Clean-Room: Ousterhout Deep Modules, ACES Filmic, TOCTOU Double-Spend & Lehdonvirta)
 - **Efecto de Irradiación (*Halation*)**:
   - Un texto blanco puro (`#FFFFFF`) o verde neón sobre un fondo negro puro (`#000000`) parece expandirse ópticamente ("sangrar" hacia los bordes), engrosando visualmente las letras un **8%–12%** y provocando fatiga ocular.
-  - **Solución Matemática para Modo Oscuro de Lujo (`DiggityBets Obsidian`)**:
+  - **Solución Matemática para Modo Oscuro de Lujo (`client-portal Obsidian`)**:
     1. Usar un fondo base de obsidiana profunda rica en matiz frío (`oklch(0.14 0.015 265)` $\approx$ `#090A0F`) en lugar de `#000000`.
     2. Usar blanco marfil/platino (`oklch(0.95 0.01 265)` $\approx$ `#F0F2F8`) para titulares y ajustar `font-weight` o `-webkit-font-smoothing: antialiased` para preservar la nitidez de las astas tipográficas.
 
@@ -59,7 +59,7 @@
 ## 4. Anatomía de Micro-Interacciones y Componentes Inclusivos (*Microinteractions* — Dan Saffer & *Inclusive Components* — Heydon Pickering)
 
 ### 4.1 El Bucle Cuádruple de Dan Saffer (`Trigger` $\rightarrow$ `Rules` $\rightarrow$ `Feedback` $\rightarrow$ `Loops & Modes`)
-- Toda acción del espectador (por ejemplo, hacer clic en **"COPIAR CÓDIGO DIGGITYBETS"** o **"ENVIAR PREDICCIÓN"**) debe cumplir las 4 fases en `< 150 ms`:
+- Toda acción del espectador (por ejemplo, hacer clic en **"COPIAR CÓDIGO client-portal"** o **"ENVIAR PREDICCIÓN"**) debe cumplir las 4 fases en `< 150 ms`:
   1. **Trigger**: Botón con área táctil mínima de `44x44 px` y cambio de cursor/luminancia en `hover`.
   2. **Rules**: Validación instantánea en cliente sin recargar la página.
   3. **Feedback**: Compresión elástica (`scale(0.97)` por `80ms`), cambio de ícono a tilde verde (`✓ ¡Copiado!`) y micro-sonido `ZzFX` opcional.

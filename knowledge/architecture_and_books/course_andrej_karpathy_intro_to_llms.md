@@ -1,7 +1,7 @@
-# 🎓 Video Curso: [1hr Talk] Intro to Large Language Models
+﻿# 🎓 Video Curso: [1hr Talk] Intro to Large Language Models
 
 
-**Alcance:** Videocurso completo de Andrej Karpathy: arquitectura y funcionamiento interno de Large Language Models y seguridad de sistemas IA. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+**Alcance:** Videocurso completo de Andrej Karpathy: arquitectura y funcionamiento interno de Large Language Models y seguridad de sistemas IA. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 > **Institución / Autor:** Andrej Karpathy  
 > **Fuente URL:** https://www.youtube.com/watch?v=zjkBMFhNj_g  

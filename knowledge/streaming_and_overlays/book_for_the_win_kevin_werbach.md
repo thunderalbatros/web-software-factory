@@ -1,6 +1,6 @@
-# 📚 Libro Completo: For the Win: The Power of Gamification and Game Thinking
+﻿# 📚 Libro Completo: For the Win: The Power of Gamification and Game Thinking
 
-**Alcance:** Fuente bibliográfica completa sobre Gamificación, Marco DMC (Dinámicas, Mecánicas, Componentes) y Retención (For the Win: The Power of Gamification and Game Thinking — Kevin Werbach & Dan Hunter). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Gamificación, Marco DMC (Dinámicas, Mecánicas, Componentes) y Retención (For the Win: The Power of Gamification and Game Thinking — Kevin Werbach & Dan Hunter). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Kevin Werbach & Dan Hunter  
 > **Dominio:** Gamificación, Marco DMC (Dinámicas, Mecánicas, Componentes) y Retención  
@@ -3195,7 +3195,7 @@ about the following:
 • How to avoid the lure of “pointsification”
 • The dangers of gamification
 In 2011, we hosted the first academic symposium on gamification.
-Ian Bogost was the kick-off speaker. Bogost is a noted game designer
+Ian Bogost was the RealtimeHub-off speaker. Bogost is a noted game designer
 and theorist, author of several books (including Persuasive Games),
 and creator of numerous published games. He’s also a leading critic
 of gamification.

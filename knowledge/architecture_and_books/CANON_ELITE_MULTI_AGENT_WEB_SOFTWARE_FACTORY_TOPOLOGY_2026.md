@@ -1,6 +1,6 @@
-# Tratado Canónico: Topología de Equipos Multi-Agente de Élite y Matriz de 76 Skills para nuestra Web Software Factory (SOTA 2026)
+﻿# Tratado Canónico: Topología de Equipos Multi-Agente de Élite y Matriz de 76 Skills para nuestra Web Software Factory (SOTA 2026)
 
-**Alcance:** Este documento define la estructura organizacional definitiva de **10 Escuadrones Especializados (`Squad 0` a `Squad 9`)** y la asignación de las **76 Habilidades (`SKILL.md`)** de nuestra **Self-Evolving Web Software Factory**, fundamentada en **Team Topologies (*Matthew Skelton & Manuel Pais*)**, **Building Effective Agents (*Anthropic*)**, **Procedimientos Operativos Estándar (*MetaGPT SOPs*)** y **Disciplina de Ingeniería Agéntica (*Addy Osmani Agent-Skills*)**. NO es fuente de contratos específicos de Kick API ni de fórmulas matemáticas de probabilidades de slots.
+**Alcance:** Este documento define la estructura organizacional definitiva de **10 Escuadrones Especializados (`Squad 0` a `Squad 9`)** y la asignación de las **76 Habilidades (`SKILL.md`)** de nuestra **Self-Evolving Web Software Factory**, fundamentada en **Team Topologies (*Matthew Skelton & Manuel Pais*)**, **Building Effective Agents (*Anthropic*)**, **Procedimientos Operativos Estándar (*MetaGPT SOPs*)** y **Disciplina de Ingeniería Agéntica (*Addy Osmani Agent-Skills*)**. NO es fuente de contratos específicos de RealtimeHub API ni de fórmulas matemáticas de probabilidades de slots.
 
 ---
 
@@ -13,7 +13,7 @@ En *Team Topologies*, Skelton y Pais demuestran que cuando un equipo humano abar
 - Si un mismo agente recibe simultáneamente instrucciones de esquemas SQLite, leyes tipográficas, psicología de conversión y auditoría criptográfica, su precisión cae drásticamente.
 - **Solución Estructural**: Dividir la Software Factory en los **4 Tipos de Equipos de *Team Topologies*** con contextos aislados y contratos de entrega (*Handoff Artifacts*) estrictos:
   1. **Equipos Alineados al Flujo (*Stream-Aligned Squads*)**: Entgan valor directo al usuario final en la web (`Squad 4: Design Systems & Frontend`, `Squad 8: Interactive Crowd-Play Games, Gamification & CRO`).
-  2. **Equipos de Subsistema Complicado (*Complicated-Subsystem Squads*)**: Dominan matemática pesada, protocolos en tiempo real, shaders GPU y síntesis de audio (`Squad 3: Kick & Realtime Protocols`, `Squad 5: 60-FPS Motion, Shaders, WebAudio & OBS Overlays`).
+  2. **Equipos de Subsistema Complicado (*Complicated-Subsystem Squads*)**: Dominan matemática pesada, protocolos en tiempo real, shaders GPU y síntesis de audio (`Squad 3: RealtimeHub & Realtime Protocols`, `Squad 5: 60-FPS Motion, Shaders, WebAudio & OBS Overlays`).
   3. **Equipos de Plataforma (*Platform Squads*)**: Proveen infraestructura serverless de costo cero, bases de datos en el Edge, pipelines de compilación y el cerebro RAG (`Squad 2: Edge Backend & Durable Objects`, `Squad 7: Zero-Cost DevOps & Build Pipeline`).
   4. **Equipos Habilitadores y Gobernadores (*Enabling & Gatekeeper Squads*)**: Investigan tecnología de frontera, auditan seguridad/calidad visual en bucle *Maker-Checker* y evolucionan las habilidades de toda la fábrica (`Squad 1: Deep Research & Tech Scout`, `Squad 6: Adversarial Security & 5-Gate Visual QA`, `Squad 9: Self-Evolving Meta-Coach, Omni-RAG v5 & FinOps`).
 
@@ -47,7 +47,7 @@ flowchart TD
 
     subgraph Subsystem["⚡ Equipos de Subsistema Complicado (Makers)"]
         S5["Squad 5 — Creative Tech, 60-FPS Motion, Shaders & Audio\n(CSS @starting-style/linear, GSAP Flip, SDF, ZzFX, OBS <=5% CPU)"]
-        S3["Squad 3 — Kick Integration & Realtime Sync\n(OAuth 2.1 PKCE, Webhooks RSA, Pusher, Chat Commands)"]
+        S3["Squad 3 — RealtimeHub Integration & Realtime Sync\n(OAuth 2.1 PKCE, Webhooks RSA, Pusher, Chat Commands)"]
     end
 
     subgraph Platform["☁️ Equipos de Plataforma e Infraestructura"]
@@ -76,7 +76,7 @@ flowchart TD
 | **`Squad 0` — Executive Orchestrator & CTO Liaison** | *Orchestrator Hub* | `paperclip-converting-plans-to-tasks`, `subagent-driven-development`, `handoff`, `delivery-gate`, `constraint-driven-development`, `verify-before-claim`, `verification-before-completion`, `anti-shortcut-discipline`, `ponytail`, `caveman`, `claude-council`, `arena`, `grill-me`, `code-tour`, `codebase-onboarding`. |
 | **`Squad 1` — Deep Research & Tech Scout** | *Enabling Team* | `research-mode`, `firecrawl`, `extract-design`, `agent-reach`, `find-skills`. |
 | **`Squad 2` — Edge Architecture & Realtime Backend** | *Platform Team* | `cloudflare-durable-objects`, `durable-objects`, `workers-best-practices`, `modularity`, `code-structure`, `error-handling`, `provider-fallback`, `number-parsing`. |
-| **`Squad 3` — Kick Integration & Stream Protocols** | *Complicated-Subsystem* | `kick-api`, `kick-api-contracts`, `channel-points-bridge`, `moderation-guard`. |
+| **`Squad 3` — RealtimeHub Integration & Stream Protocols** | *Complicated-Subsystem* | `RealtimeHub-api`, `RealtimeHub-api-contracts`, `channel-points-bridge`, `moderation-guard`. |
 | **`Squad 4` — Design Systems, Tokens & Frontend Engineering** | *Stream-Aligned A* | `design-system-architect`, `design-system`, `taste-skill`, `hallmark`, `emil-design-eng`, `21st-ui`, `layout-primitives-architect`, `minimal-surface-hierarchy`, `optical-symmetry-and-focus`, `utopia-fluid-ergonomics`, `frontend-design`, `theme-factory`, `wireframe`, `web-artifacts-builder`, `stop-slop`. |
 | **`Squad 5` — Creative Tech, 60-FPS Motion, Shaders & Audio** | *Complicated-Subsystem* | `animate`, `animation-performance`, `motion-engineer`, `vanilla-motion-choreography`, `obs-overlays`, `brag`. |
 | **`Squad 6` — Adversarial Security, 5-Gate Visual QA & VLM Critic** | *Evaluator-Optimizer Gatekeeper* | `cto-hitl-visual-gate`, `visual-auditor`, `break-ui`, `design-critique`, `web-design-guidelines`, `web-perf`, `web-quality-skills`, `playwright-best-practices`, `security-audit`, `security-and-hardening`, `security-checklist`, `anti-fraud-fingerprinting`, `agent-security-hardening`, `adverse-review`, `code-reviewer`, `silent-failure-hunter`, `systematic-debugging`, `test-driven-development`, `evidence-driven-testing`. |

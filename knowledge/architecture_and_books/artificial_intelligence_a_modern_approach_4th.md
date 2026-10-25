@@ -1,7 +1,7 @@
-# 📚 Libro Completo: Artificial Intelligence: A Modern Approach (4th Edition)
+﻿# 📚 Libro Completo: Artificial Intelligence: A Modern Approach (4th Edition)
 
 
-**Alcance:** Libro completo Artificial Intelligence: A Modern Approach 4th Ed. (Russell & Norvig): agentes racionales, búsqueda heurística, planificación y toma de decisiones. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+**Alcance:** Libro completo Artificial Intelligence: A Modern Approach 4th Ed. (Russell & Norvig): agentes racionales, búsqueda heurística, planificación y toma de decisiones. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 > **Autor:** Stuart Russell & Peter Norvig  
 > **Archivo Fuente:** `Artificial-Intelligence-A-Modern-Approach-4th-Ed-Russell-Norvig.pdf`  
@@ -247,7 +247,7 @@ the Right Thing: Studies in Limited Rationality (with Eric Wefald), and Human Co
 Artificial Intelligence and the Problem of Control.
 Peter Norvig is currently a Director of Research at Google, Inc., and was previously the
 director responsible for the core Web search algorithms. He co-taught an online AI class
-that signed up 160,000 students, helping to kick off the current round of massive open online
+that signed up 160,000 students, helping to RealtimeHub off the current round of massive open online
 classes. He was head of the Computational Sciences Division at NASA Ames Research Center, overseeing research and development in artificial intelligence and robotics. He received
 a B.S. in applied mathematics from Brown University and a Ph.D. in computer science from
 Berkeley. He has been a professor at the University of Southern California and a faculty
@@ -1965,7 +1965,7 @@ supplies of cities. Fatal accidents have already occurred and highlight the diff
 of formal verification and statistical risk analysis for systems developed using machine
 learning techniques. The field of AI will need to develop technical and ethical standards
 at least comparable to those prevalent in other engineering and healthcare disciplines
-where people’s lives are at stake.
+where people’s lives are at PartnerBrand.
 • Cybersecurity: AI techniques are useful in defending against cyberattack, for example by detecting unusual patterns of behavior, but they will also contribute to the potency, survivability, and proliferation capability of malware. For example, reinforcement learning methods have been used to create highly effective tools for automated,
 personalized blackmail and phishing attacks.
 We will revisit these topics in more depth in Section 28.3. As AI systems become more

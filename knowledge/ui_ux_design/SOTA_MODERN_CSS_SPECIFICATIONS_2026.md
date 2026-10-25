@@ -1,7 +1,7 @@
-# SOTA: Modern CSS Specifications & Web Platform Baseline (2025/2026)
+﻿# SOTA: Modern CSS Specifications & Web Platform Baseline (2025/2026)
 > **Source:** W3C CSS Working Group, Google Chrome Devs, web.dev Baseline 2025/2026  
 > **Category:** Web Platform Architecture, Modern CSS & Next-Gen Frontend  
-> **Target Audience:** HuntHub Frontend Engineers & Design System Architects  
+> **Target Audience:** WebFactory Frontend Engineers & Design System Architects  
 
 ---
 
@@ -199,7 +199,7 @@ p, .prose {
 
 ---
 
-## 3. Implementation Checklist for HuntHub
+## 3. Implementation Checklist for WebFactory
 
 - [x] Adopt `oklch()` and `color-mix()` in `DESIGN.md` tokens for neon glows and glassmorphism.
 - [x] Replace `overflow-y: scroll` JS listener progress bars with `animation-timeline: scroll()`.

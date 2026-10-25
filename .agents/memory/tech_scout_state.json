@@ -1,4 +1,4 @@
-{
+﻿{
   "timestamp": "2026-10-20T06:19:32.654Z",
   "totalEvaluated": 6,
   "approvedCount": 6,
@@ -27,7 +27,7 @@
     {
       "id": "valibot-edge-schema",
       "name": "Valibot v1 Modular Schema Validation (~1.2 KB)",
-      "domain": "Squad 2 & 3 — Cloudflare Edge & Kick Webhooks",
+      "domain": "Squad 2 & 3 — Cloudflare Edge & RealtimeHub Webhooks",
       "source": "https://github.com/fabian-hiller/valibot",
       "verifiedDate": "2026-10-20",
       "license": "MIT",
@@ -36,7 +36,7 @@
       "obsCpuImpactPct": 0,
       "requiresDaemon": false,
       "status": "ADOPTED",
-      "summary": "Tree-shakeable schema validation for Worker endpoints and Kick payloads with 90% smaller bundle footprint than Zod.",
+      "summary": "Tree-shakeable schema validation for Worker endpoints and RealtimeHub payloads with 90% smaller bundle footprint than Zod.",
       "filterVerdict": {
         "passed": true,
         "costOk": true,

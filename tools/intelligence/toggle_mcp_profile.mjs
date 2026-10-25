@@ -1,8 +1,8 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
- * HuntHub FinOps — Antigravity Global MCP Profile Switcher
+ * WebFactory FinOps — Antigravity Global MCP Profile Switcher
  * Switches C:\Users\tomas\.gemini\config\mcp_config.json between:
- *   - lean     : hunthub-omni-rag + context7 (Default, -98% MCP tool bloat)
+ *   - lean     : web-factory-omni-rag + context7 (Default, -98% MCP tool bloat)
  *   - research : lean + centinela-firecrawl + github
  *   - full     : All 13 servers from mcp_config.full_backup.json
  *
@@ -19,9 +19,9 @@ const MCP_CONFIG_PATH = path.join(CONFIG_DIR, "mcp_config.json");
 const FULL_BACKUP_PATH = path.join(CONFIG_DIR, "mcp_config.full_backup.json");
 
 const PROFILES = {
-  lean: ["hunthub-omni-rag", "context7"],
-  research: ["hunthub-omni-rag", "context7", "centinela-firecrawl", "github"],
-  reverse: ["hunthub-omni-rag", "context7", "rea"],
+  lean: ["web-factory-omni-rag", "context7"],
+  research: ["web-factory-omni-rag", "context7", "centinela-firecrawl", "github"],
+  reverse: ["web-factory-omni-rag", "context7", "rea"],
   full: "ALL"
 };
 

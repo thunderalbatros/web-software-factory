@@ -1,6 +1,6 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
- * HuntHub & DiggityBets — Software Factory PDF Book Ingester
+ * Web Software Factory Studio — Software Factory PDF Book Ingester
  * =============================================================================
  * Ported & Upgraded from Centinela Studio (tools/ingest-book.mjs).
  * Extracts full technical books from PDF or text files, cleans layout noise,
@@ -246,7 +246,7 @@ export async function ingestBookToMarkdown({
   const header = [
     `# 📚 Libro Completo: ${bookTitle}`,
     ``,
-    `**Alcance:** Fuente bibliográfica completa sobre ${domain} (${bookTitle} — ${author}). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en \`CANON_*\`.`,
+    `**Alcance:** Fuente bibliográfica completa sobre ${domain} (${bookTitle} — ${author}). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en \`CANON_*\`.`,
     ``,
     `> **Autor:** ${author}  `,
     `> **Dominio:** ${domain}  `,

@@ -1,6 +1,6 @@
-# AGENT CREATIVE & VISUAL AWARENESS 2026: SOTA Design Intelligence, Creative Technologies & Multimodal Visual Feedback
+﻿# AGENT CREATIVE & VISUAL AWARENESS 2026: SOTA Design Intelligence, Creative Technologies & Multimodal Visual Feedback
 
-> **Alcance:** Manual canónico de arquitectura para dotar al equipo de agentes de HuntHub / DiggityBets (`site/`, `overlay-*`, `tools/`) de máxima creatividad compositiva, eliminación del "AI-Slop", y conciencia visual multimodal automatizada.  
+> **Alcance:** Manual canónico de arquitectura para dotar al equipo de agentes de Web Software Factory Studio (`site/`, `overlay-*`, `tools/`) de máxima creatividad compositiva, eliminación del "AI-Slop", y conciencia visual multimodal automatizada.  
 > **Protocolo LEC-015:** Documento de Referencia Técnica y Explicación Canónica.  
 > **Presupuesto:** 100% Free Tier ($0 USD / $0 ARS), Sin dependencias pesadas en el notebook host, cumplimiento de rendimiento OBS (≤5% CPU).
 
@@ -20,7 +20,7 @@ Los modelos de lenguaje sin restricciones visuales convergen hacia el promedio d
 * **Ley 2: Presupuesto Cromático 90/8/2:**
   - **90% Fondo Oscuro de Alta Luminancia de Absorción:** Tonos profundos de grafito o vacío espacial (`#07090e`, `#0a0d14`).
   - **8% Superficies Estructurales y Vidrio Ahumado:** Superficies translúcidas con `backdrop-filter: blur(16px)` y sutil borde perimetral (`rgba(255,255,255,0.06)`).
-  - **2% Acento Cinético de Alto Voltaje:** Verde neón Kick (`#53FC18`), oro resplandeciente (`#ffd700`) o cian láser (`#00f0ff`), reservado *únicamente* para puntos de conversión, victorias o elementos activos.
+  - **2% Acento Cinético de Alto Voltaje:** Verde neón RealtimeHub (`#53FC18`), oro resplandeciente (`#ffd700`) o cian láser (`#00f0ff`), reservado *únicamente* para puntos de conversión, victorias o elementos activos.
 * **Ley 3: Escalado Fluido Matemático (Utopia):** Prohibido usar tamaños estáticos fijos en px para tipografía o espaciado de secciones. Se utiliza `clamp()` para una transición 100% fluida entre móviles (390px) y ultra-wide (1440px+).
 
 ---

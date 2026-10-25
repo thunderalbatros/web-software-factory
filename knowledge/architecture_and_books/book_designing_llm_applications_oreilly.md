@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Designing Large Language Model Applications
+﻿# 📚 Libro Completo: Designing Large Language Model Applications
 
-**Alcance:** Fuente bibliográfica completa sobre Arquitectura de Aplicaciones LLM, RAG, Agentes y Evaluación (Designing Large Language Model Applications — Suhas Pai (O'Reilly)). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Arquitectura de Aplicaciones LLM, RAG, Agentes y Evaluación (Designing Large Language Model Applications — Suhas Pai (O'Reilly)). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Suhas Pai (O'Reilly)  
 > **Dominio:** Arquitectura de Aplicaciones LLM, RAG, Agentes y Evaluación  

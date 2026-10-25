@@ -1,4 +1,4 @@
-**Alcance:** Compendio maestro de leyes de UX/UI, heurísticas de Nielsen, diseño emocional de Don Norman y arquitectura de sistemas de diseño. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Compendio maestro de leyes de UX/UI, heurísticas de Nielsen, diseño emocional de Don Norman y arquitectura de sistemas de diseño. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 version: 1.0.0

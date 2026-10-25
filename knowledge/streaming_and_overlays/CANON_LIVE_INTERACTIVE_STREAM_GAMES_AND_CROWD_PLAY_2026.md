@@ -1,18 +1,18 @@
-# CANON: Diseño e Ingeniería de Juegos Interactivos en Vivo para Espectadores de Kick.com (Crowd Play & Premios en Vivo 2026)
+﻿# CANON: Diseño e Ingeniería de Juegos Interactivos en Vivo para Espectadores de realtime-stream.com (Crowd Play & Premios en Vivo 2026)
 
-**Alcance:** Aplicable a HuntHub / DiggityBets (Web App en `site/`, Overlays OBS en `overlay-*` y `wheel-*`, Backend Edge en `worker/index.js` y `core/src/index.ts`). Prohibido usar mecánicas de pago por entrada (buy-ins) o custodia de dinero de espectadores (`AGENTS.md §2.2`).
+**Alcance:** Aplicable a Web Software Factory Studio (Web App en `site/`, Overlays OBS en `overlay-*` y `wheel-*`, Backend Edge en `worker/index.js` y `core/src/index.ts`). Prohibido usar mecánicas de pago por entrada (buy-ins) o custodia de dinero de espectadores (`AGENTS.md §2.2`).
 
-> **[VERIFICADO: Kick Dev Docs + Cloudflare Durable Objects Docs + Provably Fair HMAC-SHA256 Standard, 2026-10-19]**
+> **[VERIFICADO: RealtimeHub Dev Docs + Cloudflare Durable Objects Docs + Provably Fair HMAC-SHA256 Standard, 2026-10-19]**
 
 ---
 
 ## 1. Arquitectura de Juegos Interactivos en Vivo ("Crowd Play" Chat + Web Portal)
 
-Para que cientos o miles de espectadores de **Kick.com** jueguen en vivo por premios (`$DIG` o premios en USD entregados fuera de banda por el streamer) sin superar el presupuesto de **≤ 5% CPU en OBS Browser Source** en una notebook HP 250 G8, todo juego interactivo en vivo debe seguir el patrón **Dual-Channel Deterministic State Machine (DC-DSM)**:
+Para que cientos o miles de espectadores de **realtime-stream.com** jueguen en vivo por premios (`$DIG` o premios en USD entregados fuera de banda por el streamer) sin superar el presupuesto de **≤ 5% CPU en OBS Browser Source** en una notebook HP 250 G8, todo juego interactivo en vivo debe seguir el patrón **Dual-Channel Deterministic State Machine (DC-DSM)**:
 
-1. **Canal de Entrada Dual (Chat de Kick + Portal Web)**:
-   - **Vía Chat de Kick (Zero-Friction)**: El espectador participa escribiendo un comando corto en el chat en vivo (ej. `!bet 2450`, `!tile C3`, `!rocket 2.5x`, `!vote 1`, `!join`). Ingerido por Pusher WebSocket / Webhook RSA de Kick con latencia `<150ms`.
-   - **Vía Portal Web (`site/index.html`)**: El espectador autenticado con Kick OAuth 2.1 PKCE interactúa con controles táctiles a 60 FPS (grillas interactivas, sliders de multiplicador, reclamo de Bounties con `Bet ID`).
+1. **Canal de Entrada Dual (Chat de RealtimeHub + Portal Web)**:
+   - **Vía Chat de RealtimeHub (Zero-Friction)**: El espectador participa escribiendo un comando corto en el chat en vivo (ej. `!bet 2450`, `!tile C3`, `!rocket 2.5x`, `!vote 1`, `!join`). Ingerido por Pusher WebSocket / Webhook RSA de RealtimeHub con latencia `<150ms`.
+   - **Vía Portal Web (`site/index.html`)**: El espectador autenticado con RealtimeHub OAuth 2.1 PKCE interactúa con controles táctiles a 60 FPS (grillas interactivas, sliders de multiplicador, reclamo de Bounties con `Bet ID`).
 2. **Motor de Estado Único en el Borde (Cloudflare Durable Objects + D1)**:
    - Cada ronda de juego es una máquina de estados finita (`IDLE` → `LOBBY_OPEN` → `LOCKED` → `REVEALING` → `SETTLED`).
    - Durante `LOBBY_OPEN`, las jugadas se validan con **Valibot** y se deduplican por `kick_user_id` + huella `ThumbmarkJS` (prevención anti-multicuenta / Sybil).
@@ -26,7 +26,7 @@ Para que cientos o miles de espectadores de **Kick.com** jueguen en vivo por pre
 
 ### 2.1 Crowd Mines / Cazatesoros Comunitario (Grid 5x5 en Vivo)
 - **Mecánica**: Aparece un tablero de `5x5` (coordenadas `A1` a `E5`) con 20 gemas `$DIG` y 5 minas ocultas.
-- **Participación**: Los espectadores tienen `15 segundos` para elegir su coordenada desde el Portal o escribiendo `!mine B4` en el chat de Kick.
+- **Participación**: Los espectadores tienen `15 segundos` para elegir su coordenada desde el Portal o escribiendo `!mine B4` en el chat de RealtimeHub.
 - **Resolución**: El servidor revela el tablero usando `HMAC-SHA256(serverSeed, clientSeed + ":" + roundNonce)`. Todos los espectadores que eligieron una casilla segura avanzan a la siguiente ola o reparten el pozo de puntos `$DIG` / sorteo instantáneo.
 - **Por qué funciona**: Combina **prueba social visual** (mapa de calor en vivo de qué casillas elige la comunidad) con **tensión compartida** (*social synchrony*).
 
@@ -49,11 +49,11 @@ Para que cientos o miles de espectadores de **Kick.com** jueguen en vivo por pre
 - **Feedback en Tiempo Real**: Durante la fase `OPENING`, el dashboard recalcula el **Break-Even Multiplier (BEM)** requerido en las cajas restantes:
   $$\text{BEM}_{\text{restante}} = \frac{\max(0, \text{Costo Inicial} - \text{Retorno Acumulado})}{\sum_{i \in \text{pendientes}} \text{Apuesta}_i}$$
 
-### 2.5 Sistema de Bounties "Only on Stake" (Caza de Multiplicadores por Tiers)
-- **Mecánica**: Espectadores que usan el código de referido oficial (`DIGGITYBETS`) cazan multiplicadores específicos en slots exclusivas *Only on Stake* organizadas en **6 Tiers de Volatilidad** (Premios de `$3`, `$5`, `$7`, `$10`, `$15` y `$20` USD).
+### 2.5 Sistema de Bounties "Only on PartnerBrand" (Caza de Multiplicadores por Tiers)
+- **Mecánica**: Espectadores que usan el código de referido oficial (`client-portal`) cazan multiplicadores específicos en slots exclusivas *Only on PartnerBrand* organizadas en **6 Tiers de Volatilidad** (Premios de `$3`, `$5`, `$7`, `$10`, `$15` y `$20` USD).
 - **Flujo de Verificación Automatizado + Aprobación Humana (HITL)**:
-  1. El espectador ingresa su `Bet ID` de Stake (ej. `house:1234567890`) y enlace de repetición en el modal de reclamo.
-  2. La extensión `diggity-stake-companion` / validador pre-verifica formato de `Bet ID`, slot objetivo, apuesta mínima y multiplicador alcanzado ($\text{Multi} = \text{Payout} / \text{Amount}$).
+  1. El espectador ingresa su `Bet ID` de PartnerBrand (ej. `house:1234567890`) y enlace de repetición en el modal de reclamo.
+  2. La extensión `legacy-product-extension` / validador pre-verifica formato de `Bet ID`, slot objetivo, apuesta mínima y multiplicador alcanzado ($\text{Multi} = \text{Payout} / \text{Amount}$).
   3. El reclamo entra a la cola de administración con insignia de riesgo anti-fraude (`ThumbmarkJS` + `Turnstile`), donde el streamer aprueba con 1 clic y dispara el **Celebration Billboard Overlay** en OBS.
 
 ### 2.6 Ruletas de Recompensa y Apertura de Cajas Estilo CS2 (`wheel-csgo`, `wheel-slots`, `wheel-duo`)
@@ -64,7 +64,7 @@ Para que cientos o miles de espectadores de **Kick.com** jueguen en vivo por pre
 
 ---
 
-## 3. Reglas Innegociables de Equidad, Seguridad y Cumplimiento (Kick ToS)
+## 3. Reglas Innegociables de Equidad, Seguridad y Cumplimiento (RealtimeHub ToS)
 
 1. **Participación 100% Gratuita (`AGENTS.md §2.2`)**:
    - Jamás cobrar dinero real, criptomonedas ni suscripciones pagas como requisito para participar en sorteos o juegos del chat.
@@ -73,9 +73,9 @@ Para que cientos o miles de espectadores de **Kick.com** jueguen en vivo por pre
    - Antes de iniciar cada ronda o sorteo (`fair-draws`), el sistema publica en pantalla y en el chat el hash `SHA-256(serverSeed)`.
    - Al finalizar la ronda, revela el `serverSeed` en texto plano para que cualquier espectador pueda verificar que el resultado no fue manipulado.
 3. **Defensa Anti-Bot y Anti-Multicuenta (`anti-fraud-fingerprinting`)**:
-   - Todo reclamo de premio o participación web combina: sesión OAuth 2.1 de Kick verificada + token Cloudflare Turnstile + hash de dispositivo `ThumbmarkJS` + límite de tasa por IP/Usuario en Cloudflare Worker (`checkRateLimit`).
+   - Todo reclamo de premio o participación web combina: sesión OAuth 2.1 de RealtimeHub verificada + token Cloudflare Turnstile + hash de dispositivo `ThumbmarkJS` + límite de tasa por IP/Usuario en Cloudflare Worker (`checkRateLimit`).
 4. **Higiene DOM Anti-XSS**:
-   - Los nombres de usuario del chat de Kick y los argumentos de comandos (`!sr`, `!guess`) son entrada no confiable: siempre se renderizan mediante `.textContent` o pasan por `escapeHtml()` / `DOMPurify` + `TrustedTypes`.
+   - Los nombres de usuario del chat de RealtimeHub y los argumentos de comandos (`!sr`, `!guess`) son entrada no confiable: siempre se renderizan mediante `.textContent` o pasan por `escapeHtml()` / `DOMPurify` + `TrustedTypes`.
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[KICK_API_REFERENCE]] · [[CANON_KICK_PUBLIC_API_V2_FULL_REFERENCE]] · [[POPULAR_SLOTS_ONLY_ON_STAKE_TIERS]] · [[CANON_SLOTS_STAKE_RTP_VOLATILITY_DYNAMICS]] · #streaming_and_overlays

@@ -1,4 +1,4 @@
----
+﻿---
 name: playwright-best-practices
 description: "Use when writing Playwright tests, fixing flaky tests, debugging failures, implementing Page Object Model, configuring CI/CD,."
 ---
@@ -67,4 +67,4 @@ Consult these references based on what you're doing:
 ---
 
 ## Progressive Disclosure Reference
-For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/streamerbot/.agents/skills/playwright-best-practices/references/full-guide.md).
+For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/web-software-factory/.agents/skills/playwright-best-practices/references/full-guide.md).

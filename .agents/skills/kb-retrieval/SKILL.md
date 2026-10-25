@@ -1,4 +1,4 @@
----
+﻿---
 name: kb-retrieval
 description: "Cómo consultar y mantener el cerebro híbrido Supercharged Omni-RAG v5 (SQLite FTS5 en C + MiniSearch + IDF/LightRAG Dual-Level +."
 ---
@@ -18,7 +18,7 @@ description: "Cómo consultar y mantener el cerebro híbrido Supercharged Omni-R
 | **Engine D (AST CodeGraph PageRank)** | `code_and_wiki_graph.mjs` (`107` archivos JS/TS/MJS y `135` aristas de llamadas/endpoints `/api/*`) | Mapa estructural instantáneo de clases, métodos, singletons `window.*` y rutas backend (`< 2 ms`) |
 | **Engine E (Neural Reranker & Cloud MCP)** | `@huggingface/transformers` (`Xenova/ms-marco-MiniLM-L-6-v2` Q8 en CPU) + `Qdrant Cloud` + `Context7 MCP` | Reordenamiento neuronal (`--rerank`, **$0**) + documentación viva por versión (`context7`) |
 
-## Uso por CLI y MCP (`hunthub-omni-rag` & `context7`)
+## Uso por CLI y MCP (`web-factory-omni-rag` & `context7`)
 
 ```bash
 # Reconstruir índice completo (JSON + SQLite FTS5 + AST CodeGraph + Obsidian WikiGraph PageRank)
@@ -34,7 +34,7 @@ node tools/intelligence/rag_pipeline.mjs --query "emil kowalski modal entrance s
 node tools/intelligence/rag_pipeline.mjs --code-graph "overlay-server"
 
 # Consultar y sintetizar respuesta experta (Vertex AI Gemini 2.5 Flash / Groq LPU)
-node tools/intelligence/rag_pipeline.mjs --ask "¿Cómo funciona el sistema de Bountys Only on Stake y cómo se verifica el bet_id?"
+node tools/intelligence/rag_pipeline.mjs --ask "¿Cómo funciona el sistema de Bountys Only on PartnerBrand y cómo se verifica el bet_id?"
 
 # Ejecutar Matriz de Evaluación Multi-Dimensional (18 Consultas Doradas + AST + Budgets + Compliance)
 node tools/intelligence/eval_matrix.mjs

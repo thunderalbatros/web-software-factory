@@ -1,6 +1,6 @@
-# 📚 Libro Completo (Síntesis Maestra): The Design of Everyday Things & Inspired Product Discovery
+﻿# 📚 Libro Completo (Síntesis Maestra): The Design of Everyday Things & Inspired Product Discovery
 
-**Alcance:** Tratado técnico integral sobre psicología de la interacción (*The Design of Everyday Things* — Don Norman) y descubrimiento de productos tecnológicos (*Inspired* — Marty Cagan). Aplicable a la Software Factory Web y DiggityBets.
+**Alcance:** Tratado técnico integral sobre psicología de la interacción (*The Design of Everyday Things* — Don Norman) y descubrimiento de productos tecnológicos (*Inspired* — Marty Cagan). Aplicable a la Software Factory Web y client-portal.
 
 > **Autores:** Don Norman & Marty Cagan  
 > **Dominio:** Affordances, Signifiers, Modelos Mentales, Prevención de Errores y Descubrimiento de Productos Web  
@@ -36,7 +36,7 @@
 1. **Riesgo de Valor (Value Risk)**: ¿Los espectadores y streamers realmente quieren usar esta función?
 2. **Riesgo de Usabilidad (Usability Risk)**: ¿Pueden los espectadores en móvil o escritorio entender y completar el flujo en menos de 10 segundos mientras miran el stream en vivo?
 3. **Riesgo de Factibilidad (Feasibility Risk)**: ¿Puede ejecutarse con `$0` de costo de infraestructura y `<= 5%` de CPU en OBS Studio?
-4. **Riesgo de Viabilidad de Negocio (Business Viability Risk)**: ¿Cumple al 100% con los Términos de Servicio de Kick.com, las leyes de juego responsable (+18, cero cobro de entrada) y genera patrocinios B2B para el canal?
+4. **Riesgo de Viabilidad de Negocio (Business Viability Risk)**: ¿Cumple al 100% con los Términos de Servicio de realtime-stream.com, las leyes de juego responsable (+18, cero cobro de entrada) y genera patrocinios B2B para el canal?
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[DESIGN_MASTERY_2026]] · [[AGENT_CREATIVE_AND_VISUAL_AWARENESS_2026]] · [[CANON_REFACTORING_UI_WATHAN_SCHOGER]] · [[CANON_PRACTICAL_UI_ADHAM_DANNAWAY]] · #ui_ux_design

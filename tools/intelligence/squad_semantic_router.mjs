@@ -1,18 +1,18 @@
-#!/usr/bin/env node
+﻿#!/usr/bin/env node
 /**
  * tools/intelligence/squad_semantic_router.mjs
  * =============================================================================
  * 🧭 SQUAD SEMANTIC ROUTER + SELF-RAG / CRAG + 1-HOP WIKILINK GRAPH EXPANDER
  * =============================================================================
  * Ported and evolved from yendo-mobile's semanticRouter.js & selfRagCrag.js
- * specifically for the HuntHub / DiggityBets Web Software Factory.
+ * specifically for the Web Software Factory Studio Web Software Factory.
  *
  * Features:
  *  1. <1ms Squad Domain Classification across our 5 Web Software Factory domains:
  *     - ui_ux_design (Squad 4: Frontend, UI/UX, Psychology, Gamification, CRO)
  *     - motion_and_animation (Squad 5: 60-FPS Motion, Shaders, 3D, WebAudio)
  *     - cybersecurity (Squad 6: XSS, CSP, OAuth 2.1 PKCE, Anti-Bot, Crypto)
- *     - streaming_and_overlays (Squad 3: Kick API, Overlays, Slots RTP, Bounties)
+ *     - streaming_and_overlays (Squad 3: RealtimeHub API, Overlays, Slots RTP, Bounties)
  *     - architecture_and_books (Squad 2: Cloudflare Edge, DO, SQLite, Clean Code, RAG)
  *  2. 1-Hop Obsidian [[Wikilink]] Graph Boost + PageRank Centrality weighting.
  *  3. Self-RAG / CRAG Confidence Grader (CORRECT / AMBIGUOUS / LOW).
@@ -63,10 +63,10 @@ const SQUAD_DOMAINS = {
     ]
   },
   streaming_and_overlays: {
-    squad: 'Squad 3 — Kick Integration, OBS Overlays & Casino Math',
+    squad: 'Squad 3 — RealtimeHub Integration, OBS Overlays & Casino Math',
     folderPrefix: 'knowledge/streaming_and_overlays/',
     keywords: [
-      'kick', 'pusher', 'overlay', 'overlays', 'obs', 'cpu', 'slot', 'slots', 'stake',
+      'RealtimeHub', 'pusher', 'overlay', 'overlays', 'obs', 'cpu', 'slot', 'slots', 'PartnerBrand',
       'rtp', 'volatilidad', 'volatility', 'barboianu', 'bounty', 'bountys', 'bounties',
       'bet_id', 'multiplicador', 'sorteo', 'giveaway', 'custody', 'custodia', 'loyalty',
       'puntos', 'chat'

@@ -1,8 +1,8 @@
-# CANON: SOTA Agent Harness Engineering, Scaffolding & Autonomous Alignment (2026)
+﻿# CANON: SOTA Agent Harness Engineering, Scaffolding & Autonomous Alignment (2026)
 
 > **Alcance:** Este documento cubre la teoría fundamental, arquitectura de sistemas y cacería de repositorios de **Harness Engineering (Ingeniería de Arneses de Agentes)**, scaffolding exterior, evaluación determinista y alineación de equipos multi-agente en 2026.  
-> **Límites de alcance:** NO es fuente de tokens o endpoints de Kick (ver `KICK_API_REFERENCE.md`), NI de diseño visual CSS/OBS (ver `DESIGN_MASTERY_2026.md`), NI de contratos de base de datos SQLite (ver `CANON_ECC_EVERYTHING_CLAUDE_CODE_AGENT_HARNESS_2026.md`).  
-> **Estado:** Canónico — Ground Truth para la orquestación y disciplina del equipo de agentes de HuntHub / DiggityBets.  
+> **Límites de alcance:** NO es fuente de tokens o endpoints de RealtimeHub (ver `KICK_API_REFERENCE.md`), NI de diseño visual CSS/OBS (ver `DESIGN_MASTERY_2026.md`), NI de contratos de base de datos SQLite (ver `CANON_ECC_EVERYTHING_CLAUDE_CODE_AGENT_HARNESS_2026.md`).  
+> **Estado:** Canónico — Ground Truth para la orquestación y disciplina del equipo de agentes de Web Software Factory Studio.  
 > **Fecha:** Octubre 2026.
 
 ---
@@ -81,7 +81,7 @@ A continuación se detalla el censo auditado de repositorios abiertos fundamenta
 | **`princeton-nlp/SWE-bench`** | Princeton NLP | MIT `[VERIFICADO]` | Gold standard de evaluación en repositorios reales y suite de parches | REF canónico | Solo referencia conceptual (evitar Docker local) |
 | **`princeton-nlp/SWE-agent`** | Princeton NLP | MIT `[VERIFICADO]` | Scaffolding mínimo (~100 líneas) para agentes de terminal | REF de diseño | Excelente (arquitectura de bucle) |
 | **`walkinglabs/learn-harness-engineering`** | WalkingLabs | MIT `[VERIFICADO]` | Especificación canónica de diseño de arneses y feedback loops | REF canónico | 100% conceptual y aplicable |
-| **`affaan-m/everything-claude-code`** | Affaan M. | MIT `[VERIFICADO]` | Harness operativo completo: instincts engine, adverse-review, delivery gates | REF / DEP | Integrado en HuntHub (`.agents/skills/`) |
+| **`affaan-m/everything-claude-code`** | Affaan M. | MIT `[VERIFICADO]` | Harness operativo completo: instincts engine, adverse-review, delivery gates | REF / DEP | Integrado en WebFactory (`.agents/skills/`) |
 | **`addyosmani/agent-house`** | Addy Osmani | MIT `[VERIFICADO]` | "Lighthouse for Agents", scoring cuantitativo y control de contexto | REF de scoring | Integrado en Agent-Reach Scorecard |
 | **`guardrails-ai/guardrails`** | Guardrails AI | Apache-2.0 `[VERIFICADO]` | Validación programática de entradas/salidas y guardas de seguridad | REF / TOOL | Alta (patrones de regex y esquema) |
 | **`mattpocock/sandcastle`** | Matt Pocock | MIT `[VERIFICADO]` | Sandboxing ligero vía Git Worktrees efímeros sin Docker | TOOL (`sandcastle-runner.mjs`) | Insuperable para laptops (HP 250 G8) |
@@ -92,9 +92,9 @@ A continuación se detalla el censo auditado de repositorios abiertos fundamenta
 
 ---
 
-## 4. Arquitectura del Harness Optimizado en HuntHub / DiggityBets
+## 4. Arquitectura del Harness Optimizado en Web Software Factory Studio
 
-Para operar bajo las restricciones no negociables del proyecto (Laptop HP 250 G8, Windows, 0 USD de presupuesto, 0 tarjetas de crédito, 0 Docker y ≤5% CPU en OBS), HuntHub implementa un **Harness Cerrado Determinista**:
+Para operar bajo las restricciones no negociables del proyecto (Laptop HP 250 G8, Windows, 0 USD de presupuesto, 0 tarjetas de crédito, 0 Docker y ≤5% CPU en OBS), WebFactory implementa un **Harness Cerrado Determinista**:
 
 ```mermaid
 graph TD

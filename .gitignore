@@ -1,4 +1,4 @@
-# Secrets & Private Environment Variables (MANDATORY: zero secrets in git)
+﻿# Secrets & Private Environment Variables (MANDATORY: zero secrets in git)
 .dev.vars
 .env
 *.pem
@@ -40,9 +40,9 @@ data/*.dat*
 # Local UI Knowledge Base & Reference Repos (Cloned locally for research)
 references/
 !references/INDEX.md
-diggitybets-rebrand-toolkit/
+
 repomix-output.xml
-arquitectura_diggitybets.txt
+
 repos_clonados.txt
 core/test/*.db
 tools/audit/out/*.png

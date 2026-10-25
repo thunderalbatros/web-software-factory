@@ -1,6 +1,6 @@
-# 📚 Libro Completo (Síntesis Maestra): The Elements of Typographic Style & Swiss Grid Systems
+﻿# 📚 Libro Completo (Síntesis Maestra): The Elements of Typographic Style & Swiss Grid Systems
 
-**Alcance:** Tratado técnico integral sobre tipografía matemática (*The Elements of Typographic Style* — Robert Bringhurst) y sistemas de grillas suizas (*Grid Systems in Graphic Design* — Josef Müller-Brockmann). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick.
+**Alcance:** Tratado técnico integral sobre tipografía matemática (*The Elements of Typographic Style* — Robert Bringhurst) y sistemas de grillas suizas (*Grid Systems in Graphic Design* — Josef Müller-Brockmann). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub.
 
 > **Autores:** Robert Bringhurst & Josef Müller-Brockmann  
 > **Dominio:** Tipografía Matemática, Ritmo Vertical, Escalas Modulares, Grillas Suizas Asimétricas y Espacio Negativo  

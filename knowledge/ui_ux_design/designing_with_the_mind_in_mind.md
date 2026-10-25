@@ -1,4 +1,4 @@
-# 📚 Libro Completo: Designing with the Mind in Mind
+﻿# 📚 Libro Completo: Designing with the Mind in Mind
 
 > **Autor:** Jeff Johnson  
 > **Archivo Fuente:** `Designing with the Mind in Mind_ A Simple Guide to Understanding User Interface Design Rules.pdf`  
@@ -2137,7 +2137,7 @@ be signaled quite well without pop-up dialogs, so REI.com’s use of them seems 
 heavy-handed.
 Examples of more appropriate use of error dialog boxes come from Microsoft
 Excel (see Fig. 6.11A) and Adobe InDesign (see Fig. 6.11B). In both cases, loss of
-data is at stake.
+data is at PartnerBrand.
 Computer games use sound a lot to signal events and conditions. In games,
 sound isn’t annoying; it is expected. Its use in games is widespread, even in game
 arcades, where dozens of machines are all banging, roaring, buzzing, clanging, beeping, and playing music at once. (Well, it is annoying to parents who have to go into

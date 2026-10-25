@@ -1,5 +1,5 @@
-/**
- * HuntHub & DiggityBets — Visual Primitives Compiler
+﻿/**
+ * Web Software Factory Studio — Visual Primitives Compiler
  * =============================================================================
  * Distills state-of-the-art UI craft, shaders, springs, and particle physics
  * from references/design-mastery and references/clones into high-performance,
@@ -20,11 +20,11 @@ const ROOT = path.resolve(__dirname, '..', '..');
 const CSS_OUT = path.join(ROOT, 'site', 'css', 'luxury-primitives.css');
 const JS_OUT = path.join(ROOT, 'site', 'js', 'luxury-primitives.js');
 
-console.log('⚡ [Distiller] Building Luxury Primitives for DiggityBets...');
+console.log('⚡ [Distiller] Building Luxury Primitives for client-portal...');
 
 // 1. Generate CSS Luxury Primitives
 const cssContent = `/**
- * HuntHub / DiggityBets — Luxury Visual Primitives & Shader FX (2026)
+ * Web Software Factory Studio — Luxury Visual Primitives & Shader FX (2026)
  * Pure Vanilla CSS, 60 FPS GPU-accelerated, Zero React runtime.
  */
 
@@ -131,7 +131,7 @@ const cssContent = `/**
 
 // 2. Generate JS Luxury Primitives Runtime
 const jsContent = `/**
- * HuntHub / DiggityBets — Luxury FX Runtime & Physics Engine (2026)
+ * Web Software Factory Studio — Luxury FX Runtime & Physics Engine (2026)
  * Pure Vanilla JS, Spring Dynamics, Magnetic Particle Flight & Collision.
  */
 

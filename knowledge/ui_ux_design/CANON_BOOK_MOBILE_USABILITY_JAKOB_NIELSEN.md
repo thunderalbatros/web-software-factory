@@ -1,4 +1,4 @@
----
+﻿---
 version: 1.0.0
 tipo: research
 tags:
@@ -23,7 +23,7 @@ Estudio empírico de usabilidad en dispositivos móviles. Regla de oro: en panta
 - **Direct Copywriting**
 - **Zero Unnecessary Form Fields**
 
-## 🚀 Aplicación en Arquitectura Web & HuntHub
+## 🚀 Aplicación en Arquitectura Web & WebFactory
 Onboarding de cero teclado con selección por tarjetas, tipografía Inter con ratio WCAG AAA > 7:1 y zona del pulgar optimizada.
 
 ---

@@ -1,6 +1,6 @@
-# Addy Osmani GitHub Arsenal Analysis (2026) — Agentic Engineering & Web Quality
+﻿# Addy Osmani GitHub Arsenal Analysis (2026) — Agentic Engineering & Web Quality
 
-> **Scope Anchor:** Deep technical investigation of Addy Osmani's GitHub repositories (`https://github.com/addyosmani?tab=repositories`) for HuntHub / DiggityBets (`diggitybets.vip`), covering both the AI Agent Squad (`agent-skills`, `web-quality-skills`, `adverse`, `agent-house`, `factory`, `agent-engineer`, `clarity`, `context-buddy`) and the production Web & OBS Streaming Suite (`critical`, `visibly.js`, `agentic-seo`, `quicklink`, `oust`).
+> **Scope Anchor:** Deep technical investigation of Addy Osmani's GitHub repositories (`https://github.com/addyosmani?tab=repositories`) for Web Software Factory Studio (`example-client.pages.dev`), covering both the AI Agent Squad (`agent-skills`, `web-quality-skills`, `adverse`, `agent-house`, `factory`, `agent-engineer`, `clarity`, `context-buddy`) and the production Web & OBS Streaming Suite (`critical`, `visibly.js`, `agentic-seo`, `quicklink`, `oust`).
 > **Verification Tag:** `[VERIFICADO: https://api.github.com/users/addyosmani/repos, 2026-10-17]`
 
 ---
@@ -8,7 +8,7 @@
 ## 1. Executive Classification of Addy Osmani's Repositories
 
 ### Tier 1 — AI Agent Engineering, Harness & Quality Gates (2025–2026)
-| Repository | Stars | Last Push | Core Mechanism & Value for HuntHub Agent Team |
+| Repository | Stars | Last Push | Core Mechanism & Value for WebFactory Agent Team |
 | :--- | :---: | :---: | :--- |
 | **`addyosmani/agent-skills`** | ⭐ 107,828 | `2026-10-13` | Production-grade engineering skills for coding agents: `constraint-driven-development` (`CONSTRAINTS.md` + `floor-guard`), `doubt-driven-development`, `source-driven-development`, `spec-driven-development`, `incremental-implementation`, `performance-optimization`, `security-and-hardening`. |
 | **`addyosmani/web-quality-skills`** | ⭐ 2,956 | `2026-08-24` | Measurement-first Lighthouse & Core Web Vitals (`LCP ≤ 2.5s`, `INP ≤ 200ms`, `CLS ≤ 0.1`) skills + **Metric-Honesty Rule** (never hallucinate performance numbers; measure via real `PerformanceObserver` / DevTools traces). |
@@ -20,8 +20,8 @@
 | **`addyosmani/context-buddy`** | ⭐ 55 | `2025-09-08` | Context Engineering budgets: managing token signal-to-noise ratio, pruning stale tool outputs, and scoping retrievals. |
 | **`addyosmani/gemini-cli-tips`** | ⭐ 2,360 | `2025-10-19` | Practical patterns for Gemini CLI / agentic workflows, custom commands, MCP scoping, and deterministic verification hooks. |
 
-### Tier 2 — Web Performance, Browser Architecture & Agentic SEO (For `diggitybets.vip` & OBS Overlays)
-| Repository | Stars | Last Push | Core Mechanism & Value for `diggitybets.vip` |
+### Tier 2 — Web Performance, Browser Architecture & Agentic SEO (For `example-client.pages.dev` & OBS Overlays)
+| Repository | Stars | Last Push | Core Mechanism & Value for `example-client.pages.dev` |
 | :--- | :---: | :---: | :--- |
 | **`addyosmani/agentic-seo`** | ⭐ 335 | `2026-04-12` | **Agentic Engine Optimization (AEO)**: 100-point audit across `robots.txt` AI crawler permissions, `/llms.txt` structured index, `AGENTS.md`, semantic HTML hierarchy, and token budgets. |
 | **`addyosmani/critical`** | ⭐ 10,292 | `2026-10-13` | Critical-path CSS & layout containment (`contain: layout style` / `content-visibility`) so off-screen or inactive panels never block rendering. |
@@ -31,18 +31,18 @@
 
 ---
 
-## 2. Concrete Integrations Applied to HuntHub / DiggityBets
+## 2. Concrete Integrations Applied to Web Software Factory Studio
 
 1. **For the AI Agent Squad (`.agents/skills/` & `CONSTRAINTS.md`):**
    - Installed `.agents/skills/constraint-driven-development/SKILL.md` + `CONSTRAINTS.md` with numeric quality floors and `tools/audit/floor_and_aeo_guard.mjs`.
    - Installed `.agents/skills/adverse-review/SKILL.md` (3-Persona Adversarial Review: *Auditor*, *Adversary*, *Pragmatist*).
    - Installed `.agents/skills/web-quality-skills/SKILL.md` (Core Web Vitals `LCP`/`INP`/`CLS` + Metric-Honesty Rule).
    - Installed `.agents/skills/agent-house-profiler/SKILL.md` (Lighthouse for Agents: Cost, Latency, Reliability, Context Hygiene).
-2. **For the Website & Streamer Control Panel (`diggitybets.vip`):**
+2. **For the Website & Streamer Control Panel (`example-client.pages.dev`):**
    - **Live Web Vitals & FPS Telemetry (`web-quality-skills`):** Real-time **FPS + INP (Interaction to Next Paint)** monitor badge (`#cp-webvitals-pill`) inside the Control Panel Performance Saver bar using `PerformanceObserver` and `requestAnimationFrame`.
-   - **Page Visibility Smart Governor (`visibly.js`):** Automatically pauses background decorative animations (`document.hidden`) when the Control Panel tab is unfocused while keeping the Kick Pusher WebSocket (`!battle`, `!sr`, `!tourney`, `!guess`) and OBS Overlay sync 100% live.
+   - **Page Visibility Smart Governor (`visibly.js`):** Automatically pauses background decorative animations (`document.hidden`) when the Control Panel tab is unfocused while keeping the RealtimeHub Pusher WebSocket (`!battle`, `!sr`, `!tourney`, `!guess`) and OBS Overlay sync 100% live.
    - **CSS Layout & Style Containment (`critical` / `web-quality-skills`):** Added `contain: layout style;` on `#control-panel` game module cards so DOM updates in one game never trigger layout thrashing in the others.
-   - **Agentic Engine Optimization (`agentic-seo`):** Added `/llms.txt` and `/robots.txt` (bundled into `dist/`) plus semantic metadata so `diggitybets.vip` scores 100/100 on AEO discoverability.
+   - **Agentic Engine Optimization (`agentic-seo`):** Added `/llms.txt` and `/robots.txt` (bundled into `dist/`) plus semantic metadata so `example-client.pages.dev` scores 100/100 on AEO discoverability.
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #sources

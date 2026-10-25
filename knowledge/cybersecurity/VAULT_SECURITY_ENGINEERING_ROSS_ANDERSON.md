@@ -1,4 +1,4 @@
-**Alcance:** Síntesis de Security Engineering (Ross Anderson): diseño de sistemas resistentes al fraude, psicología del atacante y auditoría de protocolos. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Síntesis de Security Engineering (Ross Anderson): diseño de sistemas resistentes al fraude, psicología del atacante y auditoría de protocolos. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 version: 1.0.0

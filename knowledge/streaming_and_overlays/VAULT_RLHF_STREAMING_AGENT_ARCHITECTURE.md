@@ -1,9 +1,9 @@
-# Arquitectura Agéntica para Live Streaming: Estado del Arte, RLHF y Percepción Multimodal
+﻿# Arquitectura Agéntica para Live Streaming: Estado del Arte, RLHF y Percepción Multimodal
 
 
-**Alcance:** Aprendizaje por refuerzo y bucles de retroalimentación en vivo para sistemas de streaming. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+**Alcance:** Aprendizaje por refuerzo y bucles de retroalimentación en vivo para sistemas de streaming. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
-Este documento resume la investigación profunda sobre las mejores tecnologías, arquitecturas y estrategias para bots conversacionales autónomos en plataformas de live streaming (Kick/Twitch), enfocados en el aprendizaje por imitación, RLHF y comprensión multimodal omnidireccional.
+Este documento resume la investigación profunda sobre las mejores tecnologías, arquitecturas y estrategias para bots conversacionales autónomos en plataformas de live streaming (RealtimeHub/Twitch), enfocados en el aprendizaje por imitación, RLHF y comprensión multimodal omnidireccional.
 
 ## 1. El Paradigma "Omni-Modal" y Full-Duplex (SOTA)
 

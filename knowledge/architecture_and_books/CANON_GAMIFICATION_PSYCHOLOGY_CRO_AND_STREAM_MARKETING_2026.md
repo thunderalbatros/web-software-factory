@@ -1,16 +1,16 @@
-# CANON: Gamificación, Psicología del Juego, Marketing de Streams y Optimización de Conversión (CRO) 2026
+﻿# CANON: Gamificación, Psicología del Juego, Marketing de Streams y Optimización de Conversión (CRO) 2026
 
-**Alcance:** Aplicable a HuntHub / DiggityBets (Portal Web `site/`, Sistema de Lealtad `$DIG`, Bounties *Only on Stake*, Tienda de Recompensas, Sorteos y Embudos de Afiliados VIP). Sujeto a las reglas éticas de Juego Responsable `+18` (`AGENTS.md §2.2`).
+**Alcance:** Aplicable a Web Software Factory Studio (Portal Web `site/`, Sistema de Lealtad `$DIG`, Bounties *Only on PartnerBrand*, Tienda de Recompensas, Sorteos y Embudos de Afiliados VIP). Sujeto a las reglas éticas de Juego Responsable `+18` (`AGENTS.md §2.2`).
 
 > **[VERIFICADO: Yu-kai Chou Octalysis + Nir Eyal Hooked + Kahneman/Tversky Prospect Theory + Cialdini Persuasion + Responsible Gambling Standards, 2026-10-19]**
 
 ---
 
-## 1. Marco Octalysis de Yu-kai Chou Aplicado a Streams en Vivo (Kick.com)
+## 1. Marco Octalysis de Yu-kai Chou Aplicado a Streams en Vivo (realtime-stream.com)
 
-Para transformar espectadores pasivos en una comunidad activa y leal sin recurrir a patrones oscuros (*dark patterns*), diseñamos cada módulo de **DiggityBets** activando los **8 Impulsos Centrales (Core Drives)** del marco Octalysis:
+Para transformar espectadores pasivos en una comunidad activa y leal sin recurrir a patrones oscuros (*dark patterns*), diseñamos cada módulo de **client-portal** activando los **8 Impulsos Centrales (Core Drives)** del marco Octalysis:
 
-| Core Drive (Impulso) | Implementación Concreta en DiggityBets | Métrica Objetivo |
+| Core Drive (Impulso) | Implementación Concreta en client-portal | Métrica Objetivo |
 |---|---|---|
 | **1. Significado Épico (Epic Meaning)** | Misiones cooperativas de la comunidad (*Community Boss / Crowd Bonus Hunt*): si el stream supera el Break-Even general, se desbloquea lluvia masiva de `$DIG` para todos los presentes. | Participación en chat `> 35%` de espectadores activos |
 | **2. Desarrollo y Logro (Accomplishment)** | Sistema de **6 Tiers de Bounties** (`$3` a `$20` USD) + progresión de rango VIP en el perfil del espectador con insignias verificadas. | Tasa de finalización de desafíos Tier 1–3 |
@@ -32,28 +32,28 @@ Para transformar espectadores pasivos en una comunidad activa y leal sin recurri
    - *Recompensa de la Tribu*: Reconocimiento público en el overlay de OBS y en el ticker social.
    - *Recompensa de la Caza*: Puntos `$DIG`, tickets para el sorteo dominical o premios de Bounty (`$3`–`$20` USD).
    - *Recompensa del Yo*: Subida de nivel, desbloqueo de logros y precisión estadística en predicciones.
-4. **Inversión (Investment)**: El espectador vincula su cuenta de Kick, guarda su ID de Stake verificado y acumula saldo `$DIG` para la tienda, aumentando el costo psicológico de abandonar la comunidad.
+4. **Inversión (Investment)**: El espectador vincula su cuenta de RealtimeHub, guarda su ID de PartnerBrand verificado y acumula saldo `$DIG` para la tienda, aumentando el costo psicológico de abandonar la comunidad.
 
 ### 2.2 Teoría de las Perspectivas (Kahneman & Tversky) y Arquitectura de Decisiones (Nudge)
 - **Aversión a la Pérdida ($\lambda \approx 2.25$)**: Perder una racha de 7 días duele psicológicamente más del doble que la satisfacción de ganar puntos equivalentes. Por eso ofrecemos recordatorios claros de racha activa y bonificaciones de consolidación.
-- **Efecto de Progreso Dotado (*Endowed Progress Effect*)**: Al registrarse por primera vez con Kick OAuth, el usuario recibe un bono inicial de bienvenida en `$DIG` que coloca su barra de progreso hacia su primer canje en el **20% completado** en lugar de `0%`, multiplicando la tasa de activación.
-- **Efecto Zeigarnik**: Mostrar las misiones diarias y los Bounties *Only on Stake* como colecciones visuales con progreso parcial (`2/4 slots de Tier 1 completadas`) mantiene activa la memoria de trabajo del usuario.
+- **Efecto de Progreso Dotado (*Endowed Progress Effect*)**: Al registrarse por primera vez con RealtimeHub OAuth, el usuario recibe un bono inicial de bienvenida en `$DIG` que coloca su barra de progreso hacia su primer canje en el **20% completado** en lugar de `0%`, multiplicando la tasa de activación.
+- **Efecto Zeigarnik**: Mostrar las misiones diarias y los Bounties *Only on PartnerBrand* como colecciones visuales con progreso parcial (`2/4 slots de Tier 1 completadas`) mantiene activa la memoria de trabajo del usuario.
 - **Efecto de Casi-Éxito (*Near-Miss*) Ético**: En juegos gratuitos de la casa (`house-games.js`) y ruletas (`wheel-csgo`), la desaceleración física muestra visualmente los premios adyacentes, pero el resultado se determina **100% antes de la animación** mediante `HMAC-SHA256` auditable (cero manipulación visual engañosa).
 
 ---
 
 ## 3. Marketing para Streamers, Patrocinio de Proveedoras (B2B) y CRO de Afiliados
 
-### 3.1 Estrategia "Only on Stake" Bounty Showcase como Producto B2B para Proveedoras
+### 3.1 Estrategia "Only on PartnerBrand" Bounty Showcase como Producto B2B para Proveedoras
 La sección **Bounties** está diseñada no solo para los espectadores, sino como un **escaparate patrocinable para estudios de slots** (*Valkyrie, Hacksaw, Pragmatic, Degen Lab, Maverick Studios, Paperclip, Titan, Shady Lady, Twist, etc.*):
 - **Visibilidad Garantizada (Impresiones + Gameplay Real)**: Para cazar un Bounty de `$3` a `$20` USD, la comunidad debe jugar específicamente las slots destacadas del estudio patrocinador.
 - **Métricas Demostrables para el Estudio**: El panel de administración registra cuántos intentos, reclamos verificados (`Bet ID`) y multiplicadores se lograron en cada slot patrocinada, permitiendo al streamer negociar paquetes de patrocinio mensual con datos reales de conversión.
 
-### 3.2 Optimización de la Tasa de Conversión (CRO) del Embudo VIP (`DIGGITYBETS`)
+### 3.2 Optimización de la Tasa de Conversión (CRO) del Embudo VIP (`client-portal`)
 Aplicando los principios de **Robert Cialdini** y **CRO de baja fricción**:
 1. **Reducción de Pasos (Regla de los 3 Clics)**:
-   - **Paso 1**: Botón de copiado instantáneo del código `DIGGITYBETS` con feedback háptico/visual (`¡Copiado!`) y apertura directa del enlace oficial.
-   - **Paso 2**: Vinculación de usuario de Stake en el Portal con validación instantánea.
+   - **Paso 1**: Botón de copiado instantáneo del código `client-portal` con feedback háptico/visual (`¡Copiado!`) y apertura directa del enlace oficial.
+   - **Paso 2**: Vinculación de usuario de PartnerBrand en el Portal con validación instantánea.
    - **Paso 3**: Acceso inmediato a reclamos de Bounties, Rakeback VIP y Sorteos Dominicales.
 2. **Prueba Social en Tiempo Real (*Social Proof*)**:
    - Mostrar en la cabecera de Bounties y Tienda cuántos premios ya fueron pagados y quiénes fueron los últimos espectadores verificados en cobrar.

@@ -1,8 +1,8 @@
-/**
- * HuntHub & DiggityBets — Video Course & Tutorial Ingester
+﻿/**
+ * Web Software Factory Studio — Video Course & Tutorial Ingester
  * =============================================================================
  * Ingests online video courses, masterclasses, and technical talks (e.g. YouTube)
- * into HuntHub's native RAG repository with zero cost and zero credentials.
+ * into WebFactory's native RAG repository with zero cost and zero credentials.
  *
  * Capabilities:
  *   1. Extracts complete timestamped transcript via YoutubeTranscript (free, sub-second).
@@ -143,7 +143,7 @@ export async function synthesizeCourseWithAI({ title, videoId, segments, fullTex
     'openai/gpt-oss-20b'
   ];
 
-  const prompt = `You are the Lead Principal Frontend Architect and Technical Ingester for HuntHub / DiggityBets.
+  const prompt = `You are the Lead Principal Frontend Architect and Technical Ingester for Web Software Factory Studio.
 Analyze this video course transcript and produce an exhaustive, authoritative, and practical technical canon document.
 
 VIDEO METADATA:
@@ -167,7 +167,7 @@ Generate a structured Markdown document in English (with Argentine Spanish execu
    - Anti-patterns to avoid
 4. ## Chronological Chapter Synthesis
    - Timed chapter breakdown referencing key sections
-5. ## Actionable Impact for HuntHub Streamer Suite
+5. ## Actionable Impact for WebFactory Streamer Suite
    - How to apply these lessons directly to our casino stream overlays, mobile website, and real-time hubs.
 
 Provide deep, professional, actionable content without fluff.`;

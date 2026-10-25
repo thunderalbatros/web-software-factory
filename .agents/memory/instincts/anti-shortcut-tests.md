@@ -1,12 +1,12 @@
----
+﻿---
 id: anti-shortcut-tests
 trigger: "when about to claim a task, fix, or feature is complete"
 confidence: 0.95
 domain: "operational-discipline"
 source: "session-observation"
 scope: project
-project_id: "streamerbot-hunthub"
-project_name: "HuntHub & DiggityBets"
+project_id: "web-software-factory-WebFactory"
+project_name: "Web Software Factory Studio"
 ---
 
 # Anti-Shortcut Test Verification Mandate

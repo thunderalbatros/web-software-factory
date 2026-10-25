@@ -1,4 +1,4 @@
----
+﻿---
 name: marketing-psychology
 description: "When the user wants to apply psychological principles, mental models, or behavioral science to marketing."
 ---
@@ -67,4 +67,4 @@ Every system has one bottleneck limiting throughput. Find and fix that constrain
 ---
 
 ## Progressive Disclosure Reference
-For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/streamerbot/.agents/skills/marketing-psychology/references/full-guide.md).
+For the complete reference catalog, extended examples, and deep edge cases, read [references/full-guide.md](file:///c:/Users/tomas/Desktop/web-software-factory/.agents/skills/marketing-psychology/references/full-guide.md).

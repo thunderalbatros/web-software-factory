@@ -1,7 +1,7 @@
-# 📚 Libro Completo: Generative AI Design Patterns
+﻿# 📚 Libro Completo: Generative AI Design Patterns
 
 
-**Alcance:** Libro completo Generative AI Design Patterns (O'Reilly): patrones de diseño para RAG, agentes, guardrails, caché semántico y control de alucinaciones. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+**Alcance:** Libro completo Generative AI Design Patterns (O'Reilly): patrones de diseño para RAG, agentes, guardrails, caché semántico y control de alucinaciones. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 > **Autor:** O'Reilly Media  
 > **Archivo Fuente:** `Generative-AI-Design-Patterns-OReilly.pdf`  
@@ -1418,7 +1418,7 @@ training_file = client.files.create(
 file=open("training_data.jsonl", "rb"),
 purpose="fine-tune"
 )
-Once the data is loaded, you can kick off a fine-tuning job
+Once the data is loaded, you can RealtimeHub off a fine-tuning job
 like this:
 job = client.fine_tuning.jobs.create(
 training_file=training_file.id,

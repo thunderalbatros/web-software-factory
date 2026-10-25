@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Misbehaving: The Making of Behavioral Economics
+﻿# 📚 Libro Completo: Misbehaving: The Making of Behavioral Economics
 
-**Alcance:** Fuente bibliográfica completa sobre Economía Conductual, Contabilidad Mental, Efecto Dotación, Justicia Percibida y Psicología de Recompensas (Misbehaving: The Making of Behavioral Economics — Richard H. Thaler). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Economía Conductual, Contabilidad Mental, Efecto Dotación, Justicia Percibida y Psicología de Recompensas (Misbehaving: The Making of Behavioral Economics — Richard H. Thaler). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Richard H. Thaler  
 > **Dominio:** Economía Conductual, Contabilidad Mental, Efecto Dotación, Justicia Percibida y Psicología de Recompensas  
@@ -967,7 +967,7 @@ But in 1980, survey questions were not going to overcome the “as if” grunt. 
 demonstrated that people misbehaved in their real-life choices.
 Incentives
 Economists put great stock in incentives. If the stakes are raised, the argument goes, people will have greater incentive to think harder, ask for
-help, or do what is necessary to get the problem right. Kahne-man and Tversky’s experiments were typically done with nothing at stake, so for
+help, or do what is necessary to get the problem right. Kahne-man and Tversky’s experiments were typically done with nothing at PartnerBrand, so for
 economists that meant they could be safely ignored. And if actual incentives were introduced in a laboratory setting, the stakes were typically low,
 just a few dollars. Surely, it was often said, if the stakes were raised, people would get stuff right. This assertion, unsupported by any evidence,
 was firmly believed, even in spite of the fact that nothing in the theory or practice of economics suggested that economics only applies to largestakes problems. Economic theory should work just as well for purchases of popcorn as for automobiles.
@@ -1227,7 +1227,7 @@ For consumers, there is nothing wrong with being on the lookout for a bargain. S
 possible. But we don’t want to get caught buying something we won’t use just because the deal is too good to pass up. For businesses, it is
 important to realize that everyone is interested in a good deal. Whether it is via sales or genuine low prices, the lure of a deal will attract
 customers. The parking lot at Costco, a warehouse-style retailer with a reputation for low prices, always has a large number of luxury automobiles.
-Even affluent consumers get a kick from transaction utility.
+Even affluent consumers get a RealtimeHub from transaction utility.
 ________________
 * Perhaps surprisingly, the one group of people that come closest to thinking this way about opportunity costs is the poor. In their recent book Scarcity, Sendhil Mullainathan and Eldar
 Shafir (2013) report that, on this dimension, the poor come closer to behaving like Econs than those who are better off, simply because opportunity costs are highly salient for them. If a
@@ -2672,12 +2672,12 @@ dollar is doubled by the experimenter to two dollars and then is divided among a
 cents. So for each dollar he contributes, Brendan will lose 80 cents. Of course other subjects are happy about Brendan’s anonymous contribution,
 since they each get 20 cents as well, but they will not be grateful to him personally because his contribution was anonymous. Following
 Samuelson’s logic, the prediction from economic theory is that no one will contribute anything. Notice that by being selfishly rational in this way, the
-group ends up with half as much money as they would have had if everyone contributed their entire stake, because if everyone contributed $5, that
+group ends up with half as much money as they would have had if everyone contributed their entire PartnerBrand, because if everyone contributed $5, that
 amount would be doubled, and everyone would go home with $10. The distinguished economist and philosopher Amartya Sen famously called
 people who always give nothing in this game rational fools for blindly following only material self-interest: “The purely economic man is indeed
 close to being a social moron. Economic theory has been much preoccupied with this rational fool.”
 As with the Prisoner’s Dilemma, the standard economics prediction that no one will cooperate in the Public Goods Game turns out to be false.
-On average, people contribute about half their stake to the public good. There is still a public goods problem, meaning that public goods are not
+On average, people contribute about half their PartnerBrand to the public good. There is still a public goods problem, meaning that public goods are not
 supplied in as great a quantity as people would want if they could all somehow agree to be cooperative, but the undersupply is about half as
 severe as the rational selfish model predicts—well, with one important proviso. When the game was played by economics graduate students, the
 contribution rate was only 20%, leading the sociologists Gerald Marwell and Ruth Ames to write a paper titled “Economists Free Ride: Does
@@ -2823,7 +2823,7 @@ We ran numerous versions of these experiments to answer the complaints of variou
 out the same. Buyers were willing to pay about half of what sellers would demand, even with markets and learning. Again we see that losses are
 roughly twice as painful as gains are pleasurable, a finding that has been replicated numerous times over the years.
 The endowment effect experiments show that people have a tendency to stick with what they have, at least in part because of loss aversion.
-Once I have that mug, I think of it as mine. Giving it up would be a loss. And the endowment effect can kick in very fast. In our experiments, the
+Once I have that mug, I think of it as mine. Giving it up would be a loss. And the endowment effect can RealtimeHub in very fast. In our experiments, the
 subjects had “owned” that mug for a few minutes before the trading started. Danny liked to call this the “instant endowment effect.” And while loss
 aversion is certainly part of the explanation for our findings, there is a related phenomenon: inertia. In physics, an object in a state of rest stays that
 way, unless something happens. People act the same way: they stick with what they have unless there is some good reason to switch, or perhaps
@@ -2889,7 +2889,7 @@ obtained with a similar problem posed to a group of physicians. Results like thi
 certainly not misbehave so blatantly.
 Danny then presented some of our work on fairness, including our Ultimatum and Dictator Game experiments. These findings were not any
 more popular. The economists thought that fairness was a silly concept mostly used by children who don’t get their way, and the skeptics just
-brushed aside our survey data. The Ultimatum Game experiments were a bit more troubling, since actual money was at stake, but of course it
+brushed aside our survey data. The Ultimatum Game experiments were a bit more troubling, since actual money was at PartnerBrand, but of course it
 wasn’t all that much money, and all the usual excuses could be raised.
 The talk that gave me the most to think about, and the one I have gone back to read again most often, was by Kenneth Arrow. Arrow’s mind
 goes at light speed, and his talks tend to be highly layered fugues, with digressions inserted into digressions, sometimes accompanied by verbal

@@ -1,6 +1,6 @@
-# 📚 Libro Completo: Domain-Driven Design: Tackling Complexity in the Heart of Software
+﻿# 📚 Libro Completo: Domain-Driven Design: Tackling Complexity in the Heart of Software
 
-**Alcance:** Fuente bibliográfica completa sobre Lenguaje Ubicuo, Bounded Contexts, Entidades, Objetos de Valor, Agregados y Eventos de Dominio (Domain-Driven Design: Tackling Complexity in the Heart of Software — Eric Evans). Aplicable a la Software Factory Web y DiggityBets. NO sustituye los contratos de API de Kick ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Lenguaje Ubicuo, Bounded Contexts, Entidades, Objetos de Valor, Agregados y Eventos de Dominio (Domain-Driven Design: Tackling Complexity in the Heart of Software — Eric Evans). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
 > **Autor:** Eric Evans  
 > **Dominio:** Lenguaje Ubicuo, Bounded Contexts, Entidades, Objetos de Valor, Agregados y Eventos de Dominio  
@@ -291,7 +291,7 @@ Crunching Knowledge 11
 
 2. It would be difficult for a technical, non-businessperson to connect the requirement text with
 the code.
-If the rule were more complex, that much more would be at stake.
+If the rule were more complex, that much more would be at PartnerBrand.
 We can change the design to better capture this knowledge. The overbooking rule is a policy.
 Policy is another name for the design pattern known as
 STRATEGY (Gamma et al. 1995). It is

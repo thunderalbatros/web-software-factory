@@ -1,4 +1,4 @@
----
+﻿---
 version: 1.0.0
 tipo: research
 tags:
@@ -25,7 +25,7 @@ Compendio definitivo de patrones de diseño de interacción. Detalla la divulgac
 - **Responsive Layouts**
 - **Progressive Disclosure**
 
-## 🚀 Aplicación en Arquitectura Web & HuntHub
+## 🚀 Aplicación en Arquitectura Web & WebFactory
 Estructuración de la pantalla Club y fichas de venues con láminas inferiores expansibles (Bottom Sheets a 120 FPS) que revelan información secundaria sin sacar al usuario de su contexto geográfico principal.
 
 ---

@@ -1,6 +1,6 @@
----
+﻿---
 name: verify-before-claim
-description: "Obligatorio antes de declarar cualquier tarea terminada en HuntHub."
+description: "Obligatorio antes de declarar cualquier tarea terminada en WebFactory."
 ---
 
 # Verify Before Claim (protocolo DEC-010)

@@ -1,4 +1,4 @@
-# Tratado Canónico de los 14 Libros Útiles del Repositorio `qasimhbti/books`: SQLite Internals, Escalabilidad Web, Edge Caching, Grafos, Algoritmos Bitwise y Diagnóstico RCA (2026)
+﻿# Tratado Canónico de los 14 Libros Útiles del Repositorio `qasimhbti/books`: SQLite Internals, Escalabilidad Web, Edge Caching, Grafos, Algoritmos Bitwise y Diagnóstico RCA (2026)
 
 **Alcance:** Aplicable a la capa de persistencia SQLite/Durable Objects (`worker/index.js`, `tools/intelligence/rag_pipeline.mjs`), caché de borde HTTP en Cloudflare Workers, estructuras en memoria para Leaderboards y sorteos en vivo (`site/js/`), grafos de conocimiento y antifraude (`CodeGraph`, `WikiGraph`, `security-anti-fraud.js`), procesamiento DSP WebAudio y diagnóstico automatizado de causa raíz (`Squad 6` & `Squad 9`).
 
@@ -24,7 +24,7 @@
 - En lugar de resolver relaciones de varios saltos (*multi-hop*) mediante costosos `JOIN` relacionales ($\mathcal{O}(\log N)$ por salto), almacenar en memoria listas de adyacencia directas (`Map<nodeId, Set<neighborId>>`) permite recorrer vecindarios de 1 y 2 saltos en **$\mathcal{O}(k)$ microsegundos** (proporcional únicamente al grado $k$ del nodo).
 - **Dos Aplicaciones Directas en Nuestra Fábrica**:
   1. **`WikiGraph` & `CodeGraph` (`tools/intelligence/code_and_wiki_graph.mjs`)**: Expansión de contexto RAG a 1 salto mediante `[[Wikilinks]]` ponderados por *PageRank*.
-  2. **Radar Antifraude Multi-Cuenta (`site/js/security-anti-fraud.js` & `worker/index.js`)**: Representar cuentas de usuario, huellas de dispositivo (`ThumbmarkJS`), subredes IP y billeteras como un **grafo bipartito**. Si dos o más cuentas de Kick comparten un nodo de huella o billetera (componente conexa de tamaño $\ge 2$ detectada por búsqueda en anchura `BFS`), el sistema marca automáticamente el clúster como sospechoso de *Sybil Attack / Multi-Accounting*.
+  2. **Radar Antifraude Multi-Cuenta (`site/js/security-anti-fraud.js` & `worker/index.js`)**: Representar cuentas de usuario, huellas de dispositivo (`ThumbmarkJS`), subredes IP y billeteras como un **grafo bipartito**. Si dos o más cuentas de RealtimeHub comparten un nodo de huella o billetera (componente conexa de tamaño $\ge 2$ detectada por búsqueda en anchura `BFS`), el sistema marca automáticamente el clúster como sospechoso de *Sybil Attack / Multi-Accounting*.
 
 ---
 
@@ -34,7 +34,7 @@
 - Para mantener tablas de clasificación en vivo (*Leaderboards* de torneos, predictores del Bonus Hunt o ranking de puntos `$DIG`) sin recalcular `ORDER BY` sobre toda la tabla en cada mensaje del chat:
   - Mantener un mapa en memoria `Map<userId, score>` sincronizado con un arreglo ordenado incrementalmente (o *Skip List*), actualizando únicamente la posición del usuario modificado y persistiendo en lote (*Write-Behind Batching*).
 - **Deduplicación de Comandos en $\mathcal{O}(1)$**:
-  - Usar un conjunto acotado con expiración temporal (*TTL Set*) para garantizar idempotencia cuando el WebSocket de Pusher/Kick reenvía un evento duplicado (`event_id`).
+  - Usar un conjunto acotado con expiración temporal (*TTL Set*) para garantizar idempotencia cuando el WebSocket de Pusher/RealtimeHub reenvía un evento duplicado (`event_id`).
 
 ---
 
@@ -42,7 +42,7 @@
 
 ### 4.1 *Request Coalescing* (Colapso de Peticiones Concurrentes) y *Grace Mode*
 - **El Problema de la Estampida de Caché (*Cache Stampede / Thundering Herd*)**:
-  - Cuando 1.500 espectadores en Kick tienen abierta la web `diggitybets.vip` o los overlays y expira el caché de `/api/sync/state`, las 1.500 peticiones golpearían simultáneamente la base de datos.
+  - Cuando 1.500 espectadores en RealtimeHub tienen abierta la web `example-client.pages.dev` o los overlays y expira el caché de `/api/sync/state`, las 1.500 peticiones golpearían simultáneamente la base de datos.
 - **Solución Canónica en el Borde (`worker/index.js`)**:
   1. **`Stale-While-Revalidate` & *Grace Mode***: Devolver inmediatamente el último estado válido en memoria (`< 1 ms`) mientras una única promesa en segundo plano (`ctx.waitUntil(...)`) refresca el dato si hace falta.
   2. **Invalidez Quirúrgica por Evento (*Purge / Ban on Write*)**: El estado en caché solo se invalida cuando el panel de administración (`POST /api/sync/state`) escribe un cambio nuevo, logrando **99%+ de *Cache Hit Ratio*** en lecturas de espectadores.
@@ -53,11 +53,11 @@
 
 ### 5.1 El Cubo de Escalabilidad *AKF* (Ejes $X, Y, Z$)
 1. **Eje $X$ (Clonación Horizontal sin Estado)**: El frontend estático y los Cloudflare Workers de borde no guardan estado local efímero crítico; cualquier nodo del planeta puede servir los activos en `< 15 ms`.
-2. **Eje $Y$ (Descomposición Funcional por Servicio / Dominio)**: Separar estrictamente el tráfico público de lectura (`/api/sync/state`, catálogos de slots) de las mutaciones autenticadas de administración (`/api/admin/*`) y de los webhooks firmados de Kick (`/api/webhooks/kick`).
+2. **Eje $Y$ (Descomposición Funcional por Servicio / Dominio)**: Separar estrictamente el tráfico público de lectura (`/api/sync/state`, catálogos de slots) de las mutaciones autenticadas de administración (`/api/admin/*`) y de los webhooks firmados de RealtimeHub (`/api/webhooks/RealtimeHub`).
 3. **Eje $Z$ (Particionamiento por Canal / Sala)**: Aislar el estado en tiempo real por sala o canal mediante *Durable Objects* independientes.
 
 ### 5.2 Reglas de Oro de Resiliencia Web (Cal Henderson)
-- **Nunca confiar en tiempos de respuesta externos en el camino crítico**: Toda llamada a APIs externas (Kick API, verificación de imágenes o proveedores IA) debe tener un `AbortSignal.timeout(ms)` estricto, un *Circuit Breaker* y una respuesta de reserva (*Fallback*) instantánea.
+- **Nunca confiar en tiempos de respuesta externos en el camino crítico**: Toda llamada a APIs externas (RealtimeHub API, verificación de imágenes o proveedores IA) debe tener un `AbortSignal.timeout(ms)` estricto, un *Circuit Breaker* y una respuesta de reserva (*Fallback*) instantánea.
 - **Desacoplar el trabajo pesado mediante colas asíncronas**: Las tareas de limpieza (purga de retención de 90 días, telemetría, auditoría) nunca bloquean la respuesta HTTP al usuario.
 
 ---

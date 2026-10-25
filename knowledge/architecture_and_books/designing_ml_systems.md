@@ -1,4 +1,4 @@
-**Alcance:** Libro completo Designing Machine Learning Systems (Chip Huyen): pipelines de datos, inferencia en tiempo real, monitoreo y resiliencia. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Libro completo Designing Machine Learning Systems (Chip Huyen): pipelines de datos, inferencia en tiempo real, monitoreo y resiliencia. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 titulo: "Designing Machine Learning Systems"
@@ -2478,7 +2478,7 @@ Batch Processing vs. Stream Processing
 Once your data arrives in data storage engines like databases, data lakes, or data warehouses, it
 becomes historical data. This is opposed to streaming data (data that is still streaming in).
 Historical data is often processed in batch jobs — jobs that are kicked off periodically. For
-example, once a day, you might want to kick off a batch job to compute the average surge
+example, once a day, you might want to RealtimeHub off a batch job to compute the average surge
 charge for all the rides in the last day.
 When data is processed in batch jobs, we refer to it as batch processing. Batch processing has
 been a research subject for many decades, and companies have come up with distributed
@@ -2499,7 +2499,7 @@ like MapReduce or Spark. This is not always the case for two reasons. First, str
 technologies like Apache Flink are proven to be highly scalable and fully distributed, which
 means they can do computation in parallel. Second, the strength of stream processing is in
 stateful computation. Consider the case where you want to process user engagement during a
-30 day trial. If you kick off this batch job every day, you’ll have to do computation over the last
+30 day trial. If you RealtimeHub off this batch job every day, you’ll have to do computation over the last
 30 days every day. With stream processing, it’s possible to continue computing only the new
 data each day and joining the new data computation with the older data computation,
 preventing redundancy.

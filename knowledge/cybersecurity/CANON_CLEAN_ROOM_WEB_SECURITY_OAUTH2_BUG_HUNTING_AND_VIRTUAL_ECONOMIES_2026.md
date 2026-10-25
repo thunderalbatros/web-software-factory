@@ -1,6 +1,6 @@
-# Tratado Canónico Clean-Room: Seguridad de Navegadores (Zalewski), Bug Hunting & APIs (Stuttard, Yaworski, Madden, Richer), Secure by Design (Johnsson, Liran Tal), Transacciones ACID (Jim Gray, Karwin), Economía Virtual ($DIG) y Modelo CRO LIFT (2026)
+﻿# Tratado Canónico Clean-Room: Seguridad de Navegadores (Zalewski), Bug Hunting & APIs (Stuttard, Yaworski, Madden, Richer), Secure by Design (Johnsson, Liran Tal), Transacciones ACID (Jim Gray, Karwin), Economía Virtual ($DIG) y Modelo CRO LIFT (2026)
 
-**Alcance:** Aplicable al blindaje criptográfico y de endpoints en `worker/index.js`, flujos OAuth 2.1 PKCE con Kick (`site/js/auth-oauth.js`), contabilidad transaccional de puntos virtuales `$DIG`, prevención de condiciones de carrera (`TOCTOU`), diseño de dominio seguro y optimización de conversión ética (`Squad 2`, `Squad 3`, `Squad 6` y `Squad 8`). Sintetiza en sala limpia (*Clean-Room*) los principios de Zalewski, Stuttard/Pinto, Yaworski, Madden, Richer, Johnsson, Liran Tal, Gray/Reuter, Karwin, Lehdonvirta/Castronova y Blanks/Goward.
+**Alcance:** Aplicable al blindaje criptográfico y de endpoints en `worker/index.js`, flujos OAuth 2.1 PKCE con RealtimeHub (`site/js/auth-oauth.js`), contabilidad transaccional de puntos virtuales `$DIG`, prevención de condiciones de carrera (`TOCTOU`), diseño de dominio seguro y optimización de conversión ética (`Squad 2`, `Squad 3`, `Squad 6` y `Squad 8`). Sintetiza en sala limpia (*Clean-Room*) los principios de Zalewski, Stuttard/Pinto, Yaworski, Madden, Richer, Johnsson, Liran Tal, Gray/Reuter, Karwin, Lehdonvirta/Castronova y Blanks/Goward.
 
 ---
 
@@ -29,7 +29,7 @@
 ### 2.1 Vinculación Criptográfica de Estado en OAuth 2.1 con PKCE (`S256`)
 1. El cliente genera un `code_verifier` aleatorio de alta entropía (`32 bytes` CSPRNG codificados en `base64url`) y su resumen `code_challenge = BASE64URL(SHA256(code_verifier))`.
 2. El parámetro `state` debe ser un token aleatorio independiente vinculado a la sesión actual del navegador para impedir ataques de **CSRF de inicio de sesión (*Login CSRF / Account Swapping*)**.
-3. En el servidor (`worker/index.js`), el `code` de autorización de Kick se canjea una sola vez y nunca se registra en logs.
+3. En el servidor (`worker/index.js`), el `code` de autorización de RealtimeHub se canjea una sola vez y nunca se registra en logs.
 
 ### 2.2 *Domain Primitives* y Prevención de *Prototype Pollution* (Dan Bergh Johnsson & Liran Tal)
 - **Primitivas de Dominio Inmutables**:
@@ -63,7 +63,7 @@
   - **Sumideros Atractivos (*Sinks* 100% gratuitos sin dinero real)**: Entrada a sorteos especiales de tickets dorados, personalización de insignias/títulos VIP en el ranking, potenciadores cosméticos en juegos de la comunidad y subastas de solicitud de slots (*Slot Requests*).
 
 ### 4.2 El Modelo Científico de Conversión *LIFT* (Chris Goward & Conversion Rate Experts)
-Para maximizar el registro de espectadores y el uso ético de los códigos del canal (`DIGGITYBETS`), toda pantalla principal se evalúa con la ecuación de **6 factores LIFT**:
+Para maximizar el registro de espectadores y el uso ético de los códigos del canal (`client-portal`), toda pantalla principal se evalúa con la ecuación de **6 factores LIFT**:
 $$\text{Conversión} = \frac{\text{Propuesta de Valor} \times (\text{Relevancia} + \text{Claridad} + \text{Urgencia})}{\text{Distracción} + \text{Ansiedad}}$$
 - **Reducir la Distracción**: Un solo llamado a la acción (*Primary CTA*) dominante por bloque visual.
 - **Reducir la Ansiedad**: Mostrar siempre insignias de transparencia (*100% Gratis · Sin Custodia · Sorteos Verificables HMAC-SHA256 · +18*).

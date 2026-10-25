@@ -1,4 +1,4 @@
-**Alcance:** Teoría de juegos algorítmica (Nisan, Roughgarden, Tardos, Vazirani): diseño de mecanismos, equilibrios de Nash e incentivos a prueba de colusión. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Teoría de juegos algorítmica (Nisan, Roughgarden, Tardos, Vazirani): diseño de mecanismos, equilibrios de Nash e incentivos a prueba de colusión. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 version: 1.0.0

@@ -1,7 +1,7 @@
-# 📚 Libro Completo: Building Applications with AI Agents and Multiagent Systems
+﻿# 📚 Libro Completo: Building Applications with AI Agents and Multiagent Systems
 
 
-**Alcance:** Libro completo Building Applications with AI Agents & Multi-Agent Systems: diseño de orquestadores, memoria, herramientas y evaluación multi-agente. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+**Alcance:** Libro completo Building Applications with AI Agents & Multi-Agent Systems: diseño de orquestadores, memoria, herramientas y evaluación multi-agente. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 > **Autor:** Packt Publishing  
 > **Archivo Fuente:** `Building-Applications-with-AI-Agents-Multiagent-Systems.pdf`  

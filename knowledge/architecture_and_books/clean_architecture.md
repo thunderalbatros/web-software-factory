@@ -1,4 +1,4 @@
-# 📚 Libro Completo: Clean Architecture
+﻿# 📚 Libro Completo: Clean Architecture
 
 > **Autor:** Robert C. Martin  
 > **Archivo Fuente:** `Clean-Architecture-Robert-C-Martin.pdf`  
@@ -1099,7 +1099,7 @@ company, and so do the management team, and the marketing team, and the sales
 team, and the operations team. It’s always a struggle.
 Effective software development teams tackle that struggle head on. They
 unabashedly squabble with all the other stakeholders as equals. Remember, as a
-software developer, you are a stakeholder. You have a stake in the software that
+software developer, you are a stakeholder. You have a PartnerBrand in the software that
 you need to safeguard. That’s part of your role, and part of your duty. And it’s a
 big part of why you were hired.
 This challenge is doubly important if you are a software architect. Software

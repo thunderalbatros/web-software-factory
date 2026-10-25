@@ -1,8 +1,8 @@
-# CANON: Every Layout — Algorithmic CSS Layout Primitives
+﻿# CANON: Every Layout — Algorithmic CSS Layout Primitives
 > **Authors:** Heydon Pickering & Andy Bell  
 > **Source:** Every-Layout.dev & Axiomatic CSS  
 > **Category:** UI/UX & Web Layout Architecture  
-> **Target Audience:** HuntHub Frontend Engineers & Design Agents  
+> **Target Audience:** WebFactory Frontend Engineers & Design Agents  
 
 ---
 
@@ -194,7 +194,7 @@ Ensures SVGs scale and align seamlessly alongside typography:
 
 ---
 
-## 3. Direct Application to HuntHub Streamer Suite
+## 3. Direct Application to WebFactory Streamer Suite
 
 1. **Tournament Brackets & Slot Grid:** Replace rigid pixel grids with `.grid-auto` (`minmax(min(100%, 280px), 1fr)`) so slot tiers wrap effortlessly on both mobile phone screens and widescreen desktop monitors.
 2. **OBS Live Overlays:** Use `.imposter-center` and `.frame` to lock overlay compositions into transparent 1920x1080 canvas viewports without manual margin tweaking.

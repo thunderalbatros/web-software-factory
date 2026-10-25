@@ -1,6 +1,6 @@
-# CANON: Arquitectura de Software Factory Agéntica (50 Repositorios SOTA, ToM-SWE, Stagehand, Browserbase UI-Test y Oxc Rust Toolchain — 2026)
+﻿# CANON: Arquitectura de Software Factory Agéntica (50 Repositorios SOTA, ToM-SWE, Stagehand, Browserbase UI-Test y Oxc Rust Toolchain — 2026)
 
-**Alcance:** Aplicable a toda la arquitectura de la Software Factory Agéntica de HuntHub / DiggityBets (`site/`, `worker/index.js`, `core/`, `overlay-*`, `wheel-*`, `tools/intelligence/`, `tools/audit/`, `.agents/skills/`, `memory/`). Define la topología de 3 estratos, el pipeline autónomo de 5 fases, el modelado mental de 3 niveles (`ToM-SWE`), la verificación adversarial guiada por diffs (`ui-test` + `Stagehand`), el linting en Rust en `<50ms` (`oxlint`) y el catálogo maestro de 50 repositorios open-source organizados en 7 capas operativas bajo restricción estricta de hardware ligero (HP 250 G8, 0 Docker, USD 0).
+**Alcance:** Aplicable a toda la arquitectura de la Software Factory Agéntica de Web Software Factory Studio (`site/`, `worker/index.js`, `core/`, `overlay-*`, `wheel-*`, `tools/intelligence/`, `tools/audit/`, `.agents/skills/`, `memory/`). Define la topología de 3 estratos, el pipeline autónomo de 5 fases, el modelado mental de 3 niveles (`ToM-SWE`), la verificación adversarial guiada por diffs (`ui-test` + `Stagehand`), el linting en Rust en `<50ms` (`oxlint`) y el catálogo maestro de 50 repositorios open-source organizados en 7 capas operativas bajo restricción estricta de hardware ligero (HP 250 G8, 0 Docker, USD 0).
 
 ---
 
@@ -31,7 +31,7 @@
 
 Para evitar el caos de scripts sueltos, nuestra Software Factory organiza sus capacidades en tres estratos ortogonales:
 
-| Estrato | Nombre Arquitectónico | Función Principal | Implementación en HuntHub (`streamerbot`) |
+| Estrato | Nombre Arquitectónico | Función Principal | Implementación en WebFactory (`web-software-factory`) |
 | :--- | :--- | :--- | :--- |
 | **Estrato 1** | **Agent Harnesses & ACI** | Interfaz Agente-Computadora, mapas de repositorio AST, edición quirúrgica de diffs y modos por rol (*Architect / Code / Test*). | `Aider` repo-map patterns, `SWE-agent` ACI, `Roo-Code` role modes, `tools/intelligence/code_and_wiki_graph.mjs`. |
 | **Estrato 2** | **Workflows, Memory & Theory of Mind** | Orquestación por grafos deterministas, modelado mental del CTO en 3 niveles (`ToM-SWE`), instintos temporales y *Speculative RAG*. | `tools/intelligence/tom_swe_engine.mjs`, `memory/tom_swe_model.json`, `tools/intelligence/instincts_engine.mjs`, `tools/intelligence/factory_sweep.mjs`. |
@@ -70,7 +70,7 @@ Para evitar el caos de scripts sueltos, nuestra Software Factory organiza sus ca
    - El backend en el borde (`worker/index.js`) utiliza patrones de `Hono` + `hono/middleware` + validación de esquemas `Valibot` y sincronización transaccional con **Cloudflare D1 (`kv_store`)**.
    - Cada modificación pasa por **`oxlint v1.89.0`** (`oxc-project/oxc`) en ~110ms con cero demonios en segundo plano.
 4. **Fase 4 — QA Visual Determinista, Auto-Curación `Stagehand` y Caza Adversarial `ui-test`**:
-   - `tools/audit/diff_ui_adversarial.mjs` inspecciona el `git diff`, valida la salud de los selectores DOM primarios y de respaldo (*Self-Healing Selector Cache* en `memory/selector_cache.json` inspirado en `browserbase/stagehand`), verifica la ausencia total de usuarios de prueba (`hunthub_demo_users_purged_live_v4`) y audita el circuito de celebración sincronizada (`announceStreamWinner` + `overlay-celebration` 1920x1080 + `/api/kick/chat/announce`).
+   - `tools/audit/diff_ui_adversarial.mjs` inspecciona el `git diff`, valida la salud de los selectores DOM primarios y de respaldo (*Self-Healing Selector Cache* en `memory/selector_cache.json` inspirado en `browserbase/stagehand`), verifica la ausencia total de usuarios de prueba (`WebFactory_demo_users_purged_live_v4`) y audita el circuito de celebración sincronizada (`announceStreamWinner` + `overlay-celebration` 1920x1080 + `/api/RealtimeHub/chat/announce`).
    - `tools/audit/visual_regression.mjs` ejecuta comparación pixel-a-píxel con `Playwright` + `Pixelmatch` en el *Component Testbench Sandbox* (`site/testbench.html`).
 5. **Fase 5 — Gobernanza Quirúrgica Basada en Rutas y Despliegue Edge**:
    - **Política de Revisión Quirúrgica Basada en Rutas (Surgical Path-Based Review Gate)**: Cualquier cambio en rutas sensibles (`worker/index.js`, `site/js/auth-oauth.js`, `wrangler.toml`, `.mcp.json`, `constitution_guard.mjs`) exige validación explícita de invariantes de seguridad (`isAuthorizedAdmin`, firma RSA de webhooks, CSP/HSTS en `dist/_headers`).
@@ -141,7 +141,7 @@ Para evitar el caos de scripts sueltos, nuestra Software Factory organiza sus ca
 47. **`devcontainers/cli`**: Aprovisionamiento reproducible de entornos de desarrollo mediante `devcontainer.json`.
 48. **`dagger/dagger`**: Pipelines CI/CD programables como código tipado con caché por contenido y trazas OpenTelemetry.
 49. **`nektos/act`**: Ejecución local de workflows de GitHub Actions antes del `git push`.
-50. **`coollabsio/coolify`**: PaaS auto-alojable con preview deployments por Pull Request y servidor MCP oficial (en HuntHub operamos sobre Cloudflare Workers + D1 Edge 100% Free Tier).
+50. **`coollabsio/coolify`**: PaaS auto-alojable con preview deployments por Pull Request y servidor MCP oficial (en WebFactory operamos sobre Cloudflare Workers + D1 Edge 100% Free Tier).
 
 ---
 

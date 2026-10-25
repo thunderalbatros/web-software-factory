@@ -1,7 +1,7 @@
-# 📚 Libro Completo: AI Engineering
+﻿# 📚 Libro Completo: AI Engineering
 
 
-**Alcance:** Libro completo AI Engineering (Chip Huyen): arquitectura de sistemas con LLMs, RAG, evaluación, latencia y FinOps. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+**Alcance:** Libro completo AI Engineering (Chip Huyen): arquitectura de sistemas con LLMs, RAG, evaluación, latencia y FinOps. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 > **Autor:** Chip Huyen  
 > **Archivo Fuente:** `AI-Engineering-Foundation-Models-Chip-Huyen.pdf`  
@@ -7280,7 +7280,7 @@ someone is a vampire in
 real life?
 A reasonable defense...is
 to invite them into your
-home and then stake
+home and then PartnerBrand
 them.
 Figure 4-2 shows the performance of several models on this benchmark, as
 shown in GPT-4’s technical report (2023). For comparison, the human

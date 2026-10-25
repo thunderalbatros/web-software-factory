@@ -1,5 +1,5 @@
-# Reporte de Inteligencia de Repositorios GitHub SOTA 2026
-> **HuntHub / DiggityBets Streaming Suite**  
+﻿# Reporte de Inteligencia de Repositorios GitHub SOTA 2026
+> **Web Software Factory Studio Streaming Suite**  
 > **Fecha de Análisis:** 18 de Octubre, 2026  
 > **Objetivo:** Filtrado, análisis arquitectónico, ingestión de conocimiento y clonado de herramientas Open-Source para maximizar el rendimiento, la inteligencia de agentes y la experiencia visual del portal.
 
@@ -33,7 +33,7 @@ Se analizaron de forma exhaustiva los **53 repositorios** solicitados. Aplicando
 
 | Repositorio | Motivo del Rechazo Técnico |
 | :--- | :--- |
-| `angular/angular` | Monolito de Google (+5 GB) incompatible con la arquitectura serverless/edge y Vanilla JS de HuntHub. Viola la restricción de hardware HP 250 G8. |
+| `angular/angular` | Monolito de Google (+5 GB) incompatible con la arquitectura serverless/edge y Vanilla JS de WebFactory. Viola la restricción de hardware HP 250 G8. |
 | `electron/electron` | Runtime nativo de C++ y Chromium (+50 GB). El proyecto es 100% web, servido en Cloudflare Workers y browser sources de OBS. |
 | `twbs/bootstrap` | Framework CSS legacy que inyecta cientos de clases genéricas, rompe el sistema dark glassmorphism 2026 y viola la regla de diseño artesanal anti-slop. |
 | `Dogfalo/materialize` | Abandonado hace más de 7 años. Estética obsoleta de Material Design 2014, inútil para casinos modernos. |
@@ -75,7 +75,7 @@ Ubicación local: `references/sota-expansion/` (Clonados con `--depth 1` para no
 
 ### 4.2 Para Rendimiento Web Extremo (`references/sota-expansion/web-performance/`)
 5. **`bigskysoftware/htmx`:** Arquitectura reactiva hiperliviana sin bundles pesados de React, ideal para actualizar widgets de stream con puro HTML over the wire.
-6. **`verlok/vanilla-lazyload`:** Lazy Loading ultraliviano (<2 KB) basado en `IntersectionObserver` nativo. Clave para cargar las carátulas de las slots en `diggitybets.vip` solo cuando el usuario hace scroll, reduciendo drásticamente el consumo de RAM.
+6. **`verlok/vanilla-lazyload`:** Lazy Loading ultraliviano (<2 KB) basado en `IntersectionObserver` nativo. Clave para cargar las carátulas de las slots en `example-client.pages.dev` solo cuando el usuario hace scroll, reduciendo drásticamente el consumo de RAM.
 7. **`nuejs/nue`:** Alternativa HTML-first (<2 KB) extremadamente rápida que compila sin bloat de JS, ideal para micrositios y overlays estáticos.
 
 ### 4.3 Para Visuales, Micro-Interacciones y UI de Casino (`references/sota-expansion/motion-ui/`)
@@ -99,7 +99,7 @@ Ubicación local: `references/sota-expansion/` (Clonados con `--depth 1` para no
 
 ---
 
-## 5. Descubrimientos de Alto Impacto para HuntHub
+## 5. Descubrimientos de Alto Impacto para WebFactory
 
 1. **Lazy Loading Nativo para el Catálogo de Slots (`vanilla-lazyload`):**
    - Actualmente, el grid de slots carga decenas de imágenes SVG de golpe al renderizar la sección. 

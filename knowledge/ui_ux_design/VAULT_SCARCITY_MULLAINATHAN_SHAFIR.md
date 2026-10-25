@@ -1,4 +1,4 @@
-**Alcance:** Síntesis de Scarcity (Mullainathan & Shafir): psicología de la escasez, efecto túnel, impuesto al ancho de banda cognitivo y urgencia. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y DiggityBets. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+﻿**Alcance:** Síntesis de Scarcity (Mullainathan & Shafir): psicología de la escasez, efecto túnel, impuesto al ancho de banda cognitivo y urgencia. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
 
 ---
 version: 1.0.0

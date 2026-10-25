@@ -1,4 +1,4 @@
----
+﻿---
 version: 1.0.0
 tipo: research
 tags:
@@ -25,8 +25,8 @@ La referencia mundial de diseño de formularios y recolección de datos. Demuest
 - **Visual Hierarchy in Inputs**
 - **Tappable Target Sizing**
 
-## 🚀 Aplicación en Arquitectura Web & HuntHub
-Arquitectura de onboarding en HuntHub Web con 0 inputs de texto libre para preferencias: selección ágil por tags táctiles de 44dp, selección rápida por categorías y login en 1-tap con biometría.
+## 🚀 Aplicación en Arquitectura Web & WebFactory
+Arquitectura de onboarding en WebFactory Web con 0 inputs de texto libre para preferencias: selección ágil por tags táctiles de 44dp, selección rápida por categorías y login en 1-tap con biometría.
 
 ---
 
