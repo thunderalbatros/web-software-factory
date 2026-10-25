@@ -1,0 +1,7 @@
+# {{PROJECT_NAME}}
+
+> Official AI & LLM Context Manifest (Agentic SEO / AEO Standard 2026)
+
+- **Project ID:** `{{PROJECT_ID}}`
+- **Stack:** `astro-edge` (Astro 5 + Cloudflare Workers Static Assets)
+- **Primary URL:** {{PROJECT_DOMAIN}}

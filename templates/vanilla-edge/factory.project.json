@@ -1,0 +1,37 @@
+{
+  "id": "{{PROJECT_ID}}",
+  "name": "{{PROJECT_NAME}}",
+  "domain": "{{PROJECT_DOMAIN}}",
+  "version": "1.0.0",
+  "archetype": "{{PROJECT_ARCHETYPE}}",
+  "stack": "vanilla-edge",
+  "complianceProfile": "standard-web",
+  "paths": {
+    "entryHtml": "index.html",
+    "distDir": "dist",
+    "workerEntry": "worker/index.js",
+    "tokensPath": "tokens/design.tokens.json",
+    "designCssPath": "site/css/design-tokens.css",
+    "selectorCachePath": "memory/selector_cache.json",
+    "sourceDirs": ["site", "worker"],
+    "dataFiles": [],
+    "overlays": [],
+    "requiredOverlaysInAudit": [],
+    "coreJsFiles": ["site/js/app.js", "worker/index.js"]
+  },
+  "aeo": {
+    "requiredLlmsHeaders": ["# {{PROJECT_NAME}}"]
+  },
+  "invariants": {
+    "requireObsOverlays": false,
+    "requireControlPanelTelemetryPill": false,
+    "requireKickWinnerCircuit": false,
+    "requireZeroDemoUsersPurge": false,
+    "maxDistSizeMb": 50
+  },
+  "sdd": {
+    "targetUsers": ["Primary Visitors", "Customers / Clients", "Administrators"],
+    "visualTheme": "OKLCH 90/8/2 Perceptual Palette + Utopia Fluid Typography + Minimal Surface Hierarchy",
+    "architectureTier": "Vanilla JS/CSS + Cloudflare Workers Static Assets"
+  }
+}

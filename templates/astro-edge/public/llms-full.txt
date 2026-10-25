@@ -1,0 +1,13 @@
+# {{PROJECT_NAME}} — Full Agentic Context & Technical Corpus (llms-full.txt)
+
+> **Domain:** {{PROJECT_DOMAIN}}
+> **Archetype:** {{PROJECT_ARCHETYPE}}
+> **Stack:** Astro 5 + Cloudflare Workers Static Assets
+
+## 1. Executive Summary
+{{PROJECT_NAME}} is a high-performance web platform engineered with Astro 5 Islands, OKLCH perceptual color tokens (`W3C DTCG 2025.10`), Utopia fluid typography, View Transitions API, Speculation Rules (`0ms` prerender), and Cloudflare Workers Static Assets.
+
+## 2. Canonical Pages & Endpoints
+- `{{PROJECT_DOMAIN}}/` — Primary Hero, Value Proposition, and Interactive Modules
+- `{{PROJECT_DOMAIN}}/llms.txt` — Concise AI & LLM Index
+- `{{PROJECT_DOMAIN}}/sitemap.xml` — XML Search Engine Sitemap

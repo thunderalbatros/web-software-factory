@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: {{PROJECT_DOMAIN}}/sitemap.xml

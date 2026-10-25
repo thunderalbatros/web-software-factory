@@ -1,0 +1,40 @@
+{
+  "schema_version": "1.5.0-stagehand-self-healing",
+  "last_verified": "2026-10-25T19:50:00.000Z",
+  "targets": {
+    "main_site": {
+      "file": "index.html",
+      "primitives": [
+        {
+          "id": "header-navigation-landmark",
+          "operation": "observe",
+          "primary_selector": "header",
+          "fallback_selectors": ["nav[aria-label]", "[role='banner']"],
+          "required": true
+        },
+        {
+          "id": "main-content-landmark",
+          "operation": "observe",
+          "primary_selector": "main",
+          "fallback_selectors": ["#main-content", "[role='main']"],
+          "required": true
+        },
+        {
+          "id": "primary-focal-cta",
+          "operation": "observe",
+          "primary_selector": "[data-cta='primary']",
+          "fallback_selectors": [".btn-primary", "main a[href]", "main button"],
+          "required": true
+        },
+        {
+          "id": "footer-landmark",
+          "operation": "observe",
+          "primary_selector": "footer",
+          "fallback_selectors": [".site-footer", "[role='contentinfo']"],
+          "required": true
+        }
+      ]
+    },
+    "overlays": []
+  }
+}

@@ -1,0 +1,36 @@
+# Antigravity IDE Context & Indexer Ignore Rules (Web Software Factory Studio 2026)
+# Prevents background workspace indexing of heavy caches, build artifacts, and on-demand reference catalogs.
+
+# Secrets & Private Credentials (Zero AI Indexer Exposure)
+.dev.vars
+.env
+*.pem
+*.key
+*.secret
+
+# Dependencies & Build Outputs
+node_modules/
+tools/audit/node_modules/
+dist/
+projects/**/node_modules/
+projects/**/dist/
+.wrangler/
+.cache/
+.sandboxes/
+
+# On-Demand Reference Style Catalogs (Query via `node tools/factory.mjs styles` or `Omni-RAG v5`)
+references/
+
+# Binary Media, Screenshots & Packaged Archives
+*.zip
+*.exe
+*.dll
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.mp4
+*.wav
+*.mp3
+tools/audit/out/
+docs/audit_snapshots/*.png

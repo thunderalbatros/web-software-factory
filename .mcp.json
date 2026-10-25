@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "web-factory-omni-rag": {
+      "command": "node",
+      "args": ["./tools/intelligence/mcp_omni_rag_server.mjs"],
+      "disabled": false
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"],
+      "disabled": false
+    }
+  }
+}

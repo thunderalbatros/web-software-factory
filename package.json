@@ -1,0 +1,34 @@
+{
+  "name": "web-software-factory-studio",
+  "version": "2.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Multi-Project Web Software Factory Studio (ISO/IEC 26550 SPLE, Spec-Kit SDD, Astro 5 / Vanilla-Edge, 9-Role Agent Team & Omni-RAG v5)",
+  "scripts": {
+    "factory": "node tools/factory.mjs",
+    "factory:status": "node tools/factory.mjs status",
+    "factory:styles": "node tools/factory.mjs styles",
+    "factory:new": "node tools/factory.mjs new",
+    "factory:spec": "node tools/factory.mjs spec",
+    "factory:snapshot": "node tools/factory.mjs snapshot",
+    "factory:build": "node tools/factory.mjs build",
+    "factory:gate": "node tools/factory.mjs gate",
+    "factory:visual-gate": "node tools/factory.mjs visual-gate",
+    "factory:sweep": "node tools/intelligence/factory_sweep.mjs",
+    "factory:evolve": "node tools/intelligence/textgrad_skill_optimizer.mjs",
+    "factory:scout": "node tools/intelligence/tech_scout.mjs",
+    "factory:constitution": "node tools/intelligence/constitution_guard.mjs",
+    "factory:tom-swe": "node tools/intelligence/tom_swe_engine.mjs",
+    "rag:rebuild": "node tools/intelligence/rag_pipeline.mjs --rebuild",
+    "audit:ryux": "node tools/audit/ryux_design_gate.mjs",
+    "audit:diff-ui": "node tools/audit/diff_ui_adversarial.mjs",
+    "audit:visual-regression": "node tools/audit/visual_regression.mjs",
+    "audit:a11y-snapshot": "node tools/audit/a11y_tree_snapshot.mjs",
+    "audit:eval": "node tools/intelligence/eval_matrix.mjs"
+  },
+  "dependencies": {
+    "dnum": "^2.18.0",
+    "fzstd": "^0.1.1",
+    "uplot": "^1.6.32"
+  }
+}

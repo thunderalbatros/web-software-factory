@@ -1,0 +1,8 @@
+# {{PROJECT_NAME}}
+
+> Official AI & LLM Context Manifest (Agentic SEO / AEO Standard 2026)
+
+- **Project ID:** `{{PROJECT_ID}}`
+- **Archetype:** `{{PROJECT_ARCHETYPE}}`
+- **Primary URL:** {{PROJECT_DOMAIN}}
+- **Health Endpoint:** `/api/health`

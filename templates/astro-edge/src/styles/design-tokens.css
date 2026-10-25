@@ -1,0 +1,88 @@
+:root {
+  interpolate-size: allow-keywords;
+  --surface-canvas: oklch(0.14 0.015 260);
+  --surface-elevated: oklch(0.19 0.018 260);
+  --surface-glass: oklch(0.22 0.02 260 / 0.72);
+  --text-primary: oklch(0.96 0.008 260);
+  --text-secondary: oklch(0.76 0.015 260);
+  --brand-accent: oklch(0.74 0.17 160);
+  --brand-cta: oklch(0.82 0.18 85);
+  --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --step-2: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);
+  --step-4: clamp(2.25rem, 1.8rem + 2.2vw, 3.75rem);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--surface-canvas);
+  color: var(--text-primary);
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.dialog-modal {
+  transition: opacity 0.24s ease, transform 0.24s ease, display 0.24s allow-discrete;
+}
+
+@starting-style {
+  .dialog-modal[open] {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+.tabular-nums, [data-count-to] {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 160ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes scrollRevealCard {
+      from { opacity: 0.7; transform: translate3d(0, 12px, 0) scale(0.99); }
+      to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+    }
+    [data-scroll-reveal] {
+      animation: scrollRevealCard linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 20%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+h1, h2, h3, h4 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+section + section, [data-content-visibility="auto"] {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 500px;
+}

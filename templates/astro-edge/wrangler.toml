@@ -1,0 +1,9 @@
+name = "{{PROJECT_ID}}"
+compatibility_date = "2025-02-01"
+
+[placement]
+mode = "smart"
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"

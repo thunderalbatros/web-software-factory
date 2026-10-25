@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{PROJECT_NAME}} — Sitio Oficial</title>
+  <meta name="description" content="{{PROJECT_NAME}} — Plataforma web construida con la Web Software Factory (OKLCH, WCAG 2.2 AA, Cloudflare Edge).">
+  <link rel="stylesheet" href="/site/css/design-tokens.css">
+  <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "{{PROJECT_NAME}}",
+    "url": "{{PROJECT_DOMAIN}}"
+  }
+  </script>
+  <script type="speculationrules">
+  {
+    "prerender": [
+      {
+        "where": { "href_matches": "/*" },
+        "eagerness": "moderate"
+      }
+    ],
+    "prefetch": [
+      {
+        "where": { "href_matches": "/*" },
+        "eagerness": "moderate"
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <header aria-label="Navegación principal">
+    <nav aria-label="Menú principal">
+      <strong>{{PROJECT_NAME}}</strong>
+    </nav>
+  </header>
+  <main id="main-content" aria-label="Contenido principal">
+    <section aria-label="Hero principal">
+      <h1>{{PROJECT_NAME}}</h1>
+      <p>Arquitectura de alta conversión con tokens OKLCH, escalas fluidas Utopia y despliegue en Cloudflare Workers.</p>
+    </section>
+  </main>
+  <footer aria-label="Pie de página legal">
+    <small>&copy; 2026 {{PROJECT_NAME}}. Todos los derechos reservados.</small>
+  </footer>
+  <script src="/site/js/app.js" defer></script>
+</body>
+</html>

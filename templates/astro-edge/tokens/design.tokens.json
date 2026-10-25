@@ -1,0 +1,17 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "color": {
+    "surface": {
+      "canvas": { "$value": "oklch(0.14 0.015 260)", "$type": "color" },
+      "elevated": { "$value": "oklch(0.19 0.018 260)", "$type": "color" }
+    },
+    "text": {
+      "primary": { "$value": "oklch(0.96 0.008 260)", "$type": "color" },
+      "secondary": { "$value": "oklch(0.76 0.015 260)", "$type": "color" }
+    },
+    "brand": {
+      "accent": { "$value": "oklch(0.74 0.17 160)", "$type": "color" },
+      "cta": { "$value": "oklch(0.82 0.18 85)", "$type": "color" }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "version": "2026.10.20",
+  "sealedBy": "CTO-HITL-Constitution-Guard",
+  "sealedAt": "2026-10-25T22:55:05.010Z",
+  "algorithm": "SHA-256 (LF-normalized)",
+  "files": {
+    "AGENTS.md": "4c4fe7b9df76c01de95fbe6943ba509691ea41ec7aa780d9dde6e17bce488b2f",
+    "CONSTRAINTS.md": "ebb2d873c455fb6292eecb49eb4e3680a027e8d3f4fff9bcb7260571387179b7"
+  }
+}
