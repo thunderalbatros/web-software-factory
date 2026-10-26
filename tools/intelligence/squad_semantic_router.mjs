@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * tools/intelligence/squad_semantic_router.mjs
  * =============================================================================
@@ -62,14 +62,13 @@ const SQUAD_DOMAINS = {
       'vlm', 'playwright', 'lighthouse', 'pa11y', 'break-ui', 'uxbench', 'uiguard'
     ]
   },
-  streaming_and_overlays: {
-    squad: 'Squad 3 — RealtimeHub Integration, OBS Overlays & Casino Math',
-    folderPrefix: 'knowledge/streaming_and_overlays/',
+  seo_aeo_geo: {
+    squad: 'Role 7 — Technical SEO, Agentic SEO (AEO), GEO (llms.txt / JSON-LD) & Speculation Rules Architect',
+    folderPrefix: 'knowledge/software_factory/',
     keywords: [
-      'RealtimeHub', 'pusher', 'overlay', 'overlays', 'obs', 'cpu', 'slot', 'slots', 'PartnerBrand',
-      'rtp', 'volatilidad', 'volatility', 'barboianu', 'bounty', 'bountys', 'bounties',
-      'bet_id', 'multiplicador', 'sorteo', 'giveaway', 'custody', 'custodia', 'loyalty',
-      'puntos', 'chat'
+      'seo', 'aeo', 'geo', 'llms.txt', 'llms-full.txt', 'schema.org', 'json-ld', 'sitemap',
+      'speculation', 'speculationrules', 'prerender', 'prefetch', 'cwv', 'lcp', 'inp', 'cls',
+      'core web vitals', 'indexacion', 'meta', 'opengraph', 'robots.txt'
     ]
   },
   architecture_and_books: {

@@ -1,15 +1,15 @@
-﻿> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
 
 # 🧠 Tratado Canónico: Thinking, Fast and Slow (Daniel Kahneman)
 ### Basado en: *Thinking, Fast and Slow*
@@ -31,9 +31,9 @@ Daniel Kahneman cartografía la arquitectura de la cognición humana en dos sist
 
 ---
 
-## 2. Leyes de Kahneman Aplicadas al Producto Yendo
+## 2. Leyes de Kahneman Aplicadas al Producto WebFactory
 
-- **Diseñar para el Sistema 1:** La interfaz de Yendo no debe obligar al usuario a activar el Sistema 2 en momentos de ocio. Las tarjetas deben comunicar su valor de un solo vistazo: foto elocuente, amigos que asisten y botón simple de confirmación.
+- **Diseñar para el Sistema 1:** La interfaz de WebFactory no debe obligar al usuario a activar el Sistema 2 en momentos de ocio. Las tarjetas deben comunicar su valor de un solo vistazo: foto elocuente, amigos que asisten y botón simple de confirmación.
 - **Heurística de la Disponibilidad (Availability Heuristic):** Los eventos que los amigos del usuario comentan o confirman se perciben inconscientemente como mucho más atractivos y seguros.
 - **Aversión a la Pérdida (Loss Aversion):** El dolor psicológico de perder una oportunidad o descuento grupal es el doble de intenso que la satisfacción de ganar un beneficio idéntico ($2:1$).
 

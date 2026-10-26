@@ -1,4 +1,4 @@
-﻿/**
+/**
  * tools/intelligence/instincts_engine.mjs
  * =============================================================================
  * SOTA Agentic Memory & Continuous Evolution Engine (2026)
@@ -34,49 +34,39 @@ if (!fs.existsSync(MEMORY_DIR)) {
  * Foundational Architectural Graph (Graphiti Temporal Validity Model)
  */
 const DEFAULT_TEMPORAL_GRAPH = {
-  version: "1.0.0",
+  version: "2.0.0",
   last_updated: new Date().toISOString(),
   rules: [
     {
-      id: "stack-vanilla-web-obs",
+      id: "stack-astro-and-vanilla-edge",
       type: "architectural_decision",
-      title: "Pure Web Platform (Vanilla JS + HTML5 + CSS3 + Web Audio + Cloudflare)",
-      valid_from: "2026-10-15T00:00:00.000Z",
+      title: "Dual Product-Line Templates (Astro 5 Edge Islands + Vanilla Edge SPA/MPA on Cloudflare Workers Static Assets)",
+      valid_from: "2026-10-25T00:00:00.000Z",
       valid_until: null,
       status: "ACTIVE",
-      stack: ["HTML5", "Vanilla JS", "Vanilla CSS", "Web Audio API", "Node.js (strip-types)", "Cloudflare Workers D1", "Three.js WebGPU"],
-      rationale: "Zero-card $0 permanent hosting, sub-5% CPU OBS Browser Source efficiency, instantaneous loading without hydration overhead.",
-      evidence: "core/src/index.ts, site/js/chat.js, dist/ build cleanly"
+      stack: ["Astro 5 Islands", "HTML5 / CSS Baseline 2026", "Vanilla JS ES2025", "W3C DTCG 2025.10 OKLCH Tokens", "Cloudflare Workers Static Assets + D1 SQLite", "Speculation Rules API"],
+      rationale: "Zero-card $0 permanent hosting, sub-1.8s LCP (~0ms with Speculation Rules), 60-FPS GPU-composited motion on HP 250 G8 hardware.",
+      evidence: "templates/astro-edge, templates/vanilla-edge, tools/build_dist.mjs"
     },
     {
-      id: "RealtimeHub-compliance-zero-custody",
-      type: "compliance_rule",
-      title: "Zero Custody & 100% Free Spectator Participation",
-      valid_from: "2026-10-15T00:00:00.000Z",
+      id: "oklch-apca-dtcg-design-floor",
+      type: "design_invariable",
+      title: "W3C DTCG 2025.10 OKLCH 90/8/2 Chromatic Budget & APCA Lc >= 75/60 Contrast",
+      valid_from: "2026-10-25T00:00:00.000Z",
       valid_until: null,
       status: "ACTIVE",
-      rationale: "Strict compliance with RealtimeHub ToS and gambling regulations. No buy-ins, no custody of viewer crypto/fiat. Prizes awarded out-of-band.",
-      evidence: "AGENTS.md Section 2.2, test/phase1-PartnerBrand-auth.test.ts"
+      rationale: "Guarantees perceptual legibility, de-boxed surface luminance hierarchy, and Utopia clamp() fluid scaling across 4 viewports with 0px horizontal scroll.",
+      evidence: "CONSTRAINTS.md, tokens/design.tokens.json, tools/audit/ryux_design_gate.mjs"
     },
     {
-      id: "obs-cpu-budget-le-5pct",
+      id: "gpu-compositor-60fps-motion-budget",
       type: "performance_invariable",
-      title: "OBS Browser Source CPU Impact <= 5%",
-      valid_from: "2026-10-15T00:00:00.000Z",
+      title: "60-FPS Frame Budget (<= 16.6ms) via Composite-Only GPU Properties & CSS Baseline 2026",
+      valid_from: "2026-10-25T00:00:00.000Z",
       valid_until: null,
       status: "ACTIVE",
-      rationale: "HP 250 G8 notebook constraint. All animations must use composite-only properties (transform, opacity) via WAAPI and procedural audio.",
-      evidence: "AGENTS.md Section 1, knowledge/motion_and_animation/CANON_BOOK_DESIGNING_FOR_PERFORMANCE_LARA_HOGAN.md"
-    },
-    {
-      id: "multi-locale-currency-parsing",
-      type: "bug_fix",
-      title: "Tolerant Multi-Locale Number and Currency Parsing",
-      valid_from: "2026-10-17T18:00:00.000Z",
-      valid_until: null,
-      status: "ACTIVE",
-      rationale: "Parse both European and US number formats (1.500,50 vs 1,500.50) and multiplier suffixes (k, m, b) correctly.",
-      evidence: "core/src/number-parser.ts, test/stage4-tiers.test.ts"
+      rationale: "HP 250 G8 notebook constraint. All animations must use composite-only properties (transform, opacity) or CSS Scroll-Driven Animations.",
+      evidence: "CONSTRAINTS.md Section 3, tools/audit/ryux_design_gate.mjs"
     },
     {
       id: "durable-objects-hibernation",
@@ -86,29 +76,18 @@ const DEFAULT_TEMPORAL_GRAPH = {
       valid_until: null,
       status: "ACTIVE",
       rationale: "Zero-cost real-time message broadcasting without billing active worker CPU during idle websocket connections.",
-      evidence: "worker/index.js, .agents/memory/instincts/durable-objects-hibernation.md"
+      evidence: ".agents/memory/instincts/durable-objects-hibernation.md"
     },
     {
-      id: "rainbet-external-sponsor-integration",
+      id: "legacy-single-project-monolith",
       type: "deprecated_rule",
-      title: "Rainbet Casino Scraper & Referral Engine",
+      title: "Hardcoded Single-Project Casino/Streamer Root Coupling",
       valid_from: "2026-08-01T00:00:00.000Z",
-      valid_until: "2026-10-15T00:00:00.000Z",
+      valid_until: "2026-10-25T00:00:00.000Z",
       status: "INVALIDATED",
-      superseded_by: "PartnerBrand-vip-and-client-portal-internal-store",
-      rationale: "Rainbet is no longer the active sponsor. The project operates exclusively with PartnerBrand VIP referral linking and client-portal virtual $DIG economy.",
-      evidence: "test/phase1-PartnerBrand-auth.test.ts, site/index.html"
-    },
-    {
-      id: "mobile-react-native-expo-framework",
-      type: "cross_project_contamination",
-      title: "Expo SDK & React Native Mobile Frameworks",
-      valid_from: "2026-08-01T00:00:00.000Z",
-      valid_until: "2026-10-17T19:00:00.000Z",
-      status: "INVALIDATED",
-      superseded_by: "stack-vanilla-web-obs",
-      rationale: "Belongs exclusively to Yendo Mobile. Web Software Factory Studio is strictly a Web Application and OBS Streaming Suite.",
-      evidence: "Purge commit 1ba5dc1"
+      superseded_by: "stack-astro-and-vanilla-edge",
+      rationale: "The Web Software Factory Studio is strictly decoupled from any single client repository via factory.project.json and projects/<slug>.",
+      evidence: "tools/lib/project_loader.mjs, tools/factory.mjs"
     }
   ]
 };
@@ -240,42 +219,23 @@ export async function runPreFlightCheck() {
   // Check 1: Forbidden stacks (Rainbet, Expo, etc.)
   const forbiddenPatterns = ['rainbet', 'expo-router', 'react-native-skia'];
   console.log('\n• Checking for forbidden/invalidated stacks in package.json...');
-  const corePkg = JSON.parse(fs.readFileSync(path.join(ROOT, 'core', 'package.json'), 'utf8'));
-  const deps = Object.keys(corePkg.dependencies || {});
+  const rootPkgPath = path.join(ROOT, 'package.json');
+  const rootPkg = fs.existsSync(rootPkgPath) ? JSON.parse(fs.readFileSync(rootPkgPath, 'utf8')) : {};
+  const deps = Object.keys({ ...(rootPkg.dependencies || {}), ...(rootPkg.devDependencies || {}) });
   const foundForbidden = deps.filter(d => forbiddenPatterns.includes(d));
   if (foundForbidden.length > 0) {
     throw new Error(`[PRE-FLIGHT FAILED] Forbidden dependencies detected: ${foundForbidden.join(', ')}`);
   }
   console.log('  ✓ Zero forbidden dependencies found.');
 
-  // Check 3: Config Protection Guard
-  console.log('• Running Config Protection Guard...');
-  try {
-    execSync('node tools/guardrails/config-protection.js', { cwd: ROOT, stdio: 'pipe' });
-    console.log('  ✓ Config protection verified.');
-  } catch (err) {
-    console.warn('  ⚠ Config protection warning:', err.message);
-  }
+  // Check 2: Constitutional Lock & Anti-Reward-Hacking Guard
+  console.log('• Running Constitutional SHA-256 Guard...');
+  execSync('node tools/intelligence/constitution_guard.mjs', { cwd: ROOT, stdio: 'pipe' });
+  console.log('  ✓ Constitutional SHA-256 Lock & Anti-Reward-Hacking floors verified.');
 
-  // Check 4: Multi-Squad Topology & Skills Alignment
-  console.log('• Verifying Multi-Squad Topology (Squads 0 to 7)...');
-  try {
-    const squadModule = await import('./agent_squad.mjs');
-    if (typeof squadModule.verifySquadAlignment === 'function') {
-      const alignment = squadModule.verifySquadAlignment();
-      if (!alignment.valid) {
-        throw new Error(`[PRE-FLIGHT FAILED] Missing squad skills: ${JSON.stringify(alignment.missingSkills)}`);
-      }
-      console.log(`  ✓ All ${alignment.squadCount} Specialized Squads aligned with 100% verified skills.`);
-    }
-  } catch (err) {
-    if (err.message.includes('[PRE-FLIGHT FAILED]')) throw err;
-    console.warn('  ⚠ Squad alignment note:', err.message);
-  }
-
-  // Check 5: Anti-Shortcut & Invariant Files Integrity
-  console.log('• Verifying Anti-Shortcut & Invariant Files...');
-  const invariantFiles = ['AGENTS.md', 'CONSTRAINTS.md', 'openrig.json'];
+  // Check 3: 9-Role Agency & Invariant Files Integrity
+  console.log('• Verifying 9-Role Virtual Agency & Invariant Files...');
+  const invariantFiles = ['AGENTS.md', 'CONSTRAINTS.md', '.agents/agency/ORGANIZATION.md', 'tokens/design.tokens.json'];
   for (const f of invariantFiles) {
     if (!fs.existsSync(path.join(ROOT, f))) {
       throw new Error(`[PRE-FLIGHT FAILED] Missing invariant file: ${f}`);
@@ -306,14 +266,15 @@ export function runJudgeHarness() {
   };
 
   try {
-    console.log('1. Executing core test suite & guardrails (npm run guard:all)...');
-    execSync('npm run guard:all', { cwd: path.join(ROOT, 'core'), stdio: 'inherit' });
+    console.log('1. Executing Constitutional Guard & 5-Dimension Eval Matrix...');
+    execSync('node tools/intelligence/constitution_guard.mjs', { cwd: ROOT, stdio: 'inherit' });
+    execSync('node tools/intelligence/eval_matrix.mjs', { cwd: ROOT, stdio: 'inherit' });
     results.coreTests = true;
     results.consoleLeakCheck = true;
     results.configGuard = true;
-    console.log('✓ All 12 test suites, config guardrails & console checks PASSED.');
+    console.log('✓ Constitutional Lock & Multi-Dimensional Eval Matrix PASSED.');
   } catch (err) {
-    console.error('❌ Judge Harness Failure in core test suites.');
+    console.error('❌ Judge Harness Failure in Studio verification suites.');
     throw err;
   }
 

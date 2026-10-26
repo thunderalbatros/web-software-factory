@@ -1,15 +1,15 @@
-> **Alcance:** Literatura canónica de ciberseguridad web, criptografía aplicada, protección de identidad OAuth 2.1, defensa XSS/CSP/CSRF y blindaje de aplicaciones en tiempo real.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de ciberseguridad web, criptografía aplicada, protección de identidad OAuth 2.1 (PKCE), defensa XSS/CSP/CSRF con `DOMPurify` y `TrustedTypes`, y blindaje de aplicaciones en tiempo real.
 
 # 🛡️ Auditoría Maestra de Ciberseguridad, Identidad y Blindaje de Datos (Septiembre 2026)
 
@@ -21,7 +21,7 @@ ultima_revision: 2026-08-27
 
 ## 1. Diagnóstico Ejecutivo de Seguridad
 
-En **Yendo**, la ciberseguridad y la confianza interpersonal no son características secundarias; son el **núcleo de supervivencia del negocio**. Dado que la aplicación propicia encuentros presenciales en el mundo físico entre personas que no se conocían previamente, cualquier falla de seguridad o suplantación de identidad acarrea riesgos directos para la integridad física y la tranquilidad de los usuarios.
+En **WebFactory**, la ciberseguridad y la confianza interpersonal no son características secundarias; son el **núcleo de supervivencia del negocio**. Dado que la aplicación propicia encuentros presenciales en el mundo físico entre personas que no se conocían previamente, cualquier falla de seguridad o suplantación de identidad acarrea riesgos directos para la integridad física y la tranquilidad de los usuarios.
 
 A continuación se detalla la radiografía técnica del sistema tras la auditoría exhaustiva de código, base de datos y flujos de red:
 
@@ -36,12 +36,12 @@ flowchart TD
     subgraph CapaBaseDatos ["2. Blindaje de Datos (PostgreSQL 17)"]
         RLS["Row Level Security Zero-Trust"] --> IDOR["Guardias v_auth_uid IS DISTINCT FROM p_user_id"]
         RPC["Funciones Transaccionales ACID"] --> SEARCH["SET search_path = public, extensions"]
-        LEDGER["Yendo Token Ledger"] --> FORUPDATE["FOR UPDATE SKIP LOCKED (Anti Double-Spending)"]
+        LEDGER["WebFactory Token Ledger"] --> FORUPDATE["FOR UPDATE SKIP LOCKED (Anti Double-Spending)"]
     end
 
     subgraph CapaComercio ["3. Blindaje de Venues & Negocio B2B"]
         CHECKIN["Check-in Presencial"] --> HARDWARE["Hardware Biometrics + PostGIS <65m"]
-        SPOOF["Anti-GPS Spoofing"] --> MOCK["Detección isMocked en Android / iOS"]
+        SPOOF["Anti-GPS Spoofing"] --> MOCK["Detección isMocked en Web Platform / iOS"]
         PASS["Pase QR de Consumición"] --> CAPTURE["Bloqueo de Screenshots + Nonce Único"]
     end
 ```
@@ -58,14 +58,14 @@ En el flujo previo, el usuario tipeaba manualmente un `@instagram_handle` en el 
 ### 🛡️ Medidas de Blindaje Implementadas:
 
 1. **Doble Badge de Confianza en la UI (`src/services/identityVerification.ts`):**
-   - **`Cuenta Declarada` (Badge Gris):** Se muestra cuando el usuario solo escribió su handle. La app despliega una advertencia preventiva: *"⚠️ Perfil declarado manualmente. Yendo no certifica la titularidad hasta completar el proceso de verificación. Verificá siempre la identidad presencialmente."*
+   - **`Cuenta Declarada` (Badge Gris):** Se muestra cuando el usuario solo escribió su handle. La app despliega una advertencia preventiva: *"⚠️ Perfil declarado manualmente. WebFactory no certifica la titularidad hasta completar el proceso de verificación. Verificá siempre la identidad presencialmente."*
    - **`Identidad Confirmada` / `Verificado por Meta` (Badge Verde/Dorado):** Solo se otorga cuando existe prueba criptográfica de posesión de la cuenta.
 
 2. **Protocolo Bio-Challenge Token (BCT):**
    - Para evitar la barrera de las revisiones corporativas cerradas de Meta en etapas de desarrollo:
-     1. Yendo genera un token criptográfico efímero de 6 caracteres (ej: `YD-7492`) con validez de 10 minutos.
+     1. WebFactory genera un token criptográfico efímero de 6 caracteres (ej: `YD-7492`) con validez de 10 minutos.
      2. El usuario lo coloca temporalmente en su biografía pública de Instagram.
-     3. El scraper soberano de Yendo inspecciona la biografía pública y certifica la titularidad en PostgreSQL (`is_instagram_verified = true`).
+     3. El scraper soberano de WebFactory inspecciona la biografía pública y certifica la titularidad en PostgreSQL (`is_instagram_verified = true`).
      4. El usuario retira el token de su bio habiendo obtenido el tilde oficial de confianza.
 
 3. **Aislamiento Social de 12 Horas (`src/services/safety.ts`):**
@@ -91,13 +91,13 @@ En el flujo previo, el usuario tipeaba manualmente un `@instagram_handle` en el 
 ## 4. Blindaje del Comercio Aliado (Anti-Fraude B2B y Doble Gasto)
 
 1. **Doble Validación Anti-GPS Spoofing en Hardware:**
-   - En Android y en iOS, `useCheckinGeofence.ts` inspecciona los flags del proveedor de ubicación (`loc.mocked`, precisión nula o anómala) para bloquear apps como *Fake GPS* o emuladores de ubicación.
+   - En Web Platform y en iOS, `useCheckinGeofence.ts` inspecciona los flags del proveedor de ubicación (`loc.mocked`, precisión nula o anómala) para bloquear apps como *Fake GPS* o emuladores de ubicación.
    - Se exige confirmación biométrica local en hardware (Huella o FaceID vía `expo-local-authentication`) antes de emitir la solicitud de check-in.
 2. **Protección contra Fraude en Pases QR (Replay Attacks):**
    - Si un usuario le toma una captura de pantalla a su Pase QR y la comparte por WhatsApp para que varios amigos consuman gratis:
-     - **Control 1:** El modal del Pase QR activa `expo-screen-capture` (`preventScreenCaptureAsync()`) para bloquear capturas de pantalla y grabación de video en iOS y Android.
+     - **Control 1:** El modal del Pase QR activa `expo-screen-capture` (`preventScreenCaptureAsync()`) para bloquear capturas de pantalla y grabación de video en iOS y Web Platform.
      - **Control 2:** El token del QR contiene un UUID nonce de un solo uso que se "quema" atómicamente en PostgreSQL en el instante del primer escaneo mediante `redeem_b2b_tokens` con bloqueo pesimista `FOR UPDATE`. Cualquier intento posterior devuelve `TOKEN_ALREADY_REDEEMED`.
-3. **Cero Concurrencia / Anti Double-Spending en Yendo Tokens (Y$):**
+3. **Cero Concurrencia / Anti Double-Spending en WebFactory Tokens (Y$):**
    - Todas las operaciones del `token_ledger` operan bajo transacciones ACID con `SECURITY DEFINER` y `SET search_path = public, extensions`, garantizando que dos clics simultáneos no puedan gastar el mismo saldo dos veces.
 
 ---
@@ -112,7 +112,7 @@ En el flujo previo, el usuario tipeaba manualmente un `@instagram_handle` en el 
    - Las políticas RLS restringen la visibilidad a `auth.uid() = user_id`.
    - Se prohíbe taxativamente instanciar el cliente Supabase con la clave `service_role` dentro del código de la app móvil (`src/`).
 3. **Hermes Bytecode y R8 ProGuard en Producción:**
-   - En las compilaciones de release de Expo, el código JavaScript se precompila a bytecode binario de Hermes, eliminando el código fuente legible ante decompiladores estándar de APK/IPA.
+   - En las compilaciones de release de Expo, el código JavaScript se precompila a bytecode binario de Hermes, eliminando el código fuente legible ante decompiladores estándar de Web Bundle/IPA.
 
 ---
 
@@ -122,7 +122,7 @@ En el flujo previo, el usuario tipeaba manualmente un `@instagram_handle` en el 
 | :--- | :--- | :--- | :--- | :--- |
 | **Suplantación de Instagram (Catfishing)** | Identidad en Chat Grupal | 🔴 Crítico | Servicio `identityVerification.ts` con doble badge de confianza (Declarado vs Verificado) y protocolo Bio-Challenge. | ✅ Mitigado |
 | **Acoso / Triangulación de Ubicación** | Geolocalización de Usuarios | 🔴 Crítico | Cero coordenadas P2P. PostGIS calcula proximidad en el servidor; el cliente solo ve estados discretos. | ✅ Blindado |
-| **GPS Spoofing en Check-in** | Presencia y Emisión de Y$ | 🟡 Alto | Inspección de `isMocked` en Android/iOS + Biometría en Hardware + PostGIS servidor `<65m`. | ✅ Blindado |
+| **GPS Spoofing en Check-in** | Presencia y Emisión de Y$ | 🟡 Alto | Inspección de `isMocked` en Web Platform/iOS + Biometría en Hardware + PostGIS servidor `<65m`. | ✅ Blindado |
 | **Replay / Compartir Captura de QR** | Consumiciones B2B | 🟡 Alto | Bloqueo de capturas con `expo-screen-capture` + Nonce de un solo uso con quemado atómico. | ✅ Blindado |
 | **Filtración de Claves Privadas en Git** | Infraestructura Cloud | 🔴 Crítico | `vertex-key.json` desindexado de Git, blindado en `.gitignore` y certificado con `security:scan` código 0. | ✅ Resuelto |
 | **SQL Injection / Schema Hijacking** | Supabase PostgreSQL 17 | 🟡 Alto | Todas las funciones PL/pgSQL fijan `SET search_path = public, extensions;` y usan RPCs tipadas. | ✅ Blindado |

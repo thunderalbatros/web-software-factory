@@ -1,19 +1,17 @@
-﻿# 📚 Libro Completo: Domain-Driven Design: Tackling Complexity in the Heart of Software
+# 📚 Libro Completo: Domain-Driven Design: Tackling Complexity in the Heart of Software
 
-**Alcance:** Fuente bibliográfica completa sobre Lenguaje Ubicuo, Bounded Contexts, Entidades, Objetos de Valor, Agregados y Eventos de Dominio (Domain-Driven Design: Tackling Complexity in the Heart of Software — Eric Evans). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Domain-Driven Design, Bounded Contexts & Ubiquitous Language (Domain-Driven Design: Tackling Complexity in the Heart of Software — Eric Evans). Aplicable a Web Software Factory y Enterprise Web App. NO sustituye los contratos de negocio ni las reglas inmutables en `CANON_*`.
 
 > **Autor:** Eric Evans  
-> **Dominio:** Lenguaje Ubicuo, Bounded Contexts, Entidades, Objetos de Valor, Agregados y Eventos de Dominio  
+> **Dominio:** Domain-Driven Design, Bounded Contexts & Ubiquitous Language  
 > **Archivo Fuente:** `Domain-Driven-Design-Eric-Evans.pdf`  
-> **Páginas Originales:** 324  
-> **Secciones Extraídas:** 46  
-> **Fecha de Ingesta:** 2026-10-19  
+> **Páginas Originales:** 324 (100% Ingerido, Cero Truncamiento)  
+> **Secciones Técnicas Extraídas:** 8 (Entropía Técnica Media: 0.798)  
+> **Fecha de Ingesta:** 2026-10-26
 
 ---
 
-## Sección 1: Foundations & Introduction
-
--- 1 of 324 --
+## Sección 1: Core Concepts & Foundations [Entropy: 0.442]
 
 Chapter One. Crunching Knowledge
 A few years ago, I set out to design a specialized software tool for printed-circuit board (PCB) design.
@@ -35,8 +33,6 @@ PCB Expert 1: The components wouldn't have to be chips.
 Developer (Me): So I should just call them “components”?
 Expert 1: We call them “component instances.” There could be many of the same component.
 Expert 2: The “net” box looks just like a component instance.
--- 2 of 324 --
-
 Expert 1: He's not using our notation. Everything is a box for them, I guess.
 Developer: Sorry to say, yes. I guess I'd better explain this notation a little more.
 They constantly corrected me, and as they did I started to learn. We ironed out collisions and ambiguities in their terminology and differences between their technical opinions, and they learned.
@@ -64,9 +60,6 @@ from certain Pins to certain others.
 Developer: Something like this?
 [With considerable trial-and-error, together we sketched out a scenario.]
 Crunching Knowledge 5
-
--- 3 of 324 --
-
 Developer: But what exactly do you need to know from this computation?
 Expert 2: We'd be looking for long signal delays—say, any signal path that was more than two or
 three hops. It's a rule of thumb. If the path is too long, the signal may not arrive during the clock cycle.
@@ -79,9 +72,6 @@ data for every Component Instance?
 Expert 2: The pushes would be the same for all the instances of a component.
 Developer: So the type of component determines the pushes. They'll be the same for every instance?
 Crunching Knowledge 6
-
--- 4 of 324 --
-
 Expert 2: I'm not sure exactly what some of this means, but I would imagine storing push-throughs
 for each component would look something like that.
 Developer: Sorry, I got a little too detailed there. I was just thinking it through. . . . So, now, where
@@ -100,9 +90,6 @@ data and wrote raw text to the console, it was nonetheless doing the actual comp
 lengths using Java objects. Those Java objects reflected a model shared by the domain experts
 and myself.
 Crunching Knowledge 7
-
--- 5 of 324 --
-
 The concreteness of this prototype made clearer to the domain experts what the model meant and
 how it related to the functioning software. From that point, our model discussions became more
 interactive, as they could see how I incorporated my newly acquired knowledge into the model and
@@ -144,13 +131,6 @@ find a knowledge-rich model and distill it. This kind of
 knowledge crunching turns the knowledge of
 the team into valuable models.
 Crunching Knowledge 8
-
----
-
-## Sección 2: Foundations & Introduction
-
--- 6 of 324 --
-
 Knowledge Crunching
 Financial analysts crunch numbers. They sift through reams of detailed figures, combining and recombining them looking for the underlying meaning, searching for a simple presentation that brings
 out what is really important—an understanding that can be the basis of a financial decision.
@@ -194,9 +174,6 @@ them see more clearly and leading to further refinement of the model. These mode
 perfect; they evolve. They must be practical and useful in making sense of the domain. They must
 be rigorous enough to make the application simple to implement and understand.
 Crunching Knowledge 9
-
--- 7 of 324 --
-
 Continuous Learning
 When we set out to write software, we never know enough. Knowledge on the project is fragmented,
 scattered among many people and documents, and it's mixed with other information so that we don't
@@ -238,13 +215,6 @@ reconcile contradictions, and fill in gaps with common sense. Software can't do 
 knowledge crunching in close collaboration with software experts that the rules are clarified, fleshed
 out, reconciled, or placed out of scope.
 Crunching Knowledge 10
-
----
-
-## Sección 3: Foundations & Introduction
-
--- 8 of 324 --
-
 Example
 Extracting a Hidden Concept
 Let's start with a very simple domain model that could be the basis of an application for booking
@@ -277,7 +247,7 @@ Now an important business rule is hidden as a guard clause in an application met
 
 ---
 
-## Sección 4: Chapter 4, we'll look at the principle of
+## Sección 2: Chapter 4, we'll look at the principle of [Entropy: 1]
 
 LAYERED ARCHITECTURE, which would guide us to move
 the over-booking rule into a domain object, but for now let's concentrate on how we could make this
@@ -286,12 +256,9 @@ solution.
 1. As written, it is unlikely that any business expert could read this code to verify the rule, even
 with the guidance of a developer.
 Crunching Knowledge 11
-
--- 9 of 324 --
-
 2. It would be difficult for a technical, non-businessperson to connect the requirement text with
 the code.
-If the rule were more complex, that much more would be at PartnerBrand.
+If the rule were more complex, that much more would be at stake.
 We can change the design to better capture this knowledge. The overbooking rule is a policy.
 Policy is another name for the design pattern known as
 STRATEGY (Gamma et al. 1995). It is
@@ -323,9 +290,6 @@ have come to understand the nature of overbooking as a distinct and important bu
 not just an obscure calculation.
 2. Programmers can show business experts technical artifacts, even code, that should be intelligible to domain experts (with guidance), thereby closing the feedback loop.
 Crunching Knowledge 12
-
--- 10 of 324 --
-
 Deep Models
 Useful models seldom lie on the surface. As we come to understand the domain and the needs of
 the application, we usually discard superficial model elements that seemed important in the beginning, or we shift their perspective. Subtle abstractions emerge that would not have occurred to us
@@ -353,9 +317,6 @@ place, to transferring responsibility for cargo from entity to entity. Features 
 by a model that came out of an understanding of the significant relationship between those operations and those responsibilities.
 Knowledge crunching is an exploration, and you can't know where you will end up.
 Crunching Knowledge 13
-
--- 11 of 324 --
-
 Chapter Two. Communication and the Use of
 Language
 A domain model can be the core of a common language for a software project. The model is a set
@@ -388,12 +349,6 @@ Across this linguistic divide, the domain experts vaguely describe what they wan
 struggling to understand a domain new to them, vaguely understand. A few members of the team
 manage to become bilingual, but they become bottlenecks of information flow, and their translations
 are inexact.
--- 12 of 324 --
-
----
-
-## Sección 5: Chapter 4, we'll look at the principle of
-
 On a project without a common language, developers have to translate for domain experts. Domain
 experts translate between developers and still other domain experts. Developers even translate for
 each other. Translation muddles model concepts, which leads to destructive refactoring of code.
@@ -447,13 +402,11 @@ classes and methods in the code, or even change behavior, when the meaning of a 
 Committed to using this language in the context of implementation, the developers will point out
 imprecision or contradictions, engaging the domain experts in discovering workable alternatives.
 Communication and the Use of Language 15
-
--- 13 of 324 --
-
 Of course, domain experts will speak outside the scope of the
 UBIQUITOUS LANGUAGE, to explain
 and give broader context. But within the scope the model addresses, they should use
-LANGUAGE and raise concerns when they find it awkward or incomplete—or wrong. By using the modelbased language pervasively and not being satisfied until it flows, we approach a model that is complete and comprehensible, made up of simple elements that combine to express complex ideas.
+LAN-
+GUAGE and raise concerns when they find it awkward or incomplete—or wrong. By using the modelbased language pervasively and not being satisfied until it flows, we approach a model that is complete and comprehensible, made up of simple elements that combine to express complex ideas.
 Therefore:
 Use the model as the backbone of a language. Commit the team to exercising that language relentlessly in all communication within the team and in the code. Use the same language in diagrams,
 writing, and especially speech.
@@ -474,11 +427,13 @@ code.
 This discussion of
 UBIQUITOUS LANGUAGE assumes that there is just one model in play. Chapter
 14, “Maintaining Model Integrity,” deals with the coexistence of different models (and
-LANGUAGES) and how to keep a model from splintering.
+LAN-
+GUAGES) and how to keep a model from splintering.
 The
 UBIQUITOUS LANGUAGE is the primary carrier of the aspects of design that don't appear in
 code—large-scale structures that organize the whole system (see Chapter 16),
-BOUNDED CONTEXTS that define the relationships of different systems and models (see Chapter 14), and other
+BOUNDED CON-
+TEXTS that define the relationships of different systems and models (see Chapter 14), and other
 patterns applied to the model and design.
 Example
 Working Out a Cargo Router
@@ -486,13 +441,6 @@ The following two dialogs have subtle, but important, differences. In each scena
 much the speakers talk about what the software means to the business versus how it works technically. Are the user and developer speaking the same language? Is that language rich enough to
 carry the discussion of what the application must do?
 Communication and the Use of Language 16
-
----
-
-## Sección 6: Chapter 4, we'll look at the principle of
-
--- 14 of 324 --
-
 Scenario 1: Minimal Abstraction of the Domain
 User: So when we change the customs clearance point, we need to redo the whole routing plan.
 Developer: Right. We'll delete all the rows in the shipment table with that cargo id, then we'll pass
@@ -517,9 +465,6 @@ User: You won't have to worry about this on origin or destination, since the iti
 change then.
 Developer: Good. We won't.
 Communication and the Use of Language 17
-
--- 15 of 324 --
-
 Scenario 2: Domain Model Enriched to Support Discussion
 User: So when we change the customs clearance point, we need to redo the whole routing plan.
 Developer: Right. When you change any of the attributes in the Route Specification, we'll delete
@@ -547,9 +492,6 @@ These two dialogs were deliberately constructed to closely parallel each other. 
 would have been more verbose, bloated with explanations of application features and miscommunications. The domain-model-based terminology of the second design makes the second dialog
 more concise.
 Communication and the Use of Language 18
-
--- 16 of 324 --
-
 Modeling Out Loud
 The detachment of speech from other forms of communication is a particularly great loss because
 we humans have a genius for spoken language. Unfortunately, when people speak, they usually
@@ -601,13 +543,6 @@ Play with the model as you talk about the system. Describe scenarios out loud us
 and interactions of the model, combining concepts in ways allowed by the model. Find easier ways
 to say what you need to say, and then take those new ideas back down to the diagrams and code.
 Communication and the Use of Language 19
-
----
-
-## Sección 7: Chapter 4, we'll look at the principle of
-
--- 17 of 324 --
-
 One Team, One Language
 Technical people often feel the need to “shield” the business experts from the domain model. They
 say:
@@ -649,9 +584,6 @@ UBIQUITOUS LANGUAGE.
 Multiplicity of languages is often necessary, but the linguistic division should never be between the
 domain experts and the developers. (Chapter 12, “Maintaining Model Integrity,” deals with the coexistence of models on the same project.)
 Communication and the Use of Language 20
-
--- 18 of 324 --
-
 Of course, developers do use technical terminology that a domain expert wouldn't understand. Developers have an extensive jargon that they need to discuss the technical aspects of a system.
 Almost certainly, the users will also have specialized jargon that goes well beyond the narrow scope
 of the application and the understanding of the developers. But these are
@@ -681,9 +613,6 @@ A lot of object model diagrams are too complete and, simultaneously, leave too m
 too complete because people feel they have to put all the objects that they are going to code into a
 modeling tool. With all that detail, no one can see the forest for the trees.
 Communication and the Use of Language 21
-
--- 19 of 324 --
-
 Yet in spite of all that detail, the attributes and relationships are only half the story of an object model.
 The behavior of those objects and the constraints on them are not so easily illustrated. Object interaction diagrams can illustrate some tricky hotspots in the design, but the bulk of the interactions
 can't be shown that way. It is just too much work, both to create the diagrams and to read them.
@@ -730,13 +659,6 @@ team produce good software is a challenge.
 Once a document takes on a persistent form, it often loses its connection with the flow of the project.
 It is left behind by the evolution of the code, or by the evolution of the language of the project.
 Communication and the Use of Language 22
-
----
-
-## Sección 8: Chapter 4, we'll look at the principle of
-
--- 20 of 324 --
-
 Many approaches can work. A few specific documents will be suggested much later, in Part IV of
 this book, which address particular needs, but I make no attempt to prescribe a set of documents
 a project should use. Instead, I will offer two general guidelines for evaluating a document.
@@ -782,9 +704,6 @@ Maybe the document is too big or complicated. Maybe it is not focused on a suffi
 topic. People are either not reading it or not finding it compelling. If it is having no impact on the
 UBIQUITOUS LANGUAGE, something is wrong.
 Communication and the Use of Language 23
-
--- 21 of 324 --
-
 Conversely, you may hear the
 UBIQUITOUS LANGUAGE changing naturally while a document is
 being left behind. Evidently the document does not seem relevant to people or does not seem
@@ -836,13 +755,6 @@ software development process must be strictly pared down to the necessary minimu
 functions. An explanatory model can include aspects of the domain that provide context that clarifies
 the more narrowly scoped model.
 Communication and the Use of Language 24
-
----
-
-## Sección 9: Chapter 4, we'll look at the principle of
-
--- 22 of 324 --
-
 Explanatory models offer the freedom to create much more communicative styles tailored to a particular topic. Visual metaphors used by the domain experts in a field often present clearer explanations, educating developers and harmonizing experts. Explanatory models also present the domain
 in a way that is simply different, and multiple, diverse explanations help people learn.
 There is no need for explanatory models to be object models, and it is generally best if they are not.
@@ -861,16 +773,10 @@ Each line in Figure 2.5 represents either a port operation (loading or unloading
 sitting in storage on the ground, or cargo sitting on a ship en route. This does not correspond in
 detail with the class diagram, but it reinforces key points from the domain.
 Communication and the Use of Language 25
-
--- 23 of 324 --
-
 Figure 2.5. An explanatory model for a shipping route
 This sort of diagram, along with natural language explanations of the model it represents, can help
 developers and domain experts alike understand the more rigorous software model diagrams. Together they are easier to understand than either view alone.
 Communication and the Use of Language 26
-
--- 24 of 324 --
-
 Chapter Three. Binding Model and
 Implementation
 The first thing I saw as I walked through the door was a complete class diagram printed on large
@@ -905,8 +811,6 @@ software development project. Domain-driven design calls for a model that doesn'
 analysis but is the very foundation of the design. This approach has some important implications
 for the code. What is less obvious is that domain-driven design requires a different approach to
 modeling. . . .
--- 25 of 324 --
-
 Model-Driven Design
 The astrolabe, used to compute star positions, is a mechanical implementation of a model of the sky.
 Tightly relating the code to an underlying model gives the code meaning and makes the model
@@ -934,13 +838,6 @@ software system. An analysis model is meant as a tool for understanding only; mi
 loose correspondence to the analysis model. The analysis model is not created with design issues
 in mind, and therefore it is likely to be quite impractical for those needs.
 Binding Model and Implementation 28
-
----
-
-## Sección 10: Chapter 4, we'll look at the principle of
-
--- 26 of 324 --
-
 Some knowledge crunching happens during such an analysis, but most of it is lost when coding
 begins, when the developers are forced to come up with new abstractions for the design. Then there
 is no guarantee that the insights gained by the analysts and embedded in the model will be retained
@@ -989,9 +886,6 @@ Draw from the model the terminology used in the design and the basic assignment 
 The code becomes an expression of the model, so a change to the code may be a change to the
 model. Its effect must ripple through the rest of the project's activities accordingly.
 Binding Model and Implementation 29
-
--- 27 of 324 --
-
 To tie the implementation slavishly to a model usually requires software development tools and
 languages that support a modeling paradigm, such as object-oriented programming.
 Sometimes there will be different models for different subsystems (see Chapter 14), but only one
@@ -1024,13 +918,6 @@ language is a natural fit for
 MODEL-DRIVEN DESIGN. In this case, the paradigm is logic, and the
 model is a set of logical rules and facts they operate on.
 Binding Model and Implementation 30
-
----
-
-## Sección 11: Chapter 4, we'll look at the principle of
-
--- 28 of 324 --
-
 M
 ODEL-DRIVEN DESIGN has limited applicability using languages such as C, because there is no
 modeling paradigm that corresponds to a purely
@@ -1065,9 +952,6 @@ some nets form
 buses.
 Figure 3.2. An explanatory diagram of buses and nets
 Binding Model and Implementation 31
-
--- 29 of 324 --
-
 By lumping nets into a bus, perhaps 8 or 16 or 256 at a time, the engineer cuts the job down to a
 more manageable size, improving productivity and reducing errors. The trouble is, the layout tool
 has no such concept as a bus. Rules have to be assigned to tens of thousands of nets, one net at
@@ -1116,9 +1000,6 @@ I imagine that the person who first wrote such a script had only this simple nee
 the only requirement, a script like this would make a lot of sense. But in practice, there are now
 dozens of scripts. They could, of course, be refactored to share sorting and string matching functions, and if the language supported function calls to encapsulate the details, the scripts could begin
 Binding Model and Implementation 32
-
--- 30 of 324 --
-
 to read almost like the summary steps above. But still, they are just file manipulations. A different
 file format (and there are several) would require starting from scratch, even though the concept of
 grouping buses and applying rules to them is the same. If you wanted richer functionality or interactivity, you would have to pay for every inch.
@@ -1152,13 +1033,6 @@ return result;
 }
 }
 Binding Model and Implementation 33
-
----
-
-## Sección 12: Chapter 4, we'll look at the principle of
-
--- 31 of 324 --
-
 Of course, there would be a great deal of supporting code, but this covers the basic functionality of
 the script.
 The application requires import/export logic, which we'll encapsulate into some simple services.
@@ -1205,9 +1079,6 @@ be just as practical. But in reality, there were 20 or more. The
 MODEL-DRIVEN DESIGN scales
 easily and can include constraints on combining rules and other enhancements.
 Binding Model and Implementation 34
-
--- 32 of 324 --
-
 The second design also accommodates testing. Its components have well-defined interfaces that
 can be unit-tested. The only way to test the script is to do an end-to-end file-in/file-out comparison.
 Keep in mind that such a design does not emerge in a single step. It would take several iterations
@@ -1251,13 +1122,6 @@ approaches. Revealing the model gives the user more access to the potential of t
 yields consistent, predictable behavior.
 1Brian Marick mentioned this example to me.
 Binding Model and Implementation 35
-
----
-
-## Sección 13: Chapter 4, we'll look at the principle of
-
--- 33 of 324 --
-
 Hands-On Modelers
 Manufacturing is a popular metaphor for software development. One inference from this metaphor:
 highly skilled engineers design; less skilled laborers assemble the products. This metaphor has
@@ -1304,9 +1168,6 @@ other informal specializations tend to emerge naturally. The problem arises from
 tasks that are coupled in a
 MODEL-DRIVEN DESIGN, modeling and implementation.
 Binding Model and Implementation 36
-
--- 34 of 324 --
-
 The effectiveness of an overall design is very sensitive to the quality and consistency of fine-grained
 design and implementation decisions. With a
 MODEL-DRIVEN DESIGN, a portion of the code is
@@ -1335,13 +1196,6 @@ As mentioned, success with
 MODEL-DRIVEN DESIGN is sensitive to detailed design decisions,
 which is the subject of the next several chapters.
 Binding Model and Implementation 37
-
----
-
-## Sección 14: Chapter 4, we'll look at the principle of
-
--- 35 of 324 --
-
 Chapter Four. Isolating the Domain
 The part of the software that specifically solves problems from the domain usually constitutes only
 a small portion of the entire software system, although its importance is disproportionate to its size.
@@ -1354,8 +1208,6 @@ Sophisticated techniques for this isolation have emerged. This is well-trodden g
 critical to the successful application of domain-modeling principles that it must be reviewed briefly,
 from a domain-driven point of view. . . .
 Layered Architecture
--- 36 of 324 --
-
 For a shipping application to support the simple user act of selecting a cargo's destination from a
 list of cities, there must be program code that (1) draws a widget on the screen, (2) queries the
 database for all the possible cities, (3) interprets the user's input and validates it, (4) associates the
@@ -1406,9 +1258,6 @@ Infrastructure Layer
 Provides generic technical capabilities that support the higher layers: message sending for the application, persistence for the domain, drawing widgets for the UI, and so on. The infrastructure layer may also support the
 pattern of interactions between the four layers through an architectural framework.
 Isolating the Domain 41
-
--- 37 of 324 --
-
 Some projects don't make a sharp distinction between the user interface and application layers.
 Others have multiple infrastructure layers. But it is the crucial separation of the
 domain layer that
@@ -1438,13 +1287,6 @@ and obvious to make the example clear—it is not a suggested design. The respon
 remaining functionality would be layered as shown in Figure 4.1.
 Figure 4.1. Objects carry out responsibilities consistent with their layer and are more coupled to other objects in their layer.
 Isolating the Domain 42
-
----
-
-## Sección 15: Chapter 4, we'll look at the principle of
-
--- 38 of 324 --
-
 Note that the domain layer,
 not the application layer, is responsible for fundamental business rules
 —in this case, the rule is “Every credit has a matching debit.”
@@ -1470,10 +1312,12 @@ a direct query), we need another mechanism, drawing on architectural patterns fo
 such as callbacks or
 OBSERVERS (Gamma et al. 1995).
 The grandfather of patterns for connecting the UI to the application and domain layers is
-MODELVIEW-CONTROLLER (MVC). It was pioneered in the Smalltalk world back in the 1970s and has
+MODEL-
+VIEW-CONTROLLER (MVC). It was pioneered in the Smalltalk world back in the 1970s and has
 inspired many of the UI architectures that followed. Fowler (2002) discusses this pattern and several
 useful variations on the theme. Larman (1998) explores these concerns in the
-MODEL-VIEW SEPARATION PATTERN, and his
+MODEL-VIEW SEP-
+ARATION PATTERN, and his
 APPLICATION COORDINATOR is one approach to connecting the
 application layer.
 There are other styles of connecting the UI and the application. For our purposes, all approaches
@@ -1495,9 +1339,6 @@ SERVICE has been well chosen and its interface well designed, the caller can rem
 loosely coupled and uncomplicated by the elaborate behavior the
 SERVICE interface encapsulates.
 Isolating the Domain 43
-
--- 39 of 324 --
-
 But not all infrastructure comes in the form of
 SERVICES callable from the higher layers. Some
 technical components are designed to directly support the basic functions of other layers (such as
@@ -1540,13 +1381,6 @@ the model concepts.
 It is not practical to achieve that correspondence when the domain logic is mixed with other concerns
 of the program. Isolating the domain implementation is a prerequisite for domain-driven design.
 Isolating the Domain 44
-
----
-
-## Sección 16: Chapter 4, we'll look at the principle of
-
--- 40 of 324 --
-
 The Smart UI “Anti-Pattern”
 . . . That sums up the widely accepted
 LAYERED ARCHITECTURE pattern for object applications.
@@ -1592,9 +1426,6 @@ Advantages
 • Even deficiencies in requirements analysis can be overcome by releasing a prototype to users
 and then quickly changing the product to fit their requests.
 Isolating the Domain 45
-
--- 41 of 324 --
-
 • Applications are decoupled from each other, so that delivery schedules of small modules can
 be planned relatively accurately. Expanding the system with additional, simple behavior can be
 easy.
@@ -1646,13 +1477,6 @@ the necessary experts, and
 avoid the
 SMART UI.
 Isolating the Domain 46
-
----
-
-## Sección 17: Chapter 4, we'll look at the principle of
-
--- 42 of 324 --
-
 Other Kinds of Isolation
 Unfortunately, there are influences other than infrastructure and user interfaces that can corrupt
 your delicate domain model. You must deal with other domain components that are not fully integrated into your model. You have to cope with other development teams who use different models
@@ -1666,9 +1490,6 @@ But all that comes later. Next, we'll look at the nuts and bolts of co-evolving 
 model and an expressive implementation. After all, the best part of isolating the domain is getting
 all that other stuff out of the way so that we can really focus on the domain design.
 Isolating the Domain 47
-
--- 43 of 324 --
-
 Chapter Five. A Model Expressed in Software
 To compromise in implementation without losing the punch of a
 MODEL-DRIVEN DESIGN requires
@@ -1678,7 +1499,8 @@ activities in later chapters.
 This discussion will start with the issues of designing and streamlining associations. Associations
 between objects are simple to conceive and to draw, but implementing them is a potential quagmire.
 Associations illustrate how crucial detailed implementation decisions are to the viability of a
-MODELDRIVEN DESIGN.
+MODEL-
+DRIVEN DESIGN.
 Turning to the objects themselves, but continuing to scrutinize the relationship between detailed
 model choices and implementation concerns, we'll focus on making distinctions among the three
 patterns of model elements that express the model:
@@ -1717,8 +1539,6 @@ thought of as technical metrics, can be applied to the concepts themselves. In a
 MODEL-DRIVEN
 DESIGN,
 MODULES are part of the model, and they should reflect concepts in the domain.
--- 44 of 324 --
-
 This chapter brings together all of these building blocks, which embody the model in software. These
 ideas are conventional, and the modeling and design biases that follow from them have been written
 about before. But framing them in this context will help developers create detailed components that
@@ -1754,13 +1574,6 @@ ask, “Of which country was he president?” Pragmatically, we can reduce the r
 one direction of the association is much more meaningful and important than the other. It keeps the
 “Person” class independent of the far less fundamental concept of “President.”
 A Model Expressed in Software 49
-
----
-
-## Sección 18: Chapter 4, we'll look at the principle of
-
--- 45 of 324 --
-
 Figure 5.1. Some traversal directions reflect a natural bias in the domain.
 Very often, deeper understanding leads to a “qualified” relationship. Looking deeper into presidents,
 we realize that (except in a civil war, perhaps) a country has only one president at a time. This
@@ -1776,9 +1589,6 @@ directions conveys that.
 Of course, the ultimate simplification is to eliminate an association altogether, if it is not essential to
 the job at hand or the fundamental meaning of the model objects.
 A Model Expressed in Software 50
-
--- 46 of 324 --
-
 Example
 Associations in a Brokerage Account
 One Java implementation of Brokerage Account in this model would be
@@ -1802,9 +1612,6 @@ SS_NUMBER NAME
 Table: INVESTMENT
 ACCOUNT_NUMBER STOCK_SYMBOL AMOUNT
 A Model Expressed in Software 51
-
--- 47 of 324 --
-
 public class BrokerageAccount {
 String accountNumber;
 String customerSocialSecurityNumber;
@@ -1841,9 +1648,6 @@ public Customer getCustomer() {
 return customer;
 }
 A Model Expressed in Software 52
-
--- 48 of 324 --
-
 public Investment getInvestment(String stockSymbol) {
 return (Investment)investments.get(stockSymbol);
 }
@@ -1877,9 +1681,6 @@ off caustic fumes that had made the kitchen wallpaper peel. The court documents 
 tenant responsible for the damages, identifying me by name and by my then-current address. This
 was confusing to me, because I had never even visited that ruined place.
 A Model Expressed in Software 53
-
--- 49 of 324 --
-
 After a moment, I realized that it must be a case of mistaken identity. I called the plaintiff and told
 her this, but she didn't believe me. The former tenant had been eluding her for months. How could
 I prove that I was not the same person who had cost her so much money? I was the only Eric Evans
@@ -1922,13 +1723,6 @@ matched with another object even though attributes differ. An object must be dis
 other objects even though they might have the same attributes. Mistaken identity can lead to data
 corruption.
 A Model Expressed in Software 54
-
----
-
-## Sección 19: Chapter 4, we'll look at the principle of
-
--- 50 of 324 --
-
 An object defined primarily by its identity is called an
 ENTITY.1 E
 NTITIES have special modeling
@@ -1990,9 +1784,6 @@ or less, but it hasn't worked out that way. Most
 ENTITIES are implemented as ordinary objects. Regardless of how they are implemented,
 ENTITIES are a fundamental distinction in a domain model.
 A Model Expressed in Software 55
-
--- 51 of 324 --
-
 An application for booking seats in a stadium might treat seats and attendees as
 ENTITIES. In the
 case of assigned seating, in which each ticket has a seat number on it, the seat is an
@@ -2033,13 +1824,6 @@ phone and address attributes moved into Customer, but on a real project, that ch
 on how the domain's customers are typically matched or distinguished. For example, if a Customer has many contact phone numbers for different purposes, then the phone number is not associated with identity and should stay with the Sales Contact.
 Figure 5.5. Attributes associated with identity stay with the ENTITY.
 A Model Expressed in Software 56
-
----
-
-## Sección 20: Chapter 4, we'll look at the principle of
-
--- 52 of 324 --
-
 Designing the Identity Operation
 Each
 ENTITY must have an operational way of establishing its identity with another object—distinguishable even from another object with the same descriptive attributes. An identifying attribute must
@@ -2090,9 +1874,6 @@ In some cases, the uniqueness of the ID must apply beyond the computer system's 
 example, if medical records are being exchanged between two hospitals that have separate computer systems, ideally each system will use the same patient ID, but this is difficult if they generate
 their own symbol. Such systems often use an identifier issued by some other institution, typically a
 A Model Expressed in Software 57
-
--- 53 of 324 --
-
 government agency. In the United States, the Social Security number is often used by hospitals as
 an identifier for a person. Such methods are not foolproof. Not everyone has a Social Security
 number (children and nonresidents of the United States, especially), and many people object to its
@@ -2121,13 +1902,6 @@ made from those his sister made. He and his sister have useful identities, as do
 drawings. But imagine how complicated it would be if he had to track which lines in a drawing were
 made by each marker. Drawing would no longer be child's play.
 A Model Expressed in Software 58
-
----
-
-## Sección 21: Chapter 4, we'll look at the principle of
-
--- 54 of 324 --
-
 Because the most conspicuous objects in a model are usually
 ENTITIES, and because it is so
 important to track each
@@ -2202,10 +1976,8 @@ but that person's
 name is a
 VALUE.
 A Model Expressed in Software 59
-
--- 55 of 324 --
-
-When you care only about the attributes of an element of the model, classify it as a VALUE OBJECT. Make it express the meaning of the attributes it conveys and give it related functionality. Treat
+When you care only about the attributes of an element of the model, classify it as a VALUE OB-
+JECT. Make it express the meaning of the attributes it conveys and give it related functionality. Treat
 the VALUE OBJECT as immutable. Don't give it any identity and avoid the design complexities
 necessary to maintain ENTITIES.
 The attributes that make up a
@@ -2239,13 +2011,6 @@ This problem is avoided either by making the passed object immutable, or by pass
 2The
 WHOLE VALUE pattern, by Ward Cunningham.
 A Model Expressed in Software 60
-
----
-
-## Sección 22: Chapter 4, we'll look at the principle of
-
--- 56 of 324 --
-
 Creating extra options for performance tuning can be important because
 VALUE OBJECTS tend to
 be numerous. The example of the house design software hints at this. If each electrical outlet is a
@@ -2286,7 +2051,8 @@ VALUE OBJECT is designated immutable in the design, developers are free to make 
 Special Cases: When to Allow Mutability
 Immutability is a great simplifier in an implementation, making sharing and reference passing safe. It is also
 consistent with the meaning of a value. If the value of an attribute changes, you use a different
-VALUE OBJECT, rather than modifying the existing one. Even so, there are cases when performance considerations will
+VALUE OB-
+JECT, rather than modifying the existing one. Even so, there are cases when performance considerations will
 favor allowing a
 VALUE OBJECT to be mutable. These factors would weigh in favor of a mutable implementation:
 • If the
@@ -2302,9 +2068,6 @@ must not be shared. Whether you will
 be sharing or not, design
 VALUE OBJECTS as immutable when you can.
 A Model Expressed in Software 61
-
--- 57 of 324 --
-
 Defining
 VALUE OBJECTS and designating them as immutable is a case of following a general
 rule: Avoiding unnecessary constraints in a model leaves developers free to do purely technical
@@ -2358,13 +2121,6 @@ NTITIES and
 VALUE OBJECTS are the main elements of conventional object models, but pragmatic designers have come to use one element,
 SERVICES. . . .
 A Model Expressed in Software 62
-
----
-
-## Sección 23: Chapter 4, we'll look at the principle of
-
--- 58 of 324 --
-
 Services
 Sometimes, it just isn't a thing.
 In some cases, the clearest and most pragmatic design includes operations that do not conceptually
@@ -2395,9 +2151,6 @@ ENTITIES and
 VALUE OBJECTS do. S
 ERVICES are a common pattern in technical frameworks, but they can also apply in the domain layer.
 A Model Expressed in Software 63
-
--- 59 of 324 --
-
 The name
 service emphasizes the relationship with other objects. Unlike
 ENTITIES and
@@ -2406,15 +2159,19 @@ OBJECTS, it is defined purely in terms of what it can do for a client. A
 SERVICE tends to be named
 for an activity, rather than an entity—a verb rather than a noun. A
 SERVICE can still have an abstract, intentional definition; it just has a different flavor than the definition of an object. A
-SERVICE should still have a defined responsibility, and that responsibility and the interface fulfilling it
+SERV-
+ICE should still have a defined responsibility, and that responsibility and the interface fulfilling it
 should be defined as part of the domain model. Operation names should come from the
-UBIQUITOUS LANGUAGE or be introduced into it. Parameters and results should be domain objects.
+UBIQUI-
+TOUS LANGUAGE or be introduced into it. Parameters and results should be domain objects.
 S
 ERVICES should be used judiciously and not allowed to strip the
 ENTITIES and
-VALUE OBJECTS of all their behavior. But when an operation is actually an important domain concept, a
+VALUE OB-
+JECTS of all their behavior. But when an operation is actually an important domain concept, a
 SERVICE forms a natural part of a
-MODEL-DRIVEN DESIGN. Declared in the model as a SERVICE, rather than as a phony object that doesn't actually represent anything, the standalone operation
+MODEL-DRIVEN DESIGN. Declared in the model as a SERV-
+ICE, rather than as a phony object that doesn't actually represent anything, the standalone operation
 will not mislead anyone.
 A good
 SERVICE has three characteristics.
@@ -2466,13 +2223,11 @@ domain language, and it involves fundamental business logic. Technical
 SERVICES should lack
 any business meaning at all.
 A Model Expressed in Software 64
-
--- 60 of 324 --
-
 Many domain or application
 SERVICES are built on top of the populations of
 ENTITIES and
-VALUES, behaving like scripts that organize the potential of the domain to actually get something done.
+VAL-
+UES, behaving like scripts that organize the potential of the domain to actually get something done.
 E
 NTITIES and
 VALUE OBJECTS are often too fine-grained to provide a convenient access to the
@@ -2495,7 +2250,8 @@ SERVICES with a
 FACADE that
 takes inputs in terms of the model, perhaps returning a Funds Transfer object as its result. But
 whatever intermediaries we might have, and even though they don't belong to us, those
-SERVICES are carrying out the domain responsibility of funds transfer.
+SERV-
+ICES are carrying out the domain responsibility of funds transfer.
 Partitioning Services into Layers
 Application Funds Transfer App Service
 • Digests input (such as an XML request).
@@ -2526,13 +2282,6 @@ of functionality very useful in packaging components of large or distributed sys
 a
 SERVICE is the most natural way to express a domain concept.
 A Model Expressed in Software 65
-
----
-
-## Sección 24: Chapter 4, we'll look at the principle of
-
--- 61 of 324 --
-
 Access to SERVICES
 Distributed system architectures, such as J2EE and CORBA, provide special publishing mechanisms for
 SERVICES, with conventions for their use, and they add distribution and access capabilities. But such frameworks are not always in use on a project, and even when they are, they are
@@ -2540,10 +2289,12 @@ likely to be overkill when the motivation is just a logical separation of concer
 The means of providing access to a
 SERVICE is not as important as the design decision to carve
 off specific responsibilities. A “doer” object may be satisfactory as an implementation of a
-SERVICE's interface. A simple
+SERV-
+ICE's interface. A simple
 SINGLETON (Gamma et al. 1995) can be written easily to provide access.
 Coding conventions can make it clear that these objects are just delivery mechanisms for
-SERVICE interfaces, and not meaningful domain objects. Elaborate architectures should be used only
+SERV-
+ICE interfaces, and not meaningful domain objects. Elaborate architectures should be used only
 when there is a real need to distribute the system or otherwise draw on the framework's capabilities.
 Modules (a.k.a. Packages)
 M
@@ -2582,9 +2333,6 @@ of objects with related responsibilities allows modeling and design work to conc
 single
 MODULE, a scale of complexity a human mind can easily handle.
 A Model Expressed in Software 66
-
--- 62 of 324 --
-
 M
 ODULES and the smaller elements should coevolve, but typically they do not. M
 ODULES are
@@ -2648,13 +2396,6 @@ Some development tools and programming systems exacerbate the problem. Whatever 
 work of refactoring
 MODULES, and minimizing clutter in communicating to other developers.
 A Model Expressed in Software 67
-
----
-
-## Sección 25: Chapter 4, we'll look at the principle of
-
--- 63 of 324 --
-
 Example
 Package Coding Conventions in Java
 In Java, imports (dependencies) must be declared in some individual class. A modeler probably
@@ -2689,7 +2430,8 @@ The Pitfalls of Infrastructure-Driven Packaging
 Strong forces on our packaging decisions come from technical frameworks. Some of these are
 helpful, while others need to be resisted.
 An example of a very useful framework standard is the enforcement of
-LAYERED ARCHITECTURE by placing infrastructure and user interface code into separate groups of packages, leaving
+LAYERED ARCHITEC-
+TURE by placing infrastructure and user interface code into separate groups of packages, leaving
 the domain layer physically separated into its own set of packages.
 On the other hand, tiered architectures can fragment the implementation of the model objects. Some
 frameworks create tiers by spreading the responsibilities of a single domain object across multiple
@@ -2706,9 +2448,6 @@ the connection between the model and design. Best practice is to use EJBs at a l
 ENTITY objects, reducing the downside of separating tiers. But fine-grain objects are often split into
 tiers also.
 A Model Expressed in Software 68
-
--- 64 of 324 --
-
 For example, I encountered these problems on a rather intelligently run project in which each conceptual object was actually broken into four tiers. Each division had a good rationale. The first tier
 was a data persistence layer, handling mapping and access to the relational database. Then came
 a layer that handled behavior intrinsic to the object in all situations. Next was a layer for superimposing application-specific functionality. The fourth tier was meant as a public interface, decoupled
@@ -2727,7 +2466,8 @@ mental space left to think about models. The application was delivered, but with
 model that basically fulfilled the database access requirements of the application, with behavior
 supplied by a few
 SERVICES. The leverage that should have derived from
-MODEL-DRIVEN DESIGN was limited because the code did not transparently reveal the model and allow a developer
+MODEL-DRIVEN DE-
+SIGN was limited because the code did not transparently reveal the model and allow a developer
 to work with it.
 This kind of framework design is attempting to address two legitimate issues. One is the logical
 division of concerns: One object has responsibility for database access, another for business logic,
@@ -2758,13 +2498,6 @@ MODEL-DRIVEN DESIGN by obscuring the natural cohesion of the domain objects, but
 the bottom line is the same. The restrictions, or just the large number of required packages, rules
 out the use of other packaging schemes that are tailored to the needs of the domain model.
 A Model Expressed in Software 69
-
----
-
-## Sección 26: Chapter 4, we'll look at the principle of
-
--- 65 of 324 --
-
 Use packaging to separate the domain layer from other code. Otherwise, leave as much freedom
 as possible to the domain developers to package the domain objects in ways that support their
 model and design choices.
@@ -2790,10 +2523,12 @@ are other domain-related responsibilities that must be carried out and other dat
 discuss some supporting objects that fulfill the technical responsibilities of the domain layer, such
 as defining database searches and encapsulating complex object creation.
 The four patterns in this chapter provide the building blocks for an object model. But
-MODELDRIVEN DESIGN does not necessarily mean forcing everything into an object mold. There are also
+MODEL-
+DRIVEN DESIGN does not necessarily mean forcing everything into an object mold. There are also
 other model paradigms supported by tools, such as rules engines. Projects have to make pragmatic
 trade-offs between them. These other tools and techniques are means to the end of a
-MODELDRIVEN DESIGN, not alternatives to it.
+MODEL-
+DRIVEN DESIGN, not alternatives to it.
 Modeling Paradigms
 M
 ODEL-DRIVEN DESIGN calls for an implementation technology in tune with the particular modeling paradigm being applied. Many such paradigms have been experimented with, but only a few
@@ -2813,9 +2548,6 @@ Yet, simple as the concept of object modeling is, it has proven rich enough to c
 domain knowledge. And it has been supported from the outset by development tools that allowed
 a model to be expressed in software.
 A Model Expressed in Software 70
-
--- 66 of 324 --
-
 Today, the object paradigm also has some significant circumstantial advantages deriving from maturity and widespread adoption. Without mature infrastructure and tool support, a project can get
 sidetracked into technological R&D, delaying and diverting resources away from application development and introducing technical risks. Some technologies don't play well with others, and it may
 not be possible to integrate them with industry-standard solutions, forcing the team to reinvent
@@ -2862,13 +2594,6 @@ infrastructure pieces themselves are used widely enough that there is a base of 
 understand them, as well as books explaining them, and so forth. The limitations of these established
 technologies are fairly well understood, so that knowledgeable teams are less likely to overreach.
 A Model Expressed in Software 71
-
----
-
-## Sección 27: Chapter 4, we'll look at the principle of
-
--- 67 of 324 --
-
 Other interesting modeling paradigms just don't have this maturity. Some are too hard to master
 and will never be used outside small specialties. Others have potential, but the technical infrastructure is still patchy or shaky, and few people understand the subtleties of creating good models for
 them. These may come of age, but they are not ready for most projects.
@@ -2914,9 +2639,6 @@ promises to provide a more natural and declarative way to define rules, effectiv
 paradigm to be mixed into the object paradigm. The logic paradigm is well developed and powerful,
 and it seems like a good complement to the strengths and weaknesses of objects.
 A Model Expressed in Software 72
-
--- 68 of 324 --
-
 But people don't always get what they hope for out of rules engines. Some products just don't work
 very well. Some lack a seamless view that can show the relatedness of model concepts that run
 between the two implementation environments. One common outcome is an application fractured
@@ -2968,13 +2690,6 @@ The relational paradigm is a special case of paradigm mixing. The most common no
 Storing object data in relational databases will be discussed in Chapter 6, along with the many other
 challenges of the object life cycle.
 A Model Expressed in Software 73
-
----
-
-## Sección 28: Chapter 4, we'll look at the principle of
-
--- 69 of 324 --
-
 Chapter Six. The Life Cycle of a Domain
 Object
 Every object has a life cycle. An object is born, it likely goes through various states, and it eventually
@@ -2993,13 +2708,12 @@ This chapter will address these issues through three patterns. First,
 AGGREGATES tighten up the
 model itself by defining clear ownership and boundaries, avoiding a chaotic, tangled web of objects.
 This pattern is crucial to maintaining integrity in all phases of the life cycle.
--- 70 of 324 --
-
 Next, the focus turns to the beginning of the life cycle, using
 FACTORIES to create and reconstitute
 complex objects and
 AGGREGATES, keeping their internal structure encapsulated. Finally,
-REPOSITORIES address the middle and end of the life cycle, providing the means of finding and
+RE-
+POSITORIES address the middle and end of the life cycle, providing the means of finding and
 retrieving persistent objects while encapsulating the immense infrastructure involved.
 Although
 REPOSITORIES and
@@ -3029,9 +2743,6 @@ address. If you delete the address, those Person objects will have references to
 If you leave it, you accumulate junk addresses in the database. Automatic garbage collection could
 eliminate the junk addresses, but that technical fix, even if available in your database system, ignores a basic modeling issue.
 The Life Cycle of a Domain Object 75
-
--- 71 of 324 --
-
 Even when considering an isolated transaction, the web of relationships in a typical object model
 gives no clear limit to the potential effect of a change. It is not practical to refresh every object in the
 system, just in case there is some dependency.
@@ -3058,7 +2769,8 @@ transactions that modify the objects and their owners.1
 First we need an abstraction for encapsulating references within the model. An
 AGGREGATE is a
 cluster of associated objects that we treat as a unit for the purpose of data changes. Each
-AGGREGATE has a root and a boundary. The boundary defines what is inside the
+AG-
+GREGATE has a root and a boundary. The boundary defines what is inside the
 AGGREGATE. The
 root is a single, specific
 ENTITY contained in the
@@ -3085,13 +2797,6 @@ attached to the car, no one will try to query the system to find a particular ti
 car it is on. They will query the database to find a car and then ask it for a transient reference to the
 1David Siegel devised and used this system on projects in the 1990s but has not published it.
 The Life Cycle of a Domain Object 76
-
----
-
-## Sección 29: Chapter 4, we'll look at the principle of
-
--- 72 of 324 --
-
 tires. Therefore, the car is the root
 ENTITY of the
 AGGREGATE whose boundary encloses the tires
@@ -3118,9 +2823,6 @@ NTITIES inside the boundary have local identity, unique
 only within the
 AGGREGATE.
 The Life Cycle of a Domain Object 77
-
--- 73 of 324 --
-
 • Nothing outside the
 AGGREGATE boundary can hold a reference to anything inside, except to
 the root
@@ -3131,7 +2833,8 @@ The root may hand a copy of a
 VALUE OBJECT to another object, and it doesn't matter what
 happens to it, because it's just a
 VALUE and no longer will have any association with the
-AGGREGATE.
+AG-
+GREGATE.
 • As a corollary to the previous rule, only
 AGGREGATE roots can be obtained directly with database queries. All other objects must be found by traversal of associations.
 • Objects within the
@@ -3167,9 +2870,6 @@ whole. The existing implementation has three interrelated problems.
  Invariant enforcement. When a new line item is added, the PO checks the total and marks
 itself invalid if an item pushes it over the limit. As we'll see, this is not adequate protection.
 The Life Cycle of a Domain Object 78
-
--- 74 of 324 --
-
 2.
  Change management. When the PO is deleted or archived, the line items are taken along,
 but the model gives no guidance on where to stop following the relationships. There is also
@@ -3179,7 +2879,11 @@ confusion about the impact of changing the part price at different times.
 Multiple users will be entering and updating various POs concurrently, and we have to prevent them
 from messing up each other's work. Let's start with a very simple strategy, in which we lock any
 object a user begins to edit until that user commits the transaction. So, when George is editing line
-item 001, Amanda cannot access it. She can edit any other line item on any other PO (including
+
+---
+
+## Sección 3: item 001, Amanda cannot access it. She can edit any other line item on any other PO (including [Entropy: 0.75]
+
 other items in the PO George is working on).
 Figure 6.5. The initial condition of the PO stored in the database
 Objects will be read from the database and instantiated in each user's memory space. There they
@@ -3191,9 +2895,6 @@ Everything looks fine to both users and to their software because they ignore ch
 of the database that happen during the transaction, and neither locked line item is involved in the
 other user's change.
 The Life Cycle of a Domain Object 79
-
--- 75 of 324 --
-
 Figure 6.7. The resulting PO violates the approval limit (broken invariant).
 After both users have saved their changes, a PO is stored in the database that violates the invariant
 of the domain model. An important business rule has been broken. And nobody even knows.
@@ -3211,13 +2912,6 @@ Let's try locking the part in addition to the entire PO. Here's what happens whe
 and Sam are working on
 different POs:
 The Life Cycle of a Domain Object 80
-
----
-
-## Sección 30: Chapter 4, we'll look at the principle of
-
--- 76 of 324 --
-
 Figure 6.9. Over-cautious locking is interfering with people's work.
 The inconvenience is mounting, because there is a lot of contention for the instruments (the “parts”).
 And then:
@@ -3232,9 +2926,6 @@ of a price change relative to the status of the PO.
 Point 3 is particularly obvious when we consider archived POs that have already been delivered.
 They should, of course, show the prices as of the time they were filled, rather than current prices.
 The Life Cycle of a Domain Object 81
-
--- 77 of 324 --
-
 Figure 6.11. Price is copied into Line Item. AGGREGATE invariant can now be enforced.
 An implementation consistent with this model would guarantee the invariant relating PO and its
 items, while changes to the price of a part would not have to immediately affect the items that
@@ -3252,11 +2943,9 @@ AGGREGATES mark off the scope within which invariants have to be maintained at e
 the life cycle. The following patterns,
 FACTORIES and
 REPOSITORIES, operate on
-AGGREGATES, encapsulating the complexity of specific life cycle transitions. . . .
+AGGRE-
+GATES, encapsulating the complexity of specific life cycle transitions. . . .
 The Life Cycle of a Domain Object 82
-
--- 78 of 324 --
-
 Factories
 When creation of an object, or an entire
 AGGREGATE, becomes complicated or reveals too much
@@ -3282,9 +2971,6 @@ even worse problems. The client knows what job needs to be done and relies on th
 to carry out the necessary computations. If the client is expected to assemble the domain objects it
 needs, it must know something about the internal structure of the object. In order to enforce all the
 The Life Cycle of a Domain Object 83
-
--- 79 of 324 --
-
 invariants that apply to the relationship of parts in the domain object, the client must know some of
 the object's rules. Even calling constructors couples the client to the concrete classes of the objects
 it is building. No change to the implementation of the domain objects can be made without changing
@@ -3324,30 +3010,27 @@ Therefore:
 Shift the responsibility for creating instances of complex objects and AGGREGATES to a separate
 object, which may itself have no responsibility in the domain model but is still part of the domain
 design. Provide an interface that encapsulates all complex assembly and that does not require the
-client to reference the concrete classes of the objects being instantiated. Create entire AGGREGATES as a piece, enforcing their invariants.
+client to reference the concrete classes of the objects being instantiated. Create entire AGGRE-
+GATES as a piece, enforcing their invariants.
 The Life Cycle of a Domain Object 84
-
----
-
-## Sección 31: Chapter 4, we'll look at the principle of
-
--- 80 of 324 --
-
 There are many ways to design
 FACTORIES. Several special-purpose creation patterns—
-FACTORY METHOD, ABSTRACT FACTORY, and
+FAC-
+TORY METHOD, ABSTRACT FACTORY, and
 BUILDER—were thoroughly treated in Gamma et
 al. 1995. That book mostly explored patterns for the most difficult object construction problems. The
 point here is not to delve deeply into designing
 FACTORIES, but rather to show the place of
-FACTORIES as important components of a domain design. Proper use of
+FAC-
+TORIES as important components of a domain design. Proper use of
 FACTORIES can help keep
 a
 MODEL-DRIVEN DESIGN on track.
 The two basic requirements for any good
 FACTORY are
 1. Each creation method is atomic and enforces all invariants of the created object or
-AGGREGATE. A
+AGGRE-
+GATE. A
 FACTORY should only be able to produce an object in a consistent state. For an
 ENTITY, this means the creation of the entire
 AGGREGATE, with all invariants satisfied, but
@@ -3377,9 +3060,6 @@ integrity of the
 AGGREGATE as elements are added, as shown in Figure 6.13 on the next page.
 Figure 6.13. A FACTORY METHOD encapsulates expansion of an AGGREGATE.
 The Life Cycle of a Domain Object 85
-
--- 81 of 324 --
-
 Another example would be to place a
 FACTORY METHOD on an object that is closely involved in
 spawning another object, although it doesn't own the product once it is created. When the data and
@@ -3406,13 +3086,16 @@ SERVICE. A standalone
 FACTORY usually produces an entire
 AGGREGATE, handing out a reference to the root, and ensuring that the product
 AGGREGATE'S invariants are enforced. If an object interior to an
-AGGREGATE needs a
+AGGRE-
+GATE needs a
 FACTORY, and the
 AGGREGATE root is not a reasonable home for it, then go
 ahead and make a standalone
 FACTORY. But respect the rules limiting access within an
-AGGREGATE, and make sure there are only transient references to the product from outside the
-AGGREGATE.
+AGGRE-
+GATE, and make sure there are only transient references to the product from outside the
+AGGRE-
+GATE.
 Figure 6.15. A standalone FACTORY builds AGGREGATE.
 When a Constructor Is All You Need
 I've seen far too much code in which
@@ -3424,9 +3107,6 @@ directness of a constructor makes it the best choice. F
 ACTORIES can actually obscure simple objects that don't use polymorphism.
 The trade-offs favor a bare, public constructor in the following circumstances.
 The Life Cycle of a Domain Object 86
-
--- 82 of 324 --
-
 • The class is the type. It is not part of any interesting hierarchy, and it isn't used polymorphically
 by implementing an interface.
 • The client cares about the implementation, perhaps as a way of choosing a
@@ -3461,7 +3141,8 @@ FACTORY because of
 their usage patterns. Collections are very often created in one place and used in another. This
 means that the client that ultimately uses the collection—adding, removing, and retrieving its contents—can still talk to the interface and be decoupled from the implementation. The selection of a
 collection class typically falls to the object that owns the collection, or to the owning object's
-FACTORY.
+FAC-
+TORY.
 Designing the Interface
 When designing the method signature of a
 FACTORY, whether standalone or
@@ -3473,7 +3154,8 @@ product in a single interaction with the
 FACTORY. You also have to decide what will happen if
 creation fails, in the event that some invariant isn't satisfied. You could throw an exception or
 just return a null. To be consistent, consider adopting a coding standard for failures in
-FACTORIES.
+FACTO-
+RIES.
 •
 The FACTORY
 will be coupled to its arguments. If you are not careful in your selection of input
@@ -3486,13 +3168,6 @@ natural strata with more basic objects that are used by higher level objects. (S
 discussed in different ways in Chapter 10, “Supple Design,” and again in Chapter 16, “Large-Scale
 Structure.”)
 The Life Cycle of a Domain Object 87
-
----
-
-## Sección 32: Chapter 4, we'll look at the principle of
-
--- 83 of 324 --
-
 Another good choice of parameter is an object that is closely related to the product in the model, so
 that no new dependency is being added. In the earlier example of a Purchase Order Item, the
 FACTORY METHOD takes a Catalog Part as an argument, which is an essential association for
@@ -3500,7 +3175,8 @@ the Item. This adds a direct dependency between the Purchase Order class and the
 three objects form a close conceptual group. The Purchase Order's
 AGGREGATE already referenced the Part, anyway. So giving control to the
 AGGREGATE root and encapsulating the
-AGGREGATE'S internal structure is a good trade-off.
+AG-
+GREGATE'S internal structure is a good trade-off.
 Use the abstract type of the arguments, not their concrete classes. The
 FACTORY is coupled to the
 concrete class of the products; it does not need to be coupled to concrete parameters also.
@@ -3526,7 +3202,8 @@ Although in principle invariants apply at the end of every operation, often the 
 to the object can never bring them into play. There might be a rule that applies to the assignment
 of the identity attributes of an
 ENTITY. But after creation that identity is immutable. V
-ALUE OBJECTS are completely immutable. An object doesn't need to carry around logic that will never be
+ALUE OB-
+JECTS are completely immutable. An object doesn't need to carry around logic that will never be
 applied in its active lifetime. In such cases, the
 FACTORY is a logical place to put invariants, keeping
 the product simpler.
@@ -3542,7 +3219,8 @@ AGGREGATE. Details can be added later if they are not required
 by an invariant.
 Then there are the issues involved in assigning identity to an
 ENTITY—irrelevant to a
-VALUE OBJECT. As pointed out in Chapter 5, an identifier can either be assigned automatically by the program
+VALUE OB-
+JECT. As pointed out in Chapter 5, an identifier can either be assigned automatically by the program
 or supplied from the outside, typically by the user. If a customer's identity is to be tracked by the
 telephone number, then that telephone number must obviously be passed in as an argument to the
 FACTORY. When the program is assigning an identifier, the
@@ -3558,9 +3236,6 @@ database technologies retain the object character of their contents. Most transm
 flatten an object into an even more limited presentation. Therefore, retrieval requires a potentially
 complex process of reassembling the parts into a live object.
 The Life Cycle of a Domain Object 88
-
--- 84 of 324 --
-
 A
 FACTORY used for reconstitution is very similar to one used for creation, with two major differences.
 1.
@@ -3582,13 +3257,11 @@ FACTORY is a good option.
 Figure 6.16. Reconstituting an ENTITY retrieved from a relational database
 Figure 6.17. Reconstituting an ENTITY transmitted as XML
 The Life Cycle of a Domain Object 89
-
--- 85 of 324 --
-
 To sum up, the access points for creation of instances must be identified, and their scope must be
 defined explicitly. They may simply be constructors, but often there is a need for a more abstract or
 elaborate instance creation mechanism. This need introduces new constructs into the design:
-FACTORIES. F
+FAC-
+TORIES. F
 ACTORIES usually do not express any part of the model, yet they are a part of the domain
 design that helps keep the model-expressing objects sharp.
 A
@@ -3614,15 +3287,9 @@ in an object database, and they reasoned that existing conceptual relationships 
 necessary associations. They needed only to analyze them enough, making their entire domain
 model cohesive. This self-imposed limitation forced them to create just the kind of endless tangle
 The Life Cycle of a Domain Object 90
-
----
-
-## Sección 33: Chapter 4, we'll look at the principle of
-
--- 86 of 324 --
-
 that we have been trying to avert over the last few chapters, with careful implementation of
-ENTITIES and application of
+ENTI-
+TIES and application of
 AGGREGATES. The team members didn't stick with this strategy long, but
 they never replaced it with another coherent approach. They cobbled together ad hoc solutions and
 became less ambitious.
@@ -3675,9 +3342,6 @@ problem somewhat, assuming that we find a method of access that keeps the model 
 enough to employ those principles. For starters, we need not concern ourselves with transient objects. Transients (typically
 VALUE OBJECTS) live brief lives, used in the client operation that created
 The Life Cycle of a Domain Object 91
-
--- 87 of 324 --
-
 them and then discarded. We also need no query access for persistent objects that are more convenient to find by traversal. For example, the address of a person could be requested from the
 Person object. And most important,
 any object internal to an AGGREGATE
@@ -3739,13 +3403,6 @@ EPOSITORIES can implement a variety of queries that select objects based on what
 the client requires. They can also return summary information, such as a count of how many instances meet some criteria. They can even return summary calculations, such as the total across
 all matching objects of some numerical attribute.
 The Life Cycle of a Domain Object 92
-
----
-
-## Sección 34: Chapter 4, we'll look at the principle of
-
--- 88 of 324 --
-
 Figure 6.18. A REPOSITORY doing a search for a client
 A
 REPOSITORY lifts a huge burden from the client, which can now talk to a simple, intentionrevealing interface, and ask for what it needs in terms of the model. To support all this requires a
@@ -3781,9 +3438,6 @@ operations supported by the underlying database).
 Although most queries return an object or a collection of objects, it also fits within the concept to
 return some types of summary calculations, such as an object count, or a sum of a numerical attribute that was intended by the model to be tallied.
 The Life Cycle of a Domain Object 93
-
--- 89 of 324 --
-
 Figure 6.19. Hard-coded queries in a simple REPOSITORY
 Hard-coded queries can be built on top of any infrastructure and without a lot of investment, because
 they do just what some client would have had to do anyway.
@@ -3812,16 +3466,14 @@ REPOSITORY. But as is often the case with encapsulation, the
 developer must understand what is happening under the hood. The performance implications can
 be extreme when
 REPOSITORIES are used in different ways or work in different ways.
-Kyle Brown told me the story of getting called in on a manufacturing application based on WebSphere that was being rolled out to production. The system was mysteriously running out of memory
+Kyle Brown told me the story of getting called in on a manufacturing application based on Web-
+Sphere that was being rolled out to production. The system was mysteriously running out of memory
 after a few hours of use. Kyle browsed through the code and found the reason: At one point, they
 were summarizing some information about every item in the plant. The developers had done this
 using a query called “all objects,” which instantiated each of the objects and then selected the bits
 they needed. This code had the effect of bringing the entire database into memory at once! The
 problem hadn't shown up in testing because of the small amount of test data.
 The Life Cycle of a Domain Object 94
-
--- 90 of 324 --
-
 This is an obvious nono, but much more subtle oversights can present equally serious problems.
 Developers need to understand the implications of using encapsulated behavior. That does not have
 to mean detailed familiarity with the implementation. Well-designed components can be characterized. (This is one of the main points of Chapter 10, “Supple Design.”)
@@ -3855,13 +3507,6 @@ Take advantage of the decoupling from the client. You have more freedom to chang
 REPOSITORY than you would if the client were calling the mechanisms directly. You can take advantage of this to optimize for performance, by varying the query technique or by caching objects in memory, freely switching persistence strategies at any time. You
 can facilitate testing of the client code and the domain objects by providing an easily manipulated, dummy in-memory strategy.
 The Life Cycle of a Domain Object 95
-
----
-
-## Sección 35: Chapter 4, we'll look at the principle of
-
--- 91 of 324 --
-
 •
 Leave transaction control to the client. Although the
 REPOSITORY will insert into and delete
@@ -3870,7 +3515,8 @@ for example, but the client presumably has the context to correctly initiate and
 work. Transaction management will be simpler if the
 REPOSITORY keeps its hands off.
 Typically teams add a framework to the infrastructure layer to support the implementation of
-REPOSITORIES. In addition to the collaboration with the lower level infrastructure components, the
+RE-
+POSITORIES. In addition to the collaboration with the lower level infrastructure components, the
 REPOSITORY superclass might implement some basic queries, especially when a flexible query
 is being implemented. Unfortunately, with a type system such as Java's, this approach would force
 you to type returned objects as “Object,” leaving the client to cast them to the
@@ -3931,16 +3577,14 @@ REPOSITORY should be given the illusion
 that the objects are in memory. The object may have to be reconstituted (yes, a new instance may
 be created), but it is the same conceptual object, still in the middle of its life cycle.
 The Life Cycle of a Domain Object 96
-
--- 92 of 324 --
-
 These two views can be reconciled by making the
 REPOSITORY delegate object creation to a
 FACTORY, which (in theory, though seldom in practice) could also be used to create objects from
 scratch.
 Figure 6.22. A REPOSITORY uses a FACTORY to reconstitute a preexisting object.
 This clear separation also helps by unloading all responsibility for persistence from the
-FACTORIES. A
+FACTO-
+RIES. A
 FACTORY'S job is to instantiate a potentially complex object from data. If the product is a
 new object, the client will know this and can add it to the
 REPOSITORY, which will encapsulate the
@@ -3960,9 +3604,6 @@ FACTORY and ask for a
 new one. Usually, the distinction between a new object and an existing object is important in the
 domain, and a framework that transparently combines them will actually muddle the situation.
 The Life Cycle of a Domain Object 97
-
--- 93 of 324 --
-
 Designing Objects for Relational Databases
 The most common nonobject component of primarily object-oriented software systems is the relational database. This reality presents the usual problems of a mixture of paradigms (see Chapter
 5). But the database is more intimately related to the object model than are most other components.
@@ -4008,13 +3649,6 @@ to another
 ENTITY object. The necessity of sometimes deviating from this simple directness should
 not lead to total abandonment of the principle of simple mappings.
 The Life Cycle of a Domain Object 98
-
----
-
-## Sección 36: Chapter 4, we'll look at the principle of
-
--- 94 of 324 --
-
 The
 UBIQUITOUS LANGUAGE can help tie the object and relational components together to a
 single model. The names and associations of elements in the objects should correspond meticulously to those of the relational tables. Although the power of some mapping tools may make this
@@ -4031,9 +3665,6 @@ is a seductive path. It is often taken unintentionally, when the team fails to k
 with the model. If the separation is chosen consciously, it can result in a clean database schema—
 not an awkward one full of compromises conforming to last year's object model.
 The Life Cycle of a Domain Object 99
-
--- 95 of 324 --
-
 Chapter Seven. Using the Language: An
 Extended Example
 The preceding three chapters introduced a pattern language for honing the fine detail of a model
@@ -4053,8 +3684,6 @@ basic functions.
 In a real project, it would take some time and iteration to get to the clarity of this model. Part III of
 this book will go into the discovery process in depth. But here we'll start with a model that has the
 needed concepts in a reasonable form, and we'll focus on fine-tuning the details to support design.
--- 96 of 324 --
-
 Figure 7.1. A class diagram representing a model of the shipping domain
 This model organizes domain knowledge and provides a language for the team. We can make
 statements like this:
@@ -4075,7 +3704,7 @@ SPECIFICATION pattern (see
 
 ---
 
-## Sección 37: Chapter 9).
+## Sección 4: Chapter 9). [Entropy: 0.9]
 
 This responsibility could have been taken on by the Cargo object, but the abstraction of Delivery
 Specification gives at least three advantages.
@@ -4089,9 +3718,6 @@ reader that there is a
 SPECIFICATION of delivery, and the details of that are not important to
 think about (and, in fact, could be easily changed later).
 Using the Language: An Extended Example 101
-
--- 97 of 324 --
-
 3. This model is more expressive. Adding Delivery Specification says explicitly that the exact
 means of delivery of the Cargo is undetermined, but that it must accomplish the goal set out
 in the Delivery Specification.
@@ -4134,9 +3760,6 @@ Distinguishing ENTITIES and VALUE Objects
 Considering each object in turn, we'll look for identity that must be tracked or a basic value that is
 represented. First we'll go through the clear-cut cases and then consider the more ambiguous ones.
 Using the Language: An Extended Example 102
-
--- 98 of 324 --
-
 Customer
 Let's start with an easy one. A Customer object represents a person or a company, an entity in the
 usual sense of the word. The Customer object clearly has identity that matters to the user, so it is
@@ -4179,13 +3802,6 @@ not share the same Delivery History, even though the histories start out the sam
 Specifications are
 VALUE OBJECTS.
 Using the Language: An Extended Example 103
-
----
-
-## Sección 38: Chapter 9).
-
--- 99 of 324 --
-
 Role and Other Attributes
 Role says something about the association it qualifies, but it has no history or continuity. It is a
 VALUE OBJECT, and it could be shared among different Cargo/Customer associations.
@@ -4208,9 +3824,6 @@ multiplicity was disallowed.
 The rationale behind the remaining decisions is explained in Figure 7.2, on the next page.
 Figure 7.2. Traversal direction has been constrained on some associations.
 Using the Language: An Extended Example 104
-
--- 100 of 324 --
-
 There is one circular reference in our model: Cargo knows its Delivery History, which holds a series
 of Handling Events, which in turn point back to the Cargo. Circular references logically exist in many
 domains and are sometimes necessary in design as well, but they are tricky to maintain. Implementation choices can help by avoiding holding the same information in two places that must be
@@ -4228,7 +3841,8 @@ Customer, Location, and Carrier Movement have their own identities and are share
 Cargoes, so they must be the roots of their own
 AGGREGATES, which contain their attributes and
 possibly other objects below the level of detail of this discussion. Cargo is also an obvious
-AGGREGATE root, but where to draw the boundary takes some thought.
+AG-
+GREGATE root, but where to draw the boundary takes some thought.
 The Cargo
 AGGREGATE could sweep in everything that would not exist but for the particular
 Cargo, which would include the Delivery History, the Delivery Specification, and the Handling
@@ -4248,9 +3862,6 @@ handling the Cargo has some meaning even when considered apart
 from the Cargo itself. So the Handling Event should be the root of its own
 AGGREGATE.
 Using the Language: An Extended Example 105
-
--- 101 of 324 --
-
 Figure 7.3. AGGREGATE boundaries imposed on the model. (Note: An ENTITY outside a drawn boundary is implied to be
 the root of its own AGGREGATE.)
 Selecting REPOSITORIES
@@ -4268,9 +3879,6 @@ The Activity Logging Application needs to allow the user to look up the Carrier 
 Cargo is being loaded onto, so we need a Carrier Movement Repository. This user must also tell
 the system which Cargo has been loaded, so we need a Cargo Repository.
 Using the Language: An Extended Example 106
-
--- 102 of 324 --
-
 Figure 7.4. REPOSITORIES give access to selected AGGREGATE roots.
 For now there is no Handling Event Repository, because we decided to implement the association
 with Delivery History as a collection in the first iteration, and we have no application requirement to
@@ -4288,13 +3896,6 @@ Delivery Specification is a
 VALUE OBJECT, so it would be simplest to just to throw it away and get
 a new one, then use a setter method on Cargo to replace the old one with the new one.
 Using the Language: An Extended Example 107
-
----
-
-## Sección 39: Chapter 9).
-
--- 103 of 324 --
-
 Sample Application Feature: Repeat Business
 The users say that repeated bookings from the same Customers tend to be similar, so they want to
 use old Cargoes as prototypes for new ones. The application will allow them to find a Cargo in the
@@ -4354,9 +3955,6 @@ Cargo's constructor or
 FACTORY to create a Delivery History. The Delivery History constructor will
 take a Cargo as an argument. The result would be something like this:
 Using the Language: An Extended Example 108
-
--- 104 of 324 --
-
 public Cargo(String id) {
 trackingID = id;
 deliveryHistory = new DeliveryHistory(this);
@@ -4405,9 +4003,6 @@ a collection of Handling Events relevant to its Cargo, and the new object must b
 collection as part of the transaction. If this back-pointer were not created, the objects would be
 inconsistent.
 Using the Language: An Extended Example 109
-
--- 105 of 324 --
-
 Figure 7.5. Adding a Handling Event requires inserting it into a Delivery History.
 Creation of the back-pointer could be encapsulated in the
 FACTORY (and kept in the domain layer
@@ -4422,7 +4017,8 @@ reflect the model. Problems that didn't seem important when starting the design 
 annoying. Let's go back to one of them and, with the benefit of hindsight, stack the design deck in
 our favor.
 The need to update Delivery History when adding a Handling Event gets the Cargo
-AGGREGATE involved in the transaction. If some other user was modifying Cargo at the same time, the
+AGGRE-
+GATE involved in the transaction. If some other user was modifying Cargo at the same time, the
 Handling Event transaction could fail or be delayed. Entering a Handling Event is an operational
 activity that needs to be quick and simple, so an important application requirement is the ability to
 enter Handling Events
@@ -4436,13 +4032,6 @@ database is the underlying technology, a query was probably being used under the
 to emulate the collection. Using a query rather than a collection would also reduce the difficulty of
 maintaining consistency in the cyclical reference between Cargo and Handling Event.
 Using the Language: An Extended Example 110
-
----
-
-## Sección 40: Chapter 9).
-
--- 106 of 324 --
-
 To take responsibility for the queries, we'll add a
 REPOSITORY for Handling Events. The Handling
 Event Repository will support a query for the Events related to a certain Cargo. In addition, the
@@ -4468,9 +4057,6 @@ REPOSITORY query. If the access pattern includes frequent listing of the full hi
 is on this Carrier Movement?”) hasn't been requested yet, and may never be, so we don't want to
 pay much for that option.
 Using the Language: An Extended Example 111
-
--- 107 of 324 --
-
 These kinds of alternatives and design trade-offs are everywhere, and I could come up with lots of
 examples just in this little simplified system. But the important point is that these are degrees of
 freedom within the same model. By modeling
@@ -4487,7 +4073,8 @@ framework).
 MODULES in the Shipping Model
 So far we've been looking at so few objects that modularity is not an issue. Now let's look at a little
 bigger part of a shipping model (though still simplified, of course) to see its organization into
-MODULES that will affect the model.
+MOD-
+ULES that will affect the model.
 Figure 7.7 shows a model neatly partitioned by a hypothetical enthusiastic reader of this book. This
 diagram is a variation on the infrastructure-driven packaging problem raised in Chapter 5. In this
 case, the objects have been grouped according to the pattern each follows. The result is that objects
@@ -4496,18 +4083,12 @@ willy-nilly between all the
 MODULES (high coupling). The packages tell a story, but it is not the story
 of shipping; it is the story of what the developer was reading at the time.
 Using the Language: An Extended Example 112
-
--- 108 of 324 --
-
 Figure 7.7. These MODULES do not convey domain knowledge.
 Partitioning by pattern may seem like an obvious error, but it is not really any less sensible than
 separating persistent objects from transient ones or any other methodical scheme that is not grounded in the meaning of the objects.
 Instead, we should be looking for the cohesive concepts and focusing on what we want to communicate to others on the project. As with smaller scale modeling decisions, there are many ways to
 do it. Figure 7.8 shows a straightforward one.
 Using the Language: An Extended Example 113
-
--- 109 of 324 --
-
 Figure 7.8. MODULES based on broad domain concepts
 The
 MODULE names in Figure 7.8 contribute to the team's language. Our company does
@@ -4524,7 +4105,8 @@ customer's agreement. That's one story I can tell with this set of
 MODULES.
 This intuitive breakdown could be refined, certainly, in successive iterations, or even replaced entirely, but it is now aiding
 MODEL-DRIVEN DESIGN and contributing to the
-UBIQUITOUS LANGUAGE.
+UBIQUITOUS LAN-
+GUAGE.
 Introducing a New Feature: Allocation Checking
 Up to this point, we've been working off the initial requirements and model. Now the first major new
 functions are going to be added.
@@ -4538,13 +4120,6 @@ bumping cargo so often that it hurts customer relationships).
 Now they want this feature to be integrated with the booking system. When a booking comes in,
 they want it checked against these allocations to see if it should be accepted.
 Using the Language: An Extended Example 114
-
----
-
-## Sección 41: Chapter 9).
-
--- 110 of 324 --
-
 The information needed resides in two places, which will have to be queried by the Booking Application so that it can either accept or reject the requested booking. A sketch of the general information
 flows looks something like this.
 Figure 7.9. Our Booking Application must use information from the Sales Management System and from our own domain
@@ -4552,7 +4127,8 @@ REPOSITORIES.
 Connecting the Two Systems
 The Sales Management System was not written with the same model in mind that we are working
 with here. If the Booking Application interacts with it directly, our application will have to accommodate the other system's design, which will make it harder to keep a clear
-MODEL-DRIVEN DESIGN and will confuse the
+MODEL-DRIVEN DE-
+SIGN and will confuse the
 UBIQUITOUS LANGUAGE. Instead, let's create another class whose
 job it will be to translate between our model and the language of the Sales Management System. It
 will not be a general translation mechanism. It will expose just the features our application needs,
@@ -4582,9 +4158,6 @@ and we could conform our types to that list. We could pass in a collection of st
 But we would be passing up another opportunity: this time, to reabstract the domain of the other
 system. We need to enrich our domain model to accommodate the knowledge that there are categories of cargo. We should brainstorm with a domain expert to work out the new concept.
 Using the Language: An Extended Example 115
-
--- 111 of 324 --
-
 Sometimes (as will be discussed in Chapter 11) an analysis pattern can give us an idea for a modeling solution. The book
 Analysis Patterns (Fowler 1996) describes a pattern that addresses this
 kind of problem: the
@@ -4611,9 +4184,6 @@ Both of these responsibilities seem to belong to the Allocation Checker. Changin
 separate these two
 SERVICES and make the interaction clear and explicit.
 Using the Language: An Extended Example 116
-
--- 112 of 324 --
-
 Figure 7.11. Domain responsibilities shifted from Booking Application to Allocation Checker
 The only serious constraint imposed by this integration will be that the Sales Management System mustn't use dimensions that the Allocation Checker can't turn into Enterprise Segments. (Without applying the
 ENTERPRISE SEGMENT pattern, the same constraint would force the sales system to use only dimensions that can be used in a query to the Cargo Repository. This approach is
@@ -4637,7 +4207,8 @@ That's it. This integration could have turned our simple, conceptually consisten
 mess, but now, using an
 ANTICORRUPTION LAYER, a
 SERVICE, and some
-ENTERPRISE SEGMENTS, we have integrated the functionality of the Sales Management System into our booking
+ENTERPRISE SEG-
+MENTS, we have integrated the functionality of the Sales Management System into our booking
 system cleanly, enriching the domain.
 A final design question: Why not give Cargo the responsibility of deriving the Enterprise Segment?
 At first glance it seems elegant, if all the data the derivation is based on is in the Cargo, to make it
@@ -4650,21 +4221,11 @@ purposes. Even the allocation Enterprise Segment could change if the Sales Manag
 Allocation Checker, which is well outside its conceptual responsibility, and it would be laden with
 methods for deriving specific types of Enterprise Segment. Therefore, the responsibility for deriving
 Using the Language: An Extended Example 117
-
----
-
-## Sección 42: Chapter 9).
-
--- 113 of 324 --
-
 this value lies properly with the object that knows the rules for segmentation, rather than the object
 that has the data to which those rules apply. Those rules could be split out into a separate “Strategy” object, which could be passed to a Cargo to allow it to derive an Enterprise Segment. That
 solution seems to go beyond the requirements we have here, but it would be an option for a later
 design and shouldn't be a very disruptive change.
 Using the Language: An Extended Example 118
-
--- 114 of 324 --
-
 Chapter Eight. Breakthrough
 The returns from refactoring are not linear. Usually there is a marginal return for a small effort, and
 the small improvements add up. They fight entropy, and they are the frontline protection against a
@@ -4680,8 +4241,6 @@ This sort of breakthrough is not a technique; it is an event. The challenge lies
 is happening and deciding how to deal with it. To convey what this experience feels like, I'll tell a
 true story of a project I worked on some years ago, and how we arrived at a very valuable deep
 model.
--- 115 of 324 --
-
 Story of a Breakthrough
 After a long New York winter of refactoring, we had arrived at a model that captured some of the
 key knowledge of the domain and a design that did some real work for the application. We were
@@ -4720,9 +4279,6 @@ requests its money, the leader of the syndicate calls all members for their shar
 When called, the investors usually cough up their share, but often they negotiate with other members
 of the syndicate and invest less (or more). We had accommodated this by adding Loan Adjustments to the model.
 Breakthrough 123
-
--- 116 of 324 --
-
 Figure 8.2. A model incrementally changed to solve problems. Loan Adjustments track departures from the share a lender
 originally agreed to in the Facility.
 Refinements of this kind allowed us to keep up as the rules of various transactions became clearer.
@@ -4743,13 +4299,6 @@ Figure 8.3. A drawdown distributed based on Facility shares
 This diagram says that the borrower has chosen to draw an initial $50MM from the $100MM committed under the Facility. The three lenders chip in their shares in exact proportion to the Facility
 shares, resulting in a $50MM Loan divided among the lenders.
 Breakthrough 124
-
----
-
-## Sección 43: Chapter 9).
-
--- 117 of 324 --
-
 Then, in Figure 8.4, the borrower draws an additional $30MM, bringing his outstanding Loan to
 $80MM, still under the $100MM limit of the Facility. This time, Company B chooses not to participate,
 letting Company A take an extra share. The shares of the draw-down reflect these investment
@@ -4762,9 +4311,6 @@ shares of the Loan, not the Facility. Likewise, interest payments will be divide
 Loan shares.
 Figure 8.6. Fee payments are always distributed proportionally to shares in the Facility.
 Breakthrough 125
-
--- 118 of 324 --
-
 On the other hand, when the borrower pays a fee for the privilege of having the Facility available,
 this money is divided according to the Facility shares, regardless of who actually has lent money.
 The Loan is unchanged by fee payments. There are even scenarios in which lenders trade shares
@@ -4784,9 +4330,6 @@ broken down into the more intuitive “Share Pie.” This generalization allowed
 “shares math,” vastly simplifying the calculation of shares in any transaction, and making those
 calculations more expressive, concise, and easily combined.
 Breakthrough 126
-
--- 119 of 324 --
-
 But most of all, problems went away because the new model removed an inappropriate constraint.
 It freed the Loan's Shares to depart from the proportions of the Facility's Shares, while keeping in
 place the valid constraints on totals, fee distributions, and so on. The Share Pie of the Loan could
@@ -4832,9 +4375,6 @@ to. And we were tired. But, yes, it was a simpler solution that fit the
 business much better. In the long run it was lower risk.
 He gave us the go-ahead and told us he would handle the heat. I've always had tremendous admiration for the courage and trust it took for him to make that decision.
 Breakthrough 127
-
--- 120 of 324 --
-
 We busted our butts and got it done in three weeks. It was a big job, but it went surprisingly smoothly.
 The Payoff
 The mystifyingly unexpected requirement changes stopped. The rounding logic, though never exactly simple, stabilized and made sense. We delivered version one and the way was clear to version
@@ -4875,13 +4415,6 @@ noticeable before the Share Pie breakthrough, became obvious with our clearer fi
 we noticed terms popping up in our discussions that were nowhere to be found in the model—terms
 such as “transaction” (meaning a financial transaction)—that we started to realize were being implied by all those complicated methods.
 Breakthrough 128
-
----
-
-## Sección 44: Chapter 9).
-
--- 121 of 324 --
-
 Following a process similar to the one described earlier (although, thankfully, under much less time
 pressure) led to yet another round of insights and a still deeper model. This new model made those
 implicit concepts explicit, as kinds of Transactions, and at the same time simplified the Positions
@@ -4892,13 +4425,11 @@ Figure 8.9. Another model break-through that followed several weeks later. Const
 with easy precision.
 As is often the case after a real breakthrough to a deep model, the clarity and simplicity of the new
 design, combined with the enhanced communication based on the new
-UBIQUITOUS LANGUAGE, had led to yet another modeling breakthrough.
+UBIQUITOUS LAN-
+GUAGE, had led to yet another modeling breakthrough.
 Our pace of development was accelerating at a stage where most projects are beginning to bog
 down in the mass and complexity of what has already been built.
 Breakthrough 129
-
--- 122 of 324 --
-
 Chapter Nine. Making Implicit Concepts
 Explicit
 Deep modeling sounds great, but how do you actually do it? A deep model has power because it
@@ -4930,8 +4461,6 @@ important domain concept. You talk excitedly with your experts about your new in
 show relief that you finally got it. Maybe they yawn because they've taken it for granted all along.
 Either way, you start to draw model diagrams on the board that fill in for some hand waving that
 you've always done before. The users correct you on the details of how the new model connects,
--- 123 of 324 --
-
 but you can tell that there is a change in the quality of the discussion. You and the users understand
 each other more precisely, and demonstrations of model interactions to solve specific scenarios
 have become more natural. The language of the domain model has become more powerful. You
@@ -4965,13 +4494,6 @@ Developer: I want to make sure the “cargo bookings” table has all the data t
 application will need.
 Expert: They're going to need the whole itinerary for the Cargo. What information does it have now?
 Making Implicit Concepts Explicit 131
-
----
-
-## Sección 45: Chapter 9).
-
--- 124 of 324 --
-
 Developer: The cargo ID, the vessel voyage, the loading port, and the unloading port for each leg.
 Expert: What about the date? Operations will need to contract handling work based on the expected
 times.
@@ -5009,9 +4531,6 @@ The developer then went off to talk with the other developers involved in the ro
 hashed out the changes to the model and the implications for the design, calling on the shipping
 experts when needed. They came up with the diagram in Figure 9.3.
 Making Implicit Concepts Explicit 132
-
--- 125 of 324 --
-
 Next, the developers refactored the code to reflect the new model. They did it in a series of two or
 three refactorings, but in quick succession, within a week, except for simplifying the itinerary report
 in the booking application, which they took care of early the following week.
@@ -5034,9 +4553,6 @@ You may have to dig and invent. The place to dig is the most awkward part of you
 where procedures are doing complicated things that are hard to explain. The place where every
 new requirement seems to add complexity.
 Making Implicit Concepts Explicit 133
-
--- 126 of 324 --
-
 Sometimes it can be hard to recognize that there even is a missing concept. You may have objects
 doing all the work but find some of the responsibilities awkward. Or, if you do realize something is
 missing, a model solution may elude you.
@@ -5052,7 +4568,8 @@ has been evolving incrementally, feature by feature. Each night, one component w
 batch script, calculating all interest and fees for the day and then recording them appropriately in
 the company's accounting software.
 Figure 9.4. An awkward model
-The nightly batch script iterated through each Asset, telling each to calculateInterestForDate() on that day's date. The script took the return value (the amount earned) and passed this
+The nightly batch script iterated through each Asset, telling each to calculateInterestFor-
+Date() on that day's date. The script took the return value (the amount earned) and passed this
 amount, along with the name of a specific ledger, to a
 SERVICE that provided the public interface
 of the accounting program. That software posted the amount to the named ledger. The script went
@@ -5072,13 +4589,6 @@ Expert: OK.
 Developer: I was thinking you might have a way of talking about this interest calculation.
 Expert: What do you mean?
 Making Implicit Concepts Explicit 134
-
----
-
-## Sección 46: Chapter 9).
-
--- 127 of 324 --
-
 Developer: Well, for example, we're tracking the interest due but un-paid within an accounting period. Do you have a name for that?
 Expert: Well, we don't really do it like that. The interest earned and the payment are quite separate
 postings.
@@ -5107,9 +4617,6 @@ way, posted to a different ledger, of course.
 Developer: Actually, the interest calculation would be simpler if it was done just for one day, or
 period. And then we could just hang on to them all. How about this?
 Making Implicit Concepts Explicit 135
-
--- 128 of 324 --
-
 Expert: Sure. It looks good. I'm not sure why this would be easier for you. But basically, what makes
 any asset valuable is what it can accrue in interest, fees, and so on.
 Developer: You said fees work the same way? They . . . what was it . . . post to different ledgers?
@@ -5121,11 +4628,9 @@ Because the Calculator classes hadn't been directly coupled with other parts of 
 a fairly easy refactoring. The developer was able to rewrite the unit tests to use the new language
 in a few hours and had the new design working late the next day. She ended up with this.
 Making Implicit Concepts Explicit 136
-
--- 129 of 324 --
-
 Figure 9.8. A deeper model after refactoring
-In the refactored application, the nightly batch script tells each Asset to calculateAccrualsThroughDate(). The return value is a collection of Accruals, each of whose amounts it posts to
+In the refactored application, the nightly batch script tells each Asset to calculateAccruals-
+ThroughDate(). The return value is a collection of Accruals, each of whose amounts it posts to
 the indicated ledger.
 The new model has several advantages. The change
 1. Enriches the
@@ -5156,9 +4661,6 @@ just as if the horse were standing still. From this he deduced an early form of 
 frames of reference, solving the paradox and leading to a much more useful model of the physics
 of motion.
 Making Implicit Concepts Explicit 137
-
--- 130 of 324 --
-
 OK. Our contradictions are usually not so interesting, nor the implications so profound. Even so,
 this same pattern of thought often helps pierce the superficial layers of a problem domain into a
 deeper insight.
@@ -5178,7 +4680,7185 @@ example. Just as before, the story starts with the developer realizing that the 
 project. In this scenario, the developer couldn't turn to the expert for a brainstorming session to
 probe for the missing concepts she suspected to be lurking under the surface.
 Instead, she went to the bookstore. After a little browsing, she found an introductory accounting
-book she liked, and she skimmed it. She discovered a whole system of well-defined concepts
+book she liked, and she skimmed it. She discovered a whole system of well-defined concepts. An
+excerpt that particularly fired her thinking:
+Accrual Basis Accounting. This method recognizes income when it is earned, even if it is not paid.
+All expenses
+also show when they are incurred whether they have been paid for or billed to be paid at a later date. Any obligation
+due, including taxes, will be shown as expense.
+—Finance and Accounting: How to Keep Your Books and Manage Your Finances Without an MBA, a CPA or a
+Ph.D., by Suzanne Caplan (Adams Media, 2000)
+The developer no longer needed to reinvent accounting. After some brainstorming with another
+developer, she came up with a model.
+Figure 9.9. A somewhat deeper model based on book learning
+Making Implicit Concepts Explicit 138
+She did not have the insight that Assets are income generators, and so the Calculators are still
+there. The knowledge of ledgers is still in the application, rather than the domain layer where it
+probably belongs. But she did separate the issue of payment from the accrual of income, which was
+the most problematic area, and she introduced the word “accrual” into the model and into the
+UBIQUITOUS LANGUAGE. Further refinement could come with later iterations.
+When she did finally have the chance to talk with the domain expert, he was quite surprised. It was
+the first time a programmer had shown a glimmer of interest in what he did. Due to the way his
+responsibilities were assigned, the expert never engaged with her, sitting down to go over the model,
+as happened in the previous scenario. However, because this developer's knowledge allowed her
+to ask better questions, from then on the expert did listen to her carefully, and he made a special
+effort to answer her questions promptly.
+Of course, this is not an either-or proposition. Even with ample support from domain experts, it pays
+to look at the literature to get a grasp of the theory of the field. Most businesses do not have models
+refined to the level of accounting or finance, but in many there have been thinkers in the field who
+have organized and abstracted the common practices of the business.
+Yet another option the developer had was to read something written by another software professional with development experience in this domain. For example, Chapter 6 of the book
+Analysis
+Patterns: Reusable Object Models (Fowler 1997) would have sent her in quite a different direction,
+not necessarily better or worse. Such reading would not have provided an off-the-shelf solution. It
+would have given several new starting points for her own experiments, along with the distilled experience of people who have traveled the territory. She would have been spared reinventing the
+wheel. Chapter 11, “Applying Analysis Patterns,” will delve further into this option.
+Try, Try Again
+The examples I've given don't convey the amount of trial and error involved. I might follow half a
+dozen leads in conversation before finding one that seems clear and useful enough to try out in the
+model. I'll end up replacing that one at least once later, as additional experience and knowledge
+crunching serve up better ideas. A modeler/designer cannot afford to get attached to his own ideas.
+All these changes of direction are not just thrashing. Each change embeds deeper insight into the
+model. Each refactoring leaves the design more supple, easier to change the next time, ready to
+bend in the places that turn out to need to bend.
+There really is no choice, anyway. Experimentation is the way to learn what works and doesn't.
+Trying to avoid missteps in design will result in a lower quality result because it will be based on
+less experience. And it can easily take longer than a series of quick experiments.
+How to Model Less Obvious Kinds of Concepts
+The object-oriented paradigm leads us to look for and invent certain kinds of concepts. Things, even
+very abstract ones such as “accruals,” are the meat of most object models, along with the actions
+those things take. These are the “nouns and verbs” that introductory object-oriented design books
+talk about. But other important categories of concepts can be made explicit in a model as well.
+I'll discuss three such categories that were not obvious to me when I started with objects. My designs
+became sharper with each one of these I learned.
+Explicit Constraints
+Constraints make up a particularly important category of model concepts. They often emerge implicitly, and expressing them explicitly can greatly improve a design.
+Making Implicit Concepts Explicit 139
+Sometimes constraints find a natural home in an object or method. A “Bucket” object must guarantee
+the invariant that it does not hold more than its capacity.
+A simple invariant like this can be enforced using case logic in each operation capable of changing
+contents.
+class Bucket {
+private float capacity;
+private float contents;
+public void pourIn(float addedVolume) {
+if (contents + addedVolume > capacity) {
+contents = capacity;
+} else {
+contents = contents + addedVolume;
+}
+}
+}
+This logic is so simple that the rule is obvious. But you can easily imagine this constraint getting lost
+in a more complicated class. Let's factor it into a separate method, with a name that clearly and
+explicitly expresses the significance of the constraint.
+class Bucket {
+private float capacity;
+private float contents;
+public void pourIn(float addedVolume) {
+float volumePresent = contents + addedVolume;
+contents = constrainedToCapacity(volumePresent);
+}
+private float constrainedToCapacity(float volumePlacedIn) {
+if (volumePlacedIn > capacity) return capacity;
+return volumePlacedIn;
+}
+}
+Both versions of this code enforce the constraint, but the second has a more obvious relationship
+to the model (the basic requirement of
+MODEL-DRIVEN DESIGN). This very simple rule was understandable in its original form, but when the rules being enforced are more complex, they start to
+overwhelm the object or operation they apply to, as any implicit concept does. Factoring the constraint into its own method allows us to give it an intention-revealing name that makes the constraint
+explicit in our design. It is now a named thing we can discuss. This approach also gives the constraint
+room. A more complex rule than this might easily produce a method longer than its caller (the
+pourIn() method, in this case). This way, the caller stays simple and focused on its task while the
+constraint can grow in complexity if need be.
+Making Implicit Concepts Explicit 140
+This separate method gives the constraint some room to grow, but there are lots of cases when a
+constraint just can't fit comfortably in a single method. Or even if the method stays simple, it may
+call on information that the object doesn't need for its primary responsibility. The rule may just have
+no good home in an existing object.
+Here are some warning signs that a constraint is distorting the design of its host object.
+1. Evaluating a constraint requires data that does not otherwise fit the object's definition.
+2. Related rules appear in multiple objects, forcing duplication or inheritance between objects
+that are not otherwise a family.
+3. A lot of design and requirements conversation revolves around the constraints, but in the
+implementation, they are hidden away in procedural code.
+When the constraints are obscuring the object's basic responsibility, or when the constraint is prominent in the domain yet not prominent in the model, you can factor it out into an explicit object or
+even model it as a set of objects and relationships. (One in-depth, semiformal treatment of this
+subject can be found in
+The Object Constraint Language: Precise Modeling with UML [Warmer and
+Kleppe 1999].)
+Example
+Review: Overbooking Policy
+In Chapter 1, we worked with a common shipping business practice: booking 10 percent more cargo
+than the transports could handle. (Experience has taught shipping firms that this overbooking compensates for last-minute cancellations, so their ships will sail nearly full.)
+This constraint on the association between Voyage and Cargo was made explicit, both in the diagrams and in the code, by adding a new class that represented the constraint.
+Figure 9.11. The model refactored to make policy explicit
+To review the code and reasoning in the full example, see page 17.
+Processes as Domain Objects
+Right up front, let's agree that we do
+not want to make procedures a prominent aspect of our model.
+Objects are meant to encapsulate the procedures and let us think about their goals or intentions
+instead.
+What I am talking about here are processes that exist in the domain, which we have to represent in
+the model. When these emerge, they tend to make for awkward object designs.
+The first example in this chapter described a shipping system that routed cargo. This routing process
+was something with business meaning. A
+SERVICE is one way of expressing such a process explicitly, while still encapsulating the extremely complex algorithms.
+When there is more than one way to carry out a process, another approach is to make the algorithm
+itself, or some key part of it, an object in its own right. The choice between processes becomes a
+choice between these objects, each of which represents a different
+STRATEGY. (Chapter 12 will
+look in more detail at the use of
+STRATEGIES in the domain.)
+Making Implicit Concepts Explicit 141
+The key to distinguishing a process that ought to be made explicit from one that should be hidden
+is simple: Is this something the domain experts talk about, or is it just part of the mechanism of the
+computer program?
+Constraints and processes are two broad categories of model concepts that don't come leaping to
+mind when programming in an object-oriented language, yet they can really sharpen up a design
+once we start thinking about them as model elements.
+Some useful categories of concepts are much narrower. I'll round out this chapter with one much
+more specific, yet quite common. S
+PECIFICATION provides a concise way of expressing certain
+kinds of rules, extricating them from conditional logic and making them explicit in the model.
+I developed
+SPECIFICATION in collaboration with Martin Fowler (Evans and Fowler 1997). The
+simplicity of the concept belies the subtlety in application and implementation, so there is a lot of
+detail in this section. There will be even more discussion in Chapter 10, where the pattern is extended. After reading the initial explanation of the pattern that follows, you may want to skim the
+“Applying and Implementing S
+PECIFICATIONS” section, until you are actually attempting to apply
+the pattern.
+Specification
+In all kinds of applications, Boolean test methods appear that are really parts of little rules. As long
+as they are simple, we handle them with testing methods, such as anIterator.hasNext() or
+anInvoice.isOverdue(). In an Invoice class, the code in isOverdue() is an algorithm that
+evaluates a rule. For example,
+public boolean isOverdue() {
+Date currentDate = new Date();
+return currentDate.after(dueDate);
+}
+But not all rules are so simple. On the same Invoice class, another rule, anInvoice.isDelinquent() would presumably start with testing if the Invoice is overdue, but that would just be the
+beginning. A policy on grace periods could depend on the status of the customer's account. Some
+delinquent invoices will be ready for a second notice, while others will be ready to be sent to a
+collection agency. The payment history of the customer, company policy on different product
+lines . . . the clarity of Invoice as a request for payment will soon be lost in the sheer mass of rule
+evaluation code. The Invoice will also develop all sorts of dependencies on domain classes and
+subsystems that do not support that basic meaning.
+At this point, in an attempt to save the Invoice class, a developer will often refractor the rule evaluation code into the application layer (in this case, a bill collection application). Now the rules have
+been separated from the domain layer altogether, leaving behind a dead data object that does not
+express the rules inherent in the business model. These rules need to stay in the domain layer, but
+they don't fit into the object being evaluated (the Invoice in this case). Not only that, but evaluating
+methods swell with conditional code, which make the rule hard to read.
+Developers working in the logic-programming paradigm would handle this situation differently. Such
+rules would be expressed as
+predicates. Predicates are functions that evaluate to “true” or “false”
+and can be combined using operators such as “AND” and “OR” to express more complex rules.
+With predicates, we could declare rules explicitly and use them with the Invoice. If only we were in
+the logic paradigm.
+Making Implicit Concepts Explicit 142
+Seeing this, people have made attempts at implementing logical rules in terms of objects. Some
+such attempts were very sophisticated, others naive. Some were ambitious, others modest. Some
+turned out valuable, some were tossed aside as failed experiments. A few attempts were allowed
+to derail their projects. One thing is clear: As appealing as the idea is, full implementation of logic
+in objects is a major undertaking. (After all, logic programming is a whole modeling and design
+paradigm in its own right.)
+Business rules often do not fit the responsibility of any of the obvious ENTITIES or VALUE OB-
+JECTS, and their variety and combinations can overwhelm the basic meaning of the domain object.
+But moving the rules out of the domain layer is even worse, since the domain code no longer expresses the model.
+Logic programming provides the concept of separate, combinable, rule objects called “predicates,”
+but full implementation of this concept with objects is cumbersome. It is also so general that it doesn't
+communicate intent as much as more specialized designs.
+Fortunately, we don't really need to fully implement logic programming to get a large benefit. Most
+of our rules fall into a few special cases. We can borrow the concept of predicates and create
+specialized objects that evaluate to a Boolean. Those testing methods that get out of hand will neatly
+expand into objects of their own. They are little truth tests that can be factored out into a separate
+VALUE OBJECT. This new object can evaluate another object to see if the predicate is true for that
+object.
+To put it another way, the new object is a
+specification. A
+SPECIFICATION states a constraint on
+the state of another object, which may or may not be present. It has multiple uses, but one that
+conveys the most basic concept is that a
+SPECIFICATION can test any object to see if it satisfies
+the specified criteria.
+Therefore:
+Create explicit predicate-like VALUE OBJECTS for specialized purposes. A SPECIFICATION is a
+predicate that determines if an object does or does not satisfy some criteria.
+Many
+SPECIFICATIONS are simple, special-purpose tests, as in the delinquent invoice example.
+In cases where the rules are complex, the concept can be extended to allow simple specifications
+to be combined, just as predicates are combined with logical operators. (This technique will be
+discussed in the next chapter.) The fundamental pattern stays the same and provides a path from
+the simpler to more complex models.
+The case of the delinquent invoice can be modeled using a
+SPECIFICATION that states what it
+means to be delinquent and that can evaluate any Invoice and make the determination.
+Making Implicit Concepts Explicit 143
+Figure 9.13. A more elaborate delinquency rule factored out as a SPECIFICATION
+The
+SPECIFICATION keeps the rule in the domain layer. Because the rule is a full-fledged object,
+the design can be a more explicit reflection of the model. A
+FACTORY can configure a
+SPECIFI-
+CATION using information from other sources, such as the customer's account or the corporate
+policy database. Providing direct access to these sources from the Invoice would couple the objects
+in a way that does not relate to the request for payment (the basic responsibility of Invoice). In this
+case, the Delinquent Invoice Specification was to be created, used to evaluate some Invoices, and
+then discarded, so a specific evaluation date was built right in—a nice simplification. A
+SPECIFI-
+CATION can be given the information it will need to do its job in a simple, straightforward way.
+The basic concept of
+SPECIFICATION is very simple and helps us think about a domain modeling
+problem. But a
+MODEL-DRIVEN DESIGN requires an effective implementation that also expresses
+the concept. To pull that off requires digging a little deeper into how the pattern will be applied. A
+domain pattern is not just a neat idea for a UML diagram; it is a solution to a programming problem
+that retains a
+MODEL-DRIVEN DESIGN.
+When you apply a pattern appropriately, you can tap into a whole body of thought about how to
+approach a class of domain modeling problem, and you can benefit from years of experience in
+finding effective implementations. There is a lot of detail in the discussion of
+SPECIFICATION that
+follows: many options for features and approaches to implementation. A pattern is not a cookbook.
+It lets you start from a base of experience to develop your solution, and it gives you some language
+to talk about what you are doing.
+You may want to skim the key concepts when first reading. Later, when you run into the situation,
+you can come back and draw on the experience captured in the detailed discussion. Then you can
+go and figure out a solution to your problem.
+Applying and Implementing SPECIFICATION
+Much of the value of
+SPECIFICATION is that it unifies application functionality that may seem quite
+different. We might need to specify the state of an object for one or more of these three purposes.
+1. To validate an object to see if it fulfills some need or is ready for some purpose
+2. To select an object from a collection (as in the case of querying for overdue invoices)
+3. To specify the creation of a new object to fit some need
+These three uses—validation, selection, and building to order—are the same on a conceptual level.
+Without a pattern such as
+SPECIFICATION, the same rule may show up in different guises, and
+possibly contradictory forms. The conceptual unity can be lost. Applying the
+SPECIFICATION pattern allows a consistent model to be used, even when the implementation may have to diverge.
+Making Implicit Concepts Explicit 144
+Validation
+The simplest use of a
+SPECIFICATION is validation, and it is the use that demonstrates the concept
+most straightforwardly.
+Figure 9.14. A model applying a SPECIFICATION for validation
+class DelinquentInvoiceSpecification extends
+InvoiceSpecification {
+private Date currentDate;
+// An instance is used and discarded on a single date
+public DelinquentInvoiceSpecification(Date currentDate) {
+this.currentDate = currentDate;
+}
+public boolean isSatisfiedBy(Invoice candidate) {
+int gracePeriod =
+candidate.customer().getPaymentGracePeriod();
+Date firmDeadline =
+DateUtility.addDaysToDate(candidate.dueDate(),
+gracePeriod);
+return currentDate.after(firmDeadline);
+}
+}
+Now, suppose we need to display a red flag whenever a salesperson brings up a customer with
+delinquent bills. We just have to write a method in a client class, something like this.
+public boolean accountIsDelinquent(Customer customer) {
+Date today = new Date();
+Specification delinquentSpec =
+new DelinquentInvoiceSpecification(today);
+Iterator it = customer.getInvoices().iterator();
+while (it.hasNext()) {
+Invoice candidate = (Invoice) it.next();
+if (delinquentSpec.isSatisfiedBy(candidate)) return true;
+}
+return false;
+}
+Selection (or Querying)
+Validation tests an individual object to see if it meets some criteria, presumably so that the client
+can act on the conclusion. Another common need is to select a subset of a collection of objects
+based on some criteria. The same concept of
+SPECIFICATION can be applied here, but implementation issues are different.
+Making Implicit Concepts Explicit 145
+Suppose there was an application requirement to list all customers with delinquent Invoices. In
+theory, the Delinquent Invoice Specification that we defined before will still serve, but in practice its
+implementation would probably have to change. To demonstrate that the
+concept is the same, let's
+assume first that the number of Invoices is small, maybe already in memory. In this case, the
+straightforward implementation developed for validation still serves. The Invoice Repository could
+have a generalized method to select Invoices based on a
+SPECIFICATION:
+public Set selectSatisfying(InvoiceSpecification spec) {
+Set results = new HashSet();
+Iterator it = invoices.iterator();
+while (it.hasNext()) {
+Invoice candidate = (Invoice) it.next();
+if (spec.isSatisfiedBy(candidate)) results.add(candidate);
+}
+return results;
+}
+So a client could obtain a collection of all delinquent Invoices with a single code statement:
+Set delinquentInvoices = invoiceRepository.selectSatisfying(
+new DelinquentInvoiceSpecification(currentDate));
+That line of code establishes the concept behind the operation. Of course, the Invoice objects probably aren't in memory. There may be thousands of them. In a typical business system, the data is
+probably in a relational database. And, as pointed out in earlier chapters, the model focus tends to
+get lost at these intersections with other technologies.
+Relational databases have powerful search capabilities. How can we take advantage of that power
+to solve this problem efficiently while retaining the model of a
+SPECIFICATION? M
+ODEL-DRIVEN
+DESIGN demands that the model stay in lockstep with the implementation, but it allows freedom to
+choose any implementation that faithfully captures the meaning of the model. Lucky for us, SQL is
+a very natural way to write
+SPECIFICATIONS.
+Here is a simple example, in which the query is encapsulated in the same class as the validation
+rule. A single method is added to the Invoice Specification and is implemented in the Delinquent
+Invoice Specification subclass:
+public String asSQL() {
+return
+"SELECT * FROM INVOICE, CUSTOMER" +
+" WHERE INVOICE.CUST_ID = CUSTOMER.ID" +
+" AND INVOICE.DUE_DATE + CUSTOMER.GRACE_PERIOD" +
+" < " + SQLUtility.dateAsSQL(currentDate);
+}
+S
+PECIFICATIONS mesh smoothly with
+REPOSITORIES, which are the building-block mechanisms
+for providing query access to domain objects and encapsulating the interface to the database (see
+Figure 9.15).
+Making Implicit Concepts Explicit 146
+Figure 9.15. The interaction between REPOSITORY and SPECIFICATION
+Now this design has some problems. Most important, the details of the table structure have leaked
+into the
+DOMAIN LAYER; they should be isolated in a mapping layer that relates the domain objects
+to the relational tables. Implicitly duplicating that information here could hurt the modifiability and
+maintainability of the Invoice and Customer objects, because any change to their mappings now
+have to be tracked in more than one place. But this example is a simple illustration of how to keep
+the rule in just one place. Some object-relational mapping frameworks provide the means to express
+such a query in terms of the model objects and attributes, generating the actual SQL in the infrastructure layer. This would let us have our cake and eat it too.
+When the infrastructure doesn't come to the rescue, we can refactor the SQL out of the expressive
+domain objects by adding a specialized query method to the Invoice Repository. To avoid embedding the rule into the
+REPOSITORY, we have to express the query in a more generic way, one that
+doesn't capture the rule but can be combined or placed in context to work the rule out (in this example, by using a double dispatch).
+public class InvoiceRepository {
+public Set selectWhereGracePeriodPast(Date aDate){
+//This is not a rule, just a specialized query
+String sql = whereGracePeriodPast_SQL(aDate);
+ResultSet queryResultSet =
+SQLDatabaseInterface.instance().executeQuery(sql);
+return buildInvoicesFromResultSet(queryResultSet);
+}
+public String whereGracePeriodPast_SQL(Date aDate) {
+return
+"SELECT * FROM INVOICE, CUSTOMER" +
+" WHERE INVOICE.CUST_ID = CUSTOMER.ID" +
+" AND INVOICE.DUE_DATE + CUSTOMER.GRACE_PERIOD" +
+" < " + SQLUtility.dateAsSQL(aDate);
+}
+public Set selectSatisfying(InvoiceSpecification spec) {
+return spec.satisfyingElementsFrom(this);
+}
+}
+Making Implicit Concepts Explicit 147
+The asSql() method on Invoice Specification is replaced with satisfyingElements-
+From(InvoiceRepository), which Delinquent Invoice Specification implements as:
+public class DelinquentInvoiceSpecification {
+// Basic DelinquentInvoiceSpecification code here
+public Set satisfyingElementsFrom(
+InvoiceRepository repository) {
+//Delinquency rule is defined as:
+// "grace period past as of current date"
+return repository.selectWhereGracePeriodPast(currentDate);
+}
+}
+This puts the SQL in the
+REPOSITORY, while the
+SPECIFICATION controls what query should be
+used. The rules aren't as neatly collected into the
+SPECIFICATION, but the essential declaration is
+there of what constitutes delinquency (that is, past grace period).
+The
+REPOSITORY now has a very specialized query that most likely will be used only in this case.
+That is acceptable, but depending on the relative numbers of Invoices that are overdue compared
+to those that are delinquent, an intermediate solution that leaves the
+REPOSITORY methods more
+generic may still give good performance, while keeping the
+SPECIFICATION more self-explanatory.
+public class InvoiceRepository {
+public Set selectWhereDueDateIsBefore(Date aDate) {
+String sql = whereDueDateIsBefore_SQL(aDate);
+ResultSet queryResultSet =
+SQLDatabaseInterface.instance().executeQuery(sql);
+return buildInvoicesFromResultSet(queryResultSet);
+}
+public String whereDueDateIsBefore_SQL(Date aDate) {
+return
+"SELECT * FROM INVOICE" +
+" WHERE INVOICE.DUE_DATE" +
+" < " + SQLUtility.dateAsSQL(aDate);
+}
+public Set selectSatisfying(InvoiceSpecification spec) {
+return spec.satisfyingElementsFrom(this);
+}
+}
+public class DelinquentInvoiceSpecification {
+//Basic DelinquentInvoiceSpecification code here
+public Set satisfyingElementsFrom(
+InvoiceRepository repository) {
+Collection pastDueInvoices =
+repository.selectWhereDueDateIsBefore(currentDate);
+Set delinquentInvoices = new HashSet();
+Iterator it = pastDueInvoices.iterator();
+while (it.hasNext()) {
+Invoice anInvoice = (Invoice) it.next();
+if (this.isSatisfiedBy(anInvoice))
+delinquentInvoices.add(anInvoice);
+}
+return delinquentInvoices;
+}
+}
+Making Implicit Concepts Explicit 148
+We'll take a performance hit with this code, because we pull out more Invoices and then have to
+select from them in memory. Whether this is an acceptable cost for the better factoring of responsibility depends entirely on circumstances. There are many ways to implement the interactions between
+SPECIFICATIONS and
+REPOSITORIES, to take advantage of the development platform,
+while keeping the basic responsibilities in place.
+Sometimes, to improve performance, or more likely to tighten security, queries may be implemented
+on the server as stored procedures. In that case, the
+SPECIFICATION could carry only the parameters allowed by the stored procedure. For all that, there is no difference in the model between these
+various implementations. The choice of implementation is free except where specifically constrained
+by the model. The price comes in a more cumbersome way of writing and maintaining queries.
+This discussion barely scratches the surface of the challenges of combining
+SPECIFICATIONS with
+databases, and I'll make no attempt to cover all the considerations that may arise. I just want to give
+a taste of the kind of choices that have to be made. Mee and Hieatt discuss a few of the technical
+issues involved in designing
+REPOSITORIES with
+SPECIFICATIONS in Fowler 2002.
+Building to Order (Generating)
+When the Pentagon wants a new fighter jet, officials write a specification. This specification may
+require that the jet reach Mach 2, that it have a range of 1800 miles, that it cost no more than $50
+million, and so on. But however detailed it is, the specification is not a design for a plane, much less
+a plane. An aerospace engineering company will take the specification and create one or more
+designs based on it. Competing companies may produce different designs, all of which presumably
+satisfy the original spec.
+Many computer programs generate things, and those things have to be specified. When you place
+a picture into a word-processing document, the text flows around it. You have specified the location
+of the picture, and perhaps the style of text flow. The exact placement of the words on the page is
+then worked out by the word processor in such a way that it meets your specification.
+Although it may not be apparent at first, this is the same concept of a
+SPECIFICATION that was
+applied to validation and selection. We are specifying criteria for objects that are not yet present.
+The implementation will be quite different, however. This
+SPECIFICATION is not a filter for preexisting objects, as with querying. It is not a test for an existing object, as with validation. This time, a
+whole new object or set of objects will be made or reconfigured to satisfy the
+SPECIFICATION.
+Without using
+SPECIFICATION, a generator can be written that has procedures or a set of instructions that create the needed objects. This code implicitly defines the behavior of the generator.
+Instead, an interface of the generator that is defined in terms of a descriptive
+SPECIFICATION
+explicitly constrains the generator's products. This approach has several advantages.
+• The generator's implementation is decoupled from its interface. The
+SPECIFICATION declares
+the requirements for the output but does not define how that result is reached.
+• The interface communicates its rules explicitly, so developers can know what to expect from the
+generator without understanding all details of its operation. The only way to predict the behavior
+of a procedurally defined generator is to run cases or to understand every line of code.
+• The interface is more flexible, or can be enhanced with more flexibility, because the statement
+of the request is in the hands of the client, while the generator is only obligated to fulfill the letter
+of the
+SPECIFICATION.
+• Last, but not least, this kind of interface is easier to test, because the model contains an explicit
+way to define input into the generator
+that is also a validation of the output. That is, the same
+SPECIFICATION that is passed into the generator's interface to constrain the creation process
+can also be used, in its validation role (if the implementation supports it) to confirm that the
+created object is correct. (This is an example of an
+ASSERTION, discussed in Chapter 10.)
+Making Implicit Concepts Explicit 149
+Building to order can mean creation of an object from scratch, but it can also be a configuration of
+preexisting objects to satisfy the
+SPEC.
+Example
+Chemical Warehouse Packer
+There is a warehouse in which various chemicals are stored in stacks of large containers, similar to
+boxcars. Some chemicals are inert and can be stored just about anywhere. Some are volatile and
+have to be stored in specially ventilated containers. Some are explosive and have to be stored in
+specially armored containers. There are also rules about the combinations allowed in a container.
+The goal is to write software that will find an efficient and safe way to put the chemicals in the
+containers.
+Figure 9.16. A model for warehouse storage
+We could start by writing a procedure to take a chemical and place it in a container, but instead,
+let's start with the validation problem. This will force us to make the rules explicit, and it will give us
+a way to test the final implementation.
+Each chemical will have a container
+SPECIFICATION:
+Chemical Container Specification
+TNT Armored container
+Sand
+Biological Samples Must not share container with explosives
+Ammonia Ventilated container
+Now, if we write these as Container Specifications, we should be able to take a configuration of
+packed containers and test to see if it meets these constraints.
+Container Features Contents Specification Satisfied?
+Armored 20 lbs. TNT
+500 lbs. sand ✓
+50 lbs. biological samples ✓
+Ammonia ✗
+A method on Container Specification, isSatisfied(), would have to be implemented to check
+for needed ContainerFeatures. For example, the SPEC attached to an explosive chemical would
+look for the “armored” feature:
+Making Implicit Concepts Explicit 150
+public class ContainerSpecification {
+private ContainerFeature requiredFeature;
+public ContainerSpecification(ContainerFeature required) {
+requiredFeature = required;
+}
+boolean isSatisfiedBy(Container aContainer){
+return aContainer.getFeatures().contains(requiredFeature);
+}
+}
+Here is sample client code to set up an explosive chemical:
+tnt.setContainerSpecification(
+new ContainerSpecification(ARMORED));
+A method on a Container object, isSafelyPacked(), will confirm that Container has all the features specified by the Chemicals it contains:
+boolean isSafelyPacked(){
+Iterator it = contents.iterator();
+while (it.hasNext()) {
+Drum drum = (Drum) it.next();
+if (!drum.containerSpecification().isSatisfiedBy(this))
+return false;
+}
+return true;
+}
+At this point, we could write a monitoring application that would take the inventory database and
+report any unsafe situations.
+Iterator it = containers.iterator();
+while (it.hasNext()) {
+Container container = (Container) it.next();
+if (!container.isSafelyPacked())
+unsafeContainers.add(container);
+}
+This is not the software we've been asked to write. It would be good to let the business people know
+about the opportunity, but we have been charged with designing a packer. What we have is a test
+for a packer. This understanding of the domain and our
+SPECIFICATION-based model put us in a
+position to define a clear and simple interface for a
+SERVICE that will take collections of Drums and
+Containers and pack them in compliance with the rules.
+public interface WarehousePacker {
+public void pack(Collection containersToFill,
+Collection drumsToPack) throws NoAnswerFoundException;
+/* ASSERTION: At end of pack(), the ContainerSpecification
+of each Drum shall be satisfied by its Container.
+If no complete solution can be found, an exception shall
+be thrown. */
+}
+Now the task of designing an optimized constraint solver to fulfill the responsibilities of the Packer
+service has been decoupled from the rest of the application, and those mechanisms will not clutter
+the part of the design that expresses the model. (See “Declarative Style of Design,” Chapter 10,
+and
+COHESIVE MECHANISM, Chapter 15.) Yet the rules
+governing packing have not been pulled
+out of the domain objects.
+Making Implicit Concepts Explicit 151
+Example
+A Working Prototype of the Warehouse Packer
+Writing the optimization logic to make the warehouse packing software work is a big job. A small
+team of developers and business experts have split off and have set to work on it, but they haven't
+even begun to code. Meanwhile, another small team is developing the application that will allow
+users to pull inventory from the database, feed it to the Packer, and interpret the results. They are
+trying to design for the anticipated Packer. But all they can do is mock up a UI and work on some
+database integration code. They can't show the users an interface with meaningful behavior to get
+good feedback. For the same reason, the Packer team is working in a vacuum too.
+With the domain objects and
+SERVICE interface made in the warehouse packer example, the application team realizes they could build a very simple implementation of a Packer that could help
+the development process move along, allowing work to go forward in parallel and closing the feedback loop, which only reaches full effect with a working end-to-end system.
+public class Container {
+private double capacity;
+private Set contents; //Drums
+public boolean hasSpaceFor(Drum aDrum) {
+return remainingSpace() >= aDrum.getSize();
+}
+public double remainingSpace() {
+double totalContentSize = 0.0;
+Iterator it = contents.iterator();
+while (it.hasNext()) {
+Drum aDrum = (Drum) it.next();
+totalContentSize = totalContentSize + aDrum.getSize();
+}
+return capacity – totalContentSize;
+}
+public boolean canAccommodate(Drum aDrum) {
+return hasSpaceFor(aDrum) &&
+aDrum.getContainerSpecification().isSatisfiedBy(this);
+}
+}
+public class PrototypePacker implements WarehousePacker {
+public void pack(Collection containers, Collection drums)
+throws NoAnswerFoundException {
+/* This method fulfills the ASSERTION as written. However,
+when an exception is thrown, Containers' contents may
+have changed. Rollback must be handled at a higher
+level. */
+Iterator it = drums.iterator();
+while (it.hasNext()) {
+Drum drum = (Drum) it.next();
+Container container =
+findContainerFor(containers, drum);
+container.add(drum);
+}
+}
+public Container findContainerFor(
+Collection containers, Drum drum)
+throws NoAnswerFoundException {
+Iterator it = containers.iterator();
+while (it.hasNext()) {
+Container container = (Container) it.next();
+Making Implicit Concepts Explicit 152
+if (container.canAccommodate(drum))
+return container;
+}
+throw new NoAnswerFoundException();
+}
+}
+Granted that this code leaves a lot to be desired. It might pack sand into specialty containers and
+then run out of room before it packs the hazardous chemicals. It certainly doesn't optimize revenues.
+But a lot of optimization problems are never solved perfectly anyway. This implementation does
+follow the rules that have been stated so far.
+Clearing Development Logjams with Working Prototypes
+One team has to wait for working code from another in order to move forward. Both teams have to wait for full
+integration to exercise their components or get feedback from users. This kind of congestion can often be
+eased by a
+MODEL-DRIVEN prototype of a key component, even if it does not satisfy all requirements. When
+implementation is decoupled from interface, then having any working implementation at all allows flexibility for
+project work to go in parallel. When the time is right, the prototype can be replaced by a more effective implementation. In the meantime, all other parts of the system have something to interact with during development.
+Having this prototype lets the application developers move at full speed, including all integrations
+with external systems. The Packer development team also gets feedback as domain experts interact
+with the prototype and firm up their ideas, helping clarify requirements and priorities. The Packer
+team decides to take over the prototype and tweak it to test ideas.
+They also keep the interface up-to-date with their latest design, forcing refactoring of the application,
+and some domain objects, thereby tackling the integration problems early.
+As soon as the sophisticated Packer is ready, integration is a breeze because it has been written
+to a well-characterized interface—the same interface and
+ASSERTIONS that the application was
+written for when interacting with the prototype.
+It took specialists in optimization algorithms months to get it right. They benefited from the feedback
+they could get from users interacting with the prototype. In the meantime, all other parts of the system
+have something to interact with during development.
+Here we have an example of a “simplest thing that could possibly work” that actually becomes
+possible because of a more sophisticated model. We can have a functioning prototype of a very
+complex component in a couple dozen lines of easily understood code. A less
+MODEL-DRIVEN
+approach would be harder to understand, would be harder to upgrade (because the Packer would
+be more coupled to the rest of the design), and in this case, would likely take longer to prototype.
+Making Implicit Concepts Explicit 153
+Chapter Ten. Supple Design
+The ultimate purpose of software is to serve users. But first, that same software has to serve developers. This is especially true in a process that emphasizes refactoring. As a program evolves,
+developers will rearrange and rewrite every part. They will integrate the domain objects into the
+application and with new domain objects. Even years later, maintenance programmers will be
+changing and extending the code. People have to work with this stuff. But will they want to?
+When software with complex behavior lacks a good design, it becomes hard to refactor or combine
+elements. Duplication starts to appear as soon as a developer isn't confident of predicting the full
+implications of a computation. Duplication is forced when design elements are monolithic, so that
+the parts cannot be recombined. Classes and methods can be broken down for better reuse, but it
+gets hard to keep track of what all the little parts do. When software doesn't have a clean design,
+developers dread even looking at the existing mess, much less making a change that could aggravate the tangle or break something through an unforeseen dependency. In any but the smallest
+systems, this fragility places a ceiling on the richness of behavior it is feasible to build. It stops
+refactoring and iterative refinement.
+To have a project accelerate as development proceeds—rather than get weighed down by its own
+legacy—demands a design that is a pleasure to work with, inviting to change. A supple design.
+Supple design is the complement to deep modeling. Once you've dug out implicit concepts and
+made them explicit, you have the raw material. Through the iterative cycle, you hammer that material
+into a useful shape, cultivating a model that simply and clearly captures the key concerns, and
+shaping a design that allows a client developer to really put that model to work. Development of the
+design and code leads to insight that refines model concepts. Round and round—we're back to the
+iterative cycle and refactoring toward deeper insight. But what kind of design are you trying to arrive
+at? What kind of experiments should you try along the way? That is what this chapter is about.
+A lot of overengineering has been justified in the name of flexibility. But more often than not, excessive layers of abstraction and indirection get in the way. Look at the design of software that really
+empowers the people who handle it; you will usually see something simple. Simple is not easy. To
+create elements that can be assembled into elaborate systems and still be understandable, a dedication to
+MODEL-DRIVEN DESIGN has to be joined with a moderately rigorous design style. It may
+well require relatively sophisticated design skill to create
+or to use.
+Developers play two roles, each of which must be served by the design. The same person might
+well play both roles—even switch back and forth in minutes—but the relationship to the code is
+different nonetheless. One role is the developer of a client, who weaves the domain objects into the
+application code or other domain layer code, utilizing capabilities of the design. A supple design
+reveals a deep underlying model that makes its potential clear. The client developer can flexibly use
+a minimal set of loosely coupled concepts to express a range of scenarios in the domain. Design
+elements fit together in a natural way with a result that is predictable, clearly characterized, and
+robust.
+Equally important, the design must serve the developer working to change it. To be open to change,
+a design must be easy to understand, revealing that
+same underlying model that the client developer
+is drawing on. It must follow the contours of a deep model of the domain, so most changes bend
+the design at flexible points. The effects of its code must be transparently obvious, so the consequences of a change will be easy to anticipate.
+Early versions of a design are usually stiff. Many never acquire any suppleness in the time frame
+or budget of the project. I've never seen a large program that had this quality throughout. But when
+complexity is holding back progress, honing the most crucial, intricate parts to a supple design
+makes the difference between getting sucked down into legacy maintenance and punching through
+the complexity ceiling.
+There is no formula for designing software like this, but I have culled a set of patterns that, in my
+experience, tend to lend suppleness to a design when they fit. These patterns and examples should
+give a feel for what a supple design is like and the kind of thinking that goes into it.
+Supple Design 155
+Figure 10.1. Some patterns that contribute to supple design
+Intention-Revealing Interfaces
+In domain-driven design, we want to think about meaningful domain logic. Code that produces the
+effect of a rule without explicitly stating the rule forces us to think of step-by-step software procedures. The same applies to a calculation that just results from running some code, but isn't explicit.
+Without a clear connection to the model, it is difficult to understand the effect of the code or anticipate
+the effect of a change. The previous chapter delved into modeling rules and calculations explicitly.
+Implementing such objects requires a lot of understanding of the gritty details of the calculation or
+the fine print of the rule. The beauty of objects is their ability to encapsulate all that, so that client
+code is simple and can be interpreted in terms of higher-level concepts.
+But if the interface doesn't tell the client developer what he needs to know in order to use the object
+effectively, he will have to dig into the internals to understand the details anyway. A reader of the
+client code will have to do the same. Then most of the value of the encapsulation is lost. We are
+always fighting cognitive overload: If the client developer's mind is flooded with detail about how a
+component does its job, his mind isn't clear to work out the intricacies of the client design. This is
+true even when the same person is playing both roles, developing and using his own code, because
+even if he doesn't have to learn those details, there is a limit to how many factors he can consider
+at once.
+If a developer must consider the implementation of a component in order to use it, the value of
+encapsulation is lost. If someone other than the original developer must infer the purpose of an
+object or operation based on its implementation, that new developer may infer a purpose that the
+operation or class fulfills only by chance. If that was not the intent, the code may work for the moment,
+but the conceptual basis of the design will have been corrupted, and the two developers will be
+working at cross-purposes.
+To obtain the value of explicitly modeling a concept in the form of a class or method, we must give
+these program elements names that reflect those concepts. The names of classes and methods
+are great opportunities for improving communication between developers, and for improving the
+abstraction of the system.
+Supple Design 156
+Kent Beck wrote of making method names communicate their purpose with an
+INTENTION-RE-
+VEALING SELECTOR (Beck 1997). All public elements of a design together make up its interface,
+and the name of each of those elements presents an opportunity to reveal the intention of the design.
+Type names, method names, and argument names all combine to form an
+INTENTION-REVEAL-
+ING INTERFACE.
+Therefore:
+Name classes and operations to describe their effect and purpose, without reference to the means
+by which they do what they promise. This relieves the client developer of the need to understand
+the internals. These names should conform to the UBIQUITOUS LANGUAGE so that team members can quickly infer their meaning. Write a test for a behavior before creating it, to force your
+thinking into client developer mode.
+All the tricky mechanism should be encapsulated behind abstract interfaces that speak in terms of
+intentions, rather than means.
+In the public interfaces of the domain, state relationships and rules, but not how they are enforced;
+describe events and actions, but not how they are carried out; formulate the equation but not the
+numerical method to solve it. Pose the question, but don't present the means by which the answer
+shall be found.
+Example
+Refactoring: A Paint-Mixing Application
+A program for paint stores can show a customer the result of mixing standard paints. Here is the
+initial design, which has a single domain class.
+The only way to even guess what the paint(Paint) method does is to read the code.
+public void paint(Paint paint) {
+v = v + paint.getV(); //After mixing, volume is summed
+// Omitted many lines of complicated color mixing logic
+// ending with the assignment of new r, b, and y values.
+}
+OK, so it looks like this method combines two Paints together, the result having a larger volume and
+a mixed color.
+To shift our perspective, let's write a test for this method. (This code is based on the JUnit test
+framework.)
+public void testPaint() {
+// Create a pure yellow paint with volume=100
+Paint yellow = new Paint(100.0, 0, 50, 0);
+// Create a pure blue paint with volume=100
+Paint blue = new Paint(100.0, 0, 0, 50);
+Supple Design 157
+// Mix the blue into the yellow
+yellow.paint(blue);
+// Result should be volume of 200.0 of green paint
+assertEquals(200.0, yellow.getV(), 0.01);
+assertEquals(25, yellow.getB());
+assertEquals(25, yellow.getY());
+assertEquals(0, yellow.getR());
+}
+The passing test is the starting point. It is unsatisfying at this point because the code in the test
+doesn't tell us what it is doing. Let's rewrite the test to reflect the way we would
+like to use the
+Paint objects if we were writing a client application. Initially, this test will fail. In fact, it won't even
+compile. We are writing it to explore the interface design of the Paint object from the client developer's point of view.
+public void testPaint() {
+// Start with a pure yellow paint with volume=100
+Paint ourPaint = new Paint(100.0, 0, 50, 0);
+// Take a pure blue paint with volume=100
+Paint blue = new Paint(100.0, 0, 0, 50);
+// Mix the blue into the yellow
+ourPaint.mixIn(blue);
+// Result should be volume of 200.0 of green paint
+assertEquals(200.0, ourPaint.getVolume(), 0.01);
+assertEquals(25, ourPaint.getBlue());
+assertEquals(25, ourPaint.getYellow());
+assertEquals(0, ourPaint.getRed());
+}
+We should take our time to write a test that reflects the way we would like to talk to these objects.
+After that, we refactor the Paint class to make the test pass.
+The new method name may not tell the reader everything about the effect of “mixing in” another
+Paint (for that we'll need
+ASSERTIONS, coming up in a few pages). But it will clue the reader in
+enough to get started using the class, especially with the example the test provides. And it will allow
+the reader of the client code to interpret the client's intent. In the next few examples in this chapter,
+we'll refactor this class again to make it even clearer.
+Entire subdomains can be carved off into separate modules and encapsulated behind
+INTENTION-
+REVEALING INTERFACES. Using such whittling to focus a project and manage the complexity of
+a large system will be discussed more in Chapter 15, “Distillation,” with
+COHESIVE MECHA-
+NISMS and
+GENERIC SUBDOMAINS.
+Supple Design 158
+But in the next two patterns, we'll set out to make the consequences of using a method very predictable. Complex logic can be done safely in
+SIDE-EFFECT-FREE FUNCTIONS. Methods that
+change system state can be characterized with
+ASSERTIONS.
+Side -Effect-Free Functions
+Operations can be broadly divided into two categories, commands and queries. Queries obtain
+information from the system, possibly by simply accessing data in a variable, possibly performing
+a calculation based on that data. Commands (also known as modifiers) are operations that affect
+some change to the systems (for a simple example, by setting a variable). In standard English, the
+term
+side effect implies an unintended consequence, but in computer science, it means any effect
+on the state of the system. For our purposes, let's narrow that meaning to any change in the state
+of the system that will affect future operations.
+Why was the term
+side effect adopted and applied to quite intentional changes affected by operations? I assume this was based on experience with complex systems. Most operations call on other
+operations, and those called invoke still other operations. As soon as this arbitrarily deep nesting is
+involved, it becomes very hard to anticipate all the consequences of invoking an operation. The
+developer of the client may not have intended the effects of the second-tier and third-tier operations
+—they've become side effects in every sense of the phrase. Elements of a complex design interact
+in other ways that are likely to produce the same unpredictability. The use of the term
+side effect
+underlines the inevitability of that interaction.
+Interactions of multiple rules or compositions of calculations become extremely difficult to predict.
+The developer calling an operation must understand its implementation and the implementation of
+all its delegations in order to anticipate the result. The usefulness of any abstraction of interfaces is
+limited if the developers are forced to pierce the veil. Without safely predictable abstractions, the
+developers must limit the combinatory explosion, placing a low ceiling on the richness of behavior
+that is feasible to build.
+Operations that return results without producing side effects are called
+functions. A function can be
+called multiple times and return the same value each time. A function can call on other functions
+without worrying about the depth of nesting. Functions are much easier to test than operations that
+have side effects. For these reasons, functions lower risk.
+Obviously, you can't avoid commands in most software systems, but the problem can be mitigated
+in two ways. First, you can keep the commands and queries strictly segregated in different operations. Ensure that the methods that cause changes do not return domain data and are kept as simple
+as possible. Perform all queries and calculations in methods that cause no observable side effects
+(Meyer 1988).
+Second, there are often alternative models and designs that do not call for an existing object to be
+modified at all. Instead, a new
+VALUE OBJECT, representing the result of the computation, is created and returned. This is a common technique, which will be illustrated in the example that follows.
+A
+VALUE OBJECT can be created in answer to a query, handed off, and forgotten—unlike an
+ENTITY, whose life cycle is carefully regulated.
+V
+ALUE OBJECTS are immutable, which implies that, apart from initializers called only during creation,
+all their operations are functions. V
+ALUE OBJECTS, like functions, are safer to use and easier
+to test. An operation that mixes logic or calculations with state change should be refactored into two
+separate operations (Fowler 1999, p. 279). But by definition, this segregation of side effects into
+simple command methods only applies to
+ENTITIES.
+After completing the refactoring to separate
+modification from querying, consider a second refactoring to move the responsibility for the complex
+calculations into a
+VALUE OBJECT. The side effect often can be completely eliminated by deriving
+a
+VALUE OBJECT instead of changing existing state, or by moving the entire responsibility into a
+VALUE OBJECT.
+Supple Design 159
+Therefore:
+Place as much of the logic of the program as possible into functions, operations that return results
+with no observable side effects. Strictly segregate commands (methods that result in modifications
+to observable state) into very simple operations that do not return domain information. Further control side effects by moving complex logic into VALUE OBJECTS when a concept fitting the responsibility presents itself.
+S
+IDE-EFFECT-FREE FUNCTIONS, especially in immutable
+VALUE OBJECTS, allow safe combination of operations. When a
+FUNCTION is presented through an
+INTENTION-REVEALING IN-
+TERFACE, a developer can use it without understanding the detail of its implementation.
+Example
+Refactoring the Paint-Mixing Application Again
+A program for paint stores can show a customer the result of mixing standard paints. Picking up
+where we left off in the last example, here is the single domain class.
+public void mixIn(Paint other) {
+volume = volume.plus(other.getVolume());
+// Many lines of complicated color-mixing logic
+// ending with the assignment of new red, blue,
+// and yellow values.
+}
+Supple Design 160
+Figure 10.5. The side effects of the mixIn()
+method
+A lot is happening in the mixIn() method, but this design does follow the rule of separating modification from querying. One concern, which we'll take up later, is that the volume of the paint 2
+object, the argument of the mixIn() method, has been left in limbo. Paint 2's volume is unchanged
+by the operation, which doesn't seem quite logical in the context of this conceptual model. This was
+not a problem for the original developers because, as near as we can tell, they had no interest in
+the paint 2 object after the operation, but it is hard to anticipate the consequences of side effects or
+their absence. We'll return to this question soon in the discussion of
+ASSERTIONS. For now, let's
+look at color.
+Color is an important concept in this domain. Let's try the experiment of making it an explicit object.
+What should it be called? “Color” comes to mind first, but earlier knowledge crunching had already
+yielded the important insight that color mixing is different for paint than it is for the more familiar RGB
+light display. The name needs to reflect this.
+Factoring out Pigment Color does communicate more than the earlier version, but the computation
+is the same, still in the mixIn() method. When we moved out the color data, we should have taken
+related behavior with it. Before we do, note that Pigment Color is a
+VALUE OBJECT. Therefore, it
+should be treated as immutable. When we mixed paint, the Paint object itself was changed. It was
+an
+ENTITY with an ongoing life story. In contrast, a Pigment Color representing a particular shade
+of yellow is always exactly that. Instead, mixing will result in a new Pigment Color object representing
+the new color.
+Supple Design 161
+public class PigmentColor {
+public PigmentColor mixedWith(PigmentColor other,
+double ratio) {
+// Many lines of complicated color-mixing logic
+// ending with the creation of a new PigmentColor object
+// with appropriate new red, blue, and yellow values.
+}
+}
+public class Paint {
+public void mixIn(Paint other) {
+volume = volume + other.getVolume();
+double ratio = other.getVolume() / volume;
+pigmentColor =
+pigmentColor.mixedWith(other.pigmentColor(), ratio);
+}
+}
+Now the modification code in Paint is as simple as possible. The new Pigment Color class captures
+knowledge and communicates it explicitly, and it provides a
+SIDE-EFFECT-FREE FUNCTION
+whose result is easy to understand,
+easy to test, and safe to use or combine with other operations.
+Because it is so safe, the complex logic of color mixing is truly encapsulated. Developers using this
+class don't have to understand the implementation.
+Supple Design 162
+Assertions
+Separating complex computations into
+SIDE-EFFECT-FREE FUNCTIONS cuts the problem down
+to size, but there is still a residue of commands on the
+ENTITIES that produce side effects, and
+anyone using them must understand their consequences. A
+SSERTIONS make side effects explicit
+and easier to deal with.
+True, a command containing no complex computations may be fairly easy to interpret by inspection.
+But in a design where larger parts are built of smaller ones, a command may invoke other commands. The developer using the high-level command must understand the consequences of each
+underlying command. So much for encapsulation. And because object interfaces do not restrict side
+effects, two subclasses that implement the same interface can have different side effects. The developer using them will want to know which is which to anticipate the consequences. So much for
+abstraction and polymorphism.
+When the side effects of operations are only defined implicitly by their implementation, designs with
+a lot of delegation become a tangle of cause and effect. The only way to understand a program is
+to trace execution through branching paths. The value of encapsulation is lost. The necessity of
+tracing concrete execution defeats abstraction.
+We need a way of understanding the meaning of a design element and the consequences of executing an operation without delving into its internals. I
+NTENTION-REVEALING INTERFACES carry
+us part of the way there, but informal suggestions of intentions are not always enough. The “design
+by contract” school goes the next step, making “assertions” about classes and methods that the
+developer guarantees will be true. This style is discussed in detail in Meyer 1988. Briefly, “postconditions” describe the side effects of an operation, the guaranteed outcome of calling a method.
+“Preconditions” are like the fine print on the contract, the conditions that must be satisfied in order
+for the post-condition guarantee to hold. Class invariants make assertions about the state of an
+object at the end of any operation. Invariants can also be declared for entire
+AGGREGATES, rigorously defining integrity rules.
+All these assertions describe state, not procedures, so they are easier to analyze. Class invariants
+help characterize the meaning of a class, and simplify the client developer's job by making the
+objects more predictable. If you trust the guarantee of a post-condition, you don't have to worry
+about how a method works. The effects of delegations should already be incorporated into the
+assertions.
+Therefore:
+State post-conditions of operations and invariants of classes and AGGREGATES. If ASSER-
+TIONS cannot be coded directly in your programming language, write automated unit tests for them.
+Write them into documentation or diagrams where it fits the style of the project's development process.
+Seek models with coherent sets of concepts, which lead a developer to infer the intended ASSER-
+TIONS, accelerating the learning curve and reducing the risk of contradictory code.
+Even though many object-oriented languages don't currently support
+ASSERTIONS directly,
+AS-
+SERTIONS are still a powerful way of thinking about a design. Automated unit tests can partially
+compensate for the lack of language support. Because
+ASSERTIONS are all in terms of states,
+rather than procedures, they make tests easy to write. The test setup puts the preconditions in place;
+then, after execution, the test checks to see if the post-conditions hold.
+Supple Design 163
+Clearly stated invariants and pre- and post-conditions allow a developer to understand the consequences of using an operation or object. Theoretically, any noncontradictory set of assertions would
+work. But humans don't just compile predicates in their heads. They will be extrapolating and interpolating the concepts of the model, so it is important to find models that make sense to people as
+well as satisfying the needs of the application.
+Example
+Back to Paint Mixing
+Recall that in the previous example I was concerned about the ambiguity of what happens to the
+argument of the mixIn(Paint) operation on the Paint class.
+The receiver's volume is increased by the amount of the argument's volume. Drawing on our general
+understanding of physical paint, this mixing process should deplete the other paint by the same
+amount, draining it to zero volume, or eliminating it completely. The current implementation does
+not modify the argument, and modifying arguments is a particularly risky kind of side effect anyway.
+To start on a solid footing, let's state the post-condition of the mixIn() method
+as it is:
+After p1.mixIn(p2):
+p1.volume is increased by amount of p2.volume.
+p2.volume is unchanged.
+The trouble is, developers are going to make mistakes, because these properties don't fit the concepts we have invited them to think about. The straightforward fix would be change the volume of
+the other paint to zero. Changing an argument is a bad practice, but it would be easy and intuitive.
+We could state an invariant:
+Total volume of paint is unchanged by mixing.
+But wait! While developers were pondering this option, they made a discovery. It turns out that there
+was a compelling reason the original designers made it this way. At the end, the program
+reports
+the list of unmixed paints that were added. After all, the ultimate purpose of this application is to
+help a user figure out which paints to
+put into a mixture.
+So, to make the volume model logically consistent would make it unsuitable for its application requirements. There seems to be a dilemma. Are we stuck with documenting the weird post-condition
+and trying to compensate with good communication? Not everything in this world is intuitive, and
+sometimes that is the best answer. But in this case, the awkwardness seems to point to missing
+concepts. Let's look for a new model.
+We Can See Clearly Now
+As we search for a better model, we have significant advantages over the original designers, because of the knowledge crunching and refactoring to deeper insight that has happened in the interim.
+For example, we compute color using a
+SIDE-EFFECT-FREE FUNCTION on a
+VALUE OBJECT.
+This means we can repeat the calculation any time we need to. We should take advantage of that.
+Supple Design 164
+We seem to be giving Paint two different basic responsibilities. Let's try splitting them.
+Now there is only one command, mixIn(). It just adds an object to a collection, an effect apparent
+from an intuitive understanding of the model. All other operations are
+SIDE-EFFECT-FREE FUNC-
+TIONS.
+A test method confirming one of the
+ASSERTIONS listed in Figure 10.10 could look something like
+this (using the JUnit test framework):
+public void testMixingVolume {
+PigmentColor yellow = new PigmentColor(0, 50, 0);
+PigmentColor blue = new PigmentColor(0, 0, 50);
+StockPaint paint1 = new StockPaint(1.0, yellow);
+StockPaint paint2 = new StockPaint(1.5, blue);
+MixedPaint mix = new MixedPaint();
+mix.mixIn(paint1);
+mix.mixIn(paint2);
+assertEquals(2.5, mix.getVolume(), 0.01);
+}
+Supple Design 165
+This model captures and communicates more of the domain. The invariants and post-conditions
+make common sense, which will make them easier to maintain and use.
+The communicativeness of the
+INTENTION-REVEALING INTERFACES, combined with the predictability given by
+SIDE-EFFECT-FREE FUNCTIONS and
+ASSERTIONS, should make encapsulation and abstraction safe.
+The next ingredient in recombinable elements is effective decomposition. . . .
+Conceptual Contours
+Sometimes people chop functionality fine to allow flexible combination. Sometimes they lump it large
+to encapsulate complexity. Sometimes they seek a consistent granularity, making all classes and
+operations to a similar scale. These are oversimplifications that don't work well as general rules.
+But they are motivated by a basic set of problems.
+When elements of a model or design are embedded in a monolithic construct, their functionality gets
+duplicated. The external interface doesn't say everything a client might care about. Their meaning
+is hard to understand, because different concepts are mixed together.
+On the other hand, breaking down classes and methods can pointlessly complicate the client, forcing
+client objects to understand how tiny pieces fit together. Worse, a concept can be lost completely.
+Half of a uranium atom is not uranium. And of course, it isn't just grain size that counts, but just
+where the grain runs.
+Cookbook rules don't work. But there is a logical consistency deep in most domains, or else they
+would not be viable in their own sphere. This is not to say that domains are perfectly consistent, and
+certainly the ways people talk about them are not consistent. But there is rhyme and reason somewhere, or else modeling would be pointless. Because of this underlying consistency, when we find
+a model that resonates with some part of the domain, it is more likely to be consistent with other
+parts that we discover later. Sometimes the new discovery isn't easy for the model to adapt to, in
+which case we refactor to deeper insight, and hope to conform to the
+next discovery.
+This is one reason why repeated refactoring eventually leads to suppleness. The
+CONCEPTUAL
+CONTOURS emerge as the code is adapted to newly understood concepts or requirements.
+The twin fundamentals of high cohesion and low coupling play a role in design at all scales, from
+individual methods up through classes and
+MODULES to large-scale structures (see Chapter 16).
+These two principles apply to concepts as much as to code. To avoid slipping into a mechanistic
+view of them, temper your technical thinking by frequently touching base with your intuition for the
+domain. With each decision, ask yourself, “Is this an expedient based on a particular set of relationships in the current model and code, or does it echo some contour of the underlying domain?”
+Find the conceptually meaningful unit of functionality, and the resulting design will be both flexible
+and understandable. For example, if an “addition” of two objects has a coherent meaning in the
+domain, then implement methods at that level. Don't break the add() into two steps. Don't proceed
+to the next step within the same operation. On a slightly larger scale, each object should be a single
+complete concept, a “
+WHOLE VALUE.”1
+By the same token, there are areas in any domain where detail isn't interesting to the kind of people
+the software serves. The users of our hypothetical paint mixing application don't add red pigment
+or blue pigment; they combine complete paints, which contain all three pigments. Clumping things
+that don't need to be dissected or rearranged avoids clutter and makes it easier to see the elements
+that really are meant to recombine. If our users' physical equipment allowed individual pigments to
+1The
+WHOLE VALUE pattern, by Ward Cunningham.
+Supple Design 166
+be added, the domain would be altered, and the individual pigments might be manipulated. A paint
+chemist would need still finer control, which would involve a whole other analysis, probably producing a much more detailed model of the makeup of paint than our abstracted pigment color that
+serves paint mixing. But it is simply irrelevant to anyone involved in the paint mixing application
+project.
+Therefore:
+Decompose design elements (operations, interfaces, classes, and AGGREGATES) into cohesive
+units, taking into consideration your intuition of the important divisions in the domain. Observe the
+axes of change and stability through successive refactorings and look for the underlying CONCEP-
+TUAL CONTOURS that explain these shearing patterns. Align the model with the consistent aspects
+of the domain that make it a viable area of knowledge in the first place.
+The goal is a simple set of interfaces that combine logically to make sensible statements in the
+UBIQUITOUS LANGUAGE, and without the distraction and maintenance burden of irrelevant options. This is typically an outcome of refactoring: it's hard to produce up front. But it may never
+emerge from technically oriented refactoring; it emerges from refactoring toward deeper insight.
+Even when the design follows
+CONCEPTUAL CONTOURS, there will need to be modifications and
+refactoring. When successive refactoring tends to be localized, not shaking multiple broad concepts
+of the model, it is an indicator of model fit. Encountering a requirement that forces extensive changes
+in the breakdown of the objects and methods is a message: Our understanding of the domain needs
+refinement. It presents an opportunity to deepen the model and make the design more supple.
+Example
+The CONTOURS of Accruals
+In Chapter 9, a loan tracking system was refactored based on deeper insight into accounting concepts:
+Supple Design 167
+The new model contained only one more object than the old one, yet the partitioning of responsibility
+had been greatly changed.
+Schedules, which had been worked out through case logic in the Calculator classes, were exploded
+into discrete classes for different types of fees and interest. On the other hand, payments of fees
+and interest, previously kept separate, were lumped together.
+Because of the resonance of the newly explicit concepts and the cohesiveness of the Accrual
+Schedule hierarchy, the developer believed that this model better follows some of the domain's
+CONCEPTUAL CONTOURS.
+Supple Design 168
+Figure 10.12. This model accommodates adding new kinds of Accrual Schedules.
+The one change the developer could confidently predict was the addition of new Accrual Schedules. Those requirements were already waiting in the wings. So in addition to making existing functionality clearer and simpler, she chose a model that would make it easy to introduce new schedules.
+But had she found a
+CONCEPTUAL CONTOUR that will help the domain design change and grow
+as the application and the business evolve? There can be no guarantees about how a design will
+handle unanticipated change, but she thought it had improved the odds.
+An Unanticipated Change
+As the project proceeded, a requirement emerged for detailed rules for handling early and late
+payments. As she studied the problem, the developer was pleased to see that virtually the same
+rules applied to payments on interest and to payments on fees. This meant that the new model
+elements would connect naturally to the single Payment class.
+Supple Design 169
+The old design would have forced duplication between the two Payment History classes. (This
+difficulty might have triggered an insight that the Payment class should be shared, leading by another
+path to a similar model.) This ease of extension did not come because she anticipated the change.
+Nor did it come because she made a design so versatile it could accommodate any conceivable
+change. It happened because in the previous refactoring, the design was aligned with underlying
+concepts of the domain.
+I
+NTENTION-REVEALING INTERFACES allow clients to present objects as units of meaning rather
+than just mechanisms. S
+IDE-EFFECT-FREE FUNCTIONS and
+ASSERTIONS make it safe to use
+those units and make complex combinations. The emergence of
+CONCEPTUAL CONTOURS stabilizes parts of the model and also makes the units more intuitive to use and combine.
+We can still run into conceptual overload when interdependencies force us to think about too many
+of these things at a time. . . .
+Standalone Classes
+Interdependencies make models and designs hard to understand. They also make them hard to
+test and maintain. And interdependencies pile up easily.
+Every association is, of course, a dependency, and understanding a class requires understanding
+what it is attached to. Those attached things will be attached to still more things, and they have to
+be understood too. The type of every argument of every method is also a dependency. So is every
+return value.
+With one dependency, you have to think about two classes at the same time, and the nature of their
+relationship. With two dependencies, you have to think about each of the three classes, the nature
+of the class's relationship to each of them, and any relationship they might have to each other. If
+they in turn have dependencies, you have to be wary of those also. With three dependencies . . . it
+snowballs.
+Both
+MODULES and
+AGGREGATES are aimed at limiting the web of interdependencies. When a
+highly cohesive subdomain is carved out into a
+MODULE, a set of objects are decoupled from the
+rest of the system, so there are a finite number of interrelated concepts. But even a
+MODULE can
+be a lot to think about without an almost fanatical commitment to controlling dependencies within it.
+Even within a MODULE, the difficulty of interpreting a design increases wildly as dependencies are
+added. This adds to mental overload, limiting the design complexity a developer can handle. Implicit
+concepts contribute to this load even more than explicit references.
+Refined models are distilled until every remaining connection between concepts represents something fundamental to the meaning of those concepts. In an important subset, the number of dependencies can be reduced to zero, resulting in a class that can be fully understood all by itself,
+along with a few primitives and basic library concepts.
+In every programming environment, a few basics are so pervasive that they are always in mind. For
+example, in Java development, primitives and a few standard libraries provide basics like numbers,
+strings, and collections. Practically speaking, “integers” don't add to the intellectual load. Beyond
+that, every additional concept that has to be held in mind in order to understand an object contributes
+to mental overload.
+Implicit concepts, recognized or unrecognized, count just as much as explicit references. Although
+we can generally ignore dependencies on primitive values such as integers and strings, we can't
+ignore
+what they represent. For example, in the first paint mixing examples, the Paint object held
+three public integers representing red, yellow, and blue color values. The creation of the Pigment
+Supple Design 170
+Color object did not increase the number of concepts involved or the dependencies. It did make the
+ones that were already there more explicit and easier to understand. On the other hand, the Collection size() operation returns an int that is simply a count, the basic meaning of an integer, so
+no new concept is implied.
+Every dependency is suspect until proven basic to the concept behind the object. This scrutiny starts
+with the factoring of the model concepts themselves. Then it requires attention to each individual
+association and operation. Model and design choices can chip away at dependencies—often to
+zero.
+Low coupling is fundamental to object design. When you can, go all the way. Eliminate
+all other
+concepts from the picture. Then the class will be completely self-contained and can be studied and
+understood alone. Every such self-contained class significantly eases the burden of understanding
+a MODULE.
+Dependencies on other classes within the same module are less harmful than those outside. Likewise, when two objects are naturally tightly coupled, multiple operations involving the same pair can
+actually clarify the nature of the relationship. The goal is not to eliminate all dependencies, but to
+eliminate all nonessential ones. If every dependency can't be eliminated, each one that is removed
+frees the developer to concentrate on the remaining conceptual dependencies.
+Try to factor the most intricate computations into
+STANDALONE CLASSES, perhaps by modeling
+VALUE OBJECTS held by the more connected classes.
+The concept of paint is fundamentally related to the concept of color. But color, even of pigment,
+can be considered without paint. By making these two concepts explicit and distilling the relationship,
+the remaining one-way association says something important, and the Pigment Color class, where
+most of the computational complexity lies, can be studied
+and tested alone.
+Low coupling is a basic way to reduce conceptual overload. A
+STANDALONE CLASS is an extreme
+of low coupling.
+Eliminating dependencies should not mean dumbing down the model by arbitrarily reducing everything to primitives. The final pattern of this chapter,
+CLOSURE OF OPERATIONS, is an example
+of a technique for reducing dependency while keeping a rich interface. . . .
+Closure of Operations
+If we take two real numbers and multiply them together, we get another real number. [The real numbers are all
+the rational numbers and all the irrational numbers.] Because this is always true, we say that the real numbers are
+“closed under the operation of multiplication”: there is no way to escape the set. When you combine any two
+elements of the set, the result is also included in the set.
+—The Math Forum, Drexel University
+Of course, there will be dependencies, and that isn't a bad thing when the dependency is fundamental to the concept. Stripping interfaces down to deal with nothing but primitives can impoverish
+them. But a lot of unnecessary dependencies, and even entire concepts, get introduced at interfaces.
+Most interesting objects end up doing things that can't be characterized by primitives alone.
+Another common practice in refined designs is what I call “
+CLOSURE OF OPERATIONS.” The name
+comes from that most refined of conceptual systems, mathematics. 1 + 1 = 2. The addition operation
+is closed under the set of real numbers. Mathematicians are fanatical about not introducing extraneous concepts, and the property of closure provides them a way of defining an operation without
+involving any other concepts. We are so accustomed to the refinement of mathematics that it can
+be hard to grasp how powerful its little tricks are. But this one is used extensively in software designs
+Supple Design 171
+as well. The basic use of XSLT is to transform one XML document into another XML document.
+This sort of XSLT operation is closed under the set of XML documents. The property of closure
+tremendously simplifies the interpretation of an operation, and it is easy to think about chaining
+together or combining closed operations.
+Therefore:
+Where it fits, define an operation whose return type is the same as the type of its argument(s). If the
+implementer has state that is used in the computation, then the implementer is effectively an argument of the operation, so the argument(s) and return value should be of the same type as the
+implementer. Such an operation is closed under the set of instances of that type. A closed operation
+provides a high-level interface without introducing any dependency on other concepts.
+This pattern is most often applied to the operations of a
+VALUE OBJECT. Because the life cycle of
+an
+ENTITY has significance in the domain, you can't just conjure up a new one to answer a question.
+There are operations that are closed under an
+ENTITY type. You could ask an Employee object for
+its supervisor and get back another Employee. But in general,
+ENTITIES are not the sort of concepts
+that are likely to be the result of a computation. So, for the most part, this is an opportunity to look
+for in the
+VALUE OBJECTS.
+An operation can be closed under an abstract type, in which case specific arguments can be of
+different concrete classes. After all, addition is closed under real numbers, which can be either
+rational or irrational.
+As you're experimenting, looking for ways to reduce interdependence and increase cohesion, you
+sometimes get halfway to this pattern. The argument matches the implementer, but the return type
+is different, or the return type matches the receiver and the argument is different. These operations
+are not closed, but they do give some of the advantages of
+CLOSURE. When the extra type is a
+primitive or basic library class, it frees the mind almost as much as
+CLOSURE.
+In the earlier example, the Pigment Color mixedWith() operation was closed under Pigment Colors, and there are several other examples scattered through the book. Here's an example that shows
+how useful this idea can be, even when true
+CLOSURE isn't reached.
+Example
+Selecting from Collections
+In Java, if you want to select a subset of elements from a Collection, you request an Iterator. Then
+you iterate through the elements, testing each one, probably accumulating the matches into a new
+Collection.
+Set employees = (some Set of Employee objects);
+Set lowPaidEmployees = new HashSet();
+Iterator it = employees.iterator();
+while (it.hasNext()) {
+Employee anEmployee = it.next();
+if (anEmployee.salary() < 40000)
+lowPaidEmployees.add(anEmployee);
+}
+Conceptually, I've selected a subset of a set. What do I need with this extra concept, Iterator, and
+all its mechanical complexity? In Smalltalk, I would call the “select” operation on the Collection,
+passing in the test as an argument. The return would be a new Collection containing just the elements that passed the test.
+employees := (some Set of Employee objects).
+lowPaidEmployees := employees select:
+[:anEmployee | anEmployee salary < 40000].
+Supple Design 172
+The Smalltalk Collections provide other such
+FUNCTIONS that return derived Collections, which
+can be of several concrete classes. The operations are not closed, because they take a “block” as
+an argument. But blocks are a basic library type in Smalltalk, so they don't add to the developer's
+mental load. Because the return value matches the implementer, they can be strung together, like
+a series of filters. They are easy to write and easy to read. They do not introduce extraneous concepts that are irrelevant to the problem of selecting subsets.
+The patterns presented in this chapter illustrate a general style of design and a way of thinking about
+design. Making software obvious, predictable, and communicative makes abstraction and encapsulation effective. Models can be factored so that objects are simple to use and understand yet still
+have rich, high-level interfaces.
+These techniques require fairly advanced design skills to apply and sometimes even to write a client.
+The usefulness of a
+MODEL-DRIVEN DESIGN is sensitive to the quality of the detailed design and
+implementation decisions, and it only takes a few confused developers to derail a project from the
+goal.
+That said, for the team willing to cultivate its modeling and design skills, these patterns and the way
+of thinking they reflect yield software that developers can work and rework to create complex software.
+Declarative Design
+A
+SSERTIONS can lead to much better designs, even with our relatively informal way of testing
+them. But there can be no real guarantees in handwritten software. To name just one way of evading
+ASSERTIONS, code could have additional side effects that were not specifically excluded. No matter how
+MODEL-DRIVEN our design is, we still end up writing procedures to produce the effect of
+the conceptual interactions. And we spend so much of our time writing boilerplate code that doesn't
+really add any meaning
+or behavior. This is tedious and fraught with error, and the bulk of it obscures
+the meaning of our model. (Some languages are better than others, but all require us to do a lot of
+grunt work.) I
+NTENTION-REVEALING INTERFACES and the other patterns in this chapter help,
+but they can never give conventional object-oriented programs formal rigor.
+These are some of the motivations behind
+declarative design. This term means many things to many
+people, but usually it indicates a way to write a program, or some part of a program, as a kind of
+executable specification. A very precise description of properties actually controls the software. In
+its various forms, this could be done through a reflection mechanism or at compile time through
+code generation (producing conventional code automatically, based on the declaration). This approach allows another developer to take the declaration at face value. It is an absolute guarantee.
+Generating a running program from a declaration of model properties is a kind of Holy Grail of
+MODEL-DRIVEN DESIGN, but it does have its pitfalls in practice. For example, here are just two
+particular problems I've encountered more than once.
+• A declaration language not expressive enough to do everything needed, but a framework that
+makes it very difficult to extend the software beyond the automated portion
+• Code-generation techniques that cripple the iterative cycle by merging generated code into
+handwritten code in a way that makes regeneration very destructive
+The unintended consequence of many attempts at declarative design is the dumbing-down of the
+model and application, as developers, trapped by the limitations of the framework, enact design
+triage in order to get
+something delivered.
+Rule-based programming with an inference engine and a rule base is another promising approach
+to declarative design. Unfortunately, subtle issues can undermine this intention.
+Supple Design 173
+Although a rules-based program is declarative in principle, most systems have “control predicates”
+that were added to allow performance tuning. This control code introduces side effects, so that the
+behavior is no longer dictated completely by the declared rules. Adding, removing, or reordering the
+rules can cause unexpected, incorrect results. Therefore, a logic programmer has to be careful to
+keep the effect of code obvious, just as an object programmer does.
+Many declarative approaches can be corrupted if the developers bypass them intentionally or unintentionally. This is likely when the system is difficult to use or overly restrictive. Everyone has to
+follow the rules of the framework in order to get the benefits of a declarative program.
+The greatest value I've seen delivered has been when a narrowly scoped framework automates a
+particularly tedious and error-prone aspect of the design, such as persistence and object-relational
+mapping. The best of these unburden developers of drudge work while leaving them complete freedom to design.
+Domain-Specific Languages
+An interesting approach that is sometimes declarative is the
+domain-specific language. In this style,
+client code is written in a programming language tailored to a particular model of a particular domain.
+For example, a language for shipping systems might include terms such as
+cargo and
+route, along
+with syntax for associating them. The program is then compiled, often into a conventional objectoriented language, where a library of classes provides implementations for the terms in the language.
+In such a language, programs can be extremely expressive, and make the strongest connection
+with the
+UBIQUITOUS LANGUAGE. This is an exciting concept, but domain-specific languages also
+have their drawbacks in the approaches I've seen based on object-oriented technology.
+To refine the model, a developer needs to be able to modify the language. This may involve modifying grammar declarations and other language-interpreting features, as well as modifying underlying class libraries. I'm all in favor of learning advanced technology and design concepts, but we
+have to soberly assess the skills of a particular team, as well as the likely skills of future maintenance
+teams. Also, there is value in the seamlessness of an application and a model implemented in the
+same language. Another drawback is that it can be difficult to refactor client code to conform to a
+revised model and its associated domain-specific language. Of course, someone may come up with
+a technical fix for the refactoring problems.
+From the Ground Up
+A different paradigm might handle domain-specific languages better than objects. In the Scheme programming
+language, a representative of the “functional programming” family, something very similar is part of standard
+programming style, so that the expressiveness of a domain-specific language can be created without bifurcating the system.
+This technique might be most useful for very mature models, perhaps where client code is being
+written by a different team. Generally, such setups lead to the poisonous distinction between highly
+technical framework builders and technically unskilled application builders, but it doesn't have to be
+that way.
+In the scheme programming language, something very similar is part of standard programming style,
+so that the expressiveness of a domain-specific language can be created without bifurcating the
+system.
+Supple Design 174
+A Declarative Style of Design
+Once your design has
+INTENTION-REVEALING INTERFACES,
+SIDE-EFFECT-FREE FUNC-
+TIONS, and
+ASSERTIONS, you are edging into declarative territory. Many of the benefits of declarative design are obtained once you have combinable elements that communicate their meaning,
+and have characterized or obvious effects, or no observable effects at all.
+A supple design can make it possible for the client code to use a declarative
+style of design. To
+illustrate, the next section will bring together some of the patterns in this chapter to make the
+SPECIFICATION more supple and declarative.
+Extending SPECIFICATIONS in a Declarative Style
+
+---
+
+## Sección 5: Chapter 9 covered the basic concept of [Entropy: 0.75]
+
+SPECIFICATION, the roles it can play in a program, and
+some sense of what is involved in implementation. Now let's take a look at a few bells and whistles
+that can be very useful in some situations with complicated rules.
+S
+PECIFICATION is an adaptation of an established formalism, the predicate. Predicates have other
+useful properties that we can draw on, selectively.
+Combining SPECIFICATIONS Using Logical Operators
+When using
+SPECIFICATIONS, you quickly come across situations in which you would like to combine them. As just mentioned, a
+SPECIFICATION is an example of a predicate, and predicates can
+be combined and modified with the operations “AND,” “OR,” and “NOT.” These logical operations
+are closed under predicates, so
+SPECIFICATION combinations will exhibit
+CLOSURE OF OPER-
+ATIONS.
+As significant generalized capability is built into
+SPECIFICATIONS, it becomes very useful to create
+an abstract class or interface that can be used for
+SPECIFICATIONS of all sorts. This means typing
+arguments as some high-level abstract class.
+public interface Specification {
+boolean isSatisfiedBy(Object candidate);
+}
+This abstraction calls for a guard clause at the beginning of the method, but otherwise it does not
+affect functionality. For example, the Container Specification (from the example in Chapter 9, on
+page 236) would be modified this way:
+public class ContainerSpecification implements Specification {
+private ContainerFeature requiredFeature;
+public ContainerSpecification(ContainerFeature required) {
+requiredFeature = required;
+}
+boolean isSatisfiedBy(Object candidate){
+if (!candidate instanceof Container) return false;
+return
+(Container)aContainer.getFeatures().contains(requiredFeature);
+}
+}
+Now, let's extend the Specification interface by adding the three new operations:
+Supple Design 175
+public interface Specification {
+boolean isSatisfiedBy(Object candidate);
+Specification and(Specification other);
+Specification or(Specification other);
+Specification not();
+}
+Recall that some Container Specifications were configured to require ventilated Containers and
+others to require armored Containers. A chemical that is both volatile
+and explosive would, presumably, need
+both of these
+SPECIFICATIONS. Easily done, using the new methods.
+Specification ventilated = new ContainerSpecification(VENTILATED);
+Specification armored = new ContainerSpecification(ARMORED);
+Specification both = ventilated.and(armored);
+The declaration defines a new Specification object with the expected properties. This combination
+would have required a more complicated Container Specification, and would still have been special
+purpose.
+Suppose we had more than one kind of ventilated Container. It might not matter for some items
+which kind they were packed into. They could be placed in either type.
+Specification ventilatedType1 =
+new ContainerSpecification(VENTILATED_TYPE_1);
+Specification ventilatedType2 =
+new ContainerSpecification(VENTILATED_TYPE_2);
+Specification either = ventilatedType1.or(ventilatedType2);
+If it was considered wasteful to store sand in specialized containers, we could prohibit it by
+SPEC-
+IFYING a “cheap” container with no special features.
+Specification cheap = (ventilated.not()).and(armored.not());
+This constraint would have prevented some of the suboptimal behavior of the prototype warehouse
+packer discussed in Chapter 9.
+The ability to build complex specifications out of simple elements increases the expressiveness of
+the code. The combinations are written in a declarative style.
+Depending on how
+SPECIFICATIONS are implemented, these operators may be easy or difficult
+to provide. What follows is a very simple implementation, which would be inefficient in some situations and quite practical in others. It is meant as an
+explanatory example. Like any pattern, there
+are many ways to implement it.
+public abstract class AbstractSpecification implements
+Specification {
+public Specification and(Specification other) {
+return new AndSpecification(this, other);
+}
+public Specification or(Specification other) {
+return new OrSpecification(this, other);
+}
+public Specification not() {
+return new NotSpecification(this);
+}
+}
+public class AndSpecification extends AbstractSpecification {
+Specification one;
+Specification other;
+public AndSpecification(Specification x, Specification y) {
+one = x;
+Supple Design 176
+other = y;
+}
+public boolean isSatisfiedBy(Object candidate) {
+return one.isSatisfiedBy(candidate) &&
+other.isSatisfiedBy(candidate);
+}
+}
+public class OrSpecification extends AbstractSpecification {
+Specification one;
+Specification other;
+public OrSpecification(Specification x, Specification y) {
+one = x;
+other = y;
+}
+public boolean isSatisfiedBy(Object candidate) {
+return one.isSatisfiedBy(candidate) ||
+other.isSatisfiedBy(candidate);
+}
+}
+public class NotSpecification extends AbstractSpecification {
+Specification wrapped;
+public NotSpecification(Specification x) {
+wrapped = x;
+}
+public boolean isSatisfiedBy(Object candidate) {
+return !wrapped.isSatisfiedBy(candidate);
+}
+}
+Figure 10.14. COMPOSITE design of SPECIFICATION
+This code was written to be as easy as possible to read in a book. As I said, there may be situations
+in which this is inefficient. However, other implementation options are possible that would minimize
+object count or boost speed, or perhaps be compatible with idiosyncratic technologies present in
+some project. The important thing is a model that captures the key concepts of the domain, along
+with animplementation that is faithful to that model. That leaves a lot of room to solve performance
+problems.
+Also, this full generality is not needed in many cases. In particular, AND tends to be used a lot more
+than the others, and it also tends to create less implementation complexity. Don't be afraid to implement only AND, if that is all you need.
+Supple Design 177
+Way back in Chapter 2, in the example dialog on page 30, the developers had apparently not implemented the “satisfied by” behavior of their
+SPECIFICATION. Up to that point, the
+SPECIFICA-
+TION had been used only for building to order. Even so, the abstraction was intact, and adding
+functionality was relatively easy. Using a pattern doesn't mean building features you don't need.
+They can be added later, as long as the concepts don't get muddled.
+Example
+One Alternative Implementation of COMPOSITE SPECIFICATION
+Some implementation environments don't accommodate very fine grained objects very well. I once
+worked on a project with an object database that insisted on giving an object ID to every object and
+then tracking it. Each object had lots of overhead in memory space and performance, and total
+address space was a limiting factor. I employed
+SPECIFICATIONS at some important points in the
+domain design, which I think was a good decision. But I used a slightly more elaborate version of
+the implementation described in this chapter, which was definitely a mistake. It resulted in millions
+of very fine grained objects that contributed to bogging the system down.
+Here is an example of an alternative implementation that encodes the composite
+SPECIFICA-
+TION as a string or array encoding the logical expression, to be interpreted at runtime.
+(Don't worry if you do not see how you would implement this. The important thing is to realize that
+there are many ways of implementing a
+SPECIFICATION with logical operators, and so if the simple
+one is not practical in your situation, you have options.)
+SPECIFICATION Stack Content for “Cheap Container”
+Top AndSpecificationOperator (FLY WEIGHT)
+NotSpecificationOperator (FLY WEIGHT)
+Armored
+NotSpecificationOperator
+Ventilated
+When you want to test a candidate, you have to interpret this structure, which can be done by
+popping off each element, then evaluating it or popping off the next as required by an operator. You
+would end up with this:
+and(not(armored), not(ventilated))
+This design has pros (+) and cons (–):
++ Low object count
++ Efficient use of memory
+– Requires more sophisticated developers
+You have to find an implementation with trade-offs that work for your circumstances. The same
+pattern and model can underlie very different implementations.
+Subsumption
+This final feature is not usually needed and can be difficult to implement, but every now and then it
+solves a really hard problem. It also elucidates the meaning of a
+SPECIFICATION.
+Consider again the chemical warehouse packer from the example on page 235. Recall that each
+Chemical had a Container Specification, and the Packer
+SERVICE guaranteed that all these would
+be satisfied when Drums are assigned to Containers. All is well... until someone changes the regulations.
+Supple Design 178
+Every few months a new set of rules is issued, and our users would like to be able to produce a list
+of the chemical types that now have more stringent requirements.
+Of course, we could give a partial answer (and one the users probably also want) by running a
+validation of each Drum in the inventory, with the new
+SPECIFICATIONS in place, and finding all
+those that no longer meet the
+SPEC. This would tell the users which Drums in the existing inventory
+they need to move.
+But what they
+asked for was a list of chemicals whose handling has become more stringent. Perhaps
+there are none in-house right now, or perhaps they just happened to be packed into a more stringent
+container. In either case, the report just described would not list them.
+Let's introduce a new operation for directly comparing two
+SPECIFICATIONS.
+boolean subsumes(Specification other);
+A more stringent
+SPEC subsumes a less stringent one. It could take its place without any previous
+requirement being neglected.
+Figure 10.15. The SPECIFICATION for a gasoline container has been tightened.
+In the language of
+SPECIFICATION, we would say that the new
+SPECIFICATION subsumes the
+old
+SPECIFICATION, because any candidate that would satisfy the new SPEC would also satisfy
+the old.
+If each of these
+SPECIFICATIONS is viewed as a predicate, subsumption is equivalent to logical
+implication. Using conventional notation,
+A B means that statement
+A implies statement
+B, so
+that if
+A is true,
+B is also true.
+Let's apply this logic to our container-matching needs. When a SPECIFICATION is being changed,
+we would like to know if the proposed new SPEC meets all the conditions of the old one.
+New Spec Old Spec
+That is, if the new spec is true, then the old spec is also true. Proving a logical implication in a general
+way is very difficult, but special cases can be easy. For example, particular parameterized
+SPECS can define their own subsumption rule.
+Supple Design 179
+public class MinimumAgeSpecification {
+int threshold;
+public boolean isSatisfiedBy(Person candidate) {
+return candidate.getAge() >= threshold;
+}
+public boolean subsumes(MinimumAgeSpecification other) {
+return threshold >= other.getThreshold();
+}
+}
+A JUnit test might contain this:
+drivingAge = new MinimumAgeSpecification(16);
+votingAge = new MinimumAgeSpecification(18);
+assertTrue(votingAge.subsumes(drivingAge));
+Another practical special case, one suited to address the Container Specification problem, is a
+SPECIFICATION interface combining subsumption with the single logical operator AND.
+public interface Specification {
+boolean isSatisfiedBy(Object candidate);
+Specification and(Specification other);
+boolean subsumes(Specification other);
+}
+Proving implication with only the AND operator is simple:
+A AND
+B A
+or, in a more complicated case:
+A AND
+B AND C 
+A AND
+B
+So if the Composite Specification is able to collect all the leaf
+SPECIFICATIONS that are “ANDed”
+together, then all we have to do is check that the subsuming
+SPECIFICATION has all the leaves
+that the subsumed one has, and maybe some extra ones as well—its leaves are a superset of the
+other
+SPEC's set of leaves.
+public boolean subsumes(Specification other) {
+if (other instanceof CompositeSpecification) {
+Collection otherLeaves =
+(CompositeSpecification) other.leafSpecifications();
+Iterator it = otherLeaves.iterator();
+while (it.hasNext()) {
+if (!leafSpecifications().contains(it.next()))
+return false;
+}
+} else {
+if (!leafSpecifications().contains(other))
+return false;
+}
+return true;
+}
+This interaction could be enhanced to compare carefully chosen parameterized leaf
+SPECIFICA-
+TIONS and some other complications. Unfortunately, when OR and NOT are included, these proofs
+become much more involved. In most situations it is best to avoid such complexity by making a
+choice, either forgoing some of the operators or forgoing subsumption. If both are needed, consider
+carefully if the benefit is great enough to justify the difficulty.
+Supple Design 180
+Socrates on SPECIFICATIONS
+All men are mortal. Specification manSpec = new ManSpecification();
+Specification mortalSpec = new MortalSpecification();
+assert manSpec.subsumes(mortalSpec);
+Socrates is a man. Man socrates = new Man();
+assert manSpec.isSatisfiedBy(socrates);
+Therefore, Socrates is mortal. assert mortalSpec.isSatisfiedBy(socrates);
+Angles of Attack
+This chapter has presented a raft of techniques to clarify the intent of code, to make the consequences of using it transparent, and to decouple model elements. Even so, this kind of design is
+difficult. You can't just look at an enormous system and say, “Let's make this supple.” You have to
+choose targets. Here are a couple of broad approaches, followed by an extended example showing
+how the patterns are fit together and used to take on a bigger design.
+Carve Off Subdomains
+You just can't tackle the whole design at once. Pick away at it. Some aspects of the system will
+suggest approaches to you, and they can be factored out and worked over. You may see a part of
+the model that can be viewed as specialized math; separate that. Your application enforces complex
+rules restricting state changes; pull this out into a separate model or simple framework that lets you
+declare the rules. With each such step, not only is the new module clean, but also the part left behind
+is smaller and clearer. Part of what's left is written in a declarative style, a declaration in terms of
+the special math or validation framework, or whatever form the subdomain takes.
+It is more useful to make a big impact on one area, making a part of the design really supple, than
+to spread your efforts thin. Chapter 15 discusses in more depth how to choose and manage subdomains.
+Draw on Established Formalisms, When You Can
+Creating a tight conceptual framework from scratch is something you can't do every day. Sometimes
+you discover and refine
+one of these over the course of the life of a project. But you can often use
+and adapt conceptual systems that are long established in your domain or others, some of which
+have been refined and distilled over centuries. Many business applications involve accounting, for
+example. Accounting defines a well-developed set of
+ENTITIES and rules that make for an easy
+adaptation to a deep model and a supple design.
+There are many such formalized conceptual frameworks, but my personal favorite is math. It is
+surprising how useful it can be to pull out some twist on basic arithmetic. Many domains include
+math somewhere. Look for it. Dig it out. Specialized math is clean, combinable by clear rules, and
+people find it easy to understand. One example from my past is “Shares Math,” which will end this
+chapter.
+Example
+Integrating the Patterns: Shares Math
+
+---
+
+## Sección 6: Chapter 8 told the story of a model breakthrough on a project to build a syndicated loan system. [Entropy: 0.81]
+
+Now this example will go into detail, focusing on just one feature of a design comparable to the one
+on that project.
+One requirement of that application was that when the borrower makes a principal payment, the
+money is, by default, prorated according to the lenders' shares in the loan.
+Supple Design 181
+Initial Design for Payment Distribution
+As we refactor it, this code will get easier to understand, so don't get stuck on this version.
+public class Loan {
+private Map shares;
+//Accessors, constructors, and very simple methods are excluded
+public Map distributePrincipalPayment(double paymentAmount) {
+Map paymentShares = new HashMap();
+Map loanShares = getShares();
+double total = getAmount();
+Iterator it = loanShares.keySet().iterator();
+while(it.hasNext()) {
+Object owner = it.next();
+double initialLoanShareAmount = getShareAmount(owner);
+double paymentShareAmount =
+initialLoanShareAmount / total * paymentAmount;
+Share paymentShare =
+new Share(owner, paymentShareAmount);
+paymentShares.put(owner, paymentShare);
+double newLoanShareAmount =
+initialLoanShareAmount - paymentShareAmount;
+Share newLoanShare =
+new Share(owner, newLoanShareAmount);
+loanShares.put(owner, newLoanShare);
+}
+return paymentShares;
+}
+public double getAmount() {
+Map loanShares = getShares();
+double total = 0.0;
+Iterator it = loanShares.keySet().iterator();
+while(it.hasNext()) {
+Share loanShare = (Share) loanShares.get(it.next());
+total = total + loanShare.getAmount();
+}
+return total;
+}
+}
+Separating Commands and SIDE-EFFECT-FREE FUNCTIONS
+This design already has
+INTENTION-REVEALING INTERFACES. But the distributePayment-
+Principal() method does a dangerous thing: It calculates the shares for distribution and also
+modifies the Loan. Let's refactor to separate the query from the modifier.
+Supple Design 182
+public void applyPrincipalPaymentShares(Map paymentShares) {
+Map loanShares = getShares();
+Iterator it = paymentShares.keySet().iterator();
+while(it.hasNext()) {
+Object lender = it.next();
+Share paymentShare = (Share) paymentShares.get(lender);
+Share loanShare = (Share) loanShares.get(lender);
+double newLoanShareAmount = loanShare.getAmount() -
+paymentShare.getAmount();
+Share newLoanShare = new Share(lender, newLoanShareAmount);
+loanShares.put(lender, newLoanShare);
+}
+}
+public Map calculatePrincipalPaymentShares(double paymentAmount) {
+Map paymentShares = new HashMap();
+Map loanShares = getShares();
+double total = getAmount();
+Iterator it = loanShares.keySet().iterator();
+while(it.hasNext()) {
+Object lender = it.next();
+Share loanShare = (Share) loanShares.get(lender);
+double paymentShareAmount =
+loanShare.getAmount() / total * paymentAmount;
+Share paymentShare = new Share(lender, paymentShareAmount);
+paymentShares.put(lender, paymentShare);
+}
+return paymentShares;
+}
+Client code now looks like this:
+Map distribution =
+aLoan.calculatePrincipalPaymentShares(paymentAmount);
+aLoan.applyPrincipalPaymentShares(distribution);
+Not too bad. The
+FUNCTIONS have encapsulated a lot of complexity behind
+INTENTION-RE-
+VEALING INTERFACES. But the code does begin to multiply some when we add applyDrawdown(), calculateFeePaymentShares(), and so on. Each extension complicates the code
+and weighs it down. This might be a point where the granularity is too coarse. The conventional
+approach would be to break the calculation methods down into subroutines. That could well be a
+good step along the way, but we ultimately want to see the underlying conceptual boundaries and
+deepen the model. The elements of a design with such a
+CONCEPT-CONTOURING grain could
+be combined to produce the needed variations.
+Making an Implicit Concept Explicit
+There are enough pointers now to start probing for that new model. The Share objects are passive
+in this implementation, and they are being manipulated in complex, low-level ways. This is because
+most of the rules and calculations about shares don't apply to single shares, but to groups of them.
+There is a missing concept: shares are related to each other as parts making up a whole. Making
+this concept explicit will let us express those rules and calculations more succinctly.
+Supple Design 183
+The Share Pie represents the total distribution of a specific Loan. It is an
+ENTITY whose identity is
+local within the
+AGGREGATE of the Loan. The actual distribution calculations can be delegated to
+the Share Pie.
+public class Loan {
+private SharePie shares;
+//Accessors, constructors, and straightforward methods
+//are omitted
+public Map calculatePrincipalPaymentDistribution(
+double paymentAmount) {
+return getShares().prorated(paymentAmount);
+}
+public void applyPrincipalPayment(Map paymentShares) {
+shares.decrease(paymentShares);
+}
+}
+The Loan is simplified, and the Share calculations are centralized in a
+VALUE OBJECT focused on
+that responsibility. Still, the calculations haven't really become more versatile or easier to use.
+Supple Design 184
+Share Pie Becomes a VALUE OBJECT: Cascade of Insights
+Often, the hands-on experience of implementing a new design will trigger a new insight into the
+model itself. In this case, the tight coupling of the Loan and Share Pie seems to be obscuring the
+relationship of the Share Pie and the Shares. What would happen if we made Share Pie a
+VALUE
+OBJECT?
+This would mean that increase(Map) and decrease(Map) would not be allowed, because the
+Share Pie would have to be immutable. To change the Share Pie's value, the whole Pie would have
+to be replaced. So you could have operations such as addShares(Map) that would return a whole
+new, larger Share Pie.
+Let's go all the way to
+CLOSURE OF OPERATIONS. Instead of “increasing” a Share Pie or adding
+Shares to it, just add two Share Pies together: the result is the new, larger Share Pie.
+We can partially close the prorate() operation over Share Pie just by changing the return type.
+Renaming it to prorated() emphasizes its lack of side effects. “Shares Math” starts to take shape,
+initially with four operations.
+We can make some well-defined
+ASSERTIONS about our new
+VALUE OBJECTS, the Share
+Pies. Each method means something.
+public class SharePie {
+private Map shares = new HashMap();
+//Accessors and other straightforward methods are omitted
+public double getAmount() {
+double total = 0.0;
+Iterator it = shares.keySet().iterator();
+while(it.hasNext()) { The whole is equal to the sum of its parts.
+Share loanShare = getShare(it.next());
+total = total + loanShare.getAmount();
+}
+return total;
+}
+public SharePie minus(SharePie otherShares) {
+SharePie result = new SharePie();
+Set owners = new HashSet();
+owners.addAll(getOwners());
+owners.addAll(otherShares.getOwners()); The difference between two Pies is the difference
+↩
+between each owner's share.
+Iterator it = owners.iterator();
+while(it.hasNext()) {
+Supple Design 185
+Object owner = it.next();
+double resultShareAmount = getShareAmount(owner) –
+otherShares.getShareAmount(owner);
+result.add(owner, resultShareAmount);
+}
+return result;
+}
+public SharePie plus(SharePie otherShares) { The combination of two Pies is the combination of
+↩
+each owner's share.
+//Similar to implementation of minus()
+}
+public SharePie prorated(double amountToProrate) {
+SharePie proration = new SharePie();
+double basis = getAmount(); An amount can be divided proportionately among all shareholders.
+Iterator it = shares.keySet().iterator();
+while(it.hasNext()) {
+Object owner = it.next();
+Share share = getShare(owner);
+double proratedShareAmount =
+share.getAmount() / basis * amountToProrate;
+proration.add(owner, proratedShareAmount);
+}
+return proration;
+}
+}
+The Suppleness of the New Design
+At this point, the methods in the all-important Loan class could be as simple as this:
+public class Loan {
+private SharePie shares;
+//Accessors, constructors, and straightforward methods
+//are omitted
+public SharePie calculatePrincipalPaymentDistribution(
+double paymentAmount) {
+return shares.prorated(paymentAmount);
+}
+public void applyPrincipalPayment(SharePie paymentShares) {
+setShares(shares.minus(paymentShares));
+}
+Each of these short methods states its
+meaning. Applying a principal payment means that you
+subtract the payment from the loan, share by share. Distributing a principal payment is done by
+dividing the amount
+pro rata among the shareholders. The design of the Share Pie has allowed us
+to use a declarative style in the Loan code, producing code that begins to read like a conceptual
+definition of the business transaction, rather than a calculation.
+Other transaction types (too complicated to list before) can be declared easily now. For example,
+loan drawdowns are divided among lenders based on their shares of the Facility. The new drawdown is added to the outstanding Loan. In our new domain language:
+public class Facility {
+private SharePie shares;
+. . .
+public SharePie calculateDrawdownDefaultDistribution(
+double drawdownAmount) {
+return shares.prorated(drawdownAmount);
+}
+}
+public class Loan {
+Supple Design 186
+. . .
+public void applyDrawdown(SharePie drawdownShares) {
+setShares(shares.plus(drawdownShares));
+}
+}
+To see the deviation of each lender from its agreed contribution, take the theoretical distribution of
+the outstanding Loan amount and subtract it from the Loan's actual shares:
+SharePie originalAgreement =
+aFacility.getShares().prorated(aLoan.getAmount());
+SharePie actual = aLoan.getShares();
+SharePie deviation = actual.minus(originalAgreement);
+Certain characteristics of the Share Pie design make for this easy recombination and communication
+in the code.
+•
+Complex logic is encapsulated in specialized VALUE OBJECTS
+with SIDE-EFFECT-FREE
+FUNCTIONS. Most complex logic has been encapsulated in these immutable objects. Because
+Share Pies are
+VALUE OBJECTS, the math operations can create new instances, which we
+can use freely to replace outdated instances.
+None of the Share Pie methods causes any change to any existing object. This allows us to use
+plus(), minus(), and pro-rated() freely in intermediate calculations, combining them, expecting them to do what their names suggest, and nothing more. It also allows us to build analytical features based on the same methods. (Before, they could be called only when an actual
+distribution was made, because the data would change after each call.)
+•
+State-modifying operations are simple and characterized with ASSERTIONS. The high-level
+abstractions of Shares Math allow invariants of transactions to be written concisely in a declarative style. For example, the deviation is the actual pie minus the Loan amount prorated based
+on the Facility's Share Pie.
+•
+Model concepts are decoupled; operations entangle a minimum of other types. Some methods
+on Share Pie exhibit
+CLOSURE OF OPERATIONS (the methods to add or subtract are closed
+under Share Pies). Others take simple amounts as arguments or return values; they are not
+closed, but they add little to the conceptual load. The Share Pie interacts closely with only one
+other class, Share. As a result, the Share Pie is self-contained, easily understood, easily tested,
+and easily combined to form declarative transactions. These properties were inherited from the
+math formalism.
+•
+Familiar formalism makes the protocol easy to grasp. A wholly original protocol for manipulating
+shares could have been devised based on financial terminology. In principle, it could have been
+made supple. But it would have had two disadvantages. First, it would have to be invented, a
+difficult and uncertain task. Second, it would have to be learned by each person who dealt with
+it. People who see Shares Math recognize a system they already know, and because the design
+has been kept carefully consistent with the rules of arithmetic, those people are not misled.
+Pulling out the part of the problem that corresponded to the formalism of math, we arrived at a supple
+design for Shares that further distills the core Loan and Facility methods. (See Chapter 15 for discussion of the
+CORE DOMAIN.)
+Supple design has a profound effect on the ability of software to cope with change and complexity.
+As the examples in this chapter have shown, it often hinges on quite detailed modeling and design
+decisions. The impact can go beyond a specific modeling and design problem. Chapter 15 will
+discuss the strategic value of supple design as one of several tools for distilling a domain model to
+make large and complex projects more tractable.
+Supple Design 187
+Chapter Eleven. Applying Analysis Patterns
+Deep models and supple designs don't come easily. Progress comes from lots of learning about
+the domain, lots of talking, and lots of trial and error. Sometimes, though, we can get a leg up.
+When an experienced developer looking at a domain problem sees a familiar sort of responsibility
+or a familiar web of relationships, he or she can draw on the memory of how the problem was solved
+before. What models were tried and which worked? What difficulties arose in implementation and
+how were they resolved? The trial and error of that earlier experience is suddenly relevant to the
+new situation. Some of these patterns have been documented and shared, allowing the rest of us
+to draw on the accumulated experience.
+In contrast to the fundamental building block patterns presented in Part II, and the supple design
+principles of Chapter 10, these patterns are higher level and more specialized, involving the use of
+a few objects to represent some concept. They let us cut through expensive trial and error to start
+with a model that is already expressive and implementable and addresses subtleties that might be
+costly to learn. From that starting point, we refactor and experiment. These are not outofthe-box
+solutions.
+In
+Analysis Patterns: Reusable Object Models, Martin Fowler defined his patterns this way:
+Analysis patterns are groups of concepts that represent a common construction in business modeling. It may be
+relevant to only one domain or it may span many domains. [Fowler 1997, p. 8]
+The analysis patterns Fowler presents arose from experience in the field, and so they are practical,
+in the right situation. Such patterns provide someone facing a challenging domain with very valuable
+starting points for their iterative development process. The name emphasizes their conceptual nature. Analysis patterns are not technological solutions; they are guides to help you work out a model
+in a particular domain.
+What the name unfortunately does
+not convey is that there is significant discussion of implementation in these patterns, including some code. Fowler understands the pitfalls of analysis without
+thought for practical design. Here is an interesting example where he is looking even beyond deployment, to the implications of specific model choices on the long-term maintenance of the system
+in the field:
+When we build a new [accounting] practice, we create a network of new instances of the posting rule. We can do
+this without any recompilation or rebuilding of the system, while it is still up and running. There will be unavoidable
+occasions when we need a new subtype of posting rule, but these will be rare. [p. 151]
+On a mature project, model choices are often informed by experience with the application. Multiple
+implementations of various components will have been tried. Some of these will have been carried
+into production and even will have faced the maintenance phase. Many problems can be avoided
+when such experience is available. Analysis patterns at their best can carry that kind of experience
+from other projects, combining model insights with extensive discussions of design directions and
+implementation consequences. To discuss model ideas out of that context makes them harder to
+apply and risks opening the deadly divide between analysis and design, which is antithetical to
+MODEL-DRIVEN DESIGN.
+The principle and application of analysis patterns can be explained better by example than through
+abstract description. In this chapter, I will give two examples of developers making use of a small,
+representative sample of models from the chapter “Inventory and Accounting” in Fowler 1997. The
+analysis patterns will be summarized just enough to support the examples. This is obviously not an
+attempt to catalog patterns of this kind or even to fully explain the sample patterns. The point is to
+illustrate their integration into the domain-driven design process.
+Example
+Earning Interest with Accounts
+
+---
+
+## Sección 7: Chapter 10 showed various possible ways that a developer might search for a deeper model for a [Entropy: 0.984]
+
+particular specialty accounting application. Here is yet another scenario. This time, the developers
+will mine Fowler's
+Analysis Patterns book for useful ideas.
+To review, an application for tracking loans and other interest-bearing assets calculates the interest
+and fees generated and tracks payments from the borrower. A nightly batch process takes those
+figures and passes them to the legacy accounting system, indicating the specific ledger each amount
+should be posted to. The design works, but it is awkward to use, tricky to change, and does not
+communicate well.
+Figure 11.1. The initial class diagram
+The developer decides to read Chapter 6 in
+Analysis Patterns, “Inventory and Accounting.” Here is
+a summary of the part she found most relevant.
+Accounting Models in
+Analysis Patterns
+Business applications of all sorts track
+accounts, which hold things of value, typically money. In
+a lot of applications, it isn't enough to keep track of the amount in an account. It is essential to
+account for and control each change to that amount. That is the motivation for the most basic
+of the accounting models.
+Applying Analysis Patterns 189
+Figure 11.2. A basic accounting model
+Value can be added by inserting an
+Entry. Value can be removed by inserting a negative Entry.
+Entries are never removed, so the whole history is retained. The balance is the combined effect
+of all Entries. This balance could be computed on demand or cached, an implementation decision that is encapsulated by the Account interface.
+A basic principle of accounting is
+conservation. Money doesn't appear out of nowhere, nor does
+it disappear without a trace. It is only moved from one Account to another.
+Figure 11.3. A transaction model
+This is the well-established concept of
+double-entry book-keeping: Every credit has a matching
+debit. Of course, like other conservation principles, it applies only to a closed system, one that
+includes all sources and sinks. Many simple applications do not require this rigor.
+In his book, Fowler includes more elaborate forms of these models and considerable discussion
+of the trade-offs.
+This reading gives the developer (Developer 1) several new ideas. She shows the chapter to a
+colleague (Developer 2) who has been working on some of the interest calculation logic with her
+and who wrote the nightly batch program. Together, they rough out a change to their model, incorporating some of the model elements they've read about.
+Applying Analysis Patterns 190
+Figure 11.4. The new model proposal
+Then they pull in their domain expert (Expert) for a discussion of their new model ideas.
+Developer 1: With this new model, we make an Entry into the Interest Account for the interest
+earned, rather than just adjusting the interestDueAmount. Then, another Entry for the payment
+balances it out.
+Expert: So now we'd be able to see a history of all the interest accruals as well as the payment
+history? That's something we've been wanting.
+Developer 2: I'm not sure we've used “Transaction” quite right. The definition talks about moving
+money from one Account to another, not two entries that balance each other in the same Account.
+Developer 1: That's a good point. I was also worried that the book seems to make quite a point
+about the transaction being created all at once. The interest payments can be several days late.
+Expert: Those payments aren't necessarily late. There is a lot of flexibility in when they pay.
+Developer 1: So this may be a blind alley. I was thinking we might have identified some implicit
+concepts. Having the Interest Calculator create Entry objects does seem to communicate better.
+And Transaction seemed to neatly tie together the calculated interest with the payment.
+Expert: Why do we need to tie together the accrual to the payment? They are separate postings in
+the accounting system. The balance on the Account is the main thing. Along with the individual
+Entries, we really have what we need.
+Developer 2: You mean you don't track whether they've made the interest payment?
+Expert: Well, of course we do. But it isn't as simple as this one-accrual/one-payment scheme of
+yours.
+Developer 2: It could actually simplify a lot of things to stop worrying about that connection.
+Developer 1: OK, how about this? [
+Takes copy of old class diagram and starts sketching modifications] By the way, you used the word
+accruals a few times. Could you clarify what it means?
+Expert: Sure. An accrual is just when you account for an expense or income at the time it is incurred,
+never mind when money actually changes hands. So, we accrue interest every day, but at the end
+of the month (for example) we receive a payment against it.
+Developer 1: Yes, we really needed a word like that. OK, how does this look?
+Applying Analysis Patterns 191
+Figure 11.5. Original class diagram, accruals separated from payment
+Developer 1: Now we can get rid of all the complications that were in the calculator from relating
+payments, and we've introduced the term
+accruals, which reveals the intent better.
+Expert: So we're not going to have the Account object? I was looking forward to being able to see
+everything together there, with the accruals and the payments and a balance.
+Developer 1: Really?! Well in that case, maybe
+this would work. [
+Takes other diagram and sketches]
+Figure 11.6. The account-based diagram, without Transaction
+Expert: That actually looks pretty good!
+Developer 2: The batch script will be easy to change to use these new objects.
+Developer 1: It will take a few days to get the new Interest Calculator working. There are quite a
+few tests to change. But the test will read clearer afterward.
+The two developers went off and started refactoring based on the new model. As they got their
+hands on the code, tightening up the design, they had insights that refined the model.
+Entries were subclassed into Payment and Accrual because closer inspection revealed slightly different responsibilities in the application for these, and because they were both important domain
+concepts. On the other hand, there was no conceptual or behavioral distinction between Entries
+based on whether they resulted from fees or interest. They simply appeared in the appropriate
+Account.
+Yet, unfortunately, the developers found they had to give up this last abstraction for the implementation. Data was stored in relational tables, and the project standard was to make those tables
+interpretable without running the program. This meant keeping fee entries and interest entries in
+separate tables. The only way for developers to do this, using their particular object-relational mapping framework, was to make concrete subclasses (Fee Payments, Interest Payments, and so on).
+With different infrastructure, they might have avoided this clumsy expansion.
+Applying Analysis Patterns 192
+I threw this twist into this largely fictitious story to represent the rub of reality that we encounter all
+the time. We have to make calculated compromises and then move on without letting it throw us off
+our
+MODEL-DRIVEN DESIGN.
+Figure 11.7. The class diagram after the implementation
+The new design was much easier to analyze and test because the most complex functionality is in
+SIDE-EFFECT-FREE FUNCTIONS. The remaining command has simple code (because it calls
+various
+FUNCTIONS) and is characterized by
+ASSERTIONS.
+Sometimes there are parts of our programs that we don't even suspect have the potential to benefit
+from a domain model. They may have started very simply and evolved mechanistically. They seem
+like complicated application code, rather than domain logic. Analysis patterns can be particularly
+helpful in showing us these blind spots.
+In the following example, a developer has a new insight into the black box of the nightly batch, which
+had not been considered domain oriented.
+Example
+Insight into the Nightly Batch
+After a few weeks, the improved Account-based model had started to settle in. As often happens,
+the clarity of the new design made other problems more visible. The developer (Developer 2) who
+was adapting the nightly batch to interact with the new design began to see connections between
+the behavior of the batch and some of the concepts in
+Analysis Patterns. Here is a summary of
+some of the concepts he found most relevant.
+Posting Rules
+Accounting systems often provide multiple views of the same basic financial information. One
+account might track income while another might track an estimated tax on that income. If the
+system is expected to automatically update the estimated tax account, the implementation of
+those two accounts becomes very intertwined. There are systems in which the majority of account entries result from such rules; in such a system, the dependency logic gets to be a mess.
+Even in more modest systems, such cross-posting can be tricky. The first step toward taming
+the tangle of dependencies is to make these rules explicit by introducing a new object.
+Applying Analysis Patterns 193
+Figure 11.8. The class diagram of the basic posting rule
+A posting rule is triggered by a new Entry in its “input” account. It then derives a new Entry (based
+on its own calculation Method) and inserts the new Entry into its “output” Account . In a payroll
+system, an Entry in a salary Account might trigger a Posting Rule that would calculate a 30
+percent estimated income tax and insert it as an Entry in the tax with-holding Account.
+Executing Posting Rules
+The Posting Rule has established the conceptual dependency between Accounts, but if the
+pattern stopped there, it could be difficult to follow. One of the trickiest parts of dependency
+designs is the timing and control of updates. Fowler discusses three options.
+1. “Eager firing” is the most obvious, but typically the least practical. Whenever an Entry is
+inserted into an Account, it immediately triggers the Posting Rules and all updates are
+made immediately.
+2. “Account-based firing” allows processing to be deferred. At some point, a message is sent
+to an Account and it triggers its Posting Rules to process all Entries inserted since its last
+firing.
+3. Finally, “Posting-Rule-based firing” is initiated by an external agent, which tells the Posting
+Rule to fire. The Posting Rule is responsible for looking up all Entries made to its input
+Accounts since the last time it fired.
+Although firing modes can be mixed in a system, each particular set of rules needs to have
+one clearly defined point of initiation and responsibility for identifying input Account Entries. The addition of the three firing modes to the
+UBIQUITOUS LANGUAGE is as important to the success of the pattern as the model object definitions themselves. It eliminates ambiguity and guides decision making directly to a clearly defined set of choices.
+These modes identify an easily overlooked challenge and provide vocabulary to support
+clear discussion.
+Developer 2 needed a sounding board to discuss his new ideas. He met up his colleague (Developer
+1), the developer who had been primarily responsible for modeling the accruals.
+Developer 2: At some point, the nightly batch started being a place where we swept stuff under the
+rug. There is domain logic implicit in what the script does, and it's been getting more and more
+complicated. For a long time I've wanted to do a model-driven design for the batch, separate out a
+domain layer, and make the script itself a simple layer on top of the domain. But I could never figure
+out what that domain model would be like. It seemed like maybe it was just some procedures that
+didn't really make sense as objects. As I've been reading the section in
+Analysis Patterns on Posting
+Rules, I've been getting some ideas. Here's what I had in mind. [
+Hands over a sketch]
+Applying Analysis Patterns 194
+Figure 11.9. A shot at using Posting Rules in the batch
+Developer 1: What is this “Posting Service”?
+Developer 2: That is a
+FACADE that exposes the accounting application's API and presents it as
+a
+SERVICE. I actually made that a while back to simplify the batch code, and it also gave me an
+INTENTION-REVEALING INTERFACE for posting to the legacy system.
+Developer 1: Interesting. So, which firing style do you plan to use for these Posting Rules?
+Developer 2: I hadn't really gotten that far.
+Developer 1: Eager Firing would work for Accruals, since the batch actually tells the Asset to insert
+them, but it wouldn't work for Payments, which get entered during the day.
+Developer 2: I don't think we would want to couple the calculation method that tightly to the batch
+anyway. If we ever decided to trigger interest calculations at a different time, it would mess things
+up. And it just doesn't seem right, conceptually.
+Developer 1: It sounds like Posting-Rule-based firing. The batch tells each Posting Rule to execute,
+and the rule goes and looks for appropriate new Entries and then does its thing. That's pretty much
+the way you've drawn it.
+Developer 2: So then we avoid creating a lot of dependencies on the batch design, and the batch
+keeps control. That sounds right.
+Developer 1: I'm still a little vague on the interaction of these objects with the Accounts and Entries.
+Developer 2: You and me both. The examples in the book create a direct link between the Accounts and the Posting Rules. That is kind of logical, but I don't think it will work very well for us. We
+have to instantiate these objects from data each time, so we would have to figure out which rule
+applies in order to associate it. Meanwhile, the Asset object is the one that knows the content of
+each Account, and therefore which rule to apply. Anyway, what about the rest of this?
+Developer 1: I hate to nitpick, but I don't think that we're using “Method” right. I think the concept is
+that the Method computes the amount to be posted—like, say, a 20 percent tax with-holding on
+income. But in our case, that's simple: it's always the full amount being posted. I think the Posting
+Rule itself is supposed to know which Account to post to, which corresponds to our “ledger name.”
+Developer 2: Oh. So if the Posting Rule is responsible for knowing the correct ledger name, we
+probably don't need Method at all.
+Actually, this whole business of choosing the right ledger name is getting more and more complicated. It is already a combination of the type of income (fee or interest) with the “asset class” (a
+category the business applies to each Asset). That is one place I'm hoping this new model will help.
+Applying Analysis Patterns 195
+Developer 1: OK, let's focus there. The Posting Rule is responsible for choosing the Ledger based
+on attributes of the Account. For now, we can make it a straightforward way to handle asset class
+and the distinction between interest and fees. In the future, you'll have an
+OBJECT MODEL you
+can enhance to handle more complex cases.
+Developer 2: I need to think about this some more. Let me mull it over, and reread the patterns,
+and then I'll take another stab at it. Could I talk with you about this again tomorrow afternoon?
+Over the next few days, the two developers worked out a model and refactored the code so that the
+batch simply iterated through the Assets, sending a few self-explanatory messages to each and
+then committing the database transactions. The complexity was shifted into the domain layer, where
+an object model made it both more explicit and more abstract.
+Figure 11.10. The class diagram with Posting Rules
+Figure 11.11. Sequence diagram showing rule firing
+The developers departed considerably from the details of the models presented in
+Analysis Patterns, yet they felt they had preserved the essence of the concepts. They were a little uncomfortable
+about involving the Asset in the selection of the Posting Rule. They went that way because the
+Asset had the knowledge of the nature of each Account (fee or interest) and was also the natural
+access point for the script. To have associated the rule object directly with the Account would have
+required a collaboration with the Asset object on each instantiation of the objects (each time the
+batch was run). Instead, they let the Asset object look up the two relevant rules through their
+SIN-
+GLETON access and pass them the appropriate Account. It seemed to make the code much more
+direct and so they made a pragmatic decision.
+Applying Analysis Patterns 196
+They both felt that conceptually it would have been better to associate Posting Rules only with
+Accounts, while keeping the Asset focused on its job of generating Accruals. They hoped that subsequent refactorings and deeper insight would bring them back to this and show them a way to
+make this clean division without losing the obviousness of the code.
+Analysis Patterns Are Knowledge to Draw On
+When you are lucky enough to have an analysis pattern, it hardly ever is the answer to your particular
+needs. Yet it offers valuable leads in your investigation, and it provides cleanly abstracted vocabulary. It should also give you guidance about implementation consequences that will save you pain
+down the road.
+All this feeds into the dynamo of knowledge crunching and refactoring toward deeper insight and
+stimulates development. The result often resembles the form documented in the analysis pattern,
+but adapted to circumstances. Sometimes the result doesn't even obviously relate to the analysis
+pattern itself, yet was stimulated by the insights from the pattern.
+There is one kind of change you should avoid. When you use a term from a well-known analysis
+pattern, take care to keep the basic concept it designates intact, however much the superficial form
+might change. There are two reasons for this. First, the pattern may embed understanding that will
+help you avoid problems. Second, and more important, your
+UBIQUITOUS LANGUAGE is enhanced when it includes terms that are widely understood or at least well explained. If your model
+definitions change through the natural evolution of the model, take the trouble to change the names
+too.
+Quite a lot of object models have been written about, some specialized for one kind of application
+in one industry and some quite general. Most of them provide the seed of an idea, but only a few
+have captured the reasoning behind the choices and the consequences that follow, which are the
+most useful parts of an analysis pattern. More of these refined analysis patterns would be valuable,
+to help save us from reinventing the wheel again and again. I'd be surprised ever to see a comprehensive catalog, but industry-specific catalogs might arise. And patterns for some domains that
+cross many applications could be widely shared.
+This kind of reapplication of organized knowledge is completely different from attempts to reuse
+code through frameworks or components, except that either could provide the seed of an idea that
+is not obvious. A model, even a generalized framework, is a complete working whole, while an
+analysis is a kit of model fragments. Analysis patterns focus on the most critical and difficult decisions
+and illuminate alternatives and choices. They anticipate downstream consequences that are expensive if you have to discover them for yourself.
+Applying Analysis Patterns 197
+Chapter Twelve. Relating Design Patterns to
+the Model
+The patterns explored in this book so far are intended specifically for solving problems in a domain
+model in the context of a
+MODEL-DRIVEN DESIGN. Actually, though, most of the patterns published
+to date are more technical in focus. What is the difference between a design pattern and a domain
+pattern? For starters, the authors of the seminal book,
+Design Patterns, had this to say:
+Point of view affects one's interpretation of what is and isn't a pattern. One person's pattern can be another person's
+primitive building block. For this book we have concentrated on patterns at a certain level of abstraction. Design
+patterns are not about designs such as linked lists and hash tables that can be encoded in classes and reused as
+is. Nor are they complex, domain-specific designs for an entire application or subsystem. The design patterns in
+this book are descriptions of communicating objects and classes that are customized to solve a general design
+problem in a particular context. [Gamma et al. 1995, p. 3]
+Some, not all, of the patterns in
+Design Patterns can be used as domain patterns. Doing so requires
+a shift in emphasis.
+Design Patterns presents a catalog of design elements that have solved problems commonly encountered in a variety of contexts. The motivations of these patterns and the
+patterns themselves are presented in purely technical terms. But a subset of these elements can
+be applied in the broader context of domain modeling and design, because they correspond to
+general concepts that emerge in many domains.
+In addition to those in
+Design Patterns, there have been many other technical design patterns presented over the years. Some of them correspond to deep concepts that emerge in domains. It would
+be nice to draw on this work. To make use of such patterns in domain-driven design, we have to
+look at the patterns on two levels simultaneously. On one level, they are technical design patterns
+in the code. On the other level, they are conceptual patterns in the model.
+A sample of specific patterns from
+Design Patterns will show how a pattern conceived as a design
+pattern can be applied in the domain model, and it will clarify the distinction between a technical
+design pattern and a domain pattern.
+COMPOSITE and
+STRATEGY demonstrate how some of the
+classic design patterns can be applied to domain problems by thinking about them in a different
+way. . . .
+Strategy (A.K.A.Policy)
+Define a family of algorithms, encapsulate each one, and make them interchangeable. S
+TRATEGY lets the algorithm vary independently from clients that use it. [Gamma et al. 1995]
+Domain models contain processes that are not technically motivated but actually meaningful in the
+problem domain. When alternative processes must be provided, the complexity of choosing the
+appropriate process combines with the complexity of the multiple processes themselves, and things
+get out of hand.
+When we model processes, we often realize that there is more than one legitimate way of doing
+them. As we start to describe these options, our definition of the process becomes clumsy and
+complicated. The actual behavioral alternatives we are choosing between are obscured as they are
+mixed in with the rest of the behavior.
+We would like to separate this variation from the main concept of the process. Then we would be
+able to see both the main process and the options more clearly. The
+STRATEGY pattern, already
+well established in the software design community, addresses this very issue, though the focus is
+technical. Here it is being applied as a concept in a model and reflected in the code implementation
+of that model. There is the same need to decouple the highly variable part of the process from the
+more stable part.
+Therefore:
+Factor the varying part of a process into a separate “strategy” object in the model. Factor apart a
+rule and the behavior it governs. Implement the rule or substitutable process following the STRAT-
+EGY design pattern. Multiple versions of the strategy object represent different ways the process
+can be done.
+Whereas the conventional view of
+STRATEGY as a design pattern focuses on the ability to substitute
+different algorithms, its use as a domain pattern focuses on its ability to express a concept, usually
+a process or a policy rule.
+Example
+Route-Finding Policies
+A Route Specification is being passed to a Routing Service, whose job is to construct a detailed
+Itinerary that satisfies the
+SPECIFICATION. This
+SERVICE is an optimization engine that can be
+tuned to find either the fastest route or the cheapest one.
+Relating Design Patterns to the Model 199
+Figure 12.1. A SERVICE interface with options will need conditional logic.
+This setup looks OK, but a detailed look at the routing code would reveal conditionals in every
+computation, making the decision between fastest or cheapest appear all over the place. More
+trouble will come when new criteria are added to make more subtle choices between routes.
+One approach is to separate those tuning parameters into
+STRATEGIES. Then they can be represented explicitly, passed into the Routing Service as a parameter.
+The Routing Service now handles all requests in the same, unconditional way, looking for a sequence of Legs with a low magnitude, as computed by the Leg Magnitude Policy.
+This design has the advantages that motivate the
+STRATEGY pattern in
+Design Patterns. On the
+level of application versatility and flexibility, the behavior of the Routing Service can now be controlled and extended by installing an appropriate Leg Magnitude Policy. The
+STRATEGIES illustrated in Figure 12.2 (fastest or cheapest) are only the most obvious ones. Combinations that balance
+speed and cost are likely. There may be other factors altogether, such as a bias toward booking
+cargo on the company's own transports rather than subcontracting to carry them on the transports
+of other shipping companies. These modifications could have been made without resorting to
+STRATEGIES, but the logic would have wound through the internals of the Routing Service and
+bloated its interface. The decoupling does make it clear and easily testable.
+Figure 12.2. Options determined by choice of STRATEGY (POLICY) passed as argument
+Relating Design Patterns to the Model 200
+A fundamentally important rule in the domain, the basis of choosing one Leg over another when
+building an Itinerary, is now explicit and distinct. It conveys the knowledge that a specific attribute
+(potentially derived) of an individual leg, boiled down to a single number, is the basis for routing.
+This makes possible a simple statement in the language of the domain that defines the Routing
+Service's behavior: The Routing Service chooses an Itinerary with a minimum total magnitude of
+the Legs based on the chosen
+STRATEGY.
+Note: This discussion implies that the Routing Service is actually evaluating Legs as it searches for
+an Itinerary. This approach is conceptually straightforward, and it could make a reasonable prototype implementation, but it is probably unacceptably inefficient. This application will be taken up
+again in Chapter 14, “Maintaining Model Integrity,” where the same interface will be used with a
+completely different implementation of the Routing Service.
+When we use the technical design pattern in the domain layer, we have to add an additional motivation, another layer of meaning. When the
+STRATEGY corresponds to an actual business strategy
+or policy, the pattern becomes more than just a useful implementation technique (though that too
+is valuable as far as it goes).
+The
+consequences of the design pattern fully apply. For example, in
+Design Patterns, Gamma et
+al. point out that clients must be aware of different
+STRATEGIES, which is also a modeling concern.
+A concern purely of implementation is that
+STRATEGIES can increase the number of objects in the
+application. If that is a problem, the overhead can be reduced by implementing
+STRATEGIES as
+stateless objects that contexts can share. The extensive discussion of implementation approaches
+in
+Design Patterns all applies here. This is because we are still using a
+STRATEGY. Our motivations
+are partially different, which will affect some choices, but the experience embedded in the design
+pattern is at our disposal.
+Composite
+Compose objects into tree structures to represent part-whole hierarchies. C
+OMPOSITE lets clients treat individual
+objects and compositions of objects uniformly. [Gamma et al. 1995]
+We often encounter, while modeling complex domains, an important object that is composed of
+parts, which are themselves made up of parts, which are made up of parts—occasionally even
+nesting to arbitrary depth. In some domains, each of these levels is conceptually distinct, but in other
+cases, there is a sense in which the parts are the same kind of thing as the whole, only smaller.
+Relating Design Patterns to the Model 201
+When the relatedness of nested containers is not reflected in the model, common behavior has to
+be duplicated at each level of the hierarchy, and nesting is rigid (for example, containers can't usually
+contain other containers at their own level, and the number of levels is fixed). Clients must deal with
+different levels of the hierarchy through different interfaces, even though there may be no conceptual
+difference they care about. Recursion through the hierarchy to produce aggregated information is
+very complicated.
+When applying any design pattern in the domain, the first concern should be whether the pattern
+idea really is a good fit for the domain concept. It might be convenient to move recursively through
+some associated objects, but is there a true whole-part hierarchy? Have you found an abstraction
+under which all the parts truly are the same conceptual type? If you have,
+COMPOSITE will make
+those aspects of the model clearer, while allowing you to tap into the carefully thought-out design
+and implementation considerations of the design pattern.
+Therefore:
+Define an abstract type that encompasses all members of the COMPOSITE. Methods that return
+information are implemented on containers to return aggregated information about their contents.
+“Leaf” nodes implement those methods based on their own values. Clients deal with the abstract
+type and have no need to distinguish leaves from containers.
+This is a relatively obvious pattern on the structural level, but designers often do not push themselves
+to flesh out the operational level of the pattern. The
+COMPOSITE offers the same behavior at every
+structural level, and meaningful questions can be asked of small or large parts that transparently
+reflect their makeup. That rigorous symmetry is the key to the power of the pattern.
+Example
+Shipment Routes Made of Routes
+A complete cargo shipment route is complicated. First the container must be trucked to a railhead,
+then carried to a port, then transported on a ship to another port, possibly transferred to other ships,
+and finally transported by ground on the other end.
+Figure 12.3. A schematic of a “route” made up of “legs”
+An application development team has created an object model to express these arbitrarily long
+strings of legs that assemble into a route.
+Relating Design Patterns to the Model 202
+Figure 12.4. A class diagram of a Route made up of Legs
+Using this model, the developers are able to create Route objects based on booking requests. They
+are able to process the Legs into the operational plan for the step-by-step handling of the cargo.
+Then they discover something.
+The developers had always thought of a route as an arbitrary, un-differentiated string of legs.
+Figure 12.5. The developers' conception of a route
+It turns out the domain experts see the route as a sequence of five logical segments.
+Figure 12.6. The business experts' conception of a route
+Among other things, these subroutes may be planned at different times by different people, so they
+have to be viewed as distinct. And on closer inspection, the “door legs” are quite different from the
+other legs, involving locally hired trucks or even customer haulage, in contrast to the elaborately
+scheduled rail and ship transports.
+Relating Design Patterns to the Model 203
+An object model reflecting all these distinctions starts to get complicated.
+Figure 12.7. The elaborated class diagram of Route
+Structurally the model isn't so bad, but the uniformity of processing the operational plan is lost, so
+the code, or even a description of behavior, becomes much more complicated. Other complications
+begin to surface, too. Any traversal of a route involves multiple collections of different types of objects.
+Enter
+COMPOSITE. It would be nice, for certain clients, to treat the different levels in this construct
+uniformly, as routes made up of routes. Conceptually this view is sound. Every level of Route is a
+movement of a container from one point to another, all the way down to an individual leg. (See
+Figure 12.8.)
+Relating Design Patterns to the Model 204
+Figure 12.8. A class diagram using COMPOSITE
+Now, the static class diagram does not tell us as much about how door legs and other segments fit
+together as the previous one did. But the model is more than a static class diagram. We'll convey
+assembly information through other diagrams (see Figure 12.9) and through the (now much simpler)
+code. This model captures the deep relatedness of all these different kinds of “Route .” Generating
+the operational plan is simple again, as are other route-traversing operations.
+Relating Design Patterns to the Model 205
+Figure 12.9. Instances representing a complete Route
+With a route made of other routes, pieced together end to end to get from one place to another, you
+can have route implementations of varying detail. You can chop off the end of a route and splice on
+a new ending, you can have arbitrary nesting of detail, and you can exploit all sorts of possibly useful
+options.
+Of course, we don't yet need such options. And before we needed those route segments and distinct
+door legs, we were doing just fine without
+COMPOSITE. A design pattern should be applied only
+when it is needed.
+Why Not FLYWEIGHT?
+Because I referred to the
+FLYWEIGHT pattern earlier (in Chapter 5), you might have assumed that
+it is an example of a pattern to be applied to domain models. In fact,
+FLYWEIGHT is a good example
+of a design pattern that has
+no correspondence to the domain model.
+When a limited set of
+VALUE OBJECTS is used many times (as in the example of electrical outlets
+in a house plan), it may make sense to implement them as
+FLYWEIGHTS. This is an
+implementation option available for
+VALUE OBJECTS and not for
+ENTITIES. Contrast this with
+COMPO-
+SITE, in which conceptual objects are composed of other conceptual objects. In that case, the
+pattern applies to both model and implementation, which is an essential trait of a domain pattern.
+Relating Design Patterns to the Model 206
+I'm not going to try to compile a list of the design patterns that can be used as domain patterns.
+Although I can't think of an example of using an interpreter as a domain pattern, I'm not prepared
+to say that there is no conception of any domain that would fit. The only requirement is that the
+pattern should say something about the conceptual domain, not just be a technical solution to a
+technical problem.
+Relating Design Patterns to the Model 207
+Chapter Thirteen. Refactoring Toward Deeper
+Insight
+Refactoring toward deeper insight is a multifaceted process. It will be helpful to stop for a moment
+to pull together the major points. There are three things you have to focus on.
+1. Live in the domain.
+2. Keep looking at things a different way.
+3. Maintain an unbroken dialog with domain experts.
+Seeking insight into the domain creates a broader context for the process of refactoring.
+The classic refactoring scenario involves a developer or two sitting at the keyboard, recognizing that
+some code can be improved, and then changing it on the fly (with unit tests to verify their results, of
+course). This practice should happen all the time, but it isn't the whole story.
+The previous five chapters present an expanded view of refactoring, superimposed on the conventional micro-refactoring approach.
+Initiation
+Refactoring toward deeper insight can begin in many ways. It may be a response to a problem in
+the code—some complexity or awkwardness. Rather than apply a standard transformation of the
+code, the developers sense that the root of the problem is in the domain model. Perhaps a concept
+is missing. Maybe some relationship is wrong.
+In a departure from the conventional view of refactoring, this same realization could come when the
+code looks tidy, if the language of the model seems disconnected from the domain experts, or if
+new requirements are not fitting in naturally. Refactoring might result from learning, as a developer
+who has gained deeper understanding sees an opportunity for a more lucid or useful model.
+Seeing the trouble spot is often the hardest and most uncertain part. After that, developers can
+systematically seek out the elements of a new model. They can brainstorm with colleagues and
+domain experts. They can draw on systematized knowledge written as analysis patterns or design
+patterns.
+Exploration Teams
+Whatever the source of dissatisfaction, the next step is to seek a refinement that will make the model
+communicate clearly and naturally. This might require only some modest change that is immediately
+evident and can be accomplished in a few hours. In that case, the change resembles traditional
+refactoring. But the search for a new model may well call for more time and the involvement of more
+people.
+The initiators of the change pick a couple of other developers who are good at thinking through that
+kind of problem, who know that area of the domain, or who have strong modeling skills. If there are
+subtleties, they make sure a domain expert is involved. This group of four or five people goes to a
+conference room or a coffee shop and brainstorms for half an hour to an hour and a half. They
+sketch UML diagrams; they try walking through scenarios using the objects. They make sure the
+subject matter expert understands the model and finds it useful. When they find something they are
+happy with, they go back and code it. Or they decide to mull it over for a few days, and they go back
+and work on something else. A couple of days later, the group reconvenes and goes through the
+exercise again. This time they are more confident, having slept on their earlier thoughts, and they
+reach some conclusions. They go back to their computers and code the new design.
+There are a few keys to keeping this process productive.
+•
+Self-determination. A small team can be assembled on the fly to explore a design problem. The
+team can operate for a few days and then disband. There is no need for long-term, elaborate
+organizational structures.
+•
+Scope and sleep. Two or three short meetings spaced out over a few days should produce a
+design worth trying. Dragging it out doesn't help. If you get stuck, you may be taking on too much
+at once. Pick a smaller aspect of the design and focus on that.
+•
+Exercising the UBIQUITOUS LANGUAGE. Involving the other team members—particularly the
+subject matter expert—in the brain-storming session creates an opportunity to exercise and
+refine the
+UBIQUITOUS LANGUAGE. The end result of the effort is a refinement of that
+LAN-
+GUAGE which the original developer(s) will take back and formalize in code.
+Earlier chapters in this book have presented several dialogs in which developers and domain experts
+probe for better models. A full-blown brainstorming session is dynamic, unstructured, and in-credibly
+productive.
+Prior Art
+It isn't always necessary to reinvent the wheel. The process of brain-storming for missing concepts
+and better models has a great capacity to absorb ideas from any source, combine them with local
+knowledge, and continue crunching to find answers to the current situation.
+You can get ideas from books and other sources of knowledge about the domain itself. Although
+the people in the field may not have created a model suitable for running software, they may well
+have organized the concepts and found some useful abstractions. Feeding the knowledge-crunching process this way leads to richer, quicker results that also will probably seem more familiar to
+domain experts.
+Sometimes you can draw on the experience of others in the form of analysis patterns. This kind of
+input has some of the effect of reading about the domain, but in this case it is geared specifically
+toward software development, and it should be based directly on experience implementing software
+in your domain. Analysis patterns can give you subtle model concepts and help you avoid lots of
+mistakes. But they don't give you a cookbook recipe. They feed the knowledge-crunching process.
+As the pieces are fit together, model concerns and design concerns must be dealt with in parallel.
+Again, it doesn't always mean inventing everything from scratch. Design patterns can often be employed in the domain layer when they fit both an implementation need and the model concept.
+Likewise, when a common formalism, such as arithmetic or predicate logic, fits some part of a
+domain, you can factor that part out and adapt the rules of the formal system. This provides very
+tight and readily understood models.
+Refactoring Toward Deeper Insight 209
+A Design for Developers
+Software isn't just for users. It's also for developers. Developers have to integrate code with other
+parts of the system. In an iterative process, developers change the code again and again. Refactoring toward deeper insight both leads to and benefits from a supple design.
+A supple design communicates its intent. The design makes it easy to anticipate the effect of running
+code—and therefore it easy to anticipate the consequences of changing it. A supple design helps
+limit mental overload, primarily by reducing dependencies and side effects. It is based on a deep
+model of the domain that is fine-grained only where most critical to the users. This makes for flexibility where change is most common, and simplicity elsewhere.
+Timing
+If you wait until you can make a complete justification for a change, you've waited too long. Your
+project is already incurring heavy costs, and the postponed changes will be harder to make because
+the target code will have been more elaborated and more embedded in other code.
+Continuous refactoring has come to be considered a “best practice,” but most project teams are still
+too cautious about it. They see the risk of changing code and the cost of developer time to make a
+change; but what's harder to see is the risk of keeping an awkward design and the cost of working
+around that design. Developers who want to refactor are often asked to justify the decision. Although
+this seems reasonable, it makes an already difficult thing impossibly difficult, and tends to squelch
+refactoring (or drive it underground). Software development is not such a predictable process that
+the benefits of a change or the costs of not making a change can be accurately calculated.
+Refactoring toward deeper insight needs to become part of the ongoing exploration of the subject
+matter of the domain, the education of the developers, and the meeting of the minds of developers
+and domain experts. Therefore, refactor when
+• The design does not express the team's current understanding of the domain;
+• Important concepts are implicit in the design (and you see a way to make them explicit); or
+• You see an opportunity to make some important part of the design suppler.
+This aggressive attitude does not justify any change at any time. Don't refactor the day before a
+release. Don't introduce “supple designs” that are just demonstrations of technical virtuosity but fail
+to cut to the core of the domain. Don't introduce a “deeper model” that you couldn't convince a
+domain expert to use, no matter how elegant it seems. Don't be absolute about things, but push
+beyond the comfort zone in the direction of favoring refactoring.
+Crisis as Opportunity
+For over a century after Charles Darwin introduced it, the standard model of evolution was that
+species changed gradually, somewhat steadily, over time. Suddenly, in the 1970s, this model was
+displaced by the “punctuated equilibrium” model. In this expanded view of evolution, long periods
+of gradual change or stability are interrupted by relatively short bursts of rapid change. Then things
+settle down into a new equilibrium. Software development has an intentional direction behind it that
+evolution lacks (although it may not be evident on some projects), but nonetheless it follows this
+kind of rhythm.
+Classical descriptions of refactoring sound very steady. Refactoring toward deeper insight usually
+isn't. A period of steady refinement of a model can suddenly bring you to an insight that shakes up
+everything. These breakthroughs don't happen every day, yet a large proportion of the changes that
+lead to a deep model and supple design emerge from them.
+Refactoring Toward Deeper Insight 210
+Such a situation often does not look like an opportunity; it seems more like a crisis. Suddenly there
+is some obvious inadequacy in the model. There is a gaping hole in what it can express, or some
+critical area where it is opaque. Maybe it makes statements that are just wrong.
+This means the team has reached a new level of understanding. From their now-elevated viewpoint,
+the old model looks poor. From that viewpoint, they can conceive a far better one.
+Refactoring toward deeper insight is a continuing process. Implicit concepts are recognized and
+made explicit. Parts of the design are made suppler, perhaps taking on a declarative style. Development suddenly comes to the brink of a breakthrough and plunges through to a deep model—and
+then steady refinement starts again.
+Refactoring Toward Deeper Insight 211
+Chapter Fourteen. Maintaining Model
+Integrity
+I once worked on a project where several teams were working in parallel on a major new system.
+One day, the team working on the customer-invoicing module was ready to implement an object
+they called Charge, when they discovered that another team had already built one. Diligently, they
+set out to reuse the existing object. They discovered it didn't have an “expense code,” so they added
+one. It already had the “posted amount” attribute they needed. They had been planning to call it
+“amount due,” but—what's in a name?—they changed it. Adding a few more methods and associations, they got something that looked like what they wanted, without disturbing what was there.
+They had to ignore many associations they didn't need, but their application module ran.
+A few days later, mysterious problems surfaced in the bill-payment application module for which the
+Charge had originally been written. Strange Charges appeared that no one remembered entering
+and that didn't make any sense. The program began to crash when some functions were used,
+particularly the month-to-date tax report. Investigation revealed that the crash resulted when a
+function was used that summed up the amount deductible for all the current month's payments. The
+mystery records had no value in the “percent deductible” field, although the validation of the dataentry application required it and even put in a default value.
+The problem was that these two groups had
+different models, but they did not realize it, and there
+were no processes in place to detect it. Each made assumptions about the nature of a charge that
+were useful in their context (billing customers versus paying vendors). When their code was combined without resolving these contradictions, the result was unreliable software.
+If only they had been more aware of this reality, they could have consciously decided how to deal
+with it. That might have meant working together to hammer out a common model and then writing
+an automated test suite to prevent future surprises. Or it might simply have meant an agreement to
+develop separate models and keep hands off each other's code. Either way, it starts with an explicit
+agreement on the boundaries within which each model applies.
+What did they do once they knew about the problem? They created separate Customer Charge and
+Supplier Charge classes and defined each according to the needs of the corresponding team. The
+immediate problem having been solved, they went back to doing things just as before. Oh well.
+Although we seldom think about it explicitly, the most fundamental requirement of a model is that it
+be internally consistent; that its terms always have the same meaning, and that it contain no contradictory rules. The internal consistency of a model, such that each term is unambiguous and no
+rules contradict, is called
+unification. A model is meaningless unless it is logically consistent. In an
+ideal world, we would have a single model spanning the whole domain of the enterprise. This model
+would be unified, without any contradictory or overlapping definitions of terms. Every logical statement about the domain would be consistent.
+But the world of large systems development is not the ideal world. To maintain that level of unification
+in an entire enterprise system is more trouble than it is worth. It is necessary to allow multiple models
+to develop in different parts of the system, but we need to make careful choices about which parts
+of the system will be allowed to diverge and what their relationship to each other will be. We need
+ways of keeping crucial parts of the model tightly unified. None of this happens by itself or through
+good intentions. It happens only through conscious design decisions and institution of specific processes. Total unification of the domain model for a large system will not be feasible or cost-effective.
+Sometimes people fight this fact. Most people see the price that multiple models exact by limiting
+integration and making communication cumbersome. On top of that, having more than one model
+somehow seems inelegant. This resistance to multiple models sometimes leads to very ambitious
+attempts to unify all the software in a large project under a single model. I know I've been guilty of
+this kind of overreaching. But consider the risks.
+1. Too many legacy replacements may be attempted at once.
+2. Large projects may bog down because the coordination over-head exceeds their abilities.
+3. Applications with specialized requirements may have to use models that don't fully satisfy their
+needs, forcing them to put behavior elsewhere.
+4. Conversely, attempting to satisfy everyone with a single model may lead to complex options
+that make the model difficult to use.
+What's more, model divergences are as likely to come from political fragmentation and differing
+management priorities as from technical concerns. And the emergence of different models can be
+a result of team organization and development process. So even when no technical factor prevents
+full integration, the project may still face multiple models.
+Given that it isn't feasible to maintain a unified model for an entire enterprise, we don't have to leave
+ourselves at the mercy of events. Through a combination of proactive decisions about what should
+be unified and pragmatic recognition of what is not unified, we can create a clear, shared picture of
+the situation. With that in hand, we can set about making sure that the parts we want to unify stay
+that way, and the parts that are not unified don't cause confusion or corruption.
+We need a way to mark the boundaries and relationships between different models. We need to
+choose our strategy consciously and then follow our strategy consistently.
+This chapter lays out techniques for recognizing, communicating, and choosing the limits of a model
+and its relationships to others. It all starts with mapping the current terrain of the project. A
+BOUN-
+DED CONTEXT defines the range of applicability of each model, while a
+CONTEXT MAP gives a
+global overview of the project's contexts and the relationships between them. This reduction of
+ambiguity will, in and of itself, change the way things happen on the project, but it isn't necessarily
+enough. Once we have a
+CONTEXT BOUNDED, a process of
+CONTINUOUS INTEGRATION will
+keep the model unified.
+Then, starting from this stable situation, we can start to migrate toward more effective strategies for
+BOUNDING CONTEXTS and relating them, ranging from closely allied contexts with
+SHARED
+KERNELS to loosely coupled models that go their
+SEPARATE WAYS.
+Maintaining Model Integrity 215
+Figure 14.1. A navigation map for model integrity patterns
+Bounded Context
+Cells can exist because their membranes define what is in and out and determine what can pass.
+Multiple models coexist on big projects, and this works fine in many cases. Different models apply
+in different contexts. For example, you may have to integrate your new software with an external
+system over which your team has no control. A situation like this is probably clear to everyone as a
+distinct context where the model under development doesn't apply, but other situations can be more
+vague and confusing. In the story that opened this chapter, two teams were working on different
+functionality for the same new system. Were they working on the same model? Their intention was
+to share at least part of what they did, but there was no demarcation to tell them what they did or
+did not share. And they had no process in place to hold a shared model together or quickly detect
+divergences. They realized they had diverged only after their system's behavior suddenly became
+unpredictable.
+Maintaining Model Integrity 216
+Even a single team can end up with multiple models. Communication can lapse, leading to subtly
+conflicting interpretations of the model. Older code often reflects an earlier conception of the model
+that is subtly different from the current model.
+Everyone is aware that the data format of another system is different and calls for a data conversion,
+but this is only the mechanical dimension of the problem. More fundamental is the difference in the
+models implicit in the two systems. When the discrepancy is not with an external system, but within
+the same code base, it is even less likely to be recognized. Yet this happens on
+all large team
+projects.
+Multiple models are in play on any large project. Yet when code based on distinct models is combined, software becomes buggy, unreliable, and difficult to understand. Communication among
+team members becomes confused. It is often unclear in what context a model should
+not be applied.
+Failure to keep things straight is ultimately revealed when the running code doesn't work right, but
+the problem starts in the way teams are organized and the way people interact. Therefore, to clarify
+the context of a model, we have to look at both the project and its end products (code, database
+schemas, and so on).
+A model applies in a
+context. The context may be a certain part of the code, or the work of a particular
+team. For a model invented in a brainstorming session, the context could be limited to that particular
+conversation. The context of a model used in an example in this book is that particular example
+section and any later discussion of it. The model context is whatever set of conditions must apply
+in order to be able to say that the terms in a model have a specific meaning.
+To begin to solve the problems of multiple models, we need to define explicitly the scope of a
+particular model as a bounded part of a software system within which a single model will apply and
+will be kept as unified as possible. This definition has to be reconciled with the team organization.
+Therefore:
+Explicitly define the context within which a model applies. Explicitly set boundaries in terms of team
+organization, usage within specific parts of the application, and physical manifestations such as
+code bases and database schemas. Keep the model strictly consistent within these bounds, but
+don't be distracted or confused by issues outside.
+A
+BOUNDED CONTEXT delimits the applicability of a particular model so that team members have
+a clear and shared understanding of what has to be consistent and how it relates to other
+CON-
+TEXTS. Within that
+CONTEXT, work to keep the model logically unified, but do not worry about
+applicability outside those bounds. In other
+CONTEXTS, other models apply, with differences in
+terminology, in concepts and rules, and in dialects of the
+UBIQUITOUS LANGUAGE. By drawing
+an explicit boundary, you can keep the model pure, and therefore potent, where it is applicable. At
+the same time, you avoid confusion when shifting your attention to other
+CONTEXTS. Integration
+across the boundaries necessarily will involve some translation, which you can analyze explicitly.
+BOUNDED CONTEXTS Are Not MODULES
+The issues are confused sometimes, but these are different patterns with different motivations. True, when
+two sets of objects are recognized as making up different models, they are almost always placed in separate
+MODULES. Doing so does provide different name spaces (essential for different
+CONTEXTS) and some demarcation.
+But
+MODULES also organize the elements within one model; they don't necessarily communicate an intention
+to separate
+CONTEXTS. The separate name spaces that
+MODULES create
+within a
+BOUNDED CONTEXT
+actually make it harder to spot accidental model fragmentation.
+Maintaining Model Integrity 217
+Example
+Booking Context
+A shipping company has an internal project to develop a new application for booking cargo. This
+application is to be driven by an object model. What is the
+BOUNDED CONTEXT within which this
+model applies? To answer this question, we have to look at what is happening on the project. Keep
+in mind, this is a look at the project
+as it is, not as it ideally should be.
+One project team is working on the booking application itself. They are not expected to modify the
+model objects, but the application they are building has to display and manipulate those objects.
+This team is a consumer of the model. The model is valid within the application (its primary consumer), and therefore the booking application is in bounds.
+The completed bookings have to be passed to the legacy cargotracking system. A decision was
+made up front that the new model would depart from that of the legacy, so the legacy cargotracking
+system is outside the boundary. Necessary translation between the new model and the legacy is to
+be the responsibility of the legacy maintenance team. The translation mechanism is not driven by
+the model. It is not in the
+BOUNDED CONTEXT. (It is part of the boundary itself, which will be
+discussed in
+CONTEXT MAP.) It is good that translation is out of
+CONTEXT (not based on the
+model). It would be unrealistic to ask the legacy team to make any real use of the model because
+their primary work is out of
+CONTEXT.
+The team responsible for the model deals with the whole life cycle of each object, including persistence. Because this team has control of the database schema, they've been deliberately keeping
+the object-relational mapping straightforward. In other words, the schema is being driven by the
+model and therefore is in bounds.
+Yet another team is working on a model and application for scheduling the voyages of the cargo
+ships. The scheduling and booking teams were initiated together, and both teams had intended to
+produce a single, unified system. The two teams have casually coordinated with each other, and
+they occasionally share objects, but they are not systematic about it. They are
+not working in the
+same
+BOUNDED CONTEXT. This is a risk, because they do not think of themselves as working on
+separate models. To the extent they integrate, there will be problems unless they put in place processes to manage the situation. (The
+SHARED KERNEL, discussed later in this chapter, might be
+a good choice.) The first step, though, is to recognize the situation
+as it is. They are not in the same
+CONTEXT and should stop trying to share code until some changes are made.
+This
+BOUNDED CONTEXT is made up of all those aspects of the system that are driven by this
+particular model: the model objects, the database schema that persists the model objects, and the
+booking application. Two teams work primarily in this
+CONTEXT: the modeling team and the application team. Information has to be exchanged with the legacy tracking system, and the legacy
+team has primary responsibility for the translation at this boundary, with cooperation from the modeling team. There is no clearly defined relationship between the booking model and the voyage
+schedule model, and defining that relationship should be one of those teams' first actions. In the
+meantime, they should be very careful about sharing code or data.
+So, what has been gained by defining this
+BOUNDED CONTEXT? For the teams working in
+CON-
+TEXT: clarity. Those two teams know they must stay consistent with one model. They make design
+decisions in that knowledge and watch for fractures. For the teams outside: freedom. They don't
+have to walk in the gray zone, not using the same model, yet somehow feeling they should. But the
+most concrete gain in this particular case is probably realizing the risk of the informal sharing between the booking model team and the voyage schedule team. To avoid problems, they really need
+to decide on the cost/benefit trade-offs of sharing and put in processes to make it work. This won't
+happen unless everyone understands where the bounds of the model contexts are.
+Maintaining Model Integrity 218
+Of course, boundaries are special places. The relationships between a
+BOUNDED CONTEXT and
+its neighbors require care and attention. The
+CONTEXT MAP charts the territory, giving the big
+picture of the
+CONTEXTS and their connections, while several patterns define the nature of the
+various relationships between
+CONTEXTS. And a process of
+CONTINUOUS INTEGRATION preserves unity of the model within a
+BOUNDED CONTEXT.
+But before proceeding to all that, what does it look like when unification of a model is breaking down?
+How do you recognize conceptual splinters?
+Recognizing Splinters Within a BOUNDED CONTEXT
+Many symptoms may indicate unrecognized model differences. Some of the most obvious are when
+coded interfaces don't match up. More subtly, unexpected behavior is a likely sign. The
+CONTIN-
+UOUS INTEGRATION process with automated tests can help catch these kinds of problems. But
+the early warning is usually a confusion of language.
+Combining elements of distinct models causes two categories of problems:
+duplicate concepts and
+false cognates. Duplication of concepts means that there are two model elements (and attendant
+implementations) that actually represent the same concept. Every time this information changes, it
+has to be updated in two places with conversions. Every time new knowledge leads to a change in
+one of the objects, the other has to be reanalyzed and changed too. Except the reanalysis doesn't
+happen in reality, so the result is two versions of the same concept that follow different rules and
+even have different data. On top of that, the team members must learn not one but two ways of
+doing the same thing, along with all the ways they are being synchronized.
+False cognates may be slightly less common, but more insidiously harmful. This is the case when
+two people who are using the same term (or implemented object) think they are talking about the
+same thing, but really are not. The example in the beginning of this chapter (two different business
+activities both called Charge) is typical, but conflicts can be even subtler when the two definitions
+are actually related to the same aspect in the domain, but have been conceptualized in slightly
+different ways. False cognates lead to development teams that step on each other's code, databases that have weird contradictions, and confusion in communication within the team. The term
+false
+cognate is ordinarily applied to natural languages. For example, English speakers learning Spanish
+often misuse the word
+embarazada. This word does not mean “embarrassed”; it means “pregnant.”
+Oops.
+When you detect these problems, your team will have to make a decision. You may want to pull the
+model back together and refine the processes to prevent fragmentation. Or the fragmentation may
+be a result of groups who want to pull the model in different directions for good reasons, and you
+may decide to let them develop independently. Dealing with these issues is the subject of the remaining patterns in this chapter.
+Maintaining Model Integrity 219
+Continuous Integration
+Having defined a
+BOUNDED CONTEXT, we must keep it sound.
+When a number of people are working in the same BOUNDED CONTEXT, there is a strong tendency
+for the model to fragment. The bigger the team, the bigger the problem, but as few as three or four
+people can encounter serious problems. Yet breaking down the system into ever-smaller CON-
+TEXTS eventually loses a valuable level of integration and coherency.
+Sometimes developers do not fully understand the intent of some object or interaction modeled by
+someone else, and they change it in a way that makes it unusable for its original purpose. Sometimes
+they don't realize that the concepts they are working on are already embodied in another part of the
+model and they duplicate (inexactly) those concepts and behavior. Sometimes they are aware of
+those other expressions but are afraid to tamper with them, for fear of corrupting the existing functionality, and so they proceed to duplicate concepts and functionality.
+It is very hard to maintain the level of communication needed to develop a unified system of any
+size. We need ways of increasing communication and reducing complexity. We also need safety
+nets that prevent overcautious behavior, such as developers duplicating functionality because they
+are afraid they will break existing code.
+It is in this environment that Extreme Programming (XP) really comes into its own. Many XP practices
+are aimed at this specific problem of maintaining a coherent design that is being constantly changed
+by many people. XP in its purest form is a nice fit for maintaining model integrity within a single
+BOUNDED CONTEXT. However, whether or not XP is being used, it is essential to have some
+process of
+CONTINUOUS INTEGRATION.
+C
+ONTINUOUS INTEGRATION means that all work within the context is being merged and made
+consistent frequently enough that when splinters happen they are caught and corrected quickly.
+C
+ONTINUOUS INTEGRATION, like everything else in domain-driven design, operates at two levels:
+(1) the integration of model concepts and (2) the integration of the implementation.
+Maintaining Model Integrity 220
+Concepts are integrated by constant communication among team members. The team must cultivate a shared understanding of the ever-changing model. Many practices help, but the most fundamental is constantly hammering out the
+UBIQUITOUS LANGUAGE. Meanwhile, the implementation artifacts are being integrated by a systematic merge/build/test process that exposes model
+splinters early. Many processes for integration are used, but most of the effective ones share these
+characteristics:
+• A step-by-step, reproducible merge/build technique;
+• Automated test suites; and
+• Rules that set some reasonably small upper limit on the lifetime of unintegrated changes.
+The other side of the coin in effective processes, although it is seldom formally included, is
+conceptual integration.
+• Constant exercise of the
+UBIQUITOUS LANGUAGE in discussions of the model and application
+Most Agile projects have at least daily merges of each developer's code changes. The frequency
+can be adjusted to the pace of change, as long as any unintegrated change would be merged before
+a significant amount of incompatible work could be done by other team members.
+In a
+MODEL-DRIVEN DESIGN, the integration of concepts smooths the way for the integration of
+the implementation, while the integration of the implementation proves the validity and consistency
+of the model and exposes splinters.
+Therefore:
+Institute a process of merging all code and other implementation artifacts frequently, with automated
+tests to flag fragmentation quickly. Relentlessly exercise the UBIQUITOUS LANGUAGE to hammer
+out a shared view of the model as the concepts evolve in different people's heads.
+Finally, do not make the job any bigger than it has to be. C
+ONTINUOUS INTEGRATION is essential
+only within a
+BOUNDED CONTEXT. Design issues involving neighboring
+CONTEXTS, including
+translation, don't have to be dealt with at the same pace.
+C
+ONTINUOUS INTEGRATION would be applied within any individual
+BOUNDED CONTEXT that
+is larger than a two-person task. It maintains the integrity of that single model. When multiple
+BOUNDED CONTEXTS coexist, you have to decide on their relationships and design any necessary
+interfaces. . . .
+Maintaining Model Integrity 221
+Context Map
+An individual BOUNDED CONTEXT still does not provide a global view. The context of other models
+may still be vague and in flux.
+People on other teams won't be very aware of the CONTEXT bounds and will unknowingly make
+changes that blur the edges or complicate the interconnections. When connections must be made
+between different contexts, they tend to bleed into each other.
+Code reuse between
+BOUNDED CONTEXTS is a hazard to be avoided. Integration of functionality
+and data must go through a translation. You can reduce confusion by defining the relationship between the different contexts and creating a global view of all the model contexts on the project.
+A
+CONTEXT MAP is in the overlap between project management and software design. The natural
+course of events is for the boundaries to follow the contours of team organization. People who work
+closely will naturally share a model context. People on different teams, or those that don't talk, even
+if they are on the same team, will split off into different contexts. Physical office space can have an
+impact too, as team members on opposite ends of a building—not to mention different cities—will
+probably diverge without extra integration effort. Most project managers intuitively recognize these
+factors and broadly organize teams around subsystems. But the interrelationship between team
+organization and software model and design is still not prominent enough. Both managers and team
+members need a clear view into the ongoing conceptual subdivision of the software model and
+design.
+Therefore:
+Identify each model in play on the project and define its BOUNDED CONTEXT. This includes the
+implicit models of non-object-oriented subsystems. Name each BOUNDED CONTEXT, and make
+the names part of the UBIQUITOUS LANGUAGE.
+Describe the points of contact between the models, outlining explicit translation for any communication and highlighting any sharing.
+Map the
+existing terrain. Take up transformations later.
+Within each
+BOUNDED CONTEXT, you will have a coherent dialect of the
+UBIQUITOUS LAN-
+GUAGE. The names of the
+BOUNDED CONTEXTS will themselves enter that
+LANGUAGE so that
+you can speak unambiguously about the model of any part of the design by making your
+CON-
+TEXT clear.
+Maintaining Model Integrity 222
+The
+MAP does not have to be documented in any particular form. I find diagrams like the ones in
+this chapter to be helpful in visualizing and communicating the map. Others may prefer a more
+textual description or a different graphical representation. In some situaions, discussion among
+teammates may be sufficient. The level of detail can vary according to need. Whatever form the
+MAP takes, it must be shared and understood by everyone on the project. It must provide a clear
+name for each
+BOUNDED CONTEXT, and it must make the points of contact and their natures clear.
+The relationships between
+BOUNDED CONTEXTS take many forms depending on both design
+issues and project organizational issues. Later, this chapter will lay out various patterns of relationships between
+CONTEXTS that are effective in different situations, and that can provide terms to
+describe the relationships you find in your own
+MAP. Keeping in mind that the
+CONTEXT MAP
+always represents
+the situation as it stands, the relationships you find may not fit these patterns
+initially. If they fall close, you may wish to use the pattern name, but don't force it. Just describe the
+relationships you find. Later you can begin to migrate toward more standardized relationships.
+So, what do you do if you've discovered a splinter—a model that is completely entangled but contains inconsistencies? Put a dragon on the map and finish describing everything. Then, with an
+accurate global view, address the points of confusion. A minor splinter can be repaired, and processes can be put in place to shore it up. If a relationship is vague, you can choose the nearest
+pattern and move toward it. Your first order of business is to arrive at a clear
+CONTEXT MAP, and
+this may mean fixing real problems you have found. But don't let this necessary repair lead to
+wholesale reorganization. Until you have an unambiguous
+CONTEXT MAP that places all your work
+into some
+BOUNDED CONTEXT, with explicit relationships between all connected models, change
+only the outright contradictions.
+Once you have a coherent
+CONTEXT MAP, you'll see things you want to change. You can make
+considered changes to the organization of teams or to the design. Remember, don't change the
+map until the change in reality is
+done.
+Example
+Two CONTEXTS in a Shipping Application
+We return again to the shipping system. One of the application's major features was to be the
+automatic routing of cargos at booking time. The model was something like this:
+Maintaining Model Integrity 223
+The Routing Service is a
+SERVICE that encapsulates a mechanism behind an
+INTENTION-RE-
+VEALING INTERFACE made up of
+SIDEEFFECT-FREE FUNCTIONS. The results of those functions are characterized with
+ASSERTIONS.
+1. The interface declares that when a Route Specification is passed in, an Itinerary will be returned.
+2. The ASSERTION states that the returned Itinerary will satisfy the Route Specification that was
+passed in.
+Nothing is stated about
+how this very difficult task is performed. Now let's go behind the curtain to
+see the mechanism.
+Initially on the project on which this example is based, I was too dogmatic about the internals of the
+Routing Service. I wanted the actual routing operation to be done with an extended domain model
+that would represent vessel voyages and directly relate them to the Legs in the Itinerary. But the
+team working on the routing problem pointed out that, to make it perform well and to draw on wellestablished algorithms, the solution needed to be implemented as an optimized network, with each
+leg of a voyage represented as an element in a matrix. They insisted on a distinct model of shipping
+operations for this purpose.
+They were clearly right about the computational demands of the routing process as then designed,
+and so, lacking any better idea, I yielded. In effect, we created two separate
+BOUNDED CON-
+TEXTS, each of which had its own conceptual organization of shipping operations. (See Figure
+14.3.)
+Figure 14.3. Two BOUNDED CONTEXTS formed to allow efficient routing algorithms to be applied
+Our requirement was to take a Routing Service request, translate it into terms the Network Traversal
+Service could understand, then take the result and translate it into the form a Routing Service is
+expected to give.
+This means it was not necessary to map everything in these two models, but only to be able to make
+two specific translations:
+Maintaining Model Integrity 224
+Route Specification List of location codes
+List of Node IDs Itinerary
+To do this, we have to look at the meaning of an element of one model and figure out how to express
+it in terms of the other.
+Starting with the first translation (Route Specification List of location codes), we have to think
+about the meaning of the sequence of locations in the list. The first in the list will be the beginning
+of the path, which will then be forced to pass through each location in turn until it reaches the last
+location in the list. So the origin and destination are the first and last in the list, with the customs
+clearance location (if there is one) in the middle.
+Figure 14.4. Translation of a query to the Network Traversal Service
+(Mercifully, the two teams used the same location codes, so we don't have to deal with that level of
+translation.)
+Notice that the reverse translation would be ambiguous, because the network traversal input allows
+any number of intermediate points, not just one specifically designated as customs clearance point.
+Fortunately, this is no problem because we don't need to translate in that direction, but it gives a
+glimpse of why some translations are impossible.
+Now, let's translate the result (List of Node IDs Itinerary). We'll assume that we can use a
+REPOSITORY to look up the Node and Shipping Operation objects based on the Node IDs we
+receive. So, how do those Nodes map to Legs? Based on the operationType-Code, we can
+break the list of Nodes into departure/arrival pairs. Each pair then relates to one Leg.
+Figure 14.5. Translation of a route found by the Network Traversal Service
+Maintaining Model Integrity 225
+The attributes for each Node pair would be mapped as follows:
+departureNode.shippingOperation.vesselVoyageId leg.vesselVoyageId
+departureNode.shippingOperation.date leg.loadDate
+departureNode.locationCode leg.loadLocationCode
+arrivalNode.shippingOperation.date leg.unloadDate
+arrivalNode.locationCode leg.unloadLocationCode
+This is the conceptual translation map between these two models. Now we have to implement
+something that can do the translation for us. In a simple case like this, I typically create an object
+for the purpose, and then find or create another object to provide the service to the rest of our
+subsystem.
+Figure 14.6. A two-way translator
+This is the one object that both teams have to work together to maintain. The design should make
+it very easy to unit-test, and it would be a particularly good idea for the teams to collaborate on a
+test suite for it. Other than that, they can go their separate ways.
+The Routing Service implementation now becomes a matter of delegating to the Translator and the
+Network Traversal Service. Its single operation would look something like this:
+public Itinerary route(RouteSpecification spec) {
+Booking_TransportNetwork_Translator translator =
+new Booking_TransportNetwork_Translator();]
+List constraintLocations =
+translator.convertConstraints(spec);
+Maintaining Model Integrity 226
+// Get access to the NetworkTraversalService
+List pathNodes =
+traversalService.findPath(constraintLocations);
+Itinerary result = translator.convert(pathNodes);
+return result;
+}
+Not bad. The
+BOUNDED CONTEXTS served to keep each of the models relatively clean, let the
+teams work largely independently, and if initial assumptions had been correct, would probably have
+served well. (We'll return to that later in this chapter.)
+The interface between the two contexts is fairly small. The interface of the Routing Service insulates
+the rest of the Booking
+CONTEXT's design from events in the route-finding world. The interface is
+easy to test because it is made up of
+SIDE-EFFECT-FREE FUNCTIONS. One of the secrets to
+comfortable coexistence with other
+CONTEXTS is to have effective sets of tests for the interfaces.
+“Trust, but verify,” said President Reagan when negotiating arms reductions.1
+It should be easy to devise a set of automated tests that would feed Route Specifications into the
+Routing Service and check the returned Itinerary.
+Model contexts always exist, but without conscious attention they may overlap and fluctuate. By
+explicitly defining
+BOUNDED CONTEXTS and a
+CONTEXT MAP, your team can begin to direct the
+process of unifying models and connecting distinct ones.
+Testing at the CONTEXT Boundaries
+Contact points with other
+BOUNDED CONTEXTS are particularly important to test. Tests help
+compensate for the subtleties of translation and the lower level of communication that typically exist
+at boundaries. They can act as a valuable early warning system, especially reassuring in cases
+where you depend on the details of a model you don't control.
+Organizing and Documenting CONTEXT MAPS
+There are only two important points here:
+1. The
+BOUNDED CONTEXTS should have names so that you can talk about them. Those
+names should enter the
+UBIQUITOUS LANGUAGE of the team.
+2. Everyone has to know where the boundaries lie, and be able to recognize the CONTEXT of
+any piece of code or any situation.
+The second requirement could be met in many ways depending on the culture of the team. Once
+the
+BOUNDED CONTEXTS have been defined, it comes naturally to segregate the code of different
+CONTEXTS into different
+MODULES, which leaves the question of how to keep track of which
+MODULE belongs in which
+CONTEXT. A naming convention might be used to indicate this, or any
+other mechanism that is easy and avoids confusion.
+Equally important is communicating the conceptual boundaries in such a way that everyone on the
+team understands them the same way. For this communication purpose, I like informal diagrams
+like the ones in the example. More rigorous diagrams or textual lists could be made, showing all
+packages in each
+CONTEXT, along with the points of contact and the mechanisms responsible for
+connecting and translating. Some teams will be more comfortable with this approach, while others
+will get by fine based on spoken agreement and lots of discussion.
+1Reagan translated an old Russian saying that summed up the heart of the matter for both sides—another metaphor for bridging contexts.
+Maintaining Model Integrity 227
+In any case, working the
+CONTEXT MAP into discussions is essential if the names are to enter the
+UBIQUITOUS LANGUAGE. Don't say, “George's team's stuff is changing, so we're going to have
+to change our stuff that talks to it.” Say instead, “The
+Transport Network model is changing, so we're
+going to have to change the
+translator for the
+Booking context.”
+Relationships Between BOUNDED CONTEXTS
+The following patterns cover a range of strategies for relating two models that can be composed to
+encompass an entire enterprise. These patterns serve the dual purpose of providing targets for
+successfully organizing development work, and supplying vocabulary for describing the existing
+organization.
+An existing relationship may, by chance or by design, fall near one of these patterns, in which case
+you can describe it using that term, variations duly noted. Then, with each small design change, the
+relationship can be drawn closer to the chosen pattern.
+On the other hand, you may find that an existing relationship is muddled or overcomplicated. Some
+reorganization might be necessary just to make an unambiguous
+CONTEXT MAP possible. In this
+situation, or any situation in which you are considering reorganization, these patterns present a
+range of choices that are favored in different circumstances. Prominent variables include the level
+of control you have over the other model, the level and type of cooperation between teams, and the
+degree of integration of features and data.
+The following set of patterns covers some of the most common and important cases, which should
+give you a good idea of how to approach other cases. A crack team working closely on a tightly
+integrated product can deploy a large unified model. The need to serve different user communities
+or a limitation on the coordination abilities of the team might lead to a
+SHARED KERNEL or
+CUS-
+TOMER/SUPPLIER relationships. Sometimes a good hard look at the requirements reveals that
+integration is not essential and it is best for systems to go their
+SEPARATE WAYS. And, of course,
+most projects have to integrate to some degree with legacy and external systems, which can lead
+to
+OPEN HOST SERVICES or
+ANTICORRUPTION LAYERS.
+Shared Kernel
+Maintaining Model Integrity 228
+When functional integration is limited, the overhead of
+CONTINUOUS INTEGRATION may be
+deemed too high. This may especially be true when the teams do not have the skill or the political
+organization to maintain continuous integration, or when a single team is simply too big and unwieldy. So separate
+BOUNDED CONTEXTS might be defined and multiple teams formed.
+Uncoordinated teams working on closely related applications can go racing forward for a while, but
+what they produce may not fit together. They can end up spending more on translation layers and
+retrofitting than they would have on CONTINUOUS INTEGRATION in the first place, meanwhile
+duplicating effort and losing the benefits of a common UBIQUITOUS LANGUAGE.
+On many projects I've seen the infrastructure layer shared among teams that worked largely independently. An analogy to this can work well within the domain as well. It may be too much overhead
+to fully synchronize the entire model and code base, but a carefully selected subset can provide
+much of the benefit for less cost.
+Therefore:
+Designate some subset of the domain model that the two teams agree to share. Of course this
+includes, along with this subset of the model, the subset of code or of the database design associated with that part of the model. This explicitly shared stuff has special status, and shouldn't be
+changed without consultation with the other team.
+Integrate a functional system frequently, but somewhat less often than the pace of CONTINUOUS
+INTEGRATION within the teams. At these integrations, run the tests of both teams.
+It is a careful balance. The
+SHARED KERNEL cannot be changed as freely as other parts of the
+design. Decisions involve consultation with another team. Automated test suites must be integrated
+because all tests of both teams must pass when changes are made. Usually, teams make changes
+on separate copies of the
+KERNEL, integrating with the other team at intervals. (For example, on a
+team that
+CONTINUOUSLY INTEGRATES daily or better, the
+KERNEL merger might be weekly.)
+Regardless of when code integration is scheduled, the sooner both teams talk about the changes,
+the better.
+The
+SHARED KERNEL is often the
+CORE DOMAIN, some set of
+GENERIC SUBDOMAINS, or both
+(see Chapter 15), but it can be any part of the model that is needed by both teams. The goal is to
+reduce duplication (but not to eliminate it, as would be the case if there were just one
+BOUNDED
+CONTEXT) and make integration between the two subsystems relatively easy.
+Maintaining Model Integrity 229
+Customer/Supplier Development Teams
+Often one subsystem essentially feeds another; the “downstream” component performs analysis or
+other functions that feed back very little into the “upstream” component, and all dependencies go
+one way. The two subsystems commonly serve very different user communities, who do different
+jobs, where different models may be useful. The tool set may also be different, so that program code
+cannot be shared.
+Upstream and downstream subsystems separate naturally into two
+BOUNDED CONTEXTS. This
+is especially true when the two components require different skills or employ a different tool set for
+implementation. Translation is easier for having to operate in one direction only. But problems can
+emerge, depending on the political relationship of the two teams.
+The freewheeling development of the upstream team can be cramped if the downstream team has
+veto power over changes, or if procedures for requesting changes are too cumbersome. The upstream team may even be inhibited, worried about breaking the downstream system. Meanwhile,
+the downstream team can be helpless, at the mercy of upstream priorities.
+Downstream needs things from upstream, but upstream is not responsible for downstream deliverables. It takes a lot of extra effort to anticipate what will affect the other team, and human nature
+being what it is, and time pressures being what they are, well . . . . It makes everyone's life easier
+to formalize the relationship between the teams. The process can be organized to balance the needs
+of the two user communities and schedule work on features needed downstream.
+On an Extreme Programming project, there already is a mechanism in place for doing just that: the
+iteration planning process. All we have to do is define the relationship between the two teams in
+terms of the planning process. Representatives of the downstream team can function much like the
+user representatives, joining them in planning sessions, discussing directly with their fellow “customers” the trade-offs for the tasks they want. The result is an iteration plan for the supplier team
+that includes tasks the downstream team needs most or defers tasks by agreement, so there is no
+expectation of delivery.
+If a process other than XP is used, whatever analogous method serves to balance the concerns of
+different users can be expanded to include the downstream application's needs.
+Therefore:
+Maintaining Model Integrity 230
+Establish a clear customer/supplier relationship between the two teams. In planning sessions, make
+the downstream team play the customer role to the upstream team. Negotiate and budget tasks for
+downstream requirements so that everyone understands the commitment and schedule.
+Jointly develop automated acceptance tests that will validate the interface expected. Add these tests
+to the upstream team's test suite, to be run as part of its continuous integration. This testing will free
+the upstream team to make changes without fear of side effects downstream.
+During the iteration, the downstream team members need to be available to the upstream developers just as conventional customers are, to answer questions and help resolve problems.
+Automating the acceptance tests is a vital part of this customer relationship. Even on the most
+cooperative project, although the customer can identify and communicate its dependencies, and
+the supplier can diligently try to communicate changes, without tests, surprises will happen. They
+will disrupt the downstream team's work and force the upstream team to take on unscheduled,
+emergency fixes. Instead, have the customer team, in collaboration with the supplier team, develop
+automated acceptance tests that will validate the interface it expects. The upstream team will run
+these tests as part of its standard test suite. Any change to these tests calls for communication with
+the other team, because changing the tests implies changing the interface.
+Customer/supplier relationships also emerge between projects in separate companies, in situations
+where a single customer is very important to the business of the supplier. The tail can wag the dog:
+an influential customer can make demands that are important to the up-stream project's success,
+but those demands can also be disruptive to the upstream project's development. Both parties benefit from the formalization of the process of responding to requirements, because the cost/benefit
+trade-offs are even harder to see in external relationships than they are in the internal IT situation.
+There are two crucial elements to this pattern.
+1. The relationship must be that of customer and supplier, with the implication that the customer's
+needs are paramount. Because the downstream team is not the only customer, the different
+customers' demands have to be balanced in negotiation—but they remain priorities. This situation is in contrast to the poor-cousin relationship that often emerges, in which the downstream team has to come begging to the upstream team for its needs.
+2. There must be an automated test suite that allows the upstream team to change its code
+without fear of breaking the downstream, and lets the downstream team concentrate on its
+own work without constantly monitoring the upstream team.
+In a relay race, the forward runner can't be looking backward all the time, checking. He or she has
+to be able to trust the baton carrier to make the handoff precisely, or else the team will be hopelessly
+slowed down.
+Example
+Yield Analysis Versus Booking
+Back to our trusty shipping example. A highly specialized team has been set up to analyze all the
+bookings that flow through the firm, to see how to maximize income. Team members might find that
+ships have empty space and might recommend more overbooking. They might find that the ships
+are filling up with bulk freight early, forcing the company to turn away more lucrative specialty cargoes. In that case they might recommend reserving space for these types of cargo or raising prices
+on the bulk freight.
+To do this analysis, they use their own complex models. For implementation, they use a data warehouse with tools for building analytical models. And they need lots of information from the Booking
+application.
+Maintaining Model Integrity 231
+From the start, it is clear that these are two
+BOUNDED CONTEXTS, because they use different
+implementation tools and, most important, different domain models. What should the relationship
+between them be?
+A
+SHARED KERNEL might seem logical, because yield analysis is interested in a subset of the
+Booking's model, and their own model has some overlapping concepts of cargos, prices, and so
+on. But
+SHARED KERNEL is difficult in a case where different implementation technologies are
+being used. Besides, the modeling needs of the yield analysis team are quite specialized, and they
+continuously play with their models and try alternative ones. They may well be better off translating
+what they need from the Booking
+CONTEXT into their own. (On the other hand, if they can use a
+SHARED KERNEL, their translation burden will be much lighter. They will still have to reimplement
+the model and translate the data to the new implementation, but if the model is the same, the transfer
+should be simple.)
+The Booking application has no dependency on the yield analysis, because there is no intention of
+automatically adjusting policies. Human specialists will make the decisions and convey them to the
+needed people and systems. So we have an upstream/downstream relationship. What downstream
+needs is this:
+1. Some data not needed by any booking operation
+2. Some stability in database schema (or at least reliable notification of change) or an export utility
+Fortunately, the project manager of the Booking application development team is motivated to help
+the yield analysis team. This could have been a problem, because the operations department that
+actually does day-to-day booking reports to a different vice president than the people who actually
+do yield analysis. But the upper management cares deeply about yield management and, having
+seen past cooperation problems between the two departments, structured the software development project so that the project managers of both teams report to the same person.
+Therefore, all the requirements are in place to apply
+CUSTOMER/SUPPLIER DEVELOPMENT
+TEAMS.
+I've seen this scenario evolve in multiple places, where analysis software developers and operations
+software developers had a customer/supplier relationship. When the upstream team members
+thought of their role as serving a customer, things worked out pretty well. It was almost always
+organized informally, and in each case it worked out about as well as the personal relationship of
+the two project managers.
+On one XP project, I saw this relationship formalized in the sense that, for each iteration, representatives of the downstream team played the “planning game” in the role of customers, huddling with
+the more conventional customer representatives (of application functionality) to negotiate which
+tasks made it into the iteration plan. This project was at a small company, and so the nearest shared
+boss was not far up the chain. It worked very well.
+C
+USTOMER/SUPPLIER TEAMS are more likely to succeed if the two teams work under the same
+management, so that ultimately they do share goals, or where they are in different companies that
+actually have those roles. When there is nothing to motivate the upstream team, the situation is very
+different. . . .
+Maintaining Model Integrity 232
+Conformist
+When two teams with an upstream/downstream relationship are not effectively being directed from
+the same source, a cooperative pattern such as
+CUSTOMER/SUPPLIER TEAMS is not going to
+work. Naively trying to apply it will get the downstream team into trouble. This can be the case in a
+large company in which the two teams are far apart in the management hierarchy or where the
+shared supervisor is indifferent to the relationship of the two teams. It also arises between teams in
+different companies when the customer's business is not individually important to the supplier. Perhaps the supplier has many small customers, or perhaps the supplier is changing market direction
+and no longer values the old customers. The supplier may just be poorly run. It may have gone out
+of business. Whatever the reason, the reality is that the downstream is on its own.
+When two development teams have an upstream/downstream relationship in which the upstream
+has no motivation to provide for the downstream team's needs, the downstream team is helpless.
+Altruism may motivate upstream developers to make promises, but they are unlikely to be fulfilled.
+Belief in those good intentions leads the downstream team to make plans based on features that
+will never be available. The downstream project will be delayed until the team ultimately learns to
+live with what it is given. An interface tailored to the needs of the downstream team is not in the cards.
+In this situation, there are three possible paths. One is to abandon use of the upstream altogether.
+This option should be evaluated realistically, making no assumptions that the upstream will accommodate downstream needs. Sometimes we overestimate the value or underestimate the cost of
+such a dependency. If the downstream team decides to cut the strings, they are going their
+SEP-
+ARATE WAYS (see the pattern description later in this chapter).
+Maintaining Model Integrity 233
+Sometimes the value of using the upstream software is so great that the dependency has to be
+maintained (or a political decision has been made that the team cannot change). In this case, two
+paths remain open; the choice depends on the quality and style of the up-stream design. If the design
+is very difficult to work with, perhaps for lack of encapsulation, awkward abstractions, or modeling
+in a paradigm the team cannot use, then the downstream team will still need to develop its own
+model. They will have to take full responsibility for a translation layer that is likely to be complex.
+(See
+ANTICORRUPTION LAYER, later in this chapter.).
+Following Isn't Always Bad
+When using an off-the-shelf component that has a large interface, you should typically
+CONFORM to the model
+implicit in that component. Because the component and the application are clearly different
+BOUNDED CON-
+TEXTS, based on team organization and control, adapters may be needed for minor format changes, but the
+model should be equivalent. Otherwise, you should question the value of having the component. If it is good
+enough to give you value, there is probably knowledge crunched into its design. Within its narrow sphere, it
+may well be much more advanced than your own understanding. Your model presumably extends beyond the
+scope of this component, and your own concepts will evolve for those other parts. But where they connect,
+your model is a
+CONFORMIST, following the lead of the component's model. In effect, you could be dragged
+into a better design.
+When your interface with a component is small, sharing a unified model is less essential, and translation is a
+viable option. But when the interface is large and integration is more significant, it usually makes sense to
+follow the leader.
+On the other hand, if the quality is not so bad, and the style is reasonably compatible, then it may
+be best to give up on an independent model altogether. This is the circumstance that calls for a
+CONFORMIST.
+Therefore:
+Eliminate the complexity of translation between BOUNDED CONTEXTS by slavishly adhering to
+the model of the upstream team. Although this cramps the style of the downstream designers and
+probably does not yield the ideal model for the application, choosing CONFORMITY enormously
+simplifies integration. Also, you will share a UBIQUITOUS LANGUAGE with your supplier team. The
+supplier is in the driver's seat, so it is good to make communication easy for them. Altruism may be
+sufficient to get them to share information with you.
+This decision deepens your dependency on the upstream and limits your application to the capabilities of the upstream model— plus purely additive enhancements. It is very unappealing emotionally, which is why we choose it less often than we probably should.
+If these trade-offs are not acceptable, but the upstream dependency is indispensable, the second
+option still remains: Insulate yourself as much as possible by creating an
+ANTICORRUPTION
+LAYER, an aggressive approach to implementing a translation map that will be discussed later.
+C
+ONFORMIST resembles
+SHARED KERNEL in that both have an overlapping area where the
+model is the same, areas where your model has been extended by addition, and areas where the
+other model does not affect you. The difference between the patterns is in the decision-making and
+development processes. Where the
+SHARED KERNEL is a collaboration between two teams that
+coordinate tightly,
+CONFORMIST deals with integration with a team that is not interested in collaboration.
+We've been proceeding down a spectrum of cooperation in the integration between
+BOUNDED
+CONTEXTS, from highly cooperative
+SHARED KERNELS or
+CUSTOMER/SUPPLIER DEVEL-
+OPER TEAMS to the one-sidedness of the
+CONFORMIST. Now we'll take the final step to an even
+more pessimistic view of the relationship, assuming neither cooperation nor a usable design on the
+other side. . . .
+Maintaining Model Integrity 234
+Anticorruption Layer
+New systems almost always have to be integrated with legacy or other systems, which have their
+own models. Translation layers can be simple, even elegant, when bridging well-designed
+BOUN-
+DED CONTEXTS with cooperative teams. But when the other side of the boundary starts to leak
+through, the translation layer may take on a more defensive tone.
+When a new system is being built that must have a large interface with another, the difficulty of
+relating the two models can eventually overwhelm the intent of the new model altogether, causing
+it to be modified to resemble the other system's model, in an ad hoc fashion. The models of legacy
+systems are usually weak, and even the exception that is well developed may not fit the needs of
+the current project. Yet there may be a lot of value in the integration, and sometimes it is an absolute
+requirement.
+The answer is not to avoid all integration with other systems. I've been on projects where people
+enthusiastically set out to replace all the legacy, but this is just too much to take on at once. Besides,
+integrating with existing systems is a valuable form of reuse. On a large project, one subsystem will
+often have to interface with several other, independently developed subsystems. These will reflect
+the problem domain differently. When systems based on different models are combined, the need
+for the new system to adapt to the semantics of the other system can lead to a corruption of the new
+system's own model. Even when the other system is well designed, it is not based on the
+same
+model as the client. And often the other system is not well designed.
+There are many hurdles in interfacing with an external system. For example, the infrastructure layer
+must provide the means to communicate with another system that might be on a different platform
+or use different protocols. The data types of the other system must be translated into those of your
+system. But often overlooked is the certainty that the other system does not use the same conceptual
+domain model.
+It seems clear enough that errors will result if you take some data from one system and misinterpret
+it in another. You may even corrupt the database. But even so, this problem tends to sneak up on
+us because we think that what we are transporting between systems is primitive data, whose meaning is unambiguous and must be the same on both sides. This assumption is usually wrong. Subtle
+yet important differences in meaning arise from the way the data are associated in each system.
+And even if primitive data elements do have exactly the same meaning, it is usually a mistake to
+Maintaining Model Integrity 235
+make the interface to the other system operate at such a low level. A low-level interface takes away
+the power of the other system's model to explain the data and constrain its values and relationships,
+while saddling the new system with the burden of interpreting primitive data that is not in terms of
+its own model.
+We need to provide a translation between the parts that adhere to different models, so that the
+models are not corrupted with undigested elements of foreign models.
+Therefore:
+Create an isolating layer to provide clients with functionality in terms of their own domain model.
+The layer talks to the other system through its existing interface, requiring little or no modification
+to the other system. Internally, the layer translates in both directions as necessary between the two
+models.
+This discussion of a mechanism to link two systems might bring to mind issues of transporting the
+data from one program to another or from one server to another. I'll discuss the incorporation of the
+technical communications mechanism shortly. But such details shouldn't be confused with an
+AN-
+TICORRUPTION LAYER, which is not a mechanism for sending messages to another system.
+Rather, it is a mechanism that translates conceptual objects and actions from one model and protocol to another.
+An
+ANTICORRUPTION LAYER can become a complex piece of software in its own right. Next I'll
+outline some of the design considerations for creating one.
+Designing the Interface of the ANTICORRUPTION LAYER
+The public interface of the
+ANTICORRUPTION LAYER usually appears as a set of
+SERVICES,
+although occasionally it can take the form of an
+ENTITY. Building a whole new layer responsible for
+the translation between the semantics of the two systems gives us an opportunity to reabstract the
+other system's behavior and offer its services and information to our system consistently with our
+model. It may not even make sense, in our model, to represent the external system as a single
+component. It may be best to use multiple
+SERVICES (or occasionally
+ENTITIES), each of which
+has a coherent responsibility in terms of our model.
+Implementing the ANTICORRUPTION LAYER
+One way of organizing the design of the
+ANTICORRUPTION LAYER is as a combination of
+FA-
+CADES,
+ADAPTERS (both from Gamma et al. 1995), and translators, along with the communication
+and transport mechanisms usually needed to talk between systems.
+We often have to integrate with systems that have large, complicated, messy interfaces. This is an
+implementation issue, not an issue of conceptual model differences that motivated the use of
+AN-
+TICORRUPTION LAYERS, but it is a problem you'll encounter trying to create them. Translating
+from one model to another (especially if one model is fuzzy) is a hard enough job without simultaneously dealing with a subsystem interface that is hard to talk to. Fortunately, that is what
+FA-
+CADES are for.
+A
+FACADE is an alternative interface for a subsystem that simplifies access for the client and makes
+the subsystem easier to use. Because we know exactly what functionality of the other system we
+want to use, we can create a
+FACADE that facilitates and streamlines access to those features and
+hides the rest. The
+FACADE does
+not change the model of the underlying system. It should be
+written strictly in accordance with the other system's model. Otherwise, you will at best diffuse re-
+Maintaining Model Integrity 236
+sponsibility for translation into multiple objects and overload the
+FACADE and at worst end up creating yet another model, one that doesn't belong to the other system
+or your own
+BOUNDED CON-
+TEXT. The
+FACADE belongs in the
+BOUNDED CONTEXT of the other system. It just presents a
+friendlier face specialized for your needs.
+An
+ADAPTER is a wrapper that allows a client to use a different protocol than that understood by
+the implementer of the behavior. When a client sends a message to an
+ADAPTER, it is converted
+to a semantically equivalent message and sent on to the “adaptee.” The response is converted and
+passed back. I'm using the term
+adapter a little loosely, because the emphasis in Gamma et al.
+1995 is on making a wrapped object conform to a standard interface that clients expect, whereas
+we get to choose the adapted interface, and the adaptee is probably not even an object. Our emphasis is on translation between two models, but I think this is consistent with the intent of
+ADAPTER.
+For each
+SERVICE we define, we need an
+ADAPTER that supports the
+SERVICE'S interface and
+knows how to make equivalent requests of the other system or its
+FACADE.
+The remaining element is the translator. The
+ADAPTER'S job is to know how to make a request.
+The actual conversion of conceptual objects or data is a distinct, complex task that can be placed
+in its own object, making them both much easier to understand. A translator can be a lightweight
+object that is instantiated when needed. It needs no state and does not need to be distributed,
+because it belongs with the
+ADAPTER(S) it serves.
+Those are the basic elements I use to create an
+ANTICORRUPTION LAYER. There are a few other
+considerations.
+• Typically, the system under design (your subsystem) will be initiating action, as implied by Figure
+14.8. There are cases, however, when the other subsystem may need to request something of
+your subsystem or notify it of some event. An
+ANTICORRUPTION LAYER can be bidirectional,
+defining
+SERVICES on both interfaces with their own
+ADAPTERS, potentially using the same
+translators with symmetrical translations. Although implementing the
+ANTICORRUPTION
+LAYER doesn't usually require any change to the other subsystem, it might be necessary in
+order to make the other system call on
+SERVICES of the
+ANTICORRUPTION LAYER.
+Figure 14.8. The structure of an ANTICORRUPTION LAYER
+• You'll usually need some communications mechanism to connect the two subsystems, and they
+could well be on separate servers. In this case, you have to decide where to place these communication links. If you have no access to the other subsystem, you may have to put the links
+between the
+FACADE and the other subsystem. However, if the
+FACADE can be integrated
+directly with the other subsystem, then a good option is to put the communication link between
+the
+ADAPTER and
+FACADE, because the protocol of the
+FACADE is presumably simpler than
+what it covers. There also will be cases where the entire
+ANTICORRUPTION LAYER can live
+with the other subsystem, placing communication links or distribution mechanisms between your
+subsystem and the
+SERVICES that make up the
+ANTICORRUPTION LAYER's interface. These
+are implementation and deployment decisions to be made pragmatically. They have no bearing
+on the conceptual role of the
+ANTICORRUPTION LAYER.
+Maintaining Model Integrity 237
+• If you do have access to the other subsystem, you may find that a little refactoring over there
+can make your job easier. In particular, try to write more explicit interfaces for the functionality
+you'll be using, starting with automated tests, if possible.
+• Where integration requirements are extensive, the cost of translation goes way up. It may be
+necessary to make choices in the model of the system under design that keep it closer to the
+external system, in order to make translation easier. Do this very carefully, without compromising
+the integrity of the model. It is only something to do selectively when translation difficulty gets
+out of hand. If this approach seems the most natural solution for much of the important part of
+the problem, consider making your subsystem a
+CONFORMIST pattern, eliminating translation.
+• If the other subsystem is simple or has a clean interface, you may not need the
+FACADE.
+• Functionality can be added to the
+ANTICORRUPTION LAYER if it is
+specific to the relationship
+of the two subsystems. An audit trail for use of the external system or trace logic for debugging
+the calls to the other interface are two useful features that come to mind.
+Remember, an
+ANTICORRUPTION LAYER is a means of linking two
+BOUNDED CONTEXTS.
+Ordinarily, we are thinking of a system created by someone else; we have incomplete understanding
+of the system and little control over it. But that is not the only situation where you need a little padding
+between subsystems. There are even situations in which it makes sense to connect two subsystems
+of your own design with an
+ANTICORRUPTION LAYER, if they are based on different models.
+Presumably, in such a case, you will have full control over both sides and typically can use a simple
+translation layer. However, if two
+BOUNDED CONTEXTS have gone
+SEPARATE WAYS yet still
+have some need of functional integration, an
+ANTICORRUPTION LAYER can reduce the friction
+between them.
+Example
+The Legacy Booking Application
+In order to have a small, quick first release, we will write a minimal application that can set up a
+shipment and then pass that to the legacy system through a translation layer for booking and support
+operations. Because we built the translation layer specifically to protect our developing model from
+the influence of the legacy design, this translation is an
+ANTICORRUPTION LAYER.
+Initially, the
+ANTICORRUPTION LAYER will accept the objects representing a shipment, convert
+them, pass them to the legacy system and request a booking, and then capture the confirmation
+and translate it back into the confirmation object of the new design. This isolation will allow us to
+develop our new application mostly independently of the old one, though we'll have to invest quite
+a bit in translation.
+With each successive release, the new system can either take over more functions of the legacy or
+simply add new value without replacing existing capabilities, depending on later decisions. This
+flexibility, and the ability to continually operate the combined system while making a gradual transition, probably makes it worth the expense to build the
+ANTICORRUPTION LAYER.
+A Cautionary Tale
+To protect their frontiers from raids by neighboring nomadic warrior tribes, the early Chinese built
+the Great Wall. It was not an impenetrable barrier, but it allowed a regulated commerce with neighbors while providing an impediment to invasion and other unwanted influence. For two thousand
+years it defined a boundary that helped the Chinese agricultural civilization to define itself with less
+disruption from the chaos outside.
+Maintaining Model Integrity 238
+Although China might not have become so distinct a culture without the Great Wall, the Wall's construction was immensely expensive and bankrupted at least one dynasty, probably contributing to
+its fall. The benefits of isolation strategies must be balanced against their costs. There is a time to
+be pragmatic and make measured revisions to the model, so that it can fit more smoothly with foreign
+ones.
+There is overhead involved in any integration, from full-on
+CONTINUOUS INTEGRATION inside a
+single
+BOUNDED CONTEXT, through the lesser commitments of
+SHARED KERNELS or
+CUS-
+TOMER/SUPPLIER DEVELOPER TEAMS, to the one-sidedness of the
+CONFORMIST and the
+defensive posture of the
+ANTICORRUPTION LAYER. Integration can be very valuable, but it is
+always expensive. We should be sure it is really needed. . . .
+Separate Ways
+We must ruthlessly scope requirements. Two sets of functionality with no indispensable relationship
+can be cut loose from each other.
+Integration is always expensive. Sometimes the benefit is small.
+In addition to the usual expense of coordinating teams, integration forces compromises. The simple
+specialized model that can satisfy a particular need must give way to the more abstract model that
+can handle all situations. Perhaps some completely different technology could provide certain features very easily, but it is difficult to integrate. Maybe some team is just so hard to get along with
+that nothing works very well when other teams try to collaborate with them.
+In many circumstances, integration provides no significant benefit. If two functional parts do not call
+upon each other's functionality, or require interactions between objects that are touched by both, or
+share data during their operations, then integration, even through a translation layer, may not be
+necessary. Just because features are related in a use case does not mean they must be integrated.
+Therefore:
+Declare a BOUNDED CONTEXT to have no connection to the others at all, allowing developers to
+find simple, specialized solutions within this small scope.
+The features can still be organized in middleware or the UI layer, but there will be no sharing of
+logic, and an absolute minimum of data transfer through translation layers—preferably none.
+Maintaining Model Integrity 239
+Example
+An Insurance Project Slims Down
+One project team had set out to develop new software for insurance claims that would integrate into
+one system everything a customer service agent or a claims adjuster needed. After a year of effort,
+team members were stuck. A combination of analysis paralysis and a major up-front investment in
+infrastructure had found them with nothing to show an increasingly impatient management. More
+seriously, the scope of what they were trying to do was overwhelming them.
+A new project manager forced everyone into a room for a week to form a new plan. First they made
+lists of requirements and tried to estimate their difficulty and assign importance. They ruthlessly
+chopped the difficult and unimportant ones. Then they started to bring order to the remaining list.
+Many smart decisions were made in that room that week, but in the end, only one turned out to be
+important. At some point it was recognized that
+there were some features for which integration
+provided little added value. For example, adjusters needed access to some existing databases, and
+their current access was very inconvenient.
+But, although the users needed to have this data, none
+of the other features of the proposed software system would use it.
+Team members proposed various ways of providing easy access. In one case, a key report could
+be exported as HTML and placed on the intranet. In another case, adjusters could be provided with
+a specialized query written using a standard software package. All these functions could be integrated by organizing links on an intranet page or by placing buttons on the user's desktop.
+The team launched a set of small projects that attempted no more integration than launching from
+the same menu. Several valuable capabilities were delivered almost overnight. Dropping the baggage of these extraneous features left a distilled set of requirements that seemed for a while to give
+hope for delivery of the main application.
+It could have gone that way, but unfortunately the team slipped back into old habits. They paralyzed
+themselves again. In the end, their only legacy turned out to be those small applications that had
+gone their
+SEPARATE WAYS.
+Taking
+SEPARATE WAYS forecloses some options. Although continuous refactoring can eventually
+undo any decision, it is hard to merge models that have developed in complete isolation. If integration turns out to be needed after all, translation layers will be necessary and may be complex. Of
+course, this is something you will face anyway.
+Now, turning back to more cooperative relationships, let's look at ways to scale up integration. . . .
+Open Host Service
+Typically for each
+BOUNDED CONTEXT, you will define a translation layer for each component
+outside the
+CONTEXT with which you have to integrate. Where integration is one-off, this approach
+of inserting a translation layer for each external system avoids corruption of the models with a minimum of cost. But when you find your subsystem in high demand, you may need a more flexible
+approach.
+When a subsystem has to be integrated with many others, customizing a translator for each can
+bog down the team. There is more and more to maintain, and more and more to worry about when
+changes are made.
+The team may be doing the same thing again and again. If there is any coherence to the subsystem,
+it is probably possible to describe it as a set of
+SERVICES that cover the common needs of other
+subsystems.
+Maintaining Model Integrity 240
+It is a lot harder to design a protocol clean enough to be understood and used by multiple teams,
+so it pays off only when the subsystem's resources can be described as a cohesive set of
+SERV-
+ICES and when there are a significant number of integrations. Under those circumstances, it can
+make the difference between maintenance mode and continuing development.
+Therefore:
+Define a protocol that gives access to your subsystem as a set of SERVICES. Open the protocol
+so that all who need to integrate with you can use it. Enhance and expand the protocol to handle
+new integration requirements, except when a single team has idiosyncratic needs. Then, use a oneoff translator to augment the protocol for that special case so that the shared protocol can stay
+simple and coherent.
+This formalization of communication implies some shared model vocabulary—the basis of the
+SERVICE interfaces. As a result, the other subsystems become coupled to the model of the
+OPEN
+HOST, and other teams are forced to learn the particular dialect used by the HOST team. In some
+situations, using a well-known
+PUBLISHED LANGUAGE as the interchange model can reduce
+coupling and ease understanding. . . .
+Published Language
+The translation between the models of two
+BOUNDED CONTEXTS requires a common language.
+When two domain models must coexist and information must pass between them, the translation
+process itself can become complex and hard to document and understand. If we are building a new
+system, we will typically believe that our new model is the best available, and so we will think in
+terms of translating directly into it. But sometimes we are enhancing a set of older systems and
+trying to integrate them. Choosing one messy model over the other may be choosing the lesser of
+two evils.
+Another situation: When businesses want to exchange information with one another, how do they
+do it? Not only is it unrealistic to expect one to adopt the domain model of the other, it may be
+undesirable for both parties. A domain model is developed to solve problems for its users; such a
+model may contain features that needlessly complicate communication with another system. Also,
+if the model underlying one of the applications is used as the communications medium, it cannot be
+changed freely to meet new needs, but must be very stable to support the ongoing communication
+role.
+Direct translation to and from the existing domain models may not be a good solution. Those models
+may be overly complex or poorly factored. They are probably undocumented. If one is used as a
+data interchange language, it essentially becomes frozen and cannot respond to new development
+needs.
+The
+OPEN HOST SERVICE uses a standardized protocol for multiparty integration. It employs a
+model of the domain for interchange between systems, even though that model may not be used
+internally by those systems. Here we go a step further and publish that language, or find one that
+is already published. By
+publish I simply mean that the language is readily available to the community that might be interested in using it, and is sufficiently documented to allow independent
+interpretations to be compatible.
+Recently, the world of e-commerce has become very excited about a new technology: Extensible
+Markup Language (XML) promises to make interchange of data much easier. A very valuable feature
+of XML is that, through the document type definition (DTD) or through XML schemas, XML allows
+the formal definition of a specialized domain language into which data can be translated. Industry
+Maintaining Model Integrity 241
+groups have begun to form for the purpose of defining a single standard DTD for their industry so
+that, say, chemical formula information or genetic coding can be communicated between many
+parties. Essentially these groups are creating a shared domain model in the form of a language
+definition.
+Therefore:
+Use a well-documented shared language that can express the necessary domain information as a
+common medium of communication, translating as necessary into and out of that language.
+The language doesn't have to be created from scratch. Many years ago, I was contracted by a
+company that had a software product written in Smalltalk that used DB2 to store its data. The company wanted the flexibility to distribute the software to users without a DB2 license and contracted
+me to build an interface to Btrieve, a lighter-weight database engine that had a free runtime distribution license. Btrieve is not fully relational, but my client was using only a small part of DB2's power
+and was within the lowest common denominator of the two databases. The company's developers
+had built on top of DB2 some abstractions that were in terms of the storage of objects. I decided to
+use this work as the interface for my Btrieve component.
+This approach did work. The software smoothly integrated with my client's system. However, the
+lack of a formal specification or documentation of the abstractions of persistent objects in the client's
+design meant a lot of work for me to figure out the requirements of the new component. Also, there
+wasn't much opportunity to reuse the component to migrate some other application from DB2 to
+Btrieve. And the new software more deeply entrenched the company's model of persistence, so that
+refactoring that model of persistent objects would have been even more difficult.
+A better way might have been to identify the subset of the DB2 interface that the company was using
+and then support that. The interface of DB2 is made up of SQL and a number of proprietary protocols.
+Although it is very complex, the interface is tightly specified and thoroughly documented. The complexity would have been mitigated because only a small subset of the interface was being used. If
+a component had been developed that emulated the necessary subset of the DB2 interface, it could
+have been very effectively documented for developers simply by identifying the subset. The application it was integrated into already knew how to talk to DB2, so little additional work would have
+been needed. Future redesign of the persistence layer would have been constrained only to the use
+of the DB2 subset, just as before the enhancement.
+The DB2 interface is an example of a
+PUBLISHED LANGUAGE. In this case, the two models are
+not in the business domain, but all the principles apply just the same. Because one of the models
+in the collaboration is already a
+PUBLISHED LANGUAGE, there is no need to introduce a third
+language.
+Example
+A PUBLISHED LANGUAGE for Chemistry
+Innumerable programs are used to catalog, analyze, and manipulate chemical formulas in industry
+and academia. Exchanging data has always been difficult, because almost every program uses a
+different domain model to represent chemical structures. And of course, most of them are written
+in languages, such as FORTRAN, that do not express the domain model very fully anyway. Whenever anyone wanted to share data, they had to unravel the details of the other system's database
+and work out some sort of translation scheme.
+Enter the Chemical Markup Language (CML), a dialect of XML intended as a common interchange
+language for this domain, developed and managed by a group representing academics and industry
+(Murray-Rust et al. 1995).
+Chemical information is very complex and diverse, and it changes all the time with new discoveries.
+So they developed a language that could describe the basics, such as the chemical formulas of
+organic and inorganic molecules, protein sequences, spectra, or physical quantities.
+Maintaining Model Integrity 242
+Now that the language has been published, tools can be developed that would never have been
+worth the trouble to write before, when they would have only been usable for one database. For
+example, a Java application, called the JUMBO Browser, was developed that creates graphical
+views of chemical structures stored in CML. So if you put your data in the CML format, you'll have
+access to such visualization tools.
+In fact, CML gained a double advantage by using XML, a sort of “published meta-language.” The
+learning curve of CML is flattened by people's familiarity with XML; the implementation is eased by
+various off-the-shelf tools, such as parsers; and documentation is helped by the many books written
+on all aspects of handling XML.
+Here is a tiny sample of CML. It is only vaguely intelligible to nonspecialists like myself, but the
+principle is clear.
+<CML.ARR ID="array3" EL.TYPE=FLOAT NAME="ATOMIC ORBITAL ELECTRON POPULATIONS" SIZE=30 ↩
+GLO.ENT=CML.THE.AOEPOPS>
+1.17947 0.95091 0.97175 1.00000 1.17947 0.95090 0.97174 1.00000
+1.17946 0.98215 0.94049 1.00000 1.17946 0.95091 0.97174 1.00000
+1.17946 0.95091 0.97174 1.00000 1.17946 0.98215 0.94049 1.00000
+0.89789 0.89790 0.89789 0.89789 0.89790 0.89788
+</CML.ARR>
+Unifying an Elephant
+It was six men of Indostan
+To learning much inclined,
+Who went to see the Elephant
+(Though all of them were blind),
+That each by observation
+Might satisfy his mind.
+The
+First approached the Elephant,
+And happening to fall
+Against his broad and sturdy side,
+At once began to bawl:
+"God bless me! but the Elephant
+Is very like a wall!"
+. . .
+The
+Third approached the animal,
+And happening to take
+The squirming trunk within his hands,
+Thus boldly up and spake:
+"I see," quoth he, "the Elephant
+Is very like a snake."
+The
+Fourth reached out his eager hand,
+And felt about the knee.
+"What most this wondrous beast is like
+Is mighty plain," quoth he;
+Maintaining Model Integrity 243
+"'Tis clear enough the Elephant
+Is very like a tree!"
+. . .
+The
+Sixth no sooner had begun
+About the beast to grope,
+Than, seizing on the swinging tail
+That fell within his scope,
+"I see," quoth he, "the Elephant
+Is very like a rope!"
+And so these men of Indostan
+Disputed loud and long,
+Each in his own opinion
+Exceeding stiff and strong,
+Though each was partly in the right,
+And all were in the wrong!
+. . .
+—From “The Blind Men and the Elephant,” by John Godfrey Saxe (1816–1887), based on a story in the Udana
+,
+a Hindu text
+Depending on their goals in interacting with the elephant, the various blind men may still be able to
+make progress, even if they don't fully agree on the nature of the elephant. If no integration is
+required, then it doesn't matter that the models are not unified. If they require some integration, they
+may not actually have to agree on what an elephant is, but they will get a lot of value from merely
+recognizing that they don't agree. This way, at least they don't unknowingly talk at cross-purposes.
+The diagrams in Figure 14.9 are UML representations of the models the blind men have formed of
+the elephant. Having established separate
+BOUNDED CONTEXTS, the situation is clear enough
+for them to work out a way to communicate with each other about the few aspects they care about
+in common: the location of the elephant, perhaps.
+Figure 14.9. Four contexts: no integration
+Maintaining Model Integrity 244
+Figure 14.10. Four contexts: minimal integration
+As the blind men want to share more information about the elephant, the value of sharing a single
+BOUNDED CONTEXT goes up. But unifying the disparate models is a challenge. None of them is
+likely to give up his model and adopt one of the others. After all, the man who touched the tail
+knows the elephant is not like a tree, and that model would be meaningless and useless to him.
+Unifying multiple models almost always means creating a new model.
+With some imagination and continued discussion (probably heated), the blind men could eventually
+recognize that they have been describing and modeling different parts of a larger whole. For many
+purposes, a part-whole unification may not require much additional work. At least the first stage of
+integration only requires figuring out how the parts are related. It may be adequate for some needs
+to view an elephant as a wall, held up by tree trunks, with a rope at one end and a snake at the other.
+Figure 14.11. One context: crude integration
+The unification of the various elephant models is easier than most such mergers. Unfortunately, it
+is the exception when two models purely describe different parts of the whole, although this is often
+one aspect of the difference. Matters are more difficult when two models are looking at the same
+part in a different way. If two men had touched the trunk and one described it as a snake and the
+other described it as a fire hose, they would have had more difficulty. Neither can accept the other's
+model, because it contradicts his own experience. In fact, they need a new abstraction that incorporates the “aliveness” of a snake with the water-shooting functionality of a fire hose, but one that
+leaves out the inapt implications of the first models, such as the expectation of possibly venomous
+fangs, or the ability to be detached from the body and rolled up into a compartment in a fire truck.
+Maintaining Model Integrity 245
+Even though we have combined the parts into a whole, the resulting model is crude. It is incoherent,
+lacking any sense of following contours of an underlying domain. New insights could lead to a deeper
+model in a process of continuous refinement. New application requirements can also force the move
+to a deeper model. If the elephant starts moving, the “tree” theory is out, and our blind modelers
+may break through to the concept of “legs.”
+Figure 14.12. One context: deeper model
+This second pass of model integration tends to slough off incidental or incorrect aspects of the
+individual models and creates new concepts—in this case, “animal” with parts “trunk,” “leg,” “body,”
+and “tail”—each of which has its own properties and clear relationships to other parts. Successful
+model unification, to a large extent, hinges on minimalism. An elephant trunk is both more and less
+than a snake, but the “less” is probably more important than the “more.” Better to lack the waterspewing ability than to have an incorrect poison-fang feature.
+If the goal is simply to find the elephant, then translating between each model's expression of location will do. When more integration is needed, the unified model doesn't have to reach full maturity
+in the first version. It may be adequate for some needs to view an elephant as a wall, held up by
+tree trunks, with a rope at one end and a snake at the other. Later, driven by new requirements and
+by improved understanding and communication, the model can be deepened and refined.
+Recognizing multiple, clashing domain models is really just facing reality. By explicitly defining a
+context within which each model applies, you can maintain the integrity of each and clearly see the
+implications of any particular interface you want to create between the two. There is no way for the
+blind men to see the whole elephant, but their problem would be manageable if only they recognized
+the incompleteness of their perception.
+Choosing Your Model Context Strategy
+It is important always to draw the
+CONTEXT MAP to reflect the current situation at any given time.
+Once that's done, though, you may very well want to change that reality. Now you can begin to
+consciously choose
+CONTEXT boundaries and relationships. Here are some guidelines.
+Team Decision or Higher
+First, teams have to make decisions about where to define
+BOUNDED CONTEXTS and what sort
+of relationships to have between them.
+Teams have to make these decisions, or at least the decisions have to be propagated to the entire team and understood by everyone. Infact, such decisions
+often involve agreements beyond your own team. On the merits, decisions about whether to expand
+or to partition
+BOUNDED CONTEXTS should be based on the cost-benefit trade-off between the
+value of independent team action and the value of direct and rich integration. In practice, political
+relationships between teams often determine how systems are integrated. A technically advanta-
+Maintaining Model Integrity 246
+geous unification may be impossible because of reporting structure. Management may dictate an
+unwieldy merger. You won't always get what you want, but at least you may be able to assess and
+communicate something of the cost incurred, and take steps to mitigate it. Start with a realistic
+CONTEXT MAP and be pragmatic in choosing transformations.
+Putting Ourselves in Context
+When we are working on a software project, we are interested primarily in the parts of the system
+our team is changing (the “system under design”) and secondarily in the systems it will communicate
+with. In a typical case, the system under design is going to get carved into one or two
+BOUNDED
+CONTEXTS that the main development teams will be working on, perhaps with another
+CON-
+TEXT or two in a supporting role. In addition to that are the relationships between these
+CON-
+TEXTS and the external systems. This is a simple, typical view, to give some rough expectation for
+what you are likely to encounter.
+We really are
+part of that primary
+CONTEXT we are working in, and that is bound to be reflected in
+our
+CONTEXT MAP. This isn't a problem if we are aware of the bias and are mindful of when we
+step outside the limits of that MAP's applicability.
+Transforming Boundaries
+There are an unlimited variety of situations and an unlimited number of options for drawing the
+boundaries of
+BOUNDED CONTEXTS. But typically the struggle is to balance some subset of the
+following forces:
+Favoring Larger BOUNDED CONTEXTS
+• Flow between user tasks is smoother when more is handled with a unified model.
+• It is easier to understand one coherent model than two distinct ones plus mappings.
+• Translation between two models can be difficult (sometimes impossible).
+• Shared language fosters clear team communication.
+Favoring Smaller BOUNDED CONTEXTS
+• Communication overhead between developers is reduced.
+• C
+ONTINUOUS INTEGRATION is easier with smaller teams and code bases.
+• Larger contexts may call for more versatile abstract models, requiring skills that are in short
+supply.
+• Different models can cater to special needs or encompass the jargon of specialized groups of
+users, along with specialized dialects of the
+UBIQUITOUS LANGUAGE.
+Deep integration of functionality between different
+BOUNDED CONTEXTS is impractical. Integration is limited to those parts of one model that can be rigorously stated in terms of the other model,
+and even this level of integration may take considerable effort. This makes sense when there will
+be a small interface between two systems.
+Accepting That Which We Cannot Change: Delineating the External Systems
+It is best to start with the easiest decisions. Some subsystems will clearly not be in any
+BOUNDED
+CONTEXT of the system under development. Examples would be major legacy systems that you
+are not immediately replacing and external systems that provide services you'll need. You can
+identify these immediately and prepare to segregate them from your design.
+Maintaining Model Integrity 247
+Here we must be careful about our assumptions. It is convenient to think of each of these systems
+as constituting its own
+BOUNDED CONTEXT, but most external systems only weakly meet the
+definition. First, a
+BOUNDED CONTEXT is defined by an
+intention to unify the model within certain
+boundaries. You may have control of maintenance of the legacy system, in which case you can
+declare the intention, or the legacy team may be well coordinated and be carrying out an informal
+form of
+CONTINUOUS INTEGRATION, but don't take it for granted. Check into it, and if the development is not well integrated, be particularly cautious. It is not unusual to find semantic contradictions in different parts of such systems.
+Relationships with the External Systems
+There are three patterns that can apply here. First, to consider
+SEPARATE WAYS. Yes, you
+wouldn't have included them if you didn't need integration. But be really sure. Would it be sufficient
+to give the user easy access to both systems? Integration is expensive and distracting, so unburden
+your project as much as you can.
+If the integration is really essential, you can choose between two extremes:
+CONFORMIST or
+ANTICORRUPTION LAYER. It is not fun to be a
+CONFORMIST. Your creativity and your options
+for new functionality will be limited. In building a major new system, it is unlikely to be practical to
+adhere to the model of a legacy or external system (after all, why are you building a new system?).
+However, sticking with the legacy model may be appropriate in the case of peripheral extensions to
+a large system that will continue to be the dominant system. Examples of this choice include the
+lightweight decision-support tools that are often written in Excel or other simple tools. If your application is really an extension to the existing system and your interface with that system is going to
+be large, the translation between
+CONTEXTS can easily be a bigger job than the application functionality itself. And there is still some room for good design work, even though you have placed
+yourself in the
+BOUNDED CONTEXT of the other system. If there is a discernable domain model
+behind the other system, you can improve your implementation by making that model more explicit
+than it was in the old system, just as long as you strictly conform to the old model. If you decide on
+a
+CONFORMIST design, you must do it wholeheartedly. You restrict yourself to extension only, with
+no modification of the existing model.
+When the functionality of the system under design is going to be more involved than an extension
+to an existing system, where your interface to the other system is small, or where the other system
+is very badly designed, you'll really want your own
+BOUNDED CONTEXT, which means building a
+translation layer, or even an
+ANTICORRUPTION LAYER.
+The System Under Design
+The software your project team is actually building is the
+system under design. You can declare
+BOUNDED CONTEXTS within this zone and apply
+CONTINUOUS INTEGRATION within each to
+keep them unified. But how many should you have? What relationships should they have to each
+other? The answers are less cut and dried than with the external systems because we have more
+freedom and control.
+It could be quite simple: a single
+BOUNDED CONTEXT for the entire system under design. For
+example, this would be a likely choice for a team of fewer than ten people working on highly interrelated functionality.
+As the team grows larger,
+CONTINUOUS INTEGRATION may become difficult (although I have
+seen it maintained for somewhat larger teams). You may look for a
+SHARED KERNEL and break
+off relatively independent sets of functionality into separate
+BOUNDED CONTEXTS, each with
+fewer than ten people. If all of the dependencies between two of these go in one direction, you could
+set up
+CUSTOMER/SUPPLIER DEVELOPMENT TEAMS.
+Maintaining Model Integrity 248
+You may recognize that the mindsets of two groups are so different that their modeling efforts constantly clash. It may be that they actually need quite different things from the model, it may be just
+a difference in background knowledge, or it may be a result of the management structure the project
+is embedded in. If the cause of the clash is something you can't change, or don't want to change,
+you may choose to allow the models to go
+SEPARATE WAYS. Where integration is needed, a
+translation layer can be developed and maintained jointly by the two teams as the single point of
+CONTINUOUS INTEGRATION. This is in contrast with integration with external systems, where the
+ANTICORRUPTION LAYER typically has to accommodate the other system as is and without much
+support from the other side.
+Generally speaking, there is a correspondence of one team per
+BOUNDED CONTEXT. One team
+can maintain multiple
+BOUNDED CONTEXTS, but it is hard (though not impossible) for multiple
+teams to work on one together.
+Catering to Special Needs with Distinct Models
+Different groups within the same business have often developed their own specialized terminologies, which may have diverged from one another. These local jargons may be very precise and
+tailored to their needs. Changing them (for example, by imposing a standardized, enterprise-wide
+terminology) requires extensive training and analysis to resolve the differences. Even then, the new
+terminology may not serve as well as the finely tuned version they already had.
+You may decide to cater to these special needs in separate
+BOUNDED CONTEXTS, allowing the
+models to go
+SEPARATE WAYS, except for
+CONTINUOUS INTEGRATION of translation layers.
+Different dialects of the
+UBIQUITOUS LANGUAGE will evolve around these models and the specialized jargon they are based on. If the two dialects have a lot of overlap, a
+SHARED KERNEL may
+provide the needed specialization while minimizing the translation cost.
+Where integration is not needed, or is relatively limited, this allows continued use of customary
+terminology and avoids corruption of the models. It also has its costs and risks.
+• The loss of shared language will reduce communication.
+• There is extra overhead in integration.
+• There will be some duplication of effort, as different models of the same business activities and
+entities evolve.
+But perhaps the biggest risk is that it can become an argument against change and a justification
+for any quirky, parochial model. How much do you need to tailor this individual part of the system
+to meet specialized needs? Most important,
+how valuable is the particular jargon of this user
+group? You have to weigh the value of more in-dependent action of teams against the risks of
+translation, keeping an eye out for rationalizing terminology variations that have no value.
+Sometimes a deep model emerges that can unify these distinct languages and satisfy both groups.
+The catch is that deep models emerge later in the life cycle, after a lot of development and knowledge
+crunching, if at all. You can't plan on a deep model; you just have to accept the opportunity when it
+arises, change your strategy, and refactor.
+Keep in mind that, where integration requirements are extensive, the cost of translation goes way
+up. Some coordination of the teams, from the pinpoint modifications of one object that has a complicated translation ranging up to a
+SHARED KERNEL, can make translation easier while still not
+requiring full unification.
+Maintaining Model Integrity 249
+Deployment
+Coordinating the packaging and deployment of complex systems is one of those boring tasks that
+are almost always a lot harder than they look. The choice of
+BOUNDED CONTEXT strategy has an
+impact on the deployment. For example, when
+CUSTOMER/SUPPLIER TEAMS deploy new versions, they have to coordinate with each other to release versions that have been tested together.
+Both code and data migrations have to work in these combinations. In a distributed system, it may
+help to keep the translation layers between
+CONTEXTS together within a single process, so that
+you don't have multiple versions coexisting.
+Even deployment of the components of a single
+BOUNDED CONTEXT can be challenging when
+data migration takes time or when distributed systems can't be updated instantaneously, resulting
+in two versions of the code and data coexisting.
+Many technical considerations come into play depending on the deployment environment and technology. But the
+BOUNDED CONTEXT relationships can point you toward the hot spots. The translation interfaces have been marked out.
+The feasibility of a deployment plan should feed back into the drawing of the
+CONTEXT boundaries.
+When two
+CONTEXTS are bridged by a translation layer, one
+CONTEXT can be updated just so a
+new translation layer provides the same interface to the other
+CONTEXT. A
+SHARED KERNEL
+imposes a much greater burden of coordination, not just in development but also in deployment.
+S
+EPARATE WAYS can make life much simpler.
+The Trade-off
+To sum up these guidelines, there is a range of strategies for unifying or integrating models. In
+general terms, you will trade off the benefits of seamless integration of functionality against the
+additional effort of coordination and communication. You trade more independent action against
+smoother communication. More ambitious unification requires control over the design of the subsystems involved.
+Figure 14.13. The relative demands of CONTEXT relationship patterns
+Maintaining Model Integrity 250
+When Your Project Is Already Under Way
+Most likely, you are not starting a project but are looking to improve a project that is already under
+way. In this case, the first step is to define
+BOUNDED CONTEXTS according to the way things are
+now. This is crucial. To be effective, the
+CONTEXT MAP must reflect the true practice of the teams,
+not the ideal organization you might decide on by following the guidelines just described.
+Once you have delineated your true current
+BOUNDED CONTEXTS and described the relationships
+they currently have, the next step is to tighten up the team's practices
+around that current organization. Improve your
+CONTINUOUS INTEGRATION within the
+CONTEXTS. Refactor any stray
+translation code into your
+ANTICORRUPTION LAYERS. Name the existing
+BOUNDED CON-
+TEXTS and make sure they are in the
+UBIQUITOUS LANGUAGE of the project.
+Now you are ready to consider changes to the boundaries and relationships themselves. These
+changes will naturally be driven by the same principles I've already described for a new project, but
+they will have to be bitten off in small pieces, chosen pragmatically to give the most value for the
+least effort and disruption.
+The next section discusses how to go about actually making changes to your
+CONTEXT boundaries
+once you have decided to.
+Transformations
+Like any other aspect of modeling and design, decisions about
+BOUNDED CONTEXTS are not
+irrevocable. Inevitably, there will be many cases in which you have to change your initial decision
+about the boundaries and relationships between
+BOUNDED CONTEXTS. Generally speaking,
+breaking up
+CONTEXTS is pretty easy, but merging them or changing the relationships between
+them is challenging. I'll describe a few representative changes that are difficult yet important. These
+transformations are usually much too big to be taken in a single refactoring or possibly even in a
+single project iteration. For that reason, I've outlined game plans for making these transformations
+as a series of manageable steps. These are, of course, guidelines that you will have to adapt to
+your particular circumstances and events.
+Merging CONTEXTS: SEPARATE WAYS SHARED KERNEL
+Translation overhead is too high. Duplication is too obvious. There are many motivations for merging
+BOUNDED CONTEXTS. This is hard to do. It's not too late, but it takes some patience.
+Even if your eventual goal is to merge completely to a single
+CONTEXT with
+CONTINUOUS IN-
+TEGRATION, start by moving to a
+SHARED KERNEL.
+1. Evaluate the initial situation. Be sure that the two
+CONTEXTS are indeed internally unified
+before beginning to unify them with each other.
+2. Set up the process. You'll need to decide how the code will be shared and what the module
+naming conventions will be. There must be at least weekly integration of the
+SHARED KER-
+NEL code. And it must have a test suite. Set this up before developing any shared code. (The
+test suite will be empty, so it should be easy to pass!)
+3. Choose some small subdomain to start with—something duplicated in both
+CONTEXTS, but
+not part of the
+CORE DOMAIN. This first merger is going to establish the process, so it is best
+to use something simple and relatively generic or noncritical. Examine the integrations and
+translations that already exist. Choosing something that is being translated has the advantage
+of starting out with a proven translation, plus you'll be thinning your translation layer.
+Maintaining Model Integrity 251
+At this point, you have two models that address the same subdomain. There are basically three
+approaches to merging. You can choose one model and refactor the other
+CONTEXT to be compatible. This decision can be made wholesale, setting the intention of systematically replacing one
+CONTEXT'S model and retaining the coherence of a model that was developed as a unit. Or you
+can choose one piece at a time, presumably ending up with the best of both (but taking care not to
+end up with a jumble).
+The third option is to find a new model, presumably deeper than either of the originals, capable of
+assuming the responsibilities of both.
+4. Form a group of two to four developers, drawn from both teams, to work out a shared model
+for the subdomain. Regardless of how the model is derived, it must be ironed out in detail.
+This includes the hard work of identifying synonyms and mapping any terms that are not already being translated. This joint team outlines a basic set of tests for the model.
+5. Developers from either team take on the task of implementing the model (or adapting existing
+code to be shared), working out details and making it function. If these developers run into
+problems with the model, they reconvene the team from step 3 and participate in any necessary revisions of the concepts.
+6. Developers of each team take on the task of integrating with the new
+SHARED KERNEL.
+7. Remove translations that are no longer needed.
+At this point, you will have a very small
+SHARED KERNEL, with a process in place to maintain it.
+In subsequent project iterations, repeat steps 3 through 7 to share more. As the processes firm up
+and the teams gain confidence, you can take on more complicated subdomains, multiple ones at
+the same time, or subdomains that are in the
+CORE DOMAIN.
+A note: As you take on more domain-specific parts of the models, you may encounter cases where
+the two models have conformed to the specialized jargon of different user communities. It is wise
+to defer merging these into the
+SHARED KERNEL unless a breakthrough to a deep model has
+occurred, providing you with a language capable of superseding both specialized ones. An advantage of a
+SHARED KERNEL is that you can have some of the advantages of
+CONTINUOUS INTE-
+GRATION while retaining some of the advantages of
+SEPARATE WAYS.
+Those are some guidelines for merging into a
+SHARED KERNEL. Before going ahead, consider
+one alternative that satisfies some of the needs addressed by this transformation. If one of the two
+models is definitely preferred, consider shifting toward it without integrating. Instead of sharing
+common subdomains, just systematically transfer full responsibility for those subdomains from one
+BOUNDED CONTEXT to the other by refactoring the applications to call on the model of the more
+favored
+CONTEXT, and making any enhancements that model needs. Without any ongoing integration overhead, you have eliminated redundancy. Potentially (but not necessarily), the more favored
+BOUNDED CONTEXT could eventually take over completely, and you'll have created the
+same effect as a merger. In the transition (which can be quite long or indefinite), this will have the
+usual advantages and disadvantages of going
+SEPARATE WAYS, and you have to weigh them
+against the pros and cons of a
+SHARED KERNEL.
+Merging CONTEXTS: SHARED KERNEL CONTINUOUS INTEGRATION
+If your
+SHARED KERNEL is expanding, you may be lured by the advantages of full unification of
+the two
+BOUNDED CONTEXTS. This is not just a matter of resolving the model differences. You
+are going to be changing team structures and ultimately the language people speak.
+Start by preparing the people and the teams.
+1. Be sure that all the processes needed for
+CONTINUOUS INTEGRATION (shared code ownership, frequent integration, and so on) are in place on
+each team, separately. Harmonize
+integration procedures on the two teams so that everyone is doing things in the same way.
+Maintaining Model Integrity 252
+2. Start circulating team members between teams. This will create a pool of people who understand both models, and will begin to connect the people of the two teams.
+3. Clarify the distillation of each model individually. (See Chapter 15.)
+4. At this point, confidence should be high enough to begin merging the core domain into the
+SHARED KERNEL. This can take several iterations, and sometimes temporary translation
+layers are needed between the newly shared parts and the not-yet-shared parts. Once into
+merging the
+CORE DOMAIN, it is best to go pretty fast. It is a high-overhead phase, fraught
+with errors, and should be shortened as much as possible, taking priority over most new development. But don't take on more than you can handle.
+To merge the
+CORE models, you have a few choices. You can stick with one model and modify the
+other to be compatible with it, or you can create a new model of the subdomain and adapt both
+contexts to use it. Watch out if the two models have been tailored to address distinct user needs.
+You may need the specialized power of both original models. This calls for developing a deeper
+model that can supersede both original models. Developing a deeper unifying model is very difficult,
+but if you are committed to the full merger of the two
+CONTEXTS, you no longer have the option of
+multiple dialects. There will be a reward in terms of the clarity of integration of the resulting model
+and code. Be careful that it doesn't come at the cost of your ability to address the specialized needs
+of your users.
+5. As the
+SHARED KERNEL grows, increase the integration frequency to daily and finally to
+CONTINUOUS INTEGRATION.
+6. As the
+SHARED KERNEL approaches the point of encompassing all of the two former
+BOUN-
+DED CONTEXTS, you will find yourself with either one large team or two smaller teams that
+have a shared code base that they
+INTEGRATE CONTINUOUSLY, and that trade members
+back and forth frequently.
+Phasing Out a Legacy System
+All good things must come to an end, even legacy computer software. But it doesn't happen on its
+own. These old systems can be so woven into the business and other systems that extricating them
+can take many years. Fortunately, it doesn't have to be done all at once.
+The possibilities are too various for me to do more than scratch the surface here. But I'll discuss a
+common case: An old system that is used daily in the business has been supplemented recently by
+a handful of more modern systems that communicate with the legacy system through an
+ANTI-
+CORRUPTION LAYER.
+One of the first steps should be to decide on a testing strategy. Automated unit tests should be
+written for new functionality in the new systems, but phasing out legacy introduces special testing
+needs. Some organizations run new and old in parallel for some period of time.
+In any given iteration:
+1. Identify specific functionality of the legacy that could be added to one of the favored systems
+within a single iteration.
+2. Identify additions that will be required in the
+ANTICORRUPTION LAYER.
+3. Implement.
+4. Deploy.
+Sometimes it will be necessary to spend more than one iteration writing equivalent functionality to
+a unit that can be phased out of the legacy, but still plan the new functions in small, iteration-sized
+units, only waiting multiple iterations for deployment.
+Maintaining Model Integrity 253
+Deployment is another point at which too much variation exists to cover all the bases. It would be
+nice for development if these small, incremental changes could be rolled out to production, but
+usually it is necessary to organize bigger releases. The users must be trained to use the new software. A parallel period sometimes must be completed successfully. Many logistical problems will
+have to be worked out.
+Once it is finally running in the field:
+5. Identify any unnecessary parts of the
+ANTICORRUPTION LAYER and remove them.
+6. Consider excising the now-unused modules of the legacy system, though this may not turn
+out to be practical. Ironically, the better designed the legacy system is, the easier it will be to
+phase it out. But badly designed software is hard to dismantle a little at a time. It may be
+possible to just ignore the unused parts until a later time when the remainder has been phased
+out and the whole thing can be switched off.
+Repeat this over and over. The legacy system should become less involved in the business, and
+eventually it will be possible to see the light at the end of the tunnel and finally switch off the old
+system. Meanwhile, the
+ANTICORRUPTION LAYER will alternately shrink
+and swell as various
+combinations increase or decrease the interdependence between the systems. All else being equal,
+of course, you should migrate first those functions that lead to smaller
+ANTICORRUPTION LAY-
+ERS. But other factors are likely to dominate, and you may have to live with some hairy translations
+during some transitions.
+Open Host Service Published Language
+You have been integrating with other systems with a series of ad hoc protocols, but the maintenance
+burden is mounting as more systems want access, or perhaps the interaction is becoming very
+difficult to understand. You need to formalize the relationship between the systems with a
+PUB-
+LISHED LANGUAGE.
+1. If an industry-standard language is available, evaluate it and use it if at all possible.
+2. If no standard or prepublished language is available, then begin by sharpening up the
+CORE
+DOMAIN of the system that will serve as the host. (See Chapter 15.)
+3. Use the
+CORE DOMAIN as the basis of an interchange language, using a standard interchange paradigm such as XML, if at all possible.
+4. Publish the new language to all involved in the collaboration (at least).
+5. If a new system architecture is involved, publish that too.
+6. Build translation layers for each collaborating system.
+7. Switch over.
+At this point, additional collaborators should be able to enter with minimal disruption.
+Remember, the
+PUBLISHED LANGUAGE must be stable, yet you'll still need the freedom to change
+the host's model as you continue your relentless refactoring. Therefore,
+do not equate the interchange language and the model of the host. Keeping them close together will reduce translation
+overhead, and you may choose to make your host a
+CONFORMIST. But reserve the right to beef
+up the translation layer and diverge if the cost-benefit trade-off favors that.
+Project leaders should define
+BOUNDED CONTEXTS based on functional integration requirements
+and relationships of development teams. Once
+BOUNDED CONTEXTS and a
+CONTEXT MAP are
+explicitly defined and respected, then logical consistency should be protected. Related communication problems will at least be exposed so they can be dealt with.
+Maintaining Model Integrity 254
+However, sometimes model contexts, whether consciously bounded or naturally occurring, are misapplied to solve problems other than logical inconsistency within a system. The team may find that
+the model of a large
+CONTEXT seems too complex to comprehend as a whole, or to analyze completely. By choice or by chance, this often leads to breaking down the
+CONTEXTS into more manageable pieces. This fragmentation leads to lost opportunities. Now, it is worth scrutinizing a decision
+to establish a large model in a broad
+CONTEXT, and if it is not organizationally or politically possible
+to keep together, if it is in reality fragmenting, then redraw the map and define boundaries you can
+keep. But if a large
+BOUNDED CONTEXT addresses compelling integration needs, and if it seems
+feasible apart from the complexity of the model itself, then breaking up the
+CONTEXT may not be
+the best answer.
+There are other means of making large models tractable that should be considered before making
+this sacrifice. The next two chapters focus on managing complexity within a big model by applying
+two more broad principles: distillation and large-scale structure.
+Maintaining Model Integrity 255
+Chapter Fifteen. Distillation
+These four equations, along with the definitions of their terms and the body of mathematics they rest on, express
+the entirety of classical nineteenth-century electromagnetism.
+—James Clerk Maxwell, A Treatise on Electricity and Magnetism
+, 1873
+How do you focus on your central problem and keep from drowning in a sea of side issues? A
+LAYERED ARCHITECTURE separates domain concepts from the technical logic that makes a
+computer system run, but in a large system, even the isolated domain may be unmanageably complex.
+Distillation is the process of separating the components of a mixture to extract the essence in a form
+that makes it more valuable and useful. A model is a distillation of knowledge. With every refactoring
+to deeper insight, we abstract some crucial aspect of domain knowledge and priorities. Now, stepping back for a strategic view, this chapter looks at ways to distinguish broad swaths of the model
+and distill the domain model as a whole.
+As with many chemical distillations, the separated by-products are themselves made more valuable
+by the distillation process (as
+GENERIC SUBDOMAINS and
+COHERENT MECHANISMS), but the
+effort is motivated by the desire to extract that one particularly valuable part, the part that distinguishes our software and makes it worth building: the “
+CORE DOMAIN.”
+Strategic distillation of a domain model does all of the following:
+1. Aids all team members in grasping the overall design of the system and how it fits together
+2. Facilitates communication by identifying a core model of manageable size to enter the
+UBIQ-
+UITOUS LANGUAGE
+3. Guides refactoring
+4. Focuses work on areas of the model with the most value
+5. Guides outsourcing, use of off-the-shelf components, and decisions about assignments
+This chapter lays out a systematic approach to strategic distillation of the
+CORE DOMAIN, and it
+explains how to effectively share a view of it within the team and provides the language to talk about
+what we are doing.
+Figure 15.1. A navigation map for strategic distillation
+Like a gardener pruning a tree, clearing the way for the growth of the main branches, we are going
+to apply a suite of techniques to hew away distractions in the model and focus our attention on the
+part that matters most. . . .
+Core Domain
+In designing a large system, there are so many contributing components, all complicated and all
+absolutely necessary to success, that the essence of the domain model, the real business asset,
+can be obscured and neglected.
+Distillation 257
+A system that is hard to understand is hard to change. The effect of a change is hard to foresee. A
+developer who wanders outside his or her own area of familiarity gets lost. (This is particularly true
+when bringing new people into a team, but even an established member of the team will struggle
+unless code is very expressive and organized.) This forces people to specialize. When developers
+confine their work to specific modules, it further reduces knowledge transfer. With the compartmentalization of work, smooth integration of the system suffers, and flexibility in assigning work is
+lost. Duplication crops up when a developer does not realize that a behavior already exists elsewhere, and so the system becomes even more complex.
+Those are some of the consequences of any design that is hard to understand, but there is another,
+equally serious risk from losing the big picture of the domain:
+The harsh reality is that not all parts of the design are going to be equally refined. Priorities must be
+set. To make the domain model an asset, the model's critical core has to be sleek and fully leveraged
+to create application functionality. But scarce, highly skilled developers tend to gravitate to technical
+infrastructure or neatly definable domain problems that can be understood without specialized domain knowledge.
+Such parts of the system seem interesting to computer scientists, and are perceived to build transferable professional skills and provide better resume material. The specialized core, that part of the
+model that really differentiates the application and makes it a business asset, typically ends up being
+put together by less skilled developers who work with DBAs to create a data schema and then code
+feature-by-feature without drawing on any conceptual power in the model at all.
+Poor design or implementation of this part of the software leads to an application that never does
+compelling things for the users, no matter how well the technical infrastructure works, no matter how
+nice the supporting features are. This insidious problem can take root when a project lacks a sharp
+picture of the overall design and the relative significance of the various parts.
+One of the most successful projects I've joined initially suffered from this syndrome. The goal was
+to develop a very complex syndicated loan system. Most of the strong talent was happily working
+on database mapping layers and messaging interfaces while the business model was in the hands
+of developers new to object technology.
+The single exception, an experienced object developer working on a domain problem, devised a
+way of attaching comments to any of the long-lived domain objects. These comments could be
+organized so that traders could see the rationale they or others recorded for some past decision.
+He also built an elegant user interface that gave intuitive access to the flexible features of the comment model.
+These features were useful and well designed. They went into production.
+Unfortunately, they were peripheral. This talented developer modeled his interesting, generic way
+of commenting, implemented it cleanly, and put it into users' hands. Meanwhile an incompetent
+developer was turning the mission-critical “loan” module into an incomprehensible tangle that the
+project very nearly did not recover from.
+The planning process must drive resources to the most crucial points in the model and design. To
+do that, those points must be identified and understood by everyone during planning and development.
+Those parts of the model distinctive and central to the purposes of the intended applications make
+up the
+CORE DOMAIN. The
+CORE DOMAIN is where the most value should be added in your
+system.
+Therefore:
+Boil the model down. Find the CORE DOMAIN and provide a means of easily distinguishing it from
+the mass of supporting model and code. Bring the most valuable and specialized concepts into
+sharp relief. Make the CORE small.
+Distillation 258
+Apply top talent to the CORE DOMAIN, and recruit accordingly. Spend the effort in the CORE to
+find a deep model and develop a supple design—sufficient to fulfill the vision of the system. Justify
+investment in any other part by how it supports the distilled CORE.
+Distilling the
+CORE DOMAIN is not easy, but it does lead to some easy decisions. You'll put a lot
+of effort into making your
+CORE distinctive, while keeping the rest of the design as generic as is
+practical. If you need to keep some aspect of your design secret as a competitive advantage, it is
+the
+CORE DOMAIN. There is no need to waste effort concealing the rest. And whenever a choice
+has to be made (due to time limitations) between two desirable refactorings, the one that most affects
+the
+CORE DOMAIN should be chosen first.
+The patterns in this chapter make the
+CORE DOMAIN easier to see and use and change.
+Choosing the CORE
+We are looking at those parts of the model particular to representing your business domain and
+solving your business problems.
+The
+CORE DOMAIN you choose depends on your point of view. For example, many applications
+need a generic model of money that could represent various currencies and their exchange rates
+and conversions. On the other hand, an application to support currency trading might need a more
+elaborate model of money, which would be considered part of the
+CORE. Even in such a case, there
+may be a part of the money model that is very generic. As insight into the domain deepens with
+experience, the distillation process can continue by separating the generic money concepts and
+retaining only the specialized aspects of the model in the
+CORE DOMAIN.
+In a shipping application, the
+CORE could be the model of how cargoes are consolidated for shipping, how liability is transferred when containers change hands, or how a particular container is
+routed on various transports to reach its destination. In investment banking, the
+CORE could include
+the models of syndication of assets among assignees and participants.
+One application's
+CORE DOMAIN is another application's generic supporting component. Still,
+throughout one project, and usually throughout one company, a consistent
+CORE can be defined.
+Like every other part of the design, the identification of the
+CORE DOMAIN should evolve through
+iterations. The importance of a particular set of relationships might not be apparent at first. The
+objects that seem obviously central at first may turn out to have supporting roles.
+The discussion in the following sections, particularly
+GENERIC SUBDOMAINS, will give more
+guidelines for these decisions.
+Who Does the Work?
+The most technically proficient members of project teams seldom have much knowledge of the
+domain. This limits their usefulness and reinforces the tendency to assign them to supporting components, sustaining a vicious circle in which lack of knowledge keeps them away from the work that
+would build domain knowledge.
+It is essential to break this cycle by assembling a team matching up a set of strong developers who
+have a long-term commitment and an interest in becoming repositories of domain knowledge with
+one or more domain experts who know the business deeply. Domain design is interesting, technically challenging work when approached seriously, and developers can be found who see it this way.
+Distillation 259
+It is usually not practical to hire short-term, outside design expertise for the nuts and bolts of creating
+the
+CORE DOMAIN, because the team needs to accumulate domain knowledge, and a temporary
+member is a leak in the bucket. On the other hand, an expert in a teaching/mentoring role can be
+very valuable by helping the team build its domain design skills and facilitating the use of sophisticated principles that team members probably have not mastered.
+For similar reasons, it is unlikely that the
+CORE DOMAIN can be purchased. Efforts have been
+made to build industry-specific model frameworks, conspicuous examples being the semiconductor
+industry consortium SEMATECH's CIM framework for semiconductor manufacturing automation,
+and IBM's “San Francisco” frameworks for a wide range of businesses. Although this is a very
+enticing idea, so far the results have not been compelling, except perhaps as
+PUBLISHED LAN-
+GUAGES facilitating data interchange (see Chapter 14). The book
+Domain-Specific Application
+Frameworks (Fayad and Johnson 2000) gives an overview of the state of this art. As the field advances, more workable frameworks may be available.
+Even so, there is a more fundamental reason for caution: The greatest value of custom software
+comes from the total control of the
+CORE DOMAIN. A well-designed framework may be able to
+provide high-level abstractions that you can specialize for your use. It may save you from developing
+the more generic parts and leave you free to concentrate on the
+CORE. But if it constrains you more
+than that, then there are three likely possibilities.
+1. You are losing an essential software asset. Back off restrictive frameworks in your
+CORE
+DOMAIN.
+2. The area treated by the framework is not as pivotal as you thought. Redraw the boundaries
+of the
+CORE DOMAIN to the truly distinctive part of the model.
+3. You don't have special needs in your
+CORE DOMAIN. Consider a lower-risk solution, such
+as purchasing software to integrate with your applications.
+One way or another, creating distinctive software comes back to a stable team accumulating specialized knowledge and crunching it into a rich model. No shortcuts. No magic bullets.
+An Escalation of Distillations
+The various distillation techniques that make up the rest of this chapter can be applied in almost
+any order, but there is a range in how radically they modify the design.
+A simple
+DOMAIN VISION STATEMENT communicates the basic concepts and their value with a
+minimum investment. The
+HIGHLIGHTED CORE can improve communication and help guide decision making—and still requires little or no modification to the design.
+More aggressive refactoring and repackaging explicitly separate
+GENERIC SUBDOMAINS, which
+can then be dealt with individually. C
+OHESIVE MECHANISMS can be encapsulated with versatile,
+communicative, and supple design. Removing these distractions disentangles the
+CORE.
+Repackaging a
+SEGREGATED CORE makes the
+CORE directly visible, even in the code, and
+facilitates future work on the
+CORE model.
+And most ambitious is the
+ABSTRACT CORE, which expresses the most fundamental concepts
+and relationships in a pure form (and requires extensive reorganizing and refactoring of the model).
+Each of these techniques requires a successively greater commitment, but a knife gets sharper as
+its blade is ground finer. Successive distillation of a domain model produces an asset that gives the
+project speed, agility, and precision of execution.
+To start, we can boil off the least distinctive aspects of the model. G
+ENERIC SUBDOMAINS provide
+a contrast to the
+CORE DOMAIN that clarifies the meaning of each. . . .
+Distillation 260
+Generic Subdomains
+Some parts of the model add complexity without capturing or communicating specialized knowledge. Anything extraneous makes the CORE DOMAIN harder to discern and understand. The
+model clogs up with general principles everyone knows or details that belong to specialties which
+are not your primary focus but play a supporting role. Yet, however generic, these other elements
+are essential to the functioning of the system and the full expression of the model.
+There is a part of your model that you would like to take for granted. It is undeniably part of the
+domain model, but it abstracts concepts that would probably be needed for a great many businesses.
+For example, a corporate organization chart is needed in some form by businesses as diverse as
+shipping, banking, or manufacturing. For another example, many applications track receivables,
+expense ledgers, and other financial matters that could all be handled using a generic accounting
+model.
+Often a great deal of effort is spent on peripheral issues in the domain. I personally have witnessed
+two separate projects that have employed their best developers for weeks in redesigning dates and
+times with time zones. While such components must work, they are not the conceptual core of the
+system.
+Even if such a generic model element is deemed critical, the overall domain model needs to make
+prominent the most valueadding and special aspects of your system, and needs to be structured to
+give that part as much power as possible. This is hard to do when the
+CORE is mixed with all the
+interrelated factors.
+Therefore:
+Identify cohesive subdomains that are not the motivation for your project. Factor out generic models
+of these subdomains and place them in separate MODULES. Leave no trace of your specialties in
+them.
+Once they have been separated, give their continuing development lower priority than the CORE
+DOMAIN, and avoid assigning your core developers to the tasks (because they will gain little domain
+knowledge from them). Also consider off-the-shelf solutions or published models for these GE-
+NERIC SUBDOMAINS.
+You may have a few extra options when developing these packages.
+Option 1: An Off-the-Shelf Solution
+Sometimes you can buy an implementation or use open source code.
+Advantages
+• Less code to develop.
+• Maintenance burden externalized.
+• Code is probably more mature, used in multiple places, and therefore more bulletproof and
+complete than homegrown code.
+Disadvantages
+• You still have to spend the time to evaluate it and understand it before using it.
+• Quality control being what it is in our industry, you can't count on it being correct and stable.
+• It may be overengineered for your purposes; integration could be more work than a minimalist
+homegrown implementation.
+Distillation 261
+• Foreign elements don't usually integrate smoothly. There may be a distinct
+BOUNDED CON-
+TEXT. Even if not, it may be difficult to smoothly reference
+ENTITIES from your other packages.
+• It may introduce platform dependencies, compiler version dependencies, and so on.
+Off-the-shelf subdomain solutions are worth investigating, but they are usually not worth the trouble.
+I've seen success stories in applications with very elaborate workflow requirements that used commercially available external workflow systems with API hooks. I've also seen success with an errorlogging package that was deeply integrated into the application. Sometimes
+GENERIC SUBDO-
+MAIN solutions are packaged in the form of frameworks, which implement a very abstract model
+that can be integrated with and specialized for your application. The more generic the subcomponent, and the more distilled its own model, the better the chance that it will be useful.
+Option 2: A Published Design or Model
+Advantages
+• More mature than a homegrown model and reflects many people's insights
+• Instant, high-quality documentation
+Disadvantage
+• May not quite fit your needs or may be overengineered for your needs
+Tom Lehrer (the comedic songwriter from the 1950s and 1960s) said the secret to success in mathematics was, “Plagiarize! Plagiarize. Let no one's work evade your eyes. . . . Only be sure always
+to call it please,
+research.” Good advice in domain modeling, and especially when attacking a
+GENERIC SUBDOMAIN.
+This works best when there is a widely distributed model, such as the ones in
+Analysis Patterns
+(Fowler 1996). (See Chapter 11.)
+When the field already has a highly formalized and rigorous model, use it. Accounting and physics
+are two examples that come to mind. Not only are these very robust and streamlined, but they are
+widely understood by people everywhere, reducing your present and future training burden. (See
+
+---
+
+## Sección 8: Chapter 10, on using established formalisms.) [Entropy: 0.75]
+
+Don't feel compelled to implement all aspects of a published model, if you can identify a simplified
+subset that is self-consistent and satisfies your needs. But in cases where there is a well-traveled
+and well-documented—or better yet, formalized—model available, it makes no sense to reinvent
+the wheel.
+Option 3: An Outsourced Implementation
+Advantages
+• Keeps core team free to work on the
+CORE DOMAIN, where most knowledge is needed and
+accumulated.
+• Allows more development to be done without permanently enlarging the team, but without dissipating knowledge of the
+CORE DOMAIN.
+• Forces an interface-oriented design, and helps keep the subdomain generic, because the specification is being passed outside.
+Disadvantages
+• Still requires time from the core team, because the interface, coding standards, and any other
+important aspects need to be communicated.
+Distillation 262
+• Incurs significant overhead of transferring ownership back inside, because code has to be understood. (Still, overhead is less than for specialized subdomains, because a generic model
+presumably requires no special background to understand.)
+• Code quality can vary. This could be good or bad, depending on the relative caliber of the two
+teams.
+Automated tests can play an important role in outsourcing. The implementers should be required to
+provide unit tests for the code they deliver. A really powerful approach—one that helps ensure a
+degree of quality, clarifies the spec, and smooths reintegration—is to specify or even write automated acceptance tests for the outsourced components. Also, “outsourced implementation” can be
+an excellent combination with “published design or model.”
+Option 4: An In-House Implementation
+Advantages
+• Easy integration.
+• You get just what you want and nothing extra.
+• Temporary contractors can be assigned.
+Disadvantages
+• Ongoing maintenance and training burden.
+• It is easy to underestimate the time and cost of developing such packages.
+Of course, this too combines well with “published design or model.”
+G
+ENERIC SUBDOMAINS are the place to try to apply outside design expertise, because they do
+not require deep understanding of your specialized
+CORE DOMAIN, and they do not present a major
+opportunity to learn that domain. Confidentiality is of less concern, because little proprietary information or business practice will be involved in such modules. A
+GENERIC SUBDOMAIN lessens
+the training burden for those not committed to deep knowledge of the domain.
+Over time, I believe our ideas of what constitutes the
+CORE model will narrow, and more and more
+generic models will be available as implemented frameworks, or at least as published models or
+analysis patterns. For now, we still have to develop most of these ourselves, but there is great value
+in partitioning them from the
+CORE DOMAIN model.
+Example
+A Tale of Two Time Zones
+Twice I've watched as the best developers on a project spent weeks of their time solving the problem
+of storing and converting times with time zones. While I'm always suspicious of such activities,
+sometimes it is necessary, and these two projects provide almost perfect contrast.
+The first was an effort to design scheduling software for cargo shipping. To schedule international
+transports, it is critical to have accurate time calculations, and because all such schedules are
+tracked in local time, it is impossible to coordinate transports without conversions.
+Having clearly established their need for this functionality, the team proceeded with development
+of the
+CORE DOMAIN and some early iterations of the application using the available time classes
+and some dummy data. As the application began to mature, it was clear that the existing time classes
+were not adequate, and that the problem was very intricate because of the variations between the
+many countries and the complexity of the International Date Line. With their requirements by now
+even clearer, they searched for an off-theshelf solution, but found none. They had no option but to
+build it themselves.
+Distillation 263
+The task would require research and precision engineering, so the team leaders assigned one of
+their best programmers. But the task did not require any special knowledge of shipping and would
+not cultivate that knowledge, so they chose a programmer who was on the project on a temporary
+contract.
+This programmer did not start from scratch. He researched several existing implementations of time
+zones, most of which did not meet requirements, and decided to adapt the public-domain solution
+from BSD Unix, which had an elaborate database and an implementation in C. He reverse-engineered the logic and wrote an import routine for the database.
+The problem turned out to be even harder than expected (involving, for example, the import of
+databases of special cases), but the code got written and integrated with the
+CORE and the product
+was delivered.
+Things went very differently on the other project. An insurance company was developing a new
+claims-processing system, and planned to capture the times of various events (time of car crash,
+time of hail storm, and so on). This data would be recorded in local time, so time zone functionality
+was needed.
+When I arrived, they had assigned a junior, but very smart, developer to the task, although the exact
+requirements of the app were still in play and not even an initial iteration had been attempted. He
+had dutifully set out to build a time zone model
+a priori.
+Not knowing what would be needed, it was assumed that it should be flexible enough to handle
+anything. The programmer assigned to the task needed help with such a difficult problem, so a
+senior developer was assigned to it also. They wrote complex code, but no specific application was
+using it, so it was never clear that the code worked correctly.
+The project ran aground for various reasons, and the time zone code was never used. But if it had
+been, simply storing local times tagged with the time zone might have been sufficient, even with no
+conversion, because this was primarily reference data and not the basis of computations. Even if
+conversion had turned out to be necessary, all the data was going to be gathered from North America, where time zone conversions are relatively simple.
+The main cost of this attention to the time zones was the neglect of the
+CORE DOMAIN model. If
+the same energy had been placed there, they might have produced a functioning prototype of their
+own application and a first cut at a working domain model. Furthermore, the developers involved,
+who were committed long-term to the project, should have been steeped in the insurance domain,
+building up critical knowledge within the team.
+One thing both projects did right was to cleanly segregate the
+GENERIC time zone model from the
+CORE DOMAIN. A shippingspecific or insurance-specific model of time zones would have coupled
+the model to this generic supporting model, making the
+CORE harder to understand (because it
+would contain irrelevant detail about time zones). It would have made the time zone
+MODULE harder
+to maintain (because the maintainer would have to understand the
+CORE and its interrelationship
+with time zones).
+Shipping Project's Strategy Insurance Project's Strategy
+Advantages
+• GENERIC model decoupled from CORE.
+• CORE model mature, so resources could be diverted without stunting it.
+• Knew exactly what they needed.
+• Critical support functionality for international scheduling.
+• Programmer on short-term contract used for GENERIC
+task.
+Disadvantage
+Advantage
+• GENERIC model decoupled from CORE.
+Disadvantages
+• CORE model undeveloped, so attention to other issues continued this neglect.
+• Unknown requirements led to attempt at full generality, where
+simpler North America-specific conversion might have sufficed.
+• Long-term programmers were assigned who could have been
+repositories of domain knowledge.
+Distillation 264
+Shipping Project's Strategy Insurance Project's Strategy
+• Diverted top programmer from core.
+We technical people tend to enjoy definable problems like time zone conversion, and we can easily
+justify spending our time on them. But a disciplined look at priorities usually points to the
+CORE
+DOMAIN.
+Generic Doesn't Mean Reusable
+Note that while I have emphasized the generic quality of these subdomains, I have not mentioned
+the reusability of code. Off-the-shelf solutions may or may not make sense for a particular situation,
+but assuming that you are implementing the code yourself, in-house or outsourced, you should
+specifically not concern yourself with the reusability of that code. This would go against the basic
+motivation of distillation: that you should be applying as much of your effort to the
+CORE DO-
+MAIN as possible and investing in supporting
+GENERIC SUB-DOMAINS only as necessary.
+Reuse does happen, but not always code reuse. The model reuse is often a better level of reuse,
+as when you use a published design or model. And if you have to create your own model, it may
+well be valuable in a later related project. But while the concept of such a model may be applicable
+to many situations, you do not have to develop the model in its full generality. You can model and
+implement only the part you need for your business.
+Though you should seldom design for reusability, you must be strict about keeping within the generic
+concept. Introducing industry-specific model elements will have two costs. First, it will impede future
+development. Although you need only a small part of the subdomain model now, your needs will
+grow. By introducing anything to the design that is not part of the concept, you make it much more
+difficult to expand the system cleanly without completely rebuilding the older part and redesigning
+the other modules that use it.
+The second, and more important, reason is that those industry-specific concepts belong either in
+the
+CORE DOMAIN or in their own, more specialized, subdomains, and those specialized models
+are even more valuable than the generic ones.
+Project Risk Management
+Agile processes typically call for managing risk by tackling the riskiest tasks early. XP specifically
+calls for getting an end-to-end system up and running immediately. This initial system often proves
+a technical architecture, and it is tempting to build a peripheral system that handles some supporting
+GENERIC SUBDOMAIN because these are usually easier to analyze. But be careful; this can defeat
+the purpose of risk management.
+Projects face risk from both sides, with some projects having greater technical risks and others
+greater domain modeling risks. The end-to-end system mitigates risk only to the extent that it is an
+embryonic version of the challenging parts of the actual system. It is easy to underestimate the
+domain modeling risk. It can take the form of unforeseen complexity, inadequate access to business
+experts, or gaps in key skills of the developers.
+Therefore, except when the team has proven skills and the domain is very familiar, the first-cut
+system should be based on some part of the
+CORE DOMAIN, however simple.
+The same principle applies to any process that tries to push high-risk tasks forward: the
+CORE
+DOMAIN is high risk because it is often unexpectedly difficult and because without it, the project
+cannot succeed.
+Distillation 265
+Most of the distillation patterns in this chapter show how to change the model and code to distill the
+CORE DOMAIN. However, the next two patterns,
+DOMAIN VISION STATEMENT and
+HIGHLIGH-
+TED CORE, show how the use of supplemental documents can, with a very minor investment,
+improve communication and awareness of the
+CORE and focus development effort. . . .
+Domain Vision Statement
+At the beginning of a project, the model usually doesn't even exist, yet the need to focus its development is already there. In later stages of development, there is a need for an explanation of the
+value of the system that does not require an in-depth study of the model. Also, the critical aspects
+of the domain model may span multiple BOUNDED CONTEXTS, but by definition these distinct
+models can't be structured to show their common focus.
+Many project teams write “vision statements” for management. The best of these documents lay out
+the specific value the application will bring to the organization. Some mention the creation of the
+domain model as a strategic asset. Usually the vision statement document is abandoned after the
+project gets funding, and it is never used in the actual development process or even read by the
+technical staff.
+A
+DOMAIN VISION STATEMENT is modeled after such documents, but it focuses on the nature of
+the domain model and how it is valuable to the enterprise. It can be used directly by the management
+and technical staff during all phases of development to guide resource allocation, to guide modeling
+choices, and to educate team members. If the domain model serves many masters, this document
+can show how their interests are balanced.
+Therefore:
+Write a short description (about one page) of the CORE DOMAIN and the value it will bring, the
+“value proposition.” Ignore those aspects that do not distinguish this domain model from others.
+Show how the domain model serves and balances diverse interests. Keep it narrow. Write this
+statement early and revise it as you gain new insight.
+A
+DOMAIN VISION STATEMENT can be used as a guidepost that keeps the development team
+headed in a common direction in the ongoing process of distilling the model and code itself. It can
+be shared with nontechnical team members, management, and even customers (except where it
+contains proprietary information, of course).
+This is part of a DOMAIN VISION STATEMENT This, though important, is not part of a DOMAIN VISION
+STATEMENT
+Airline Booking System
+The model can represent passenger priorities and airline booking strategies and balance these based on flexible policies. The
+model of a passenger should reflect the “relationship” the airline is striving to develop with repeat customers. Therefore, it
+should represent the history of the passenger in useful condensed form, participation in special programs, affiliation with
+strategic corporate clients, and so on.
+Different roles of different users (such as passenger, agent,
+manager) are represented to enrich the model of relationships
+and to feed necessary information to the security framework.
+Model should support efficient route/seat search and integration with other established flight booking systems.
+Airline Booking System
+The UI should be streamlined for expert users but accessible to
+first-time users.
+Access will be offered over the Web, by data transfer to other systems, and maybe through other UIs, so interface will be designed
+around XML with transformation layers to serve Web pages or
+translate to other systems.
+A colorful animated version of the logo needs to be cached on the
+client machine so that it can come up quickly on future visits.
+When customer submits a reservation, make visual confirmation
+within 5 seconds.
+A security framework will authenticate a user's identity and then
+limit access to specific features based on privileges assigned to
+defined user roles.
+This is part of a DOMAIN VISION STATEMENT This, though important, is not part of a DOMAIN VI-
+SION STATEMENT
+Semiconductor Factory Automation Semiconductor Factory Automation
+Distillation 266
+This is part of a DOMAIN VISION STATEMENT This, though important, is not part of a DOMAIN VI-
+SION STATEMENT
+The domain model will represent the status of materials and equipment within a wafer fab in such a way that necessary audit trails can
+be provided and automated product routing can be supported.
+The model will not include the human resources required in the process, but must allow selective process automation through recipe
+download.
+The representation of the state of the factory should be comprehensible to human managers, to give them deeper insight and support
+better decision making.
+The software should be Web enabled through a servlet, but
+structured to allow alternative interfaces.
+Industry-standard technologies should be used whenever
+possible to avoid in-house development and maintenance
+costs and to maximize access to outside expertise. Open
+source solutions are preferred (such as Apache Web server).
+The Web server will run on a dedicated server. The application will run on a single dedicated server.
+A
+DOMAIN VISION STATEMENT gives the team a shared direction. Some bridge between the highlevel
+STATEMENT and the full detail of the code or model will usually be needed. . . .
+Highlighted Core
+A
+DOMAIN VISION STATEMENT identifies the
+CORE DOMAIN in broad terms, but it leaves the
+identification of the specific
+CORE model elements up to the vagaries of individual interpretation.
+Unless there is an exceptionally high level of communication on the team, the
+VISION STATE-
+MENT alone will have little impact.
+Even though team members may know broadly what constitutes the CORE DOMAIN, different
+people won't pick out quite the same elements, and even the same person won't be consistent from
+one day to the next. The mental labor of constantly filtering the model to identify the key parts
+absorbs concentration better spent on design thinking, and it requires comprehensive knowledge
+of the model. The CORE DOMAIN must be made easier to see.
+Significant structural changes to the code are the ideal way of identifying the CORE DOMAIN, but
+they are not always practical in the short term. In fact, such major code changes are difficult to
+undertake without the very view the team is lacking.
+Structural changes in the organization of the model, such as partitioning
+GENERIC SUBDO-
+MAINS and a few others to come later in this chapter, can allow the
+MODULES to tell the story. But
+as the only means of communicating the
+CORE DOMAIN, this is too ambitious to shoot for straight
+away.
+You will probably need a lighter solution to supplement these aggressive techniques. You may have
+constraints that prevent you from physically separating the
+CORE. Or you may be starting out with
+existing code that does not differentiate the
+CORE well, but you really need to see the
+CORE, and
+share that view, to effectively refactor toward better distillation. And even at an advanced stage, a
+few carefully selected diagrams or documents provide mental anchor points and entry points for the
+team.
+These issues arise equally for projects that use elaborate UML models and those (such as XP
+projects) that keep few external documents and use the code as the primary repository of the model.
+An Extreme Programming team might be more minimalist, keeping these supplements more casual
+and more transient (for example, a hand-drawn diagram on the wall for all to see), but these techniques can fold nicely into the process.
+Marking off a privileged part of a model, along with the implementation that embodies it, is a reflection
+on the model, not necessarily part of the model itself. Any technique that makes it easy for everyone
+to know the
+CORE DOMAIN will do. Two specific techniques can represent this class of solutions.
+Distillation 267
+The Distillation Document
+Often I create a separate document to describe and explain the
+CORE DOMAIN. It can be as simple
+as a list of the most essential conceptual objects. It can be a set of diagrams focused on those
+objects, showing their most critical relationships. It can walk through the fundamental interactions
+at an abstract level or by example. It can use UML class or sequence diagrams, nonstandard diagrams particular to the domain, carefully worded textual explanations, or combinations of these.
+A
+distillation document is not a complete design document. It is a minimalist entry point that delineates
+and explains the
+CORE and suggests reasons for closer scrutiny of particular pieces. The reader
+is given a broad view of how the pieces fit and guided to the appropriate part of the code for more
+details.
+Therefore (as one form of
+HIGHLIGHTED CORE):
+Write a very brief document (three to seven sparse pages) that describes the CORE DOMAIN and
+the primary interactions among CORE elements.
+All the usual risks of separate documents apply.
+1. The document may not be maintained.
+2. The document may not be read.
+3. By multiplying the information sources, the document may defeat its own purpose of cutting
+through complexity.
+The best way to limit these risks is to be absolutely minimalist. Staying away from mundane detail
+and focusing on the central abstractions and their interactions allows the document to age more
+slowly, because this level of the model is usually more stable.
+Write the document to be understood by the nontechnical members of the team. Use it as a shared
+view that delineates what every-one needs to know, and a guide by which all team members may
+start their exploration of the model and code.
+The Flagged CORE
+On my first day on a project at a major insurance company, I was given a copy of the “domain model,”
+a two-hundred-page document, purchased at great expense from an industry consortium. I spent a
+few days wading through a jumble of class diagrams covering everything from the detailed composition of insurance policies to extremely abstract models of relationships between people. The quality of the factoring of these models ranged from high-school project to rather good (a few even
+described business rules, at least in the accompanying text). But where to start? Two hundred
+pages.
+The project culture heavily favored abstract framework building, and my predecessors had focused
+on a very abstract model of the relationship of people with each other, with things, and with activities
+or agreements. It was actually a nice analysis of these relationships, and their experiments with the
+model had the quality of an academic research project. But it wasn't getting us anywhere near an
+insurance application.
+My first instinct was to start slashing, finding a small
+CORE DOMAIN to fall back on, then refactoring
+that and reintroducing other complexities as we went. But the management was alarmed by this
+attitude. The document was invested with great authority. Its production had involved experts from
+across the industry, and in any event they had paid the consortium far more than they were paying
+me, so they were unlikely to weigh my recommendations for radical change too heavily. But I knew
+we had to get a shared picture of our
+CORE DOMAIN and get everyone's efforts focused on that.
+Distillation 268
+Instead of refactoring, I went through the document and, with the help of a business analyst who
+knew a great deal about the insurance industry in general and the requirements of the application
+we were to build in particular, I identified the handful of sections that presented the essential, differentiating concepts we needed to work with. I provided a navigation of the model that clearly
+showed the
+CORE and its relationship to supporting features.
+A new prototyping effort started from this perspective, and quickly yielded a simplified application
+that demonstrated some of the required functionality.
+Two pounds of recyclable paper was turned into a business asset by a few page tabs and some
+yellow highlighter.
+This technique is not specific to object diagrams on paper. A team that uses UML diagrams extensively could use a “stereotype” to identify core elements. A team that uses the code as the sole
+repository of the model might use comments, maybe structured as Java Doc, or might use some
+tool in its development environment. The particular technique doesn't matter, as long as a developer
+can effortlessly see what is in and what is out of the
+CORE DOMAIN.
+Therefore (as another form of
+HIGHLIGHTED CORE):
+Flag the elements of the CORE DOMAIN within the primary repository of the model, without particularly trying to elucidate its role. Make it effortless for a developer to know what is in or out of the
+CORE.
+The
+CORE DOMAIN is now clearly visible to those working with the model, with a fairly small effort
+and low maintenance, at least to the extent that the model is factored fine enough to distinguish the
+contributions of parts.
+The Distillation Document as Process Tool
+Theoretically on an XP project, any pair (two programmers working together) can change any code
+in the system. In practice, some changes have major implications, and call for more consultation
+and coordination. When working in the infrastructure layer, the impact of a change may be clear,
+but it may not be so obvious in the domain layer, as typically organized.
+With the concept of the
+CORE DOMAIN, this impact can be made clear. Changes to the model of
+the
+CORE DOMAIN should have a big effect. Changes to widely used generic elements may require
+a lot of code updating, but they still shouldn't create the conceptual shift that
+CORE changes do.
+Use the distillation document as a guide. When developers realize that the distillation document
+itself requires change to stay in sync with their code or model change, then consultation is called
+for. Either they are fundamentally changing the
+CORE DOMAIN elements or relationships, or they
+are changing the boundaries of the
+CORE, including or excluding something different. Dissemination of the model change to the whole team is necessary by whatever communication channels the
+team uses, including distribution of a new version of the distillation document.
+If the distillation document outlines the essentials of the CORE DOMAIN, then it serves as a practical
+indicator of the significance of a model change. When a model or code change affects the distillation
+document, it requires consultation with other team members. When the change is made, it requires
+immediate notification of all team members, and the dissemination of a new version of the document.
+Changes outside the CORE or to details not included in the distillation document can be integrated
+without consultation or notification and will be encountered by other members in the course of their
+work. Then the developers have the full autonomy that XP suggests.
+Distillation 269
+Although the
+VISION STATEMENT and
+HIGHLIGHTED CORE inform and guide, they do not actually modify the model or the code itself. Partitioning
+GENERIC SUBDOMAINS physically removes
+some distracting elements. The next patterns look at ways to structurally change the model and the
+design itself to make the
+CORE DOMAIN more visible and manageable. . . .
+Cohesive Mechanisms
+Encapsulating mechanisms is a standard principle of object-oriented design. Hiding complex algorithms in methods with intention-revealing names separates the “what” from the “how.” This technique makes a design simpler to understand and use. Yet it runs into natural limits.
+Computations sometimes reach a level of complexity that begins to bloat the design. The conceptual
+“what” is swamped by the mechanistic “how.” A large number of methods that provide algorithms
+for resolving the problem obscure the methods that express the problem.
+This proliferation of procedures is a symptom of a problem in the model. Refactoring toward deeper
+insight can yield a model and design whose elements are better suited to solving the problem. The
+first solution to seek is a model that makes the computation mechanism simple. But now and then
+the insight emerges that some part of the mechanism is itself conceptually coherent. This conceptual
+computation will probably not include all of the messy computations you need. We are not talking
+about some kind of catch-all “calculator.” But extracting the coherent part should make the remaining
+mechanism easier to understand.
+Therefore:
+Partition a conceptually COHESIVE MECHANISM into a separate lightweight framework. Particularly watch for formalisms or well-documented categories of algorithms. Expose the capabilities of
+the framework with an INTENTION-REVEALING INTERFACE. Now the other elements of the domain can focus on expressing the problem (“what”), delegating the intricacies of the solution (“how”)
+to the framework.
+These separated mechanisms are then placed in their supporting roles, leaving a smaller, more
+expressive
+CORE DOMAIN that uses the mechanism through the interface in a more declarative
+style.
+Recognizing a standard algorithm or formalism moves some of the complexity of the design into a
+studied set of concepts. With such a guide, we can implement a solution with confidence and little
+trial and error. We can count on other developers knowing about it or at least being able to look it
+up. This is similar to the benefits of a published
+GENERIC SUBDOMAIN model, but a documented
+algorithm or formal computation may be found more often because this level of computer science
+has been studied more. Still, more often than not you will have to create something new. Make it
+narrowly focused on the computation and avoid mixing in the expressive domain model. There is a
+separation of responsibilities: The model of the
+CORE DOMAIN or a
+GENERIC SUBDOMAIN formulates a fact, rule, or problem. A
+COHESIVE MECHANISM resolves the rule or completes the
+computation as specified by the model.
+Example
+A Mechanism in an Organization Chart
+I went through this process on a project that needed a fairly elaborate model of an organization
+chart. This model represented the fact that one person worked for another, and in which branches
+of the organization, and it provided an interface by which relevant questions might be asked and
+answered. Because most of these questions were along the lines of “Who, in this chain of command,
+has authority to approve this?” or “Who, in this department, is capable of handling an issue like this?”
+Distillation 270
+the team realized that most of the complexity involved traversing specific branches of the organizational tree, searching for specific people or relationships. This is exactly the kind of problem solved
+by the well-developed formalism of a
+graph, a set of nodes connected by arcs (called
+edges) and
+the rules and algorithms needed to traverse the graph.
+A subcontractor implemented a graph traversal framework as a
+COHESIVE MECHANISM. This
+framework used standard graph terminology and algorithms familiar to most computer scientists
+and abundantly documented in textbooks. By no means did he implement a fully general graph. It
+was a subset of that conceptual framework that covered the features needed for our organization
+model. And with an
+INTENTION-REVEALING INTERFACE, the means by which the answers are
+obtained are not a primary concern.
+Now the organization model could simply state, using standard graph terminology, that each person
+is a node, and that each relationship between people is an edge (arc) connecting those nodes. After
+that, presumably, mechanisms within the graph framework could find the relationship between any
+two people.
+If this mechanism had been incorporated into the domain model, it would have cost us in two ways.
+The model would have been coupled to a particular method of solving the problem, limiting future
+options. More important, the model of an organization would have been greatly complicated and
+muddied. Keeping mechanism and model separate allowed a declarative style of describing organizations that was much clearer. And the intricate code for graph manipulation was isolated in a purely
+mechanistic framework, based on proven algorithms, that could be maintained and unit-tested in
+isolation.
+Another example of a
+COHESIVE MECHANISM would be a framework for constructing
+SPECIFI-
+CATION objects and supporting the basic comparison and combination operations expected of
+them. By employing such a framework, the
+CORE DOMAIN and
+GENERIC SUBDOMAINS can
+declare their
+SPECIFICATIONS in the clear, easily understood language described in that pattern
+(see Chapter 10). The intricate operations involved in carrying out the comparisons and combinations can be left to the framework.
+GENERIC SUBDOMAIN Versus COHESIVE MECHANISM
+Both
+GENERIC SUBDOMAINS and
+COHESIVE MECHANISMS are motivated by the same desire
+to unburden the
+CORE DOMAIN. The difference is the nature of the responsibility taken on. A
+GENERIC SUBDOMAIN is based on an expressive model that represents some aspect of how the
+team views the domain. In this it is no different than the
+CORE DOMAIN, just less central, less
+important, less specialized. A
+COHESIVE MECHANISM does not represent the domain; it solves
+some sticky computational problem posed by the expressive models.
+A model proposes; a
+COHESIVE MECHANISM disposes.
+In practice, unless you recognize a formalized, published computation, this distinction is usually not
+pure, at least not at first. In successive refactoring it could either be distilled into a purer mechanism
+or be transformed into a
+GENERIC SUBDOMAIN with some previously unrecognized model concepts that would make the mechanism simple.
+When a MECHANISM Is Part of the CORE DOMAIN
+You almost always want to remove
+MECHANISMS from the
+CORE DOMAIN. The one exception is
+when a
+MECHANISM is itself proprietary and a key part of the value of the software. This is sometimes the case with highly specialized algorithms. For example, if one of the distinguishing features
+of a shipping logistics application were a particularly effective algorithm for working out schedules,
+that
+MECHANISM could be considered part of the conceptual
+CORE. I once worked on a project at
+Distillation 271
+an investment bank in which highly proprietary algorithms for rating risk were definitely in the
+CORE
+DOMAIN. (In fact, they were held so closely that even most of the
+CORE developers were not
+allowed to see them.) Of course, these algorithms are probably a particular implementation of a set
+of rules that really predict risk. Deeper analysis might lead to a deeper model that would allow those
+rules to be explicit, with an encapsulated solving mechanism.
+But that would be another incremental improvement in the design, for another day. The decision as
+to whether to go that next step would be based on a cost-benefit analysis: How difficult would it be
+to work out that new design? How difficult is the current design to understand and modify? How
+much easier would it be with a more advanced design, for the type of people who would be expected
+to do the work? And of course, does anyone have any idea what form the new model might take?
+Example
+Full Circle: Organization Chart Reabsorbs Its MECHANISM
+Actually, a year after we completed the organization model in the previous example, other developers redesigned it to eliminate the separation of the graph framework. They felt the increased
+object count and the complication of separating the
+MECHANISM into a separate package were not
+warranted. Instead, they added node behavior to the parent class of the organizational
+ENTITIES.
+Still, they retained the declarative public interface of the organization model. They even kept the
+MECHANISM encapsulated, within the organizational
+ENTITIES.
+These full circles are common, but they do not return to their starting point. The end result is usually
+a deeper model that more clearly differentiates facts, goals, and
+MECHANISMS. Pragmatic refactoring retains the important virtues of the intermediate stages while shedding the unneeded complications.
+Distilling to a Declarative Style
+Declarative design and “declarative style” is a topic of Chapter 10, but that design style deserves
+special mention in this chapter on strategic distillation. The value of distillation is being able to see
+what you are doing: cutting to the essence without being distracted by irrelevant detail. Important
+parts of the
+CORE DOMAIN may be able to follow a declarative style, when the supporting design
+provides an economical language for expressing the concepts and rules of the
+CORE while encapsulating the means of computing or enforcing them.
+C
+OHESIVE MECHANISMS are by far most useful when they provide access through an
+INTEN-
+TION-REVEALING INTERFACE, with conceptually coherent
+ASSERTIONS and
+SIDE-EFFECT-
+FREE FUNCTIONS. M
+ECHANISMS and supple designs allow the
+CORE DOMAIN to make meaningful statements rather than calling obscure functions. But an exceptional payoff comes when part
+of the
+CORE DOMAIN itself breaks through to a deep model and starts to function as a language
+that can express the most important application scenarios flexibly and concisely.
+A deep model often comes with a corresponding supple design. When a supple design reaches
+maturity, it provides an easily understood set of elements that can be combined unambiguously to
+accomplish complex tasks or express complex information, just as words are combined into sentences. At that point, client code takes on a declarative style and can be much more distilled.
+Factoring out
+GENERIC SUBDOMAINS reduces clutter, and
+COHESIVE MECHANISMS serve to
+encapsulate complex operations. This leaves behind a more focused model, with fewer distractions
+that add no particular value to the way users conduct their activities. But you are unlikely ever to
+find good homes for
+everything in the domain model that is not
+CORE. The
+SEGREGATED
+CORE takes a direct approach to structurally marking off the
+CORE DOMAIN....
+Distillation 272
+Segregated Core
+Elements in the model may partially serve the CORE DOMAIN and partially play supporting roles.
+CORE elements may be tightly coupled to generic ones. The conceptual cohesion of the CORE
+may not be strong or visible. All this clutter and entanglement chokes the CORE. Designers can't
+clearly see the most important relationships, leading to a weak design.
+By factoring out
+GENERIC SUBDOMAINS, you clear away some of the obscuring detail from the
+domain, making the
+CORE more visible. But it is hard work identifying and clarifying all these subdomains, and some of them don't seem worth the trouble. Meanwhile, the all-important
+CORE DO-
+MAIN is left entangled with the residue.
+Therefore:
+Refactor the model to separate the CORE concepts from supporting players (including ill-defined
+ones) and strengthen the cohesion of the CORE while reducing its coupling to other code. Factor
+all generic or supporting elements into other objects and place them into other packages, even if
+this means refactoring the model in ways that separate highly coupled elements.
+This is basically taking the same principles we applied to
+GENERIC SUBDOMAINS but from the
+other direction. The cohesive subdomains that are central to our application can be identified and
+partitioned into coherent packages of their own. What is done with the undifferentiated mass left
+behind is important, but not as important. It can be left more or less where it was, or placed into
+packages based on prominent classes. Eventually, more and more of the residue can be factored
+into
+GENERIC SUBDOMAINS, but in the short term any easy solution will do, just so the focus on
+the
+SEGREGATED CORE is retained.
+The steps needed to refactor to
+SEGREGATED CORE are typically something like these:
+1. Identify a
+CORE subdomain (possibly drawing from the distillation document).
+2. Move related classes to a new
+MODULE, named for the concept that relates them.
+3. Refactor code to sever data and functionality that are not directly expressions of the concept.
+Put the removed aspects into (possibly new) classes in other packages. Try to place them with
+conceptually related tasks, but don't waste too much time being perfect. Keep focused on
+scrubbing the
+CORE subdomain and making the references from it to other packages explicit
+and self-explanatory.
+4. Refactor the newly
+SEGREGATED CORE MODULE to make its relationships and interactions
+simpler and more communicative, and to minimize and clarify its relationships with other
+MOD-
+ULES. (This becomes an ongoing refactoring objective.)
+5. Repeat with another
+CORE subdomain until the
+SEGREGATED CORE is complete.
+The Costs of Creating a SEGREGATED CORE
+Segregating the
+CORE will sometimes make relationships with tightly coupled non-
+CORE classes
+more obscure or even more complicated, but that cost is outweighed by the benefit of clarifying the
+CORE DOMAIN and making it much easier to work on.
+The
+SEGREGATED CORE will let you enhance the cohesion of that
+CORE DOMAIN. There are
+many meaningful ways of breaking down a model, and sometimes in the creation of a
+SEGREGA-
+TED CORE a nicely cohesive
+MODULE may be broken, sacrificing that cohesion for the sake of
+bringing out the cohesiveness of the
+CORE DOMAIN. This is a net gain, because the greatest valueadded of enterprise software comes from the enterprise-specific aspects of the model.
+Distillation 273
+The other cost, of course, is that segregating the
+CORE is a lot of work. It must be acknowledged
+that a decision to go to a
+SEGREGATED CORE will potentially absorb developers in changes all
+over the system.
+The time to chop out a
+SEGREGATED CORE is when you have a large
+BOUNDED CONTEXT that
+is critical to the system, but where the essential part of the model is being obscured by a great deal
+of supporting capability.
+Evolving Team Decision
+As with many strategic design decisions, an entire team must move to a
+SEGREGATED CORE
+together. This step requires a team decision process and a team disciplined and coordinated enough
+to carry out the decision. The challenge is to constrain everyone to use the same definition of the
+CORE while not freezing that decision. Because the
+CORE DOMAIN evolves just like every other
+aspect of a design, experience working with a
+SEGREGATED CORE will lead to new insights into
+what is essential and what is a supporting element. Those insights should feed back into a refined
+definition of the
+CORE DOMAIN and of the
+SEGREGATED CORE MODULES.
+This means that new insights must be shared with the team on an ongoing basis, but an individual
+(or programming pair) cannot act on those insights unilaterally. Whatever the process is for joint
+decisions, whether consensus or team leader directive, it must be agile enough to make repeated
+course corrections. Communication must be effective enough to keep everyone together in one view
+of the
+CORE.
+Example
+Segregating the CORE of a Cargo Shipping Model
+We start with the model shown in Figure 15.2 as the basis of software for cargo shipping coordination.
+Distillation 274
+Note that this is highly simplified compared to what would likely be needed for a real application. A
+realistic model would be too cumbersome for an example. Therefore, although this example may
+not be complicated enough to drive us to a
+SEGREGATED CORE, take a leap of imagination to
+treat this model as being too complex to interpret easily and deal with as a whole.
+Now, what is the essence of the shipping model? Usually a good place to start looking is the “bottom
+line.” This might lead us to focus on pricing and invoices. But we really need to look at the
+DOMAIN
+VISION STATEMENT. Here is an excerpt from this one.
+. . . Increase visibility of operations and provide tools to fulfill customer requirements faster and more reliably...
+This application is not being designed for the sales department. It is going to be used by the frontline operators of the company. So let's relegate all money-related issues to (admittedly important)
+supporting roles. Someone has already placed some of these items into a separate package (Billing). We can keep that, and further recognize that it plays a supporting role.
+The focus needs to be on the cargo handling: delivery of the cargo according to customer requirements. Extracting the classes most directly involved in these activities produces a
+SEGREGATED
+CORE in a new package called Delivery, as shown in Figure 15.3.
+Distillation 275
+Figure 15.3. Reliable delivery in adherence with customer requirements is the core goal of this project.
+For the most part, classes have just moved into the new package, but there have been a few changes
+to the model itself.
+First, the Customer Agreement now constrains the Handling Step. This is typical of the insights that
+tend to arise as the team segregates the
+CORE. As attention is focused on effective, correct delivery,
+it becomes clear that the delivery constraints in the Customer Agreement are fundamental and
+should be
+explicit in the model.
+The other change is more pragmatic. In the refactored model, the Customer Agreement is attached
+directly to the Cargo, rather than requiring a navigation through the Customer. (It will have to be
+attached when the Cargo is booked, just as the Customer is.) At actual delivery time, the Customer is not as relevant to operations as the agreement itself. In the other model, the correct Cus-
+Distillation 276
+tomer had to be found, according to the role it played in the shipment, and then queried for its
+Customer Agreement. This interaction would clog up every story you set out to tell about the model.
+The new association makes the most important scenarios as simple and direct as possible. Now it
+becomes easy to pull the Customer out of the
+CORE altogether.
+And what about pulling Customer out, anyway? The focus is on fulfilling the Customer's requirements, so at first Customer seems to belong in the
+CORE. Yet the interactions during delivery do
+not usually need to involve the Customer class now that the Customer Agreement is available directly. And the basic model of a Customer is pretty generic.
+A strong argument could be made for Leg to remain in the
+CORE. I tend to be minimalist in the
+CORE, and the Leg has tighter cohesion with Transport Schedule, Routing Service, and Location,
+none of which needed to be in the
+CORE. But if a lot of the stories I wanted to tell about this model
+involved Legs, I'd move it into the Delivery package and suffer the awkwardness of its separation
+from those other classes.
+In this example, all the class definitions are the same as before, but often distillation requires refactoring the classes themselves to separate the generic and domain-specific responsibilities, which
+can then be segregated.
+Now that we have a
+SEGREGATED CORE, the refactoring is complete. But the Shipping package
+we are left with is just “everything left over after we pulled out the
+CORE.” We can follow up with
+other refactorings to get more communicative packaging, as shown in Figure 15.4.
+Distillation 277
+Figure 15.4. Meaningful MODULES for non-CORE subdomains follow after the SEGREGATED CORE is complete.
+It might take several refactorings to get to this point; it doesn't have to be done all at once. Here,
+we've ended up with one
+SEGREGATED CORE package, one
+GENERIC SUBDOMAIN, and two
+domain-specific packages in supporting roles. Deeper insight might eventually produce a
+GENERIC
+SUBDOMAIN for Customer, or it might end up more specialized for shipping.
+Recognizing useful, meaningful
+MODULES is a modeling activity (as discussed in Chapter 5). Developers and domain experts collaborate in strategic distillation as part of the knowledge crunching
+process.
+Distillation 278
+Abstract Core
+Even the
+CORE DOMAIN model usually has so much detail that communicating the big picture can
+be difficult.
+We usually deal with a large model by breaking it into narrower subdomains that are small enough
+to be grasped and placing them in separate
+MODULES. This reductive style of packaging often
+works to make a complicated model manageable. But sometimes creating separate
+MODULES can
+obscure or even complicate the interactions between the subdomains.
+When there is a lot of interaction between subdomains in separate MODULES, either many references will have to be created between MODULES, which defeats much of the value of the partitioning, or the interaction will have to be made indirect, which makes the model obscure.
+Consider slicing horizontally rather than vertically. Polymorphism gives us the power to ignore a lot
+of the detailed variation among instances of an abstract type. If most of the interactions across
+MODULES can be expressed at the level of polymorphic interfaces, it may make sense to refactor
+these types into a special
+CORE MODULE.
+We are not looking for a technical trick here. This is a valuable technique only when the polymorphic
+interfaces correspond to fundamental concepts in the domain. In that case, separating these abstractions decouples the
+MODULES while distilling a smaller and more cohesive
+CORE DOMAIN.
+Therefore:
+Identify the most fundamental concepts in the model and factor them into distinct classes, abstract
+classes, or interfaces. Design this abstract model so that it expresses most of the interaction between significant components. Place this abstract overall model in its own MODULE, while the specialized, detailed implementation classes are left in their own MODULES defined by subdomain.
+Most of the specialized classes will now reference the
+ABSTRACT CORE MODULE but not the
+other specialized
+MODULES. The
+ABSTRACT CORE gives a succinct view of the main concepts
+and their interactions.
+Distillation 279
+The process of factoring out the
+ABSTRACT CORE is not mechanical. For example, if all the classes
+that were frequently referenced across
+MODULES were automatically moved into a separate
+MODULE, the likely result would be a meaningless mess. Modeling an
+ABSTRACT CORE requires
+a deep understanding of the key concepts and the roles they play in the major interactions of the
+system. In other words, it is an example of refactoring to deeper insight. And it usually requires
+considerable redesign.
+The
+ABSTRACT CORE should end up looking a lot like the distillation document (if both were used
+on the same project, and the distillation document had evolved with the application as insight deepened). Of course, the
+ABSTRACT CORE will be written in code, and therefore more rigorous and
+more complete.
+Deep Models Distill
+Distillation does not operate only on the gross level of separating parts of the domain away from the
+CORE. It also means refining those subdomains, especially the
+CORE DOMAIN, through continuously refactoring toward deeper insight, driving toward a deep model and supple design. The goal
+is a design that makes the model obvious, a model that expresses the domain simply. A deep model
+distills the most essential aspects of a domain into simple elements that can be combined to solve
+the important problems of the application.
+Although a breakthrough to a deep model provides value anywhere it happens, it is in the CORE
+DOMAIN that it can change the trajectory of an entire project.
+Choosing Refactoring Targets
+When you encounter a large system that is poorly factored, where do you start? In the XP community, the answer tends to be either one of these:
+1. Just start anywhere, because it all has to be refactored.
+2. Start wherever it is hurting. I'll refactor what I need to in order to get my specific task done.
+I don't hold with either of these. The first is impractical except in a few projects staffed entirely with
+top programmers. The second tends to pick around the edges, treating symptoms and ignoring root
+causes, shying away from the worst tangles. Eventually the code becomes harder and harder to
+refactor.
+So, if you can't do it all, and you can't be pain-driven, what do you do?
+1. In a pain-driven refactoring, you look to see if the root involves the
+CORE DOMAIN or the
+relationship of the
+CORE to a supporting element. If it does, you bite the bullet and fix that first.
+2. When you have the luxury of refactoring freely, you focus first on better factoring of the
+CORE
+DOMAIN, on improving the segregation of the
+CORE, and on purifying supporting subdomains
+to be
+GENERIC.
+This is how to get the most bang for your refactoring buck.
+Distillation 280
+Chapter Sixteen. Large-Scale Structure
+Thousands of people worked independently to create the AIDS Quilt.
+A small Silicon Valley design firm had been contracted to create a simulator for a satellite communications system. Work was progressing well. A
+MODEL-DRIVEN DESIGN was developing that
+could express and simulate a wide range of network conditions and failures.
+But the lead developers on the project were uneasy. The problem was inherently complex. Driven
+by the need to clarify the intricate relationships in the model, they had decomposed the design into
+coherent
+MODULES of manageable size. Now there were a
+lot of
+MODULES. Which package
+should a developer look in to find a particular aspect of functionality? Where should a new class be
+placed? What did some of these little packages really mean? How did they all fit together? And there
+was still more to build.
+The developers communicated well with one another and could still figure out what to do from day
+to day, but the project leaders were not content to skirt the edge of comprehensibility. They wanted
+some way of organizing the design so that it could be understood and manipulated as it moved to
+the next level of complexity.
+They brainstormed. There were a lot of possibilities. Alternative packaging schemes were proposed.
+Maybe some document could give an overview of the system, or some new views of the class
+diagram in the modeling tool could guide a developer to the right
+MODULE. But the project leaders
+weren't satisfied with these gimmicks.
+They could tell a simple story of their simulation, of the way data would be marshaled through an
+infrastructure, its integrity and routing assured by layers of telecommunications technology. Every
+detail of that story was in the model, yet the broad arc of the story could not be seen.
+Some essential concept from the domain was missing. But this time it was not a class or two missing
+from the object model, it was a missing structure for the model as a whole.
+After the developers mulled over the problem for a week or two, the idea began to jell. They would
+impose a structure on the design. The entire simulator would be viewed as a series of layers related
+to aspects of the communications system. The bottom layer would represent the physical infrastructure, the basic ability to transmit bits from one node to another. Then there would be a packetrouting layer that brought together the concerns of how a particular data stream would be directed.
+Other layers would identify other conceptual levels of the problem.
+These layers would outline their
+story of the system.
+They set out to refactor the code to conform to the new structure. M
+ODULES had to be redefined
+so as not to span layers. In some cases, object responsibilities were refactored so that each object
+would clearly belong to one layer. Conversely, throughout this process the definitions of the conceptual layers themselves were refined based on the hands-on experience of applying them. The
+layers,
+MODULES, and objects coevolved until, in the end, the entire design followed the contours
+of this layered structure.
+These layers were not
+MODULES or any other artifact in the code. They were an overarching set
+of rules that constrained the boundaries and relationships of any particular
+MODULE or object
+throughout the design, even at interfaces with other systems.
+Imposing this order brought the design back to comfortable intelligibility. People knew roughly where
+to look for a particular function. Individuals working independently could make design decisions that
+were broadly consistent with each other. The complexity ceiling had been lifted.
+Even with a
+MODULAR breakdown, a large model can be too complicated to grasp. The
+MOD-
+ULES chunk the design into manageable bites, but there may be many of them. Also, modularity
+does not necessarily bring uniformity to the design. Object to object, package to package, a jumble
+of design decisions may be applied, each defensible but idiosyncratic.
+The strict segregation imposed by
+BOUNDED CONTEXTS prevents corruption and confusion, but
+it does not, in itself, make it easier to see the system as a whole.
+Distillation does help by focusing attention on the
+CORE DOMAIN and casting other subdomains
+in their supporting roles. But it is still necessary to understand the supporting elements and their
+relationships to the
+CORE DOMAIN—and to each other. And while the
+CORE DOMAIN would ideally be so clear and easily understood that no additional guidance would be needed, we are not
+always at that point.
+On a project of any size, people must work somewhat independently on different parts of the system.
+Without any coordination or rules, a confusion of different styles and distinct solutions to the same
+problems arises, making it hard to understand how the parts fit together and impossible to see the
+big picture. Learning about one part of the design will not transfer to other parts, so the project will
+end up with specialists in different
+MODULES who cannot help each other outside their narrow
+range. C
+ONTINUOUS INTEGRATION breaks down and the
+BOUNDED CONTEXT fragments.
+Large-Scale Structure 282
+In a large system without any overarching principle that allows elements to be interpreted in terms
+of their role in patterns that span the whole design, developers cannot see the forest for the trees.
+We need to be able to understand the role of an individual part in the whole without delving into the
+details of the whole.
+A “large-scale structure” is a language that lets you discuss and understand the system in broad
+strokes. A set of high-level concepts or rules, or both, establishes a pattern of design for an entire
+system. This organizing principle can guide design as well as aid understanding. It helps coordinate
+independent work because there is a shared concept of the big picture: how the roles of various
+parts shape the whole.
+Devise a pattern of rules or roles and relationships that will span the entire system and that allows
+some understanding of each part's place in the whole—even without detailed knowledge of the part's
+responsibility.
+Structure may be confined to one
+BOUNDED CONTEXT but will usually span more than one, providing the conceptual organization to hold together all the teams and subsystems involved in the
+project. A good structure gives insight into the model and complements distillation.
+You can't represent most large-scale structures in UML, and you don't need to. Most large-scale
+structures shape and explain the model and design but do not appear in it. They provide an extra
+level of communication about the design. In the examples of this chapter, you'll see many informal
+UML diagrams on which I've superimposed information about the large-scale structure.
+When a team is reasonably small and the model is not too complicated, decomposition into wellnamed
+MODULES, a certain amount of distillation, and informal coordination among developers
+can be sufficient to keep the model organized.
+Large-scale structure can save a project, but an ill-fitting structure can severely hinder development.
+This chapter explores patterns for successfully structuring a design at this level.
+Figure 16.1. Some patterns of large-scale structure
+Evolving Order
+Many developers have experienced the cost of an unstructured design. To avoid anarchy, projects
+impose architectures that constrain development in various ways. Some technical architectures do
+solve technical problems, such as networking or data persistence, but when architectures start
+venturing into the arena of the application and domain model, they can create problems of their own.
+They often prevent the developers from creating designs and models that work well for the specifics
+Large-Scale Structure 283
+of the problem. The most ambitious ones can even take away from application developers the familiarity and technical power of the programming language itself. And whether technical or domain
+oriented, architectures that freeze a lot of up-front design decisions can become a straitjacket as
+requirements change and as understanding deepens.
+While some technical architectures (such as J2EE) have become prominent over the years, largescale structure in the domain layer has not been explored much. Needs vary widely from one application to the next.
+An up-front imposition of a large-scale structure is likely to be costly. As development proceeds, you
+will almost certainly find a more suitable structure, and you may even find that the prescribed structure is prohibiting you from taking a design route that would greatly clarify or simplify the application.
+You may be able to use some of the structure, but you're forgoing opportunities. Your work slows
+down as you try workarounds or try to negotiate with the architects. But your managers think the
+architecture is done. It was supposed to make this application easy, so why aren't you working on
+the application instead of dealing with all these architecture problems? The managers and architecture teams may even be open to input, but if each change is a heroic battle, it is too exhausting.
+Design free-for-alls produce systems no one can make sense of as a whole, and they are very
+difficult to maintain. But architectures can straitjacket a project with up-front design assumptions
+and take too much power away from the developers/designers of particular parts of the application.
+Soon, developers will dumb down the application to fit the structure, or they will subvert it and have
+no structure at all, bringing back the problems of uncoordinated development.
+The problem is not the existence of guiding rules, but rather the rigidity and source of those rules.
+If the rules governing the design really fit the circumstances, they will not get in the way but actually
+push development in a helpful direction, as well as provide consistency.
+Therefore:
+Let this conceptual large-scale structure evolve with the application, possibly changing to a completely different type of structure along the way. Don't overconstrain the detailed design and model
+decisions that must be made with detailed knowledge.
+Individual parts have natural or useful ways of being organized and expressed that may not apply
+to the whole, so imposing global rules makes these parts less ideal. Choosing to use a large-scale
+structure favors manageability of the model as a whole over optimal structuring of the individual
+parts. Therefore, there will be some compromise between unifying structure and freedom to express
+individual components in the most natural way. This can be mitigated by selecting the structure
+based on actual experience and knowledge of the domain and by avoiding over-constrictive structures. A really nice fit of structure to domain and requirements actually makes detailed modeling
+and design easier, by helping to quickly eliminate a lot of options.
+The structure can also give shortcuts to design decisions that could, in principle, be found by working
+on the individual object level, but would, in practice, take too long and have inconsistent results. Of
+course, continuous refactoring is still necessary, but this will make it a more manageable process
+and can help make different people come up with consistent solutions.
+A large-scale structure generally needs to be applicable across
+BOUNDED CONTEXTS. Through
+iteration on a real project, a structure will lose features that tightly bind it to a particular model and
+evolve features that correspond to
+CONCEPTUAL CONTOURS of the domain. This doesn't mean
+that it will have
+no assumptions about the model, but it will not impose upon the entire project ideas
+tailored to a particular local situation. It has to leave freedom for development teams in distinct
+CONTEXTS to vary the model in ways that address their local needs.
+Large-Scale Structure 284
+Also, large-scale structures must accommodate practical constraints on development. For example,
+designers may have no control over the model of some parts of the system, especially in the case
+of external or legacy subsystems. This could be handled by changing the structure to better fit the
+specific external elements. It could be handled by specifying ways in which the application relates
+to externals. It might be handled by making the structure loose enough to flex around awkward
+realities.
+Unlike the
+CONTEXT MAP, a large-scale structure is optional. One should be imposed when costs
+and benefits favor it, and when a fitting structure is found. In fact, it is not needed for systems that
+are simple enough to be understood when broken into
+MODULES. Large-scale structure should be
+applied when a structure can be found that greatly clarifies the system without forcing unnatural
+constraints on model development. Because an ill-fitting structure is worse than none, it is best not
+to shoot for comprehensiveness, but rather to find a minimal set that solves the problems that have
+emerged. Less is more.
+A large-scale structure can be very helpful and still have a few exceptions, but those exceptions
+need to be flagged somehow, so that developers can assume the structure is being followed unless
+otherwise noted. And if those exceptions start to get numerous, the structure needs to be changed
+or discarded.
+As mentioned, it is no mean feat to create a structure that gives the necessary freedom to developers
+while still averting chaos. Although a lot of work has been done on technical architecture for software
+systems, little has been published on the structuring of the domain layer. Some approaches weaken
+the object-oriented paradigm, such as those that break down the domain by application task or by
+use case. This whole area is still undeveloped. I've observed a few general patterns of large-scale
+structures that have emerged on various projects. I'll discuss four in this chapter. One of these may
+fit your needs or lead to ideas for a structure tailored to your project.
+System Metaphor
+Metaphorical thinking is pervasive in software development, especially with models. But the Extreme
+Programming practice of “metaphor” has come to mean a particular way of using a metaphor to
+bring order to the development of a whole system.
+Just as a firewall can save a building from a fire raging through neighboring buildings, a software
+“firewall” protects the local network from the dangers of the larger networks outside. This metaphor
+has influenced network architectures and shaped a whole product category. Multiple competing
+firewalls—developed independently, understood to be somewhat interchangeable—are available
+for consumers. Novices to networking readily grasp the concept. This shared understanding
+throughout the industry and among customers is due in no small part to the metaphor.
+Yet it is an inexact analogy, and its power cuts both ways. The use of the firewall metaphor has led
+to development of software barriers that are sometimes insufficiently selective and impede desirable
+exchanges, while offering no protection against threats originating within the wall. Wireless LANs,
+for example, are vulnerable. The clarity of the firewall has been a boon, but all metaphors carry
+baggage.1
+Software designs tend to be very abstract and hard to grasp. Developers and users alike need
+tangible ways to understand the system and share a view of the system as a whole.
+1SYSTEM METAPHOR finally made sense to me when I heard Ward Cunningham use this firewall example in a workshop lecture.
+Large-Scale Structure 285
+On one level, metaphor runs so deeply in the way we think that it pervades every design. Systems
+have “layers” that “lay on top” of each other. They have “kernels” at their “centers.” But sometimes
+a metaphor comes along that can convey the central theme of a whole design and provide a shared
+understanding among all team members.
+When this happens, the system is actually shaped by the metaphor. A developer will make design
+decisions consistent with the system metaphor. This consistency will enable other developers to
+interpret the many parts of a complex system in terms of the same metaphor. The developers and
+experts have a reference point in discussions that may be more concrete than the model itself.
+A
+SYSTEM METAPHOR is a loose, easily understood, large-scale structure that it is harmonious
+with the object paradigm. Because the
+SYSTEM METAPHOR is only an analogy to the domain
+anyway, different models can map to it in an approximate way, which allows it to be applied in
+multiple
+BOUNDED CONTEXTS, helping to coordinate work between them.
+S
+YSTEM METAPHOR has become a popular approach because it is one of the core practices of
+Extreme Programming (Beck 2000). Unfortunately, few projects have found really useful
+META-
+PHORS, and people have tried to push the idea into domains where it is counterproductive. A persuasive metaphor introduces the risk that the design will take on aspects of the analogy that are not
+desirable for the problem at hand, or that the analogy, while seductive, may not be apt.
+That said,
+SYSTEM METAPHOR is a well-known form of large-scale structure that is useful on some
+projects, and it nicely illustrates the general concept of a structure.
+Therefore:
+When a concrete analogy to the system emerges that captures the imagination of team members
+and seems to lead thinking in a useful direction, adopt it as a large-scale structure. Organize the
+design around this metaphor and absorb it into the UBIQUITOUS LANGUAGE. The SYSTEM MET-
+APHOR should both facilitate communication about the system and guide development of it. This
+increases consistency in different parts of the system, potentially even across different BOUNDED
+CONTEXTS. But because all metaphors are inexact, continually reexamine the metaphor for overextension or inaptness, and be ready to drop it if it gets in the way.
+The “Naive Metaphor” and Why We Don't Need It
+Because a useful metaphor doesn't present itself on most projects, some in the XP community have
+come to talk of the
+naive metaphor, by which they mean the domain model itself.
+One trouble with this term is that a mature domain model is anything but naive. In fact, “payroll
+processing is like an assembly line” is likely a much more naive view than a model that is the product
+of many iterations of knowledge crunching with domain experts, and that has been proven by being
+tightly woven into the implementation of a working application.
+The term
+naive metaphor should be retired.
+S
+YSTEM METAPHORS are not useful on all projects. Large-scale structure in general is not essential. In the 12 practices of Extreme Programming, the role of a
+SYSTEM METAPHOR could be
+fulfilled by a
+UBIQUITOUS LANGUAGE. Projects should augment that
+LANGUAGE with
+SYSTEM
+METAPHORS or other large-scale structures when they find one that fits well.
+Responsibility Layers
+Throughout this book, individual objects have been assigned narrow sets of related responsibilities.
+Responsibility-driven design also applies to larger scales.
+Large-Scale Structure 286
+When each individual object has handcrafted responsibilities, there are no guidelines, no uniformity,
+and no ability to handle large swaths of the domain together. To give coherence to a large model,
+it is useful to impose some structure on the assignment of those responsibilities.
+When you gain a deep understanding of a domain, broad patterns start to become visible. Some
+domains have a natural stratification. Certain concepts and activities take place against a background of other elements that change independently and at a different rate for different reasons.
+How can we take advantage of this natural structure, make it more visible and useful? This stratification suggests layering, one of the most successful architectural design patterns (Buschmann et
+al. 1996, among others).
+Layers are partitions of a system in which the members of each partition are aware of and are able
+to use the services of the layers “below,” but unaware of and independent of the layers “above.”
+When the dependencies of
+MODULES are drawn, they are often laid out so that a
+MODULE with
+dependents appears below its dependents. In this way, layers sometimes sort themselves out so
+that none of the objects in the lower levels is conceptually dependent on those in higher layers.
+But this ad hoc layering, while it can make tracing dependencies easier—and sometimes makes
+some intuitive sense—doesn't give much insight into the model or guide modeling decisions. We
+need something more intentional.
+Figure 16.2. Ad hoc layering: What are these packages about?
+In a model with a natural stratification, conceptual layers can be defined around major responsibilities, uniting the two powerful principles of layering and responsibility-driven design.
+These responsibilities must be considerably broader than those typically assigned to individual objects, as examples will illustrate shortly. As individual
+MODULES and
+AGGREGATES are designed,
+they are factored to keep them within the bounds of one of these major responsibilities. This named
+grouping of responsibilities by itself could enhance the comprehensibility of a modularized system,
+since the responsibilities of
+MODULES could be more readily interpreted. But combining high-level
+responsibilities with layering gives us an organizing principle for a system.
+The layering pattern that serves best for
+RESPONSIBILITY LAYERS is the variant called
+RELAXED LAYERED
+SYSTEM (Buschmann et al. 1996, p. 45), which allows components of a layer to access any lower layer, not
+just the one immediately below.
+Large-Scale Structure 287
+Therefore:
+Look at the conceptual dependencies in your model and the varying rates and sources of change
+of different parts of your domain. If you identify natural strata in the domain, cast them as broad
+abstract responsibilities. These responsibilities should tell a story of the high-level purpose and
+design of your system. Refactor the model so that the responsibilities of each domain object, AG-
+GREGATE, and MODULE fit neatly within the responsibility of one layer.
+This is a pretty abstract description, but it will become clear with a few examples. The satellite
+communications simulator whose story opened this chapter layered its responsibility. I have seen
+RESPONSIBILITY LAYERS used to good effect in domains as various as manufacturing control
+and financial management.
+The following example explores
+RESPONSIBILITY LAYERS in detail to give a feel for the discovery
+of a large-scale structure of
+any sort, and the way it guides and constrains modeling and design.
+Example
+In Depth: Layering a Shipping System
+Let's look at the implications of applying
+RESPONSIBILITY LAYERS to the cargo shipping application discussed in the examples of previous chapters.
+As we rejoin the story, the team has made considerable progress creating a
+MODEL-DRIVEN DE-
+SIGN and distilling a
+CORE DOMAIN. But as the design fleshes out, they are having trouble coordinating how all the parts fit together. They are looking for a large-scale structure that can bring out
+the main themes of their system and keep everyone on the same page.
+Here is a look at a representative part of the model.
+Figure 16.3. A basic shipping domain model for routing cargoes
+Large-Scale Structure 288
+Figure 16.4. Using the model to route a cargo during booking
+The team members have been steeped in the domain of shipping for months, and they have noticed
+some natural stratification of its concepts. It is quite reasonable to discuss transport schedules (the
+scheduled voyages of ships and trains) without referring to the cargoes aboard those transports. It
+is harder to talk about tracking a cargo without referring to the transport carrying it. The conceptual
+dependencies are pretty clear. The team can readily distinguish two layers: “Operations” and the
+substrate of those operations, which they dub “Capability.”
+“Operational” Responsibilities
+Activities of the company, past, current, and planned, are collected into the Operations layer. The
+most obvious Operations object is Cargo, which is the focus of most of the day-to-day activity of the
+company. The Route Specification is an integral part of Cargo, indicating delivery requirements. The
+Itinerary is the operational delivery plan. Both of these objects are part of the Cargo's
+AGGRE-
+GATE, and their life cycles are tied to the time frame of an active delivery.
+“Capability” Responsibilities
+This layer reflects the resources the company draws upon in order to carry out operations. The
+Transit Leg is a classic example. The ships are scheduled to run and have a certain capacity to
+carry cargo, which may or may not be fully utilized.
+True, if we were focused on operating a shipping fleet, Transit Leg would be in the Operations layer.
+But the users of this system aren't worried about that problem. (If the company were involved in
+both those activities and wanted the two coordinated, the development team might have to consider
+a different layering scheme, perhaps with two distinct layers, such as “Transport Operations” and
+“Cargo Operations.”)
+A trickier decision is where to place Customer. In some businesses, customers tend to be transient:
+they're interesting while a package is being delivered and then mostly forgotten until next time. This
+quality would make customers only an operational concern for a parcel delivery service aimed at
+individual consumers. But our hypothetical shipping company tends to cultivate long-term relationships with customers, and most work comes from repeat business.
+Given these intentions of the
+business users, the Customer belongs in the potential layer. As you can see,
+this was not a technical
+decision. It was an attempt to capture and communicate knowledge of the domain.
+Because the association between Cargo and Customer can be traversed in only one direction, the
+Cargo
+REPOSITORY will need a query that finds all Cargoes for a particular Customer. There were
+good reasons to design it that way anyway, but with the imposition of the large-scale structure, it is
+now a requirement.
+Large-Scale Structure 289
+Figure 16.5. A query replaces a bidirectional association that violates the layering.
+Figure 16.6. A first-pass layered model
+While the distinction between Operations and Capability clarifies the picture, order continues to
+evolve. After a few weeks of experimentation, the team zeroes in on another distinction. For the
+most part, both initial layers focus on situations or plans
+as they are. But the Router (and many other
+elements excluded from this example) isn't part of current operational realities or plans. It helps
+make decisions about changing those plans. The team defines a new layer responsible for “Decision
+Support.”
+“Decision Support” Responsibilities
+This layer of the software provides the user with tools for planning and decision making, and it could
+potentially automate some decisions (such as automatically rerouting Cargoes when a transport
+schedule changes).
+The Router is a
+SERVICE that helps a booking agent choose the best way to send a Cargo. This
+places the Router squarely in Decision Support.
+The references within this model are all consistent with the three layers except for one discordant
+element: the “is preferred” attribute on Transport Leg. This attribute exists because the company
+prefers to use its own ships when it can, or the ships of certain other companies with which it has
+favorable contracts. The “is preferred” attribute is used to bias the Router toward these favored
+transports. This attribute has nothing to do with “Capability.” It is a policy that directs decision making.
+To use the new
+RESPONSIBILITY LAYERS, the model will have to be refactored.
+Large-Scale Structure 290
+Figure 16.7. Refactoring the model to conform to the new layering structure
+This factoring makes the Route Bias Policy more explicit while making Transport Leg more focused
+on the fundamental concept of transportation capability. A large-scale structure based on a deep
+understanding of the domain will often push the model in directions that clarify its meaning.
+This new model now smoothly fits into the large-scale structure.
+Figure 16.8. The restructured and refactored model
+A developer accustomed to the chosen layers can more readily discern the roles and dependencies
+of the parts. The value of the large-scale structure increases as the complexity grows.
+Note that although I'm illustrating this example with a modified UML diagram, the drawing is just a
+way of
+communicating the layering. UML doesn't include this notation, so this is additional information imposed for the sake of the reader. If code is the ultimate design document for your project, it
+would be helpful to have a tool for browsing classes by layer or at least for reporting them by layer.
+Large-Scale Structure 291
+How Does This Structure Affect Ongoing Design?
+Once a large-scale structure has been adopted, subsequent modeling and design decisions must
+take it into account. To illustrate, suppose that we must add a new feature to this already layered
+design. The domain experts have just told us that routing restrictions apply for certain categories of
+hazardous materials. Certain materials may not be allowed on some transports or in some ports.
+We have to make the Router obey these regulations.
+There are many possible approaches. In the absence of a large-scale structure, one appealing
+design would be to give the responsibility of incorporating these routing rules to the object that owns
+the Route Specification and the Hazardous Material (HazMat) code—namely the Cargo.
+Figure 16.9. A possible design for routing hazardous cargo
+The trouble is, this design doesn't fit the large-scale structure. The HazMat Route Policy Service is
+not the problem; it fits neatly into the responsibility of the Decision Support layer. The problem is
+the dependency of Cargo (an Operational object) on HazMat Route Policy Service (a Decision
+Support object). As long as the project is committed to these layers, this model cannot be allowed.
+It would confuse developers who expected the structure to be followed.
+There are always many design possibilities, and we'll just have to choose another one—one that
+follows the rules of the large-scale structure. The HazMat Route Policy Service is all right, but we
+need to move the responsibility for using the policy. Let's try giving the Router the responsibility for
+collecting appropriate policies before searching for a route. This means changing the Router interface to include objects that policies might depend on. Here is a possible design.
+Large-Scale Structure 292
+Figure 16.11. A design consistent with layering
+A typical interaction is shown in Figure 16.12 on the next page.
+Large-Scale Structure 293
+Now, this isn't necessarily a
+better design than the other. They both have pros and cons. But if
+everyone on a project makes decisions in a consistent way, the design as a whole will be much
+more comprehensible, and that is worth some modest trade-offs on detailed design choices.
+If the structure is forcing many awkward design choices, then in keeping with
+EVOLVING OR-
+DER, it should be evaluated and perhaps modified or even discarded.
+Choosing Appropriate Layers
+Finding good
+RESPONSIBILITY LAYERS, or any large-scale structure, is a matter of understanding
+the problem domain and experimenting. If you allow
+EVOLVING ORDER, the initial starting point is
+not critical, although a poor choice does add work. The structure may well evolve into something
+unrecognizable. So the guidelines suggested here should be applied when considering transformations of the structure as much as when choosing from scratch.
+As layers get switched out, merged, split, and redefined, here are some useful characteristics to
+look for and preserve.
+•
+Storytelling. The layers should communicate the basic realities or priorities of the domain.
+Choosing a large-scale structure is less a technical decision than a business modeling decision.
+The layers should bring out the priorities of the business.
+•
+Conceptual dependency. The concepts in the “upper” layers should have meaning against the
+backdrop of the “lower” layers, while the lower-layer concepts should be meaningful standing
+alone.
+•
+CONCEPTUAL CONTOURS. If the objects of different layers should have different rates of
+change or different sources of change, the layer accommodates the shearing between them.
+It isn't always necessary to start from scratch in defining layers for each new model. Certain layers
+show up in whole families of related domains.
+For example, in businesses based on exploiting large fixed capital assets, such as factories or cargo
+ships, logistical software can often be organized into a “Potential” layer (another name for the “Capability” layer in the example) and an “Operations” layer.
+Large-Scale Structure 294
+•
+Potential. What can be done? Never mind what we are planning to do. What
+could we do? The
+resources of the organization, including its people, and the way those resources are organized
+are the core of the Potential layer. Contracts with vendors also define potentials. This layer could
+be recognized in almost any business domain, but it is a prominent part of the story in those
+businesses, such as transportation and manufacturing, that have relatively large fixed capital
+investments that enable the business. Potential includes transient assets as well, but a business
+driven primarily by transient assets might choose layers that emphasize this, as discussed later.
+(This layer was called “Capability” in the example.)
+•
+Operation. What is being done? What have we managed to make of those potentials? Like the
+Potential layer, this layer should reflect the reality of the situation, rather than what we want it to
+be. In this layer we are trying to see our own efforts and activities: What we are selling, rather
+than what enables us to sell. It is very typical of Operational objects to reference or even be
+composed of Potential objects, but a Potential object shouldn't reference the Operations layer.
+In many, perhaps most, existing systems in domains of this kind, these two layers cover everything
+(although there could be some entirely different and more revealing breakdown). They track the
+current situation and active operational plans and issue reports or documents about it. But tracking
+is not always enough. When projects seek to guide or assist users, or to automate decision making,
+there is an additional set of responsibilities that can be organized into another layer, above Operations.
+•
+Decision Support. What action should be taken or what policy should be set? This layer is for
+analysis and decision making. It bases its analysis on information from lower layers, such as
+Potential or Operations. Decision Support software may use historical information to actively
+seek opportunities for current and future operations.
+Decision Support systems have conceptual dependencies on other layers such as Operations or
+Potential because decisions aren't made in a vacuum. A lot of projects implement Decision Support
+using data warehouse technology. The layer becomes a distinct
+BOUNDED CONTEXT, with a
+CUSTOMER/SUPPLIER relationship with the Operations software. In other projects, it is more
+deeply integrated, as in the preceding extended example. And one of the intrinsic advantages of
+layers is that the lower layers can exist without the higher ones. This can facilitate phased introductions or higher-level enhancements built on top of older operational systems.
+Another case is software that enforces elaborate business rules or legal requirements, which can
+constitute a
+RESPONSIBILITY LAYER.
+•
+Policy. What are the rules and goals? Rules and goals are mostly passive, but constrain the
+behavior in other layers. Designing these interactions can be subtle. Sometimes a Policy is
+passed in as an argument to a lower level method. Sometimes the STRATEGY pattern is applied. Policy works well in conjunction with a Decision Support layer, which provides the means
+to seek the goals set by Policy, constrained by the rules set by Policy.
+Policy layers can be written in the same language as the other layers, but they are sometimes
+implemented using rules engines. This doesn't necessarily place them in a separate
+BOUNDED
+CONTEXT. In fact, the difficulty of coordinating such different implementation technologies can be
+eased by fastidiously using the same model across both. When rules are written based on a different
+model than the objects they apply to, either the complexity goes way up or the objects get dumbed
+down to keep things manageable.
+Large-Scale Structure 295
+Figure 16.13. Conceptual dependencies and shearing points in a factory automation system
+Many businesses do not base their capability on plant and equipment. In financial services or insurance, to name two, the potential is to a large extent determined by current operations. An insurance company's ability to take on a new risk by underwriting a new policy agreement is based on
+the diversification of its current business. The Potential layer would probably merge into Operations,
+and a different layering would evolve.
+One area that often comes to the fore in these situations is commitments made to customers.
+•
+Commitment. What have we promised? This layer has the nature of Policy, in that it states goals
+that direct future operations, but it has the nature of Operations in that commitments emerge
+and change as a part of ongoing business activity.
+Figure 16.14. Conceptual dependencies and shearing points in an investment banking system
+The Potential and Commitment layers are not mutually exclusive. A domain in which both are prominent, say a transportation company with a lot of custom shipping services, might use both. Other
+layers more specific to those domains might be useful too. Change things. Experiment. But it is best
+to keep the layering system simple; going beyond four or possibly five becomes unwieldy. Having
+too many layers isn't as effective at telling the story, and the problems of complexity the large-scale
+structure was meant to solve will come back in a new form. The large-scale structure must be
+ferociously distilled.
+Large-Scale Structure 296
+Although these five layers are applicable to a range of enterprise systems, they do not capture the
+salient responsibilities of all domains. In other cases, it would be counterproductive to try to force
+the design into this shape, but there may be a natural set of
+RESPONSIBILITY LAYERS that do
+work. For a domain completely unrelated to those we've discussed, these layers might have to be
+completely original. Ultimately, you have to use your intuition, start somewhere, and let the
+ORDER
+EVOLVE.
+Knowledge Level
+[A KNOWLEDGE LEVEL is] a group of objects that describes how another group of objects should behave. [Martin
+Fowler, “Accountability,” www.martinfowler.com]
+K
+NOWLEDGE LEVEL untangles things when we need to let some part of the model itself be plastic
+in the user's hands yet constrained by a broader set of rules. It addresses requirements for software
+with configurable behavior, in which the roles and relationships among
+ENTITIES must be changed
+at installation or even at runtime.
+In
+Analysis Patterns (Fowler 1996, pp. 24–27), the pattern emerges from a discussion of modeling
+accountability within organizations, and it is later applied to posting rules in accounting. Although
+the pattern appears in several chapters, it doesn't have a chapter of its own because it is different
+from most patterns in the book. Rather than modeling a domain, as the other analysis patterns do,
+KNOWLEDGE LEVEL structures a model.
+To see the problem concretely, consider models of “accountability.” Organizations are made up of
+people and smaller organizations, and define the roles they play and the relationships between
+them. The rules governing those roles and relationships vary greatly for different organizations. At
+one company, a “department” might be headed by a “Director” who reports to a “Vice President.” In
+another company, a “module” is headed by a “Manager” who reports to a “Senior Manager.” Then
+there are “matrix” organizations, in which each person reports to different managers for different
+purposes.
+A typical application would make some assumptions. When those didn't fit, users would start to use
+data-entry fields in a different way than they were intended. Any behavior the application had would
+misfire, as the semantics were changed by the users. Users would develop workarounds for the
+behavior, or would get the higher level features of the application shut off. They would be forced to
+learn complicated mappings between what they did in their jobs and the way the software works.
+They would never be served well.
+When the system had to be changed or replaced, developers would discover (sooner or later) that
+the meanings of the features were not what they seemed. They might mean very different things in
+different user communities or in different situations. Changing anything without breaking these
+overlaid usages would be daunting. Data migration to a more tailored system would require understanding and coding for all those quirks.
+Large-Scale Structure 297
+Example
+Employee Payroll and Pension, Part 1
+The HR department of a medium-sized company has a simple program for calculating payroll and
+pension contributions.
+Figure 16.15. The old model, overconstrained for new requirements
+Figure 16.16. Some employees represented using the old model
+But now, the management has decided that the office administrators should go into the “defined
+benefit” retirement plan. The trouble is that office administrators are paid hourly, and this model
+does not allow mixing. The model will have to change.
+The next model proposal is quite simple: just remove the constraints.
+Large-Scale Structure 298
+Figure 16.17. The proposed model, now underconstrained
+Figure 16.18. Employees can be associated with the wrong plan.
+This model allows each employee to be associated with either kind of retirement plan, so each office
+administrator can be switched. This model is rejected by management because it does not reflect
+company policy. Some administrators could be switched and others not. Or the janitor could be
+switched. Management wants a model that enforces the policy:
+Office administrators are hourly employees with defined-benefit retirement plans.
+This policy suggests that the “job title” field now represents an important domain concept. Developers could refactor to make that concept explicit as an “Employee Type.”
+Figure 16.19. The Type object allows requirements to be met.
+Large-Scale Structure 299
+Figure 16.20. Each Employee Type is assigned a Retirement Plan.
+The requirements can be stated in the
+UBIQUITOUS LANGUAGE as follows:
+An Employee Type is assigned to either Retirement Plan or either payroll.
+Employees are constrained by the Employee Type.
+Access to edit the Employee Type object will be restricted to a “superuser,” who will make changes
+only when company policy changes. An ordinary user in the personnel department can change
+Employees or point them at a different Employee Type.
+This model satisfies the requirements. The developers sense an implicit concept or two, but it is just
+a nagging feeling at the moment. They don't have any solid ideas to pursue, so they call it a day.
+A static model can cause problems. But problems can be just as bad with a fully flexible system that
+allows any possible relationship to be presented. Such a system would be inconvenient to use and
+wouldn't allow the organization's own rules to be enforced.
+Fully customizing software for each organization is not practical because, even if each organization
+could pay for custom software, the organizational structure will likely change frequently.
+So such software must provide options to allow the
+user to configure it to reflect the current structure
+of the organization. The trouble is that adding such options to the model objects makes them unwieldy. The more flexibility you add, the more complex it all becomes.
+In an application in which the roles and relationships between ENTITIES vary in different situations,
+complexity can explode. Neither fully general models nor highly customized ones serve the users'
+needs. Objects end up with references to other types to cover a variety of cases, or with attributes
+that are used in different ways in different situations. Classes that have the same data and behavior
+may multiply just to accommodate different assembly rules.
+Nestled into our model is another model that is
+about our model. A
+KNOWLEDGE LEVEL separates
+that self-defining aspect of the model and makes its constraints explicit.
+K
+NOWLEDGE LEVEL is an application to the domain layer of the
+REFLECTION pattern, used in
+many software architectures and technical infrastructures and described well in Buschmann et al.
+1996. R
+EFLECTION accommodates changing needs by making the software “self-aware,” and
+making selected aspects of its structure and behavior accessible for adaptation and change. This
+is done by splitting the software into a “base level,” which carries the operational responsibility for
+the application, and a “meta level,” which represents knowledge of the structure and behavior of the
+software.
+Significantly, the pattern is not called a knowledge “layer.” As much as it resembles layering,
+RE-
+FLECTION involves mutual dependencies running in both directions.
+Java has some minimal built-in
+REFLECTION in the form of protocols for interrogating a class for
+its methods and so forth. Such mechanisms allow a program to ask questions about its own design.
+CORBA has somewhat more extensive but similar
+REFLECTION protocols. Some persistence
+technologies extend the richness of that self-description to support partially automated mapping
+between database tables and objects. There are other technical examples. This pattern can also
+be applied within the domain layer.
+Large-Scale Structure 300
+The
+KNOWLEDGE LEVEL provides two useful distinctions. First, it focuses on the application domain, in contrast to familiar applications of
+REFLECTION. Second, it does not strive for full generality. Just as a
+SPECIFICATION can be more useful than a general predicate, a very specialized
+set of constraints on a set of objects and their relationships can be more useful than a generalized
+framework. The
+KNOWLEDGE LEVEL is simpler and can communicate the specific intent of the
+designer.
+Fowler Terminology POSA Terminology2
+Knowledge Level Meta Level
+Operations Level Base Level
+2POSA is short for
+Pattern-Oriented Software Architecture, by Buschmann et al. 1996.
+Comparing the terminology of
+KNOWLEDGE LEVEL and
+REFLECTION
+Just to be clear, the reflection tools of the programming language are
+not for use in implementing
+the
+KNOWLEDGE LEVEL of a domain model. Those meta-objects describe the structure and behavior of the language constructs themselves. Instead, the
+KNOWLEDGE LEVEL must be built of
+ordinary objects.
+The
+KNOWLEDGE LEVEL provides two useful distinctions. First, it focuses on the application domain, in contrast to familiar uses of
+REFLECTION. Second, it does not strive for full generality. Just
+as a
+SPECIFICATION can be more useful than a general predicate, a very specialized set of constraints on a set of objects and their relationships can be more useful than a generalized framework.
+The
+KNOWLEDGE LEVEL is simpler and can communicate the specific intent of the designer.
+Therefore:
+Create a distinct set of objects that can be used to describe and constrain the structure and behavior
+of the basic model. Keep these concerns separate as two “levels,” one very concrete, the other
+reflecting rules and knowledge that a user or superuser is able to customize.
+Like all powerful ideas,
+REFLECTION and
+KNOWLEDGE LEVELS can be intoxicating. This pattern
+should be used sparingly. It can unravel complexity by freeing operations objects from the need to
+be jacks-of-all-trades, but the indirection it introduces does add some of that obscurity back in. If
+the
+KNOWLEDGE LEVEL becomes complex, the system's behavior becomes hard to understand
+for developers and users alike. The users (or superuser) who configure it will end up needing the
+skills of a programmer—and a meta-level programmer at that. If they make mistakes, the application
+will behave incorrectly.
+Also, the basic problems of data migration don't completely disappear. When a structure in the
+KNOWLEDGE LEVEL is changed, existing operations-level objects have to be dealt with. It may be
+possible for old and new to coexist, but one way or another, careful analysis is needed.
+All of these issues put a major burden on the designer of a
+KNOWLEDGE LEVEL. The design has
+to be robust enough to handle not only the scenarios presented in development, but also any scenario for which a user could configure the software in the future. Applied judiciously, to the points
+where customization is crucial and would otherwise distort the design,
+KNOWLEDGE LEVELS can
+solve problems that are very hard to handle any other way.
+Large-Scale Structure 301
+Example
+Employee Payroll and Pension, Part 2: KNOWLEDGE LEVEL
+Our team members are back, and, refreshed from a night's sleep, one of them has started to close
+in on one of the awkward points. Why were certain objects being secured while others were freely
+edited? The cluster of restricted objects reminded him of the
+KNOWLEDGE LEVEL pattern, and he
+decided to try it as a way of viewing the model. He found that the existing model could already be
+viewed this way.
+Figure 16.21. Recognizing the KNOWLEDGE LEVEL implicit in the existing model
+The restricted edits were in the
+KNOWLEDGE LEVEL, while the day-to-day edits were in the operational level. A nice fit. All the objects above the line described types or longstanding policies. The
+Employee Type effectively imposed behavior on the Employee.
+The developer was sharing his insight with his colleagues when one of the other developers had
+another insight. The clarity of seeing the model organized by
+KNOWLEDGE LEVEL had let her spot
+what had been bothering
+her the previous day. Two distinct concepts were being combined in the
+same object. She had heard it in the language used on the previous day but hadn't put her finger
+on it:
+An Employee Type is assigned to either Retirement Plan or either payroll.
+But that was
+not really a statement in the
+UBIQUITOUS LANGUAGE. There was no “payroll” in the
+model. They had spoken in the language they
+wanted, rather than the one they had. The concept
+of payroll was implicit in the model, lumped together with Employee Type. It hadn't been so obvious
+before the
+KNOWLEDGE LEVEL was separated out, and the very elements in that key phrase all
+appeared in the same level together . . . except one.
+Based on this insight, she refactored again to a model that does support that statement.
+The need for user control of the rules for associating objects drove the team to a model that had an
+implicit
+KNOWLEDGE LEVEL.
+Large-Scale Structure 302
+Figure 16.22. Payroll is now explicit, distinct from Employee Type.
+Figure 16.23. Each Employee Type now has a Retirement Plan and a Payroll.
+K
+NOWLEDGE LEVEL was hinted at by the characteristic access restrictions and a “thing-thing”
+type relationship. Once it was in place, the clarity it afforded helped produce another insight that
+disentangled two important domain concepts by factoring out Payroll.
+K
+NOWLEDGE LEVEL, like other large-scale structures, isn't strictly necessary. The objects will still
+work without it, and the insight that separated Employee Type from Payroll could still have been
+found and used. There may come a time when this structure doesn't seem to be pulling its weight
+and can be dropped. But for now, it seems to tell a useful story about the system and helps developers grapple with the model.
+At first glance,
+KNOWLEDGE LEVEL looks like a special case of
+RESPONSIBILITY LAYERS, especially the “policy” layer, but it is not. For one thing, dependencies run in both directions between
+the levels, but with
+LAYERS, lower layers are independent of upper layers.
+In fact,
+KNOWLEDGE LEVEL can coexist with most other large-scale structures, providing an additional dimension of organization.
+Pluggable Component Framework
+Opportunities arise in a very mature model that is deep and distilled. A
+PLUGGABLE COMPONENT
+FRAMEWORK usually only comes into play after a few applications have already been implemented
+in the same domain.
+Large-Scale Structure 303
+When a variety of applications have to interoperate, all based on the same abstractions but designed
+independently, translations between multiple BOUNDED CONTEXTS limit integration. A SHARED
+KERNEL is not feasible for teams that do not work closely together. Duplication and fragmentation
+raise costs of development and installation, and interoperability becomes very difficult.
+Some successful projects break down their design into components, each with responsibility for
+certain categories of functions. Usually all the components plug into a central hub, which supports
+any protocols they need and knows how to talk to the interfaces they provide. Other patterns of
+connecting components are also possible. The design of these interfaces and the hub that connects
+them must be coordinated, while more independence is possible designing the interiors.
+Several widely used technical frameworks support this pattern, but that is a secondary issue. A
+technical framework is needed only if it solves some essential technical problem such as distribution,
+or sharing a component among different applications. The basic pattern is a conceptual organization
+of responsibilities. It can easily be applied within a single Java program.
+Therefore:
+Distill an ABSTRACT CORE of interfaces and interactions and create a framework that allows diverse implementations of those interfaces to be freely substituted. Likewise, allow any application
+to use those components, so long as it operates strictly through the interfaces of the ABSTRACT
+CORE.
+High-level abstractions are identified and shared across the breadth of the system; specialization
+occurs in
+MODULES. The central hub of the application is an
+ABSTRACT CORE within a
+SHARED
+KERNEL. But multiple
+BOUNDED CONTEXTS can lie behind the encapsulated component interfaces, so that this structure can be especially convenient when many components are coming from
+many different sources, or when components are encapsulating preexisting software for integration.
+This is not to say that components must have divergent models. Multiple components can be developed within a single
+CONTEXT if the teams
+CONTINUOUSLY INTEGRATE, or they can define
+another
+SHARED KERNEL held in common by a closely related set of components. All these strategies can coexist easily within a large-scale structure of
+PLUGGABLE COMPONENTS. Another
+option, in some cases, is to use a
+PUBLISHED LANGUAGE for the plug-in interface of the hub.
+There are a few downsides to a
+PLUGGABLE COMPONENT FRAMEWORK. One is that this is a
+very difficult pattern to apply. It requires precision in the design of the interfaces and a deep enough
+model to capture the necessary behavior in the
+ABSTRACT CORE. Another major downside is that
+applications have limited options. If an application needs a very different approach to the
+CORE
+DOMAIN, the structure will get in the way. Developers can specialize the model, but they can't
+change the
+ABSTRACT CORE without changing the protocol of all the diverse components. As a
+result, the process of continuous refinement of the
+CORE, refactoring toward deeper insight, is more
+or less frozen in its tracks.
+Fayad and Johnson (2000) give a good look at ambitious attempts at
+PLUGGABLE COMPONENT
+FRAMEWORKS in several domains, including a discussion of SEMATECH CIM. The success of
+such frameworks is a mixed story. Probably the biggest obstacle is the maturity of understanding
+needed to design a useful framework. A
+PLUGGABLE COMPONENT FRAMEWORK should not
+be the first large-scale structure applied on a project, nor the second. The most successful examples
+have followed after the full development of multiple specialized applications.
+Large-Scale Structure 304
+Example
+The SEMATECH CIM Framework
+In a factory producing computer chips, groups (called
+lots) of silicon wafers are moved from one
+machine to another through hundreds of steps of processing until the microscopic circuitry being
+printed and etched into them is complete. The factory needs software that can track each individual
+lot, recording the exact processing that has been done to it, and then direct either factory workers
+or automated equipment to take it to the next appropriate machine and apply the next appropriate
+process. Such software is called a
+manufacturing execution system (MES).
+Hundreds of different machines from dozens of vendors are used, with carefully tailored recipes at
+each step of the way. Developing MES software that could deal with such a complex mix was
+daunting and prohibitively expensive. In response, an industry consortium, SEMATECH, developed
+the CIM Framework.
+The CIM Framework is big and complicated and has many aspects, but two are relevant here. First,
+the framework defines abstract interfaces for the basic concepts of the semiconductor MES domain
+—in other words, the
+CORE DOMAIN in the form of an
+ABSTRACT CORE. These interface definitions include both behavior and semantics.
+Figure 16.24. A highly simplified subset of the CIM interfaces, with sample implementations
+If a vendor produces a new machine, they have to develop a specialized implementation of the
+Process Machine interface. If they adhere to that interface, their machine-control component should
+plug into any application based on the CIM Framework.
+Having defined these interfaces, SEMATECH defined the rules by which they could interact in an
+application. Any application based on the CIM Framework would have to implement a protocol that
+hosted objects implementing some subset of those interfaces. If this protocol were implemented,
+and the application strictly observed the abstract interfaces, then the application could count on the
+promised services of those interfaces, regardless of implementation. The combination of those interfaces and the protocol for using them constitutes a tightly restrictive large-scale structure.
+Large-Scale Structure 305
+Figure 16.25. The user places a lot in the next machine and logs the move into the computer.
+The framework has very specific infrastructure requirements. It is tightly coupled to CORBA to provide persistence, transactions, events, and other technical services. But the interesting thing about
+it is the definition of a
+PLUGGABLE COMPONENT FRAMEWORK, which allows people to develop
+software independently and smoothly integrate them into immense systems. No one knows all the
+details of such a system, but everyone understands an overview.
+How can thousands of people work independently to create a quilt of more than 40,000 panels?
+A few simple rules provide a large-scale structure for the AIDS Memorial Quilt, leaving the details
+to individual contributors. Notice how the rules focus on the overall mission (memorializing people
+who have died of AIDS), the features of a component that make integration practical, and the ability
+to handle the quilt in larger sections (such as folding it).
+Here's How to Create a Panel for the Quilt
+[From the AIDS Memorial Quilt Project Web site, www.aidsquilt.org]
+Design the panel
+Include the name of the person you are remembering. Feel free to include additional information such as the dates of birth and death, and a hometown. . . . [P]lease limit each panel
+to one individual . . . .
+Choose your materials
+Remember that the Quilt is folded and unfolded many times, so durability is crucial. Since
+glue deteriorates with time, it is best to sew things to the panel. A medium-weight, nonstretch fabric such as a cotton duck or poplin works best.
+Your design can be vertical or horizontal, but the finished, hemmed panel must be 3 feet
+by 6 feet (90 cm × 180 cm)—no more and no less! When you cut the fabric, leave an extra
+2–3 inches on each side for a hem. If you can't hem it yourself, we'll do it for you. Batting
+for the panels is not necessary, but backing is recommended. Backing helps to keep panels
+clean when they are laid out on the ground. It also helps retain the shape of the fabric.
+Create the panel
+In constructing your panel you might want to use some of the following techniques:
+Large-Scale Structure 306
+•
+Appliqué: Sew fabric, letters and small mementos onto the background fabric. Do not
+rely on glue—it won't last.
+•
+Paint: Brush on textile paint or color-fast dye, or use an indelible ink pen. Please don't
+use “puffy” paint; it's too sticky.
+•
+Stencil: Trace your design onto the fabric with a pencil, lift the stencil, then use a brush
+to apply textile paint or indelible markers.
+•
+Collage: Make sure that whatever materials you add to the panel won't tear the fabric
+(avoid glass and sequins for this reason), and be sure to avoid very bulky objects.
+•
+Photos: The best way to include photos or letters is to photocopy them onto iron-on
+transfers, iron them onto 100% cotton fabric and sew that fabric to the panel. You may
+also put the photo in clear plastic vinyl and sew it to the panel (off-center so it avoids
+the fold).
+How Restrictive Should a Structure Be?
+The large-scale structure patterns discussed in this chapter range from the very loose
+SYSTEM
+METAPHOR to the restrictive
+PLUGGABLE COMPONENT FRAMEWORK. Other structures are
+possible, of course, and even within a general structural pattern, there is a lot of choice about how
+restrictive to make the rules.
+For example,
+RESPONSIBILITY LAYERS dictate a kind of factoring of model concepts and their
+dependencies, but you could add rules that would specify communication patterns between the
+layers.
+Consider a manufacturing plant where software directs each part to a machine where it is processed
+according to some recipe. The correct process is ordered from a Policy layer and executed in an
+Operations layer. But inevitably there will be mistakes made on the factory floor. The actual situation
+will not be consistent with the rules of the software. Now, an Operations layer
+must reflect the world
+as it is, which means that when a part is occasionally put in the wrong machine, that information
+must be accepted unconditionally. Somehow, this exceptional condition needs to be communicated
+to a higher layer. A decision-making layer can then use other policies to correct the situation, perhaps by rerouting the part to a repair process or by scrapping it. But Operations does not know
+anything about higher layers. The communication has to be done in a way that doesn't create twoway dependencies from the lower layers to the higher ones.
+Typically, this signaling would be done through some kind of event mechanism. The Operations
+objects would generate events whenever their state changed. Policy layer objects would listen for
+events of interest from the lower layers. When an event occurred that violated a rule, the rule would
+execute an action (part of the rule's definition) that makes the appropriate response, or it might
+generate an event for the benefit of some still higher layer.
+In the banking example, the values of assets change (Operations), shifting the values of segments
+of a portfolio. When these values exceed portfolio allocation limits (Policy), perhaps a trader is
+alerted, who can buy or sell assets to redress the balance.
+We could figure this out on a case-by-case basis, or we could decide on a consistent pattern for
+everyone to follow in interactions of objects of particular layers. A more restrictive structure increases
+uniformity, making the design easier to interpret. If the structure fits, the rules are likely to push
+developers toward good designs. Disparate pieces are likely to fit together better.
+On the other hand, the restrictions may take away flexibility that developers need. Very particular
+communication paths might be impractical to apply across
+BOUNDED CONTEXTS, especially in
+different implementation technologies, in a heterogeneous system.
+Large-Scale Structure 307
+So you have to fight the temptation to build frameworks and regiment the implementation of the
+large-scale structure. The most important contribution of the large-scale structure is conceptual
+coherence, and giving insight into the domain.
+Each structural rule should make development easier.
+Refactoring Toward a Fitting Structure
+In an era when the industry is shaking off excessive up-front design, some will see large-scale
+structure as a throwback to the bad old days of waterfall architecture. But in fact, the only way a
+useful structure can be found is from a very deep understanding of the domain and the problem,
+and the practical way to that understanding is an iterative development process.
+A team committed to
+EVOLVING ORDER must fearlessly rethink the large-scale structure throughout the project life cycle. The team should not saddle itself with a structure conceived of early on,
+when no one understood the domain or the requirements very well.
+Unfortunately, that evolution means that your final structure will not be available at the start, and
+that means that you will have to refactor to impose it as you go along. This can be expensive and
+difficult, but it is
+necessary. There are some general ways of controlling the cost and maximizing
+the gain.
+Minimalism
+One key to keeping the cost down is to keep the structure simple and lightweight. Don't attempt to
+be comprehensive. Just address the most serious concerns and leave the rest to be handled on a
+case-by-case basis.
+Early on, it can be helpful to choose a loose structure, such as a
+SYSTEM METAPHOR or a couple
+of
+RESPONSIBILITY LAYERS. A minimal, loose structure can nonetheless provide lightweight
+guidelines that will help prevent chaos.
+Communication and Self-Discipline
+The entire team must follow the structure in new development and refactoring. To do this, the structure must be understood by the entire team. The terminology and relationships must enter the
+UBIQUITOUS LANGUAGE.
+Large-scale structure can provide a vocabulary for the project to deal with the system broadly, and
+for different people independently to make harmonious decisions. But because most large-scale
+structures are loose conceptual guidelines, the teams must exercise self-discipline.
+Without consistent adherence by the many people involved, structures have a tendency to decay.
+The relationship of the structure to detailed parts of the model or implementation is not usually
+explicit in the code, and functional tests do not rely on the structure. Plus, the structure tends to be
+abstract, so that consistency of application can be difficult to maintain across a large team (or multiple teams).
+The kinds of conversations that take place on most teams are not enough to maintain a consistent
+large-scale structure in a system. It is critical to incorporate it into the
+UBIQUITOUS LANGUAGE
+of the project, and for everyone to exercise that language relentlessly.
+Restructuring Yields Supple Design
+Second, any change to the structure may lead to a lot of refactoring. The structure is evolving as
+system complexity increases and understanding deepens. Each time the structure changes,
+the
+entire system has to be changed to adhere to the new order. Obviously that is a lot of work.
+Large-Scale Structure 308
+This isn't quite as bad as it sounds. I've observed that a design with a large-scale structure is usually
+much easier to transform than one without. This seems to be true even when changing from one
+kind of structure to another, say from
+METAPHOR to
+LAYERS. I can't entirely explain this. Part of
+the answer is that it is easier to rearrange something when you can understand its current arrangement, and the preexisting structure makes that easier. Partly it is that the discipline that it took to
+maintain the earlier structure permeates all aspects of the system. But there is something more, I
+think, because it is
+even easier to change a system that has had
+two previous structures.
+A new leather jacket is stiff and uncomfortable, but after the first day of wear the elbows have flexed
+a few times and are becoming easier to bend. After a few more wearings, the shoulders have loosened up, and the jacket is easier to put on. After months of wear, the leather becomes supple and
+is comfortable and easy to move in. So it seems to be with models that are transformed repeatedly
+with sound transformations. Ever-increasing knowledge is embedded into them and
+the principal
+axes of change have been identified and made flexible, while stable aspects have been simplified.
+The broader
+CONCEPTUAL CONTOURS of the underlying domain are emerging in the model
+structure.
+Distillation Lightens the Load
+Another crucial force that should be applied to the model is continuous distillation. This reduces the
+difficulty of changing the structure in various ways. First, by removing mechanisms,
+GENERIC
+SUBDOMAINS, and other support structure from the
+CORE DOMAIN, there may simply be less to
+restructure.
+If possible, these supporting elements should be defined to fit into the large-scale structure in a
+simple way. For example, in a system of
+RESPONSIBILITY LAYERS, a
+GENERIC SUBDOMAIN
+could be defined in such a way that it would fit within a single layer. With
+PLUGGABLE COMPO-
+NENTS, a
+GENERIC SUBDOMAIN could be owned entirely by a single component, or it could be
+a
+SHARED KERNEL among a set of related components. These supporting elements may have to
+be refactored to find their place in the structure; but they move independently of the
+CORE DO-
+MAIN, and tend to be more narrowly focused, which makes it easier. And ultimately they are less
+critical, so refinement matters less.
+The principles of distillation and refactoring toward deeper insight apply even to the large-scale
+structure itself. For example, the layers may initially be chosen based on a superficial understanding
+of the domain; they are gradually replaced with deeper abstractions that express the fundamental
+responsibilities of the system. This sharpedged clarity lets people see deep into the design, which
+is the goal. It is also part of the means, as it makes manipulation of the system on a large scale
+easier and safer.
+Large-Scale Structure 309
+Chapter Seventeen. Bringing the Strategy
+Together
+The preceding three chapters presented many principles and techniques for domain-driven strategic
+design. In a large, complex system, you may need to bring several of them to bear on the same
+design. How does a large-scale structure coexist with a
+CONTEXT MAP? Where do the building
+blocks fit in? What do you do first? Second? Third? How do you go about devising your strategy?
+Combining Large-Scale Structures and BOUNDED CONTEXTS
+The three basic principles of strategic design (context, distillation, and large-scale structure) are not
+substitutes for each other; they are complementary and interact in many ways. For example, a largescale structure can exist within one
+BOUNDED CONTEXT, or it can cut across many of them and
+organize the
+CONTEXT MAP.
+The previous examples of
+RESPONSIBILITY LAYERS were confined to one
+BOUNDED CON-
+TEXT. This is the easiest way to explain the idea, and it's a common use of the pattern. In such a
+simple scenario, the meanings of layer names are restricted to that
+CONTEXT, as are the names
+of model elements or subsystem interfaces that exist within that
+CONTEXT.
+Figure 17.2. Structuring a model within a single BOUNDED CONTEXT
+Such a local structure can be useful in a very complicated but unified model, raising the complexity
+ceiling on how much can be maintained in a single
+BOUNDED CONTEXT.
+But on many projects, the greater challenge is to understand how disparate parts fit together. They
+may be partitioned into separate
+CONTEXTS, but what part does each play in the whole integrated
+system and how do the parts relate to each other? Then the large-scale structure can be used to
+organize the
+CONTEXT MAP. In this case, the terminology of the structure applies to the whole
+project (or at least some clearly bounded part of it).
+Figure 17.3. Structure imposed on the relationships of components of distinct BOUNDED CONTEXTS
+Suppose you want to adopt
+RESPONSIBILITY LAYERS, but you have a legacy system whose
+organization is inconsistent with your desired large-scale structure. Do you have to give up your
+LAYERS? No, but you have to acknowledge the actual place the legacy has within the structure. In
+fact, it may help to characterize the legacy. The
+SERVICES the legacy provides may in fact be
+confined to only a few
+LAYERS. To be able to say that the legacy system fits within particular
+RESPONSIBILITY LAYERS concisely describes a key aspect of its scope and role.
+Bringing the Strategy Together 311
+Figure 17.4. A structure that allows some components to span layers
+If the legacy subsystem's capabilities are being accessed through a
+FACADE, you may be able to
+design each
+SERVICE offered by the
+FACADE to fit within one layer.
+The interior of the Shipping Coordination application, being a legacy in this example, is presented
+as an undifferentiated mass. But a team on a project with a well-established large-scale structure
+spanning the
+CONTEXT MAP could choose, within their
+CONTEXT, to order their model by the
+same familiar
+LAYERS.
+Figure 17.5. The same structure applied within a CONTEXT and across the CONTEXT MAP as a whole
+Bringing the Strategy Together 312
+Of course, because each
+BOUNDED CONTEXT is its own name space, one structure could be
+used to organize the model within one
+CONTEXT, while another was used in a neighboring
+CON-
+TEXT, and still another organized the
+CONTEXT MAP. However, going too far down that path can
+erode the value of the large-scale structure as a unifying set of concepts for the project.
+Combining Large-Scale Structures and Distillation
+The concepts of large-scale structure and distillation also complement each other. The large-scale
+structure can help explain the relationships within the
+CORE DOMAIN and between
+GENERIC
+SUBDOMAINS.
+Figure 17.6. MODULES of the CORE DOMAIN (in bold) and GENERIC SUBDOMAINS are clarified by the layers.
+At the same time,
+the large-scale structure itself may be an important part of the CORE DOMAIN.
+For example, distinguishing the layering of potential, operations, policy, and decision support distills
+an insight that is fundamental to the business problem addressed by the software. This insight is
+especially useful if a project is carved up into many
+BOUNDED CONTEXTS, so that the model
+objects of the
+CORE DOMAIN don't have meaning over much of the project.
+Bringing the Strategy Together 313
+Assessment First
+When you are tackling strategic design on a project, you need to start from a clear assessment of
+the current situation.
+1. Draw a
+CONTEXT MAP. Can you draw a consistent one, or are there ambiguous situations?
+2. Attend to the use of language on the project. Is there a
+UBIQUITOUS LANGUAGE? Is it rich
+enough to help development?
+3. Understand what is important. Is the
+CORE DOMAIN identified? Is there a
+DOMAIN VISION
+STATEMENT? Can you write one?
+4. Does the technology of the project work for or against a
+MODEL-DRIVEN DESIGN?
+5. Do the developers on the team have the necessary technical skills?
+6. Are the developers knowledgeable about the domain? Are they
+interested in the domain?
+You won't find perfect answers, of course. You know less about this project right now than you ever
+will in the future. But these questions give you a solid starting point. By the time you have specific
+initial answers to these questions, you'll have started getting insight into what most urgently needs
+to be done. As time goes along, you can refine the answers—especially the
+CONTEXT MAP, DO-
+MAIN VISION STATEMENT, and any other artifacts you've created—to reflect changed situations
+and new insights.
+Who Sets the Strategy?
+Traditionally, architecture is handed down, created before application development begins, by a
+team that has more power in the organization than the application development team. But it doesn't
+have to be that way. That way doesn't usually work very well.
+Strategic design, by definition, must apply across the project. There are many ways to organize a
+project, and I don't want to be too prescriptive. However, for any decision-making process to be
+effective, some fundamentals are required.
+First, let's take a quick look at two styles that I've seen provide some value in practice (thus ignoring
+the old “wisdom-from-on-high” style).
+Emergent Structure from Application Development
+A self-disciplined team made up of very good communicators can operate without central authority
+and follow
+EVOLVING ORDER to arrive at a shared set of principles, so that order grows organically,
+not by fiat.
+This is the typical model for an Extreme Programming team. In theory, the structure may emerge
+completely spontaneously from the insight of any programming pair. More often, having an individual
+or a subset of the team with some oversight responsibility for large-scale structure helps keep the
+structure unified. This approach works well particularly if such an informal leader is a hands-on
+developer—an arbiter and communicator, and not the sole source of ideas. On the Extreme Programming teams I have seen, such strategic design leadership seems to have emerged spontaneously, often in the person of the coach. Whoever this natural leader is, he or she is still a member
+of the development team. It follows that the development team must have at least a few people of
+the caliber to make design decisions that are going to affect the whole project.
+When a large-scale structure spans multiple teams, closely affiliated teams may begin to collaborate
+informally. In such a situation, each application team still makes the discoveries that lead to the idea
+for a large-scale structure, but then particular options are discussed by the informal committee,
+made up of representatives of the various teams. After assessing the impact of the design, partici-
+Bringing the Strategy Together 314
+pants may decide to adopt it, modify it, or leave it on the table. The teams attempt to move together
+in this loose affiliation. This arrangement can work when there are relatively few teams, when they
+are all committed to coordinating with each other, when their design capabilities are comparable,
+and when their structural needs are similar enough to be met by a single large-scale structure.
+A Customer Focused Architecture Team
+When a strategy will be shared among several teams, some centralization of decision making does
+seem attractive. The failed model of the ivory tower architect is not the only possibility. An architecture team can act as a peer with various application teams, helping to coordinate and harmonize
+their large-scale structures as well as
+BOUNDED CONTEXT boundaries and other cross-team
+technical issues. To be useful in this, they must have a mind set that emphasizes application development.
+On an organization chart, this team may look just like the traditional architecture team, but it is
+actually different in every activity. Team members are true collaborators with development, discovering patterns along with the developers, experimenting with various teams to reach distillations,
+and getting their hands dirty.
+I have seen this scenario a couple of times, when a project ends up with a lead architect who does
+most of the things on the following list.
+Six Essentials for Strategic Design Decision Making
+Decisions must reach the entire team
+Obviously, if everyone doesn't know the strategy and follow it, it is irrelevant. This requirement leads
+people to organize around centralized architecture teams with official “authority”—so that the same
+rules will be applied everywhere. Ironically, ivory tower architects are often ignored or bypassed.
+Developers have no choice when the architects' lack of feedback from hands-on attempts to apply
+their own rules to real applications results in impractical schemes.
+On a project with very good communication, a strategic design that emerges from the application
+team may actually reach everyone more effectively. The strategy will be relevant, and it will have
+the authority that attaches to intelligent community decisions.
+Whatever the system, be less concerned with the authority bestowed by management than with the
+actual relationship the developers have with the strategy.
+The decision process must absorb feedback
+Creating an organizing principle, large-scale structure, or distillation of such subtlety requires a really
+deep understanding of the needs of the project and the concepts of the domain. The only people
+who have that depth of knowledge are the members of the application development team. This
+explains why application architectures created by architecture teams are so seldom helpful, despite
+the undeniable talent of many of the architects.
+Unlike technical infrastructure and architectures, strategic design does not itself involve writing a lot
+of code, although it influences all development. What it does require is involvement with the application development teams. An experienced architect may be able to listen to ideas coming from
+various teams and facilitate the development of a generalized solution.
+Bringing the Strategy Together 315
+One technical architecture team I worked with actually circulated its own members through the
+various application development teams that were attempting to use its framework. This rotation
+pulled into the architecture team the hands-on experience of the challenges facing the developers,
+while it simultaneously transferred the knowledge of how to apply the subtleties of the framework.
+Strategic design has this same need of a tight feedback loop.
+The plan must allow for evolution
+Effective software development is a highly dynamic process. When the highest level of decisions is
+set in stone, the team has fewer options when it must respond to change. E
+VOLVING ORDER
+avoids this trap by emphasizing ongoing change to the large-scale structure in response to deepening insight.
+When too many design decisions are preordained, the development team can be hobbled, without
+the flexibility to solve the problems they are charged with. So, while a harmonizing principle can be
+valuable, it must grow and change with the ongoing life of the development project, and it must not
+take too much power away from the application developers, whose job is hard enough as it is.
+With strong feedback, innovations emerge as obstacles are encountered in building applications
+and as unexpected opportunities are discovered.
+Architecture teams must not siphon off all the best and brightest
+Design at this level calls for sophistication that is probably in short supply. Managers tend to move
+the most technically talented developers into architecture teams and infrastructure teams, because
+they want to leverage the skills of these advanced designers. For their part, the developers are
+attracted to the opportunity to have a broader impact or to work on “more interesting” problems. And
+there is prestige attached to being a member of an elite team.
+These forces often leave behind only the least technically sophisticated developers to actually build
+applications. But building good applications takes design skill; this is a setup for failure. Even if a
+strategy team creates a great strategic design, the application team won't have the design sophistication to follow it.
+Conversely, such teams almost never include the developer who perhaps has weaker design skills
+but who has the most extensive experience in the domain. Strategic design is not a purely technical
+task; cutting themselves off from developers with deep domain knowledge hobbles the architects'
+efforts further. And domain experts are needed too.
+It is essential to have strong designers on all application teams. It is essential to have domain
+knowledge on any team attempting strategic design. It may simply be necessary to hire more advanced designers. It may help to keep architecture teams part-time. I'm sure there are many ways
+that work, but any effective strategy team has to have as a partner an effective application team.
+Strategic design requires minimalism and humility
+Distillation and minimalism are essential to any good design work, but minimalism is even more
+critical for strategic design. Even the slightest ill fit has a terrible potential for getting in the way.
+Separate architecture teams have to be especially careful because they have less feel for the obstacles they might be placing in front of application teams. At the same time, the architects' enthusiasm for their primary responsibility makes them more likely to get carried away. I've seen this
+phenomenon many times, and I've even done it. One good idea leads to another, and we end up
+with an overbuilt architecture that is counterproductive.
+Bringing the Strategy Together 316
+Instead, we have to discipline ourselves to produce organizing principles and core models that are
+pared down to contain nothing that does not significantly improve the clarity of the design. The truth
+is, almost everything gets in the way of something, so each element had better be worth it. Realizing
+that your best idea is likely to get in somebody's way takes humility.
+Objects are specialists; developers are generalists
+The essence of good object design is to give each object a clear and narrow responsibility and to
+reduce interdependence to an absolute minimum. Sometimes we try to make interactions on teams
+as tidy as they should be in our software. A good project has lots of people sticking their nose in
+other people's business. Developers play with frameworks. Architects write application code. Everyone talks to everyone. It is efficiently chaotic. Make the objects into specialists; let the developers
+be generalists.
+Because I've made the distinction between
+strategic design and other kinds of design to help clarify
+the tasks involved, I must point out that having two kinds of design activity does not mean having
+two kinds of people. Creating a supple design based on a deep model is an advanced design activity,
+but the details are so important that it has to be done by someone working with the code. Strategic
+design emerges out of application design, yet it requires a big-picture view of activity, possibly
+spanning multiple teams. People love to find ways to chop up tasks so that design experts don't
+have to know the business and domain experts don't have to understand technology. There is a
+limit to how much an individual can learn, but overspecialization takes the steam out of domaindriven design.
+The Same Goes for the Technical Frameworks
+Technical frameworks can greatly accelerate application development, including the domain layer,
+by providing an infrastructure layer that frees the application from implementing basic services, and
+by helping to isolate the domain from other concerns. But there is a risk that an architecture
+can
+interfere with expressive implementations of the domain model and easy change. This can happen
+even when the framework designers had no intention of venturing into the domain or application
+layers.
+The same biases that limit the downside of strategic design can help with technical architecture.
+Evolution, minimalism, and involvement with the application development team can lead to a continuously refined set of services and rules that genuinely help application development without getting in the way. Architectures that don't follow this path will either stifle the creativity of application
+development or will find their architecture circumvented, leaving application development, for practical purposes, with no architecture at all.
+There is one particular attitude that will surely ruin a framework.
+Don't write frameworks for dummies
+Team divisions that assume some developers are not smart enough to design are likely to fail because they underestimate the difficulty of application development. If those people are not smart
+enough to design, they shouldn't be assigned to develop software. If they are smart enough, then
+the attempts to coddle them will only put up barriers between them and the tools they need.
+This attitude also poisons the relationship between teams. I've ended up on arrogant teams like this
+and found myself apologizing to developers in every conversation, embarrassed by my association.
+(I've never managed to change such a team, I'm afraid.)
+Bringing the Strategy Together 317
+Now,
+encapsulating irrelevant technical detail is completely different from the kind of prepackaging
+I'm disparaging. A framework can place powerful abstractions and tools in developers' hands and
+free them from drudgery. It is hard to describe the difference in a generalized way, but you can tell
+the difference by asking the framework designers what they expect of the person who will be using
+the tool/framework/components. If the designers seem to have a high level of respect for the user
+of the framework, then they are probably on the right track.
+Beware the Master Plan
+A group of architects (the kind who design physical buildings), led by Christopher Alexander, were
+advocates of piecemeal growth in the realm of architecture and city planning. They explained very
+nicely why master plans fail.
+Without a planning process of some kind, there is not a chance in the world that the University of Oregon will ever
+come to possess an order anywhere near as deep and harmonious as the order that underlies the University of
+Cambridge.
+The master plan has been the conventional way of approaching this difficulty. The master plan attempts to set
+down enough guidelines to provide for coherence in the environment as a whole—and still leave freedom for
+individual buildings and open spaces to adapt to local needs.
+. . . and all the various parts of this future university will form a coherent whole, because they were simply plugged
+into the slots of the design.
+. . . in practice master plans fail—because they create totalitarian order, not organic order. They are too rigid; they
+cannot easily adapt to the natural and unpredictable changes that inevitably arise in the life of a community. As
+these changes occur . . . the master plan becomes obsolete, and is no longer followed. And even to the extent
+that master plans
+are followed . . . they do not specify enough about connections between buildings, human scale,
+balanced function, etc. to help each local act of building and design become well-related to the environment as a
+whole.
+. . . The attempt to steer such a course is rather like filling in the colors in a child's coloring book . . . . At best, the
+order which results from such a process is banal.
+. . . Thus, as a source of organic order, a master plan is both too precise, and not precise enough. The totality is
+too precise: the details are not precise enough.
+. . . the existence of a master plan alienates the users [because, by definition] the members of the community can
+have little impact on the future shape of their community because most of the important decisions have already
+been made.
+—From
+The Oregon Experiment, pp. 16–28 (Alexander et al. 1975)
+Alexander and his colleagues advocated instead
+a set of principles for all community members to
+apply to every act of piecemeal growth, so that “organic order” emerges, well adapted to circumstances.
+Bringing the Strategy Together 318
+Chapter . Conclusion
+Epilogues
+Although it is very satisfying working on a cutting-edge project and experimenting with interesting
+ideas and tools, for me it is a hollow experience if the software does not find productive use. In fact,
+the true test of success is how the software serves over a period of time. I have been able to follow
+the stories of some of my former projects over the years.
+I'll discuss here five of those, each of which made a serious attempt at domain-driven design, though
+not systematically and not by that name, of course. All of these projects did deliver software: some
+managed to carry through and produce a model-driven design, while one slipped off that track. Some
+of the applications continued to grow and change for many years, while one stagnated and one died
+young.
+The PCB design software described in Chapter 1 was a smash hit among beta users in the field.
+Unfortunately, the start-up company that had initiated the project utterly failed in its marketing function and was eventually euthanized. The software is now used by a handful of PCB engineers who
+have old copies they kept from the beta program. Like any orphan software, it will continue to work
+until there is some fatal change to one of the programs with which it is integrated.
+The loan software whose story was told in Chapter 9 thrived and evolved along much the same
+track for three years after the breakthrough I wrote about. At that point, the project was spun off as
+an independent company. In the turmoil of this reorganization, the project manager who had led the
+project from the beginning was ejected, and some of the core developers left with him. The new
+team had a somewhat different design philosophy, not as fully committed to object modeling. But
+they retained a distinct domain layer with complex behavior and continued to value domain knowledge on the development team. Seven years after the spin-off, the software continues to be enhanced with new features. It is the leading application in its field and serves an increasing number
+of client institutions, as well as being the largest revenue stream for the company.
+A Newly Planted Olive Grove
+Until the domain-driven approach is more widespread, the interesting software on many projects
+will be built in a short, highly productive interval. Eventually the project will transform into something
+more conventional that may not be able to fully exploit, much less enhance, the power of the deep
+models that were distilled earlier. I could wish for more, but truly those are successes that deliver
+sustained value to users over many years.
+On one project I paired with another developer to write a utility the customer needed to produce its
+core product. The features were fairly complicated and combined in intricate ways. I enjoyed the
+project work and we produced a supple design with an
+ABSTRACT CORE. When this software was
+handed off, that was the end of involvement for everyone who had initially developed it. Because it
+was such an abrupt transition, I expected that the design features which supported the combinable
+elements might be confusing and might get replaced by more typical case logic. This did not initially
+happen. When we handed off, the package included a thorough test suite and a distillation document. The new team members used that document to guide their explorations, and as they looked
+into things, they became excited by the possibilities the design presented. When I heard their comments a year later, I realized that the
+UBIQUITOUS LANGUAGE had sparked across to the other
+team and stayed alive, continuing to evolve.
+Conclusion 320
+Seven Years Later
+Then, another year later, I heard a different story. The team had encountered new requirements
+that the developers didn't see any way to accomplish within the inherited design. They had been
+forced to change the design almost beyond recognition. As I probed for more details, I could see
+that aspects of our model would have made solving those problems awkward. It is precisely during
+such moments when a breakthrough to a deeper model is often possible, especially when, as in this
+case, the developers had accumulated deep knowledge and experience in the domain. In fact, they
+had had a rush of new insights and ended up transforming the model and design based on those
+insights.
+They told me this story carefully, diplomatically, expecting, I suppose, that I would be disappointed
+by their discarding of so much of my work. I am not that sentimental about my designs. The success
+of a design is not necessarily marked by its stasis. Take a system people depend on, make it opaque,
+and it will live forever as untouchable legacy. A deep model allows clear vision that can yield new
+insight, while a supple design facilitates ongoing change. The model they came up with was deeper,
+better aligned with the real concerns of the users. Their design solved real problems. It is the nature
+of software to change, and this program has continued to evolve in the hands of the team that owns
+it.
+The shipping examples scattered through the book are loosely based on a project for a major international container-shipping company. Early on, the leadership of the project was committed to a
+domain-driven approach, but they never produced a development culture that could fully support it.
+Several teams with widely different levels of design skill and object experience set out to create
+modules, loosely coordinated by informal cooperation between team leaders and by a customerfocused architecture team. We did develop a reasonably deep model of the
+CORE DOMAIN, and
+there was a viable
+UBIQUITOUS LANGUAGE.
+But the company culture fiercely resisted iterative development, and we waited far too long to push
+out a working internal release. Therefore, problems were exposed at a late stage, when they were
+more risky and expensive to fix. At some point, we discovered specific aspects of the model were
+causing performance problems in the database. A natural part of
+MODEL-DRIVEN DESIGN is the
+feedback from implementation problems to changes in the model, but by that time there was a
+perception that we were too far down the road to change the fundamental model. Instead, changes
+were made to the code to make it more efficient, and its connection to the model was weakened.
+The initial release also exposed scaling limitations in the technical infrastructure that threw a scare
+into management. Expertise was brought in to fix the infrastructure problems, and the project
+bounced back. But the loop was never closed between implementation and domain modeling.
+A few teams delivered fine software with complex capabilities and expressive models. Others delivered stiff software that reduced the model to data structures, though even they retained traces of
+the
+UBIQUITOUS LANGUAGE. Perhaps a
+CONTEXT MAP would have helped us as much as
+anything, as the relationship between the output of the various teams was haphazard. Yet that
+CORE model carried in the
+UBIQUITOUS LANGUAGE did help the teams ultimately to glue together
+a system.
+Although reduced in scope, the project replaced several legacy systems. The whole was held together by a shared set of concepts, though most of the design was not very supple. It has itself
+largely fossilized into legacy now, years later, but it still serves the global business 24 hours a day.
+Although the more successful teams' influence gradually spread, time runs out eventually, even in
+the richest company. The culture of the project never really absorbed
+MODEL-DRIVEN DESIGN.
+New development today is on different platforms and is only indirectly influenced by the work we
+did—as the new developers
+CONFORM to their legacy.
+Conclusion 321
+In some circles, ambitious goals like those the shipping company initially set have been discredited.
+Better, it seems, to make little applications we know how to deliver. Better to stick to the lowest
+common denominator of design to do simple things. This conservative approach has its place, and
+allows for neatly scoped, quick-response projects. But integrated, model-driven systems promise
+value that those patchworks can't. There is a third way. Domain-driven design allows piecemeal
+growth of big systems with rich functionality, by building on a deep model and supple design.
+I'll close this list with Evant, a company that develops inventory management software, where I
+played a secondary supporting role and contributed to an already strong design culture. Others have
+written about this project as a poster child of Extreme Programming, but what is not usually remarked
+upon is that the project was intensely domain-driven. Ever deeper models were distilled and expressed in ever more supple designs. This project thrived until the “dot com” crash of 2001. Then,
+starved for investment funds, the company contracted, software development went mostly dormant,
+and it seemed that the end was near. But in the summer of 2002, Evant was approached by one of
+the top ten retailers in the world. This potential client liked the product, but it needed design changes
+to allow the application to scale up for an enormous inventory planning operation. It was Evant's
+last chance.
+Although reduced to four developers, the team had assets. They were skilled, with knowledge of
+the domain, and one member had expertise in scaling issues. They had a very effective development
+culture. And they had a code base with a supple design that facilitated change. That summer, those
+four developers made a heroic development effort resulting in the ability to handle billions of planning
+elements and hundreds of users. On the strength of those capabilities, Evant won the behemoth
+client and, soon after, was bought by another company that wanted to leverage their software and
+their proven ability to accommodate new demands.
+The domain-driven design culture (as well as the Extreme Programming culture) survived the transition and was revitalized. Today, the model and design continue to evolve, far richer and suppler
+two years later than when I made my contribution. And rather than being assimilated into the purchasing company, the members of the Evant team seem to be inspiring the company's existing
+project teams to follow their lead. This story isn't over yet.
+No project will ever employ every technique in this book. Even so, any project committed to domaindriven design will be recognizable in a few ways. The defining characteristic is a priority on understanding the target domain and incorporating that understanding into the software. Everything else
+flows from that premise. Team members are conscious of the use of language on the project and
+cultivate its refinement. They are hard to satisfy with the quality of the domain model, because they
+keep learning more about the domain. They see continuous refinement as an opportunity and an
+ill-fitting model as a risk. They take design skill seriously because it isn't easy to develop productionquality software that clearly reflects the domain model. They stumble over obstacles, but they hold
+on to their principles as they pick themselves up and continue forward.
+Looking Forward
+Weather, ecosystems, and biology used to be considered messy, “soft” fields in contrast to physics
+or chemistry. Recently, however, people have recognized that the appearance of “messiness” in
+fact presents a profound technical challenge to discover and understand the order in these very
+complex phenomena. The field called “complexity” is the vanguard of many sciences. Although
+purely technological tasks have generally seemed most interesting and challenging to talented software engineers, domain-driven design opens up a new area of challenge that is at least equal.
+Business software does not have to be a bolted-together mess. Wrestling a complex domain into a
+comprehensible software design is an exciting challenge for strong technical people.
+Conclusion 322
+We are nowhere near the era of laypeople creating complex software that works. Armies of programmers with rudimentary skills can produce certain kinds of software, but not the kind that saves
+a company in its eleventh hour. What is needed is for tool builders to put their minds to the task of
+extending the power and productivity of talented software developers. What is needed are sharper
+ways of exploring domain models and expressing them in working software. I look forward to experimenting with new tools and technologies devised for this purpose.
+But though improved tools will be valuable, we mustn't get distracted by them and lose sight of the
+core fact that creating good software is a learning and thinking activity. Modeling requires imagination and self-discipline. Tools that help us think or avoid distraction are good. Efforts to automate
+what must be the product of thought are naive and counterproductive.
+With the tools and technology we already have, we can build systems much more valuable than
+most projects do today. We can write software that is a pleasure to use and a pleasure to work on,
+software that doesn't box us in as it grows but creates new opportunities and continues to add value
+for its owners.
+Conclusion 323
+The Use of Patterns in This Book
+My first “nice car,” which I was given shortly after college, was an eight-year-old Peugeot. Sometimes
+called the “French Mercedes,” this car was well crafted, was a pleasure to drive, and had been very
+reliable. But by the time I got it, it was reaching the age when things start to go wrong and more
+maintenance is required.
+Peugeot is an old company, and it has followed its own evolutionary path over many decades. It
+has its own mechanical terminology, and its designs are idiosyncratic; even the breakdown of functions into parts is sometimes nonstandard. The result is a car that only Peugeot specialists can work
+on, a potential problem for someone on a grad student income.
+On one typical occasion, I took the car to a local mechanic to investigate a fluid leak. He examined
+the undercarriage and told me that oil was “leaking from a little box about two-thirds of the way back
+that seems to have something to do with distributing braking power between front and rear.” He then
+refused to touch the car and advised me to go to the dealership, fifty miles away. Anyone can work
+on a Ford or a Honda; that's why those cars are more convenient and less expensive to own, even
+though they are equally mechanically complex.
+I did love that car, but I will never own a quirky car again. A day came when a particularly expensive
+problem was diagnosed, and I had had enough of Peugeots. I took it to a local charity that accepted
+cars as donations. Then I bought a beat-up old Honda Civic for about what the repair would have
+cost.
+Standard design elements are lacking for domain development, and so every domain model and
+corresponding implementation is quirky and hard to understand. Moreover, every team has to reinvent the wheel (or the gear, or the windshield wiper). In the world of object-oriented design, everything is an object, a reference, or a message—which, of course, is a useful abstraction. But that
+does not sufficiently constrain the range of domain design choices and does not support an economical discussion of a domain model.
+To stop with “Everything is an object” would be like a carpenter or an architect summing up houses
+by saying “Everything is a room.” There would be the big room with high-voltage outlets and a sink,
+where you might cook. There would be the small room upstairs, where you might sleep. It would
+take pages to describe an ordinary house. People who build or use houses realize that rooms follow
+patterns, patterns with special names, such as “kitchen.” This language enables economical discussion of house design.
+Moreover, not all combinations of functions turn out to be practical. Why not a room where you bathe
+and sleep? Wouldn't that be convenient. But long experience has precipitated into custom, and we
+separate our “bedrooms” from our “bathrooms.” After all, bathing facilities tend to be shared among
+more people than bedrooms are, and they require maximum privacy, even from the others who
+share the same bedroom. And bathrooms have specialized and expensive infrastructure requirements. Bathtubs and toilets typically end up in the same room because both require the same infrastructure (water and drainage) and both are used in private.
+Another room that has special infrastructure requirements is that room where you might prepare
+meals, also known as the “kitchen.” In contrast to the bathroom, a kitchen has no special privacy
+requirements. Because of its expense, there is typically only one, even in relatively large houses.
+This singularity also facilitates our communal food preparation and eating customs.
+When I say that I want a three-bedroom, two-bath house with an open-plan kitchen, I have packed
+a huge amount of information into a short sentence, and I've avoided a lot of silly mistakes—such
+as putting a toilet next to the refrigerator.
+In every area of design—houses, cars, rowboats, or software—we build on patterns that have been
+found to work in the past, improvising within established themes. Sometimes we have to invent
+something completely new. But by basing standard elements on patterns, we avoid wasting our
+energy on problems with known solutions so that we can focus on our unusual needs. Also, building
+from conventional patterns helps us avoid a design so idiosyncratic that it is difficult to communicate.
+Although software domain design is not as mature as other design fields—and in any case may be
+too diverse to accommodate patterns as specific as those used for car parts or rooms—there is
+nonetheless a need to move beyond “Everything is an object” to at least the equivalent of distinguishing bolts from springs.
+A form for sharing and standardizing design insight was introduced in the 1970s by a group of
+architects led by Christopher Alexander (Alexander et al. 1977). Their “pattern language” wove
+together tried-and-true design solutions to common problems (much more subtly than my “kitchen”
+example, which has probably caused some readers of Alexander to cringe). The intent was that
+builders and users would communicate in this language, and they would be guided by the patterns
+to produce beautiful buildings that worked well and felt good to the people who used them.
+Whatever architects might think of the idea, this pattern language has had a big impact on software
+design. In the 1990s software patterns were applied in many ways with some success, notably in
+detailed design (Gamma et al. 1995) and technical architectures (Buschmann et al. 1996). More
+recently, patterns have been used to document basic object-oriented design techniques (Larman
+1998) and enterprise architectures (Fowler 2002, Alur et al. 2001). The language of patterns is now
+a mainstream technique for organizing software design ideas.
+The pattern names are meant to become terms in the language of the team, and I've used them
+that way in this book. When a pattern name appears in a discussion, it is
+FORMATTED IN SMALL
+CAPS to call it out.
+Here is how I've formatted patterns in this book. There is some variation around this basic plan, as
+I have favored case-by-case clarity and readability over rigid structure. . . .
+Pattern Name
+[Illustration of concept. Sometimes a visual metaphor or evocative text.]
+[Context. A brief explanation of how the concept relates to other patterns. In some cases, a brief
+overview of the pattern.
+However, much of the context discussion in this book is in the chapter introductions and other narrative segments, rather than within the patterns.
+]
+[Problem discussion.]
+Problem summary.
+Discussion of the resolution of problem forces into a solution.
+Therefore:
+Solution summary.
+The Use of Patterns in This Book 325
+Consequences. Implementation considerations. Examples.
+Resulting context: A brief explanation of how the pattern leads to later patterns.
+[Discussion of implementation challenges. In Alexander's original format, this discussion would have
+been folded into the section describing the resolution of the problem, and I have often followed
+Alexander's organization in this book. But some patterns demand lengthier discussions of implementation. To keep the core pattern discussion tight, I have moved such long implementation discussions out, after the pattern.
+Also, lengthy examples, particularly those that combine multiple patterns, are often outside the patterns.]
+The Use of Patterns in This Book 326
+GLOSSARY
+Here are brief definitions of selected terms, pattern names, and other concepts used in the book.
+AGGREGATE
+A cluster of associated objects that are treated as a unit for the purpose of data changes. External references are restricted to one member of the
+AGGREGATE, designated as the
+root. A
+set of consistency rules applies within the
+AGGREGATE'S boundaries.
+analysis pattern
+A group of concepts that represents a common construction in business modeling. It may be
+relevant to only one domain or may span many domains (Fowler 1997, p. 8).
+ASSERTION
+A statement of the correct state of a program at some point, independent of how it does it.
+Typically, an
+ASSERTION specifies the result of an operation or an invariant of a design element.
+BOUNDED CONTEXT
+The delimited applicability of a particular model. B
+OUNDING CONTEXTS gives team members
+a clear and shared understanding of what has to be consistent and what can develop independently.
+client
+A program element that is calling the element under design, using its capabilities.
+cohesion
+Logical agreement and dependence.
+command (a.k.a.
+modifier)
+An operation that effects some change to the system (for example, setting a variable). An operation that intentionally creates a side effect.
+CONCEPTUAL CONTOUR
+An underlying consistency of the domain itself, which, if reflected in a model, can help the design
+accommodate change more naturally.
+context
+The setting in which a word or statement appears that determines its meaning.
+See Also BOUNDED CONTEXT.
+CONTEXT MAP
+A representation of the
+BOUNDED CONTEXTS involved in a project and the actual relationships
+between them and their models.
+CORE DOMAIN
+The distinctive part of the model, central to the user's goals, that differentiates the application
+and makes it valuable.
+declarative design
+A form of programming in which a precise description of properties actually controls the software. An executable specification.
+deep model
+An incisive expression of the primary concerns of the domain experts and their most relevant
+knowledge. A deep model sloughs off superficial aspects of the domain and naive interpretations.
+design pattern
+A description of communicating objects and classes that are customized to solve a general
+design problem in a particular context. (Gamma et al. 1995, p. 3)
+distillation
+A process of separating the components of a mixture to extract the essence in a form that makes
+it more valuable and useful. In software design, the abstraction of key aspects in a model, or
+the partitioning of a larger system to bring the
+CORE DOMAIN to the fore.
+domain
+A sphere of knowledge, influence, or activity.
+domain expert
+A member of a software project whose field is the domain of the application, rather than software
+development. Not just any user of the software, the domain expert has deep knowledge of the
+subject.
+domain layer
+That portion of the design and implementation responsible for domain logic within a
+LAYERED
+ARCHITECTURE. The domain layer is where the software expression of the domain model
+lives.
+ENTITY
+An object fundamentally defined not by its attributes, but by a thread of continuity and identity.
+FACTORY
+A mechanism for encapsulating complex creation logic and abstracting the type of a created
+object for the sake of a client.
+function
+An operation that computes and returns a result without observable side effects.
+immutable
+The property of never changing observable state after creation.
+implicit concept
+A concept that is necessary to understand the meaning of a model or design but is never mentioned.
+INTENTION-REVEALING INTERFACE
+A design in which the names of classes, methods, and other elements convey both the original
+developer's purpose in creating them and their value to a client developer.
+invariant
+An
+ASSERTION about some design element that must be true at all times, except during specifically transient situations such as the middle of the execution of a method, or the middle of
+an uncommitted database transaction.
+iteration
+A process in which a program is repeatedly improved in small steps.
+Also, one of those steps.
+large-scale structure
+A set of high-level concepts, rules, or both that establishes a pattern of design for an entire
+system. A language that allows the system to be discussed and understood in broad strokes.
+LAYERED ARCHITECTURE
+A technique for separating the concerns of a software system, isolating a domain layer, among
+other things.
+GLOSSARY 328
+life cycle
+A sequence of states an object can take on between creation and deletion, typically with constraints to ensure integrity when changing from one state to another. May include migration of
+an
+ENTITY between systems and different
+BOUNDED CONTEXTS.
+model
+A system of abstractions that describes selected aspects of a domain and can be used to solve
+problems related to that domain.
+MODEL-DRIVEN DESIGN
+A design in which some subset of software elements corresponds closely to elements of a
+model.
+Also, a process of codeveloping a model and an implementation that stay aligned with
+each other.
+modeling paradigm
+A particular style of carving out concepts in a domain, combined with tools to create software
+analogs of those concepts (for example, object-oriented programming and logic programming).
+REPOSITORY
+A mechanism for encapsulating storage, retrieval, and search behavior which emulates a collection of objects.
+responsibility
+An obligation to perform a task or know information (Wirfs-Brock et al. 2003, p. 3).
+SERVICE
+An operation offered as an interface that stands alone in the model, with no encapsulated state.
+side effect
+Any observable change of state resulting from an operation, whether intentional or not, even a
+deliberate update.
+SIDE-EFFECT-FREE FUNCTION
+See function.
+STANDALONE CLASS
+A class that can be understood and tested without reference to any others, except system
+primitives and basic libraries.
+stateless
+The property of a design element that allows a client to use any of its operations without regard
+to the element's history. A stateless element may use information that is accessible globally and
+may even change that global information (that is, it may have side effects) but holds no private
+state that affects its behavior.
+strategic design
+Modeling and design decisions that apply to large parts of the system. Such decisions affect
+the entire project and have to be decided at team level.
+supple design
+A design that puts the power inherent in a deep model into the hands of a client developer to
+make clear, flexible expressions that give expected results robustly. Equally important, it leverages that
+same deep model to make the design itself easy for the implementer to mold and
+reshape to accommodate new insight.
+UBIQUITOUS LANGUAGE
+A language structured around the domain model and used by all team members to connect all
+the activities of the team with the software.
+unification
+The internal consistency of a model such that each term is unam-biguous and no rules contradict.
+VALUE OBJECT
+An object that describes some characteristic or attribute but carries no concept of identity.
+GLOSSARY 329
+WHOLE VALUE
+An object that models a single, complete concept.
+GLOSSARY 330
+References
+[biblio01entry01] C., Alexander, M. Silverstein, S. Angel, S. Ishikawa, and D. Abrams. 1975.
+The
+Oregon Experiment. Oxford University Press.
+[biblio01entry02] C., Alexander, S. Ishikawa, and M. Silverstein. 1977.
+A Pattern Language: Towns,
+Buildings, Construction. Oxford University Press.
+[biblio01entry03] D., Alur, J. Crupi, and D. Malks. 2001.
+Core J2EE Patterns. Sun Microsystems
+Press.
+[biblio01entry04] K. Beck, 1997.
+Smalltalk Best Practice Patterns. Prentice Hall PTR.
+[biblio01entry05] ———. 2000.
+Extreme Programming Explained: Embrace Change. Addison-Wesley.
+[biblio01entry06] ———. 2003.
+Test-Driven Development: By Example. Addison-Wesley.
+[biblio01entry07] F., Buschmann, R. Meunier, H. Rohnert, P. Sommerlad, and M. Stal. 1996.
+Pattern-Oriented Software Architecture: A System of Patterns. Wiley.
+[biblio01entry08] A. Cockburn, 1998.
+Surviving Object-Oriented Projects: A Manager's Guide. Addison-Wesley.
+[biblio01entry09] E., Evans, and M. Fowler. 1997. “Specifications.” Proceedings of PLoP 97 Conference.
+[biblio01entry10] M., Fayad, and R. Johnson. 2000.
+Domain-Specific Application Frameworks. Wiley.
+[biblio01entry11] M. Fowler, 1997.
+Analysis Patterns: Reusable Object Models. Addison-Wesley.
+[biblio01entry12] ———. 1999.
+Refactoring: Improving the Design of Existing Code. Addison-Wesley.
+[biblio01entry13] ———. 2003.
+Patterns of Enterprise Application Architecture. Addison-Wesley.
+[biblio01entry14] E., Gamma, R. Helm, R. Johnson, and J. Vlissides. 1995.
+Design Patterns. Addison-Wesley.
+[biblio01entry15] J. Kerievsky, 2003. “Continuous Learning,” in
+Extreme Programming Perspectives, Michele Marchesi et al. Addison-Wesley.
+[biblio01entry16] ———. 2003. Web site: http://www.industriallogic.com/xp/refactoring.
+[biblio01entry17] C. Larman, 1998.
+Applying UML and Patterns: An Introduction to Object-Oriented
+Analysis and Design. Prentice Hall PTR.
+[biblio01entry18] Merriam-Webster. 1993.
+Merriam-Webster's Collegiate Dictionary. Tenth edition.
+Merriam-Webster.
+[biblio01entry19] B. Meyer, 1988.
+Object-oriented Software Construction. Prentice Hall PTR.
+[biblio01entry20] P., Murray-Rust, H. Rzepa, and C. Leach. 1995.
+Abstract 40. Presented as a poster
+at the 210th ACS Meeting in Chicago on August 21, 1995. http://www.ch.ic.ac.uk/cml/
+[biblio01entry21] S. Pinker, 1994.
+The Language Instinct: How the Mind Creates Language. HarperCollins.
+[biblio01entry22] G. J., Succi, D. Wells, M. Marchesi, and L. Williams. 2002.
+Extreme Programming
+Perspectives. Pearson Education.
+[biblio01entry23] J., Warmer, and A. Kleppe. 1999.
+The Object Constraint Language: Precise Modeling with UML. Addison-Wesley.
+[biblio01entry24] R., Wirfs-Brock, B. Wilkerson, and L. Wiener. 1990.
+Designing Object-Oriented
+Software. Prentice Hall PTR.
+[biblio01entry25] R., Wirfs-Brock, and A. McKean. 2003.
+Object Design: Roles, Responsibilities,
+and Collaborations. Addison-Wesley.
+References 332
+Chapter . PHOTO CREDITS
+All photographs appearing in this book have been used with permission.
+Richard A. Paselk, Humboldt State University
+Astrolabe (Chapter 3, page 47)
+© Royalty-Free/Corbis
+Fingerprint (Chapter 5, page 89), Service Station (Chapter 5, page 104), Auto Factory (Chapter 6,
+page 136), Librarian (Chapter 6, page 147)
+Martine Jousset
+Grapes (Chapter 6, page 125), Olive Trees (young and old)(Conclusion, pages 500–501)
+Biophoto Associates/Photo Researchers, Inc.
+Electron micrograph of Oscillatoria (Chapter 14, page 335)
+Ross J. Venables
+Rowers (group and single) (Chapter 14, pages 341 and 371)
+Photodisc Green/Getty Images
+Runners (Chapter 14, page 356), Child (Chapter 14, page 361)
+U.S. National Oceanic and Atmospheric Administration
+Great Wall of China (Chapter 14, page 364)
+© 2003 NAMES Project Foundation, Atlanta, Georgia.
+Photographer Paul Margolies. www.aidsquilt.org
+AIDS Quilt (Chapter 16, page 439)
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #architecture_and_books

@@ -1,4 +1,4 @@
-﻿---
+---
 titulo: "Hooked: How to Build Habit-Forming Products"
 autor: "Nir Eyal"
 dominio: "Bucle Trigger-Action-Variable Reward-Investment"
@@ -8,37 +8,27 @@ secciones_totales: 54
 fecha_ingesta: "2026-10-06T02:44:25.811Z"
 ---
 
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
+
 # 📖 Hooked: How to Build Habit-Forming Products
 **Autor:** Nir Eyal | **Dominio:** Bucle Trigger-Action-Variable Reward-Investment | **Páginas originales:** 137
 
-> **Nota de Arquitectura Centinela:** Este documento contiene el texto íntegro estructurado por secciones y capítulos para consulta profunda del equipo de agentes y búsqueda híbrida (BM25 + semántica).
+> **Nota de Arquitectura Web Software Factory:** Este documento contiene el texto íntegro estructurado por secciones y capítulos para consulta profunda del equipo de agentes y búsqueda híbrida (BM25 + semántica).
 
 ---
 
 ## [Sección 1] Introducción y Fundamentos
-
--- 1 of 137 --
-
 Hooked:
 How to Build Habit-Forming Products
 By Nir Eyal
 with Ryan Hoover
-
--- 2 of 137 --
-
 Copyright © 2014 Nir Eyal
 All rights reserved.
 ISBN: 1494277530
 ISBN-13: 978-1494277536
 Library of Congress Control Number: 2014900549
 v 1.2
-
--- 3 of 137 --
-
 For Julie
-
--- 4 of 137 --
-
 TABLE OF CONTENTS
 Introduction
 1. The Habit Zone
@@ -55,9 +45,6 @@ Acknowledgements
 Contributors
 Notes and Sources
 Note: Some sections of this book have appeared in articles previously published by the author.
-
--- 5 of 137 --
-
 INTRODUCTION
 79 percent of smartphone owners check their device within 15 minutes of waking up every morning.[i]
 Perhaps more startling, fully one-third of Americans say they would rather give up sex than lose their
@@ -107,9 +94,6 @@ form habits.
 ---
 
 ## [Sección 2] Introducción y Fundamentos
-
--- 6 of 137 --
-
 How I Got Hooked
 In 2008, I was among a team of Stanford MBAs starting a company backed by some of the brightest
 investors in Silicon Valley. Our mission was to build a platform for placing advertising into the
@@ -147,9 +131,6 @@ While I draw many examples from technology companies given my industry backgroun
 everywhere — in apps, sports, movies, games, and even our jobs. Hooks can be found in virtually
 any experience that burrows into our minds (and often our wallets). The four steps of the Hook Model
 provide the framework for the chapters of this book.
-
--- 7 of 137 --
-
 The Hook Model
 1. Trigger
 A trigger is the actuator of behavior — the spark plug in the engine. Triggers come in two types:
@@ -179,9 +160,6 @@ next.
 ---
 
 ## [Sección 3] Introducción y Fundamentos
-
--- 8 of 137 --
-
 3. Variable Reward
 What distinguishes the Hook Model from a plain vanilla feedback loop is the hook’s ability to create
 a craving. Feedback loops are all around us, but predictable ones don’t create desire. The
@@ -227,9 +205,6 @@ have greater access to the web through our various connected devices — smartph
 televisions, game consoles, and wearable technology — gives companies far greater ability to affect
 our behavior.
 As companies combine their increased connectivity to consumers, with the ability to collect, mine,
-
--- 9 of 137 --
-
 and process customer data at faster speeds, we are faced with a future where everything becomes
 potentially more habit-forming. As famed Silicon Valley investor Paul Graham writes, "…unless the
 forms of technological progress that produced these things are subject to different laws than
@@ -278,9 +253,6 @@ Building a habit-forming product yourself? If so, the “Do This Now” sections
 ---
 
 ## [Sección 4] Introducción y Fundamentos
-
--- 10 of 137 --
-
 subsequent chapters will help guide your next steps.
 ***
 Remember and Share
@@ -290,9 +262,6 @@ Remember and Share
 - The Hook Model describes an experience designed to connect the user's problem to a solution
 frequently enough to form a habit.
 - The Hook Model has four phases: trigger, action, variable reward, and investment.[xvi]
-
--- 11 of 137 --
-
 1. THE HABIT ZONE
 When I run, I zone out. I don’t think about what my body is doing and my mind usually wanders
 elsewhere. I find it relaxing and refreshing, and run about three mornings each week. Recently, I
@@ -334,9 +303,6 @@ On my run, my brain had associated making eye contact with another person during
 standard “Good morning!” greeting, thus I automatically uttered these words no matter how
 inappropriately timed.
 Why Habits are Good for Business
-
--- 12 of 137 --
-
 If our programmed behaviors are so influential in guiding our everyday actions, surely harnessing
 the same power of habits can be a boon for industry. Indeed, for those able to shape them in an
 effective way, habits can be very good for the bottom line.
@@ -385,9 +351,6 @@ and his partner, Charlie Munger, realized that as customers form routines around
 ---
 
 ## [Sección 5] Introducción y Fundamentos
-
--- 13 of 137 --
-
 to depend upon it and become less price-sensitive. The duo have pointed to consumer psychology as
 the rationale behind their famed investments in companies like See’s Candies and Coca-Cola.[xxi]
 Buffett and Munger understand that habits give companies greater flexibility to increase prices.
@@ -432,9 +395,6 @@ Time is the amount of time it takes a user to invite another user, and it can ha
 it would be better to have more cycles occur, but it is less obvious just how much better.”
 Having a greater proportion of users returning to a service daily, dramatically increases Viral
 Cycle Time for two reasons: First, daily users initiate loops more often (think tagging a friend in a
-
--- 14 of 137 --
-
 Facebook photo); second, more daily active users means more people to respond and react to each
 invitation. The cycle not only perpetuates the process — with higher and higher user engagement, it
 accelerates it.
@@ -484,9 +444,6 @@ more powerful bang for the company’s buck.
 ---
 
 ## [Sección 6] Introducción y Fundamentos
-
--- 15 of 137 --
-
 ***
 Building the Mind Monopoly
 While user habits are a boon to companies fortunate enough to engender them, their existence
@@ -534,9 +491,6 @@ slows down regular Google users and makes Bing feel inferior, not the technology
 Internet searches occur so frequently that Google is able to cement itself as the one and only
 solution in the habituated user’s mind. Users no longer need to think about whether or not to use
 Google, they just do. Furthermore, whenever the company can identify the user through tracking
-
--- 16 of 137 --
-
 technology, it improves search results based on past behaviors to deliver a more accurate and
 personalized experience, reinforcing the user’s connection with the search engine. The more the
 product is used, the better the algorithm gets and thus, the more it is used. The result is a virtuous
@@ -585,9 +539,6 @@ utility is involved, infrequent behaviors remain conscious actions and never cre
 ---
 
 ## [Sección 7] Introducción y Fundamentos
-
--- 17 of 137 --
-
 response that is characteristic of habits. On the other axis however, even a behavior which provides
 minimal perceived benefit can become a habit simply because it occurs frequently.
 Figure 1
@@ -614,9 +565,6 @@ understanding the kind of problem a new product solves can be a topic of much de
 “Are you building a vitamin or painkiller?” is a common, almost clichéd question many investors
 ask founders eager to cash their first venture capital check. The correct answer, from the perspective
 of most investors, is the latter: a painkiller. Likewise, innovators in companies big and small are
-
--- 18 of 137 --
-
 constantly asked to prove their idea is important enough to merit the time and money needed to build
 it. Gatekeepers such as investors and managers want to invest in solving real problems — or, meeting
 immediate needs — by backing painkillers.
@@ -666,9 +614,6 @@ definition, are self-destructive. Thus, it is irresponsible to make products tha
 ---
 
 ## [Sección 8] Introducción y Fundamentos
-
--- 19 of 137 --
-
 maintaining user addiction, since doing so would mean intentionally harming people.
 A habit, on the other hand, is a behavior that can have a positive influence on a person’s life.
 Habits can be healthy or unhealthy, and you likely have several helpful habits you carry out throughout
@@ -708,12 +653,6 @@ If you are building a habit-forming product, write down the answers to these que
 - How do users currently solve that problem and why does it need a solution?
 - How frequently do you expect users to engage with your product?
 - What user behavior do you want to make into a habit?
-
--- 20 of 137 --
-
--- 21 of 137 --
-
--- 22 of 137 --
 
 2. TRIGGER
 Yin (not her real name) is in her mid-twenties, lives in Palo Alto, and attends Stanford University.
@@ -760,9 +699,6 @@ made explicitly clear. For example, what external triggers do you see in this Co
 ---
 
 ## [Sección 9] Introducción y Fundamentos
-
--- 23 of 137 --
-
 machine in figure 2?
 Figure 2
 Take a close look at the welcoming man in the image. He is offering you a refreshing Coke. The
@@ -777,9 +713,6 @@ have included several other triggers such as prompts to check your bank balance,
 deals, or set financial goals. Instead, since this is an important account alert email, Mint has reduced
 the available actions to a single click: Logging in to view and fix your account.
 More choices require the user to evaluate multiple options. Too many choices or irrelevant options
-
--- 24 of 137 --
-
 can cause hesitation, confusion, or worse, abandonment.[xliv]
 Reducing the thinking required to take the
 next action increases the likelihood of the desired behavior occurring unconsciously. We’ll explore
@@ -826,9 +759,6 @@ deploying so-called “dark patterns.” When designers intentionally trick user
 ---
 
 ## [Sección 10] Introducción y Fundamentos
-
--- 25 of 137 --
-
 blasting a message to their social networks, they may see some initial growth, but it comes at the
 expense of the social currency of users, including their goodwill and trust. When people discover
 they’ve been duped, they vent their frustration and stop using the product.
@@ -871,9 +801,6 @@ we’re usually unaware of our habitual reactions to these nagging issues.
 Positive emotions can also serve as internal triggers, and may even be triggered themselves by a
 need to satisfy something that is bothering us. After all, we use products to find solutions to problems.
 The desire to be entertained can be thought of as the need to satiate boredom. A need to share good
-
--- 26 of 137 --
-
 news can also be thought of as an attempt to find and maintain social connections.
 As product designers, it is our goal to solve these problems and eliminate pain — to scratch the
 user’s itch. Users who find a product that alleviates their pain will form strong, positive associations
@@ -924,9 +851,6 @@ Building for Triggers
 ---
 
 ## [Sección 11] Introducción y Fundamentos
-
--- 27 of 137 --
-
 Products that successfully create habits soothe the user’s pain by laying claim to a particular feeling.
 To do so, product designers must know their user's internal triggers — that is, the pain they seek to
 solve. But finding customers’ internal triggers requires learning more about people than what they can
@@ -979,9 +903,6 @@ Toyota's scientific approach ... by repeating ‘why?’ five times, the nature 
 ---
 
 ## [Sección 12] Introducción y Fundamentos
-
--- 28 of 137 --
-
 its solution becomes clear."[liii]
 When it comes to figuring out why people use habit-forming products, internal triggers are the root
 cause, and “why?” is a question that can help drill right to the core.
@@ -1024,9 +945,6 @@ screens and push notifications about their friends’ postings served to call th
 With repeated use, Instagram formed strong associations with internal triggers, and what was once
 a brief distraction became an intraday routine for many users.
 It is the fear of losing a special moment that instigates a pang of stress. This negative emotion is the
-
--- 29 of 137 --
-
 internal trigger that brings Instagram users back to the app to alleviate this pain by capturing a photo.
 As users continue to use the service, new internal triggers form.
 But Instagram is more than a camera replacement, it is a social network. The app helps users dispel
@@ -1075,12 +993,6 @@ unimaginable triggering opportunities.
 
 ## [Sección 13] Introducción y Fundamentos
 
--- 30 of 137 --
-
--- 31 of 137 --
-
--- 32 of 137 --
-
 3. ACTION
 The next step in The Hook is the action phase. The trigger, driven by internal or external cues,
 informs the user of what to do next; however, if the user does not take action, the trigger is useless. To
@@ -1121,9 +1033,6 @@ Fogg states that all humans are motivated to seek pleasure and avoid pain, to se
 fear, and finally, to seek social acceptance and avoid rejection. The two sides of the three Core
 Motivators can be thought of as levers to increase or decrease the likelihood of a person taking a
 particular action by increasing or decreasing their motivation.
-
--- 33 of 137 --
-
 Motivation Examples in Advertising
 Perhaps no industry makes the elements of motivation more explicit than the advertising business.
 Advertisers regularly tap into people’s motivations to influence their habits. By looking at ads with a
@@ -1154,9 +1063,6 @@ with good friends and good times.
 ---
 
 ## [Sección 14] Introducción y Fundamentos
-
--- 34 of 137 --
-
 Figure 5
 On the flip-side, negative emotions such as fear can also be powerful motivators. The ad in figure
 6 shows a disabled man with a shocking head scar. The ad is impactful, communicating the risks of
@@ -1174,9 +1080,6 @@ Ability
 In his book, Something Really New: Three Simple Steps to Creating Truly Innovative Products [lviii]
 ,
 author Denis J. Hauptly deconstructs the process of innovation into its most fundamental steps. First,
-
--- 35 of 137 --
-
 Hauptly says, understand the reason people use a product or service. Next, lay out the steps the
 customer must take to get the job done. Finally, once the series of tasks from intention to outcome is
 understood, simply start removing steps until you reach the simplest possible process.
@@ -1203,9 +1106,6 @@ Figure 7
 Web 1.0 was categorized by a few content providers like C|net (now called CNET) or the New
 York Times publishing to the masses, with only a tiny number of people creating what others read.
 But in the late 1990s, blogging changed the web. Before blogging, amateur writers had to purchase
-
--- 36 of 137 --
-
 their own domain, fiddle with DNS settings, find a web host, and set up a content-management system
 to present their writing. Suddenly, new companies like Blogger eliminated most of these steps by
 allowing users to simply register an account and start posting.
@@ -1254,9 +1154,6 @@ work? Is the product too difficult to understand? Is the user in a social contex
 ---
 
 ## [Sección 15] Introducción y Fundamentos
-
--- 37 of 137 --
-
 could be perceived as inappropriate? Is the behavior simply so far outside of the user’s normal
 routine that its strangeness is off-putting?
 These factors will differ by person and context, so designers should ask, "What is the thing that is
@@ -1287,9 +1184,6 @@ Again, the roadblocks confronting users vary by person and context. There is no 
 solution, so designers should seek to understand an array of possible user challenges.
 Sharing with the Twitter Button
 Twitter helps people share articles, videos, photos or any other content they find on the web. The
-
--- 38 of 137 --
-
 company noticed that 25 percent of tweets contained a link and therefore sought to make the action of
 tweeting a website link as easy as possible.[lxii]
 To ease the way for link-sharers, Twitter created an embeddable Tweet button for third-party sites,
@@ -1307,9 +1201,6 @@ relevancy. Compared with directory-based search tools such as Yahoo!, Google was
 and cluttered with advertising (figure 10). From its inception, Google’s clean and simple homepage
 and search results pages were solely focused on streamlining the act of searching and getting relevant
 results (figure 11).
-
--- 39 of 137 --
-
 Figure 10 - The Yahoo homepage circa 1998
 Figure 11 - The Google homepage circa 1998
 Simply put, Google reduced the amount of time and the cognitive effort required to find what the
@@ -1330,9 +1221,6 @@ users’ go-to solution whenever they need to snap a quick pic (figure 12).
 ---
 
 ## [Sección 16] Introducción y Fundamentos
-
--- 40 of 137 --
-
 Figure 12
 Scrolling with Pinterest
 How can a website make browsing easier? One solution popularized by digital pinboard site,
@@ -1346,9 +1234,6 @@ The examples above show how simplicity increases the intended user behaviors.
 Motivation or Ability — Which Should You Increase First?
 After uncovering the triggers that prompt user actions and deciding which actions you want to turn
 into habits, you can increase motivation and ability to spark the likelihood of your users taking a
-
--- 41 of 137 --
-
 desired behavior. But which should you invest in first, motivation or ability? Where is your time and
 money better spent?
 The answer is always to start with ability.
@@ -1374,9 +1259,6 @@ onerous. Even more unfortunate, the task users were most likely to do — search
 Twitter really wanted them to do. Twitter management knew from early users that those who
 followed other people on the service were more likely to stay engaged and form a habit. But
 searching on Twitter was not helping that goal, so the company decided to make another switch.
-
--- 42 of 137 --
-
 Figure 15 - The Twitter homepage in 2010
 During the company’s period of hypergrowth, the Twitter homepage became radically more simple
 (figure 16). The product description is itself only 140 characters long and has evolved from the
@@ -1402,9 +1284,6 @@ the highest rates of repeat engagement.
 ---
 
 ## [Sección 17] Introducción y Fundamentos
-
--- 43 of 137 --
-
 Figure 17 - The Twitter homepage in 2013
 On Heuristics and Perception
 So far, we have discussed Fogg’s Core Motivators and the six elements of simplicity as levers for
@@ -1432,9 +1311,6 @@ There are many theories as to why this is the case. For one, scarcity may signal
 product. If there are fewer of an item, the thinking goes, it might be because other people know
 something you don’t. Namely, that the cookies in the almost-empty jar are the better choice. The jar
 with just two cookies left in it conveys valuable, albeit irrelevant, information since the cookies are
-
--- 44 of 137 --
-
 identical. Yet, the perception of scarcity changed their perceived value.
 In the second part of their experiment, the researchers wanted to know what would happen to the
 perception of the value of the cookies if they suddenly became scarce or abundant. Groups of study
@@ -1478,9 +1354,6 @@ objective quality.
 ---
 
 ## [Sección 18] Introducción y Fundamentos
-
--- 45 of 137 --
-
 The Anchoring Effect
 Rarely can you walk into a clothing store without seeing signage for “30% off,” “buy-one-get-one
 free,” and other sales and deals. In reality, these items are often marketed to maximize profits for the
@@ -1519,9 +1392,6 @@ the four discussed here are just a few examples.[lxvii]
 For product designers building habit-forming
 technology, understanding and leveraging these methods for boosting motivation and ability can prove
 highly impactful.
-
--- 46 of 137 --
-
 Stephen Anderson, author of Seductive Interaction Design, created a tool called Mental Notes to
 help designers build better products through heuristics.[lxviii]
 Each of the cards in his deck of 50 contains
@@ -1570,17 +1440,10 @@ habits?
 ---
 
 ## [Sección 19] Introducción y Fundamentos
-
--- 47 of 137 --
-
 - Social deviance (outside the norm)
 - Non-routine (too new)
 - Brainstorm three testable ways to make the intended tasks easier to complete.
 - Consider how you might apply heuristics to make habit-forming actions more likely.
-
--- 48 of 137 --
-
--- 49 of 137 --
 
 4. VARIABLE REWARD
 Ultimately, all businesses help users achieve an objective. As we learned in the previous chapter,
@@ -1625,9 +1488,6 @@ Not only are these videos incredibly cute, but they help demonstrate something i
 mental wiring.
 At first, the expression on the baby’s face seems to ask, “What is this hairy monster doing in my
 house? Will it hurt me? What will it do next?” The child is filled with curiosity, uncertain if this
-
--- 50 of 137 --
-
 creature might cause harm. But soon the child figures out Rover is not a threat. What follows is an
 explosion of infectious giggles. Researchers believe laughter may in fact be a release valve when we
 experience the discomfort and excitement of uncertainty, but without fear of harm.[lxxi]
@@ -1673,9 +1533,6 @@ these variable reward types.
 ---
 
 ## [Sección 20] Introducción y Fundamentos
-
--- 51 of 137 --
-
 Figure 20
 Rewards of the Tribe
 We are a species that depends on each other. Rewards of the tribe, or social rewards, are driven by
@@ -1707,9 +1564,6 @@ have “liked” something (figure 21). The uncertainty of what users will find 
 site creates the intrigue needed to pull them back again.
 While variable content gets users to keep searching for interesting tidbits in their Newsfeeds, a
 click of the “Like” button provides a variable reward for the content’s creators. “Likes” and
-
--- 52 of 137 --
-
 comments offer tribal validation for those who shared the content, and provide variable rewards that
 motivate them to continue posting.
 Figure 21
@@ -1727,9 +1581,6 @@ responses percolate upwards, accumulating points for their authors (figure 22). 
 certain point levels, members earn badges, which confer special status and privileges. Of course, the
 process of accumulating upvotes (and, therefore, points and badges) is highly variable — no one
 knows how many they will receive from the community when responding to a question.
-
--- 53 of 137 --
-
 Figure 22
 Stack Overflow works because, like all of us, software engineers find satisfaction in contributing
 to a community they care about; and the element of variability turns a seemingly mundane task into an
@@ -1756,9 +1607,6 @@ trolls by signaling to others which players should be avoided.
 ---
 
 ## [Sección 21] Introducción y Fundamentos
-
--- 54 of 137 --
-
 Figure 23
 Rewards of the Hunt
 For years, scientists have tried to answer a central question of human evolution: How did early
@@ -1797,9 +1645,6 @@ By running on two feet and bereft of the body hair typical of other primates, ou
 massive advantage over larger mammals. Our ability to maintain steady pursuit gave us the capacity
 to hunt large prehistoric game. But persistence hunting was not only made possible because of our
 bodies; changes in our brains also played a significant role.
-
--- 55 of 137 --
-
 During the chase, the runner is driven by the pursuit itself; and this same mental hardwiring also
 provides clues into the source of our insatiable desires today. The dogged determination that keeps
 San hunters chasing kudu is the same mechanism that keeps us wanting and buying. Although it is a
@@ -1835,9 +1680,6 @@ the form of relevant tweets (figure 24).
 ---
 
 ## [Sección 22] Introducción y Fundamentos
-
--- 56 of 137 --
-
 Figure 24
 Pinterest
 Pinterest, a company that has grown to reach over 50 million monthly users worldwide, also employs
@@ -1858,9 +1700,6 @@ driven to conquer obstacles, even if just for the satisfaction of doing so. Purs
 can influence people to continue all sorts of behaviors.[lxxxvi]
 Surprisingly, we even pursue these
 rewards when we don’t outwardly appear to enjoy them. For example, watching someone investing
-
--- 57 of 137 --
-
 countless hours into completing a tabletop puzzle can reveal frustrated face contortions and even
 sounds of muttered profanity. Although puzzles offer no prize other than the satisfaction of
 completion, for some the painstaking search for the right pieces can be a wonderfully mesmerizing
@@ -1890,9 +1729,6 @@ But to feel rewarded, the user must have a sense of accomplishment. Mailbox, an 
 acquired by Dropbox in 2013 for a rumored $100 million, aims to solve the frustration of fighting
 what feels like a losing inbox battle.[lxxxviii]
 Mailbox cleverly segments emails into sorted folders to
-
--- 58 of 137 --
-
 increase the frequency of users achieving “inbox zero” — a near-mystical state of having no unread
 emails (figure 27). Of course, some of the folder sorting is done through digital sleight-of-hand by
 pushing some low priority emails out of sight, and then having them reappear at a later date. But by
@@ -1917,9 +1753,6 @@ rewards of the self, turning a difficult path into an engaging challenge (figure
 ---
 
 ## [Sección 23] Introducción y Fundamentos
-
--- 59 of 137 --
-
 Figure 28
 ***
 Important Considerations for Designing Reward Systems
@@ -1948,9 +1781,6 @@ trigger was a desire for monetary rewards, the user was better off spending thei
 hourly wage. And if the payouts were meant to take the form of a game, like a slot machine, then the
 rewards came far too infrequently and were too small to matter.
 However, Quora demonstrated that social rewards and the variable reinforcement of recognition
-
--- 60 of 137 --
-
 from peers proved to be much more frequent and salient motivators. Quora instituted an upvoting
 system that reports user satisfaction with answers and provides a steady stream of social feedback.
 Quora’s social rewards have proven more attractive than Mahalo’s monetary rewards.
@@ -2000,9 +1830,6 @@ of people saying “yes.”[xcii]
 ---
 
 ## [Sección 24] Introducción y Fundamentos
-
--- 61 of 137 --
-
 The magic words the researchers discovered? The phrase, “but you are free to accept or refuse.”
 The “but you are free” technique demonstrates how we are more likely to be persuaded when our
 ability to choose is reaffirmed. Not only was the effect observed during face-to-face interactions, but
@@ -2048,9 +1875,6 @@ their food consumption and exercise. But where Fitocracy differentiates itself i
 most users will quickly fall off the wagon, just as I had with MyFitnessPal, unless the app taps into
 existing autonomous behavior.
 Before my reactance alarm went off, I started receiving kudos from other members of the site after
-
--- 62 of 137 --
-
 entering my very first run. Curious to know who was sending the virtual encouragement, I logged in.
 There, I immediately saw a question from “mrosplock5,” a woman looking for advice on what to do
 about knee pain from running. Having experienced similar trouble several years back, I left a quick
@@ -2101,9 +1925,6 @@ fundamentally the program utilized a simple formula to keep people tuning in.
 ---
 
 ## [Sección 25] Introducción y Fundamentos
-
--- 63 of 137 --
-
 At the heart of every episode — and also across each season’s narrative arc — is a problem the
 characters must resolve. For example, during an episode in the first season, Walter White must find a
 way to dispose of the bodies of two rival drug dealers. Challenges prevent resolution of the conflict
@@ -2155,9 +1976,6 @@ already seen will never peak as it did when they were new. Experiences with fini
 ---
 
 ## [Sección 26] Introducción y Fundamentos
-
--- 64 of 137 --
-
 become less engaging because they eventually become predictable.
 Businesses with finite variability are not inferior per se, they just operate under different
 constraints. They must constantly churn out new content and experiences to cater to their consumers’
@@ -2202,9 +2020,6 @@ fluctuating email count and feel compelled to gain control of our inbox (rewards
 As B.F. Skinner discovered over 50 years ago, variable rewards are a powerful inducement to
 repeat actions. Understanding what moves users to return to habit-forming products gives designers
 an opportunity to build products that align with their interests.
-
--- 65 of 137 --
-
 However, simply giving users what they want is not enough to create a habit-forming product. The
 feedback loop of the first three steps of the hook — trigger, action and variable reward — still
 misses a final critical phase. In the next chapter, we will learn how getting people to invest their time,
@@ -2243,10 +2058,6 @@ Is there anything they find particularly satisfying about using the product?
 ---
 
 ## [Sección 27] Introducción y Fundamentos
-
--- 66 of 137 --
-
--- 67 of 137 --
 
 5. INVESTMENT
 In the Trigger phase of the Hook Model, we discussed the importance of aligning with the right
@@ -2291,9 +2102,6 @@ another room, unaware of the identity of the builders, were asked to bid on thei
 same procedure. Similarly, a third independent group was asked to bid on expert-made origami under
 the same criteria.
 The results showed that those who made their own origami animals valued their creation five times
-
--- 68 of 137 --
-
 higher than the second group’s valuation, and nearly as high as the expert-made origami values (figure
 29). In other words, those who invested labor associated greater value with their paper creations
 simply because they had worked on them. Ariely calls this the “IKEA effect.”
@@ -2331,9 +2139,6 @@ future behaviors.
 ---
 
 ## [Sección 28] Introducción y Fundamentos
-
--- 69 of 137 --
-
 We Avoid Cognitive Dissonance
 In a classic Aesop’s Fable, a hungry fox encounters grapes hanging from a vine. The fox desperately
 wants the grapes. But as hard as he may try, he can not reach them. Frustrated, the fox decides the
@@ -2379,9 +2184,6 @@ that I’ve kicked in $20, it must be valuable because only an idiot would Realt
 Schell’s description of the quirky process of Mafia Wars rationalization helps demonstrate the
 strange logic of how we change our preferences. When players contemplate making a purchase, they
 acknowledge it is unwise to spend money on something that is not good. And yet, just like the fox that
-
--- 70 of 137 --
-
 perceives the grapes as sour to reduce his frustration at not being able to reach them, players justify
 their purchases to help convince themselves of something they want to be true — namely, that they are
 not foolish. The only solution is to keep paying to keep playing.
@@ -2431,9 +2233,6 @@ will get better with use (and personal investment). Like a good friendship, the 
 ---
 
 ## [Sección 29] Introducción y Fundamentos
-
--- 71 of 137 --
-
 in, the more both parties benefit.
 Storing Value
 Unlike physical goods in the real world, the software that runs our technology products can adapt
@@ -2462,9 +2261,6 @@ Data
 Information generated, collected or created by users — such as songs, photos, or news clippings —
 are examples of stored value in the form of content. But sometimes users invest in a service by either
 actively or passively adding data about themselves or their behaviors.
-
--- 72 of 137 --
-
 On LinkedIn, the user’s online resume embodies the concept of data as stored value. Every time
 job-seekers use the service, they are prompted to add more information. The company found that the
 more information users invested in the site, the more committed they became to it. As Josh Elman, an
@@ -2494,9 +2290,6 @@ value and is a key driver of what keeps Twitter users hooked (figure 32).
 ---
 
 ## [Sección 30] Introducción y Fundamentos
-
--- 73 of 137 --
-
 Figure 32
 From the follower side of the equation, the more Twitter users curate the list of people they follow,
 the better the service will be at delivering interesting content. Investing in following the right people
@@ -2523,9 +2316,6 @@ impossible, to compete against highly-rated sellers. Reputation is a form of sto
 increases the likelihood of using a service. Whether a buyer or seller, reputation makes users more
 likely to stick with whichever service they have invested their efforts in to maintain a high quality
 score (figure 33).
-
--- 74 of 137 --
-
 Figure 33
 Skill
 Investing time and effort into learning to use a product is a form of investment and stored value. Once
@@ -2562,9 +2352,6 @@ future. Users set future triggers during the Investment Phase, providing compani
 ---
 
 ## [Sección 31] Introducción y Fundamentos
-
--- 75 of 137 --
-
 to re-engage the user. Next, we will explore a few examples of how companies have helped load the
 next trigger during the Investment Phase.
 Any.do
@@ -2591,9 +2378,6 @@ Figure 34
 Tinder
 In mid-2013, a hot new company entered the hyper-competitive online dating market. Tinder quickly
 captured the attention of millions of people looking for love with a simple interface, generating 3.5
-
--- 76 of 137 --
-
 million matches from 350 million swipes each day.[cx]
 After launching the mobile app and logging-in
 with Facebook, users browse profiles of other singles. Each potential match is presented as a card.
@@ -2618,9 +2402,6 @@ Snapchat interface makes returning a pic incredibly easy by double tapping the o
 reply. The self-destruct feature encourages timely responses, leading to a back-and-forth relay that
 keeps people hooked into the service by loading the next trigger with each message sent.
 Pinterest
-
--- 77 of 137 --
-
 Like many social networks, Pinterest loads the next trigger during the Investment Phase of the hook.
 For many of the site’s 50 million monthly users, the online pinboard replaced the habit of browsing
 fashion-focused websites — and before the web, flipping through magazines and dog-earing favorite
@@ -2657,9 +2438,6 @@ Invariably, the next big thing will come along and provide a better, more compel
 ---
 
 ## [Sección 32] Introducción y Fundamentos
-
--- 78 of 137 --
-
 by creating habits fueled by investments in a product or service, companies make switching to a
 competitor difficult. User habits are hard to break and confer powerful competitive advantages to any
 company fortunate enough to successfully create them.
@@ -2687,9 +2465,6 @@ returning?
 - Store value as data, content, followers, reputation and skill
 - Identify how long it takes for a “loaded trigger” to re-engage your users. How can you reduce
 the delay to shorten cycle-time through the Hook?
-
--- 79 of 137 --
-
 6. WHAT ARE YOU GOING TO DO WITH THIS?
 The Hook Model is designed to connect the user’s problem with the designer’s solution frequently
 enough to form a habit. It is a framework for building products that solve user needs through longterm engagement.
@@ -2734,9 +2509,6 @@ You may be asking, “When is it wrong to manipulate users?”
 ---
 
 ## [Sección 33] Introducción y Fundamentos
-
--- 80 of 137 --
-
 Manipulation is an experience crafted to change behavior — we all know what it feels like. We’re
 uncomfortable when we sense someone is trying to make us do something we wouldn’t do otherwise,
 like when sitting through a car salesman’s spiel or hearing a timeshare presentation.
@@ -2775,9 +2547,6 @@ habit-forming technology. The matrix seeks to help you answer not, “Can I hook
 instead, “Should I attempt to?”
 To use the Manipulation Matrix (figure 36), the maker needs to ask two questions. First, “Would I
 use the product myself?” and second, “Will the product help users materially improve their lives?”
-
--- 81 of 137 --
-
 Figure 36
 Remember, this framework is for creating habit-forming products, not one-time use goods. Now,
 let’s explore the types of creators who represent the four quadrants of the Manipulation Matrix.
@@ -2813,9 +2582,6 @@ simply teaching farmers new behaviors would not be enough.
 ---
 
 ## [Sección 34] Introducción y Fundamentos
-
--- 82 of 137 --
-
 Instead, by drawing upon his own rural upbringing and experience living with the farmers,
 Harriman uncovered the obstacles in their way. He soon learned that the lack of access to financing
 for high quality seeds and fertilizer kept farmers from utilizing yield-boosting techniques.
@@ -2861,9 +2627,6 @@ fall in this quadrant. But possibly the most common example of peddlers is in ad
 Countless companies convince themselves they’re making ad campaigns users will love. They
 expect their videos to go viral and their branded apps to be used daily. Their so-called “reality
 distortion fields” keep them from asking the critical question, “Would I actually find this useful?” [cxxii]
-
--- 83 of 137 --
-
 The answer to this uncomfortable question is nearly always “No,” so they twist their thinking until
 they can imagine a user they believe might find the ad valuable.
 Materially improving users’ lives is a tall order, and attempting to create a persuasive technology
@@ -2911,9 +2674,6 @@ hacks he thought would be laughably obvious to users. But after the app’s usag
 ---
 
 ## [Sección 35] Introducción y Fundamentos
-
--- 84 of 137 --
-
 people became frighteningly obsessed with the game, Bogost shut it down, bringing on what he called
 “The Cowpocalypse.”[cxxiv]
 Bogost rightfully compared addictive technology to cigarettes. Certainly, the incessant need for a
@@ -2955,10 +2715,6 @@ Do This Now
 - Take a minute to consider where you fall on the Manipulation Matrix. Do you use your own
 product or service? Does it influence positive or negative behaviors? How does it make you feel?
 Ask yourself if you are proud of the way you are influencing the behavior of others.
-
--- 85 of 137 --
-
--- 86 of 137 --
 
 7. CASE STUDY: THE BIBLE APP
 In the previous chapter, I urged you to be a facilitator and to use the tools in this book to improve the
@@ -3008,9 +2764,6 @@ Gruenewald is a quick-thinking, fast-talking man. During our conversation, he pu
 ---
 
 ## [Sección 36] Introducción y Fundamentos
-
--- 87 of 137 --
-
 real-time, stopping himself mid-sentence whenever relevant data flashed on his screen. As
 Gruenewald preaches on about mobile app development best practices, I need to occasionally
 interrupt him to ask clarifying questions. My words stumble over his enthusiasm as he bears witness
@@ -3055,9 +2808,6 @@ admits. “By offering reading plans with different small sections of the Bible 
 The app chunks out and sequences the text by separating it into bite-sized pieces. By parsing
 readings into digestible communion wafer-sized portions, the app focuses the reader’s brain on the
 small task at hand while avoiding the intimidation of reading the entire book.
-
--- 88 of 137 --
-
 Holy Triggers
 Five years of testing and tinkering have helped Gruenewald’s team discover what works best. Today,
 the Bible app’s reading plans are tuned to immaculate perfection and Gruenewald has learned that
@@ -3105,9 +2855,6 @@ becomes a facet of their everyday lives.
 ---
 
 ## [Sección 37] Introducción y Fundamentos
-
--- 89 of 137 --
-
 Rewards from the Lord
 Gruenewald says the connection people have with scripture taps into deep emotions that “we need to
 use responsibly.” Readers who form a habit of using the app turn to it not only when they see a
@@ -3153,9 +2900,6 @@ Gruenewald says. The app always sees a spike in new downloads on Sundays when pe
 likely to share it through word of mouth.
 However, nothing signals the reign of Gruenewald’s Bible app quite like the way some preachers
 have come to depend upon it. YouVersion lets religious leaders input their sermons into the app so
-
--- 90 of 137 --
-
 their congregants can follow along in real-time — book, verse, and passage — all without flipping a
 page. Once the head of the church is hooked, the congregation is sure to follow.
 Using the Bible app at church not only has the benefit of driving growth, it also builds commitment.
@@ -3190,9 +2934,6 @@ committing users.
 ---
 
 ## [Sección 38] Introducción y Fundamentos
-
--- 91 of 137 --
-
 8. HABIT TESTING AND WHERE TO LOOK FOR HABIT-FORMING OPPORTUNITIES
 Now that you have an understanding of the Hook Model and have reflected on the morality of
 influencing user behavior, it is time to get to work. Running your idea through the four phases of the
@@ -3234,9 +2975,6 @@ not available, educated assumptions must be made — but be realistic and honest
 If you are building a social networking app like Twitter or Instagram, you should expect habitual
 users to visit the service multiple times per day. On the other hand, you should not expect users of a
 movie recommendation site like Rotten Tomatoes to visit more than once or twice a week (since their
-
--- 92 of 137 --
-
 visits will come on the heels of seeing a movie or researching one to watch). Don’t come up with an
 overly aggressive prediction that only accounts for uber-users; you are looking for a realistic guess to
 calibrate how often typical users will interact with your product.
@@ -3283,9 +3021,6 @@ profitable customer acquisition, both are necessary components of any successful
 ---
 
 ## [Sección 39] Introducción y Fundamentos
-
--- 93 of 137 --
-
 things must go right for a new company to succeed, and forming user habits is just one of them.
 As we saw in chapter six, being a “facilitator” is not only a moral imperative, it also makes for
 better businesses practices. Creating a product the designer uses and believes materially improves
@@ -3332,9 +3067,6 @@ Sometimes technologies that appear to cater to a niche will cross into the mains
 start with a small group of users can expand to a wider population, but only if they cater to a broad
 need. However, the fact that the technology is at first used only by a small population often deceives
 observers into dismissing the product's true potential.
-
--- 94 of 137 --
-
 A striking number of world-changing innovations were written off as mere novelties with limited
 commercial appeal. George Eastman’s Brownie camera, preloaded with a film roll and selling for
 just $1, was originally marketed as a child’s toy.[cxxxiv]
@@ -3382,9 +3114,6 @@ Maples believes technology waves follow a three-phase pattern, “They start wit
 ---
 
 ## [Sección 40] Introducción y Fundamentos
-
--- 95 of 137 --
-
 Advances in infrastructure are the preliminary forces that enable a large wave to gather. As the wave
 begins to gather, enabling technologies and platforms create the basis for new types of applications
 that cause a gathering wave to achieve massive penetration and customer adoption. Eventually, these
@@ -3430,9 +3159,6 @@ To uncover where interfaces are changing, Paul Buchheit, Partner at Y-Combinator
 entrepreneurs to “live in the future.”[cxxxix]
 A profusion of interface changes are just a few years away.
 Wearable technologies like Google Glass, the Oculus Rift virtual reality goggles, and the Pebble
-
--- 96 of 137 --
-
 watch promise to change how users interact with the real and digital worlds. By looking forward to
 anticipate where interfaces will change, the enterprising designer can uncover new ways to form user
 habits.
@@ -3478,14 +3204,7 @@ uncover any unnecessary or nascent behaviors.
 
 ## [Sección 41] Introducción y Fundamentos
 
--- 97 of 137 --
-
--- 98 of 137 --
-
 APPENDIX
-
--- 99 of 137 --
-
 NOW WHAT?
 Thank you for investing in this book. Now that you have read it, let me hear from you!
 Please take a moment to review the book on Amazon (http://www.amazon.com/dp/B00HJ4A43S)
@@ -3493,9 +3212,6 @@ and Goodreads (http://goo.gl/UBHeLY).
 Also, be sure to visit my blog (NirAndFar.com) to learn more about habit-forming products and
 receive my latest essays.
 Finally, please send questions, comments, edits, or feedback to: nir@nirandfar.com.
-
--- 100 of 137 --
-
 ABOUT THE AUTHORS
 Nir Eyal writes, consults, and teaches about the intersection of psychology, technology, and business.
 He is an advisor to several Bay Area startups, venture capital firms, and incubators. Since 2003, Nir
@@ -3509,9 +3225,6 @@ featured in Forbes, Fast Company, The Next Web, and PandoDaily. Ryan was the Dir
 Product at PlayHaven, a business engine for mobile game developers. He is the co-creator of Product
 Hunt, a daily leaderboard for new products, and is an Instructor at Tradecraft, a 12-week program
 training startup talent.
-
--- 101 of 137 --
-
 ACKNOWLEDGEMENTS
 If I am ever asked, “What was the most surprising thing you learned while writing this book?,” I
 won’t respond with any of the research studies or company examples you’ve read. Although the topic
@@ -3550,9 +3263,6 @@ got so lucky.
 ---
 
 ## [Sección 42] Introducción y Fundamentos
-
--- 102 of 137 --
-
 CONTRIBUTORS
 Thank you to the loyal blog subscribers who provided insightful feedback, careful edits, moral
 support, and gentle prodding.
@@ -3593,9 +3303,6 @@ Paul Ballas
 Jennifer Baloian
 Naren Bansal
 Jenny Barnes
-
--- 103 of 137 --
-
 Anat Baron
 Matthew Barry
 Neal Battaglia
@@ -3641,9 +3348,6 @@ Chikodi Chima
 Vivek Chopra
 Sangeet Paul Choudary
 Scott Christ
-
--- 104 of 137 --
-
 Yannis Christopoulos
 Eugene Chuvyrov
 Fran Civile
@@ -3689,9 +3393,6 @@ Lars Eickmeier
 André Eilertsen
 Eyal Eldar
 Dagur Eyjolfsson
-
--- 105 of 137 --
-
 Kingsley Ezejiaku
 Fred Farnam
 Pierre-Emile Faroult
@@ -3737,9 +3438,6 @@ Mark Hayes
 Elisa Heiken
 Alfan Hendro
 Benjamin Hoffman
-
--- 106 of 137 --
-
 Ryan Holdeman
 Jason Holderness
 Bob Holling
@@ -3785,9 +3483,6 @@ Vineesh Kumar
 Chris Kurdziel
 Tim Kutnick
 Brooks Lambert
-
--- 107 of 137 --
-
 Brian Lance
 Betsy Lane
 Norman Law
@@ -3837,9 +3532,6 @@ Jon McGee
 ---
 
 ## [Sección 43] Introducción y Fundamentos
-
--- 108 of 137 --
-
 Gilberto Medrano
 Alfons Mencke
 Aadesh Midtry
@@ -3885,9 +3577,6 @@ Lance Parker
 Devang Patel
 Nipul Patel
 Randy Paynter
-
--- 109 of 137 --
-
 Allan Pedersen
 Paolo Perazzo
 Gary Percy
@@ -3933,9 +3622,6 @@ Steve Rowling
 Leon Rubinstein
 Emily Ryan
 Ari Salomon
-
--- 110 of 137 --
-
 Oren Samari
 Julius Sapoka
 Steven Saunders
@@ -3981,9 +3667,6 @@ Matthew Sonier
 Adam Sowers
 Jonathan Squires
 Karthik Srinivasan
-
--- 111 of 137 --
-
 John Starmer
 Slobodan Stipic
 Aleksandar Stojanovic
@@ -4029,9 +3712,6 @@ Akane Wakasugi
 Karl Waldman
 AnneMarie Ward
 Mark Warren
-
--- 112 of 137 --
-
 Alan Weinkrant
 Jay Weintraub
 Stephen Wendel
@@ -4057,13 +3737,7 @@ Julie Zilber
 Tal Zilberman
 Keivan Zolfaghari
 Zoran Zuber
-
--- 113 of 137 --
-
 NOTES AND SOURCES
-
--- 114 of 137 --
-
 Introduction
 [i] “IDC-Facebook Always Connected.pdf - File Shared from Box.” Accessed December 19, 2013.
 https://fb-public.app.box.com/s/3iq5x6uwnqtq7ki4q8wk.
@@ -4110,9 +3784,6 @@ console. “A hook has four parts: Trigger, Action, Reward, and Investment.
 ---
 
 ## [Sección 44] Introducción y Fundamentos
-
--- 115 of 137 --
-
 ---
 
 ## [Sección 45] Chapter 1: The Habit Zone
@@ -4155,9 +3826,6 @@ the Psychological Determinants of Habit Formation.” British Journal of Health 
 338–353.
 [xxxiii] “Bing Your Brain: Test, Then Test Again.” Accessed December 16, 2013.
 http://www.bing.com/blogs/site_blogs/b/search/archive/2013/02/06/bing-your-brain-test-then-test-
-
--- 116 of 137 --
-
 again.aspx
 [xxxiv] “comScore Releases September 2013 U.S. Search Engine Rankings.” comScore, Inc.
 Accessed November 12, 2013.
@@ -4201,9 +3869,6 @@ http://www.wired.com/business/2013/09/ev-williams-xoxo/.
 [xlix] “How the ‘Failure’ Culture of Startups Is Killing Innovation | Wired Opinion | Wired.com.”
 Wired Opinion. Accessed November 12, 2013. http://www.wired.com/opinion/2013/09/why-doresearch-when-you-can-fail-fast-pivot-and-act-out-other-popular-startup-cliches/.
 [l] “The Power of User Narratives: Jack Dorsey (Square).” Video. Entrepreneurial Thought Leaders
-
--- 117 of 137 --
-
 Lecture. Stanford University, 2011. http://ecorner.stanford.edu/authorMaterialInfo.html?mid=2644.
 [li] “What is Customer Development.” Startup Lessons Learned by Eric Reis. Accessed November
 12, 2013. http://www.startuplessonslearned.com/2008/11/what-is-customer-development.html
@@ -4250,9 +3915,6 @@ Academy of Sciences 105, no. 3 (January 22, 2008): 1050–1054. doi:10.1073/pnas
 Increases Effort. SSRN Scholarly Paper. Rochester, NY: Social Science Research Network.
 Accessed November 12, 2013. http://papers.ssrn.com/abstract=991962.
 [lxvii] “List of Cognitive Biases.” Wikipedia, the Free Encyclopedia, November 12, 2013.
-
--- 118 of 137 --
-
 http://en.wikipedia.org/w/index.php?title=List_of_cognitive_biases&oldid=581363450.
 [lxviii] Anderson, Stephen P. Seductive Interaction Design: Creating Playful, Fun, and Effective User
 Experiences. Berkeley, CA: New Riders, 2011.
@@ -4299,9 +3961,6 @@ INTCMP=ILCNETTXT3487.
 [lxxxiii] The Barefoot Professor: By Nature Video, 2010. http://www.youtube.com/watch?v=7jrnj7YKZE&feature=youtube_gdata_player.
 [lxxxiv] Rivlin, Gary. “Slot Machines for the Young and Active.” The New York Times, December
 10, 2007, sec. Business. http://www.nytimes.com/2007/12/10/business/10slots.html.
-
--- 119 of 137 --
-
 [lxxxv] “Pinterest Does Another Massive Funding — $225 Million at $3.8 Billion Valuation
 (Confirmed).” AllThingsD. Accessed November 12, 2013. http://allthingsd.com/20131023/pinterestdoes-another-massive-funding-225-million-at-3-8-billion-valuation/.
 [lxxxvi] Zeigarnik, B. (1927). Uber das Behalten yon erledigten und underledigten Handlungen.
@@ -4341,9 +4000,6 @@ November 13, 2013. http://socialtimes.com/cityville-tops-farmvilles-highest-peak
 ---
 
 ## [Sección 49] Chapter 4: Variable Reward
-
--- 120 of 137 --
-
 ---
 
 ## [Sección 50] Chapter 5: Investment
@@ -4391,9 +4047,6 @@ August 3, 2011. http://mashable.com/2011/08/03/telenav-cellphone-infographic/.
 http://www.theatlantic.com/technology/archive/2012/06/the-cigarette-of-this-century/258092/.
 [cxvi] Freedman, David H. “The Perfected Self.” The Atlantic, June 2012.
 http://www.theatlantic.com/magazine/archive/2012/06/the-perfected-self/308970/.
-
--- 121 of 137 --
-
 [cxvii] Graham, Paul. “The Acceleration of Addictiveness,” July 2010. Accessed November 12,
 2013 http://www.paulgraham.com/addiction.html.
 [cxviii] “The Ethical Line in User Experience Research.” mUmBRELLA. Accessed November 13,
@@ -4441,9 +4094,6 @@ http://www.growhack.com/2012/12/04/discovering-your-aha-moment/.
 Users,” November 7, 2013. http://open.bufferapp.com/buffer-october-update-2388000-run-rate1123000-users/.
 [cxxxiii] “I’m Joel Gascoigne, and This Is the Story Behind Buffer.” Life Hacker. Accessed
 November 13, 2013. http://www.lifehacker.co.in/technology/Im-Joel-Gascoigne-and-This-Is-the-
-
--- 122 of 137 --
-
 Story-Behind-Buffer/articleshow/24271474.cms.
 [cxxxiv] West, Nancy Martha, “Kodak and The Lens of Nostalgia” The University Press of Virginia.
 2000. p.95
@@ -4454,9 +4104,6 @@ http://www.english.illinois.edu/-people-/faculty/debaron/582/582%20readings/stol
 [cxxxviii] Maples, Jr, Mike. “Technology Waves and the Hypernet.” Roger and Mike’s Hypernet
 Blog. Accessed November 13, 2013. http://rogerandmike.com/post/14629058018/technology-wavesand-the-hypernet.
 [cxxxix] “How to Get Startup Ideas,” November 2012. http://paulgraham.com/startupideas.html.
-
--- 123 of 137 --
-
 Table of Contents
 Introduction
 1. The Habit Zone
@@ -4500,9 +4147,6 @@ Notes and Sources
 [xxvi]
 [xxvii]
 [xxviii]
-
--- 124 of 137 --
-
 [xxix]
 [xxx]
 [xxxi]
@@ -4548,9 +4192,6 @@ Notes and Sources
 [lxxi]
 [lxxii]
 [lxxiii]
-
--- 125 of 137 --
-
 [lxxiv]
 [lxxv]
 [lxxvi]
@@ -4596,9 +4237,6 @@ Notes and Sources
 [cxvi]
 [cxvii]
 [cxviii]
-
--- 126 of 137 --
-
 [cxix]
 [cxx]
 [cxxi]
@@ -4644,9 +4282,6 @@ Notes and Sources
 [xxiii]
 [xxiv]
 [xxv]
-
--- 127 of 137 --
-
 [xxvi]
 [xxvii]
 [xxviii]
@@ -4692,9 +4327,6 @@ Notes and Sources
 [lxviii]
 [lxix]
 [lxx]
-
--- 128 of 137 --
-
 [lxxi]
 [lxxii]
 [lxxiii]
@@ -4740,9 +4372,6 @@ Notes and Sources
 [cxiii]
 [cxiv]
 [cxv]
-
--- 129 of 137 --
-
 [cxvi]
 [cxvii]
 [cxviii]
@@ -4766,9 +4395,6 @@ Notes and Sources
 [cxxxvii]
 [cxxxviii]
 [cxxxix]
-
--- 130 of 137 --
-
 Table of Contents
 Introduction
 1. The Habit Zone
@@ -4816,9 +4442,6 @@ Notes and Sources
 ---
 
 ## [Sección 54] Chapter 8: Habit Testing and Where to Look for Habit-Forming Opportunities
-
--- 131 of 137 --
-
 [xxix]
 [xxx]
 [xxxi]
@@ -4864,9 +4487,6 @@ Notes and Sources
 [lxxi]
 [lxxii]
 [lxxiii]
-
--- 132 of 137 --
-
 [lxxiv]
 [lxxv]
 [lxxvi]
@@ -4912,9 +4532,6 @@ Notes and Sources
 [cxvi]
 [cxvii]
 [cxviii]
-
--- 133 of 137 --
-
 [cxix]
 [cxx]
 [cxxi]
@@ -4960,9 +4577,6 @@ Notes and Sources
 [xxiii]
 [xxiv]
 [xxv]
-
--- 134 of 137 --
-
 [xxvi]
 [xxvii]
 [xxviii]
@@ -5008,9 +4622,6 @@ Notes and Sources
 [lxviii]
 [lxix]
 [lxx]
-
--- 135 of 137 --
-
 [lxxi]
 [lxxii]
 [lxxiii]
@@ -5056,9 +4667,6 @@ Notes and Sources
 [cxiii]
 [cxiv]
 [cxv]
-
--- 136 of 137 --
-
 [cxvi]
 [cxvii]
 [cxviii]
@@ -5082,8 +4690,5 @@ Notes and Sources
 [cxxxvii]
 [cxxxviii]
 [cxxxix]
-
--- 137 of 137 --
-
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #architecture_and_books

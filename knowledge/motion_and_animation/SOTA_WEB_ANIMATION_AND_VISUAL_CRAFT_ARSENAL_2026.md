@@ -1,4 +1,6 @@
-﻿# SOTA 2025/2026: Web Animation, Aesthetics & Visual Craft Open-Source Arsenal
+# SOTA 2025/2026: Web Animation, Aesthetics & Visual Craft Open-Source Arsenal
+
+> **Alcance:** Literatura canónica y tratados técnicos de animación a 60 FPS, shaders GPU, física de resortes (spring physics), arte técnico 3D y micro-interacciones fluidas para sitios web modernos.
 
 > **Classification:** Canon Treatise & Tool Arsenal  
 > **Target:** Modern Aesthetics, Low-CPU Web Overlays, Smooth Physics & Tactile Micro-Interactions  

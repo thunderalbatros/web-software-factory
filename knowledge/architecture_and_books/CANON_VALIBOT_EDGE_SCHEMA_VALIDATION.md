@@ -1,21 +1,21 @@
-> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-devops
+  - webfactory-devops
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
+
 # 🛡️ Validación en Runtime: El Paradigma Valibot (Zero-Bundle-Size)
 
 ## El Dilema Zod vs Type Guards Manuales
 
-Históricamente en Yendo Mobile, prohibimos el uso de `zod` dentro de `src/` debido a su naturaleza monolítica orientada a métodos encadenados (`z.object().string()`). El empaquetador Metro no puede hacer *tree-shaking* de clases monolíticas, lo que forzaba la descarga de ~60KB de código en el bundle, penalizando el **Time to Interactive (TTI)** en dispositivos Android de gama baja a través de bloqueos en el motor Hermes.
+Históricamente en la Web Software Factory, prohibimos el uso de `zod` dentro de `src/` debido a su naturaleza monolítica orientada a métodos encadenados (`z.object().string()`). El empaquetador Metro no puede hacer *tree-shaking* de clases monolíticas, lo que forzaba la descarga de ~60KB de código en el bundle, penalizando el **Time to Interactive (TTI)** en dispositivos Web Platform de gama baja a través de bloqueos en el motor Hermes.
 
 Como contrapartida, se adoptó la práctica de crear **Type Guards Nativos** (ej. `function isEvent(data: unknown): data is Event`).
 
@@ -28,7 +28,7 @@ Una auditoría forense arquitectónica (basada en *Effective TypeScript* de Dan 
 
 ## La Solución SOTA: Valibot
 
-Para resolver la fricción entre la **Seguridad de Tipos** (Item 3 de Effective TS) y el **Rendimiento Móvil**, Yendo adopta oficialmente **Valibot** como el estándar de validación en la frontera de red.
+Para resolver la fricción entre la **Seguridad de Tipos** (Item 3 de Effective TS) y el **Rendimiento Móvil**, WebFactory adopta oficialmente **Valibot** como el estándar de validación en la frontera de red.
 
 ### Arquitectura de Valibot
 A diferencia de Zod, Valibot invierte el patrón utilizando **funciones puras independientes** (`object()`, `string()`, `parse()`). Si una pantalla solo valida un string, Metro Bundler empaca exactamente esas dos funciones descartando el resto del código (Tree-Shaking perfecto).
@@ -38,7 +38,7 @@ A diferencia de Zod, Valibot invierte el patrón utilizando **funciones puras in
 ### Implementación Canónica
 
 ```typescript
-// ✅ SOTA Yendo Patern: Valibot para Boundary Validation
+// ✅ SOTA WebFactory Patern: Valibot para Boundary Validation
 import { object, string, number, parse, InferOutput } from 'valibot';
 
 const EventSchema = object({

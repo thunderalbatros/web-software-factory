@@ -1,5 +1,7 @@
 # CANON: Repositorios Clave, Herramientas e Integraciones para la Software Factory Autónoma (SOTA 2026)
 
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
+
 > **Documento Canónico de Conocimiento de Arquitectura y Herramientas**  
 > **Área:** Autonomous Software Engineering, Multi-Agent Orchestration & SDLC Automation  
 > **Estado:** Clonado en Local, Verificado e Ingestado en RAG

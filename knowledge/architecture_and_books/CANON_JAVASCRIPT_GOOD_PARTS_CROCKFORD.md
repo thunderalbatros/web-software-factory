@@ -1,15 +1,15 @@
-> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
 
 # ⚡ Tratado Canónico: JavaScript The Good Parts (Douglas Crockford)
 ### Basado en: *JavaScript: The Good Parts*
@@ -27,14 +27,14 @@ Douglas Crockford demostró que JavaScript contiene tanto ideas brillantes (func
 
 ---
 
-## 2. Los Principios Fundamentales Aplicados al Stack React Native / TypeScript de Yendo
+## 2. Los Principios Fundamentales Aplicados al Stack Modern Web UI (CSS/WAAPI) / TypeScript de WebFactory
 
 1. **Inmutabilidad y Pureza Funcional:**
    - Evitar la mutación directa de objetos y arrays en el store (Zustand). Toda actualización de estado debe producir un nuevo objeto inmutable mediante operadores spread (`...state`) o funciones puras.
 2. **Clausuras Léxicas (Closures) y Encapsulamiento:**
    - Aprovechar las clausuras en Custom Hooks (`useVenueFilter`, `useQuorumSocket`) para encapsular estado privado y suscripciones sin necesidad de clases infladas con `this` mutable.
 3. **Composición de Objetos sobre Herencia Rígida:**
-   - En TypeScript/React Native, preferir la composición de componentes funcionales pequeños (<150 líneas) y utilidades puras en lugar de cadenas de herencia orientadas a objetos.
+   - En TypeScript/Modern Web UI (CSS/WAAPI), preferir la composición de componentes funcionales pequeños (<150 líneas) y utilidades puras en lugar de cadenas de herencia orientadas a objetos.
 
 ---
 

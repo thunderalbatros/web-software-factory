@@ -1,110 +1,17 @@
-﻿# 📚 Libro Completo: Clean Architecture
+# 📚 Libro Completo: Clean Architecture
+
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
 
 > **Autor:** Robert C. Martin  
 > **Archivo Fuente:** `Clean-Architecture-Robert-C-Martin.pdf`  
 > **Páginas Originales:** 444  
 > **Secciones Extraídas:** 126  
 > **Fecha de Ingesta:** 2026-10-06  
-> **Tipo:** Texto Completo Estructurado para RAG Jerárquico  
+> **Tipo:** Texto Completo Estructurado para RAG Jerárquico
 
 ---
 
-## Sección 1: Introducción y Fundamentos
-
--- 1 of 444 --
-
-About This E-Book
-EPUB is an open, industry-standard format for e-books. However, support for
-EPUB and its many features varies across reading devices and applications. Use
-your device or app settings to customize the presentation to your liking. Settings
-that you can customize often include font, font size, single or double column,
-landscape or portrait mode, and figures that you can click or tap to enlarge. For
-additional information about the settings and features on your reading device or
-app, visit the device manufacturer’s Web site.
-Many titles include programming code or configuration examples. To optimize
-the presentation of these elements, view the e-book in single-column, landscape
-mode and adjust the font size to the smallest setting. In addition to presenting
-code and configurations in the reflowable text format, we have included images
-of the code that mimic the presentation found in the print book; therefore, where
-the reflowable format may compromise the presentation of the code listing, you
-will see a “Click here to view code image” link. Click the link to view the printfidelity code image. To return to the previous page viewed, click the Back button
-on your device or app.
-
--- 2 of 444 --
-
--- 3 of 444 --
-
-Clean Architecture
-A CRAFTSMAN’S GUIDE TO SOFTWARE STRUCTURE
-AND DESIGN
-Robert C. Martin
-Boston • Columbus • Indianapolis • New York • San Francisco • Amsterdam •
-Cape Town Dubai • London • Madrid • Milan • Munich • Paris • Montreal •
-Toronto • Delhi • Mexico City São Paulo • Sydney • Hong Kong • Seoul •
-Singapore • Taipei • Tokyo
-
--- 4 of 444 --
-
-Many of the designations used by manufacturers and sellers to distinguish their
-products are claimed as trademarks. Where those designations appear in this
-book, and the publisher was aware of a trademark claim, the designations have
-been printed with initial capital letters or in all capitals.
-The author and publisher have taken care in the preparation of this book, but
-make no expressed or implied warranty of any kind and assume no responsibility
-for errors or omissions. No liability is assumed for incidental or consequential
-damages in connection with or arising out of the use of the information or
-programs contained herein.
-For information about buying this title in bulk quantities, or for special sales
-opportunities (which may include electronic versions; custom cover designs; and
-content particular to your business, training goals, marketing focus, or branding
-interests), please contact our corporate sales department at
-corpsales@pearsoned.com or (800) 382-3419.
-For government sales inquiries, please contact
-governmentsales@pearsoned.com.
-For questions about sales outside the U.S., please contact intlcs@pearson.com.
-Visit us on the Web: informit.com
-Library of Congress Control Number: 2017945537
-Copyright © 2018 Pearson Education, Inc.
-All rights reserved. Printed in the United States of America. This publication is
-protected by copyright, and permission must be obtained from the publisher
-prior to any prohibited reproduction, storage in a retrieval system, or
-transmission in any form or by any means, electronic, mechanical,
-photocopying, recording, or likewise. For information regarding permissions,
-request forms and the appropriate contacts within the Pearson Education Global
-Rights & Permissions Department, please visit
-www.pearsoned.com/permissions/.
-ISBN-13: 978-0-13-449416-6
-ISBN-10: 0-13-449416-4
-
--- 5 of 444 --
-
-1 17
-
--- 6 of 444 --
-
-This book is dedicated to my lovely wife, my four spectacular children, and their
-families, including my quiver full of five grandchildren—who are the dessert of
-my life.
-
--- 7 of 444 --
-
-CONTENTS
-Foreword
-Preface
-Acknowledgments
-About the Author
-
----
-
-## Sección 2: Chapter 1 What Is Design and Architecture?
-
-The Goal?
-Case Study
-Conclusion
-
----
-
-## Sección 3: Chapter 2 A Tale of Two Values
+## Sección 1: Chapter 2 A Tale of Two Values [Entropy: 0.05]
 
 Behavior
 Architecture
@@ -114,20 +21,17 @@ Fight for the Architecture
 
 ---
 
-## Sección 4: Chapter 3 Paradigm Overview
+## Sección 2: Chapter 3 Paradigm Overview [Entropy: 0.25]
 
 Structured Programming
 Object-Oriented Programming
 Functional Programming
 Food for Thought
-
--- 8 of 444 --
-
 Conclusion
 
 ---
 
-## Sección 5: Chapter 4 Structured Programming
+## Sección 3: Chapter 4 Structured Programming [Entropy: 0.25]
 
 Proof
 A Harmful Proclamation
@@ -139,16 +43,7 @@ Conclusion
 
 ---
 
-## Sección 6: Chapter 5 Object-Oriented Programming
-
-Encapsulation?
-Inheritance?
-Polymorphism?
-Conclusion
-
----
-
-## Sección 7: Chapter 6 Functional Programming
+## Sección 4: Chapter 6 Functional Programming [Entropy: 0.265]
 
 Squares of Integers
 Immutability and Architecture
@@ -158,27 +53,7 @@ Conclusion
 
 ---
 
-## Sección 8: Chapter 7 SRP: The Single Responsibility Principle
-
-Symptom 1: Accidental Duplication
-Symptom 2: Merges
-Solutions
-Conclusion
-
----
-
-## Sección 9: Chapter 8 OCP: The Open-Closed Principle
-
-A Thought Experiment
-Directional Control
-Information Hiding
-Conclusion
-
--- 9 of 444 --
-
----
-
-## Sección 10: Chapter 9 LSP: The Liskov Substitution Principle
+## Sección 5: Chapter 9 LSP: The Liskov Substitution Principle [Entropy: 0.265]
 
 Guiding the Use of Inheritance
 The Square/Rectangle Problem
@@ -188,33 +63,7 @@ Conclusion
 
 ---
 
-## Sección 11: Chapter 10 ISP: The Interface Segregation Principle
-
-ISP and Language
-ISP and Architecture
-Conclusion
-
----
-
-## Sección 12: Chapter 11 DIP: The Dependency Inversion Principle
-
-Stable Abstractions
-Factories
-Concrete Components
-Conclusion
-
----
-
-## Sección 13: Chapter 12 Components
-
-A Brief History of Components
-Relocatability
-Linkers
-Conclusion
-
----
-
-## Sección 14: Chapter 13 Component Cohesion
+## Sección 6: Chapter 13 Component Cohesion [Entropy: 0.295]
 
 The Reuse/Release Equivalence Principle
 The Common Closure Principle
@@ -224,20 +73,17 @@ Conclusion
 
 ---
 
-## Sección 15: Chapter 14 Component Coupling
+## Sección 7: Chapter 14 Component Coupling [Entropy: 0.295]
 
 The Acyclic Dependencies Principle
 Top-Down Design
 The Stable Dependencies Principle
-
--- 10 of 444 --
-
 The Stable Abstractions Principle
 Conclusion
 
 ---
 
-## Sección 16: Chapter 15 What Is Architecture?
+## Sección 8: Chapter 15 What Is Architecture? [Entropy: 0.25]
 
 Development
 Deployment
@@ -251,7 +97,7 @@ Conclusion
 
 ---
 
-## Sección 17: Chapter 16 Independence
+## Sección 9: Chapter 16 Independence [Entropy: 0.25]
 
 Use Cases
 Operation
@@ -269,7 +115,7 @@ Conclusion
 
 ---
 
-## Sección 18: Chapter 17 Boundaries: Drawing Lines
+## Sección 10: Chapter 17 Boundaries: Drawing Lines [Entropy: 0.265]
 
 A Couple of Sad Stories
 FitNesse
@@ -277,14 +123,11 @@ Which Lines Do You Draw, and When Do You Draw Them?
 What About Input and Output?
 Plugin Architecture
 The Plugin Argument
-
--- 11 of 444 --
-
 Conclusion
 
 ---
 
-## Sección 19: Chapter 18 Boundary Anatomy
+## Sección 11: Chapter 18 Boundary Anatomy [Entropy: 0.25]
 
 Boundary Crossing
 The Dreaded Monolith
@@ -296,23 +139,7 @@ Conclusion
 
 ---
 
-## Sección 20: Chapter 19 Policy and Level
-
-Level
-Conclusion
-
----
-
-## Sección 21: Chapter 20 Business Rules
-
-Entities
-Use Cases
-Request and Response Models
-Conclusion
-
----
-
-## Sección 22: Chapter 21 Screaming Architecture
+## Sección 12: Chapter 21 Screaming Architecture [Entropy: 0.28]
 
 The Theme of an Architecture
 The Purpose of an Architecture
@@ -323,21 +150,10 @@ Conclusion
 
 ---
 
-## Sección 23: Chapter 22 The Clean Architecture
-
-The Dependency Rule
-A Typical Scenario
-Conclusion
-
----
-
-## Sección 24: Chapter 23 Presenters and Humble Objects
+## Sección 13: Chapter 23 Presenters and Humble Objects [Entropy: 0.28]
 
 The Humble Object Pattern
 Presenters and Views
-
--- 12 of 444 --
-
 Testing and Architecture
 Database Gateways
 Data Mappers
@@ -346,16 +162,7 @@ Conclusion
 
 ---
 
-## Sección 25: Chapter 24 Partial Boundaries
-
-Skip the Last Step
-One-Dimensional Boundaries
-Facades
-Conclusion
-
----
-
-## Sección 26: Chapter 25 Layers and Boundaries
+## Sección 14: Chapter 25 Layers and Boundaries [Entropy: 0.05]
 
 Hunt the Wumpus
 Clean Architecture?
@@ -365,14 +172,7 @@ Conclusion
 
 ---
 
-## Sección 27: Chapter 26 The Main Component
-
-The Ultimate Detail
-Conclusion
-
----
-
-## Sección 28: Chapter 27 Services: Great and Small
+## Sección 15: Chapter 27 Services: Great and Small [Entropy: 0.265]
 
 Service Architecture?
 Service Benefits?
@@ -384,26 +184,7 @@ Conclusion
 
 ---
 
-## Sección 29: Chapter 28 The Test Boundary
-
-Tests as System Components
-Design for Testability
-The Testing API
-Conclusion
-
--- 13 of 444 --
-
----
-
-## Sección 30: Chapter 29 Clean Embedded Architecture
-
-App-titude Test
-The Target-Hardware Bottleneck
-Conclusion
-
----
-
-## Sección 31: Chapter 30 The Database Is a Detail
+## Sección 16: Chapter 30 The Database Is a Detail [Entropy: 0.25]
 
 Relational Databases
 Why Are Database Systems So Prevalent?
@@ -415,15 +196,7 @@ Conclusion
 
 ---
 
-## Sección 32: Chapter 31 The Web Is a Detail
-
-The Endless Pendulum
-The Upshot
-Conclusion
-
----
-
-## Sección 33: Chapter 32 Frameworks Are Details
+## Sección 17: Chapter 32 Frameworks Are Details [Entropy: 0.05]
 
 Framework Authors
 Asymmetric Marriage
@@ -434,7 +207,7 @@ Conclusion
 
 ---
 
-## Sección 34: Chapter 33 Case Study: Video Sales
+## Sección 18: Chapter 33 Case Study: Video Sales [Entropy: 0.05]
 
 The Product
 Use Case Analysis
@@ -444,9 +217,7 @@ Conclusion
 
 ---
 
-## Sección 35: Chapter 34 The Missing Chapter
-
--- 14 of 444 --
+## Sección 19: Chapter 34 The Missing Chapter [Entropy: 0.25]
 
 Package by Layer
 Package by Feature
@@ -459,13 +230,10 @@ Conclusion: The Missing Advice
 
 ---
 
-## Sección 36: PART VII Appendix
+## Sección 20: PART VII Appendix [Entropy: 0.31]
 
 Appendix A Architecture Archaeology
 Index
-
--- 15 of 444 --
-
 FOREWORD
 What do we talk about when we talk about architecture?
 As with any metaphor, describing software through the lens of architecture can
@@ -489,9 +257,6 @@ are made from smaller software components, which are in turn made of smaller
 software components still, and so on. It’s coding turtles all the way down.
 When we talk about software architecture, software is recursive and fractal in
 nature, etched and sketched in code. Everything is details. Interlocking levels of
-
--- 16 of 444 --
-
 detail also contribute to a building’s architecture, but it doesn’t make sense to
 talk about physical scale in software. Software has structure—many structures
 and many kinds of structures—but its variety eclipses the range of physical
@@ -528,9 +293,6 @@ Time, money, and effort give us a sense of scale to sort between the large and t
 small, to distinguish the architectural stuff from the rest. This measure also tells
 us how we can determine whether an architecture is good or not: Not only does a
 good architecture meet the needs of its users, developers, and owners at a given
-
--- 17 of 444 --
-
 point in time, but it also meets them over time.
 If you think good architecture is expensive, try bad architecture.
 —Brian Foote and Joseph Yoder
@@ -567,9 +329,7 @@ artifact.
 
 ---
 
-## Sección 37: PART VII Appendix
-
--- 18 of 444 --
+## Sección 21: PART VII Appendix [Entropy: 0.31]
 
 Architecture is a hypothesis, that needs to be proven by implementation and measurement.
 —Tom Gilb
@@ -579,9 +339,6 @@ The only way to go fast, is to go well.
 —Robert C. Martin
 Enjoy the journey. —Kevlin Henney
 May 2017
-
--- 19 of 444 --
-
 PREFACE
 The title of this book is Clean Architecture. That’s an audacious name. Some
 would even call it arrogant. So why did I choose that title, and why did I write
@@ -604,9 +361,6 @@ The architecture rules are the same!
 This is startling because the systems that I have built have all been so radically
 different. Why should such different systems all share similar rules of
 architecture? My conclusion is that the rules of software architecture are
-
--- 20 of 444 --
-
 independent of every other variable.
 This is even more startling when you consider the change that has taken place in
 hardware over the same half-century. I started programming on machines the
@@ -638,9 +392,6 @@ assignment statements, and while loops.
 Oh, you might object and say that we’ve got much better languages and superior
 paradigms. After all, we program in Java, or C#, or Ruby, and we use objectoriented design. True—and yet the code is still just an assemblage of sequence,
 selection, and iteration, just as it was back in the 1960s and 1950s.
-
--- 21 of 444 --
-
 When you really look closely at the practice of programming computers, you
 realize that very little has changed in 50 years. The languages have gotten a little
 better. The tools have gotten fantastically better. But the basic building blocks of
@@ -675,17 +426,12 @@ registration process, go to informit.com/register and log in or create an
 
 ---
 
-## Sección 38: PART VII Appendix
-
--- 22 of 444 --
+## Sección 22: PART VII Appendix [Entropy: 0.28]
 
 account. Enter the product ISBN (9780134494166) and click Submit. Look
 on the Registered Products tab for an Access Bonus Content link next to this
 product, and follow that link to access the bonus materials.
 1. And she very likely would be female since, back then, women made up a large fraction of programmers.
-
--- 23 of 444 --
-
 ACKNOWLEDGMENTS
 The people who played a part in the creation of this book—in no particular
 order:{xxiii}
@@ -702,9 +448,6 @@ Bill Degnan And many others too numerous to name.
 In my final review of this book, as I was reading the chapter on Screaming
 Architecture, Jim Weirich’s bright-eyed smile and melodic laugh echoed through
 my mind. Godspeed, Jim!
-
--- 24 of 444 --
-
 ABOUT THE AUTHOR
 Robert C. Martin (Uncle Bob) has been a programmer since 1970. He is the cofounder of cleancoders.com, which offers online video training for software
 developers, and is the founder of Uncle Bob Consulting LLC, which offers
@@ -718,13 +461,7 @@ Martin has authored and edited many books, including The Clean Coder, Clean
 Code, UML for Java Programmers, Agile Software Development, Extreme
 Programming in Practice, More C++ Gems, Pattern Languages of Program
 Design 3, and Designing Object Oriented C++ Applications Using the Booch
-
--- 25 of 444 --
-
 Method.
-
--- 26 of 444 --
-
 I
 INTRODUCTION
 It doesn’t take a huge amount of knowledge and skill to get a program working.
@@ -748,9 +485,6 @@ and 24/7 programming.
 When software is done right, it requires a fraction of the human resources to
 create and maintain. Changes are simple and rapid. Defects are few and far
 between. Effort is minimized, and functionality and flexibility are maximized.
-
--- 27 of 444 --
-
 Yes, this vision sounds a bit utopian. But I’ve been there; I’ve seen it happen.
 I’ve worked in projects where the design and architecture of the system made it
 easy to write and easy to maintain. I’ve experienced projects that required a
@@ -770,8 +504,6 @@ software? Have you been to programming hell?
 I have—and to some extent, most of the rest of us have, too. It is far more
 common to fight your way through terrible software designs than it is to enjoy
 the pleasure of working with a good one.
-
--- 28 of 444 --
 WHAT IS DESIGN AND
 ARCHITECTURE?
 There has been a lot of confusion about design and architecture over the years.
@@ -785,9 +517,7 @@ to imply structures and decisions at a lower level. But this usage is nonsensica
 
 ---
 
-## Sección 39: PART VII Appendix
-
--- 29 of 444 --
+## Sección 23: PART VII Appendix [Entropy: 0.295]
 
 when you look at what a real architect does.
 Consider the architect who designed my new home. Does this home have an
@@ -818,9 +548,6 @@ lifetime of the system, the design is good. If that effort grows with each new
 release, the design is bad. It’s as simple as that.
 CASE STUDY
 As an example, consider the following case study. It includes real data from a
-
--- 30 of 444 --
-
 real company that wishes to remain anonymous.
 First, let’s look at the growth of the engineering staff. I’m sure you’ll agree that
 this trend is very encouraging. Growth like that shown in Figure 1.1 must be an
@@ -829,9 +556,6 @@ Figure 1.1 Growth of the engineering staff
 Reproduced with permission from a slide presentation by Jason Gorman
 Now let’s look at the company’s productivity over the same time period, as
 measured by simple lines of code (Figure 1.2).
-
--- 31 of 444 --
-
 Figure 1.2 Productivity over the same period of time
 Clearly something is going wrong here. Even though every release is supported
 by an ever-increasing number of developers, the growth of the code looks like it
@@ -844,9 +568,6 @@ the business model and drive the company into a stall, if not into a downright
 collapse.
 What caused this remarkable change in productivity? Why was the code 40
 times more expensive to produce in release 8 as opposed to release 1?
-
--- 32 of 444 --
-
 Figure 1.3 Cost per line of code over time
 THE SIGNATURE OF A MESS
 What you are looking at is the signature of a mess. When systems are thrown
@@ -857,9 +578,6 @@ Figure 1.4 shows what this curve looks like to the developers. They started out 
 nearly 100% productivity, but with each release their productivity declined. By
 the fourth release, it was clear that their productivity was going to bottom out in
 an asymptotic approach to zero.
-
--- 33 of 444 --
-
 Figure 1.4 Productivity by release
 From the developers’ point of view, this is tremendously frustrating, because
 everyone is working hard. Nobody has decreased their effort.
@@ -872,9 +590,6 @@ THE EXECUTIVE VIEW
 If you think that’s bad, imagine what this picture looks like to the executives!
 Consider Figure 1.5, which depicts monthly development payroll for the same
 period.
-
--- 34 of 444 --
-
 Figure 1.5 Monthly development payroll by release
 Release 1 was delivered with a monthly payroll of a few hundred thousand
 dollars. The second release cost a few hundred thousand more. By the eighth
@@ -897,9 +612,7 @@ moral of that story has been stated many times in many different ways:
 
 ---
 
-## Sección 40: PART VII Appendix
-
--- 35 of 444 --
+## Sección 24: PART VII Appendix [Entropy: 0.28]
 
 • “The race is not to the swift, nor the battle to the strong.”
 • “The more haste, the less speed.”
@@ -932,9 +645,6 @@ Consider the results of a remarkable experiment performed by Jason Gorman
 depicted in Figure 1.6. Jason conducted this test over a period of six days. Each
 day he completed a simple program to convert integers into Roman numerals.
 He knew his work was complete when his predefined set of acceptance tests
-
--- 36 of 444 --
-
 passed. Each day the task took a little less than 30 minutes. Jason used a wellknown cleanliness discipline named test-driven development (TDD) on the first,
 third, and fifth days. On the other three days, he wrote the code without that
 discipline.
@@ -955,9 +665,6 @@ The developers may think that the answer is to start over from scratch and
 redesign the whole system—but that’s just the Hare talking again. The same
 overconfidence that led to the mess is now telling them that they can build it
 better if only they can start the race over. The reality is less rosy:
-
--- 37 of 444 --
-
 Their overconfidence will drive the redesign into the same mess as the original project.
 CONCLUSION
 In every case, the best option is for the development organization to recognize
@@ -970,8 +677,6 @@ architecture lead to that end.
 That’s what this book is about. It describes what good clean architectures and
 designs look like, so that software developers can build systems that will have
 long profitable lifetimes.
-
--- 38 of 444 --
 A TALE OF TWO VALUES
 Every software system provides two different values to the stakeholders:
 behavior and structure. Software developers are responsible for ensuring that
@@ -985,9 +690,7 @@ do this by helping the stakeholders develop a functional specification, or
 
 ---
 
-## Sección 41: PART VII Appendix
-
--- 39 of 444 --
+## Sección 25: PART VII Appendix [Entropy: 0.28]
 
 requirements document. Then we write the code that causes the stakeholder’s
 machines to satisfy those requirements.
@@ -1019,9 +722,6 @@ into a puzzle of ever-increasing complexity. Each new request is harder to fit
 than the last, because the shape of the system does not match the shape of the
 request.
 I’m using the word “shape” here in a unconventional way, but I think the
-
--- 40 of 444 --
-
 metaphor is apt. Software developers often feel as if they are forced to jam
 square pegs into round holes.
 The problem, of course, is the architecture of the system. The more this
@@ -1053,9 +753,6 @@ current functionality is more important than any later flexibility. In contrast,
 the business managers ask you for a change, and your estimated costs for that
 change are unaffordably high, the business managers will likely be furious that
 you allowed the system to get to the point where the change was impractical.
-
--- 41 of 444 --
-
 EISENHOWER’S MATRIX
 Consider President Dwight D. Eisenhower’s matrix of importance versus
 urgency (Figure 2.1). Of this matrix, Eisenhower said:
@@ -1074,9 +771,6 @@ urgent and not important. Ultimately, we can arrange these four couplets into
 priorities:
 1. Urgent and important
 2. Not urgent and important
-
--- 42 of 444 --
-
 3. Urgent and not important
 4. Not urgent and not important
 Note that the architecture of the code—the important stuff—is in the top two
@@ -1110,9 +804,7 @@ and easily extended.
 
 ---
 
-## Sección 42: PART VII Appendix
-
--- 43 of 444 --
+## Sección 26: PART VII Appendix [Entropy: 0.37]
 
 Just remember: If architecture comes last, then the system will become ever
 more costly to develop, and eventually change will become practically
@@ -1120,9 +812,6 @@ impossible for part or all of the system. If that is allowed to happen, it means
 software development team did not fight hard enough for what they knew was
 necessary.
 1. From a speech at Northwestern University in 1954.
-
--- 44 of 444 --
-
 II
 STARTING WITH THE BRICKS:
 PROGRAMMING PARADIGMS
@@ -1146,13 +835,8 @@ PL/1, SNOBOL, C, Pascal, C++, Java, ad infinitum.
 Another, probably more significant, revolution was in programming paradigms.
 Paradigms are ways of programming, relatively unrelated to languages. A
 paradigm tells you which programming structures to use, and when to use them.
-
--- 45 of 444 --
-
 To date, there have been three such paradigms. For reasons we shall discuss
 later, there are unlikely to be any others.
-
--- 46 of 444 --
 PARADIGM OVERVIEW
 The three paradigms included in this overview chapter are structured
 programming, object-orient programming, and functional programming.
@@ -1162,9 +846,6 @@ programming, which was discovered by Edsger Wybe Dijkstra in 1968. Dijkstra
 showed that the use of unrestrained jumps (goto statements) is harmful to
 program structure. As we’ll see in the chapters that follow, he replaced those
 jumps with the more familiar if/then/else and do/while/until constructs.
-
--- 47 of 444 --
-
 We can summarize the structured programming paradigm as follows:
 Structured programming imposes discipline on direct transfer of control.
 OBJECT-ORIENTED PROGRAMMING
@@ -1192,9 +873,6 @@ value of a variable, but only under very strict discipline.
 We can summarize the functional programming paradigm as follows:
 Functional programming imposes discipline upon assignment.
 FOOD FOR THOUGHT
-
--- 48 of 444 --
-
 Notice the pattern that I’ve quite deliberately set up in introducing these three
 programming paradigms: Each of the paradigms removes capabilities from the
 programmer. None of them adds new capabilities. Each imposes some kind of
@@ -1219,9 +897,8 @@ function, separation of components, and data management.
 
 ---
 
-## Sección 43: PART VII Appendix
+## Sección 27: PART VII Appendix [Entropy: 0.265]
 
--- 49 of 444 --
 STRUCTURED PROGRAMMING
 Edsger Wybe Dijkstra was born in Rotterdam in 1930. He survived the bombing
 of Rotterdam during World War II, along with the German occupation of the
@@ -1233,9 +910,6 @@ In 1955, having been a programmer for three years, and while still a student,
 Dijkstra concluded that the intellectual challenge of programming was greater
 than the intellectual challenge of theoretical physics. As a result, he chose
 programming as his long-term career.
-
--- 50 of 444 --
-
 In 1957, Dijkstra married Maria Debets. At the time, you had to state your
 profession as part of the marriage rites in the Netherlands. The Dutch authorities
 were unwilling to accept “programmer” as Dijkstra’s profession; they had never
@@ -1267,9 +941,6 @@ proven structures, and tie them together with code that they would then prove
 correct themselves.
 Of course, to get this going, Dijkstra realized that he would have to demonstrate
 the technique for writing basic proofs of simple algorithms. This he found to be
-
--- 51 of 444 --
-
 quite challenging.
 During his investigation, Dijkstra discovered that certain uses of goto statements
 prevent modules from being decomposed recursively into smaller and smaller
@@ -1300,9 +971,6 @@ proved the starting and ending criteria of the iteration by enumeration.
 Such proofs were laborious and complex—but they were proofs. With their
 development, the idea that a Euclidean hierarchy of theorems could be
 constructed seemed reachable.
-
--- 52 of 444 --
-
 A HARMFUL PROCLAMATION
 In 1968, Dijkstra wrote a letter to the editor of CACM, which was published in
 the March issue. The title of this letter was “Go To Statement Considered
@@ -1336,9 +1004,7 @@ decomposed functions can be represented using the restricted control structures
 
 ---
 
-## Sección 44: PART VII Appendix
-
--- 53 of 444 --
+## Sección 28: PART VII Appendix [Entropy: 0.382]
 
 of structured programming.
 Building on this foundation, disciplines such as structured analysis and
@@ -1369,9 +1035,6 @@ show that those laws of motion and gravity are incorrect.
 That is the nature of scientific theories and laws: They are falsifiable but not
 provable.
 And yet we bet our lives on these laws every day. Every time you get into a car,
-
--- 54 of 444 --
-
 you bet your life that F = ma is a reliable description of the way the world
 works. Every time you take a step, you bet your health and safety that F =
 Gm1m2/r2 is correct.
@@ -1400,9 +1063,6 @@ Structured programming forces us to recursively decompose a program into a set
 of small provable functions. We can then use tests to try to prove those small
 provable functions incorrect. If such tests fail to prove incorrectness, then we
 deem the functions to be correct enough for our purposes.
-
--- 55 of 444 --
-
 CONCLUSION
 It is this ability to create falsifiable units of programming that makes structured
 programming valuable today. This is the reason that modern languages do not
@@ -1416,8 +1076,6 @@ To do so, they employ restrictive disciplines similar to structured programming,
 albeit at a much higher level.
 It is those restrictive disciplines that we will study in some detail in the chapters
 to come.
-
--- 56 of 444 --
 OBJECT-ORIENTED PROGRAMMING
 As we will see, the basis of a good architecture is the understanding and
 application of the principles of object-oriented design (OO). But just what is
@@ -1432,9 +1090,7 @@ This is an evasive answer at best. What does “modeling the real world” actua
 
 ---
 
-## Sección 45: PART VII Appendix
-
--- 57 of 444 --
+## Sección 29: PART VII Appendix [Entropy: 0.75]
 
 mean, and why is it something we would want to do? Perhaps this statement is
 intended to imply that OO makes software easier to understand because it has a
@@ -1467,9 +1123,6 @@ point.c
 struct Point {
 double x,y;
 };
-
--- 58 of 444 --
-
 struct Point* makepoint(double x, double y) {
 struct Point* p = malloc(sizeof(struct Point));
 p->x = x;
@@ -1505,9 +1158,6 @@ double x;
 double y;
 };
 Click here to view code image
-
--- 59 of 444 --
-
 point.cc
 #include "point.h"
 #include <math.h>
@@ -1539,9 +1189,6 @@ provide OO have only weakened the once perfect encapsulation we enjoyed with
 C.
 INHERITANCE?
 If OO languages did not give us better encapsulation, then they certainly gave us
-
--- 60 of 444 --
-
 inheritance.
 Well—sort of. Inheritance is simply the redeclaration of a group of variables and
 functions within an enclosing scope. This is something C programmers3 were
@@ -1579,9 +1226,7 @@ main.c
 
 ---
 
-## Sección 46: PART VII Appendix
-
--- 61 of 444 --
+## Sección 30: PART VII Appendix [Entropy: 0.583]
 
 #include "point.h"
 #include "namedPoint.h"
@@ -1614,9 +1259,6 @@ convenient.
 To recap: We can award no point to OO for encapsulation, and perhaps a halfpoint for inheritance. So far, that’s not such a great score.
 But there’s one more attribute to consider.
 POLYMORPHISM?
-
--- 62 of 444 --
-
 Did we have polymorphic behavior before OO languages? Of course we did.
 Consider this simple C copy program.
 Click here to view code image
@@ -1649,9 +1291,6 @@ void (*seek)(long index, int mode);
 };
 The IO driver for the console will define those functions and load up a FILE data
 structure with their addresses—something like this:
-
--- 63 of 444 --
-
 Click here to view code image
 #include "file.h"
 void open(char* name, int mode) {/*...*/}
@@ -1683,9 +1322,6 @@ polymorphism, but they have made it much safer and much more convenient.
 The problem with explicitly using pointers to functions to create polymorphic
 behavior is that pointers to functions are dangerous. Such use is driven by a set
 of manual conventions. You have to remember to follow the convention to
-
--- 64 of 444 --
-
 initialize those pointers. You have to remember to follow the convention to call
 all your functions through those pointers. If any programmer fails to remember
 these conventions, the resulting bug can be devilishly hard to track down and
@@ -1720,9 +1356,7 @@ interchangeably with cards or tape.
 
 ---
 
-## Sección 47: PART VII Appendix
-
--- 65 of 444 --
+## Sección 31: PART VII Appendix [Entropy: 0.415]
 
 The plugin architecture was invented to support this kind of IO device
 independence, and has been implemented in almost every operating system since
@@ -1743,9 +1377,6 @@ forced to mention the name of the module that contained the callee.
 This requirement presented the software architect with few, if any, options. The
 flow of control was dictated by the behavior of the system, and the source code
 dependencies were dictated by that flow of control.
-
--- 66 of 444 --
-
 When polymorphism is brought into play, however, something very different can
 happen (Figure 5.2).
 Figure 5.2 Dependency inversion
@@ -1766,9 +1397,6 @@ languages have absolute control over the direction of all source code
 dependencies in the system. They are not constrained to align those
 dependencies with the flow of control. No matter which module does the calling
 and which module is called, the software architect can point the source code
-
--- 67 of 444 --
-
 dependency in either direction.
 That is power! That is the power that OO provides. That’s what OO is really all
 about—at least from the architect’s point of view.
@@ -1792,9 +1420,6 @@ needs to be redeployed. This is independent deployability.
 If the modules in your system can be deployed independently, then they can be
 developed independently by different teams. That’s independent developability.
 CONCLUSION
-
--- 68 of 444 --
-
 What is OO? There are many opinions and many answers to this question. To the
 software architect, however, the answer is clear: OO is the ability, through the
 use of polymorphism, to gain absolute control over every source code
@@ -1815,9 +1440,8 @@ of these, but they were commonplace in the 1950s, 1960s, and even 1970s.
 
 ---
 
-## Sección 48: PART VII Appendix
+## Sección 32: PART VII Appendix [Entropy: 0.526]
 
--- 69 of 444 --
 FUNCTIONAL PROGRAMMING
 In many ways, the concepts of functional programming predate programming
 itself. This paradigm is strongly based on the l-calculus invented by Alonzo
@@ -1826,9 +1450,6 @@ SQUARES OF INTEGERS
 To explain what functional programming is, it’s best to examine some examples.
 Let’s investigate a simple problem: printing the squares of the first 25 integers.
 In a language like Java, we might write the following:
-
--- 70 of 444 --
-
 Click here to view code image
 public class Squint {
 public static void main(String args[]) {
@@ -1860,9 +1481,6 @@ call.
 function on each element, producing a new never-ending list of all the squares.
 • The list of squares is passed into the take function, which returns a new list
 with only the first 25 elements.
-
--- 71 of 444 --
-
 • The println function prints its input, which is a list of the first 25 squares of
 integers.
 If you find yourself terrified by the concept of never-ending lists, don’t worry.
@@ -1893,9 +1511,6 @@ As an architect, you should be very interested in issues of concurrency. You wan
 to make sure that the systems you design will be robust in the presence of
 multiple threads and processors. The question you must be asking yourself, then,
 is whether immutability is practicable.
-
--- 72 of 444 --
-
 The answer to that question is affirmative, if you have infinite storage and
 infinite processor speed. Lacking those infinite resources, the answer is a bit
 more nuanced. Yes, immutability can be practicable, if certain compromises are
@@ -1918,9 +1533,7 @@ retry-based scheme.
 
 ---
 
-## Sección 49: PART VII Appendix
-
--- 73 of 444 --
+## Sección 33: PART VII Appendix [Entropy: 0.355]
 
 A simple example of this approach is Clojure’s atom facility:
 Click here to view code image
@@ -1951,9 +1564,6 @@ Architects would be wise to push as much processing as possible into the
 immutable components, and to drive as much code as possible out of those
 components that must allow mutation.
 EVENT SOURCING
-
--- 74 of 444 --
-
 The limits of storage and processing power have been rapidly receding from
 view. Nowadays it is common for processors to execute billions of instructions
 per second and to have billions of bytes of RAM. The more memory we have,
@@ -1985,9 +1595,6 @@ More importantly, nothing ever gets deleted or updated from such a data store.
 As a consequence, our applications are not CRUD; they are just CR. Also,
 because neither updates nor deletions occur in the data store, there cannot be any
 concurrent update issues.
-
--- 75 of 444 --
-
 If we have enough storage and enough processor power, we can make our
 applications entirely immutable—and, therefore, entirely functional.
 If this still sounds absurd, it might help if you remembered that this is precisely
@@ -2014,9 +1621,7 @@ iteration, and indirection. Nothing more. Nothing less.
 
 ---
 
-## Sección 50: PART VII Appendix
-
--- 76 of 444 --
+## Sección 34: PART VII Appendix [Entropy: 0.52]
 
 III
 DESIGN PRINCIPLES
@@ -2029,9 +1634,6 @@ into classes, and how those classes should be interconnected. The use of the
 word “class” does not imply that these principles are applicable only to objectoriented software. A class is simply a coupled grouping of functions and data.
 Every software system has such groupings, whether they are called classes or
 not. The SOLID principles apply to those groupings.
-
--- 77 of 444 --
-
 The goal of the principles is the creation of mid-level software structures that:
 • Tolerate change,
 • Are easy to understand, and
@@ -2063,9 +1665,6 @@ that each software module has one, and only one, reason to change.
 • OCP: The Open-Closed Principle
 Bertrand Meyer made this principle famous in the 1980s. The gist is that for
 software systems to be easy to change, they must be designed to allow the
-
--- 78 of 444 --
-
 behavior of those systems to be changed by adding new code, rather than
 changing existing code.
 • LSP: The Liskov Substitution Principle
@@ -2088,8 +1687,6 @@ footnoted documents.
 1. For example, Agile Software Development, Principles, Patterns, and Practices, Robert C. Martin, Prentice
 Hall, 2002, http://www.butunclebob.com/ArticleS.UncleBob.PrinciplesOfOod, and
 https://en.wikipedia.org/wiki/SOLID_(object-oriented_design) (or just google SOLID).
-
--- 79 of 444 --
 SRP: THE SINGLE RESPONSIBILITY
 PRINCIPLE
 Of all the SOLID principles, the Single Responsibility Principle (SRP) might be
@@ -2100,9 +1697,6 @@ Make no mistake, there is a principle like that. A function should do one, and
 only one, thing. We use that principle when we are refactoring large functions
 into smaller functions; we use it at the lowest levels. But it is not one of the
 SOLID principles—it is not the SRP.
-
--- 80 of 444 --
-
 Historically, the SRP has been described this way:
 A module should have one, and only one, reason to change.
 Software systems are changed to satisfy users and stakeholders; those users and
@@ -2131,9 +1725,7 @@ three methods: calculatePay(), reportHours(), and save() (Figure 7.1).
 
 ---
 
-## Sección 51: PART VII Appendix
-
--- 81 of 444 --
+## Sección 35: PART VII Appendix [Entropy: 0.575]
 
 Figure 7.1 The Employee class
 This class violates the SRP because those three methods are responsible to three
@@ -2152,9 +1744,6 @@ For example, suppose that the calculatePay() function and the reportHours()
 function share a common algorithm for calculating non-overtime hours. Suppose
 also that the developers, who are careful not to duplicate code, put that algorithm
 into a function named regularHours() (Figure 7.2).
-
--- 82 of 444 --
-
 Figure 7.2 Shared algorithm
 Now suppose that the CFO’s team decides that the way non-overtime hours are
 calculated needs to be tweaked. In contrast, the COO’s team in HR does not
@@ -2175,9 +1764,6 @@ We’ve all seen things like this happen. These problems occur because we put
 code that different actors depend on into close proximity. The SRP says to
 separate the code that different actors depend on.
 SYMPTOM 2: MERGES
-
--- 83 of 444 --
-
 It’s not hard to imagine that merges will be common in source files that contain
 many different methods. This situation is especially likely if those methods are
 responsible to different actors.
@@ -2205,9 +1791,6 @@ the functions. The three classes share access to EmployeeData, which is a simple
 data structure with no methods (Figure 7.3). Each class holds only the source
 code necessary for its particular function. The three classes are not allowed to
 know about each other. Thus any accidental duplication is avoided.
-
--- 84 of 444 --
-
 Figure 7.3 The three classes do not know about each other
 The downside of this solution is that the developers now have three classes that
 they have to instantiate and track. A common solution to this dilemma is to use
@@ -2219,9 +1802,6 @@ Some developers prefer to keep the most important business rules closer to the
 data. This can be done by keeping the most important method in the original
 Employee class and then using that class as a Facade for the lesser functions
 (Figure 7.5).
-
--- 85 of 444 --
-
 Figure 7.5 The most important method is kept in the original Employee class and used as a Facade for the
 lesser functions
 You might object to these solutions on the basis that every class would contain
@@ -2239,9 +1819,8 @@ We’ll be studying all of these ideas in the chapters to come.
 
 ---
 
-## Sección 52: PART VII Appendix
+## Sección 36: PART VII Appendix [Entropy: 0.457]
 
--- 86 of 444 --
 OCP: THE OPEN-CLOSED PRINCIPLE
 The Open-Closed Principle (OCP) was coined in 1988 by Bertrand Meyer.1 It
 says:
@@ -2252,9 +1831,6 @@ This, of course, is the most fundamental reason that we study software
 architecture. Clearly, if simple extensions to the requirements force massive
 changes to the software, then the architects of that software system have engaged
 in a spectacular failure.
-
--- 87 of 444 --
-
 Most students of software design recognize the OCP as a principle that guides
 them in the design of classes and modules. But the principle takes on even
 greater significance when we consider the level of architectural components.
@@ -2278,9 +1854,6 @@ By applying the SRP, we might come up with the data-flow view shown in
 Figure 8.1. Some analysis procedure inspects the financial data and produces
 reportable data, which is then formatted appropriately by the two reporter
 processes.
-
--- 88 of 444 --
-
 Figure 8.1 Applying the SRP
 The essential insight here is that generating the report involves two separate
 responsibilities: the calculation of the reported data, and the presentation of that
@@ -2295,9 +1868,6 @@ Figure 8.2. In this figure, the component at the upper left is the Controller. A
 the upper right, we have the Interactor. At the lower right, there is the Database.
 Finally, at the lower left, there are four components that represent the Presenters
 and the Views.
-
--- 89 of 444 --
-
 Figure 8.2 Partitioning the processes into classes and separating the classes into components
 Classes marked with <I> are interfaces; those marked with <DS> are data
 structures. Open arrowheads are using relationships. Closed arrowheads are
@@ -2310,9 +1880,6 @@ FinancialDataGateway through an implements relationship, but
 FinancialGateway knows nothing at all about FinancialDataMapper.
 The next thing to notice is that each double line is crossed in one direction only.
 This means that all component relationships are unidirectional, as shown in the
-
--- 90 of 444 --
-
 component graph in Figure 8.3. These arrows point toward the components that
 we want to protect from change.
 Figure 8.3 The component relationships are unidirectional
@@ -2335,9 +1902,7 @@ Notice how this creates a hierarchy of protection based on the notion of “leve
 
 ---
 
-## Sección 53: PART VII Appendix
-
--- 91 of 444 --
+## Sección 37: PART VII Appendix [Entropy: 0.544]
 
 Interactors are the highest-level concept, so they are the most protected. Views
 are among the lowest-level concepts, so they are the least protected. Presenters
@@ -2368,9 +1933,6 @@ Common Reuse Principle.
 So, even though our first priority is to protect the Interactor from changes to the
 Controller, we also want to protect the Controller from changes to the Interactor
 by hiding the internals of the Interactor.
-
--- 92 of 444 --
-
 CONCLUSION
 The OCP is one of the driving forces behind the architecture of systems. The
 goal is to make the system easy to extend without incurring a high impact of
@@ -2378,8 +1940,6 @@ change. This goal is accomplished by partitioning the system into components,
 and arranging those components into a dependency hierarchy that protects
 higher-level components from changes in lower-level components.
 1. Bertrand Meyer. Object Oriented Software Construction, Prentice Hall, 1988, p. 23.
-
--- 93 of 444 --
 LSP: THE LISKOV SUBSTITUTION
 PRINCIPLE
 In 1988, Barbara Liskov wrote the following as a way of defining subtypes.
@@ -2388,9 +1948,6 @@ type S there is an object o2 of type T such that for all programs P defined in t
 behavior of P is unchanged when o1 is substituted for o2 then S is a subtype of T.1
 To understand this idea, which is known as the Liskov Substitution Principle
 (LSP), let’s look at some examples.
-
--- 94 of 444 --
-
 GUIDING THE USE OF INHERITANCE
 Imagine that we have a class named License, as shown in Figure 9.1. This class
 has a method named calcFee(), which is called by the Billing application.
@@ -2403,9 +1960,6 @@ Both of the subtypes are substitutable for the License type.
 THE SQUARE/RECTANGLE PROBLEM
 The canonical example of a violation of the LSP is the famed (or infamous,
 depending on your perspective) square/rectangle problem (Figure 9.2).
-
--- 95 of 444 --
-
 Figure 9.2 The infamous square/rectangle problem
 In this example, Square is not a proper subtype of Rectangle because the height
 and width of the Rectangle are independently mutable; in contrast, the height
@@ -2423,9 +1977,6 @@ to the User (such as an if statement) that detects whether the Rectangle is, in
 fact, a Square. Since the behavior of the User depends on the types it uses, those
 types are not substitutable.
 LSP AND ARCHITECTURE
-
--- 96 of 444 --
-
 In the early years of the object-oriented revolution, we thought of the LSP as a
 way to guide the use of inheritance, as shown in the previous sections. However,
 over the years the LSP has morphed into a broader principle of software design
@@ -2457,9 +2008,7 @@ Click here to view code image
 
 ---
 
-## Sección 54: PART VII Appendix
-
--- 97 of 444 --
+## Sección 38: PART VII Appendix [Entropy: 0.37]
 
 purplecab.com/driver/Bob
 /pickupAddress/24 Maple St.
@@ -2492,9 +2041,6 @@ Our architect would have to insulate the system from bugs like this by creating
 some kind of dispatch command creation module that was driven by a
 configuration database keyed by the dispatch URI. The configuration data might
 look something like this:
-
--- 98 of 444 --
-
 Click here to view code image
 URI Dispatch Format
 Acme.com /pickupAddress/%s/pickupTime/%s/dest/%s
@@ -2506,15 +2052,10 @@ The LSP can, and should, be extended to the level of architecture. A simple
 violation of substitutability, can cause a system’s architecture to be polluted with
 a significant amount of extra mechanisms.
 1. Barbara Liskov, “Data Abstraction and Hierarchy,” SIGPLAN Notices 23, 5 (May 1988).
-
--- 99 of 444 --
 ISP: THE INTERFACE SEGREGATION
 PRINCIPLE
 The Interface Segregation Principle (ISP) derives its name from the diagram
 shown in Figure 10.1.
-
--- 100 of 444 --
-
 Figure 10.1 The Interface Segregation Principle
 In the situation illustrated in Figure 10.1, there are several users who use the
 operations of the OPS class. Let’s assume that User1 uses only op1, User2 uses
@@ -2530,9 +2071,6 @@ Again, if we imagine that this is implemented in a statically typed language lik
 Java, then the source code of User1 will depend on U1Ops, and op1, but will not
 depend on OPS. Thus a change to OPS that User1 does not care about will not
 cause User1 to be recompiled and redeployed.
-
--- 101 of 444 --
-
 Figure 10.2 Segregated operations
 ISP AND LANGUAGE
 Clearly, the previously given description depends critically on language type.
@@ -2551,9 +2089,6 @@ ISP AND ARCHITECTURE
 If you take a step back and look at the root motivations of the ISP, you can see a
 deeper concern lurking there. In general, it is harmful to depend on modules that
 contain more than you need. This is obviously true for source code dependencies
-
--- 102 of 444 --
-
 that can force unnecessary recompilation and redeployment—but it is also true at
 a much higher, architectural level.
 Consider, for example, an architect working on a system, S. He wants to include
@@ -2573,9 +2108,8 @@ Principle in Chapter 13, “Component Cohesion.”
 
 ---
 
-## Sección 55: PART VII Appendix
+## Sección 39: PART VII Appendix [Entropy: 0.475]
 
--- 103 of 444 --
 DIP: THE DEPENDENCY INVERSION
 PRINCIPLE
 The Dependency Inversion Principle (DIP) tells us that the most flexible systems
@@ -2586,9 +2120,6 @@ include statements should refer only to source modules containing interfaces,
 abstract classes, or some other kind of abstract declaration. Nothing concrete
 should be depended on.
 The same rule applies for dynamically typed languages, like Ruby and Python.
-
--- 104 of 444 --
-
 Source code dependencies should not refer to concrete modules. However, in
 these languages it is a bit harder to define what a concrete module is. In
 particular, it is any module in which the functions being called are implemented.
@@ -2619,9 +2150,6 @@ depending on volatile concretions, and that favor the use of stable abstract
 interfaces. This implication boils down to a set of very specific coding practices:
 • Don’t refer to volatile concrete classes. Refer to abstract interfaces instead.
 This rule applies in all languages, whether statically or dynamically typed. It
-
--- 105 of 444 --
-
 also puts severe constraints on the creation of objects and generally enforces
 the use of Abstract Factories.
 • Don’t derive from volatile concrete classes. This is a corollary to the
@@ -2650,9 +2178,6 @@ a source code dependency on the ConcreteImpl, the Application calls the
 makeSvc method of the ServiceFactory interface. This method is implemented
 by the ServiceFactoryImpl class, which derives from ServiceFactory. That
 implementation instantiates the ConcreteImpl and returns it as a Service.
-
--- 106 of 444 --
-
 Figure 11.1 Use of the Abstract Factory pattern to manage the dependency
 The curved line in Figure 11.1 is an architectural boundary. It separates the
 abstract from the concrete. All source code dependencies cross that curved line
@@ -2675,9 +2200,7 @@ main because it contains the main1 function. In the case illustrated in Figure 1
 
 ---
 
-## Sección 56: PART VII Appendix
-
--- 107 of 444 --
+## Sección 40: PART VII Appendix [Entropy: 0.445]
 
 the main function would instantiate the ServiceFactoryImpl and place that
 instance in a global variable of type ServiceFactory. The Application would
@@ -2691,9 +2214,6 @@ cross that curved line in one direction, and toward more abstract entities, will
 become a new rule that we will call the Dependency Rule.
 1. In other words, the function that is invoked by the operating system when the application is first started
 up.
-
--- 108 of 444 --
-
 IV
 COMPONENT PRINCIPLES
 If the SOLID principles tell us how to arrange the bricks into walls and rooms,
@@ -2702,8 +2222,6 @@ Large software systems, like large buildings, are built out of smaller
 components.
 In Part IV, we will discuss what software components are, which elements
 should compose them, and how they should be composed together into systems.
-
--- 109 of 444 --
 COMPONENTS
 Components are the units of deployment. They are the smallest entities that can
 be deployed as part of a system. In Java, they are jar files. In Ruby, they are gem
@@ -2715,9 +2233,6 @@ aggregated together into a single archive, such as a .war file. Or they can be
 independently deployed as separate dynamically loaded plugins, such as.jar or
 .dll or .exe files. Regardless of how they are eventually deployed, welldesigned components always retain the ability to be independently deployable
 and, therefore, independently developable.
-
--- 110 of 444 --
-
 A BRIEF HISTORY OF COMPONENTS
 In the early years of software development, programmers controlled the memory
 location and layout of their programs. One of the first lines of code in a program
@@ -2755,9 +2270,6 @@ Note the *200 command at the start of this program. It tells the compiler to
 generate code that will be loaded at address 2008.
 This kind of programming is a foreign concept for most programmers today.
 They rarely have to think about where a program is loaded in the memory of the
-
--- 111 of 444 --
-
 computer. But in the early days, this was one of the first decisions a programmer
 needed to make. In those days, programs were not relocatable.
 How did you access a library function in those olden days? The preceding code
@@ -2779,9 +2291,6 @@ code. When they wanted to run an application, they would load the binary
 function library,2 and then load the application. Memory looked like the layout
 shown in Figure 12.1.
 Figure 12.1 Early memory layout
-
--- 112 of 444 --
-
 This worked fine so long as the application could fit between addresses 00008
 and 17778. But soon applications grew to be larger than the space allotted for
 them. At that point, programmers had to split their applications into two address
@@ -2804,9 +2313,7 @@ Now the programmer could tell the loader where to load the function library, and
 
 ---
 
-## Sección 57: PART VII Appendix
-
--- 113 of 444 --
+## Sección 41: PART VII Appendix [Entropy: 0.295]
 
 where to load the application. In fact, the loader would accept several binary
 inputs and simply load them in memory one right after the other, relocating them
@@ -2839,9 +2346,6 @@ programmers to prepare an executable using the slow linker, but then they could
 load it quickly, at any time.
 Then came the 1980s. Programmers were working in C or some other high-level
 language. As their ambitions grew, so did their programs. Programs that
-
--- 114 of 444 --
-
 numbered hundreds of thousands of lines of code were not unusual.
 Source modules were compiled from .c files into .o files, and then fed into the
 linker to create executable files that could be quickly loaded. Compiling each
@@ -2874,9 +2378,6 @@ Today we routinely ship .jar files or DLLs or shared libraries as plugins to
 existing applications. If you want to create a mod to Minecraft, for example, you
 simply include your custom .jar files in a certain folder. If you want to plug
 Resharper into Visual Studio, you simply include the appropriate DLLs.
-
--- 115 of 444 --
-
 CONCLUSION
 These dynamically linked files, which can be plugged together at runtime, are
 the software components of our architectures. It has taken 50 years, but we have
@@ -2891,9 +2392,8 @@ computer down. We often left the function library loaded for days at a time.
 
 ---
 
-## Sección 58: PART VII Appendix
+## Sección 42: PART VII Appendix [Entropy: 0.445]
 
--- 116 of 444 --
 COMPONENT COHESION
 Which classes belong in which components? This is an important decision, and
 requires guidance from good software engineering principles. Unfortunately,
@@ -2903,9 +2403,6 @@ In this chapter we will discuss the three principles of component cohesion:
 • REP: The Reuse/Release Equivalence Principle
 • CCP: The Common Closure Principle
 • CRP: The Common Reuse Principle
-
--- 117 of 444 --
-
 THE REUSE/RELEASE EQUIVALENCE
 PRINCIPLE
 The granule of reuse is the granule of release.
@@ -2938,9 +2435,6 @@ together into a component should be releasable together. The fact that they shar
 the same version number and the same release tracking, and are included under
 the same release documentation, should make sense both to the author and to the
 users.
-
--- 118 of 444 --
-
 This is weak advice: Saying that something should “make sense” is just a way of
 waving your hands in the air and trying to sound authoritative. The advice is
 weak because it is hard to precisely explain the glue that holds the classes and
@@ -2973,9 +2467,6 @@ revalidating, and redeploying the software.
 This principle is closely associated with the Open Closed Principle (OCP).
 Indeed, it is “closure” in the OCP sense of the word that the CCP addresses. The
 OCP states that classes should be closed for modification but open for extension.
-
--- 119 of 444 --
-
 Because 100% closure is not attainable, closure must be strategic. We design our
 classes such that they are closed to the most common kinds of changes that we
 expect or have experienced.
@@ -3009,9 +2500,7 @@ But the CRP tells us more than just which classes to put together into a
 
 ---
 
-## Sección 59: PART VII Appendix
-
--- 120 of 444 --
+## Sección 43: PART VII Appendix [Entropy: 0.31]
 
 component: It also tells us which classes not to keep together in a component.
 When one component uses another, a dependency is created between the
@@ -3042,9 +2531,6 @@ COMPONENT COHESION
 You may have already realized that the three cohesion principles tend to fight
 each other. The REP and CCP are inclusive principles: Both tend to make
 components larger. The CRP is an exclusive principle, driving components to be
-
--- 121 of 444 --
-
 smaller. It is the tension between these principles that good architects seek to
 resolve.
 Figure 13.1 is a tension diagram2 that shows how the three principles of
@@ -3065,9 +2551,6 @@ only sacrifice is reuse. As the project matures, and other projects begin to dra
 from it, the project will slide over to the left. This means that the component
 structure of a project can vary with time and maturity. It has more to do with the
 way that project is developed and used, than with what the project actually does.
-
--- 122 of 444 --
-
 CONCLUSION
 In the past, our view of cohesion was much simpler than the REP, CCP, and CRP
 implied. We once thought that cohesion was simply the attribute that a module
@@ -3082,8 +2565,6 @@ components will likely jitter and evolve with time as the focus of the project
 changes from develop-ability to reusability.
 1. See the section on “The Kitty Problem” in Chapter 27, “Services: Great and Small.“
 2. Thanks to Tim Ottinger for this idea.
-
--- 123 of 444 --
 COMPONENT COUPLING
 The next three principles deal with the relationships between components. Here
 again we will run into the tension between develop-ability and logical design.
@@ -3093,9 +2574,6 @@ THE ACYCLIC DEPENDENCIES
 PRINCIPLE
 Allow no cycles in the component dependency graph.
 Have you ever worked all day, gotten some stuff working, and then gone home,
-
--- 124 of 444 --
-
 only to arrive the next morning to find that your stuff no longer works? Why
 doesn’t it work? Because somebody stayed later than you and changed
 something you depend on! I call this “the morning after syndrome.”
@@ -3131,9 +2609,7 @@ to a biweekly build. This suffices for a time, but the integration time continue
 
 ---
 
-## Sección 60: PART VII Appendix
-
--- 125 of 444 --
+## Sección 44: PART VII Appendix [Entropy: 0.325]
 
 grow with project size.
 Eventually, this scenario leads to a crisis. To maintain efficiency, the build
@@ -3167,9 +2643,6 @@ structure of components assembled into an application. The function of this
 application is unimportant for the purpose of this example. What is important is
 the dependency structure of the components. Notice that this structure is a
 directed graph. The components are the nodes, and the dependency relationships
-
--- 126 of 444 --
-
 are the directed edges.
 Figure 14.1 Typical component diagram
 Notice one more thing: Regardless of which component you begin at, it is
@@ -3191,9 +2664,6 @@ the versions of the Interactors and Entities components that they are
 currently using. None of the other components in the system need be involved.
 This is nice. It means that the developers working on Presenters have relatively
 little work to do to set up a test, and that they have relatively few variables to
-
--- 127 of 444 --
-
 consider.
 When it is time to release the whole system, the process proceeds from the
 bottom up. First the Entities component is compiled, tested, and released. Then
@@ -3220,9 +2690,7 @@ release of one another’s components.
 
 ---
 
-## Sección 61: PART VII Appendix
-
--- 128 of 444 --
+## Sección 45: PART VII Appendix [Entropy: 0.355]
 
 Figure 14.2 A dependency cycle
 But this is just part of the trouble. Consider what happens when we want to test
@@ -3244,9 +2712,6 @@ It is always possible to break a cycle of components and reinstate the
 dependency graph as a DAG. There are two primary mechanisms for doing so:
 1. Apply the Dependency Inversion Principle (DIP). In the case in Figure 14.3,
 we could create an interface that has the methods that User needs. We could
-
--- 129 of 444 --
-
 then put that interface into Entities and inherit it into Authorizer. This
 inverts the dependency between Entities and Authorizer, thereby breaking
 the cycle.
@@ -3256,9 +2721,6 @@ Move the class(es) that they both depend on into that new component (Figure
 14.4).
 Figure 14.4 The new component that both Entities and Authorizer depend on
 THE “JITTERS”
-
--- 130 of 444 --
-
 The second solution implies that the component structure is volatile in the
 presence of changing requirements. Indeed, as the application grows, the
 component dependency structure jitters and grows. Thus the dependency
@@ -3291,9 +2753,6 @@ One of the overriding concerns with this dependency structure is the isolation o
 volatility. We don’t want components that change frequently and for capricious
 reasons to affect components that otherwise ought to be stable. For example, we
 don’t want cosmetic changes to the GUI to have an impact on our business rules.
-
--- 131 of 444 --
-
 We don’t want the addition or modification of reports to have an impact on our
 highest-level policies. Consequently, the component dependency graph is created
 and molded by architects to protect stable high-value components from volatile
@@ -3328,9 +2787,7 @@ intended to be easy to change are not depended on by modules that are harder to
 
 ---
 
-## Sección 62: PART VII Appendix
-
--- 132 of 444 --
+## Sección 46: PART VII Appendix [Entropy: 0.52]
 
 change.
 STABILITY
@@ -3355,9 +2812,6 @@ The diagram in Figure 14.5 shows X, which is a stable component. Three
 components depend on X, so it has three good reasons not to change. We say that
 X is responsible to those three components. Conversely, X depends on nothing, so
 it has no external influence to make it change. We say it is independent.
-
--- 133 of 444 --
-
 Figure 14.5 X: a stable component
 Figure 14.6 shows Y, which is a very unstable component. No other components
 depend on Y, so we say that it is irresponsible. Y also has three components that it
@@ -3369,9 +2823,6 @@ How can we measure the stability of a component? One way is to count the
 number of dependencies that enter and leave that component. These counts will
 allow us to calculate the positional stability of the component.
 • Fan-in: Incoming dependencies. This metric identifies the number of classes
-
--- 134 of 444 --
-
 outside this component that depend on classes within the component.
 • Fan-out: Outgoing depenencies. This metric identifies the number of classes
 inside this component that depend on classes outside the component.
@@ -3392,9 +2843,6 @@ calculated by counting import statements and qualified names.
 When the I metric is equal to 1, it means that no other component depends on
 this component (Fan-in = 0), and this component depends on other components
 (Fan-out > 0). This situation is as unstable as a component can get; it is
-
--- 135 of 444 --
-
 irresponsible and dependent. Its lack of dependents gives the component no
 reason not to change, and the components that it depends on may give it ample
 reason to change.
@@ -3419,9 +2867,7 @@ shall see later, the ADP).
 
 ---
 
-## Sección 63: PART VII Appendix
-
--- 136 of 444 --
+## Sección 47: PART VII Appendix [Entropy: 0.568]
 
 Figure 14.8 An ideal configuration for a system with three components
 The diagram in Figure 14.9 shows how the SDP can be violated.
@@ -3438,9 +2884,6 @@ within Flexible that another class U within Stable needs to use (Figure 14.10).
 Figure 14.10 U within Stable uses C within Flexible
 We can fix this by employing the DIP. We create an interface class called US and
 put it in a component named UServer. We make sure that this interface declares
-
--- 137 of 444 --
-
 all the methods that U needs to use. We then make C implement this interface as
 shown in Figure 14.11. This breaks the dependency of Stable on Flexible, and
 forces both components to depend on UServer. UServer is very stable (I = 0),
@@ -3460,9 +2903,6 @@ them. Dependency structures in these languages are much simpler because
 dependency inversion does not require either the declaration or the inheritance of
 interfaces.
 THE STABLE ABSTRACTIONS
-
--- 138 of 444 --
-
 PRINCIPLE
 A component should be as abstract as it is stable.
 WHERE DO WE PUT THE HIGH-LEVEL POLICY?
@@ -3493,9 +2933,6 @@ The SAP and the SDP combined amount to the DIP for components. This is true
 because the SDP says that dependencies should run in the direction of stability,
 and the SAP says that stability implies abstraction. Thus dependencies run in the
 direction of abstraction.
-
--- 139 of 444 --
-
 The DIP, however, is a principle that deals with classes—and with classes there
 are no shades of gray. Either a class is abstract or it is not. The combination of
 the SDP and the SAP deals with components, and allows that a component can
@@ -3520,9 +2957,7 @@ unstable and concrete are at the lower right at (1, 0).
 
 ---
 
-## Sección 64: PART VII Appendix
-
--- 140 of 444 --
+## Sección 48: PART VII Appendix [Entropy: 0.382]
 
 Figure 14.12 The I/A graph
 Not all components fall into one of these two positions, because components
@@ -3535,9 +2970,6 @@ we must assume that there is a locus of points on the A/I graph that defines
 reasonable positions for components. We can infer what that locus is by finding
 the areas where components should not be—in other words, by determining the
 zones of exclusion (Figure 11.13).
-
--- 141 of 444 --
-
 Figure 14.13 Zones of exclusion
 The Zone of Pain
 Consider a component in the area of (0, 0). This is a highly stable and concrete
@@ -3569,9 +3001,6 @@ this area is called the Zone of Uselessness.
 The software entities that inhabit this region are a kind of detritus. They are
 often leftover abstract classes that no one ever implemented. We find them in
 systems from time to time, sitting in the code base, unused.
-
--- 142 of 444 --
-
 A component that has a position deep within the Zone of Uselessness must
 contain a significant fraction of such entities. Clearly, the presence of such
 useless entities is undesirable.
@@ -3602,9 +3031,6 @@ Given this metric, a design can be analyzed for its overall conformance to the
 Main Sequence. The D metric for each component can be calculated. Any
 component that has a D value that is not near zero can be reexamined and
 restructured.
-
--- 143 of 444 --
-
 Statistical analysis of a design is also possible. We can calculate the mean and
 variance of all the D metrics for the components within a design. We would
 expect a conforming design to have a mean and variance that are close to zero.
@@ -3625,9 +3051,7 @@ why this component is so far from the main sequence.
 
 ---
 
-## Sección 65: PART VII Appendix
-
--- 144 of 444 --
+## Sección 49: PART VII Appendix [Entropy: 0.25]
 
 Figure 14.15 Plot of D for a single component over time
 CONCLUSION
@@ -3642,13 +3066,8 @@ Fan-in, respectively. That was just hubris on my part: I liked the metaphor of t
 2. The author begs the reader’s indulgence for the arrogance of borrowing such an important term from
 astronomy.
 3. In previous publications, I called this metric D′. I see no reason to continue that practice.
-
--- 145 of 444 --
-
 V
 ARCHITECTURE
-
--- 146 of 444 --
 WHAT IS ARCHITECTURE?
 The word “architecture” conjures visions of power and mystery. It makes us
 think of weighty decisions and deep technical prowess. Software architecture is
@@ -3660,9 +3079,6 @@ But what is software architecture? What does a software architect do, and when
 does he or she do it?
 First of all, a software architect is a programmer; and continues to be a
 programmer. Never fall for the lie that suggests that software architects pull back
-
--- 147 of 444 --
-
 from code to focus on higher-level issues. They do not! Software architects are
 the best programmers, and they continue to take programming tasks, while they
 also guide the rest of the team toward a design that maximizes productivity.
@@ -3694,9 +3110,6 @@ The primary purpose of architecture is to support the life cycle of the system.
 Good architecture makes the system easy to understand, easy to develop, easy to
 maintain, and easy to deploy. The ultimate goal is to minimize the lifetime cost
 of the system and to maximize programmer productivity.
-
--- 148 of 444 --
-
 DEVELOPMENT
 A software system that is hard to develop is not likely to have a long and healthy
 lifetime. So the architecture of a system should make that system easy to
@@ -3730,9 +3143,7 @@ system very easy to develop since the component boundaries are very firm and
 
 ---
 
-## Sección 66: PART VII Appendix
-
--- 149 of 444 --
+## Sección 50: PART VII Appendix [Entropy: 0.355]
 
 the interfaces relatively stable. However, when it comes time to deploy the
 system, they may discover that the number of micro-services has become
@@ -3763,9 +3174,6 @@ reveal operation. The architecture of the system should elevate the use cases, t
 features, and the required behaviors of the system to first-class entities that are
 visible landmarks for the developers. This simplifies the understanding of the
 system and, therefore, greatly aids in development and maintenance.
-
--- 150 of 444 --
-
 MAINTENANCE
 Of all the aspects of a software system, maintenance is the most costly. The
 never-ending parade of new features and the inevitable trail of defects and
@@ -3795,9 +3203,6 @@ details. The policy element embodies all the business rules and procedures. The
 policy is where the true value of the system lives.
 The details are those things that are necessary to enable humans, other systems,
 and programmers to communicate with the policy, but that do not impact the
-
--- 151 of 444 --
-
 behavior of the policy at all. They include IO devices, databases, web systems,
 servers, frameworks, communication protocols, and so forth.
 The goal of the architect is to create a shape for the system that recognizes
@@ -3835,9 +3240,7 @@ web itself.
 
 ---
 
-## Sección 67: PART VII Appendix
-
--- 152 of 444 --
+## Sección 51: PART VII Appendix [Entropy: 0.295]
 
 The longer you leave options open, the more experiments you can run, the more
 things you can try, and the more information you will have when you reach the
@@ -3869,9 +3272,6 @@ PRTCHR is a subroutine that prints one character on the teleprinter. The beginni
 zero was used as the storage for the return address. (Don’t ask.) The TSF
 instruction skipped the next instruction if the teleprinter was ready to print a
 character. If the teleprinter was busy, then TSF just fell through to the JMP .-1
-
--- 153 of 444 --
-
 instruction, which just jumped back to the TSF instruction. If the teleprinter was
 ready, then TSF would skip to the TLS instruction, which sent the character in the
 A register to the teleprinter. Then the JMP I PRTCHR instruction returned to the
@@ -3901,9 +3301,6 @@ Now the same program could read and write cards, or read and write tape,
 without any change. The Open–Closed Principle was born (but not yet named).
 JUNK MAIL
 In the late 1960s, I worked for a company that printed junk mail for clients. The
-
--- 154 of 444 --
-
 clients would send us magnetic tapes with unit records containing the names and
 addresses of their customers, and we would write programs that printed nice
 personalized advertisements.
@@ -3938,9 +3335,7 @@ programs using the local line printer connected to the computer. Then we could
 
 ---
 
-## Sección 68: PART VII Appendix
-
--- 155 of 444 --
+## Sección 52: PART VII Appendix [Entropy: 0.34]
 
 tell the operating system to “print” to magnetic tape and run off hundreds of
 thousands of forms.
@@ -3973,9 +3368,6 @@ We had to write a special program to read in the old data from the old disk, and
 then write it out to the new disk, translating all of the cylinder/head/sector
 numbers. We also had to change all the hard-wiring in our code—and that hardwiring was everywhere! All the business rules knew the cylinder/head/sector
 scheme in detail.
-
--- 156 of 444 --
-
 One day a more experienced programmer joined our ranks. When he saw what
 we had done, the blood drained from his face, and he stared aghast at us, as if we
 were aliens of some kind. Then he gently advised us to change our addressing
@@ -3994,8 +3386,6 @@ policy, and then decouple the policy from the details so thoroughly that the
 policy has no knowledge of the details and does not depend on the details in any
 way. Good architects design the policy so that decisions about the details can be
 delayed and deferred for as long as possible.
-
--- 157 of 444 --
 INDEPENDENCE
 As we previously stated, a good architecture must support:
 • The use cases and operation of the system.
@@ -4004,9 +3394,6 @@ As we previously stated, a good architecture must support:
 • The deployment of the system.
 USE CASES
 The first bullet—use cases—means that the architecture of the system must
-
--- 158 of 444 --
-
 support the intent of the system. If the system is a shopping cart application, then
 the architecture must support shopping cart use cases. Indeed, this is the first
 concern of the architect, and the first priority of the architecture. The architecture
@@ -4027,7 +3414,7 @@ their function.
 
 ---
 
-## Sección 69: Chapter 21, “Screaming Architecture,” will make this point much clearer.
+## Sección 53: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.31]
 
 OPERATION
 Architecture plays a more substantial, and less cosmetic, role in supporting the
@@ -4043,9 +3430,6 @@ sharing the address space of a single process within a single processor. Still o
 systems will need just a few processes running in isolated address spaces. And
 some systems can even survive as simple monolithic programs running in a
 single process.
-
--- 159 of 444 --
-
 As strange as it may seem, this decision is one of the options that a good
 architect leaves open. A system that is written as a monolith, and that depends on
 that monolithic structure, cannot easily be upgraded to multiple processes,
@@ -4076,9 +3460,6 @@ Again, this is achieved through the proper partitioning and isolation of the
 components of the system, including those master components that tie the whole
 system together and ensure that each component is properly started, integrated,
 and supervised.
-
--- 160 of 444 --
-
 LEAVING OPTIONS OPEN
 A good architecture balances all of these concerns with a component structure
 that mutually satisfies them all. Sounds easy, right? Well, it’s easy for me to
@@ -4113,9 +3494,7 @@ they can be changed independently of each other, while keeping those use cases
 
 ---
 
-## Sección 70: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 161 of 444 --
+## Sección 54: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.265]
 
 visible and clear.
 Business rules themselves may be closely tied to the application, or they may be
@@ -4147,9 +3526,6 @@ To achieve this decoupling, we separate the UI of the add-order use case from
 the UI of the delete-order use case. We do the same with the business rules, and
 with the database. We keep the use cases separate down the vertical height of the
 system.
-
--- 162 of 444 --
-
 You can see the pattern here. If you decouple the elements of the system that
 change for different reasons, then you can continue to add new use cases without
 interfering with old ones. If you also group the UI and database in support of
@@ -4179,9 +3555,6 @@ Remember, a good architecture leaves options open. The decoupling mode is one
 of those options.
 Before we explore that topic further, let’s look to the other two bullets.
 INDEPENDENT DEVELOP-ABILITY
-
--- 163 of 444 --
-
 The third bullet was development. Clearly when components are strongly
 decoupled, the interference between teams is mitigated. If the business rules
 don’t know about the UI, then a team that focuses on the UI cannot much affect
@@ -4214,9 +3587,7 @@ Now imagine two use cases that have very similar screen structures. The
 
 ---
 
-## Sección 71: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 164 of 444 --
+## Sección 55: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.325]
 
 architects will likely be strongly tempted to share the code for that structure. But
 should they? Is that true duplication? Or it is accidental?
@@ -4250,9 +3621,6 @@ structure.
 • Deployment level. We can control the dependencies between deployable units
 such as jar files, DLLs, or shared libraries, so that changes to the source code
 in one module do not force others to be rebuilt and redeployed.
-
--- 165 of 444 --
-
 Many of the components may still live in the same address space, and
 communicate through function calls. Other components may live in other
 processes in the same processor, and communicate through interprocess
@@ -4284,9 +3652,6 @@ same address space as long as possible. This leaves the option for a service ope
 With this approach, initially the components are separated at the source code
 level. That may be good enough for the duration of the project’s lifetime. If,
 however, deployment or development issues arise, driving some of the
-
--- 166 of 444 --
-
 decoupling to a deployment level may be sufficient—at least for a while.
 As the development, deployment, and operational issues increase, I carefully
 choose which deployable units to turn into services, and gradually shift the
@@ -4311,9 +3676,8 @@ appropriately facilitates those changes.
 
 ---
 
-## Sección 72: Chapter 21, “Screaming Architecture,” will make this point much clearer.
+## Sección 56: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.265]
 
--- 167 of 444 --
 BOUNDARIES: DRAWING LINES
 Software architecture is the art of drawing lines that I call boundaries. Those
 boundaries separate software elements from one another, and restrict those on
@@ -4325,9 +3689,6 @@ the core business logic.
 Recall that the goal of an architect is to minimize the human resources required
 to build and maintain the required system. What it is that saps this kind of
 people-power? Coupling—and especially coupling to premature decisions.
-
--- 168 of 444 --
-
 Which kinds of decisions are premature? Decisions that have nothing to do with
 the business requirements—the use cases—of the system. These include
 decisions about frameworks, databases, web servers, utility libraries, dependency
@@ -4360,9 +3721,6 @@ to an existing record. That field had to be added to the classes in all three ti
 and to several of the inter-tier messages. Since data traveled in both directions,
 four message protocols needed to be designed. Each protocol had a sending and
 receiving side, so eight protocol handlers were required. Three executables had
-
--- 169 of 444 --
-
 to be built, each with three updated business objects, four new messages, and
 eight new handlers.
 And think of what those executables had to do to implement the simplest of
@@ -4399,9 +3757,7 @@ objects, and put all the developers on a path to Hell. As a simple example,
 
 ---
 
-## Sección 73: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 170 of 444 --
+## Sección 57: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.31]
 
 suppose you wanted to add the name, address, and phone number of a contact
 person to a sales record. You had to go to the ServiceRegistry and ask for the
@@ -4433,9 +3789,6 @@ a simple wiki that wrapped Ward Cunningham’s FIT tool for writing acceptance
 tests.
 This was back in the days before Maven “solved” the jar file problem. I was
 adamant that anything we produced should not require people to download more
-
--- 171 of 444 --
-
 than one jar file. I called this rule, “Download and Go.” This rule drove many of
 our decisions.
 One of the first decisions was to write our own web server, specific to the needs
@@ -4468,9 +3821,6 @@ but decided that wasn’t necessary in the short term, because it would be reall
 easy to write the hash tables out to flat files. So we implemented
 FileSystemWikiPage, which just moved the functionality out to flat files, and
 then we continued developing more features.
-
--- 172 of 444 --
-
 Three months later, we reached the conclusion that the flat file solution was
 good enough; we decided to abandon the idea of MySQL altogether. We deferred
 that decision into nonexistence and never looked back.
@@ -4505,9 +3855,7 @@ doesn’t matter to the business rules, so there should be a line between them. 
 
 ---
 
-## Sección 74: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 173 of 444 --
+## Sección 58: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.475]
 
 database doesn’t matter to the GUI, so there should be a line between them. The
 database doesn’t matter to the business rules, so there should be a line between
@@ -4530,9 +3878,6 @@ Figure 17.1 The database behind an interface
 The classes and interfaces in this diagram are symbolic. In a real application,
 there would be many business rule classes, many database interface classes, and
 many database access implementations. All of them, though, would follow
-
--- 174 of 444 --
-
 roughly the same pattern.
 Where is the boundary line? The boundary is drawn across the inheritance
 relationship, just below the DatabaseInterface (Figure 17.2).
@@ -4543,9 +3888,6 @@ knows that the DatabaseAccess class exists.
 Now let’s pull back a bit. We’ll look at the component that contains many
 business rules, and the component that contains the database and all its access
 classes (Figure 17.3).
-
--- 175 of 444 --
-
 Figure 17.3 The business rules and database components
 Note the direction of the arrow. The Database knows about the BusinessRules.
 The BusinessRules do not know about the Database. This implies that the
@@ -4567,9 +3909,6 @@ The database could be implemented with Oracle, or MySQL, or Couch, or
 Datomic, or even flat files. The business rules don’t care at all. And that means
 that the database decision can be deferred and you can focus on getting the
 business rules written and tested before you have to make the database decision.
-
--- 176 of 444 --
-
 WHAT ABOUT INPUT AND OUTPUT?
 Developers and customers often get confused about what the system is. They see
 the GUI, and think that the GUI is the system. They define a system in terms of
@@ -4591,9 +3930,6 @@ the other. The GUI cares about the BusinessRules.
 Figure 17.4 The boundary between GUI and BusinessRules components
 Having drawn this boundary and this arrow, we can now see that the GUI could
 be replaced with any other kind of interface—and the BusinessRules would not
-
--- 177 of 444 --
-
 care.
 PLUGIN ARCHITECTURE
 Taken together, these two decisions about the database and the GUI create a kind
@@ -4616,9 +3952,7 @@ deem necessary in the future.
 
 ---
 
-## Sección 75: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 178 of 444 --
+## Sección 59: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.406]
 
 These replacements might not be trivial. If the initial deployment of our system
 was web-based, then writing the plugin for a client-server UI could be
@@ -4640,9 +3974,6 @@ team could completely disable the ReSharper team if they so desired.
 Figure 17.6 ReSharper depends on Visual Studio
 That’s a deeply asymmetric relationship, and it is one that we desire to have in
 our own systems. We want certain modules to be immune to others. For
-
--- 179 of 444 --
-
 example, we don’t want the business rules to break when someone changes the
 format of a web page, or changes the schema of the database. We don’t want
 changes in one part of the system to cause other unrelated parts of the system to
@@ -4671,8 +4002,6 @@ to point from lower-level details to higher-level abstractions.
 1. The word “architecture” appears in quotes here because three-tier is not an architecture; it’s a topology.
 It’s exactly the kind of decision that a good architecture strives to defer.
 2. Many years later we were able to slip the Velocity framework into FitNesse.
-
--- 180 of 444 --
 BOUNDARY ANATOMY
 The architecture of a system is defined by a set of software components and the
 boundaries that separate them. Those boundaries come in many different forms.
@@ -4682,9 +4011,6 @@ At runtime, a boundary crossing is nothing more than a function on one side of
 the boundary calling a function on the other side and passing along some data.
 The trick to creating an appropriate boundary crossing is to manage the source
 code dependencies.
-
--- 181 of 444 --
-
 Why source code? Because when one source code module changes, other source
 code modules may have to be changed or recompiled, and then redeployed.
 Managing and building firewalls against this change is what boundaries are all
@@ -4718,9 +4044,7 @@ The <DS> marker simply indicates a data structure. The Data may be passed as a
 
 ---
 
-## Sección 76: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 182 of 444 --
+## Sección 60: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.34]
 
 function argument or by some other more elaborate means. Note that the
 definition of the Data is on the called side of the boundary.
@@ -4734,9 +4058,6 @@ ServiceImpl through the Service interface. Note, however, that all
 dependencies cross the boundary from right to left toward the higher-level
 component. Note, also, that the definition of the data structure is on the calling
 side of the boundary.
-
--- 183 of 444 --
-
 Figure 18.2 Crossing the boundary against the flow of control
 Even in a monolithic, statically linked executable, this kind of disciplined
 partitioning can greatly aid the job of developing, testing, and deploying the
@@ -4758,9 +4079,6 @@ gathering of these deployable units together in some convenient form, such as a
 WAR file, or even just a directory.
 With that one exception, deployment-level components are the same as
 monoliths. The functions generally all exist in the same processor and address
-
--- 184 of 444 --
-
 space. The strategies for segregating the components and managing their
 dependencies are the same.2
 As with monoliths, communications across deployment component boundaries
@@ -4789,9 +4107,6 @@ components.
 Think of a local process as a kind of uber-component: The process consists of
 lower-level components that manage their dependencies through dynamic
 polymorphism.
-
--- 185 of 444 --
-
 The segregation strategy between local processes is the same as for monoliths
 and binary components. Source code dependencies point in the same direction
 across the boundary, and always toward the higher-level component.
@@ -4823,9 +4138,7 @@ processes. A service, or a local process, will almost certainly be either a
 
 ---
 
-## Sección 77: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 186 of 444 --
+## Sección 61: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.34]
 
 monolith composed of source code components or a set of dynamically linked
 deployment components.
@@ -4836,8 +4149,6 @@ management in monolithic systems, especially in languages like C++. However, the
 by generics cannot protect you from the need for recompilation and redeployment the way dynamic
 polymorphism can.
 2. Although static polymorphism is not an option in this case.
-
--- 187 of 444 --
 POLICY AND LEVEL
 Software systems are statements of policy. Indeed, at its core, that’s all a
 computer program actually is. A computer program is a detailed description of
@@ -4849,9 +4160,6 @@ reports are to be formatted. Still others will describe how input data are to be
 validated.
 Part of the art of developing a software architecture is carefully separating those
 policies from one another, and regrouping them based on the ways that they
-
--- 188 of 444 --
-
 change. Policies that change for the same reasons, and at the same times, are at
 the same level and belong together in the same component. Policies that change
 for different reasons, or at different times, are at different levels and should be
@@ -4877,9 +4185,6 @@ reads characters from an input device, translates the characters using a table, 
 then writes the translated characters to an output device. The data flows are
 shown as curved solid arrows. The properly designed source code dependencies
 are shown as straight dashed lines.
-
--- 189 of 444 --
-
 Figure 19.1 A simple encryption program
 The Translate component is the highest-level component in this system because
 it is the component that is farthest from the inputs and outputs.1
@@ -4900,9 +4205,6 @@ A better architecture for this system is shown in the class diagram in Figure 19
 Note the dashed border surrounding the Encrypt class, and the CharWriter and
 CharReader interfaces. All dependencies crossing that border point inward. This
 unit is the highest-level element in the system.
-
--- 190 of 444 --
-
 Figure 19.2 Class diagram showing a better architecture for the system
 ConsoleReader and ConsoleWriter are shown here as classes. They are low
 level because they are close to the inputs and outputs.
@@ -4927,9 +4229,7 @@ but urgent changes at the lowest levels of the system have little or no impact o
 
 ---
 
-## Sección 78: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 191 of 444 --
+## Sección 62: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.445]
 
 the higher, more important, levels.
 Another way to look at this issue is to note that lower-level components should
@@ -4946,8 +4246,6 @@ Principle, and the Stable Abstractions Principle. Look back and see if you can
 identify where each principle was used, and why.
 1. Meilir Page-Jones called this component the “Central Transform” in his book The Practical Guide to
 Structured Systems Design, 2nd ed. (Yourdon Press, 1988).
-
--- 192 of 444 --
 BUSINESS RULES
 If we are going to divide our application into business rules and plugins, we’d
 better get a good grasp on just what business rules actually are. It turns out there
@@ -4959,9 +4257,6 @@ They would make or save money even if they were executed manually.
 The fact that a bank charges N% interest for a loan is a business rule that makes
 the bank money. It doesn’t matter if a computer program calculates the interest,
 or if a clerk with an abacus calculates the interest.
-
--- 193 of 444 --
-
 We shall call these rules Critical Business Rules, because they are critical to the
 business itself, and would exist even if there were no system to automate them.
 Critical Business Rules usually require some data to work with. For example,
@@ -4980,9 +4275,6 @@ For example, Figure 20.1 shows what our Loan entity might look like as a class
 in UML. It has three pieces of Critical Business Data, and presents three related
 Critical Business Rules at its interface.
 Figure 20.1 Loan entity as a class in UML
-
--- 194 of 444 --
-
 When we create this kind of class, we are gathering together the software that
 implements a concept that is critical to the business, and separating it from every
 other concern in the automated system we are building. This class stands alone
@@ -5018,9 +4310,7 @@ mentions the Customer. This is a reference to the Customer entity, which
 
 ---
 
-## Sección 79: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 195 of 444 --
+## Sección 63: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.37]
 
 contains the Critical Business Rules that govern the relationship between the
 bank and its customers.
@@ -5042,9 +4332,6 @@ input data, the output data, and the references to the appropriate Entities with
 which it interacts.
 Entities have no knowledge of the use cases that control them. This is another
 example of the direction of the dependencies following the Dependency
-
--- 196 of 444 --
-
 Inversion Principle. High-level concepts, such as Entities, know nothing of
 lower-level concepts, such as use cases. Instead, the lower-level use cases know
 about the higher-level Entities.
@@ -5073,9 +4360,6 @@ different reasons, so tying them together in any way violates the Common
 Closure and Single Responsibility Principles. The result would be lots of tramp
 data, and lots of conditionals in your code.
 CONCLUSION
-
--- 197 of 444 --
-
 Business rules are the reason a software system exists. They are the core
 functionality. They carry the code that makes, or saves, money. They are the
 family jewels.
@@ -5087,8 +4371,6 @@ the system.
 1. This is Ivar Jacobson’s name for this concept (I. Jacobson et al., Object Oriented Software Engineering,
 Addison-Wesley, 1992).
 2. Ibid.
-
--- 198 of 444 --
 SCREAMING ARCHITECTURE
 Imagine that you are looking at the blueprints of a building. This document,
 prepared by an architect, provides the plans for the building. What do these plans
@@ -5100,9 +4382,6 @@ Perhaps there is a dinette area next to the kitchen, and probably a family room
 close to that. When you looked at those plans, there would be no question that
 you were looking at a single family home. The architecture would scream:
 “HOME.”
-
--- 199 of 444 --
-
 Now suppose you were looking at the architecture of a library. You would likely
 see a grand entrance, an area for check-in/out clerks, reading areas, small
 conference rooms, and gallery after gallery capable of holding bookshelves for
@@ -5136,9 +4415,7 @@ A good software architecture allows decisions about frameworks, databases, web
 
 ---
 
-## Sección 80: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 200 of 444 --
+## Sección 64: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.4]
 
 servers, and other environmental issues and tools to be deferred and delayed.
 Frameworks are options to be left open. A good architecture makes it
@@ -5169,9 +4446,6 @@ Look at each framework with a jaded eye. View it skeptically. Yes, it might help
 but at what cost? Ask yourself how you should use it, and how you should
 protect yourself from it. Think about how you can preserve the use-case
 emphasis of your architecture. Develop a strategy that prevents the framework
-
--- 201 of 444 --
-
 from taking over that architecture.
 TESTABLE ARCHITECTURES
 If your system architecture is all about the use cases, and if you have kept your
@@ -5194,8 +4468,6 @@ controllers?”
 And you should respond:
 “Oh, those are details that needn’t concern us at the moment. We’ll decide about
 them later.”
-
--- 202 of 444 --
 THE CLEAN ARCHITECTURE
 Over the last several decades we’ve seen a whole range of ideas regarding the
 architecture of systems. These include:
@@ -5206,9 +4478,6 @@ wonderful book Growing Object Oriented Software with Tests
 • BCE, introduced by Ivar Jacobson from his book Object Oriented Software
 Engineering: A Use-Case Driven Approach
 Although these architectures all vary somewhat in their details, they are very
-
--- 203 of 444 --
-
 similar. They all have the same objective, which is the separation of concerns.
 They all achieve this separation by dividing the software into layers. Each has at
 least one layer for business rules, and another layer for user and system
@@ -5234,9 +4503,7 @@ into a single actionable idea.
 
 ---
 
-## Sección 81: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 204 of 444 --
+## Sección 65: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.37]
 
 Figure 22.1 The clean architecture
 THE DEPENDENCY RULE
@@ -5266,9 +4533,6 @@ any particular application should affect the entity layer.
 USE CASES
 The software in the use cases layer contains application-specific business rules.
 It encapsulates and implements all of the use cases of the system. These use
-
--- 205 of 444 --
-
 cases orchestrate the flow of data to and from the entities, and direct those
 entities to use their Critical Business Rules to achieve the goals of the use case.
 We do not expect changes in this layer to affect the entities. We also do not
@@ -5300,9 +4564,6 @@ The outermost layer of the model in Figure 22.1 is generally composed of
 frameworks and tools such as the database and the web framework. Generally
 you don’t write much code in this layer, other than glue code that communicates
 to the next circle inward.
-
--- 206 of 444 --
-
 The frameworks and drivers layer is where all the details go. The web is a detail.
 The database is a detail. We keep these things on the outside where they can do
 little harm.
@@ -5336,9 +4597,7 @@ no matter which direction the flow of control travels.
 
 ---
 
-## Sección 82: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 207 of 444 --
+## Sección 66: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.37]
 
 WHICH DATA CROSSES THE BOUNDARIES
 Typically the data that crosses the boundaries consists of simple data structures.
@@ -5366,9 +4625,6 @@ bring the data used by those Entities into memory from the Database. Upon
 completion, the UseCaseInteractor gathers data from the Entities and
 constructs the OutputData as another plain old Java object. The OutputData is
 then passed through the OutputBoundary interface to the Presenter.
-
--- 208 of 444 --
-
 Figure 22.2 A typical scenario for a web-based Java system utilizing a database
 The job of the Presenter is to repackage the OutputData into viewable form as
 the ViewModel, which is yet another plain old Java object. The ViewModel
@@ -5389,8 +4645,6 @@ to the Dependency Rule, you will create a system that is intrinsically testable,
 with all the benefits that implies. When any of the external parts of the system
 become obsolete, such as the database, or the web framework, you can replace
 those obsolete elements with a minimum of fuss.
-
--- 209 of 444 --
 PRESENTERS AND HUMBLE OBJECTS
 In Chapter 22, we introduced the notion of presenters. Presenters are a form of
 the Humble Object pattern, which helps us identify and protect architectural
@@ -5400,9 +4654,6 @@ THE HUMBLE OBJECT PATTERN
 The Humble Object pattern1 is a design pattern that was originally identified as a
 way to help unit testers to separate behaviors that are hard to test from behaviors
 that are easy to test. The idea is very simple: Split the behaviors into two
-
--- 210 of 444 --
-
 modules or classes. One of those modules is humble; it contains all the hard-totest behaviors stripped down to their barest essence. The other module contains
 all the testable behaviors that were stripped out of the humble object.
 For example, GUIs are hard to unit test because it is very difficult to write tests
@@ -5436,9 +4687,7 @@ Anything and everything that appears on the screen, and that the application has
 
 ---
 
-## Sección 83: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 211 of 444 --
+## Sección 67: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.325]
 
 some kind of control over, is represented in the View Model as a string, or a
 boolean, or an enum. Nothing is left for the View to do other than to load the
@@ -5468,9 +4717,6 @@ appropriate stubs and test-doubles.
 DATA MAPPERS
 Going back to the topic of databases, in which layer do you think ORMs like
 Hibernate belong?
-
--- 212 of 444 --
-
 First, let’s get something straight: There is no such thing as an object relational
 mapper (ORM). The reason is simple: Objects are not data structures. At least,
 they are not data structures from their users’ point of view. The users of an object
@@ -5500,13 +4746,8 @@ always involve some kind of simple data structure, and the boundary will
 frequently divide something that is hard to test from something that is easy to
 test. The use of this pattern at architectural boundaries vastly increases the
 testability of the entire system.
-
--- 213 of 444 --
-
 1. xUnit Patterns, Meszaros, Addison-Wesley, 2007, p. 695.
 2. Patterns of Enterprise Application Architecture, Martin Fowler, et. al., Addison-Wesley, 2003, p. 466.
-
--- 214 of 444 --
 PARTIAL BOUNDARIES
 Full-fledged architectural boundaries are expensive. They require reciprocal
 polymorphic Boundary interfaces, Input and Output data structures, and all of
@@ -5518,9 +4759,6 @@ boundary is too high—but might still want to hold a place for such a boundary 
 case it is needed later.
 This kind of anticipatory design is often frowned upon by many in the Agile
 community as a violation of YAGNI: “You Aren’t Going to Need It.” Architects,
-
--- 215 of 444 --
-
 however, sometimes look at the problem and think, “Yeah, but I might.” In that
 case, they may implement a partial boundary.
 SKIP THE LAST STEP
@@ -5553,9 +4791,7 @@ expensive both in initial setup and in ongoing maintenance.
 
 ---
 
-## Sección 84: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 216 of 444 --
+## Sección 68: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.31]
 
 A simpler structure that serves to hold the place for later extension to a fullfledged boundary is shown in Figure 24.1. It exemplifies the traditional Strategy
 pattern. A ServiceBoundary interface is used by clients and implemented by
@@ -5572,9 +4808,6 @@ An even simpler boundary is the Facade pattern, illustrated in Figure 24.2. In
 this case, even the dependency inversion is sacrificed. The boundary is simply
 defined by the Facade class, which lists all the services as methods, and deploys
 the service calls to classes that the client is not supposed to access.
-
--- 217 of 444 --
-
 Figure 24.2 The Facade pattern
 Note, however, that the Client has a transitive dependency on all those service
 classes. In static languages, a change to the source code in one of the Service
@@ -5590,8 +4823,6 @@ boundary. Each can also be degraded if that boundary never materializes.
 It is one of the functions of an architect to decide where an architectural
 boundary might one day exist, and whether to fully or partially implement that
 boundary.
-
--- 218 of 444 --
 LAYERS AND BOUNDARIES
 It is easy to think of systems as being composed of three components: UI,
 business rules, and database. For some simple systems, this is sufficient. For
@@ -5601,9 +4832,6 @@ components. The UI handles all messages from the player to the game rules. The
 game rules store the state of the game in some kind of persistent data structure.
 But is that all there is?
 HUNT THE WUMPUS
-
--- 219 of 444 --
-
 Let’s put some flesh on these bones. Let’s assume that the game is the venerable
 Hunt the Wumpus adventure game from 1972. This text-based game uses very
 simple commands like GO EAST and SHOOT WEST. The player enters a
@@ -5625,9 +4853,6 @@ of those cases, we don’t want the game rules to know the details. So, again, w
 create an API that the game rules can use to communicate with the data storage
 component.
 We don’t want the game rules to know anything about the different kinds of data
-
--- 220 of 444 --
-
 storage, so the dependencies have to be properly directed following the
 Dependency Rule, as shown in Figure 25.2.
 Figure 25.2 Following the Dependency Rule
@@ -5646,9 +4871,7 @@ illustrated in Figure 25.3.
 
 ---
 
-## Sección 85: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 221 of 444 --
+## Sección 69: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.265]
 
 Figure 25.3 The revised diagram
 The diagram in Figure 25.3 has gotten a little complicated, but should contain no
@@ -5676,9 +4899,6 @@ polymorphic interfaces defined in Language to be implemented by English and
 Spanish.
 We can simplify this diagram by eliminating all the variations and focusing on
 just the API components. Figure 25.4 shows this diagram.
-
--- 222 of 444 --
-
 Figure 25.4 Simplified diagram
 Notice that the diagram is oriented in Figure 25.4 so that all the arrows point up.
 This puts GameRules at the top. This orientation makes sense because GameRules
@@ -5698,9 +4918,6 @@ GameRules, which is the ultimate processor of the data that goes through both
 streams.
 CROSSING THE STREAMS
 Are there always two data streams as in this example? No, not at all. Imagine
-
--- 223 of 444 --
-
 that we would like to play Hunt the Wumpus on the net with multiple players. In
 this case, we would need a network component, like that shown in Figure 25.5.
 This organization divides the data flow into three streams, all controlled by the
@@ -5721,9 +4938,6 @@ But there is another set of policies at an even higher level—policies that kno
 the health of the player, and the cost or benefit of a particular event. These
 policies could cause the player to gradually lose health, or to gain health by
 discovering food. The lower-level mechanics policy would declare events to this
-
--- 224 of 444 --
-
 higher-level policy, such as FoundFood or FellInPit. The higher-level policy
 would then manage the state of the player (as shown in Figure 25.6). Eventually
 that policy would decide whether the player wins or loses.
@@ -5741,9 +4955,7 @@ between MoveManagement and PlayerManagement in this case.
 
 ---
 
-## Sección 86: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 225 of 444 --
+## Sección 70: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.575]
 
 Figure 25.7 Adding a micro-service API
 CONCLUSION
@@ -5766,9 +4978,6 @@ risks can be very high to add such a boundary.
 So there you have it. O Software Architect, you must see the future. You must
 guess—intelligently. You must weigh the costs and determine where the
 architectural boundaries lie, and which should be fully implemented, and which
-
--- 226 of 444 --
-
 should be partially implemented, and which should be ignored.
 But this is not a one-time decision. You don’t simply decide at the start of a
 project which boundaries to implement and which to ignore. Rather, you watch.
@@ -5788,8 +4997,6 @@ boundaries.
 code dependencies, not in the direction of data flow.
 3. In days long past, we would have called that top component the Central Transform. See Practical Guide
 to Structured Systems Design, 2nd ed., Meilir Page-Jones, 1988.
-
--- 227 of 444 --
 THE MAIN COMPONENT
 In every system, there is at least one component that creates, coordinates, and
 oversees the others. I call this component Main.
@@ -5799,9 +5006,6 @@ initial entry point of the system. Nothing, other than the operating system,
 depends on it. Its job is to create all the Factories, Strategies, and other global
 facilities, and then hand control over to the high-level abstract portions of the
 system.
-
--- 228 of 444 --
-
 It is in this Main component that dependencies should be injected by a
 Dependency Injection framework. Once they are injected into Main, Main should
 distribute those dependencies normally, without using the framework.
@@ -5845,9 +5049,6 @@ private static final String[] cavernTypes = new String[] {
 "crevasse",
 "cell",
 "tunnel",
-
--- 229 of 444 --
-
 "passageway",
 "hall",
 "expanse"
@@ -5897,9 +5098,7 @@ else if (command.equalsIgnoreCase("r"))
 
 ---
 
-## Sección 87: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 230 of 444 --
+## Sección 71: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.574]
 
 c = game.makeRestCommand();
 else if (command.equalsIgnoreCase("sw"))
@@ -5941,9 +5140,6 @@ game.addPitCavern(anyOther(playerCavern));
 game.addPitCavern(anyOther(playerCavern));
 game.setQuiver(5);
 }
-
--- 231 of 444 --
-
 // much code removed…
 }
 The point is that Main is a dirty low-level module in the outermost circle of the
@@ -5961,8 +5157,6 @@ deploy to, or each jurisdiction, or each customer.
 When you think about Main as a plugin component, sitting behind an
 architectural boundary, the problem of configuration becomes a lot easier to
 solve.
-
--- 232 of 444 --
 SERVICES: GREAT AND SMALL
 Service-oriented “architectures” and micro-service “architectures” have become
 very popular of late. The reasons for their current popularity include the
@@ -5972,9 +5166,6 @@ is only partially true.
 • Services appear to support independence of development and deployment.
 Again, as we shall see, this is only partially true.
 SERVICE ARCHITECTURE?
-
--- 233 of 444 --
-
 First, let’s consider the notion that using services, by their nature, is an
 architecture. This is patently untrue. The architecture of a system is defined by
 boundaries that separate high-level policy from low-level detail and follow the
@@ -6005,9 +5196,6 @@ have access to each other’s variables. What’s more, the interface of each se
 must be well defined.
 There is certainly some truth to this—but not very much truth. Yes, services are
 decoupled at the level of individual variables. However, they can still be coupled
-
--- 234 of 444 --
-
 by shared resources within a processor, or on the network. What’s more, they are
 strongly coupled by the data they share.
 For example, if a new field is added to a data record that is passed between
@@ -6041,9 +5229,7 @@ THE KITTY PROBLEM
 
 ---
 
-## Sección 88: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 235 of 444 --
+## Sección 72: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.31]
 
 As an example of these two fallacies, let’s look at our taxi aggregator system
 again. Remember, this system knows about many taxi providers in a given city,
@@ -6068,9 +5254,6 @@ Now let us suppose that this system has been in operation for more than a year.
 Our staff of developers have been happily developing new features while
 maintaining and operating all these services.
 One bright and cheerful day, the marketing department holds a meeting with the
-
--- 236 of 444 --
-
 development team. In this meeting, they announce their plans to offer a kitten
 delivery service to the city. Users can order kittens to be delivered to their homes
 or to their places of business.
@@ -6100,9 +5283,6 @@ features.
 The diagram in Figure 27.2 shows the strategy. The classes in this diagram
 roughly correspond to the services shown in Figure 27.1. However, note the
 boundaries. Note also that the dependencies follow the Dependency Rule.
-
--- 237 of 444 --
-
 Much of the logic of the original services is preserved within the base classes of
 the object model. However, that portion of the logic that was specific to rides has
 been extracted into a Rides component. The new feature for kittens has been
@@ -6117,9 +5297,6 @@ change. But nothing else needs to be changed. Rather, a new jar file, or Gem, or
 DLL is added to the system and dynamically loaded at runtime.
 Thus the Kitty feature is decoupled, and independently developable and
 deployable.
-
--- 238 of 444 --
-
 Figure 27.2 Using an object-oriented approach to deal with cross-cutting concerns
 COMPONENT-BASED SERVICES
 The obvious question is: Can we do that for services? And the answer is, of
@@ -6130,9 +5307,7 @@ components within the service.
 
 ---
 
-## Sección 89: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 239 of 444 --
+## Sección 73: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.31]
 
 Think of a service in Java as a set of abstract classes in one or more jar files.
 hink of each new feature or feature extension as another jar file that contains
@@ -6147,9 +5322,6 @@ own components.
 Figure 27.3 Each service has its own internal component design, enabling new features to be added as new
 derivative classes
 CROSS-CUTTING CONCERNS
-
--- 240 of 444 --
-
 What we have learned is that architectural boundaries do not fall between
 services. Rather, those boundaries run through the services, dividing them into
 components.
@@ -6170,14 +5342,9 @@ execute.
 A service might be a single component, completely surrounded by an
 architectural boundary. Alternatively, a service might be composed of several
 components separated by architectural boundaries. In rare2 cases, clients and
-
--- 241 of 444 --
-
 services may be so coupled as to have no architectural significance whatever.
 1. Therefore the number of micro-services will be roughly equal to the number of programmers.
 2. We hope they are rare. Unfortunately, experience suggests otherwise.
-
--- 242 of 444 --
 THE TEST BOUNDARY
 Yes, that’s right: The tests are part of the system, and they participate in the
 architecture just like every other part of the system does. In some ways, that
@@ -6187,9 +5354,6 @@ There is a great deal of confusion about tests. Are they part of the system? Are
 they separate from the system? Which kinds of tests are there? Are unit tests and
 integration tests different things? What about acceptance tests, functional tests,
 Cucumber tests, TDD tests, BDD tests, component tests, and so on?
-
--- 243 of 444 --
-
 It is not the role of this book to get embroiled in that particular debate, and
 fortunately it isn’t necessary. From an architectural point of view, all tests are the
 same. Whether they are the tiny little tests created by TDD, or large FitNesse,
@@ -6223,9 +5387,7 @@ Fragile Tests Problem.
 
 ---
 
-## Sección 90: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 244 of 444 --
+## Sección 74: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.385]
 
 It is not hard to see how this can happen. Imagine, for example, a suite of tests
 that use the GUI to verify business rules. Such tests may start on the login screen
@@ -6258,9 +5420,6 @@ Structural coupling is one of the strongest, and most insidious, forms of test
 coupling. Imagine a test suite that has a test class for every production class, and
 a set of test methods for every production method. Such a test suite is deeply
 coupled to the structure of the application.
-
--- 245 of 444 --
-
 When one of those production methods or classes changes, a large number of
 tests must change as well. Consequently, the tests are fragile, and they make the
 production code rigid.
@@ -6284,8 +5443,6 @@ well designed if they are to provide the desired benefits of stability and
 regression. Tests that are not designed as part of the system tend to be fragile and
 difficult to maintain. Such tests often wind up on the maintenance room floor—
 discarded because they are too difficult to maintain.
-
--- 246 of 444 --
 CLEAN EMBEDDED ARCHITECTURE
 By James Grenning
 A while ago I read an article entitled “The Growing Importance of Sustaining
@@ -6297,9 +5454,6 @@ It was a clarifying moment for me. Doug mentioned two terms that I would have
 thought to be obvious—but maybe not. Software is this thing that can have a
 long useful life, but firmware will become obsolete as hardware evolves. If you
 have spent any time in embedded systems development, you know the hardware
-
--- 247 of 444 --
-
 is continually evolving and being improved. At the same time, features are added
 to the new “software,” and it continually grows in complexity.
 I’d like to add to Doug’s statement:
@@ -6329,15 +5483,13 @@ software. Actually, I am disappointed that firmware engineers write so much
 firmware!
 Non-embedded engineers also write firmware! You non-embedded developers
 essentially write firmware whenever you bury SQL in your code or when you
-spread platform dependencies throughout your code. Android app developers
-write firmware when they don’t separate their business logic from the Android
+spread platform dependencies throughout your code. Web Platform app developers
+write firmware when they don’t separate their business logic from the Web Platform
 API.
 
 ---
 
-## Sección 91: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 248 of 444 --
+## Sección 75: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.31]
 
 I’ve been involved in a lot of efforts where the line between the product code
 (the software) and the code that interacts with the product’s hardware (the
@@ -6372,9 +5524,6 @@ firmware and give your code a chance at a long useful life. Of course,
 demanding it won’t make it so. Let’s look at how we can keep embedded
 software architecture clean to give the software a fighting chance of having a
 long and useful life.
-
--- 249 of 444 --
-
 APP-TITUDE TEST
 Why does so much potential embedded software become firmware? It seems that
 most of the emphasis is on getting the embedded code to work, and not so much
@@ -6406,9 +5555,6 @@ void btn_Handler(void) { ... }
 float calc_RPM(void) { ... }
 static char Read_RawData(void) { ... }
 void Do_Average(void) { ... }
-
--- 250 of 444 --
-
 void Get_Next_Measurement(void) { ... }
 void Zero_Sensor_1(void) { ... }
 void Zero_Sensor_2(void) { ... }
@@ -6450,9 +5596,7 @@ void Recall_DataSet(void) { ... }
 
 ---
 
-## Sección 92: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 251 of 444 --
+## Sección 76: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.25]
 
 Click here to view code image
 void Sensor_init(void) { ... }
@@ -6483,9 +5627,6 @@ One of the special embedded problems is the target-hardware bottleneck. When
 embedded code is structured without applying clean architecture principles and
 practices, you will often face the scenario in which you can test your code only
 on the target. If the target is the only place where testing is possible, the targethardware bottleneck will slow you down.
-
--- 252 of 444 --
-
 A CLEAN EMBEDDED ARCHITECTURE IS A TESTABLE
 EMBEDDED ARCHITECTURE
 Let’s see how to apply some of the architectural principles to embedded software
@@ -6506,9 +5647,6 @@ about where you put things and what one module is allowed to know about
 another module, the code will be very hard to change. I’m not just talking about
 when the hardware changes, but when the user asks for a change, or when a bug
 needs to be fixed.
-
--- 253 of 444 --
-
 Figure 29.2 Hardware must be separated from the rest of the system
 Software and firmware intermingling is an anti-pattern. Code exhibiting this
 anti-pattern will resist changes. In addition, changes will be dangerous, often
@@ -6519,9 +5657,6 @@ expect new bug reports.
 The Hardware Is a Detail
 The line between software and firmware is typically not so well defined as the
 line between code and hardware, as shown in Figure 29.3.
-
--- 254 of 444 --
-
 Figure 29.3 The line between software and firmware is a bit fuzzier than the line between code and
 hardware
 One of your jobs as an embedded software developer is to firm up that line. The
@@ -6547,9 +5682,7 @@ Led_TurnOn(5), while the HAL provides Indicate_LowBattery(). You can see
 
 ---
 
-## Sección 93: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 255 of 444 --
+## Sección 77: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.53]
 
 the HAL expressing services needed by the application. You can also see that
 layers may contain layers. It is more of a repeating fractal pattern than a limited
@@ -6580,9 +5713,6 @@ know, the ones used by Wile E. Coyote:
 Click here to view code image
 #ifndef _ACME_STD_TYPES
 #define _ACME_STD_TYPES
-
--- 256 of 444 --
-
 Click here to view code image
 #if defined(_ACME_X42)
 typedef unsigned int Uint_32;
@@ -6619,9 +5749,6 @@ Click here to view code image
 #define _STDINT_H_
 #include <acmetypes.h>
 typedef Uint_32 uint32_t;
-
--- 257 of 444 --
-
 typedef Uint_16 uint16_t;
 typedef Uint_8 uint8_t;
 typedef Int_32 int32_t;
@@ -6658,9 +5785,6 @@ out at you is the presence of 0b11000000. This binary notation is cool; can C do
 that? Unfortunately, no. A few other problems relate to this code directly using
 the custom C extensions:
 IE: Interrupt enable bits.
-
--- 258 of 444 --
-
 SBUF0: Serial output buffer.
 TI_0: Serial transmit buffer empty interrupt. Reading a 1 indicates the buffer is
 empty.
@@ -6693,9 +5817,7 @@ semantically to the new OS’s different capabilities and primitives.
 
 ---
 
-## Sección 94: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 259 of 444 --
+## Sección 78: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.415]
 
 Figure 29.5 Adding in an operating system
 A clean embedded architecture isolates software from the operating system,
@@ -6707,9 +5829,6 @@ If you have ever moved your software from one RTOS to another, you know it is
 painful. If your software depended on an OSAL instead of the OS directly, you
 would largely be writing a new OSAL that is compatible with the old OSAL.
 Which would you rather do: modify a bunch of complex existing code, or write
-
--- 260 of 444 --
-
 new code to a defined interface and behavior? This is not a trick question. I
 choose the latter.
 You might start worrying about code bloat about now. Really, though, the layer
@@ -6742,9 +5861,6 @@ names that are needed by the function.
 Don’t clutter the interface header files with data structures, constants, and
 typedefs that are needed by only the implementation. It’s not just a matter of
 clutter: That clutter will lead to unwanted dependencies. Limit the visibility of
-
--- 261 of 444 --
-
 the implementation details. Expect the implementation details to change. The
 fewer places where code knows the details, the fewer places where code will
 have to be tracked down and modified.
@@ -6774,9 +5890,6 @@ Letting all code become firmware is not good for your product’s long-term
 health. Being able to test only in the target hardware is not good for your
 product’s long-term health. A clean embedded architecture is good for your
 product’s long-term health.
-
--- 262 of 444 --
-
 1. https://insights.sei.cmu.edu/sei_blog/2011/08/the-growing-importance-of-sustaining-software-forthedod.html
 2. The hardware device that controls the serial port.
 3. Some silicon providers add keywords to the C language to make accessing the registers and IO ports
@@ -6786,14 +5899,10 @@ simple from C. Unfortunately, once that is done, the code is no longer C.
 
 ---
 
-## Sección 95: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 263 of 444 --
+## Sección 79: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.265]
 
 VI
 DETAILS
-
--- 264 of 444 --
 THE DATABASE IS A DETAIL
 From an architectural point of view, the database is a non-entity—it is a detail
 that does not rise to the level of an architectural element. Its relationship to the
@@ -6806,9 +5915,6 @@ system. But the database is not the data model. The database is piece of
 software. The database is a utility that provides access to the data. From the
 architecture’s point of view, that utility is irrelevant because it’s a low-level
 detail—a mechanism. And a good architect does not allow low-level
-
--- 265 of 444 --
-
 mechanisms to pollute the system architecture.
 RELATIONAL DATABASES
 Edgar Codd defined the principles of relational databases in 1970. By the mid1980s, the relational model had grown to become the dominant form of data
@@ -6836,9 +5942,6 @@ The rotating magnetic disk was the mainstay of data storage for five decades.
 Several generations of programmers have known no other form of data storage.
 Disk technology has grown from huge stacks of massive platters 48 inches in
 diameter that weighed thousands of pounds and held 20 megabytes, to single
-
--- 266 of 444 --
-
 thin circles, 3 inches in diameter, that weigh just a few grams and hold a terabyte
 or more. It’s been a wild ride. And throughout that ride programmers have been
 plagued by one fatal trait of disk technology: Disks are slow.
@@ -6875,9 +5978,7 @@ manipulated.
 
 ---
 
-## Sección 96: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 267 of 444 --
+## Sección 80: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.265]
 
 WHAT IF THERE WERE NO DISK?
 As prevalent as disks once were, they are now a dying breed. Soon they will
@@ -6907,9 +6008,6 @@ BUT WHAT ABOUT PERFORMANCE?
 Isn’t performance an architectural concern? Of course it is—but when it comes
 to data storage, it’s a concern that can be entirely encapsulated and separated
 from the business rules. Yes, we need to get the data in and out of the data store
-
--- 268 of 444 --
-
 quickly, but that’s a low-level concern. We can address that concern with lowlevel data access mechanisms. It has nothing whatsoever to do with the overall
 architecture of our systems.
 ANECDOTE
@@ -6939,9 +6037,6 @@ would ask the executives, “Would you build a house on a pole?” His implied
 message was that an RDBMS that keeps its tables in random access files was
 somehow more reliable than the random access files that we were using.
 I fought him. I fought the marketing guy. I stuck to my engineering principles in
-
--- 269 of 444 --
-
 the face of incredible ignorance. I fought, and fought, and fought.
 In the end, the hardware developer was promoted over my head to become the
 software manager. In the end, they put a RDBMS into that poor system. And, in
@@ -6976,9 +6071,8 @@ latter than with the former. The data is significant. The database is a detail.
 
 ---
 
-## Sección 97: Chapter 21, “Screaming Architecture,” will make this point much clearer.
+## Sección 81: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.28]
 
--- 270 of 444 --
 THE WEB IS A DETAIL
 Were you a developer in the 1990s? Do you remember how the web changed
 everything? Do you remember how we looked at our old client–server
@@ -6990,9 +6084,6 @@ computer power in central servers and putting all computer power out at the
 terminals.
 We’ve seen several of these oscillations just in the last decade or so since the
 web became prominent. At first we thought all the computer power would be in
-
--- 271 of 444 --
-
 server farms, and the browsers would be stupid. Then we started putting applets
 in the browsers. But we didn’t like that, so we moved dynamic content back to
 the servers. But then we didn’t like that, so we invented Web 2.0 and moved lots
@@ -7023,9 +6114,6 @@ using it.
 Then came the web. In its next release, company Q changed the GUI to look,
 and behave, like a browser. I was thunderstruck! What marketing genius decided
 that personal finance software, running on a desktop, should have the look and
-
--- 272 of 444 --
-
 feel of a web browser?
 Of course, I hated the new interface. Apparently everyone else did, too—because
 after a few releases, company Q gradually removed the browser-like feel and
@@ -7056,9 +6144,6 @@ detail. And, as an architect, you want to put details like that behind boundarie
 that keep them separate from your core business logic.
 Think about it this way: The WEB is an IO device. In the 1960s, we learned the
 value of writing applications that were device independent. The motivation for
-
--- 273 of 444 --
-
 that independence has not changed. The web is not an exception to that rule.
 Or is it? The argument can be made that a GUI, like the web, is so unique and
 rich that it is absurd to pursue a device-independent architecture. When you
@@ -7089,9 +6174,8 @@ it’s not hard to make the case that it’s often very necessary.
 
 ---
 
-## Sección 98: Chapter 21, “Screaming Architecture,” will make this point much clearer.
+## Sección 82: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.385]
 
--- 274 of 444 --
 FRAMEWORKS ARE DETAILS
 Frameworks have become quite popular. Generally speaking, this is a good
 thing. There are many frameworks out there that are free, powerful, and useful.
@@ -7101,9 +6185,6 @@ Most framework authors offer their work for free because they want to be
 helpful to the community. They want to give back. This is laudable. However,
 regardless of their high-minded motives, those authors do not have your best
 interests at heart. They can’t, because they don’t know you, and they don’t know
-
--- 275 of 444 --
-
 your problems.
 Framework authors know their own problems, and the problems of their
 coworkers and friends. And they write their frameworks to solve those problems
@@ -7134,9 +6215,6 @@ In effect, the author is asking you to marry the framework—to make a huge,
 long-term commitment to that framework. And yet, under no circumstances will
 the author make a corresponding commitment to you. It’s a one-directional
 marriage. You take on all the risk and burden; the framework author takes on
-
--- 276 of 444 --
-
 nothing at all.
 THE RISKS
 What are the risks? Here are just a few for you to consider.
@@ -7165,9 +6243,6 @@ If the framework wants you to derive your business objects from its base classes
 say no! Derive proxies instead, and keep those proxies in components that are
 plugins to your business rules.
 Don’t let frameworks into your core code. Instead, integrate them into
-
--- 277 of 444 --
-
 components that plug in to your core code, following the Dependency Rule.
 For example, maybe you like Spring. Spring is a good dependency injection
 framework. Maybe you use Spring to auto-wire your dependencies. That’s fine,
@@ -7193,9 +6268,8 @@ Perhaps you can find a way to get the milk without buying the cow.
 
 ---
 
-## Sección 99: Chapter 21, “Screaming Architecture,” will make this point much clearer.
+## Sección 83: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.265]
 
--- 278 of 444 --
 CASE STUDY: VIDEO SALES
 Now it’s time to put these rules and thoughts about architecture together into a
 case study. This case study will be short and simple, yet will depict both the
@@ -7205,9 +6279,6 @@ For this case study, I’ve chosen a product with which I am rather intimately
 familiar: the software for a website that sells videos. Of course, it is reminiscent
 of cleancoders.com, the site where I sell my software tutorial videos.
 The basic idea is trivial. We have a batch of videos we want to sell. We sell
-
--- 279 of 444 --
-
 them, on the web, to both individuals and businesses. Individuals can pay one
 price to stream the videos, and another, higher price to download those videos
 and own them permanently. Business licenses are streaming only, and are
@@ -7222,9 +6293,6 @@ Our first step in determining the initial architecture of the system is to ident
 the actors and use cases.
 USE CASE ANALYSIS
 Figure 33.1 shows a typical use-case analysis.
-
--- 280 of 444 --
-
 Figure 33.1 A typical use-case analysis
 The four main actors are evident. According to the Single Responsibility
 Principle, these four actors will be the four primary sources of change for the
@@ -7235,9 +6303,6 @@ other actors.
 The use cases shown in Figure 33.1 are not a complete list. For example, you
 won’t find log-in or log-out use cases. The reason for this omission is simply to
 manage the size of the problem in this book. If I were to include all the different
-
--- 281 of 444 --
-
 use cases, then this chapter would have to turn into a book in its own right.
 Note the dashed use cases in the center of Figure 33.1. They are abstract1 use
 cases. An abstract use case is one that sets a general policy that another use case
@@ -7263,9 +6328,6 @@ This is how I dealt with the abstract View Catalog use case. I assume that those
 views and presenters will be coded into abstract classes within those
 components, and that the inheriting components will contain view and presenter
 classes that will inherit from those abstract classes.
-
--- 282 of 444 --
-
 Figure 33.2 A preliminary component architecture
 Would I really break the system up into all these components, and deliver them
 as .jar or .dll files? Yes and no. I would certainly break the compile and build
@@ -7285,9 +6347,7 @@ Keeping these options open will allow us to adapt the way we deploy the system
 
 ---
 
-## Sección 100: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 283 of 444 --
+## Sección 84: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.532]
 
 based on how the system changes over time.
 DEPENDENCY MANAGEMENT
@@ -7316,8 +6376,6 @@ deployable deliverables in any way that makes sense, and easily change that
 grouping when conditions change.
 1. This is my own notation for “abstract” use cases. It would have been more standard to use a UML
 stereotype such as <<abstract>>, but I don‘t find adhering to such standards very useful nowadays.
-
--- 284 of 444 --
 THE MISSING CHAPTER
 By Simon Brown
 All of the advice you’ve read so far will certainly help you design better
@@ -7329,9 +6387,6 @@ Let’s imagine that we’re building an online book store, and one of the use c
 we’ve been asked to implement is about customers being able to view the status
 of their orders. Although this is a Java example, the principles apply equally to
 other programming languages. Let’s put the Clean Architecture to one side for a
-
--- 285 of 444 --
-
 moment and look at a number of approaches to design and code organization.
 PACKAGE BY LAYER
 The first, and perhaps simplest, design approach is the traditional horizontal
@@ -7353,9 +6408,6 @@ orders.
 • OrdersRepository: An interface that defines how we get access to persistent
 order information.
 • JdbcOrdersRepository: An implementation of the repository interface.
-
--- 286 of 444 --
-
 Figure 34.1 Package by layer
 In “Presentation Domain Data Layering,”2 Martin Fowler says that adopting
 such a layered architecture is a good way to get started. He’s not alone. Many of
@@ -7365,9 +6417,6 @@ something up and running without a huge amount of complexity. The problem,
 as Martin points out, is that once your software grows in scale and complexity,
 you will quickly find that having three large buckets of code isn’t sufficient, and
 you will need to think about modularizing further.
-
--- 287 of 444 --
-
 Another problem is that, as Uncle Bob has already said, a layered architecture
 doesn’t scream anything about the business domain. Put the code for two layered
 architectures, from two very different business domains, side by side and they
@@ -7396,9 +6445,7 @@ you’re right.
 
 ---
 
-## Sección 101: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 288 of 444 --
+## Sección 85: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.385]
 
 Figure 34.2 Package by feature
 PORTS AND ADAPTERS
@@ -7407,9 +6454,6 @@ architecture,” “boundaries, controllers, entities,” and so on aim to creat
 architectures where business/domain-focused code is independent and separate
 from the technical implementation details such as frameworks and databases. To
 summarize, you often see such code bases being composed of an “inside”
-
--- 289 of 444 --
-
 (domain) and an “outside” (infrastructure), as suggested in Figure 34.3.
 Figure 34.3 A code base with an inside and an outside
 The “inside” region contains all of the domain concepts, whereas the “outside”
@@ -7425,18 +6469,12 @@ world of domain-driven design, where the advice is that the naming of
 everything on the “inside” should be stated in terms of the “ubiquitous domain
 language.” To put that another way, we talk about “orders” when we’re having a
 discussion about the domain, not the “orders repository.”
-
--- 290 of 444 --
-
 Figure 34.4 View orders use case
 It’s also worth pointing out that this is a simplified version of what the UML
 class diagram might look like, because it’s missing things like interactors and
 objects to marshal the data across the dependency boundaries.
 PACKAGE BY COMPONENT
 Although I agree wholeheartedly with the discussions about SOLID, REP, CCP,
-
--- 291 of 444 --
-
 and CRP and most of the advice in this book, I come to a slightly different
 conclusion about how to organize code. So I’m going to present another option
 here, which I call “package by component.” To give you some background, I’ve
@@ -7473,9 +6511,6 @@ needs some orders data from the database. The newcomer has an epiphany:
 “Oh, there’s an OrdersRepository interface already built, too. I can simply
 dependency-inject the implementation into my controller. Perfect!” After a few
 more minutes of hacking, the web page is working. But the resulting UML
-
--- 292 of 444 --
-
 diagram looks like Figure 34.5.
 The dependency arrows still point downward, but the OrdersController is now
 additionally bypassing the OrdersService for some use cases. This organization
@@ -7492,9 +6527,7 @@ looks like, often for the first time.
 
 ---
 
-## Sección 102: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 293 of 444 --
+## Sección 86: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.31]
 
 Figure 34.5 Relaxed layered architecture
 What we need here is a guideline—an architectural principle—that says
@@ -7504,9 +6537,6 @@ enforce this principle through good discipline and code reviews, because we
 trust our developers.” This confidence is great to hear, but we all know what
 happens when budgets and deadlines start looming ever closer.
 A far smaller number of teams tell me that they use static analysis tools (e.g.,
-
--- 294 of 444 --
-
 NDepend, Structure101, Checkstyle) to check and automatically enforce
 architecture violations at build time. You may have seen such rules yourself;
 they usually manifest themselves as regular expressions or wildcard strings that
@@ -7531,9 +6561,6 @@ into a single thing, which I’m calling a “component.” Uncle Bob presented 
 definition of “component” earlier in the book, saying:
 Components are the units of deployment. They are the smallest entities that can be deployed as
 part of a system. In Java, they are jar files.
-
--- 295 of 444 --
-
 Figure 34.6 View orders use case
 My definition of a component is slightly different: “A grouping of related
 functionality behind a nice clean interface, which resides inside an execution
@@ -7543,9 +6570,6 @@ structures of a software system in terms of containers, components, and classes
 (or code). It says that a software system is made up of one or more containers
 (e.g., web applications, mobile apps, stand-alone applications, databases, file
 systems), each of which contains one or more components, which in turn are
-
--- 296 of 444 --
-
 implemented by one or more classes (or code). Whether each component resides
 in a separate jar file is an orthogonal concern.
 A key benefit of the “package by component” approach is that if you’re writing
@@ -7580,9 +6604,7 @@ ORGANIZATION VERSUS
 
 ---
 
-## Sección 103: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 297 of 444 --
+## Sección 87: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.355]
 
 ENCAPSULATION
 Looking at this issue another way, if you make all types in your Java application
@@ -7610,9 +6632,6 @@ difference to how accessible (or inaccessible) those types can be when Java’s
 access modifiers are applied appropriately. If I bring the packages back and mark
 (by graphically fading) those types where the access modifier can be made more
 restrictive, the picture becomes pretty interesting (Figure 34.8).
-
--- 298 of 444 --
-
 Figure 34.7 All four architectural approaches are the same
 Moving from left to right, in the “package by layer” approach, the
 OrdersService and OrdersRepository interfaces need to be public, because
@@ -7629,9 +6648,6 @@ In the ports and adapters approach, the OrdersService and Orders interfaces
 have inbound dependencies from other packages, so they need to be made
 public. Again, the implementation classes can be made package protected and
 dependency injected at runtime.
-
--- 299 of 444 --
-
 Figure 34.8 Grayed-out types are where the access modifier can be made more restrictive
 Finally, in the “package by component” approach, the OrdersComponent
 interface has an inbound dependency from the controller, but everything else can
@@ -7646,9 +6662,6 @@ application, where all of the code resides in a single source code tree. If you 
 building such an application (and many people are), I would certainly encourage
 you to lean on the compiler to enforce your architectural principles, rather than
 relying on self-discipline and post-compilation tooling.
-
--- 300 of 444 --
-
 OTHER DECOUPLING MODES
 In addition to the programming language you’re using, there are often other
 ways that you can decouple your source code dependencies. With Java, you have
@@ -7683,9 +6696,7 @@ to have just two source code trees:
 
 ---
 
-## Sección 104: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 301 of 444 --
+## Sección 88: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.28]
 
 This maps on nicely to the diagram (Figure 34.9) that many people use to
 summarize the ports and adapters architecture, and there is a compile-time
@@ -7701,9 +6712,6 @@ of your application (e.g., a web controller) to directly call code in another ar
 your application (e.g., a database repository), without navigating through the
 domain. This is especially true if you’ve forgotten to apply appropriate access
 modifiers to that code.
-
--- 302 of 444 --
-
 CONCLUSION: THE MISSING ADVICE
 The whole point of this chapter is to highlight that your best design intentions
 can be destroyed in a flash if you don’t consider the intricacies of the
@@ -7732,14 +6740,8 @@ reading data.
 create access restrictions based on a package and subpackage relationship. Any hierarchy that you create
 is in the name of those packages, and the directory structure on disk, only.
 9. Unless you cheat and use Java’s reflection mechanism, but please don’t do that!
-
--- 303 of 444 --
-
 VII
 Appendix
-
--- 304 of 444 --
-
 A
 ARCHITECTURE ARCHAEOLOGY
 To unearth the principles of good architecture, let’s take a 45-year journey
@@ -7751,9 +6753,6 @@ This appendix is somewhat autobiographical. I’ve tried to keep the discussion
 relevant to the topic of architecture; but, as in anything autobiographical, other
 factors sometimes intrude. ;-)
 UNION ACCOUNTING SYSTEM
-
--- 305 of 444 --
-
 In the late 1960s, a company by the name of ASC Tabulating signed a contract
 with Local 705 of the Teamsters Union to provide an accounting system. The
 computer ASC chose to implement this system on was a GE Datanet 30, as
@@ -7777,9 +6776,7 @@ Now count the platters in that first picture. There are more than a dozen. Each
 
 ---
 
-## Sección 105: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 306 of 444 --
+## Sección 89: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.265]
 
 one had its own individual seek arm that was driven by pneumatic actuators. You
 could watch those seek heads move across the platters. The seek time was
@@ -7795,9 +6792,6 @@ ASC was based in Lake Bluff, Illinois, 30 miles north of Chicago. The Local 705
 office was in downtown Chicago. The union wanted a dozen or so of their data
 entry clerks to use CRT4 terminals (Figure A.4) to enter data into the system.
 They would print reports on ASR35 teletypes (Figure A.5).
-
--- 307 of 444 --
-
 Figure A.3 One platter of that disk: 3/8 inch thick, 36 inches in diameter
 Courtesy, Ed Thelen, ed-thelen.org
 The CRT terminals ran at 30 characters per second. This was a pretty good rate
@@ -7811,9 +6805,6 @@ If you needed to store data on the disk, you stored data on the disk. Not in a f
 Not in a directory. You figured out which track, platter, and sector to put the data
 into, and then you operated the disk to put the data there. Yes, that means we
 wrote our own disk driver.
-
--- 308 of 444 --
-
 Figure A.4 Datapoint CRT terminal
 Courtesy of Bill Degnan, vintagecomputer.net
 The Union Accounting system had three kinds of records: Agents, Employers,
@@ -7826,9 +6817,6 @@ As you might imagine, that big Datanet 30 was an expensive machine to operate
 and maintain. The software consultant who kept the software running was
 expensive, too. What’s more, minicomputers were becoming popular, and were
 much cheaper.
-
--- 309 of 444 --
-
 Figure A.5 ASR35 teletype
 Joe Mabel, with permission
 In 1971, when I was 18 years old, ASC hired me and two of my geeky friends to
@@ -7842,9 +6830,6 @@ megabytes on platters that were only 14 inches in diameter and could not
 explode through concrete block walls!
 Of course, we still had no operating system. No file system. No high-level
 language. All we had was an assembler. But we made do.
-
--- 310 of 444 --
-
 Figure A.6 Varian 620/f minicomputer
 The Minicomputer Orphanage
 Instead of trying to cram the whole system into 32K, we created an overlay
@@ -7866,9 +6851,6 @@ we did not write. Though it was a struggle involving far too many 80-hour
 weeks, we got the beast up and running in a matter of 8 or 9 months.
 The architecture of the system was simple (Figure A.7). When an application
 was started, it would generate output until its particular terminal buffer was full.
-
--- 311 of 444 --
-
 Then the supervisor would swap the application out, and swap a new application
 in. The supervisor would continue to dribble out the contents of the terminal
 buffer at 30 cps until it was nearly empty. Then it would swap the application
@@ -7894,9 +6876,7 @@ The boundary prevented the supervisor from knowing anything about the
 
 ---
 
-## Sección 106: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 312 of 444 --
+## Sección 90: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.28]
 
 applications other than the starting point.
 LASER TRIM
@@ -7927,9 +6907,6 @@ computer could also control the power setting of the laser.
 The development environment of the M365 was relatively primitive. There was
 no disk. Mass storage was on tape cartridges that looked like old 8-track audio
 tape cassettes. The tapes and drives were made by Tri-Data.
-
--- 313 of 444 --
-
 Like the 8-track audio cassettes of the day, the tape was oriented in a loop. The
 drive moved the tape in only one direction—there was no rewind! If you wanted
 to position the tape at the beginning, you had to send it forward to its “load
@@ -7962,9 +6939,6 @@ finish copying the source code onto the output tape and then start a new editing
 session on that tape. Perhaps not surprisingly, given these constraints, we printed
 our programs out on paper, marked all the edits by hand in red ink, and then
 edited our programs block by block by consulting our markups on the listing.
-
--- 314 of 444 --
-
 Once the program was edited, we returned to the OS and invoked the assembler.
 The assembler read the source code tape, and wrote a binary tape, while also
 producing a listing on our data products line printer.
@@ -8000,9 +6974,7 @@ language. Indeed, the language had many idiosyncrasies that were deeply
 
 ---
 
-## Sección 107: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 315 of 444 --
+## Sección 91: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.268]
 
 coupled to the layers below. Rather, this approach gave the application
 programmers a “simpler” language than M356 assembler in which to program
@@ -8034,9 +7006,6 @@ time, the cycles of each machine. Our role was to gather all that information an
 present it on 3270 green-screen displays.
 The language was assembler. And, again, every bit of code that executed in this
 computer was code that we wrote. There was no operating system, no subroutine
-
--- 316 of 444 --
-
 libraries, and no framework. It was just raw code.
 It was also interrupt-driven real-time code. Every time a die-cast machine
 cycled, we had to update a batch of statistics, and send messages to a great IBM
@@ -8067,9 +7036,6 @@ The system was used by testers located in a service center (SC). A service cente
 covered many central offices (CO), each of which could handle as many as
 10,000 phone lines. The dialing and measurement hardware had to be located
 inside the CO. So that’s where the M365 computers were put. We called those
-
--- 317 of 444 --
-
 computers the central office line testers (COLTs). Another M365 was placed at
 the SC; it was called the service area computer (SAC). The SAC had several
 modems that it could use to dial up the COLTs and communicate at 300 baud (30
@@ -8106,9 +7072,7 @@ measurement hardware, thereby eliminating the bulky extra chassis that had
 
 ---
 
-## Sección 108: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 318 of 444 --
+## Sección 92: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.265]
 
 housed the M365.
 The ROM boards held 12 Intel 2708 EPROM (Erasable Programmable ReadOnly Memory) chips.6 Figure A.8 shows an example of such a chip. We loaded
@@ -8128,9 +7092,6 @@ divided that binary image into 30 different 1K segments, and burned each
 segment onto the appropriately labeled chip.
 Figure A.8 EPROM chip
 This worked very well, and we began to mass-produce the hardware and deploy
-
--- 319 of 444 --
-
 the system into the field.
 But software is soft.8 Features needed to be added. Bugs needed to be fixed. And
 as the installed base grew, the logistics of updating the software by burning 30
@@ -8163,9 +7124,6 @@ tables of 40 bytes—exactly enough RAM to hold the pointers at the start of eac
 chip.
 Finally, we changed every call to every subroutine on every chip into an indirect
 call through the appropriate RAM vector.
-
--- 320 of 444 --
-
 When our processor booted, it would scan each chip and load the vector table at
 the start of each chip into the RAM vectors. Then it would jump into the main
 program.
@@ -8199,9 +7157,7 @@ dedicated or dial-up modems. It would command those COLTs to measure
 
 ---
 
-## Sección 109: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 321 of 444 --
+## Sección 93: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.265]
 
 telephone lines, would receive back the raw results, and would then perform a
 complex analysis of those results to identify and locate any faults.
@@ -8233,9 +7189,6 @@ The system was written in 1976 in M365 assembler. It was a single, monolithic
 program of roughly 60,000 lines. The operating system was a home-grown,
 nonpreemptive, task-switcher based on polling. We called it MPS for
 multiprocessing system. The M365 computer had no built-in stack, so task-
-
--- 322 of 444 --
-
 specific variables were kept in a special area of memory and swapped out at
 every context switch. Shared variables were managed with locks and
 semaphores. Reentrancy issues and race conditions were constant problems.
@@ -8268,9 +7221,6 @@ In the end, we opted for an even worse solution.
 One particular subroutine wrote data to the serial communication bus that was
 used to control all our devices, including our modems. We modified that
 subroutine to recognize the bit patterns that were specific to the old modem, and
-
--- 323 of 444 --
-
 translate them into the bit patterns needed by the new modem.
 This was not straightforward. Commands to the modem consisted of sequences
 of writes to different IO addresses on the serial bus. Our hack had to interpret
@@ -8304,9 +7254,7 @@ Why the delay? In short, it is very difficult for a redesign team to catch up wi
 
 ---
 
-## Sección 110: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 324 of 444 --
+## Sección 94: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.25]
 
 large staff of programmers who are actively maintaining the old system. Here’s
 just one example of the difficulties they encountered.
@@ -8339,9 +7287,6 @@ Meanwhile, the “Tiger Team,” trying to rewrite everything in C and UNIX,
 realized that it also had to deal with this European/US dichotomy. And, of
 course, that did nothing to accelerate their progress.
 SAC CONCLUSION
-
--- 325 of 444 --
-
 There are many other stories I could tell you about this system, but it’s just too
 depressing for me to continue. Suffice it to say that many of the hard lessons of
 my software life were learned while immersed in the horrible assembler code of
@@ -8372,9 +7317,6 @@ that the new computer would have. I decided we should buy two disk drives that
 could take removable disk packs that held 25 megabytes each.9
 Fifty megabytes! The number seemed infinite! I remember walking through the
 halls of the office, late at night, cackling like the Wicked Witch of the West:
-
--- 326 of 444 --
-
 “Fifty megabytes! Hahahahahahahahahah!”
 I had the facilities manager build a little room that would house six VT100
 terminals. I decorated it with pictures from space. Our software developers
@@ -8405,9 +7347,7 @@ BOSS
 
 ---
 
-## Sección 111: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 327 of 444 --
+## Sección 95: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.265]
 
 Our 8085 platform had no operating system. My experience with the MPS
 system of the M365, and the primitive interrupt mechanisms of the IBM System
@@ -8437,9 +7377,6 @@ were sometimes carried on poles, and sometimes buried underground.
 Copper is a precious metal, and the phone company had tons (literally tons) of it
 covering the country. The capital investment was enormous. Much of that capital
 could be reclaimed by transporting the telephone conversation over digital
-
--- 328 of 444 --
-
 connections. A single pair of copper wires could carry hundreds of conversations
 in digital form.
 In response, the phone companies embarked upon the process of replacing their
@@ -8471,9 +7408,6 @@ THE SCHEDULE TRAP
 As time went on, we found that there were always urgent matters that required us
 to postpone development of the CCU/CMU architecture. We felt safe about this
 decision because the phone companies were consistently delaying the
-
--- 329 of 444 --
-
 deployment of digital switches. As we looked at their schedules, we felt
 confident that we had plenty of time, so we consistently delayed our
 development.
@@ -8507,9 +7441,7 @@ In the early 1980s, one of our customers was a telephone company in Texas.
 
 ---
 
-## Sección 112: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 330 of 444 --
+## Sección 96: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.31]
 
 They had large geographic areas to cover. In fact, the areas were so large that a
 single service area required several different offices from which to dispatch
@@ -8541,9 +7473,6 @@ We even had to invent our own communications protocol because, in those days,
 standard communications protocols were not open source shareware. Indeed, this
 was long before we had any kind of Internet connection.
 ARCHITECTURE
-
--- 331 of 444 --
-
 The architecture of this system was very simple, but there are some interesting
 quirks I want to highlight. First, both units used our 8085 technology, and both
 were written in C and used BOSS. But that’s where the similarity ended.
@@ -8573,9 +7502,6 @@ As the 1980s progressed, newer and newer technologies appeared. One of those
 technologies was the computer control of voice.
 One of the features of the 4-Tel system was the ability of the craftsman to locate
 a fault in a cable. The procedure was as follows:
-
--- 332 of 444 --
-
 • The tester, in the central office, would use our system to determine the
 approximate distance, in feet, to the fault. This would be accurate to within
 20% or so. The tester would dispatch a cable repair craftsman to an appropriate
@@ -8610,9 +7536,7 @@ The winner, in the end, was VRS: Voice Response System.
 
 ---
 
-## Sección 113: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 333 of 444 --
+## Sección 97: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.265]
 
 ARCHITECTURE
 I did not work on this system, but I heard about what happened. The story I am
@@ -8642,9 +7566,6 @@ vendor.
 After three months of effort or so, we gave up. We couldn’t make it work. We
 were so coupled to UNIFY that there was no serious hope of restructuring the
 code at any practical expense.
-
--- 334 of 444 --
-
 So, we hired a third party to maintain UNIFY for us, based on a maintenance
 contract. And, of course, the maintenance rates went up year after year after
 year.
@@ -8673,9 +7594,6 @@ ER would then, periodically, try to find me to deliver that message, and any
 other message left for me by anyone else.
 This was the first voice mail system ever, and we11 held the patent to it.
 We built all the hardware for this system—the computer board, the memory
-
--- 335 of 444 --
-
 board, the voice/telecom boards, everything. The main computer board was
 Deep Thought, the Intel 80286 processor that I mentioned earlier.
 The voice boards each supported one telephone line. They consisted of a
@@ -8710,9 +7628,7 @@ a company that sold test equipment. We did not understand how to break into the
 
 ---
 
-## Sección 114: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 336 of 444 --
+## Sección 98: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.28]
 
 office equipment market.
 After repeated attempts over two years, our CEO gave up and—unfortunately—
@@ -8743,9 +7659,6 @@ ticket system of the status of the repair.
 There were quite a few interesting features of this system having to do with
 interacting with the trouble ticket system, the plant management system, and any
 automated testing systems.
-
--- 337 of 444 --
-
 The experience with the service-oriented architecture of ER made me want to try
 the same idea more aggressively. The state machine for a trouble ticket was
 much more involved than the state machine for handling a call with ER. I set
@@ -8779,9 +7692,6 @@ created by operators who were talking to customers about their troubles. As the
 customers described their problems, the operators would type in their complaints
 and observations in a structured text stream. It looked something like this:
 Click here to view code image
-
--- 338 of 444 --
-
 /pno 8475551212 /noise /dropped-calls
 You get the idea. The / character started a new topic. Following the slash was a
 code, and following the code were parameters. There were thousands of codes,
@@ -8815,9 +7725,7 @@ Remember, graphical user interfaces were brand new in 1988. The Apple
 
 ---
 
-## Sección 115: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 339 of 444 --
+## Sección 99: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.28]
 
 Macintosh was only five years old. Windows was a joke back then. But Sun
 Microsystems was building Sparcstations that had credible X-Windows GUIs.
@@ -8847,9 +7755,6 @@ First, I managed to set up a uucp connection to a nearby company that had a
 uucp connection to another facility that was connected to the Internet. These
 connections were dial-up, of course. Our main Sparcstation (the one on my desk)
 used a 1200-bps modem to call up our uucp host twice per day. This gave us
-
--- 340 of 444 --
-
 email and Netnews (an early social network where people discussed interesting
 issues).
 Second, Sun released a C++ compiler. I had been interested in C++ and OO
@@ -8881,9 +7786,6 @@ Billy gave nicknames to everyone. He called me Uncle Bob. I suspect, despite
 my name being Bob, that he was making an offhand reference to J. R. “Bob”
 Dobbs (see https://en.wikipedia.org/wiki/File:Bobdobbs.png).
 At first I tolerated it. But as the months went by, his incessant chattering of
-
--- 341 of 444 --
-
 “Uncle Bob, … Uncle Bob,” in the context of the pressures and disappointments
 of the startup, started to wear pretty thin.
 And then, one day, the phone rang.
@@ -8904,9 +7806,7 @@ Analysis and Design with Applications (Figure A.9 shows an example).
 
 ---
 
-## Sección 116: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 342 of 444 --
+## Sección 100: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.265]
 
 Figure A.9 A Booch diagram
 The Booch notation was very powerful. It presaged notations like UML.
@@ -8937,9 +7837,6 @@ pointed our dependencies in the more traditional direction of flow control. The
 GUI pointed at the representation, which pointed at the manipulation rules,
 which pointed at the database. In the end, it was this failure to direct our
 dependencies toward policy that aided the eventual demise of the product.
-
--- 343 of 444 --
-
 The architecture of ROSE was similar to the architecture of a good compiler.
 The graphical notation was “parsed” into an internal representation; that
 representation was then manipulated by rules and stored in an object-oriented
@@ -8970,9 +7867,6 @@ In the early 1990s, I became a true consultant. I traveled the world teaching
 people what this new OO thing was. My consulting was focused strongly on the
 design and architecture of object-oriented systems.
 One of my first consulting clients was Educational Testing Service (ETS). It was
-
--- 344 of 444 --
-
 under contract with the National Council of Architects Registry Board (NCARB)
 to conduct the registration exams for new architect candidates.
 Anyone desiring to be a registered architect (the kind who design buildings) in
@@ -9009,9 +7903,7 @@ of the batch. It was called Vignette Grande.
 
 ---
 
-## Sección 117: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 345 of 444 --
+## Sección 101: Chapter 21, “Screaming Architecture,” will make this point much clearer. [Entropy: 0.28]
 
 The two of us worked full time on Vignette Grande with an eye toward creating
 a reusable framework. It took us a year. At the end of that year we had 45,000
@@ -9044,9 +7936,6 @@ Of course, both of these applications were statically linked C++ applications, s
 the notion of plugin was nowhere in our minds. And yet, the way the
 dependencies ran was consistent with the Dependency Rule.
 Having delivered those four applications, we began on the next four. And this
-
--- 346 of 444 --
-
 time they started popping out the back end every few weeks, just as we had
 predicted. The delay had cost us nearly a year on our schedule, so we hired
 another programmer to speed the process along.
@@ -9080,9 +7969,6 @@ characters were “reserved” for sequence numbers in case you dropped the deck
 7. They had a little clear plastic window that allowed you to see the silicon chip inside, and allowed the UV
 to erase the data.
 8. Yes, I know that when software is burned into ROM, it’s called firmware—but even firmware is really
-
--- 347 of 444 --
-
 still soft.
 9. RKO7.
 10. This was later renamed as Bob’s Only Successful Software.
@@ -9091,1694 +7977,6 @@ to our company. My boss told me: “You sold it to us for one dollar, and we did
 12. Three-Dimensional Black Board. If you were born in the 1950s, you likely get this reference: Drizzle,
 Drazzle, Druzzle, Drone.
 13. Computer Aided Software Engineering
-
----
-
-## Sección 118: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 348 of 444 --
-
-INDEX
-Numbers
-3DBB shared memory system, Craft Dispatch System archaeology project, 363
-4-TEL, archaeology projects
-BOSS, 351–352
-C language, 349–351
-DLU/DRU, 354–356
-overview of, 339–344
-pCCU, 352–354
-SAC (service area computer), 344–349
-VRS, 357–359
-8085 computer, archaeological projects
-4-TEL, 341
-BOSS, 351
-C language and, 349–351
-DLU/DRU, 356
-8086 Intel microcomputer, SAC archaeology project, 347–348
-A
-Abstract classes
-conclusion, 132
-Dependency Inversion Principle and, 87
-leftover in Zone of Uselessness, 129–130
-placing high-level policy, 126–128
-services in Java as set of, 246
-
--- 349 of 444 --
-
-Abstract components, 125–126
-Abstract Factories, 89–90
-Abstractions
-principle of stable. See SAP (Stable Abstractions Principle)
-source code dependencies and, 87
-stable, 88–89
-Access modifiers, architectural packages, 316–319
-Accidental duplication, 154–155
-Actors, 62–65
-Address segments, relocatable binaries, 99–100
-ADP (Acyclic Dependencies Principle)
-breaking cycle, 117–118
-component dependency graph effected by, 118
-effect of cycle in component dependency graph, 115–117
-eliminating dependency cycles, 113–115
-jitters, 118
-overview of, 112
-weekly build, 112–113
-Aluminum die-cast monitoring, archaeology project, 338–339
-APIs, testing, 252–253
-App-titude test, 258–261
-Application-specific business rules, use cases, 192–193, 204
-Architects
-goal to minimize human resources, 160
-registry exam archaeology project, 370–373
-separate details from policy, 142
-Architecture
-clean. See Clean architecture
-clean embedded. See Clean embedded architecture
-design vs., 4
-in DLU/DRU archaeology project, 356
-Eisenhower’s matrix of importance vs. urgency, 16–17
-getting software right, 2
-immutability and, 52
-independence. See Independence
-ISP and, 86
-
--- 350 of 444 --
-
-LSP and, 80
-plugin, 170–171
-in ROSE archaeology product, 368–370
-in SAC archaeology project, 345–347
-as senior to function, 18
-as software value, 14–15
-stability, 122–126
-testing, 213
-three big concerns in, 24
-value of function vs., 15–16
-in VRS archaeology project, 358–359
-Architecture archaeology projects
-4-TEL, 339–344
-aluminum die-cast monitoring, 338–339
-architects registry exam, 370–373
-by author since 1970, 325–326
-Basic Operating System and Scheduler, 351–352
-C language, 349–351
-conclusion, 373
-Craft Dispatch System, 361–367
-DLU/DRU, 354–356
-Electronic Receptionist, 359–361
-Laser Trim, 334–338
-pCCU, 352–354
-ROSE product, 368–370
-service area computer, 344–349
-Union Accounting system, 326–334
-VRS, 357–359
-Architecture, defining
-conclusion, 146
-deployment, 138
-development, 137–138
-device independence, 142–143
-junk mail example, 144–145
-keeping options open, 140–142
-maintenance, 139–140
-
--- 351 of 444 --
-
-operation, 138–139
-physical addressing example, 145–146
-understanding, 135–137
-Architecture, screaming
-about the web, 197–198
-conclusion, 199
-frameworks as tools, not ways of life, 198
-overview of, 195–196
-purpose of, 197
-testable architectures, 198
-theme, 196–197
-Archives, as aggregation of components, 96
-Artifacts, OCP, 70
-ASC Tabulating, Union Accounting archaeology project, 326–334
-Assignment, and functional programming, 23
-Asymmetric marriage, to framework authors, 292–293
-Authors, framework, 292–293
-Automated systems, business rules, 191–192
-B
-Base classes, frameworks, 293
-BCE system architecture, 202
-Beck, Kent, 258–261
-Behavior (function)
-architecture supports system, 137, 148
-Eisenhower’s matrix of importance vs. urgency, 16–17
-fighting for seniority of architecture over function, 18
-keeping options open, 140–142
-as software value, 14
-value of function vs. architecture, 15–16
-Binaries, relocatability, 99–100
-Booch, Grady
-introduction to, 366
-working for, 367
-working on ROSE product, 368–369
-
--- 352 of 444 --
-
-BOSS (Basic Operating System and Scheduler)
-archaeology project, 351–352
-in DLU/DRU archaeology project, 356
-Boundaries
-in 4-TEL archaeology project, 340–341
-conclusion, 173
-dividing services into components, 246
-in Electronic Receptionist archaeology project, 361
-FitNesse program, 163–165
-input and output, 169–170
-in Laser Trim archaeology project, 338
-layers and. See Layers and boundaries
-overview of, 159–160
-partial, 218–220
-plugin architecture, 170–171
-plugin argument, 172–173
-sad stories of architectural failures, 160–163
-services as function calls across, 240
-test, 249–253
-Union Accounting system archaeology project, 333–334
-which lines to draw, and when, 165–169
-Boundary anatomy
-boundary crossing, 176
-conclusion, 181
-deployment components, 178–179
-dreaded monolith, 176–178
-local processes, 179–180
-services, 180–181
-threads, 179
-Boundary crossing
-in clean architecture, 206
-clean architecture scenario, 207–208
-creating appropriate, 176
-Dependency Rule for data in, 207
-Breaking cycle, Acyclic Dependencies Principle, 117–118
-Business managers
-
--- 353 of 444 --
-
-Eisenhower’s matrix of importance vs. urgency, 17
-preference for function vs. architecture, 15–16
-Business rules
-boundaries between GUI and, 169–170
-clean architecture for, 202–203
-conclusion, 194
-creating Entities, 190–191
-decoupling from UI, 287–289
-decoupling layers, 152–153
-decoupling use cases, 153
-designing for testability, 251
-in Hunt the Wumpus adventure game, 222–223
-independent developability, 47
-keeping close to data, 67
-plugging into, 170–173
-policy statements calculating, 184
-request/response models and, 193–194
-in SAC archaeology project, 346–347
-separating components with boundary lines, 165–169
-understanding, 189–190
-use cases for, 191–193, 204
-C
-C++ language
-inheritance in, 40
-learning, 366
-marrying STL framework in, 293
-polymorphism in, 42
-ROSE application, 369–370
-weakening encapsulation, 36–37
-C language
-BOSS archaeology project using, 351–352
-DLU/DRU archaeology project using, 356
-encapsulation in, 34–36
-inheritance in, 38–40
-
----
-
-## Sección 119: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 354 of 444 --
-
-polymorphism in, 40–42
-redesigning SAC in, 347–348
-C language, archaeology project, 349–351
-C# programming language
-abstract components in, 125
-dependency inversion, 45
-using statements for dependencies, 184
-weakening encapsulation, 36–37
-C Programming Language (Kernighan & Ritchie), 351
-C4 software architecture model, 314–315
-Carew, Mike, 356
-CASE (Computer Aided Software Engineering) tool, 368
-Case study. See Video sales case study
-Cathode ray tube (CRT) terminals, Union Accounting archaeology project,
-328–329
-CCP (Common Closure Principle)
-decoupling layers, 152
-grouping policies into components, 186–187
-keeping changes localized, 118
-overview of, 105–107
-Stable Dependencies Principle and, 120
-tension diagram, 108–110
-CCU/CMU (COLT control unit/COLT measurement unit), pCCU archaeology
-project, 353–354
-CDS (Craft Dispatch System), archaeology project
-overview of, 361–363
-Central office line testers. See COLTs (central office line testers)
-Central offices (COs), 4-TEL archaeology project, 339–340
-Change, ease of software, 14–15
-Church, Alonzo, 22–23, 50
-CICS-COBOL program, aluminum die-cast archaeology project, 339
-Classes
-abstract. See Abstract classes
-Common Reuse Principle, 107–108
-DIP and, 89
-LSP use in guiding inheritance, 78
-
--- 355 of 444 --
-
-partitioning processes into, 71–72
-Reuse/Release Equivalence Principle, 105
-SRP examples, 67
-Clean architecture
-characteristics of, 201–203
-conclusion, 209
-Dependency Rule, 203–207
-frameworks tend to violate, 293
-typical scenario, 208
-using layers and boundaries, 223–226
-Clean embedded architecture
-app-titude test, 258–261
-conclusion, 273
-don’t reveal hardware details to user of HAL, 265–269
-DRY conditional compilation directives, 272
-hardware is detail, 263–264
-is testable embedded architecture, 262
-layers, 262–263
-operating system is detail, 269–271
-overview of, 255–258
-programming to interfaces and substitutability, 271–272
-target-hardware bottleneck, 261
-Cleancoders.com, 297
-Clear Communications, 364–367
-phone call, 367
-setup, 366
-Uncle Bob, 367
-Clojure, 50–51, 53–54
-Codd, Edgar, 278
-Code
-in aluminum die-cast archaeology project, 338–339
-decreasing productivity/increased cost of, 5–7
-foolishness of overconfidence, 9–12
-rising costs of development payroll, 8–9
-in SAC archaeology project, 345
-signature of messy, 7–8
-
--- 356 of 444 --
-
-source code dependencies. See Source code dependencies
-Code organization
-conclusion, 321
-devil is in the details, 315–316
-other decoupling modes, 319–320
-overview of, 303–304
-package by component, 310–315
-package by feature, 306–307
-package by layer, 304–306
-ports and adapters, 308–310
-vs. encapsulation, 316–319
-Cohesion, Single Responsibility Principle, 63
-COLTs (central office line testers)
-in 4-TEL archaeology project, 340–344
-pCCU archaeology project, 352–354
-in service area computer archaeology project, 344–349
-Common Closure Principle. See CCP (Common Closure Principle)
-Common Reuse Principle. See CRP (Common Reuse Principle)
-Communications
-across deployment component boundaries, 179
-across local process boundaries, 180
-across service boundaries, 180–181
-across source-level decoupled boundaries, 178
-Conway’s law, 149
-as function calls between components in monoliths, 178
-in types of decoupling modes, 155–157
-Compare and swap algorithm, 54
-Compiled languages, 96
-Compilers
-enforce architectural principles with, 319
-location of source code, 97–98
-relocatable binaries, 99–100
-Component architecture, video sales case study, 300–302
-Component-based systems
-building scalable, 241
-designing services using SOLID, 245–246
-
--- 357 of 444 --
-
-function calls, 240
-OO approach for cross-cutting concerns, 244–245
-Component cohesion
-Common Closure Principle, 105–107
-Common Reuse Principle, 107–108
-conclusion, 110
-overview of, 104
-Reuse/Release Equivalence Principle, 104–105
-tension diagram, 108–110
-Component coupling
-ADP. See ADP (Acyclic Dependencies Principle)
-conclusion, 132
-Fragile Tests Problem, 251
-overview of, 111
-Stable Abstractions Principle. See SAP (Stable Abstractions Principle)
-Stable Dependencies Principle, 120–126
-top-down design, 118–119
-Component dependency graph
-break cycle of components/reinstate as DAG, 117–118
-effect of cycle in, 115–117
-Component-per-team architecture, 137–138
-Components
-concrete, 91
-deployment of, 178–179
-history of, 96–99
-linkers, 100–102
-overview of, 96
-package by, 313–315
-partitioning processes into classes/separating classes into, 71–72
-principles, 93
-relocatability, 99–100
-tests as system, 250
-Computer Aided Software Engineering (CASE) tool, 368
-Concrete components, Dependency Inversion Principle, 91
-Concurrent tasks, BOSS archaeology project, 351–352
-Concurrent updates, 52–53
-
--- 358 of 444 --
-
-Constantine, Larry, 29
-Control, flow of. See Flow of control
-Control structures, program, 27–28
-Control, transfer of, 22
-Controllers
-in clean architecture, 203, 205
-clean architecture scenario, 207–208
-crossing circle boundaries, 206
-Conway’s law, 149
-Copper wires, pCCU archaeology project, 352–354
-Core code, avoid frameworks in, 293
-COs (central offices), 4-TEL archaeology project, 339–340
-Coupling. See also Component coupling
-avoid allowing framework, 293
-to premature decisions, 160
-Craft Dispatch System. See CDS (Craft Dispatch System), archaeology project
-Critical Business Data, 190–191
-Critical Business Rules, 190–193
-Cross-cutting concerns
-designing services to deal with, 247
-object-oriented approach to, 244–245
-Crossing data streams, 226
-CRP (Common Reuse Principle)
-influencing composition of components, 118
-overview of, 107–108
-tension diagram, 108–110
-CRT (cathode ray tube) terminals, Union Accounting archaeology project,
-328–329
-Cycles
-breaking, 117–118
-effect of in dependency graph, 115–117
-eliminating dependency, 113–115
-weekly build issues, 112–113
-D
-D metric, distance from Main Sequence, 130–132
-
----
-
-## Sección 120: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 359 of 444 --
-
-DAGs (directed acyclic graphs)
-architectural framework for policy, 184
-breaking cycle of components, 117–118
-defined, 114
-Dahl, Ole Johan, 22
-Data
-clean architecture scenario, 207–208
-Dependency Rule for crossing boundaries, 207
-management concerns in architecture, 24
-mappers, 214–215
-separating from functions, 66
-Data model, database vs., 278
-Data storage
-in Laser Trim archaeology project, 335
-prevalence of database systems due to disks, 279–280
-in Union Accounting archaeology project, 327–328
-Database
-clean architecture independent from, 202
-clean architecture scenario, 207–208
-creating testable architecture without, 198
-decoupling layers, 153
-decoupling use cases, 153
-Dependency Rule, 205
-drawing boundary line between business rules and, 165
-gateways, 214
-in Hunt the Wumpus adventure game, 222–223
-independent developability, 47
-leaving options open in development, 141, 197
-plugin architecture, 171
-relational, 278
-schema in Zone of Pain, 129
-separating components with boundary lines, 165–169
-Database is detail
-anecdote, 281–283
-conclusion, 283
-details, 281
-
--- 360 of 444 --
-
-if there were no disks, 280–281
-overview of, 277–278
-performance, 281
-relational databases, 278
-why database systems are so prevalent, 279–280
-DCI system architecture, 202
-Deadlocks, from mutable variables, 52
-Decoupling
-as fallacy of services, 240–241
-independent deployment, 154, 241
-independent development, 153–154, 241
-kitty problem example, 242–243
-layers, 151–152
-modes, 153, 155–158
-OO approach for cross-cutting concerns, 244–245
-purpose of testing API, 252–253
-source code dependencies, 319
-use cases, 152
-DeMarco, Tom, 29
-Dependencies
-ADP. See ADP (Acyclic Dependencies Principle)
-architectural framework for policy, 184
-calculating stability metrics, 123
-case study. See Video sales case study
-Common Reuse Principle and, 107–108
-DIP. See DIP (Dependency Inversion Principle)
-in Laser Trim archaeology project, 338
-managing undesirable, 89–90
-OCP example, 72
-in package by layer, 304–306, 310–311
-software destroyed by unmanaged, 256
-stable. See SDP (Stable Dependencies Principle)
-transitive, 75
-understanding component, 121
-in Union Accounting archaeology project, 333–334
-Dependency graph, 115–118
-
--- 361 of 444 --
-
-Dependency Injection framework, Main component, 232
-Dependency inversion, 44–47
-Dependency management
-metrics. See ADP (Acyclic Dependencies Principle)
-via full-fledged architectural boundaries, 218
-via polymorphism in monolithic systems, 177
-video sales case study, 302
-Dependency Rule
-clean architecture and, 203–206
-clean architecture scenario, 207–208
-crossing boundaries, 206
-defined, 91
-dependency management, 302
-designing services to follow, 247
-Entities, 204
-frameworks and drivers, 205
-frameworks tending to violate, 293
-in Hunt the Wumpus adventure game, 223
-interface adapters, 205
-OO approach for cross-cutting concerns, 244–245
-services may follow, 240
-tests following, 250
-use cases, 204
-which data crosses boundaries, 207
-Deployment
-architecture determines ease of, 150
-components, 178–180
-components as units of, 96
-impact of architecture on, 138
-tests use independent, 250
-Deployment-level decoupling mode, 156–157, 178–179
-Design
-approaches to. See Code organization
-architecture vs., 4
-decreasing productivity/increases cost of code, 5–7
-getting it right, 2
-
--- 362 of 444 --
-
-goal of good, 4–5
-reducing volatility of interfaces, 88
-signature of a mess, 7–8
-SOLID principles of, 57–59
-for testability, 251
-Designing Object-Oriented C++ Applications Using the Booch Method, 369
-Detail
-database is. See Database is detail
-don’t reveal hardware, to user of HAL, 265–269
-framework is, 291–295
-hardware is, 263–264
-separating from policy, 140–142
-story of architectural success, 163–165
-web is, 285–289
-Developers
-decreasing productivity/increasing cost of code, 5–7
-Eisenhower’s matrix of importance vs. urgency, 17
-foolishness of overconfidence, 9–12
-preference for function vs. architecture, 15–16
-scope vs. shape in determining cost of change, 15
-signature of a mess, 8–9
-as stakeholders, 18
-Development
-impact of architecture on, 137–138
-independent. See Independent developability
-role of architecture in supporting, 149–150
-role of test to support, 250
-Device independence
-defined, 142–143
-IO device of UI as, 288–289
-junk mail example, 144–145
-physical addressing example, 145–146
-in programming, 44
-Digital revolution, and telephone companies, 352–354
-Dijkstra, Edsger Wybe
-applying discipline of proof to programming, 27
-
--- 363 of 444 --
-
-discovery of structured programming, 22
-history of, 26
-proclamation on goto statements, 28–29
-on testing, 31
-DIP (Dependency Inversion Principle)
-breaking cycle of components, 117–118
-conclusion, 91
-concrete components, 91
-crossing circle boundaries, 206
-defined, 59
-drawing boundary lines, 173
-Entities without knowledge of use cases as, 193
-factories, 89–90
-in good software architecture, 71
-not all components should be stable, 125
-overview of, 87–88
-stable abstractions, 88–89
-Stable Abstractions Principle, 127
-Directed acyclic graph. See DAGs (directed acyclic graphs)
-Directional control, Open-Closed Principle, 74
-Disks
-if there were no, 280–281
-prevalence of database systems due to, 279–280
-in Union Accounting archaeology project, 326–330
-Dispatch code, service area computer project, 345
-Display local unit/display remote unit (DLU/DRU) archaeology project,
-354–356
-DLU/DRU (display local unit/display remote unit), archaeology project,
-354–356
-Do/while/until statements, 22, 27
-Don’t Repeat Yourself (DRY) principle, conditional compilation directives, 272
-Drawing lines. See Boundaries
-Drivers, Dependency Rule, 205
-DRY (Don’t Repeat Yourself) principle, conditional compilation directives, 272
-DSL (domain-specific data-driven language), Laser Trim archaeology project,
--- 364 of 444 --
-
----
-
-## Sección 121: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
-Duplication
-accidental, 63–65
-true vs. accidental, 154–155
-Dynamic polymorphism, 177–178, 206
-Dynamically linked libraries, as architectural boundaries, 178–179
-Dynamically typed languages
-DIP and, 88
-ISP and, 85
-E
-Editing, Laser Trim archaeology project, 336
-Educational Testing Service (ETS), 370–372
-Eisenhower, matrix of importance vs. urgency, 16–17
-Embedded architecture. See Clean embedded architecture
-Encapsulation
-in defining OOP, 35–37
-organization vs., 316–319
-overuse of public and, 316
-Entities
-business rules and, 190–191
-clean architecture scenario, 207–208
-creating testable architecture, 198
-Dependency Rule for, 204
-risks of frameworks, 293
-use cases vs., 191–193
-Enumeration, Dijkstra’s proof for sequence/selection, 28
-EPROM (Erasable Programmable Read-Only Memory) chips, 4-TEL
-archaeology project, 341–343
-ER (Electronic Receptionist)
-archaeology project, 359–361
-Craft Dispatch System was, 362–364
-ETS (Educational Testing Service), 370–372
-Europe, redesigning SAC for US and, 347–348
-Event sourcing, storing transactions, 54–55
-Executables
-deployment of monoliths, 176–178
-
--- 365 of 444 --
-
-linking components as, 96
-External agency, clean architecture independence from, 202
-External definition, compilers, 100
-External reference, compilers, 100
-F
-Facade pattern, partial boundaries, 220
-Fan-in/fan-out metrics, component stability, 122–123
-Feathers, Michael, 58
-File systems, mitigating time delay, 279–280
-Firewalls, boundary crossings via, 176
-Firmware
-in 4-TEL archaeology project, 343–344
-definitions of, 256–257
-eliminating target-hardware bottleneck, 262–263
-fuzzy line between software and, 263–264
-obsolete as hardware evolves, 256
-stop writing so much, 257–258
-FitNesse program
-overview of, 163–165
-partial boundary, 218–219
-FLD (Field Labeled Data), Craft Dispatch System archaeology project, 363
-Flow of control
-crossing circle boundaries, 206
-dependency management, case study, 302
-dynamic polymorphism, 177–178
-in Union Accounting archaeology project, 334
-Fowler, Martin, 305–306
-Fragile Tests Problem, 251
-Frameworks
-avoid basing architecture on, 197
-clean architecture independent from, 202
-creating testable architecture without, 198
-Dependency Rule for, 205
-as option to be left open, 197
-
--- 366 of 444 --
-
-as tools, not a way of life, 198
-Frameworks are details
-asymmetric marriage and, 292–293
-conclusion, 295
-framework authors, 292
-frameworks you must simply marry, 295
-popularity of, 292
-risks, 293–294
-solution, 294
-Function calls, services as, 240
-Functional decomposition
-programming best practice, 32
-in structured programming, 29
-Functional pointers, OOP, 22, 23
-Functional programming
-conclusion, 56
-event sourcing, 54–55
-history of, 22–23
-immutability, 52
-overview of, 50
-segregation of mutability, 52–54
-squares of integers example, 50–51
-Functions
-avoid overriding concrete, 89
-breaking down into parts (functional decomposition), 29
-one of three big concerns in architecture, 24
-principle of doing one thing, 62
-separating from data, 66
-SRP examples, 67
-G
-Gateways, database, 214
-GE Datanet 30 computer, Union Accounting archaeology project, 326–330
-Goto statements
-Dijkstra replaces with iteration control structures, 27
-
--- 367 of 444 --
-
-Dijkstra’s proclamation on harmfulness of, 28–29
-history of structured programming, 22
-removed in structured programming, 23
-Growing Object Oriented Software with Tests (Freeman & Pryce), 202
-GUI (graphical user interface). See also UI (user interface)
-decoupling business rules from, 287–289
-designing for testability, 251
-developing architects registry exam, 371–372
-input/output and boundary lines, 169–170
-plugin architecture, 170–171
-plugin argument, 172–173
-separating from business rules with boundaries, 165–169
-unit testing, 212
-web is, 288
-H
-HAL (hardware abstraction layer)
-avoid revealing hardware details to user of, 265–269
-as boundary line between software/firmware, 264
-DRY conditional compilation directives, 272
-operating system is detail and, 269–271
-Hardware
-eliminating target-hardware bottleneck with layers, 262–263
-firmware becomes obsolete through evolution of, 256
-in SAC archaeology project, 346–347
-Header files, programming to interfaces with, 272
-Hexagonal Architecture (Ports and Adapters), 202
-High-level policy
-decoupling from lower level input/output policies, 185–186
-separating details from, 140–142
-splitting data streams, 227–228
-where to place, 126
-Human resources, goal of architect to minimize, 160
-Humble Object pattern
-data mappers, 214–215
-
--- 368 of 444 --
-
-database getaways, 214
-Presenters and Views, 212–213
-Presenters as form of, 212
-testing and architecture, 213
-understanding, 212
-Hunt the Wumpus game
-layers and boundaries. See Layers and boundaries
-Main component from, 232–237
-I
-IBM System/7, aluminum die-cast archaeology project, 338–339
-If/then/else statements, 22, 27
-Immutability, 52–54
-Implementation strategy. See Code organization
-Importance, urgency vs. Eisenhower’s matrix of, 16–17
-Incoming dependencies, stability metrics, 122–123
-Independence
-conclusion, 158
-decoupling layers, 151–152
-decoupling mode, 153
-decoupling use cases, 152
-deployment, 150
-development, 149–150
-duplication, 154–155
-independent deployability, 154
-independent developability, 153–154
-leaving options open, 150–151
-operation, 149
-overview of, 147–148
-types of decoupling modes, 155–158
-use cases, 148
-Independent components
-calculating stability metrics, 123
-understanding, 121
-Independent deployability
-
----
-
-## Sección 122: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 369 of 444 --
-
-in 4-TEL archaeology project, 344
-as fallacy of services, 241
-kitty problem example, 242–243
-in OO approach for cross-cutting concerns, 244–245
-overview of, 154
-Independent developability
-as fallacy of services, 241
-kitty problem example, 242–243
-in OO approach for cross-cutting concerns, 244–245
-overview of, 153–154
-of UI and database, 47
-Induction, Dijkstra’s proof related to iteration, 28
-Information hiding, Open-Closed Principle, 74–75
-Inheritance relationships
-crossing circle boundaries, 206
-defining OOP, 37–40
-dependency inversion, 46
-dependency management, 302
-guiding use of, 78
-Input/output
-business rules for use cases, 193–194
-decoupling higher-level policy from lower level, 185–187
-policy level defined as distance from, 184
-separating components with boundary lines, 169–170
-Integers, functional programming example, 50–51
-Integration, weekly build issues, 112–113
-Interface adapters, Dependency Rule for, 205
-Interface Segregation Principle. See ISP (Interface Segregation Principle)
-IO device
-UNIX functions, 41–44
-web is, 288–289
-Isolation, test, 250–251
-ISP (Interface Segregation Principle)
-architecture and, 86
-Common Reuse Principle compared with, 108
-conclusion, 86
-
--- 370 of 444 --
-
-defined, 59
-language type and, 85
-overview of, 84–85
-Iteration, 27–28
-J
-Jacobson, Ivar, 196, 202
-Jar files
-component architecture, 301
-components as, 96
-creating partial boundary, 219
-defining function of components, 313
-designing component-based services, 245–246
-Download and Go rule for, 163
-in source-level decoupling mode, 176
-Java
-abstract components in, 125
-code organization approaches in. See Code organization
-components as jar files in, 96
-DIP and, 87
-import statements for dependencies, 184
-ISP example, 84–85
-marrying standard library framework in, 293
-module frameworks in, 319
-package by layer in, 304–306
-squares of integers example in, 50–51
-weakening encapsulation, 36–37
-Jitters, breaking cycle of components, 118
-Junk mail example, 144–145
-K
-Kitty problem example, 242–245
-L
-Languages
-
--- 371 of 444 --
-
-clean architecture and, 223–226
-Hunt the Wumpus adventure game, 222–223
-Laser Trim, archaeology project
-4-TEL project, 339
-overview of, 334–338
-Layered architecture
-package by layer code organization, 304–306
-relaxed, 311–312
-why it is considered bad, 310–311
-Layers
-approach to code organization, 304–306
-clean architecture using, 202–203
-decoupling, 151–152
-duplication of, 155
-eliminating target-hardware bottleneck, 262–263
-independent developability, 154
-Layers and boundaries
-clean architecture, 223–226
-conclusion, 228
-crossing streams, 226
-Hunt the Wumpus adventure game, 222–223
-overview of, 221–222
-splitting streams, 227–228
-Leiningen tool, module management, 104
-Level
-hierarchy of protection and, 74
-policy and, 184–187
-Libraries
-location of source code, 97–98
-relocatable binaries, 99–100
-Life cycle, architecture supports system, 137
-Linkers, separating from loaders, 100–102
-Liskov, Barbara, 78
-Liskov Substitution Principle (LSP). See LSP (Liskov Substitution Principle)
-LISP langauge, functional programming, 23
-Lisp language, squares of integers example, 50–51
-
--- 372 of 444 --
-
-Loaders
-linking, 100–102
-relocatable binaries, 99–100
-Local process boundaries, 179–180
-LSP (Liskov Substitution Principle)
-architecture and, 80
-conclusion, 82
-defined, 59
-guiding use of inheritance, 78
-overview of, 78
-square/rectangle example problem, 79
-violation of, 80–82
-M
-M365 computer
-4-TEL archaeology project, 340–341
-Laser Trim archaeology project, 335–338
-SAC archaeology project, 345–347
-Mailboxes, local processes communicate via, 180
-Main component
-conclusion, 237
-as concrete component, 91
-defined, 232
-object-oriented programming, 40
-polymorphism, 45
-small impact of releasing, 115
-as ultimate detail, 232–237
-Main Sequence
-avoiding Zones of Exclusion via, 130
-defining relationship between abstraction/stability, 127–128
-measuring distance from, 130–132
-Zone of Pain, 129
-Zone of Uselessness, 129–130
-Maintenance, impact of architecture on, 139–140
-Marketing campaigns, database vendor, 283
-
--- 373 of 444 --
-
-Master Operating Program (MOP), Laser Trim archaeology project, 336
-Mathematics
-contrasting science with, 30
-discipline of proof, 27–28
-Maven tool, module management, 104
-McCarthy, John, 23
-Memory
-early layout of, 98–99
-local processes and, 179
-RAM. See RAM
-Merges, SRP examples, 65
-Message queues, local processes communicate via, 180
-Metrics
-abstraction, 127
-distance from Main Sequence, 130–132
-Meyer, Bertrand, 70
-Micro-service architecture
-in Craft Dispatch System archaeology project, 362–363
-decoupling mode, 153
-deployment strategy, 138
-popularity of, 239
-Modems, SAC archaeology project, 346–347
-Modules
-Common Reuse Principle, 107–108
-defined, 62
-management tools, 104
-public types vs. published types, 319
-Reuse/Release Equivalence Principle, 105
-Monoliths
-building scalable systems, 241
-deployment-level components vs., 179
-deployment of, 176–178
-function calls, 240
-local processes as statically linked, 180
-threads, 179
-Moore’s Law, 101
-
----
-
-## Sección 123: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 374 of 444 --
-
-MOP (Master Operating Program), Laser Trim archaeology project, 336
-Morning after syndrome
-eliminating dependency cycles to solve, 113–115
-managing dependencies to prevent, 118
-overview of, 112
-weekly build issues, 112–113
-MPS (multiprocessing system), SAC archaeology project, 345–346
-Mutability, 52–54
-Mutable variables, 51, 54–55
-N
-National Council of Architects Registry Board (NCARB), 370–372
-.NET, components as DLLs, 96
-NetNews, presence of author on, 367–369
-Newkirk, Jim, 371–372
-Nygaard, Kristen, 22
-O
-Object-oriented databases, ROSE product, 368–370
-Object Oriented Design with Applications (Booch), 366, 368
-Object-oriented programming
-conclusion, 47
-for cross-cutting concerns, 244–245
-dependency inversion, 44–47
-deployment of monoliths, 177
-encapsulation, 35–37
-history of, 22
-inheritance, 37–40
-overview of, 34–35
-polymorphism, 40–43
-power of polymorphism, 43–44
-Object Oriented Software Engineering (Jacobson), 196, 202
-Object relational mappers (ORMs), 214–215
-Objects, invented in 4-TEL archaeology project, 344
-OCP (Open-Closed Principle)
-
--- 375 of 444 --
-
-birth of, 142
-Common Closure Principle compared with, 106
-conclusion, 75
-in Craft Dispatch System archaeology project, 363
-defined, 59
-dependency management, 302
-designing component-based services, 246
-directional control, 74
-information hiding, 74–75
-overview of, 70
-thought experiment, 71–74
-OMC (Outboard Marine Corporation), aluminum die-cast archaeology project,
-338–339
-One-dimensional boundaries, 219
-Open-Closed Principle. See OCP (Open-Closed Principle)
-Operating system abstraction layer (OSAL), clean embedded architecture,
-270–271
-Operating system (OS), is detail, 269–271
-Operations
-architecture supports system, 138–139, 149
-decoupling use cases for, 153
-use cases affected by changes in, 204
-Options, keeping open
-good architecture makes system easy to change, 150–151
-operational architecture, 149
-purpose of architecture, 140–142, 197
-via decoupling mode, 153
-Organization vs. encapsulation, 316–319
-ORMs (object relational mappers), 214–215
-OS (operating system), is detail, 269–271
-OSAL (operating system abstraction layer), clean embedded architecture,
-270–271
-Oscillations, web as one of many, 285–289
-Outgoing dependencies, stability metrics, 122–123
-Overconfidence, foolishness of, 9–12
-
--- 376 of 444 --
-
-P
-Package by component, 310–315, 318
-Package by feature, 306–307, 317
-Package by layer
-access modifiers, 317–318
-horizontal layering of code, 304–306
-why it is considered bad, 310–311
-Packages, organization vs. encapsulation, 316–319
-Page-Jones, Meilir, 29
-Partial boundaries
-conclusion, 220
-facades, 220
-one-dimensional boundaries, 219
-reasons to implement, 217–218
-skip last step, 218–219
-Patches, in 4-TEL archaeology project, 344
-PCCU, archaeology project, 352–354
-PDP-11/60 computer, 349–351
-Performance, as low-level concern, 281
-Périphérique anti-pattern of ports and adapters, 320–321
-Physical addressing example, 145–146
-Plugin architecture
-in 4-TEL archaeology project, 344
-for device independence, 44
-drawing boundaries for axis of change, 173
-of lower-level components into higher-level components, 187
-Main component as, 237
-start with presumption of, 170–171
-Pointers
-in creating polymorphic behavior, 43
-functional, 22–23
-Policy
-in clean architecture, 203
-high-level. See High-level policy
-overview of, 183–184
-software systems as statements of, 183
-
--- 377 of 444 --
-
-splitting data streams, 227–228
-Polymorphic dispatch, 4-TEL archaeology project, 344
-Polymorphism
-crossing circle boundaries with dynamic, 206
-dependency inversion, 44–47
-flow of control in dynamic, 177–178
-in object-oriented programming, 22, 40–43
-power of, 43–44
-Ports and adapters
-access modifiers, 318
-approach to code organization, 308–310
-decouple dependencies with source code trees, 319–320
-Périphérique anti-pattern of, 320–321
-Positional stability, component, 122–123
-Premature decisions, coupling to, 160–163
-“Presentation Domain Data Layering” (Fowler), 305–306
-Presenters
-in clean architecture, 203, 205
-clean architecture scenario, 207–208
-component architecture, 301
-crossing circle boundaries, 206
-Presenters and humble objects
-conclusion, 215
-data mappers, 214–215
-database getaways, 214
-Humble Object pattern, 212
-overview of, 211–212
-Presenters and Views, 212–213
-service listeners, 215
-testing and architecture, 213
-Processes, partitioning into classes/separating classes, 71–72
-Processor
-is detail, 265–269
-mutability and, 52
-Product, video sales case study, 298
-Productivity
-
--- 378 of 444 --
-
-decreasing, increasing cost of code, 5–7
-signature of a mess, 8–9
-Programming languages
-abstract components in, 125–126
-components, 96
-dynamically typed, 88
-ISP and, 85
-statically typed, 87
-variables in functional languages, 51
-Programming paradigms
-functional programming. See Functional programming
-history of, 19–20
-object-oriented programming. See Object-oriented programming
-overview of, 21–24
-structured programming. See Structured programming
-Proof
-discipline of, 27–28
-structured programming lacking, 30–31
-Proxies, using with frameworks, 293
-Public types
-misuse of, 315–316
-vs. types that are published in modules, 319
-Python
-DIP and, 88
-ISP and, 85
-R
-Race conditions
-due to mutable variables, 52
-protecting against concurrent updates and, 53
-RAM
-4-TEL archaeology project, 341, 343–344
-replacing disks, 280–281
-Rational (company), 367, 368
-RDBMS (relational database management systems), 279–283
-
----
-
-## Sección 124: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 379 of 444 --
-
-Real-time operating system (RTOS) is detail, 269–271
-Relational database management systems (RDBMS), 279–283
-Relational databases, 278, 281–283
-Relaxed layered architecture, 311–312
-Releases
-effect of cycle in component dependency graph, 115–117
-eliminating dependency cycles, 113–115
-numbering new component, 113
-Reuse/Release Equivalence Principle for new, 104–105
-Remote terminals, DLU/DRU archaeology project, 354–356
-REP (Reuse/Release Equivalence Principle), 104–105, 108–110
-Request models, business rules, 193–194
-ReSharper, plugin argument, 172–173
-Response models, business rules, 193–194
-REST, leave options open in development, 141
-Reusability. See CRP (Common Reuse Principle)
-Reuse/Release Equivalence Principle (REP), 104–105, 108–110
-Risks
-architecture should mitigate costs of, 139–140
-of frameworks, 293–294
-ROM boards, 4-TEL archaeology project, 341
-ROSE product, archaeology project, 368–370
-RTOS (real-time operating system) is detail, 269–271
-Ruby
-components as gem files, 96
-DIP and, 88
-ISP and, 85
-RVM tool, module management, 104
-S
-SAC (service area computer), archaeology project
-4-TEL using, 340–341
-architecture, 345–347
-conclusion, 349
-dispatch determination, 345
-
--- 380 of 444 --
-
-DLU/DRU archaeology project, 354–356
-Europe, 348–349
-grand redesign, 347–348
-overview of, 344
-SAP (Stable Abstractions Principle)
-avoiding zones of exclusion, 130
-distance from main sequence, 130–132
-drawing boundary lines, 173
-introduction to, 126–127
-main sequence, 127–130
-measuring abstraction, 127
-where to put high-level policy, 126
-SC (service center), 4-TEL archaeology project, 339–340
-Scalability
-kitty problem and services, 242–243
-services not only option for building, 241
-Schmidt, Doug, 256–258
-Scientific methods, proving statements false, 30–31
-Scope, of changing architecture, 15
-Screaming architecture. See Architecture, screaming
-SDP (Stable Dependencies Principle)
-abstract components, 125–126
-not all components should be, 124–125
-not all components should be stable, 123–125
-overview of, 120
-stability, 120–121
-stability metrics, 122–123
-Stable Abstractions Principle, 127
-Security, testing API, 253
-Selection, as program control structure, 27–28
-Separation of components, as big concern in architecture, 24
-Sequence, as program control structure, 27–28
-Serial communication bus, SAC archaeology project, 347
-Service area computer. See SAC (service area computer), archaeology project
-Service center (SC), 4-TEL archaeology project, 339–340
-Service-level decoupling mode, 153, 156–157
-
--- 381 of 444 --
-
-Services
-component-based, 245–246
-conclusion, 247
-cross-cutting concerns, 246–247
-decoupling fallacy, 240–241
-as function calls vs. architecture, 240
-Humble Object boundaries for, 214–215
-independent development/deployment fallacy, 241
-kitty problem, 242–243
-objects to the rescue, 244–245
-overview of, 239
-as strongest boundary, 180–181
-Set program interrupt (SPI) instruction, aluminum die-cast archaeology project,
-Shape, of change, 15
-Single Responsibility Principle. See SRP (Single Responsibility Principle)
-SOA (service-oriented architecture)
-decoupling mode, 153
-in Electronic Receptionist archaeology project, 360–361
-reasons for popularity of, 239
-Sockets, local processes communicate via, 180
-Software
-clean embedded architecture isolates OS from, 270
-components. See Components
-eliminating target-hardware bottleneck with layers, 262–263
-fuzzy line between firmware and, 263–264
-getting it right, 1–2
-SOLID principles, 58
-value of architecture vs. behavior, 14–18
-Software development
-fighting for architecture over function, 18
-like a science, 31
-Software reuse
-Common Reuse Principle, 107–108
-reusable components and, 104
-Reuse/Release Equivalence Principle, 104–105
-
--- 382 of 444 --
-
-SOLID principles
-Dependency Inversion Principle. See DIP (Dependency Inversion Principle)
-designing component-based services using, 245–246
-history of, 57–59
-Interface Segregation Principle. See ISP (Interface Segregation Principle)
-Liskov Substitution Principle. See LSP (Liskov Substitution Principle)
-OO approach for cross-cutting concerns, 244–245
-Open-Closed Principle. See OCP (Open-Closed Principle)
-Single Responsibility Principle. See SRP (Single Responsibility Principle)
-Source code, compiling, 97–98
-Source code dependencies
-creating boundary crossing via, 176
-crossing circle boundaries, 206
-decoupling, 184–185, 319
-dependency inversion, 44–47
-local processes as, 180
-OCP example, 72
-referring only to abstractions, 87–88
-UI components reuse game rules via, 222–223
-Source code trees, decoupling dependencies, 319–321
-Source-level decoupling mode, 155–157, 176–178
-Spelunking, architecture mitigates costs of, 139–140
-SPI (set program interrupt) instruction, aluminum die-cast archaeology project,
-Splitting data streams, 227–228
-Square/rectangle problem, LSP, 79
-Squares of integers, functional programming, 50–51
-SRP (Single Responsibility Principle)
-accidental duplication example, 63–65
-Common Closure Principle vs., 106–107
-conclusion, 66–67
-decoupling layers, 152
-defined, 59
-dependency management, 302
-in good software architecture, 71
-grouping policies into components, 186–187
-
----
-
-## Sección 125: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 383 of 444 --
-
-keeping changes localized, 118
-merges, 65
-overview of, 61–63
-solutions, 66–67
-use case analysis, 299
-where to draw boundaries, 172–173
-Stability, component
-measuring, 122–123
-relationship between abstraction and, 127–130
-SAP. See SAP (Stable Abstractions Principle)
-understanding, 120–121
-Stable Abstractions Principle. See SAP (Stable Abstractions Principle)
-Stable components
-abstract components as, 125–126
-as harmless in Zone of Pain, 129
-not all components should be, 123–125
-placing high-level policies in, 126
-Stable Abstractions Principle, 126–127
-Stable Dependencies Principle. See SDP (Stable Dependencies Principle)
-Stakeholders
-scope vs. shape for cost of change, 15
-seniority of architecture over function, 18
-values provided by software systems, 14
-State
-concurrency issues from mutation, 53
-storing transactions but not, 54–55
-Static analysis tools, architecture violations, 313
-Static vs. dynamic polymorphism, 177
-Strategy pattern
-creating one-dimensional boundaries, 219
-OO approach for cross-cutting concerns, 244–245
-Streams, data
-clean architecture and, 224–226
-crossing, 226
-splitting, 227–228
-Structural coupling, testing API, 252
-
--- 384 of 444 --
-
-Structure. See Architecture
-Structured programming
-Dijkstra’s proclamation on goto statements, 28–29
-discipline of proof, 27–28
-functional decomposition in, 29
-history of, 22
-lack of formal proofs, 30
-overview of, 26
-role of science in, 30–31
-role of tests in, 31
-value of, 31–32
-Substitution
-LSP. See LSP (Liskov Substitution Principle)
-programming to interfaces and, 271–272
-Subtypes, defining, 78
-T
-Target-hardware bottleneck, 261, 262–272
-TAS (Teradyne Applied Systems), 334–338, 339–344
-Template Method pattern, OO approach for cross-cutting concerns, 244–245
-Test boundary
-conclusion, 253
-designing for testability, 251
-Fragile Tests Problem, 251
-overview of, 249–250
-testing API, 252–253
-tests as system components, 250
-Testable architecture
-clean architecture creating, 202
-clean embedded architecture as, 262–272
-overview of, 198
-Testing
-and architecture, 213
-Presenters and Views, 212–213
-in structured programming, 31
-
--- 385 of 444 --
-
-unit. See Unit testing
-via Humble Object pattern, 212
-Threads
-mutability and, 52
-schedule/order of execution, 179
-Three-tiered “architecture” (as topology), 161
-Top-down design, component structure, 118–119
-Transactional memory, 53
-Transactions, storing, 54–55
-Transitive dependencies, violating software principles, 75
-Trouble tickets, CDS archaeology project, 362–364
-True duplication, 154–155
-Turning, Alan, 23
-U
-UI (user interface). See also GUI (graphical user interface)
-applying LSP to, 80
-clean architecture independent from, 202
-crossing circle boundaries, 206
-decoupling business rules from, 287–289
-decoupling layers, 152–153
-decoupling use cases, 153
-Hunt the Wumpus adventure game, 222–223
-independent developability, 47, 154
-Interface Segregation Principle, 84
-programming to, 271–272
-reducing volatility of, 88
-SAC archaeology project, 346
-UML class diagram
-package by layer, 304–305, 310
-ports and adapters, 308–310
-relaxed layered architecture, 311–312
-Uncle Bob, 367, 369
-UNIFY database system, VRS archaeology project, 358–359
-Union Accounting system, archaeology project, 326–334
-
--- 386 of 444 --
-
-Unit testing
-creating testable architecture, 198
-effect of cycle in component dependency graph, 116–117
-via Humble Object pattern, 212
-UNIX, IO device driver functions, 41–44
-Upgrades, risks of frameworks, 293
-Urgency, Eisenhower’s matrix of importance vs., 16–17
-Use cases
-architecture must support, 148
-business rules for, 191–194
-clean architecture scenario, 207–208
-coupling to premature decisions with, 160
-creating testable architecture, 198
-crossing circle boundaries, 206
-decoupling, 152
-decoupling mode, 153
-Dependency Rule for, 204
-duplication of, 155
-good architecture centered on, 196, 197
-independent developability and, 154
-video sales case study, 298–300
-User interface
-GUI. See GUI (graphical user interface)
-UI. See UI (user interface)
-Utility library, Zone of Pain, 129
-Uucp connection, 366
-V
-Values, software system
-architecture (structure), 14–15
-behavior, 14
-Eisenhower’s matrix of importance vs. urgency, 16–17
-fighting for seniority of architecture, 18
-function vs. architecture, 15–16
-overview of, 14
-
--- 387 of 444 --
-
-Variables, functional language, 51
-Varian 620/f minicomputer, Union Accounting archaeology project, 331–334
-Video sales case study
-component architecture, 300–302
-conclusion, 302
-dependency management, 302
-on process/decisions of good architect, 297–298
-product, 298
-use case analysis, 298–300
-View Model, Presenters and Views, 213
-Views
-component architecture, 301
-Presenters and, 212–213
-Vignette Grande, architects registry exam, 371–372
-Visual Studio, plugin argument, 172–173
-Voice technologies, archaeology projects
-Electronic Receptionist, 359–361
-Voice Response System, 357–359
-Volatile components
-dependency graph and, 118
-design for testability, 251
-placing in volatile software, 126
-as problematic in Zone of Pain, 129
-Stable Dependencies Principle and, 120
-Von Neumann, 34
-VRS (Voice Response System), archaeology projects, 357–359, 362–363
-W
-Web
-as delivery system for your application, 197–198
-Dependency Rule for, 205
-is detail, 285–289
-Web servers
-creating testable architecture without, 198
-as option to be left open, 141, 197
-
----
-
-## Sección 126: Chapter 21, “Screaming Architecture,” will make this point much clearer.
-
--- 388 of 444 --
-
-writing own, 163–165
-Weekly build, 112–113
-Wiki text, architectural success story, 164
-Y
-Yourdon, Ed, 29
-Z
-Zones of exclusion
-avoiding, 130
-relationship between abstraction/stability, 128
-Zone of Pain, 129
-Zone of Uselessness, 129–130
-
--- 389 of 444 --
-
--- 390 of 444 --
-
-Code Snippets
-
--- 391 of 444 --
-
--- 392 of 444 --
-
--- 393 of 444 --
-
--- 394 of 444 --
-
--- 395 of 444 --
-
--- 396 of 444 --
-
--- 397 of 444 --
-
--- 398 of 444 --
-
--- 399 of 444 --
-
--- 400 of 444 --
-
--- 401 of 444 --
-
--- 402 of 444 --
-
-Code Snippets
-
--- 403 of 444 --
-
--- 404 of 444 --
-
--- 405 of 444 --
-
--- 406 of 444 --
-
--- 407 of 444 --
-
-Code Snippets
-
--- 408 of 444 --
-
--- 409 of 444 --
-
--- 410 of 444 --
-
--- 411 of 444 --
-
--- 412 of 444 --
-
--- 413 of 444 --
-
-Code Snippets
-
--- 414 of 444 --
-
--- 415 of 444 --
-
--- 416 of 444 --
-
-Code Snippets
-
--- 417 of 444 --
-
--- 418 of 444 --
-
-Code Snippets
-
--- 419 of 444 --
-
--- 420 of 444 --
-
-Code Snippets
-
--- 421 of 444 --
-
--- 422 of 444 --
-
--- 423 of 444 --
-
--- 424 of 444 --
-
--- 425 of 444 --
-
--- 426 of 444 --
-
--- 427 of 444 --
-
--- 428 of 444 --
-
--- 429 of 444 --
-
--- 430 of 444 --
-
-Code Snippets
-
--- 431 of 444 --
-
--- 432 of 444 --
-
--- 433 of 444 --
-
--- 434 of 444 --
-
--- 435 of 444 --
-
--- 436 of 444 --
-
--- 437 of 444 --
-
--- 438 of 444 --
-
--- 439 of 444 --
-
--- 440 of 444 --
-
--- 441 of 444 --
-
--- 442 of 444 --
-
-Code Snippets
-
--- 443 of 444 --
-
--- 444 of 444 --
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #architecture_and_books

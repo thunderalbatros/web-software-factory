@@ -1,4 +1,4 @@
-﻿# Tratado Canónico de los 14 Libros Útiles del Repositorio `qasimhbti/books`: SQLite Internals, Escalabilidad Web, Edge Caching, Grafos, Algoritmos Bitwise y Diagnóstico RCA (2026)
+# Tratado Canónico de los 14 Libros Útiles del Repositorio `qasimhbti/books`: SQLite Internals, Escalabilidad Web, Edge Caching, Grafos, Algoritmos Bitwise y Diagnóstico RCA (2026)
 
 **Alcance:** Aplicable a la capa de persistencia SQLite/Durable Objects (`worker/index.js`, `tools/intelligence/rag_pipeline.mjs`), caché de borde HTTP en Cloudflare Workers, estructuras en memoria para Leaderboards y sorteos en vivo (`site/js/`), grafos de conocimiento y antifraude (`CodeGraph`, `WikiGraph`, `security-anti-fraud.js`), procesamiento DSP WebAudio y diagnóstico automatizado de causa raíz (`Squad 6` & `Squad 9`).
 

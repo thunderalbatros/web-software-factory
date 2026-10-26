@@ -1,4 +1,4 @@
-﻿# 📚 Libro Completo: Even Ninja Monkeys Like to Play: Unicorn Edition
+# 📚 Libro Completo: Even Ninja Monkeys Like to Play: Unicorn Edition
 
 **Alcance:** Fuente bibliográfica completa sobre Hexad de Tipos de Jugadores (Socializers, Free Spirits, Achievers, Philanthropists, Players, Disruptors) y Gamificación (Even Ninja Monkeys Like to Play: Unicorn Edition — Andrzej Marczewski). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
@@ -7,11 +7,11 @@
 > **Archivo Fuente:** `pdfcoffee.com_even-ninja-monkeys-like-to-play-andrzej-marczewski-2018-4-pdf-free.pdf`  
 > **Páginas Originales:** 346  
 > **Secciones Extraídas:** 52  
-> **Fecha de Ingesta:** 2026-10-19  
+> **Fecha de Ingesta:** 2026-10-19
 
 ---
 
-## Sección 1: Foundations & Introduction
+## Sección 1: Foundations & Introduction [Entropy: 0.25]
 
 Andrzej Marczewski
 EVEN NINJA
@@ -20,9 +20,6 @@ UNICORN EDITION
 Gamification, Game Thinking and
 Motivational Design
 Gamified UK
-
--- 1 of 346 --
-
 Even Ninja Monkeys Like to Play: Unicorn Edition
 © 2018 Andrzej Marczewski
 All rights reserved
@@ -46,18 +43,12 @@ Figure 32 Oxytocin "Oxytocin with labels" by Edgar181 - Own work. Licensed under
 Public Domain via Wikimedia Commons - https://commons.wikimedia.org/wiki/File:Oxytocin_with_labels.png#/media/File:Oxytocin_with_labels.png
 ISBN: 9781724017109
 10 9 8 7 6 5 4
-
--- 2 of 346 --
-
 Originally this was dedicated to just my Mother who passed in
 2007. I dedicate this version to both my Mum and my Dad (who is
 still alive and well!).
 Both encouraged me and believed in myself when many would not
 early in my life.
 It is thanks in large part to them that I am who I am today.
-
--- 3 of 346 --
-
 Even Ninja Monkeys Like to Play
 CONTENTS
 Contents ...........................................................................................4
@@ -72,9 +63,6 @@ Glossary .......................................................................
 References ................................................................................... 331
 Index ........................................................................................... 342
 About the author......................................................................... 344
-
--- 4 of 346 --
-
 Acknowledgements
 ACKNOWLEDGEMENTS
 First, I want to thank my wife and wonderful family. Without their
@@ -93,9 +81,6 @@ and got this one, you are awesome, and I love you!
 Finally, huge thanks to Dutch Driver, another expert in the field of
 gamification, for his Herculean efforts to edit the original book,
 despite my best attempts to get in his way.
-
--- 5 of 346 --
-
 Even Ninja Monkeys Like to Play
 INTRODUCTION
 I have always been a gamer. One of my earliest memories is of playing
@@ -118,9 +103,6 @@ good – were all catered for in gamification. I started to blog about it
 obsessively, learning everything I could about the topic. I released a
 book 3 in the same year and started to get involved in speaking and
 consulting on the topic.
-
--- 6 of 346 --
-
 Introduction
 What you have in your hands now is a kind of reboot of that original
 book, in fact, it is the second edition of that reboot (a reboot of a reboot???) Based on my blogs over the last few years as well as essays
@@ -146,9 +128,7 @@ enjoy and remember – even ninja monkeys (or unicorns) like to play!
 
 ---
 
-## Sección 2: Foundations & Introduction
-
--- 7 of 346 --
+## Sección 2: Foundations & Introduction [Entropy: 0.265]
 
 Even Ninja Monkeys Like to Play
 So much has changed since the first edition.
@@ -158,23 +138,13 @@ kidnapped him. He soon went mad, talking about
 creating a new edition of the book. That was when we met
 our new friend, Rainbow Unicorn. New or heavily updated
 content will be highlighted by Rainbow for you with a unicorn!
-
--- 8 of 346 --
-
 THE THEORY OF GAMES, PLAY AND
 GAMIFICATION
-
--- 9 of 346 --
-
--- 10 of 346 --
 
 What is Gamification? What is Gamification? What is Gamification? What is Gamification?
 This chapter will show you some of the history of the word
 gamification as well as a few definitions. My Master’s
 definition is also there for you to laugh look at.
-
--- 11 of 346 --
-
 Even Ninja Monkeys Like to Play
 Every story needs to have a beginning, and this is no different.
 Once upon a time, in 2002, Nick Pelling officially coined a
@@ -196,9 +166,6 @@ Deterding’s definition 6, “The use of game design elements in nongame contex
 Another one that has gained popularity is Kevin Werbach’s 7 “The
 process of making activities more game-like,” which is my personal
 favourite from other experts.
-
--- 12 of 346 --
-
 What is Gamification?
 My definition, when cornered, is;
 “The use of game design metaphors to create more
@@ -218,9 +185,6 @@ general”.
 Do not be afraid of the word gamification. It has a bad reputation at
 times, but that does not mean you should not use it. Some will tell you
 that you should speak about “Behavioural Change” or “Human Centric Design”, and I have been guilty of this myself.
-
--- 13 of 346 --
-
 Even Ninja Monkeys Like to Play
 However, you are better off getting a good understanding of what
 gamification really is (by reading this book of course...) and then be
@@ -234,17 +198,11 @@ on his blog whilst I was writing this, that I think is very relevant here:
 Game design is about giving problems to the user.”
 If you consider that gamification is a form of user experience (UX)
 design, you can see just how different the two really are.
-
--- 14 of 346 --
-
 What Are Games and Play? What Are Games and Play? What Are Games and Play? What Are Games and Play?
 As the title suggests, I love to play. Sadly, my Master is
 not as fun as he makes out. It has been so long since I last
 played, I have almost forgotten how. This chapter is my
 favourite as it reminds me of what play is all about.
-
--- 15 of 346 --
-
 Even Ninja Monkeys Like to Play
 Defining Play
 There are many definitions of play that people with an interest probably argue over! The most well know is that of Johan Huizinga from
@@ -265,9 +223,6 @@ suffice to say – it really is not as simple as it seems, but it is fascinating
 Lusory Attitude
 Play has been an area of academic study since the times of Plato!
 Whilst I researched play, one word became hard to ignore - ludic.
-
--- 16 of 346 --
-
 What are Games and Play?
 It comes up often in papers and articles about play. Ludic is derived
 from the Latin for play, ludus, and is defined as “Showing spontaneous and undirected playfulness” 9.
@@ -292,9 +247,7 @@ academic studies.
 
 ---
 
-## Sección 3: Foundations & Introduction
-
--- 17 of 346 --
+## Sección 3: Foundations & Introduction [Entropy: 0.265]
 
 Even Ninja Monkeys Like to Play
  You start with a tutorial. It sets the context for what you are doing as well as giving you the basic skills to start.
@@ -319,9 +272,6 @@ There are many views of play out there. My view is that play is a freeform activ
 sort of description, play is an activity – it follows a similar line of
 thought to that proposed by historian, Johan Huizinga in Homo
 Ludens 8.
-
--- 18 of 346 --
-
 What are Games and Play?
 Huizinga also gave us another important concept. When considering
 games and play, the Magic Circle. The Magic Circle can be visualised
@@ -346,9 +296,6 @@ own movements became less interesting, probably because they had
 discovered the boundaries of what could be done, so players needed
 to have some help. They would pick up props and use them in ways
 they found entertaining. These props became toys.
-
--- 19 of 346 --
-
 Even Ninja Monkeys Like to Play
 Toys
 Toys are an interesting concept when considering games and play. In
@@ -370,9 +317,6 @@ world that has its own implicit rules for how the world behaves. This
 world has constraints that you as the player have to abide by.
 How far you can dig down, how far you can build up, how certain
 blocks behave with other blocks and more.
-
--- 20 of 346 --
-
 What are Games and Play?
 However, within those constraints, you can do what you want. You
 can use the world itself as a toy and play with it. That can include turning the world into the setting for a game!
@@ -393,9 +337,6 @@ Marvin Minsky
 Bernard Suits
 “A series of meaningful choices” 17
 Sid Meier
-
--- 21 of 346 --
-
 Even Ninja Monkeys Like to Play
 “A game is a problem-solving activity, approached with a playful
 attitude.” 18
@@ -421,9 +362,7 @@ puzzles going A to Z to E to B and back again!
 
 ---
 
-## Sección 4: Foundations & Introduction
-
--- 22 of 346 --
+## Sección 4: Foundations & Introduction [Entropy: 0.25]
 
 What are Games and Play?
 Bringing It All Together
@@ -435,9 +374,6 @@ written like this;
  You play a game with a toy.
 Figure 1 is my attempt to summarise all of this as neatly as possible.
 Figure 1 Play, Games and Toys
-
--- 23 of 346 --
-
 Even Ninja Monkeys Like to Play
 Play in Context
 The concept of play is very important to me. I feel that it is one of the
@@ -459,9 +395,6 @@ First and foremost, Playfulness and Gamefulness both need a safe environment. Pl
 explicit rules imposed by the system or environment. In contrast,
 Gamefulness is a little less freeform, there are explicit rules that are
 maintained by the system.
-
--- 24 of 346 --
-
 What are Games and Play?
 Play Sits Between Chaos and Control
 Over the years I have concluded that play sits between chaos and control in the context of the world within which play is occurring. It is not
@@ -473,9 +406,6 @@ intent. Did we explicitly mean to do something or is it more implicit
 in nature? It occurred to me that play also sits between implicit and
 explicit desires and actions. We play at a conscious and subconscious level.
 Figure 2 Play in Context
-
--- 25 of 346 --
-
 Even Ninja Monkeys Like to Play
 I mapped out a few other concepts to give this more context. For instance, I see anarchy as a deliberate act that leads to chaos. Art is implicit to the artist, that is it comes from the soul. However, the artist
 must have a level of control from the artist. They must get their ideas
@@ -497,9 +427,6 @@ case – especially in more “traditional” jobs. Explicit Control rules!
 As you can finally see, Play sits somewhere in the middle of all of
 this. It is implicit, explicit, chaotic and controlled all at once. Hey, I
 didn’t say it was simple!
-
--- 26 of 346 --
-
 What are Games and Play?
 So What?
 This is all very philosophical, but there is a useful point to this. To get
@@ -523,9 +450,6 @@ inherent to the ball. In a game like Minecraft, the inherent rules of the
 game would include how high you can build, how deep you can dig,
 what you must combine to make certain objects. The player plays
 within these inherent rules.
-
--- 27 of 346 --
-
 Even Ninja Monkeys Like to Play
 System Rules
 System rules are rules that are added by the player or the designer that
@@ -549,9 +473,7 @@ objects.
 
 ---
 
-## Sección 5: Foundations & Introduction
-
--- 28 of 346 --
+## Sección 5: Foundations & Introduction [Entropy: 0.265]
 
 What are Games and Play?
 They have inherent rules, as I said earlier, but really, they must have
@@ -564,9 +486,6 @@ play or games, play can exist without toys or games. Games, however,
 must have play to exist.
 In diagrammatic form (as is my way) this looks a bit like the following
 Figure 3 Play, Toys and Games
-
--- 29 of 346 --
-
 Even Ninja Monkeys Like to Play
 Inherent rules affect games, play and toys. Meta-rules affect play, and
 in turn games (you can’t have a game without play!). Finally, system
@@ -576,9 +495,6 @@ Having introduced the concept of Meta-Rules, it seems sensible to expand on them
 inherent rules that guide how people play.
 I have broken them down into four categories; social, contextual, communication and personal.
 Figure 4 The Meta Rules of Play
-
--- 30 of 346 --
-
 What are Games and Play?
 Communication
 Communication and empathy play an enormous part in collaborative
@@ -600,9 +516,6 @@ there could be other underlying emotions.
 Social
 Social meta-rules are more about what society expects. When playing,
 there are some things that others don’t expect – based on social rules.
-
--- 31 of 346 --
-
 Even Ninja Monkeys Like to Play
 Whilst I have broken these down into three headings, they are all
 linked. There is an expected behaviour based on culture and the
@@ -627,9 +540,6 @@ take a darker turn.
 o If you are playing with a toy of some sort, that can drastically change what you are playing. It may be fun to bounce
 a ball off a wall, but less so if you are then handed a wooden
 block instead!
-
--- 32 of 346 --
-
 What are Games and Play?
 Personal
 Everyone is different and what they find enjoyable or fun is also very
@@ -647,9 +557,6 @@ with a ball, others would prefer to act out plays with dolls.
  Fears
 o Fear is a great motivator. That example of playing catch on
 a cliff. I would not do it, but some might!
-
--- 33 of 346 --
-
 Even Ninja Monkeys Like to Play
 A lot of things in life are very game-like in nature, especially work.
 There are strict rules about how tasks must be completed. Completion
@@ -669,9 +576,6 @@ some reason, their mature ways of thinking have evolved to preclude
 imagination totally. If they are not told exactly what to do, they just
 can’t cope and think their way out of a situation they have not been
 programmed to deal with.
-
--- 34 of 346 --
-
 What are Games and Play?
 On the flip side, my eldest daughter in the absence of rules just tries
 stuff. If it doesn’t work, she tries something else. She learns as she
@@ -688,18 +592,13 @@ Let them play!
 
 ---
 
-## Sección 6: Foundations & Introduction
-
--- 35 of 346 --
+## Sección 6: Foundations & Introduction [Entropy: 0.28]
 
 What Are What Are What Are What Are Game Game Game Game M M M Mechanics echanics echanics echanics? ? ? ?
 When I do play games, I need to understand the rules.
 It turns out that games folk call these mechanics. Either
 way, knowing how a game works gives me a great chance of
 winning. Just wait Andrzej, just wait…
-
--- 36 of 346 --
-
 What Are Game Mechanics?
 Game mechanics are often spoken about in gamification, but their
 meaning is often lost, misunderstood or misapplied. I want to take a
@@ -717,9 +616,6 @@ support overall gameplay dynamics” Robin Hunicke, Marc LeBlanc
 “These are the procedures and rules of your game. Mechanics describe the goal of your game, how players can and cannot try to
 achieve it, and what happens when they try.” Jesse Schell: The Art of
 Game Design, A Book of Lenses 18
-
--- 37 of 346 --
-
 Even Ninja Monkeys Like to Play
 For our purposes, we can distil the definition down to:
 “A distinct set of rules that dictate the outcome of interactions within the system. They have an input, a process and
@@ -741,9 +637,6 @@ meaning. This would break down into many different elements
 in the system.
  Output: The user feels a sense of purpose and greater meaning
 It does not really fit.
-
--- 38 of 346 --
-
 What Are Game Mechanics?
 The reality is that you cannot break something like Epic Meaning
 down like this, so it is not a mechanic. It is the outcome of many different mechanics and interactions within a well-designed system.
@@ -768,9 +661,6 @@ Is there something like this in gamification? Yes, there are mechanics,
 but they are hidden deep in the system. As a gamification designer,
 you are often considering the dynamics and the aesthetics or emotions
 of the user for whom you are designing, less than the mechanics.
-
--- 39 of 346 --
-
 Even Ninja Monkeys Like to Play
 A very simple example, where we want to increase the number of Likes
 content on a brand’s Facebook page gets. We will use the old classic:
@@ -787,9 +677,6 @@ now has. The second takes the points and works out where the user
 now sits on a leaderboard, giving them some level of status.
 Progress bars, images of badges and leaderboards are just visual aids
 to monitor feedback, not game mechanics.
-
--- 40 of 346 --
-
 What Are Game Mechanics?
 Considering Gamification
 A popular framework within game design is the MDA framework,
@@ -817,9 +704,7 @@ Joy, fear, frustration etc.
 
 ---
 
-## Sección 7: Foundations & Introduction
-
--- 41 of 346 --
+## Sección 7: Foundations & Introduction [Entropy: 0.25]
 
 Even Ninja Monkeys Like to Play
 Taking a common gamification example, how could these be used to
@@ -843,15 +728,9 @@ and why it is so hard to talk about real mechanics in gamification. I
 have not even spoken about the fact we need to consider motivation of
 the user to do something. Many of the things that are spoken about as
 mechanics are really motivations or drives!
-
--- 42 of 346 --
-
 What is Fun? What is Fun? What is Fun? What is Fun?
 What you find fun, I may not – are you into swinging
 from the trees and eating bananas with your feet?
-
--- 43 of 346 --
-
 Even Ninja Monkeys Like to Play
 Fun
 According to the dictionary, fun is “Enjoyment, amusement, or lighthearted pleasure” 22. To you or me though, fun can have lots of meanings. It could be watching your children play in the garden, reading a
@@ -880,9 +759,6 @@ Game as mindless pastime
 Nicole Lazzaro has one of my favourite views on fun – the 4 Keys 2
 Fun. More than just labels, this describes how users experience fun
 and how to design games to enhance that.
-
--- 44 of 346 --
-
 What Is Fun?
 Nicole Lazzaro's 4 Keys 2 Fun
 People Fun (Friendship)
@@ -913,9 +789,6 @@ Puzzles, use of problem-solving
 Challenge
 Overcoming obstacles. Attaining
 a sense of achievement.
-
--- 45 of 346 --
-
 Even Ninja Monkeys Like to Play
 Free Spirited Fun
 Exploration
@@ -940,9 +813,6 @@ Competition
 You vs. the world.
 Altruism
 Selfless acts towards others, sense of greater purpose.
-
--- 46 of 346 --
-
 What Is Fun?
 Facilitated, Personal Fun
 Narrative
@@ -971,17 +841,11 @@ As you can see, you can look at fun in many ways. In my view, gamification is no
 of a solution, but that is not its key purpose.
 That said, understanding that what you find fun others may find embarrassing or annoying, is key to you designing experiences that more
 people are likely to engage with.
-
--- 47 of 346 --
-
 What is What is What is What is Game T Game T Game T Game Thinking hinking hinking hinking? ? ? ?
 Like many, my Master used to use gamification as an
 umbrella term for all game-based solutions. Then, thinking
 he was clever, he came up with Game Thinking as an
 alternative catch-all.
-
--- 48 of 346 --
-
 What is Game Thinking?
 Gamification is often used as a catch-all for games-based solutions. In
 theory, this is not a problem, but it can confuse people as to what gamification is. That is why Game Thinking or Game Based Solutions is
@@ -993,9 +857,6 @@ problems and create better experiences.”
 Those problems could be “how do we engage a new audience” or
 “how do we help people get to the next stage of this learning”. Game
 Thinking contains four main categories: Gamification, Game Inspired/Playful Design, Serious Games and Games.
-
--- 49 of 346 --
-
 Even Ninja Monkeys Like to Play
 Figure 6 Game Thinking by Intent
 The categorisations consider the original design intent of the products, whether it was designed to be just for entertainment or for a purpose. Also, the inclusion of gameplay is considered.
@@ -1010,18 +871,13 @@ Figure 7 Game Thinking
 
 ---
 
-## Sección 8: Foundations & Introduction
-
--- 50 of 346 --
+## Sección 8: Foundations & Introduction [Entropy: 0.295]
 
 Gamification and Game Thinking in Gamification and Game Thinking in Gamification and Game Thinking in Gamification and Game Thinking in
 Practice Practice Practice Practice
 Now that you understand what my Master thinks game
 thinking is, how about I show you some examples of it in
 action. He sure as hell won’t bother!
-
--- 51 of 346 --
-
 Even Ninja Monkeys Like to Play
 Serious Games
 This group includes full games that have been created for reasons
@@ -1034,9 +890,6 @@ how to use the animation software Play Sketch. Rather than just
 showing you the tools or simulating them in a dry way, it has you solving various puzzles that need deeper and deeper understanding of the
 tool as the game progresses. It plays well as a game in its own right.
 Figure 8 Phantomation
-
--- 52 of 346 --
-
 Gamification and Game Thinking in Practice
 Game Inspired/Playful Design
 This is where no actual elements from games are used, just ideas. For
@@ -1052,9 +905,6 @@ the inner workings of a game (mechanics, dynamics, tokens, etc.)
 I look a little more deeply at play and playfulness elsewhere in the
 book.
 Figure 9 www.tocaboca.com
-
--- 53 of 346 --
-
 Even Ninja Monkeys Like to Play
 Meaningful Game/Games for Good
 This is a group of games that attempts to get across a meaningful message and promote change with that message. An example of this would
@@ -1067,9 +917,6 @@ Rather than trying to teach you a tool or a method of doing something,
 this type of game is trying to inform you about ideas that may never
 have crossed your mind in a way that is engaging and meaningful.
 Figure 10 Darfur is Dying
-
--- 54 of 346 --
-
 Gamification and Game Thinking in Practice
 Purposeful Game
 The idea of a purposeful game is that playing it has some sort of realworld outcome. Three examples of this come to mind: FoldIt, Tilt
@@ -1085,9 +932,6 @@ traditional methods 25.
 Figure 11 Genes in Space
 Tilt World, by Nicole Lazzaro, is a mobile game that puts you in the
 body of the last tadpole – Flip.
-
--- 55 of 346 --
-
 Even Ninja Monkeys Like to Play
 You must eat carbon from the air in an attempt to restore the sunshine
 to Flip’s home. Although this may seem like a meaningful game, in
@@ -1109,9 +953,6 @@ basic types. Intrinsic deep and Extrinsic trivial. This is very similar to
 Karl Kapp’s two types of gamification 28, where he talks about structural and content gamification.
 Trivial gamification is what most people are used to, where game elements are bolted on to a system. You will often see points, badges,
 progress bars, and the like.
-
--- 56 of 346 --
-
 Gamification and Game Thinking in Practice
 Figure 12 Gamified UK with Trivial Layer Gamification
 Figure 12 shows my own website, with a simple Trivial Layer implementation of gamification. It has points, badges, leaderboards and
@@ -1129,9 +970,7 @@ in order to function and fulfil its designed intent. It exists to allow users to
 
 ---
 
-## Sección 9: Foundations & Introduction
-
--- 57 of 346 --
+## Sección 9: Foundations & Introduction [Entropy: 0.25]
 
 Even Ninja Monkeys Like to Play
 Simulations are not a new phenomenon either, with military simulations in one form or another used since the start of organised warfare.
@@ -1149,9 +988,6 @@ undertaken for fun or joy.
  Games add defined goals and rules to play, like challenges.
  Toys are objects that can be used in play or games.
 Concentrating on games, I categorise them into three basic types.
-
--- 58 of 346 --
-
 Gamification and Game Thinking in Practice
 Entertainment
 Entertainment is what most people would associate with games. Call
@@ -1167,9 +1003,6 @@ These are proper games created to advertise something. The game is
 a real game, but at some stage, it is being used to try to sell you something. An example I enjoyed playing, was Elfridges, an old-school
 platformer in the style of Super Mario, designed to raise awareness of
 Selfridges and its various locations 30.
-
--- 59 of 346 --
-
 Even Ninja Monkeys Like to Play
 The Game Thinking Spectrum
 With all of that said and highlighting all the differences between various game-based solutions, a good gamification practitioner will look
@@ -1188,18 +1021,12 @@ Gameplay: As we move to the gameplay end of the spectrum, the
 solutions are more game than game-like. They have true gameplay
 and all the trappings one would expect with a true game, whether
 it is for more serious purposes or for pure entertainment.
-
--- 60 of 346 --
-
 Ethical Considerations of Ethical Considerations of Ethical Considerations of Ethical Considerations of
 Gamification Gamification Gamification Gamification
 How ethical is it to keep and train a monkey? Well, if that
 sort of question interests, then this chapter is for you. It
 discusses the ethics of gamification and offers some ways
 to think about them.
-
--- 61 of 346 --
-
 Even Ninja Monkeys Like to Play
 Gamification, the use of game elements in non-game contexts, has
 had its fair share of critics over the years. People have labelled it everything from shamification to exploitationware, fearing its use as
@@ -1220,9 +1047,6 @@ Defining Ethics
 The use of the correct terminology is important to understanding
 one’s perspective in an argument for or against something. With that
 in mind, it is of use to clearly define what is meant by ethics.
-
--- 62 of 346 --
-
 Ethical Considerations of Gamification
 As noted by ethics researchers Richard Paul and Linder Elder, many
 confuse ethics with social, religious or political norms rather than
@@ -1242,9 +1066,7 @@ ethical guidelines, preventing the potential inherent dangers of personal morals
 
 ---
 
-## Sección 10: Foundations & Introduction
-
--- 63 of 346 --
+## Sección 10: Foundations & Introduction [Entropy: 0.265]
 
 Even Ninja Monkeys Like to Play
 Ethics Framework
@@ -1264,9 +1086,6 @@ video games for 10 hours a day, for example, would be considered
 an idle person, and someone who frequently buys diapers would be
 considered as probably a parent, who on balance is more likely to
 have a sense of responsibility” 33.
-
--- 64 of 346 --
-
 Ethical Considerations of Gamification
 This scenario was extrapolated out in a video from Extra Credit titled
 Propaganda Games: Sesame Credit, where this social credit score
@@ -1293,9 +1112,6 @@ focused on benefiting the designer. Whilst participation in the system
 may not directly harm the user, the potential outcomes could have a
 net negative effect on them. For instance, a low social score could lead
 to the loss of friends and the loss of services.
-
--- 65 of 346 --
-
 Even Ninja Monkeys Like to Play
 This does not consider the cultural differences in China compared to
 other countries and it is worth noting that for some, the idea of a social credit system is positive. But the potential outcomes for the user
@@ -1317,9 +1133,6 @@ Go. The main argument raised was: should the designers take responsibility for t
 harm’s way to play the game?
 To consider the ethics of the game, we need to go back to our definition and framework. First, we must ask the question, does the game
 offer players a choice.
-
--- 66 of 346 --
-
 Ethical Considerations of Gamification
 The answer is simple, yes. They do not have to download the game
 and play. Again, as with the social credit example, there is a fear of
@@ -1346,9 +1159,7 @@ unintended, they still happened. So, whilst there is no ethical issue
 
 ---
 
-## Sección 11: Foundations & Introduction
-
--- 67 of 346 --
+## Sección 11: Foundations & Introduction [Entropy: 0.25]
 
 Even Ninja Monkeys Like to Play
 To help limit the danger people faced playing the game, they created
@@ -1370,9 +1181,6 @@ gamified solutions. There have been several created, notably by Zichermann and m
 as far as needed focussing more on the enterprise rather than the individual. However, the key elements that come out are a need for
 transparency and honesty with the user about the intentions of the
 system and not creating systems that deliberately trick users into behaviours that could cause them harm.
-
--- 68 of 346 --
-
 Ethical Considerations of Gamification
 This is the main salient point about ethics and gamification. Gamification becomes unethical when the designer uses the psychology of
 players to manipulate them to do things that are not in their best interest. The use of random rewards to create addictive, gambling-like
@@ -1393,24 +1201,13 @@ Originally Published in XRDS: Crossroads, The ACM Magazine for
 Students Volume 24
 Issue 1, Fall 2017 Pages 56-59 doi: 10.1145/3123756 35
 
--- 69 of 346 --
-
--- 70 of 346 --
-
 THE SCIENCE OF GAMIFICATION
-
--- 71 of 346 --
-
--- 72 of 346 --
 
 What Motivates Us? What Motivates Us? What Motivates Us? What Motivates Us?
 There are many levels of motivation, from survival to
 rewards. I have my own motivations and they may well be
 different to yours… they are certainly different to my
 Master’s as he will soon discover.
-
--- 73 of 346 --
-
 Even Ninja Monkeys Like to Play
 Understanding what motivates people is a key concept in your
 gamification designs if you want them to succeed.
@@ -1422,9 +1219,6 @@ There are many theories out there about what motivates us and how.
 For the purposes of gamification, I break these down into three distinct layers. These layers can help us to understand how and why certain types of gamification may or may not work.
 Three Layers of Motivation
 Figure 14 The Three Layers of Motivation
-
--- 74 of 346 --
-
 What Motivates Us?
 Base
 It is hard to speak about motivation without mentioning Maslow’s Hierarchy of Needs 36 as this is one of the best known of the models that
@@ -1437,9 +1231,6 @@ Figure 15 Maslow's Hierarchy of Needs
 Physiological needs include air, water, sleep and procreation. Safety
 is more about securing yourself and your family. Belonging relates to
 our need to be with others: fellowship, family, sexual intimacy etc.
-
--- 75 of 346 --
-
 Even Ninja Monkeys Like to Play
 Esteem covers less primal needs, achievement, respect, confidence
 and the like. With self-actualisation, we see our needs to solve problems, be creative and be good people.
@@ -1464,9 +1255,7 @@ give you that opportunity.
 
 ---
 
-## Sección 12: Foundations & Introduction
-
--- 76 of 346 --
+## Sección 12: Foundations & Introduction [Entropy: 0.25]
 
 What Motivates Us?
 Emotional / Intrinsic
@@ -1488,9 +1277,6 @@ As linear as this all seems, satisfy the bottom layer, then the middle,
 then use gamification, it isn’t that simple. Short term engagement using extrinsic gamification can work fine, whatever the other needs
 may be, but it will have no sustainability. Also, what one person finds
 extrinsically motivating, others may find much more intrinsic.
-
--- 77 of 346 --
-
 Even Ninja Monkeys Like to Play
 The other key one to look at is Money in the base layer and Excess
 Bonuses being in the trivial/extrinsic section. Money is a base need
@@ -1511,9 +1297,6 @@ they cannot support themselves and guarantee the security and safety
 of their family – no amount of emotional or trivial motivation is going
 to motivate them, at least not in the way you are probably hoping it
 will.
-
--- 78 of 346 --
-
 What Motivates Us?
 This is obviously focused on Enterprise gamification. It is not the job
 of an advertising company using gamification to sell a product, to ensure the base needs of their target audience. This is the job of the individual and their employer. However, if their target audience does
@@ -1522,17 +1305,11 @@ it is unlikely that the advertising will work on them, gamified or otherwise!
 In the enterprise, be aware that if your employees are struggling financially and it is perceived that you could improve this, gamification
 could seriously backfire. The money you spend on that could be seen
 to be spent on improving the lives of the employees at a base level rather than a trivial one!
-
--- 79 of 346 --
-
 The The The The Intr Intr Intr Intrinsic Motivation R insic Motivation R insic Motivation R insic Motivation RAMP AMP AMP AMP
 When creating your gamified solutions, it is important to
 find the intrinsic motivations that will keep your users
 engaged. Mastery is my main motivation, not that certain
 people would notice.
-
--- 80 of 346 --
-
 The Intrinsic Motivation RAMP
 I have mentioned intrinsic motivation and extrinsic rewards a few
 times now, so it is about time to take a closer look at what they are and
@@ -1552,9 +1329,6 @@ Relatedness
 Purpose
 As you can see, the only real difference is that Pink drops relatedness
 for purpose, with mastery meaning the same here as competence.
-
--- 81 of 346 --
-
 Even Ninja Monkeys Like to Play
 Combining these four motivators, we get what I term the Intrinsic
 RAMP – Relatedness, Autonomy, Mastery and Purpose.
@@ -1572,9 +1346,6 @@ virtual, but give people a feeling of satisfaction, sociability and selfdetermin
 these intrinsic motivators present in some form or another. This is not
 to say that extrinsic rewards are of no value, far from it. They can be a
 great way to reinforce and support motivation, as we will see later.
-
--- 82 of 346 --
-
 The Intrinsic Motivation RAMP
 Relatedness
 Relatedness is the desire to be connected to others. In gamification,
@@ -1596,9 +1367,7 @@ get those people talking, sharing, and giving each other feedback.
 
 ---
 
-## Sección 13: Foundations & Introduction
-
--- 83 of 346 --
+## Sección 13: Foundations & Introduction [Entropy: 0.295]
 
 Even Ninja Monkeys Like to Play
 Autonomy
@@ -1620,9 +1389,6 @@ at least some control of what they are doing. For example, in an enterprise situ
 leaving your employees to get on with their job. It shows them that
 they are trusted and can not only give you happier people but may also
 surface some great innovation.
-
--- 84 of 346 --
-
 The Intrinsic Motivation RAMP
 Mastery
 Mastery is the process of becoming skilled at an activity and eventually mastering it – becoming an expert. It is important to us that we
@@ -1642,9 +1408,6 @@ continue to challenge employees, they will begin to feel less motivated.
 In the same way, if you do not encourage them to improve or even
 change their skills in ways that line up with their own desires, over
 time you will see de-motivation.
-
--- 85 of 346 --
-
 Even Ninja Monkeys Like to Play
 Purpose
 When I speak about purpose in RAMP, I am specifically talking
@@ -1663,9 +1426,6 @@ In the enterprise, you can implement this in a few ways. The first is
 giving people the ability to provide meaningful help to others. This
 links in well with relatedness when you look at internal social networks. Research has shown that altruistic actions can make people
 feel good about themselves – described often as a warm glow 45.
-
--- 86 of 346 --
-
 The Intrinsic Motivation RAMP
 Another option is to give people the opportunity to give to charities
 from within gamified systems, especially in point collecting style platforms. For example, online quiz Grain of Rice asks players to answer
@@ -1687,9 +1447,6 @@ may be more important to them than another.
 For example, if generally a person is most interested in relatedness
 and you put them into an educational setting, at that moment mastery
 may be the most “active” motivation.
-
--- 87 of 346 --
-
 Even Ninja Monkeys Like to Play
 Learning from Games: Battlefield 1
 Playing Battlefield 1 has reminded me how important the motivations
@@ -1712,9 +1469,7 @@ side.
 
 ---
 
-## Sección 14: Foundations & Introduction
-
--- 88 of 346 --
+## Sección 14: Foundations & Introduction [Entropy: 0.25]
 
 The Intrinsic Motivation RAMP
 Another key to success is choosing complementary character classes.
@@ -1734,9 +1489,6 @@ This helps you to understand how you are improving as well as what
 your key strengths are and can be easily seen at the main game screen.
 There are badges, but they are harder to earn – making them even
 more valuable and desirable over time.
-
--- 89 of 346 --
-
 Even Ninja Monkeys Like to Play
 To help you find a constant challenge, without pushing you too far beyond your current capabilities (expanded on later when discussing
 Flow), the server you are added to when you start a game is chosen
@@ -1760,9 +1512,6 @@ It’s not all about pure intrinsic motivation, though, Battlefield 1 makes
 good use of rewards as well. The more you play, the more experience
 points you get, the more currency you get, and the more unlockable
 options become available.
-
--- 90 of 346 --
-
 The Intrinsic Motivation RAMP
 What I have always found interesting about this sort of system is that
 it seems a bit back to front when you think about it. The better you
@@ -1782,18 +1531,12 @@ had me most engaged.
 Again, this all hammers home the message that you need to cater for
 intrinsic motivations in your systems as well as the more obvious extrinsic ones. It also reinforces that rewards need to be earned not just
 given away, which I will expand on later.
-
--- 91 of 346 --
-
 What is Flow and Why is it What is Flow and Why is it What is Flow and Why is it What is Flow and Why is it
 Important? Important? Important? Important?
 When I train, often time seems to stop and there is
 nothing be me and the universe. This is the sense of Flow
 that my Master rattles on about all the time. Apparently, it
 is important in some way…
-
--- 92 of 346 --
-
 What is Flow and Why is it Important?
 Flow and Happy Users
 Flow is something you will hear a lot of in gamification and games for
@@ -1819,9 +1562,7 @@ see – gamification is all about goals and feedback!
 
 ---
 
-## Sección 15: Foundations & Introduction
-
--- 93 of 346 --
+## Sección 15: Foundations & Introduction [Entropy: 0.25]
 
 Even Ninja Monkeys Like to Play
 The model that Csikszentmihalyi suggested has more states than Flow
@@ -1832,9 +1573,6 @@ The full model is shown in Figure 16. Most people spend much of their
 time somewhere in the middle.
 Figure 16 Flow: Challenge vs Skill
 When we look at games, a variation of this model is often used – popularised in Jesse Schell’s book The Art of Game Design.
-
--- 94 of 346 --
-
 What is Flow and Why is it Important?
 In this simplified version, he concentrates on just three basic states:
 boredom, frustration and Flow.
@@ -1844,9 +1582,6 @@ closer the game takes a person to high challenge vs. high skill – the
 higher the state of Flow.
 Figure 17 A Simplified View of Flow
 It is important to explain that this is a snapshot in time, a representation of a person’s state in a single moment.
-
--- 95 of 346 --
-
 Even Ninja Monkeys Like to Play
 When designing solutions, you must consider that people need to
 find the challenge evolves over time, in line with their skill. Increase
@@ -1870,9 +1605,6 @@ find the timesheet software, how to get to the intranet, who their HR
 manager is, that sort of thing. After that, the rest can be handled with
 online courses and carefully planned drip-feeding of key information
 over the first days and weeks of their employment.
-
--- 96 of 346 --
-
 What is Flow and Why is it Important?
 No one wants two days of Death by PowerPoint!
 Figure 18 Death by Powerpoint
@@ -1885,18 +1617,12 @@ are left to become bored and in turn, disenfranchised. This is when
 you lose employees. Never be afraid to allow them to move to new
 challenges if that is what it takes to keep them.
 The lesson is, always make sure the skill and challenge levels are increasing in line with each other.
-
--- 97 of 346 --
-
 Even Ninja Monkeys Like to Play
 Grinding to Mastery and Flow
 In game design and gamification design, we are also used to the idea
 that you “zig-zag” the user’s skill with the challenge levels to keep users engaged and in the Flow “zone”.
 Figure 19 Ideal Flow
 As we journey towards mastery, we go through several phases of activity in various combinations.
-
--- 98 of 346 --
-
 What is Flow and Why is it Important?
 Phases
  Grinding: Low skill, low challenge work that is used to gain
@@ -1907,9 +1633,6 @@ the challenge levels increase.
  Testing: Where the challenge is distinctly higher than the relative skill of the user. In games, this is often a Boss Battle. The
 user needs to “up their game”.
 Figure 20 4 Phases
-
--- 99 of 346 --
-
 Even Ninja Monkeys Like to Play
 The Cycles
 Grinding
@@ -1919,9 +1642,6 @@ increased, and they start grinding again. The challenge is now harder
 than when they started, but their skill has increased a relative amount,
 effectively resetting everything back to low skill / low challenge.
 Figure 21 Grinding Cycle
-
--- 100 of 346 --
-
 What is Flow and Why is it Important?
 Challenging
 In this phase or cycle, there is an extra level of challenge in the form
@@ -1932,9 +1652,6 @@ grinding and applies it in a single much harder challenge. Usually, this
 will be a large spike in the challenge, but the reward for success would
 be greater!
 Figure 22 Challenging Cycle
-
--- 101 of 346 --
-
 Even Ninja Monkeys Like to Play
 Mastering
 After a while, grinding is not enough to engage or entertain the highly
@@ -1947,9 +1664,7 @@ Figure 23 Mastering Cycle
 
 ---
 
-## Sección 16: Foundations & Introduction
-
--- 102 of 346 --
+## Sección 16: Foundations & Introduction [Entropy: 0.343]
 
 What is Flow and Why is it Important?
 Grinding to Flow
@@ -1957,18 +1672,12 @@ If we take all these cycles and apply them to our original Flow chart,
 we can see that each of these cycles can be repeated multiple times as
 the relative skill of the user increases. Flow is maintained by this repetition.
 Figure 24 Grinding to Flow
-
--- 103 of 346 --
-
 Even Ninja Monkeys Like to Play
 The key is to keep the user out of the Boredom and Frustration areas
 as much as possible – but not be afraid to put them there from time
 to time. Grinding -> levelling can lead to boredom if you never give
 them anything to master. Continuously testing a user without allowing them to level up would lead to being constantly frustrated.
 Figure 25 Grinding to Mastery
-
--- 104 of 346 --
-
 User Types in Gamification User Types in Gamification User Types in Gamification User Types in Gamification
 (The HEXAD) (The HEXAD) (The HEXAD) (The HEXAD)
 So, my Master wasn’t convinced that video game focused
@@ -1976,9 +1685,6 @@ player types were a good fit for gamification.
 Thinking he was clever, he created his own version – the
 User Type HEXAD. Yeah, whatever, but I do like the look
 of the Disruptor type.
-
--- 105 of 346 --
-
 Even Ninja Monkeys Like to Play
 Motivation brings us to one of my favourite topics – user types and
 player types!
@@ -1998,9 +1704,6 @@ that people cannot be broken down into simple individual categories
 like this. They will likely display most if not all of these traits in varying degrees 50.
 When creating a gamified system, you need to design to encourage the
 behaviours that will give your system the best outcome, whilst engaging as many users as possible. These types can help with that.
-
--- 106 of 346 --
-
 User Types in Gamification (The HEXAD)
 In Brief
 Socialisers are motivated by Relatedness. They want to interact
@@ -2016,9 +1719,6 @@ Disruptors are motivated by Change. In general, they want to disrupt your system
 Players are motivated by extrinsic Rewards. They will do what is
 needed to collect rewards from a system and not much more. They are
 in it for themselves.
-
--- 107 of 346 --
-
 Even Ninja Monkeys Like to Play
 The User Types HEXAD
 Figure 26 Marczewski's User Type HEXAD
@@ -2027,9 +1727,6 @@ however, if you want to get really into it – keep reading. Otherwise,
 jump to the next chapter!
 For the rest of you, the User Types can be broken down into four intrinsically motivated types, four extrinsically motivated types (the
 Player) and four disruptive types (the Disruptor).
-
--- 108 of 346 --
-
 User Types in Gamification (The HEXAD)
 Intrinsic User Types
 Figure 27 Intrinsic User Types
@@ -2043,9 +1740,6 @@ to want to complete every challenge your system has and be the best
 at each one. Whilst tokens of completion such as certificates and
 badges may be gratefully received, they are not going to be the reason
 achievers engage with the system.
-
--- 109 of 346 --
-
 Even Ninja Monkeys Like to Play
 In the same way, they may enjoy having other people within the system, but rather than looking for social connections, they will be
 viewed as new challenges to master.
@@ -2056,9 +1750,6 @@ Free Spirits: Free Spirits are primarily motivated by autonomy. Autonomy, in the
 creativity.
 Player (Extrinsic) User Sub-Types
 Figure 28 Player User Sub-Types
-
--- 110 of 346 --
-
 User Types in Gamification (The HEXAD)
 At their core, the Player user type is motivated by extrinsic rewards.
 They are the user type that will respond well to systems that offer
@@ -2085,9 +1776,7 @@ for them, it is a way to find new ways to rewards.
 
 ---
 
-## Sección 17: Foundations & Introduction
-
--- 111 of 346 --
+## Sección 17: Foundations & Introduction [Entropy: 0.415]
 
 Even Ninja Monkeys Like to Play
 If they find a loophole, do not expect them to report it unless they feel
@@ -2107,9 +1796,6 @@ the extrinsic types will convert to their analogous intrinsic types. For
 example, a Networker may convert to a Socialiser over time, but it is
 not a certainty in all cases. Design for the intrinsic user types that benefit your system but include reward paths in the on-boarding process
 for best effect and greatest coverage.
-
--- 112 of 346 --
-
 User Types in Gamification (The HEXAD)
 Disruptor User Sub-Types
 Figure 29 Disruptor User Sub-Types
@@ -2121,9 +1807,6 @@ Going into a deep dive, we get these four main types of Disruptor:
 Griefer: This is straight out of Bartle’s expanded eight types. I have
 chosen to use Bartle’s description because this is the pure bully type.
 If you have ever heard of the Triad (or indeed Tetrad) of Dark Personalities 52 – these guys will tick one or all of the boxes!
-
--- 113 of 346 --
-
 Even Ninja Monkeys Like to Play
 They want to affect other users negatively, just because they can. It
 may be to prove a point about the fact they do not like the system, it
@@ -2149,9 +1832,6 @@ problems and try to fix them. A simple example would be those who
 submit support tickets for bugs and track their progress. Take care of
 these users as they can help you massively. Mistreat them and they
 may well become Destroyers.
-
--- 114 of 346 --
-
 User Types in Gamification (The HEXAD)
 As you can see, the Disruptor can be a complex type and although they
 make up a very small percentage of the overall user group, they can be
@@ -2162,9 +1842,6 @@ the chart, closer to 12 o’clock and 6 o’clock are the Player user types.
 9 o’clock and 3 o’clock are the disruptors and the rest are the
 intrinsic types.
 Figure 30 The Dodecad of User Types
-
--- 115 of 346 --
-
 Even Ninja Monkeys Like to Play
 Using the User Types
 The HEXAD is a simple framework to look at basic motivations of users who are in your system. There are three main ways to go about
@@ -2187,9 +1864,6 @@ on initial types may be counter-productive.
 This is the approach if you are looking for a short-term campaign; you
 just need to work out what your potential users want over the
 immediate term.
-
--- 116 of 346 --
-
 User Types in Gamification (The HEXAD)
 Design Gamification for Types
 An alternative is to come at designing for gamification types from another direction. Define the problem your gamification is trying to
@@ -2216,9 +1890,7 @@ appeal to people in varying degrees and combinations.
 
 ---
 
-## Sección 18: Foundations & Introduction
-
--- 117 of 346 --
+## Sección 18: Foundations & Introduction [Entropy: 0.298]
 
 Even Ninja Monkeys Like to Play
 Although they may be a Socialiser, they can still have traits that a
@@ -2233,26 +1905,17 @@ idea is to put yourself in a different position to view a problem from a
 different perspective. Based on the idea of a deck of lenses, stolen from
 Jesse Schell, each one challenges you to ask certain questions about
 your design to try and get a new perspective on it.
-
--- 118 of 346 --
-
 User Types in Gamification (The HEXAD)
 As you design your solutions, keep asking the questions on these cards
 to constantly evaluate what you are building and how it will appeal to
 different users. Later in the book, there is an outline of more than 50
 mechanics and elements that can be used to support and encourage
 each of the six main user types.
-
--- 119 of 346 --
-
 The Neuroscience of Gamification The Neuroscience of Gamification The Neuroscience of Gamification The Neuroscience of Gamification
 Brain chemistry is not the sort of thing I would usually
 be interested in. However, it is useful to understand the
 basics to cut through a lot of the hyperbole out there. I
 like cutting through things.
-
--- 120 of 346 --
-
 The Neuroscience of Gamification
 One of the aims of this book is to give you the building blocks to hold
 your own in gamification. In gamification, there is often a lot of mention of concepts like “Neuroscience”, “Neurochemistry”, “Neurotransmitters” or “Brain Chemistry”. In particular, you will hear people
@@ -2267,9 +1930,6 @@ present a few things here that you should know about and more importantly, know 
 means the full functions of these neurotransmitters, merely the functions we are interested in with regards to gamification.
 This is all researched and validated with the wonderful Andrea
 Kuszewski to make sure it is as accurate as possible for you.
-
--- 121 of 346 --
-
 Even Ninja Monkeys Like to Play
 Dopamine
 Figure 31 Dopamine
@@ -2286,9 +1946,6 @@ the reward, rather than after 54. This is known as incentive salience.
 Learning: It is thought that dopamine plays a major role in associative
 learning, forming associations between an action or activity and its
 consequences 55.
-
--- 122 of 346 --
-
 The Neuroscience of Gamification
 Andrea Kuszewski puts it rather nicely 56:
 Excellent learning condition
@@ -2312,9 +1969,6 @@ Your Free Spirit user types will enjoy this! Anticipation of potential
 rewards is another way, so creating manageable goals (think SMART
 Goals) can help. Andrea wrote a series on the role of dopamine and
 oxytocin in sex and pleasure.
-
--- 123 of 346 --
-
 Even Ninja Monkeys Like to Play
 The third part of the series concentrates on how ambiguity, suggestion
 and so on can increase pleasure 57. It is worth keeping this in mind
@@ -2326,9 +1980,6 @@ friends etc.). It can give us a strong feeling of contentment. Studies
 have shown that this can even occur remotely, with Paul J. Zak suggesting that using social networks like Twitter can create a similar reaction to falling in love! 58. Oxytocin has also been shown to increase
 trust in groups, altruism in individuals, arousal, bonding and much
 more.59
-
--- 124 of 346 --
-
 The Neuroscience of Gamification
 However, there is another side to this. Previously thought to promote
 only the nicer side of social bonding, strengthening your feelings and
@@ -2350,9 +2001,7 @@ Also – go and hug someone – seriously!
 
 ---
 
-## Sección 19: Foundations & Introduction
-
--- 125 of 346 --
+## Sección 19: Foundations & Introduction [Entropy: 0.25]
 
 Even Ninja Monkeys Like to Play
 Serotonin
@@ -2369,9 +2018,6 @@ badges. Serotonin release can be triggered by remembering past experiences where
 time can do this. Also, give users the ability to thank each other in
 some way. This could be simple “thanks”, “like” button or a system of
 kudos like stars and voting.
-
--- 126 of 346 --
-
 The Neuroscience of Gamification
 You could set up a system where you can send virtual gifts as thanks,
 also potentially triggering oxytocin release for the giver – another big
@@ -2387,9 +2033,6 @@ us our “second wind” that helps us push through. It is what gives runners th
 video games.
 Overcoming the challenges in games can stimulate the release of endorphins, making gamers feel better about themselves and giving a
 sense of achievement 65.
-
--- 127 of 346 --
-
 Even Ninja Monkeys Like to Play
 Gamification to Increase Endorphins
 The easiest way to stimulate endorphin release with gamification is to
@@ -2411,14 +2054,7 @@ User Types and Neurotransmitters
  Philanthropist (Meaning/Purpose): Dopamine, Oxytocin, Serotonin
  Free Spirit (Autonomy): Dopamine
  Player (Rewards): Dopamine, Endorphin, Serotonin
-
--- 128 of 346 --
-
 BUILDING GAMIFIED SOLUTIONS
-
--- 129 of 346 --
-
--- 130 of 346 --
 
 How to How to How to How to Start with The User Journey Start with The User Journey Start with The User Journey Start with The User Journey
 I have been on a journey of learning for a long time now
@@ -2426,9 +2062,6 @@ and it is my time to be the Master. Here you will find a
 journey of several phases explained. I am well and truly out
 of the Enthuse and Engage phases. My End Game? My
 Master will find out soon.
-
--- 131 of 346 --
-
 Even Ninja Monkeys Like to Play
 The Player Journey is a concept that I came across from the wonderful
 Amy Jo Kim. She talks about the player journey in terms of three main
@@ -2445,9 +2078,6 @@ they will probably need something more.
 As gamification and games are not quite the same and based on some
 of my experiences, I created a slight variation, called the Gamification
 User Journey.
-
--- 132 of 346 --
-
 How to Start with the User Journey
 Figure 36 Gamification User Journey
 Discover
@@ -2462,9 +2092,6 @@ this wrong, people will not get any further in their journey! It has the
 potential to be a massive drop off phase of the journey. You must balance it just right, to hold the user’s hand enough to keep them going,
 but not so much they feel babied and foolish. Measured use of rewards
 can be of great benefit in this stage as digital “pats on the back”.
-
--- 133 of 346 --
-
 Even Ninja Monkeys Like to Play
 Immerse
 Once they are in the system and know what they are doing, they can
@@ -2491,9 +2118,7 @@ score 3 on again, trying to attain the maximum.
 
 ---
 
-## Sección 20: Foundations & Introduction
-
--- 134 of 346 --
+## Sección 20: Foundations & Introduction [Entropy: 0.28]
 
 How to Start with the User Journey
 It may be that they get to play again at a high difficulty – remember
@@ -2503,18 +2128,12 @@ In the case of a learning related system, they could go back with the
 role of master, rather than apprentice, acting as a guide and mentor
 to those who are yet to master the earlier phases. You can really leverage the Philanthropist User Types here.
 Figure 37 The Gamification User Journey
-
--- 135 of 346 --
-
 How to Use How to Use How to Use How to Use Points, B Points, B Points, B Points, Badges and adges and adges and adges and
 L L L Leaderboards eaderboards eaderboards eaderboards
 Winning is in my DNA. I am motivated by being the best,
 but a reward every now and again is always appreciated, at
 least, it would be if I ever got one. Even a pat on the back
 would be nice.
-
--- 136 of 346 --
-
 How to Use Points, Badges and Leaderboards
 In contrast to intrinsic motivation, extrinsic motivation is all about
 the rewards. Deci and Ryan define this as
@@ -2538,9 +2157,6 @@ Giving points is a simple enough concept. In video games, points are
 often given to players for completing certain tasks. Kill the bad guy,
 find the scroll, save the prince or princess. In gamification, this is frequently translated into completing less enjoyable tasks. Press the
 “Like” button, leave a comment and use the same shop multiple times.
-
--- 137 of 346 --
-
 Even Ninja Monkeys Like to Play
 Points help to power progress tracking, reward management, badges,
 achievements, leaderboard position and more. Even if the end user
@@ -2562,9 +2178,6 @@ purchase new rooms for your shelter. This is a self-contained virtual
 economy. You play the game and do the deeds asked of me, earn virtual money and spend it in the virtual shop.
 However, if you wish to speed up the process, you can use real money
 to purchase more bottle caps.
-
--- 138 of 346 --
-
 How to Use Points, Badges and Leaderboards
 At this point, the virtual economy can be influenced by the real world.
 This is something that social games like Farmville have been doing
@@ -2588,9 +2201,6 @@ You must decide how much effort each of these upgrades is worth and
 then convert the points earned in a sensible way. For instance, if the
 upgrade is worth $20, you do not want to give it away to someone just
 for one share!
-
--- 139 of 346 --
-
 Even Ninja Monkeys Like to Play
 giffgaff, a mobile network provider, do exactly this with minutes. Supporting other users on the forum earns you minutes that can be used
 on your mobile phone 69.
@@ -2616,9 +2226,7 @@ imagination.
 
 ---
 
-## Sección 21: Foundations & Introduction
-
--- 140 of 346 --
+## Sección 21: Foundations & Introduction [Entropy: 0.265]
 
 How to Use Points, Badges and Leaderboards
 Not all badges have to be given automatically; you can set ones up that
@@ -2636,9 +2244,6 @@ ones that are already there.
 This happens either when you make a badge easier to earn or if a more
 valuable badge is added to the system and is relatively easier to earn
 than previous badges.
-
--- 141 of 346 --
-
 Even Ninja Monkeys Like to Play
 Badges in Education
 In education, they can be used very effectively as a way of representing
@@ -2654,9 +2259,6 @@ In the more consumer facing world, Foursquare 71 made a lot of use
 of points and badges. Every time you checked in you were rewarded
 with points. Collect enough points or check in a certain number of
 times and you would get badges.
-
--- 142 of 346 --
-
 How to Use Points, Badges and Leaderboards
 For a long time, it worked very well for them, with millions of people
 checking in on a regular basis. However, after a while, the badges began to lose their shine as predicted by Overjustification Effect 72,
@@ -2678,9 +2280,6 @@ should be clear how and why a user has reached a certain rank.
 Leaderboards
 After our brief look at rewards, let’s discuss leaderboards. In the gamification world, there are mixed views on leaderboards and their effectiveness 73. That said, they are something you will see often in
 gamified products and solutions.
-
--- 143 of 346 --
-
 Even Ninja Monkeys Like to Play
 Leaderboards are an effective way to show a user quickly where they
 currently stand within a gamified system. A simple example is the
@@ -2695,9 +2294,6 @@ An absolute leaderboard displays the absolute leader of a competition
 on the leaderboard. For example, a golf tournament leaderboard that
 tracks players performance across a round and the tournament. In
 gamification implementations, this has pros and cons.
-
--- 144 of 346 --
-
 How to Use Points, Badges and Leaderboards
 It is great for the people who are visible on the Leaderboard; it can
 give them a feeling of achievement and status. It is also useful for others who may want to see who is best at a certain activity. It is a safe
@@ -2726,9 +2322,7 @@ challenge ahead of them, some don’t.
 
 ---
 
-## Sección 22: Foundations & Introduction
-
--- 145 of 346 --
+## Sección 22: Foundations & Introduction [Entropy: 0.265]
 
 Even Ninja Monkeys Like to Play
 Non-Competitive Leaderboards
@@ -2743,9 +2337,6 @@ who are all involved in the same activity.
 By representing the data slightly differently, you can move away from
 the competitive emphasis of leaderboards and start to see them as a
 social discovery tool.
-
--- 146 of 346 --
-
 How to Use Points, Badges and Leaderboards
 Figure 40 Gamification Conversations
 The above image is the Gamification Conversations leaderboard. You
@@ -2761,9 +2352,6 @@ group will want to hit the top spot of a simple leaderboard. They can
 be good forms of rapid feedback for users. Rising up the leaderboard
 as you succeed at tasks is a very visible sign that you are doing
 something right.
-
--- 147 of 346 --
-
 Even Ninja Monkeys Like to Play
 It can also be used as a great social connection tool. As I said, if people
 are near the top of a leaderboard it is a safe bet they are worth talking
@@ -2786,9 +2374,6 @@ are as good as, if not better than, your peers.” It assumes that everyone
 is driven by winning. Actually, pitting people against each other does
 not always drive the best results; as we have seen, it can instead lead
 to a decrease in intrinsic motivation 75.
-
--- 148 of 346 --
-
 How to Use Points, Badges and Leaderboards
 If we were to consider a traditional sales competition, the person with
 the most sales at the end of the month gets a bonus of some sort. What
@@ -2812,9 +2397,6 @@ competition, how it is viewed by men and disadvantages women who
 are less interested in it 75,76, how it affects education 77 and more.
 Consider competition with care and be sure you understand the
 potential competitors!
-
--- 149 of 346 --
-
 Even Ninja Monkeys Like to Play
 If you really want competition, you could try to create teams. This way
 you will nurture collaboration in the team, whilst keeping friendly
@@ -2837,9 +2419,6 @@ reset of your scores and achievements. You get a new Prestige trophy,
 with a count of how many times you have done it to show others how
 advanced you are but must start going through the ranks and
 unlocking items and achievements again.
-
--- 150 of 346 --
-
 How to Use Points, Badges and Leaderboards
 Not everyone will do this, but for those who enjoy the collection aspect
 of the game, it gives them something to aim for again outside of the
@@ -2863,9 +2442,7 @@ trophy case forever!
 
 ---
 
-## Sección 23: Foundations & Introduction
-
--- 151 of 346 --
+## Sección 23: Foundations & Introduction [Entropy: 0.295]
 
 Even Ninja Monkeys Like to Play
 A Deep Dive into Badges (Geeks only!)
@@ -2886,9 +2463,6 @@ In the example of a medal for bravery, the investment was a willingness to act a
 If we then consider another type of medal, that of a medal for winning
 a race, the athlete had to invest time and effort as well as a personal
 sacrifice to attain the level of expertise needed to win.
-
--- 152 of 346 --
-
 How to Use Points, Badges and Leaderboards
 Both have significant meaning to the recipient but required very different types of investment.
 However, it is possible to get a badge with no direct meaningful investment. For instance, being given a certificate of attendance at
@@ -2910,9 +2484,6 @@ The same can be said of education. Whilst you may not be in education
 for the certificate of achievement, it is certainly an expectation once
 you have completed the education (for most). I can say with fair certainty that the majority of people who do a degree or a masters, don’t
 just do it for fun!
-
--- 153 of 346 --
-
 Even Ninja Monkeys Like to Play
 There is an expectation that earning that degree will lead to greater
 things. However, a child that is given a certificate of achievement from
@@ -2930,9 +2501,6 @@ In a more social setting, a badge may represent a person’s group identity, for
 may identify you as a Marvel fan rather than a D.C. fan.
 As well as your group identity, a badge can also identify your status
 within a group such as military rank insignia.
-
--- 154 of 346 --
-
 How to Use Points, Badges and Leaderboards
 Four Basic Categories
 To simplify things a little I will now speak of badges in 4 basic categories; Acknowledgement, Achievement, Identity and Status and will
@@ -2941,9 +2509,6 @@ or explicitly (deliberate and/or expected as an outcome of the activity).
 So that is a bit about what badges are, but what do they represent?
 What does a badge mean?
 Figure 41 4 Categories of Reward Badges
-
--- 155 of 346 --
-
 Even Ninja Monkeys Like to Play
 What Does a Badge Mean?
 A lot of the time when we speak about rewards, we talk about the most
@@ -2970,9 +2535,7 @@ rewards is because some identity does have to be earned.
 
 ---
 
-## Sección 24: Foundations & Introduction
-
--- 156 of 346 --
+## Sección 24: Foundations & Introduction [Entropy: 0.265]
 
 How to Use Points, Badges and Leaderboards
 A simple example is that of my daughter joining Guides. She had to
@@ -2994,9 +2557,6 @@ dedication and expertise to earn this level of status and so can be very
 meaningful to those individuals. You must be very careful though that
 any system employing these kinds of status driven badges does not fall
 into the trap of elitism!
-
--- 157 of 346 --
-
 Even Ninja Monkeys Like to Play
 Quick Summary
  Achievement: Awarded for an explicit action, such as winning a
@@ -3021,9 +2581,6 @@ moment of pride you felt at receiving it. However, if you just got the
 medal on eBay as part of an effort to fill a hole in your collection, you
 would not get the same emotional attachment, it would be hollow and
 meaningless.
-
--- 158 of 346 --
-
 How to Use Points, Badges and Leaderboards
 This has been labelled the Trophy Effect 79, an unofficial subset of the
 more researched and accepted Endowment Effect 80. Earning something gives it a higher value than just being given something or getting
@@ -3041,9 +2598,6 @@ in a social media setting that identified 5 categories 81:
  Reputation
  Status / Affirmation
  Group Identification
-
--- 159 of 346 --
-
 Even Ninja Monkeys Like to Play
 Other research has highlighted that immediate rewards, such as
 badges in a system, are a good predictor of adherence to long term
@@ -3067,18 +2621,12 @@ powerful reminders and boosters if they are created well 84.
 If you want your badges to be better than badgers and want to foster
 continued engagement and an emotional attachment, think broader
 about the intended functions/mechanisms of badges and try harder!
-
--- 160 of 346 --
-
 How How How How to to to to Set Clear Set Clear Set Clear Set Clear Goals Goals Goals Goals
 I have goals and, for reasons this chapter will explain, I
 have short-term and long-term goals. The short-term goals
 are easy for me to focus on, each success brings me one
 step closer to my ultimate goal, which my Master will
 discover soon enough.
-
--- 161 of 346 --
-
 Even Ninja Monkeys Like to Play
 Goal Setting
 One of the great things about games is how they handle objectives.
@@ -3101,9 +2649,7 @@ may start to get more important.
 
 ---
 
-## Sección 25: Foundations & Introduction
-
--- 162 of 346 --
+## Sección 25: Foundations & Introduction [Entropy: 0.286]
 
 How to Set Clear Goals
 The day of the exam, it is very real, and you start to wish you had been
@@ -3119,9 +2665,6 @@ into smaller lumps. The larger or more complex the task the more sections you ma
 feel for how this might look. Notice that there will come a point where
 it would be unhelpful to continue to break the objectives down further.
 You should also consider exactly what makes the objective is so complex and try to simplify it!
-
--- 163 of 346 --
-
 Even Ninja Monkeys Like to Play
 Figure 43 Object Complexity vs Number of Sub-Objectives
 Take an everyday educational example. Counting. You do not just tell
@@ -3135,9 +2678,6 @@ over time rather than in one sitting? Add a progress bar that shows
 how far into the survey you are, then a simple save system. That way,
 people are only seeing 10 questions, a much more manageable
 number.
-
--- 164 of 346 --
-
 How to Set Clear Goals
 The progress bar lets them know they are making, well, progress. The
 save option lets them know that you care about their time and are
@@ -3157,9 +2697,6 @@ to provide value to the user at a time that lets the user act on it. Feedback co
 pats on the back to progress bars. However, the main types to consider are notification of success, failure and general progress.
 The crux is, you are keeping the user informed to enable them to take
 responsibility for what they do next and how they do it.
-
--- 165 of 346 --
-
 Even Ninja Monkeys Like to Play
 Attainable, Maintainable Goals
 Goals are hugely important to us as we try to achieve the things we
@@ -3174,9 +2711,6 @@ As mentioned, if your goal is too big or set too far into the future, it
 can be very hard to prioritise it. When creating goals, you should have
 in mind the overall goal, but also smaller more attainable goals. If you
 have a yearlong plan, break it down into months, weeks and days.
-
--- 166 of 346 --
-
 How to Set Clear Goals
 Maintainable
 You need to balance how small the goals are between your ability to
@@ -3196,15 +2730,9 @@ not only achieve but overachieve on from time to time. You can see on
 the next page her 2016 word count vs 2017. Up until February 2017,
 the daily count was 250 words. In March, she changed it to 150!
 The result is a much happier and more motivated writer!
-
--- 167 of 346 --
-
 Even Ninja Monkeys Like to Play
 Figure 45 Before Attainable Goals
 Figure 46 After Attainable Goals
-
--- 168 of 346 --
-
 How to Set Clear Goals
 Adding them Together
 When you mix feedback into your goal strategy, you suddenly have a
@@ -3220,9 +2748,6 @@ Don’
 t create unrealistic
 expectations, create achievable
 goals!”
-
--- 169 of 346 --
-
 How How How How to to to to Design Good Feedback and Design Good Feedback and Design Good Feedback and Design Good Feedback and
 Reward Systems Reward Systems Reward Systems Reward Systems
 My Master keeps preaching that rewards should be
@@ -3231,9 +2756,7 @@ this for others, I am yet to see my rewards.
 
 ---
 
-## Sección 26: Foundations & Introduction
-
--- 170 of 346 --
+## Sección 26: Foundations & Introduction [Entropy: 0.25]
 
 How to Design Good Feedback and Reward Systems
 As mentioned, rewards are a form of feedback. In gamification, feedback is one of the keys to making a system useful, without it, the user
@@ -3251,9 +2774,6 @@ We can learn from this and apply it to gamification.
 I am convinced there are three important aspects that need to be considered when designing feedback and rewards for any system.
 Rewards and feedback should be:
 Relevant, In Time and Meaningful (RIM).
-
--- 171 of 346 --
-
 Even Ninja Monkeys Like to Play
 Figure 47 Rewards and Feedback
 Relevant
@@ -3265,9 +2785,6 @@ the behaviour or activity?
 In-Time
 Does the feedback need to be instantaneous, or can it wait? For instance, in a game, players get several types of feedback. When a jump
 is mistimed, the player dies.
-
--- 172 of 346 --
-
 How to Design Good Feedback and Reward Systems
 The feedback is immediate, and it must be! If the player gains experience, the game often notifies them on screen. This is what I called continuous contextual performance feedback earlier
 However, in the middle of a frantic battle, is that of use? A sudden
@@ -3290,9 +2807,6 @@ Use feedback and especially rewards to celebrate and record actual
 achievement. Then it provides meaning to the user. If everyone can
 have the “I clicked like 10 times” badge, it means nothing. However,
 the “I just scored 100% on my exam” badge is harder to get.
-
--- 173 of 346 --
-
 Even Ninja Monkeys Like to Play
 If you then make that reward transferable to real life, it can have even
 more meaning to them. Maybe that badge gets them priority ticket
@@ -3315,9 +2829,6 @@ to better reach? What on Twitter leads to better reach? The easy mistake to make
 of your message. After that, the user with the most points wins a nice
 prize.
 Let’s set up the competition.
-
--- 174 of 346 --
-
 How to Design Good Feedback and Reward Systems
 Twitter Competition Version 1
 Action Reward
@@ -3338,9 +2849,6 @@ Twitter Competition Version 2
 Action Reward
 Tweet Message 10pt
 Receive Retweet 20pt
-
--- 175 of 346 --
-
 Even Ninja Monkeys Like to Play
 There is a second value to this; it is harder to game. If we just reward
 quantity of tweets then the person who wants the prize the most will
@@ -3365,9 +2873,7 @@ purchasers!
 
 ---
 
-## Sección 27: Foundations & Introduction
-
--- 176 of 346 --
+## Sección 27: Foundations & Introduction [Entropy: 0.283]
 
 How to Design Good Feedback and Reward Systems
 For a larger scale campaign, we probably want to take this all a step
@@ -3391,9 +2897,6 @@ is not easy! The upshot of all of this is that you need to stop rewarding
 the wrong activities. If you make the reward greater for the simple
 low-quality actions, you will encourage quantity over quality and that
 is very rarely what you want.
-
--- 177 of 346 --
-
 Even Ninja Monkeys Like to Play
 These examples are still rewarding quantity, but it is still of more
 value to you than just the basic number of tweets.
@@ -3412,9 +2915,6 @@ At their core, they share many common traits
 This is a gross oversimplification of games and the systems that make
 them “fun”, but it will do for our purposes to illustrate some of the
 issues we may face in gamification!
-
--- 178 of 346 --
-
 How to Design Good Feedback and Reward Systems
 Figure 48 Challenge, Feedback, and Reward Cycle
 Most gamification does have some pattern recognition. If I perform
@@ -3426,9 +2926,6 @@ boring very fast.
 Raph Koster uses Tic Tac Toe (Noughts and Crosses) as an example
 of this 88. When you do not recognise the patterns, there is a challenge
 to the game.
-
--- 179 of 346 --
-
 Even Ninja Monkeys Like to Play
 As soon as you learn the optimal strategies and play an opponent of
 similar skill, the game no longer represents a challenge - there is nothing left to discover, and it becomes unsatisfying and no longer fun.
@@ -3450,9 +2947,6 @@ to time.
 In a game, failure is part of the learning process. You keep failing and
 retrying until you recognise the pattern and discover a solution. In
 business, that can be rather expensive!
-
--- 180 of 346 --
-
 How to Design Good Feedback and Reward Systems
 How many times must Sonic hit the spikes before you discover the
 optimum moment to jump? How many goes at Tetris does it take to
@@ -3474,9 +2968,6 @@ must wait for it, the reward will seem greater. As it turns out, I was
 right. According to research, the anticipation of a reward is a trigger
 for dopamine and can make the reward even more… well, rewarding
 – which we like! 57
-
--- 181 of 346 --
-
 Even Ninja Monkeys Like to Play
 The Marshmallow Test
 However, not everyone is able to wait for rewards. There was a fantastic experiment in the 1970s referred to as the Stanford Marshmallow
@@ -3500,9 +2991,7 @@ extras such as new crayons for colouring in pictures.
 
 ---
 
-## Sección 28: Foundations & Introduction
-
--- 182 of 346 --
+## Sección 28: Foundations & Introduction [Entropy: 0.265]
 
 How to Design Good Feedback and Reward Systems
 The difference was that one group were given the extras they were
@@ -3524,9 +3013,6 @@ A few big takeaways from this can be applied to gamification.
  Anticipation can lead to greater gratification from a reward.
 However, we need to be able to apply this in a reliable way. The diagram below gives a quick outline of how. Personal investment here
 could be time, effort, emotional etc.
-
--- 183 of 346 --
-
 Even Ninja Monkeys Like to Play
 Figure 49 Perceived Reward Value vs Personal Investment
 When you make someone wait for a reward, make sure it is meaningful and worth receiving. That does not mean the reward needs to be
@@ -3539,9 +3025,6 @@ Along the way, we need signals that we are following the right path.
 Going back to the relationship, if we start to feel that the other person
 is not returning the friendship, because there are no signals that it is
 going well, we will begin to drift away, and the friendship will fail.
-
--- 184 of 346 --
-
 How to Design Good Feedback and Reward Systems
 Whilst waiting for the big prize, people need to have incremental rewards over time just to nudge them along. These will have less value
 to them but will help to keep them on the right path.
@@ -3556,9 +3039,6 @@ be attached to a larger value reward of some sort.
 From time to time, delight your users by randomly giving a larger reward that has not necessarily been “earned” as a way to have the system just say, “Thanks for sticking with it”. These will give the user a
 nice feeling of being valued. Always avoid making people work hard
 and then must wait to get a low-value reward.
-
--- 185 of 346 --
-
 Even Ninja Monkeys Like to Play
 Figure 50 Example of Reward vs Investment
 Perceived Value
@@ -3567,9 +3047,6 @@ reduce over time. What someone might be willing to work hard for
 initially, they may not be willing to work as hard for a second or a third
 time. They will expect the value of the reward to be greater each time,
 especially if they must work harder.
-
--- 186 of 346 --
-
 How to Design Good Feedback and Reward Systems
 Value to the User vs Value to You
 Whist basing the value of the reward on a user’s personal investment
@@ -3592,9 +3069,6 @@ than low effort and high value!
 Figure 51 gives an outline of how this would work. The more stars, the
 greater the value of the reward. Again, this is value as perceived by the
 user!
-
--- 187 of 346 --
-
 Even Ninja Monkeys Like to Play
 Figure 51 User Effort vs Value to the System
 Ways to Plan Rewards
@@ -3604,9 +3078,6 @@ However, I wanted to give a quick outline of a few that can be beneficial here.
 Random/Variable
 These rewards are given at unknown intervals – they are there to surprise and delight the user. Put simply, users should not expect one of
 these rewards.
-
--- 188 of 346 --
-
 How to Design Good Feedback and Reward Systems
 For example, it could be that they clicked on a link on the site and it
 just happens they were the 42nd person to do so and they get the “Don’t
@@ -3629,9 +3100,7 @@ the expense of the long-term health of the banks.
 
 ---
 
-## Sección 29: Foundations & Introduction
-
--- 189 of 346 --
+## Sección 29: Foundations & Introduction [Entropy: 0.25]
 
 Even Ninja Monkeys Like to Play
 The UK chairman of the Financial Services Authority, Adair Turner,
@@ -3652,9 +3121,6 @@ some form of preferential treatment.
 For example, when I first started to use mobile phones, it was a constant area of contention for me that new users got better deals on contracts and phone costs than renewing users. My loyalty to the provider
 seemed to be of little value to them. That being the case, I changed
 provider whenever it came time to get a new phone!
-
--- 190 of 346 --
-
 How to Design Good Feedback and Reward Systems
 In the last year or two, this has become more balanced. The deals I am
 offered as a loyal customer are comparable to, if not better than those
@@ -3679,9 +3145,6 @@ that have a high perceived value. This is something you see a lot in
 gamified systems, the highest scorer gets an iPad for instance.
 The effect was shown via some very interesting experiments involving
 children and how rewards affected their interest in drawing.
-
--- 191 of 346 --
-
 Even Ninja Monkeys Like to Play
 They were split into three groups.
  The first group were told they would get a reward at the end of
@@ -3698,9 +3161,6 @@ These kinds of experiments have been repeated over the years – each
 one proving the same thing. In the 1990’s a research group led by
 Edward Deci and Richard Ryan did a meta-analysis of 128 different
 papers on the subject.
-
--- 192 of 346 --
-
 How to Design Good Feedback and Reward Systems
 The analysis found that for tasks that required even the slightest level
 of creativity, offering predictable extrinsic rewards like money, had a
@@ -3724,9 +3184,6 @@ instance in an organisation where redundancies are going on, or there
 are financial hardships of some kind. Often, in an attempt to improve
 motivation of the workforce, techniques are employed that some feel
 should “raise spirits”.
-
--- 193 of 346 --
-
 Even Ninja Monkeys Like to Play
 A classic example is adding a pool table to the office. More recently,
 this can be seen where gamification is being added, potentially
@@ -3750,18 +3207,13 @@ motivation because it ignores the core problem!
 
 ---
 
-## Sección 30: Foundations & Introduction
-
--- 194 of 346 --
+## Sección 30: Foundations & Introduction [Entropy: 0.265]
 
 How to Design a Simple Gamified How to Design a Simple Gamified How to Design a Simple Gamified How to Design a Simple Gamified
 System System System System
 It is time to build stop talking and start doing. Or at least
 that is what I think. My Master probably just wants to
 keep talking. However. Let’s look at how to build something!
-
--- 195 of 346 --
-
 Even Ninja Monkeys Like to Play
 Let’s look at designing a simple system that relies on points, badges
 and leaderboards.
@@ -3783,9 +3235,6 @@ actions are harder to do or are more valuable to the system.
 Give them higher point values than easier, less valuable, tasks. Also,
 keep in mind that harder activities may need a slightly bigger push or
 incentive to get the user to perform.
-
--- 196 of 346 --
-
 How to Design a Simple Gamified System
 It is easier to click a “Like” button than it is to leave a well-considered
 comment. Remember, well considered does not always mean quality.
@@ -3804,9 +3253,6 @@ is best to space ranks out further. Ranks 1, 2 and 3 may have a gap of
 so on.
 However, like badges, there comes a time when you must cut off how
 many ranks you have – I feel there must be an endgame to aim for!
-
--- 197 of 346 --
-
 Even Ninja Monkeys Like to Play
 Leaderboards
 Use the points to define a position on a leaderboard. Depending on
@@ -3816,18 +3262,12 @@ system, absolute will do fine.
 Figure 52 is a Machinations diagram that outlines our basic system. I
 will look at Machinations a little later in the chapter on Modelling Systems.
 Figure 52 Machinations Example of our Simple System
-
--- 198 of 346 --
-
 How to How to How to How to Understand Emotions in Understand Emotions in Understand Emotions in Understand Emotions in
 Gamification Design Gamification Design Gamification Design Gamification Design
 Ah emotions. Once I had them, but my Master quickly
 dealt with that. Now I am a lean, mean, gamification
 machine. However, your users may not be, so it is important
 to understand their emotions.
-
--- 199 of 346 --
-
 Even Ninja Monkeys Like to Play
 You will see later in my design framework that I mention emotions as
 an important consideration in my design process. I am by no means
@@ -3845,17 +3285,11 @@ of what form these core emotions.
 I have chosen a few that I have personally worked with in gamification
 design, as well as their opposites, which I will come to. But first, what
 did I choose?
-
--- 200 of 346 --
-
 How to Understand Emotions in Gamification Design
 The Emotions
 On the positive side of the emotional scale, I went with Hope, Gratitude, Joy, Pride, Surprise, Love and Desire. Their negative counterparts are Fear, Anger, Sadness, Shame, Alarm, Hate and Disgust.
 These all sound rather extreme and they are, but they are handy for
 us from a design perspective.
-
--- 201 of 346 --
-
 Even Ninja Monkeys Like to Play
 For instance, you would hope that a gamification solution that relied
 on a reciprocal economy, elicited feelings of gratitude. However, if you
@@ -3879,9 +3313,7 @@ not cool!
 
 ---
 
-## Sección 31: Foundations & Introduction
-
--- 202 of 346 --
+## Sección 31: Foundations & Introduction [Entropy: 0.25]
 
 How to Understand Emotions in Gamification Design
 Surprise is something I speak about a lot in the form of random rewards, Easter eggs and the like. Surprises are often nice little bonuses
@@ -3900,9 +3332,6 @@ This is easier in a game as you are creating true virtual worlds for them
 to play in. In gamification, you are often limited by how you can communicate your vision to the user, but this should not stop you considering emotions anyway! Well worded messages, meaningful rewards,
 narrative streams and mini games can all go to build strong emotional
 responses.
-
--- 203 of 346 --
-
 How to Use How to Use How to Use How to Use Narrative Narrative Narrative Narrative to Create to Create to Create to Create
 Deeper Experiences Deeper Experiences Deeper Experiences Deeper Experiences
 I like a good story, and how I met Rainbow the Unicorn is a
@@ -3910,9 +3339,6 @@ great one. Maybe one day, you will find out all about it.
 Until then, my master scrawled down some ideas on how to
 build stories and interactive narratives. Enjoy – or at least
 pretend to…
-
--- 204 of 346 --
-
 How to Use Narrative to Create Deeper Experiences
 Whenever I speak to people in the circles within which I hang out, one
 of the things I keep hearing is story and narrative. “You have to tell
@@ -3935,9 +3361,6 @@ start, a middle and an end. A narrative is more real time, it describes
 events as they are happening from the perspective of the person they
 are happening to. If you consider a game, the narrative would be the
 way events unfold as you play.
-
--- 205 of 346 --
-
 Even Ninja Monkeys Like to Play
 The story will include the backstory and the ongoing plot of the game.
 That being the case, the story could be the same for each player,
@@ -3960,9 +3383,6 @@ that a story can give is very powerful – even if it is more a short story
 than an epic!
 A picture may be worth a thousand words, but a good story is worth a
 thousand instruction manuals.
-
--- 206 of 346 --
-
 How to Use Narrative to Create Deeper Experiences
 Narrative Atoms
 Now that we know a bit more about what narratives are, I want to dive
@@ -3976,9 +3396,6 @@ Figure 53 Narrative Atoms
 In a standard linear story, each atom would be placed sequentially, so
 their ability to stand alone is less important. However, in many games
 the narrative bends and twists and turns in a non-linear way.
-
--- 207 of 346 --
-
 Even Ninja Monkeys Like to Play
 For that to work, for a story to make sense as it jumps from A to C to
 G to B and back again, each section, each narrative atom must be able
@@ -4003,9 +3420,7 @@ story having a start a middle and an end!
 
 ---
 
-## Sección 32: Foundations & Introduction
-
--- 208 of 346 --
+## Sección 32: Foundations & Introduction [Entropy: 0.25]
 
 How to Use Narrative to Create Deeper Experiences
 Bonding Narrative Atoms
@@ -4027,9 +3442,6 @@ its own start, middle and end it is easier to jump in and out of them at
 will. As you knit the story together, you can pass events from each
 atom onto the next one, ensuring that character and plot progression
 or alteration is kept consistent, without having to create vast quantities of alternative narrative to account for every choice.
-
--- 209 of 346 --
-
 Even Ninja Monkeys Like to Play
 An Example of Simple Narrative Atoms
 Start
@@ -4050,9 +3462,6 @@ higher ground to attack the weak spot between its
 shoulders. Once you are sure it was dead, you take its
 giant teeth as a trophy and continue on the path
 towards home.
-
--- 210 of 346 --
-
 How to Use Narrative to Create Deeper Experiences
  You lose
 o The fight with the monster will go down in history, but
@@ -4076,9 +3485,6 @@ o The fight with the monster has taken its toll and your
 wife is concerned about your cheek, but before she can
 speak about it, you produce the monster’s teeth from
 your bag and proudly hand them to the children.
-
--- 211 of 346 --
-
 Even Ninja Monkeys Like to Play
  If you didn’t fight the beast
 o You turn to your wife and offer her the flowers from
@@ -4092,9 +3498,6 @@ Figure 54 Boy Meets Monster, Boy Kills Monster
 Each section of the story can stand up on its own, given the context.
 Each atom explains itself and resolves itself whilst being able to bond
 with the next part.
-
--- 212 of 346 --
-
 How to Use Narrative to Create Deeper Experiences
 Of course, this is very simple and most non-linear narratives will require each atom to have multiple bonding points, where the story can
 link to other atoms whilst still making sense, passing on critical information to change key parts of the next atom.
@@ -4105,9 +3508,6 @@ fight atom and allow the player to experience both parts of the potential ending
 Figure 55 Boy Meets Monster, Boy Kills Monster Again
 The key is to make sure that each atom can be as self-sufficient in the
 narrative as possible and that you only must pass essential information to the next atom to make the story continue to be coherent.
-
--- 213 of 346 --
-
 Even Ninja Monkeys Like to Play
 Learning from Games: Her Story & Gone
 Home
@@ -4133,9 +3533,7 @@ does help! You also don't have to see everything in chronological order, but it 
 
 ---
 
-## Sección 33: Foundations & Introduction
-
--- 214 of 346 --
+## Sección 33: Foundations & Introduction [Entropy: 0.325]
 
 How to Use Narrative to Create Deeper Experiences
 The lesson is that using narrative atoms can help you create incredibly
@@ -4161,9 +3559,6 @@ play the game once. That way their experience would be unique. When
 they discussed it with others, they would then find out there were
 whole sections of the game that they had never seen – so each person’s
 playthrough would be unique to them.
-
--- 215 of 346 --
-
 Even Ninja Monkeys Like to Play
 More recently games like Walking Dead and The Wolf Among Us from
 TellTale Games have taken this approach to choices within their
@@ -4186,9 +3581,6 @@ next in the narrative (that’s why I love choose your own adventure
 style narratives!). In pure gamification, allow users to choose what
 they do next. If it is a learning experience, let them make their own
 decisions about what they learn next.
-
--- 216 of 346 --
-
 How to Use Narrative to Create Deeper Experiences
 If that level of freedom is not possible, then you should, at least, make
 it feel like there are choices and that they affect outcomes. The trick
@@ -4209,9 +3601,6 @@ and read it all the way through or not.
 Figure 56 Simple Architecture
 Games allow you to do more than that for the player. Games allow you
 to give the player much higher levels of autonomy or agency.
-
--- 217 of 346 --
-
 Even Ninja Monkeys Like to Play
 For a sandbox game, like Minecraft, this is quite simple – the player
 has total freedom as there is no actual end game. There are still
@@ -4230,9 +3619,6 @@ different events taking the left rather than the right, but the end goal
 is the same, as we discussed in our Boy Meets Monster example
 earlier.
 Figure 57 Simple Fake Choice
-
--- 218 of 346 --
-
 How to Use Narrative to Create Deeper Experiences
 This sort of architecture works well in games that are only designed to
 be played once or where the gameplay is more important than the narrative. An example that comes to mind is that of older first-person
@@ -4248,9 +3634,7 @@ Figure 58 Complex Fake Choice
 
 ---
 
-## Sección 34: Foundations & Introduction
-
--- 219 of 346 --
+## Sección 34: Foundations & Introduction [Entropy: 0.28]
 
 Even Ninja Monkeys Like to Play
 A game that makes good use of this would be Tell Tale’s Walking Dead.
@@ -4268,9 +3652,6 @@ Figure 59 Simple Real Choice
 The significance can be less obvious than that of course. If you think
 about RPG games and how you can interact with non-playable
 characters (NPCs).
-
--- 220 of 346 --
-
 How to Use Narrative to Create Deeper Experiences
 Very often the choices you make in your dialog will determine how the
 NPC will react to you not just in that conversation, but later in the
@@ -4284,9 +3665,6 @@ In gamification, it appears the choice architecture is straightforward.
 You need users to perform certain tasks, for which there will be some
 sort of reward. However, it doesn’t need to be that simple. You can
 design the user journey so that they can make choices along the way.
-
--- 221 of 346 --
-
 Even Ninja Monkeys Like to Play
 The outcome is likely going to need to be the same for each user, but
 if it is a gamified system, the likelihood is they will only experience it
@@ -4305,9 +3683,6 @@ because it felt like my choices may have some importance!
 Choices do not need to lead to
 alternative endings, just alternative
 experiences.”
-
--- 222 of 346 --
-
 How to Use Narrative to Create Deeper Experiences
 The Soap Hero’s Journey
 Now that we have an idea of how to construct the individual moments
@@ -4315,9 +3690,6 @@ of the narrative, we need to have some idea of how it will all come
 together in a real story. I mentioned the simple narrative model I often use, the soap hero’s journey. I use this because it is easy to remember and is also the core of most short storytelling arcs – such as soap
 operas.
 Figure 61 The Soap Hero’s Journey
-
--- 223 of 346 --
-
 Even Ninja Monkeys Like to Play
  The Call
 o The event that triggers the characters to start the journey
@@ -4341,9 +3713,6 @@ whilst still having character progression and plot progression that can
 feed into the next episode. That way, those who have not seen the soap
 before can pick it up easily, whilst those that have been watching for
 years can enjoy it at a deeper level.
-
--- 224 of 346 --
-
 How to Use Narrative to Create Deeper Experiences
 Below is a silly example of an EastEnders plot put into the Soap Hero’s
 Journey.
@@ -4371,9 +3740,6 @@ o Brings her home and discovers she is pregnant
 o Duff Duffs...
 As you can see from the ending there, this narrative atom can neatly
 bond onto the next episode!
-
--- 225 of 346 --
-
 Even Ninja Monkeys Like to Play
 Combining the concepts of Narrative Atoms and a simple story structure like the Soap Hero’s Journey, you can build strong narratives that
 can bend and twist to your heart's content. Just keep on top of character and plot development between atoms, and you will be fine!
@@ -4396,9 +3762,7 @@ world of Westeros.
 
 ---
 
-## Sección 35: Foundations & Introduction
-
--- 226 of 346 --
+## Sección 35: Foundations & Introduction [Entropy: 0.25]
 
 How to Use Narrative to Create Deeper Experiences
 It is like standing at a pedestrian crossing and upon pressing the button, all the cars turn in to cabbages.
@@ -4416,9 +3780,6 @@ play like that. My kids play “Rock, Paper, Anything” and you get some
 truly odd arguments over whether Harry Potter could beat a space
 tank…. However, this is fine, because they set the expectation that
 anything goes at the start – not half way through.
-
--- 227 of 346 --
-
 Even Ninja Monkeys Like to Play
 World Building in Gamification
 In gamification, we don’t spend enough time considering the worlds
@@ -4439,9 +3800,6 @@ rules of any worlds you are creating. If you are creating a theme, what
 would the expected rules be? If you have a medieval them, your players would not expect or accept aeroplanes being in the narrative. If
 the players are trapped in a building, they would not expect there to
 be a well in the middle of the 5th floor.
-
--- 228 of 346 --
-
 How to Use Narrative to Create Deeper Experiences
 You need to be consistent and mindful of the expectations you set
 early on and how they will affect the player’s experience. The best case
@@ -4456,18 +3814,12 @@ story is not necessary, remove it. He said;
 "One must never place a loaded rifle on the stage if it isn't going to
 go off. It's wrong to make promises you don't mean to keep." 102
 Keep it simple people!
-
--- 229 of 346 --
-
 How to Create Playful How to Create Playful How to Create Playful How to Create Playful Experiences Experiences Experiences Experiences
 When I finally become the Master, my first job (after a
 little bit of vengeance…) will be to use the ideas in this
 chapter to create more playful environments for people. It
 pains me to say, but my Master’s concepts here can help
 you understand how to create playfulness.
-
--- 230 of 346 --
-
 How to Create Playful Experiences
 Emergence is a well-known concept in game design. Emergent gameplay comes when players interact with the mechanics of the game creating situations that have not been deliberately designed.
 For instance, the game may offer several tools to solve a puzzle but
@@ -4488,9 +3840,6 @@ more that can be done. You must collect wood for instance. You can
 do this by hand, but once you have some wood you can create a simple
 tool to help. Tools that are more complex can be created as you collect
 more raw materials.
-
--- 231 of 346 --
-
 Even Ninja Monkeys Like to Play
 However, there is no one solution to each situation in which you find
 yourself. Your first shelter can be made in any way you wish out of any
@@ -4505,9 +3854,7 @@ Figure 62 Kings Landing from Game of Thrones
 
 ---
 
-## Sección 36: Foundations & Introduction
-
--- 232 of 346 --
+## Sección 36: Foundations & Introduction [Entropy: 0.31]
 
 How to Create Playful Experiences
 Emergence in Gamification
@@ -4527,9 +3874,6 @@ has taken the rules and the mechanics and done something unexpected, but totally
 The real question is how can we make use of this? Well, the person
 who wrote a script to email thousands of people, showed some serious
 initiative and potentially some coding skills that may have been previously unknown to the company.
-
--- 233 of 346 --
-
 Even Ninja Monkeys Like to Play
 As a gamification designer, we could allow a lack of rigidity in our
 rules to try to encourage people to come up with creative solutions to
@@ -4552,9 +3896,6 @@ each other deliberately; they know that it is play. Kids playing are not
 afraid of the tower they are building falling. It may be annoying, but it
 is not going to get them in trouble or cause any real issues. Even in
 games, dying is often just a matter of losing a life – you can start again.
-
--- 234 of 346 --
-
 How to Create Playful Experiences
 More importantly is that failure leads to learning and improving performance next time, but only if failure does not lead to a harmful punishment.
 In the real world, this all seems a little unrealistic. What company is
@@ -4573,9 +3914,6 @@ wanted to work on and were trusted to get on with it.
 This is the application of play for practical purposes. Considering play
 is generally not a practical form of anything, this should be fairly
 counter-intuitive and thus awesome!
-
--- 235 of 346 --
-
 Even Ninja Monkeys Like to Play
 Practical Play
 Trust
@@ -4596,9 +3934,6 @@ rules are more meta or implicit in play. Think of them as the difference
 between gravity being an implicit rule compared to “you can only
 touch the ball with a funny stick to get it in the hole”, which is a much
 more explicit rule and indeed a predefined obstacle.
-
--- 236 of 346 --
-
 How to Create Playful Experiences
 Dynamic Goals
 Play doesn’t usually have specific goals, but practical play does need
@@ -4615,9 +3950,7 @@ Figure 63 The Practical Play Framework
 
 ---
 
-## Sección 37: Foundations & Introduction
-
--- 237 of 346 --
+## Sección 37: Foundations & Introduction [Entropy: 0.295]
 
 How to Handle How to Handle How to Handle How to Handle Cheating Cheating Cheating Cheating
 I never cheat, but that is not to say that some won’t feel
@@ -4625,9 +3958,6 @@ that my methods are cheating. At times, cheating is a
 matter of context and subjective consideration. Cheating
 or not, I always make sure I understood the rules and
 where they can be bent.
-
--- 238 of 346 --
-
 How To Handle Cheating
 A question that is often asked is – “what do you do about cheating in
 a gamified system?”
@@ -4654,9 +3984,6 @@ it. They started a new journey, this time not just as a Player/Exploiter
 type, but also as a full Disruptor. They wanted to prove the system was
 wrong whilst still beating it. They sat between Destroyer and
 Improver.
-
--- 239 of 346 --
-
 Even Ninja Monkeys Like to Play
 Is It Cheating?
 When I talked to them about this on Facebook, one of the issues they
@@ -4680,9 +4007,6 @@ have a system that makes repeated behaviours in a day worth less each
 time. This makes it pointless to continue spamming. The other is to
 state clearly, how you expect players to behave and have in place a
 system to penalise or ban offenders.
-
--- 240 of 346 --
-
 How To Handle Cheating
 Also, remember that different people perceive cheating differently.
 Professor Richard Bartle has a great presentation on this. 104
@@ -4704,9 +4028,6 @@ Make sure that the system does not allow for cheating in the first place
 Create a simple set of rules that are highly visible to your users. This
 will give more weight to decisions made about who is “cheating”. You
 cannot break the rules if there are none!
-
--- 241 of 346 --
-
 Even Ninja Monkeys Like to Play
 You need constant fresh content. If you have nothing but the game,
 then people will just play or leave – they will not stay to learn, as there
@@ -4718,18 +4039,12 @@ The other interesting thing is that in a weird way, the gamification
 worked perfectly. The user in question has obviously learned a great
 deal as they explored the site. I just had no end game planned for
 them!
-
--- 242 of 346 --
-
 How to See it From the How to See it From the How to See it From the How to See it From the User User User User’’’’s s s s
 Perspective Perspective Perspective Perspective
 Don’t get lost with introspection during your design. Keep
 in mind that the user may see the solution very differently
 to you. At least that’s how it seems when I think about my
 Master’s training methods.
-
--- 243 of 346 --
-
 Even Ninja Monkeys Like to Play
 How the User Views It All
 As a gamification designer, it can be very easy to become caught up in
@@ -4755,9 +4070,7 @@ only care that it added time to a process or, interfered with it.
 
 ---
 
-## Sección 38: Foundations & Introduction
-
--- 244 of 346 --
+## Sección 38: Foundations & Introduction [Entropy: 0.28]
 
 How to See it from the User’s Perspective
 Figure 64 The user doesn't care!
@@ -4769,9 +4082,6 @@ After that, the theme or narrative. Whilst this may not be important
 to all, it will affect the user in different ways – especially if it is handled
 badly, think “Skip” button whenever you are using anything that can
 be voluntarily watched!
-
--- 245 of 346 --
-
 Even Ninja Monkeys Like to Play
 Components are objects like progress bars and the like. Whilst they
 are part of feedback, the design, bells and whistles of them is not always that important to the user – just as long as they work and don’t
@@ -4786,17 +4096,11 @@ Sadly, the fact of the matter is, the user does not care how clever the
 designers were. They just want a system that works and that is usable.
 As a designer, your problems are not the user’s problems. However,
 the user’s problems are most definitely your problems!
-
--- 246 of 346 --
-
 Gamification Gamification Gamification Gamification Mechanics and Mechanics and Mechanics and Mechanics and
 E E E Elements lements lements lements
 Here are some elements that my Master feels support
 his User Types and can improve your gamified systems. I
 rather like Anarchy for disruptors...
-
--- 247 of 346 --
-
 Even Ninja Monkeys Like to Play
 Earlier in the book, I introduced game mechanics. Now, let’s looks at
 some gamification mechanics, elements and ideas that you can use in
@@ -4814,9 +4118,6 @@ stuck.
 Loss Aversion
 No one likes to lose anything they have earned.
 Fear of losing status, friends, points, achievements, possessions, progress etc. can be a powerful reason for people to act.
-
--- 248 of 346 --
-
 Gamification Mechanics and Elements for Your Solutions
 Progress/Feedback
 Progress and feedback come in many forms and
@@ -4838,9 +4139,6 @@ Time Pressure
 Reducing the amount of time people must do
 things can focus them on the problem. It can also
 lead to different decisions.
-
--- 249 of 346 --
-
 Even Ninja Monkeys Like to Play
 Scarcity
 Making something rare can make it even more
@@ -4859,9 +4157,6 @@ have earned?
 Investment
 When people invest time, effort, emotions or
 money, they will value the outcomes even more.
-
--- 250 of 346 --
-
 Gamification Mechanics and Elements for Your Solutions
 Schedules
 Random Rewards
@@ -4875,9 +4170,6 @@ Events that happen at specific times (birthdays
 etc.) or are only available for a set period of time
 (e.g. come back each day for a reward). Users
 must be there to benefit.
-
--- 251 of 346 --
-
 Even Ninja Monkeys Like to Play
 Socialiser
 Guilds/Teams
@@ -4898,9 +4190,6 @@ Social Discovery
 A way to find people and to be found is essential
 for building new relationships. Matching people
 based on interests and status can all help get people started.
-
--- 252 of 346 --
-
 Gamification Mechanics and Elements for Your Solutions
 Social Pressure
 People often don’t like feeling they are the odd one
@@ -4918,9 +4207,7 @@ them something to find.
 
 ---
 
-## Sección 39: Foundations & Introduction
-
--- 253 of 346 --
+## Sección 39: Foundations & Introduction [Entropy: 0.31]
 
 Even Ninja Monkeys Like to Play
 Branching Choices
@@ -4943,9 +4230,6 @@ for pleasure or to help other people (teaching materials, levels, gear, FAQ etc.
 Customisation
 Give people the tools to customise their experience. From avatars to the environment, let them
 express themselves and choose how they will present themselves to others.
-
--- 254 of 346 --
-
 Gamification Mechanics and Elements for Your Solutions
 Achiever
 Challenges
@@ -4964,9 +4248,6 @@ to learn and expand.
 Quests
 Quests give users a fixed goal to achieve. Often
 made up of a series of linked challenges, multiplying the feeling of achievement.
-
--- 255 of 346 --
-
 Even Ninja Monkeys Like to Play
 Levels/Progression
 Levels and goals help to map a user’s progression
@@ -4981,9 +4262,6 @@ Meaning/Purpose
 Some just need to understand the meaning or the
 purpose of what they are doing (epic or otherwise). For others, they need to feel they are part
 of something greater than themselves.
-
--- 256 of 346 --
-
 Gamification Mechanics and Elements for Your Solutions
 Care-taking
 Looking after other people can be very fulfilling.
@@ -5008,9 +4286,6 @@ For some, helping other people by sharing
 knowledge with them is its own reward. Build the
 ability for people to answer questions and teach
 others.
-
--- 257 of 346 --
-
 Even Ninja Monkeys Like to Play
 Player
 Points / Experience Points (XP)
@@ -5029,9 +4304,6 @@ so others can see them. Not for everyone.
 Badges / Achievements
 Badges and achievements are a form of feedback. Award them to people for accomplishments. Use them wisely and in a meaningful way
 to make them more appreciated.
-
--- 258 of 346 --
-
 Gamification Mechanics and Elements for Your Solutions
 Virtual Economy
 Create a virtual economy and allow people to
@@ -5050,9 +4322,6 @@ Voting/Voice
 Give people a voice and let them know that it is
 being heard. Change is much easier if everyone is
 on the same page.
-
--- 259 of 346 --
-
 Even Ninja Monkeys Like to Play
 Development Tools
 Think modifications rather than hacking and
@@ -5070,12 +4339,7 @@ Sometimes you just must burn it all to the ground
 and start again. Sit back, throw the rulebook out
 of the window and see what happens! Consider
 running short “no rules” events.
-
--- 260 of 346 --
-
 Gamification Mechanics and Elements for Your Solutions
--- 261 of 346 --
-
 Even Ninja Monkeys Like to Play
 Learning from Games: Exclusivity Learning from Games: Exclusivity Learning from Games: Exclusivity Learning from Games: Exclusivity
 & Fortnite & Fortnite & Fortnite & Fortnite
@@ -5102,9 +4366,7 @@ in some way. They also like to feel that they are special!
 
 ---
 
-## Sección 40: Foundations & Introduction
-
--- 262 of 346 --
+## Sección 40: Foundations & Introduction [Entropy: 0.25]
 
 Gamification Mechanics and Elements for Your Solutions
 Implementing Exclusivity in Gamification
@@ -5124,15 +4386,8 @@ special group.
  Build up curiosity by hinting at things, like the TV screens in
 Fortnite.
  Create anticipation!
-
--- 263 of 346 --
-
 PLANNING AND IMPLEMENTING YOUR
 GAMIFICATION DESIGN
-
--- 264 of 346 --
-
--- 265 of 346 --
 
 Even Ninja Monkeys Like to Play
 Gamification Design Framework Gamification Design Framework Gamification Design Framework Gamification Design Framework
@@ -5141,9 +4396,6 @@ Rainbow Unicorn conversed on “holiday”, he once again
 changed his mind on how to best build gamified solutions.
 What follows is his latest Gamification Design Framework.
 Make of it what you will…
-
--- 266 of 346 --
-
 The Gamification Design Framework
 Over the years, I have come up with various design frameworks. In the
 first edition of this book, I included one called the GAME framework,
@@ -5152,9 +4404,6 @@ Gamification Design Framework, outlined here.
 Figure 65 The Gamification Design Framework
 It consists of three main phases; Define, Design / Build and Refine.
 Each phase contains iterative steps to consider as you build your solution. The core of all of these has been discussed in previous chapters, this just helps bring them all together.
-
--- 267 of 346 --
-
 Even Ninja Monkeys Like to Play
 Discovery
 The discovery phase is all about unearthing the real problem that
@@ -5177,9 +4426,6 @@ Define Success
 What does winning look like for the client and for the users? Once you
 understand that, you need to decide what to record and measure to
 prove success (or disprove).
-
--- 268 of 346 --
-
 The Gamification Design Framework
 Design
 Design the User Journey
@@ -5197,9 +4443,6 @@ Is there a large change needed?
 Motivation
 What motivates the people. Again, you will have covered some of this
 in the define phase, but now you must dive into it even further. Consider RAMP (relatedness, autonomy, mastery and purpose).
-
--- 269 of 346 --
-
 Even Ninja Monkeys Like to Play
 Also, don’t forget rewards. A good balance of intrinsic and extrinsic
 rewards works very well!
@@ -5218,14 +4461,8 @@ All good design frameworks require you to iterate and refine your designs, this 
 mechanics, you need to be flexible with your approach so that you can
 change and modify as you go. These days there is no such thing as a
 finished product!
-
--- 270 of 346 --
-
 The Gamification Design Framework
 Figure 66 Gamification Design Framework in Full
-
--- 271 of 346 --
-
 How to How to How to How to Keep the User Engaged Keep the User Engaged Keep the User Engaged Keep the User Engaged
 I train hard, practicing the same activities repeatedly.
 It is how I improve. As my skills increase, I look for new
@@ -5234,9 +4471,7 @@ beyond those now.
 
 ---
 
-## Sección 41: Foundations & Introduction
-
--- 272 of 346 --
+## Sección 41: Foundations & Introduction [Entropy: 0.265]
 
 Even Ninja Monkeys Like to Play
 Action Feedback Loops
@@ -5250,9 +4485,6 @@ an activity successfully and something happens in the system. This
 may be a direct reward, an unlock, a change in the way the system
 behaves for them – anything that has a positive impact and encourages them to continue.
 Figure 67 Action / Feedback Loops Example
-
--- 273 of 346 --
-
 Even Ninja Monkeys Like to Play
 Call to Action
 The call to action is the instruction or prompt given to the user to do
@@ -5273,9 +4505,6 @@ scream the words Operant Conditioning at me.
 For those who don’t know, this was a form of behaviour modification
 that was made famous by BF Skinner 105. He conducted experiments
 that rewarded or punished animals for types of behaviour.
-
--- 274 of 346 --
-
 How to Keep the User Engaged
 Pull a lever; get a reward. Pull a lever; maybe get a reward. Push the
 wrong button; get a mild shock. He called this positive and negative reinforcement.
@@ -5295,9 +4524,6 @@ and develop new skills to earn the next level of access.
 When they are at the point where they can add their own reviews, they
 still must work hard, as they know others will now be rating and commenting on their work. However, with each increase in their level of
 access comes a sense of achievement, status, trust and more.
-
--- 275 of 346 --
-
 Even Ninja Monkeys Like to Play
 Again, if someone must earn a reward of some kind, it will be more
 important to him or her. Just giving people those rewards for activity
@@ -5307,18 +4533,12 @@ work for the rewards and they will value them a great deal more.
 Action / Feedback help drive the user through a journey, but they do
 not force them. In the end, they must desire the end goal of the journey to put the effort in to get there. Gamification may just remove
 some of the friction from the journey, lowering barriers.
-
--- 276 of 346 --
-
 How to Balance a Gamified System How to Balance a Gamified System How to Balance a Gamified System How to Balance a Gamified System
 There is nothing worse than playing against people who
 are miles ahead of you in terms of either ability or
 equipment. It is very demoralising to lose time and time
 again when in reality, you never have a chance. My Master
 taught me that many times.
-
--- 277 of 346 --
-
 How to Balance a Gamified System
 Balancing Gamified Systems
 Take leaderboards as a good example. Very often the people at the top
@@ -5341,9 +4561,6 @@ to get them to give back, to train up those in the lower division.
 Of course, this all relies on transparency and everyone understanding
 the rules. It is hard to get good at a game when you don’t know the
 rules!
-
--- 278 of 346 --
-
 How to Balance a Gamified System
 Handicaps
 The second tip is to create balanced or relative scores, a bit like a golf
@@ -5367,9 +4584,7 @@ of their comfort zone or letting them get bored.
 
 ---
 
-## Sección 42: Foundations & Introduction
-
--- 279 of 346 --
+## Sección 42: Foundations & Introduction [Entropy: 0.25]
 
 Even Ninja Monkeys Like to Play
 Team Balancing / Score Normalisation
@@ -5388,9 +4603,6 @@ For example. If you have 4 teams of different sizes.
 The average team size is calculated as 12. The score modifier for a
 team is calculated as your team size / the average team size.
 Points are then multiplied by the modifier.
-
--- 280 of 346 --
-
 How to Balance a Gamified System
 Team Size Team Score Modifier Normalised
 Score
@@ -5415,9 +4627,6 @@ a row of three and they disappear, moving all the other tokens around.
 King took this idea and turned the dial to 11! It’s that turn of the dial
 that I want to speak about a bit. That is where they introduced what
 we would consider to be gamification in a game!
-
--- 281 of 346 --
-
 Even Ninja Monkeys Like to Play
 On-boarding
 First, on-boarding is handled perfectly. The first few levels introduce
@@ -5437,9 +4646,6 @@ Progress
 From the outset, you can see what level you are on and what levels
 you can head towards. The map is nearly endless with hundreds and
 hundreds of levels!
-
--- 282 of 346 --
-
 How to Balance a Gamified System
 Feedback
 Feedback in Soda Saga is instant and plentiful! From satisfying animations and sounds as lines are made to bonus scores flashing up as
@@ -5456,9 +4662,6 @@ best on a level. After that, you are shown your position relative to your
 friends on the leaderboards. However, there are also opportunities to
 feel like part of a team as certain challenges appear that require you
 to choose one of four to join.
-
--- 283 of 346 --
-
 Even Ninja Monkeys Like to Play
 The challenge may require you to score highly or destroy the most
 green sweets or create the most fish or any of a dozen other challenges! At the end of each level, your contribution is added to that of
@@ -5484,9 +4687,7 @@ have to say everyone except for Disruptors.
 
 ---
 
-## Sección 43: Foundations & Introduction
-
--- 284 of 346 --
+## Sección 43: Foundations & Introduction [Entropy: 0.25]
 
 How to Balance a Gamified System
  Players have plenty of points and leaderboards positions to
@@ -5506,16 +4707,10 @@ once again proves that gamification designers should play games
 when they can. After all, our bread and butter is using lessons learned
 from games. You can’t learn from them if you don’t play them!
 Rainbow Unicorn Was Here! ♇
-
--- 285 of 346 --
-
 Keeping it Simple Keeping it Simple Keeping it Simple Keeping it Simple
 Simple things are easier to explain, understand, implement
 and maintain. Not everything needs to be complicated, just
 look at my Master...
-
--- 286 of 346 --
-
 Keeping it Simple
 Gamification, when you break it down, is usually used for one reason
 – to increase engagement with something. You may not have defined
@@ -5536,9 +4731,6 @@ gamification can be used to just nudge the needle on the interest side
 of the equation.
 Sometimes that little nudge is all it takes to get an activity to happen,
 then you can work on other ways to get the activity to continue.
-
--- 287 of 346 --
-
 Even Ninja Monkeys Like to Play
 Figure 68 Interest vs Ability
 Recently we had a challenge with my youngest daughter. We wanted
@@ -5546,9 +4738,6 @@ her to eat a wider variety of vegetables. I created a chart and a simple
 narrative that had her eating vegetables to defeat various Batman villains. It used extrinsic rewards to encourage her to at least try certain
 vegetables.
 In her mind, she lacked both interest and ability. The story line increased her interest so that it presented a challenge to her.
-
--- 288 of 346 --
-
 Keeping it Simple
 After trying carrots a few times, she was educated enough to know
 that she had the ability to eat them. Now, I am not saying she was in
@@ -5558,9 +4747,6 @@ However, at that point, she had eaten them in six successive meals
 and could no longer argue that she was unable to eat them!
 You don’t always have to create overly complicated plans. Sometimes
 you just need to make it all a bit more interesting!
-
--- 289 of 346 --
-
 Tying Tying Tying Tying Loyalty Loyalty Loyalty Loyalty into Gamification into Gamification into Gamification into Gamification
 Loyalty is important amongst ninjas, but it is not about
 rewards or bribes. For us it is a deep, emotional connection,
@@ -5570,9 +4756,6 @@ fostering loyalty.
 Some would do well to remember that.
 True loyalty is like true love. It’s irrational, hard to
 find & needs constant effort
-
--- 290 of 346 --
-
 Tying Loyalty into Gamification
 A big focus in gamification these days is the concept of Loyalty. It is
 also an area of distinct misunderstanding if the typical loyalty programme examples are anything to go by!
@@ -5594,9 +4777,6 @@ truth of the matter really? It was convenient and cheap. The sticker
 scheme was a nice extra, but if we were not near home we would not
 go out of our way to find a Texaco garage for petrol, we would go where
 ever was close or cheap.
-
--- 291 of 346 --
-
 Even Ninja Monkeys Like to Play
 Real Consumer Loyalty
 Loyalty in the consumer market is demonstrated when people will go
@@ -5620,9 +4800,7 @@ again, the feeling that you are special and important.
 
 ---
 
-## Sección 44: Foundations & Introduction
-
--- 292 of 346 --
+## Sección 44: Foundations & Introduction [Entropy: 0.25]
 
 Tying Loyalty into Gamification
 Big brands like Amazon know this as well, making every visit to the
@@ -5649,9 +4827,6 @@ habits! Tesco knows what I buy online and in-store because I scan my
 Club-Card after each shop and they can then identify me. It may sound
 creepy, but it begins to build a picture that allows these brands to
 make me feel like the centre of the experience.
-
--- 293 of 346 --
-
 Even Ninja Monkeys Like to Play
 Consumer loyalty is now about finding out who your customers are,
 what drives them and using that information to give them what they
@@ -5669,9 +4844,6 @@ at the centre of the experience when they are in his shop, employers
 need to make employees feel that they are at the centre of their experience in the company. If they feel like just another cog, they will feel
 no loyalty to the company at all.
 Remember, feelings of obligation is not loyalty!
-
--- 294 of 346 --
-
 Tying Loyalty into Gamification
 Four Loyalty Destinations
 Barry Kirk of Maritz Motivation Solutions created a neat categorisation of loyalty. 108
@@ -5692,9 +4864,6 @@ by those who tattoo a brand logo to themselves or will only buy a Harley because
 to this kind of loyalty being manufactured is when Apple created the
 iPhone. Steve Jobs was often described as a cult leader with his
 “Reality Distortion Field”.
-
--- 295 of 346 --
-
 Even Ninja Monkeys Like to Play
 The iPhone was a bit of leap of faith for Apple - it had to work. They
 started by making people feel that this was the future, to not have it
@@ -5708,9 +4877,6 @@ more expensive than any other phone on the market – and does
 considerably less than many other phones!
 Figure 69 Barry Kirk's 4 Loyalty Destinations Framework
 Creating loyalty is not easy, but a good place to start is to put the person whose loyalty you desire, back into the centre of the experience.
-
--- 296 of 346 --
-
 Tying Loyalty into Gamification
 Make them feel that you as a brand, an employer or whatever else you
 may be, care about them directly and that you value them and understand them. Do not try to bribe them; loyalty must be earned.
@@ -5734,9 +4900,7 @@ that large a set of purchases. The second is that they deliver. Therefore, they 
 
 ---
 
-## Sección 45: Foundations & Introduction
-
--- 297 of 346 --
+## Sección 45: Foundations & Introduction [Entropy: 0.301]
 
 Even Ninja Monkeys Like to Play
 This gives us a small formula and a chart:
@@ -5747,9 +4911,6 @@ We begin to get a picture of when a person will use your shop.
  Supermarket: The value outweighs convenience.
  Supermarket delivery: Value and convenience are both good, it
 is a no-brainer.
-
--- 298 of 346 --
-
 Tying Loyalty into Gamification
 Now You Have Me, Keep Me!
 That makes sense but does not tell us how to convert an engaged shopper into a loyal shopper. For that, we need something more – the
@@ -5759,9 +4920,6 @@ There are two major reasons. First, the service that I receive when I
 go; they make the whole experience about me and I feel valued as a
 customer. The second is the quality of the product. It is less convenient than the supermarket and it is nowhere near the value of the supermarket, but I still use them. The service and the quality lower the
 barriers of value and convenience in my choice.
-
--- 299 of 346 --
-
 Even Ninja Monkeys Like to Play
 Figure 71 Quality and Service Creating Loyalty
 The quality of the food from Turner’s reduces the effect of convenience and value on my decision of where to shop. However, the service
@@ -5782,18 +4940,12 @@ This is not just applicable to shops; everything where you are trying
 to gain loyalty will work in a similar way. If you want people to keep
 coming back to your website, you need to find a unique reason why
 people will be loyal.
-
--- 300 of 346 --
-
 Tying Loyalty into Gamification
 Many sites have a great design and quality writing. Maybe yours has
 advocacy and peer reviews that make it more trusted. That will get
 people to visit in the first place.
 If that is the case, how about add something more, do weekly competitions, really drive down the effect other barriers have on people coming back.
 Figure 72 Example of Going Further
-
--- 301 of 346 --
-
 Even Ninja Monkeys Like to Play
 Every case is different. However, there are five basic actions you can
 take to cultivate this sort of loyalty:
@@ -5804,17 +4956,11 @@ take to cultivate this sort of loyalty:
 5. Then start icing the cake with more features that people want
 and love.
 Figure 73 Key Components of Loyalty
-
--- 302 of 346 --
-
 Mode Mode Mode Modelling lling lling lling Gamified Gamified Gamified Gamified S S S Systems ystems ystems ystems
 I don’t like spreadsheets, but they can be useful to a
 gamification designer when planning out point systems,
 reward paths and the like. I don’t think they will help my
 Master when my plans come to fruition though.
-
--- 303 of 346 --
-
 Even Ninja Monkeys Like to Play
 An essential skill in gamification is being able to model a system and
 test out how your solution may flow. There are many ways to do this
@@ -5835,9 +4981,6 @@ over the 12-week period and average far more each week. Does this
 mean they will exhaust the system too quickly? Does it mean that
 users with lower engagement levels never have a hope of reaching
 certain levels?
-
--- 304 of 346 --
-
 Modelling Gamified Systems
 Figure 74 Example of High Engagement
 Figure 75 Example of Low Engagement
@@ -5848,9 +4991,6 @@ fine tune everything before users get their hands on it.
 These kinds of models are in no way a replacement for user testing,
 but it is a way to get a step closer to usable before having to let
 people loose on your system!
-
--- 305 of 346 --
-
 Even Ninja Monkeys Like to Play
 Machinations
 Machinations is a tool created by Joris Dorman’s to help model game
@@ -5872,20 +5012,11 @@ days after launching a £30,000 pilot!
 
 ---
 
-## Sección 46: Foundations & Introduction
-
--- 306 of 346 --
+## Sección 46: Foundations & Introduction [Entropy: 0.25]
 
 Modelling Gamified Systems
 Figure 76 Machinations model of a simple gamified system
-
--- 307 of 346 --
-
 FINAL THOUGHTS
-
--- 308 of 346 --
-
--- 309 of 346 --
 
 Five Steps to a Happier Life with Five Steps to a Happier Life with Five Steps to a Happier Life with Five Steps to a Happier Life with
 Gamification Gamification Gamification Gamification
@@ -5893,9 +5024,6 @@ My master has his ups and downs, but over the years he
 has unknowingly used five key gamification lessons to lead a
 happier life. I wish to God he could user them to make my
 life happier.
-
--- 310 of 346 --
-
 Five Steps to a Happier Life with Gamification
 Ok, this sounds a little “self helpy”, but it came to me when I was doing a lecture for a group of master’s students at Kings College. I ended
 the talk, rather by accident, with the following advice
@@ -5916,9 +5044,6 @@ past. Whatever method you wish to use, I personally feel that aiming
 at small manageable goals is the key. You must have an eye on the big
 picture, but that can be overwhelming. Break down everything to the
 smallest achievable goal you can.
-
--- 311 of 346 --
-
 Even Ninja Monkeys Like to Play
 For instance, you must build a website. This can be daunting if there
 are a lot of sections to create or specific interactivity. Rather than have
@@ -5941,9 +5066,6 @@ That answer may well be simple. You are building it because the client
 has asked you to and you get paid!
 Again, it goes hand in hand with small goals and understanding where
 you are and what you are doing.
-
--- 312 of 346 --
-
 Five Steps to a Happier Life with Gamification
 Again, back to Mario, you know the answers to both. Why am I running across this map and what will happen if I don’t?
 Because I need to save the Princess. If I don’t, she dies!
@@ -5966,9 +5088,6 @@ of chocolate if you get an assignment finished early, buying that dress
 you saw because you lost the weight you had aimed for and so on.
 Just remember to make sure that the reward fits the effort of the
 task/goal.
-
--- 313 of 346 --
-
 Even Ninja Monkeys Like to Play
 Play
 This is the biggest and most important factor that keeps me sane and
@@ -5982,16 +5101,10 @@ of mind.
 There are many ways that games and gamification can help you in
 your day to day life, but these are just a few things that I do personally,
 so know they work!
-
--- 314 of 346 --
-
 Other Other Other Other Design T Design T Design T Design Tips ips ips ips
 These tips may well help you in your own designs; they
 are tried and tested by my Master. I have my own, but you
 will probably never get to see them.
-
--- 315 of 346 --
-
 Other Design Tips
 Whilst there has been practical advice as we have gone along, there
 are a few more things that should be considered as you delve into designing your gamification solutions.
@@ -6015,9 +5128,7 @@ are doomed to fail because no one stops to as the question “Why?”
 
 ---
 
-## Sección 47: Foundations & Introduction
-
--- 316 of 346 --
+## Sección 47: Foundations & Introduction [Entropy: 0.25]
 
 Other Design Tips
 Any behaviour focused intervention needs to have a clear focus, otherwise, you have no hope of solving your problems. You need to have
@@ -6037,9 +5148,6 @@ different solution.
 You will cycle between What and Why for a while until you have solid
 answers to the questions. You can also talk yourself in circles, so need
 to be pragmatic and occasionally start from scratch!
-
--- 317 of 346 --
-
 Even Ninja Monkeys Like to Play
 How do we do that?
 Once you have got your solid answers to
@@ -6048,9 +5156,6 @@ Once you have got your solid answers to
  “What needs to change to fix it”
 you can start to look at how to make those changes and gamification
 may form part of that. Then you can move onto the next phase.
-
--- 318 of 346 --
-
 Other Design Tips
 Gamification Design Thinking
 This is another process I make a lot of use of and is the base for my
@@ -6067,9 +5172,6 @@ about putting the user first. So, consider what types of user you will
 have, this is not the same as User or Player Types; this is what people
 need from the system. Who are the users, why are they using the system? What does Mavis, 83 from Wales need, compared to Dave, 23
 from Leeds?
-
--- 319 of 346 --
-
 Even Ninja Monkeys Like to Play
 Sometimes it is good to survey potential or current users to get an idea
 of whom they really are and then come up with some average users to
@@ -6089,9 +5191,6 @@ Whilst this is set out as a systematic process it is all iterative. At any
 point, you could go back to the start, but by the time you are into the
 experimentation phase, you should have a solid idea of where you are
 going.
-
--- 320 of 346 --
-
 Other Design Tips
 Figure 78 Gamification Design Thinking Expanded
 Now, this is all great, but even high innovation must have a reality
@@ -6101,9 +5200,6 @@ Innovation Lenses
 Desirability: Is the product or solution you are looking at desirable
 to the users or the stakeholders? It may be great in your mind, but
 does it hit all the points they need?
-
--- 321 of 346 --
-
 Even Ninja Monkeys Like to Play
 Feasibility: Is your idea possible with current technology and skills?
 Can it really be done?
@@ -6116,9 +5212,6 @@ Really, by the time you are hitting the test phase, you should have a
 clear view of each lens!
 Using this sort of process is very common in this day and age of constant innovation, but it can help focus your thoughts and designs, especially early on in your processes. Just as gamification should be, it
 all puts the user’s experience first.
-
--- 322 of 346 --
-
 Other Design Tips
 It Doesn’t Have to Be Digital
 It is easy to be left with the impression that gamification is all about
@@ -6134,9 +5227,6 @@ can work, but as explained in the section about Overjustification effect, they c
 Once reward charts stopped working with my eldest daughter, I created a simple Behaviour Meter that is now stuck to our fridge. It has a
 scale of 0 to 10 and that’s it.
 Figure 80 Simple analogue example of gamification
-
--- 323 of 346 --
-
 Even Ninja Monkeys Like to Play
 Throughout the day, my wife and I alter the position of the arrow depending on how my daughter is behaving. We don’t tell her what the
 current reading is – she must look at the feedback for herself. Of
@@ -6161,9 +5251,7 @@ of the vegetables on her plate.
 
 ---
 
-## Sección 48: Foundations & Introduction
-
--- 324 of 346 --
+## Sección 48: Foundations & Introduction [Entropy: 0.25]
 
 The E The E The E The End nd nd nd
 That’s pretty much it. My sympathies if you have read this
@@ -6171,9 +5259,6 @@ far, especially if you already had the first edition! This is
 where we shall part ways. My Master has nothing left for
 me, so read these last pieces of advice and start creating.
 I have my own work to finish.
-
--- 325 of 346 --
-
 Even Ninja Monkeys Like to Play
 Just as all good stories must have a beginning, they must also have an
 end. I hope this book has given you enough of an insight into the many
@@ -6194,15 +5279,9 @@ game, it doesn’t matter if you think that is true gamification – it is still
 the answer and you should do what you can to facilitate it!
 Finally, I will leave you with my seven essential tips for gamification
 glory!
-
--- 326 of 346 --
-
 The End
 Figure 81 7 Top Tips
 The End
-
--- 327 of 346 --
-
 Even Ninja Monkeys Like to Play
 GLOSSARY
 Autonomy: Freedom/agency to act as you wish.
@@ -6219,9 +5298,6 @@ Game Dynamics: Emergent activities of the users as they interact
 with mechanics.
 Game Elements/Components: These are bits that are taken from
 games, such as progress bars, missions, points, badges etc.
-
--- 328 of 346 --
-
 Glossary
 Game Mechanics: Explicit sets of rules that define the outcomes of
 user activities.
@@ -6242,9 +5318,6 @@ example, an interactive tutorial.
 Overjustification Effect: The decrease of intrinsic motivation to
 perform a task or tasks when an extrinsic reward is introduced, and
 the reward becomes more important than the original task.
-
--- 329 of 346 --
-
 Even Ninja Monkeys Like to Play
 Player: Also called the user, the target person who will be using the
 gamified system.
@@ -6261,9 +5334,6 @@ than pure entertainment.
 Underjustification Effect: The decrease in motivation to perform
 a task or tasks when supposedly motivational techniques are applied
 in place of perceived air compensation or treatment.
-
--- 330 of 346 --
-
 References
 REFERENCES
 1. Starship Troopers: Battlespace - Starship Troopers Wiki -
@@ -6297,9 +5367,7 @@ doi:10.1177/0907568202009004005
 
 ---
 
-## Sección 49: Foundations & Introduction
-
--- 331 of 346 --
+## Sección 49: Foundations & Introduction [Entropy: 0.319]
 
 Even Ninja Monkeys Like to Play
 9. Ludic - definition of ludic in English from the Oxford
@@ -6331,9 +5399,6 @@ Game Design. Leonardo 37, (2004).
 20. Sutton-Smith, B. The opposite of play is not work — it is
 depression. Stanford Neurosciences Institute (2015). Available
 at: https://neuroscience.stanford.edu/news/opposite-playnot-work-—-it-depression. (Accessed: 16th January 2017)
-
--- 332 of 346 --
-
 References
 21. Hunicke, R., LeBlanc, M. & Zubek, R. MDA: A Formal
 Approach to Game Design and Game Research. Work.
@@ -6364,9 +5429,6 @@ http://karlkapp.com/two-types-of-gamification/. (Accessed:
 Military Book Reviews (2000). Available at:
 http://www.strategypage.com/articles/default.asp?target=W
 ARGHIS2.htm&reader=long. (Accessed: 14th April 2016)
-
--- 333 of 346 --
-
 Even Ninja Monkeys Like to Play
 30. Fashion & Mash | Selfridges introduces Elfridges gaming app
 for Holiday 2014. Fashion & Mash Available at:
@@ -6399,9 +5461,6 @@ facilitation of intrinsic motivation, social development, and
 well-being. Am. Psychol. 55, 68–78 (2000).
 41. Pink, D. H. Drive: The surprising truth about what motivates
 us. Distribution (Canongate, 2009). doi:10.1002/casp
-
--- 334 of 346 --
-
 References
 42. Sigmund, K. & Hauert, C. Altruism. Current Biology 12, R270–
 R272 (2002).
@@ -6437,9 +5496,7 @@ s/2006/11/second_lifes_fi.html. (Accessed: 10th July 2015)
 
 ---
 
-## Sección 50: Foundations & Introduction
-
--- 335 of 346 --
+## Sección 50: Foundations & Introduction [Entropy: 0.394]
 
 Even Ninja Monkeys Like to Play
 52. Paulhus, D. L. Toward a Taxonomy of NGOs. Association of
@@ -6474,9 +5531,6 @@ unexpected side effect -- ScienceDaily. Science Daily (2014).
 Available at:
 http://www.sciencedaily.com/releases/2014/01/14012211262
 6.htm. (Accessed: 22nd March 2015)
-
--- 336 of 346 --
-
 References
 61. Association for Psychological Science. The Dark Side of
 Oxytocin - Association for Psychological Science. (2013).
@@ -6502,9 +5556,6 @@ cognitive and emotional behavior. Frontiers in Behavioral
 Neuroscience 5, (2011).
 67. Kim, A. J. The Player’s Journey: Designing Over Time.
 Available at: http://amyjokim.com/2012/09/14/the-playersjourney-designing-over-time/. (Accessed: 13th March 2015)
-
--- 337 of 346 --
-
 Even Ninja Monkeys Like to Play
 68. Herger, M. Gamification and Law or How to stay out of Prison
 despite Gamification. (2012). Available at: http://enterprisegamification.com/index.php?option=com_content&view=arti
@@ -6536,9 +5587,6 @@ competition. Negot. J. 24, 447–463 (2008).
 77. Bryant, B. K. The Effects of the Interpersonal Context of
 Evaluation on Self- and Other-Enhancement Behavior. Child
 Dev. 48, 885–892 (1977).
-
--- 338 of 346 --
-
 References
 78. SCHAFFER, N. 13 Expert Views on Klout’s New Scoring
 Algorithm. (2012). Available at:
@@ -6572,9 +5620,7 @@ Psychol. 21, 204–218 (1972).
 
 ---
 
-## Sección 51: Foundations & Introduction
-
--- 339 of 346 --
+## Sección 51: Foundations & Introduction [Entropy: 0.301]
 
 Even Ninja Monkeys Like to Play
 90. Casey, B. J. et al. Behavioral and neural correlates of delay of
@@ -6607,9 +5653,6 @@ of the self. (Norton, 1992).
 personality. Neth. J. Psychol. 64, 152–168 (2008).
 100. Luomala, K. & Campbell, J. The Hero with a Thousand Faces.
 J. Am. Folk. 63, 121 (1950).
-
--- 340 of 346 --
-
 References
 101. Comberg, D. Kurt Vonnegut on the Shapes of Stories. YouTube
 (2010). Available at:
@@ -6636,9 +5679,6 @@ Notebook: Machinations, A New Way to Design Game
 Mechanics. (2012). Available at:
 http://www.gamasutra.com/view/feature/176033/the_desig
 ners_notebook_.php. (Accessed: 2nd July 2015)
-
--- 341 of 346 --
-
 Index
 INDEX
 Contents ...........................................................................................4
@@ -6668,9 +5708,6 @@ How to Understand Emotions in Gamification Design... 199
 How to Use Narrative to Create Deeper Experiences .... 204
 How to Create Playful Experiences ................................ 230
 How to Handle Cheating .................................................238
-
--- 342 of 346 --
-
 Index
 How to See it From the User’s Perspective .................... 243
 Gamification Mechanics and Elements .......................... 247
@@ -6693,9 +5730,7 @@ About the author ...............................................................
 
 ---
 
-## Sección 52: Foundations & Introduction
-
--- 343 of 346 --
+## Sección 52: Foundations & Introduction [Entropy: 0.25]
 
 About the Author
 ABOUT THE AUTHOR
@@ -6715,16 +5750,7 @@ Following the publication of this book, Andrzej went missing again
 for several weeks. This time his wife found a small ninja mask and
 a horse shoe with a note.
 “Even Unicorns Dream of Flying”
-
--- 344 of 346 --
-
 Draw Me a Picture and tweet it to @DaveRage ♇ ♇ ♇ ♇
-
--- 345 of 346 --
-
 Write Me a Poem and Tweet it to @DaveRage ♇ ♇ ♇ ♇
-
--- 346 of 346 --
-
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[KICK_API_REFERENCE]] · [[CANON_KICK_PUBLIC_API_V2_FULL_REFERENCE]] · [[POPULAR_SLOTS_ONLY_ON_STAKE_TIERS]] · [[CANON_SLOTS_STAKE_RTP_VOLATILITY_DYNAMICS]] · #streaming_and_overlays

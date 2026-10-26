@@ -1,15 +1,15 @@
-﻿> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
 
 # 👁️ Tratado Canónico: The Attention Merchants (Tim Wu)
 ### Basado en: *The Attention Merchants: The Epic Scramble to Get Inside Our Heads*
@@ -29,14 +29,14 @@ El patrón histórico siempre se repite:
 
 ---
 
-## 2. El Manifiesto Ético de Yendo: "Time Well Spent" en el Mundo Real
+## 2. El Manifiesto Ético de WebFactory: "Time Well Spent" en el Mundo Real
 
-Yendo nace explícitamente como una **antítesis y antídoto al modelo extractivo de los Attention Merchants**:
+WebFactory nace explícitamente como una **antítesis y antídoto al modelo extractivo de los Attention Merchants**:
 
-> **"El éxito de Yendo se mide por la cantidad de horas que los usuarios pasan compartiendo cara a cara en el mundo real fuera de la pantalla, NO por la cantidad de horas que pasan scrolleando en la aplicación."**
-> — Yendo DNA & Human Experience Squad
+> **"El éxito de WebFactory se mide por la cantidad de horas que los usuarios pasan compartiendo cara a cara en el mundo real fuera de la pantalla, NO por la cantidad de horas que pasan scrolleando en la aplicación."**
+> — WebFactory DNA & Human Experience Squad
 
-### Invariantes Anti-Dark Patterns en Yendo:
+### Invariantes Anti-Dark Patterns en WebFactory:
 1. **Cero Notificaciones Basura (No Spam Push):**
    - Las notificaciones solo se envían si hay una acción directa y relevante de un amigo cercano (ej: *"Tomás inició un quórum para salir esta noche"*).
    - Prohibidas las notificaciones clickbait de marketing genérico a las 3 de la tarde.

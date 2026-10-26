@@ -1,5 +1,7 @@
 # Next_Gen_CSS_Una_Kravets_Chrome_Devs
 
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Web Software Factory.
+
 > **Source:** https://www.youtube.com/watch?v=qm0IfG1GyZU  
 > **Category:** ui_ux_design  
 > **Ingested At:** 2026-10-17T15:42:25.503Z  

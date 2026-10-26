@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * tools/audit/visual_regression.mjs — PQC Deterministic Component Testbench & Pixelmatch Regression Harness
  * ==========================================================================================================
@@ -50,10 +50,10 @@ const VIEWPORTS = [
 ];
 
 const COMPONENTS = [
-  'game-card',
-  'raffle-modal',
-  'hud-bar',
-  'site-topbar'
+  'site-header',
+  'hero-section',
+  'bento-card',
+  'pricing-card'
 ];
 
 const CHROME_PATHS = [
@@ -67,8 +67,9 @@ function buildTestbenchHtml() {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WebFactory — Deterministic Component Testbench Sandbox</title>
-  <link rel="stylesheet" href="/site/css/style.css" />
+  <title>Web Software Factory — Deterministic Universal Component Testbench Sandbox</title>
+  <link rel="stylesheet" href="/templates/vanilla-edge/site/css/design-tokens.css" />
+  <link rel="stylesheet" href="/templates/vanilla-edge/site/css/ui-primitives.css" />
   <style>
     *, *::before, *::after {
       animation: none !important;
@@ -78,8 +79,8 @@ function buildTestbenchHtml() {
     body {
       margin: 0;
       padding: 24px;
-      background: #0b0c12;
-      color: #f3f5f9;
+      background: oklch(0.13 0.015 260);
+      color: oklch(0.96 0.008 260);
       font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
     }
     .testbench-grid {
@@ -92,8 +93,8 @@ function buildTestbenchHtml() {
     .tb-stage {
       padding: 20px;
       border-radius: 14px;
-      background: #11131d;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: oklch(0.18 0.018 260);
+      border: 1px solid oklch(1 0 0 / 0.08);
     }
     .tb-topbar {
       display: flex;
@@ -101,14 +102,14 @@ function buildTestbenchHtml() {
       justify-content: space-between;
       gap: 12px;
       padding: 12px 16px;
-      background: #141724;
-      border: 1px solid rgba(255, 255, 255, 0.09);
+      background: oklch(0.20 0.02 260);
+      border: 1px solid oklch(1 0 0 / 0.1);
       border-radius: 12px;
     }
     .tb-brand {
       font-weight: 800;
-      letter-spacing: 0.04em;
-      color: #53fc18;
+      letter-spacing: 0.02em;
+      color: oklch(0.96 0.008 260);
       font-size: 15px;
     }
     .tb-pill {
@@ -117,8 +118,8 @@ function buildTestbenchHtml() {
       gap: 6px;
       padding: 6px 10px;
       border-radius: 999px;
-      background: rgba(83, 252, 24, 0.12);
-      color: #53fc18;
+      background: oklch(0.74 0.17 160 / 0.15);
+      color: oklch(0.74 0.17 160);
       font-size: 12px;
       font-weight: 700;
     }
@@ -128,53 +129,33 @@ function buildTestbenchHtml() {
       gap: 10px;
       padding: 16px;
       border-radius: 12px;
-      background: #161927;
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: oklch(0.21 0.02 260);
+      border: 1px solid oklch(1 0 0 / 0.1);
     }
     .tb-card-title {
       font-size: 16px;
       font-weight: 700;
-      color: #ffffff;
+      color: oklch(0.96 0.008 260);
       margin: 0;
     }
     .tb-card-meta {
       display: flex;
       justify-content: space-between;
       font-size: 12px;
-      color: #9ba3b8;
+      color: oklch(0.76 0.015 260);
     }
     .tb-btn {
       padding: 10px 14px;
       border-radius: 8px;
       border: none;
-      background: #53fc18;
-      color: #080a0f;
+      background: oklch(0.82 0.18 85);
+      color: oklch(0.14 0.02 260);
       font-weight: 800;
       font-size: 13px;
       text-align: center;
     }
-    .tb-hud {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      padding: 14px;
-      border-radius: 12px;
-      background: #131622;
-      border: 1px solid rgba(83, 252, 24, 0.25);
-    }
-    .tb-stat-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      color: #8c95aa;
-    }
-    .tb-stat-val {
-      font-size: 16px;
-      font-weight: 800;
-      color: #f3f5f9;
-      font-variant-numeric: tabular-nums;
-    }
     [data-dynamic-mask="true"] {
-      background: #232738 !important;
+      background: oklch(0.25 0.02 260) !important;
       color: transparent !important;
       border-radius: 4px;
       user-select: none;
@@ -183,61 +164,56 @@ function buildTestbenchHtml() {
 </head>
 <body>
   <main class="testbench-grid" aria-label="Component Testbench Sandbox">
-    <!-- 1. Site Topbar Component -->
-    <section class="tb-stage" data-testbench="site-topbar" aria-label="Topbar Sandbox">
-      <header class="tb-topbar site-topbar">
-        <span class="tb-brand">WEB SOFTWARE FACTORY // SANDBOX</span>
+    <!-- 1. Site Header Component -->
+    <section class="tb-stage" data-testbench="site-header" aria-label="Header Sandbox">
+      <header class="tb-topbar site-header">
+        <span class="tb-brand">WEB SOFTWARE FACTORY // STUDIO</span>
         <div style="display:flex;gap:8px;align-items:center;">
-          <span class="tb-pill" data-dynamic-mask="true">12,450 $DIG</span>
-          <span class="tb-pill" style="background:rgba(255,184,0,0.15);color:#ffb800;">+18 FREE PLAY</span>
+          <span class="tb-pill">W3C DTCG 2025.10</span>
+          <span class="tb-pill" data-dynamic-mask="true">v2.2.0</span>
         </div>
       </header>
     </section>
 
-    <!-- 2. Game Card Component -->
-    <section class="tb-stage" data-testbench="game-card" aria-label="Game Card Sandbox">
-      <article class="tb-card game-card">
+    <!-- 2. Hero Section Component -->
+    <section class="tb-stage" data-testbench="hero-section" aria-label="Hero Sandbox">
+      <article class="tb-card hero-section">
         <div class="tb-card-meta">
-          <span>PRAGMATIC PLAY</span>
-          <span style="color:#53fc18;font-weight:700;">RTP 96.50%</span>
+          <span>ASTRO 5 & VANILLA EDGE</span>
+          <span style="color:oklch(0.74 0.17 160);font-weight:700;">LCP &lt; 1.2s</span>
         </div>
-        <h2 class="tb-card-title">Gates of Olympus 1000</h2>
+        <h2 class="tb-card-title">High-Converting Web Architecture</h2>
         <div class="tb-card-meta">
-          <span>Max Win: 15,000x</span>
-          <span>Tier S Bounty</span>
+          <span>OKLCH 90/8/2 Palette</span>
+          <span>Utopia Fluid Scales</span>
         </div>
-        <div class="tb-btn">PREDICT MULTIPLIER (FREE)</div>
+        <div class="tb-btn">START BUILDING</div>
       </article>
     </section>
 
-    <!-- 3. Raffle Modal Component -->
-    <section class="tb-stage" data-testbench="raffle-modal" aria-label="Raffle Modal Sandbox">
-      <div class="tb-card raffle-modal" role="dialog" aria-label="Provably Fair Raffle">
+    <!-- 3. Bento Card Component -->
+    <section class="tb-stage" data-testbench="bento-card" aria-label="Bento Card Sandbox">
+      <div class="tb-card bento-card" aria-label="Bento Feature Card">
         <div class="tb-card-meta">
-          <span>COMMIT-REVEAL HMAC-SHA256</span>
-          <span style="color:#ffb800;">ZERO CUSTODY</span>
+          <span>CLOUDFLARE WORKERS STATIC ASSETS</span>
+          <span>300+ EDGE POPs</span>
         </div>
-        <h2 class="tb-card-title">Sunday Streamer Giveaway</h2>
-        <p style="margin:0;font-size:12px;color:#9ba3b8;">100% Free entry via RealtimeHub chat command. Prizes delivered out-of-band by streamer.</p>
-        <div class="tb-btn">VERIFY FAIRNESS SEED</div>
+        <h2 class="tb-card-title">Instant Speculation Rules</h2>
+        <p style="margin:0;font-size:12px;color:oklch(0.76 0.015 260);">Zero-CLS layout ergonomics with native View Transitions API and GPU compositor animations.</p>
+        <div class="tb-btn">EXPLORE SPECS</div>
       </div>
     </section>
 
-    <!-- 4. HUD Bar Component -->
-    <section class="tb-stage" data-testbench="hud-bar" aria-label="Bonus Hunt HUD Sandbox">
-      <div class="tb-hud hud-bar">
-        <div>
-          <div class="tb-stat-label">BONUSES</div>
-          <div class="tb-stat-val">24 / 24</div>
+    <!-- 4. Pricing Card Component -->
+    <section class="tb-stage" data-testbench="pricing-card" aria-label="Pricing Card Sandbox">
+      <div class="tb-card pricing-card">
+        <div class="tb-card-meta">
+          <span>ENTERPRISE PLAN</span>
+          <span class="tabular-nums">$49 / MO</span>
         </div>
-        <div>
-          <div class="tb-stat-label">BREAK-EVEN</div>
-          <div class="tb-stat-val">84.50x</div>
-        </div>
-        <div>
-          <div class="tb-stat-label">LIVE CLOCK</div>
-          <div class="tb-stat-val" data-dynamic-mask="true">00:42:19</div>
-        </div>
+        <h2 class="tb-card-title">Full-Stack Edge Deployment</h2>
+        <p style="margin:0;font-size:12px;color:oklch(0.76 0.015 260);">Includes D1 SQLite persistence, Valibot schema validation, and automated 5-Gate QA.</p>
+        <div class="tb-btn">ACTIVATE PLAN</div>
       </div>
     </section>
   </main>

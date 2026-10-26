@@ -1,0 +1,113 @@
+{
+  "version": "2026.2",
+  "studio": "web-software-factory",
+  "progressiveDisclosureRule": "Each role loads ONLY its primary assigned skills (5-7 skills) plus 1 on-demand style skill (.specify/memory/style-guide.md) to prevent context rot.",
+  "roles": {
+    "orchestrator": [
+      "subagent-driven-development",
+      "tom-swe-modeling",
+      "verify-before-claim",
+      "finops-context-budget",
+      "strategic-compact",
+      "anti-shortcut-discipline"
+    ],
+    "product-spec-architect": [
+      "modularity",
+      "constraint-driven-development",
+      "code-structure",
+      "grill-me"
+    ],
+    "ux-designer": [
+      "ryux",
+      "design-system",
+      "modern-frontend-design",
+      "baseline-ui",
+      "minimal-surface-hierarchy",
+      "utopia-fluid-ergonomics",
+      "optical-symmetry-and-focus",
+      "21st-ui",
+      "extract-design",
+      "wireframe"
+    ],
+    "copywriting-cro-strategist": [
+      "copywriting",
+      "cro",
+      "pricing-and-onboarding-cro",
+      "marketing-psychology",
+      "stop-slop",
+      "hallmark"
+    ],
+    "senior-coder": [
+      "baseline-ui",
+      "motion-engineer",
+      "animation-performance",
+      "emil-design-eng",
+      "vanilla-motion-choreography",
+      "animate",
+      "layout-primitives-architect"
+    ],
+    "edge-fullstack-architect": [
+      "workers-best-practices",
+      "cloudflare-durable-objects",
+      "error-handling",
+      "security-and-hardening",
+      "provider-fallback",
+      "number-parsing"
+    ],
+    "seo-aeo-geo-architect": [
+      "ai-seo-and-geo",
+      "web-quality-skills",
+      "web-perf"
+    ],
+    "qa-auditor": [
+      "cto-hitl-visual-gate",
+      "ui-test",
+      "break-ui",
+      "evidence-driven-testing",
+      "playwright-best-practices",
+      "code-reviewer",
+      "adverse-review",
+      "silent-failure-hunter",
+      "delivery-gate"
+    ],
+    "security-engineer": [
+      "security-checklist",
+      "security-audit",
+      "security-and-hardening",
+      "anti-fraud-fingerprinting",
+      "agent-security-hardening"
+    ],
+    "tech-scout": [
+      "research-mode",
+      "sandboxed-experiments",
+      "firecrawl",
+      "kb-retrieval",
+      "kb-writing",
+      "self-evolving-factory",
+      "agent-self-evaluation",
+      "continuous-learning-instincts"
+    ]
+  },
+  "archetypes": {
+    "saas-b2b": {
+      "defaultStyle": "linear-style",
+      "recommendedStyles": ["linear-style", "vercel-geist", "raycast-dark", "bento", "stripe-editorial"],
+      "prioritySkills": ["pricing-and-onboarding-cro", "baseline-ui", "ai-seo-and-geo", "minimal-surface-hierarchy"]
+    },
+    "ecommerce": {
+      "defaultStyle": "stripe-editorial",
+      "recommendedStyles": ["stripe-editorial", "bento", "apple-hig", "shopify-polar"],
+      "prioritySkills": ["pricing-and-onboarding-cro", "number-parsing", "web-perf", "cro"]
+    },
+    "marketing": {
+      "defaultStyle": "bento",
+      "recommendedStyles": ["bento", "linear-style", "stripe-editorial", "swiss-grid"],
+      "prioritySkills": ["copywriting", "cro", "ai-seo-and-geo", "emil-design-eng"]
+    },
+    "portfolio": {
+      "defaultStyle": "swiss-grid",
+      "recommendedStyles": ["swiss-grid", "brutalist", "minimal-editorial", "bento"],
+      "prioritySkills": ["frontend-design", "emil-design-eng", "utopia-fluid-ergonomics", "optical-symmetry-and-focus"]
+    }
+  }
+}

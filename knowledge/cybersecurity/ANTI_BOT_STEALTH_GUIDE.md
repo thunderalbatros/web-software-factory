@@ -1,4 +1,6 @@
-﻿# 🛡️ Evasión Anti-Bot & Stealth — Guía Completa para realtime-stream.com
+# 🛡️ Evasión Anti-Bot & Stealth — Guía Completa para realtime-stream.com
+
+> **Alcance:** Literatura canónica de ciberseguridad web, criptografía aplicada, protección de identidad OAuth 2.1, defensa XSS/CSP/CSRF y blindaje de aplicaciones en tiempo real.
 
 > **Fuentes:** fingerprint.com, puppeteer-extra-stealth, Playwright docs, Cloudflare docs, mitmproxy docs
 > **Aplicación:** Login OAuth en realtime-stream.com sin detección
@@ -80,7 +82,7 @@ npm install playwright-extra puppeteer-extra-plugin-stealth
 
 **Para realtime-stream.com (Cloudflare):** El objetivo es score > 50.
 
-## 5. Estrategia Centinela para RealtimeHub Login
+## 5. Estrategia Web Software Factory para RealtimeHub Login
 
 ```typescript
 // Estrategia: NO headless browser constante

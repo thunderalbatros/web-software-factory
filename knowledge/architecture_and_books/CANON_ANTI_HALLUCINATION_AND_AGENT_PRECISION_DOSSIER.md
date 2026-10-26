@@ -1,17 +1,17 @@
-> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
-# 🛡️ Dossier Maestro: Erradicación de Alucinaciones, Prevención de Overfitting y Máxima Eficiencia en el Enjambre de Agentes de Yendo
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
+
+# 🛡️ Dossier Maestro: Erradicación de Alucinaciones, Prevención de Overfitting y Máxima Eficiencia en el Enjambre de Agentes de WebFactory
 
 > **Propósito:** Marco arquitectónico de ingeniería para blindar al enjambre de agentes (MANAGER_AGENT + 6 Squads Especializados) contra alucinaciones y sobreajuste (*overfitting*), maximizando el rendimiento y la precisión en tres horizontes: **Desafíos Actuales de Sprint**, **Camino al MVP** y **Operaciones Post-Lanzamiento en Producción**.
 
@@ -75,7 +75,7 @@ Investigaciones académicas de vanguardia (*arXiv:2509.18970 - Survey on LLM-bas
 
 ---
 
-## 🗺️ 3. Aplicación en los 3 Horizontes Estratégicos de Yendo
+## 🗺️ 3. Aplicación en los 3 Horizontes Estratégicos de WebFactory
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────────────────┐
@@ -104,7 +104,7 @@ Investigaciones académicas de vanguardia (*arXiv:2509.18970 - Survey on LLM-bas
 ### Horizonte 2: Camino Hacia el MVP (Estabilidad, Concurrencia y Test Lab)
 1. **Auditoría Visual en CI con Florence-2 (`npm run hf:visual`):** Bloquear automáticamente cualquier PR que renderice botones menores a 48dp o viole el contraste Dark OLED `#121212`.
 2. **Validación Matemática de Invariantes (`npm run hf:invariants`):** Ejecutar 250 simulaciones continuas del llenado de grupos Dunbar para garantizar que ningún grupo supere 6 miembros y se clone en el milisegundo exacto.
-3. **Dual QA Firebase:** Despliegue en Firebase Test Lab sobre dispositivos físicos reales (`npm run testlab:auto`), contrastando logs reales de Android/iOS para neutralizar falsos positivos del emulador.
+3. **Dual QA Firebase:** Despliegue en Firebase Test Lab sobre dispositivos físicos reales (`npm run testlab:auto`), contrastando logs reales de Web Platform/iOS para neutralizar falsos positivos del emulador.
 
 ### Horizonte 3: Despliegue en Producción (Observabilidad, Escala y Auto-Sanación)
 1. **Pipeline de Auto-Sanación (*Autonomous Self-Healing*):**

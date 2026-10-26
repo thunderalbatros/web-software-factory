@@ -67,13 +67,12 @@ const DOMAIN_HUBS = {
     'CANON_IDENTITY_AND_OAUTH_CYBERSECURITY_AUDIT_2026',
     'CANON_SEMINAL_CRYPTOGRAPHY_PAPERS_AND_PROTOCOLS'
   ],
-  streaming_and_overlays: [
-    'KICK_API_REFERENCE',
-    'CANON_KICK_PUBLIC_API_V2_FULL_REFERENCE',
-    'POPULAR_SLOTS_ONLY_ON_STAKE_TIERS',
-    'CANON_SLOTS_STAKE_RTP_VOLATILITY_DYNAMICS',
-    'CANON_STAKE_CHALLENGES_BOUNTY_SYSTEM_AND_FAST_MEDIA_PIPELINE_2026',
-    'GIVEAWAY_STRATEGIES'
+  software_factory: [
+    'CANON_SPLE_ISO26550_AND_SOFTWARE_FACTORIES_ARCHITECTURE_2026',
+    'CANON_ASTRO5_CLOUDFLARE_WORKERS_AND_MODERN_WEB_TEMPLATES_2026',
+    'CANON_MULTI_BRAND_DESIGN_SYSTEMS_DTCG_STYLE_DICTIONARY_AND_ARCHETYPES_2026',
+    'CANON_SOTA_AGENT_TEAM_TOPOLOGY_AND_2026_WEB_STACK_AUDIT',
+    'CANON_SOFTWARE_FACTORY_CURRICULUM_BOOKS_PAPERS_AND_VIDEO_COURSES_2026'
   ]
 };
 
@@ -143,20 +142,16 @@ function computePageRank(nodeIds, edges, damping = 0.85, iterations = 25) {
  */
 export function buildCodeGraph() {
   const codeDirs = [
-    path.join(ROOT, 'site', 'js'),
-    path.join(ROOT, 'worker'),
-    path.join(ROOT, 'core', 'src'),
+    path.join(ROOT, 'templates', 'vanilla-edge', 'site', 'js'),
+    path.join(ROOT, 'templates', 'vanilla-edge', 'worker'),
+    path.join(ROOT, 'templates', 'astro-edge', 'worker'),
     path.join(ROOT, 'tools', 'audit'),
-    path.join(ROOT, 'tools', 'intelligence')
+    path.join(ROOT, 'tools', 'intelligence'),
+    path.join(ROOT, 'tools', 'design'),
+    path.join(ROOT, 'tools', 'lib'),
+    path.join(ROOT, 'tools', 'guardrails')
   ];
-  // Also include all overlay-* and wheel-* directories
-  for (const entry of fs.readdirSync(ROOT, { withFileTypes: true })) {
-    if (entry.isDirectory() && (entry.name.startsWith('overlay-') || entry.name.startsWith('wheel-'))) {
-      codeDirs.push(path.join(ROOT, entry.name));
-    }
-  }
-
-  const files = [];
+  const files = [path.join(ROOT, 'tools', 'factory.mjs'), path.join(ROOT, 'tools', 'build_dist.mjs')].filter(p => fs.existsSync(p));
   for (const d of codeDirs) {
     files.push(...walkFiles(d, ['.js', '.mjs', '.ts'], 3));
   }

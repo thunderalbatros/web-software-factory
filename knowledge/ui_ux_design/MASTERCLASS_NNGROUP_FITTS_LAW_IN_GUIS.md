@@ -1,10 +1,10 @@
-﻿**Alcance:** Masterclass de Nielsen Norman Group (NN/g): formulación matemática y aplicación práctica de la Ley de Fitts en interfaces gráficas. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+**Alcance:** Masterclass de Nielsen Norman Group (NN/g): formulación matemática y aplicación práctica de la Ley de Fitts en interfaces gráficas. .
 
 ---
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -19,10 +19,10 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Aplicación de la Ley de Fitts y Ergonomía Móvil en Yendo Mobile
+# Informe Técnico: Aplicación de la Ley de Fitts y Ergonomía Móvil en la Web Software Factory
 
 **Fecha:** 2023-10-27
-**Autor:** RESEARCHER_AGENT & UI_ARCHITECT (Yendo Mobile)
+**Autor:** RESEARCHER_AGENT & UI_ARCHITECT (la Web Software Factory)
 **Fuente:** "Fitts's Law in Graphical User Interfaces & Mobile Ergonomics" por Raluca Budiu (NN/g)
 
 ---
@@ -31,7 +31,7 @@ ultima_revision: 2026-08-27
 
 El concepto central de este análisis se basa en la **Ley de Fitts**, que postula que el tiempo requerido para moverse rápidamente a un objetivo es una función de la distancia al objetivo y el tamaño del objetivo. Esta ley es un pilar fundamental en la ergonomía de la Interacción Humano-Computadora (HCI) y es directamente aplicable al diseño de interfaces móviles.
 
-La tesis arquitectónica de Yendo Mobile es que nuestra interfaz de usuario (UI) y experiencia de usuario (UX) deben ser **fundamentalmente impulsadas por los principios de la Ley de Fitts** para lograr una interacción de "Fricción Cero". Esto se traduce en un diseño donde cada elemento interactivo (botones, listas, campos de entrada) es optimizado en tamaño y posición para minimizar el tiempo de adquisición del objetivo y la carga cognitiva del usuario. Al integrar estos principios con nuestro stack tecnológico (Web UI / Vanilla & Modern Frontend, Web Platform 57, Material 3) y nuestro ADN de producto ("pisa internet", Dark OLED), construiremos una experiencia móvil intuitiva, eficiente y profundamente ergonómica, alineada con nuestro lenguaje de producto `Venue / Experiencia / Grupo`.
+La tesis arquitectónica de la Web Software Factory es que nuestra interfaz de usuario (UI) y experiencia de usuario (UX) deben ser **fundamentalmente impulsadas por los principios de la Ley de Fitts** para lograr una interacción de "Fricción Cero". Esto se traduce en un diseño donde cada elemento interactivo (botones, listas, campos de entrada) es optimizado en tamaño y posición para minimizar el tiempo de adquisición del objetivo y la carga cognitiva del usuario. Al integrar estos principios con nuestro stack tecnológico (Web UI / Vanilla & Modern Frontend, Web Platform 57, Material 3) y nuestro ADN de producto ("pisa internet", Dark OLED), construiremos una experiencia móvil intuitiva, eficiente y profundamente ergonómica, alineada con nuestro lenguaje de producto `Venue / Experiencia / Grupo`.
 
 ## 2. Hallazgos Técnicos Clave
 
@@ -45,7 +45,7 @@ La masterclass de NN/g subraya la importancia de la Ley de Fitts para el diseño
 *   **Modelos de Hilos (Thread Models):** En Web UI / Vanilla & Modern Frontend, la Ley de Fitts se ve impactada por la capacidad del sistema para responder. Un modelo de hilos eficiente (separación del hilo UI y JS) asegura que la interfaz sea fluida y reactiva, permitiendo que el usuario adquiera objetivos sin demoras o "jank". Una UI que tartamudea o se congela anula los beneficios de un diseño basado en Fitts.
 *   **Composición de Componentes y Tokens de Diseño:** La Ley de Fitts debe informar directamente la definición de nuestros tokens de diseño para tamaños (e.g., `spacing.md`, `button.height.lg`) y las propiedades de `hitSlop` de los componentes. Los componentes deben ser construidos con dimensiones mínimas de toque (e.g., 48x48 dp) y espaciado adecuado para evitar errores de selección y mejorar la precisión.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
 ### Web UI / Vanilla & Modern Frontend & Web Platform 57
 
@@ -83,7 +83,7 @@ La masterclass de NN/g subraya la importancia de la Ley de Fitts para el diseño
 
 ## 4. Principios Rectores y Citas Clave
 
-**Principios Rectores de Yendo Mobile:**
+**Principios Rectores de la Web Software Factory:**
 
 1.  **La Ergonomía de la Interacción es la Base de la "Fricción Cero":** Cada elemento interactivo se diseña y posiciona para minimizar el esfuerzo físico y cognitivo del usuario, priorizando la precisión y la velocidad de adquisición del objetivo.
 2.  **La Previsibilidad y la Consistencia Reducen la Carga Cognitiva y Mejoran la Eficiencia:** Un diseño coherente y patrones de interacción predecibles permiten a los usuarios desarrollar memoria muscular y navegar la aplicación con confianza y rapidez.
@@ -94,8 +94,8 @@ La masterclass de NN/g subraya la importancia de la Ley de Fitts para el diseño
 *   "El tiempo de movimiento hacia un objetivo depende del tamaño del objetivo y de la distancia al objetivo."
     *   — *Lexie Kane, Nielsen Norman Group (NN/g), sobre la Ley de Fitts.*
 
-*   "En Yendo Mobile, cada píxel y cada interacción se diseñan para minimizar la fricción, maximizar la eficiencia y deleitar al usuario, transformando la Ley de Fitts en una experiencia fluida y natural que 'pisa internet' con cada toque."
-    *   — *RESEARCHER_AGENT & UI_ARCHITECT, Yendo Mobile.*
+*   "En la Web Software Factory, cada píxel y cada interacción se diseñan para minimizar la fricción, maximizar la eficiencia y deleitar al usuario, transformando la Ley de Fitts en una experiencia fluida y natural que 'pisa internet' con cada toque."
+    *   — *RESEARCHER_AGENT & UI_ARCHITECT, la Web Software Factory.*
 
 ---
 

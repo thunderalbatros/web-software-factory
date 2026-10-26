@@ -1,4 +1,6 @@
-﻿# Canon 2026: Harness Engineering, Evals, Sandboxes & Autonomous Software Factories
+# Canon 2026: Harness Engineering, Evals, Sandboxes & Autonomous Software Factories
+
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
 
 > **Scope:** Canonical engineering specification synthesizing Harness Engineering, AI Evaluation Frameworks, Sandboxing Runtimes, and Open-Source Software Factory Architecture.  
 > **Primary Sources:** WalkingLabs (*Learn Harness Engineering*), DeepLearning.AI (*Building Agentic Workflows with LangGraph*, *Automated Testing for LLMs*), Supabase (*Local Docker & Deterministic Migrations*), E2B (*Building Coding Agents with Tool Execution*), Anthropic (*Model Context Protocol*), Confident AI (*DeepEval*), Exploding Gradients (*Ragas*), and Langfuse.  

@@ -1,4 +1,4 @@
-﻿# 📚 Libro Completo: For the Win: The Power of Gamification and Game Thinking
+# 📚 Libro Completo: For the Win: The Power of Gamification and Game Thinking
 
 **Alcance:** Fuente bibliográfica completa sobre Gamificación, Marco DMC (Dinámicas, Mecánicas, Componentes) y Retención (For the Win: The Power of Gamification and Game Thinking — Kevin Werbach & Dan Hunter). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
@@ -7,44 +7,11 @@
 > **Archivo Fuente:** `dokumen.pub_for-the-win-revised-and-updated-edition-the-power-of-gamification-and-game-thinking-in-business-education-government-and-social-impact-9781613631041.pdf`  
 > **Páginas Originales:** 152  
 > **Secciones Extraídas:** 38  
-> **Fecha de Ingesta:** 2026-10-19  
+> **Fecha de Ingesta:** 2026-10-19
 
 ---
 
-## Sección 1: Foundations & Introduction
-
--- 1 of 152 --
-
--- 2 of 152 --
-
-Philadelphia
-
--- 3 of 152 --
-
-© 2020, 2012 by Kevin Werbach and Dan Hunter
-Published by Wharton School Press
-The Wharton School
-University of Pennsylvania
-3620 Locust Walk
-300 Steinberg Hall-Dietrich Hall
-Philadelphia, PA 19104
-Email: whartonschoolpress@wharton.upenn.edu
-Website: wsp.wharton.upenn. edu
-All rights reserved. No part of this book may be reproduced, in any form or by any
-means, without written permission of the publisher. Company and product names
-mentioned herein are the trademarks or registered trademarks of their respective
-owners.
-Ebook ISBN: 978-1-61363-104-1
-Paperback ISBN: 978-1-61363-105-8
-
--- 4 of 152 --
-
-For Nate and Elena—DH
-For Eli and Esther—KW
-
--- 5 of 152 --
-
--- 6 of 152 --
+## Sección 1: Foundations & Introduction [Entropy: 0.265]
 
 Introduction: Why Can’t Life Be Fun? ix
 Level 1: Getting into the Game: An Introduction
@@ -64,10 +31,6 @@ About the Authors 127
 About Wharton School Press 129
 About the Wharton School 130
 Contents
-
--- 7 of 152 --
-
--- 8 of 152 --
 
 ix
 Each year in the United States alone, almost 800,000 people suffer
@@ -93,9 +56,6 @@ For thousands of years, we’ve created things called games that
 tap the tremendous psychic power of fun. A well-designed game is a
 Introduction
 Why Can’t Life Be Fun?
-
--- 9 of 152 --
-
 x Introduction
 guided missile to the motivational heart of the human psyche.
 Applying the lessons that games can teach could change your business, the way you learn or teach, even your life. The premise of this
@@ -124,9 +84,6 @@ mother feels a jolt of pure joy when she earns a coveted badge for buying the in
 than that packaged junk she bought before).
 By at least some measures, the people in the first vignettes are
 doing their jobs effectively. Perhaps we want our leaders to be ruthless, our students to mechanically complete their work, and our
-
--- 10 of 152 --
-
 Introduction xi
 consumers to be buying unthinkingly. But an exclusive focus on
 short-term factors will produce short-term benefits at best, while
@@ -159,9 +116,7 @@ Gamification has even been implicated in suicide.
 
 ---
 
-## Sección 2: Foundations & Introduction
-
--- 11 of 152 --
+## Sección 2: Foundations & Introduction [Entropy: 0.265]
 
 xii Introduction
 In the remainder of this book, we will take you through research
@@ -191,9 +146,6 @@ techniques provide your means to achieve it.
 Games have been around since the beginning of human civilization. Today, video games make up a massive global industry that
 generates nearly $150 billion per year. Hundreds of millions of people
 in every corner of the globe spend hundreds of billions of minutes
-
--- 12 of 152 --
-
 Introduction xiii
 every month playing console, PC, online, and mobile games. Games
 are popular in every demographic, gender, and age group, but they
@@ -226,9 +178,6 @@ nature and skillful design. Those hundreds of millions of video game
 players spend all those hours because the games were rigorously and
 skillfully designed, based on decades of real-world experience and
 an understanding of human psychology.
-
--- 13 of 152 --
-
 xiv Introduction
 Knowing how to conduct a market segmentation or a minimum
 viable product analysis won’t show you how to create enduringly
@@ -262,9 +211,7 @@ games fail: Game design is hard.
 
 ---
 
-## Sección 3: Foundations & Introduction
-
--- 14 of 152 --
+## Sección 3: Foundations & Introduction [Entropy: 0.25]
 
 Introduction xv
 Whether you’re an executive at a large corporation considering
@@ -295,9 +242,6 @@ Why We Wrote This Book
 In the first edition of this book, we told the story of how our interest
 in gamification grew out of the experience of playing together in the
 multiplayer online game World of Warcraft. We’d spend our nights
-
--- 15 of 152 --
-
 xvi Introduction
 killing virtual monsters and chatting with our guildmates, most of
 whom were academic games scholars or professional video game
@@ -329,9 +273,6 @@ we run around killing dragons with our kids.
 Two things have changed dramatically since 2012: the sheer number of real-world gamification examples and the volume of academic
 papers investigating these techniques. This new edition thoroughly
 updates the examples and incorporates the most prominent research
-
--- 16 of 152 --
-
 Introduction xvii
 findings throughout. In par ticu lar, the mistakes we warned about
 in the first edition of the book—ineffective slapdash gamification
@@ -363,9 +304,7 @@ intrinsic motivators may remain unfamiliar in mainstream business
 
 ---
 
-## Sección 4: Foundations & Introduction
-
--- 17 of 152 --
+## Sección 4: Foundations & Introduction [Entropy: 0.31]
 
 xviii Introduction
 and educational contexts, but they are well established in their
@@ -395,9 +334,6 @@ three mechanics are still a core feature of many gamification
 projects, but nowadays we see many more game mechanics
 that intelligently use different mechanics to meet their designers’ ends. We will explore when and why you should use each,
 in the chapters below.
-
--- 18 of 152 --
-
 Introduction xix
 4. Most of the gamification practiced today doesn’t arise from
 a stand-alone effort to apply game design techniques.
@@ -428,9 +364,6 @@ work for your specific problem. Here we teach you how to approach
 problems like a game designer. That means understanding exactly
 what a game is and the basics of game thinking. At Level 3, we get you
 to dig down into the motivations of the users of your gamification
-
--- 19 of 152 --
-
 xx Introduction
 system and ask how gamification can better engage them. Decades
 of research reveal surprising facts about the best ways to motivate
@@ -461,8 +394,6 @@ as an endorsement of a tool or practice that will lead to success in
 any context—as in “Daily exercise FTW!” We find it an appropriate
 moniker. Gamification is a technique that businesses can use to be
 more successful. We hope you will use this book to help your organization win in whatever ways you choose.
-
--- 20 of 152 --
 Everything in the future online is going to look like a
 multiplayer game.
 —Former Google CEO Eric Schmidt
@@ -487,9 +418,7 @@ Level 1
 
 ---
 
-## Sección 5: Foundations & Introduction
-
--- 21 of 152 --
+## Sección 5: Foundations & Introduction [Entropy: 0.25]
 
 2 Level 1
 Surely there is a way to make this fun?
@@ -511,9 +440,6 @@ employees earned Advocate status by completing essential training
 modules. Advocates are 50% less likely to experience a security incident and perform 70% better on phishing tests compared with nonAdvocate employees.
 Figure 1.1: Super Hacker Land, One of Accenture’s Information
 Security Training Games
-
--- 22 of 152 --
-
 Getting into the Game 3
 Making Microsoft Windows Fun
 Hundreds of millions of people use Microsoft Windows and Office
@@ -545,9 +471,6 @@ Microsoft offices in Japan topped the regional leaderboard by taking a
 day off from other work to weed out localization errors. All told, 4,500
 participants reviewed over half a million Windows 7 dialog boxes and
 logged 6,700 bug reports, resulting in hundreds of significant fixes.
-
--- 23 of 152 --
-
 4 Level 1
 Not only did they go above and beyond their work responsibilities,
 but a large number of them described the process as enjoyable and
@@ -563,9 +486,6 @@ their own solutions in-house. Pretty much every major company
 we’ve looked at has a gamification project, or several. Hundreds of
 Figure 1.2: The Microsoft Language Quality Game for
 Hindi Localization
-
--- 24 of 152 --
-
 Getting into the Game 5
 teachers and professors have gamified their classes in a variety of
 ways.
@@ -588,9 +508,6 @@ Individuals Communities
 External
 Crowdsourcing Behavior Change
 Figure 1.3: Relationship Between Gamification Categories
-
--- 25 of 152 --
-
 6 Level 1
 Internal Gamification
 Microsoft’s and Accenture’s initiatives are examples of internal gamification. In these scenarios, companies use gamification to improve
@@ -621,9 +538,7 @@ gamification can work for core job requirements, but there must be
 
 ---
 
-## Sección 6: Foundations & Introduction
-
--- 26 of 152 --
+## Sección 6: Foundations & Introduction [Entropy: 0.265]
 
 Getting into the Game 7
 some additional motivation. That could be the status of winning a
@@ -654,9 +569,6 @@ résumé. Gamified badges serve the same function digitally.
 The paper’s primary goal was to increase engagement with its
 website. After three months, the Record Searchlight saw a 10% rise
 in comment volume, and the time spent on the site increased by about
-
--- 27 of 152 --
-
 8 Level 1
 25% per session. Another goal was to improve the quality of conversations on the site. By encouraging readers to reward good comments
 by other readers, the badges reduced the number of offensive and
@@ -679,9 +591,6 @@ of 19 research papers on gamification for health and well-being found
 predominantly positive results.
 Jane McGonigal is a game designer and author. She made a
 name for herself creating large-scale location-based and social-
-
--- 28 of 152 --
-
 Getting into the Game 9
 impact games. Then one day she hit her head on a cabinet in her
 office. Weeks later, the concussion symptoms hadn’t gone away, and
@@ -716,9 +625,7 @@ most powerful motivational tools.
 
 ---
 
-## Sección 7: Foundations & Introduction
-
--- 29 of 152 --
+## Sección 7: Foundations & Introduction [Entropy: 0.28]
 
 10 Level 1
 Crowdsourcing Gamification
@@ -748,9 +655,6 @@ supportive community, rather than a cutthroat battle for monetary
 rewards.
 Business and Beyond
 Most of these examples come from for-profit businesses, but gamification works equally well in social-impact contexts, in education, and
-
--- 30 of 152 --
-
 Getting into the Game 11
 in scenarios where financial success isn’t the default motivator. We’ll
 see several examples in this book. The solution could also be a hybrid.
@@ -772,9 +676,6 @@ online systems as early as 1980. University of Essex professor Richard
 Bartle, a pioneer in multiplayer online games, says the word referred
 originally to “turning something not a game into a game.”
 Figure 1.4: Kaggle User Profile
-
--- 31 of 152 --
-
 12 Level 1
 The first use of gamification in its current sense apparently occurred
 in 2003, when Nick Pelling, a British game developer, established a
@@ -804,9 +705,6 @@ techniques, and non-game contexts.
 Game Elements
 A game manifests itself as an integrated experience, but it’s built from
 many smaller pieces. We call those game elements. We’ll go into more
-
--- 32 of 152 --
-
 Getting into the Game 13
 detail at Level 4, but for now, think of elements as a toolkit for building a game. Game elements for checkers, for example, include the
 pieces, the notion of capturing pieces by jumping, and turning a piece
@@ -840,9 +738,7 @@ client meetings on the corporate intranet, it would promote more
 
 ---
 
-## Sección 8: Foundations & Introduction
-
--- 33 of 152 --
+## Sección 8: Foundations & Introduction [Entropy: 0.295]
 
 14 Level 1
 efficient knowledge sharing and collaboration across the organization. Mere exhortations were unlikely to move these busy professionals to invest the time. A simulation game wouldn’t do the
@@ -870,9 +766,6 @@ off-putting. New users may arrive with high hopes, only to abandon the
 system when they see the top of the leaderboard immensely far above
 them. These are just a few of the challenges you might encounter.
 As we mentioned, the Redding Record Searchlight is a good example of how external gamification can generate customer engagement
-
--- 34 of 152 --
-
 Getting into the Game 15
 benefits. At one point, though, the editors got carried away and implemented a “deal finder” badge for readers who signed up to receive promotional emails. It was a spectacular failure. Users of the gamified site
 found the emails so annoying that subscriptions to the promo list
@@ -900,9 +793,6 @@ their financial situation or learning a new subject. This is important
 to keep in mind when designing a gamified system. Your players
 aren’t there to escape from your product into a fantasy world; they
 are there to engage more deeply with your product or business or
-
--- 35 of 152 --
-
 16 Level 1
 objective. Those Accenture employees weren’t hacking apart goblins;
 they were learning not to leave their laptops vulnerable to theft while
@@ -935,9 +825,7 @@ any serious context that comes to mind. Think of gamification as a
 
 ---
 
-## Sección 9: Foundations & Introduction
-
--- 36 of 152 --
+## Sección 9: Foundations & Introduction [Entropy: 0.25]
 
 Getting into the Game 17
 means to design systems that motivate people to do things. Anything
@@ -969,9 +857,6 @@ problem, like studying NASA photographs to locate interesting new
 planets that automated systems can’t find. Or maybe you want to
 identify your best customers, who have an outsize impact on your
 bottom line.
-
--- 37 of 152 --
-
 18 Level 1
 Experimentation
 A second powerful aspect of game-based motivation is to open up
@@ -1006,9 +891,6 @@ Levels
 Team
 Reward
 Badge
-
--- 38 of 152 --
-
 Getting into the Game 19
 appraise their choice of products (such as cars) based on price, features, and styling. Yet we’ve all heard of people who love their jobs
 and those who love their cars. If that doesn’t sound strange, why resist
@@ -1043,9 +925,7 @@ online games are too striking to ignore.
 
 ---
 
-## Sección 10: Foundations & Introduction
-
--- 39 of 152 --
+## Sección 10: Foundations & Introduction [Entropy: 0.31]
 
 20 Level 1
 Results
@@ -1070,8 +950,6 @@ effective. Many studies evaluate gamification attempts that fail
 because they violate the principles we cover in this book. As we’ll discuss, one lesson from games is that failure itself can be a learning
 experience.
 If you haven’t already, it’s time to get into the game!
-
--- 40 of 152 --
 Games are nature’s most beautiful creation.
 —Leonard Cohen
 At Level 1, we identified some situations in which gamification can
@@ -1094,9 +972,6 @@ looking for trash to drop into the can.
 Game Thinking
 Learning to Think Like a Game Designer
 Level 2
-
--- 41 of 152 --
-
 22 Level 2
 No enterprising Scandinavian elves dug a deep hole for the magical trash can. Instead, a group of engineers created a simple motion
 detector and speaker system that they installed in the lid of a regular bin. Trash dropped into the bin actually fell about three feet, but
@@ -1115,9 +990,6 @@ that has been seen over 23 million times.
 We all know that using the stairs is good exercise, but most
 people prefer the comfort of an escalator. The Fun Theory turned the
 Figure 2.1: The Fun Theory’s Piano Stairs
-
--- 42 of 152 --
-
 Game Thinking 23
 stairs at a Stockholm subway station into a huge electronic piano,
 with each step corresponding to a key that made an audible sound.
@@ -1154,9 +1026,7 @@ designer, we start by asking an essential question . . .
 
 ---
 
-## Sección 11: Foundations & Introduction
-
--- 43 of 152 --
+## Sección 11: Foundations & Introduction [Entropy: 0.28]
 
 24 Level 2
 What’s in a Game?
@@ -1191,9 +1061,6 @@ empowering. We’ll return to this concept in several places. Even more
 essential, though, is the fact that games seem somehow different from
 mundane reality. A game player who is sitting in an ordinary chair,
 in an ordinary office, doing an ordinary job can experience a pull
-
--- 44 of 152 --
-
 Game Thinking 25
 that seems to originate somewhere else. That’s what can make a gamified customer engagement system more effective than, say, a coupon or a “10% off” promotion.
 Why is it that games take us outside our mundane life, even when
@@ -1223,9 +1090,6 @@ using your app, or your staff in the call center. They are pulled toward
 the goals you’ve defined, not because you’ve forced them to be, but
 because they are within the magic circle and so they want to be playing your game, by your rules. Creating a gamified experience like
 this is hard, and it comes with a set of responsibilities. The rest of
-
--- 45 of 152 --
-
 26 Level 2
 this book is about all the complexities involved in effective gamification. The potential, though, is quite extraordinary—not only will
 people join you in meeting your business purpose, they will enjoy it!
@@ -1259,9 +1123,7 @@ can never make you think like a driver. Knowing what appropriate
 
 ---
 
-## Sección 12: Foundations & Introduction
-
--- 46 of 152 --
+## Sección 12: Foundations & Introduction [Entropy: 0.28]
 
 Game Thinking 27
 acceleration feels like on the gas pedal, what to make of that car
@@ -1293,9 +1155,6 @@ with game thinking can transform the entire way you engage with
 your customers, staff, and users. Think back to our initial example
 of the world’s deepest trash can. The game designers of the Fun
 Theory took something incredibly boring—throwing away trash—and
-
--- 47 of 152 --
-
 28 Level 2
 turned it into something compelling. You can do the same thing in
 your business.
@@ -1332,9 +1191,6 @@ increasingly more challenging stages. Reaching a new level is an
 accomplishment that gamers call “leveling up.” Leveling up signifies
 progress, and progress feels good. To crib a phrase from former Apple
 CEO John Sculley, the journey becomes the reward.
-
--- 48 of 152 --
-
 Game Thinking 29
 Our second lesson is this: Progress matters. How you create that
 sense of progress will differ. Sometimes you will find that without
@@ -1370,9 +1226,7 @@ well. Nike’s customers can’t design any shoe they want; they are
 
 ---
 
-## Sección 13: Foundations & Introduction
-
--- 49 of 152 --
+## Sección 13: Foundations & Introduction [Entropy: 0.265]
 
 30 Level 2
 limited to the choices Nike offers them. By offering more options for
@@ -1401,9 +1255,6 @@ investment to gamify this part of the business. On the other hand,
 engaged consumers are more likely to go out of their way to shop at
 their favorite store, will buy more, and will be evangelists for the business. Of course, having a sale can motivate customers, but price cuts
 eat into the bottom line, can be matched by competitors, and don’t
-
--- 50 of 152 --
-
 Game Thinking 31
 necessarily make for engaged customers. A gamified system to
 increase the engagement and loyalty of regular supermarket shoppers makes a great deal of sense for this business need.
@@ -1431,9 +1282,6 @@ particularly important: creative work, mundane tasks, and behavior
 change. Some tasks involve emotional connections, unique skills,
 creativity, and teamwork. These are the high-value-added activities
 or customer relationships that make an outsize contribution to competitive advantage. They are also great candidates for gamification.
-
--- 51 of 152 --
-
 32 Level 2
 Whether it’s designing a new product or nurturing high-profile brand
 ambassadors, such tasks depend heavily on having highly motivated
@@ -1467,9 +1315,7 @@ Strava motivates players to run or cycle by allowing virtual competitions betwee
 
 ---
 
-## Sección 14: Foundations & Introduction
-
--- 52 of 152 --
+## Sección 14: Foundations & Introduction [Entropy: 0.265]
 
 Game Thinking 33
 setting daily goals for number of steps taken and hours slept, with a
@@ -1499,9 +1345,6 @@ Structure: Can the Desired Behaviors Be Understood
 Through a Set of Rules?
 Games unleash the ineffable quality of fun, but gamification requires
 rules and algorithms to measure and respond to actions. Also, you
-
--- 53 of 152 --
-
 34 Level 2
 will likely want to record or track player activities, so this will mean
 implementing algorithms and an online system to manage the game.
@@ -1531,9 +1374,6 @@ they see how low they are in the standings, many workers will give
 up. The climb up the ladder is too daunting.
 Similarly, if your promise to customers is that you’ll save them
 time and help them become more efficient, a gamified offering that
-
--- 54 of 152 --
-
 Game Thinking 35
 encourages them to waste time in a seemingly frivolous activity may
 generate cognitive dissonance.
@@ -1562,9 +1402,6 @@ table 2.2.
 Table 2.1: Basic Gamification Table
 Players Frameworks
 Activity 1. Motivation 2. Meaningful Choices 3. Structure 4. Potential Conflicts
-
--- 55 of 152 --
-
 36 Level 2
 Before thinking about specific gamification elements, you’ll want
 to resolve each block of the chart in a positive way. In other words,
@@ -1626,9 +1463,8 @@ indicates that the criterion might support gamification, but is unlikely to do s
 
 ---
 
-## Sección 15: Foundations & Introduction
+## Sección 15: Foundations & Introduction [Entropy: 0.31]
 
--- 56 of 152 --
 A soldier will fight long and hard for a bit of colored ribbon.
 —Napoleon Bonaparte
 You’ve seen how gamification can work in general (Level 1) and how
@@ -1652,9 +1488,6 @@ using a slew of gamification techniques, like points, achievements,
 Why Games Work
 The Rules of Motivation
 Level 3
-
--- 57 of 152 --
-
 38 Level 3
 leaderboards, strong feedback loops, content unlocking, and social
 engagement. (That’s to say nothing of a cute green owl who will badger
@@ -1662,9 +1495,6 @@ you to death if you don’t learn your conjugations.)
 For those who have read our companion book, The Gamification
 Toolkit, you’ll remember we talked briefly about Duolingo. It has
 Figure 3.1: Duolingo
-
--- 58 of 152 --
-
 Why Games Work 39
 grown massively in the years since, and it has also upped its gamification game. Its success, by now, is obvious—it offers 94 different language courses in 23 languages, has over 300 million registered
 users, and counts Google’s parent company as one of its investors—
@@ -1693,9 +1523,6 @@ your favorite path using Zombies, Run! (figure 3.2).
 Gamification can make us do things we wouldn’t otherwise consider. Now that you’re at Level 3, you’re ready to explore what motivates people to do things, and thus you can start to think about what
 your players will enjoy and how you can get them to do the things
 that you need them to do.
-
--- 59 of 152 --
-
 40 Level 3
 What Makes People Tick
 The word “motivation” comes from the Latin motivus, meaning
@@ -1717,9 +1544,6 @@ may be intrinsically motivated or extrinsically motivated to do so.
 People who like exercise and feel better afterward have intrinsic motivation. People whose doctors tell them they have to exercise for
 health reasons are extrinsically motivated.
 Figure 3.2: Zombies, Run!
-
--- 60 of 152 --
-
 Why Games Work 41
 The distinction between intrinsic and extrinsic motivation
 may seem abstract, but it’s critically impor tant. Hundreds of peerreviewed academic articles and scores of real-world case studies
@@ -1755,9 +1579,7 @@ your family is something that is part of your foundational sense of
 
 ---
 
-## Sección 16: Foundations & Introduction
-
--- 61 of 152 --
+## Sección 16: Foundations & Introduction [Entropy: 0.265]
 
 42 Level 3
 self as a person. Eating and sleeping are needs you have as a human
@@ -1784,9 +1606,6 @@ dominant theory was known as behaviorism. This approach sought
 to explain behavior purely based on external responses to stimuli.
 The best-known studies were done by Ivan Pavlov on his famous salivating dogs, and by B. F. Skinner, whose infamous “Skinner boxes”
 gave food or electric shocks to pigeons and rats. So-called behaviorist studies like these examined the reinforcement effects of reward
-
--- 62 of 152 --
-
 Why Games Work 43
 and punishment on the behav ior of animals and extrapolated the
 lessons to humans. The basic idea was that humans and animals
@@ -1817,9 +1636,6 @@ for higher purpose, or “making a difference.” And finally, autonomy
 is the innate need to feel in command of one’s life and to be doing
 that which is meaningful and in harmony with one’s values. Contrast
 the unhappiness you experience when you are forced to do something
-
--- 63 of 152 --
-
 44 Level 3
 you don’t want to do (or worse, that is contrary to your principles)
 with your feelings of joy when you are engaged in your favorite
@@ -1835,9 +1651,6 @@ Figure 3.3: Elements of Self-Determination Theory
 Competence
 Relatedness
 Autonomy
-
--- 64 of 152 --
-
 Why Games Work 45
 ran that last project, or how great that sales pitch went, or how proud
 you felt mastering a difficult grammatical rule in a new language.
@@ -1868,9 +1681,7 @@ here, but they aren’t absolute. Both of the authors play World of
 
 ---
 
-## Sección 17: Foundations & Introduction
-
--- 65 of 152 --
+## Sección 17: Foundations & Introduction [Entropy: 0.31]
 
 46 Level 3
 Warcraft (having returned to the game during the COVID-19 crisis). One of us loves nothing more than to sit in a secluded spot outside a major city and ambush passing players from the other side. The
@@ -1901,9 +1712,6 @@ This leads us to another important lesson: Pay careful attention
 to your proposed users. Consider three frequent fliers who have
 United Airlines Premier Elite status. Juan is proud of being in such
 an exclusive club—he loves the feeling of checking in on a red carpet so he doesn’t have to queue with the economy passengers. Alice
-
--- 66 of 152 --
-
 Why Games Work 47
 is just happy to have no luggage fees, and she loves that she can
 redeem miles for free trips. But all Esther cares about is access to the
@@ -1930,9 +1738,6 @@ There are no shortcuts.
 Lessons for Gamification
 Now that we’ve described the basic framework for understanding motivation, what are the specific takeaways for successful
 gamification? The following five types of lessons are sometimes
-
--- 67 of 152 --
-
 48 Level 3
 counterintuitive, but they are well supported by studies and realworld examples.
 Don’t Let Rewards Crowd Out Fun
@@ -1967,9 +1772,7 @@ important. (Consider why we call salary “compensation.”) It suggests
 
 ---
 
-## Sección 18: Foundations & Introduction
-
--- 68 of 152 --
+## Sección 18: Foundations & Introduction [Entropy: 0.265]
 
 Why Games Work 49
 the task is only worth doing to the minimal extent necessary to get
@@ -2003,9 +1806,6 @@ on performance when the user is engaged in an otherwise amotivated
 task. In other words, extrinsic motivation helps people enjoy boring
 activities. Unlike the situation in which the task can be intrinsically
 motivated—like reading a novel—extrinsic rewards can encourage
-
--- 69 of 152 --
-
 50 Level 3
 positive behavior and outcomes when a person is dealing with dull,
 repetitive, or tedious activities. And we all know that everyone runs
@@ -2036,9 +1836,6 @@ down from 160 hours to 14 hours, and agents who opted in to gamified processes o
 time, according to the 2018 TalentLMS Gamification at Work
 survey. Customer satisfaction also rose by 9%. The emphasis of
 Liveops’s gamification efforts is on learning and development rather
-
--- 70 of 152 --
-
 Why Games Work 51
 than competition. Agents who level up or earn badges get the message that they are moving upward toward mastery of valuable skills.
 There are numerous ways that you can use game mechanics to
@@ -2070,9 +1867,7 @@ old lessons.
 
 ---
 
-## Sección 19: Foundations & Introduction
-
--- 71 of 152 --
+## Sección 19: Foundations & Introduction [Entropy: 0.265]
 
 52 Level 3
 You will need to adopt some similar techniques if you are going
@@ -2105,9 +1900,6 @@ begin to care more about customer satisfaction than monthly sales.
 If you give them leaderboards about sales figures, guess what your
 team is going to focus on? Used wisely, this is a powerful tool in any
 gamified system—but bear in mind that all of the lessons and rules
-
--- 72 of 152 --
-
 Why Games Work 53
 previously discussed still apply. If you create a feedback loop that
 works as an extrinsic motivator, you should expect that this may
@@ -2136,9 +1928,6 @@ as external. Tasks that are motivated by ego like Bella’s are marginally inter
 into the person. Tasks that people like Celia see as important to their
 future or to their values become part of them, and they are labeled
 as “integrated” or “identified.”
-
--- 73 of 152 --
-
 54 Level 3
 A perfect example can be seen in online role-playing games like
 World of Warcraft, which encourages the formation of tight-knit
@@ -2170,9 +1959,7 @@ workers, not genuinely rewarding them. So, he turned the job down.
 
 ---
 
-## Sección 20: Foundations & Introduction
-
--- 74 of 152 --
+## Sección 20: Foundations & Introduction [Entropy: 0.295]
 
 Why Games Work 55
 Gamification can motivate people to undertake activities that
@@ -2188,9 +1975,6 @@ squeeze more out of customers, employees, or other groups. Instead,
 look at it as a means to produce authentic happiness and to help
 people flourish while achieving your own goals at the same time.
 
--- 75 of 152 --
-
--- 76 of 152 --
 [I asked my three-year-old daughter what she was made of.]
 She paused to consider. She looked down at her hands,
 turning them over, and studying them. And then, brightly,
@@ -2213,9 +1997,6 @@ Facebook. The mobile version, called Psych Vision, let fans unlock
 The Gamification Toolkit
 Game Ele ments
 Level 4
-
--- 77 of 152 --
-
 58 Level 4
 prizes and chat with each other while watching the show on TV. All
 of these actions earned the user points that could be redeemed for
@@ -2230,9 +2011,6 @@ the gamified site, overall traffic on the USA Network site increased
 for the official Psych website increased 130%. Club Psych’s users were
 undoubtedly more engaged than the average couch potato. And they
 Figure 4.1: Club Psych’s Original Gamified Website
-
--- 78 of 152 --
-
 The Gamification Toolkit 59
 shared Psych content hundreds of thousands of times on Facebook,
 reaching 40 million Facebook users at its peak. Considering that
@@ -2261,9 +2039,6 @@ described as though they are gamification. They’re not, but they are
 a good place to start.
 Used correctly, PBLs are powerful, practical, and relevant. They
 can also be used in significantly more sophisticated ways than one
-
--- 79 of 152 --
-
 60 Level 4
 might imagine. Thus, they are the obvious place to start building
 your gamification toolkit. But they have important limitations. To
@@ -2297,9 +2072,7 @@ the beginning of the game to its objectives.
 
 ---
 
-## Sección 21: Foundations & Introduction
-
--- 80 of 152 --
+## Sección 21: Foundations & Introduction [Entropy: 0.28]
 
 The Gamification Toolkit 61
 to create a win condition, such as if you want to give away a
@@ -2334,9 +2107,6 @@ them how others are doing. And so on.
 Bear in mind that points are limited. They are uniform, abstract,
 interchangeable, and, well, point-like. A point is just a point. Each
 additional point simply indicates a greater magnitude and nothing
-
--- 81 of 152 --
-
 62 Level 4
 more. This is one reason why badges are often found in conjunction
 with point systems—badges give context and meaning to points.
@@ -2352,9 +2122,6 @@ Other badges signify different kinds of activities. Today, Foursquare is a locat
 sophisticated gamification, in particular its amusing and effective
 badging system. The platform connected people with local businesses
 Figure 4.2: Fitbit Badges
-
--- 82 of 152 --
-
 The Gamification Toolkit 63
 by encouraging users to check in to a location with their cell
 phones—with numerous badges for all manner of “achievements.”
@@ -2384,9 +2151,6 @@ imagination of the gamification designer and the needs of the business. This all
 of users and to appeal to their interests in ways that a single point
 system cannot. Your friend may have a completely different set of
 badges than you, even though you’re both playing the same game.
-
--- 83 of 152 --
-
 64 Level 4
 Nonetheless, both you and your friend can find your individual
 badges meaningful and interesting.
@@ -2421,9 +2185,7 @@ even to emerge on top can be a strong push for users.
 
 ---
 
-## Sección 22: Foundations & Introduction
-
--- 84 of 152 --
+## Sección 22: Foundations & Introduction [Entropy: 0.25]
 
 The Gamification Toolkit 65
 On the other hand, leaderboards can be powerfully demotivating. If you see exactly how far you are behind the top players, it can
@@ -2454,9 +2216,6 @@ the bottom league) the bottom 10 are demoted.
 For a range of reasons, this is a smart design. It is an opt-in process, so only people who like this sort of thing will compete. It
 motivates the most competitive learners to strive against equally
 competitive players, and over time people find their own levels. Each
-
--- 85 of 152 --
-
 66 Level 4
 week you are competing against different players, so there is a
 kind of anonymity to your competition: you’re trying to beat
@@ -2486,9 +2245,6 @@ little more about what makes a game work.
 Braving the Elements
 We’ve already seen a number of gamification features that are not
 PBLs, in examples like the teams in the Language Quality Game, or
-
--- 86 of 152 --
-
 The Gamification Toolkit 67
 the feedback loops in Duolingo. It turns out that PBLs are special
 cases of what we will call “game elements”—that is, specific characteristics of games that you can apply in gamification.
@@ -2516,9 +2272,6 @@ camaraderie, status, altruism, etc.)
 Dynamics are the big-picture aspects of the gamified system that
 you have to consider and manage but that you can never directly
 place into the game. Analogies in the management world would be
-
--- 87 of 152 --
-
 68 Level 4
 employee development, creating an innovation culture, or pretty
 much any other large-scale objective you’ll find in an airport book
@@ -2550,9 +2303,7 @@ winner—draw and loss states are related concepts)
 
 ---
 
-## Sección 23: Foundations & Introduction
-
--- 88 of 152 --
+## Sección 23: Foundations & Introduction [Entropy: 0.25]
 
 The Gamification Toolkit 69
 Each mechanic is a way of achieving one or more of the dynamics
@@ -2585,9 +2336,6 @@ achievement)
 13. Social graphs (representation of players’ social network within
 the game)
 14. Teams (defined groups of players working together for a common goal)
-
--- 89 of 152 --
-
 70 Level 4
 15. Virtual goods (game assets with perceived or real-money
 value)
@@ -2612,9 +2360,6 @@ systems such as Club Psych often use points and badges extensively to connect pl
 dynamics. Players working on puzzles that relate to a current episode could earn points, thus answering challenges, receiving feedback, moving closer to rewards, and connecting to the narrative
 context of the television series. Or if they reached high-enough levels, they could collect limited-availability badges that were themed
 from the series (resource acquisition, rewards, narrative, progression, constraints).
-
--- 90 of 152 --
-
 The Gamification Toolkit 71
 Integration
 We’ve given you a lot of information about game elements in fairly
@@ -2639,9 +2384,6 @@ are the basic processes that drive the
 action forward and generate player engagement.
 Components
 are the specific instantiations of mechanics and dynamics.
-
--- 91 of 152 --
-
 72 Level 4
 Putting all these elements together is the central task of gamification design, and having knowledge of these game elements will
 make your gamification project compelling. Bear in mind, though,
@@ -2669,9 +2411,8 @@ together? We tackle this question in the next level.
 
 ---
 
-## Sección 24: Foundations & Introduction
+## Sección 24: Foundations & Introduction [Entropy: 0.295]
 
--- 92 of 152 --
 Games are the most elevated form of investigation.
 —Albert Einstein
 This is where we bring all of our learning together. We now have all
@@ -2695,9 +2436,6 @@ types tend to focus on the experience and give short shrift to metrics.
 Game Changer
 Six Steps to Gamification
 Level 5
-
--- 93 of 152 --
-
 74 Level 5
 The quants and MBAs, however, can lose sight of the big picture
 amid their spreadsheets.
@@ -2725,9 +2463,6 @@ five steps focusing on these issues.
 1. Define Your Business Objectives
 You started to do this in Level 1, but it’s time to make things absolutely concrete. For effective gamification, it’s critical to have a welldeveloped understanding of your goals. That might sound obvious,
 but it’s easily overlooked. We’re not talking here about your overall orga nizational mission, whether expressed in terms of profit-
-
--- 94 of 152 --
-
 Game Changer 75
 ability, shareholder value, mission statement, or other wise. We
 mean the specific per for mance goals for your gamified system,
@@ -2760,9 +2495,6 @@ The lesson from DevHub is that gamification, even when effective, can produce re
 pitfall, your first step is to make a list of all potential objectives (figure 5.1). Make each goal as precise as possible, but the initial list can
 be expansive because you’ll winnow it down. Perhaps you want to
 attract high school dropouts from low-income communities to use
-
--- 95 of 152 --
-
 76 Level 5
 your personal finance educational tool, or perhaps you want your
 employees to suggest out-of-the-box ideas for new business opportunities. Then rank the list in terms of importance. You may need to
@@ -2788,9 +2520,7 @@ Justify objectives
 
 ---
 
-## Sección 25: Foundations & Introduction
-
--- 96 of 152 --
+## Sección 25: Foundations & Introduction [Entropy: 0.4]
 
 Game Changer 77
 As you work through your design and development process, keep
@@ -2817,9 +2547,6 @@ users a range of options and activities to pursue based on their
 preferences.
 Once you’ve listed all the desired behaviors, develop your metrics for success. These are the ways you translate behaviors into quantifiable results. Gamification runs on software algorithms. Behind
 the scenes, it translates activities into numbers and uses those numbers to generate feedback. The numbers may or may not be transparent to players. They might see fireworks and an announcement
-
--- 97 of 152 --
-
 78 Level 5
 that they’ve reached the “grand poobah” level or unlocked the “hungry hippo” achievement. In designing the system, however, you
 need to decide precisely what those mean.
@@ -2851,9 +2578,6 @@ and social games companies have become adept at learning how to
 aggregate data from large numbers of user transactions to measure
 the success of their ser vices. Common analytics include the ratio of
 daily to monthly active users (an indication of how often users
-
--- 98 of 152 --
-
 Game Changer 79
 return), “virality” (how likely users are to refer their friends to the
 service), and the total volume of points awarded or virtual goods purchased. The right things to measure will depend on your context; an
@@ -2889,9 +2613,7 @@ different groups.
 
 ---
 
-## Sección 26: Foundations & Introduction
-
--- 99 of 152 --
+## Sección 26: Foundations & Introduction [Entropy: 0.28]
 
 80 Level 5
 Game designers have several models of player types that they use
@@ -2926,9 +2648,6 @@ are their hopes and fears? Their talents? Their hobbies?
 The more detailed the description of the avatars, the better. If the
 avatars don’t ring true, if they don’t reflect your likely audience,
 change them until they do. As you proceed in your gamification
-
--- 100 of 152 --
-
 Game Changer 81
 process, these character models will ground your design activities.
 It’s easy to imagine how Lucy will respond to a particular quest
@@ -2959,9 +2678,6 @@ of stages.
 The most useful way to model the action in a gamified system
 is through activity cycles, a concept that has gained traction in
 describing social media and social networking ser vices. User
-
--- 101 of 152 --
-
 82 Level 5
 actions provoke some other activity, which in turn provokes other
 user actions. Think of a user tagging a friend in a photo she uploads
@@ -2981,9 +2697,6 @@ Virtually all the game components can be seen as forms of feedback. Points, for 
 Figure 5.2: Activity Cycle
 Motivation
 Feedback Action
-
--- 102 of 152 --
-
 Game Changer 83
 terms of feedback keeps you from overemphasizing the specific components or their reward aspects. A reward, after all, is just a kind of feedback. The feedback is what creates the motivation for further actions.
 The engagement loop is the basic process of your gamified system. However, it doesn’t capture the ways that players advance. Game
@@ -3013,9 +2726,7 @@ catch their breath. It also lets them experience the satisfaction of mastery: th
 
 ---
 
-## Sección 27: Foundations & Introduction
-
--- 103 of 152 --
+## Sección 27: Foundations & Introduction [Entropy: 0.355]
 
 84 Level 5
 game. There are often a series of small cycles of this sort. The final
@@ -3048,9 +2759,6 @@ fight
 Rest
 Rest
 Levels
-
--- 104 of 152 --
-
 Game Changer 85
 In piecing together game elements and attending to the complexities of players, goals, rules, and motivation, it’s easy to lose sight of
 the fun aspect. We see this often with our students in their gamification projects: They get too wrapped up in the details. Gamification
@@ -3079,9 +2787,6 @@ depend on the context. As with player types, don’t assume that everyone will w
 The best games offer a broad spectrum of fun. Maybe you’re normally
 attracted to hard-core challenges, but today you just want to blow off
 steam with your friends. Ideally, a gamified system should be flexible in the same way.
-
--- 105 of 152 --
-
 86 Level 5
 How do you know, though, if a system will actually be fun? For
 a never-fail answer to that question, you’ll need to buy our next book,
@@ -3113,9 +2818,6 @@ like yours, and ask yourself why they find them engaging. Go back
 to your project and refine it.
 To do gamification well, you’ll need a team with a variety of
 skills. This is not to say that a single person can’t implement an
-
--- 106 of 152 --
-
 Game Changer 87
 effective system—in a start-up, for example—but they will need
 expertise in more than one area. You will need the following:
@@ -3150,9 +2852,7 @@ produce an interesting gamification implementation. But there are
 
 ---
 
-## Sección 28: Foundations & Introduction
-
--- 107 of 152 --
+## Sección 28: Foundations & Introduction [Entropy: 0.295]
 
 88 Level 5
 no guarantees that it will work. Even thoughtful, smart, and experienced developers have to be flexible.
@@ -3182,8 +2882,6 @@ then see what actually does work. Build analytics into your system,
 change a few things, and see what helps move the needle. Interview
 your players to see what they liked and didn’t like. Go back to the
 drawing board and start again. There’s no shortcut for testing and iteration if you really care about producing a successful gamified system.
-
--- 108 of 152 --
 Epic Fail: Complete and total failure when success should
 have been reasonably easy to attain.
 —The Urban Dictionary
@@ -3207,9 +2905,6 @@ employed for purposes that are not in the best interests of players.
 Epic Fails
 And How to Avoid Them
 Level 6
-
--- 109 of 152 --
-
 90 Level 6
 He wasn’t just offering a theoretical critique. Earlier, Bogost had
 created a social game called Cow Clicker, where players clicked endlessly on the image of a cow to accumulate virtual cash (called
@@ -3228,9 +2923,6 @@ other practitioners should take to heart.
 In this level, we give you a final tier of advice and explain what
 not to do. Sometimes this will be about how to avoid making ineffective systems, but we’re also going to warn you about making gamification systems that are too effective. If gamification overemphasizes
 Figure 6.1: Cow Clicker
-
--- 110 of 152 --
-
 Epic Fails 91
 points and reward systems, as in Cow Clicker, it can replace the richness of games with shallow interactions that are ultimately selfdefeating. Also, we’ll talk about how to avoid legal and regulatory
 problems. Then we’ll discuss how, if you’re not truly acting in the
@@ -3258,9 +2950,7 @@ of a game, the bit that has the least to do with all of the rich cognitive, emot
 
 ---
 
-## Sección 29: Foundations & Introduction
-
--- 111 of 152 --
+## Sección 29: Foundations & Introduction [Entropy: 0.265]
 
 92 Level 6
 Pointsification creates challenges that may require time and
@@ -3291,9 +2981,6 @@ To take advantage of the full potential of gamification, loyalty
 programs should be incorporated into more comprehensive designs.
 Jazzing up rewards with badges and leaderboards isn’t enough.
 Today’s consumers have seen so many point systems that they are
-
--- 112 of 152 --
-
 Epic Fails 93
 more likely to be weary than amused when they come across another
 one. The way to avoid this fate is to create challenges that players find
@@ -3324,9 +3011,6 @@ Some legal problems are common for any digital offering, such as
 the treatment of personal information about your users. A few, though,
 are unique to gamification. No project will run into all these issues,
 because they depend heavily on the nature of the implementation.
-
--- 113 of 152 --
-
 94 Level 6
 There is also significant variation in the law depending on where
 you’re implementing the system.
@@ -3358,9 +3042,7 @@ ensure that your practices comply. There are also heightened requirements in the
 
 ---
 
-## Sección 30: Foundations & Introduction
-
--- 114 of 152 --
+## Sección 30: Foundations & Introduction [Entropy: 0.25]
 
 Epic Fails 95
 of information, such as medical or financial data, or data collected
@@ -3390,9 +3072,6 @@ intellectual property of others. In most cases that will be easy to
 avoid. For example, if you like the badge designs on another gamified site, you can’t simply copy them and use them yourself, unless
 the creator authorizes it. The area that is likely to involve the greatest legal risk here is patents. There have been a number of cases in
 which holders of questionable patents were able to recoup substantial
-
--- 115 of 152 --
-
 96 Level 6
 damages from companies that independently developed similar
 ideas. Gamification is too new to be the subject of significant patent
@@ -3419,9 +3098,6 @@ circumstances, your gamified ser vice might be considered a sweepstakes, a lotte
 actual value, such as a badge or an achievement within the game
 itself, these rules don’t come into play. Similarly, if you’re offering
 your own service or a charitable donation, the sweepstakes rules usually don’t apply.
-
--- 116 of 152 --
-
 Epic Fails 97
 Deceptive Practices
 If your business model is based on fooling users, you’re going to run
@@ -3450,9 +3126,6 @@ employees or force them to act against their own interests. An
 employee can be required to play a game as part of his or her job,
 just like any other mandatory job responsibilities. And the employer
 can generally use performance in a game-like system as a criterion
-
--- 117 of 152 --
-
 98 Level 6
 for promotion or firing. This may not be the case in work environments subject to collective bargaining agreements, or in countries
 such as Germany where work rules must be defined through structured labor-management processes.
@@ -3481,9 +3154,7 @@ and legislators become more involved. Inevitably, some company will
 
 ---
 
-## Sección 31: Foundations & Introduction
-
--- 118 of 152 --
+## Sección 31: Foundations & Introduction [Entropy: 0.25]
 
 Epic Fails 99
 use gamification in a careless or malevolent way, giving rise to a scandal that provokes calls for legal responses. Equally inevitably, some
@@ -3511,9 +3182,6 @@ Perhaps this is what Disney intended. Constant quantitative performance monitori
 for many employees in structured, routine jobs. Public leaderboards
 seem like a logical next step. Whether the efficiency gains of the “electronic whip” exceeded the costs in worker dissatisfaction is a question only Disney can answer; it certainly didn’t seem that way from
 employees’ public comments.
-
--- 119 of 152 --
-
 100 Level 6
 The Disney example isn’t atypical. Research has shown that leaderboards alone in the workplace are often demotivating, especially for
 women. In some contexts, such as sales, contests may be so pervasive that the effects are less significant, but they still show up if systems aren’t designed carefully. The problem isn’t leaderboards per
@@ -3543,9 +3211,6 @@ gamified tools voluntary for its agents. Eighty percent of them chose
 to use them, and of those, 95% remained active.
 It should also go without saying that gamification shouldn’t be
 implemented deceptively. Imagine you created a game wherein people
-
--- 120 of 152 --
-
 Epic Fails 101
 matched security photos with mugshots, which turned out to be a
 way of tracking people without their consent. Deceiving people about
@@ -3581,9 +3246,7 @@ gunman who killed 51 people and wounded dozens more at two
 
 ---
 
-## Sección 32: Foundations & Introduction
-
--- 121 of 152 --
+## Sección 32: Foundations & Introduction [Entropy: 0.25]
 
 102 Level 6
 mosques in New Zealand followed the livestream of his rampage like
@@ -3612,9 +3275,6 @@ with gamification, we’ll see that the unethical applications of gamification a
 In the end, people will be themselves. And there’s only so much
 that you can do to influence that. This leads to our final cautionary
 note. Because sometimes users act in ways you don’t expect.
-
--- 122 of 152 --
-
 Epic Fails 103
 Gaming the Game
 A system that incorporates intrinsic motivation will produce a sense of
@@ -3644,9 +3304,6 @@ winning name: “Boaty McBoatface.”
 Gaming the system isn’t always a problem. Lloyds TSB Bank
 implemented an internal market for innovation ideas. It gave its
 employees a virtual currency, called Beanz, and asked them to submit and rate ideas. The highest-ranked ideas were placed into a
-
--- 123 of 152 --
-
 104 Level 6
 virtual stock market, allowing employees to “buy” and “sell” using
 their Beanz. The Beanz could be cashed out for real money.
@@ -3678,9 +3335,8 @@ other side of the screen.
 
 ---
 
-## Sección 33: Foundations & Introduction
+## Sección 33: Foundations & Introduction [Entropy: 0.295]
 
--- 124 of 152 --
 I think work is the world’s greatest fun.
 —Thomas Edison
 You’ve made it to the final level. Here we look back on what we’ve
@@ -3702,9 +3358,6 @@ Press Play team printed up collectible cards that students receive in
 person from a professor when they undertake a quest that the professor designates. One professor, David Simkins, hid his collectible
 Endgame
 In Conclusion
-
--- 125 of 152 --
-
 106 Endgame
 cards in his office, and students had to engage him in conversation
 as they hunted around his books trying to find their prize. They
@@ -3737,9 +3390,6 @@ wildly swinging penny stocks are given prominence on the front
 page.
 Robinhood was created by fintech entrepreneurs Vlad Tenev and
 Baiju Bhatt in 2013, and for a number of years more straight-laced
-
--- 126 of 152 --
-
 Endgame 107
 financial news outlets criticized it for encouraging risky investment
 behavior. “I liken it to giving the keys of a sports car to a 12-year
@@ -3772,9 +3422,6 @@ users, thinking about what you’d like them to do and how best to
 make them do it, considering the best technology platform to do that,
 and examining the specific game elements you’re going to employ to
 get them to do things—among many other considerations.
-
--- 127 of 152 --
-
 108 Endgame
 Along the way we’ve also learned some very specific lessons about
 how to implement gamification design. We’ve developed lessons in
@@ -3805,9 +3452,7 @@ review, “the latest management fad.” Nearly a decade later, it’s no longer
 
 ---
 
-## Sección 34: Foundations & Introduction
-
--- 128 of 152 --
+## Sección 34: Foundations & Introduction [Entropy: 0.25]
 
 Endgame 109
 In the first edition, we closed with a section called “Looking
@@ -3835,9 +3480,6 @@ game mechanics, and the use of gamification for manipulation. So,
 three out of five trends, a solid B-plus.
 This isn’t bad. But on reflection, it wasn’t rocket science to see
 how gamification would grow. The future we see now is less about
-
--- 129 of 152 --
-
 110 Endgame
 gamification as a new practice and more about the nuances of effectiveness and the context in which game mechanics are delivered. As
 an analog, think about how no one needs to persuade corporate executives to create a website anymore, or to have a presence on social
@@ -3867,8 +3509,6 @@ we’ve given you some ideas to think about, some ways to approach
 your problem, and some tools to apply.
 Good luck in bringing more fun and games into your work. And
 your life!
-
--- 130 of 152 --
 This book would not have been possible without the support and
 assistance of many people.
 Shelley Kolstad provided invaluable research assistance on the
@@ -3897,11 +3537,8 @@ Acknowledgments
 
 ---
 
-## Sección 35: Foundations & Introduction
+## Sección 35: Foundations & Introduction [Entropy: 0.25]
 
--- 131 of 152 --
-
--- 132 of 152 --
 Advergames. Games built to promote products or ser vices. Commonly used to
 increase activity or brand engagement on consumer-facing websites.
 Avatar. A virtual representation of a player’s character in a game. Common in
@@ -3934,9 +3571,6 @@ Game design. The overall process of creating engaging games, based on an underst
 Distinguished from the narrower term “game development,” which is the technical
 implementation of a game.
 Glossary
-
--- 133 of 152 --
-
 114 Glossary
 Game dynamics. The conceptual structures underlying a game, such as the narrative
 and rules (constraints) that shape the game. These are the most abstract game
@@ -3976,9 +3610,6 @@ the structured rule-based systems of games.
 Playtesting. Trying out a game with actual players as a way of garnering feedback.
 Playtesting can occur with rough versions of a game or even through the use of paper
 descriptions of gameplay.
-
--- 134 of 152 --
-
 Glossary 115
 Progression stairs. The cycle of advancement through the levels or other steps in a
 game. Essentially, a more detailed version of the game’s interest curve, in which
@@ -4019,545 +3650,7 @@ by N00bs.
 
 ---
 
-## Sección 36: Foundations & Introduction
-
--- 135 of 152 --
-
--- 136 of 152 --
-If you are looking to go beyond this book, our website, www.gamify
-forthewin.com, has additional information on gamification and
-related concepts. Kevin’s massively open online course is at www
-.coursera.org/learn/gamification.
-Here are some references that you may find valuable, including
-papers we refer to in the book. These works are not all about gamification per se; they expand on relevant concepts that we introduce in
-this book.
-Antin, Judd, and Elizabeth Churchill. “Badges in Social Media: A Social
-Psychological Perspective.” Proceedings of the ACM CHI Conference on Human
-Factors in Computing Systems, Vancouver BC, Canada, May 7, 2011.
-Barankay, Iwan. “Rank Incentives: Evidence from a Randomized Workplace
-Experiment.” 2012.
-Bogost, Ian. Persuasive Games: The Expressive Power of Videogames. Cambridge,
-MA: MIT Press, 2007.
-Buckley, Patrick, Seamus Noonan, Conor Geary, Thomas Mackessy, and
-Eoghan Nagle. “An Empirical Study of Gamification Frameworks.” Journal
-of Organizational and End User Computing 31, no. 1 (January–March 2019):
-22–38.
-Castronova, Edward. Synthetic Worlds: The Business and Culture of Online Games.
-Chicago: University of Chicago Press, 2005.
-Deterding, Sebastian, Dan Dixon, Rilla Khaled, and Lennart Nacke. “From Game
-Design Elements to Gamefulness: Defining Gamification.” Proceedings of the
-15th International Academic MindTrek Conference: Envisioning Future Media
-Environments, Tampere, Finland, September 2011.
-Edery, David, and Ethan Mollick. Changing the Game: How Video Games
-Are Transforming the Future of Business. Upper Saddle River, NJ: FT Press,
-2009.
-Gee, James Paul. What Video Games Have to Teach Us About Learning and Literacy.
-New York: Palgrave Macmillan, 2003.
-Additional Resources
-
--- 137 of 152 --
-
-118 Additional Resources
-Höflinger, Patrick. “Gamification in Proprietary Innovation: Identifying a Technical
-Framework Based on Patent Data.” Proceedings of the 50th Hawaii International
-Conference on System Sciences, Hawaii, USA, January 4–7, 2017.
-Johnson, Daniel, Sebastian Deterding, Kerri-Ann Kuhn, Aleksandra Staneva, Stoyan
-Stoyanov, and Leanne Hides. “Gamification for Health and Wellbeing: A Systematic
-Review of the Litera ture.” Internet Interventions 6 (November 2016): 89–106.
-Jung, Hee-Tae, Hwan Kim, Jugyeong Jeong, Bomin Jeon, Taekeong Ryu, and Yangsoo
-Kim. “Feasibility of Using the RAPAEL Smart Glove in Upper Limb Physical Therapy
-for Patients after Stroke: A Randomized Controlled Trial.” 39th Annual International
-Conference of the IEEE Engineering in Medicine and Biology Society, Jeju Island,
-South Korea, July 11–15, 2017.
-Koivisto, Jonna, and Juho Hamari. “The Rise of Motivational Information Systems:
-A Review of Gamification Research.” International Journal of Management 45 (2019):
-191–210.
-Koster, Raph. A Theory of Fun for Game Design. Scottsdale, AZ: Paraglyph Press,
-2005.
-Lazzaro, Nicole. “Why We Play Games: Four Keys to More Emotion without Story.”
-2004. http://www.xeodesign.com/xeodesign _whyweplaygames.pdf.
-Majuri, Jenni, Jonna Koivisto, and Juho Hamari. “Gamification of Education and
-Learning: A Review of Empirical Litera ture.” Proceedings of the GamiFIN
-Conference, Pori, Finland, May 21–23, 2018.
-McGonigal, Jane. Reality Is Broken: Why Games Make Us Better and How They Can
-Change the World. New York: Penguin, 2011.
-Mekler, Elisa D., Florian Brühlmann, Klaus Opwis, and Alexandre N. Tuch. “Do
-Points, Levels and Leaderboards Harm Intrinsic Motivation? An Empirical Analysis
-of Common Gamification Elements.” Proceedings of the First International
-Conference on Gameful Design, Research, and Applications, Toronto, Ontario,
-Canada, October 2013.
-Mollick, Ethan R., and Nancy Rothbard. “Mandatory Fun: Consent, Gamification
-and the Impact of Games at Work” (working paper). The Wharton School Research
-Paper Series, University of Pennsylvania (September 30, 2014). https://papers.ssrn
-.com/sol3/papers.cfm?abstract _id=2277103.
-Pink, Daniel. Drive: The Surprising Truth about What Motivates Us. New York:
-Riverhead, 2009.
-Reeves, Byron, and J. Leighton Read. Total Engagement: Using Games and Virtual
-Worlds to Change the Way People Work and Businesses Compete. Boston: Harvard
-Business School Publishing, 2009.
-Rigby, Scott, and Richard Ryan. Glued to Games: How Video Games Draw Us In and
-Hold Us Spellbound. Santa Barbara, CA: Praeger, 2011.
-Robertson, Margaret. “Can’t Play, Won’t Play.” Hide&Seek, October 6, 2010. http://www
-.hideandseek .net/2010/10/06 /cant-play-wont-play/.
-
--- 138 of 152 --
-
-Additional Resources 119
-Salen, Katie, and Eric Zimmerman. Rules of Play: Game Design Fundamentals.
-Cambridge, MA: MIT Press, 2004.
-Schell, Jesse. The Art of Game Design: A Book of Lenses. Burlington, MA: Morgan
-Kaufmann, 2008.
-Sheldon, Lee. The Multiplayer Classroom: Designing Coursework as a Game. Boston:
-Cengage Learning, 2012.
-Walz, Steffen, and Sebastian Deterding, eds. The Gameful World. Cambridge, MA:
-MIT Press, 2015.
-Winkel, David J. “Gamification of Electronic Learning in Radiology Education to
-Improve Diagnostic Confidence and Reduce Error Rates.” American Journal of
-Roentgenology 214 (March 2020): 618–623.
-
--- 139 of 152 --
-
--- 140 of 152 --
-Index
-Note: Page numbers in italics indicate figures.
-Accenture, 2, 2, 4, 16
-achievements, 63, 69
-achievers, 80
-activity cycles, 81, 82, 82
-advergames, xiii, 19
-Ahn, Luis von, 37, 39, 45
-Alibaba, 11, 101
-ALS Association Ice Bucket
-Challenge, 23, 26
-Amazon, 10
-Antin, Judd, 63
-anxiety, 9
-Apex Legends, 28
-The Art of Game Design (Schell), 57
-autonomy, 29, 43, 44, 45, 46, 52, 104
-avatars, 69, 80
-badges, 62, 62–64, 69, 70
-Badgeville, xvii
-Bartle, Richard, 11, 80
-Beanz, 103–104
-behav ior change non-game
-contexts, 5
-behavioral design, 109
-behavior-change scenarios, 32
-behaviorism, 42–43
-Bhatt, Baiju, 106
-bitcoin, 106
-Bogost, Ian, 12, 89–90, 99
-Bonaparte, Napoleon, 37
-boss fights, 69, 84
-Bunchball, xvii
-business fraud, 97
-business objectives, 30
-business problems, 28
-Call of Duty, xiii, 46
-call-centers, 50, 54, 100
-Candy Crush, 28, 52
-Carnegie Mellon University, 37, 59
-Carse, James P., 24
-Centers for Disease Control and
-Prevention, ix
-China, 11, 101
-Churchill, Elizabeth, 63
-Club Psych, 57, 58, 58, 59, 68, 69,
-70, 72
-cognitivist theories of motivation, 43
-Cohen, Leonard, 21
-comments on online articles, 7–8
-competence, 43, 44, 45, 46
-competition, 61, 66, 68
-concussion symptoms, xi
-console games, xiii
-content unlocking, 38, 69
-copyright, 95
-corporate training programs, 64
-COVID-19 pandemic, xi, 2, 9, 35
-Cow Clicker, 90, 90–91, 92
-crowding-out effect, 48, 49
-crowdsourcing, 5, 10
-CrowdVine, 88
-Csikszentmihalyi, Mihaly, 45
-customer engagement, x, 14–15, 25
-customer motivation, 8
-customer satisfaction, 50, 52
-customization, 30
-daily active users (DAUs), 78
-data breaches, 94
-data security, 95
-
----
-
-## Sección 37: Foundations & Introduction
-
--- 141 of 152 --
-
-122 Index
-DAUs. see daily active users
-deception, 97, 100
-Deci, Edward, 43, 53
-Deloitte, 13–14
-depression, xi, 9
-design goals, 35
-design process, 74
-Devatars, 75
-DevHub, 75
-digital games, 29
-digital privacy, 94
-Disney, xi, 99
-Duolingo, 37, 38, 38–39, 45, 72
-feedback loops and, 51, 67
-leaderboards, 65
-e-commerce, 19, 78
-Edison, Thomas, 105
-Einstein, Albert, 73
-Electronic Arts, 15
-employees, 66, 68, 79, 97
-end-of-year bonus, 41
-engagement, xii, 16–17
-authentic, 47
-customer, x, 14–15, 25
-social, 38
-engagement loops, xvii, 82
-epic fail, 89
-epic win, 84
-ESP Game, 37, 39
-EVE Online, 98
-exercise apps, 32
-experimentation, 18
-exploitationware, 99
-explorers, 80
-external non-game contexts, 5
-extrinsic motivation, 40, 41, 42, 43,
-49–50, 53, 92
-extrinsic rewards, 48
-Facebook, 46, 57, 59, 72, 82, 94
-far-right extremists, 101–102
-Federal Trade Commission, 98
-feedback loops, 33, 38, 68, 82–83, 106
-about customer satisfaction, 52
-Duolingo and, 51, 67
-gamification and, 53
-points and, 61
-Fitbit, 32, 62
-fitness trackers, 32
-flight simulators, 5
-flow, 45
-Foldit, 10
-Fortnite, xii, xiv
-Fortune 100 companies, 62
-Foursquare, 62, 78
-Fourth Grade Slump, 48
-frequent-flier programs, 60, 93
-Friendster, 72
-fun, ix, 24, 30, 33, 45, 84–86
-Fun Theory, 22, 27
-Gallup, 17
-gambling, 96
-game components, 67, 69, 71
-game concepts, 18
-game design, xix, 15, 28, 80
-game dynamics, 67, 68, 71
-game elements, 12–13, 26
-basics of, 71
-categories of, 67
-decisions about, 15
-hierarchy of, 71
-in real world, 18
-game mechanics, 51, 67, 68–69, 70, 71
-game thinking, xv, 11, 23, 26–27, 73
-game-design techniques, xii
-game-like experiences, xii, 26
-gamers, xiii, xx, 28
-games for change, 19
-gamification, xii, 13
-applying, 28
-Bartle on, 11
-basic gamification table, 35–36
-behavior-change, 8
-business objectives and, 30
-business techniques of, 4
-call-centers and, 50
-categories of, 5
-challenge of, 16
-
--- 142 of 152 --
-
-Index 123
-crowdsourcing, 10
-design, 54, 63, 72, 78, 88, 107
-development of, xviii
-elements of, 35
-engagement and, 16–17
-enterprise, 6
-experimentation and, 18
-experts on, 83
-external, 7
-extrinsic reward systems and, 51
-features, 58
-feedback loops and, 53
-first use of, 12
-in health and fitness apps, 33
-implementation of, 74, 108
-internal, 6
-leaderboards and, 65
-motivation and, 42, 55
-motivational design and, 31
-non-game contexts and, 15
-PBLs and, 59, 66
-positive impact of, xi
-potential of, 92
-real-world objectives and, 23
-for rehabilitation, ix
-results of, 20
-serious games and, 19
-Sierra on, 47
-spot, 109
-team needed for, 86–87
-technical requirements for, 5
-techniques of, xvi
-turnkey gamification products, 66
-of Uber, xi
-unethical, xvii, xix, 99, 102
-unhelpful results from, 75
-virtues of, xiv
-of websites, 34
-Gamification.co, xvii
-Gardner, James, 104
-Gee, James Paul, 12
-General Data Protection
-Regulation, 94
-Germany, 98
-Good Housekeeping (magazine), 64
-Google, 1, 39, 94
-Grand Theft Auto, 103
-Hacker, Severin, 39
-Hamari, Juho, 108
-Hashtag Killer, 57, 59
-hedonic treadmill, 84
-Hide&Seek (Robertson), 91
-Higgs boson particle, 10
-Huizinga, Johan, 25
-implementation, 86–87
-infinite gameplay, 70
-informational feedback, 52
-innovation, x, 34, 68, 103
-intellectual property, 95, 96
-interest curves, 83
-internal non-game contexts, 5
-intrinsic motivation, 40, 41, 42, 44,
-45, 48
-introjected behav ior regulators, 54
-Jane the Concussion Slayer (game), 8
-Just Press Play, 105–106
-Kaggle, 10, 11
-Kearns, Alex, 106–107
-Kim, Amy Jo, 12, 83
-Kohn, Alfie, 48
-Koster, Raph, 17
-Lawley, Elizabeth, 105
-Lazzaro, Nicole, 12, 85, 103
-leaderboards, x, xviii, 14, 38, 54, 69
-public, 99
-troublesome nature of, 64, 66
-workers demotivated by, 34, 65
-LeBlanc, Marc, 85
-legal issues, 93–94, 99
-Lehdonvirta, Vili, 108
-leveling up, 28, 81, 83
-Lift, 88
-Liveops, 50, 100
-Lloyds TSB Bank, 103–104
-loyalty programs, 66, 92, 93
-
--- 143 of 152 --
-
-124 Index
-MacArthur “Genius” Award, 37
-magic circle, 25
-marketing, x, 51, 79, 89, 102
-massive open online course (MOOC),
-xvi, xx
-massively multiplayer online game
-(MMOG), xv
-mastery, 43, 61
-MAUs. see monthly active users
-McGonigal, Jane, 8–9, 12
-Mechanical Turk, 10
-Meier, Sid, 24
-Microsoft Language Quality Game, 2,
-3, 4, 6, 13, 49, 66
-Microsoft Office, 3
-Microsoft Windows, 3
-Minecraft, xii, 29
-MMOG. see massively multiplayer
-online game
-Mollick, Ethan, 100
-monthly active users (MAUs), xii, 78
-MOOC. see massive open online
-course
-motivation, 31, 47, 79
-badges and, 63
-cognitivist theories of, 43
-extrinsic, 40, 41, 42, 43, 49–50, 53, 92
-gamification and, 42, 55
-intrinsic, 40, 41, 42, 44, 45, 48
-nature of, 54
-status as, 92
-Motor Trend Car of the Year award, 64
-Myspace, 72
-negative scoring, 70
-Neofect, ix, xi, 32
-Nielsen, xiv
-Nike, 16, 29–30
-non-game contexts, 5, 15, 28
-nudging, xviii, 109
-Obama, Barack, 9
-objective definition process, 75, 76
-online games, xiii, 15
-online role-playing games, 54
-open-world games, 29, 103
-opt-in process, 65
-Oyzon, Elouise, 105
-paid endorsements, 98
-patents, 95–96
-Pavlov, Ivan, 42
-PBLs. see points, badges, and
-leaderboards
-Pelling, Nick, 12
-personal information, 93
-Phelps, Andy, 105
-Piano Stairs, 22, 22
-player types, xvii, 80
-player-vs.-environment (PvE), 45
-player-vs.-player (PvP), 45, 79
-playtesting, xiv
-points, 3, 9, 37, 39, 47, 69, 70
-competence and, 46
-endless treadmill of, 14
-feedback loops and, 61
-functions of, 60
-in Kaggle, 10
-Liveops and, 50
-redeemable, 60
-from rewards programs, 51
-value of, 34
-points, badges, and leaderboards
-(PBLs), xviii, 54, 57, 58, 59, 66,
-72, 91, 101, 109
-pointsification, 91–92, 93
-Pokémon Go, xii
-power users, 80
-privacy policies, 95
-Procter & Gamble, 97
-productivity enhancement, x
-progression stairs, 82, 83–84, 84
-Psych (television show), 57, 59
-Psych Vision, 57
-Punished by Rewards (Kohn), 48
-PvE. see player-vs.-environment
-PvP. see player-vs.-player
-Quest to Learn, 19
-quests, 69
-
--- 144 of 152 --
-
-Index 125
-randomness, 84
-Rapael Smart Glove, ix
-reCAPTCHA, 39
-Record Searchlight (newspaper), 7, 14
-Reeves, Byron, 12
-rehabilitation, ix, 32
-relatedness, 43, 44, 45, 46
-relationships, 67
-reputation systems, 66
-resource acquisition, 68
-rewards, 48–49, 51, 68, 85, 92, 97
-Robertson, Margaret, 91
-Robinhood, xi, 106–107
-Rochester Institute of Technology,
-105, 106
-Rothbard, Nancy, 100
-Ryan, Richard, 43, 53
-Samsung, 34
-Sawyer, Ben, 12
-Schell, Jesse, 57, 59
-Schmidt, Eric, 1
-Schumer, Amy, 40, 41, 42
-Scrabble, xii, 24, 28
-Sculley, John, 28
-SDT. see Self-Determination Theory
-Second Life, 96, 98
-segmentation, 79, 80, 110
-Self-Determination Theory (SDT), 43,
-44, 45, 46
-serious games, 19
-Sierra, Kathy, 47, 90
-Simkins, David, 105
-Six Sigma, xiii
-Skinner, B. F., 42
-Slack, 8
-Smith, Ross, 3, 4, 6, 49
-social currency, 14
-social engagement, 38
-social engineering, 1
-social games, 78
-social gaming mechanisms, 54
-social graphs, 69
-social interactions, 46
-social media, 19, 81, 110
-social networks, 65, 81
-socializers, 80
-software algorithms, 77
-software-as-a-service, 74
-software-quality games, 3
-Sony, 15
-stay-at-home orders, 9
-Stone, Biz, 88
-Strava, 32, 39
-Stubblebine, Tony, 88
-subliminal advertising, 102
-Sudoku, 46
-suicide, xi, 9, 106
-Sunstein, Cass, xviii
-Super Hacker Land, 2, 2
-SuperBetter, xi, 9
-SuperData Research, xiv
-sweepstakes, 96
-TalentLMS, 6, 50
-tangible rewards, 70
-target behav iors, 77
-target population, 35
-teams, 69
-Tenev, Vlad, 106
-text-based multiplayer online games, 80
-Thaler, Richard, xviii
-time constraints, 70
-trade secrets, 95
-trademarks, 95
-triad of intrinsic motivators, xvii
-turns, 68
-Twitter, 34, 57, 88
-Uber, xi, 55, 101
-undirected play, 30
-United Airlines Premier Elite, 46
-University of Essex, 11
-US Department of Homeland
-Security, 10
-USA Network, 57, 58
-variable reward schedule, 52
-video games, xii, 26, 52. see also
-specific games
-
----
-
-## Sección 38: Foundations & Introduction
-
--- 145 of 152 --
+## Sección 36: Foundations & Introduction [Entropy: 0.28]
 
 126 Index
 virality, 79
@@ -4579,8 +3672,6 @@ world’s deepest trash can, 21–22, 27
 Xbox One, 46
 XEODesign, 103
 Zombies, Run!, 39, 40
-
--- 146 of 152 --
 About the Authors
 Kevin Werbach is a leading expert on the legal, business, and public
 policy aspects of the network age. He is a professor of legal studies at
@@ -4606,17 +3697,12 @@ master of laws by research from the University of Melbourne. He has
 taught at law and business schools in Australia, England, and the
 United States. Hunter regularly publishes on artificial intelligence,
 legal technology, and the theory of intellectual property. His most
-
--- 147 of 152 --
-
 128 About the Authors
 recent books are A History of Intellectual Property in 50 Objects
 (Cambridge, 2019) and The Oxford Introductions to U.S. Law: Intellectual Property (OUP, 2012). He is a fellow of the Australian Academy
 of Law and a chief investigator in the $71M ARC Centre of Excellence for Automated Decision-Making and Society. He also founded
 the Future Law Podcast (http://thefuturelawpodcast.com), which talks
 about how law is changing during this time of massive disruption.
-
--- 148 of 152 --
 Wharton School Press, the book publishing arm of the Wharton
 School of the University of Pennsylvania, was established to inspire
 bold, insightful thinking within the global business community.
@@ -4639,9 +3725,6 @@ To find books that will inspire and empower you to increase your
 impact and expand your personal and professional horizons, visit
 wsp.wharton.upenn.edu.
 About Wharton School Press
-
--- 149 of 152 --
-
 Founded in 1881 as the world’s first collegiate business school, the
 Wharton School of the University of Pennsylvania is shaping the
 future of business by incubating ideas, driving insights, and creating
@@ -4651,11 +3734,6 @@ from around the world advance their careers through Wharton Executive Education�
 network of leaders who transform business every day.
 www.wharton.upenn.edu
 About the Wharton School
--- 150 of 152 --
-
--- 151 of 152 --
-
--- 152 of 152 --
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[KICK_API_REFERENCE]] · [[CANON_KICK_PUBLIC_API_V2_FULL_REFERENCE]] · [[POPULAR_SLOTS_ONLY_ON_STAKE_TIERS]] · [[CANON_SLOTS_STAKE_RTP_VOLATILITY_DYNAMICS]] · #streaming_and_overlays

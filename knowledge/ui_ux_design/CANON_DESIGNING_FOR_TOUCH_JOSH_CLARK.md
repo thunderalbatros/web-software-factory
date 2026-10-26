@@ -1,15 +1,15 @@
-﻿> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
 
 # 📱 Tratado Canónico: Designing for Touch (Josh Clark)
 ### Basado en: *Designing for Touch* (A Book Apart Series)
@@ -45,7 +45,7 @@ Cuando un usuario interactúa con un smartphone moderno (pantallas de 6.1" a 6.7
 └─────────────────────────┘
 ```
 
-### Reglas Innegociables de Ergonomía Táctil para Yendo:
+### Reglas Innegociables de Ergonomía Táctil para WebFactory:
 1. **Acciones Primarias en el Tercio Inferior:**
    - Prohibido ubicar el botón principal de confirmación o reserva en la barra superior (Top Bar).
    - Todos los flujos críticos (Confirmar Check-in, Unirse al Squad, Filtrar Mapa) se resuelven mediante **Floating Action Buttons (FABs)** o **Bottom Sheets interactivos** en el tercio inferior.
@@ -59,7 +59,7 @@ Cuando un usuario interactúa con un smartphone moderno (pantallas de 6.1" a 6.7
 
 ## 3. Gestualidad Física y Retroalimentación
 
-- **Deslizar (Swipe) vs. Tocar (Tap):** En movimiento, deslizar una tarjeta es un 40% más fácil y natural que acertar a un botón pequeño. Yendo implementa el rechazo o guardado de eventos mediante swipe gestual fluido con física Reanimated.
+- **Deslizar (Swipe) vs. Tocar (Tap):** En movimiento, deslizar una tarjeta es un 40% más fácil y natural que acertar a un botón pequeño. WebFactory implementa el rechazo o guardado de eventos mediante swipe gestual fluido con física Reanimated.
 - **Micro-háptica Inmediata:** Toda confirmación táctil debe responder en menos de 16 milisegundos con un clic háptico en el motor Taptic Engine / haptic actuator del dispositivo para confirmar físicamente que el comando fue recibido.
 
 ---

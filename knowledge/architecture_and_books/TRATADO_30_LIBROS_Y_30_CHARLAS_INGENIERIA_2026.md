@@ -1,19 +1,19 @@
-> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
+
 # 📚 Tratado Maestro: Auditoría de 30 Libros, 30 Charlas Técnicas SOTA y Arquitectura de Base de Datos Unificada
 
-> **Dictamen del MANAGER_AGENT (Antigravity IDE / Yendo Mobile):**  
+> **Dictamen del MANAGER_AGENT (Antigravity IDE / la Web Software Factory):**  
 > *"El software no es un conjunto de vistas cosméticas, sino un sistema cognitivo de interacción humana sustentado por un cerebro transaccional distribuido. La base de datos única de Supabase es el árbitro supremo de la verdad para las tres plataformas (App Usuarios, App Partners y Web Dashboard)."*
 
 ---
@@ -23,14 +23,14 @@ ultima_revision: 2026-08-27
 Cruzamos la lista de 30 obras maestras contra nuestro Canon Intelectual ([[.knowledge/YENDO_LIBRARY.md]], Qdrant y dossiers de arquitectura).
 
 ### 📊 Resumen Ejecutivo del Inventario:
-- **9 Obras ya Asimiladas al 100% en el Canon de Yendo** (con principios, citas directas y reglas arquitectónicas obligatorias en el código).
+- **9 Obras ya Asimiladas al 100% en el Canon de WebFactory** (con principios, citas directas y reglas arquitectónicas obligatorias en el código).
 - **21 Obras con Principios Conceptuales Registrados pero pendientes de Ingesta del PDF Completo** (para vectorización profunda en Qdrant / RAG).
 
 ---
 
 ### Eje 1: Flujo de Usuario, Psicología y Heurísticas (10 Libros)
 
-| # | Obra y Autor | Estado en Yendo | Aplicación Crítica en Yendo Mobile | Acción para el CTO |
+| # | Obra y Autor | Estado en WebFactory | Aplicación Crítica en la Web Software Factory | Acción para el CTO |
 | :-: | :--- | :---: | :--- | :---: |
 | 1 | **The Design of Everyday Things** (Don Norman) | 🟢 **Asimilado 100%** (Libro #24) | Affordances, signifiers y modelos mentales. Erradica controles ambiguos. | Ya en Canon |
 | 2 | **Don't Make Me Think, Revisited** (Steve Krug) | 🟢 **Asimilado 100%** (Libro #26) | Escaneo visual en 3 segundos. Regla de oro contra la fricción mental. | Ya en Canon |
@@ -47,11 +47,11 @@ Cruzamos la lista de 30 obras maestras contra nuestro Canon Intelectual ([[.know
 
 ### Eje 2: Componentes Visuales, Design Systems y Microestética (10 Libros)
 
-| # | Obra y Autor | Estado en Yendo | Aplicación Crítica en Yendo Mobile | Acción para el CTO |
+| # | Obra y Autor | Estado en WebFactory | Aplicación Crítica en la Web Software Factory | Acción para el CTO |
 | :-: | :--- | :---: | :--- | :---: |
 | 11 | **Refactoring UI** (Adam Wathan & Steve Schoger) | 🟢 **Asimilado 100%** (Libro #38) | Jerarquía visual, contraste y espaciado áureo sin decoraciones superfluas. | Ya en Canon |
 | 12 | **Design Systems** (Alla Kholmatova) | 🟡 **Conceptos en RAG** | Patrones compartidos entre App Usuarios, App Partners y Web Dashboard. | 📥 **Conseguir PDF** |
-| 13 | **Atomic Design** (Brad Frost) | 🟢 **Asimilado 100%** (Libro #29) | Descomposición modular estricta de componentes JSX en React Native. | Ya en Canon |
+| 13 | **Atomic Design** (Brad Frost) | 🟢 **Asimilado 100%** (Libro #29) | Descomposición modular estricta de componentes JSX en Modern Web UI (CSS/WAAPI). | Ya en Canon |
 | 14 | **Grid Systems in Graphic Design** (Josef Müller-Brockmann) | 🟡 **Conceptos en RAG** | Retícula suiza de 8pt, proporción armónica y orden geométrico. | 📥 **Conseguir PDF** |
 | 15 | **The Elements of Typographic Style** (Robert Bringhurst) | 🟡 **Conceptos en RAG** | Escala modular tipográfica, ritmo vertical y legibilidad sobre OLED. | 📥 **Conseguir PDF** |
 | 16 | **Interaction of Color** (Josef Albers) | 🟢 **Asimilado 100%** (Libro #41) | Contraste de acento Naranja Eléctrico `#FF5500` sobre fondos `#121212`. | Ya en Canon |
@@ -64,7 +64,7 @@ Cruzamos la lista de 30 obras maestras contra nuestro Canon Intelectual ([[.know
 
 ### Eje 3: El Cerebro Lógico (Bases de Datos, Rendimiento y Concurrencia) (10 Libros)
 
-| # | Obra y Autor | Estado en Yendo | Aplicación Crítica en Yendo Mobile | Acción para el CTO |
+| # | Obra y Autor | Estado en WebFactory | Aplicación Crítica en la Web Software Factory | Acción para el CTO |
 | :-: | :--- | :---: | :--- | :---: |
 | 21 | **Designing Data-Intensive Applications** (Martin Kleppmann) | 🟢 **Asimilado 100%** (Libro #56) | Transacciones ACID, prevención de race conditions en cupos y réplicas. | Ya en Canon |
 | 22 | **Database Internals** (Alex Petrov) | 🟡 **Conceptos en RAG** | Estructuras B-Tree, algoritmos LSM y serialización en bajo nivel. | 📥 **Conseguir PDF** |
@@ -85,7 +85,7 @@ Las 30 conferencias seleccionadas abordan exactamente los desafíos de producci�
 
 1. **Eje UX/Psicología:** John Maeda (*Simplicity*), Steve Schoger (*UX for Devs*), Nir Eyal (*Habit Formation*), Don Norman (*Designing for Understanding*), Joe Leech (*Psychology of UX*), Jakob Nielsen (*Mobile Usability*), Jake Knapp (*Design Sprint*), Pulkit Agrawal (*Frictionless Onboarding*), Luke Wroblewski (*Checkout Flows*) y Tristan Harris (*Ethical Design*).
    - **Tesis Unificada:** La atención del usuario es finita; un flujo con más de 2 decisiones cognitivas simultáneas o un estado de error bloqueante provoca el abandono inmediato de la app.
-2. **Eje Visual/Microinteracciones:** Apple WWDC (*Fluid Interfaces*), Google I/O (*Making Motion Meaningful*), Diana Mounter (*Mobile Design Systems*), Tim Brown (*Fluid Typography*), William Candillon (*React Native 60 FPS*), Gary Simon (*Color Rules*) y Google (*Dark Mode Patterns*).
+2. **Eje Visual/Microinteracciones:** Apple WWDC (*Fluid Interfaces*), Google I/O (*Making Motion Meaningful*), Diana Mounter (*Mobile Design Systems*), Tim Brown (*Fluid Typography*), William Candillon (*Modern Web UI (CSS/WAAPI) 60 FPS*), Gary Simon (*Color Rules*) y Google (*Dark Mode Patterns*).
    - **Tesis Unificada:** Las animaciones no son adornos cosméticos; son metáforas físicas del mundo real (resortes `withSpring`, inercia y rozamiento) que corren en la GPU para confirmar una acción humana.
 3. **Eje Cerebro Lógico/Supabase:** Bruce Momjian (*PostgreSQL MVCC*), Paul Ramsey (*PostGIS at Scale*), Paul Copplestone (*Scaling Supabase*), Supabase (*Mastering RLS*), Martin Kleppmann (*ACID Concurrency*), Markus Winand (*PostgreSQL Indexing*), Martin Fowler (*Event-Driven Architecture*), Rick Reed (*WhatsApp Scaling*), Hussein Nasser (*Replication Patterns*) y Vlad Mihalcea (*Preventing Race Conditions*).
    - **Tesis Unificada:** La base de datos es la única fuente de la verdad inmutable; cualquier operación de concurrencia debe resolverse a nivel de motor de almacenamiento con bloqueos transaccionales atómicos.
@@ -101,7 +101,7 @@ Dado que la base de datos de Supabase alimenta simultáneamente a las tres plata
 │                 ARQUITECTURA DE BASE DE DATOS ÚNICA (SUPABASE)              │
 ├───────────────────────────────┬─────────────────────────────┬───────────────┤
 │    APP MÓVIL USUARIOS         │     APP MÓVIL PARTNERS      │ DASHBOARD WEB │
-│  (React Native / Fabric)      │     (React Native POS)      │  (Next.js /   │
+│  (Modern Web UI (CSS/WAAPI) / Fabric)      │     (Modern Web UI (CSS/WAAPI) POS)      │  (Next.js /   │
 │   Token JWT: 'authenticated'  │  Token JWT: 'partner_staff' │   Vite Admin) │
 └───────────────┬───────────────┴──────────────┬──────────────┴───────┬───────┘
                 │                              │                      │
@@ -175,7 +175,7 @@ Dado que la base de datos de Supabase alimenta simultáneamente a las tres plata
 Inspeccionamos la captura enviada por el CTO en su iPhone 16 Pro Max.
 
 ### 🔍 Qué Muestra la Pantalla:
-- App: Yendo Buenos Aires.
+- App: WebFactory Buenos Aires.
 - Header y Filtros impecables en Dark OLED (`#121212` y `#FF5500`).
 - **Problema Observado:** En el centro de la pantalla aparece un icono de nube tachada con el mensaje:  
   *"No pudimos cargar los eventos. Revisá tu conexión a internet o reintentá en un momento."* con un botón *"Reintentar"*.
@@ -183,7 +183,7 @@ Inspeccionamos la captura enviada por el CTO en su iPhone 16 Pro Max.
 ### 🧠 Diagnóstico bajo la Lupa de los 30 Libros y la Arquitectura SOTA:
 1. **Violación de Fricción Cero (Steve Krug / Don Norman):** Un estado de error en blanco bloquea al usuario y le exige pensar o reintentar manualmente. Si el usuario está en la calle o entrando al subte, la experiencia se detiene por completo.
 2. **La Solución Offline-First (Kleppmann / MMKV Cache-First):**
-   - El hook de eventos ([src/hooks/useNearbyEvents.ts](file:///c:/Users/Tomi/yendo_mobile/src/hooks/useNearbyEvents.ts)) debe aplicar el patrón **Stale-While-Revalidate con persistencia en disco**.
+   - El hook de eventos ([src/hooks/useNearbyEvents.ts](file:///c:/Users/Tomi/web_software_factory/src/hooks/useNearbyEvents.ts)) debe aplicar el patrón **Stale-While-Revalidate con persistencia en disco**.
    - Si la llamada de red a Supabase falla, la pantalla **NUNCA debe quedar en blanco si hay eventos en la caché de MMKV**. Debe renderizar inmediatamente los eventos cacheados con un banner contextual no invasivo: *"Modo sin conexión · Mostrando eventos guardados"*.
 3. **Empty State Guiado (Dan Saffer / Microinteractions):**
    - Si la caché estuviese genuinamente vacía, la pantalla debe presentar al Carpincho sugiriendo una acción positiva (*"Explorar en el mapa"* o *"Cambiar de zona"*), en lugar de un error frío de infraestructura.

@@ -1,20 +1,20 @@
-> **Alcance:** Literatura canónica y tratados técnicos de animación a 60 FPS, shaders GPU, física de resortes (spring physics), arte técnico 3D y micro-interacciones fluidas para sitios web modernos y overlays OBS.
-
 ---
 version: 1.0.0
 tipo: guia
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - tech-stack
   - canonico
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
+> **Alcance:** Literatura canónica y tratados técnicos de animación a 60 FPS, shaders GPU, física de resortes (spring physics), arte técnico 3D y micro-interacciones fluidas para sitios web modernos y overlays OBS.
+
 # 🧠 Dossier de Arquitectura: Pipeline Externo de Renderizado, Compresión e Importación 3D y Motion Graphics
 
 > [!info] Clasificación y Alcance Técnico
-> Este dossier establece el estándar oficial de ingeniería para la creación de activos visuales complejos fuera de la aplicación, su compresión matemática headless y su posterior importación a **React Native 0.86.2** y **Expo SDK 57**.
+> Este dossier establece el estándar oficial de ingeniería para la creación de activos visuales complejos fuera de la aplicación, su compresión matemática headless y su posterior importación a **Modern Web UI (CSS/WAAPI) 0.86.2** y **Expo SDK 57**.
 > 
 > **Clasificación:** `Technical Art / Pipeline 3D / Motion Graphics / Compresión Binaria / Rendimiento GPU`
 > **Departamentos:** `MOTION_ART_DIRECTOR_AGENT · CREATIVE_TECH · UI_AGENT · SRE_PERFORMANCE_AGENT`
@@ -28,7 +28,7 @@ Renderizar geometrías tridimensionales complejas o calcular simulaciones de fí
 La práctica de la industria en estudios Tier-1 consiste en:
 1. **Autoría Externa Especializada:** Diseñar, esculpir, animar y bakeaar texturas en software profesional (Blender, Cinema 4D, After Effects, Rive Editor, Substance Painter).
 2. **Compresión Matemática Headless (Build Step):** Reducir el tamaño de los activos entre un **70% y un 90%** mediante algoritmos de compresión geométrica (Draco, Meshopt) y transcodificación de texturas.
-3. **Importación Ligera a React Native:** Consumir activos pre-optimizados en formatos binarios o declarativos ejecutados en el **GPU / UI Thread** sin penalizar la CPU.
+3. **Importación Ligera a Modern Web UI (CSS/WAAPI):** Consumir activos pre-optimizados en formatos binarios o declarativos ejecutados en el **GPU / UI Thread** sin penalizar la CPU.
 
 ---
 
@@ -50,7 +50,7 @@ graph TD
 
     subgraph "3. Pipeline VFX Cinematográficos / Humo / Neón"
         C1["Houdini / Cinema4D / After Effects"] --> C2["Render con Fondo Transparente (Canal Alfa)"]
-        C2 --> C3["Compresión FFmpeg: HEVC Alpha (iOS) / WebM VP9 (Android)"]
+        C2 --> C3["Compresión FFmpeg: HEVC Alpha (iOS) / WebM VP9 (Web Platform)"]
         C3 --> C4["Importación: expo-image / Video Player Nativo"]
     end
 ```
@@ -59,7 +59,7 @@ graph TD
 
 ## 3. 📊 Matriz Comparativa de Formatos y Motores
 
-| Formato / Herramienta | Tipo de Activo | Peso Típico | Renderizado en Móvil | Interacción / Físicas | Cuándo Usarlo en Yendo |
+| Formato / Herramienta | Tipo de Activo | Peso Típico | Renderizado en Móvil | Interacción / Físicas | Cuándo Usarlo en WebFactory |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | **Rive (`.riv`)** | Vectorial 2D / 2.5D | **20 KB – 80 KB** | GPU Nativo (Metal / Vulkan C++) | **Extrema:** State Machines reactivas al tacto | **La Mascota (El Carpincho):** Expresiones, gestos y estados de quórum a 120 FPS. |
 | **GLB + Draco / gltfjsx** | Modelos 3D Tridimensionales | **800 KB – 2.5 MB** | WebGL vía `expo-gl` y R3F | **Alta:** Rotación espacial 360°, luces dinámicas | **Avatar 3D / Trofeos:** Vistas interactivas de locales o insignias espaciales. |
@@ -71,13 +71,13 @@ graph TD
 
 ## 4. 🛠️ Guía Técnica de Compresión 3D para `MOTION_ART_DIRECTOR_AGENT`
 
-### Paso 1: Reglas de Modelado en Blender para Yendo
+### Paso 1: Reglas de Modelado en Blender para WebFactory
 - **Presupuesto de Polígonos:** Mantener las mallas entre 5.000 y 25.000 triángulos.
 - **Bakeo de Iluminación y Sombras:** Bakeaar la oclusión ambiental (Ambient Occlusion) y la iluminación global directamente en el mapa de textura difusa para no sobrecargar el cálculo de luces en tiempo real.
 - **Texturas PBR Unificadas:** Empaquetar Albedo, Roughness y Normal Map en resoluciones de **1024x1024 o 512x512** en formato PNG/WebP.
 
 ### Paso 2: Compresión con Herramientas CLI Headless
-Yendo cuenta con la herramienta de auditoría:
+WebFactory cuenta con la herramienta de auditoría:
 ```bash
 node tools/pipelines/optimizar_asset_3d.js "src/assets/models/carpincho.glb"
 ```

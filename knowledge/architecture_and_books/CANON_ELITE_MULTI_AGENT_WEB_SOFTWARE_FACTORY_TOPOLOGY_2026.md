@@ -1,4 +1,4 @@
-﻿# Tratado Canónico: Topología de Equipos Multi-Agente de Élite y Matriz de 76 Skills para nuestra Web Software Factory (SOTA 2026)
+# Tratado Canónico: Topología de Equipos Multi-Agente de Élite y Matriz de 76 Skills para nuestra Web Software Factory (SOTA 2026)
 
 **Alcance:** Este documento define la estructura organizacional definitiva de **10 Escuadrones Especializados (`Squad 0` a `Squad 9`)** y la asignación de las **76 Habilidades (`SKILL.md`)** de nuestra **Self-Evolving Web Software Factory**, fundamentada en **Team Topologies (*Matthew Skelton & Manuel Pais*)**, **Building Effective Agents (*Anthropic*)**, **Procedimientos Operativos Estándar (*MetaGPT SOPs*)** y **Disciplina de Ingeniería Agéntica (*Addy Osmani Agent-Skills*)**. NO es fuente de contratos específicos de RealtimeHub API ni de fórmulas matemáticas de probabilidades de slots.
 

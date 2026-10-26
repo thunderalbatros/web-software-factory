@@ -1,10 +1,12 @@
-﻿# 🎓 Video Curso: WebSockets Crash Course - Handshake, Use-cases, Pros & Cons and more
+# 🎓 Video Curso: WebSockets Crash Course - Handshake, Use-cases, Pros & Cons and more
+
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
 
 > **Institución / Autor:** Hussein Nasser  
 > **Fuente URL:** https://www.youtube.com/watch?v=2Nt-ZrNP22A  
 > **Fecha de Ingesta:** 2026-10-06  
 > **Tipo:** Transcripción Íntegra de Clase Magistral con Marcas de Tiempo  
-> **Estado:** Procesado y Disponible para Ingesta RAG en Centinela  
+> **Estado:** Procesado y Disponible para Ingesta RAG en Web Software Factory  
 
 ---
 

@@ -1,8 +1,8 @@
-﻿/**
- * WebFactory — Serper High-Speed Web Intelligence & Search
+/**
+ * Web Software Factory Studio — Serper High-Speed Web Intelligence & Search
  * =============================================================================
- * Real-time Google search for latest casino releases, slot mechanics, RTP data,
- * and RealtimeHub developer documentation updates.
+ * Real-time Google search for modern web specifications, W3C DTCG tokens,
+ * Astro 5 / Cloudflare Edge updates, and SOTA UI/UX engineering references.
  * =============================================================================
  */
 
@@ -61,7 +61,7 @@ export async function searchWeb(query, limit = 5) {
 
 // CLI runner
 if (process.argv.includes('--test')) {
-  const q = process.argv[3] || 'site:PartnerBrand.krd "Only on PartnerBrand" 2026';
+  const q = process.argv[3] || 'W3C DTCG 2025.10 OKLCH Astro 5 Cloudflare Workers Static Assets';
   console.log(`🔍 Searching via Serper: "${q}"...`);
   searchWeb(q, 3)
     .then(data => {

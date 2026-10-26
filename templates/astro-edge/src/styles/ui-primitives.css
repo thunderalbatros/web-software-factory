@@ -1,0 +1,98 @@
+/**
+ * Web Software Factory Studio — Universal SOTA 2026 UI & Motion Primitives
+ * Distilled from MagicUI, Motion-Primitives, Utopia, Open-Props & Emil Kowalski 60-FPS Craft.
+ */
+
+@property --beam-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes fx-beam-spin {
+  to { --beam-angle: 360deg; }
+}
+
+@keyframes fx-shimmer-sweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* 1. OKLCH Conic Border Beam (MagicUI / Linear Craft) */
+.fx-border-beam {
+  position: relative;
+  border-radius: inherit;
+}
+
+.fx-border-beam::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(
+    from var(--beam-angle),
+    transparent 65%,
+    oklch(0.74 0.17 160 / 0.25) 82%,
+    var(--brand-accent, oklch(0.74 0.17 160)) 95%,
+    var(--brand-cta, oklch(0.82 0.18 85)) 100%
+  );
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: fx-beam-spin 4s linear infinite;
+  pointer-events: none;
+}
+
+/* 2. Minimal Surface Hierarchy (De-Boxed Luminance Steps in OKLCH) */
+.surface-canvas {
+  background-color: var(--surface-canvas, oklch(0.14 0.015 260));
+}
+
+.surface-elevated, .bento-card {
+  background-color: var(--surface-elevated, oklch(0.19 0.018 260));
+  border-radius: 16px;
+  padding: var(--space-m, clamp(1rem, 0.85rem + 0.75vw, 1.5rem));
+  transition: transform 0.24s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.24s ease;
+  will-change: transform;
+}
+
+.surface-glass {
+  background: var(--surface-glass, oklch(0.22 0.02 260 / 0.72));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid oklch(0.96 0.008 260 / 0.08);
+}
+
+/* 3. Responsive Bento Grid & Touch-Safe Primary CTA (Fitts's Law >= 44x44px) */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: var(--space-m, clamp(1rem, 0.85rem + 0.75vw, 1.5rem));
+  width: 100%;
+  max-width: 1280px;
+  margin-inline: auto;
+}
+
+.btn-primary, [data-cta="primary"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  min-width: 44px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  background-color: var(--brand-cta, oklch(0.82 0.18 85));
+  color: oklch(0.14 0.015 260);
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.18s ease;
+}
+
+.btn-primary:hover, [data-cta="primary"]:hover {
+  transform: translate3d(0, -1px, 0) scale(1.01);
+}
+
+.btn-primary:active, [data-cta="primary"]:active {
+  transform: translate3d(0, 0, 0) scale(0.98);
+}

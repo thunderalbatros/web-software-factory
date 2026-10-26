@@ -8,17 +8,16 @@ secciones_totales: 74
 fecha_ingesta: "2026-10-06T02:43:21.117Z"
 ---
 
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
+
 # 📖 System Design Interview: An Insider's Guide (Volume 2)
 **Autor:** Alex Xu & Sahn Lam | **Dominio:** Diseño de Sistemas a Escala de Millones de Usuarios | **Páginas originales:** 269
 
-> **Nota de Arquitectura Centinela:** Este documento contiene el texto íntegro estructurado por secciones y capítulos para consulta profunda del equipo de agentes y búsqueda híbrida (BM25 + semántica).
+> **Nota de Arquitectura Web Software Factory:** Este documento contiene el texto íntegro estructurado por secciones y capítulos para consulta profunda del equipo de agentes y búsqueda híbrida (BM25 + semántica).
 
 ---
 
 ## [Sección 1] Introducción y Fundamentos
-
--- 1 of 269 --
-
 System Design Interview: An Insider’s Guide
 All rights reserved. This book or any portion thereof may not be reproduced or used in any
 manner whatsoever without the express written permission of the publisher except for the use
@@ -31,9 +30,6 @@ Please subscribe to our email list if you want to be notified when new chapters 
 https://bit.ly/3dtIcsE
 For more information, contact systemdesigninsider@gmail.com
 Editor: Paul Solomon
-
--- 2 of 269 --
-
 Table of Contents
 System Design Interview: An Insider’s Guide
 FORWARD
@@ -43,9 +39,6 @@ FORWARD
 ## [Sección 2] CHAPTER 16: THE LEARNING CONTINUES
 
 AFTERWORD
-
--- 3 of 269 --
-
 FORWARD
 We are delighted that you have decided to join us in learning the system design interviews.
 System design interview questions are the most difficult to tackle among all the technical
@@ -76,9 +69,6 @@ This book also provides a step by step framework on how to tackle a system desig
 It provides many examples to illustrate the systematic approach with detailed steps that you
 can follow. With constant practice, you will be well-equipped to tackle system design
 interview questions.
-
--- 4 of 269 --
-
 ---
 
 ## [Sección 3] CHAPTER 1: SCALE FROM ZERO TO MILLIONS OF
@@ -89,9 +79,6 @@ requires continuous refinement and endless improvement. In this chapter, we buil
 that supports a single user and gradually scale it up to serve millions of users. After reading
 this chapter, you will master a handful of techniques that will help you to crack the system
 design interview questions.
-
--- 5 of 269 --
-
 Single server setup
 A journey of a thousand miles begins with a single step, and building a complex system is no
 different. To start with something simple, everything is running on a single server. Figure 1-1
@@ -99,9 +86,6 @@ shows the illustration of a single server setup where everything is running on o
 app, database, cache, etc.
 To understand this setup, it is helpful to investigate the request flow and traffic source. Let us
 first look at the request flow (Figure 1-2).
-
--- 6 of 269 --
-
 1. Users access websites through domain names, such as api.mysite.com. Usually, the
 Domain Name System (DNS) is a paid service provided by 3rd parties and not hosted by
 our servers.
@@ -120,9 +104,6 @@ app and the web server. JavaScript Object Notation (JSON) is commonly used API
 response format to transfer data due to its simplicity. An example of the API response in
 JSON format is shown below:
 GET /users/12 – Retrieve user object for id = 12
-
--- 7 of 269 --
-
 Database
 With the growth of the user base, one server is not enough, and we need multiple servers: one
 for web/mobile traffic, the other for the database (Figure 1-3). Separating web/mobile traffic
@@ -146,9 +127,6 @@ databases. Non-relational databases might be the right choice if:
 • Your data are unstructured, or you do not have any relational data.
 • You only need to serialize and deserialize data (JSON, XML, YAML, etc.).
 • You need to store a massive amount of data.
-
--- 8 of 269 --
-
 Vertical scaling vs horizontal scaling
 Vertical scaling, referred to as “scale up”, means the process of adding more power (CPU,
 RAM, etc.) to your servers. Horizontal scaling, referred to as “scale-out”, allows you to scale
@@ -170,9 +148,6 @@ technique to address these problems.
 ---
 
 ## [Sección 4] CHAPTER 1: SCALE FROM ZERO TO MILLIONS OF
-
--- 9 of 269 --
-
 Load balancer
 A load balancer evenly distributes incoming traffic among web servers that are defined in a
 load-balanced set. Figure 1-4 shows how a load balancer works.
@@ -191,14 +166,8 @@ balance the load.
 the load balancer can handle this problem gracefully. You only need to add more servers
 to the web server pool, and the load balancer automatically starts to send requests to them.
 Now the web tier looks good, what about the data tier? The current design has one database,
-
--- 10 of 269 --
-
 so it does not support failover and redundancy. Database replication is a common technique
 to address those problems. Let us take a look.
-
--- 11 of 269 --
-
 Database replication
 Quoted from Wikipedia: “Database replication can be used in many database management
 systems, usually with a master/slave relationship between the original (master) and the copies
@@ -217,9 +186,6 @@ performance because it allows more queries to be processed in parallel.
 typhoon or an earthquake, data is still preserved. You do not need to worry about data loss
 because data is replicated across multiple locations.
 • High availability: By replicating data across different locations, your website remains in
-
--- 12 of 269 --
-
 operation even if a database is offline as you can access data stored in another database
 server.
 In the previous section, we discussed how a load balancer helped to improve system
@@ -243,9 +209,6 @@ Figure 1-6 shows the system design after adding the load balancer and database r
 ---
 
 ## [Sección 5] CHAPTER 1: SCALE FROM ZERO TO MILLIONS OF
-
--- 13 of 269 --
-
 Let us take a look at the design:
 • A user gets the IP address of the load balancer from DNS.
 • A user connects the load balancer with this IP address.
@@ -256,9 +219,6 @@ write, update, and delete operations.
 Now, you have a solid understanding of the web and data tiers, it is time to improve the
 load/response time. This can be done by adding a cache layer and shifting static content
 (JavaScript/CSS/image/video files) to the content delivery network (CDN).
-
--- 14 of 269 --
-
 Cache
 A cache is a temporary storage area that stores the result of expensive responses or frequently
 accessed data in memory so that subsequent requests are served more quickly. As illustrated
@@ -293,9 +253,6 @@ stale.
 • Consistency: This involves keeping the data store and the cache in sync. Inconsistency
 can happen because data-modifying operations on the data store and cache are not in a
 single transaction. When scaling across multiple regions, maintaining consistency between
-
--- 15 of 269 --
-
 the data store and cache is challenging. For further details, refer to the paper titled
 “Scaling Memcache at Facebook” published by Facebook [7].
 • Mitigating failures: A single cache server represents a potential single point of failure
@@ -313,9 +270,6 @@ cases.
 ---
 
 ## [Sección 6] CHAPTER 1: SCALE FROM ZERO TO MILLIONS OF
-
--- 16 of 269 --
-
 Content delivery network (CDN)
 A CDN is a network of geographically dispersed servers used to deliver static content. CDN
 servers cache static content like images, videos, CSS, JavaScript files, etc.
@@ -338,9 +292,6 @@ what image URLs look like on Amazon and Akamai CDNs:
 file from the origin, which can be a web server or online storage like Amazon S3.
 3. The origin returns image.png to the CDN server, which includes optional HTTP header
 Time-to-Live (TTL) which describes how long the image is cached.
-
--- 17 of 269 --
-
 4. The CDN caches the image and returns it to User A. The image remains cached in the
 CDN until the TTL expires.
 5. User B sends a request to get the same image.
@@ -363,15 +314,9 @@ one of the following operations:
 you can add a parameter to the URL, such as a version number. For example, version
 number 2 is added to the query string: image.png?v=2.
 Figure 1-11 shows the design after the CDN and cache are added.
-
--- 18 of 269 --
-
 1. Static assets (JS, CSS, images, etc.,) are no longer served by web servers. They are
 fetched from the CDN for better performance.
 2. The database load is lightened by caching data.
-
--- 19 of 269 --
-
 Stateless web tier
 Now it is time to consider scaling the web tier horizontally. For this, we need to move state
 (for instance user session data) out of the web tier. A good practice is to store session data in
@@ -396,16 +341,10 @@ Figure 1-13 shows the stateless architecture.
 ---
 
 ## [Sección 7] CHAPTER 1: SCALE FROM ZERO TO MILLIONS OF
-
--- 20 of 269 --
-
 In this stateless architecture, HTTP requests from users can be sent to any web servers, which
 fetch state data from a shared data store. State data is stored in a shared data store and kept
 out of web servers. A stateless system is simpler, more robust, and scalable.
 Figure 1-14 shows the updated design with a stateless web tier.
-
--- 21 of 269 --
-
 In Figure 1-14, we move the session data out of the web tier and store them in the persistent
 data store. The shared data store could be a relational database, Memcached/Redis, NoSQL,
 etc. The NoSQL data store is chosen as it is easy to scale. Autoscaling means adding or
@@ -415,9 +354,6 @@ servers based on traffic load.
 Your website grows rapidly and attracts a significant number of users internationally. To
 improve availability and provide a better user experience across wider geographical areas,
 supporting multiple data centers is crucial.
-
--- 22 of 269 --
-
 Data centers
 Figure 1-15 shows an example setup with two data centers. In normal operation, users are
 geoDNS-routed, also known as geo-routed, to the closest data center, with a split traffic of
@@ -426,9 +362,6 @@ names to be resolved to IP addresses based on the location of a user.
 In the event of any significant data center outage, we direct all traffic to a healthy data center.
 In Figure 1-16, data center 2 (US-West) is offline, and 100% of the traffic is routed to data
 center 1 (US-East).
-
--- 23 of 269 --
-
 Several technical challenges must be resolved to achieve multi-data center setup:
 • Traffic redirection: Effective tools are needed to direct traffic to the correct data center.
 GeoDNS can be used to direct traffic to the nearest data center depending on where a user
@@ -442,9 +375,6 @@ website/application at different locations. Automated deployment tools are vital
 services consistent through all the data centers [11].
 To further scale our system, we need to decouple different components of the system so they
 can be scaled independently. Messaging queue is a key strategy employed by many realworld distributed systems to solve this problem.
-
--- 24 of 269 --
-
 Message queue
 A message queue is a durable component, stored in memory, that supports asynchronous
 communication. It serves as a buffer and distributes asynchronous requests. The basic
@@ -467,9 +397,6 @@ However, if the queue is empty most of the time, the number of workers can be re
 ---
 
 ## [Sección 8] CHAPTER 1: SCALE FROM ZERO TO MILLIONS OF
-
--- 25 of 269 --
-
 Logging, metrics, automation
 When working with a small website that runs on a few servers, logging, metrics, and
 automation support are good practices but not a necessity. However, now that your site has
@@ -494,14 +421,8 @@ shown in the figure.
 1. The design includes a message queue, which helps to make the system more loosely
 coupled and failure resilient.
 2. Logging, monitoring, metrics, and automation tools are included.
-
--- 26 of 269 --
-
 As the data grows every day, your database gets more overloaded. It is time to scale the data
 tier.
-
--- 27 of 269 --
-
 Database scaling
 There are two broad approaches for database scaling: vertical scaling and horizontal scaling.
 Vertical scaling
@@ -523,9 +444,6 @@ shard.
 Figure 1-21 shows an example of sharded databases. User data is allocated to a database
 server based on user IDs. Anytime you access data, a hash function is used to find the
 corresponding shard. In our example, user_id % 4 is used as the hash function. If the result
-
--- 28 of 269 --
-
 equals to 0, shard 0 is used to store and fetch data. If the result equals to 1, shard 1 is used.
 The same logic applies to other shards.
 Figure 1-22 shows the user table in sharded databases.
@@ -538,9 +456,6 @@ queries to the correct database. When choosing a sharding key, one of the most i
 ---
 
 ## [Sección 9] CHAPTER 1: SCALE FROM ZERO TO MILLIONS OF
-
--- 29 of 269 --
-
 criteria is to choose a key that can evenly distributed data.
 Sharding is a great technique to scale the database but it is far from a perfect solution. It
 introduces complexities and new challenges to the system:
@@ -560,10 +475,6 @@ In Figure 1-23, we shard databases to support rapidly increasing data traffic. A
 time, some of the non-relational functionalities are moved to a NoSQL data store to reduce
 the database load. Here is an article that covers many use cases of NoSQL [14].
 
--- 30 of 269 --
-
--- 31 of 269 --
-
 Millions of users and beyond
 Scaling a system is an iterative process. Iterating on what we have learned in this chapter
 could get us far. More fine-tuning and new strategies are needed to scale beyond millions of
@@ -580,9 +491,6 @@ our system to support millions of users:
 • Split tiers into individual services
 • Monitor your system and use automation tools
 Congratulations on getting this far! Now give yourself a pat on the back. Good job!
-
--- 32 of 269 --
-
 Reference materials
 [1] Hypertext Transfer Protocol: https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol
 [2] Should you go Beyond Relational Databases?:
@@ -613,9 +521,6 @@ http://highscalability.com/blog/2010/12/6/what-the-heck-are-you-actually-using-n
 ---
 
 ## [Sección 10] CHAPTER 1: SCALE FROM ZERO TO MILLIONS OF
-
--- 33 of 269 --
-
 ---
 
 ## [Sección 11] CHAPTER 2: BACK-OF-THE-ENVELOPE ESTIMATION
@@ -627,17 +532,11 @@ combination of thought experiments and common performance numbers to get a good 
 which designs will meet your requirements” [1].
 You need to have a good sense of scalability basics to effectively carry out back-of-theenvelope estimation. The following concepts should be well understood: power of two [2],
 latency numbers every programmer should know, and availability numbers.
-
--- 34 of 269 --
-
 Power of two
 Although data volume can become enormous when dealing with distributed systems,
 calculation all boils down to the basics. To obtain correct calculations, it is critical to know
 the data volume unit using the power of 2. A byte is a sequence of 8 bits. An ASCII character
 uses one byte of memory (8 bits). Below is a table explaining the data volume unit (Table 21).
-
--- 35 of 269 --
-
 Latency numbers every programmer should know
 Dr. Dean from Google reveals the length of typical computer operations in 2010 [1]. Some
 numbers are outdated as computers become faster and more powerful. However, those
@@ -649,9 +548,6 @@ ns = nanosecond, μs = microsecond, ms = millisecond
 1 ns = 10^-9 seconds
 1 μs= 10^-6 seconds = 1,000 ns
 1 ms = 10^-3 seconds = 1,000 μs = 1,000,000 ns
-
--- 36 of 269 --
-
 A Google software engineer built a tool to visualize Dr. Dean’s numbers. The tool also takes
 the time factor into consideration. Figures 2-1 shows the visualized latency numbers as of
 2020 (source of figures: reference material [3]).
@@ -661,9 +557,6 @@ By analyzing the numbers in Figure 2-1, we get the following conclusions:
 • Simple compression algorithms are fast.
 • Compress data before sending it over the internet if possible.
 • Data centers are usually in different regions, and it takes time to send data between them.
-
--- 37 of 269 --
-
 Availability numbers
 High availability is the ability of a system to be continuously operational for a desirably long
 period of time. High availability is measured as a percentage, with 100% means a service that
@@ -674,9 +567,6 @@ formally defines the level of uptime your service will deliver. Cloud providers 
 Google [5] and Microsoft [6] set their SLAs at 99.9% or above. Uptime is traditionally
 measured in nines. The more the nines, the better. As shown in Table 2-3, the number of
 nines correlate to the expected system downtime.
-
--- 38 of 269 --
-
 Example: Estimate Twitter QPS and storage requirements
 Please note the following numbers are for this exercise only as they are not real numbers
 from Twitter.
@@ -698,9 +588,6 @@ We will only estimate media storage here.
 • media 1 MB
 • Media storage: 150 million * 2 * 10% * 1 MB = 30 TB per day
 • 5-year media storage: 30 TB * 365 * 5 = ~55 PB
-
--- 39 of 269 --
-
 Tips
 Back-of-the-envelope estimation is all about the process. Solving the problem is more
 important than obtaining results. Interviewers may test your problem-solving skills. Here are
@@ -723,9 +610,6 @@ Congratulations on getting this far! Now give yourself a pat on the back. Good j
 ---
 
 ## [Sección 12] CHAPTER 2: BACK-OF-THE-ENVELOPE ESTIMATION
-
--- 40 of 269 --
-
 Reference materials
 [1] J. Dean.Google Pro Tip: Use Back-Of-The-Envelope-Calculations To Choose The Best
 Design:
@@ -738,9 +622,6 @@ https://aws.amazon.com/compute/sla/
 [5] Compute Engine Service Level Agreement (SLA):
 https://cloud.google.com/compute/sla
 [6] SLA summary for Azure services: https://azure.microsoft.com/enus/support/legal/sla/summary/
-
--- 41 of 269 --
-
 ---
 
 ## [Sección 13] CHAPTER 3: A FRAMEWORK FOR SYSTEM DESIGN
@@ -778,9 +659,6 @@ that ignorance. You certainly do not want to demonstrate this tendency in a syst
 interview. Other red flags include narrow mindedness, stubbornness, etc.
 In this chapter, we will go over some useful tips and introduce a simple and effective
 framework to solve system design interview problems.
-
--- 42 of 269 --
-
 A 4-step process for effective system design interview
 Every system design interview is different. A great system design interview is open-ended
 and there is no one-size-fits-all solution. However, there are steps and common ground to
@@ -826,9 +704,6 @@ Candidate: Is this a mobile app? Or a web app? Or both?
 ---
 
 ## [Sección 14] CHAPTER 3: A FRAMEWORK FOR SYSTEM DESIGN
-
--- 43 of 269 --
-
 Interviewer: Both.
 Candidate: What are the most important features for the product?
 Interviewer: Ability to make a post and see friends’ news feed.
@@ -872,16 +747,10 @@ At the high level, the design is divided into two flows: feed publishing and new
 building.
 • Feed publishing: when a user publishes a post, corresponding data is written into
 cache/database, and the post will be populated into friends’ news feed.
-
--- 44 of 269 --
-
 • Newsfeed building: the news feed is built by aggregating friends’ posts in a reverse
 chronological order.
 Figure 3-1 and Figure 3-2 present high-level designs for feed publishing and news feed
 building flows, respectively.
-
--- 45 of 269 --
-
 Step 3 - Design deep dive
 At this step, you and your interviewer should have already achieved the following objectives:
 • Agreed on the overall goals and feature scope
@@ -902,9 +771,6 @@ demonstrate your abilities. You must be armed with signals to show your intervie
 ---
 
 ## [Sección 15] CHAPTER 3: A FRAMEWORK FOR SYSTEM DESIGN
-
--- 46 of 269 --
-
 to get into unnecessary details. For example, talking about the EdgeRank algorithm of
 Facebook feed ranking in detail is not ideal during a system design interview as this takes
 much precious time and does not prove your ability in designing a scalable system.
@@ -916,10 +782,6 @@ use cases:
 2. News feed retrieval
 Figure 3-3 and Figure 3-4 show the detailed design for the two use cases, which will be
 explained in detail in Chapter 11.
-
--- 47 of 269 --
-
--- 48 of 269 --
 
 Step 4 - Wrap up
 In this final step, the interviewer might ask you a few follow-up questions or give you the
@@ -938,9 +800,6 @@ How to roll out the system?
 current design supports 1 million users, what changes do you need to make to support 10
 million users?
 • Propose other refinements you need if you had more time.
-
--- 49 of 269 --
-
 To wrap up, we summarize a list of the Dos and Don’ts.
 Dos
 • Always ask for clarification. Do not assume your assumption is correct.
@@ -971,9 +830,6 @@ Step 1 Understand the problem and establish design scope: 3 - 10 minutes
 Step 2 Propose high-level design and get buy-in: 10 - 15 minutes
 Step 3 Design deep dive: 10 - 25 minutes
 Step 4 Wrap: 3 - 5 minutes
-
--- 50 of 269 --
-
 ---
 
 ## [Sección 16] CHAPTER 4: DESIGN A RATE LIMITER
@@ -999,9 +855,6 @@ following external APIs: check credit, make a payment, retrieve health records, 
 Limiting the number of calls is essential to reduce costs.
 • Prevent servers from being overloaded. To reduce server load, a rate limiter is used to
 filter out excess requests caused by bots or users’ misbehavior.
-
--- 51 of 269 --
-
 Step 1 - Understand the problem and establish design scope
 Rate limiting can be implemented using different algorithms, each with its pros and cons. The
 interactions between an interviewer and a candidate help to clarify the type of rate limiters we
@@ -1033,9 +886,6 @@ processes.
 • Exception handling. Show clear exceptions to users when their requests are throttled.
 • High fault tolerance. If there are any problems with the rate limiter (for example, a cache
 server goes offline), it does not affect the entire system.
-
--- 52 of 269 --
-
 Step 2 - Propose high-level design and get buy-in
 Let us keep things simple and use a basic client and server model for communication.
 Where to put the rate limiter?
@@ -1056,9 +906,6 @@ response status code indicates a user has sent too many requests.
 ---
 
 ## [Sección 17] CHAPTER 4: DESIGN A RATE LIMITER
-
--- 53 of 269 --
-
 Cloud microservices [4] have become widely popular and rate limiting is usually
 implemented within a component called API gateway. API gateway is a fully managed
 service that supports rate limiting, SSL termination, authentication, IP whitelisting, servicing
@@ -1092,9 +939,6 @@ cases. Here is a list of popular algorithms:
 • Sliding window counter
 Token bucket algorithm
 The token bucket algorithm is widely used for rate limiting. It is simple, well understood and
-
--- 54 of 269 --
-
 commonly used by internet companies. Both Amazon [5] and Stripe [6] use this algorithm to
 throttle their API requests.
 The token bucket algorithm work as follows:
@@ -1107,14 +951,8 @@ tokens in the bucket. Figure 4-5 explains how it works.
 • If there are enough tokens, we take one token out for each request, and the request
 goes through.
 • If there are not enough tokens, the request is dropped.
-
--- 55 of 269 --
-
 Figure 4-6 illustrates how token consumption, refill, and rate limiting logic work. In this
 example, the token bucket size is 4, and the refill rate is 4 per 1 minute.
-
--- 56 of 269 --
-
 The token bucket algorithm takes two parameters:
 • Bucket size: the maximum number of tokens allowed in the bucket
 • Refill rate: number of tokens put into the bucket every second
@@ -1137,9 +975,6 @@ Cons:
 ---
 
 ## [Sección 18] CHAPTER 4: DESIGN A RATE LIMITER
-
--- 57 of 269 --
-
 be challenging to tune them properly.
 Leaking bucket algorithm
 The leaking bucket algorithm is similar to the token bucket except that requests are processed
@@ -1171,9 +1006,6 @@ each window.
 • Each request increments the counter by one.
 • Once the counter reaches the pre-defined threshold, new requests are dropped until a new
 time window starts.
-
--- 58 of 269 --
-
 Let us use a concrete example to see how it works. In Figure 4-8, the time unit is 1 second
 and the system allows a maximum of 3 requests per second. In each second window, if more
 than 3 requests are received, extra requests are dropped as shown in Figure 4-8.
@@ -1186,9 +1018,6 @@ between 2:00:30 and 2:01:30, 10 requests go through. That is twice as many as al
 requests.
 Pros:
 • Memory efficient.
-
--- 59 of 269 --
-
 • Easy to understand.
 • Resetting available quota at the end of a unit time window fits certain use cases.
 Cons:
@@ -1210,9 +1039,6 @@ In this example, the rate limiter allows 2 requests per minute. Usually, Linux t
 stored in the log. However, human-readable representation of time is used in our example for
 better readability.
 • The log is empty when a new request arrives at 1:00:01. Thus, the request is allowed.
-
--- 60 of 269 --
-
 • A new request arrives at 1:00:30, the timestamp 1:00:30 is inserted into the log. After the
 insertion, the log size is 2, not larger than the allowed count. Thus, the request is allowed.
 • A new request arrives at 1:00:50, and the timestamp is inserted into the log. After the
@@ -1244,9 +1070,6 @@ the rolling window and previous window
 ---
 
 ## [Sección 19] CHAPTER 4: DESIGN A RATE LIMITER
-
--- 61 of 269 --
-
 • Using this formula, we get 3 + 5 * 0.7% = 6.5 request. Depending on the use case, the
 number can either be rounded up or down. In our example, it is rounded down to 6.
 Since the rate limiter allows a maximum of 7 requests per minute, the current request can go
@@ -1276,16 +1099,10 @@ automatically deleted.
 Figure 4-12 shows the high-level architecture for rate limiting, and this works as follows:
 • The client sends a request to rate limiting middleware.
 • Rate limiting middleware fetches the counter from the corresponding bucket in Redis and
-
--- 62 of 269 --
-
 checks if the limit is reached or not.
 • If the limit is reached, the request is rejected.
 • If the limit is not reached, the request is sent to API servers. Meanwhile, the system
 increments the counter and saves it back to Redis.
-
--- 63 of 269 --
-
 Step 3 - Design deep dive
 The high-level design in Figure 4-12 does not answer the following questions:
 • How are rate limiting rules created? Where are the rules stored?
@@ -1332,9 +1149,6 @@ When a user has sent too many requests, a 429 too many requests error and X-Rate
 ---
 
 ## [Sección 20] CHAPTER 4: DESIGN A RATE LIMITER
-
--- 64 of 269 --
-
 Retry-After header are returned to the client.
 Detailed design
 Figure 4-13 presents a detailed design of the system.
@@ -1347,9 +1161,6 @@ timestamp from Redis cache. Based on the response, the rate limiter decides:
 • if the request is not rate limited, it is forwarded to API servers.
 • if the request is rate limited, the rate limiter returns 429 too many requests error to
 the client. In the meantime, the request is either dropped or forwarded to the queue.
-
--- 65 of 269 --
-
 Rate limiter in a distributed environment
 Building a rate limiter that works in a single server environment is not difficult. However,
 scaling the system to support multiple servers and concurrent threads is a different story.
@@ -1375,9 +1186,6 @@ Synchronization is another important factor to consider in a distributed environ
 support millions of users, one rate limiter server might not be enough to handle the traffic.
 When multiple rate limiter servers are used, synchronization is required. For example, on the
 left side of Figure 4-15, client 1 sends requests to rate limiter 1, and client 2 sends requests to
-
--- 66 of 269 --
-
 rate limiter 2. As the web tier is stateless, clients can send requests to a different rate limiter
 as shown on the right side of Figure 4-15. If no synchronization happens, rate limiter 1 does
 not contain any data about client 2. Thus, the rate limiter cannot work properly.
@@ -1392,9 +1200,6 @@ located far away from the data center. Most cloud service providers build many e
 locations around the world. For example, as of 5/20 2020, Cloudflare has 194 geographically
 distributed edge servers [14]. Traffic is automatically routed to the closest edge server to
 reduce latency.
-
--- 67 of 269 --
-
 Second, synchronize data with an eventual consistency model. If you are unclear about the
 eventual consistency model, refer to the “Consistency” section in “Chapter 6: Design a Keyvalue Store.”
 Monitoring
@@ -1410,9 +1215,6 @@ replace the algorithm to support burst traffic. Token bucket is a good fit here.
 ---
 
 ## [Sección 21] CHAPTER 4: DESIGN A RATE LIMITER
-
--- 68 of 269 --
-
 Step 4 - Wrap up
 In this chapter, we discussed different algorithms of rate limiting and their pros/cons.
 Algorithms discussed include:
@@ -1440,9 +1242,6 @@ Layer 5: Session layer, Layer 6: Presentation layer, Layer 7: Application layer.
 exceptions.
 • Add sufficient back off time to retry logic.
 Congratulations on getting this far! Now give yourself a pat on the back. Good job!
-
--- 69 of 269 --
-
 Reference materials
 [1] Rate-limiting strategies and techniques: https://cloud.google.com/solutions/rate-limitingstrategies-techniques
 [2] Twitter rate limits: https://developer.twitter.com/en/docs/basics/rate-limits
@@ -1465,9 +1264,6 @@ https://gist.github.com/ptarjan/e38f45f2dfe601419ca3af937fff574d#request-rate-li
 [14] What is edge computing: https://www.cloudflare.com/learning/serverless/glossary/whatis-edge-computing/
 [15] Rate Limit Requests with Iptables: https://blog.programster.org/rate-limit-requests-withiptables
 [16] OSI model: https://en.wikipedia.org/wiki/OSI_model#Layer_architecture
-
--- 70 of 269 --
-
 ---
 
 ## [Sección 22] CHAPTER 5: DESIGN CONSISTENT HASHING
@@ -1475,9 +1271,6 @@ https://gist.github.com/ptarjan/e38f45f2dfe601419ca3af937fff574d#request-rate-li
 To achieve horizontal scaling, it is important to distribute requests/data efficiently and evenly
 across servers. Consistent hashing is a commonly used technique to achieve this goal. But
 first, let us take an in-depth look at the problem.
-
--- 71 of 269 --
-
 The rehashing problem
 If you have n cache servers, a common way to balance the load is to use the following hash
 method:
@@ -1487,9 +1280,6 @@ and 8 string keys with their hashes.
 To fetch the server where a key is stored, we perform the modular operation f(key) % 4. For
 instance, hash(key0) % 4 = 1 means a client must contact server 1 to fetch the cached data.
 Figure 5-1 shows the distribution of keys based on Table 5-1.
-
--- 72 of 269 --
-
 This approach works well when the size of the server pool is fixed, and the data distribution
 is even. However, problems arise when new servers are added, or existing servers are
 removed. For example, if server 1 goes offline, the size of the server pool becomes 3. Using
@@ -1497,16 +1287,10 @@ the same hash function, we get the same hash value for a key. But applying modul
 operation gives us different server indexes because the number of servers is reduced by 1. We
 get the results as shown in Table 5-2 by applying hash % 3:
 Figure 5-2 shows the new distribution of keys based on Table 5-2.
-
--- 73 of 269 --
-
 As shown in Figure 5-2, most keys are redistributed, not just the ones originally stored in the
 offline server (server 1). This means that when server 1 goes offline, most cache clients will
 connect to the wrong servers to fetch data. This causes a storm of cache misses. Consistent
 hashing is an effective technique to mitigate this problem.
-
--- 74 of 269 --
-
 Consistent hashing
 Quoted from Wikipedia: "Consistent hashing is a special kind of hashing such that when a
 hash table is re-sized and consistent hashing is used, only k/n keys need to be remapped on
@@ -1523,17 +1307,11 @@ By collecting both ends, we get a hash ring as shown in Figure 5-4:
 Hash servers
 Using the same hash function f, we map servers based on server IP or name onto the ring.
 Figure 5-5 shows that 4 servers are mapped on the hash ring.
-
--- 75 of 269 --
-
 Hash keys
 One thing worth mentioning is that hash function used here is different from the one in “the
 rehashing problem,” and there is no modular operation. As shown in Figure 5-6, 4 cache keys
 (key0, key1, key2, and key3) are hashed onto the hash ring
 Server lookup
-
--- 76 of 269 --
-
 To determine which server a key is stored on, we go clockwise from the key position on the
 ring until a server is found. Figure 5-7 explains this process. Going clockwise, key0 is stored
 on server 0; key1 is stored on server 1; key2 is stored on server 2 and key3 is stored on server
@@ -1550,16 +1328,10 @@ not redistributed based on consistent hashing algorithm.
 ---
 
 ## [Sección 23] CHAPTER 5: DESIGN CONSISTENT HASHING
-
--- 77 of 269 --
-
 Remove a server
 When a server is removed, only a small fraction of keys require redistribution with consistent
 hashing. In Figure 5-9, when server 1 is removed, only key1 must be remapped to server 2.
 The rest of the keys are unaffected.
-
--- 78 of 269 --
-
 Two issues in the basic approach
 The consistent hashing algorithm was introduced by Karger et al. at MIT [1]. The basic steps
 are:
@@ -1572,9 +1344,6 @@ partition is the hash space between adjacent servers. It is possible that the si
 partitions on the ring assigned to each server is very small or fairly large. In Figure 5-10, if s1
 is removed, s2’s partition (highlighted with the bidirectional arrows) is twice as large as s0
 and s3’s partition.
-
--- 79 of 269 --
-
 Second, it is possible to have a non-uniform key distribution on the ring. For instance, if
 servers are mapped to positions listed in Figure 5-11, most of the keys are stored on server 2.
 However, server 1 and server 3 have no data.
@@ -1582,9 +1351,6 @@ A technique called virtual nodes or replicas is used to solve these problems.
 Virtual nodes
 A virtual node refers to the real node, and each server is represented by multiple virtual nodes
 on the ring. In Figure 5-12, both server 0 and server 1 have 3 virtual nodes. The 3 is
-
--- 80 of 269 --
-
 arbitrarily chosen; and in real-world systems, the number of virtual nodes is much larger.
 Instead of using s0, we have s0_0, s0_1, and s0_2 to represent server 0 on the ring. Similarly,
 s1_0, s1_1, and s1_2 represent server 1 on the ring. With virtual nodes, each server is
@@ -1593,9 +1359,6 @@ On the other hand, partitions with label s1 are managed by server 1.
 To find which server a key is stored on, we go clockwise from the key’s location and find the
 first virtual node encountered on the ring. In Figure 5-13, to find out which server k0 is stored
 on, we go clockwise from k0’s location and find virtual node s1_1, which refers to server 1.
-
--- 81 of 269 --
-
 As the number of virtual nodes increases, the distribution of keys becomes more balanced.
 This is because the standard deviation gets smaller with more virtual nodes, leading to
 balanced data distribution. Standard deviation measures how data are spread out. The
@@ -1610,16 +1373,9 @@ find the affected range to redistribute the keys?
 In Figure 5-14, server 4 is added onto the ring. The affected range starts from s4 (newly
 added node) and moves anticlockwise around the ring until a server is found (s3). Thus, keys
 located between s3 and s4 need to be redistributed to s4.
-
--- 82 of 269 --
-
 When a server (s1) is removed as shown in Figure 5-15, the affected range starts from s1
 (removed node) and moves anticlockwise around the ring until a server is found (s0). Thus,
 keys located between s0 and s1 must be redistributed to s2.
-
--- 83 of 269 --
-
--- 84 of 269 --
 
 Wrap up
 In this chapter, we had an in-depth discussion about consistent hashing, including why it is
@@ -1641,9 +1397,6 @@ Congratulations on getting this far! Now give yourself a pat on the back. Good j
 ---
 
 ## [Sección 24] CHAPTER 5: DESIGN CONSISTENT HASHING
-
--- 85 of 269 --
-
 Reference materials
 [1] Consistent hashing: https://en.wikipedia.org/wiki/Consistent_hashing
 [2] Consistent Hashing:
@@ -1658,9 +1411,6 @@ https://blog.discord.com/scaling-elixir-f9b8e1e7c29b
 Hashing: http://theory.stanford.edu/~tim/s16/l/l1.pdf
 [7] Maglev: A Fast and Reliable Software Network Load Balancer:
 https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/44824.pdf
-
--- 86 of 269 --
-
 ---
 
 ## [Sección 25] CHAPTER 6: DESIGN A KEY-VALUE STORE
@@ -1681,9 +1431,6 @@ In this chapter, you are asked to design a key-value store that supports the fol
 operations:
 - put(key, value) // insert “value” associated with “key”
 - get(key) // get “value” associated with “key”
-
--- 87 of 269 --
-
 Understand the problem and establish design scope
 There is no perfect design. Each design achieves a specific balance regarding the tradeoffs of
 the read, write, and memory usage. Another tradeoff has to be made was between consistency
@@ -1696,9 +1443,6 @@ characteristics:
 • Automatic scaling: The addition/deletion of servers should be automatic based on traffic.
 • Tunable consistency.
 • Low latency.
-
--- 88 of 269 --
-
 Single server key-value store
 Developing a key-value store that resides in a single server is easy. An intuitive approach is
 to store key-value pairs in a hash table, which keeps everything in memory. Even though
@@ -1708,9 +1452,6 @@ constraint. Two optimizations can be done to fit more data in a single server:
 • Store only frequently used data in memory and the rest on disk
 Even with these optimizations, a single server can reach its capacity very quickly. A
 distributed key-value store is required to support big data.
-
--- 89 of 269 --
-
 Distributed key-value store
 A distributed key-value store is also called a distributed hash table, which distributes keyvalue pairs across many servers. When designing a distributed system, it is important to
 understand CAP (Consistency, Availability, Partition Tolerance) theorem.
@@ -1732,9 +1473,6 @@ consistency and partition tolerance while sacrificing availability.
 AP (availability and partition tolerance) systems: an AP key-value store supports
 availability and partition tolerance while sacrificing consistency.
 CA (consistency and availability) systems: a CA key-value store supports consistency and
-
--- 90 of 269 --
-
 availability while sacrificing partition tolerance. Since network failure is unavoidable, a
 distributed system must tolerate network partition. Thus, a CA system cannot exist in realworld applications.
 What you read above is mostly the definition part. To make it easier to understand, let us take
@@ -1753,9 +1491,6 @@ data.
 ---
 
 ## [Sección 26] CHAPTER 6: DESIGN A KEY-VALUE STORE
-
--- 91 of 269 --
-
 If we choose consistency over availability (CP system), we must block all write operations to
 n1 and n2 to avoid data inconsistency among these three servers, which makes the system
 unavailable. Bank systems usually have extremely high consistent requirements. For
@@ -1779,9 +1514,6 @@ key-value store:
 • System architecture diagram
 • Write path
 • Read path
-
--- 92 of 269 --
-
 The content below is largely based on three popular key-value store systems: Dynamo [4],
 Cassandra [5], and BigTable [6].
 Data partition
@@ -1798,9 +1530,6 @@ s1, …, s7, are placed on the hash ring.
 while moving in the clockwise direction. For instance, key0 is stored in s1 using this logic.
 Using consistent hashing to partition data has the following advantages:
 Automatic scaling: servers could be added and removed automatically depending on the
-
--- 93 of 269 --
-
 load.
 Heterogeneity: the number of virtual nodes for a server is proportional to the server capacity.
 For example, servers with higher capacity are assigned with more virtual nodes.
@@ -1816,9 +1545,6 @@ walk logic.
 Nodes in the same data center often fail at the same time due to power outages, network
 issues, natural disasters, etc. For better reliability, replicas are placed in distinct data centers,
 and data centers are connected through high-speed networks.
-
--- 94 of 269 --
-
 Consistency
 Since data is replicated at multiple nodes, it must be synchronized across replicas. Quorum
 consensus can guarantee consistency for both read and write operations. Let us establish a
@@ -1845,9 +1571,6 @@ If W + R > N, strong consistency is guaranteed because there must be at least on
 ---
 
 ## [Sección 27] CHAPTER 6: DESIGN A KEY-VALUE STORE
-
--- 95 of 269 --
-
 overlapping node that has the latest data to ensure consistency.
 How to configure N, W, and R to fit our use cases? Here are some of the possible setups:
 If R = 1 and W = N, the system is optimized for a fast read.
@@ -1872,9 +1595,6 @@ consistency, which is our recommended consistency model for our key-value store.
 concurrent writes, eventual consistency allows inconsistent values to enter the system and
 force the client to read the values to reconcile. The next section explains how reconciliation
 works with versioning.
-
--- 96 of 269 --
-
 Inconsistency resolution: versioning
 Replication gives high availability but causes inconsistencies among replicas. Versioning and
 vector locks are used to solve inconsistency problems. Versioning means treating each data
@@ -1890,9 +1610,6 @@ it. However, there is no clear way to resolve the conflict of the last two versi
 this issue, we need a versioning system that can detect conflicts and reconcile conflicts. A
 vector clock is a common technique to solve this problem. Let us examine how vector clocks
 work.
-
--- 97 of 269 --
-
 A vector clock is a [server, version] pair associated with a data item. It can be used to check
 if one version precedes, succeeds, or in conflict with others.
 Assume a vector clock is represented by D([S1, v1], [S2, v2], …, [Sn, vn]), where D is a data
@@ -1913,9 +1630,6 @@ is handled by server Sy, which now has vector clock D3([Sx, 2], [Sy, 1])).
 ---
 
 ## [Sección 28] CHAPTER 6: DESIGN A KEY-VALUE STORE
-
--- 98 of 269 --
-
 is handled by server Sz, which now has D4([Sx, 2], [Sz, 1])).
 5. When another client reads D3 and D4, it discovers a conflict, which is caused by data
 item D2 being modified by both Sy and Sz. The conflict is resolved by the client and
@@ -1948,9 +1662,6 @@ server says so. Usually, it requires at least two independent sources of informa
 server down.
 As shown in Figure 6-10, all-to-all multicasting is a straightforward solution. However, this is
 inefficient when many servers are in the system.
-
--- 99 of 269 --
-
 A better solution is to use decentralized failure detection methods like gossip protocol.
 Gossip protocol works as follows:
 • Each node maintains a node membership list, which contains member IDs and heartbeat
@@ -1962,9 +1673,6 @@ propagate to another set of nodes.
 • If the heartbeat has not increased for more than predefined periods, the member is
 considered as offline.
 As shown in Figure 6-11:
-
--- 100 of 269 --
-
 • Node s0 maintains a node membership list shown on the left side.
 • Node s0 notices that node s2’s (member ID = 2) heartbeat counter has not increased for a
 long time.
@@ -1987,9 +1695,6 @@ Handling permanent failures
 ---
 
 ## [Sección 29] CHAPTER 6: DESIGN A KEY-VALUE STORE
-
--- 101 of 269 --
-
 Hinted handoff is used to handle temporary failures. What if a replica is permanently
 unavailable? To handle such a situation, we implement an anti-entropy protocol to keep
 replicas in sync. Anti-entropy involves comparing each piece of data on replicas and updating
@@ -2006,9 +1711,6 @@ Step 2: Once the buckets are created, hash each key in a bucket using a uniform 
 method (Figure 6-14).
 Step 3: Create a single hash node per bucket (Figure 6-15).
 Step 4: Build the tree upwards till root by calculating hashes of children (Figure 6-16).
-
--- 102 of 269 --
-
 To compare two Merkle trees, start by comparing the root hashes. If root hashes match, both
 servers have the same data. If root hashes disagree, then the left child hashes are compared
 followed by right child hashes. You can traverse the tree to find which buckets are not
@@ -2022,9 +1724,6 @@ Data center outage could happen due to power outage, network outage, natural dis
 To build a system capable of handling data center outage, it is important to replicate data
 across multiple data centers. Even if a data center is completely offline, users can still access
 data through the other data centers.
-
--- 103 of 269 --
-
 System architecture diagram
 Now that we have discussed different technical considerations in designing a key-value store,
 we can shift our focus on the architecture diagram, shown in Figure 6-17.
@@ -2037,18 +1736,12 @@ value).
 • Data is replicated at multiple nodes.
 • There is no single point of failure as every node has the same set of responsibilities.
 As the design is decentralized, each node performs many tasks as presented in Figure 6-18.
-
--- 104 of 269 --
-
 Write path
 Figure 6-19 explains what happens after a write request is directed to a specific node. Please
 note the proposed designs for write/read paths are primary based on the architecture of
 Cassandra [8].
 1. The write request is persisted on a commit log file.
 2. Data is saved in the memory cache.
-
--- 105 of 269 --
-
 3. When the memory cache is full or reaches a predefined threshold, data is flushed to
 SSTable [9] on disk. Note: A sorted-string table (SSTable) is a sorted list of <key, value>
 pairs. For readers interested in learning more about SStable, refer to the reference material
@@ -2066,22 +1759,13 @@ The read path is shown in Figure 6-21 when data is not in memory.
 ---
 
 ## [Sección 30] CHAPTER 6: DESIGN A KEY-VALUE STORE
-
--- 106 of 269 --
-
 3. The bloom filter is used to figure out which SSTables might contain the key.
 4. SSTables return the result of the data set.
 5. The result of the data set is returned to the client.
-
--- 107 of 269 --
-
 Summary
 This chapter covers many concepts and techniques. To refresh your memory, the following
 table summarizes features and corresponding techniques used for a distributed key-value
 store.
-
--- 108 of 269 --
-
 Reference materials
 [1] Amazon DynamoDB: https://aws.amazon.com/dynamodb/
 [2] memcached: https://memcached.org/
@@ -2095,9 +1779,6 @@ https://static.googleusercontent.com/media/research.google.com/en//archive/bigta
 [8] Cassandra architecture: https://cassandra.apache.org/doc/latest/architecture/
 [9] SStable: https://www.igvita.com/2012/02/06/sstable-and-log-structured-storage-leveldb/
 [10] Bloom filter https://en.wikipedia.org/wiki/Bloom_filter
-
--- 109 of 269 --
-
 ---
 
 ## [Sección 31] CHAPTER 7: DESIGN A UNIQUE ID GENERATOR IN
@@ -2109,9 +1790,6 @@ database. However, auto_increment does not work in a distributed environment bec
 single database server is not large enough and generating unique IDs across multiple
 databases with minimal delay is challenging.
 Here are a few examples of unique IDs:
-
--- 110 of 269 --
-
 Step 1 - Understand the problem and establish design scope
 Asking clarification questions is the first step to tackle any system design interview question.
 Here is an example of candidate-interviewer interaction:
@@ -2134,9 +1812,6 @@ requirements are listed as follows:
 • IDs fit into 64-bit.
 • IDs are ordered by date.
 • Ability to generate over 10,000 unique IDs per second.
-
--- 111 of 269 --
-
 Step 2 - Propose high-level design and get buy-in
 Multiple options can be used to generate unique IDs in distributed systems. The options we
 considered are:
@@ -2163,9 +1838,6 @@ Quoted from Wikipedia, “after generating 1 billion UUIDs every second for appr
 Here is an example of UUID: 09c93e62-50b4-468d-bf8a-c07e1040bfb2. UUIDs can be
 generated independently without coordination between servers. Figure 7-3 presents the
 UUIDs design.
-
--- 112 of 269 --
-
 In this design, each web server contains an ID generator, and a web server is responsible for
 generating IDs independently.
 Pros:
@@ -2191,9 +1863,6 @@ Cons:
 ---
 
 ## [Sección 32] CHAPTER 7: DESIGN A UNIQUE ID GENERATOR IN
-
--- 113 of 269 --
-
 • Single point of failure. Single ticket server means if the ticket server goes down, all
 systems that depend on it will face issues. To avoid a single point of failure, we can set up
 multiple ticket servers. However, this will introduce new challenges such as data
@@ -2214,9 +1883,6 @@ snowflake default epoch 1288834974657, equivalent to Nov 04, 2010, 01:42:54 UTC.
 • Machine ID: 5 bits, which gives us 2 ^ 5 = 32 machines per datacenter.
 • Sequence number: 12 bits. For every ID generated on that machine/process, the sequence
 number is incremented by 1. The number is reset to 0 every millisecond.
-
--- 114 of 269 --
-
 Step 3 - Design deep dive
 In the high-level design, we discussed various options to design a unique ID generator in
 distributed systems. We settle on an approach that is based on the Twitter snowflake ID
@@ -2231,9 +1897,6 @@ The most important 41 bits make up the timestamp section. As timestamps grow wit
 IDs are sortable by time. Figure 7-7 shows an example of how binary representation is
 converted to UTC. You can also convert UTC back to binary representation using a similar
 method.
-
--- 115 of 269 --
-
 The maximum timestamp that can be represented in 41 bits is
 2 ^ 41 - 1 = 2199023255551 milliseconds (ms), which gives us: ~ 69 years =
 2199023255551 ms / 1000 seconds / 365 days / 24 hours/ 3600 seconds. This means the ID
@@ -2244,9 +1907,6 @@ Sequence number
 Sequence number is 12 bits, which give us 2 ^ 12 = 4096 combinations. This field is 0 unless
 more than one ID is generated in a millisecond on the same server. In theory, a machine can
 support a maximum of 4096 new IDs per millisecond.
-
--- 116 of 269 --
-
 Step 4 - Wrap up
 In this chapter, we discussed different approaches to design a unique ID generator: multimaster replication, UUID, ticket server, and Twitter snowflake-like unique ID generator. We
 settle on snowflake as it supports all our use cases and is scalable in a distributed
@@ -2267,27 +1927,18 @@ Congratulations on getting this far! Now give yourself a pat on the back. Good j
 ---
 
 ## [Sección 33] CHAPTER 7: DESIGN A UNIQUE ID GENERATOR IN
-
--- 117 of 269 --
-
 Reference materials
 [1] Universally unique identifier: https://en.wikipedia.org/wiki/Universally_unique_identifier
 [2] Ticket Servers: Distributed Unique Primary Keys on the Cheap:
 https://code.flickr.net/2010/02/08/ticket-servers-distributed-unique-primary-keys-on-thecheap/
 [3] Announcing Snowflake: https://blog.twitter.com/engineering/en_us/a/2010/announcingsnowflake.html
 [4] Network time protocol: https://en.wikipedia.org/wiki/Network_Time_Protocol
-
--- 118 of 269 --
-
 ---
 
 ## [Sección 34] CHAPTER 8: DESIGN A URL SHORTENER
 
 In this chapter, we will tackle an interesting and classic system design interview question:
 designing a URL shortening service like tinyurl.
-
--- 119 of 269 --
-
 Step 1 - Understand the problem and establish design scope
 System design interview questions are intentionally left open-ended. To design a well-crafted
 system, it is critical to ask clarification questions.
@@ -2319,9 +1970,6 @@ operation per second: 1160 * 10 = 11,600
 • Storage requirement over 10 years: 365 billion * 100 bytes * 10 years = 365 TB
 It is important for you to walk through the assumptions and calculations with your
 interviewer so that both of you are on the same page.
-
--- 120 of 269 --
-
 Step 2 - Propose high-level design and get buy-in
 In this section, we discuss the API endpoints, URL redirecting, and URL shortening flows.
 API Endpoints
@@ -2342,9 +1990,6 @@ URL redirecting
 Figure 8-1 shows what happens when you enter a tinyurl onto the browser. Once the server
 receives a tinyurl request, it changes the short URL to the long URL with 301 redirect.
 The detailed communication between clients and servers is shown in Figure 8-2.
-
--- 121 of 269 --
-
 One thing worth discussing here is 301 redirect vs 302 redirect.
 301 redirect. A 301 redirect shows that the requested URL is “permanently” moved to the
 long URL. Since it is permanently redirected, the browser caches the response, and
@@ -2370,16 +2015,10 @@ hashValue, as shown in Figure 8-3.
 ---
 
 ## [Sección 35] CHAPTER 8: DESIGN A URL SHORTENER
-
--- 122 of 269 --
-
 The hash function must satisfy the following requirements:
 • Each longURL must be hashed to one hashValue.
 • Each hashValue can be mapped back to the longURL.
 Detailed design for the hash function is discussed in deep dive.
-
--- 123 of 269 --
-
 Step 3 - Design deep dive
 Up until now, we have discussed the high-level design of URL shortening and URL
 redirecting. In this section, we dive deep into the following: data model, hash function, URL
@@ -2398,9 +2037,6 @@ possible characters. To figure out the length of hashValue, find the smallest n 
 ≥ 365 billion. The system must support up to 365 billion URLs based on the back of the
 envelope estimation. Table 8-1 shows the length of hashValue and the corresponding
 maximal number of URLs it can support.
-
--- 124 of 269 --
-
 When n = 7, 62 ^ n = ~3.5 trillion, 3.5 trillion is more than enough to hold 365 billion URLs,
 so the length of hashValue is 7.
 We will explore two types of hash functions for a URL shortener. The first one is “hash +
@@ -2415,9 +2051,6 @@ characters). How can we make it shorter?
 The first approach is to collect the first 7 characters of a hash value; however, this method
 can lead to hash collisions. To resolve hash collisions, we can recursively append a new
 predefined string until no more collision is discovered. This process is explained in Figure 8-
-
--- 125 of 269 --
-
 5.
 This method can eliminate collision; however, it is expensive to query the database to check
 if a shortURL exists for every request. A technique called bloom filters [2] can improve
@@ -2434,9 +2067,6 @@ example to explain how the conversion works: convert 1115710 to base 62 represen
 etc.
 • 1115710 = 2 x 622 + 55 x 621 + 59 x 620 = [2, 55, 59] -> [2, T, X] in base 62
 representation. Figure 8-6 shows the conversation process.
-
--- 126 of 269 --
-
 • Thus, the short URL is https://tinyurl.com /2TX
 Comparison of the two approaches
 Table 8-3 shows the differences of the two approaches.
@@ -2448,9 +2078,6 @@ diagram (Figure 8-7) to demonstrate the flow.
 ---
 
 ## [Sección 36] CHAPTER 8: DESIGN A URL SHORTENER
-
--- 127 of 269 --
-
 1. longURL is the input.
 2. The system checks if the longURL is in the database.
 3. If it is, it means the longURL was converted to shortURL before. In this case, fetch the
@@ -2467,9 +2094,6 @@ converted to “zn9edcu”.
 • Save ID, shortURL, and longURL to the database as shown in Table 8-4.
 The distributed unique ID generator is worth mentioning. Its primary function is to generate
 globally unique IDs, which are used for creating shortURLs. In a highly distributed
-
--- 128 of 269 --
-
 environment, implementing a unique ID generator is challenging. Luckily, we have already
 discussed a few solutions in “Chapter 7: Design A Unique ID Generator in Distributed
 Systems”. You can refer back to it to refresh your memory.
@@ -2483,9 +2107,6 @@ The flow of URL redirecting is summarized as follows:
 4. If a shortURL is not in the cache, fetch the longURL from the database. If it is not in the
 database, it is likely a user entered an invalid shortURL.
 5. The longURL is returned to the user.
-
--- 129 of 269 --
-
 Step 4 - Wrap up
 In this chapter, we talked about the API design, data model, hash function, URL shortening,
 and URL redirecting.
@@ -2504,15 +2125,9 @@ people click on a link? When do they click the link? etc.
 system’s success. We discussed them in detail in Chapter 1, please refresh your memory
 on these topics.
 Congratulations on getting this far! Now give yourself a pat on the back. Good job!
-
--- 130 of 269 --
-
 Reference materials
 [1] A RESTful Tutorial: https://www.restapitutorial.com/index.html
 [2] Bloom filter: https://en.wikipedia.org/wiki/Bloom_filter
-
--- 131 of 269 --
-
 ---
 
 ## [Sección 37] CHAPTER 9: DESIGN A WEB CRAWLER
@@ -2531,9 +2146,6 @@ crawler behind the Google search engine.
 data for future uses. For instance, many national libraries run crawlers to archive web
 sites. Notable examples are the US Library of Congress [1] and the EU web archive [2].
 • Web mining: The explosive growth of the web presents an unprecedented opportunity for
-
--- 132 of 269 --
-
 data mining. Web mining helps to discover useful knowledge from the internet. For
 example, top financial firms use crawlers to download shareholder meetings and annual
 reports to learn key company initiatives.
@@ -2544,9 +2156,6 @@ The complexity of developing a web crawler depends on the scale we intend to sup
 could be either a small school project, which takes only a few hours to complete or a gigantic
 project that requires continuous improvement from a dedicated engineering team. Thus, we
 will explore the scale and features to support below.
-
--- 133 of 269 --
-
 Step 1 - Understand the problem and establish design scope
 The basic algorithm of a web crawler is simple:
 1. Given a set of URLs, download all the web pages addressed by the URLs.
@@ -2593,9 +2202,6 @@ communicate with the interviewer to be on the same page.
 ---
 
 ## [Sección 38] CHAPTER 9: DESIGN A WEB CRAWLER
-
--- 134 of 269 --
-
 • QPS: 1,000,000,000 / 30 days / 24 hours / 3600 seconds = ~400 pages per second.
 • Peak QPS = 2 * QPS = 800
 • Assume the average web page size is 500k.
@@ -2603,9 +2209,6 @@ communicate with the interviewer to be on the same page.
 storage units, go through “Power of 2” section in Chapter 2 again.
 • Assuming data are stored for five years, 500 TB * 12 months * 5 years = 30 PB. A 30 PB
 storage is needed to store five-year content.
-
--- 135 of 269 --
-
 Step 2 - Propose high-level design and get buy-in
 Once the requirements are clear, we move on to the high-level design. Inspired by previous
 studies on web crawling [4] [5], we propose a high-level design as shown in Figure 9-2.
@@ -2627,9 +2230,6 @@ Most modern web crawlers split the crawl state into two: to be downloaded and al
 downloaded. The component that stores URLs to be downloaded is called the URL Frontier.
 You can refer to this as a First-in-First-out (FIFO) queue. For detailed information about the
 URL Frontier, refer to the deep dive.
-
--- 136 of 269 --
-
 HTML Downloader
 The HTML downloader downloads web pages from the internet. Those URLs are provided
 by the URL Frontier.
@@ -2660,9 +2260,6 @@ URL Extractor
 URL Extractor parses and extracts links from HTML pages. Figure 9-3 shows an example of
 a link extraction process. Relative paths are converted to absolute URLs by adding the
 “https://en.wikipedia.org” prefix.
-
--- 137 of 269 --
-
 URL Filter
 The URL filter excludes certain content types, file extensions, error links and URLs in
 “blacklisted” sites.
@@ -2684,9 +2281,6 @@ diagram as shown in Figure 9-4.
 ---
 
 ## [Sección 39] CHAPTER 9: DESIGN A WEB CRAWLER
-
--- 138 of 269 --
-
 Step 1: Add seed URLs to the URL Frontier
 Step 2: HTML Downloader fetches a list of URLs from URL Frontier.
 Step 3: HTML Downloader gets IP addresses of URLs from DNS resolver and starts
@@ -2704,9 +2298,6 @@ Step 9: After links are filtered, they are passed to the “URL Seen?” compone
 Step 10: “URL Seen” component checks if a URL is already in the storage, if yes, it is
 processed before, and nothing needs to be done.
 Step 11: If a URL has not been processed before, it is added to the URL Frontier.
-
--- 139 of 269 --
-
 Step 3 - Design deep dive
 Up until now, we have discussed the high-level design. Next, we will discuss the most
 important building components and techniques in depth:
@@ -2728,9 +2319,6 @@ implementation has two problems:
 the links in wikipedia.com are internal links, making the crawler busy processing URLs
 from the same host (wikipedia.com). When the crawler tries to download web pages in
 parallel, Wikipedia servers will be flooded with requests. This is considered as “impolite”.
-
--- 140 of 269 --
-
 • Standard BFS does not take the priority of a URL into consideration. The web is large
 and not every page has the same level of quality and importance. Therefore, we may want
 to prioritize URLs according to their page ranks, web traffic, update frequency, etc.
@@ -2750,9 +2338,6 @@ host. A delay can be added between two download tasks. The politeness constraint
 implemented by maintain a mapping from website hostnames to download (worker) threads.
 Each downloader thread has a separate FIFO queue and only downloads URLs obtained from
 that queue. Figure 9-6 shows the design that manages politeness.
-
--- 141 of 269 --
-
 • Queue router: It ensures that each queue (b1, b2, … bn) only contains URLs from the
 same host.
 • Mapping table: It maps each host to a queue.
@@ -2773,9 +2358,6 @@ Figure 9-7 shows the design that manages URL priority.
 ---
 
 ## [Sección 40] CHAPTER 9: DESIGN A WEB CRAWLER
-
--- 142 of 269 --
-
 • Prioritizer: It takes URLs as input and computes the priorities.
 • Queue f1 to fn: Each queue has an assigned priority. Queues with high priority are
 selected with higher probability.
@@ -2784,15 +2366,9 @@ priority.
 Figure 9-8 presents the URL frontier design, and it contains two modules:
 • Front queues: manage prioritization
 • Back queues: manage politeness
-
--- 143 of 269 --
-
 Freshness
 Web pages are constantly being added, deleted, and edited. A web crawler must periodically
 recrawl downloaded pages to keep our data set fresh. Recrawl all the URLs is timeconsuming and resource intensive. Few strategies to optimize freshness are listed as follows:
-
--- 144 of 269 --
-
 • Recrawl based on web pages’ update history.
 • Prioritize URLs and recrawl important pages first and more frequently.
 Storage for URL Frontier
@@ -2829,9 +2405,6 @@ Below is a list of performance optimizations for HTML downloader.
 To achieve high performance, crawl jobs are distributed into multiple servers, and each server
 runs multiple threads. The URL space is partitioned into smaller pieces; so, each downloader
 is responsible for a subset of the URLs. Figure 9-9 shows an example of a distributed crawl.
-
--- 145 of 269 --
-
 2. Cache DNS Resolver
 DNS Resolver is a bottleneck for crawlers because DNS requests might take time due to the
 synchronous nature of many DNS interfaces. DNS response time ranges from 10ms to
@@ -2861,9 +2434,6 @@ data.
 ---
 
 ## [Sección 41] CHAPTER 9: DESIGN A WEB CRAWLER
-
--- 146 of 269 --
-
 crawler must handle exceptions gracefully without crashing the system.
 • Data validation: This is an important measure to prevent system errors.
 Extensibility
@@ -2886,17 +2456,11 @@ www.spidertrapexample.com/foo/bar/foo/bar/foo/bar/…
 Such spider traps can be avoided by setting a maximal length for URLs. However, no onesize-fits-all solution exists to detect spider traps. Websites containing spider traps are easy to
 identify due to an unusually large number of web pages discovered on such websites. It is
 hard to develop automatic algorithms to avoid spider traps; however, a user can manually
-
--- 147 of 269 --
-
 verify and identify a spider trap, and either exclude those websites from the crawler or apply
 some customized URL filters.
 3. Data noise
 Some of the contents have little or no value, such as advertisements, code snippets, spam
 URLs, etc. Those contents are not useful for crawlers and should be excluded if possible.
-
--- 148 of 269 --
-
 Step 4 - Wrap up
 In this chapter, we first discussed the characteristics of a good crawler: scalability, politeness,
 extensibility, and robustness. Then, we proposed a design and discussed key components.
@@ -2919,9 +2483,6 @@ memory on these topics.
 • Analytics: Collecting and analyzing data are important parts of any system because data
 is key ingredient for fine-tuning.
 Congratulations on getting this far! Now give yourself a pat on the back. Good job!
-
--- 149 of 269 --
-
 Reference materials
 [1] US Library of Congress: https://www.loc.gov/websites/
 [2] EU Web Archive: http://data.europa.eu/webarchive
@@ -2953,9 +2514,6 @@ and beyond,” in Proceedings of the 17th International World Wide Web Conferenc
 ---
 
 ## [Sección 42] CHAPTER 9: DESIGN A WEB CRAWLER
-
--- 150 of 269 --
-
 ---
 
 ## [Sección 43] CHAPTER 10: DESIGN A NOTIFICATION SYSTEM
@@ -2967,9 +2525,6 @@ In this chapter, you are asked to design a notification system.
 A notification is more than just mobile push notification. Three types of notification formats
 are: mobile push notification, SMS message, and Email. Figure 10-1 shows an example of
 each of these notifications.
-
--- 151 of 269 --
-
 Step 1 - Understand the problem and establish design scope
 Building a scalable system that sends out millions of notifications a day is not an easy task. It
 requires a deep understanding of the notification ecosystem. The interview question is
@@ -2982,7 +2537,7 @@ Interviewer: Let us say it is a soft real-time system. We want a user to receive
 as soon as possible. However, if the system is under a high workload, a slight delay is
 acceptable.
 Candidate: What are the supported devices?
-Interviewer: iOS devices, android devices, and laptop/desktop.
+Interviewer: iOS devices, Web Platform devices, and laptop/desktop.
 Candidate: What triggers notifications?
 Interviewer: Notifications can be triggered by client applications. They can also be
 scheduled on the server-side.
@@ -2991,12 +2546,9 @@ Interviewer: Yes, users who choose to opt-out will no longer receive notificatio
 Candidate: How many notifications are sent out each day?
 Interviewer: 10 million mobile push notifications, 1 million SMS messages, and 5 million
 emails.
-
--- 152 of 269 --
-
 Step 2 - Propose high-level design and get buy-in
 This section shows the high-level design that supports various notification types: iOS push
-notification, Android push notification, SMS message, and Email. It is structured as follows:
+notification, Web Platform push notification, SMS message, and Email. It is structured as follows:
 • Different types of notifications
 • Contact info gathering flow
 • Notification sending/receiving flow
@@ -3013,12 +2565,9 @@ example:
 • APNS: This is a remote service provided by Apple to propagate push notifications to iOS
 devices.
 • iOS Device: It is the end client, which receives push notifications.
-Android push notification
-Android adopts a similar notification flow. Instead of using APNs, Firebase Cloud Messaging
-(FCM) is commonly used to send push notifications to android devices.
-
--- 153 of 269 --
-
+Web Platform push notification
+Web Platform adopts a similar notification flow. Instead of using APNs, Firebase Cloud Messaging
+(FCM) is commonly used to send push notifications to Web Platform devices.
 SMS message
 For SMS messages, third party SMS services like Twilio [1], Nexmo [2], and many others are
 commonly used. Most of them are commercial services.
@@ -3027,9 +2576,6 @@ Although companies can set up their own email servers, many of them opt for comm
 email services. Sendgrid [3] and Mailchimp [4] are among the most popular email services,
 which offer a better delivery rate and data analytics.
 Figure 10-6 shows the design after including all the third-party services.
-
--- 154 of 269 --
-
 Contact info gathering flow
 To send notifications, we need to gather mobile device tokens, phone numbers, or email
 addresses. As shown in Figure 10-7, when a user installs our app or signs up for the first time,
@@ -3040,9 +2586,6 @@ numbers are stored in the user table, whereas device tokens are stored in the de
 ---
 
 ## [Sección 44] CHAPTER 10: DESIGN A NOTIFICATION SYSTEM
-
--- 155 of 269 --
-
 user can have multiple devices, indicating that a push notification can be sent to all the user
 devices.
 Notification sending/receiving flow
@@ -3053,9 +2596,6 @@ Service 1 to N: A service can be a micro-service, a cron job, or a distributed s
 triggers notification sending events. For example, a billing service sends emails to remind
 customers of their due payment or a shopping website tells customers that their packages will
 be delivered tomorrow via SMS messages.
-
--- 156 of 269 --
-
 Notification system: The notification system is the centerpiece of sending/receiving
 notifications. Starting with something simple, only one notification server is used. It provides
 APIs for services 1 to N, and builds notification payloads for third party services.
@@ -3066,7 +2606,7 @@ unplugging of a third-party service. Another important consideration is that a t
 service might be unavailable in new markets or in the future. For instance, FCM is
 unavailable in China. Thus, alternative third-party services such as Jpush, PushY, etc are used
 there.
-iOS, Android, SMS, Email: Users receive notifications on their devices.
+iOS, Web Platform, SMS, Email: Users receive notifications on their devices.
 Three problems are identified in this design:
 • Single point of failure (SPOF): A single notification server means SPOF.
 • Hard to scale: The notification system handles everything related to push notifications in
@@ -3082,9 +2622,6 @@ After enumerating challenges in the initial design, we improve the design as lis
 • Add more notification servers and set up automatic horizontal scaling.
 • Introduce message queues to decouple the system components.
 Figure 10-10 shows the improved high-level design.
-
--- 157 of 269 --
-
 The best way to go through the above diagram is from left to right:
 Service 1 to N: They represent different services that send notifications via APIs provided by
 notification servers.
@@ -3097,9 +2634,6 @@ or by verified clients to prevent spams.
 Here is an example of the API to send an email:
 POST https://api.example.com/v/sms/send
 Request body
-
--- 158 of 269 --
-
 Cache: User info, device info, notification templates are cached.
 DB: It stores data about user, notification, settings, etc.
 Message queues: They remove dependencies between components. Message queues serve as
@@ -3109,7 +2643,7 @@ other notification types.
 Workers: Workers are a list of servers that pull notification events from message queues and
 send them to the corresponding third-party services.
 Third-party services: Already explained in the initial design.
-iOS, Android, SMS, Email: Already explained in the initial design.
+iOS, Web Platform, SMS, Email: Already explained in the initial design.
 Next, let us examine how every component works together to send a notification:
 1. A service calls APIs provided by notification servers to send notifications.
 2. Notification servers fetch metadata such as user info, device token, and notification
@@ -3123,9 +2657,6 @@ iOS push notification event is sent to the iOS PN queue.
 ---
 
 ## [Sección 45] CHAPTER 10: DESIGN A NOTIFICATION SYSTEM
-
--- 159 of 269 --
-
 Step 3 - Design deep dive
 In the high-level design, we discussed different types of notifications, contact info gathering
 flow, and notification sending/receiving flow. We will explore the following in deep dive:
@@ -3157,9 +2688,6 @@ We have discussed how to collect user contact info, send, and receive a notifica
 notification system is a lot more than that. Here we discuss additional components including
 template reusing, notification settings, event tracking, system monitoring, rate limiting, etc.
 Notification template
-
--- 160 of 269 --
-
 A large notification system sends out millions of notifications per day, and many of these
 notifications follow a similar format. Notification templates are introduced to avoid building
 every notification from scratch. A notification template is a preformatted notification to
@@ -3188,7 +2716,7 @@ Retry mechanism
 When a third-party service fails to send a notification, the notification will be added to the
 message queue for retrying. If the problem persists, an alert will be sent out to developers.
 Security in push notifications
-For iOS or Android apps, appKey and appSecret are used to secure push notification APIs
+For iOS or Web Platform apps, appKey and appSecret are used to secure push notification APIs
 [6]. Only authenticated or verified clients are allowed to send push notifications using our
 APIs. Interested users should refer to the reference material [6].
 Monitor queued notifications
@@ -3200,9 +2728,6 @@ example of queued messages to be processed.
 ---
 
 ## [Sección 46] CHAPTER 10: DESIGN A NOTIFICATION SYSTEM
-
--- 161 of 269 --
-
 Figure 10-12
 Events tracking
 Notification metrics, such as open rate, click rate, and engagement are important in
@@ -3211,9 +2736,6 @@ between the notification system and the analytics service is usually required. F
 shows an example of events that might be tracked for analytics purposes.
 Updated design
 Putting everything together, Figure 10-14 shows the updated notification system design.
-
--- 162 of 269 --
-
 In this design, many new components are added in comparison with the previous design.
 • The notification servers are equipped with two more critical features: authentication and
 rate-limiting.
@@ -3224,9 +2746,6 @@ predefined number of times.
 creation process.
 • Finally, monitoring and tracking systems are added for system health checks and future
 improvements.
-
--- 163 of 269 --
-
 Step 4 - Wrap up
 Notifications are indispensable because they keep us posted with important information. It
 could be a push notification about your favorite movie on Netflix, an email about discounts
@@ -3245,9 +2764,6 @@ user settings first before sending notifications.
 • Rate limiting: Users will appreciate a frequency capping on the number of notifications
 they receive.
 Congratulations on getting this far! Now give yourself a pat on the back. Good job!
-
--- 164 of 269 --
-
 Reference materials
 [1] Twilio SMS: https://www.twilio.com/sms
 [2] Nexmo SMS: https://www.nexmo.com/products/sms
@@ -3257,9 +2773,6 @@ Reference materials
 [6] Security in Push Notifications: https://cloud.ibm.com/docs/services/mobilepush?
 topic=mobile-pushnotification-security-in-push-notifications
 [7] RadditMQ: https://bit.ly/2sotIa6
-
--- 165 of 269 --
-
 ---
 
 ## [Sección 47] CHAPTER 11: DESIGN A NEWS FEED SYSTEM
@@ -3270,9 +2783,6 @@ your home page. News Feed includes status updates, photos, videos, links, app ac
 likes from people, pages, and groups that you follow on Facebook” [1]. This is a popular
 interview question. Similar questions commonly asked are: design Facebook news feed,
 Instagram feed, Twitter timeline, etc.
-
--- 166 of 269 --
-
 Step 1 - Understand the problem and establish design scope
 The first set of clarification questions are to understand what the interviewer has in mind
 when she asks you to design a news feed system. At the very least, you should figure out
@@ -3292,9 +2802,6 @@ Interviewer: 10 million DAU
 Candidate: Can feed contain images, videos, or just text?
 Interviewer: It can contain media files, including both images and videos.
 Now you have gathered the requirements, we focus on designing the system.
-
--- 167 of 269 --
-
 Step 2 - Propose high-level design and get buy-in
 The design is divided into two flows: feed publishing and news feed building.
 • Feed publishing: when a user publishes a post, corresponding data is written into cache
@@ -3319,9 +2826,6 @@ Params:
 • auth_token: it is used to authenticate API requests.
 Feed publishing
 Figure 11-2 shows the high-level design of the feed publishing flow.
-
--- 168 of 269 --
-
 • User: a user can view news feeds on a browser or mobile app. A user makes a post with
 content “Hello” through API:
 /v1/me/feed?content=Hello&auth_token={auth_token}
@@ -3335,18 +2839,12 @@ notifications.
 Newsfeed building
 In this section, we discuss how news feed is built behind the scenes. Figure 11-3 shows the
 high-level design:
-
--- 169 of 269 --
-
 • User: a user sends a request to retrieve her news feed. The request looks like this:
 / v1/me/feed.
 • Load balancer: load balancer redirects traffic to web servers.
 • Web servers: web servers route requests to newsfeed service.
 • Newsfeed service: news feed service fetches news feed from the cache.
 • Newsfeed cache: store news feed IDs needed to render the news feed.
-
--- 170 of 269 --
-
 ---
 
 ## [Sección 48] CHAPTER 11: DESIGN A NEWS FEED SYSTEM
@@ -3360,9 +2858,6 @@ components in high-level design, and we will focus on two components: web server
 fanout service.
 Web servers
 Besides communicating with clients, web servers enforce authentication and rate-limiting.
-
--- 171 of 269 --
-
 Only users signed in with valid auth_token are allowed to make posts. The system limits the
 number of posts a user can make within a certain period, vital to prevent spam and abusive
 content.
@@ -3395,9 +2890,6 @@ For celebrities or users who have many friends/followers, we let followers pull 
 on-demand to avoid system overload. Consistent hashing is a useful technique to mitigate the
 hotkey problem as it helps to distribute requests/data more evenly.
 Let us take a close look at the fanout service as shown in Figure 11-5.
-
--- 172 of 269 --
-
 The fanout service works as follows:
 1. Fetch friend IDs from the graph database. Graph databases are suited for managing
 friend relationship and friend recommendations. Interested readers wishing to learn more
@@ -3417,9 +2909,6 @@ news feed is slim. Most users are only interested in the latest content, so the 
 rate is low.
 5. Store <post_id, user_id > in news feed cache. Figure 11-6 shows an example of what
 the news feed looks like in cache.
-
--- 173 of 269 --
-
 Newsfeed retrieval deep dive
 Figure 11-7 illustrates the detailed design for news feed retrieval.
 As shown in Figure 11-7, media content (images, videos, etc.) are stored in CDN for fast
@@ -3428,9 +2917,6 @@ retrieval. Let us look at how a client retrieves news feed.
 ---
 
 ## [Sección 49] CHAPTER 11: DESIGN A NEWS FEED SYSTEM
-
--- 174 of 269 --
-
 1. A user sends a request to retrieve her news feed. The request looks like this: /v1/me/feed
 2. The load balancer redistributes requests to web servers.
 3. Web servers call the news feed service to fetch news feeds.
@@ -3450,9 +2936,6 @@ as shown in Figure 11-8.
 • Action: It stores info about whether a user liked a post, replied a post, or took other
 actions on a post.
 • Counters: It stores counters for like, reply, follower, following, etc.
-
--- 175 of 269 --
-
 Step 4 - Wrap up
 In this chapter, we designed a news feed system. Our design contains two flows: feed
 publishing and news feed retrieval.
@@ -3476,17 +2959,11 @@ Other talking points:
 • Monitor key metrics. For instance, QPS during peak hours and latency while users
 refreshing their news feed are interesting to monitor.
 Congratulations on getting this far! Now give yourself a pat on the back. Good job!
-
--- 176 of 269 --
-
 Reference materials
 [1] How News Feed Works:
 https://www.facebook.com/help/327131014036297/
 [2] Friend of Friend recommendations Neo4j and SQL Sever:
 http://geekswithblogs.net/brendonpage/archive/2015/10/26/friend-of-friendrecommendations-with-neo4j.aspx
-
--- 177 of 269 --
-
 ---
 
 ## [Sección 50] CHAPTER 12: DESIGN A CHAT SYSTEM
@@ -3497,9 +2974,6 @@ A chat app performs different functions for different people. It is extremely im
 down the exact requirements. For example, you do not want to design a system that focuses
 on group chat when the interviewer has one-on-one chat in mind. It is important to explore
 the feature requirements.
-
--- 178 of 269 --
-
 Step 1 - Understand the problem and establish design scope
 It is vital to agree on the type of chat app to design. In the marketplace, there are one-on-one
 chat apps like Facebook Messenger, WeChat, and WhatsApp, office chat apps that focus on
@@ -3535,9 +3009,6 @@ same time.
 • Push notifications
 It is also important to agree on the design scale. We will design a system that supports 50
 million DAU.
-
--- 179 of 269 --
-
 Step 2 - Propose high-level design and get buy-in
 To develop a high-quality design, we should have a basic knowledge of how clients and
 servers communicate. In a chat system, clients can be either mobile applications or web
@@ -3576,14 +3047,8 @@ most of the time.
 ---
 
 ## [Sección 51] CHAPTER 12: DESIGN A CHAT SYSTEM
-
--- 180 of 269 --
-
 Long polling
 Because polling could be inefficient, the next progression is long polling (Figure 12-4).
-
--- 181 of 269 --
-
 In long polling, a client holds the connection open until there are actually new messages
 available or a timeout threshold has been reached. Once the client receives new messages, it
 immediately sends another request to the server, restarting the process. Long polling has a
@@ -3598,9 +3063,6 @@ connections after timeouts.
 WebSocket
 WebSocket is the most common solution for sending asynchronous updates from server to
 client. Figure 12-5 shows how it works.
-
--- 182 of 269 --
-
 WebSocket connection is initiated by the client. It is bi-directional and persistent. It starts its
 life as a HTTP connection and could be “upgraded” via some well-defined handshake to a
 WebSocket connection. Through this persistent connection, a server could send updates to a
@@ -3612,9 +3074,6 @@ shows how WebSockets (ws) is used for both sender and receiver sides.
 By using WebSocket for both sending and receiving, it simplifies the design and makes
 implementation on both client and server more straightforward. Since WebSocket
 connections are persistent, efficient connection management is critical on the server-side.
-
--- 183 of 269 --
-
 High-level design
 Just now we mentioned that WebSocket was chosen as the main communication protocol
 between the client and server for its bidirectional communication, it is important to note that
@@ -3628,9 +3087,6 @@ Stateless services are traditional public-facing request/response services, used
 login, signup, user profile, etc. These are common features among many websites and apps.
 Stateless services sit behind a load balancer whose job is to route requests to the correct
 services based on the request paths. These services can be monolithic or individual
-
--- 184 of 269 --
-
 microservices. We do not need to build many of these stateless services by ourselves as there
 are services in the market that can be integrated easily. The one service that we will discuss
 more in deep dive is the service discovery. Its primary job is to give the client a list of DNS
@@ -3664,9 +3120,6 @@ interviewer knows this is a starting point. Putting everything we mentioned toge
 ---
 
 ## [Sección 52] CHAPTER 12: DESIGN A CHAT SYSTEM
-
--- 185 of 269 --
-
 In Figure 12-8, the client maintains a persistent WebSocket connection to a chat server for
 real-time messaging.
 • Chat servers facilitate message sending/receiving.
@@ -3680,9 +3133,6 @@ At this point, we have servers ready, services up running and third-party integr
 complete. Deep down the technical stack is the data layer. Data layer usually requires some
 effort to get it correct. An important decision we must make is to decide on the right type of
 database to use: relational databases or NoSQL databases? To make an informed decision, we
-
--- 186 of 269 --
-
 will examine the data types and read/write patterns.
 Two types of data exist in a typical chat system. The first is generic data, such as user profile,
 setting, user friends list. These data are stored in robust and reliable relational databases.
@@ -3713,17 +3163,11 @@ Message table for 1 on 1 chat
 Figure 12-9 shows the message table for 1 on 1 chat. The primary key is message_id, which
 helps to decide message sequence. We cannot rely on created_at to decide the message
 sequence because two messages can be created at the same time.
-
--- 187 of 269 --
-
 Message table for group chat
 Figure 12-10 shows the message table for group chat. The composite primary key is
 (channel_id, message_id). Channel and group represent the same meaning here. channel_id
 is the partition key because all queries in a group chat operate in a channel.
 Message ID
-
--- 188 of 269 --
-
 How to generate message_id is an interesting topic worth exploring. Message_id carries the
 responsibility of ensuring the order of messages. To ascertain the order of messages,
 message_id must satisfy the following two requirements:
@@ -3742,9 +3186,6 @@ implement in comparison to the global ID implementation.
 ---
 
 ## [Sección 53] CHAPTER 12: DESIGN A CHAT SYSTEM
-
--- 189 of 269 --
-
 Step 3 - Design deep dive
 In a system design interview, usually you are expected to dive deep into some of the
 components in the high-level design. For the chat system, service discovery, messaging
@@ -3762,9 +3203,6 @@ User A. In this example, server 2 is chosen and the server info is returned back
 4. User A connects to chat server 2 through WebSocket.
 Message flows
 It is interesting to understand the end-to-end flow of a chat system. In this section, we will
-
--- 190 of 269 --
-
 explore 1 on 1 chat flow, message synchronization across multiple devices and group chat
 flow.
 1 on 1 chat flow
@@ -3781,9 +3219,6 @@ connection between User B and Chat server 2.
 Message synchronization across multiple devices
 Many users have multiple devices. We will explain how to sync messages across multiple
 devices. Figure 12-13 shows an example of message synchronization.
-
--- 191 of 269 --
-
 In Figure 12-13, user A has two devices: a phone and a laptop. When User A logs in to the
 chat app with her phone, it establishes a WebSocket connection with Chat server 1. Similarly,
 there is a connection between the laptop and Chat server 1.
@@ -3797,9 +3232,6 @@ device can get new messages from the KV store.
 Small group chat flow
 In comparison to the one-on-one chat, the logic of group chat is more complicated. Figures
 12-14 and 12-15 explain the flow.
-
--- 192 of 269 --
-
 Figure 12-14 explains what happens when User A sends a message in a group chat. Assume
 there are 3 members in the group (User A, User B and user C). First, the message from User
 A is copied to each group member’s message sync queue: one for User B and the second for
@@ -3814,9 +3246,6 @@ groups with a lot of users, storing a message copy for each member is not accept
 On the recipient side, a recipient can receive messages from multiple users. Each recipient
 has an inbox (message sync queue) which contains messages from different senders. Figure
 12-15 illustrates the design.
-
--- 193 of 269 --
-
 ---
 
 ## [Sección 54] CHAPTER 12: DESIGN A CHAT SYSTEM
@@ -3833,9 +3262,6 @@ The user login flow is explained in the “Service Discovery” section. After a
 connection is built between the client and the real-time service, user A’s online status and
 last_active_at timestamp are saved in the KV store. Presence indicator shows the user is
 online after she logs in.
-
--- 194 of 269 --
-
 User logout
 When a user logs out, it goes through the user logout flow as shown in Figure 12-17. The
 online status is changed to offline in the KV store. The presence indicator shows a user is
@@ -3858,9 +3284,6 @@ In Figure 12-18, the client sends a heartbeat event to the server every 5 second
 sending 3 heartbeat events, the client is disconnected and does not reconnect within x = 30
 seconds (This number is arbitrarily chosen to demonstrate the logic). The online status is
 changed to offline.
-
--- 195 of 269 --
-
 Online status fanout
 How do user A’s friends know about the status changes? Figure 12-19 explains how it works.
 Presence servers use a publish-subscribe model, in which each friend pair maintains a
@@ -3868,18 +3291,12 @@ channel. When User A’s online status changes, it publishes the event to three 
 channel A-B, A-C, and A-D. Those three channels are subscribed by User B, C, and D,
 respectively. Thus, it is easy for friends to get online status updates. The communication
 between clients and servers is through real-time WebSocket.
-
--- 196 of 269 --
-
 The above design is effective for a small user group. For instance, WeChat uses a similar
 approach because its user group is capped to 500. For larger groups, informing all members
 about online status is expensive and time consuming. Assume a group has 100,000 members.
 Each status change will generate 100,000 events. To solve the performance bottleneck, a
 possible solution is to fetch online status only when a user enters a group or manually
 refreshes the friend list.
-
--- 197 of 269 --
-
 Step 4 - Wrap up
 In this chapter, we presented a chat system architecture that supports both 1-to-1 chat and
 small group chat. WebSocket is used for real-time communication between the client and
@@ -3910,9 +3327,6 @@ Congratulations on getting this far! Now give yourself a pat on the back. Good j
 ---
 
 ## [Sección 55] CHAPTER 12: DESIGN A CHAT SYSTEM
-
--- 198 of 269 --
-
 Reference materials
 [1] Erlang at Facebook: https://www.erlangfactory.com/upload/presentations/31/EugeneLetuchy-ErlangatFacebook.pdf
 [2] Messenger and WhatsApp process 60 billion messages a day:
@@ -3924,12 +3338,9 @@ https://www.theverge.com/2016/4/12/11415198/facebook-messenger-whatsapp-numberme
 [7] Apache ZooKeeper: https://zookeeper.apache.org/
 [8] From nothing: the evolution of WeChat background system (Article in Chinese):
 https://www.infoq.cn/article/the-road-of-the-growth-weixin-background
-[9] End-to-end encryption: https://faq.whatsapp.com/en/android/28030015/
+[9] End-to-end encryption: https://faq.whatsapp.com/en/Web Platform/28030015/
 [10] Flannel: An Application-Level Edge Cache to Make Slack Scale:
 https://slack.engineering/flannel-an-application-level-edge-cache-to-make-slack-scaleb8a6400e2f6b
-
--- 199 of 269 --
-
 ---
 
 ## [Sección 56] CHAPTER 13: DESIGN A SEARCH AUTOCOMPLETE
@@ -3942,9 +3353,6 @@ example of a Google search showing a list of autocompleted results when “dinne
 into the search box. Search autocomplete is an important feature of many products. This leads
 us to the interview question: design a search autocomplete system, also called “design top k”
 or “design top k most searched queries”.
-
--- 200 of 269 --
-
 Step 1 - Understand the problem and establish design scope
 The first step to tackle any system design interview question is to ask enough questions to
 clarify requirements. Here is an example of candidate-interviewer interaction:
@@ -3986,9 +3394,6 @@ for autocomplete suggestions. On average, 20 requests are sent for each search q
 example, the following 6 requests are sent to the backend by the time you finish typing
 “dinner”.
 search?q=d
-
--- 201 of 269 --
-
 search?q=di
 search?q=din
 search?q=dinn
@@ -3999,9 +3404,6 @@ search?q=dinner
 • Peak QPS = QPS * 2 = ~48,000
 • Assume 20% of the daily queries are new. 10 million * 10 queries / day * 20 byte per
 query * 20% = 0.4 GB. This means 0.4GB of new data is added to storage daily.
-
--- 202 of 269 --
-
 Step 2 - Propose high-level design and get buy-in
 At the high-level, the system is broken down into two:
 • Data gathering service: It gathers user input queries and aggregates them in real-time.
@@ -4021,20 +3423,11 @@ Assume we have a frequency table as shown in Table 13-1. It has two fields.
 ---
 
 ## [Sección 57] CHAPTER 13: DESIGN A SEARCH AUTOCOMPLETE
-
--- 203 of 269 --
-
 When a user types “tw” in the search box, the following top 5 searched queries are displayed
 (Figure 13-3), assuming the frequency table is based on Table 13-1.
 To get top 5 frequently searched queries, execute the following SQL query:
-
--- 204 of 269 --
-
 This is an acceptable solution when the data set is small. When it is large, accessing the
 database becomes a bottleneck. We will explore optimizations in deep dive.
-
--- 205 of 269 --
-
 Step 3 - Design deep dive
 In the high-level design, we discussed data gathering service and query service. The highlevel design is not optimal, but it serves as a good starting point. In this section, we will dive
 deep into a few components and explore optimizations as follows:
@@ -4063,15 +3456,9 @@ save space, we do not draw empty links.
 • Each tree node represents a single word or a prefix string.
 Figure 13-5 shows a trie with search queries “tree”, “try”, “true”, “toy”, “wish”, “win”.
 Search queries are highlighted with a thicker border.
-
--- 206 of 269 --
-
 Basic trie data structure stores characters in nodes. To support sorting by frequency,
 frequency info needs to be included in nodes. Assume we have the following frequency table.
 After adding frequency info to nodes, updated trie data structure is shown in Figure 13-6.
-
--- 207 of 269 --
-
 How does autocomplete work with trie? Before diving into the algorithm, let us define some
 terms.
 • p: length of a prefix
@@ -4089,9 +3476,6 @@ Let us use an example as shown in Figure 13-7 to explain the algorithm. Assume k
 35], [try: 29] are valid.
 • Step 3: Sort the children and get top 2. [true: 35] and [try: 29] are the top 2 queries with
 prefix “tr”.
-
--- 208 of 269 --
-
 The time complexity of this algorithm is the sum of time spent on each step mentioned above:
 O(p) + O(c) + O(clogc)
 The above algorithm is straightforward. However, it is too slow because we need to traverse
@@ -4117,9 +3501,6 @@ beer: 10].
 ---
 
 ## [Sección 58] CHAPTER 13: DESIGN A SEARCH AUTOCOMPLETE
-
--- 209 of 269 --
-
 Let us revisit the time complexity of the algorithm after applying those two optimizations:
 1. Find the prefix node. Time complexity: O(1)
 2. Return top k. Since top k queries are cached, the time complexity for this step is O(1).
@@ -4141,9 +3522,6 @@ remains the same because data used to build the trie is usually from analytics o
 services.
 Figure 13-9 shows the redesigned data gathering service. Each component is examined one
 by one.
-
--- 210 of 269 --
-
 Analytics Logs. It stores raw data about search queries. Logs are append-only and are not
 indexed. Table 13-3 shows an example of the log file.
 Aggregators. The size of analytics logs is usually very large, and data is not in the right
@@ -4157,9 +3535,6 @@ Aggregated Data.
 Table 13-4 shows an example of aggregated weekly data. “time” field represents the start
 time of a week. “frequency” field is the sum of the occurrences for the corresponding query
 in that week.
-
--- 211 of 269 --
-
 Workers. Workers are a set of servers that perform asynchronous jobs at regular intervals.
 They build the trie data structure and store it in Trie DB.
 Trie Cache. Trie Cache is a distributed cache system that keeps trie in memory for fast read.
@@ -4173,17 +3548,11 @@ following logic:
 • Every prefix in the trie is mapped to a key in a hash table.
 • Data on each trie node is mapped to a value in a hash table.
 Figure 13-10 shows the mapping between the trie and hash table.
-
--- 212 of 269 --
-
 In Figure 13-10, each trie node on the left is mapped to the <key, value> pair on the right. If
 you are unclear how key-value stores work, refer to Chapter 6: Design a key-value store.
 Query service
 In the high-level design, query service calls the database directly to fetch the top 5 results.
 Figure 13-11 shows the improved design as previous design is inefficient.
-
--- 213 of 269 --
-
 1. A search query is sent to the load balancer.
 2. The load balancer routes the request to API servers.
 3. API servers get trie data from Trie Cache and construct autocomplete suggestions for
@@ -4204,9 +3573,6 @@ you type “system design interview” on the Google search engine. As you can s
 ---
 
 ## [Sección 59] CHAPTER 13: DESIGN A SEARCH AUTOCOMPLETE
-
--- 214 of 269 --
-
 caches the results in the browser for 1 hour. Please note: “private” in cache-control means
 results are intended for a single user and must not be cached by a shared cache. “maxage=3600” means the cache is valid for 3600 seconds, aka, an hour.
 • Data sampling: For a large-scale system, logging every search query requires a lot of
@@ -4228,9 +3594,6 @@ trie node, its ancestors all the way up to the root must be updated because ance
 queries of children. Figure 13-13 shows an example of how the update operation works. On
 the left side, the search query “beer” has the original value 10. On the right side, it is updated
 to 30. As you can see, the node and its ancestors have the “beer” value updated to 30.
-
--- 215 of 269 --
-
 Delete
 We have to remove hateful, violent, sexually explicit, or dangerous autocomplete
 suggestions. We add a filter layer (Figure 13-14) in front of the Trie Cache to filter out
@@ -4251,17 +3614,11 @@ sharding. To store data beyond 26 servers, we can shard on the second or even at
 level. For example, data queries that start with ‘a’ can be split into 4 servers: ‘aa-ag’, ‘ahan’, ‘ao-au’, and ‘av-az’.
 At the first glance this approach seems reasonable, until you realize that there are a lot more
 words that start with the letter ‘c’ than ‘x’. This creates uneven distribution.
-
--- 216 of 269 --
-
 To mitigate the data imbalance problem, we analyze historical data distribution pattern and
 apply smarter sharding logic as shown in Figure 13-15. The shard map manager maintains a
 lookup database for identifying where rows should be stored. For example, if there are a
 similar number of historical queries for ‘s’ and for ‘u’, ‘v’, ‘w’, ‘x’, ‘y’ and ‘z’ combined, we
 can maintain two shards: one for ‘s’ and one for ‘u’ to ‘z’.
-
--- 217 of 269 --
-
 Step 4 - Wrap up
 After you finish the deep dive, your interviewer might ask you some follow up questions.
 Interviewer: How do you extend your design to support multiple languages?
@@ -4291,9 +3648,6 @@ Congratulations on getting this far! Now give yourself a pat on the back. Good j
 ---
 
 ## [Sección 60] CHAPTER 13: DESIGN A SEARCH AUTOCOMPLETE
-
--- 218 of 269 --
-
 Reference materials
 [1] The Life of a Typeahead Query: https://www.facebook.com/notes/facebookengineering/the-life-of-a-typeahead-query/389105248919/
 [2] How We Built Prefixy: A Scalable Prefix Search Service for Powering Autocomplete:
@@ -4306,9 +3660,6 @@ https://people.eecs.berkeley.edu/~sylvia/papers/pht.pdf
 [7] Spark streaming: https://spark.apache.org/streaming/
 [8] Apache storm: https://storm.apache.org/
 [9] Apache kafka: https://kafka.apache.org/documentation/
-
--- 219 of 269 --
-
 ---
 
 ## [Sección 61] CHAPTER 14: DESIGN YOUTUBE
@@ -4327,9 +3678,6 @@ look at some impressive statistics, demographics, and fun facts of YouTube in 20
 • YouTube is responsible for 37% of all mobile internet traffic.
 • YouTube is available in 80 different languages.
 From these statistics, we know YouTube is enormous, global and makes a lot of money.
-
--- 220 of 269 --
-
 Step 1 - Understand the problem and establish design scope
 As revealed in Figure 14-1, besides watching a video, you can do a lot more on YouTube. For
 example, comment, share, or like a video, save a video to playlists, subscribe to a channel,
@@ -4371,9 +3719,6 @@ with the interviewer to make sure she is on the same page.
 • 10% of users upload 1 video per day.
 • Assume the average video size is 300 MB.
 • Total daily storage space needed: 5 million * 10% * 300 MB = 150TB
-
--- 221 of 269 --
-
 • CDN cost.
 • When cloud CDN serves a video, you are charged for data transferred out of the
 CDN.
@@ -4385,9 +3730,6 @@ From the rough cost estimation, we know serving videos from the CDN costs lots o
 Even though cloud providers are willing to lower the CDN costs significantly for big
 customers, the cost is still substantial. We will discuss ways to reduce CDN costs in deep
 dive.
-
--- 222 of 269 --
-
 Step 2 - Propose high-level design and get buy-in
 As discussed previously, the interviewer recommended leveraging existing cloud services
 instead of building everything from scratch. CDN and blob storage are the cloud services we
@@ -4417,9 +3759,6 @@ Figure 14-4 shows the high-level design for the video uploading.
 ---
 
 ## [Sección 62] CHAPTER 14: DESIGN YOUTUBE
-
--- 223 of 269 --
-
 It consists of the following components:
 • User: A user watches YouTube on devices such as a computer, mobile phone, or smart
 TV.
@@ -4434,9 +3773,6 @@ collection of binary data stored as a single entity in a database management sys
 • Transcoding servers: Video transcoding is also called video encoding. It is the process of
 converting a video format to other formats (MPEG, HLS, etc), which provide the best
 video streams possible for different devices and bandwidth capabilities.
-
--- 224 of 269 --
-
 • Transcoded storage: It is a blob storage that stores transcoded video files.
 • CDN: Videos are cached in CDN. When you click the play button, a video is streamed
 from the CDN.
@@ -4450,9 +3786,6 @@ a. Upload the actual video.
 b. Update video metadata. Metadata contains information about video URL, size,
 resolution, format, user info, etc.
 Flow a: upload the actual video
-
--- 225 of 269 --
-
 Figure 14-5 shows how to upload the actual video. The explanation is shown below:
 1. Videos are uploaded to the original storage.
 2. Transcoding servers fetch videos from the original storage and start transcoding.
@@ -4462,9 +3795,6 @@ Figure 14-5 shows how to upload the actual video. The explanation is shown below
 3a.1. Transcoded videos are distributed to CDN.
 3b.1. Completion handler contains a bunch of workers that continuously pull event data
 from the queue.
-
--- 226 of 269 --
-
 3b.1.a. and 3b.1.b. Completion handler updates the metadata database and cache when
 video transcoding is complete.
 4. API servers inform the client that the video is successfully uploaded and is ready for
@@ -4487,9 +3817,6 @@ streaming protocols are:
 • Apple HLS. HLS stands for “HTTP Live Streaming”.
 • Microsoft Smooth Streaming.
 • Adobe HTTP Dynamic Streaming (HDS).
-
--- 227 of 269 --
-
 You do not need to fully understand or even remember those streaming protocol names as
 they are low-level details that require specific domain knowledge. The important thing here is
 to understand that different streaming protocols support different video encodings and
@@ -4503,9 +3830,6 @@ streaming.
 ---
 
 ## [Sección 63] CHAPTER 14: DESIGN YOUTUBE
-
--- 228 of 269 --
-
 Step 3 - Design deep dive
 In the high-level design, the entire system is broken down in two parts: video uploading flow
 and video streaming flow. In this section, we will refine both flows with important
@@ -4544,9 +3868,6 @@ example, Facebook’s streaming video engine uses a directed acyclic graph (DAG)
 programming model, which defines tasks in stages so they can be executed sequentially or
 parallelly [8]. In our design, we adopt a similar DAG model to achieve flexibility and
 parallelism. Figure 14-8 represents a DAG for video transcoding.
-
--- 229 of 269 --
-
 In Figure 14-8, the original video is split into video, audio, and metadata. Here are some of
 the tasks that can be applied on a video file:
 • Inspection: Make sure videos have good quality and are not malformed.
@@ -4556,9 +3877,6 @@ etc. Figure 14-9 shows an example of video encoded files.
 the system.
 • Watermark: An image overlay on top of your video contains identifying information
 about your video.
-
--- 230 of 269 --
-
 Video transcoding architecture
 The proposed video transcoding architecture that leverages the cloud services, is shown in
 Figure 14-10.
@@ -4566,9 +3884,6 @@ The architecture has six main components: preprocessor, DAG scheduler, resource 
 task workers, temporary storage, and encoded video as the output. Let us take a close look at
 each component.
 Preprocessor
-
--- 231 of 269 --
-
 The preprocessor has 4 responsibilities:
 1. Video splitting. Video stream is split or further split into smaller Group of Pictures (GOP)
 alignment. GOP is a group/chunk of frames arranged in a specific order. Each chunk is an
@@ -4587,18 +3902,12 @@ DAG scheduler
 ---
 
 ## [Sección 64] CHAPTER 14: DESIGN YOUTUBE
-
--- 232 of 269 --
-
 The DAG scheduler splits a DAG graph into stages of tasks and puts them in the task queue
 in the resource manager. Figure 14-15 shows an example of how the DAG scheduler works.
 As shown in Figure 14-15, the original video is split into three stages: Stage 1: video, audio,
 and metadata. The video file is further split into two tasks in stage 2: video encoding and
 thumbnail. The audio file requires audio encoding as part of the stage 2 tasks.
 Resource manager
-
--- 233 of 269 --
-
 The resource manager is responsible for managing the efficiency of resource allocation. It
 contains 3 queues and a task scheduler as shown in Figure 14-17.
 • Task queue: It is a priority queue that contains tasks to be executed.
@@ -4614,17 +3923,11 @@ The resource manager works as follows:
 • The task scheduler binds the task/worker info and puts it in the running queue.
 • The task scheduler removes the job from the running queue once the job is done.
 Task workers
-
--- 234 of 269 --
-
 Task workers run the tasks which are defined in the DAG. Different task workers may run
 different tasks as shown in Figure 14-19.
 Temporary storage
 Multiple storage systems are used here. The choice of storage system depends on factors like
 data type, data size, access frequency, data life span, etc. For instance, metadata is frequently
-
--- 235 of 269 --
-
 accessed by workers, and the data size is usually small. Thus, caching metadata in memory is
 a good idea. For video or audio data, we put them in blob storage. Data in temporary storage
 is freed up once the corresponding video processing is complete.
@@ -4643,9 +3946,6 @@ video file by GOP can be implemented by the client to improve the upload speed a
 Figure 14-23.
 Speed optimization: place upload centers close to users
 Another way to improve the upload speed is by setting up multiple upload centers across the
-
--- 236 of 269 --
-
 globe (Figure 14-24). People in the United States can upload videos to the North America
 upload center, and people in China can upload videos to the Asian upload center. To achieve
 this, we use CDN as upload centers.
@@ -4657,9 +3957,6 @@ of how a video is transferred from original storage to the CDN. The flow is show
 14-25, revealing that the output depends on the input of the previous step. This dependency
 makes parallelism difficult.
 To make the system more loosely coupled, we introduced message queues as shown in Figure
-
--- 237 of 269 --
-
 14-26. Let us use an example to explain how message queues make the system more loosely
 coupled.
 • Before the message queue is introduced, the encoding module must wait for the output of
@@ -4674,9 +3971,6 @@ upload videos to the right location, we introduce pre-signed URLs as shown in Fi
 ---
 
 ## [Sección 65] CHAPTER 14: DESIGN YOUTUBE
-
--- 238 of 269 --
-
 The upload flow is updated as follows:
 1. The client makes a HTTP request to API servers to fetch the pre-signed URL, which
 gives the access permission to the object identified in the URL. The term pre-signed URL
@@ -4704,9 +3998,6 @@ Previous research shows that YouTube video streams follow long-tail distribution
 It means a few popular videos are accessed frequently but many others have few or no
 viewers. Based on this observation, we implement a few optimizations:
 1. Only serve the most popular videos from CDN and other videos from our high capacity
-
--- 239 of 269 --
-
 storage video servers (Figure 14-28).
 2. For less popular content, we may not need to store many encoded video versions. Short
 videos can be encoded on-demand.
@@ -4732,9 +4023,6 @@ system stops the running tasks associated with the video and returns the proper 
 to the client.
 Typical errors for each system component are covered by the following playbook:
 • Upload error: retry a few times.
-
--- 240 of 269 --
-
 • Split video error: if older versions of clients cannot split videos by GOP alignment, the
 entire video is passed to the server. The job of splitting videos is done on the server-side.
 • Transcoding error: retry.
@@ -4756,9 +4044,6 @@ up another database server to replace the dead one.
 ---
 
 ## [Sección 66] CHAPTER 14: DESIGN YOUTUBE
-
--- 241 of 269 --
-
 Step 4 - Wrap up
 In this chapter, we presented the architecture design for video streaming services like
 YouTube. If there is extra time at the end of the interview, here are a few additional points:
@@ -4779,9 +4064,6 @@ takes too much time is not acceptable.
 be removed. Some can be discovered by the system during the upload process, while
 others might be discovered through user flagging.
 Congratulations on getting this far! Now give yourself a pat on the back. Good job!
-
--- 242 of 269 --
-
 Reference materials
 [1] YouTube by the numbers: https://www.omnicoreagency.com/youtube-statistics/
 [2] 2019 YouTube Demographics:
@@ -4804,9 +4086,6 @@ v=w5WVu624fY8
 measurement study. https://arxiv.org/pdf/0707.3670.pdf
 [13] Content Popularity for Open Connect:
 https://netflixtechblog.com/content-popularity-for-open-connect-b86d56f613b
-
--- 243 of 269 --
-
 ---
 
 ## [Sección 67] CHAPTER 15: DESIGN GOOGLE DRIVE
@@ -4820,10 +4099,6 @@ videos, and other files in the cloud. You can access your files from any compute
 smartphone, and tablet. You can easily share those files with friends, family, and coworkers
 [1]. Figure 15-1 and 15-2 show what Google drive looks like on a browser and mobile
 application, respectively.
-
--- 244 of 269 --
-
--- 245 of 269 --
 
 Step 1 - Understand the problem and establish design scope
 Designing a Google drive is a big project, so it is important to ask questions to narrow down
@@ -4866,15 +4141,9 @@ Back of the envelope estimation
 • Users get 10 GB free space.
 • Assume users upload 2 files per day. The average file size is 500 KB.
 • 1:1 read to write ratio.
-
--- 246 of 269 --
-
 • Total space allocated: 50 million * 10 GB = 500 Petabyte
 • QPS for upload API: 10 million * 2 uploads / 24 hours / 3600 seconds = ~ 240
 • Peak QPS = QPS * 2 = 480
-
--- 247 of 269 --
-
 Step 2 - Propose high-level design and get buy-in
 Instead of showing the high-level design diagram from the beginning, we will use a slightly
 different approach. We will start with something simple: build everything in a single server.
@@ -4908,9 +4177,6 @@ Params:
 ---
 
 ## [Sección 68] CHAPTER 15: DESIGN GOOGLE DRIVE
-
--- 248 of 269 --
-
 A resumable upload is achieved by the following 3 steps [2]:
 • Send the initial request to retrieve the resumable URL.
 • Upload the data and monitor upload state.
@@ -4940,9 +4206,6 @@ As more files are uploaded, eventually you get the space full alert as shown in 
 Only 10 MB of storage space is left! This is an emergency as users cannot upload files
 anymore. The first solution comes to mind is to shard the data, so it is stored on multiple
 storage servers. Figure 15-5 shows an example of sharding based on user_id .
-
--- 249 of 269 --
-
 You pull an all-nighter to set up database sharding and monitor it closely. Everything works
 smoothly again. You have stopped the fire, but you are still worried about potential data
 losses in case of storage server outage. You ask around and your backend guru friend Frank
@@ -4960,9 +4223,6 @@ After putting files in S3, you can finally have a good night's sleep without wor
 data losses. To stop similar problems from happening in the future, you decide to do further
 research on areas you can improve. Here are a few areas you find:
 • Load balancer: Add a load balancer to distribute network traffic. A load balancer ensures
-
--- 250 of 269 --
-
 evenly distributed traffic, and if a web server goes down, it will redistribute the traffic.
 • Web servers: After a load balancer is added, more web servers can be added/removed
 easily, depending on the traffic load.
@@ -4980,9 +4240,6 @@ two users modify the same file or folder at the same time, a conflict happens. H
 resolve the conflict? Here is our strategy: the first version that gets processed wins, and the
 version that gets processed later receives a conflict. Figure 15-8 shows an example of a sync
 conflict.
-
--- 251 of 269 --
-
 In Figure 15-8, user 1 and user 2 tries to update the same file at the same time, but user 1’s
 file is processed by our system first. User 1’s update operation goes through, but, user 2 gets
 a sync conflict. How can we resolve the conflict for user 2? Our system presents both copies
@@ -4997,9 +4254,6 @@ the system.
 ---
 
 ## [Sección 69] CHAPTER 15: DESIGN GOOGLE DRIVE
-
--- 252 of 269 --
-
 User: A user uses the application either through a browser or mobile app.
 Block servers: Block servers upload blocks to cloud storage. Block storage, referred to as
 block-level storage, is a technology to store data files on cloud-based environments. A file
@@ -5021,15 +4275,9 @@ from notification service to clients as certain events happen. In our specific c
 service notifies relevant clients when a file is added/edited/removed elsewhere so they can
 pull the latest changes.
 Offline backup queue: If a client is offline and cannot pull the latest file changes, the offline
-
--- 253 of 269 --
-
 backup queue stores the info so changes will be synced when the client is online.
 We have discussed the design of Google Drive at the high-level. Some of the components are
 complicated and worth careful examination; we will discuss these in detail in the deep dive.
-
--- 254 of 269 --
-
 Step 3 - Design deep dive
 In this section, we will take a close look at the following: block servers, metadata database,
 upload flow, download flow, notification service, save storage space and failure handling.
@@ -5055,9 +4303,6 @@ Figure 15-11 shows how a block server works when a new file is added.
 Figure 15-12 illustrates delta sync, meaning only modified blocks are transferred to cloud
 storage. Highlighted blocks “block 2” and “block 5” represent changed blocks. Using delta
 sync, only those two blocks are uploaded to the cloud storage.
-
--- 255 of 269 --
-
 Block servers allow us to save network traffic by providing delta sync and compression.
 High consistency requirement
 Our system requires strong consistency by default. It is unacceptable for a file to be shown
@@ -5080,9 +4325,6 @@ version as it only includes the most important tables and interesting fields.
 ---
 
 ## [Sección 70] CHAPTER 15: DESIGN GOOGLE DRIVE
-
--- 256 of 269 --
-
 User: The user table contains basic information about the user such as username, email,
 profile photo, etc.
 Device: Device table stores device info. Push_id is used for sending and receiving mobile
@@ -5096,9 +4338,6 @@ by joining all the blocks in the correct order.
 Upload flow
 Let us discuss what happens when a client uploads a file. To better understand the flow, we
 draw the sequence diagram as shown in Figure 15-14.
-
--- 257 of 269 --
-
 In Figure 15-14, two requests are sent in parallel: add file metadata and upload the file to
 cloud storage. Both requests originate from client 1.
 • Add file metadata.
@@ -5124,9 +4363,6 @@ Download flow is triggered when a file is added or edited elsewhere. How does a 
 if a file is added or edited by another client? There are two ways a client can know:
 • If client A is online while a file is changed by another client, notification service will
 inform client A that changes are made somewhere so it needs to pull the latest data.
-
--- 258 of 269 --
-
 • If client A is offline while a file is changed by another client, data will be saved to the
 cache. When the offline client is online again, it pulls the latest changes.
 Once a client knows a file is changed, it first requests metadata via API servers, then
@@ -5158,9 +4394,6 @@ information about file changes to the client, but not vice versa.
 ---
 
 ## [Sección 71] CHAPTER 15: DESIGN GOOGLE DRIVE
-
--- 259 of 269 --
-
 Google Drive, notifications are sent infrequently with no burst of data.
 With long polling, each client establishes a long poll connection to the notification service. If
 changes to a file are detected, the client will close the long poll connection. Closing the
@@ -5205,9 +4438,6 @@ server to replace the failed one.
 • Master down: If the master is down, promote one of the slaves to act as a new master
 and bring up a new slave node.
 • Slave down: If a slave is down, you can use another slave for read operations and
-
--- 260 of 269 --
-
 bring another database server to replace the failed one.
 • Notification service failure: Every online user keeps a long poll connection with the
 notification server. Thus, each notification server is connected with many users. According
@@ -5218,9 +4448,6 @@ reconnect all the lost connections at once. Reconnecting with all the lost clien
 relatively slow process.
 • Offline backup queue failure: Queues are replicated multiple times. If one queue fails,
 consumers of the queue may need to re-subscribe to the backup queue.
-
--- 261 of 269 --
-
 Step 4 - Wrap up
 In this chapter, we proposed a system design to support Google Drive. The combination of
 strong consistency, low network bandwidth and fast sync make the design interesting. Our
@@ -5237,7 +4464,7 @@ because a file only needs to be transferred once to the cloud storage. In our de
 transferred to block servers first, and then to the cloud storage. However, the new approach
 has a few drawbacks:
 • First, the same chunking, compression, and encryption logic must be implemented on
-different platforms (iOS, Android, Web). It is error-prone and requires a lot of engineering
+different platforms (iOS, Web Platform, Web). It is error-prone and requires a lot of engineering
 effort. In our design, all those logics are implemented in a centralized place: block servers.
 • Second, as a client can easily be hacked or manipulated, implementing encrypting logic
 on the client side is not ideal.
@@ -5249,9 +4476,6 @@ Congratulations on getting this far! Now give yourself a pat on the back. Good j
 ---
 
 ## [Sección 72] CHAPTER 15: DESIGN GOOGLE DRIVE
-
--- 262 of 269 --
-
 Reference materials
 [1] Google Drive: https://www.google.com/drive/
 [2] Upload file data: https://developers.google.com/drive/api/v2/manage-uploads
@@ -5266,9 +4490,6 @@ v=S2Hp_1jqpY8
 [10] Dropbox security white paper:
 https://www.dropbox.com/static/business/resources/Security_Whitepaper.pdf
 [11] Amazon S3 Glacier: https://aws.amazon.com/glacier/faqs/
-
--- 263 of 269 --
-
 ---
 
 ## [Sección 73] CHAPTER 16: THE LEARNING CONTINUES
@@ -5278,9 +4499,6 @@ into real-world system architectures. Below is a collection of helpful reading m
 highly recommend you pay attention to both the shared principles and the underlying
 technologies. Researching each technology and understanding what problems it solves is a
 great way to strengthen your knowledge base and refine the design process.
-
--- 264 of 269 --
-
 Real-world systems
 The following materials can help you understand general design ideas of real system
 architectures behind different companies.
@@ -5317,16 +4535,10 @@ Timelines at Scale: https://goo.gl/8KbqTy
 How Uber Scales Their Real-Time Market Platform: https://goo.gl/kGZuVy
 Scaling Pinterest: https://goo.gl/KtmjW3
 Pinterest Architecture Update: https://goo.gl/w6rRsf
-
--- 265 of 269 --
-
 A Brief History of Scaling LinkedIn: https://goo.gl/8A1Pi8
 Flickr Architecture: https://goo.gl/dWtgYa
 How We've Scaled Dropbox: https://goo.gl/NjBDtC
 The WhatsApp Architecture Facebook Bought For $19 Billion: https://bit.ly/2AHJnFn
-
--- 266 of 269 --
-
 Company engineering blogs
 If you are going to interview with a company, it is a great idea to read their engineering blogs
 and get familiar with technologies and systems adopted and implemented there. Besides,
@@ -5371,15 +4583,9 @@ Uber: http://eng.uber.com
 ---
 
 ## [Sección 74] CHAPTER 16: THE LEARNING CONTINUES
-
--- 267 of 269 --
-
 Yahoo: https://yahooeng.tumblr.com
 Yelp: https://engineeringblog.yelp.com
 Zoom: https://medium.com/zoom-developer-blog
-
--- 268 of 269 --
-
 AFTERWORD
 Congratulations! You are at the end of this interview guide. You have accumulated skills and
 knowledge to design systems. Not everyone has the discipline to learn what you have learned.
@@ -5395,8 +4601,5 @@ https://bit.ly/3dtIcsE
 If you have comments or questions about this book, feel free to send us an email at
 systemdesigninsider@gmail.com. Besides, if you notice any errors, please let us know so we
 can make corrections in the next edition. Thank you!
-
--- 269 of 269 --
-
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #architecture_and_books

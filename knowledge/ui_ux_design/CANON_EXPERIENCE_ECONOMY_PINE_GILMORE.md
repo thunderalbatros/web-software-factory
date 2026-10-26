@@ -1,15 +1,15 @@
-﻿> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
 
 # 🎭 Tratado Canónico: The Experience Economy (Pine & Gilmore)
 ### Basado en: *The Experience Economy: Competing for Customer Time, Attention, and Money*
@@ -82,7 +82,7 @@ $$\text{RevPASH} = \frac{\text{Ingresos Totales}}{\text{Capacidad Asientos} \tim
 
 Los venues tienen enormes picos de demanda (viernes/sábado de 23:00 a 03:00) con RevPASH saturado, pero valles catastróficos (miércoles/jueves o domingos a la noche) donde el RevPASH cae a cero mientras los costos fijos de alquiler y personal se mantienen idénticos.
 
-**La Misión de Yendo como Motor de Experiencias:**
+**La Misión de WebFactory como Motor de Experiencias:**
 Aplanar la curva de RevPASH de los venues de CABA orquestando eventos y quórums en horas valle, monetizando el tiempo ocioso y transformándolo en memorias memorables para la comunidad.
 
 ---

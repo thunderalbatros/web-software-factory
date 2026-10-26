@@ -1,4 +1,4 @@
-﻿# 📚 Libro Completo: Creating Web Animations: Bringing Your UIs to Life
+# 📚 Libro Completo: Creating Web Animations: Bringing Your UIs to Life
 
 **Alcance:** Fuente bibliográfica completa sobre CSS Transitions, Keyframe Animations, WAAPI & 60-FPS Web Motion (Creating Web Animations: Bringing Your UIs to Life — Kirupa Chinnathambi (O'Reilly)). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
@@ -7,38 +7,25 @@
 > **Archivo Fuente:** `dokumen.pub_creating-web-animations-9781491957516-1491957514.epub`  
 > **Páginas Originales:** 21  
 > **Secciones Extraídas:** 48  
-> **Fecha de Ingesta:** 2026-10-19  
+> **Fecha de Ingesta:** 2026-10-19
 
 ---
 
-## Sección 1: Chapter 1. Introduction to Web Animations
+## Sección 1: Chapter 1. Introduction to Web Animations [Entropy: 0.295]
 
-Introduction to Web Animations 
+Introduction to Web Animations
 
- 
+While we think of animation as a recent creation brought about by film and computers, people have been fiddling with ways to communicate motion for a really really long time ( Figure 1-1 ).
 
-
- While we think of animation as a recent creation brought about by film and computers, people have been fiddling with ways to communicate motion for a really really long time ( Figure 1-1 ).
-
- 
- 
- Figure 1-1. A sequence of pictures from 3000 BC ( Wikipedia ) 
-
- 
+Figure 1-1. A sequence of pictures from 3000 BC ( Wikipedia )
 
 Those ways have ranged from cave paintings and elaborate mechanical devices to more familiar, contemporary solutions, such as what you see on television, computers, and smartphones ( Figure 1-2 ).
 
- 
- 
- Figure 1-2. A really small sampling of apps that are lively and full of motion! 
-
- 
+Figure 1-2. A really small sampling of apps that are lively and full of motion!
 
 No longer are animations primarily in the domain of games, intros, cartoons, banner ads…or even cave paintings! Animations are deeply ingrained in today’s technology, and they make up a large part of your applications’ overall user experience. They can make your applications easier to navigate. They make your content more presentable. They can help your creations feel more alive and fun. Who doesn’t want more of that?
 
 That’s enough background for now. You aren’t here to get a history lesson or be convinced of why animations are useful. You probably already know about their importance. What you want to know is how to actually implement animations, and you have come to the right place. In this chapter and subsequent ones, you will learn how to work with animations in HTML. In a short time, you will become an animation expert…or at least be good enough to play one on TV.
-
- 
 
 What Is an Animation?
 
@@ -46,31 +33,19 @@ Before we proceed further down the bright, lava-filled pit where you learn how t
 
 Let’s look at that definition in more detail.
 
- 
-
 The Start and End States
 
- If visualizing change is an important part of an animation, we need to create some reference points so that we can compare what has changed. Let’s call these reference points the  start  state and the  end  state. To better explain what is going on, let’s come up with an easy-to-understand example as well.
+If visualizing change is an important part of an animation, we need to create some reference points so that we can compare what has changed. Let’s call these reference points the  start  state and the  end  state. To better explain what is going on, let’s come up with an easy-to-understand example as well.
 
 Let’s say our start state looks like Figure 1-3 .
 
- 
- 
- Figure 1-3. 
+Figure 1-3. 
 In the beginning, there was a small blue circle
- 
-
- 
 
 You start off with a small blue circle located to the left of the screen. At the end state, your blue circle now looks sorta kinda like Figure 1-4 .
 
- 
- 
- Figure 1-4. 
+Figure 1-4. 
 The circle moves right and grows larger
- 
-
- 
 
 Based just on the information you have about what our blue circle looks like in the start and end states, what can you tell is different?
 
@@ -78,141 +53,79 @@ One change is the position. Our blue circle starts off on the left side of the s
 
 How do we make an animation out of this? If we were to just play the start and end states repeatedly, what you would see is a circle that just bounces from left to right very awkwardly. That is  pretty turrible . Just turrible. What we need is a way to smooth things out between the start and end states. What we need is a healthy dose of  interpolation .
 
- 
-
- 
-
 Interpolation
 
- Right now, what we have are two discrete states in time: the start state and the end state. If you were to play this back, it wouldn’t be an animation. In order to make an animation out of what we have, we need a smooth transition that creates all the intermediate states. The process of creating these intermediate states is known as  interpolation .
+Right now, what we have are two discrete states in time: the start state and the end state. If you were to play this back, it wouldn’t be an animation. In order to make an animation out of what we have, we need a smooth transition that creates all the intermediate states. The process of creating these intermediate states is known as  interpolation .
 
 This interpolation, which occurs over a  period of time that you specify , would look similar to Figure 1-5 .
 
- 
- 
- Figure 1-5. Behold…an animation! 
-
- 
+Figure 1-5. Behold…an animation!
 
 You may be wondering who specifies the interpolated states. The answer, which is probably good news, is that your browser or HTML rendering engine will take care of the messy details. All you need to specify is the  start state , the  end state , and the  duration  over which the transition between the two states needs to occur. Once you have those three things, you have an animation!
 
- Later you’ll see how adding some other ingredients into the pot, such as timing functions (aka easing functions), can alter how the interpolation works. For now, though, just revel in this simple explanation of what makes up an animation, put on your best party clothes, and get ready to meet the three flavors of animation that you will end up using.
-
- 
-
- 
+Later you’ll see how adding some other ingredients into the pot, such as timing functions (aka easing functions), can alter how the interpolation works. For now, though, just revel in this simple explanation of what makes up an animation, put on your best party clothes, and get ready to meet the three flavors of animation that you will end up using.
 
 Animations on the Web
 
- On the web, there isn’t just a single animation implementation (hey, that sorta rhymes!) that you can use. You actually have three flavors of animation to choose from, and each one is specialized for certain kinds of tasks. Let’s take a quick look at all three and see how they relate to the animation definition you saw in the previous section.
-
- 
+On the web, there isn’t just a single animation implementation (hey, that sorta rhymes!) that you can use. You actually have three flavors of animation to choose from, and each one is specialized for certain kinds of tasks. Let’s take a quick look at all three and see how they relate to the animation definition you saw in the previous section.
 
 CSS animations (aka keyframe animations)
 
- CSS animations are like traditional animations on some sort of performance-enhancing substance that makes them more awesome. With these kinds of animations, you can define not only the beginning and the end state but also any intermediate states, lovingly known as keyframes (see Figure 1-6 ).
+CSS animations are like traditional animations on some sort of performance-enhancing substance that makes them more awesome. With these kinds of animations, you can define not only the beginning and the end state but also any intermediate states, lovingly known as keyframes (see Figure 1-6 ).
 
- 
- 
- Figure 1-6. How an animation made up of keyframes might look 
-
- 
+Figure 1-6. How an animation made up of keyframes might look
 
 These intermediate states, if you choose to use them, give you greater control over the thing you are animating. In Figure 1-6 , the blue circle isn’t simply sliding to the right and getting larger. The individual keyframes adjust the circle’s size and vertical position in ways that you wouldn’t see if you simply interpolated between the start and end states.
 
 Remember, even though you are specifying the intermediate states, your browser will still interpolate what it can between each state. Think of a keyframe animation as many little animations daisy-chained together.
 
- 
-
- 
-
 CSS transitions
 
- Transitions make up a class of animations where you only define the start state, end state, and duration. The rest, such as interpolating between the two states, is taken care of automatically for you (see Figure 1-7 ).
+Transitions make up a class of animations where you only define the start state, end state, and duration. The rest, such as interpolating between the two states, is taken care of automatically for you (see Figure 1-7 ).
 
 ---
 
-## Sección 2: Chapter 1. Introduction to Web Animations
+## Sección 2: Chapter 1. Introduction to Web Animations [Entropy: 0.28]
 
-Figure 1-7. Transitions only need a start and end state to do their thing 
-
- 
+Figure 1-7. Transitions only need a start and end state to do their thing
 
 While transitions seem like a watered-down, simplified keyframe animation, don’t let that trick you. They are extremely powerful and probably the type of animation implementation you’ll use the most.
 
- 
-
- 
-
 Scripted/JavaScript animations
 
- If you want full control over what your animation does right down to how it interpolates between states, you can use JavaScript (see Figure 1-8 ).
+If you want full control over what your animation does right down to how it interpolates between states, you can use JavaScript (see Figure 1-8 ).
 
- 
- 
- Figure 1-8. When you use JavaScript, you have a lot of freedom in defining how your animation works 
-
- 
+Figure 1-8. When you use JavaScript, you have a lot of freedom in defining how your animation works
 
 There are a lot of cool things you can do when you opt out of the interpolation the browser does for you, but we won’t be spending too much time in this area. Scripted animations have their place in games and visualizations, but covering those areas fully goes beyond the UI focus of this book.
 
- 
-
- 
-
- 
-
 Conclusion
 
- To quickly recap, an animation is nothing more than a visualization of something changing over a period of time. In HTML, you have not one, not two, but three different ways of bringing animations to life: CSS animations, CSS transitions, and scripted animations (created in JavaScript). This book will primarily stay in the CSS-based world, and the following chapters will start you off right…I hope!
+To quickly recap, an animation is nothing more than a visualization of something changing over a period of time. In HTML, you have not one, not two, but three different ways of bringing animations to life: CSS animations, CSS transitions, and scripted animations (created in JavaScript). This book will primarily stay in the CSS-based world, and the following chapters will start you off right…I hope!
 
- 
-
- 
-
- 
-
- Introduction to CSS Animations
+Introduction to CSS Animations
 
 ---
 
-## Sección 3: Chapter 2. Introduction to CSS Animations
+## Sección 3: Chapter 2. Introduction to CSS Animations [Entropy: 0.71]
 
 When creating animations on the web, you can’t really go far without running into CSS animations. What CSS animations do is pretty simple. They allow you to animate CSS properties by specifying what you want those properties to do at various points in time. These “points in time” are known as  keyframes . If you’ve used animation tools in the past, the word “keyframes” should sound familiar to you. The keyframes you define in CSS as part of making your CSS animations work are the equivalent of the keyframes you would have visually defined in Flash/Animate, After Effects, or some other animation tool:
-
- 
- 
- 
 
 If you’ve never used animation tools in the past, don’t worry. You won’t be missing out on much. We’ll be doing all of our animating manually (like an animal!) and learning what is going on at each step. By the end of this chapter, you’ll have learned enough to create an animation made up of a smiling hexagon that bobs up and down.
 
 Our hexagon will start off at the top:
 
- 
- 
- 
-
 It will slide to the bottom:
-
- 
- 
- 
 
 And at the end, our hexagon will slide back to the top:
 
- 
- 
- 
-
 Along the way, we’ll cover the  animation  property, the  @keyframes  rule, and a handful of other topics that will set you up for cooler and more advanced techniques using CSS animations in the future.
-
- 
 
 Creating a Simple Animation
 
- The easiest (and most fun!) way to learn about CSS animations is to just get your hands dirty with using them. Go ahead and create a new HTML document and add the following HTML and CSS to it:
+The easiest (and most fun!) way to learn about CSS animations is to just get your hands dirty with using them. Go ahead and create a new HTML document and add the following HTML and CSS to it:
 
- <!DOCTYPE html> 
+<!DOCTYPE html> 
  <html> 
  
  <head> 
@@ -239,43 +152,34 @@ Creating a Simple Animation
    </div> 
  </body> 
  
- </html> 
+ </html>
 
- Take a moment to look at what you just added. As web pages go, there isn’t anything too complex or crazy going on here. The main thing to note is that we have an image element, and it has an  id  value of  hexagon :
+Take a moment to look at what you just added. As web pages go, there isn’t anything too complex or crazy going on here. The main thing to note is that we have an image element, and it has an  id  value of  hexagon :
 
- <div id= "container" > 
+<div id= "container" > 
    <img id= "hexagon" 
     src= "https://www.kirupa.com/images/hexagon.svg" /> 
- </div> 
+ </div>
 
 We’ll be coming back to this element in a little bit, so don’t forget about it!
 
 Now, before we move on to the next step, go ahead and preview this page in your browser. If everything worked right, you will see a happy hexagon shape…standing boringly still:
 
- 
- 
- 
+Let’s fix the boredom by animating our hexagon shape. To do this, we are going to create a CSS animation. To create a CSS animation, you will need to complete two steps:
 
- Let’s fix the boredom by animating our hexagon shape. To do this, we are going to create a CSS animation. To create a CSS animation, you will need to complete two steps:
-
- 
- 
 Set the  animation  property.
 
- 
 Define the keyframes that specify exactly how and when CSS properties get animated.
 
- 
+We’ll tackle these steps one at a time. First, we’ll deal with our  animation property. In your style block where your style rules currently live, add the  #hexagon style rule below your #container style rule:
 
- We’ll tackle these steps one at a time. First, we’ll deal with our  animation property. In your style block where your style rules currently live, add the  #hexagon style rule below your #container style rule:
-
- #hexagon { 
+#hexagon { 
     animation : bobble 2s infinite ; 
- } 
+ }
 
- The details of what is going on inside this style rule aren’t important at the moment; we’ll get acquainted with them later. For now, let’s go to our next step and specify what our animation does by adding the keyframes. Add the following  @keyframes  style rule just below where your #hexagon style rule lives:
+The details of what is going on inside this style rule aren’t important at the moment; we’ll get acquainted with them later. For now, let’s go to our next step and specify what our animation does by adding the keyframes. Add the following  @keyframes  style rule just below where your #hexagon style rule lives:
 
- @keyframes bobble { 
+@keyframes bobble { 
     0% { 
       transform : translateY ( 10px ); 
     } 
@@ -285,13 +189,9 @@ Define the keyframes that specify exactly how and when CSS properties get animat
     100% { 
       transform : translateY ( 10px ); 
     } 
- } 
+ }
 
- Once you’ve added this style rule, preview your page again. You should see your happy hexagon shape bobbing around happily as if it hasn’t a care in the world. Awesome!
-
- 
-
- 
+Once you’ve added this style rule, preview your page again. You should see your happy hexagon shape bobbing around happily as if it hasn’t a care in the world. Awesome!
 
 What Just Happened
 
@@ -299,29 +199,23 @@ You just defined a CSS animation that caused your hexagon shape to bobble around
 
 The first thing we will look at is the  animation  property itself:
 
- animation : bobble 2s infinite ; 
+animation : bobble 2s infinite ;
 
 The  animation  property is responsible for setting your animation up. In the shorthand variant that you see (and will commonly use), you specify three values:
 
- 
- 
 The name of the animation
 
- 
 The duration
 
- 
 The number of times your animation will loop
-
- 
 
 You can see these values in our  animation  declaration. Our animation is called  bobble , its duration is  2s (seconds), and it is set to loop an  infinite  number of times.
 
- As you can see, the  animation  declaration doesn’t really contain much detail in terms of what gets animated. It sets the high-level definition of what your animation will do, but the actual substance of a CSS animation actually resides in its  @keyframes  rule.
+As you can see, the  animation  declaration doesn’t really contain much detail in terms of what gets animated. It sets the high-level definition of what your animation will do, but the actual substance of a CSS animation actually resides in its  @keyframes  rule.
 
 Let’s look at our  @keyframes  rule to learn more:
 
- @keyframes bobble { 
+@keyframes bobble { 
     0% { 
       transform : translateY ( 10px ); 
     } 
@@ -331,11 +225,11 @@ Let’s look at our  @keyframes  rule to learn more:
     100% { 
       transform : translateY ( 10px ); 
     } 
- } 
+ }
 
 The first thing to notice is how our  @keyframes  rule is structured. On the outside, it contains the  @keyframes  declaration followed by a name:
 
- @keyframes bobble { 
+@keyframes bobble { 
     0% { 
       transform : translateY ( 10px ); 
     } 
@@ -345,13 +239,11 @@ The first thing to notice is how our  @keyframes  rule is structured. On the o
     100% { 
       transform : translateY ( 10px ); 
     } 
- } 
-
- 
+ }
 
 On the inside, it contains style rules (aka the actual keyframes) whose selectors are percentage values (or the keywords from and to ...but ignore that for now):
 
- @keyframes bobble { 
+@keyframes bobble { 
     0% { 
       transform : translateY ( 10px ); 
     } 
@@ -365,7 +257,7 @@ On the inside, it contains style rules (aka the actual keyframes) whose selector
 
 ---
 
-## Sección 4: Chapter 2. Introduction to CSS Animations
+## Sección 4: Chapter 2. Introduction to CSS Animations [Entropy: 0.46]
 
 These style rules, often referred to as  keyframe style rules , are pretty much what you would expect. They just contain CSS properties, such as  transform , whose values will get applied when the rule becomes active.
 
@@ -496,7 +388,7 @@ Browser Support/Vendor Prefixes?
 
 ---
 
-## Sección 5: Chapter 2. Introduction to CSS Animations
+## Sección 5: Chapter 2. Introduction to CSS Animations [Entropy: 0.25]
 
 Conclusion
 
@@ -510,7 +402,7 @@ In this chapter, we’ve looked at how a simple CSS animation works. You learned
 
 ---
 
-## Sección 6: Chapter 3. Introduction to CSS Transitions
+## Sección 6: Chapter 3. Introduction to CSS Transitions [Entropy: 0.65]
 
 When you’re interacting with UIs, a lot of the animations you’ll see won’t be of the  CSS animation kind  with its predefined keyframes. They will instead be reactions to the things you are doing. Examples of such reactions include a link underlining when you hover over it, a menu flying in when you tap on a button, or a text element getting bigger when it has focus. For animating these kinds of behaviors, you will use  CSS transitions .
 
@@ -645,7 +537,7 @@ The Longhand Version
 
 ---
 
-## Sección 7: Chapter 3. Introduction to CSS Transitions
+## Sección 7: Chapter 3. Introduction to CSS Transitions [Entropy: 0.25]
 
 Conclusion
 
@@ -659,7 +551,7 @@ You’ve just learned the basics of how to define a simple CSS transition. Just 
 
 ---
 
-## Sección 8: Chapter 4. Working with CSS Timing Functions
+## Sección 8: Chapter 4. Working with CSS Timing Functions [Entropy: 0.5]
 
 So far, we’ve created our animations and transitions by specifying only a handful of things: the properties to animate, the initial and final property values, and the duration. The exact syntax was different depending on whether we were dealing with a CSS animation or a transition, but the general ingredients were the same. The end result was an animation.
 
@@ -810,7 +702,7 @@ Timing Functions in CSS Transitions
 
 ---
 
-## Sección 9: Chapter 4. Working with CSS Timing Functions
+## Sección 9: Chapter 4. Working with CSS Timing Functions [Entropy: 0.5]
 
 /* longhand */ 
  #karmaKramer { 
@@ -946,7 +838,7 @@ Also, before I forget, here is the full markup for the three sliding circles tha
 
 ---
 
-## Sección 10: Chapter 4. Working with CSS Timing Functions
+## Sección 10: Chapter 4. Working with CSS Timing Functions [Entropy: 0.65]
 
 < style > 
    .circle { 
@@ -1009,7 +901,7 @@ There is nothing crazy going on in this example, so I’ll leave you to it…and
 
 ---
 
-## Sección 11: Chapter 5. Ensuring Your Animations Run Really Smoothly
+## Sección 11: Chapter 5. Ensuring Your Animations Run Really Smoothly [Entropy: 0.46]
 
 For the longest time, creating smooth and highly performant animations using only web technologies was very difficult. The browsers were slow, CSS properties weren’t optimized for rapid updates, the graphics card didn’t do much work, you had to walk 15 miles in the snow to get to school, and so on (see Figure 5-1 ).
 
@@ -1093,7 +985,7 @@ Each time you modify the value set on these properties (and other layout-impacti
 
 ---
 
-## Sección 12: Chapter 5. Ensuring Your Animations Run Really Smoothly
+## Sección 12: Chapter 5. Ensuring Your Animations Run Really Smoothly [Entropy: 0.475]
 
 You could choose to set the position property of the elements you are animating to fixed or absolute . That avoids your browser having to calculate the layout for your entire document. While this is a better optimization, your browser still has to do unnecessary layout-related calculations on the element that is moving as part of figuring out the box model. Sigh.
 
@@ -1214,7 +1106,7 @@ The will-change property seems like the perfect solution we’ve all been lookin
 
 ---
 
-## Sección 13: Chapter 5. Ensuring Your Animations Run Really Smoothly
+## Sección 13: Chapter 5. Ensuring Your Animations Run Really Smoothly [Entropy: 0.28]
 
 Conclusion
 
@@ -1246,7 +1138,7 @@ As long as you do these two things, your animations will be responsive, run blaz
 
 ---
 
-## Sección 14: Chapter 6. Transitions, Animations, and JavaScript
+## Sección 14: Chapter 6. Transitions, Animations, and JavaScript [Entropy: 0.545]
 
 So far, while learning the basics of how CSS animations and transitions work, we haven’t deviated too far from the safe middle road. We loaded the page, and an animation automatically started to play. We hovered over an element, and some property on that element animated in some way. The middle road is fine for many cases, but there is so much more we can do. In this chapter, we are going to take some less beaten paths and expand the ways we can interact with animations and transitions by adding in a dash of JavaScript.
 
@@ -1408,7 +1300,7 @@ The container property stores a reference to our container div element. When we 
 
 ---
 
-## Sección 15: Chapter 6. Transitions, Animations, and JavaScript
+## Sección 15: Chapter 6. Transitions, Animations, and JavaScript [Entropy: 0.56]
 
 container . style . backgroundColor = color ; 
 
@@ -1538,7 +1430,7 @@ In HTML, you have a menu whose id is  dropDown :
 
 ---
 
-## Sección 16: Chapter 6. Transitions, Animations, and JavaScript
+## Sección 16: Chapter 6. Transitions, Animations, and JavaScript [Entropy: 0.75]
 
 Now, if we wanted to apply our .disableMenu style rule to this element, all you would need to do is add disableMenu as a class value to the dropDown element:
 
@@ -1610,7 +1502,7 @@ The animate function is the callback function for our requestAnimationFrame call
 
 ---
 
-## Sección 17: Chapter 6. Transitions, Animations, and JavaScript
+## Sección 17: Chapter 6. Transitions, Animations, and JavaScript [Entropy: 0.25]
 
 Conclusion
 
@@ -1624,7 +1516,7 @@ To create the kind of animated interactions your users will see when they intera
 
 ---
 
-## Sección 18: Chapter 7. CSS Animations Versus CSS Transitions
+## Sección 18: Chapter 7. CSS Animations Versus CSS Transitions [Entropy: 0.421]
 
 As you’ve seen, right now in CSS you have two techniques for visualizing change that are competing for your attention: CSS animations and CSS transitions . On the surface, they seem similar. But once you get to know them, sort of like identical twins, you’ll find that they are quite different in many important ways. In this chapter, we’ll explore the similarities and the differences that exist between animations and transitions.
 
@@ -1764,7 +1656,7 @@ A transition simply goes from an initial state to the final state. You cannot sp
 
 ---
 
-## Sección 19: Chapter 7. CSS Animations Versus CSS Transitions
+## Sección 19: Chapter 7. CSS Animations Versus CSS Transitions [Entropy: 0.325]
 
 Specifying Properties Up Front
 
@@ -1876,7 +1768,7 @@ Now, with enough effort and JavaScript tomfoolery, you can neutralize any of the
 
 ---
 
-## Sección 20: Chapter 8. Animating Your Links to Life
+## Sección 20: Chapter 8. Animating Your Links to Life [Entropy: 0.515]
 
 Back in the day, links were very predefined and boring. They were made up of underlined blue text that turned purple if you had already visited them. Often, there was also a mysterious active state where your links would turn red when you were interacting with them. They looked sorta like the following:
 
@@ -2014,7 +1906,7 @@ Go ahead and make these changes, preview in your browser, and hover over any of 
 
 ---
 
-## Sección 21: Chapter 8. Animating Your Links to Life
+## Sección 21: Chapter 8. Animating Your Links to Life [Entropy: 0.31]
 
 In this version, we are specifying our underline’s blue color as an RGBA value with the last value being the alpha or transparency. A value of 0 means the color is fully transparent. A value of 1 means the color is fully visible. By change the alpha value between the normal and hover states, we ensure our transition animates the underline color by fading in and out as expected. Yay!
 
@@ -2143,12 +2035,11 @@ Conclusion
 
 ---
 
-## Sección 22: Chapter 9. Simple Text Fade and Scale Animation
+## Sección 22: Chapter 9. Simple Text Fade and Scale Animation [Entropy: 0.75]
 
 Simple Text Fade and Scale Animation 
 
  
-
 
  Not all animations have to be flashy and doing all sorts of things to grab your attention. Some of the best uses for animation are in the subtle cases—the cases where you may not even notice an animation is present. In this chapter, we’ll create one such animation whose existence is purely to add some sugary, frosty value. To see this animation, navigate your browser to http://bit.ly/subtle_animation .
 
@@ -2328,7 +2219,7 @@ Mapping to what we visually observe, in the end state, our text is fully visible
 
 ---
 
-## Sección 23: Chapter 9. Simple Text Fade and Scale Animation
+## Sección 23: Chapter 9. Simple Text Fade and Scale Animation [Entropy: 0.385]
 
 The Easing Function
 
@@ -2372,7 +2263,7 @@ Conclusion
 
 ---
 
-## Sección 24: Chapter 10. Creating a Smooth Sliding Menu
+## Sección 24: Chapter 10. Creating a Smooth Sliding Menu [Entropy: 0.71]
 
 In UIs today, sliding menus are all the rage. These menus are basically off-screen elements that slide into view when you click or tap on an arrow, a hamburger icon, or something else that indicates a menu will appear.
 
@@ -2497,7 +2388,7 @@ Create a new HTML document and add the following content into it:
 
 ---
 
-## Sección 25: Chapter 10. Creating a Smooth Sliding Menu
+## Sección 25: Chapter 10. Creating a Smooth Sliding Menu [Entropy: 0.75]
 
 #roundButton :active { 
        border-color : #003557 ; 
@@ -2676,7 +2567,7 @@ This is what ensures our menu goes from being hidden initially to now showing up
 
 ---
 
-## Sección 26: Chapter 10. Creating a Smooth Sliding Menu
+## Sección 26: Chapter 10. Creating a Smooth Sliding Menu [Entropy: 0.466]
 
 Hiding the menu
 
@@ -2794,7 +2685,7 @@ As you’ll keep seeing in the future, ensuring that an animation plays when you
 
 ---
 
-## Sección 27: Chapter 11. Scroll-Activated Animations
+## Sección 27: Chapter 11. Scroll-Activated Animations [Entropy: 0.695]
 
 For centuries, whenever you scrolled down a page full of content, nothing exciting happened. The content you scrolled into view just appeared. The content that you scrolled out of view just disappeared. The most exciting thing really was being able to use your fingers to scroll on touch devices as opposed to relying only on those gray scroll bars that annoyingly clung to the edges of your screen. Blech.
 
@@ -2925,7 +2816,7 @@ The reason we do this isn’t to have our elements look different in the HTML. A
 
 ---
 
-## Sección 28: Chapter 11. Scroll-Activated Animations
+## Sección 28: Chapter 11. Scroll-Activated Animations [Entropy: 0.75]
 
 The rest is just gravy. More specifically, what we see depends entirely on what the various applied CSS rules specify, whether you have any transitions applied, and whether any properties your transitions are listening for get modified. For our example, when the #myList li.active style rule gets applied on the visible list items, those items will smoothly fade in and slide up. Why? You can thank the following highlighted lines in our CSS:
 
@@ -3055,7 +2946,7 @@ To detect whether an element is fully visible, we have the isFullyVisible functi
 
 ---
 
-## Sección 29: Chapter 11. Scroll-Activated Animations
+## Sección 29: Chapter 11. Scroll-Activated Animations [Entropy: 0.74]
 
 Putting It All Together
 
@@ -3243,7 +3134,7 @@ If you want to just view the full HTML, CSS, and JS for our example, here you go
 
 ---
 
-## Sección 30: Chapter 11. Scroll-Activated Animations
+## Sección 30: Chapter 11. Scroll-Activated Animations [Entropy: 0.59]
 
 var top = elementBoundary . top ; 
        var bottom = elementBoundary . bottom ; 
@@ -3310,7 +3201,7 @@ Conclusion
 
 ---
 
-## Sección 31: Chapter 12. The iOS Icon Wobble/Jiggle
+## Sección 31: Chapter 12. The iOS Icon Wobble/Jiggle [Entropy: 0.75]
 
 When you press and hold an icon on your iOS (iPhone/iPad/iPod) device’s home screen, you’ll get the ability to rearrange the icons or uninstall the app associated with it. That’s really boring and not the interesting part I want you to focus on. The interesting part is what these icons do as a result of you pressing and holding. They wobble and jiggle (aka wobiggle) around. It’s pretty awesome.
 
@@ -3473,7 +3364,7 @@ Notice that our object is still rotating. It’s just that what it is rotating a
 
 ---
 
-## Sección 32: Chapter 12. The iOS Icon Wobble/Jiggle
+## Sección 32: Chapter 12. The iOS Icon Wobble/Jiggle [Entropy: 0.75]
 
 Looking at the CSS
 
@@ -3646,7 +3537,7 @@ The way to account for this monotonous movement is our second of the “few thin
 
 ---
 
-## Sección 33: Chapter 12. The iOS Icon Wobble/Jiggle
+## Sección 33: Chapter 12. The iOS Icon Wobble/Jiggle [Entropy: 0.265]
 
 Notice that each img element has the animation-delay  and animation-duration properties set to slightly different values.
 
@@ -3677,7 +3568,7 @@ Ultimately, there is no right or wrong way to tackle this. For the handful of im
 
 ---
 
-## Sección 34: Chapter 13. Parallax Scrolling
+## Sección 34: Chapter 13. Parallax Scrolling [Entropy: 0.545]
 
 For many practical reasons, our UIs are designed to be two dimensional and flat. Once you throw in meaningful content, some navigation, and other doodads to make your application usable, adding any more dimensions simply gets in the way and becomes a distraction. Despite the stranglehold two dimensions have on what we create, there are subtle and effective ways of sneaking an extra dimension in here and there.
 
@@ -3825,7 +3716,7 @@ Now that you have an understanding of how this effect works, the next step is to
 
 ---
 
-## Sección 35: Chapter 13. Parallax Scrolling
+## Sección 35: Chapter 13. Parallax Scrolling [Entropy: 0.725]
 
 <script> 
    
@@ -3988,7 +3879,7 @@ Getting the scroll position
 
 ---
 
-## Sección 36: Chapter 13. Parallax Scrolling
+## Sección 36: Chapter 13. Parallax Scrolling [Entropy: 0.695]
 
 window . addEventListener ( "DOMContentLoaded" , scrollLoop , false ); 
  
@@ -4145,7 +4036,7 @@ In these lines, we are calling the setTranslate function and passing in the valu
 
 ---
 
-## Sección 37: Chapter 13. Parallax Scrolling
+## Sección 37: Chapter 13. Parallax Scrolling [Entropy: 0.472]
 
 function setTranslate ( xPos , yPos , el ) { 
       el . style . transform = "translate3d(" + xPos + "px, " 
@@ -4198,7 +4089,7 @@ Conclusion
 
 ---
 
-## Sección 38: Chapter 14. Sprite Sheet Animations Using Only CSS
+## Sección 38: Chapter 14. Sprite Sheet Animations Using Only CSS [Entropy: 0.53]
 
 Sprite sheets can be used for more than just optimizing how you display static images. Hearkening back to the very first arcade games, your sprite sheets can also be used to contain a sequence of images that make up the individual frames of an animation. When these frames are played back rapidly, what you see is a moving picture .
 
@@ -4353,7 +4244,7 @@ The first thing we’ll do is specify the keyframes for our CSS animation. Add t
 
 ---
 
-## Sección 39: Chapter 14. Sprite Sheet Animations Using Only CSS
+## Sección 39: Chapter 14. Sprite Sheet Animations Using Only CSS [Entropy: 0.635]
 
 The last step is to actually define the CSS animation. In your spriteContainer style rule, add the following line:
 
@@ -4449,7 +4340,7 @@ Conceptually, animating sprites is pretty straightforward. You are basically emu
 
 ---
 
-## Sección 40: Chapter 15. Creating a Sweet Content Slider
+## Sección 40: Chapter 15. Creating a Sweet Content Slider [Entropy: 0.665]
 
 One of the biggest problems facing Western civilization is figuring out clever ways to display a large amount of content in a small space. One effective solution involves placing content in sequential blocks using what is known in the industry (and the ’hood) as a content slider . You may have never heard of it, but I’m willing to bet that you definitely have seen and used it.
 
@@ -4616,7 +4507,7 @@ The .content style rule also specifies the float to be left . This results in yo
 
 ---
 
-## Sección 41: Chapter 15. Creating a Sweet Content Slider
+## Sección 41: Chapter 15. Creating a Sweet Content Slider [Entropy: 0.75]
 
 At this point, your div element is properly sized and lined up correctly. Too bad it is completely invisible:
 
@@ -4769,7 +4660,7 @@ We need to style our newly added HTML. In your style region, add the following s
 
 ---
 
-## Sección 42: Chapter 15. Creating a Sweet Content Slider
+## Sección 42: Chapter 15. Creating a Sweet Content Slider [Entropy: 0.695]
 
 #navLinks { 
    text-align : center ; 
@@ -4945,7 +4836,7 @@ You can see this declared in the #wrapper style rule. We also know from that sty
 
 ---
 
-## Sección 43: Chapter 15. Creating a Sweet Content Slider
+## Sección 43: Chapter 15. Creating a Sweet Content Slider [Entropy: 0.75]
 
 Knowing what we know, we can extrapolate the positions for all of the blocks of content as follows:
 
@@ -5077,7 +4968,7 @@ Sets the position of the wrapper element.
 
 ---
 
-## Sección 44: Chapter 15. Creating a Sweet Content Slider
+## Sección 44: Chapter 15. Creating a Sweet Content Slider [Entropy: 0.68]
 
 Let’s examine these steps in greater detail.
 
@@ -5194,12 +5085,11 @@ Content sliders come in many shapes and sizes and forms. Some are made up of mul
 
 ---
 
-## Sección 45: Chapter 16. Conclusion
+## Sección 45: Chapter 16. Conclusion [Entropy: 0.268]
 
 Conclusion 
 
  
-
 
 Phew! As you may have noticed, there aren’t too many pages left to go. That can only mean one thing. You are reaching the end of this book. In the last many chapters we have looked at several animation-related topics together, and we’ve covered a lot of ground:
 
@@ -5384,7 +5274,7 @@ Revision History for the First Edition
 
 ---
 
-## Sección 46: Part I. The Basics
+## Sección 46: Part I. The Basics [Entropy: 0.25]
 
 Before you can create the totally awesome, cool, and useful animations that you want to create, we need to start at the beginning and cover the basics. We need to get a good feel for the building blocks you have at your disposal, not only for creating animations, but for creating animations that run really well. That sounds complicated, but as you will find out shortly, it’s all pretty straightforward…for the most part. :P
 
@@ -5398,7 +5288,7 @@ Onward!
 
 ---
 
-## Sección 47: Part II. Learning from Examples
+## Sección 47: Part II. Learning from Examples [Entropy: 0.25]
 
 This is probably the part of the book you have been waiting for. Or dreading. This is the part where we take everything we’ve learned in the previous seven chapters and apply it toward creating the types of animations you see used throughout our user interfaces. Yes, this does mean that we’ll be seeing less of happily smiling geometric shapes and more of the traditional buttons, scroll bars, links, and other widgets that everybody sees, clicks, types, or taps on every day.
 
@@ -5451,7 +5341,7 @@ With all that said, once you’ve learned all about animations, their subtleties
 
 Browser Support
 
- Everything you learn in this book is designed to work on what all the cool people call a “modern” browser. That’s just a fancy way of saying that if you are running a semirecent version of Chrome, Internet Explorer 11, Edge, Firefox, or Safari, you should be good to go. Also, before you ask, everything you see here will work beautifully on mobile devices like your iPhones, iPads, and Android-based gizmos!
+ Everything you learn in this book is designed to work on what all the cool people call a “modern” browser. That’s just a fancy way of saying that if you are running a semirecent version of Chrome, Internet Explorer 11, Edge, Firefox, or Safari, you should be good to go. Also, before you ask, everything you see here will work beautifully on mobile devices like your iPhones, iPads, and Web Platform-based gizmos!
 
  
 
@@ -5467,7 +5357,7 @@ Situations where you don’t need to ask for permission:
 
 ---
 
-## Sección 48: Part II. Learning from Examples
+## Sección 48: Part II. Learning from Examples [Entropy: 0.265]
 
 Using the code from this book in your personal or commercial project
 

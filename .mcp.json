@@ -9,6 +9,11 @@
       "command": "npx",
       "args": ["-y", "@upstash/context7-mcp@latest"],
       "disabled": false
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest", "--headless"],
+      "disabled": false
     }
   }
 }

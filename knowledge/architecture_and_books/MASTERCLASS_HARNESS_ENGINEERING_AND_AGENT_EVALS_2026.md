@@ -1,21 +1,21 @@
-> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
+
 # 🎓 Masterclass 04: Metodología Harness & Evals Agénticos en Producción
 
-> **Destinatario:** CTO & QA Principal de Yendo (Human-in-the-Loop)  
+> **Destinatario:** CTO & QA Principal de WebFactory (Human-in-the-Loop)  
 > **Ubicación Canónica:** `.knowledge/learning/Masterclass_04_Harness_Y_Evals_Agenticos_SOTA.md`  
-> **Tema:** Cómo estructurar el andamiaje (Harness) y la batería de evaluación (Evals) para que el equipo multi-agente de Yendo opere con consistencia matemática sin degradar el código de producción.
+> **Tema:** Cómo estructurar el andamiaje (Harness) y la batería de evaluación (Evals) para que el equipo multi-agente de WebFactory opere con consistencia matemática sin degradar el código de producción.
 
 ---
 
@@ -27,7 +27,7 @@ En un sistema agéntico profesional, el modelo de IA nunca toca directamente el 
 sequenceDiagram
     autonumber
     actor CTO as CTO / Tarea de Desarrollo
-    participant Harness as Yendo Agent Harness (Scaffold)
+    participant Harness as WebFactory Agent Harness (Scaffold)
     participant Agent as Agente Autónomo (LLM + Context)
     participant Sandbox as Worktree / Entorno Aislado
     participant Grader as 4-Layer Grader Stack (Evals)
@@ -65,7 +65,7 @@ sequenceDiagram
 
 *Por qué elegimos esta solución técnica y cuáles fueron las alternativas descartadas (el "Camino C").*
 
-| Criterio | Solución Elegida (Yendo Eval Harness) | Alternativa Tradicional (Vibe Coding) | Alternativa Comercial (SaaS Cerrado) |
+| Criterio | Solución Elegida (WebFactory Eval Harness) | Alternativa Tradicional (Vibe Coding) | Alternativa Comercial (SaaS Cerrado) |
 | :--- | :--- | :--- | :--- |
 | **Criterio de Evaluación** | **Rúbricas Binarias Descompuestas en 4 Capas** (Código, Estado, Traza, Juez Calibrado). | "A ojo" del desarrollador ("parece que funciona en el simulador"). | Dashboards de 1 a 5 no calibrados que没人 entiende qué significa un 3.5. |
 | **Aislamiento de Ejecución** | **Git Worktrees locales y Sandboxes con Circuit Breakers** (límites de turnos y tokens). | Agente editando directamente en el working directory del desarrollador. | Contenedores en la nube de alta latencia y costo elevado por ejecución. |
@@ -76,7 +76,7 @@ sequenceDiagram
 
 ## 🥊 3. La Pregunta Trampa del Inversor
 
-> *"Si el 90% de las startups de IA sufren degradación de código y alucinaciones cuando sus agentes operan de forma autónoma, ¿cómo me garantizas que Yendo no está acumulando deuda técnica invisible cada vez que tus agentes commitean código?"*
+> *"Si el 90% de las startups de IA sufren degradación de código y alucinaciones cuando sus agentes operan de forma autónoma, ¿cómo me garantizas que WebFactory no está acumulando deuda técnica invisible cada vez que tus agentes commitean código?"*
 
 ---
 
@@ -84,7 +84,7 @@ sequenceDiagram
 
 > *"Las startups que sufren degradación cometen el error de hacer 'Vibe Coding': miden el éxito con una prueba manual de una sola pasada (`k=1`) y evalúan al modelo aislado sin andamiaje.
 > 
-> En Yendo aplicamos la **Metodología Harness inspirada en SWE-bench y las directivas de Anthropic**: ningún agente escribe directamente en el código de producción. Todo desarrollo ocurre en un **Agent Harness** con límites de 6 turnos y un **Evaluation Harness** con gradación en 4 capas.
+> En WebFactory aplicamos la **Metodología Harness inspirada en SWE-bench y las directivas de Anthropic**: ningún agente escribe directamente en el código de producción. Todo desarrollo ocurre en un **Agent Harness** con límites de 6 turnos y un **Evaluation Harness** con gradación en 4 capas.
 > 
 > Para que un cambio de agente sea admitido, debe superar de forma determinística nuestro **Invariants Ledger**:
 > 1. Cero errores TypeScript (`npx tsc --noEmit`).

@@ -1,21 +1,28 @@
-﻿---
+---
 name: design-system
-description: Dark casino theme, tokens, Chakra Petch typography, and glassmorphism styling guide.
+description: Multi-brand W3C DTCG 2025.10 design token system, OKLCH 90/8/2 perceptual color scales, APCA contrast floors, Utopia fluid typography, and 67 on-demand MIT design style guides.
 ---
 
-# WebFactory Visual Design System
+# Web Software Factory — Universal Design System (`W3C DTCG 2025.10` + `OKLCH`)
 
-## Palette Tokens
-- **Background Deep:** `#090c14` / Glass backdrop `rgba(14, 18, 28, 0.85)`
-- **Accent Gold:** `#ffd700` (Gleam, winner highlights, badges)
-- **Success Green:** `#00e676` (Profit, online status, hit indicators)
-- **High Multiplier:** `#d32ce6` (Big win / 100x+ purple)
-- **Border Subtle:** `rgba(255, 215, 0, 0.25)` or `rgba(255, 255, 255, 0.10)`
+## 1. Perceptual Color Architecture (`OKLCH` 90/8/2 Budget)
+- **90% Neutral Surface Hierarchy (De-Boxed Luminance Steps):**
+  - `--surface-canvas`: `oklch(13.2% 0.016 258)` (Base viewport canvas)
+  - `--surface-elevated`: `oklch(19.0% 0.018 260)` (Bento cards, primary sections — separated by luminance, not heavy borders)
+  - `--surface-glass`: `oklch(22.0% 0.020 260 / 0.72)` with `backdrop-filter: blur(12px)`
+- **8% Secondary Interactive Accents:**
+  - `--brand-accent`: `oklch(74.0% 0.170 160)` (Active states, badges, interactive indicators)
+- **2% Focal Conversion CTA:**
+  - `--brand-cta`: `oklch(82.0% 0.180 85)` (Reserved strictly for the primary conversion trigger `[data-cta="primary"]`)
+- **APCA Perceptual Contrast Floors (`CONSTRAINTS.md`):**
+  - Primary/body copy: `Lc >= 75`
+  - Secondary UI controls and metadata: `Lc >= 60`
 
-## Typography
-- Headings & Numbers: `Chakra Petch`, tabular numbers (`font-variant-numeric: tabular-nums`).
-- Body & Chat: `Segoe UI`, `system-ui`, sans-serif.
+## 2. Utopia Fluid Typography & Ergonomics
+- Use `clamp()` fluid scales (`--step--1` through `--step-4`) for native 100% zoom fit across `1920x1080`, `1440x900`, `768x1024`, and `390x844` with `0px` horizontal scroll.
+- Enforce `font-variant-numeric: tabular-nums` (`tabular-nums`) on all dynamic counters, pricing tables, and KPIs to guarantee `CLS = 0.000`.
+- Enforce `text-wrap: balance` on headings (`h1`–`h4`) and `text-wrap: pretty` on body copy.
 
-## Motion Guidelines
-- Standard animations: 150ms to 400ms using `cubic-bezier(0.18, 0.89, 0.32, 1.28)`.
-- Respect `prefers-reduced-motion: reduce`.
+## 3. Progressive Disclosure of the 67 MIT Design Styles
+- Run `node tools/factory.mjs styles` to inspect all 67 curated style systems (`bento`, `linear`, `stripe`, `swiss`, `editorial`, `glassmorphism`, `brutalist`, etc.).
+- Bind only the chosen style into `.specify/memory/style-guide.md` via `--style <name>` to preserve context budget.

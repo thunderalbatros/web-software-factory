@@ -1,15 +1,15 @@
-> **Alcance:** Literatura canónica y tratados técnicos de animación a 60 FPS, shaders GPU, física de resortes (spring physics), arte técnico 3D y micro-interacciones fluidas para sitios web modernos y overlays OBS.
-
 ---
 version: 1.0.0
 tipo: guia
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - tech-stack
   - canonico
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica y tratados técnicos de animación a 60 FPS, shaders GPU, física de resortes (spring physics), arte técnico 3D y micro-interacciones fluidas para sitios web modernos y overlays OBS.
 
 # 🎨 Framework de Anabólicos Gráficos y 2.5D/3D para Agentes Visuales
 
@@ -17,7 +17,7 @@ ultima_revision: 2026-08-27
 **Fecha:** 27 de Agosto de 2026 | **Versión:** 1.0.0 (Master Pipeline)  
 **Orquestador:** [[MANAGER_AGENT]] (Lead Technical Director)  
 **Agentes Destinatarios:** [[UI_AGENT]] (Arquitectura Visual & MD3) y [[CREATIVE_TECH]] (Aceleración GPU & Físicas)  
-**Objetivo:** Traducir los estándares de la industria cinematográfica y de videojuegos 3D (Blender, ZBrush, Maya, Substance Painter) a arquitecturas móviles ultra-ligeras en `[[React Native]]` / `[[Expo]]` SDK 57 con renderizado estricto a **120 FPS** y **TTI < 1.2s**.
+**Objetivo:** Traducir los estándares de la industria cinematográfica y de videojuegos 3D (Blender, ZBrush, Maya, Substance Painter) a arquitecturas móviles ultra-ligeras en `[[Modern Web UI (CSS/WAAPI)]]` / `[[Expo]]` SDK 57 con renderizado estricto a **120 FPS** y **TTI < 1.2s**.
 
 ---
 
@@ -25,16 +25,16 @@ ultima_revision: 2026-08-27
 
 Sometido al sistema de scoring cuantitativo (0–100 puntos), descartando radicalmente fuentes superficiales:
 
-| Fuente / Documentación | Tipo | Score | Tier | Dictamen y Aplicabilidad en Yendo |
+| Fuente / Documentación | Tipo | Score | Tier | Dictamen y Aplicabilidad en WebFactory |
 | :--- | :---: | :---: | :---: | :--- |
 | **Rive Runtime Architecture & Nitro Modules** (Margelo & Rive, 2025/2026) | Oficial | **98/100** | **Tier 1** | **Eje Central:** Reconstrucción sobre Nitro Modules para Fabric/Bridgeless. Cero sobrecarga en JS thread; control reactivo de State Machines en C++. |
-| **Shopify React Native Skia & GLSL Shader Specification** (Shopify, 2025) | Oficial | **96/100** | **Tier 1** | **GPU Drawing:** Dibujo procedural directo en el silicio gráfico. Efectos de relieve, Fresnel y desenfoques gaussianos (*liquid glass*) a 120 FPS. |
+| **Shopify Modern Web UI (CSS/WAAPI) Skia & GLSL Shader Specification** (Shopify, 2025) | Oficial | **96/100** | **Tier 1** | **GPU Drawing:** Dibujo procedural directo en el silicio gráfico. Efectos de relieve, Fresnel y desenfoques gaussianos (*liquid glass*) a 120 FPS. |
 | **Google Material Design 3 (MD3) Motion & Spatial Hierarchy** (Google, 2024/2026) | Oficial | **95/100** | **Tier 1** | **Jerarquía Espacial:** Ratios matemáticos de escala (1.25), tiempos de easing calibrados (8.3ms por frame a 120Hz) y elevaciones Dark-First (`#121212` / `#FF5500`). |
 | **Shopify FlashList v2 Technical Manual** (Shopify, 2024/2025) | Oficial | **94/100** | **Tier 1** | **Reciclaje Celular:** Renderizado de feeds hiperlocales con costo de layout $O(1)$, eliminando saltos de frame (*jank*). |
 | **Software Mansion: Reanimated 4 Worklets Specification** | Oficial | **96/100** | **Tier 1** | **Físicas Nativas:** Micro-animaciones gestuales `withSpring` desacopladas de la cola de eventos de React. |
 | **Airbnb Engineering: Mobile Lottie Budgeting & Adaptive Refresh Rate** | Empresa Élite | **88/100** | **Tier 2** | Presupuesto estricto de assets vectoriales ($<50\text{KB}$) y adaptación a pantallas ProMotion / 120Hz. |
 | **Discord Mobile: High Refresh Rate 120fps UI Thread Management** | Empresa Élite | **85/100** | **Tier 2** | Eliminación de cálculos de layout en tiempo de scroll. |
-| *Tutoriales genéricos de YouTube sobre mallas 3D pesadas (.obj/.gltf) en React Native* | Genérico | **38/100** | **Tier 3 (Descartado)** | **VETADO:** Modelos de +30MB con mallas de alta densidad colapsan la memoria RAM y destruyen la batería en bares. |
+| *Tutoriales genéricos de YouTube sobre mallas 3D pesadas (.obj/.gltf) en Modern Web UI (CSS/WAAPI)* | Genérico | **38/100** | **Tier 3 (Descartado)** | **VETADO:** Modelos de +30MB con mallas de alta densidad colapsan la memoria RAM y destruyen la batería en bares. |
 
 ---
 
@@ -44,7 +44,7 @@ Sometido al sistema de scoring cuantitativo (0–100 puntos), descartando radica
 ┌─────────────────────────────────────────────────────────────────────────────────────────────┐
 │                              PUENTE TECNOLÓGICO DE ÉLITE                                    │
 │                                                                                             │
-│  Industria 3D Tradicional                Traducción Ultra-Rendimiento Yendo                 │
+│  Industria 3D Tradicional                Traducción Ultra-Rendimiento WebFactory                 │
 │  ─────────────────────────                ──────────────────────────────────                 │
 │  1. Mallas Poligonales (Blender/Maya)  →  Shaders Procedurales GLSL en Skia (GPU nativa)    │
 │  2. Esculpido High-Poly (ZBrush)      →  Vectores Cel-Shading 2.5D con Paleta Controlada   │
@@ -56,7 +56,7 @@ Sometido al sistema de scoring cuantitativo (0–100 puntos), descartando radica
 ### 1. Modelado y Topología $\rightarrow$ Shaders GLSL en `@shopify/react-native-skia`
 - **Concepto 3D:** En lugar de renderizar mallas con 50,000 polígonos, [[CREATIVE_TECH]] traslada la simulación de volumen a la GPU mediante ecuaciones de sombreado en GLSL:
   - **Efecto Fresnel:** Brillo perimetral en tarjetas seleccionadas para simular curvatura 3D.
-  - **Liquid Glass / Profundidad:** Desenfoques dinámicos y gradientes especulares en la Bottom Bar y en el botón "Yendo!" sin consumo de CPU.
+  - **Liquid Glass / Profundidad:** Desenfoques dinámicos y gradientes especulares en la Bottom Bar y en el botón "WebFactory!" sin consumo de CPU.
 
 ### 2. Esculpido y Detalle $\rightarrow$ Estética Stylized 2.5D (El Carpincho)
 - **Concepto 3D:** El detalle volumétrico se traslada a vectores planos con sombreado cel-shaded (2 tonos: `#8B5A2B` base y `#6E431F` sombras oclusivas).
@@ -128,7 +128,7 @@ gantt
 - **Sprint 4 (Validación Estricta):** Ejecución de `npx tsc --noEmit` garantizando 0 errores y prueba de estabilidad de frames.
 
 ---
-#tecnologia #graficos #motion-design #skia #rive #lottie #reanimated #blender-to-mobile #ui-ux #md3 #yendo
+#tecnologia #graficos #motion-design #skia #rive #lottie #reanimated #blender-to-mobile #ui-ux #md3 #webfactory
 
 ---
 
@@ -137,7 +137,7 @@ gantt
 - [[YENDO_LIBRARY]]
 - [[Zustand]]
 - [[Reanimated]]
-- [[React Native Skia]]
+- [[Modern Web UI (CSS/WAAPI) Skia]]
 - [[Rive]]
 - [[Lottie]]
 - [[Capybara Mascot]]

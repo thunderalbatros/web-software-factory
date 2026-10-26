@@ -1,10 +1,10 @@
-﻿# CANON ECC HARNESS AND AGENT OPTIMIZATION PLAYBOOK 2026
+# CANON ECC HARNESS AND AGENT OPTIMIZATION PLAYBOOK 2026
 
 > **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
 
 [knowledge/docs/ECC_HARNESS_AND_AGENT_OPTIMIZATION_PLAYBOOK_2026.md › 📘 Playbook de Optimización del Equipo de Agentes y Arquitectura Harness (Inspirado en affaan-m/ECC 2026)]
 > **Origen Canónico:** Investigación y extracción del repositorio `affaan-m/everything-claude-code` (ECC)  
-> **Adaptación:** Ecosistema Centinela Studio (Antigravity IDE + Gemini 3.8 Flash + Node.js/TypeScript + GCP FinOps)  
+> **Adaptación:** Ecosistema la Web Software Factory (Antigravity IDE + Gemini 3.8 Flash + Node.js/TypeScript + GCP FinOps)  
 > **Fecha:** Octubre 2026 | **Ámbito:** `knowledge/docs/` (Ingesta RAG en Qdrant)
 
 ---
@@ -24,10 +24,10 @@ El proyecto **`affaan-m/ECC`** introduce la arquitectura de **Harness Modular**:
 
 ---
 
-[knowledge/docs/ECC_HARNESS_AND_AGENT_OPTIMIZATION_PLAYBOOK_2026.md › 📘 Playbook de Optimización del Equipo de Agentes y Arquitectura Harness (Inspirado en affaan-m/ECC 2026) › 2. Los 4 Pilares de ECC Adaptados a Centinela]
+[knowledge/docs/ECC_HARNESS_AND_AGENT_OPTIMIZATION_PLAYBOOK_2026.md › 📘 Playbook de Optimización del Equipo de Agentes y Arquitectura Harness (Inspirado en affaan-m/ECC 2026) › 2. Los 4 Pilares de ECC Adaptados a Web Software Factory]
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                 CENTINELA AGENT HARNESS                     │
+│                 Web Software Factory AGENT HARNESS                     │
 ├───────────────────────────────┬─────────────────────────────┤
 │ 1. Continuous Learning v2     │ 2. Multi-Phase Gate         │
 │   • Motor de Instintos ($0)   │   • verify-before-claim     │
@@ -41,12 +41,12 @@ El proyecto **`affaan-m/ECC`** introduce la arquitectura de **Harness Modular**:
 └───────────────────────────────┴─────────────────────────────┘
 ```
 
-[knowledge/docs/ECC_HARNESS_AND_AGENT_OPTIMIZATION_PLAYBOOK_2026.md › 📘 Playbook de Optimización del Equipo de Agentes y Arquitectura Harness (Inspirado en affaan-m/ECC 2026) › 2. Los 4 Pilares de ECC Adaptados a Centinela › Pilar 1: Continuous Learning e Instintos (ECC Pattern)]
+[knowledge/docs/ECC_HARNESS_AND_AGENT_OPTIMIZATION_PLAYBOOK_2026.md › 📘 Playbook de Optimización del Equipo de Agentes y Arquitectura Harness (Inspirado en affaan-m/ECC 2026) › 2. Los 4 Pilares de ECC Adaptados a Web Software Factory › Pilar 1: Continuous Learning e Instintos (ECC Pattern)]
 - **Concepto:** Cuando un agente resuelve un bug o descubre una regla de canal, no debe inflar el prompt del sistema para siempre. Debe registrar un *instinto* (`confidence: 0.8`) en `data/instincts.json`.
 - **Evolución:** Si el instinto se aplica con éxito en sesiones futuras, el puntaje sube a `0.9` o `1.0`. Si falla, baja y se desactiva.
-- **En Centinela:** Implementado en `tools/lib/instincts-engine.mjs` y consultable vía `npm run instincts [query]`.
+- **En Web Software Factory:** Implementado en `tools/lib/instincts-engine.mjs` y consultable vía `npm run instincts [query]`.
 
-[knowledge/docs/ECC_HARNESS_AND_AGENT_OPTIMIZATION_PLAYBOOK_2026.md › 📘 Playbook de Optimización del Equipo de Agentes y Arquitectura Harness (Inspirado en affaan-m/ECC 2026) › 2. Los 4 Pilares de ECC Adaptados a Centinela › Pilar 2: Verification Loop (6-Phase Verification Gate)]
+[knowledge/docs/ECC_HARNESS_AND_AGENT_OPTIMIZATION_PLAYBOOK_2026.md › 📘 Playbook de Optimización del Equipo de Agentes y Arquitectura Harness (Inspirado en affaan-m/ECC 2026) › 2. Los 4 Pilares de ECC Adaptados a Web Software Factory › Pilar 2: Verification Loop (6-Phase Verification Gate)]
 Inspirado en la skill `verification-loop` de ECC:
 1. **Fase 1 - Configuración:** Validación de sintaxis en `.mcp.json` y `.env`.
 2. **Fase 2 - Integridad JSON:** Barrido de archivos `.json` (evitar comentarios o trailing commas no soportados).
@@ -54,9 +54,9 @@ Inspirado en la skill `verification-loop` de ECC:
 4. **Fase 4 - Chequeo Sintáctico Node:** `node --check` en todos los archivos `.mjs` y `.cjs`.
 5. **Fase 5 - Paridad IDE:** `tools/ts-parse-check.mjs` con el mismo compilador que resalta el panel Problems.
 6. **Fase 6 - Token Budget Guard:** Auditoría de tokens de los prompts para no saturar contextos.
-- **En Centinela:** Automatizado en `npm run verify` (comando unificado).
+- **En Web Software Factory:** Automatizado en `npm run verify` (comando unificado).
 
-[knowledge/docs/ECC_HARNESS_AND_AGENT_OPTIMIZATION_PLAYBOOK_2026.md › 📘 Playbook de Optimización del Equipo de Agentes y Arquitectura Harness (Inspirado en affaan-m/ECC 2026) › 2. Los 4 Pilares de ECC Adaptados a Centinela › Pilar 3: Context Budget & Prompt Caching Strategy]
+[knowledge/docs/ECC_HARNESS_AND_AGENT_OPTIMIZATION_PLAYBOOK_2026.md › 📘 Playbook de Optimización del Equipo de Agentes y Arquitectura Harness (Inspirado en affaan-m/ECC 2026) › 2. Los 4 Pilares de ECC Adaptados a Web Software Factory › Pilar 3: Context Budget & Prompt Caching Strategy]
 - **Lección Financiera:** Modelos caros (Claude 3.5 Sonnet) en clientes no optimizados como Cline reenviaron el árbol de archivos completo en cada turno, agotando el saldo en minutos.
 - **La Solución Antigravity + Gemini:**
   - Gemini 3.8 Flash ofrece ventana de 1M tokens con costo por token un orden de magnitud inferior y caché contextual activa.
@@ -64,7 +64,7 @@ Inspirado en la skill `verification-loop` de ECC:
   - Para audio: Groq LPU `whisper-large-v3-turbo` a 216× tiempo real ($0.04/hora).
   - Telemetría OTel y rastreo de presupuesto en `tools/lib/agent-tracer.mjs`.
 
-[knowledge/docs/ECC_HARNESS_AND_AGENT_OPTIMIZATION_PLAYBOOK_2026.md › 📘 Playbook de Optimización del Equipo de Agentes y Arquitectura Harness (Inspirado en affaan-m/ECC 2026) › 2. Los 4 Pilares de ECC Adaptados a Centinela › Pilar 4: Control Autónomo del Agente vs Control HITL (DEC-035)]
+[knowledge/docs/ECC_HARNESS_AND_AGENT_OPTIMIZATION_PLAYBOOK_2026.md › 📘 Playbook de Optimización del Equipo de Agentes y Arquitectura Harness (Inspirado en affaan-m/ECC 2026) › 2. Los 4 Pilares de ECC Adaptados a Web Software Factory › Pilar 4: Control Autónomo del Agente vs Control HITL (DEC-035)]
 Inspirado en `autonomous-agent-harness` y `operator-approval-loop` de ECC:
 - **Lo que el equipo de agentes ejecuta de forma 100% autónoma:**
   1. Preflight pre-sesión (`autopilot:preflight`): validación de salud cloud, refresh de tokens RealtimeHub si expiran, escaneo de radar.
@@ -79,7 +79,7 @@ Inspirado en `autonomous-agent-harness` y `operator-approval-loop` de ECC:
 
 ---
 
-[knowledge/docs/ECC_HARNESS_AND_AGENT_OPTIMIZATION_PLAYBOOK_2026.md › 📘 Playbook de Optimización del Equipo de Agentes y Arquitectura Harness (Inspirado en affaan-m/ECC 2026) › 3. Optimización del Oráculo Predictivo (Lecciones de ECC y FOSS) › Problema Identificado en Centinela]
+[knowledge/docs/ECC_HARNESS_AND_AGENT_OPTIMIZATION_PLAYBOOK_2026.md › 📘 Playbook de Optimización del Equipo de Agentes y Arquitectura Harness (Inspirado en affaan-m/ECC 2026) › 3. Optimización del Oráculo Predictivo (Lecciones de ECC y FOSS) › Problema Identificado en Web Software Factory]
 En transmisiones de slots de RealtimeHub, expresiones como:
 - *"Bonus buy!"*
 - *"Nice roll"*
@@ -99,7 +99,7 @@ provocaban picos en el Proceso de Hawkes y transiciones bayesianas en el HMM de 
 
 [knowledge/docs/ECC_HARNESS_AND_AGENT_OPTIMIZATION_PLAYBOOK_2026.md › 📘 Playbook de Optimización del Equipo de Agentes y Arquitectura Harness (Inspirado en affaan-m/ECC 2026) › 4. Guía de Convivencia y Operación en la VM de GCP]
 1. **Naturaleza de la VM Spot:**
-   - `centinela-prod-vm` está aprovisionada como SPOT/Preemptible (`e2-standard-4`) en `us-central1-a`.
+   - `Web Software Factory-prod-vm` está aprovisionada como SPOT/Preemptible (`e2-standard-4`) en `us-central1-a`.
    - Cuando GCP reasigna recursos o se activa el `idle-guard` tras 2 horas sin actividad, la VM se apaga (`TERMINATED`).
    - Esto es una característica de ahorro (consumo $0 en reposo), no un fallo de software.
 2. **Restablecimiento del Flujo de Trabajo:**

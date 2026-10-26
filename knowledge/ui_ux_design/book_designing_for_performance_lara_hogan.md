@@ -1,4 +1,4 @@
-﻿# 📚 Libro Completo: Designing for Performance: Weighing Aesthetics and Speed
+# 📚 Libro Completo: Designing for Performance: Weighing Aesthetics and Speed
 
 **Alcance:** Fuente bibliográfica completa sobre Rendimiento Web, Optimización de Imágenes (WebP/AVIF/SVG), Critical Rendering Path, Tipografía Rápida y Presupuesto de Peso (Designing for Performance: Weighing Aesthetics and Speed — Lara Hogan (O'Reilly)). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
@@ -7,19 +7,16 @@
 > **Archivo Fuente:** `Designing-For-Performance-Lara-Hogan.pdf`  
 > **Páginas Originales:** 181  
 > **Secciones Extraídas:** 50  
-> **Fecha de Ingesta:** 2026-10-19  
+> **Fecha de Ingesta:** 2026-10-19
 
 ---
 
-## Sección 1: Foundations & Introduction
+## Sección 1: Foundations & Introduction [Entropy: 0.268]
 
 Lara Callender Hogan
 Designing for
 Performance
 WEIGHING AESTHETICS AND SPEED
-
--- 1 of 181 --
-
 USER EXPERIENCE/USER INTERFACE DESIGN
 Designing for Performance
 ISBN: 978-1-491-90251-6
@@ -79,9 +76,6 @@ overall user experience, striking a
 balance between aesthetics and
 speed, and building performance
 into company culture.
-
--- 2 of 181 --
-
 Praise for
 Designing for Performance
 “Designing for Performance is the book to hand to anyone—
@@ -107,9 +101,6 @@ the user experience and expectations, shapes development, and
 directly impacts operations. This book should be required reading for
 designers and developers alike.”
 ILYA GRIGORIK—WEB PERFORMANCE ENGINEER, GOOGLE
-
--- 3 of 181 --
-
 “If you’ve ever wondered how aesthetic choices impact performance
 or how cellular networks degrade your site’s user experience, read
 this book. Designing for Performance gives you the tools to make
@@ -117,16 +108,10 @@ and measure high impact performance improvements on your site,
 including actionable strategies to increase awareness of performance
 across your company. Great performance is good design.”
 JASON HUFF—PRODUCT DESIGN MANAGER, ETSY
-
--- 4 of 181 --
-
 Beijing · Cambridge · Farnham · Köln · Sebastopol · Tokyo
 Designing for Performance
 Weighing Aesthetics and Speed
 Lara Callender Hogan
-
--- 5 of 181 --
-
 Designing for Performance
 by Lara Callender Hogan
 Copyright © 2015 Lara Callender Hogan. All rights reserved.
@@ -166,9 +151,6 @@ or the intellectual property rights of others, it is your responsibility to
 ensure that your use thereof complies with such licenses and/or rights.
 ISBN: 978-1-4919-0251-6
 [TI]
-
--- 6 of 181 --
-
 This book is dedicated to my mother and father
 And if that one dream should fall and break into a thousand pieces,
 never be afraid to pick up one of the pieces and begin again.
@@ -178,11 +160,7 @@ life’s way of touching you and giving you strength.
 
 ---
 
-## Sección 2: Foundations & Introduction
-
--- 7 of 181 --
-
--- 8 of 181 --
+## Sección 2: Foundations & Introduction [Entropy: 0.05]
 
 vii
 [ Contents ]
@@ -192,7 +170,7 @@ Preface xv
 
 ---
 
-## Sección 3: Chapter 1 Performance Is User Experience 1
+## Sección 3: Chapter 1 Performance Is User Experience 1 [Entropy: 0.25]
 
 Impact on Your Brand 2
 Returning Users 2
@@ -205,7 +183,7 @@ Designers’ Impact on Performance 8
 
 ---
 
-## Sección 4: Chapter 2 The Basics of Page Speed 13
+## Sección 4: Chapter 2 The Basics of Page Speed 13 [Entropy: 0.25]
 
 How Browsers Render Content 13
 Requests 14
@@ -218,14 +196,11 @@ Other Impacts on Page Speed 24
 Geography 24
 Network 24
 Browser 25
-
--- 9 of 181 --
-
 viii | CONTENTS
 
 ---
 
-## Sección 5: Chapter 3 Optimizing Images 27
+## Sección 5: Chapter 3 Optimizing Images 27 [Entropy: 0.25]
 
 Choosing an Image Format 28
 JPEG 29
@@ -244,7 +219,7 @@ Mentor Other Image Creators 60
 
 ---
 
-## Sección 6: Chapter 4 Optimizing Markup and Styles 63
+## Sección 6: Chapter 4 Optimizing Markup and Styles 63 [Entropy: 0.25]
 
 Cleaning Your HTML 63
 Divitis 64
@@ -263,14 +238,11 @@ Additional Markup Considerations 87
 CSS and JavaScript Loading 87
 Minification and gzip 89
 Caching Assets 91
-
--- 10 of 181 --
-
 CONTENTS | ix
 
 ---
 
-## Sección 7: Chapter 5 Responsive Web Design 93
+## Sección 7: Chapter 5 Responsive Web Design 93 [Entropy: 0.25]
 
 Deliberately Loading Content 94
 Images 94
@@ -282,7 +254,7 @@ Measure Everything 104
 
 ---
 
-## Sección 8: Chapter 6 Measuring and Iterating on Performance 109
+## Sección 8: Chapter 6 Measuring and Iterating on Performance 109 [Entropy: 0.25]
 
 Browser Tools 110
 YSlow 110
@@ -293,7 +265,7 @@ Changes over Time 120
 
 ---
 
-## Sección 9: Chapter 7 Weighing Aesthetics and Performance 125
+## Sección 9: Chapter 7 Weighing Aesthetics and Performance 125 [Entropy: 0.25]
 
 Finding the Balance 125
 Make Performance Part of Your Workflow 128
@@ -304,7 +276,7 @@ Performance in Mind 131
 
 ---
 
-## Sección 10: Chapter 8 Changing Culture at Your Organization 135
+## Sección 10: Chapter 8 Changing Culture at Your Organization 135 [Entropy: 0.265]
 
 Performance Cops and Janitors 135
 Upward Management 138
@@ -314,10 +286,6 @@ Working with Other Designers and Developers 143
 Educating 143
 Empowering 144
 Index 151
-
--- 11 of 181 --
-
--- 12 of 181 --
 
 xi
 [ Foreword by Steve Souders ]
@@ -342,9 +310,6 @@ to discuss design and performance together—not as a debate, but as a
 collaboration that results in a beautiful user experience
 I use the word beautiful intentionally The design of a website, its aesthetics, is often described with words like beautiful, refreshing, compelling, and exciting Those descriptors are equally applicable to the experience of a fast website After experiencing the sluggishness and frustration of a slower alternative, users find that an optimized website is also
 a beautiful experience
-
--- 13 of 181 --
-
 xii | FOrEwOrd by STEvE SOudErS
 Thanks to Designing for Performance, designers and developers have
 a framework for their collaboration Lara outlines the questions that
@@ -356,9 +321,6 @@ recognize and resolve performance challenges to deliver the beautiful
 experience that users deserve
 —Steve Souders, Fastly Chief Performance Officer
 Author of High Performance Websites and Even Faster Web Sites
-
--- 14 of 181 --
-
 xiii
 [ Foreword by Randy J. Hunt ]
 Designers often lament when design is treated like “icing on a cake,”
@@ -385,9 +347,6 @@ traveling?
 Designed experiences are full of these seemingly invisible details
 They’re details we blissfully ignore, but we do so at the risk of not ever
 baking an excellent cake They’re the details that allow us to manipulate
-
--- 15 of 181 --
-
 xiv | FOrEwOrd by raNdy J. HuNT
 the context for the design itself Sometimes they’re deep in the technology (like the nuances of image compression), and sometimes they’re
 outside the design (how a browser renders a web page)
@@ -400,9 +359,6 @@ be delicious Don’t eat too fast, but please proceed with making your
 designs much, much faster
 —Randy J Hunt, Creative Director, Etsy
 Author of Product Design for the Web
-
--- 16 of 181 --
-
 xv
 [ Preface ]
 If you are making decisions about the look and feel of a website, you
@@ -432,9 +388,7 @@ making performance improvements, the final chapter is dedicated to
 
 ---
 
-## Sección 11: Chapter 8 Changing Culture at Your Organization 135
-
--- 17 of 181 --
+## Sección 11: Chapter 8 Changing Culture at Your Organization 135 [Entropy: 0.25]
 
 xvi | PrEFaCE
 performance as a cultural problem that cannot simply be solved with
@@ -462,7 +416,7 @@ therefore, the overall user experience as well
 
 ---
 
-## Sección 12: Chapter 2 covers the basics of page load time It’s important to have a
+## Sección 12: Chapter 2 covers the basics of page load time It’s important to have a [Entropy: 0.295]
 
 foundation of knowledge regarding how browsers retrieve and render
 content for sites, as these are the main levers you can use to improve
@@ -473,9 +427,6 @@ want to do is an equally important metric to measure
 We’ll walk through each of the main image formats used on the Web
 today within Chapter 3 We’ll cover best practices for use and optimization for each file type Included in this chapter are techniques to optimize the way images are loaded into web pages, such as spriting or
 replacing them with CSS or SVG Lastly, we’ll cover what you can do
-
--- 18 of 181 --
-
 PrEFaCE | xvii
 to increase the longevity of your optimized image solutions, including implementing style guides or automated workflows for image
 compression
@@ -505,9 +456,6 @@ equipped with performance knowledge, a solid workflow, and experiments, you can 
 an excellent overall user experience
 The largest hurdle to creating and maintaining stellar site performance
 is the culture of your organization No matter the size or type of organization, it can be a challenge to educate, incentivize, and empower
-
--- 19 of 181 --
-
 xviii | PrEFaCE
 designers, developers, and management We’ll cover how you can
 shape the performance culture of your organization and create performance champions in Chapter 8
@@ -538,9 +486,6 @@ Sebastopol, CA 95472
 800-998-9938 (in the United States or Canada)
 707-829-0515 (international or local)
 707-829-0104 (fax)
-
--- 20 of 181 --
-
 PrEFaCE | xix
 We have a web page for this book, where we list errata, examples, and
 any additional information You can access this page at:
@@ -577,11 +522,8 @@ Luncheonette, which made it possible for me to celebrate writing progress with t
 
 ---
 
-## Sección 13: Chapter 2 covers the basics of page load time It’s important to have a
+## Sección 13: Chapter 2 covers the basics of page load time It’s important to have a [Entropy: 0.34]
 
--- 21 of 181 --
-
--- 22 of 181 --
 [ 1 ]
 Performance Is User Experience
 Think about how you search for things on the Web How quick are you
@@ -611,9 +553,6 @@ is a large part of this user experience and should be weighed equally
 with the aesthetics of your site
 Let’s walk through some studies and data on how performance impacts
 end user experience
-
--- 23 of 181 --
-
 2 | dESIGNING FOr PErFOrMaNCE
 Impact on Your Brand
 The overall user experience affects your audience’s impression of your
@@ -648,9 +587,6 @@ http://bit
 ly/1ttKRsm) Though Google makes it clear that it weighs content relevancy more heavily when ranking search results, page load time still
 contributes to the overall user experience of your site Google wants to
 return results that are, overall, the best experience for its users
-
--- 24 of 181 --
-
 1. PErFOrMaNCE IS uSEr ExPErIENCE | 3
 Ignoring the page speed of your site is more than just a missed opportunity; it could be detrimental to users remembering your brand
 Microsoft conducted a study (
@@ -681,11 +617,10 @@ report (
 http://slidesha re/1ttKWvZ), 45% of transactions on Groupon
 came from mobile devices as of early 2013, which was up from less
 than 15% two years earlier At Etsy, where I run the performance engineering team, 50% of user traffic comes from mobile devices as of early
--- 25 of 181 --
 
 ---
 
-## Sección 14: Chapter 2 covers the basics of page load time It’s important to have a
+## Sección 14: Chapter 2 covers the basics of page load time It’s important to have a [Entropy: 0.385]
 
 4 | dESIGNING FOr PErFOrMaNCE
 Figure 1-1. In this data from StatCounter Global Stats, we can see that the
@@ -711,9 +646,6 @@ After the device talks to a radio tower to negotiate when it can transmit data, 
 internal network and then to the public Internet The combination of
 these steps can easily add tens to thousands of milliseconds of extra
 latency Further, if there is no data transmitted or received on the radio
-
--- 26 of 181 --
-
 1. PErFOrMaNCE IS uSEr ExPErIENCE | 5
 channel, a timeout causes the channel to become idle This requires a
 new channel to be established and the entire process to restart, potentially wreaking havoc on web page load times
@@ -741,9 +673,6 @@ While it’s true that networks are slowly getting faster over time, your
 users on mobile devices may currently have a painful experience trying to get your site to load On a typical United States desktop using
 WiFi, a request’s average round trip takes just 50 milliseconds (
 http://
-
--- 27 of 181 --
-
 6 | dESIGNING FOr PErFOrMaNCE
 slidesha re/1ttLhPw) This is the time it takes for a browser to send a
 request and the server to send a response over the network However,
@@ -776,9 +705,6 @@ http://bit ly/1ttLsdz) found that people use smartphones in the following contex
 • To communicate and connect
 • In short bursts of time
 • When they need information quickly and immediately
-
--- 28 of 181 --
-
 1. PErFOrMaNCE IS uSEr ExPErIENCE | 7
 Tablets are similarly used for entertainment and browsing Desktops,
 on the other hand, are used for more serious or research-intensive
@@ -816,12 +742,10 @@ of its image files to JPEGs at 92% quality compression, it would save
 
 ---
 
-## Sección 15: Chapter 2 covers the basics of page load time It’s important to have a
-
--- 29 of 181 --
+## Sección 15: Chapter 2 covers the basics of page load time It’s important to have a [Entropy: 0.37]
 
 8 | dESIGNING FOr PErFOrMaNCE
-20% of the energy needed to load its home page on an Android phone,
+20% of the energy needed to load its home page on an Web Platform phone,
 and Facebook would save 30% doing the same This change would
 positively impact the user experience by reducing energy consumption
 with no noticeable image quality loss Another study (
@@ -852,9 +776,6 @@ files, and what file formats did you use? How did your design affect the
 plan for markup and CSS structure?
 The decisions made by designers are what typically drive the rest of how
 a website is built The initial design phase includes decisions about:
-
--- 30 of 181 --
-
 1. PErFOrMaNCE IS uSEr ExPErIENCE | 9
 • Colors and gradients, which impact image format choices, transparency needs, how many sprites can be created, and how much
 CSS3 is used
@@ -877,9 +798,6 @@ the design stage can ask questions like, “What if I export it as a JPEG
 or PNG-8 with no transparency? What if I use a light blue matte on a
 PNG-8 file? How might that impact performance?” We can test exporting JPEG and PNG-8 versions and see the resulting file size for each in
 Figures 1-4 through 1-7
-
--- 31 of 181 --
-
 10 | dESIGNING FOr PErFOrMaNCE
 Figure 1-4. Original PNG-24 with transparency: 7.6 Kb.
 Figure 1-5. PNG-8 with solid background: 5.0 Kb.
@@ -890,9 +808,7 @@ cover more about image optimizations and weighing your options in
 
 ---
 
-## Sección 16: Chapter 3
-
--- 32 of 181 --
+## Sección 16: Chapter 3 [Entropy: 0.31]
 
 1. PErFOrMaNCE IS uSEr ExPErIENCE | 11
 We have a huge opportunity to play around with potential performance
@@ -923,9 +839,6 @@ size of your site’s files affect page load time, and how users perceive the
 performance of your site will significantly help you as you design a site
 and strive to find a balance between aesthetics and performance
 
--- 33 of 181 --
-
--- 34 of 181 --
 [ 2 ]
 The Basics of Page Speed
 As you design a site, it’s important to know the basics of page speed so
@@ -954,9 +867,6 @@ time the browser makes a request to a new domain, it needs to find the
 server where this content lives This is called a
 DNS lookup The DNS
 lookup figures out where on the Internet your web host lives so that the
-
--- 35 of 181 --
-
 14 | dESIGNING FOr PErFOrMaNCE
 request for content can make it all the way to your server A browser will
 remember this location for a set period of time (determined by the DNS
@@ -988,9 +898,6 @@ REQUESTS
 Optimizing the size and number of requests that it takes to create
 your web page will make a tremendous impact on your site’s page load
 time To illustrate how requests affect total page speed, let’s look at an
-
--- 36 of 181 --
-
 2. THE baSICS OF PaGE SPEEd | 15
 example waterfall chart using WebPagetest (
 http://www WebPagetest
@@ -1012,9 +919,7 @@ download and display the content
 
 ---
 
-## Sección 17: Chapter 3
-
--- 37 of 181 --
+## Sección 17: Chapter 3 [Entropy: 0.286]
 
 16 | dESIGNING FOr PErFOrMaNCE
 Naturally, the larger the piece of requested content is, the longer it will
@@ -1044,9 +949,6 @@ green), an initial connection to the server (orange), and possibly an SSL
 negotiation before the browser begins to retrieve the content (hot pink)
 for assets served over HTTPS But browsers are smart and try to optimize downloads of content once they have that connection open to your
 server
-
--- 38 of 181 --
-
 2. THE baSICS OF PaGE SPEEd | 17
 What Is an SSL Negotiation?
 An
@@ -1079,9 +981,6 @@ Page Weight
 The file size of HTML, images, and other content needed to load your
 page will have an effect on the total page load time One way to measure the file size of each kind of content is to use the browser plug-in
 YSlow We’ll walk through how to use it in “YSlow ”
-
--- 39 of 181 --
-
 18 | dESIGNING FOr PErFOrMaNCE
 After you run YSlow on your page, switch to the Components tab
 (Figure 2-4) to see a list of the content types for this page and how large
@@ -1105,9 +1004,6 @@ What Is the HTTP Archive?
 The
 HTTP Archive is a permanent repository of web performance information such as size of pages, failed requests, and technologies utilized. It gathers WebPagetest information for URLs included in the Alexa Top 250,000
 sites.
-
--- 40 of 181 --
-
 2. THE baSICS OF PaGE SPEEd | 19
 There are no hard-and-fast rules about page weight; however, it’s
 important to keep track of your page weight over time to make sure
@@ -1147,9 +1043,7 @@ server When it receives the file back, the browser will repeat a similar
 
 ---
 
-## Sección 18: Chapter 3
-
--- 41 of 181 --
+## Sección 18: Chapter 3 [Entropy: 0.59]
 
 20 | dESIGNING FOr PErFOrMaNCE
 process: raw bytes become characters, strings of characters become
@@ -1180,9 +1074,6 @@ other factors. while it’s easy to look at the loading of the yahoo! home page
 over 0.5-second intervals, you’ll likely want to look at 0.1-second intervals
 of your own site’s load time, which you can choose from webPagetest’s
 filmstrip view.
-
--- 42 of 181 --
-
 2. THE baSICS OF PaGE SPEEd | 21
 There are a few ways to optimize your critical rendering path Since,
 by default, CSS is treated as a render-blocking resource, use media
@@ -1217,9 +1108,6 @@ to completely finish loading your page’s content (which includes any
 asynchronous content that is fetched and executed after the document is visually complete) You can read more about WebPagetest’s
 measuring of Speed Index and how long it takes to fully load a page
 in Chapter 6
-
--- 43 of 181 --
-
 22 | dESIGNING FOr PErFOrMaNCE
 Time to interactivity is a term for the time between when users navigate to a page and when they can complete an action like clicking a link,
 performing a search, or playing a video There are a number of ways
@@ -1251,11 +1139,9 @@ slowing it down below the 60-frames-per-second threshold For example, some anima
 be handled by modern browsers within 60 frames per second; other
 animations may create jank for your user Repaints are expensive operations for browsers, and will make your page feel sluggish
 
--- 44 of 181 --
-
 ---
 
-## Sección 19: Chapter 3
+## Sección 19: Chapter 3 [Entropy: 0.295]
 
 2. THE baSICS OF PaGE SPEEd | 23
 If you notice that your site is showing symptoms of jank, there are
@@ -1282,9 +1168,6 @@ load the quickest, and which need further optimization to improve the
 perceived performance and critical rendering path
 If you find that users perceive your site as slow to load because they’re
 spending a long time staring at a blank page, or becoming impatient while waiting for an area to become clickable, you can focus on
-
--- 45 of 181 --
-
 24 | dESIGNING FOr PErFOrMaNCE
 optimizing the load order and size of page requests If the page becomes
 interactive more quickly and starts to show content faster above the
@@ -1320,9 +1203,6 @@ test your site’s speed Remember that as you are testing your own site,
 it may not be a representative user experience for your actual user base,
 as you may have a significantly better Internet infrastructure, a faster
 connection speed, and a more powerful device
-
--- 46 of 181 --
-
 2. THE baSICS OF PaGE SPEEd | 25
 Similarly, a user’s network can have an enormous impact on how long
 it takes to make each request for content On a slow network, it will take
@@ -1350,9 +1230,6 @@ weight: images It’s important to keep image formatting and compression in mind
 requests affect your site’s total page load time The more you can optimize every image’s size and how it’s rendered by your user’s browser,
 the better your site’s user experience will be
 
--- 47 of 181 --
-
--- 48 of 181 --
 [ 3 ]
 Optimizing Images
 Images make up the majority of most sites’ total page weight The
@@ -1377,9 +1254,7 @@ improvements
 
 ---
 
-## Sección 20: Chapter 3
-
--- 49 of 181 --
+## Sección 20: Chapter 3 [Entropy: 0.43]
 
 28 | dESIGNING FOr PErFOrMaNCE
 Let’s start by looking at the various image file types available, and then
@@ -1412,9 +1287,6 @@ PNG-24 Partial transparency reduce noise, reduce number of
 colors
 Let’s walk through the pros and cons of each of these file formats as
 well as how to export and optimize each kind of image
-
--- 50 of 181 --
-
 3. OPTIMIzING IMaGES | 29
 JPEG
 JPEGs are the ideal file format for photographs or other images with a
@@ -1448,9 +1320,6 @@ has been exported at various qualities using Photoshop’s Save for Web
 tool As you compare the images exported at quality 25, 50, 75, and 100,
 notice that the lower qualities have more artifacting around the edges
 of high contrast
-
--- 51 of 181 --
-
 30 | dESIGNING FOr PErFOrMaNCE
 Quality: 25 Quality: 50
 Quality: 75 Quality: 100
@@ -1469,9 +1338,6 @@ to compress and blend colors Noise and grain in a JPEG can greatly
 increase its file size, as you can see in Figure 3-3 When creating new
 images (particularly if you are creating repeating patterns), be judicious with the number of colors you are introducing
 Figure 3-3. Comparison of JPEG image noise, quality, and resulting file size.
-
--- 52 of 181 --
-
 3. OPTIMIzING IMaGES | 31
 In Figure 3-3, you can see a comparison of JPEGs that have been
 exported via Photoshop’s Save for Web tool and then passed through
@@ -1513,14 +1379,12 @@ devices, this can be a concern Currently Mobile Safari does not render
 
 ---
 
-## Sección 21: Chapter 3
-
--- 53 of 181 --
+## Sección 21: Chapter 3 [Entropy: 0.34]
 
 32 | dESIGNING FOr PErFOrMaNCE
 progressive JPEGs in a progressive manner, which is understandable
 considering the tax on the CPU However, other mobile browsers, such
-as Chrome on Android, do render them progressively Overall, progressive JPEGs are still an excellent improvement for the overall user experience, and the small CPU downside will likely be improved by browser
+as Chrome on Web Platform, do render them progressively Overall, progressive JPEGs are still an excellent improvement for the overall user experience, and the small CPU downside will likely be improved by browser
 vendors in the future
 If you’re interested in testing existing images by converting baseline JPEGs to progressive JPEGs, there are tools like SmushIt (
 http://
@@ -1543,9 +1407,6 @@ animation, but include only up to 256 colors within a frame If a GIF
 includes an animation, each frame can support a separate palette of up
 to 256 colors Unlike JPEGs, GIFs are a
 lossless file format
-
--- 54 of 181 --
-
 3. OPTIMIzING IMaGES | 33
 There are two rare circumstances when you may want to choose a GIF
 for your image file format:
@@ -1564,9 +1425,6 @@ somewhere in between to give the appearance of a smoother blend For
 example, in this image with a maximum of 40 colors, you can see the
 smoothness with dithering set to 0 (Figure 3-6) versus the appearance
 with the dithering set to 100 (Figure 3-7)
-
--- 55 of 181 --
-
 34 | dESIGNING FOr PErFOrMaNCE
 Figure 3-6. GIF with dithering set to 0: 4.8 Kb.
 Figure 3-7. GIF with dithering set to 100: 9.7 Kb.
@@ -1578,9 +1436,6 @@ palette, you may have up to 256 colors within your palette
 Interestingly, if we change the direction of this colorful gradient in the
 GIF and export it with dithering set to 100, we see a large change in file
 size in Figure 3-8
-
--- 56 of 181 --
-
 3. OPTIMIzING IMaGES | 35
 Figure 3-8. GIF with vertical patterns: 21 Kb.
 Why does the file size more than double in this case? GIFs follow a
@@ -1606,9 +1461,6 @@ PNG is a lossless image format designed to improve upon the GIF file
 format Photoshop allows you to export PNG-8 and PNG-24 images;
 each format has pros and cons you need to consider when optimizing
 for performance
-
--- 57 of 181 --
-
 36 | dESIGNING FOr PErFOrMaNCE
 When you need transparency in your image, PNG will be your best
 choice GIFs also support transparency, but they tend to be much
@@ -1632,9 +1484,7 @@ be placing the exported PNG Photoshop is choosing which pixels need
 
 ---
 
-## Sección 22: Chapter 3
-
--- 58 of 181 --
+## Sección 22: Chapter 3 [Entropy: 0.31]
 
 3. OPTIMIzING IMaGES | 37
 to be transparent and how the original translucent drop shadow blends
@@ -1654,9 +1504,6 @@ to 10 times larger in file size than JPEGs because they are lossless Just
 as with any other kind of image file, reducing noise and the number of
 colors will be beneficial to the overall file size of your PNGs Let’s compare the two images in Figure 3-11: one with 5 different colored stripes,
 and one with 10
-
--- 59 of 181 --
-
 38 | dESIGNING FOr PErFOrMaNCE
 Figure 3-11. Comparing the file size difference between PNGs with 5 or 10
 colors.
@@ -1668,9 +1515,6 @@ save file size, which will have a positive effect on performance
 In Figure 3-12, we’re exporting the same file as in the initial PNG-8
 example with transparency (Figure 3-9), but you’ll notice that the transparency in the PNG-24 file is handled very differently
 Figure 3-12. Transparent PNG-24 Export view.
-
--- 60 of 181 --
-
 3. OPTIMIzING IMaGES | 39
 In the PNG-8 file, Photoshop was working with a matte color to blend
 the drop shadow; there was no partial transparency, only fully transparent pixels beyond the drop shadow In the PNG-24 file, we see partial
@@ -1706,9 +1550,6 @@ within an image tag will negatively impact your page load time, as you
 are forcing the user to download more bytes than needed Read more
 about how to handle serving the correct image size in “Deliberately
 Loading Content ”
-
--- 61 of 181 --
-
 40 | dESIGNING FOr PErFOrMaNCE
 After you’ve exported the image, run it through a tool like ImageOptim
 (
@@ -1733,9 +1574,6 @@ PNGs, and GIFs The compression tools included in Smush it are
 ImageMagick, pngcrush, jpegtran, and Gifsicle Once you upload your
 image or choose its URL, Smush it will choose the best compression
 method for it and then display a table with links to downloadable, compressed versions of your images (see Figure 3-14)
-
--- 62 of 181 --
-
 3. OPTIMIzING IMaGES | 41
 Figure 3-14. Smush.it is an online tool that uses lossless compression methods
 to find savings in your image files.
@@ -1764,9 +1602,7 @@ are two main ways to eliminate image requests:
 
 ---
 
-## Sección 23: Chapter 3
-
--- 63 of 181 --
+## Sección 23: Chapter 3 [Entropy: 0.635]
 
 42 | dESIGNING FOr PErFOrMaNCE
 SPRITES
@@ -1794,9 +1630,6 @@ Here is our starter markup:
 <h1>Designing for Performance</h1>
 <p class="fave">We have a favorite!</p>
 <p class="fave winner">We have a winner!!</p>
-
--- 64 of 181 --
-
 3. OPTIMIzING IMaGES | 43
 In this HTML, we are going to apply the logo to the h1 element, one of
 the stars to the first paragraph with the class fave, and a different class
@@ -1838,9 +1671,6 @@ text-indent: 100%;
 white-space: nowrap;
 overflow: hidden;
 }
-
--- 65 of 181 --
-
 44 | dESIGNING FOr PErFOrMaNCE
 This text-indent: 100% method may also significantly increase
 performance on the iPad 1 in cases where you are applying many
@@ -1868,9 +1698,6 @@ y-axis, respectively:
 • 50% 25%
 • 50px 200px
 • left top
-
--- 66 of 181 --
-
 3. OPTIMIzING IMaGES | 45
 In our case, we know where in the sprite our star images are, so we can
 use pixels to move the background-image over until each star shows
@@ -1913,9 +1740,6 @@ background-position: -216px -15px;
 .winner:before {
 background-position: -234px -15px;
 }
-
--- 67 of 181 --
-
 46 | dESIGNING FOr PErFOrMaNCE
 Sprites can save a ton of page load time thanks to the decreased number of image requests You’ll notice that total page weight may increase
 with sprites due to the larger sprite image file size as well as additional
@@ -1940,9 +1764,7 @@ around document complete) is a favicon for the site
 
 ---
 
-## Sección 24: Chapter 3
-
--- 68 of 181 --
+## Sección 24: Chapter 3 [Entropy: 0.65]
 
 3. OPTIMIzING IMaGES | 47
 After the sprite, Chrome made two connections to retrieve the contents
@@ -1961,9 +1783,6 @@ metric to watch as you try to measure the perceived performance of
 your page, as it will tell you how quickly the “above the fold” content
 is populated for your users In this example, our graph of visual progress (from which Speed Index is calculated) shows how much faster the
 page appears visually complete over time with the sprite
-
--- 69 of 181 --
-
 48 | dESIGNING FOr PErFOrMaNCE
 What About HTTP/2?
 HTTP/2 is a major revision of the Web’s protocol that is currently being
@@ -1989,9 +1808,6 @@ These results demonstrate that it’s worth experimenting with page
 load time optimizations We weren’t originally sure whether this technique would be an overall page speed win, but we knew it was worth an
 experiment so we could learn from it Read more about measuring and
 iterating on performance wins in Chapter 6
-
--- 70 of 181 --
-
 3. OPTIMIzING IMaGES | 49
 CSS3
 Another way to decrease image requests is to replace them with CSS
@@ -2026,9 +1842,6 @@ border: 1px #DDD solid;
 [ NOTE ]
 In this example, I’m including only the w3C gradient syntax. you’ll need to
 add syntaxes for other browsers, such as Firefox and Internet Explorer.
-
--- 71 of 181 --
-
 50 | dESIGNING FOr PErFOrMaNCE
 Based on this CSS, all of our links will have a gray background color,
 and overlaid on this background color will be our CSS3 gradient,
@@ -2069,9 +1882,7 @@ transparent 419px, #fff 0),
 
 ---
 
-## Sección 25: Chapter 3
-
--- 72 of 181 --
+## Sección 25: Chapter 3 [Entropy: 0.37]
 
 3. OPTIMIzING IMaGES | 51
 -webkit-linear-gradient(150deg, #053b17 183px,
@@ -2101,9 +1912,6 @@ a gradient applied, so in the case where a CSS3 gradient isn’t supported, you 
 background of the element Be sure to test gradients across browsers
 to make sure they are working as expected, and that any text is still
 readable
-
--- 73 of 181 --
-
 52 | dESIGNING FOr PErFOrMaNCE
 To support more browsers, you’d apply the following CSS to the background or background-image property of the element:
 /* FF3.6+ */
@@ -2128,9 +1936,6 @@ however, we need to set multiple color stops and percentages to make
 sure it does what we want!
 The resulting gradient will look like Figure 3-22
 Figure 3-22. CSS3 gradient with a hard stop.
-
--- 74 of 181 --
-
 3. OPTIMIzING IMaGES | 53
 background Versus background-image
 What’s the difference between applying a gradient to a background instead
@@ -2162,9 +1967,6 @@ https://css-tricks com/
 examples/ShapesOfCSS/), and repeating patterns using just CSS
 (
 http://lea verou me/css3patterns/)
-
--- 75 of 181 --
-
 54 | dESIGNING FOr PErFOrMaNCE
 That being said, be careful how your CSS affects repaint times, as there
 can be a cost to using a lot of CSS3 A repaint is an expensive operation
@@ -2197,9 +1999,7 @@ and it also makes your CSS larger (sometimes substantially, depending upon the l
 
 ---
 
-## Sección 26: Chapter 3
-
--- 76 of 181 --
+## Sección 26: Chapter 3 [Entropy: 0.65]
 
 3. OPTIMIzING IMaGES | 55
 SVG
@@ -2216,7 +2016,7 @@ size and definition because they are vectors that scale smartly, unlike
 raster images Also, by replacing an image file with inline SVG, you are
 eliminating an HTTP request to go and fetch the file from the server
 SVGs are not supported on Internet Explorer 8 or lower, nor are they
-supported on devices running Android 2 x However, SVG feature
+supported on devices running Web Platform 2 x However, SVG feature
 detection is reliable, so you can use tools to fall back from SVG images
 to PNG versions For example, Grunticon (
 https://github com/filamentgroup/grunticon) allows you to upload a set of SVG files and generates CSS for applying icons as SVG background images along with
@@ -2234,9 +2034,6 @@ file without compromising quality:
 than externally linking to them
 • Preserve Illustrator Editing Capabilities: Deselect We don’t need this
 functionality when using an SVG on our site
-
--- 77 of 181 --
-
 56 | dESIGNING FOr PErFOrMaNCE
 Figure 3-24. SvG export options.
 For this example, I’ve created a star SVG (Figure 3-25) using Adobe
@@ -2256,9 +2053,6 @@ SVG Version: 6.00 Build 0) -->
 "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-
--- 78 of 181 --
-
 3. OPTIMIzING IMaGES | 57
 width="20px" height="20px" viewBox="0 0 20 20"
 enable-background="new 0 0 20 20" xml:space="preserve">
@@ -2298,9 +2092,6 @@ Or you could inline the SVG into your HTML:
 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 width="20px" height="20px" viewBox="0 0 20 20"
 enable-background="new 0 0 20 20" xml:space="preserve">
-
--- 79 of 181 --
-
 58 | dESIGNING FOr PErFOrMaNCE
 <polygon fill="#FFFFFF" stroke="#000000" stroke-miterlimit="10"
 points="10,2.003 11.985,8.112 18.407,8.112 13.212,11.887
@@ -2339,9 +2130,7 @@ before committing to the SVG versions
 
 ---
 
-## Sección 27: Chapter 3
-
--- 80 of 181 --
+## Sección 27: Chapter 3 [Entropy: 0.49]
 
 3. OPTIMIzING IMaGES | 59
 Image Planning and Iterating
@@ -2375,9 +2164,6 @@ exported, which means I should re-export at the right size to eliminate unnecess
 Similarly, routinely check the page weight of your site Note the
 makeup of your total page weight, including what percentage of the
 total page weight is due to images If the page weight has increased by
-
--- 81 of 181 --
-
 60 | dESIGNING FOr PErFOrMaNCE
 a significant amount, figure out why, and see where you can make file
 size improvements Read more about how to measure and iterate on
@@ -2409,9 +2195,6 @@ images, make sure that part of his or her workflow includes finding
 a balance of aesthetics and performance by testing qualities and running images through additional optimization As much as possible,
 automate image optimization so that image creators don’t feel like they
 have a new, burdensome workflow
-
--- 82 of 181 --
-
 3. OPTIMIzING IMaGES | 61
 It’s important to share this knowledge with others who contribute to
 the site so that you are not a sole “performance cop” or “performance
@@ -2447,11 +2230,8 @@ editable, and repurposable markup for your site
 
 ---
 
-## Sección 28: Chapter 3
+## Sección 28: Chapter 3 [Entropy: 0.71]
 
--- 83 of 181 --
-
--- 84 of 181 --
 [ 4 ]
 Optimizing Markup and Styles
 While images make up the majority of most sites’ page weight, the
@@ -2477,9 +2257,6 @@ When looking at your site’s HTML, watch for:
 • Elements that have no need for special styling (unnecessary HTML
 elements, also known as “divitis” and covered in the next section)
 • Old, commented-out code that can be removed
-
--- 85 of 181 --
-
 64 | dESIGNING FOr PErFOrMaNCE
 If a site has been edited by multiple developers or designers, there may
 be markup that seems unused or unnecessary As sites age, outdated
@@ -2518,9 +2295,6 @@ site If possible, use HTML5 elements (such as header and article)
 to create a semantic hierarchy It will be easier to see how you should
 write your CSS, and will illuminate opportunities for repurposable
 design patterns
-
--- 86 of 181 --
-
 4. OPTIMIzING MarKuP aNd STylES | 65
 To eliminate divitis, take a look at the styles applied to the elements in
 the bloated area See if it’s possible to combine style declarations and
@@ -2561,9 +2335,6 @@ HTML structure with a little bit of divitis thrown in:
 </form>
 </div>
 </div>
-
--- 87 of 181 --
-
 66 | dESIGNING FOr PErFOrMaNCE
 Our styles for this sidebar and login form:
 form {
@@ -2609,9 +2380,7 @@ design pattern:
 
 ---
 
-## Sección 29: Chapter 3
-
--- 88 of 181 --
+## Sección 29: Chapter 3 [Entropy: 0.457]
 
 4. OPTIMIzING MarKuP aNd STylES | 67
 </form>
@@ -2652,9 +2421,6 @@ of forms and paragraphs made to look like headers
 Semantic naming allows you to maintain your HTML and CSS as it
 ages, as it is easier to read, test, and edit over time Cleaner HTML and
 CSS typically create smaller files, which improve page load time, and
-
--- 89 of 181 --
-
 68 | dESIGNING FOr PErFOrMaNCE
 also reduce the risk of page weight bloat as a site ages Because they
 are more meaningful, semantic structures allow for more repurposability of designs and styles, which in turn creates a better end user
@@ -2689,9 +2455,6 @@ plenty of things that you don’t need on your site This extraneous content can 
 development time; if you’re not careful about how much is included as
 you start implementing a grid or framework, you could have a lot of
 unnecessary assets, markup, or styles loaded on your site
-
--- 90 of 181 --
-
 4. OPTIMIzING MarKuP aNd STylES | 69
 Here are some styles included in the HTML5 Boilerplate framework
 They’d be helpful styles for sites that include dfn, hr, or mark elements, but these lines could be eliminated on sites that don’t use these
@@ -2726,9 +2489,6 @@ As much as possible, clean up the naming and element structure of
 your pages after implementing an out-of-the-box framework or grid
 There’s no excuse for forcing your end users to load unnecessary styles,
 markup, or JavaScript
-
--- 91 of 181 --
-
 70 | dESIGNING FOr PErFOrMaNCE
 Figure 4-1. Some frameworks give you custom build options before you
 implement them on your site, like in this HTMl5 boilerplate customization
@@ -2746,11 +2506,9 @@ design choices Maybe you’ll see:
 • Lots of selector specificity
 Look for unused elements, styles that could be combined or rewritten for efficiency, and outdated ways of handling browser inconsistencies As sites age, we need to routinely examine our CSS and consider
 
--- 92 of 181 --
-
 ---
 
-## Sección 30: Chapter 3
+## Sección 30: Chapter 3 [Entropy: 0.46]
 
 4. OPTIMIzING MarKuP aNd STylES | 71
 implementing new technology and techniques to improve page load
@@ -2774,9 +2532,6 @@ Web Page Performance audit and see a list of unused CSS rules
 Figure 4-2. Chrome devTools allows you to run a web Page Performance audit
 on any page. Included in the audit results is a list of unused CSS rules that you
 may be able to clean up.
-
--- 93 of 181 --
-
 72 | dESIGNING FOr PErFOrMaNCE
 Be wary of the outputs of these tools; Dust-Me Selectors may not have
 crawled every page of your site, and Chrome DevTools is looking only at
@@ -2817,9 +2572,6 @@ font-size: 14px;
 margin: 9px 0 0;
 font-size: 13px;
 }
-
--- 94 of 181 --
-
 4. OPTIMIzING MarKuP aNd STylES | 73
 Or, ask yourself: is there a reason why .comment has a slightly different font size and margin below it? What if you combined the styles in
 .recipe and .comment to create a true pattern? The complexity would
@@ -2853,9 +2605,6 @@ em, you could do a little math to create:
 • Header font sizes in multiples of 14 px
 • Margins and padding in multiples of 1 4 em
 • A custom grid based on 14 px or 1 4 em increments
-
--- 95 of 181 --
-
 74 | dESIGNING FOr PErFOrMaNCE
 CSS also allows you to leverage the power of shorthand style declarations Shorthand declarations, such as background, include many individual style values in one line The background declaration, for example, includes:
 • background-clip
@@ -2888,9 +2637,6 @@ margin: 10px 0 0;
 border: 2px #ccc solid;
 padding: 10px 0;
 }
-
--- 96 of 181 --
-
 4. OPTIMIzING MarKuP aNd STylES | 75
 We can set the shorthand property for the styles that are common
 between the elements, and later style the small differences using individual (longhand) properties:
@@ -2936,9 +2682,7 @@ margin-bottom: 0.7em;
 
 ---
 
-## Sección 31: Chapter 3
-
--- 97 of 181 --
+## Sección 31: Chapter 3 [Entropy: 0.545]
 
 76 | dESIGNING FOr PErFOrMaNCE
 <h1>My page title</h1>
@@ -2979,9 +2723,6 @@ h3 {
 color: #000;
 font-weight: bold;
 font-size: 1.4em;
-
--- 98 of 181 --
-
 4. OPTIMIzING MarKuP aNd STylES | 77
 margin-bottom: 0.7em;
 }
@@ -3018,9 +2759,6 @@ time will be
 Next, look for opportunities to replace your stylesheet images with
 CSS3 gradients, data URIs, or SVG You can read more about creating
 gradients in “CSS3,” and more about how to create high-performing
-
--- 99 of 181 --
-
 78 | dESIGNING FOr PErFOrMaNCE
 SVG replacements in “SVG ” CSS3 gradients are an excellent replacement for any repeating background images that are currently implemented with CSS; they are also very easily editable and repurposable
 throughout stylesheets Replacing images with CSS3 may very quickly
@@ -3055,9 +2793,6 @@ row? Why wasn’t it possible to simply style:
 It’s possible that the author really needed all of that specificity in order
 to set a style correctly However, this much specificity is also an indicator that something in the stylesheet or HTML hierarchy could be
 much more efficient Inefficient selectors tend to happen because of
-
--- 100 of 181 --
-
 4. OPTIMIzING MarKuP aNd STylES | 79
 CSS overriding previous overly specific CSS, and this is a good thing
 to watch for so you can find areas to clean up and make more efficient
@@ -3085,7 +2820,7 @@ src: url('fontname.eot');
 src: url('fontname.eot?#iefix') format('embedded-opentype'),
 /* Modern Browsers */
 url('fontname.woff') format('woff'),
-/* Safari, Android, iOS */
+/* Safari, Web Platform, iOS */
 url('fontname.ttf') format('truetype');
 }
 Support for the
@@ -3098,9 +2833,7 @@ IE 9+, and Safari 5 1+:
 
 ---
 
-## Sección 32: Chapter 3
-
--- 101 of 181 --
+## Sección 32: Chapter 3 [Entropy: 0.586]
 
 80 | dESIGNING FOr PErFOrMaNCE
 @font-face {
@@ -3135,9 +2868,6 @@ this example, we would load Google’s Philosopher font with a Cyrillic
 subset:
 <link href="http://fonts.googleapis.com/css?family=Philosopher
 &subset=cyrillic" rel="stylesheet" />
-
--- 102 of 181 --
-
 4. OPTIMIzING MarKuP aNd STylES | 81
 If you want to load only certain characters from a Google hosted font,
 you can specify those as well For example, we can load the Philosopher
@@ -3158,9 +2888,6 @@ fontsquirrel com/tools/webfont-generator) and choose a custom character subset t
 Figure 4-3. Font Squirrel’s webfont Generator allows you to choose a custom
 subset of characters in your font files. In this case, we’ve chosen the basic
 latin unicode table and added four single characters to our subset.
-
--- 103 of 181 --
-
 82 | dESIGNING FOr PErFOrMaNCE
 You may also want to use multiple font weights for your web font Be
 deliberate about how many font weights you load; as you apply more
@@ -3195,9 +2922,6 @@ you have the opportunity to be deliberate about loading assets and creating oppo
 save both development time and page load time Markup reuse will:
 • Provide an opportunity for asset caching
 • Prevent designers or developers from reinventing the wheel
-
--- 104 of 181 --
-
 4. OPTIMIzING MarKuP aNd STylES | 83
 • Eliminate unnecessary asset requests as new content is added
 • Help you isolate styles and assets that are no longer necessary
@@ -3222,9 +2946,7 @@ includes a description of when to use certain colors.
 
 ---
 
-## Sección 33: Chapter 3
-
--- 105 of 181 --
+## Sección 33: Chapter 3 [Entropy: 0.577]
 
 84 | dESIGNING FOr PErFOrMaNCE
 When I worked on a site with lots of golden yellows and deep grays, I
@@ -3260,9 +2982,6 @@ Consider including the following information in your style guide:
 • Hexadecimal color values and when they should be used
 • Button classes and how they should be used
 • Sprites and what classes correspond to which icons within them
-
--- 106 of 181 --
-
 4. OPTIMIzING MarKuP aNd STylES | 85
 • Typography, including how headers should be styled and how to
 import and apply any web fonts
@@ -3282,9 +3001,6 @@ http://www starbucks com/static/reference/styleguide/) includes a how-to on impl
 icon font, with example HTML and CSS as well as embedded examples
 of each icon (Figure 4-6) It should be as easy and intuitive as possible
 to repurpose the patterns and reuse the assets in your style guide
-
--- 107 of 181 --
-
 86 | dESIGNING FOr PErFOrMaNCE
 Figure 4-6. The Starbucks style guide (
 http://www.starbucks.com/static/
@@ -3301,9 +3017,6 @@ easier to update all the instances of a particular pattern, because they
 will share the same assets and styles The more patterns are repurposed, the higher the chances are that the styles and other assets will
 already be cached, the shorter your stylesheets will be, and the faster
 the site will load
-
--- 108 of 181 --
-
 4. OPTIMIzING MarKuP aNd STylES | 87
 Figure 4-7. Etsy’s style guide includes example @font-face weights,
 instructions for when to use various fonts, and copy-and-pasteable code for
@@ -3324,9 +3037,6 @@ are included near the bottom of the page, they will prohibit the page
 from displaying its content as soon as possible Browsers want to avoid
 having to redraw elements of the page if their styles are changing; putting your stylesheets in the <head> allows content to be displayed progressively to the user because the browser isn’t still looking for more
 style information
-
--- 109 of 181 --
-
 88 | dESIGNING FOr PErFOrMaNCE
 Reducing your stylesheets to as few files as possible will help reduce
 the total number of requests your site makes, and will result in a much
@@ -3360,9 +3070,7 @@ content, be sure to watch out for how this affects the user experience
 
 ---
 
-## Sección 34: Chapter 3
-
--- 110 of 181 --
+## Sección 34: Chapter 3 [Entropy: 0.385]
 
 4. OPTIMIzING MarKuP aNd STylES | 89
 Anything that loads late and affects page layout can cause content to
@@ -3400,9 +3108,6 @@ See all the whitespace, unnecessary semicolons, and leading zeros in
 your stylesheets? How about all of those unneeded spaces, newlines,
 and tabs in your JavaScript files? It’s time to
 minify these assets by
-
--- 111 of 181 --
-
 90 | dESIGNING FOr PErFOrMaNCE
 removing unnecessary characters from the code before they are seen by
 your end user Minification results in smaller file sizes, which is great
@@ -3428,9 +3133,6 @@ algorithm gzip’s algorithm finds similar strings within a text file and
 replaces those strings to make the overall file size smaller Browsers
 understand how to decode these replaced strings and will display the
 content correctly to the user
-
--- 112 of 181 --
-
 4. OPTIMIzING MarKuP aNd STylES | 91
 To implement gzip compression, you need to enable it on your web
 server How to do this depends on your server type:
@@ -3464,9 +3166,6 @@ You should set one of Expires or Cache-Control: max-age (not both),
 and one of Last-Modified or ETag (not both), for all cacheable assets
 Expires is more widely supported than Cache-Control: max-age LastModified is always a date, and Etag is any value that uniquely identifies
 the version of the asset, such as a file version number
-
--- 113 of 181 --
-
 92 | dESIGNING FOr PErFOrMaNCE
 All static assets (CSS files, JavaScript files, images, PDFs, fonts, etc )
 should be cached
@@ -3496,9 +3195,8 @@ users
 
 ---
 
-## Sección 35: Chapter 3
+## Sección 35: Chapter 3 [Entropy: 0.25]
 
--- 114 of 181 --
 [ 5 ]
 Responsive Web Design
 Mobile is no longer “the future ” As mentioned in Chapter 1, handsets
@@ -3528,9 +3226,6 @@ architecture
 Guy Podjarny found (
 http://bit ly/1tBv6cT) that the majority of responsively designed sites are currently delivering roughly the same page
 weight to small and large screens But it doesn’t have to be this way:
-
--- 115 of 181 --
-
 94 | dESIGNING FOr PErFOrMaNCE
 responsive web design is not inherently bad for performance, and we
 can be smart about what we deliver to our users By being intentional in
@@ -3568,9 +3263,6 @@ image twice as large as necessary and scale it down for display in the
 browser This technique makes images look crisp on retina displays
 Unfortunately, it also means users who aren’t using retina displays will
 download unnecessary image file bytes
-
--- 116 of 181 --
-
 5. rESPONSIvE wEb dESIGN | 95
 Figure 5-1. In this example, we can see that the size at which the Google logo is
 displayed is smaller than the actual size of the logo file.
@@ -3588,9 +3280,6 @@ Your server can make smart decisions by looking at a user agent string,
 from which it can guess things like your user’s screen size, device capabilities like touch, and more Tools like Adaptive Images (
 http://adaptive-images com/) detect your user’s screen size and will automatically
 create, cache, and deliver correctly sized images based on your defined
-
--- 117 of 181 --
-
 96 | dESIGNING FOr PErFOrMaNCE
 breakpoints (see Figure 5-3) In his book High Performance Responsive
 Design (O’Reilly), Tom Barker outlines a number of RESS techniques
@@ -3615,9 +3304,7 @@ page with CSS, which is why it’s important to test your site’s performance a
 
 ---
 
-## Sección 36: Chapter 3
-
--- 118 of 181 --
+## Sección 36: Chapter 3 [Entropy: 0.545]
 
 5. rESPONSIvE wEb dESIGN | 97
 For example, simply setting display: none to an element will not prevent a browser from downloading the image:
@@ -3654,9 +3341,6 @@ Browsers will not download the image. */
 #parent div {
 background: url(image.jpg);
 }
-
--- 119 of 181 --
-
 98 | dESIGNING FOr PErFOrMaNCE
 @media (max-width: 600px) {
 #parent {
@@ -3694,14 +3378,11 @@ background: url(regular.png);
 background: url(retina.png);
 }
 }
-
--- 120 of 181 --
-
 5. rESPONSIvE wEb dESIGN | 99
-Devices running Android 2 x that have a device pixel ratio equal to or
+Devices running Web Platform 2 x that have a device pixel ratio equal to or
 above 1 5 will unfortunately download both versions of the image (regular.png as well as retina.png), but as Kadlec notes in his article (
 http://
-bit ly/1jqN9gF), it’s unlikely that you will encounter a retina device running Android 2 x
+bit ly/1jqN9gF), it’s unlikely that you will encounter a retina device running Web Platform 2 x
 Your best bet for displaying a correctly sized picture in modern browsers is to take advantage of the picture element in HTML picture is
 currently supported in Chrome 38, Firefox 33, and Opera 25, and is a
 part of the new picture specification (
@@ -3734,9 +3415,6 @@ srcset="medium.png 1x, medium-hd.png 2x">
 <img src="small.png" srcset="small-hd.png 2x"
 alt="Description">
 </picture>
-
--- 121 of 181 --
-
 100 | dESIGNING FOr PErFOrMaNCE
 In this example, srcset tells the browser which image to choose at
 different pixel densities Again, we’re saving overhead for our users by
@@ -3776,9 +3454,7 @@ sizes="(min-width: 1000px) 33.3vw,
 
 ---
 
-## Sección 37: Chapter 3
-
--- 122 of 181 --
+## Sección 37: Chapter 3 [Entropy: 0.418]
 
 5. rESPONSIvE wEb dESIGN | 101
 The browser looks in the srcset list of images to see their dimensions
@@ -3816,9 +3492,6 @@ at Etsy, as we would rather save our users from downloading the extra
 font file overhead if they’re on a mobile device
 To do this, set your normal fallback fonts on your content Then use a
 media query to only apply your web font to content at a large breakpoint:
-
--- 123 of 181 --
-
 102 | dESIGNING FOr PErFOrMaNCE
 @font-face {
 font-family: 'FontName';
@@ -3856,9 +3529,6 @@ overall page using your design
 As we’ll discuss in “Approach New Designs with a Performance Budget,”
 there are ways to make compromises on site speed as you develop By
 setting a performance budget, you’ll be able to make concessions as you
-
--- 124 of 181 --
-
 5. rESPONSIvE wEb dESIGN | 103
 balance aesthetics and performance For any responsive web design,
 you’ll be making these same concessions; maybe you’ll want to serve a
@@ -3892,9 +3562,6 @@ sizes
 • Think about your site from an accessibility perspective (“How
 accessible will this be for people on slower connections or less
 capable devices?”)
-
--- 125 of 181 --
-
 104 | dESIGNING FOr PErFOrMaNCE
 By starting with a mobile-first approach, you can attempt to avoid the
 square peg/round hole mentality that many designers and developers fall into when they try to reshape a desktop experience for mobile
@@ -3923,9 +3590,7 @@ to be deliberate about performance in your overall user experience
 
 ---
 
-## Sección 38: Chapter 3
-
--- 126 of 181 --
+## Sección 38: Chapter 3 [Entropy: 0.265]
 
 5. rESPONSIvE wEb dESIGN | 105
 MEASURE EVERYTHING
@@ -3963,9 +3628,6 @@ a particular device size, but that both images aren’t downloaded I used
 Chrome DevTools with caching disabled to emulate a Google Nexus 10
 that would match the larger media query (Figure 5-4), and a Google
 Nexus 4 that would match the smaller media query (Figure 5-5)
-
--- 127 of 181 --
-
 106 | dESIGNING FOr PErFOrMaNCE
 Figure 5-4. In this example, I emulated a Google Nexus 10 to see which image
 would be downloaded. In the Network panel, we can see that big.png was
@@ -3982,17 +3644,11 @@ The Dulles, Virginia, WebPagetest location includes a number of
 mobile browsers in the Browser drop-down This testing location
 includes physical devices, like the iPhone 4 and the Nexus 5, on which
 you can test
-
--- 128 of 181 --
-
 5. rESPONSIvE wEb dESIGN | 107
 Figure 5-5. after switching the emulator to the Google Nexus 4 and refreshing
 the page, we can see that small.png was called instead of big.png.
 Figure 5-6. you can choose from an assortment of mobile browsers in your
 webPagetest run.
-
--- 129 of 181 --
-
 108 | dESIGNING FOr PErFOrMaNCE
 Figure 5-7. you can choose from an assortment of emulated connection
 speeds in your webPagetest run.
@@ -4014,8 +3670,6 @@ will help you keep page load time under control In the next chapter,
 we’ll dive into tools and routines for checking in on the performance
 of your site to help you get a holistic view of your user experience over
 time
-
--- 130 of 181 --
 [ 6 ]
 Measuring and Iterating
 on Performance
@@ -4063,9 +3717,6 @@ Median load time
 for various audience
 demographics
 weekly
-
--- 131 of 181 --
-
 110 | dESIGNING FOr PErFOrMaNCE
 As sites age and change, there are plenty of opportunities for both
 improvements and degradations in performance; it’s imperative to
@@ -4091,9 +3742,7 @@ for things like load order, compression, and caching.
 
 ---
 
-## Sección 39: Chapter 3
-
--- 132 of 181 --
+## Sección 39: Chapter 3 [Entropy: 0.265]
 
 6. MEaSurING aNd ITEraTING ON PErFOrMaNCE | 111
 Take a look at YSlow’s recommendations for your page In this case, I’ve
@@ -4121,9 +3770,6 @@ regularly check as your site ages and recommendations change.
 Check in with YSlow as you develop a new page, as you make changes to
 your existing site, or every three months if things are stable Compare
 the before and after of your performance grades and recommendations
-
--- 133 of 181 --
-
 112 | dESIGNING FOr PErFOrMaNCE
 CHROME DEVTOOLS
 For further optimization, open Chrome DevTools and run a Web Page
@@ -4142,9 +3788,6 @@ resource requests while devTools is open, helping you gather waterfall informati
 The Network tab is really handy to help you see how the critical path
 is affected, what resources are taking too long to load, and what kind
 of latency each request experiences You can also see cookie information, sort by the duration it takes for resources to load or their latency,
-
--- 134 of 181 --
-
 6. MEaSurING aNd ITEraTING ON PErFOrMaNCE | 113
 and filter by type of request Poke around the Network tab to make sure
 that you have a healthy critical rendering path and that there aren’t any
@@ -4173,9 +3816,6 @@ a sense of how your site performs outside the comfort of your own
 browser and geographic location Synthetic performance tools help you
 get a better sense of how your pages load by using a third party’s testing location and device; you can see how your site performs on various
 platforms across the world
-
--- 135 of 181 --
-
 114 | dESIGNING FOr PErFOrMaNCE
 Use synthetic tests to get baseline performance metrics for your pages
 as you iterate and optimize your site’s design Synthetic testing won’t
@@ -4198,9 +3838,7 @@ view for result analysis
 
 ---
 
-## Sección 40: Chapter 3
-
--- 136 of 181 --
+## Sección 40: Chapter 3 [Entropy: 0.31]
 
 6. MEaSurING aNd ITEraTING ON PErFOrMaNCE | 115
 Figure 6-7. webPagetest’s advanced Settings allow you to choose additional
@@ -4220,9 +3858,6 @@ WebPagetest provides page performance recommendations, similar to
 PageSpeed and YSlow Choose the Performance Review link at the top
 of your test to see the details of the test results (Figure 6-8) and your
 potential page load time savings
-
--- 137 of 181 --
-
 116 | dESIGNING FOr PErFOrMaNCE
 Figure 6-8. webPagetest provides grades for various performance metrics as
 well as recommendations on how to improve your page’s load time.
@@ -4240,9 +3875,6 @@ look at WebPagetest’s Speed Index score As mentioned in “Critical
 Rendering Path,” Speed Index is the average time at which visible parts
 of the page are displayed It will help you benchmark the perceived performance of your page, since it will tell you how quickly the “above the
 fold” content is populated for your users
-
--- 138 of 181 --
-
 6. MEaSurING aNd ITEraTING ON PErFOrMaNCE | 117
 WebPagetest creates a chart that displays visual progress over time
 when you compare two WebPagetest runs In Figure 6-10, we can see
@@ -4262,9 +3894,6 @@ fully load the page using WebPagetest Compare WebPagetests results
 from different browsers and locations to see how each of these metrics
 changes Look for outliers in long load times or cases where the critical
 path may be blocked (read more in “Critical Rendering Path”)
-
--- 139 of 181 --
-
 118 | dESIGNING FOr PErFOrMaNCE
 As you iterate on a design or make performance improvements on your
 site, use WebPagetest to measure the before and after results Be sure
@@ -4301,9 +3930,6 @@ experience:
 main audience lives)
 • Network type (cellular, WiFi, etc )
 • Median as well as 95th percentile total page load time
-
--- 140 of 181 --
-
 6. MEaSurING aNd ITEraTING ON PErFOrMaNCE | 119
 Why 95th Percentile?
 The 95th percentile metric is another way to illustrate the performance pain
@@ -4331,9 +3957,7 @@ devices and in different countries.
 
 ---
 
-## Sección 41: Chapter 3
-
--- 141 of 181 --
+## Sección 41: Chapter 3 [Entropy: 0.25]
 
 120 | dESIGNING FOr PErFOrMaNCE
 After benchmarking your site’s performance using synthetic testing
@@ -4364,9 +3988,6 @@ you alert others to less obvious changes in performance over time
 The more aware you and the team are about performance, the more
 equipped you’ll be to troubleshoot and balance out normal site aging
 implications
-
--- 142 of 181 --
-
 6. MEaSurING aNd ITEraTING ON PErFOrMaNCE | 121
 Figure 6-12. Google analytics makes it easy to compare the average page load
 time for your site’s users over time.
@@ -4387,9 +4008,6 @@ alerts using data from third parties like performance monitoring tools
 or WebPagetest’s self-hosted option It’s helpful to document both performance metrics as well as any reasons why performance changed;
 you can see which kinds of site changes have huge impacts on performance over time (redesigns, new ad or marketing scripts) and which
 are minor (such as small changes in content or images)
-
--- 143 of 181 --
-
 122 | dESIGNING FOr PErFOrMaNCE
 Etsy’s Q1 2014 Site Performance Report
 There was a small increase in both median and 95th percentile load
@@ -4425,9 +4043,7 @@ will be incredibly helpful for watching those slow performance degradations that
 
 ---
 
-## Sección 42: Chapter 3
-
--- 144 of 181 --
+## Sección 42: Chapter 3 [Entropy: 0.31]
 
 6. MEaSurING aNd ITEraTING ON PErFOrMaNCE | 123
 Automatically alerting on performance regressions and wins will also
@@ -4445,9 +4061,6 @@ attribute it to work being done on your site, will empower you and others to mak
 next chapter, we will examine how experiments are great for optimizing your overall user experience, and look at some challenges you’ll
 face when balancing design and performance
 
--- 145 of 181 --
-
--- 146 of 181 --
 [ 7 ]
 Weighing Aesthetics
 and Performance
@@ -4474,9 +4087,6 @@ Performance is closely linked to aesthetics Frontend architect and consultant Ha
 it’s about how nicely it works, how it feels There’s no point designing a
 nice, shiny, beautiful UI if it’s going to take 20 seconds to end up on a
 user’s device They’ll have left before they even got to see it ”
-
--- 147 of 181 --
-
 126 | dESIGNING FOr PErFOrMaNCE
 If it were as easy as always following the same patterns and guidelines, maybe more people would be doing performance work today But
 unfortunately, it takes tough decision making to do performance well
@@ -4527,9 +4137,6 @@ heavy.
 The answers may differ every time, due to new context like the codebase you’re working with, deadlines, the team members with whom
 you’re working and their skill sets, the look and feel, and more Table
 7-2 shows example decisions made after weighing these considerations
-
--- 148 of 181 --
-
 7. wEIGHING aESTHETICS aNd PErFOrMaNCE | 127
 TABLE 7-2. Example site decisions
 QUESTION DECISION
@@ -4570,9 +4177,7 @@ experience for their client
 
 ---
 
-## Sección 43: Chapter 3
-
--- 149 of 181 --
+## Sección 43: Chapter 3 [Entropy: 0.355]
 
 128 | dESIGNING FOr PErFOrMaNCE
 When you encounter these choices, weigh:
@@ -4602,9 +4207,6 @@ Make Performance Part of Your Workflow
 One way to minimize the operational cost of performance work is
 to incorporate it into your daily workflow by implementing tools and
 developing a routine of benchmarking performance
-
--- 150 of 181 --
-
 7. wEIGHING aESTHETICS aNd PErFOrMaNCE | 129
 There are a variety of tools mentioned throughout this book that you
 can incorporate into your daily development workflow:
@@ -4631,9 +4233,6 @@ Performance Budget
 One key to making decisions when weighing aesthetics and page speed
 is understanding what wiggle room you have By creating a performance budget early on, you can make performance sacrifices in one
 area of a page and make up for them in another In Table 7-3 I’ve illustrated a few measurable performance goals for a site
-
--- 151 of 181 --
-
 130 | dESIGNING FOr PErFOrMaNCE
 TABLE 7-3. Example performance budget
 MEASURE MAXIMUM TOOL NOTES
@@ -4676,9 +4275,6 @@ it, as well as any details of what or whom you’re measuring Read more
 about how to measure performance in Chapter 6, and make it easy for
 anyone on your team to learn about this budget and measure his or her
 work against it
-
--- 152 of 181 --
-
 7. wEIGHING aESTHETICS aNd PErFOrMaNCE | 131
 Experiment on Designs with Performance in Mind
 The most important superpower you have when doing performance
@@ -4722,9 +4318,7 @@ to make beautiful websites that are optimized for performance, says,
 
 ---
 
-## Sección 44: Chapter 3
-
--- 153 of 181 --
+## Sección 44: Chapter 3 [Entropy: 0.355]
 
 132 | dESIGNING FOr PErFOrMaNCE
 “Now instead of a design team who wants beautiful, an engineering
@@ -4752,9 +4346,6 @@ anything Under Feather, despite it taking over two minutes to get to
 the first frame of video, watching a video actually became a real possibility Over the week, word of Feather had spread in these areas and
 our numbers were completely skewed as a result Large numbers of
 people who were previously unable to use YouTube before were suddenly able to ”
-
--- 154 of 181 --
-
 7. wEIGHING aESTHETICS aNd PErFOrMaNCE | 133
 This is why we do performance work, and why we measure it Finding
 that balance between aesthetics and performance requires considering
@@ -4767,9 +4358,6 @@ development team on board with doing this kind of work In the next
 chapter, we’ll walk through what you can do to change the culture of
 your organization to focus on performance
 
--- 155 of 181 --
-
--- 156 of 181 --
 [ 8 ]
 Changing Culture at
 Your Organization
@@ -4792,9 +4380,6 @@ Performance Cops and Janitors
 Performance improvements often begin as one person’s voice within a
 company culture You start to notice how other sites are making optimizations and improving their user experience through tweaks to perceived performance or total page load time Then you start measuring
 how your competitors’ sites fare in WebPagetest and comparing your
-
--- 157 of 181 --
-
 136 | dESIGNING FOr PErFOrMaNCE
 site’s performance to theirs After beginning to learn about many of the
 easy performance wins that you could implement on your site, you start
@@ -4827,9 +4412,7 @@ A dedicated performance team can focus on:
 
 ---
 
-## Sección 45: Chapter 3
-
--- 158 of 181 --
+## Sección 45: Chapter 3 [Entropy: 0.52]
 
 8. CHaNGING CulTurE aT yOur OrGaNIzaTION | 137
 • Giving lectures, lunch-and-learns, and workshops to educate others about performance
@@ -4844,9 +4427,6 @@ across the site
 recent experiments and learnings, as shown in Figure 8-1
 Figure 8-1. Etsy’s performance report details load time for top pages and what
 changes contributed to the load time each quarter.
-
--- 159 of 181 --
-
 138 | dESIGNING FOr PErFOrMaNCE
 Having an individual or team care deeply about performance is important for all of the aforementioned purposes These champions can stay
 on top of how performance is being handled sitewide; they can keep an
@@ -4878,9 +4458,6 @@ http://bit ly/1ttKspI) and
 found that 88% of online consumers are less likely to return to a
 site after a bad experience The same study found that “at peak
 traffic times, more than 75% of online consumers left for a competitor’s site rather than suffer delays ”
-
--- 160 of 181 --
-
 8. CHaNGING CulTurE aT yOur OrGaNIzaTION | 139
 • Users will return to faster sites, as evidenced in a study by Google
 (
@@ -4914,9 +4491,6 @@ before you make the improvement and again afterward It won’t be scientific, bu
 Read more about measuring the impact of performance improvements
 in Chapter 6 Share the work you did and the resulting business metric
 changes with those VIPs to help them understand the impact that performance work can have
-
--- 161 of 181 --
-
 140 | dESIGNING FOr PErFOrMaNCE
 As you make any performance changes, also measure how long it takes
 you to do so Design and development hours are a cost for the business,
@@ -4942,16 +4516,14 @@ filmstrip view to compare them using this URL structure: webpagetest.
 org/video/compare.php?tests=<Test 1 ID>,<Test 2 ID>…
 For example, in Figure 8-2 I ran three separate tests for the Huffington
 Post’s site: one using the Virginia test location using Chrome on a desktop, one using Internet Explorer 8 from the Singapore location, and
-one using Chrome on an Android phone from the Virginia location
+one using Chrome on an Web Platform phone from the Virginia location
 While the overall numbers varied widely for each test and could make
 a compelling argument for mobile and global performance improvement needs, the filmstrip view really helps you feel the difference in
 user experience
 
 ---
 
-## Sección 46: Chapter 3
-
--- 162 of 181 --
+## Sección 46: Chapter 3 [Entropy: 0.31]
 
 8. CHaNGING CulTurE aT yOur OrGaNIzaTION | 141
 Figure 8-2. webPagetest provides a filmstrip view as well as video for you to
@@ -4968,9 +4540,6 @@ All of these tests in the Visual Comparison tool will use the Dulles,
 Virginia, testing location
 Figure 8-3. you can enter multiple urls into webPagetest to compare their
 performance.
-
--- 163 of 181 --
-
 142 | dESIGNING FOr PErFOrMaNCE
 Once the tests complete, WebPagetest can show you a filmstrip view of
 how each page loads over time, as shown in Figure 8-4 You can even
@@ -4997,9 +4566,6 @@ on the end user experience and should focus on performance as part of
 their daily work A site that feels fast requires everyone who affects the
 user experience to keep performance top-of-mind during their daily
 workflows
-
--- 164 of 181 --
-
 8. CHaNGING CulTurE aT yOur OrGaNIzaTION | 143
 Working with Other Designers and Developers
 Education and empowerment are key to incentivizing the other designers and developers with whom you work to care about performance
@@ -5029,9 +4595,6 @@ techniques, and folks who forget about best practices when they get
 swamped with other work Routinely give lunch-and-learns or other
 informal education about how everyone can have a positive impact on
 performance
-
--- 165 of 181 --
-
 144 | dESIGNING FOr PErFOrMaNCE
 Develop baselines for your organization as to what’s acceptable for page
 load time How slow is too slow? Communicate the acceptable page
@@ -5067,9 +4630,7 @@ service-level agreements
 
 ---
 
-## Sección 47: Chapter 3
-
--- 166 of 181 --
+## Sección 47: Chapter 3 [Entropy: 0.31]
 
 8. CHaNGING CulTurE aT yOur OrGaNIzaTION | 145
 Figure 8-5. at Etsy, we show a toolbar to employees working on site pages.
@@ -5100,9 +4661,6 @@ them “They got very, very excited about the numbers, and even began
 running their own tests on it Giving them something like this to get
 into really brought them on board so, from then on in, they cared as
 much about keeping the numbers down as I did,” said Roberts
-
--- 167 of 181 --
-
 146 | dESIGNING FOr PErFOrMaNCE
 Publishing your work and celebrating it is a huge incentive to many
 designers and developers; showcasing improvements, as I did in Figure
@@ -5125,17 +4683,11 @@ features and how they were designed, weighing the balance between
 aesthetics and speed They were able to reduce the home page’s load
 time significantly by the time the next performance report was released,
 as shown in Figure 8-8
-
--- 168 of 181 --
-
 8. CHaNGING CulTurE aT yOur OrGaNIzaTION | 147
 Figure 8-7. Etsy published its first performance report in 2011, intentionally
 including some embarrassingly long page load times.
 Figure 8-8. In its second performance report, Etsy showcased huge
 improvements in home page load time.
-
--- 169 of 181 --
-
 148 | dESIGNING FOr PErFOrMaNCE
 Publicly acknowledging how your site is performing will make people feel accountable, and will also make them want to help Designers
 and developers generally want to help contribute to a common, positive
@@ -5165,9 +4717,6 @@ and developers to begin contributing to making your site faster
 As others begin contributing to the overall performance of your site,
 the most important thing you can do is celebrate their work For every
 bite-sized performance improvement, thank the contributor and publicize their work internally, like in Figure 8-9
-
--- 170 of 181 --
-
 8. CHaNGING CulTurE aT yOur OrGaNIzaTION | 149
 Figure 8-9. The performance team at Etsy maintains a dashboard celebrating
 people on other teams who contribute to performance improvements. we
@@ -5186,823 +4735,6 @@ it’s possible for you to single-handedly build and maintain an incredibly fast
 other contributors touch the site and make changes, or as the Web continues to evolve Educate and empower everyone around you to understand how they can improve performance, and how their choices affect
 the end user experience Performance truly is about making a cultural shift, not just a technological one; build performance champions
 within your organization so that you can create the best user experience possible for your site
-
----
-
-## Sección 48: Chapter 3
-
--- 171 of 181 --
-
-150 | dESIGNING FOr PErFOrMaNCE
-Web performance work is as fulfilling as it is challenging You have
-the power to go and create an excellent experience for your users Find
-those performance wins, whether they’re implementing new caching
-rules, optimizing images, or creating repurposable design patterns
-Empower those with whom you work to be performance champions
-Strive for the best possible user experience, striking a balance between
-aesthetics and speed With a focus on performance, everyone wins
-
--- 172 of 181 --
-B
-bandwidth, 5
-Barker, Tom, 96
-Base64-encoding images, decreasing
-image requests, 54
-baseline JPEGs, 31
-battery drain, mobile devices, 7
-benchmark
-overview, 109
-page load time, 1
-bevel gradient, 49
-Bootstrap, 68
-brand impact, performance and user
-experience, 2–3
-returning users, 2
-search engine rankings, 2–3
-browsers
-impact on page speed, 25
-rendering content, 13–17
-connections, 16–17
-requests, 14–16
-browser tools, measuring
-performance, 110–113
-Chrome DevTools, 112–113
-YSlow, 110–111
-budget (performance), new
-designs, 129–130
-business metrics, impact of
-upward management
-on organizational
-culture, 138–140
-button classes, style guides, 84
-C
-Cache-Control: max-age, caching
-assets, 91
-caching assets, 91–92
-CDNs (content delivery
-networks), 24
-[ Index ]
-Symbols
-95th percentile metric, 119
-960 Grid, 68
-A
-A/B testing, 131
-accessibility, cleaning HTML, 68
-Adaptive Images tool, 95
-Adobe Illustrator, creating SVG
-images, 55
-Advanced Settings
-(WebPagetest), 114
-AdvPNG compression tool, 40
-aesthetics
-approaching new design with
-performance budget,
-129–130
-balancing with
-performance, 125–128
-experimenting on designs with
-performance in mind,
-131–133
-performance as part of
-workflow, 128–129
-animation, GIFs, 32–35
-Apache Caching Guide, 92
-applying media queries, 98
-approaches, responsive web
-design, 102–108
-measure everything, 105–108
-mobile-first, 103–104
-project documentation, 102–103
-artifacting, 29
-assets, caching, 91–92
-asynchronously loaded content, 89
-Atkinson, Naomi, 3
-automatic alerts, performance
-regressions, 123
-
--- 173 of 181 --
-
-152 | INdEx
-content delivery networks
-(CDNs), 24
-content rendering, browsers, 13–17
-connections, 16–17
-requests, 14–16
-cops (performance), 135–138
-CPU usage, JPEGs, 31–32
-critical rendering path,
-optimization, 19–22
-CSS
-cleanup, 70–79
-combining and condensing
-styles, 72–77
-specificity removal, 78–79
-stylesheet images, 77–78
-unused styles, 71–72
-loading, 87–89
-CSS3
-animations, 35
-decreasing image requests, 49–54
-gradients, 49–52
-CSSMinifier com, 90
-CSS Object Model (CSSOM), 20
-CSSOM (CSS Object Model), 20
-CSS preprocessors, 77
-culture (organizational), changing
-performance cops and
-janitors, 135–138
-upward management, 138–142
-experiencing site speed, 140–
-impact on business
-metrics, 138–140
-working with designers and
-developers, 143–150
-education, 143–144
-empowering, 144–150
-custom build options,
-frameworks, 70
-D
-data URIs, decreasing image
-requests, 54
-decreasing image requests
-Base64-encoding images, 54
-CSS3, 49–54
-data URIs, 54
-sprites, 42–48
-SVG, 55–58
-celebrating performance
-improvements, 146
-changes over time, monitoring
-performance, 120–123
-changing organizational culture
-performance cops and
-janitors, 135–138
-upward management, 138–142
-experiencing site speed,
-140–142
-impact on business
-metrics, 138–140
-working with designers and
-developers, 143–150
-education, 143–144
-empowering, 144–150
-Chrome DevTools
-measuring performance, 112–113
-Timeline view, 23
-Web Page Performance audit, 71
-cleaning
-CSS, 70–79
-combining and condensing
-styles, 72–77
-specificity removal, 78–79
-stylesheet images, 77–78
-unused styles, 71–72
-HTML, 63–70
-accessibility, 68
-divitis, 64–65
-frameworks and grids, 68–70
-semantic elements, 65–68
-Cloud Four, 96
-colors (initial design phase), 9
-ColorZilla, Gradient Editor, 51
-combining styles, CSS cleanup,
-72–77
-competitive analysis, performance
-goals, 130
-Components tab (YSlow), 18
-compression, images, 39–41
-compression tools, 40
-ImageOptim, 31
-pngquant, 39
-condensing styles, CSS cleanup,
-72–77
-connections, impact on page load
-time, 16–17
-Connection view (WebPagetest), 16
-content, deliberate loading, 94–101
-fonts, 101–102
-images, 94–101
-
--- 174 of 181 --
-
-INdEx | 153
-F
-fallback fonts, 80
-filmstrip view (WebPagetest), 20,
-118, 141
-filter property, 53
-fonts
-optimization, 79–82
-responsive web design, 101–102
-Font Squirrel, WebFont
-Generator, 81
-font weights, 82
-format selection, images, 28–41
-additional compression, 39–41
-GIFs, 32–35
-JPEGs, 29–32
-PNG, 35–39
-FPS (frames per second) meter, 113
-frames per second (FPS) meter, 113
-frameworks, cleaning HTML, 68–70
-G
-geographic location, impact on page
-speed, 24
-GIFs, 32–35
-Gifsicle compression tool, 40
-Glimpse, 118
-goals (performance), competitive
-analysis, 130
-Google Analytics, 118
-Google Speed Index score, 117
-Gradient Editor (ColorZilla), 51
-grain, JPEG files, 30
-grids, cleaning HTML, 68–70
-Grigorik, Ilya, 5
-growth in mobile traffic, 4
-Grumpicon, 58
-Grunticon, 55
-gzip compression, 89–91
-H
-hardware (mobile), impact of
-performance on user
-experience, 7–8
-hexadecimal color values, style
-guides, 84
-horizontal redundancy, 35
-HTML5 Boilerplate, 68
-HTML, cleaning, 63–70
-accessibility, 68
-divitis, 64–65
-deliberately loading content,
-responsive web design,
-94–103
-fonts, 101–102
-images, 94–101
-designers
-changing organizational
-culture, 143–150
-education, 143–144
-empowering, 144–150
-impact on performance, 8–11
-planning and iterating images
-mentoring image creators,
-60–61
-scheduled routine checks,
-59–60
-style guides, 60
-design experiments, measuring
-performance, 131–133
-design patterns (initial design
-phase), 9
-developers, changing organizational
-culture, 143–150
-education, 143–144
-empowering, 144–150
-dithering GIFs, 33
-divitis, cleaning HTML, 64–65
-DNS lookup, 13–14
-Document Object Model (DOM), 19
-DOM (Document Object Model), 19
-Dust-Me Selectors, 71
-E
-educating staff, impact on
-performance, 143–144
-empowering people, changing
-organizational
-culture, 144–150
-encrypted HTTPS connections, 17
-ETag, caching assets, 91
-Etsy, style guide, 86–87
-EWWW Image Optimizer, 41
-experimenting on designs,
-measuring
-performance, 131–133
-Expires, caching assets, 91
-export options, SVG, 56
-extended OptiPNG compression
-tool, 40
-externally hosted fonts, 81
-
----
-
-## Sección 49: Chapter 3
-
--- 175 of 181 --
-
-154 | INdEx
-J
-janitors (performance), 135–138
-jank, impact on page speed, 22–24
-JavaScript loading, 87–89
-JPEG 2000 image format, 39
-JpegOptim compression tool, 40
-jpegrescan compression tool, 40
-JPEGs, 29–32
-baseline, 31
-progressive, 25, 31
-jpegtran compression tool, 40
-JPEG XR image format, 39
-JSCompress com, 90
-K
-Kadlec, Tim, 96
-L
-Last-Modified, caching assets, 91
-latency, 5
-layout (initial design phase), 9
-linear-gradient standard, 53
-A List Apart pattern library, 83
-loading
-content
-fonts, 101–102
-images, 94–101
-CSS and JavaScript, 87–89
-sites to mobile devices, 5
-lossless file formats
-GIFs, 32–35
-PNG files, 35–39
-M
-markup, optimization, 63
-caching assets, 91–92
-cleaning CSS, 70–79
-combining and condensing
-styles, 72–77
-specificity removal, 78–79
-stylesheet images, 77–78
-unused styles, 71–72
-cleaning HTML, 63–70
-accessibility, 68
-divitis, 64–65
-frameworks and grids, 68–70
-semantic elements, 65–68
-CSS and JavaScript loading,
-87–89
-frameworks and grids, 68–70
-semantic elements, 65–68
-HTTP/2, 48
-HTTP Archive, 18
-I
-ImageOptim-CLI, 41
-ImageOptim compression tool, 31,
-image optimization, 27
-design planning and
-iterating, 59–61
-mentoring image creators,
-60–61
-scheduled routine checks,
-59–60
-style guides, 60
-format selection, 28–41
-additional compression, 39–41
-GIFs, 32–35
-JPEGs, 29–32
-PNG, 35–39
-replacing image requests, 41–58
-Base64-encoding images, 54
-CSS3, 49–54
-data URIs, 54
-sprites, 42–48
-SVG, 55–58
-images, responsive web design,
-94–101
-impact of upward management,
-changing organizational
-culture, 138–140
-initial design phase, 9
-interactivity, time to, 22
-Internet Trends report (Meeker), 3
-iterating images, 59–61
-mentoring image creators, 60–61
-scheduled routine checks, 59–60
-style guides, 60
-iterating performance
-benchmarking overview, 109
-browser tools, 110–113
-Chrome DevTools, 112–113
-YSlow, 110–111
-changes over time, 120–123
-real user monitoring, 118–120
-synthetic testing, 113–118
-
--- 176 of 181 --
-
-INdEx | 155
-markup and styles, 63
-caching assets, 91–92
-cleaning CSS, 70–79
-cleaning HTML, 63–70
-CSS and JavaScript
-loading, 87–89
-minification and gzip
-compression, 89–91
-repurposable markup, 82–87
-web fonts, 79–82
-organizational culture, changing
-performance cops and
-janitors, 135–138
-upward management, 138–142
-experiencing site speed,
-140–142
-impact on business
-metrics, 138–140
-working with designers and
-developers, 143–150
-education, 143–144
-empowering, 144–150
-overlay requirements, impact on file
-type/size, 9
-P
-page load time See page speed
-page speed, 13
-browser influence, 25
-how browsers render content,
-13–17
-impact of geographic location, 24
-impact of performance on user
-experience, 1
-brand impact, 2–3
-designers’ influence, 8–11
-mobile users, 3–8
-network influence, 24–25
-page weight, 17–19
-perceived performance, 19–24
-critical rendering path, 19–22
-jank, 22–24
-PageSpeed Insights, 111
-page weight, 17–19
-Page Weight Matters (quotes), 132
-perceived performance, page
-speed, 19–24
-critical rendering path, 19–22
-jank, 22–24
-minification and gzip
-compression, 89–91
-repurposable markup, 82–87
-web fonts, 79–82
-measure everything approach,
-105–108
-measuring performance
-benchmarking overview, 109
-browser tools, 110–113
-Chrome DevTools, 112–113
-YSlow, 110–111
-changes over time, 120–123
-real user monitoring, 118–120
-synthetic testing, 113–118
-media queries, applying, 98
-Meeker, Mary, 3
-minification of assets, 89–91
-mixins, 77
-mobile-first approach, 103–104
-mobile hardware, impact on
-performance, 7–8
-mobile networks, impact on
-performance, 4–6
-mobile usage patterns, impact on
-performance, 6–7
-mobile users, impact of performance
-on user experience, 3–8
-mobile hardware, 7–8
-mobile networks, 4–6
-mobile usage patterns, 6–7
-Modernizr, 58
-mPulse, 118
-N
-network, influence on page
-speed, 24–25
-Network tab (Chrome DevTools), 112
-NGINX Content Caching, 92
-noise, JPEG files, 30
-O
-operational cost considerations, 128
-optimization
-critical rendering path, 19–22
-images, 27
-design planning and
-iterating, 59–61
-format selection, 28–41
-replacing image requests,
-41–58
-
--- 177 of 181 --
-
-156 | INdEx
-Pngcrush compression tool, 40
-PNG images, 35–39
-PNGOUT compression tool, 40
-pngquant, 39
-Podjarny, Guy, 93
-preprocessors, CSS, 77
-progressive JPEGs, 25, 31
-project documentation
-approach, 102–103
-public acknowledgement of
-performance, incentive for
-improvements, 148
-publishing performance
-improvements, 146
-R
-real user monitoring (RUM),
-118–120
-removal of unused styles, CSS
-cleanup, 71–72
-renaming elements, combining and
-condensing styles for CSS
-cleanup, 75
-rendering content, browsers, 13–17
-connections, 16–17
-requests, 14–16
-render tree, 20
-replacing image requests, 41–58
-Base64-encoding images, 54
-CSS3, 49–54
-data URIs, 54
-sprites, 42–48
-SVG, 55–58
-repurposable markup, 82–87
-requests
-decreasing image requests, 41–58
-Base64-encoding images, 54
-CSS3, 49–54
-data URIs, 54
-sprites, 42–48
-SVG, 55–58
-requests, impact on page load
-time, 14–16
-responsive web design, 93–108
-approaches, 102–108
-measure everything, 105–108
-mobile first, 103–104
-project documentation,
-102–103
-deliberately loading content,
-94–103
-performance
-cops and janitors, 135–138
-goals, competitive analysis, 130
-measuring
-benchmarking overview, 109
-browser tools, 110–113
-changes over time, 120–123
-real user monitoring, 118–120
-synthetic testing, 113–118
-page speed, 13
-browser influence, 25
-how browsers render
-content, 13–17
-impact of geographic
-location, 24
-network influence, 24–25
-page weight, 17–19
-perceived performance, 19–24
-site performance reports, 137
-user experience and, 1
-brand impact, 2–3
-designer impact, 8–11
-mobile users, 3–8
-weighing aesthetics
-approaching new design with
-performance budget,
-129–130
-balance, 125–128
-experiment on designs with
-performance in mind,
-131–133
-performance as part of
-workflow, 128–129
-performance budgets
-considerations for new
-designs, 129–130
-responsive web design, 103
-Performance Review link
-(WebPagetest), 115
-persistent connections, 17
-Phantom JS tests, 105
-Photoshop
-creating GIFs, 33
-Save for Web workflow, 29–30
-picture element, 99–100
-Picturefill, 99
-planning images, 59–61
-mentoring image creators, 60–61
-scheduled routine checks, 59–60
-style guides, 60
-PNG-8 files, 35
-PNG-24 files, 37
-
----
-
-## Sección 50: Chapter 3
-
--- 178 of 181 --
-
-INdEx | 157
-sprites
-decreasing image requests, 42–48
-defined, 16
-inclusion in style guides, 84
-SSL negotiations, 17
-Starbucks, style guide, 85–86
-StatCounter Global Stats, 3
-style guides
-planning and iterating images, 60
-repurposable markup, 84–87
-stylesheet images, CSS cleanup,
-77–78
-styles, optimization, 63
-caching assets, 91–92
-cleaning CSS, 70–79
-combining and condensing
-styles, 72–77
-specificity removal, 78–79
-stylesheet images, 77–78
-unused styles, 71–72
-cleaning HTML, 63–70
-accessibility, 68
-divitis, 64–65
-frameworks and grids, 68–70
-semantic elements, 65–68
-CSS and JavaScript loading,
-87–89
-minification and gzip
-compression, 89–91
-repurposable markup, 82–87
-web fonts, 79–82
-SVGO, automating cleanup of SVG
-files, 57
-SVG Optimiser, 58
-SVG (scale vector graphics),
-decreaing image
-requests, 55–58
-synthetic testing, 113–118
-T
-third-party content, 89
-Timeline view (Chrome
-DevTools), 23
-time to first byte (TTFB), 14
-time to interactivity, 22
-tools, measuring performance,
-110–113
-Chrome DevTools, 112–113
-YSlow, 110–111
-transparency, PNG files, 36
-fonts, 101–102
-images, 94–101
-performance budget, 103
-responsive web design with
-server-side components
-(RESS), 95
-RESS (responsive web design
-with server-side
-components), 95
-retina images, CSS, 98
-returning users, impact of
-performance on user
-experience, 2
-Roberts, Harry, 125
-routine checks, image planning and
-iterating, 59–60
-RUM (real user monitoring),
-118–120
-S
-Save for Web workflow
-(Photoshop), 29–30
-scale vector graphics (SVG),
-decreaing image
-requests, 55–58
-scheduled routine checks, image
-planning and iterating,
-59–60
-Scour, automating cleanup of SVG
-files, 57
-search engine rankings, impact
-of performance on user
-experience, 2–3
-selectors (CSS files), specificity, 78
-self-hosted fonts, 81
-semantic elements, cleaning
-HTML, 65–68
-shorthand declarations, CSS
-cleanup, 74
-site freezing/delays, impact on user
-experience, 2
-site performance reports, 137
-site speed, upward management
-understanding, 140–142
-sizes attribute, 100
-SmushIt compression tool, 32, 40
-specificity removal, CSS
-cleanup, 78–79
-Speed Index metric
-(WebPagetest), 21, 47, 116
-speed tests, WebPagetest, 114
-
--- 179 of 181 --
-
-158 | INdEx
-web fonts, optimization, 79–82
-Web Open Font Format (WOFF), 79
-Web Page Performance Audit
-(Chrome DevTools), 71,
-WebPagetest, 15, 114–117
-Connection view, 16
-filmstrip view, 20, 118, 141
-mobile browsers, 106
-Performance Review link, 115
-Speed Index metric, 21, 47, 116
-speed tests, 114
-Visual Comparison tool, 141
-waterfalls, 116
-WebP image format, 39
-weighing aesthetics
-approaching new design with
-performance budget,
-129–130
-balance, 125–128
-experiment on designs with
-performance in mind,
-131–133
-performance as part of
-workflow, 128–129
-WOFF (Web Open Font Format), 79
-WordPress plug-ins, 41
-workflow, making performance part
-of, 128–129
-World Wide Web Consortium (W3C),
-WCAG 2 0 checklist, 68
-Y
-Yelp, style guide, 85
-YSlow, 17
-measuring performance 110–111
-Z
-Zacharias, Chris, 132
-Zopfli compression tool, 40
-transparency requirements, impact
-on file type/size, 9
-TTFB (time to first byte), 14
-typography (initial design phase), 9
-typography, style guides, 85
-U
-unused styles, CSS cleanup, 71–72
-upward management, changing
-organizational
-culture, 138–142
-experiencing site speed, 140–142
-impact on business metrics,
-138–140
-usage patterns, impact of
-performance on user
-experience, 6–7
-user experience
-impact of performance, 1
-brand impact, 2–3
-designer impact, 8–11
-mobile users, 3–8
-V
-Visual Comparison tool
-(WebPageTest), 141
-W
-W3C (World Wide Web Consortium),
-WCAG 2 0 checklist, 68
-waterfall charts, asset requests, 15
-waterfalls (WebPagetest), 116
-WCAG 2 0 checklist (W3C), 68
-WCAG (Web Content Accessibility
-Guidelines), 68
-Web Content Accessibility Guidelines
-(WCAG), 68
-WebFont Generator (Font
-Squirrel), 81
-
--- 180 of 181 --
-
-About the Author
-Lara Callender Hogan is the Senior Engineering Manager of the
-Performance team at Etsy Lara previously managed Etsy’s Mobile Web
-Engineering team Before joining Etsy, Lara was a User Experience
-Manager and self-taught frontend developer at a number of startups
-She’s been certified as an EMT, owned her own photography business, and co-founded an LGBT wedding website She also believes it’s
-important to celebrate career achievements with donuts
-Colophon
-The animal on the cover of Designing for Performance is a tufted
-coquette (Lophornis ornatus), a tiny hummingbird that breeds in eastern Venezuela, Trinidad, Guiana, and northern Brazil
-Also known as the splendid coquette, this hummingbird is so tiny that
-it can easily be confused with a large bee as it moves from flower to
-flower Its red beak has a black tip and is short and straight The female
-doesn’t have very flashy plumage, but the male has striking blackspotted and orange-colored feathers that project from the sides of his
-neck and an orange head crest
-Hummingbirds in general are quite solitary, so the tufted coquette is
-mostly found alone or in small groups, as it searches for nectar and
-small insects to feed on
-Many of the animals on O’Reilly covers are endangered; all of them are
-important to the world To learn more about how you can help, go to
-animals.oreilly.com
-The cover image is from Wood’s Natural History The cover fonts are
-URW Typewriter and Guardian Sans The text font is Scala Regular;
-the heading font is Gotham Narrow Medium; and the code font is
-TheSansMonoCd Regular
-
--- 181 of 181 --
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[DESIGN_MASTERY_2026]] · [[AGENT_CREATIVE_AND_VISUAL_AWARENESS_2026]] · [[CANON_REFACTORING_UI_WATHAN_SCHOGER]] · [[CANON_PRACTICAL_UI_ADHAM_DANNAWAY]] · #ui_ux_design

@@ -1,10 +1,10 @@
-﻿**Alcance:** Masterclass de Pixar / Khan Academy sobre la matemática de curvas de Bézier cúbicas, interpolación y suavizado de movimiento. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+**Alcance:** Masterclass de Pixar / Khan Academy sobre la matemática de curvas de Bézier cúbicas, interpolación y suavizado de movimiento. .
 
 ---
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -19,30 +19,30 @@ ultima_revision: 2026-08-27
 
 ---
 
-El contenido del curso/masterclass proporcionado fue un mensaje de error. Sin embargo, basándome en el título "Animation & Bézier Curves: The Mathematics of Natural Motion" de Pixar Animation Studios, he inferido los principios clave de animación y movimiento natural para generar este informe técnico, aplicándolos al contexto de Yendo Mobile.
+El contenido del curso/masterclass proporcionado fue un mensaje de error. Sin embargo, basándome en el título "Animation & Bézier Curves: The Mathematics of Natural Motion" de Pixar Animation Studios, he inferido los principios clave de animación y movimiento natural para generar este informe técnico, aplicándolos al contexto de la Web Software Factory.
 
 ---
 
-# Informe Técnico: Integración de Animación y Curvas de Bézier para una Experiencia Yendo Mobile de Clase Mundial
+# Informe Técnico: Integración de Animación y Curvas de Bézier para una Experiencia la Web Software Factory de Clase Mundial
 
 ## 1. Concepto Central y Tesis Arquitectónica
 
 **Concepto Central:** La animación, fundamentada en las matemáticas de las curvas de Bézier y los principios del movimiento natural, es una herramienta esencial para dotar a las interfaces de usuario de fluidez, intuición y una conexión emocional profunda. No se trata solo de "mover píxeles", sino de comunicar significado, guiar la atención y enriquecer la percepción de la marca.
 
-**Tesis Arquitectónica:** Yendo Mobile debe adoptar un sistema de animación robusto y coherente, basado en curvas de Bézier y física de resortes, para transformar la interacción digital en una experiencia tangible y orgánica. Este sistema debe ser una capa fundamental de la arquitectura de UI/UX, no un adorno, y debe estar profundamente integrado con el ADN de Yendo de "pisar internet" y sus invariantes de "Venue/Experiencia/Grupo", potenciando la percepción de velocidad, reactividad y sofisticación. La implementación debe priorizar el rendimiento nativo en Web UI / Vanilla & Modern Frontend y Web Platform, alineándose con los estándares de Material Design 3 y la eficiencia de Dark OLED.
+**Tesis Arquitectónica:** la Web Software Factory debe adoptar un sistema de animación robusto y coherente, basado en curvas de Bézier y física de resortes, para transformar la interacción digital en una experiencia tangible y orgánica. Este sistema debe ser una capa fundamental de la arquitectura de UI/UX, no un adorno, y debe estar profundamente integrado con el ADN de WebFactory de "pisar internet" y sus invariantes de "Venue/Experiencia/Grupo", potenciando la percepción de velocidad, reactividad y sofisticación. La implementación debe priorizar el rendimiento nativo en Web UI / Vanilla & Modern Frontend y Web Platform, alineándose con los estándares de Material Design 3 y la eficiencia de Dark OLED.
 
 ## 2. Hallazgos Técnicos Clave
 
 *   **Ergonomía del Movimiento:** Las animaciones bien diseñadas reducen la carga cognitiva, guían la vista del usuario de forma natural y anticipan los resultados de sus acciones. Una curva de Bézier adecuada puede hacer que un elemento parezca "saltar" a la vista o "deslizarse" suavemente, mejorando la usabilidad.
 *   **Física de Resortes (Spring Physics):** Más allá de las curvas de Bézier tradicionales (que definen la velocidad a lo largo de una trayectoria fija), la física de resortes introduce un comportamiento más orgánico y reactivo. Permite que los elementos reaccionen a la interacción del usuario con inercia, rebote y amortiguación, simulando el mundo físico. La combinación de Bézier para la trayectoria y resortes para la temporalidad y el rebote es clave.
 *   **Modelos de Hilos (Thread Models) para Animación:** En entornos como Web UI / Vanilla & Modern Frontend, es crucial que las animaciones se ejecuten en el hilo de UI (o en Worklets/JSI) para evitar bloqueos del hilo JavaScript principal, garantizando 60 FPS y una experiencia fluida, incluso bajo carga.
-*   **Composición de Componentes y Tokens de Diseño de Movimiento:** Las animaciones no deben ser ad-hoc. Deben ser parte del sistema de diseño, con tokens predefinidos (duraciones, easings/curvas de Bézier, delays) que aseguren consistencia y escalabilidad. Estos tokens se aplican a componentes reutilizables, garantizando que cada interacción en Yendo tenga una "voz" de movimiento unificada.
+*   **Composición de Componentes y Tokens de Diseño de Movimiento:** Las animaciones no deben ser ad-hoc. Deben ser parte del sistema de diseño, con tokens predefinidos (duraciones, easings/curvas de Bézier, delays) que aseguren consistencia y escalabilidad. Estos tokens se aplican a componentes reutilizables, garantizando que cada interacción en WebFactory tenga una "voz" de movimiento unificada.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
 ### Web UI / Vanilla & Modern Frontend & Web Platform 57
 *   **Adopción de `react-native-reanimated` (v2/v3):** Es la librería estándar de facto para animaciones de alto rendimiento en Web UI / Vanilla & Modern Frontend. Permite definir animaciones que se ejecutan en el hilo de UI, utilizando Worklets para lógica compleja, lo que es fundamental para lograr 60 FPS y una experiencia "nativa".
-*   **Definición de Curvas de Bézier Estándar:** Crear un conjunto de funciones `Easing` personalizadas (basadas en curvas de Bézier cúbicas) que reflejen la personalidad de Yendo. Por ejemplo, `Easing.bezier(0.4, 0, 0.2, 1)` para aceleración/desaceleración estándar, y variantes más "juguetonas" o "directas" para interacciones específicas.
+*   **Definición de Curvas de Bézier Estándar:** Crear un conjunto de funciones `Easing` personalizadas (basadas en curvas de Bézier cúbicas) que reflejen la personalidad de WebFactory. Por ejemplo, `Easing.bezier(0.4, 0, 0.2, 1)` para aceleración/desaceleración estándar, y variantes más "juguetonas" o "directas" para interacciones específicas.
 *   **Integración con `react-native-gesture-handler`:** Combinar gestos con animaciones de `reanimated` para crear interacciones táctiles fluidas y responsivas (ej. deslizar para descartar, arrastrar y soltar, zoom con pellizco).
 *   **Web Platform 57 y Módulos Nativos:** Asegurar que las configuraciones de `reanimated` y `gesture-handler` estén optimizadas para el entorno de Web Platform, aprovechando las últimas mejoras en el rendimiento de los módulos nativos y el flujo de trabajo de desarrollo.
 
@@ -51,8 +51,8 @@ El contenido del curso/masterclass proporcionado fue un mensaje de error. Sin em
     *   **Contraste y Saturación:** Las animaciones deben respetar el contraste inherente del OLED. Evitar animaciones que impliquen grandes cambios de brillo o flashes blancos que puedan ser molestos en un fondo oscuro.
     *   **Eficiencia Energética:** Animaciones sutiles y localizadas que no iluminen una gran parte de la pantalla, aprovechando la capacidad del OLED de apagar píxeles individualmente.
 *   **Adopción del Sistema de Movimiento de Material 3:**
-    *   Material 3 ya incorpora principios de movimiento basados en curvas de Bézier y física de resortes. Yendo debe estudiar y adaptar estos patrones (ej. `Standard easing`, `Emphasized easing`) para sus transiciones de pantalla, estados de componentes y microinteracciones.
-    *   Definir un `Motion System` en el Design System de Yendo que incluya duraciones, easings y patrones de orquestación de animaciones, alineado con MD3.
+    *   Material 3 ya incorpora principios de movimiento basados en curvas de Bézier y física de resortes. WebFactory debe estudiar y adaptar estos patrones (ej. `Standard easing`, `Emphasized easing`) para sus transiciones de pantalla, estados de componentes y microinteracciones.
+    *   Definir un `Motion System` en el Design System de WebFactory que incluya duraciones, easings y patrones de orquestación de animaciones, alineado con MD3.
 
 ### Fricción Cero & Ley de Fitts
 *   **Animaciones como Reductores de Fricción:**
@@ -78,7 +78,7 @@ El contenido del curso/masterclass proporcionado fue un mensaje de error. Sin em
     *   **Estados de Carga Animados:** Integrar animaciones de carga (skeletons, spinners personalizados con Bézier) directamente en el ciclo de vida de `createClient` para que la espera sea menos perceptible y más agradable.
     *   **Transiciones de Datos:** Al actualizar datos, usar animaciones de "fade-in/fade-out" o "cross-fade" para que el cambio de contenido sea suave y no abrupto.
 *   **`StyleSheet.create canónico`:**
-    *   **Tokens de Animación:** Definir un conjunto canónico de tokens de animación (ej. `animation.duration.short`, `animation.easing.standard`) dentro del sistema de `StyleSheet.create` de Yendo. Esto asegura consistencia y facilita la aplicación de animaciones en toda la app.
+    *   **Tokens de Animación:** Definir un conjunto canónico de tokens de animación (ej. `animation.duration.short`, `animation.easing.standard`) dentro del sistema de `StyleSheet.create` de WebFactory. Esto asegura consistencia y facilita la aplicación de animaciones en toda la app.
     *   **Mixins de Animación:** Crear mixins o utilidades de `StyleSheet` para aplicar patrones de animación comunes (ej. `animatedOpacity`, `animatedScale`) de manera declarativa.
 *   **Dunbar 4-6:**
     *   **Gestión de la Complejidad Visual:** En grupos pequeños (4-6 elementos), las animaciones pueden ser más detalladas y expresivas sin abrumar. Por ejemplo, animaciones de "entrada" y "salida" más elaboradas para los miembros de un grupo.

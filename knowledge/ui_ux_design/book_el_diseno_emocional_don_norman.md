@@ -1,4 +1,4 @@
-﻿# 📚 Libro Completo: El Diseño Emocional: Por qué nos gustan (o no) los objetos cotidianos
+# 📚 Libro Completo: El Diseño Emocional: Por qué nos gustan (o no) los objetos cotidianos
 
 **Alcance:** Fuente bibliográfica completa sobre Los Tres Niveles del Diseño Emocional: Visceral (Impacto Estético), Conductual (Fluidez y Función) y Reflexivo (Identidad y Orgullo) (El Diseño Emocional: Por qué nos gustan (o no) los objetos cotidianos — Don Norman). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
@@ -7,11 +7,11 @@
 > **Archivo Fuente:** `pdfcoffee.com_donald-norman-y-el-diseo-emocional-5-pdf-free.pdf`  
 > **Páginas Originales:** 4  
 > **Secciones Extraídas:** 2  
-> **Fecha de Ingesta:** 2026-10-19  
+> **Fecha de Ingesta:** 2026-10-19
 
 ---
 
-## Sección 1: Foundations & Introduction
+## Sección 1: Foundations & Introduction [Entropy: 0.25]
 
 Donald Norman y el diseño emocional
 por Javier Cañada y Marco van Hout
@@ -55,9 +55,6 @@ mayoría de problemas derivados del concepto actual de ordenador personal. ¿Có
 relacionas este concepto con tus últimas propuestas sobre emoción y diseño?
 Este fenómeno ya ha ocurrido. Fíjate en el auge de las cámaras digitales, los teléfonos móviles,
 los sistemas GPS de navegación, los reproductores portátiles de MP3 o los grabadores
-
--- 1 of 4 --
-
 personales de TV (como TiVo en los Estados Unidos). Tenemos mucho más apego emocional a
 aquellos productos que podemos llevar encima todo el día que a objetos masificados y
 complejos que descansan encima de nuestras mesas de trabajo. De hecho, sí hay una relación
@@ -104,9 +101,7 @@ estudiado a fondo la forma en que se produce este fenómeno. Existen varias fami
 
 ---
 
-## Sección 2: Foundations & Introduction
-
--- 2 of 4 --
+## Sección 2: Foundations & Introduction [Entropy: 0.25]
 
 estudiando este fenómeno a la vez, cada una desde distintos enfoques o sobre diferentes
 disciplinas: diseño gráfico, de producto, interactivo...
@@ -152,9 +147,6 @@ Investigadores japoneses e israelíes probaron que la apariencia estética nos h
 objetos funcionan mejor. Estos investigadores evaluaron diferentes diseños de cajero
 automático con usuarios reales. Todos los cajeros tenían los mismos botones y las mismas
 funciones, pero algunos de ellos tenían diseños más cuidados en la estructura, la ordenación de
-
--- 3 of 4 --
-
 los botones y el aspecto de la pantalla. La mayoría de los usuarios consideraban que los cajeros
 más atractivos funcionaban mejor que los menos atractivos. Norman explica este fenómeno de
 la siguiente forma: “las cosas atractivas hacen que las personas nos sintamos mejor, lo que nos
@@ -177,8 +169,5 @@ Marco van Hout Diseñador de Interacción en Monito.nl Editor de Design Emotion
 (www.design-emotion.com)
 Todos los artículos que aparecen en esta web cuentan con la autorización de las empresas editoras de las revistas en que han sido publicados,
 asumiendo dichas empresas, frente a ARCE, todas las responsabilidades derivadas de cualquier tipo de reclamación
-
--- 4 of 4 --
-
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[DESIGN_MASTERY_2026]] · [[AGENT_CREATIVE_AND_VISUAL_AWARENESS_2026]] · [[CANON_REFACTORING_UI_WATHAN_SCHOGER]] · [[CANON_PRACTICAL_UI_ADHAM_DANNAWAY]] · #ui_ux_design

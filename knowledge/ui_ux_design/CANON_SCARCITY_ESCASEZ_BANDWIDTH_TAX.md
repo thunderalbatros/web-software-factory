@@ -1,15 +1,15 @@
-﻿> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
 
 # 📉 Tratado Canónico: Escasez y el Impuesto de Ancho de Banda Cognitivo
 ### Basado en: *Escasez: ¿Por qué tener muy poco significa tanto?* (Scarcity: Why Having Too Little Means So Much)
@@ -37,14 +37,14 @@ Las personas con holgura (dinero de sobra, tiempo holgado) pueden cometer errore
 
 ---
 
-## 3. Implicancias Radicales para la Arquitectura de Software de Yendo
+## 3. Implicancias Radicales para la Arquitectura de Software de WebFactory
 
-En el contexto nocturno de Buenos Aires en 2026, los usuarios de Yendo operan bajo una **sobrecarga de impuestos cognitivos simultáneos**:
+En el contexto nocturno de Buenos Aires en 2026, los usuarios de WebFactory operan bajo una **sobrecarga de impuestos cognitivos simultáneos**:
 - Fatiga decisional tras una semana laboral extenuante.
 - Ansiedad económica por la pérdida de poder adquisitivo y la inflación.
 - Entorno de alta distracción sensorial (música a 100 dB, poca luz, consumo de alcohol, interacción social caótica).
 
-### Principios de Diseño Anti-Tax Cognitivo en Yendo:
+### Principios de Diseño Anti-Tax Cognitivo en WebFactory:
 1. **Tolerancia Cero a la Fricción Decisional:**
    - La pantalla principal no puede exigir lectura de párrafos densos ni configuraciones complejas.
    - Presentación de **máximo 3 opciones curadas por momento** (Hick's Law).
@@ -52,7 +52,7 @@ En el contexto nocturno de Buenos Aires en 2026, los usuarios de Yendo operan ba
    - Si el usuario se confunde de botón o toca sin querer en la oscuridad del boliche, el sistema debe permitir deshacer (Undo) en 5 segundos con un tap háptico.
    - El check-in en puerta no puede exigir escribir contraseñas ni buscar un mail perdido: debe resolverse mediante **Geofencing pasivo (<150m) + Biometría en Hardware (Huella o FaceID en 1 segundo)**.
 3. **Precios Transparentes sin Sorpresas:**
-   - Ocultar costos hasta el final genera un pico de "túnel de estrés". Yendo muestra el precio final en ARS desde la primera vista.
+   - Ocultar costos hasta el final genera un pico de "túnel de estrés". WebFactory muestra el precio final en ARS desde la primera vista.
 
 ---
 

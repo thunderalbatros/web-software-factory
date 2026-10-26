@@ -1,22 +1,18 @@
 ---
 name: security-checklist
-description: OWASP ASVS and XSS defense checklist for live chat streaming suites.
+description: OWASP ASVS v5.0, CSP, HSTS, OAuth 2.1 PKCE, Valibot input validation, and DOM-XSS defense checklist for modern web applications and Cloudflare Edge APIs.
 ---
 
-# Security & Compliance Checklist
+# Web Software Factory — OWASP ASVS v5.0 & Edge Security Checklist
 
-## Inbound Chat Data Sanitization
-- [ ] Render strings using `.textContent` only.
-- [ ] Filter out non-printable ASCII, Unicode RTL overrides, and control characters.
-- [ ] Truncate usernames and slot names to maximum 32 characters.
-- [ ] Strip raw URLs from chat commands.
+## 1. Frontend DOM-XSS & CSP Hardening
+- [ ] Render untrusted strings strictly via `.textContent` or `window.escapeHTML()`.
+- [ ] Zero inline executable `<script>` blocks and zero inline `onclick=` attributes (only `<script type="application/ld+json">` and `<script type="speculationrules">` allowed inline).
+- [ ] Enforce `rel="noopener noreferrer"` on all external `<a target="_blank">` links.
+- [ ] Ship `dist/_headers` with `Content-Security-Policy`, `Strict-Transport-Security`, `X-Content-Type-Options: nosniff`, `Referrer-Policy`, and `Permissions-Policy`.
 
-## Secret Management
-- [ ] No API keys, passwords, or tokens in git.
-- [ ] Secrets stored in `.dev.vars` locally and environment variables in deployment.
-- [ ] Run regular git scans to ensure clean commits.
-
-## Legal & Compliance Disclaimers
-- [ ] +18 notice visible on overlays.
-- [ ] Responsible gambling message displayed.
-- [ ] 100% free participation terms clearly stated.
+## 2. Edge API, Auth & Secret Hygiene
+- [ ] Zero API keys, passwords, or tokens committed in Git (`.dev.vars` locally and Cloudflare encrypted secrets in production).
+- [ ] Validate all incoming request payloads at the Worker boundary using `Valibot` schemas.
+- [ ] Encrypt sensitive tokens at rest in Cloudflare D1/KV using WebCrypto `AES-256-GCM`.
+- [ ] Enforce `AbortSignal.timeout(3000)` on all outbound `fetch()` calls.

@@ -1,0 +1,147 @@
+{
+  "timestamp": "2026-10-26T00:38:46.805Z",
+  "projectId": "web-software-factory",
+  "landmarksCount": 8,
+  "headingsCount": 9,
+  "controlsCount": 8,
+  "landmarks": [
+    {
+      "ref": "L1",
+      "tag": "header",
+      "id": null,
+      "ariaLabel": "Navegación principal"
+    },
+    {
+      "ref": "L2",
+      "tag": "nav",
+      "id": null,
+      "ariaLabel": "Menú principal"
+    },
+    {
+      "ref": "L3",
+      "tag": "main",
+      "id": "main-content",
+      "ariaLabel": "Contenido principal"
+    },
+    {
+      "ref": "L4",
+      "tag": "section",
+      "id": null,
+      "ariaLabel": "Propuesta de valor principal"
+    },
+    {
+      "ref": "L5",
+      "tag": "section",
+      "id": "features",
+      "ariaLabel": "Métricas y capacidades clave"
+    },
+    {
+      "ref": "L6",
+      "tag": "section",
+      "id": "pricing",
+      "ariaLabel": "Planes y precios transparentes"
+    },
+    {
+      "ref": "L7",
+      "tag": "section",
+      "id": "faq",
+      "ariaLabel": "Preguntas frecuentes"
+    },
+    {
+      "ref": "L8",
+      "tag": "footer",
+      "id": null,
+      "ariaLabel": "Pie de página legal"
+    }
+  ],
+  "headings": [
+    {
+      "ref": "H1",
+      "level": "h1",
+      "text": "{{PROJECT_NAME}}"
+    },
+    {
+      "ref": "H2",
+      "level": "h2",
+      "text": "Ingeniería Visual y Rendimiento Determinista"
+    },
+    {
+      "ref": "H3",
+      "level": "h3",
+      "text": "Velocidad Instantánea en el Borde"
+    },
+    {
+      "ref": "H4",
+      "level": "h3",
+      "text": "Precisión Cromática OKLCH"
+    },
+    {
+      "ref": "H5",
+      "level": "h2",
+      "text": "Planes diseñados para escalar con tu operación"
+    },
+    {
+      "ref": "H6",
+      "level": "h3",
+      "text": "Esencial"
+    },
+    {
+      "ref": "H7",
+      "level": "h3",
+      "text": "Profesional"
+    },
+    {
+      "ref": "H8",
+      "level": "h2",
+      "text": "Preguntas frecuentes"
+    },
+    {
+      "ref": "H9",
+      "level": "h2",
+      "text": "Arquitectura Verificada"
+    }
+  ],
+  "controls": [
+    {
+      "ref": "E1",
+      "role": "a",
+      "name": "Capacidades"
+    },
+    {
+      "ref": "E2",
+      "role": "a",
+      "name": "Planes"
+    },
+    {
+      "ref": "E3",
+      "role": "a",
+      "name": "Preguntas"
+    },
+    {
+      "ref": "E4",
+      "role": "a",
+      "name": "Comenzar ahora con {{PROJECT_NAME}}"
+    },
+    {
+      "ref": "E5",
+      "role": "button",
+      "name": "Abrir demostración interactiva"
+    },
+    {
+      "ref": "E6",
+      "role": "a",
+      "name": "Seleccionar Plan Esencial"
+    },
+    {
+      "ref": "E7",
+      "role": "a",
+      "name": "Seleccionar Plan Profesional"
+    },
+    {
+      "ref": "E8",
+      "role": "button",
+      "name": "Cerrar ventana de demostración"
+    }
+  ],
+  "ariaSnapshotPreview": "- banner \"Navegación principal\":\n  - navigation \"Menú principal\":\n    - strong: \"{{PROJECT_NAME}}\"\n    - list:\n      - listitem:\n        - link \"Capacidades\":\n          - /url: \"#features\"\n      - listitem:\n        - link \"Planes\":\n          - /url: \"#pricing\"\n      - listitem:\n        - link \"Preguntas\":\n          - /url: \"#faq\"\n- main \"Contenido principal\":\n  - region \"Propuesta de valor principal\":\n    - text: W3C DTCG 2025.10 • OKLCH • Cloudflare Edge\n    - 'heading \"{{PROJECT_NAME}}\" [level=1]'\n    - paragraph: Arquitectura web de alta conversión diseñada con tokens perceptuales OKLCH 90/8/2, escalas fluidas Utopia, animaciones nativas a 60 FPS y despliegue global en Cloudflare Workers Static Assets.\n    - 'link \"Comenzar ahora con {{PROJECT_NAME}}\"':\n      - /url: \"#pricing\"\n      - text: Comenzar ahora\n    - button \"Abrir demostración interactiva\": Ver demostración\n  - region \"Métricas y capacidades clave\":\n    - heading \"Ingeniería Visual y Rendimiento Determinista\" [level=2]\n    - paragraph: Primitivas CSS Baseline 2026 sin sobrecarga de frameworks pesados en el hilo principal.\n    - article \"Rendimiento Core Web Vitals\":\n      - heading \"Velocidad Instantánea en el Borde\" [level=3]\n      - paragraph: Pre-renderizado especulativo, View Transitions API y activos inmutables distribuidos en más de 300 nodos de Cloudflare.\n      - paragraph: \"100\"\n    - article \"Contraste Perceptual APCA\":\n      - heading \"Precisión Cromática OKLCH\" [level=3]\n      - paragraph: Jerarquía de superficie 90/8/2 con contraste APCA verificado y tipografía fluida sin saltos de layout.\n      - paragraph: \"60\"\n  - region \"Planes y precios transparentes\":\n    - heading \"Planes diseñados para escalar con tu operación\" [level=2]\n    - paragraph: Activación inmediata, sin costos ocultos y con garantía de rendimiento en producción.\n    - article \"Plan Inicial\":\n      - heading \"Esencial\" [level=3]\n      - paragraph: $0\n      - paragraph: Ideal para validar producto y lanzar con velocidad instantánea en el borde.\n      - link \"Seleccionar Plan Esencial\":\n        - /url: \"#features\"\n        - text: Empezar gratis\n    - article \"Plan Profesional Recomendado\":\n      - heading \"Profesional\" [level=3]\n      - paragraph: $49\n      - paragraph: Arquitectura completa con analítica en el borde, SEO/GEO automatizado y soporte prioritario.\n      - link \"Seleccionar Plan Profesional\":\n        - /url: \"#features\"\n        - text: Activar Plan Profesional\n  - region \"Preguntas frecuentes\":\n    - "
+}

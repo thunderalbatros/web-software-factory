@@ -1,15 +1,15 @@
-﻿> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
 
 # 👁️ Tratado Canónico: 100 Things Every Designer Needs to Know About People
 ### Basado en: *100 Things Every Designer Needs to Know About People*
@@ -24,7 +24,7 @@ Susan Weinschenk descompone cómo el sistema visual, la memoria de trabajo, las 
 
 ---
 
-## 2. Los Principios Neurocognitivos Críticos para Yendo
+## 2. Los Principios Neurocognitivos Críticos para WebFactory
 
 ### 1. Percepción Visual y Visión Periférica (#1 a #10)
 - **La visión periférica ve antes que la visión central:** El ojo humano detecta movimiento, siluetas y peligro en la periferia antes de enfocar los detalles. En un feed móvil, los contrastes de color luminosos en los bordes distraen al usuario si no están justificados.
@@ -35,15 +35,15 @@ Susan Weinschenk descompone cómo el sistema visual, la memoria de trabajo, las 
 - **Sobrecarga de opciones (Choice Overload):** Cuando se ofrecen más de 10 opciones simultáneas, el usuario no elige la mejor; elige no elegir nada o experimenta remordimiento post-decisión.
 
 ### 3. Psicología Social y Tribus (#50 a #65)
-- **El Número de Dunbar (150 individuos):** Los seres humanos no pueden mantener relaciones sociales significativas estables con más de 150 personas, y solo tienen un círculo íntimo de **4 a 6 amigos cercanos** (el tamaño exacto de un Squad en Yendo).
-- **La sincronía física genera pertenencia:** Realizar una acción física al mismo tiempo (ej: brindar, bailar al mismo ritmo, o en Yendo: hacer el check-in conjunto) libera oxitocina y refuerza el vínculo tribal.
+- **El Número de Dunbar (150 individuos):** Los seres humanos no pueden mantener relaciones sociales significativas estables con más de 150 personas, y solo tienen un círculo íntimo de **4 a 6 amigos cercanos** (el tamaño exacto de un Squad en WebFactory).
+- **La sincronía física genera pertenencia:** Realizar una acción física al mismo tiempo (ej: brindar, bailar al mismo ritmo, o en WebFactory: hacer el check-in conjunto) libera oxitocina y refuerza el vínculo tribal.
 
 ### 4. Lectura y Patrones de Escaneo (#30 a #40)
 - En pantallas móviles nadie lee párrafos enteros: el usuario **escanea en patrón F o en ráfagas visuales**. Los titulares deben comenzar con palabras de alto valor informativo; los textos secundarios deben tener contraste atenuado (60-70% de opacidad) para no competir con los CTAs principales.
 
 ---
 
-## 3. Guía de Implementación en Componentes React Native de Yendo
+## 3. Guía de Implementación en Componentes Modern Web UI (CSS/WAAPI) de WebFactory
 
 1. **Jerarquía Visual de Cards de Evento:**
    - Foto con relación de aspecto áurea (16:9 o 4:3).

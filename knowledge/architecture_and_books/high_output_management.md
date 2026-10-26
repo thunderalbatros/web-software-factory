@@ -1,4 +1,4 @@
-﻿**Alcance:** Libro completo High Output Management (Andrew Grove): apalancamiento operativo, indicadores líderes, control de calidad en fábricas de software. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+**Alcance:** Libro completo High Output Management (Andrew Grove): apalancamiento operativo, indicadores líderes, control de calidad en fábricas de software. .
 
 ---
 titulo: "High Output Management"
@@ -13,14 +13,11 @@ fecha_ingesta: "2026-10-06T02:44:27.901Z"
 # 📖 High Output Management
 **Autor:** Andrew S. Grove | **Dominio:** Palanca de Gestión, OKRs y Métricas de Rendimiento Real | **Páginas originales:** 222
 
-> **Nota de Arquitectura Centinela:** Este documento contiene el texto íntegro estructurado por secciones y capítulos para consulta profunda del equipo de agentes y búsqueda híbrida (BM25 + semántica).
+> **Nota de Arquitectura Web Software Factory:** Este documento contiene el texto íntegro estructurado por secciones y capítulos para consulta profunda del equipo de agentes y búsqueda híbrida (BM25 + semántica).
 
 ---
 
 ## [Sección 1] Introducción y Fundamentos
-
--- 1 of 222 --
-
 Andrew S. Grove
 HIGH OUTPUT MANAGEMENT
 Andrew S. Grove emigrated to the United States from Hungary in
@@ -31,10 +28,6 @@ stepped down as CEO of Intel, and retired as chairman of the board
 in 2004. Grove taught at the Stanford University Graduate School of
 Business for twenty-four years. He lives in the San Francisco Bay
 Area.
-
--- 2 of 222 --
-
--- 3 of 222 --
 
 VINTAGE BOOKS EDITIONS, 1983, 1995, 2015
 Copyright © 1983, 1995 by Andrew S. Grove
@@ -57,9 +50,6 @@ eBook ISBN 9781101972366
 www.vintagebooks.com
 v4.1
 a
-
--- 4 of 222 --
-
 Acknowledgments
 The ideas in this book are the result of a collective effort—my collaboration
 with many, many Intel managers over the years. I am very grateful to all of
@@ -81,9 +71,6 @@ most of all to Charlene King, my assistant, who not only helped to pull the
 whole project together, from capturing class discussions to gathering
 illustrations, but also made sure that I did my work of running Intel even as
 I was busily splitting infinitives.
-
--- 5 of 222 --
-
 Contents
 Cover
 About the Author
@@ -124,9 +111,6 @@ Graduate, or a Compiler, or a Convicted Criminal…)
 ## [Sección 5] PART IV THE PLAYERS
 
 11 The Sports Analogy
-
--- 6 of 222 --
-
 12 Task-Relevant Maturity
 13 Performance Appraisal: Manager as Judge and Jury
 14 Two Difficult Tasks
@@ -134,9 +118,6 @@ Graduate, or a Compiler, or a Convicted Criminal…)
 16 Why Training Is the Boss’s Job
 One More Thing…
 Notes
-
--- 7 of 222 --
-
 Introduction
 I. What happened after 1983
 I wrote this book in 1983. It was the result of twenty years of managerial
@@ -164,9 +145,6 @@ assault. In fact, Intel was one of the early producers of DRAMs. More than
 that, in its earliest years, we had practically the whole market to ourselves.
 However, by the mid-eighties, competition both from the United States and,
 increasingly, from Japanese manufacturers whittled down our share of the
-
--- 8 of 222 --
-
 market. Under the ferocious attack of aggressively priced, high-quality
 Japanese DRAMs, we were forced to retreat and cut prices to a level where
 being in the DRAM business brought us major losses. Ultimately, the losses
@@ -206,9 +184,6 @@ big market, every employee will compete with every person anywhere in
 ---
 
 ## [Sección 6] PART IV THE PLAYERS
-
--- 9 of 222 --
-
 the world who is capable of doing the same job. There are a lot of them, and
 many of them are very hungry.
 Another consequence also follows. When products and services become
@@ -243,9 +218,6 @@ communication that prevailed by natural means in the Japanese office now
 effectively travels around the world through electronic means.
 And e-mail is only the first wave. Everything today is going to a digital
 format: sound, photos, movies, books, financial services. And everything
-
--- 10 of 222 --
-
 that’s digital can be shipped around the world just as fast as it can be
 shipped down the hall at your workplace.
 Here is an interesting illustration of the consequence of such a capability.
@@ -282,9 +254,6 @@ insurance agent. When people from each of these enterprises read the
 ---
 
 ## [Sección 7] PART IV THE PLAYERS
-
--- 11 of 222 --
-
 original manuscript of this book, their reactions confirmed what I
 suspected: the managerial ideas that were developed at Intel as it grew from
 a very small to a very large organization were broadly applicable.
@@ -320,9 +289,6 @@ less kind, less gentle, and less predictable workplace.
 Again, as a manager in such a workplace, you need to develop a higher
 tolerance for disorder. Now, you should still not accept disorder. In fact,
 you should do your best to drive what’s around you to order. The breakfast
-
--- 12 of 222 --
-
 factory metaphor of this book—the idea that you should run your
 managerial processes like a well-oiled factory—is every bit as much the
 ideal now as it was when I wrote this book. But you as a manager need to
@@ -361,9 +327,6 @@ production, keep personnel records, send bills to our customers, and pay our
 ---
 
 ## [Sección 8] PART IV THE PLAYERS
-
--- 13 of 222 --
-
 suppliers. Finally, the remaining 25 percent design new products, take them
 to the marketplace, sell them, and service them after the sale.
 As we founded, organized, and managed Intel, we found that all our
@@ -399,9 +362,6 @@ to above. Does that mean that you shouldn’t plan? Not at all. You need to
 plan the way a fire department plans. It cannot anticipate where the next fire
 will be, so it has to shape an energetic and efficient team that is capable of
 responding to the unanticipated as well as to any ordinary event.
-
--- 14 of 222 --
-
 Second, a responsive company should have fewer levels of managers.
 This concept is easier to apply today as electronic mail can carry
 information to anyone in the organization. One basic role of management—
@@ -439,9 +399,6 @@ more employees less frequently and in meetings of shorter duration.
 ---
 
 ## [Sección 9] PART IV THE PLAYERS
-
--- 15 of 222 --
-
 III. Managing your own career
 But what about managers who are, after all, employees themselves?
 I recently read an article saying that middle-aged men are twice as likely
@@ -476,9 +433,6 @@ news is, nobody owes you a career. You own it as a sole proprietor. You
 must compete with millions of individuals every day, and every day you
 must enhance your value, hone your competitive advantage, learn, adapt,
 get out of the way, move from job to job, even from industry to industry if
-
--- 16 of 222 --
-
 you must and retrench if you need to do so in order to start again. The key
 task is to manage your career so that you do not become a casualty.
 I can offer you no surefire formula. But here are a few questions to
@@ -516,17 +470,11 @@ athlete’s desire for peak performance can help nearly everyone—lawyers,
 ---
 
 ## [Sección 10] PART IV THE PLAYERS
-
--- 17 of 222 --
-
 teachers, engineers, supervisors, even book editors; in short, middle
 managers of all kinds—to work more productively.
 So, let us proceed by taking a field trip to a factory….
 Andrew S. Grove
 April 1995
-
--- 18 of 222 --
-
 Foreword to the Vintage Books Edition
 I first read High Output Management in 1995. In those days, there were no
 blogs or TED Talks teaching us about entrepreneurship. In fact, there was
@@ -555,9 +503,6 @@ from UC Berkeley. This nonnative English speaker would then write an
 important textbook on semiconductors in English while working at
 Fairchild Semiconductor. As a result, he was considered a scientific pioneer
 even before helping to launch Intel in 1968, building it into the seminal
-
--- 19 of 222 --
-
 technology company of the era. Later, in 1997, Time magazine would
 recognize his nearly impossible accomplishments and name him Man of the
 Year.
@@ -597,9 +542,6 @@ more schools than jails. In fact, it’s counterproductive. Identifying complex
 ---
 
 ## [Sección 11] PART IV THE PLAYERS
-
--- 20 of 222 --
-
 system problems is one thing. Solving them is something else entirely, and
 Andy lays out the tools to do just that.
 Over the years, I have come to consider High Output Management a true
@@ -633,9 +575,6 @@ upon recognizing today’s gap try very hard to determine what decision has
 to be made to close it. But today’s gap represents a failure of planning
 sometime in the past.” Hopefully, the value of this short insight is not lost
 on the young reader. If you only understand one thing about building
-
--- 21 of 222 --
-
 products, you must understand that energy put in early in the process pays
 off tenfold and energy put in at the end of the program pays off negative
 tenfold.
@@ -672,9 +611,6 @@ review to your friend. Do you cringe at the thought? If so, don’t make
 ---
 
 ## [Sección 12] PART IV THE PLAYERS
-
--- 22 of 222 --
-
 friends at work. If your stomach remains unaffected, you are likely to be
 someone whose personal relationships will strengthen work relationships.
 By breaking down the process, he makes hard things manageable.
@@ -708,9 +644,6 @@ training, then you are basically neglecting half the job.
 Throughout the chapter, the reader feels Andy’s intense passion toward
 training and teaching, because in the end—more than anything else—he is a
 teacher…in the very best sense of the word.
-
--- 23 of 222 --
-
 Many years after reading High Output Management, I met Andy for the
 first time. Upon seeing him, I was so excited that I immediately blurted out
 how much I loved the book. In classic Andy Grove style, he shot back:
@@ -748,9 +681,6 @@ on lagging indicators of bad news.”
 ---
 
 ## [Sección 13] PART IV THE PLAYERS
-
--- 24 of 222 --
-
 “Why?” I asked him. He answered in the style resonant of his entire
 book: “In order to build anything great, you have to be an optimist, because
 by definition you are trying to do something that most people would
@@ -772,13 +702,8 @@ Ben Horowitz, 2015
 * The Peter Principle is a concept in management theory in which the selection of a candidate for a
 position is based on the candidate’s performance in their current role, rather than on abilities related
 to the intended role. Thus, “managers rise to the level of their incompetence.”
-
--- 25 of 222 --
-
 I
 The Breakfast Factory
-
--- 26 of 222 --
 The Basics of Production: Delivering
 a Breakfast
 (or a College Graduate, or a Compiler, or a
@@ -804,9 +729,6 @@ Instead, a manufacturer should accept the responsibility of delivering a
 product at the time committed to—in this case, by implication, about five to
 ten minutes after the customer arrives at our breakfast establishment. And
 we must make our breakfast at a cost that enables us to sell it at a
-
--- 27 of 222 --
-
 competitive price and still make an acceptable profit. How are we going to
 do this in the most intelligent way? We start by looking at our production
 flow.
@@ -840,9 +762,6 @@ offset them from each other.
 ---
 
 ## [Sección 14] PART IV THE PLAYERS
-
--- 28 of 222 --
-
 Making the eggs is the limiting step.
 The idea of a limiting step has very broad applicability. Take, for example,
 the need to recruit college graduates to work for Intel. Certain of our
@@ -860,9 +779,6 @@ spend with the candidates. To minimize the use of this step per final college
 hire, we obviously have to increase the ratio of accepted offers to applicants
 invited to visit the plant, which we do by using phone interviews to screen
 people before issuing invitations. The technique saves money, substantially
-
--- 29 of 222 --
-
 increases the ratio of offers extended per plant visit, and reduces the need to
 use the expensive limiting step per hire.
 The principle of time offsets is also present here. Working back from the
@@ -895,9 +811,6 @@ form of a “dry run” presentation with a selected group of field sales
 personnel and field sales management. If the dry run fails the test, the
 material must be “reworked” (another well-established manufacturing
 concept) to meet the concerns and objections of the test audience.
-
--- 30 of 222 --
-
 The development of a “compiler,” a major piece of computer software,
 also demonstrates process, assembly, and test. A computer understands and
 uses human instruction only if it receives such instruction in its own
@@ -936,9 +849,6 @@ easily become a six-minute egg. So limited toaster capacity means you have
 ---
 
 ## [Sección 15] PART IV THE PLAYERS
-
--- 31 of 222 --
-
 to redo your flow around the new limiting step. The egg still determines the
 overall quality of the breakfast, but your time offsets must be altered.
 How would our model reflect the change in manufacturing flow?
@@ -955,9 +865,6 @@ in line waiting for a toaster when it’s time to start boiling your egg? Your
 conflict is seemingly irreconcilable, but it really isn’t. If you were managing
 the restaurant, you could turn your personnel into specialists by hiring one
 egg-cooker, one toast-maker, one coffee-pourer, and one person to supervise
-
--- 32 of 222 --
-
 the operation. But that, of course, creates an immense amount of overhead,
 probably making it too expensive to consider.
 If you were a waiter, you could ask the waiter in line next to you to help
@@ -991,9 +898,6 @@ demand for three-minute eggs; it cannot now readily provide a four-minute
 egg, because automated equipment is not very flexible. Second, you match
 the output of the continuous egg-boiler with the output of a continuous
 toaster, as specialized personnel load each piece of equipment and deliver
-
--- 33 of 222 --
-
 the product. We have now turned things into a continuous operation at the
 expense of flexibility, and we can no longer prepare each customer’s order
 exactly when and how he requests it. So our customers have to adjust their
@@ -1020,9 +924,6 @@ those that destroy product.
 ---
 
 ## [Sección 16] PART IV THE PLAYERS
-
--- 34 of 222 --
-
 What else could go wrong with our continuous egg-machine? The eggs
 going into it could be cracked or rotten, or they could be over- or
 undersized, which would affect how fast they cook. To avoid such
@@ -1057,9 +958,6 @@ A common rule we should always try to heed is to detect and fix any
 problem in a production process at the lowest-value stage possible. Thus,
 we should find and reject the rotten egg as it’s being delivered from our
 supplier rather than permitting the customer to find it. Likewise, if we can
-
--- 35 of 222 --
-
 decide that we don’t want a college candidate at the time of the campus
 interview rather than during the course of a plant visit, we save the cost of
 the trip and the time of both the candidate and the interviewers. And we
@@ -1099,17 +997,12 @@ The construction cost of a jail cell even today is only some $80,000. This,
 ---
 
 ## [Sección 17] PART IV THE PLAYERS
-
--- 36 of 222 --
-
 plus the $10–20,000 it costs to keep a person in jail for a year, is a small
 amount compared to the million dollars required to secure a conviction. Not
 to jail a criminal in whom society has invested over a million dollars for
 lack of an $80,000 jail cell clearly misuses society’s total investment in the
 criminal justice system. And this happens because we permit the wrong step
 (the availability of jail cells) to limit the overall process.
-
--- 37 of 222 --
 Managing the Breakfast Factory
 Indicators as a Key Tool
 A hungry public has loved the breakfast you’ve been serving, and thanks to
@@ -1135,9 +1028,6 @@ much confidence you should place in your forecast, you would want to
 know how many you delivered yesterday compared to how many you
 planned on delivering—in other words, the variance between your plan and
 the actual delivery of breakfasts for the preceding day.
-
--- 38 of 222 --
-
 Your next key indicator is raw material inventory. Do you have enough
 eggs, bread, and coffee on hand to keep your factory running today? If you
 find you have too little inventory, you can still order more. If you find you
@@ -1176,9 +1066,6 @@ obviously lead you to do things to keep inventories from becoming too low.
 ---
 
 ## [Sección 18] PART IV THE PLAYERS
-
--- 39 of 222 --
-
 The principle here was evident many times in the development of a
 compiler. Measuring the completion date of each software unit against its
 capability is one example. Watching this pair of indicators should help us to
@@ -1212,9 +1099,6 @@ Employment # People hired (by type of
 hire)
 Inventory control # Items managed in
 inventory
-
--- 40 of 222 --
-
 Examples of administrative work output indicators.
 Such indicators have many uses. First, they spell out very clearly what
 the objectives of an individual or group are. Second, they provide a degree
@@ -1251,9 +1135,6 @@ payment is collected. The labor is the work of all personnel involved.
 ---
 
 ## [Sección 19] PART IV THE PLAYERS
-
--- 41 of 222 --
-
 The breakfast factory—as a “black box.”
 The black box sorts out what the inputs, the output, and the labor are in
 the production process. We can improve our ability to run that process by
@@ -1267,9 +1148,6 @@ Leading indicators give you one way to look inside the black box by
 showing you in advance what the future might look like. And because they
 give you time to take corrective action, they make it possible for you to
 avoid problems. Of course, for leading indicators to do you any good, you
-
--- 42 of 222 --
-
 must believe in their validity. While this may seem obvious, in practice,
 confidence is not as easy to come by as it sounds. To take big, costly, or
 worrisome steps when you are not yet sure you have a problem is hard. But
@@ -1293,9 +1171,6 @@ we had gotten in the preceding four. Thus, the linearity indicator flashes an
 early warning, allowing us time to take corrective action. Without it, we
 would discover that we had missed our target in June, when nothing can be
 done about it.
-
--- 43 of 222 --
-
 The linearity indicator can give us an early warning that we are likely to miss
 our target.
 If we consider a manufacturing unit in this fashion, we may assume that
@@ -1314,9 +1189,6 @@ delivered, software modules completed, vouchers processed) measured
 against time (performance this month versus performance over a series of
 previous months), and also against some standard or expected level. A
 display of trends forces you to look at the future as you are led to
-
--- 44 of 222 --
-
 extrapolate almost automatically from the past. This extrapolation gives us
 another window in our black box. Also, measurement against a standard
 makes you think through why the results were what they were, and not what
@@ -1348,9 +1220,6 @@ a way to evaluate whatever any one of them chooses to say.
 ---
 
 ## [Sección 20] PART IV THE PLAYERS
-
--- 45 of 222 --
-
 (* means the actual number for that month)
 I have found the “stagger chart” the best means of getting a feel for future business trends.
 Finally, indicators can be a big help in solving all types of problems. If
@@ -1367,9 +1236,6 @@ going to have to wait a long time to get what you bought, unless you buy it
 right off the floor. A furniture factory builds to order. When it learns what
 you want, the factory looks for a hole in its manufacturing schedule and
 makes the item for you. If you order a new car rather than buying one right
-
--- 46 of 222 --
-
 off the lot, the same thing happens: the plant will paint the car in the color
 you want and provide the options you want, but you will have to wait for it.
 And our breakfast factory, of course, builds breakfasts to order.
@@ -1405,9 +1271,6 @@ manufacturing flow must occur in which the raw material moves through
 various production steps and finally enters the finished goods warehouse, as
 illustrated below. Simultaneously, a salesman finds a prospect and sells to
 that prospect, who eventually places an order with the manufacturer.
-
--- 47 of 222 --
-
 Ideally, the order for the product and the product itself should arrive on the
 shipping dock at the same time.
 Because the art and science of forecasting is so complex, you might be
@@ -1435,9 +1298,6 @@ for it. Clearly, the more inventory we have, the more change we can cope
 ---
 
 ## [Sección 21] PART IV THE PLAYERS
-
--- 48 of 222 --
-
 with and still satisfy orders. But inventory costs money to build and keep,
 and therefore should be controlled carefully. Ideally, inventory should be
 kept at the lowest-value stage, as we’ve learned before, like raw eggs kept
@@ -1471,9 +1331,6 @@ for its completion. There is no question that having standards and believing
 in them and staffing an administrative unit objectively using forecasted
 workloads will help you to maintain and enhance productivity.
 Assuring Quality
-
--- 49 of 222 --
-
 As we have said, manufacturing’s charter is to deliver product at a quality
 level acceptable to the customer at minimum cost. To assure that the quality
 of our product will in fact be acceptable, all production flows, whether they
@@ -1495,9 +1352,6 @@ The key principle is to reject the defective “material” at its lowest-value 
 When material is rejected at incoming inspection, a couple of choices
 present themselves. We can send it back to the vendor as unacceptable, or
 we can waive our specifications and use the substandard material anyway.
-
--- 50 of 222 --
-
 The latter would result in a higher reject rate in our production process than
 if we had used thoroughly acceptable material, but that might be less
 expensive than shutting down the factory altogether until our vendor
@@ -1537,9 +1391,6 @@ through the manufacturing process. The smoothness of the flow is
 ---
 
 ## [Sección 22] PART IV THE PLAYERS
-
--- 51 of 222 --
-
 maintained, but if, for example, three successive samples fail the
 monitoring test, we can stop the line. What is the trade-off here? If we hold
 all the material, we add to throughput time and slow down the
@@ -1575,9 +1426,6 @@ approved. The embassy employs sixty people, who process as many as
 time, from 60,000 to 80,000 British passports are in the embassy’s hands.
 Meanwhile, lines of one hundred or more British and other nationals stand
 in front of the building, looking for an opportunity to walk their passports
-
--- 52 of 222 --
-
 through. The embassy has tried a number of ways to handle matters more
 efficiently, including newspaper advertisements asking tourists to apply
 early and to expect a three-week turnaround. The embassy also installed
@@ -1617,9 +1465,6 @@ The principle of variable inspection applied to managerial work nicely
 ---
 
 ## [Sección 23] PART IV THE PLAYERS
-
--- 53 of 222 --
-
 skirts both problems, and, as we shall see, gives us an important tool for
 improving managerial productivity.
 Productivity
@@ -1638,14 +1483,8 @@ of the work performed: what we do, not how fast we do it. We want to
 increase the ratio of output to activity, thereby increasing output even if the
 activity per employee-hour remains the same. As the slogan has it, we want
 to “work smarter, not harder.”
-
--- 54 of 222 --
-
 Productivity can be increased by performing the work activities at a higher
 rate…
-
--- 55 of 222 --
-
 …or by increasing the leverage of the activities.
 Here I’d like to introduce the concept of leverage, which is the output
 generated by a specific type of work activity. An activity with high leverage
@@ -1662,9 +1501,6 @@ and zeros will require many more hours to solve the same number of
 problems. His output and leverage are low. Thus, a very important way to
 increase productivity is to arrange the work flow inside our black box so
 that it will be characterized by high output per activity, which is to say highleverage activities.
-
--- 56 of 222 --
-
 Automation is certainly one way to improve the leverage of all types of
 work. Having machines to help them, human beings can create more output.
 But in both widget manufacturing and administrative work, something else
@@ -1700,14 +1536,9 @@ while looking to increase activity can result in just the opposite.
 ---
 
 ## [Sección 24] PART IV THE PLAYERS
-
--- 57 of 222 --
-
 II
 Management
 Is a Team Game
-
--- 58 of 222 --
 Managerial Leverage
 What Is a Manager’s Output?
 I asked a group of middle managers just that question.
@@ -1732,9 +1563,6 @@ either completed their schooling or are ready to move on to the next year of
 their studies. If a manager is a surgeon, his output is a fully recovered,
 healed patient. We can sum matters up with the proposition that:
 A manager’s output = The output of his organization
-
--- 59 of 222 --
-
 +
 The output of the neighboring
 organizations under his influence
@@ -1767,9 +1595,6 @@ kept by team, not by individual. Business—and this means not just the
 business of commerce but the business of education, the business of
 government, the business of medicine—is a team activity. And, always, it
 takes a team to win.
-
--- 60 of 222 --
-
 It is important to understand that a manager will find himself engaging in
 an array of activities in order to affect output. As the middle managers I
 queried said, a manager must form opinions and make judgments, he must
@@ -1808,9 +1633,6 @@ organization. When things aren’t working as smoothly as they should, he
 ---
 
 ## [Sección 25] PART IV THE PLAYERS
-
--- 61 of 222 --
-
 applies a bit of oil. And, of course, he provides intelligence to the machine
 to direct its purpose.
 “Daddy, What Do You Really Do?”
@@ -1847,9 +1669,6 @@ Call was ostensibly about a meeting of an
 industry-wide society, but in reality he was
 feeling out how I saw business conditions. I
 did the same. (Information-gathering.)
-
--- 62 of 222 --
-
 8:30–9:00
 Read mail from the
 previous afternoon.
@@ -1895,9 +1714,6 @@ program to reduce the
 manufacturing cycle
 The presentation indicated that the program
 was in good shape. (It represented only
-
--- 63 of 222 --
-
 time of a particular
 product line
 (scheduled subject).
@@ -1946,9 +1762,6 @@ same time, gave me a feeling for the concerns
 ---
 
 ## [Sección 26] PART IV THE PLAYERS
-
--- 64 of 222 --
-
 and understanding level of a large number of
 employees to whom I would not otherwise
 have access. So this also represented
@@ -1988,9 +1801,6 @@ noting a similarity. My day always ends when I’m tired and ready to go
 home, not when I’m done. I am never done. Like a housewife’s, a
 manager’s work is never done. There is always more to be done, more that
 should be done, always more than can be done.
-
--- 65 of 222 --
-
 A manager must keep many balls in the air at the same time and shift his
 energy and attention to activities that will most increase the output of his
 organization. In other words, he should move to the point where his
@@ -2026,9 +1836,6 @@ important; reading it often is not.
 There are many parallels to this. As we will see later, the preparation of
 an annual plan is in itself the end, not the resulting bound volume.
 Similarly, our capital authorization process itself is important, not the
-
--- 66 of 222 --
-
 authorization itself. To prepare and justify a capital spending request,
 people go through a lot of soul-searching analysis and juggling, and it is
 this mental exercise that is valuable. The formal authorization is useful only
@@ -2067,9 +1874,6 @@ to accomplish formal tasks, but which also set the stage for ad hoc minitransact
 ---
 
 ## [Sección 27] PART IV THE PLAYERS
-
--- 67 of 222 --
-
 Clean” inspections, in which they go to a part of the company that they
 normally wouldn’t visit. The managers examine the housekeeping, the
 arrangement of things, the labs, and the safety equipment, and in so doing
@@ -2103,9 +1907,6 @@ Here we allocate the financial resources of the company among various
 future undertakings. The second type is made as we respond to a developing
 problem or a crisis, which can either be technical (a quality control
 problem, for example) or involve people (talking somebody out of quitting).
-
--- 68 of 222 --
-
 It’s obvious that your decision-making depends finally on how well you
 comprehend the facts and issues facing your business. This is why
 information-gathering is so important in a manager’s life. Other activities—
@@ -2144,9 +1945,6 @@ intellectual environment. These and other styles of leadership will work, but
 ---
 
 ## [Sección 28] PART IV THE PLAYERS
-
--- 69 of 222 --
-
 only if we recognize and consciously stress the need for us to be role
 models for people in our organization.
 Don’t think for a moment that the way I’ve described leadership applies
@@ -2180,9 +1978,6 @@ choose the most effective medium for what you want to accomplish, and
 that is the one that gives you the greatest leverage. More about meetings
 later.
 Leverage of Managerial Activity
-
--- 70 of 222 --
-
 We’ve established that the output of a manager is the output of the various
 organizations under his control and his influence. What can a manager do to
 increase his output? To find out, let’s look at the concept of leverage.
@@ -2212,9 +2007,6 @@ Let us consider first the leverage of various types of managerial work.
 HIGH-LEVERAGE ACTIVITIES
 These can be achieved in three basic ways:
 • When many people are affected by one manager.
-
--- 71 of 222 --
-
 • When a person’s activity or behavior over a long period of time is
 affected by a manager’s brief, well-focused set of words or actions.
 • When a large group’s work is affected by an individual supplying a
@@ -2253,9 +2045,6 @@ of leverage that I hope is high and positive is my talk in the orientation
 ---
 
 ## [Sección 29] PART IV THE PLAYERS
-
--- 72 of 222 --
-
 course. During the two hours I have, I try to impart a great deal of
 information about Intel—its history, its objectives, its values, its style—to a
 group of two hundred new employees. Besides what I say specifically, my
@@ -2291,9 +2080,6 @@ annual planning process, an Intel manager saw that, in spite of successful
 cost reduction efforts in the prior year, his division was still not going to
 make any money in the coming year. The manager became depressed.
 Though he didn’t realize it, he almost immediately began to affect people
-
--- 73 of 222 --
-
 around him and soon depression spread throughout his organization. He
 snapped out of it only when someone on his staff finally told him what he
 was doing to the people under him. Another example is waffling, when a
@@ -2333,9 +2119,6 @@ detailed knowledge of a particular manufacturing process effectively
 ---
 
 ## [Sección 30] PART IV THE PLAYERS
-
--- 74 of 222 --
-
 controls how it is used. Since the process will eventually provide the
 foundation for the work of many product designers all over the company,
 the leverage the development engineer exerts is enormous. The same is true
@@ -2370,9 +2153,6 @@ Picture this. I am your supervisor, and I walk over to you with pencil in
 hand and tell you to take it. You reach for the pencil, but I won’t let go. So I
 say, “What is wrong with you? Why can’t I delegate the pencil to you?” We
 all have some things that we don’t really want to delegate simply because
-
--- 75 of 222 --
-
 we like doing them and would rather not let go. For your managerial
 effectiveness, this is not too bad so long as it is based on a conscious
 decision that you will hold on to certain tasks that you enjoy performing,
@@ -2412,9 +2192,6 @@ with various subordinates; you should increase or decrease your frequency
 ---
 
 ## [Sección 31] PART IV THE PLAYERS
-
--- 76 of 222 --
-
 depending on whether your subordinate is performing a newly delegated
 task or one that he has experience handling. How often you monitor should
 not be based on what you believe your subordinate can do in general, but
@@ -2444,9 +2221,6 @@ where L is the leverage of the activity.
 The most common approach to increasing a manager’s productivity—his
 output over time—has been time-management techniques, which try to
 reduce the denominator on both sides of this equation. Any number of
-
--- 77 of 222 --
-
 consultants will tell a manager that the way to higher productivity is to
 handle a piece of paper only once, to hold only stand-up meetings (which
 will presumably be short), and to turn his desk so that he presents his back
@@ -2486,9 +2260,6 @@ is usually run by forecast and not by individual order. From my experience
 ---
 
 ## [Sección 32] PART IV THE PLAYERS
-
--- 78 of 222 --
-
 a large portion of managerial work can be forecasted. Accordingly,
 forecasting those things you can and setting yourself up to do them is only
 common sense and an important way to minimize the feeling and the reality
@@ -2521,9 +2292,6 @@ handle.
 It is important to say “no” earlier rather than later because we’ve learned
 that to wait until something reaches a higher value stage and then abort due
 to lack of capacity means losing more money and time. You can obviously
-
--- 79 of 222 --
-
 say “no” either explicitly or implicitly, because by not delivering you end
 up saying what amounts to “no.” Remember too that your time is your one
 finite resource, and when you say “yes” to one thing you are inevitably
@@ -2561,9 +2329,6 @@ Built-In Leverage: How Many Subordinates Should You Have…
 ---
 
 ## [Sección 33] PART IV THE PLAYERS
-
--- 80 of 222 --
-
 An important component of managerial leverage is the number of
 subordinates a manager has. If he does not have enough, his leverage is
 obviously reduced. If he has too many, he gets bogged down—with the
@@ -2596,9 +2361,6 @@ engineers and the manufacturing manager. The arrangement, shown below,
 does not have the engineers appearing to be at the same organizational level
 as the manufacturing manager—something he would surely take exception
 to.
-
--- 81 of 222 --
-
 This arrangement will avoid forcing the plant manager either into on-the-job
 retirement or into meddling.
 Interruptions—The Plague of Managerial Work
@@ -2618,9 +2380,6 @@ But because you must coordinate your work with that of other managers,
 you can only move toward regularity if others do too. In other words, the
 same blocks of time must be used for like activities. For example, at Intel
 Monday mornings have been set aside throughout the corporation as the
-
--- 82 of 222 --
-
 time when planning groups meet. So anybody who belongs to one can count
 on Monday for that purpose and be free of scheduling conflicts.
 About twenty middle managers at Intel were once asked to be part of an
@@ -2660,9 +2419,6 @@ meetings are held regularly, people can’t protest too much if they’re asked
 ---
 
 ## [Sección 34] PART IV THE PLAYERS
-
--- 83 of 222 --
-
 to batch questions and problems for scheduled times, instead of interrupting
 you whenever they want.
 The use of indicators, especially the bank of indicators kept over time,
@@ -2688,8 +2444,6 @@ The point is to impose a pattern on the way a manager copes with
 problems. To make something regular that was once irregular is a
 fundamental production principle, and that’s how you should try to handle
 the interruptions that plague you.
-
--- 84 of 222 --
 Meetings—The Medium of
 Managerial Work
 Meetings have a bad name. One school of management thought considers
@@ -2716,9 +2470,6 @@ regularly scheduled basis. The purpose of the second kind of meeting is to
 solve a specific problem. Meetings of this sort, called mission-oriented,
 frequently produce a decision. They are ad hoc affairs, not scheduled long
 in advance, because they usually can’t be.
-
--- 85 of 222 --
-
 Process-Oriented Meetings
 To make the most of this kind of meeting, we should aim to infuse it with
 regularity. In other words, the people attending should know how the
@@ -2755,9 +2506,6 @@ entirely in semiconductor device research. So two of my associates, both of
 ---
 
 ## [Sección 35] PART IV THE PLAYERS
-
--- 86 of 222 --
-
 whom reported to me, agreed to give me private lessons on memory design
 and manufacturing. These took place by appointment, and involved a
 teacher/subordinate preparing for each; during the session the
@@ -2791,9 +2539,6 @@ up in a meeting scheduled to last only fifteen minutes? You would not. I
 feel that a one-on-one should last an hour at a minimum. Anything less, in
 my experience, tends to make the subordinate confine himself to simple
 things that can be handled quickly.
-
--- 87 of 222 --
-
 Where should a one-on-one take place? In the supervisor’s office, in the
 subordinate’s office, or somewhere else? I think you should have the
 meeting in or near the subordinate’s work area if possible. A supervisor can
@@ -2833,9 +2578,6 @@ supervisor’s job here very nicely: “The good time users among managers do
 ---
 
 ## [Sección 36] PART IV THE PLAYERS
-
--- 88 of 222 --
-
 not talk to their subordinates about their problems but they know how to
 make the subordinates talk about theirs.”
 How is this done? By applying Grove’s Principle of Didactic
@@ -2871,9 +2613,6 @@ gnaw at him? Does he have doubts about where he is going? But the
 supervisor should be wary of the “zinger,” which is a heart-to-heart issue
 brought up at an awkward time. More often than not, these come near the
 end of a meeting. If you let that happen, the subordinate might tell you
-
--- 89 of 222 --
-
 something like he’s unhappy and has been looking outside for a job and
 give you only five minutes to deal with it.
 Long-distance telephone one-on-ones have become necessary because
@@ -2912,9 +2651,6 @@ industry, we came to the reluctant conclusion that business was in fact
 ---
 
 ## [Sección 37] PART IV THE PLAYERS
-
--- 90 of 222 --
-
 slowing down. This meant we should take a conservative approach to nearterm investment—no small matter.
 By sharing his base of information with me, the two of us developed a
 congruent attitude, approach, and conclusion: conservatism in our
@@ -2945,9 +2681,6 @@ peer groups.
 Staff meetings also create opportunities for the supervisor to learn from
 the exchange and confrontation that often develops. In my own case, I get a
 much better understanding of an issue with which I am not familiar by
-
--- 91 of 222 --
-
 listening to two people with opposing views discuss it than I do by listening
 to one side only.
 My first experience with staff meetings dates back to my early
@@ -2987,9 +2720,6 @@ subordinates bearing the brunt of working the issues. Staff meetings are an
 ---
 
 ## [Sección 38] PART IV THE PLAYERS
-
--- 92 of 222 --
-
 ideal medium for decision-making, because the group of managers present
 has typically worked together for a long time. The formal as well as
 informal authority of each individual has been well established, and
@@ -3006,9 +2736,6 @@ much opportunity to deal with one another. The format here should include
 formal presentations in which managers describe their work to other
 managers who are not their immediate supervisors, and to peers in other
 parts of the company. The basic purpose of an operation review at Intel is to
-
--- 93 of 222 --
-
 keep the teaching and learning going on between employees several
 organizational levels apart—people who don’t have one-on-ones or staff
 meetings with each other. This is important for both the junior and senior
@@ -3044,9 +2771,6 @@ supervisor is a role model for the junior managers present, he should take
 his role at the review extremely seriously.
 The people presenting the reviews—a group of marketing supervisors,
 for example—should use visual aids such as overhead transparencies to the
-
--- 94 of 222 --
-
 extent possible. People are endowed with eyes as well as ears, and the
 simultaneous use of both definitely helps the audience understand the points
 being made. But care must be taken, because all too frequently a presenter
@@ -3085,9 +2809,6 @@ In fact, it is usually the chairman or the de facto chairman who calls the
 ---
 
 ## [Sección 39] PART IV THE PLAYERS
-
--- 95 of 222 --
-
 meeting, and most of what he contributes should occur before it begins. All
 too often he shows up as if he were just another attendee and hopes that
 things will develop as he wants. When a mission-oriented meeting fails to
@@ -3122,9 +2843,6 @@ Keep in mind that a meeting called to make a specific decision is hard to
 keep moving if more than six or seven people attend. Eight people should
 be the absolute cutoff. Decision-making is not a spectator sport, because
 onlookers get in the way of what needs to be done.
-
--- 96 of 222 --
-
 The chairman is also responsible for maintaining discipline. It is criminal
 for him to allow people to be late and waste everyone’s time. Remember,
 wasting time here really means that you are wasting the company’s money,
@@ -3165,9 +2883,6 @@ consider him a drill sergeant. But if you show up on time, ready to work,
 ---
 
 ## [Sección 40] PART IV THE PLAYERS
-
--- 97 of 222 --
-
 and someone else doesn’t and isn’t, you’ll probably begrudge the person
 responsible for wasting your time. It must be much the same in an operating
 room. Some people working there may not like a surgeon insisting upon
@@ -3193,8 +2908,6 @@ people spend more than 25 percent of their time in meetings, it is a sign of
 malorganization. I would put it another way: the real sign of
 malorganization is when people spend more than 25 percent of their time in
 ad hoc mission-oriented meetings.
-
--- 98 of 222 --
 Decisions, Decisions
 Making decisions—or more properly, participating in the process by which
 they are made—is an important and essential part of every manager’s work
@@ -3222,9 +2935,6 @@ good deal of knowledge-based power in the organization that hired him. If
 he does well, he will be promoted to higher and higher positions, and as the
 years pass, his position power will grow but his intimate familiarity with
 current technology will fade. Put another way, even if today’s veteran
-
--- 99 of 222 --
-
 manager was once an outstanding engineer, he is not now the technical
 expert he was when he joined the company. At Intel, anyway, we managers
 get a little more obsolete every day.
@@ -3261,9 +2971,6 @@ have been otherwise.
 ---
 
 ## [Sección 41] PART IV THE PLAYERS
-
--- 100 of 222 --
-
 The ideal decision-making process.
 The next stage is reaching a clear decision. Again, the greater the
 disagreement about the issue, the more important becomes the word clear.
@@ -3281,9 +2988,6 @@ agree, but that they need to do so is simply inevitable. Even when we all
 have the same facts and we all have the interests of an organization in mind,
 we tend to have honest, strongly felt, real differences of opinion. No matter
 how much time we may spend trying to forge agreement, we just won’t be
-
--- 101 of 222 --
-
 able to get it on many issues. But an organization does not live by its
 members agreeing with one another at all times about everything. It lives
 instead by people committing to support the decisions and the moves of the
@@ -3319,9 +3023,6 @@ in management senior to the other members of the group to come to the
 meeting. But it is very important that everybody there voice opinions and
 beliefs as equals throughout the free discussion stage, forgetting or ignoring
 status differentials.
-
--- 102 of 222 --
-
 A journalist puzzled by our management style once asked me, “Mr.
 Grove, isn’t your company’s emphasis on visible signs of egalitarianism
 such as informal dress, partitions instead of offices, and the absence of other
@@ -3360,9 +3061,6 @@ cloud form over his head; finally he slapped the table and exclaimed,
 ---
 
 ## [Sección 42] PART IV THE PLAYERS
-
--- 103 of 222 --
-
 nowhere.” After the chairman intervened, the problem was resolved in very
 short order. We named this the peer-plus-one approach, and have used it
 since then to aid decision-making where we must. Peers tend to look for a
@@ -3398,9 +3096,6 @@ control. He is likely to be no more expert in the issues at hand than other
 members of the group—perhaps less expert—but he is likely to act as a
 godfather, a repository of knowledge about how decisions should be made,
 and give the group the confidence needed to make a decision.
-
--- 104 of 222 --
-
 One thing that paralyzes both knowledge and position power possessors
 is the fear of simply sounding dumb. For the senior person, this is likely to
 keep him from asking the questions he should ask. The same fear will make
@@ -3438,9 +3133,6 @@ group along has no choice but to make a decision himself. If the decision-
 ---
 
 ## [Sección 43] PART IV THE PLAYERS
-
--- 105 of 222 --
-
 making process has proceeded correctly up to this point, the senior manager
 will be making the decision having had the full benefit of free discussion
 wherein all points of view, facts, opinions, and judgments were aired
@@ -3475,9 +3167,6 @@ important questions in advance:
 • When does it have to be made?
 • Who will decide?
 • Who will need to be consulted prior to making the decision?
-
--- 106 of 222 --
-
 • Who will ratify or veto the decision?
 • Who will need to be informed of the decision?
 Let me illustrate how these six questions came into play in a recent
@@ -3516,9 +3205,6 @@ corporation; the manager of the Far East manufacturing plant network; and
 ---
 
 ## [Sección 44] PART IV THE PLAYERS
-
--- 107 of 222 --
-
 his supervisor, the senior manufacturing manager. The meeting gave us
 parallel levels of managers from the two organizations. The sensitivities of
 two interest groups coming to bear on a single decision is quite common in
@@ -3553,9 +3239,6 @@ Employing consistent ways by which decisions are to be made has value
 beyond simply expediting the decision-making itself. People invest a great
 deal of energy and emotion in coming up with a decision. Then somebody
 who has an important say-so or the right to veto it may come across the
-
--- 108 of 222 --
-
 decision later. If he does veto it, he can be regarded as a Johnny-come-lately
 who upsets the decision-making applecart. This, of course, will frustrate
 and demoralize the people who may have been working on it for a long
@@ -3591,8 +3274,6 @@ consulting anybody, so could everybody else.
 ---
 
 ## [Sección 45] PART IV THE PLAYERS
-
--- 109 of 222 --
 Planning: Today’s Actions for
 Tomorrow’s Output
 The Planning Process
@@ -3619,9 +3300,6 @@ be summarized as follows: step 1, determine the market demand for
 product; step 2, establish what the factory will produce if no adjustment is
 made; and step 3, reconcile the projected factory output with the projected
 market demand by adjusting the production schedule.
-
--- 110 of 222 --
-
 Your general planning process should consist of analogous thinking. Step
 1 is to establish projected need or demand: What will the environment
 demand from you, your business, or your organization? Step 2 is to
@@ -3656,9 +3334,6 @@ to examine it in two time frames—now, and sometime in the future, let’s
 say in a year. The questions then become: What do my customers want
 from me now? Am I satisfying them? What will they expect from me one
 year from now? You need to focus on the difference between what your
-
--- 111 of 222 --
-
 environment demands from you now and what you expect it to demand
 from you a year from now. Such a difference analysis is crucial, because if
 your current activities satisfy the current demands placed on your business,
@@ -3696,9 +3371,6 @@ do to close the gap? The second is, What can you do to close the gap?
 ---
 
 ## [Sección 46] PART IV THE PLAYERS
-
--- 112 of 222 --
-
 Consider each question separately, and then decide what you actually will
 do, evaluating what effect your actions will have on narrowing the gap, and
 when. The set of actions you decide upon is your strategy.
@@ -3733,9 +3405,6 @@ groups in the company—groups less qualified for them than his own but
 also less busy. He also made arrangements with his manager to bring a
 summer student on board to help with some easily definable tasks, and then
 set himself up to monitor the performance of his group tightly. He also
-
--- 113 of 222 --
-
 proceeded to look at other avenues that could help him in the longer term,
 such as splitting the job of completing some of the work with other similar
 marketing groups in the company and eliminating any duplication of effort
@@ -3775,9 +3444,6 @@ machinery tested, debugged, demonstrated, and, most important,
 ---
 
 ## [Sección 47] PART IV THE PLAYERS
-
--- 114 of 222 --
-
 accompanied by the necessary data for them to be accepted and used by the
 production engineers, who had become more demanding because of past
 problems.
@@ -3812,9 +3478,6 @@ took place throughout the organization. I, for one, hardly ever look at the
 bound volume finally called the Annual Plan. In other words, the output of
 the planning process is the decisions made and the actions taken as a result
 of the process.
-
--- 115 of 222 --
-
 How far ahead should the planners look? At Intel, we put ourselves
 through an annual strategic long-range planning effort in which we examine
 our future five years off. But what is really being influenced here? It is the
@@ -3853,9 +3516,6 @@ make them specific. The idea behind MBO is extremely simple: If you
 ---
 
 ## [Sección 48] PART IV THE PLAYERS
-
--- 116 of 222 --
-
 don’t know where you’re going, you will not get there. Or, as an old Indian
 saying puts it, “If you don’t know where you’re going, any road will get
 you there.”
@@ -3888,9 +3548,6 @@ nothing. A few extremely well-chosen objectives impart a clear message
 about what we say “yes” to and what we say “no” to—which is what we
 must have if an MBO system is to work.
 TWO CASE HISTORIES
-
--- 117 of 222 --
-
 To familiarize ourselves with the MBO system, let’s look at a case history,
 Columbus’ discovery of the New World, though how I tell the story takes
 considerable liberties with the grammar-school version of the event. Thanks
@@ -3930,9 +3587,6 @@ He did discover the New World, and that was a source of incalculable
 ---
 
 ## [Sección 49] PART IV THE PLAYERS
-
--- 118 of 222 --
-
 wealth for Spain. So it is entirely possible for a subordinate to perform well
 and be rated well even though he missed his specified objective. The MBO
 system is meant to pace a person—to put a stopwatch in his own hand so he
@@ -3968,20 +3622,12 @@ government and Intel work. A manager’s objectives are supported by an
 appropriate set of key results. His objectives in turn are tied to his
 supervisor’s objectives so that if the manager meets his objectives, his
 supervisor will meet his. But the MBO system cannot be run mechanically
-
--- 119 of 222 --
-
 by a computer. The system requires judgment and common sense to set the
 hierarchy of objectives and the key results that support them. Both
 judgment and common sense are also required when using MBO to guide
 you in your work from one day to the next.
-
--- 120 of 222 --
-
 III
 Team of Teams
-
--- 121 of 222 --
 The Breakfast Factory Goes National
 We left the breakfast factory as it was enjoying great success—so great, in
 fact, that we had to install a continuous egg-boiling unit at considerable
@@ -4013,9 +3659,6 @@ each of our franchises could do individually. And most important, because
 ---
 
 ## [Sección 50] PART IV THE PLAYERS
-
--- 122 of 222 --
-
 the quality of our breakfasts has played a major role in our success so far,
 we have to be very concerned about maintaining a perception of first-rate
 food and service. In other words, we could not permit any one Breakfast
@@ -4050,9 +3693,6 @@ differences in culinary taste, so some discretion ought to be left to the
 individual franchises.
 What about real estate? Should we allow our Breakfast Factories to be
 housed in any locally available building? Or should we prescribe a uniform
-
--- 123 of 222 --
-
 construction style and build each of them from the ground up? Perhaps we
 should go with whatever building is available provided it meets some
 standards we set in Chicago.
@@ -4091,13 +3731,8 @@ team game, it is a game in which we have to fashion a team of teams, where
 ---
 
 ## [Sección 51] PART IV THE PLAYERS
-
--- 124 of 222 --
-
 the various individual teams exist in some suitable and mutually supportive
 relationship with each other.
-
--- 125 of 222 --
 Hybrid Organizations
 What happened to the Breakfast Factory has to happen, or has already
 happened, to every reasonably large organization.
@@ -4117,9 +3752,6 @@ location and constructing its own building, doing its own merchandising,
 acquiring and maintaining its own personnel, and doing its own purchasing.
 In the end it submits monthly financial statements to the corporate
 executive office.
-
--- 126 of 222 --
-
 The Breakfast Factory network organized in (a) totally mission-oriented and (b)
 totally functional forms.
 At the other extreme is the totally functional organization (b), which is
@@ -4137,9 +3769,6 @@ compromise between the two extremes. In fact, the search for the
 appropriate compromise has preoccupied managers for a long, long time.
 Alfred Sloan summed up decades of experience at General Motors by
 saying, “Good management rests on a reconciliation of centralization and
-
--- 127 of 222 --
-
 decentralization.” Or, we might say, on a balancing act to get the best
 combination of responsiveness and leverage.
 Let’s now look at Intel’s organization form, as shown on the next page.
@@ -4161,9 +3790,6 @@ presumably provides the service at less expense and with greater
 responsiveness. Likewise, manufacturing, finance, or data processing can
 all be regarded as functional groups, which, as internal subcontractors,
 provide services to all the business units.
-
--- 128 of 222 --
-
 Intel is a hybrid organization: balancing to get the best combination of
 responsiveness and leverage.
 Some two thirds of Intel’s employees work in the functional units,
@@ -4186,9 +3812,6 @@ such as the research engineers who work in technology development—can
 ---
 
 ## [Sección 52] PART IV THE PLAYERS
-
--- 129 of 222 --
-
 be applied across the breadth of the entire corporation, giving their
 knowledge and work enormous leverage. Finally, Intel’s functional groups
 allow the business units to concentrate on mastering their specific trades
@@ -4223,9 +3846,6 @@ who from time to time attempt to improve the organization of the groups
 they supervise. But no matter how many times we have examined possible
 organizational forms, we have always concluded that there is simply no
 alternative to the hybrid organizational structure.
-
--- 130 of 222 --
-
 So that is how Intel is organized today. To further my case that hybrid
 organizations are inevitable, consider a press release that I read recently.
 One of dozens that show up in the weekly trade newspapers, it is
@@ -4266,9 +3886,6 @@ selling it, and otherwise maintaining all aspects of the business.
 ---
 
 ## [Sección 53] PART IV THE PLAYERS
-
--- 131 of 222 --
-
 Nevertheless, the national organization controls the way the chapters are to
 go about their own pursuits: the form in which the individual businesses are
 to be structured, the paperwork requirements, and the rewards for
@@ -4304,9 +3921,6 @@ is how a business can adapt. But the most important consideration should be
 this: the shift back and forth between the two types of organizations can and
 should be initiated to match the operational styles and aptitudes of the
 managers running the individual units.
-
--- 132 of 222 --
-
 As I’ve said, sooner or later all reasonably large companies must cope
 with the problems inherent in the workings of a hybrid organization. The
 most important task before such an organization is the optimum and timely
@@ -4344,8 +3958,6 @@ managed. This is dual reporting, the subject of our next chapter.
 ---
 
 ## [Sección 54] PART IV THE PLAYERS
-
--- 133 of 222 --
 Dual Reporting
 To put a man on the moon, NASA asked several major contractors and
 many subcontractors to work together, each on a different aspect of the
@@ -4370,9 +3982,6 @@ When our company was young and small, we stumbled onto dual reporting
 almost by accident. At a staff meeting we were trying to decide to whom
 the security personnel at our new outlying plants should report. We had two
 choices. One would have the employees report to the plant manager. But a
-
--- 134 of 222 --
-
 plant manager, by background, is typically an engineer or a manufacturing
 person who knows very little about security issues and cares even less. The
 other choice would have them report to the security manager at the main
@@ -4412,9 +4021,6 @@ more general aspects of his job, the new boss has no choice but to leave the
 ---
 
 ## [Sección 55] PART IV THE PLAYERS
-
--- 135 of 222 --
-
 technical aspects to his subordinate, because as a graduate of sales, he has
 absolutely no background in manufacturing. In other divisions of the
 corporation, manufacturing managers may similarly be reporting to people
@@ -4450,9 +4056,6 @@ general managers, as the figure opposite shows.
 To make such a body work requires the voluntary surrender of individual
 decision-making to the group. Being a member means you no longer have
 complete freedom of individual action, because you must go along with the
-
--- 136 of 222 --
-
 decisions of your peers in most instances. By analogy, think of yourself as
 one of a couple who decides to take a vacation with another couple. You
 know that if you go together you will not be free to do exactly what you
@@ -4475,9 +4078,6 @@ organizations work, and while people will strive to find something simpler,
 the reality is that it doesn’t exist. A strictly functional organization, which is
 clear conceptually, tends to remove engineering and manufacturing (or the
 equivalent groups in your firm) from the marketplace, leaving them with no
-
--- 137 of 222 --
-
 idea of what the customers want. A highly mission-oriented organization, in
 turn, may have definite crisp reporting relationships and clear and
 unambiguous objectives at all times. However, the fragmented state of
@@ -4516,9 +4116,6 @@ should be aimed. This would suggest that advertising stay in the hands of
 ---
 
 ## [Sección 56] PART IV THE PLAYERS
-
--- 138 of 222 --
-
 the divisions. On the other hand, the products of various divisions often all
 serve the needs of a specific market, and taken together represent a much
 more complete solution to the customers’ needs than what can be provided
@@ -4538,9 +4135,6 @@ perhaps chaired by the corporate merchandising manager should provide
 the necessary functional supervision for all involved. This body would
 choose the advertising agency, for instance, and determine the graphic
 image to which all divisional ads should conform. It could also define the
-
--- 139 of 222 --
-
 way the division marketing managers would deal with the agency, which
 could reduce the cost of space through the use of volume buying. Yet the
 specific selling message communicated by an individual ad would be
@@ -4575,9 +4169,6 @@ is a fundamental phenomenon of organizational life.
 Another Wrinkle: The Two-Plane Organization
 Whenever a person becomes involved in coordination—something not part
 of his regular daily work—we encounter a subtle variation of dual
-
--- 140 of 222 --
-
 reporting.
 Remember Cindy, the know-how manager responsible for maintaining
 and improving a specific manufacturing process? Cindy reports to a
@@ -4605,9 +4196,6 @@ Again we see dual reporting because Cindy has two supervisors.
 ---
 
 ## [Sección 57] PART IV THE PLAYERS
-
--- 141 of 222 --
-
 Cindy’s name appears on two organization charts—coordinating groups are a
 means for know-how managers to increase their leverage.
 Cindy’s two responsibilities won’t fit on a single organization chart.
@@ -4625,9 +4213,6 @@ makes it possible for her to exert a much larger leverage at Intel. In her
 main job, her knowledge affects the work that takes place in one plant; in
 her second, through what she does in the process coordinating group, she
 can influence the work of all plants. So we see that the existence of such
-
--- 142 of 222 --
-
 groups is a way for managers, especially know-how managers, to increase
 their leverage.
 The two-plane concept is a part of everyday organizational life. For
@@ -4663,9 +4248,6 @@ more rapidly things change around us, the more we have to rely on such
 specially composed transitory teams to cope with matters. In the electronics
 business, we can’t possibly shift formal organization fast enough to keep up
 with the pace of advancing technology. The techniques that we have to
-
--- 143 of 222 --
-
 master to make hybrid organizations work—dual or multiple reporting and
 also decision-making by peer groups—are both necessary if such transitory
 teams are to work. The key factor common to all is the use of cultural
@@ -4674,8 +4256,6 @@ values as a mode of control, which we will consider next.
 ---
 
 ## [Sección 58] PART IV THE PLAYERS
-
--- 144 of 222 --
 Modes of Control
 Let’s look at the ways in which our actions can be controlled or influenced.
 Say you need new tires for your car. You go down the street to the dealer
@@ -4703,9 +4283,6 @@ at the red light: not self-interest or obeying the law, but concern about
 someone else’s life.
 Similarly, our behavior in a work environment can be controlled by three
 invisible and pervasive means. These are:
-
--- 145 of 222 --
-
 • free-market forces
 • contractual obligations
 • cultural values
@@ -4738,9 +4315,6 @@ value of each bit of contribution than the contribution itself is worth. Here
 trying to use free-market concepts becomes quite inefficient.
 So you say to the engineers, “Okay, I’ll retain your services for a year for
 a set amount of money, and you will agree to do a certain type of work in
-
--- 146 of 222 --
-
 return. We’ve now entered into a contract. I’ll give you an office and a
 terminal, and you promise me to do the best you can to perform your task.”
 The nature of control is now based on contractual obligations, which
@@ -4777,9 +4351,6 @@ on cultural values. Its most important characteristic is that the interest of th
 ---
 
 ## [Sección 59] PART IV THE PLAYERS
-
--- 147 of 222 --
-
 larger group to which an individual belongs takes precedence over the
 interest of the individual himself. When such values are at work, some
 emotionally loaded words come into play—words like trust—because you
@@ -4812,9 +4383,6 @@ person’s motivation; and second, the nature of the environment in which he
 works. An imaginary composite index can be applied to measure an
 environment’s complexity, uncertainty, and ambiguity, which we’ll call the
 CUA factor. Cindy, the process engineer, is surrounded by tricky
-
--- 148 of 222 --
-
 technologies, new and not fully operational equipment, and development
 engineers and production engineers pulling her in opposite directions. Her
 working environment, in short, is complex. Bruce, the marketing manager,
@@ -4832,9 +4400,6 @@ individual motivation can run from self-interest to group-interest, and the
 CUA factor of a working environment can vary from low to high. Now look
 for the best mode of control for each quadrant. When self-interest is high
 and the CUA factor is low, the most appropriate is the market mode, which
-
--- 149 of 222 --
-
 governed our tire purchase. As individual motivation moves toward group
 interest, the contractual mode becomes appropriate, which governed our
 stopping for a red light. When group-interest orientation and the CUA
@@ -4873,9 +4438,6 @@ fingers and hope she quickly forgets self-interest and just as quickly gets on
 ---
 
 ## [Sección 60] PART IV THE PLAYERS
-
--- 150 of 222 --
-
 top of her job to reduce her CUA factor. Short of that, she’s probably out of
 luck.
 Modes of Control at Work
@@ -4909,9 +4471,6 @@ disjointed free-for-alls and confuse everybody. So the need to have the
 individual divisions present coordinated messages is governed by corporate
 values. Thus, in field sales training, we find all three modes of control at
 work.
-
--- 151 of 222 --
-
 Recently a group of factory marketing managers claimed that our
 salespeople were governed only by self-interest. They said that they
 devoted most of their attention to selling those items that produced the most
@@ -4931,13 +4490,8 @@ gotten other jobs and quick commissions elsewhere, but by and large they
 stayed with us. They stayed because they believed in the company and had
 faith that eventually things would get better. Belief and faith are not aspects
 of the market mode, but stem from adherence to cultural values.
-
--- 152 of 222 --
-
 IV
 The Players
-
--- 153 of 222 --
 The Sports Analogy
 Earlier I built a case summed up by the key sentence: A manager’s output is
 the output of the organization under his supervision or influence.
@@ -4965,9 +4519,6 @@ concern is motivation.
 ---
 
 ## [Sección 61] PART IV THE PLAYERS
-
--- 154 of 222 --
-
 A manager has two ways to improve performance: training and motivation.
 How does a manager motivate his subordinates? For most of us, the word
 implies doing something to another person. But I don’t think that can
@@ -4984,9 +4535,6 @@ For most of Western history, including the early days of the Industrial
 Revolution, motivation was based mostly on fear of punishment. In
 Dickens’ time, the threat of loss of life got people to work, because if
 people did not work, they were not paid and could not buy food, and if they
-
--- 155 of 222 --
-
 stole food and got caught, they were hanged. The fear of punishment
 indirectly caused them to produce more than they might have otherwise.
 Over the past thirty years or so, a number of new approaches have begun
@@ -5014,9 +4562,6 @@ largely determines an individual’s motivation and therefore his level of
 performance. Maslow defined a set of needs, as shown below, that tend to
 lie in a hierarchy: when a lower need is satisfied, one higher is likely to take
 over.
-
--- 156 of 222 --
-
 Maslow defined a set of needs that tend to lie in a hierarchy: when a lower need
 is satisfied, one higher is likely to take over.
 Physiological Needs
@@ -5031,9 +4576,6 @@ protection against the fear of going bankrupt trying to pay doctor and
 hospital fees. The existence of benefits is rarely a dominant source of
 employee motivation, but if benefits were absent and employees had to
 worry about such concerns, performance would no doubt be badly affected.
-
--- 157 of 222 --
-
 Social/Affiliation Needs
 The social needs stem from the inherent desire of human beings to belong
 to some group or other. But people don’t want to belong to just any group;
@@ -5073,9 +4615,6 @@ largely by his need for sheer survival—a “physiological” need—to one for
 ---
 
 ## [Sección 62] PART IV THE PLAYERS
-
--- 158 of 222 --
-
 security and safety. As time went on, the study groups dissolved and the
 students started to associate with other members of the class. The entire
 class, or “section,” as it was called, developed a definite and recognizable
@@ -5108,9 +4647,6 @@ about the encounter, you are likely to be met with blank stares, because the
 “hello” means nothing to people who are not aspiring athletes in your high
 school.
 All of the sources of motivation we’ve talked about so far are selflimiting. That is, when a need is gratified, it can no longer motivate a
-
--- 159 of 222 --
-
 person. Once a predetermined goal or level of achievement is reached, the
 need to go any further loses urgency. A friend of mine was thrust into a
 premature “mid-life crisis” when, in recognition of the excellent work he
@@ -5148,9 +4684,6 @@ just far enough away from the pegs so that to toss a ring onto a peg
 ---
 
 ## [Sección 63] PART IV THE PLAYERS
-
--- 160 of 222 --
-
 constituted a challenge. These people worked at the boundary of their
 capability.
 Researchers classified the three types of behavior. The first group, termed
@@ -5183,9 +4716,6 @@ it to create some tangible output, gets little recognition, but a junior
 engineer who produces results is highly valued and esteemed. And that is
 how it should be.
 Money and Task-Relevant Feedback
-
--- 161 of 222 --
-
 We now come to the question of how money motivates people. At the lower
 levels of the motivation hierarchy, money is obviously important, needed to
 buy the necessities of life. Once there is enough money to bring a person up
@@ -5225,9 +4755,6 @@ individual himself. Our virtuoso violinist knows how the music should
 ---
 
 ## [Sección 64] PART IV THE PLAYERS
-
--- 162 of 222 --
-
 sound, knows when it is not right, and will strive tirelessly to get it right.
 Accordingly, if the possibility for improvement does not exist, the desire to
 keep practicing vanishes. I knew an Olympic fencing champion, a
@@ -5262,9 +4789,6 @@ In general, in the upper levels of motivation, fear is not something
 coming from the outside. It is instead fear of not satisfying yourself that
 causes you to back off. You cannot stay in the self-actualized mode if
 you’re always worried about failure.
-
--- 163 of 222 --
-
 The Sports Analogy
 We’ve studied motivation to try to understand what makes people want to
 work so that as managers we can elicit peak performance from our
@@ -5304,9 +4828,6 @@ ways for employees to measure themselves. Eliciting peak performance
 ---
 
 ## [Sección 65] PART IV THE PLAYERS
-
--- 164 of 222 --
-
 means going up against something or somebody. Let me give you a simple
 example. For years the performance of the Intel facilities maintenance
 group, which is responsible for keeping our buildings clean and neat, was
@@ -5341,14 +4862,9 @@ of that his players trust him. Second, he is tough on his team. By being
 critical, he tries to get the best performance his team members can provide.
 Third, a good coach was likely a good player himself at one time. And
 having played the game well, he also understands it well.
-
--- 165 of 222 --
-
 Turning the workplace into a playing field can turn our subordinates into
 “athletes” dedicated to performing at the limit of their capabilities—the key
 to making our team consistent winners.
-
--- 166 of 222 --
 Task-Relevant Maturity
 I’ll say again that a manager’s most important responsibility is to elicit top
 performance from his subordinates. Assuming we understand what
@@ -5380,9 +4896,6 @@ The result of moving the managers about is often surprising. Neither the
 ---
 
 ## [Sección 66] PART IV THE PLAYERS
-
--- 167 of 222 --
-
 managers nor the groups maintain the characteristic of being either highproducing or low-producing as the managers are switched around. The
 inevitable conclusion is that high output is associated with particular
 combinations of certain managers and certain groups of workers. This also
@@ -5415,9 +4928,6 @@ or if the job itself abruptly changes, the TRM of that individual will drop.
 It’s a bit like a person with many years’ experience driving on small country
 roads being suddenly asked to drive on a crowded metropolitan freeway.
 His TRM driving his own car will drop precipitously.
-
--- 168 of 222 --
-
 The conclusion is that varying management styles are needed as taskrelevant maturity varies. Specifically, when the TRM is low, the most
 effective approach is one that offers very precise and detailed instructions,
 wherein the supervisor tells the subordinate what needs to be done, when,
@@ -5455,9 +4965,6 @@ the parent can cut back on specific instruction. When the child goes out to
 ---
 
 ## [Sección 67] PART IV THE PLAYERS
-
--- 169 of 222 --
-
 ride his bicycle, the parent no longer has to recite the litany of safety rules.
 Finally, when the life-relevant maturity of the child is high enough, he
 leaves home and perhaps goes away to college. At this point the
@@ -5492,9 +4999,6 @@ and lose its sense of purpose. Accordingly, the responsibility for
 transmitting common values rests squarely with the supervisor. He is, after
 all, accountable for the output of the people who report to him; then, too,
 without a shared set of values a supervisor cannot effectively delegate. An
-
--- 170 of 222 --
-
 associate of mine who had always done an outstanding job hired a junior
 person to handle some old tasks, while he himself took on some new ones.
 The subordinate did poor work. My associate’s reaction: “He has to make
@@ -5532,9 +5036,6 @@ months, this too will eventually become routine. With that, the TRM of the
 ---
 
 ## [Sección 68] PART IV THE PLAYERS
-
--- 171 of 222 --
-
 group for the new task—fighting—will increase. The sergeant can then
 gradually ease off telling everybody what to do.
 Put another way, a manager’s ability to operate in a style based on
@@ -5567,9 +5068,6 @@ style was. Some 90 percent of the supervisors saw their style as more
 communicating or delegating than their subordinates’ view. What accounts
 for the large discrepancy? It is partly because managers think of themselves
 as perfect delegators. But also, sometimes a manager throws out
-
--- 172 of 222 --
-
 suggestions to a subordinate who receives them as marching orders—
 furthering the difference in perceptions.
 A manager once told me that his supervisor definitely practiced an
@@ -5605,8 +5103,6 @@ someone whose personal relationships will strengthen work relationships.
 ---
 
 ## [Sección 69] PART IV THE PLAYERS
-
--- 173 of 222 --
 Performance Appraisal: Manager as
 Judge and Jury
 Why Bother?
@@ -5629,9 +5125,6 @@ pride
 anger
 anxiety
 discomfort
-
--- 174 of 222 --
-
 guilt
 empathy/concern
 embarrassment
@@ -5663,9 +5156,6 @@ to my questions are correct, there is one that is more important than any of
 the others: it is to improve the subordinate’s performance. The review is
 usually dedicated to two things: first, the skill level of the subordinate, to
 determine what skills are missing and to find ways to remedy that lack; and
-
--- 175 of 222 --
-
 second, to intensify the subordinate’s motivation in order to get him on a
 higher performance curve for the same skill level (see the illustration on
 this page).
@@ -5703,9 +5193,6 @@ Assessing Performance
 ---
 
 ## [Sección 70] PART IV THE PLAYERS
-
--- 176 of 222 --
-
 Determining the performance of professional employees in a strictly
 objective manner is very difficult because there is obviously no cut-anddried way to measure and characterize a professional employee’s work
 completely. Most jobs involve activities that are not reflected by output in
@@ -5739,9 +5226,6 @@ internal measures. In a given situation, the proper weighting could be 50/50,
 90/10, or 10/90 and could even shift from one month to the next. But at
 least we should know which two variables are being traded off against each
 other.
-
--- 177 of 222 --
-
 A similar kind of trade-off also has to be considered here: weighing longterm-oriented against short-term-oriented performance. An engineer
 working on the design of a product needs to complete the project on a strict
 schedule to generate revenue. He may also be working on a design method
@@ -5780,9 +5264,6 @@ organization was just about a year. Greatly embarrassed, I regretfully
 ---
 
 ## [Sección 71] PART IV THE PLAYERS
-
--- 178 of 222 --
-
 concluded that the superior rating I had given him was totally wrong.
 Trusting the internal measures, I should have had the judgment and courage
 to give the manager a much lower rating than I did in spite of the excellent
@@ -5818,9 +5299,6 @@ He is knowledgeable and handles himself well. It’s his organization that did
 not do well, not the manager himself!” This cut no ice with me because the
 performance rating of a manager cannot be higher than the one we would
 accord to his organization! It is very important to assess actual
-
--- 179 of 222 --
-
 performance, not appearances; real output, not good form. Had the manager
 been given a high rating, Intel would have signaled to all at the company
 that to do well, you must “act” like a good manager, talk like one, and
@@ -5858,9 +5336,6 @@ presumably kept. Should person A use a tape recorder to confirm the words
 ---
 
 ## [Sección 72] PART IV THE PLAYERS
-
--- 180 of 222 --
-
 used in the review? The answer is an emphatic no. Words themselves are
 nothing but a means; getting the right thought communicated is the end.
 Perhaps B has become so emotional that he can’t understand something that
@@ -5895,9 +5370,6 @@ visually what they already knew. So don’t imitate your worst professors
 while delivering performance reviews. Listen with all your might to make
 sure your subordinate is receiving your message, and don’t stop delivering
 it until you are satisfied that he is.
-
--- 181 of 222 --
-
 The third L is “leave yourself out.” It is very important for you to
 understand that the performance review is about and for your subordinate.
 So your own insecurities, anxieties, guilt, or whatever should be kept out of
@@ -5934,9 +5406,6 @@ paper. Do not edit in your head. Get everything down, knowing that doing
 ---
 
 ## [Sección 73] PART IV THE PLAYERS
-
--- 182 of 222 --
-
 so doesn’t commit you to do anything. Things major, minor, and trivial can
 be included in no particular order. When you have run out of items, you can
 put all of your supporting documentation away.
@@ -5968,9 +5437,6 @@ Messages
 2. Hard time setting clear, crisp goals—satisfied with activities instead of driving results!
 3. (No-let’s just concentrate on #2!)
 Worksheet for performance review.
-
--- 183 of 222 --
-
 Let’s talk about surprises. If you have discharged your supervisory
 responsibilities adequately throughout the year, holding regular one-on-one
 meetings and providing guidance when needed, there should never be any
@@ -6005,9 +5471,6 @@ of remedying the situation. These three steps usually follow one another in
 fairly rapid succession. But things tend to get stuck at the blame-others
 stage. If your subordinate does have a problem, there’s no way of resolving
 it if he continues to blame it on others. He has to take the biggest step:
-
--- 184 of 222 --
-
 namely assuming responsibility. He has to say not only that there is a
 problem but that it is his problem. This is fateful, because it means work:
 “If it is my problem, I have to do something about it. If I have to do
@@ -6028,9 +5491,6 @@ subordinate is still denying or blaming others, nothing can happen.
 ---
 
 ## [Sección 74] PART IV THE PLAYERS
-
--- 185 of 222 --
-
 Knowing where you are will help you both move through the stages
 together.
 In the end, there are three possible outcomes. One, the subordinate
@@ -6066,9 +5526,6 @@ If it becomes clear that you are not going to get your subordinate past the
 blame-others stage, you will have to assume the formal role of the
 supervisor, endowed with position power, and say, “This is what I, as your
 boss, am instructing you to do. I understand that you do not see it my way.
-
--- 186 of 222 --
-
 You may be right or I may be right. But I am not only empowered, I am
 required by the organization for which we both work to give you
 instructions, and this is what I want you to do…” And proceed to secure
@@ -6107,9 +5564,6 @@ even to maintain his current level. It seems that for an achiever the
 ---
 
 ## [Sección 75] PART IV THE PLAYERS
-
--- 187 of 222 --
-
 supervisor’s effort goes into determining and justifying the judgment of the
 superior performance, while giving little attention to how he could do even
 better. But for a poor performer, the supervisor tends to concentrate heavily
@@ -6143,9 +5597,6 @@ So the integrity of the supervisors’ judgment here must be preserved at all
 costs, and they must commit themselves through an up-front judgment of
 their subordinates’ performance if the health and vitality of the review
 process are to be maintained.
-
--- 188 of 222 --
-
 What about asking your subordinate to evaluate your performance as his
 supervisor? I think this might be a good idea. But you should make it clear
 to your subordinate that it’s your job to assess his performance, while his
@@ -6184,9 +5635,6 @@ if you’ve been lucky, the tradition of good performance reviews has been
 ---
 
 ## [Sección 76] PART IV THE PLAYERS
-
--- 189 of 222 --
-
 handed from supervisor to subordinate, which has helped to maintain the
 integrity of the system in your company. Nevertheless, people constantly
 need to be prodded into doing a good job of reviewing. Each year I read
@@ -6198,11 +5646,6 @@ and reaffirm the significance the system has and should have for every Intel
 employee. Anything less would not be appropriate for the most important
 kind of task-relevant feedback we can give our subordinates.
 
--- 190 of 222 --
-
--- 191 of 222 --
-
--- 192 of 222 --
 Two Difficult Tasks
 There are two other emotionally charged tasks a manager must perform.
 They are interviewing a potential employee and trying to talk a valued
@@ -6227,9 +5670,6 @@ past performance by checking references. But you’ll often be talking to a
 total stranger, so even if he comments freely about the candidate, what he
 says won’t have much meaning to you without some knowledge of how his
 company does business and what values it works by. Moreover, while few
-
--- 193 of 222 --
-
 references will out-and-out lie, they tend not to volunteer specific critical
 remarks. So reference-checking hardly exempts you from getting as much
 as you can out of the interview.
@@ -6267,9 +5707,6 @@ have done to prevent them from cropping up?
 ---
 
 ## [Sección 77] PART IV THE PLAYERS
-
--- 194 of 222 --
-
 — Why do you think you’re ready for this new job?
 — What do you consider your most significant achievements? Why
 were they important to you?
@@ -6301,9 +5738,6 @@ past achievements
 past failures
 Discrepancies
 what did you learn from failures
-
--- 195 of 222 --
-
 problems in current position
 Operational Values
 why are you ready for new job
@@ -6337,9 +5771,6 @@ manufacturing process step by step. After saying I would answer any
 specific questions he had, I asked him what the finished cost of a wafer
 would be. He asked some questions and pondered matters for a while. He
 then started to think his way through the basic semiconductor cost
-
--- 196 of 222 --
-
 accounting principles, discovering some of them as he went along, and
 ultimately came up with the correct answer. He was hired, because this
 exercise demonstrated (as it turns out, correctly) that his problem-solving
@@ -6379,9 +5810,6 @@ straightforward. Remember, a candidate is a potential employee. He will go
 ---
 
 ## [Sección 78] PART IV THE PLAYERS
-
--- 197 of 222 --
-
 away from having talked to you with a strong set of first impressions. If
 those are wrong and you hire the person, it will take a long time before they
 change. So show yourself and your environment as they really are.
@@ -6414,9 +5842,6 @@ confirm his feelings and the outcome is inevitable.
 Drop what you are doing. Sit him down and ask him why he is quitting.
 Let him talk—don’t argue about anything with him. Believe me, he’s
 rehearsed his speech countless times during more than one sleepless night.
-
--- 198 of 222 --
-
 After he’s finished going through all his reasons for wanting to leave (they
 won’t be good ones), ask him more questions. Make him talk, because after
 the prepared points are delivered, the real issues may come out. Don’t
@@ -6456,9 +5881,6 @@ you, but he might say that you should have offered him the new position
 ---
 
 ## [Sección 79] PART IV THE PLAYERS
-
--- 199 of 222 --
-
 long ago. He might go on to say that you’re only doing it now because he
 forced you into it, his feeling being that “If I stay, you’ll think of me as the
 blackmailer forever!”
@@ -6481,8 +5903,6 @@ has attributes that make him so. Other employees respect him; and if they
 are like him, they identify with him. So other superior performers like him
 will track what happens to him, and their morale and commitment to the
 company will hinge on the outcome of this person’s fate.
-
--- 200 of 222 --
 Compensation as Task-Relevant
 Feedback
 Money has significance at all levels of Maslow’s motivation hierarchy. As
@@ -6509,9 +5929,6 @@ especially careful not to project your own circumstances onto others.
 As managers, our concern is to get a high level of performance from our
 subordinates. So we want to dispense, allocate, and use money as a way to
 deliver task-relevant feedback. To do this, compensation should obviously
-
--- 201 of 222 --
-
 be tied to performance, but that, as we’ve seen, is very hard to assess
 precisely. Because a middle manager cannot be paid by the piece, his job
 can never be defined by simple output. And because his performance is
@@ -6551,9 +5968,6 @@ department perhaps. The third factor would be linked to the overall
 ---
 
 ## [Sección 80] PART IV THE PLAYERS
-
--- 202 of 222 --
-
 financial performance of the corporation. When you take, let’s say, 20
 percent of a manager’s compensation and split it into three parts, any one
 will have only a small impact on total compensation, yet attention will still
@@ -6575,9 +5989,6 @@ force us into some unfortunate compensation practices. For instance, even
 though we say that every job has a finite value where compensation should
 level off, we often let an individual become too highly paid because we,
 management, keep giving routine raises.
-
--- 203 of 222 --
-
 There are two pure forms of salary administration; most companies use a
 compromise.
 Many organizations practice a pure experience-only form of salary
@@ -6598,9 +6009,6 @@ fair salary. Thus, most companies choose a course between the two
 extremes, which is a compromise scheme that takes the shape of a family of
 curves shown in the previous figure. The shapes of all of them approximate
 the curve representing the experience-only approach, but as you can see,
-
--- 204 of 222 --
-
 while people start at the same salary level, they move up at different speeds
 and arrive at different places, depending upon individual performance.
 Of the three schemes, the one based on experience only is obviously the
@@ -6640,9 +6048,6 @@ promotions. At point A the demands of Job 1 so tax him that he can only
 ---
 
 ## [Sección 81] PART IV THE PLAYERS
-
--- 205 of 222 --
-
 perform in an average fashion. In the jargon of performance assessment, he
 “meets the requirements” of the job. As time passes, he receives more
 training and becomes more motivated, and improves his performance to an
@@ -6661,9 +6066,6 @@ requirements” ratings throughout his career.
 Now, is there an alternative to this? I say there is not. If we take a person
 at point B and don’t offer him more work and greater challenges even
 though he “exceeds the requirements” of Job 1, we are not fully utilizing a
-
--- 206 of 222 --
-
 human resource of the company. In time, he will atrophy, and his
 performance will return to a “meets requirements” level and stay there.
 Thus, you’ll find two basic types of “meets” performers. One has no
@@ -6699,13 +6101,8 @@ another promotion at a later time—and the second time they are likely to
 succeed.
 In sum, we managers must be responsible and provide our subordinates
 with honest performance ratings and honest merit-based compensation. If
-
--- 207 of 222 --
-
 we do, the eventual result will be performance valued for its own sake
 throughout our organization.
-
--- 208 of 222 --
 Why Training Is the Boss’s Job
 Recently my wife and I decided to go out to dinner. The woman who took
 reservations over the phone seemed flustered and then volunteered that she
@@ -6736,9 +6133,6 @@ scrapped. Because it takes over two weeks to make up such a loss with
 ---
 
 ## [Sección 82] PART IV THE PLAYERS
-
--- 209 of 222 --
-
 fresh material, deliveries to our customers slipped, compounding the
 problem.
 Situations like these occur all too frequently in business life.
@@ -6774,9 +6168,6 @@ of work as the result of the expenditure of your twelve hours.
 This assumes, of course, that the training will accurately address what
 students need to know to do their jobs better. This isn’t always so—
 particularly with respect to “canned courses” taught by someone from
-
--- 210 of 222 --
-
 outside. For training to be effective, it has to be closely tied to how things
 are actually done in your organization.
 Recently, some outside consultants taught a course on career
@@ -6816,9 +6207,6 @@ production courses—like one on how to operate the ion implanter, which
 ---
 
 ## [Sección 83] PART IV THE PLAYERS
-
--- 211 of 222 --
-
 requires nearly two hundred hours of on-the-job training to learn to use
 correctly, almost five times the hours of training needed to get a private
 pilot’s license. We train our managers in disciplines such as strategic
@@ -6852,9 +6240,6 @@ starters, make a list of the things you feel your subordinates or the members
 of your department should be trained in. Don’t limit the scope of your list.
 Items should range from what seems simple (training the person who takes
 calls at the restaurant) to loftier and more general things like the objectives
-
--- 212 of 222 --
-
 and value systems of your department, your plant, and your company. Ask
 the people working for you what they feel they need. They are likely to
 surprise you by telling you of needs you never knew existed.
@@ -6894,9 +6279,6 @@ ratings but that also poses some open-ended questions. Study and consider
 ---
 
 ## [Sección 84] PART IV THE PLAYERS
-
--- 213 of 222 --
-
 the responses, but understand that you will never be able to please all
 members of your class: typical feedback will be that the course was too
 detailed, too superficial, and just right, in about equal balance. Your
@@ -6919,9 +6301,6 @@ short of exhilarating. And even this exhilaration is dwarfed by the
 warm feeling you’ll get when you see a subordinate practice
 something you have taught him. Relish the exhilaration and warmth—
 it’ll help you to arm yourself for tackling the second course.
-
--- 214 of 222 --
-
 One More Thing…
 Please! You invested the price of this book plus perhaps eight hours of your
 time. At the risk of sounding like the author of a diet book, I would ask you
@@ -6947,8 +6326,6 @@ Install these new indicators as a routine in your work area, and
 establish their regular review in your staff meetings.
 What is the most important strategy (plan of action) you are
 pursing now? Describe the environmental demand that
--- 215 of 222 --
-
 prompted it and your current status or momentum. Is your
 strategy likely to result in a satisfactory state of affairs for you
 or your organization if successfully implemented?
@@ -6978,8 +6355,6 @@ reduce?)
 Forecast the demand on your time for the next week. What
 portion of your time is likely to be spent in meetings? Which of
 these are process-oriented meetings? Mission-oriented
--- 216 of 222 --
-
 ---
 
 ## [Sección 85] PART IV THE PLAYERS
@@ -7011,9 +6386,6 @@ delivering task-relevant feedback. How well did the reviews do
 to improve performance? What was the nature of the
 communication process during the delivery of each?
 Redo one of these reviews as it should have been done. 10
-
--- 217 of 222 --
-
 Notes
 1 The group of middle managers I referred to in the Acknowledgments
 consisted of C. Bickerstaff, J. Crawford, R. Hamrick, B. Kraft, B.
@@ -7047,9 +6419,6 @@ process was pointed out by my colleague Les Vadasz.
 4 MEETINGS—THE MEDIUM OF MANAGERIAL WORK
 1 “The good time users…”: Peter Drucker, People and Performance: Peter
 Drucker on Management (New York: Harper’s College Press, 1977), p.
-
--- 218 of 222 --
-
 57.
 5 DECISIONS, DECISIONS
 1 “In the meeting…”: Robert L. Simison, “Ford Fires an Economist,” Wall
@@ -7082,9 +6451,6 @@ Chaos,” Wall Street Journal, May 27, 1981, pp. 1, 20.
 1 the three means of control: Oliver E. Williamson, Markets and
 Hierarchies: Analysis and Antitrust Implications (New York: Free Press,
 1975); Raymond L. Price and William G. Ouchi, “Hierarchies, Clans and
-
--- 219 of 222 --
-
 Theory Z: A New Perspective on Organization Development,”
 Organizational Dynamics, Autumn 1978, pp. 35–44.
 
@@ -7107,18 +6473,11 @@ ed. (New York: Prentice-Hall, 1972).
 1 The material in this chapter originally appeared in the January 23, 1984,
 issue of Fortune.
 
--- 220 of 222 --
-
--- 221 of 222 --
-
 Wat’s next on
 your reading list?
 Discover your next
 great read!
 Get personalized book picks and up-to-date news about this author.
 Sign up now.
-
--- 222 of 222 --
-
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #architecture_and_books

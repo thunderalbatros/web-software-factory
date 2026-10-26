@@ -1,97 +1,17 @@
-﻿**Alcance:** Libro completo Release It! (Michael Nygard): patrones de estabilidad en producción, circuit breakers, bulkheads, timeouts y backpressure. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+# 📚 Libro Completo: Release It! Design and Deploy Production-Ready Software (2nd Edition)
 
----
-titulo: "Release It!: Design and Deploy Production-Ready Software"
-autor: "Michael T. Nygard"
-dominio: "Patrones de Resiliencia, Circuit Breakers y Bulkheads"
-tipo: "libro_tecnico_completo"
-paginas_originales: 350
-secciones_totales: 160
-fecha_ingesta: "2026-10-06T02:43:12.975Z"
----
+**Alcance:** Fuente bibliográfica completa sobre Circuit Breakers, Bulkheads, Timeouts, Stability & Antifrágil SRE (Release It! Design and Deploy Production-Ready Software (2nd Edition) — Michael T. Nygard). Aplicable a Web Software Factory y Enterprise Web App. NO sustituye los contratos de negocio ni las reglas inmutables en `CANON_*`.
 
-# 📖 Release It!: Design and Deploy Production-Ready Software
-**Autor:** Michael T. Nygard | **Dominio:** Patrones de Resiliencia, Circuit Breakers y Bulkheads | **Páginas originales:** 350
-
-> **Nota de Arquitectura Centinela:** Este documento contiene el texto íntegro estructurado por secciones y capítulos para consulta profunda del equipo de agentes y búsqueda híbrida (BM25 + semántica).
+> **Autor:** Michael T. Nygard  
+> **Dominio:** Circuit Breakers, Bulkheads, Timeouts, Stability & Antifrágil SRE  
+> **Archivo Fuente:** `Release-It-Michael-Nygard.pdf`  
+> **Páginas Originales:** 350 (100% Ingerido, Cero Truncamiento)  
+> **Secciones Técnicas Extraídas:** 25 (Entropía Técnica Media: 0.441)  
+> **Fecha de Ingesta:** 2026-10-26
 
 ---
 
-## [Sección 1] Introducción y Fundamentos
-
--- 1 of 350 --
-
-What readers are saying about Release It!
-Agile development emphasizes delivering production-ready code every
-iteration. This book finally lays out exactly what this really means for
-critical systems today. You have a winner here.
-Tom Poppendieck
-Poppendieck.LLC
-It’s brilliant. Absolutely awesome. This book would’ve saved [Really
-Big Company] hundreds of thousands, if not millions, of dollars in a
-recent release.
-Jared Richardson
-Agile Artisans, Inc.
-Beware! This excellent package of experience, insights, and patterns
-has the potential to highlight all the mistakes you didn’t know you
-have already made. Rejoice! Michael gives you recipes of how you
-redeem yourself right now. An invaluable addition to your Pragmatic
-bookshelf.
-Arun Batchu
-Enterprise Architect, netrii LLC
-
--- 2 of 350 --
-
-Release It!
-Design and Deploy Production-Ready Software
-Michael T. Nygard
-The Pragmatic Bookshelf
-Raleigh, North Carolina Dallas, Texas
-
--- 3 of 350 --
-
-Many of the designations used by manufacturers and sellers to distinguish their products are claimed as trademarks. Where those designations appear in this book, and The
-Pragmatic Programmers, LLC was aware of a trademark claim, the designations have
-been printed in initial capital letters or in all capitals. The Pragmatic Starter Kit, The
-Pragmatic Programmer, Pragmatic Programming, Pragmatic Bookshelf and the linking g
-device are trademarks of The Pragmatic Programmers, LLC.
-Every precaution was taken in the preparation of this book. However, the publisher
-assumes no responsibility for errors or omissions, or for damages that may result from
-the use of information (including program listings) contained herein.
-Our Pragmatic courses, workshops, and other products can help you and your team
-create better software and have more fun. For more information, as well as the latest
-Pragmatic titles, please visit us at
-http://www.pragmaticprogrammer.com
-Copyright © 2007 Michael T. Nygard.
-All rights reserved.
-No part of this publication may be reproduced, stored in a retrieval system, or transmitted, in any form, or by any means, electronic, mechanical, photocopying, recording, or
-otherwise, without the prior consent of the publisher.
-Printed in the United States of America.
-ISBN-10: 0-9787392-1-3
-ISBN-13: 978-0-9787392-1-8
-Printed on acid-free paper with 85% recycled, 30% post-consumer content.
-First printing, April 2007
-Version: 2007-3-28
-
--- 4 of 350 --
-
-Contents
-Preface 10
-Who Should Read This Book? . . . . . . . . . . . . . . . . . . . 11
-How the Book Is Organized . . . . . . . . . . . . . . . . . . . . 12
-About the Case Studies . . . . . . . . . . . . . . . . . . . . . . 13
-Acknowledgments . . . . . . . . . . . . . . . . . . . . . . . . . . 13
-Introduction 14
-1.1 Aiming for the Right Target . . . . . . . . . . . . . . . . 15
-1.2 Use the Force . . . . . . . . . . . . . . . . . . . . . . . . 15
-1.3 Quality of Life . . . . . . . . . . . . . . . . . . . . . . . . 16
-1.4 The Scope of the Challenge . . . . . . . . . . . . . . . . 16
-1.5 A Million Dollars Here, a Million Dollars There . . . . . 17
-1.6 Pragmatic Architecture . . . . . . . . . . . . . . . . . . . 18
-
----
-
-## [Sección 2] Part I—Stability 20
+## Sección 1: Part I—Stability 20 [Entropy: 0.25]
 
 The Exception That Grounded an Airline 21
 2.1 The Outage . . . . . . . . . . . . . . . . . . . . . . . . . . 22
@@ -105,9 +25,6 @@ Introducing Stability 35
 3.3 Cracks Propagate . . . . . . . . . . . . . . . . . . . . . . 39
 3.4 Chain of Failure . . . . . . . . . . . . . . . . . . . . . . . 41
 3.5 Patterns and Antipatterns . . . . . . . . . . . . . . . . . 42
-
--- 5 of 350 --
-
 CONTENTS 6
 Stability Antipatterns 44
 4.1 Integration Points . . . . . . . . . . . . . . . . . . . . . . 46
@@ -134,7 +51,7 @@ Stability Summary 144
 
 ---
 
-## [Sección 3] Part II—Capacity 146
+## Sección 2: Part II—Capacity 146 [Entropy: 0.25]
 
 Trampled by Your Own Customers 147
 7.1 Countdown and Launch . . . . . . . . . . . . . . . . . . 147
@@ -147,9 +64,6 @@ Introducing Capacity 161
 8.1 Defining Capacity . . . . . . . . . . . . . . . . . . . . . . 161
 8.2 Constraints . . . . . . . . . . . . . . . . . . . . . . . . . 162
 8.3 Interrelations . . . . . . . . . . . . . . . . . . . . . . . . 165
-
--- 6 of 350 --
-
 CONTENTS 7
 8.4 Scalability . . . . . . . . . . . . . . . . . . . . . . . . . . 165
 8.5 Myths About Capacity . . . . . . . . . . . . . . . . . . . 166
@@ -175,7 +89,7 @@ Capacity Patterns 204
 
 ---
 
-## [Sección 4] Part III—General Design Issues 218
+## Sección 3: Part III—General Design Issues 218 [Entropy: 0.265]
 
 Networking 219
 11.1 Multihomed Servers . . . . . . . . . . . . . . . . . . . . 219
@@ -189,9 +103,6 @@ Availability 229
 13.2 Documenting Availability Requirements . . . . . . . . . 230
 13.3 Load Balancing . . . . . . . . . . . . . . . . . . . . . . . 232
 13.4 Clustering . . . . . . . . . . . . . . . . . . . . . . . . . . 238
-
--- 7 of 350 --
-
 CONTENTS 8
 Administration 240
 14.1 “Does QA Match Production?” . . . . . . . . . . . . . . . 241
@@ -202,7 +113,7 @@ Design Summary 249
 
 ---
 
-## [Sección 5] Part IV—Operations 251
+## Sección 4: Part IV—Operations 251 [Entropy: 0.295]
 
 Phenomenal Cosmic Powers, Itty-Bitty Living Space 252
 16.1 Peak Season . . . . . . . . . . . . . . . . . . . . . . . . . 252
@@ -232,15 +143,9 @@ Adaptation 310
 18.3 Adaptable Enterprise Architecture . . . . . . . . . . . . 319
 18.4 Releases Shouldn’t Hurt . . . . . . . . . . . . . . . . . . 327
 18.5 Summary . . . . . . . . . . . . . . . . . . . . . . . . . . . 334
-
--- 8 of 350 --
-
 CONTENTS 9
 Bibliography 336
 Index 339
-
--- 9 of 350 --
-
 Preface
 You’ve worked hard on the project for more than year. Finally, it looks
 like all the features are actually complete, and most even have unit
@@ -269,9 +174,6 @@ and eliminated all possible bad events. Instead, you want to take action
 and prevent the ones you can but make sure that your system as a
 whole can recover from whatever unanticipated, severe traumas might
 befall it.
-
--- 10 of 350 --
-
 W HO S HOULD R EAD T HIS B OOK ? 11
 Second, realize that “Release 1.0” is not the end of the development
 project but the beginning of the system’s life on its own. The situation is somewhat like having a grown child leave its parents for the
@@ -303,20 +205,13 @@ might be commerce systems that generate revenue directly through
 sales or perhaps critical internal systems that employees use to do their
 jobs. If anybody has to go home for the day because your software stops
 working, then this book is for you.
-
----
-
-## [Sección 6] Part IV—Operations 251
-
--- 11 of 350 --
-
 H OW THE B OOK I S O RGANIZED 12
 How the Book Is Organized
 The book is divided into four parts, each introduced by a case study.
 
 ---
 
-## [Sección 7] Part 1 shows you how to keep your systems alive—maintaining system
+## Sección 5: Part 1 shows you how to keep your systems alive—maintaining system [Entropy: 0.25]
 
 uptime. Distributed systems, despite promises of reliability through
 redundancy, exhibit availability more like “two eights” rather than the
@@ -346,9 +241,6 @@ the only place you can learn certain lessons). Once the health, performance, and
 1. That is, 88% uptime instead of 99.999% uptime.
 2. Random guesses might occasionally yield improvements but are more likely to add
 entropy than remove it.
-
--- 12 of 350 --
-
 A BOUT THE C ASE S TUDIES 13
 on that information. And in fact, that’s not optional—you must take
 action in the light of new knowledge. Sometimes that’s easier said than
@@ -382,13 +274,7 @@ scribbling. Marie, Anne, Elizabeth, Laura, and Sarah, I thank you.
 
 ---
 
-## [Sección 8] Part 1 shows you how to keep your systems alive—maintaining system
-
--- 13 of 350 --
-
----
-
-## [Sección 9] Chapter 1
+## Sección 6: Chapter 1 [Entropy: 0.295]
 
 Introduction
 Software design as taught today is terribly incomplete. It talks only
@@ -414,9 +300,6 @@ miles late; that the tires must work just as well on the last sixteenth
 of an inch of tread as on the first; and that you will certainly, at some
 point, stomp on the brakes while you’re holding an Egg McMuffin in
 one hand and a cell phone in the other.
-
--- 14 of 350 --
-
 A IMING FOR THE R IGHT T ARGET 15
 1.1 Aiming for the Right Target
 Most software is designed for the development lab or the testers in the
@@ -451,13 +334,6 @@ your system. The earliest decisions you make can be the hardest ones
 to reverse later. These early decisions about the system boundary and
 decomposition into subsystems get crystallized into the team structure,
 funding allocation, program management structure, and even timesheet codes. Team assignments are the first draft of the architecture.
-
----
-
-## [Sección 10] Chapter 1
-
--- 15 of 350 --
-
 Q UALITY OF L IFE 16
 (See the sidebar on page 150.) It’s a terrible irony that these very early
 decisions are also the least informed. This is when your team is most
@@ -498,9 +374,6 @@ on early delivery and incremental improvements means software gets into producti
 quickly. Since production is the only place to learn how the software will respond to
 real-world stimuli, I advocate any approach that begins the learning process as soon as
 possible.
-
--- 16 of 350 --
-
 A M ILLION D OLLARS H ERE , A M ILLION D OLLARS T HERE 17
 On the other hand, maybe some real productivity gains have gone into
 attacking larger problems, rather than producing the same software
@@ -531,13 +404,6 @@ larger indirect losses through damage to the brand. For many of my
 clients, the direct cost of downtime exceeds $100,000 per hour.
 2. That phrase has always bothered me. As an engineer, I expect it to either be “24 by
 365” or be “24 by 7 by 52.”
-
----
-
-## [Sección 11] Chapter 1
-
--- 17 of 350 --
-
 P RAGMATIC A RCHITECTURE 18
 In one year the difference between 98% uptime and 99.99% uptime
 adds up to more than $17 million. 3 Imagine adding $17 million to the
@@ -579,9 +445,6 @@ shall be constructed with JSF!” “All that is, all that was, and all that
 4. This assumes $10,000 per release (labor plus cost of planned downtime), four releases
 per year, and a five-year horizon. Most companies would like to do more than four releases
 per year, but I’m being conservative.
-
--- 18 of 350 --
-
 P RAGMATIC A RCHITECTURE 19
 shall ever be lives in Oracle!” If you’ve ever gritted your teeth while coding something according to the “company standards” that would be ten
 times easier with some other technology, then you’ve been the victim
@@ -614,22 +477,9 @@ when the time comes to finally release it!
 
 ---
 
-## [Sección 12] Chapter 1
-
--- 19 of 350 --
-
----
-
-## [Sección 13] Part I
+## Sección 7: Chapter 2 [Entropy: 0.71]
 
 Stability
-
--- 20 of 350 --
-
----
-
-## [Sección 14] Chapter 2
-
 Case Study: The Exception That
 Grounded An Airline
 Have you ever noticed that the incidents that blow up into the biggest
@@ -655,9 +505,6 @@ applications generate data feeds for big travel-booking sites. IVR and
 self-service check-in are both used to put passengers on airplanes—
 1. As always, all names, places, and dates are changed to protect the confidentiality of
 people and companies involved.
-
--- 21 of 350 --
-
 T HE O UTAGE 22
 “butts in seats” in the vernacular. The development schedule had plans
 for new releases of the gate agents and call center applications to transition to CF for flight lookup, but those had not been rolled out yet,
@@ -688,13 +535,6 @@ to CF database 2. (See Figure 2.1, on the following page.) They used
 Veritas to migrate the active database from one host to the other. This
 allowed them to do some routine maintenance to the first host. Totally
 routine. They had done this procedure dozens of times in the past.
-
----
-
-## [Sección 15] Chapter 2
-
--- 22 of 350 --
-
 T HE O UTAGE 23
 CF App 1 CF App 2 CF App 3 CF App n
 Virtual IP Address
@@ -718,9 +558,6 @@ team worked with the operations center to execute the change. All went
 exactly as planned. They migrated the active database from database 1
 to database 2 and then updated database 1. After double-checking that
 database 1 was updated correctly, they migrated the database back
-
--- 23 of 350 --
-
 T HE O UTAGE 24
 to database 1 and applied the same change to database 2. The whole
 time, routine site monitoring showed that the applications were continuously available. No downtime was planned for this change, and none
@@ -754,9 +591,6 @@ symptoms aren’t specific enough. Sure, once in a while, some symptom
 points you directly at the fundamental problem, but not usually. Most
 of the time, you get symptoms—like a fever—that tell you nothing by
 themselves.
-
--- 24 of 350 --
-
 C ONSEQUENCES 25
 Hundreds of diseases can cause fevers. To distinguish between possible
 causes, you need more information from tests or observations.
@@ -795,13 +629,6 @@ to check everyone in using the old systems. When the kiosks go down,
 the airline has to call in agents who are off-shift. Some of them are over
 their 40 hours for the week, incurring union-contract overtime (time
 and a half). Even the off-shift agents are only human, though. By the
-
----
-
-## [Sección 16] Chapter 2
-
--- 25 of 350 --
-
 C ONSEQUENCES 26
 Check-in
 Kiosk
@@ -832,9 +659,6 @@ Kiosk
 East
 Cluster
 Figure 2.2: Common Dependencies
-
--- 26 of 350 --
-
 P OST - MOR TEM 27
 time the airline could get more staff on-site, they could deal only with
 the backlog. It took until nearly 3 p.m. to deal with the backlog.
@@ -869,9 +693,6 @@ Once I was airborne, I started reviewing the problem ticket and preliminary inci
 2. Not his real name.
 3. Literally “after this, therefore because of this.” It refers to the common logical fallacy
 of attributing causation based on close timing. Also known as “you touched it last.”
-
--- 27 of 350 --
-
 P OST - MOR TEM 28
 My agenda was simple: conduct a post-mortem investigation, and
 answer some questions:
@@ -910,13 +731,6 @@ the current configuration files to those from the nightly backup. The
 backup ran before the outage, so that would tell me whether any configurations were changed between the backup and my investigation. In
 other words, that would tell me whether someone was trying to cover
 up a mistake.
-
----
-
-## [Sección 17] Chapter 2
-
--- 28 of 350 --
-
 P OST - MOR TEM 29
 By the time I got to my hotel, my body said it was after midnight. All
 I wanted was a shower and a bed. What I got instead was a meeting
@@ -952,9 +766,6 @@ the forty threads allocated for handling requests from the individual
 kiosks, all forty were blocked inside SocketInputStream.socketRead0( ), a
 native method inside the internals of Java’s socket library. They were
 trying vainly to read a response that would never come.
-
--- 29 of 350 --
-
 P OST - MOR TEM 30
 Getting Thread Dumps
 Any Java application will dump the state of every thread in the
@@ -999,16 +810,10 @@ run(ThreadPool.java:655)
 ThreadPool$ControlRunnable)
 at java.lang.Thread.run(Thread.java:534)
 They do get verbose.
-
----
-
-## [Sección 18] Chapter 2
-
--- 30 of 350 --
-
 T HE S MOKING G UN 31
 Getting Thread Dumps (cont.)
-This fragment shows two threads, each named like http-0.0.0.08080-ProcessorN. Number 25 is in a runnable state, whereas
+This fragment shows two threads, each named like http-0.0.0.0-
+8080-ProcessorN. Number 25 is in a runnable state, whereas
 thread 24 is blocked in Object.wait( ). This trace clearly indicates
 that these are members of a thread pool. That some of the
 classes on the stacks are named ThreadPool$ControlRunnable ( )
@@ -1036,9 +841,6 @@ server. The EJB threads, on the other hand, were all completely in use
 processing calls to FlightSearch.lookupByCity( ). In fact, every single thread
 on every application server was blocked at exactly the same line of code:
 attempting to check out a database connection from a resource pool.
-
--- 31 of 350 --
-
 T HE S MOKING G UN 32
 It was circumstantial evidence, not a smoking gun, but considering the
 database failover before the outage, it seemed that I was on the right
@@ -1077,13 +879,6 @@ that the TCP connection is dead). That means every JDBC connection
 in the resource pool is an accident waiting to happen.
 4. My favorite tool for decompiling Java code is still JAD. It is fast and accurate, though
 it is beginning to creak and groan when used on Java 5 code.
-
----
-
-## [Sección 19] Chapter 2
-
--- 32 of 350 --
-
 T HE S MOKING G UN 33
 package com.example.cf.flightsearch;
 . . .
@@ -1122,9 +917,6 @@ throw SQLException, so your code has to handle it.
 In the previous offending code, if closing the statement throws an
 exception, then the connection does not get closed, resulting in a
 5. This might be a quirk peculiar to Oracle’s JDBC drivers. I’ve decompiled only Oracle’s.
-
--- 33 of 350 --
-
 A N O UNCE OF P REVENTION ? 34
 resource leak. After forty of these calls, the resource pool is exhausted,
 and all future calls will block at connectionPool.getConnection( ). That is
@@ -1154,11 +946,9 @@ They cannot—must not—allow bugs to cause a chain of failures. You’re
 going to look at design patterns that can prevent this type of problem
 from spreading.
 
--- 34 of 350 --
-
 ---
 
-## [Sección 20] Chapter 3
+## Sección 8: Chapter 3 [Entropy: 0.4]
 
 Introducing Stability
 New software emerges like a new college graduate, full of optimistic
@@ -1182,15 +972,13 @@ loses $100,000 per hour of downtime, and that’s during the off-season.
 Trading systems can lose that much in a single missed transaction!
 A common rule of thumb says that it costs from $25 to $50 for an
 online retailer to acquire a customer. With 5,000 unique visitors per
-
--- 35 of 350 --
-
 D EFINING S TABILITY 36
 hour, assume 10 percent of those would-be visitors walk away for good.
 That means $12,500 to $25,000 in wasted customer acquisition costs. 1
 Less tangible, but just as painful, is lost reputation. Tarnish to the
 brand might be less immediately obvious than lost customers, but try
-having your holiday-season operational problems reported in BusinessWeek. Millions of dollars in image advertising—touting online customer
+having your holiday-season operational problems reported in Business-
+Week. Millions of dollars in image advertising—touting online customer
 service—can be undone in a few hours by a batch of bad hard drives.
 A highly stable design
 usually costs the same
@@ -1222,9 +1010,6 @@ I use system when I mean a collection of hosts, applications, network
 segments, power supplies, and so on, that process transactions from
 end to end.
 1. http://retailindustry.about.com/library/weekly/aa122599a.htm
-
--- 36 of 350 --
-
 F AILURE M ODES 37
 A resilient system keeps processing transactions, even when there are
 transient impulses, persistent stresses, or component failures disrupting normal processing. This is what most people mean when they just
@@ -1261,13 +1046,6 @@ Sudden impulses and excessive strain both can trigger catastrophic
 failure. In either case, some component of the system will start to
 fail before everything else does. In Inviting Disaster [Chi01], James R.
 Chiles refers to these as cracks in the system. He draws an analogy
-
----
-
-## [Sección 21] Chapter 3
-
--- 37 of 350 --
-
 F AILURE M ODES 38
 Extending Your Life Span
 The major dangers to your system’s longevity are memory leaks
@@ -1303,9 +1081,6 @@ simulate the slow period during the middle of the night. That will
 catch connection pool and firewall timeouts.)
 ∗. Once you skip commercials and the opening and closing credits: about 21
 minutes.
-
--- 38 of 350 --
-
 C RACKS P ROPAGATE 39
 Extending Your Life Span (cont.)
 Sometimes the economics don’t justify setting up a complete
@@ -1336,13 +1111,6 @@ The airline’s Core Facilities project had not designed its failure modes.
 The crack started at the improper handling of the SQLException, but
 it could have been stopped at many other points. Let’s look at some
 examples, from low-level detail to high-level architecture.
-
----
-
-## [Sección 22] Chapter 3
-
--- 39 of 350 --
-
 C RACKS P ROPAGATE 40
 Because the pool was configured to block requesting threads when
 no resources were available, it eventually tied up all request-handling
@@ -1375,9 +1143,6 @@ that case, as part of handling the protocol itself. Even more radically, the cal
 sockets it creates.
 3. Unless it used java.net.URL and java.net.URLConnection, though. Until Java 5, it was
 impossible to set a timeout on HTTP calls made through the standard Java library.
-
--- 40 of 350 --
-
 C HAIN OF F AILURE 41
 in a tuplespace that matched the search criteria. CF would keep the
 tuplespace populated with flight records. The more tightly coupled the
@@ -1411,13 +1176,6 @@ and ask, “What are all the ways this can go wrong?” Think about the
 different types of impulse and stress that can be applied:
 • What if I can’t make the initial connection?
 • What if it takes ten minutes to make the connection?
-
----
-
-## [Sección 23] Chapter 3
-
--- 41 of 350 --
-
 P ATTERNS AND A NTIPATTERNS 42
 • What if I can make the connection and then it gets disconnected?
 • What if I can make the connection and I just can’t get any response
@@ -1450,9 +1208,6 @@ It should come as no surprise that these patterns and antipatterns
 interact with each other. The antipatterns have a tendency to reinforce each other. Like matching garlic, silver, and fire to their respective
 movie monsters, 4 each of the patterns alleviate specific problems.
 4. That would be vampires, werewolves, and Frankenstein’s monster.
-
--- 42 of 350 --
-
 P ATTERNS AND A NTIPATTERNS 43
 Integration Points
 Cascading Failures
@@ -1509,11 +1264,9 @@ Figure 3.1: Interaction of Patterns and Antipatterns
 Figure 3.1 maps the most important of these interactions. You’ll start
 now by looking at the common sources of failure: the antipatterns.
 
--- 43 of 350 --
-
 ---
 
-## [Sección 24] Chapter 4
+## Sección 9: Chapter 4 [Entropy: 1]
 
 Stability Antipatterns
 Once upon a time, application crashes were just about the most common type of bug, with operating system crashes a near second. I could
@@ -1539,9 +1292,6 @@ of Everyday Things [Nor88], Don Norman describes the disconnect
 between the users’ mental model and the implementation model that
 can occur when the implementation is invisible and the surface appearance is not obvious. He describes his experience with the two dials in
 his refrigerator that appear to directly control the temperature in the
-
--- 44 of 350 --
-
 C HAPTER 4. S TABILITY A NTIPATTERNS 45
 refrigeration section and the freezer section. Adjusting the dials under
 that mental model resulted in frozen milk and thawed meat, because
@@ -1580,13 +1330,6 @@ failure, because either nature or nurture will
 create bigger failures to wreck your systems.
 Assume the worst, because cracks happen.
 1. Inviting Disaster [Chi01], pages 37–63.
-
----
-
-## [Sección 25] Chapter 4
-
--- 45 of 350 --
-
 I NTEGRATION P OINTS 46
 4.1 Integration Points
 I haven’t seen a “pure-website” project since about 1996. If your
@@ -1619,9 +1362,6 @@ to Ruby has clear ways to indicate a connection failure—either a -1
 return value in C or an exception in Java, C#, and Ruby. Because the
 API makes it clear that connections don’t always work, programmers
 deal with that case.
-
--- 46 of 350 --
-
 I NTEGRATION P OINTS 47
 How Many Feeds?
 I was helping launch a replatform/rearchitecture project for a
@@ -1650,13 +1390,6 @@ night at 3 a.m. for the latest crash or crisis. We kept documenting the spots wh
 to the maintenance team for correction. I never kept a tally, but
 I’m sure that every single synchronous integration point caused
 at least one outage.
-
----
-
-## [Sección 26] Chapter 4
-
--- 47 of 350 --
-
 I NTEGRATION P OINTS 48
 Remote Server Local Server
 Calling
@@ -1689,9 +1422,6 @@ to accept the connection. The caller gets the SYN/ACK and sends back
 2. Of course, a “packet” is an abstraction, too. On the wire, it’s just electrons. Between
 electrons and a TCP connection, there are many layers of abstraction. Fortunately, we
 get to choose whichever level of abstraction is useful at any given point in time.
-
--- 48 of 350 --
-
 I NTEGRATION P OINTS 49
 Remote Server Local Server
 Remote
@@ -1725,9 +1455,6 @@ case, be prepared for an IOException.
 3. TCP also defines the “simultaneous open” handshake, in which both machines send
 SYN packets to each other before a SYN/ACK. This is relatively rare in systems that are
 based on client/server interactions.
-
--- 49 of 350 --
-
 I NTEGRATION P OINTS 50
 Networks failures can hit you in two ways: fast or slow. Fast network
 failures cause immediate exceptions in the calling code. “Connection
@@ -1760,13 +1487,6 @@ coming from the database to the application servers. Yet, monitoring
 showed that the database was alive and healthy. There were no blocking
 locks, the run queue was at zero, and the I/O rates were trivial.
 4. Ethereal has since been renamed Wireshark.
-
----
-
-## [Sección 27] Chapter 4
-
--- 50 of 350 --
-
 I NTEGRATION P OINTS 51
 Packet Capture
 Abstractions provide great conciseness of expression. We can
@@ -1801,9 +1521,6 @@ packets. That is a burden that should not be on the production
 servers. For these reasons, it is best to capture packets noninteractively using tcpdump and then move the capture file to a
 nonproduction environment for analysis.
 ∗. http://www.wireshark.org
-
--- 51 of 350 --
-
 I NTEGRATION P OINTS 52
 Packet Capture (cont.)
 The screenshot below shows Ethereal analyzing a capture from
@@ -1824,9 +1541,6 @@ the entire packet appear in the third pane.
 I strongly recommend keeping a copy of The TCP/IP
 Guide [Koz05] or TCP/IP Illustrated [Ste93] open beside you for
 this type of activity!
-
--- 52 of 350 --
-
 I NTEGRATION P OINTS 53
 By this time, we had to restart the application servers. Our first priority
 is restoring service. We do data collection when we can, but not at the
@@ -1868,13 +1582,6 @@ all). If the connection is allowed, then the firewall makes an entry in its
 own internal table that says something like “192.0.2.98:32770 is connected to 192.168.1.199:80.” Then all future packets, in either direction, that match the endpoints of the connection are routed between
 the firewall’s networks.
 5. Assuming you set suitably perverse timeouts in the kernel.
-
----
-
-## [Sección 28] Chapter 4
-
--- 53 of 350 --
-
 I NTEGRATION P OINTS 54
 Remote
 Server
@@ -1918,9 +1625,6 @@ floor, without so much as an “ICMP destination unreachable” message.
 (That could let bad guys probe for active connections by spoofing source
 addresses.) My Linux system, running on a 2.6 series kernel, has its
 tcp_retries2 set to the default value of 15, which results in a twenty-
-
--- 54 of 350 --
-
 I NTEGRATION P OINTS 55
 minute timeout before the TCP/IP stack informs the socket library that
 the connection is broken. The HP-UX servers we were using at the time
@@ -1957,13 +1661,6 @@ the client at some periodic interval. If the client responds, then the
 database knows it is still alive. If the client fails to respond after a few
 retries, the database server assumes the client has crashed and frees
 up all the resources held by that connection.
-
----
-
-## [Sección 29] Chapter 4
-
--- 55 of 350 --
-
 I NTEGRATION P OINTS 56
 We weren’t that worried about the client crashing, but the ping packet
 itself would be enough to reset the firewall’s “last packet” time for the
@@ -2005,11 +1702,9 @@ subclass of URLConnection that does the real work. We have to downcast
 6. Technically, SOAP and the WS-I protocols allow for other message transports, but, in
 practice, only TIBCO and IBM MQ devotees are using them. More people should be using
 asynchronous message transport.
-
--- 56 of 350 --
-
 I NTEGRATION P OINTS 57
-the returned URLConnection to that specific class to call the setRequestProperty( ) on line 4. 7 Finally, in line 7, the HttpURLConnection actually
+the returned URLConnection to that specific class to call the setRequest-
+Property( ) on line 4. 7 Finally, in line 7, the HttpURLConnection actually
 opens a socket to the remote host, sends the HTTP request, waits for
 and parses the HTTP response, and returns an InputStream on the bytes
 of the response body.
@@ -2041,13 +1736,6 @@ my own version for temporary use while waiting for the patched version
 from the vendor.
 7. We have to lie about our user agent, or else Google will return a 403 “Forbidden”
 response!
-
----
-
-## [Sección 30] Chapter 4
-
--- 57 of 350 --
-
 I NTEGRATION P OINTS 58
 The prime stability killer with vendor API libraries is all about blocking.
 Whether it’s an internal resource pool, socket read calls, HTTP connections, or just plain old Java serialization, vendor API libraries are
@@ -2082,9 +1770,6 @@ blocked threads can cause threads calling send( ) to block. Odds are that
 means request-handling threads will be tied up. As always, once all the
 request-handling threads are blocked, your application might as well
 be down.
-
--- 58 of 350 --
-
 I NTEGRATION P OINTS 59
 Countering Integration Point Problems
 A stand-alone system that doesn’t integrate with anything is rare, not
@@ -2123,13 +1808,6 @@ Know when to open up abstractions
 Debugging integration point failures usually requires peeling back
 a layer of abstraction. Failures are often difficult to debug at the
 application layer, because most of them violate the high-level protocols. Packet sniffers and other network diagnostics can help.
-
----
-
-## [Sección 31] Chapter 4
-
--- 59 of 350 --
-
 I NTEGRATION P OINTS 60
 Failures propagate quickly
 Failure in a remote system quickly becomes your problem, usually
@@ -2138,9 +1816,6 @@ Apply patterns to avert Integration Points problems
 Defensive programming via Circuit Breaker, Timeouts, Decoupling
 Middleware, and Handshaking will all help you avoid the dangers
 of Integration Points.
-
--- 60 of 350 --
-
 C HAIN R EACTIONS 61
 4.2 Chain Reactions
 In Section 8.1, Defining Capacity, on page 161, I’ll talk a lot about the
@@ -2188,9 +1863,6 @@ A chain reaction occurs when there is some defect in an application—
 usually a resource leak or a load-related crash. We’re already talking
 about a homogeneous layer, so that defect is going to be in each of the
 servers. That means the only way you can eliminate the chain reaction
-
--- 61 of 350 --
-
 C HAIN R EACTIONS 62
 Load Balancer /
 Cluster Manager
@@ -2234,13 +1906,6 @@ Hunt for resource leaks
 Most of the time, a chain reaction happens when your application has a memory leak. As one server runs out of memory and
 goes down, the other servers pick up the dead one’s burden. The
 increased traffic means they leak memory faster.
-
----
-
-## [Sección 32] Chapter 4
-
--- 62 of 350 --
-
 C HAIN R EACTIONS 63
 Searching...
 I was dealing with a retailer’s primary online brand. It has a
@@ -2273,9 +1938,6 @@ Until we got an effective patch from the vendor (which took
 months), we had to follow a daily regime of restarts that bracketed the peak hours: 11 a.m., 4 p.m., and 9 p.m.
 ∗. See Section 11.3, Virtual IP Addresses, on page 223 for more about load
 balancing and virtual IP addresses.
-
--- 63 of 350 --
-
 C HAIN R EACTIONS 64
 Load Balancer /
 Cluster Manager
@@ -2306,9 +1968,6 @@ Partitioning servers, with Bulkheads, can prevent Chain Reactions
 from taking out the entire service—though they won’t help the
 callers of whichever partition does go down. Use Circuit Breaker
 on the calling side for that.
-
--- 64 of 350 --
-
 C ASCADING F AILURES 65
 4.3 Cascading Failures
 The standard system architecture for enterprise systems, including
@@ -2344,13 +2003,6 @@ Cascading failures often result from resource pools that get drained
 because of a failure in a lower layer. Integration Points without Timeouts is a surefire way to create Cascading Failures.
 Just as integration points are the number-one source of cracks, cascading failures are the number-one crack accelerator. Preventing cascading failures is the very key to resilience. The most effective patterns
 to combat cascading failures are Circuit Breaker and Timeouts.
-
----
-
-## [Sección 33] Chapter 4
-
--- 65 of 350 --
-
 C ASCADING F AILURES 66
 .com Web
 Servers
@@ -2378,9 +2030,6 @@ return. The threads that get the connections block forever; all
 other threads get blocked waiting for connections. Safe resource
 pools always limit the time a thread can wait to check out a
 resource.
-
--- 66 of 350 --
-
 C ASCADING F AILURES 67
 Hammer Time
 The layer-jumping mechanism often takes the form of blocked
@@ -2389,7 +2038,7 @@ thread. In one case, the calling layer would get a quick error,
 but, because of a historical precedent, it would assume that
 the error was just an irreproducible, transient error in the lower
 layer. At some point, the lower layer was suffering from a race
-condition that would make it RealtimeHub out an error once in a while
+condition that would make it kick out an error once in a while
 for no good reason. The upstream developer decided to retry
 the call when that happened. Unfortunately, the lower layer
 didn’t provide enough detail to distinguish between the transient error and a more serious one. As a result, once the lower
@@ -2406,9 +2055,6 @@ A cascading failure happens after something else has already gone
 wrong. Circuit Breaker protects your system by avoiding calls out
 to the troubled integration point. Using Timeouts ensures that you
 can come back from a call out to the troubled one.
-
--- 67 of 350 --
-
 U SERS 68
 4.4 Users
 Users are a terrible thing. 8 Systems would be infinitely more stable
@@ -2438,13 +2084,6 @@ First and foremost, in web systems, every user has a session. The session stays 
 request from that user. Every additional user means more memory.
 8. Obviously, I’m being somewhat tongue-in-cheek. Although users do present numerous risks to stability, they are also the reason our systems exist.
 9. If traffic isn’t growing, then you have other problems to worry about!
-
----
-
-## [Sección 34] Chapter 4
-
--- 68 of 350 --
-
 U SERS 69
 First
 Request
@@ -2481,9 +2120,6 @@ uselessly taking up memory and putting your system at risk.
 the inside than on the outside. Things you put into it were available but weighed almost
 nothing. It was a convenient explanation for characters that could keep two broadswords,
 a mace, full-plate armor, and half a million gold pieces with them all the time.
-
--- 69 of 350 --
-
 U SERS 70
 Expensive
 Object
@@ -2517,9 +2153,6 @@ The actual decision about when to reclaim softly reachable objects, how
 many of them to reclaim, and how many to spare is totally up to the
 garbage collector. The only guarantee is this: all softly reachable objects
 will be reclaimed before an OutOfMemoryError is thrown.
-
--- 70 of 350 --
-
 U SERS 71
 Expensive
 Object
@@ -2549,13 +2182,6 @@ Carefully, on page 208 for important cautions about caching). Serving
 their pages usually does not involve external integration points. You
 will likely do some personalization, maybe some clickstream tracking,
 and that’s about it.
-
----
-
-## [Sección 35] Chapter 4
-
--- 71 of 350 --
-
 U SERS 72
 SoftReference payload null
 Figure 4.9: SoftReference After Payload Is Garbage Collected
@@ -2585,9 +2211,6 @@ Unwanted Users
 We would all sleep easier if the only users to worry about were the
 ones handing us their credit card numbers. In keeping with the general theme of “weird, bad things happen in the real world,” there are
 definitely weird, bad users out there.
-
--- 72 of 350 --
-
 U SERS 73
 Total Conversion
 If a little is good, then a lot must be better, right? In other words,
@@ -2624,13 +2247,6 @@ response back to the web server, which funnels it into the bit bucket.
 In the meantime, the 100 bytes of the HTTP request causes the application server to create a session (which may consume several kilobytes of
 memory in the application server). Even a desktop machine on a broadband connection can generate hundreds of thousands of sessions on
 the application servers.
-
----
-
-## [Sección 36] Chapter 4
-
--- 73 of 350 --
-
 U SERS 74
 In extreme cases, such as the flood of sessions originating from the
 Navy base, you can run into problems worse than just heavy memory
@@ -2665,9 +2281,6 @@ Worse yet, these rapid-fire screen scrapers do not honor session cookies, so if 
 page request will create a new session. Like a flash mob, pretty soon
 the capacity problem will turn into a stability problem. The battalion of
 price checkers could actually knock down the store.
-
--- 74 of 350 --
-
 U SERS 75
 Session Tracking
 HTTP is a singularly unlikely protocol. If you were tasked with creating a protocol to facilitate arts, sciences, commerce, free
@@ -2703,13 +2316,6 @@ request by which the web browser can indicate it is about to
 start sending requests, and there is no “session finished” request.
 (The web server could not trust that such an indicator would be
 sent anyway.)
-
----
-
-## [Sección 37] Chapter 4
-
--- 75 of 350 --
-
 U SERS 76
 Session Tracking (cont.)
 Sessions are all about caching data in memory. Early CGI applications had no need for a session, since they would fire up a
@@ -2746,9 +2352,6 @@ best cases, these agents get redirected to a static copy of the product
 catalog, or the site generates pages without prices. (The idea is to be
 searchable by the big search engines but not reveal pricing. That way,
 11. See http://www.w3.org/TR/html4/appendix/notes.html#h-B.4.1.1.
-
--- 76 of 350 --
-
 U SERS 77
 you can personalize the prices, run trial offers, partition the country or
 the audience to conduct market tests, and so on.) In the worst case, the
@@ -2790,13 +2393,6 @@ Akamai, this is a service it can provide for you. Otherwise, you can do
 it at the outer firewalls. Some of the leeches are honest. Their requests
 come from legitimate IP addresses with real reverse DNS entries. ARIN
 (http://www.arin.net) is your friend here. Blocking the honest ones is easy.
-
----
-
-## [Sección 38] Chapter 4
-
--- 77 of 350 --
-
 U SERS 78
 Others stealthily mask their source addresses or make requests from
 dozens of different addresses. Some of these even go so far as to change
@@ -2837,9 +2433,6 @@ the odds are low that you will be targeted by a true cracker, your systems are p
 This book is not about information security or online warfare. A robust
 approach to defense and deterrence is beyond the scope of this book.
 I will restrict my discussion to the intersection of security and stability as it pertains to system and software architecture. The primary
-
--- 78 of 350 --
-
 U SERS 79
 risk to stability is the now-classic distributed denial-of-service (DDoS)
 attack. The attacker causes many computers, widely distributed across
@@ -2870,13 +2463,6 @@ the botnet master issues commands. Some script kiddies have been found to contro
 botnets with tens of thousands of nodes, and there are rumors of nets with a million
 compromised nodes. Most of these are personal Windows machines running outdated
 operating systems.
-
----
-
-## [Sección 39] Chapter 4
-
--- 79 of 350 --
-
 U SERS 80
 Users do weird, random things
 Users in the real world do things that you won’t predict (or sometimes understand). If there’s a weak spot in your application,
@@ -2895,9 +2481,6 @@ Slashdot editors giggling as they point toward your site, saying,
 “Release the legions!” Large mobs can trigger hangs, deadlocks,
 and obscure race conditions. Run special stress tests to hammer
 deep links or hot URLs.
-
--- 80 of 350 --
-
 B LOCKED T HREADS 81
 4.5 Blocked Threads
 Interpreted languages such as Java and Ruby almost never really
@@ -2930,9 +2513,6 @@ The problem has four parts:
 test exhaustively.
 13. The only book Java programmers actually need, however, is the excellent Concurrent
 Programming in Java [Lea00], by Doug Lea.
-
--- 81 of 350 --
-
 B LOCKED T HREADS 82
 The System Isn’t Down! It’s Just in a Funk!
 I’ve probably tried 100 times to explain the distinction between
@@ -2967,13 +2547,6 @@ download a well-crafted, proven library. 14
 then shame on you. If you are not using Java 5, then download the util.concurrent
 library from http://gee.cs.oswego.edu/dl/classes/EDU/oswego/cs/dl/util/concurrent/intro.html. It’s
 the same library before adoption into the JCP.
-
----
-
-## [Sección 40] Chapter 4
-
--- 82 of 350 --
-
 B LOCKED T HREADS 83
 Incidentally, this is another reason why I oppose anyone rolling their
 own connection pool class. It is always more difficult than you think to
@@ -3010,9 +2583,6 @@ You cannot transparently replace an instance of the superclass with
 the synchronized subclass. This might seem like nit-picking, but it can
 be vitally important.
 The basic implementation of the GlobalObjectCache interface is a relatively straightforward object registry:
-
--- 83 of 350 --
-
 B LOCKED T HREADS 84
 Synchronization and the Liskov Substitution Principle
 In object theory, the Liskov Substitution principle (see Family Values: A Behavioral Notion of Subtyping [LW93]) states that any
@@ -3045,13 +2615,6 @@ lock that is meant to avoid synchronizing the whole method. Unfortunately, it ju
 work. See http://www.cs.umd.edu/~pugh/java/memoryModel/DoubleCheckedLocking.html for a
 complete rundown of why it doesn’t work and why all the attempts to fix the pattern also
 don’t work.
-
----
-
-## [Sección 41] Chapter 4
-
--- 84 of 350 --
-
 B LOCKED T HREADS 85
 Part of the system needed to check the in-store availability of items
 by making expensive inventory availability queries to a remote system.
@@ -3093,9 +2656,6 @@ to become a cascading failure. Ultimately, this combination of forces
 brought down the entire site.
 Obviously, the business sponsors would laugh if you asked them,
 “Should the site crash if it can’t check availability for in-store pickup?”
-
--- 85 of 350 --
-
 B LOCKED T HREADS 86
 If you asked the architects or developers, “Will the site crash if it can’t
 check availability?” they would assert that it would not. Even the developer of RemoteAvailabilityCache would not expect the site to hang if
@@ -3132,13 +2692,6 @@ not complete in time, the request-handling thread abandons the call,
 even though the worker thread might eventually complete. Once you’re
 in this territory, beware. Here there be dragons. You’ll need a good command of concurrent programming, thread pooling, and your language’s
 specific threading model to pull this off, and it will still be a kludge.
-
----
-
-## [Sección 42] Chapter 4
-
--- 86 of 350 --
-
 B LOCKED T HREADS 87
 Before you go down this path, spend some time beating up your vendor
 for a better client library.
@@ -3170,9 +2723,6 @@ All manner of problems can lurk in the shadows of third-party
 code. Be very wary. Test it yourself. Whenever possible, acquire
 and investigate the code for surprises and failure modes. 16
 16. You might also prefer open source libraries to closed source for this very reason. I do.
-
--- 87 of 350 --
-
 A TTACKS OF S ELF -D ENIAL 88
 4.6 Attacks of Self-Denial
 Self-denial is only occasionally a virtue in people and never in systems.
@@ -3207,13 +2757,6 @@ special offer, probably intended as a loss leader or traffic generator,
 generated more bad publicity than it did revenue. I can only hope Amazon got some good information about weak spots in its architecture—
 though finding out about them the day before Black Friday hardly
 seems worth it.
-
----
-
-## [Sección 43] Chapter 4
-
--- 88 of 350 --
-
 A TTACKS OF S ELF -D ENIAL 89
 Everyone who has ever worked a retail site has a story like this. Sometimes it’s the coupon code that gets reused a thousand times or the
 pricing error that makes one SKU get ordered as many times as all
@@ -3257,9 +2800,6 @@ system. (Think promotional pricing or lingerie fashion show.) In this
 case, even if the dedicated portion melts down, at least the rest of the
 system’s regular behavior is available.
 17. ATG Commerce Suite, a competing J2EE application server and commerce framework. See http://www.atg.com.
-
--- 89 of 350 --
-
 A TTACKS OF S ELF -D ENIAL 90
 In this case, when the dedicated servers go dark, be sure to apply Fail
 Fast. That way, at least other front-end resources, such as web server
@@ -3290,13 +2830,6 @@ deal can be redeemed, you’ll still get crushed with people hoping
 beyond hope that they, too, can get an Xbox 360 for $99. 18
 18. If you’re reading this after the Xbox 360 gets down to $99 dollars, then substitute the
 next “next-gen” game console.
-
----
-
-## [Sección 44] Chapter 4
-
--- 90 of 350 --
-
 S CALING E FFECTS 91
 Dev Server
 App 1
@@ -3327,9 +2860,6 @@ be hard to see where scaling effects will bite you.
 Point-to-Point Communications
 One of the worst places that scaling effects will bite you is with pointto-point communication. Point-to-point communication between application servers probably works just fine when there are only one or two
 instances communicating, as in Figure 4.10.
-
--- 91 of 350 --
-
 S CALING E FFECTS 92
 Prod Server 1
 App 1
@@ -3361,9 +2891,6 @@ point-to-point communication with the following:
 • Publish/subscribe messaging
 19. As long as the communication is written so it won’t block when the other server dies!
 (See Antipattern 4.5, Blocked Threads, on page 81.)
-
--- 92 of 350 --
-
 S CALING E FFECTS 93
 App 1 App 2
 Common
@@ -3392,13 +2919,6 @@ When the shared resource is redundant and nonexclusive—meaning it
 can service several of its consumers at once—then there is no problem.
 If it saturates, you can add more, thus scaling the bottleneck.
 Too often, though, the shared resource will be allocated for exclusive
-
----
-
-## [Sección 45] Chapter 4
-
--- 93 of 350 --
-
 S CALING E FFECTS 94
 “Shared Nothing”
 The most scalable architecture is the shared-nothing architecture. Each server operates independently, without need for
@@ -3427,9 +2947,6 @@ listen queue, you get failed transactions. At that point, nearly anything
 can happen. It depends on what function the caller needs the shared
 resource to provide. Particularly in the case of cache managers (providing coherency for distributed caches), failed transactions lead to stale
 data or, worse, loss of data integrity.
-
--- 94 of 350 --
-
 S CALING E FFECTS 95
 Remember This
 Examine production versus QA environments to spot Scaling
@@ -3449,9 +2966,6 @@ Shared resources can be a bottleneck, a capacity constraint, and
 a threat to stability. If your system must use some sort of shared
 resource, stress test it heavily. Also, be sure its clients will keep
 working if the shared resource gets slow or locks up.
-
--- 95 of 350 --
-
 U NBALANCED C APACITIES 96
 4.8 Unbalanced Capacities
 The trade press is bursting with stories about utility computing. The
@@ -3486,13 +3000,6 @@ disaster to simply a mitigated disaster.
 20. Increasingly, the “hardware” may be a virtual machine. Nevertheless, in practice,
 adding, removing, or migrating virtual machines in response to changes in demand happens much slower than you might think. The most aggressive operations team I know of
 rebalances virtual machines only daily—and they expect that to slow down because virtual machine migration is being brought under a more rigorous change control process.
-
----
-
-## [Sección 46] Chapter 4
-
--- 96 of 350 --
-
 U NBALANCED C APACITIES 97
 Front End
 20 Hosts
@@ -3528,9 +3035,6 @@ rely on statistics and numerous assumptions, which is a notoriously
 easy-to-manipulate combination. But, as long as the scheduling system can service enough simultaneous requests to meet that demand
 prediction, then you’d think it should be sufficient.
 Not necessarily.
-
--- 97 of 350 --
-
 U NBALANCED C APACITIES 98
 Suppose marketing executes an attack of self-denial by offering the
 free installation of any big-ticket appliance for one day only. Suddenly,
@@ -3565,13 +3069,6 @@ harness helps you verify that your front-end system degrades gracefully.
 On the flip side, if you provide the back-end system, you probably
 expect a “normal” workload. That is, you reasonably expect that today’s
 distribution of demand and transaction types will closely match yesterday’s workload. If all else remains unchanged, then that is a reasonable
-
----
-
-## [Sección 47] Chapter 4
-
--- 98 of 350 --
-
 U NBALANCED C APACITIES 99
 assumption. Many factors can change the workload coming at your
 system, though: marketing campaigns; publicity; new code releases in
@@ -3606,9 +3103,6 @@ Stress both sides of the interface
 If you provide the back-end system, see what happens if it suddenly gets ten times the highest ever demand, hitting the most
 expensive transaction. Does it fail completely? Does it slow down
 and recover? If you provide the front-end system, see what happens if calls to the back end stop responding or get very slow.
-
--- 99 of 350 --
-
 S LOW R ESPONSES 100
 4.9 Slow Responses
 As you saw in Section 4.1, Socket-Based Protocols, on page 46, generating a slow response is worse than refusing a connection or returning
@@ -3630,7 +3124,7 @@ If you give your system the ability to monitor its own performance (see
 
 ---
 
-## [Sección 48] Chapter 17, Transparency, on page 265), then it can also tell when
+## Sección 10: Chapter 17, Transparency, on page 265), then it can also tell when [Entropy: 0.529]
 
 it isn’t meeting its service-level agreement. Suppose that your system
 is a service provider that is required to respond within one hundred
@@ -3643,9 +3137,6 @@ course, any such refusal to provide service must be well-documented
 and expected by the callers. (Since the developers of that system will
 surely have read this book, they will already be prepared for failures,
 and their system will handle them gracefully.)
-
--- 100 of 350 --
-
 S LOW R ESPONSES 101
 Remember This
 Slow Responses triggers Cascading Failures
@@ -3668,9 +3159,6 @@ cause excessive effort in the garbage collector, resulting in slow
 response. Inefficient low-level protocols can cause network stalls,
 also resulting in slow response.
 21. See Chapter 17, Transparency, on page 265.
-
--- 101 of 350 --
-
 SLA I NVERSION 102
 4.10 SLA Inversion
 A service-level agreement (SLA) is a contractual agreement about how
@@ -3701,13 +3189,6 @@ of the connection. Figure 4.15, on page 104 shows the systems that
 Frammitz depends upon, and their respective SLAs.
 22. See http://www.itil.co.uk/.
 23. See http://www.itsmf.com/.
-
----
-
-## [Sección 49] Chapter 17, Transparency, on page 265), then it can also tell when
-
--- 102 of 350 --
-
 SLA I NVERSION 103
 Web 1 Web 2
 Load
@@ -3729,9 +3210,6 @@ naively, the probability of failure in Project Frammitz is the joint probability
 in a dependency is enough to make Frammitz fail; therefore, P(frammitz
 up) = (1 - P(internal failure)) * P(partner 1 up) * P(inventory up) ... ]. If
 Frammitz requires five external services that each have a 99.9% availability, then the best Frammitz can possibly do is 99.5%.
-
--- 103 of 350 --
-
 SLA I NVERSION 104
 Frammitz
 99.99%
@@ -3777,9 +3255,6 @@ remote system. Degrade gracefully. Decoupling middleware is an excellent approac
 service, it might not be an option. At the least, employ circuit breakers to protect your application from each of the allies/potential enemies. Second, be careful when crafting your service-level agreements.
 Do not simply state “99.99% availability.” (See Chapter 13, Availability,
 on page 229.)
-
--- 104 of 350 --
-
 SLA I NVERSION 105
 Instead, reorient the discussion around the availability of specific functions or features in the system. Features that do not depend on any
 external parties can have your maximum SLA. Features that require
@@ -3800,9 +3275,6 @@ Be sure you can maintain service even when your dependencies
 go down. If you fail whenever they do, then it’s a mathematical
 certainty that your availability will always be less than theirs.
 24. Entropy always increases.
-
--- 105 of 350 --
-
 U NBOUNDED R ESUL T S ETS 106
 4.11 Unbounded Result Sets
 Design with skepticism, and you will achieve resilience. Ask, “What can
@@ -3839,13 +3311,6 @@ denial-of-service attacks. Our DBA reported that the database was
 healthy but under heavy load. That made sense, because at start-up,
 each instance would issue hundreds of queries to warm up its caches
 before accepting requests. Some of the instances would crash before
-
----
-
-## [Sección 50] Chapter 17, Transparency, on page 265), then it can also tell when
-
--- 106 of 350 --
-
 U NBOUNDED R ESUL T S ETS 107
 they started accepting requests, which told me it was not related to
 incoming requests. The high CPU condition looked like garbage collection to me, so I told the team I would start looking for memory problems.
@@ -3882,9 +3347,6 @@ Tuesday.
 25. For non-Java programmers, native code just means fully compiled instructions for
 the host processor. Typically, this is C or C++ code in dynamically linked libraries. Native
 code is notorious as a source of crashes under stress.
-
--- 107 of 350 --
-
 U NBOUNDED R ESUL T S ETS 108
 We did eventually find out why there were more than ten million messages in that table, but that’s a different story.
 This failure mode can occur when querying databases, access distributed objects, or web services. It can also occur via AJAX requests to
@@ -3921,13 +3383,6 @@ for the full results but break out of the processing loop after reaching
 the maximum number of rows. Although this does provide some added
 stability on the application server, it does so at the expense of wasted
 database capacity.
-
----
-
-## [Sección 51] Chapter 17, Transparency, on page 265), then it can also tell when
-
--- 108 of 350 --
-
 U NBOUNDED R ESUL T S ETS 109
 Unbounded result sets are a common cause of slow responses. They
 can result from violation of steady state.
@@ -3953,11 +3408,9 @@ Web service calls, RMI, DCOM, XML-RPC: all are vulnerable to
 returning huge collections of objects, thereby consuming too
 much memory.
 
--- 109 of 350 --
-
 ---
 
-## [Sección 52] Chapter 5
+## Sección 11: Chapter 5 [Entropy: 0.75]
 
 Stability Patterns
 Now that you’ve seen some antipatterns to avoid, you’ll look at the flip
@@ -3971,9 +3424,6 @@ of these patterns is superior to one with less of them. “Count of patterns app
 develop a recovery-oriented mind-set. At the risk of sounding like a
 broken record, I’ll say it again: expect failures. Apply these patterns
 wisely to reduce the damage done by an individual failure.
-
--- 110 of 350 --
-
 U SE T IMEOUTS 111
 5.1 Use Timeouts
 In the early days, networking issues affected only programmers working on low-level software: operating systems, network protocols, remote
@@ -4011,9 +3461,6 @@ Timeouts can also be relevant within a single application. Any resource
 pool can be exhausted. Conventional usage dictates that the calling
 thread should be blocked until one of the resources is checked in. (See
 Antipattern 4.5, Blocked Threads, on page 81.)
-
--- 111 of 350 --
-
 U SE T IMEOUTS 112
 Joe Asks. . .
 Is All This Clutter Really Necessary?
@@ -4041,13 +3488,6 @@ three points in that interaction could hang indefinitely. Instead of coding that
 create a QueryObject (see Patterns of Enterprise Application Architecture [Fow03]) to represent the part of the interaction that changes.
 1. Added in Java 5. In earlier versions of Java, you can download the “util-concurrent”
 library. Substitute package names appropriately.
-
----
-
-## [Sección 53] Chapter 5
-
--- 112 of 350 --
-
 U SE T IMEOUTS 113
 Use a generic Gateway to provide the template for connection handling,
 error handling, query execution, and result processing. (See Spring’s
@@ -4080,9 +3520,6 @@ fast is fast enough? It depends on your application and your users. For
 a website using service-oriented architectures, “fast enough” is probably anything less than 250 milliseconds. Beyond that, you will start to
 lose capacity and customers.
 2. See http://static.springframework.org/spring/docs/1.2.x/api/org/springframework/jdbc/core/JdbcTemplate.html.
-
--- 113 of 350 --
-
 U SE T IMEOUTS 114
 Timeouts have natural synergy with circuit breakers. A circuit breaker
 can tabulate timeouts, tripping to the “off” state if too many occur.
@@ -4110,13 +3547,6 @@ Immediate retries are liable to hit the same problem and result in
 another timeout. That just makes the user wait even longer for his
 error message. Most of the time, you should queue the operation
 and retry it later.
-
----
-
-## [Sección 54] Chapter 5
-
--- 114 of 350 --
-
 C IRCUIT B REAKER 115
 5.2 Circuit Breaker
 Not too long ago, when electrical wiring was first being built into
@@ -4151,9 +3581,6 @@ usual. These can be calls out to another system, or they can be internal
 operations that are subject to timeout or other execution failure. If the
 call succeeds, nothing extraordinary happens. If it fails, however, the
 circuit breaker makes a note of the failure. Once the number of failures (or frequency of failures, in more sophisticated cases) exceeds a
-
--- 115 of 350 --
-
 C IRCUIT B REAKER 116
 Closed
 on call / pass through
@@ -4189,13 +3616,6 @@ good feedback to the user, it is useful to throw a different exception
 when the circuit is open. This allows the calling code to handle this
 type of exception differently.
 3. The Leaky Bucket pattern from Pattern Languages of Program Design 2 [VCK96] provides a wonderful implementation for this type of counter.
-
----
-
-## [Sección 55] Chapter 5
-
--- 116 of 350 --
-
 C IRCUIT B REAKER 117
 Depending on the details of the system, the circuit breaker may track
 different types of failures separately. For example, you may choose to
@@ -4231,18 +3651,12 @@ Use together with Timeouts
 Circuit Breaker is good at avoiding calls when Integration Points
 has a problem. The Timeouts pattern indicates that there is a
 problem in Integration Points.
-
--- 117 of 350 --
-
 C IRCUIT B REAKER 118
 Expose, track, and report state changes
 Popping a Circuit Breaker always indicates there is a serious
 problem. It should be visible to operations. 4 It should be reported,
 recorded, trended, and correlated.
 4. See Chapter 17, Transparency, on page 265.
-
--- 118 of 350 --
-
 B ULKHEADS 119
 5.3 Bulkheads
 In a ship, bulkheads are metal partitions that can be sealed to divide the
@@ -4279,13 +3693,6 @@ coordination with both Foo and Bar, and it may be difficult to find a
 window that works for both clients.
 Assuming both Foo and Bar are critical systems with strict SLAs, it’d
 be safer to partition Baz, as shown in Figure 5.3, on the following page.
-
----
-
-## [Sección 56] Chapter 5
-
--- 119 of 350 --
-
 B ULKHEADS 120
 Foo Bar
 Baz
@@ -4297,9 +3704,6 @@ Pool 1
 Baz
 Pool 2
 Figure 5.3: Partitioned System
-
--- 120 of 350 --
-
 B ULKHEADS 121
 Bulkheads vs. Capacity
 With a pool of servers for each client, Baz requires much more
@@ -4331,9 +3735,6 @@ against the architecture of the systems. The goal is to identify the natural bou
 technically feasible and financially beneficial. The boundaries of this
 partitioning may be aligned with the callers, with functionality, or with
 the topology of the system.
-
--- 121 of 350 --
-
 B ULKHEADS 122
 At smaller scales, CPU binding is an example of partitioning via bulkheads. Binding a process to a CPU or CPU group ensures that the operating system schedules that process’ threads on only the designated
 CPU or CPU group. Because it reduces the cache bashing that happens
@@ -4365,13 +3766,6 @@ server, or servers in a cluster.
 5. For example, prior to version 9, WebLogic allowed you to allocate a set of threads to a
 particular activity by creating a custom activity queue. (In version 9.x, this is now called
 a constraint on a work manager.)
-
----
-
-## [Sección 57] Chapter 5
-
--- 122 of 350 --
-
 B ULKHEADS 123
 Bulkheads vs. Performance
 Binding a multithreaded application server to one CPU may
@@ -4387,9 +3781,6 @@ In a service-oriented architecture, there may be many enterprise
 systems dependent on your application. If your application goes
 down because of Chain Reactions, does the entire company come
 to a halt? Then you’d better put in some Bulkheads.
-
--- 123 of 350 --
-
 S TEADY S TATE 124
 5.4 Steady State
 Roget’s Thesaurus (3rd ed.) offers the following definition for the word
@@ -4429,9 +3820,6 @@ server’s root disk mirror was out of sync. He executed a command to “resilve
 bringing them back into synchronization. Unfortunately, he made a typo and synced the
 good root disk from the new, totally empty drive that had just been swapped in to replace
 a bad disk, thereby instantly annihilating the operating system on that server.
-
--- 124 of 350 --
-
 S TEADY S TATE 125
 new killer application, the next great mission-critical, bet-the-company
 whatever, data purging always gets the short end of the stick. It certainly doesn’t demo as well as...well, anything else in the world demos
@@ -4469,13 +3857,6 @@ see most of my project’s team in attendance, including the sponsor. When
 I was presenting this very issue about the importance of data purging and
 7. The Object Technology Users’ Group in the Twin Cities of Minneapolis and St. Paul,
 Minnesota. See http://www.otug.org/.
-
----
-
-## [Sección 58] Chapter 5
-
--- 125 of 350 --
-
 S TEADY S TATE 126
 its usual neglect, I could see everyone from my project nodding along
 (with their eyes open!). So you can imagine my chagrin when we launched
@@ -4512,9 +3893,6 @@ exception themselves. Instead, they wrap it or translate it and then
 throw a new exception at the application code. 8
 8. Log4J is a pleasant exception in this regard. It uses a pluggable ErrorHandler policy to
 dispose of exceptions in any of the “appenders.”
-
--- 126 of 350 --
-
 S TEADY S TATE 127
 What happens next is anyone’s guess. In the best-case scenario, the
 logging filesystem is separate from any critical data storage (such as
@@ -4528,7 +3906,8 @@ log any kind of exception. It was reentrant, so if an exception occurred
 while logging an exception, it would log both the original and the new
 exception. As soon as the filesystem got full, this poor exception handler
 went nuts, trying to log an ever-increasing stack of exceptions. Because
-there were multiple threads, each trying to log its own Sisyphean exception, this application server was able to consume eight entire UltraSPARC III CPUs—for a little while, anyway. The exceptions, multiplying
+there were multiple threads, each trying to log its own Sisyphean exception, this application server was able to consume eight entire Ultra-
+SPARC III CPUs—for a little while, anyway. The exceptions, multiplying
 like Leonardo da Pisa’s rabbits, rapidly consumed all available memory.
 This was followed shortly by a JVM crash.
 Don’t leave log files on
@@ -4548,17 +3927,11 @@ for analysis.
 Of course, it’s always better to avoid filling up the filesystem in the first
 place. Log file rotation requires just a few minutes of configuration.
 The various translations of Log4J, including Log4R (Ruby) and Log4Net
-(any .NET language), all support a RollingFileAppender, which can be configured to rotate log files based on size. You should always use RollingFileAppender in place of the default FileAppender. In java.util.logging, the
+(any .NET language), all support a RollingFileAppender, which can be configured to rotate log files based on size. You should always use Rolling-
+FileAppender in place of the default FileAppender. In java.util.logging, the
 default FileHandler can also be configured to rotate logs based on size by
 setting its limit property to the maximum number of bytes to write to the
 current file. The count variable controls how many old files to keep. The
-
----
-
-## [Sección 59] Chapter 5
-
--- 127 of 350 --
-
 S TEADY S TATE 128
 Joe Asks. . .
 What About Sarbannes-Oxley? Don’t We Have to Keep All
@@ -4594,9 +3967,6 @@ Cygwin, or you can hand roll a .vbs or .bat script to do the job. Logging
 can be a wonderful aid to transparency. Make sure that all log files will
 get rotated out and eventually purged, though, or you will eventually
 spend time fixing the tool that’s supposed to help you fix the system.
-
--- 128 of 350 --
-
 S TEADY S TATE 129
 Between data in the database and log files on the disk, there are plenty
 of ways for persistent data to clog up your system. Like jingles from old
@@ -4631,13 +4001,6 @@ DBAs can create scripts to purge data, but they don’t always know
 how the application behaves when data is removed. Maintaining
 logical integrity, especially if you use an ORM tool, requires the
 application to purge its own data.
-
----
-
-## [Sección 60] Chapter 5
-
--- 129 of 350 --
-
 S TEADY S TATE 130
 Limit caching
 In-memory caching speeds up applications, until it slows them
@@ -4645,9 +4008,6 @@ down. Limit the amount of memory a cache can consume.
 Roll the logs
 Don’t keep an unlimited amount of log files. Configure log file rotation based on size. If you need to retain them for compliance, do it
 on a nonproduction server.
-
--- 130 of 350 --
-
 F AIL F AST 131
 5.5 Fail Fast
 If slow responses are worse than no response, the worst must surely be
@@ -4684,9 +4044,6 @@ rendered images for high-resolution printing. The previous generation of
 this software exhibited a problem that generated more work for humans
 downstream: if any color profiles, images, backgrounds, or alpha masks
 were not available, it “rendered” a black image—full of zero-valued pixels.
-
--- 131 of 350 --
-
 F AIL F AST 132
 This black image went into the printing pipeline and was printed, wasting
 paper, chemicals, and time. Quality checkers would pull the black image
@@ -4726,13 +4083,6 @@ an upstream system to trip a circuit breaker just because some user
 entered bad data and hit Reload three or four times.
 9. Orders could still be remade because of other quality problems: dust in the camera,
 poor exposure, bad cropping, and so on.
-
----
-
-## [Sección 61] Chapter 5
-
--- 132 of 350 --
-
 F AIL F AST 133
 The Fail Fast pattern improves overall system stability by avoiding slow
 responses. Together with timeouts, failing fast can help avert impending cascading failures. It also helps maintain capacity when the system
@@ -4753,12 +4103,10 @@ Do basic user input validation even before you reserve resources.
 Don’t bother checking out a database connection, fetching domain
 objects, populating them, and calling validate( ) just to find out that
 a required parameter wasn’t entered.
-
--- 133 of 350 --
-
 H ANDSHAKING 134
 5.6 Handshaking
-Handshaking refers to signaling between devices that regulate communication between them. Serial protocols such as RS-232 (now EIA232C) rely on the receiver to indicate when it is ready to receive data.
+Handshaking refers to signaling between devices that regulate communication between them. Serial protocols such as RS-232 (now EIA-
+232C) rely on the receiver to indicate when it is ready to receive data.
 Analog modems used a form of handshaking to negotiate a speed and a
 signal encoding that both devices would agree upon. And, as illustrated
 earlier, TCP uses a three-phase handshake to establish a socket connection. TCP handshaking also allows the receiver to signal the sender
@@ -4788,9 +4136,6 @@ check” query for use by clients. The client would then check the health
 of the server before making a request. This provides good handshaking at the expense of doubling the number of connections and requests
 10. See http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html.
 11. Many clients even treat other 200 series codes as errors!
-
--- 134 of 350 --
-
 H ANDSHAKING 135
 the server must process. On the downside, most of the time for a typical web service call is spent just setting up and tearing down the TCP
 connection, so making a health check call before the actual call just
@@ -4824,13 +4169,6 @@ Build Handshaking into your own low-level protocols
 If you create your own socket-based protocol, build Handshaking
 into it, so the endpoints can each inform the other when they are
 not ready to accept work.
-
----
-
-## [Sección 62] Chapter 5
-
--- 135 of 350 --
-
 T EST H ARNESS 136
 5.7 Test Harness
 As you’ve seen in previous chapters, distributed systems have failure
@@ -4867,9 +4205,6 @@ range of out-of-spec failures that can occur naturally in production,
 there will be behaviors that integration testing does not verify.
 A better approach to integration testing would allow you to test most
 or all of these failure modes. It should preserve or enhance system isolation to avoid the version-locking problem and allow testing in many
-
--- 136 of 350 --
-
 T EST H ARNESS 137
 locations instead of the unitary enterprise-wide integration testing environment I described earlier.
 To do that, you can create test harnesses to emulate the remote system
@@ -4900,13 +4235,6 @@ acknowledges receiving a packet, causing endless retransmits.
 XML.
 • The service can send megabytes when kilobytes are expected.
 • The service can refuse all authentication credentials.
-
----
-
-## [Sección 63] Chapter 5
-
--- 137 of 350 --
-
 T EST H ARNESS 138
 Joe Asks. . .
 Why Not Mock Objects?
@@ -4934,9 +4262,6 @@ errors. If all low-level errors were guaranteed to be recognized,
 caught, and thrown as the right type of exception, there would
 be no need for test harnesses.
 ∗. See http://www.junit.org .
-
--- 138 of 350 --
-
 T EST H ARNESS 139
 These failures fall into distinct categories: network transport problems,
 network protocol problems, application protocol problems, and application logic problems. With a little mental exercise, you can find failure
@@ -4976,13 +4301,6 @@ harness log requests, in case your application dies without so much as
 a whimper to indicate what killed it.
 The test harness can be designed like an application server; it can have
 pluggable behavior for the tests that are related to the real application.
-
----
-
-## [Sección 64] Chapter 5
-
--- 139 of 350 --
-
 T EST H ARNESS 140
 A single framework for the test harness can be subclassed to implement
 any application-level protocol, or any perversion of the application-level
@@ -5004,9 +4322,6 @@ not replace unit tests, acceptance test, FIT tests, and so on. Each
 of those techniques help verify functional behavior. Test Harness
 helps verify “nonfunctional” behavior while maintaining isolation
 from the remote systems.
-
--- 140 of 350 --
-
 D ECOUPLING M IDDLEWARE 141
 5.8 Decoupling Middleware
 Middleware is a graceless name for tools that inhabit a singularly messy
@@ -5036,9 +4351,6 @@ Less tightly coupled forms of middleware allow the calling and receiving
 systems to process messages in different places and at different times.
 The venerable IBM MQseries and any of the publish/subscribe messaging systems fall into this category, as do system-to-system messaging via SMTP or SMS. (These latter two protocols frequently have message brokers implemented with carbon, hydrogen, oxygen, and nitrogen
 rather than silicon. Latency also tends to be high.)
-
--- 141 of 350 --
-
 D ECOUPLING M IDDLEWARE 142
 Same Time
 Same Host
@@ -5099,13 +4411,6 @@ of financial risk is.
 You can apply most of the patterns in this chapter without greatly
 affecting the implementation cost of the system. Middleware decisions
 are not the same. First, the products are expensive. Second, different
-
----
-
-## [Sección 65] Chapter 5
-
--- 142 of 350 --
-
 D ECOUPLING M IDDLEWARE 143
 styles of middleware necessitate very different designs. That makes the
 cost of changing your mind very high. Switching from a request/reply
@@ -5130,11 +4435,9 @@ Not every system needs to look like a three-tier application with
 an Oracle database. Learn many architectural styles, and select
 the best architecture for the problem at hand.
 
--- 143 of 350 --
-
 ---
 
-## [Sección 66] Chapter 6
+## Sección 12: Chapter 6 [Entropy: 0.25]
 
 Stability Summary
 In time, even shockingly unlikely combinations of circumstances will
@@ -5163,9 +4466,6 @@ of them can stab you in the back. Identify the threats, and apply stability patt
 Staying up is more than half the battle. Consider the odds against your
 system. Approximately half of all projects are canceled in development.
 Of the survivors, another half are late, overbudget, and do not meet
-
--- 144 of 350 --
-
 C HAPTER 6. S TABILITY S UMMARY 145
 requirements. Of the remainder (less than 25% of all projects) that
 make it to production, the majority incur major costs through downtime, lost revenue, and maintenance costs.
@@ -5182,20 +4482,11 @@ In fact, with a system that never goes down, the users will most likely
 complain that it’s slow. Next, you’ll look at capacity and performance
 and how to get the most out of your resources.
 
--- 145 of 350 --
-
 ---
 
-## [Sección 67] Part II
+## Sección 13: Chapter 7 [Entropy: 0.325]
 
 Capacity
-
--- 146 of 350 --
-
----
-
-## [Sección 68] Chapter 7
-
 Case Study: Trampled by Your
 Own Customers
 7.1 Countdown and Launch
@@ -5218,9 +4509,6 @@ the forgotten friends, and the divorces were going to fade away after we
 launched.
 The marketing team—many of whom hadn’t been seen since the
 requirements-gathering meetings two years earlier—gathered in a
-
--- 147 of 350 --
-
 A IMING FOR QA 148
 grand conference room for the launch ceremony, with champagne to
 follow. The technologists who had turned their vague and ill-specified
@@ -5263,13 +4551,6 @@ the origin server switch took place on Saturday afternoon. From the time when an
 loaded content until we identified the CDN as the cause of the problem took about an
 hour. It was then another hour to get the change reversed and propagated across the
 CDN’s network. Oops!
-
----
-
-## [Sección 69] Chapter 7
-
--- 148 of 350 --
-
 A IMING FOR QA 149
 Every website project is
 really an enterprise
@@ -5305,9 +4586,6 @@ ideas about the system architecture that everyone “just knew” would
 be different in production. The barrier to change in the test environment was high enough, however, that most of the development team
 chose to ignore the discrepancies rather than lose one or two weeks of
 their daily build-deploy-test cycles.
-
--- 149 of 350 --
-
 A IMING FOR QA 150
 Conway’s Law
 In a Datamation article in 1968, Melvin Conway described a
@@ -5328,13 +4606,6 @@ creating the communication structure that I wanted the software to embody—and 
 structure of the software to help understand the real communication structure of the organization.
 Conway’s original article is available on the web at the author’s
 site http://www.melconway.com/research/committees.html.
-
----
-
-## [Sección 70] Chapter 7
-
--- 150 of 350 --
-
 A IMING FOR QA 151
 When I started asking about production configurations, I thought it was
 just a problem of finding the person or people who had already figured
@@ -5367,9 +4638,6 @@ new release could be deployed without overwriting the production configuration. 
 database passwords out of the QA environment (which developers could
 access) and out of the source control system (which anyone in the company could access), thereby protecting our customers’ privacy.
 In setting up the production environment, I had inadvertently volunteered to assist with the load test.
-
--- 151 of 350 --
-
 L OAD T ESTING 152
 7.3 Load Testing
 With a new, untried system, the client knew that load testing would be
@@ -5406,13 +4674,6 @@ out often accesses twelve pages during the session, whereas a user who
 just scans the site and goes away typically hits no more than seven
 pages. We believed this mix of virtual users would be slightly harsher
 on the systems than real-world traffic would be.
-
----
-
-## [Sección 71] Chapter 7
-
--- 152 of 350 --
-
 L OAD T ESTING 153
 What Is a Concurrent User?
 Load testing companies often talk about “concurrent users,”
@@ -5444,9 +4705,6 @@ alive for some number of minutes after the user last clicked.
 That means the session is absolutely guaranteed to last longer
 than the user. Counting sessions overestimates the number of
 users.
-
--- 153 of 350 --
-
 L OAD T ESTING 154
 What Is a Concurrent User? (cont.)
 5 sessions
@@ -5474,9 +4732,6 @@ improvements to the site. Every day, we found new bottlenecks and
 capacity limits. We were able to turn configuration changes around
 during a single day. Code changes took a little longer, but they still
 got turned around in two or three days.
-
--- 154 of 350 --
-
 M URDER BY THE M ASSES 155
 We even accomplished a few major architecture changes in less than a
 week. I’ll discuss these improvements in the next chapter.
@@ -5511,13 +4766,6 @@ Where could all the sessions have come from?
 Eventually, we realized noise was our biggest problem. All of our
 load testing was done with scripts that mimicked real users with real
 browsers. They went from one page to another linked page. The scripts
-
----
-
-## [Sección 72] Chapter 7
-
--- 155 of 350 --
-
 M URDER BY THE M ASSES 156
 all used cookies to track sessions. They were polite to the system. In
 fact, the real world can be rude, crude, and vile.
@@ -5559,9 +4807,6 @@ each of them was creating additional sessions.
 We also had the amateur shopbots to handle. Several source IPs hit the
 same product detail page URL from the old site once per minute. It took
 2. See http://www.arin.net.
-
--- 156 of 350 --
-
 T HE T ESTING G AP 157
 us a while to identify the product, which ultimately turned out to be a
 PlayStation 2. Three years after PS2’s famous shortages, scripts were
@@ -5597,13 +4842,6 @@ threads into the danger zone. Like a car crash on a foggy freeway, the
 new request threads would just pile up into the ones that were already
 broken or hung.
 3. OK, we didn’t really use the word stuff.
-
----
-
-## [Sección 73] Chapter 7
-
--- 157 of 350 --
-
 A FTERMATH 158
 7.6 Aftermath
 The grim march in the days and weeks following launch produced
@@ -5640,9 +4878,6 @@ created because of the way the platform works.) The JavaScript dropdown menus wi
 categories. Also, traffic analysis showed that a significant percentage
 of visits per day just hit the main page. Most of them did not present
 an identification cookie, so personalization wasn’t even possible. Still, if
-
--- 158 of 350 --
-
 A FTERMATH 159
 the application server got involved in sending the home page, it would
 take time and create a session that would occupy memory for the next
@@ -5678,13 +4913,6 @@ user’s original instance go down—deliberately or otherwise—the next
 request gets directed to a new instance, chosen by the load manager.
 The new instance then attempts to load the user’s session from the
 session backup server. This mechanism works well (and scales surprisingly well), considering that the sessions are all kept in memory rather
-
----
-
-## [Sección 74] Chapter 7
-
--- 159 of 350 --
-
 A FTERMATH 160
 than in a database or on disk; that is, it scales well so long as the session data is kept small. For instance, it is common to include the user’s
 ID, her shopping cart ID, and maybe some information about her current search, such as keywords and results page index. It would not be
@@ -5715,11 +4943,9 @@ handles more than four times the load, on fewer servers, without having gone thr
 much. If the site had originally been built the way it is now, the engineers would have been able to join marketing’s party and pop a few
 champagne corks instead of popping fuses.
 
--- 160 of 350 --
-
 ---
 
-## [Sección 75] Chapter 8
+## Sección 14: Chapter 8 [Entropy: 0.475]
 
 Introducing Capacity
 Back before the dot-com crash, one IBM commercial perfectly captured
@@ -5742,9 +4968,6 @@ more precision. At the risk of being pedantic, let me define some terms.
 Performance measures how fast the system processes a single transaction. This can be measured in isolation or under load. The system’s
 performance has a major impact on its throughput. Even if using the
 word performance, the customer does not really care about performance. Customers are interested in either throughput or capacity. End
-
--- 161 of 350 --
-
 C ONSTRAINTS 162
 users, on the other hand, don’t care about overall capacity; they care
 only about the performance of their own transactions. They can’t log
@@ -5774,9 +4997,6 @@ confirm a reservation.
 8.2 Constraints
 The hardest thing about dealing with capacity is working with nonlinear effects. Our brains can subconsciously integrate differential equations fast enough to drive a car or catch a baseball. Somehow, though,
 whenever we start talking about capacity, everybody wants to fall back
-
--- 162 of 350 --
-
 C ONSTRAINTS 163
 to linear projection. Have you ever been asked, “So, if we can handle
 10,000 users at 50% CPU usage, we should be able to handle 20,000
@@ -5795,7 +5015,7 @@ Suppose instead that the application servers’ RAM is the constraint.
 Each user session consumes a certain amount of RAM. Once all available RAM is consumed, any new sessions cause the application server
 to start paging. Again, the web server is probably just waiting for a
 response from the application server. The database server will actually
-be happier once the application server starts thrashing—it gets to RealtimeHub
+be happier once the application server starts thrashing—it gets to kick
 back and relax for a change.
 Any nonconstraint metric is useless for projecting or increasing capacity. If smoke is trickling out of your database, it does no good to look
 at your web server’s CPU usage to project the total number of sessions
@@ -5810,13 +5030,6 @@ connections. No one simple formula will produce an all-encompassing
 “capacity number.” Start by considering the system as a whole. Find
 the driving variables. A driving variable is something like “page requests
 1. See The Goal [Gol04] for more information about the Theory of Constraints.
-
----
-
-## [Sección 76] Chapter 8
-
--- 163 of 350 --
-
 C ONSTRAINTS 164
 per second.” At the “whole-system” level, an easy way to find the driving variables is to look for things that are outside your control, such
 as user demand, the clock, the calendar, and so on. Driving variables
@@ -5849,9 +5062,6 @@ capacity, you must elevate the constraint by increasing the resource
 needed for the constraining variable or decreasing your usage of the
 resource.
 2. You’re looking for a high correlation coefficient, somewhere between 0.8 (highly correlated) and 1.0 (perfect correlation).
-
--- 164 of 350 --
-
 I NTERRELATIONS 165
 8.3 Interrelations
 You will often see effects in one layer surface as causes in another
@@ -5886,13 +5096,6 @@ Sometimes, it’s impractical or impossible to add more servers in parallel. Whe
 as possible. Database servers, for example, get very unwieldy when you
 try to cluster three or more redundant servers. It’s better to run a beefy
 pair with failover.
-
----
-
-## [Sección 77] Chapter 8
-
--- 165 of 350 --
-
 M YTHS A BOUT C APACITY 166
 Load Balancer /
 Cluster Manager
@@ -5936,9 +5139,6 @@ medieval notion that witches would float like a duck or that linear projection o
 these beliefs are harmless. If the operations manager thinks that the
 system crashes whenever he wears his Hawaiian shirt, you might actually be better off not disabusing him of his superstition. On the other
 hand, some fallacious beliefs cost the company millions of dollars.
-
--- 166 of 350 --
-
 M YTHS A BOUT C APACITY 167
 Server 1
 4 CPUs
@@ -5977,9 +5177,6 @@ hate, it’s waiting. For web systems, latency in the application has a
 dual effect. The added processing directly increases the burden on the
 application servers themselves. Suppose that an application takes just
 250 milliseconds of extra processing per transaction. If the system pro-
-
--- 167 of 350 --
-
 M YTHS A BOUT C APACITY 168
 cesses a million transactions a day, that extra 250 milliseconds per
 transaction makes for an extra 69.4 hours of compute time every day.
@@ -6003,7 +5200,8 @@ request state, and some memory for a partially buffered response. Even
 if the web server does nothing at all to service that connection, those
 resources are scarce. Application server CPU usage directly drives web
 server memory usage.
-Finally, some CPUs cost more than others. I don’t just mean that PARISC chips cost more than Intel x86 chips. I mean that only so many
+Finally, some CPUs cost more than others. I don’t just mean that PA-
+RISC chips cost more than Intel x86 chips. I mean that only so many
 chips fit into a single machine. If you are building with four-way boxes,
 then the fifth CPU has a disproportionate cost because you have to
 buy a new chassis. The extra chassis requires its own RAM, probably
@@ -6021,58 +5219,35 @@ much. The differential comes mostly from the extra RAM and disk space
 needed. Still, the multiplier for a “breaking” CPU vs. a “nonbreaking”
 CPU is about 1.2. That is, the cost of the third CPU is about 1.2 times
 the cost of the second CPU.
-
----
-
-## [Sección 78] Chapter 8
-
--- 168 of 350 --
-
 M YTHS A BOUT C APACITY 169
-Marginal Cost per CPU - Sun v440
-$0
-$2,000
-$4,000
-$6,000
-$8,000
-$10,000
-$12,000
-$14,000
-$16,000
-2
-5
-8
-11
-14
-17
-20
-23
-26
-29
-32
-35
-38
-41
-44
-47
-50
-53
-56
-59
-62
-65
-68
-71
-74
-77
-80
-83
-86
-89
-92
-95
-Total CPUs Needed
-Cost of each added CPU
+Marginal Cost per CPU - Sun v440 
+$0 
+$2,000 
+$4,000 
+$6,000 
+$8,000 
+$10,000 
+$12,000 
+$14,000 
+$16,000 
+5 
+11 
+17 
+23 
+29 
+35 
+41 
+47 
+53 
+59 
+65 
+71 
+77 
+83 
+89 
+95 
+Total CPUs Needed 
+Cost of each added CPU 
 Figure 8.3: Cost per CPU for Sun 440 Servers
 On a bigger iron, this picture changes radically. More advanced systems
 have a much higher cost when you cross that threshold. The chassis for
@@ -6088,35 +5263,26 @@ argue with that? After all, ten years ago storage cost around a dollar per
 megabyte; now it is less than fifty cents per gigabyte. 3 True, there’s still
 3. Source: Pricewatch (http://www.pricewatch.com), January 13, 2007; 500GB SATA drive
 for $147.
-
--- 169 of 350 --
-
 M YTHS A BOUT C APACITY 170
-Marginal Cost per CPU - Sun Fire 6900
-$-
-$100,000
-$200,000
-$300,000
-$400,000
-$500,000
-$600,000
-$700,000
-$800,000
-$900,000
-16
- 20
- 24
- 40
- 44
- 48
- 64
- 68
- 72
- 88
- 92
- 96
-Total CPUs Needed
-Cost of each added CPU
+Marginal Cost per CPU - Sun Fire 6900 
+$- 
+$100,000 
+$200,000 
+$300,000 
+$400,000 
+$500,000 
+$600,000 
+$700,000 
+$800,000 
+$900,000 
+ 20 
+ 40 
+ 48 
+ 68 
+ 88 
+ 96 
+Total CPUs Needed 
+Cost of each added CPU 
 Figure 8.4: Cost per CPU for Sun Fire 6900
 the SCSI premium, if that’s the direction you are going, but drives are
 cheap enough that a laptop can carry every picture you’ve ever taken.
@@ -6137,9 +5303,6 @@ space enough for the following:
 • The local configurations or data
 • The log files
 • The temporary working space needed by the applications
-
--- 170 of 350 --
-
 M YTHS A BOUT C APACITY 171
 Every single server needs that much space. Here is another multiplier
 effect: 1GB of disk might be cheap to purchase, but you actually have
@@ -6177,13 +5340,6 @@ a burstable connection instead of a dedicated one. A dedicated connection offers
 available every second of every day for a flat rate. With a burstable connection, you pay a flat rate, usually much less than the dedicated rate
 charge, for the “committed” bandwidth. As long as you stay below that
 committed level, you pay nothing extra.
-
----
-
-## [Sección 79] Chapter 8
-
--- 171 of 350 --
-
 M YTHS A BOUT C APACITY 172
 Joe Asks. . .
 What Are SAN and NAS, and What’s the Difference?
@@ -6217,9 +5373,6 @@ million dollars for an enterprise SAN. SAN also requires ongoing systems managem
 dumping ground with little structure or ongoing management.
 NAS is a choice that a department or even a project team can
 make, but a SAN is a CIO-level decision.
-
--- 172 of 350 --
-
 M YTHS A BOUT C APACITY 173
 If your transfer rate exceeds the committed bandwidth, you get charged
 per megabit minute. 4 Burstable connections can be cheaper than dedicated. The costs can mount quickly, however, if your daily peak always
@@ -6254,13 +5407,6 @@ of unnecessary transfers. Most pages have far more than 1,024 unnecessary bytes.
 waste in the next chapter.
 4. Like kilowatt hours for electricity: the product of the excess transfer rate in megabits
 times the number of minutes at that level.
-
----
-
-## [Sección 80] Chapter 8
-
--- 173 of 350 --
-
 S UMMARY 174
 8.6 Summary
 Capacity management is an ongoing process of monitoring and optimization. It involves many dimensions and opposing dynamics. Software changes, traffic changes, and even marketing campaigns can all
@@ -6284,11 +5430,9 @@ consumption, maximum number of connections, and so on.
 scalability and performance. Changes in user demand or traffic
 patterns change the system’s workload.
 
--- 174 of 350 --
-
 ---
 
-## [Sección 81] Chapter 9
+## Sección 15: Chapter 9 [Entropy: 0.601]
 
 Capacity Antipatterns
 As you saw in the previous chapter, if CPU, disk, and bandwidth are
@@ -6298,9 +5442,6 @@ harm your system’s capacity.
 These capacity antipatterns make your applications do more work than
 necessary, turning electricity into heat instead of revenue. Hardware is
 expensive, so we need to get as much out of it as possible.
-
--- 175 of 350 --
-
 R ESOURCE P OOL C ONTENTION 176
 9.1 Resource Pool Contention
 I have a love/hate relationship with database connection pools. I view
@@ -6333,9 +5474,6 @@ Although this alleviates the contention in the application server, it
 might shift the problem to the database server. With Oracle, for example, each connection spawns a process on the database server. Depending on configuration, this process will use a few megabytes of RAM. If
 there are many application servers, then the database server is on the
 wrong end of another multiplier effect.
-
--- 176 of 350 --
-
 R ESOURCE P OOL C ONTENTION 177
 20
 60
@@ -6360,13 +5498,6 @@ must all devote some resources to each connection.
 1. Oracle also supports the more complex multithreaded server (MTS) configuration,
 which multiplexes connections to processes. DBAs who can properly configure MTS
 occupy the highest tier of the Oracle priesthood.
-
----
-
-## [Sección 82] Chapter 9
-
--- 177 of 350 --
-
 R ESOURCE P OOL C ONTENTION 178
 5
 15
@@ -6392,9 +5523,6 @@ transparency. At runtime, you want to know how often callers are
 uses the <
 blocking-timeout-millis> element in its data source configuration files. Check
 your documentation.
-
--- 178 of 350 --
-
 R ESOURCE P OOL C ONTENTION 179
 blocking, what’s the highest number of resources checked out since
 start-up is (the high-water mark), and how many resources have been
@@ -6424,9 +5552,6 @@ Watch for the Blocked Threads pattern
 The capacity problem of resource pool contention can quickly turn
 into a stability problem if threads block forever when a resource
 is not available.
-
--- 179 of 350 --
-
 E XCESSIVE JSP F RAGMENTS 180
 9.2 Excessive JSP Fragments
 In the Java realm, JSP is the standard page-templating language. JSP
@@ -6454,13 +5579,6 @@ enough JSP files, you will fill the permanent generation. Even if
 you don’t, it’s a waste of otherwise useful memory to keep a class
 in memory when it might not be accessed again before you restart
 the application server.
-
----
-
-## [Sección 83] Chapter 9
-
--- 180 of 350 --
-
 E XCESSIVE JSP F RAGMENTS 181
 JSPs as Content
 I’ve seen this happen when JSPs are treated like content rather
@@ -6474,9 +5592,6 @@ that portion of the heap). In this case, the JSPs did not even
 need to be executable code. They presented only static content. It would have been better to use HTML fragments with a
 caching content repository to manage those 25,000 page fragments. (See Pattern 10.2, Use Caching Carefully, on page 208,
 for other warnings about the proper use of caching.)
-
--- 181 of 350 --
-
 AJAX O VERKILL 182
 9.3 AJAX Overkill
 AJAX (Asynchronous JavaScript plus XML) has become synonymous
@@ -6508,9 +5623,6 @@ Ajax [JG06] for a wealth of detail), but since it can be such a doubleedged swor
 Interaction Design
 AJAX is a technique, not a goal. The user experience should be primary, so apply AJAX only where it actually makes the user interaction smoother. For example, I’ve seen a site built on an “AJAX home
 page”—a single master page that contained the only HTML for the site.
-
--- 182 of 350 --
-
 AJAX O VERKILL 183
 All interactions for the site went through AJAX requests and were displayed within the same page. It was awful. The site seemed to break the
 browser! The Back button caused the browser to leave the site, instead
@@ -6545,13 +5657,6 @@ buzzword than “AJAS” would. JSON is much easier to parse in the
 browser and can be a lot less verbose (reducing bandwidth consumption). See http://www.json.org/example.html for some examples of JSON’s
 brevity compared with XML.
 3. See http://www.json.org/.
-
----
-
-## [Sección 84] Chapter 9
-
--- 183 of 350 --
-
 AJAX O VERKILL 184
 JSON Goes to the Dark Side
 One note of caution regarding JSON: some examples use the
@@ -6581,9 +5686,6 @@ increase the maximum number of connections your web tier can
 handle, either by adding servers or by increasing the number of
 clients each server will handle. 4
 4. For Apache, this is the MaxClients configuration parameter.
-
--- 184 of 350 --
-
 O VERSTAYING S ESSIONS 185
 9.4 Overstaying Sessions
 Somewhere back in the dim reaches when the original Java Servlet
@@ -6625,13 +5727,6 @@ does, then it is important to keep the session
 around longer. On the other hand, if everything in the session is just an in-memory copy
 of persistent state, then the session can be discarded and re-created
 anytime. Under that approach, the session is purely an in-memory
-
----
-
-## [Sección 85] Chapter 9
-
--- 185 of 350 --
-
 O VERSTAYING S ESSIONS 186
 cache. I strongly endorse this model, both for its benefits to capacity
 and stability and for its benefits to the user. Only developers get the
@@ -6661,9 +5756,6 @@ If you keep whole objects in the session, do it with soft references.
 Keep keys to persistent objects instead. You will get better capacity, and your users will have a better experience: they can come
 back in an hour or a week and pick up where they left off.
 5. Social Security numbers are the U.S. equivalent of a national identification number.
-
--- 186 of 350 --
-
 W ASTED S PACE IN HTML 187
 9.5 Wasted Space in HTML
 I’ve seen a lot of bad things justified with arguments that “bandwidth
@@ -6698,13 +5790,6 @@ that threads can contend for database connections, 6 end users can
 contend for web server connections. When a user can’t get a web server
 connection, your site might as well be down.
 6. See Antipattern 9.1, Resource Pool Contention, on page 176.
-
----
-
-## [Sección 86] Chapter 9
-
--- 187 of 350 --
-
 W ASTED S PACE IN HTML 188
 It’s in your best interest to see to it that those connections are serviced
 and released as quickly as possible.
@@ -6743,9 +5828,6 @@ without considering the cost of extra web servers.
 You can add an interceptor to the application server that filtered out
 the excess whitespace. I’ve often seen that the CPU cost of filtering was
 less than the RAM and bandwidth cost of not filtering.
-
--- 188 of 350 --
-
 W ASTED S PACE IN HTML 189
 Expensive Spacer Images
 Almost every dynamically generated HTML page has one or more spacer
@@ -6783,13 +5865,6 @@ transaction for some other user.
 Excess HTML Tables
 While we’re putting HTML pages on a diet, let’s examine the use of
 tables for formatting.
-
----
-
-## [Sección 87] Chapter 9
-
--- 189 of 350 --
-
 W ASTED S PACE IN HTML 190
 All current browser versions support Cascading Style Sheets (CSS).
 Clever use of CSS and styles can provide every bit as much control over
@@ -6821,9 +5896,6 @@ Aside from being more “Web 2.0,” CSS style sheets don’t have to be
 downloaded on every page the way a table-based superstructure
 does. HTML files with styles and classes can be much smaller than
 their table-driven counterparts.
-
--- 190 of 350 --
-
 T HE R ELOAD B UTTON 191
 9.6 The Reload Button
 I swear, sometimes users are the worst thing that can happen to a system. That’s never more true than when the system is already under
@@ -6853,13 +5925,6 @@ Make the Reload button irrelevant
 Fast sites don’t provoke the user into hitting the Reload button.
 You want your site to serve pages so fast that the Reload button never comes into it. Reload requests hurt your site when it’s
 already suffering.
-
----
-
-## [Sección 88] Chapter 9
-
--- 191 of 350 --
-
 T HE R ELOAD B UTTON 192
 Serialize on Source Address
 I’ve seen some application servers try to ensure that they process just one request from a source IP address at a time. This
@@ -6876,9 +5941,6 @@ Depending on your load balancing and session affinity configuration, the second 
 application server as the first. Therefore, your application code
 should be prepared for a single user to be executing the same
 transaction several times without causing deadlocks.
-
--- 192 of 350 --
-
 H ANDCRAFTED SQL 193
 9.7 Handcrafted SQL
 Essentially every application today must work with a relational
@@ -6910,9 +5972,6 @@ tables to select exactly the one row they’re looking for, and then they’ll
 accessing the members of a collection. Some ORM frameworks send one query to find
 the membership of the collection and then send one query per member to populate the
 individual objects.
-
--- 193 of 350 --
-
 H ANDCRAFTED SQL 194
 issue that query 100 more times to find other individual rows. Fourth,
 developers like to exercise features of SQL that they shouldn’t. I once
@@ -6953,13 +6012,6 @@ You might be tempted to roll your own SQL as a performance
 optimization. It’s always a good idea to see whether there are ways
 to do the same in the database itself—through hinting, indexing,
 or views.
-
----
-
-## [Sección 89] Chapter 9
-
--- 194 of 350 --
-
 H ANDCRAFTED SQL 195
 See whether the DBA laughs at the queries
 If it doesn’t pass the laugh test, it shouldn’t go into production.
@@ -6968,9 +6020,6 @@ Verify gains against real data
 Try your handcrafted SQL against production-sized data. Gains
 observed in a development database sometimes evaporate when
 they hit radically different query plans in production.
-
--- 195 of 350 --
-
 D ATABASE E UTROPHICATION 196
 9.8 Database Eutrophication
 In ecology, a lake “ages” through a process called eutrophication. This is
@@ -7003,9 +6052,6 @@ production, though, and your users could end up waiting minutes for
 some simple operation to complete. In general, any column that is the
 target of an association in the ORM mapping should be indexed.
 Database schemas are often designed well in advanced of the application code that will use the schema. As a result, indexes created during design might not match the actual access patterns implemented
-
--- 196 of 350 --
-
 D ATABASE E UTROPHICATION 197
 in the application. The database architect should remain involved during application development to ensure that the schema is continuously
 adapted to be as efficient as possible for the application’s functionality.
@@ -7035,13 +6081,6 @@ storage underneath the table without taking downtime.
 Historical Data
 The best answer to slowdowns due to data growth in the database is a
 rigorous routine of archival and elimination. We are dealing with transactional systems. The data should be only that needed to process the
-
----
-
-## [Sección 90] Chapter 9
-
--- 197 of 350 --
-
 D ATABASE E UTROPHICATION 198
 users’ transactions. That means you don’t need to keep all historical
 data online in the same database. In particular, reporting and ad hoc
@@ -7087,9 +6126,6 @@ Reports can, and should, be served elsewhere. Don’t jeopardize
 production operations by letting reports run expensive queries.
 Besides, reports are better served from a star schema than an
 OLTP schema anyway.
-
--- 198 of 350 --
-
 I NTEGRATION P OINT L ATENCY 199
 9.9 Integration Point Latency
 Every communication with another system entails a certain amount
@@ -7127,13 +6163,6 @@ Integration point latency is like the house advantage in blackjack.
 The more often you play, the more often it works against you.
 Avoid chatty remote protocols. They take longer to execute, and
 they tie up those precious request-handling threads.
-
----
-
-## [Sección 91] Chapter 9
-
--- 199 of 350 --
-
 I NTEGRATION P OINT L ATENCY 200
 RMI Across the Seas
 I once worked on a fat-client Java system that used RMI to
@@ -7156,9 +6185,6 @@ of “Summary Objects” that contained the three bits of information needed for
 update, the U.K. users enjoyed the same subsecond response
 time as the U.S. users, without installing a replica of the entire
 data warehouse!
-
--- 200 of 350 --
-
 C OOKIE M ONSTERS 201
 9.10 Cookie Monsters
 Some technologies just beg to be misused. Take bottle rockets. No matter how many warning labels manufacturers put on bottle rockets, it’s
@@ -7196,13 +6222,6 @@ their expiration date (or until the user upgrades computers, installs
 a different browser, or clears the browser’s private data, and so on).
 8. See The Design of Everyday Things [Nor88] about “affordances.”
 9. See http://www.ietf.org/rfc/rfc2109.txt.
-
----
-
-## [Sección 92] Chapter 9
-
--- 201 of 350 --
-
 C OOKIE M ONSTERS 202
 As a result, the serialized form of the cart object could be months or
 years old. The odds are that a code change will make the serialized
@@ -7240,9 +6259,6 @@ It hurts the user too. Even broadband users typically have much less
 upstream bandwidth than downstream. Uploading the extra 4KB on
 each request adds up. (Hey, a few milliseconds here, a few milliseconds
 there, and pretty soon you’re talking about real time!)
-
--- 202 of 350 --
-
 S UMMARY 203
 All of this extra processing adds up to an ongoing operational cost in
 production—day in and day out. The extra code to handle the cookie
@@ -7276,13 +6292,7 @@ they select a functional design without regard to its effect on capacity.
 
 ---
 
-## [Sección 93] Chapter 9
-
--- 203 of 350 --
-
----
-
-## [Sección 94] Chapter 10
+## Sección 16: Chapter 10 [Entropy: 0.265]
 
 Capacity Patterns
 C.A.R. Hoare famously said, “Premature optimization is the root of all
@@ -7306,15 +6316,9 @@ through one holiday season. Fixing a few of the antipatterns and implementing a 
 ten-million-dollar expense. That was the equivalent of nearly one week
 of sales.
 1. Precompute Content and Use Caching Carefully, as it happens.
-
--- 204 of 350 --
-
 C HAPTER 10. C APACITY P ATTERNS 205
 Avoiding the antipatterns is an important step, but there is more than
 just avoiding self-inflicted wounds. The capacity patterns in this chapter will take your application from Fight Club to Rocky.
-
--- 205 of 350 --
-
 P OOL C ONNECTIONS 206
 10.1 Pool Connections
 As I mentioned in Antipattern 9.1, Resource Pool Contention, on
@@ -7350,13 +6354,6 @@ deadlocks, since the same order of connection checkout and checkin
 can be enforced on all requests. On the other hand, this model does
 require a higher ratio of connections to request-handling threads, since
 each connection will be checked out for longer periods.
-
----
-
-## [Sección 95] Chapter 10
-
--- 206 of 350 --
-
 P OOL C ONNECTIONS 207
 The “per-page” model is usually implemented with a transaction manager set to create a single transaction containing the entire page.
 If individual pages are dynamically built from numerous fragments, it
@@ -7392,9 +6389,6 @@ Undersized resource pools lead to contention and increased
 latency. This defeats the purpose of pooling the connections in
 the first place. Monitor calls to the connection pools to see how
 long your threads are waiting to check out connections.
-
--- 207 of 350 --
-
 U SE C ACHING C AREFULLY 208
 10.2 Use Caching Carefully
 Caching can be a powerful response to a performance problem. It can
@@ -7431,13 +6425,6 @@ memory instead of preventing it.
 In extreme cases, it might be necessary to move to a multilevel caching
 approach. In this approach, you keep the most frequently accessed data
 in memory but use disk storage for a secondary cache. This works well if
-
----
-
-## [Sección 96] Chapter 10
-
--- 208 of 350 --
-
 U SE C ACHING C AREFULLY 209
 the objects to cache are extremely large (such as images) or the working
 set is larger than what you can hold in memory. If fetching uncached
@@ -7472,9 +6459,6 @@ performance gain.
 Compare access and change frequency
 Don’t cache things that are likely to change before they get used
 again.
-
--- 209 of 350 --
-
 P RECOMPUTE C ONTENT 210
 10.3 Precompute Content
 As application architects and designers, we like dynamic content on
@@ -7510,13 +6494,6 @@ News portal sites such as Slashdot and Fark precompute their main
 pages. Their stories change at least hourly, sometimes more often.
 Comment totals change every minute. Nevertheless, the main page of
 2. Not to mention Struts, Tiles, Tapestry, WebWork, WebObjects, SpringMVC, and so on.
-
----
-
-## [Sección 97] Chapter 10
-
--- 210 of 350 --
-
 P RECOMPUTE C ONTENT 211
 both of those sites is a template that pulls in a handful of large pieces
 of precomputed content. The sites get their “liveness” by recomputing
@@ -7558,9 +6535,6 @@ and 10MB of garbage for each and every page request. All that content
 was published nightly. Was there some chance that dirty words would
 spontaneously appear during the day? Why go to all that work on every
 single page view?
-
--- 211 of 350 --
-
 P RECOMPUTE C ONTENT 212
 The funniest part of the story is the postscript. When we started asking
 whether it was OK to stop masking profanity (thus endangering young
@@ -7605,13 +6579,6 @@ get very, very slow when you starve them for memory because you’ve
 got megabytes of cached content sitting in the old generation heap
 space. The second problem is that in-memory caches take time to
 “warm up.” Whatever poor sap asks for the first page from a server
-
----
-
-## [Sección 98] Chapter 10
-
--- 212 of 350 --
-
 P RECOMPUTE C ONTENT 213
 with cold caches might end up waiting minutes to get a single page
 back. In-memory caching has its place, but storing rendered page
@@ -7630,9 +6597,6 @@ Any content that you present many times before it changes could
 be precomputed to save time during request handling. Factor the
 cost of generating the content out of individual requests and into
 the deployment process.
-
--- 213 of 350 --
-
 T UNE THE G ARBAGE C OLLECTOR 214
 10.4 Tune the Garbage Collector
 In Java applications, garbage collection tuning is the quickest and easiest way to see some capacity improvements. An untuned application
@@ -7661,10 +6625,3671 @@ Memory tab shows heap usage, broken down by generation and space,
 as well as the amount of time spent in garbage collection. This is a relatively idle calendar server that is clearly not suffering from excessive
 garbage collection.
 Once you can see the garbage collection patterns, tuning the garbage
-collector is largel
+collector is largely a matter of ensuring sufficient heap size and adjusting the ratios that control the relative sizes of the generations.
+T UNE THE G ARBAGE C OLLECTOR 215
+Figure 10.1: JConsole Memory Tab
+Sun has excellent guides for garbage collection tuning available online. 3
+As an added bonus, going through the exercise of tuning the garbage
+collector will often bring memory leaks to your attention!
+Garbage collector tuning is part science, part art. Garbage collector
+behavior derives entirely from the application’s behavior and demand
+patterns. Each code release changes the environment in some way.
+Even relatively small code releases can induce new behavior from users:
+promotions, ease of use changes, prominence of an expensive feature,
+and so on. Perfectly tuned (if there is such a thing) settings for one
+release can be totally wrong for the next release. As I will discuss in
 
 ---
-> *[Truncated at 420 KB for optimal local RAG indexing speed]*
+
+## Sección 17: Chapter 17, Transparency, on page 265, you need a routine process to [Entropy: 0.25]
+
+keep tuning and retuning settings.
+3. For JDK 1.4.2, see http://java.sun.com/docs/hotspot/gc1.4.2/index.html. For Java 5, see
+http://java.sun.com/docs/hotspot/gc5.0/gc_tuning_5.html.
+T UNE THE G ARBAGE C OLLECTOR 216
+Joe Asks. . .
+What About Object Pooling?
+In early versions of Java (around the 1.2 time frame), the idea
+that long-lived objects were good gained currency. I specifically remember being told that “creating an object is the second most expensive thing you can do in Java” (the first being
+creation of a new thread). The answer, supposedly, was to
+avoid creating objects whenever possible. Instead, you were
+supposed to keep objects around and reuse them.
+Whether that was ever true is the subject of heated debate
+in the Java community. Either way, with current JVMs, object
+pooling is not the answer. Some systems have gone to ridiculous lengths to avoid creating new objects. They add so much
+complexity and bookkeeping that any possible performance
+gains will be wiped out.
+The following table shows timing from a simple application that
+uses a NameFormatter to format 50,000 names. In the “pooled”
+configuration, the Jakarta “commons-pool” package is used
+to make an object pool to reuse the NameFormatter. In the
+“unpooled” configuration, 50,000 individual NameFormatters are
+created. The data clearly show that the bookkeeping overhead of the pool overwhelms the expense of constructing the
+objects. (All tests are against JDK 1.4.2.)
+OS CPU Speed Overhead Overhead
+Pooled Disposable
+Windows XP Pro 1.86 GHz 20.30% 10.17%
+Linux 2.6.14 2.66 GHz 31.46% 23.42%
+Mac OS 10.4.4 1.67 GHz 24.69% 15.69%
+Reserve object pooling for objects that really are expensive to
+create, such as network connections, database connections,
+and worker threads.
+S UMMARY 217
+Remember This
+Tune the garbage collector in production
+User access patterns make a huge difference in the optimal settings, so you can’t tune the garbage collector in development or
+QA.
+Keep it up
+You will need to tune the garbage collector after each major application release. If you have an annual demand cycle, you will also
+need to tune it at different times during the year, as user traffic
+shifts between features.
+Don’t pool ordinary objects
+The only objects worth pooling are external connections and
+threads. For everything else, rely on the garbage collector.
+10.5 Summary
+Resource pools can be a source of capacity-killing contention. Done
+well, however, they are a significant capacity enhancer. A connection
+pool eliminates up to 500 milliseconds from every transaction. Several
+strategies for connection management are available, each with benefits and drawbacks. These include the “per-page,” “per-fragment,” and
+hybrid models.
+Caching is a double-edged sword. Done well, it will greatly increase a
+system’s capacity to support users. As typically practiced, caches can
+grow too large, cached items never get flushed, and cheap objects are
+cached with no benefit. Limiting cache sizes is crucial. Java developers
+should make use of the SoftReference objects to collaborate with the
+garbage collector in managing cached objects.
+Examine multiplier effects to find the right leverage points to make
+improvements. For example, dynamically rendered content a million
+times a day, when the content changes once a week, puts your system
+on the wrong side of a multiplier effect. The benefit is gained once a
+week, while the cost is borne a million times a day. The act of rendering
+that content once, whenever the underlying data changes, and storing
+the precomputed result provides a benefit a million times a day with
+the cost of managing the cache borne once a week.
+Garbage collector tuning is vital to Java applications. It is not a onetime operation but rather an ongoing process. Each code release can
+change garbage collection patterns enough to merit retuning.
+
+---
+
+## Sección 18: Chapter 11 [Entropy: 0.544]
+
+General Design Issues
+Networking
+Networking in the data center goes far beyond the application-level
+sockets API. Data center network designs favor redundancy, security,
+and flexibility far more than networks to the desktop. An application
+requires some additional work to behave properly in this environment.
+11.1 Multihomed Servers
+Multihoming is the most striking difference between a machine in development or QA environments and the data center. Nearly every server
+in a data center will be multihomed. A server with more than one IP
+address is a multihomed server; it exists on several networks simultaneously. This architecture improves security by separating administration and monitoring onto its own highly secured network. It improves
+performance by segmenting high-volume traffic, such as backups,
+away from the production traffic. I’m sure you’ve experienced a network
+slowdown due to system backups. Backups can saturate any network,
+since they always run at full throttle. If you make a faster network, it
+just means the backups finish faster (up to a point, of course). These
+networks have very different security requirements, and an application
+that is not aware of the multiple network interfaces will easily end up
+accepting connections from the wrong networks. For example, it could
+accept administrative connections from the production network or offer
+production functionality over the backup network.
+As shown in Figure 11.1, on the next page, this single server has four
+different network interfaces. In Linux, these would be eth0 through eth3.
+M UL TIHOMED S ERVERS 220
+Server
+Switch 1 Switch 2
+Backup
+Switch
+Admin
+Switch
+nic0 nic1
+nic2 nic3
+172.16.64.190 172.16.32.190
+10.10.1.190 192.168.104.190
+Figure 11.1: Multiple Network Interfaces
+For Solaris, they could be ce0 through ce3 or qfe0 through qfe3, depending on the network card and driver version. Windows would give the
+interfaces incredibly long and unwieldy names by default.
+Of the four interfaces, two of them are dedicated to “production” traffic. These handle the application’s functionality. If the server is a
+web server, then these handle the incoming requests and send the
+replies back. In this example, both interfaces are for production traffic.
+Because these are running to different switches, the server appears to
+be configured for high availability. These two interfaces might be load
+balanced, or they might be set up as a failover pair. As shown, two different IP addresses will get packets to this server. That means there are
+probably DNS entries for both addresses. In other words, this machine
+has more than one name! It has its own internal hostname—the string
+returned by the hostname command—but from the outside, more than
+one name reaches this host.
+Another common configuration for multiple production interfaces is
+bonding, or teaming. In this configuration, both interfaces share a
+common IP address. The operating system ensures that an individ-
+M UL TIHOMED S ERVERS 221
+ual packet goes out over only one interface. Bonded interfaces can be
+configured to automatically balance outbound traffic or to prefer one
+link or the other. Bonding interfaces that connect to different switches
+requires some additional configuration on the switches, or else routing
+loops can result. You’ll be very famous if you cause a routing loop in
+the data center, but not in a good way.
+The two additional “back-end” interfaces are dedicated to specialpurpose traffic. Because backups transfer huge volumes of data in
+bursts, they can clog up a production network. Therefore, good network
+design for the data center partitions the backup traffic onto its own network segment. These are sometimes handled by separate switches and
+sometimes just by separate VLANs on the production switches. With
+backup traffic partitioned off from the production network, application
+users do not necessarily suffer when the backups run. (They might,
+if the server doesn’t have enough I/O bandwidth to process backups
+and application traffic at the same time. Nevertheless, users of other
+applications don’t suffer when this server is being backed up.)
+Finally, many data centers have a specific network for administrative
+access. This is an important security protection, because services such
+as SSH can be bound only to the administrative interface and are therefore not accessible from the production network. This can help if a firewall gets breached by an attacker or if the server handles an internal
+application and does not sit behind a firewall.
+This multitude of interfaces affects the application software. By default,
+an application that listens on a socket will listen for connection
+attempts on any interface. For example, the Java ServerSocket class has
+four constructors as of Java 5. Three of these constructors bind to every
+interface on the server. Only the long form of the constructor can take
+a specific local address to define to which interface it should bind.
+InetAddress addr = InetAddress.getByName(
+"alpha.example.com" );
+ServerSocket socket = new ServerSocket(80, 50, addr);
+Socket local = socket.accept();
+...
+Without the address, ServerSocket will bind to all interfaces, which
+would allow connections over the backup or administration networks
+to the production server. Or, conversely, it could allow connections over
+the production network to the administrative interface!
+R OUTING 222
+To determine which interfaces to bind to, the application must be
+told its own name or IP addresses. This is a big difference with multihomed servers. In development, the server can always call InetAddress.getLocalHost( ), but on a multihomed machine, this simply returns
+the IP address associated with the server’s internal hostname. This
+could be any of the interfaces, depending on local naming conventions.
+Therefore, server applications that need to listen on sockets must add
+configurable properties to define to which interfaces the server should
+bind.
+11.2 Routing
+Because servers in production usually have multiple network interfaces, questions will sometimes arise about which interfaces particular
+kinds of traffic should traverse. For example, it is relatively common to
+see an application server with a front-end network interface connected
+to one VLAN for communication to the web servers and with a back-end
+network interface connected to a different VLAN for communication to
+the database servers. In this case, the server must be told which interface to use in order to reach a particular destination IP address.
+In the case of nearby servers, the routes are probably easy; they will
+just be based on the subnet addresses. In the example of the application server, the back-end interface probably shares a subnet with the
+database server, while the front-end interface probably shares a subnet
+with the web servers. Routing gets a bit more complicated when distant
+services—perhaps third-party services—are involved.
+Consider the case of a third-party spam cannon service. Data sent by Spam cannon: a vendor
+doing high-volume email
+transmission, usually
+based on an XML feed of
+names and addresses.
+They fill in pretty,
+predefined HTML
+templates with personal
+data collected by the
+subscriber. They have
+high-bandwidth
+connections and, not
+often enough, algorithms
+to avoid crushing SMTP
+servers at small ISPs.
+Their hard work usually
+goes straight into “spam”
+folders.
+application servers to the spam cannon should probably not go straight
+over the public Internet. Instead, it is probably routed over the backend interface of the application servers through a VPN to the service.
+Getting these routing issues right requires attention to each and every
+integration point. Getting them wrong risks reduced availability or,
+worse, exposure of customer data. For each connection to a remote
+system, I recommend keeping a record in a spreadsheet or a Microsoft
+Access database of the destination name, address, and desired route.
+Someday, somebody is going to need that information to write firewall
+rules anyway.
+V IR TUAL IP A DDRESSES 223
+Server 1
+active
+Switch 1
+Real IP
+172.16.64.190
+Server 2
+passive
+Real IP
+172.16.64.191
+Virtual IP
+172.16.67.10
+Before Failover
+Server 1
+failed
+Switch 1
+Real IP
+172.16.64.190
+Server 2
+active
+Real IP
+172.16.64.191
+Virtual IP
+172.16.67.10
+After Failover
+Figure 11.2: Virtual IP Address Migration
+11.3 Virtual IP Addresses
+Believe it or not, not every application is written to run across a cluster. For whatever reason, these applications can be active on only one
+server at a time. How can you get high availability out of an application,
+without the redundancy of running it on multiple servers?
+Cluster servers are the answer. A cluster server is an application that
+acts like a controller for other applications. A cluster server such as
+HP ServiceGuard, Veritas Cluster Server, or Microsoft Cluster Server 1
+runs on multiple servers, collaborating across the servers to ensure
+that a specific “package” runs exactly once somewhere in the cluster.
+By configuring packages for applications, filesystems, and IP addresses,
+it is possible to have the cluster server orchestrate a clean shutdown
+on one server and startup on another server. Most of the time, the
+application itself is unaware that it has been clustered.
+Suppose the server hosting a critical—but not natively clustered—
+application goes down. The cluster server on its failover node will notice
+the lack of a regular heartbeat from the failed server. This cluster server
+then decides that the original server has failed.
+1. Now renamed to Microsoft Windows Server 2003 Clustering Services. Say that three
+times fast.
+V IR TUAL IP A DDRESSES 224
+Two Flavors of Virtual IP
+Unfortunately, the term virtual IP is overloaded. Generally
+speaking, it means an IP address that is not strictly tied to an
+Ethernet MAC address. Cluster servers use it to migrate ownership of the address between the members of the cluster. Load
+balancers use virtual IPs to multiplex many services (each with
+its own IP address) onto a smaller number of physical interfaces. There is some overlap here, since load balancers typically come in pairs, so the virtual IP—as in “service address”—
+can also be a virtual IP as in “migrating address.”
+It starts up the application on the secondary server, including mounting
+any required filesystems. It will also take over the virtual IP address
+assigned to the clustered network interface.
+A virtual IP address is just an IP address that can be moved from one
+NIC to another as needed. At any given time, exactly one server claims
+the IP address. When the address needs to be moved, the cluster server
+and the operating systems collaborate to do some funny stuff in the
+lower layers of the TCP/IP stack. They associate the IP address with
+a new MAC address (hardware address) and advertise the new route
+(ARP). Figure 11.2, on the preceding page depicts a virtual IP address
+before and after the active node fails.
+Virtual IP addresses are often used for active/passive database clusters. Clients are instructed to connect only to the DNS name for the
+virtual IP address, not to the hostnames of either node in the cluster.
+That way, no matter which node currently holds the IP address, the
+client can connect to the same name.
+Of course, this approach cannot migrate the in-memory state of the
+application. As a result, any nonpersistent state about interactions will
+be lost. For databases, this includes uncommitted transactions. Some
+database drivers—such as a Oracle’s JDBC and ODBC drivers—will
+automatically reexecute queries that are aborted because of a failover.
+Updates, inserts, or stored procedure calls cannot be automatically
+repeated. Therefore, any application calling a database through a virtual IP should be prepared to get a SQLException when such a failover
+occurs.
+V IR TUAL IP A DDRESSES 225
+In general, if your application calls any other service through a virtual
+IP, it must be prepared for the possibility that the next TCP packet
+isn’t going to the same interface as the last packet. This can cause
+IOExceptions in strange places. The application logic must be prepared
+to handle that error—and handle it differently than just a “destination
+unreachable” error. If at all possible, the application should retry its
+request against the new node (but see Pattern 5.2, Circuit Breaker, on
+page 115 for some important safety limits on retries).
+
+---
+
+## Sección 19: Chapter 12 [Entropy: 0.265]
+
+Security
+Full treatment of application security is way beyond the scope of this
+book. The topics covered in this chapter earned their place by sitting in
+the intersection of software architecture, operations, and security.
+12.1 The Principle of Least Privilege
+The principle of “least privilege” mandates that a process should have
+the lowest level of privilege needed to accomplish its task. For application software, this never includes running as root (UNIX/Linux) or
+Administrator (Windows). Anything these applications need to do, they
+can do as nonadministrative users.
+I’ve seen Windows servers left logged in as Administrator for weeks at a
+time—with remote desktop access—because that’s what some piece of
+software required. (This particular package also was not able to run as
+an NT service, so it was essentially just a Windows desktop application
+left running for a long time. That is not what I call data center ready!)
+Software that requires execution as root is automatically a target
+for crackers. Any vulnerability in root-level software automatically
+becomes a critical issue. Once a cracker has gained root access, the
+only way to be sure the server is safe is to reformat and reinstall. Worse
+yet, for horizontally scalable applications, you might have to reinstall
+the entire cluster.
+To further contain vulnerabilities, each major application should have
+its own user. The “apache” user should not have any access to the
+“websphere” user, for example.
+C ONFIGURED P ASSWORDS 227
+Opening a socket on a port numbered less than 1024 would be the only
+thing for which a UNIX application might require root privilege. Web
+servers often want to open port 80 by default. Any web server sitting
+behind a load balancer (see Section 13.3, Load Balancing, on page 232)
+can use any port, including ones numbered 1024 or greater. Only the
+load balancer needs to listen to port 80.
+A web server that is not behind a load balancer (I assume there’s a
+good reason, though I can’t think of one right now) will need to run as
+root in order to listen on port 80. Peel back the lid on Apache, however,
+and you’ll find that it uses “privilege separation” to deliberately give
+up root access after it opens the socket. It uses low-level C functions
+to downgrade its own status to the configured user (usually “apache”).
+This is a one-way trip; the process cannot regain root privileges once it
+gives them up.
+12.2 Configured Passwords
+Passwords are the Achilles heel of application security. There’s obviously no way that somebody can interactively key in passwords every
+time an application server starts up. Therefore, database passwords
+and credentials needed to authenticate to other systems must be configured in persistent files somewhere.
+As soon as a password is in a text file, it is vulnerable. Any password
+that grants access to a database with customer information is worth
+thousands of dollars to an attacker and could cost the company thousands in bad publicity or extortion. These passwords must be protected
+with the highest level of security achievable.
+At the absolute minimum, passwords to production databases should
+be kept separate from any other configuration files. They should especially be kept out of the installation directory for the software. (I’ve
+seen operations zip up the entire installation folder and ship it back
+to development for analysis. This happens most often when questions
+arise about the production configuration and whether the software was
+installed and configured correctly.) Files containing passwords should
+be made readable only to the owner, which should be the application
+user. If the application is written in a language that can execute privilege separation, then it is reasonable to have the application read the
+password files before downgrading its privileges. In that case, the password files can be owned by root. Beware! If the application keeps these
+C ONFIGURED P ASSWORDS 228
+files in memory, then memory dumps will also contain the passwords.
+For UNIX systems, core files are just memory dumps of the application.
+If an attacker can provoke a core dump and has access to a server’s
+filesystem, then he can get the passwords. It’s best to disable core
+dumps on production applications. For Windows systems, the “blue
+screen of death” indicates a kernel error, with an accompanying memory dump. This dump file can be analyzed with Microsoft kernel debugging tools, and depending on the configuration of the server, it can contain a copy of the entire physical memory of the machine—passwords
+and all. 1
+Password vaulting keeps passwords in encrypted files, which reduces
+the security problem to that of securing the single encryption key rather
+than securing multiple text files. This can assist in securing the passwords, but is not, by itself, a complete solution. Because it is easy
+to inadvertently change or overwrite file permissions, intrusion detection software such as Tripwire 2 or Open Source Tripwire 3 should be
+employed to monitor permissions on those vital files.
+1. In fact, there’s a registry edit to enable a key combination (no, I’m not going to give it
+here) that will force a memory dump and system halt. If you ever see a “blue screen
+of death” with the text “the end-user manually generated the crashdump,” then you
+are under attack. In fact, it’s best to make sure that “feature” is not enabled on any
+production server.
+2. See http://www.tripwire.com/.
+3. See http://www.sourceforge.net/projects/tripwire.
+
+---
+
+## Sección 20: Chapter 13 [Entropy: 0.385]
+
+Availability
+Divorcing a “want” from its cost always leads to unrealistic desires. Ask
+a group of children how much ice cream they want, and the answer is
+usually, “All of it.” The young ones have no concept of the various costs
+of eating a gallon of ice cream: there’s the direct cost of paying for the
+ice cream and the indirect costs of damaged health, weight gain, and
+that queasy, flip-floppy feeling in your tummy.
+This section discusses the difficult feat of balancing the tension
+between the dual forces of desire for greater availability and desire to
+minimize cost. These forces are in direct opposition; guaranteed availability necessarily increases costs.
+13.1 Gathering Availability Requirements
+Asking the sponsors of your system, “How highly available should this
+be?” probably results in one of two answers. The less experienced sponsors will simply reply, “100%.” The more knowledgeable will say, “five
+nines” because it sounds cool and technical. But are five nines really
+required?
+The proper way to frame the availability decision is in straightforward
+financial terms: actual cost vs. avoided losses. For example, “98% availability” translates to 864 minutes of downtime each month. That downtime has a direct cost because of lost revenue. Suppose the site brings
+in $1,500 per hour during the peak of the day—the worst possible time
+to be down. Then the worst-case loss with 98% availability is about
+$21,600. Now compare the minutes of downtime avoided by building a
+more reliable system. Improving the availability to 99.99% reduces the
+expected cost of downtime to just $108 per month—gaining $21,492
+per month over the 98% availability case.
+D OCUMENTING A VAILABILITY R EQUIREMENTS 230
+So, should the system be built to achieve 99.99% availability? It’s like
+that ice cream question. Without considering the cost, of course the
+desire will be unlimited. Each “9” of availability increases the implementation cost by about a factor of ten and the operational cost per
+year by about a factor of two. In this example, the additional lifecycle cost—implementation cost plus operational cost for the five-year life
+span of the system—amounted to $98,700. Spending $98,700 to save
+$1,289,520 seems like a sound financial choice.
+Availability 98% 99.99%
+Downtime Min/Month 864 4
+Downtime $/Month $21,600 $108
+Added Cost $0 $98,700
+Net Savings $0 $1,289,520
+13.2 Documenting Availability Requirements
+Want to guarantee nasty conflicts? Take a word with multiple, fuzzy
+definitions, force people to strike an agreement about it, attach large
+amounts of money to it, and then watch them fight about it a year or
+two later.
+I’m describing, of course, the inevitable effect of poorly defined servicelevel agreements about availability. SLA definitions are like the details
+in your medical insurance plan. Nobody reads them too closely until
+something awful happens. If you’re having a conversation about SLA
+definitions a year after the system launched, odds are it’s a heated
+discussion following an incident. Once you’re in that situation, it’s too
+late.
+You can prevent (or at least diminish) the blamestorming by working
+out a precise service-level agreement with the system’s sponsors in the
+beginning. It is not enough to write down, “The system shall be available
+99.9% of the time” on a piece of paper. Vagueness lurks behind every
+word of that sentence.
+What is “the system?” Unless it is trivial, “the system” probably includes
+calls to other systems inside and outside the enterprise. Are you really
+going to take accountability for all of those? I wouldn’t! Also, if the system employs stability patterns like Circuit Breaker, then at any given
+time, the system as a whole might be up and running—responding to
+requests or generating web pages—but specific features might not be
+working. Rather than stating that “the system” will be available, it is
+D OCUMENTING A VAILABILITY R EQUIREMENTS 231
+better to define the SLAs in terms of specific features or functions of
+the system. A hotel chain, for example, might be interested in several
+key functions of its website: property locator, online reservations, subscription to the loyalty club, event bookings, and so on. Each of these
+features has different levels of importance to the business. Event bookings and online reservations both generate revenue, so they are likely
+to have the highest SLAs attached to them. Beware of the SLA Inversion antipattern (see Antipattern 4.10, SLA Inversion, on page 102); you
+cannot offer a better SLA than the worst of the external dependencies
+involved in a feature. For example, loyalty club programs are often handled by a third party, so this SLA can only be a pass-through, at best,
+of the vendor’s own SLA.
+Once you’ve isolated each feature or business process, you can define
+the required level of availability. Not to sound too much like a lawyer,
+but “availability” itself needs to be defined. How is the feature being
+checked? Is it a human clicking a mouse around? (I hope not.) Maybe
+it’s the army of users, and problems are reported via a help desk. (I
+really hope not!) It’s best to have some automated system checking
+the availability of a feature by executing synthetic transactions against
+it. The SLA should define what device or devices will be monitoring Synthetic transaction:
+work submitted to a
+system that emulates a
+real user. You must have
+some way to indicate
+this is for monitoring—
+such as a designated
+user ID—to avoid polluting the production
+data.
+the availability of the feature. Furthermore, it should define how that
+monitoring device will report problems.
+If a feature is functioning but takes twenty-seven-and-a-half minutes to
+respond, most users would not consider it to be “available.” So, there’s a
+time component involved. What if the transaction responds in fifty milliseconds but returns errors to everyone? That’s also not really available, so there must be some definition about what a good response
+looks like. How about a feature that’s wobbling up and down but acts
+like a car at the mechanic and seems OK whenever the monitoring
+device checks it? A good definition should nail down each of these variables:
+• How often will the monitoring device execute its synthetic transaction?
+• What is the maximum acceptable response time for each step of
+the transaction?
+• What response codes or text patterns indicate success?
+• What response codes or text patterns indicate failure?
+L OAD B ALANCING 232
+• How frequently should the synthetic transaction be executed?
+• From how many locations?
+• Where will the data be recorded?
+• What formula will be used to compute the percentage availability?
+Based on time or number of samples?
+When the fur flies, paper makes a thin shield, but having this definition
+might help focus attention on the data rather than making it a personal
+issue.
+13.3 Load Balancing
+Horizontally scalable systems achieve both availability and scalability
+through multiplicity. Adding more machines to increase capacity simultaneous improves resiliency to impulses. The smaller servers used in Impulse: a short, sharp
+shock to the system. A
+whack with a hammer. horizontally scalable architectures also cost far less and allow you to
+add capacity in small increments. What’s not to like?
+Building systems for horizontal scaling automatically implies some
+form of load balancing. Load balancing is all about distributing requests
+across a pool or farm of servers to serve all requests correctly in the
+shortest feasible time. Throughout the remainder of this book, I will
+commonly refer to designs and situations involving one of these forms
+of load balancing.
+DNS Round-Robin
+DNS robin-robin load balancing is the oldest of the techniques I’ll discuss here—dating back to the early days of the web. It operates at the
+application layer (layer 7) of the OSI stack, but instead of operating
+during an actual request, it operates during address resolution.
+This technique simply associates several IP addresses with the service name. This is most commonly used with small-to-medium business websites, so instead of finding a single IP address for “bobscleaners.example.com,” a client would get one of several addresses. Each IP
+address points to a single server. The client therefore connects to one
+out of a pool of servers, as shown in Figure 13.1, on the following page.
+Although this serves the basic purpose of distributing work across a
+group of machines, it does poorly on other essential criteria. For one
+thing, all the servers in the pool must be “routable.” That is, though
+L OAD B ALANCING 233
+DNS Server
+ns1.example.com
+Web Server 2
+www2.example.com
+10.1.1.142
+www.example.com?
+User's Browser
+10.1.1.142
+GET /index.html HTTP/1.1
+200 OK ...
+Web Server 3
+www3.example.com
+10.1.1.143
+www.example.com?
+GET /index.html HTTP/1.1
+200 OK ...
+10.1.1.143
+Figure 13.1: DNS Round-Robin Load Balancing
+they can sit behind a firewall, their front-end IP addresses are visible
+and reachable from clients. These days, that just invites attacks.
+In addition to the security concerns, the DNS round-robin approach
+suffers from putting too much control in the client’s hands. Since the
+client connects directly to one of the servers, there is no opportunity to
+redirect that traffic if one particular server is down. The DNS server has
+no information about the health of the web servers, so it can keep vending out IP addresses for web servers that are toast. Furthermore, doling
+out IP addresses in round-robin style does not guarantee that the load
+is distributed evenly, just the initial connections. Some clients consume
+more resources than others, leading to unbalanced workloads. Again,
+when one of the servers gets busy, the DNS server has no way to know,
+so it just keeps sending every eleventh connection (or whatever) to the
+staggering server.
+DNS round-robin load balancing is inappropriate whenever the calling system is another long-running enterprise system. Anything built
+on Java will cache the first IP address received from DNS, guaranteeing that every future connection targets the same host and completely
+defeating load balancing.
+L OAD B ALANCING 234
+Reverse Proxy Server
+www.example.com
+Web Server 1
+ws1.example.com
+GET /index.html
+User's Browser
+200 OK ...
+GET /index.html
+200 OK ...
+Figure 13.2: Reverse Proxy Server
+Some Apache configurations also perform round-robin style URL
+rewriting. This is visible to the user, when “www.example.com” suddenly becomes “www7.example.com.” Unfortunately, this approach
+performs even worse than DNS round-robin, because of a user’s
+tendency to bookmark individual servers instead of the “front door”
+address.
+Reverse Proxy
+A reverse proxy server addresses limitation in the DNS round-robin
+approach by acting as an interceptor for every request. In this case,
+DNS resolves the service name to exactly one IP address. The device
+listening to that IP address will be a typical host, running a proxy server
+configured in “reverse proxy server” mode, as shown in Figure 13.2.
+A normal proxy multiplexes many outgoing calls into a single source
+IP address. A reverse proxy server does the opposite: it demultiplexes
+calls coming in to a single IP address and fans them out to multiple
+addresses. In the case of web servers, Squid, the popular open source
+proxy server, makes a great reverse proxy server. 1 Apache’s mod_proxy
+also allows a special-purpose server to act as a reverse proxy for a farm
+or cluster of other Apache servers.
+Like the DNS round-robin trick, reverse proxy servers do their magic at
+the application layer. As such, they are not transparent, but adapting
+to them is not onerous. Application servers and web servers must be
+1. See http://www.squid-cache.org/ for configuration instructions.
+L OAD B ALANCING 235
+configured to generate URLs for hostnames not their own. Logging the
+source address of the request (as is done by Apache’s “Common” log
+format) is useless, because it will represent only the proxy server. 2
+In addition to load balancing, you can configure reverse proxy servers
+to reduce the load on the web servers by caching static content. This
+provides some benefits in reducing the traffic on the internal network.
+(By sending static content from the reverse proxy server, it traverses
+only one or two links on its way out of the network. Coming from the
+web server, it would probably cross two or three.) If the web servers are
+the capacity constraint in the system (see Section 8.2, Constraints, on
+page 162), then offloading this traffic will improve the system’s overall
+capacity. Of course, if the proxy server itself is the constraint, then this
+will not help or hurt.
+The biggest reverse proxy server “cluster” in the world is Akamai. Akamai’s basic service functions exactly like Squid, configured as a caching
+proxy. Akamai has certain advantages over Squid, including a large
+number of servers located near the end users, but is otherwise logically
+equivalent. 3
+Because the reverse proxy server is involved in every request, it can
+get burdened very quickly. Once you start having to add a layer of
+load balancing in front of your reverse proxy servers, it’s time to look
+at other options. Also, because the proxy server is in the middle of
+every request, it should be able to keep track of which origin servers
+are healthy and responsive. Unfortunately, the most commonly used
+reverse proxy servers—Squid and Apache—do not. They will happily
+direct an incoming request to a dead server, wait for a timeout, and
+then return an error to the caller.
+Hardware Load Balancer
+Hardware load balancers are specialized network devices that serve a
+similar role to the reverse proxy server. These devices, such as Cisco’s
+2. It is possible, however, to use a custom log format to log the X-Forwarded-For header
+that Akamai and other well-behaved proxies add to the request. Note that ill-behaved or
+malicious proxies are unlikely to conform to that part of the standard. As a result, that
+header will be least reliable when you most need to trace the origin of some traffic, such
+as an attack. In such cases, you have to rely on correlating your log files with the proxy’s
+log files.
+3. Please note, I’m talking only about Akamai’s basic service, currently called Web Application Accelerator. Its other services go far beyond Squid!
+L OAD B ALANCING 236
+Load Balancing with Apache 2.2
+As of version 2.2, Apache includes the new mod_proxy_balancer
+module. This is a very intelligent load-balancing module with
+more capability. It can “balance” a load proportionally to the
+capacity of the web servers behind it—although you have to
+configure the proportions yourself.
+Apache operates at layer 7 of the venerable OSI model;∗ it’s
+an application. Dedicated hardware will tend to be faster and
+reach higher volumes. For many sites, however, avoiding the
+$50,000 expense of a pair of dedicated hardware load balancers will matter more than the reduced ceiling. Besides, no
+design is static, so if the site starts to bump up against a constraint in the open source load balancers, they can always be
+replaced with the higher-capacity hardware solution.
+∗. See http://en.wikipedia.org/wiki/OSI_model.
+11500 Series Content Services Switch or F5’s BigIP products, provide
+the same kind of interception and redirection capabilities as the reverse
+proxy software. Because the operate closer to the network, hardware
+load balancers frequently provide better administration and redundancy features. For example, the CSS can periodically check on the
+health of the servers in its pool, as shown in Figure 13.3, on the next
+page. The load balancer removes dead servers from its service pool,
+directing connections to the healthy ones.
+Hardware load balancers are application-aware and can provide switching at layers 4 through 7 of the OSI stack. In practice, this means they
+can load balance any connection-oriented protocol, not just HTTP or
+FTP. I have seen these successfully employed to load balance a group
+of search servers that didn’t have their own load managers. They can
+also hand off traffic from one entire site to another, which is particularly
+useful for diverting traffic to a failover site for disaster recovery.
+SSL poses challenges for any of these solutions. Hardware load bal- SSL: Secure Sockets
+Layer. Connections
+encrypted for
+confidentiality and
+integrity. Relatively CPU
+intensive.
+ancer are often used as SSL “accelerators.” Frankly, in my opinion, that
+puts the load balancer on the wrong end of both Moore’s law—that web
+servers can be replaced with faster machines every eighteen months—
+and scalability; after all, there are going to be more web servers than
+hardware load balancers. Furthermore, the web servers are probably
+L OAD B ALANCING 237
+HW Load Balancer
+www.example.com
+Web Server 1
+ws1.example.com
+GET /index.html
+User's Browser
+200 OK ...
+GET /index.html
+200 OK ...
+Web Server 1
+ws1.example.com
+GET /healthy.html
+200 OK ...
+GET /healthy.html
+Figure 13.3: Hardware Load Balancer
+not doing much, whereas the load balancer is involved in every single
+request. Using the load balancer to handle SSL decryption does make
+managing SSL certificates easier, since there is just a pair of devices to
+update, rather than a dozen or so web servers. In fact, if the load balancers handle multiple VIPs for different domains, then all of your SSL
+certificates could be on the same pair of machines (assuming they’re
+big enough to handle the load!).
+Hardware load balancers can provide a number of application-level services, including checking for HTTP error codes and redirecting to different error pages based on the web servers’ reply. For HTTPS, you
+have two choices: you can use the load balancer for SSL and keep the
+application-level services, or you can terminate SSL connections at the
+web servers, essentially using the load balancer as a smart switch and
+giving up the application-level services. If it tried to pass SSL connections directly to web servers while also examining the content, then
+the load balancer would essentially be performing a man-in-the-middle
+attack against the encrypted channel between the browser and server.
+The big drawback to these machines is—of course—their price. Expect
+to pay in the five digits for a low-end configuration. High-end configurations, such as those needed for a first-tier retailer, easily run into the
+six digits.
+C LUSTERING 238
+13.4 Clustering
+Load balancing does not require collaboration between the separate
+servers. When the servers are aware of each other and actively participate in distributing load, then they form a cluster. Clusters can be
+used for load balancing, in the case of active/active clusters. They can
+also be used for redundancy in the case of failure. These are called
+active/passive clusters, meaning that one server handles all the load
+until it fails and then the passive one takes over and becomes active.
+Fully load-balanced farms scale close to linearly. Load-balanced clusters do not. Clusters incur some communication overhead in heartbeats Heartbeat: packets sent
+between clustered
+servers, usually on a
+separate network,
+indicating “I’m still
+alive.”
+and state synchronization. As a result of this overhead, the capacity of
+a cluster scales less than linearly and might flatten out severely as the
+number of servers increases. This imposes a practical size limit on clusters, though the limit varies depending on the servers being clustered.
+Some applications build in their own clustering. WebSphere, WebLogic,
+Oracle, and Microsoft SQL Server all have their own clustering technology built in. With these, the application software coordinates its
+own availability and failover. Such applications inevitably have certain “master control” nodes responsible for directing work to different
+nodes in the cluster. These control nodes can be a weak point in the
+architecture—for example, if there is only one—and will usually be the
+first nodes to hit capacity limitations.
+For applications that do not have their own native clustering, it is possible to run them under the control of a cluster server, such as Veritas Cluster Server or Microsoft Windows Server Clustering Services
+(whew). The cluster server acts like an exoskeleton, running the clustered application as a child process. The cluster servers pass heartbeats
+between themselves and often use a “quorum volume” on a network
+drive to synchronize their activities. If the cluster servers detect that a
+node has failed, they run a predetermined sequence of actions to bring
+the clusters applications back up on a surviving node. These actions
+include some variation of taking over one or more filesystems, starting
+an application from scratch or activating an application from memory
+image, and taking over a virtual IP address.
+I am ambivalent about cluster servers. At the same time, they are marvelous and kludgy. They can add redundancy and failover to applications that weren’t designed for it. Configuring the cluster server itself
+C LUSTERING 239
+is finicky, though, and applications usually have a few small glitches
+when failing over. The biggest drawback is probably that these run in
+active/passive mode. So, redundancy is achieved, but scalability is not.
+I consider cluster servers a Band-Aid for applications that don’t do it
+themselves.
+
+---
+
+## Sección 21: Chapter 14 [Entropy: 0.46]
+
+Administration
+If your system is easy to administer, it will have good uptime. What’s
+more, you’ll find it easy to get help and resources from operations. On
+the other hand, if your system is difficult or annoying to administer, it
+will be neglected, deprecated, and probably implemented incorrectly. It
+might even get sabotaged.
+Administrators have a difficult, thankless job. They’re almost never
+consulted or involved during the design and architecture of a system.
+Instead, they get some partially baked software thrown over the wall at
+them, which they must then somehow fit into their routine of operations.
+There’s another, more fundamental conflict, too. Developers and users
+both view change as positive. Each new release means new features—
+with corresponding increases in revenue—bugs corrected and design
+improvements. Releases add value. For administrators, it’s exactly the
+opposite. They have to do more work to deploy the new release. Furthermore, after each release, the system will behave differently than it
+did before. Old log messages or commands disappear, replaced by new
+ones. Old failure modes might be fixed, but there might be new ones,
+too, that nobody knows how to detect. When every lesson has to be
+learned the hard way, you become very conservative. Both views are
+simultaneously correct!
+Administrators can be powerful allies or enemies. (After all, they probably talk to the IT managers much more often than you do.) The good
+news is that it doesn’t require bribes or loyalty oaths to win their allegiance. Just understand their motivations, and commit to making their
+work easier. When their work is easier, they will do a better job—both
+because they can and because they will want to do so.
+“D OES QA M ATCH P RODUCTION ?” 241
+Here are some ways you can make your administrators happy by making your software easier to administer.
+14.1 “Does QA Match Production?”
+File this question under, “I wish I had a nickel.” Anytime a deployment
+fails or some bug surfaces in production, people will naturally ask why
+the issue wasn’t discovered during testing. It is an important question
+to ask and answer. Nine times out of ten, the immediate corollary question will be, “Are there any differences in configuration between QA and
+production?”
+This question is what I call a “gimme.” It is easy to ask, very expensive to answer, and guaranteed to find something different such as
+hostnames and IP addresses, if nothing else. You might be thinking,
+“Why should that be expensive to answer? Isn’t that what configuration
+management systems are all about?” Yes and no. Configuration management systems can tell you exactly when a change was made, who
+made it, and sometimes why. Some of the good ones have operational
+modules that can interrogate systems and identify discrepancies. The
+expensive part is figuring out which discrepancies are known, expected,
+and harmless and which are unexpected and risky. For instance, it
+is common for QA to run on scaled-down hardware. Some vendors,
+typically integrated hardware/software vendors such as HP, deliver
+firmware patches, device driver patches, operating system functionality
+upgrades, and security patches through the same patch bundle mechanism. In these cases, different hardware models might require entirely
+different patch sets.
+At another level, you can also say that QA must differ from production.
+After all, if it were identical down to the last hostname and port number,
+then it wouldn’t be QA...it would be production!
+In my experience, the most common causes of failure are not configurations anyway. I’ve spent at least of hours scrubbing configuration
+files, reconciling expected differences, and highlighting unexpected differences. Once in a while that will turn up something significant, but
+configuration discrepancies are usually not the culprit.
+Most of the time, the real culprit is a mismatch in topology between QA
+and production. What do I mean by topology? Topology is the number
+and connectivity of the servers and applications. If you consider each
+server and application instance to be a node and each connection or
+“D OES QA M ATCH P RODUCTION ?” 242
+dependency to be an arc, you can define a graph that represents the
+system topology. UML deployment diagrams are a useful, but underused, way to depict this.
+Obviously, the main barrier to making QA’s topology match production
+is cost. Here are some ways to make the production topology match QA
+without busting the budget.
+Keep Them Separated
+Keep them separated. Often, applications will share hosts in QA that
+run separately in production. This can lead to hidden dependencies:
+two applications might expect a directory to have synchronized content. They would just work in QA, since it’s the same directory. In
+production, however, there would be no mechanism to keep them in
+sync. (Last-minute cron jobs running rsync don’t count!) Assuming that
+you cannot simply buy the same number of servers for QA that you
+will have in production, what can you do to avoid this kind of hidden
+dependency?
+In cases like this, I recommend VMware. VMware allows you to create multiple virtual hosts on a single physical machine. Each virtual
+machine looks and acts like its own independent server, complete with
+its own operating system installation, IP address, and hostname. If
+two applications will run on separate hosts in production but must
+share the same hardware in QA, you can run them in separate VMware
+instances on the shared machine. (This also has the nice benefit of
+allowing you to keep snapshots of particular versions of the applications, which can be a huge help when testing deployment processes!)
+Zero, One, Many
+There’s an old saying that the only sensible numbers in computer science are 0, 1, and many. There is a fundamental difference between
+one-to-one and one-to-many. Sometimes, you will find a single instance
+in QA where production will run multiple instances in a cluster or farm.
+This can make the difference between a point-to-point cache invalidation strategy and a multicast or broadcast strategy, for example. This
+is another case where server virtualization such as VMware will allow
+you to match the production multiplicity in QA. If you are going to run
+a dozen instances in production, you probably don’t need to run a full
+dozen in QA (though see my later remarks about proportionality). You
+should definitely run more than one, however.
+C ONFIGURATION F ILES 243
+You Play the Way You Practice
+In sports, a team will play the real game the same way it practices. Likewise, if the development team works with firewalls in
+the architecture from day one, the team will design accordingly. There’s almost nothing as painful as sitting down with a
+system that’s 95% complete and trying to identify all the firewall
+rules needed to let it function in production. If the development
+team has been working with the firewalls all along, however,
+they will already have the rules documented.
+Keeping track of the firewall rules goes right along with keeping track of integration points. (See Antipattern 4.1, Integration
+Points, on page 46.) Why would there be a hole in the firewall
+if not to call some other system? That’s an integration point.
+An added benefit: these are also the configuration parameters
+most likely to need changes for production.
+Just Buy the Gear
+I’ve seen hours of downtime result from the presence of firewalls or
+load balancers in production that did not exist in QA. The cost of this
+downtime exceeds the cost of the network gear. QA probably doesn’t
+need the top-of-the-line model, but it should have a product from the
+same vendor and product line. After all, where are you testing your
+firewall configuration changes?
+14.2 Configuration Files
+Ruby on Rails might favor convention over configuration, but every
+piece of enterprise-class software I’ve seen has scads of configuration files containing hostnames, port numbers, filesystem locations, ID
+numbers, magic keys, usernames, passwords, and lottery numbers. (I
+made that last one up.) Get any of these properties wrong, and the system is broken. Even if the system seems to work, it could be broken
+without anyone knowing it!
+Configuration files are often obscurely named, buried deep in the directory structure of the code base, or just plain inscrutable. When a
+property is named hostname, is that “my hostname,” “the name of the
+authorized caller,” or “the host I call during the autumnal solstice?”
+Property files suffer from hidden linkages and high complexity—two
+C ONFIGURATION F ILES 244
+of the biggest factors leading to operator error. These files contain the
+most sensitive information in the entire enterprise, short of the CEO’s
+actual compensation—production database passwords. Therefore, they
+are highly secret and accidental errors in other parts of the configuration are not very likely to be discovered by the developers who know
+and care about the difference between “wsdlServer” and “uddlServer.”
+One of the most common errors I see in designing a configuration
+scheme is mixing production configuration with basic plumbing. For
+instance, using the Spring framework to wire beans is wonderful, but
+Spring wants me to put all of my configuration in a single file. 1 That
+includes not only the properties that should change between development and production but also vital details such as object instantiation and relationship. As a result, administrators have to edit, by
+hand, 5,000-line XML files to update a single database password, and
+4,999 of those lines are just land mines, waiting for an errant edit.
+All that painful-sounding “dependency injection” turns out to be pretty
+important for the application to work. Mess it up by accidentally editing something other than the password, and the application breaks in
+obtuse ways. The opportunities for collateral damage are endless.
+It should never be possible for an administrator to break object associations inside the application. That’s just wearing your guts on the
+outside. Whenever possible, keep production configuration properties
+separate from the basic wiring and plumbing of the application. They
+should be in separate files so the administrators do not accidentally
+edit internals.
+Equally importantly, the production configuration files should not be
+anywhere underneath the installation directory of the software itself.
+The installation directory is likely to be overwritten on the next upgrade.
+Would you really want to count on the administrators remembering
+every change they made to configurations over the past six months and
+reapplying them manually after installing the update? Not to mention,
+admins commonly copy entire install trees from one server to another
+to skip the time-consuming installation process. (For example, the first
+step of installation BEA WebLogic 9 is uncompressing the entire 500MB
+file. This step alone takes ten minutes on a 2GHz x86 pizza box.) Backups and restores are issues, too. A restore from tape can easily overwrite the latest production configuration with something much older.
+1. There are ways to modularize these files, but I think the cure is as bad as the disease.
+C ONFIGURATION F ILES 245
+Joe Asks. . .
+Why Don’t They Keep Config Files in Version Control?
+Long ago, programmers coded themselves a solution to the
+problem of lost files and missing revisions: version control. If configuration files are such a big issue for administrators, why don’t
+they just use version control to manage them?
+Some do. In some more advanced shops, administrators use
+tools such as Subversion∗ and cfengine† to manage and
+deploy configurations. An increasing number of IT shops use
+system management suites such as HP OpenView, BladeLogic,
+and Opsware to control configurations.
+In many cases, though, administrators in IT operations haven’t
+had the time to implement and roll out version control, or they
+are not aware of the concept. Some are aware of version control but have never thought of applying it to system configuration files. (I didn’t say it would be a good reason.)
+In any case, I definitely recommend using version control for
+configuration files, with a few constraints:
+• Use a secure repository. These files have database passwords in them!
+• Link version control with a larger change control process.
+You should be able to see why a configuration change
+was made, not just that one happened.
+• Automate the deployment of authorized changes,
+directly from the repository.
+• Make an automated audit process. Files sometimes get
+changed during incident management to restore service
+in a crisis. They sometimes don’t get updated in version
+control afterward. You need to be able to find the deltas
+without automatically overwriting them.
+As an alternative, you could buy and deploy the twenty-seven
+products from BMC that do all of that for you.
+∗. See subversion.tigris.org.
+†. See www.cfengine.org .
+C ONFIGURATION F ILES 246
+Because the same application probably runs on several machines, it
+is likely that some subset of the configuration properties should be
+the same on each machine and some subset should differ. Keep these
+properties in separate places so nobody ever has to ask, “Are those
+supposed to be different?” Also, I’ve found it helpful to have some periodic verification that the machines in a horizontally scaled layer—which
+should remain synchronized—actually are synchronized. Even with
+strong change management procedures, the rule should be, “Trust, but
+verify.”
+Finally, configuration properties are part of the system’s user interface.
+They are the interface the system provides to one of its most overlooked
+constituency: the people who keep it running every day. As such, property names should be clear enough to help the user (the administrator)
+do her job without making “unforced errors.”
+One helpful convention is to name the properties according to their
+function, not their nature. Don’t call it hostname just because it is a
+hostname. That’s like naming a variable integer because it’s an integer or string because it’s a string. It might be true, but it isn’t helpful.
+Instead, name the property authenticationServer. If an administrator sees
+that, she will go looking for an LDAP or Active Directory host.
+The most popular Java application servers are a mixed bag when it
+comes to managing configuration. WebLogic, WebSphere, and JBoss
+each provide spiffy HTML GUIs for editing configurations.
+WebSphere and WebLogic do a credible job of identifying the properties that belong to your application rather than to the system. JBoss
+encourages somewhat more mixing. All of these keep configurations
+thoroughly mixed within the application server installation directory.
+WebSphere at least has a notion of a “configuration repository,” which
+can be used as a master copy of the properties and a source for
+deployment when promoting applications from one environment to the
+next. Still, none of them has separate locations for storing applicationspecific properties and system-level properties.
+.NET developers have a better picture, but only when using the latest
+version of Visual Studio to manage configurations. Of course, only the
+bravest (and most foolhardy) developers would attempt .NET development without Visual Studio anyway.
+S TAR T - UP AND S HUTDOWN 247
+14.3 Start-up and Shutdown
+When a developer starts up an application and it bonks, the developer sees the error, kills the app, and fixes the error. When a host gets
+rebooted in the middle of the night and an application fails on start-up,
+nobody is going to know unless the application itself announces the
+problem. This can be as simple as an error in a log file, if a monitoring system (see Chapter 17, Transparency, on page 265) is already in
+place. Of course, for the application to announce that it failed to start
+up correctly, it first has to know that it failed to start up correctly.
+Build a clean start-up sequence into applications to ensure that components are started in the right order and that the start-up sequence must
+complete successfully before the application starts accepting work. It
+can bind to sockets, for example, but should not accept any connections until the master switch is flipped. Think of it as like getting a
+store ready to open in the morning. You don’t start letting people in
+through the doors just because one employee arrives. Instead, you wait
+until everyone is in place and ready to serve customers properly.
+Don’t accept
+connections until
+start-up is complete.
+If the application requires a connection pool,
+at least some of the connections should be initialized when the application boots up. This is
+another form of Fail Fast (see Pattern 5.5, Fail
+Fast, on page 131) and provides a useful selftest. The app certainly won’t be able to process transactions very well
+without the database! Therefore, if the connection pool initialization
+fails because it cannot create any connections, the entire application
+should be in a failure state.
+Note that this is very different from aborting and exiting if something
+fails during start-up. A running application can be interrogated for its
+internal state (see Chapter 17, Transparency, on page 265), but a halted
+one cannot.
+Clean shutdown is equally important to production readiness. Just
+as that hypothetical retailer wouldn’t lock the doors while customers
+were still inside, applications should not shut down by rudely aborting.
+Instead, each application needs a mode in which it will complete existing transactions but will not accept any new work. Once the in-flight
+transactions have all completed, then the application can exit. Be sure
+to moderate this rule with a timeout (see Pattern 5.1, Use Timeouts, on
+page 111), however, or shutdown might never finish.
+A DMINISTRATIVE I NTERFACES 248
+14.4 Administrative Interfaces
+Spiffy Java GUIs demo very well. They make software look more “enterprisey.” Unfortunately, they are a nightmare in production. The chief
+problem with a GUI is all the dang clicking. I can’t script a bunch of
+clicking. Java GUIs will slow down operations by forcing administrators to do the same manual process on each server (there might be
+many!) every time the process is needed. For example, the clean shutdown sequence on a particular order management system I worked on
+required clicking—and waiting several minutes—on each of six different
+servers. Guess how often the clean shutdown sequence was observed?
+If the change window is only one hour long, I cannot afford to spend
+half of it waiting on a GUI.
+Remote access to Java GUIs can be a challenge, too. Administrators
+often reach their boxes through a tortured route of SSH tunnels. Routing either X connections or HTTP connections through those tunnels is
+a big pain. There’s no way that something so difficult will be used. So
+much for clean shutdown—I predict a lot of kill -9 commands.
+The net result is that Java GUIs make terrible administrative interfaces
+for long-term production operation. The best interface for long-term
+operation is the command line. Given a command line, admins can
+easily build a scaffolding of scripts, logging, and automated actions to
+keep your software happy. A big step back, but still workable, is the
+pure HTML administrative GUI. Because Perl and Ruby have such great
+client libraries for HTTP, it is not too hard to script against an HTML
+administrative interface.
+
+---
+
+## Sección 22: Chapter 15 [Entropy: 0.25]
+
+Design Summary
+It can be hard to draw attention to these topics during the hustle and
+rush of a development project, especially once crunch mode begins.
+There’s good and bad news here; you can choose not to deal with these
+issues during development. If so, you will deal with them in production...time and time again. Dealing with these issues in development
+does not necessarily cost much, in time or effort, and what it does cost
+is far outweighed by the long-term cost of ignoring them.
+Remember that your application will run on a server with multiple network interfaces. Be sure it binds to the correct address for any sockets
+it listens to, and be sure that any special routing requirements are set
+up and documented. Administrative functions should be exposed on
+the administration and monitoring network, not the production network.
+Be sure to use virtual IP addresses to access clustered services, such
+as database servers or web services provided by other systems. Using
+the VIP allows the service provider to fail over—whether planned or
+unplanned—without necessitating the reconfiguration of your system.
+Applications should be able to run as application users; they should
+not require root or Administrator permissions. Sensitive configuration
+parameters, such as database passwords or encryption keys, should be
+kept in their own configuration files.
+Not every system requires five nines of availability. The cost of greater
+availability increases radically at each level. Considering the availability requirements as a cost/benefit trade-off (well, a cost/cost trade-off,
+really) with the sponsors helps move the discussion forward.
+C HAPTER 15. D ESIGN S UMMARY 250
+Rather than defining the availability of the entire system as a whole,
+I prefer to define the availability of specific features or functions performed by the system. Be sure to write exclusions for loss of availability
+caused by external systems.
+Load balancing and clustering are two prerequisites for high availability. You can employ a variety of techniques, with a wide range of costs.
+Armed with your availability requirements, you can apply various loadbalancing and clustering solutions as needed to meet the requirements
+at efficient cost. Each of these solutions has its own unique set of considerations, so defining the high-availability architecture early makes
+development and deployment much easier.
+Your application’s administrators will never know as much about its
+internals as you will. You can help reduce the likelihood of operator
+error by making your application obvious to configure. This means
+separating essential plumbing, such as Spring’s beans.xml files, from
+environment-specific configuration. Mixing them is the equivalent of
+putting the ejection seat button next to the radio tuner. Sooner or later,
+something bad will happen.
+Spend some time making your application simple to operate. Startup and shutdown should be nondisruptive to users, and any administration duty must be scriptable. Pretty Java desktop administration
+GUIs help the novice learn his way around, but nobody wants to click
+through the pretty GUI for the thousandth time.
+
+---
+
+## Sección 23: Chapter 16 [Entropy: 0.43]
+
+Operations
+Case Study: Phenomenal Cosmic
+Powers, Itty-Bitty Living Space
+16.1 Peak Season
+In the middle 1500s, a Calabrian doctor named Aloysius Lilius invented
+a new calendar to fix a bug in the widely used Julian calendar. The
+Julian calendar had an accumulating drift. After a few hundred years,
+the official calendar date for the solstice would occur weeks before
+the actual event. Lilius’s calendar used an elaborate system of corrections and countercorrections to keep the official calendar dates for
+the equinoxes and solstices close to the astronomical events. Over a
+400-year cycle, the calendar dates vary by as much as 2.25 days, but
+they vary predictably and periodically; overall, the error is cyclic, not
+cumulative. This calendar, decreed by Pope Gregory XIII, was eventually adopted by all European nations, although not without struggles,
+and even by Egypt, China, Korea, and Japan (with modifications for the
+latter three). Some nations adopted the Gregorian calendar as early as
+1582, while others adopted it in only the 1920s.
+It’s no wonder that the Catholic church created the calendar. The Gregorian calendar, like most calendars, was created to mark holy days
+(that is, holidays). It has since been used to mark useful recurring
+events in certain other domains that depend on the annual solar cycle,
+such as agriculture. No business in the world actually lives by the Gregorian calendar, though. The business community uses the dates as a
+convenient marker for its own internal business cycle.
+B ABY ’ S F IRST C HRISTMAS 253
+Each industry has its own internal almanac. For an insurance company, the year is structured around “open enrollment.” All plans take
+their bearings from the open enrollment period. Florists’ thinking is
+dominated by Mother’s Day and Valentine’s Day. These landmarks happen to be marked with specific dates on the Gregorian calendar, but
+in the minds of florists, and their entire extended supply chain, those
+seasons have their own significance, with no bearing on the official calendar date.
+For retailers, the year begins and ends with the euphemistically called
+“holiday season.” Here we see a correspondence between various religious calendars and the retail calendar. Christmas, Hanukkah, and
+Kwanzaa all occur relatively close together. Since “Christmahannukwanzaakah” turns out to be difficult to say in meetings with a straight
+face, they call it “holiday season” instead. Don’t be fooled, though.
+Retailers’ interest in the holiday season is strictly ecumenical—some
+might even call it cynical. Up to 50% of a retailer’s entire annual revenue occurs between November 1 and December 31.
+In the United States, Thanksgiving—the fourth Thursday 1 in
+November—is the de facto start of the retail holiday season. By long
+tradition, this is when consumers start getting serious about gift shopping, because there are usually a little less than 30 days left at that
+point. Apparently, motivation by deadline crosses religious boundaries.
+Shopper panic sets in, resulting in a collective phenomenon known
+as Black Friday. Retailers encourage and reinforce this by changing
+their assortment, increasing stocks in stores, and advertising wondrous
+things. Traffic in physical stores can quadruple overnight. Traffic at
+online stores can increase by 1,000%. This is the real load test, the
+only one that matters.
+16.2 Baby’s First Christmas
+My client had launched a new online store in the summer. The weeks
+and months following launch proved, time and time again, why launching a new site is like having a baby. You must expect certain things,
+such as being awakened in the middle of the night and routinely uncovering horrifying discoveries (as in, “Dear God! What have you been feeding this child? Orange Play-Doh?” or “What? Why would they parse con-
+1. Some retailers have lobbied Congress asking the government to move Thanksgiving
+two weeks earlier.
+T AKING THE P ULSE 254
+tent during page rendering?”) Still, for all the problems we experienced
+following the launch, we approached the holiday season with cautious
+optimism.
+Our optimism was rooted in several factors. First, we had nearly doubled the number of servers in production. Second, we had hard data
+showing that the site was stable at current loads. A few burst events
+(mispriced items, mainly) had given us some traffic spikes to measure.
+The spikes were large enough to see where page latency started to
+climb, so we had a good feel for what level of load would cause the
+site to bog down. The third reason for our optimism sprang from the
+confidence that we could handle whatever the site decided to throw at
+us. Between the inherent capabilities of the application server and the
+tools we had built around the application server, we had more visibility and control over the internals of the online store than any other
+system on which I’ve worked. This would ultimately prove to be the difference between a difficult but successful Thanksgiving weekend and
+an unmitigated disaster.
+A few of us who had pulled weekend duty through Labor Day had been
+granted weekend passes. I had a four-day furlough to take my family
+to my parents’ house three states away for Thanksgiving dinner. We
+had also scheduled a twenty-four-hour onsite presence through the
+weekend. As I said, we were executing cautious optimism. Bear in mind,
+we were the local engineering team; the main Site Operations Center
+(SOC)—a facility staffed with highly skilled engineers twenty-four hours
+a day—was in another city. Ordinarily, they were the ones monitoring
+and managing sites during the nights and weekends. Local engineering
+was there to provide backup for the SOC, an escalation path when they
+encounter problems that have no known solution. Our local team was
+far too small to be on-site twenty-four hours a day all the time, but
+we worked out a way to do it for the limited span of the Thanksgiving
+weekend. Of course, as a former Boy Scout (“Be prepared”), I crammed
+my laptop into the packed family van, just in case.
+16.3 Taking the Pulse
+When we arrived on Wednesday night, I immediately set up my laptop in
+my parents’ home office. I can work anywhere I have broadband and a Jumphost: a single
+machine, very tightly
+secured, that is allowed
+to connect via SSH to the
+production servers.
+cell phone. Using their 3Mb cable broadband, I used Putty—my favorite
+SSH client—to log into our jumphost and start up my sampling scripts.
+T AKING THE P ULSE 255
+Way back during the run-up to launch, I was part of load testing this
+new site. Most load tests deliver results after the test is done. Since
+the data come from the load generators rather than inside the systems
+under test, it is a “black-box” test. To get more information out of the
+load test, I had started off using the application server’s HTML administration GUI to check such vitals as latency, free heap memory, active
+request-handling threads, and active sessions.
+If you don’t know in advance what you are looking for, then a GUI is a
+great way to explore the system. 2 If you know exactly what you want,
+the GUI gets tedious. If you need to look at thirty or forty servers at a
+time, the GUI gets downright impractical.
+To get more out of our load tests, I wrote a collection of Perl modules
+that would screen-scrape the admin GUI for me, parsing the HTML for
+values. These modules would let me get and set property values and
+invoke methods on the components of the application server—built-in
+as well as custom. Because the entire admin GUI was HTML based, the
+application server never knew the difference between a Perl module or
+a web browser. Armed with these Perl modules, I was able to create a
+set of scripts that would sample all the application servers for their vital
+stats, print out detail and summary results, sleep a while, and loop.
+They were simple indicators, but in the time since site launch, all of
+us had learned the normal rhythm and pulse of the site by watching these stats. We knew, with a single glance, what was normal for
+noon on Tuesday in July. If session counts went up or down from the
+usual envelope, if the count of orders placed just looked wrong, we
+would know. It’s really surprising how quickly you can learn to smell
+problems. Monitoring technology 3 provides a great safety net, pinpointing problems when they occur, but nothing beats the pattern-matching
+power of the human brain.
+2. This particular application server, ATG Dynamo, still has the best admin GUI. It’s
+not as pretty as WebLogic or WebSphere, but it exposes every single component of the
+application server. Like the original Volkswagen Beetle engine, you can see every part,
+how well it’s working, and how it’s wired to other components. ATG was doing dependency
+injection long before Martin Fowler coined the term and way, way before Spring had
+sprung.
+3. See Transparency for a discussion of various monitoring technologies.
+T HANKSGIVING D AY 256
+16.4 Thanksgiving Day
+As soon as I woke up Thanksgiving morning, before I even had a cup
+of coffee, I hopped into my parents’ office to check the stats windows
+that I left running all night. I had to look twice to be sure of what I saw.
+The session count in the early morning already rivaled peak time of the
+busiest day in a normal week. The order counts were so high that I
+called our DBA to verify orders were not being double-submitted. They
+weren’t.
+By noon, customers had placed as many orders as in a typical week.
+Page latency, our summary indicator of response time and overall site
+performance, was clearly stressed but still nominal. Better still, it was
+holding steady over time, even as the number of sessions and orders
+mounted. I was one happy camper over turkey dinner. By evening, we
+had taken as many orders in one day as in the entire month to date.
+By midnight, we had taken as many orders as in the entire month of
+October—and the site held up. It passed the first killer load test.
+16.5 Black Friday
+The next morning, on Black Friday, I ambled into the office after breakfast to glance at the stats. Orders were trending even higher than the
+day before. Session counts were up, but page latency was still down
+around 250 milliseconds, right where we knew it should be. I decided
+to head out around town with my mom to pick up the ingredients for
+chicken curry. (It would be Thanksgiving leftovers for dinner on Friday, but I wanted to make the curry on Saturday, and our favorite Thai
+market was closed on Saturday.)
+Of course, I wouldn’t be telling this story if things didn’t go horribly
+wrong. And, things wouldn’t go horribly wrong until I was well away
+from my access point. Sure enough, I got the call when I was halfway
+across town.
+“Good morning, Michael. This is Daniel from the Site Operations Center,” said Daniel.
+“I’m not going to like this, am I Daniel?” I asked.
+“SiteScope is currently showing red on all DRPs. We’ve been doing
+rolling restarts of DRPs, but they are failing immediately. David has
+a conference call going and has asked for you to join the bridge.”
+V ITAL S IGNS 257
+In the terse code we’ve evolved in our hundreds of calls, Daniel was
+telling me that the site was down, and down hard. SiteScope—our
+external monitoring tool—shown in Figure 16.1, on the next page
+access the site the same way that real customer’s access it. When
+SiteScope goes red, we know that customers aren’t able to shop and
+we’re losing revenue. In an ATG site, 4 page requests are handled by
+instances that do nothing but serve pages. The web server calls the
+application server via the Dynamo Request Protocol, so it’s common
+to refer to the request-handling instances as DRPs. A red DRP indicates that one of those request-handling instances stopped responding
+to page requests. “All DRPs red” meant the site was down, losing orders
+at the rate of about a million dollars an hour. “Rolling restart” meant
+they were shutting down and restarting the application servers as fast
+as possible. It takes about ten minutes to bring up all the application
+servers on a single host. You can do up to four or five hosts at a time,
+but more than that and the database response time starts to suffer,
+which makes the start-up process take longer. All together, it meant
+they were trying to tread water but were still sinking.
+“OK. I’ll dial in now, but I’m thirty minutes from hands on keyboard,” I
+told him.
+Daniel said, “I have the conference bridge and passcode for you.”
+“Never mind. I’ve got it memorized,” I said.
+I dialed in and got a babel of voices. Clearly, a speakerphone in a conference room was dialed in to the bridge as well. There’s nothing like
+trying to sort out fifteen different voices in an echoing conference room,
+especially when other people keep popping in and out of the call from
+their desks, announcing such helpful information as, “There’s a problem with the site.” Yes, we know. Thank you, and hang up, please.
+16.6 Vital Signs
+The incident had started about twenty minutes before Daniel called
+me. The operations center had escalated to the on-site team. David, the
+operations manager, had made the choice to bring me in as well.
+4. A J2EE application server that is well-suited to commerce applications. See the site
+at http://www.atg.com.
+V ITAL S IGNS 258
+Online
+Store
+SiteScope
+NYC
+Customers
+SiteScope
+San Francisco
+20 Hosts
+75 DRPs
+3,000 Threads
+Figure 16.1: SiteScope Hits Front-End Store, Simulates Users
+Too much was on the line for our client to worry about interrupting a
+vacation day. Besides, I had told them not to hesitate to call me if I was
+needed.
+We knew a few things at this point, twenty minutes into the incident:
+• Session counts were very high, higher than the day before.
+• Network bandwidth usage was high but not hitting a limit.
+• Application server page latency (response time) was high.
+• Web, application, and database CPU usage were low—really low.
+• Search servers, our usual culprit, were responding well. System
+stats looked healthy.
+• Request-handling threads were almost all busy. Many of them had
+been working on their requests for more than five seconds.
+In fact, the page latency wasn’t just high. Because requests were timing
+out, it was effectively infinite. The statistics showed us only the average
+of requests that completed.
+D IAGNOSTIC T ESTS 259
+Requests that didn’t complete never got averaged in. Other than the
+long response time, which we already knew about since SiteScope was
+failing to complete its synthetic transactions, none of our usual suspects looked guilty.
+To get more information, I started taking thread dumps of the application servers that were misbehaving. While I was doing that, I asked
+Ashok, one of our rock-star engineers who was on-site in the conference room, to check the back-end order management system. He saw
+similar patterns on the back end as on the front end: low CPU usage
+and most threads busy for a long time.
+It was now almost an hour since I got the call, or ninety minutes since
+the site went down. This means not only lost orders for my client but
+also that we were coming close to missing our SLA for resolving a high
+severity incident. I hate missing an SLA. I take it personally, as do all
+of my colleagues.
+16.7 Diagnostic Tests
+The thread dumps on the front-end applications servers revealed a similar pattern across all the DRPs. A few threads were busy making a call
+to the back end, and most of the others were waiting for an available
+connection to call the back end. The waiting threads were all blocked
+on a resource pool, one that had no timeout. If the back end stopped
+responding, then the threads making the calls would never return, and
+the ones that were blocked would never get their chance to make their
+calls. In short, every single request-handling thread, all 3,000 of them,
+were tied up doing nothing, perfectly explaining our observation of low
+CPU usage: all 100 DRPs were idle, waiting forever for an answer that
+would never come.
+Attention swung to the order management system. Thread dumps on
+that system revealed that some of its 450 threads were occupied making
+calls to an external integration point, as shown in Figure 16.2, on the
+following page. As you probably have guessed, all other threads were
+blocked waiting to make calls to that external integration point. That
+system handles scheduling for home delivery. We immediately paged
+the operations team for that system. (It’s managed by a different group
+that does not have 24/7 support staff. They pass a pager around on
+rotation.)
+C ALL IN A S PECIALIST 260
+Online
+Store
+SiteScope
+NYC
+Customers
+SiteScope
+San Francisco
+20 Hosts
+75 DRPs
+3,000 Threads
+Order
+Management
+6 Hosts
+6 Instances
+450 Threads
+Figure 16.2: Front-End Store Hits Back-End Order Management
+I think it was about this time that my wife brought me a plate of leftover
+turkey and stuffing for dinner. In between status reports, I muted the
+phone to take quick bites. By that point, I had used up the battery on
+my cell phone and was close to draining the cordless phone. (I couldn’t
+use a regular phone because none of them took my headset plug.) I
+crossed my fingers that my cell phone would get enough of a charge
+before the cordless phone ran out.
+16.8 Call in a Specialist
+It felt like half of forever (but was probably only half an hour) when the
+support engineer dialed in to the bridge. He explained that of the four
+servers that normally handle scheduling, two were down for maintenance over the holiday weekend, and one of the others was malfunctioning for reasons unknown. To this day, I have no idea why they
+would schedule maintenance for that weekend of all weekends! Figure 16.3, on the next page shows the relative sizes of the three systems
+involved.
+C ALL IN A S PECIALIST 261
+Figure 16.3: Order Management Hits “Enterprise” Scheduling System
+The sole remaining server could handle up to twenty-five concurrent
+requests before it started to slow down and hang. We estimated that
+the order management system was probably sending it ninety requests
+right at that moment. Sure enough, when the on-call engineer checked
+the lone scheduling server, it was stuck at 100% CPU. He had gotten
+paged a few times about the high CPU condition but had not responded,
+since that group routinely gets paged for transient spikes in CPU usage
+that turn out to be false alarms. All the false positives had quite effectively trained them to ignore high CPU conditions.
+Our business sponsor, on the conference call, gravely informed us that
+marketing had prepared a new insert that hit newspapers Friday morning. The ad offered free home delivery for all online orders placed before
+Monday. The entire line, with fifteen people in a conference room on
+speakerphone and a dozen more dialed in from their desks, went silent
+for the first time in four hours.
+So, to recap, we have the front-end system, the online store, with 3,000
+threads on 100 servers and a radically changed traffic pattern. It’s
+swamping the order management system, which has 450 threads that
+are shared between handling requests from the front end and processing orders. The order management system is swamping the scheduling
+system, which can barely handle twenty-five requests at a time.
+C OMPARE T REATMENT O PTIONS 262
+And it’s going to continue until Monday. It’s the nightmare scenario.
+The site is down, and there’s no playbook for this situation. We’re in
+the middle of an incident, and we have to improvise a solution.
+16.9 Compare Treatment Options
+Brainstorming ensued. Numerous proposals were thrown up and shot
+down, generally because the application code’s behavior under that circumstance is unknown. It quickly became clear that the only answer
+was to stop making so many requests to check schedule availability.
+With the weekend’s marketing campaign centered around free home
+delivery, we knew requests from the users were not about to slow down.
+We had to find a way to throttle the calls. The order management system had no way to do that.
+We saw a glimmer of hope when we looked at the code for the store. It
+used a subclass of the standard resource pool to manage connections
+to order management. In fact, it had a separate connection pool just
+for scheduling requests. I’m not sure why the code was designed with
+a separate connection pool for that, probably an example of Conway’s
+law, but it saved the day—and the retail weekend. Because it had a
+component just for those connections, we could use that component as
+our throttle.
+If the developers had added an enabled property, it would have been a
+simple thing to set that to false. Maybe we could do the next best thing,
+though. A resource pool with a zero maximum is effectively disabled
+anyway. I asked the developers what would happen if the pool started
+returning null instead of a connection. They replied that the code would
+handle that and present the user with a polite message stating that
+delivery scheduling was not available for the time being. Good enough.
+16.10 Does the Condition Respond to Treatment?
+One of my Perl scripts could set the value of any property on any component. As an experiment, I used the script to set max for that resource
+pool (on just one DRP) to zero, and I set checkoutBlockTime to zero. Nothing happened. No change in behavior at all. Then I remembered that
+max has an effect only when the pool is starting up.
+W INDING D OWN 263
+I used another script, one that could invoke methods on the component, to call its stopService( ) and startService( ) methods. Voila! That DRP
+started handling requests again! There was much rejoicing.
+Of course, because only one DRP was responding, the load manager
+started sending every single page request to that one DRP. It was
+crushed like the last open beer stand at a World Cup match. But at
+least we had a strategy.
+I ran my scripts, this time with the flag that said “all DRPs.” They set
+max and checkoutBlockTime to zero and then recycled the service.
+The ability to restart components, instead of entire servers, is a key concept of recovery-oriented computing. (See the “Recovery-Oriented Computing” sidebar.) Although we did not have the level of automation that
+ROC proposes, we were able to recover service without rebooting the
+world. If we had needed to change the configuration files and restart all
+the servers, it would have taken more than six hours under that level
+of load. Dynamically reconfiguring and restarting just the connection
+pool took less than five minutes (once we knew what to do).
+Almost immediately after my scripts finished, we saw user traffic getting
+through. Page latency started to drop. About ninety seconds later, the
+DRPs went green in SiteScope. The site was back up and running.
+16.11 Winding Down
+I wrote a new script that would do all the actions needed to reset that
+connection pool’s maximum. It set the max property, stopped the service, and then restarted the service. With one command, an engineer in
+the operations center or in the “command post” (that is, the conference
+room) at the client’s site could reset the maximum connections to whatever it needed to be. I would later learn that script was used constantly
+through the weekend. Because setting the max to zero completely disabled home delivery, the business sponsor wanted it increased when
+load was light and decreased to one (not zero) when load got heavy.
+We closed out the call. I hung up and then went to tuck my kids into
+bed. It took a while. They were full of news about going to the park,
+playing in the sprinkler, and seeing baby rabbits in the backyard. I
+wanted to hear all about it.
+W INDING D OWN 264
+Recovery-Oriented Computing
+The Recovery-Oriented Computing (ROC) project is a joint
+Berkley and Stanford research project.∗ The project’s founding
+principles are as follows:
+• Failures are inevitable, in both hardware and software.
+• Modeling and analysis can never be sufficiently complete.
+A priori prediction of all failure modes is not possible.
+• Human action is a major source of system failures.
+Their research runs contrary to most work in system reliability.
+Whereas most work focuses on eliminating the sources of failure, ROC accepts that failures will inevitably happen—a major
+theme in this book! Their investigations aim to improve survivability in the face of failures.
+Many of the concepts of ROC can be implemented in today’s
+languages and platforms. Follow their focus on damage containment, automatic fault detection, and component-level
+restartability, and you’ll derive great benefits.
+∗. See http://roc.cs.berkeley.edu/.
+
+---
+
+## Sección 24: Chapter 17 [Entropy: 0.948]
+
+Transparency
+Experienced engineers on ships can tell when something is about to
+go wrong by the sound of the giant diesel engines. They’ve learned, by
+living with their engines, to recognize normal, nominal, and abnormal.
+In their case, they cannot help being surrounded by the sounds and
+rhythms of their environment. When something is wrong, the engineers’
+knowledge of the linkages within the engines can lead them to the problem with a speed and accuracy—and with just one or two clues—in a
+way that can seem psychic.
+Our systems are not so naturally exposed. They run in faceless boxes.
+There are no moving parts to watch, and the steady whir of the fans
+communicates little about what’s happening. (Though, if the fans stop,
+we do know there’s a problem!) We sit in different rooms from the
+hardware, often in different buildings, and sometimes even in different
+cities. If we are to get the kind of “environmental awareness” that the
+shipboard engineers naturally acquire, we must facilitate that awareness by building transparency into our systems.
+Transparency refers to the qualities that allow operators, developers,
+and business sponsors to gain understanding of the system’s historical
+trends, present conditions, instantaneous state, and future projections.
+Transparent systems communicate, and in communicating, they train
+their attendant humans. The giant diesel power plant in a cruise ship
+radiates information through ambient sounds and vibration, through
+gauges with quantitative information, and in extreme (usually bad)
+cases through smell.
+In debugging the “Black Friday problem” (see Section 16.1, Peak Season, on page 252), we relied on component-level visibility into the
+C HAPTER 17. T RANSPARENCY 266
+system’s current behavior. That visibility was no accident. It was the
+product of enabling technologies implemented with transparency and
+feedback in mind. Without that level of visibility, we probably could
+have told that the site was slow (if a disgruntled user called us or someone in the business happened to hit the site) but with no idea why. It
+would be like having a sick goldfish—nothing you do can help, so you
+just wait and see whether it lives or dies.
+Transparency has practical and psychological benefits. On the practical
+side, debugging a transparent system is vastly easier, so transparent
+systems will mature faster than opaque ones. Psychologically speaking,
+imagine sitting down once a year to have your future determined by
+peeking at the top face of a die labeled “Bonus,” “Promotion,” “Layoff,”
+“Massive Overtime,” “Public Scorn,” and “Peer Acclaim,” but someone
+else has either rolled the die for you or placed it with one face up. You
+don’t know and have no control. Anyone accountable for the success
+of the system—from application development to business analysts to
+the project sponsors—has a large part of their future predicated on the
+system’s behavior but with no idea how it will turn out.
+When you have to add capacity, you are totally dependent on data collected from the existing infrastructure. You will need a combination
+of technical data and business metrics to understand the past and
+present state of your system in order to predict the future. Good data
+enables good decision making. In the absence of trusted data, decisions
+will be made for you, based on somebody’s political clout, prejudices,
+or hair styles.
+Finally, a system without transparency cannot survive long in production. If administrators do not know what it is doing, it cannot be tuned
+and optimized. If developers do not know what works and does not work
+in production, they cannot increase its reliability or resilience over time.
+And, if the business sponsors do not know whether they are making
+money on it, they will not fund future work. Without transparency, the
+system will drift into decay, functioning a bit worse with each release.
+Systems can mature well if, and only if, they have some degree of transparency.
+This chapter discusses the four perspectives of transparency: historical trending, predictive forecasting, present status, and instantaneous behavior. It also examines existing technology that enables transparency and gaps in the technology that have yet to be filled. For web
+systems, a number of vendors smelled opportunity around performance
+P ERSPECTIVES 267
+measurement and reporting. These are currently undergoing a wave of
+consolidation to create integrated “enterprise application management”
+suites. This is a rich space, so I will be talking about specific products more than usual. It is likely that, by the time you read this, many
+of these companies will have been acquired and integrated with some
+larger suite.
+17.1 Perspectives
+Different constituencies require different perspectives. These perspectives will not all be served by the same views into the systems. Just
+as the question, “How’s the weather?” means very different things to a
+gardener, a pilot, and a meteorologist, the question, “How’s it going?”
+means something decidedly distinct when coming from the CEO or the
+system administrator.
+Historical Trending
+History is a fairly plastic word. There aren’t too many fields in which
+“last week” is a plausible definition of “history.” That might be the only
+connection between the worlds of IT operations and high fashion.
+Still, even if myopic, we have to be concerned about historical views.
+Despite the Wall Street–style disclaimers, 1 it is possible to predict
+tomorrow’s system behavior by extrapolating yesterday’s results. This
+applies to business metrics (customers, orders, conversion rate, revenue, cost of delivering service, and so on) as well as system metrics
+(free storage, average CPU utilization, network bandwidth, and number
+of errors logged).
+Obviously, historical records have to be stored somewhere for a period
+of time. The historical perspective is best served by a database. Section 17.2, Designing for Transparency, on page 275 refers to this as the
+OpsDB. The OpsDB can be used to investigate anomalies or trends.
+Because it contains system- and business-level metrics, it can be used
+to identify correlations in time and across layers.
+The historical perspective can be represented by spreadsheets, charts,
+Microsoft PowerPoint presentations, or analysis reports. It lacks the
+immediacy of the present and is usually not appropriate for a dashboard view.
+1. You know, “Past performance is no guarantee of future results.”
+P ERSPECTIVES 268
+Because it can be used to discover new and interesting relationships,
+the historical data should be broadly available through tools such as
+Microsoft Access and Microsoft Excel. If your company has purchased a
+business intelligence (BI) or reporting tool, it should clearly be using the
+historical data. Just beware the temptation to have these tools directly
+access the production transactional database. (See Section 9.8, Historical Data, on page 197.)
+Some common questions indicate the historical perspective:
+• How many orders did we take yesterday?
+• How does that compare to this day last year? 2
+• How much disk space did we consume during the first quarter?
+• The last time we had a spike in traffic, which system was the
+limiting factor?
+• How does the growth in customer traffic compare to the growth in
+CPU usage over the past three years?
+Predicting the Future
+In Planning Extreme Programming [BF01], Kent Beck and Martin Fowler
+popularized the expression “yesterday’s weather.” They relate an apocryphal story about a sophisticated weather prediction system beaten by
+a much simpler algorithm: a prediction that today’s weather will be the
+same as yesterday’s weather will be accurate about 70% of the time.
+However shaky the meteorological foundation might be, the concept
+nicely encapsulates the recognition that we can predict the future by
+extrapolating the past.
+In the case of our systems, the backward-facing historical information is also our crystal ball. Future predictions are almost always
+about correlations and linkages, rather than direct measurements. By
+far, the most common question is, “What’s our capacity?” (See Section 8.1, Defining Capacity, on page 161 and Section 8.3, Interrelations,
+on page 165.) Although this appears to be a question about a single
+metric, the implied qualifier is “if the next N users have a proportional
+impact to the previous N users.”
+2. Note that “this day” doesn’t always mean the same calendar date—the correspondence almost certainly is with the same day of the week rather than the day of the
+month.
+P ERSPECTIVES 269
+Predictions are always built on a model of the system. Bad predictions result from bad models (for example, linear projections). Really
+excellent models are hard to develop. They require people with deep
+understanding of wicked topics such as queuing theory and stochastic modeling—operations research specialists. These folks can build a
+model to predict system performance to three decimal places—based on
+just the architecture diagrams. I’m not convinced that the level of effort
+(and cost) is worth it for well-trodden territory like web-based ebusiness
+systems. I would probably reserve this for jobs such as modeling global
+communication networks.
+On the other hand, it’s possible to develop “good enough” models by
+finding correlations in past data, which can then be used—within a
+certain domain of applicability 3 —to make predictions. These correlative
+models can be built into spreadsheets to allow less technical users to
+perform “what if” scenarios.
+Projections into the future tend to be sensitive information. They also
+do not have the urgency of immediate data. Therefore, they should generally not be built into a dashboard.
+An application release can alter or invalidate the correlations on which
+the projections are built. Since these projections act like derivatives of
+the system’s behavior, they must be reexamined after each application
+release to see whether they still apply. (Of course, you must wait for
+an adequate body of new measurements to build up before you can
+tell.) This also implies that anything based on these projections should
+include a reference to indicate which set of projections were used. 4
+Here are some common questions that indicate the future perspective:
+• How many customers per day can we handle?
+• When do I have to buy more servers (or disk, bandwidth, or any
+other computing resource)?
+• Can we make it through this holiday season? (Notice that this
+requires a projection about a projection, which doesn’t just double
+the possibility for error but squares it.)
+3. However, please note that Newton’s Laws of Motion are applicable only within a certain domain...but that domain works well enough to get a spacecraft to Neptune after a
+twenty-year flight!
+4. I know, spoken like an academic. I don’t expect the business sponsors to be rigorous
+about their methodology, but I do hope that the developers and system engineers will be!
+P ERSPECTIVES 270
+Present Status
+The distinction between the present status and the behavior at this
+instant can be illustrated by imagining a fat man jogging. The instantaneous behavior is one associated with improving health, but his present
+status might be one “thump” away from a heart attack.
+“Present status” describes the overall state of the system. This is not so
+much about what it is doing as what it has done. This should include
+the state of each piece of hardware and every application server, application, and batch job.
+The status of each component is defined by a combination of events and
+parameters. Events are point-in-time occurrences. Some indicate normal, or even required, occurrences, while others indicate abnormalities
+of concern. A daily inventory feed is an example of a required event.
+The occurrence of that event is expected; its absence should be cause
+for alarm. Abnormal events are commonly categorized as “low-mediumhigh” or “warn-severe-critical.”
+Parameters are continuous metrics or discrete states that can be
+observed about the system. This is where transparency is most vital.
+Applications that reveal more of their internal state provide more accurate, actionable parameters. At the most basic level, we have the operating system metrics: CPU usage, memory free, memory swap rate,
+network bandwidth per interface, and disk space free. Within an application server, a large number of metrics and states are generally applicable.
+Memory
+Minimum heap size, maximum heap size, generation sizes
+Garbage collection
+Type, frequency, memory reclaimed, size of request
+Worker threads, for each thread pool
+Number of threads, threads busy, threads busy more than five
+seconds, high-water mark (maximum concurrent threads in use),
+low-water mark, number of times a thread was not available,
+request backlog
+Database connection pools, for each pool
+Number of connections, connections in use, high-water mark, lowwater mark, number of times a connection was not available,
+request backlog
+P ERSPECTIVES 271
+Traffic statistics, for each request channel
+Total requests processed, average response time, requests
+aborted, requests per second, time of last request, accepting traffic
+or not
+The application itself should reveal plenty of information about its own
+metrics.
+Business transaction, for each type
+Number processed, number aborted, dollar value, transaction
+aging, conversion rate, completion rate
+Users
+Demographics or classification, technographics, percentage of
+users who are registered, number of users, usage patterns, errors
+encountered
+Integration points
+Current state, manual override applied, number of times used,
+average response time from remote system, number of failures
+Circuit breakers
+Current state, manual override applied, number of failed calls,
+time of last successful call, number of state transitions
+As you can see, for even a medium-sized application, there could be
+hundreds of parameters. For each one, there is some range normal and
+acceptable values. This might be a tolerance around a discrete value,
+or it might be a threshold that should not be exceeded. The parameter
+is nominal as long as its metric is within acceptable range. Often, a
+second, tighter range will indicate a “caution” signal, warning that the
+parameter is approaching its threshold.
+For continuous metrics, a handy rule-of-thumb definition for nominal
+would be “the mean value for this time period plus or minus two standard deviations.” The choice of time period is where it gets interesting.
+For most traffic-driven metrics, the time period that shows the most
+stable correlation will be the “hour of the week”—that is, 2 p.m. on
+Tuesday. The day of the month means little. In certain industries—
+such as travel, floral, and sports—the most relevant measurement is
+counting backward from a holiday or event.
+P ERSPECTIVES 272
+For a retailer, the “day of week” pattern will be overlaid on a strong
+“week of year” cycle. There is no one right answer for all organizations. 5
+The Infamous Dashboard
+Status is commonly represented on a dashboard in the familiar “redyellow-green” schema. Categorizing the entire state of a complex, multilayered distributed system with a three-level color coding system might
+seem like oversimplification, but it certainly has the virtue of familiarity. It helps if everyone has a common agreement about what the
+colors mean. Figure 17.1, on the next page shows a definition that has
+worked for me in the past. In particular, this definition accommodates
+an often-overlooked trouble condition: too much of a good thing.
+The present status of the system is obviously amenable to a dashboard presentation. (It practically defines a dashboard.) The dashboard
+should be broadly visible; projecting it on a wall in the lunchroom
+isn’t out of the question. The more people who understand the normal daily behavior of the system, the better. For the most utility, the
+dashboard should be able to present different facets of the overall system to different users. An engineer in operations probably cares first
+about the component-level view. A developer is more likely to want an
+application-centric view, whereas a business sponsor probably wants
+a view rolled up to the feature or business process level. Clearly, this
+implies that the dashboard should know the linkages between these
+different views. When observing a component-level outage—for example, a network failure—an administrator should be able to see which
+business processes are affected. This facilitates both communication
+with the sponsors and proper prioritization of the problem.
+Most systems have a daily rhythm of expected events. Those might be
+feeds from other systems, extracts to ship out to other systems, or
+just batch jobs to integrate with legacy systems. Whatever the purpose, those jobs become just as much a part of the system as the web
+or database servers. Their execution falls in the category of “required
+expected events.” The dashboard should be able to represent those
+expected events, whether or not they’ve occurred, and whether they
+succeeded or not. A startling number of business-level issues can be
+traced back to batch jobs failing invisibly for 33 days straight.
+5. For a vivid illustration, sample the literature on “automatic workload characterization.” Though it might be couched in the dry language of academics, a heated battle has
+raged for years.
+P ERSPECTIVES 273
+Green All of the following must be true:
+• All expected events have occurred.
+• No abnormal events have occurred.
+• All metrics are nominal.
+• All states are fully operational.
+Yellow At least one of the following is true:
+• An expected event has not occurred.
+• At least one abnormal event, with a medium severity,
+has occurred.
+• One or more parameters is above or below nominal.
+• A noncritical state is not fully operational. (For example,
+a circuit breaker has cut off a noncritical feature.)
+Red At least one of the following is true:
+• A required event has not occurred.
+• At least one abnormal event, with high severity, has
+occurred.
+• One or more parameters is far above or below nominal.
+• A critical state is not at its expected value. (For example,
+“accepting requests” is false when it should be true.)
+Figure 17.1: Color Coding for Accuracy
+Present status will be important to anyone with a financial or career
+stake in the day-to-day function of the systems. IT obviously falls in
+this category. There are certainly sponsors outside of IT who have their
+careers tied to the systems. All of these people will develop their situational awareness by spending time observing the present status of the
+system at various times and under various conditions.
+Instantaneous Behavior
+Instantaneous behavior answers the question, “What the **** is going
+on?” People will be most interested in instantaneous behavior when an
+incident is already underway.
+Obviously, instantaneous behavior relates to present status. Anomalies in instantaneous behavior often, but not always, result in incorrect
+P ERSPECTIVES 274
+status. Stack traces, thread dumps, errors thrown in log files, and bad
+responses to users are all examples of behavior problems that might
+or might not show up in the status perspective. For example, users
+don’t like having errors thrown at them. They tend to leave when that
+happens. As a result, errors to users will eventually result in a “transactions per hour” metric dropping below its nominal range. It’s better
+to catch the aberrant behavior before users start walking away.
+Instantaneous behavior is the realm of monitoring systems. Ranging
+from homegrown log file scraping to multimillion-dollar HP OpenView
+installations, monitoring systems sit outside your system, watching like
+Big Brother for conformance to the plan.
+This is also the realm of thread dumps (see the sidebar on page 30).
+Frameworks such as JMX also enable a view into instantaneous behavior, because they allow administrators to view the internals of a running
+application.
+Who gets to see the instantaneous behavior? Some portions have to
+be restricted because of their potential for harm. Not everyone will get
+access to the JMX console, because they could do bad things like shut
+down servers or change vital parameters. Some methods of gathering
+status (thread dumps, for instance) require privileged access to servers.
+Outside of those clearly dangerous channels, however, be aware that
+the operations department often feels threatened when developers or
+business sponsors ask for a view into the system’s immediate behavior,
+especially if there is already a lack of trust or even a hostile atmosphere.
+Operations worries that they will be deluged with inquiries about every
+blip and anomaly. Worse yet, they fear that their customers—the people
+who pay for the systems—will spot problems before they do. Nothing is
+more embarrassing than getting a call from some director of marketing
+asking, “Why is one server’s CPU running higher than all the others?”
+and having to reply, “I don’t know. I haven’t looked at the chart all day.”
+One way to defuse that tension is to improve the transparency of the
+present status. When sponsors ask for more information, what they
+usually want is status, not instantaneous behavior. (This is one of the
+reasons I separate these two concerns in the first place.) Standing in
+their shoes, it’s totally understandable. They are accountable for the
+financial success of this system, so they should have some idea of
+what’s happening with it. But, they don’t really need to know every
+time an application burps out a stack trace in a log file. What they
+need to know is, “Is our revenue tracking to plan?” or “Did our last
+D ESIGNING FOR T RANSPARENCY 275
+campaign increase conversion rates?” or “Should we buy more kiosks
+or staff more agents?” These concerns are served with a status dashboard, historical trends, and future projections. They are not served by
+looking at SNMP traps and thread dumps.
+17.2 Designing for Transparency
+Transparency arises from deliberate design and architecture. “Adding
+transparency” late in development is about as effective as “adding quality.” Maybe it can be done, but only with greater effort and cost than if
+it had been built in from the beginning.
+Visibility inside one application or server is not enough. Strictly local
+visibility leads to strictly local optimization. For example, a retailer ran
+a major project to get items appearing on the site faster. The nightly
+update was running until 5 or 6 a.m., when it needed to complete closer
+to midnight. This project optimized the string of batch jobs that fed content to the site. The project met its goals, in that the batch jobs finished
+two hours earlier. Items still did not appear on the site, however, until
+a long-running parallel process finished, at 5 or 6 a.m. The local optimization on the batch jobs had no global effect.
+Visibility into one application at a time can also mask problems with
+scaling effects. For instance, observing cache flushes on one application server would not reveal that each server was knocking items out
+of all the other servers’ caches. Every time an item was displayed, it
+was accidentally being updated, therefore causing a cache invalidation
+notice to all other servers. As soon as all the caches’ statistics appeared
+on one page, the problem was obvious. Without that visibility, we would
+have added many servers to reach the necessary capacity—and each
+server would have made the problem worse.
+In designing for transparency, keep a close eye on coupling. It’s relatively easy for the monitoring framework to intrude on the internals of
+the system. Use the standards discussed next to avoid this excessively
+tight coupling. The monitoring and reporting systems should be like an
+exoskeleton built around your system, not woven into it. In particular,
+decisions about what metrics should trigger alerts, where to set the
+thresholds, and how to “roll up” state variables into an overall system
+health status should all be left outside of the application itself. These
+are policy decisions that will change at a very different rate than the
+application code itself will.
+E NABLING T ECHNOLOGIES 276
+17.3 Enabling Technologies
+By nature, a process running on a server is totally opaque. Unless
+you’re running a debugger on the process, it reveals practically nothing about itself. It might be working fine, it might be running on its
+very last thread, or it might be spinning in circles doing nothing. Like
+Schrodinger’s cat, it is impossible to tell whether the process is alive or
+dead until you look at it.
+The very first trick, then, is getting information out of the process. This
+section examines the most important enabling technologies that reduce
+the opacity of that process boundary. You can classify these as either
+“white-box” or “black-box” technologies.
+A black-box technology sits outside the process, examining it through
+externally observable things. Black-box technologies can be implemented after the system is delivered, usually by operations. Even
+though black-box technologies are unknown to the system being
+observed, there are still helpful things you can do during development
+to facilitate the use of these tools.
+By contrast, white-box technology runs inside the thing being
+observed—either a process or a whole system. The system deliberately
+exposes itself through these tools. These must be integrated during
+development. White-box technologies necessarily have tighter coupling
+to the system than black-box technologies.
+17.4 Logging
+Despite millions of R&D dollars on “enterprise application management” suites and spiffy operations centers with giant plasma monitors
+showing color-coded network maps, good old log files are still the most
+reliable, versatile information vehicle. It’s worth a chuckle once in a
+while to realize that here we are, in the 21st century, and log files are
+still one of our most valuable tools.
+Logging is certainly a white-box technology; it must be integrated pervasively into the source code. Nevertheless, logging is ubiquitous for a
+number of good reasons.
+Log files reflect activity within an application. Therefore, they reveal the
+instantaneous behavior of that application. They are also persistent, so
+they can be examined to understand the system’s status—though that
+often requires some “digestion” to trace state transitions into current
+states.
+L OGGING 277
+If you want to avoid tight coupling to a particular monitoring tool
+or framework (see Section 17.5, Commercial Monitoring Systems, on
+page 286), then log files are the way to go. Nothing is more loosely
+coupled than log files; every framework or tool that exists can scrape
+log files. This loose coupling means log files are also valuable in development, where you are unlikely to find OpenView or its kin.
+Despite this value, log files are badly abused. Here are some keys to
+successful logging.
+Configuration
+Despite the developer’s instinct to put a logs directory under the application’s install directory, administrators often want to keep logs on a
+different “spindle” (hard drive or LUN) than the operating system or
+content. Log files can be large. They grow rapidly and consume lots of
+I/O. Keeping them on a separate drive uses more I/O bandwidth in
+parallel and reduces contention for the busy drives.
+If you make the log file locations configurable, the administrator can
+just set the right property to locate the files. If you don’t make the
+location configurable, then they’ll probably relocate the files anyway,
+but you might not like how it gets done.
+On UNIX systems, symlinks are the most common workaround. This
+involves creating a symbolic link from the logs directory to the actual
+location of the files. There’s a small I/O penalty on each file open,
+but not much compared to the penalty of contention for a busy drive.
+I’ve also seen a separate filesystem dedicated to logs, mounted directly
+underneath the installation directory.
+Fortunately, all the common logging frameworks support configurable
+paths (which is reason number 72 not to roll your own logging).
+Logging Levels
+As humans read (or even just scan) log files for a new system, they are
+learning what “normal” means for that system. Some applications, particularly young ecommerce applications, are very noisy; they generate a
+lot of errors in their logs. Some are quiet, reporting nothing during normal operation. In either case, the applications will train their humans
+on what’s healthy or normal.
+Most developers implement logging as though they are the primary consumer of the log files. In fact, administrators and engineers in operations will spend far more time with these log files than developers will.
+L OGGING 278
+Debug Logs in Production
+While I’m on the subject of logging levels, I’ll address a pet
+peeve of mine: “debug” logs in production. This is rarely a
+good idea and can create so much noise that real issues get
+buried in tons of method traces or trivial checkpoints. It’s easy
+to leave debug messages turned on in production. All it takes
+is one cvs or svn commit while the logging configuration has
+some debug levels enabled. I recommend adding a step to
+your build process that automatically removes any configs that
+enable debug or trace log levels.
+Logging should be aimed at production operations rather than development or testing. One consequence is that anything logged at level
+“ERROR” or “SEVERE” should be something that requires action on the
+part of operations. Not every exception needs to be logged as an error.
+Just because a user entered a bad credit card number and the validation component threw an exception doesn’t mean anything has to be
+done about it. Log errors in business logic or user input as warnings (if
+at all). Reserve “ERROR” for a serious system problem. For example, a
+circuit breaker tripping to “open” is an error. It’s something that should
+not happen under normal circumstances, and it probably means action
+is required on the other end of the connection. Failure to connect to a
+database is an error—there’s a problem with either the network or the
+database server. A NullPointerException isn’t automatically an error.
+Catalog of Messages
+One of the common requests from operations is a list of all the log
+messages the system can produce. This always used to make me groan.
+These days, though, a few hours with the internationalization tools in
+IDEs such as Eclipse, IDEA, and NetBeans are all it takes to externalize
+all the log messages. Once they’ve been collected into a single resource
+bundle, it’s easy to send it to operations.
+What’s more, you can even add unambiguous codes to each message.
+There are two great things about message codes. First, they make
+for accurate communications between operations and development. If
+you’ve ever been told, “I’m not sure what the whole message was, but
+it said something about a fatal system error,” you need message codes.
+L OGGING 279
+Second, message codes are easy for operations to look up in a run book
+or knowledge base. Suppose your code has many occurrences of the
+following pattern:
+try {
+...
+} catch (TimeoutException e) {
+LOGGER.log(Level.SEVERE,
+"Timeout failure connecting to fulfillment system." , e);
+}
+Applying Eclipse’s “Externalize Strings” command results in a new file,
+messages.properties, and a new class, Messages. Here is what Eclipse put
+into messages.properties:
+Download code/transparency/messages.properties
+FulfillmentClient.0=Connection refused.
+FulfillmentClient.1=Authorization failed. Credentials refused.
+FulfillmentClient.2=Timeout failure connecting to fulfillment system.
+These messages are accessed via getString(String key) on the new utility class Messages, which Eclipse created in the same package as the
+original class:
+Download code/transparency/Messages.java
+public static String getString(String key) {
+// TODO Auto-generated method stub
+try {
+return RESOURCE_BUNDLE.getString(key);
+} catch (MissingResourceException e) {
+return
+'!' + key +
+'!' ;
+}
+}
+Even though “Externalize Strings” was created to make internationalization easier, you can use it for a different type of interface. Once
+Eclipse collects all the strings together in a single file, with a utility method to return them, you have a great leverage point to make
+changes. For instance, the key parameter to getString(String key) makes a
+great message code, with just one small tweak to Messages:
+Download code/transparency/Messages.java
+public static String getString(String key) {
+// TODO Auto-generated method stub
+try {
+return
+"(" + key +
+") " + RESOURCE_BUNDLE.getString(key);
+} catch (MissingResourceException e) {
+return
+'!' + key +
+'!' ;
+}
+}
+L OGGING 280
+Figure 17.2: Impossible to Scan
+Human Factors
+Above all else, log files are human-readable. That means they constitute a human-computer interface and should be examined in terms
+of human factors. This might sound trivial—even laughable—but in
+a stressful situation, such as a Severity 1 incident, human misinterpretation of status information can prolong or aggravate the problem.
+Operators in the Three Mile Island reactor misinterpreted the meaning of coolant pressure and temperature values, leading them to take
+exactly the wrong action at every turn. (See Inviting Disaster [Chi01],
+pages 49–63.) Although most of our systems will not vent radioactive
+steam when they break, they will take thousands of dollars with them.
+Therefore, it behooves us to ensure that log files convey clear, accurate,
+and actionable information to the humans who read them.
+If log files are a human interface, then they should also be written such
+that humans can recognize and interpret them as rapidly as possible.
+The format should be as readable as possible. The human visual system is a pattern-matching machine of unparalleled speed and sophistication. Why do so many vendors work so hard to defeat that ability? Figure 17.2, shows an example of a log format that was made for
+computers or perhaps Martians to read—not humans. This is from the
+start-up log of WebLogic 9.2. How rapidly can you spot the warning
+message?
+Figure 17.3, on the next page comes from WebSphere 6.1. It uses the
+same java.util.logging API that the previous example used, but it replaces
+L OGGING 281
+Figure 17.3: A Format That Aids Scanning
+the awful default format with a much more helpful one. This is a format
+that the human eye can scan. Once you know that I, W, and A indicate
+different severity levels (“information,” “warning,” and “audit”), then
+scanning for warnings and errors becomes trivial. The space-padded,
+columnar format helps humans read the file. Note the message code
+field, which aids in automated parsing of the file. This log format helps
+both humans and computers.
+Figure 17.4, on the following page, shows the same output as from
+WebSphere’s start-up sequence but using the default format for JDK’s
+java.util.logging package. I don’t know who thought up this two-line format, but it makes scanning through logs utterly impossible. For that
+matter, the two-line format makes parsing the logs with other programs
+difficult, too. grep has no idea how to deal with two-line formats. You’ll
+have to dig up an old-school UNIX hacker to do some awk trickery. This
+format defeats man and machine.
+Voodoo Operations
+As I said before, humans are very good at detecting patterns. In fact, we
+appear to have a natural bias toward detecting patterns, even when they
+aren’t there. In Why People Believe Weird Things [She97], Michael
+Shermer discusses the evolutionary impact of pattern detection. Early
+humans who failed to detect a real pattern—such as a pattern of light and
+shadow that turned out to be a leopard—were less likely to pass on their
+genes than those who detected patterns that weren’t there and ran away
+from a clump of bushes that happened to look like a leopard.
+In other words, the cost of a false positive—“detecting” a pattern that
+wasn’t—was minimal, whereas the cost of a false negative—failing to
+detect a pattern that was there—was high. Shermer claims that this
+evolutionary pressure creates a tendency toward superstitions. I’ve seen it
+in action.
+L OGGING 282
+Figure 17.4: java.util.logging Default Format
+Given a system on the verge of failure, administrators in operations have
+to proceed through observation, analysis, hypothesis, and action very
+quickly. If that action appears to resolve the issue, it becomes part of the
+lore, possibly even part of a documented knowledge base. Who says it was
+the right action, though? What if it’s just a coincidence?
+I once found a practice in the operations group for one of my early
+commerce applications that was no better than witchcraft. I happened to
+be in one of the administrator’s cubicle when her pager went off. On
+seeing the message, she immediately logged into the production server
+and started a database failover. Curious, and more than a little alarmed, I
+asked what was going on. She told me that this one message showed that
+a database server was about to fail, so they had to fail over to the other
+node and restart the primary database. When I looked at the actual
+message, I got cold shivers. It said, “Data channel lifetime limit reached.
+Reset required.”
+Naturally, I recognized that message, having written it myself. The thing
+was, it had nothing at all to do with the database. It was a debug message
+(see the sidebar on page 278!) informing me that an encrypted channel to
+an outside vendor had been up and running long enough that the
+encryption key would soon be vulnerable to discovery, just because of the
+amount of encrypted data that the channel had served. It happened about
+once a week.
+Part of the problem was the wording of the message. “Reset required”
+doesn’t say who has to do the reset. If you looked at the code, it was clear
+M ONITORING S YSTEMS 283
+that the application itself reset the channel right after emitting that
+message—but the consumers of the message didn’t have the code. Also, it
+was a debug message that I had left enabled so I could get an idea of how
+often it happened at normal volumes. I just forgot to ever turn it off.
+I traced the origin of this myth back about six months to a system failure
+that had happened shortly after launch. That “Reset required” message
+was the last thing logged before the Sybase server went down. There was
+no causal connection, but there was a temporal connection. (There was
+no advance warning about the database crash—it required a patch from
+Sybase, which we had applied shortly after the outage.) That temporal
+connection, combined with an ambiguous, obscurely worded message, led
+the administrators to perform weekly database failovers during peak
+hours for six months.
+Final Notes
+Messages should include an identifier that can be used to trace the
+steps of a transaction. This might be a user’s ID, a session ID, a transaction ID, or even an arbitrary number assigned when the request
+comes in. When it’s time to read 10,000 lines of a log file (after an
+outage, for example), having a string to grep will save tons of time.
+Interesting state transitions should be logged, even if you plan to use
+SNMP traps or JMX notifications to inform monitoring about them. Logging the state transitions takes a few seconds of additional coding, but
+it leaves options open downstream. Besides, the record of state transitions will be important during post-mortem investigations.
+17.5 Monitoring Systems
+Even the best use of logging can help only when the application is actually running. Dead processes log no tales. Neither do hung processes.
+For those, some entity outside the process itself must be watching—
+some black-box tool monitoring the health and well-being of the application and its host.
+This is the domain of monitoring systems. Figure 17.5, on the following page depicts a vastly simplified view of a monitoring system. The
+essential components of this third-party inspector are agents that collect information, a reliable transport mechanism, and the display and
+processing of the information.
+Most monitoring systems run agents on the hosts being observed.
+These agents perform periodic observations, including at least
+M ONITORING S YSTEMS 284
+Administrator
+Application Host
+Application
+Server
+Agent logs
+Monitoring
+Console
+view alerts
+fire actions
+Message
+Broker
+Viewer
+management
+network
+Database Host
+Dead
+Database
+Server
+Agent logs
+!
+!
+Figure 17.5: Conceptual View of a Monitoring System
+operating system performance statistics, process health, log file pattern matching, and port listeners. For UNIX hosts, they scan syslog and
+any other log files the administrator configures. On Windows hosts, the
+agents also scan the Windows event logs. In this example, an agent on
+the database server detects that the database is down. It fires an event
+to the message broker—an embedded component running as part of the
+monitoring system itself. The message broker notifies all active clients
+about the alert. In this case, an administrator’s monitoring console—a
+client application that accesses the monitoring system—shows the alert
+as a textual message and a color change on the icon representing the
+database.
+These agents are very good at detecting events they’ve been told to look
+for: patterns in log files, SNMP traps (covered in a moment), processes
+that are down or consuming more than their fair share of resources,
+filesystems that are close to full, and so on. Unanticipated or novel
+behavior might not be detected, unless it triggers one of these events.
+For example, if all errors in a log file are reported with the same for-
+M ONITORING S YSTEMS 285
+Agentless Monitoring
+Some monitoring systems advertise “agentless” installations,
+with the premise that obviating the need for agents on the
+hosts under observation reduces the CPU overhead of monitoring them. This is essentially a marketing ploy. Even if observations are collected from another host, they still require collaboration by the operating system on the observed host. For
+example, Microsoft’s Operations Manager, MS MOM, can run in
+agentless mode. In this configuration, the management server
+uses the built-in event log and remote administration capabilities of the host under observation. So, the information gathering
+still happens, and it still consumes resources on the host under
+observation.
+mat, then unexpected errors can be caught. On the other hand, if one
+type of error isn’t logged or is logged with a different format, then the
+monitoring system cannot catch it.
+The agents are like reporters embedded with Army units. They are close
+to the action. One implication is that the agents themselves are at risk.
+Should the entire host go down, the agent surely goes with it. Therefore,
+monitoring systems always use some kind of heartbeat to detect a failed
+agent—or a network failure between the agent and the mothership.
+Embedded reporters must have some way to submit their stories; the
+same is true for monitoring agents. Monitoring systems are critically
+dependent on their reliable message transport. In small-to-mediumsized corporate deployments, monitoring traffic sometimes crosses the
+same network segments as production traffic. This is a bad idea. For
+one thing, it means a problem with the production network—such
+as a network worm, DDoS attack, or plain old configuration error—
+automatically disables monitoring. Monitoring traffic often contains
+sensitive information. Even though it doesn’t contain passwords, it
+often has hostnames, user names, internal IP addresses, snippets of
+log files, process names, and process IDs, among other things. None
+of these should be public, so they should not cross VLANs that carry
+public traffic.
+M ONITORING S YSTEMS 286
+Commercial Monitoring Systems
+Previously, only massive enterprises were interested in the big commercial monitoring systems. Vendors such as IBM, Computer Associates,
+and Hewlett-Packard went after only multimillion-dollar deals in the
+Fortune 500. As the entire business world has shifted onto a 24-by-7
+schedule, the systems have gotten bigger. At the same time, the vendors
+have discovered opportunities in new segments of the market. Hurricane Katrina in 2005 and the 9/11 attacks of 2001 raised awareness of
+the urgent need for business continuance plans and disaster recovery.
+(Many IT operations managers had been trying to raise this alarm well
+before Katrina, but disaster recovery planning never had “sex appeal”
+to CEOs and boards of directors until they saw companies going out of
+business for the lack of a plan.) The strict regulatory environment created by totalitarian implementations of Sarbannes-Oxley section 4046
+has also made security controls and monitoring more important than
+ever. This convergence of forces means that the commercial monitoring
+systems are now a standard part of doing business.
+Gaps in Commercial Systems
+The big vendors toolsets are stable, mature, and well supported. In the
+language of Crossing the Chasm [Moo91], these systems have now penetrated even the “late mainstream”—absolutely the toughest market to
+sell technology to. If they have a flaw, it is in their orientation toward IT
+(but see the sidebar on the next page). It is no longer acceptable—and,
+indeed, was never a good idea—to divorce the operation of production
+systems from business results.
+Linking operations to business results requires the ability to correlate
+“systems” information with “business” information. For example, in a
+typical distributed system today, can you always identify which server
+provides a particular feature? Probably not. More likely, a single feature is served by groups of servers across multiple tiers. Therefore, the
+monitoring system should be aware not only of the systems but also of
+the business features those systems serve. In fact, it should be able to
+identify the impact to those features anytime there is a system event—
+whether that event is a problem or metric deviating from normal. So
+6. I find it endlessly entertaining that section 404 requires controls on sensitive information, and the ability to verify where every piece of financial information has come from,
+when a “404 error” means “not found” on the web. I’ll warn you, though, that this joke
+seems to fall flat at most parties I’ve attended.
+M ONITORING S YSTEMS 287
+Enterprise Application Management
+By and large, these systems focus on network and server management. A quick crop of smaller companies sprang up in the
+late 90s that focused on applications. Unlike their pre-Cambrian
+cousins, these considered application availability and performance primary determinants of the user’s experience. Big fish
+ate small fish, and these small companies have disappeared
+from the market. The major vendors—HP, EMC, BMC, IBM, CA
+(you can’t play in this space unless you’re big enough to be
+known by just two or three letters)—are now integrating these
+application-aware products with their flagship suites to create the emerging enterprise application management (EAM)
+suites.
+EAM suites combine network, server, and application awareness to (in theory) deliver complete visibility into your systems.
+They support the automatic discovery of dependencies by sniffing network packets and automatic performance baselining.
+EAM holds promise and might deliver great things, especially as
+they begin to further annex application lifecycle features such
+as configuration management, automated deployments, and
+load and stress testing. This segment of the market is evolving
+quickly.
+far, most of the commercial systems seem to assume that the application does not provide any visibility of its own. They are beginning to
+implement this type of awareness but have far to go.
+If there’s another major gap in these systems, it is that they can tell
+you only what the systems think is happening. It is totally possible for
+every component in the environment to be up and running by itself
+but still have bad results for the end user. This often happens in the
+event of blocked threads or cascading failures. Even if most users are
+served correctly, some users might have problems because of issues
+with their profiles, browsers, cookies, or other external factors. So far,
+the major systems do not represent an individual user’s perspective
+on the system; they just represent the system’s view of itself. There are
+some newer products (not yet swallowed by big fish) that put themselves
+in the users’ perspective. 7
+7. Tealeaf, for example. See http://www.tealeaf.com/.
+M ONITORING S YSTEMS 288
+Ambient Awareness
+In Ambient Displays: Turning Architectural Space into an Interface between People and Digital Information [WID+98], some
+researchers from MIT’s Media Lab argue for ambient displays.
+These include subtle sounds, lighting, and patterns of movement such as ripples in water, each mapped to some piece
+of data. For example, a pinwheel might map to incoming traffic on a website. The soundscape could represent the internal
+health of the systems.
+When everything is normal, the inhabitant’s perception of the
+sounds fades into the background, just as the sound of crickets on a summer evening fades into the background. Part of
+the human brain’s great pattern recognition system suppresses
+unchanging input, at least when it is nonthreatening. Even better, after a day or two in the environment, the inhabitant will
+automatically understand what “normal” sounds like, just like
+the shipboard engineer.
+When the underlying data changes, the ambient display
+mapped to that data changes its sound or pattern. Imagine
+those crickets suddenly fell silent. The crickets chirping might
+fade into the background but would not disappear entirely. At
+some level, awareness remains, and the sudden silence would
+seem shockingly loud.
+Not everyone can live in the MIT Media Lab, but there is an
+open source project to provide ambient awareness through
+soundscapes. Peep∗ can monitor states and events on a network and turn them into pleasant sounds of brooks and birds.
+That project hasn’t seen a new release in more than four years.
+It seems to be languishing in neglect, just waiting for someone
+new to pick up the torch.
+The Pragmatic Project Automation [Cla04] site has
+many posts about physical devices used to monitor
+the health of a system (typically a build server). See
+http://www.pragmaticautomation.com/cgi-bin/pragauto.cgi/Monitor/Devices
+for lots of ideas. On a previous project, my team was inspired
+by this site. We wired up a stoplight to monitor our build server.
+“When the light is green, the build is clean.”
+∗. See http://peep.sourceforge.net/ .
+S TANDARDS , D E J URE AND D E F ACTO 289
+Designing for Monitoring Systems
+In almost every case, the selection of a monitoring system will be done
+for you. These are expensive systems that require pervasive implementation to deliver value. Once chosen and implemented, the system will
+be embedded deeply into IT operations for many years. That decision
+will outlast corporate commitments to operating systems, programming
+languages, hardware vendors, and org charts. In other words, the probability of the monitoring system being “in play” at the same time as you
+are designing a new system is vanishingly small. Therefore, the monitoring system becomes part of the environment for which you design.
+In such an environment, it would be easy to build in support for that
+particular monitoring system, resulting in tight coupling and vendor
+lock-in. You can avoid those pitfalls by designing to a small set of applicable standards, both official and de facto.
+17.6 Standards, De Jure and De Facto
+The world of monitoring systems is dominated by standards. Oddly,
+these standards don’t seem to provide as much interoperability as you
+might expect. Let’s look at SNMP, the 800-pound gorilla of monitoring
+standards, as well as some up and coming contenders.
+Simple Network Management Protocol
+The granddaddy of standards around monitoring and system management is definitely the Simple Network Management Protocol (SNMP).
+SNMP dates back to 1988, with SNMP version 1. Although it was originally written specifically for management of network devices (which is
+why “Network” appears in the name), SNMP has expanded far beyond
+its original boundaries. It can now be used with everything from carriergrade Cisco routers that handle half the traffic of the Internet down to
+USB peripherals.
+Even in its first version, the “Simple” in SNMP really was a bit of spin.
+SNMP has a conceptual elegance that makes it simple in the same sense
+that LISP is simple: it’s one idea, distilled to its purest essence and then
+applied to every possible problem. Internalize that concept, grok it, and
+the rest becomes clear and simple. Before you grok it, it just seems
+kludgy. SNMP’s essential concept is “Everything is a variable.” Everything a node can report on or do is a variable. There are no commands,
+just variable assignments.
+S TANDARDS , D E J URE AND D E F ACTO 290
+Instead of telling a device to do something, SNMP sends a “set request”
+asking the device to set the variable to a desired state. For example,
+using SNMP to tell a Packeteer traffic shaper about a new trap receiver
+looks like a write to a variable called 1.3.6.1.4.1.2334.2.1.6.2.0, also
+known as trapDestAdd. (You have to be part of a standards committee
+to come up with names like 1.3.6.1.4.1.2334.2.1.6.2.0.)
+Although SNMP refers to itself as a protocol, the full standards define
+much more than just a network protocol. The RFCs that define SNMP
+also define an information model and a kind of metastandard about
+how new modular portions of the information model might be defined.
+The information model is called the Structure of Management Information. It defines the Management Information Base (MIB). The Internet
+Assigned Numbers Authority 8 (IANA) maintains the master list of module owners at http://www.iana.org/assignments/smi-numbers. In another
+display of overloaded nomenclature, the modular definitions are usually also referred to as MIBs. Vendors provide MIBs to describe the
+management interface to their devices and software. Here is a portion
+of the MIB defined by Packeteer: 9
+Download code/transparency/packeteer.mib
+trapDestAdd OBJECT-TYPE
+SYNTAX DisplayString
+ACCESS write-only
+STATUS mandatory
+DESCRIPTION
+"A shortcut for adding a host to trapDestTable. If the name is not
+in n.n.n.n IP address form, then the agent attempts to look it up
+via DNS. If the operation fails with BADVALUE, try again with
+an IP address. The associated
+IP address is added to the trapDestTable if the operation succeeded.
+The table should be queried afterward to
+insure that the action took place. "
+::= { psAdmin 2}
+As you can see, MIBs are defined by a portable language. 10 Given a MIB,
+the monitoring system knows how to talk with a device or application.
+(The MIB usually has to be compiled into a proprietary format first, as
+part of importing it into the monitoring system.) Armed with the MIB’s
+definitions of tables, types, and variables, the monitoring system can
+define thresholds, triggers, and alerts based on the present status of the
+8. See http://www.iana.org.
+9. From http://www.packeteer.com/support/resources/utilities/mibs/8.0/packeteer.mib.
+10. ASN.1, if you’re interested. See http://www.asn1.org/.
+S TANDARDS , D E J URE AND D E F ACTO 291
+observed system. SNMP also allows the “agent”—the daemon or library
+on the server that handles SNMP itself—to notify the monitoring system
+asynchronously when interesting or alarming events occur. These alerts
+are referred to as traps. Traps are less versatile than variables; they
+mainly serve to get the monitoring system’s attention.
+Many software vendors have gotten on board with SNMP. Microsoft has
+an SNMP service available for Windows that allows any Windows 2000
+(or later) computer to expose itself (as if they weren’t exposed enough
+already). There’s an SNMP module for Apache. It’s built in to both Web-
+Sphere and WebLogic. Oracle supports several MIBs, both standard and
+private.
+So, what does all this mean for your systems? Using any of these
+platforms automatically brings a high degree of SNMP support and,
+therefore, immediate transparency. Using an SNMP-based monitoring
+system together with SNMP-supporting platforms provides immediate
+exposure for thousands of variables. The monitoring system will also
+allow you to define the thresholds and policies about alerts that reveal
+both instantaneous behavior and abnormal status.
+For your application code, however, the picture is far less rosy. The
+trouble is that creating a MIB for custom software is a huge undertaking of a very specialized nature. Even if you do write your own MIB, the
+administrators of the monitoring system are often reluctant to install
+MIBs from “untrusted” parties. (I don’t know why it should be the case
+that a development group can be trusted to create applications responsible for millions of dollars in revenue but cannot be trusted to create
+a plug-in MIB for the monitoring system. Nevertheless, I’ve often seen
+strenuous resistance from these administrators.)
+Beyond that, after you create the MIB, you must have an SNMP agent
+embedded in your application that can bridge between the SNMP variables and the objects in your application, as shown in Figure 17.6, on
+the following page. (Even though the standards define port 161 as standard for an agent, it is possible to run multiple SNMP agents, each on
+their own port.) Even though SNMP refers to MIB variables as objects,
+they’re really more like C structs. A MIB essentially defines a big pile
+of global variables—some are arrays, and some are structs—that don’t
+necessarily map well into objects.
+S TANDARDS , D E J URE AND D E F ACTO 292
+Network Management
+Station (NMS)
+SNMP
+Manager
+Managed Node
+SNMP
+Agent
+MIBs
+Operating
+System
+Managed
+Application
+SNMP
+Agent
+Figure 17.6: SNMP Communication Structure
+In the Java community, SNMP compatibility is best achieved by writing
+application code to support the Java Management Extensions (JMX)
+and by using a JMX-to-SNMP connector.
+CIM
+In 1996, the Distributed Management Task Force 11 (DMTF) introduced
+a successor and competitor to SNMP in 1996. Called the Common
+Information Model (CIM), this model replaces the awkward ASN.1 and
+MIB structure with a metaobject protocol and a brokered structure
+that allows for the dynamic registration and discovery of managed
+resources.
+In many ways, CIM is technically superior to SNMP. CIM’s objectoriented model is a more natural fit for today’s programming styles,
+and its dynamic discovery of capabilities means that management platforms will no longer need to be “big-bang” purchases.
+At this point, CIM is far less widely implemented than SNMP. So
+far, most operating system vendors are supporting CIM, including
+Microsoft, Sun, HP, and IBM. Linux support exists but is not gener-
+11. See http://www.dmtf.org.
+S TANDARDS , D E J URE AND D E F ACTO 293
+Java Application
+MBean Interfaces
+System Object Layer
+ResourcePoolMBean
+OrderDbConnections
+CacheMBean
+CatalogCache
+HTTP Connector
+RMI Connector
+MBeanServer
+Figure 17.7: MBeans as Proxies
+ally integrated into distributions. Many hardware vendors are supporting CIM for their enterprise-class lines. Some application vendors support it, notably Oracle. Application-level support is far from widespread,
+however, which is the major reason that I still regard CIM as a future
+concern rather than something to address today.
+JMX
+Java Management Extensions (JMX) has historically been one of the
+most overlooked, underappreciated APIs in Java. Introduced in 1998
+as JSR 3, it was initially expected to be part of the Java Enterprise
+Edition only. As time has passed, JMX has proven its value to such a
+degree that it became part of the Standard Edition as of JDK 1.5. Every
+JVM running Java 5 or later will automatically be JMX-enabled.
+Where SNMP resembles procedural languages, with its global variables,
+structs, and tables, JMX presents an object-oriented view of managing
+applications. The fundamental unit of management is an MBean, a kind
+of “management proxy” for some underlying system object, as shown in
+Figure 17.7. Public properties—in the JavaBean sense of the word—and
+methods of the MBeans can be invoked remotely.
+MBeans have names, registered with an MBeanServer. It sits between the
+external connectors that allow remote access and the internal MBeans.
+S TANDARDS , D E J URE AND D E F ACTO 294
+JMX Gone Berserk
+The full JMX specification permits much more sophisticated
+behavior than most application developers will ever need.
+MBean s can be instantiated dynamically, which might cause
+entire subsystems to be activated. Domain objects can have
+their own MBean s, which pop up and disappear dynamically.
+Model MBean s are so dynamic that they don’t even exist at
+compile time—they are assembled by defining the interface
+programmatically and attaching any object whatsoever.
+In terms of creating a transparent application, MBean s serve
+well when attached to long-lived components of the application’s architecture: resource pools, caches, repositories, interfaces to external systems, and so on.
+These dynamic, whizzy features really pay off for platform
+developers—the open source crew working on JBoss, the
+hordes of true-blue WebSphere developers in IBM—but they
+have little value for application developers. Odds are, if you’re
+that far into JMX, you’ve gotten lost in the weeds. Back up, take
+a cleansing breath, and start working on a story card instead
+of polishing JMX’s tail fins.
+External connectors adapt protocols such as HTTP and RMI to calls
+on the MBeanServer itself. (It is also possible to call the MBeanServer
+from within the same JVM as the managed resources. Application code
+should not be doing this. It is an utterly circuitous way of talking to
+yourself.) Using the RMI connector, it is possible to retrieve a remote
+proxy representing the managed bean. Methods invoked on the remote
+proxy get invoked on the managed bean itself. These can be simple
+property accessors or control methods.
+Figure 17.8, on the following page, shows a simple management interface for a circuit breaker component. The setResetTime(long timestamp)
+and getResetTime( ) methods define a property, JavaBeans style. The
+reset( ) method forces a state transition in the managed object. This is
+just an interface, so there must be some class implementing it. Indeed,
+the object being managed typically implements this interface. Figure 17.9, on the next page, shows an example of a managed resource.
+This means that a direct use of JMX leaves the code “aware” of its future
+as a closely watched application under management.
+S TANDARDS , D E J URE AND D E F ACTO 295
+Download code/transparency/CircuitBreakerMBean.java
+package com.example.util;
+import java.io.IOException;
+public interface CircuitBreakerMBean {
+public void setResetTime(long timestamp) throws IOException;
+public long getResetTime() throws IOException;
+public CircuitBreakerState getState() throws IOException;
+public void reset() throws IOException;
+}
+transparency/CircuitBreakerMBean.java
+Figure 17.8: Sample MBean Interface
+Download code/transparency/CircuitBreaker.java
+package com.example.util;
+public class CircuitBreaker implements CircuitBreakerMBean {
+private CircuitBreakerState state = CircuitBreakerState.CLOSED;
+private long resetTime = -1;
+public void setResetTime(long timestamp) {
+this.resetTime = timestamp;
+checkForReset();
+}
+public long getResetTime() {
+return resetTime;
+}
+public CircuitBreakerState getState() {
+return state;
+}
+public void reset() {
+setState(CircuitBreakerState.CLOSED);
+}
+...
+}
+transparency/CircuitBreaker.java
+Figure 17.9: MBean Interface Implemented
+S TANDARDS , D E J URE AND D E F ACTO 296
+Another type of MBean—the “dynamic MBean”—does not require
+compile-time information. Similar to CORBA’s Dynamic Invocation
+Interface or Java’s own reflection API, dynamic MBeans get to describe
+their own methods, rather than being stuck with a static, compile-time
+definition. This means that a sufficiently generic dynamic MBean should
+be able to act as a management proxy for any old Java object. Sure
+enough, the StandardMBean does exactly that. Given an object and an
+interface class, it becomes an MBean, exposing that interface on that
+object. This is absolutely the fastest way to add JMX support to your
+application, with the added benefit of removing the JMX pollution from
+the system objects themselves.
+Prior to Java 5 (JDK 1.5), JMX was an extension. To use it, applications
+had to include some implementation of the JMX specification. The most
+common were the JMX Reference Implementation from Sun and the
+open source MX4J project. Since Java 5, JMX has been integrated into
+the JVM itself, so any application can now draw on the MBeanServer.
+Although still little used by application developers, JMX has gained
+broad support among platform developers. JBoss’s kernel has shrunk
+to nothing more than a JMX-based registry and module loader. IBM
+WebSphere uses JMX to expose itself. BEA WebLogic sits somewhere
+in the middle; significant parts of WebLogic are activated and managed
+by JMX, but not to the radical extreme of JBoss. Since version 1.2, the
+Spring framework has provided an automatic dynamic MBean generator. In typical Spring fashion, it requires a bunch of squirrely XML and
+no code. (OK, the XML eventually makes sense, but like an Oracular
+prophecy, it makes sense only in retrospect.)
+JMX support in these platforms brings one of the best benefits: scriptability. BEA and IBM have both created command-line shells that
+access MBeans through the remote connectors. BEA’s wsadmin.sh and
+IBM’s wslt both provide scriptable shell interfaces to MBean-enabled
+application servers. (See Section 14.4, Administrative Interfaces, on
+page 248 for my rant about graphical administration interfaces.) JBoss
+has “twiddle,” which is not a complete shell but does allow invocation
+of commands on arbitrary beans.
+Make administration
+interfaces scriptable.
+It’s remarkably tough to get praise from people
+in operations. They’re a hard-bitten lot. Nevertheless, make your application’s administrative functions scriptable, and they will bless
+your name. I cannot overstate the value of a scriptable administration
+S TANDARDS , D E J URE AND D E F ACTO 297
+interface. Providing a useful set of MBeans through JMX is the easiest
+way you can offer scriptable administration for Java applications.
+What to Expose
+If you could predict which metrics would limit capacity, reveal stability
+problems, or expose other cracks in the system, then you could monitor
+only those. There are two problems with that prediction. First, you’re
+likely to guess wrong. Second, even if you guess right, the key metrics change over time. Code changes and demand patterns change. The
+linchpin a year from now might not even exist now.
+Within the application, the ideal is to expose every state variable,
+counter, and metric. Since you don’t know what you’ll need down the
+road, expose everything. Since you can’t predict what the thresholds
+should be or how to react when they’re breached, you should stick to
+providing visibility. Leave the policy for later. Provide universal visibility
+now, but externalize the policy so you can defer those decisions.
+Of course, you could spend an unlimited amount of effort creating
+MBeans or SNMP variables for absolutely everything. Since your system still has to do something other than just collecting data, I’ve found
+a few heuristics to help decide which variables or metrics to expose.
+Some of these will be available right away. For others, you might need
+to add code to collect the data in the first place. Here are some things
+I’ve consistently found useful.
+Traffic indicators
+Page requests total, page requests, transaction counts, concurrent
+sessions
+Resource pool health
+Enabled state, total resources, 12 resources checked out, highwater mark, number of resources created, number of resources
+destroyed, number of times checked out, number of threads
+blocked waiting for a resource, number of times a thread has
+blocked waiting
+Database connection health
+Number of SQLExceptions thrown, number of queries, average
+response time to queries
+12. This applies to connection pools, worker thread pools, and any other resource pools.
+S TANDARDS , D E J URE AND D E F ACTO 298
+Integration point health
+State of circuit breaker, number of timeouts, number of requests,
+average response time, number of good responses, number of network errors, number of protocol errors, number of application
+errors, actual IP address of the remote endpoint, current number
+of concurrent requests, concurrent request high-water mark
+Cache health
+Items in cache, memory used by cache, cache hit rate, items
+flushed by garbage collector, configured upper limit, time spent
+creating items
+All of the counters have an implied time component. You should read
+them as if they all end with “in the last n minutes” or “since the last
+reset.”
+JMX and SNMP Together
+JMX was built to support different connectors and protocol adapters.
+It seems only natural to open Java applications up to SNMP through
+JMX itself. Indeed, several JMX-to-SNMP connectors are available, of
+varying quality. AdventNet (http://www.adventnet.com) appears to be the
+market leader in this (admittedly small) space.
+The largest challenge such a connector must overcome is not bridging
+the protocols. Mapping the protocol operations between SNMP and JMX
+is trivial. After all, SNMP really has only three types of operation: get
+variable, set variable, and enumerate variables.
+Recall that SNMP’s information model is based on a schema of variables, tables, and structures. JMX is object-oriented. The JMX-to-
+SNMP connector bridges this impedance mismatch. It must determine
+which variables map to properties on MBeans, which variables will trigger method calls, and how to turn collections of objects into entries
+in a table. Finally, the JMX-to-SNMP connector must also map JMX’s
+notifications (asynchronous events) to SNMP traps.
+The result is a fully configured SNMP agent that uses the MBeanServer
+inside the JVM, and a MIB for import into the monitoring system. Once
+that hurdle is cleared, integrating a JMX-enabled Java application into
+an SNMP-based monitoring system is trivial.
+O PERATIONS D ATABASE 299
+Logging Monitoring OpsDB
+Historical
+Future
+Behavior
+Unsuitable
+Poor Fit
+Workable, with effort
+Well Suited
+Status
+Figure 17.10: Suitability for Purpose of Transparency Technologies
+17.7 Operations Database
+Logging and monitoring are both good for exposing and understanding
+the immediate behavior of an application or system. Neither is particularly good at serving the historical or future perspective. Figure 17.10,
+judges each of these approaches against the four perspectives. It is
+possible to derive a system’s current status from log files alone, but
+it’s very difficult, since it requires tracing backward for the last state
+transition for each relevant status variable. (Of course, spitting out the
+status variables on a recurring timer would aid this analysis.)
+Monitoring systems are great at representing instantaneous behavior.
+They do a good job of representing present status, but, as I discussed
+in Section 17.5, Gaps in Commercial Systems, on page 286, they serve
+only one constituency. When it comes to historical and future trends,
+they have a way to go. Until the enterprise application management
+suites mature, I have to consider this a gap.
+Figure 17.11, on the next page, introduces a complementary technology that serves the time-oriented views of the system. This “operations database”13 (OpsDB) accumulates status and metrics from all the
+servers, applications, batch jobs, and feeds that make up the extended
+13. I’d love to call it an “operational data store,” but that name is already taken for something else.
+O PERATIONS D ATABASE 300
+Servers
+Apps
+Batch Jobs
+OpsDB
+start, end, abort
+completion status
+items processed
+status variables
+business metrics
+internal metrics
+performance
+utilitzation
+Reports
+Dashboard
+Capacity
+Planning
+Process
+Figure 17.11: Role of the Operations Database
+system. It provides the “single pane of glass” that can present the
+business-oriented metrics in the dashboard, the system statistics, and,
+best of all, the correlations between them. Whereas logging provides visibility into a single application, the broader view of the OpsDb unifies
+status and metrics reporting across the entire system.
+The OpsDB serves as a source for the ever-popular dashboard, for the
+present status crowd. Because it contains demand metrics as well as
+system metrics, a few exercises in data mining will reveal the correlation
+factors needed for capacity planning. The historical record contained in
+the OpsDB also allows automatic baselining to determine what “normal” looks like for the metrics across the site.
+The records of job execution make troubleshooting faster when
+application-level problems arise, such as stale data from a channel
+partner. Examining the normal start and end times, and correlating
+them with the number of items processed, also illustrates when we
+should expect jobs to complete and if any of them are in danger of
+breaking their windows.
+O PERATIONS D ATABASE 301
+*
+Node
+Feature
+*
+*
+*
+needs
+Measurement Event
+Observation *1
+Observation
+Type
+1 *
+Status
+Figure 17.12: OpsDb Object Model: Observations
+OpsDb High-Level Structure
+Figure 17.12 shows the UML class diagram representing the information in the OpsDb. 14 Mapping this object model to a SQL schema is left
+as an exercise for the reader (in part, because the form of that mapping
+should be driven by your particular ORM tool and database server).
+A Feature represents a unit of business-significant functionality. These
+should be the same features the system’s availability SLAs are written
+about and the same ones that capacity planning will be measuring.
+A Feature does not come from a server. A single Feature is probably implemented across at least three hosts (web, application, and
+database), applications on each tier, a pair of firewalls, a network
+switch, and a storage array or SAN. The Node class represents any of
+these active nodes. In practice, it is usually sufficient to represent the
+hosts and applications. If the system includes hardware firewalls, SSL
+accelerators, content caching servers, or other network equipment that
+plays an active role in delivering the application (mainly with respect to
+14. Readers of Martin Fowler’s Analysis Patterns [Fow96] will recognize this as similar to
+the Observation pattern. That pattern described a medical diagnosis system for assessing
+the health or diseases of a patient. The concepts transfer directly. Here, instead of a
+human patient, you are dealing with networked computer systems—a far less complex
+animal.
+O PERATIONS D ATABASE 302
+layer 7 interactions), then it probably pays to include them as nodes.
+Each Node has its own unique ID. The individual servers, applications,
+and batch jobs use this ID when reporting their observations, so it
+is important to track them carefully. (I find that assigning blocks of
+IDs to particular teams or subteams works well. That keeps their node
+IDs contiguous and lets them use up their node IDs without having to
+wait for a new allocation.) Nodes use other Nodes, but capturing these
+dependencies can be burdensome, so this is optional. If you use them,
+Node dependencies can be a powerful aid to troubleshooting. Those
+same dependencies are the pathways by which cascading failures will
+propagate.
+Observations are the heart of the OpsDb. Each Observation is a single
+data point collected from a Node. For server nodes, the observations are
+mainly performance statistics, which are recorded as Measurements. A
+Measurement is typically periodic, and all records are kept. For an application, these will include performance statistics as well as the status
+of important system objects. For example, an application server should
+record its database connection pool high-water mark and resources
+checked out (among other things), but it should also record the state
+change from “enabled” to “disabled.” Likewise, a circuit breaker should
+record each of its state transitions. State transitions are recorded as Status objects. For a dashboard (present status), only the last Status entry
+is of interest. For troubleshooting or historical trending, the frequency
+and type of state changes is often significant.
+Every Observation requires an ObservationType to make sense. The set of
+all ObservationTypes defines the universe of information in the OpsDb.
+ObservationType defines the name and concrete subtype of the Observation.
+Feeding the Database
+I recommend creating a client-side API to feed observations to the
+OpsDb. This should be in whatever language most of the system will
+be in. Above all, keep it simple. Everything can fail, including this new
+database. It is not critical to the financial success of the system, so
+there is absolutely no reason that a failure in the OpsDb should have a
+noticeable effect on the system’s primary function.
+If the system includes shell scripts or batch files, they will need to
+invoke some command-line utility for writing to the OpsDb.
+O PERATIONS D ATABASE 303
+Observation
+Observation
+Type
+1 *
+Expectation
+Type
+Expectation
+*
+1
+NominalRange ExpectedStatus ExpectedTime
+Figure 17.13: OpsDb Expectations
+The script should call the command-line at start-up time, with a record
+of how many items need work. When finished, it should record how
+many items were actually processed (as opposed to the number that
+had issues). If the job fails completely, it should record an abnormal
+termination.
+If this is a Java system and you are feeling ambitious, you could write
+a generic MBean to record periodic samples. It could even receive notifications about state changes and record them, too. Then, instrumenting
+any application would just be a matter of instantiating and configuring
+that MBean.
+Using the Operations Database
+Once a body of data has built up in the OpsDb, it becomes even more
+useful. Figure 17.13, adds new classes to the model from Figure 17.12,
+on page 301. (Feature and Node are omitted from this diagram, but they
+still exist.)
+An ExpectationType corresponds to an ObservationType. It defines the
+name and characteristics of its Expectation. An Expectation represents
+an allowed range for a metric, a time frame in which an event must (or
+must not) occur, or an allowed status. Violating any of these expectations should trigger alerts in the monitoring system.
+The best source for the expectations is the same historical data already
+contained in the database. Expectations should be set to match reality
+so you can avoid the negative effects of false positives.
+O PERATIONS D ATABASE 304
+The Danger of False Positives
+In Inviting Disaster [Chi01], James Chiles relates the story of
+a plant supervisor who saw an operator reflexively override a
+warning chime in a control room. When confronted, the operator vehemently denied that he had done so, not because he
+feared consequences but because he had no conscious recollection of shutting off the warning. The system had trained him
+to so completely disregard the chime that he could shut it off
+without being aware of doing so.
+I commonly hear from developers or managers who wear
+pagers. One woman told me that her pager went off three
+times every night. She knew that indicated normalcy. If the third
+page did not come in by a certain time of night, she knew there
+was a problem. If a fourth page arrived, she knew there was a
+problem. That’s a form of situational awareness that might be
+better than nothing, but I can’t endorse it as a way of life.
+In the beginning, expectations can be somewhat loose. Over time, as
+processes come under better control, those expectations can be tightened and made more sophisticated. For example, an early expectation
+for “web server CPU utilization” could state that “>0% and <80%” is
+acceptable. As you learn more about the system linkages, that expectation can be tightened to “>5% and <50%.” At the next level of maturity,
+the business rhythm can come into it, either as a continuous envelope
+or as a step function. For example, as a step function, that expectation can require low CPU utilization during the night, moderate in the
+morning, and high in the mid-afternoon. Deviation greater than or less
+than that expectation would trigger alerts.
+Over time, the OpsDb allows the system to grow more mature and
+introspective. It will know itself better and know how it should react
+to external stimuli.
+For large systems, the OpsDb can accumulate a lot of data over time.
+Don’t forget about the Steady State stability pattern. (See Pattern 5.4,
+Steady State, on page 124.) If you don’t condense the data, your system
+will eventually bog down in data collection. Obviously, it’s not good to
+jeopardize capacity because you’re keeping too much ancient performance data. (What’s ancient? That depends on your system, but I’d say
+that minute-by-minute samples older than a week are not helpful.)
+S UPPOR TING P ROCESSES 305
+17.8 Supporting Processes
+How many times have you seen this one: some reporting system generates a report and sends it to a distribution list, and half the people on
+the list have a rule in Microsoft Outlook that automatically deletes the
+report? It’s classic. Of course, anytime I see that, I immediately know
+that the report is useless. In fact, it’s probably worse than useless. Not
+only does it take time and effort to generate the report, but somebody
+has to maintain that report through changes in the underlying system.
+Worse still, once in a blue moon, the report might actually show something serious, but all of the supposed consumers of the report stopped
+reading it long ago.
+That report is an example of transparency without a closed-loop feedback process. It costs money to implement and operate but provides no
+value. It creates a false sense of security. The best data in the world
+can’t help if nobody is looking. In this section, I will take a step back
+from the systems themselves to discuss the larger dynamic system: the
+organization that is creating and operating these computer systems.
+An effective feedback process can be described as “acting responsively
+to meaningful data.” Transparency in the systems only provides access
+to the data. Humans in the loop still need to view and interpret the
+information.
+Various forms of feedback loops exist in different schools of process,
+such as the Deming Cycle’s 15 spiral through “Plan-Do-Check-Act” or
+John Boyd’s nonlinear “O-O-D-A.”16 Ultimately, they all boil down to
+some execution of each of the following:
+• Examine the system: current state, historical patterns, and future
+projections.
+• Interpret the data. This always occurs within the context of some
+person’s mental model of the system.
+• Evaluate potential actions, including the costs of each and, perhaps, taking no action at all.
+• Decide on a course of action.
+• Implement the chosen course of action.
+• Observe the new state of the system.
+15. See Deming and Goldratt [LC99].
+16. See Certain to Win [Ric04].
+S UPPOR TING P ROCESSES 306
+Colonel John Boyd and O-O-D-A
+This style of feedback process draws directly from the work
+of Colonel John Boyd, an Air Force pilot and strategist. Col.
+Boyd’s key concept was the “O-O-D-A Loop,” an acronym
+for Observe-Orient-Decide-Act. Boyd argued that complete
+knowledge of a situation is impossible and, even if it were
+attainable, quickly irrelevant. He viewed the battlefield situation as fluidly, even chaotically, changing. In that realm, victory would go to the force best able to react and control the
+changing tactical and strategic dynamics.
+The O-O-D-A Loop requires correct observations, unclouded by
+wishful thinking or confirmation bias—definitely a tall order. Orientation is the process of updating a mental map of possibilities and options according to the previous map and the new
+observations.
+Good orientation acknowledges what is possible and impossible. In the military and the corporation, political filtering of
+observations and orientation is fatal. “Spin” is antithetical to O-
+O-D-A, which requires engagement with the real environment,
+not a fanciful or idealized picture of the environment.
+O-O-D-A contains many feedback steps. Observe, Decide,
+and Act all affect the actor’s orientation. As you act, you
+change the external environment as well as your own understanding of the evolving conditions. In this way, the result of an
+iteration of O-O-D-A affects the next iteration in two ways: once
+through the environment itself and once through your own perception of the environment.
+Each time through the loop, you know more than before, creating reinforcing feedback. Anytime you see reinforcing feedback loops, you should suspect that the system can go nonlinear and chaotic, in the modern sense of those words.
+This capacity for chaos separates O-O-D-A from a mere stimulus/response reaction, where an increase in stimulus creates a
+proportional increase in response. Think trench warfare in World
+War I or trying to get faster software by “doing more process.”
+You can gain tremendous creative power to disrupt your opponents by going through O-O-D-A faster than they can.
+S UPPOR TING P ROCESSES 307
+Colonel John Boyd and O-O-D-A (cont.)
+Boyd called this getting “inside” the enemy’s decision cycle:
+both anticipating and constraining his actions.∗
+∗. I also view O-O-D-A as a powerful argument for agile development methods. Each development iteration should map to an iteration of O-O-D-A. The resulting control of the environment allows a
+company to take over the initiative and unravel the competition. See
+http://www.steveadolph.com/articles%20and%20papers/Adolph%202006%20agile%20lessons_final.pdf
+for a paper from Steve Adolph that further examines the connection between
+O-O-D-A and agile.
+Keys to Observation
+First and foremost, observers should watch for both trends and outliers. Both provide insight. It helps to build an operational rhythm that
+makes improvement a routine occurrence rather than a spasmic effort.
+Here are a few helpful routines to aid observations:
+• Every week, review the past week’s problem tickets. Look for
+recurring problems and those that consume the most time. Look
+for particular subsystems that cause a lot of problems or a development team (if there is more than one). Look for problems related
+to a particular third party or integration point.
+• Every month, look at the total volume of problems. Consider
+the distribution of problem types. The overall trend should be
+a decrease in severity as serious problems are corrected. There
+should also be an overall decrease in volume. (There will be a sawtooth pattern as new code releases introduce new problems.)
+• Either daily or weekly, look for exceptions and stack traces in log
+files. Correlate these to find the most common sources of exceptions. Consider whether these indicate serious problems or just
+gaps in the code’s error handling.
+• Review help desk calls for common issues. The can point toward
+user interface improvements as well as places the system needs to
+be more robust.
+• If there are too many tickets and help desk calls to review thoroughly, look for the top categories. Also sample tickets randomly
+to find the things that make you go “hmmm.”
+S UPPOR TING P ROCESSES 308
+• Every four to six months, recheck that old correlations still hold
+true.
+• At least monthly, look at data volumes and query statistics.
+• Check the database server for the most expensive queries. Have
+the query plans changed for any of these? Has a new query hit
+the most expensive list? Either of these changes could indicate an
+accumulation of data somewhere. Do any of the most common
+queries cause a table scan? That probably indicates a missing
+index.
+• Look at the daily and weekly envelope of demand (driving variables) and system metrics. Are traffic patterns changing? If you
+suddenly see that a popular time is dropping in popularity, it probably indicates that the system is too slow at those times. Is there
+a plateau in the driving variables? That indicates some limiting
+factor, probably responsiveness of the system.
+Remember that the focus of interest will shift over time. In the early
+days, the issues will mainly be reactive. Ticket reviews, post-mortem
+reports from incidents, and recent trends will be of most interest. As
+root causes get corrected, as new code releases come out, and as traffic patterns change, the emphasis will shift from reactive to predictive
+analysis. What will happen next quarter? Where do you need to be this
+time next year? As this emphasis shifts, stop reviewing some old things,
+and start reviewing new trends. Once a metric stops producing useful
+information, stop reviewing it. The same reports you live by one month
+after launch will be worthless—or even misleading—two years later.
+For each metric being reviewed, consider each of the following. How
+does it compare to the historical norms? (This is easy if the OpsDb has
+enough data to start forming expectations.) If the metrics continues its
+recent trend, what happens to other correlated metrics? How long could
+the trend continue—what limiting factor will kick in? What will result
+from that limiting factor?
+For example, consider the relationship between “orders received” and
+“application server CPU utilization.” On any kind of retail site, these
+metrics will be correlated to some degree. (“Orders received” is a derivative of “unique visits.” The beta of “orders received” to “unique visits”
+is just what the marketers call conversion rate.) Therefore, if you see
+“orders received” increasing, you can ask, “How long can that continue to increase?” The answer to this question should motivate interpretation and decision. The decision might be to do nothing, to add
+S UMMARY 309
+resources, to drive away customers, or to optimize the application code.
+Any of those decisions represent a successful conclusion of the feedback loop.
+17.9 Summary
+Strange things happen to systems when they encounter the real world.
+Anomalies and events can remain forever mysterious, or they can be
+valuable lessons learned. Transparency makes the difference between
+a system that improves over time in production and one that stagnates
+or decays.
+Management systems are prevalent. SNMP version 3 currently dominates the landscape. CIM/WBEM overcomes many of SNMP’s disadvantages and will be a major force in the near future. For Java developers,
+JMX offers a path into either the SNMP or CIM/WBEM world.
+Transparency requires access to the internals of the computers and
+software. Exposing those internals is the first prerequisite. Next, some
+means for collecting and understanding the data points is required.
+This can be facilitated with the commercial monitoring systems and the
+OpsDb. Finally, some feedback process is needed to act on the acquired
+knowledge.
+The next chapter examines what to do when transparency reveals a
+need for change. Adaptation takes the long view, examining how to
+build systems that can change gracefully over time.
+... pity us all,
+Who vainly the dreams of youth recall.
+For of all sad words of tongue or pen,
+The saddest are these: “It might have been!”
+John Whittier,
+Maud Muller, 1854
+
+---
+
+## Sección 25: Chapter 18 [Entropy: 0.59]
+
+Adaptation
+No matter how bold the vision or how severe the crunch mode, the system that launches will always be less than it might have been. The new
+system is a flawed and diminished thing, barely suited to its purpose
+in life. Will it remain so, or will it grow into its creators’ vision?
+The true birth of a system comes not on the day that design and development begins, or even when the project is conceived, but on the day it
+launches into production. This is a beginning, not an end. Over time,
+the system will grow and mature. It will gain new features. It will lose
+defects and perhaps gain some, too. It will become what it was meant to
+be, or, even better, it will become what it needs to be. Most of all, it must
+change. A system that cannot adapt to its environment is stillborn.
+18.1 Adaptation Over Time
+The fledgling system must do some things right, or it would not have
+been launched, and it might do other things as well as the designers could conceive. Still other features might work as built but not
+as intended, or they might be more difficult than they should be. In
+essence, there are gaps and protrusions between the shape of the system and the solution space it is meant to occupy.
+A new system does not automatically become better fitting through use.
+Most of the time, the system trains its users—painfully. The system can
+be changed to fit its solution space better—even as the solution space
+continues to change over time—thereby filling the gaps and filing the
+bumps, but only by deliberate action.
+A DAPTATION O VER T IME 311
+In The Evolution of Useful Things [Pet92], Henry Petroski1 argues that
+the old dictum “form follows function” is false. In its place, he offers
+the rule of design evolution, “form follows failure.” That is, changes in
+the design of such commonplace things as forks and paper clips are
+motivated more by the things early designs do poorly than those things
+they do well. Not even the humble paper clip sprang into existence in
+its present form. Each new attempt differs from its predecessor mainly
+in its attempts to correct flaws.
+In the world of software development, each new release is motivated
+by either new features (filling in gaps) or defects (filing down bumps).
+Just as the shape of the paper clip evolved over time, the architecture
+and design of software systems adapt over time in response to real and
+perceived failures in each iteration.
+But, adaptation has a price. Any action to change the system has a
+cost: design, development, and testing effort, plus the cost of release.
+Physicists and chemists recognize this as “activation energy.” If the cost
+of making these changes exceeds the value returned by filling a gap or
+removing a bump, then the rational choice is to not make the change.
+The value returned might be strictly in terms of cash flows. On the other Cash flow: the lifeblood
+of every business.
+Money in, money out.
+Thanks to the time value
+of money, cash flows
+now are more valuable
+than cash flows in the
+future.
+hand, the value might lie in protecting the large investment already
+made in the system itself.
+Finally, as a matter of simple economics, somewhere between 40% and
+90% of a system’s cost of development will be incurred after the first
+release. This might be labeled “maintenance,” or it might be considered
+new development. Either way, development costs continue to appear
+long after release 1.0. This is an old, thoroughly recognized problem for
+design and architecture. The difficulty and cost incurred in releasing
+changes into the wild is less well understood.
+The remainder of this chapter examines how small- and large-scale
+architecture choices affect a system’s ability to adapt. These are the
+“implementation cost” portions of the activation energy. The balance of
+the activation energy requirement is the cost of releasing changes—a
+hidden cost that can mount to surprising levels. Our ultimate goal is
+to ensure that changes to our systems—filling the gaps and filing the
+bumps—release more cash than they consume.
+1. I have to admire any author who can enthrall me with eighteen pages on the emergence of the fork.
+A DAPTABLE S OFTWARE D ESIGN 312
+Chemical reactions that produce more energy than is required to initiate them are called exothermic. We want changes to our systems to be
+exoeconomic, producing more money than is required to create them.
+18.2 Adaptable Software Design
+Thousands of pages have been written on the subject of adaptable software design. Dozens of named methodologies aim to produce software
+perfectly fitted to its functional space. Many of the newer of these even
+incorporate the principles of change over time under the rubric of “agile
+methods.” It would be impossible to recapitulate them here.
+The overwhelming majority of these methodologies focus on creating
+the correct functionality or allowing functionality to change over time.
+However, there are some other aspects of software design, related to
+a system’s ability to adapt without disrupting production operations.
+We’ll look at those aspects here. Think of these issues as an “overlay”
+that you should consider on top of whatever design methods you choose
+to employ.
+Dependency Injection
+There is power in names. Martin Fowler gave a name to a relatively
+commonplace technique, and the programming world suddenly blazed
+with “dependency injection” frameworks. 2 (See also AJAX.) The principle of dependency injection is simply that components should interact through interfaces and shouldn’t directly instantiate each other.
+Instead, some other agency should “wire up” the application out of
+loosely coupled components.
+Done well, dependency injection encourages loose coupling. To that
+extent, it has real power. It also facilitates unit testing, which is even
+better. Defining and using interfaces is the main key to successfully
+achieving flexibility with dependency injection. Objects collaborating
+through interfaces can have either endpoint swapped out without noticing. That swap can replace the existing endpoint with new functionality, or the substitute can be a mock object used for unit testing. Dependency injection using interfaces preserves your ability to make localized
+changes.
+2. See http://www.martinfowler.com/articles/injection.html.
+A DAPTABLE S OFTWARE D ESIGN 313
+Dependency Injection
+Back when J2EE started lumbering around the landscape, a
+number of framework developers started creating things such
+as Pico, Spring, and Apache Avalon. They had a markedly different quality to them than typical J2EE applications did. In
+particular, applications written with these “lightweight” frameworks tended to focus on small, stand-alone components that
+implemented interfaces. These components did not instantiate
+other components directly. Instead, they called other services
+through interfaces and just “assumed” that an implementation
+of that interface would be provided by the container.
+At first, this was described as Inversion of Control, a commonly
+identified characteristic of application frameworks. Inversion of
+Control as commonly practiced in framework design, however,
+applies to the more general practice of extending a framework
+by plugging application code in as subclasses or callbacks,
+thereby placing the framework in control rather than the application code. (The framework calls into the application, which
+is the characteristic inversion that distinguishes a “framework”
+from a “class library.”)
+Martin Fowler popularized the term dependency injection to
+describe the case of, well, injecting references into components. The container wires components together at runtime
+based on a configuration file or application definition. The components themselves do not need to know exactly to whom
+they’re talking. Dependency injection leads to highly adaptable code that can be easy to unit test and easy to “rewire” as
+requirements change over time.
+A DAPTABLE S OFTWARE D ESIGN 314
+Object Design
+It’s amazing how much energy and emotion the phrase “good objectoriented design” can generate, even now, twenty years after the “object
+revolution” began. I will assert, without further proof, that there exists
+such a thing as good object-oriented design. Those who already believe
+in it will agree with me without evidence, and those who refute its existence would not be swayed by any argument I could offer.
+In the context of adaptation, the best rules to follow are those crusty
+old proscriptions: loose coupling and tight cohesion. When originally
+written, those rules applied to source modules. Loose coupling meant
+“Don’t touch another file’s global variables.” Tight cohesion meant
+“Most or all of the subroutines in this file should use most or all of
+the file’s global variables.” It seems that the rules could use a bit of
+updating.
+The modern object-oriented definition of coupling has more to do with
+behavior than variables. Whenever a class uses behavior from another
+class, it is coupled by that behavior. The number of behaviors that one
+class requires from another class defines the “width” of the interface
+between those classes.
+Obviously, some degree of coupling is required. Objects that don’t call
+each other can’t do very much. So, what does “loose coupling” mean
+in this context? Consider all the public methods exposed by a class.
+Now look at the subsets of those methods that are called by other
+classes. A perfectly cohesive class will have just one set, containing all
+the methods, that are called by all users of the class. This is highly
+unlikely. More likely, there are a small number of sets of methods.
+Different users of the class use different subsets of its methods. The
+more distinct these subsets are—that is, the fewer methods that are
+found across multiple subsets—the easier it will be to change the class’s
+behavior later. It will be more adaptable. Not coincidentally, it will also
+be easier to create classless interfaces to group, name, and abstract out
+those subsets of methods.
+With the methods grouped into subsets, cohesiveness describes how
+much of the object’s internal state affects and is affected by the sets of
+methods. In other words, if a set of methods touches only a subset of
+the object’s state but is unaffected by other aspects of the object’s state,
+then the object is not cohesive. This might indicate there is another
+object hiding inside, waiting to be refactored into its own class.
+A DAPTABLE S OFTWARE D ESIGN 315
+Coupling affects adaptation more than cohesion. Highly coupled
+classes require more external context to be useful. For example, consider a simple geometry class representing a point in two dimensions.
+It is unlikely that the point requires any external context at all to function. It works fine by itself without the application setting up any other
+relationships or global state (such as singletons or object registries). In
+a sense, it is a brick; it can be used in the same way wherever you need
+something blocky to stack together.
+Also, consider an overly smart domain object, such as a typical Customer
+object. It probably collaborates with three or four other classes, such
+as Account, Address, CreditCard, and perhaps others. If Customer also
+knows anything about its own persistence, it might collaborate with PersistenceManager, TableDataGateway, or others of that sort. Each of these
+collaborations is both necessary and problematic. Without them, the
+object is useless; with them, it depends on larger and larger substructures to be present and to be behaving in an expected manner. Rather
+than a brick, this is more like a jigsaw puzzle piece in many dimensions. It has knobs, sockets, and joints that must match up exactly
+with some other pieces to work.
+A cluster of objects that can exist together only in a tight collaboration
+resembles a crystal in a metal. The objects stay together in a tightly
+bound relationship, just as the atoms in a crystal are tightly bound. In
+metal, small crystals mean greater malleability. More malleable metals
+recover from stress better. Large crystals encourage crack formation. In
+software, large “crystals” make it harder to change the software. When
+objects in one grain participate in multiple collaboration patterns, they
+bridge two crystals, forming a larger grained crystal—further reducing
+the malleability of the software.
+There is no limit to how far this region of tightly bound crystals can
+spread. In the extreme case, the crystal grows until it is the boundary
+of the application. When that happens, every object suits exactly one
+purpose to which it is supremely adapted. It fits perfectly into place and
+ultimately relates to every other object. These crystal palaces might
+even be beautiful in a baroque sort of way. They admit no improvement, in part, because no incremental change is possible and, in part,
+because nothing can be moved without moving every other object.
+These tend to be dead structures. Developers tiptoe through crystal
+palaces, speaking in hushed tones and trying not to touch anything.
+A DAPTABLE S OFTWARE D ESIGN 316
+Collaborations and Design Patterns
+It might sound as though I have a dim view of collaborations. Not at all. In fact, when it comes to object design, I am
+an avowed behaviorist. Collaborations are central. I do insist,
+however, that collaborations should be designed with an eye
+toward cohesiveness and reducing the crystal grain of the software. When I see an object that participates in multiple design
+patterns, each collaborating with a different group of objects, I
+see a Gordian knot that will be difficult or impossible to change.
+Where different crystals need to be linked, those links should be
+minimized with as few ties across the boundary as possible.
+This, by the way, is where many novices go wrong when applying newfound knowledge from the great book Design Patterns [GHJV95]. This book encourages a more collaborative,
+behavioral view of object interactions. The newly awakened
+object designer will be tempted to measure the quality of a
+design by how many patterns it employs, even though Gamma,
+et al, directly caution against this. Overloading pattern roles on
+a single object cause larger and larger crystal growth until the
+code base becomes one giant, rigid, rock.
+XP Coding Practices
+Programmers’ religious wars are legendary: emacs vs. vi, tabs vs.
+spaces, VMS vs. UNIX, Java .vs .NET. To that list, we should now add
+agile methods vs. traditional methods.
+Unfortunately, any religious war polarizes the passionate minority,
+leading the opposition—and the ambivalent majority that reacts with
+distaste—to reject an approach in its entirety. This clearly happens in
+the case of Extreme Programming (XP). Many developers and development managers have rejected XP as undisciplined or unrealistic.
+(They happen to be wrong, but that’s a different book.) That’s a shame,
+because they’re cutting themselves off from two of the most valuable
+coding practices to be developed since object orientation was invented:
+refactoring and unit testing.
+In Refactoring [FBB+99], Martin Fowler collected and documented the
+growing practice. He called it “improving the design of existing code
+without changing its functionality.” Far from an exercise in futility,
+A DAPTABLE S OFTWARE D ESIGN 317
+refactoring is key to adaptability. Refactoring acts as a constant pressure to keep the design complexity at the minimum necessary to support the features of the software. It combats the spread of crystalization
+and promotes increasing levels of generalization in the core classes of
+the software.
+Unit testing is the twin to refactoring. Indeed, many people argue that
+without unit tests, there is no such thing as refactoring. Changing
+designs without the safety net of the unit tests amounts to just random mucking around in the code base and is more likely to produce
+new bugs rather than design improvements.
+The extreme form of unit testing is test-driven design (TDD). In TDD,
+you write the unit test first. It then serves as a functional specification.
+You write just enough code to make the test pass and not one line more.
+(See also YAGNI—“You Ain’t Gonna Need It!”) Once the test passes, you
+are allowed to refactor the code to improve the design, making sure that
+the unit tests always pass. The combination of TDD, refactoring, and
+YAGNI very naturally lead to a highly adaptable code base.
+A second, more subtle effect is produced through consistent unit testing. You should never call an object “reusable” until it has been reused.
+When an object is subjected to unit testing, it is immediately used in
+two contexts: the production code and the unit test itself. This forces
+the object under test to be more reusable. Testing the object means you
+will need to supply stubs or mocks in place of real objects. That means
+the object must expose its dependencies as properties, thereby making
+them available for dependency injection in the production code. When
+an object requires extensive configuration in its external context (like
+the previously mentioned Customer object), it becomes difficult to unit
+test. One common—and unfortunate—response is to stop unit testing
+such objects. A better response is to reduce the amount of external context required. In the example of the Customer domain object, extracting
+its persistence responsibilities reduces the amount of external context
+you have to supply. This makes it easier to unit test and also reduces
+the size of Customer’s crystal—thereby making Customer itself more malleable. The cumulative effect of many such small changes is profound.
+Agile Databases
+The term agile databases is not an oxymoron, but an agile database
+never happens accidentally. If there’s an area of IT that resists change
+more than database schema definitions, it could only be CICS trans-
+A DAPTABLE S OFTWARE D ESIGN 318
+actions on mainframes—you know, like the kind that can’t be changed
+because the original programmer died in the late 70s.
+If behavior is primary, then it is obvious that changing functionality in
+the application code requires corresponding changes to the database
+schema. Why then are databases so often resistant to change? First of
+all, beware that not everyone agrees that behavior is primary! Many
+organizations explicitly or tacitly argue that data is more important
+than application functionality. 3 Other organizations wall the database
+architects away from application developers. Each group thinks its
+needs trump the other’s. Application developers want schema changes
+to adapt to the application’s needs. Database architects view themselves as keepers of the data—not only its representation but also its
+essential meaning. What’s more, the database itself often has multiple
+consumers, each with an embedded knowledge of the schema and its
+interpretation.
+This is a false dichotomy. Neither behavior nor data can take absolute precedence. Programmers can and will invent their way around
+any obstructions, including a rigid schema. They will overload column definitions, add type indicators, or pack data into XML strings
+in CLOBs. They will implement relationships in code that have no referential integrity checking in the schema or invent coding schemes
+based on reference tables that exist only as “enum” types in the code.
+Changing behavior with an unchanging schema will result in ever more
+convoluted abuses of the schema, eventually resulting in uses that
+would make the data architect recoil in horror. This semantic pollution spreads to other consumers of the data, too, making their use of
+the data more complex and error-prone.
+So, I have established that database schemas must change. Now, you
+need to consider how to make those changes as painless as possible.
+The first concern is the application code’s own dependencies on the
+schema. Object/relational mapping makes it easy to update the application. There are, however, some limitations, particularly regarding versioning and version control. Starting an application against a database
+schema that doesn’t match the ORM metadata produces unpredictable
+results. For example, Hibernate can be configured to verify that it’s
+mapping files against the database’s metadata at start-up, but this is
+3. An early warning sign of these organizations will be data-flow diagrams or giant Zachman Framework charts.
+A DAPTABLE E NTERPRISE A RCHITECTURE 319
+time-consuming and depends on your database vendor’s level of metadata support. If not verified at start-up, a schema-metadata mismatch
+will cause strange runtime errors that will either cause transaction rollbacks (with error reports to the users) or, worse, cause corrupted data.
+Every schema should include a table that indicates the current structure revision. This table can be as simple as a single row with one
+column—the version number. At a minimum, applications should
+check for a compatible version number during start-up. Following the
+Fail Fast principle, the application should refuse to start if it can’t use
+the database schema. The version number can also be used to trigger automated schema updates, such as Migrations in Ruby on Rails. 4
+The version number will also be significant later in the zero-downtime
+deployment. Because the semantics of the data can change even without a direct change to the schema itself, be sure to bump the version
+number for changes in interpretation, too.
+18.3 Adaptable Enterprise Architecture
+Some architects aspire to create a modern day Colossus: The Forbin
+Project (or Tron if you’re of my generation). 5 They labor under a vision
+of the seamless enterprise, working as a united machine. Every part
+is a necessary piece of the whole, perfectly suited to its role. Programs
+and programmers dwell inside the machine, serving its needs. I regard
+such utopians with deep suspicion.
+Such an architecture proceeds from the top down, usually beginning
+with a giant framework like Zachman or TOGAF. They regard the architecture as an entity of its own, with mere systems filling in the cells
+of the enterprise architecture matrix. If this group has power, they will
+put projects on hold until the enterprise architecture is defined. If they
+do not have power, they will gnaw on their own livers as project after
+nonconforming project rolls into production without the benefit of their
+architecture.
+This view rests atop two flawed assumptions. First, this assumes that
+the architecture can ever be finished. To state that the enterprise architecture is “in place” means an end to change. If the enterprise architecture stops changing, the organization will be frozen in time.
+4. See ActiveRecord::Migration in RDoc.
+5. If neither of these rings a bell, then check out http://www.imdb.com.
+A DAPTABLE E NTERPRISE A RCHITECTURE 320
+The only stasis is in death. Second, the top-down approach assumes
+that the organization can hold back time, denying change while the
+enterprise architecture is defined. This is costly in real terms and in
+opportunity cost.
+To some extent, I’m exaggerating to make a point. My intention is not
+to create a straw man but to highlight the totalitarian tendency of the
+top-down architect. The notion of an enterprise as a cleanly integrated,
+well-defined whole implies a mechanistic view of systems. Large complex machines, however, exhibit many undesirable failure modes. They
+break often. They might be crippled when one part breaks. Designing and building such architectures requires the kind of command and
+control hierarchy that has failed time and time again.
+Most damning, these require that changes occur simultaneously across
+widely separated groups—another application of Conway’s law. As the
+number of these version-locked systems proliferates, the enterprise suffers from an exponential problem: each system is required to change
+when any of its counterparts changes (because that is the nature of
+tight coupling). In an extreme case, such as an enterprise service bus
+(ESB) protocol change, every participating system must upgrade simultaneously. Imagine the risks inherent in deploying a new release of
+every mission-critical enterprise system at the same time! In fact, the
+costs and risks associated with these changes are such that large-scale
+protocol changes will never happen. The ESB will either ossify or be
+subverted in the same way as the static database schema was at a
+smaller scale. Once it becomes sufficiently outdated, the ESB will be
+supplanted with some newer technology that claims to tame the cost of
+complexity.
+Mechanistic metaphors for the enterprise trouble me. Mechanical systems exhibit exactly those attributes we don’t want our organizations
+to share; they are both rigid and fragile. To avoid these attributes, we
+can draw inspiration from biological and ecological metaphors instead.
+I view an organization as an ecosystem. People and systems occupy
+niches in this ecosystem. They exchange resources with the environment, mainly in terms of information flows. Individual niches in the
+ecosystem might have more than one inhabitant. For instance, I’ve seen
+companies with no less than seven independent, partially interoperable
+implementations of SAP’s ERP systems. Each one had its own geneaology, depending on which of the corporate acquisitions it came with.
+Each had its own constituents, food sources (systems that fed it data),
+A DAPTABLE E NTERPRISE A RCHITECTURE 321
+and symbionts (systems that used its output). As is often the case,
+it was terribly inefficient but very robust. Each implementation could
+change independently of the others, allowing the individuals to adapt
+much more quickly than if they were developed under the “one and only
+one” view of the enterprise architects.
+Real enterprises are always messier than the enterprise architecture
+would ever admit. New technologies never quite fully supplant old ones.
+A mishmash of integration technologies will be found, from flat-file
+transfer with batch processing to publish/subscribe messaging. Any
+strategy formulated predicated on creating a monoculture—whether it
+is a single integration technology or a single programming language—is
+doomed to be a costly failure. Imagine a company that was successful
+in imposing a single-language dictum. The entire company would be
+built on Ada, Smalltalk, Pascal, C, or some other old language. (The
+time needed for a language to gain enough currency to be selected
+ensures that it will be at least ten years old before it is a candidate
+for consideration. As an example of this pattern, I submit Java, which
+is now considered the “corporate-standard” language in a number of
+large IT shops.) Again, this artificial rigidity ensures that IT will not be
+serving its organization’s needs.
+Ask, “Does this
+architecture make IT
+respond better to users’
+needs?”
+In fact, the most useful criterion for evaluating architectures is this: “Does it make IT better at responding to its users’ needs?” Most
+enterprise architectures are not constructed
+with this goal in mind. Rather, they are constructed with the needs of the IT group in
+mind. (“What’s good for IT is good for the company.”) With that end
+in mind, it’s possible to let the enterprise architecture emerge from the
+patterns of interactions among the individual systems. I’m not suggesting total anarchy; that would not make IT better at responding to its
+users’ needs either. Rather, there is a mix of forces in tension: budget pressure, schedule pressure, desire for features, direct and indirect
+costs of those features, technological mastery, and losses due to friction. Successful enterprise architecture requires a dynamic resolution
+of these forces—patterns of interactions that promote healthy organizations.
+Dependencies Within a System
+Systems should exhibit loose clustering. In a loose cluster, the loss of
+an individual is no more significant to the larger entity than the loss of
+A DAPTABLE E NTERPRISE A RCHITECTURE 322
+Cluster 1
+App A
+App A App
+Instances
+Cluster 2
+App A
+App A App
+Instances port
+Figure 18.1: Dependencies on Services, Not Individual Instances
+a single tree in a forest. For example, losing one Apache instance out
+of a dozen has little impact on the overall service. 6 Likewise, losing a
+single application server instance should not matter to the health of the
+application or service being delivered.
+This implies that individual servers do not have differentiated roles or at
+least that any differentiated roles are present in more than one service.
+WebLogic and WebSphere both violate this principle. They require the
+existence of unique nodes that manage clusters. Loss of these nodes is
+damaging to the overall service.
+The members of a loose cluster can be brought up or down independently of each other. There should be no time-ordering requirements
+for the activation of the members of the cluster.
+The members of one cluster or tier should have no specific
+dependencies—or knowledge of—the individual members of another
+tier. The dependencies should be on a virtual IP address or service
+name that represents the cluster as a whole. Direct member-to-member
+dependencies create hard linkages that prevent the endpoints from
+changing independently. Figure 18.1, illustrates this notion. The calling
+application instances refer only to the service name provided by Cluster
+2. The exact hosts and applications that supply this service should be
+unknown to the members of Cluster 1.
+6. Assuming adequate capacity exists (see Chapter 8, Introducing Capacity, on
+page 161).
+A DAPTABLE E NTERPRISE A RCHITECTURE 323
+The members of a cluster should never need to know the identities of every other member in the cluster. This sets up an O(N∧2)
+change requirement that makes it harder to add or remove members
+of the cluster. It also encourages one-to-many communication patterns,
+which are capacity killers. Broadcast notifications, such as cache invalidation messages, should go through a publish/subscribe topic or command queue.
+Dependencies Between Systems: Protocols
+Just as you saw with coupling between clusters of objects, coupling
+between systems in the enterprise can cause the same kind of calcification. Tight coupling among systems increases the barrier to change
+on each side of the interface. Once again, good architecture embraces
+the need for change as fundamental—an engine to drive improvement,
+rather than a beast to be controlled.
+Any interface is defined by a protocol. It might be low-level, tossing
+packets at sockets; high-level, such as CORBA, DCOM, or RMI; or in
+between, such as XML over HTTPS. No matter the protocol, both ends
+of the interface must both speak and understand the same language.
+Sooner or later, the language will inevitably need to change. When that
+happens, one of two situations will result. In Figure 18.2, on the following page, both systems change at the same time. This requires
+downtime for both systems, since deployments are not instantaneous.
+If each system integrates with only the other, this might be acceptable (although it will make the zero-downtime deployment impossible).
+Once these systems develop the usual spiderweb of integrations with
+other systems, the change calendar starts to become untenable. Just
+the downtime required to support all the deployments becomes untenable.
+Worse yet, each protocol revision requires enough lead time to get
+through a development cycle and a test cycle. Suppose that system
+Alpha from Figure 18.2, on the next page, has a fast development team,
+using agile methods, on a two-week iteration. They will be able to adapt
+to the new protocol in about two weeks. But, if the development team
+behind Gamma takes anything more than two weeks, either because
+they have a longer iteration or because the current iteration is full, then
+Alpha must slow down to match Gamma’s pace, and Gamma could be
+on a quarterly release cycle! Again, extrapolating to the other systems
+that Alpha integrates with shows that the fast, two-week development
+A DAPTABLE E NTERPRISE A RCHITECTURE 324
+Caller 1
+Protocol N
+in use
+"Big Bang" Upgrade
+Protocol N + 1
+in use
+Caller 2 Provider A
+Upgrade Provider Upgrade Caller 1
+Upgrade Caller 2
+t
+Figure 18.2: Simultaneous Change at Both Endpoints
+cycle will get throttled back to match the slowest development cycle in
+the enterprise. 7
+Clearly, there is value in avoiding this coupling. It has undesirable
+effects on the time to market, deployment cost, and system availability.
+We must design protocols so that either endpoint can change independently of the other. The solution lies in protocol versioning. Figure 18.3,
+on the following page, shows how Alpha and Gamma can change at
+different times. Clearly, there is a time during which Alpha is willing to
+speak and understand either version 1 or 2, but Gamma can speak and
+understand only version 1. Both systems have to agree on a compatible
+protocol version in order to work together. Good use of test harnesses
+(see Pattern 5.7, Test Harness, on page 136) is helpful when ensuring that a system can handle all combinations of protocol versions it
+supports. The definition of a protocol version varies depending on the
+implementation technology. For low-level socket protocols—the kind
+that send a bag of bytes—the version should be part of early handshaking. Note that changes to the way the protocol version is sent will be
+next to impossible, so keep this part simple enough that it will not need
+7. In The Goal [Gol04], Eli Goldratt describes this phenomenon when his character Alex
+watches a Boy Scout troop on a hike. No matter how the scouts are ordered, the fastest
+hiker ultimately gets throttled back to the speed of the slowest.
+A DAPTABLE E NTERPRISE A RCHITECTURE 325
+Caller 1
+Protocol N
+in use
+Upgrade Provider Both protocols
+N and N + 1
+in use
+Caller 2 Provider A
+Upgrade Caller 1
+Protocol N + 1
+in use
+Upgrade Caller 2
+t
+Figure 18.3: Independent Change at Each Endpoint
+to change. For remote object protocols, a system might expose multiple
+interface definitions simultaneously, bound to different names. XMLbased protocols have an easy way to send and receive the protocol version and can be more challenging to implement internally, especially if
+using XML-to-object mapping tools. 8
+The same problem also holds for file format versions, though handshaking is not an option in that case. A system should be prepared to accept
+and generate old formats as needed. It should automatically detect the
+appropriate format on input. When the newer formats embody different
+semantics, there can be more than just a mapping problem here; defining format changes requires defining how to interpret older versions.
+The duration of the overlap in Figure 18.3 can be on the order of minutes or hours if it occurs only during the deployment of one of the
+systems. On the other hand, if Gamma’s developers are on a quarterly
+(or worse) release cycle, it could be a long time.
+8. For example, JAXB generates XML schemas from objects, or vice versa. Keeping two
+sets of classes with the same names and different binding structures is really difficult.
+This is one reason I do not favor these tools.
+A DAPTABLE E NTERPRISE A RCHITECTURE 326
+Dependencies Between Systems: Databases
+Integration databases—don’t do it! Seriously! Not even with views. Not
+even with stored procedures. Take it up a level, and wrap a web service around the database. Then make the web service redundant and
+accessed through a virtual IP. Build a test harness to verify what happens when the web service is down. That’s an enterprise integration
+technology. Reaching into another system’s database is just...icky.
+Nothing hobbles a system’s ability to adapt quite like having other systems poking into its guts. Database “integrations” are pure evil. They
+violate encapsulation and information hiding by exposing the most intimate details about a system’s inner workings. They encourage inappropriate coupling at both the structural and semantic levels.
+Even worse, the system that hangs its database out for the world cannot
+trust the data in the database at all. Rows can be added or modified by
+other entities even while the owner has objects in memory mapped from
+those rows. Vital application logic can be bypassed, resulting in illegal
+or unreachable states. 9
+A database with multiple systems accessing it becomes a nexus of
+rigidity. Every one of those systems must be upgraded simultaneously
+whenever the underlying schema changes. (Once again, the most likely
+outcome is that the schema just never changes.)
+Still, sometimes other systems really do need access to large volumes of
+data from others. Maybe it’s for reporting or business intelligence tools,
+or maybe it’s for distribution to channel partners or financial analysis.
+In these cases, we can find a number of alternatives that do not incur
+the evil of reaching into the guts of another system.
+Outside of the trading floor, most purposes do not require immediate,
+up-to-the-second access to production data. If a need is expressed or
+perceived for that kind of immediacy, examine the latency inherent in
+the analysis and decision-making process. (See Section 17.8, Supporting Processes, on page 305.)
+Odds are, the data will be hours stale (at least) by the time any action
+can be taken on it anyway. In that case, how important is it to get the
+9. The true database bigot will now pipe up that the database itself should be the repository of all business logic. I’ve heard that before. In principle, it seems plausible. Databases
+have Turing-complete languages available. In practice, it’s the wrong logic in the wrong
+place with the wrong tools and processes for change.
+R ELEASES S HOULDN ’ T H UR T 327
+production data? A snapshot from the previous hour would be just as
+timely. (If that feedback process takes only a few seconds to go around
+the loop, then you have a different story.)
+Transporting large volumes of data out of production is sometimes necessary. In these cases, look toward extract-transform-load (ETL) tools
+to handle the physical and semantic mapping. Once the transforms
+are defined, they can be tuned and put under a quota to avoid risking production capacity. The ID that runs the extracts can be set to
+allow “select” but not “insert,” “delete,” or “update.” Oracle’s “materialized views” also serve well when transporting large volumes. Depending
+on your storage architecture, you might also be able to play games with
+so-called business continuance volumes (BCVs) to move data from one
+SAN to another.
+18.4 Releases Shouldn’t Hurt
+One of my favorite retailers has a release process that rivals a NASA
+launch sequence. It starts in the afternoon and runs until the wee
+hours of the morning. In the early days, more than twenty people
+had active roles to play during the release. These days, that is down
+to less than a dozen. As you might imagine, any process involving
+that many people requires detailed planning and coordination. Because
+each release is arduous, they don’t do many of them a year. Because
+there are so few releases, each one tends to be unique. That uniqueness
+requires additional planning with each release, making the release a bit
+more painful—further discouraging more frequent releases.
+Releases should about as big an event as getting a haircut (or compiling
+a new kernel, for you gray-ponytailed UNIX hackers). The literature on
+agile methods, lean development, and incremental funding all make a
+powerful case for frequent releases in terms of user delight and business value. 10 With respect to production operations, however, there’s
+an added benefit of frequent releases. It forces you to get really good at
+doing releases and deployments.
+As discussed in Chapter 17, Transparency, on page 265, a closed feedback loop is essential to improvement. The faster that feedback loop
+10. If Agile Software Development [Coc01], Lean Software Development [PP03], Software
+by Numbers [DCH03], and Extreme Programming Explained [Bec00] don’t convince you,
+nothing will.
+R ELEASES S HOULDN ’ T H UR T 328
+operates, the more accurate those improvements will be. This demands
+frequent releases. Frequent releases with incremental functionality also
+allows your company to outpace its competitors and set the agenda in
+the marketplace.
+As commonly practiced, releases cost too much and introduce too much
+risk. The kind of manual effort and coordination I described previously
+is barely sustainable for three or four releases a year. It could never
+work for twenty a year. One solution—the easy but harmful one—is to
+slow down the release calendar. Like going to the dentist less frequently
+because it hurts, this response to the problem can only exacerbate the
+issue. The right response is to reduce the effort needed, remove people from the process, and make the whole thing more automated and
+standardized.
+Deployments Cost Too Much
+Except for product companies, the cost of releasing software is almost
+never accounted for in budgeting. Planning, analysis, development, and
+testing all get recognized, but the release itself often has substantial
+direct and indirect costs.
+The direct costs come primarily from the labor used during the run-up
+to the release. Aside from testing, there are tasks in four areas.
+Configuration management
+Creating the release branch, labeling the code base, creating the
+release build
+Documentation
+Release notes and new or updated training materials
+Marketing communications
+Updated marketing materials and announcements inside and outside the company
+Deployment
+Planning, executing, and verifying the deployment
+Support
+Emergency bug fixes, updates to monitoring, updates to the run
+book
+The largest indirect cost of releases comes from downtime during the
+release. It is a rare system that operates only during “business hours.”
+R ELEASES S HOULDN ’ T H UR T 329
+The View from Operations
+One of my favorite operations managers often reminds people to “assume positive intent”—that is, when conflict arises
+between people or groups, assume that all parties are motivated by the same desire to do good by the company. During
+the worst “us” vs. “them” conflicts, it can seem that so-and-so is
+“just out to screw us,” but that’s seldom the case. Conflict usually arises from different imperatives operating on the different
+groups.
+Assuming positive intent is essential when discussing the frequency of releases. Business sponsors and development groups
+view new releases as the generator of positive change. When
+development looks at a release, they see requirements fulfilled,
+bugs fixed, and architecture improved. When the sponsors look
+at a new release, they see features to generate revenue, retain
+customers, and match or exceed their competitors. For them,
+change brings improvement.
+When the operations department looks at a new release, they
+see the potential for new failure modes, the need for new procedures, and new monitoring. They see that old monitoring
+might not apply anymore. They see that the new release probably needs more of the “core four” resources: CPU, memory, storage, and bandwidth. Above all, they see risk. There’s risk in the
+deployment itself, risk in the new release, and risk just because
+the release is an unknown quantity compared to the existing
+code base.
+Business sponsors, development teams, and operations managers: they are all correct. A new release is all of these things to
+each of these people.
+R ELEASES S HOULDN ’ T H UR T 330
+Or, looking at it from a different perspective, “business hours” have
+expanded to cover the entire clock. The days of nightly “system maintenance time” are long gone.
+Operations probably computes availability based on unplanned downtime, so 99.5% availability means only that the system had less than
+216 minutes of surprises that month. This is a dodge. The system might
+have been down for five hours during change windows. Do the users
+of the system care whether downtime is planned or unplanned? No!
+To a user, down is down. If I can’t get my work done, the system is
+down! Always keep in mind that the users generally don’t know the
+development or operations calendars. Users care only about their own
+calendars.
+Timing Releases
+Why do we place so much emphasis on release dates? For shrinkwrap product vendors such as Microsoft or Adobe, release dates matter. They are announced a year in advance, with giant product launch
+events, media attention, and massive planning and preparation from
+customers and the sales channel. Nobody is lining up at midnight to
+get their hands on the latest version of software from the other 99.9%
+of us.
+For the most part, our customers don’t even know the scheduled
+release dates. For web-based software, it just changes one day, without much ado on the customer’s part. If the release is a day or a week
+late, the customer never knows or cares. The customer cares that the
+system is available and that it works without too many bugs.
+Don’t risk customers for
+an arbitrary release
+date.
+Yet, I’ve seen organizations try to rush releases
+into production before they’re ready. In one
+case, I was in a “go/no-go” meeting at 4 p.m.
+on the day of release. QA told us the release
+hadn’t passed testing yet, but they would
+know more in an hour. Despite that, the table gave the release a
+thumbs-up! I objected, pointing out that the release couldn’t be ready
+if it hadn’t passed QA. Why jeopardize customers just to hit a release
+date that was chosen arbitrarily from a distance of several months?
+The answer is obvious, and it has nothing to do with what’s best for the
+customer!
+R ELEASES S HOULDN ’ T H UR T 331
+Zero Downtime Deployments
+With high-availability servers and high-availability architectures, we no
+longer accept downtime for hardware maintenance, so why do we tolerate it for software changes?
+Somehow, though, almost every code release requires downtime during
+the release. Whether that’s an hour or a day, calling it “planned downtime” doesn’t remove the cost. If your company’s cost of downtime is
+$10,000 an hour, then a four-hour deployment costs $40,000 whether
+it’s on the operations calendar or not.
+Why do application releases seem to require downtime? Ironically, it’s
+exactly because of the same architecture feature that is supposed to
+increase uptime: redundancy. The fact that multiple servers handle
+incoming requests means that during the deployment itself there will
+always be some servers on the new version of the code and some on
+the old version. During that period of overlap, version N and N+1 are
+both present. If the software is totally self-contained, then the presence
+of two versions doesn’t pose a problem. Of course, enterprise applications are rarely self-contained. They use databases, web services, and
+search engines. For websites, they generate URLs that refer to style
+sheets, JavaScript files, and media files. All these external references
+leave plenty of opportunities for version conflict. The easiest approach
+is to just take downtime for the deployment.
+It’s possible, however, to execute a deployment over an extended period
+of time—days or even weeks—that avoids these version conflicts and
+allows two versions of the software to coexist. Structuring a zerodowntime deployment requires collaboration between development and
+operations, which is why it so seldom happens. Nevertheless, with a
+small bit of up-front architecture, you can eliminate deployment downtime.
+The key is to break up the deployment into phases. Instead of adding,
+changing, and removing stuff—such as database columns and tables,
+constraints, services—all at once, add the new items early, with ways
+to ensure forward compatibility for the old version of the code. Later,
+after the release is rolled out, remove stuff that is no longer referenced,
+and add any new constraints that would have broken the old version.
+The next sections describe these phases in detail.
+R ELEASES S HOULDN ’ T H UR T 332
+Expansion
+The first step is to add new “stuff.” The stuff consists of URL-based
+assets, web service endpoints, database tables and columns, and so
+on. All the stuff can be added without breaking the old version of the
+software, under certain conditions.
+URL-based resources, such as style sheets, images, animations, or
+JavaScript files, should be given a new URL for each new revision. If
+the application generates web pages that refer to /static/styles.css, then
+any changes to styles.css is likely to cause a version conflict. On the
+other hand, if the application refers to /static/1.1/styles.css instead, then
+it’s trivial to deploy /static/1.2/styles.css without conflicts.
+For web services, each revision of the interface should be given a new
+endpoint name. Similarly, for remote object interfaces, defining a new
+interface name (for example, with a numeral after the interface name)
+for each version ensures that the old version of the software gets the
+interface it wants while the new version gets the interface it wants. A
+single implementation class can accommodate multiple interface definitions, as long as the changes are just adding or removing exposed
+methods. Changing the semantics of existing methods requires a different class definition, usually via an adapter or an extracted superclass.
+For socket-based protocols, the protocol itself should contain a version
+identifier. This definitely requires that the receiving applications must
+be updated before the senders. It also implies that the receiving application must support multiple versions of the protocol. If there are other
+callers of the receiving application, then this helps loosen the coupling
+with those systems, too. Deploying a new version of code to the servers
+that receive these calls can be done as its own “recursive zero-downtime
+deployment.”
+If it’s simply impractical to support multiple protocol revisions, another
+option is to define multiple service pools in the load balancer on different ports. Then the old version of the calling application will hit the port
+number that maps to the original version of the receiving application,
+while the new version of the calling application will hit the new port
+number that maps to the new version of the receiving application.
+By far, the most conflicts—and the most troublesome conflicts—will
+arise in the database. Schema changes are rarely forward compatible, and they’re never by accident. Still, it is possible to break schema
+changes into phases. In the “expansion” phase, tables and columns
+R ELEASES S HOULDN ’ T H UR T 333
+get added. Any columns that will eventually be NOT NULL are added
+as nullable, because the old version doesn’t know how to fill these in.
+Later, in the cleanup phase, constraints will be added. This goes for
+referential integrity rules, too. They cannot be added during expansion
+because the old version would immediately violate the relationships.
+So, even if the old version of the application doesn’t break because
+of the new tables and columns, it doesn’t do anything useful with
+them either. The new version probably expects some meaningful data
+in these. It might even include a migration script to populate the new
+tables and columns with data from the old ones. The application probably just uses INSERT to create rows in the database. 11 You can use
+a trick to pass this data through to the new tables and columns: triggers. Assuming that the new structure can be filled in from the existing
+data—and there’s an example of how to do that in the forward migration
+script—then a trigger can do the same thing, one row at a time. Thus,
+the old version of the application will create data that the new application can also use. After all, the new version will be creating data, too. It
+will use the new structure; so, if nothing is done, the old version would
+view data from the new version as corrupt or incomplete. Triggers can
+bridge this direction, too, by filling in the old structure based on the
+new data.
+Of course, in order to prepare for this, any SQL INSERT or UPDATE
+statements must be explicit about columns and values. SELECT * is
+also unlikely to be helpful. Once again, ORM tools come to the rescue.
+They mechanically generate SQL statements that include the specific
+columns to select, insert, or update. Any ancillary queries—such as
+business intelligence or reporting—should also be specific about the
+columns of interest. This is not difficult to do if you do it consistently
+from the beginning. Trying to replace every SELECT * to get a release
+out the door will not be met well.
+Rollout
+With the preparations from the “expansion” phase in place, the actual
+rollout of the new software on the application servers should be trivial.
+This could take a few hours to a few days, depending on how cautiously
+you want to approach it. For example, this might include letting a cou-
+11. If the application uses stored procedures to add entries to the database, then the
+stored procedures should be updated at this point to fill in data when invoked by the old
+version of the application.
+S UMMARY 334
+ple of servers “bake” on the new code base for a day or more. (While both
+versions are in use, it might be helpful to create two service pools in the
+load balancers in order to keep request or session failover confined to
+the group of servers on the same version as the original session.)
+If downtime were required for the deployment, then there would be a
+great deal of pressure to get this phase done in the minimum time
+possible. With that pressure removed, there is enough time for an
+orderly shutdown. This should follow good practices for clean shutdown and start-up, thereby avoiding the user frustration that accompanies abrupt shutdown. 12 (See Section 14.3, Start-up and Shutdown,
+on page 247.)
+Cleanup
+After the new release has baked long enough to be accepted, it is time to
+clean up. This includes removing the bridging triggers and extra service
+pools. Any columns or tables that are no longer being used can be
+removed. Old versions of static files can be removed, too.
+At this point, all the application servers are running on the new version
+of the code. This is the time to convert columns to NOT NULL that need
+it, as well as to add referential integrity relations (though constraints
+enforced in the database can cause large problems for the ORM layer).
+This is also the time to drop any columns and tables that are no longer
+needed.
+18.5 Summary
+Change is the defining characteristic of software. That change—that
+adaptation—begins with release. Release is the beginning of the software’s true life; everything before that release is gestation. Either systems grow over time—adapting to their changing environment—or they
+decay until their costs outweigh their benefits and then die.
+12. Lost session state, mainly. I’ve never seen session failover work perfectly.
+S UMMARY 335
+Figure 18.4: Zero-Downtime Deployment: Detailed Timeline
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #architecture_and_books

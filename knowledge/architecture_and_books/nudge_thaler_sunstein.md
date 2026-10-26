@@ -1,88 +1,17 @@
-﻿# 📚 Libro Completo: Nudge
+# 📚 Libro Completo: Nudge
+
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
 
 > **Autor:** Richard Thaler  
 > **Archivo Fuente:** `Richard_H._Thaler_Cass_R._Sunstein_Nudge_Improv..pdf`  
 > **Páginas Originales:** 304  
 > **Secciones Extraídas:** 109  
 > **Fecha de Ingesta:** 2026-10-06  
-> **Tipo:** Texto Completo Estructurado para RAG Jerárquico  
+> **Tipo:** Texto Completo Estructurado para RAG Jerárquico
 
 ---
 
-## Sección 1: Introducción y Fundamentos
-
--- 1 of 304 --
-
-NUDGE
-
--- 2 of 304 --
-
-This page intentionally left blank
-
--- 3 of 304 --
-
-NUDGE
-Improving Decisions About
-Health, Wealth, and Happiness
-Richard H. Thaler
-Cass R. Sunstein
-Yale University Press
-New Haven & London
-
--- 4 of 304 --
-
-A Caravan book. For more information, visit
-www.caravanbooks.org.
-Copyright © 2008 by Richard H. Thaler and Cass R. Sunstein.
-All rights reserved.
-This book may not be reproduced, in whole or in part, including
-illustrations, in any form (beyond that copying permitted by
-Sections 107 and 108 of the U.S. Copyright Law and except by
-reviewers for the public press), without written permission from
-the publishers.
-Set in Galliard and Copperplate 33 types by The Composing Room
-of Michigan, Inc.
-Printed in the United States of America.
-Library of Congress Cataloging-in-Publication Data
-Thaler, Richard H., 1945–
-Nudge : improving decisions about health, wealth, and
-happiness / Richard H. Thaler and Cass R. Sunstein.
-p. cm.
-Includes bibliographical references and index.
-ISBN 978-0-300-12223-7 (cloth : alk. paper) 1. Economics—
-Psychological aspects. 2. Choice (Psychology)—Economic
-aspects. 3. Decision making—Psychological aspects.
-4. Consumer behavior. I. Sunstein, Cass R. II. Title.
-HB74.P8T53 2008
-330.019—dc22
-A catalogue record for this book is available from the British
-Library.
-The paper in this book meets the guidelines for permanence and
-durability of the Committee on Production Guidelines for Book
-Longevity of the Council on Library Resources.
-10 9 8 7 6 5 4 3 2 1
-
--- 5 of 304 --
-
-For France, who makes everything in life better, even this book
-—RHT
-For Ellyn, who knows when to nudge her father
-—CRS
-
--- 6 of 304 --
-
-This page intentionally left blank
-
--- 7 of 304 --
-
-CONTENTS
-VII
-Acknowledgments ix
-Introduction 1
-
----
-
-## Sección 2: PART I HUMANS AND ECONS
+## Sección 1: PART I HUMANS AND ECONS [Entropy: 0.265]
 
 1 Biases and Blunders 17
 2 Resisting Temptation 40
@@ -92,18 +21,16 @@ Introduction 1
 
 ---
 
-## Sección 3: PART II MONEY
+## Sección 2: PART II MONEY [Entropy: 0.25]
 
 6 Save More Tomorrow 103
 7 Naïve Investing 118
 8 Credit Markets 132
 9 Privatizing Social Security: Smorgasbord Style 145
 
--- 8 of 304 --
-
 ---
 
-## Sección 4: PART III HEALTH
+## Sección 3: PART III HEALTH [Entropy: 0.25]
 
 10 Prescription Drugs: Part D for Daunting 159
 11 How to Increase Organ Donations 175
@@ -111,7 +38,7 @@ Introduction 1
 
 ---
 
-## Sección 5: PART IV FREEDOM
+## Sección 4: PART IV FREEDOM [Entropy: 0.25]
 
 13 Improving School Choices 199
 14 Should Patients Be Forced to Buy Lottery Tickets? 207
@@ -119,7 +46,7 @@ Introduction 1
 
 ---
 
-## Sección 6: PART V EXTENSIONS AND OBJECTIONS
+## Sección 5: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.265]
 
 16 A Dozen Nudges 229
 17 Objections 236
@@ -128,9 +55,6 @@ Notes 255
 Bibliography 263
 Index 283
 CONTENTS VIII
-
--- 9 of 304 --
-
 ACKNOWLEDGMENTS
 IX
 The research for this book would not have been possible without
@@ -152,9 +76,6 @@ Gilovich, Jonathan Guryan, Justine Hastings, Christine Jolls, Daniel Kahneman, E
 Brigitte Madrian, Cade Massey, Phil Maymin, Sendhil Mullainathan, Don
 Norman, Eric Posner, Richard Posner, Raghu Rajan, Dennis Regan, Tom
 Russell, Jesse Shapiro, Jennifer Tesher, Edna Ullmann-Margalit, Adrian
-
--- 10 of 304 --
-
 Vermeule, Eric Wanner, Roman Weil, Susan Woodward, and Marion Wrobel. As always, our toughest and wisest advice came from France Leclerc
 and Martha Nussbaum. Vicki Drozd helped out with everything, as she always does, and made sure that all the research assistants got paid, which
 they appreciated. Thanks too to Ellyn Ruddick-Sunstein, for helpful discussion, patience, both sense and amusement about behavioral economics, and good cheer.
@@ -163,8 +84,6 @@ We also owe a special thanks to all the staff at Noodles restaurant on
 this book, among other things, for several years now. We’ll be back next
 week.
 ACKNOWLEDGMENTS X
-
--- 11 of 304 --
 The Cafeteria
 A friend of yours, Carolyn, is the director of food services for a
 large city school system. She is in charge of hundreds of schools, and hundreds of thousands of kids eat in her cafeterias every day. Carolyn has formal training in nutrition (a master’s degree from the state university), and
@@ -180,9 +99,6 @@ schools the French fries, but in others the carrot sticks, were at eye level.
 From his experience in designing supermarket floor plans, Adam suspected that the results would be dramatic. He was right. Simply by rearranging the cafeteria, Carolyn was able to increase or decrease the consumption of many food items by as much as 25 percent. Carolyn learned a
 big lesson: school children, like adults, can be greatly influenced by small
 INTRODUCTION
-
--- 12 of 304 --
-
 changes in the context. The influence can be exercised for better or for
 worse. For example, Carolyn knows that she can increase consumption of
 healthy foods and decrease consumption of unhealthy ones.
@@ -215,9 +131,7 @@ Option 4 might appeal to a corrupt person in Carolyn’s job, and manipINTRODUCT
 
 ---
 
-## Sección 7: PART V EXTENSIONS AND OBJECTIONS
-
--- 13 of 304 --
+## Sección 6: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.25]
 
 ulating the order of the food items would put yet another weapon in the
 arsenal of available methods to exploit power. But Carolyn is honorable
@@ -248,9 +162,6 @@ impacts on people’s behavior. A good rule of thumb is to assume that
 comes from focusing the attention of users in a particular direction. A
 wonderful example of this principle comes from, of all places, the men’s
 INTRODUCTION 3
-
--- 14 of 304 --
-
 rooms at Schiphol Airport in Amsterdam. There the authorities have
 etched the image of a black housefly into each urinal. It seems that men
 usually do not pay much attention to where they aim, which can create a
@@ -288,9 +199,7 @@ to go directly to the bibliography without having first to find the endnote.
 
 ---
 
-## Sección 8: PART V EXTENSIONS AND OBJECTIONS
-
--- 15 of 304 --
+## Sección 7: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.265]
 
 1, then we welcome you to our new movement: libertarian paternalism.
 We are keenly aware that this term is not one that readers will find immediately endearing. Both words are somewhat off-putting, weighted down
@@ -320,9 +229,6 @@ of paternalism because choices are not blocked, fenced off, or significantly
 burdened. If people want to smoke cigarettes, to eat a lot of candy, to
 choose an unsuitable health care plan, or to fail to save for retirement, libertarian paternalists will not force them to do otherwise—or even make
 things hard for them. Still, the approach we recommend does count as paINTRODUCTION 5
-
--- 16 of 304 --
-
 ternalistic, because private and public choice architects are not merely trying to track or to implement people’s anticipated choices. Rather, they are
 self-consciously attempting to move people in directions that will make
 their lives better. They nudge.
@@ -351,9 +257,6 @@ Blue, and exercise the willpower of Mahatma Gandhi. Really. But the folks
 that we know are not like that. Real people have trouble with long division
 if they don’t have a calculator, sometimes forget their spouse’s birthday,
 INTRODUCTION 6
-
--- 17 of 304 --
-
 and have a hangover on New Year’s Day. They are not homo economicus;
 they are homo sapiens. To keep our Latin usage to a minimum we will
 hereafter refer to these imaginary and real species as Econs and Humans.
@@ -387,9 +290,7 @@ example, consider what is called the “status quo bias,” a fancy name for inI
 
 ---
 
-## Sección 9: PART V EXTENSIONS AND OBJECTIONS
-
--- 18 of 304 --
+## Sección 8: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.28]
 
 ertia. For a host of reasons, which we shall explore, people have a strong
 tendency to go along with the status quo or default option.
@@ -418,9 +319,6 @@ a more obscure place—it might be said that the “cost” of choosing candy is
 Some of our nudges do, in a sense, impose cognitive (rather than material) costs, and in
 that sense alter incentives. Nudges count as such, and qualify as libertarian paternalism,
 only if any costs are low.
-
--- 19 of 304 --
-
 A False Assumption and Two Misconceptions
 Many people who favor freedom of choice reject any kind of paternalism. They want the government to let citizens choose for themselves. The standard policy advice that stems from this way of thinking is to
 give people as many choices as possible, and then let them choose the one
@@ -448,9 +346,6 @@ good choices in contexts in which they have experience, good information, and pr
 and poorly informed, and in which feedback is slow or infrequent—say, in
 choosing between fruit and ice cream (where the long-term effects are
 INTRODUCTION 9
-
--- 20 of 304 --
-
 slow and feedback is poor) or in choosing among medical treatments or investment options. If you are given fifty prescription drug plans, with multiple and varying features, you might benefit from a little help. So long as
 people are not choosing perfectly, some changes in the choice architecture
 could make their lives go better (as judged by their own preferences, not
@@ -482,9 +377,7 @@ INTRODUCTION 10
 
 ---
 
-## Sección 10: PART V EXTENSIONS AND OBJECTIONS
-
--- 21 of 304 --
+## Sección 9: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.265]
 
 set, in ways that inevitably affect some choices and outcomes. In this respect, the antinudge position is unhelpful—a literal nonstarter.
 The second misconception is that paternalism always involves coercion.
@@ -513,9 +406,6 @@ careful attention.
 Consider an illustration from our own employer, the University of Chicago. The university, like many large employers, has an “open enrollment”
 period every November, when employees are allowed to revise the selections they have made about such benefits as health insurance and retirement savings. Employees are required to make their choices online. (Public computers are available for those who would otherwise not have
 INTRODUCTION 11
-
--- 22 of 304 --
-
 Internet access.) Employees receive, by mail, a package of materials explaining the choices they have and instructions on how to log on to make
 these choices. Employees also receive both paper and email reminders.
 Because employees are human, some neglect to log on, so it is crucial to
@@ -545,9 +435,6 @@ three of the top administrative officers of the university to discuss similar
 issues, and the meeting happened to take place on the final day of the employees’ open enrollment period. We mentioned this and asked whether
 the administrators had remembered to meet the deadline. One said that he
 was planning on doing it later that day and was glad for the reminder. AnINTRODUCTION 12
-
--- 23 of 304 --
-
 other admitted to having forgotten, and the third said that he was hoping
 that his wife had remembered to do it! The group then turned to the question of what the default should be for a supplementary salary reduction
 program (a tax-sheltered savings program). To that point, the default had
@@ -579,9 +466,7 @@ INTRODUCTION 13
 
 ---
 
-## Sección 11: PART V EXTENSIONS AND OBJECTIONS
-
--- 24 of 304 --
+## Sección 10: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.25]
 
 indispensable foundation for public policy. There is a real basis here for
 crossing partisan divides.
@@ -604,17 +489,9 @@ areas, the most thoughtful Republicans are abandoning their knee-jerk
 opposition to constructive governmental initiatives. For all their differences, we hope that both sides might be willing to converge in support of
 some gentle nudges.
 INTRODUCTION 14
-
--- 25 of 304 --
-
 PART
 IHUMANS AND ECONS
 
--- 26 of 304 --
-
-This page intentionally left blank
-
--- 27 of 304 --
 BIASES AND BLUNDERS
 Have a look, if you will, at these two tables:
 Suppose that you are thinking about which one would work better as a
@@ -626,9 +503,6 @@ longer and narrower than the one on the right. Typical guesses are that the
 ratio of the length to the width is 3:1 for the left table and 1.5:1 for the right
 1.1.
 Two tables (Adapted from Shepard [1990])
-
--- 28 of 304 --
-
 table. Now take out a ruler and measure each table. You will find that the
 two table tops are identical. Measure them until you are convinced, because this is a case where seeing is not believing. (When Thaler showed this
 example to Sunstein at their usual lunch haunt, Sunstein grabbed his chopstick to check.)
@@ -652,9 +526,6 @@ Tabletops (Adapted from Shepard [1990])
 *One of the tricks used in drawing these tables is that vertical lines look longer than
 horizontal lines. As a result, the Gateway Arch in St. Louis looks taller than it is wide,
 although the height actually equals the width.
-
--- 29 of 304 --
-
 These two figures capture the key insight that behavioral economists
 have borrowed from psychologists. Normally the human mind works remarkably well. We can recognize people we have not seen in years, understand the complexities of our native language, and run down a flight of
 stairs without falling. Some of us can speak twelve languages, improve the
@@ -683,9 +554,7 @@ BIASES AND BLUNDERS 19
 
 ---
 
-## Sección 12: PART V EXTENSIONS AND OBJECTIONS
-
--- 30 of 304 --
+## Sección 11: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.28]
 
 your Automatic System. Brain scientists are able to say that the activities of
 the Automatic System are associated with the oldest parts of the brain, the
@@ -721,9 +590,6 @@ Skilled Rule-following
 which one looks more competent. These judgments, by students who did not know
 the candidates, forecast the winner of the election two-thirds of the time! (Toderov et
 al. [2005]; Benjamin and Shapiro [2007])
-
--- 31 of 304 --
-
 fancy intuitions; their Automatic Systems allow them to size up complex
 situations rapidly and to respond with both amazing accuracy and exceptional speed.
 One way to think about all this is that the Automatic System is your gut
@@ -756,9 +622,6 @@ and 24 days. But all these answers are wrong. If you think for a minute, you
 will see why. If the ball costs 10 cents and the bat costs one dollar more
 than the ball, meaning $1.10, then together they cost $1.20, not $1.10. No
 one who bothers to check whether his initial answer of 10 cents could posBIASES AND BLUNDERS 21
-
--- 32 of 304 --
-
 sibly be right would give that as an answer, but research by Shane Frederick (2005) (who calls this series of questions the cognitive reflection test)
 finds that these are the most popular answers even among bright college
 students.
@@ -788,9 +651,7 @@ HUMANS AND ECONS 22
 
 ---
 
-## Sección 13: PART V EXTENSIONS AND OBJECTIONS
-
--- 33 of 304 --
+## Sección 12: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.25]
 
 Although rules of thumb can be very helpful, their use can also lead to
 systematic biases. This insight, first developed decades ago by two Israeli
@@ -823,9 +684,6 @@ and add two hundred. Write the number down. Now, when do you think
 Attila the Hun sacked Europe? Was it before or after that year? What is your
 best guess? (We will give you one hint: It was after the birth of Jesus.) Even
 BIASES AND BLUNDERS 23
-
--- 34 of 304 --
-
 if you do not know much about European history, you do know enough to
 know that whenever Attila did whatever he did, the date has nothing to do
 with your phone number. Still, when we conduct this experiment with our
@@ -857,9 +715,6 @@ Availability
 How much should you worry about hurricanes, nuclear power,
 terrorism, mad cow disease, alligator attacks, or avian flu? And how much
 HUMANS AND ECONS 24
-
--- 35 of 304 --
-
 care should you take in avoiding risks associated with each? What, exactly,
 should you do to prevent the kinds of dangers that you face in ordinary
 life?
@@ -891,9 +746,7 @@ BIASES AND BLUNDERS 25
 
 ---
 
-## Sección 14: PART V EXTENSIONS AND OBJECTIONS
-
--- 36 of 304 --
+## Sección 13: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.25]
 
 even if by that point they’ve become a bad investment. Or suppose that
 people falsely think that some risks (a nuclear power accident) are high,
@@ -925,9 +778,6 @@ most famous demonstration of such biases involves the case of a hypothetical wom
 She majored in philosophy. As a student, she was deeply concerned with issues of discrimination and social justice and also participated in antinuclear
 demonstrations.” Then people were asked to rank, in order of the probability of their occurrence, eight possible futures for Linda. The two crucial
 HUMANS AND ECONS 26
-
--- 37 of 304 --
-
 answers were “bank teller” and “bank teller and active in the feminist
 movement.” Most people said that Linda was less likely to be a bank teller
 than to be a bank teller and active in the feminist movement.
@@ -967,9 +817,7 @@ BIASES AND BLUNDERS 27
 
 ---
 
-## Sección 15: PART V EXTENSIONS AND OBJECTIONS
-
--- 38 of 304 --
+## Sección 14: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.295]
 
 were probably the neighborhoods where German spies lived. They were
 wrong. In fact the Germans could do no better than aim their bombs at
@@ -988,15 +836,9 @@ of randomness, namely the widely held view among basketball fans that
 HUMANS AND ECONS 28
 1.3.
 Map of London showing V-1 rocket strikes (Adapted from Gilovich [1991])
-
--- 39 of 304 --
-
 1.4.
 Map of London showing V-1 rocket strikes, with vertical-horizontal grid (a) and diagonal grid (b). The figures outside the grid refer to the number of dots in the quadrant.
 (Adapted from Gilovich [1991])
-
--- 40 of 304 --
-
 there is a strong pattern of “streak shooting.” We will not go into this in
 detail, because our experience tells us that the cognitive illusion here is so
 powerful that most people (influenced by their Automatic System) are unwilling even to consider the possibility that their strongly held beliefs
@@ -1027,9 +869,6 @@ However, as in the original study, there was no evidence of any streakiness.
 This absence of streak shooting did not stop the announcers from detecting sudden temperature variations in the players. (“Dana Baros is hot!”
 “Legler is on fire!”) But these outbursts by the announcers had no predictive power. Before the announcers spoke of hotness, the players had made
 HUMANS AND ECONS 30
-
--- 41 of 304 --
-
 80.5 percent of their three previous shots. After the hotness pronouncements, players made only 55.2 percent—not significantly better than their
 overall shooting percentage in the contest, 53.9 percent.
 Of course, it is no great problem if basketball fans are confused about
@@ -1062,9 +901,7 @@ BIASES AND BLUNDERS 31
 
 ---
 
-## Sección 16: PART V EXTENSIONS AND OBJECTIONS
-
--- 42 of 304 --
+## Sección 15: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.34]
 
 Nevertheless, the results of this survey reveal a high degree of unrealistic
 optimism about performance in the class. Typically less than 5 percent of
@@ -1091,9 +928,6 @@ many said 100 percent to the second question.11
 Unrealistic optimism can explain a lot of individual risk taking, especially in the domain of risks to life and health. Asked to envision their future, students typically say that they are far less likely than their classmates
 to be fired from a job, to have a heart attack or get cancer, to be divorced
 after a few years of marriage, or to have a drinking problem. Gay men sysHUMANS AND ECONS 32
-
--- 43 of 304 --
-
 tematically underestimate the chance that they will contract AIDS, even
 though they know about AIDS risks in general. Older people underestimate the likelihood that they will be in a car accident or suffer major diseases. Smokers are aware of the statistical risks, and often even exaggerate
 them, but most believe that they are less likely to be diagnosed with lung
@@ -1124,9 +958,6 @@ values to objects. When they have to give something up, they are hurt
 more than they are pleased if they acquire the very same thing.
 It is also possible to measure loss aversion with gambles. Suppose I ask
 BIASES AND BLUNDERS 33
-
--- 44 of 304 --
-
 HUMANS AND ECONS 34
 you whether you want to make a bet. Heads you win $X, tails you lose
 $100. How much does X have to be for you to take the bet? For most people, the answer to this question is somewhere around $200. This implies
@@ -1153,9 +984,7 @@ made exactly no changes to the way their contributions were being allocated. Per
 
 ---
 
-## Sección 17: PART V EXTENSIONS AND OBJECTIONS
-
--- 45 of 304 --
+## Sección 16: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.25]
 
 gle when they joined the plan still have their mothers listed as their beneficiaries!
 Status quo bias is easily exploited. Many years ago American Express
@@ -1189,9 +1018,6 @@ wrongly, that default options come with an implicit endorsement from the
 default setter, be it the employer, government, or TV scheduler. For this
 and other reasons, setting the best possible defaults will be a theme we explore often in the course of this book.
 BIASES AND BLUNDERS 35
-
--- 46 of 304 --
-
 Framing
 Suppose that you are suffering from serious heart disease and that
 your doctor proposes a grueling operation. You’re understandably curious
@@ -1225,9 +1051,6 @@ The credit card companies had a good intuitive understanding of what
 psychologists would come to call “framing.” The idea is that choices depend, in part, on the way in which problems are stated. The point matters
 a great deal for public policy. Energy conservation is now receiving a lot of
 HUMANS AND ECONS 36
-
--- 47 of 304 --
-
 attention, so consider the following information campaigns: (a) If you use
 energy conservation methods, you will save $350 per year; (b) If you do
 not use energy conservation methods, you will lose $350 per year. It turns
@@ -1262,11 +1085,7 @@ BIASES AND BLUNDERS 37
 
 ---
 
-## Sección 18: PART V EXTENSIONS AND OBJECTIONS
-
--- 48 of 304 --
-
--- 49 of 304 --
+## Sección 17: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.25]
 
 tactile information (they are not speed bumps) but rather just send a visual
 signal to drivers. When the stripes first appear, they are evenly spaced, but
@@ -1277,8 +1096,6 @@ familiar stretch of road, we find that those lines are speaking to us, gently
 urging us to touch the brake before the apex of the curve. We have been
 nudged.
 BIASES AND BLUNDERS 39
-
--- 50 of 304 --
 RESISTING TEMPTATION
 Temptation
 Many years ago, Thaler was hosting dinner for some guests (other
@@ -1301,9 +1118,6 @@ To help us understand this example, consider how the preferences of the
 group seemed to evolve over time. At 7:15, just before Thaler removed the
 nuts, the dinner guests had three options: eat a few nuts; eat all the nuts;
 and eat no more nuts. Their first choice would be to eat just a few more
-
--- 51 of 304 --
-
 nuts, followed by eating no more nuts. The worst option was finishing the
 bowl, since that would ruin dinner. But by 7:30, had the nuts remained on
 the table, the group would have finished the bowl, thereby reaching their
@@ -1338,9 +1152,6 @@ Sirens and their irresistible songs. While in a cold state, Ulysses instructed
 his crew to fill their ears with wax so that they would not be tempted by the
 music. He also asked the crew to tie him to the mast so that he could listen
 41 RESISTING TEMPTATION
-
--- 52 of 304 --
-
 for himself but be restrained from submitting to the temptation to steer
 the ship closer when the music put him into a hot state.
 Ulysses successfully solved his problem. For most of us, however, selfcontrol issues arise because we underestimate the effect of arousal. This is
@@ -1373,9 +1184,7 @@ HUMANS AND ECONS 42
 
 ---
 
-## Sección 19: PART V EXTENSIONS AND OBJECTIONS
-
--- 53 of 304 --
+## Sección 18: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.28]
 
 Mindless Choosing
 The cashew problem is not only one of temptation. It also involves
@@ -1406,9 +1215,6 @@ designed to refill themselves (with empty bottoms connected to machinery beneath
 never emptied. Many people just kept eating, not paying attention to the
 fact that they were really eating a great deal of soup, until the experiment
 RESISTING TEMPTATION 43
-
--- 54 of 304 --
-
 was (mercifully) ended. Large plates and large packages mean more eating;
 they are a form of choice architecture, and they work as major nudges.
 (Hint: if you would like to lose weight, get smaller plates, buy little packages of what you like, and don’t keep tempting food in the refrigerator.)
@@ -1437,9 +1243,6 @@ Clocky, the Planner sets the number of snooze minutes the Doer will be
 permitted in the morning. When that number runs out, the clock jumps
 off the night stand and moves around the room making annoying sounds.
 HUMANS AND ECONS 44
-
--- 55 of 304 --
-
 The only way to turn the damn thing off is to get out of bed and find it. By
 that time, even a groggy Doer is awake.
 Planners have a number of available strategies, such as Clocky, to control
@@ -1456,9 +1259,7 @@ Clocky advertisement (Used by permission of nanda llc.)
 
 ---
 
-## Sección 20: PART V EXTENSIONS AND OBJECTIONS
-
--- 56 of 304 --
+## Sección 19: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.25]
 
 to finish his thesis, including a strong financial incentive: until he graduated the university treated him as an “instructor” rather than an assistant
 professor and did not make its normal contributions to his retirement
@@ -1490,9 +1291,6 @@ other $10,000. The bet was a big success; both met their target. They then
 turned to the more difficult problem of keeping the weight off. The rules
 they adopted were that on one day’s notice, either one could call for a
 HUMANS AND ECONS 46
-
--- 57 of 304 --
-
 weigh-in. If either was found to be over the target weight, he would have
 to pay the other an agreed sum. In four years, there were several weigh-ins,
 and only once was either one over target (the resulting fine was paid in full
@@ -1526,9 +1324,7 @@ RESISTING TEMPTATION 47
 
 ---
 
-## Sección 21: PART V EXTENSIONS AND OBJECTIONS
-
--- 58 of 304 --
+## Sección 20: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.325]
 
 In many cases, markets provide self-control services, and government is
 not needed at all. Companies can make a lot of money by strengthening
@@ -1563,9 +1359,6 @@ HUMANS AND ECONS 48
 of a non–interest bearing savings vehicle that might be called the Easter account.
 Three-quarters of Americans get refunds when they file their tax return, with the average refund being more than two thousand dollars. If these refunds were described as
 interest-free loans to the government, they would probably not be so popular. Al-
-
--- 59 of 304 --
-
 advance. This is not to say, of course, that the new regime is in all respects
 better. Saving at a zero percent interest rate with no opportunity to withdraw the funds may seem dumb, and it is clearly worse than just depositing
 the money into an interest-bearing account, but earning a zero interest
@@ -1591,9 +1384,6 @@ to solve their self-control problems. Another way to approach these problems is 
 though taxpayers could adjust their withholding rates to reduce the size of their refund, and in principle could earn interest on these funds throughout the year, many
 prefer to get the refund as a way of being forced to save. When the refund comes, it
 feels like a windfall.
-
--- 60 of 304 --
-
 counting. Mental accounting is the system (sometimes implicit) that households use to evaluate, regulate, and process their home budget. Almost all
 of us use mental accounts, even if we’re not aware that we’re doing so.
 The concept is beautifully illustrated by an exchange between the actors
@@ -1625,9 +1415,7 @@ HUMANS AND ECONS 50
 
 ---
 
-## Sección 22: PART V EXTENSIONS AND OBJECTIONS
-
--- 61 of 304 --
+## Sección 21: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.265]
 
 might see him take the money he has won and put it into one pocket and
 put the money he brought with him to gamble that evening (yet another
@@ -1660,9 +1448,6 @@ take advantage.
 Just as with Christmas clubs, though, this behavior might not be as stupid as it looks. Many of these households have borrowed up to the limits
 that their credit cards set. They may realize that if they paid off the credit
 RESISTING TEMPTATION 51
-
--- 62 of 304 --
-
 card debt from the savings account, they would soon run up the cards to
 their limits once again. (And credit card companies, fully aware of this, are
 often more than willing to extend more credit to those who have reached
@@ -1688,8 +1473,6 @@ near-sacrosanct “rainy day” account and from a freely available “entertain
 be important to direct the increased savings into a mental (or real) account
 where spending it will not be too big a temptation.
 HUMANS AND ECONS 52
-
--- 63 of 304 --
 The Reverend Jim Jones was the founder and leader of the People’s Temple. In 1978 Jones, facing charges of tax evasion, moved most of
 his one thousand followers from San Francisco to a small settlement in
 Guyana, which he named Jonestown. Facing a federal investigation for reported acts of child abuse and torture, Jones decided that his followers
@@ -1709,9 +1492,7 @@ FOLLOWING THE HERD
 
 ---
 
-## Sección 23: PART V EXTENSIONS AND OBJECTIONS
-
--- 64 of 304 --
+## Sección 22: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.25]
 
 commit mass suicide by following one another into the ocean. Our widely
 shared and somewhat defamatory beliefs about lemmings are based on an
@@ -1746,9 +1527,6 @@ other people think about you (perhaps in the mistaken belief that they are
 paying some attention to what you are doing—see below), then you
 might go along with the crowd to avoid their wrath or curry their favor.
 HUMANS AND ECONS 54
-
--- 65 of 304 --
-
 For a quick glance at the power of social nudges, consider just a few research findings:
 1. Teenage girls who see that other teenagers are having children are more
 likely to become pregnant themselves.*
@@ -1777,9 +1555,6 @@ FOLLOWING THE HERD 55
 *For this and all the other examples, we leave out the implied phrase “holding everything else constant.” So what we mean here is that controlling for other risk factors that
 predict teenage pregnancy, girls are more likely to get pregnant if they see other girls
 doing so.
-
--- 66 of 304 --
-
 supposed to match a particular line, shown on a large white card, to the
 one of three comparison lines, projected onto a screen, that is identical to
 it in length.
@@ -1814,9 +1589,7 @@ senses? We have already sketched the two answers. The first involves the inHUMAN
 
 ---
 
-## Sección 24: PART V EXTENSIONS AND OBJECTIONS
-
--- 67 of 304 --
+## Sección 23: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.25]
 
 formation conveyed by people’s answers; the second involves peer pressure and the desire not to face the disapproval of the group. In Asch’s own
 studies, several of the conformists said, in private interviews, that their initial perceptions must have been wrong. If everyone in the room accepts a
@@ -1848,9 +1621,6 @@ But Sherif found big conformity effects when people were asked to act
 in small groups and to make their estimates in public. Here the individual
 judgments converged and a group norm, establishing the consensus distance, quickly developed. Over time, the norm remained stable within particular groups, thus leading to a situation in which different groups made,
 FOLLOWING THE HERD 57
-
--- 68 of 304 --
-
 and were strongly committed to, quite different judgments. There is an
 important clue here about how seemingly similar groups, cities, and even
 nations can converge on very different beliefs and actions simply because
@@ -1881,9 +1651,7 @@ one. Of course, a group will shift if it can be shown that the practice is causH
 
 ---
 
-## Sección 25: PART V EXTENSIONS AND OBJECTIONS
-
--- 69 of 304 --
+## Sección 24: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.25]
 
 ing serious problems. But if there is uncertainty on that question, people
 might well continue doing what they have always done.
@@ -1908,9 +1676,6 @@ of fascism, or the events in Jonestown, there is no question that social
 pressures nudge people to accept some pretty odd conclusions—and
 those conclusions might well affect their behavior. An obvious question is
 whether choice architects can exploit this fact to move people in better diFOLLOWING THE HERD 59
-
--- 70 of 304 --
-
 rections. Suppose, for example, that a city is trying to encourage people to
 exercise more, so as to improve their health. If many people are exercising,
 the city might be able to produce significant changes simply by mentioning that fact. A few influential people, offering strong signals about appropriate behavior, can have a similar effect.
@@ -1934,9 +1699,6 @@ threats, or coercion but through a creative nudge.
 The Spotlight Effect
 One reason why people expend so much effort conforming to social norms and fashions is that they think that others are closely paying attention to what they are doing. If you wear a suit to a social event where
 HUMANS AND ECONS 60
-
--- 71 of 304 --
-
 everyone else has gone casual, you feel like everyone is looking at you
 funny and wondering why you are such a geek. If you are subject to such
 fears, here is a possibly comforting thought: they aren’t really paying as
@@ -1960,9 +1722,7 @@ Department of Transportation)
 
 ---
 
-## Sección 26: PART V EXTENSIONS AND OBJECTIONS
-
--- 72 of 304 --
+## Sección 25: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.25]
 
 The moral is that people are paying less attention to you than you believe. If you have a stain on your shirt, don’t worry, they probably won’t
 notice. But in part because people do think that everyone has their eyes
@@ -1991,9 +1751,6 @@ depending on the choices of the first downloaders. The identical song
 could be a hit or a failure simply because other people, at the start, were
 seen to choose to have downloaded it or not.
 HUMANS AND ECONS 62
-
--- 73 of 304 --
-
 In many domains people are tempted to think, after the fact, that an
 outcome was entirely predictable, and that the success of a musician, an actor, an author, or a politician was inevitable in light of his of her skills and
 characteristics. Beware of that temptation. Small interventions and even
@@ -2024,9 +1781,7 @@ FOLLOWING THE HERD 63
 
 ---
 
-## Sección 27: PART V EXTENSIONS AND OBJECTIONS
-
--- 74 of 304 --
+## Sección 26: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.265]
 
 Their conclusion? The damage, such as it was, was probably “the result
 of normal driving conditions in which small objects strike the windshields
@@ -2056,9 +1811,6 @@ numbers of people” are switching from another brand, which was yesterHUMANS AN
 *A colleague who raises chickens tells us that they behave the same way. A chicken
 who has already eaten enough to feel sated will start eating again if a hungry chicken is
 brought into the next cage.
-
--- 75 of 304 --
-
 day’s news, to their own, which represents the future. They try to nudge
 you by telling you what most people are now doing.
 Candidates for public office, or political parties, do the same thing; they
@@ -2087,9 +1839,6 @@ The general lesson is clear. If choice architects want to shift behavior and to 
 what other people are doing. Sometimes the practices of others are surprising, and hence people are much affected by learning what they are.
 Consider four examples.
 FOLLOWING THE HERD 65
-
--- 76 of 304 --
-
 Conformity and Tax Compliance
 In the context of tax compliance, a real-world experiment conducted by officials in Minnesota produced big changes in behavior.12
 Groups of taxpayers were given four kinds of information. Some were told
@@ -2121,9 +1870,7 @@ information about how responsible the previous guests in their room have been!
 
 ---
 
-## Sección 28: PART V EXTENSIONS AND OBJECTIONS
-
--- 77 of 304 --
+## Sección 27: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.265]
 
 where some visitors like to take souvenir samples home with them, a practice that threatens the very existence of the park. Signs at the park implore
 people not to take samples away. The question at issue is what the signs
@@ -2154,9 +1901,6 @@ inflate perceptions. College students are influenced by their beliefs about
 what other college students do, and hence alcohol abuse will inevitably increase if students have an exaggerated sense of how much other students
 are drinking.
 Alert to the possibility of changing behavior by emphasizing the statistical reality, many public officials have tried to nudge people in better direcFOLLOWING THE HERD 67
-
--- 78 of 304 --
-
 tions. Montana, for example, has adopted a large-scale educational campaign, one that has stressed the fact that strong majorities of citizens of
 Montana do not drink.18 One advertisement attempts to correct misperceived norms on college campuses by asserting, “Most (81 percent) of
 Montana college students have four or fewer alcoholic drinks each week.”
@@ -2182,9 +1926,6 @@ larger decrease when they received the unhappy emoticon. The more important find
 happy emoticon, the boomerang effect completely disappeared! When
 they were merely told that their energy use was below average, they felt
 HUMANS AND ECONS 68
-
--- 79 of 304 --
-
 that they had some “room” to increase consumption, but when the informational message was combined with an emotional nudge, they didn’t adjust their use upward.
 Many people, including Republicans and Democrats alike, are arguing
 for energy conservation on grounds of national security, economic growth,
@@ -2208,9 +1949,7 @@ Visual feedback given to power customers in San Marcos, California
 
 ---
 
-## Sección 29: PART V EXTENSIONS AND OBJECTIONS
-
--- 80 of 304 --
+## Sección 28: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.25]
 
 it. But social scientists have discovered an odd fact: when they measure
 people’s intentions, they affect people’s conduct. The “mere-measurement effect” refers to the finding that when people are asked what they intend to do, they become more likely to act in accordance with their answers. This finding can be found in many contexts. If people are asked
@@ -2234,9 +1973,6 @@ to the path a river takes after the spring snow melt. The path can be determined
 behavior that people “want” to take. Often we can do more to facilitate
 good behavior by removing some small obstacle than by trying to shove
 people in a certain direction. An early illustration of Lewin’s idea was proHUMANS AND ECONS 70
-
--- 81 of 304 --
-
 duced by Leventhal, Singer, and Jones (1965) on the campus of Yale University. The subjects were Yale seniors who were given some persuasive education about the risks of tetanus and the importance of going to the
 health center to receive an inoculation. Most of the students were convinced by the lecture and said that they planned to go get the shot, but
 these good intentions did not lead to much action. Only 3 percent actually
@@ -2269,9 +2005,8 @@ FOLLOWING THE HERD 71
 
 ---
 
-## Sección 30: PART V EXTENSIONS AND OBJECTIONS
+## Sección 29: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.25]
 
--- 82 of 304 --
 WHEN DO WE NEED A NUDGE?
 We have seen that people perform amazing feats but also commit
 ditzy blunders. What’s the best response? Choice architecture and its effects cannot be avoided, and so the short answer is an obvious one, call it
@@ -2286,9 +2021,6 @@ key point here is that for all their virtues, markets often give companies a
 strong incentive to cater to (and profit from) human frailties, rather than
 to try to eradicate them or to minimize their effects.
 *Camerer et al. (2003) call for “asymmetric paternalism,” which they define as taking steps to help the least sophisticated people while imposing minimal harm on everyone else. Our golden rule is in the spirit of their formulation.
-
--- 83 of 304 --
-
 Fraught Choices
 Suppose you are told that a group of people will have to make
 some choice in the near future. You are the choice architect. You are trying
@@ -2317,9 +2049,6 @@ can tie a decent bow tie, play a masterly game of chess, or spell (much less
 pronounce) the name of the psychologist Mihály Csíkszentmihályi. Of
 course, we learn to cope with the harder problems. We can buy a pretied
 73 WHEN DO WE NEED A NUDGE?
-
--- 84 of 304 --
-
 bow tie, read a book about chess, and look up the spelling of Csíkszentmihályi on the Web (then copy and paste every time we have to use the
 name). We use spell checkers and spreadsheets to help with harder problems. But many problems in life are quite difficult, and often there is no
 technology as easy as a spell checker available to help. We are more likely to
@@ -2355,9 +2084,7 @@ down to the real thing (though we are not confident about that prediction), but 
 
 ---
 
-## Sección 31: PART V EXTENSIONS AND OBJECTIONS
-
--- 85 of 304 --
+## Sección 30: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.31]
 
 None of this is to say that the government should be telling people
 whom to marry or what to study. This is a book about libertarian paternalism. At this stage we just want to stress that rare, difficult choices are
@@ -2387,9 +2114,6 @@ WHEN DO WE NEED A NUDGE? 75
 fact is that in real life choosing a life partner is hard and people often fail. Similarly, there
 might be fewer philosophy Ph.D.’s driving cabs if choices about graduate school came
 with practice trials, but at age thirty-five it is hard to ask for a “do-over.”
-
--- 86 of 304 --
-
 time in a country with an exotic cuisine. Smart tourists often rely on others (waiters, for example) for help: “Most foreigners like x and hate y.”
 Even in less exotic locales, it can be smart to let someone else choose for
 you. Two of the best restaurants in Chicago (Alinea and Charlie Trotter’s)
@@ -2419,9 +2143,6 @@ Markets: A Mixed Verdict
 The discussion thus far suggests that people may most need a
 good nudge for choices that have delayed effects; those that are difficult,
 HUMANS AND ECONS 76
-
--- 87 of 304 --
-
 infrequent, and offer poor feedback; and those for which the relation between choice and experience is ambiguous. A natural question is whether
 free markets can solve people’s problems, even under such circumstances.
 Often market competition will do a lot of good. But in some cases, companies have a strong incentive to cater to people’s frailties and to exploit them.
@@ -2458,9 +2179,7 @@ the poem) don’t know that some is more than none.
 
 ---
 
-## Sección 32: PART V EXTENSIONS AND OBJECTIONS
-
--- 88 of 304 --
+## Sección 31: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.265]
 
 For those of you reading this on a plane (or too lazy to get up out of
 bed), the poem’s tale is simple. The child narrator explains that his father
@@ -2492,9 +2211,6 @@ warranties on small appliances, typically a bad deal for consumers. To take
 a specific hypothetical example, suppose that a cell phone costs two hundred dollars. The cell phone has a free warranty for the first year, but the
 cell phone company offers, for twenty dollars, an extended warranty for
 HUMANS AND ECONS 78
-
--- 89 of 304 --
-
 the second year of the phone’s life. After that the consumer plans to buy a
 new phone. Suppose that the chance that the phone will break during the
 second year is 1 percent, so on average consumers will get two dollars’
@@ -2528,9 +2244,7 @@ Matthew Rabin for this tidbit.)
 
 ---
 
-## Sección 33: PART V EXTENSIONS AND OBJECTIONS
-
--- 90 of 304 --
+## Sección 32: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.325]
 
 cate it. When many people were still afraid of flying, it was common to see
 airline flight insurance sold at airports at exorbitant prices. There were no
@@ -2546,8 +2260,6 @@ Government can, of course, outlaw some kinds of activities, but as libertarian p
 What can be done to help? In the next chapter we describe our primary
 tool: choice architecture.
 HUMANS AND ECONS 80
-
--- 91 of 304 --
 Early in Thaler’s career, he was teaching a class on managerial decision making to business school students. Students would sometimes
 leave class early to go for job interviews (or a golf game) and would try to
 sneak out of the room as surreptitiously as possible. Unfortunately for
@@ -2564,9 +2276,6 @@ would eagerly wait to see whether the student would push or pull. Amazingly, mos
 emitted by that big wooden handle simply could not be screened out.
 (And when Thaler would leave that room on other occasions, he sheepishly found himself pulling too.)
 Those doors are bad architecture because they violate a simple psychoCHOICE ARCHITECTURE
-
--- 92 of 304 --
-
 logical principle with a fancy name: stimulus response compatibility. The
 idea is that you want the signal you receive (the stimulus) to be consistent
 with the desired action. When there are inconsistencies, performance suffers and people blunder.
@@ -2601,9 +2310,7 @@ HUMANS AND ECONS 82
 
 ---
 
-## Sección 34: PART V EXTENSIONS AND OBJECTIONS
-
--- 93 of 304 --
+## Sección 33: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.265]
 
 Don Norman’s wonderful book The Design of Everyday Things (1990) illustrates. One of his best examples is the design of a basic four-burner
 stove (Figure 5.1). Most such stoves have the burners in a symmetric arrangement, as in the stove pictured at the top, with the controls arranged
@@ -2634,14 +2341,8 @@ associated rule that determines what happens to the decision maker if she
 does nothing. Of course, usually the answer is that if I do nothing, nothing
 changes; whatever is happening continues to happen. But not always.
 CHOICE ARCHITECTURE 83
-
--- 94 of 304 --
-
 5.1
 Three designs of four-burner stovetops
-
--- 95 of 304 --
-
 Some dangerous machines, such as chain saws and lawn mowers, are designed with “dead man switches,” so that once you are no longer gripping
 the machine, it stops. When you leave your computer alone for a while to
 answer a phone call, nothing is likely to happen until you have talked for a
@@ -2667,11 +2368,9 @@ the student may request that the student’s name, address, and telephone
 listing not be released without prior written parental consent, and the local educational agency or private school shall notify parents of the option
 CHOICE ARCHITECTURE 85
 
--- 96 of 304 --
-
 ---
 
-## Sección 35: PART V EXTENSIONS AND OBJECTIONS
+## Sección 34: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.31]
 
 to make a request and shall comply with any request.” Some school districts, such as Fairport, New York, interpreted this law as allowing them to
 implement an “opt-in” policy. That is, parents were notified that they
@@ -2693,9 +2392,6 @@ they might hate (but fail to reject because of inertia, or real or apparent soci
 We believe that required choice, favored by many who like freedom, is
 sometimes the best way to go. But consider two points about that approach. First, Humans will often consider required choice to be a nuisance
 HUMANS AND ECONS 86
-
--- 97 of 304 --
-
 or worse, and would much prefer to have a good default. In the software
 example, it is really helpful to know what the recommended settings are.
 Most users do not want to have to read an incomprehensible manual in order to determine which arcane setting to elect. When choice is complicated and difficult, people might greatly appreciate a sensible default. It is
@@ -2721,9 +2417,6 @@ In stark contrast to Le Métro is the system used in most Chicago parking garage
 out of the car window and inserting the card into a slot. Because credit
 cards are not symmetric, there are four possible ways to put the card into
 CHOICE ARCHITECTURE 87
-
--- 98 of 304 --
-
 the slot (face up or down, strip on the right or left). Exactly one of those
 ways is the right way. And in spite of a diagram above the slot, it is very easy
 to put the card in the wrong way, and when the card is spit back out, it is
@@ -2753,9 +2446,7 @@ too large to fit into the opening on cars that use gasoline, so it is not possiH
 
 ---
 
-## Sección 36: PART V EXTENSIONS AND OBJECTIONS
-
--- 99 of 304 --
+## Sección 35: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.34]
 
 ble to make the mistake of putting diesel fuel in your gasoline-powered car
 (though it is still possible to make the opposite mistake). The same principle has been used to reduce the number of errors involving anesthesia.
@@ -2786,9 +2477,6 @@ numbered compartment. Patients are instructed to take a pill every day, in
 order. The pills for days twenty-two through twenty-eight are placebos
 whose only role is to facilitate compliance for Human users.
 CHOICE ARCHITECTURE 89
-
--- 100 of 304 --
-
 • While working on this book, Thaler sent an email to his economist
 friend Hal Varian, who is affiliated with Google. Thaler intended to attach
 a draft of the introduction to give Hal a sense of what the book was about,
@@ -2820,9 +2508,7 @@ HUMANS AND ECONS 90
 
 ---
 
-## Sección 37: PART V EXTENSIONS AND OBJECTIONS
-
--- 101 of 304 --
+## Sección 36: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.31]
 
 to plug in or shut down when the battery is dangerously low. But warning
 systems have to avoid the problem of offering so many warnings that they
@@ -2856,9 +2542,6 @@ nutritional content. Selecting which ice cream to eat is merely a matter of
 choosing the one that tastes best. If the flavors are all familiar, such as
 vanilla, chocolate, and strawberry, most people will be able to predict with
 CHOICE ARCHITECTURE 91
-
--- 102 of 304 --
-
 considerable accuracy the relation between their choice and their ultimate
 consumption experience. Call this relation between choice and welfare a
 mapping. Even if there are some exotic flavors, the ice cream store can
@@ -2892,9 +2575,7 @@ HUMANS AND ECONS 92
 
 ---
 
-## Sección 38: PART V EXTENSIONS AND OBJECTIONS
-
--- 103 of 304 --
+## Sección 37: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.265]
 
 from four to five megapixels? Suppose instead that manufacturers listed
 the largest print size recommended for a given camera. Instead of being
@@ -2925,9 +2606,6 @@ embedded in the formulas. This is the price disclosure part of the regulation.
 The usage disclosure requirement would be that once a year, issuers
 would have to send their customers a complete listing of all the ways they
 CHOICE ARCHITECTURE 93
-
--- 104 of 304 --
-
 had used the phone and all the fees that had been incurred. This report
 would be sent two ways, by mail and, more important, electronically. The
 electronic version would also be stored and downloadable on a secure Web
@@ -2958,9 +2636,6 @@ provider charges me a lot to make calls in Canada and I react by not making such
 I will not be able to judge the full value of an alternative plan with cheap calling in
 Canada. But where past usage is a good predictor of future usage, a recap plan would
 be very helpful.
-
--- 105 of 304 --
-
 reasonable strategy for her to follow would be to look at all three offices,
 note the ways they differ, and then make some decisions about the importance of such attributes as size, view, neighbors, and distance to the
 nearest rest room. This is described in the choice literature as a “compensatory” strategy, since a high value for one attribute (big office) can compensate for a low value for another (loud neighbor).
@@ -2992,9 +2667,7 @@ CHOICE ARCHITECTURE 95
 
 ---
 
-## Sección 39: PART V EXTENSIONS AND OBJECTIONS
-
--- 106 of 304 --
+## Sección 38: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.25]
 
 special orders, paint companies sell more than two thousand colors that
 you can apply to the walls in your home. It is possible to think of many
@@ -3030,9 +2703,6 @@ might well be comfortable in selecting products you don’t know, because
 people like you tend to like them. For many of us, collaborative filtering is
 making difficult choices easier.
 HUMANS AND ECONS 96
-
--- 107 of 304 --
-
 A cautionary note: surprise and serendipity can be fun for people, and
 good for them too, and it may not be entirely wonderful if our primary
 source of information is about what people like us like. Sometimes it’s
@@ -3064,9 +2734,6 @@ Who profits?
 Free markets often solve all of the key problems by giving people an incentive to make good products and to sell them at the right price. If the
 market for sneakers is working well, there will be a lot of competition; bad
 CHOICE ARCHITECTURE 97
-
--- 108 of 304 --
-
 sneakers will be driven from the market and the good ones will be priced in
 accordance with people’s tastes. Sneaker producers and sneaker purchasers
 have the right incentives. But sometimes incentive conflicts arise. Consider
@@ -3101,9 +2768,7 @@ HUMANS AND ECONS 98
 
 ---
 
-## Sección 40: PART V EXTENSIONS AND OBJECTIONS
-
--- 109 of 304 --
+## Sección 39: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.265]
 
 face, with the meter clicking every few blocks. So a behavioral analysis of
 the incentives of car ownership will predict that people will underweight
@@ -3132,9 +2797,6 @@ We have sketched six principles of good choice architecture. As a concession to 
 CHOICE ARCHITECTURE 99
 *Companies such as Zipcar that specialize in short-term rentals could profitably
 benefit by helping people solve these mental accounting problems.
-
--- 110 of 304 --
-
 useful to offer a mnemonic device to help recall the six principles. By rearranging the order, and using one small fudge, the following emerges.
 iNcentives
 Understand mappings
@@ -3145,9 +2807,6 @@ Structure complex choices
 Voilà: NUDGES
 With an eye on these nudges, choice architects can improve the outcomes for their Human users.
 HUMANS AND ECONS 100
-
--- 111 of 304 --
-
 PART
 IIMONEY
 Not surprisingly, Humans differ dramatically from Econs in how
@@ -3163,11 +2822,6 @@ and borrowing. We also offer some suggestions about how private and
 public institutions might nudge people in directions that will make them a
 bit wealthier and more secure.
 
--- 112 of 304 --
-
-This page intentionally left blank
-
--- 113 of 304 --
 SAVE MORE TOMORROW
 In 2005 the personal savings rate for Americans was negative for
 the first time since 1932 and 1933—the Great Depression years. On average, American households spent more than they earned and borrowed
@@ -3189,9 +2843,7 @@ problem if they were saving more on their own. And indeed, the government has of
 
 ---
 
-## Sección 41: PART V EXTENSIONS AND OBJECTIONS
-
--- 114 of 304 --
+## Sección 40: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.25]
 
 Such programs are well intended, but many Americans who are eligible for
 such plans do not take full advantage of them.
@@ -3223,9 +2875,6 @@ MONEY 104
 *There are good software products available from many mutual fund companies as
 well as from such independent firms as Financial Engines and Morningstar, but many
 Humans find using these programs both difficult and boring.
-
--- 115 of 304 --
-
 do it. Both employers and governments began to take steps to help with
 this problem, with Bismarck’s early social security program in Germany
 leading the way in 1889.2
@@ -3259,9 +2908,6 @@ is, owned by the employee). Defined-benefit plans are also expensive for
 employers to administer. Many old firms are switching over to definedcontribution plans, and nearly all new firms offer only defined-contribution plans. Under a defined-contribution plan, employees, and sometimes
 employers, make specific contributions to a tax-sheltered account in the
 SAVE MORE TOMORROW 105
-
--- 116 of 304 --
-
 employee’s name. The benefits received by employees in retirement depend on the decisions they make about how much to save and how to invest.
 Defined-contribution plans, such as 401(k) plans in the United States,
 have many desirable features for modern workers. The plans are completely portable, so a worker is free to move from one job to another. The
@@ -3292,9 +2938,7 @@ MONEY 106
 
 ---
 
-## Sección 42: PART V EXTENSIONS AND OBJECTIONS
-
--- 117 of 304 --
+## Sección 41: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.25]
 
 not participating at all in their retirement plan, or are saving a low percentage of their income after having reached their forties (or older). These
 folks could clearly use a nudge.
@@ -3325,9 +2969,6 @@ to enroll.3 Typically, younger, less-educated, and lower-income employees
 are less likely to join, but even high-paid workers sometimes fail to sign up,
 as the Tony Snow example illustrates.
 SAVE MORE TOMORROW 107
-
--- 118 of 304 --
-
 To be sure, there are situations, say for young workers with other pressing financial needs, in which it could be sensible not to join even with an
 employer match. But in many cases, the failure to join is simply a blunder.
 One extreme example comes from the United Kingdom, where some
@@ -3358,9 +2999,6 @@ MONEY 108
 *By the way, are you contributing the maximum to your retirement plan, or at least
 contributing enough to get the full match from your employer? Are your grown children doing so? If not, stop reading and get busy. You have more important things to do
 than read this book.
-
--- 119 of 304 --
-
 a retirement plan. When workers are first eligible to join (sometimes immediately upon employment), they usually receive a form to fill out. Employees who want to join must decide how much to put aside, and how to
 allocate their investments among the funds offered in the plan. Forms can
 be a headache, and many employees just put them aside.
@@ -3387,9 +3025,7 @@ SAVE MORE TOMORROW 109
 
 ---
 
-## Sección 43: PART V EXTENSIONS AND OBJECTIONS
-
--- 120 of 304 --
+## Sección 42: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.34]
 
 worker is eligible when he is first hired, he might be required to check a
 “yes” or a “no” box for participation in order to get paid. With required
@@ -3421,9 +3057,6 @@ very conservative investment choice, such as a money market account. It
 turns out that many employees continue saving at the default rate of 2 percent. This rate is usually far too low to provide enough money for retirement. Many employees also remain in the default investment fund, and
 they lose a lot of money as a result. We will turn to investment strategies in
 MONEY 110
-
--- 121 of 304 --
-
 the next chapter. Here let’s see how we can help nudge the people who are
 saving too little.
 One indication that people need help in picking a savings rate and don’t
@@ -3451,9 +3084,6 @@ an adequate solution.
 One large employer, having offered its employees the chance to switch
 from a defined-benefit to a defined-contribution plan, provided a free
 SAVE MORE TOMORROW 111
-
--- 122 of 304 --
-
 financial education program.12 The employer measured the effectiveness
 of this education by administering a before-and-after test of financial literacy. The quiz used a true/false format, so random answers would receive,
 on average, a score of 50 percent. Before the education, the average score
@@ -3486,9 +3116,7 @@ MONEY 112
 
 ---
 
-## Sección 44: PART V EXTENSIONS AND OBJECTIONS
-
--- 123 of 304 --
+## Sección 43: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.265]
 
 Save More Tomorrow invites participants to commit themselves, in advance, to a series of contribution increases timed to coincide with pay
 raises. By synchronizing pay raises and savings increases, participants never
@@ -3516,9 +3144,6 @@ The results provide a dramatic illustration of the potential power of
 choice architecture. Compare the behavior of three groups of employees.
 The first group consists of those who chose not to meet with the consultant. This group was saving about 6 percent of their income when the program started, and that percentage did not budge over the next three years.
 The second group contains the employees who accepted the advice to inSAVE MORE TOMORROW 113
-
--- 124 of 304 --
-
 crease their savings rates by 5 percentage points. Their average savings rate
 jumped from just over 4 percent to just over 9 percent after the first raise
 occurred. This rate was then essentially constant over the next few years.
@@ -3554,9 +3179,7 @@ MONEY 114
 
 ---
 
-## Sección 45: PART V EXTENSIONS AND OBJECTIONS
-
--- 125 of 304 --
+## Sección 44: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.31]
 
 was the first to implement automatic enrollment in a Save More Tomorrow plan. The program was introduced to employees in June 2003.
 Ninety-three percent of participants took no action and thus were automatically enrolled in the program. In the year following the implementation of the program, only 6 percent actively opted out. Those who stayed
@@ -3581,9 +3204,6 @@ with enthusiastic backing on both sides of the aisle. The details are complex an
 that the law offers employers an incentive to match employee contribuSAVE MORE TOMORROW 115
 *By 2007 about fifty more Vanguard clients were in the process of implementing the
 program on an opt-out basis.
-
--- 126 of 304 --
-
 tions, automatically enroll them in the plan, and automatically increase
 their contribution rates over time.15 The incentive is that the employer is
 given a waiver from an annoying regulation. Although reasonable people
@@ -3612,9 +3232,6 @@ worker an annual statement that estimates how much she will collect if she
 retires at various ages. But for assistance in deciding when to start receiving benefits, participants are referred to the ssa Web page for help. We decided to have a look.
 We discovered that the only tool available to help you is something
 MONEY 116
-
--- 127 of 304 --
-
 called the Break-Even Age calculator.16 This is the tool that is meant to
 help you decide whether to start collecting at age sixty-two or wait until,
 say, age sixty-six. One might think that this calculator would allow you to
@@ -3654,9 +3271,8 @@ ones)!
 
 ---
 
-## Sección 46: PART V EXTENSIONS AND OBJECTIONS
+## Sección 45: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.355]
 
--- 128 of 304 --
 NAÏVE INVESTING
 We have been exploring the first part of saving for retirement:
 joining a plan and deciding how much to invest. We now turn to the allimportant second part: how to invest the money.
@@ -3678,9 +3294,6 @@ who insists on investing everything in a safe money market account that
 earns a modest rate of interest had better be saving quite a bit if she wants
 to have enough to have a comfortable retirement.
 Suppose an investor chooses to invest 70 percent of her money in stocks
-
--- 129 of 304 --
-
 and 30 percent in bonds. That choice still leaves open many specific questions of how the money is to be invested. In retirement accounts, most investors do not choose stocks individually but rather invest via mutual
 funds. The funds themselves differ in how risky they are, and how much
 they charge for their services. Some funds are specialized (investing only in
@@ -3710,9 +3323,6 @@ a dollar in U.S. Treasury bills (short-term, completely safe, bonds issued
 by the government), you would have turned your dollar into $18, a 3.7
 percent rate of return per year. That does not seem bad until you realize
 119 NAÏVE INVESTING
-
--- 130 of 304 --
-
 that just to keep up with inflation you had to earn 3.0 percent per year. If
 you had invested your money in longer-term bonds, your dollar would
 have become $71, a 5.5 percent rate of return, which is quite a bit better.
@@ -3743,9 +3353,7 @@ MONEY 120
 
 ---
 
-## Sección 47: PART V EXTENSIONS AND OBJECTIONS
-
--- 131 of 304 --
+## Sección 46: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.265]
 
 Human, when Vince loses five thousand dollars in a day he is miserable—
 about as miserable as he is happy at the end of a day when he gains ten
@@ -3777,9 +3385,6 @@ their retirement money invested in stocks, both in terms of the percentage
 of money contributed each year and the account balances held. What produced this shift in behavior? One (rather remote) possibility was that investors had spent the decade poring over finance and economics journals,
 had learned that stock returns had been substantially higher than bond returns over the past century or so, and so decided to invest more in stocks.
 NAÏVE INVESTING 121
-
--- 132 of 304 --
-
 The other (considerably more likely) possibility is that investors had come
 to believe that stocks only go up—or that even if stock prices fall, that is
 just another buying opportunity because they quickly rise again. The stock
@@ -3809,9 +3414,6 @@ Rules of Thumb
 Even the most sophisticated investors can sometimes find the
 decision about how to invest their money daunting, and they resort to
 MONEY 122
-
--- 133 of 304 --
-
 simple rules of thumb. Take the example of the financial economist and
 Nobel laureate Harry Markowitz, one of the founders of modern portfolio theory. When asked about how he allocated his retirement account, he
 confessed: “I should have computed the historic covariances of the asset
@@ -3845,9 +3447,7 @@ Halloween night.4 The “subjects” were trick-or-treaters. In one condiNAÏVE 
 
 ---
 
-## Sección 48: PART V EXTENSIONS AND OBJECTIONS
-
--- 134 of 304 --
+## Sección 47: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.265]
 
 tion, the children approached two adjacent houses and were offered a
 choice between the same two candy bars (Three Musketeers and Milky
@@ -3874,9 +3474,6 @@ problem of portfolio construction by offering “lifestyle” funds that blend
 stocks and bonds in a way designed to meet the needs of different levels of
 risk tolerance. For example, an employer might offer three lifestyle funds:
 conservative, moderate, and aggressive. These funds are already diversiMONEY 124
-
--- 135 of 304 --
-
 fied, so individuals need pick only the fund that fits their risk preference.
 Some funds also adjust the asset allocation with the age of the participant.
 Such a fund assortment is a good idea and represents an excellent set of
@@ -3907,9 +3504,6 @@ all of Prestwood’s investments were automatically converted to Enron
 stock. He continued to set aside money in the company’s retirement fund,
 buying even more stock. Internally, the company relentlessly promoted
 NAÏVE INVESTING 125
-
--- 136 of 304 --
-
 employee stock ownership. Newsletters touted Enron’s growth as “simply
 stunning,” and Lay, at company events, urged employees to buy more
 stock. To Prestwood, it didn’t seem like a problem that his future was tied
@@ -3948,9 +3542,7 @@ MONEY 126
 
 ---
 
-## Sección 49: PART V EXTENSIONS AND OBJECTIONS
-
--- 137 of 304 --
+## Sección 48: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.265]
 
 than employees at firms that were performing poorly. But this past performance is no prediction of the future. You might think that employees have
 especially good information about their firm’s future prospects, but a careful study by Shlomo Benartzi (2001) finds otherwise. Specifically, there is
@@ -3979,9 +3571,6 @@ company stock like any other investment in a 401(k) plan. Company stock
 in defined-contribution plans now enjoys an important benefit under the
 principal federal fiduciary law, an extremely important and largely unintelligible statute named the Employee Retirement Income Security Act of
 1974 (erisa). Erisa sets forth three fiduciary principles for retirementNAÏVE INVESTING 127
-
--- 138 of 304 --
-
 plan investments: the exclusive benefit rule, requiring that plans be managed exclusively for the benefit of participants; the prudence rule, requiring that plan assets be invested according to a “prudent investor” standard; and the diversification rule, requiring that plan assets be diversified
 so as to minimize the risk of large losses. Most notably, company stock is
 exempted from the diversification requirement in defined-contribution
@@ -4009,9 +3598,6 @@ plan gives employees the option to sell off their shares gradually over a
 period of time (say, three years), with the proceeds directed into a diversified portfolio. The program could be done on either an opt-in or opt-out
 basis.
 MONEY 128
-
--- 139 of 304 --
-
 Nudges
 Through better choice architecture, plans can help their participants on many dimensions. Attention to choice architecture has become
 increasingly important over the years because plans have greatly increased
@@ -4040,9 +3626,7 @@ sponsors is to offer plan participants “target maturity funds.” Target maNA�
 
 ---
 
-## Sección 50: PART V EXTENSIONS AND OBJECTIONS
-
--- 140 of 304 --
+## Sección 49: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.265]
 
 turity funds typically have a year in their name, like 2010, 2030, or 2040. A
 participant simply selects the fund that matches her expected retirement
@@ -4069,9 +3653,6 @@ automatic enrollment, which we would combine with Save More Tomorrow to help peo
 invest in a life-cycle fund, we would recommend offering an automatic rebalancing plan so that a participant’s asset allocation would be adjusted
 over time.
 MONEY 130
-
--- 141 of 304 --
-
 Mappings and Feedback
 Most employees have difficulty understanding how numbers like
 savings rates, expected rates of return, and volatility translate into changes
@@ -4095,8 +3676,6 @@ the job. The end result is similar to what might be expected if most of us
 tried to cut our own hair—a mess. Most people need some help; good
 choice architecture and carefully selected nudges can go a long way.
 NAÏVE INVESTING 131
-
--- 142 of 304 --
 CREDIT MARKETS
 As we mentioned in Chapter 6, Americans are now borrowing
 more than they are saving. And it should not be surprising to learn that
@@ -4121,9 +3700,7 @@ mortgages had a fixed rate for the life of the mortgage, typically thirty
 
 ---
 
-## Sección 51: PART V EXTENSIONS AND OBJECTIONS
-
--- 143 of 304 --
+## Sección 50: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.31]
 
 years. Most borrowers provided a 20 percent down payment. In this
 regime, comparing loans was a snap—just pick the loan with the lowest interest rate. This task was made especially easy with the passage of the
@@ -4154,9 +3731,6 @@ economist Susan Woodward (2007) examined more than seven thousand
 loans insured by the Federal Housing Administration (fha), a government agency that insures smaller loans and allows low down payments.
 Woodward studied which kinds of borrowers got the best deals, and under
 CREDIT MARKETS 133
-
--- 144 of 304 --
-
 what circumstances, after controlling for risk and other factors. Here are
 some of her key findings:
 • African-American borrowers pay an additional $425 for their loans.
@@ -4191,9 +3765,7 @@ brokers in this respect. The poor are often fleeced by people pretending to be p
 
 ---
 
-## Sección 52: PART V EXTENSIONS AND OBJECTIONS
-
--- 145 of 304 --
+## Sección 51: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.265]
 
 rates to compensate the people who lend the money. The fact that poor
 and risky borrowers pay higher interest rates does not make these loans
@@ -4227,9 +3799,6 @@ rate, monthly payment, and number of points she wants to pay. This last
 choice is particularly confusing: points allow borrowers to pay a fee (an
 amount that is added to the loan because the borrower typically borrows
 CREDIT MARKETS 135
-
--- 146 of 304 --
-
 money to pay for the points) in exchange for a lower interest rate, but few
 borrowers are capable of figuring out whether the points are worth paying.
 (Hint: usually they are not.)
@@ -4262,9 +3831,7 @@ MONEY 136
 
 ---
 
-## Sección 53: PART V EXTENSIONS AND OBJECTIONS
-
--- 147 of 304 --
+## Sección 52: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.25]
 
 subprime loans learned the hard way that the loans were riskier than they
 seemed. (In many ways, the mortgage brokers were deceiving the investors who bought up the loans as well as the people who borrowed the
@@ -4296,9 +3863,6 @@ Instead, we think that a version of our recap plan can help. We have in
 mind two versions of recap in this domain. In the simplified form, mortgage lenders would be required to report lending costs in two categories:
 fees and interest. In a version of such a report suggested by Wilkins, all the
 CREDIT MARKETS 137
-
--- 148 of 304 --
-
 different types of fees would be reported, but they would be added up into
 a single salient number.
 Woodward’s research finds that the people who get the best deals—by a
@@ -4326,9 +3890,6 @@ Student Loans
 The cost of going to college has been rising almost as fast as the
 cost of health care and rare baseball cards. At many private universities, including ours, it costs a student more than fifty thousand dollars a year in
 MONEY 138
-
--- 149 of 304 --
-
 tuition, room, and board. Scholarships and part-time jobs typically do not
 cover the cost of college. So students and their families often turn to student loans to help out. In fact, loans are a common option. About twothirds of four-year college students are in debt when they graduate.
 There are two kinds of loans in the marketplace: purely private loans
@@ -4359,9 +3920,7 @@ CREDIT MARKETS 139
 
 ---
 
-## Sección 54: PART V EXTENSIONS AND OBJECTIONS
-
--- 150 of 304 --
+## Sección 53: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.295]
 
 sending proof of college enrollment to the lender, a student can receive as
 much money as she thinks is necessary. Unlike federal loans, this money
@@ -4395,9 +3954,6 @@ the lenders who snag the student loan business, there are temptations to
 do whatever it takes to get to the head of the line.
 As with mortgages, this example illustrates the problem with directing
 MONEY 140
-
--- 151 of 304 --
-
 people to seek “expert” advice when they face difficult, high-stakes problems and are confused about what to do. If they don’t just reply to the
 pizza ad because it is easy, but instead try to get helpful advice, they may
 end up with suggestions that are as self-serving as the pizza man’s. The adviser they consult has a treasure—confused customers. The opportunity to
@@ -4428,9 +3984,7 @@ CREDIT MARKETS 141
 
 ---
 
-## Sección 55: PART V EXTENSIONS AND OBJECTIONS
-
--- 152 of 304 --
+## Sección 54: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.325]
 
 Credit Cards
 The credit card is a ubiquitous feature of modern life. It is nearly
@@ -4463,9 +4017,6 @@ Using Federal Reserve data, some researchers suggest that American
 households may have an average credit card debt of $12,000. At typical interest rates of 18 percent per year, that translates into more than
 $2,000 a year in interest payments alone.8
 MONEY 142
-
--- 153 of 304 --
-
 Looking back at the problems of self-control discussed in Chapter 3, we
 can see how credit cards create serious problems for some people. In the
 pre–credit card era, households were pretty much forced to use a pay-asyou-go accounting system. That is why people used jars of money labeled
@@ -4496,9 +4047,6 @@ Second, the report would make more salient to users just how much
 they are paying over the course of the year. Some credit cards now issue an
 annual summary of purchases, listed by category, which can help for tax
 preparation, but the recap requirement would force the card issuers to inCREDIT MARKETS 143
-
--- 154 of 304 --
-
 clude information on their own fees in this document. Often those fees are
 hidden. For example, if you make a purchase in a foreign currency, the
 credit card company tacks on a fee for converting the purchase into dollars
@@ -4532,9 +4080,8 @@ serve as high anchors that actually encourage spending.
 
 ---
 
-## Sección 56: PART V EXTENSIONS AND OBJECTIONS
+## Sección 55: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.265]
 
--- 155 of 304 --
 In the 2000 U.S. presidential campaign, George W. Bush called
 for a partial privatization of the Social Security system. According to his
 plan, a portion of the payroll tax would be designated for individual savings accounts. At the same time that this issue was being debated in the
@@ -4555,9 +4102,6 @@ If we were to pick a single phrase to characterize the design of the
 Swedish plan, it would be “pro-choice.” In fact, the plan is a good example of the Just Maximize Choices strategy. Give people as many options as
 PRIVATIZING SOCIAL SECURITY:
 SMORGASBORD STYLE
-
--- 156 of 304 --
-
 possible, and then let them do whatever they want. At almost every stage,
 the designers opted for a laissez-faire approach. In particular, the plan had
 the following key features:
@@ -4587,9 +4131,6 @@ the fund, to discourage them from doing so, or what? Here are a few of the
 many possible options that might have been selected:
 A. Participants are given no choice: the default fund is the only fund offered.
 MONEY 146
-
--- 157 of 304 --
-
 B. A default is picked, but its selection is discouraged.
 C. A default is picked, and its selection is encouraged.
 D. A default is picked, and its selection is neither encouraged nor discouraged.
@@ -4620,9 +4161,7 @@ PRIVATIZING SOCIAL SECURITY 147
 
 ---
 
-## Sección 57: PART V EXTENSIONS AND OBJECTIONS
-
--- 158 of 304 --
+## Sección 56: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.25]
 
 make a decision about how to describe the default plan, and these decisions will help determine the market share this plan attracts.
 In analyzing the middle options, we need to know something about the
@@ -4653,9 +4192,6 @@ choose a portfolio. In the years following the launch, new workers (mostly
 young people) have joined the plan, and they were also asked to choose a
 portfolio. But soon after the initial enrollment period, the government
 MONEY 148
-
--- 159 of 304 --
-
 ended its advertising campaign encouraging participants to make an active
 choice. Moreover, private funds themselves greatly reduced their advertising aimed at attracting investments. Probably as a result of both these factors, the proportion of people choosing their own portfolios fell as well.
 For those workers joining the plan in April 2006 (the most recent enrollment period for which we have data), only 8 percent selected their own
@@ -4684,9 +4220,6 @@ that try to beat the market. These low fees for the index funds helped keep
 PRIVATIZING SOCIAL SECURITY 149
 *In fact, the percentage of active choosers has declined steadily, from 17.6 percent in
 2001, the first year after the launch.
-
--- 160 of 304 --
-
 the costs in the default fund very low, 0.17 percent. (This means that for
 every $100 invested, the investor is charged 17 cents per year.) Overall,
 most experts would consider this fund to be very well designed.
@@ -4710,8 +4243,8 @@ Hedge funds 4 0
 Private equity 4 0
 Indexed 60 4.1
 Fee 0.17 0.77
-Returns for the first three years 29.9 39.6
-Returns through July 2007 21.5 5.1
+Returns for the first three years  29.9  39.6
+Returns through July 2007  21.5  5.1
 Note: The table compares the default fund and the mean actively chosen portfolio. The data on
 the asset allocations are from data on funds’ holdings from Morningstar. Fee is the yearly expense
 ratio as a percentage of fund assets. Ex post performance is returns over a three-year postreform
@@ -4719,9 +4252,7 @@ period (October 31, 2000 through October 31, 2003). Funds’ market shares follo
 
 ---
 
-## Sección 58: PART V EXTENSIONS AND OBJECTIONS
-
--- 161 of 304 --
+## Sección 57: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.265]
 
 Second, the active choosers elected to invest nearly half their money
 (48.2 percent) in the stocks of Swedish companies. This reflects the wellknown tendency of investors to buy stocks from their home country,
@@ -4752,9 +4283,6 @@ the default fund did solve it, by hedging in the currency markets (essentially a
 insurance).
 † The fees we report here are the ones that were advertised. Later some funds offered
 discounts, so fees fell.
-
--- 162 of 304 --
-
 In subsequent years the default fund has continued to outperform people’s choices. Through July 2007 the default fund is up 21.5 percent while
 the average actively managed portfolio is up only 5.1 percent. Indeed, the
 performance of the default fund has been so good over this period that the
@@ -4788,9 +4316,7 @@ MONEY 152
 
 ---
 
-## Sección 59: PART V EXTENSIONS AND OBJECTIONS
-
--- 163 of 304 --
+## Sección 58: PART V EXTENSIONS AND OBJECTIONS [Entropy: 0.25]
 
 well equipped to understand. The one thing they are probably sure of is
 that high returns are good. Of course, these are past returns, but investors
@@ -4820,9 +4346,6 @@ controversial. In fact, given the rest of the design of this system, it is hard
 to imagine an advertising ban. If funds are free to enter this market, then
 presumably they should be free to court customers by all legal means,
 PRIVATIZING SOCIAL SECURITY 153
-
--- 164 of 304 --
-
 which naturally include (truthful) advertising. Still, it is interesting to see
 what effect advertising had on this market. What should we expect?
 Consider two extreme “dream” scenarios. In the first dream, one being dreamt by a free-market economist with a peaceful smile on his face,
@@ -4854,9 +4377,6 @@ funds heavily advertised past returns (for those funds that had high returns), s
 fund advertising did strongly affect investors’ portfolio choices. It steered
 people into portfolios with lower expected returns (because of higher fees)
 MONEY 154
-
--- 165 of 304 --
-
 and higher risk (through a higher exposure to equities, more active management, more “hot” sectors, and more home bias).
 Doing (Badly) Without Nudges
 The tale of privatization of social security in Sweden is highly revealing. The basic problem is that government planners did not choose the
@@ -4870,7 +4390,7 @@ actually be able to provide some useful hints. Recall a main lesson from
 
 ---
 
-## Sección 60: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
+## Sección 59: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.265]
 
 not get prompt feedback when they err, then it’s legitimate, even good, to
 nudge a bit.
@@ -4888,9 +4408,6 @@ Sweden’s, a similar free-entry system would probably generate thousands
 of funds. This might make those who believe in the Just Maximize Choices
 mantra happy, but most Humans would find choosing from such a long
 PRIVATIZING SOCIAL SECURITY 155
-
--- 166 of 304 --
-
 list bewildering. A better plan would start by following Sweden’s lead of
 choosing a good default plan, containing mostly index funds with managers selected by competitive bidding. Participants would then be guided
 through a simplified choice process (preferably on the Web). The process
@@ -4905,9 +4422,6 @@ An examination of the Swedish experience offers a much broader lesson.
 The more choices you give people, the more help you need to provide. As
 we will see, that is a lesson that the people who designed the Medicare Prescription Drug program did not learn.
 MONEY 156
-
--- 167 of 304 --
-
 PART
 IIIHEALTH
 Libertarian paternalists see countless opportunities for improving
@@ -4924,16 +4438,11 @@ the familiar premise that government should give people a lot of choices
 and then get out of the way. As we will see, the resulting program has major problems, in part because many people are unable to understand it.
 The second problem is the simplest. The United States could save a lot of
 lives if more people donated their organs. How can donation rates be in-
-
--- 168 of 304 --
-
 creased? You will not be stunned to hear that a switch in the default rule
 would have a major impact. The third problem includes human health but
 extends even more broadly: What can be done to protect the environment? Nudges are not enough, but an understanding of their power offers
 some fresh answers to that question.
 HEALTH 158
-
--- 169 of 304 --
 PRESCRIPTION DRUGS: PART D
 FOR DAUNTING
 Prescription drug coverage was a hot topic during the 2000 presidential campaign. As a solution, Democrat Al Gore proposed a classic government mandate. Gore wanted to add prescription drug coverage to
@@ -4958,9 +4467,7 @@ President Bush’s trust in American seniors left them with a great deal of
 
 ---
 
-## Sección 61: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 170 of 304 --
+## Sección 60: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.31]
 
 decision-making responsibility. But this was no laissez-faire system. The
 national government imposed a lot of structure. Before consumers could
@@ -4989,9 +4496,6 @@ through private plans or a government source such as the Department of
 Veterans Affairs. Government officials had high hopes of covering the rest
 through Part D. The working principle was to provide seniors with as
 HEALTH 160
-
--- 171 of 304 --
-
 many federally approved choices as possible. The result was a policy with
 six key features.
 1. For most people, Part D is a voluntary plan; you benefit only if you enroll in it. An exception applies to 6.2 million low-income seniors and
@@ -5020,9 +4524,6 @@ PRESCRIPTION DRUGS 161
 *Stand-alone plans are commonly purchased by individuals who already have separate health insurance coverage through traditional Medicare, a pension plan, or a private employer. Joint plans are for those enrolled in Medicare Advantage, a special series
 of privately operated plans (health-maintenance organizations [hmos], preferredprovider organizations [ppos], and private fee-for-service plans) that tend to provide
 more benefits than the traditional Medicare program but limit doctor choice.
-
--- 172 of 304 --
-
 sent out their own advertisements. Currently, seniors are advised to
 “rely on advice from people you know or trust,” “choose a plan you are
 already familiar with,” or use a customized guide called the Medicare
@@ -5057,9 +4558,7 @@ wade through forty-seven prescription drug plans. “Intellectually, the proHEAL
 
 ---
 
-## Sección 62: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 173 of 304 --
+## Sección 61: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.25]
 
 gram is a good idea,” said Dr. E. Linda Villarreal, a former president of the
 Hidalgo-Starr County Medical Society. “But there’s been total chaos and
@@ -5087,9 +4586,6 @@ know that offering people forty-six choices and telling them to ask for help
 is likely to be about as good as no help at all. And in Medicare Part D’s
 case, many of the groups meant to assist seniors were confused themselves.
 The confusion spread to medical professionals, who agreed with their patients that the number of plans in the current program bewildered everyone. Others, such as aarp, decided to go into the business of offering inPRESCRIPTION DRUGS 163
-
--- 174 of 304 --
-
 surance plans as well as giving advice about which plan to select, a pretty
 obvious conflict of interest.
 In the end, getting seniors into a plan turned out not to be the biggest
@@ -5117,11 +4613,9 @@ Part D than a casual look suggests. For starters, the high enrollment rates
 were achieved in part because approximately two-thirds of seniors were
 easily or automatically enrolled through one of a variety of routes: employer or union plans; Medicaid, Veterans Affairs, or federal employee covHEALTH 164
 
--- 175 of 304 --
-
 ---
 
-## Sección 63: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
+## Sección 62: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.265]
 
 erage; or the special, more comprehensive Medicare program known as
 Medicare Advantage. Advertising campaigns and media coverage certainly
@@ -5149,9 +4643,6 @@ it is not the only one. In fact, two other pieces of Part D’s choice architect
 Random Default Plans for the Most Vulnerable
 In the Introduction, we discussed the options faced by cafeteria
 supervisor Carolyn; one of those options was to display food items at random. We said that this option could be considered fair-minded and princiPRESCRIPTION DRUGS 165
-
--- 176 of 304 --
-
 pled, but that it would lead to unhealthy diets at some schools. The option
 didn’t strike us as desirable because it unfairly penalized some students by
 inducing them to consume a diet consisting entirely of pizza, egg rolls,
@@ -5179,9 +4670,6 @@ random for them. And given the patchy drug access, it is not surprising
 that random plan defaults impaired people’s health. In a recent survey of
 dual eligibles, 10 percent reported improved medication access, while more
 HEALTH 166
-
--- 177 of 304 --
-
 than 22 percent said they had stopped taking medications temporarily or
 permanently because of problems in managing the new plan.10
 The government’s official reason for rejecting intelligent assignment in
@@ -5214,9 +4702,7 @@ PRESCRIPTION DRUGS 167
 
 ---
 
-## Sección 64: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 178 of 304 --
+## Sección 63: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.28]
 
 have chosen the best plan for their needs. The second interpretation, more
 plausible if the participants are Humans, is that inertia and the status quo
@@ -5245,9 +4731,6 @@ Web site. “This will help people make competent decisions,” said the head
 of federal Medicare offices. “They’ll have an unprecedented array of tools
 that will help them find a drug plan.”13 But there is an obvious problem
 with relying heavily on a Web site. Most seniors do not yet use the Internet, let alone the Medicare Web site, and those who do are rarely WebHEALTH 168
-
--- 179 of 304 --
-
 savvy (though this will change over time). Most seniors get their information about Part D passively from mailings by insurers, the government,
 and groups like aarp. Those mailings are highly unlikely to contain personalized information. So the Web site is the best source for help. To
 whom does the job of navigating the site fall? To seniors’ adult children, of
@@ -5276,9 +4759,6 @@ out all the stops and put the youngest and smartest member of our team
 on the job, our student intern (and Teen Jeopardy whiz), who was headed
 for a top college that fall. Even she, who normally finds everything easy,
 PRESCRIPTION DRUGS 169
-
--- 180 of 304 --
-
 was befuddled at times in this process. And no two of us, though armed
 with the same data, ended up with the same cost estimates or the same recommended plans.*
 At first, we were stumped. But it turns out that even four Econs couldn’t
@@ -5311,9 +4791,7 @@ mom in a talk she gave to a group of experts in the field and found a similar ra
 
 ---
 
-## Sección 65: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 181 of 304 --
+## Sección 64: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.28]
 
 on a particular drug will be. This information is probably available only after you sign up for a plan and attempt to fill the particular prescription.
 Figuring out whether seniors are making good choices would require information about their health characteristics and their plans. Given the obvious concerns about privacy, the government has not released these data. But
@@ -5339,9 +4817,6 @@ may decide to stop taking an expensive drug, as some already have. This
 may save the government money in the short run, but it will be costly in
 the long run, especially for diseases such as diabetes, for which a failure to
 keep on the drug regime can lead to numerous complications. The govPRESCRIPTION DRUGS 171
-
--- 182 of 304 --
-
 ernment also pays more if it assigns someone to one plan if a different plan
 covers all that person’s drugs and costs 15 percent less.
 The most obvious response is to end random assignment in favor of
@@ -5371,9 +4846,6 @@ were met politely but coolly. (Perhaps its advocates should have called it
 challenges from insurers, intelligent assignment is used to place dual eligibles only in Maine. Other states should clearly be encouraged, not discouraged, from experimenting with similar methods, and more important,
 the law mandating random assignment should be revised.
 HEALTH 172
-
--- 183 of 304 --
-
 RECAP
 Seniors could be helped a lot if our recap system were applied to
 Medicare. Recap would also make using the Medicare Web site a snap
@@ -5406,9 +4878,7 @@ PRESCRIPTION DRUGS 173
 
 ---
 
-## Sección 66: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 184 of 304 --
+## Sección 65: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.295]
 
 could save, on average, about five hundred dollars a year.21 To see whether
 people would take advantage of these savings with a slight nudge, the researchers mailed a personal letter to a random sample of study participants
@@ -5430,8 +4900,6 @@ architecture. To produce a user-friendly design, the architect needs to understa
 time-honored slogan: keep it simple. And if a building has to be complicated to be functional, then it is best to offer plenty of signs to help people
 navigate. Choice architects need to incorporate these lessons.
 HEALTH 174
-
--- 185 of 304 --
 The first successful organ transplant took place in 1954, when a
 man offered his twin brother a kidney. The first transplant of a kidney from
 a deceased donor occurred eight years later. As they say, the rest is history.
@@ -5455,9 +4923,6 @@ effort to orchestrate such matches, using techniques similar to those we discuss
 involving school choice. A question to ponder: Why is it socially acceptable for Sunstein
 and Thaler to arrange this trade but unacceptable for Sunstein to offer to buy Thaler’s
 brother a new car in exchange for his kidney?
-
--- 186 of 304 --
-
 choice architecture in increasing available organs.1 We think that some
 simple interventions would save thousands of lives every year—and do so
 while imposing essentially no new burdens on taxpayers.
@@ -5487,9 +4952,7 @@ HEALTH 176
 
 ---
 
-## Sección 67: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 187 of 304 --
+## Sección 66: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.25]
 
 more organs are available, in a way that would not only save lives but also
 fit with the wishes of the potential donors.
@@ -5519,9 +4982,6 @@ this policy, all citizens would be presumed to be consenting donors, but
 they would have the opportunity to register their unwillingness to donate,
 and they could do so easily. We want to underline the word easily, because
 the harder it is to register your unwillingness to participate, the less libertarian the policy becomes. Recall that libertarian paternalists want to imINCREASING ORGAN DONATIONS 177
-
--- 188 of 304 --
-
 pose low costs, and if possible no costs, on those who go their own way. Although presumed consent is, in a sense, the opposite of explicit consent,
 there is a key similarity: under both regimes, those who don’t hold the default preference will have to register in order to opt out.
 Let’s suppose, for the sake of argument, that both explicit consent and
@@ -5553,9 +5013,6 @@ comparing countries with presumed consent to those with explicit consent. The ef
 of the default rule, consider the difference in consent rates between two
 similar countries, Austria and Germany. In Germany, which uses an opt-in
 HEALTH 178
-
--- 189 of 304 --
-
 system, only 12 percent of the citizens gave their consent, whereas in Austria, nearly everyone (99 percent) did.
 Some Complexities
 So far, presumed consent looks awfully good, but we must stress
@@ -5579,9 +5036,7 @@ INCREASING ORGAN DONATIONS 179
 
 ---
 
-## Sección 68: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 190 of 304 --
+## Sección 67: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.25]
 
 decision not to donate. A system of presumed consent allows organ procurement organizations and hospital staff to approach the family as the
 family of a ‘donor’ rather than as the family of a ‘nondonor.’ This shift may
@@ -5609,9 +5064,6 @@ wishes of a donor who actively said “yes” compared with a donor who simply f
 Norms
 We think that states should give considerable thought to presumed consent or mandated choice, on the grounds that either approach
 HEALTH 180
-
--- 191 of 304 --
-
 would be likely to save many lives while also preserving freedom. But even
 under a system of explicit consent, states could take a few simple steps that
 would do a great deal of good. Illinois’s plan, for example, shows a terrific
@@ -5622,9 +5074,6 @@ INCREASING ORGAN DONATIONS 181
 11.1
 Online promotion of organ donation in Illinois (Used with permission of Donate Life
 Illinois)
-
--- 192 of 304 --
-
 driver’s license is not full legal consent—family members can still overrule
 your wishes. Under the old Illinois system, the only way to get around this
 was to send in a signed donor card, or to submit a document signed by two
@@ -5646,8 +5095,6 @@ well be true for organ donations.
 The Web site is almost certainly saving a significant number of lives, and
 it offers a model for other states to follow.
 HEALTH 182
-
--- 193 of 304 --
 In recent decades, governments all over the world have been taking aggressive steps to protect the environment. Concerned about air and
 water pollution, the spread of pesticides and toxic chemicals, and the loss
 of endangered species, governments have expended significant resources,
@@ -5669,9 +5116,7 @@ SAVING THE PLANET
 
 ---
 
-## Sección 69: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 194 of 304 --
+## Sección 68: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.265]
 
 to control the harmful health effects of pollution have gone well beyond a
 nudge, and their steps have not been libertarian. In this domain, freedom
@@ -5699,9 +5144,6 @@ analysis says that it is because polluters impose “externalities” (that is,
 harms) on those who breathe or drink. Even libertarians tend to agree that
 when externalities are present, markets alone do not achieve the best outcomes. Those who pollute (meaning all of us) do not pay the full costs that
 we impose on the environment, and those of us who are harmed by pollution (again, all of us) usually lack any feasible way to negotiate with polHEALTH 184
-
--- 195 of 304 --
-
 luters to get them to clean up their acts. People who celebrate freedom of
 choice are well aware that when “transaction costs” (the technical term for
 the costs of entering into voluntary agreements) are high, there may be no
@@ -5729,9 +5171,6 @@ Better Incentives
 When incentives are badly aligned, it is appropriate for government to try to fix the problem by realigning them. In the environmental
 area, two broad approaches have been proposed. The first is to impose
 SAVING THE PLANET 185
-
--- 196 of 304 --
-
 taxes or penalties on those who pollute. In the domain of climate change,
 a tax on greenhouse gas emissions, favored by many environmentalists
 (and economists too), is a simple example. The second approach is called a
@@ -5766,9 +5205,7 @@ HEALTH 186
 
 ---
 
-## Sección 70: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 197 of 304 --
+## Sección 69: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.265]
 
 plenty of incentives to develop new technologies to meet the demand for
 more fuel-efficient cars.
@@ -5797,9 +5234,6 @@ made a specific decision about the “ceiling” or “cap”—the aggregate em
 can be turned into cash, strong incentives are created for environmentally
 beneficial behavior.
 SAVING THE PLANET 187
-
--- 198 of 304 --
-
 The acid deposition program has turned out to be a terrific success.3
 Compliance with the program has been nearly perfect. Considerable trading has occurred; an effective market in permits has developed, just as anticipated. Since enactment of the program, the price of transporting coal
 has been reduced dramatically because of deregulation, and the program
@@ -5827,9 +5261,6 @@ unite on a solution that raises this price. A key reason is that the costs of
 pollution are hidden, while the price at the pump is quite salient. So we
 suggest that along with getting the prices right (or while we are waiting for
 HEALTH 188
-
--- 199 of 304 --
-
 the political courage to set the prices right), we should take other nudgelike steps that can help to reduce the problem in politically more palatable
 ways.
 An important and highly libertarian step would be an improvement in
@@ -5857,9 +5288,7 @@ SAVING THE PLANET 189
 
 ---
 
-## Sección 71: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 200 of 304 --
+## Sección 70: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.265]
 
 those effects. The idea behind the statute is that if the public gets riled up,
 the government will be pressured to give some weight to environmental
@@ -5884,9 +5313,6 @@ HEALTH 190
 restaurants. In 1998 Los Angeles County introduced hygiene quality grade cards that
 had to be displayed in restaurant windows. The researchers found that the grade cards
 caused the restaurant health inspection scores to improve, consumers’ sensitivity to hygiene in restaurants to increase, and hospitalizations for food-borne illnesses to decrease.
-
--- 201 of 304 --
-
 how the success of the Toxic Release Inventory might be repeated in the
 context of climate change.)
 Why, exactly, has the Toxic Release Inventory had such beneficial effects? A major reason is that environmentally concerned groups, and the
@@ -5917,9 +5343,6 @@ each car (see Figure 12.1).
 But what, exactly, do mileage numbers mean? For most of us, the answer
 isn’t at all obvious. The goal of promoting competition could be accomplished far more effectively by translating the mileage data into dollars,
 SAVING THE PLANET 191
-
--- 202 of 304 --
-
 solving the mapping problem. In fact, the epa is revising its fuel economy
 label to highlight the estimated annual fuel cost, as well as the methodology for determining that number. The new label also shows graphically
 where the specific vehicle falls within the range of mpg ratings for vehicles
@@ -5943,9 +5366,7 @@ Fuel economy sticker (Environmental Protection Agency)
 
 ---
 
-## Sección 72: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 203 of 304 --
+## Sección 71: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.265]
 
 whereas the costs of heating and cooling are later paid by the owners. It is
 not surprising to find that homes do not have the kinds of energy-saving
@@ -5965,9 +5386,6 @@ Here is a more ambitious idea. What if a way could be found to ensure that peopl
 SAVING THE PLANET 193
 12.2
 Revised fuel economy sticker (Environmental Protection Agency)
-
--- 204 of 304 --
-
 Thompson (2007) has explored the efforts of Southern California Edison
 to encourage its consumers to conserve energy—and its creative, nudgelike solution. Past attempts to notify people of their energy use with emails
 or text messages did no good, but what worked was to give people an Ambient Orb, a little ball that glows red when a customer is using lots of energy but green when energy use is modest. In a period of weeks, users of
@@ -5997,9 +5415,6 @@ such programs, public officials do not require anyone to do anything. Instead, t
 standards that are expected to have desirable effects on the environment.9
 The basic idea is that even in a free market, companies often fail to use the
 HEALTH 194
-
--- 205 of 304 --
-
 latest products, and sometimes government can help them to make money
 while also reducing pollution.
 In 1991, for example, the epa adopted its Green Lights program, which
@@ -6035,9 +5450,7 @@ SAVING THE PLANET 195
 
 ---
 
-## Sección 73: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 206 of 304 --
+## Sección 72: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.265]
 
 use of low-cost energy-efficient technologies. As a result, such technologies have become far more broadly diffused than they had previously been.
 Because of Green Lights, cost-saving lighting programs have been
@@ -6050,9 +5463,6 @@ change, the lesson is clear. Whether or not governments choose some kind
 of incentive-based system, they can help to reduce energy use, and thus reduce greenhouse gas emissions, with a nudge. Public officials are often ignorant, to be sure, but sometimes they have useful information, and companies can literally profit from it. As a result, they can both do good and do
 well.
 HEALTH 196
-
--- 207 of 304 --
-
 PART
 IVFREEDOM
 Libertarian paternalists care about freedom; they are skeptical
@@ -6073,11 +5483,6 @@ be made much less hot with a little separation of church and state—and by
 insisting on freedom both for religious organizations and for people who
 love each other.
 
--- 208 of 304 --
-
-This page intentionally left blank
-
--- 209 of 304 --
 IMPROVING SCHOOL CHOICES
 In 1944 President Franklin Delano Roosevelt included “the right
 to a good education” in what he called a Second Bill of Rights, designed to
@@ -6099,9 +5504,6 @@ to an attack on the public school system that has helped make America
 great. The critics worry that in the end, public schools, which serve diverse
 people and allow them to be educated together, will lose both students
 and money. They fear that vouchers will turn out to be a subsidy to rich
-
--- 210 of 304 --
-
 parents who can already afford to send their children to fancy private
 schools—and even worse, that public schools will end up with the kids
 that the private schools don’t want.
@@ -6133,9 +5535,7 @@ FREEDOM 200
 
 ---
 
-## Sección 74: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 211 of 304 --
+## Sección 73: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.265]
 
 by that law.) By June 2003 twelve of Worcester’s fifty public schools had
 been labeled “in need of improvement” for two consecutive years, and five
@@ -6165,9 +5565,6 @@ to promote actual freedom—not just by giving people lots of choices
 (though that can help) but also by putting people in a good position to
 choose what would be best for their children. Consider a few details.
 When parents pick schools, status quo bias plays a big role. The neighIMPROVING SCHOOL CHOICES 201
-
--- 212 of 304 --
-
 borhood school that one knows, failing or not, may be preferable to the
 unknown school half an hour away. In any case, the Byzantine nature of
 collecting and distributing school data makes it difficult for parents to
@@ -6206,9 +5603,7 @@ FREEDOM 202
 
 ---
 
-## Sección 75: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 213 of 304 --
+## Sección 74: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.265]
 
 to attend the popular better schools are less likely to be suspended and
 have higher test scores than the students who lost.5
@@ -6237,9 +5632,6 @@ There is a mathematical (and complicated) reason why lying is a good
 strategy in the Boston system, but to get an intuitive feel imagine that college admissions suddenly operated on a national controlled-choice system.
 Schools like Harvard and Stanford would be heavily overdemanded, and
 203 IMPROVING SCHOOL CHOICES
-
--- 214 of 304 --
-
 locals would get preferential treatment. You would have only slightly better odds of getting into one than of winning the Powerball jackpot. (You
 think property in Cambridge and Palo Alto is expensive now? What if living there guaranteed your child a seat at Harvard or Stanford?) Clever parents who do not happen to live in Cambridge, but who have been dreaming of sending their child to Harvard since the diaper days, would realize
 the futility of listing it first. The Boston system attempts to match as many
@@ -6266,9 +5658,6 @@ out these problems to initially skeptical Boston school administrators. After le
 In response, they adopted the economists’ new strategy-proof choice
 mechanism, based on one used to match hospitals and medical residents.
 FREEDOM 204
-
--- 215 of 304 --
-
 The mechanism does not penalize parents who are unsophisticated about
 the choice process, allowing them to spend time visiting schools and seeing teachers, rather than estimating the level of competition to get into
 each school. In return, administrators do not have to guess about parents’
@@ -6296,9 +5685,7 @@ IMPROVING SCHOOL CHOICES 205
 
 ---
 
-## Sección 76: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 216 of 304 --
+## Sección 75: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.265]
 
 In the end, the nudge produced big results. From 2004 to 2005 the percentage of San Marcos High students who went to Texas colleges rose 11
 percentage points, to 45 percent. Now more than forty-five Texas high
@@ -6318,8 +5705,6 @@ their choices, and to exercise their freedom rather than to rely on the default 
 “right to a good education” is not part of the Constitution, but it has become a cultural commitment, and a few simple steps could enable many
 more children to enjoy that right.
 FREEDOM 206
-
--- 217 of 304 --
 Every election cycle, presidential contenders unveil plans to make
 health care coverage available to the tens of millions of Americans who lack
 health insurance. The candidates decry our government’s failure, thus far,
@@ -6343,9 +5728,6 @@ It may seem strange to think that we “purchase” the right to sue. Of
 course, that right is not an itemized portion of the insurance bill—but it is
 SHOULD PATIENTS BE FORCED
 TO BUY LOTTERY TICKETS?
-
--- 218 of 304 --
-
 clearly included in the price. Compare buying health care with the purchase
 of collision insurance on your car. The rate you pay depends on the deductible you choose. If you elect a small deductible, such as one hundred
 dollars, you will pay a much higher rate than if you pick a large deductible,
@@ -6380,9 +5762,7 @@ such as assault and battery—raise special considerations that we do not discus
 
 ---
 
-## Sección 77: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 219 of 304 --
+## Sección 76: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.28]
 
 offer a patient a lower price for health care. Some patients would choose to
 take the lower price and assume the risk themselves. Others would prefer
@@ -6415,9 +5795,6 @@ but unnecessary treatments for patients, or refusing to provide risky but
 beneficial treatments, simply in order to avoid liability. Another indirect
 cost of liability—and an especially bad one—is that error reporting in hospitals and among physicians is discouraged.
 MEDICAL LOTTERY TICKETS 209
-
--- 220 of 304 --
-
 At first glance, it might seem clear that patients benefit from the resulting system. If patients are asked to waive their right to sue, won’t they be
 worse off ? Won’t they lose something important and gain nothing in return? The answers depend on what would happen in the no-right-to-sue
 scenario. As we will soon see, it is not clear that patients gain a lot from the
@@ -6442,9 +5819,7 @@ course of a year filed a malpractice claim.4 Of the claims that were filed, expe
 
 ---
 
-## Sección 78: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 221 of 304 --
+## Sección 77: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.25]
 
 jury) in many of the suits that resulted in payouts to plaintiffs. But in many
 cases where a plaintiff lost, the reviewers found that negligence had caused
@@ -6476,9 +5851,6 @@ sometimes awarded “punitive damages,” too, in order to punish the
 wrongdoer. But punitive damage awards also have a lot of variability.8 So
 patients are effectively forced to buy a kind of lottery ticket, one that might
 MEDICAL LOTTERY TICKETS 211
-
--- 222 of 304 --
-
 be worth anything from millions of dollars to nothing, but that is, on average, worth no more than 60 cents for every dollar spent (the rest going to
 lawyers). Playing the lottery can be fun, but should people really be required to do it?
 Choice architects should be willing to recognize that many people
@@ -6505,9 +5877,7 @@ We propose, then, that health insurance companies be permitted to ofFREEDOM 212
 
 ---
 
-## Sección 79: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 223 of 304 --
+## Sección 78: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.25]
 
 fer plans with and without the right to sue for negligence. Since most
 health insurance is purchased through employers, we hope that employers
@@ -6540,9 +5910,6 @@ they are caused by negligence. An approach of this kind should dramatically redu
 process designed to figure out exactly how much patients should be
 awarded for their injuries.
 MEDICAL LOTTERY TICKETS 213
-
--- 224 of 304 --
-
 In our view, state lawmakers should think seriously about increasing
 freedom of contract in the domain of medical malpractice, if only to see
 whether such experiments would reduce the cost of health care without
@@ -6550,8 +5917,6 @@ decreasing its quality. Increasing contractual freedom won’t solve the
 health care crisis. But it might well help—and in this domain, every little
 bit of help counts.
 FREEDOM 214
-
--- 225 of 304 --
 We are hoping that the idea of libertarian paternalism will offer
 some new ways of thinking about many old problems. We now turn to the
 very old institution of marriage, and explore some of the questions that
@@ -6570,9 +5935,6 @@ the word marriage now refers both to an official (legal) status and to a religio
 Under our approach, the only legal status states would confer on couples
 would be a civil union, which would be a domestic partnership agreement
 PRIVATIZING MARRIAGE
-
--- 226 of 304 --
-
 between any two people.* Marriages would be strictly private matters, performed by religious and other private organizations. Within broad limits,
 marriage-granting organizations would be free to choose whatever rules
 they like for a marriage conducted under their auspices. So, for example, a
@@ -6604,9 +5966,7 @@ FREEDOM 216
 
 ---
 
-## Sección 80: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 227 of 304 --
+## Sección 79: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.265]
 
 3. Inheritance and other death benefits. A member of a married couple obtains a number of benefits at the time of death. A husband or wife can
 give his or her entire estate to the spouse without incurring any estate
@@ -6636,9 +5996,6 @@ To see the importance of the state license, suppose that interracial couples wer
 marriage but that they would be in a status called “civil union” rather than
 “marriage.” Exclusion from the institution of marriage—from the official
 PRIVATIZING MARRIAGE 217
-
--- 228 of 304 --
-
 status—would itself be an offense to interracial couples. In fact, it would
 be unconstitutional. The state cannot tell members of such couples that
 they receive material benefits but are not allowed to enter the legal institution of marriage. For interracial couples, it would not matter if their marriages were supported and validated by private organizations. In sum:
@@ -6667,9 +6024,6 @@ State Control of Marriage Is Anachronistic
 Our basic claim here is that state-run marriage makes it impossible
 to protect the freedom of religious organizations to proceed as they see fit
 FREEDOM 218
-
--- 229 of 304 --
-
 while also safeguarding the freedom of couples to make the commitments
 they seek without being treated as second-class citizens by the state. But
 we also believe that the official licensing system no longer fits modern reality. For one thing, the institution of state-run marriage has a highly discriminatory past, enmeshed as it has been in both sexual and racial inequality. This past cannot be entirely severed from the current version of
@@ -6700,9 +6054,7 @@ PRIVATIZING MARRIAGE 219
 
 ---
 
-## Sección 81: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 230 of 304 --
+## Sección 80: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.25]
 
 in approaching the Sirens, in which people knowingly choose a legal status
 that will protect them against their own errors. Some states have in fact experimented with an institution called covenant marriage, which makes exit
@@ -6731,9 +6083,6 @@ some of his assets upon death without paying taxes? Private relationships,
 intimate and otherwise, might be structured in many different ways, and
 the simple dichotomy between “single” and “married” does not do justice
 to what people might choose. Indeed, that simple dichotomy is an increasFREEDOM 220
-
--- 231 of 304 --
-
 ingly imprecise description of what people actually do choose. Many people are in relationships that are intimate, committed, and monogamous—
 but without the benefit of marriage. Many people are in marriages that are
 neither intimate nor monogamous. Countless variations exist. Why not
@@ -6769,9 +6118,7 @@ PRIVATIZING MARRIAGE 221
 
 ---
 
-## Sección 82: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 232 of 304 --
+## Sección 81: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.28]
 
 both libertarian and paternalist, in the sense that they maintain freedom of
 choice while also steering people in desirable directions.7 We shall have
@@ -6801,9 +6148,6 @@ associations, and country clubs all feel bound, sometimes quite strongly,
 by the structures and rules of such organizations. Recall that if some kind
 of commitment is desirable, nothing in our proposal prevents people from
 FREEDOM 222
-
--- 233 of 304 --
-
 making commitments through the civil union form or purely through private institutions.
 In this light, what is the balance sheet for official marriage? Its benefits
 are surprisingly low; in many ways it is an anachronism. The most that can
@@ -6830,9 +6174,6 @@ in many states, even experienced divorce lawyers often have no idea how
 disputes are likely to come out. At a minimum, the choice architecture
 should be changed so that people can have a clearer sense of their rights
 PRIVATIZING MARRIAGE 223
-
--- 234 of 304 --
-
 and obligations. More ambitiously, nudges should be introduced to protect those who are most vulnerable, frequently women and above all children.
 As usual, the place to start is with people’s actual goals and intentions. If
 people make explicit promises to one another, the law should generally enforce their promises. To the extent that people leave gaps or uncertainties,
@@ -6862,9 +6203,7 @@ FREEDOM 224
 
 ---
 
-## Sección 83: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 235 of 304 --
+## Sección 82: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.265]
 
 intended goals; people will contract around the rules by adjusting other
 parts of the deal. But what people wish to do is likely to be affected by the
@@ -6896,9 +6235,6 @@ range of expected outcomes, so that their expectations will have some
 overlap. Families facing divorce will gain if the law provides an anchor or
 range, helping people know what constitutes a fair or likely outcome.
 To achieve this goal, the best solution is to introduce something not unlike criminal sentencing guidelines—a fairly narrow range of possible outPRIVATIZING MARRIAGE 225
-
--- 236 of 304 --
-
 comes within which a judge has discretion to consider other factors. In
 many states, something similar is already in place, but for purposes of the
 self-serving bias, the rules are less helpful if people do not know about
@@ -6924,17 +6260,9 @@ is, ending a “marriage”), they could do that too. The beauty of this proposa
 time reducing the unnecessary and sometimes ugly intensity of current
 public debates.
 FREEDOM 226
-
--- 237 of 304 --
-
 PART
 VEXTENSIONS AND OBJECTIONS
 
--- 238 of 304 --
-
-This page intentionally left blank
-
--- 239 of 304 --
 We have described a lot of nudges, but we are confident that there
 are countless others. Here are a dozen more—mininudges, if you will.
 Readers are warmly encouraged to add to the list by sending them to our
@@ -6957,9 +6285,7 @@ percent. We are involved with some additional experiments in collaboraA DOZEN NU
 
 ---
 
-## Sección 84: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 240 of 304 --
+## Sección 83: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.28]
 
 tion with our own university, and the initial results look promising. If the
 goal is to increase charitable giving, here’s an easy way to do it. In fact it
@@ -6993,9 +6319,6 @@ be required to make changes if her status changed, or if she started receiving u
 Goolsbee estimates that this proposal would save taxpayers up to 225
 million hours of tax preparation time and more than $2 billion a year in tax
 EXTENSIONS AND OBJECTIONS 230
-
--- 241 of 304 --
-
 preparation fees. True, many people don’t trust the irs, so here’s one way
 to assure them that our tax collectors are honest: if there’s an error, you get
 the money back, plus a bonus (say, $100).
@@ -7027,9 +6350,7 @@ A DOZEN NUDGES 231
 
 ---
 
-## Sección 85: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 242 of 304 --
+## Sección 84: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.265]
 
 admirable), or whatever self-improvement people can conjure up and post
 on the Web site.
@@ -7063,9 +6384,6 @@ EXTENSIONS AND OBJECTIONS 232
 *One reader of Tierney’s column suggested in a letter to the editor that a rider with
 this special license should also have to display a decal certifying that he has signed up to
 be an organ donor.
-
--- 243 of 304 --
-
 exactly trivial. But requirements of this kind are less intrusive than a ban—
 and might do a lot of good to boot.
 7. Gambling self-bans. Gambling raises complex issues, to say the least,
@@ -7094,9 +6412,6 @@ airline tickets, hotel rooms, magazine subscriptions, and electronics. The
 Destiny Health Plan is a clever effort to combine health insurance with
 nudges designed to get people to live healthier lives.
 A DOZEN NUDGES 233
-
--- 244 of 304 --
-
 9. Dollar a day. Teenage pregnancy is a serious problem for many girls,
 and those who have one child, at (say) eighteen, often become pregnant
 again within a year or two. Several cities, including Greensboro, North
@@ -7127,9 +6442,7 @@ EXTENSIONS AND OBJECTIONS 234
 
 ---
 
-## Sección 86: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 245 of 304 --
+## Sección 85: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.265]
 
 people suffering from chronic alcoholism, Disulfiram has had a strong and
 positive effect as part of a treatment program.
@@ -7161,8 +6474,6 @@ would be better off if they gave a boost to what Abraham Lincoln called
 “the better angels of our nature.”
 A DOZEN NUDGES 235
 *While we are waiting for this program to be invented, we have adopted a self-control device of our own as a substitute. When one of us gets really angry, he drafts the angry email, and sends it to the other one to edit. Of course, this won’t work if we get angry with each other, so we are hoping the program gets invented soon.
-
--- 246 of 304 --
 OBJECTIONS
 Who would oppose nudges? We are aware that hard-line antipaternalists, and possibly others, will have serious objections.1 Let us consider the possible counterarguments in sequence. We begin with those that
 seem to us weakest, and then turn to those that raise more complicated issues.
@@ -7180,9 +6491,6 @@ warning labels to much more aggressive information campaigns to high
 cigarette taxes to bans on smoking in public places, and a smoker would
 not have to be paranoid to think that the day might eventually come when
 cigarettes are heavily regulated or even banned altogether. Indeed, many
-
--- 247 of 304 --
-
 would welcome this for cigarettes, though most would not for alcohol.
 Where do we stop? Sliding all the way down the slippery slope is unlikely,
 to be sure, but faced with the risk of overreaching, critics might think it is
@@ -7216,9 +6524,7 @@ available to say what disbanding couples owe each other (if anything).
 
 ---
 
-## Sección 87: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 248 of 304 --
+## Sección 86: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.28]
 
 Often life turns up problems that people did not anticipate. Both private
 and public institutions need rules to determine how such situations are
@@ -7247,9 +6553,6 @@ and the laws that reflect them, often persist not because they are wise but beca
 Inertia, procrastination, and imitation often drive our behavior. Once our traditions
 are brought down to earth, the arguments on their behalf seem stronger or weaker, depending on the context. We do not mean here to question the view that laws that really
 do embody the judgments of many people often deserve support for that reason.
-
--- 249 of 304 --
-
 Evil Nudgers and Bad Nudges
 In offering supposedly helpful nudges, choice architects may have
 their own agendas. Those who favor one default rule over another may do
@@ -7283,9 +6586,7 @@ OBJECTIONS 239
 
 ---
 
-## Sección 88: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 250 of 304 --
+## Sección 87: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.25]
 
 of liberty, there is a serious danger of overreach, and therefore grounds for
 caution. Politicians, after all, are hardly strangers to the art of framing the
@@ -7312,9 +6613,6 @@ them money in the most recent campaign. Require government agencies,
 not merely the private sector, to disclose their contributions to air and water pollution, and their greenhouse gas emissions. Supreme Court Justice
 Louis Brandeis urged that “sunlight is the best of disinfectants.” Democratic governments, as well as authoritarian ones, could use a lot more sunlight.
 In emphasizing the effects of plan design on choice, we hope to encourage plan designers to become more informed. And by arguing for a libEXTENSIONS AND OBJECTIONS 240
-
--- 251 of 304 --
-
 ertarian check on bad plans, we hope to create a strong safeguard against
 ill-considered or ill-motivated plans. To the extent that individual selfinterest is a healthy check on planners, freedom of choice is an important
 corrective.
@@ -7343,9 +6641,6 @@ very rich and Paul is very poor. They obviously oppose progressive taxes.
 (Well, most taxes, actually.) In the areas that concern us, these critics
 would disapprove of policies that explicitly benefit the weak, poor, uneducated, or unsophisticated. They would object to these policies not because
 OBJECTIONS 241
-
--- 252 of 304 --
-
 they lack sympathy for these groups but because they think that any help
 for them should come voluntarily from the private sector, such as from
 charities, and that government policies would come at the expense of
@@ -7381,9 +6676,7 @@ EXTENSIONS AND OBJECTIONS 242
 
 ---
 
-## Sección 89: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 253 of 304 --
+## Sección 88: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.265]
 
 this reason, they prefer required choosing to nudges. At most, they would
 like to provide people with the information necessary to make an informed choice, and then tell people to choose for themselves: no nudges!
@@ -7412,9 +6705,6 @@ of performances, but interspersed that information with a message saying,
 What was the point of this announcement? Chicago had been in the
 midst of a terrible heat wave, and those who ran Lollapalooza were clearly
 trying to prevent the various health problems that are associated with deOBJECTIONS 243
-
--- 254 of 304 --
-
 hydration. The sign was a nudge. No one was forced to drink. But those
 who produced the sign were sensitive to how people think. In particular,
 the choice of the particular words more water was excellent. Those words
@@ -7447,9 +6737,6 @@ John Rawls (1971) called the publicity principle. In its simplest form, the
 publicity principle bans government from selecting a policy that it would
 not be able or willing to defend publicly to its own citizens. We like this
 EXTENSIONS AND OBJECTIONS 244
-
--- 255 of 304 --
-
 principle on two grounds. The first is practical. If a government adopts a
 policy that it could not defend publicly, it stands to face considerable embarrassment, and perhaps much worse, if the policy and its grounds are disclosed. (Those who participated in, or sanctioned, the cruel and degrading
 actions in the Abu Ghraib prison might have benefited from using this
@@ -7477,9 +6764,7 @@ OBJECTIONS 245
 
 ---
 
-## Sección 90: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 256 of 304 --
+## Sección 89: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.25]
 
 that it will be relying on subliminal advertising in order, for example, to
 combat violent crime, excessive drinking, and the failure to pay one’s
@@ -7504,9 +6789,6 @@ EXTENSIONS AND OBJECTIONS 246
 *See Koppell and Steen (2004). The effect is smaller when the candidates are well
 known, such as in presidential elections, but when candidates have little name recognition or get low media coverage (as in many if not most local elections), the effect can be
 even bigger.
-
--- 257 of 304 --
-
 question about neutrality, and it extends to both the private and the public sectors. We have criticized firms that nudge their employees into owning excessive amounts of company stock, but we have applauded companies that nudge some of their employees into saving more. Our basic
 conclusion is that the evaluation of nudges depends on their effects—on
 whether they hurt people or help them. Skeptics might argue that in some
@@ -7535,9 +6817,6 @@ For all the reasons we have discussed, nudging makes more sense for mortgages th
 provide a lot of help. By contrast, no expert has much to offer about
 whether you are likely to prefer Coke to Pepsi that would not be better answered by taking a sip of each. So to summarize, when choices are fraught,
 when Nudgers have expertise, and when differences in individual preferOBJECTIONS 247
-
--- 258 of 304 --
-
 ences are either not important or can be easily estimated, then the potential for helpful nudging is high.
 Of course, we need to be worried about incompetence and self-dealing
 on the part of Nudgers. If the Nudgers are incompetent, then they could
@@ -7566,9 +6845,7 @@ EXTENSIONS AND OBJECTIONS 248
 
 ---
 
-## Sección 91: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 259 of 304 --
+## Sección 90: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.295]
 
 definition of “easily avoided,” but we hold up “one-click” paternalism to
 be as close as we can get with existing technology. (We can hope for “onethought” or “one-blink” technology in the near future.) Our goal is to allow people to go their own way at the lowest possible cost. To be sure,
@@ -7598,9 +6875,6 @@ which it shuts off automatically—a design common for the warming lamps
 found in some hotel bathrooms. Should the government require that all
 sunlamps be sold with such a switch? Asymmetrical paternalists believe
 OBJECTIONS 249
-
--- 260 of 304 --
-
 that the answer depends on some kind of cost-benefit analysis. If the cost
 of the switch is low enough and the risk of burns is high enough, then the
 answer is yes.
@@ -7632,9 +6906,7 @@ EXTENSIONS AND OBJECTIONS 250
 
 ---
 
-## Sección 92: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 261 of 304 --
+## Sección 91: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.28]
 
 be running high. These are the circumstances in which people are especially prone to making choices that they will regret.
 Occupational safety and health laws go beyond asymmetric paternalism;
@@ -7657,8 +6929,6 @@ cool about cooling-off periods. Even warm. In the right circumstances,
 the gains from such rules can be sufficient to make it worthwhile to take a
 few cautious steps down that possibly slippery slope.
 OBJECTIONS 251
-
--- 262 of 304 --
 THE REAL THIRD WAY
 In this book we have made two major claims. The first is that seemingly small features of social situations can have massive effects on people’s
 behavior; nudges are everywhere, even if we do not see them. Choice architecture, both good and bad, is pervasive and unavoidable, and it greatly affects our decisions. The second claim is that libertarian paternalism is not an
@@ -7677,9 +6947,6 @@ possibility of a “Third Way.” We are hopeful that libertarian paternalism
 offers a real Third Way—one that can break through some of the least
 tractable debates in contemporary democracies.
 Ever since Franklin Delano Roosevelt’s New Deal, the Democratic
-
--- 263 of 304 --
-
 Party has shown a great deal of enthusiasm for rigid national requirements
 and for command-and-control regulation. Having identified serious problems in the private market, Democrats have often insisted on firm mandates, typically eliminating or at least reducing freedom of choice. Republicans have responded that such mandates are often uninformed or
 counterproductive—and that in light of the sheer diversity of Americans,
@@ -7709,13 +6976,8 @@ the case for the gentle nudge.
 
 ---
 
-## Sección 93: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
+## Sección 92: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.265]
 
--- 264 of 304 --
-
-This page intentionally left blank
-
--- 265 of 304 --
 Introduction
 1. See http://www.coathanger.com.au/archive/dibblys/loo.htm. The example
 is also discussed by Vicente (2006).
@@ -7741,9 +7003,6 @@ hand.blogspot.com/.
 //www2.nea.org/he/heta06/images/2006pg7.pdf.
 10. Mahar (2003).
 NOTES
-
--- 266 of 304 --
-
 11. Cooper, Woo, and Dunkelberg (1988).
 12. For references for the central findings in this paragraph, see Sunstein (1998).
 13. Kahneman, Knetsch, and Thaler (1991).
@@ -7776,7 +7035,7 @@ actually see them that way.
 8. For a good account, see http://www.dontmesswithtexas.org/history.php.
 9. Gilovich, Medvec, and Savitsky (2000).
 10. An outline can be found at http://www.historylink.org/essays/output.cfm?file
-_id5136.
+_id 5136.
 11. Wansink (2006).
 12. Coleman (1996).
 13. See, e.g., Cialdini (1993).
@@ -7784,9 +7043,6 @@ _id5136.
 15. See generally Perkins (2003), 7–8.
 16. Wechsler et al. (2000).
 NOTES TO PAGES 32–67 256
-
--- 267 of 304 --
-
 17. See Perkins (2003), 8–9.
 18. See Linkenbach (2003).
 19. Linkenbach and Perkins (2003).
@@ -7828,9 +7084,7 @@ NOTES TO PAGES 67–116 257
 
 ---
 
-## Sección 94: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 268 of 304 --
+## Sección 93: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.25]
 
 two years, automatic enrollment is at a rate of at least 3 percent of income, and automatic increases are of at least 1 percent per year for three years or more, then the employer is presumed to satisfy something called the nondiscrimination rule. (More
 specifically, the employer has to match contributions at a 100 percent rate for the first 1
@@ -7865,9 +7119,6 @@ with large balances from the company stock plan.
 3. Simon and Haggerty (2007).
 4. Morton, Zettelmeyer, and Silva-Risso (2003).
 NOTES TO PAGES 117–38 258
-
--- 269 of 304 --
-
 5. See Cuomo (2007).
 6. Bettinger, Long, and Oreopoulos (research in progress [a]).
 7. Bettinger, Long, and Oreopoulos (research in progress [a]).
@@ -7904,9 +7155,6 @@ Monthly premiums range from less than $20 to more than $100. Deductibles are set
 between zero and $265 (as of 2007). Some basic plans cover 75 percent of drug bills,
 while most plans have tier-leveled coverage. If you use any kind of coinsurance, or if
 NOTES TO PAGES 140–70 259
-
--- 270 of 304 --
-
 you buy drugs in three-month supplies, as some seniors do, your cost-sharing arrangements will be different. Generic drug copayments range from zero to $10 per prescription; brand-name copayments range from $15 to more than $60. You’ll need to keep
 track of all of these figures because monthly price changes can affect the overall bill.
 Plans cover between 73 and 96 percent of the two hundred most commonly used
@@ -7944,9 +7192,7 @@ NOTES TO PAGES 171–88 260
 
 ---
 
-## Sección 95: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 271 of 304 --
+## Sección 94: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.25]
 
 between a greenhouse gas tax and a cap-and-trade program; Stewart and Wiener favor
 the latter, but reasonable people disagree.
@@ -7988,14 +7234,11 @@ caretaker-dependent.”
 10. See Babcock and Lowenstein (1997).
 11. See Baker and Emery (1993).
 NOTES TO PAGES 190–226 261
-
--- 272 of 304 --
-
 16. A Dozen Nudges
-1. See http://www.poverty-action.org/ourwork/projects_view.php?recordID
+1. See http://www.poverty-action.org/ourwork/projects_view.php?recordID 
 33 for a similar plan.
 2. Research is still ongoing, but see http://www.povertyactionlab.com/projects/
-project.php?pid65.
+project.php?pid 65.
 3. Brown, Saunders, and Dick (1999).
 17. Objections
 1. A vigorous challenge, on which we draw here, is Glaeser (2006).
@@ -8013,11 +7256,9 @@ wait a short period of time after their license has been issued before they can 
 knot.”
 9. An interesting defense of such laws can be found in Frank (1985).
 NOTES TO PAGES 231–51 262
-
--- 273 of 304 --
 Abadie, Alberto, and Sebastien Gay. “The Impact of Presumed Consent Legislation on
 Cadaveric Organ Donation: A Cross Country Study.” NBER Working Paper no.
-W10604, July 2004. http://ssrn.com/abstract563048.
+W10604, July 2004. http://ssrn.com/abstract 563048.
 Abdulkadirog˘ lu, Atila, Parag A. Pathak, and Tayfun Sonmez. “The Boston Public
 School Match.” American Economic Review 95, no. 2 (2005): 368–71.
 Ackerman, Bruce A., and William T. Hassler. Clean Coal/Dirty Air: Or How the Clean
@@ -8039,9 +7280,6 @@ Ayres, Ian, and Barry Nalebuff. “Skin in the Game.” Forbes, November 13, 200
 Babcock, Linda, and George Loewenstein. “Explaining Bargaining Impasse: The Role
 of Self-Serving Biases.” Journal of Economic Perspectives 11, no. 1 (1997): 109–26.
 Badger, Gary J., Warren K. Bickel, Louis A. Giordano, Eric A. Jacobs, George LoeBIBLIOGRAPHY
-
--- 274 of 304 --
-
 wenstein, and Lisa Marsch. 2004. “Altered States: The Impact of Immediate Craving on the Valuation of Current and Future Opioids.” Journal of Health Economics
 26 (2007): 865–76.
 Baker, Lynn A., and Robert E. Emery. “When Every Relationship Is Above Average:
@@ -8083,9 +7321,7 @@ BIBLIOGRAPHY 264
 
 ---
 
-## Sección 96: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 275 of 304 --
+## Sección 95: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.25]
 
 Benjamin, Daniel, and Jesse Shapiro. “Thin-Slice Forecasts of Gubernatorial Elections.” Working paper, University of Chicago, 2007.
 Bentham, Jeremy. An Introduction to the Principles of Morals and Legislation. Oxford:
@@ -8125,9 +7361,6 @@ and Kahneman (2002), 250–70.
 Burke, Edmund. Reflections on the Revolution in France. Ed. L. G. Mitchell. Oxford:
 Oxford University Press, 1993.
 BIBLIOGRAPHY 265
-
--- 276 of 304 --
-
 Burnum, John F. “Medical Practice à la Mode: How Medical Fashions Determine
 Medical Care.” New England Journal of Medicine 317 (1987): 1220–22.
 Byrne, Michael D., and Susan Bovair. “A Working Memory Model of a Common Procedural Error.” Cognitive Science 21 (1997): 31–61.
@@ -8164,9 +7397,7 @@ BIBLIOGRAPHY 266
 
 ---
 
-## Sección 97: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 277 of 304 --
+## Sección 96: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.25]
 
 ———. “For Better or For Worse: Default Effects and 401(k) Savings Behavior.” In
 Perspectives in the Economics of Aging, ed. David Wise, 81–121. Chicago: University
@@ -8204,9 +7435,6 @@ Age.” Journal of Risk and Uncertainty 8 (1994): 243–65.
 Crutchfield, Richard S. “Conformity and Character.” American Psychologist 10 (1955):
 191–98.
 Cubanski, Juliette, and Patricia Neuman, “Status Report on Medicare Part D EnrollBIBLIOGRAPHY 267
-
--- 278 of 304 --
-
 ment in 2006: Analysis of Plan-Specific Market Share and Coverage.” Health Affairs
 26 (2007): w1–12.
 Cuomo, Andrew. Testimony to the U.S. House of Representatives Committee on Education and Labor, April 25, 2007. http://edlabor.house.gov/testimony/042507
@@ -8229,7 +7457,7 @@ Duflo, Esther, William Gale, Jeffrey Liebman, Peter Orszag, and Emmanuel Saez.
 Experiment with H&R Block,” NBER Working Paper no. 11680, 2005. http://www
 .nber.org/papers/w11680.pdf.
 Duflo, Esther, and Emmanuel Saez. “The Role of Information and Social Interactions
-in Retirement Plan Decisions: Evidence from a Randomized Experiment.” Massachusetts Institute of Technology Department of Economics Working Paper no. 0223, 2002. http://papers.ssrn.com/sol3/papers.cfm?abstract_id315659.
+in Retirement Plan Decisions: Evidence from a Randomized Experiment.” Massachusetts Institute of Technology Department of Economics Working Paper no. 0223, 2002. http://papers.ssrn.com/sol3/papers.cfm?abstract_id 315659.
 Dworkin, Gerald. The Theory and Practice of Autonomy. Cambridge: Cambridge University Press, 1988.
 Dynes, Russell R. “The Importance of Social Capital in Disaster Response.” University
 of Delaware Disaster Research Center Preliminary Paper no. 327, 2002. http://
@@ -8247,9 +7475,7 @@ BIBLIOGRAPHY 268
 
 ---
 
-## Sección 98: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 279 of 304 --
+## Sección 97: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.295]
 
 Elster, Jon. Sour Grapes: Studies in the Subversion of Rationality. Cambridge: Cambridge University Press, 1983.
 Epley, Nicholas, and Thomas Gilovich. “Just Going Along: Nonconscious Priming
@@ -8290,9 +7516,6 @@ Gilbert, Daniel T., M. Gill, and Timothy D. Wilson. “How Do We Know What We
 Will Like? The Informational Basis of Affective Forecasting.” Manuscript, Harvard
 University, 1998.
 BIBLIOGRAPHY 269
-
--- 280 of 304 --
-
 Gilbert, Daniel T., Elizabeth C. Pinel, Timothy D. Wilson, Stephen J. Blumberg, and
 Thalia P. Wheatley. “Immune Neglect: A Source of Durability Bias in Affective Forecasting.” Journal of Personality and Social Psychology 75 (1998): 617–38.
 Gilbert, Daniel T., and Timothy D. Wilson. “Miswanting: Some Problems in the Forecasting of Future Affective States.” In Feeling and Thinking: The Role of Affect in Social Cognition, ed. Joseph P. Forgas, 178–97. Cambridge: Cambridge University
@@ -8333,9 +7556,7 @@ BIBLIOGRAPHY 270
 
 ---
 
-## Sección 99: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 281 of 304 --
+## Sección 98: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.25]
 
 Rates Matter for Consumer Behavior? Evidence from Credit Card Data.” Quarterly
 Journal of Economics 117 (2002): 149–85.
@@ -8360,7 +7581,7 @@ Herzog, Don. Happy Slaves: A Critique of the Consent Theory. Chicago: University
 Chicago Press, 1989.
 Hirshleifer, David. “The Blind Leading the Blind: Social Influence, Fads, and Informational Cascades.” In The New Economics of Human Behavior, ed. Mariano Tommasi and Kathryn Ierulli, 188. Cambridge: Cambridge University Press, 1995.
 Hirshleifer, David, and Tyler Shumway. “Good Day Sunshine: Stock Returns and the
-Weather.” March 2001. http://papers.ssrn.com/sol3/papers.cfm?abstract_id
+Weather.” March 2001. http://papers.ssrn.com/sol3/papers.cfm?abstract_id 
 265674.
 Hoadley, Jack. Testimony to Government Reform Committee Briefing on the
 Medicare Drug Benefit. U.S. House Committee on Oversight and Government Reform. January 20, 2006. http://oversight.house.gov/documents/200601201301
@@ -8375,9 +7596,6 @@ Howarth, Richard B., Brent M. Haddad, and Bruce Paton. “The Economics of Energ
 Efficiency: Insights from Voluntary Participation Programs.” Energy Policy 28
 (2000): 477–86.
 BIBLIOGRAPHY 271
-
--- 282 of 304 --
-
 Howell, William. “School Choice in No Child Left Behind.” In Choice and Competition in American Education, ed. Paul E. Peterson, 255–64. Lanham, Md.: Rowman
 and Littlefield, 2006.
 Hoxby, Caroline. “School Choice and School Productivity: Could School Choice Be a
@@ -8421,9 +7639,7 @@ BIBLIOGRAPHY 272
 
 ---
 
-## Sección 100: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 283 of 304 --
+## Sección 99: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.265]
 
 Kahneman, Daniel, Barbara L. Fredrickson, Charles A. Schreiber, and Donald A. Redelmeier. “When More Pain Is Preferred to Less: Adding a Better End.” Psychological Science 4 (1993): 401–5.
 Kahneman, Daniel, Jack L. Knetsch, and Richard H. Thaler. “Experimental Tests of
@@ -8461,9 +7677,6 @@ An Experiment.” Public Opinion Quarterly 37 (1973): 398–406.
 Krech, David, Richard S. Crutchfield, and Egerton S. Ballachey. Individual in Society.
 New York: McGraw-Hill, 1962.
 BIBLIOGRAPHY 273
-
--- 284 of 304 --
-
 Krueger, Alan B. What Makes a Terrorist. Princeton: Princeton University Press, 2007.
 Kruse, Douglas L., and Joseph Blasi. “Employee Ownership, Employee Attitudes, and
 Firm Performance.” NBER Working Paper no. 5277, September 1995. http://www
@@ -8503,9 +7716,7 @@ BIBLIOGRAPHY 274
 
 ---
 
-## Sección 101: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 285 of 304 --
+## Sección 100: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.25]
 
 Service. October 20, 2005. http://www.coxwashington.com/reporters/content/
 reporters/stories/2005/10/20/BC_MEDICARE18_COX.html.
@@ -8540,9 +7751,6 @@ McKay, Kim, and Jenny Bonnin. True Green. Washington, D.C.: National Geographic,
 2007.
 Medicare Prescription Drug Plan. “Tips and Tools for People with Medicare and
 BIBLIOGRAPHY 275
-
--- 286 of 304 --
-
 Those Who Care for Them.” U.S. Department of Health and Human Services. N.d.
 http://www.medicare.gov/medicarereform/drugbenefit.asp.
 Medicare Rights Center. “Part D 2007: Addressing Access Problems for Low Income
@@ -8566,7 +7774,7 @@ Women and Minorities?” Quantitative Marketing and Economics 1 (2003): 65–92.
 Morwitz, Vicki G., and Eric Johnson. “Does Measuring Intent Change Behavior?”
 Journal of Consumer Research 20 (1993): 46–61.
 Moser, Christine, and Christopher Barrett. “Labor, Liquidity, Learning, Conformity,
-and Smallholder Technology Adoption: The Case of SRI in Madagascar.” Manuscript, 2002. http://papers.ssrn.com/sol3/papers.cfm?abstract_id328662.
+and Smallholder Technology Adoption: The Case of SRI in Madagascar.” Manuscript, 2002. http://papers.ssrn.com/sol3/papers.cfm?abstract_id 328662.
 Nemore, Patricia B. “Medicare Part D: Issues for Dual-Eligibles on the Eve of Implementation.” Center for Medicare Advocacy for the Henry J. Kaiser Family Foundation. November 2005. http://www.kff.org/medicare/7431.cfm.
 Nisbett, Richard E., and David E. Kanouse. “Obesity, Hunger, and Supermarket
 Shopping Behavior.” Proceedings of the Seventh Annual Meeting of the American Psychological Association 3 (1968): 683–84.
@@ -8579,9 +7787,7 @@ BIBLIOGRAPHY 276
 
 ---
 
-## Sección 102: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 287 of 304 --
+## Sección 101: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.265]
 
 Nordhaus, William D., and Joseph Boyer. Warming the World: Economic Models of
 Global Warming. Cambridge: MIT Press, 2000.
@@ -8618,9 +7824,6 @@ Prendergast, Canice. “The Provision of Incentives in Firms.” Journal of Econ
 Prestwood, Charles. Testimony Before the Senate Committee on Commerce, Science,
 and Transportation. December 18, 2001.
 BIBLIOGRAPHY 277
-
--- 288 of 304 --
-
 Rawls, John. A Theory of Justice. Oxford: Clarendon, 1971.
 Read, Daniel, Gerrit Antonides, Laura Van Den Ouden, and Harry Trienekens.
 “Which Is Better: Simultaneous or Sequential Choice?” Organizational Behavior
@@ -8660,9 +7863,7 @@ Schreiber, Charles A., and Daniel Kahneman. “Determinants of the Remembered We
 
 ---
 
-## Sección 103: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 289 of 304 --
+## Sección 102: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.28]
 
 fare of Aversive Sounds.” Journal of Experimental Psychology: General 129 (2000):
 27–42.
@@ -8700,9 +7901,6 @@ Smock, Pamela J., Wendy D. Manning, and Sanjiv Gupta. “The Effect of Marriage 
 Divorce on Women’s Economic Well-Being.” American Sociological Review 64
 (1999): 794–812.
 BIBLIOGRAPHY 279
-
--- 290 of 304 --
-
 Stephenson, Denice, ed. Dear People: Remembering Jonestown. Berkeley, Calif.: Heyday, 2005.
 Stewart, Richard B., and Jonathan B. Wiener. Reconstructing Climate Policy: Beyond
 Kyoto. Washington, D.C.: American Enterprise Institute Press, 2003.
@@ -8741,9 +7939,7 @@ BIBLIOGRAPHY 280
 
 ---
 
-## Sección 104: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 291 of 304 --
+## Sección 103: Part 1: if the underlying decision is difficult and unfamiliar, and if people do [Entropy: 0.265]
 
 Thaler, Richard H., and Shlomo Benartzi. “Save More Tomorrow: Using Behavioral
 Economics to Increase Employee Saving.” Journal of Political Economy 112 (2004):
@@ -8764,7 +7960,7 @@ Disaster Preparedness and Response in the USA. Washington, D.C.: Joseph Henry,
 Toderov, Alexander, Anesu N. Mandisodza, Amir Goren, and Crystal C. Hall. “Inferences of Competence from Faces Predict Election Outcomes.” Science 308 (2005):
 1623–26.
 Towers Perrin, Tillinghast. “2006 Update on U.S. Tort Cost Trends.” 2006. http://
-www.towersperrin.com/tp/getwebcachedoc?webcTILL/USA/2006/200611/
+www.towersperrin.com/tp/getwebcachedoc?webc TILL/USA/2006/200611/
 Tort_2006_FINAL.pdf.
 Tversky, Amos. “Elimination by Aspects: A Theory of Choice.” Psychological Review
 76 (1972): 31–48.
@@ -8783,9 +7979,6 @@ Princeton: Princeton University Press, 1986.
 Vaughan, William, and Delani Gunawardena. “Letter to CMS Acting Administrator
 Leslie Norwalk.” Consumers Union. Washington, D.C., December 18, 2006.
 BIBLIOGRAPHY 281
-
--- 292 of 304 --
-
 Vicente, Kim J. The Human Factor: Revolutionizing the Way People Live with Technology. New York: Routledge, 2006.
 Viscusi, W. Kip. “Alarmist Decisions with Divergent Risk Information.” Economic
 Journal 107 (1997): 1657–70.
@@ -8819,877 +8012,6 @@ Civil Marriage.” Cardozo Law Review 27 (2006): 1161–1220.
 Zweig, Jason. “Five Investing Lessons from America’s Top Pension Fund.” Money,
 January 1998, 115–18.
 BIBLIOGRAPHY 282
-
----
-
-## Sección 105: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 293 of 304 --
-AARP, 161–62, 163–64
-ABBA, Gold: Greatest Hits, 194
-“above average” effect, 32, 224
-Abu Ghraib prison, 245
-accessibility, 25
-accountability, in schools, 200
-acid deposition program, 187–88
-acid rain, 187–88
-air conditioners, filters for, 234
-air pollution, 183, 184–85, 186, 188
-alcohol abuse, 67–68, 234–35
-Ambient Orb, 194
-American dream, 135
-American Express, 35
-anchoring and adjustment, 23–24
-angels, 235
-annual percentage rate (APR), 133, 137
-anonymity, 57
-arbitrage opportunity, 51
-arousal, power of, 42
-asbestos, warnings about, 189
-Asch, Solomon, 56–59
-aspects, elimination by, 95
-asset allocation, 34–35, 118–28; company
-stock, 125–28; diversification heuristic,
-123; and loss aversion, 120–21; and market timing, 121–22; mutual funds, 119;
-and rates of return, 123; and risk tolerance, 124–25; rules of thumb for, 122–
-25; stocks and bonds, 118, 119–20
-asymmetric paternalism, 72n, 249–51
-ATM cards, 88
-attention, lack of, 35
-Attila the Hun, 23–24
-Austria, organ donations in, 178–79
-autokinetic effect, 57
-automatic pilot, 43
-Automatic System, 19–22; and Doers, 42;
-mindless choosing by, 43–44; and
-priming, 69–71; and risk, 25; in Stroop
-test, 82; and temptation, 42
-Automatic Tax Return, 230–31
-automobiles: buying, 98–99, 138; catalytic converters for, 184; emissions
-from, 184, 186; fuel economy standards
-for, 191–92, 192, 193; gas tank caps,
-88–89; user-friendly, 88; Zipcar rentals,
-99n
-autopsies, corneas removed in, 177
-availability bias, 24–26, 67
-Ayres, Ian, 231–32
-“back to zero” option, 12–13
-Barrera, Ramiro, 163
-basketball: “hot hands” in, 30, 31; “streak
-shooting,” 30
-INDEX
-Note: Page numbers in boldface refer to charts and illustrations.
-
--- 294 of 304 --
-
-behavior: dynamically inconsistent, 41;
-risk-related, 7, 25, 32–33
-Benartzi, Shlomo, 112, 124, 127
-Bennett, Robert, 14
-Bettinger, Eric, 141
-Big Blue, 6
-birth control pills, 89
-Bismarck, Otto von, 105
-boomerang effect, 68
-borrowing, 132; see also credit markets
-Boston, school system in, 203–5
-Boston Research Group, 126
-brain, functioning of, 19–22
-Brandeis, Louis, 240
-brand switching, 64–65
-Breman, Anna, 229
-broadcast programming, 55
-Burke, Edmund, 238n
-Bush, George H. W., 187
-Bush, George W., 145, 159
-business, start-ups of, 32
-Campbell’s tomato soup experiment, 43–
-cancer clusters, 31
-cap-and-trade system, 187, 197
-CARES (Committed Action to Reduce
-and End Smoking), 232
-cashew phenomenon, 40–41, 43
-cell phones: costs of, 93; RECAP in, 93–
-chance, 27
-channel factors, 70–71, 110
-charity, Give More Tomorrow, 229–30
-Charity Debit Card, 230
-Charlotte, North Carolina, schools, 202
-chemicals: hazardous, 190–91; warnings
-about, 189
-Chernobyl disaster, Ukraine, 190
-Chicago, Lake Shore Drive, 37–39, 38
-chickens, conformity of, 64n
-children: joint custody of, 225; protection
-of, 219, 221–23, 224, 225; right to education, 199, 206
-choice: benefits now—costs later, 73; cognitive costs of, 8n; complex, 94–97,
-200–203, 247; controlled, 203–5; degree of difficulty, 73–74; delayed effects
-of, 76; feedback, 75, 90–91; forced, 86,
-109–10, 243; fraught, 73–76; frequency, 74–75; informed, 243; mandated, 86; menu of, 76; mindless, 43–
-44; preferences, 75–76; and RECAP,
-93–94; required, 86–87; science of, 7;
-structuring, 94–97; too much, 165
-choice architects: in action, 11–13; allowing for error, 87–90; compensatory
-strategy, 95; competence of, 248; and
-complex choices, 94–97; default options, 83–87; doctors as, 157; evil, 239–
-41; expecting error, 87–90; feedback,
-90–91; fraught choices, 73–76; and incentives, 97–100; mappings, 91–94;
-rules of engagement for, 240; simplifying strategies, 95–96; and social influences, 65–69; starting points provided
-by, 10–11; use of term, 3; user-friendly
-environments provided by, 11, 88
-choice architecture, pervasiveness of, 252
-Christmas savings clubs, 48–49, 51, 52
-Cialdini, Robert, 67
-Civility Check, 235
-civil unions, 215–16, 217, 220, 221–23
-Clean Air Act, 187
-climate change, 183, 186, 191, 196
-Clocky (alarm clock), 44–45, 45
-coercion, 11
-coffee, iced vs. hot, 71
-cognitive costs, 8n
-cognitive systems, 19–22
-coin tosses, 27
-cold states, 41, 42
-collaborative filtering, 96–97
-collective conservatism, 58–59
-college: costs of, 139; financial aid office
-of, 140; preferred lenders to, 140; student loans, 138–41
-college savings accounts (529 plans), 141
-Committed Action to Reduce and End
-Smoking (CARES), 232
-community property, 217
-company stock, 125–28, 247
-INDEX 284
-
--- 295 of 304 --
-
-compensatory strategy, 95
-competition, 78–79; in school choice,
-199–200
-conformity, 55–60; of chickens, 64n; and
-cultural change, 62–65; and priming,
-69–71; in public parks, 66–67; and recycling, 66n; and spotlight effect, 60–
-62; and tax compliance, 66
-Conley, Caryn, 30
-consensus, 57–58
-consumer choice, simplification of, 96
-Consumers Union, 170
-contracts, 218
-controlled choice, in Boston schools,
-203–5
-cooling-off periods, 250–51
-copyright laws, 218
-corneal transplants, 177
-counterarguments: evil nudgers and bad
-nudges, 239–41; neutrality, 246–48;
-publicity principle, 243–46; redistribution, 241–43; the right to be wrong,
-241; slippery slope, 236–38; why stop
-there? 248–51
-covenant marriage, 220
-credit cards, 142–44; balances carried in,
-51–52, 103, 142–43; convenience of,
-142; costs of, 93; for foreign purchases,
-144; and framing, 36; and interest rates,
-49, 133; minimum payment of, 144; for
-payments in lieu of cash, 142; RECAP
-applied to, 143–44; as source of liquidity, 142
-credit markets: credit cards, 142–44;
-mortgages, 132–38; student loans, 138–
-Cronqvist, Henrik, 154
-cues, priming, 71
-cultural change, 62–65
-CVS/pharmacy, 173
-Dallas Cowboys, 60
-dating heuristic, 24
-daylight saving time, 47
-deadbeat dads, 221
-dead man switches, 85
-Dean, Howard, 65
-death benefits, 217
-debit cards, 142, 230
-default options, 83–87; “back to zero,”
-12–13; and forced choice, 86; in marriage, 221–22, 223–26; “status quo,” 8,
-12–13, 35, 83; transparency in, 245; userfriendly, 12–13
-Defense Department, U.S., 86
-defined-benefit retirement plans, 105, 108
-defined-contribution retirement plans,
-105–6, 107, 123, 128, 129
-design: controlled by choice architects, 10;
-details of, 3–4; human factors incorporated into, 82, 83; informed, 240; neutral, 3, 10; starting points inherent in,
-10–11; user-friendly, 11
-Design of Everyday Things, The (Norman),
-Destiny Health Plan, 233
-difficulty, degree of, 73–74
-digital cameras, 90, 92–93
-discount pricing, 36
-discrimination, laws against, 251
-Disulfiram (antabuse), 234–35
-diversification heuristic, 123
-divorce: and “above average” effect, 32,
-224; and children, 225, 226; difficulty of
-obtaining, 219–20; economic prospects
-affected by, 224; law of, 224–26;
-mandatory waiting period for, 250–51;
-obtainable at will, 220
-Doers, 42, 47
-dog owners, social pressures on, 54
-Dollar a day incentive, 234
-domestic partnership agreements, 215–16,
-“Don’t Mess with Texas,” 60, 61
-eating: and conformity, 64; and food display, 1–3, 4–5, 10, 11, 165–66; and
-food selection, 7, 64; gender differences
-in, 64
-Economist, 239–40
-Econs: easy choices for, 77; homo economicus, 6–8; incentives for, 8; investment
-INDEX 285
-
----
-
-## Sección 106: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 296 of 304 --
-
-Econs (continued)
-decisions by, 120; and money, 101; not
-followers of fashion, 53; Reflective Systems used by, 22; unbiased forecasts
-made by, 7; use of term, 7
-education, 199–206; accountability in,
-200; in Boston, 203–5; in Charlotte,
-202; charter schools, 200; child’s right
-to, 199, 206; and competition, 199–
-200; complex choices in, 200–203; controlled choice in, 203–5; desegregation
-of, 203; incentive conflicts in, 203–5;
-No Child Left Behind, 85–86, 200–
-201; in San Marcos, Texas, 205–6;
-school choice vouchers, 199–200, 203,
-206; status quo bias in, 201–2; testing
-standards, 200; test scores, 200, 202;
-underperforming in, 201; in Worcester,
-200–201
-“efficient frontier,” 154
-Einstein, Albert, 6
-elimination by aspects, 95
-emails, Civility Check for, 235
-Emanuel, Rahm, 14
-Emergency Planning and Community
-Right to Know Act (1986), 190
-“emoticons,” 68, 69
-employers: employee benefits offered by,
-11–13; profit-sharing plans of, 128; and
-retirement plans, 105–6, 107–8, 111,
-127, 128, 131
-endowment effect, 83
-energy, invisibility of, 194
-energy conservation: and cost-disclosing
-thermostats, 99; and framing, 36–37;
-and home-building industry, 192–93;
-and social influences, 68–69; voluntary
-participation programs in, 194–96
-energy efficiency, 195–96
-Energy Star Office Products, 195–96
-Enron Corporation, 125–26, 127
-environmental issues, 158, 183–96; acid
-deposition program, 187–88; air pollution, 183, 184–85, 186, 188; auto emissions, 184, 186; auto fuel economy, 191–
-92, 192, 193; cap-and-trade system in,
-187, 197; Clean Air Act, 187; climate
-change, 183, 186, 191, 196; commandand-control regulation of, 184, 186,
-189; energy conservation, 36–37, 68–
-69, 99, 192–93, 194–96; energy efficiency, 195–96; energy use, 193–96;
-feedback and information, 188–93;
-greenhouse gas emissions, 186, 188,
-196; incentives for, 185–88; international, 183, 187; Kyoto Protocol, 187;
-nudges proposed for, 193–96; ozone
-layer, 183; recycling, 66n; risk labeling,
-189; and social influences, 68–69;
-trading systems in, 187–88, 197; and
-tragedy of the commons, 185; transparent costs of, 187; voluntary participation
-programs, 194–96
-Environmental Protection Agency (EPA),
-189; and auto fuel economy, 192, 192,
-193; Energy Star Office Products program, 195–96; Green Lights program
-of, 195–96; Toxic Release Inventory of,
-190–91
-Equities (stocks), 118, 119–20
-equity premium, 120
-ERISA (Employee Retirement Income Security Act of 1974), 127–28, 131
-error, expecting, 87–90, 130
-“everything matters,” 3–4
-evil nudgers, 239–41
-expectations, 62
-Experion Systems, 173
-externalities, 184
-FAFSA (free application for federal student aid), 139, 141
-families, dispersion of, 104
-Family and Medical Leave Act, 216
-Federal Express, 208
-Federal Housing Administration (FHA),
-133–34
-Federal Trade Commission (FTC), 250
-feedback, 75, 90–91, 131, 188–93
-529 plans (college savings accounts), 141
-flexible spending accounts, 12
-follow through, failure to, 112
-Food and Drug Administration (FDA),
-INDEX 286
-
--- 297 of 304 --
-
-food display, 1–3, 4–5, 10, 11, 165–66
-food selection, 7, 64
-footnotes, uses of, 4n
-forced choice, 86, 109–10, 243
-forcing function, 88
-Ford, Harrison, 154
-401(k) plans, 106, 107, 109, 126, 127, 128,
-framing, 36–37
-France, organ donations in, 179
-Franklin, Benjamin, 47
-freedom of choice, 5, 197, 252–53; danger
-of overreaching, 240; elimination of,
-248–51; Just Maximize Choices, 9–11;
-opposition to, 241–43; and presumed
-consent, 177–79; and required choice,
-86–87
-frequency, 74–75
-Friedman, Milton, 5, 199, 206
-friendly discouragement, 201
-fungibility, 50–523
-gains and losses, 33–34
-gambling, 33–34; low stakes, 74-75n;
-mental accounting in, 50–51; self-bans,
-233; and strategy, 45–47
-Gandhi, Mohandas, 6
-gas tank caps, 88–89
-Gateway Arch, St. Louis, 18n
-Germany, organ donations in, 178–79
-Gilovich, Tom, 27–30, 61
-Give More Tomorrow, 229–30
-Goldstein, Dan, 178
-Goolsbee, Austan, 230–31
-Gore, Al, 159
-Gould, Stephen Jay, 27
-government: distrust of, 10, 248; libertarian paternalism of, 13; neutrality
-in, 246–48; paternalism of, 47; and
-RECAP, 93–94; and retirement plans,
-115–17; and slippery slope, 236–38;
-starting points provided by, 10–11;
-transparency in, 240, 244–46
-government bonds, 118
-greenhouse gas emissions, 186, 188, 196
-Greenhouse Gas Inventory (GGI), proposed, 191
-Green Lights, EPA program, 195–96
-Gross, David, 51
-group norms, 57–58
-gut feelings, 21–22
-Hackman, Gene, 50
-Halloween night experiment, 123–24
-H&R Block, and FAFSA software, 141
-Harvard School of Public Health, 67
-Hazard Communication Standard (HCS),
-health care, 207–14; birth control pills,
-89; choosing, 76; costs of, 207, 210; defensive medicine, 210; Destiny Health
-Plan, 233; deterrent effect of tort liability in, 210–11; drug compliance, 89;
-framing in, 157; freedom of contract in,
-174, 210, 214; incentive conflicts in, 98;
-ineffective lawsuits in, 210, 211–12; libertarian paternalists on, 157–58; medical malpractice liability, 209–14; negligence defined in, 213; “no-fault” system
-in some countries, 213; organ donations, 157–58, 175–82; prescription
-drug plan, 157, 159–74; right to sue for
-negligence, 207–14; social influences in,
-157; treatment options, 92
-“heuristics and biases” approach, 23
-Hoffman, Dustin, 50, 51
-home-building industry, 192–93
-home equity loans, 103
-Home Ownership and Equity Protection
-Act, 136
-homo economicus (economic man), 6–8
-“hot-cold empathy gap,” 42
-hot-hand theory, 30, 31
-hot states, 41, 42
-Houston Natural Gas, 125
-Howell, William, 201
-Hoxby, Carolyn, 200
-Humans: Automatic Systems used by, 22;
-conformity of, 55–60; difficult choices
-for, 77, 83; influenced by a nudge, 8;
-loss aversion of, 120–21; and money,
-101; social pressures on, 53; use of
-term, 7
-Hurricane Katrina, 13
-INDEX 287
-
----
-
-## Sección 107: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 298 of 304 --
-
-Illinois First Person Consent registry, 181–
-82, 181
-imitation, 238n
-incentives, 8, 97–100; conflicts of, 98,
-203–5; in free markets, 97; in investments, 131; and salience, 98–99
-income tax: Automatic Tax Return, 230–
-31; compliance in, 66; refunds from,
-48–49n
-index funds, 149–50, 154
-inertia: and default option, 35, 83; and loss
-aversion, 34; and organ donations, 176;
-power of, 7–8, 238n; and status quo
-bias, 12–13, 34–35; “yeah, whatever,”
-35, 83
-information, spread of, 54, 71
-Informed Decisions, 172
-inheritance, 217
-INSEAD School of Business, France, 99
-insurance: costs of, 93; fraught choices in,
-77; health, 233
-Internal Revenue Service (IRS), 230–31
-intuitive thinking, test of, 21–22
-investment goods, 73
-investments, 118–31; asset allocation in,
-34–35, 118–28; in company stock, 125–
-28, 247; default options, 129–30; and
-ERISA, 127–28, 131; error expected in,
-130; feedback in, 131; incentives in, 131;
-index funds, 149–50; “lifestyle” funds,
-124–25, 129; mappings in, 131; and market timing, 121–22; mental accounting
-in, 51; mutual funds, 119, 120, 122, 127;
-past performance of, 126–27; portfolio
-management, 131; portfolio theory, 123;
-rates of return, 123; risk in, 118, 120–21,
-124–25, 129; rules of thumb for, 122–
-25; stocks and bonds, 118, 119–20;
-structuring complex choices, 130; “target maturity funds,” 129–30
-iPhone and iPod, 11
-IRAs, 103
-Johnson, Eric, 178
-Johnson, Samuel, 32
-Jones, Rev. Jim, 53
-Jonestown, Guyana, 53, 54, 59
-judges, social influences on, 55
-judgment, “heuristics and biases” approach to study of, 23
-Just Maximize Choices, 9–11; in education, 200; in health care, 174; in
-Swedish Social Security, 145–46, 155
-Kahneman, Daniel, 23
-Karlan, Dean, 46–47, 231–32
-Kerry, John, 65
-kidney transplants, 175
-Kieboom, Aad, 4
-Koehler, Jay, 30
-Kurtz, Sheldon, 176
-Kyoto Protocol, 187
-Labor Department, U.S., and retirement
-plans, 129
-Lay, Kenneth, 125–26
-lemmings, 53–54
-Leslie, Phillip, 190n
-Lewin, Kurt, 70
-libertarian paternalism, 4–6; arguments
-against, see counterarguments; golden
-rule of, 72; of government, 13; in health
-care, 157–58; and marriage, 215; in politics, 13–14, 237; as Third Way, 252–53;
-why stop there? 248–51
-life expectancy, 104
-“lifestyle” funds, 124–25, 129
-Lincoln, Abraham, 235
-loans: direct-to-consumer, 140; federal,
-139; fixed-rate, 133; and foreclosures,
-136–37; “good-faith estimate” on, 136;
-home equity, 103; interest rates on, 135,
-137–38; microfinance, 135; predatory,
-134–38; private, 139–40; rent-seeking
-activities in, 140; research findings on,
-134; risky, 135; Stafford, 139; student,
-138–41; and Truth in Lending Act, 133,
-136, 137; variable-rate, 133, 138
-Loewenstein, George, 42, 123
-Lollapalooza festival, Chicago, 243–44
-London: bombing in World War II, 27–
-28, 28, 29; pedestrians in, 90
-Long, Bridget, 141
-loss aversion, 33–34, 112, 120–21
-INDEX 288
-
--- 299 of 304 --
-
-lotteries, 33
-low stakes, 74–75n
-Madrian, Brigitte, 109
-magazine subscriptions, and inertia, 35, 85
-Maine, “intelligent assignment” choice architecture in, 166, 172–73
-mandated choice, 86
-Manilow, Barry, 61
-mappings, 91–94, 131
-markets, 76–80; feedback in, 185; free,
-97–100; incentives in, 185, 188; invisible
-hand in, 239–40; trading systems in,
-Markowitz, Harry, 123
-marriage: anachronistic state control of,
-218–21, 222–23; and children, 219,
-221–23, 224, 225; choice architecture
-for, 223–26; civil union vs., 215–16,
-217, 220, 221–23; commitment in, 222–
-23, 224; cost/benefit analysis of, 223;
-covenant, 220; default rules for, 221–
-22, 223–26; discriminatory history of
-the institution of, 219; and divorce, 32,
-219–20, 224–26; as domestic partnership agreement, 215–16, 223; expectations for, 225–26; factors to be considered in, 226; goals and intentions in,
-224–25; legal aspects of, 216–18, 220,
-224–26, 237; mandatory waiting periods for, 250–51; as precommitment
-strategy, 219–20; prenuptial agreeements, 224; recognition by religious organizations, 215, 218–19, 220, 222, 223;
-same-sex, 215, 220; single state vs.,
-220–21; status quo bias in, 217; use of
-term, 215–16, 218; variations on a
-theme, 221
-McAllen, Texas, Medicare Part D in, 162–
-McFadden, Daniel, 171
-Medicaid, and Medicare Part D, 161, 164
-Medicare Advantage, 165, 170
-Medicare Part D, see prescription drug
-plan
-Medicare Web site, 162, 168–70, 173
-mental accounting, 49–52
-mere-measurement effect, 70
-Merrell, Katie, 169
-Métro, Le, Paris, 87
-Meulbroek, Lisa, 127
-microfinance loans, 135
-mistakes, learning from, 241
-MIT, Poverty Action Lab, 232
-money: borrowing, 103; as fungible, 50;
-liquid assets of households, 51; personal
-savings, 103; for retirement, see retirement plans; Save More Tomorrow, 112–
-money illusion, 112
-money market accounts, 118, 126, 129
-Montana, social influence in, 68
-mortgage brokers, 134n, 135, 138
-mortgages, 132–38; and the American
-dream, 135; annual percentage rate
-(APR), 133, 137; costs of, 93; fees, 133,
-137, 138; fixed-rate, 133; and foreclosures, 136–37; “good-faith estimate” in,
-136; interest-only, 133; online shopping
-for, 138; points, 133, 136; prepayment
-penalties, 133, 136; and RECAP, 137–38;
-research findings about, 134; in subprime market, 134–38; and teaser rates,
-133, 138; and Truth in Lending Act, 133,
-136, 137; variable-rate, 133, 138
-motorcycle helmets, 232–33
-music downloads, 62–63
-mutual funds, 119, 120, 122, 127
-MySpace, 182
-nail polish, no-bite, 234
-National Association of Chain Drug
-Stores, 172
-National Community Pharmacists Association, 172
-National Environmental Policy Act
-(1972), 189–90
-Nazism, 59
-negligence: defined, 213; right to sue for,
-207–14
-negotiations, opening offers in, 24
-Nelson, Willie, 60
-neutrality, 243, 246–48
-New Deal, 252
-INDEX 289
-
----
-
-## Sección 108: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 300 of 304 --
-
-No Child Left Behind Act, 85–86, 200–
-noodge, meaning of term, 4n
-Norman, Don, The Design of Everyday
-Things, 83
-nudge, use of term, 6, 8
-nudges, evaluation of, 247
-obesity, 7; and conformity, 64; and selfcontrol, 44; and social influence, 55
-Occupational Safety and Health Administration (OSHA), 189, 251
-One Size Fits All, 9
-optical illusions, 17–19
-optimism, 31–33
-“opt-in” policy, 86, 109, 110
-“opt-out” policy, 86, 109, 248–49, 251
-Oreopoulos, Phil, 141
-organ donations, 157–58, 175–82; “brain
-dead” sources of, 176; complexities in,
-179–80; default rule in, 176, 179; explicit consent in, 176–77, 178, 179; inertia in, 176; mandated choice, 180;
-market in, 175n; presumed consent,
-177–79, 180; rejection rate in, 179; routine removal, 177; social norms, 180–82
-overconfidence, 31–33
-ozone layer, 183
-painting a ceiling, 91
-paint store, 95–96
-Parker, Tom, Rules of Thumb, 22
-parking garages, 87–88
-paternalism: asymmetric, 72n, 249–51;
-and coercion, 11, 236–38; of government, 47; “one-mouse-click,” 249; One
-Size Fits All, 9; rejection of, 9; stopping
-point for, 251; use of term, 5
-pedestrians, 90
-peer pressure, 54, 55, 71
-Pension Protection Act (2006), 115–16
-pensions, see retirement plans
-pesticides, warnings about, 189
-Petrified Forest National Park, Arizona,
-66–67
-Planners, 42, 47
-planning fallacy, 7
-pluralistic ignorance, 59
-politics: brand switching in, 65; libertarian
-paternalism in, 13–14, 237; predictions
-in, 20n; private-sector interests in, 240;
-probability of voting, 70; Third Way in,
-252–53; voting patterns, 55, 246
-pollution, 183, 184–85, 186, 188
-popcorn, 43
-portfolio theory, 123
-postcompletion errors, 88
-practice, 74–75; and feedback, 75
-preferences, 75–76
-Prelec, Drazen, 143
-prescription drug plan, 157, 159–74; available alternative plans, 161; confusing
-choices in, 160, 162–65; coverage in,
-162; defects of, 160; design of, 160–62;
-“doughnut hole” in, 162; and drug
-prices, 168; dual eligibles in, 166, 167;
-enrollment routes, 164–65; failure to
-serve, 160; flexible switching option in,
-166, 167–68, 174; individuals with no
-coverage, 164, 165; intelligent assignment in, 171–73; key features of, 161;
-lessons to be learned from, 174; as
-Medicare Part D, 159–62; minimum
-coverage requirements for, 160; nonenrollment as default option, 160; and
-pharmacy networks, 260n16; poor
-choices made in, 170–71; price differences in, 170; random default, 160,
-165–68, 171–73; RECAP proposal for,
-173–74; restructuring of, 166; simplicity needed in, 174; Web site as tool for,
-162, 168–70
-Prestwood, Charlie, 125–26
-presumed consent, and organ removal,
-177–79, 180
-prices, and incentives, 97–100
-priming, 69–71
-procrastination, 238n
-publicity principle, 243–46
-public policy, and framing, 36–37
-random processes: neutrality in, 246; patterns in, 27; “streak shooting,” 30
-Rawls, John, 244
-INDEX 290
-
--- 301 of 304 --
-
-Read, Daniel, 123
-RECAP (Record, Evaluate, Compare Alternative Prices), 93–94; and credit
-cards, 143–44; and Medicare Part D,
-173–74; and mortgages, 137–38; and
-student loans, 141; and transparency,
-recycling, 66n
-redistribution, 241–43
-Reflective System, 19–22; and Planners,
-Regulation Z (Truth in Lending Act), 133,
-136, 137
-representativeness, 26–31
-required choice, 86–87
-restaurant health inspection, 190n
-retirement plans: automatic enrollment in,
-109, 130; automatic savings for, 108–9;
-choice architecture in, 129; choosing,
-76; complex choices in, 130; conflicts of
-interest in, 131; contribution rates, 110–
-11; default options in, 129–30; definedbenefit, 105, 108; defined-contribution,
-105–6, 107, 123, 128, 129; discretionary
-contributions to, 127; diversification
-rule of, 128; education about, 111–12;
-enrollment decisions, 107–8; ERISA,
-127–28, 131; errors expected in, 130; exclusive benefit rule of, 128; feedback in,
-131; forced choice in, 109–10; “free
-money” in, 108; and government, 115–
-17; incentives in, 131; investments for, see
-investments; and job switching, 105;
-mappings in, 131; matching contributions to, 108, 111, 127; and mindless
-choosing, 44; obstacles to saving for,
-112; portable, 106; postretirement income needed in, 106–7; prudence rule
-of, 128; “safe harbor status” for, 129;
-Save More Tomorrow, 112–17, 130, 245;
-saving for, 103–7; simplicity in, 110; status quo bias in, 34–35, 112; synchronized to pay raises, 113; tax-favored savings accounts, 103
-right to be wrong, 241
-risk assessment, 25–26, 118
-risk-related behavior, 7, 25, 32–33
-risk tolerance, 124–25
-Robur Aktiefond Contura, Sweden, 152–
-Rogers, Kenny, “The Gambler,” 121
-Romalis, John, 46–47
-Roosevelt, Franklin D., 199, 206, 252
-Roth, Al, 204
-rules of thumb, 22–31; anchoring, 23–24;
-availability, 24–26; in investments, 122–
-25; representativeness, 26–31; systematic biases in, 23
-Rules of Thumb (Parker), 22
-Rumsfeld, Donald, 86
-saccharine, warnings about, 189
-Saks, Michael, 176
-Salganik, Matthew, 62–63
-salience, 25, 98–99
-same-sex relationships, 215, 220
-Samuelson, William, 34
-San Marcos, California, energy use in,
-68–69
-San Marcos, Texas, schools, 205–6
-Santorum, Rick, 14
-Save More Tomorrow, 112–17, 245; and
-automatic enrollment, 130; contributions synchronized to pay raises, 113;
-government role in, 115–17; obstacles to
-saving, 112–15; and Pension Protection
-Act, 115–16
-scents, as cues, 71
-Schiphol Airport, Amsterdam, men’s
-rooms in, 4
-Sears, profit-sharing plan, 258n12
-Seattle Windshield Pitting Epidemic, 63–
-self-control: with credit cards, 143; and
-gambling, 233; market-driven, 48; and
-mindless choosing, 44; and Save More
-Tomorrow, 112; sinful goods, 73; strategies for, 44–49; and temptation, 42,
-44–49; two-system conception of, 42
-Sell More Tomorrow, 128
-Shaikh, Altaf, 135
-Shea, Dennis, 109
-Shepard, Roger, 19
-Sherif, Muzafer, 57–58
-INDEX 291
-
----
-
-## Sección 109: Part 1: if the underlying decision is difficult and unfamiliar, and if people do
-
--- 302 of 304 --
-
-Shu, Suzanne, 133
-Silverstein, Shel, “Smart,” 77–78
-similarity heuristic, 26
-Simister, Duncan, 143
-simplifying strategies, 95–96
-sinful goods, 73
-slippery-slope argument, 236–38, 251
-smoking: CARES, 232; intrusive paternalism vs., 236–37; quitting without a
-patch, 232; risks of, 189; and self-control, 44, 47; and social influence, 68
-Snow, Tony, 103, 107
-social influences, 53–71; as choice architecture, 65–69; conformity, 55–60;
-and cultural change, 62–65; in health
-care, 157; and information, 54, 71; in
-Jonestown, 53, 54; learning from others, 54; in peer pressure, 54, 71; power
-of, 55; priming, 69–71; spotlight effect,
-60–62; and unpredictability, 62–65
-“social norms” approach, 67–68, 180–82
-Social Security, 52, 103, 105, 116–17, 145–
-56, 251; and advertising, 153–56; default fund for, 146–49; lessons learned
-from the Swedish experience, 155–56;
-simplified choice process, 156; Swedish
-privatization of, 145–55; and timing,
-Souleles, Nick, 51
-Southern California Edison, 194
-Spain, organ donations in, 179
-spotlight effect, 60–62
-Stafford loans, 139
-status quo bias: and default option, 8, 12–
-13, 35, 83; in education, 201–2; as inertia, 7–8, 34–35; and lack of attention,
-35; and magazine subscriptions, 35, 85;
-in marriage, 217; in retirement savings,
-34–35, 112
-Stewart, Potter, 41
-Stickk.com, 47, 231–32
-Stigler, George, 208
-stimulus response compatibility, 82
-stocks and bonds, 118, 119–20; company
-stock, 125–28, 247; diversification of,
-123, 127, 128; and environmental blacklist, 191; market timing, 121–22; Sell
-More Tomorrow, 128
-strategic misrepresentation, 203–4
-Stroop test, 82
-student loans, 138–41; avoiding, 141; college savings accounts (529 plans), 141;
-expected family contribution in, 139;
-FAFSA for, 139, 141; as opportunity to
-fleece confused consumers, 141; from
-private sector, 139–40; RECAP applied
-to, 141
-subliminal advertising, 243–46
-subprime mortgages, 134–38
-sunlamps, 249–50
-supply and demand, 97
-Sweden, in world economy, 151
-Swedish Social Security, 145–55; active
-choosers in, 149–53; advertising, 154–
-55; asset allocation in, 149; availability
-bias in, 155; default fund of, 146–49,
-150, 152, 155–56; inertia in, 155; Just
-Maximize Choices in, 145–46, 155;
-lessons learned from, 155–56
-table test, 17–19
-“target maturity funds,” 129–30
-tax-favored savings accounts, 103
-Tax Return, Automatic, 230–31
-teenage pregnancy, 55, 234
-television, default option in, 35
-temptation, 40–52; and arousal, 42;
-cashew phenomenon, 40–41, 43; and
-“hot-cold empathy gap,” 42; and mental accounting, 49–52; and mindless
-choosing, 43–44; and packaging, 44;
-and self-control, 42, 44–49; sinful
-goods, 73; of Ulysses, 41–42, 48, 219–
-terror alert system, 91
-tetanus shots, 71
-Texas, anti-littering campaign in, 60, 61
-Thaler, Richard H., and Save More Tomorrow, 112–15
-thinking, in Reflective System, 19–20
-Third Way, 252–53
-Thompson, Clive, 193–94
-INDEX 292
-
--- 303 of 304 --
-
-TIAA-CREF, 34–35, 123
-Tierney, John, 232–33
-Toxic Release Inventory, 190–92
-tragedy of the commons, 185
-transparency, 240, 244–46
-Truth in Lending Act (Regulation Z), 133,
-136, 137
-Tversky, Amos, 23, 95
-Ulysses, resisting temptation, 41–42, 48,
-219–20
-unpredictability, 62–65
-user ratings, 96
-U.S. Treasury bills, 119–20
-Varian, Hal, 90
-Veterans Affairs, Department of, 160, 164
-Villarreal, E. Linda, 163
-Vitality Bucks, 233
-vouchers, school choice, 199–200, 203, 206
-Wansink, Brian, 43
-Watts, Duncan, 65
-weight loss, strategy for, 46–47
-Wilkins, Lauren, 137
-Woodward, Susan, 133–34, 138
-Worcester, Massachusetts, schools in,
-200–201
-workers’ compensation, 213
-work safety, 189, 251
-WorldCom, 126
-World War II, London bombed in, 27–28,
-28, 29
-Yale University, tetanus shots at, 71
-“yeah, whatever,” heuristic, 35, 83
-Yunus, Muhammad, 135
-Zeckhauser, Richard, 34
-Zhe Jin, Ginger, 190n
-Zipcar, 99n
-INDEX 293
-
--- 304 of 304 --
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #architecture_and_books

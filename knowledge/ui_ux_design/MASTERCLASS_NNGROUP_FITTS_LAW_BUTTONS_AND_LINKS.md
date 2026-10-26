@@ -1,10 +1,10 @@
-﻿**Alcance:** Masterclass de Nielsen Norman Group (NN/g): dimensionamiento de áreas clicables, botones de acción primaria y prevención de errores. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+**Alcance:** Masterclass de Nielsen Norman Group (NN/g): dimensionamiento de áreas clicables, botones de acción primaria y prevención de errores. .
 
 ---
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -19,24 +19,24 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Optimización de Interacciones Táctiles con la Ley de Fitts para Yendo Mobile
+# Informe Técnico: Optimización de Interacciones Táctiles con la Ley de Fitts para la Web Software Factory
 
 ## 1. Concepto Central y Tesis Arquitectónica
 
 El concepto central de este análisis se basa en la **Ley de Fitts**, un modelo predictivo en la interacción humano-computadora que cuantifica el tiempo necesario para moverse rápidamente hacia un área objetivo. Esta ley establece que el tiempo de movimiento (MT) es una función logarítmica de la distancia al objetivo (D) y el tamaño del objetivo (W). En esencia, objetivos más grandes y más cercanos se alcanzan y seleccionan más rápidamente.
 
-**Tesis Arquitectónica para Yendo Mobile:** La aplicación rigurosa de la Ley de Fitts es un pilar fundamental para la consecución de la "Fricción Cero" en la experiencia de usuario de Yendo Mobile. Al optimizar quirúrgicamente el tamaño y la ubicación de los elementos interactivos (botones, enlaces, áreas táctiles), garantizaremos una interacción fluida, eficiente y sin esfuerzo, que no solo acelera la navegación sino que también reduce la carga cognitiva y el error del usuario. Esta optimización es intrínseca al ADN de Yendo de "pisar internet" con una experiencia de clase mundial, donde cada milisegundo y cada píxel cuentan para una interacción impecable.
+**Tesis Arquitectónica para la Web Software Factory:** La aplicación rigurosa de la Ley de Fitts es un pilar fundamental para la consecución de la "Fricción Cero" en la experiencia de usuario de la Web Software Factory. Al optimizar quirúrgicamente el tamaño y la ubicación de los elementos interactivos (botones, enlaces, áreas táctiles), garantizaremos una interacción fluida, eficiente y sin esfuerzo, que no solo acelera la navegación sino que también reduce la carga cognitiva y el error del usuario. Esta optimización es intrínseca al ADN de WebFactory de "pisar internet" con una experiencia de clase mundial, donde cada milisegundo y cada píxel cuentan para una interacción impecable.
 
 ## 2. Hallazgos Técnicos Clave
 
 La masterclass de NN/g subraya la importancia de la Ley de Fitts para diseñar interfaces donde los objetivos son fáciles y rápidos de alcanzar.
 
-*   **Ergonomía de Interacción:** La Ley de Fitts es la base para una ergonomía táctil superior. Implica que los elementos interactivos críticos deben ser suficientemente grandes y estar ubicados en zonas de fácil acceso (ej. pulgar en dispositivos móviles) para minimizar el tiempo de movimiento y la tasa de error. Esto es crucial para Yendo, donde la interacción rápida en "Venues" o dentro de "Grupos" es esencial.
+*   **Ergonomía de Interacción:** La Ley de Fitts es la base para una ergonomía táctil superior. Implica que los elementos interactivos críticos deben ser suficientemente grandes y estar ubicados en zonas de fácil acceso (ej. pulgar en dispositivos móviles) para minimizar el tiempo de movimiento y la tasa de error. Esto es crucial para WebFactory, donde la interacción rápida en "Venues" o dentro de "Grupos" es esencial.
 *   **Física de Resortes (Spring Physics) y Retroalimentación:** Aunque no directamente abordado por la Ley de Fitts, la percepción de una interacción "rápida" y "sin fricción" se complementa con una retroalimentación visual y háptica responsiva. Una vez que un objetivo es alcanzado rápidamente (gracias a Fitts), la respuesta del sistema debe ser inmediata y animada (usando física de resortes para transiciones suaves y naturales) para confirmar la acción y mantener la sensación de fluidez. Esto refuerza la percepción de "Fricción Cero".
 *   **Modelos de Hilos (Thread Models) y Rendimiento:** La optimización de la interacción a través de la Ley de Fitts solo es efectiva si la aplicación es inherentemente responsiva. Un modelo de hilos bien gestionado en Web UI / Vanilla & Modern Frontend (ej. UI Thread vs. JavaScript Thread) asegura que, incluso con interacciones rápidas y complejas, la interfaz de usuario no se bloquee. Esto garantiza que el tiempo de movimiento optimizado por Fitts no se vea comprometido por latencias de procesamiento, manteniendo la promesa de "pisar internet".
 *   **Composición de Componentes y Tokens de Diseño:** La aplicación de la Ley de Fitts requiere un enfoque sistemático en el diseño de componentes. Los "tokens de diseño" (ej. `spacing.md`, `size.touchTarget`) deben encapsular las dimensiones mínimas y recomendadas para los objetivos táctiles, asegurando consistencia y cumplimiento de la Ley de Fitts en toda la aplicación. Esto se traduce en componentes reutilizables que ya incorporan estas mejores prácticas.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
 ### Web UI / Vanilla & Modern Frontend & Web Platform 57
 
@@ -49,7 +49,7 @@ La masterclass de NN/g subraya la importancia de la Ley de Fitts para diseñar i
 
 *   **Guías de Material 3 para Touch Targets:** Adherirse a las recomendaciones de Material 3 para tamaños de objetivos táctiles y espaciado, que ya incorporan principios de accesibilidad y usabilidad alineados con la Ley de Fitts.
 *   **Contraste y Perceptibilidad en OLED:** En el tema Dark OLED, asegurar que, además de ser grandes y accesibles, los objetivos táctiles tengan suficiente contraste y claridad visual para ser fácilmente *percibidos* antes de ser *alcanzados*. La Ley de Fitts asume que el objetivo es visible.
-*   **Tokens de Diseño Material 3:** Integrar los tokens de diseño de Material 3 para espaciado y tamaño en el sistema de diseño de Yendo, garantizando que los componentes sigan estas directrices por defecto.
+*   **Tokens de Diseño Material 3:** Integrar los tokens de diseño de Material 3 para espaciado y tamaño en el sistema de diseño de WebFactory, garantizando que los componentes sigan estas directrices por defecto.
 
 ### Fricción Cero & Ley de Fitts
 
@@ -83,7 +83,7 @@ La masterclass de NN/g subraya la importancia de la Ley de Fitts para diseñar i
 
 > "The movement time to a target depends on the size of the target and the distance to the target."
 
-Esta afirmación encapsula la esencia de la Ley de Fitts y debe ser un mantra en el diseño de interfaces de Yendo Mobile, guiando cada decisión sobre el tamaño y la ubicación de los elementos interactivos para asegurar una experiencia que verdaderamente "pise internet" con una "Fricción Cero" inigualable.
+Esta afirmación encapsula la esencia de la Ley de Fitts y debe ser un mantra en el diseño de interfaces de la Web Software Factory, guiando cada decisión sobre el tamaño y la ubicación de los elementos interactivos para asegurar una experiencia que verdaderamente "pise internet" con una "Fricción Cero" inigualable.
 
 ---
 

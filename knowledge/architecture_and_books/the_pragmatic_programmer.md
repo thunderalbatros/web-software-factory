@@ -1,4 +1,4 @@
-﻿---
+---
 titulo: "The Pragmatic Programmer: Your Journey to Mastery (20th Anniversary)"
 autor: "David Thomas & Andrew Hunt"
 dominio: "Artesanía de Software, DRY, Ortogonalidad y Pragmatismo"
@@ -8,25 +8,21 @@ secciones_totales: 137
 fecha_ingesta: "2026-10-06T02:43:38.316Z"
 ---
 
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
+
 # 📖 The Pragmatic Programmer: Your Journey to Mastery (20th Anniversary)
 **Autor:** David Thomas & Andrew Hunt | **Dominio:** Artesanía de Software, DRY, Ortogonalidad y Pragmatismo | **Páginas originales:** 497
 
-> **Nota de Arquitectura Centinela:** Este documento contiene el texto íntegro estructurado por secciones y capítulos para consulta profunda del equipo de agentes y búsqueda híbrida (BM25 + semántica).
+> **Nota de Arquitectura Web Software Factory:** Este documento contiene el texto íntegro estructurado por secciones y capítulos para consulta profunda del equipo de agentes y búsqueda híbrida (BM25 + semántica).
 
 ---
 
 ## [Sección 1] Introducción y Fundamentos
-
--- 1 of 497 --
-
 The Pragmatic
 Programmer
 YOUR JOURNEY TO MASTERY
 BY DAVE THOMAS, ANDY HUNT
 Version: P1.0 (September 13, 2019)
-
--- 2 of 497 --
-
 Many of the designations used by manufacturers
 and sellers to distinguish their products are
 claimed as trademarks. Where those designations
@@ -56,9 +52,6 @@ For government sales inquiries, please contact
 governmentsales@pearsoned.com. For questions
 about sales outside the U.S., please contact
 intlcs@pearson.com. Visit us on the Web:
-
--- 3 of 497 --
-
 informit.com/aw
 Library of Congress Control Number: 2019944178
 Copyright © 2020 Pearson Education, Inc.
@@ -77,15 +70,9 @@ Department, please visit
 www.pearsoned.com/permissions.
 ISBN-13: 978-0-13-595705-9
 ISBN-10: 0-13-595705-2
-
--- 4 of 497 --
-
 For Juliet and Ellie,
 Zachary and Elizabeth,
 Henry and Stuart
-
--- 5 of 497 --
-
 Table of Contents
 1. Foreword
 2. Preface to the Second Edition
@@ -104,9 +91,6 @@ Table of Contents
 2. Topic 2. The Cat Ate My Source Code
 3. Topic 3. Software Entropy
 4. Topic 4. Stone Soup and Boiled Frogs
-
--- 6 of 497 --
-
 5. Topic 5. Good-Enough Software
 6. Topic 6. Your Knowledge Portfolio
 7. Topic 7. Communicate!
@@ -130,9 +114,6 @@ Table of Contents
 7. 4. Pragmatic Paranoia
 1. Topic 23. Design by Contract
 2. Topic 24. Dead Programs Tell No Lies
-
--- 7 of 497 --
-
 3. Topic 25. Assertive Programming
 4. Topic 26. How to Balance Resources
 5. Topic 27. Don’t Outrun Your Headlights
@@ -160,9 +141,6 @@ Table of Contents
 ---
 
 ## [Sección 2] Introducción y Fundamentos
-
--- 8 of 497 --
-
 11. 8. Before the Project
 1. Topic 45. The Requirements Pit
 2. Topic 46. Solving Impossible Puzzles
@@ -178,9 +156,6 @@ Table of Contents
 14. A1. Bibliography
 15. A2. Possible Answers to the Exercises
 Copyright © 2020 Pearson Education, Inc.
-
--- 9 of 497 --
-
 Praise for the second edition of
 The Pragmatic Programmer
 Some say that with The Pragmatic Programmer, Andy and
@@ -199,9 +174,6 @@ professional, that will serve you and your projects well for
 years to come.
 — Andrea Goulet
 CEO, Corgibytes; Founder, LegacyCode.Rocks
-
--- 10 of 497 --
-
 The Pragmatic Programmer is the one book I can point to
 that completely dislodged the existing trajectory of my
 career in software and pointed me in the direction of
@@ -225,9 +197,6 @@ and a long time ago it changed everything about how I
 approached my job as a programmer. In the new edition
 everything and nothing has changed: I now read it on my
 iPad and the code examples use modern programming
-
--- 11 of 497 --
-
 languages—but the underlying concepts, ideas, and attitudes
 are timeless and universally applicable. Twenty years later,
 the book is as relevant as ever. It makes me happy to know
@@ -243,9 +212,6 @@ career. This new edition could do the same for yours.
 Author of Succeeding with Agile,
 Agile Estimating and Planning, and
 User Stories Applied
-
--- 12 of 497 --
-
 Foreword
 I remember when Dave and Andy first tweeted about the new
 edition of this book. It was big news. I watched as the coding
@@ -272,9 +238,6 @@ one actionable step at a time.
 ---
 
 ## [Sección 3] Introducción y Fundamentos
-
--- 13 of 497 --
-
 To be fair, they’d already done this before. The original release
 was full of tangible examples, new ideas, and practical tips to
 build your coding muscles and develop your coding brain that
@@ -304,9 +267,6 @@ message: “it’s your life.” It reminds us of our own power in our
 code base, in our jobs, in our careers. It sets the tone for
 everything else in the book—that it’s more than just another
 technical book filled with code examples.
-
--- 14 of 497 --
-
 What makes it truly stand out among the shelves of technical
 books is that it understands what it means to be a programmer.
 Programming is about trying to make the future less painful. It’s
@@ -336,9 +296,6 @@ long enough to know the culture, understand the pulse of the
 town, so you not only feel at home, but become a contributing
 member as well? Dave and Andy are those neighbors.
 As a relative newcomer, it’s easy to be overwhelmed not by the
-
--- 15 of 497 --
-
 act of programming but the process of becoming a programmer.
 There is an entire mindset shift that needs to happen—a change
 in habits, behaviors, and expectations. The process of becoming
@@ -361,9 +318,6 @@ Copyright © 2020 Pearson Education, Inc.
 ---
 
 ## [Sección 4] Introducción y Fundamentos
-
--- 16 of 497 --
-
 Preface to the Second Edition
 Back in the 1990s, we worked with companies whose projects
 were having problems. We found ourselves saying the same
@@ -385,9 +339,6 @@ common sense. Technology may have changed, but people
 haven’t. Practices and approaches that were a good idea then
 remain a good idea now. Those aspects of the book aged well.
 So when it came time to create this 20 Anniversary Edition,th
-
--- 17 of 497 --
-
 we had to make a decision. We could go through and update the
 technologies we reference and call it a day. Or we could
 reexamine the assumptions behind the practices we
@@ -416,13 +367,7 @@ Anyway, this book is the result. Please enjoy it. Maybe adopt
 some new practices. Maybe decide that some of the stuff we
 suggest is wrong. Get involved in your craft. Give us feedback.
 [1]
-
--- 18 of 497 --
-
 But, most important, remember to make it fun.
-
--- 19 of 497 --
-
 How the Book Is Organized
 This book is written as a collection of short topics. Each topic is
 self-contained, and addresses a particular theme. You’ll find
@@ -443,9 +388,6 @@ challenges might form the basis of group discussions or essay
 work in advanced programming courses.
 There’s also a short bibliography listing the books and articles
 we explicitly reference.
-
--- 20 of 497 --
-
 What’s in a Name?
 Scattered throughout the book you’ll find various bits of jargon
 —either perfectly good English words that have been corrupted
@@ -478,9 +420,6 @@ decline of the language by inventing our own terms.
 ---
 
 ## [Sección 5] Introducción y Fundamentos
-
--- 21 of 497 --
-
 Source Code and Other Resources
 Most of the code shown in this book is extracted from
 compilable source files, available for download from our
@@ -489,15 +428,9 @@ There you’ll also find links to resources we find useful, along
 with updates to the book and news of other Pragmatic
 Programmer developments.
 [2]
-
--- 22 of 497 --
-
 Send Us Feedback
 We’d appreciate hearing from you. Email us at
 ppbook@pragprog.com.
-
--- 23 of 497 --
-
 Second Edition Acknowledgments
 We have enjoyed literally thousands of interesting
 conversations about programming over the last 20 years,
@@ -521,18 +454,12 @@ And, finally, a shout out to all the Pragmatic Programmers out
 there who have been making programming better for everyone
 for the last twenty years. Here’s to twenty more.
 Footnotes
-
--- 24 of 497 --
-
 Copyright © 2020 Pearson Education, Inc.
 [1]
 [2]
 If, over the years, every component of a ship is replaced as it fails, is the resulting vessel
 the same ship?
 https://pragprog.com/titles/tpp20
-
--- 25 of 497 --
-
 From the Preface to the First
 Edition
 This book will help you become a better programmer.
@@ -554,9 +481,6 @@ a mere machine can do them justice. You try to document your
 work so that others can understand it, and you try to engineer
 your work so that others can build on it. What’s more, you try to
 do all this against the relentless ticking of the project clock. You
-
--- 26 of 497 --
-
 work small miracles every day.
 It’s a difficult job.
 There are many people offering you help. Tool vendors tout the
@@ -585,9 +509,6 @@ well.
 ---
 
 ## [Sección 6] Introducción y Fundamentos
-
--- 27 of 497 --
-
 Who Should Read This Book?
 This book is aimed at people who want to become more effective
 and more productive programmers. Perhaps you feel frustrated
@@ -602,9 +523,6 @@ that if you follow our approach, you’ll gain experience rapidly,
 your productivity will increase, and you’ll have a better
 understanding of the entire development process. And you’ll
 write better software.
-
--- 28 of 497 --
-
 What Makes a Pragmatic Programmer?
 Each developer is unique, with individual strengths and
 weaknesses, preferences and dislikes. Over time, each will craft
@@ -632,9 +550,6 @@ problems, you smell a challenge.
 Realistic
 You try to understand the underlying nature of each
 problem you face. This realism gives you a good feel for
-
--- 29 of 497 --
-
 how difficult things are, and how long things will take.
 Deeply understanding that a process should be difficult
 or will take a while to complete gives you the stamina to
@@ -660,9 +575,6 @@ critiquing your work in real time. The old IBM corporate motto,
 THINK!, is the Pragmatic Programmer’s mantra.
 If this sounds like hard work to you, then you’re exhibiting the
 realistic characteristic. This is going to take up some of your
-
--- 30 of 497 --
-
 valuable time—time that is probably already under tremendous
 pressure. The reward is a more active involvement with a job
 you love, a feeling of mastery over an increasing range of
@@ -670,9 +582,6 @@ subjects, and pleasure in a feeling of continuous improvement.
 Over the long term, your time investment will be repaid as you
 and your team become more efficient, write code that’s easier to
 maintain, and spend less time in meetings.
-
--- 31 of 497 --
-
 Individual Pragmatists, Large Teams
 Some people feel that there is no room for individuality on large
 teams or complex projects. “Software is an engineering
@@ -702,9 +611,6 @@ civil engineers, while our craftsmanship will still be honored.
 ---
 
 ## [Sección 7] Introducción y Fundamentos
-
--- 32 of 497 --
-
 It’s a Continuous Process
 A tourist visiting England’s Eton College asked the gardener
 how he got the lawns so perfect. “That’s easy,” he replied, “You
@@ -726,9 +632,6 @@ the Eton lawns, you’ll start seeing results in a matter of days.
 Over the years, you’ll be amazed at how your experience has
 blossomed and how your skills have grown.
 Copyright © 2020 Pearson Education, Inc.
-
--- 33 of 497 --
-
 ---
 
 ## [Sección 8] Chapter 1
@@ -753,9 +656,6 @@ Pragmatic Programmers won’t sit idly by and watch their
 projects fall apart through neglect. In Topic 3, Software
 Entropy, we tell you how to keep your projects pristine.
 Most people find change difficult, sometimes for good reasons,
-
--- 34 of 497 --
-
 sometimes because of plain old inertia. In Topic 4, Stone Soup
 and Boiled Frogs, we look at a strategy for instigating change
 and (in the interests of balance) present the cautionary tale of
@@ -774,9 +674,6 @@ amount of time interacting with others. Topic 7, Communicate!
 lists ways we can do this better.
 Pragmatic programming stems from a philosophy of pragmatic
 thinking. This chapter sets the basis for that philosophy.
-
--- 35 of 497 --
-
 I’m not in this world to
 live up to your
 expectations and
@@ -807,9 +704,6 @@ hunker down, and hope things will get better. They look on,
 passively, as their skills become dated and complain that their
 companies don’t train them. They look at ads for exotic
 locations on the bus, then step off into the chilling rain and
-
--- 36 of 497 --
-
 trudge into work.
 So here’s the most important tip in the book.
 Tip 3 You Have Agency
@@ -832,9 +726,6 @@ Topic 6, Your Knowledge Portfolio
 ---
 
 ## [Sección 9] Chapter 1
-
--- 37 of 497 --
-
 The greatest of all
 weaknesses is the fear
 of appearing weak.
@@ -867,9 +758,6 @@ collaboration according to the research literature. In a healthy
 environment based in trust, you can safely speak your mind,
 present your ideas, and rely on your team members who can in
 [4]
-
--- 38 of 497 --
-
 turn rely on you. Without trust, well…
 Imagine a high-tech, stealth ninja team infiltrating the villain’s
 evil lair. After months of planning and delicate execution, you’ve
@@ -897,9 +785,6 @@ language, management, or your coworkers. Any and all of these
 may play a role, but it is up to you to provide solutions, not
 excuses.
 If there was a risk that the vendor wouldn’t come through for
-
--- 39 of 497 --
-
 you, then you should have had a contingency plan. If your mass
 storage melts—taking all of your source code with it—and you
 don’t have a backup, it’s your fault. Telling your boss “the cat ate
@@ -930,9 +815,6 @@ Perhaps you need additional resources to complete this task. Or
 ---
 
 ## [Sección 10] Chapter 1
-
--- 40 of 497 --
-
 maybe you need to spend more time with the users? Or maybe
 it’s just you: do you need to learn some technique or technology
 in greater depth? Would a book or a course help? Don’t be
@@ -949,9 +831,6 @@ you think of them and their company as a result?
 When you find yourself saying, “I don’t know,” be sure to follow it
 up with “—but I’ll find out.” It’s a great way to admit what you don’t
 know, but then take responsibility like a pro.
-
--- 41 of 497 --
-
 Topic 3 Software Entropy
 While software development is immune from almost all physical
 laws, the inexorable increase in entropy hits us hard. Entropy is
@@ -976,9 +855,6 @@ manage to come out pretty well.
 What makes the difference?
 In inner cities, some buildings are beautiful and clean, while
 others are rotting hulks. Why? Researchers in the field of crime
-
--- 42 of 497 --
-
 and urban decay discovered a fascinating trigger mechanism,
 one that very quickly turns a clean, intact, inhabited building
 into a smashed and abandoned derelict.
@@ -1007,9 +883,6 @@ Take some action to prevent further damage and to show that
 you’re on top of the situation.
 [5]
 [6]
-
--- 43 of 497 --
-
 We’ve seen clean, functional systems deteriorate pretty quickly
 once windows start breaking. There are other factors that can
 contribute to software rot, and we’ll touch on some of them
@@ -1042,9 +915,6 @@ management decision that the team must live with for the
 ---
 
 ## [Sección 11] Chapter 1
-
--- 44 of 497 --
-
 duration of the project—is all it takes to start the decline. If you
 find yourself working on a project with quite a few broken
 windows, it’s all too easy to slip into the mindset of “All the rest
@@ -1072,9 +942,6 @@ to fix them.
 Can you tell when a window first gets broken? What is your
 reaction? If it was the result of someone else’s decision, or a
 management edict, what can you do about it?
-
--- 45 of 497 --
-
 Topic 4 Stone Soup and Boiled Frogs
 The three soldiers returning home from war were hungry.
 When they saw the village ahead their spirits lifted—they were
@@ -1098,9 +965,6 @@ a different villager would run off to raid their personal stores.
 Eventually they had produced a large pot of steaming soup.
 The soldiers removed the stones, and they sat down with the
 entire village to enjoy the first square meal any of them had
-
--- 46 of 497 --
-
 eaten in months.
 There are a couple of morals in the stone soup story. The
 villagers are tricked by the soldiers, who use the villagers’
@@ -1132,9 +996,6 @@ On the other hand, the stone soup story is also about gentle and
 ---
 
 ## [Sección 12] Chapter 1
-
--- 47 of 497 --
-
 gradual deception. It’s about focusing too tightly. The villagers
 think about the stones and forget about the rest of the world.
 We all fall for it, every day. Things just creep up on us.
@@ -1161,9 +1022,6 @@ Constantly review what’s happening around you, not just what
 you personally are doing.
 RELATED SECTIONS INCLUDE
 Topic 1, It’s Your Life
-
--- 48 of 497 --
-
 Topic 38, Programming by Coincidence
 CHALLENGES
 While reviewing a draft of the first edition, John Lakos raised the
@@ -1179,9 +1037,6 @@ This is an exercise in situational awareness, a technique practiced
 by folks ranging from Boy and Girl Scouts to Navy SEALs. Get in
 the habit of really looking and noticing your surroundings. Then do
 the same for your project.
-
--- 49 of 497 --
-
 Striving to better, oft
 we mar what’s well.
 Shakespeare, King Lear 1.4
@@ -1210,9 +1065,6 @@ may well find that your programs are actually better for their
 shorter incubation.
 Before we go any further, we need to qualify what we’re about to
 say. The phrase “good enough’’ does not imply sloppy or poorly
-
--- 50 of 497 --
-
 produced code. All systems must meet their users’ requirements
 to be successful, and meet basic performance, privacy, and
 security standards. We are simply advocating that users be
@@ -1244,9 +1096,6 @@ Often you’ll be in situations where trade-offs are involved.
 ---
 
 ## [Sección 13] Chapter 1
-
--- 51 of 497 --
-
 Surprisingly, many users would rather use software with some
 rough edges today than wait a year for the shiny, bells-andwhistles version (and in fact what they will need a year from
 now may be completely different anyway). Many IT
@@ -1273,9 +1122,6 @@ never be perfect. (In Chapter 7, While You Are Coding, we’ll
 discuss philosophies for developing code in an imperfect world.)
 RELATED SECTIONS INCLUDE
 Topic 45, The Requirements Pit
-
--- 52 of 497 --
-
 Topic 46, Solving Impossible Puzzles
 CHALLENGES
 Look at the software tools and operating systems that you use
@@ -1295,9 +1141,6 @@ use, each feature introducing more opportunity for bugs and
 security vulnerabilities, and making the features you do use harder
 to find and manage. Are you in danger of falling into this trap
 yourself?
-
--- 53 of 497 --
-
 An investment in
 knowledge always
 pays the best interest.
@@ -1326,9 +1169,6 @@ asset. But how do you learn how to learn, and how do you know
 what to learn?
 YOUR KNOWLEDGE PORTFOLIO
 [9]
-
--- 54 of 497 --
-
 We like to think of all the facts programmers know about
 computing, the application domains they work in, and all their
 experience as their knowledge portfolios. Managing a
@@ -1360,9 +1200,6 @@ The more different things you know, the more valuable
 ---
 
 ## [Sección 14] Chapter 1
-
--- 55 of 497 --
-
 you are. As a baseline, you need to know the ins and outs
 of the particular technology you are working with
 currently. But don’t stop there. The face of computing
@@ -1392,9 +1229,6 @@ This is a very dynamic industry. That hot technology you
 started investigating last month might be stone cold by
 now. Maybe you need to brush up on that database
 technology that you haven’t used in a while. Or perhaps
-
--- 56 of 497 --
-
 you could be better positioned for that new job opening if
 you tried out that other language….
 Of all these guidelines, the most important one is the simplest
@@ -1422,9 +1256,6 @@ currently using, branch out and study some that don’t
 relate to your project.
 Read nontechnical books, too
 [10]
-
--- 57 of 497 --
-
 It is important to remember that computers are used by
 people—people whose needs you are trying to satisfy. You
 work with people, are employed by people, and get
@@ -1453,9 +1284,6 @@ particular jargon they use, and so on.
 It’s important to continue investing. Once you feel comfortable
 with some new language or bit of technology, move on. Learn
 another one.
-
--- 58 of 497 --
-
 It doesn’t matter whether you ever use any of these technologies
 on a project, or even whether you put them on your resume. The
 process of learning will expand your thinking, opening you to
@@ -1488,9 +1316,6 @@ catch up on your reading—but be sure to bring your own e-
 ---
 
 ## [Sección 15] Chapter 1
-
--- 59 of 497 --
-
 reader with you, or you might find yourself thumbing through a
 dog-eared 1973 article about Papua New Guinea.
 CRITICAL THINKING
@@ -1517,9 +1342,6 @@ Ask a question, and get an answer. Dig deeper by asking
 “why?” Repeat as if you were a petulant four-year old
 (but a polite one). You might be able to get closer to a
 root cause this way.
-
--- 60 of 497 --
-
 Who does this benefit?
 It may sound cynical, but follow the money can be a very
 helpful path to analyze. The benefits to someone else or
@@ -1546,9 +1368,6 @@ understand the complex answers.
 RELATED SECTIONS INCLUDE
 Topic 1, It’s Your Life
 Topic 22, Engineering Daybooks
-
--- 61 of 497 --
-
 CHALLENGES
 Start learning a new language this week. Always programmed in the
 same old language? Try Clojure, Elixir, Elm, F#, Go, Haskell,
@@ -1563,9 +1382,6 @@ current project, or who don’t work for the same company. Network
 in your company cafeteria, or maybe seek out fellow enthusiasts at
 a local meetup.
 [11]
-
--- 62 of 497 --
-
 I believe that it is
 better to be looked over
 than it is to be
@@ -1601,9 +1417,6 @@ the next chapter.)
 ---
 
 ## [Sección 16] Chapter 1
-
--- 63 of 497 --
-
 Tip 11 English is Just Another Programming Language
 We’ve put together a list of additional ideas that we find useful.
 KNOW YOUR AUDIENCE
@@ -1634,9 +1447,6 @@ Linguistic Programming presuppositions is “The meaning of
 your communication is the response you get.” Continuously
 improve your knowledge of your audience as you communicate.
 [12]
-
--- 64 of 497 --
-
 KNOW WHAT YOU WANT TO SAY
 Probably the most difficult part of the more formal styles of
 communication used in business is working out exactly what it
@@ -1662,9 +1472,6 @@ a memory upgrade for your laptop.
 As part of understanding what your audience needs to hear, you
 need to work out what their priorities are. Catch a manager
 who’s just been given a hard time by her boss because some
-
--- 65 of 497 --
-
 source code got lost, and you’ll have a more receptive listener to
 your ideas on source code repositories. Make what you’re saying
 relevant in time, as well as in content. Sometimes all it takes is
@@ -1696,9 +1503,6 @@ regardless of whether you’re writing using Markdown or using a
 ---
 
 ## [Sección 17] Chapter 1
-
--- 66 of 497 --
-
 word processor. You need to learn just a few basic commands. If
 you’re using a word processor, use its style sheets for
 consistency. (Your company may already have defined style
@@ -1727,9 +1531,6 @@ knows, you might even learn something.
 GET BACK TO PEOPLE
 If you ask someone a question, you feel they’re impolite if they
 don’t respond. But how often do you fail to get back to people
-
--- 67 of 497 --
-
 when they send you an email or a memo asking for information
 or requesting some action? In the rush of everyday life, it’s easy
 to forget. Always respond to emails and voicemails, even if the
@@ -1755,9 +1556,6 @@ documentation as well as to code.
 Tip 13 Build Documentation In, Don’t Bolt It On
 It’s easy to produce good-looking documentation from the
 comments in source code, and we recommend adding
-
--- 68 of 497 --
-
 comments to modules and exported functions to give other
 developers a leg up when they come to use it.
 However, this doesn’t mean we agree with the folks who say that
@@ -1784,9 +1582,6 @@ Involve your audience.
 Be a listener.
 Get back to people.
 Keep code and documentation together.
-
--- 69 of 497 --
-
 RELATED SECTIONS INCLUDE
 Topic 15, Estimating
 Topic 18, Power Editing
@@ -1821,9 +1616,6 @@ CHALLENGES
 ---
 
 ## [Sección 18] Chapter 1
-
--- 70 of 497 --
-
 There are several good books that contain sections on
 communications within teams, including The Mythical ManMonth: Essays on Software Engineering [Bro96] and Peopleware:
 Productive Projects and Teams [DL13]. Make it a point to try to
@@ -1862,14 +1654,8 @@ Never heard of any of these languages? Remember, knowledge is an expiring asset,
 so is popular technology. The list of hot new and experimental languages was very
 different for the first edition, and is probably different again by the time you read this.
 All the more reason to keep learning.
-
--- 71 of 497 --
-
 Copyright © 2020 Pearson Education, Inc.
 [12] The word annoy comes from the Old French enui, which also means “to bore.’’
-
--- 72 of 497 --
-
 ---
 
 ## [Sección 19] Chapter 2
@@ -1894,9 +1680,6 @@ As the pace of change increases, it becomes harder and harder
 to keep our applications relevant. In Topic 11, Reversibility,
 we’ll look at some techniques that help insulate your projects
 from their changing environment.
-
--- 73 of 497 --
-
 The next two sections are also related. In Topic 12, Tracer
 Bullets, we talk about a style of development that allows you to
 gather requirements, test designs, and implement code at the
@@ -1918,9 +1701,6 @@ will take, which we cover in Topic 15, Estimating.
 Keep these fundamental principles in mind during
 development, and you’ll write code that’s better, faster, and
 stronger. You can even make it look easy.
-
--- 74 of 497 --
-
 Topic 8 The Essence of Good Design
 The world is full of gurus and pundits, all eager to pass on their
 hard-earned wisdom when it comes to How to Design Software.
@@ -1942,9 +1722,6 @@ make each easier to change. ETC.
 Why is the single responsibility principle useful? Because a
 change in requirements is mirrored by a change in just one
 module. ETC.
-
--- 75 of 497 --
-
 Why is naming important? Because good names make code
 easier to read, and you have to read it to change it. ETC!
 ETC IS A VALUE, NOT A RULE
@@ -1976,9 +1753,6 @@ and cohesive.
 ---
 
 ## [Sección 20] Chapter 2
-
--- 76 of 497 --
-
 Second, treat this as a way to develop instincts. Note the
 situation in your engineering day book: the choices you have,
 and some guesses about change. Leave a tag in the source.
@@ -2004,17 +1778,11 @@ negatives when it comes to helping you write ETC code? Do any
 have both?
 When coding, what can you do to eliminate the negatives and
 accentuate the positives?[13]
-
--- 77 of 497 --
-
 Many editors have support (either built-in or via extensions) to run
 commands when you save a file. Get your editor to popup an ETC?
 message every time you save and use it as a cue to think about
 the code you just wrote. Is it easy to change?
 [14]
-
--- 78 of 497 --
-
 Topic 9 DRY—The Evils of Duplication
 Giving a computer two contradictory pieces of knowledge was
 Captain James T. Kirk’s preferred way of disabling a marauding
@@ -2040,9 +1808,6 @@ and existing requirements evolve as we’re heads-down on the
 project. Perhaps the environment changes. Whatever the
 reason, maintenance is not a discrete activity, but a routine part
 of the entire development process.
-
--- 79 of 497 --
-
 When we perform maintenance, we have to find and change the
 representations of things—those capsules of knowledge
 embedded in the application. The problem is that it’s easy to
@@ -2072,9 +1837,6 @@ In this section we’ll outline the problems of duplication and
 ---
 
 ## [Sección 21] Chapter 2
-
--- 80 of 497 --
-
 suggest general strategies for dealing with it.
 DRY IS MORE THAN CODE
 Let’s get something out of the way up-front. In the first edition
@@ -2102,9 +1864,6 @@ if account.fees < 0
 printf "Fees: %10.2f-\n", -account.fees
 else
 printf "Fees: %10.2f\n", account.fees
-
--- 81 of 497 --
-
 end
 printf " ———-\n"
 if account.balance < 0
@@ -2138,9 +1897,6 @@ printf "Balance: %s\n", format_amount(account.balance)
 end
 Another duplication is the repetition of the field width in all the
 printf calls. We could fix this by introducing a constant and
-
--- 82 of 497 --
-
 passing it to each call, but why not just use the existing
 function?
 def format_amount(value)
@@ -2175,9 +1931,6 @@ end
 def report_line(label, amount)
 print_line(label + ":", format_amount(amount))
 end
-
--- 83 of 497 --
-
 def print_balance(account)
 report_line("Debits", account.debits)
 report_line("Credits", account.credits)
@@ -2212,9 +1965,6 @@ claiming it’s a DRY violation: both function bodies are the same.
 ---
 
 ## [Sección 22] Chapter 2
-
--- 84 of 497 --
-
 They are wrong. The code is the same, but the knowledge they
 represent is different. The two functions validate two separate
 things that just happen to have the same rules. That’s a
@@ -2248,9 +1998,6 @@ and again in the code. The customer changes a fee, and we have
 to update both. Given time, we can pretty much guarantee the
 comment and the code will get out of step.
 Ask yourself what the comment adds to the code. From our
-
--- 85 of 497 --
-
 point of view, it simply compensates for some bad naming and
 layout. How about just this:
 def calculate_account_fees(account)
@@ -2282,9 +2029,6 @@ double length() { return start.distanceTo(end); }
 Later on in the development process, you may choose to violate
 the DRY principle for performance reasons. Frequently this
 occurs when you need to cache data to avoid repeating
-
--- 86 of 497 --
-
 expensive operations. The trick is to localize the impact. The
 violation is not exposed to the outside world: only the methods
 within the class have to worry about keeping things straight:
@@ -2316,9 +2060,6 @@ functionality in the future.
 This use of accessor functions ties in with Meyer’s Uniform
 Access principle, described in Object-Oriented Software
 Construction [Mey97], which states that
-
--- 87 of 497 --
-
 All services offered by a module should be available through a
 uniform notation, which does not betray whether they are
 implemented through storage or through computation.
@@ -2352,9 +2093,6 @@ If you can’t find such a specification, consider creating one and
 ---
 
 ## [Sección 23] Chapter 2
-
--- 88 of 497 --
-
 publishing it. Not only will others find it useful; you may even
 get help maintaining it.
 Duplication with Data Sources
@@ -2384,9 +2122,6 @@ maintenance problems. We heard firsthand of a U.S. state
 whose governmental computer systems were surveyed for Y2K
 compliance. The audit turned up more than 10,000 programs
 that each contained a different version of Social Security
-
--- 89 of 497 --
-
 Number validation code.
 At a high level, deal with the problem by building a strong,
 tight-knit team with good communications.
@@ -2412,9 +2147,6 @@ Tip 16 Make It Easy to Reuse
 What you’re trying to do is foster an environment where it’s
 easier to find and reuse existing stuff than to write it yourself. If
 it isn’t easy, people won’t do it. And if you fail to reuse, you risk
-
--- 90 of 497 --
-
 duplicating knowledge.
 RELATED SECTIONS INCLUDE
 Topic 8, The Essence of Good Design
@@ -2422,9 +2154,6 @@ Topic 28, Decoupling
 Topic 32, Configuration
 Topic 38, Programming by Coincidence
 Topic 40, Refactoring
-
--- 91 of 497 --
-
 images/orthogonality.png
 Topic 10 Orthogonality
 Orthogonality is a critical concept if you want to produce
@@ -2454,9 +2183,6 @@ interface.
 ---
 
 ## [Sección 24] Chapter 2
-
--- 92 of 497 --
-
 Before we look at the benefits of orthogonal systems, let’s first
 look at a system that isn’t orthogonal.
 A Nonorthogonal System
@@ -2486,9 +2212,6 @@ juggling an unbelievably complex system, where every change
 impacts all the other inputs. Your workload is phenomenal:
 your hands and feet are constantly moving, trying to balance all
 the interacting forces.
-
--- 93 of 497 --
-
 Helicopter controls are decidedly not orthogonal.
 BENEFITS OF ORTHOGONALITY
 As the helicopter example illustrates, nonorthogonal systems
@@ -2516,9 +2239,6 @@ need to keep changing existing code as you add new code.
 An orthogonal approach also promotes reuse. If components have
 specific, well-defined responsibilities, they can be combined with
 new components in ways that were not envisioned by their original
-
--- 94 of 497 --
-
 implementors. The more loosely coupled your systems, the easier
 they are to reconfigure and reengineer.
 There is a fairly subtle gain in productivity when you combine
@@ -2552,9 +2272,6 @@ systems, although they may use words such as modular,
 ---
 
 ## [Sección 25] Chapter 2
-
--- 95 of 497 --
-
 component-based, and layered to describe the process. Systems
 should be composed of a set of cooperating modules, each of
 which implements functionality independent of the others.
@@ -2574,9 +2291,6 @@ modules are affected? In an orthogonal system, the answer
 should be “one.’’ Moving a button on a GUI panel should not
 require a change in the database schema. Adding contextsensitive help should not change the billing subsystem.
 [16]
-
--- 96 of 497 --
-
 Let’s consider a complex system for monitoring and controlling
 a heating plant. The original requirement called for a graphical
 user interface, but the requirements were changed to add a
@@ -2606,9 +2320,6 @@ persistence scheme is transparent, then it’s orthogonal. If it
 requires you to create or access objects in a special way, then it’s
 not. Keeping such details isolated from your code has the added
 benefit of making it easier to change vendors in the future.
-
--- 97 of 497 --
-
 The Enterprise Java Beans (EJB) system is an interesting
 example of orthogonality. In most transaction-oriented systems,
 the application code has to delineate the start and end of each
@@ -2642,9 +2353,6 @@ other code’s implementation and increases the chances
 ---
 
 ## [Sección 26] Chapter 2
-
--- 98 of 497 --
-
 that you’ll remain orthogonal.
 Avoid global data
 Every time your code references global data, it ties itself
@@ -2674,9 +2382,6 @@ code is a symptom of structural problems. Have a look at
 the Strategy pattern in Design Patterns for a better
 implementation.
 Get into the habit of being constantly critical of your code. Look
-
--- 99 of 497 --
-
 for any opportunities to reorganize it to improve its structure
 and orthogonality. This process is called refactoring, and it’s so
 important that we’ve dedicated a section to it (see Topic 40,
@@ -2706,9 +2411,6 @@ will after reading Topic 19, Version Control), tag bug fixes when
 you check the code back in after testing. You can then run
 monthly reports analyzing trends in the number of source files
 affected by each bug fix.
-
--- 100 of 497 --
-
 DOCUMENTATION
 Perhaps surprisingly, orthogonality also applies to
 documentation. The axes are content and presentation. With
@@ -2741,9 +2443,6 @@ Topic 8, The Essence of Good Design
 ---
 
 ## [Sección 27] Chapter 2
-
--- 101 of 497 --
-
 Topic 11, Reversibility
 Topic 28, Decoupling
 Topic 31, Inheritance Tax
@@ -2772,9 +2471,6 @@ class Split1 {
 constructor(fileName) # opens the file for reading
 def readNextLine() # moves to the next line
 def getField(n) # returns nth field in current line
-
--- 102 of 497 --
-
 }
 or
 class Split2 {
@@ -2785,9 +2481,6 @@ Exercise 2 (possible answer)
 What are the differences in orthogonality between objectoriented and functional languages? Are these differences
 inherent in the languages themselves, or just in the way people
 use them?
-
--- 103 of 497 --
-
 Nothing is more
 dangerous than an
 idea if it’s the only one
@@ -2819,9 +2512,6 @@ forcibly opened as the future unfolds:
 “But you said we’d use database XYZ! We are 85% done coding
 the project, we can’t change now!” the programmer protested.
 “Sorry, but our company decided to standardize on database
-
--- 104 of 497 --
-
 PDQ instead—for all projects. It’s out of my hands. We’ll just
 have to recode. All of you will be working weekends until further
 notice.”
@@ -2855,9 +2545,6 @@ competitor. Requirements, users, and hardware change faster
 ---
 
 ## [Sección 28] Chapter 2
-
--- 105 of 497 --
-
 than we can get the software developed.
 Suppose you decide, early in the project, to use a relational
 database from vendor A. Much later, during performance
@@ -2884,9 +2571,6 @@ FLEXIBLE ARCHITECTURE
 While many people try to keep their code flexible, you also need
 to think about maintaining flexibility in the areas of
 architecture, deployment, and vendor integration.
-
--- 106 of 497 --
-
 We’re writing this in 2019. Since the turn of the century we’ve
 seen the following “best practice” server-side architectures:
 Big hunk of iron
@@ -2911,9 +2595,6 @@ monolithic application and splitting it. (We have the scars to
 prove it.)
 And, although this isn’t particularly a reversibility issue, one
 final piece of advice.
-
--- 107 of 497 --
-
 Tip 19 Forgo Following Fads
 No one knows what the future may hold, especially not us! So
 enable your code to rock-n-roll: to “rock on’’ when it can, to roll
@@ -2943,9 +2624,6 @@ the future. How many possible futures can your code support?
 Which ones are more likely? How hard will it be to support them
 when the time comes?
 Dare you open the box?
-
--- 108 of 497 --
-
 Ready, fire, aim…
 Anon
 Topic 12 Tracer Bullets
@@ -2976,9 +2654,6 @@ building something that hasn’t been built before. We use the
 ---
 
 ## [Sección 29] Chapter 2
-
--- 109 of 497 --
-
 term tracer bullet development to visually illustrate the need for
 immediate feedback under actual conditions with a moving
 goal.
@@ -3006,9 +2681,6 @@ cheap solution.
 To get the same effect in code, we look for something that gets
 us from a requirement to some aspect of the final system
 quickly, visibly, and repeatably.
-
--- 110 of 497 --
-
 Look for the important requirements, the ones that define the
 system. Look for the areas where you have doubts, and where
 you see the biggest risks. Then prioritize your development so
@@ -3028,9 +2700,6 @@ them together. The diagonal line shows the path that feature
 takes through the code. To make it work, we just have to
 implement the solidly shaded areas in each layer: the stuff with
 the squiggles will be done later.
-
--- 111 of 497 --
-
 images/layer-diagram-tracer.png
 We once undertook a complex client-server database marketing
 project. Part of its requirement was the ability to specify and
@@ -3047,9 +2716,6 @@ the framework for the front end, libraries for representing the
 queries, and a structure for converting a stored query into a
 database-specific query. Then we put it all together and checked
 that it worked. For that initial build, all we could do was submit
-
--- 112 of 497 --
-
 a query that listed all the rows in a table, but it proved that the
 UI could talk to the libraries, the libraries could serialize and
 unserialize a query, and the server could generate SQL from the
@@ -3080,9 +2746,6 @@ doing (see Topic 52, Delight Your Users), your users will
 ---
 
 ## [Sección 30] Chapter 2
-
--- 113 of 497 --
-
 know they are seeing something immature. They won’t be
 disappointed by a lack of functionality; they’ll be ecstatic
 to see some visible progress toward their system. They
@@ -3112,9 +2775,6 @@ code, you’ll always have something to show them.
 You have a better feel for progress
 In a tracer code development, developers tackle use cases
 one by one. When one is done, they move to the next. It is
-
--- 114 of 497 --
-
 far easier to measure performance and to demonstrate
 progress to your user. Because each individual
 development is smaller, you avoid creating those
@@ -3144,9 +2804,6 @@ You might think that this tracer code concept is nothing more
 than prototyping under an aggressive name. There is a
 difference. With a prototype, you’re aiming to explore specific
 aspects of the final system. With a true prototype, you will
-
--- 115 of 497 --
-
 throw away whatever you lashed together when trying out the
 concept, and recode it properly using the lessons you’ve learned.
 For example, say you’re producing an application that helps
@@ -3181,9 +2838,6 @@ Over time, you add to this framework with new functionality,
 ---
 
 ## [Sección 31] Chapter 2
-
--- 116 of 497 --
-
 completing stubbed routines. But the framework stays intact,
 and you know the system will continue to behave the way it did
 when your first tracer code was completed.
@@ -3200,9 +2854,6 @@ Topic 49, Pragmatic Teams
 Topic 50, Coconuts Don’t Cut It
 Topic 51, Pragmatic Starter Kit
 Topic 52, Delight Your Users
-
--- 117 of 497 --
-
 Topic 13 Prototypes and Post-it Notes
 Many industries use prototypes to try out specific ideas;
 prototyping is much cheaper than full-scale production. Car
@@ -3228,9 +2879,6 @@ dynamic things such as workflow and application logic. A user
 interface can be prototyped as a drawing on a whiteboard, as a
 nonfunctional mock-up drawn with a paint program, or with an
 interface builder.
-
--- 118 of 497 --
-
 Prototypes are designed to answer just a few questions, so they
 are much cheaper and faster to develop than applications that
 go into production. The code can ignore unimportant details—
@@ -3257,9 +2905,6 @@ Structure or contents of external data
 Third-party tools or components
 Performance issues
 User interface design
-
--- 119 of 497 --
-
 Prototyping is a learning experience. Its value lies not in the
 code produced, but in the lessons learned. That’s really the
 point of prototyping.
@@ -3289,9 +2934,6 @@ them using a high-level scripting language—higher than the rest
 ---
 
 ## [Sección 32] Chapter 2
-
--- 120 of 497 --
-
 of the project (maybe a language such as Python or Ruby), as
 these languages can get out of your way. You may choose to
 continue to develop in the language used for the prototype, or
@@ -3318,9 +2960,6 @@ appropriate?
 Are the collaborations between major components well defined?
 Is coupling minimized?
 Can you identify potential sources of duplication?
-
--- 121 of 497 --
-
 Are interface definitions and constraints acceptable?
 Does every module have an access path to the data it needs during
 execution? Does it have that access when it needs it?
@@ -3348,9 +2987,6 @@ Properly used prototypes can save you huge amounts of time,
 money, and pain by identifying and correcting potential
 problem spots early in the development cycle—the time when
 fixing mistakes is both cheap and easy.
-
--- 122 of 497 --
-
 RELATED SECTIONS INCLUDE
 Topic 12, Tracer Bullets
 Topic 14, Domain Languages
@@ -3368,9 +3004,6 @@ decide on a model for the image—maybe it’s a car, or a phone,
 or a house. You have a list of target pages and content; they’d
 like to see a few prototypes. Oh, by the way, you have 15
 minutes. What tools might you use?
-
--- 123 of 497 --
-
 The limits of language
 are the limits of one’s
 world.
@@ -3403,9 +3036,6 @@ Let’s look at a few examples where folks have done just that.
 ---
 
 ## [Sección 33] Chapter 2
-
--- 124 of 497 --
-
 RSpec
 RSpec is a testing library for Ruby. It inspired versions for
 most other modern languages. A test in RSpec is intended to
@@ -3439,9 +3069,6 @@ following aside considers why that might be).
 Why Don't Many Business Users Read Cucumber Features?
 [19]
 [20]
-
--- 125 of 497 --
-
 One of the reasons that the classic gather requirements, design, code, ship approach
 doesn’t work is that it is anchored by the concept that we know what the requirements
 are. But we rarely do. Your business users will have a vague idea of what they want to
@@ -3476,9 +3103,6 @@ YAML, a language that builds data structures from text
 [21]
 [22]
 [23]
-
--- 126 of 497 --
-
 descriptions:
 ---
 - name: install nginx
@@ -3510,9 +3134,6 @@ converted into some form the code can use.
 ---
 
 ## [Sección 34] Chapter 2
-
--- 127 of 497 --
-
 We call RSpec and the router examples of internal domain
 languages, while Cucumber and Ansible use external languages.
 TRADE-OFFS BETWEEN INTERNAL AND EXTERNAL
@@ -3543,9 +3164,6 @@ forced to compromise between the language you want and the
 language you can implement.
 Ultimately, whatever you come up with must still be valid
 syntax in your target language. Languages with macros (such as
-
--- 128 of 497 --
-
 Elixir, Clojure, and Crystal) gives you a little more flexibility,
 but ultimately syntax is syntax.
 External languages have no such restrictions. As long as you can
@@ -3574,9 +3192,6 @@ describe BowlingScore do
 it "totals 12 if you score 3 four times" do
 score = BowlingScore.new
 4.times { score.add_pins(3) }
-
--- 129 of 497 --
-
 expect(score.total).to eq(12)
 end
 end
@@ -3603,9 +3218,6 @@ We want to implement a mini-language to control a simple
 turtle-graphics system. The language consists of single-letter
 commands, some followed by a single number. For example, the
 following input would draw a rectangle:
-
--- 130 of 497 --
-
 P 2 # select pen 2
 D # pen down
 W 2 # draw west 2cm
@@ -3636,14 +3248,8 @@ Exercise 8 (possible answer)
 ---
 
 ## [Sección 35] Chapter 2
-
--- 131 of 497 --
-
 Implement the time parser using a scripting language and
 regular expressions.
-
--- 132 of 497 --
-
 Topic 15 Estimating
 The Library of Congress in Washington, DC, currently has about
 75 terabytes of digital information online. Quick! How long will
@@ -3668,9 +3274,6 @@ Tip 23 Estimate to Avoid Surprises
 As a bonus, at the end of this section we’ll reveal the single
 correct answer to give whenever anyone asks you for an
 estimate.
-
--- 133 of 497 --
-
 HOW ACCURATE IS ACCURATE ENOUGH?
 To some extent, all answers are estimates. It’s just that some are
 more accurate than others. So the first question you have to ask
@@ -3693,9 +3296,6 @@ Duration Quote estimate in
 20+ weeks Think hard before giving an estimate
 So, if after doing all the necessary work, you decide that a
 project will take 125 working days (25 weeks), you might want
-
--- 134 of 497 --
-
 to deliver an estimate of “about six months.”
 The same concepts apply to estimates of any quantity: choose
 the units of your answer to reflect the accuracy you intend to
@@ -3729,9 +3329,6 @@ project, the model may be the steps that your organization uses
 ---
 
 ## [Sección 36] Chapter 2
-
--- 135 of 497 --
-
 during development, along with a very rough picture of how the
 system might be implemented.
 Model building can be both creative and useful in the long term.
@@ -3760,9 +3357,6 @@ simply identify each parameter.
 Give Each Parameter a Value
 Once you have the parameters broken out, you can go through
 and assign each one a value. You expect to introduce some
-
--- 136 of 497 --
-
 errors in this step. The trick is to work out which parameters
 have the most impact on the result, and concentrate on getting
 them about right. Typically, parameters whose values are added
@@ -3793,9 +3387,6 @@ second with 16GB memory.” (Notice how “three quarters of a
 second” conveys a different feeling of accuracy than 750ms.)
 During the calculation phase, you get answers that seem
 strange. Don’t be too quick to dismiss them. If your arithmetic
-
--- 137 of 497 --
-
 is correct, your understanding of the problem or your model is
 probably wrong. This is valuable information.
 Keep Track of Your Estimating Prowess
@@ -3826,9 +3417,6 @@ That’s how people estimate in the real world. Not with a single
 ---
 
 ## [Sección 37] Chapter 2
-
--- 138 of 497 --
-
 number (unless you force them to give you one) but with a
 range of scenarios.
 When the U.S. Navy needed to plan the Polaris submarine
@@ -3855,9 +3443,6 @@ needn’t be a paradox if you practice incremental development,
 repeating the following steps with very thin slices of
 functionality:
 Check requirements
-
--- 139 of 497 --
-
 Analyze risk (and prioritize riskiest items earlier)
 Design, implement, integrate
 Validate with the users
@@ -3884,9 +3469,6 @@ productivity, and the environment will determine the schedule.
 By formalizing this, and refining the schedule as part of each
 iteration, you’ll be giving them the most accurate scheduling
 estimates you can.
-
--- 140 of 497 --
-
 WHAT TO SAY WHEN ASKED FOR AN ESTIMATE
 You say “I’ll get back to you.”
 You almost always get better results if you slow the process
@@ -3910,9 +3492,6 @@ response is correct? (For example, you might say that the time
 taken to access the storage device is ignored.)
 Exercise 10 (possible answer)
 So, which has the higher bandwidth?
-
--- 141 of 497 --
-
 Copyright © 2020 Pearson Education, Inc.
 [13]
 [14]
@@ -3947,9 +3526,6 @@ https://yaml.org/
 ---
 
 ## [Sección 38] Chapter 2
-
--- 142 of 497 --
-
 ---
 
 ## [Sección 39] Chapter 3
@@ -3976,9 +3552,6 @@ dovetail jigs—all wonderful pieces of technology. But you can
 bet that they’ll be happiest with one of those original tools in
 hand, feeling the plane sing as it slides through the wood.
 Tools amplify your talent. The better your tools, and the better
-
--- 143 of 497 --
-
 you know how to use them, the more productive you can be.
 Start with a basic set of generally applicable tools. As you gain
 experience, and as you come across special requirements, you’ll
@@ -4009,9 +3582,6 @@ should always use a Topic 19, Version Control system—even for
 personal things such as recipes or notes. And, since Murphy was
 really an optimist after all, you can’t be a great programmer
 until you become highly skilled at Topic 20, Debugging.
-
--- 144 of 497 --
-
 You’ll need some glue to bind much of the magic together. We
 discuss some possibilities in Topic 21, Text Manipulation.
 Finally, the palest ink is still better than the best memory. Keep
@@ -4021,9 +3591,6 @@ Spend time learning to use these tools, and at some point you’ll
 be surprised to discover your fingers moving over the keyboard,
 manipulating text without conscious thought. The tools will
 have become extensions of your hands.
-
--- 145 of 497 --
-
 Topic 16 The Power of Plain Text
 As Pragmatic Programmers, our base material isn’t wood or
 iron, it’s knowledge. We gather requirements as knowledge, and
@@ -4053,9 +3620,6 @@ word processor).
 ---
 
 ## [Sección 40] Chapter 3
-
--- 146 of 497 --
-
 The information part is important. The following is not useful
 plain text:
 hlj;uijn bfjxrrctvh jkni'pio6p7gu;vh bjxrdi5rgvhj
@@ -4079,9 +3643,6 @@ them. Period. As long as the data survives, you will have a
 chance to be able to use it—potentially long after the original
 application that wrote it is defunct.
 You can parse such a file with only partial knowledge of its
-
--- 147 of 497 --
-
 format; with most binary files, you must know all the details of
 the entire format in order to parse it successfully.
 Consider a data file from some legacy system that you are given.
@@ -4111,9 +3672,6 @@ like
 <SOCIAL-SECURITY-NO>123-45-6789</SOCIAL-SECURITY-NO>
 makes the exercise a no-brainer—and ensures that the data will
 [24]
-
--- 148 of 497 --
-
 outlive any project that created it.
 Leverage
 Virtually every tool in the computing universe, from version
@@ -4148,9 +3706,6 @@ test data without having to create any special tools to do so.
 ---
 
 ## [Sección 41] Chapter 3
-
--- 149 of 497 --
-
 Similarly, plain-text output from regression tests can be trivially
 analyzed with shell commands or a simple script.
 LOWEST COMMON DENOMINATOR
@@ -4176,13 +3731,7 @@ For each version, add a new, variable-length field called
 directions in which you might enter directions to each
 person’s house.
 What issues come up regarding versioning and extensibility? Which
-
--- 150 of 497 --
-
 form was easier to modify? What about converting existing data?
-
--- 151 of 497 --
-
 Topic 17 Shell Games
 Every woodworker needs a good, solid, reliable workbench,
 somewhere to hold work pieces at a convenient height while
@@ -4208,9 +3757,6 @@ building and deploying your project are all things that you
 might want to do in a graphical environment. But if you do all
 your work using GUIs, you are missing out on the full
 capabilities of your environment. You won’t be able to automate
-
--- 152 of 497 --
-
 common tasks, or use the full power of the tools available to
 you. And you won’t be able to combine your tools to create
 customized macro tools. A benefit of GUIs is WYSIWYG—
@@ -4243,9 +3789,6 @@ command shell on the systems you use, this might appear
 ---
 
 ## [Sección 42] Chapter 3
-
--- 153 of 497 --
-
 daunting. However, invest some energy in becoming familiar
 with your shell and things will soon start falling into place. Play
 around with your command shell, and you’ll be surprised at how
@@ -4276,9 +3819,6 @@ alias rm ='rm -iv'
 Command completion. Most shells will complete the names of
 commands and files: type the first few characters, hit tab, and it’ll
 fill in what it can. But you can take this a lot further, configuring the
-
--- 154 of 497 --
-
 shell to recognize the command you’re entering and offer contextspecific completions. Some even customize the completion
 depending on the current directory.
 You’ll spend a lot of time living in one of these shells. Be like a
@@ -4300,9 +3840,6 @@ with you.
 Investigate alternatives to your current shell. If you come across a
 problem your shell can’t address, see if an alternative shell would
 cope better.
-
--- 155 of 497 --
-
 Topic 18 Power Editing
 We’ve talked before about tools being an extension of your
 hand. Well, this applies to editors more than to any other
@@ -4327,9 +3864,6 @@ thoughts will flow, and your programming will benefit. (If
 you’ve ever taught someone to drive, then you’ll understand the
 difference between someone who has to think about every
 action they take and a more experienced driver who controls the
-
--- 156 of 497 --
-
 ---
 
 ## [Sección 43] Chapter 3
@@ -4358,9 +3892,6 @@ Can you do all this without using a mouse/trackpad?
 You might say that your current editor can’t do some of these
 things. Maybe it’s time to switch?
 MOVING TOWARD FLUENCY
-
--- 157 of 497 --
-
 We doubt there are more than a handful of people who know all
 the commands in any particular powerful editor. We don’t
 expect you to, either. Instead, we suggest a more pragmatic
@@ -4388,9 +3919,6 @@ Take this a step further. Dig into your editor’s extension
 language. Work out how to use it to automate some of the
 repetitive things you do. Often you’ll just need a line or two of
 code.
-
--- 158 of 497 --
-
 Sometimes you might take it further still, and you’ll find
 yourself writing a full-blown extension. If so, publish it: if you
 had a need for it, other people will, too.
@@ -4426,13 +3954,7 @@ local file-based Wiki plugins for his favorite editors. If you can’t
 ---
 
 ## [Sección 44] Chapter 3
-
--- 159 of 497 --
-
 find it, build it!
-
--- 160 of 497 --
-
 Progress, far from
 consisting in change,
 depends on
@@ -4467,9 +3989,6 @@ deployment pipelines, issue tracking, and general team
 interaction.
 So let’s take a look at VCS, first as a repository of changes, and
 then as a central meeting place for your team and their code.
-
--- 161 of 497 --
-
 Shared Directories Are NOT Version Control
 We still come across the occasional team who share their project source files across a
 network: either internally or using some kind of cloud storage.
@@ -4499,9 +4018,6 @@ bug-tracking, audit, performance, and quality purposes.
 A VCS will also let you identify releases of your software. Once
 identified, you will always be able to go back and regenerate the
 release, independent of changes that may have occurred later.
-
--- 162 of 497 --
-
 Version control systems may keep the files they maintain in a
 central repository—a great candidate for archiving.
 Finally, version control systems allow two or more users to be
@@ -4534,9 +4050,6 @@ made in your branch. Multiple people can even be working on a
 ---
 
 ## [Sección 45] Chapter 3
-
--- 163 of 497 --
-
 branch: in a way, branches are like little clone projects.
 One benefit of branches is the isolation they give you. If you
 develop feature A in one branch, and a teammate works on
@@ -4565,9 +4078,6 @@ was stored in version control, including:
 All the user preferences and dotfiles
 The editor configuration
 The list of software installed using Homebrew
-
--- 164 of 497 --
-
 The Ansible script used to configure apps
 All current projects
 The machine was restored by the end of the afternoon.
@@ -4593,9 +4103,6 @@ you may need to automate it)
 Automated builds and tests
 Good support for branch merging (sometimes called pull requests)
 Issue management (ideally integrated into commits and merges, so
-
--- 165 of 497 --
-
 you can keep metrics)
 Good reporting (a Kanban board-like display of pending issues and
 tasks can be very useful)
@@ -4626,9 +4133,6 @@ can be saved?
 ---
 
 ## [Sección 46] Chapter 3
-
--- 166 of 497 --
-
 An interesting experiment, once you’ve made some progress, is to
 find an old computer you no longer use and see if your new system
 can be used to set it up.
@@ -4641,9 +4145,6 @@ too: wikis, Kanban boards, and the like.
 You don’t have to use any of it. But you do need to know what it
 does so you can make that decision.
 Use version control for nonproject things, too.
-
--- 167 of 497 --
-
 It is a painful thing
 To look at your own
 trouble and know
@@ -4676,9 +4177,6 @@ will take up a major portion of your day. Let’s look at some of
 the issues involved in debugging and some general strategies for
 finding elusive bugs.
 PSYCHOLOGY OF DEBUGGING
-
--- 168 of 497 --
-
 Debugging is a sensitive, emotional subject for many
 developers. Instead of attacking it as a puzzle to be solved, you
 may encounter denial, finger pointing, lame excuses, or just
@@ -4704,9 +4202,6 @@ It’s easy to get into a panic, especially if you are facing a
 deadline, or have a nervous boss or client breathing down your
 neck while you are trying to find the cause of the bug. But it is
 very important to step back a pace, and actually think about
-
--- 169 of 497 --
-
 what could be causing the symptoms that you believe indicate a
 bug.
 If your first reaction on witnessing a bug or seeing a bug report
@@ -4738,9 +4233,6 @@ who reported the bug in action to get a sufficient level of detail.
 ---
 
 ## [Sección 47] Chapter 3
-
--- 170 of 497 --
-
 Andy once worked on a large graphics application. Nearing
 release, the testers reported that the application crashed every
 time they painted a stroke with a particular brush. The
@@ -4769,9 +4261,6 @@ Reproducing Bugs
 No, our bugs aren’t really multiplying (although some of them
 are probably old enough to do it legally). We’re talking about a
 different kind of reproduction.
-
--- 171 of 497 --
-
 The best way to start fixing a bug is to make it reproducible.
 After all, if you can’t reproduce it, how will you know if it is ever
 fixed?
@@ -4795,9 +4284,6 @@ developers see an exception pop up in red and immediately tab
 across to the code.
 Tip 32 Read the Damn Error Message
 ’nuf said.
-
--- 172 of 497 --
-
 Bad Results
 What if it’s not a crash? What if it’s just a bad result?
 Get in there with a debugger and use your failing test to trigger
@@ -4825,9 +4311,6 @@ Sensitivity to Input Values
 You’ve been there. Your program works fine with all the test
 data, and survives its first week in production with honor. Then
 it suddenly crashes when fed a particular dataset.
-
--- 173 of 497 --
-
 ---
 
 ## [Sección 48] Chapter 3
@@ -4861,9 +4344,6 @@ have a result. (As we’ll see when we talk about Big-O Notation,
 a linear search is , and a binary chop is ).
 So, the binary chop is way, way faster on any decent sized
 problem. Let’s see how to apply it to debugging.
-
--- 174 of 497 --
-
 When you’re facing a massive stacktrace and you’re trying to
 find out exactly which function mangled the value in error, you
 do a chop by choosing a stack frame somewhere in the middle
@@ -4892,9 +4372,6 @@ Sometimes you need more—you need to watch the state of a
 program or a data structure over time. Seeing a stack trace can
 only tell you how you got here directly. It typically can’t tell you
 what you were doing prior to this call chain, especially in eventbased systems.[25]
-
--- 175 of 497 --
-
 Tracing statements are those little diagnostic messages you
 print to the screen or to a file that say things such as “got here”
 and “value of x = 2.” It’s a primitive technique compared with
@@ -4929,9 +4406,6 @@ granted when going through the code yourself. By having to
 ---
 
 ## [Sección 49] Chapter 3
-
--- 176 of 497 --
-
 verbalize some of these assumptions, you may suddenly gain
 new insight into the problem. And if you don’t have a person, a
 rubber duck, or teddy bear, or potted plant will do.
@@ -4961,9 +4435,6 @@ minutes. We now use the phrase “select is broken’’ as a gentle
 reminder whenever one of us starts blaming the system for a
 fault that is likely to be our own.
 [27]
-
--- 177 of 497 --
-
 Tip 33 “select” Isn’t Broken
 Remember, if you see hoof prints, think horses—not zebras. The
 OS is probably not broken. And select is probably just fine.
@@ -4992,9 +4463,6 @@ Of course it can. The amount of surprise you feel when
 something goes wrong is proportional to the amount of trust
 and faith you have in the code being run. That’s why, when
 faced with a “surprising’’ failure, you must accept that one or
-
--- 178 of 497 --
-
 more of your assumptions is wrong. Don’t gloss over a routine
 or piece of code involved in the bug because you “know” it
 works. Prove it. Prove it in this context, with this data, with
@@ -5024,9 +4492,6 @@ misunderstands, then it’s possible many people do.
 ---
 
 ## [Sección 50] Chapter 3
-
--- 179 of 497 --
-
 Do all this, and hopefully you won’t be surprised next time.
 DEBUGGING CHECKLIST
 Is the problem being reported a direct result of the underlying bug,
@@ -5044,9 +4509,6 @@ RELATED SECTIONS INCLUDE
 Topic 24, Dead Programs Tell No Lies
 CHALLENGES
 Debugging is challenge enough.
-
--- 180 of 497 --
-
 Topic 21 Text Manipulation
 Pragmatic Programmers manipulate text the same way
 woodworkers shape wood. In previous sections we discussed
@@ -5073,9 +4535,6 @@ structured tool may prefer languages such as Python or Ruby.
 These languages are important enabling technologies. Using
 them, you can quickly hack up utilities and prototype ideas—
 [28]
-
--- 181 of 497 --
-
 jobs that might take five or ten times as long using conventional
 languages. And that multiplying factor is crucially important to
 the kind of experimenting that we do. Spending 30 minutes
@@ -5104,9 +4563,6 @@ this book has been. However, using the DRY principle
 (see Topic 9, DRY—The Evils of Duplication) we didn’t
 want to copy and paste lines of code from the tested
 programs into the book. That would mean we’d be
-
--- 182 of 497 --
-
 duplicating code, virtually guaranteeing that we’d forget
 to update an example when the corresponding program
 was changed. For some examples, we also didn’t want to
@@ -5138,9 +4594,6 @@ RELATED SECTIONS INCLUDE
 ---
 
 ## [Sección 51] Chapter 3
-
--- 183 of 497 --
-
 Topic 16, The Power of Plain Text
 Topic 17, Shell Games
 EXERCISES
@@ -5161,9 +4614,6 @@ Following on from the previous exercise, add the ability to
 change those variable names automatically in one or more files.
 Remember to keep a backup of the originals in case something
 goes horribly, horribly wrong.
-
--- 184 of 497 --
-
 Topic 22 Engineering Daybooks
 Dave once worked for a small computer manufacturer, which
 meant working alongside electronic and sometimes mechanical
@@ -5189,9 +4639,6 @@ The daybook has three main benefits:
 It is more reliable than memory. People might ask “What was the
 name of that company you called last week about the power supply
 [29]
-
--- 185 of 497 --
-
 problem?” and you can flip back a page or so and give them the
 name and number.
 It gives you a place to store ideas that aren’t immediately relevant
@@ -5220,9 +4667,6 @@ Topic 37, Listen to Your Lizard Brain
 Footnotes
 All software becomes legacy software as soon as it’s written.
 Although the Elm language does have a time-traveling debugger.
-
--- 186 of 497 --
-
 Copyright © 2020 Pearson Education, Inc.
 [26]
 [27]
@@ -5243,9 +4687,6 @@ example, see What does doodling do? [And10].
 ---
 
 ## [Sección 52] Chapter 3
-
--- 187 of 497 --
-
 ---
 
 ## [Sección 53] Chapter 4
@@ -5269,9 +4710,6 @@ standards. So we drive defensively. We look out for trouble
 before it happens, anticipate the unexpected, and never put
 ourselves into a position from which we can’t extricate
 ourselves.
-
--- 188 of 497 --
-
 The analogy with coding is pretty obvious. We are constantly
 interfacing with other people’s code—code that might not live
 up to our high standards—and dealing with inputs that may or
@@ -5300,17 +4738,11 @@ In Topic 26, How to Balance Resources, we’ll suggest ways of
 ensuring that you don’t drop any of the balls.
 And most importantly, we stick to small steps always, as
 described in Topic 27, Don’t Outrun Your Headlights, so we
-
--- 189 of 497 --
-
 don’t fall off the edge of the cliff.
 In a world of imperfect systems, ridiculous time scales,
 laughable tools, and impossible requirements, let’s play it safe.
 As Woody Allen said, “When everybody actually is out to get
 you, paranoia is just good thinking.”
-
--- 190 of 497 --
-
 Nothing astonishes
 men so much as
 common sense and
@@ -5341,9 +4773,6 @@ It’s an idea used the world over—both formally and informally—
 to help humans interact. Can we use the same concept to help
 software modules interact? The answer is “yes.’’
 DBC
-
--- 191 of 497 --
-
 Bertrand Meyer (Object-Oriented Software
 Construction [Mey97]) developed the concept of Design by
 Contract for the language Eiffel. It is a simple yet powerful
@@ -5378,9 +4807,6 @@ perspective of a caller. During internal processing of a
 ---
 
 ## [Sección 54] Chapter 4
-
--- 192 of 497 --
-
 routine, the invariant may not hold, but by the time the
 routine exits and control returns to the caller, the
 invariant must be true. (Note that a class cannot give
@@ -5410,9 +4836,6 @@ deposit using simple pre- and post-conditions:
 "Accept a deposit and return the new transaction id"
 ;; Some other processing goes here...
 ;; Return the newly created transaction:
-
--- 193 of 497 --
-
 (create-transaction account-id :deposit amount))
 There are two preconditions for the accept-deposit function. The
 first is that the amount is greater than zero, and the second is
@@ -5442,9 +4865,6 @@ def accept_deposit(account_id, amount) when (amount > 100000) do
 # Call the manager!
 end
 def accept_deposit(account_id, amount) when (amount > 10000) do
-
--- 194 of 497 --
-
 # Extra Federal requirements for reporting
 # Some processing...
 end
@@ -5475,9 +4895,6 @@ Is Design by Contract needed in a world where developers practice unit testing, 
 ---
 
 ## [Sección 55] Chapter 4
-
--- 195 of 497 --
-
 The short answer is “yes.”
 DBC and testing are different approaches to the broader topic of program correctness.
 They both have value and both have uses in different situations. DBC offers several
@@ -5509,9 +4926,6 @@ Simply enumerating what the input domain range is, what the
 boundary conditions are, and what the routine promises to
 deliver—or, more importantly, what it doesn’t promise to deliver
 —before you write the code is a huge leap forward in writing
-
--- 196 of 497 --
-
 better software. By not stating these things, you are back to
 programming by coincidence (see the discussion here), which
 is where many projects start, finish, and fail.
@@ -5538,9 +4952,6 @@ basic problem is that the contract is not automatically enforced.
 In other environments, the exceptions generated from DBCstyle assertions might be turned off globally or ignored in the
 code.
 Also, there is no built-in concept of “old’’ values; that is, values
-
--- 197 of 497 --
-
 as they existed at the entry to a method. If you’re using
 assertions to enforce contracts, you must add code to the
 precondition to save any information you’ll want to use in the
@@ -5577,9 +4988,6 @@ DBC fits in nicely with our concept of crashing early (see Topic
 ---
 
 ## [Sección 56] Chapter 4
-
--- 198 of 497 --
-
 mechanism to validate the preconditions, postconditions, and
 invariants, you can crash early and report more accurate
 information about the problem.
@@ -5606,9 +5014,6 @@ error should be on the side of not processing a transaction
 rather than processing a duplicate transaction.
 This simple law, driven directly from the requirements, proved
 to be very helpful in sorting out complex error recovery
-
--- 199 of 497 --
-
 scenarios, and guided the detailed design and implementation
 in many areas.
 Be sure not to confuse requirements that are fixed, inviolate
@@ -5636,9 +5041,6 @@ agents are free to reject requests that they do not want to honor.
 They are free to renegotiate the contract—“I can’t provide that,
 but if you give me this, then I might provide something else.”
 Certainly any system that relies on agent technology has a
-
--- 200 of 497 --
-
 critical dependence on contractual arrangements—even if they
 are dynamically generated.
 Imagine: with enough components and agents that can
@@ -5662,9 +5064,6 @@ think about issues you’d rather ignore for now? Does it force you to
 THINK!? Clearly, this is a dangerous tool!
 EXERCISES
 Exercise 14 (possible answer)
-
--- 201 of 497 --
-
 Design an interface to a kitchen blender. It will eventually be a
 web-based, IoT-enabled blender, but for now we just need the
 interface to control it. It has ten speed settings (0 means off).
@@ -5684,9 +5083,6 @@ How many numbers are in the series 0, 5, 10, 15, …, 100?
 ---
 
 ## [Sección 57] Chapter 4
-
--- 202 of 497 --
-
 Topic 24 Dead Programs Tell No Lies
 Have you noticed that sometimes other people can detect that
 things aren’t well with you before you’re aware of the problem
@@ -5713,9 +5109,6 @@ that the data is what we think it is, that the code in production is
 the code we think it is. We’re checking that the correct versions
 of dependencies were actually loaded.
 All errors give you information. You could convince yourself
-
--- 203 of 497 --
-
 that the error can’t happen, and choose to ignore it. Instead,
 Pragmatic Programmers tell themselves that if there is an error,
 something very, very bad has happened. Don’t forget to Read
@@ -5746,9 +5139,6 @@ have to list every exception the add_score_to_board method could
 raise. If the writer of that method adds another exception, our
 code is subtly out of date. In the more pragmatic second
 version, the new exception is automatically propagated.
-
--- 204 of 497 --
-
 Tip 38 Crash Early
 CRASH, DON’T TRASH
 One of the benefits of detecting problems as soon as you can is
@@ -5781,9 +5171,6 @@ does from this point forward becomes suspect, so terminate it
 ---
 
 ## [Sección 58] Chapter 4
-
--- 205 of 497 --
-
 as soon as possible.
 A dead program normally does a lot less damage than a crippled
 one.
@@ -5793,9 +5180,6 @@ Topic 23, Design by Contract
 Topic 25, Assertive Programming
 Topic 26, How to Balance Resources
 Topic 43, Stay Safe Out There
-
--- 206 of 497 --
-
 There is a luxury in
 self-reproach. When
 we blame ourselves we
@@ -5826,9 +5210,6 @@ some form of assert that checks a Boolean condition. These
 checks can be invaluable. If a parameter or a result should never
 be null, then check for it explicitly:
 [31]
-
--- 207 of 497 --
-
 assert (result != null);
 In the Java implementation, you can (and should) add a
 descriptive string:
@@ -5856,9 +5237,6 @@ It’s embarrassing when the code we add to detect errors actually
 ends up creating new errors. This can happen with assertions if
 evaluating the condition has side effects. For example, it would
 be a bad idea to code something such as
-
--- 208 of 497 --
-
 while (iter.hasMoreElements()) {
 assert(iter.nextElement() != null);
 Object obj = iter.nextElement();
@@ -5889,9 +5267,6 @@ code run faster. Assertions are a debugging facility.
 There are two patently wrong assumptions here. First, they
 assume that testing finds all the bugs. In reality, for any
 [32]
-
--- 209 of 497 --
-
 complex program you are unlikely to test even a minuscule
 percentage of the permutations your code will be put through.
 Second, the optimists are forgetting that your program runs in a
@@ -5927,9 +5302,6 @@ Just sayin’.
 ---
 
 ## [Sección 59] Chapter 4
-
--- 210 of 497 --
-
 Exercise 16 (possible answer)
 A quick reality check. Which of these “impossible” things can
 happen?
@@ -5944,9 +5316,6 @@ Topic 23, Design by Contract
 Topic 24, Dead Programs Tell No Lies
 Topic 42, Property-Based Testing
 Topic 43, Stay Safe Out There
-
--- 211 of 497 --
-
 To light a candle is to
 cast a shadow...
 Ursula K. Le Guin, A Wizard
@@ -5976,9 +5345,6 @@ def read_customer
 @customer_file = File.open(@name + ".rec", "r+")
 @balance = BigDecimal(@customer_file.gets)
 end
-
--- 212 of 497 --
-
 def write_customer
 @customer_file.rewind
 @customer_file.puts @balance.to_s
@@ -6012,9 +5378,6 @@ end
 All seems fine during testing. However, when the code goes into
 production, it collapses after several hours, complaining of too
 [33]
-
--- 213 of 497 --
-
 many open files. It turns out that write_customer is not getting
 called in some circumstances. When that happens, the file is not
 getting closed.
@@ -6050,9 +5413,6 @@ end
 ---
 
 ## [Sección 60] Chapter 4
-
--- 214 of 497 --
-
 def update_customer(transaction_amount)
 file=File.open(@name + ".rec", "r+") # >--
 read_customer(file) # |
@@ -6085,9 +5445,6 @@ remember to close the file and release the source, it is
 guaranteed to happen for you.
 When in doubt, it always pays to reduce scope.
 [34]
-
--- 215 of 497 --
-
 Tip 41 Act Locally
 Balancing Over Time
 In this topic we’re mostly looking at ephemeral resources used by your running
@@ -6116,9 +5473,6 @@ transactions, network connections, memory, files, threads,
 windows—the basic pattern applies: whoever allocates a
 resource should be responsible for deallocating it. However, in
 some languages we can develop the concept further.
-
--- 216 of 497 --
-
 OBJECTS AND EXCEPTIONS
 The equilibrium between allocations and deallocations is
 reminiscent of an object-oriented class’s constructor and
@@ -6150,9 +5504,6 @@ hook in to the variable’s destructor to cleanup any external
 ---
 
 ## [Sección 61] Chapter 4
-
--- 217 of 497 --
-
 resources. In this example, the Rust variable named accounts will
 automatically close the associated file when it goes out of scope:
 {
@@ -6183,9 +5534,6 @@ end
 Can you see what’s wrong?
 What happens if the resource allocation fails and raises an
 exception? The finally clause will catch it, and try to deallocate a
-
--- 218 of 497 --
-
 thing that was never allocated.
 The correct pattern for handling resource deallocation in an
 environment with exceptions is
@@ -6214,9 +5562,6 @@ The top-level structure refuses to deallocate itself if it contains any
 substructures.
 The choice here depends on the circumstances of each
 individual data structure. However, you need to make it explicit
-
--- 219 of 497 --
-
 for each, and implement your decision consistently.
 Implementing any of these options in a procedural language
 such as C can be a problem: data structures themselves are not
@@ -6245,9 +5590,6 @@ leaks.
 RELATED SECTIONS INCLUDE
 Topic 24, Dead Programs Tell No Lies
 Topic 30, Transforming Programming
-
--- 220 of 497 --
-
 Topic 33, Breaking Temporal Coupling
 CHALLENGES
 Although there are no guaranteed ways of ensuring that you always
@@ -6268,9 +5610,6 @@ good idea?
 ---
 
 ## [Sección 62] Chapter 4
-
--- 221 of 497 --
-
 It’s tough to make
 predictions, especially
 about the future.
@@ -6302,9 +5641,6 @@ distance at 40mph is 189 feet, and at 70mph a whopping 464
 feet. So indeed, it’s actually pretty easy to outrun your
 headlights.
 [35]
-
--- 222 of 497 --
-
 In software development, our “headlights” are similarly limited.
 We can’t see too far ahead into the future, and the further offaxis you look, the darker it gets. So Pragmatic Programmers
 have a firm rule:
@@ -6329,9 +5665,6 @@ yourself slipping into fortune telling when you have to:
 Estimate completion dates months in the future
 Plan a design for future maintenance or extendability
 Guess user’s future needs
-
--- 223 of 497 --
-
 Guess future tech availability
 But, we hear you cry, aren’t we supposed to design for future
 maintenance? Yes, but only to a point: only as far ahead as you
@@ -6364,9 +5697,6 @@ the landscape.
 ---
 
 ## [Sección 63] Chapter 4
-
--- 224 of 497 --
-
 Tip 43 Avoid Fortune-Telling
 Much of the time, tomorrow looks a lot like today. But don’t
 count on it.
@@ -6396,9 +5726,6 @@ See the tip here.
 Per the NHTSA, Stopping Distance = Reaction Distance + Braking Distance, assuming
 an average reaction time of 1.5s and deceleration of 17.02ft/s².
 Motif and OpenLook were GUI standards for X-Windows based Unix workstations.
-
--- 225 of 497 --
-
 ---
 
 ## [Sección 64] Chapter 5
@@ -6423,9 +5750,6 @@ strategies to help manage and react to events—a critical aspect
 of modern software applications.
 Traditional procedural and object-oriented code might be too
 tightly coupled for your purposes. In Topic 30, Transforming
-
--- 226 of 497 --
-
 Programming, we’ll take advantage of the more flexible and
 clearer style offered by function pipelines, even if your language
 doesn’t support them directly.
@@ -6440,9 +5764,6 @@ details out of the code completely, where they can be changed
 more safely and easily.
 All these techniques will help you write code that bends and
 doesn’t break.
-
--- 227 of 497 --
-
 When we try to pick
 out anything by itself,
 we find it hitched to
@@ -6469,9 +5790,6 @@ bridge or a tower perhaps, you couple the components together:
 images/links-01.png
 The links work together to make the structure rigid.
 Compare that with something like this:
-
--- 228 of 497 --
-
 images/links-02.png
 Here there’s no structural rigidity: individual links can change
 and others just accommodate it.
@@ -6492,9 +5810,6 @@ talk about:
 Train wrecks—chains of method calls
 Globalization—the dangers of static things
 Inheritance—why subclassing is dangerous
-
--- 229 of 497 --
-
 To some extent this list is artificial: coupling can occur just
 about any time two pieces of code share something, so as you
 read what follows keep an eye out for the underlying patterns so
@@ -6528,9 +5843,6 @@ customer to total amounts. Ultimately our top-level code has to
 ---
 
 ## [Sección 65] Chapter 5
-
--- 230 of 497 --
-
 know that a customer object exposes orders, that the orders
 have a find method that takes an order id and returns an order,
 and that the order object has a totals object which has getters and
@@ -6557,9 +5869,6 @@ Tip 45 Tell, Don’t Ask
 This principle says that you shouldn’t make decisions based on
 the internal state of an object and then update that object.
 Doing so totally destroys the benefits of encapsulation and, in
-
--- 231 of 497 --
-
 doing so, spreads the knowledge of the implementation
 throughout the code. So the first fix for our train wreck is to
 delegate the discounting to the total object:
@@ -6591,9 +5900,6 @@ customer
 And this is where we’d probably stop.
 At this point you might be thinking that TDA would make us
 add an applyDiscountToOrder(order_id) method to customers. And, if
-
--- 232 of 497 --
-
 followed slavishly, it would.
 But TDA is not a law of nature; it’s just a pattern to help us
 recognize problems. In this case, we’re comfortable exposing the
@@ -6621,9 +5927,6 @@ In the first edition of this book we spent some time describing
 the LoD. In the intervening 20 years the bloom has faded on
 that particular rose. We now don’t like the “global variable”
 [37]
-
--- 233 of 497 --
-
 clause (for reasons we’ll go into in the next section). We also
 discovered that it’s difficult to use this in practice: it’s a little like
 having to parse a legal document whenever you call a method.
@@ -6656,9 +5959,6 @@ people
 ---
 
 ## [Sección 66] Chapter 5
-
--- 234 of 497 --
-
 That Ruby code worked when we wrote the first edition, 20
 years ago, and will likely still work when we enter the home for
 old programmers (any day now…).
@@ -6686,9 +5986,6 @@ all the code in the system. In practice, of course, the impact is
 fairly limited; the problem really comes down to knowing that
 you’ve found every place you need to change.
 Global data also creates coupling when it comes to teasing your
-
--- 235 of 497 --
-
 code apart.
 Much has been made of the benefits of code reuse. Our
 experience has been that reuse should probably not be a
@@ -6715,9 +6012,6 @@ has a longer name.
 So then folks take this singleton and hide all the data behind
 methods. Instead of coding Config.log_level they now say
 Config.log_level() or Config.getLogLevel(). This is better, because it
-
--- 236 of 497 --
-
 means that your global data has a bit of intelligence behind it. If
 you decide to change the representation of log levels, you can
 maintain compatibility by mapping between the new and old in
@@ -6747,9 +6041,6 @@ RELATED SECTIONS INCLUDE
 ---
 
 ## [Sección 67] Chapter 5
-
--- 237 of 497 --
-
 Topic 8, The Essence of Good Design
 Topic 9, DRY—The Evils of Duplication
 Topic 10, Orthogonality
@@ -6764,9 +6055,6 @@ Topic 35, Actors and Processes
 Topic 36, Blackboards
 We discuss Tell, Don’t Ask in our 2003 Software Construction
 article The Art of Enbugging.[38]
-
--- 238 of 497 --
-
 Things don’t just
 happen; they are made
 to happen.
@@ -6794,9 +6082,6 @@ ready, a search finishes. It can even be something as trivial as
 fetching the next element in a list.
 Whatever the source, if we write applications that respond to
 events, and adjust what they do based on those events, those
-
--- 239 of 497 --
-
 applications will work better in the real world. Their users will
 find them to be more interactive, and the applications
 themselves will make better use of resources.
@@ -6824,9 +6109,6 @@ events. It consists of a set of states, one of which is the current
 state. For each state, we list the events that are significant to
 that state. For each of those events, we define the new current
 state of the system.
-
--- 240 of 497 --
-
 For example, we may be receiving multipart messages from a
 websocket. The first message is a header. This is followed by any
 number of data messages, followed by a trailing message. This
@@ -6844,9 +6126,6 @@ us to the “Done” state. Anything else causes a transition to the
 error state.
 The neat thing about FSMs is that we can express them purely
 as data. Here’s a table representing our message parser:
-
--- 241 of 497 --
-
 images/event_simple_fsm_table.png
 The rows in the table represent the states. To find out what to
 do when an event occurs, look up the row for the current state,
@@ -6874,8 +6153,6 @@ msg = get_next_message()
 ---
 
 ## [Sección 68] Chapter 5
-
--- 242 of 497 --
 0
 :
 state = TRANSITIONS[state][msg.msg_type] || :error
@@ -6895,9 +6172,6 @@ string escapes the next character, so "Ignore \"quotes\"" is a single
 string. Here’s an FSM that does this:
 images/event_string_fsm.png
 This time, each transition has two labels. The top one is the
-
--- 243 of 497 --
-
 event that triggers it, and the bottom one is the action to take as
 we move between states.
 We’ll express this in a table, as we did last time. However, in
@@ -6926,9 +6200,6 @@ state.
 Now let’s look at the code:
 event/strings_fsm.rb
 state = :look_for_string
-
--- 244 of 497 --
-
 result = []
 while ch = STDIN.getc
 state, action = TRANSITIONS[state][ch] || TRANSITIONS[state][:default]
@@ -6961,9 +6232,6 @@ to the 107 different legislated warnings that online apps must
 now give, and so on. Keeping the state in external storage, and
 using it to drive a state machine, is a great way to handle these
 kind of workflow requirements.
-
--- 245 of 497 --
-
 State Machines Are a Start
 State machines are underused by developers, and we’d like to
 encourage you to look for opportunities to apply them. But they
@@ -6997,9 +6265,6 @@ CALLBACKS.each { |callback| callback.(exit_status) }
 ---
 
 ## [Sección 69] Chapter 5
-
--- 246 of 497 --
-
 exit!(exit_status)
 end
 end
@@ -7027,9 +6292,6 @@ PUBLISH/SUBSCRIBE
 Publish/Subscribe (pubsub) generalizes the observer pattern, at
 the same time solving the problems of coupling and
 performance.
-
--- 247 of 497 --
-
 In the pubsub model, we have publishers and subscribers.
 These are connected via channels. The channels are
 implemented in a separate body of code: sometimes a library,
@@ -7059,9 +6321,6 @@ reducing coupling by abstracting up through a shared interface
 passing system. Creating systems that respond to combinations
 of events will need more than this, so let’s look at ways we can
 add a time dimension to event processing.
-
--- 248 of 497 --
-
 REACTIVE PROGRAMMING, STREAMS, AND EVENTS
 If you’ve ever used a spreadsheet, then you’ll be familiar with
 reactive programming. If a cell contains a formula which refers
@@ -7094,9 +6353,6 @@ Our first example takes two streams and zips them together: the
 ---
 
 ## [Sección 70] Chapter 5
-
--- 249 of 497 --
-
 result is a new stream where each element contains one item
 from the first input stream and one item from the other. In this
 case, the first stream is simply a list of five animal names. The
@@ -7117,9 +6373,6 @@ a list in the browser window. Each item is timestamped with the
 time in milliseconds since the program started to run. Here’s
 what it shows for our code:
 [40]
-
--- 250 of 497 --
-
 images/events_rxjs_0.png
 Notice the timestamps: we’re getting one event from the stream
 every 500ms. Each event contains a serial number (created by
@@ -7138,9 +6391,6 @@ event/rx1/index.js
 import * as Observable from 'rxjs'
 import { mergeMap } from 'rxjs/operators'
 import { ajax } from 'rxjs/ajax'
-
--- 251 of 497 --
-
 import { logValues } from "../rxcommon/logger.js"
 let users = Observable.of(3, 2, 1)
 let result = users.pipe(
@@ -7163,9 +6413,6 @@ collect this information when people log in to our site. All we
 have to do is to generate an observable event containing their
 user ID when their session is created, and use that observable
 instead of the static one. We’d then be fetching details about the
-
--- 252 of 497 --
-
 users as we received these IDs, and presumably storing them
 somewhere.
 This is a very powerful abstraction: we no longer need to think
@@ -7189,9 +6436,6 @@ class would probably be initialized by passing in a table of
 transitions and an initial state.
 Try implementing the string extractor that way.
 Exercise 20 (possible answer)
-
--- 253 of 497 --
-
 ---
 
 ## [Sección 71] Chapter 5
@@ -7208,9 +6452,6 @@ completed.
 In order to determine whether a customer qualifies for a car loan,
 the application needs to send requests to three backend services
 and wait for the responses.
-
--- 254 of 497 --
-
 If you can’t describe
 what you are doing as
 a process, you don’t
@@ -7242,9 +6483,6 @@ C. But they wouldn’t, because they are thinking about this in
 terms of what we have (a directory tree) and what we want (a
 list of files). Then they’d go to a terminal and type something
 like:
-
--- 255 of 497 --
-
 $ find . -type f | xargs wc -l | sort -n | tail -5
 This is a series of transformations:
 find . -type f
@@ -7272,9 +6510,6 @@ That last line is the total number of lines in all the files (not just
 those shown), because that’s what wc does. We can strip it off by
 requesting one more line from tail, and then ignoring the last
 line:
-
--- 256 of 497 --
-
 $ find . -type f | xargs wc -l | sort -n | tail -6 | head -5
 470 ./debug.pml
 470 ./test_to_build.pml
@@ -7295,9 +6530,6 @@ directory name
 → highest five + total
 → highest five
 It’s almost like an industrial assembly line: feed raw data in one
-
--- 257 of 497 --
-
 end and the finished product (information) comes out the other.
 And we like to think about all code this way.
 Tip 49 Programming Is About Code, But Programs Are
@@ -7324,9 +6556,6 @@ dictionary which groups words by a signature, chosen so that all
 ---
 
 ## [Sección 72] Chapter 5
-
--- 258 of 497 --
-
 words containing the same letters will have the same signature.
 The simplest signature function is just the sorted list of letters
 in the word. We can then look up an input string by generating a
@@ -7367,9 +6596,6 @@ Words grouped by length
 4 => inly, liny, viny
 5 => vinyl
 Transformations All the Way Down
-
--- 259 of 497 --
-
 Let’s start by looking at step 1, which takes a word and creates a
 list of all combinations of three or more letters. This step can
 itself be expressed as a list of transformations:
@@ -7402,9 +6628,6 @@ Step 1.4: Convert back to strings [vin,viy, … inyl,vinyl]
 We’ve now reached the point where we can easily implement
 each transformation in code (using Elixir in this case):
 function-pipelines/anagrams/lib/anagrams.ex
-
--- 260 of 497 --
-
 defp all_subsets_longer_than_three_characters(word) do
 word
 |> String.codepoints()
@@ -7435,9 +6658,6 @@ has %>%. Haskell both has pipe operators and makes it easy to
 declare new ones. As we write this, there’s talk of adding |> to
 JavaScript.
 [41]
-
--- 261 of 497 --
-
 If your current language supports something similar, you’re in
 luck. If it doesn’t, see Language X Doesn’t Have Pipelines.
 Anyway, back to the code.
@@ -7467,9 +6687,6 @@ signatures
 ---
 
 ## [Sección 73] Chapter 5
-
--- 262 of 497 --
-
 |> Stream.reject(&is_nil/1)
 |> Stream.concat(&(&1))
 end
@@ -7498,9 +6715,6 @@ We’ve written each of the individual transformations. Now it’s
 time to string them all together into our main function:
 function-pipelines/anagrams/lib/anagrams.ex
 def anagrams_in(word) do
-
--- 263 of 497 --
-
 word
 |> all_subsets_longer_than_three_characters()
 |> as_unique_signatures()
@@ -7530,9 +6744,6 @@ hide data, encapsulating it inside objects. These objects then
 chatter back and forth, changing each other’s state. This
 introduces a lot of coupling, and it is a big reason that OO
 systems can be hard to change.
-
--- 264 of 497 --
-
 Tip 50 Don’t Hoard State; Pass It Around
 In the transformational model, we turn that on its head. Instead
 of little pools of data spread all over the system, think of data as
@@ -7561,9 +6772,6 @@ tells us if the contained value is valid. In Haskell, for example,
 this wrapper is called Maybe. In F# and Scala it’s Option.
 How you use this concept is language specific. In general,
 though, there are two basic ways of writing the code: you can
-
--- 265 of 497 --
-
 handle checking for errors inside your transformations or
 outside them.
 Elixir, which we’ve used so far, doesn’t have this support built
@@ -7596,9 +6804,6 @@ def find_all(file_name, pattern) do
 ---
 
 ## [Sección 74] Chapter 5
-
--- 266 of 497 --
-
 File.read(file_name)
 |> find_matching_lines(pattern)
 |> truncate_lines()
@@ -7630,9 +6835,6 @@ defp error(reason), do: { :error, reason }
 Have a look at the function find_matching_lines. If its first
 parameter is an :ok tuple, it uses the content in that tuple to find
 [42]
-
--- 267 of 497 --
-
 lines matching the pattern. However, if the first parameter is
 not an :ok tuple, the second version of the function runs, which
 just returns that parameter. This way the function simply
@@ -7662,9 +6864,6 @@ The problem we face is that when an error occurs we don’t want
 to run code further down the pipeline, and that we don’t want
 that code to know that this is happening. This means that we
 [43]
-
--- 268 of 497 --
-
 need to defer running pipeline functions until we know that
 previous steps in the pipeline were successful. To do this, we’ll
 need to change them from function calls into function values
@@ -7696,9 +6895,6 @@ defp error(reason), do: { :error, reason }
 end
 The and_then function is an example of a bind function: it takes a
 value wrapped in something, then applies a function to that
-
--- 269 of 497 --
-
 value, returning a new wrapped value. Using the and_then
 function in the pipeline takes a little extra punctuation because
 Elixir needs to be told to convert function calls into function
@@ -7728,9 +6924,6 @@ output.
 ---
 
 ## [Sección 75] Chapter 5
-
--- 270 of 497 --
-
 1. Shipping and sales tax are added to an order
 2. Your application loads configuration information from a named file
 3. Someone logs in to a web application
@@ -7755,9 +6948,6 @@ const result = content_of(file_name)
 .truncate_lines()
 What’s the difference between these two pieces of code? Which
 do you think we prefer?
-
--- 271 of 497 --
-
 You wanted a banana
 but what you got was
 a gorilla holding the
@@ -7784,9 +6974,6 @@ The link is a prefix class that adds the functionality of linked
 lists. This lets you add both cars and bicycles to the list of things
 waiting at (say) a traffic light. In current terminology, link would
 be a parent class.
-
--- 272 of 497 --
-
 The mental model used by Simula programmers was that the
 instance data and implementation of class link was prepended to
 the implementation of classes car and bicycle. The link part was
@@ -7815,9 +7002,6 @@ inheritance for one of two reasons: they don’t like typing, or
 they like types.
 Those who don’t like typing save their fingers by using
 [44]
-
--- 273 of 497 --
-
 inheritance to add common functionality from a base class into
 child classes: class User and class Product are both subclasses of
 ActiveRecord::Base.
@@ -7853,9 +7037,6 @@ invoked is in Vehicle, the parent of Car.
 ---
 
 ## [Sección 76] Chapter 5
-
--- 274 of 497 --
-
 Now the developer in charge of Vehicle changes the API, so
 move_at becomes set_velocity, and the instance variable @speed
 becomes @velocity.
@@ -7882,9 +7063,6 @@ can ripple up and down many layers.
 Even worse, though, is the multiple inheritance issue. A Car may
 be a kind of Vehicle, but it can also be a kind of Asset, InsuredItem,
 LoanCollateral and so on. Modeling this correctly would need
-
--- 275 of 497 --
-
 multiple inheritance.
 C++ gave multiple inheritance a bad name in
 the 1990s because of some questionable
@@ -7901,9 +7079,6 @@ Interfaces and protocols
 Delegation
 Mixins and traits
 Interfaces and Protocols
-
--- 276 of 497 --
-
 Most OO languages allow you to specify that a class implements
 one or more sets of behaviors. You could say, for example, that a
 Car class implements the Drivable behavior and the Locatable
@@ -7932,9 +7107,6 @@ getSpeed and stop, and a class that’s Locatable must implement
 getLocation and locationIsValid. This means that our previous class
 definition of Car will only be valid if it includes all four of these
 methods.
-
--- 277 of 497 --
-
 What makes interfaces and protocols so powerful is that we can
 use them as types, and any class that implements the
 appropriate interface will be compatible with that type. If Car
@@ -7966,9 +7138,6 @@ and callable. The class has lost control of its interface. This is a
 ---
 
 ## [Sección 77] Chapter 5
-
--- 278 of 497 --
-
 common problem—many persistence and UI frameworks insist
 that application components subclass some supplied base class:
 class Account < PersistenceBaseClass
@@ -7997,9 +7166,6 @@ have to know how to persist itself? Isn’t its job to know and
 enforce the account business rules?
 class Account
 # nothing but account stuff
-
--- 279 of 497 --
-
 end
 class AccountRecord
 # wraps an account with the ability
@@ -8028,9 +7194,6 @@ really want you to think of this as a language-agnostic feature.
 The important thing is the capability that all these
 implementations have: merging functionality between existing
 things and new things.
-
--- 280 of 497 --
-
 As an example, let’s go back to our AccountRecord example. As we
 left it, an AccountRecord needed to know about both accounts and
 about our persistence framework. It also needed to delegate all
@@ -8059,9 +7222,6 @@ created
 Validating form data entered by an admin person updating the user
 details
 Validating data added to the account by other system components
-
--- 281 of 497 --
-
 Validating data for consistency before it is persisted
 A common (and we believe less-than-ideal) approach is to
 bundle all the validations into a single class (the business
@@ -8090,9 +7250,6 @@ Interfaces and protocols
 ---
 
 ## [Sección 78] Chapter 5
-
--- 282 of 497 --
-
 Delegation
 Mixins and traits
 Each of these methods may be better for you in different
@@ -8110,9 +7267,6 @@ The next time you find yourself subclassing, take a minute to
 examine the options. Can you achieve what you want with
 interfaces, delegation, and/or mixins? Can you reduce coupling by
 doing so?
-
--- 283 of 497 --
-
 Let all your things
 have their places; let
 each part of your
@@ -8141,9 +7295,6 @@ Port, IP address, machine, and cluster names the app uses
 Environment-specific validation parameters
 Externally set parameters, such as tax rates
 Site-specific formatting details
-
--- 284 of 497 --
-
 License keys
 Basically, look for anything that you know will have to change
 that you can express outside your main body of code, and slap it
@@ -8171,9 +7322,6 @@ your code from the details of the representation of
 configuration.
 CONFIGURATION-AS-A-SERVICE
 While static configuration is common, we currently favor a
-
--- 285 of 497 --
-
 different approach. We still want configuration data kept
 external to the application, but rather than in a flat file or
 database, we’d like to see it stored behind a service API. This
@@ -8205,9 +7353,6 @@ livestock on the island of Mauritius, and quickly became extinct.
 ---
 
 ## [Sección 79] Chapter 5
-
--- 286 of 497 --
-
 images/dodo.png
 It was the first documented extinction of a species at the
 hand of man.
@@ -8231,9 +7376,6 @@ Don’t push decisions to configuration out of laziness. If there’s genuine de
 whether a feature should work this way or that, or if it should be the users’ choice, try it
 out one way and get feedback on whether the decision was a good one.
 [45]
-
--- 287 of 497 --
-
 Copyright © 2020 Pearson Education, Inc.
 [37]
 [38]
@@ -8260,9 +7402,6 @@ lose much of the sense of writing transformations that you get with pipelines.
 https://www.quora.com/What-does-Alan-Kay-think-about-inheritance-in-objectoriented-programming
 It didn’t help that the settlers beat the placid (read: stupid) birds to death with clubs for
 sport.
-
--- 288 of 497 --
-
 ---
 
 ## [Sección 80] Chapter 6
@@ -8280,9 +7419,6 @@ as fibers, threads, and processes.
 To have parallelism, you need hardware that can do two things
 at once. This might be multiple cores in a CPU, multiple CPUs
 in a computer, or multiple computers connected together.
-
--- 289 of 497 --
-
 Everything Is Concurrent
 It’s almost impossible to write code in a decent-sized system
 that doesn’t have concurrent aspects to it. They may be explicit,
@@ -8310,9 +7446,6 @@ Why is writing concurrent and parallel code so difficult? One
 reason is that we learned to program using sequential systems,
 and our languages have features that are relatively safe when
 used sequentially but become a liability once two things can
-
--- 290 of 497 --
-
 happen at the same time. One of the biggest culprits here is
 shared state. This doesn’t just mean global variables: any time
 two or more chunks of code hold references to the same piece of
@@ -8334,9 +7467,6 @@ semantics. Used correctly, these types of systems offer a serious
 amount of decoupling.
 Concurrent and parallel code used to be exotic. Now it is
 required.
-
--- 291 of 497 --
-
 Topic 33 Breaking Temporal Coupling
 “What is temporal coupling all about?”, you may ask. It’s about
 time.
@@ -8365,9 +7495,6 @@ areas of development: workflow analysis, architecture, design,
 ---
 
 ## [Sección 81] Chapter 6
-
--- 292 of 497 --
-
 and deployment. The result will be systems that are easier to
 reason about, that potentially respond faster and more reliably.
 LOOKING FOR CONCURRENCY
@@ -8394,9 +7521,6 @@ colada maker. We’re told that the steps are:
 1. Close blender
 2. Liquefy for 1 minute
 [46]
-
--- 293 of 497 --
-
 3. Put mix in blender
 4. Measure 1/2 cup white rum
 5. Pour in rum
@@ -8410,9 +7534,6 @@ steps, one by one, in order. Even though they describe these
 actions serially, many of them could be performed in parallel.
 We’ll use the following activity diagram to capture and reason
 about potential concurrency.
-
--- 294 of 497 --
-
 images/pina-colada.png
 It can be eye-opening to see where the dependencies really exist.
 In this instance, the top-level tasks (1, 2, 4, 10, and 11) can all
@@ -8420,9 +7541,6 @@ happen concurrently, up front. Tasks 3, 5, and 6 can happen in
 parallel later. If you were in a piña colada-making contest, these
 optimizations may make all the difference.
 Faster Formatting
-
--- 295 of 497 --
-
 This book is written in plain text. To build the version to be printed, or an ebook, or
 whatever, that text is fed through a pipeline of processors. Some look for particular
 constructs (bibliography citations, index entries, special markup for tips, and so on).
@@ -8458,9 +7576,6 @@ not time in our code. Querying a database, accessing an external
 ---
 
 ## [Sección 82] Chapter 6
-
--- 296 of 497 --
-
 service, waiting for user input: all these things would normally
 stall our program until they complete. And these are all
 opportunities to do something more productive than the CPU
@@ -8489,9 +7604,6 @@ IDENTIFYING OPPORTUNITIES IS THE EASY PART
 Back to your applications. We’ve identified places where it will
 benefit from concurrency and parallelism. Now for the tricky
 part: how can we implement it safely. That’s the topic of the rest
-
--- 297 of 497 --
-
 of the chapter.
 RELATED SECTIONS INCLUDE
 Topic 10, Orthogonality
@@ -8503,9 +7615,6 @@ How many tasks do you perform in parallel when you get ready for
 work in the morning? Could you express this in a UML activity
 diagram? Can you find some way to get ready more quickly by
 increasing concurrency?
-
--- 298 of 497 --
-
 Topic 34 Shared State Is Incorrect State
 You’re in your favorite diner. You finish your main course, and
 ask your server if there’s any apple pie left. He looks over his
@@ -8527,9 +7636,6 @@ point-of-sale device looked at an account balance without
 regard for the other.
 NONATOMIC UPDATES
 Let’s look at our diner example as if it were code:
-
--- 299 of 497 --
-
 images/pie_case.png
 The two waiters operate concurrently (and, in real life, in
 parallel). Let’s look at their code:
@@ -8555,9 +7661,6 @@ make decisions) is now out of date.
 ---
 
 ## [Sección 83] Chapter 6
-
--- 300 of 497 --
-
 This is all because the fetching and then updating the pie count
 is not an atomic operation: the underlying value can change in
 the middle.
@@ -8587,9 +7690,6 @@ display_case.take_pie()
 give_pie_to_customer()
 end
 [47]
-
--- 301 of 497 --
-
 case_semaphore.unlock()
 This code assumes that a semaphore has already been created
 and stored in the variable case_semaphore.
@@ -8618,9 +7718,6 @@ give_pie_to_customer()
 end
 To make this work, we need to write a method that runs as part
 of the display case itself:
-
--- 302 of 497 --
-
 def get_pie_if_available() ####
 if @slices.size > 0 #
 update_sales_data(:pie) #
@@ -8655,9 +7752,6 @@ update_sales_data(:pie)
 return @slices.shift
 else
 false
-
--- 303 of 497 --
-
 end
 }
 ensure {
@@ -8694,9 +7788,6 @@ anything with (because our customer must have ice cream). And
 ---
 
 ## [Sección 84] Chapter 6
-
--- 304 of 497 --
-
 the fact we’re holding the pie means it isn’t in the case, so it isn’t
 available to some other customer who (being a purist) doesn’t
 want ice cream with it.
@@ -8729,9 +7820,6 @@ Should we put the code in the display case or the freezer?
 We think the answer is “no” to both options. The pragmatic
 approach would be to say that “apple pie à la mode” is its own
 resource. We’d move this code into a new module, and then the
-
--- 305 of 497 --
-
 client could just say “get me apple pie with ice cream” and it
 either succeeds or fails.
 Of course, in the real world there are likely to be many
@@ -8761,9 +7849,6 @@ good enough. But in the parallel version, one thread would
 change the directory and then, while in that directory, another
 thread would start running. That thread would expect to be in
 the original directory, but because the current directory is
-
--- 306 of 497 --
-
 shared between threads, that wasn’t the case.
 The nature of this problem prompts another tip:
 Tip 58 Random Failures Are Often Concurrency Issues
@@ -8787,9 +7872,6 @@ managing it yourself is fraught with challenges.
 Which is why we’re recommending the punchline to the old
 joke:
 Doctor, it hurts when I do this.
-
--- 307 of 497 --
-
 Then don’t do that.
 The next couple of sections suggest alternative ways of getting
 the benefits of concurrency without the pain.
@@ -8801,9 +7883,6 @@ Topic 38, Programming by Coincidence
 ---
 
 ## [Sección 85] Chapter 6
-
--- 308 of 497 --
-
 Without writers,
 stories would not be
 written,
@@ -8838,9 +7917,6 @@ often implemented by the operating system to facilitate
 concurrency. Processes can be constrained (by convention) to
 behave like actors, and that’s the type of process we mean here.
 ACTORS CAN ONLY BE CONCURRENT
-
--- 309 of 497 --
-
 There are a few things that you won’t find in the definition of
 actors:
 There’s no single thing that’s in control. Nothing schedules what
@@ -8867,9 +7943,6 @@ Let’s implement our diner using actors. In this case, we’ll have
 three (the customer, the waiter, and the pie case).
 The overall message flow will look like this:
 We (as some kind of external, God-like being) tell the customer that
-
--- 310 of 497 --
-
 they are hungry
 In response, they’ll ask the waiter for pie
 The waiter will ask the pie case to get some pie to the customer
@@ -8897,9 +7970,6 @@ return dispatch(state.waiter,
 { type: "order", customer: ctx.self, wants: 'pie' })
 },
 [48]
-
--- 311 of 497 --
-
 'put on table': (msg, ctx, _state) =>
 console.log(`${ctx.self.name} sees "${msg.food}" appear on the table`),
 'no pie left': (_msg, ctx, _state) =>
@@ -8935,9 +8005,6 @@ to see if the request is for pie. If so, it sends a request to the pie
 ---
 
 ## [Sección 86] Chapter 6
-
--- 312 of 497 --
-
 case, passing references both to itself and the customer.
 The pie case has state: an array of all the slices of pie it holds.
 (Again, we see how that gets set up shortly.) When it receives a
@@ -8969,9 +8036,6 @@ manually. We will also pass each some initial state:
 The pie case gets the initial list of pie slices it contains
 We’ll give the waiter a reference to the pie case
 We’ll give the customers a reference to the waiter
-
--- 313 of 497 --
-
 concurrency/actors/index.js
 const actorSystem = start();
 let pieCase = start_actor(
@@ -9006,9 +8070,6 @@ $ node index.js
 customer1 sees "apple pie slice" appear on the table
 customer2 sees "peach pie slice" appear on the table
 [49]
-
--- 314 of 497 --
-
 Waiter adds apple pie slice to customer1's order
 Waiter adds peach pie slice to customer2's order
 customer1 sees "cherry pie slice" appear on the table
@@ -9038,9 +8099,6 @@ In addition, the Erlang runtime implements a supervision
 system, which manages the lifetimes of processes, potentially
 restarting a process or set of processes in case of failure. And
 Erlang also offers hot-code loading: you can replace code in a
-
--- 315 of 497 --
-
 running system without stopping that system. And the Erlang
 system runs some of the world’s most reliable code, often citing
 nine nines availability.
@@ -9063,9 +8121,6 @@ so that it handles the situation where one or the other runs out.
 ---
 
 ## [Sección 87] Chapter 6
-
--- 316 of 497 --
-
 The writing is on the
 wall…
 Daniel 5 (ref)
@@ -9086,9 +8141,6 @@ might notice a connection and post that observation or
 speculation as well. This process continues, across all shifts,
 with many different people and agents, until the case is closed.
 A sample blackboard is shown in the figure.
-
--- 317 of 497 --
-
 images/blackboard.png
 Figure 2. Someone found a connection between
 Humpty’s gambling debts and the phone logs.
@@ -9100,9 +8152,6 @@ findings.
 The detectives may be trained in different disciplines, may have
 different levels of education and expertise, and may not even work
 in the same precinct. They share a desire to solve the case, but
-
--- 318 of 497 --
-
 that’s all.
 Different detectives may come and go during the course of the
 process, and may work different shifts.
@@ -9129,9 +8178,6 @@ Author, which is a subtype of Person. You could search a
 blackboard containing Person objects by using an Author template
 with a lastName value of “Shakespeare.’’ You’d get Bill
 Shakespeare the author, but not Fred Shakespeare the gardener.
-
--- 319 of 497 --
-
 These systems never really took off, we believe, in part, because
 the need for the kind of concurrent cooperative processing
 hadn’t yet developed.
@@ -9164,9 +8210,6 @@ circumstance using a workflow system. Many such systems
 ---
 
 ## [Sección 88] Chapter 6
-
--- 320 of 497 --
-
 exist, but they can be complex and programmer intensive. As
 regulations change, the workflow must be reorganized: people
 may have to change their procedures and hard-wired code may
@@ -9194,9 +8237,6 @@ The actor and/or blackboard and/or microservice approach to
 architecture removes a whole class of potential concurrency
 problems from your applications. But that benefit comes at a
 cost. These approaches are harder to reason about, because a lot
-
--- 321 of 497 --
-
 of the action is indirect. You’ll find it helps to keep a central
 repository of message formats and/or APIs, particularly if the
 repository can generate the code and documentation for you.
@@ -9222,9 +8262,6 @@ following applications? Why, or why not?
 Image processing. You’d like to have a number of parallel
 processes grab chunks of an image, process them, and put the
 completed chunk back.
-
--- 322 of 497 --
-
 Group calendaring. You’ve got people scattered across the
 globe, in different time zones, and speaking different languages,
 trying to schedule a meeting.
@@ -9258,9 +8295,6 @@ https://media.pragprog.com/titles/tpp20/code/concurrency/actors/index.js
 ---
 
 ## [Sección 89] Chapter 6
-
--- 323 of 497 --
-
 ---
 
 ## [Sección 90] Chapter 7
@@ -9286,9 +8320,6 @@ sometimes niggling thoughts.
 But listening to your instincts doesn’t mean you can just fly on
 autopilot. Developers who don’t actively think about their code
 are programming by coincidence—the code might work, but
-
--- 324 of 497 --
-
 there’s no particular reason why. In Topic 38, Programming by
 Coincidence, we advocate a more positive involvement with the
 coding process.
@@ -9316,9 +8347,6 @@ reason about. It’s a harsh world out there, filled with bad actors
 who are actively trying to break into your system and cause
 harm. We’ll discuss some very basic techniques and approaches
 to help you Topic 43, Stay Safe Out There.
-
--- 325 of 497 --
-
 Finally, one of the hardest things in software development is
 Topic 44, Naming Things. We have to name a lot of things, and
 in many ways the names we choose define the reality we create.
@@ -9332,9 +8360,6 @@ checking for potential problems, and putting themselves into
 good positions in case the unexpected happens. The same is
 true of coding—it may be largely routine, but keeping your wits
 about you could well prevent a disaster.
-
--- 326 of 497 --
-
 Only human beings
 can look directly at
 something, have all the
@@ -9378,9 +8403,6 @@ chat with someone, even when you don’t realize that you’re
 ---
 
 ## [Sección 91] Chapter 7
-
--- 327 of 497 --
-
 doing it.
 Whatever their source, instincts share one thing: they have no
 words. Instincts make you feel, not think. And so when an
@@ -9408,9 +8430,6 @@ worked and which didn’t. You’ve been accumulating experience
 and wisdom. When you feel a nagging doubt, or experience
 some reluctance when faced with a task, it might be that
 experience trying to speak to you. Heed it. You may not be able
-
--- 328 of 497 --
-
 to put your finger on exactly what’s wrong, but give it time and
 your doubts will probably crystallize into something more solid,
 something you can address. Let your instincts contribute to
@@ -9438,9 +8457,6 @@ wrong, maybe you’re solving the wrong problem, or maybe
 you’re just creating an ant farm’s worth of bugs. Whatever the
 reason, your lizard brain is sensing feedback from the code, and
 it’s desperately trying to get you to listen.
-
--- 329 of 497 --
-
 HOW TO TALK LIZARD
 We talk a lot about listening to your instincts, to your
 nonconscious, lizard brain. The techniques are always the same.
@@ -9472,9 +8488,6 @@ get yet another drink, then type in some more code, then go
 ---
 
 ## [Sección 92] Chapter 7
-
--- 330 of 497 --
-
 read a funny story about a cat with two tails, then type some
 more code, then do select-all/delete and start again. And again.
 And again.
@@ -9501,9 +8514,6 @@ sentence what you want to learn or do.
 If you start to have doubts, look at the sticky note.
 If, in the middle of coding, that nagging doubt suddenly
 crystallizes into a solid concern, then address it.
-
--- 331 of 497 --
-
 If you get to the end of the experiment and you still feel uneasy,
 start again with the walk and the talk and the time off.
 But, in our experience, at some point during the first prototype
@@ -9530,9 +8540,6 @@ a lot easier. You’ll be able consciously to apply the patterns that
 they applied tacitly.
 And you might just learn something new along the way.
 NOT JUST CODE
-
--- 332 of 497 --
-
 Learning to listen to your gut when coding is an important skill
 to foster. But it applies to the bigger picture are well. Sometimes
 a design just feels wrong, or some requirement makes you feel
@@ -9551,9 +8558,6 @@ because it feels a little scary, or difficult? Apply the techniques in
 this section. Time box it to an hour, maybe two, and promise
 yourself that when the bell rings you’ll delete what you did. What
 did you learn?
-
--- 333 of 497 --
-
 Topic 38 Programming by Coincidence
 Do you ever watch old black-and-white war movies? The weary
 soldier advances cautiously out of the brush. There’s a clearing
@@ -9583,9 +8587,6 @@ and after hours of trying to fix it, he still doesn’t know why. Fred
 ---
 
 ## [Sección 93] Chapter 7
-
--- 334 of 497 --
-
 may well spend a significant amount of time chasing this piece
 of code around without ever being able to fix it. No matter what
 he does, it just doesn’t ever seem to work right.
@@ -9613,9 +8614,6 @@ okay. Calling things in the wrong order, or in the wrong context,
 is a related problem.
 Here it looks like Fred is desperately trying to get something out
 on the screen using some particular GUI rendering framework:
-
--- 335 of 497 --
-
 paint();
 invalidate();
 validate();
@@ -9644,9 +8642,6 @@ good modularization and of hiding implementation behind
 small, well-documented interfaces can all help. A well-specified
 contract (see Topic 23, Design by Contract) can help eliminate
 misunderstandings.
-
--- 336 of 497 --
-
 For routines you call, rely only on documented behavior. If you
 can’t, for whatever reason, then document your assumption
 well.
@@ -9681,9 +8676,6 @@ But while you wouldn’t write code that depended on the next
 ---
 
 ## [Sección 94] Chapter 7
-
--- 337 of 497 --
-
 Russian leader being bald or hairy, in some domains we think
 that way all the time. Gamblers imagine patterns in lottery
 numbers, dice games, or roulette, when in fact these are
@@ -9712,9 +8704,6 @@ net, are you sure your context is the same? Or are you building
 “cargo cult” code, merely imitating form without content?
 Finding an answer that happens to fit is not the same as the
 [52]
-
--- 338 of 497 --
-
 right answer.
 Tip 62 Don’t Program by Coincidence
 Implicit Assumptions
@@ -9742,9 +8731,6 @@ coincidences. If you’re not sure why it works, you won’t know why it
 fails.
 Proceed from a plan, whether that plan is in your head, on the back
 of a cocktail napkin, or on a whiteboard.
-
--- 339 of 497 --
-
 Rely only on reliable things. Don’t depend on assumptions. If you
 can’t tell if something is reliable, assume the worst.
 Document your assumptions. Topic 23, Design by Contract, can
@@ -9778,9 +8764,6 @@ Topic 43, Stay Safe Out There
 ---
 
 ## [Sección 95] Chapter 7
-
--- 340 of 497 --
-
 EXERCISES
 Exercise 25 (possible answer)
 A data feed from a vendor gives you an array of tuples
@@ -9808,13 +8791,7 @@ You have written an app that scales up common recipes for a
 cruise ship dining room that seats 5,000. But you’re getting
 complaints that the conversions aren’t precise. You check, and
 the code uses the conversion formula of 16 cups to a gallon.
-
--- 341 of 497 --
-
 That’s right, isn’t it?
-
--- 342 of 497 --
-
 Topic 39 Algorithm Speed
 In Topic 15, Estimating, we talked about estimating things such
 as how long it takes to walk across town, or how long a project
@@ -9839,9 +8816,6 @@ If the relationship were always linear (so that the time increased
 in direct proportion to the value of ), this section wouldn’t be
 important. However, most significant algorithms are not linear.
 The good news is that many are sublinear. A binary search, for
-
--- 343 of 497 --
-
 example, doesn’t need to look at every candidate when finding a
 match. The bad news is that other algorithms are considerably
 worse than linear; runtimes or memory requirements increase
@@ -9873,9 +8847,6 @@ constant multiplying factors:
 ---
 
 ## [Sección 96] Chapter 7
-
--- 344 of 497 --
-
 This is actually a feature of the notation—one algorithm
 may be 1,000 times faster than another algorithm, but you
 won’t know it from the notation. Big-O is never going to give
@@ -9901,9 +8872,6 @@ represent any other resources used by an algorithm. For
 example, it is often useful to be able to model memory
 consumption (see the exercises for an example).
 Constant (access element in array, simple statements)
-
--- 345 of 497 --
-
 Logarithmic (binary search). The base of the logarithm doesn’t
 matter, so this is equivalent .
 Linear (sequential search)
@@ -9912,15 +8880,9 @@ quicksort, heapsort)
 Square law (selection and insertion sorts)
 Cubic (multiplication of two matrices)
 Exponential (traveling salesman problem, set partitioning)
-
--- 346 of 497 --
-
 images/big-o.png
 Figure 3. Runtimes of various algorithms
 COMMON SENSE ESTIMATION
-
--- 347 of 497 --
-
 You can estimate the order of many basic algorithms using
 common sense.
 Simple loops
@@ -9949,9 +8911,6 @@ halves independently, and then combine the result can be
 partitioning the data into two halves and recursively
 sorting each. Although technically , because its
 behavior degrades when it is fed sorted input, the average
-
--- 348 of 497 --
-
 runtime of quicksort is .
 Combinatoric
 Whenever algorithms start looking at the permutations of
@@ -9986,9 +8945,6 @@ have on your running time or memory consumption.
 ---
 
 ## [Sección 97] Chapter 7
-
--- 349 of 497 --
-
 Tip 63 Estimate the Order of Your Algorithms
 There are some approaches you can take to address potential
 problems. If you have an algorithm that is , try to find a
@@ -10015,9 +8971,6 @@ estimating, the only timing that counts is the speed of your
 code, running in the production environment, with real data.
 This leads to our next tip.
 Tip 64 Test Your Estimates
-
--- 350 of 497 --
-
 If it’s tricky getting accurate timings, use code profilers to count
 the number of times the different steps in your algorithm get
 executed, and plot these figures against the size of the input.
@@ -10045,9 +8998,6 @@ For those who like more detail than Sedgewick provides, read
 Donald Knuth’s definitive Art of Computer Programming books,
 which analyze a wide range of algorithms.
 The Art of Computer Programming, Volume 1:
-
--- 351 of 497 --
-
 Fundamental Algorithms [Knu98]
 The Art of Computer Programming, Volume 2:
 Seminumerical Algorithms [Knu98a]
@@ -10078,13 +9028,7 @@ is the same as (or indeed logarithms to any base). Can
 ---
 
 ## [Sección 98] Chapter 7
-
--- 352 of 497 --
-
 you explain why?
-
--- 353 of 497 --
-
 Change and decay in
 all around I see...
 H. F. Lyte, Abide With Me
@@ -10114,9 +9058,6 @@ organic than concrete. You plant many things in a garden
 according to an initial plan and conditions. Some thrive, others
 are destined to end up as compost. You may move plantings
 [55]
-
--- 354 of 497 --
-
 relative to each other to take advantage of the interplay of light
 and shadow, wind and rain. Overgrown plants get split or
 pruned, and colors that clash may get moved to more
@@ -10143,9 +9084,6 @@ altering its internal structure without changing its external
 behavior.
 The critical parts of this definition are that:
 1. The activity is disciplined, not a free-for-all
-
--- 355 of 497 --
-
 2. External behavior does not change; this is not the time to add
 features
 Refactoring is not intended to be a special, high-ceremony,
@@ -10173,9 +9111,6 @@ You’ve discovered a violation of the DRY principle.
 Nonorthogonal design
 You’ve discovered something that could be made more
 orthogonal.
-
--- 356 of 497 --
-
 ---
 
 ## [Sección 99] Chapter 7
@@ -10206,9 +9141,6 @@ Real-World Complications
 So you go to your teammates or client and say, “This code
 works, but I need another week to completely refactor it.”
 We can’t print their reply.
-
--- 357 of 497 --
-
 Time pressure is often used as an excuse for not refactoring. But
 this excuse just doesn’t hold up: fail to refactor now, and there’ll
 be a far greater time investment to fix the problem down the
@@ -10237,9 +9169,6 @@ just started to gain a wider audience when we wrote the first
 edition of this book, probably thanks to the first major book on
 refactoring (Refactoring: Improving the Design of Existing
 Code [Fow19], now in its second edition).
-
--- 358 of 497 --
-
 At its heart, refactoring is redesign. Anything that you or others
 on your team designed can be redesigned in light of new facts,
 deeper understandings, changing requirements, and so on. But
@@ -10275,9 +9204,6 @@ Testing, but Mr. Fowler’s point of maintaining good regression
 ---
 
 ## [Sección 100] Chapter 7
-
--- 359 of 497 --
-
 tests is the key to refactoring safely.
 If you have to go beyond refactoring and end up changing
 external behavior or interfaces, then it can help to deliberately
@@ -10294,9 +9220,6 @@ Topic 12, Tracer Bullets
 Topic 27, Don’t Outrun Your Headlights
 Topic 44, Naming Things
 Topic 48, The Essence of Agility
-
--- 360 of 497 --
-
 Topic 41 Test to Code
 The first edition of this book was written in more primitive
 times, when most developers wrote no tests—why bother, they
@@ -10317,9 +9240,6 @@ Let’s start with the bold statement:
 Tip 66 Testing Is Not About Finding Bugs
 We believe that the major benefits of testing happen when you
 think about and write the tests, not when you run them.
-
--- 361 of 497 --
-
 THINKING ABOUT TESTS
 It’s a Monday morning and you settle in to start work on some
 new code. You have to write something that queries the
@@ -10348,9 +9268,6 @@ def return_avid_users(db) do
 Then we have to think about how we’d populate that test data.
 The requirement asks for a “list of people who watch more than
 10 videos a week.” So we look at the database schema for fields
-
--- 362 of 497 --
-
 that might help. We find two likely fields in a table of whowatched-what: opened_video and completed_video. To write our test
 data, we need to know which field to use. But we don’t know
 what the requirement means, and our business contact is out.
@@ -10380,9 +9297,6 @@ That sounds silly, but in reality we’ve all launched into a piece of
 ---
 
 ## [Sección 101] Chapter 7
-
--- 363 of 497 --
-
 code based on a nebulous understanding of what we had to do.
 We assure ourselves that we’ll work it out as we go along. Oh,
 and we’ll add all the code to support the boundary conditions
@@ -10412,9 +9326,6 @@ The idea is that this cycle should be very short: a matter of
 minutes, so that you’re constantly writing tests and then getting
 them to work.
 [58]
-
--- 364 of 497 --
-
 We see a major benefit in TDD for people just starting out with
 testing. If you follow the TDD workflow, you’ll guarantee that
 you always have tests for your code. And that means you’ll
@@ -10446,9 +9357,6 @@ problem. “Make it so….”
 Neither school actually works, because both ignore one of the most important aspects
 of software development: we don’t know what we’re doing when we start. The top-down
 folks assume they can express the whole requirement up front: they can’t. The bottomup folks assume they can build a list of abstractions which will take them eventually to a
-
--- 365 of 497 --
-
 single top-level solution, but how can they decide on the functionality of layers when
 they don’t know where they are heading?
 Tip 68 Build End-to-End, Not Top-Down or Bottom Up
@@ -10483,9 +9391,6 @@ As a contrast, Peter Norvig describes an alternative approach
 ---
 
 ## [Sección 102] Chapter 7
-
--- 366 of 497 --
-
 which feels very different in character: rather than being driven
 by tests, he starts with a basic understanding of how these kinds
 of problems are traditionally solved (using constraint
@@ -10515,9 +9420,6 @@ colleagues, we need to build testability into the software from
 the very beginning, and test each piece thoroughly before trying
 to wire them together.
 [61]
-
--- 367 of 497 --
-
 UNIT TESTING
 Chip-level testing for hardware is roughly equivalent to unit
 testing in software—testing done on each module, in isolation,
@@ -10546,9 +9448,6 @@ ensure that a given unit honors its contract. This will tell us two
 things: whether the code meets the contract, and whether the
 contract means what we think it means. We want to test that the
 module delivers the functionality it promises, over a wide range
-
--- 368 of 497 --
-
 of test cases and boundary conditions.
 What does this mean in practice? Let’s start with a simple,
 numerical example: a square root routine. Its documented
@@ -10580,9 +9479,6 @@ module is likely to be dependent on a number of other modules,
 ---
 
 ## [Sección 103] Chapter 7
-
--- 369 of 497 --
-
 so how do we go about testing the combination?
 Suppose we have a module A that uses a DataFeed and a
 LinearRegression. In order, we would test:
@@ -10607,9 +9503,6 @@ many of those downstream disasters as possible.
 Tip 69 Design to Test
 AD HOC TESTING
 Not to be confused with “odd hack,” ad-hoc testing is when we
-
--- 370 of 497 --
-
 run poke at our code manually. This may be as simple as a
 console.log(), or a piece of code entered interactively in a
 debugger, IDE environment, or REPL.
@@ -10637,9 +9530,6 @@ they are difficult to read and impractical to parse.
 Another mechanism for getting inside running code is the ”hotkey” sequence or magic URL. When this particular combination
 of keys is pressed, or the URL is accessed, a diagnostic control
 window pops up with status messages and so on. This isn’t
-
--- 371 of 497 --
-
 something you normally would reveal to end users, but it can be
 very handy for the help desk.
 More generally, you could use a feature switch to enable extra
@@ -10675,9 +9565,6 @@ toward minimizing maintenance costs and help-desk calls.
 ---
 
 ## [Sección 104] Chapter 7
-
--- 372 of 497 --
-
 You really only have a few choices:
 Test First
 Test During
@@ -10702,16 +9589,10 @@ these sorts of things will result in fragile tests.
 Tip 70 Test Your Software, or Your Users Will
 Make no mistake, testing is part of programming. It’s not
 something left to other departments or staff.
-
--- 373 of 497 --
-
 Testing, design, coding—it’s all programming.
 RELATED SECTIONS INCLUDE
 Topic 27, Don’t Outrun Your Headlights
 Topic 51, Pragmatic Starter Kit
-
--- 374 of 497 --
-
 Доверяй, но проверяй
 (Trust, but verify)
 Russian proverb
@@ -10739,9 +9620,6 @@ CONTRACTS, INVARIANTS, AND PROPERTIES
 In Topic 23, Design by Contract, we talked about the idea that
 code has contracts that it meets: you meet the conditions when
 you feed it input, and it will make certain guarantees about the
-
--- 375 of 497 --
-
 outputs it produces.
 There are also code invariants, things that remain true about
 some piece of state when it’s passed through a function. For
@@ -10766,9 +9644,6 @@ from hypothesis import given
 import hypothesis.strategies as some
 @given(some.lists(some.integers()))
 def test_list_size_is_invariant_across_sorting(a_list):
-
--- 376 of 497 --
-
 original_length = len(a_list)
 a_list.sort()
 assert len(a_list) == original_length
@@ -10802,9 +9677,6 @@ If we wrote:
 ---
 
 ## [Sección 105] Chapter 7
-
--- 377 of 497 --
-
 @given(some.integers())
 Our test function would run multiple times. Each time, it would
 be passed a different integer. If instead we wrote the following:
@@ -10829,9 +9701,6 @@ class Warehouse:
 def __init__(self, stock):
 self.stock = stock
 def in_stock(self, item_name):
-
--- 378 of 497 --
-
 return (item_name in self.stock) and (self.stock[item_name] > 0)
 def take_from_stock(self, item_name, quantity):
 if quantity <= self.stock[item_name]:
@@ -10862,9 +9731,6 @@ warehouse.take_from_stock(item, quantity)
 return ( "ok", item, quantity )
 else:
 return ( "not available", item, quantity )
-
--- 379 of 497 --
-
 proptest/stock.py
 def test_order_in_stock():
 wh = Warehouse({"shoes": 10, "hats": 2, "umbrellas": 0})
@@ -10898,9 +9764,6 @@ test with the item parameter chosen randomly from "hat" or
 proptest/stock.py
 @given(item = some.sampled_from(["shoes", "hats"]),
 quantity = some.integers(min_value=1, max_value=4))
-
--- 380 of 497 --
-
 def test_stock_level_plus_quantity_equals_original_stock_level(item,
 quantity):
 wh = Warehouse({"shoes": 10, "hats": 2, "umbrellas": 0})
@@ -10939,9 +9802,6 @@ function only checks that there’s at least one of the given item in
 ---
 
 ## [Sección 106] Chapter 7
-
--- 381 of 497 --
-
 stock. Instead we need to make sure we have enough to fill the
 order:
 proptest/stock1.py
@@ -10969,9 +9829,6 @@ and then just let it rip. You never quite know what will happen.
 The test may pass. An assertion may fail. Or the code may fail
 totally because it couldn’t handle the inputs it was given.
 The frustration is that it can be tricky to pin down what failed.
-
--- 382 of 497 --
-
 Our suggestion is that when a property-based test fails, find out
 what parameters it was passing to the test function, and then
 use those values to create a separate, regular, unit test. That unit
@@ -10999,9 +9856,6 @@ benefits. If you’re not currently using them, give them a go.
 RELATED SECTIONS INCLUDE
 Topic 23, Design by Contract
 Topic 25, Assertive Programming
-
--- 383 of 497 --
-
 Topic 45, The Requirements Pit
 EXERCISES
 Exercise 31 (possible answer)
@@ -11018,9 +9872,6 @@ the output could be tested?
 CHALLENGES
 Think about the code you’re currently working on. What are the
 properties: the contracts and invariants? Can you use propertybased testing framework to verify these automatically?
-
--- 384 of 497 --
-
 Good fences make
 good neighbors.
 Robert Frost, Mending Wall
@@ -11053,9 +9904,6 @@ consider.
 ---
 
 ## [Sección 107] Chapter 7
-
--- 385 of 497 --
-
 The next thing you have to do is analyze the code for ways it can
 go wrong and add those to your test suite. You’ll consider things
 such as passing in bad parameters, leaking or unavailable
@@ -11085,9 +9933,6 @@ basic principles that you should always bear in mind:
 3. Secure Defaults
 4. Encrypt Sensitive Data
 5. Maintain Security Updates
-
--- 386 of 497 --
-
 Let’s take a look at each of these.
 Minimize Attack Surface Area
 The attack surface area of a system is the sum of all access
@@ -11117,9 +9962,6 @@ name = gets
 system("wc -c #{name}")
 A nefarious user could do damage like this:
 [63]
-
--- 387 of 497 --
-
 Enter a file name to count:
 test.dat; rm -rf /
 However, setting the SAFE level to 1 will taint external
@@ -11152,9 +9994,6 @@ administrative accounts. If an account with deployment
 ---
 
 ## [Sección 108] Chapter 7
-
--- 388 of 497 --
-
 credentials is compromised, your entire product is
 compromised.
 Output data is an attack vector
@@ -11182,9 +10021,6 @@ Administrator. If that high level is needed, take it, do the minimum
 amount of work, and relinquish your permission quickly to
 reduce the risk. This principle dates back to the early 1970s:
 [64]
-
--- 389 of 497 --
-
 Every program and every privileged user of the system should
 operate using the least amount of privilege necessary to
 complete the job.— Jerome Saltzer, Communications of the
@@ -11213,9 +10049,6 @@ the password as entered, replacing each character with an
 asterisk. If you’re entering a password in a crowded public
 place, or projected before a large audience, that’s a sensible
 default. But some users might want to see the password spelled
-
--- 390 of 497 --
-
 out, perhaps for accessibility. If there’s little risk someone is
 looking over their shoulder, that’s a reasonable choice for them.
 Encrypt Sensitive Data
@@ -11251,9 +10084,6 @@ accept all printing ASCII characters, space, and Unicode.
 ---
 
 ## [Sección 109] Chapter 7
-
--- 391 of 497 --
-
 Do not provide password hints to unauthenticated users, or prompt for specific
 types of information (e.g., “what was the name of your first pet?”).
 Do not disable the paste function in the browser. Crippling the functionality of
@@ -11284,9 +10114,6 @@ And if you think that this doesn’t really matter, just remember
 that the largest data breaches in history (so far) were caused by
 systems that were behind on their updates.
 Don’t let it happen to you.
-
--- 392 of 497 --
-
 COMMON SENSE VS. CRYPTO
 It’s important to keep in mind that common sense may fail you
 when it comes to matters of cryptography. The first and most
@@ -11316,9 +10143,6 @@ worry about it and use a third-party authentication provider.
 This may be an off-the-shelf service you run in-house, or it
 could be a third party in the cloud. Authentication services are
 [66]
-
--- 393 of 497 --
-
 often available from email, phone, or social media providers,
 which may or may not be appropriate for your application. In
 any case, these folks spend all their days keeping their systems
@@ -11330,9 +10154,6 @@ Topic 24, Dead Programs Tell No Lies
 Topic 25, Assertive Programming
 Topic 38, Programming by Coincidence
 Topic 45, The Requirements Pit
-
--- 394 of 497 --
-
 The beginning of
 wisdom is to call
 things by their proper
@@ -11366,9 +10187,6 @@ There’s some science behind the idea that names are deeply
 ---
 
 ## [Sección 110] Chapter 7
-
--- 395 of 497 --
-
 meaningful. It turns out that the brain can read and understand
 words really fast: faster than many other activities. This means
 that words have a certain priority when we try to make sense of
@@ -11390,9 +10208,6 @@ let user = authenticate(credentials)
 The variable is user because it’s always user. But why? It means
 [67]
 [68]
-
--- 396 of 497 --
-
 nothing. How about customer, or buyer? That way we get constant
 reminders as we code of what this person is trying to do, and what
 that means to us.
@@ -11423,9 +10238,6 @@ clarifying what you mean, and that act of clarification will lead
 you to a better understanding of your code as you write it.
 However, not all names have to be candidates for a literary
 prize.
-
--- 397 of 497 --
-
 The Exception That Proves the Rule
 While we strive for clarity in code, branding is a different matter entirely.
 There’s a well-established tradition that projects and project teams should have
@@ -11454,9 +10266,6 @@ underscores to separate words. The languages themselves will of
 course accept either, but that doesn’t make it right. Honor the
 local culture.
 [69]
-
--- 398 of 497 --
-
 Some languages allow a subset of Unicode in names. Get a sense
 of what the community expects before going all cute with names
 like ɹǝsn or εξέρχεται.
@@ -11487,9 +10296,6 @@ RENAMING IS EVEN HARDER
 ---
 
 ## [Sección 111] Chapter 7
-
--- 399 of 497 --
-
 No matter how much effort you put in up front, things change.
 Code is refactored, usage shifts, meaning becomes subtly
 altered. If you aren’t vigilant about updating names as you go,
@@ -11515,9 +10321,6 @@ Topic 3, Software Entropy
 Topic 40, Refactoring
 Topic 45, The Requirements Pit
 CHALLENGES
-
--- 400 of 497 --
-
 When you find a function or method with an overly generic name,
 try and rename it to express all the things it really does. Now it’s an
 easier target for refactoring.
@@ -11557,9 +10360,6 @@ comes from eXtreme Programming) was identical to what people now call TDD.
 https://ronjeffries.com/categories/sudoku. A big “thank you” to Ron for letting us use
 this story.
 http://norvig.com/sudoku.html
-
--- 401 of 497 --
-
 Copyright © 2020 Pearson Education, Inc.
 [61]
 [62]
@@ -11596,9 +10396,6 @@ FORTRAN. And FORTRAN was in turn influenced by algebra.
 ---
 
 ## [Sección 112] Chapter 7
-
--- 402 of 497 --
-
 ---
 
 ## [Sección 113] Chapter 8
@@ -11624,9 +10421,6 @@ Even though the Agile Manifesto begins with “Individuals and
 interactions over processes and tools,” virtually all “agile”
 projects begin with an ironic discussion of which process and
 which tools they’ll use. But no matter how well thought out it is,
-
--- 403 of 497 --
-
 and regardless of which “best practices” it includes, no method
 can replace thinking. You don’t need any particular process or
 tool, what you do need is the Topic 48, The Essence of Agility.
@@ -11634,9 +10428,6 @@ With these critical issues sorted out before the project gets
 under way, you can be better positioned to avoid “analysis
 paralysis” and actually begin—and complete—your successful
 project.
-
--- 404 of 497 --
-
 Perfection is achieved,
 not when there is
 nothing left to add
@@ -11669,9 +10460,6 @@ THE REQUIREMENTS MYTH
 In the early days of software, computers were more valuable (in
 terms of amortized cost per hour) than the people who worked
 with them. We saved money by trying to get things correct the
-
--- 405 of 497 --
-
 first time. Part of that process was trying to specify exactly what
 we were going to get the machine to do. We’d start by getting a
 specification of the requirements, parlay that into a design
@@ -11702,9 +10490,6 @@ sometimes be expressed in business terms, and sometimes in
 ---
 
 ## [Sección 114] Chapter 8
-
--- 406 of 497 --
-
 technical ones.
 The mistake new developers often make is to take this
 statement of need and implement a solution for it.
@@ -11727,9 +10512,6 @@ What about international orders?
 How often will the $50 limit change in the future?
 That’s what we do. When given something that seems simple,
 we annoy people by looking for edge cases and asking about
-
--- 407 of 497 --
-
 them.
 The chances are the client will have already thought of some of
 these, and just assumed that the implementation would work
@@ -11755,9 +10537,6 @@ likely be about $30, making the whole order $55. We’d
 then make the shipping free, and they’d get overnight
 shipping on a $25 book for just $25.
 (At this point the experienced developer stops. Deliver
-
--- 408 of 497 --
-
 facts, and let the client make the decisions,)
 Client:
 Ouch. That certainly wasn’t what I intended; we’d lose
@@ -11783,9 +10562,6 @@ words. Sometimes that’s not the case. And sometimes you
 honestly won’t know enough about the domain to be as specific
 as that.
 In those cases, Pragmatic Programmers rely on the “is this what
-
--- 409 of 497 --
-
 you meant?” school of feedback. We produce mockups and
 prototypes, and let the client play with them. Ideally the things
 we produce are flexible enough that we can change them during
@@ -11819,9 +10595,6 @@ basis for communication with your clients. Just remember not
 ---
 
 ## [Sección 115] Chapter 8
-
--- 410 of 497 --
-
 to get in the way!
 Tip 78 Work with a User to Think Like a User
 Gathering feedback is also the time to start to build a rapport
@@ -11848,9 +10621,6 @@ requirements in this way naturally leads you to a system that is
 well factored to support metadata.
 In fact, there’s a general rule here:
 Tip 79 Policy Is Metadata
-
--- 411 of 497 --
-
 Implement the general case, with the policy information as an
 example of the type of thing the system needs to support.
 REQUIREMENTS VS. REALITY
@@ -11879,9 +10649,6 @@ say “yes, it does what I want, but not how I want.”
 DOCUMENTING REQUIREMENTS
 We believe that the best requirements documentation, perhaps
 [71]
-
--- 412 of 497 --
-
 the only requirements documentation, is working code.
 But that doesn’t mean that you can get away without
 documenting your understanding of what the client wants. It
@@ -11914,9 +10681,6 @@ problem, programmers are interested in all the details and
 ---
 
 ## [Sección 116] Chapter 8
-
--- 413 of 497 --
-
 nuances. The requirements document is written for developers,
 and contains information and subtleties that are sometimes
 incomprehensible and frequently boring to the client.
@@ -11943,9 +10707,6 @@ When written this way, the requirements can be placed on a
 board and moved around to show both status and priority.
 You might think that a single index card can’t hold the
 information needed to implement a component of the
-
--- 414 of 497 --
-
 application. You’d be right. And that’s part of the point. By
 keeping this statement of requirements short, you’re
 encouraging developers to ask clarifying questions. You’re
@@ -11974,9 +10735,6 @@ They’ll see another story card go up on the board, and they’ll get
 to help choose another card to move into the next iteration to
 make room. Feedback works both ways.
 MAINTAIN A GLOSSARY
-
--- 415 of 497 --
-
 As soon as you start discussing requirements, users and domain
 experts will use certain terms that have specific meaning to
 them. They may differentiate between a “client” and a
@@ -12005,9 +10763,6 @@ Topic 46, Solving Impossible Puzzles
 ---
 
 ## [Sección 117] Chapter 8
-
--- 416 of 497 --
-
 Topic 52, Delight Your Users
 EXERCISES
 Exercise 33 (possible answer)
@@ -12028,9 +10783,6 @@ good feel for requirements without being able to use the software
 yourself?
 Pick a non-computer-related problem you currently need to solve.
 Generate requirements for a noncomputer solution.
-
--- 417 of 497 --
-
 Gordius, the King of
 Phrygia, once tied a
 knot that no one could
@@ -12072,9 +10824,6 @@ discover that the obvious solutions just don’t work. The puzzle
 can’t be solved that way. But even though it’s obvious, that
 doesn’t stop people from trying the same thing—over and over—
 thinking there must be a way.
-
--- 418 of 497 --
-
 Of course, there isn’t. The solution lies elsewhere. The secret to
 solving the puzzle is to identify the real (not imagined)
 constraints, and find a solution therein. Some constraints are
@@ -12100,9 +10849,6 @@ For example, can you connect all of the dots in the following
 puzzle and return to the starting point with just three straight
 lines—without lifting your pen from the paper or retracing your
 steps (Math Puzzles & Games [Hol92])?
-
--- 419 of 497 --
-
 You must challenge any preconceived notions and evaluate
 whether or not they are real, hard-and-fast constraints.
 It’s not whether you think inside the box or outside the box. The
@@ -12127,9 +10873,6 @@ By the way, a solution to the Four Posts puzzle is shown at the
 ---
 
 ## [Sección 118] Chapter 8
-
--- 420 of 497 --
-
 end of the book.
 GET OUT OF YOUR OWN WAY!
 Sometimes you will find yourself working on a problem that
@@ -12157,9 +10900,6 @@ Often, the distraction of simply talking about it will lead you to
 enlightenment.
 Have them ask you questions such as:
 [72]
-
--- 421 of 497 --
-
 Why are you solving this problem?
 What’s the benefit of solving it?
 Are the problems you’re having related to edge cases? Can you
@@ -12184,9 +10924,6 @@ And always remember the advice on the cover of The
 Hitchhiker’s Guide to the Galaxy: DON’T PANIC.
 RELATED SECTIONS INCLUDE
 Topic 5, Good-Enough Software
-
--- 422 of 497 --
-
 Topic 37, Listen to Your Lizard Brain
 Topic 45, The Requirements Pit
 Andy wrote an entire book about this kind of thing: Pragmatic
@@ -12198,9 +10935,6 @@ Do you have to do it at all?
 Were you handed a set of constraints when you signed on to your
 current project? Are they all still applicable, and is the
 interpretation of them still valid?
-
--- 423 of 497 --
-
 I’ve never met a
 human being who
 would want to read
@@ -12241,9 +10975,6 @@ users; they are part of your team. On that first project together,
 ---
 
 ## [Sección 119] Chapter 8
-
--- 424 of 497 --
-
 we practiced what now might be called pair programming or
 mob programming: one person typing code while one or more
 other team members comment, ponder, and solve problems
@@ -12274,9 +11005,6 @@ PAIR PROGRAMMING
 Pair programming is one of the practices of eXtreme
 Programming that has become popular outside of XP itself. In
 pair programming, one developer operates the keyboard, and
-
--- 425 of 497 --
-
 the other does not. Both work on the problem together, and can
 switch typing duties as needed.
 There are many benefits to pair programming. Different people
@@ -12305,9 +11033,6 @@ or pitchforks. It’s an extension of pair programming that
 involves more than just two developers. Proponents report great
 results using mobs to solve hard problems. Mobs can easily
 include people not usually considered part of the development
-
--- 426 of 497 --
-
 team, including users, project sponsors, and testers. In fact, in
 our first “impossible” project together, it was a common sight
 for one of us to be typing while the other discussed the issue
@@ -12338,9 +11063,6 @@ wrong.
 ---
 
 ## [Sección 120] Chapter 8
-
--- 427 of 497 --
-
 Conduct frequent retrospectives to try and improve for next time.
 Coding in the same office or remote, alone, in pairs, or in mobs,
 are all effective ways of working together to solve problems. If
@@ -12358,9 +11080,6 @@ production code.
 But however you go about it, let us suggest one final piece of
 advice:
 Tip 82 Don’t Go into the Code Alone
-
--- 428 of 497 --
-
 You keep using that
 word, I do not think it
 means
@@ -12391,9 +11110,6 @@ developers, and more fancy job titles which just mean “someone
 with a clipboard and a stopwatch.”
 [73]
 [74]
-
--- 429 of 497 --
-
 We feel that many people have lost sight of the true meaning of
 agility, and we’d like to see folks return to the basics.
 Remember the values from the manifesto:
@@ -12417,9 +11133,6 @@ generative process.
 THERE CAN NEVER BE AN AGILE PROCESS
 In fact, whenever someone says “do this, and you’ll be agile,”
 they are wrong. By definition.
-
--- 430 of 497 --
-
 Because agility, both in the physical world and in software
 development, is all about responding to change, responding to
 the unknowns you encounter after you set out. A running
@@ -12448,9 +11161,6 @@ our recipe for working in an agile way:
 ---
 
 ## [Sección 121] Chapter 8
-
--- 431 of 497 --
-
 2. Make the smallest meaningful step towards where you want to be.
 3. Evaluate where you end up, and fix anything you broke.
 Repeat these steps until you’re done. And use them recursively,
@@ -12470,9 +11180,6 @@ By applying the feedback loop at a really low level (the naming
 of a variable) we’ve actually improved the design of the overall
 system, reducing the coupling between this code and the code
 that deals with accounts.
-
--- 432 of 497 --
-
 The feedback loop also applies at the highest level of a project.
 Some of our most successful work has happened when we
 started working on a client’s requirements, took a single step,
@@ -12499,9 +11206,6 @@ easy to change, we can adjust, at every level, without any
 hesitation.
 That is agility.
 RELATED SECTIONS INCLUDE
-
--- 433 of 497 --
-
 Topic 27, Don’t Outrun Your Headlights
 Topic 40, Refactoring
 Topic 50, Coconuts Don’t Cut It
@@ -12527,9 +11231,6 @@ https://www.wired.com/1999/01/eno/
 https://www.psychologytoday.com/us/blog/your-brain-work/201209/stop-tryingsolve-problems
 https://agilemanifesto.org
 For more on just how bad that approach can be, see The Tyranny of Metrics [Mul18].
-
--- 434 of 497 --
-
 ---
 
 ## [Sección 122] Chapter 9
@@ -12554,9 +11255,6 @@ And of course none of that matters if you can’t deliver software
 consistently and reliably. That’s the basis of the magic trio of
 version control, testing, and automation: the Topic 51,
 Pragmatic Starter Kit.
-
--- 435 of 497 --
-
 Ultimately, though, success is in the eye of the beholder—the
 sponsor of the project. The perception of success is what counts,
 and in Topic 52, Delight Your Users we’ll show you how to
@@ -12564,9 +11262,6 @@ delight every project’s sponsor.
 The last tip in the book is a direct consequence of all the rest. In
 Topic 53, Pride and Prejudice, we ask you to sign your work,
 and to take pride in what you do.
-
--- 436 of 497 --
-
 At Group L, Stoffel
 oversees six first-rate
 programmers, a
@@ -12601,9 +11296,6 @@ and no one knows each other aren’t a team either, they are
 merely strangers temporarily sharing a bus stop in the rain.
 A pragmatic team is small, under 10-12 or so members.
 [75]
-
--- 437 of 497 --
-
 Members come and go rarely. Everyone knows everyone well,
 trusts each other, and depends on each other.
 Tip 84 Maintain Small, Stable Teams
@@ -12634,9 +11326,6 @@ is built in, not bolted on.
 ---
 
 ## [Sección 123] Chapter 9
-
--- 438 of 497 --
-
 BOILED FROGS
 Remember the apocryphal frog in the pan of water, back in
 Topic 4, Stone Soup and Boiled Frogs? It doesn’t notice the
@@ -12666,9 +11355,6 @@ If your team is serious about improvement and innovation, you
 need to schedule it. Trying to get things done “whenever there’s
 a free moment” means they will never happen. Whatever sort of
 [76]
-
--- 439 of 497 --
-
 backlog or task list or flow you’re working with, don’t reserve it
 for only feature development. The team works on more than
 just new features. Some possible examples include:
@@ -12695,9 +11381,6 @@ Learning and skill improvements
 Personal learning and improvements are a great start,
 but many skills are more effective when spread teamwide. Plan to do it, whether it’s the informal brown-bag
 lunch or more formal training sessions.
-
--- 440 of 497 --
-
 Tip 85 Schedule It to Make It Happen
 COMMUNICATE TEAM PRESENCE
 It’s obvious that developers in a team must talk to each other.
@@ -12731,9 +11414,6 @@ work.
 ---
 
 ## [Sección 124] Chapter 9
-
--- 441 of 497 --
-
 DON’T REPEAT YOURSELVES
 In Topic 9, DRY—The Evils of Duplication, we talked about the
 difficulties of eliminating duplicated work between members of
@@ -12762,9 +11442,6 @@ architecture, coding for frontend and server, testing, all have to
 happen. But it’s a common misconception that these activities
 and tasks can happen separately, in isolation. They can’t.
 [78]
-
--- 442 of 497 --
-
 Some methodologies advocate all sort of different roles and
 titles within the team, or create separate specialized teams
 entirely. But the problem with that approach is that it
@@ -12792,9 +11469,6 @@ changes and tune your team and process quickly and easily.
 Tip 86 Organize Fully Functional Teams
 Build teams so you can build code end-to-end, incrementally
 and iteratively.
-
--- 443 of 497 --
-
 AUTOMATION
 A great way to ensure both consistency and accuracy is to
 automate everything the team does. Why struggle with code
@@ -12825,9 +11499,6 @@ CHALLENGES
 ---
 
 ## [Sección 125] Chapter 9
-
--- 444 of 497 --
-
 Look around for successful teams outside the area of software
 development. What makes them successful? Do they use any of the
 processes discussed in this section?
@@ -12842,9 +11513,6 @@ were writing code instead? In how many scenarios is the time
 actually reduced?
 Read The Mythical Man Month [Bro96] by Frederick Brooks. For
 extra credit, buy two copies so you can read it twice as fast.
-
--- 445 of 497 --
-
 Topic 50 Coconuts Don’t Cut It
 The native islanders had never seen an airplane before, or met
 people such as these strangers. In return for use of their land,
@@ -12869,9 +11537,6 @@ For example, we have personally seen teams that claim to be
 using Scrum. But, upon closer examination, it turned out they
 were doing a daily stand up meeting once a week, with fourweek iterations that often turned into six- or eight-week
 [79]
-
--- 446 of 497 --
-
 iterations. They felt that this was okay because they were using
 a popular “agile” scheduling tool. They were only investing in
 the superficial artifacts—and even then, often in name only, as if
@@ -12898,9 +11563,6 @@ policies, processes, and methods are not enough.
 Tip 87 Do What Works, Not What’s Fashionable
 How do you know “what works”? You rely on that most
 fundamental of Pragmatic techniques:
-
--- 447 of 497 --
-
 Try it.
 Pilot the idea with a small team or set of teams. Keep the good
 bits that seem to work well, and discard anything else as waste
@@ -12932,9 +11594,6 @@ For example, Scrum defines some project management
 ---
 
 ## [Sección 126] Chapter 9
-
--- 448 of 497 --
-
 practices, but Scrum by itself doesn’t provide enough guidance
 at the technical level for teams or at the portfolio/governance
 level for leadership. So where do you start?
@@ -12951,9 +11610,6 @@ many teams and organizations, continuous delivery feels like a
 lofty, unattainable goal, especially if you’re saddled with a
 process that restricts delivery to months, or even weeks. But as
 with any goal, the key is to keep aiming in the right direction.
-
--- 449 of 497 --
-
 images/delivery_times.png
 If you’re delivering in years, try and shorten the cycle to
 months. From months, cut it down to weeks. From a four-week
@@ -12970,9 +11626,6 @@ the main trunk of your version control system, not in branches,
 and use techniques such as feature switches to roll out test
 features to users selectively.
 Once your infrastructure is in order, you need to decide how to
-
--- 450 of 497 --
-
 organize the work. Beginners might want to start with Scrum for
 project management, plus the technical practices from eXtreme
 Programming (XP). More disciplined and experienced teams
@@ -12991,9 +11644,6 @@ Topic 27, Don’t Outrun Your Headlights
 Topic 48, The Essence of Agility
 Topic 49, Pragmatic Teams
 Topic 51, Pragmatic Starter Kit
-
--- 451 of 497 --
-
 Civilization advances
 by extending the
 number of important
@@ -13026,9 +11676,6 @@ procedure are open to interpretation by different people.
 After we wrote the first edition of The Pragmatic Programmer,
 we wanted to create more books to help teams develop software.
 We figured we should start at the beginning: what are the most
-
--- 452 of 497 --
-
 basic, most important elements that every team needs
 regardless of methodology, language, or technology stack. And
 so the idea of the Pragmatic Starter Kit was born, covering
@@ -13058,9 +11705,6 @@ That is, build, test, and deployment are triggered via commits or
 ---
 
 ## [Sección 127] Chapter 9
-
--- 453 of 497 --
-
 pushes to version control, and built in a container in the cloud.
 Release to staging or production is specified by using a tag in
 your version control system. Releases then become a much
@@ -13088,9 +11732,6 @@ In fact, a good project may well have more test code than
 production code. The time it takes to produce this test code is
 worth the effort. It ends up being much cheaper in the long run,
 and you actually stand a chance of producing a product with
-
--- 454 of 497 --
-
 close to zero defects.
 Additionally, knowing that you’ve passed the test gives you a
 high degree of confidence that a piece of code is “done.’’
@@ -13116,9 +11757,6 @@ Once all of the pertinent modules have passed their individual
 tests, you’re ready for the next stage. You need to test how all
 the modules use and interact with each other throughout the
 system.
-
--- 455 of 497 --
-
 Integration Testing
 Integration testing shows that the major subsystems that make
 up the project work and play well with each other. With good
@@ -13150,9 +11788,6 @@ For some applications, you may need specialized testing
 ---
 
 ## [Sección 128] Chapter 9
-
--- 456 of 497 --
-
 hardware or software to simulate the load realistically.
 Testing the Tests
 Because we can’t write perfect software, it follows that we can’t
@@ -13178,9 +11813,6 @@ code base thoroughly enough?
 The short answer is “you don’t,’’ and you never will. You might
 look to try coverage analysis tools that watch your code during
 [81]
-
--- 457 of 497 --
-
 testing and keep track of which lines of code have been executed
 and which haven’t. These tools help give you a general feel for
 how comprehensive your testing is, but don’t expect to see 100%
@@ -13209,9 +11841,6 @@ according to the contracts and invariants of the code under test.
 We cover this topic in detail in Topic 42, Property-Based
 Testing.
 [82]
-
--- 458 of 497 --
-
 TIGHTENING THE NET
 Finally, we’d like to reveal the single most important concept in
 testing. It is an obvious one, and virtually every textbook says to
@@ -13242,9 +11871,6 @@ administrator gave each developer a set of instructions on
 ---
 
 ## [Sección 129] Chapter 9
-
--- 459 of 497 --
-
 installing add-on packages to the IDE. These instructions filled
 many pages—pages full of click here, scroll there, drag this,
 double-click that, and do it again.
@@ -13272,9 +11898,6 @@ need so you can concentrate on the hard part: delighting users.
 RELATED SECTIONS INCLUDE
 Topic 11, Reversibility
 [83]
-
--- 460 of 497 --
-
 Topic 12, Tracer Bullets
 Topic 17, Shell Games
 Topic 19, Version Control
@@ -13290,9 +11913,6 @@ acceptable results? Won’t this make it hard to prove to the sponsors
 that the project is “done”?
 Is it too hard to test the application logic independent of the GUI?
 What does this say about the GUI? About coupling?
-
--- 461 of 497 --
-
 When you enchant
 people, your goal is not
 to make money
@@ -13326,9 +11946,6 @@ How do you unearth their expectations, then? Ask a simple
 question:
 How will you know that we’ve all been successful a month (or a
 year, or whatever) after this project is done?
-
--- 462 of 497 --
-
 You may well be surprised by the answer. A project to improve
 product recommendations might actually be judged in terms of
 customer retention; a project to consolidate two databases
@@ -13363,9 +11980,6 @@ obvious to individual departments.
 ---
 
 ## [Sección 130] Chapter 9
-
--- 463 of 497 --
-
 Tip 96 Delight Users, Don’t Just Deliver Code
 If you want to delight your client, forge a relationship with them
 where you can actively help solve their problems. Even though
@@ -13378,9 +11992,6 @@ RELATED SECTIONS INCLUDE
 Topic 12, Tracer Bullets
 Topic 13, Prototypes and Post-it Notes
 Topic 45, The Requirements Pit
-
--- 464 of 497 --
-
 You have delighted us
 long enough.
 Jane Austen, Pride and
@@ -13409,9 +12020,6 @@ other people’s code with respect. The Golden Rule (“Do unto
 others as you would have them do unto you’’) and a foundation
 of mutual respect among the developers is critical to make this
 tip work.
-
--- 465 of 497 --
-
 Anonymity, especially on large projects, can provide a breeding
 ground for sloppiness, mistakes, sloth, and bad code. It
 becomes too easy to see yourself as just a cog in the wheel,
@@ -13432,9 +12040,6 @@ A Pragmatic Programmer.
 Thank you.
 images/dave_and_andy.png
 [84]
-
--- 466 of 497 --
-
 In the long run, we
 shape our lives, and we
 shape ourselves. The
@@ -13472,10 +12077,6 @@ Mythical Unit Test Coverage [ADSS18].
 Always remember Topic 3, Software Entropy. Always.
 http://www.extremeprogramming.org
 
--- 467 of 497 --
-
--- 468 of 497 --
-
 ---
 
 ## [Sección 131] Chapter 10
@@ -13501,9 +12102,6 @@ details, our programs are everywhere. Our imagination is
 everywhere.
 We developers are incredibly privileged. We are truly building
 the future. It’s an extraordinary amount of power. And with that
-
--- 469 of 497 --
-
 power comes an extraordinary responsibility.
 How often do we stop to think about that? How often do we
 discuss, both among ourselves and with a more general
@@ -13526,9 +12124,6 @@ We’ve seen hints of the possibilities of a utopian future, and
 examples of unintended consequences leading to nightmare
 dystopias. The difference between the two outcomes might be
 more subtle than you think. And it’s all in your hands.
-
--- 470 of 497 --
-
 The Moral Compass
 The price of this unexpected power is vigilance. Our actions
 directly affect people. No longer the hobby program on the 8-bit
@@ -13552,9 +12147,6 @@ then you bear some responsibility when things go bad.
 Tip 98 First, Do No Harm
 Second, there’s a judgment related to the Golden Rule: would I
 be happy to be a user of this software? Do I want my details
-
--- 471 of 497 --
-
 shared? Do I want my movements to be given to retail outlets?
 Would I be happy to be driven by this autonomous vehicle? Am
 I comfortable doing this?
@@ -13563,9 +12155,6 @@ behavior, and if you’re involved in that project, you are just as
 responsible as the sponsors. No matter how many degrees of
 separation you might rationalize, one rule remains true:
 Tip 99 Don’t Enable Scumbags
-
--- 472 of 497 --
-
 Imagine the Future you Want
 It’s up to you. It’s your imagination, your hopes, your concerns
 that provide the pure thought-stuff that builds the next twenty
@@ -13586,9 +12175,6 @@ Copyright © 2020 Pearson Education, Inc.
 ---
 
 ## [Sección 132] Chapter 10
-
--- 473 of 497 --
-
 [ADSS18
 ]
 [And10]
@@ -13628,9 +12214,6 @@ Projects and Teams. Addison-Wesley, Boston, MA, Third,
 2013.
 Martin Fowler. UML Distilled: A Brief Guide to the
 Standard Object Modeling Language. Addison-
-
--- 474 of 497 --
-
 [Fow04]
 [Fow19]
 [GHJV9
@@ -13684,9 +12267,6 @@ Construction. Prentice Hall, Upper Saddle River, NJ,
 Second, 1997.
 Jerry Z. Muller. The Tyranny of Metrics. Princeton
 University Press, Princeton NJ, 2018.
-
--- 475 of 497 --
-
 [SF13]
 [Str35]
 [SW11]
@@ -13729,9 +12309,6 @@ Answer 1 (from exercise 1)
 ---
 
 ## [Sección 133] Chapter 10
-
--- 476 of 497 --
-
 To our way of thinking, class Split2 is more orthogonal. It
 concentrates on its own task, splitting lines, and ignores details
 such as where the lines are coming from. Not only does this
@@ -13761,9 +12338,6 @@ another. If you’re not careful, making a change to the data
 format a function generates can result in a failure somewhere
 down the transformational stream. Languages with good type
 systems can help mitigate this.
-
--- 477 of 497 --
-
 Answer 3 (from exercise 3)
 Low-tech to the rescue! Draw a few cartoons with markers on a
 whiteboard—a car, a phone, and a house. It doesn’t have to be
@@ -13794,9 +12368,6 @@ static Command cmds[] = {
 };
 The main program is pretty simple: read a line, look up the
 command, get the argument if required, then call the handler
-
--- 478 of 497 --
-
 function.
 lang/turtle.c
 while (fgets(buff, sizeof(buff), stdin)) {
@@ -13825,9 +12396,6 @@ return 0;
 Finally, reading the numeric argument is pretty simple using
 sscanf.
 lang/turtle.c
-
--- 479 of 497 --
-
 int getArg(const char *buff, int *result) {
 return sscanf(buff, "%d", result) == 1;
 }
@@ -13847,9 +12415,6 @@ digit ::= 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
 ---
 
 ## [Sección 134] Chapter 10
-
--- 480 of 497 --
-
 A better definition of hour and minute would take into account
 that an hours can only be from 00 to 23, and a minute from 00
 to 59:
@@ -13871,9 +12436,6 @@ ampm
 hour
 = h:two_hour_digits { return h*60 }
 / h:digit { return h*60 }
-
--- 481 of 497 --
-
 minute
 = d1:[0-5] d2:[0-9] { return parseInt(d1+d2, 10); }
 digit
@@ -13906,9 +12468,6 @@ let tests = {
 "2:30": h(2) + m(30),
 "14:30": pm(h(2)) + m(30),
 "2:30pm": pm(h(2)) + m(30),
-
--- 482 of 497 --
-
 }
 test('time parsing', function (t) {
 for (const string in tests) {
@@ -13941,9 +12500,6 @@ result[:hour].to_i * 60 +
 (result[:ampm] == "pm" ? 12*60 : 0)
 end
 end
-
--- 483 of 497 --
-
 (This code uses the trick of defining named patterns at the start
 of the regular expression, and then referencing them as
 subpatterns in the actual match.)
@@ -13969,9 +12525,6 @@ Answer 14 (from exercise 14)
 We’ll show the function signatures in Java, with the pre- and
 postconditions in comments.
 40 43
-
--- 484 of 497 --
-
 First, the invariant for the class:
 /**
 * @invariant getSpeed() > 0
@@ -14007,9 +12560,6 @@ September, 1752 had only 19 days. This was done to synchronize
 ---
 
 ## [Sección 135] Chapter 10
-
--- 485 of 497 --
-
 calendars as part of the Gregorian Reformation.
 The directory could have been removed by another process, you
 might not have permission to read it, the drive might not be
@@ -14038,9 +12588,6 @@ dereferencing a NULL pointer will generate a runtime error.
 Answer 18 (from exercise 18)
 By setting the reference to NULL, you reduce the number of
 pointers to the referenced object by one. Once this count
-
--- 486 of 497 --
-
 reaches zero, the object is eligible for garbage collection. Setting
 the references to NULL can be significant for long-running
 programs, where the programmers need to ensure that memory
@@ -14072,9 +12619,6 @@ choice. There’s a reactive function named buffer with size and offset
 parameters that would let you return each group of three incoming
 events. You could then look at the timestamps of the first and last
 event in a group to determine if the alarm should be triggered.
-
--- 487 of 497 --
-
 …after sunset, and there is motion detected at the bottom of the
 stairs followed by motion detected at the top of the stairs…
 This could probably be implemented using a combination of
@@ -14106,9 +12650,6 @@ field contents as string
 ---
 
 ## [Sección 136] Chapter 10
-
--- 488 of 497 --
-
 → [validate & convert]
 → {:ok, value} | {:error, reason}
 could be broken down into:
@@ -14136,9 +12677,6 @@ We could event swap the order of remove_comments and
 find_matching_lines and it would still work.
 But in the chained style, this would be more difficult. Where
 should our remove_comments method live: in the object returned by
-
--- 489 of 497 --
-
 content_of or the object returned by find_matching_lines? And what
 other code will we break if we change that object? This coupling
 is why the method chaining style is sometimes called a train
@@ -14167,9 +12705,6 @@ There is also some flexibility on data formats: we are free
 to ignore formats or languages we don’t understand. We
 have to understand different formats only for those
 offices that have meetings with each other, and we do not
-
--- 490 of 497 --
-
 need to expose all participants to a full transitive closure
 of all possible formats. This reduces coupling to where it
 is necessary, and does not constrain us artificially.
@@ -14197,9 +12732,6 @@ sometimes it works and sometimes it doesn’t.
 And what about the difference in machines from development
 and production? It’s just a coincidence.
 Answer 26 (from exercise 26)
-
--- 491 of 497 --
-
 The fact that a purely numeric field works in the US, Canada,
 and the Caribbean is a coincidence. Per the ITU spec,
 international call format starts with a literal + sign. The *
@@ -14230,9 +12762,6 @@ However, we can give you a couple of pointers.
 ---
 
 ## [Sección 137] Chapter 10
-
--- 492 of 497 --
-
 If you find that your results don’t follow a smooth curve, you
 might want to check to see if some other activity is using some
 of your processor’s power. You probably won’t get good figures
@@ -14241,13 +12770,7 @@ programs. You might also want to check memory: if the
 application starts using swap space, performance will nose dive.
 Here’s a graph of the results of running the code on one of our
 machines:
-
--- 493 of 497 --
-
 images/alg-speed-rust-results.png
-
--- 494 of 497 --
-
 Answer 29 (from exercise 29)
 There are a couple of ways of getting there. One is to turn the
 problem on its head. If the array has just one element, we don’t
@@ -14270,9 +12793,6 @@ returned if the warehouse had stock.
 Answer 32 (from exercise 32)
 This is a good use of property-based testing. The unit tests can
 focus on individual cases where you’ve worked out the result by
-
--- 495 of 497 --
-
 some other means, and the property tests can focus on things
 like:
 Do any two crates overlap?
@@ -14305,9 +12825,6 @@ user is thinking. Is this a scaling issue? Or performance? Cost?
 Security? The answers will inform your design.
 4. The underlying requirement is probably something closer to “The
 system will prevent the user from making invalid entries in fields,
-
--- 496 of 497 --
-
 and will warn the user when these entries are made.’’
 5. This statement is probably a hard requirement, based on some
 hardware limitation.
@@ -14317,8 +12834,5 @@ Copyright © 2020 Pearson Education, Inc.
 [85]
 Footnotes
 Thanks for this bit of trivia goes to Avi Bryant (@avibryant)
-
--- 497 of 497 --
-
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #architecture_and_books

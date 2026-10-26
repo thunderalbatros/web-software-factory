@@ -1,5 +1,7 @@
 # CANON: Master Curriculum — Books, Academic Papers, Official Docs & Video Courses on Software Factories (2026)
 
+> **Alcance:** Estándares ISO/IEC 26550 SPLE, Spec-Driven Development, compilación de tokens W3C DTCG y automatización de la Web Software Factory.
+
 > **Scope:** Curated syllabus and operational synthesis of the foundational books, peer-reviewed papers, official documentation, and masterclass video courses ingested into `Omni-RAG v5` to train Squads 0–9 as elite Software Factory engineers.
 > **Verified Date:** 2026-10-25 `[VERIFICADO: Omni-RAG v5 Master Syllabus]`.
 

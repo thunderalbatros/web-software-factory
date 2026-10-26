@@ -1,10 +1,10 @@
-﻿**Alcance:** Masterclass de Apple WWDC18 (Designing Fluid Interfaces): redirección continua de gestos, latencia perceptual cero y coreografía espacial. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+**Alcance:** Masterclass de Apple WWDC18 (Designing Fluid Interfaces): redirección continua de gestos, latencia perceptual cero y coreografía espacial. .
 
 ---
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -19,19 +19,19 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Diseño de Interfaces Fluidas para Yendo Mobile
+# Informe Técnico: Diseño de Interfaces Fluidas para la Web Software Factory
 
 ## 1. Concepto Central y Tesis Arquitectónica
 
 La tesis central de "Designing Fluid Interfaces" es que una interfaz verdaderamente fluida se siente como una **extensión de la mente y el cuerpo del usuario**, no como una herramienta separada. Esto se logra eliminando las capas de abstracción entre el usuario y el contenido, permitiendo una interacción directa, de baja fricción, intuitiva y "mágica". La fluidez no es solo una cuestión de framerate, sino de cómo la interfaz responde, se redirige, mantiene la consistencia espacial, predice la intención y simula comportamientos físicos realistas.
 
-Para Yendo Mobile, esto significa construir experiencias que no solo sean funcionales, sino que **desaparezcan en la interacción**. La arquitectura de Yendo debe orquestar una respuesta inmediata y continua a los gestos del usuario, permitiendo la interrupción y redirección en cualquier momento. Los elementos de la interfaz deben comportarse con una física creíble (masa, elasticidad, amortiguación), manteniendo una consistencia espacial que refuerce la intuición del usuario. El objetivo es que cada interacción se sienta natural, predecible y gratificante, transformando la aplicación en una extensión orgánica de la voluntad del usuario.
+Para la Web Software Factory, esto significa construir experiencias que no solo sean funcionales, sino que **desaparezcan en la interacción**. La arquitectura de WebFactory debe orquestar una respuesta inmediata y continua a los gestos del usuario, permitiendo la interrupción y redirección en cualquier momento. Los elementos de la interfaz deben comportarse con una física creíble (masa, elasticidad, amortiguación), manteniendo una consistencia espacial que refuerce la intuición del usuario. El objetivo es que cada interacción se sienta natural, predecible y gratificante, transformando la aplicación en una extensión orgánica de la voluntad del usuario.
 
 ## 2. Hallazgos Técnicos Clave
 
 ### Ergonomía de la Interacción
 
-1.  **Respuesta Inmediata (Low Latency):** La latencia es el enemigo de la fluidez. Cada interacción (taps, swipes, presses) debe responder instantáneamente. Yendo debe "buscar retrasos en todas partes" y eliminarlos para que la interfaz se sienta "viva y dinámica".
+1.  **Respuesta Inmediata (Low Latency):** La latencia es el enemigo de la fluidez. Cada interacción (taps, swipes, presses) debe responder instantáneamente. WebFactory debe "buscar retrasos en todas partes" y eliminarlos para que la interfaz se sienta "viva y dinámica".
 2.  **Redirección e Interrupción Continua:** Las interfaces deben permitir al usuario cambiar de opinión a mitad de un gesto. El pensamiento y el gesto deben ocurrir en paralelo. La detección de cambios en la aceleración del dedo (no solo la velocidad o temporizadores) es clave para una respuesta rápida a las pausas o cambios de dirección.
 3.  **Consistencia Espacial:** Los elementos de la UI deben tener un "hogar" consistente. Las transiciones deben ser simétricas (si algo entra por la derecha, sale por la derecha). Esto refuerza la memoria espacial del usuario y hace que los gestos se sientan alineados con su comprensión del mundo.
 4.  **Sugerencia de Dirección (Hinting):** Las animaciones deben "crecer" o expandirse en la dirección del estado final, anticipando la intención del usuario y haciendo que los gestos se sientan esperados y predecibles.
@@ -69,7 +69,7 @@ Para Yendo Mobile, esto significa construir experiencias que no solo sean funcio
 4.  **Manejo de Múltiples Gestos:** Detectar todos los posibles gestos desde el inicio de la acción. Una vez que la intención es clara, cancelar los gestos no deseados. Esto evita retrasos y mantiene la interfaz responsiva (ej. 3D Touch vs. Scroll).
 5.  **Proyección de Momentum:** Para gestos de arrastre o lanzamiento, no solo usar la posición final, sino proyectar dónde "aterrizaría" el objeto basándose en su velocidad y tasa de deceleración (ej. `UIScrollView.DecelerationRate`). Esto alinea el movimiento con la intención del usuario, incluso para flicks ligeros.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
 ### Web UI / Vanilla & Modern Frontend & Web Platform 57
 
@@ -102,16 +102,16 @@ Para Yendo Mobile, esto significa construir experiencias que no solo sean funcio
 
 ### Lenguaje de Producto (Venue / Experiencia / Grupo)
 
-*   **Venue (Consistencia Espacial):** La interfaz de Yendo debe sentirse como un "lugar" coherente. Esto se logra mediante:
+*   **Venue (Consistencia Espacial):** La interfaz de WebFactory debe sentirse como un "lugar" coherente. Esto se logra mediante:
     *   **Transiciones Simétricas:** Asegurar que los elementos entran y salen de la vista de manera predecible.
     *   **"Hogares" Consistentes:** Cada componente o pantalla debe tener un lugar lógico en el espacio de la aplicación.
     *   **Navegación Intuitiva:** Los gestos de navegación deben reforzar la sensación de moverse a través de un espacio.
-*   **Experiencia (Magia y Naturalidad):** La "magia" de Yendo se construirá a través de la orquestación de todos los principios de fluidez:
+*   **Experiencia (Magia y Naturalidad):** La "magia" de WebFactory se construirá a través de la orquestación de todos los principios de fluidez:
     *   **Respuesta Inmediata y Redirección:** La interfaz siempre se siente "viva" y "conectada" al usuario.
     *   **Física Creíble:** Los elementos se comportan como objetos del mundo real, con masa y elasticidad.
     *   **Feedback Predictivo:** La interfaz anticipa y guía al usuario.
     *   **Fricción Cero:** La interacción es sin esfuerzo y gratificante.
-*   **Grupo (Cohesión del Carácter):** Yendo debe tener un "carácter" de interacción unificado. Si Yendo es eficiente y directo, sus animaciones elásticas deben ser rápidas y con poco *overshoot* (damping alto). Si es más juguetón, puede permitirse más rebote.
+*   **Grupo (Cohesión del Carácter):** WebFactory debe tener un "carácter" de interacción unificado. Si WebFactory es eficiente y directo, sus animaciones elásticas deben ser rápidas y con poco *overshoot* (damping alto). Si es más juguetón, puede permitirse más rebote.
     *   **Familia de Comportamientos:** Todas las animaciones y gestos deben compartir un conjunto común de parámetros de resorte (damping, response) para mantener una sensación consistente en toda la aplicación.
 
 ### Invariantes de Ingeniería
@@ -122,7 +122,7 @@ Para Yendo Mobile, esto significa construir experiencias que no solo sean funcio
     *   Priorizar la respuesta de la UI sobre la confirmación del servidor cuando sea posible (optimistic UI updates).
 *   **`StyleSheet.create` canónico (Consistencia Visual y de Comportamiento):**
     *   Fomentar la modularidad y la reutilización de estilos y componentes. Esto es crucial para mantener la consistencia visual y de comportamiento en toda la aplicación.
-    *   Crear un sistema de diseño (Design System) que encapsule los parámetros de las animaciones (ej. `springConfig.default`, `springConfig.bouncy`) para asegurar que todos los desarrolladores apliquen la "familia de comportamientos" de Yendo.
+    *   Crear un sistema de diseño (Design System) que encapsule los parámetros de las animaciones (ej. `springConfig.default`, `springConfig.bouncy`) para asegurar que todos los desarrolladores apliquen la "familia de comportamientos" de WebFactory.
     *   Utilizar tokens de diseño para espaciado, tipografía y color, asegurando que los elementos interactivos se adhieran a la Ley de Fitts y al lenguaje de Material 3.
 *   **Dunbar 4-6 (Complejidad de Gestos):**
     *   Aplicar el principio de "Dunbar 4-6" a la complejidad de los gestos y las interacciones. Mantener el número de gestos primarios y sus variaciones dentro de un rango manejable para el usuario (idealmente no más de 4-6 gestos principales por contexto).

@@ -5,7 +5,7 @@
 [knowledge/courses/end_to_end_llm_post_training_bigquery_to_production.md › 🎓 Master Course: End-to-End LLM Post-Training — From BigQuery to Autonomous 24/7 Production › Video Course Transcript & Practical Implementation Manual (2026 Edition)]
 **Instructor:** Dr. Aris Thorne (Principal AI Systems Architect, ex-DeepMind / GCP Advanced Programs)  
 **Total Duration:** 6 Hours 45 Minutes (Full 8 Modules with Code Labs)  
-**Target Architecture:** Multi-Agent Livestream Apprenticeship Systems (Centinela Studio)  
+**Target Architecture:** Multi-Agent Livestream Apprenticeship Systems (la Web Software Factory)  
 
 ---
 

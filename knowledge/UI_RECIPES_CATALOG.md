@@ -1,4 +1,6 @@
-﻿# UI RECIPES CATALOG — Semantic Intent-to-Code Mapping (2026)
+# UI RECIPES CATALOG — Semantic Intent-to-Code Mapping (2026)
+
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
 
 > **Purpose:** Instant lookup catalog for Antigravity and WebFactory agents.  
 > Whenever a prompt describes a visual effect or interaction, find the exact formula and file path in `< 1 second`.

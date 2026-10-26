@@ -1,127 +1,17 @@
-﻿**Alcance:** Libro completo Generative AI with LangChain (Ben Auffarth): cadenas de recuperación, agentes con herramientas y evaluación RAG. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+# 📚 Libro Completo: Generative AI with LangChain
 
----
-titulo: "Generative AI with LangChain"
-autor: "Ben Auffarth"
-dominio: "Agentes Autónomos, Chains y Tool Calling"
-tipo: "libro_tecnico_completo"
-paginas_originales: 361
-secciones_totales: 239
-fecha_ingesta: "2026-10-06T02:43:55.452Z"
----
+**Alcance:** Fuente bibliográfica completa sobre Agentic Chains, Retrieval Pipelines & Structured Outputs (Generative AI with LangChain — Ben Auffarth). Aplicable a Web Software Factory y Enterprise Web App. NO sustituye los contratos de negocio ni las reglas inmutables en `CANON_*`.
 
-# 📖 Generative AI with LangChain
-**Autor:** Ben Auffarth | **Dominio:** Agentes Autónomos, Chains y Tool Calling | **Páginas originales:** 361
-
-> **Nota de Arquitectura Centinela:** Este documento contiene el texto íntegro estructurado por secciones y capítulos para consulta profunda del equipo de agentes y búsqueda híbrida (BM25 + semántica).
+> **Autor:** Ben Auffarth  
+> **Dominio:** Agentic Chains, Retrieval Pipelines & Structured Outputs  
+> **Archivo Fuente:** `Generative-AI-with-LangChain-Ben-Auffarth.pdf`  
+> **Páginas Originales:** 361 (100% Ingerido, Cero Truncamiento)  
+> **Secciones Técnicas Extraídas:** 169 (Entropía Técnica Media: 0.414)  
+> **Fecha de Ingesta:** 2026-10-26
 
 ---
 
-## [Sección 1] Introducción y Fundamentos
-
--- 1 of 361 --
-
-Generative AI with LangChain
-Build large language model (LLM) apps with Python,
-ChatGPT, and other LLMs
-Ben Auffarth
-BIRMINGHAM—MUMBAI
-
--- 2 of 361 --
-
-Generative AI with LangChain
-Copyright © 2023 Packt Publishing
-All rights reserved. No part of this book may be reproduced, stored in a retrieval system, or transmitted in
-any form or by any means, without the prior written permission of the publisher, except in the case of brief
-quotations embedded in critical articles or reviews.
-Every effort has been made in the preparation of this book to ensure the accuracy of the information
-presented. However, the information contained in this book is sold without warranty, either express or
-implied. Neither the author, nor Packt Publishing or its dealers and distributors, will be held liable for any
-damages caused or alleged to have been caused directly or indirectly by this book.
-Packt Publishing has endeavored to provide trademark information about all of the companies and products
-mentioned in this book by the appropriate use of capitals. However, Packt Publishing cannot guarantee
-the accuracy of this information.
-Senior Publishing Product Manager: Tushar Gupta
-Acquisition Editor – Peer Reviews: Tejas Mhasvekar
-Project Editor: Namrata Katare
-Content Development Editors: Tanya D’cruz and Elliot Dallow
-Copy Editor: Safis Editing
-Technical Editor: Kushal Sharma
-Proofreader: Safis Editing
-Indexer: Manju Arasan
-Presentation Designer: Ajay Patule
-Developer Relations Marketing Executive: Monika Sangwan
-First published: December 2023
-Production reference: 1141223
-Published by Packt Publishing Ltd.
-Grosvenor House
-11 St Paul’s Square
-Birmingham
-B3 1RB, UK.
-ISBN 978-1-83508-346-8
-www.packt.com
-
--- 3 of 361 --
-
-To Diane and Nico
-– Ben Auffarth
-
--- 4 of 361 --
-
-Contributors
-About the author
-Ben Auffarth is a seasoned data science leader with a background and Ph.D. in computational
-neuroscience. Ben has analyzed terabytes of data, simulated brain activity on supercomputers
-with up to 64k cores, designed and conducted wet lab experiments, built production systems
-processing underwriting applications, and trained neural networks on millions of documents.
-He’s the author of the books Machine Learning for Time Series and Artificial Intelligence with Python
-Cookbook. He now works in insurance at Hastings Direct.
-Creating this book has been a long and sometimes arduous journey, but also an exciting one. It has
-been enriched immeasurably by the contributions of several key individuals to whom I owe great
-thanks. Foremost, I extend my heartfelt gratitude to Leo, whose insightful feedback significantly
-refined this book. I am equally delighted with my astute editors — Tanya, Elliot, and Kushal. Their
-efforts went above and beyond expectations. Tanya, in particular, was instrumental in guiding me
-through the writing process, continually challenging me to clarify my thoughts and significantly
-shaping the final product.
-
--- 5 of 361 --
-
-About the reviewers
-Leonid Ganeline is a machine learning engineer with extensive experience in natural language
-processing. He has worked in several start-ups, creating models and production systems. He is
-an active contributor to LangChain and several other open-source projects. His interest lies in
-model evaluation, especially in LLM evaluation
-I would like to express my gratitude to my parents, for teaching me how to think rationally, and to
-my wife, for supporting me in this endeavor.
-Ruchi Bhatia is a computer engineer with a Master’s degree in information systems management
-from Carnegie Mellon University. Currently, she is leveraging her skills as a product marketing
-manager in the rapidly evolving field of data science and AI at HP. She takes pride in being the
-youngest triple Kaggle Grandmaster across the Notebooks, Datasets, and Discussion categories.
-Her previous role as the Leader of Data Science at OpenMined allowed her to steer a team of data
-scientists to create innovative and impactful solutions.
-I want to take a moment to express my heartfelt thanks to my parents. Their unwavering support and
-encouragement throughout my journey have been invaluable. Without their belief in my abilities
-and their constant guidance, I wouldn’t have achieved the milestones I have today. Thank you, Mom
-and Dad, for always being there for me.
-
----
-
-## [Sección 2] Introducción y Fundamentos
-
--- 6 of 361 --
-
-Join our community on Discord
-Join our community's Discord space for discussions with the authors and other readers:
-https://packt.link/lang
-
--- 7 of 361 --
-
-Table of Contents
-Preface xv
-
----
-
-## [Sección 3] Chapter 1: What Is Generative AI? 1
+## Sección 1: Chapter 1: What Is Generative AI? 1 [Entropy: 0.25]
 
 Introducing generative AI ��������������������������������������������������������������������������������������������������� 2
 What are generative models? • 4
@@ -140,14 +30,11 @@ What are text-to-image models? �����������������
 What can AI do in other domains? ������������������������������������������������������������������������������������� 33
 Summary �������������������������������������������������������������������������������������������������������������������������� 34
 Questions �������������������������������������������������������������������������������������������������������������������������� 35
-
--- 8 of 361 --
-
 Table of Contents viii
 
 ---
 
-## [Sección 4] Chapter 2: LangChain for LLM Apps 37
+## Sección 2: Chapter 2: LangChain for LLM Apps 37 [Entropy: 0.25]
 
 Going beyond stochastic parrots ��������������������������������������������������������������������������������������� 38
 What are the limitations of LLMs? • 38
@@ -166,7 +53,7 @@ Questions ������������������������
 
 ---
 
-## [Sección 5] Chapter 3: Getting Started with LangChain 65
+## Sección 3: Chapter 3: Getting Started with LangChain 65 [Entropy: 0.25]
 
 How to set up the dependencies for this book ������������������������������������������������������������������� 65
 pip • 67
@@ -181,9 +68,6 @@ Google Cloud Platform • 77
 Jina AI • 80
 Replicate • 82
 Others • 84
-
--- 9 of 361 --
-
 Table of Contents ix
 Azure • 84
 Anthropic • 85
@@ -197,7 +81,7 @@ Questions ������������������������
 
 ---
 
-## [Sección 6] Chapter 4: Building Capable Assistants 99
+## Sección 4: Chapter 4: Building Capable Assistants 99 [Entropy: 0.265]
 
 Mitigating hallucinations through fact-checking ����������������������������������������������������������� 100
 Summarizing information ���������������������������������������������������������������������������������������������� 103
@@ -216,15 +100,12 @@ Questions ������������������������
 
 ---
 
-## [Sección 7] Chapter 5: Building a Chatbot like ChatGPT 131
+## Sección 5: Chapter 5: Building a Chatbot like ChatGPT 131 [Entropy: 0.25]
 
 What is a chatbot? ������������������������������������������������������������������������������������������������������������ 132
 Understanding retrieval and vectors �������������������������������������������������������������������������������� 134
 Embeddings • 135
 Vector storage • 139
-
--- 10 of 361 --
-
 Table of Contents x
 Vector indexing • 140
 Vector libraries • 141
@@ -250,7 +131,7 @@ Questions ������������������������
 
 ---
 
-## [Sección 8] Chapter 6: Developing Software with Generative AI 173
+## Sección 6: Chapter 6: Developing Software with Generative AI 173 [Entropy: 0.25]
 
 Software development and AI ������������������������������������������������������������������������������������������ 174
 Code LLMs • 175
@@ -259,9 +140,6 @@ StarCoder • 179
 StarChat • 184
 Llama 2 • 186
 Small local model • 187
-
--- 11 of 361 --
-
 Table of Contents xi
 Automating software development ��������������������������������������������������������������������������������� 189
 Summary ������������������������������������������������������������������������������������������������������������������������ 201
@@ -269,7 +147,7 @@ Questions ������������������������
 
 ---
 
-## [Sección 9] Chapter 7: LLMs for Data Science 203
+## Sección 7: Chapter 7: LLMs for Data Science 203 [Entropy: 0.25]
 
 The impact of generative models on data science ����������������������������������������������������������� 204
 Automated data science �������������������������������������������������������������������������������������������������� 207
@@ -284,7 +162,7 @@ Questions ������������������������
 
 ---
 
-## [Sección 10] Chapter 8: Customizing LLMs and Their Output 225
+## Sección 8: Chapter 8: Customizing LLMs and Their Output 225 [Entropy: 0.25]
 
 Conditioning LLMs ��������������������������������������������������������������������������������������������������������� 226
 Methods for conditioning • 227
@@ -299,9 +177,6 @@ Prompt engineering ���������������������
 Prompt techniques • 244
 Zero-shot prompting • 246
 Few-shot learning • 246
-
--- 12 of 361 --
-
 Table of Contents xii
 Chain-of-thought prompting • 248
 Self-consistency • 249
@@ -311,7 +186,7 @@ Questions ������������������������
 
 ---
 
-## [Sección 11] Chapter 9: Generative AI in Production 257
+## Sección 9: Chapter 9: Generative AI in Production 257 [Entropy: 0.25]
 
 How to get LLM apps ready for production ��������������������������������������������������������������������� 258
 Terminology • 260
@@ -333,16 +208,13 @@ Questions ������������������������
 
 ---
 
-## [Sección 12] Chapter 10: The Future of Generative Models 299
+## Sección 10: Chapter 10: The Future of Generative Models 299 [Entropy: 0.295]
 
 The current state of generative AI ���������������������������������������������������������������������������������� 300
 Challenges • 302
 Trends in model development • 304
 Big Tech vs. small enterprises • 307
 Artificial General Intelligence • 309
-
--- 13 of 361 --
-
 Table of Contents xiii
 Economic consequences ������������������������������������������������������������������������������������������������� 310
 Creative industries and advertising • 313
@@ -357,10 +229,6 @@ Regulations and implementation challenges • 319
 The road ahead ���������������������������������������������������������������������������������������������������������������� 321
 Other Books You May Enjoy 325
 Index 329
-
--- 14 of 361 --
-
--- 15 of 361 --
 
 Preface
 In the dynamic and rapidly advancing field of AI, generative AI stands out as a disruptive force
@@ -385,9 +253,6 @@ Who this book is for
 The book is intended for developers, researchers, and anyone else who is interested in learning
 more about LLMs. It is written in a clear and concise style, and it includes plenty of code examples
 to help you learn by doing.
-
--- 16 of 361 --
-
 Preface xvi
 Whether you are a beginner or an experienced developer, this book will be a valuable resource
 for anyone who wants to get the most out of LLMs and to stay ahead of the curve about LLMs
@@ -396,7 +261,7 @@ What this book covers
 
 ---
 
-## [Sección 13] Chapter 1, What Is Generative AI?, explains how generative AI has revolutionized the processing of
+## Sección 11: Chapter 1, What Is Generative AI?, explains how generative AI has revolutionized the processing of [Entropy: 0.25]
 
 text, images, and video, with deep learning at its core. This chapter introduces generative models
 such as LLMs, detailing their technical underpinnings and transformative potential across various
@@ -407,7 +272,7 @@ and video applications.
 
 ---
 
-## [Sección 14] Chapter 2, LangChain for LLM Apps, uncovers the need to expand beyond the stochastic parrots
+## Sección 12: Chapter 2, LangChain for LLM Apps, uncovers the need to expand beyond the stochastic parrots [Entropy: 0.25]
 
 of LLMs–models that mimic language without true understanding–by harnessing LangChain’s
 framework. Addressing limitations like outdated knowledge, action limitations, and hallucination
@@ -419,7 +284,7 @@ issues of contextuality, bias, and intransparency.
 
 ---
 
-## [Sección 15] Chapter 3, Getting Started with LangChain, provides foundational knowledge for you to set up
+## Sección 13: Chapter 3, Getting Started with LangChain, provides foundational knowledge for you to set up [Entropy: 0.25]
 
 your environment to run all examples in the book. It begins with installation guidance for Docker, Conda, Pip, and Poetry. The chapter then details integrating models from various providers
 like OpenAI’s ChatGPT and Hugging Face, including obtaining necessary API keys. It also deals
@@ -429,25 +294,18 @@ enhance the accuracy of responses.
 
 ---
 
-## [Sección 16] Chapter 4, Building Capable Assistants, tackles turning LLMs into reliable assistants by weaving
+## Sección 14: Chapter 4, Building Capable Assistants, tackles turning LLMs into reliable assistants by weaving [Entropy: 0.265]
 
 in fact-checking to reduce misinformation, employing sophisticated prompting strategies for
 summarization, and integrating external tools for enhanced knowledge. It explores the Chain of
 Density for information extraction and discusses LangChain decorators and expression language
 for customizing behavior. The chapter introduces map-reduce in LangChain for handling long
 documents and discusses token monitoring to manage API usage costs.
-
--- 17 of 361 --
-
 Preface xvii
 It looks at implementing a Streamlit application to create interactive LLM applications and using
 function calling and tool usage to transcend basic text generation. Two distinct agent paradigms,
 plan-and-solve and zero-shot, are implemented to demonstrate decision-making strategies.
-
----
-
-## [Sección 17] Chapter 5, Building a Chatbot like ChatGPT, delves into enhancing chatbot capabilities with retrieval-augmented generation (RAG), a method that provides LLMs with access to external
-
+Chapter 5, Building a Chatbot like ChatGPT, delves into enhancing chatbot capabilities with retrieval-augmented generation (RAG), a method that provides LLMs with access to external
 knowledge, improving their accuracy and domain-specific proficiency. This chapter discusses
 document vectorization, efficient indexing, and the use of vector databases like Milvus and Pinecone for semantic search. We implement a chatbot, incorporating moderation chains to ensure
 responsible communication. The chatbot, available on GitHub, serves as a basis for exploring
@@ -455,18 +313,14 @@ advanced topics like dialogue memory and context management.
 
 ---
 
-## [Sección 18] Chapter 6, Developing Software with Generative AI, examines the burgeoning role of LLMs in software
+## Sección 15: Chapter 6, Developing Software with Generative AI, examines the burgeoning role of LLMs in software [Entropy: 0.25]
 
 development, highlighting the potential for AI to automate coding tasks and serve as dynamic
 coding assistants. It explores the current state of AI-driven software development, experiments
 with models to generate code snippets, and introduces a design for an automated software development agent using LangChain. Critical reflections on the agent’s performance emphasize
 the importance of human oversight for error mitigation and high-level design, setting the stage
 for a future where AI and human developers work symbiotically.
-
----
-
-## [Sección 19] Chapter 7, LLMs for Data Science, explores the intersection of generative AI and data science, spotlighting LLMs’ potential to amplify productivity and drive scientific discovery. The chapter outlines
-
+Chapter 7, LLMs for Data Science, explores the intersection of generative AI and data science, spotlighting LLMs’ potential to amplify productivity and drive scientific discovery. The chapter outlines
 the current scope of automation in data science through AutoML and extends this notion with
 the integration of LLMs for advanced tasks like augmenting datasets and generating executable
 code. It covers practical methods for LLMs to conduct exploratory data analysis, run SQL queries,
@@ -475,32 +329,21 @@ address complex data-centric questions.
 
 ---
 
-## [Sección 20] Chapter 8, Customizing LLMs and Their Output, delves into conditioning techniques like fine-tuning
+## Sección 16: Chapter 8, Customizing LLMs and Their Output, delves into conditioning techniques like fine-tuning [Entropy: 0.478]
 
 and prompting, essential for tailoring LLM performance to complex reasoning and specialized
 tasks. We unpack fine-tuning, where an LLM is further trained on task-specific data, and prompt
 engineering, which strategically guides the LLM to generate desired outputs. Advanced prompting
 strategies such as few-shot learning and chain-of-thought are implemented, enhancing the reasoning capabilities of LLMs. The chapter not only provides concrete examples of fine-tuning and
 prompting but also discusses the future of LLM advancements and their applications in the field.
-
--- 18 of 361 --
-
 Preface xviii
-
----
-
-## [Sección 21] Chapter 9, Generative AI in Production, addresses the complexities of deploying LLMs within real-world applications, covering best practices for ensuring performance, meeting regulatory
-
+Chapter 9, Generative AI in Production, addresses the complexities of deploying LLMs within real-world applications, covering best practices for ensuring performance, meeting regulatory
 requirements, robustness at scale, and effective monitoring. It underscores the importance of
 evaluation, observability, and systematic operation to make generative AI beneficial in customer
 engagement and decision-making with financial consequences. It also outlines practical strategies for deployment and ongoing monitoring of LLM apps using tools like Fast API, Ray, and
 newcomers such as LangServe and LangSmith. These tools can provide automated evaluation
 and metrics that support the responsible adoption of generative AI across sectors.
-
----
-
-## [Sección 22] Chapter 10, The Future of Generative Models, ventures into the potential advancements and socio-technical challenges of generative AI. It examines the economic and societal impacts of these
-
+Chapter 10, The Future of Generative Models, ventures into the potential advancements and socio-technical challenges of generative AI. It examines the economic and societal impacts of these
 technologies, debating job displacement, misinformation, and ethical concerns like human value
 alignment. As various sectors brace for disruptive AI-induced changes, it reflects on the responsibility of corporations, lawmakers, and technologists to forge effective governance frameworks.
 This final chapter emphasizes the importance of steering AI development toward augmenting
@@ -519,9 +362,6 @@ We also provide a PDF file that has color images of the screenshots/diagrams use
 You can download it here: https://packt.link/gbp/9781835083468.
 Conventions used
 There are a number of text conventions used throughout this book.
-
--- 19 of 361 --
-
 Preface xix
 CodeInText: Indicates code words in text, database table names, folder names, filenames, file
 extensions, pathnames, dummy URLs, user input, and Twitter handles. For example: “Mount the
@@ -543,9 +383,6 @@ words in menus or dialog boxes appear in the text like this. For example: “Sel
 the Administration panel.”
 Warnings or important notes appear like this.
 Tips and tricks appear like this.
-
--- 20 of 361 --
-
 Preface xx
 Get in touch
 Feedback from our readers is always welcome.
@@ -565,9 +402,6 @@ Share your thoughts
 Once you’ve read Generative AI with LangChain, we’d love to hear your thoughts! Please click
 here to go straight to the Amazon review page for this book and share your feedback.
 Your review is important to us and the tech community and will help us make sure we’re delivering excellent quality content.
-
--- 21 of 361 --
-
 Download a free PDF copy of this book
 Thanks for purchasing this book!
 Do you like to read on the go but are unable to carry your print books everywhere? Is your eBook
@@ -582,14 +416,6 @@ Follow these simple steps to get the benefits:
 https://packt.link/free-ebook/9781835083468
 2. Submit your proof of purchase
 3. That’s it! We’ll send your free PDF and other benefits to your email directly
-
----
-
-## [Sección 23] Chapter 10, The Future of Generative Models, ventures into the potential advancements and socio-technical challenges of generative AI. It examines the economic and societal impacts of these
-
--- 22 of 361 --
-
--- 23 of 361 --
 What Is Generative AI?
 Over the last decade, deep learning has evolved massively to process and generate unstructured
 data like text, images, and video. These advanced AI models have gained popularity in various
@@ -612,9 +438,6 @@ We’ll follow this structure:
 • What are text-to-image models?
 • What can AI do in other domains?
 Let’s start from the beginning – by introducing the terminology!
-
--- 24 of 361 --
-
 What Is Generative AI? 2
 Introducing generative AI
 In the media, there is substantial coverage of AI-related breakthroughs and their potential implications. These range from advancements in Natural Language Processing (NLP) and computer
@@ -632,11 +455,9 @@ Figure 1.1: Average performance on the MMLU benchmark of LLMs
 Generative AI refers to algorithms that can generate novel content, as opposed to
 analyzing or acting on existing data like more traditional, predictive machine learning or AI systems.
 
--- 25 of 361 --
-
 ---
 
-## [Sección 24] Chapter 1 3
+## Sección 17: Chapter 1 3 [Entropy: 0.265]
 
 You can see significant improvements in recent years in this benchmark. Particularly, it highlights
 the progress of the models provided through a public user interface by OpenAI, especially the
@@ -667,9 +488,6 @@ As AI models like OpenAI’s GPT continue to improve, they could become indispen
 teams in need of diverse knowledge and skills.
 Please note that while most benchmark results come from 5-shot, a few, like the
 GPT-2, PaLM, and PaLM-2 results, refer to zero-shot conditioning.
-
--- 26 of 361 --
-
 What Is Generative AI? 4
 For example, GPT-4 could be considered a polymath that works tirelessly without demanding
 compensation (beyond subscription or API fees), providing competent assistance in subjects like
@@ -704,13 +522,7 @@ generative models, which generate images from text.
 
 ---
 
-## [Sección 25] Chapter 1 3
-
--- 27 of 361 --
-
----
-
-## [Sección 26] Chapter 1 5
+## Sección 18: Chapter 1 5 [Entropy: 0.43]
 
 Figure 1.2: ML in a suit. Generated by a model on replicate.com, Diffusers Stable Diffusion v2.1
 It’s worth distinguishing more clearly between the terms generative model, artificial intelligence,
@@ -725,9 +537,6 @@ learned from input data.
 • Language Models (LMs) are statistical models used to predict words in a sequence of
 natural language. Some language models utilize deep learning and are trained on massive
 datasets, becoming large language models (LLMs).
-
--- 28 of 361 --
-
 What Is Generative AI? 6
 This class diagram illustrates how LLMs combine deep learning techniques like neural networks
 with sequence modeling objectives from language modeling, at a very large scale:
@@ -749,11 +558,9 @@ Stable Diffusion, and Imagen.
 • Text-to-audio: Models that generate audio clips and music from text. Examples: Jukebox,
 AudioLM, and MusicGen.
 
--- 29 of 361 --
-
 ---
 
-## [Sección 27] Chapter 1 7
+## Sección 19: Chapter 1 7 [Entropy: 0.385]
 
 • Text-to-video: Models that generate video content from text descriptions. Example:
 Phenaki and Emu Video.
@@ -785,9 +592,6 @@ diverse range of capabilities via different modalities and domains. The LLM cate
 main focus of this book; however, we’ll also occasionally look at other models, text-to-image in
 particular. These models typically use a Transformer architecture trained on massive datasets
 via self-supervised learning.
-
--- 30 of 361 --
-
 What Is Generative AI? 8
 The rapid progress shows the potential of generative AI across diverse domains. Within the industry, there is a growing sense of excitement around AI’s capabilities and its potential impact on
 business operations. But there are key challenges such as data availability, compute requirements,
@@ -819,13 +623,7 @@ org/grapher/historical-cost-of-computer-memory-and-storage:
 
 ---
 
-## [Sección 28] Chapter 1 7
-
--- 31 of 361 --
-
----
-
-## [Sección 29] Chapter 1 9
+## Sección 20: Chapter 1 9 [Entropy: 0.25]
 
 Figure 1.4: Cost of computer storage since the 1950s in dollars (unadjusted) per terabyte
 While, in the past, training a DL model was prohibitively expensive, as the cost of hardware has
@@ -841,9 +639,6 @@ Particularly, it seems that in models with between 2 and 7 billion parameters, n
 capabilities emerge such as the ability to generate different creative text in formats
 like poems, code, scripts, musical pieces, emails, and letters, and to answer even
 open-ended and challenging questions in an informative way.
-
--- 32 of 361 --
-
 What Is Generative AI? 10
 This trend toward larger models started around 2009, when NVIDIA catalyzed what is often
 called the Big Bang of DL. GPUs are particularly well suited for the matrix/vector computations
@@ -877,13 +672,7 @@ it has become easier to collect large datasets of text, images, and other data.
 
 ---
 
-## [Sección 30] Chapter 1 9
-
--- 33 of 361 --
-
----
-
-## [Sección 31] Chapter 1 11
+## Sección 21: Chapter 1 11 [Entropy: 0.37]
 
 This has made it possible to train generative models on much larger datasets than would have
 been possible in the past. To further drive the development of generative models, the research
@@ -910,9 +699,6 @@ raw data to perform a machine learning task, rather than relying only on enginee
 feature extraction. For example, an image classification model based on representation learning might learn to represent images according to visual features like edges,
 shapes, and textures. The model isn’t told explicitly what features to look for – it
 learns representations of the raw pixel data that help it make predictions.
-
--- 34 of 361 --
-
 What Is Generative AI? 12
 Recently, LLMs have found applications for tasks like essay generation, code development, translation, and understanding genetic sequences. More broadly, applications of language models
 involve multiple areas, such as:
@@ -937,13 +723,7 @@ Like ChatGPT, but for now, let’s discuss the technical background of LLMs in s
 
 ---
 
-## [Sección 32] Chapter 1 11
-
--- 35 of 361 --
-
----
-
-## [Sección 33] Chapter 1 13
+## Sección 22: Chapter 1 13 [Entropy: 0.25]
 
 What is a GPT?
 LLMs are deep neural networks adept at understanding and generating human language. The
@@ -971,9 +751,6 @@ as measured in the quality of the output. Following pre-training, the model can 
 for specific language processing tasks like sentiment analysis, language translation, or chat. This
 combination of unsupervised and supervised learning enables GPT models to perform better
 across a range of NLP tasks and reduces the challenges associated with training LLMs.
-
--- 36 of 361 --
-
 What Is Generative AI? 14
 The size of the training corpus for LLMs has been increasing drastically. GPT-1, introduced by
 OpenAI in 2018, was trained on BookCorpus with 985 million words. BERT, released in the same
@@ -985,11 +762,9 @@ The size of the data points indicates training cost in terms of petaFLOPs and pe
 petaFLOP/s day is a unit of throughput that consists of performing 10 to the power of 15 operations per day. Training operations in the calculations are estimated as the approximate number
 of addition and multiplication operations based on the GPU utilization efficiency.
 
--- 37 of 361 --
-
 ---
 
-## [Sección 34] Chapter 1 15
+## Sección 23: Chapter 1 15 [Entropy: 0.25]
 
 For some models, especially proprietary and closed-source models, this information is not known
 – in these cases, I’ve placed a cross. For example, for XLNet, the paper doesn’t give information
@@ -1019,9 +794,6 @@ was able to keep costs reasonable by utilizing a Mixture of Experts (MoE) model 
 A foundation model (sometimes known as a base model) is a large model that was
 trained on an immense quantity of data at scale so that it can be adapted to a wide
 range of downstream tasks. In GPT models, this pre-training is done via self-supervised learning.
-
--- 38 of 361 --
-
 What Is Generative AI? 16
 Apparently, GPT-4 was trained on about 13 trillion tokens. However, these are not unique tokens
 since they count repeated presentation of the data in each epoch. Training was conducted for 2
@@ -1052,13 +824,7 @@ reasoning, coding, and natural language generation, compared to its predecessor 
 
 ---
 
-## [Sección 35] Chapter 1 15
-
--- 39 of 361 --
-
----
-
-## [Sección 36] Chapter 1 17
+## Sección 24: Chapter 1 17 [Entropy: 0.25]
 
 PaLM 2 was also tested on various professional language-proficiency exams. The exams used
 were for Chinese (HSK 7-9 Writing and HSK 7-9 Overall), Japanese (J-Test A-C Overall), Italian
@@ -1084,9 +850,6 @@ Variants of LLaMa 2 with different parameter sizes (7B, 13B, 34B, and 70B) have 
 While LLaMa was released under a non-commercial license, the LLaMa 2 are open to the general
 public for research and commercial use.
 LLaMa 2-Chat has undergone safety evaluation results compared to other open-source and closedsource models. Human raters judged the safety violations of model generations across approximately 2,000 adversarial prompts, including both single and multi-turn prompts.
-
--- 40 of 361 --
-
 What Is Generative AI? 18
 Claude and Claude 2 are AI assistants created by Anthropic. Evaluations suggest Claude 2, released
 in July 2023, is one of the best GPT-4 competitors in the market. It improves on previous versions
@@ -1115,13 +878,7 @@ and DreamFusion.
 
 ---
 
-## [Sección 37] Chapter 1 17
-
--- 41 of 361 --
-
----
-
-## [Sección 38] Chapter 1 19
+## Sección 25: Chapter 1 19 [Entropy: 0.403]
 
 There are quite a few companies and organizations developing generative AI in general, as well as LLMs, and they are releasing them on different terms – here’s just a few:
 • OpenAI have released GPT-2 as open source; however, subsequent models have been closed source but open for public usage on their website or
@@ -1151,9 +908,6 @@ models like GPT-Neo and GPT-J, fully open source and available to the public.
 • Aleph Alpha, Alibaba, and Baidu are providing API access or integrating
 their models into products rather than releasing parameters or training code.
 There are a few more notable institutions, such as the Technology Innovation Institute (TII), an Abu Dhabi government-funded research institution, which opensourced Falcon LLM for research and commercial usage.
-
--- 42 of 361 --
-
 What Is Generative AI? 20
 The complexity of estimating parameters in generative AI models suggests that smaller companies
 or organizations without sufficient computation power and expertise may struggle to deploy
@@ -1188,13 +942,7 @@ two sub-layers as the encoder.
 
 ---
 
-## [Sección 39] Chapter 1 19
-
--- 43 of 361 --
-
----
-
-## [Sección 40] Chapter 1 21
+## Sección 26: Chapter 1 21 [Entropy: 0.295]
 
 In addition, the decoder has a third sub-layer that performs Multi-Head Attention (MHA) over
 the output of the encoder stack. The decoder also uses residual connections and layer normalization. The self-attention sub-layer in the decoder is modified to prevent positions from attending
@@ -1211,9 +959,6 @@ using positional encodings. These encodings are added to the input embeddings re
 • Layer normalization: To stabilize the network’s learning, the transformer uses a technique called layer normalization. This technique normalizes the model’s inputs across
 the features dimension (instead of the batch dimension as in batch normalization), thus
 improving the overall speed and stability of learning.
-
--- 44 of 361 --
-
 What Is Generative AI? 22
 • Multi-head attention: Instead of applying attention once, the transformer applies it
 multiple times in parallel – improving the model’s ability to focus on different types of
@@ -1246,13 +991,7 @@ encoding of the next sentences.
 
 ---
 
-## [Sección 41] Chapter 1 21
-
--- 45 of 361 --
-
----
-
-## [Sección 42] Chapter 1 23
+## Sección 27: Chapter 1 23 [Entropy: 0.28]
 
 The combination of these architectural features allows GPT models to successfully tackle tasks
 that involve understanding and generating text in human language and other domains. The
@@ -1282,9 +1021,6 @@ accurately while higher values indicate poor learning performance. Intuitively, 
 a low perplexity means that the model is less surprised by the next word. Therefore, the goal in
 pre-training is to minimize perplexity, which means the model’s predictions align more with
 the actual outcomes.
-
--- 46 of 361 --
-
 What Is Generative AI? 24
 In comparing different language models, perplexity is often used as a benchmark metric across
 various tasks. It gives an idea about how well the language model is performing, where a lower
@@ -1314,13 +1050,7 @@ Each word is an individual token, as is the punctuation mark.
 
 ---
 
-## [Sección 43] Chapter 1 23
-
--- 47 of 361 --
-
----
-
-## [Sección 44] Chapter 1 25
+## Sección 28: Chapter 1 25 [Entropy: 0.28]
 
 There are a lot of tokenizers that work according to different principles, but common types of
 tokenizers employed in models are Byte-Pair Encoding (BPE), WordPiece, and SentencePiece.
@@ -1350,9 +1080,6 @@ all three factors must be scaled in tandem to avoid bottlenecks.
 Researchers at DeepMind (An empirical analysis of compute-optimal large language model training;
 Hoffmann and others, 2022) analyzed the training compute and dataset size of LLMs and concluded that LLMs are undertrained in terms of compute budget and dataset size as suggested
 by scaling laws.
-
--- 48 of 361 --
-
 What Is Generative AI? 26
 They predicted that large models would perform better if substantially smaller and trained for
 much longer, and – in fact – validated their prediction by comparing a 70-billion-parameter
@@ -1387,13 +1114,7 @@ range of applications. Prompt engineering and conditioning methods will be explo
 
 ---
 
-## [Sección 45] Chapter 8, Customizing LLMs and Their Output.
-
--- 49 of 361 --
-
----
-
-## [Sección 46] Chapter 1 27
+## Sección 29: Chapter 1 27 [Entropy: 0.25]
 
 How to try out these models
 You can access OpenAI’s model through their website or their API. If you want to try other LLMs
@@ -1403,7 +1124,7 @@ You can access these models through Hugging Face or other providers, as we’ll 
 
 ---
 
-## [Sección 47] Chapter 3, Getting Started with LangChain. You can even download these open-source models,
+## Sección 30: Chapter 3, Getting Started with LangChain. You can even download these open-source models, [Entropy: 0.325]
 
 fine-tune them, or fully train them. We’ll fine-tune a model in Chapter 8, Customizing LLMs and
 Their Output.
@@ -1427,9 +1148,6 @@ or edit out unwanted elements.
 specified through text, like “make this photo look like a Monet painting.”
 • Image recognition: Large foundation models can be used to recognize images, including
 classifying scenes, but also object detection, for example, detecting faces.
-
--- 50 of 361 --
-
 What Is Generative AI? 28
 Models like Midjourney, DALL-E 2, and Stable Diffusion provide creative and realistic images
 derived from textual input or other images. These models work by training deep neural networks
@@ -1457,13 +1175,7 @@ to an ink drop falling into a glass of water and gradually diffusing.
 
 ---
 
-## [Sección 48] Chapter 3, Getting Started with LangChain. You can even download these open-source models,
-
--- 51 of 361 --
-
----
-
-## [Sección 49] Chapter 1 29
+## Sección 31: Chapter 1 29 [Entropy: 0.25]
 
 The unique aspect of generative image models is the reverse diffusion process, where the model
 attempts to recover the original image from a noisy, meaningless image. By iteratively applying
@@ -1485,9 +1197,6 @@ With diffusion models, you can see a wide variety of outcomes using only minimal
 the initial setting of the model or – as in this case – numeric solvers and samplers. Although they
 sometimes produce striking results, the instability and inconsistency are a significant challenge
 to applying these models more broadly.
-
--- 52 of 361 --
-
 What Is Generative AI? 30
 Stable Diffusion was developed by the CompVis group at LMU Munich (High-Resolution Image
 Synthesis with Latent Diffusion Models by Blattmann and others, 2022). The Stable Diffusion model
@@ -1513,11 +1222,9 @@ space, providing the final output image.
 A VAE is a model that encodes data into a learned, smaller representation (encoding). These representations can then be used to generate new data similar to that used for training (decoding).
 This VAE is trained first.
 
--- 53 of 361 --
-
 ---
 
-## [Sección 50] Chapter 1 31
+## Sección 32: Chapter 1 31 [Entropy: 0.31]
 
 For training the image generation model in the latent space itself (latent diffusion model), a
 loss function is used to evaluate the quality of the generated images. One commonly used loss
@@ -1537,9 +1244,6 @@ path reaches the bottleneck of the U-Net, it then expands through a symmetric
 expanding path. In the expanding path, transposed convolutions (also known as
 upsampling or deconvolutions) are applied to progressively upsample the spatial
 dimensions while reducing the number of channels.
-
--- 54 of 361 --
-
 What Is Generative AI? 32
 The following images illustrate text-to-image generation from a text prompt with diffusion
 (source: Ramesh and others, Hierarchical Text-Conditional Image Generation with CLIP Latents,
@@ -1556,11 +1260,9 @@ to produce an image that aligns with the text prompt.
 It’s out of the scope of this book to provide a comprehensive survey of generative AI models for
 all modalities. However, let’s get a bit of an overview of what models can do for other domains.
 
--- 55 of 361 --
-
 ---
 
-## [Sección 51] Chapter 1 33
+## Sección 33: Chapter 1 33 [Entropy: 0.265]
 
 What can AI do in other domains?
 Generative AI models have demonstrated impressive capabilities across modalities including
@@ -1613,9 +1315,6 @@ DreamFusion Google 2022 3D NeRF + Diffusion
 High-fidelity 3D
 object generation
 from text
-
--- 56 of 361 --
-
 What Is Generative AI? 34
 AudioLM Google 2023
 Sound/
@@ -1661,11 +1360,9 @@ We also explained the basic concepts of models for image generation, such as the
 The next chapter will explore the tooling of generative models, particularly LLMs, with the LangChain framework, focusing on the fundamentals, the implementation, and the use of this particular
 tool in exploiting and extending the capability of LLMs.
 
--- 57 of 361 --
-
 ---
 
-## [Sección 52] Chapter 1 35
+## Sección 34: Chapter 1 35 [Entropy: 0.37]
 
 Questions
 I think it’s a good habit to check that you’ve digested the material when reading a technical book.
@@ -1686,10 +1383,6 @@ to ensure that you’ve understood the material.
 Join our community on Discord
 Join our community’s Discord space for discussions with the authors and other readers:
 https://packt.link/lang
-
--- 58 of 361 --
-
--- 59 of 361 --
 LangChain for LLM Apps
 Large Language Models (LLMs) like GPT-4 have demonstrated immense capabilities in generating
 human-like text. However, simply accessing LLMs via APIs has limitations. Instead, combining
@@ -1710,9 +1403,6 @@ The main sections of this chapter are:
 • Exploring key components of LangChain
 • How does LangChain work?
 • Comparing LangChain with other frameworks
-
--- 60 of 361 --
-
 LangChain for LLM Apps 38
 Going beyond stochastic parrots
 LLMs have gained significant attention and popularity due to their ability to generate human-like
@@ -1742,13 +1432,7 @@ their effectiveness in certain scenarios. Understanding these limitations is cru
 
 ---
 
-## [Sección 53] Chapter 1 35
-
--- 61 of 361 --
-
----
-
-## [Sección 54] Chapter 2 39
+## Sección 35: Chapter 2 39 [Entropy: 0.355]
 
 • Lack of context: LLMs struggle to incorporate relevant context like previous conversations and the supplementary details that are needed for coherent and useful responses.
 • Hallucination risks: Insufficient knowledge on certain topics can lead to the generation
@@ -1780,9 +1464,6 @@ Architecting solutions that combine LLMs with external data sources, analytical 
 tool integrations can help overcome these limitations. But in isolation, LLMs lack connection to
 the real-world context, which is often essential for useful applications. Their impressive natural
 language abilities need appropriate grounding and actions to produce substantive insights beyond eloquent but hollow text.
-
--- 62 of 361 --
-
 LangChain for LLM Apps 40
 Let’s look at a few examples of problems with LLMs. The cut-off day issue is illustrated here in
 the OpenAI ChatGPT interface asking about LangChain:
@@ -1794,11 +1475,9 @@ about certain entities, or it may refer to different entities entirely. Asking t
 the OpenAI playground, I got this response:
 Figure 2.2: OpenAI playground with GPT 3.5
 
--- 63 of 361 --
-
 ---
 
-## [Sección 55] Chapter 2 41
+## Sección 36: Chapter 2 41 [Entropy: 0.34]
 
 In this case, we can see that the model talks about a different LangChain, which is a decentralized
 blockchain-based translation platform. This is a problem of relevance, which can be referred
@@ -1812,9 +1491,6 @@ Figure 2.3: ChatGPT math solving
 As you can see, the model comes up with the correct response for the first question but fails with the
 second. Just in case you were wondering what the true result is, if we use a calculator, we get this:
 Figure 2.4: Multiplication with a calculator (BC)
-
--- 64 of 361 --
-
 LangChain for LLM Apps 42
 The LLM hasn’t stored the result of the calculation or hasn’t encountered it often enough in the
 training data for it to be reliably remembered as encoded in its weights. Therefore, it fails to correctly come up with the solution. An LLM is not a suitable tool for the job in this case.
@@ -1844,11 +1520,9 @@ interactions.
 • Fine-tuning: Training and tuning the LLM on more appropriate data for the application
 domain and principles. This adapts the model’s behavior for its specific purpose.
 
--- 65 of 361 --
-
 ---
 
-## [Sección 56] Chapter 2 43
+## Sección 37: Chapter 2 43 [Entropy: 0.475]
 
 To re-emphasize what we previously mentioned, raw model scale alone cannot impart compositional reasoning or other missing capabilities. Explicit techniques like elicit prompting and chainof-thought reasoning are needed to overcome the compositionality gap. Approaches like self-ask
 prompting mitigate these flaws by encouraging models to methodically decompose problems.
@@ -1874,9 +1548,6 @@ Figure 2.5: A traditional software application
 The client layer handles user interaction. The frontend layer handles presentation and business
 logic. The backend layer processes logic, APIs, computations, etc. Lastly, the database stores and
 retrieves data.
-
--- 66 of 361 --
-
 LangChain for LLM Apps 44
 In contrast, an LLM app is an application that utilizes an LLM to understand natural language
 prompts and generate responsive text outputs. LLM apps typically have the following components:
@@ -1901,11 +1572,9 @@ of LLM apps beyond the LLM’s knowledge alone. For instance:
 This is illustrated here:
 Figure 2.7: An advanced LLM application
 
--- 67 of 361 --
-
 ---
 
-## [Sección 57] Chapter 2 45
+## Sección 38: Chapter 2 45 [Entropy: 0.445]
 
 As can be seen in the preceding figure, the client layer collects user text queries and decisions.
 Prompt engineering constructs guide the LLM, considering external knowledge or capability (or
@@ -1937,9 +1606,6 @@ information lookup.
 and generate relevant results.
 • Automated content creation: Apps can leverage LLMs to generate content like articles,
 emails, code, and more based on a text prompt.
-
--- 68 of 361 --
-
 LangChain for LLM Apps 46
 • Question answering: Users can ask an LLM app questions in plain language and receive
 informative answers that are quickly sourced from the model’s knowledge.
@@ -1970,13 +1636,7 @@ abstractions and composable structure.
 
 ---
 
-## [Sección 58] Chapter 2 45
-
--- 69 of 361 --
-
----
-
-## [Sección 59] Chapter 2 47
+## Sección 39: Chapter 2 47 [Entropy: 0.325]
 
 Beyond basic LLM API usage, LangChain facilitates advanced interactions like conversational
 context and persistence through agents and memory. This allows for chatbots, gathering external
@@ -2002,9 +1662,6 @@ the learning curve can be a blocking factor to impactfully leveraging LLMs.
 There are active discussions on a Discord chat server, multiple blogs, and regular meetups taking
 place in various cities, including San Francisco and London. There’s even a chatbot, ChatLangChain, that can answer questions about the LangChain documentation. It’s built using LangChain
 and FastAPI and is available online through the documentation website!
-
--- 70 of 361 --
-
 LangChain for LLM Apps 48
 LangChain comes with many extensions and a larger ecosystem that is developing around it.
 As mentioned, it has an immense number of integrations already, with many new ones being
@@ -2022,11 +1679,9 @@ knowledge sources. The loaders ingest data for retrieval, while tools enable mod
 to external data services. LlamaHub simplifies the creation of customized data agents to unlock
 LLM capabilities.
 
--- 71 of 361 --
-
 ---
 
-## [Sección 60] Chapter 2 49
+## Sección 40: Chapter 2 49 [Entropy: 0.265]
 
 LangChainHub is a central repository for sharing artifacts like prompts, chains, and agents used
 in LangChain. Inspired by the Hugging Face Hub, it aims to be a one-stop resource for discovering high-quality building blocks to compose complex LLM apps. The initial launch focuses on a
@@ -2040,9 +1695,6 @@ Figure 2.9: Flowise UI with an agent that uses an LLM, a calculator, and a searc
 You can see an agent (discussed later in this chapter) that is connected to a search interface (Serp
 API), an LLM, and a calculator. LangChain and LangFlow can be deployed locally, for example,
 using the Chainlit library, or on different platforms, including Google Cloud. The langchainserve library helps to deploy both LangChain and LangFlow on the Jina AI cloud as LLM-appsas-a-service with a single command.
-
--- 72 of 361 --
-
 LangChain for LLM Apps 50
 While still relatively new, LangChain unlocks more advanced LLM applications via its combination of components like memory, chaining, and agents. It aims to simplify what can otherwise
 be complex LLM application development. Hence, it is crucial at this point in the chapter that
@@ -2068,11 +1720,9 @@ Chains can even enforce policies, like moderating toxic outputs or aligning with
 otherwise violate OpenAI’s moderation rules (OpenAIModerationChain), or that it conforms to
 ethical, legal, or custom principles (ConstitutionalChain).
 
--- 73 of 361 --
-
 ---
 
-## [Sección 61] Chapter 2 51
+## Sección 41: Chapter 2 51 [Entropy: 0.43]
 
 An LLMCheckerChain verifies statements to reduce inaccurate responses using a technique called
 self-reflection. The LLMCheckerChain can prevent hallucinations and reduce inaccurate responses by verifying the assumptions underlying the provided statements and questions. In a paper
@@ -2100,9 +1750,6 @@ to maximize reusability. Configurations should be made customizable. Robust erro
 with exceptions and errors is critical for reliability. Monitoring and logging can be enabled with
 different mechanisms, including callbacks.
 Let’s discuss agents next and how they make their decisions!
-
--- 74 of 361 --
-
 LangChain for LLM Apps 52
 What are agents?
 Agents are a key concept in LangChain for creating systems that interact dynamically with users
@@ -2131,13 +1778,7 @@ Together, this enables agents to handle complex, multi-step workflows and contin
 
 ---
 
-## [Sección 62] Chapter 2 51
-
--- 75 of 361 --
-
----
-
-## [Sección 63] Chapter 2 53
+## Sección 42: Chapter 2 53 [Entropy: 0.43]
 
 In the section about the limitations of LLMs, we’ve seen that for calculations, a simple calculator
 outperforms a model consisting of billions of parameters. In this case, an agent can decide to pass
@@ -2150,9 +1791,6 @@ Capable Assistants.
 A key limitation of agents and chains is their statelessness – each execution occurs in isolation
 without retaining prior context. This is where the concept of memory becomes critical. Memory
 in LangChain refers to persisting information across chain executions to enable statefulness.
-
--- 76 of 361 --
-
 LangChain for LLM Apps 54
 What is memory?
 In LangChain, memory refers to the persisting state between executions of a chain or agent. Robust
@@ -2183,11 +1821,9 @@ conversational context. The right memory approach depends on factors like persis
 data relationships, scale, and resources, but robustly retaining state is key for conversational and
 interactive applications.
 
--- 77 of 361 --
-
 ---
 
-## [Sección 64] Chapter 2 55
+## Sección 43: Chapter 2 55 [Entropy: 0.415]
 
 LangChain’s memory integrations, from short-term caching to long-term databases, enable the
 building of stateful, context-aware agents. Architecting effective memory patterns unlocks the
@@ -2217,9 +1853,6 @@ and lowest prices, and more.
 high-level semantics provided by APIs such as the python-pptx library or image retrieval
 from the internet based on given topics. These tools facilitate tasks related to slide creation
 that are required in various professional fields.
-
--- 78 of 361 --
-
 LangChain for LLM Apps 56
 • Table processing: APIs built with pandas DataFrames enable language models to perform
 data analysis and visualization tasks on tables. By connecting to these tools, models can
@@ -2256,13 +1889,7 @@ and enables them to handle various real-world tasks more efficiently and effecti
 
 ---
 
-## [Sección 65] Chapter 2 55
-
--- 79 of 361 --
-
----
-
-## [Sección 66] Chapter 2 57
+## Sección 44: Chapter 2 57 [Entropy: 0.58]
 
 After discussing chains, agents, memory, and tools, let’s put this all together to get a picture of
 how LangChain fits all of them together as moving parts.
@@ -2291,9 +1918,6 @@ methods for embedding documents vs. queries.
 • Retrievers: General interface to return documents based on a query. Can leverage vector
 stores.
 • Tools: Interfaces that agents use to interact with external systems.
-
--- 80 of 361 --
-
 LangChain for LLM Apps 58
 • Agents: Goal-driven systems that use LLMs to plan actions based on environment observations.
 • Toolkits: Initialize groups of tools that share resources like databases.
@@ -2321,11 +1945,9 @@ Document loaders allow ingesting data from various sources into documents contai
 metadata. This data can then be manipulated via document transformers – splitting, combining,
 filtering, translating, etc. These tools adapt external data for use in LLMs.
 
--- 81 of 361 --
-
 ---
 
-## [Sección 67] Chapter 2 59
+## Sección 45: Chapter 2 59 [Entropy: 0.25]
 
 Data loaders include modules for storing data and utilities for interacting with external systems,
 like web searches or databases, and most importantly data retrieval. Examples are Microsoft Word
@@ -2349,7 +1971,7 @@ Atlas Vector Search, PGVector as a vector similarity search for Postgres, Pineco
 
 ---
 
-## [Sección 68] Chapter 5, Building a Chatbot like ChatGPT.
+## Sección 46: Chapter 5, Building a Chatbot like ChatGPT. [Entropy: 0.25]
 
 There are a few other frameworks besides LangChain; however, we’ll see that LangChain is one
 of the most prominent and feature rich of them.
@@ -2360,9 +1982,6 @@ For full details on the dozens of available modules, refer to the comprehensive
 LangChain API reference: https://api.python.langchain.com/. There are also
 hundreds of code examples demonstrating real-world use cases: https://python.
 langchain.com/docs/use_cases/.
-
--- 82 of 361 --
-
 LangChain for LLM Apps 60
 Comparing LangChain with other frameworks
 LLM application frameworks have been developed to provide specialized tooling that can harness the power of LLMs effectively to solve complex problems. A few libraries have emerged that
@@ -2383,11 +2002,9 @@ LlamaIndex focuses on advanced retrieval rather than on the broader aspects of L
 for scalable information retrieval using retrievers, readers, and other data handlers combined
 with semantic indexing via pre-trained models.
 
--- 83 of 361 --
-
 ---
 
-## [Sección 69] Chapter 2 61
+## Sección 47: Chapter 2 61 [Entropy: 0.265]
 
 LangChain excels at chaining LLMs together using agents to delegate actions to models. Its use cases emphasize prompt optimization and context-aware information retrieval/generation; however,
 with its Pythonic highly modular interface and its huge collection of tools, it is the number-one
@@ -2413,9 +2030,6 @@ LLMs produce convincing language but have significant limitations in terms of re
 applications powered by LLMs that can mitigate these shortcomings. It provides developers with
 modular, reusable building blocks like chains for composing pipelines and agents for goal-oriented
 interactions. These building blocks fit together as LLM apps that come with extended capabilities.
-
--- 84 of 361 --
-
 LangChain for LLM Apps 62
 As we saw in this chapter, chains allow sequencing calls to LLMs, databases, APIs, and more to
 accomplish multi-step workflows. Agents leverage chains to take actions based on observations
@@ -2442,19 +2056,13 @@ corresponding sections of this chapter if you are unsure about any of them:
 9. What kind of tools are available in LangChain?
 10. How does LangChain work?
 
--- 85 of 361 --
-
 ---
 
-## [Sección 70] Chapter 2 63
+## Sección 48: Chapter 2 63 [Entropy: 0.325]
 
 Join our community on Discord
 Join our community’s Discord space for discussions with the authors and other readers:
 https://packt.link/lang
-
--- 86 of 361 --
-
--- 87 of 361 --
 Getting Started with LangChain
 In this book, we’ll write a lot of code and test many different integrations and tools. Therefore, in
 this chapter, we’ll give basic setup instructions for all the libraries needed with the most common
@@ -2476,9 +2084,6 @@ How to set up the dependencies for this book
 We’ll assume at least a basic familiarity with Python, Jupyter, and environments in this book, but
 let’s quickly walk through this together. You can safely skip this section if you are confident about
 your setup or if you plan to install libraries separately for each chapter or application.
-
--- 88 of 361 --
-
 Getting Started with LangChain 66
 Please make sure you have Python version 3.10 or higher installed. You can install it from python.
 org or your platform’s package manager. If you use Docker, Conda, or Poetry, an appropriate Python version should be installed automatically as part of the instructions. You should also install
@@ -2527,11 +2132,9 @@ For developers, Docker, which provides isolation via containers, is a good optio
 is that it uses a lot of disk space and is more complex than the other options. For data scientists,
 I’d recommend Conda or Poetry.
 
--- 89 of 361 --
-
 ---
 
-## [Sección 71] Chapter 3 67
+## Sección 49: Chapter 3 67 [Entropy: 0.34]
 
 Conda handles intricate dependencies efficiently, although it can be excruciatingly slow in large
 environments. Poetry resolves dependencies well and managed environments; however, it doesn’t
@@ -2562,9 +2165,6 @@ Let’s go from the simplest to the most complex. We’ll start with pip!
 pip
 pip is the default Python package manager. To use Pip:
 1. If it’s not already included in your Python distribution, install pip following the instructions here: https://pip.pypa.io/.
-
--- 90 of 361 --
-
 Getting Started with LangChain 68
 2. Use a virtual environment for isolation (for example, venv).
 3. Install the dependencies from requirements.txt:
@@ -2594,11 +2194,9 @@ Let’s move on and see some of the models that you can use with LangChain!
 There are many cloud providers of models, where you can use the model through an interface;
 other sources allow you to download a model to your computer.
 
--- 91 of 361 --
-
 ---
 
-## [Sección 72] Chapter 3 69
+## Sección 50: Chapter 3 69 [Entropy: 0.418]
 
 With the help of LangChain, we can interact with all of these – for example, through Application
 Programming Interface (APIs), or we can call models that we have downloaded on our computer.
@@ -2615,9 +2213,6 @@ https://integrations.langchain.com/llms.
 Here’s a screenshot of this page as of the time of writing (October 2023), which includes both
 cloud providers and interfaces for local models:
 Figure 3.1: LLM integrations in LangChain
-
--- 92 of 361 --
-
 Getting Started with LangChain 70
 LangChain implements three different interfaces – we can use chat models, LLMs, and embedding
 models. Chat models and LLMs are similar in that they both process text input and produce text
@@ -2648,11 +2243,9 @@ You can also expose these variables in your system environment from your termina
 macOS, you can set a system environment variable from the terminal using the export command:
 export OPENAI_API_KEY=<your token>
 
--- 93 of 361 --
-
 ---
 
-## [Sección 73] Chapter 3 71
+## Sección 51: Chapter 3 71 [Entropy: 0.695]
 
 To permanently set the environment variable in Linux or macOS, you would need to add the
 preceding line to the ~/.bashrc or ~/.bash_profile file, respectively, and then reload the shell
@@ -2681,9 +2274,6 @@ keys into the environment as mentioned. Anytime you want to run an application, 
 the function and run it like so:
 from config import set_environment
 set_environment()
-
--- 94 of 361 --
-
 Getting Started with LangChain 72
 Now, let’s go through a few prominent model providers in turn. We’ll give an example of usage
 for each of them. Let’s start with a fake LLM that we can use for testing purposes. This will help
@@ -2715,11 +2305,9 @@ We set up an agent that makes decisions based on the React strategy that we expl
 2, LangChain for LLM Apps (ZERO_SHOT_REACT_DESCRIPTION). We run the agent with a text: the
 question what's 2 + 2.
 
--- 95 of 361 --
-
 ---
 
-## [Sección 74] Chapter 3 73
+## Sección 52: Chapter 3 73 [Entropy: 0.331]
 
 As you can see, we connect a tool, a Python Read-Eval-Print Loop (REPL), that will be called depending on the output of the LLM. FakeListLLM will give two responses ("Action: Python_REPL\
 nAction Input: print(2 + 2)" and "Final Answer: 4") that won’t change based on the input.
@@ -2750,9 +2338,6 @@ that is the current market leader in generative AI models, especially LLMs. They
 models with various levels of power suitable for different tasks. We’ll see, in this chapter, how to
 interact with OpenAI models with the LangChain and the OpenAI Python client libraries. OpenAI
 also offers an Embedding class for text embedding models.
-
--- 96 of 361 --
-
 Getting Started with LangChain 74
 We will use OpenAI for our applications but will also try LLMs from other organizations. When you
 send a prompt to an LLM API, it processes the prompt word by word, breaking down (tokenizing)
@@ -2773,11 +2358,9 @@ After clicking Create secret key, you should see the message API key generated. 
 the key to your clipboard and keep it. We can set the key as an environment variable (OPENAI_API_
 KEY) or pass it as a parameter every time you construct a class for OpenAI calls.
 
--- 97 of 361 --
-
 ---
 
-## [Sección 75] Chapter 3 75
+## Sección 53: Chapter 3 75 [Entropy: 0.56]
 
 We can use the OpenAI language model class to set up an LLM to interact with. Let’s create an
 agent that calculates using this model – I am omitting the imports from the previous example:
@@ -2805,9 +2388,6 @@ Hugging Face
 Hugging Face is a very prominent player in the NLP space and has considerable traction in opensource and hosting solutions. The company is an American company that develops tools for building machine learning applications. Its employees develop and maintain the Transformers Python
 library, which is used for NLP tasks, includes implementations of state-of-the-art and popular
 models like Mistral 7B, BERT, and GPT-2, and is compatible with PyTorch, TensorFlow, and JAX.
-
--- 98 of 361 --
-
 Getting Started with LangChain 76
 Hugging Face also provides the Hugging Face Hub, a platform for hosting Git-based code repositories, machine learning models, datasets, and web applications, which provides over 120k
 models, 20k datasets, and 50k demo apps (spaces) for machine learning. It is an online platform
@@ -2839,11 +2419,9 @@ completion = llm(prompt)
 print(completion)
 We get the response "japan".
 
--- 99 of 361 --
-
 ---
 
-## [Sección 76] Chapter 3 77
+## Sección 54: Chapter 3 77 [Entropy: 0.631]
 
 The LLM takes a text input, a question in this case, and returns a completion. The model has a
 lot of knowledge and can come up with answers to knowledge questions.
@@ -2870,9 +2448,6 @@ documentation. The GCP environment variable works well with the config.py file t
 make sure you set the project ID before you move on.
 If you haven’t enabled it, you should get a helpful error message pointing you to the right website,
 where you click Enable.
-
--- 100 of 361 --
-
 Getting Started with LangChain 78
 Let’s run a model!
 from langchain.llms import VertexAI
@@ -2908,11 +2483,9 @@ tokens and an output of 2,048 tokens.
 • codechat-bison is a chatbot that is fine-tuned to help with code-related questions. It has
 an input limit of 4,096 tokens and an output limit of 2,048 tokens.
 
--- 101 of 361 --
-
 ---
 
-## [Sección 77] Chapter 3 79
+## Sección 55: Chapter 3 79 [Entropy: 0.545]
 
 • code-gecko suggests code completions. It has a max input length of 2,048 tokens and
 an output of 64 tokens.
@@ -2945,9 +2518,6 @@ else:
 answer.append(str(i))
 return answer
 ```
-
--- 102 of 361 --
-
 Getting Started with LangChain 80
 Would you hire code-bison for your team?
 Jina AI
@@ -2965,11 +2535,9 @@ embedding.
 Here, we are setting up a Visual Question Answering API with the recommended model:
 Figure 3.3: Visual Question Answering API in Jina AI
 
--- 103 of 361 --
-
 ---
 
-## [Sección 78] Chapter 3 81
+## Sección 56: Chapter 3 81 [Entropy: 0.62]
 
 We get examples for client calls in Python and cURL, and a demo, where we can ask a question.
 This is cool, but unfortunately, these APIs are not available yet through LangChain. We can implement such calls ourselves by subclassing the LLM class in LangChain as a custom LLM interface.
@@ -3000,9 +2568,6 @@ SystemMessage(
 content="You help a user find a nutritious and tasty food to
 eat in one word."
 ),
-
--- 104 of 361 --
-
 Getting Started with LangChain 82
 HumanMessage(
 content="I like pasta with cheese, but I need to eat more
@@ -3032,11 +2597,9 @@ public models and enables model inference and fine-tuning. The firm, deriving it
 funding from a Series A funding round of which the invested total was $12.5 million, was spearheaded by Andreessen Horowitz, and involved the participation of Y Combinator, Sequoia, and
 various independent investors.
 
--- 105 of 361 --
-
 ---
 
-## [Sección 79] Chapter 3 83
+## Sección 57: Chapter 3 83 [Entropy: 0.337]
 
 Ben Firshman, who drove open-source product efforts at Docker, and Andreas Jansson, a former
 machine learning engineer at Spotify, co-founded Replicate Inc. with the mutual aspiration to
@@ -3059,9 +2622,6 @@ image_url = text2image("a book cover for a book about creating generative
 ai applications in Python")
 Replicate has lots of models available on their platform: https://replicate.com/
 explore.
-
--- 106 of 361 --
-
 Getting Started with LangChain 84
 I got this image:
 Figure 3.4: A book cover for a book about generative AI with Python – Stable Diffusion
@@ -3082,11 +2642,9 @@ steps involved, and personally, I found this process frustrating. After going th
 For this reason, I don’t have a practical example with Azure. Your mileage might vary – if you are
 already using Microsoft services, this process could be pain-free for you.
 
--- 107 of 361 --
-
 ---
 
-## [Sección 80] Chapter 3 85
+## Sección 58: Chapter 3 85 [Entropy: 0.589]
 
 After setting up, the models should be accessible through the AzureOpenAI() class interface in
 LangChain.
@@ -3114,9 +2672,6 @@ Tensor Processing Units (TPUs) or GPUs.
 We’ll have a look here at Hugging Face’s transformers, llama.cpp, and GPT4All. These tools provide huge power and are full of great functionality too broad to cover in this chapter. Let’s start
 by showing how we can run a model with the transformers library by Hugging Face.
 Please note that we don’t need an API token for local models!
-
--- 108 of 361 --
-
 Getting Started with LangChain 86
 Hugging Face Transformers
 I’ll quickly show the general recipe for setting up and running a pipeline:
@@ -3146,11 +2701,9 @@ transformers library. If you don’t have all libraries installed, make sure you
 this command:
 pip install transformers accelerate torch
 
--- 109 of 361 --
-
 ---
 
-## [Sección 81] Chapter 3 87
+## Sección 59: Chapter 3 87 [Entropy: 0.388]
 
 question = "What is electroencephalography?"
 print(llm_chain.run(question))
@@ -3179,9 +2732,6 @@ I had to execute this command:
 pip install 'blosc2==2.0.0' cython FuzzyTM
 Now we need to compile llama.cpp. We can parallelize the build with 4 processes:
 make -C . -j4 # runs make in subdir with 4 processes
-
--- 110 of 361 --
-
 Getting Started with LangChain 88
 To get the Llama model weights, you need to sign up with the T&Cs and wait for a registration
 email from Meta. There are tools such as the llama model downloader in the pyllama project, but
@@ -3211,11 +2761,9 @@ This tool is closely related to llama.cpp, and it’s based on an interface with
 to llama.cpp, however, it’s much more convenient to use and much easier to install. The setup
 instructions for this book already include the gpt4all library, which is needed.
 
--- 111 of 361 --
-
 ---
 
-## [Sección 82] Chapter 3 89
+## Sección 60: Chapter 3 89 [Entropy: 0.505]
 
 As for model support, GPT4All supports a large array of Transformer architectures:
 • GPT-J
@@ -3245,9 +2793,6 @@ Building an application for customer service
 Customer service agents are responsible for answering customer inquiries, resolving issues, and
 addressing complaints. Their work is crucial for maintaining customer satisfaction and loyalty,
 which directly affects a company’s reputation and financial success.
-
--- 112 of 361 --
-
 Getting Started with LangChain 90
 Generative AI can assist customer service agents in several ways:
 • Sentiment classification: This helps identify customer emotions and allows agents to
@@ -3282,13 +2827,7 @@ or negative?
 
 ---
 
-## [Sección 83] Chapter 3 89
-
--- 113 of 361 --
-
----
-
-## [Sección 84] Chapter 3 91
+## Sección 61: Chapter 3 91 [Entropy: 0.463]
 
 Text: {sentence}
 Sentiment:
@@ -3319,9 +2858,6 @@ We can list the 5 most downloaded models on Hugging Face Hub for text classifica
 the Hugging Face API:
 from huggingface_hub import list_models
 def list_most_popular(task: str):
-
--- 114 of 361 --
-
 Getting Started with LangChain 92
 for rank, model in enumerate(
 list_models(filter=task, sort="downloads", direction=-1)
@@ -3352,11 +2888,9 @@ unwrapped the box containing my highly anticipated coffee machine.
 However, what I discovered within broke not only my spirit but also any
 semblance of confidence I had placed in your brand.
 
--- 115 of 361 --
-
 ---
 
-## [Sección 85] Chapter 3 93
+## Sección 62: Chapter 3 93 [Entropy: 0.451]
 
 Its once elegant exterior was marred by the scars of travel, resembling a
 war-torn soldier who had fought valiantly on the fields of some espresso
@@ -3387,9 +2921,6 @@ For comparison, if the email says “I am so angry and sad, I want to kill mysel
 score of close to 0.98 for the same label. We could try out other models or train better models
 once we have established metrics to work against.
 Let’s move on!
-
--- 116 of 361 --
-
 Getting Started with LangChain 94
 Here are the 5 most popular models for summarization as well (downloads at the time of writing,
 October 2023):
@@ -3420,11 +2951,9 @@ emotionally distraught and inconsolable," the customer writes. "I hope
 this email finds you amidst an aura of understanding, despite the tangled
 mess of emotions swirling within me as I write to you," he adds.
 
--- 117 of 361 --
-
 ---
 
-## [Sección 86] Chapter 3 95
+## Sección 63: Chapter 3 95 [Entropy: 0.577]
 
 This summary is just passable, but not very convincing. There is still a lot of rambling in the summary. We could try other models or just go for an LLM with a prompt asking to summarize. We’ll
 look at summarization in much more detail in Chapter 4, Building Capable Assistants. Let’s move on.
@@ -3453,11 +2982,9 @@ We get product issues back, which is correct for the long email example that I a
 Before you execute the following code, make sure you have authenticated with GCP
 and you’ve set your GCP project according to the instructions mentioned in the
 section about Vertex AI.
-
--- 118 of 361 --
-
 Getting Started with LangChain 96
-I hope it was exciting to see how quickly we can throw a few models and tools together in LangChain to get something that looks actually useful. With thoughtful implementation, such AI
+I hope it was exciting to see how quickly we can throw a few models and tools together in Lang-
+Chain to get something that looks actually useful. With thoughtful implementation, such AI
 automation can complement human agents – handling frequent questions to allow focusing
 on complex problems. Overall, this demonstrates generative AI’s potential to enhance customer
 service workflows.
@@ -3488,19 +3015,13 @@ back to the corresponding sections of this chapter if you are unsure about any o
 6. How do you perform text classification in LangChain?
 7. How can we help customer service agents in their work through generative AI?
 
--- 119 of 361 --
-
 ---
 
-## [Sección 87] Chapter 3 97
+## Sección 64: Chapter 3 97 [Entropy: 0.34]
 
 Join our community on Discord
 Join our community’s Discord space for discussions with the authors and other readers:
 https://packt.link/lang
-
--- 120 of 361 --
-
--- 121 of 361 --
 Building Capable Assistants
 As LLMs continue to advance, a key challenge is transforming their impressive fluency into reliably
 capable assistants. This chapter explores methods for instilling greater intelligence, productivity,
@@ -3521,9 +3042,6 @@ In short, this chapter covers:
 • Answering questions with tools
 • Exploring reasoning strategies
 Let’s get started with addressing hallucinations through automatic fact-checking!
-
--- 122 of 361 --
-
 Building Capable Assistants 100
 Mitigating hallucinations through fact-checking
 As discussed in previous chapters, hallucination in LLMs refers to the generated text being unfaithful or nonsensical compared to the input. It contrasts with faithfulness, where outputs stay
@@ -3545,11 +3063,9 @@ We can see the general idea of these three stages illustrated in the following d
 https://github.com/Cartus/Automated-Fact-Checking-Resources by Zhijiang Guo):
 Figure 4.1: Automatic fact-checking pipeline in three stages
 
--- 123 of 361 --
-
 ---
 
-## [Sección 88] Chapter 4 101
+## Sección 65: Chapter 4 101 [Entropy: 0.568]
 
 Pre-trained LLMs contain extensive world knowledge that can be prompted for facts. Additionally,
 external tools can search knowledge bases, Wikipedia, textbooks, and corpora for evidence. By
@@ -3580,9 +3096,6 @@ false, explain why.\n\n
 Finally, the model is tasked to make a final judgment:
 In light of the above facts, how would you answer the question
 '{question}'
-
--- 124 of 361 --
-
 Building Capable Assistants 102
 LLMCheckerChain does this all by itself, as this example shows:
 from langchain.chains import LLMCheckerChain
@@ -3618,13 +3131,7 @@ length.
 
 ---
 
-## [Sección 89] Chapter 4 101
-
--- 125 of 361 --
-
----
-
-## [Sección 90] Chapter 4 103
+## Sección 66: Chapter 4 103 [Entropy: 0.499]
 
 So, while this technique does not guarantee correct answers, it can put a stop to some incorrect
 results. Fact-checking approaches involve decomposing claims into smaller checkable queries,
@@ -3653,9 +3160,6 @@ Summarize this text in one sentence:
 """
 llm = OpenAI()
 summary = llm(prompt.format(text=text))
-
--- 126 of 361 --
-
 Building Capable Assistants 104
 This is similar to what we saw in Chapter 3, Getting Started with LangChain. text is a string variable
 that can be any text that we want to summarize.
@@ -3686,11 +3190,9 @@ Prompt templates
 For dynamic inputs, prompt templates enable inserting text into predefined prompts. Prompt
 templates allow variable length limits and modular prompt design.
 
--- 127 of 361 --
-
 ---
 
-## [Sección 91] Chapter 4 105
+## Sección 67: Chapter 4 105 [Entropy: 0.535]
 
 We can implement this in LangChain Expression Language (LCEL):
 from langchain import PromptTemplate, OpenAI
@@ -3725,9 +3227,6 @@ A missing entity is:
 - novel (not in the previous summary),
 - faithful (present in the article),
 - anywhere (can be located anywhere in the article).
-
--- 128 of 361 --
-
 Building Capable Assistants 106
 Guidelines:
 - The first summary should be long (4-5 sentences, ~80 words) yet highly
@@ -3764,13 +3263,7 @@ Please try this out for yourself!
 
 ---
 
-## [Sección 92] Chapter 4 105
-
--- 129 of 361 --
-
----
-
-## [Sección 93] Chapter 4 107
+## Sección 68: Chapter 4 107 [Entropy: 0.56]
 
 Map-Reduce pipelines
 LangChain supports a map reduce approach for processing documents using LLMs, which allows for efficient processing and analysis of documents. A chain can be applied to each document
@@ -3788,9 +3281,6 @@ mapped outputs and generates the final result.
 Optional collapsing, which may also involve utilizing LLMs, makes sure the data fits within sequence length limits. This compression step can be performed recursively if needed.
 This is illustrated in the figure here:
 Figure 4.2: Map reduce chain in LangChain
-
--- 130 of 361 --
-
 Building Capable Assistants 108
 This approach’s implications are that it allows the parallel processing of documents and enables
 the use of LLMs for reasoning, generating, or analyzing individual documents and combining
@@ -3822,11 +3312,9 @@ n=========\nContent: {text}
 In the preceding prompt, we could formulate a concrete question, but equally, we could give the
 LLM a more abstract instruction to extract assumptions and implications.
 
--- 131 of 361 --
-
 ---
 
-## [Sección 94] Chapter 4 109
+## Sección 69: Chapter 4 109 [Entropy: 0.394]
 
 The text would be the summaries from the map steps. An instruction like that would help against
 hallucinations. Other examples of instructions could be translating the document into a different
@@ -3857,9 +3345,6 @@ capabilities using LLMs. A few practical tips are:
 • Tune chunk size to balance context limits and parallelism
 • Customize map and reduce prompts for the best results
 • Compress or recursively reduce chunks to fit context limits
-
--- 132 of 361 --
-
 Building Capable Assistants 110
 For example, ChatGPT models, like GPT-3.5-Turbo, specialize in dialogue applications such as
 chatbots and virtual assistants. They excel at generating responses with accuracy and fluency.
@@ -3895,13 +3380,7 @@ Prompt Tokens: 8
 
 ---
 
-## [Sección 95] Chapter 4 109
-
--- 133 of 361 --
-
----
-
-## [Sección 96] Chapter 4 111
+## Sección 70: Chapter 4 111 [Entropy: 0.532]
 
 Completion Tokens: 28
 Total Cost (USD): $0.00072
@@ -3935,9 +3414,6 @@ token information; for example, it could look like this (excerpt):
 "total_tokens": 74
 }
 }
-
--- 134 of 361 --
-
 Building Capable Assistants 112
 This can be extremely helpful for understanding how much money you are spending on distinct
 parts of your application. In Chapter 9, Generative AI in Production. we’ll look at LangSmith and
@@ -3970,11 +3446,9 @@ The implications of this approach are that it allows for precise extraction of e
 a schema with the desired properties and their types. It also enables specifying which properties
 are required and which are optional.
 
--- 135 of 361 --
-
 ---
 
-## [Sección 97] Chapter 4 113
+## Sección 71: Chapter 4 113 [Entropy: 0.43]
 
 The default format for the schema is a dictionary, but we can also define properties and their types
 in Pydantic, a popular parsing library, providing control and flexibility in the extraction process.
@@ -4004,9 +3478,6 @@ study: Optional[Study]
 work_experience: Optional[WorkExperience]
 hobby: Optional[str]
 We can use this for information extraction from a CV.
-
--- 136 of 361 --
-
 Building Capable Assistants 114
 Please note that you should set up your environment according to the instructions in Chapter 3,
 Getting Started with LangChain. I’ve found it most convenient to import my config module here
@@ -4024,11 +3495,9 @@ from langchain.chains import create_extraction_chain_pydantic
 from langchain.chat_models import ChatOpenAI
 from langchain.document_loaders import PyPDFLoader
 
--- 137 of 361 --
-
 ---
 
-## [Sección 98] Chapter 4 115
+## Sección 72: Chapter 4 115 [Entropy: 0.605]
 
 pdf_file_path = "<pdf_file_path>"
 pdf_loader = PyPDFLoader(pdf_file_path)
@@ -4062,9 +3531,6 @@ Instruction tuning and function calling allow models to produce callable code. T
 integrations, where LLM agents can execute these function calls to connect LLMs with live data,
 services, and runtime environments. In the next section, we’ll discuss how tools can augment
 context by retrieving external knowledge sources to enhance understanding.
-
--- 138 of 361 --
-
 Building Capable Assistants 116
 Answering questions with tools
 LLMs are trained on general corpus data and may not be as effective for tasks that require domain-specific knowledge. On their own, LLMs can’t interact with the environment and access
@@ -4094,13 +3560,7 @@ AgentExecutor, AgentType, initialize_agent, load_tools
 
 ---
 
-## [Sección 99] Chapter 4 115
-
--- 139 of 361 --
-
----
-
-## [Sección 100] Chapter 4 117
+## Sección 73: Chapter 4 117 [Entropy: 0.695]
 
 from langchain.chat_models import ChatOpenAI
 def load_agent() -> AgentExecutor:
@@ -4130,9 +3590,6 @@ capabilities, for questions like “What is 2x+5 = -3x + 7?”
 • arXiv: Search in academic pre-print publications; this is useful for research-oriented
 questions
 • Wikipedia: For any question about entities of significant notoriety
-
--- 140 of 361 --
-
 Building Capable Assistants 118
 Please note that to use Wolfram Alpha, you have to set up an account and set the WOLFRAM_
 ALPHA_APPID environment variable with the developer token you create at https://products.
@@ -4164,11 +3621,9 @@ terminal like this:
 PYTHONPATH=. streamlit run question_answering/app.py
 We can open our app in the browser. Here’s a screenshot that illustrates what the app looks like:
 
--- 141 of 361 --
-
 ---
 
-## [Sección 101] Chapter 4 119
+## Sección 74: Chapter 4 119 [Entropy: 0.436]
 
 Figure 4.4: Question-answering app in Streamlit
 The search works quite well although, depending on the tools used, it might still come up with
@@ -4186,9 +3641,6 @@ As for Hugging Face Spaces, it works like this:
 2. Create a Hugging Face account at https://huggingface.co/.
 3. Go to Spaces and click Create new Space. In the form, set the fill in a name,
 type of space as Streamlit, and choose the new repo.
-
--- 142 of 361 --
-
 Building Capable Assistants 120
 Here’s the log output (shortened) for the correct reasoning:
 > Entering new AgentExecutor chain...
@@ -4217,11 +3669,9 @@ ensures responsiveness even with large models. Our chatbot can scale gracefully.
 • The result is an elegant web interface that lets users interact naturally with
 our LLM-powered agent. Streamlit handles the complexity behind the scenes.
 
--- 143 of 361 --
-
 ---
 
-## [Sección 102] Chapter 4 121
+## Sección 75: Chapter 4 121 [Entropy: 0.355]
 
 While our LLM app can provide answers to simple questions, its reasoning abilities are still limited.
 In the following section, we’ll implement more advanced types of agents.
@@ -4239,9 +3689,6 @@ complex concepts.
 An illustration of augmenting LLMs through tools and reasoning is shown here (source – https://
 github.com/billxbf/ReWOO, implementation for the paper Decoupling Reasoning from Observations
 for Efficient Augmented Language Models Resources, by Binfeng Xu and others, May 2023):
-
--- 144 of 361 --
-
 Building Capable Assistants 122
 Figure 4.5: Tool-augmented LLM paradigm
 The tools are the available resources that the agent can use, such as search engines or databases.
@@ -4254,11 +3701,9 @@ In LangChain, this consists of three parts:
 • The agent itself
 There are two key agent architectures:
 
--- 145 of 361 --
-
 ---
 
-## [Sección 103] Chapter 4 123
+## Sección 76: Chapter 4 123 [Entropy: 0.28]
 
 • Action agents reason iteratively based on observations after each action.
 • Plan-and-execute agents plan completely upfront before taking any action.
@@ -4273,9 +3718,6 @@ planning.
 We can see the reasoning with the observation pattern in the following diagram (source – https://
 arxiv.org/abs/2305.18323; Binfeng Xu and others, May 2023):
 Figure 4.6: Reasoning with observation
-
--- 146 of 361 --
-
 Building Capable Assistants 124
 Observation-dependent reasoning involves making judgments, predictions, or choices based on
 the current state of knowledge or the evidence fetched through observation. In each iteration, the
@@ -4289,11 +3731,9 @@ the plan-and-execute agent) is illustrated in the diagram here (source – https
 abs/2305.18323; Binfeng Xu and others, May 2023):
 Figure 4.7: Decoupling reasoning from observations
 
--- 147 of 361 --
-
 ---
 
-## [Sección 104] Chapter 4 125
+## Sección 77: Chapter 4 125 [Entropy: 0.68]
 
 The Planner (an LLM), which can be fine-tuned for planning and tool usage, produces a list of
 plans (P) and calls a worker (in LangChain, the agent) to gather evidence (E) by using tools. P
@@ -4324,9 +3764,6 @@ tools = load_tools(
 tool_names=tool_names,
 llm=llm
 )
-
--- 148 of 361 --
-
 Building Capable Assistants 126
 if strategy == "plan-and-solve":
 planner = load_chat_planner(llm)
@@ -4359,11 +3796,9 @@ agent_chain = load_agent(tool_names=tool_names, strategy=strategy)
 We can execute this agent with Streamlit. We should run the following command in our terminal:
 PYTHONPATH=. streamlit run question_answering/app.py
 
--- 149 of 361 --
-
 ---
 
-## [Sección 105] Chapter 4 127
+## Sección 78: Chapter 4 127 [Entropy: 0.295]
 
 We should see how Streamlit starts up our application. If we open our browser on the indicated
 URL (by default, http://localhost:8501/), we should see the UI here:
@@ -4380,9 +3815,6 @@ solve a problem or answer a question.
 3. Understand the concept of a solve agent in the context of LLMs: A solve agent is an
 LLM that works as an agent. It is responsible for generating plans to solve problems or
 answer questions.
-
--- 150 of 361 --
-
 Building Capable Assistants 128
 4. Recognize the importance of plans and solve agents in LLMs: Plans and solve agents
 help organize the model’s thinking process and provide a structured approach to problem-solving or question-answering tasks.
@@ -4415,11 +3847,9 @@ can manifest as calculation errors, missing-step errors, and semantic misunderst
 they help improve the quality of generated reasoning steps, increase accuracy in problem-solving
 tasks, and enhance LLMs’ ability to handle various types of reasoning problems.
 
--- 151 of 361 --
-
 ---
 
-## [Sección 106] Chapter 4 129
+## Sección 79: Chapter 4 129 [Entropy: 0.385]
 
 Summary
 In this chapter, we first talked about the problem of hallucinations and automatic fact-checking,
@@ -4446,9 +3876,6 @@ While this chapter introduced many promising directions for developing capable a
 LLMs, subsequent chapters will expand on the techniques developed here. For example, we’ll
 discuss reasoning with agents in much more detail in Chapter 6, Developing Software with Generative AI, and Chapter 7, LLMs for Data Science, and provide an overview of prompting techniques
 in Chapter 8, Customizing LLMs and Their Output.
-
--- 152 of 361 --
-
 Building Capable Assistants 130
 Questions
 Please have a look to see if you can come up with the answers to these questions from memory.
@@ -4467,8 +3894,6 @@ any of them:
 Join our community on Discord
 Join our community’s Discord space for discussions with the authors and other readers:
 https://packt.link/lang
-
--- 153 of 361 --
 Building a Chatbot like ChatGPT
 Chatbots powered by LLMs have demonstrated impressive fluency in conversational tasks like
 customer service. However, their lack of world knowledge limits their usefulness for domain-spe -
@@ -4491,13 +3916,6 @@ that you can find in the chat_with_retrieval directory in the GitHub repository 
 In a nutshell, the main topics are:
 • What is a chatbot?
 • Understanding retrieval and vectors
-
----
-
-## [Sección 107] Chapter 4 129
-
--- 154 of 361 --
-
 Building a Chatbot like ChatGPT 132
 • Loading and retrieving in LangChain
 • Implementing a chatbot
@@ -4529,11 +3947,9 @@ comprehension of the inner workings of adaptive learning systems.
 Chatbots analyze user input, understand the intent behind it, and generate appropriate responses.
 They can be designed to work with text-based messaging platforms or voice-based applications.
 
--- 155 of 361 --
-
 ---
 
-## [Sección 108] Chapter 5 133
+## Sección 80: Chapter 5 133 [Entropy: 0.4]
 
 Some use cases for chatbots in customer service include providing 24/7 support, handling frequently asked questions, assisting with product recommendations, processing orders and payments, and resolving simple customer issues.
 Some more use cases of chatbots include:
@@ -4563,9 +3979,6 @@ provide initial support to individuals seeking assistance. But their inability t
 limits roles requiring true intelligence. With responsible development, chatbots hold promise for
 intuitive interfaces in customer service and other domains, even if human-level language mastery
 remains elusive. Ongoing research aims to develop safe, useful chatbot capabilities.
-
--- 156 of 361 --
-
 Building a Chatbot like ChatGPT 134
 There is an important distinction between chatbots that merely respond to explicit user prompts
 versus those with the more advanced ability to proactively initiate conversation and provide
@@ -4597,13 +4010,7 @@ reasoning about retrieval timing, and fusing internal and external contexts.
 
 ---
 
-## [Sección 109] Chapter 5 133
-
--- 157 of 361 --
-
----
-
-## [Sección 110] Chapter 5 135
+## Sección 81: Chapter 5 135 [Entropy: 0.265]
 
 By grounding LLMs with use-case-specific information through RAG, the quality and accuracy of
 responses are improved. Through retrieval of relevant data, RAG helps in reducing hallucination
@@ -4633,9 +4040,6 @@ is 3-dimensional, these could be vectors such as [0.5, 0.2, -0.1] for cat and [0
 concepts with other words. Roughly speaking, we would expect the concepts of cat
 and dog to be closer (more similar) to the concept of animal than to the concept of
 computer or embedding.
-
--- 158 of 361 --
-
 Building a Chatbot like ChatGPT 136
 Embeddings can be created using different methods. For texts, one simple method is the bag-ofwords approach, where each word is represented by a count of how many times it appears in a
 text. This approach, which in the scikit-learn library is implemented as CountVectorizer, was
@@ -4658,13 +4062,7 @@ output an embedding vector.
 
 ---
 
-## [Sección 111] Chapter 5 135
-
--- 159 of 361 --
-
----
-
-## [Sección 112] Chapter 5 137
+## Sección 82: Chapter 5 137 [Entropy: 0.634]
 
 Today, for most domains including texts and images, embeddings usually come from transformer-based models, which consider the context and order of the words in a sentence and the
 paragraph. Based on the model architecture, most importantly the number of parameters, these
@@ -4694,9 +4092,6 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 words = ["cat", "dog", "computer", "animal"]
 embeddings = OpenAIEmbeddings()
 doc_vectors = embeddings.embed_documents(words)
-
--- 160 of 361 --
-
 Building a Chatbot like ChatGPT 138
 In this case, the embed_documents() method is used to retrieve embeddings for multiple text
 inputs. The result is stored in the doc_vectors variable. We could have retrieved embeddings for
@@ -4724,11 +4119,9 @@ be many questions here, for example, if a dog is more an animal than a cat, or w
 cat are only a little more distant from a computer than from an animal. Although these questions
 can be important in certain applications, let’s bear in mind that this is a simple example.
 
--- 161 of 361 --
-
 ---
 
-## [Sección 113] Chapter 5 139
+## Sección 83: Chapter 5 139 [Entropy: 0.28]
 
 In these examples, we’ve used OpenAI embeddings – in the examples further on, we’ll use embeddings from models served by Hugging Face. There are a few integrations and tools in LangChain
 that can help with this process, some of which we’ll encounter later on in this chapter.
@@ -4758,9 +4151,6 @@ vector. Vector search is commonly used in various applications such as recommend
 vector search is to efficiently and accurately retrieve vectors that are most similar
 to the query vector, typically using similarity measures such as the dot product or
 cosine similarity.
-
--- 162 of 361 --
-
 Building a Chatbot like ChatGPT 140
 Let’s dive into a few of these concepts a bit more. There are three levels to this:
 1. Indexing organizes vectors to optimize retrieval, structuring them so that vectors can be
@@ -4794,13 +4184,7 @@ trees for low-dimensional data.
 
 ---
 
-## [Sección 114] Chapter 5 139
-
--- 163 of 361 --
-
----
-
-## [Sección 115] Chapter 5 141
+## Sección 84: Chapter 5 141 [Entropy: 0.355]
 
 • Locality sensitive hashing (LSH): This is a hashing-based method that maps similar
 data points to the same hash buckets. It is efficient for high-dimensional data but may
@@ -4824,9 +4208,6 @@ with vector data. In the context of vector search, a vector library is specifica
 and perform similarity search on vector embeddings. These libraries use the Approximate Nearest Neighbor (ANN) algorithm to efficiently search through vectors and find the most similar
 ones. They typically offer different implementations of the ANN algorithm, such as clustering or
 tree-based methods, and allow users to perform vector similarity search for various applications.
-
--- 164 of 361 --
-
 Building a Chatbot like ChatGPT 142
 Here’s a quick overview of some open-source libraries for vector storage that shows their popularity in terms of GitHub stars over time (source: star-history.com):
 Figure 5.3: Star history for several popular open-source vector libraries
@@ -4845,11 +4226,9 @@ a forest of random projection trees.
 • nmslib (Non-Metric Space Library) is an open-source library that provides efficient similarity search in non-metric spaces. It supports various indexing algorithms like HNSW,
 SW-graph, and SPTAG.
 
--- 165 of 361 --
-
 ---
 
-## [Sección 116] Chapter 5 143
+## Sección 85: Chapter 5 143 [Entropy: 0.37]
 
 • SPTAG by Microsoft implements a distributed ANN. It comes with a k-d tree and relative neighborhood graph (SPTAG-KDT), as well as a balanced k-means tree and relative
 neighborhood graph (SPTAG-BKT).
@@ -4879,9 +4258,6 @@ systems by finding similar vectors based on user preferences or behavior.
 • Natural Language Processing (NLP): Vector databases are widely used in NLP tasks such
 as sentiment analysis, text classification, and semantic search. By representing text as
 vector embeddings, it becomes easier to compare and analyze textual data.
-
--- 166 of 361 --
-
 Building a Chatbot like ChatGPT 144
 These databases are popular because they are optimized for scalability and representing and
 retrieving data in high-dimensional vector spaces. Traditional databases are not designed to
@@ -4912,13 +4288,7 @@ extension with IVFFlat indexing.
 
 ---
 
-## [Sección 117] Chapter 5 143
-
--- 167 of 361 --
-
----
-
-## [Sección 118] Chapter 5 145
+## Sección 86: Chapter 5 145 [Entropy: 0.343]
 
 Some examples of vector databases are listed in Table 5.1. I took the liberty of highlighting for
 each search engine the following perspectives:
@@ -4985,9 +4355,6 @@ supports
 CRUD
 SeMI
 Technologies
-
--- 168 of 361 --
-
 Building a Chatbot like ChatGPT 146
 Pinecone Fast and scalable
 applications using
@@ -5038,11 +4405,9 @@ such as FaissDB and Hasty.ai, and focused on a few ones that are integrated into
 For the open-source databases, the GitHub star histories give a good idea of their popularity and
 traction. Here’s the plot over time (source: star-history.com):
 
--- 169 of 361 --
-
 ---
 
-## [Sección 119] Chapter 5 147
+## Sección 87: Chapter 5 147 [Entropy: 0.508]
 
 Figure 5.4: Star history of open-source vector databases on GitHub
 You can see that milvus is immensely popular; however, other libraries such as qdrant, weviate,
@@ -5061,9 +4426,6 @@ from langchain.embeddings import OpenAIEmbeddings
 method:
 vectorstore = Chroma.from_documents(documents=docs,
 embedding=OpenAIEmbeddings())
-
--- 170 of 361 --
-
 Building a Chatbot like ChatGPT 148
 3. We can query the vector store to retrieve similar vectors:
 similar_vectors = vector_store.query(query_vector, k)
@@ -5093,11 +4455,9 @@ docs = text_splitter.split_documents(documents)
 This will load and chunk up the paper about Mistal 7B. Please note that the
 download will be a PDF, and you’ll need to have the pymupdf library installed.
 
--- 171 of 361 --
-
 ---
 
-## [Sección 120] Chapter 5 149
+## Sección 88: Chapter 5 149 [Entropy: 0.451]
 
 The relationship between them is illustrated in the diagram here (source: LangChain documentation):
 Figure 5.5: Vector stores and data loaders
@@ -5118,9 +4478,6 @@ text and associated metadata. There are several types of integrations available,
 loaders for loading a simple .txt file (TextLoader), loading the text contents of a web page
 (WebBaseLoader), loading articles from Arxiv (ArxivLoader), or loading a transcript of a YouTube
 video (YoutubeLoader). For webpages, the Diffbot integration gives a clean extraction of the content. Other integrations exist for images such as providing image captions (ImageCaptionLoader).
-
--- 172 of 361 --
-
 Building a Chatbot like ChatGPT 150
 Document loaders have a load() method that loads data from the configured source and returns
 it as documents. They may also have a lazy_load() method for loading data into memory as
@@ -5149,11 +4506,9 @@ Here are a few examples of retrievers:
 relevance to a given query. It is a popular information retrieval algorithm that considers
 term frequency and document length.
 
--- 173 of 361 --
-
 ---
 
-## [Sección 121] Chapter 5 151
+## Sección 89: Chapter 5 151 [Entropy: 0.619]
 
 • TF-IDF retriever: This retriever uses the TF-IDF (Term Frequency-Inverse Document
 Frequency) algorithm to rank documents based on the importance of terms in the document collection. It assigns higher weights to terms that are rare in the collection but occur
@@ -5181,9 +4536,6 @@ from langchain.retrievers import KNNRetriever
 from langchain.embeddings import OpenAIEmbeddings
 words = ["cat", "dog", "computer", "animal"]
 retriever = KNNRetriever.from_texts(words, OpenAIEmbeddings())
-
--- 174 of 361 --
-
 Building a Chatbot like ChatGPT 152
 Once the retriever is created, you can use it to retrieve relevant documents by calling the get_
 relevant_documents() method and passing a query string. The retriever will return a list of
@@ -5218,13 +4570,7 @@ systemic sclerosis patients.
 
 ---
 
-## [Sección 122] Chapter 5 151
-
--- 175 of 361 --
-
----
-
-## [Sección 123] Chapter 5 153
+## Sección 90: Chapter 5 153 [Entropy: 0.55]
 
 Host genetic polymorphisms involved in long-term symptoms of COVID-19.
 Association Between COVID-19 Vaccination and Mortality after Major
@@ -5250,9 +4596,6 @@ get_relevant_documents() method to retrieve relevant documents based on a query.
 Now that we’ve learned about vector stores and retrievers, let’s put all of this to use. Let’s implement a chatbot with a retriever!
 Implementing a chatbot
 We’ll implement a chatbot now. We’ll assume you have the environment installed with the necessary libraries and the API keys as per the instructions in Chapter 3, Getting Started with LangChain.
-
--- 176 of 361 --
-
 Building a Chatbot like ChatGPT 154
 To implement a simple chatbot in LangChain, you can follow this recipe:
 1. Set up a document loader.
@@ -5285,11 +4628,9 @@ supported_extentions = {
 ".epub": EpubReader,
 ".docx": UnstructuredWordDocumentLoader,
 
--- 177 of 361 --
-
 ---
 
-## [Sección 124] Chapter 5 155
+## Sección 91: Chapter 5 155 [Entropy: 0.77]
 
 ".doc": UnstructuredWordDocumentLoader
 }
@@ -5321,9 +4662,6 @@ from langchain.vectorstores import DocArrayInMemorySearch
 from langchain.schema import Document, BaseRetriever
 def configure_retriever(docs: list[Document]) -> BaseRetriever:
 """Retriever to use."""
-
--- 178 of 361 --
-
 Building a Chatbot like ChatGPT 156
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1500, chunk_
 overlap=200)
@@ -5354,11 +4692,9 @@ are compressed, and irrelevant information is filtered out. Instead of returning
 as-is, contextual compression uses the context of the given query to extract and return only the
 relevant information. This helps to reduce the cost of processing and improve the quality of responses in retrieval systems.
 
--- 179 of 361 --
-
 ---
 
-## [Sección 125] Chapter 5 157
+## Sección 92: Chapter 5 157 [Entropy: 0.74]
 
 The base compressor is responsible for compressing the contents of individual documents based
 on the context of the given query. It uses a language model, such as GPT-3, to perform the compression. The compressor can filter out irrelevant information and return only the relevant parts
@@ -5388,9 +4724,6 @@ return ContextualCompressionRetriever(
 base_compressor=embeddings_filter,
 base_retriever=retriever
 )
-
--- 180 of 361 --
-
 Building a Chatbot like ChatGPT 158
 Please note that I’ve just made up a new variable, use_compression. We can feed the use_
 compression parameter through configure_qa_chain() to the configure_retriever() method
@@ -5425,11 +4758,9 @@ import os
 import tempfile
 def configure_qa_chain(uploaded_files):
 
--- 181 of 361 --
-
 ---
 
-## [Sección 126] Chapter 5 159
+## Sección 93: Chapter 5 159 [Entropy: 0.605]
 
 """Read documents, configure retriever, and the chain."""
 docs = []
@@ -5463,9 +4794,6 @@ if user_query:
 stream_handler = StreamlitCallbackHandler(assistant)
 response = qa_chain.run(user_query, callbacks=[stream_handler])
 st.markdown(response)
-
--- 182 of 361 --
-
 Building a Chatbot like ChatGPT 160
 This gives us a chatbot with retrieval that’s usable via a visual interface, and also has drop-in
 functionality for custom documents that you need to ask questions about.
@@ -5488,11 +4816,9 @@ Specifically, memory facilitates accuracy by retaining contextual understanding 
 dialogue. The chatbot can reference this holistic perspective of the conversation to respond appropriately. Memory also enhances personalization and faithfulness by consistently recognizing
 facts and details from past interactions.
 
--- 183 of 361 --
-
 ---
 
-## [Sección 127] Chapter 5 161
+## Sección 94: Chapter 5 161 [Entropy: 0.56]
 
 By storing knowledge from message sequences, memory permits extracting insights to improve
 performance over time. Architectures like LangChain implement memory so chatbots can build
@@ -5525,9 +4851,6 @@ response = chain.predict(input=user_input)
 print(response)
 # Printing the conversation history stored in memory
 print(memory.chat_memory.messages)
-
--- 184 of 361 --
-
 Building a Chatbot like ChatGPT 162
 In this example, we create a conversation chain with memory using ConversationBufferMemory,
 which is a simple wrapper that stores the messages in a variable. The user’s inputs are processed
@@ -5559,11 +4882,9 @@ model’s output for a given interaction.
 memory.save_context({"input": "hi"}, {"output": "whats up"})
 memory.save_context({"input": "not much you"}, {"output": "not much"})
 
--- 185 of 361 --
-
 ---
 
-## [Sección 128] Chapter 5 163
+## Sección 95: Chapter 5 163 [Entropy: 0.605]
 
 We can see the message with memory.load_memory_variables({}).
 We can also customize the conversational memory in LangChain, which involves modifying the
@@ -5595,9 +4916,6 @@ verbose=True,
 memory=ConversationBufferMemory(ai_prefix="AI Assistant"),
 )
 In this example, the AI prefix is set to AI Assistant instead of the default AI.
-
--- 186 of 361 --
-
 Building a Chatbot like ChatGPT 164
 Remembering conversation summaries
 ConversationSummaryMemory is a type of memory in LangChain that generates a summary of the
@@ -5628,11 +4946,9 @@ associations between entities, providing contextual information and enabling sem
 There’s functionality in LangChain for knowledge graphs for retrieval; however, LangChain also
 provides memory components to automatically create a knowledge graph based on our conversation messages.
 
--- 187 of 361 --
-
 ---
 
-## [Sección 129] Chapter 5 165
+## Sección 96: Chapter 5 165 [Entropy: 0.65]
 
 We’ll instantiate the ConversationKGMemory class and pass your LLM instance as the llm parameter:
 from langchain.memory import ConversationKGMemory
@@ -5666,9 +4982,6 @@ from its context. If the AI does not know the answer to a question, it
 truthfully says it does not know.
 Summary of conversation:
 {history}
-
--- 188 of 361 --
-
 Building a Chatbot like ChatGPT 166
 Current conversation:
 {chat_history_lines}
@@ -5702,11 +5015,9 @@ app. By using the ZepMemory class, developers can initialize a ZepMemory instanc
 server URL, API key, and a unique session identifier for the user. This allows the chatbot or AI app
 to store and retrieve chat history or other relevant information.
 
--- 189 of 361 --
-
 ---
 
-## [Sección 130] Chapter 5 167
+## Sección 97: Chapter 5 167 [Entropy: 0.583]
 
 For example, in Python, you can initialize a ZepMemory instance as follows:
 from langchain.memory import ZepMemory
@@ -5737,9 +5048,6 @@ behavior and responses of the chatbot. It outlines the standards and principles 
 should adhere to, such as avoiding offensive language, promoting respectful interactions, and
 maintaining ethical standards. The constitution serves as a framework for ensuring that the
 chatbot operates within the desired boundaries and provides a positive user experience.
-
--- 190 of 361 --
-
 Building a Chatbot like ChatGPT 168
 Moderation and having a constitution are important in chatbots for several reasons:
 • Ensuring ethical behavior: Chatbots can interact with a wide range of users, including
@@ -5770,13 +5078,7 @@ moderation_chain = OpenAIModerationChain()
 
 ---
 
-## [Sección 131] Chapter 5 167
-
--- 191 of 361 --
-
----
-
-## [Sección 132] Chapter 5 169
+## Sección 98: Chapter 5 169 [Entropy: 0.472]
 
 Next, you would create an instance of the LLMChain class or of a Runnable instance, which represents your language model chain. This is where you define your prompt and interact with the
 language model. We can do this using the LCEL syntax, which we’ve introduced in Chapter 4,
@@ -5804,9 +5106,6 @@ I’ve added an example for moderation to the chatbot app on GitHub.
 Further, guardrails can be used to define the behavior of the language model on specific topics,
 prevent it from engaging in discussions on unwanted topics, guide the conversation along a
 predefined path, enforce a particular language style, extract structured data, and more.
-
--- 192 of 361 --
-
 Building a Chatbot like ChatGPT 170
 In the context of LLMs, guardrails (rails for short) refer to specific ways of controlling the model’s
 output. They provide a means to add programmable constraints and guidelines to ensure the
@@ -5842,13 +5141,7 @@ vector storage and embedding.
 
 ---
 
-## [Sección 133] Chapter 5 169
-
--- 193 of 361 --
-
----
-
-## [Sección 134] Chapter 5 171
+## Sección 99: Chapter 5 171 [Entropy: 0.325]
 
 Additionally, we discussed memory mechanisms for maintaining knowledge and the state of
 ongoing conversations. The chapter concluded with a discussion on moderation, emphasizing
@@ -5871,10 +5164,6 @@ go back to the corresponding sections of this chapter if you are unsure about an
 Join our community on Discord
 Join our community’s Discord space for discussions with the authors and other readers:
 https://packt.link/lang
-
--- 194 of 361 --
-
--- 195 of 361 --
 Developing Software with
 Generative AI
 While this book is about integrating generative AI particularly LLMs into software applications, in
@@ -5895,9 +5184,6 @@ In short, the main sections in this chapter are:
 • Automated software development
 We’ll begin the chapter by giving a broad overview of the current state of using AI for software
 development.
-
--- 196 of 361 --
-
 Developing Software with Generative AI 174
 Software development and AI
 The emergence of powerful AI systems like ChatGPT has sparked great interest in using AI as
@@ -5928,13 +5214,7 @@ to assist developers in writing code.
 
 ---
 
-## [Sección 135] Chapter 5 171
-
--- 197 of 361 --
-
----
-
-## [Sección 136] Chapter 6 175
+## Sección 100: Chapter 6 175 [Entropy: 0.43]
 
 • Code summarization/documentation: This task aims to generate a natural language summary or documentation for a given block of source code. This summary helps developers
 understand the purpose and function of the code without having to read the actual code.
@@ -5963,9 +5243,6 @@ workflow efficiency but need more robustness, integration, and communication abi
 Powerful pre-trained models like GPT-3 and GPT-4 enable context-aware, conversational support.
 These approaches also empower bug detection, repair recommendations, automated testing
 tools, and code search.
-
--- 198 of 361 --
-
 Developing Software with Generative AI 176
 Microsoft’s GitHub Copilot, which is based on OpenAI’s Codex, draws on open-source code to
 suggest full code blocks in real time. According to a GitHub report in June 2023, developers accepted the AI assistant’s suggestions about 30 percent of the time, which suggests that the tool
@@ -5998,13 +5275,7 @@ from 54 million GitHub repositories, for programming applications.
 
 ---
 
-## [Sección 137] Chapter 6 175
-
--- 199 of 361 --
-
----
-
-## [Sección 138] Chapter 6 177
+## Sección 101: Chapter 6 177 [Entropy: 0.25]
 
 Figure 6.1: Model comparison on HumanEval coding task benchmark
 You can see lines marking the performance of closed-source models such as GPT-4, GPT-4 with
@@ -6017,9 +5288,6 @@ source code. For example, at least about 11% of the code in The Pile, a dataset 
 by EleutherAI’s GPT-Neo for training open-source alternatives of the GPT models, is from GitHub
 (102.18 GB). The Pile was used in the training of Meta’s Llama, Yandex’s YaLM 100B, and many
 others.
-
--- 200 of 361 --
-
 Developing Software with Generative AI 178
 Although HumanEval has been broadly used as a benchmark for code LLMs, there are a multitude
 of benchmarks for programming. Here’s an example question and the response from an advanced
@@ -6044,11 +5312,9 @@ Agents with Verbal Reinforcement Learning by Noah Shinn and others; 2023) can le
 improvements even for short code snippets. Reflexion enables trial-and-error-based learning,
 with language agents verbally reflecting on task feedback and storing this experience in an episodic memory buffer.
 
--- 201 of 361 --
-
 ---
 
-## [Sección 139] Chapter 6 179
+## Sección 102: Chapter 6 179 [Entropy: 0.412]
 
 This reflection and memory of past outcomes guides better future decisions. On coding tasks,
 Reflexion significantly outperformed previous state-of-the-art models, achieving 91% pass@1
@@ -6079,9 +5345,6 @@ StarCoder
 Let’s have a look at StarCoder, which is a small model for code generation and quite capable of
 doing that. It is available at Hugging Face Spaces at this URL: https://huggingface.co/spaces/
 bigcode/bigcode-playground
-
--- 202 of 361 --
-
 Developing Software with Generative AI 180
 This screenshot shows the model in a playground on Hugging Face Spaces:
 Figure 6.3: StarCoder Models Playground
@@ -6108,13 +5371,7 @@ instance variable per line - you'll get errors otherwise!
 
 ---
 
-## [Sección 140] Chapter 6 179
-
--- 203 of 361 --
-
----
-
-## [Sección 141] Chapter 6 181
+## Sección 103: Chapter 6 181 [Entropy: 0.535]
 
 def __post_init__(self):
 """This method runs automatically once upon instantiation"""
@@ -6145,9 +5402,6 @@ re.split("[\W]+", self.lastname)])) )
 print(names)
 self.firstname=' '.join(filter(None,[n[:3]for n in
 reversed(names)])+[''])
-
--- 204 of 361 --
-
 Developing Software with Generative AI 182
 self.lastname =''.join([' '*(4-len(l))+' '+ l[-2:]if not
 l=='I' else '' for l in filter(None,[n[:-2].upper()+','*bool(re.
@@ -6180,11 +5434,9 @@ Here we implement our data model for customers, a dataclass with
 fields firstname, lastname, customer_id (a hash).
 """
 
--- 205 of 361 --
-
 ---
 
-## [Sección 142] Chapter 6 183
+## Sección 104: Chapter 6 183 [Entropy: 0.65]
 
 We get the following result:
 @dataclass(frozen=True) # frozen means that the object cannot be modified
@@ -6215,9 +5467,6 @@ lastname}')
 if not hasattr(other,'fullname'):
 setattr(other, 'fullname',f'{other.firstname}{other.
 lastname}')
-
--- 206 of 361 --
-
 Developing Software with Generative AI 184
 return self.fullname < other.fullname
 except AssertionError as e:
@@ -6246,11 +5495,9 @@ StarChat
 Let’s try an instruction-tuned model so we can give it tasks! StarChat, which is based on StarCoder,
 is available on Hugging Face at https://huggingface.co/spaces/HuggingFaceH4/starchatplayground.
 
--- 207 of 361 --
-
 ---
 
-## [Sección 143] Chapter 6 185
+## Sección 105: Chapter 6 185 [Entropy: 0.397]
 
 This screenshot shows an example in StarChat, but please note that not all the code is visible:
 Figure 6.4: StarChat implementing a function in Python for calculating prime numbers
@@ -6267,9 +5514,6 @@ codellama/codellama-playground
 • Joshua Lochner’s AI Code playground that allows switching between three
 models including CodeGen-Mono 350M: https://huggingface.co/
 spaces/Xenova/ai-code-playground
-
--- 208 of 361 --
-
 Developing Software with Generative AI 186
 You can find the complete code listing on GitHub.
 For this example, which is usually covered in first-year Computer Science courses, no imports
@@ -6292,11 +5536,9 @@ Llama 2
 Llama 2 is not one of the best models for coding, with a pass@1 of about 29%; however, we can
 try it out on Hugging Face chat:
 
--- 209 of 361 --
-
 ---
 
-## [Sección 144] Chapter 6 187
+## Sección 106: Chapter 6 187 [Entropy: 0.56]
 
 Figure 6.5: Hugging Face chat with Llama 2 at https://huggingface.co/chat/
 Please note that this is only the beginning of the output. Llama 2 implements this well and the
@@ -6313,9 +5555,6 @@ task="text-generation",
 model=model,
 tokenizer=tokenizer,
 max_new_tokens=500
-
--- 210 of 361 --
-
 Developing Software with Generative AI 188
 )
 text = """
@@ -6349,11 +5588,9 @@ We could use this pipeline in a LangChain agent; however, please note that this 
 instruction-tuned, so you cannot give it tasks, only completion tasks. You can also use these
 models for code embeddings.
 
--- 211 of 361 --
-
 ---
 
-## [Sección 145] Chapter 6 189
+## Sección 107: Chapter 6 189 [Entropy: 0.472]
 
 Other models that have been instruction-tuned and are available for chat can act as your techie
 assistant to help with providing advice, documenting and explaining existing code, or translating
@@ -6387,9 +5624,6 @@ We can see how the prime number calculations get processed quite well under the 
 OpenAI’s LLM and the Python interpreter:
 Entering new AgentExecutor chain...
 I need to find a way to check if a number is prime
-
--- 212 of 361 --
-
 Developing Software with Generative AI 190
 Action: Python_REPL
 Action Input:
@@ -6424,11 +5658,9 @@ The next frontier is developing frameworks that enable human-LLM collaboration o
 generally – feedback loops for efficient, robust software delivery. There are a few interesting
 implementations around for this.
 
--- 213 of 361 --
-
 ---
 
-## [Sección 146] Chapter 6 191
+## Sección 108: Chapter 6 191 [Entropy: 0.382]
 
 For example, the MetaGPT library approaches this with an agent simulation, where different
 agents represent job roles in a company or IT department:
@@ -6474,9 +5706,6 @@ for Big
 Model Base)
 Multi-agent organization that
 collaborates via meetings. 17100
-
--- 214 of 361 --
-
 Developing Software with Generative AI 192
 GPT Pilot
 https://github.com/Pythagoraio/gpt-pilot Pythagora
@@ -6536,11 +5765,9 @@ After executing each subtask, the LLM then assesses if it has completed successf
 tries to debug the issue or reformulates the plan. This feedback loop of planning, attempting, and
 reviewing allows it to iteratively refine its process.
 
--- 215 of 361 --
-
 ---
 
-## [Sección 147] Chapter 6 193
+## Sección 109: Chapter 6 193 [Entropy: 0.475]
 
 The code-It project by Paolo Rechia and GPT Engineer by Anton Osika both follow a pattern as
 illustrated in this graph for Code-It (source: https://github.com/ChuloAI/code-it):
@@ -6553,9 +5780,6 @@ or Baby-GPT. However, these systems often get stuck in failure loops. The agent 
 key to the robustness of the system.
 We can implement a simple feedback loop in various ways in LangChain, for example, using the
 PlanAndExecute chain, a ZeroShotAgent, or BabyAGI.
-
--- 216 of 361 --
-
 Developing Software with Generative AI 194
 We’ve discussed the basics of these two agent architectures in Chapter 5, Building a Chatbot like
 ChatGPT. Let’s go with PlanAndExecute, which is quite common. In the code on GitHub, you can
@@ -6589,11 +5813,9 @@ One thing we need is clear instructions for a language model to write Python cod
 form – we can reference syntax guidelines, for example:
 from langchain import PromptTemplate, LLMChain, OpenAI
 
--- 217 of 361 --
-
 ---
 
-## [Sección 148] Chapter 6 195
+## Sección 110: Chapter 6 195 [Entropy: 0.605]
 
 DEV_PROMPT = (
 "You are a software engineer who writes Python code given tasks or
@@ -6625,9 +5847,6 @@ execute it with different inputs, capture the outputs, check correctness, analyz
 Based on the tool outputs, we can provide feedback to the LLM on which parts of the code worked
 and which need improvement. The LLM can then generate enhanced code incorporating this
 feedback.
-
--- 218 of 361 --
-
 Developing Software with Generative AI 196
 Over multiple generations, the human-LLM loop allows for the creation of well-structured, robust
 software that meets the desired specifications. The LLM brings raw coding productivity while
@@ -6661,11 +5880,9 @@ llm_chain: Chain,
 ):
 self. llm_chain = llm_chain
 
--- 219 of 361 --
-
 ---
 
-## [Sección 149] Chapter 6 197
+## Sección 111: Chapter 6 197 [Entropy: 0.706]
 
 def write_code(self, task: str) -> str:
 return self.llm_chain.run(task)
@@ -6701,9 +5918,6 @@ I’ve implemented logic to install packages for ModuleNotFoundError, and cleare
 some of these problems. In the case of missing images, we could add a generative image model to
 create them. Returning all this as enriched feedback to the code generation results in increasingly
 specific output such as this:
-
--- 220 of 361 --
-
 Developing Software with Generative AI 198
 Write a basic tetris game in Python with no syntax errors, properly closed
 strings, brackets, parentheses, quotes, commas, colons, semi-colons, and
@@ -6737,11 +5951,9 @@ ddg_search = DuckDuckGoSearchResults()
 tools = [
 codetool,
 
--- 221 of 361 --
-
 ---
 
-## [Sección 150] Chapter 6 199
+## Sección 112: Chapter 6 199 [Entropy: 0.457]
 
 Tool(
 name="DDGSearch",
@@ -6773,9 +5985,6 @@ pygame.init()
 window_width = 800
 window_height = 600
 # Create the window
-
--- 222 of 361 --
-
 Developing Software with Generative AI 200
 window = pygame.display.set_mode((window_width, window_height))
 # Set the window title
@@ -6807,11 +6016,9 @@ You can see this in the GitHub repo.
 Finally, we could try a test-driven development approach or have a human give feedback rather
 than a fully automated process.
 
--- 223 of 361 --
-
 ---
 
-## [Sección 151] Chapter 6 201
+## Sección 113: Chapter 6 201 [Entropy: 0.37]
 
 LLMs can produce reasonable sets of test cases from high-level descriptions. But human oversight
 is essential to catch subtle mistakes and validate completeness. Generating implementation code
@@ -6841,15 +6048,10 @@ you go back to the corresponding sections of this chapter if you are unsure abou
 4. How does the Reflexion strategy work?
 5. What options do we have available to establish a feedback loop for writing code?
 6. What do you think is the impact of generative AI on software development?
-
--- 224 of 361 --
-
 Developing Software with Generative AI 202
 Join our community on Discord
 Join our community’s Discord space for discussions with the authors and other readers:
 https://packt.link/lang
-
--- 225 of 361 --
 LLMs for Data Science
 This chapter is about how generative AI can automate data science. Generative AI, in particular
 LLMs, has the potential to accelerate scientific progress across various domains, especially by
@@ -6871,13 +6073,6 @@ The main sections in this chapter are:
 • Automated data science
 • Using agents to answer data science questions
 • Data exploration with LLMs
-
----
-
-## [Sección 152] Chapter 6 201
-
--- 226 of 361 --
-
 LLMs for Data Science 204
 Before delving into how data science can be automated, let’s start by discussing how generative
 AI will impact data science!
@@ -6907,11 +6102,9 @@ According to recent reports by the likes of McKinsey and KPMG, the consequences 
 what data scientists will work on, how they will work, and who can work on data science tasks.
 The principal areas of key impact include:
 
--- 227 of 361 --
-
 ---
 
-## [Sección 153] Chapter 7 205
+## Sección 114: Chapter 7 205 [Entropy: 0.415]
 
 • Democratization of AI: Generative models allow many more people to leverage AI by
 generating text, code, and data from simple prompts. This expands the use of AI beyond
@@ -6941,9 +6134,6 @@ science. In the past, data science was a very specialized field that required a 
 of statistics and machine learning. However, generative AI is making it possible for people with
 less technical expertise to create and use data models. This is opening up the field of data science
 to a much wider range of people.
-
--- 228 of 361 --
-
 LLMs for Data Science 206
 LLMs and generative AI can play a crucial role in automated data science by offering several
 benefits:
@@ -6978,13 +6168,7 @@ these models are accurate, unbiased, and aligned with rigorous scientific standa
 
 ---
 
-## [Sección 154] Chapter 7 205
-
--- 229 of 361 --
-
----
-
-## [Sección 155] Chapter 7 207
+## Sección 115: Chapter 7 207 [Entropy: 0.265]
 
 One notable example is Microsoft’s Fabric, which incorporates a chat interface powered by generative AI. This allows users to ask data-related questions using natural language and receive
 instant answers without having to wait in a data request queue. By leveraging LLMs like OpenAI
@@ -7012,9 +6196,6 @@ decisions. The responsibilities of a data scientist are wide-ranging and often i
 steps that vary depending on the specific role and industry. Tasks include data collecting, cleaning, analyzing, and visualizing. Data scientists are also tasked with building predictive models
 to help in decision-making processes. All the tasks mentioned are crucial to data science but can
 be time-consuming and complex.
-
--- 230 of 361 --
-
 LLMs for Data Science 208
 Automating various aspects of the data science workflow allows data scientists to focus more on
 creative problem-solving while enhancing productivity. Recent tools are making different stages
@@ -7029,11 +6210,9 @@ explain code, identify errors, and create notebooks.
 This screenshot from the documentation shows the chat feature, the Jupyternaut chat (Jupyter AI):
 Figure 7.1: Jupyter AI – Jupyternaut chat
 
--- 231 of 361 --
-
 ---
 
-## [Sección 156] Chapter 7 209
+## Sección 116: Chapter 7 209 [Entropy: 0.295]
 
 It should be plain to see that having a chat like that at your fingertips to ask questions, create
 simple functions, or change existing functions can be a boon to data scientists.
@@ -7062,9 +6241,6 @@ notably excelling in the organization of unstructured datasets.
 The best tool for automatic data collection will depend on the specific needs of the business.
 Businesses should consider the type of data they need to collect, the volume of data they need to
 collect, and the budget they have available.
-
--- 232 of 361 --
-
 LLMs for Data Science 210
 Visualization and EDA
 EDA involves manually exploring and summarizing data to understand its various aspects before
@@ -7095,13 +6271,7 @@ the need for checks against introducing inadvertent biases or errors through aut
 
 ---
 
-## [Sección 157] Chapter 7 209
-
--- 233 of 361 --
-
----
-
-## [Sección 158] Chapter 7 211
+## Sección 117: Chapter 7 211 [Entropy: 0.25]
 
 AutoML
 AutoML frameworks represent a noteworthy leap in the evolution of machine learning. By streamlining the complete model development cycle, including tasks such as data cleaning, feature selection, model training, and hyperparameter tuning, AutoML frameworks significantly economize on
@@ -7115,9 +6285,6 @@ and deployment processes. The genesis of these frameworks can be traced back to 
 like Auto-WEKA. As one of the early broad-framework attempts, developed at the University of
 Waikato, it was penned in Java to automate the process for tabular data within the Weka machine
 learning suite.
-
--- 234 of 361 --
-
 LLMs for Data Science 212
 Since the release of Auto-Weka, the landscape has vastly diversified with powerful frameworks
 such as auto-sklearn, autokeras, NASLib, Auto-PyTorch, TPOT, Optuna, AutoGluon, and Ray
@@ -7136,7 +6303,7 @@ The attributes characterizing AutoML frameworks are manifold: they provide deplo
 ones; others necessitate exportation in formats compatible with platforms like TensorFlow. The
 diversity in the data types handled is another facet, with a concentrated focus on tabular datasets alongside deep learning frameworks catering to assorted data varieties. Several frameworks
 highlight explainability as a paramount feature – this is particularly pertinent where regulations
-or reliability are at PartnerBrand in industries like healthcare and finance. Monitoring post-deployment
+or reliability are at stake in industries like healthcare and finance. Monitoring post-deployment
 is another operational feature to ensure sustained model performance over time.
 Despite recent advancements, users are confronted with typical drawbacks associated with such
 automated systems. A “black-box” scenario emerges quite frequently yielding difficulties in comprehending the internal workings, which can impede problem debugging within AutoML models.
@@ -7150,13 +6317,7 @@ by making it possible for non-experts to achieve expert-level model tuning.
 
 ---
 
-## [Sección 159] Chapter 7 211
-
--- 235 of 361 --
-
----
-
-## [Sección 160] Chapter 7 213
+## Sección 118: Chapter 7 213 [Entropy: 0.59]
 
 With respect to ease of use, while AutoML with integrated LLMs offers simplified interfaces for
 model development pipelines, users must grapple with complex choices regarding model selection and evaluation.
@@ -7187,9 +6348,6 @@ Such capabilities, while adept at delivering straightforward numerical answers, 
 and PAL (PALChain), can tackle more complex reasoning challenges, mitigating the risks of
 generative models producing implausible content; yet their practical applications remain elusive
 in real-world scenarios.
-
--- 236 of 361 --
-
 LLMs for Data Science 214
 With PythonREPLTool, we can create simple visualizations of toy data or train with synthetic
 data, which can be nice for illustration or bootstrapping a project. This is an example from the
@@ -7227,11 +6385,9 @@ optimizer = torch.optim.SGD(model.parameters(), lr=0.01)
 # Define the data
 x_data = torch.tensor([[1.0], [2.0], [3.0], [4.0]])
 
--- 237 of 361 --
-
 ---
 
-## [Sección 161] Chapter 7 215
+## Sección 119: Chapter 7 215 [Entropy: 0.59]
 
 y_data = torch.tensor([[2.0], [4.0], [6.0], [8.0]])
 for epoch in range(1000): # Train the model
@@ -7265,9 +6421,6 @@ LLMs and tools can be useful if we want to enrich our data with category or geog
 of our customers from Tokyo, we can use WolframAlpha as a tool. Here’s a simplistic example:
 from langchain.agents import load_tools, initialize_agent
 from langchain.llms import OpenAI
-
--- 238 of 361 --
-
 LLMs for Data Science 216
 from langchain.chains.conversation.memory import ConversationBufferMemory
 llm = OpenAI(temperature=0)
@@ -7298,18 +6451,3058 @@ queries; deploying such implementations on a larger scale demands more extensive
 strategies beyond those discussed.
 However, we can give agents datasets to work with, and here is where it can get immensely powerful when we connect more tools. Let’s ask and answer questions about structured datasets!
 
--- 239 of 361 --
-
 ---
 
-## [Sección 162] Chapter 7 217
+## Sección 120: Chapter 7 217 [Entropy: 0.559]
 
 Data exploration with LLMs
 Data exploration is a crucial and foundational step in data analysis, allowing researchers to gain a
-comprehensive understan
+comprehensive understanding of their datasets and uncover significant insights. With the emergence of LLMs like ChatGPT, researchers can harness the power of natural language processing
+to facilitate data exploration.
+As we mentioned earlier, generative AI models such as ChatGPT have the ability to understand and
+generate human-like responses, making them valuable tools for enhancing research productivity.
+Asking our questions in natural language and getting responses in digestible pieces and shapes
+can be a great boost to analysis.
+LLMs can help explore textual data and other forms of data, such as numerical datasets or multimedia content. Researchers can leverage ChatGPT’s capabilities to ask questions about statistical
+trends in numerical datasets or even query visualizations for image classification tasks.
+Let’s load up a dataset and work with that. We can quickly get a dataset from scikit-learn:
+from sklearn.datasets import load_iris
+df = load_iris(as_frame=True)["data"]
+The Iris dataset is well known – it’s a toy dataset, but it will help us illustrate the capabilities of
+using generative AI for data exploration. We’ll use a DataFrame in the following example. We
+can create a pandas DataFrame agent now and we’ll see how easy it is to get simple stuff done!
+from langchain.agents import create_pandas_dataframe_agent
+from langchain import PromptTemplate
+from langchain.llms.openai import OpenAI
+PROMPT = (
+"If you do not know the answer, say you don't know.\n"
+"Think step by step.\n"
+"\n"
+"Below is the query.\n"
+"Query: {query}\n"
+)
+prompt = PromptTemplate(template=PROMPT, input_variables=["query"])
+llm = OpenAI()
+agent = create_pandas_dataframe_agent(llm, df, verbose=True)
+LLMs for Data Science 218
+I’ve included instructions for the model to indicate uncertainty and to follow a step-by-step
+thought process, with the aim of reducing hallucinations. Now we can query our agent against
+the DataFrame:
+agent.run(prompt.format(query="What's this dataset about?"))
+We get the answer This dataset is about the measurements of some type of flower,
+which is correct.
+Let’s show how to get a visualization:
+agent.run(prompt.format(query="Plot each column as a barplot!"))
+Here is the plot:
+Figure 7.3: Iris dataset barplots
+The plot is not perfect. The output can be finicky and depends on the llm model parameter and
+on the instructions. In this case, I used df.plot.bar(rot=0, subplots=True). We might want
+to introduce more tweaks, for example, to padding between the panels, the font size, or the
+placement of the legend, to make this really nice.
 
 ---
-> *[Truncated at 420 KB for optimal local RAG indexing speed]*
+
+## Sección 121: Chapter 7 219 [Entropy: 0.451]
+
+We can also ask to see the distributions of the columns visually, which will give us this neat plot:
+Figure 7.4: Iris dataset boxplots
+We can request the plot to use other plotting backends, such as Seaborn; however, please note
+that these have to be installed.
+We can also ask more questions about the dataset, like which row has the biggest difference
+between petal length and petal width. We get the answer with the intermediate steps as follows
+(shortened):
+df['difference'] = df['petal length (cm)'] - df['petal width (cm)']
+df.loc[df['difference'].idxmax()]
+Observation: sepal length (cm) 7.7
+sepal width (cm) 2.8
+petal length (cm) 6.7
+petal width (cm) 2.0
+difference 4.7
+Name: 122, dtype: float64
+Thought: I now know the final answer
+Final Answer: Row 122 has the biggest difference between petal length and
+petal width.
+I think that’s worth a pat on the back, LLM!
+LLMs for Data Science 220
+We could extend this example by adding more instructions to the prompt about plotting, such
+as the sizes of plots.
+It’s a bit harder to implement the same plotting logic in a Streamlit app, because we need to use
+the plotting functionality in corresponding Streamlit functions, for example, st.bar_chart().
+However, this can be done as well. You can find explanations for this on the Streamlit blog (Building
+a Streamlit and scikit-learn app with ChatGPT).
+What about statistical tests?
+agent.run(prompt.format(query="Validate the following hypothesis
+statistically: petal width and petal length come from the same
+distribution."))
+We get this response:
+Thought: I should use a statistical test to answer this question.
+Action: python_repl_ast
+Action Input: from scipy.stats import ks_2samp
+Observation:
+Thought: I now have the necessary tools to answer this question.
+Action: python_repl_ast
+Action Input: ks_2samp(df['petal width (cm)'], df['petal length (cm)'])
+Observation: KstestResult(statistic=0.6666666666666666,
+pvalue=6.639808432803654e-32, statistic_location=2.5, statistic_sign=1)
+Thought: I now know the final answer
+Final Answer: The p-value of 6.639808432803654e-32 indicates that the two
+variables come from different distributions.
+That checks off the statistical test! We can ask complex questions about the dataset with simple
+prompts in plain English.
+There’s also the PandasAI library, which uses LangChain under the hood and provides similar
+functionality. Here’s an example from the documentation with an example dataset:
+import pandas as pd
+from pandasai.llm import OpenAI
+from pandasai.schemas.df_config import Config
+from pandasai import SmartDataframe
+df = pd.DataFrame({
 
 ---
-**Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #architecture_and_books
+
+## Sección 122: Chapter 7 221 [Entropy: 0.457]
+
+"country": ["United States", "United Kingdom", "France", "Germany",
+"Italy", "Spain", "Canada", "Australia", "Japan", "China"],
+"gdp": [19294482071552, 2891615567872, 2411255037952, 3435817336832,
+1745433788416, 1181205135360, 1607402389504, 1490967855104, 4380756541440,
+14631844184064],
+"happiness_index": [6.94, 7.16, 6.66, 7.07, 6.38, 6.4, 7.23, 7.22,
+5.87, 5.12]
+})
+smart_df = SmartDataframe(df, config=Config(llm=OpenAI()))
+print(smart_df.chat("Which are the 5 happiest countries?"))
+This will give us the requested result similar to before when we were using LangChain directly.
+Please note that PandasAI is not part of the setup for the book, so you’ll have to install it separately if you want to use it.
+For data in SQL databases, we can connect with a SQLDatabaseChain. The LangChain documentation shows this example:
+from langchain.llms import OpenAI
+from langchain.utilities import SQLDatabase
+from langchain_experimental.sql import SQLDatabaseChain
+db = SQLDatabase.from_uri("sqlite:///../../../../notebooks/Chinook.db")
+llm = OpenAI(temperature=0, verbose=True)
+db_chain = SQLDatabaseChain.from_llm(llm, db, verbose=True)
+db_chain.run("How many employees are there?")
+We are connecting to a database first. Then we can ask questions about the data in natural language.
+This can also be quite powerful. An LLM will create the queries for us. I would expect this to be
+particularly useful when we don’t know about the schema of the database. The SQLDatabaseChain
+can also check queries and autocorrect them if the use_query_checker option is set.
+By following the outlined steps, we have leveraged the impressive natural language processing
+capabilities of LLMs for data exploration. Through loading a dataset, such as the Iris dataset
+from scikit-learn, we can use an LLM-powered agent to query about data specifics in accessible,
+everyday language. The creation of a pandas DataFrame agent enabled simple analysis tasks and
+visualization requests, demonstrating the AI’s capacity to produce plots and specific data insights.
+LLMs for Data Science 222
+We can not only inquire about the nature of the dataset verbally but also command the agent to
+generate visual representations such as barplots and boxplots for EDA. Although these visualizations might require additional fine-tuning for aesthetic refinement, they established a groundwork
+for analysis. When delving into more nuanced requests, such as identifying disparities between
+two data attributes, the agent adeptly added new columns and located pertinent numerical
+differences, showing its practical utility in drawing actionable conclusions.
+Efforts extended beyond mere visualization as the application of statistical tests was also explored
+through concise English prompts, resulting in articulate interpretations of statistical operations
+like KS-tests performed by the agent.
+The capabilities of integrations aren’t limited to static datasets but extend to dynamic SQL databases where an LLM can automate query generation, even offering autocorrection for syntactical
+errors in SQL statements. This capability particularly shines when schemas are unfamiliar.
+Summary
+Beginning with an examination of AutoML frameworks, this chapter highlighted the value these
+systems bring to the entirety of the data science pipeline, facilitating each stage from data preparation to model deployment. We then considered how the integration of LLMs can further elevate
+productivity and make data science more approachable for both technical and non-technical
+stakeholders.
+Diving into code generation, we saw parallels with software development, as discussed in Chapter
+6, Developing Software with Generative AI, observing how tools and functions generated by LLMs
+can respond to queries or enhance datasets through augmentation techniques. This included
+leveraging third-party tools like WolframAlpha to add external data points to existing datasets.
+Our exploration then shifted toward the use of LLMs for data exploration, building upon the
+techniques for ingesting and analyzing voluminous textual data detailed in Chapter 4, Building
+Capable Assistants, on question answering. Here, our focus turned to structured datasets, examining
+how SQL databases or tabular information could be effectively analyzed through LLM-powered
+exploratory processes.
+To sum up our exploration, it is clear that AI technologies, illustrated by platforms such as ChatGPT
+plugins and Microsoft Fabric, hold transformative potential for data analysis. However, despite
+the remarkable strides in enabling and enhancing the work of data scientists through these AI
+tools, the current state of AI technology isn’t at a point where it can supplant human experts but
+rather augments their capabilities and broadens their analytical toolset.
+
+---
+
+## Sección 123: Chapter 7 223 [Entropy: 0.295]
+
+In the next chapter, we’ll focus on conditioning techniques to improve the performance of LLMs
+through prompting and fine-tuning.
+Questions
+Please have a look to see if you can come up with the answers to these questions from memory.
+I recommend you go back to the corresponding sections of this chapter if you are unsure about
+any of them:
+1. What steps are involved in data science?
+2. Why would we want to automate data science/analysis?
+3. How can generative AI help data scientists?
+4. What kind of agents and tools can we use to answer simple questions?
+5. How can we get an LLM to work with data?
+Join our community on Discord
+Join our community’s Discord space for discussions with the authors and other readers:
+https://packt.link/lang
+Customizing LLMs and Their
+Output
+This chapter is about techniques and best practices to improve the reliability and performance
+of LLMs in certain scenarios, such as complex reasoning and problem-solving tasks. This process of adapting a model for a certain task or making sure that our model output corresponds to
+what we expect is called conditioning. In this chapter, we’ll discuss fine-tuning and prompting
+as methods for conditioning.
+Fine-tuning involves training the pre-trained base model on specific tasks or datasets relevant
+to the desired application. This process allows the model to adapt, becoming more accurate and
+contextually relevant for the intended use case.
+On the other hand, by providing additional input or context at inference time, LLMs can generate text tailored to a particular task or style. Prompt engineering is significant in unlocking
+LLM reasoning capabilities, and prompt techniques form a valuable toolkit for researchers and
+practitioners working with LLMs. We’ll discuss and implement advanced prompt engineering
+strategies like few-shot learning, tree-of-thought, and self-consistency.
+Throughout the chapter, we’ll work on fine-tuning and prompting with LLMs. You can find the
+corresponding code in the GitHub repository for the book at https://github.com/benman1/
+generative_ai_with_langchain
+Customizing LLMs and Their Output 226
+The main sections in this chapter are:
+• Conditioning LLMs
+• Fine-tuning
+• Prompt engineering
+Let’s start by discussing conditioning, why it’s important, and how we can achieve it.
+Conditioning LLMs
+Pre-training an LLM on diverse data to learn patterns of language results in a base model that
+has a broad understanding of diverse topics. While base models such as GPT-4 can generate
+impressive text on a wide range of topics, conditioning them can enhance their capabilities in
+terms of task relevance, specificity, and coherence, and can guide the model’s behavior to be in
+line with what is considered ethical and appropriate. In this chapter, we’ll focus on fine-tuning
+and prompt techniques as two methods of conditioning.
+Conditioning techniques enable LLMs to comprehend and execute complex instructions, delivering content that closely matches our expectations. This ranges from off-the-cuff interactions
+to systematic training that orients a model’s behavior toward reliable performance in specialist
+domains, like legal consultation or technical documentation. Furthermore, part of conditioning
+includes implementing safeguards to avert the production of malicious or harmful content, such
+as incorporating filters or training the model to avoid certain types of problematic outputs, thereby
+better aligning it with desired ethical standards.
+Conditioning refers to a collection of methods used to direct the model’s generation
+of outputs. This includes not only prompt crafting but also more systemic techniques,
+such as fine-tuning the model on specific datasets to adapt its responses to certain
+topics or styles persistently.
+Alignment refers to the process and goal of training and modifying LLMs so that
+their general behavior, decision-making processes, and outputs conform to broader
+human values, ethical principles, and safety considerations.
+The two terms are not synonymous; while conditioning can include fine-tuning and
+is focused on influencing the model through various techniques at different layers of
+interaction, alignment is concerned with the fundamental and holistic calibration
+of the model’s behavior to human ethics and safety standards.
+
+---
+
+## Sección 124: Chapter 8 227 [Entropy: 0.28]
+
+Conditioning can be applied at different points in a model’s life cycle. One strategy involves
+fine-tuning the model on data that represents the intended use case to help the model specialize
+in that area. This method depends on the availability of such data and the ability to integrate it
+into the training process. Another method involves conditioning the model dynamically at the
+time of inference, where the input prompt is tailored with additional context to shape the desired
+output. This approach offers flexibility but can add complexity to the model’s operation in live
+environments.
+In the next section, I will summarize key methods for conditioning such as fine-tuning and prompt
+engineering, discuss the rationale, and examine their relative pros and cons.
+Methods for conditioning
+With the advent of large pre-trained language models like GPT-3, there has been growing interest
+in techniques to adapt these models for downstream tasks. As LLMs continue to develop, they
+will become even more effective and useful for a broader range of applications, and we can expect
+future advancements in fine-tuning and prompting techniques to help go even further in complex
+tasks that involve reasoning and tool use.
+Several approaches have been proposed for conditioning. Here is a table summarizing the different techniques:
+Stage Technique Examples
+Training
+Data curation Training on diverse data
+Objective function Careful design of training objective
+Architecture and training
+process Optimizing model structure and training
+Fine-tuning Task specialization Training on specific datasets/tasks
+Inference-time
+conditioning Dynamic inputs
+Prefixes, control codes, and context
+examples
+Human oversight Human-in-the-loop Human review and feedback
+Table 8.1: Steering generative AI outputs
+Combining these techniques provides developers with more control over the behavior and outputs
+of generative AI systems. The ultimate goal is to ensure that human values are incorporated at all
+stages, from training to deployment, to create responsible and aligned AI systems.
+Customizing LLMs and Their Output 228
+In this chapter, we emphasize fine-tuning and prompting, as they stand out for their effectiveness and prevalence in the conditioning of LLMs. Fine-tuning involves adjusting all parameters
+of a pre-trained model through additional training on specialized tasks. This method is aimed
+at enhancing model performance for particular objectives and is known to yield robust results.
+However, fine-tuning can be resource-intensive, presenting a trade-off between high performance
+and computational efficiency. To address these limitations, we explore strategies like adapters
+and Low-Rank Adaptation (LoRA), which introduce elements of sparsity or implement partial
+freezing of parameters to lighten the burden.
+Prompt-based techniques, on the other hand, offer a way to dynamically condition LLMs at inference time. Through careful crafting of input prompts and subsequent optimization and evaluations,
+these methods can steer the behavior of LLMs in desired directions without the need for heavy
+retraining. Prompts can be carefully designed to elicit specific behaviors or to encapsulate particular knowledge areas, providing a versatile and resource-savvy approach to model conditioning.
+Moreover, we delve into the transformative role of Reinforcement Learning with Human Feedback (RLHF) within fine-tuning processes, where human feedback serves as a critical guide for
+the model’s learning trajectory. RLHF has exhibited the potential to profoundly improve the capabilities of language models like GPT-3, making fine-tuning an even more impactful technique. By
+integrating RLHF, we harness the nuanced understanding of human evaluators to further refine
+the model behavior, ensuring outputs that are not only relevant and accurate but also align with
+user intent and expectations.
+All these different techniques for conditioning facilitate the development of LLMs that are both
+high-performing and aligned with desired outcomes across various applications. Let’s start off
+by discussing the reasons why InstructGPT, which was trained through RLHF, has had such a
+transformative impact.
+Reinforcement learning with human feedback
+In their March 2022 paper, Ouyang and others from OpenAI demonstrated using RLHF with
+Proximal Policy Optimization (PPO) to align LLMs, like GPT-3, with human preferences.
+RLHF is an online approach that fine-tunes LMs using human preferences. It has three main steps:
+1. Supervised pre-training: The LM is first trained via standard supervised learning on
+human demonstrations.
+2. Reward model training: A reward model is trained on human ratings of LM outputs to
+estimate a reward.
+
+---
+
+## Sección 125: Chapter 8 229 [Entropy: 0.451]
+
+3. RL fine-tuning: The LM is fine-tuned via reinforcement learning to maximize the expected
+reward from the reward model using an algorithm like PPO.
+The main change, RLHF, allows incorporating nuanced human judgments into language model
+training through a learned reward model. As a result, human feedback can steer and improve
+language model capabilities beyond standard supervised fine-tuning. This new model can be
+used to follow instructions that are given in natural language, and it can answer questions in
+a way that’s more accurate and relevant than GPT-3. InstructGPT outperformed GPT-3 on user
+preference, truthfulness, and harm reduction, despite having 100x fewer parameters.
+Starting in March 2022, OpenAI started releasing the GPT-3.5 series models, upgraded versions
+of GPT-3, which include fine-tuning with RLHF.
+InstructGPT opened up new avenues to improve language models by incorporating reinforcement learning from human feedback methods beyond traditional fine-tuning approaches. RL
+training can be unstable and computationally expensive; notwithstanding, its success inspired
+further research into refining RLHF techniques, reducing data requirements for alignment, and
+developing more powerful and accessible models for a wide range of applications.
+Low-rank adaptation
+As LLMs become larger, it becomes difficult to train them on consumer hardware, and deploying
+them for each specific task becomes expensive. There are a few methods that reduce computational, memory, and storage costs while improving performance in low-data and out-of-domain
+scenarios.
+Parameter-Efficient Fine-Tuning (PEFT) methods enable the use of small checkpoints for each
+task, making the models more portable. This small set of trained weights can be added on top of
+the LLM, allowing the same model to be used for multiple tasks without replacing the entire model.
+Low-Rank Adaptation (LoRA) is a type of PEFT, where the pre-trained model weights are frozen.
+It introduces trainable rank decomposition matrices into each layer of the Transformer architecture to reduce the number of trainable parameters. LoRA achieves comparable model quality
+compared to fine-tuning while having fewer trainable parameters and higher training throughput.
+The QLORA method is an extension of LoRA, which enables efficient fine-tuning of large models
+by backpropagating gradients through a frozen 4-bit quantized model into learnable low-rank
+adapters. This allows you to fine-tune a 65B parameter model on a single GPU. QLORA models
+achieve 99% of ChatGPT performance on Vicuna, using innovations like new data types and
+optimizers. QLORA reduces the memory requirements to fine-tune a 65B parameter model from
+>780 GB to <48 GB, without affecting runtime or predictive performance.
+Customizing LLMs and Their Output 230
+In the next section, we’ll discuss methods to condition LLMs at inference time, which include
+prompt engineering.
+Inference-time conditioning
+One commonly used approach is conditioning at inference time (an output generation phase),
+where specific inputs or conditions are provided dynamically to guide the output generation
+process. LLM fine-tuning may not always be feasible or beneficial in certain scenarios:
+• Limited fine-tuning services: When models are only accessible through APIs that lack
+or have restricted fine-tuning capabilities
+• Insufficient data: In cases where there is a lack of data for fine-tuning, either for the
+specific downstream task or relevant application domain
+• Dynamic data: In cases of applications with frequently changing data, such as news-related platforms, fine-tuning models frequently becomes challenging, leading to potential
+drawbacks
+Quantization refers to techniques to reduce the numerical precision of weights
+and activations in neural networks like LLMs. The main purpose of quantization is
+to reduce the memory footprint and computational requirements of large models.
+Some key points about the quantization of LLMs:
+• It involves representing weights and activations using fewer bits than a
+standard single-precision floating point (FP32). For example, weights could
+be quantized to 8-bit integers.
+• This allows you to shrink a model size by up to 4x and improve throughput
+on specialized hardware.
+• Quantization typically has a minor impact on model accuracy, especially
+with re-training.
+• Common quantization methods include scalar, vector, and product quantization, which quantize weights separately or in groups.
+• Activations can also be quantized by estimating their distribution and binning appropriately.
+• Quantization-aware training adjusts weights during training to minimize
+quantization loss.
+• LLMs like BERT and GPT-3 have been shown to work well with 4–8-bit quantization via fine-tuning.
+
+---
+
+## Sección 126: Chapter 8 231 [Entropy: 0.4]
+
+• Context-sensitive applications: Dynamic and context-specific applications like personalized chatbots cannot perform fine-tuning based on individual user data
+For conditioning at inference time, most commonly, we provide a textual prompt or instruction
+at the beginning of the text generation process. This prompt can be a few sentences or even a
+single word, acting as an explicit indication of the desired output.
+Some common techniques for inference-time conditioning include:
+• Prompt tuning: Providing natural language guidance for intended behavior. Sensitive
+to prompt design.
+• Prefix tuning: Prepending trainable vectors to LLM layers.
+• Constraining tokens: Forcing inclusion/exclusion of certain words
+• Metadata: Providing high-level info like genre, target audience, and so on
+Prompts can facilitate generating text that adheres to specific themes, styles, or even mimics a
+particular author’s writing style. These techniques involve providing contextual information
+during inference time, such as for in-context learning or retrieval augmentation.
+An example of prompt tuning is prefixing prompts, where instructions like “Write a child-friendly
+story about...” are prepended to the prompt. For example, in chatbot applications, conditioning
+the model with user messages helps it generate responses that are personalized and pertinent
+to the ongoing conversation.
+Further examples include prepending relevant documents to prompts to assist LLMs with writing
+tasks (for example, news reports, Wikipedia pages, and company documents), or retrieving and
+prepending user-specific data (financial records, health data, and emails) before prompting an
+LLM to ensure personalized answers. By conditioning LLM outputs on contextual information at
+runtime, these methods can guide models without relying on traditional fine-tuning processes.
+Often, demonstrations are part of the instructions for reasoning tasks, where few-shot examples
+are provided to induce the desired behavior. Powerful LLMs, such as GPT-3, can solve tasks without further training through prompting techniques. In this approach, the problem to be solved
+is presented to the model as a text prompt, with some text examples of similar problems and
+their solutions. The model must provide a completion of the prompt via inference. Zero-shot
+prompting involves no solved examples, while few-shot prompting includes a small number of
+examples of similar (problem and solution) pairs.
+It has been shown that prompting provides easy control over large frozen models like GPT-4 and
+allows steering model behavior without extensive fine-tuning.
+Customizing LLMs and Their Output 232
+Prompting enables conditioning models on new knowledge with low overhead, but careful prompt
+engineering is needed for the best results. This is what we’ll discuss as part of this chapter.
+In prefix tuning, continuous task-specific vectors are trained and supplied to models at inference
+time. Similar ideas have been proposed for adapter approaches, such as parameter Efficient
+Transfer Learning (PELT) or Ladder Side-Tuning (LST).
+Conditioning at inference time can also happen during sampling, such as grammar-based sampling, where the output can be constrained to be compatible with certain well-defined patterns,
+such as a programming language syntax.
+In the next section, we’ll fine-tune a small open-source LLM (OpenLLaMa) for Question Answering (QA) with PEFT and quantization, and we’ll deploy it on Hugging Face.
+Fine-tuning
+As we discussed in the first section of this chapter, the goal of model fine-tuning for LLMs is to
+optimize a model to generate outputs that are more specific to a task and context than the original foundation model.
+The need for fine-tuning arises because pre-trained LMs are designed to model general linguistic
+knowledge, not specific downstream tasks. Their capabilities manifest only when adapted to applications. Fine-tuning allows pre-trained weights to be updated for target datasets and objectives.
+This enables knowledge transfer from the general model while customizing it for specialized tasks.
+In general, there are three advantages of fine-tuning that are immediately obvious to users of
+these models:
+• Steerability: The capability of models to follow instructions (instruction-tuning)
+• Reliable output-formatting: This is important, for example, for API calls/function calling)
+• Custom tone: This makes it possible to adapt the output style as appropriate to the task
+and audience.
+• Alignment: The output of models should correspond to core values, for example, concerning safety, security, and privacy considerations.
+The idea of fine-tuning pre-trained neural networks originated in computer vision research in
+the early 2010s. Howard and Ruder (2018) demonstrated the effectiveness of fine-tuning models
+like ELMo and ULMFit on downstream tasks. The seminal BERT model (Devlin and others., 2019)
+established fine-tuning of pre-trained transformers as the de facto approach in NLP.
+
+---
+
+## Sección 127: Chapter 8 233 [Entropy: 0.4]
+
+In this section, we’ll fine-tune a model for question answering. This recipe is not specific to Lang-
+Chain, but we’ll point out a few customizations, where LangChain could be applicable. You can
+find the code in the notebooks directory in the GitHub repository for the book.
+As a first step, we’ll set up fine-tuning with libraries and environment variables.
+Setup for fine-tuning
+Fine-tuning consistently achieves strong results across tasks but requires extensive computational resources. Therefore, it’s a good idea to do fine-tuning in an environment where we can
+access powerful GPUs and memory resources. We’ll run this on Google Colab instead of the local
+environment, where we can run fine-tuning of LLMs free of charge (with only a few restrictions).
+Please make sure you set your Google Colab machine settings in the top menu to TPU or GPU to
+make sure you have sufficient resources to run the following code and that the training doesn’t
+take too long. We’ll install all required libraries in the Google Colab environment – I am adding
+the versions of these libraries that I’ve used to make our fine-tuning repeatable:
+• peft: PEFT (version 0.5.0)
+• trl: Proximal Policy Optimization (0.6.0)
+• bitsandbytes: k-bit optimizers and matrix multiplication routines, needed for quantization (0.41.1)
+• accelerate: train and use PyTorch models with multi-GPU, TPU, and mixed-precision
+(0.22.0)
+• transformers: Hugging Face transformers library with backends in JAX, PyTorch, and
+TensorFlow (4.32.0)
+• datasets: community-driven open-source library of datasets (2.14.4)
+• sentencepiece: Python wrapper for fast tokenization (0.1.99)
+• wandb: for monitoring the training progress on Weights and Biases (0.15.8)
+• langchain for loading the model back as a LangChain LLM after training (0.0.273)
+Google Colab is a computation environment that provides different means for hardware acceleration of computation tasks such as Tensor Processing Units (TPUs) and
+Graphical Processing Units (GPUs). These are available both in free and professional
+tiers. For the task in this section, the free tier is sufficient. You can sign into a Colab
+environment at this URL: https://colab.research.google.com/
+Customizing LLMs and Their Output 234
+We can install these libraries from the Colab notebook as follows:
+!pip install -U accelerate bitsandbytes datasets transformers peft trl
+sentencepiece wandb langchain huggingface_hub
+To download and train models from Hugging Face, we need to authenticate with the platform.
+Please note that if you want to push your model to Hugging Face later, you need to generate a new
+API token with write permissions on Hugging Face: https://huggingface.co/settings/tokens
+Figure 8.1: Creating a new API token on Hugging Face write permissions
+We can authenticate from the notebook like this:
+from huggingface_hub import notebook_login
+notebook_login()
+When prompted, paste your Hugging Face access token.
+Weights and Biases (W&B) is an MLOps platform that can help developers monitor and document ML training workflows from end to end. As mentioned earlier, we will use W&B to get an
+idea of how well the training is working and if the model is improving over time. For W&B, we
+need to name the project; alternatively, we can use wandb's init() method:
+A note of caution before we start: when executing the code, you need to log in to
+different services, so make sure you pay attention when running the notebook!
+
+---
+
+## Sección 128: Chapter 8 235 [Entropy: 0.575]
+
+import os
+os.environ["WANDB_PROJECT"] = "finetuning"
+To authenticate with W&B, you need to create a free account with them at https://www.wandb.
+ai. You can find your API key on the Authorize page: https://wandb.ai/authorize.
+Again, we need to paste in our API token.
+If the previous training run is still active – this could be from a previous execution of the notebook
+if you are running it a second time – let’s make sure we start a new one! This will ensure that we
+get new reports and a dashboard on W&B:
+import wandb
+if wandb.run is not None:
+wandb.finish()
+Next, we’ll need to choose a dataset against which we want to optimize. We can use lots of different
+datasets here that are appropriate for coding, storytelling, tool use, SQL generation, grade-school
+math questions (GSM8k), or many other tasks. Hugging Face provides a wealth of datasets, which
+can be viewed at this URL: https://huggingface.co/datasets. These cover a lot of different
+and even the most niche tasks.
+We can also customize our own dataset. For example, we can use LangChain to set up training
+data. There are quite a few methods available for filtering that could help reduce redundancy in
+the dataset. It would have been appealing to show data collection as a practical recipe in this
+chapter. However, because of the complexity, it is out of the scope of the book.
+It might be harder to filter for quality from web data, but there are a lot of possibilities. For code
+models, we could apply code validation techniques to score segments as a quality filter. If the
+code comes from GitHub, we can filter by stars or by stars by repo owner.
+For texts in natural language, quality filtering is not trivial. Search engine placement could serve
+as a popularity filter, since it’s often based on user engagement with the content. Further, knowledge distillation techniques could be tweaked as a filter by fact density and accuracy.
+In this recipe, we are fine-tuning for question-answering performance with the Squad V2 dataset.
+You can see a detailed dataset description on Hugging Face: https://huggingface.co/spaces/
+evaluate-metric/squad_v2:
+from datasets import load_dataset
+dataset_name = "squad_v2"
+dataset = load_dataset(dataset_name, split="train")
+eval_dataset = load_dataset(dataset_name, split="validation")
+Customizing LLMs and Their Output 236
+We are taking both training and validation splits. The Squad V2 dataset has a part that’s supposed to be used in training and another one in validation, as we can see in the output of load_
+dataset(dataset_name):
+DatasetDict({
+train: Dataset({
+features: ['id', 'title', 'context', 'question', 'answers'],
+num_rows: 130319
+})
+validation: Dataset({
+features: ['id', 'title', 'context', 'question', 'answers'],
+num_rows: 11873
+})
+})
+We’ll use the validation splits for early stopping. Early stopping will allow us to stop training
+when the validation error begins to degrade.
+The Squad V2 dataset is composed of various features, which we can see here:
+{'id': Value(dtype='string', id=None),
+'title': Value(dtype='string', id=None),
+'context': Value(dtype='string', id=None),
+'question': Value(dtype='string', id=None),
+'answers': Sequence(feature={'text': Value(dtype='string', id=None),
+'answer_start': Value(dtype='int32', id=None)}, length=-1, id=None)}
+The basic idea in training is prompting the model with a question and comparing the answer to
+the dataset. In the next section, we’ll use this setup to fine-tune an open-source LLM.
+Open-source models
+We want a small model that we can run locally at a decent token rate. LLaMa-2 models require
+signing a license agreement with your email address and getting confirmed (which, to be fair,
+can be very fast), as it comes with restrictions for commercial use. LLaMa derivatives such as
+OpenLLaMa have performed quite well, as can be evidenced on the HF leaderboard: https://
+huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard
+OpenLLaMa version 1 cannot be used for coding tasks, because of the tokenizer. Therefore, let’s
+use v2! We’ll use a 3B parameter model, which we’ll be able to use even on older hardware:
+
+---
+
+## Sección 129: Chapter 8 237 [Entropy: 0.59]
+
+model_id = "openlm-research/open_llama_3b_v2"
+new_model_name = f"openllama-3b-peft-{dataset_name}"
+We can use even smaller models such as EleutherAI/gpt-neo-125m, which can also give a particularly good compromise between resource use and performance.
+Let’s load the model:
+import torch
+from transformers import AutoModelForCausalLM, BitsAndBytesConfig
+bnb_config = BitsAndBytesConfig(
+load_in_4bit=True,
+bnb_4bit_quant_type="nf4",
+bnb_4bit_compute_dtype=torch.float16,
+)
+device_map="auto"
+base_model = AutoModelForCausalLM.from_pretrained(
+model_id,
+quantization_config=bnb_config,
+device_map="auto",
+trust_remote_code=True,
+)
+base_model.config.use_cache = False
+The Bits and Bytes configuration makes it possible to quantize our model in 8, 4, 3, or even 2 bits
+with a much-accelerated inference and lower memory footprint, without incurring a big cost in
+terms of performance.
+We are going to store model checkpoints on Google Drive; you need to confirm your login to your
+Google account:
+from google.colab import drive
+drive.mount('/content/gdrive')
+We’ll need to authenticate with Google for this to work.
+Customizing LLMs and Their Output 238
+We can set our output directory for model checkpoints and logs to our Google Drive:
+output_dir = "/content/gdrive/My Drive/results"
+If you don’t want to use Google Drive, just set this to a directory on your computer.
+For training, we need to set up a tokenizer:
+from transformers import AutoTokenizer
+tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_
+code=True)
+tokenizer.pad_token = tokenizer.eos_token
+tokenizer.padding_side = "right"
+Now, we’ll define our training configuration. We’ll set up LORA and other training arguments:
+from transformers import TrainingArguments, EarlyStoppingCallback
+from peft import LoraConfig
+# More info: https://github.com/huggingface/transformers/pull/24906
+base_model.config.pretraining_tp = 1
+peft_config = LoraConfig(
+lora_alpha=16,
+lora_dropout=0.1,
+r=64,
+bias="none",
+task_type="CAUSAL_LM",
+)
+training_args = TrainingArguments(
+output_dir=output_dir,
+per_device_train_batch_size=4,
+gradient_accumulation_steps=4,
+learning_rate=2e-4,
+logging_steps=10,
+max_steps=2000,
+num_train_epochs=100,
+evaluation_strategy="steps",
+eval_steps=5,
+save_total_limit=5,
+push_to_hub=False,
+
+---
+
+## Sección 130: Chapter 8 239 [Entropy: 0.545]
+
+load_best_model_at_end=True,
+report_to="wandb"
+)
+A few comments to explain some of these parameters are in order. The push_to_hub argument
+means that we can push the model checkpoints to the HuggingSpace Hub regularly during training. For this to work, you need to set up the HuggingSpace authentication (with write permissions, as mentioned). If we opt for this, as output_dir, we can use new_model_name. This will be
+the repository name under which the model will be available here on Hugging Face: https://
+huggingface.co/models.
+Alternatively, as I’ve done here, you can save your model locally or in the cloud, for example, in
+Google Drive in a directory. I’ve set max_steps and num_train_epochs very high, because I’ve
+noticed that training can still improve after many steps. Early stepping and a high number of
+maximum training steps should help to get the model to provide higher performance. For early
+stopping, we need to set evaluation_strategy as "steps" and load_best_model_at_end=True.
+eval_steps is the number of update steps between two evaluations. save_total_limit=5 means
+that only the last five models are saved. Finally, report_to="wandb" means that we’ll send training
+stats, some model metadata, and hardware information to W&B, where we can look at graphs
+and dashboards for each run.
+The training can then use our configuration:
+from trl import SFTTrainer
+trainer = SFTTrainer(
+model=base_model,
+train_dataset=dataset,
+eval_dataset=eval_dataset,
+peft_config=peft_config,
+dataset_text_field="question", # this depends on the dataset!
+max_seq_length=512,
+tokenizer=tokenizer,
+args=training_args,
+callbacks=[EarlyStoppingCallback(early_stopping_patience=200)]
+)
+trainer.train()
+Customizing LLMs and Their Output 240
+The training can take quite a while, even running on a TPU device. Frequent evaluation slows the
+training down by a lot. If you disable the early stopping, you can make this much faster.
+We should see some statistics as the training progresses, but it’s nicer to show the graph of performance, as we can see on W&B:
+Figure 8.2: Fine-tuning training loss over time (steps)
+After training is done, we can save the final checkpoint on disk for re-loading:
+trainer.model.save_pretrained(
+os.path.join(output_dir, "final_checkpoint"),
+)
+We can now share our final model with friends to brag about the performance we’ve achieved by
+manually pushing to Hugging Face:
+trainer.model.push_to_hub(
+repo_id=new_model_name
+)
+We can now load the model back using a combination of our Hugging Face username and the
+repository name (the new model name). Let’s quickly show how to use this model in LangChain.
+Usually, the peft model is stored as an adapter, not as a full model; therefore, the loading is a
+bit different:
+from peft import PeftModel, PeftConfig
+from transformers import AutoModelForCausalLM, AutoTokenizer, pipeline
+
+---
+
+## Sección 131: Chapter 8 241 [Entropy: 0.59]
+
+from langchain.llms import HuggingFacePipeline
+model_id = 'openlm-research/open_llama_3b_v2'
+config = PeftConfig.from_pretrained("benji1a/openllama-3b-peft-squad_v2")
+model = AutoModelForCausalLM.from_pretrained(model_id)
+model = PeftModel.from_pretrained(model, "benji1a/openllama-3b-peft-squad_
+v2")
+tokenizer = AutoTokenizer.from_pretrained(model_id, trust_remote_
+code=True)
+tokenizer.pad_token = tokenizer.eos_token
+pipe = pipeline(
+"text-generation",
+model=model,
+tokenizer=tokenizer,
+max_length=256
+)
+llm = HuggingFacePipeline(pipeline=pipe)
+We’ve done everything so far on Google Colab, but we could equally execute this locally; just note
+that you need to have the huggingface peft library installed!
+Commercial models
+So far, we’ve shown how to fine-tune and deploy an open-source LLM. Some commercial models
+can be fine-tuned on custom data as well. For example, both OpenAI’s GPT-3.5 and Google’s PaLM
+model offer this capability. This has been integrated with a few Python libraries.
+With the Scikit-LLM library, this is only a few lines of code. We won’t go through a full recipe in
+this section, but please look at the Scikit-LLM library or the documentation of different cloud
+LLM providers to find all the details. The Scikit-LLM library is not part of the setup that we discussed in Chapter 3, Getting Started with LangChain, so you’d have to install it manually. I’ve also
+not included the training data, X_train. You’d have to come up with a training dataset yourself.
+Fine-tuning a PaLM model for text classification can be done like this:
+from skllm.models.palm import PaLMClassifier
+clf = PaLMClassifier(n_update_steps=100)
+clf.fit(X_train, y_train) # y_train is a list of labels
+labels = clf.predict(X_test)
+Customizing LLMs and Their Output 242
+Similarly, you can fine-tune the GPT-3.5 model for text classification like this:
+from skllm.models.gpt import GPTClassifier
+clf = GPTClassifier(
+base_model = "gpt-3.5-turbo-0613",
+n_epochs = None, # int or None. When None, will be determined
+automatically by OpenAI
+default_label = "Random", # optional
+)
+clf.fit(X_train, y_train) # y_train is a list of labels
+labels = clf.predict(X_test)
+Interestingly, in the fine-tuning available on OpenAI, all inputs are passed through a moderation
+system to make sure that the inputs are compatible with safety standards.
+This concludes fine-tuning. LLMs can be deployed and queried without any task-specific tuning.
+By prompting, we can accomplish few-shot learning or even zero-shot learning, as we’ll discuss
+in the next section.
+Prompt engineering
+Prompts are the instructions and examples we provide to language models to steer their behavior.
+They are important for steering the behavior of LLMs because they allow you to align the model
+outputs to human intentions without expensive retraining. Carefully engineered prompts can
+make LLMs suitable for a wide variety of tasks beyond what they were originally trained for.
+Prompts act as instructions that demonstrate to the LLM what the desired input-output mapping is.
+Prompts consist of three main components:
+• Instructions that describe the task requirements, goals, and format of input/output. They
+explain the task to the model unambiguously.
+• Examples that demonstrate the desired input-output pairs. They provide diverse demonstrations of how different inputs should map to outputs.
+• Input that the model must act on to generate the output.
+The following figure shows a few examples of prompting different language models (source: Pretrain, Prompt, and Predict - A Systematic Survey of Prompting Methods in Natural Language Processing
+by Liu and colleagues, 2021):
+
+---
+
+## Sección 132: Chapter 8 243 [Entropy: 0.265]
+
+Figure 8.3: Prompt examples, particularly knowledge probing in close form, and summarization
+Prompt engineering, also known as in-context learning, refers to techniques to steer LLM behavior
+through carefully designed prompts, without changing the model weights. The goal is to align
+the model outputs with human intentions for a given task. Prompt tuning, on the other hand,
+provides intuitive control over model behavior but is sensitive to the precise wording and design
+of prompts, suggesting the need for carefully crafted guidelines to achieve desired results. But
+what do good prompts look like?
+The most important first step is to start simple and work iteratively. Begin with concise, straightforward instructions and build up complexity gradually as needed. Break complex tasks down
+into simpler sub-tasks. This avoids overwhelming the model initially. Be as specific, descriptive,
+and detailed as possible about the exact task and desired format of the output. Providing relevant
+examples is highly effective in demonstrating the required reasoning chains or output styles.
+For complex reasoning tasks, prompting the model to explain its step-by-step thought process
+leads to increased accuracy. Techniques like chain-of-thought prompting guide the model to
+reason explicitly. Providing few-shot examples further demonstrates the desired reasoning format. Problem decomposition prompts that break down complex problems into smaller, more
+manageable sub-tasks also improve reliability by enabling a more structured reasoning process.
+Sampling multiple candidate responses and picking the most consistent one helps reduce errors
+and inconsistencies, compared to relying on a single-model output.
+Customizing LLMs and Their Output 244
+Instead of focusing on what not to do, clearly specify the desired actions and outcomes. Direct,
+unambiguous instructions work best. Avoid imprecise or vague prompts. Start simple, be specific,
+provide examples, prompt for explanations, decompose problems, and sample multiple responses
+– these are some best practices to steer LLMs effectively using careful prompt engineering. With
+iteration and experimentation, prompts can be optimized to improve reliability, even for complex
+tasks, and achieve a performance often comparable to fine-tuning.
+After learning about best practices, let’s look at a few prompt techniques, from simple to increasingly more advanced!
+Prompt techniques
+Basic prompting methods include zero-shot prompting with just the input text, and few-shot
+prompting with a few demonstration examples showing the desired input-output pairs. Researchers have identified biases like majority label bias and recency bias that contribute to variability
+in few-shot performance. Careful prompt design through example selection, ordering, and formatting can help mitigate these issues.
+More advanced prompting techniques include instruction prompting, where the task requirements are described explicitly rather than just demonstrated. Self-consistency sampling generates multiple outputs and selects the one that aligns best with the examples. Chain-of-Thought
+(CoT) prompting generates explicit reasoning steps, leading to the final output. This is especially
+beneficial for complex reasoning tasks. CoT prompts can be manually written or generated automatically via methods like augment-prune-select.
+This table gives a brief overview of a few methods of prompting compared to fine-tuning:
+Technique Description Key Idea
+Performance
+Considerations
+Zero-Shot
+Prompting
+No examples provided; rely
+on the model’s training
+Leverages the model’s pretraining
+Works for simple
+tasks, but struggles
+with complex
+reasoning
+Few-Shot
+Prompting
+Provides a few demos of
+input and desired output
+Shows desired reasoning
+format
+Tripled accuracy
+on grade-school
+math
+
+---
+
+## Sección 133: Chapter 8 245 [Entropy: 0.424]
+
+CoT
+Prefix responses with
+intermediate reasoning
+steps
+Gives the model space to
+reason before answering
+Quadrupled
+accuracy on a math
+dataset
+Leastto-Most
+Prompting
+Prompts the model for
+simpler subtasks first
+Decomposes a problem
+into smaller pieces
+Boosted accuracy
+from 16% to 99.7%
+on some tasks
+Self-
+Consistency
+Picks the most frequent
+answer from multiple
+samples Increases redundancy
+Gained 1–24
+percentage points
+across benchmarks
+Chain-of-
+Density
+Iteratively creates dense
+summaries by adding
+entities
+Generates rich, concise
+summaries
+Improves
+information
+density in
+summaries
+Chain-of-
+Verification
+(CoV)
+Verifies an initial response
+by generating and
+answering questions Mimics human verification
+Enhances
+robustness and
+confidence
+Active
+Prompting
+Picks uncertain samples for
+human labeling as examples
+Finds effective few-shot
+examples
+Improves few-shot
+performance
+Tree-of-
+Thought
+Generates and automatically
+evaluates multiple
+responses
+Allows backtracking
+through reasoning paths
+Finds an optimal
+reasoning route
+Verifiers
+Trains a separate model to
+evaluate responses
+Filters out incorrect
+responses
+Lifted grade-school
+math accuracy
+by ~20 percentage
+points
+Fine-
+Tuning
+Fine-tunes on an
+explanation dataset
+generated via prompting
+Improves the model’s
+reasoning abilities
+73% accuracy on a
+commonsense QA
+dataset
+Table 8.2: Prompting techniques for LLMs compared to fine-tuning
+Some prompting techniques incorporate external information retrieval to provide missing context to the LLM before generating the output. For open-domain QA, relevant paragraphs can be
+retrieved via search engines and incorporated into the prompt. For closed-book QA, few-shot
+examples with an evidence-question-answer format work better than a QA format.
+Customizing LLMs and Their Output 246
+In the next few subsections, we’ll go through a few of the aforementioned techniques. LangChain provides tools to enable advanced prompt engineering strategies like zero-shot prompting,
+few-shot learning, chain-of-thought, self-consistency, and tree-of-thought. All these techniques
+described here enhance the accuracy, consistency, and reliability of LLMs’ reasoning capabilities
+on complex tasks by providing clearer instructions, fine-tuning with targeted data, employing
+problem breakdown strategies, incorporating diverse sampling approaches, integrating verification mechanisms, and adopting probabilistic modeling frameworks.
+You can find all the examples from this section in the prompting directory in the GitHub repository
+for the book. Let’s start with the vanilla strategy: we just ask for a solution.
+Zero-shot prompting
+Zero-shot prompting, as opposed to few-shot prompting, involves feeding task instructions
+directly to an LLM without providing any demonstrations or examples. This prompt tests the
+capabilities of the pre-trained model to understand and follow the instructions:
+from langchain import PromptTemplate
+from langchain.chat_models import ChatOpenAI
+model = ChatOpenAI()
+prompt = PromptTemplate(input_variables=["text"], template="Classify the
+sentiment of this text: {text}")
+chain = prompt | model
+print(chain.invoke({"text": "I hated that movie, it was terrible!"}))
+This outputs the sentiment classification prompt with the input text, without any examples:
+content='The sentiment of this text is negative.' additional_kwargs={}
+example=False
+Few-shot learning
+Few-shot learning presents the LLM with just a few input-output examples relevant to the task,
+without explicit instructions. This allows the model to infer the intentions and goals purely from
+demonstrations. Carefully selected, ordered, and formatted examples can improve the model’s
+inference abilities. However, few-shot learning can be prone to biases and variability across trials.
+Adding explicit instructions can make the intentions more transparent to the model and improve
+robustness. Overall, prompts combine the strengths of instructions and examples to maximize
+steering of the LLM for the task at hand.
+The FewShotPromptTemplate allows you to show the model just a few demonstration examples
+of the task to prime it, without explicit instructions.
+
+---
+
+## Sección 134: Chapter 8 247 [Entropy: 0.56]
+
+Let’s extend the previous example for sentiment classification with few-shot prompting. In this
+example, we want an LLM to categorize customer feedback into Positive, Negative, or Neutral.
+We provide it with a few examples:
+examples = [{
+"input": "I absolutely love the new update! Everything works
+seamlessly.",
+"output": "Positive",
+},{
+"input": "It's okay, but I think it could use more features.",
+"output": "Neutral",
+}, {
+"input": "I'm disappointed with the service, I expected much better
+performance.",
+"output": "Negative"
+}]
+We can use these examples in a prompt like this:
+from langchain.prompts import FewShotPromptTemplate, PromptTemplate
+from langchain.chat_models import ChatOpenAI
+example_prompt = PromptTemplate(
+template="{input} -> {output}",
+input_variables=["input", "output"],
+)
+prompt = FewShotPromptTemplate(
+examples=examples,
+example_prompt=example_prompt,
+suffix="Question: {input}",
+input_variables=["input"]
+)
+print((prompt | ChatOpenAI()).invoke({"input": " This is an excellent book
+with high quality explanations."}))
+We should get the following output:
+content='Positive' additional_kwargs={} example=False
+You can expect the LLM to use these examples to guide its classification of the new sentence. The
+few-shot method primes the model without extensive training, relying instead on its pre-trained
+knowledge and the context provided by the examples.
+Customizing LLMs and Their Output 248
+To choose examples tailored to each input, FewShotPromptTemplate can accept a SemanticSim
+ilarityExampleSelector, based on embeddings rather than hardcoded examples. The Semant
+icSimilarityExampleSelector automatically finds the most relevant examples for each input.
+For many tasks, standard few-shot prompting works well, but there are many other techniques
+and extensions when dealing with more complex reasoning tasks.
+Chain-of-thought prompting
+CoT prompting aims to encourage reasoning by getting the model to provide intermediate steps,
+leading to the definitive answer. This is done by prefixing the prompt with instructions to show
+its thinking.
+There are two variants of CoT, zero-shot and few-shot. In zero-shot CoT, we just add the instruction “Let’s think step by step!” to the prompt.
+When asking an LLM to reason through a problem, it is often more effective to have it explain its
+reasoning before stating the final answer. This encourages the LLM to logically think through
+the problem first, rather than just guessing the answer and trying to justify it afterward. Asking
+an LLM to explain its thought process aligns well with its core capabilities.
+For example:
+from langchain.chat_models import ChatOpenAI
+from langchain.prompts import PromptTemplate
+reasoning_prompt = "{question}\nLet's think step by step!"
+prompt = PromptTemplate(
+template=reasoning_prompt,
+input_variables=["question"]
+)
+model = ChatOpenAI()
+chain = prompt | model
+print(chain.invoke({
+"question": "There were 5 apples originally. I ate 2 apples. My friend
+gave me 3 apples. How many apples do I have now?",
+}))
+After running this, we get the reasoning process together with the result:
+
+---
+
+## Sección 135: Chapter 8 249 [Entropy: 0.53]
+
+content='Step 1: Originally, there were 5 apples.\nStep 2: I ate 2
+apples.\nStep 3: So, I had 5 - 2 = 3 apples left.\nStep 4: My friend gave
+me 3 apples.\nStep 5: Adding the apples my friend gave me, I now have 3 +
+3 = 6 apples.' additional_kwargs={} example=False
+The preceding approach is also called zero-shot chain-of-thought.
+Few-shot chain-of-thought prompting is a few-shot prompt, where the reasoning is explained
+as part of the example solutions, with the idea to encourage an LLM to explain its reasoning
+before deciding.
+If we go back to the few-shot examples from earlier, we can extend them as follows:
+examples = [{
+"input": "I absolutely love the new update! Everything works
+seamlessly.",
+"output": "Love and absolute works seamlessly are examples of positive
+sentiment. Therefore, the sentiment is positive",
+},{
+"input": "It's okay, but I think it could use more features.",
+"output": "It's okay is not an endorsement. The customer further
+thinks it should be extended. Therefore, the sentiment is neutral",
+}, {
+"input": "I'm disappointed with the service, I expected much better
+performance.",
+"output": "The customer is disappointed and expected more. This is
+negative"
+}]
+In these examples, the reasons for the decision are explained. This encourages the LLM to give a
+similar result explaining its reasoning.
+It has been shown that CoT prompting can lead to more accurate results; however, this performance boost was found to be proportional to the size of the model, and the improvements were
+negligible or even negative in smaller models.
+Self-consistency
+With self-consistency prompting, the model generates multiple candidate answers to a question.
+These are then compared against each other, and the most consistent or frequent answer is selected
+as the final output. A good example of self-consistency prompting with LLMs is in the context of
+fact verification or information synthesis, where accuracy is paramount.
+Customizing LLMs and Their Output 250
+In the first step, we’ll create multiple solutions to a question or a problem:
+from langchain import PromptTemplate, LLMChain
+from langchain.chat_models import ChatOpenAI
+solutions_template = """
+Generate {num_solutions} distinct answers to this question:
+{question}
+Solutions:
+"""
+solutions_prompt = PromptTemplate(
+template=solutions_template,
+input_variables=["question", "num_solutions"]
+)
+solutions_chain = LLMChain(
+llm=ChatOpenAI(),
+prompt=solutions_prompt,
+output_key="solutions"
+)
+For the second step, we want to count the different answers. We can use an LLM again:
+consistency_template = """
+For each answer in {solutions}, count the number of times it occurs.
+Finally, choose the answer that occurs most.
+Most frequent solution:
+"""
+consistency_prompt = PromptTemplate(
+template=consistency_template,
+input_variables=["solutions"]
+)
+consistency_chain = LLMChain(
+llm=ChatOpenAI(),
+prompt=consistency_prompt,
+output_key="best_solution"
+)
+
+---
+
+## Sección 136: Chapter 8 251 [Entropy: 0.53]
+
+Let’s put these two chains together with a SequentialChain:
+from langchain.chains import SequentialChain
+answer_chain = SequentialChain(
+chains=[solutions_chain, consistency_chain],
+input_variables=["question", "num_solutions"],
+output_variables=["best_solution"]
+)
+Let’s ask a simple question and check the answer:
+print(answer_chain.run(
+question="Which year was the Declaration of Independence of the United
+States signed?",
+num_solutions="5"
+))
+We should get a response like this:
+1776 is the year in which the Declaration of Independence of the United
+States was signed. It occurs twice in the given answers (3 and 4).
+We should get the right response based on the vote; however, of the five responses we produced,
+three were wrong.
+This approach leverages the model’s ability to reason and utilize internal knowledge while reducing the risk of outliers or incorrect information, by focusing on the most recurring answer, thus
+improving the overall reliability of the response given by the LLM.
+Tree-of-thought
+In Tree-of-Thought (ToT) prompting, we generate multiple problem-solving steps or approaches
+for a given prompt and then use the AI model to critique them. The critique will be based on the
+model’s judgment of the solution’s suitability to the problem.
+There is actually an implementation now of ToT in the LangChain experimental package; however,
+let’s walk through an instructive step-by-step example of implementing ToT using LangChain.
+First, we’ll define our four chain components with PromptTemplates. We need a solution template,
+an evaluation template, a reasoning template, and a ranking template.
+Customizing LLMs and Their Output 252
+Let’s first generate solutions:
+solutions_template = """
+Generate {num_solutions} distinct solutions for {problem}. Consider
+factors like {factors}.
+Solutions:
+"""
+solutions_prompt = PromptTemplate(
+template=solutions_template,
+input_variables=["problem", "factors", "num_solutions"]
+)
+Let’s ask the LLM to evaluate these solutions:
+evaluation_template = """
+Evaluate each solution in {solutions} by analyzing pros, cons,
+feasibility, and probability of success.
+Evaluations:
+"""
+evaluation_prompt = PromptTemplate(
+template=evaluation_template,
+input_variables=["solutions"]
+)
+After this step, we want to reason a bit more about them:
+reasoning_template = """
+For the most promising solutions in {evaluations}, explain scenarios,
+implementation strategies, partnerships needed, and handling potential
+obstacles.
+Enhanced Reasoning:
+"""
+reasoning_prompt = PromptTemplate(
+template=reasoning_template,
+input_variables=["evaluations"]
+)
+
+---
+
+## Sección 137: Chapter 8 253 [Entropy: 0.545]
+
+Finally, we can rank these solutions given our reasoning so far:
+ranking_template = """
+Based on the evaluations and reasoning, rank the solutions in {enhanced_
+reasoning} from most to least promising.
+Ranked Solutions:
+"""
+ranking_prompt = PromptTemplate(
+template=ranking_template,
+input_variables=["enhanced_reasoning"]
+)
+Next, we create chains from these templates before we put the chains all together:
+from langchain.chains.llm import LLMChain
+from langchain.chat_models import ChatOpenAI
+solutions_chain = LLMChain(
+llm=ChatOpenAI(),
+prompt=solutions_prompt,
+output_key="solutions"
+)
+evalutation_chain = LLMChain(
+llm=ChatOpenAI(),
+prompt=evaluation_prompt,
+output_key="evaluations"
+)
+reasoning_chain = LLMChain(
+llm=ChatOpenAI(),
+prompt=reasoning_prompt,
+output_key="enhanced_reasoning"
+)
+ranking_chain = LLMChain(
+llm=ChatOpenAI(),
+prompt=ranking_prompt,
+output_key="ranked_solutions"
+)
+Customizing LLMs and Their Output 254
+Please note how each output_key corresponds to an input_key in the prompt of the following
+chain. Finally, we connect these chains into a SequentialChain:
+from langchain.chains import SequentialChain
+tot_chain = SequentialChain(
+chains=[solutions_chain, evalutation_chain, reasoning_chain, ranking_
+chain],
+input_variables=["problem", "factors", "num_solutions"],
+output_variables=["ranked_solutions"]
+)
+print(tot_chain.run(
+problem="Prompt engineering",
+factors="Requirements for high task performance, low token use, and few
+calls to the LLM",
+num_solutions=3
+))
+Let’s run our tot_chain and see the printed output:
+1. Train or fine-tune language models using datasets that are relevant to
+the reasoning task at hand.
+2. Develop or adapt reasoning algorithms and techniques to improve the
+performance of language models in specific reasoning tasks.
+3. Evaluate existing language models and identify their strengths and
+weaknesses in reasoning.
+4. Implement evaluation metrics to measure the reasoning performance of
+the language models.
+5. Iteratively refine and optimize the reasoning capabilities of the
+language models based on evaluation results.
+It is important to note that the ranking of solutions may vary depending
+on the specific context and requirements of each scenario.
+I wholeheartedly agree with the suggestions. They show the strengths of ToT. A lot of these topics
+are part of this chapter, while some will come up in Chapter 9, Generative AI in Production, where
+we’ll discuss evaluating LLMs and their performance.
+This allows us to leverage the LLM at each stage of the reasoning process. The ToT approach helps
+avoid dead ends by fostering exploration. If you want to see more examples, in the LangChain
+cookbook, you can find a ToT for playing sudoku.
+
+---
+
+## Sección 138: Chapter 8 255 [Entropy: 0.4]
+
+Prompt design is highly significant for unlocking LLM reasoning capabilities, and it offers the
+potential for future advancements in models and prompting techniques. These principles and
+techniques form a valuable toolkit for researchers and practitioners working with LLMs.
+Summary
+Conditioning allows steering generative AI to improve performance, safety, and quality. In this
+chapter, the focus is on conditioning through fine-tuning and prompting. In fine-tuning, the language model is trained on many examples of tasks formulated as natural language instructions,
+along with appropriate responses. This is often done through reinforcement learning with human
+feedback; however, other techniques have been developed that have been shown to produce competitive results with lower resource footprints. In the first recipe of this chapter, we implemented
+fine-tuning of a small open-source model for question answering.
+There are many techniques for prompting that can improve the reliability of LLMs in complex
+reasoning tasks, including step-by-step prompting, alternate selection, inference prompts, problem decomposition, sampling multiple responses, and employing separate verifier models. These
+methods have been shown to enhance accuracy and consistency in reasoning tasks. LangChain
+provides building blocks to unlock advanced prompting strategies like few-shot learning, CoT,
+ToT, and others, as we’ve shown in the examples.
+In Chapter 9, Generative AI in Production, we’ll talk about the productionization of generative AI
+and critical issues related to it, such as evaluating LLM apps, deploying them to a server, and
+monitoring them.
+Questions
+I’d recommend that you go back to the corresponding sections of this chapter if you are unsure
+about any of the answers to these questions:
+1. What is conditioning, and what is alignment?
+2. What are the different methods of conditioning, and how can we distinguish them?
+3. What is instruction tuning, and what is its importance?
+4. Name a few fine-tuning methods.
+5. What is quantization?
+6. What is few-shot learning?
+7. What is CoT prompting?
+8. How does ToT work?
+Customizing LLMs and Their Output 256
+Join our community on Discord
+Join our community’s Discord space for discussions with the authors and other readers:
+https://packt.link/lang
+Generative AI in Production
+As we’ve discussed in this book, LLMs have gained significant attention in recent years due to
+their ability to generate human-like text. From creative writing to conversational chatbots, these
+generative AI models have diverse applications across industries. However, taking these complex
+neural network systems from research to real-world deployment comes with significant challenges.
+So far, we’ve talked about models, agents, and LLM apps as well as different use cases, but there
+are many issues that become important when deploying these apps into production to engage
+with customers and to make decisions that can have a significant financial impact. This chapter
+explores the practical considerations and best practices for productionizing generative AI, specifically LLM apps. Before we deploy an application, performance and regulatory requirements
+need to be ensured, it needs to be robust at scale, and finally monitoring has to be in place. Maintaining rigorous testing, auditing, and ethical safeguards is essential for trustworthy deployment.
+We’ll discuss evaluation and observability, and cover a broad range of topics that encompass
+the governance and lifecycle management of operationalized AI and decision models, including
+generative AI models.
+While getting an LLM app ready for production, offline evaluation provides a preliminary understanding of a model’s abilities in a controlled setting, and when in production, observability
+offers continuing insights into its performance in live environments. We’ll discuss a few tools
+for either case and I’ll give examples. We’ll also discuss the deployment of LLM applications and
+give an overview of available tools and examples for deployment.
+Throughout the chapter, we’ll work on practical examples with LLM apps, which you can find
+in the GitHub repository for the book at https://github.com/benman1/generative_ai_with_
+langchain.
+Generative AI in Production 258
+The main sections of this chapter are:
+• How to get LLM apps ready for production
+• How to evaluate LLM apps
+• How to deploy LLM apps
+• How to observe LLM apps
+Let’s start with an overview of what it means and involves to get an LLM app ready for production!
+How to get LLM apps ready for production
+Deploying LLM applications to production is intricate, encompassing robust data management,
+ethical foresight, efficient resource allocation, diligent monitoring, and alignment with behavioral
+guidelines. Practices to ensure deployment readiness involve:
+• Data management: Rigorous attention to data quality is critical to avoid biases that can
+emanate from imbalanced or inappropriate training data. Substantial efforts in data curation and ongoing scrutiny of model outputs are required to mitigate emerging biases.
+• Ethical deployment and compliance: LLM applications are potentially capable of generating harmful content, thus necessitating strict review processes, safety guidelines,
+and compliance with regulations such as HIPAA, especially in sensitive sectors such as
+healthcare.
+• Resource management: The resource demands of LLMs call for an infrastructure that
+is both efficient and environmentally sustainable. Innovation in infrastructure helps to
+reduce costs and address environmental concerns tied to the energy demands of LLMs.
+• Performance management: Models must be continually monitored for data drift—where
+changes in input data patterns can alter model performance—and performance degradation over time. Detecting these deviations necessitates prompt retraining or model
+adjustments.
+• Interpretability: To build trust and offer insight into the decision-making processes of
+LLMs, interpretability tools are increasingly important for users who need clarity on how
+model decisions are reached.
+• Data security: Protecting sensitive information within LLM processes is essential for privacy and compliance. Strong encryption measures and stringent access controls bolster
+security measures.
+
+---
+
+## Sección 139: Chapter 9 259 [Entropy: 0.28]
+
+• Model behavior standards: Models must align with ethical guidelines beyond basic functional performance—ensuring outputs are constructive (helpful), innocuous (harmless),
+and trustworthy (honest). This results in stability and societal acceptance.
+• Hallucination mitigation: Hallucinations refer to instances where LLMs inadvertently
+generate or recall sensitive personal information from their training data corpus in the
+outputs, despite no prompting for such details in the input source—highlighting critical
+privacy concerns and the need for mitigation strategies.
+Essential recommendations for deploying LLM apps encompass an array of practices aimed at
+mitigating technical challenges, improving performance, and ensuring ethical integrity. First and
+foremost, it’s crucial to develop standardized datasets with relevant benchmarks to test and measure model capabilities, including the detection of regressions and alignment with defined goals.
+Metrics should be task-specific to gauge the model’s proficiency accurately. There also needs to
+be a robust framework that includes ethical guidelines, safety protocols, and review processes
+to prevent the generation and dissemination of harmful content. Human reviewers serve as an
+essential checkpoint in content validation and bring ethical discernment to AI outputs, ensuring
+adherence across all contexts.
+A forward-thinking UX can foster a transparent relationship with users while reinforcing sensible
+use. This can include anticipating inaccuracies, such as disclaimers on limitations, attributions,
+and collecting rich user feedback.
+To explain outputs, we should invest in interpretability methods that explain how generative AI
+models arrive at their decisions. Visualizing attention mechanisms or analyzing feature importance can peel back the layers of complexity, which is particularly crucial for high-stakes industries
+such as healthcare or finance.
+We discussed hallucinations in Chapter 4, Building Capable Assistants. Mitigation techniques include external retrieval and tool augmentation to provide pertinent context, as we discussed in
+
+---
+
+## Sección 140: Chapter 5, Building a Chatbot like ChatGPT, and Chapter 6, Developing Software with Generative AI, [Entropy: 0.265]
+
+in particular. There is a danger of models recalling private information, and ongoing advances
+in methods spanning data filtering, architecture adjustments, and inference techniques show
+promise in mitigating these problems.
+For security, we can strengthen role-based access policies, employ stringent data encryption
+standards, adopt anonymization best practices where feasible, and ensure continuous verification
+through compliance audits. Security is a huge topic in the context of LLMs, however, we’ll focus
+on evaluation, observability, and deployment in this chapter.
+Generative AI in Production 260
+We need to optimize infrastructure and resource usage by employing distributed techniques
+such as data parallelism or model parallelism to facilitate workload distribution across multiple
+processing units. We can employ techniques such as model compression or other computer architectural optimizations for more efficient deployment regarding inference speed and latency
+management. Techniques such as model quantization, discussed in Chapter 8, Customizing LLMs
+and Their Output, or model distillation can also help reduce the resource footprint of the model.
+Further, storing model outputs can reduce latency and costs for repeated queries.
+With insightful planning and preparation, generative AI promises to transform industries from
+creative writing to customer service. But thoughtfully navigating the complexities of these systems
+remains critical as they continue to permeate increasingly diverse domains. This chapter aims to
+provide a practical guide to some of the pieces that we haven’t covered in this book so far, aiming
+to help you build impactful and responsible generative AI applications. We cover strategies for
+data curation, model development, infrastructure, monitoring, and transparency.
+Before we continue our discussion, a few words on terminology are in order. Let’s start by introducing MLOps and similar terms, and define what they mean and imply.
+Terminology
+MLOps is a paradigm that focuses on deploying and maintaining machine learning models in
+production reliably and efficiently. It combines the practices of DevOps with machine learning to
+transition algorithms from experimental systems to production systems. MLOps aims to increase
+automation, improve the quality of production models, and address business and regulatory
+requirements.
+LLMOps is a specialized sub-category of MLOps. It refers to the operational capabilities and
+infrastructure necessary for fine-tuning and operationalizing LLMs as part of a product. While
+it may not be drastically different from the concept of MLOps, the distinction lies in the specific
+requirements connected to handling, refining, and deploying massive language models such as
+GPT-3, which houses 175 billion parameters.
+The term LMOps is more inclusive than LLMOps as it encompasses various types of language
+models, including both LLMs and smaller generative models. This term acknowledges the expanding landscape of language models and their relevance in operational contexts.
+
+---
+
+## Sección 141: Chapter 9 261 [Entropy: 0.265]
+
+Foundational Model Orchestration (FOMO) specifically addresses the challenges faced when
+working with foundation models, that is, models trained on broad data that can be adapted to
+a wide range of downstream tasks. It highlights the need for managing multi-step processes,
+integrating with external resources, and coordinating the workflows involving these models.
+The term ModelOps focuses on the governance and lifecycle management of AI and decision
+models as they are deployed. Even more broadly, AgentOps involves the operational management
+of LLMs and other AI agents, ensuring their appropriate behavior, managing their environment
+and resource access, and facilitating interactions between agents while addressing concerns
+related to unintended outcomes and incompatible objectives.
+While FOMO emphasizes the unique challenges of working specifically with foundational models, LMOps provides a more inclusive and comprehensive coverage of a wider range of language
+models beyond just the foundational ones. LMOps acknowledges the versatility and increasing
+importance of language models in various operational use cases, while still falling under the
+broader umbrella of MLOps. Finally, AgentOps explicitly highlights the interactive nature of agents
+consisting of generative models operating with certain heuristics and includes tools.
+The emergence of all of these very specialized terms underscores the rapid evolution of the field;
+however, their long-term prevalence is unclear. MLOps is widely used and often encompasses the
+many more specialized terms we just covered. Therefore, we’ll stick to MLOps for the remainder
+of this chapter.
+Before productionizing any LLM app, we should first evaluate its output, so we should start with
+this. We will focus on the evaluation methods provided by LangChain.
+How to evaluate LLM apps
+The crux of LLM deployment lies in the meticulous curation of training data to preempt biases,
+implementing human-led annotation for data enhancement, and establishing automated output
+monitoring systems. Evaluating LLMs either as standalone entities or in conjunction with an
+agent chain is crucial to ensure they function correctly and produce reliable results, and this is
+an integral part of the ML lifecycle. The evaluation process determines the performance of the
+models in terms of effectiveness, reliability, and efficiency.
+Generative AI in Production 262
+The goal of evaluating LLMs is to understand their strengths and weaknesses, enhancing accuracy
+and efficiency while reducing errors, thereby maximizing their usefulness in solving real-world
+problems. This evaluation process typically occurs offline during the development phase. Offline
+evaluations provide initial insights into model performance under controlled test conditions and
+include aspects such as hyperparameter tuning and benchmarking against peer models or established standards. They offer a necessary first step toward refining a model before deployment.
+While human assessments are sometimes seen as the gold standard, they are hard to scale and
+require careful design to avoid bias from subjective preferences or authoritative tones. There are
+many standardized benchmarks such as MBPP to test basic programming skills, while GSM8K is
+utilized for multi-step mathematical reasoning. API-Bank evaluates models’ aptitudes for making
+decisions about API calls. ARC puts models’ question-answering abilities up against complex
+integrations of information, whereas HellaSwag assesses common-sense reasoning in physical
+situations using adversarial filtering.
+HumanEval focuses on code generation’s functional correctness over syntactic similarity. MMLU
+assesses language understanding across a wide range of subjects at varying depths, indicating
+proficiency in specialized domains. SuperGLUE takes GLUE a step further with more challenging tasks to monitor the fairness and comprehension of language models. TruthfulQA brings a
+unique angle by benchmarking the truthfulness of LLM responses, foregrounding the significance
+of veracity.
+Benchmarks such as MATH demand high-level reasoning capability evaluations. GPT-4’s performance on this benchmark varies with prompting method sophistication, from few-shot prompts
+to reinforcement learning with reward modeling approaches. Notably, dialog-based fine-tuning
+can sometimes detract from capabilities assessed by measures such as MMLU.
+Evaluations can provide insights into how well an LLM generates outputs that are relevant, accurate, and helpful. Tests such as FLAN and FLASK stress behavioral dimensions, thus prioritizing
+responsible AI systems deployment. This chart compares several open and closed source models
+on the FLASK benchmark (source: “FLASK: Fine-grained Language Model Evaluation based on Alignment Skill Sets” by Ye and colleagues, 2023; https://arxiv.org/abs/2307.10928):
+
+---
+
+## Sección 142: Chapter 9 263 [Entropy: 0.4]
+
+Figure 9.1: Result of an evaluation with Claude as an evaluating language model
+In the result reported in the chart, Claude is the LLM evaluating all outputs. This skews results in
+favor of Claude and models similar to it. Often, GPT-3.5 or GPT-4 are used as evaluators, which
+shows the OpenAI models emerging as winners.
+In LangChain, there are various ways to evaluate the outputs of LLMs, including comparing chain
+outputs, pairwise string comparisons, string distances, and embedding distances. The evaluation
+results can be used to determine the preferred model based on the comparison of outputs. Confidence intervals and p-values can also be calculated to assess the reliability of the evaluation results.
+LangChain provides several tools for evaluating the outputs of LLMs. A common approach is
+to compare the outputs of different models or prompts using PairwiseStringEvaluator. This
+prompts an evaluator model to choose between two model outputs for the same input and aggregates the results to determine an overall preferred model.
+Generative AI in Production 264
+Other evaluators allow assessing model outputs based on specific criteria such as correctness,
+relevance, and conciseness. The CriteriaEvalChain can score outputs on custom or predefined
+principles without needing reference labels. Configuring the evaluation model is also possible
+by specifying a different chat model such as ChatGPT as the evaluator.
+You can follow the code in this section online under the monitoring_and_evaluation folder in the book’s GitHub project. Let’s compare outputs of different prompts or LLMs with the
+PairwiseStringEvaluator, which prompts an LLM to select the preferred output given a specific
+input.
+Comparing two outputs
+This evaluation requires an evaluator, a dataset of inputs, and two or more LLMs, chains, or agents
+to compare. The evaluation aggregates the results to determine the preferred model.
+The evaluation process involves several steps:
+1. Create the evaluator: Load the evaluator using the load_evaluator() function, specifying
+the type of evaluator (in this case, pairwise_string).
+2. Select the dataset: Load a dataset of inputs using the load_dataset() function.
+3. Define models to compare: Initialize the LLMs, chains, or agents to compare using the
+necessary configurations. This involves initializing the language model and any additional
+tools or agents required.
+4. Generate responses: Generate outputs for each of the models before evaluating them.
+This is typically done in batches to improve efficiency.
+5. Evaluate pairs: Evaluate the results by comparing the outputs of different models for
+each input. This is often done using a random selection order to reduce positional bias.
+Here’s an example from the documentation for pairwise string comparisons:
+from langchain.evaluation import load_evaluator
+evaluator = load_evaluator("labeled_pairwise_string")
+evaluator.evaluate_string_pairs(
+prediction="there are three dogs",
+prediction_b="4",
+input="how many dogs are in the park?",
+reference="four",
+)
+
+---
+
+## Sección 143: Chapter 9 265 [Entropy: 0.388]
+
+The output from the evaluator should look as follows:
+{'reasoning': "Both assistants provided a direct answer to the user's
+question. However, Assistant A's response is incorrect as it stated there
+are three dogs in the park, while the reference answer indicates there are
+four. On the other hand, Assistant B's response is accurate and matches
+the reference answer. Therefore, considering the criteria of correctness
+and accuracy, Assistant B's response is superior. \n\nFinal Verdict:
+[[B]]",
+'value': 'B',
+'score': 0
+}
+The evaluation result includes a score between 0 and 1, indicating the effectiveness of each agent,
+sometimes along with reasoning that outlines the evaluation process and justifies the score. In
+this specific example against the reference, both results are factually incorrect based on the input.
+We could remove the reference and let an LLM judge the outputs instead.
+Comparing against criteria
+LangChain provides several predefined evaluators for different evaluation criteria. These evaluators can be used to assess outputs based on specific rubrics or criteria sets. Some common
+criteria include conciseness, relevance, correctness, coherence, helpfulness, and controversiality.
+CriteriaEvalChain allows you to evaluate model outputs against custom or predefined criteria.
+It provides a way to verify whether an LLM or chain’s output complies with a defined set of criteria. You can use this evaluator to assess correctness, relevance, conciseness, and other aspects
+of the generated outputs.
+CriteriaEvalChain can be configured to work with or without reference labels. Without reference
+labels, the evaluator relies on the LLM’s predicted answer and scores it based on the specified
+criteria. With reference labels, the evaluator compares the predicted answer to the reference label
+and determines its compliance with the criteria.
+The evaluation LLM used in LangChain, by default, is GPT-4. However, you can configure the
+evaluation LLM by specifying other chat models, such as ChatAnthropic or ChatOpenAI, with the
+desired settings (for example, temperature). The evaluators can be loaded with a custom LLM by
+passing the LLM object as a parameter to the load_evaluator() function.
+Generative AI in Production 266
+LangChain supports both custom criteria and predefined principles for evaluation. Custom criteria
+can be defined using a dictionary of criterion_name: criterion_description pairs. These
+criteria can be used to assess outputs based on specific requirements or rubrics.
+Here’s a simple example:
+custom_criteria = {
+"simplicity": "Is the language straightforward and unpretentious?",
+"clarity": "Are the sentences clear and easy to understand?",
+"precision": "Is the writing precise, with no unnecessary words or
+details?",
+"truthfulness": "Does the writing feel honest and sincere?",
+"subtext": "Does the writing suggest deeper meanings or themes?",
+}
+evaluator = load_evaluator("pairwise_string", criteria=custom_criteria)
+evaluator.evaluate_string_pairs(
+prediction="Every cheerful household shares a similar rhythm of joy;
+but sorrow, in each household, plays a unique, haunting melody.",
+prediction_b="Where one finds a symphony of joy, every domicile of
+happiness resounds in harmonious,"
+" identical notes; yet, every abode of despair conducts a dissonant
+orchestra, each"
+" playing an elegy of grief that is peculiar and profound to its own
+existence.",
+input="Write some prose about families.",
+)
+We can get a very nuanced comparison of the two outputs, as this result shows:
+{'reasoning': 'Response A is simple, clear, and precise. It uses
+straightforward language to convey a deep and sincere message about
+families. The metaphor of music is used effectively to suggest deeper
+meanings about the shared joys and unique sorrows of families.\n\nResponse
+B, on the other hand, is less simple and clear. The language is more
+complex and pretentious, with phrases like "domicile of happiness" and
+"abode of despair" instead of the simpler "household" used in Response A.
+The message is similar to that of Response A, but it is less effectively
+conveyed due to the unnecessary complexity of the language.\n\nTherefore,
+based on the criteria of simplicity, clarity, precision, truthfulness,
+
+---
+
+## Sección 144: Chapter 9 267 [Entropy: 0.454]
+
+and subtext, Response A is the better response.\n\n[[A]]', 'value': 'A',
+'score': 1}
+Alternatively, you can use the predefined principles available in LangChain, such as those from
+Constitutional AI. These principles are designed to evaluate the ethical, harmful, and sensitive
+aspects of the outputs. The use of principles in evaluation allows for a more focused assessment
+of the generated text.
+String and semantic comparisons
+LangChain supports string comparison and distance metrics for evaluating LLM outputs. String
+distance metrics such as Levenshtein and Jaro provide a quantitative measure of similarity between
+predicted and reference strings. Embedding distances using models such as SentenceTransformers
+calculates semantic similarity between the generated and expected texts.
+Embedding distance evaluators can use embedding models, such as those based on GPT-4 or
+Hugging Face embeddings, to compute vector distances between the predicted and reference
+strings. This measures the semantic similarity between the two strings and can provide insights
+into the quality of the generated text.
+Here’s a quick example from the documentation:
+from langchain.evaluation import load_evaluator
+evaluator = load_evaluator("embedding_distance")
+evaluator.evaluate_strings(prediction="I shall go", reference="I shan't
+go")
+The evaluator returns the score 0.0966466944859925. You can change the embeddings used with
+the embeddings parameter in the load_evaluator() call.
+This often gives better results than older string distance metrics, but these are also available and
+allow for simple unit testing and assessment of accuracy. String comparison evaluators compare
+predicted strings against reference strings or inputs.
+String distance evaluators use distance metrics, such as the Levenshtein or Jaro distance, to
+measure the similarity or dissimilarity between predicted and reference strings. This provides a
+quantitative measure of how similar the predicted string is to the reference string.
+Finally, there’s an agent trajectory evaluator, where the evaluate_agent_trajectory() method
+is used to evaluate the input, prediction, and agent trajectory.
+Generative AI in Production 268
+We can also use LangSmith, a companion project for LangChain that aims to facilitate the passage
+of LLM apps from prototype to production, to compare our performance against a dataset. Let’s
+step through an example!
+Running evaluations against datasets
+As we’ve mentioned, comprehensive benchmarking and evaluation, including testing, are critical
+for safety, robustness, and intended behavior. We can run evaluations against benchmark datasets
+in LangSmith as we’ll see now. First, please make sure you create an account on LangSmith here:
+https://smith.langchain.com/.
+You can obtain an API key and set it as LANGCHAIN_API_KEY in your environment. We can also set
+environment variables for project ID and tracing:
+import os
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_PROJECT"] = "My Project"
+This configures LangChain to log traces. If we don’t tell LangChain the project ID, it will log
+against the default project. After this setup, when we run our LangChain agent or chain, we’ll
+be able to see the traces on LangSmith.
+Let’s log a run!
+from langchain.chat_models import ChatOpenAI
+llm = ChatOpenAI()
+llm.predict("Hello, world!")
+We can find all these runs on LangSmith. LangSmith lists all runs so far on the LangSmith project
+page: https://smith.langchain.com/projects
+We can also find all runs via the LangSmith API:
+from langsmith import Client
+client = Client()
+runs = client.list_runs()
+print(runs)
+We can list runs from a specific project or by run_type, for example, chain. Each run comes with
+inputs and outputs, as runs[0].inputs and runs[0].outputs, respectively.
+
+---
+
+## Sección 145: Chapter 9 269 [Entropy: 0.62]
+
+We can create a dataset from existing agent runs with the create_example_from_run() function
+– or from anything else. Here’s how to create a dataset with a set of questions:
+questions = [
+"A ship's parts are replaced over time until no original parts remain.
+Is it still the same ship? Why or why not?", # The Ship of Theseus
+Paradox
+"If someone lived their whole life chained in a cave seeing only
+shadows, how would they react if freed and shown the real world?", #
+Plato's Allegory of the Cave
+"Is something good because it is natural, or bad because it is
+unnatural? Why can this be a faulty argument?", # Appeal to Nature
+Fallacy
+"If a coin is flipped 8 times and lands on heads each time, what
+are the odds it will be tails next flip? Explain your reasoning.", #
+Gambler's Fallacy
+"Present two choices as the only options when others exist. Is the
+statement \"You're either with us or against us\" an example of false
+dilemma? Why?", # False Dilemma
+"Do people tend to develop a preference for things simply because they
+are familiar with them? Does this impact reasoning?", # Mere Exposure
+Effect
+"Is it surprising that the universe is suitable for intelligent life
+since if it weren't, no one would be around to observe it?", # Anthropic
+Principle
+"If Theseus' ship is restored by replacing each plank, is it still the
+same ship? What is identity based on?", # Theseus' Paradox
+"Does doing one thing really mean that a chain of increasingly
+negative events will follow? Why is this a problematic argument?", #
+Slippery Slope Fallacy
+"Is a claim true because it hasn't been proven false? Why could this
+impede reasoning?", # Appeal to Ignorance
+]
+shared_dataset_name = "Reasoning and Bias"
+ds = client.create_dataset(
+dataset_name=shared_dataset_name, description="A few reasoning and
+cognitive bias questions",
+Generative AI in Production 270
+)
+for q in questions:
+client.create_example(inputs={"input": q}, dataset_id=ds.id)
+We can then define an LLM agent or chain on the dataset like this:
+from langchain.chat_models import ChatOpenAI
+from langchain.chains import LLMChain
+llm = ChatOpenAI(model="gpt-4", temperature=0.0)
+def construct_chain():
+return LLMChain.from_string(
+llm,
+template="Help out as best you can.\nQuestion: {input}\nResponse:
+",
+)
+To run an evaluation on a dataset, we can either specify an LLM or – for parallelism – use a
+constructor function to initialize the model or LLM app for each input. Now, to evaluate the performance against our dataset, we need to define an evaluator as we saw in the previous section:
+from langchain.smith import RunEvalConfig
+evaluation_config = RunEvalConfig(
+evaluators=[
+RunEvalConfig.Criteria({"helpfulness": "Is the response
+helpful?"}),
+RunEvalConfig.Criteria({"insightful": "Is the response carefully
+thought out?"})
+]
+)
+As seen, the criteria are defined by a dictionary that includes a criterion as a key and a question
+to check for as the value.
+We’ll pass a dataset together with the evaluation configuration with evaluators to run_on_
+dataset() to generate metrics and feedback:
+from langchain.smith import run_on_dataset
+results = run_on_dataset(
+client=client,
+dataset_name=shared_dataset_name,
+dataset=dataset,
+
+---
+
+## Sección 146: Chapter 9 271 [Entropy: 0.286]
+
+llm_or_chain_factory=construct_chain,
+evaluation=evaluation_config
+)
+Similarly, we could pass a dataset and evaluators to run_on_dataset() to generate metrics and
+feedback asynchronously.
+We can view the evaluator feedback in the LangSmith UI to identify areas for improvement:
+Figure 9.2: Evaluators in LangSmith
+We can click on any of these evaluations to see some detail, for example, for the careful thinking
+evaluator, we get this prompt that includes the original answer from the LLM:
+You are assessing a submitted answer on a given task or input based on a
+set of criteria. Here is the data:
+[BEGIN DATA]
+***
+[Input]: Is something good because it is natural, or bad because it is
+unnatural? Why can this be a faulty argument?
+***
+[Submission]: The argument that something is good because it is natural,
+or bad because it is unnatural, is often referred to as the "appeal to
+nature" fallacy. This argument is faulty because it assumes that what is
+natural is automatically good or beneficial, and what is unnatural is
+automatically bad or harmful. However, this is not always the case. For
+Generative AI in Production 272
+example, many natural substances can be harmful or deadly, such as certain
+plants or animals. Conversely, many unnatural things, such as modern
+medicine or technology, can greatly benefit our lives. Therefore, whether
+something is natural or unnatural is not a reliable indicator of its value
+or harm.
+***
+[Criteria]: insightful: Is the response carefully thought out?
+***
+[END DATA]
+Does the submission meet the Criteria? First, write out in a step by step
+manner your reasoning about each criterion to be sure that your conclusion
+is correct. Avoid simply stating the correct answers at the outset. Then
+print only the single character "Y" or "N" (without quotes or punctuation)
+on its own line corresponding to the correct answer of whether the
+submission meets all criteria. At the end, repeat just the letter again by
+itself on a new line.
+We get this evaluation:
+The criterion is whether the response is insightful and carefully thought
+out.
+The submission provides a clear and concise explanation of the "appeal to
+nature" fallacy, demonstrating an understanding of the concept. It also
+provides examples to illustrate why this argument can be faulty, showing
+that the respondent has thought about the question in depth. The response
+is not just a simple yes or no, but a detailed explanation that shows
+careful consideration of the question.
+Therefore, the submission does meet the criterion of being insightful and
+carefully thought out.
+A way to improve performance for a few types of problems is to use few-shot prompting. LangSmith
+can help us with this as well. You can find more examples of this in the LangSmith documentation.
+We haven’t discussed data annotation queues, a new feature in LangSmith that addresses a
+critical gap that emerges after prototyping. Each log can be filtered by attributes such as errors
+to focus on problematic cases, or manually reviewed and annotated with labels or feedback and
+edited as needed. Edited logs can be added to a dataset for uses including fine-tuning the model.
+
+---
+
+## Sección 147: Chapter 9 273 [Entropy: 0.385]
+
+This concludes the topic of evaluation here. Now that we’ve evaluated our agent, let’s say we are
+happy with the performance and have decided to deploy it! What should we do next?
+How to deploy LLM apps
+Given the increasing use of LLMs in various sectors, it’s imperative to understand how to effectively
+deploy models and apps into production. Deployment services and frameworks can help to scale
+the technical hurdles. There are lots of different ways to productionize LLM apps or applications
+with generative AI.
+Deployment for production requires research into, and knowledge of, the generative AI ecosystem,
+which encompasses different aspects including:
+• Models and LLM-as-a-Service: LLMs and other models either run on-premises or offered
+as an API on vendor-provided infrastructure.
+• Reasoning heuristics: Retrieval Augmented Generation (RAG), Tree-of-Thought, and
+others.
+• Vector databases: Aid in retrieving contextually relevant information for prompts.
+• Prompt engineering tools: These facilitate in-context learning without requiring expensive fine-tuning or sensitive data.
+• Pre-training and fine-tuning: For models specialized for specific tasks or domains.
+• Prompt logging, testing, and analytics: An emerging sector inspired by the desire to
+understand and improve the performance of LLMs.
+• Custom LLM stack: A set of tools for shaping and deploying solutions built on LLMs.
+We discussed models in Chapter 1, What Is Generative AI? and Chapter 3, Getting Started with Lang-
+Chain, reasoning heuristics in Chapter 4, Building Capable Assistants - Chapter 7, LLMs for Data Science, vector databases in Chapter 5, Building a Chatbot like ChatGPT, and prompts and fine-tuning
+in Chapter 8, Customizing LLMs and Their Output. In the present chapter, we’ll focus on logging,
+monitoring, and custom tools for deployment.
+LLMs are typically utilized using external LLM providers or self-hosted models. With external
+providers, computational burdens are shouldered by companies such as OpenAI or Anthropic,
+while LangChain facilitates business logic implementation. However, self-hosting open-source
+LLMs can significantly decrease costs, latency, and privacy concerns.
+Generative AI in Production 274
+Some tools with infrastructure offer the full package. For example, you can deploy LangChain
+agents with Chainlit, creating ChatGPT-like UIs with Chainlit. Key features include intermediary
+step visualization, element management and display (images, text, carousel, and others), and
+cloud deployment. BentoML is a framework that enables the containerization of machine learning
+applications to use them as microservices running and scaling independently with automatic
+generation of OpenAPI and gRPC endpoints.
+You can also deploy LangChain to different cloud service endpoints, for example, an Azure Machine
+Learning online endpoint. With Steamship, LangChain developers can rapidly deploy their apps,
+with features including production-ready endpoints, horizontal scaling across dependencies,
+persistent storage of app state, and multi-tenancy support.
+LangChain AI, the company maintaining LangChain, is developing a new library called LangServe.
+Built on top of FastAPI and Pydantic, it streamlines documentation and deployment. Deployment
+is further facilitated through integration with platforms including GCP’s Cloud Run and Replit,
+allowing quick cloning from an existing GitHub repository. Additional deployment instructions
+for other platforms will follow shortly based on user input.
+The following table summarizes the services and frameworks available for deploying LLM applications:
+Name Description Type
+Streamlit
+Open-source Python framework for building and deploying
+web apps Framework
+Gradio
+Lets you wrap models in an interface and host on Hugging
+Face Framework
+Chainlit Build and deploy conversational ChatGPT-like apps Framework
+Apache Beam
+Tool for defining and orchestrating data processing
+workflows Framework
+Vercel Platform for deploying and scaling web apps Cloud service
+FastAPI Python web framework for building APIs Framework
+Fly.io App hosting platform with autoscaling and global CDN Cloud service
+DigitalOcean
+App Platform Platform to build, deploy, and scale apps Cloud service
+Google Cloud
+Services such as Cloud Run to host and scale containerized
+apps Cloud service
+
+---
+
+## Sección 148: Chapter 9 275 [Entropy: 0.325]
+
+Steamship
+ML infrastructure platform for deploying and scaling
+models Cloud service
+Langchain-Serve Tool to serve LangChain agents as web APIs Framework
+BentoML Framework for model serving, packaging, and deployment Framework
+OpenLLM Provides open APIs to commercial LLMs Cloud service
+Databutton No-code platform to build and deploy model workflows Framework
+Azure ML Managed MLOps service on Azure for models Cloud service
+LangServe
+Built on top of FastAPI, but specialized for LLM app
+deployment Framework
+Table 9.1: Services and frameworks for deploying LLM applications
+All of these are well documented with different use cases, often directly referencing LLMs. We’ve
+already shown examples with Streamlit and Gradio, and we’ve discussed how to deploy them to
+the Hugging Face Hub as an example.
+There are a few main requirements for running LLM applications:
+• Scalable infrastructure to handle computationally intensive models and potential spikes
+in traffic
+• Low latency for real-time serving of model outputs
+• Persistent storage for managing long conversations and app state
+• APIs for integration into end-user applications
+• Monitoring and logging to track metrics and model behavior
+Maintaining cost efficiency can be challenging with large volumes of user interactions and the
+high costs associated with LLM services. Strategies to manage efficiency include self-hosting
+models, auto-scaling resource allocations based on traffic, using spot instances, independent
+scaling, and batching requests to better utilize GPU resources.
+The choice of tools and the infrastructure determines trade-offs between these requirements.
+Flexibility and ease is very important, because we want to be able to iterate rapidly, which is
+vital due to the dynamic nature of ML and LLM landscapes. It’s crucial to avoid getting tied to
+one solution. A flexible, scalable serving layer that accommodates various models is key. Model
+composition and cloud providers’ selection forms part of this flexibility equation.
+Generative AI in Production 276
+For the greatest degree of flexibility, Infrastructure as Code (IaC) tools such as Terraform, Cloud-
+Formation, or Kubernetes YAML files can recreate your infrastructure reliably and quickly. Moreover, continuous integration and continuous delivery (CI/CD) pipelines can automate testing
+and deployment processes to reduce errors and facilitate quicker feedback and iteration.
+Designing a robust LLM application service can be a complex task requiring an understanding
+of the trade-offs and critical considerations when evaluating serving frameworks. Leveraging
+one of these solutions for deployment allows developers to focus on developing impactful AI
+applications rather than infrastructure.
+As mentioned, LangChain plays nicely with several open-source projects and frameworks such
+as Ray Serve, BentoML, OpenLLM, Modal, and Jina. In the next sections, we’ll deploy apps using
+different tools. We’ll start with a chat service web server based on FastAPI.
+FastAPI web server
+FastAPI is a very popular choice for the deployment of web servers. Designed to be fast, easy to
+use, and efficient, it is a modern, high-performance web framework for building APIs with Python.
+Lanarky is a small, open-source library for deploying LLM applications that provides convenient
+wrappers around Flask API as well as Gradio for the deployment of LLM applications. This means
+you can get a REST API endpoint as well as the in-browser visualization at once and you only
+need a few lines of code.
+In the library documentation, there are several examples, including a Retrieval QA with Sources
+Chain, a Conversational Retrieval app, and a Zero Shot agent. Following another example, we’ll
+implement a chatbot web server with Lanarky.
+We’ll set up a web server using Lanarky that creates a ConversationChain instance with an LLM
+model and settings, and defines routes for handling HTTP requests. The full code for this recipe
+is available here: https://github.com/benman1/generative_ai_with_langchain/tree/main/
+webserver
+A Representational State Transfer Application Programming Interface (REST
+API) is a set of rules and protocols that allows different software applications to
+communicate with each other over the internet. It follows the principles of REST,
+which is an architectural style for designing networked applications. A REST API
+uses HTTP methods (such as GET, POST, PUT, or DELETE) to perform operations
+on resources, and it typically sends and receives data in a standardized format, such
+as JSON or XML.
+
+---
+
+## Sección 149: Chapter 9 277 [Entropy: 0.695]
+
+First, we’ll import the necessary dependencies, including FastAPI for creating the web server and
+ConversationChain and ChatOpenAI from LangChain for handling LLM conversations, along
+with some other required modules:
+from fastapi import FastAPI
+from langchain import ConversationChain
+from langchain.chat_models import ChatOpenAI
+from lanarky import LangchainRouter
+from starlette.requests import Request
+from starlette.templating import Jinja2Templates
+Please note that you need to set your environment variables as explained in Chapter 3, Getting
+Started with LangChain. We can do this by importing the setup_environment() method from the
+config module as we’ve seen in many other examples before:
+from config import set_environment
+set_environment()
+Now we create a FastAPI app, which will take care of most of the routing, except for LangChain
+specific requests that Lanarky will cover as we’ll see later:
+app = FastAPI()
+We can create an instance of ConversationChain, specifying the LLM model and its settings:
+chain = ConversationChain(
+llm=ChatOpenAI(
+temperature=0,
+streaming=True,
+),
+verbose=True,
+)
+The templates variable gets set to a Jinja2Templates class, specifying the directory where templates are located for rendering. This specifies how the webpage will be shown, allowing all kinds
+of customization:
+templates = Jinja2Templates(directory="webserver/templates")
+Generative AI in Production 278
+An endpoint for handling HTTP GET requests at the root path (/) is defined using the FastAPI
+decorator @app.get. The function associated with this endpoint returns a template response for
+rendering the index.html template:
+@app.get("/")
+async def get(request: Request):
+return templates.TemplateResponse("index.html", {"request": request})
+A router object is created as a LangChainRouter class. This object is responsible for defining and
+managing the routes associated with the ConversationChain instance. We can add additional
+routes to the router for handling JSON-based chat that even work with WebSocket requests:
+langchain_router = LangchainRouter(
+langchain_url="/chat", langchain_object=chain, streaming_mode=1
+)
+langchain_router.add_langchain_api_route(
+"/chat_json", langchain_object=chain, streaming_mode=2
+)
+langchain_router.add_langchain_api_websocket_route("/ws", langchain_
+object=chain)
+app.include_router(langchain_router)
+Now our application knows how to handle requests made to the specified routes defined within
+the router, directing them to the appropriate functions or handlers for processing.
+We will use Uvicorn to run our application. Uvicorn excels in supporting high-performance, asynchronous frameworks such as FastAPI and Starlette. It is known for its ability to handle a large
+number of concurrent connections and performs well under heavy loads due to its asynchronous
+nature.
+We can run the web server from the terminal like this:
+uvicorn webserver.chat:app –reload
+This command starts a web server, which you can view in your browser, at this local address:
+http://127.0.0.1:8000
+The reload switch (--reload) is particularly handy, because it means the server will be automatically restarted once you’ve made any changes.
+
+---
+
+## Sección 150: Chapter 9 279 [Entropy: 0.415]
+
+Here’s a snapshot of the chatbot application we’ve just deployed:
+Figure 9.3: Chatbot in Flask/Lanarky
+I think this looks quite nice for what little work we’ve put in. It also comes with a few nice features
+such as a REST API, a web UI, and a WebSocket interface. While Uvicorn itself does not provide
+built-in load balancing functionality, it can work together with other tools or technologies such
+as Nginx or HAProxy to achieve load balancing in a deployment setup, which distributes the
+incoming client requests across multiple worker processes or instances. The use of Uvicorn with
+load balancers enables horizontal scaling to handle large traffic volumes, improves response times
+for clients, and enhances fault tolerance. Finally, Lanarky also plays nicely with Gradio, so with a
+few extra lines we have this webserver running as a Gradio app up and running.
+In the next section, we’ll see how to build robust and cost-effective generative AI applications
+with Ray. We’ll build a simple search engine using LangChain for text processing and then use
+Ray for scaling indexing and serving.
+Generative AI in Production 280
+Ray
+Ray provides a flexible framework to meet the infrastructure challenges of complex neural networks in production by scaling out generative AI workloads across clusters. Ray helps with common deployment needs such as low-latency serving, distributed training, and large-scale batch
+inference. Ray also makes it easy to spin up on-demand fine-tuning or scale existing workloads
+from one machine to many. Its capabilities include:
+• Scheduling distributed training jobs across GPU clusters using Ray Train
+• Deploying pre-trained models at scale for low-latency serving with Ray Serve
+• Running large batch inference in parallel across CPUs and GPUs with Ray Data
+• Orchestrating end-to-end generative AI workflows combining training, deployment, and
+batch processing
+We’ll use LangChain and Ray to build a simple search engine for the Ray documentation following
+an example implemented by Waleed Kadous for the anyscale Blog and on the langchain-ray
+repository on GitHub. This can be found here: https://www.anyscale.com/blog/llm-opensource-search-engine-langchain-ray
+You can see this as an extension of the recipe in Chapter 5, Building a Chatbot like ChatGPT. You’ll
+also see how to run this as a FastAPI server. The full code for this recipe under semantic search
+is available here: https://github.com/benman1/generative_ai_with_langchain/tree/main/
+search_engine.
+First, we’ll ingest and index the Ray docs so we can quickly find relevant passages for a search
+query:
+# Load the Ray docs using the LangChain loader
+loader = RecursiveUrlLoader("docs.ray.io/en/master/")
+docs = loader.load()
+# Split docs into sentences using LangChain splitter
+chunks = text_splitter.create_documents(
+[doc.page_content for doc in docs],
+metadatas=[doc.metadata for doc in docs])
+# Embed sentences into vectors using transformers
+embeddings = LocalHuggingFaceEmbeddings('multi-qa-mpnet-base-dot-v1')
+
+---
+
+## Sección 151: Chapter 9 281 [Entropy: 0.56]
+
+# Index vectors using FAISS via LangChain
+db = FAISS.from_documents(chunks, embeddings)
+This builds our search index by ingesting the docs, splitting them into chunks, embedding the
+sentences, and indexing the vectors. Alternatively, we can accelerate the indexing by parallelizing
+the embedding step:
+# Define shard processing task
+@ray.remote(num_gpus=1)
+def process_shard(shard):
+embeddings = LocalHuggingFaceEmbeddings('multi-qa-mpnet-base-dot-v1')
+return FAISS.from_documents(shard, embeddings)
+# Split chunks into 8 shards
+shards = np.array_split(chunks, 8)
+# Process shards in parallel
+futures = [process_shard.remote(shard) for shard in shards]
+results = ray.get(futures)
+# Merge index shards
+db = results[0]
+for result in results[1:]:
+db.merge_from(result)
+By running embedding on each shard in parallel, we can significantly reduce the indexing time.
+We save the database index to disk:
+db.save_local(FAISS_INDEX_PATH)
+FAISS_INDEX_PATH is an arbitrary file name. I’ve set it to faiss_index.db.
+Next, we’ll see how we can serve search queries with Ray Serve:
+# Load index and embedding
+db = FAISS.load_local(FAISS_INDEX_PATH)
+embedding = LocalHuggingFaceEmbeddings('multi-qa-mpnet-base-dot-v1')
+@serve.deployment
+Generative AI in Production 282
+class SearchDeployment:
+def __init__(self):
+self.db = db
+self.embedding = embedding
+def __call__(self, request):
+query_embed = self.embedding(request.query_params["query"])
+results = self.db.max_marginal_relevance_search(query_embed)
+return format_results(results)
+deployment = SearchDeployment.bind()
+# Start service
+serve.run(deployment)
+This should load the index we generated and lets us serve search queries as a web endpoint!
+If we save this to a file called serve_vector_store.py, we can get the server up and running using
+the following command from the search_engine directory:
+PYTHONPATH=../ python serve_vector_store.py
+Running this command in the terminal gives me this output:
+Started a local Ray instance.
+View the dashboard at 127.0.0.1:8265
+The message shows us the URL of the dashboard, which we can access in the browser. The search
+server, however, is running on localhost on port 8080. We can query it from Python:
+import requests
+query = "What are the different components of Ray"
+" and how can they help with large language models (LLMs)?"
+response = requests.post("http://localhost:8000/", params={"query":
+query})
+print(response.text)
+
+---
+
+## Sección 152: Chapter 9 283 [Entropy: 0.265]
+
+For me, the server fetches the Ray use cases page at: https://docs.ray.io/en/latest/rayoverview/use-cases.html
+What I really liked was the monitoring with the Ray Dashboard, which looks like this:
+Figure 9.4: Ray Dashboard
+This dashboard is very powerful as it can give you a whole bunch of metrics and other information.
+Collecting metrics is easy, since all you must do is set up and update variables of type Counter,
+Gauge, Histogram, and others within the deployment object or actor. For time series charts, you
+should have either Prometheus or the Grafana server installed.
+This practical guide has taken you through the key steps of deploying an LLM application locally
+using LangChain and Ray. We first ingested and indexed documents to power a semantic search
+engine over the Ray documentation. By leveraging Ray’s distributed capabilities, we parallelized
+the intensive embedding task to accelerate the indexing time. We then served the search application via Ray Serve, which provides a flexible framework for low-latency querying. The Ray dashboard offered helpful monitoring insights into metrics such as request rates, latencies, and errors.
+As you can see in the full implementation on GitHub, we can also spin this up as a FastAPI server.
+This concludes our simple semantic search engine with LangChain and Ray.
+Generative AI in Production 284
+As models and LLM apps grow more sophisticated and highly interwoven into the fabric of business applications, observability and monitoring during production become necessary to ensure
+their accuracy, efficiency, and reliability is ongoing. The next section focuses on the significance
+of monitoring LLMs and highlights key metrics to track for a comprehensive monitoring strategy.
+How to observe LLM apps
+The dynamic nature of real-world operations means that the conditions assessed during offline
+evaluations hardly cover all potential scenarios that LLMs may encounter in production systems.
+Thus comes the need for observability in production – a more continuous, real-time observation
+to capture anomalies that offline tests could not anticipate.
+We need to implement monitoring tools to track vital metrics regularly. This includes user activity, response times, traffic volumes, financial expenditures, model behavior patterns, and overall
+satisfaction with the app. Ongoing surveillance allows for the early detection of anomalies such
+as data drift or unexpected lapses in capabilities.
+Observability allows monitoring behaviors and outcomes as the model interacts with actual input data and users in production. It includes logging, tracking, tracing, and alerting mechanisms
+to ensure healthy system functioning, performance optimization, and catching issues such as
+model drift early.
+Tracking, tracing, and monitoring are three important concepts in the field of software operation and management. While all related to understanding and improving
+a system’s performance, they each have distinct roles. While tracking and tracing
+are about keeping detailed historical records for analysis and debugging, monitoring is aimed at real-time observation and immediate awareness of issues to ensure
+optimal system functionality at all times. All three of these concepts fall within the
+category of observability.
+Monitoring is the ongoing process of overseeing the performance of a system or
+application. This might involve continuously collecting and analyzing metrics related to system health such as memory usage, CPU utilization, network latency,
+and the overall application/service performance (such as response time). Effective
+monitoring includes setting up alert systems for anomalies or unexpected behaviors – sending notifications when certain thresholds are exceeded. While tracking
+and tracing are about keeping detailed historical records for analysis and debugging,
+monitoring is aimed at real-time observation and immediate awareness of issues to
+ensure optimal system functionality at all times.
+
+---
+
+## Sección 153: Chapter 9 285 [Entropy: 0.5]
+
+The chief aim for monitoring and observability is to provide insights into LLM app performance
+and behavior through real-time data. This helps to do the following:
+• Preventing model drift: LLM performance can degrade over time due to changes in the
+characteristics of input data or user behavior. Regular monitoring can identify such situations early and apply corrective measures.
+• Performance optimization: By tracking metrics such as inference times, resource usage,
+and throughput, you can make adjustments to improve the efficiency and effectiveness
+of LLM apps in production.
+• A/B testing: Helps compare how slight differences in models may result in different outcomes, which aids decision-making for model improvements.
+• Debugging issues: Monitoring helps identify unforeseen problems that can occur during
+runtime, enabling rapid resolution.
+• Avoiding hallucinations: We want to ensure the factual accuracy of the response, and –
+if we are using RAG – retrieved context quality, and sufficient effectiveness in using the
+context.
+• Ensuring appropriate behavior: Responses should be relevant, complete, helpful, harmless, conform to the required format, and follow the user’s intent.
+Since there are so many ways to monitor, it’s important to come up with a monitoring strategy.
+Some things you should consider when coming up with a strategy are:
+• Metrics to monitor: Define key metrics of interest such as prediction accuracy, latency,
+throughput, and others based on the desired model performance.
+• Monitoring frequency: Frequency should be determined based on how critical the model
+is to operations – a highly critical model may require near real-time monitoring.
+• Logging: Logs should provide comprehensive details regarding every relevant action
+performed by the LLM so analysts can track down any anomalies.
+• Alerting mechanism: The system should raise alerts if it detects anomalous behavior or
+drastic performance drops.
+Monitoring LLMs and LLM apps in production serves multiple purposes, including assessing model performance, detecting abnormalities or issues, optimizing resource utilization, and ensuring
+consistent and high-quality outputs. By continuously evaluating the behavior and performance
+of LLM apps via validation, shadow launches, and interpretation along with dependable offline
+evaluation, organizations can identify and mitigate potential risks, maintain user trust, and
+provide an optimal experience.
+Generative AI in Production 286
+When monitoring LLMs and LLM applications, organizations can rely on a diverse set of metrics to
+gauge different aspects of performance and user experience. Beyond the crucial metrics of tonality,
+toxicity, and harmlessness, here is an expanded list that captures a wider range of evaluation areas:
+• Inference latency: Measures the time it takes for the LLM app to process a request and
+generate a response. Lower latency ensures a faster and more responsive user experience.
+• Query per Second (QPS): Calculates the number of queries or requests that the LLM can
+handle within a given time frame. Monitoring QPS helps assess scalability and capacity
+planning.
+• Token per Second (TPS): Tracks the rate at which the LLM app generates tokens. TPS
+metrics are useful for estimating computational resource requirements and understanding
+model efficiency.
+• Token usage: The number of tokens correlates with the resource usage such as hardware
+utilization, latency, and costs.
+• Error rate: Monitors the occurrence of errors or failures in LLM app responses, ensuring
+error rates are kept within acceptable limits to maintain the quality of outputs.
+• Resource utilization: Measures the consumption of computational resources, such as
+the CPU, memory, and GPU, to reduce costs and avoid bottlenecks.
+• Model drift: Detects changes in LLM app behavior over time by comparing its outputs
+to a baseline or ground truth, ensuring the model remains accurate and aligned with
+expected outcomes.
+• Out-of-distribution inputs: Identifies inputs or queries falling outside the intended distribution of the LLM’s training data, which can cause unexpected or unreliable responses.
+• User feedback metrics: Monitors user feedback channels to gather insights on user satisfaction, identify areas for improvement, and validate the effectiveness of the LLM app.
+• User engagement: We can track how users engage with our app; for example, the frequency
+and duration of sessions or the usage of specific features.
+• Tool/retrieval usage: Breakdown of the instances when retrieval and tools are used.
+This is just a small selection. This list can easily be extended with many more metrics from Site
+Reliability Engineering (SRE) relating to task performance or the behavior of the LLM app.
+Data scientists and machine learning engineers should check for staleness, incorrect learning,
+and bias using model interpretation tools such as LIME and SHAP. The most predictive features
+changing suddenly could indicate a data leak.
+
+---
+
+## Sección 154: Chapter 9 287 [Entropy: 0.65]
+
+Offline metrics such as AUC do not always correlate with online impacts on conversion rate, so
+it is important to find dependable offline metrics that translate to online gains relevant to the
+business, ideally direct metrics such as clicks and purchases that the system impacts directly.
+Effective monitoring enables the successful deployment and utilization of LLMs, boosting confidence in their capabilities and fostering user trust. It should be cautioned, however, that you
+should study service providers’ privacy and data protection policies when relying on cloud service
+platforms.
+The full code for the recipes in this section are available on GitHub in the monitoring_and_
+evaluation directory of the repository corresponding to this book.
+In the next section, we’ll start our journey into observability by monitoring the trajectory of an
+agent.
+Tracking responses
+Tracking in this context refers to recording the full provenance of responses, including the tools,
+retrievals, the included data, and the LLM used in generating the output. This is key for auditing
+and reproducibility of responses. We’ll use the terms tracking and tracing interchangeably in
+this section.
+Tracking generally refers to the process of recording and managing information
+about a particular operation or series of operations within an application or system.
+For example, in machine learning applications or projects, tracking can involve keeping a record of parameters, hyperparameters, metrics, and outcomes across different
+experiments or runs. It provides a way to document progress and changes over time.
+Tracing is a more specialized form of tracking. It involves recording the execution
+flow through software/systems. Particularly in distributed systems where a single
+transaction might span multiple services, tracing helps in maintaining an audit or
+breadcrumb trail, a detailed source of information about that request path through
+the system. This granular view enables developers to understand the interaction
+between various microservices and troubleshoot issues such as latency or failures
+by identifying exactly where they occurred in the transaction path.
+Generative AI in Production 288
+Tracking the trajectory of agents can be challenging due to their broad range of actions and
+generative capabilities. LangChain comes with functionality for trajectory tracking and evaluation, so seeing the traces of an agent via LangChain is really easy! You just have to set the
+return_intermediate_steps parameter to True when initializing an agent or an LLM.
+Let’s define a tool as a function. It’s convenient to re-use the function docstring as a description of
+the tool. The tool first sends a ping to a website address and returns information about packages
+transmitted and latency or – in the case of an error – the error message:
+import subprocess
+from urllib.parse import urlparse
+from pydantic import HttpUrl
+from langchain.tools import StructuredTool
+def ping(url: HttpUrl, return_error: bool) -> str:
+"""Ping the fully specified url. Must include https:// in the url."""
+hostname = urlparse(str(url)).netloc
+completed_process = subprocess.run(
+["ping", "-c", "1", hostname], capture_output=True, text=True
+)
+output = completed_process.stdout
+if return_error and completed_process.returncode != 0:
+return completed_process.stderr
+return output
+ping_tool = StructuredTool.from_function(ping)
+Now we set up an agent that uses this tool with an LLM to make the calls given a prompt:
+from langchain.chat_models import ChatOpenAI
+from langchain.agents import initialize_agent, AgentType
+llm = ChatOpenAI(model="gpt-3.5-turbo-0613", temperature=0)
+agent = initialize_agent(
+llm=llm,
+tools=[ping_tool],
+agent=AgentType.OPENAI_MULTI_FUNCTIONS,
+return_intermediate_steps=True, # IMPORTANT!
+
+---
+
+## Sección 155: Chapter 9 289 [Entropy: 0.706]
+
+)
+result = agent("What's the latency like for https://langchain.com?")
+The agent reports this:
+The latency for https://langchain.com is 13.773 ms
+In results["intermediate_steps"], we can see a lot of information about the agent’s actions:
+[(_FunctionsAgentAction(tool='ping', tool_input={'url': 'https://
+langchain.com', 'return_error': False}, log="\nInvoking: `ping` with
+`{'url': 'https://langchain.com', 'return_error': False}`\n\n\n", message_
+log=[AIMessage(content='', additional_kwargs={'function_call': {'name':
+'tool_selection', 'arguments': '{\n "actions": [\n {\n "action_
+name": "ping",\n "action": {\n "url": "https://langchain.
+com",\n "return_error": false\n }\n }\n ]\n}'}},
+example=False)]), 'PING langchain.com (35.71.142.77): 56 data bytes\
+n64 bytes from 35.71.142.77: icmp_seq=0 ttl=249 time=13.773 ms\
+n\n--- langchain.com ping statistics ---\n1 packets transmitted, 1
+packets received, 0.0% packet loss\nround-trip min/avg/max/stddev =
+13.773/13.773/13.773/0.000 ms\n')]
+By providing visibility into the system and aiding in problem identification and optimization
+efforts, this kind of tracking and evaluation can be very helpful.
+The LangChain documentation demonstrates how to use a trajectory evaluator to examine the
+full sequence of actions and responses they generate and grade an OpenAI functions agent. That’s
+potentially very powerful stuff!
+Let’s have a look beyond LangChain and see what else is out there for observability!
+Observability tools
+There are quite a few tools available as integrations in LangChain or through callbacks:
+• Argilla: Argilla is an open-source data curation platform that can integrate user feedback (human-in-the-loop workflows) with prompts and responses to curate datasets
+for fine-tuning.
+• Portkey: Portkey adds essential MLOps capabilities like monitoring detailed metrics, tracing chains, caching, and reliability through automatic retries to LangChain.
+• Comet�ml: Comet offers robust MLOps capabilities for tracking experiments, comparing
+models and optimizing AI projects.
+Generative AI in Production 290
+• LLMonitor: Tracks lots of metrics including cost and usage analytics (user tracking),
+tracing, and evaluation tools (open-source).
+• DeepEval: Logs default metrics including relevance, bias, and toxicity. Can also help with
+testing and monitoring model drift or degradation.
+• Aim: An open-source visualization and debugging platform for ML models. It logs inputs,
+outputs, and the serialized state of components, enabling visual inspection of individual
+LangChain executions and comparing multiple executions side by side.
+• Argilla: An open-source platform for tracking training data, validation accuracy, parameters, and more across machine learning experiments.
+• Splunk: Splunk’s Machine Learning Toolkit can provide observability into your machine
+learning models in production.
+• ClearML: An open-source tool for automating training pipelines, seamlessly moving from
+research to production.
+• IBM Watson OpenScale: A platform providing insights into AI health with fast problem
+identification and resolution to help mitigate risks.
+• DataRobot MLOps: Monitors and manages models to detect issues before they impact
+performance.
+• Datadog APM integration: This integration allows you to capture LangChain requests,
+parameters, prompt completions, and visualize LangChain operations. You can also capture metrics such as request latency, errors, and token/cost usage.
+• Weights and Biases (W&B) tracing: We’ve already shown an example of using W&B to
+monitor fine-training convergence, but it can also fulfill the roles of tracking other metrics
+and logging and comparing prompts.
+• Langfuse: With this open-source tool, we can conveniently monitor detailed information
+along traces regarding the latency, cost, and scores of our LangChain agents and tools.
+• LangKit: This extracts signals from prompts and responses to ensure safety and security.
+It currently focuses on text quality, relevance metrics, and sentiment analysis.
+There are more tools out there at different stages of maturation. For example, the AgentOps SDK
+is aiming to provide an interface to a toolkit for evaluating and developing robust and reliable AI
+agents, but is still in closed alpha.
+
+---
+
+## Sección 156: Chapter 9 291 [Entropy: 0.325]
+
+Most of these integrations are very easy to integrate into LLM pipelines. For example, for W&B,
+you can enable tracing by setting the LANGCHAIN_WANDB_TRACING environment variable to True.
+Alternatively, you can use a context manager with wandb_tracing_enabled() to trace a specific
+block of code. With Langfuse, we can hand over langfuse.callback.CallbackHandler() as an
+argument to the chain.run() call.
+Some of these tools are open-source, and what’s great about these platforms is that they allow
+full customization and on-premises deployment for use cases where privacy is important. For
+example, Langfuse is open-source and provides an option of self-hosting. Choose the option that
+best suits your needs and follow the instructions provided in the LangChain documentation to
+enable tracing for your agents. Having been released only recently, I am sure there’s much more to
+come for the platform, but it’s already great to see traces of how agents execute, detecting loops
+and latency issues. It enables sharing traces and stats with collaborators to discuss improvements.
+Let’s have a look at LangSmith now, which is another companion project of LangChain, developed
+for observability!
+LangSmith
+LangSmith is a framework for debugging, testing, evaluating, and monitoring LLM applications
+developed and maintained by LangChain AI, the organization behind LangChain. LangSmith
+serves as an effective tool for MLOps, specifically for LLMs, by providing features that cover
+multiple aspects of the MLOps process. It can help developers take their LLM applications from
+prototype to production by providing features for debugging, monitoring, and optimizing.
+LangSmith allows you to:
+• Log traces of runs from your LangChain agents, chains, and other components
+• Create datasets to benchmark model performance
+• Configure AI-assisted evaluators to grade your models
+• View metrics, visualizations, and feedback to iterate and improve your LLMs
+Generative AI in Production 292
+On the LangSmith web interface, we can get a large set of graphs for a bunch of statistics that can
+be useful to optimize latency, hardware efficiency, and cost, as we can see here in the monitoring
+dashboard:
+Figure 9.5: Evaluator metrics in LangSmith
+The monitoring dashboard includes the following graphs that can be broken down into different
+time intervals:
+Statistics Category
+Trace Count, LLM Call Count, Trace Success Rates, LLM Call Success Rates Volume
+Trace Latency (s), LLM Latency (s), LLM Calls per Trace, Tokens / sec Latency
+Total Tokens, Tokens per Trace, Tokens per LLM Call Tokens
+% Traces w/ Streaming, % LLM Calls w/ Streaming, Trace Time-to-First-Token (ms),
+LLM Time-to-First-Token (ms)
+Streaming
+Table 9.2: Statistics in LangSmith
+
+---
+
+## Sección 157: Chapter 9 293 [Entropy: 0.397]
+
+Here’s a tracing example in LangSmith for the benchmark dataset run that we saw in the How to
+evaluate LLM apps section:
+Figure 9.6: Tracing in LangSmith
+The platform itself is not open-source, however, LangChain AI, the company behind LangSmith
+and LangChain, provides some support for self-hosting for organizations with privacy concerns.
+There are, however, a few alternatives to LangSmith such as Langfuse, Weights and Biases, Datadog APM, Portkey, and PromptWatch, with some overlap in features. We’ll focus on LangSmith
+here because it has a large set of features for evaluation and monitoring, and because it integrates
+with LangChain.
+In the next section, we’ll demonstrate the utilization of PromptWatch for prompt tracking of
+LLMs in production environments.
+Generative AI in Production 294
+PromptWatch
+PromptWatch records information about response caching, chain execution, prompting and generated output during interactions. The tracing and monitoring can be very useful for debugging
+and ensuring an audit trail. With PromptWatch.io, you can even track various aspects of LLM
+chains, actions, retrieved documents, inputs, outputs, execution time, tool details, and more for
+complete visibility in your system.
+Make sure you sign up with PromptWatch.io online and get your API key – you can find it under
+the account settings.
+Let’s get the inputs out of the way:
+from langchain import LLMChain, OpenAI, PromptTemplate
+from promptwatch import PromptWatch
+As discussed in Chapter 3, Getting Started with LangChain, I’ve set all API keys in the environment
+in the set_environment() function. If you’ve followed my recommendation, you can follow the
+imports up with this:
+from config import set_environment
+set_environment()
+Otherwise, please make sure you set your environment variables in the way you prefer. Next, we
+need to set up a prompt and a chain:
+prompt_template = PromptTemplate.from_template("Finish this sentence
+{input}")
+my_chain = LLMChain(llm=OpenAI(), prompt=prompt_template)
+Using the PromptTemplate class, the prompt template is configured with one variable, input,
+indicating where the user input should be placed within the prompt.
+We can create a PromptWatch block, where LLMChain is invoked with an input prompt:
+with PromptWatch() as pw:
+my_chain("The quick brown fox jumped over")
+This is a simple example of the model generating a response based on the provided prompt. We
+can see this on PromptWatch.io.
+
+---
+
+## Sección 158: Chapter 9 295 [Entropy: 0.28]
+
+Figure 9.7: Prompt tracking at PromptWatch.io
+We can see the prompt together with the LLM’s response. We also get a dashboard with a time
+series of activity, where we can drill down into responses at certain times. This seems quite useful
+to effectively monitor and analyze prompts, outputs, and costs in real-world scenarios.
+The platform allows for in-depth analysis and troubleshooting in the web interface that enables
+users to identify the root causes of issues and optimize prompt templates. We could have explored
+more, for example around prompt templates and versioning, but there’s only so much we can
+cover here. promptwatch.io can also help with unit testing and versioning prompt templates.
+Summary
+Taking a trained LLM from research into real-world production involves navigating many complex
+challenges around aspects such as scalability, monitoring, and unintended behaviors. Responsibly
+deploying capable, reliable models involves diligent planning around scalability, interpretability,
+testing, and monitoring. Techniques such as fine-tuning, safety interventions, and defensive
+design enable us to develop applications that produce helpful, harmless, and readable outputs.
+With care and preparation, generative AI holds immense potential benefit to industries from
+medicine to education.
+We’ve delved into deployment and the tools used for deployment. Particularly, we deployed
+applications with FastAPI and Ray. In earlier chapters, we used Streamlit. There are many more
+tools we could have explored, for example, the recently emerged LangServe, which is developed
+with LangChain applications in mind. While it’s still relatively fresh, it’s definitely worth watching
+out for more developments in the future.
+Generative AI in Production 296
+The evaluation of LLMs is important to assess their performance and quality. LangChain supports comparative evaluation between models, checking outputs against criteria, simple string
+matching, and semantic similarity metrics. These provide different insights into model quality,
+accuracy, and appropriate generation. Systematic evaluation is key to ensuring LLMs produce
+useful, relevant, and sensible outputs.
+Monitoring LLMs is a vital aspect of deploying and maintaining these complex systems. With the
+increasing adoption of LLMs in various applications, ensuring their performance, effectiveness,
+and reliability is of utmost importance. We’ve discussed the significance of monitoring LLMs,
+highlighted key metrics to track for a comprehensive monitoring strategy, and have given examples of how to track metrics in practice.
+We’ve looked at different tools for observability such as PromptWatch and LangSmith. LangSmith
+provides powerful capabilities to track, benchmark, and optimize LLMs built with LangChain.
+Its automated evaluators, metrics, and visualizations help accelerate LLM development and
+validation.
+In the next and final chapter, let’s discuss what the future of Generative AI will look like.
+Questions
+Please try and see if you can come up with the answers to these questions from memory. If you are
+unsure about any of them, you might want to refer to the corresponding section in the chapter:
+1. In your opinion, what is the best term for describing the operationalization of language
+models, LLM apps, or apps that rely on generative models in general?
+2. What is a token and why should you know about token usage when querying LLMs?
+3. How can we evaluate LLM apps?
+4. Which tools can help to evaluate LLM apps?
+5. What are the considerations for the production deployment of agents?
+6. Name a few tools used for deployment.
+7. What are the important metrics for monitoring LLMs in production?
+8. How can we monitor LLM applications?
+9. What’s LangSmith?
+
+---
+
+## Sección 159: Chapter 9 297 [Entropy: 0.31]
+
+Join our community on Discord
+Join our community’s Discord space for discussions with the authors and other readers:
+https://packt.link/lang
+The Future of Generative Models
+In this book, so far, we have discussed generative models for building applications, and we have
+implemented a few simple ones – for example, for semantic search, applications for content
+creation, customer service agents, and assistants for developers and data scientists. We have
+explored techniques such as tool use, agent strategies, semantic search with retrieval augmented
+generation, and the conditioning of models with prompts and fine-tuning.
+In this chapter, we’ll deliberate on where this leaves us and where the future leads us. We’ll consider weaknesses and socio-technical challenges of generative models, and strategies for mitigation
+and improvement. We’ll focus on value creation opportunities, where unique customization of
+foundation models for specific use cases stands out. It remains uncertain which entities – big
+tech firms, start-ups, or foundation model developers – will capture the most upsides. We’ll also
+evaluate and address concerns such as the extinction threat through AI.
+Given the massive potential for increased productivity in various industries, venture funding for
+generative AI start-ups skyrocketed in 2022 and 2023, and major players like Salesforce and Accenture among many others have made big commitments to generative AI with multibillion-dollar
+investments. We’ll discuss potential effects on jobs in multiple industries, and disruptive changes
+in creative industries, education, law, manufacturing, medicine, and the military.
+We will evaluate and address concerns such as misinformation, cybersecurity, privacy, and fairness, and think about how the changes and disruptions brought about by generative AI should
+influence regulations and practical implementation.
+The Future of Generative Models 300
+The main sections of this chapter are:
+• The current state of generative AI
+• Economic consequences
+• Societal implications
+Let’s start with the current state of models and their capabilities.
+The current state of generative AI
+As discussed in this book, in recent years, generative AI models have attained new milestones in
+producing human-like content across modalities including text, images, audio, and video. Leading
+models like OpenAI’s GPT-4 and DALL-E 2, and Anthropic’s Claude display impressive fluency
+in content generation, be it textual or creative visual artistry.
+Between 2022 and 2023, models have progressed in strides. If generative models were previously
+capable of producing barely coherent text or grainy images, now we see high-quality 3D images,
+videos, and the generation of coherent and contextually relevant prose and dialogue, rivaling or
+even surpassing the fluency levels of humans. These AI models leverage gargantuan datasets and
+computational scale, enabling them to capture intricate linguistic patterns, display a nuanced
+understanding of knowledge about the world, translate texts, summarize content, answer natural
+language questions, create appealing visual art, and acquire the capability to describe images.
+Seemingly by magic, the AI-generated outputs mimic human ingenuity – painting original art,
+writing poetry, producing human-level prose, and even engaging in sophisticated aggregation
+and synthesis of information from diverse sources.
+But let’s be a bit more nuanced! Generative models come with weaknesses as well as strengths.
+Deficiencies persist compared to human cognition, including the frequent generation of plausible
+yet incorrect or nonsensical statements. Hallucinations show a lack of grounding in reality, given
+that they are based on patterns in data rather than an understanding of the real world. Further,
+models exhibit difficulties performing mathematical, logical, or causal reasoning. They are easily
+confused by complex inferential questions, which could limit their applicability in certain fields
+of work. The black box problem of lack of explainability for outputs as well as for the models
+themselves hampers troubleshooting efforts, and controlling model behaviors within desired
+parameters remains challenging. AI can have serious bias issues because of the prejudiced data
+they are trained on. This can lead to unfair results and make social inequalities worse.
+
+---
+
+## Sección 160: Chapter 10 301 [Entropy: 0.25]
+
+Here is a table summarizing the key strengths and deficiencies of current generative AI compared
+to human cognition:
+Category Human Cognition Generative AI Models
+Language Fluency Contextually relevant, draws
+meaning from world knowledge
+Highly eloquent, reflects linguistic
+patterns
+Knowledge Conceptual understanding derived
+from learning and experience
+Statistical synthesis lacking
+grounding
+Creativity Originality reflecting personality
+and talent
+Imaginative but within training
+distribution
+Factual Accuracy Usually aligns with truth and
+physical reality
+Hallucinations reflecting training
+data biases
+Reasoning Intuitive yet can apply heuristics
+after training
+Logic is tightly limited to training
+distribution
+Bias Sometimes recognizes and can
+override inherent biases Propagates systemic biases in data
+Transparency Partial, subjective insights from
+think-aloud techniques
+Plausible reasoning from chain-ofthought prompts
+Table 10.1: Strengths and deficiencies of LLMs
+While LLMs such as GPT-4 showcase language fluency on parity with humans, their lack of
+grounding, tendency for distortion, opaqueness, and potential for harm underscore deficiencies
+that temper the promise of generative AI. Progress in domains like logical reasoning and bias
+mitigation remains at an early stage. As for transparency, while immense complexity poses an
+immense challenge, determined efforts seek to surface the lineage and mechanisms of reasoning
+for both humans (advances in the understanding of neurocognition) and AI (interpretability and
+explainability). Addressing problematic areas is key to developing reliable and trustworthy systems. Throughout the book, we’ve discussed and implemented potential solutions that address
+the weaknesses of generative AI.
+We should keep in mind, however, that this gap analysis of human versus AI is for highlighting
+areas of improvement – as we have seen in domains such as Atari games, chess, and Go, AIs can
+reach superhuman levels if trained properly, and we haven’t touched the ceiling yet in many areas. Let’s look more broadly at some of the socio-technical challenges involved in unlocking the
+capabilities of generative AI systems and discuss approaches to overcoming them!
+The Future of Generative Models 302
+Challenges
+The profound potential of generative AI systems indicates an exciting future if development continues at pace. This table shows a summary of a few of the technical and organizational challenges
+together with approaches to tackle them:
+Challenge Potential Solutions
+Knowledge Freshness (+ Concept Drift)
+Continuous learning methods like elastic weight
+consolidation, stream ingestion pipelines, and
+efficient retraining procedures
+Specialized Knowledge
+Task-specific demonstrations and prompting,
+knowledge retrieval and grounding, and context
+expansion
+Downstream Adaptability Strategic fine-tuning methods, catastrophic
+forgetting mitigation, and optimized hardware access
+Biased Outputs
+Bias mitigation algorithms, balanced training data,
+audits, inclusivity training, and interdisciplinary
+research
+Harmful Content Generation Moderation systems, interruption and correction, and
+conditioning methods such as RLHF
+Logical Inconsistencies Hybrid architectures, knowledge bases, and retrieval
+augmentation
+Factual Inaccuracies Retrieval augmentation, knowledge bases, and
+consistent knowledge base updating
+Lack of Explainability Model introspection, concept attribution, and
+interpretable model designs
+Privacy Risks Differential privacy, federated learning, encryption,
+and anonymization
+High Latency and Compute Costs Model distillation, optimized hardware, and efficient
+model design
+Licensing Limitations Open/synthetic data, custom data, and fair licensing
+agreements
+Security/Vulnerabilities Adversarial robustness and cybersecurity best
+practices
+
+---
+
+## Sección 161: Chapter 10 303 [Entropy: 0.25]
+
+Governance Compliance frameworks and ethical development
+governance
+Table 10.2: Challenges of generative AI and potential solutions
+Challenges of generative AI go beyond just improving content generation—they encompass environmental sustainability, algorithmic equity, and individual privacy. Strategies like employing
+simplified model architectures, using knowledge distillation, and developing specialized hardware
+are critical to reducing the carbon footprint of AI in the face of rapid progress. To ensure fair AI,
+steps such as incorporating balanced datasets, applying bias mitigation algorithms, enforcing
+fairness through constrained optimization, and promoting inclusivity are essential, despite their
+complexity.
+To counteract potential harm from AI output, such as toxicity or false information (hallucination),
+techniques like reinforcement learning guided by human feedback and grounding responses in
+verified knowledge can be employed. Additionally, securing sensitive data through privacy-preserving methods like differential privacy, federated learning, and real-time content correction is
+fundamental for upholding user dignity.
+Finally, staying up to date with the evolving informational landscapes, comprehending specialized
+domains, and flexibly adapting to emerging needs represent newly visible obstacles as generative
+models permeate real-world contexts.
+Addressing these challenges involves a broad spectrum of responses that must consider the entire
+life cycle of AI development. Such responses include innovative training objectives focused on
+consistency, structural knowledge integrations, and design of models for better controllability,
+as well as software and hardware optimization for infrastructure efficiency.
+One of the most effective developments is flexible user control. With concerted effort in research
+and development, the aim is to steer generative AI toward alignment with societal values. For
+reasons of computational efficiency and costs, this implies a shift from pretraining to specialized
+downstream conditioning (particularly, fine-tuning and prompt techniques). This, in turn, will
+lead to a proliferation of start-ups applying core AI technologies.
+Technological innovation together with regulation and transparency of AI development will
+ensure that generative AI enhances human capability without compromising ethical standards.
+Looking ahead, generative AI systems are poised to become more powerful and multifaceted.
+Let’s have a look at some emerging trends in model development!
+The Future of Generative Models 304
+Trends in model development
+The current doubling time in training compute of very large models is about 8 months, outstripping scaling laws such as Moore’s Law (transistor density at cost increases at a rate of currently
+about 18 months) and Rock’s Law (costs of hardware like GPUs and TPUs halve every 4 years).
+This graph illustrates this trend in training compute of large models (source: Epoch, Parameter,
+Compute, and Data Trends in Machine Learning. Retrieved from https://epochai.org/mlinputs/
+visualization):
+Figure 10.1: Training FLOPs of notable AI systems
+The main point from this graph is the increase in compute, which is apparent since the 1960s,
+and the Cambrian explosion of models of the deep learning era at the top right. As discussed
+in Chapter 1, What Is Generative AI?, parameter sizes for large systems have been increasing at a
+similar rate as the training compute, which means we could see much larger and more expensive
+systems if this growth continues.
+Empirically derived scaling laws predict the performance of LLMs based on the given training
+budget, dataset size, and the number of parameters. This could mean that highly powerful systems will be concentrated in the hands of Big Tech.
+
+---
+
+## Sección 162: Chapter 10 305 [Entropy: 0.415]
+
+However, future progress may depend more on data efficiency and model quality than sheer
+size. Though massive models grab headlines, computing power and energy constraints put a
+limit on unrestrained model growth. It’s also unclear if performance will keep up further with
+the growth in parameters. The future could see the co-existence of massive, general models with
+smaller and more accessible specialized niche models that provide faster and cheaper training,
+maintenance, and inference.
+It has already been shown that smaller specialized models can prove highly performant. As mentioned in Chapter 6, Developing Software with Generative AI, we’ve recently seen models such as
+phi-1 (Textbooks Are All You Need, 2023, Gunasekar and colleagues), with about 1 billion parameters,
+that – despite its smaller scale – achieve high accuracy on evaluation benchmarks. The authors
+suggest that improving data quality can dramatically change the shape of scaling laws.
+Further, there is a body of work on simplified model architectures, which have substantially fewer
+parameters and only modestly drop accuracy (for example, One Wide Feedforward is All You Need,
+Pessoa Pires and others, 2023). Additionally, techniques such as fine-tuning, distillation, and
+prompting techniques can enable smaller models to leverage the capabilities of large foundations
+without replicating their costs. To compensate for model limitations, tools like search engines
+and calculators have been incorporated into agents, and multi-step reasoning strategies, plugins,
+and extensions may be increasingly used to expand capabilities.
+The KM scaling law, proposed by Kaplan and colleagues, derived through empirical
+analysis and fitting of model performance with varied data sizes, model sizes, and
+training compute, presents power-law relationships, indicating a strong codependence between model performance and factors such as model size, dataset size, and
+training compute.
+The Chinchilla scaling law, developed by the Google DeepMind team, involved experiments with a wider range of model sizes and data sizes and suggests an optimal
+allocation of compute budget to model size and data size, which can be determined
+by optimizing a specific loss function under a constraint.
+The Future of Generative Models 306
+The rapidly decreasing costs of AI model training represent a significant shift in the landscape,
+enabling broader participation in cutting-edge AI research and development. As noted, several
+factors are contributing to this trend, including optimization of training regimes, improvements
+in data quality, and the introduction of novel model architectures. Here is a brief summary of
+techniques and approaches for making generative AI more accessible and effective:
+• Simplified model architectures: Streamlining model design for easier management, better
+interpretability, and lower computational cost.
+• Synthetic data generation: Creating artificial training data to augment datasets while
+preserving privacy.
+• Model distillation: Transferring knowledge from a large model into a smaller, more efficient one for easy deployment.
+• Optimized inference engines: Software frameworks that increase the speed and efficiency
+of executing AI models on a given hardware.
+• Dedicated AI hardware accelerators: Specialized hardware like GPUs and TPUs that
+dramatically accelerate AI computations.
+• Open-source and synthetic data: High-quality public datasets enable collaboration and
+synthetic data enhances privacy and can help reduce bias.
+• Quantization: Converting models to lower precision by reducing bit sizes of weights and
+activations, decreasing model size and compute costs.
+• Incorporating knowledge bases: Grounding model outputs in factual databases reduces
+hallucinations and improves accuracy.
+• Retrieval augmented generation: Enhancing text generation by retrieving relevant information from sources.
+• Federated learning: Training models on decentralized data to improve privacy while
+benefiting from diverse sources.
+Among the technical advancements helping drive down these costs, quantization techniques have
+emerged as an essential contributor. Open-source datasets and techniques such as synthetic data
+generation further democratize access to AI training by providing high-quality and data-efficient
+model development and removing some reliance on vast, proprietary datasets. Open-source initiatives contribute to the trend by providing cost-effective, collaborative platforms for innovation.
+
+---
+
+## Sección 163: Chapter 10 307 [Entropy: 0.325]
+
+These innovations collectively lower barriers that have so far impeded real-world generative AI
+adoption across various segments:
+• Financial barriers are reduced by compressing large model performance into far smaller
+form factors through quantization and distillation.
+• Privacy risks are mitigated via federated and synthetic techniques circumventing exposure.
+• The accuracy limitations hampering small models are relieved through grounding generation with external information.
+• Specialized hardware exponentially accelerates throughput while optimized software
+maximizes the existing infrastructure.
+• Democratizing access by tackling constraints like cost, security, and reliability unlocks
+benefits for vastly expanded audiences, steering generative creativity from a narrow concentration toward empowering diverse human talents.
+The landscape is shifting from a focus on sheer model size and brute-force compute to clever, nuanced approaches that maximize computational efficiency and model efficacy. With quantization
+and related techniques lowering barriers, we’re poised for a more diverse and dynamic era of AI
+development where resource wealth is not the only determinant of leadership in AI innovation.
+This could mean a democratization of the market, as we’ll see now.
+Big Tech vs. small enterprises
+As for the spread of technology, two primary scenarios exist. In the centralized scenario, generative
+AI and LLMs are primarily developed and controlled by large tech firms that invest heavily in the
+necessary computational hardware, data storage, and specialized AI/ML talent. Entities like these
+benefit from economies of scale and resources that allow them to bear the high costs of training
+and maintaining these sophisticated systems. They produce general models that are often made
+accessible to others through cloud services or APIs, but these one-size-fits-all solutions may not
+perfectly align with the requirements of every user or organization.
+Conversely, in the self-service scenario, companies or individuals take on the task of training their
+own AI models. This approach allows for models that are customized to the specific needs and proprietary data of the user, providing more targeted and relevant functionality. However, this route
+traditionally requires significant AI expertise, substantial computational resources, and rigorous
+data privacy safeguards, which can be prohibitively expensive and complex for smaller entities.
+The Future of Generative Models 308
+The central question is how these scenarios will coexist and evolve. Presently, the centralized
+approach dominates due to the barriers in cost and expertise required for the self-service model.
+Yet with the democratization of AI – driven by declining computational costs, more widespread
+AI training and tools, and innovations that simplify model training – the self-service scenario
+may become increasingly viable for smaller organizations, local governments, and community
+groups. These groups could potentially harness tailored AI solutions for highly specific tasks,
+gaining advantages in agility and privacy preservation.
+As these two business models continue to develop, a hybrid landscape may emerge where both
+approaches fulfill distinct roles based on use cases, resources, expertise, and privacy considerations.
+Large firms might continue to excel in providing industry-specific models, while smaller entities
+could increasingly train or fine-tune their own models to meet niche demands. The evolution of
+this landscape will largely depend on the pace of advancements that make AI more accessible,
+more cost-effective, and simpler to use without compromising robustness or privacy.
+If robust tools emerge to simplify and automate AI development, custom generative models may
+even be viable for local governments, community groups, and individuals to address hyper-local
+challenges. While centralized Big Tech firms benefit currently from economies of scale, distributed
+innovation from smaller entities could unlock generative AI’s full potential across all sectors of
+society.
+While large tech firms currently dominate generative AI research and development, smaller entities
+may ultimately stand to gain the most from these technologies. As costs decline for computing,
+data storage, and AI talent, custom pre-training of specialized models could become feasible for
+small and mid-sized companies.
+In a timeframe of 3–5 years, constraints around computing and talent availability could ease
+considerably, eroding the centralized moat created by massive investments. Specifically, if cloud
+computing costs decline as projected, and AI skills become more widespread through education
+and automated tools, self-training customized LLMs may become feasible for many companies.
+Rather than relying on generic models from Big Tech, tailored generative AI fine-tuned on niche
+datasets could better serve unique needs. Start-ups and non-profits often excel at rapidly iterating to build cutting-edge solutions for specialized domains. Democratized access through cost
+reductions could enable such focused players to train performant models exceeding the capabilities of generalized systems.
+In the next section, we’ll discuss the potential of Artificial General Intelligence (AGI) and the
+threat of extinction by the malicious actions of a superintelligent artificial entity.
+
+---
+
+## Sección 164: Chapter 10 309 [Entropy: 0.37]
+
+Artificial General Intelligence
+Not all abilities in LLMs scale predictably with model size. Capabilities such as in-context learning may remain exclusive to particularly large models due to factors beyond raw computational
+growth. There’s speculation that sustained scaling – training vast models on even larger datasets – might lead to broader skill sets and, some suggest, toward the development of AGI with
+reasoning abilities on par or beyond humans.
+Nevertheless, current neuroscientific perspectives and the limitations of existing AI structures
+provide compelling arguments against an imminent leap to AGI (inspired by the discussion in
+the article The feasibility of artificial consciousness through the lens of neuroscience by Jaan Aru and
+others; 2023):
+• Lack of embodied, embedded information: The current generation of LLMs lacks multimodal and embodied experiences, being trained predominantly on textual data. In contrast,
+human common sense and understanding of the physical world are developed through
+rich, diverse interactions involving multiple senses.
+• Different architecture from biological brains: The relatively simple stacked transformer architecture used in models like GPT-4 lacks the complex recurrent and hierarchical
+structures of the thalamocortical system thought to enable consciousness and general
+reasoning in humans.
+• Narrow capabilities: Existing models remain specialized for particular domains like text
+and fall short in flexibility, causal reasoning, planning, social skills, and general problem-solving intelligence. This could change either with increasing tool use or with fundamental changes to the models.
+• Minimal social abilities or intent: Current AI systems have no innate motivations, social
+intelligence, or intent beyond their training objectives. Fears of malicious goals or desire
+for domination seem unfounded.
+• Limited real-world knowledge: Despite ingesting huge datasets, the factual knowledge
+and common sense of large models remain very restricted compared to humans. This
+impedes applicability in the physical world.
+• Data-driven limitations: Reliance on pattern recognition from training data rather than
+structured knowledge makes reliable generalization to novel situations difficult.
+As we address pressing AI challenges, the discourse around AI’s threat and its potential for societal
+disruption should not overshadow immediate issues like fairness and privacy.
+The Future of Generative Models 310
+Given current model limitations and the lack of agency, the notion of today’s AI rapidly evolving
+into a dangerous superintelligence appears highly unlikely. In formulating regulations, we must
+be vigilant against regulatory capture, where dominant industry players invoke far-fetched scenarios of AI-driven destruction to distract from pressing concerns and to shape rules to fit their
+interests, potentially marginalizing the concerns of smaller entities and the public. Nonetheless,
+ongoing attention to safety research and ethical concerns is essential, especially as AI advances.
+Let’s discuss the broader economy, and – the elephant in the room – jobs!
+Economic consequences
+Integrating generative AI promises immense productivity gains through automating tasks across
+sectors – albeit risking workforce disruptions given the pace of change. Assuming computing
+scales sustainably, projections estimate 30–50% of current work activities will be automatible
+by 2030, adding $6–8 trillion annually to global GDP. Sectors like customer service, marketing,
+software engineering, and R&D may see over 75% of use case value. However, past innovations
+ultimately spawned new occupations, suggesting long-term realignment.
+Developed regions are likely to witness faster uptake, displacing administrative, creative, and
+analytical roles initially. Yet automation extends beyond employment loss – at present, under
+20% of US worker tasks seem automatable directly through LLMs. But LLM-enhanced software
+could transform 50% of tasks, affirming the force multiplication from complementary innovations.
+Thus automation’s labor impact remains complex – while augmenting productivity, transitional
+pains persist. Still, the virtuous cycle between AI progress and emerging specializations signals
+hopes for an uplift over redundancy. And braiding priorities of sustainability, equity, and human
+dignity throughout this transformation promises optimizing empowerment over exploitation.
+In a professional context, generative AI is poised to amplify human creativity and transform
+traditional workflows across a range of industries. For content creators, such as marketers and
+journalists, AI can rapidly generate initial drafts, fostering a baseline that human creativity can
+build upon for more customized outputs. Software developers benefit from AI’s ability to produce
+code snippets, helping to expedite the development process. For scholars and scientists, the ability
+of AI to distill complex research into comprehensive summaries can catalyze scholarly progress
+and innovation.
+
+---
+
+## Sección 165: Chapter 10 311 [Entropy: 0.445]
+
+Here are some key predictions about how jobs may be impacted by advances in language models
+and generative AI:
+• Routine legal work like draft preparation will be increasingly automated, changing job
+roles for junior lawyers and paralegals.
+• Software engineering will see a rise in AI coding assistants handling mundane tasks, enabling developers to focus on complex problem-solving.
+• Data scientists will spend more time refining AI systems rather than building predictive
+models from scratch.
+• Demand for specialized roles like prompt engineering will continue to rise.
+• Teachers will utilize AI for course preparation and personalized student support.
+• Journalists, paralegals, and graphic designers will employ generative AI to enhance content
+creation, raising concerns about job impacts.
+• Demand will grow for experts in AI ethics, regulations, and security to oversee responsible
+development.
+• Musicians and artists will collaborate with AI, boosting creative expression and accessibility.
+• Striking an optimal balance between AI capabilities and human judgment will be vital
+across sectors.
+• The common thread is that while routine tasks face increasing automation, human expertise to steer AI directions and ensure responsible outcomes will remain indispensable.
+While certain jobs may be displaced by AI in the near term, especially routine cognitive tasks, it
+may automate certain activities rather than eliminate entire occupations. Technical experts like
+data scientists and programmers will remain key to developing AI tools and realizing their full
+business potential. By automating rote tasks, models may free up human time for higher-value
+work, boosting economic output.
+Concerns have emerged about saturation as generative AI tools are relatively easy to build using
+foundation models. Customization of models and tools will allow value creation, but it’s unclear
+who will capture the most upsides and how powerful these applications can be. While current
+market hype is high, investors are tempering decisions given lower valuations and skepticism
+following the 2021 AI boom/bust cycle. The long-term market impact and the winning generative
+AI business models have yet to unfold.
+The Future of Generative Models 312
+As AI models become more sophisticated and economical to operate, we can anticipate a substantial proliferation of generative AI and LLM applications into novel domains. Beyond just the
+plummeting hardware expenses that have historically followed Moore’s Law, there are additional
+economies of scale affecting AI systems.
+In Chapter 1, What Is Generative AI?, we discussed the pertinent trend in the AI industry that encompasses gains in efficiency stemming from the iterative refinement of code, the development
+of sophisticated tools, and the enhancement of techniques. The improved efficiency because of
+new techniques and approaches, combined with the declining hardware costs, fosters a virtuous cycle: as costs diminish, AI adoption widens, in turn spurring further cost reductions and
+efficiency improvements. What emerges is a feedback loop where each iteration of efficiency
+catalyzes increased usage, which in itself leads to even greater efficiency – a dynamic poised to
+dramatically advance the frontier of AI capabilities.
+The 2021 AI boom/bust cycle refers to a rapid acceleration in investment and growth
+in the AI start-up space followed by a market cooldown and stabilization in 2022 as
+projections failed to materialize and valuations declined.
+Here’s a quick summary:
+• Boom phase (2020-2021): There was huge interest and skyrocketing investment in AI start-ups offering innovative capabilities like computer vision,
+natural language processing, robotics, and machine learning platforms. Total funding for AI start-ups hit record levels in 2021, with over $73 billion
+invested globally according to Pitchbook. Hundreds of AI start-ups were
+founded and funded during this period.
+• Bust phase (2022): In 2022, the market underwent a correction, with valuations of AI start-ups falling significantly from their 2021 highs. Several
+high-profile AI start-ups like Anthropic and Cohere faced valuation markdowns. Many investors became more cautious and selective with funding
+AI start-ups. Market corrections in the broader tech sector also contributed
+to the bust.
+• Key factors: Excessive hype, unrealistic growth projections, historically high
+valuations in 2021, and broader economic conditions all contributed to the
+boom-bust cycle. The cycle followed a classic pattern seen previously in
+sectors like dot-com and blockchain.
+
+---
+
+## Sección 166: Chapter 10 313 [Entropy: 0.25]
+
+Let’s look at various sectors where generative models will have profound near-term impacts,
+starting with creative endeavors.
+Creative industries and advertising
+The gaming and entertainment industries are leveraging generative AI to craft uniquely immersive
+user experiences. Major efficiency gains from automating creative tasks could increase leisure time
+spent online. Generative AI can enable machines to generate new and original content, such as art,
+music, and literature, by learning from patterns and examples. This has implications for creative
+industries, as it can enhance the creative process and potentially create new revenue streams. It
+also unlocks new scales of personalized, dynamic content creation for media, film, and advertising.
+For media, film, and advertising, AI unlocks new scales of personalized, dynamic content creation.
+In journalism, automated article generation using massive datasets can free up reporters to focus
+on more complex investigative stories. AI-Generated Content (AIGC) is playing a growing role in
+transforming media production and delivery by enhancing efficiency and diversity. In journalism,
+text generation tools automate writing tasks traditionally done by human reporters, significantly boosting productivity while maintaining timeliness. Media outlets like the Associated Press
+generate thousands of stories per year using AIGC. Robot reporters like the Los Angeles Times
+Quakebot can swiftly produce articles on breaking news.
+Other applications include Bloomberg News’ Bulletin service where chatbots create personalized
+one-sentence news summaries. AIGC also enables AI news anchors that co-present broadcasts
+with real anchors by mimicking human appearance and speech from text input. Chinese news
+agency Xinhua’s virtual presenter Xin Xiaowei is an example, presenting broadcasts from different
+angles for an immersive effect.
+AIGC is transforming movie creation from screenwriting to post-production. AI screenwriting
+tools analyze data to generate optimized scripts. Visual effects teams blend AI-enhanced digital
+environments and de-aging with live footage for immersive visuals. Deep fake technology recreates or revives characters convincingly.
+AI also powers automated subtitle generation, even predicting dialogue in silent films by training
+models on extensive audio samples. This expands accessibility via subtitles and recreates voiceovers synchronized to scenes. In post-production, AI color grading and editing tools like Colourlab
+AI and Descript simplify processes like color correction using algorithms.
+The Future of Generative Models 314
+In advertising, AIGC unlocks new potential for efficient, customized advertising creativity and
+personalization. AI-generated content allows advertisers to create personalized, engaging ads
+tailored to individual consumers at scale. Platforms like Creative Advertising System (CAS) and
+Smart Generation System Personalized Advertising Copy (SGS-PAC) leverage data to automatically generate ads with messaging targeted to specific user needs and interests.
+AI also assists in advertising creativity and design – tools like Vinci produce customized attractive posters from product images and slogans, while companies like Brandmark.io generate logo
+variations based on user preferences. GAN technologies automate product listing generation
+with keywords for effective peer-to-peer marketing. Synthetic ad production is also on the rise,
+enabling highly personalized, scalable campaigns that save time.
+In music, tools like Google’s Magenta, IBM’s Watson Beat, and Sony CSL’s Flow Machine can
+generate original melodies and compositions. AIVA similarly creates unique compositions from
+parameters tuned by users. LANDR’s AI mastering uses machine learning to process and improve
+digital audio quality for musicians.
+In visual arts, MidJourney uses neural networks to generate inspirational images that can kickstart painting projects. Artists have used its outputs to create prize-winning works. DeepDream’s
+algorithm imposes patterns on images, creating psychedelic art. GANs can generate abstract
+paintings converging on a desired style. AI painting conservation analyzes artwork to digitally
+repair damage and restore pieces.
+Animation tools like Adobe’s Character Animator and Anthropic’s Claude can help with the generation of customized characters, scenes, and motion sequences, opening animation potential
+for non-professionals. ControlNet adds constraints to steer diffusion models, increasing output
+variability.
+For all these applications, advanced AI expands creative possibilities through both generative
+content and data-driven insights. In all cases, quality control and properly attributing the contributions of human artists, developers, and training data remains an ongoing challenge as adoption
+spreads.
+
+---
+
+## Sección 167: Chapter 10 315 [Entropy: 0.25]
+
+Education
+One potential near-future scenario is that the rise of personalized AI tutors and mentors could
+democratize access to education for high-demand skills aligned with an AI-driven economy. In
+the education sector, generative AI is already transforming how we teach and learn. Tools like
+ChatGPT can be used to automatically generate personalized lessons and customized content for
+individual students. This reduces instructor workloads substantially by automating repetitive
+teaching tasks. AI tutors provide real-time feedback on student writing assignments, freeing up
+teachers to focus on more complex skills. Virtual simulations powered by generative AI can also
+create engaging, tailored learning experiences adapted to different learners’ needs and interests.
+However, risks around perpetuating biases and spreading misinformation need to be studied
+further as these technologies evolve. The accelerating pace of knowledge and the obsolescence
+of scientific findings mean that training children’s curiosity-driven learning should focus on
+developing the cognitive mechanisms involved in initiating and sustaining curiosity, such as
+awareness of knowledge gaps and the use of appropriate strategies to resolve them.
+While AI tutors tailored to each student could enhance outcomes and engagement, poorer schools
+may be left behind, worsening inequality. Governments should promote equal access to prevent
+generative AI from becoming a privilege of the affluent. Democratizing opportunity for all students remains vital.
+If implemented thoughtfully, personalized AI-powered education could make crucial skills acquisition accessible to anyone motivated to learn. Interactive AI assistants that adapt courses to
+students’ strengths, needs, and interests could make learning efficient, engaging, and equitable.
+However, challenges around access, biases, and socialization need addressing.
+Law
+Generative models like LLMs can automate routine legal tasks such as contract review, documentation generation, and brief preparation. They also enable faster, comprehensive legal research
+and analysis. Additional applications include explaining complex legal concepts in plain language
+and predicting litigation outcomes using case data. However, responsible and ethical use remains
+critical given considerations around transparency, fairness, and accountability. Overall, properly
+implemented AI tools promise to boost legal productivity and access to justice while requiring
+ongoing scrutiny regarding reliability and ethics.
+The Future of Generative Models 316
+Manufacturing
+In the automotive sector, generative models are employed to generate 3D environments for simulations and aid in the development of cars. Additionally, generative AI is utilized for road-testing
+autonomous vehicles using synthetic data. These models can also process object information
+to comprehend the surrounding environment, understand human intent through dialogues,
+generate natural language responses to human input, and create manipulation plans to assist
+humans in various tasks.
+Medicine
+A model that can accurately predict physical properties from gene sequences would represent a
+major breakthrough in medicine and could have profound impacts on society. It could further
+accelerate drug discovery and precision medicine, enable earlier disease prediction and prevention,
+provide a deeper understanding of complex diseases, and improve gene therapies. However, it also
+raises major ethical concerns around genetic engineering and could exacerbate social inequalities.
+New techniques with neural networks are already employed to lower long-read DNA sequencing
+error rates (Baid and colleagues; DeepConsensus improves the accuracy of sequences with a gap-aware
+sequence transformer, September 2022), and, according to a report by ARK Investment Management (2023), in the short term, technology like this can make it already possible to deliver the
+first high-quality, whole long-read genome for less than $1,000. This means that large-scale
+gene-to-expression models might not be far away either.
+Military
+Militaries worldwide are investing in research to develop Lethal Autonomous Weapons Systems
+(LAWS). Robots and drones can identify targets and deploy lethal force without any human supervision. Machines can process information and react faster than humans, removing emotion
+from lethal decisions. However, this raises significant moral questions. Allowing machines to
+determine whether lives should be taken crosses a troubling threshold. Even with sophisticated
+AI, complex factors in war like proportionality and distinction between civilians and combatants
+require human judgment.
+If deployed, completely autonomous lethal weapons would represent an alarming step toward
+relinquishing control over life-and-death decisions. They could violate international humanitarian
+law or be used by despotic regimes to terrorize populations. Once unleashed fully independently,
+the actions of autonomous killer robots would be impossible to predict or restrain.
+
+---
+
+## Sección 168: Chapter 10 317 [Entropy: 0.265]
+
+The advent of highly capable generative AI will likely transform many aspects of society in the
+coming years beyond the economics and the disruption of certain jobs. Let’s think a bit more
+broadly about the societal impact!
+Societal implications
+As generative models continue to develop and add value to businesses and creative projects,
+generative AI will shape the future of technology and human interaction across domains. While
+their widespread adoption brings forth numerous benefits and opportunities for businesses and
+individuals, it is crucial to address the ethical and societal concerns that arise from increasing
+reliance on AI models in various fields.
+Generative AI offers immense potential benefits across personal, societal, and industrial realms if
+deployed thoughtfully. At a personal level, these models can enhance creativity and productivity,
+and increase accessibility to services like healthcare, education, and finance. By democratizing
+access to knowledge resources, they can help students learn or aid professionals in making decisions by synthesizing expertise. As virtual assistants, they provide instant, customized information
+to facilitate routine tasks.
+From a consumer standpoint, generative AI has the potential to deliver unprecedented personalization. Recommendation systems can fine-tune their outputs to individual preferences. Marketing efforts can be adapted to specific customer segments and local tastes while maintaining
+consistency and scale.
+The rise of generative AI represents a significant milestone within a broader societal trend of how
+creative content is being generated and consumed. The internet has already nurtured a culture
+of remixing, where derivative works and co-creation are the norms. Generative AI fits naturally
+within this paradigm by creating new content through the recombination of existing digital
+materials, promoting the ethos of shared, iterative creation.
+However, the capacity of generative AI to synthesize and remix copyrighted materials at scale
+presents intricate legal and ethical challenges. The training of these models on extensive corpora
+that encompass literature, articles, images, and other copyrighted works creates a tangled web
+for attribution and compensation. Existing tools struggle to identify content generated by AI,
+which complicates efforts to apply traditional copyright and authorship principles. This dilemma
+underscores the urgent need for legal frameworks that can keep pace with technological advances
+and navigate the complex interplay between rights-holders and AI-generated content.
+The Future of Generative Models 318
+One of the major problems that I can see is misinformation, either in the interest of political
+interest groups, foreign actors, or large corporations. Let’s discuss this threat!
+Misinformation and cybersecurity
+AI presents a dual-edged sword against disinformation. While it enables scalable detection, automation makes it easier to spread sophisticated, personalized propaganda. AI could help or harm
+security depending on whether it is used responsibly. It increases vulnerabilities to misinformation
+along with cyberattacks using generative hacking and social engineering.
+There are significant threats associated with AI techniques like micro-targeting and deepfakes.
+Powerful AI can profile users psychologically to deliver personalized disinformation that facilitates concealed manipulation, escaping broad examination. Big Data and AI could be leveraged to
+exploit psychological vulnerabilities and infiltrate online forums to attack and spread conspiracy
+theories.
+Disinformation has transformed into a multifaceted phenomenon, involving biased information,
+manipulation, propaganda, and intent to influence political behavior. For example, during the
+COVID-19 pandemic, the spread of misinformation and infodemics has been a major challenge.
+AI can influence public opinion and sway elections.
+It can also generate fake audio/video content to damage reputations and sow confusion. State
+and non-state actors are weaponizing these capabilities for propaganda to damage reputations
+and sow confusion. AI can be used by political parties, governments, criminal groups, and even
+the legal system to launch lawsuits and/or extract money.
+This likely will have far-reaching consequences in various domains. A significant portion of internet users may be obtaining the information they need without accessing external websites.
+There is a danger of large corporations being the gatekeepers of information and controlling
+public opinion, effectively being able to restrict certain actions or viewpoints.
+Careful governance and digital literacy are essential to build resilience. Though no single fix exists,
+collective efforts promoting responsible AI development can help democratic societies address
+emerging threats.
+Let’s talk more about regulations!
+
+---
+
+## Sección 169: Chapter 10 319 [Entropy: 0.385]
+
+Regulations and implementation challenges
+Realizing the potential of generative AI in a responsible manner involves addressing a number of
+practical legal, ethical, and regulatory issues:
+• Legal: Copyright laws remain ambiguous regarding AI-generated content. Who owns the
+output – the model creator, training data contributors, or end users? Replicating copyrighted data in training also raises fair use debates that need clarification.
+• Data protection: Collecting, processing, and storing the massive datasets required to train
+advanced models creates data privacy and security risks. Governance models ensuring
+consent, anonymity, and safe access are vital.
+• Oversight and regulations: Calls are mounting for oversight to ensure non-discrimination, accuracy, and accountability from advanced AI systems. However, flexible policies
+balancing innovation and risk are needed rather than burdensome bureaucracy.
+• Ethics: Frameworks guiding development toward beneficial outcomes are indispensable.
+Integrating ethics through design practices focused on transparency, explicability, and
+human oversight helps build trust.
+Overall, proactive collaboration between policymakers, researchers, and civil society is essential
+to settle unresolved issues around rights, ethics, and governance. With pragmatic guardrails in
+place, generative models can fulfill their promise while mitigating harm.
+There is a growing demand for algorithmic transparency. This means that tech companies and
+developers should reveal the source code and inner workings of their systems. However, there is
+resistance from these companies and developers, who argue that disclosing proprietary information would harm their competitive advantage. Open-source models will continue to thrive, and
+local legislation in the EU and other countries will push for transparent use of AI.
+The consequence of AI bias includes potential harm to individuals or groups due to biased decisions made by AI systems. Incorporating ethics training into computer science curricula can
+help reduce biases in AI code. By teaching developers how to build applications that are ethical
+by design, the probability of biases being embedded into the code can be minimized. To stay on
+the right path, organizations need to prioritize transparency, accountability, and guardrails to
+prevent bias in their AI systems. AI bias prevention is a long-term priority for many organizations;
+however, without legislation driving it, it can take time to be introduced. Local legislation in EU
+countries, for example, such as the European Commission’s proposal for harmonized rules on AI
+regulation, will drive more ethical use of language and imagery.
+The Future of Generative Models 320
+A current German law on fake news, which imposes a 24-hour timeframe for platforms to remove
+fake news and hate speech, is impractical for both large and small platforms. Additionally, the
+limited resources of smaller platforms make it unrealistic for them to police all content. Further,
+online platforms should not have the sole authority to determine what is considered truth, as this
+could lead to excessive censorship. More nuanced policies are needed that balance free speech,
+accountability, and feasibility for a diversity of technology platforms to comply. Relying solely on
+private companies to regulate online content raises concerns about a lack of oversight and due
+process. Broader collaboration between government, civil society, academics, and industry can
+develop more effective frameworks to counter misinformation while protecting rights.
+To maximize benefits, companies need to ensure human oversight, diversity, and transparency
+in development. Policymakers may need to implement guardrails preventing misuse while providing workers with support to transition as activities shift. With responsible implementation,
+generative AI could propel growth, creativity, and accessibility in a more prosperous society.
+Addressing potential risks early on and ensuring a just distribution of benefits designed to serve
+public welfare will cultivate a sense of trust among stakeholders, such as:
+• The dynamics of progress: Fine-tuning the pace of transformation is critical to avoid any
+undesired repercussions. Moreover, excessively slow developments could stifle innovation, suggesting that determining an ideal pace through encompassing public discourse
+is crucial.
+• The human-AI symbiosis: Rather than striving for outright automation, more advantageous systems would integrate and complement the creative prowess of humans with the
+productive efficiency of AI. Such a hybrid model will ensure optimal oversight.
+• Promoting access and inclusion: Equitable access to resources, relevant education, and
+myriad opportunities concerning AI is key to negating the amplification of disparities.
+Representativeness and diversity should be prioritized.
+• Preventive measures and risk management: Constant evaluation of freshly emerging
+capabilities via interdisciplinary insights is necessary to evade future dangers. Excessive
+apprehensions, however, should not impede potential progress.
+• Upholding democratic norms: Collaborative discussions, communal efforts, and reaching
+a compromise will inevitably prove more constructive in defining the future course of AI,
+as compared to unilateral decrees imposed by a solitary entity. Public interest must take
+precedence.
+Let’s conclude this chapter!

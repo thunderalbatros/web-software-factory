@@ -1,4 +1,4 @@
-﻿# CANON: SOTA Agent Harness Engineering, Scaffolding & Autonomous Alignment (2026)
+# CANON: SOTA Agent Harness Engineering, Scaffolding & Autonomous Alignment (2026)
 
 > **Alcance:** Este documento cubre la teoría fundamental, arquitectura de sistemas y cacería de repositorios de **Harness Engineering (Ingeniería de Arneses de Agentes)**, scaffolding exterior, evaluación determinista y alineación de equipos multi-agente en 2026.  
 > **Límites de alcance:** NO es fuente de tokens o endpoints de RealtimeHub (ver `KICK_API_REFERENCE.md`), NI de diseño visual CSS/OBS (ver `DESIGN_MASTERY_2026.md`), NI de contratos de base de datos SQLite (ver `CANON_ECC_EVERYTHING_CLAUDE_CODE_AGENT_HARNESS_2026.md`).  
@@ -114,7 +114,7 @@ graph TD
 ```
 
 ### Protocolo de Ejecución Cerrada (Closed-Loop Pipeline):
-1. **Paso 0 — Pre-Flight Invariable:** Se verifica que no existan dependencias invalidadas (`rainbet`, `expo`), que la configuración crítica esté protegida y que los 8 squads tengan sus habilidades íntegras.
+1. **Paso 0 — Pre-Flight Invariable:** Se verifica que no existan dependencias invalidadas (`Casino Platform`, `expo`), que la configuración crítica esté protegida y que los 8 squads tengan sus habilidades íntegras.
 2. **Paso 1 — Delimitación de Contexto (OpenRig Scoping):** El agente se ancla a un Rig específico (`openrig.json`), reduciendo el ruido de contexto a menos de 4,000 tokens iniciales.
 3. **Paso 2 — Ejecución Atómica:** Cambios puntuales (≤300 líneas), testeados primero (`test-driven-development`).
 4. **Paso 3 — Auditoría Simbólica AST:** `tools/intelligence/ast_guard.mjs` valida firmas, llamadas a métodos y ausencia de `console.log` sensibles en código de producción.

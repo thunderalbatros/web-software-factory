@@ -8,24 +8,20 @@ secciones_totales: 510
 fecha_ingesta: "2026-10-06T02:44:23.360Z"
 ---
 
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
+
 # 📖 Actionable Gamification: Beyond Points, Badges, and Leaderboards
 **Autor:** Yu-kai Chou | **Dominio:** Framework Octalysis, Motivación Intrínseca y Micro-Incentivos | **Páginas originales:** 501
 
-> **Nota de Arquitectura Centinela:** Este documento contiene el texto íntegro estructurado por secciones y capítulos para consulta profunda del equipo de agentes y búsqueda híbrida (BM25 + semántica).
+> **Nota de Arquitectura Web Software Factory:** Este documento contiene el texto íntegro estructurado por secciones y capítulos para consulta profunda del equipo de agentes y búsqueda híbrida (BM25 + semántica).
 
 ---
 
 ## [Sección 1] Introducción y Fundamentos
-
--- 1 of 501 --
-
 Actionable Gamification
 Beyond Points, Badges, and Leaderboards
 Yu-kai Chou
 © 2014 - 2016 Yu-kai Chou
-
--- 2 of 501 --
-
 Tweet This Book!
 Please help Yu-kai Chou by spreading the word about this book on
 Twitter!
@@ -36,9 +32,6 @@ The suggested hashtag for this book is #OctalysisBook.
 Find out what other people are saying about the book by clicking
 on this link to search for this hashtag on Twitter:
 https://twitter.com/search?q=#OctalysisBook
-
--- 3 of 501 --
-
 This book is dedicated to those who passionately believe in
 something and have the courage to pursue it in the face of
 circumstantial obstacles. We are surrounded by social and
@@ -51,9 +44,6 @@ You inspire the world and move humanity forward. I salute you for
 doing what I continuously strive for but may never fully reach. I
 hope this book will help you on your journey towards making a
 difference.
-
--- 4 of 501 --
-
 Contents
 Introduction . . . . . . . . . . . . . . . . . . . . . . . . . . 1
 
@@ -89,9 +79,6 @@ Tendency) Drives . . . . . . . . . . . . . . . . . . 28
 White Hat vs Black Hat Gamification . . . . . . . . . . 31
 How to Apply Level 1 Octalysis to Actual Systems . . . 34
 Quick Intro to Level II Octalysis and Beyond . . . . . . 39
-
--- 5 of 501 --
-
 CONTENTS
 
 ---
@@ -139,9 +126,6 @@ Core Drive 2: The Bigger Picture . . . . . . . . . . . . . 120
 ## [Sección 8] Chapter 7: The Third Core Drive - Empowerment of
 
 Creativity & Feedback . . . . . . . . . . . . . . . . . . 123
-
--- 6 of 501 --
-
 CONTENTS
 The Computer Game that Became a National Sport . . . 124
 Gamification Fatigue? . . . . . . . . . . . . . . . . . . . 128
@@ -187,9 +171,6 @@ Core Drive 5: The Bigger Picture . . . . . . . . . . . . . 228
 
 The Lure of being Exclusively Pointless . . . . . . . . . 231
 The Value of Rare Pixels . . . . . . . . . . . . . . . . . 234
-
--- 7 of 501 --
-
 CONTENTS
 The Leftovers aren’t all that’s Left Over . . . . . . . . . 238
 Persuasively Inconvenient . . . . . . . . . . . . . . . . 239
@@ -231,9 +212,6 @@ Ultimate Loss vs Executable Loss . . . . . . . . . . . . . 321
 A Caveat: Avoiding the Avoidance . . . . . . . . . . . . 324
 Game Techniques in Loss and Avoidance . . . . . . . . 325
 Core Drive 8: The Big Picture . . . . . . . . . . . . . . . 336
-
--- 8 of 501 --
-
 CONTENTS
 
 ---
@@ -279,9 +257,6 @@ Nicole Lazzaro’s 4 Keys To Fun . . . . . . . . . . . . . . 413
 Mihaly Csikszentmihalyi’s Flow Theory . . . . . . . . . 416
 Fogg Behavior Model . . . . . . . . . . . . . . . . . . . 421
 Jane McGonigal’s Theories . . . . . . . . . . . . . . . . 427
-
--- 9 of 501 --
-
 CONTENTS
 The World is Your Playground . . . . . . . . . . . . . . 429
 
@@ -314,9 +289,6 @@ Summary of Level 1 Octalysis in Action . . . . . . . . . 480
 Wall of Gratitude . . . . . . . . . . . . . . . . . . . . . . . 489
 Those who directly contributed to the book . . . . . . . 489
 Those who impacted who I am today . . . . . . . . . . 490
-
--- 10 of 501 --
-
 Introduction
 This book is not about why gamification is amazing. It is not about
 how gamification is the future and how inspiring life could be
@@ -346,8 +318,6 @@ of my work and viewer of my videos, you might already have a firm
 grasp of the 8 Core Drives within the Octalysis Framework. In that
 case, feel free to skip to a section that you want to home in on.
 If you are extremely busy and aren’t sure if you want to commit to
--- 11 of 501 --
-
 Introduction 2
 this book, I recommend starting off with Chapters 3, 5, 10, 14, and
 15 to decide whether you would like to read the entire book.
@@ -373,9 +343,6 @@ I’m excited for you to dive into the contents of this book so that we
 can start to build a world that harnesses the power of play together.
 Let’s begin.
 Yu-kai Chou (Written February 14th 2014)
-
--- 12 of 501 --
-
 ---
 
 ## [Sección 20] Chapter 1: When the
@@ -402,8 +369,6 @@ passionate and excited about my work every single day since.
 I am sharing this with you not to sound conceited (after all, you
 are already reading my book), but because I truly believe if anyone
 was to take what I have learned during this epiphany to heart, they
--- 13 of 501 --
-
 ---
 
 ## [Sección 21] Chapter 1: When the Surreal Blends into our World 4
@@ -438,9 +403,6 @@ I decided to quit as well since I didn’t want to play alone. It was
 during this transition that a sudden sense of ennui (or weariness)
 caught me by surprise.
 I felt depressingly empty. I thought to myself, “I’ve spent thousands
-
--- 14 of 501 --
-
 ---
 
 ## [Sección 22] Chapter 1: When the Surreal Blends into our World 5
@@ -473,9 +435,6 @@ grow in.
 This realization started my journey of personal growth and entrepreneurial pursuits. My life became my game and I was determined to become a high-level player in it. Despite being young, I
 felt my years as a competitive gamer had taught me how to master
 this new game of life.
-
--- 15 of 501 --
-
 ---
 
 ## [Sección 23] Chapter 1: When the Surreal Blends into our World 6
@@ -507,9 +466,6 @@ He then boiled it down to five conclusions that led to hobbies being
 more preferable to work.
 ¹Charles Coonradt. The Game of Work. Paperback. Gibbs Smith. Layton, Utah.
 07/01/2012.
-
--- 16 of 501 --
-
 ---
 
 ## [Sección 24] Chapter 1: When the Surreal Blends into our World 7
@@ -543,9 +499,6 @@ the gaming industry shifted from making simple games that only
 target young boys, to social and mobile games like Farmville and
 Angry Birds that also appeal to middle-aged executives as well as
 senior retirees alike.
-
--- 17 of 501 --
-
 ---
 
 ## [Sección 25] Chapter 1: When the Surreal Blends into our World 8
@@ -577,9 +530,6 @@ they necessarily want to perform the associated tasks. However,
 at its core, Human-Focused Design emphasizes that people aren’t
 rudimentary cogs in a system.
 We have feelings, ambitions, insecurities, and reasons for whether
-
--- 18 of 501 --
-
 ---
 
 ## [Sección 26] Chapter 1: When the Surreal Blends into our World 9
@@ -611,9 +561,6 @@ teach us on creating compelling, playful experiences.
 Through gamification, we can look through the lens of games to understand how to combine different game mechanics and techniques
 ²Wikipedia Entry “User-Centered Design”: http://en.wikipedia.org/wiki/User-centered_design
 ³Human Centered Design Tookit by IDEO. URL: http://www.ideo.com/work/humancentered-design-toolkit/
-
--- 19 of 501 --
-
 ---
 
 ## [Sección 27] Chapter 1: When the Surreal Blends into our World 10
@@ -647,9 +594,6 @@ beat their personal fitness goals every day of the year.
 • With Beat the GMAT, students increased the time they spent
 on the website improving their test scores by 370% through a
 gamified platform.
-
--- 20 of 501 --
-
 ---
 
 ## [Sección 28] Chapter 1: When the Surreal Blends into our World 11
@@ -684,9 +628,6 @@ case studies mentioned above, instead of failing miserably like the
 As stated in the Introduction, this book is not about explaining
 why gamification is valuable and why you should use it. I won’t
 be devoting much time in explaining its validity because there are
-
--- 21 of 501 --
-
 ---
 
 ## [Sección 29] Chapter 1: When the Surreal Blends into our World 12
@@ -704,9 +645,6 @@ my life’s work to studying it so many years later. The value games
 can provide us far exceeds simply killing time. Now is the time to
 harness that value and make the most out of our time.
 The journey begins here.
-
--- 22 of 501 --
-
 ---
 
 ## [Sección 30] Chapter 2: The PBL Fallacy
@@ -728,8 +666,6 @@ to be considered as one.
 And so these “experts” saw the growth in “social media” platforms
 and services as heralding the dawn of a new era in technology, busi-
 ⁴Google Trends search, “social media”, accessed 12/15/2014.
--- 23 of 501 --
-
 ---
 
 ## [Sección 31] Chapter 2: The PBL Fallacy 14
@@ -765,9 +701,6 @@ campaign, not in the bells and whistles you used. It was the informal
 and formal dialogue you had with your community that ultimately
 taps into the platform’s unique possibilities.
 Having knowledge of good social media principles does not necessarily mean someone can execute them correctly. Take pop-
-
--- 24 of 501 --
-
 ---
 
 ## [Sección 32] Chapter 2: The PBL Fallacy 15
@@ -802,9 +735,6 @@ But when it comes to playing games, these same kids have what
 most people would consider amazing work ethics. Many of them
 wake up secretly behind their parents’ back at 3AM in the morning,
 just to play a game and level up their fictional characters.
-
--- 25 of 501 --
-
 ---
 
 ## [Sección 33] Chapter 2: The PBL Fallacy 16
@@ -839,9 +769,6 @@ fun and engaging, and you actually want to wake up each morning
 to tackle the challenges ahead. Grunt work takes on a new meaning
 when understood as an affect of powerful motivational factors. This
 is the promise and vision that good gamification design can create.
-
--- 26 of 501 --
-
 ---
 
 ## [Sección 34] Chapter 2: The PBL Fallacy 17
@@ -876,9 +803,6 @@ experience. This is most often manifested in the form of what we
 call the PBLs: Points, Badges, and Leaderboards. Many gamification
 professionals seem to believe that if you put points on something
 boring, add some badges, and provide a competitive leaderboard,
-
--- 27 of 501 --
-
 ---
 
 ## [Sección 35] Chapter 2: The PBL Fallacy 18
@@ -916,9 +840,6 @@ motivation, where you are engaged because of a goal or reward, and
 intrinsic motivation, where the activity itself is fun and exciting,
 with or without a reward. We’ll dive deeper into these distinctions
 in Chapter 13 on Left Brain vs Right Brain Motivations.
-
--- 28 of 501 --
-
 ---
 
 ## [Sección 36] Chapter 2: The PBL Fallacy 19
@@ -954,9 +875,6 @@ It would be foolish for a modern army commander to say, “Hey!
 The Greeks sent a big wooden horse to the Trojans and won the
 war. Lets send our enemies a big wooden horse too!” In this case, he
 clearly doesn’t understand the true design behind the Trojan Horse,
-
--- 29 of 501 --
-
 ---
 
 ## [Sección 37] Chapter 2: The PBL Fallacy 20
@@ -990,9 +908,6 @@ Fortunately, there are enough good gamification examples that
 continue to show how thoughtful design can improve core business
 metrics and inspire new ways of thinking and execution. Besides the
 90+ Gamification Case Studies listed on my site, as mentioned in the
-
--- 30 of 501 --
-
 ---
 
 ## [Sección 38] Chapter 2: The PBL Fallacy 21
@@ -1027,9 +942,6 @@ is worth remembering that every single game in the market has
 what we call game mechanics and game elements. However, most
 are still boring and are financial losers. Only a few well-designed
 games become engaging and even addictive. Are you designing
-
--- 31 of 501 --
-
 ---
 
 ## [Sección 39] Chapter 2: The PBL Fallacy 22
@@ -1057,9 +969,6 @@ called Octalysis to the world. The Octalysis Framework embodies
 my life’s work, and the majority of this book will be about how
 to use Octalysis to design experiences that are fun, engaging, and
 rewarding.
-
--- 32 of 501 --
-
 ---
 
 ## [Sección 40] Chapter 3: The Octalysis
@@ -1074,8 +983,6 @@ engaging. I saw that almost every successful game appeals to certain
 Core Drives within us and motivates us towards a variety of
 decisions and activities. I also noticed that different types of game
 techniques push us forward differently; some through inspiration
--- 33 of 501 --
-
 ---
 
 ## [Sección 41] Chapter 3: The Octalysis Framework 24
@@ -1096,9 +1003,6 @@ unappreciated for most of the creator’s life, let alone a design
 framework I simply put up on my personal blog. To my delight,
 within a year the Octalysis Framework was organically translated
 into over fourteen different languages - I had to stumble upon most
-
--- 34 of 501 --
-
 ---
 
 ## [Sección 42] Chapter 3: The Octalysis Framework 25
@@ -1129,9 +1033,6 @@ game.
 Core Drive 2: Development & Accomplishment
 Development & Accomplishment is our internal drive for making
 progress, developing skills, achieving mastery, and eventually overcoming challenges. The word “challenge” here is very important,
-
--- 35 of 501 --
-
 ---
 
 ## [Sección 43] Chapter 3: The Octalysis Framework 26
@@ -1164,9 +1065,6 @@ of time customizing their profile or avatar, they automatically feel
 more ownership towards it also. Finally, this drive is also expressed
 when the user feels ownership over a process, project, and/or the
 organization.
-
--- 36 of 501 --
-
 ---
 
 ## [Sección 44] Chapter 3: The Octalysis Framework 27
@@ -1199,9 +1097,6 @@ because you don’t know what is going to happen next. When something does not f
 brain kicks into high gear and pays attention to the unexpected. This
 is obviously the primary Core Drive behind gambling addictions,
 but it is also present in every sweepstake or lottery program that
-
--- 37 of 501 --
-
 ---
 
 ## [Sección 45] Chapter 3: The Octalysis Framework 28
@@ -1234,9 +1129,6 @@ urgency, obsession, and even addiction, but make the user feel
 bad. Some are more short-term extrinsically focused, while some
 ⁵Skinner, B. F. (1983). A Matter of Consequences. p116, 164. Alfred A. Knopf, Inc. New
 York, NY.
-
--- 38 of 501 --
-
 ---
 
 ## [Sección 46] Chapter 3: The Octalysis Framework 29
@@ -1257,9 +1149,6 @@ now shaking their heads) that the Left Brain and Right Brain
 references are not literal in terms of actual brain geography but
 merely a symbolic differentiation between two distinct functions
 of the brain.
-
--- 39 of 501 --
-
 ---
 
 ## [Sección 47] Chapter 3: The Octalysis Framework 30
@@ -1282,9 +1171,6 @@ It is much better for companies to design experiences that motivate
 the Right Brain Core Drives, making something in of itself fun
 and rewarding so users can continuously enjoy and engage in the
 activity. Motivation is often better when it sticks.
-
--- 40 of 501 --
-
 ---
 
 ## [Sección 48] Chapter 3: The Octalysis Framework 31
@@ -1302,9 +1188,6 @@ makes you feel successful through skill mastery, and gives you a
 higher sense of meaning, it makes you feel very good and powerful.
 On the other hand, if you are always doing something because
 you don’t know what will happen next, you are constantly in fear
-
--- 41 of 501 --
-
 ---
 
 ## [Sección 49] Chapter 3: The Octalysis Framework 32
@@ -1342,9 +1225,6 @@ Based on the Octalysis Framework, a good Gamification practitioner should consid
 development”. Posted 08/06/2012
 ⁷Vikas Shukla. Valuewalk.com. “Zynga Inc (ZNGA) Unveils ‘Riches of Olympus’ Slots
 Game”. Posted 02/07/2014.
-
--- 42 of 501 --
-
 ---
 
 ## [Sección 50] Chapter 3: The Octalysis Framework 33
@@ -1384,9 +1264,6 @@ also has limitations without the 8 Core Drives accompanying it.
 Even pleasurable activities such as sex, when lacking curiosity,
 relatedness, creativity, and scarcity, can potentially become rather
 unappealing.
-
--- 43 of 501 --
-
 ---
 
 ## [Sección 52] Chapter 3: The Octalysis Framework 34
@@ -1407,9 +1284,6 @@ identify all the game mechanics and techniques that are used to
 activate them.
 A few Gamification examples with Octalysis
 Here’s an Octalysis done for a few games and online products:
-
--- 44 of 501 --
-
 ---
 
 ## [Sección 53] Chapter 3: The Octalysis Framework 35
@@ -1430,9 +1304,6 @@ basis.
 Among the Left Brain Core Drives, we see that people are extrinsically motivated on Facebook, not so much to feel accomplished
 or gain exclusivity, but because of Core Drive 4: Ownership &
 Possession - to collect, customize, and improve what is theirs.
-
--- 45 of 501 --
-
 ---
 
 ## [Sección 54] Chapter 3: The Octalysis Framework 36
@@ -1448,24 +1319,15 @@ balanced, but a little skewed towards the Right Brain Core Drives.
 Previously, I crafted each Octalysis shape by hand on Keynote.
 Fortunately, a fan of Octalysis, Ron Bentata from Israel, graciously
 offered to build an easier Octalysis Tool for everyone.
-
--- 46 of 501 --
-
 ---
 
 ## [Sección 55] Chapter 3: The Octalysis Framework 37
 
 (Accessed from www.yukaichou.com/octalysis-tool)
 With the Octalysis Tool, let’s see a few more examples with Octalysis.
-
--- 47 of 501 --
-
 ---
 
 ## [Sección 56] Chapter 3: The Octalysis Framework 38
-
--- 48 of 501 --
-
 ---
 
 ## [Sección 57] Chapter 3: The Octalysis Framework 39
@@ -1500,9 +1362,6 @@ adjusting.
 As you become more and more advanced in Octalysis beyond the
 contents of this book, you will start to learn the higher levels
 of Octalysis design. (Up to five levels. There are only a handful
-
--- 49 of 501 --
-
 ---
 
 ## [Sección 58] Chapter 3: The Octalysis Framework 40
@@ -1523,9 +1382,6 @@ because the reason you are using a product on Day 1 is often very
 different from that of Day 100. Since everything you do is because
 of one of these 8 Core Drives (besides the 9th hidden Core Drive -
 Sensation), if at any phase none of the 8 Core Drives are present,
-
--- 50 of 501 --
-
 ---
 
 ## [Sección 59] Chapter 3: The Octalysis Framework 41
@@ -1546,9 +1402,6 @@ as trying to go after the goal they could not reach yet (Core Drive
 6: Scarcity & Impatience). In the Endgame, they might continue
 to be engaged because they don’t want to lose their status and
 achievements (Core Drive 8: Loss & Avoidance).
-
--- 51 of 501 --
-
 ---
 
 ## [Sección 60] Chapter 3: The Octalysis Framework 42
@@ -1568,9 +1421,6 @@ In the above diagram, I applied Richard Bartle’s Four Player Types
 (Achievers, Socializers, Explorers, and Killers) to Level III Octalysis
 primarily because it is the most recognized model in game design.
 However, Level III Octalysis does not need to use Bartle’s Player
-
--- 52 of 501 --
-
 ---
 
 ## [Sección 61] Chapter 3: The Octalysis Framework 43
@@ -1592,9 +1442,6 @@ III Octalysis, you can almost feel how motivation moves within
 ⁸Richard Bartle, “Hearts, Clubs, Diamonds, Spades: Players Who suit MUDs”. 04/1996.
 ⁹Gabe Zichermann. Slideshare: “A game designer’s view of gamification” by Richard
 Bartle. Posted 06/24/2012.
-
--- 53 of 501 --
-
 ---
 
 ## [Sección 62] Chapter 3: The Octalysis Framework 44
@@ -1628,9 +1475,6 @@ your time. But if the above excites you and you choose to go on,
 I promise you there will be an exhilarating journey of discovery,
 empowerment and awakening ahead. I’m even feeling excited just
 thinking about it.
-
--- 54 of 501 --
-
 ---
 
 ## [Sección 63] Chapter 3: The Octalysis Framework 45
@@ -1645,9 +1489,6 @@ Drives have motivated you to read this book over other activities?
 Share what you come up with on Twitter or your preferred
 social network with the hashtag #OctalysisBook and see what
 ideas other people have.
-
--- 55 of 501 --
-
 ---
 
 ## [Sección 64] Chapter 4: Putting
@@ -1678,8 +1519,6 @@ fun, motivating, or immersive as something they perform on a
 professional level.
 ¹⁰Wikipedia Article: “Gamification”, accessed 12/13/2014. URL:
 http://en.wikipedia.org/wiki/Gamification
--- 56 of 501 --
-
 ---
 
 ## [Sección 65] Chapter 4: Putting Gamification in its Place 47
@@ -1712,9 +1551,6 @@ flawed and/or inaccurate¹¹. Hyperbolically speaking, his blog post
 on the subject was almost longer than the book itself.
 ¹¹Deterding, Sebastion. “A Quick Buck by Copy and Paste”, Gamification Research
 Network, Posted 09/15/2011.
-
--- 57 of 501 --
-
 ---
 
 ## [Sección 66] Chapter 4: Putting Gamification in its Place 48
@@ -1748,9 +1584,6 @@ the world for the better, instead of debating over classifications of
 ¹²Zichermann, Gabe. “A Teachable Moment” by Gabe Zichermann, Gamification.co,
 Posted 09/20/2011.
 ¹³BusinessDictionary entry: “advergames”. Accessed 12/13/2014.
-
--- 58 of 501 --
-
 ---
 
 ## [Sección 67] Chapter 4: Putting Gamification in its Place 49
@@ -1786,9 +1619,6 @@ serious gamers out there would heavily disagree with. Think how
 many sports athletes would be offended if they played basketball
 for a charitable cause, and people called that the “Serious Sports”
 industry.
-
--- 59 of 501 --
-
 ---
 
 ## [Sección 68] Chapter 4: Putting Gamification in its Place 50
@@ -1818,9 +1648,6 @@ colleagues or superiors.
 ¹⁴Mcgonigal, Jane. Slideshare: “We don’t need no stinkin’ badges: How to re-invent
 reality without gamification”, posted 2/17/2011.
 ¹⁵Deterding, Sebastian. “The Lens of Intrinsic Skill Atoms: A Method for Gameful Design”, Game Design, College of Arts, Media, and Design, Northeastern University, 06/27/2014.
-
--- 60 of 501 --
-
 ---
 
 ## [Sección 69] Chapter 4: Putting Gamification in its Place 51
@@ -1856,9 +1683,6 @@ Again, if there is a way to utilize things we have learned from games
 to make the world better, why work so hard to limit yourself in
 ¹⁶TEDx Talks, Chou. “Gamification to Change the World” by Yu-kai Chou. Posted
 2/26/2014. URL: http://www.yukaichou.com/tedx
-
--- 61 of 501 --
-
 ---
 
 ## [Sección 70] Chapter 4: Putting Gamification in its Place 52
@@ -1892,9 +1716,6 @@ marketing.
 McDonald’s Monopoly Game is also a good example of explicit
 ¹⁷Pro Basketball Talk, NBC Sports, “New online game: Dikembe Mutombo’s 4½ weeks
 to save the world”, posted 11/28/2014.
-
--- 62 of 501 --
-
 ---
 
 ## [Sección 71] Chapter 4: Putting Gamification in its Place 53
@@ -1929,9 +1750,6 @@ posted 10/7/2014.
 ¹⁹FoldIt Website: http://fold.it
 ²⁰Undiscovered Territory by Autodesk: http://area.autodesk.com/undiscoveredterritory
 ²¹“Repair the Rockaways”, Mother New York.
-
--- 63 of 501 --
-
 ---
 
 ## [Sección 72] Chapter 4: Putting Gamification in its Place 54
@@ -1967,9 +1785,6 @@ posted 09/30/2013.
 12/15/2014.
 ²⁶2CO Blog. “E-Commerce & Gamification: Increase Your Sales Like These 3 Pros”,
 posted 6/13/2014.
-
--- 64 of 501 --
-
 ---
 
 ## [Sección 73] Chapter 4: Putting Gamification in its Place 55
@@ -1997,9 +1812,6 @@ Now that we have covered the different implementation methods
 for gamification, we will explore the various applications of gamification in several industries.
 In general, the majority of my clients represent four fields that
 I consistently see innovating time and time again, indicating a
-
--- 65 of 501 --
-
 ---
 
 ## [Sección 74] Chapter 4: Putting Gamification in its Place 56
@@ -2033,9 +1845,6 @@ is great! Users can do this; users can do that; and they can even
 do these things!” And my response to them has been, “Yes, you
 are telling me all the things your users can do. But you have not
 explained to me why the user would do it.”
-
--- 66 of 501 --
-
 ---
 
 ## [Sección 75] Chapter 4: Putting Gamification in its Place 57
@@ -2070,9 +1879,6 @@ lessons you can learn from games for your own products. The
 key here is to make a product so exciting that customers become
 obsessed with using your product and are compelled to share how
 exciting their experiences were to their friends.
-
--- 67 of 501 --
-
 ---
 
 ## [Sección 76] Chapter 4: Putting Gamification in its Place 58
@@ -2109,9 +1915,6 @@ Of course, you don’t need a Gallup study to know how disengaged
 NY.2005.
 ²⁹Great Place to Work Institute. White Paper: “How Zappos Creates Happy Customers
 and Employees”, 2011.
-
--- 68 of 501 --
-
 ---
 
 ## [Sección 77] Chapter 4: Putting Gamification in its Place 59
@@ -2144,9 +1947,6 @@ motivations systems as early as possible to avoid the devastation of
 having a surplus in labor but a shortage in talent.
 ³⁰SpliceToday. “Five Reasons Office Space is a Cult Classic”, 08/01/2013.
 ³¹Aon Hewitt. “2013 Trends in Global Employee Engagement”. 2013.
-
--- 69 of 501 --
-
 ---
 
 ## [Sección 78] Chapter 4: Putting Gamification in its Place 60
@@ -2180,9 +1980,6 @@ with potential customers, create unique value, and establish trust
 that leads to future engagement. Unfortunately, social media platforms are just the delivery channels for engaging content; in and of
 themselves, they do not motivate or successfully engage with users.
 This is where Gamification comes in. Marketing Gamification
-
--- 70 of 501 --
-
 ---
 
 ## [Sección 79] Chapter 4: Putting Gamification in its Place 61
@@ -2215,9 +2012,6 @@ manage your Feedback Mechanics and Triggers.
 Games have historically been able to track every single action
 that a player makes. A game would automatically know that this
 ³²Mckinsey Quarterly. “The Internet of Things”, 03/2010 edition.
-
--- 71 of 501 --
-
 ---
 
 ## [Sección 80] Chapter 4: Putting Gamification in its Place 62
@@ -2255,9 +2049,6 @@ concepts, Core Drives, Experience Phases, natures of motivation,
 and implementations of design. Don’t feel intimidated. For the next
 ³³Business2Community. “Deliver an Excellent Customer Experience Using Big Data”.
 posted 11/10/2014.
-
--- 72 of 501 --
-
 ---
 
 ## [Sección 81] Chapter 4: Putting Gamification in its Place 63
@@ -2275,9 +2066,6 @@ and cons for using that type of implementation?
 Share what you come up with on Twitter or your preferred
 social network with the hashtag #OctalysisBook and see what
 ideas other people have.
-
--- 73 of 501 --
-
 ---
 
 ## [Sección 82] Chapter 5: The First Core
@@ -2290,8 +2078,6 @@ and discover the power and enchantment within.
 If there is only one thing you remember after reading this book,
 it should be to focus on motivation by thinking through the 8
 Core Drives instead of focusing on features and functionalities. Of
--- 74 of 501 --
-
 ---
 
 ## [Sección 83] Chapter 5: The First Core Drive - Epic Meaning & Calling 65
@@ -2321,9 +2107,6 @@ profit for the schools?
 beyond the usual reward and punishment system?
 Interestingly, these questions can all be answered by the powerful
 White Hat Core Drive of Epic Meaning & Calling. In this chapter,
-
--- 75 of 501 --
-
 ---
 
 ## [Sección 84] Chapter 5: The First Core Drive - Epic Meaning & Calling 66
@@ -2357,9 +2140,6 @@ of view, and my post was deleted.
 Just like that, my full day’s worth of work disappeared within ten
 minutes.
 ³⁴Wikipedia Entry: “pwn”: http://en.wikipedia.org/wiki/Pwn. Accessed 12/18/2014.
-
--- 76 of 501 --
-
 ---
 
 ## [Sección 85] Chapter 5: The First Core Drive - Epic Meaning & Calling 67
@@ -2395,9 +2175,6 @@ without getting any “real” benefits! When you come home from
 work, there are lots of things you can do - practice your daily bosscomplaining ritual, watch TV, Skype with your significant other, or
 even play games. People choose to police Wikipedia above all those
 other activities because they feel like they are protecting humanity’s
-
--- 77 of 501 --
-
 ---
 
 ## [Sección 86] Chapter 5: The First Core Drive - Epic Meaning & Calling 68
@@ -2434,9 +2211,6 @@ others will want to believe in it and get on the journey with you,
 ³⁵Don Tapscott and Anthony D. Williams. Wikinomics. P75. Portfolio Publishing.
 September 28, 2010.
 ³⁶Wikimedia Blog. “Who are Wikipedias Donors”. 02/05/2012.
-
--- 78 of 501 --
-
 ---
 
 ## [Sección 87] Chapter 5: The First Core Drive - Epic Meaning & Calling 69
@@ -2468,9 +2242,6 @@ but only a fraction of the cost?
 Why are people so crazy about Apple products?
 What we are seeing here is that these friends of mine (and I suspect
 yours too) have first self-identified as an “Apple Person.” Therefore,
-
--- 79 of 501 --
-
 ---
 
 ## [Sección 88] Chapter 5: The First Core Drive - Epic Meaning & Calling 70
@@ -2480,15 +2251,15 @@ iPhones and Macbooks, as well as act like “Apple Snobs” by walking
 around and making comments such as, “Oh, I never have that
 problem because I use a Mac.” I myself have also been guilty of
 this.
-When confronted with the topic of many Android phones having
+When confronted with the topic of many Web Platform phones having
 better specs and lower prices than the iPhone, my response has usually been, “Well, I don’t know about the specs, but I do know that,
-when I’m using an Android phone, I feel frustrated; but when I’m
+when I’m using an Web Platform phone, I feel frustrated; but when I’m
 using an iPhone, I feel happy. That’s probably worth something.”
 (By the way, in my opinion, it is often unfair to compare the market
-share of iPhones to Android Phones as a success measurement,
-since the iPhone is sold by one company, while Android Phones
+share of iPhones to Web Platform Phones as a success measurement,
+since the iPhone is sold by one company, while Web Platform Phones
 are sold by over a dozen companies throughout the world. When
-people freak out about “Oh look! There are more Android users than
+people freak out about “Oh look! There are more Web Platform users than
 iPhone users now!”, that’s basically saying that all these non-Apple
 smartphone companies combined have surpassed Apple. Big deal.)
 So the multi-billion dollar question is: So, how did Apple do this?
@@ -2504,9 +2275,6 @@ This is a build-up of the popular novel “Nineteen Eighty-Four”
 by George Orwell, published in 1948 about a futuristic dystopian
 ³⁷Maney, Kevin. “Apple’s ‘1984’ Super Bowl Commercial Still Stands as Watershed
 Event”. USA Today. January 28, 2004.
-
--- 80 of 501 --
-
 ---
 
 ## [Sección 89] Chapter 5: The First Core Drive - Epic Meaning & Calling 71
@@ -2541,9 +2309,6 @@ Afterwards, Apple’s internal team calculated the amount of free
 ³⁸Orwell, George. Nineteen Eighty-Four. Secker & Warburg. 1949.
 ³⁹Youtube, “Apple - 1984” URL: http://www.yukaichou.com/1984
 ⁴⁰Friedman, Ted. Electric Dreams: Computers in American Culture, 2005.
-
--- 81 of 501 --
-
 ---
 
 ## [Sección 90] Chapter 5: The First Core Drive - Epic Meaning & Calling 72
@@ -2578,9 +2343,6 @@ While some see them as the crazy ones, we see genius. Because the
 people who are crazy enough to think they can change the world,
 ⁴¹Hormby, Tom. Low End Mac. “Think Different: The Ad Campaign that Restored
 Apple’s Reputation”. 8/10/2013.
-
--- 82 of 501 --
-
 ---
 
 ## [Sección 91] Chapter 5: The First Core Drive - Epic Meaning & Calling 73
@@ -2614,9 +2376,6 @@ your pocket.
 See the power of Epic Meaning & Calling? When every other company is selling how amazing their computers are, Apple sells a vision worth believing in. Interestingly, when Apple was developing
 ⁴²Siltanen, Rob. Forbes. “The Real Story Behind Apple’s ‘Think Different’ Campaign”.
 12/14/2011.
-
--- 83 of 501 --
-
 ---
 
 ## [Sección 92] Chapter 5: The First Core Drive - Epic Meaning & Calling 74
@@ -2650,9 +2409,6 @@ side of that image, there is a huge snake monster, consisting of a
 street with many cars stuck on it. This snake monster’s name was
 Traffic. On the right side of the image, there were cute little Waze
 ⁴³Waze Website: waze.com
-
--- 84 of 501 --
-
 ---
 
 ## [Sección 93] Chapter 5: The First Core Drive - Epic Meaning & Calling 75
@@ -2688,9 +2444,6 @@ and higher vision. And when you see a crack in that higher vision
 you believe in, you become fearful that others will see that crack
 and lose faith in the vision. As a result, you take it upon yourself to
 fix it.
-
--- 85 of 501 --
-
 ---
 
 ## [Sección 94] Chapter 5: The First Core Drive - Epic Meaning & Calling 76
@@ -2710,9 +2463,6 @@ Some people mistake Octalysis and Gamification as technology
 solutions that are expensive to implement. In reality, they are
 ⁴⁴In Norse mythology and the Comic Book Marvel Universe, Mjolnir is the divine
 thunder hammer of Thor.
-
--- 86 of 501 --
-
 ---
 
 ## [Sección 95] Chapter 5: The First Core Drive - Epic Meaning & Calling 77
@@ -2750,9 +2500,6 @@ Some sources translate the character “孝” to mean “Filial Piety” –
 “a virtue of respect for one’s parents and ancestors.” Yet, having
 grown up with this term I feel it goes a long way beyond the
 word “respect.” When I was little and just started to comprehend
-
--- 87 of 501 --
-
 ---
 
 ## [Sección 96] Chapter 5: The First Core Drive - Epic Meaning & Calling 78
@@ -2786,9 +2533,6 @@ motivation elicited through Core Drive 1 - it must feel authentic.
 In Traditional Ancient Chinese Culture, when one’s parents pass
 away, they need to dress in mourning attire, abstain from all
 ⁴⁵Jujing, Guo. The Twenty-four Paragons of Filial Piety. Yuan Dynasty (1260–1368).
-
--- 88 of 501 --
-
 ---
 
 ## [Sección 97] Chapter 5: The First Core Drive - Epic Meaning & Calling 79
@@ -2825,9 +2569,6 @@ faith, my parents have never made that accusation towards me,
 because it would be one of the greatest insults a parent could give
 a child. It is that serious and tangible when it comes to this type of
 motivation.
-
--- 89 of 501 --
-
 ---
 
 ## [Sección 98] Chapter 5: The First Core Drive - Epic Meaning & Calling 80
@@ -2861,9 +2602,6 @@ about why they should play the game. Many of them are related to
 saving the world, a princess, solving a case, or even just helping a
 dragon or crocodile take a bath. So why don’t we use narrative to
 give people context in other things?
-
--- 90 of 501 --
-
 ---
 
 ## [Sección 99] Chapter 5: The First Core Drive - Epic Meaning & Calling 81
@@ -2895,9 +2633,6 @@ site. The funding comes from the ads and the number of page views
 ⁴⁶Zamzee Blog. “New Research Shows Zamzee Increases Physical Activity by Almost
 60%”. 09/06/2012.
 ⁴⁷Groden, Claire. Times. “TOMS Hits 10 Million Mark on Donated Shoes”. 06/26/2013.
-
--- 91 of 501 --
-
 ---
 
 ## [Sección 100] Chapter 5: The First Core Drive - Epic Meaning & Calling 82
@@ -2925,9 +2660,6 @@ its pinnacle, with both sides aggressively, sometimes violently,
 insulting each other. There are even T-Shirts printed with the text,
 “My 2 favorite teams are UCLA, and whoever is playing USC.”
 ⁴⁸Burbano, Jaime. Gamificators Blog. “Gamification for a Better World”. 10/27/2013.
-
--- 92 of 501 --
-
 ---
 
 ## [Sección 101] Chapter 5: The First Core Drive - Epic Meaning & Calling 83
@@ -2944,9 +2676,6 @@ spirit” where students bond together and commit Desired Actions
 in frenzies. Tickets to games against USC sell out quickly, with
 everyone gearing up with UCLA merchandise and war paint. More
 importantly, students feel a stronger tie towards their Alma Mater,
-
--- 93 of 501 --
-
 ---
 
 ## [Sección 102] Chapter 5: The First Core Drive - Epic Meaning & Calling 84
@@ -2979,9 +2708,6 @@ small businesses and help sustain their families. To create a sense
 of Elitism, Kiva.org created groups and published statistics that
 allowed Christians and Atheists to compare their giving against
 each other, to see who contributes more money in helping third
-
--- 94 of 501 --
-
 ---
 
 ## [Sección 103] Chapter 5: The First Core Drive - Epic Meaning & Calling 85
@@ -3017,9 +2743,6 @@ Technique #67) by telling the user he can only equip this sword
 once he defeats all the adversaries at a particularly difficult level,
 ⁴⁹Lebo, Lauri. ReligionDispatches.org. University of Southern California.”Atheists and
 Christians Compete to Give More”. 1/19/2011.
-
--- 95 of 501 --
-
 ---
 
 ## [Sección 104] Chapter 5: The First Core Drive - Epic Meaning & Calling 86
@@ -3051,9 +2774,6 @@ to never decompose) runs a marketing campaign that says, “Eating
 our food protects your health and your family,” people would likely
 see that as a manipulative slap in the face.
 ⁵⁰AOTW. “Spoleto Restaurant: Beautiful women don’t pay”. Accessed 1/20/2015.
-
--- 96 of 501 --
-
 ---
 
 ## [Sección 105] Chapter 5: The First Core Drive - Epic Meaning & Calling 87
@@ -3086,9 +2806,6 @@ part of something bigger and would feel great if they actually
 took the actions, they will often procrastinate and delay those
 very actions. Thus, to create desirable behavior, the gamification
 designer needs the help of the other Core Drives within Octalysis.
-
--- 97 of 501 --
-
 ---
 
 ## [Sección 106] Chapter 5: The First Core Drive - Epic Meaning & Calling 88
@@ -3111,9 +2828,6 @@ check out my TEDx talk on how eight different world-changing
 products utilize each of the 8 Core Drives to make the world a better
 place. The TEDx talk can be accessed at http://yukaichou.com/tedx,
 or you can simply go on Google and search “Gamification Tedx.”
-
--- 98 of 501 --
-
 ---
 
 ## [Sección 107] Chapter 6: The Second Core
@@ -3125,8 +2839,6 @@ Gamification Framework Octalysis. This is the Core Drive where
 people are driven by a sense of growth and a need to accomplish a
 targeted goal. It is what focuses us on a career path, generates our
 enthusiasm and commitment to learning a new skill, and ultimately
--- 99 of 501 --
-
 ---
 
 ## [Sección 108] Chapter 6: The Second Core Drive - Development & Accomplishment 90
@@ -3158,9 +2870,6 @@ points, others use levels, badges, stages, progress bars, better looking
 gear, victory animations… the list goes on. However, just because
 you see your progress through these elements does not necessarily
 mean you feel accomplished.
-
--- 100 of 501 --
-
 ---
 
 ## [Sección 109] Chapter 6: The Second Core Drive - Development & Accomplishment 91
@@ -3194,9 +2903,6 @@ Com boom successes, and as of today it is one of the leading tech
 ⁵¹Jane McGonigal. Reality is Broken. P22. Penguin Group. New York, NY. 2011.
 ⁵²Chou, Yu-kai (Hey, that’s me!). YukaiChou.com. “Top 10 eCommerce Gamification
 Examples that will Revolutionize Shopping”. Posted 7/7/2013.
-
--- 101 of 501 --
-
 ---
 
 ## [Sección 110] Chapter 6: The Second Core Drive - Development & Accomplishment 92
@@ -3232,9 +2938,6 @@ stuck). Shortly after, I became obsessively glued to the screen after
 another bidder joined in on the “war.”
 During the few days of the listing, it was the only thing on my mind.
 I continuously checked my listing, trying to see if people would
-
--- 102 of 501 --
-
 ---
 
 ## [Sección 111] Chapter 6: The Second Core Drive - Development & Accomplishment 93
@@ -3272,9 +2975,6 @@ received an email from eBay itself! It was a certificate sent from this
 person named “Meg,” congratulating me as a valuable eBay seller
 and giving me a Yellow Star Certificate! I was so excited about this
 Achievement Symbol (Game Technique #2), that I printed it out and
-
--- 103 of 501 --
-
 ---
 
 ## [Sección 112] Chapter 6: The Second Core Drive - Development & Accomplishment 94
@@ -3289,9 +2989,6 @@ even some string quartet songs I wrote! In my second year of college,
 at the height of my eBay career, I received a 100% satisfaction rating
 with over 1,100 positive feedbacks. As a result, I was awarded a Red
 Star ranking.
-
--- 104 of 501 --
-
 ---
 
 ## [Sección 113] Chapter 6: The Second Core Drive - Development & Accomplishment 95
@@ -3327,9 +3024,6 @@ being awesome. They pay to get powerful weapons or boosters that
 allow them to defeat a bunch of enemy monsters quickly, ultimately
 achieving dominating victory.
 Another example that builds on the same principle is the General
-
--- 105 of 501 --
-
 ---
 
 ## [Sección 114] Chapter 6: The Second Core Drive - Development & Accomplishment 96
@@ -3363,9 +3057,6 @@ Billion.⁵⁴
 ⁵³Marks, Susan. Finding Betty Crocker: The Secret Life of America’s First Lady of Food.
 Fesler-Lampert Minnesota Heritage. p68. 03/19/2007.
 ⁵⁴Fortune.com. Fortune 500 2014: eBay Inc.
-
--- 106 of 501 --
-
 ---
 
 ## [Sección 115] Chapter 6: The Second Core Drive - Development & Accomplishment 97
@@ -3401,9 +3092,6 @@ Also, Amazon is constantly learning about your preferences and
 personalizing what you see to who you are, something I call the
 Alfred Effect (Game Technique #83). As it does so, the sense of
 Ownership & Possession grows even more as people now identify
-
--- 107 of 501 --
-
 ---
 
 ## [Sección 116] Chapter 6: The Second Core Drive - Development & Accomplishment 98
@@ -3432,9 +3120,6 @@ other, similar people are buying, social proof and relatedness help
 ⁵⁵Christopher Matthews. Time. “Future of Retail: How Companies Can Employ Big Data
 to Create a Better Shopping Experience”. 08/31/2012.
 ⁵⁶Mangalindan, JP. Fortune. “Amazon’s Recommendation Secret”. 07/30/2012.
-
--- 108 of 501 --
-
 ---
 
 ## [Sección 117] Chapter 6: The Second Core Drive - Development & Accomplishment 99
@@ -3467,9 +3152,6 @@ authoritative experts.
 model in peer-to-peer networks. 2003.
 ⁵⁸Minaxi Gupta, Paul Judge, and Mostafa Ammar. Georgia Institute of Technology. A
 Reputation System for Peer-to-Peer Networks. 2003.
-
--- 109 of 501 --
-
 ---
 
 ## [Sección 118] Chapter 6: The Second Core Drive - Development & Accomplishment 100
@@ -3488,9 +3170,6 @@ I’d like to take a moment here to point out that though the focus of
 this chapter is on Core Drive 2: Development & Accomplishment,
 it is almost impossible to evaluate a good experience or product
 without considering the other seven Core Drives, as they intricately
-
--- 110 of 501 --
-
 ---
 
 ## [Sección 119] Chapter 6: The Second Core Drive - Development & Accomplishment 101
@@ -3525,9 +3204,6 @@ great deal of content along with links. Even though it does drive
 many clicks and exploratory activities for many users, it can be a
 ⁵⁹David Vise & Mark Malseed. The Google Story. p42. Random House, New York, New
 York. 2005.
-
--- 111 of 501 --
-
 ---
 
 ## [Sección 120] Chapter 6: The Second Core Drive - Development & Accomplishment 102
@@ -3563,9 +3239,6 @@ month from Facebook, it clearly isn’t the place everyone is hanging
 out at.
 ⁶⁰David Vise & Mark Malseed. The Google Story. p88. Random House, New York, New
 York. 2005.
-
--- 112 of 501 --
-
 ---
 
 ## [Sección 121] Chapter 6: The Second Core Drive - Development & Accomplishment 103
@@ -3600,9 +3273,6 @@ three gems to match for a long period of time, you may just abandon
 the game altogether and start doing other things. Perhaps the expert
 ⁶¹Gareth Llewellyn. Quora.com: “Are Facebook and Twitter the best tools for social
 media marketing?”. 5/14/2013.
-
--- 113 of 501 --
-
 ---
 
 ## [Sección 122] Chapter 6: The Second Core Drive - Development & Accomplishment 104
@@ -3631,9 +3301,6 @@ the page that is visually “colorful,” and the eyes automatically are
 guided to that direction. I call that a Desert Oasis (Game Technique
 #38), where visually nothing else is prominent besides the main
 Desired Action. The Desert Oasis looks green and juicy and it
-
--- 114 of 501 --
-
 ---
 
 ## [Sección 123] Chapter 6: The Second Core Drive - Development & Accomplishment 105
@@ -3668,9 +3335,6 @@ $125? And we already determined above that very few people
 ⁶²Alexander Chernev. Harvard Business Review. “Can There Ever Be a Fair Price? Why
 Jcpenney’s Strategy Backfired”. 5/29/2012.
 ⁶³Dan Ariely. Predictably Irrational. p2. Harper International. New York, NY. 2008.
-
--- 115 of 501 --
-
 ---
 
 ## [Sección 124] Chapter 6: The Second Core Drive - Development & Accomplishment 106
@@ -3704,9 +3368,6 @@ Because of the Glowing Choices, Personalized Recommendations,
 Peer Reviews, and Desert Oasis design elements mentioned above,
 Amazon users never feel confused about what to do next. You move
 quickly towards the Win-State, and especially if you made the “feel-
-
--- 116 of 501 --
-
 ---
 
 ## [Sección 125] Chapter 6: The Second Core Drive - Development & Accomplishment 107
@@ -3743,9 +3404,6 @@ standstill phenomenon which paralyzed further activity. When
 there has been a bad experience, both sides refuse to leave the first
 negative feedback in fear of negative feedback retaliation. Even
 though I had a bad experience buying at eBay, I didn’t want to
-
--- 117 of 501 --
-
 ---
 
 ## [Sección 126] Chapter 6: The Second Core Drive - Development & Accomplishment 108
@@ -3778,9 +3436,6 @@ users and making them feel smart… that’s not profound at all! That’s
 what all Usability, User Interface, User Experience, and so-called
 User-Centered Design efforts already work on. How is Gamification
 or Human-Focused Design different?”
-
--- 118 of 501 --
-
 ---
 
 ## [Sección 127] Chapter 6: The Second Core Drive - Development & Accomplishment 109
@@ -3803,9 +3458,6 @@ Neurobiology, Technology Platforms, and Business Systems that
 drive an ROI. Interestingly, games have all of the above besides
 the last part: business systems that drive an ROI (or Return on
 Investment).
-
--- 119 of 501 --
-
 ---
 
 ## [Sección 128] Chapter 6: The Second Core Drive - Development & Accomplishment 110
@@ -3823,9 +3475,6 @@ Game Techniques within Development
 You have learned more about the motivational and psychological
 nature of Core Drive 2: Development & Accomplishment. To make
 it more actionable, I’ve included some Game Techniques below that
-
--- 120 of 501 --
-
 ---
 
 ## [Sección 129] Chapter 6: The Second Core Drive - Development & Accomplishment 111
@@ -3861,9 +3510,6 @@ where every time you click a button, a progress bar fills up, allowing
 users to level up⁶⁵. This is a great example of having game design
 ⁶⁴Kevin Werbach. University of Pennsylvania. Coursera Gamification Course. 2012.
 ⁶⁵Progress Wars Website: progresswars.com
-
--- 121 of 501 --
-
 ---
 
 ## [Sección 130] Chapter 6: The Second Core Drive - Development & Accomplishment 112
@@ -3890,9 +3536,6 @@ launched in 2006, it came with this new one-way follow system,
 allowing users to follow the message updates of people who are
 interesting, without these people following the users back. Because
 of the one-way nature of the relationship, many people saw getting
-
--- 122 of 501 --
-
 ---
 
 ## [Sección 131] Chapter 6: The Second Core Drive - Development & Accomplishment 113
@@ -3928,9 +3571,6 @@ write blog posts and make Youtube videos telling everyone else to
 follow him.
 ⁶⁶John D. Sutter. CNN. “Ashton Kutcher challenges CNN to Twitter popularity contest”.
 04/15/2009.
-
--- 123 of 501 --
-
 ---
 
 ## [Sección 132] Chapter 6: The Second Core Drive - Development & Accomplishment 114
@@ -3947,9 +3587,6 @@ gracefully announced to the world “Ashton Kutcher is first to reach
 1 million followers in Twitter contest with CNN” with a “Congrats”
 on the tweet below.
 This contest has turned out very positive for the brand names
-
--- 124 of 501 --
-
 ---
 
 ## [Sección 133] Chapter 6: The Second Core Drive - Development & Accomplishment 115
@@ -3983,9 +3620,6 @@ achievements by themselves. A similar example evolved from where
 badges came from – the military. If you join the military, and
 immediately get a badge on your chest, “Joined the Military Badge!”
 And on the next day, another badge gets pinned on your chest
-
--- 125 of 501 --
-
 ---
 
 ## [Sección 134] Chapter 6: The Second Core Drive - Development & Accomplishment 116
@@ -4020,9 +3654,6 @@ Within Status Points, there are also smaller divisions of types. For
 example, Absolute Status Points (which measures the total amount
 of points earned during a journey) versus Marginal Status Points
 (which are points that are specifically set for a given challenge or
-
--- 126 of 501 --
-
 ---
 
 ## [Sección 135] Chapter 6: The Second Core Drive - Development & Accomplishment 117
@@ -4056,9 +3687,6 @@ their platform. They also asked, “Isn’t 100 points way too much for
 just commenting?”
 That’s a very good question.
 ⁶⁷CaptainUp Website: captainup.com
-
--- 127 of 501 --
-
 ---
 
 ## [Sección 136] Chapter 6: The Second Core Drive - Development & Accomplishment 118
@@ -4094,9 +3722,6 @@ When you design your Status Point systems, make sure it is based
 on something meaningful - something that the users themselves
 want to engage in. Or else, points just become meaningless counters
 meant to stress people out.
-
--- 128 of 501 --
-
 ---
 
 ## [Sección 137] Chapter 6: The Second Core Drive - Development & Accomplishment 119
@@ -4132,9 +3757,6 @@ Another variation that has proved successful is to set up Group
 Leaderboards where the ranking is based on the combined efforts
 of a team. In this case, even though not everyone is competitive and
 ⁶⁸Jane McGonigal. Reality is Broken. P69. Penguin Group. New York, NY. 2011.
-
--- 129 of 501 --
-
 ---
 
 ## [Sección 138] Chapter 6: The Second Core Drive - Development & Accomplishment 120
@@ -4167,9 +3789,6 @@ result after good implementation of other Core Drives, such as
 Core Drive 3: Empowerment of Creativity & Feedback, Core Drive
 4: Ownership & Possession, as well as Core Drive 6: Scarcity &
 Impatience. Often, it also leads to Core Drive 5: Social Influence &
-
--- 130 of 501 --
-
 ---
 
 ## [Sección 139] Chapter 6: The Second Core Drive - Development & Accomplishment 121
@@ -4201,9 +3820,6 @@ Captain Up system on my blog to create a “game worth playing.”
 Go to my blog at YukaiChou.com and experience the motivation
 design from the Captain Up widget on the right hand side. After
 playing with it, read up on the full blog about my design decisions
-
--- 131 of 501 --
-
 ---
 
 ## [Sección 140] Chapter 6: The Second Core Drive - Development & Accomplishment 122
@@ -4214,9 +3830,6 @@ There are still many things I would like to change and add into the
 gamified experience if I only had more time. Please feel empowered
 to come up with ways it can be improved and share your findings
 with me.
-
--- 132 of 501 --
-
 ---
 
 ## [Sección 141] Chapter 7: The Third Core
@@ -4229,8 +3842,6 @@ very nearly the same, has no occasion to exert his understanding
 or to exercise his invention in finding out expedients for removing
 difficulties which never occur. He naturally loses, therefore, the
 habit of such exertion, and generally becomes as stupid and ignorant
--- 133 of 501 --
-
 ---
 
 ## [Sección 142] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 124
@@ -4264,9 +3875,6 @@ In a large stadium, over 100,000 audience members sit earnestly in
 front of a stage. These players all paid a fine fee to be there and are
 excitedly waiting for their long time idols to compete with other
 pros in the league.
-
--- 134 of 501 --
-
 ---
 
 ## [Sección 143] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 125
@@ -4289,9 +3897,6 @@ both around twenty years old, exercise their pre-match rituals
 before the crucial game.
 This is a championship match within the “eSports” industry, a
 newly emerging field where people around the world watch full-
-
--- 135 of 501 --
-
 ---
 
 ## [Sección 144] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 126
@@ -4328,9 +3933,6 @@ and decide on what to do. For more experienced hobbyists, this rate
 could rise to 50-60 APM, which is about one action every second.
 ⁶⁹Matthew Jarvis. MCV. “eSports: Behind the next billion-dollar industry”. 08/11/2014.
 ⁷⁰Blizzard Entertainment. “StarCraft’s 10-Year Anniversary: A Retrospective”. 2008.
-
--- 136 of 501 --
-
 ---
 
 ## [Sección 145] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 127
@@ -4368,9 +3970,6 @@ Princeton University established the Collegiate Starleague, a seasonal intercoll
 2011.
 ⁷²Brian Crecente. Kotaku.com. “Competitive StarCraft Gets UC Berkeley Class”.
 01/28/09.
-
--- 137 of 501 --
-
 ---
 
 ## [Sección 146] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 128
@@ -4403,9 +4002,6 @@ the current state anyway), your users still have a reason to stay on.
 The second reason is because most of these games have not been
 designed for continued motivation in the “Endgame”, the fourth
 ⁷³Patricia Cohen. New York Times. “Video Game Becomes Spectator Sport.” 04/01/09.
-
--- 138 of 501 --
-
 ---
 
 ## [Sección 147] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 129
@@ -4441,9 +4037,6 @@ game when we were younger because it was easy to initiate with
 Says Study”. 08/25/13.
 ⁷⁵Jad Abumrad and Robert Krulwich. Radiolab Podcast. “Mapping Tic Tac Toe-dom”.
 09/06/2011.
-
--- 139 of 501 --
-
 ---
 
 ## [Sección 148] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 130
@@ -4481,9 +4074,6 @@ scenarios. Descriptions such as “sincere,” “passionate,” or “radiant�
 ⁷⁶Note: even though I came up with this example independently a few years ago, I later
 read that Raph Koster used this exact example too to discuss a similar point.
 ⁷⁷Raph Koster. A Theory of Fun. 2nd Edition. p4. O’Reilly Media. Sebastopol, CA. 10/2013.
-
--- 140 of 501 --
-
 ---
 
 ## [Sección 149] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 131
@@ -4519,9 +4109,6 @@ In 1997, a rematch was called. IBM had a full team whose only role
 was to improve Deep Blue’s chess playing skills. By then Deep Blue
 could examine 200 million positions a second, doubling the prior
 ⁷⁸ChessBase.com Chess News. “Garry Kasparov begs to differ…”. 04/12/2002.
-
--- 141 of 501 --
-
 ---
 
 ## [Sección 150] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 132
@@ -4558,9 +4145,6 @@ fifteen moves later but they have the intuitive understanding that,
 do, I’m not completely sure yet, but I know it will benefit me one
 ⁷⁹Jonathan Schaeffer & Aske Plaat. University of Alberta & Vrije Universiteit. “Kasparov
 versus Deep Blue: The Re-match”ICCA Journal, vol. 20, no. 2, pp. 95-102. 1997.
-
--- 142 of 501 --
-
 ---
 
 ## [Sección 151] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 133
@@ -4596,9 +4180,6 @@ lived during the time of the Soviet Union’s “Iron and Engineering”
 prowess. As a result his style was aggressively positional, similar
 ⁸⁰Andrew Breslin. Andy Rants. “The number of possible different games of chess.”
 10/12/2009.
-
--- 143 of 501 --
-
 ---
 
 ## [Sección 152] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 134
@@ -4631,9 +4212,6 @@ When you design for Core Drive 3: Empowerment of Creativity &
 Feedback, it is important to create a setup where the user is given
 a goal, as well as a variety of tools and methodologies to strategize
 towards reaching that goal. Often your users are not motivated
-
--- 144 of 501 --
-
 ---
 
 ## [Sección 153] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 135
@@ -4669,9 +4247,6 @@ the purpose of doing so. It is only to pass a test, get a good grade,
 and please their parents. As a result, the child studies hard enough
 to pass the test, and forgets most of the subject matter thereafter.
 ⁸¹XPRIZE Homepage: xprize.org
-
--- 145 of 501 --
-
 ---
 
 ## [Sección 154] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 136
@@ -4706,9 +4281,6 @@ after fifteen years of research, this problem remained unresolved⁸³.
 ⁸²Kaggle Homepage: kaggle.com
 ⁸³Michael Coren & Fast Company. Scientific American. “Foldit Gamers Solve Riddle of
 HIV Enzyme within 3 Weeks”. 09/20/2011.
-
--- 146 of 501 --
-
 ---
 
 ## [Sección 155] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 137
@@ -4728,9 +4300,6 @@ with either a product or within the workplace (especially if it is
 tied to Core Drive 1: Epic Meaning & Calling as in the case of
 FoldIt), you will likely unlock long-term user engagement and high
 productivity.
-
--- 147 of 501 --
-
 ---
 
 ## [Sección 156] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 138
@@ -4754,9 +4323,6 @@ started taking the stairs too themselves to see if it would work for
 them. Eventually, some individuals attempted to play some simple
 tunes.
 When you empower people by allowing them to easily play an
-
--- 148 of 501 --
-
 ---
 
 ## [Sección 157] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 139
@@ -4790,9 +4356,6 @@ that creative idea.
 In a bureaucratic organization, though everyone likes to talk about
 innovation, innovation requires risk, and the corporate ladder trains
 ⁸⁴Volskwagon. TheFunTheory.com. “Piano Staircase”. 09/22/2009.
-
--- 149 of 501 --
-
 ---
 
 ## [Sección 158] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 140
@@ -4829,9 +4392,6 @@ implemented a program called 20% Time – where one day in the
 ⁸⁶Paul P. Baard, Edward L. Deci, Richard M. Ryan. Journal of Applied Social Psychology.
 p34.”Intrinsic Need Satisfaction: A Motivational Basis of Performance and Well-Being in Two
 Work Settings”. 2004.
-
--- 150 of 501 --
-
 ---
 
 ## [Sección 159] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 141
@@ -4864,9 +4424,6 @@ colors and drawing tools, so that they would have a richer variety
 ⁸⁷Christopher Mims. Quartz. “Google’s “20% time,” which brought you Gmail and
 AdSense, is now as good as dead”. 08/16/2013.
 ⁸⁸Dashiell Bennett. Yahoo News. “The Decline and Fall of ‘Draw Something’”. 05/01/2012.
-
--- 151 of 501 --
-
 ---
 
 ## [Sección 160] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 142
@@ -4878,18 +4435,12 @@ Furthermore, Draw Something brought in an addictive Social Influence & Relatedne
 curious to see if their friends could guess the meaning of their drawings (which adds Core Drive 7: Unpredictability & Curiosity). All
 these elements contributed to the huge success of Draw Something
 during its time.
-
--- 152 of 501 --
-
 ---
 
 ## [Sección 161] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 143
 
 ⁸⁹
 ⁸⁹IGN Drawsome Gallery: http://www.ign.com/wikis/draw-something/Drawsome_Gallery
-
--- 153 of 501 --
-
 ---
 
 ## [Sección 162] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 144
@@ -4926,9 +4477,6 @@ of ways, including coming up with ways to cheat a system.
 In my client workshops, I often explore how having a system
 that is “gameable” is not necessarily bad and may even help their
 company if it is designed properly. However, if done incorrectly,
-
--- 154 of 501 --
-
 ---
 
 ## [Sección 163] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 145
@@ -4958,9 +4506,6 @@ Boosters such as obtaining a “jumping star” in Super Mario are limited by ti
 For the next dozen seconds (I actually went on Youtube and counted
 the seconds just to write this), a player would rush as quickly as he
 can (sometimes falling into pits) as he enjoys the adrenaline rush of
-
--- 155 of 501 --
-
 ---
 
 ## [Sección 164] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 146
@@ -4995,9 +4540,6 @@ Dashboard that we will cover in Chapter 17: Business Metrics,
 Users, Desired Actions, Feedback Mechanics, and Incentives. While
 most of my clients define revenue growth or active users as their
 number one Business Metric, Superbook’s Director of Creative
-
--- 156 of 501 --
-
 ---
 
 ## [Sección 165] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 147
@@ -5032,9 +4574,6 @@ utilizing the Bible App to do well on), a child can increase their
 “Knowledge Score” that will serve as a multiplier towards SuperPoints when they are playing the fun games on the site.
 After they win a game with the boosters on, it would show them a
 “Knowledge Score Multiplier” next to their points, allowing them
-
--- 157 of 501 --
-
 ---
 
 ## [Sección 166] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 148
@@ -5070,9 +4609,6 @@ powerful they are, and then realize they are so close to the next
 milestone that they might as well get there before stopping.
 This is when people plan to stop playing at 11PM but end up playing
 till 4AM in the morning.
-
--- 158 of 501 --
-
 ---
 
 ## [Sección 167] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 149
@@ -5107,9 +4643,6 @@ When children turn two years old, they quickly discover that they
 possess a special power called “Free Will.” And once they discover
 ⁹⁰Sheena S. Iyengar & Mark R. Lepper. Columbia University & Stanford University.
 “When Choice is Demotivating: Can One Desire Too Much of a Good Thing?”. 12/2000.
-
--- 159 of 501 --
-
 ---
 
 ## [Sección 168] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 150
@@ -5142,9 +4675,6 @@ popular singer in Taiwan named Lee-Hom Wang play the violin onstage at a large c
 told my mother that I wanted to play the violin.
 After I switched from playing the piano to the violin, things didn’t
 necessarily become easier. But because I made a choice to play the
-
--- 160 of 501 --
-
 ---
 
 ## [Sección 169] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 151
@@ -5181,9 +4711,6 @@ economically create an experience with an ideal interest curve and
 an ideal set of events.”
 ⁹¹Jesse Schell. The Art of Game Design: A Book of Lenses. p284-292. CRC Press. Boca
 Raton. 2008.
-
--- 161 of 501 --
-
 ---
 
 ## [Sección 170] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 152
@@ -5216,9 +4743,6 @@ and all hundred of these players reach the Win-State in the exact
 same way (such as “do action A, get points, do action B, get
 badges, do action C, win!”), there are no meaningful choices present.
 ⁹²Dan Ariely. Predictably Irrational. p188. Harper Perennial. New York, NY. 2010.
-
--- 162 of 501 --
-
 ---
 
 ## [Sección 171] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 153
@@ -5253,9 +4777,6 @@ explosives and traps; or use stinky onions to herd all the zombies
 into one lane before wiping them all out with penetrating attacks.
 ⁹³Jesse Schell. The Art of Game Design: A Book of Lenses. p180. CRC Press. Boca Raton.
 2008.
-
--- 163 of 501 --
-
 ---
 
 ## [Sección 172] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 154
@@ -5291,9 +4812,6 @@ Because there are so many things you can do with your crops, this
 element of Farmville can be considered an Evergreen Mechanic.
 Users can continuously stay engaged without adding any additional
 content, just like paint and a paintbrush can be Evergreen material.
-
--- 164 of 501 --
-
 ---
 
 ## [Sección 173] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 155
@@ -5307,9 +4825,6 @@ Here are some pretty noteworthy pieces of art:
 ⁹⁴Kevin Johnson. Wikia Farmville. URL: http://farmville.wikia.com/wiki/File:Farmvillemona-lisa-by-kevin-johnson-300x186.png
 ⁹⁵Jenny Ng. Games.com Blog. “FarmVille Pic of the Day: Embrace of Swan Lake at
 Liveloula46’s farm.” 03/01/2012.
-
--- 165 of 501 --
-
 ---
 
 ## [Sección 174] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 156
@@ -5332,9 +4847,6 @@ players into disadvantageous jumps. “Most games unfold abilities
 over time, until at a high level you have many possible stratagems
 ⁹⁶Amy-Mae Elliott. Mashable.com. “15 Beautiful and Creative QR Code”. 11/7/23.
 ⁹⁷Wikipedia Entry “Minecraft”: http://en.wikipedia.org/wiki/Minecraft
-
--- 166 of 501 --
-
 ---
 
 ## [Sección 175] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 157
@@ -5369,9 +4881,6 @@ Endgame Phases, as opposed to the Discovery and Onboarding
 Phases.
 ⁹⁸Raph Koster. A Theory of Fun. 2nd Edition. p122. O’Reilly Media. Sebastopol, CA.
 10/2013.
-
--- 167 of 501 --
-
 ---
 
 ## [Sección 176] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 158
@@ -5401,9 +4910,6 @@ more efficient without caring about their own interests?
 Share what you come up with on Twitter or your preferred
 social network with the hashtag #OctalysisBook and see what
 ideas other people have.
-
--- 168 of 501 --
-
 ---
 
 ## [Sección 177] Chapter 7: The Third Core Drive - Empowerment of Creativity & Feedback 159
@@ -5417,9 +4923,6 @@ automatically generated Octalysis Insights to better understand the
 strength and weaknesses of the design. Use this as a creative process
 and see the insights as feedback for your analysis. The Octalysis
 Tool can be accessed for free at YukaiChou.com/octalysis-tool.
-
--- 169 of 501 --
-
 ---
 
 ## [Sección 178] Chapter 8: The Fourth Core
@@ -5431,8 +4934,6 @@ owning something, and consequently the desire to improve, protect,
 and obtain more of it.
 This Core Drive involves many elements such as virtual goods and
 virtual currencies, but it is also the primary drive that compels us to
--- 170 of 501 --
-
 ---
 
 ## [Sección 179] Chapter 8: The Fourth Core Drive - Ownership & Possession 161
@@ -5466,9 +4967,6 @@ were at a party and I gave you a bottle of beer, you may respond,
 “Oh that’s okay. I’m not a big fan of beer.” I then respond with, “Nah,
 just take it! I’ll put it here next to you.”
 At this point, you may still not care about this bottle of beer. You
-
--- 171 of 501 --
-
 ---
 
 ## [Sección 180] Chapter 8: The Fourth Core Drive - Ownership & Possession 162
@@ -5501,9 +4999,6 @@ Stamps of Sanity
 One of the most common manifestations of the Ownership &
 Possession Core Drive is the desire to collect things, such as stamps
 or baseball cards. Many of us have had the experience of collecting certain items, where the items themselves have relatively
-
--- 172 of 501 --
-
 ---
 
 ## [Sección 181] Chapter 8: The Fourth Core Drive - Ownership & Possession 163
@@ -5540,9 +5035,6 @@ This struck me as very odd. This man is watching children die in his
 hands on a daily basis, and the one thing that makes him feel better
 ⁹⁹Malcolm Gladwell. David and Goliath. P144. Hachette Book Group. New York, NY.
 2013.
-
--- 173 of 501 --
-
 ---
 
 ## [Sección 182] Chapter 8: The Fourth Core Drive - Ownership & Possession 164
@@ -5574,9 +5066,6 @@ when the Yapese buy something with Rai, they simply leave an oral
 history that the ownership of the Rai is now transferred to another
 person.
 ¹⁰⁰Eric Guinther. WonderMondo.com. “STONE MONEY OF YAP IN GACHPAR VILLAGE”. Accessed 02/22/2015
-
--- 174 of 501 --
-
 ---
 
 ## [Sección 183] Chapter 8: The Fourth Core Drive - Ownership & Possession 165
@@ -5597,9 +5086,6 @@ You may think I’m stoned or crazy, and elect your preferred method
 of interacting with such people. (Popular options include: laughing
 at me, yelling at me, looking at me strangely, pretending to take me
 seriously just to entertain yourself, pretending to take me seriously
-
--- 175 of 501 --
-
 ---
 
 ## [Sección 184] Chapter 8: The Fourth Core Drive - Ownership & Possession 166
@@ -5632,9 +5118,6 @@ freelancer Gary Dahl in 1975. Upon hearing his friends complain
 about their pets, he conceptualized the perfect pet that would not
 need to be fed, bathed, groomed, toilet-trained, walked, and would
 ¹⁰¹Mortal Journey. “Pet Rocks (1970’s). 12/20/2010.
-
--- 176 of 501 --
-
 ---
 
 ## [Sección 185] Chapter 8: The Fourth Core Drive - Ownership & Possession 167
@@ -5650,9 +5133,6 @@ and “stay,” as well as proper hand gestures to get the Pet Rock to
 Finally, there was something that people could love, hold, and
 cherish, without dealing with all the physical hassles and emotional
 difficulties of a biological pet.
-
--- 177 of 501 --
-
 ---
 
 ## [Sección 186] Chapter 8: The Fourth Core Drive - Ownership & Possession 168
@@ -5672,9 +5152,6 @@ naturally want to care for and protect it. Unfortunately, the Pet Rock
 provided no Core Drive 3: Empowerment of Creativity & Feedback.
 As a result, people moved on to other conceptual pets that actually
 could provide some feedback mechanics.
-
--- 178 of 501 --
-
 ---
 
 ## [Sección 187] Chapter 8: The Fourth Core Drive - Ownership & Possession 169
@@ -5711,9 +5188,6 @@ off with an egg. Once you have set the time and selected a name,
 the egg quickly turns into a small baby ball that you have to nurture
 and raise. There are a few simple options to feed the baby, play with
 it, discipline it, clean up its boo-boos, and give it medicine when it
-
--- 179 of 501 --
-
 ---
 
 ## [Sección 188] Chapter 8: The Fourth Core Drive - Ownership & Possession 170
@@ -5739,9 +5213,6 @@ dinosaur it became was determined by what food you chose to feed
 it. If you fed it more vegetables, it would become a brachiosaurus;
 if you fed it more meat, it would become a Tyrannosaurus Rex. I
 was sad to discovered this too late, as I would have really wanted
-
--- 180 of 501 --
-
 ---
 
 ## [Sección 189] Chapter 8: The Fourth Core Drive - Ownership & Possession 171
@@ -5775,9 +5246,6 @@ changes when we believe we own something. Much of it is summed
 up in what Academics call the Endowment Effect.
 ¹⁰²Ben Parr. Mashable.com. “Pet Society Sells 90 Million Virtual Goods Per Day”.
 12/7/2010.
-
--- 181 of 501 --
-
 ---
 
 ## [Sección 190] Chapter 8: The Fourth Core Drive - Ownership & Possession 172
@@ -5814,9 +5282,6 @@ lucky enough to win the lottery, demanded $2,400 on average for
 their tickets. That is fourteen times more than the average buyer
 ¹⁰³Ziv Carmon and Dan Ariely. *Journal of Consumer Research. “Focusing on the
 Forgone: How Value Can Appear So Different to Buyers and Sellers”. 2000.
-
--- 182 of 501 --
-
 ---
 
 ## [Sección 191] Chapter 8: The Fourth Core Drive - Ownership & Possession 173
@@ -5851,9 +5316,6 @@ that product and get their money back afterwards.
 York, NY. 2013.
 ¹⁰⁵James Heyman, Yesim Orhun, and Dan Ariely. Journal of Interactive Marketing.”Auction Fever: The Effect of Opponents and Quasi-Endowment on Product Valuations”.
 2004.
-
--- 183 of 501 --
-
 ---
 
 ## [Sección 192] Chapter 8: The Fourth Core Drive - Ownership & Possession 174
@@ -5886,9 +5348,6 @@ York, NY. 2013.
 Eliminate Market Anomalies?”. P46-71. 2003.
 ¹⁰⁸Daniel Kahneman. *Thinking, Fast and Slow.” P339. Farrar, Straus and Giroux. New
 York, NY. 2013.
-
--- 184 of 501 --
-
 ---
 
 ## [Sección 193] Chapter 8: The Fourth Core Drive - Ownership & Possession 175
@@ -5924,9 +5383,6 @@ consistency”. 2005.
 ¹¹¹Brett Pelham, Matthew Mirenberg, and John Jones. *Journal of Personality and Social
 Psychology, 82:469-87. “Why Susie sells seashells by the seashore: Implicit egotism and major
 life decisions”. 2002.
-
--- 185 of 501 --
-
 ---
 
 ## [Sección 194] Chapter 8: The Fourth Core Drive - Ownership & Possession 176
@@ -5962,9 +5418,6 @@ Implicit egotism and interpersonal attraction”. 2004.
 of Consumer Research, 32:405-15. “Name letter branding: Valence transfer when product
 specific needs are active”. 2005.
 ¹¹⁵Dan Ariely. Predictably Irrational. P39. Harper Perennial. New York, NY. 2010.
-
--- 186 of 501 --
-
 ---
 
 ## [Sección 195] Chapter 8: The Fourth Core Drive - Ownership & Possession 177
@@ -6003,9 +5456,6 @@ service would cause them to start believing they were publicly
 “Postdecisional dissonance at post time”. 1968.
 ¹¹⁷Jonathan Freedman and Scott Fraser. Journal of personality and Social Psychology, 4,
 195-203. “Compliance without pressure: The foot-in-the-door technique”. 1966.
-
--- 187 of 501 --
-
 ---
 
 ## [Sección 196] Chapter 8: The Fourth Core Drive - Ownership & Possession 178
@@ -6038,9 +5488,6 @@ simply because it was repeated to us many times in the past, hence cognitively e
 process.
 ¹¹⁹Robert Cialdini. Influence: Science and Practice. 5th Edition. P62. Pearson Education.
 Boston, MA. 08/08/2008.
-
--- 188 of 501 --
-
 ---
 
 ## [Sección 197] Chapter 8: The Fourth Core Drive - Ownership & Possession 179
@@ -6075,9 +5522,6 @@ a dreadful plea with my manager, but if I could get you this price,
 ¹²⁰Morton Deutsch and Harold Gerard. Journal of Abnormal and Social Psychology,
 51, 629-636. “A study of normative and informational social influences upon individual
 judgement. 1955.
-
--- 189 of 501 --
-
 ---
 
 ## [Sección 198] Chapter 8: The Fourth Core Drive - Ownership & Possession 180
@@ -6113,9 +5557,6 @@ Boston, MA. 08/08/2008.
 to Be Persuasive. P74. Simon & Schuster. New York, NY. 2010.
 ¹²³Robert Cialdini. Influence: Science and Practice. 5th Edition. P70. Pearson Education.
 Boston, MA. 08/08/2008.
-
--- 190 of 501 --
-
 ---
 
 ## [Sección 199] Chapter 8: The Fourth Core Drive - Ownership & Possession 181
@@ -6148,9 +5589,6 @@ select their preferred fashion statement. When people are building
 something from scratch, they feel like, “I own this. This is my thing.”
 But if you start off by giving them a perfectly enchanting character
 or a fully decorated home, they may not become as involved
-
--- 191 of 501 --
-
 ---
 
 ## [Sección 200] Chapter 8: The Fourth Core Drive - Ownership & Possession 182
@@ -6183,9 +5621,6 @@ set.
 ¹²⁴Michael Norton, Daniel Mochon, and Dan Ariely. “The IKEA effect: When labor leads
 to love”. Journal of Consumer Psychology 22 (3): 453–460.
 ¹²⁵Dan Ariely. Predictably Irrational. P175. Harper Perennial. New York, NY. 2010.
-
--- 192 of 501 --
-
 ---
 
 ## [Sección 201] Chapter 8: The Fourth Core Drive - Ownership & Possession 183
@@ -6204,9 +5639,6 @@ Geomons.
 In the game, there’s the theme of the Four-Season Deer, with four
 unique creators to capture. There’s a Spring Plant Deer, a Summer
 Fire Deer, a Fall Wind Deer, and a Winter Ice Deer.
-
--- 193 of 501 --
-
 ---
 
 ## [Sección 202] Chapter 8: The Fourth Core Drive - Ownership & Possession 184
@@ -6222,9 +5654,6 @@ As a result, many players became obsessed with trading off rare and
 high valued pets in order to obtain the missing deer - some would
 even spend real money to obtain them. What is surprising is that
 these Four Season Deer aren’t even that powerful - most players
-
--- 194 of 501 --
-
 ---
 
 ## [Sección 203] Chapter 8: The Fourth Core Drive - Ownership & Possession 185
@@ -6260,9 +5689,6 @@ technically worth nothing. But because people are so desperate in
 completing a set that is almost finished, they are highly motivated
 to complete it as a strong Endgame play.
 ¹²⁶McDonald’s Monopoly Website: http://winners.playatmcd.com
-
--- 195 of 501 --
-
 ---
 
 ## [Sección 204] Chapter 8: The Fourth Core Drive - Ownership & Possession 186
@@ -6299,9 +5725,6 @@ various types of uses. There are points that can only be redeemed
 within the game economy for valuables, or points that can be
 traded with other players in the same system. Some exchangeable
 points allow users to trade with people outside of the gamified
-
--- 196 of 501 --
-
 ---
 
 ## [Sección 205] Chapter 8: The Fourth Core Drive - Ownership & Possession 187
@@ -6336,9 +5759,6 @@ exchangeable currency or goods are excessively abundant. This is
 often controlled by the true scarcity of time where labor in the
 system is balanced against the resulting rewards. We will dive more
 into this topic in Chapter 10 on Core drive 6: Scarcity & Impatience.
-
--- 197 of 501 --
-
 ---
 
 ## [Sección 206] Chapter 8: The Fourth Core Drive - Ownership & Possession 188
@@ -6374,9 +5794,6 @@ Building on Monitor Attachment, often a very good way to get users
 engaged is to constantly show them stats, charts, and graphics of
 ¹²⁷Robert Zajonc, *Journal of Personality and Social Psychology 9: 1-27. “Attitudinal
 Effects of Mere Exposure”. 1968.
-
--- 198 of 501 --
-
 ---
 
 ## [Sección 207] Chapter 8: The Fourth Core Drive - Ownership & Possession 189
@@ -6410,9 +5827,6 @@ and other sites increased traffic by a modest amount; they saw
 how writing catchy and controversial titles attracted more clickthroughs; and they saw how posting at certain times of the day
 generated more traffic. The Monitor Attachment opened up a whole
 ¹²⁸Google Analytics platform website: google.com/analytics
-
--- 199 of 501 --
-
 ---
 
 ## [Sección 208] Chapter 8: The Fourth Core Drive - Ownership & Possession 190
@@ -6445,9 +5859,6 @@ and modifies the experience accordingly. Gamers take this level
 of personalization for granted: if at level 3, the game forgot some
 details of what the player did in level 1, the player would often
 become furious and quit the game.
-
--- 200 of 501 --
-
 ---
 
 ## [Sección 209] Chapter 8: The Fourth Core Drive - Ownership & Possession 191
@@ -6487,9 +5898,6 @@ Results”. 12/04/2009.
 your News Feeds”. 01/16/2014.
 ¹³²Anthony Ha. TechCrunch.”Netflix’s Neil Hunt Says Personalized Recommendations
 Will Replace The Navigation Grid”. 05/19/2014.
-
--- 201 of 501 --
-
 ---
 
 ## [Sección 210] Chapter 8: The Fourth Core Drive - Ownership & Possession 192
@@ -6524,9 +5932,6 @@ of higher motivation. However, you must also be wary of designs
 where Core Drives sabotage each other. As one of the more Extrinsically Motivating Core Drives, if improperly design, it could make
 people act more selfishly, remove intellectual curiosity, and destroy
 any hopes of higher creativity. We will explore this in more depth
-
--- 202 of 501 --
-
 ---
 
 ## [Sección 211] Chapter 8: The Fourth Core Drive - Ownership & Possession 193
@@ -6559,9 +5964,6 @@ This actually started off as collection set designed for my blog
 audience to collect all the game technique numbers that are populated within my blog, videos, workshops, and other content such
 as this book. Later on, those who have a fairly complete set of game
 techniques #s will be able to use it as a guide sheet to study some
-
--- 203 of 501 --
-
 ---
 
 ## [Sección 212] Chapter 8: The Fourth Core Drive - Ownership & Possession 194
@@ -6576,9 +5978,6 @@ one day. Of course, even if you don’t plan to dig that deep, such a list
 of game techniques would become a useful cheat sheet in referring
 what is available in your arsenal whenever you are designing a
 project.
-
--- 204 of 501 --
-
 ---
 
 ## [Sección 213] Chapter 9: The Fifth Core
@@ -6591,8 +5990,6 @@ other people think, do, or say. This Core Drive is the engine behind
 many themes such as mentorship, competition, envy, group quests,
 social treasure, and companionship.
 Core Drive 5: Social Influence & Relatedness is a Right Brain
--- 205 of 501 --
-
 ---
 
 ## [Sección 214] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 196
@@ -6620,9 +6017,6 @@ comments while filming my videos).
 During this time, a game called Parallel Kingdom popped up on my
 radar¹³³.
 ¹³³Parallel Kingdom Website: parallelkingdom.com
-
--- 206 of 501 --
-
 ---
 
 ## [Sección 215] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 197
@@ -6647,9 +6041,6 @@ Curiosity). The interface wasn’t very intuitive and there were many
 instances where I felt I needed to make decisions without having
 enough information.
 Like the majority of first-time users on any site, within thirty
-
--- 207 of 501 --
-
 ---
 
 ## [Sección 216] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 198
@@ -6685,9 +6076,6 @@ game until I could demonstrated my new powers and could feel
 accomplished.
 At that point, a thought crossed my mind. This mentor had given
 me all these amazing items that I couldn’t get on my own; at least
-
--- 208 of 501 --
-
 ---
 
 ## [Sección 217] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 199
@@ -6723,9 +6111,6 @@ dungeons, another thought began to hit me. “Man…this guy is a
 high level player. He should be fighting in the high level dungeons.
 He gains nothing here and is just wasting his time. He is investing
 in me! Of course I can’t quit now. I would be the biggest disappointment ever!”
-
--- 209 of 501 --
-
 ---
 
 ## [Sección 218] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 200
@@ -6758,9 +6143,6 @@ We’re all Pinocchios at Heart
 In 1972, the Keep America Beautiful Organization created an advertising campaign with the theme, “People Start Pollution. People
 can stop it.” It was considered to be one of the most moving and
 effective public service announcements of all time. The ad campaign
-
--- 210 of 501 --
-
 ---
 
 ## [Sección 219] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 201
@@ -6788,9 +6170,6 @@ This message seems to make sense, as it tells people how serious
 http://www.yukaichou.com/KeepAmericaBeautiful
 ¹³⁵Noah Goldstein, Steve Martin, and Robert Cialdini. Yes! 50 Scientifically Proven Ways
 to Be Persuasive. P20. Simon & Schuster. New York, NY. 2010.
-
--- 211 of 501 --
-
 ---
 
 ## [Sección 220] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 202
@@ -6827,9 +6206,6 @@ Petrified Forest.” (A picture of park visitors taking pieces of wood
 accompanied this.)
 ¹³⁶Noah Goldstein, Steve Martin, and Robert Cialdini. Yes! 50 Scientifically Proven Ways
 to Be Persuasive. P22. Simon & Schuster. New York, NY. 2010.
-
--- 212 of 501 --
-
 ---
 
 ## [Sección 221] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 203
@@ -6864,9 +6240,6 @@ our behaviors. Often, when we see how other people are perform-
 ¹³⁷The famous Stanford Prison Experiment suggests that anyone could potentially behave
 like a Nazi in given circumstances:http://www.yukaichou.com/StanfordPrison
 ¹³⁸The mass suicide project known as Jonestown: http://www.yukaichou.com/Jonestown
-
--- 213 of 501 --
-
 ---
 
 ## [Sección 222] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 204
@@ -6904,9 +6277,6 @@ with the self, friends and peers”. Journal of Personality and Social Psycholog
 Psychological Association) 82 (2): 252–261
 ¹⁴²Noah Goldstein, Steve Martin, and Robert Cialdini. Yes! 50 Scientifically Proven Ways
 to Be Persuasive. P16. Simon & Schuster. New York, NY. 2010.
-
--- 214 of 501 --
-
 ---
 
 ## [Sección 223] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 205
@@ -6942,9 +6312,6 @@ done to examine social conformity, featuring public-service messages that were h
 in San Marcos, California. The messages all encouraged residents to
 use fans instead of air condit ioning, but used different reasoning
 and motivations for doing so.
-
--- 215 of 501 --
-
 ---
 
 ## [Sección 224] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 206
@@ -6979,9 +6346,6 @@ sacrifice their own well-being in order to fulfill that higher meaning
 which they are passionate about.
 ¹⁴³Stephanie Simon. The Wall Street Journal.”The Secret to Turning Consumers Green”.
 10/18/2010.
-
--- 216 of 501 --
-
 ---
 
 ## [Sección 225] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 207
@@ -7017,9 +6381,6 @@ mission.
 Corporate Competition as an Oxymoron
 Alongside this theme of leadership is the concept of competition in
 the workplace. When potential clients reach out to me for internal
-
--- 217 of 501 --
-
 ---
 
 ## [Sección 226] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 208
@@ -7053,9 +6414,6 @@ contrary to the essential meaning of the corporation. Corporations are formed to
 strengths in a collaborative way¹⁴⁴. The fundamental design of
 ¹⁴⁴Mario Herger. Enterprise Gamification. P195. EGC Media. San Bernardino, CA.
 07/24/2014.
-
--- 218 of 501 --
-
 ---
 
 ## [Sección 227] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 209
@@ -7091,9 +6449,6 @@ about quitting their jobs, more often than not it is because of dysfunctional pe
 ¹⁴⁵Tom Lyons. Strauss, Factor, Laing & Lyons. “What Wins Basketball Games Review
 of ‘Basketball on Paper: Rules and Tools for Performance Analysis’ By Dean Oliver”. 2005.
 Accessed 04/01/2015.
-
--- 219 of 501 --
-
 ---
 
 ## [Sección 228] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 210
@@ -7129,9 +6484,6 @@ stagnant and competing internally. It’s a collaborative Group Quest
 Culture That Felled a Tech Giant”. 07/03/2012.
 ¹⁴⁷Peter Cohan. Forbes. “Why Stack Ranking Worked Better at GE Than Microsoft”.
 7/13/2012.
-
--- 220 of 501 --
-
 ---
 
 ## [Sección 229] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 211
@@ -7163,9 +6515,6 @@ Competition does not work:
 07/24/2014.
 ¹⁴⁹Yuri Hanin. European Yearbook of Sport Psychology, 1, 29-72. “Emotions and athletic
 performance: Individual zones of optimal functioning model”.1997.
-
--- 221 of 501 --
-
 ---
 
 ## [Sección 230] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 212
@@ -7197,9 +6546,6 @@ You have learned more about the motivational and psychological
 nature of Core Drive 5: Social Influence & Relatedness. To make it
 more actionable, I’ve included some Game Techniques below that
 heavily utilize this Core Drive to engage users.
-
--- 222 of 501 --
-
 ---
 
 ## [Sección 231] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 213
@@ -7234,9 +6580,6 @@ seeks to help them improve.
 Saying things like, “If you manage to get an offer here, I will be
 your mentor and help develop your potential” would make your
 company much more attractive, whether the interviewee is hired
-
--- 223 of 501 --
-
 ---
 
 ## [Sección 232] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 214
@@ -7269,9 +6612,6 @@ answer these questions. The sequence might start with something
 like, “Now click on ‘Settings’ on the right top. Great! Now scroll
 down until you see ‘Privacy.’”
 This model is not very effective because:
-
--- 224 of 501 --
-
 ---
 
 ## [Sección 233] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 215
@@ -7308,9 +6648,6 @@ Of course, if the veteran expert can’t answer the questions, the
 newbie can immediately click a button that says, “Talk to an
 actual customer rep.” But people in general would love to have the
 opportunity to converse with experienced mentors who can not
-
--- 225 of 501 --
-
 ---
 
 ## [Sección 234] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 216
@@ -7350,9 +6687,6 @@ a person to implicitly show off what they have accomplished
 without really saying it.
 Intuitively encouraging users to brag about and show off their
 achievements comes in handy when it comes to recruiting new
-
--- 226 of 501 --
-
 ---
 
 ## [Sección 236] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 217
@@ -7373,9 +6707,6 @@ and high-scoring users were proud to post their scores for everyone
 to see.
 These days, many games and websites encourage users to share
 more with their friends on every single interface. Most of these Brag
-
--- 227 of 501 --
-
 ---
 
 ## [Sección 237] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 218
@@ -7413,9 +6744,6 @@ is a mutual understanding of the difficult work required to reach
 a certain level, people are more likely to brag about or show off
 their scores because they know others recognize how hard it was to
 obtain the scores.
-
--- 228 of 501 --
-
 ---
 
 ## [Sección 238] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 219
@@ -7450,9 +6778,6 @@ to orchestrate raids on a regularly basis. Because of this, people were
 ¹⁵⁰Dean Takahashi. VentureBeat. “Imangi’s Temple Run sprints into virtual reality on the
 Samsung Gear”. 2014/12/23.
 ¹⁵¹World of Warcraft Website: http://us.battle.net/wow
-
--- 229 of 501 --
-
 ---
 
 ## [Sección 239] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 220
@@ -7488,9 +6813,6 @@ There are so many of these fascinating concepts within games
 that we are just beginning to extract into the real world. If we
 ¹⁵²Groupon Website: groupon.com
 ¹⁵³Market Watch. Stock Profile: Groupon. Accessed 1/18/2015.
-
--- 230 of 501 --
-
 ---
 
 ## [Sección 240] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 221
@@ -7524,9 +6846,6 @@ response I received was, “Hey! That’s okay, just create a Farmville
 account, and I can give you a Goat too!” It was striking to me that
 these people assumed I would also value a goat so much that I would
 be motivated to create a Farmville account.
-
--- 231 of 501 --
-
 ---
 
 ## [Sección 241] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 222
@@ -7561,9 +6880,6 @@ When you get poked, you don’t know what it means either but you
 don’t worry about it. You just poke back. Now both of you will feel
 like you have interacted socially without having to spend notable
 effort.
-
--- 232 of 501 --
-
 ---
 
 ## [Sección 242] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 223
@@ -7592,9 +6908,6 @@ designed to be fairly meaningless but easy to execute. Early on in
 the design, there were even buttons that allowed you to endorse
 people in batches of four, allowing you to quickly endorse dozens
 of people without even thinking about who they were.
-
--- 233 of 501 --
-
 ---
 
 ## [Sección 243] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 224
@@ -7621,9 +6934,6 @@ design technique I call Conformity Anchors implements this effect
 into products or experiences by displaying how close users are to
 the social norm through Feedback Mechanics.
 The SaaS (Software-as-a-Service) company Opower, which supplies
-
--- 234 of 501 --
-
 ---
 
 ## [Sección 244] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 225
@@ -7645,9 +6955,6 @@ the CNBC Disruptor 50 List¹⁵⁵.
 ¹⁵⁴oPower.com Press Release. “Opower Wins WWF Green Game-Changes Innovation of
 the Year Award”. 07/04/2013.
 ¹⁵⁵Wikipedia Entry: “oPower”: http://en.wikipedia.org/wiki/Opower. Accessed 1/18/2015.
-
--- 235 of 501 --
-
 ---
 
 ## [Sección 245] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 226
@@ -7683,9 +6990,6 @@ capture 10 monsters. After that, when I wanted to capture more
 monsters, I would have to “evaporate” an old one. That scarcity
 design (Core Drive #6) tempted me to spend some money, but I held
 on and painfully continued to play without committing any cash.
-
--- 236 of 501 --
-
 ---
 
 ## [Sección 246] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 227
@@ -7716,9 +7020,6 @@ lot to discuss and then introduce the Water Cooler to unleash the
 social energy. Otherwise, you will end up having an office with a
 water cooler but no employees in it.
 ¹⁵⁶Battle Camp Website: pennypop.com/
-
--- 237 of 501 --
-
 ---
 
 ## [Sección 247] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 228
@@ -7750,9 +7051,6 @@ Easy: Think about a Social Treasure you received, or a Social
 Treasure that you were asked to give. Was it designed to encourage
 applicants to spread the name of a brand or project?
 Medium: Think about another example that heavily utilized Conformity Anchors to change behavior. How was it utilized and can
-
--- 238 of 501 --
-
 ---
 
 ## [Sección 248] Chapter 9: The Fifth Core Drive - Social Influence & Relatedness 229
@@ -7772,9 +7070,6 @@ then request an invitation to join and see what other learners such
 as yourself are doing with Octalysis. Many thanks to Mike Finney
 for starting and orchestrating this group.
 ¹⁵⁷Octalysis Explorers Facebook Group: https://www.facebook.com/groups/octalysis
-
--- 239 of 501 --
-
 ---
 
 ## [Sección 249] Chapter 10: The Sixth Core
@@ -7787,8 +7082,6 @@ either unable to have something immediately, or because there is
 great difficulty in obtaining it.
 We have a natural tendency to want things we can’t have. If a bowl
 of grapes were sitting on the table, you may not care about them;
--- 240 of 501 --
-
 ---
 
 ## [Sección 250] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 231
@@ -7820,9 +7113,6 @@ keep his friends out, Cartman starts to accept two customers a day
 to pay for the security costs. He soon realizes that he needs to pay
 ¹⁵⁸Wikipedia Entry “Cartmanland”: http://en.wikipedia.org/wiki/Cartmanland. Accessed
 1/19/2015.
-
--- 241 of 501 --
-
 ---
 
 ## [Sección 251] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 232
@@ -7858,9 +7148,6 @@ somehow profits my mileage account.
 Natalie Keener: So, what are you saving up for? Hawaii? South of
 France?
 ¹⁵⁹Up in the Air Official Website: theupintheairmovie.com
-
--- 242 of 501 --
-
 ---
 
 ## [Sección 252] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 233
@@ -7893,9 +7180,6 @@ the seventh person to do it. More people have walked on the moon.”
 This shows that because it’s something that he (along with billions
 of others) couldn’t get right now, he valued obtaining it more. It
 was simply more appealing because of how exclusive it was.
-
--- 243 of 501 --
-
 ---
 
 ## [Sección 253] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 234
@@ -7919,9 +7203,6 @@ average person to capture a Mozzy. In the forums, people sometimes
 say, “This summer my parents are taking me to San Francisco. I’m
 going to rent a car and drive down to Mountain View. Maybe I’ll
 catch a Mozzy. So excited!”
-
--- 244 of 501 --
-
 ---
 
 ## [Sección 254] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 235
@@ -7932,9 +7213,6 @@ following screenshot I randomly took while playing, notice how
 desperate users are in obtaining a Mozzy. Emphasized with all caps
 – “I’LL DO ANYTHING FOR A MOZZY.”
 Though it seems rather extreme, the desperate plea above is surpassed by the following conversation below:
-
--- 245 of 501 --
-
 ---
 
 ## [Sección 255] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 236
@@ -7951,9 +7229,6 @@ Mozzys that instead of playing the game more, they hang out on
 the chat board just to mope about it and feel “connected” to one
 another (CD5 Relatedness). Pretty extreme right?
 Another example of this within Geomon is the Laurelix, the magnificent golden phoenix.
-
--- 246 of 501 --
-
 ---
 
 ## [Sección 256] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 237
@@ -7978,9 +7253,6 @@ tremendous amount of stickiness to it also. As an advisor for
 the company, I played the game for a while (okay, more than a
 while), facilitated the online communities, and helped the company
 redesign and rebalance their entire ability skill trees and combat
-
--- 247 of 501 --
-
 ---
 
 ## [Sección 257] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 238
@@ -8013,9 +7285,6 @@ value, but rather based on their perceived value, which means many
 times our purchases aren’t very rational.
 In 1975, researchers Worchel, Lee, and Adewole conducted an
 experiment to test the desirability of cookies in different cookie
-
--- 248 of 501 --
-
 ---
 
 ## [Sección 258] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 239
@@ -8049,9 +7318,6 @@ digging deep into our psychology and appealing to what he calls
 ¹⁶⁰Stephen Worchel, Jerry Lee, and Akanbi Adewole. Journal of Personality and Social
 Psychology, Vol 32(5),906-914. “Effects of supply and demand on ratings of object value”.
 11/1975.
-
--- 249 of 501 --
-
 ---
 
 ## [Sección 259] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 240
@@ -8088,9 +7354,6 @@ Drives, while workplace motivation mostly appeals to White Hat Core Drives in Ch
 ¹⁶²Oren Klaff. Pitch Anything. P64. 1 edition. McGraw-Hill. 02/16/2011.
 ¹⁶³Noah Goldstein, Steve Martin, and Robert Cialdini. Yes! 50 Scientifically Proven Ways
 to Be Persuasive. P9. Simon & Schuster. New York, NY. 2010.
-
--- 250 of 501 --
-
 ---
 
 ## [Sección 260] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 241
@@ -8125,9 +7388,6 @@ When I was studying Economics at UCLA, the one fundamental
 lesson that my professors regularly talked about was the Supply
 and Demand curve. It basically explains that if the price of an item
 drops, the demand will increase. If the item becomes completely
-
--- 251 of 501 --
-
 ---
 
 ## [Sección 261] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 242
@@ -8145,9 +7405,6 @@ Sometimes objective scarcity is present without a person ever
 feeling or knowing it. At other times there is a sense of perceived
 scarcity without a true limit being present.
 The difference here is that neo-classical economic theory starts off
-
--- 252 of 501 --
-
 ---
 
 ## [Sección 262] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 243
@@ -8171,9 +7428,6 @@ demand curve in some products might produce a C-Shape instead
 of a diagonal line moving down to the right.
 ¹⁶⁴E. Roy Weintraub. The Concise Encyclopedia Of Economics. Neoclassical Economics.
 2007.
-
--- 253 of 501 --
-
 ---
 
 ## [Sección 263] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 244
@@ -8189,9 +7443,6 @@ Of course, at some point, the C-Curve needs to curl back towards
 the left (zero in quantity) as the item becomes exceedingly expensive beyond anyone’s wealth, producing a reverse S-Shape on
 the graph. Objective Scarcity (of money) ultimately still wins over
 Perceived Scarcity at large extremes.
-
--- 254 of 501 --
-
 ---
 
 ## [Sección 264] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 245
@@ -8228,9 +7479,6 @@ On another occasion, I had a client that needed a Cost Per Click
 who was the best in the industry. Since I had done some favors for
 him in the past, I was able to persuade him to help my client with
 a free audit, for which he normally would have charged thousands
-
--- 255 of 501 --
-
 ---
 
 ## [Sección 265] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 246
@@ -8264,9 +7512,6 @@ sold. Doubling the price on each item had actually allowed her to
 sell more because their perceived value had increased.
 ¹⁶⁵Robert Cialdini. Influence: Science and Practice. 5th Edition. P2. Pearson Education.
 Boston, MA. 08/08/2008.
-
--- 256 of 501 --
-
 ---
 
 ## [Sección 266] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 247
@@ -8304,9 +7549,6 @@ lines of, “Well, the $49.99 one is more expensive, so I’m sure it offers
 better protection for my knees or feels more comfortable. Probably
 both.”
 This was very powerful because, in my head, I was not thinking
-
--- 257 of 501 --
-
 ---
 
 ## [Sección 267] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 248
@@ -8338,9 +7580,6 @@ some selections simply because the merchant labeled it at a low
 price.
 ¹⁶⁶Daniel Kahneman. *Thinking, Fast and Slow.” P41. Farrar, Straus and Giroux. New
 York, NY. 2013.
-
--- 258 of 501 --
-
 ---
 
 ## [Sección 268] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 249
@@ -8375,9 +7614,6 @@ is no longer paying $5 to buy some pixels on their screen. They are
 spending $5 to save their time, which becomes a phenomenal deal.
 Can you see how game design can influence people’s sense of value
 by alternating between time and money?
-
--- 259 of 501 --
-
 ---
 
 ## [Sección 269] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 250
@@ -8414,9 +7650,6 @@ you to consider running a marathon.
 This leads to a game technique I call Anchored Juxtaposition. With
 this technique, you place two options side by side: one that costs
 money, the other requiring a great amount of effort in accomplish-
-
--- 260 of 501 --
-
 ---
 
 ## [Sección 270] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 251
@@ -8452,9 +7685,6 @@ complete your profile!” users won’t be motivated to take the actions
 because they clearly recognize it as being beneficial for the system,
 but not for themselves.
 Only when you put those two options together - hence Juxtaposition, do people become more open to both options, and often
-
--- 261 of 501 --
-
 ---
 
 ## [Sección 271] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 252
@@ -8477,9 +7707,6 @@ accelerated the company’s growth to a point where it reportedly
 raised over $300 million, with a valuation of around $10 billion and
 revenues above $200 million in 2013. Not too shabby for a company
 that didn’t exist seven years prior to that.
-
--- 262 of 501 --
-
 ---
 
 ## [Sección 272] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 253
@@ -8507,9 +7734,6 @@ where the difficulty of the challenge must increase along with the
 skill set of the user. Too much challenge leads to anxiety. Too little
 challenge leads to boredom.
 ¹⁶⁷Wikipedia Entry, “Mihaly Csikszentmihalyi”: http://en.wikipedia.org/wiki/Mihaly_Csikszentmihalyi. Accessed 1/20/2015.
-
--- 263 of 501 --
-
 ---
 
 ## [Sección 273] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 254
@@ -8531,9 +7755,6 @@ the limit.
 This means that you should place a limit on an activity if you want
 ¹⁶⁸Brian Wansink. Mindless Eating: Why We Eat More Than We Think. Bantam.
 10/17/2006.
-
--- 264 of 501 --
-
 ---
 
 ## [Sección 274] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 255
@@ -8568,9 +7789,6 @@ the Win-State.
 One of the most common examples are Happy Hours, where by
 hitting the Win-State of showing up at the right time, people get to
 ¹⁶⁹Seth Priebatsch. TEDx Boston. “Game Layer on top of our world”. 07/2010.
-
--- 265 of 501 --
-
 ---
 
 ## [Sección 275] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 256
@@ -8605,9 +7823,6 @@ of the day, but during lunch time, foot traffic and sales drops
 significantly. To motivate people to show up during lunch time
 (Desired Action), they mustered up the principles of Core Drive 6:
 ¹⁷⁰Nir Eyal. Hooked. Kindle Version v 1.0. Chapter 2: Trigger. 2014.
-
--- 266 of 501 --
-
 ---
 
 ## [Sección 276] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 257
@@ -8630,9 +7845,6 @@ to show up. In the case of eMart, the QR code links to a coupon that
 consumers can redeem immediately for a purchase online.
 This tactic reportedly improved eMart’s noon time sales by 25%.
 Not bad when you are already the largest player in the industry.
-
--- 267 of 501 --
-
 ---
 
 ## [Sección 277] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 258
@@ -8669,9 +7881,6 @@ hand in hand together (sometimes after a Torture Break is triggered,
 an Appointment Dynamic follows), it is important to note the
 difference so you can plan your gamified systems accurately.
 In the example of social mobile games, because the player was
-
--- 268 of 501 --
-
 ---
 
 ## [Sección 278] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 259
@@ -8696,9 +7905,6 @@ very well. After losing a life, the game pauses and forces you to wait
 25 minutes before you can gain another life and proceed to the next
 level.
 ¹⁷¹MarketWatch. “Candy Crush Maker Reports Lower Revenue Earnings”. 11/06/2014.
-
--- 269 of 501 --
-
 ---
 
 ## [Sección 279] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 260
@@ -8715,9 +7921,6 @@ Another good example of the Torture Break is the “Fail Whale” in
 the early years of Twitter. The Twitter site was often down in 2007.
 Though this frustrated many users, they waited more eagerly for
 the service to return, while talking about it on Facebook.
-
--- 270 of 501 --
-
 ---
 
 ## [Sección 280] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 261
@@ -8738,9 +7941,6 @@ quit, they needed to quit on their own terms. When these players
 were prevented from playing because they “couldn’t,” their desire
 to play actually increased.
 What made the situation worse was that players would occasionally
-
--- 271 of 501 --
-
 ---
 
 ## [Sección 281] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 262
@@ -8776,9 +7976,6 @@ monitor the top-level players, their interface could make you dizzy.
 There may be close to a dozen little windows open, all with different
 stats, options, and icons. It displays a plethora of information about
 how your teammates are doing, how the boss is doing, where
-
--- 272 of 501 --
-
 ---
 
 ## [Sección 282] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 263
@@ -8800,9 +7997,6 @@ features (not just one, since our Core Drive 3 loves choice), and
 have them slowly unlock more, then they begin to enjoy and love
 the complexity.
 ¹⁷²Image by Shamus from http://www.shamusyoung.com/twentysidedtale/?p=8660.
-
--- 273 of 501 --
-
 ---
 
 ## [Sección 283] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 264
@@ -8818,16 +8012,13 @@ One company that did implement the Evolved UI concept was Sony,
 calling it Evolution UI ¹⁷³(in fact, I modified my game technique
 name to fit Sony’s, just to avoid semantical ambiguity within the
 industry).
-Though the Android smartphone system developed by Google was
+Though the Web Platform smartphone system developed by Google was
 very powerful, Sony realized that it had a high learning curve
 that could fluster beginning users. To address the situation, they
 launched the Evolution UI, which presented a very limited set of
 core options during the Onboarding process.
-¹⁷³Daniel Cooper. Engadget. “Sony’s Evolution UI tries to make learning Android fun”.
+¹⁷³Daniel Cooper. Engadget. “Sony’s Evolution UI tries to make learning Web Platform fun”.
 04/30/2014.
-
--- 274 of 501 --
-
 ---
 
 ## [Sección 284] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 265
@@ -8842,9 +8033,6 @@ So what’s the consequence of having an UI that is too complex at
 the beginning? Google Plus. As mentioned earlier, even with a lot
 of great features and functions, Google Plus did not have sticky
 traction because of the learning curve it required. Most mainstream
-
--- 275 of 501 --
-
 ---
 
 ## [Sección 285] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 266
@@ -8878,9 +8066,6 @@ time, energy investment, or reputation in their organizations.
 Beyond pricing, you may want to create a sense of exclusivity for
 each step during the Discovery and Onboarding stages. A design,
 where the service makes them feel that it’s uniquely for them and
-
--- 276 of 501 --
-
 ---
 
 ## [Sección 286] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 267
@@ -8911,9 +8096,6 @@ Drive 6 becomes a great engine to drive online consumer action.
 Finally, working alongside Core Drive 8: Loss & Avoidance, Scarcity
 and Impatience becomes a powerful force that not only pushes for
 action, but pushes for action with extremely strong urgency.
-
--- 277 of 501 --
-
 ---
 
 ## [Sección 287] Chapter 10: The Sixth Core Drive: Scarcity & Impatience 268
@@ -8943,9 +8125,6 @@ through the site and offer a guest piece to promote your work. I’ve
 done all this work so you could learn a little bit from me. I would
 love to get the opportunity to learn from you too!
 ¹⁷⁴My Blog: YukaiChou.com
-
--- 278 of 501 --
-
 ---
 
 ## [Sección 288] Chapter 11: The Seventh
@@ -8958,8 +8137,6 @@ infatuation with experiences that are uncertain and involve chance.
 As mentioned in earlier chapters, our intellectual consciousness is
 inherently lazy, and if the tasks at hand do not demand immediate
 attention, the neocortex delegates the mental legwork to our sub-
--- 279 of 501 --
-
 ---
 
 ## [Sección 289] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 270
@@ -8993,9 +8170,6 @@ feel utterly insulted that I tried to dupe them into playing in the
 York, NY. 2013.
 ¹⁷⁶Oren Klaff. Pitch Anything. 1 Edition. McGraw-Hill. 02/16/2011.
 ¹⁷⁷Jesse Schell.The Art of Game Design. P26. CRC Press. Boca Rato, FL. 2008.
-
--- 280 of 501 --
-
 ---
 
 ## [Sección 290] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 271
@@ -9028,9 +8202,6 @@ phenomenon is the Skinner Box¹⁷⁹.
 ¹⁷⁸Max Seidman. Most Dangerous Game Design. “The Psychology of Rewards in Games”.
 Access 01/25/2015.
 ¹⁷⁹Image from http://www.mostdangerousgamedesign.com/2013/08/the-psychology-ofrewards-in-games.html
-
--- 281 of 501 --
-
 ---
 
 ## [Sección 291] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 272
@@ -9057,9 +8228,6 @@ hungry or not. The system was simply “messing” with its brain:
 Here we see that satisfying our burning curiosity is intrinsically
 motivating to our primitive brain, sometimes more so than the
 ¹⁸⁰Image from http://www.mostdangerousgamedesign.com/2013/08/the-psychology-ofrewards-in-games.html
-
--- 282 of 501 --
-
 ---
 
 ## [Sección 292] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 273
@@ -9095,9 +8263,6 @@ could persevere in the startup world as a young entrepreneur. As
 you can see, being “lucky” in a scenario of chance can install a
 higher sense of mission and purpose. The same goes for the effects
 of Beginner’s Luck (Game Technique #23), where people who are
-
--- 283 of 501 --
-
 ---
 
 ## [Sección 293] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 274
@@ -9133,9 +8298,6 @@ Some Sweepstakes are theme-based, tying in some Core Drive 4:
 ¹⁸¹Krista Bunskoek. Wishpond Blog. “10 Amazing Examples of Branded Facebook Contests Done Right. Access 1/25/2014.
 ¹⁸²PR Newswire. Press Release: “Eggo Sparks Kitchen Creativity With Eight Weeks Of
 Waffle Wednesdays”. 09/10/2013.
-
--- 284 of 501 --
-
 ---
 
 ## [Sección 294] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 275
@@ -9149,9 +8311,6 @@ to be the new “Faces of Dove” at various stores in the huge local
 Shoppers Drug Mart Canadian retail chain.
 ¹⁸³Jennifer Powell. Business2Community.com. “The Art of Crafting Engaging Social
 Media Contests”. 1/13/2014.
-
--- 285 of 501 --
-
 ---
 
 ## [Sección 295] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 276
@@ -9163,9 +8322,6 @@ them on, with a prize that appealed to status while giving users
 a higher sense of ownership.
 Another less-effective example of a theme-based sweepstake is the
 Father’s Day Clock Giveaway launched by Tires Plus, which used an
-
--- 286 of 501 --
-
 ---
 
 ## [Sección 296] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 277
@@ -9200,9 +8356,6 @@ This prompted users to enthusiastically shake their phones in front
 of the television screen, hoping for prizes that may or may not pop
 ¹⁸⁴Krista Bunskoek. Wishpond Blog. “10 Amazing Examples of Branded Facebook Contests Done Right. Access 1/25/2014.
 ¹⁸⁵Branding Magazine. “‘Chok’ With Coca-Cola”. 12/12/2011.
-
--- 287 of 501 --
-
 ---
 
 ## [Sección 297] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 278
@@ -9235,9 +8388,6 @@ numbers below tell a compelling story.
 On one project, LuckyDiem worked with La Quinta Inns and Suites
 – an international hotel chain consisting of over 700 properties and
 franchises – to supercharge their loyalty program through a new
-
--- 288 of 501 --
-
 ---
 
 ## [Sección 298] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 279
@@ -9271,9 +8421,6 @@ with it).
 based on how many users invite other users. The formula is k = i * c, where i is the number
 of invites sent by each customer, and c is the percent conversion of each invite. A K-factor
 of over 1 indicates viral growth.
-
--- 289 of 501 --
-
 ---
 
 ## [Sección 299] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 280
@@ -9281,9 +8428,6 @@ of over 1 indicates viral growth.
 To play, users needed virtual tokens, which is a good utilization of
 Core Drive 6: Scarcity & Impatience. Tokens are recharged regularly, with an additional wheel of fortune game that can generate
 more tokens once the initial supply runs out.
-
--- 290 of 501 --
-
 ---
 
 ## [Sección 300] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 281
@@ -9298,9 +8442,6 @@ general La Quinta points were accumulating as they played - a
 combination of Core Drive 2 and Core Drive 4. These techniques
 are called Lotteries and Rolling Rewards, which we’ll discuss later
 in the chapter.
-
--- 291 of 501 --
-
 ---
 
 ## [Sección 301] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 282
@@ -9312,9 +8453,6 @@ If you have been studying my work, you will know that much of the
 above is merely the “shell” of a game. Though a fantastic success
 story, if you simply copied their game devices and mechanics for
 your own project, you may not experience the same success. The
-
--- 292 of 501 --
-
 ---
 
 ## [Sección 302] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 283
@@ -9345,9 +8483,6 @@ Framework.” - Andrew Landis, Founder & CEO of LuckyDiem
 In 2015, Lucky Diem decided to use these powerful game design
 techniques to focus on helping brick-and-mortar businesses engage
 ¹⁸⁷Ariana Arghandewal. “Are You Playing the LaQuinta Play & Stay Game?”. 12/13/2013.
-
--- 293 of 501 --
-
 ---
 
 ## [Sección 303] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 284
@@ -9369,9 +8504,6 @@ an scientist and throws novels, golf balls, broomsticks, and highly
 valued products such as the latest iPhone or iPad into the blender.
 Before blending the items, Dickson would ask the famous question,
 “Will it blend?”
-
--- 294 of 501 --
-
 ---
 
 ## [Sección 304] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 285
@@ -9391,9 +8523,6 @@ can shred golf balls into dust. I’m sure my vegetables wouldn’t be
 that bad.”
 As an added bonus, the company became the natural recommendation too when friends and family’s mentioned that they needed
 a new blender. According to a case study released a couple years
-
--- 295 of 501 --
-
 ---
 
 ## [Sección 305] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 286
@@ -9411,9 +8540,6 @@ on Adobe’s Student Facebook Page called Real or Fake. Each week
 five bizarre looking images were posted and college students were
 challenged to determine whether the images were real or fake.
 ¹⁸⁸Christian Briggs. SociaLens. “BlendTec Will It Blend? Viral Video Case Study”. 01/2009.
-
--- 296 of 501 --
-
 ---
 
 ## [Sección 306] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 287
@@ -9430,9 +8556,6 @@ even if the students got the answer wrong, it only demonstrated
 how powerful Adobe’s Photoshop and Illustrator programs were.
 At the end of the one-month campaign, most users were impressed
 by Adobe’s products. According to Elisa Haidt, then Senior Market-
-
--- 297 of 501 --
-
 ---
 
 ## [Sección 307] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 288
@@ -9460,9 +8583,6 @@ designed to directly bypass all of that. It’s called the “I’m Feeling
 Lucky” button which took users directly to the website of the top
 search result.
 ¹⁸⁹Adam Kleinberg. iMedia Connection. “Case study: A Facebook campaign that connected”. 05/29/2009.
-
--- 298 of 501 --
-
 ---
 
 ## [Sección 308] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 289
@@ -9492,9 +8612,6 @@ There are a few reasons why: On one hand, if you believe in
 York. 2005.
 ¹⁹¹Nicholas Carlson. Gawker. ““I’m feeling lucky” button costs Google $110 million per
 year”. 11/20/2007.
-
--- 299 of 501 --
-
 ---
 
 ## [Sección 309] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 290
@@ -9523,9 +8640,6 @@ The doodles and the I’m Feeling Lucky Button have remained
 intact within the company culture despite their transformation into
 something “more corporate-like” in the early 2010’s.
 More recently, Google changed the “I’m Feeling Lucky” button so
-
--- 300 of 501 --
-
 ---
 
 ## [Sección 310] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 291
@@ -9560,9 +8674,6 @@ Impatience and Core Drive 7: Unpredictability & Curiosity to create
 a compelling experience for their users.
 ¹⁹²Sam Laird. Mashable. “Google’s ‘I’m Feeling Lucky’ Button Has a Cool New Trick”.
 8/24/2012.
-
--- 301 of 501 --
-
 ---
 
 ## [Sección 311] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 292
@@ -9598,9 +8709,6 @@ Make a Woot.com account and always sign in BEFORE the anticipated Bag of Crap. Y
 to your account after you finally get the page to load. On a similar
 note, make sure all your account information is correct when you
 ¹⁹³BiomedGirl Blog. “Woot and the Bag of Crap: How I got one”. 04/01/2011.
-
--- 302 of 501 --
-
 ---
 
 ## [Sección 312] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 293
@@ -9634,9 +8742,6 @@ heavily utilize this Core Drive to engage users.
 Glowing Choice (Game Technique #28)
 In Chapter 6, we briefly talked about how the Glowing Choice
 game technique makes users feel smart and competent during the
-
--- 303 of 501 --
-
 ---
 
 ## [Sección 313] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 294
@@ -9657,9 +8762,6 @@ Glowing Choice Screenshot of World of Warcraft
 Once engaged, the character will reveal the following quest or the
 next clue to help the player move forward in the game. The player
 now knows the next Desired Action and never feels directionless.
-
--- 304 of 501 --
-
 ---
 
 ## [Sección 314] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 295
@@ -9694,9 +8796,6 @@ giving users Fixed-Actions Rewards where the steps to obtain them
 are known - such as the “Earned Lunch” Game Technique in Core
 Drive 4: Ownership & Possession - you can build unpredictability
 into the experience by altering the context of how the reward is
-
--- 305 of 501 --
-
 ---
 
 ## [Sección 315] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 296
@@ -9732,9 +8831,6 @@ This goes on until the last player selects the last gift or steals from
 one of the others, which causes the individual whose gift is stolen to
 ¹⁹⁴Wikipedia Entry, “White Elephant Gift Exchange”:
 http://www.yukaichou.com/WhiteElephant
-
--- 306 of 501 --
-
 ---
 
 ## [Sección 316] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 297
@@ -9769,9 +8865,6 @@ these rewards are so unexpected the added feelings of excitement
 and good fortune make the experience extremely exciting. Sudden
 rewards incentivize customers to keep coming back in the hopes
 ¹⁹⁵Mystery Box Shop Website: http://www.mysteryboxshop.com
-
--- 307 of 501 --
-
 ---
 
 ## [Sección 317] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 298
@@ -9807,9 +8900,6 @@ previous version of Foursquare (a pioneering app in the gamification space, whic
 Retailer”. Accessed 1/25/2015.
 ¹⁹⁷Harrison Weber. Venture Beat. “How a Relaunch Saved Foursquare from Certain
 Death”. 08/10/2014.
-
--- 308 of 501 --
-
 ---
 
 ## [Sección 318] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 299
@@ -9828,9 +8918,6 @@ to lay down flowers and leave commemorative messages on the
 walls. Mario was at the Apple store and decided to check-in on
 Foursquare. Unexpectedly, he unlocked a new badge that was titled
 “Jobs” with the subtext, “Here’s to the crazy ones. #ThankYouSteve“
-
--- 309 of 501 --
-
 ---
 
 ## [Sección 319] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 300
@@ -9840,9 +8927,6 @@ few places, in a very narrow window of time. As you may expect,
 this was a huge surprise for Mario (not detracting from the somber
 event of Steve Job’s passing) that motivated him to check-in on
 Foursquare at more places and further compelled him to often talk
-
--- 310 of 501 --
-
 ---
 
 ## [Sección 320] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 301
@@ -9875,9 +8959,6 @@ additional tickets, or collecting additional entries. But again, the
 larger the program, the more daunting the odds.
 ¹⁹⁸Mario Herger. Enterprise Gamification. P94. EGC Media. San Bernardino, CA.
 07/24/2014.
-
--- 311 of 501 --
-
 ---
 
 ## [Sección 321] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 302
@@ -9911,9 +8992,6 @@ most impressed with is how the Taiwanese government uses gamification (specifica
 small businesses.
 Tax evasion is very common in many countries, where businesses
 ¹⁹⁹Adam Piore. Nautilus. “Why we keep playing the lottery”. 08/01/2013.
-
--- 312 of 501 --
-
 ---
 
 ## [Sección 322] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 303
@@ -9951,9 +9029,6 @@ awards over the past two decades, just by doing what she already
 does – buying groceries and essentials.
 As a result of the Uniform Invoice Lottery, the Finance Ministry
 collected 75% more in tax revenue in 1951 compared to 1950. Great
-
--- 313 of 501 --
-
 ---
 
 ## [Sección 323] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 304
@@ -9985,9 +9060,6 @@ emotions of fear and worry when matched with Core Drive 8: Loss
 & Avoidance.
 ²⁰⁰Seok Hwai, Lee. Straits Times. p. B1. “Odds of a jackpot hit just got better”. 08/06/2010.
 ²⁰¹Taipei Times. “Electronic receipts set to begin a trial run at select stores”. 12/19/2010.
-
--- 314 of 501 --
-
 ---
 
 ## [Sección 324] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 305
@@ -10022,9 +9094,6 @@ One of the creations I have on the Internet is a video tutorial
 series called Beginner’s Guide to Gamification. It is basically a
 combination of the Octalysis and gamification knowledge that you
 are reading from this book, footage from all my travels across
-
--- 315 of 501 --
-
 ---
 
 ## [Sección 325] Chapter 11: The Seventh Core Drive - Unpredictability & Curiosity 306
@@ -10038,9 +9107,6 @@ for you to review the contents learned from this book in an more
 entertaining way. The video series can be accessed on my website
 at http://www.yukaichou.com/video-guide²⁰².
 ²⁰²YukaiChou.com/Video-Guide
-
--- 316 of 501 --
-
 ---
 
 ## [Sección 326] Chapter 12: The Eighth Core
@@ -10053,8 +9119,6 @@ advance to the next round. Depending on the game’s design, dying
 or injuring your character means that you’re now forced to start
 over or lose something significant - be it coins, money, the number
 of lives you have, or other setbacks that make it more difficult to
--- 317 of 501 --
-
 ---
 
 ## [Sección 327] Chapter 12: The Eighth Core Drive - Loss & Avoidance 308
@@ -10087,9 +9151,6 @@ Many social games effectively employ Core Drive 8: Loss and
 Avoidance to motivate players towards taking the Desired Actions.
 In the now familiar example of Farmville, if we look at the early
 part of their onboarding stage, we can see that avoidance design
-
--- 318 of 501 --
-
 ---
 
 ## [Sección 328] Chapter 12: The Eighth Core Drive - Loss & Avoidance 309
@@ -10110,9 +9171,6 @@ be shown demoralizing images of crops withering and dying. This
 mildly depressing incident upsets the user, compelling them to log
 back in frequently to keep their crops alive. The player becomes
 proactively involved in avoiding this negative outcome.
-
--- 319 of 501 --
-
 ---
 
 ## [Sección 329] Chapter 12: The Eighth Core Drive - Loss & Avoidance 310
@@ -10129,9 +9187,6 @@ type of person who thinks that technology is a source of evil that
 is polluting society and crippling authentic relationships; she still
 barely checks her email.
 But in 2009, due to her close friend’s enthusiastic recommendation
-
--- 320 of 501 --
-
 ---
 
 ## [Sección 330] Chapter 12: The Eighth Core Drive - Loss & Avoidance 311
@@ -10164,9 +9219,6 @@ In early 2014, I was invited to the global conglomerate Huawei in
 Shenzhen, China to do a few workshops on gamification. During
 this trip, I had an assigned tour guide that took me to the beautiful
 Tea Stream Valley for a full day trip. (You can see much of this
-
--- 321 of 501 --
-
 ---
 
 ## [Sección 331] Chapter 12: The Eighth Core Drive - Loss & Avoidance 312
@@ -10200,9 +9252,6 @@ scarcity tactic was working, but $35 was still too expensive so I said,
 “Naw, like I said, it’s way too much.” Of course, I wasn’t bluffing. I
 truly did not intend to buy anything at that point.
 He then said, “Okay…I can do it for $25. Since the day’s about to
-
--- 322 of 501 --
-
 ---
 
 ## [Sección 332] Chapter 12: The Eighth Core Drive - Loss & Avoidance 313
@@ -10237,9 +9286,6 @@ As you can imagine, it was a very uncomfortable situation to be in.
 Nevertheless, it was also a very compelling educational experience.
 The power of Core Drive 8: Loss & Avoidance had taken over my
 behavior and I ended up paying him $40 for a rather mediocre
-
--- 323 of 501 --
-
 ---
 
 ## [Sección 333] Chapter 12: The Eighth Core Drive - Loss & Avoidance 314
@@ -10276,9 +9322,6 @@ As a result, when we utilize design elements in an experience that
 appeal to Core Drive 8: Loss & Avoidance, it should only be at
 critical bumps where you really need the user to take the Desired
 Action. This should be followed by a series of White Hat Core
-
--- 324 of 501 --
-
 ---
 
 ## [Sección 334] Chapter 12: The Eighth Core Drive - Loss & Avoidance 315
@@ -10312,9 +9355,6 @@ to the pot. This often means that the players are not confident with
 ²⁰³Not everyone knows the rules of poker, but hopefully the text within
 is descriptive enough. For the full rules of Texas Hold’em Poker, visit:
 http://www.yukaichou.com/PokerRules
-
--- 325 of 501 --
-
 ---
 
 ## [Sección 335] Chapter 12: The Eighth Core Drive - Loss & Avoidance 316
@@ -10351,9 +9391,6 @@ conclude that there are three possible hands that, though extremely
 unlikely, this other person could have to beat you with. Maybe he’s
 just bluffing? You become nervous and start to think about how he
 played his hand in the last few moves. Your rational brain becomes
-
--- 326 of 501 --
-
 ---
 
 ## [Sección 336] Chapter 12: The Eighth Core Drive - Loss & Avoidance 317
@@ -10390,9 +9427,6 @@ opponent’s challenge and reveal both of the hands to see whose is
 bigger.
 Finally, as you already know in your heart, the person reveals that
 he actually does have a better hand than you. Instead of losing 40%
-
--- 327 of 501 --
-
 ---
 
 ## [Sección 337] Chapter 12: The Eighth Core Drive - Loss & Avoidance 318
@@ -10426,9 +9460,6 @@ attachment to what was already lost.
 The financially rational decision here is to cut your losses and
 invest your $400 million into other, more promising opportunities.
 (Unless, of course, you are investing for non-financial reasons - such
-
--- 328 of 501 --
-
 ---
 
 ## [Sección 338] Chapter 12: The Eighth Core Drive - Loss & Avoidance 319
@@ -10461,9 +9492,6 @@ binoculars.
 Whereas Nike+ makes users run primarily because of a feeling of
 Accomplishment (Core Drive 2), Zombies, Run! makes users run
 because they do not want to be eaten by zombies.
-
--- 329 of 501 --
-
 ---
 
 ## [Sección 339] Chapter 12: The Eighth Core Drive - Loss & Avoidance 320
@@ -10497,9 +9525,6 @@ don’t want to look like a loser in front of your friends (Core Drive
 5), hence you make a purchase.
 Some may argue that this doesn’t constitute a separate Core Drive.
 As an example, critics might point out that people are driven back
-
--- 330 of 501 --
-
 ---
 
 ## [Sección 340] Chapter 12: The Eighth Core Drive - Loss & Avoidance 321
@@ -10533,9 +9558,6 @@ and Happiness. New Haven, CT: Yale University Press. 02/24/2009.
 How to Correct Them. Simon & Schuster, New York. 01/12/2010.
 ²⁰⁷Daniel Kahneman. *Thinking, Fast and Slow.” P284. Farrar, Straus and Giroux. New
 York, NY. 2013.
-
--- 331 of 501 --
-
 ---
 
 ## [Sección 341] Chapter 12: The Eighth Core Drive - Loss & Avoidance 322
@@ -10571,9 +9593,6 @@ assignments, to publicly scolding them (hint: generally a terrible
 idea). All to make sure the employees emotionally acknowledge this
 sense of loss, and are motivated to work harder.
 However, when an employee has failed the performance goal and
-
--- 332 of 501 --
-
 ---
 
 ## [Sección 342] Chapter 12: The Eighth Core Drive - Loss & Avoidance 323
@@ -10610,9 +9629,6 @@ When it comes to interactions with people, it’s always easier to
 start off stern and then become lenient, rather than being nice
 ²⁰⁸An example would be the German billionaire Adolf Merckle who committed suicide
 after his wealth dropped from £8.5 billion to £6 billion.
-
--- 333 of 501 --
-
 ---
 
 ## [Sección 343] Chapter 12: The Eighth Core Drive - Loss & Avoidance 324
@@ -10646,9 +9662,6 @@ user goes into denial mode. The brain irrationally concludes, “Since
 I don’t know how to deal with it, it’s probably not that big of a
 problem anyway.” Status Quo Sloth, which we will learn about later
 in this chapter, then dominates over the motivation towards lossprevention.
-
--- 334 of 501 --
-
 ---
 
 ## [Sección 344] Chapter 12: The Eighth Core Drive - Loss & Avoidance 325
@@ -10683,9 +9696,6 @@ behavior”. 1965.
 ²¹⁰The original quote is: “The only thing we have to fear is fear itself.”
 ²¹¹Noah Goldstein, Steve Martin, and Robert Cialdini. Yes! 50 Scientifically Proven Ways
 to Be Persuasive. P44. Simon & Schuster. New York, NY. 2010.
-
--- 335 of 501 --
-
 ---
 
 ## [Sección 345] Chapter 12: The Eighth Core Drive - Loss & Avoidance 326
@@ -10720,9 +9730,6 @@ compelling. Previously, the hassle of signing up did not justify the
 3000 credits, but now it feels like you have “earned” these credits
 from your “hard work” of clicking around the site and the idea of
 losing what you have rightfully obtained feels absurd. As a result,
-
--- 336 of 501 --
-
 ---
 
 ## [Sección 346] Chapter 12: The Eighth Core Drive - Loss & Avoidance 327
@@ -10757,9 +9764,6 @@ employee leaves after 3 months, they get nothing. After staying for
 a year, they will immediately get ⅟4 of their entire equity package,
 and then start accumulating 1/48 every month from that point on.
 The purpose of the cliff is to make sure there isn’t a plethora of exemployees who own equity when they have barely contributed to
-
--- 337 of 501 --
-
 ---
 
 ## [Sección 347] Chapter 12: The Eighth Core Drive - Loss & Avoidance 328
@@ -10796,9 +9800,6 @@ was 40% higher than her pay at the time, and as you might expect, never went bac
 manager.
 ²¹³Douglas McIntyre. DailyFinance.com. “The 10 Most Infamous Family Inheritance
 Feuds”. 06/06/2011.
-
--- 338 of 501 --
-
 ---
 
 ## [Sección 348] Chapter 12: The Eighth Core Drive - Loss & Avoidance 329
@@ -10835,9 +9836,6 @@ a lifetime loyal customer. That finally convinced him! I couldn’t
 believe it! Now, of course there’s no real pressure for you to actually
 become a lifetime customer, but you have to take the deal today. If
 you walk away, I guarantee you my boss will quickly come to his
-
--- 339 of 501 --
-
 ---
 
 ## [Sección 349] Chapter 12: The Eighth Core Drive - Loss & Avoidance 330
@@ -10870,9 +9868,6 @@ Status Quo Sloth (Game Technique #85) and the
 FOMO Punch (Game Technique #84)
 Sometimes Core Drive 8: Loss & Avoidance comes in the form
 of simply not wanting to change your behavior. I call this lazy
-
--- 340 of 501 --
-
 ---
 
 ## [Sección 350] Chapter 12: The Eighth Core Drive - Loss & Avoidance 331
@@ -10908,9 +9903,6 @@ an investment, where the user will build value for themselves when
 they return again via the next trigger. Investments are things like
 adding a photo, tagging friends, customizing folders, where the
 ²¹⁴Nir Eyal. Hooked. Kindle Version v 1.0. 2014.
-
--- 341 of 501 --
-
 ---
 
 ## [Sección 351] Chapter 12: The Eighth Core Drive - Loss & Avoidance 332
@@ -10945,9 +9937,6 @@ new experience. In contrast, the Status Quo Sloth technique plays a
 bigger role in the Endgame phase when the designer wants to keep
 the veterans in the system.
 ²¹⁵Jay Elliot and William Simon. The Steve Jobs Way. P90-91. Vanguard Press. 03/08/2011.
-
--- 342 of 501 --
-
 ---
 
 ## [Sección 352] Chapter 12: The Eighth Core Drive - Loss & Avoidance 333
@@ -10983,9 +9972,6 @@ are more likely to change our behavior based on loss-prevention
 ²¹⁶Johan Huizinga. Homo Ludens; A Study of the Play-Element in Culture. Beacon Press,
 Boston, MA. 1955.
 ²¹⁷Adam Piore. Nautil.us. “Why We Keep Playing the Lottery”. 08/01/2013.
-
--- 343 of 501 --
-
 ---
 
 ## [Sección 353] Chapter 12: The Eighth Core Drive - Loss & Avoidance 334
@@ -11020,9 +10006,6 @@ emptiness, you instead convince yourself to use that powerful
 pristine sword to kill even more monsters, or tap into the two
 ²¹⁸Adam Piore. Nautil.us. “Why We Keep Playing the Lottery”.
 08/01/2013.](http://nautil.us/issue/4/the-unlikely/why-we-keep-playing-the-lottery)
-
--- 344 of 501 --
-
 ---
 
 ## [Sección 354] Chapter 12: The Eighth Core Drive - Loss & Avoidance 335
@@ -11059,9 +10042,6 @@ from the Facebook games I played. Facebook was smart in designing
 a product that people used so frequently and invested so much into
 that they would have a difficult time leaving – a sunk cost prison
 indeed.
-
--- 345 of 501 --
-
 ---
 
 ## [Sección 355] Chapter 12: The Eighth Core Drive - Loss & Avoidance 336
@@ -11095,9 +10075,6 @@ In many cases, Core Drive 8: Loss & Avoidance works hand-inhand with Core Drive 
 and limited offers often come packaged with the anticipated fear of
 losing that exclusivity or having that offer fade away. These two
 Core Drives don’t necessarily have to coexist though. For instance,
-
--- 346 of 501 --
-
 ---
 
 ## [Sección 356] Chapter 12: The Eighth Core Drive - Loss & Avoidance 337
@@ -11131,9 +10108,6 @@ the Sunk Cost Prison while you still enjoyed their services, and how
 you can possibly escape it when you would like to switch.
 ²¹⁹Daniel Kahneman. *Thinking, Fast and Slow.” P317. Farrar, Straus and Giroux. New
 York, NY. 2013.
-
--- 347 of 501 --
-
 ---
 
 ## [Sección 357] Chapter 12: The Eighth Core Drive - Loss & Avoidance 338
@@ -11168,17 +10142,11 @@ able to catch me broadcasting actual gameplay research. I also
 announce when I plan to live stream on my Twitter account at
 http://www.twitter.com/yukaichou so that’s another place to experience a FOMO Punch.
 Okay, time for me to do another research session. I’ll see you during
-
--- 348 of 501 --
-
 ---
 
 ## [Sección 358] Chapter 12: The Eighth Core Drive - Loss & Avoidance 339
 
 game-streaming.
-
--- 349 of 501 --
-
 ---
 
 ## [Sección 359] Chapter 13: Left Brain vs
@@ -11193,8 +10161,6 @@ action takes place (that is, with the exception of the hidden ninth
 Core Drive: Sensation).
 You may have noticed that I always include a specific number
 with each Core Drive, and in some instances, I’ve only mentioned
--- 350 of 501 --
-
 ---
 
 ## [Sección 360] Chapter 13: Left Brain vs Right Brain Core Drives 341
@@ -11227,9 +10193,6 @@ Learners out there, see if you can envision how these effects might take place f
 set of events
 ²²¹Arnaud Chevallier. Powerful-Problem-Solving.com. “Be MECE (mutually exclusive
 and collectively exhaustive)”. 07/02/2010.
-
--- 351 of 501 --
-
 ---
 
 ## [Sección 361] Chapter 13: Left Brain vs Right Brain Core Drives 342
@@ -11259,9 +10222,6 @@ attack my work, pinpointing how the “left brain vs. right brain”
 model has been debunked and therefore is no longer scientifically
 valid. From my perspective, this is simply an issue of semantics, for
 I could very well name the emotional Core Drives, “Rainbow Core
-
--- 352 of 501 --
-
 ---
 
 ## [Sección 362] Chapter 13: Left Brain vs Right Brain Core Drives 343
@@ -11295,9 +10255,6 @@ and motivated to complete the task. More often than not, people go
 to work everyday not because they actually love doing the work,
 but because they want to make a living, advance their careers, and
 be recognized for higher achievements.
-
--- 353 of 501 --
-
 ---
 
 ## [Sección 363] Chapter 13: Left Brain vs Right Brain Core Drives 344
@@ -11334,9 +10291,6 @@ winning. If the unpredictability is removed and people know with
 absolute certainty that they will get $40 after pressing those buttons
 for five hours, they will no longer think it is fun. In fact, it would
 become very similar to the dreadful work of laboring in a factory.
-
--- 354 of 501 --
-
 ---
 
 ## [Sección 364] Chapter 13: Left Brain vs Right Brain Core Drives 345
@@ -11369,9 +10323,6 @@ Action or not?
 In other words, at the end of the day, if the basketball player knows
 ²²²Daniel Pink. Drive. Penguin Group, New York, NY. 2009.
 ²²³Daniel Pink. Drive. Pages 107 - 128. Penguin Group, New York, NY. 2009.
-
--- 355 of 501 --
-
 ---
 
 ## [Sección 365] Chapter 13: Left Brain vs Right Brain Core Drives 346
@@ -11406,9 +10357,6 @@ Reward, it is not based on Intrinsic Motivation.
 This is slightly tricky to comprehend, but along the lines of Michael
 ²²⁴Michael Wu. Lithium Science of Social Blog. “Intrinsic vs. Extrinsic Rewards (and Their
 Differences from Motivations)”2/18/2014.
-
--- 356 of 501 --
-
 ---
 
 ## [Sección 366] Chapter 13: Left Brain vs Right Brain Core Drives 347
@@ -11444,9 +10392,6 @@ Externally Mediated Rewards on Intrinsic Motivation.” 1971.
 ²²⁶Mark Lepper, David Greene, and Robert Nisbett. Journal of Personality and Social
 Psychology 28, no. 1. P129-137. “Undermining Children’s Intrinsic Interest with Extrinsic
 Rewards: A Test of the ‘Overjustification’ Hypothesis”. 1973.
-
--- 357 of 501 --
-
 ---
 
 ## [Sección 367] Chapter 13: Left Brain vs Right Brain Core Drives 348
@@ -11483,9 +10428,6 @@ result in a negative impact on overall performance.”²²⁸
 Boston Working Paper No. 05/-11. “Large Stakes and Big Mistakes”. 07/23/2005.
 ²²⁸Bernd Irlenbusch. London School of Economics and Political Science. “LSE: When
 Performance-Related Pay Backfires.” 06/25/2009.
-
--- 358 of 501 --
-
 ---
 
 ## [Sección 368] Chapter 13: Left Brain vs Right Brain Core Drives 349
@@ -11517,9 +10459,6 @@ school and training, that intrinsic motivation to learn quickly shifts
 into the extrinsic desire to obtain good grades, appease parents
 and teachers, gain respect from classmates, and secure prestigious,
 ²²⁹Dan Ariely. New York Times. “What’s the Value of a Big Bonus”. 11/20/2008.
-
--- 359 of 501 --
-
 ---
 
 ## [Sección 369] Chapter 13: Left Brain vs Right Brain Core Drives 350
@@ -11556,9 +10495,6 @@ How else would you tell the President that the economy would dry
 up if he doesn’t bail out certain banks for nine billion dollars, or
 calculate how many days it takes for an asteroid the size of Texas
 to hit earth?” I said.
-
--- 360 of 501 --
-
 ---
 
 ## [Sección 370] Chapter 13: Left Brain vs Right Brain Core Drives 351
@@ -11593,9 +10529,6 @@ course, or because they feel the professor incorrectly graded their
 tests and want to get their points back.
 As a result of this extrinsic focus, students often forget what they
 learned immediately after their exams.
-
--- 361 of 501 --
-
 ---
 
 ## [Sección 371] Chapter 13: Left Brain vs Right Brain Core Drives 352
@@ -11628,9 +10561,6 @@ There are studies that illustrate how our creative problem solving
 skills diminish when we are offered financial rewards. One of the
 more famous and effective demonstrations is the “Candle Problem”
 quoted earlier.
-
--- 362 of 501 --
-
 ---
 
 ## [Sección 372] Chapter 13: Left Brain vs Right Brain Core Drives 353
@@ -11651,9 +10581,6 @@ that he was simply having them establish the norms for how long
 it typically took people to solve the problem.
 ²³⁰Creativity Development and Innovation for SMEs“Exercise 6: The Candle Problem”.
 http://icreate-project.eu/index.php?t=245
-
--- 363 of 501 --
-
 ---
 
 ## [Sección 373] Chapter 13: Left Brain vs Right Brain Core Drives 354
@@ -11675,9 +10602,6 @@ require less creativity? If the problem is described using the Illustra-
 Strength of Drive on Functional Fixedness and Perceptual Recognition”. 1962.
 ²³²Creativity Development and Innovation for SMEs“Exercise 6: The Candle Problem”.
 http://icreate-project.eu/index.php?t=245
-
--- 364 of 501 --
-
 ---
 
 ## [Sección 374] Chapter 13: Left Brain vs Right Brain Core Drives 355
@@ -11696,9 +10620,6 @@ resembles play. The mind searches for new, creative ways to do
 things. This makes the right solution easier to find because the mind
 ²³³Creativity Development and Innovation for SMEs“Exercise 6: The Candle Problem”.
 http://icreate-project.eu/index.php?t=245
-
--- 365 of 501 --
-
 ---
 
 ## [Sección 375] Chapter 13: Left Brain vs Right Brain Core Drives 356
@@ -11731,9 +10652,6 @@ But once we offer money for the service, the brain immediately
 shifts into a market mode norm. If we offer as little as 1¢ for
 ²³⁴Dan Ariely. Predictably Irrational. P76. Harper Perennial. New York, NY. 2010.
 ²³⁵Ibid. P78-82.
-
--- 366 of 501 --
-
 ---
 
 ## [Sección 376] Chapter 13: Left Brain vs Right Brain Core Drives 357
@@ -11769,9 +10687,6 @@ When the price was shifted from 1¢ to free, our brains shifted from
 the Market Norm of “This is a great deal! I must get more!” to the
 Social Norm of, “I don’t want to be a jerk and take too many. What
 ²³⁶Dan Ariely. Predictably Irrational. P75. Harper Perennial. New York, NY. 2010.
-
--- 367 of 501 --
-
 ---
 
 ## [Sección 377] Chapter 13: Left Brain vs Right Brain Core Drives 358
@@ -11807,9 +10722,6 @@ buy gifts for your date, once you make statements such as, “I would
 be happy to buy you this $80 steak!” or even “I’ve spent quite a
 bit of money on our dates now. Perhaps we should take this to
 ²³⁷Dan Ariely. Predictably Irrational. P81. Harper Perennial. New York, NY. 2010.
-
--- 368 of 501 --
-
 ---
 
 ## [Sección 378] Chapter 13: Left Brain vs Right Brain Core Drives 359
@@ -11844,9 +10756,6 @@ Obviously designing for Extrinsic Motivation is not all negative.
 Besides enhancing a person’s focus on completing monotonous
 routine tasks, it also generates initial interest and desire for the
 activity.
-
--- 369 of 501 --
-
 ---
 
 ## [Sección 379] Chapter 13: Left Brain vs Right Brain Core Drives 360
@@ -11877,9 +10786,6 @@ use Intrinsic Motivation to ensure their long term engagement.
 Through this process, users will start to enjoy the activity so much
 that they will focus on relishing the experience itself without
 thinking about what can be gained from the experience.
-
--- 370 of 501 --
-
 ---
 
 ## [Sección 380] Chapter 13: Left Brain vs Right Brain Core Drives 361
@@ -11913,9 +10819,6 @@ know whether they will like the experience themselves, let alone
 risk their friendships by spamming others. In fact, this prompting
 interface actually delays the First Major Win-State, which could be
 detrimental to the entire experience.
-
--- 371 of 501 --
-
 ---
 
 ## [Sección 381] Chapter 13: Left Brain vs Right Brain Core Drives 362
@@ -11947,9 +10850,6 @@ environments that foster socializing, even with areas that are noncritical to th
 can work together, utilize their unique strengths, and accomplish
 tasks together. This often makes an experience more intrinsically
 motivating and enjoyable.
-
--- 372 of 501 --
-
 ---
 
 ## [Sección 382] Chapter 13: Left Brain vs Right Brain Core Drives 363
@@ -11984,9 +10884,6 @@ make the reward variable, you add a layer of intrinsic excitement,
 much like how the animal in the Skinner Box continues to press the
 lever to get more food, even though it is no longer hungry.
 ²³⁸Nir Eyal. Hooked. Kindle Version v 1.0. 2014.
-
--- 373 of 501 --
-
 ---
 
 ## [Sección 383] Chapter 13: Left Brain vs Right Brain Core Drives 364
@@ -12023,9 +10920,6 @@ other side of town, the intrigue factor would be diminished and
 you would be less inclined to take this protracted action for me.
 Of course, if you consider me of high status and want to gain my
 liking, Core Drive 5: Social Influence & Relatedness might still be a
-
--- 374 of 501 --
-
 ---
 
 ## [Sección 384] Chapter 13: Left Brain vs Right Brain Core Drives 365
@@ -12061,9 +10955,6 @@ take the exact same actions to achieve the Win-State, there are no
 meaningful choices present for the user to express their creativity. If
 thirty of those hundred take one path, another thirty take a second
 path, and the last forty take a third path to reach the Win-State, a
-
--- 375 of 501 --
-
 ---
 
 ## [Sección 385] Chapter 13: Left Brain vs Right Brain Core Drives 366
@@ -12099,9 +10990,6 @@ overwhelmed.
 Don’t forget the Boosters!
 Finally, designing multiple Boosters as your rewards increases
 strategy and creative play within an experience. If users can choose
-
--- 376 of 501 --
-
 ---
 
 ## [Sección 386] Chapter 13: Left Brain vs Right Brain Core Drives 367
@@ -12133,9 +11021,6 @@ Creativity & Feedback in making Extrinsic Rewards more intrinsically motivating.
 truly engaging the individuals.
 ²³⁹Wikipedia Entry, “Mega Man”: http://www.yukaichou.com/megaman. Accessed
 02/09/2015.
-
--- 377 of 501 --
-
 ---
 
 ## [Sección 387] Chapter 13: Left Brain vs Right Brain Core Drives 368
@@ -12168,9 +11053,6 @@ Brain Core Drives into a project you have done in the past or
 are currently doing. Would that have improved motivation and
 engagement for the tasks themselves?
 Hard: Try to design a full engagement campaign that lures users
-
--- 378 of 501 --
-
 ---
 
 ## [Sección 388] Chapter 13: Left Brain vs Right Brain Core Drives 369
@@ -12205,9 +11087,6 @@ the concept of Human-Focused Design (as opposed to FunctionFocused Design), the 
 of various Core Drives. Think about which Core Drives you should
 use to communicate these concepts (maybe some Unpredictability?
 Scarcity? Social Influence? Epic Meaning?). Observe if the person
-
--- 379 of 501 --
-
 ---
 
 ## [Sección 389] Chapter 13: Left Brain vs Right Brain Core Drives 370
@@ -12219,9 +11098,6 @@ Explorers Facebook Group. If you haven’t joined the group yet,
 consider doing so and find one other person to learn/practice
 together. As we have learned in Core Drive 5, collaborative play
 makes everything even more intrinsically meaningful.
-
--- 380 of 501 --
-
 ---
 
 ## [Sección 390] Chapter 14: The Mysteries
@@ -12233,8 +11109,6 @@ Right Brain Core Drives differ in the nature of their motivation as
 well as their design methodologies, resulting in various short-term
 and long-term effects.
 In this chapter, we will examine the fascinating intricacies of White
--- 381 of 501 --
-
 ---
 
 ## [Sección 391] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 372
@@ -12265,9 +11139,6 @@ studying the Endgame Phase of different games. I became curious as
 to why the majority of successful games were obsessively addictive
 for many months, and then experience a huge user dropout with
 large numbers of players moving on with their lives.
-
--- 382 of 501 --
-
 ---
 
 ## [Sección 392] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 373
@@ -12305,9 +11176,6 @@ purpose. Based on this research, I started labeling a few Core Drives
 ²⁴¹Wikipedia Entry, “League of Legends”: http://www.yukaichou.com/LoL
 ²⁴²Wikipedia Entry, “Counter Strike”: http://www.yukaichou.com/CS
 ²⁴³Wikipedia Entry, “Call of Duty”: http://www.yukaichou.com/CD
-
--- 383 of 501 --
-
 ---
 
 ## [Sección 393] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 374
@@ -12340,9 +11208,6 @@ White Hat Core Drives are motivation elements that make us feel
 powerful, fulfilled, and satisfied. They make us feel in control of our
 own lives and actions.
 ²⁴⁴Wikipedia Entry, “Search Engine Optimization”: http://www.yukaichou.com/SEO
-
--- 384 of 501 --
-
 ---
 
 ## [Sección 394] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 375
@@ -12377,9 +11242,6 @@ If a company simply implements White Hat Gamification while
 the user is constantly exposed to Black Hat stimuli from other
 sources such as email, appointments, or distractions from Facebook,
 they will most likely not have the opportunity to test out the
-
--- 385 of 501 --
-
 ---
 
 ## [Sección 395] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 376
@@ -12414,9 +11276,6 @@ Endgame – right in Onboarding phase!
 ²⁴⁵Zynga Official Website: zynga.com
 ²⁴⁶Mike Williams. Gamesindustry.biz. “Zynga’s high-speed, data-driven design vs console
 development”. 08/06/2012.
-
--- 386 of 501 --
-
 ---
 
 ## [Sección 396] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 377
@@ -12453,9 +11312,6 @@ you will know that the reason why these games became so popular
 ²⁴⁷Jeff Grubb. VentureBeat.com. “Zynga sticks with what works: Riches of Olympus is its
 next mobile slots game”. 02/06/2014.
 ²⁴⁸Ibid.
-
--- 387 of 501 --
-
 ---
 
 ## [Sección 397] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 378
@@ -12489,9 +11345,6 @@ themselves to live healthier and achieve their short term and long
 term goals. I would personally love to be addicted to eating more
 ²⁴⁹Words with Friends Page: zynga.com/games/words-friends
 ²⁵⁰Wikipedia Entry: “Scrabble”: http://en.wikipedia.org/wiki/Scrabble
-
--- 388 of 501 --
-
 ---
 
 ## [Sección 398] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 379
@@ -12518,9 +11371,6 @@ the snooze button.
 ²⁵¹John Balz. The Nudge Blog. “SnūzNLūz: The alarm clock that donates to your least
 favorite charity”.
 ²⁵²Charlie White. Mashable.com. “Money-Shredding Alarm Clock Is Completely Unforgiving [PICS]”. 05/29/2011.
-
--- 389 of 501 --
-
 ---
 
 ## [Sección 399] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 380
@@ -12542,9 +11392,6 @@ will often still perform the Desired Actions because, again, these
 tendencies are obsessive and/or addictive. They just won’t feel good
 about the actions and will burn out or revolt as time goes on.
 ²⁵³Charlie White. Mashable.com. “Money-Shredding Alarm Clock Is Completely Unforgiving [PICS]”. 05/29/2011.
-
--- 390 of 501 --
-
 ---
 
 ## [Sección 400] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 381
@@ -12579,9 +11426,6 @@ the work to become a lot more interesting and engaging (as opposed
 to paying them more) – is that exploiting them? What about
 providing them a stronger sense of purpose, accomplishment or
 autonomy?
-
--- 391 of 501 --
-
 ---
 
 ## [Sección 401] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 382
@@ -12615,9 +11459,6 @@ is transparency in what the hypnotizer is trying to accomplish, and
 b) the person fully opts-in to being hypnotized.
 At the end of the day, gamification is not mind control. When we
 see amazing case studies where gamification increased conversions
-
--- 392 of 501 --
-
 ---
 
 ## [Sección 402] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 383
@@ -12651,9 +11492,6 @@ Most large corporations make the mistake in believing that, because
 they pay their employees, their employees have to do their work
 ²⁵⁴SelfDeterminationTheory.org
 ²⁵⁵Daniel Pink. Drive. Penguin Group, New York, NY. 2009.
-
--- 393 of 501 --
-
 ---
 
 ## [Sección 403] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 384
@@ -12688,9 +11526,6 @@ engineer can become a manager, but every engineer needs to feel
 a sense of progress and development. As a result, they introduced
 ²⁵⁶David Vise & Mark Malseed. The Google Story. P93-96. Random House, New York, New
 York. 2005.
-
--- 394 of 501 --
-
 ---
 
 ## [Sección 404] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 385
@@ -12724,9 +11559,6 @@ leave.
 how does the promotion system work?”
 ²⁵⁸Patrick Goss. TechRadar.com. “Page: ‘more wood behind fewer arrows’ driving Google
 success”. 7/14/2011.
-
--- 395 of 501 --
-
 ---
 
 ## [Sección 405] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 386
@@ -12759,9 +11591,6 @@ work with them. We’ve turned that Black Hat Core Drive 8: Loss
 & Avoidance around. (Note: we will likely explore the strategy and
 process of turning Anti Core Drives around in a future book).
 ²⁵⁹Morf Media Website: morfmedia.com
-
--- 396 of 501 --
-
 ---
 
 ## [Sección 406] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 387
@@ -12794,9 +11623,6 @@ a lot of people are already in on the deal, and if the investor does
 not act this week the round will be full, only then will they finally
 react. Black Hat creates urgency and closes deals.
 When I was trying to raise $600,000 for my gamification startup
-
--- 397 of 501 --
-
 ---
 
 ## [Sección 407] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 388
@@ -12833,9 +11659,6 @@ it could potentially make the world a better place. But they didn’t
 acted until they saw that the deal was being taken away from them.
 ²⁶⁰If you are curious about some gamification companies I started during my younger
 youth, I document that in the post, “How Yu-kai Chou started in Gamification in 2003 and became a Pioneer in the Industry”: http://www.yukaichou.com/lifestyle-gamification/startedgamification-2003/
-
--- 398 of 501 --
-
 ---
 
 ## [Sección 408] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 389
@@ -12868,9 +11691,6 @@ constantly counting our runway before dying²⁶¹.
 ²⁶¹StartupDefinition.com Entry “Runway”: The amount of time until your startup goes out
 of business, assuming your current income and expenses stay constant. Typically calculated
 by dividing the current cash position by the current monthly burn rate.
-
--- 399 of 501 --
-
 ---
 
 ## [Sección 409] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 390
@@ -12905,9 +11725,6 @@ than Loss & Avoidance for losing $3.
 Returning to the concept of proportional loss, we see that despite
 ²⁶²Uri Gneezy and Aldo Rustichini. Journal of Legal Studies Vol. 29, No. 1. “A Fine is a
 Price”. 01/2000.
-
--- 400 of 501 --
-
 ---
 
 ## [Sección 410] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 391
@@ -12942,9 +11759,6 @@ to make them feel good about their experience.
 An example of this is seen in the previously mentioned game Battle
 Camp. In Battle Camp, there are often scenarios where you are in a
 “Troop” with twenty-four other players and the whole group needs
-
--- 401 of 501 --
-
 ---
 
 ## [Sección 411] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 392
@@ -12982,9 +11796,6 @@ this emotional confetti, people often start to think, “Hmm, maybe
 that was $10 well spent after all!” And this eventually trains their
 brains to be more open to spending the next $10 to buy energy and
 defeating the boss when necessary.
-
--- 402 of 501 --
-
 ---
 
 ## [Sección 412] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 393
@@ -13020,9 +11831,6 @@ Subsequently, whenever you see your shoes, it will remind you that
 you are a decent human being that benefits the world.
 It is the same thing with donations to children in developing
 countries. When you make a commitment, the non-profit will
-
--- 403 of 501 --
-
 ---
 
 ## [Sección 413] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 394
@@ -13056,9 +11864,6 @@ then becomes afraid of taking it anywhere because he is afraid to
 damage it or rack up miles. At the same time, he also doesn’t want
 to leave it at home because he’s afraid it might get stolen.
 There are also people who are so obsessed about building more
-
--- 404 of 501 --
-
 ---
 
 ## [Sección 414] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 395
@@ -13094,9 +11899,6 @@ towards the Desired Behavior, matched with the users’ freedom to
 opt in and out. If this is not carefully done, gamification design will
 fail the promise of making life more enjoyable and productive, and
 it would simply become a source of misery and bitterness - and then
-
--- 405 of 501 --
-
 ---
 
 ## [Sección 415] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 396
@@ -13129,9 +11931,6 @@ be the impact we wanted to have in this world. We ended up turning that particul
 down. Of course, we were also only able to do that because we were blessed with many great
 clients that more directly benefits society so we didn’t need to be driven by Core Drive 8:
 Loss & Avoidance.
-
--- 406 of 501 --
-
 ---
 
 ## [Sección 416] Chapter 14: The Mysteries of White Hat and Black Hat Gamification 397
@@ -13158,9 +11957,6 @@ and it will make all the time you have invested into this book more
 fulfilling. Chances are, there will be others in the group that will also
 have similar life experiences and choices as you and can help you
 understand your life motivations more through the 8 Core Drives.
-
--- 407 of 501 --
-
 ---
 
 ## [Sección 417] Chapter 15: Understanding
@@ -13190,8 +11986,6 @@ which framework to use for various projects.
 Because of this, I wanted to make sure that my readers have a deep
 understanding of my own model instead of a shallow knowledge
 ²⁶⁴GSummit Website: http://sf14.gsummit.com
--- 408 of 501 --
-
 ---
 
 ## [Sección 418] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13226,9 +12020,6 @@ economics, motivational psychology, and neurobiology to confirm
 (or extend) the principles behind the Core Drives. I knew that these
 Core Drives motivated us, but I didn’t have scientific publications
 to back it up until much later. Luckily for me, most people who hear
-
--- 409 of 501 --
-
 ---
 
 ## [Sección 419] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13265,9 +12056,6 @@ One of the things I like to do is study “clones” of games in order
 to understand why some clones are flops while others become
 ²⁶⁵Much of my work can be understood through the differences between can, have to,
 want to, compelled to, inspired to, and excited to when it comes to Desired Actions.
-
--- 410 of 501 --
-
 ---
 
 ## [Sección 420] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13304,9 +12092,6 @@ One of the things I like to do when playing financially successful
 games is to try and play them as seriously as I can while purposely
 resisting the pressure from the game design to spend money. There
 were many moments where I had an extremely strong urge to spend
-
--- 411 of 501 --
-
 ---
 
 ## [Sección 421] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13330,9 +12115,6 @@ UX/UI (User Experience/User Interface) design, technology platforms, and the obv
 all these elements to create a great game.
 ²⁶⁶Thai Nguyen. Huffingtonpost.com. “Hacking Into Your Happy Chemicals: Dopamine,
 Serotonin, Endorphins and Oxytocin”. 10/20/2014.
-
--- 412 of 501 --
-
 ---
 
 ## [Sección 422] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13351,9 +12133,6 @@ Theory several times. The Self-Determination Theory is a theory
 on motivation to understand our natural or intrinsic tendencies to
 behave in effective and healthy ways²⁶⁷. The theory demonstrates
 ²⁶⁷Self Determination Theory Website: selfdeterminationtheory.org
-
--- 413 of 501 --
-
 ---
 
 ## [Sección 423] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13373,9 +12152,6 @@ lends itself to Core Drive 3: Empowerment of Creativity and Feedback, while Rela
 Influence and Relatedness.
 ²⁶⁸Image Source: Edward L. Deci and Richard M. Ryan. Psychological Inquiry, Vol. 11,
 No. 4, 227–268. “The “What” and “Why” of Goal Pursuits: Human Needs and the SelfDetermination of Behavior”. 2000.
-
--- 414 of 501 --
-
 ---
 
 ## [Sección 424] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13394,9 +12170,6 @@ Theory also incorporates Right Brain (Intrinsic) Motivation through
 Core Drive 5: Social Influence & Relatedness.
 The Self-Determination Theory is a very good model that recognizes the power behind positive, White Hat, and intrinsic moti-
 ²⁶⁹Daniel Pink. Drive. P107-128. Penguin Group, New York, NY. 2009.
-
--- 415 of 501 --
-
 ---
 
 ## [Sección 425] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13430,9 +12203,6 @@ Pages 407-418. “Skill versus luck: A motivational analysis of gambling involve
 1996.
 ²⁷¹Richard Bartle. Mud.co.uk. “Hearts, Clubs, Diamonds, Spades: Players who suit MUDS”.
 April 1996.
-
--- 416 of 501 --
-
 ---
 
 ## [Sección 426] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13456,9 +12226,6 @@ Many people who work in gamification as well as game design
 build on Richard Bartle’s Four Player types. Game designer Amy Jo
 ²⁷²Image accessed from Gamasutra.com. “Designing Computer-Games Preemptively for
 Emotions and Player Types.” 06/19/13.
-
--- 417 of 501 --
-
 ---
 
 ## [Sección 427] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13481,9 +12248,6 @@ more motivated by different activities and experiences.
 02/28/2014.
 ²⁷⁴Ibid.
 ²⁷⁵Andrzej Marczewski. Gamified.uk. “User Types”. Accessed 2/17/2015.
-
--- 418 of 501 --
-
 ---
 
 ## [Sección 428] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13507,9 +12271,6 @@ and 4).
 ²⁷⁶Andrzej Marczewski. Gamified.uk. “User Types”. Accessed 2/17/2015.
 ²⁷⁷Youtube Video: “GSummit SF 2012: Richard Bartle - A Game Designer’s View of
 Gamification”. 9/27/2012.
-
--- 419 of 501 --
-
 ---
 
 ## [Sección 429] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13532,9 +12293,6 @@ acknowledge their superiority. In a smaller sense, they are also
 driven to come up with the best way to defeat the competition (Core
 Drive 3), avoid being killed or seen as weak themselves (Core Drive
 8), and ultimately, to count their wins and victories (Core Drive 4).
-
--- 420 of 501 --
-
 ---
 
 ## [Sección 430] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13559,9 +12317,6 @@ place. But since Richard Bartle was creating an open virtual world,
 there doesn’t seem to be any real sense of higher missions beyond
 virtual world idealism.
 Sometimes a smaller sense of Epic Meaning & Calling is created
-
--- 421 of 501 --
-
 ---
 
 ## [Sección 431] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13592,9 +12347,6 @@ measures at different times. The Octalysis Framework allows us to
 understand whether certain Core Drives are stronger with certain
 people, so that we can be aware and design for these differences
 appropriately.
-
--- 422 of 501 --
-
 ---
 
 ## [Sección 432] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13610,9 +12362,6 @@ The 4 Keys to Fun are: Hard Fun, Easy Fun, People Fun, and Serious
 Fun.
 ²⁷⁸Nicole Lazzaro. XEO Design. “Why We Play Games: Four Keys to More Emotion
 Without Story” 03/08/2004.
-
--- 423 of 501 --
-
 ---
 
 ## [Sección 433] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13631,9 +12380,6 @@ creating an impact in the environment.
 Lastly, People Fun is fun that you have because you are interacting
 with other people and forming relationships.
 If you again try to understand this with your Octalysis Glasses
-
--- 424 of 501 --
-
 ---
 
 ## [Sección 434] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13669,9 +12415,6 @@ time you engage them, it is the result of Core Drive 4: Ownership
 People Fun is generally a combination of the obvious Core Drive
 ²⁷⁹Jesse Schell. The Art of Game Design: A Book of Lenses. P183-184. CRC Press. Boca
 Raton. 2008.
-
--- 425 of 501 --
-
 ---
 
 ## [Sección 435] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13696,9 +12439,6 @@ Flow Theory. Csikszentmihalyi is a world-renowned scholar in the
 fields of psychology and management science, and is best known
 for creating the Flow Theory which combines the factors of a user’s
 skill level to the difficulty of the challenge.
-
--- 426 of 501 --
-
 ---
 
 ## [Sección 436] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13721,9 +12461,6 @@ Onboarding, Scaffolding, Endgame) the user quickly ends up being
 bored because they’ve outpaced the difficulty level.
 Even though the Flow theory by nature feels a bit different from
 the other models we’ve discussed, as it is less focused on classifying
-
--- 427 of 501 --
-
 ---
 
 ## [Sección 437] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13745,9 +12482,6 @@ planning.
 Right below Core Drive 6 we have Core Drive 2: Development &
 Accomplishment. This is the zone where the challenge is moderate
 and the user feels accomplished and competent. The user is in the
-
--- 428 of 501 --
-
 ---
 
 ## [Sección 438] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13786,9 +12520,6 @@ your witty comments (Core Drive 3) and impress others (Core Drive
 will make the experience pleasant and relaxing.
 If you look another level down, you could say that Core Drive
 7: Unpredictability & Curiosity is at the lowest level of Flow. We
-
--- 429 of 501 --
-
 ---
 
 ## [Sección 439] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13811,9 +12542,6 @@ In one of Csikszentmihalyi’s charts, as seen below, he includes a
 state of “relaxation” as a result of having skills that greatly surpass
 the challenge. Core Drive 7 then does not result in boredom but
 rather appropriate relaxation.
-
--- 430 of 501 --
-
 ---
 
 ## [Sección 440] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13832,9 +12560,6 @@ Fogg Behavior Model
 BJ Fogg, a professor of human behavior from Stanford, created a
 model that boils down all behavior into three factors: motivation,
 ²⁸⁰Image from Wikipedia: http://en.wikipedia.org/wiki/File:Challenge_vs_skill.svg
-
--- 431 of 501 --
-
 ---
 
 ## [Sección 441] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13871,9 +12596,6 @@ motivation. His conclusion calls for companies to focus on making
 ²⁸¹Fogg Behavior Model Website: behaviormodel.org
 ²⁸²Youtube Video: “Forget big change, start with a tiny habit: BJ Fogg at TEDxFremont”.
 12/05/2012.
-
--- 432 of 501 --
-
 ---
 
 ## [Sección 442] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13910,9 +12632,6 @@ particular health app. Even if people want to connect with their
 friends, there is still no incentive for them to share your product
 with their friends unless you design for it. And even if people
 ²⁸³Jane McGonigal. Reality is Broken. P22. Penguin Group. New York, NY. 2011.
-
--- 433 of 501 --
-
 ---
 
 ## [Sección 443] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13949,9 +12668,6 @@ of the desired behavior. We have seen in previous chapters that
 inconveniencing your users or walking away from a deal (if done
 right), can seriously boost motivation and actions too.
 So while Fogg’s Behavior Model itself is extremely useful in terms
-
--- 434 of 501 --
-
 ---
 
 ## [Sección 444] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -13991,9 +12707,6 @@ Core Drives match with BJ Fogg’s motivation components?
 http://www.yukaichou.com/heuristics. Accessed 02/17/2015.
 ²⁸⁷Wikipedia Entry, “List of cognitive biases”: http://www.yukaichou.com/cognitivebias.
 Accessed 02/17/2015.
-
--- 435 of 501 --
-
 ---
 
 ## [Sección 445] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -14029,9 +12742,6 @@ Drives. If not, the Feedback Mechanics become empty signals that
 do not trigger towards any Desired Actions.
 ²⁸⁸Yu-kai Chou. YukaiChou.com. “The Strategy Dashboard for Gamification Design”:
 http://www.yukaichou.com/strategydashboard. 07/14/2014.
-
--- 436 of 501 --
-
 ---
 
 ## [Sección 446] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -14067,9 +12777,6 @@ comes into play because the player can’t wait forever to commit
 the Desired Action - they have to do it now because it is urgent.
 ²⁸⁹Jane McGonigal. Reality is Broken. Penguin Group. New York, NY. 2011.
 ²⁹⁰Ibid. P69.
-
--- 437 of 501 --
-
 ---
 
 ## [Sección 447] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -14103,9 +12810,6 @@ Unpredictability & Curiosity isn’t very prominent, and we can think
 about how to add more suspense, surprise, and unpredictability into
 the experience beyond the four components.
 ²⁹¹Jane McGonigal. Reality is Broken. P53. Penguin Group. New York, NY. 2011.
-
--- 438 of 501 --
-
 ---
 
 ## [Sección 448] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -14141,9 +12845,6 @@ ONE of the below options to do right now:
 Medium: Pick a new model on human behavior (make sure it is
 related to actions, not necessarily emotions), and try to analyze it
 with Octalysis Glasses. What 8 Core Drives are present, and what
-
--- 439 of 501 --
-
 ---
 
 ## [Sección 449] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -14176,9 +12877,6 @@ Human-Motivation that you want to improve on.
 Think about what are the Quantifiable Metrics you want to improve. Who are the Users you are targeting and what Core Drives
 motivate them? What are the Desired Actions you need them to
 perform? What mediums can you communicate with them, show
-
--- 440 of 501 --
-
 ---
 
 ## [Sección 450] Chapter 15: Understanding Other Gamification and Behavioral Frameworks
@@ -14191,9 +12889,6 @@ be useful in any gamification design campaign. This will be a
 good foundation for Chapter 17. More information on the Octalysis
 Strategy Dashboard can be found on my blog at:
 http://www.yukaichou.com/gamification-study/the-strategy-dashboardfor-gamification-design/
-
--- 441 of 501 --
-
 ---
 
 ## [Sección 451] Chapter 16: Level I Octalysis
@@ -14223,8 +12918,6 @@ the motivation Core Drives that are present in an experience. In
 
 Octalysis. Let’s take a slightly closer look using your new familiarity
 with the 8 Core Drives.
--- 442 of 501 --
-
 ---
 
 ## [Sección 453] Chapter 16: Level I Octalysis in Action 433
@@ -14245,9 +12938,6 @@ refresh the News Feed updates, it’s as if we are pulling the lever on a
 slot machine - something he terms “Rewards of the Hunt.”²⁹² Every
 ²⁹²Nir Eyal. Hooked. Chapter 4: Variable Rewards - “Rewards of the Hunt”. Kindle Version
 v 1.0. 2014.
-
--- 443 of 501 --
-
 ---
 
 ## [Sección 454] Chapter 16: Level I Octalysis in Action 434
@@ -14284,9 +12974,6 @@ stuck with investing more of their time accumulating additional
 “valuables” that they are afraid to lose.
 As mentioned in Chapter 3, the only two Core Drives that Facebook
 is lacking on are Core Drive 1: Epic Meaning & Calling, as well as
-
--- 444 of 501 --
-
 ---
 
 ## [Sección 455] Chapter 16: Level I Octalysis in Action 435
@@ -14323,9 +13010,6 @@ Core Drive 6 efforts), there is no need to add Core Drive 6 if it isn’t
 trying to rapidly capture new users but to engage existing ones.
 So based on the quick Level 1 Octalysis review above, we recognize
 that Facebook would be more successful if it had a greater element
-
--- 445 of 501 --
-
 ---
 
 ## [Sección 456] Chapter 16: Level I Octalysis in Action 436
@@ -14357,9 +13041,6 @@ Finally, it would likely benefit Facebook if it easily allowed people to
 find and seek help from mentors or homework buddies. This would
 make people think that being on Facebook is very “productive” and
 decrease their resistance of it.
-
--- 446 of 501 --
-
 ---
 
 ## [Sección 457] Chapter 16: Level I Octalysis in Action 437
@@ -14395,9 +13076,6 @@ will come up with different scores for the same product. When
 people ask me how do I know the exact numbers assigned to each
 motivation, I just say that it is based on an intuitive feel after
 experiencing the system. However, the exact numbers aren’t really
-
--- 447 of 501 --
-
 ---
 
 ## [Sección 458] Chapter 16: Level I Octalysis in Action 438
@@ -14435,9 +13113,6 @@ expert on that Core Drive doing a lot of design, research, and A/B
 http://www.yukaichou.com/SWOT
 ²⁹⁴The well-known BCG Matrix is formally termed Growth Share Matrix and pioneered
 by the Boston Consulting Group:http://www.yukaichou.com/bcgmatrix
-
--- 448 of 501 --
-
 ---
 
 ## [Sección 459] Chapter 16: Level I Octalysis in Action 439
@@ -14471,9 +13146,6 @@ One of the most famous analogue designs in the gamification world
 is The Speed Camera Lottery by Volkswagen’s Fun Theory²⁹⁶. The
 ²⁹⁵Ramit Sethi’s Brain Trust: iwillteachyoutoberich.com/braintrust
 ²⁹⁶TheFunTheory.com. “The Speed Camera Lottery.” Accessed 03/20/2015.
-
--- 449 of 501 --
-
 ---
 
 ## [Sección 460] Chapter 16: Level I Octalysis in Action 440
@@ -14506,9 +13178,6 @@ to solve, and how to measure success. If we take the problem of
 decreasing speeding drivers as an ongoing campaign, we can then
 analyze it through the 8 Core Drives of Octalysis.
 Generally speaking, without any human intervention, driving within
-
--- 450 of 501 --
-
 ---
 
 ## [Sección 461] Chapter 16: Level I Octalysis in Action 441
@@ -14546,9 +13215,6 @@ bother. Also, it turns out that some people will also do the opposite
 of the Desired Action and try to see how high of a speed they can
 get recorded on the feedback device, which completely defeats the
 purpose of the design.
-
--- 451 of 501 --
-
 ---
 
 ## [Sección 462] Chapter 16: Level I Octalysis in Action 442
@@ -14585,9 +13251,6 @@ busy street with lots of other drivers and passengers nearby.
 Beyond just the desire to do well and win some money,
 the driver would recognize that everyone around could see
 ²⁹⁷Youtube Video: “The Speed Camera Lottery - The Fun Theory”. Accessed 03/20/2015.
-
--- 452 of 501 --
-
 ---
 
 ## [Sección 463] Chapter 16: Level I Octalysis in Action 443
@@ -14625,9 +13288,6 @@ in “gamified driving” is the navigation app Waze. As mentioned in
 how we navigate traffic through crowdsourcing real-time traffic
 and road condition data. Often receiving an average five star rating
 by tens of thousands of users, its fans have taken the mundane
-
--- 453 of 501 --
-
 ---
 
 ## [Sección 465] Chapter 16: Level I Octalysis in Action 444
@@ -14645,9 +13305,6 @@ competent when they reach the Win-State efficiently.
 experience of getting lost or feeling confused.
 But all navigation systems fulfill these two Core Drives, with some
 doing it better than others. As a new entrant into the industry, Waze
-
--- 454 of 501 --
-
 ---
 
 ## [Sección 466] Chapter 16: Level I Octalysis in Action 445
@@ -14680,9 +13337,6 @@ Many people discover the Waze app because of a mild form of
 Core Drive 7: Unpredictability & Curiosity. They heard about
 it somewhere, read about it through online media sites, or just
 ²⁹⁸Kevin Werbach. Slideshare.com. “Socialize14 keynote”. Uploaded 07/04/2014.
-
--- 455 of 501 --
-
 ---
 
 ## [Sección 467] Chapter 16: Level I Octalysis in Action 446
@@ -14716,9 +13370,6 @@ cute and brave knight Wazers. Below, it displays the tagline “Beat
 Traffic, Together.” This demonstrates that when users are driving
 with Waze, they are not just commuting to their destinations, but
 are actually helping an entire community of brave Wazers fight
-
--- 456 of 501 --
-
 ---
 
 ## [Sección 468] Chapter 16: Level I Octalysis in Action 447
@@ -14755,9 +13406,6 @@ modify the map, and share road conditions to others. However, the
 experience thus far has been smooth and intriguing enough that
 many users would be open to move forward and move into the
 Scaffolding Phase.
-
--- 457 of 501 --
-
 ---
 
 ## [Sección 469] Chapter 16: Level I Octalysis in Action 448
@@ -14792,9 +13440,6 @@ Phase is Core Drive 7: Unpredictability & Curiosity. When a user
 is alerted about a disabled car stuck on the roadside, their minds
 suddenly become engaged. “Will it be there? Will it be there?” This
 is what I call the Oracle Effect (Game Technique #71), where a
-
--- 458 of 501 --
-
 ---
 
 ## [Sección 470] Chapter 16: Level I Octalysis in Action 449
@@ -14828,9 +13473,6 @@ Of course, there are still some Core Drive 6: Scarcity & Impatience
 designs in the system, as the app still dangles a path to mastery
 towards becoming “Waze Royalty.” However, since the unlocked
 reward does not grant users more useful powers or actually represent an impressive status to others, from my observations, it does
-
--- 459 of 501 --
-
 ---
 
 ## [Sección 471] Chapter 16: Level I Octalysis in Action 450
@@ -14862,9 +13504,6 @@ migrating to other navigation services that offer similar FunctionFocused benefi
 important.
 During the Endgame, hardcore users who have been involved for a
 long time start taking more pride in being part of the community,
-
--- 460 of 501 --
-
 ---
 
 ## [Sección 472] Chapter 16: Level I Octalysis in Action 451
@@ -14900,9 +13539,6 @@ through Waze.
 Core Drive 6: Scarcity & Impatience as well as Core Drive 7:
 Unpredictability & Curiosity are also diminished, since the user has
 unlocked the high level avatars and the novelty factor (including
-
--- 461 of 501 --
-
 ---
 
 ## [Sección 473] Chapter 16: Level I Octalysis in Action 452
@@ -14938,9 +13574,6 @@ Core Drives. For simplicity sake, we will just go through a simple
 ten-minute Level I Octalysis brainstorm, which would be very
 instructive, but by no means exhaustive. For disclaimer sake, as of
 this writing, I have never worked with Waze before so this is not
-
--- 462 of 501 --
-
 ---
 
 ## [Sección 474] Chapter 16: Level I Octalysis in Action 453
@@ -14962,9 +13595,6 @@ should consider making every arrival to the destination a bigger
 Win-State. Play a victorious tune, show a popup that excitedly
 shows, “You have arrived safely. Awesome!” Maybe even show the
 image of the location like some other navigation apps do so the user
-
--- 463 of 501 --
-
 ---
 
 ## [Sección 475] Chapter 16: Level I Octalysis in Action 454
@@ -15002,9 +13632,6 @@ rather difficult to design for since the point of a navigation app is
 to get users to their destinations as efficiently as possible. There
 isn’t much room for creativity and meaningful choices that may
 divert the user or waste their time. However, one potential idea is
-
--- 464 of 501 --
-
 ---
 
 ## [Sección 476] Chapter 16: Level I Octalysis in Action 455
@@ -15041,9 +13668,6 @@ gas, energy and the environment. All while making a new friend.
 Waze could potentially match people by declared interest, industry,
 or even in the same company, to commute together on a regular
 basis.
-
--- 465 of 501 --
-
 ---
 
 ## [Sección 477] Chapter 16: Level I Octalysis in Action 456
@@ -15081,9 +13705,6 @@ really hung up on their avatars, there isn’t much to look forward
 to when gaining more experience points. Waze could solve this
 problem by building in unlockable features such as the carpool
 matching and flash mobs, where only users with higher levels could
-
--- 466 of 501 --
-
 ---
 
 ## [Sección 478] Chapter 16: Level I Octalysis in Action 457
@@ -15118,9 +13739,6 @@ To get the most out of the book, Choose only
 ONE of the below options to do right now:
 Easy: Check out Facebook, the Speed Camera Lottery, or the Waze
 navigation app. Review the analysis done in this chapter by experi-
-
--- 467 of 501 --
-
 ---
 
 ## [Sección 479] Chapter 16: Level I Octalysis in Action 458
@@ -15155,9 +13773,6 @@ have qualified for the Level I Octalysis Certificate. The value of
 one is what you make of it, but I know of at least one hiring
 manager that had interviewed an applicant just because she saw
 the Level I Octalysis Certificate on his resume. The pass/no-pass
-
--- 468 of 501 --
-
 ---
 
 ## [Sección 480] Chapter 16: Level I Octalysis in Action 459
@@ -15167,9 +13782,6 @@ on how to qualify for one, go to yukaichou.com/certificate²⁹⁹.
 ²⁹⁹A/B Testing is an experiment where two interface versions with the same goals are
 randomly show to different site visitors, allowing the interface designer to understand which
 version has better metric conversions.
-
--- 469 of 501 --
-
 ---
 
 ## [Sección 481] Chapter 17: Designing a
@@ -15199,8 +13811,6 @@ I also started promoting some online workshops to further teach
 the Octalysis Framework, while monetizing the knowledge to some
 extent. In 2014, I did three independent workshops: two purely
 online, and one both online and in-person (you can usually find
--- 470 of 501 --
-
 ---
 
 ## [Sección 482] Chapter 17: Designing a project from scratch with Octalysis 461
@@ -15238,9 +13848,6 @@ we have, or do we covet what we don’t have - and in what context
 is one effect more powerful than the other?).
 These are all fascinating topics for me, but I am unable to investigate
 them further because of all the client work I am committed to. I love
-
--- 471 of 501 --
-
 ---
 
 ## [Sección 483] Chapter 17: Designing a project from scratch with Octalysis 462
@@ -15277,9 +13884,6 @@ because of it. This is almost like a salesperson saying, “I am walking
 away from you right now because I calculate that you would stop
 me at the door and ask to sign the deal.” Good luck, Mr. Salesperson.
 ³⁰⁰Ramit Sethi’s Brain Trust: iwillteachyoutoberich.com/braintrust
-
--- 472 of 501 --
-
 ---
 
 ## [Sección 484] Chapter 17: Designing a project from scratch with Octalysis 463
@@ -15298,9 +13902,6 @@ These come together to form the Octalysis Strategy Dashboard.
 Without understanding the business metrics, the users, and the
 desired actions, it is very difficult to see how effective a gamified
 design fulfills its objective.
-
--- 473 of 501 --
-
 ---
 
 ## [Sección 485] Chapter 17: Designing a project from scratch with Octalysis 464
@@ -15332,9 +13933,6 @@ As a rule of thumb, the question to ask is, if my top three Business
 Metrics are doing amazingly well, while the other Business Metrics
 are doing modestly, would this project still be successful. Since my
 goal is to scale my knowledge transfer without being pinned down
-
--- 474 of 501 --
-
 ---
 
 ## [Sección 486] Chapter 17: Designing a project from scratch with Octalysis 465
@@ -15365,9 +13963,6 @@ become Win-States once they commit to the actions. This is where
 ³⁰¹A/B Testing is an experiment where two interface versions with the same goals are
 randomly show to different site visitors, allowing the interface designer to understand which
 version has better metric conversions.
-
--- 475 of 501 --
-
 ---
 
 ## [Sección 487] Chapter 17: Designing a project from scratch with Octalysis 466
@@ -15395,9 +13990,6 @@ Scaffolding Phase Desired Actions:
 7) Watch all FREE episodes of the Beginner’s Guide to Gamification
 7) Sign up for Octalysis Workshops
 8) Obtain the Level 1 Octalysis Certificate
-
--- 476 of 501 --
-
 ---
 
 ## [Sección 488] Chapter 17: Designing a project from scratch with Octalysis 467
@@ -15428,9 +14020,6 @@ leads to a Win-State.
 Define Feedback Mechanics
 Feedback Mechanics are information delivery mechanisms that
 communicate to the user that their actions are meaningful. It allows
-
--- 477 of 501 --
-
 ---
 
 ## [Sección 489] Chapter 17: Designing a project from scratch with Octalysis 468
@@ -15463,9 +14052,6 @@ communication of the 8 Core Drives that motivate behavior.
 • Embedded Videos (Core Drives 1, 5, and 7)
 • Status Points via Captain Up or another Gamification Platform (Core Drives 2, 4, and 6)
 • Hello Bar Top Display (Core Drives 1, 2, 6, and 7)
-
--- 478 of 501 --
-
 ---
 
 ## [Sección 490] Chapter 17: Designing a project from scratch with Octalysis 469
@@ -15499,9 +14085,6 @@ the reward giver can issue:
 • Easter Egg Surprises
 • Featured on the website
 • Free eBook
-
--- 479 of 501 --
-
 ---
 
 ## [Sección 491] Chapter 17: Designing a project from scratch with Octalysis 470
@@ -15535,9 +14118,6 @@ effectively, how to deal with your coworkers, etc.
 • Exclusive discussion groups
 • Weekly case studies on Octalysis
 • Weekly analysis of a website, game or product.
-
--- 480 of 501 --
-
 ---
 
 ## [Sección 492] Chapter 17: Designing a project from scratch with Octalysis 471
@@ -15570,9 +14150,6 @@ Rainforest will be completely gone within forty years?)
 • Establish a sense of Elitism through the concept of “Good
 Gamification” as opposed to the subpar implementations that
 currently exist in the market.
-
--- 481 of 501 --
-
 ---
 
 ## [Sección 493] Chapter 17: Designing a project from scratch with Octalysis 472
@@ -15607,9 +14184,6 @@ some members who choose to engage all the Social Influence
 content as well as participate in community events, can be
 shown as specialists in Core Drive 5: Social Influence &
 Relatedness.
-
--- 482 of 501 --
-
 ---
 
 ## [Sección 494] Chapter 17: Designing a project from scratch with Octalysis 473
@@ -15644,9 +14218,6 @@ on certain topics.
 Core Drive 4: Ownership & Possession &
 Feedback
 • Collection Sets: Allow users to collect more Game Techniques, which will become the key to some higher level
-
--- 483 of 501 --
-
 ---
 
 ## [Sección 495] Chapter 17: Designing a project from scratch with Octalysis 474
@@ -15679,9 +14250,6 @@ Core Drive 5: Social Influence & Relatedness
 • Group Quest: Only after X users receiving the the Octalysis
 Certificate will the next level be opened. This will incentivize
 people to invite their friends to take on the challenge too.
-
--- 484 of 501 --
-
 ---
 
 ## [Sección 496] Chapter 17: Designing a project from scratch with Octalysis 475
@@ -15716,9 +14284,6 @@ question like, “In five sentences or less, share what you plan
 to do with the knowledge obtained from the membership.”
 Of course, people who obviously have malicious intents
 would also be rejected, but this is mostly to set a barrier of
-
--- 485 of 501 --
-
 ---
 
 ## [Sección 497] Chapter 17: Designing a project from scratch with Octalysis 476
@@ -15755,9 +14320,6 @@ money.
 to create all 90 Beginner’s Guide to Gamification videos, later
 episodes will be locked and only accessible to OP members.
 Many viewers have also been collecting a set of secret keywords. My plan is that those with all the keywords from the
-
--- 486 of 501 --
-
 ---
 
 ## [Sección 498] Chapter 17: Designing a project from scratch with Octalysis 477
@@ -15792,9 +14354,6 @@ Whenever the user does a significant Desired Action, the dice
 rolling feedback mechanics can appear and certain rewards
 will be given. The variability of the rewards, assuming the
 Desired Action is not drawn out, may increase strong engagement with the experience.
-
--- 487 of 501 --
-
 ---
 
 ## [Sección 499] Chapter 17: Designing a project from scratch with Octalysis 478
@@ -15829,9 +14388,6 @@ coming up with creative solutions, will increases their Core Drive
 Each player will start off with a basic octagon shape. Their octagon
 will eventually expand in the direction or directions where the
 corresponding Core Drives are being “leveled-up.” Reading my
-
--- 488 of 501 --
-
 ---
 
 ## [Sección 500] Chapter 17: Designing a project from scratch with Octalysis 479
@@ -15866,9 +14422,6 @@ get helped from the community when you need it.
 Core Drive 6: Penetrate through unlocked content faster. As an
 example, perhaps require less Chou Coins to unlock new content.
 Core Drive 7: Unlock additional lucky dice rolls to obtain rewards
-
--- 489 of 501 --
-
 ---
 
 ## [Sección 501] Chapter 17: Designing a project from scratch with Octalysis 480
@@ -15903,9 +14456,6 @@ design goes on.
 Summary of Level 1 Octalysis in Action
 As you can see, lots of new ideas can come out by thinking through
 the 8 Core Drives, setting a guiding roadmap to design for an
-
--- 490 of 501 --
-
 ---
 
 ## [Sección 502] Chapter 17: Designing a project from scratch with Octalysis 481
@@ -15940,9 +14490,6 @@ within this chapter that assume a strong knowledge of the 8 Core
 Drives. If this book is your first encounter with the Octalysis
 Framework, it would likely be a rather challenging read. Don’t
 worry, slow down, and take a deep breath. If you go back and read
-
--- 491 of 501 --
-
 ---
 
 ## [Sección 503] Chapter 17: Designing a project from scratch with Octalysis 482
@@ -15977,9 +14524,6 @@ get properly trained to represent Octalysis and “save” their region
 from depressing boredom.
 Anyone can use Octalysis for their own personal improvement,
 education purposes, or for non-profit causes. However, for those
-
--- 492 of 501 --
-
 ---
 
 ## [Sección 504] Chapter 17: Designing a project from scratch with Octalysis 483
@@ -15992,9 +14536,6 @@ As of 2015, we already have Octalysis Heroes in a few countries
 in Europe, and are excited to expand the good work further. For
 information on how to become an Octalysis Hero, check out:
 octalysisgroup.com/licensing-octalysis-framework.
-
--- 493 of 501 --
-
 ---
 
 ## [Sección 505] Chapter 18: The Journey
@@ -16025,8 +14566,6 @@ As I was finishing this book, I realized that one of the biggest fears
 of a writer is that no one will read his book after pouring out his
 heart and mind into the tiny confinements of letters, pages, and
 grammar rules. In fact, I even wonder if my wife or parents will
--- 494 of 501 --
-
 ---
 
 ## [Sección 506] Chapter 18: The Journey Goes On 485
@@ -16068,9 +14607,6 @@ heals people, he would say, “Your faith has healed you,” as opposed to “I 
 As a result, in a town without faith, even Jesus does not perform miracles that he abundantly
 performs elsewhere.
 ³⁰⁴Bible. New Living Translation. Mark 6:4.
-
--- 495 of 501 --
-
 ---
 
 ## [Sección 507] Chapter 18: The Journey Goes On 486
@@ -16109,9 +14645,6 @@ deals or negotiate your salaries better when you can appeal to the
 right human motivations. At the same time, you can develop an
 internal red flag response when an experience utilizes too much
 Black Hat technique where users will likely burn out soon - before
-
--- 496 of 501 --
-
 ---
 
 ## [Sección 508] Chapter 18: The Journey Goes On 487
@@ -16148,9 +14681,6 @@ a true impact if you pass it forward - if you heard about the book
 Shelf game technique from Core Drive 5. Generally, it is more engaging when utilizing the
 Core Drive 3 device Boosters/Power-ups so users can use their rewards to achieve greater
 heights.
-
--- 497 of 501 --
-
 ---
 
 ## [Sección 509] Chapter 18: The Journey Goes On 488
@@ -16178,9 +14708,6 @@ without me, your journey of interacting with others and motivating
 them will continue. I hope at one point our paths will converge
 again, perhaps on my website, my workshops, or in my next book.
 I’m sure it will take us to even greater heights than ever before.
-
--- 498 of 501 --
-
 Wall of Gratitude
 I’m completely in-debt to a great deal of people who made this book
 possible. More people than I can name. Regardless, I would like to
@@ -16206,8 +14733,6 @@ Welch for providing feedback as they read through the book. I want
 to thank Mario Herger for giving me the extra push to write this
 book. I also want to thank Dutch Driver for persistently asking
 about my book and motivating me to finish it via Core Drive 5.
--- 499 of 501 --
-
 Wall of Gratitude 490
 Those who impacted who I am today
 In extension, I want to thank my parents – my father for being my
@@ -16245,9 +14770,6 @@ changed my life just as much as I have changed yours. I want to
 ---
 
 ## [Sección 510] Chapter 18: The Journey Goes On 488
-
--- 500 of 501 --
-
 Wall of Gratitude 491
 thank Stephen Johnson for making it possible for me to become a
 tech entrepreneur and truly pioneering some of the earliest gamification concepts together. Some of the best (and arguably worst)
@@ -16281,8 +14803,5 @@ actually meaningful. Thank you for investing your precious time
 into what I have to say. I hope it has been impactful and meaningful
 for you too.
 Thank you.
-
--- 501 of 501 --
-
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #core_index

@@ -1,4 +1,4 @@
-﻿# CANON: SOTA RAG Architectures, Hybrid Indexing & Reference Repositories (2026)
+# CANON: SOTA RAG Architectures, Hybrid Indexing & Reference Repositories (2026)
 
 **Alcance:** Arquitectura de referencia de sistemas RAG de última generación (2025-2026), evaluación crítica de motores locales/híbridos (`SQLite FTS5`, `sqlite-vec`, `LightRAG`, `HippoRAG`, `Orama`, `MiniSearch`, `Qdrant`), estrategias de chunking contextual (Anthropic Contextual Retrieval, Jina Late Chunking) y reranking neural local en CPU (`ONNX Q8 Cross-Encoder`).
 

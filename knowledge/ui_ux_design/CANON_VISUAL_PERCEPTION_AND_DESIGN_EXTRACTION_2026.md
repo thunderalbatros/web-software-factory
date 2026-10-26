@@ -1,4 +1,6 @@
-﻿# CANON SOTA 2026: Percepción Visual, Minería de Referencias y Extracción de Sistemas de Diseño para Agentes de IA
+# CANON SOTA 2026: Percepción Visual, Minería de Referencias y Extracción de Sistemas de Diseño para Agentes de IA
+
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Web Software Factory.
 
 > **Área:** Visual Web Agents, Multimodal GUI Understanding, Design Token Extraction & Visual Benchmarking  
 > **Estado:** Documento Canónico de Conocimiento del Equipo de Agentes  

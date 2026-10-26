@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * Web Software Factory Studio — Addy Osmani Unified Quality Gate
  * Combines:
@@ -72,8 +72,16 @@ if (suppressionCount === 0) {
 
 // 4. Agentic SEO (addyosmani/agentic-seo) 100-Point Check
 let aeoScore = 0;
-const robotsCandidates = [path.join(root, 'robots.txt'), path.join(root, 'public', 'robots.txt')];
-const llmsCandidates = [path.join(root, 'llms.txt'), path.join(root, 'public', 'llms.txt')];
+const robotsCandidates = [
+  path.join(root, 'robots.txt'),
+  path.join(root, 'public', 'robots.txt'),
+  path.join(root, 'templates', 'vanilla-edge', 'robots.txt')
+];
+const llmsCandidates = [
+  path.join(root, 'llms.txt'),
+  path.join(root, 'public', 'llms.txt'),
+  path.join(root, 'templates', 'vanilla-edge', 'llms.txt')
+];
 const htmlCandidates = [
   path.join(root, projectConfig.paths.entryHtml),
   path.join(root, projectConfig.paths.distDir, 'index.html'),
@@ -129,7 +137,12 @@ for (const m of scriptMatches) {
   const src = m[1];
   if (src.startsWith('http://') || src.startsWith('https://') || src.startsWith('//')) continue;
   const cleanRel = src.split('?')[0].replace(/^\.\//, '').replace(/^\//, '');
-  if (!fs.existsSync(path.join(root, cleanRel)) && !fs.existsSync(path.join(root, 'public', cleanRel))) {
+  const htmlDir = htmlPath ? path.dirname(htmlPath) : root;
+  if (
+    !fs.existsSync(path.join(root, cleanRel)) &&
+    !fs.existsSync(path.join(root, 'public', cleanRel)) &&
+    !fs.existsSync(path.join(htmlDir, cleanRel))
+  ) {
     missingScripts++;
     fail(`[Oust Asset Check] Missing local script referenced in entry HTML: ${src}`);
   }

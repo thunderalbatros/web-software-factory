@@ -1,19 +1,19 @@
-> **Alcance:** Literatura canónica y tratados técnicos de animación a 60 FPS, shaders GPU, física de resortes (spring physics), arte técnico 3D y micro-interacciones fluidas para sitios web modernos y overlays OBS.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
+> **Alcance:** Literatura canónica y tratados técnicos de animación a 60 FPS, shaders GPU, física de resortes (spring physics), arte técnico 3D y micro-interacciones fluidas para sitios web modernos y overlays OBS.
+
 # MOTION GRAPHICS CODING — Academia de Micro-interacciones (UI Thread)
 
-Canon para IA generativa de UI y para el [[CREATIVE_STUDIO]] (Technical Art Director). Toda micro-interacción de Yendo se escribe en **`react-native-reanimated`** sobre el **UI Thread**.
+Canon para IA generativa de UI y para el [[CREATIVE_STUDIO]] (Technical Art Director). Toda micro-interacción de WebFactory se escribe en **`react-native-reanimated`** sobre el **UI Thread**.
 
 > [!warning] Antes de codear
 > Consultar: https://docs.swmansion.com/react-native-reanimated/ y https://docs.swmansion.com/react-native-reanimated/docs/fundamentals/getting-started

@@ -1,4 +1,4 @@
-﻿# 📚 Libro Completo: Accessibility for Everyone
+# 📚 Libro Completo: Accessibility for Everyone
 
 **Alcance:** Fuente bibliográfica completa sobre Accesibilidad Web Universal (WCAG), Diseño Inclusivo, Lectores de Pantalla, Contraste y Ergonomía de Teclado (Accessibility for Everyone — Laura Kalbag (A Book Apart)). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
@@ -7,69 +7,11 @@
 > **Archivo Fuente:** `pdfcoffee.com_accessibility-for-everyone-pdf-free.pdf`  
 > **Páginas Originales:** 174  
 > **Secciones Extraídas:** 46  
-> **Fecha de Ingesta:** 2026-10-19  
+> **Fecha de Ingesta:** 2026-10-19
 
 ---
 
-## Sección 1: Foundations & Introduction
-
-No
-ACCESSIBILITY
-FOR EVERYONE
-Laura Kalbag
-Brief books for people who make websites
-Foreword by Heydon Pickering
-
--- 1 of 174 --
-
-MORE FROM A BOOK APART
-Practical Design Discovery
-Dan Brown
-Demystifying Public Speaking
-Lara Hogan
-JavaScript for Web Designers
-Mat Marquis
-Practical SVG
-Chris Coyier
-Design for Real Life
-Eric Meyer & Sara Wachter-Boettcher
-Git for Humans
-David Demaree
-Going Responsive
-Karen McGrane
-Responsive Design: Patterns & Principles
-Ethan Marcotte
-Designing for Touch
-Josh Clark
-Responsible Responsive Design
-Scott Jehl
-Visit abookapart.com for our full list of titles.
-
--- 2 of 174 --
-
-Copyright © 2017 Laura Kalbag
-All rights reserved
-Publisher: Jeffrey Zeldman
-Designer: Jason Santa Maria
-Executive Director: Katel LeDû
-Developmental Editors: Erin Kissane, Caren Litherland
-Line Editor: Lisa Maria Martin
-Technical Editor: Léonie Watson
-Copyeditor: Kate Towsey
-Proofreader: Katel LeDû
-Book Producer: Ron Bilodeau
-ISBN: 978-1-937557-62-1
-A Book Apart
-New York, New York
-http://abookapart.com
-
--- 3 of 174 --
-
-TABLE OF CONTENTS
-
----
-
-## Sección 2: Chapter 3
+## Sección 1: Chapter 3 [Entropy: 0.05]
 
 1 | Considering Accessibility
 18 | Disabilities and Impairments
@@ -77,7 +19,7 @@ TABLE OF CONTENTS
 
 ---
 
-## Sección 3: Chapter 6
+## Sección 2: Chapter 6 [Entropy: 0.05]
 
 51 | Content and Design
 90 | Accessibility and HTML
@@ -85,16 +27,13 @@ TABLE OF CONTENTS
 
 ---
 
-## Sección 4: Chapter 7
+## Sección 3: Chapter 7 [Entropy: 0.34]
 
 138 | Laws and Guidelines
 149 | Resources
 157 | Acknowledgements
 159 | References
 163 | Index
-
--- 4 of 174 --
-
 FOREWORD
 First, i’d like to applaud you for buying, or borrowing, a
 book on web accessibility—not because learning about accessibility is something you should do, but because you’re stepping
@@ -114,13 +53,7 @@ and building inclusive interfaces will become second nature.
 You won’t work any harder, you’ll just do better work—and
 better serve a more diverse group of people.
 —Heydon Pickering
-
--- 5 of 174 --
-
 For Suzy and Judy
-
--- 6 of 174 --
-
 1 C o n s i d e r i n g AC C e s s i b i l i t y
 the bbC homepage is a brilliant example of accessible web
 practices in the wild (Fig 1.1). The layout clearly distinguishes
@@ -141,9 +74,6 @@ reader accessibility and keyboard navigation support.
 Every decision a team makes affects a site's accessibility. Just
 like content, interaction design, or web performance, accessibilCONSIDERING
 ACCESSIBILITY1
-
--- 7 of 174 --
-
 2 AC C e s s i b i l i t y F o r e V e ryo n e
 ity is a core consideration of creating websites. And—contrary
 to what many teams assume—it can’t be addressed separately
@@ -163,9 +93,6 @@ are avoidance tactics. While our tools can be cool, we’re
 Fig 1.1: the bbC homepage requires a very flexible design as the news content is updated
 so regularly and can be customized by users. the background can even be themed to fit
 news events.
-
--- 8 of 174 --
-
 3 C o n s i d e r i n g AC C e s s i b i l i t y
 distracting ourselves from what really matters: why our
 products exist and who benefits from them.
@@ -198,9 +125,6 @@ is the degree to which an environment is usable by as many
 people as possible. Web accessibility is the degree to which a
 website is usable by as many people as possible. We can think
 about both kinds of accessibility as forms of inclusion.
-
--- 9 of 174 --
-
 4 AC C e s s i b i l i t y F o r e V e ryo n e
 In our physical spaces, we understand that accessibility isn’t
 just about wheelchairs—our environments are designed to
@@ -224,9 +148,7 @@ dog can use them. though i really wish he couldn’t!)
 
 ---
 
-## Sección 5: Chapter 7
-
--- 10 of 174 --
+## Sección 4: Chapter 7 [Entropy: 0.265]
 
 5 C o n s i d e r i n g AC C e s s i b i l i t y
 that an object designed inclusively can be used by more people
@@ -261,18 +183,12 @@ a diverse human population. Universal design might result in a
 building with a combined ramp and stairs, opening access to all
 and forcing no one to go out of their way to choose one option
 or the other (Fig 1.4).
-
--- 11 of 174 --
-
 6 AC C e s s i b i l i t y F o r e V e ryo n e
 Fig 1.3: this zigzagging wheelchair ramp installed over a steep garden is an extreme
 example of bolt-on ugliness and poor design.
 Fig 1.4: this ramp could be used just as easily by cyclists or parents pushing strollers as
 by people using wheelchairs. it doesn’t look out of place. in fact, it contributes to the
 architecture.
-
--- 12 of 174 --
-
 7 C o n s i d e r i n g AC C e s s i b i l i t y
 Whereas accessible design creates products that are usable
 by those with disabilities, universal design creates products for
@@ -302,9 +218,6 @@ size buttons are hidden in a menu
 at the top of the page. you can’t
 see the text being resized without
 scrolling down.
-
--- 13 of 174 --
-
 8 AC C e s s i b i l i t y F o r e V e ryo n e
 EMPATHY
 Empathy is the ability to share the feelings of others. It's what
@@ -325,9 +238,6 @@ When Jen Simmons interviewed Dale Cruse for The Web
 Ahead podcast (http://bkaprt.com/afe/01-01/), Cruse suggested
 Fig 1.6: the default body text size on the new republic’s site is a generous 20 pixels,
 which makes the page instantly more inviting as it’s easy to read.
-
--- 14 of 174 --
-
 9 C o n s i d e r i n g AC C e s s i b i l i t y
 that the average accessibility professional is older than the
 average web professional, perhaps because many people gain
@@ -363,9 +273,7 @@ want to get to the page content.
 
 ---
 
-## Sección 6: Chapter 7
-
--- 15 of 174 --
+## Sección 5: Chapter 7 [Entropy: 0.25]
 
 10 AC C e s s i b i l i t y F o r e V e ryo n e
 SCREEN READERS
@@ -400,9 +308,6 @@ When deciding on which screen reader you want to use (or
 can afford), you’re left with striking a balance. JAWS is expensive, but it offers better support for more applications across
 Windows than other screen readers. VoiceOver has good support on Apple’s own apps and web browsers, but mixed support
 across other developers’ apps.
-
--- 16 of 174 --
-
 11 C o n s i d e r i n g AC C e s s i b i l i t y
 Fig 1.7: narrator settings in Windows 8.1: narrator also has a developer mode that helps
 you identify which objects are accessible to narrator (http://bkaprt.com/afe/01-02/).
@@ -420,9 +325,6 @@ Keyboard navigation
 Keyboard navigation describes a situation when a person uses
 only a keyboard to access a computer or site. Screen readers
 are often (but not always!) paired with keyboard navigation.
-
--- 17 of 174 --
-
 12 AC C e s s i b i l i t y F o r e V e ryo n e
 Sometimes specialist keyboards, such as custom keyboards or
 on-screen keyboards, are used to assist with keyboard use and
@@ -440,9 +342,6 @@ when filling out forms on the web—you may not even realize
 how often you tab between fields!
 Fig 1.8: braille displays are very expensive, which limits how many people can afford to
 use them. (Photo courtesy of Karola riegler http://bkaprt.com/afe/01-03/).
-
--- 18 of 174 --
-
 13 C o n s i d e r i n g AC C e s s i b i l i t y
 BEYOND SCREEN READERS
 In the same way that accessibility in our physical environment
@@ -479,9 +378,7 @@ iOS and Mac-compatible switches are available to buy from
 
 ---
 
-## Sección 7: Chapter 7
-
--- 19 of 174 --
+## Sección 6: Chapter 7 [Entropy: 0.25]
 
 14 AC C e s s i b i l i t y F o r e V e ryo n e
 specialty stores (some are Bluetooth-enabled, which is handy
@@ -514,18 +411,12 @@ Screen magnifiers offer zooming functionality and are built into
 operating systems like macOS, Windows, and Linux. Screen
 magnifiers usually have two modes: the first involves magnifying a small area of the screen (directed by the cursor) as a picture-in-picture, while the second mode magnifies the entire
 screen, zooming in on a particular area. (Fig 1.10).
-
--- 20 of 174 --
-
 15 C o n s i d e r i n g AC C e s s i b i l i t y
 Fig 1.9: the user chooses an interaction from the dwell Control Home Panel, and then
 hovers (or dwells) over the item they want to interact with. there is a countdown to
 ensure the correct item is selected.
 Fig 1.10: screen magnifier using picture-in-picture magnification (left), and the same
 desktop using full-screen magnification (right).
-
--- 21 of 174 --
-
 16 AC C e s s i b i l i t y F o r e V e ryo n e
 Though screen magnifier tools are useful when a page can’t
 be zoomed in the browser, these tools tend to obscure or hide
@@ -535,7 +426,7 @@ avoided (for this and other reasons, which we’ll look at in
 
 ---
 
-## Sección 8: Chapter 5) (Fig 1.11).
+## Sección 7: Chapter 5) (Fig 1.11). [Entropy: 0.28]
 
 Assistive technologies can give people access to the web who
 wouldn’t otherwise have been able to engage. But they can only
@@ -548,9 +439,6 @@ Making our sites accessible starts with the understanding
 that people access the web differently, and continues with every
 member of the team ensuring their output is inclusive.
 Fig 1.11: When an image is magnified, the text can become pixelated.
-
--- 22 of 174 --
-
 17 C o n s i d e r i n g AC C e s s i b i l i t y
 WE’RE IN THIS TOGETHER
 When we start learning how to make our sites accessible, we
@@ -567,9 +455,6 @@ of building an accessible web in their hands alone.
 That’s why it’s up to us—you, me, designers and developers,
 writers and information architects, everyone—to make the web
 a fairer place.
-
--- 23 of 174 --
-
 18 AC C e s s i b i l i t y F o r e V e ryo n e
 Without the internet, I’d be stuck. I can’t use books. I’d be sitting in
 the corner with a dunce’s hat.”
@@ -591,9 +476,6 @@ Sam has cerebral palsy (CP), a neurological condition that
 mostly impacts muscle control and movement. CP affects 1
 DISABILITIES AND
 IMPAIRMENTS2“
-
--- 24 of 174 --
-
 19 d i s A b i l i t i e s A n d i m PA i r m e n t s
 in 400 people, and is completely different from one person to
 another. Some people with CP are Paralympic footballers, while
@@ -625,9 +507,6 @@ Disabilities is an umbrella term, covering impairments, activity
 limitations, and participation restrictions. An impairment is a
 problem in body function or structure; an activity limitation
 is a difficulty encountered by an individual in executing a task
-
--- 25 of 174 --
-
 20 AC C e s s i b i l i t y F o r e V e ryo n e
 or action; while a participation restriction is a problem experienced by an individual in involvement in life situations.
 —World Health Organization
@@ -662,9 +541,7 @@ without disabilities” and “people with disabilities.”
 
 ---
 
-## Sección 9: Chapter 5) (Fig 1.11).
-
--- 26 of 174 --
+## Sección 8: Chapter 5) (Fig 1.11). [Entropy: 0.445]
 
 21 d i s A b i l i t i e s A n d i m PA i r m e n t s
 TYPES OF DISABILITY
@@ -696,9 +573,6 @@ appear blue, and makes dark reds and blacks easy to confuse.
 as red-green color blind. They have difficulty distinguishing
 between reds, greens, browns, and oranges, and may confuse
 blue and purple hues.
-
--- 27 of 174 --
-
 22 AC C e s s i b i l i t y F o r e V e ryo n e
 • Tritanopia is an extremely rare blue-cone deficiency that
 causes people to confuse blue with green and yellow
@@ -720,9 +594,6 @@ HTML and a text alternative for images and video.
 Fig 2.1: A kingfisher in its original photo, then duplicated (left to right) with simulated
 deuteranopia, protanopia, tritanopia and monochromacy. Photograph courtesy of
 Foundry (http://bkaprt.com/afe/02-01/).
-
--- 28 of 174 --
-
 23 d i s A b i l i t i e s A n d i m PA i r m e n t s
 • Age-related macular degeneration is the leading cause of blindness in adults. It causes the center of your field of vision—
 what you’re looking at directly—to be blurry or obscured,
@@ -747,9 +618,6 @@ damage to the nerves in the ear, distorting sound and making
 speech harder to understand.
 Fig 2.2: that kingfisher again, this time simulating (left to right) macular degeneration,
 glaucoma, and diabetic retinopathy.
-
--- 29 of 174 --
-
 24 AC C e s s i b i l i t y F o r e V e ryo n e
 Many people with hearing loss use written and spoken language to read and communicate, making the web a very valuable
 tool. Technologies such as email and instant messaging can
@@ -783,9 +651,7 @@ motor control in their arms, hands, and fingers. Such chal-
 
 ---
 
-## Sección 10: Chapter 5) (Fig 1.11).
-
--- 30 of 174 --
+## Sección 9: Chapter 5) (Fig 1.11). [Entropy: 0.34]
 
 25 d i s A b i l i t i e s A n d i m PA i r m e n t s
 lenges can also make handheld devices, like mobile phones,
@@ -817,9 +683,6 @@ accomplish, or where one is within a site.
 expressing understanding through speech and language.
 • Math processing: difficulty understanding mathematical
 concepts and symbols, such as telling the time or distinguishing quantities, money, and pricing.
-
--- 31 of 174 --
-
 26 AC C e s s i b i l i t y F o r e V e ryo n e
 • Visual processing: difficulty interpreting visual information,
 or understanding visual representations of real-world objects
@@ -852,9 +715,6 @@ the text he wants read aloud into the software, rather than it
 reading whole pages. He doesn’t want the screen reader to read
 him the meta information (such as headings and alternative text
 for images), which distracts him from the primary text.
-
--- 32 of 174 --
-
 27 d i s A b i l i t i e s A n d i m PA i r m e n t s
 Fig 2.3: the top of the british dyslexia Association’s site displays an array of accessibility
 options, including text to speech (http://bkaprt.com/afe/02-02/h).
@@ -872,9 +732,6 @@ Vestibular disorders are common, affecting as many as 35% of
 adults aged forty years or older in the United States. Vestibular
 disorders are caused by damage to the vestibular system—the
 parts of the inner ear and brain that control balance and spatial
-
--- 33 of 174 --
-
 28 AC C e s s i b i l i t y F o r e V e ryo n e
 orientation—causing dizziness, vertigo, cognitive confusion,
 and hearing and visual disturbances.
@@ -908,9 +765,7 @@ These include:
 
 ---
 
-## Sección 11: Chapter 5) (Fig 1.11).
-
--- 34 of 174 --
+## Sección 10: Chapter 5) (Fig 1.11). [Entropy: 0.37]
 
 29 d i s A b i l i t i e s A n d i m PA i r m e n t s
 • browsing with legacy browsers or operating systems;
@@ -945,9 +800,6 @@ one web browser, making cross-browser testing one of the most
 common forms of accessibility testing: the very act of checking
 that a site performs well in more than one browser is a way of
 considering a wider audience.
-
--- 35 of 174 --
-
 30 AC C e s s i b i l i t y F o r e V e ryo n e
 But a decade ago, smartphones made web browsers on
 mobile phones usable and useful to a mainstream audience.
@@ -981,9 +833,6 @@ and advertising agency BBDO found that 64% of users browse
 the web on their mobile devices while at home, sitting on
 their sofas, using their Wi-Fi and broadband (http://bkaprt.
 com/afe/02-07/). And research from the Interactive Advertising Bureau (IAB) and its Mobile Marketing Center of Excel-
-
--- 36 of 174 --
-
 31 d i s A b i l i t i e s A n d i m PA i r m e n t s
 lence (http://bkaprt.com/afe/02-08/) showed that 63% of videos
 watched on mobile phones were at home and not, in fact,
@@ -1017,9 +866,6 @@ faster, but not perfect. Connections can be slow due to the distance from the ex
 on the free Wi-Fi at a conference or at an airport? Nothing is
 guaranteed to slow or crash a Wi-Fi network like a huge number
 of people trying to connect at the same time.
-
--- 37 of 174 --
-
 32 AC C e s s i b i l i t y F o r e V e ryo n e
 Similarly, imagine someone working at a coffee shop, using a
 laptop on a 3G network. When our analytics tell us that the visitor is accessing our site via a desktop browser, we might assume
@@ -1055,9 +901,7 @@ brand to China, they didn’t use a native translator, and their
 
 ---
 
-## Sección 12: Chapter 5) (Fig 1.11).
-
--- 38 of 174 --
+## Sección 11: Chapter 5) (Fig 1.11). [Entropy: 0.304]
 
 33 d i s A b i l i t i e s A n d i m PA i r m e n t s
 famous tagline “Finger lickin’ good” became the less appealing
@@ -1092,9 +936,6 @@ If the character sets that make up our alphabets don’t contain
 all the necessary characters for a given language, we can end
 up with ugly errors in our text. These don’t just look bad; they
 make the words unreadable (Fig 2.4).
-
--- 39 of 174 --
-
 34 AC C e s s i b i l i t y F o r e V e ryo n e
 When selecting a character set for your website, it’s always
 worth double-checking the character sets for foreign-language
@@ -1114,9 +955,6 @@ is read horizontally from right to left (Fig 2.5). Reading from
 Fig 2.4: most modern browsers will substitute a readable character in place of an error,
 but the worst-case scenario is ending up with question marks in boxes instead of readable
 text. this Facebook ad can’t deal with the swedish å, ä or ö.
-
--- 40 of 174 --
-
 35 d i s A b i l i t i e s A n d i m PA i r m e n t s
 right to left usually leads to right-aligned text, and a mirror-imaging of the left-to-right page layout.
 If you want your site to have international appeal, making it
@@ -1142,9 +980,6 @@ upon the language displayed. See Chapter 5 for HTML and
 CSS examples.
 Fig 2.5: bbC news in english (left) uses a left-to-right layout. bbC news in Arabic (right)
 uses a right-to-left layout.
-
--- 41 of 174 --
-
 36 AC C e s s i b i l i t y F o r e V e ryo n e
 Space and context
 As designers and developers, it can be easy to get caught up in the
@@ -1166,9 +1001,6 @@ text alternative for the content.
 Fig 2.6: domestic Violence UK has a sticky “Hide site” button at the top of every page
 which quickly redirects the page to google, in case victims of abuse are being watched or
 monitored by abusive partners.
-
--- 42 of 174 --
-
 37 d i s A b i l i t i e s A n d i m PA i r m e n t s
 Using the web can also be a personal experience requiring
 privacy. Sites can be made more usable in these situations (and
@@ -1207,9 +1039,7 @@ real needs.
 
 ---
 
-## Sección 13: Chapter 5) (Fig 1.11).
-
--- 43 of 174 --
+## Sección 12: Chapter 5) (Fig 1.11). [Entropy: 0.43]
 
 38 AC C e s s i b i l i t y F o r e V e ryo n e
 inCorporating aCCessibility From the beginning is almost
@@ -1229,9 +1059,6 @@ to preferential treatment from people who struggled to use
 competitors’ sites. If a site is translated, or has more simply written content that improves automated translation,
 PLANNING FOR
 ACCESSIBILITY3
-
--- 44 of 174 --
-
 39 P l A n n i n g F o r AC C e s s i b i l i t y
 increased accessibility can lead to a larger audience by reaching people who speak other languages.
 • Lower costs: Accessible websites can cut costs in other areas
@@ -1263,9 +1090,6 @@ that we’re building in our designs.
 Leadership and support
 While we should all be attentive to how accessibility impacts
 our specialism, it’s important to have leadership to help deter-
-
--- 45 of 174 --
-
 40 AC C e s s i b i l i t y F o r e V e ryo n e
 mine priorities and key areas where the product’s overall accessibility needs improvement. Project manager Henny Swan (user
 experience and design lead at the Paciello Group, and previously of the BBC) recommends that accessibility be owned by
@@ -1296,9 +1120,6 @@ also develop their accessibility skills by learning the basics
 through web- and book-based research, and by attending relevant conferences and other events.
 Both formal training and independent practice will cost time
 away from other work, but in return you’ll get rapid improvements in a team’s accessibility skills. New skills might mean
-
--- 46 of 174 --
-
 41 P l A n n i n g F o r AC C e s s i b i l i t y
 initially slower site development and testing while people are
 still getting their heads around unfamiliar tools, techniques, and
@@ -1334,9 +1155,7 @@ assistive technologies should you test the product on?
 
 ---
 
-## Sección 14: Chapter 5) (Fig 1.11).
-
--- 47 of 174 --
+## Sección 13: Chapter 5) (Fig 1.11). [Entropy: 0.28]
 
 42 AC C e s s i b i l i t y F o r e V e ryo n e
 If you have answers to these questions—possibly recorded
@@ -1369,9 +1188,6 @@ If you’ve got a very small budget, rather than picking and
 choosing particular elements that leave some users out in favor
 of others, consider the least expensive options that enable the
 widest possible audience to access your site. For example, making a carousel that can be manipulated using only the keyboard
-
--- 48 of 174 --
-
 43 P l A n n i n g F o r AC C e s s i b i l i t y
 will only benefit people using keyboard navigation. On the
 other hand, designing a simpler interface without a carousel
@@ -1403,9 +1219,6 @@ Researching with real users
 Online testing can be a good option for small teams with tight
 budgets. Additionally, in A Web for Everyone, Sarah Horton
 and Whitney Quesenbery observe that “including people with
-
--- 49 of 174 --
-
 44 AC C e s s i b i l i t y F o r e V e ryo n e
 disabilities in user experience design is even easier if you’re
 doing your research or testing online.” This makes a lot of
@@ -1443,9 +1256,7 @@ They’re likely to have the same motivations and habits as people
 
 ---
 
-## Sección 15: Chapter 5) (Fig 1.11).
-
--- 50 of 174 --
+## Sección 14: Chapter 5) (Fig 1.11). [Entropy: 0.31]
 
 45 P l A n n i n g F o r AC C e s s i b i l i t y
 without disabilities, but their needs will bring potential usability
@@ -1478,9 +1289,6 @@ a key part of the research, but it isn’t the same as the requirements of the i
 Interacting with participants
 In Just Ask, Henry has great advice on how to provide for, and
 interact with, people with disabilities in your research and
-
--- 51 of 174 --
-
 46 AC C e s s i b i l i t y F o r e V e ryo n e
 testing: treat people with disabilities in the same way you’d
 treat anybody else.
@@ -1516,9 +1324,6 @@ more, and be more generally informed. That doesn’t mean
 you’ll need to do less research on each new project—every
 project comes with its own unique context. But it does mean
 that every time you start the research on a new project, you’ll
-
--- 52 of 174 --
-
 47 P l A n n i n g F o r AC C e s s i b i l i t y
 be aware of more effective research methods and what’s worked
 for you before.
@@ -1551,9 +1356,6 @@ make for easy initial testing. You may need to budget funds to
 buy other devices that don’t fall into the assistive technology
 category, if you don’t already use a device lab or test across
 multiple platforms. We’ll discuss testing more in Chapter 6.
-
--- 53 of 174 --
-
 48 AC C e s s i b i l i t y F o r e V e ryo n e
 MAINTENANCE
 We all know about those dangerous little, last-minute fixes
@@ -1588,9 +1390,7 @@ toward the accessibility of your site.
 
 ---
 
-## Sección 16: Chapter 5) (Fig 1.11).
-
--- 54 of 174 --
+## Sección 15: Chapter 5) (Fig 1.11). [Entropy: 0.421]
 
 49 P l A n n i n g F o r AC C e s s i b i l i t y
 Guidelines in your accessibility policy should be:
@@ -1611,9 +1411,6 @@ specific aims (Fig 3.1), covering:
 • goals for site’s accessibility,
 Fig 3.1: the Post office’s accessibility policy puts “Complying with the british standards
 institution” up top, but further down there’s more focus on the people using their site.
-
--- 55 of 174 --
-
 50 AC C e s s i b i l i t y F o r e V e ryo n e
 • the individual responsible for the policy and its implementation, and
 • the accessibility of their non-digital products and services.
@@ -1630,9 +1427,6 @@ help you make strategic decisions, but justify them as well—to
 yourself, your clients, and your stakeholders.
 Now let’s look at how we can make our sites more accessible
 today—starting with content and design.
-
--- 56 of 174 --
-
 51 C o n t e n t A n d d e s i g n
 design deCisions made in the name of accessibility generally
 benefit everyone, because all technology is assistive. This is in fact
@@ -1655,9 +1449,6 @@ the usability of the web across four broad parameters:
 4. Cognitive: make it easy to understand.
 CONTENT
 AND DESIGN4
-
--- 57 of 174 --
-
 52 AC C e s s i b i l i t y F o r e V e ryo n e
 While these examples illustrate just a few benefits, they show
 that accessibility goals are also usability goals. Good accessibility is good usability.
@@ -1691,18 +1482,12 @@ to another site is made to look like a button. The button style
 is usually chosen over a conventional link style to draw more
 attention to the link, but the conventional behavior of a button
 is to perform an action within the site, not to redirect the user
-
--- 58 of 174 --
-
 53 C o n t e n t A n d d e s i g n
 Fig 4.1: A button with the power icon is the first thing we look for when we turn on our
 electronics. Photograph courtesy of Anssi Koskinen (http://bkaprt.com/afe/04-02/).
 Fig 4.2: sideways scrolling websites had their peak in the late 00s. it certainly makes for an
 attention-grabbing surprise, but horizontal scrolling can be difficult if you use a mouse for
 scrolling—very few mice have horizontal scroll wheels.
-
--- 59 of 174 --
-
 54 AC C e s s i b i l i t y F o r e V e ryo n e
 to a different location. It’s like turning on your bedroom light
 only to find you’ve been teleported to your kitchen (Fig 4.4).
@@ -1726,9 +1511,7 @@ redeem” is just an affiliate link to the Happy Feet homepage.
 
 ---
 
-## Sección 17: Chapter 5) (Fig 1.11).
-
--- 60 of 174 --
+## Sección 16: Chapter 5) (Fig 1.11). [Entropy: 0.295]
 
 55 C o n t e n t A n d d e s i g n
 to travel around your site—it can also provide a summary of
@@ -1751,9 +1534,6 @@ descriptive and concise. It’s hard for a new visitor to understand
 what to expect from a site archiving interviews about the games
 Fig 4.5: the United nations homepage uses subnavigation which doubles as a description
 of what you can find in each section.
-
--- 61 of 174 --
-
 56 AC C e s s i b i l i t y F o r e V e ryo n e
 industry when the navigation lists “Clips, Minds, Playlists,
 Conversations” (Fig 4.6). When we use terminology that’s easy
@@ -1775,9 +1555,6 @@ Fig 4.6: Without further explanation, a visitor can only really be assured of th
 the “Clips” section.
 Fig 4.7: replacing “Playlists” with “themes,” and “minds” with “People” makes more sense
 within the context of a games industry interview archive.
-
--- 62 of 174 --
-
 57 C o n t e n t A n d d e s i g n
 Fig 4.8: Hovering over different parts of the green map on this theme park’s site brings up
 different navigation links, including the terrifying-looking “nautic Jet.” the buttons down
@@ -1785,9 +1562,6 @@ the side do provide an alternative navigation. but why have two of the same navi
 (http://www.freizeitparkherne.de/overview/overview.html)
 Fig 4.9: Why not always have “quick product navigation” on the site? Why is there a
 loading bar? i have so many questions!
-
--- 63 of 174 --
-
 58 AC C e s s i b i l i t y F o r e V e ryo n e
 If your navigation needs an explanation, you should
 probably rethink it—and consider returning to well-established conventions.
@@ -1821,18 +1595,12 @@ from non-interactive text. The contrast between link text and
 regular text is the key consideration. Finding links in a body of
 text shouldn’t be a cruel game where the reader has to hover
 over every word to find them.
-
--- 64 of 174 --
-
 59 C o n t e n t A n d d e s i g n
 Fig 4.10: the dC Comics site navigation uses a blue bar under the active navigation link to
 remind you which section you’re currently viewing.
 Fig 4.11: not everyone who uses the Alzheimer’s society site will have symptoms of
 dementia—a visitor could be learning about a loved one’s illness. but clear and useful
 navigation is valuable in times of stress.
-
--- 65 of 174 --
-
 60 AC C e s s i b i l i t y F o r e V e ryo n e
 Two years ago, Google decided to drop the underlined style
 in their links (http://bkaprt.com/afe/04-03/). The lack of underlines makes the page layout appear much cleaner and the text
@@ -1851,9 +1619,7 @@ the links are just big and blue (right).
 
 ---
 
-## Sección 18: Chapter 5) (Fig 1.11).
-
--- 66 of 174 --
+## Sección 17: Chapter 5) (Fig 1.11). [Entropy: 0.34]
 
 61 C o n t e n t A n d d e s i g n
 Link language
@@ -1884,9 +1650,6 @@ tutorials are just labelled “here.” (And
 not everyone even clicks! As we saw
 in Chapter 1, many people use
 different input devices.)
-
--- 67 of 174 --
-
 62 AC C e s s i b i l i t y F o r e V e ryo n e
 WRITING
 Writing great copy comprises more than good spelling, grammar, and text in a coherent order. The best sites have content
@@ -1920,9 +1683,6 @@ relatively easy for him to memorize. The IMDb movie pages
 are well-structured, with clearly bordered sections and large
 bold titles. Visual cues like hyperlinks help Sam quickly find
 related content. Similarities in layout from one page to another
-
--- 68 of 174 --
-
 63 C o n t e n t A n d d e s i g n
 Fig 4.15: body text with no headings (left), and with headings breaking up the text (right).
 i know which one i’d rather read!
@@ -1933,9 +1693,6 @@ information he wants without having to read everything else
 on the page first—for instance, he knows he will always find
 the “Storyline” below the “Cast List” on an IMDb movie page
 (Fig 4.17).
-
--- 69 of 174 --
-
 64 AC C e s s i b i l i t y F o r e V e ryo n e
 Plain language
 Clear, simple, and concise language makes the most accessible
@@ -1958,9 +1715,6 @@ acronym or abbreviation, they can lose any understanding of
 the text: “Please get this GRN to AP ASAP for the COO.”
 Fig 4.17: every imdb movie page is structured with content in the same order, and with
 the same headings.
-
--- 70 of 174 --
-
 65 C o n t e n t A n d d e s i g n
 In other contexts, acronyms can be okay—even necessary.
 For example, if you started talking about “Hypertext Markup
@@ -1994,9 +1748,7 @@ using it, particularly at small sizes.
 
 ---
 
-## Sección 19: Chapter 5) (Fig 1.11).
-
--- 71 of 174 --
+## Sección 18: Chapter 5) (Fig 1.11). [Entropy: 0.53]
 
 66 AC C e s s i b i l i t y F o r e V e ryo n e
 • Line length: Text crowded on to a short line length can
@@ -2027,9 +1779,6 @@ in the HTML, a screen reader will just ignore it (Fig 4.19). Some
 icon fonts map icons to whole words, which can work very
 well if, for example, your house icon reads as “home” in the
 HTML (Fig 4.20).
-
--- 72 of 174 --
-
 67 C o n t e n t A n d d e s i g n
 Fig 4.18: Heinemann (left) and Comic sans (right) both use the single-story a, but their 9s
 are different. Heinemann favors 9 as it would be written by hand.
@@ -2038,9 +1787,6 @@ recognize the "\f061" (arrow right) character and ignores it, but has no other c
 read for this button.
 Fig 4.20: typing the word “home” in symbolset results in a cute house icon (http://bkaprt.
 com/afe/04-06/).
-
--- 73 of 174 --
-
 68 AC C e s s i b i l i t y F o r e V e ryo n e
 However, these icon fonts rely on your using the symbols
 for the correct words in the font. Deciding to use the star symbol to mean “favorite” when the font uses it to mean “star” could
@@ -2062,9 +1808,6 @@ some developers use the viewport meta tag in the head element
 of their web pages:
 Fig 4.21: the icons in symbolset are designed to use semantic and accessible terms but
 rely on you using the exact same term as they do.
-
--- 74 of 174 --
-
 69 C o n t e n t A n d d e s i g n
 <meta name="viewport" content="width=device-width,
 initial-scale=1.0, maximum-scale=1.0, userscalable=no">
@@ -2094,9 +1837,6 @@ Allow people to retrace their steps to review what they’ve
 entered earlier. This can help people who need to refresh their
 memory, particularly if they have cognitive impairments that
 can affect memory.
-
--- 75 of 174 --
-
 70 AC C e s s i b i l i t y F o r e V e ryo n e
 Forms
 Forms are the key elements in interactive sites—they are, after
@@ -2134,9 +1874,7 @@ triggered by visitors. When an alert appears on a page without
 
 ---
 
-## Sección 20: Chapter 5) (Fig 1.11).
-
--- 76 of 174 --
+## Sección 19: Chapter 5) (Fig 1.11). [Entropy: 0.295]
 
 71 C o n t e n t A n d d e s i g n
 Fig 4.22: this text field has very specific information to “ignore any spaces.” Why can’t the
@@ -2145,9 +1883,6 @@ Fig 4.23: Kickstarter’s payment form checks if your card number is valid on th
 it harder for you to make a mistake.
 Fig 4.24: When you’re creating a new account on a discourse forum, there’s helpful
 microcopy below each text input to give you some guidance.
-
--- 77 of 174 --
-
 72 AC C e s s i b i l i t y F o r e V e ryo n e
 a page refresh, visitors need to have their attention drawn to
 that change.
@@ -2176,9 +1911,6 @@ Everyone on the team is responsible for creating a good
 experience for the people visiting their site. “Human copy”
 goes a long way in helping someone understand a problem,
 and how to fix it.
-
--- 78 of 174 --
-
 73 C o n t e n t A n d d e s i g n
 Fig 4.25: twitter uses an alert bar above your twitter feed to visually notify you of new
 tweets.
@@ -2188,17 +1920,11 @@ look at AriA more in the next chapter.
 Fig 4.27: What’s worse than a vague error message? no error message! this form doesn’t
 even explain why my email address is formatted incorrectly, it just subtly turns the bottom
 border and icon red.
-
--- 79 of 174 --
-
 74 AC C e s s i b i l i t y F o r e V e ryo n e
 Fig 4.28: When this error came up on the estée lauder site, i wasn’t sure if i’d done
 something wrong or was just on the receiving end of a peculiar log message.
 Fig 4.29: there are no past events in my schedule, but instead of showing an error or an
 empty page, basecamp tells me how this feature works, with a bonus cute illustration.
-
--- 80 of 174 --
-
 75 C o n t e n t A n d d e s i g n
 COLOR
 In Chapter 2, we learned about how different types of color
@@ -2230,9 +1956,6 @@ the contrast between text and background is too high, the text
 can appear to dance on screen. High-contrast text is particularly
 problematic for people with a dyslexic condition called scotopic
 sensitivity syndrome (SSS). People with SSS find that high-contrast text appears to shimmer or wobble on the screen.
-
--- 81 of 174 --
-
 76 AC C e s s i b i l i t y F o r e V e ryo n e
 Geri Coady, author of the fantastic Color Accessibility Workflows, recommends working in grayscale to test your designs.
 In grayscale, you can quickly see whether the text is readable
@@ -2242,9 +1965,6 @@ much harder to read than the high contrast version (right).
 Fig 4.31: When text is used over a photo with different textures and shapes in the
 background (left), the text is much harder to read and appears lower in contrast than
 against a solid color background (right).
-
--- 82 of 174 --
-
 77 C o n t e n t A n d d e s i g n
 Fig 4.32: the design in color (upper) looks fairly high contrast, but when you see it in
 greyscale (lower), you can see the pink stars disappear into the blue background.
@@ -2273,9 +1993,7 @@ understand (Fig 4.34).
 
 ---
 
-## Sección 21: Chapter 5) (Fig 1.11).
-
--- 83 of 174 --
+## Sección 20: Chapter 5) (Fig 1.11). [Entropy: 0.394]
 
 78 AC C e s s i b i l i t y F o r e V e ryo n e
 Visual styling is still a valuable tool for getting the visitor’s
@@ -2286,9 +2004,6 @@ the moment may appear pickle green for someone with deuteranopia color blindness
 (simulated right) compared to its actual red (left).
 Fig 4.34: the form errors on etsy have a pink-red highlighted background, which is still
 very noticeable when you see the same form in grayscale.
-
--- 84 of 174 --
-
 79 C o n t e n t A n d d e s i g n
 RICH MEDIA
 Images are the most popular form of rich media on the web.
@@ -2321,9 +2036,6 @@ understand the context of an image without seeing the image
 itself. We don’t need to be overly descriptive. Poor alternative
 text for an image might be something like “a dog in the park.”
 But describing the image as “My dog Oskar sitting by a hundrast-
-
--- 85 of 174 --
-
 80 AC C e s s i b i l i t y F o r e V e ryo n e
 plats sign which means ‘dog park’ in Swedish” gives more context and meaning to the image (Fig 4.35).
 Alternative text is not necessary for a decorative image, as
@@ -2339,9 +2051,6 @@ awful experience for screen readers. Imagine reading down a
 page of film posters, and instead of alt text you suddenly hear
 Fig 4.35: the key information about this photo is that a dog is sitting by a sign. the sign is
 unusual, so what it says is important.
-
--- 86 of 174 --
-
 81 C o n t e n t A n d d e s i g n
 irrelevant keywords: “husky, malamute, dogs, parks, celebrities,
 stars, gossip, fashion, photos.” Not cool.
@@ -2376,9 +2085,6 @@ data—presenting that data as a chunk of obscure text defeats
 the point. It might help to think about how you would explain
 the contents of the media to someone over the phone, or via
 email. Ask yourself: what are the highlights and lowlights of
-
--- 87 of 174 --
-
 82 AC C e s s i b i l i t y F o r e V e ryo n e
 the infographic you’re describing? What are its important and
 notable parts?
@@ -2407,9 +2113,7 @@ more accessible for everyone.
 
 ---
 
-## Sección 22: Chapter 5) (Fig 1.11).
-
--- 88 of 174 --
+## Sección 21: Chapter 5) (Fig 1.11). [Entropy: 0.34]
 
 83 C o n t e n t A n d d e s i g n
 Links to PDFs have inconsistent behaviors. Some web
@@ -2445,9 +2149,6 @@ expensive and time-consuming to create than subtitles, closed
 captions, and sign-language interpretation.
 Transcripts are useful to a wide range of people confronting
 any number of scenarios:
-
--- 89 of 174 --
-
 84 AC C e s s i b i l i t y F o r e V e ryo n e
 • hearing impairments
 • difficulty cognitively processing audio
@@ -2479,9 +2180,6 @@ Suzy: What do you [Suzy points at Aneel] think of this new
 lamp I bought?
 [Emily nods a sign of approval. Jessica looks at Aneel expectantly]
 Aneel: I think I prefer the one we have in the kitchen.
-
--- 90 of 174 --
-
 85 C o n t e n t A n d d e s i g n
 Similarly, you may want to leave out irrelevant auditory
 and visual information to produce a clean verbatim transcript.
@@ -2515,9 +2213,6 @@ for its loud traffic.
 As with transcripts, there are professional services that will
 create closed captions for you, but as it’s time-consuming work,
 these services can be expensive. YouTube has an auto-captioning option on videos, but speech-to-text software can be inac-
-
--- 91 of 174 --
-
 86 AC C e s s i b i l i t y F o r e V e ryo n e
 curate if there is background noise, multiple speakers, or an
 accent unfamiliar to the software (Fig 4.38).
@@ -2542,9 +2237,7 @@ Fig 4.38: youtube’s auto-captioning is good, though tastily replaced “advert
 
 ---
 
-## Sección 23: Chapter 5) (Fig 1.11).
-
--- 92 of 174 --
+## Sección 22: Chapter 5) (Fig 1.11). [Entropy: 0.575]
 
 87 C o n t e n t A n d d e s i g n
 Fig 4.39: For ind.ie’s spyware 2.0 video, i tried to make the captions short to make them
@@ -2563,9 +2256,6 @@ WEBVTT
 Today, on Spyware 2.0: "Privacy"
 00:00:05.100 --> 00:00:07.493
 When we think of a private conversation,
-
--- 93 of 174 --
-
 88 AC C e s s i b i l i t y F o r e V e ryo n e
 00:00:07.593 --> 00:00:10.593
 we think of it taking place between two people.
@@ -2596,9 +2286,6 @@ Maybe technologies that could help them, such as screen readers and custom input
 they aren’t even aware that technologies that could help them
 access the web exist. Sometimes, too, people have a secondary
 impairment, and use technology specific to another need.
-
--- 94 of 174 --
-
 89 C o n t e n t A n d d e s i g n
 Some people rely on alternative ways of consuming content,
 while others simply prefer certain formats. I’m not a fan of
@@ -2612,9 +2299,6 @@ can be generous with our design. We can make great, rather
 than just adequate, experiences.
 Now that we have a good foundation in making usable interfaces, we can look at how to mark up those interfaces, giving
 them structure and meaning that is accessible in the browser.
-
--- 95 of 174 --
-
 90 AC C e s s i b i l i t y F o r e V e ryo n e
 the primary role oF the browser in web accessibility is
 to connect HTML to the accessibility layer of the operating
@@ -2632,9 +2316,6 @@ provide structure to a web page’s content. It’s mostly just content surround
 thinking or learning about HTML elements in depth, as they
 ACCESSIBILITY
 AND HTML5
-
--- 96 of 174 --
-
 91 AC C e s s i b i l i t y A n d H t m l
 just seem so straightforward. But there’s a lot of accessibility
 goodness to master in the default behavior of HTML elements,
@@ -2672,18 +2353,13 @@ something to grab onto, making content easier for people to find.
 
 ---
 
-## Sección 24: Chapter 5) (Fig 1.11).
-
--- 97 of 174 --
+## Sección 23: Chapter 5) (Fig 1.11). [Entropy: 0.511]
 
 92 AC C e s s i b i l i t y F o r e V e ryo n e
 Fig 5.1: the unstyled Html for the Wikipedia page about huskies looks unexciting, but
 the content is all there.
 Fig 5.2: the Html outline (left) for the Wikipedia page on huskies is reflected in its
 Contents page navigation (right)
-
--- 98 of 174 --
-
 93 AC C e s s i b i l i t y A n d H t m l
 Findability
 Search engines rely on crawlers that index websites for content,
@@ -2710,9 +2386,6 @@ result. They then use the first h1 and h2 elements to give you a
 rough idea of the content on that page.
 Fig 5.3: google uses the <title> for the result heading, then <meta description> and
 the page’s first <h1> as the result description.
-
--- 99 of 174 --
-
 94 AC C e s s i b i l i t y F o r e V e ryo n e
 When a page’s HTML isn’t structured clearly, it can have a
 negative effect on the search results preview (Fig 5.5). It’s much
@@ -2733,9 +2406,6 @@ Fig 5.4: duckduckgo uses the page’s <title> for the result heading, then the f
 and a <p> from near the end of the page as the result description.
 Fig 5.5: this search result looks like an automatically generated page. it doesn’t have a
 meaningful title, and somehow bits of Html show up in the description.
-
--- 100 of 174 --
-
 95 AC C e s s i b i l i t y A n d H t m l
 Fig 5.6: Without headings to structure the content, a Wikipedia page would look
 intimidating, and would be hard to skim (left). it’s good that the real Wikipedia uses
@@ -2755,9 +2425,6 @@ default, browsers will number ol list items. Screen readers will
 usually read the numbers or say “bullet” at the beginning of
 each list item, even if the numbers or bullet points have been
 removed or hidden by the CSS styles.
-
--- 101 of 174 --
-
 96 AC C e s s i b i l i t y F o r e V e ryo n e
 FORMS
 Sometimes developers add JavaScript to a span or div element
@@ -2792,9 +2459,7 @@ placement of the labels is also important for the user to understand the expecte
 
 ---
 
-## Sección 25: Chapter 5) (Fig 1.11).
-
--- 102 of 174 --
+## Sección 24: Chapter 5) (Fig 1.11). [Entropy: 0.298]
 
 97 AC C e s s i b i l i t y A n d H t m l
 Fig 5.7: A text field label (such as “name” above) conventionally appears before or
@@ -2813,9 +2478,6 @@ no confusion for sighted or screen reader users, for people who
 are seasoned fillers of forms, or for first-time web users.
 Fig 5.9: Adding “(required)” tells you exactly what you need to know. Also, titles are never
 a real requirement...
-
--- 103 of 174 --
-
 98 AC C e s s i b i l i t y F o r e V e ryo n e
 Label and input pairs
 Pairing labels and input fields makes a form accessible to screen
@@ -2846,9 +2508,6 @@ that visually describe the button states (Fig 5.12). Disabled buttons are genera
 understanding of the “disabled” visual style. Find out more
 about the usability issues with disabled buttons in the
 Resources section.
-
--- 104 of 174 --
-
 99 AC C e s s i b i l i t y A n d H t m l
 Fig 5.10: As the label is paired with the radio button, and its style is set to inline-block,
 clicking or tapping anywhere in the dotted area will select the corresponding radio button.
@@ -2866,9 +2525,6 @@ audio are particularly hard for people relying on a keyboard to
 access—for instance, dropdown menus and navigation can be
 very fiddly if you need to use a mouse to hover a menu open
 and move to select the desired item at the same time.
-
--- 105 of 174 --
-
 100 AC C e s s i b i l i t y F o r e V e ryo n e
 Keyboard shortcuts
 Although keyboard shortcuts can be useful for people relying
@@ -2900,9 +2556,7 @@ down at the same time as the shortcut key) varied from browser
 
 ---
 
-## Sección 26: Chapter 5) (Fig 1.11).
-
--- 106 of 174 --
+## Sección 25: Chapter 5) (Fig 1.11). [Entropy: 0.545]
 
 101 AC C e s s i b i l i t y A n d H t m l
 Fig 5.13: twitter’s “Keyboard shortcuts” use single-key shortcuts, which could make sam’s
@@ -2919,9 +2573,6 @@ people to skip past lengthy navigation and go straight to the
 page content (Fig 5.15). They’ve also become a common form
 of navigation used on one-page sites that have a lot of content
 to scroll through.
-
--- 107 of 174 --
-
 102 AC C e s s i b i l i t y F o r e V e ryo n e
 Some sites choose to make skip links invisible unless you’re
 using a screen reader, but screen reader users rarely use skip
@@ -2947,9 +2598,6 @@ to the next item, your visual focus will scroll right back to the
 top of the page.
 Fig 5.15: i use a skip link on my blog’s list page, so readers can get to the search, categories
 and tags section without having to scroll past all the blog posts i’ve ever written.
-
--- 108 of 174 --
-
 103 AC C e s s i b i l i t y A n d H t m l
 The disjunction between visual and keyboard focus makes
 skip links utterly useless for keyboard navigation users as
@@ -2977,9 +2625,6 @@ But at the same time, when designing hover styles, don’t rely
 Fig 5.16: Focus styles in safari (left) and Firefox (right). don’t remove them. or even
 better, replace the browser’s default focus and hover styles with your own styles that both
 fit with your site’s aesthetic and are even more visible.
-
--- 109 of 174 --
-
 104 AC C e s s i b i l i t y F o r e V e ryo n e
 on them for showing interaction. Not only are hover styles
 invisible to people with visual impairments, but they’re also
@@ -2999,9 +2644,6 @@ in which elements appear in the source code. If you want to
 make some elements appear in a different order to keyboard
 Fig 5.17: on the tactical tech site, the navigation link color changes on hover.
 Fig 5.18: the hovering style on ios can only be triggered by very lightly pressing a link.
-
--- 110 of 174 --
-
 105 AC C e s s i b i l i t y A n d H t m l
 and screen reader users, you would use the tabindex attribute
 on the elements in question:
@@ -3042,9 +2684,7 @@ example, a menu widget may want to receive tab focus (and so
 
 ---
 
-## Sección 27: Chapter 5) (Fig 1.11).
-
--- 111 of 174 --
+## Sección 26: Chapter 5) (Fig 1.11). [Entropy: 0.635]
 
 106 AC C e s s i b i l i t y F o r e V e ryo n e
 uses tabindex="0"), but the list inside that menu may need to
@@ -3061,9 +2701,6 @@ accessible? There are many reasons why a site ends up with
 dodgy HTML, but the two main culprits I’ve seen are HTML
 Fig 5.19: the A list Apart collapsible navigation menu is an example of a complex menu
 widget that you can navigate using only the keyboard.
-
--- 112 of 174 --
-
 107 AC C e s s i b i l i t y A n d H t m l
 generated from WYSIWYG editors and HTML elements used
 for their CSS styling.
@@ -3084,9 +2721,6 @@ see is another chunk of body text, exactly the same as the text
 around it (Fig 5.21).
 Fig 5.20: KompoZer, an old-school WysiWyg editor, has a split view so you can preview
 your rendered Html and Css as you write.
-
--- 113 of 174 --
-
 108 AC C e s s i b i l i t y F o r e V e ryo n e
 To make matters worse, many WYSIWYG editors generate
 unnecessary elements and attributes in their attempt to parse
@@ -3115,9 +2749,6 @@ only been chosen to mark up the content this way because of
 their visual presentation: the CSS has been written so that the
 Fig 5.21: A screen reader needs meaningful Html to tell it how to convey text to the
 listener.
-
--- 114 of 174 --
-
 109 AC C e s s i b i l i t y A n d H t m l
 Fig 5.22: looking good. nice big heading, smaller subheading. the hierarchy is clear,
 right?
@@ -3144,9 +2775,6 @@ confusing the structure appears to screen readers and search
 engines (Fig 5.23).
 Fig 5.23: Without the visual style, the hierarchy of the title and subtitle are the wrong way
 round because that’s the structure defined by the Html.
-
--- 115 of 174 --
-
 110 AC C e s s i b i l i t y F o r e V e ryo n e
 Meaningful HTML
 These two issues share a common root: a failure to separate
@@ -3181,9 +2809,6 @@ Even though a site’s HTML is usually created by a developer
 or generated by a content management system, this doesn’t
 mean we should blame the developer for badly formed HTML.
 With the previous examples, you can see how closely the struc-
-
--- 116 of 174 --
-
 111 AC C e s s i b i l i t y A n d H t m l
 Fig 5.24: the tinymCe WysiWyg editor in WordPress enables you to add Css styles to
 the text formatting dropdown in the Visual editor view, giving writers a better idea of how
@@ -3203,9 +2828,7 @@ structured content of a page and display it with custom styles.
 
 ---
 
-## Sección 28: Chapter 5) (Fig 1.11).
-
--- 117 of 174 --
+## Sección 27: Chapter 5) (Fig 1.11). [Entropy: 0.25]
 
 112 AC C e s s i b i l i t y F o r e V e ryo n e
 These readers and extensions focus on making content as readable as possible by using clean typography and hiding headers,
@@ -3220,9 +2843,6 @@ issues. We still need to structure our content using meaningful
 HTML to ensure basic accessibility.
 Fig 5.26: safari’s reader view on ios strips out the page’s navigation and branding, but
 uses the underlying Html to apply its own subtle (and customizable) styling.
-
--- 118 of 174 --
-
 113 AC C e s s i b i l i t y A n d H t m l
 PROGRESSIVE ENHANCEMENT AND
 GRACEFUL DEGRADATION
@@ -3256,9 +2876,6 @@ Graceful degradation is the idea of building for the most capable browsers, and 
 concept borrowed from mechanical and electrical systems,
 designed so that when something goes wrong, the system
 doesn’t break completely—it just operates in a limited way.
-
--- 119 of 174 --
-
 114 AC C e s s i b i l i t y F o r e V e ryo n e
 Graceful degradation is often preferred for interaction-based
 sites and web apps where the primary experience of the site is
@@ -3271,9 +2888,6 @@ and filtered photo (right), but it’s no big deal.
 Fig 5.28: When you use the video element, the browser will use its native video player.
 safari’s video player is very minimalist (left). Using a custom video player meant i could
 add extra controls and style them to match the rest of the ind.ie site (right).
-
--- 120 of 174 --
-
 115 AC C e s s i b i l i t y A n d H t m l
 Graceful degradation is often used in conjunction with a list
 of supported browsers where the site must provide the best
@@ -3291,9 +2905,6 @@ Progressive enhancement has gained favor over graceful degradation in recent yea
 group of browsers. The capabilities of devices and browsers can
 Fig 5.29: the image might not be loading, but you know what you’re missing because the
 alt text is shown.
-
--- 121 of 174 --
-
 116 AC C e s s i b i l i t y F o r e V e ryo n e
 differ wildly from one to the next, so layering feature support
 and enhancements on top of a baseline experience is the easiest
@@ -3316,9 +2927,7 @@ know how to download another browser or have the admin privileges to do so.
 
 ---
 
-## Sección 29: Chapter 5) (Fig 1.11).
-
--- 122 of 174 --
+## Sección 28: Chapter 5) (Fig 1.11). [Entropy: 0.515]
 
 117 AC C e s s i b i l i t y A n d H t m l
 are usually accessible to developers in native desktop environments, but as web browsers and markup languages were originally designed with simpler, more document-based behavior
@@ -3352,9 +2961,6 @@ plain old div more accessible:
 </div>
 There currently isn’t an HTML element for marking up a
 dialog box that doesn’t interrupt the user’s activity, though I’m
-
--- 123 of 174 --
-
 118 AC C e s s i b i l i t y F o r e V e ryo n e
 crossing my fingers that dialog makes it into the HTML5.2
 spec. For now, we can use role="alert" to give the div alert
@@ -3386,9 +2992,6 @@ technology where to look for a description of an element.
 In Inclusive Design Patterns, Heydon Pickering recommends
 using describedby so that assistive technology can see the
 connection between a password field and a password hint:
-
--- 124 of 174 --
-
 119 AC C e s s i b i l i t y A n d H t m l
 <label for="password">Choose a password</label>
 <input type="text" id="password" aria-invalid="true"
@@ -3423,9 +3026,6 @@ calmly to the nearest emergency exit.</p>
 The assertive property can be quite obtrusive, so it should
 only be used when people need to be informed of something
 immediately—such as an error or alert relevant to their current actions.
-
--- 125 of 174 --
-
 120 AC C e s s i b i l i t y F o r e V e ryo n e
 When to use ARIA (and when not to)
 There are no negative side effects to using ARIA correctly, so
@@ -3457,9 +3057,7 @@ need fixing and create strategies for improvements.
 
 ---
 
-## Sección 30: Chapter 5) (Fig 1.11).
-
--- 126 of 174 --
+## Sección 29: Chapter 5) (Fig 1.11). [Entropy: 0.475]
 
 121 e VA lUAt i o n A n d t e s t i n g
 iF you don’t test whether your accessibility efforts work,
@@ -3479,9 +3077,6 @@ overall product plan. Overtesting is unlikely to be an issue, but
 undertesting could make you miss problems with your site.
 EVALUATION
 AND TESTING6
-
--- 127 of 174 --
-
 122 AC C e s s i b i l i t y F o r e V e ryo n e
 Your testing document should contain:
 • testing methods to be used, and when they’ll be used in
@@ -3513,9 +3108,6 @@ Cognitive walkthroughs test the interface against specific tasks,
 trying to attempt a goal in the same way a user would. These
 walkthroughs could also emulate a particular setup, such as
 someone trying to accomplish tasks using assistive technology.
-
--- 128 of 174 --
-
 123 e VA lUAt i o n A n d t e s t i n g
 Code reviews
 Code reviews can be valuable early on in the process to help
@@ -3547,9 +3139,6 @@ DEVICE AND BROWSER TESTING
 Device and browser testing involve testing your site across
 combinations of devices, operating systems, and browsers.
 Testing across these different conditions is a key part of accessibility testing.
-
--- 129 of 174 --
-
 124 AC C e s s i b i l i t y F o r e V e ryo n e
 It’s tempting to test in your favorite browser and just hope
 it works in all the rest—but it probably won’t. As we’ve seen,
@@ -3575,7 +3164,7 @@ test with:
 Safari, Firefox, Google Chrome, Internet Explorer, Microsoft Edge, Brave, or whatever’s trendy nowadays) on
 default settings;
 • mobile devices running all major operation systems (iOS,
-Android, Windows Phone);
+Web Platform, Windows Phone);
 • major browsers across those mobile operating systems
 (Safari, Firefox, Google Chrome, Opera Mini);
 • assistive technologies including screen readers (JAWS,
@@ -3588,9 +3177,7 @@ screen magnifiers.
 
 ---
 
-## Sección 31: Chapter 5) (Fig 1.11).
-
--- 130 of 174 --
+## Sección 30: Chapter 5) (Fig 1.11). [Entropy: 0.265]
 
 125 e VA lUAt i o n A n d t e s t i n g
 Virtual machines
@@ -3622,9 +3209,6 @@ Going the extra mile
 If you come across issues during testing that are down to assistive technology or browser quirks, consider providing a fix
 for the problem rather than blaming the technology for the
 brokenness.
-
--- 131 of 174 --
-
 126 AC C e s s i b i l i t y F o r e V e ryo n e
 DESKTOP
  COLOR
@@ -3701,9 +3285,6 @@ Works
 Fig 6.1:
  the testing matrix ensures you don’t miss a specific combination of input and output.
  your testing matrix should be bigger and better!
-
--- 132 of 174 --
-
 127 e VA lUAt i o n A n d t e s t i n g
 For example, imagine that the placeholder attribute is being
 used in form input fields to give a hint on how to fill in the
@@ -3735,9 +3316,6 @@ telling you either that it’s valid or has errors (and sometimes
 warnings).
 However, validators have a very strict approach to reading
 markup. They don’t understand the nuances of your code, or
-
--- 133 of 174 --
-
 128 AC C e s s i b i l i t y F o r e V e ryo n e
 the reason you chose to use one HTML element over another.
 Everything is graded as wrong or right.
@@ -3761,9 +3339,6 @@ explain the errors in plain English (http://bkaprt.com/afe/0605/). (“Literal i
 forgotten a closing quotation mark.)
 Fig 6.2: Using a meta element with a value isn’t valid Html, but it is the format twitter
 understands for its summary cards.
-
--- 134 of 174 --
-
 129 e VA lUAt i o n A n d t e s t i n g
 WebAIM’s WAVE
 When it comes to specialist accessibility validation tools, nothing beats WebAIM’s WAVE web accessibility evaluation tool.
@@ -3785,9 +3360,7 @@ text”. i better go fix that…
 
 ---
 
-## Sección 32: Chapter 5) (Fig 1.11).
-
--- 135 of 174 --
+## Sección 31: Chapter 5) (Fig 1.11). [Entropy: 0.25]
 
 130 AC C e s s i b i l i t y F o r e V e ryo n e
 Color contrast checkers
@@ -3817,9 +3390,6 @@ mimic mobile and other poor connection speeds. Usually tools
 mimic a poor connection through a proxy connection—though
 developer tools at the operating system level can tailor the
 whole native experience. See Resources for recommendations.
-
--- 136 of 174 --
-
 131 e VA lUAt i o n A n d t e s t i n g
 TESTING KEYBOARD NAVIGATION
 It’s not hard to test how easy your site is to browse using
@@ -3853,9 +3423,6 @@ testing plan.
 Try your best not to test with people who are working on
 the project: they will likely fail to notice the problems that
 might hold up other users, may not be part of the target audience at all, and are likely to have conflicting goals with other
-
--- 137 of 174 --
-
 132 AC C e s s i b i l i t y F o r e V e ryo n e
 users. How the intended audience really interact with a product
 is often different from the assumptions of a team who may
@@ -3869,9 +3436,6 @@ see how people use your product in context.
 Fig 6.4: Keep in mind that screen readers can change these default keyboard commands.
 léonie Watson has written a simple explanation for understanding screen reader
 interaction modes on her blog (http://bkaprt.com/afe/06-07/).
-
--- 138 of 174 --
-
 133 e VA lUAt i o n A n d t e s t i n g
 Choose testers who are accustomed to using the technologies they’re testing with—that way you’re testing the usability
 of your product, not their comfort with screen readers or keyboard navigation. In Just Ask: Integrating Accessibility Throughout
@@ -3905,9 +3469,7 @@ your confidence in the test results, though there may be dimin-
 
 ---
 
-## Sección 33: Chapter 5) (Fig 1.11).
-
--- 139 of 174 --
+## Sección 32: Chapter 5) (Fig 1.11). [Entropy: 0.325]
 
 134 AC C e s s i b i l i t y F o r e V e ryo n e
 ishing returns, as the most critical usability problems are often
@@ -3941,9 +3503,6 @@ essential to the success of the product.
 The benefits you’ll get from a usability test depend entirely
 on how well you prepare beforehand, and how much attention
 you pay during the test. Scripting questions and tasks can help
-
--- 140 of 174 --
-
 135 e VA lUAt i o n A n d t e s t i n g
 you focus on the participant and keep the session on course.
 It’s also vital that the wording of your questions and tasks do
@@ -3975,9 +3534,6 @@ ONGOING TESTING
 Testing doesn’t end on launch day. Ongoing testing keeps accessibility at the forefront of everybody’s minds when it’s time to
 make post-launch decisions about the site. It also prevents a
 product from becoming less accessible over time as more and
-
--- 141 of 174 --
-
 136 AC C e s s i b i l i t y F o r e V e ryo n e
 more changes are made. Test to find problems with your site,
 and then test your solutions. Don’t just assume you’ll find the
@@ -4006,18 +3562,13 @@ Earlier in this chapter we looked briefly at how to test against
 standards and guidelines to generate benchmarks to aim for.
 But standards and guidelines aren’t just nice ideas about accessibility, sometimes they’re legal or regulatory requirements that
 need to abided by. We’ll look at those next.
-
--- 142 of 174 --
-
 137 e VA lUAt i o n A n d t e s t i n g
 Fig 6.5: Have you enabled image descriptions on your twitter settings yet? no? go do it
 right now, you’ll be learning to write great alt text in no time…
 
 ---
 
-## Sección 34: Chapter 5) (Fig 1.11).
-
--- 143 of 174 --
+## Sección 33: Chapter 5) (Fig 1.11). [Entropy: 0.28]
 
 138 AC C e s s i b i l i t y F o r e V e ryo n e
 let’s FaCe it, guidelines and standards are often really boring—and it can be hard to see how the principles apply in
@@ -4039,9 +3590,6 @@ it harder to understand what you need to do to satisfy the
 guidelines, but W3C’s Web Accessibility Initiative has plenty
 LAWS AND
 GUIDELINES7
-
--- 144 of 174 --
-
 139 l AW s A n d g U i d e l i n e s
 of additional explainers, such as the “How to Meet WCAG 2.0”
 quick reference (http://bkaprt.com/afe/07-01/).
@@ -4072,9 +3620,6 @@ UK law and RNIB v. Bmibaby Limited
 In the UK, the relevant accessibility law is the Equality Act.
 Section 20 of the Equality Act, “Duty to make adjustments,”
 refers specifically to the accessibility of information:
-
--- 145 of 174 --
-
 140 AC C e s s i b i l i t y F o r e V e ryo n e
 Where the first [a disabled person at a substantial disadvantage
 in comparison to someone who is not disabled] or third [where
@@ -4109,9 +3654,6 @@ giving consideration as to whether it is now possible to settle
 the legal proceedings.
 —Sam Fothergill, RNIB Senior Legal Policy Officer, 27th
 April 2012
-
--- 146 of 174 --
-
 141 l AW s A n d g U i d e l i n e s
 When I speak to accessibility professionals, many tell me of
 cases with equally high-profile companies quietly settling out of
@@ -4141,9 +3683,7 @@ that sites should adhere to Level A and Level AA of the WCAG
 
 ---
 
-## Sección 35: Chapter 5) (Fig 1.11).
-
--- 147 of 174 --
+## Sección 34: Chapter 5) (Fig 1.11). [Entropy: 0.49]
 
 142 AC C e s s i b i l i t y F o r e V e ryo n e
 Those are good guidelines, but they only apply to the United
@@ -4173,9 +3713,6 @@ work. Guidelines like the Web Content Accessibility Guidelines
 (WCAG) act as valuable checks at various stages of a website’s
 creation and maintenance, giving us structure when we’re
 deciding how to develop a site.
-
--- 148 of 174 --
-
 143 l AW s A n d g U i d e l i n e s
 WCAG
 WCAG 2.0 is the current version of the Web Content Accessibility Guidelines from the W3C. Developed by the Web Accessibility Initiative (WAI), WCAG 2.0 distinctly differs from WCAG
@@ -4205,9 +3742,6 @@ Principles
 The WCAG 2.0 principles are focused around a human-centered
 approach to web design, and handily spell out the acronym
 POUR (Perceivable, Operable, Understandable, Robust):
-
--- 149 of 174 --
-
 144 AC C e s s i b i l i t y F o r e V e ryo n e
 • Principle 1: Perceivable—information and user interface
 components must be presentable to users in ways they
@@ -4239,9 +3773,6 @@ bkaprt.com/afe/07-01/) Each criteria has a level:
 Level A and Level AA criteria
 • Level AAA: the highest level of conformance, satisfying Level
 A, Level AA, and Level AAA criteria
-
--- 150 of 174 --
-
 145 l AW s A n d g U i d e l i n e s
 Most organizations interested in accessibility aim for Level
 AA. The standards and laws in some countries require that
@@ -4278,9 +3809,7 @@ that it happens to conform to Level AA:
 
 ---
 
-## Sección 36: Chapter 5) (Fig 1.11).
-
--- 151 of 174 --
+## Sección 35: Chapter 5) (Fig 1.11). [Entropy: 0.49]
 
 146 AC C e s s i b i l i t y F o r e V e ryo n e
 1.4.3 Contrast (Minimum): The visual presentation of
@@ -4312,9 +3841,6 @@ side of the law.
 It can be easy to treat guidelines as checklists—criteria to
 simply tick off, convinced of our compliance. That might satisfy
 a court, but it ignores the principles underlying the guidelines.
-
--- 152 of 174 --
-
 147 l AW s A n d g U i d e l i n e s
 The point of web accessibility is to create flexible and generous sites that benefit people using the web. When we focus
 on checklists, we’re only “doing” accessibility so we don’t get
@@ -4346,9 +3872,6 @@ Do the right thing
 Doing accessibility well is about merging your knowledge of
 accessibility with your project’s context to create a balance that
 serves the people who use your site.
-
--- 153 of 174 --
-
 148 AC C e s s i b i l i t y F o r e V e ryo n e
 Your types of content and interactions will dictate one set of
 constraints. Your visitors’ needs and goals will dictate another.
@@ -4382,9 +3905,6 @@ true for accessibility?
 We need to work together to make and keep the web open,
 affordable, and available to all. Accessibility is our way to ensure
 that nobody gets shut out.
-
--- 154 of 174 --
-
 149 r e s o U r C e s
 RESOURCES
 Accessibility
@@ -4418,9 +3938,7 @@ extra resources (http://bkaprt.com/afe/06-03/).
 
 ---
 
-## Sección 37: Chapter 5) (Fig 1.11).
-
--- 155 of 174 --
+## Sección 36: Chapter 5) (Fig 1.11). [Entropy: 0.5]
 
 150 AC C e s s i b i l i t y F o r e V e ryo n e
 • “Maintaining Accessibility in a Responsive World,” Scott
@@ -4454,9 +3972,6 @@ mode (http://bkaprt.com/afe/01-02/).
 • “How to Make Your Website Accessible to People Who Use
 a Screen Magnifier,” Frederik Creemers. Gives some tips for
 catering to screen magnifiers (http://bkaprt.com/afe/08-13/).
-
--- 156 of 174 --
-
 151 r e s o U r C e s
 • “What I've learned about motor impairment,” James Williamson. James explains how to improve usability for people with
 motor impairments, based on his own experiences (http://
@@ -4488,9 +4003,6 @@ HTML
 Watson and Chaals McCathie Nevile. An introduction to the
 history and current state of how browsers provide accessibility and how we can write accessible HTML (http://bkaprt.
 com/afe/08-19/).
-
--- 157 of 174 --
-
 152 AC C e s s i b i l i t y F o r e V e ryo n e
 • HTML5 Accessibility. Reference tables comparing the accessibility implementation of HTML5 elements (http://bkaprt.
 com/afe/08-20/).
@@ -4520,9 +4032,6 @@ Web Content Accessibility Guidelines 2.0 requirements (success criteria) and tec
 ethical design (http://bkaprt.com/afe/08-27/).
 • “Inclusive Design Principles.” The Paciello Group’s broad
 guidelines to inclusive design (http://bkaprt.com/afe/08-28/).
-
--- 158 of 174 --
-
 153 r e s o U r C e s
 Internationalization
 • “Styling vertical Chinese, Japanese, Korean and Mongolian
@@ -4554,9 +4063,7 @@ bkaprt.com/afe/04-04/).
 
 ---
 
-## Sección 38: Chapter 5) (Fig 1.11).
-
--- 159 of 174 --
+## Sección 37: Chapter 5) (Fig 1.11). [Entropy: 0.5]
 
 154 AC C e s s i b i l i t y F o r e V e ryo n e
 • “The Elements of Typographic Style Applied to the Web,”
@@ -4587,9 +4094,6 @@ Sarah Horton and Whitney Quesenbery. A look at how universal design principles c
 development process (http://bkaprt.com/afe/02-43/).
 • “How do blind people interpret emoji's?” The BBC’s Ouch:
 Disability Talk podcast team discuss whether emojis are
-
--- 160 of 174 --
-
 155 r e s o U r C e s
 accessible and how their use can be confusing (http://bkaprt.
 com/afe/08-44/).
@@ -4624,9 +4128,6 @@ Developer Extension. It still has loads of handy tools (http://
 bkaprt.com/afe/08-51/).
 • HTML5 Outliner. A web tool and bookmarklet for checking
 your HTML5 outlines (http://bkaprt.com/afe/08-52/).
-
--- 161 of 174 --
-
 156 AC C e s s i b i l i t y F o r e V e ryo n e
 Video
 • Universal Video Player. A responsive, accessible HTML5
@@ -4655,9 +4156,6 @@ Reading Ease, and Flesch-Kincaid grade-level algorithms
 • Hemingway App. A writing tool that helps you evaluate your
 copy for readability using scores for US school grades 0–18
 (http://bkaprt.com/afe/08-58/).
-
--- 162 of 174 --
-
 157 AC K n oW l e d g e m e n t s
 ACKNOWLEDGEMENTS
 I wrote a book! And this book certainly wouldn’t have happened without the effort of a huge number of people. To start,
@@ -4692,9 +4190,7 @@ Dale Cruse.
 
 ---
 
-## Sección 39: Chapter 5) (Fig 1.11).
-
--- 163 of 174 --
+## Sección 38: Chapter 5) (Fig 1.11). [Entropy: 0.25]
 
 158 AC C e s s i b i l i t y F o r e V e ryo n e
 Oskar should be thanked even though he won’t read this—
@@ -4717,9 +4213,6 @@ helping me so much with this book. It’s funny how a person
 can inspire your work so much, yet you don’t even realize it
 until you write a book about it. Thank you for your wisdom and
 advice, and for being the nicest person on the planet.
-
--- 164 of 174 --
-
 159 r e F e r e n C e s
 REFERENCES
 Shortened URLs are numbered sequentially; the related long
@@ -4727,7 +4220,7 @@ URLs are listed below for reference.
 
 ---
 
-## Sección 40: Chapter 1
+## Sección 39: Chapter 1 [Entropy: 0.25]
 
 01-01 http://thewebahead.net/64
 01-02 http://tink.uk/using-narrator-dev-mode/
@@ -4735,7 +4228,7 @@ URLs are listed below for reference.
 
 ---
 
-## Sección 41: Chapter 2
+## Sección 40: Chapter 2 [Entropy: 0.25]
 
 02-01 https://pixabay.com/en/kingfisher-bird-aviary-color-nature-863495/
 02-02 https://www.bdadyslexia.org.uk
@@ -4753,13 +4246,10 @@ Chatper 3
 
 ---
 
-## Sección 42: Chapter 4
+## Sección 41: Chapter 4 [Entropy: 0.25]
 
 04-01 https://backchannel.com/all-technology-is-assistive-ac9f7183c8cd
 04-02 https://www.flickr.com/photos/ansik/3318806932/
-
--- 165 of 174 --
-
 160 AC C e s s i b i l i t y F o r e V e ryo n e
 04-03 http://techcrunch.com/2014/03/12/googles-search-results-ditch-the-underlined-links-increase-the-font-size-more-in-new-experiment/
 04-04 https://abookapart.com/products/on-web-typography
@@ -4773,7 +4263,7 @@ Chatper 3
 
 ---
 
-## Sección 43: Chapter 5
+## Sección 42: Chapter 5 [Entropy: 0.25]
 
 05-01 http://chrispederick.com/work/web-developer/
 05-02 https://support.google.com/webmasters/answer/35769
@@ -4788,7 +4278,7 @@ Chatper 3
 
 ---
 
-## Sección 44: Chapter 6
+## Sección 43: Chapter 6 [Entropy: 0.25]
 
 06-01 http://www.adlib-recruitment.co.uk/blog/is-your-web-presence-accessible-to-everyone/
 06-01 http://alistapart.com/article/reframing-accessibility-for-the-web
@@ -4798,404 +4288,7 @@ Chatper 3
 06-05 http://www.colororacle.org/
 06-06 http://tink.uk/understanding-screen-reader-interaction-modes/
 06-07 http://www.uiaccess.com/accessucd/ut.html
-
--- 166 of 174 --
-
 161 r e F e r e n C e s
-
----
-
-## Sección 45: Chapter 7
-
-07-01 https://www.w3.org/WAi/WCAg20/quickref/
-07-02 https://www.paciellogroup.com/blog/2017/01/section-508-refresh-part-1/
-07-03 http://ec.europa.eu/social/main.jsp?catid=1202
-Resources
-08-01 http://a11yproject.com
-08-02 http://www.heydonworks.com
-08-03 https://www.paciellogroup.com/blog/
-08-04 https://tink.uk/
-08-05 https://axesslab.com/articles/
-08-06 http://simplyaccessible.com/archives/
-08-07 http://www.webaxe.org
-08-08 https://www.smashingmagazine.com/inclusive-design-patterns/
-08-09 https://www.filamentgroup.com/lab/accessible-responsive.html
-08-10 https://www.w3.org/tr/wai-aria/
-08-11 https://support.apple.com/en-us/Ht201370
-08-12 https://support.apple.com/kb/PH25153
-08-13 https://dev.to/_bigblind/how-to-make-your-website-accessible-to-peoplewho-use-a-screen-magnifier
-08-14 http://simpleprimate.com/blog/motor
-08-15 https://abookapart.com/products/color-accessibility-workflows
-08-16 http://www.paciellogroup.com/resources/contrastanalyser/
-08-17 http://www.snook.ca/technical/colour_contrast/colour.html
-08-18 https://leaverou.github.com/contrast-ratio/
-08-19 https://www.smashingmagazine.com/2015/03/web-accessibility-with-accessibility-api/
-08-20 http://html5accessibility.com
-08-21 http://html5doctor.com
-08-22 https://abookapart.com/products/html5-for-web-designers
-08-23 https://developer.mozilla.org/en-Us/docs/Web/Html/element
-08-24 http://webdesign.tutsplus.com/articles/the-truth-about-multiple-h1-tagsin-the-html5-era--webdesign-16824
-08-25 http://www.karlgroves.com/2013/05/14/links-are-not-buttons-neither-aredivs-and-spans/
-08-26 https://www.w3.org/tr/WCAg20/
-08-27 https://ind.ie/ethical-design
-
--- 167 of 174 --
-
-162 AC C e s s i b i l i t y F o r e V e ryo n e
-08-28 http://inclusivedesignprinciples.org
-08-29 https://www.w3.org/international/articles/vertical-text/
-08-30 https://www.w3.org/international/tutorials/bidi-xhtml/
-08-31 https://marcysutton.com/accessibility-and-performance/
-08-32 https://developer.apple.com/download/more/?q=network%20link%20
-Conditioner
-08-33 http://www.charlesproxy.com
-08-34 http://practicaltypography.com
-08-35 https://www.myfonts.com/fonts/fw-heinemann/heinemann/
-08-36 http://webtypography.net/toc/
-08-37 https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/
-08-38 http://www.coffeecup.com/help/articles/what-is-a-web-safe-font/
-08-39 http://www.3playmedia.com/services-features/tools/captions-format-converter/
-08-40 http://www.jubler.org
-08-41 http://www.subtitle-horse.com
-08-42 https://www.sitepoint.com/tips-accessible-svg/
-08-43 http://rosenfeldmedia.com/books/a-web-for-everyone/
-08-44 http://www.bbc.co.uk/programmes/p048v3kl
-08-45 https://axesslab.com/disabled-buttons-suck/
-08-46 http://www.uiaccess.com/accessucd/
-08-47 http://webaim.org/techniques/skipnav/
-08-48 https://www.paciellogroup.com/blog/2017/02/sounding-out-the-webaccessibility-for-deaf-and-hard-of-hearing-people-part-1/
-08-49 https://yetanotherlefty.wordpress.com/2017/05/01/what-non-disabledpeople-get-wrong-about-accessibility
-08-50 https://axesslab.com/accessibility-according-to-pwd/
-08-51 http://chrispederick.com/work/web-developer/
-08-52 https://hoyois.github.io/html5outliner/
-08-53 http://centerforplainlanguage.org
-08-54 https://content-guide.18f.gov/index.html
-08-55 http://consciousstyleguide.com
-08-56 https://www.gov.uk/guidance/content-design/writing-for-gov-uk
-08-57 http://juicystudio.com/services/readability.php
-08-58 http://www.hemingwayapp.com
-
--- 168 of 174 --
-
-163 I N D E X
-A
-Accessibility API Mapping standards
-accessible design, definition 5
-Accessible Rich Internet Applications
-(ARIA) 73
-access keys 100
-affordances 52
-alerts 70
-alphabets and characters 33
-alphanumeric acronyms 17
-a11y 17
-i18n 17
-alternative styles 111–112
-alt text 79–81
-Alzheimer’s Society 58
-American Standard Code for
-Information Interchange
-(ASCII) 33
-Americans with Disabilities Act (ADA)
-Anne Gibson 39
-AOL 30
-ARIA or WAI-ARIA (Web Accessibility
-Initiative Accessible Rich
-Internet Applications) 116
-role (role=) 117
-when to use it 120
-assistive technologies 10, 16–17, 31
-Authoring Tool Accessibility
-Guidelines (ATAG) 146
-B
-BBC 1, 40
-BBC News 35
-BBDO 30
-Bluetooth 14
-Bmibaby Limited 140
-Body Shop 77
-braille 11
-British Dyslexia Association 26
-broadband 31
-buttons 52, 98–99
-C
-cerebral palsy (CP) 18
-character encoding 33
-character sets 33
-closed captions 85
-Coady, Geri 76
-cognitive walkthroughs 122
-colonial design 9
-color 75
-as information 77
-contrast 75
-Convention on the Rights of Persons
-with Disabilities (CRPD) 142
-conventions 52–53
-Cox, Simon 80
-Coyier, Chris 81
-Cruse, Dale 8
-CSS styling 108–109
-D
-defining disability 19
-devices
-sharing 37
-Discourse 71
-diversity 9
-document landmarks 118
-E
-empathy 8
-environmental factors 28–36
-browsers 29
-connectivity 31
-devices 30–31
-languages 32–35
-Equality Act 139
-error messages 72
-European Accessibility Act 142
-Europe’s International Organization
-for Standardization (ISO) 33
-INDEX
-
--- 169 of 174 --
-
-164 AC C e s s i b i l i t y F o r e V e ryo n e
-F
-fallbacks 113
-Faulkner, Steve 118
-Federal Register 141
-Feldman, Matt 141
-findability 93–94
-focus styles 103
-forms 70, 96
-Fothergill, Sam 140
-G
-Gibson, Anne 125
-Google Translate 32
-graceful degradation 113
-graphs and infographics 81
-guidelines 49, 142
-H
-Hall, Erika 43
-headings 94
-Head, Val 28
-Hendren, Sara 51
-Henry, Shawn 45
-heuristic evaluations 122
-Horton, Sarah 43
-hover styles 103
-HTML 90–91
-unstyled 91
-HTML4 104
-HTML5.2 118
-I
-impairments
-age-related 9
-auditory 23–24
-cognitive 25–27
-motor 24
-visual 21–23
-inclusion 3
-Ind.ie 87, 113
-inputs 96
-pairs 98
-interaction design 69–74
-Interactive Advertising Bureau (IAB)
-Internet Movie Database (IMDb) 62
-internet speed 31
-J
-JavaScript 100, 113
-Job Access With Speech (JAWS) 10, 26
-K
-Kentucky Fried Chicken (KFC) 32
-keyboard focus 102
-keyboard navigation 11, 99–106
-Kickstarter 71
-Kloots, Todd 123
-KompoZer 107
-Krug, Steve 55
-L
-labels 96–97
-pairs 98
-learning disabilities 26
-dyslexia 26
-literacy 27
-legal landscape 139
-Lembree, Dennis 113
-links 58–60
-link language 61
-lists 95
-live regions 119
-localization 32
-M
-Mace, Ronald L. 5
-meaningful HTML 110–111
-Meyer, Eric 37
-Mobile Marketing Center of
-Excellence 30
-motion sensitivity 28
-N
-National Federation of the Blind
-(NFB) 139
-NaturalReader 26
-navigation and wayfinding 54–59
-navigation bar 54
-navigation hardware 13–14
-eye trackers 14
-switch inputs 13
-New Republic 8
-
----
-
-## Sección 46: Chapter 7
-
--- 170 of 174 --
-
-165 I N D E X
-P
-Paciello Group 40, 141
-PDFs 82
-Perceivable, Operable,
-Understandable, Robust
-(POUR) 143
-Pickering, Heydon 118
-policies 48
-production and development 47
-testing on devices 47
-progressive enhancement 113–116
-project budget 42–43
-project scope 41–43
-Q
-Quesenbery, Whitney 43
-R
-reading direction 34
-research 43–46
-analysis 46
-interacting with participants
-45–46
-recruiting people with disabilities
-44–45
-rich media 79–88
-rich web applications 70
-Royal National Institute of Blind
-People (RNIB) 140
-RSS readers 112
-Rutter, Richard 66
-S
-Santa Maria, Jason 66
-Scalable Vector Graphics (SVG) 81
-screen magnifiers 14–16
-screen readers 10–12, 79
-Linux Screen Reader (LSR) 10
-Narrator 10
-NonVisual Desktop Access
-(NVDA) 10
-Orca 10
-Window-Eyes 10
-search engines 93
-seizures 27–29
-triggers 28
-Simmons, Jen 8
-space and context 36–37
-speech recognition 14
-Cortana 14
-Google Assistant 14
-Siri 14
-structure 90
-subtitles and captions 85–87
-auto-captioning 85
-Swan, Henny 40
-Symbolset 68
-T
-tabindex 104
-Target 139
-testing 122
-device and browser 123–127
-ongoing
-suites 124
-virtual machines 125
-text in images 81
-The New York Times 7
-TinyMCE 111
-titles and breadcrumbs 58
-training 40
-transcripts 83
-clean verbatim vs. true verbatim
-translation 32
-typography 65–69
-U
-UK Post Office 49
-United Nations 55
-universal design 5–7
-usability testing 131–135
-finding participants 132–133
-running tests 134
-target audience 133
-US Rehabilitation Act of 1973 141
-Section 508 141
-V
-validators and checkers 127–130
-vestibular disorder 27–29
-Vinkle, Scott 105
-visual focus 102
-VoiceOver 10
-
--- 171 of 174 --
-
-166 AC C e s s i b i l i t y F o r e V e ryo n e
-W
-W3C 128
-Web Accessibility Initiative 138
-Wachter-Boettcher, Sara 37
-Watson, Léonie 100, 123
-web accessibility, definition 3
-Web Accessibility Initiative (WAI) 143
-WebAIM’s WAVE 129
-Web Content Accessibility Guidelines
-(WCAG) 49, 123, 143
-conformance levels 144–145
-principles 143–144
-webfonts 34
-Web Video Text Track (WebVTT) 87
-What-You-See-Is-What-You-Get
-(WYSIWYG) 107–108
-Wikipedia 92
-writing 62–65
-hierarchy and structure 62
-plain language 64
-Y
-YouTube 85
-
--- 172 of 174 --
-
-ABOUT A BOOK APART
-We cover the emerging and essential topics in web design and
-development with style, clarity, and above all, brevity—because
-working designer-developers can’t afford to waste time.
-COLOPHON
-The text is set in FF Yoga and its companion, FF Yoga Sans,
-both by Xavier Dupré. Headlines and cover are set in Titling
-Gothic by David Berlow.
-
--- 173 of 174 --
-
-ABOUT THE AUTHOR
-Laura Kalbag is a designer
-from the UK. She’s one third of
-Ind.ie, a tiny, two-person-andone-husky social enterprise
-working for social justice in
-the digital age. At Ind.ie, Laura
-follows the Ethical Design
-Manifesto, and works on a
-web privacy tool called Better.
-Laura does everything from design to development while
-learning how to run a sustainable social enterprise. She strives
-to make privacy and broader ethics in technology accessible to
-a wide audience. You can typically find her making design decisions, writing CSS, nudging icon pixels, or distilling a privacy
-policy into something humans can understand. Sometimes, she
-speaks at conferences and writes articles, too.
-
--- 174 of 174 --
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[DESIGN_MASTERY_2026]] · [[AGENT_CREATIVE_AND_VISUAL_AWARENESS_2026]] · [[CANON_REFACTORING_UI_WATHAN_SCHOGER]] · [[CANON_PRACTICAL_UI_ADHAM_DANNAWAY]] · #ui_ux_design

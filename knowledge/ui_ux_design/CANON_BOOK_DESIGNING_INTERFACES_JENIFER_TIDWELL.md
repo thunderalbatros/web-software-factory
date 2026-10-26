@@ -1,4 +1,4 @@
-﻿---
+---
 version: 1.0.0
 tipo: research
 tags:
@@ -9,6 +9,8 @@ tags:
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Web Software Factory.
 
 # Designing Interfaces: Patterns for Effective Interaction Design
 *Autor: Jenifer Tidwell*  

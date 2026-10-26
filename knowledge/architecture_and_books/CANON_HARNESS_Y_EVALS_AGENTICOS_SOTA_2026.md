@@ -8,7 +8,7 @@
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -80,12 +80,12 @@ E --> H[Trajectory Graders: Tool sequence / Tokens]
 ---
 
 [knowledge/canon_foundation/CANON_HARNESS_Y_EVALS_AGENTICOS_SOTA_2026.md › 🛡️ TRATADO CANÓNICO: METODOLOGÍA DE AGENT HARNESS & EVALS SISTÉMICOS (SOTA 2026) › 3. Taxonomía de Gradadores en 4 Capas (The 4-Layer Grader Stack)]
-Para erradicar la fragilidad de evaluar con un único método, Yendo adopta el enfoque multicapa:
+Para erradicar la fragilidad de evaluar con un único método, WebFactory adopta el enfoque multicapa:
 
 [knowledge/canon_foundation/CANON_HARNESS_Y_EVALS_AGENTICOS_SOTA_2026.md › 🛡️ TRATADO CANÓNICO: METODOLOGÍA DE AGENT HARNESS & EVALS SISTÉMICOS (SOTA 2026) › 3. Taxonomía de Gradadores en 4 Capas (The 4-Layer Grader Stack)]
-Para erradicar la fragilidad de evaluar con un único método, Yendo adopta el enfoque multicapa:
+Para erradicar la fragilidad de evaluar con un único método, WebFactory adopta el enfoque multicapa:
 
-| Capa de Gradación | Mecanismo | Fortalezas | Cuándo Usarlo en Yendo |
+| Capa de Gradación | Mecanismo | Fortalezas | Cuándo Usarlo en WebFactory |
 | :--- | :--- | :--- | :--- |
 | **Capa 1: Código Determinista (Code-based)** | Tests unitarios, `tsc --noEmit`, linters, escaneo AST, regex de invariantes. | Rápido, costo $0, 100% reproducible, sin sesgos. | Compilación TypeScript, respeto de `INV_MODULARITY_150`, chequeo anti-alucinación de imports. |
 | **Capa 2: Estado Ambiental (State-based)** | Verificación de esquemas SQL, políticas RLS en PostgreSQL, fixtures en SQLite/MMKV. | Comprueba si el cambio tuvo efecto real y seguro en los datos. | Migraciones de base de datos, persistencia del Token Ledger (Y$), consistencia PostGIS. |
@@ -111,7 +111,7 @@ El CTO o Principal Domain Expert calibra un lote inicial de 25-50 transcripcione
 
 ---
 
-[knowledge/canon_foundation/CANON_HARNESS_Y_EVALS_AGENTICOS_SOTA_2026.md › 🛡️ TRATADO CANÓNICO: METODOLOGÍA DE AGENT HARNESS & EVALS SISTÉMICOS (SOTA 2026) › 5. Aplicación al Sistema Multi-Agente de Yendo]
+[knowledge/canon_foundation/CANON_HARNESS_Y_EVALS_AGENTICOS_SOTA_2026.md › 🛡️ TRATADO CANÓNICO: METODOLOGÍA DE AGENT HARNESS & EVALS SISTÉMICOS (SOTA 2026) › 5. Aplicación al Sistema Multi-Agente de WebFactory]
 | Squad | Banco de Tareas de Evaluación (Eval Benchmark) | Grader Primario | Criterio Inviolable |
 | :--- | :--- | :--- | :--- |
 | **CORE_ENGINEERING_SQUAD** | Creación y refactor de componentes TSX y Hooks. | Determinista (`tsc`, AST, eslint). | Archivos `< 150` líneas, cero imports circulares, tipos estrictos código 0. |

@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * tools/factory.mjs — Unified Web Software Factory CLI (ISO/IEC 26550 + Spec-Kit SDD + 5-Gate QA)
  * ===============================================================================================
@@ -19,6 +19,7 @@ import { loadProjectConfig, FACTORY_ROOT } from './lib/project_loader.mjs';
 import { generateSoftwareSpec } from './intelligence/spec_generator.mjs';
 import { runDiffUiAdversarialGate } from './audit/diff_ui_adversarial.mjs';
 import { verifyConstitutionLock } from './intelligence/constitution_guard.mjs';
+import { compileDesignTokens } from './design/token_compiler.mjs';
 
 function parseFlag(argv, flagName, defaultValue = '') {
   for (let i = 0; i < argv.length; i++) {
@@ -183,6 +184,13 @@ async function main() {
       }
     }
 
+    // Compile W3C DTCG 2025.10 tokens + bespoke OKLCH CSS for the chosen archetype & style
+    compileDesignTokens({
+      projectDir: targetDir,
+      archetype,
+      style: styleName || 'bento'
+    });
+
     console.log('\n====================================================================');
     console.log(`🚀 NEW WEBSITE SCAFFOLDED FROM TEMPLATE [${templateName}]`);
     console.log('====================================================================');
@@ -300,6 +308,48 @@ async function main() {
   if (subcommand === 'snapshot') {
     const cfg = loadProjectConfig(projectFlag);
     execSync(`node "${path.join(FACTORY_ROOT, 'tools', 'audit', 'a11y_tree_snapshot.mjs')}" --project "${cfg.projectRoot}"`, {
+      cwd: FACTORY_ROOT,
+      stdio: 'inherit'
+    });
+    return;
+  }
+
+  if (subcommand === 'tokens') {
+    const cfg = loadProjectConfig(projectFlag);
+    const styleArg = parseFlag(argv, '--style', cfg.design?.styleSkill || 'bento');
+    const archArg = parseFlag(argv, '--archetype', cfg.archetype || 'saas-b2b');
+    const res = compileDesignTokens({
+      projectDir: projectFlag,
+      archetype: archArg,
+      style: styleArg
+    });
+    console.log(`✅ Compiled W3C DTCG 2025.10 tokens (${res.archetype} | ${res.styleSkill}) into ${res.writtenFiles.length} file(s).`);
+    return;
+  }
+
+  if (subcommand === 'harvest') {
+    const cfg = loadProjectConfig(projectFlag);
+    console.log('\n====================================================================');
+    console.log(`🌾 RUNNING DUAL-LOOP SPLE KNOWLEDGE HARVESTER FOR [${cfg.id}]`);
+    console.log('====================================================================');
+    compileDesignTokens({ projectDir: projectFlag });
+    execSync(`node "${path.join(FACTORY_ROOT, 'tools', 'design', 'build_vanilla_primitives.mjs')}"`, {
+      cwd: FACTORY_ROOT,
+      stdio: 'inherit'
+    });
+    execSync(`node "${path.join(FACTORY_ROOT, 'tools', 'intelligence', 'code_and_wiki_graph.mjs')}"`, {
+      cwd: FACTORY_ROOT,
+      stdio: 'inherit'
+    });
+    console.log(`✅ Harvested Studio primitives and refreshed CodeGraph + WikiGraph PageRank.\n`);
+    return;
+  }
+
+  if (subcommand === 'evolve') {
+    console.log('\n====================================================================');
+    console.log('🧬 RUNNING SELF-EVOLVING FACTORY LOOP (EVAL + TOM-SWE + TEXTGRAD)');
+    console.log('====================================================================');
+    execSync(`node "${path.join(FACTORY_ROOT, 'tools', 'intelligence', 'textgrad_skill_optimizer.mjs')}"`, {
       cwd: FACTORY_ROOT,
       stdio: 'inherit'
     });

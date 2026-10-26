@@ -1,5 +1,7 @@
 # CANON SOTA 2026: Modelado 2D/3D, Shaders WebGPU/WebGL, Animaciones y Estética Web de Vanguardia
 
+> **Alcance:** Literatura canónica y tratados técnicos de animación a 60 FPS, shaders GPU, física de resortes (spring physics), arte técnico 3D y micro-interacciones fluidas para sitios web modernos.
+
 > **Área de Conocimiento:** Creative Front-End Engineering, WebGL/WebGPU 3D, Motion Craft & Modern Visual Aesthetics  
 > **Horizonte Temporal:** Lanzamientos y tendencias clave de los últimos 6 meses (SOTA 2025/2026)  
 > **Objetivo:** Sitios web inmersivos, fluidos a 60/120 FPS, visualmente deslumbrantes con impacto de CPU ≤5%.  

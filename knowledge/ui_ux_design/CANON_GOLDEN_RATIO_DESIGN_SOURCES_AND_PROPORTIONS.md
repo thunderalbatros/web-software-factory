@@ -1,15 +1,15 @@
-﻿> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
 
 # 📐 Fuentes Maestras: Matemática, Diseño y Programación de UI
 
@@ -28,14 +28,14 @@ ultima_revision: 2026-08-27
 8. **Refactoring UI** (Adam Wathan, Steve Schoger) - _Un puente hiper-práctico. Explica cómo crear escalas espaciales y tipográficas logarítmicas/modulares aplicables a entornos móviles._
 9. **The Elements of Typographic Style** (Robert Bringhurst) - _Explica el uso de la proporción áurea y la música matemática en la definición de la mancha tipográfica._
 10. **Thinking with Type** (Ellen Lupton) - _Jerarquías visuales y uso de proporciones en cajas de texto e interlineados (line-heights)._
-11. **Modular Scale in UI Typography** (Tim Brown, A List Apart) - _Guía técnica para derivar escalas tipográficas en CSS/React Native multiplicando un tamaño base por ratios constantes (ej. 1.618)._
+11. **Modular Scale in UI Typography** (Tim Brown, A List Apart) - _Guía técnica para derivar escalas tipográficas en CSS/Modern Web UI (CSS/WAAPI) multiplicando un tamaño base por ratios constantes (ej. 1.618)._
 12. **Applying Divine Proportion To Your Web Designs** (Smashing Magazine) - _Guía canónica de ingeniería front-end para maquetar el Número Áureo en interfaces reales._
 
 ## III. Documentación Oficial y Librerías (Tech Stack)
 
-13. **React Native Reanimated (v3) - withSpring Docs** - _Documentación oficial. Detalla la matemática detrás de `mass`, `stiffness` (rigidez) y `damping` (amortiguación) para lograr animaciones logarítmicas físicas._
+13. **Modern Web UI (CSS/WAAPI) Reanimated (v3) - withSpring Docs** - _Documentación oficial. Detalla la matemática detrás de `mass`, `stiffness` (rigidez) y `damping` (amortiguación) para lograr animaciones logarítmicas físicas._
 14. **Apple Human Interface Guidelines (HIG) - Fluid Interfaces** - _Documentación de Apple sobre por qué las interacciones móviles deben imitar la física del mundo real y la inercia humana._
-15. **Yoga Layout Engine API Docs** - _El motor de Flexbox en C++ de React Native. Fundamental para entender cómo el renderizador distribuye los porcentajes (como el 61.8%) en pantalla._
+15. **Yoga Layout Engine API Docs** - _El motor de Flexbox en C++ de Modern Web UI (CSS/WAAPI). Fundamental para entender cómo el renderizador distribuye los porcentajes (como el 61.8%) en pantalla._
 16. **Material Design 3 (M3) - Typography & Baseline Grids** - _Cómo M3 escala sus tipografías y contenedores. Ideal para cruzar su grilla estándar con tus incrementos áureos._
 17. **Framer Motion - Spring Physics Guide** - _Aunque es para React Web, su explicación de las matemáticas de interpolación y resortes es oro puro para portarlo a Reanimated._
 
@@ -52,7 +52,7 @@ ultima_revision: 2026-08-27
 ## V. Videocursos Avanzados (Alta Calidad / Implementación)
 
 25. **Designing Fluid Interfaces (WWDC Session 803)** - _La mejor charla de Apple (imperdible) sobre cómo las interfaces deben ser orgánicas, tener inercia matemática y usar el movimiento (animaciones no-lineales) para guiar al usuario._
-26. **React Native Gestures and Animations** (Software Mansion / William Candillon) - _El curso definitivo sobre Reanimated y Gesture Handler para programar interacciones basadas en físicas puras (fricción, tensión, resortes)._
+26. **Modern Web UI (CSS/WAAPI) Gestures and Animations** (Software Mansion / William Candillon) - _El curso definitivo sobre Reanimated y Gesture Handler para programar interacciones basadas en físicas puras (fricción, tensión, resortes)._
 27. **The Joy of React** (Josh W. Comeau) - _El módulo de animaciones incluye la matemática exacta de las físicas basadas en resortes (Springs) y por qué los "easings" tradicionales arruinan la experiencia._
 28. **Motion Design for Web and iOS** (Design+Code / Meng To) - _Enfocado en llevar diseños estáticos con proporciones perfectas hacia la interacción a 120 FPS._
 29. **Creative Coding: Making Art with Computation** (Domestika) - _Enseña cómo codificar algoritmos de Fibonacci y curvas espirales en Canvas/JS, la base para crear tu `ParticipantStack` superpuesto._

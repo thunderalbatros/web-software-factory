@@ -1,4 +1,7 @@
-﻿# Reporte de Inteligencia de Repositorios GitHub SOTA 2026
+# Reporte de Inteligencia de Repositorios GitHub SOTA 2026
+
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
+
 > **Web Software Factory Studio Streaming Suite**  
 > **Fecha de Análisis:** 18 de Octubre, 2026  
 > **Objetivo:** Filtrado, análisis arquitectónico, ingestión de conocimiento y clonado de herramientas Open-Source para maximizar el rendimiento, la inteligencia de agentes y la experiencia visual del portal.

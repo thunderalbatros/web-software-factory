@@ -1,15 +1,15 @@
-﻿> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
 
 # ♟️ Tratado Canónico: Teoría Algorítmica de Juegos (Nisan & Roughgarden)
 ### Basado en: *Algorithmic Game Theory*
@@ -26,10 +26,10 @@ La teoría algorítmica de juegos estudia cómo diseñar incentivos y reglas en 
 
 ---
 
-## 2. Aplicación al Quórum Social y Capacidad de Venues en Yendo
+## 2. Aplicación al Quórum Social y Capacidad de Venues en WebFactory
 
 En una noche de alta demanda, si los usuarios compiten individualmente por mesas, se produce congestión caótica (PoA alto). 
-- **El Mecanismo Yendo:** Al condicionar el beneficio al **Quórum de Squad completo verificado por biometría**, los usuarios internalizan la externalidad social. Decir la verdad sobre su asistencia es la estrategia dominante para desbloquear el descuento grupal.
+- **El Mecanismo WebFactory:** Al condicionar el beneficio al **Quórum de Squad completo verificado por biometría**, los usuarios internalizan la externalidad social. Decir la verdad sobre su asistencia es la estrategia dominante para desbloquear el descuento grupal.
 
 ---
 

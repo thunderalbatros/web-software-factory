@@ -1,19 +1,19 @@
-﻿> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
+
 # Manifiesto Maestro UX/UI — Operaciones Senior de Producto
 
-#nng #material3 #hig #oled #yendo
+#nng #material3 #hig #oled #webfactory
 
 > [!warning] Gate visual
 > Todo nuevo componente UI o flujo de pantallas DEBE cumplir con las heurísticas y normativas de este manifiesto. El [[VISUAL_EXPERIENCE_SQUAD]] y el [[CREATIVE_STUDIO]] no aprueban UI que viole un pilar.
@@ -105,7 +105,7 @@ El hub `m3.material.io/.../content-design/overview` es un landing de video (Vert
 **Reglas**
 
 * Voz: cercana, concreta, de a pie. "Armar plan" / "Ponele un nombre a la juntada" / "Sumarme". Prohibido "Submit", "Proceed", "Error 500", "RPC failed".
-* Sentence case en UI (MD3). Title Case solo para marca "Yendo". Palabras completas; sin "e.g.", "etc.", "FTS".
+* Sentence case en UI (MD3). Title Case solo para marca "WebFactory". Palabras completas; sin "e.g.", "etc.", "FTS".
 * Errores: qué pasó + qué hacer. "No hay venues con ese nombre cerca." + CTA limpiar búsqueda. Nunca culpar al user.
 * Consecuencias, no miedo: "El grupo se llena en 6. Si te bajás, el cupo se libera."
 * Notificaciones (si existen): sobre el user, no la marca. Título < 29 chars, cuerpo colapsado < 40. Sin nombre de app en el título. Sin "hoy/mañana". Sin ads. Opt-out visible. Cero humor forzado; el Carpincho deleita en UI, no en el push.
@@ -150,7 +150,7 @@ El hub `m3.material.io/.../content-design/overview` es un landing de video (Vert
 **Reglas**
 
 * Átomo → molécula → organismo. Archivo < 150 líneas. Presentacional: sin `supabase.from`, sin Query.
-* Nombre: `Yendo` + rol (`YendoBottomSheet`, `RadarSearchBar`). Prohibido `CustomButton2`.
+* Nombre: `WebFactory` + rol (`YendoBottomSheet`, `RadarSearchBar`). Prohibido `CustomButton2`.
 * Estilo: `StyleSheet.create` al final. `className` erradicado. Inline solo insets / animated / onLayout.
 * Variantes por composición de arrays, no por booleanos explosivos. Constantes `SCREAMING_SNAKE_CASE` para hits (48 / 56).
 * Snapshots de contrato en [[VISUAL_GUIDELINES]] cuando el Radar cambia. Export en `src/components/index.ts`.

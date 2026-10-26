@@ -1,4 +1,4 @@
-﻿# Tratado Canónico Clean-Room: Filosofía de Diseño de Software (Ousterhout), Refactorización Avanzada (Fowler, Feathers, Kerievsky), Unit Testing (Khorikov), Observabilidad y Chaos Engineering (2026)
+# Tratado Canónico Clean-Room: Filosofía de Diseño de Software (Ousterhout), Refactorización Avanzada (Fowler, Feathers, Kerievsky), Unit Testing (Khorikov), Observabilidad y Chaos Engineering (2026)
 
 **Alcance:** Aplicable a la arquitectura modular, refactorización de archivos grandes (`site/js/`, `worker/index.js`), diseño de pruebas automatizadas y resiliencia operativa de la Web Software Factory (`Squad 0`, `Squad 2`, `Squad 4`, `Squad 6`, `Squad 7` y `Squad 9`). Sintetiza en sala limpia (*Clean-Room*) los principios de ingeniería públicos de Ousterhout, Fowler, Feathers, Kerievsky, Khorikov, Majors y Rosenthal.
 

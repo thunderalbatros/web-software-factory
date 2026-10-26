@@ -1,4 +1,4 @@
-﻿# CANON AGENTIC SOFTWARE FACTORY & WEB CRAFT 2026: Metodología, Arquitectura y Manufactura de Software de Élite Mediante IA Agéntica
+# CANON AGENTIC SOFTWARE FACTORY & WEB CRAFT 2026: Metodología, Arquitectura y Manufactura de Software de Élite Mediante IA Agéntica
 
 > **Alcance:** Tratado canónico para la orquestación y operación de la Software Factory de Web Software Factory Studio (`Squad 0` a `Squad 7`), definiendo la metodología de producción de sitios web modernos, elegantes, minimalistas, fluidos, hiper-eficientes y blindados contra vulnerabilidades mediante agentes autónomos coordinados.  
 > **Protocolo LEC-015:** Documento de Explicación Canónica y Referencia Metodológica.  

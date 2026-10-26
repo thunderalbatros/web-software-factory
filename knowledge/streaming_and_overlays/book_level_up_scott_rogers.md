@@ -1,23 +1,17 @@
-﻿# 📚 Libro Completo: Level Up! The Guide to Great Video Game Design
+# 📚 Libro Completo: Level Up! The Guide to Great Video Game Design
 
-**Alcance:** Fuente bibliográfica completa sobre Diseño de Controles, HUDs Limpios, Cámaras, Recompensas Visuales y Ritmo de Partida (Level Up! The Guide to Great Video Game Design — Scott Rogers). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre HUD Ergonomics, Camera, Controls, Reward Pacing & Visual Telegraphing (Level Up! The Guide to Great Video Game Design — Scott Rogers). Aplicable a Web Software Factory y Enterprise Web App. NO sustituye los contratos de negocio ni las reglas inmutables en `CANON_*`.
 
 > **Autor:** Scott Rogers  
-> **Dominio:** Diseño de Controles, HUDs Limpios, Cámaras, Recompensas Visuales y Ritmo de Partida  
+> **Dominio:** HUD Ergonomics, Camera, Controls, Reward Pacing & Visual Telegraphing  
 > **Archivo Fuente:** `dokumen.pub_level-up-the-guide-to-great-video-game-design-1nbsped-047068867x-9780470688670.pdf`  
-> **Páginas Originales:** 517  
-> **Secciones Extraídas:** 51  
-> **Fecha de Ingesta:** 2026-10-19  
+> **Páginas Originales:** 517 (100% Ingerido, Cero Truncamiento)  
+> **Secciones Técnicas Extraídas:** 19 (Entropía Técnica Media: 0.631)  
+> **Fecha de Ingesta:** 2026-10-26
 
 ---
 
-## Sección 1: Foundations & Introduction
-
--- 1 of 517 --
-
--- 2 of 517 --
-
--- 3 of 517 --
+## Sección 1: Core Concepts & Foundations [Entropy: 0.28]
 
 Copyright Information
 Please note that the following characters are copyrighted to the following corporations:
@@ -105,17 +99,11 @@ The Mighty Bedbug, Grave Robber © 2005 Scott Farm Wars © 2010 Scott Rogers
 Rogers The Mighty Bedbug © 2005 Scott Rogers
 Dude with Sword © 2010 Scott Rogers Grave Robber © 2005 Scott Rogers
 Dude with Sword 2 © 2010 Scott Rogers
-
--- 4 of 517 --
-
 LeveTI Up!
 The Guide to Great Video
 Game Design
 Scott Rogers
 A John Wiley & Sons, Ltd., Publication
-
--- 5 of 517 --
-
 This edition first published 2010
 © 2010 John Wiley & Sons, Ltd
 Registered office
@@ -141,15 +129,9 @@ ISBN 978-0-470-68867-0
 A catalogue record for this book is available from the British Library.
 Set in 10 on 12pt Swiss721BT-Light by Toppan Best-set Premedia Limited
 Printed in the US by RR Donnelley
-
--- 6 of 517 --
-
 To Brenda Lee
 who always thought this would make a great book.
 I love you.
-
--- 7 of 517 --
-
 Publisher’s Acknowledgments
 Some of the people who helped bring this book to market include the
 following:
@@ -170,13 +152,6 @@ Composition Services
 Compositor: Toppan Best-set Premedia Limited (HK)
 Proof Readers: Sarah Lewis and Gill Whitley
 Indexer: Robert Swanson
-
----
-
-## Sección 2: Foundations & Introduction
-
--- 8 of 517 --
-
 Contents
 Foreword by Danny Bilson xiii
 About the Author xiv
@@ -201,9 +176,6 @@ Art Director 21
 Technical Director 21
 And the Rest . . . 21
 Level 1’s Universal Truths and Clever Ideas 22
-
--- 9 of 517 --
-
 viii Contents
 Level 2 Ideas 23
 Ideas: Where to Get Them and Where to Stick Them 24
@@ -240,9 +212,6 @@ Might as Well Jump 100
 Hoists and Teeters 104
 What Goes Up, Must Fall Down 105
 Me and My Shadow 106
-
--- 10 of 517 --
-
 Contents ix
 The Water’s Fine… or Is It? 108
 Be Kind to Our Four-Legged Friends 109
@@ -278,9 +247,6 @@ Dance, Monkey, Dance 159
 Character or Camera Relative? 164
 Shake, Rattle and Roll 166
 Level 7’s Universal Truths and Clever Ideas 168
-
--- 11 of 517 --
-
 x Contents
 Level 8 Sign Language—HUD and Icon Design 171
 Health Bar 172
@@ -317,9 +283,6 @@ Now You have to Kiss Me 254
 On Moving 255
 On Guarding 258
 State of the Art Bang Bang 261
-
--- 12 of 517 --
-
 Contents xi
 The Best Gun for You 265
 Run and Gun 269
@@ -354,9 +317,6 @@ Level 14 Multiplayer—the More the Merrier 381
 How Many is the Right Number? 385
 MMORPGS, or Hell is Other People 386
 Level 14’s Universal Truths and Clever Ideas 391
-
--- 13 of 517 --
-
 xii Contents
 Level 15 Some Notes on Music 393
 Sounds Like a Game to Me 400
@@ -381,13 +341,6 @@ Bonus Level 8: Boss Design Template 469
 Bonus Level 9: High Concept Pitch Presentation 471
 Achievement Unlocked: Exactly Like Making Chili 481
 Index 483
-
----
-
-## Sección 3: Foundations & Introduction
-
--- 14 of 517 --
-
 Foreword
 Scott set out to write a handbook; a general text that any designer can pull
 off their shelf or call up on their PC or e- reader when they want to get back
@@ -406,9 +359,6 @@ beyond.
 Danny Bilson
 Executive Vice President of Core Games, THQ
 February 2010
-
--- 15 of 517 --
-
 About the Author
 After discovering that game designers have more fun, Scott Rogers
 embarked on a 16- year-(and counting) career in video games. He has
@@ -417,9 +367,6 @@ Maximo series, God of War, Drawn to Life series and Darksiders. Scott is
 currently a creative manager for THQ and lives just outside nuclear strike
 range of Los Angeles with his lovely wife, two children and many, many
 action figures.
-
--- 16 of 517 --
-
 Press Start!
 If You Are Anything Like Me …
 … then you’ll read the first page of a book before you buy it. I find that if I
@@ -427,7 +374,7 @@ like the first page, then I’ ll probably like the whole thing. I have noticed 
 many books have an exciting excerpt on the first page in order to grab the
 reader ’s interest, such as:
 The zombie’s filthy claws clutched hungrily at Jack’ s shirt, even as his blade
-split the creature’ s head like a ripe melon. A firm RealtimeHub to its headless torso
+split the creature’ s head like a ripe melon. A firm kick to its headless torso
 sent it sprawling down the stairs into the greedy mob that surged forward
 like a wave. The corpse’s undead brothers and sisters paused their onslaught
 until they realized the decapitated body was just dead meat. Their hesitation
@@ -445,9 +392,6 @@ A very famous game designer1
 1 No doubt you are smart enough to have realized that this isn’ t a real quote, because there
 isn’ t a very famous game designer. Unless you count Shigeru Miyamoto, the creator of Mario.
 Drat! I should have translated the above quote into Japanese!
-
--- 17 of 517 --
-
 xvi Press Start!
 You obviously don’t need someone else to tell you how to make up your
 mind. Just by picking up this book, I can tell you are a discriminating
@@ -490,9 +434,6 @@ and you’ ll go far.
 4 I once hadan employer who would walk the halls of our office muttering how “ video games
 are a haaaard business.” I used to laugh at him back then, but I don’ t any more. He was
 right.
-
--- 18 of 517 --
-
 Press Start! xvii
 But in that time, I have learned that making video games is also the best job
 in the world. It can be thrilling, frustrating, rewarding, nerve- wracking, hectic,
@@ -518,13 +459,6 @@ time. For the record, I was not having a good ol’ time pushing pixels. I
 realized, “Those game designers are having more fun than I am! Making
 5 Actually we were called “ pixel pushers” and “ sprite monkeys”, neither of which, despite how
 cute those terms sound, were ever meant as a compliment.
-
----
-
-## Sección 4: Foundations & Introduction
-
--- 19 of 517 --
-
 xviii Press Start!
 video games should be fun! I want to have fun! I want to become a game
 designer too!” And so I did. I eventually worked my way up the ladder to
@@ -542,9 +476,6 @@ which have gone on to become top-selling titles. That is why you will find
 many cartoons, so you will continue reading and understand the ideas
 presented. If you do, then you can apply them to your own design and
 become a great designer, too.
-
--- 20 of 517 --
-
 Press Start! xix
 Who Is This Book For?
 Why you, of course. Provided you are one of the following people.
@@ -583,17 +514,11 @@ making them. If you want to make video games, then you must love them
 too. Ironically, I know several people who work in video games that freely
 admit they do not like to play video games. That does not make any sense
 6 Figurative blood. To my knowledge, no one has died from making a video game.
-
--- 21 of 517 --
-
 xx Press Start!
 to me. Why would you work in video games if you do not love video games?
 They are fools. They should just step aside and let someone who loves
 video games make video games. Someone like you.
 Ready? Great! Let’ s find out how to make games!
-
--- 22 of 517 --
-
 Acknowledgments:
 Everything I Learned About
 Writing A Book
@@ -619,9 +544,9 @@ glowing GDC review that kicked all of this off. I owe you a drink, mate.
 And a big thank you to YOU for buying this book. Now go and design some
 great games! I can’ t wait to play them!
 
--- 23 of 517 --
+---
 
--- 24 of 517 --
+## Sección 2: Core Concepts & Foundations [Entropy: 0.65]
 
 T
 LeveI 1
@@ -652,13 +577,6 @@ what a n00b is!
 2 “What is a Game?”, Chris Crawford in The Art of Computer Game Design, 1982.
 3 “What is a Game?”, Kevin Langdon in The New Thesaurus, 1979.
 4 The Grasshopper: Games, Life and Utopia, Bernard Suits, 1978.
-
----
-
-## Sección 5: Foundations & Introduction
-
--- 25 of 517 --
-
 2 LEVEL 1 Welcome, N00bs!
 Playing hand ball may therefore seem like a time- waster, but a time- waster
 becomes a game when you add rules and an objective. A rule may be to
@@ -668,9 +586,6 @@ times in a row. A failure state would be if you violated any of the rules or
 victory conditions. Once those criteria have been met, you have created a
 game. Ironically, while simple, hand ball was enough of a game to inspire
 the creators of one of the earliest video games: Tennis for Two.
-
--- 26 of 517 --
-
 3 Welcome, N00bs!
 So, let’s ask this basic question:
 Q: What is a game?
@@ -707,9 +622,6 @@ Ok, so maybe not with that last one. The lesson is, you need to keep
 your game objectives simple. Speaking of simple games, let’ s take a
 moment to travel back to the dawn of video games. They had to start
 somewhere, right?
-
--- 27 of 517 --
-
 4 LEVEL 1 Welcome, N00bs!
 A Brief History of Video Games
 The 1950s. The dawn of television, 3- D movies, and rock ‘ n ’ roll. Video
@@ -725,9 +637,6 @@ Atari founders Ted Dabney and Nolan Bushnell were inspired to create
 Computer Space, the first arcade video game, in 1971. While (despite the
 name) the first arcade games could be found in bars, arcades dedicated to
 video games began appearing by the late 1970s.
-
--- 28 of 517 --
-
 5 A Brief History of Video Games
 Early arcade games like Asteroids, Battlezone, and Star Castle were
 rendered in vector graphics (images constructed from lines). After color
@@ -760,13 +669,6 @@ fired the arsenal of weapons. Surrounding the pod’s video monitor were banks o
 each one actually having a function within the game from activating tracking devices to venting
 overheating weapons. It took at least one gaming session (about a half hour) just to learn what all
 the switches did! It was as realistic a gaming experience as I’ve ever had.
-
----
-
-## Sección 6: Foundations & Introduction
-
--- 29 of 517 --
-
 6 LEVEL 1 Welcome, N00bs!
 that allowed 8 players to fight each other while stomping around in giant
 virtual “ mechs. ”
@@ -805,9 +707,6 @@ very cool toys and prizes.
 7 A “ dark ride” is an amusement park attraction that has guests ride past scenes of (usually)
 audio- animatronic characters. Famous examples of dark rides include Disneyland’ s Pirates of
 the Caribbean and Haunted Mansion.
-
--- 30 of 517 --
-
 7 A Brief History of Video Games
 A console is a gaming platform that can be used in the home. A
 microprocessor runs the electronic device, which sends a video display
@@ -831,9 +730,6 @@ series (Nintendo, 1980) featured a more appealing liquid crystal display.
 8 One console exception is the wonderful Vectrex portable game system (Smith Engineering,
 1982). The Vectrex’ s processor, screen, controller and even one game were all in a self
 contained, portable system.
-
--- 31 of 517 --
-
 8 LEVEL 1 Welcome, N00bs!
 Microvision (Milton Bradley, 1979) was one of the earliest handheld
 systems to have switchable cartridges. Handheld gaming took off when
@@ -866,13 +762,6 @@ massively multiplayer online games (or MMOs) remain very strong on
 the computer platform.
 9 Not ironically, the Nintendo DS bears several design semblances to the original Game &
 Watch series devices.
-
----
-
-## Sección 7: Foundations & Introduction
-
--- 32 of 517 --
-
 9 Game Genres
 Game Genres
 Over the years, gaming has splintered off into many different genres and
@@ -913,9 +802,6 @@ avoiding hazards. The player’s avatar in a shmup is usually a vehicle
 (such as a spaceship) rather than a character. They can be presented
 from several different camera angles. Examples: Space Invaders, the
 Contra series.
-
--- 33 of 517 --
-
 10 LEVEL 1 Welcome, N00bs!
 • Third person shooter (TPS)—a shooter where the camera is placed
 further behind the player, allowing for a partial or full view of the
@@ -959,9 +845,6 @@ Band.
 Party: party games are specifically designed for multiple players and are
 based on competitive play. More often than not, gameplay is presented in
 the minigame format. Examples: Mario Party and Buzz!
-
--- 34 of 517 --
-
 Game Genres 11
 Puzzle: puzzle games are based on logic and pattern completion. They
 can be slow, methodical or use hand/eye coordination. Examples: The
@@ -1004,13 +887,6 @@ classifications that fit within several of the genres above. As games combine
 several genres and subgenres, new ones are constantly being created. For
 example, the Grand Theft Auto series now combines action- adventure, third
 person shooter, driving, life simulation, and action- arcade genres into one
-
----
-
-## Sección 8: Foundations & Introduction
-
--- 35 of 517 --
-
 12 LEVEL 1 Welcome, N00bs!
 game! Tuper Tario Tros.10 seamly combines Super Mario Bros. and Tetris!
 What ’s next? What will be the most popular game genre in the future? Who
@@ -1046,9 +922,6 @@ the idea.
 10 You can play Tuper Tario Tros. by Swing Swing Submarine at http://www.newgrounds.com/
 portal/view/522276.
 11 The one-man development team in question is Jordan Mechner.
-
--- 36 of 517 --
-
 13 Who Makes this Stuff?
 One programmer may work exclusively on
 tools to help team members build the game
@@ -1089,9 +962,6 @@ those games were rare exceptions because they
 employed laser discs to play the video footage.
 Eventually, new, better hardware with more
 12 I apologize to any programmers reading this, but I didn’ t make this term up.
-
--- 37 of 517 --
-
 14 LEVEL 1 Welcome, N00bs!
 memory, color depth and the ability to display larger graphics meant artists
 could create more detailed images, backgrounds and characters like those
@@ -1129,13 +999,6 @@ matter what the job title is, the designer’ s role is the same: create the ide
 and rules that comprise a game. A game designer needs to possess
 13 There’ s more to a producer’s job than game design and in some cases, a producer doesn’ t
 even design the game. But what are you doing skipping ahead anyway?
-
----
-
-## Sección 9: Foundations & Introduction
-
--- 38 of 517 --
-
 15 Who Makes this Stuff?
 many, many skills14, least of which is to love to
 play games. As a game designer, you should be
@@ -1175,9 +1038,6 @@ a “well- rounded” game designer understands animation, anthropology, archite
 brainstorming, business, cinematography, communication, creative writing, economics,
 engineering, history, management, mathematics, music, psychology, public speaking, sound
 design, technical writing, and visual arts. I think it’ s a pretty accurate list.
-
--- 39 of 517 --
-
 16 LEVEL 1 Welcome, N00bs!
 creative and programming leads, acting as
 the team representative to upper
@@ -1216,9 +1076,6 @@ being a tester requires more skills than you may think. A good tester has
 patience, persistence, and great communication skills to report back any
 15 Producers often end up as the “ face of the game” because they are the one team member
 that can keep all of the moving parts straight!
-
--- 40 of 517 --
-
 17 Who Makes this Stuff?
 problems (or “bugs”) they find in the
 game. It’ s not a glamorous job, but
@@ -1257,13 +1114,6 @@ master professional - sounding samples. If you want to become a composer,
 then write some music, record it, and get your samples into the hands of a
 game producer. As someone who has reviewed lots and lots of composers ’
 16 Quality assurance is just a fancy way of saying “ test department.”
-
----
-
-## Sección 10: Foundations & Introduction
-
--- 41 of 517 --
-
 18 LEVEL 1 Welcome, N00bs!
 audio resumes, I can tell you it goes something like this: the designer has a
 specific idea for the style or feel of music in his mind. If your music sample
@@ -1304,9 +1154,6 @@ ready to be a sound designer.
 use traditional songs; in particular, sport and rhythm games.
 18 Sadly, yes: this was an actual direction to a sound designer. And yet, he still delivered a
 great sound effect.
-
--- 42 of 517 --
-
 19 Have You Thought about Publishing?
 Writer
 Unlike Hollywood, where writers come up with the initial ideas for a movie,
@@ -1342,9 +1189,6 @@ Have You Thought about Publishing?
 Publishers provide the funding for game development teams, manage the
 game ’s production, handle any legal issues, manufacture the game, and
 19 Level 3, to be exact.
-
--- 43 of 517 --
-
 20 LEVEL 1 Welcome, N00bs!
 provide public relations and marketing for the game. They even handle
 distribution of the finished product. Here are some of the more common
@@ -1382,13 +1226,6 @@ construction. When they aren’ t solid I need to provide the team clear
 determines a game’ s rating (in the US, at least).
 21 A “build” (or a “ burn” ) is an in-progress version of the game that can be played either on
 a computer or a special console.
-
----
-
-## Sección 11: Foundations & Introduction
-
--- 44 of 517 --
-
 21 Have You Thought about Publishing?
 feedback on how gameplay can be improved or give advice on how the
 team can explore another creative direction.
@@ -1425,9 +1262,6 @@ public relations manager talks to gaming magazines and organizes press
 events to show the game off in the best possible light. A quality assurance
 manager runs the test department, organizing and relaying the bug sheets
 back to the developer.
-
--- 45 of 517 --
-
 22 LEVEL 1 Welcome, N00bs!
 In addition to production and publishing, there are many others who interact
 with development teams and publishers. A talent recruiter searches for
@@ -1450,9 +1284,6 @@ to mix and match.
 • Gaming technology is always improving. Adapt or get
 left behind.
 • It takes all kinds of people to make video games.
-
--- 46 of 517 --
-
 T
 LeveI 2
 Ideas
@@ -1465,9 +1296,6 @@ OK, this is not entirely true.
 You have to leave a good idea out for the elves to make into a game. Which
 begs the question: “Where do good ideas come from?”
 1 They also make shoes, Christmas toys and cookies the same way.
-
--- 47 of 517 --
-
 24 LEVEL 2 Ideas
 Ideas: Where to Get Them and Where to
 Stick Them
@@ -1504,13 +1332,6 @@ games. When popular games come out, you find their mechanics being
 2 While Michel Gondry doesn’ t make video games, he does make excellent movies like Eternal
 Sunshine of the Spotless Mind, The Science of Sleep, and Be Kind, Rewind. I suggest you
 add them all to your Netflix lists immediately.
-
----
-
-## Sección 12: Foundations & Introduction
-
--- 48 of 517 --
-
 25 Ideas: Where to Get Them and Where to Stick Them
 used in other games. Games start to feel derivative. You also get that
 creepy synchronicity when developers put out similar games at the
@@ -1555,9 +1376,6 @@ Peak and Volcano, back in 1997.
 quote!
 5 I realize that “good” is extremely subjective. Good could mean highly rated, best- selling,
 competently made or even just damn cool.
-
--- 49 of 517 --
-
 26 LEVEL 2 Ideas
 It ’s one thing to have a good idea; it’ s another thing to have a marketable
 one. During the course of my career, I have been told many times (usually
@@ -1596,9 +1414,9 @@ Sims, and Spore, showcase the natural evolution of a single idea (the world buil
 simulation) to literally galactic proportions. That he has been able to develop and polish this
 idea over the years is a luxury of which any game designer would be envious.
 
--- 50 of 517 --
+---
 
--- 51 of 517 --
+## Sección 3: Core Concepts & Foundations [Entropy: 0.804]
 
 28 LEVEL 2 Ideas
 • Space Panic’s (Universal, 1980) walking character climbed ladders and
@@ -1638,13 +1456,6 @@ What do Gamers Want?
 I believe that most gamers don’ t know what they want until it is shown to
 them. That is why it is important for game designers to have ideas born
 from passion. To have a vision of what their game is supposed to be.
-
----
-
-## Sección 13: Foundations & Introduction
-
--- 52 of 517 --
-
 29 What do Gamers Want?
 Gamers can feel when developers are passionate about their games. They
 can smell it like a dog smells fear. Don’ t be afraid to hold onto your unique
@@ -1684,9 +1495,6 @@ tend to oversimplify and talk down to younger audiences. They say “ we
 don ’ t want this game to be too challenging because it is for kids.” Don’ t
 make that mistake. Kids are far smarter and way better gamers than we give
 7 Yes, this is in ALL CAPS and bold because it is a VERY IMPORTANT THING.
-
--- 53 of 517 --
-
 30 LEVEL 2 Ideas
 them credit for. Often, they pick up on concepts faster than many adults.
 There are some limitations you have to consider when making games for
@@ -1712,9 +1520,6 @@ of the production. Then you start to lose all objectivity. I distinctly remember
 several times when a producer would come in and ask:
 8 Taken from Mark’ s GDC lecture and corresponding website: http://www.8kindsoffun.
 com/.
-
--- 54 of 517 --
-
 Brainstorming 31
 When it comes to fun and games I have found there is only one truth:
 YOU HAVE NO GUARANTEE THAT YOUR GAME IDEA IS GOING TO BE FUN
@@ -1748,13 +1553,6 @@ When coming up with ideas, I like to brainstorm. To brainstorm properly, you
 need the following five things:
 1. A working brain
 2. Something to write with
-
----
-
-## Sección 14: Foundations & Introduction
-
--- 55 of 517 --
-
 32 LEVEL 2 Ideas
 3. Something to write on
 4. A place to work
@@ -1772,9 +1570,6 @@ more and let it go. Here are some of the notes from one of my
 brainstorming sessions:
 9 Keep in mind that everyone you invite to your brainstorming session should understand how
 to make a game though, otherwise you might waste a lot of time on unrealistic ideas.
-
--- 56 of 517 --
-
 Brainstorming 33
 As you can see, the topics didn’ t really relate exactly to each other; sure,
 they are all things you may find a combat/driving game to have. The ideas
@@ -1791,9 +1586,6 @@ bullet points on the back of the box read? How would you communicate the
 game in a black and white, 16- page manual? By placing these limitations on
 your idea, you can streamline your idea to the bare essentials. Here’ s an
 example of the back of game box that you can use as a template.
-
--- 57 of 517 --
-
 34 LEVEL 2 Ideas
 Breaking Writer ’ s Block
 What do you do when the ideas won’ t come? There’ s no need to be
@@ -1808,9 +1600,6 @@ get them done in hours.
 blood. Don’t let that blood coagulate in your butt; get outside and move
 around. When your blood starts circulating again, the new ideas will be
 coming back in no time.
-
--- 58 of 517 --
-
 35 Breaking Writer’s Block
 3. Deal with something else that may be distracting you. Sometimes
 when I am stuck it is because I am worrying about something else. It
@@ -1829,15 +1618,12 @@ the whole team, and even the company can suffer. Don’ t procrastinate.
 Time management is very important, so be responsible.
 5. Change your environment. I find that my office is full of distractions.
 E- mail beckons, video games call out to be played, and game design
-documents flutter their little pages at me, begging to be read. When this
+documents Modern Web Components their little pages at me, begging to be read. When this
 happens, I get out of my office and go to the nearest conference room
 to work. Or sometimes I go outside to sit in the sun and get some
 “ vitamin Duh.”
 Once you have your list of ideas, it is time to get critical. Start narrowing
 down your list. Some items will immediately jump out as “ keepers ”, while
-
--- 59 of 517 --
-
 36 LEVEL 2 Ideas
 others are clear losers. Be merciless. It is better to have more good ideas
 than you can use than to have a game be full of lots of bad ideas.
@@ -1858,9 +1644,6 @@ ideas along with the bad if they don’ t fit or have more
 than you need.
 • Ideas are cheap, it’ s how you use them that matters.
 • If you’ re stuck, take a break— but don’ t procrastinate.
-
--- 60 of 517 --
-
 T
 Levei 3
 Writing the Story
@@ -1878,35 +1661,19 @@ chewing that over, let’ s look at the classical definition of “ story ” as
 by everyone from Aristotle to very famous screenwriters. Here’ s the most
 basic structure of a story:
 1. First, there is a hero who has a desire.
-
----
-
-## Sección 15: Foundations & Introduction
-
--- 61 of 517 --
-
 38 LEVEL 3 Writing the Story
 2. Our hero encounters an event that throws his life into disarray and
 interferes with obtaining the desire. This event causes a problem for
 the hero.
 3. The hero tries to overcome the problem …
-
--- 62 of 517 --
-
 Writing the Story 39
 4. … but his method fails.
 5. There is a reversal of fortune, which causes more trouble for the hero.
-
--- 63 of 517 --
-
 40 LEVEL 3 Writing the Story
 6. An even greater problem is created for the hero that puts the hero at
 greater risk.
 7. Finally, there is one last problem that threatens the hero with the most
 risk of all.
-
--- 64 of 517 --
-
 Writing the Story 41
 8. The hero must resolve the final problem…
 9. … in order to gain his object of desire. And
@@ -1930,9 +1697,6 @@ game. If gameplay is the meat of the game, then story should be the salt:
 just enough will add flavor but too much can ruin everything and kill you.
 Some games don’t even have stories. Games like Tetris or Bejeweled or
 even Pac - Man don’ t need them to be engaging for the player. However,
-
--- 65 of 517 --
-
 42 LEVEL 3 Writing the Story
 they still generate a narrative, which literally
 means “an order of events.” Since we humans
@@ -1975,9 +1739,6 @@ However, as these possibilities can stretch on to infinity, it might not be wort
 investment to predict everything. That’ s why when something happens that the designer
 didn’ t expect and doesn’ t break the game, we’ re more than happy to call it a “ feature” and
 move on!
-
--- 66 of 517 --
-
 Writing the Story 43
 like Mr. Mosquito (the player is a mosquito who drinks the blood of a family),
 SimCity (the player builds and manages a city), and PaRappa the Rapper
@@ -2007,13 +1768,6 @@ you can have a boss fight? It’s not my fault boss fights weren’ t invented w
 this story. Personally, I think my ending is better.
 3 OK, the story of Little Red Riding Hood might not make for a very LONG video game, but
 it can be made into a game nonetheless.
-
----
-
-## Sección 16: Foundations & Introduction
-
--- 67 of 517 --
-
 44 LEVEL 3 Writing the Story
 The Triangle of Weirdness
 I am sure you have heard of the
@@ -2040,9 +1794,6 @@ more than that and you risk alienating
 your audience.
 Let ’ s take a look at three examples of how to apply the Triangle of
 Weirdness to your story and world:
-
--- 68 of 517 --
-
 45 The Triangle of Weirdness
 While the Wizard of Oz features weird characters such as a Tin Man, a
 Lion, and a Scarecrow, the land of Oz was a pretty typical fairy tale
@@ -2064,9 +1815,6 @@ It is possible to go too far. Movies like Dune (1984) and The City of Lost
 Children (1995), or video games like SkullMonkeys or Muscle Man March,
 while incredibly unique and creative, just left many audiences feeling like
 they “ didn ’t get it.” And nobody likes to feel stupid.
-
--- 69 of 517 --
-
 46 LEVEL 3 Writing the Story
 What do these games and movies have in common? They all violate the
 Triangle of Weirdness. Do so at your own peril …
@@ -2105,9 +1853,6 @@ short enough for players to enjoy in short bursts.
 director of Bioshock, during his excellent 2009 GDC speech.
 5 Yeah, I know. It’ s their own damn fault if they get confused for skipping the cutscenes in
 the first place, but remember the first rule of responsible game design: love thy player.
-
--- 70 of 517 --
-
 47 The Triangle of Weirdness
 Speaking of surprises, there is a trend in game stories that I blame squarely
 on Hollywood: the twist/surprise ending. While it is fun to be taken by
@@ -2139,13 +1884,6 @@ classic director Alfred Hitchcock. Imagine that there are two men sitting at a
 table talking about baseball. The conversation lasts for about five minutes,
 when suddenly, there is a huge explosion! This shocks the audience but
 that surprise only lasts about 15 seconds.
-
----
-
-## Sección 17: Foundations & Introduction
-
--- 71 of 517 --
-
 48 LEVEL 3 Writing the Story
 However, here is how you can get a greater impact from your audience.
 Start the scene by showing the bomb under the table. The bomb is set to
@@ -2156,7 +1894,7 @@ audience aware of the danger the characters are in, the audience gets
 emotionally involved. By the time your scene reaches its climax, you have
 created more excitement with your audience than just the surprise of the
 bomb exploding6.
-Another thing to consider when developing your story is “ what is at PartnerBrand?”
+Another thing to consider when developing your story is “ what is at stake?”
 Many video games are about saving the world from evil or destruction. But
 just like every movie doesn’t have to be a slam-bang blockbuster, not every
 video game has to be about saving the world. Small themes can be just as
@@ -2185,9 +1923,6 @@ due to a programming error or design oversight. The most famous kill screen from
 gaming is the 256th level of Pac-Man. At this point, due to a bug half the screen becomes
 garbled data, which keeps the player from collecting all of the dots and clearing the board to
 move on. Arcade owners had to unplug or “kill” the game to start it back up again.
-
--- 72 of 517 --
-
 49 Time to Wrap It Up
 Some games even offer extra experiences so the player can continue
 playing after the story has ended. Multiple endings, minigames, unlockable
@@ -2227,9 +1962,6 @@ purple cow title is once you’ ve associated the word with their titles, it’ 
 for other people to use those words without conjuring up the image of the
 8 The term “purple cow” comes from the poem by Gelett Burgess who wrote: “ I never saw a
 purple cow, I never hope to see one. But I can tell you anyhow, I’ d rather see than be one.”
-
--- 73 of 517 --
-
 50 LEVEL 3 Writing the Story
 game. It’ s going to be a long time before anyone thinks of using the word
 Halo in their game title …
@@ -2268,13 +2000,6 @@ the player towards the third act which is the completion of the story;
 usually the last level and a boss fight. They skip the all- important first act
 to “cut to the chase.” In video games, this is either done with a cutscene
 9 Remember, all stories have what? A beginning, middle and end.
-
----
-
-## Sección 18: Foundations & Introduction
-
--- 74 of 517 --
-
 51 Creating Characters
 or, even worse, the game’ s manual— which no one ever reads10! This is a
 mistake. The first act is where the player is given an opportunity to find out
@@ -2304,9 +2029,6 @@ two completely different player character models, and why would you go through a
 work to create them, especially if you were only going to be the human player character for
 one level; and (3) the game is called Robocop, not “ Guy who gets shot and eventually
 becomes Robocop. ”
-
--- 75 of 517 --
-
 52 LEVEL 3 Writing the Story
 Death should mean something to the player, especially when it isn’ t the
 main character dying. When was the last time you cried when a game
@@ -2350,9 +2072,6 @@ Russian heavy gunner who is overly fond of “ sanviches. ” All of the game
 characters ’ appearances, animations, and vocal barks reinforce their
 personalities, raising them from stereotypes to truly original (and funny)
 characters.
-
--- 76 of 517 --
-
 53 Creating Characters
 If your game character is defined by a profession or activity, then make
 sure that the majority of the activities they do are related to that profession
@@ -2396,13 +2115,6 @@ they give you a quick snapshot of the character’ s personality.
 12 Did you know that Luke Skywalker’ s original name was Luke Starkiller? This name change
 provides a great lesson: never give your character a name that gives away the ending of your
 story!
-
----
-
-## Sección 19: Foundations & Introduction
-
--- 77 of 517 --
-
 54 LEVEL 3 Writing the Story
 Comedic characters need appropriate names too. Guybrush Threepwood,
 Spongebob Squarepants, and Larry Laffer aren’ t heroic sounding names,
@@ -2438,9 +2150,6 @@ worlds, known as properties. The property is licensed by a publisher or
 13 There are also plenty of IPs that exist in the public domain: Cinderella, The Wizard of Oz,
 Dracula, The Three Musketeers, The Bible, Dante ’ s Inferno to name a few. Remember to base
 your own work on the original material and not on someone else’ s interpretation.
-
--- 78 of 517 --
-
 55 Writing for Licenses
 developer, which means that a fee is paid to use the property for a game
 (or several games). The group who owns the original property is called the
@@ -2484,9 +2193,6 @@ creators didn ’ t like that we had their character “ eating meat. ”
 • Get as much material as possible from the licensor. Television shows
 have “ bibles ” —detailed documents that outline the show characters and
 worlds. Established comic books have years of back issues that make
-
--- 79 of 517 --
-
 56 LEVEL 3 Writing the Story
 great reference material. If your license is still in production (for example,
 if you are making a game for a movie with a simultaneous release) get
@@ -2517,13 +2223,6 @@ will come back to play.
 • Don’ t underestimate kids: they’ re smarter than you think.
 • Stay true to a license, but don’ t be afraid to “ make it
 your own.”
-
----
-
-## Sección 20: Foundations & Introduction
-
--- 80 of 517 --
-
 T
 LeveI 4
 You Can Design a Game, But
@@ -2556,9 +2255,6 @@ only covers what is in it, but how it
 can be made: just like a recipe. Be
 sure to follow the recipe, but be
 1 You may be able to tell from this statement that I do not enjoy fishing.
-
--- 81 of 517 --
-
 58 LEVEL 4 You Can Design a Game, But Can You Do the Paperwork?
 mindful that it will have to change, especially if something doesn’ t go right.
 And, just like making chili, remember that you can season to taste. Some
@@ -2602,9 +2298,6 @@ delicious. Some games may not be perfect, or even pretty, but if they have
 good gameplay they can still entertain. Good games and good chili satisfy
 the soul as well as the stomach. (Or the head, if you think with your
 stomach.)
-
--- 82 of 517 --
-
 59 You Can Design a Game, But Can You Do the Paperwork?
 You see? Making games is exactly like making chili. Take that, Japanese
 game director2!
@@ -2638,13 +2331,6 @@ mates to read and digest. Use what works best for you. Just remember, the
 goal of great game design documentation is communication:
 communication to the player, to your team members, and to your
 2 I don’ t blame him for his bad analogy. I am sure they don’ t have very good chili in Japan.
-
----
-
-## Sección 21: Foundations & Introduction
-
--- 83 of 517 --
-
 60 LEVEL 4 You Can Design a Game, But Can You Do the Paperwork?
 publishing partners. The clearer the communication, the easier it is going to
 be to get your coworkers excited about your ideas. Got it? Good. Let’ s start
@@ -2679,9 +2365,6 @@ letter rating according to content.
 including the Pan-European Games Information (PEGI), the UK’s British Board of Film
 Classification (BBFC), and Germany’s Unterhaltungssoftware Selbstkontrolle (USK). Their age
 and content restrictions vary by country.
-
--- 84 of 517 --
-
 61 Writing the GDD, Step 1: The One-Sheet
 Currently, there are six ratings that can be assigned by the ESRB:
 eC (Early Childhood): contains no material parents would find
@@ -2721,9 +2404,6 @@ back of the box. As a rule of thumb, there should be around five USPs.
 criminals into a woodchipper during interrogations. The scenes were so graphic that the
 developer changed the camera angles and displayed the action in black and white to bring the
 AO rating down to an M.
-
--- 85 of 517 --
-
 62 LEVEL 4 You Can Design a Game, But Can You Do the Paperwork?
 points on the back of a game box.) Remember “amazing graphics” and
 “awesome story” or “sequel to the award-winning game” don’ t count. All
@@ -2761,13 +2441,6 @@ interesting enough so your reader wants to continue reading it. Ask yourself
 as you write your ten- pager, “who is my audience?” There is a big difference
 between a ten- pager that is being circulated around your team vs one that
 is going to be presented to a marketing department. Here are some
-
----
-
-## Sección 22: Foundations & Introduction
-
--- 86 of 517 --
-
 63 Writing the GDD, Step 2: The Ten-Pager
 examples of how you should skew the information in your ten-pager for
 each audience type:
@@ -2799,9 +2472,6 @@ Observe!
 5 Then again, sometimes you might want to make a version that caters to one audience over
 another … it never hurts to be prepared.
 6 Preferably under.
-
--- 87 of 517 --
-
 64 LEVEL 4 You Can Design a Game, But Can You Do the Paperwork?
 • Asimov ’s three rules of robotics
 • Three Men and a Baby
@@ -2835,9 +2505,6 @@ allows you to convey the genre of your game quickly without the need for
 pictures.
 Fun time! See if you can guess the game genres suggested by the fonts
 below.
-
--- 88 of 517 --
-
 65 Writing the GDD, Step 2: The Ten-Pager
 PAGE 2: GAME OUTLINE
 • Game story summary
@@ -2869,9 +2536,6 @@ grow as the challenges increase?
 • How does the gameplay tie into the story? Does the player encounter
 puzzles that grant access to new areas when solved? Do players have
 to fight bosses that bar their progression?
-
--- 89 of 517 --
-
 66 LEVEL 4 You Can Design a Game, But Can You Do the Paperwork?
 • What is the victory condition for the player? Save the universe? Kill all of
 the enemies? Collect 100 stars? All of the above?
@@ -2911,13 +2575,6 @@ Show a basic map of the character controls. Find an image of the controller
 it ’s a mouse and a keyboard or a Wii Remote, and show where the
 controls are going to go. For example, here is a control map for a PS3
 action game:
-
----
-
-## Sección 23: Foundations & Introduction
-
--- 90 of 517 --
-
 67 Writing the GDD, Step 2: The Ten-Pager
 PAGE 4: GAMEPLAY
 Remember that big list of gameplay genres from Level 3? Here is where you
@@ -2942,9 +2599,6 @@ Present some images and descriptions of the game world. List out
 environments mentioned in the story. Provide short descriptions that outline
 what the player will find there. How do these locations tie into your story?
 What mood is being invoked in each world? What music will be used? How
-
--- 91 of 517 --
-
 68 LEVEL 4 You Can Design a Game, But Can You Do the Paperwork?
 are all of the locations connected within the game world as well as for the
 player? Include a simple map or flow chart diagram to show how the player
@@ -2972,9 +2626,6 @@ Here are a few other important questions about the game’ s experience you
 should answer for the reader of your ten- pager:
 • What does the player first see when they start the game?
 • What emotions/moods are meant to be invoked by your game?
-
--- 92 of 517 --
-
 69 Writing the GDD, Step 2: The Ten-Pager
 • How is music and sound used to convey your game’ s feel?
 • How does the player navigate the shell of the game? Include a simple
@@ -2987,9 +2638,6 @@ designer! They are: mechanics and hazards. What’ s the difference?
 A mechanic is something that the player interacts with to create or aid
 with gameplay. Here are a few examples of mechanics to get you started:
 moving platforms, opening doors, rope swings, slippery ice.
-
--- 93 of 517 --
-
 70 LEVEL 4 You Can Design a Game, But Can You Do the Paperwork?
 A hazard is a mechanic that can harm or kill the player but doesn’ t possess
 intelligence. Here are a few examples of hazards: electrified platforms, spike
@@ -3013,9 +2661,6 @@ If your game has an economy system, then briefly touch on that as well.
 Describe how players will be able to collect money and buy things in the
 game. Briefly describe the shopping environment (is it via a store or a
 peddler, and so on).
-
--- 94 of 517 --
-
 71 Writing the GDD, Step 2: The Ten-Pager
 PAGE 8: ENEMIES
 If a hazard uses artificial intelligence (or AI), then it qualifies as an enemy
@@ -3042,13 +2687,6 @@ to unlock. What is the player’ s incentive to play your game again? This is
 where you would mention things like multiplayer, downloadable content,
 episodic content, and so on.
 7 Don’t fear, we will be covering all of these terms later on in the book.
-
----
-
-## Sección 24: Foundations & Introduction
-
--- 95 of 517 --
-
 72 LEVEL 4 You Can Design a Game, But Can You Do the Paperwork?
 If you need to see an example of what a ten- pager looks like in action, then
 just jump over to “Bonus Level 3 ” at the back of the book. Don’ t worry; I’ ll
@@ -3087,9 +2725,9 @@ example, because I like to draw, I illustrated my design documents. I found
 that my team mates understood concepts quickly when I drew pictures for
 them. This is what a single page from my GDD looked like:
 
--- 96 of 517 --
+---
 
--- 97 of 517 --
+## Sección 4: Core Concepts & Foundations [Entropy: 0.545]
 
 74 LEVEL 4 You Can Design a Game, But Can You Do the Paperwork?
 Remember, this is the way I created my GDD, because I found it easy
@@ -3131,9 +2769,6 @@ with the world rather than relates to it; a subtle difference, but an important
 difference nonetheless. I find bibles important, especially when
 8 Grok means “ to understand completely” and is a slang term created by sci- fi writer Robert
 Heinlein. Now do you grok?
-
--- 98 of 517 --
-
 The Game Design Document (and the Awful Truth about Writing Them) 75
 communicating your game’ s universe to other interested parties, but it really
 should be done after you have started to flesh out your GDD.
@@ -3162,13 +2797,6 @@ sure you provide very specific examples and terms for the elements in
 your game design document, especially when referring to characters and
 game mechanics. If an accurate term doesn’ t exist, then go ahead and
 make one up!
-
----
-
-## Sección 25: Foundations & Introduction
-
--- 99 of 517 --
-
 76 LEVEL 4 You Can Design a Game, But Can You Do the Paperwork?
 For example, when I was first working on Maximo vs. Army of Zin, I first
 referred to the game’ s enemies, the Zin, as robots. I quickly learned that
@@ -3205,9 +2833,6 @@ helpful.
 exceptionally clever way to use this story point, I highly recommend not using it. Nothing
 makes gamers’ eyes roll faster. Except for maybe the character realizing that “ it was all a
 dream.”
-
--- 100 of 517 --
-
 The Beat Chart 77
 The Beat Chart
 The beat chart is a handy- dandy tool that can not only help you develop
@@ -3243,9 +2868,6 @@ movement, combat and defensive hazardous jumps and more intense
 moves. Player learns how to collect combat
 and map abilities
 Est. play time: 15 min Est. play time: 15 min
-
--- 101 of 517 --
-
 78 LEVEL 4 You Can Design a Game, But Can You Do the Paperwork?
 Color map: Green (trees), brown Color map: Red (lava), brown
 (trees/rock), purples (tombstones) (trees/rock), purples (tombstones)
@@ -3287,13 +2909,6 @@ Here are a few things to look out for:
 once. Spread these out over the course of the game. Remember, the
 first level of the game is always going to have several elements, so it
 technically doesn’ t count.
-
----
-
-## Sección 26: Foundations & Introduction
-
--- 102 of 517 --
-
 79 Above All, Don’t Be a Schmuck
 • “ Samey- ness ” : too many identical combinations of enemies and
 mechanics. You want to mix things up to keep interaction fresh.
@@ -3332,9 +2947,6 @@ Creating all of these design documents is important but your designs mean
 nothing if you aren’ t a responsible game designer. Some of the following
 advice may seem like common sense, but I’ ve also learned that common
 sense isn’ t always that common:
-
--- 103 of 517 --
-
 80 LEVEL 4 You Can Design a Game, But Can You Do the Paperwork?
 • A good idea can come from anywhere. I have seen many teams
 suffer from what I call “not invented here syndrome”, a belief that
@@ -3379,9 +2991,6 @@ babies are born during the course of production. Any of these things can
 cause designers to not be around at a critical moment in production.
 Make sure your designs are accessible to all the pertinent team
 members, especially your producer. Use programs like Perforce, Alien
-
--- 104 of 517 --
-
 81 Level 4’s Universal Truths and Clever Ideas
 Brain or Subversion to store documents on a drive that is backed up
 regularly. Don’ t keep the contents of the game in your head. Write those
@@ -3419,13 +3028,6 @@ Level 4 ’ s Universal Truths and Clever Ideas:
 ingredients, and time to come out right.
 • A game design document should be just long enough to
 describe the action in a game.
-
----
-
-## Sección 27: Foundations & Introduction
-
--- 105 of 517 --
-
 82 LEVEL 4 You Can Design a Game, But Can You Do the Paperwork?
 • Know your intended ESRB target rating and design
 towards it.
@@ -3440,16 +3042,13 @@ the course of production.
 • Give your player their money’ s worth.
 • Be smart when naming and organizing documents and
 files.
-
--- 106 of 517 --
-
 T
 LeveI 5
 The Three Cs,
 
 ---
 
-## Sección 28: Part 1 — Character
+## Sección 5: Part 1 — Character [Entropy: 0.768]
 
 While much of your game design is always changing, there are three
 fundamentals that need to be established early in your preproduction. I call
@@ -3473,9 +3072,6 @@ FORM FOLLOWS FUNCTION
 Let this rule be your motto when designing anything. It will come into play
 more importantly later on in the book, but should be your guide especially
 when designing your game character. There are several great books on how
-
--- 107 of 517 --
-
 84 LEVEL 5 The Three Cs, Part 1—Character
 to design a character visually1, so I won’ t go into great detail about this, but
 let me pass on some of the high level things to keep in mind.
@@ -3505,9 +3101,6 @@ many reasons:
 Johnston (Abbeville Press, 1984), The Art of Star Wars (Episodes I– VI) series (Del Rey,
 1976– 2007), and Ben Caldwell’ s cartooning series (Fantasy! Cartooning and Action
 Cartooning) (Sterling Publishing, 2005).
-
--- 108 of 517 --
-
 85 Personality: Do We Really Need Another Badass?
 For example, let’ s look at the silhouettes of the player characters of Team
 Fortress 2.
@@ -3538,9 +3131,6 @@ Personality: Do We Really Need Another Badass?
 I have found that there are three types of video game characters. The first
 two are humorous and heroic. Here are a couple of tips on creating these
 types of characters:
-
--- 109 of 517 --
-
 86 LEVEL 5 The Three Cs, Part 1—Character
 Humorous character
 • Says funny things: Writing funny dialogue is hard. If you can’ t write
@@ -3581,13 +3171,6 @@ you to continue playing?
 There is one other kind of character that is very prevalent in video games
 nowadays: the badass2. Remember, video games are all about wish
 2 The badass is known in more scholarly circles as the “ anti- hero.”
-
----
-
-## Sección 29: Part 1 — Character
-
--- 110 of 517 --
-
 87 Personality: Do We Really Need Another Badass?
 fulfillment. And like you, I wish I were a badass. To stride into a smoky bar
 room full of bikers— not that I have anything against bikers … on second
@@ -3627,9 +3210,6 @@ things. That just didn’t feel right.
 adorable little elf (or whatever the hell he is) runs around chopping everyone’ s gardens to
 bits, breaks into their houses, steals anything that isn’ t nailed down and breaks all of their
 valuable crockery! And yet everyone is so happy to see him!
-
--- 111 of 517 --
-
 88 LEVEL 5 The Three Cs, Part 1—Character
 Instead, we created victims that the player encountered being
 menaced by the Zin enemies throughout the levels. It was up to the player
@@ -3653,9 +3233,6 @@ of all, make sure your character’ s appearance matches his name. Which of
 the following characters do you think looks like a “ Dirk Steele” ?
 I learned an important lesson about naming characters while playing the
 classic computer game X- Com: UFO Defense. In the game, you command
-
--- 112 of 517 --
-
 89 Let’s Get Personal
 an international military team that battles an invading alien threat. The team
 members you recruit are given rather non- descript names. Then I learned
@@ -3682,9 +3259,6 @@ Spore’ s (EA, 2008) creature creator goes even further: players have used it t
 build a staggeringly creative array of fantastical creatures from gorgeously
 detailed dragons to living game controllers! No matter what you build in the
 editor, the anatomy and physical traits of your character affect the way your
-
--- 113 of 517 --
-
 90 LEVEL 5 The Three Cs, Part 1—Character
 creature moves and acts within the game. You don ’ t even need talent to
 create your hero in the Drawn to Life series (THQ, 2007), which allows
@@ -3725,13 +3299,6 @@ characters have an object swinging from their back. With Lara Croft it was
 her ponytail. With Batman it was his cape. These both required unique code
 to create. Talk to your art and programming leads to make sure these visual
 markers are feasible.
-
----
-
-## Sección 30: Part 1 — Character
-
--- 114 of 517 --
-
 91 Let’s Get Personal
 While video game character design allows for a wide variety of stylization,
 the goal of many video game art directors is to create realistic characters.
@@ -3756,9 +3323,6 @@ and have a human personality. However, R2- D2 from Star Wars is a great
 example of playing against this expectation.
 Now, for the other side of the coin, here are some tips to remember when
 creating stylized characters:
-
--- 115 of 517 --
-
 92 LEVEL 5 The Three Cs, Part 1—Character
 Facial proportions. Enlarge facial features such as eyes, chins, and
 mouths to convey greater expression and range of emotion. You find this all
@@ -3791,9 +3355,6 @@ character ’s metrics: the cornerstone of your gameplay and design.
 But before we dive into metrics, let’ s talk about fencing.
 When you fence you learn how far you travel when you step forward, how
 far your weapon goes when you extend your arm. A fencer learns that those
-
--- 116 of 517 --
-
 93 Finally, We Talk about Gameplay
 distances get greater as you lunge at an opponent. It’ s important to know
 these distances to help you gauge how far away you are from your
@@ -3824,9 +3385,6 @@ height, while a double jump can be twice as tall as the player
 player ’s arm and weapon
 • Projectile distance: this can be as short as the player’s reach or width
 to as far as the player can see
-
--- 117 of 517 --
-
 94 LEVEL 5 The Three Cs, Part 1—Character
 The cliff ledge shown in the above graphic is obviously completely
 unobtainable with a normal jump/double jump distance. The player will know
@@ -3848,13 +3406,6 @@ The feet: while detecting collision from the feet seems like the logical
 location, it can cause issues if it is used to determine where a power- up
 is collected (for example if it is in mid- air, the player will have to jump to
 collect it).
-
----
-
-## Sección 31: Part 1 — Character
-
--- 118 of 517 --
-
 95 Why Walk When You Can Run?
 The torso: IMHO, this is the best place to determine the character ’ s collision
 with the world. It provides enough coverage for both halves of the body and
@@ -3879,9 +3430,6 @@ action in your level walkthroughs4 and you find yourself telling your colleagues
 “and then the character walks through here” , this should set off very loud
 klaxons. Why? Because:
 4 Which we will talk about in Level 9 .
-
--- 119 of 517 --
-
 96 LEVEL 5 The Three Cs, Part 1—Character
 WALKING IS NOT GAMEPLAY!
 Don ’ t fall into the trap of assuming your player will find gathering collectibles
@@ -3905,9 +3453,6 @@ walk, then make sure it is fast enough to be useful.
 Where a walk does come in useful is when navigating edges and ledges. I
 have found that most players will walk to an edge because they are afraid
 that they may fall off. There are other tools that you can use in conjunction
-
--- 120 of 517 --
-
 97 Why Walk When You Can Run?
 with the edge— such as a teeter and hoist (more on those in a moment)—
 but the walk is what the player will use most as it makes them feel safe and
@@ -3948,9 +3493,6 @@ Slow -moving moves include:
 • Crouching • Hoisting
 • Sneaking • Climbing
 5 Which seems to be a running theme in this chapter, doesn’ t it?
-
--- 121 of 517 --
-
 98 LEVEL 5 The Three Cs, Part 1—Character
 I find it best to alternate between fast experiences and slow ones to keep the
 game ’ s pacing interesting.
@@ -3993,13 +3535,6 @@ to a coworker and he said, “ You aren’ t playing the game correctly.” Befo
 take back such a dire insult, he said “ It ’ s not an action game, it’s a stealth game.” Armed with
 that information, I replayed the game stealthily and eventually finished it. Which I may have
 never otherwise done due to the mixed signals the game gave the player.
-
----
-
-## Sección 32: Part 1 — Character
-
--- 122 of 517 --
-
 99 The Art of Doing Nothing
 When you make your character move stealthily, make it a significant
 difference in speed. It’s the same principle as walking vs running. A creep
@@ -4040,9 +3575,6 @@ will cause a problem, no matter what the length. Keep them short and
 snappy. Don’ t have any ideas for idles? Here are a few to start with:
 7 Some more recent games do allow you to gain back health for being idle, but that’s just a
 by-product of not being shot at and has nothing to do with the idle itself.
-
--- 123 of 517 --
-
 100 LEVEL 5 The Three Cs, Part 1—Character
 • Twirl, reload or “ shoulder ” weapon
 • Stretch and jog in place
@@ -4063,9 +3595,6 @@ Of all of the basic moves in video gaming, the jump is the most mysterious,
 the most majestic, and the most misunderstood. In order for us to fully
 understand the jump, let us take a look at one with the help of my patented
 “ slo - mo ” graphic.
-
--- 124 of 517 --
-
 Might as Well Jump 101
 1. The player is at rest: this is when the player is walking, running, and
 so on.
@@ -4107,13 +3636,6 @@ heights and distances, and collision bounciness always feel better when
 adjusted. Most people in the real world can’ t jump higher than their own
 waist, while the average platform game character can easily double their
 own height in a single bound.
-
----
-
-## Sección 33: Part 1 — Character
-
--- 125 of 517 --
-
 102 LEVEL 5 The Three Cs, Part 1—Character
 What if your game takes place in space? Or occurs on a planet with low or
 high gravity? Or you can make exceptionally powerful jumps like Jumping
@@ -4153,9 +3675,6 @@ discovered some curious things about jumping. Players usually do not jump
 from the edge of a ledge, but from a little way back. Edges make players
 nervous. They leap from an area I call the “jump zone”, which can be up to
 half a jump’ s distance to the very edge of the platform.
-
--- 126 of 517 --
-
 Might as Well Jump 103
 The target the player is trying to hit is a safe spot about half a jump length
 away from the edge of the opposite ledge. However, landing right on the
@@ -4169,9 +3688,6 @@ recommend having a post- landing slide animation to your jump.
 When a player gets nervous, they tend to jump again. If their target is too
 small, they will usually jump themselves to their death. Save the really small
 platforms for expert jumping puzzles. (Usually found late in the game.)
-
--- 127 of 517 --
-
 104 LEVEL 5 The Three Cs, Part 1—Character
 Hoists and Teeters
 Hoists and teeters are two very
@@ -4209,9 +3725,6 @@ animations need to cycle as the player may leave their character
 literally in a cliff- hanger!
 You will have to be careful of what I call the “ Wily E.
 Coyote effect. ” Remember in those old Chuck
-
--- 128 of 517 --
-
 What Goes Up, Must Fall Down 105
 Jones8 cartoons where Wily E. Coyote chases the Road Runner off of a cliff?
 And then he stands on thin air for a beat before he plummets down into a little
@@ -4227,9 +3740,6 @@ can also disrupt the player’ s control.
 existence including What’s Opera, Doc?, Duck Amuck and How the Grinch Stole Christmas. He
 created the characters of Road Runner and Wily E. Coyote among others. Shame on you for
 not knowing this.
-
--- 129 of 517 --
-
 106 LEVEL 5 The Three Cs, Part 1—Character
 3. Give the player a chance to jump out of a teeter so they can get to
 where they want to go. If the result of missing a jump is death, let them
@@ -4270,13 +3780,6 @@ character has weight and mass.
 • A shadow helps players with edge detection. If their shadow doesn’ t
 “ lie ” on ground, they will get one more hint that it’s not meant for them to
 stand on.
-
----
-
-## Sección 34: Part 1 — Character
-
--- 130 of 517 --
-
 What Goes Up, Must Fall Down 107
 • A shadow conveys lighting and mood. In some survival horror games,
 the shadow can be a disquieting distraction to the player, literally making
@@ -4307,9 +3810,6 @@ onto platforms that are above other geometry.
 • Shadows react in different ways under different lights and on different
 surface textures. While you don’ t have to adhere to reality, it may seem
 weird to a player if a shadow shows up underwater.
-
--- 131 of 517 --
-
 108 LEVEL 5 The Three Cs, Part 1—Character
 The Water ’ s Fine … or is it?
 Speaking of water, swimming can still be a difficult thing to design gameplay
@@ -4344,9 +3844,6 @@ collect power- ups or have some other method to sustain their air supply?
 • Can the player attack underwater? Do they carry their weapon and swim
 at the same time? A typical swim stroke may look strange or cause
 sorting issues if the player is carrying a weapon at the same time.
-
--- 132 of 517 --
-
 Be Kind to Our Four-Legged Friends 109
 • How does the player react when they reach the bottom? Can they glide
 along the bottom? Or do they bob back towards the surface?
@@ -4375,9 +3872,6 @@ Make sure you account for this difference when having characters
 perform attacks or simple tasks like opening doors or chests.
 Let me reiterate: the key to avoiding problems with a quadruped character
 is to make sure your metrics are built around them.
-
--- 133 of 517 --
-
 110 LEVEL 5 The Three Cs, Part 1—Character
 Using All of the Parts
 As you are designing your character, try using him or her to communicate
@@ -4418,13 +3912,6 @@ allowed the player to always know what they had without having to
 check their inventory system.
 • Any major ability upgrade should have a model and/or animation
 component to it. An evolving character keeps thing interesting to the
-
----
-
-## Sección 35: Part 1 — Character
-
--- 134 of 517 --
-
 We Are Not Alone 111
 player, who is looking at the same character for the entire game. Even
 better, take a page from World of Warcraft and allow players to dress up
@@ -4448,9 +3935,6 @@ multiple players has advanced greatly in the MMO and FPS space, console
 games have pushed the envelope in the other direction; the second
 character. When creating gameplay with a second character, you have to
 decide whether the character is playable or a companion.
-
--- 135 of 517 --
-
 112 LEVEL 5 The Three Cs, Part 1—Character
 A second playable character (or SPC) lets the player swap between
 controlling multiple characters. When control is relinquished on one
@@ -4491,9 +3975,6 @@ Dogmeat in Fallout 3 (Bethesda, 2008), or the weighted companion cube in
 Portal (Valve, 2007).
 9 “Player Zapping” was the charming term used for SPC switching in Resident Evil 0
 (Capcom, 2002).
-
--- 136 of 517 --
-
 We Are Not Alone 113
 While companion characters are helpful in gameplay, be aware that creating
 a companion character is often a significant dedication to game assets as
@@ -4523,9 +4004,6 @@ Sometimes two characters aren’ t enough. Mortal Kombat: Armageddon
 (Midway, 2006) has 63 unique playable characters! Games with large casts
 can be found in many game genres: fighting, car combat, RPG, RTS, FPS,
 and survival horror games.
-
--- 137 of 517 --
-
 114 LEVEL 5 The Three Cs, Part 1—Character
 Start your character creation process by creating a stereotype: the old
 “ fi ghter, magic- user, thief, cleric” class/profession model, for example. Wait
@@ -4566,13 +4044,6 @@ Medium speed
 Medium attack
 (headshot does
 instant kill)
-
----
-
-## Sección 36: Part 1 — Character
-
--- 138 of 517 --
-
 We Are Not Alone 115
 Scout Engineer Spy
 Weak health
@@ -4612,9 +4083,6 @@ to gauge them against, such as:
 Be careful to make sure these values and traits are easily editable; if you
 need to make a global change in your game, you don’ t want to spend all
 your time tweaking values.
-
--- 139 of 517 --
-
 116 LEVEL 5 The Three Cs, Part 1—Character
 Who Are the People in Your Neighborhood?
 The general. The hooker. The innkeeper. The service robot.
@@ -4639,9 +4107,6 @@ maps to pointing in the right direction)
 • Answers to puzzles and problems
 • Backstory about the world and its characters— just don’t be too long
 winded
-
--- 140 of 517 --
-
 Who Are the People in Your Neighborhood? 117
 • Players ’ instruction on gameplay (though never tell the player something
 they already know)
@@ -4665,9 +4130,6 @@ player have to hunt them down. Unless your story calls for it, don’ t put them
 enough. That means that many players will not be able to interact with some characters
 because they’ re sleeping. Make sure you take this into account, as you don’t want to waste
 production time creating assets that the player will never see!
-
--- 141 of 517 --
-
 118 LEVEL 5 The Three Cs, Part 1—Character
 in strange locations either: an innkeeper should be found in the inn, the
 police captain in the police station, and so on. If needs be, put a large
@@ -4706,13 +4168,6 @@ personality should determine their appearance.
 • Give your characters distinct shapes, silhouettes, colors,
 and textures.
 • Name your hero appropriately.
-
----
-
-## Sección 37: Part 1 — Character
-
--- 142 of 517 --
-
 Level 5’s Universal Truths and Clever Ideas 119
 • Customization will increase player attachment.
 • Use the player character to determine game metrics.
@@ -4724,9 +4179,9 @@ get right. Make them compliment the player character.
 effectiveness.
 • Give your NPCs gameplay functions.
 
--- 143 of 517 --
+---
 
--- 144 of 517 --
+## Sección 6: Part 1 — Character [Entropy: 0.75]
 
 T
 Levei 6
@@ -4744,9 +4199,6 @@ Choosing the right camera for your game is not only very important
 for determining how to program the camera, but it also impacts
 how you design your game, map your controls, and create your
 1 This is a completely made- up statistic.
-
--- 145 of 517 --
-
 122 LEVEL 6 The Three Cs, Part 2—Camera
 artwork. It’s pretty common for a game to have more than one style of
 camera, but you should stick with one “ main ” camera style for the majority
@@ -4776,9 +4228,6 @@ very dynamic. Make sure to compensate for this problem with lots of
 animation and effects to keep your screen lively.
 If you aren’ t satisfied with a camera that stays put, you can always ask your
 programmer nicely to make it into a scrolling camera instead.
-
--- 146 of 517 --
-
 Get It Right: Camera Views 123
 Scrollable camera. Pretend you are looking down at a desktop. Or use the
 above picture if you are bad at pretending. On this hypothetical desktop you
@@ -4802,9 +4251,6 @@ camera around.
 Work with your programmer to tune the hydraulics of your camera: the
 speed at which the camera accelerates/decelerates. A scrollable camera
 that moves too fast will overshoot the player’ s target, which gets very
-
--- 147 of 517 --
-
 124 LEVEL 6 The Three Cs, Part 2—Camera
 frustrating as the player goes through a process of overshooting
 back and forth, a condition that eventually leads to insanity and/or
@@ -4831,13 +4277,6 @@ First is plain ol’ scrolling. The camera is controlled by the player’ s
 movement —the player essentially stays in the center of the screen
 as the world moves past them just like in those old-fashioned western
 fi lms. Giddyup!
-
----
-
-## Sección 38: Part 1 — Character
-
--- 148 of 517 --
-
 Get It Right: Camera Views 125
 When using this type of scrolling, be careful to play out how your game level
 loads as your player may be able to “outrun the load.” Always play your
@@ -4852,9 +4291,6 @@ with the camera, something horrible (such as death) happens to them. This
 makes a forced scroll camera great for gameplay where you really want to
 put pressure on a player, but keep in mind that you don ’ t want to use it
 consistently in a game; that is, unless your whole game is based on this idea.
-
--- 149 of 517 --
-
 126 LEVEL 6 The Three Cs, Part 2—Camera
 Parallax scrolling games dominated home video games throughout the
 1990s (really— I was there). There were tons of them! When you have a
@@ -4876,9 +4312,6 @@ game developers.
 2 The camera effect called “ Mode 7” actually existed before the SNES. Racing games like
 Night Racer (Micronetics, 1977) and Pole Position (Namco, 1982) were some of the first
 games to feature a scrolling ground plane that gave the illusion of 3- D space.
-
--- 150 of 517 --
-
 First Person Camera 127
 In addition to scrolling the camera along the parallax, programmers
 found inspiration from the multi -plane camera used in traditional
@@ -4892,9 +4325,6 @@ the zooming effect in bi- dimensional games was severe pixilation that
 occurred when the camera zoomed in on a non- scaling sprite. You can still
 find this effect being intentionally imitated in “ retro ” -style games.
 First Person Camera
-
--- 151 of 517 --
-
 128 LEVEL 6 The Three Cs, Part 2—Camera
 As gameplay moved into the Z- axis, game creators explored more cinematic
 camera views. While a few games in the 1970s featured a first person
@@ -4934,9 +4364,6 @@ movie Predator, you can simulate these effects in a first person view to
 make the player actually feel like they are using high- tech or alien gear,
 such as night vision goggles. Just make sure the effect actually gives
 the player a gameplay advantage in addition to looking cool.
-
--- 152 of 517 --
-
 First Person Camera 129
 • Blurry/drunken cam: first person view gives the designer a chance to
 put the player in the character’ s shoes. As long as the altered state
@@ -4975,13 +4402,6 @@ the movies.
 4 This is what killed me when I played Goldeneye on the N64. Don’ t get me wrong, this is a
 brilliant game, but there was one level with an undulating floor that, after I played it for a
 half hour, I threw up like it was Christmas.
-
----
-
-## Sección 39: Part 1 — Character
-
--- 153 of 517 --
-
 130 LEVEL 6 The Three Cs, Part 2—Camera
 Third Person Camera
 Another good way to avoid turning your game into a puke- a - rama is to pull
@@ -5008,9 +4428,6 @@ to back into the coaches and trip over the gear lying on the sidelines, which
 5 The story goes that Toby Gard, one of the designers of Tomb Raider (Eidos Interactive,
 1996), made his lead character a woman because he didn’t want to spend the entire game’ s
 production staring at a guy’s ass.
-
--- 154 of 517 --
-
 Third Person Camera 131
 (a) didn’ t result in great footage, and (b) generally pissed off the coaching
 staff. To solve this, I recruited a friend to act as a spotter as I filmed to make
@@ -5042,9 +4459,6 @@ controls. Many games won’ t work properly if the player is pointing the
 camera straight up or straight down. Another annoyance for me is the great
 “airplane controls vs. player- relative controls” debate. Personally, unless I’ m
 flying a plane, don’ t make me push up on the analog stick to make my
-
--- 155 of 517 --
-
 132 LEVEL 6 The Three Cs, Part 2—Camera
 character go down. Many FPSs do this and frankly, it’ s just stupid since in
 most FPSs you are playing a character, not an airplane. If you have to have
@@ -5074,9 +4488,6 @@ Not only does it look bad, but it just invites flipping once the camera tries to
 decide where to look at the player.
 Position. A topic of disagreement among the world’ s greatest designers is
 whether the camera should strictly follow the player as if it were attached to
-
--- 156 of 517 --
-
 Giving Up Control 133
 a stick stuck to the character OR whether the camera should be more laid
 back and follow the character around freely. Don’ t stress it dude, the
@@ -5112,13 +4523,6 @@ camera.
 The first method is to allow the player complete control over the follow cam.
 By using the analog stick (or a mouse for PC games), the player can move
 the game camera to look around 360 degrees at any time; while running,
-
----
-
-## Sección 40: Part 1 — Character
-
--- 157 of 517 --
-
 134 LEVEL 6 The Three Cs, Part 2—Camera
 standing still, while in combat, whatever. The disadvantage of this is that
 players can get quickly disoriented, miss interesting and important level
@@ -5149,9 +4553,6 @@ out of the camera’ s view.
 The third method is to give the player selective control over the camera. Like
 with the first person free-look cam, this mode is activated by a button press
 which brings the camera in for a closer look at an object’ s detail or into a
-
--- 158 of 517 --
-
 Giving Up Control 135
 special mode like a sniper’ s scope. The difference between selective control
 and a free- look camera is context.
@@ -5177,9 +4578,6 @@ Control over the Camera
 Good call. The last thing you need is someone screwing around with the
 camera making your game look bad. You will realize that there are many
 benefits to taking away the player’ s control over the camera.
-
--- 159 of 517 --
-
 136 LEVEL 6 The Three Cs, Part 2—Camera
 • Removing camera control gives the player one less thing to worry about.
 If they aren’ t wrestling with the camera, the player is free to concentrate
@@ -5221,13 +4619,6 @@ character behind a fence, the player should be able to keep pushing
 the control stick in the same direction with the assumption that the
 character will eventually emerge on the other side. Don’ t place hazards
 6 Which they call “ doom buggies.” Heh.
-
----
-
-## Sección 41: Part 1 — Character
-
--- 160 of 517 --
-
 Two and a Half D 137
 behind the obstruction or widen the path in these areas, which would
 allow for movement in the Z- axis: the player could get unjustly hurt or
@@ -5249,9 +4640,6 @@ Crash Bandicoot (SCEA, 1996) was one of the first games to take two
 dimensional platform gameplay and move it into the third dimension. Unlike
 bi -dimensional gameplay which uses sprites for the game world and
 characters, two and a half D uses three- dimensional character and world
-
--- 161 of 517 --
-
 138 LEVEL 6 The Three Cs, Part 2—Camera
 models but limits the camera movement in the same manner as a
 bi -dimensional game: up, down, and in/out on the Z- axis.
@@ -5277,9 +4665,6 @@ games can still be quite detailed and beautiful. However, if your gameplay
 is less concerned about getting a detailed look at the inhabitants of
 your world, then go ahead and steps into the sandals of the divine with
 God view.
-
--- 162 of 517 --
-
 Top-Down Camera 139
 Because details aren’ t as important in God view you will find it in games
 that are concerned with controlling cities or dominating land masses like
@@ -5289,9 +4674,6 @@ sometimes as high as low orbit.
 Top - Down Camera
 Considered to be an “ old - fashioned ” camera view, you can still occasionally
 find action arcade games presented in a top -down view. Classic games
-
--- 163 of 517 --
-
 140 LEVEL 6 The Three Cs, Part 2—Camera
 like Smash TV and Gauntlet are examples of games that used this camera
 view. There are some disadvantages to this view, such as not being able to
@@ -5315,9 +4697,6 @@ layers to your own game:
 flying or swimming. Don’ t let the player rise or fall off screen.
 • If your player flies or swims straight up or down, make sure your camera
 doesn ’t sort through floor geometry.
-
--- 164 of 517 --
-
 Camera Shot Guide 141
 • While swimming, keep your camera underwater with the player. Don’ t
 have it pop out of the water unless the player is swimming on the
@@ -5353,13 +4732,6 @@ for establishing shots of buildings or
 other large things like space ships or
 to set the tone that the player is
 stranded out at sea or in a desert.
-
----
-
-## Sección 42: Part 1 — Character
-
--- 165 of 517 --
-
 142 LEVEL 6 The Three Cs, Part 2—Camera
 Wide shot (WS). The entire subject
 (be it a car or person) can be seen
@@ -5398,9 +4770,6 @@ old horror movies. Or you can use it
 to show details on objects such as
 puzzle clues, or even the puzzles
 themselves.
-
--- 166 of 517 --
-
 Camera Shot Guide 143
 Cutaway. You know when the hero says “ I need to get that magic sword”
 and the next shot is a magic sword? That’ s a cutaway. A cutaway can be
@@ -5409,9 +4778,6 @@ Cut in. Here, our hero says “I need to examine this clue” and then the
 camera shows a close- up detail of the clue. That’ s a cut in.
 Two shot. This is called a two shot because it features two elements
 (usually talking characters) shown on screen at the same time.
-
--- 167 of 517 --
-
 144 LEVEL 6 The Three Cs, Part 2—Camera
 Over the shoulder shot (OSS). A shot taken from over the shoulder of a
 character. It’ s a good opportunity to show hidden things too, like characters
@@ -5420,9 +4786,6 @@ fingers as they promise not to kill the bad guy.
 Noddy. A shot in which a character is reacting to what someone else is
 saying (they are “ nodding ” in response to the speaker). You see this shot a
 lot with news interviews.
-
--- 168 of 517 --
-
 Camera Angle Guide 145
 Point of view shot (POV). A shot from the perspective of someone or
 something. Usually shown from the eyes of the player, but can be from the
@@ -5451,9 +4814,6 @@ action.
 Bird ’ s - eye view: a shot taken from
 high up in the sky, as if a bird were
 watching the action.
-
--- 169 of 517 --
-
 146 LEVEL 6 The Three Cs, Part 2—Camera
 Dutch tilt: we did this trick in
 Maximo: Ghosts to Glory. We wanted
@@ -5477,9 +4837,6 @@ Dolly zoom: the camera adjusts the focal length but is moved forward or
 back to keep the subject the same size on camera. You see this shot a lot
 in Steven Spielberg movies where a character is amazed by something or
 comes to a realization that something bad is going to happen.
-
--- 170 of 517 --
-
 Camera Movement Guide 147
 Follow: the camera moves with the subject. Depending on the style of your
 cutscene, you can try to make your follow a little shaky as if it was taken by
@@ -5494,9 +4851,6 @@ make more interesting shots.
 Tilt: where the camera’ s focus is moved up or down but the camera’ s
 position stays the same. Effects like lens flare can make a tilt more
 interesting.
-
--- 171 of 517 --
-
 148 LEVEL 6 The Three Cs, Part 2—Camera
 Dolly: where the camera is moved smoothly towards or away from the
 subject. This is also called a tracking or crab shot. Speed can really make a
@@ -5515,13 +4869,6 @@ Nothing kills a good shot faster than having unappealing composition. The
 most basic guideline for composition is called the rule of thirds.
 See in the above image how the screen has three imaginary lines running
 through it? The rule is that you want to put the item of focus either a third of
-
----
-
-## Sección 43: Part 1 — Character
-
--- 172 of 517 --
-
 Other Camera Notes 149
 the way up or a third of the way to one side or another. Of course, once you
 have mastered the rule of thirds, you will want to break it. That’ s OK too.
@@ -5545,9 +4892,6 @@ looking at. For example, you enter a mysterious, underground chamber. The
 player can be told any number of things by the camera’ s movement: where
 puzzle elements can be found, the appearance or location of enemies, a
 dramatic reveal of a beautiful piece of architecture, or where the exit is. Or
-
--- 173 of 517 --
-
 150 LEVEL 6 The Three Cs, Part 2—Camera
 even better, all of the above. Playwright Anton Chekhov said “ If in the first
 act you have hung a pistol on the wall, then in the following one it should be
@@ -5585,9 +4929,6 @@ camera when they can’t see their character.
 7 Anton Chekhov: A Life, Donald Rayfield (Henry Holt and Company, 1997).
 8 But it won’ t because you aren’ t going to let your main character get out of the camera’ s
 sight, right?
-
--- 174 of 517 --
-
 Multiple Player Cameras 151
 Multiple Player Cameras
 Keeping a camera on a player is tricky enough but what if you have
@@ -5601,9 +4942,6 @@ out any detail on the screen. War of the Monsters (SCEA, 2003) used a split
 screen that only engaged when the two combatants were far enough away
 from each other to trigger it. Now, in the age of giant plasma screens, split
 screen works better because each player can actually see what is going on.
-
--- 175 of 517 --
-
 152 LEVEL 6 The Three Cs, Part 2—Camera
 Zooming screen: LittleBigPlanet zooms out whenever there is more than
 one character on screen. If any of the characters get off-screen, they use an
@@ -5619,9 +4957,6 @@ shown on smaller insert camera views. It’ s not the best solution for some
 types of multiplayer games like FPSs, but it works pretty well for sports titles.
 Whew. I think we’ ve exhausted the topic of cameras. Time to move on to the
 last of the Three Cs … Controls.
-
--- 176 of 517 --
-
 Level 6’s Universal Truths and Clever Ideas 153
 Level 6 ’ s Universal Truths and Clever Ideas:
 • Choose the right camera for your game.
@@ -5641,11 +4976,7 @@ game visuals and drama.
 
 ---
 
-## Sección 44: Part 3 — Controls
-
--- 177 of 517 --
-
--- 178 of 517 --
+## Sección 7: Part 3 — Controls [Entropy: 0.575]
 
 T
 Levei 7
@@ -5664,9 +4995,6 @@ He said “Oh, no wonder. You are holding the controller wrong.” Whaaa? As
 far as I knew, there was only one way to hold the controller. Keeping things
 respectful, I asked: how did he recommend I hold it? This is what he
 showed me:
-
--- 179 of 517 --
-
 156 LEVEL 7 The Three Cs, Part 3—Controls
 I wasn’t sure if he was joking. “ I don’ t believe that players would change
 their hand positions midway through the game. It just doesn’ t seem very
@@ -5693,9 +5021,6 @@ would create a control scheme that forced the player to twist up their hands
 like pretzels. To help with this, I created this rule of thumb (BAA DUM!
 TISH!1) that I call the “Gamers ’ Guide to Flex-O- Fingering. ”
 1 Thankyou, thankyou. I’ ll be here all week, folks. Try the veal.
-
--- 180 of 517 --
-
 The Three Cs, Part 3—Controls 157
 When you are designing controls, try establishing design rules for your
 controls schemes based on hand placement (for example, in FPS games it’ s
@@ -5707,9 +5032,6 @@ Speaking of keyboards, just because you have a whole keyboard available
 for use, doesn’t mean you have to use every single key. Keeping your
 keyboard controls localized around commonly used key groupings like
 QWERTY or ASWD makes it easier for players to adapt to.
-
--- 181 of 517 --
-
 158 LEVEL 7 The Three Cs, Part 3—Controls
 Another way to assign controls is thematically. In Tak and the Guardians of
 Gross (THQ, 2008) the motion-controlled Wii Remote was used for all of the
@@ -5752,9 +5074,6 @@ controller manufacturers loved the
 pencil trick, it’s unfair to your players
 to make them resort to it.
 2 Please do not use these tips if you are just looking at this page in the bookstore. Thanks.
-
--- 182 of 517 --
-
 Dance, Monkey, Dance 159
 • While it’ s fine to experiment with unconventional control schemes,
 make sure the player has the option to revert it back to a more
@@ -5792,13 +5111,6 @@ stiffness, burning or cold sensations, numbness or weakness. The American
 Physical Therapy Association3 recommends the following exercises and
 advice:
 3 Exercises courtesy of the APTA website (http://www.apta.org).
-
----
-
-## Sección 45: Part 3 — Controls
-
--- 183 of 517 --
-
 160 LEVEL 7 The Three Cs, Part 3—Controls
 • Keep your wrists straight (don’ t let them droop) as you hold the
 controller.
@@ -5811,9 +5123,6 @@ same hand. Repeat five times.
 thigh as quickly as you can. Repeat 20 times.
 • Open your hands and spread fingers as far apart as possible. Hold for
 10 seconds. Repeat eight times.
-
--- 184 of 517 --
-
 Dance, Monkey, Dance 161
 • Clasp your hands together and turn your hands away from your body
 and extend your arms forward. Hold for 10 seconds and repeat eight
@@ -5835,9 +5144,6 @@ Once the player sees these moves happen a few times, they will slow down
 to try to dissect how they pulled them off.
 Never have a button do nothing when pressed. Here are some ways to deal
 with this:
-
--- 185 of 517 --
-
 162 LEVEL 7 The Three Cs, Part 3—Controls
 • Play a “negative response” sound effect or animation to make it clear to
 the player that this control isn’ t available. I always liked that the character
@@ -5870,9 +5176,6 @@ to logical control locations helps immerse the player into the game world.
 In Maximo: Ghosts to Glory, the goal was to create an “ out- of- game ”
 correlation between Maximo ’ s moves and the real - world Playstation 2
 controller.
-
--- 186 of 517 --
-
 Dance, Monkey, Dance 163
 Maximo ’s overhead swing is performed by pressing the triangle, the button
 at the “ top ” of the controller— echoing the swing from high to low, while
@@ -5888,9 +5191,6 @@ scheme resembles that of other successful games in the same genre, the
 more easily your player will embrace it.
 Shoulder buttons can be found on most modern console controllers but
 consider the actual button size when mapping controls. For example, on an
-
--- 187 of 517 --
-
 164 LEVEL 7 The Three Cs, Part 3—Controls
 Xbox 360 controller, the left and right shoulder buttons are physically
 smaller than the left and right shoulder triggers. You should assign “ quick
@@ -5927,21 +5227,11 @@ With a camera- relative control scheme, the controls change depending on
 which way the character is facing the camera. Say we are playing a survival
 horror game: “Terror Zombie Death Mansion 3”, and our stalwart hero
 stands in a hallway.
-
----
-
-## Sección 46: Part 3 — Controls
-
--- 188 of 517 --
-
 Character or Camera Relative? 165
 When the player presses left on the analog stick, the character walks to the
 left. The room he enters has the camera pointing at our hero— in the
 opposite direction from the shot in the hallway4.
 4 Tsk, tsk! Someone has “ crossed the line” with their camera. Didn’ t you read Level 6 ?
-
--- 189 of 517 --
-
 166 LEVEL 7 The Three Cs, Part 3—Controls
 Now when the character presses the stick to
 the left, the character walks to the right—
@@ -5981,9 +5271,6 @@ Silent Hill (Konami, 1999). The developer
 figured out how to vibrate the two
 actuators at different frequencies to
 simulate a heartbeat. Whenever the
-
--- 190 of 517 --
-
 Shake, Rattle and Roll 167
 character was scared or hurt, the controller’ s “ heart ” would vibrate, telling
 the player that they were in trouble. It was really creepy and effective.
@@ -6025,9 +5312,6 @@ and when it happens on screen. As most games are based on timing,
 nothing is more frustrating than an action not happening when the player
 does it. This is especially true for rhythm games like Rock Band and
 fighting games like Street Fighter, where lag issues can screw up the
-
--- 191 of 517 --
-
 168 LEVEL 7 The Three Cs, Part 3—Controls
 player ’s timing and the game becomes too frustrating to play. Guitar
 Hero even allows the player to adjust the lag to match the player’ s skill
@@ -6061,13 +5345,6 @@ the same genre. Familiarity relieves confusion.
 • Give your player a break to avoid “ gamer ’ s thumb” and
 other health problems (take a break yourself while you
 are at it).
-
----
-
-## Sección 47: Part 3 — Controls
-
--- 192 of 517 --
-
 Level 7’s Universal Truths and Clever Ideas 169
 • Camera- relative controls or character-relative controls?
 Pick one and stick with it.
@@ -6079,9 +5356,9 @@ controls more intuitive to the player.
 • Player ’ s movement with motion controllers should be
 broad and mimic reality.
 
--- 193 of 517 --
+---
 
--- 194 of 517 --
+## Sección 8: Part 3 — Controls [Entropy: 0.605]
 
 T
 Leve I 8
@@ -6097,9 +5374,6 @@ screens and icons found in a HUD are some of the best tools in a video
 game designer’ s bag of tricks. They can communicate information, emotion,
 even tell the player where to go and what to do. Let’ s look at some of the
 HUD elements found on an average game screen:
-
--- 195 of 517 --
-
 172 LEVEL 8 Sign Language—HUD and Icon Design
 1. Health bar/lives
 2. Targeting reticule
@@ -6133,9 +5407,6 @@ recharges back to full. This “wait for health” technique is becoming
 increasingly popular in action games and I think it’ s a pretty good
 compromise in lieu of a game over/death screen, which pulls the player
 out of the game.
-
--- 196 of 517 --
-
 Targeting 173
 • Recently, health bars have become replaced by first person style effects
 which are also used in third person view. In Uncharted 2: Among Thieves
@@ -6167,9 +5438,6 @@ faster targeting. This works great for vehicular weapon targeting.
 • Build in gameplay to your reticule. Team Fortress 2’ s zoomed- in sniper’ s
 reticule also projects a laser pointer spot. Enemy players see this spot
 and can make efforts to avoid being shot.
-
--- 197 of 517 --
-
 174 LEVEL 8 Sign Language—HUD and Icon Design
 Ammo gauge
 Whether your ammunition gauge
@@ -6206,13 +5474,6 @@ easier inspection.
 • Diablo has a limited inventory where each item has a specific size.
 Inventory becomes a bit of a puzzle where the player has to fit as many
 items as possible into a limited space.
-
----
-
-## Sección 48: Part 3 — Controls
-
--- 198 of 517 --
-
 Score 175
 • Inventory items can be represented either realistically or as icons.
 Whichever graphic style you choose, make sure that they have clear
@@ -6247,9 +5508,6 @@ Whatever form your scoring takes, make sure that when it happens, it’ s big
 and flashy. Video game developers are great at making players feel
 1 Borderlands’ developers call it a RPS— a role- playing shooter— but would that qualify as
 picking nits?
-
--- 199 of 517 --
-
 176 LEVEL 8 Sign Language—HUD and Icon Design
 unskilled and stupid, but bad at making them feel good. There’ s no such
 thing as overdoing it when congratulating the player. Zack and Wiki: Quest
@@ -6280,9 +5538,6 @@ The first game radar/map was found in Rally-X (Namco, 1980), which
 allowed players to see the location of power- ups without seeing the game
 map or enemy cars. Since then, map screens have provided much more
 detail to players, from outlining the playfield to revealing secret clues.
-
--- 200 of 517 --
-
 Context-Sensitive Prompt 177
 • Make your map large enough to be legible, but not so big it fills up the
 whole screen; if you must have the map fill up the whole screen, do your
@@ -6324,13 +5579,6 @@ button or control that the player has to use to have
 the event happen. For example, in Grand Theft Auto 3,
 an icon of the “ Y ” button appears whenever the player
 stands next to a car they can hijack.
-
----
-
-## Sección 49: Part 3 — Controls
-
--- 201 of 517 --
-
 178 LEVEL 8 Sign Language—HUD and Icon Design
 In Maximo: Ghosts to Glory, we created a variation of
 context prompts called “plings”: emoticons that told
@@ -6368,9 +5616,6 @@ Ah reality. It’ s a double- edged sword. You want your game to look like
 a … dare I say … cinematic experience … but you still need to
 communicate gameplay and controls to your player. What to do, what
 to do?
-
--- 202 of 517 --
-
 Icon Has Cheezburger? 179
 Well, the first step in keeping your screen clear is to make your HUD
 elements move or fade off screen while they are inactive. Of course, they
@@ -6412,9 +5657,9 @@ animated elements (such as a character or prop) are more flatly colored (usually
 shading), making them unintentionally stand out against the more detailed background.
 3 Yeah I know, that was a really really bad pun. Sorry.
 
--- 203 of 517 --
+---
 
--- 204 of 517 --
+## Sección 9: Part 3 — Controls [Entropy: 0.713]
 
 Icon Has Cheezburger? 181
 The first thing you ’ ll notice on many RTS and adventure games is that there
@@ -6457,13 +5702,6 @@ time never hurts!
 game too. Weren’ t you paying attention?
 5 Give or take 150 or so.
 6 I can’ t believe you are actually looking down here for an answer!
-
----
-
-## Sección 50: Part 3 — Controls
-
--- 205 of 517 --
-
 182 LEVEL 8 Sign Language—HUD and Icon Design
 • Don ’t leave creating icons to the programmers. They only care about the
 functionality, not the design or the art.
@@ -6501,9 +5739,6 @@ classic examples:
 to Pow! bursts when Batman throws a punch, to scratchy marks over Charlie Brown’s head to
 show that he’ s mad to those swirly circular “ rootbeer-ootles” coming out of Opus the
 penguin to show that he’ s tanked on A& W, you can find icons all over comics and cartoons.
-
--- 206 of 517 --
-
 Don’t Get QTE 183
 • Red cross: used to designate healing items10.
 • 1 Up: universal video game- ese for an extra life. Also the head or little
@@ -6533,9 +5768,6 @@ image in “ violent video games.” The organization interprets the use of the 
 of their trademark. The video game industry as a whole has not officially addressed their
 complaint.
 11 I wonder what game has “Elf needs pills badly” ?
-
--- 207 of 517 --
-
 184 LEVEL 8 Sign Language—HUD and Icon Design
 Dragon ’ s Lair (Cinematronics, 1983) first
 featured QTE gameplay— hell, the entire
@@ -6578,13 +5810,6 @@ consistent: don’ t move them around.
 Arkham Asylum offer QTEs as options for dispatching enemies, however,
 if the player misses that opportunity they still have plenty of other ways
 to take the bad guys out.
-
----
-
-## Sección 51: Part 3 — Controls
-
--- 208 of 517 --
-
 HUDs, and Where to Stick ‘Em 185
 • When using motion- controlled QTEs, keep the waggling short. And if
 you are going to make them waggle the controller, don’ t do it too
@@ -6622,16 +5847,7712 @@ game on the right usually feels pretty
 good to the player.
 12 While many Asian and Middle Eastern languages read right to left, I can’t think of a single
 video game that displays information on the screen in this way.
-
--- 209 of 517 --
-
 186 LEVEL 8 Sign Language—HUD and Icon Design
 Displaying icons along the bottom of
 the screen works well too, as long as
 you watch out for clipping that can
 occur if a player is using a monitor or
 TV screen that isn’ t calibrated for your
-game. Assume at
+game. Assume at least 50% of your
+audience has a crappy television set;
+heck, even gamers with excellent HD
+LCD rear projection sets still can get
+clipped images on the sides of their
+screen. Get that information as close
+to the safe frame as possible (and
+always offer screen calibration options).
+If you are going to use the right, left,
+and bottom of the screen, be careful
+of the “bracketing effect” that
+happens —this will make your game
+screen seem smaller and
+claustrophobic. I’ ve seen some RTS
+screens so filled with HUD elements,
+it felt like I was looking out of a mail
+slot!
+If you are going to have lots of icons
+on screen, why not consider letting
+the player choose which ones they
+want and prioritize where they should go. This way, the player can choose
+what they feel are the most important icons for them. Just make sure you
+don ’ t give them the option to obstruct the main gameplay field.
+Some icons open up other screens, like inventory lists. Make sure the player
+has a quick way to get back to the game. You may want to consider
+allowing the player to pause the game so he/she doesn’ t get bushwhacked
+by an enemy while they are trying to find their +6 rod of killing. Of course,
+you could be like the designers of Dead Space and intentionally allow
+enemies to attack while your character is rooting around in their holographic
+space backpack for another air canister. According to interviews with the
+team, this was an intentional choice: they wanted the player to not be able
+to rely on the “ gamey ” mechanic of the world freezing (as happens in, say,
+Resident Evil) while looking for inventory items. It really conveys the sense of
+dread as necromorphs are bearing down on you when you realize that you
+just don’ t have time for a break.
+When you are dealing with interface, there is one very important rule I
+never, ever try to break. Pencils out?
+There Are Other Screens Than the HUD 187
+YOU SHOULD NEVER HAVE TO PRESS A BUTTON MORE THAN
+THREE TIMES TO REACH ANY GAME SCREEN
+Why? Because the player doesn’ t want to spend the entire game pressing
+buttons to reach interface and inventory screens! They want to play the
+game! Let them play the game! Why aren’ t you letting them play the game?
+Think of the children! Oh, the humanity!
+Sorry. Lost it there for a moment.
+Seriously, don’ t make the players dig to find the options and get to the
+gameplay. Make everything in the game reachable within a button press or
+two. Consolidate screens if you have to. On one game I worked on, it took
+16 button presses just to reach the game play. After some thought and
+re -conjiggering, we managed to get it down to four button presses. Not too
+shabby if I do say so myself.
+There Are Other Screens Than the HUD
+Oh, video game screens. There are so many of you. Where to start? With a
+list of course!
+• Title/start screen. The first thing your player sees (other than the box
+cover13), so it’ s important to set the right mood. The problem is, there
+are so many styles to choose from! Let’ s see:
+13 OK, technically, the player also sees a warning screen, a publisher logo, a developer logo,
+and the logos of the companies of any technologies leased by the development team, but
+starting with those wouldn’ t make for a very exciting list, would it? Stop making me get
+ahead of myself!
+188 LEVEL 8 Sign Language—HUD and Icon Design
+• The “movie poster” title screen that mirrors the cover of the box.
+• The “heroic pose” title screen where the hero is standing on some
+high bluff, long hair blowing in the breeze, giant sword and/or gun at
+the ready …
+• Why am I in a jungle? What is that monkey statue doing there? Is it a
+relic I will be raiding? These are all questions brought up by the
+“ enigmatic image.” The image is something important to the game,
+but the player has no idea because they haven’ t played the game
+yet. When they finally learn the significance, their minds will be
+blown!
+The Pause that Refreshes 189
+• The “ logo ” screen, where a large image of the game’ s logo is
+displayed. Not very exciting, but effective. Make it more exciting with
+strobing colors, rotating effects, bouncing text, anything to get some
+motion in there.
+Title screens often feature menus that offer selections such as save/load,
+number of players, options, bonus features, and difficulty. It all depends
+on how many button presses you want the player to make before they
+get into the meat of the game; however, I find that players just want to
+get to the good stuff so keep the button pressing to a minimum (no
+more than three screens “ deep ” right?, not counting your front-end logos
+and legal). And remember, you can always put many of the start/title
+screen functions on your pause screen.
+The Pause that Refreshes
+190 LEVEL 8 Sign Language—HUD and Icon Design
+Pause. The well- designed pause screen can do more than give the player
+a break. It can be used to save a game, access the options screen, game
+map or inventory screen, or even exist to be enjoyed as with Banjo -
+Kazooie’ s (Nintendo, 1998) lovely acoustic version of the theme. Whatever
+you do, just make sure that the player doesn’ t feel like they are missing any
+of the game by pausing. Remember, most people use pause screens to
+take bathroom breaks. Of course, you can always skip the pause screen
+altogether like in Dead Space, but God knows when you’ d get a chance to
+take a whizz.
+When designers create pause screens, they have this bad habit of making
+the first choice “ resume ” and the next one down something like “ options. ”
+Usually the map and save game is a few more choices down. This makes
+no sense to me. Let’ s say you use the start button to bring up the pause
+screen. Think of all the times you are going to have to press the start button,
+then d-pad down the list to the “save game” selection, and then save the
+game and then return back up to the resume button? Why not use the start
+button to close it again? Why do you even need the resume option? If the
+save button is the most common selection the player will be making, then
+make it the first thing they can select. If it isn’ t, make it the map or the
+inventory. Plan your pause screen out as carefully as you do your level! Your
+players will thank you for it.
+Wow. Look at that graphic below. Those are all the options that can stem
+from a pause screen.
+Options. Like the ancient labyrinth, the option screen usually leads to more
+screens. But don’ t lose your player in a maze of choices. Think of the option
+The Pause that Refreshes 191
+screen as a hub, with the choices the spokes that radiate from it. Sound
+and music volume controls, controller settings, difficulty settings, and even
+bonus and cheat codes can be placed under the options heading.
+Calibration tool. If your game is particularly moody and dark in theme and
+visuals, then I suggest having a screen calibration tool. A calibration tool
+allows the player to adjust the screen’ s contrast on a dark-colored image or
+set of color bars. While it’ s fine for this to live in the options screen, I prefer
+to have the player adjust it before starting the game, to see the game in the
+best light … er darkness possible.
+Save/load game. One of the most important aspects of your game, keep it
+simple and automate the process whenever possible. Always start a new
+game with creating a new save file. Don’ t make the player hunt around for
+this and make sure they quickly pick up on where it is— even in the tutorial if
+possible.
+I highly recommend allowing for several (at least three) save files. Players
+often restart new games after completion, want back- up files in case they
+make catastrophic choices during gameplay, or even just to let someone
+else concurrently play the game.
+Customization goes a long way when creating a save file. Let the player
+name their own files. Store playtime, titles of game levels or chapters, and
+even inventory items like lives or gear to help the player remember their
+progress. Show icons or images to help jog the player’ s memory further.
+Everything helps.
+192 LEVEL 8 Sign Language—HUD and Icon Design
+Autosave is a useful function that acts as a backup if players are too
+engrossed in playing. Give the player the option to load a game from a
+saved file or the autosave. You can always give the player the option to turn
+autosave off, though I’ ll be damned why you’ d want to.
+Be careful when designing the save system that it doesn’ t become a “ reset
+system. ” There have been many games where it is easier and faster for the
+player to reload a game than to die and start again. Don’ t let the player use
+the save system as a gameplay mechanic, as it breaks the immersion of the
+play experience.
+Loading screen. Many players consider loading screens as a necessary
+annoyance, but that’ s just because developers fail to treat them as part of
+the game. More recent games strive for a “ seamless ” loading- screen - free
+experience by disguising the loading screen with slowly opening doors, long
+elevator rides, or dissipating fog. If you must have loading screens, here are
+a dozen ways to spruce them up:
+• Show concept art
+• Ask trivia questions
+• Have a playable minigame14
+• Display the game map
+• Display a character bio
+• Provide tips on gameplay or control (though be careful not to repeat
+these —even the most useful tip becomes annoying after several
+viewings, so don’ t display control tips that the player has already seen)
+14 Unless you work for Namco, you may want to avoid this one as they own the US patent
+(#5,718,632).
+The Pause that Refreshes 193
+• Fill in gaps in the game story
+• Play a short video briefing the player on the upcoming mission or
+location
+• Have the player fight endless waves of enemies or destroy a large object
+• Provide “beauty shots” of your character or items in the game
+• Have the player manipulate an interactive object like the game’ s logo or
+an item.
+Hardware manufacturers require that there be some moving image on a
+loading screen so the player knows that the game hasn’ t crashed. No
+matter what your loading screen displays, you should provide a progress
+bar or percentage loaded indicator so the player knows how long they have
+to wait.
+Controls. When showing the control screen, first and foremost, you
+need to display an image of the game controller as shown in the above
+image.
+Some games show the character that performs an action when you
+press the appropriate button. At the very least, display text explaining the
+control.
+Make sure this screen is easily accessible from the game for quick player
+reference. Also, consider allowing the player to customize the controls or at
+least give them several options to remap controls schemes.
+194 LEVEL 8 Sign Language—HUD and Icon Design
+Scoring/stats. Otherwise known as a “Tally Screen”, this screen appears
+at the end of a level. It displays the player’ s progress and performance in
+the game. You can tally just about anything on a tally screen. Here are just
+a few:
+• Score
+• Time of completion
+• Accuracy of shooting
+• Enemies slain
+• Money remaining/collected/spent
+• Number of lives
+• Rating (can be an A, B, C grade or a “ word ” rating, like “Awesome
+dude ” or “ Master of the Universe” )
+• Objectives reached/completed
+• Secrets found (usually expressed as a X/Y value)
+• Gallons of blood spilled/distance travelled/chests smashed … you get
+the idea.
+Legal/copyright. These screens are required by publishers and hardware
+manufacturers. Make sure that they are legible and more importantly,
+accurate. And for Thor’ s sake, make them skippable.
+Credits. Allow me to pull out my soapbox for a moment. People work very
+hard on games. Too many people in the video game industry get screwed
+A Final Word on Fonts 195
+out of the credit they deserve due to egos, politics, and old- fashioned
+neglect. I am a firm believer that if you work on a game, you should get a
+credit. That credit should be what is on the person’ s business card. Sadly, it
+doesn ’t always happen that way: it’ s something in the gaming industry that
+needs to change.
+Regardless, credit screens are an important part of the game. They are a
+celebration of the people who made and contributed to the final game. They
+deserve to be seen, but they should be as entertaining as possible. Some
+games get it— LittleBigPlanet for example has an amazingly entertaining
+credit sequence. Typing of the Dead (Sega, 2000) has a playable minigame
+where the player can type the credits! It’ s simple:
+GIVE CREDIT WHERE CREDIT IS DUE (AND NEVER,
+EVER BE BORING).
+If you want to find more inspiration for great looking screens, take a look at
+most movie DVDs. DVD designers do a great job at creating a gestalt15
+built around the film. This level of attention to detail takes a lot of time and
+effort on behalf of the art director and designers, but it’ s always worth it16.
+There are other screens that fall under this category as well, such as the
+game over, bonus materials, and store screens. Don’ t worry; I’ ll be
+covering these screens in greater depth later in the book.
+A Final Word on Fonts
+As you make HUD and display screens, you are going to need to think about
+fonts. I find that fonts follow many of the same rules as icons when it comes
+to legibility and clarity. However, they do present some of their own issues:
+• Theme your font to your game, but don’ t use overly ornate fonts that are
+hard to read.
+• Be mindful of the color of your font and your background. For example,
+never place red text over a black background, as it usually blurs on
+many TVs, particularly older ones or ones where the console is hooked
+up on composite cables.
+15 Die Gestalt is the German word for “ whole.” In the context of games, it applies to the
+overall feel of an experience.
+16 Some excellent examples of gestalt in games include Twisted Metal Black (SCEA, 2001),
+Brütal Legend (EA, 2009), and House of the Dead: Overkill (Sega, 2009).
+196 LEVEL 8 Sign Language—HUD and Icon Design
+• With the rise of HDTVs, developers can display higher resolution fonts.
+However, I have found that any font size under 18 point is very hard to
+read on a standard definition television. Remember that not every player
+has a state- of- the -art screen17!
+Remember, the goal of all of these screens is to communicate clearly and
+efficiently to the player. Now let’ s move on to the good stuff: the game itself!
+But first, the obligatory Universal Truths and Clever ideas section …
+Level 8’ s Universal Truths and Clever Ideas:
+• The HUD communicates game concepts to the player.
+• The player should be able to access the HUD information
+quickly.
+• Keep HUD elements away from the sides of the screen
+and closer to the safe frame.
+• Design easy- to- see and read icons.
+• Make QTEs fair and easy to perform.
+• You should never have to press a button more than three
+times to reach anything in the game.
+• Don’ t make the player dig through screens for important
+information.
+• Fonts should be easy to read: don’ t make them too small
+or too fancy.
+• Even the most “ boring” screens can be exciting and
+interesting.
+• Give credit where credit is due.
+17 The text displayed in Dead Rising (Capcom, 2006) was so small that players couldn’t read
+mission objectives— rendering the game unplayable to those with standard definition sets.
+T
+LeveI 9
+Everything I Learned About
+Level Design, I Learned
+from Level 9
+You can’ t expect a book called Level Up! not to have a chapter on level
+design. But what do I mean by level? Much like the word score1, its
+definition changes when used in different contexts. Observe:
+Level: an environment or location where game play occurs. “ If you are on
+the Death Star level then you are near the end of the game.”
+And
+Level: a term favored by developers that describes how to break up
+physical space based on a specific gameplay experience. “I must have died
+a dozen times on the mine cart level.”
+And
+Level: a unit of counting the player’ s progression, especially, when
+repetitive gameplay is involved. “ I ’m up to level 20 on Tetris. ”
+And
+Level: the rank of a player based on their earned score, experience, or
+skills. A term for marking character progression and improvement as in: “ I
+finally leveled up my third WoW character to 70.” The most common use of
+level in this context can be found in RPGs.
+1 Score: (1) To gain something (as in “ I scored a battle axe off that weapon drop” ), (2) to
+calculate a total (as when a high score is tallied), (3) to cut without cutting all the way
+through (like scoring metal with a lightsaber), (4) to “get lucky” with a … but hey, this
+isn’ t a dictionary.
+198 LEVEL 9 Everything I Learned about Level Design, I Learned from Level 9
+A possible explanation for level having four definitions in the video game
+industry is that video game developers have extremely limited vocabularies.
+Another reason for the multiple definitions is that developers have used the
+term “ level ” in different contexts for so long that it’ s too late to get everyone
+to agree to call it something else like a floobit or a placenheimer. So level
+it is. But why level? Most ancient game designers believe that the term
+came from Dungeons and Dragons, when players would travel down many
+dungeon levels (like floors of a building) to reach the dragon. (Hence the
+title of the game.) Why no one thought to call it “fl oors ” is beyond me.
+In fact, to complicate things further, there are many times a level isn’ t even
+called a level. I’ ve played games with rounds, waves, stages, acts, chapters,
+maps, and worlds in place of where I would use the term level, but even
+these have their specific definitions. Let’s review:
+Rounds can be found in games where you play the same action, if not
+similar gameplay, over and over again. It can be used for sports games like
+a round of golf or boxing where the activity is the same, or there can be
+variation in the gameplay like rounds of Peggle or Diner Dash.
+Waves usually refers to combat, as in “wave after wave of enemies
+assaulted the stalwart heroes!” Pretty exciting stuff, but you are still doing
+the same thing— beating2 the crap out of bad guys. Whole games can be
+2 And by beating, I mean punching, stabbing, shooting, karate- chopping, decapitating,
+rocketing, and exploding.
+Everything I Learned about Level Design, I Learned from Level 9 199
+made of waves of enemies like in Plants vs. Zombies and Defend my Castle,
+or it can be a sequence of play like those found in Gears of War 2 or
+Uncharted 23.
+Stage is usually interchangeable with the term wave, but it’ s often used
+when describing an experience that has clear separations that relate to the
+activity — much like the separate stages of a rocket4. Stage is often used
+when referring to the actions of a boss enemy. We’ ll talk more about this
+later in the dreaded Level 13 .
+Acts and chapters are often used when the developer wants the player to
+concentrate on the story of the game. These titles make a game feel
+classier. They’ re not fooling anyone; they’re really just game levels.
+Levels are often referred to as maps or by the location of the environment
+(like “Power Plant” or “ Insane Asylum” ). This is most common in FPSs,
+where players associate the location with a style or method of gameplay.
+The term world is often confused with level, but I blame this on its origin.
+World was first used in Super Mario Bros. with the famous “World 1- 1. ” The
+game was extremely successful and the term became immediately
+embraced by developers. However, by my own definition, World 1- 1 should
+actually be called Level 1-1. And here’ s why:
+World: a video game location that is distinguished primarily by its visual or
+genre theme and may be comprised of multiple locations that share this
+theme.
+3 It can be in any action game, not just ones with “ 2” at the end of their names.
+4 Remember, these terms were first created and used by early game creators: the same guys
+that made up your high school rocket club. Sorry cool kids, the nerds have taken over the
+world.
+200 LEVEL 9 Everything I Learned about Level Design, I Learned from Level 9
+In early video games, players would refer to the levels as worlds; as in “ Fire
+World ” , “Ice World” , and so on. However, as the home market demanded
+longer play experiences and developers wisely learned to create multiple
+levels using the same texture sets and/or mechanics, worlds gained
+additional sequences— most famously seen in Super Mario Bros. ’s World
+1 -1. However, World 1- 1 is just the first of four levels of the first world5.
+There needed to be a term to define these separate sections of play, hence
+the term level.
+Because there have been so many game worlds over the years, some of
+them have become hoary clichés. Most developers run screaming from
+these, but they still have their uses. I therefore present to you:
+The Top 10 Clich é Video Game Themes
+1. Outer space. One can easily see how a black television screen may
+have served as inspiration to early game developers as the perfect
+stand -in for outer space. Brightly displayed vector- drawn stars looked
+great on those early CRT screens. Player- controlled spaceships meant
+no animations. Spaceships could be rendered in simple geometric
+shapes. Gameplay could be based primarily on physics: an important
+advantage to those early programmers during the days prior to game
+designers and artists. As the earliest game genre— the shooter—
+evolved, outer space continued to be a popular locale for video game
+battles to be waged. Outer space also allows for all the tropes of sci- fi :
+5 World 1-1 is grassland, 1-2 is an underground cavern, 1- 3 are mountain-like platforms, and
+1 -4 is the interior of a castle. These levels are all part of a world known as the Mushroom
+Kingdom. And now you know.
+The Top 10 Cliché Video Game Themes 201
+aliens, spaceships, computers, and futuristic weapons. All things
+beloved by the geeky game developer community.
+2. Fire/ice. These levels swiftly became popular for three reasons: first,
+fire and ice levels created hazards that were easy to program— fl ames
+and low friction surfaces. These hazardous terrains created perfect
+timing puzzles that caused the players to “break their rhythm”, making
+the level more challenging. Secondly, fire and ice environments lent
+themselves towards a wide array of deadly inhabitants, from lava men
+and flame-breathing dragons to snowmen both of the abominable and
+frosty varieties. And third, fire and ice levels added color (red and blue)
+to the palette of gameplay worlds, especially important to distinguish
+screenshots on the back of home console boxes in those early 8- bit
+days. Today, fire and ice levels are camouflaged as snow- bound train
+wrecks and lava- filled temples, but as long as the color, feel and
+mechanics are represented, they’ ll always be fire and ice levels to me.
+202 LEVEL 9 Everything I Learned about Level Design, I Learned from Level 9
+3. Dungeon/cavern/tomb. The connections between Dungeons and
+Dragons and Tolkien’s Middle Earth run strong and deep in the DNA of
+video game developers. Dungeons are laden with traps to avoid,
+puzzles to solve, and mechanics to circumvent. Dungeons offer up
+waves of enemies (without a whiff of explanation as to why they live
+there) and of course, there was always lots of collectable treasure to be
+gleaned. Even when the game world isn’ t themed to medieval fantasy,
+players still thrill in raiding uncharted dusty tombs. Technically, dungeon
+locations offer game artists many advantages: great opportunities for
+dramatic lighting, and intricate carvings and statues. Even in the early
+days of gaming, cave wall textures were made from easily repeatable
+(or “ tiled ”) art.
+4. Factory. Factory levels became a staple of platform games, especially
+as the platform game genre exploded on home gaming systems. The
+dynamic mechanics offer game developers easily created, combined,
+and repurposed hazards that can be tuned to a wide variety of difficulty
+levels. These adaptable factory mechanics quickly spread to other
+locations too: moving platforms, conveyer belts, and turning gears were
+present in the tombs, circuses, and space stations of just about every
+action and platform game6.
+6 I consider it a triumph of the video game industry that Star Wars creator George Lucas, at
+the last minute, added a factory level to his 2002 movie Attack of the Clones. The movie’ s
+heroes ride conveyer belts and make timed jumps through smashing presses worthy of a
+sequence right out of a Nintendo platformer.
+The Top 10 Cliché Video Game Themes 203
+5. Jungle. The jungle theme allows video game designers the flexibility of
+the dungeon but without the dull colors and right angles. With its exotic
+traps (like quicksand and pongee knife- lined pits) and exotic creatures
+(such as crocodiles, snakes and scorpions) set in a colorful outdoor
+environment, jungle levels quickly became a prevalent video game level
+theme as game art became a focus. Jungle levels lend themselves to
+robust mechanics: swinging vines, tree branch platforms from which to
+leap, and rivers with moving logs à la Frogger that keep a player’ s heart
+beating like a jungle drum.
+6. Spooky/haunted house/graveyard. Spooky environments are great
+when your game requires mood and story. Players slowly explore
+creepy environments, punctuated by unsuspected “ scares ” in the form
+of play mechanics or enemies that seemingly spring out of nowhere.
+But scaring people is an art; you must build pacing into your levels.
+204 LEVEL 9 Everything I Learned about Level Design, I Learned from Level 9
+Allow moments of quiet, followed by moments of distraction, before you
+scare your player. Music and sound design are critical to the spooky
+theme; it goes hand- in -hand with encounter and puzzle design. But be
+careful you don’t tip your hand too much. You can easily give away your
+scares if you don’ t choreograph things correctly. After years of making
+haunted houses in my garage, I find the best scare is one the player
+expects but doesn’ t know where it’ s coming from.
+The spooky theme is also the most adaptable theme of the video game
+tropes. There have been spooky adventures, platformers, RPGs, FPSs,
+and even puzzle games. Everything’ s more fun when it’ s scary!
+7. Pirate (ship/town/island). The spiritual brother to the spooky level is
+the pirate level7. The pirate theme is perfect for high action gameplay,
+melee combat and of course, lots and lots of treasure. Many pirate
+levels capitalize on the pirate’ s natural form of transportation: the pirate
+ship. And then there are the pirate skeletons. Who doesn’ t love these
+guys? Like the spooky theme, the pirate theme is treated as a “ catch
+all ” that can be applied to almost any genre of game to increase its
+sales.
+7 The only reason I can fathom why pirate and spooky levels are often found in the same
+game is the designer’s love for Disneyland where the “ Pirates of the Caribbean” and
+“Haunted Mansion” attractions are found in the park’ s “ world” of New Orleans Square. I
+know that’s the reason why we had them in Pac-Man World.
+The Top 10 Cliché Video Game Themes 205
+8. Gritty urban. No matter if it’ s populated by criminals, punks, mutants
+or supervillains, the gritty urban theme allows for fantastic action in a
+realistic and relatable setting. That relatability is part of the genre’ s
+appeal. Artistically, it’ s easier for artists to create the world outside their
+door. Densely detailed environments just keep looking better and better
+as system processors and game polygon counts rise. While it’ s ironic
+that players would want to play in a world that mirrors the one right
+outside their door, they get a choice that most people never do: to
+improve or destroy it.
+9. Space station. The space station has become the stand- in for the
+dungeon in sci- fi games (especially in the FPS and survival horror
+206 LEVEL 9 Everything I Learned about Level Design, I Learned from Level 9
+genres), all strongly influenced by the 1986 film Aliens. In video games,
+most space station halls are infested with horrible aliens and
+malfunctioning robots. The space station theme lends itself to a variety
+of tech- based mechanics including laser-based force fields and factory
+style moving platforms. Space stations allow the art team to show off
+when creating spectacular visual effects, whether it is holographic
+computer displays or stunning starscapes.
+10. Sewer. While you could eat off the floor of Mario Bros.’ s sewer, video
+game sewers got more disgusting as game graphics improved. This
+modern analog for the fantasy dungeon8 grew more complex and
+deadly with hazards ranging from giant rats and albino alligators to fetid
+water that caused instant death upon immersion. You can also find the
+harmonious addition of factory- level mechanics in sewers, such as
+whirling ventilation fans and sinking platforms to challenge players. Just
+be glad that smell- o -vision never caught on.
+Just because the above themes are considered cliché s it doesn’ t mean that
+they are unusable. To give them a twist, just apply the Mexican pizza
+technique.
+Back in the 1990s Taco Bell introduced the “ Mexican pizza” : a pizza- shaped
+snack made with Mexican food fixings. To me, it sounded vaguely
+disgusting. However, curiosity got the better of me and I tried it. It wasn’ t
+bad. But what I learned was that you can combine two things you wouldn’ t
+think go together to get something surprisingly good and, more importantly,
+completely original.
+8 Didja know that early D& D players would play live- action sessions in sewer and drainage
+systems? The forerunner to today’ s live- action roleplaying (or LARPing).
+The Name Game 207
+While designing Maximo: Ghosts to Glory, we applied the Mexican pizza
+technique. Instead of just a graveyard, our graveyard was cracked apart by
+volcanic eruptions that blasted out gouts of fire. A fire graveyard, if you will.
+We also made a pirate level that was enshrouded in ice— you get the idea.
+We took hoary level themes and breathed new life into them simply by
+combining them with each other.
+The Name Game
+Now that you have your level’ s theme, give it a name. However, a level
+always has two names: one for the programming team and one for the
+player. The level name is a file name, created to be referenced with the
+game ’s code. Here are a few things to remember when creating file
+names:
+• Keep it to eight characters max as (a) it’ s easy for team members to
+remember and (b) takes up less space in the code.
+• File names aren’ t the name that the player sees, so you don’ t have to
+be witty. For example, “ factory 01” succinctly lets your team members
+know the most important info: location and order.
+• For more complex titles, use abbreviated text: for example, fac01s01
+would stand for “factory 1, section 01.”
+• Make sure your naming conventions don ’ t overlap. If “ sec ” stands for
+section in one area, don’ t use it for “ secret ” in another.
+• Organize your levels. Keep files in folders where it is easy for other
+team members to find them. Use file- sharing software to make sure
+changes aren’t made without the other team members knowing about
+them.
+In the context of the game, the level’ s name is a different matter. Just like
+with naming characters it’ s important to give your level the right name: one
+that fits its feel. There are a few schools of thought to naming levels:
+• Functional. A straight-up number system is a hallmark of retro
+gaming. It cuts to the chase and gives the player an idea of progress.
+However, as most players aren’ t exposed to the highest number
+in advance there’s no way for them to accurately track overall
+progress. Another disadvantage to functional naming is that it lacks
+personality.
+• Location. Police station. Sewer. Science lab. What’ s good about using
+the location names is that you immediately get an idea of what the
+208 LEVEL 9 Everything I Learned about Level Design, I Learned from Level 9
+player will be seeing and/or encountering. However, these expectations
+are based on the player’s knowledge: something that may not match
+what you are going for. Using the right words is important when naming
+a location.
+• Descriptive. “A nasty surprise” , “ on the road again” , “ death from
+above. ” Descriptive level names read more like chapters of a book. This
+is great for providing foreshadowing or tone. Be careful not to tip your
+hand too much and ruin any surprises your plot or level may hold. Or
+you can be tricksy like the Dead Space designers and have the first
+word in every level spell out a secret message!
+• Punny. If you are feeling particularly creative, then try writing a punny
+title for your game level. Punny titles were all the rage in the late 1990s,
+starting with Crash Bandicoot. Usually you want to reserve this type of
+naming for games with a sense of humor.
+Remember, level names are your level’ s first impression so put your best
+foot forward!
+Everything I Learned About Level Design, I
+Learned from Disneyland
+The world is the best narrator.
+Ken Levine9
+I believe that it is within a game’ s level where the story should actually be
+told. Using space to tell a story isn’ t a new concept; it’ s been used in
+architectural design for centuries. When I first started designing game levels,
+I found that theme parks held the answers to many of my questions on how
+to tell a story as well as inform the player. I pored over theme park maps10
+and studied how they were laid out. I found that theme parks are designed
+to move guests from one adventure to the next in the most effective way
+possible, much like a well- designed game level.
+9 Ken Levine was the creative director of Bioshock, a highly rated FPS whose fully realized
+undersea world of Rapture has become the gold standard for level design.
+10 I used to love to collect theme park brochures during family road trips to other more
+educational destinations; souvenirs of places I never actually visited. Who knew they’ d come
+in so useful in the future!
+Everything I Learned about Level Design, I Learned from Disneyland 209
+Disneyland, in particular, proved to be a source of great inspiration. I read
+about Walt Disney’ s imagineers and how they went about designing their
+own world. Walt Disney had a deep love of miniature railroads and
+Disneyland was structured around a train track. The imagineers needed
+something to fill in the middle of the track, so five “ lands ” were created,
+each inspired by Disney’ s passions: history, progress, nature, his animated
+movies, and nostalgia for his childhood hometown. These became
+Frontierland, Tomorrowland, Adventureland, Fantasyland, and Main Street.
+The imagineers filled these lands with attractions; themed adventures that
+allowed guests to “ride the Disney movies.” These attractions were built as
+storytelling experiences within a physical space, and detailed attention was
+given to each scene as the guest passed through it.
+I noticed that the creation and structure of Disneyland bore a strong
+resemblance to creating and structuring a video game world. The basic
+progression of creation is this:
+Disneyland: world to land to attraction to scene.
+Video game: world to level to experience to moment- to -moment gameplay.
+The world of Disneyland contains many lands. Within each themed land are
+attractions, each with their own story. The “ story ” of the attraction is
+composed of scenes.
+The world of the video game contains many levels, each with their own part
+of the story. Within each themed level are experiences to move the player
+through the level. Connecting these experiences is the moment- to - moment
+gameplay which keeps the player engaged.
+This notion of working from the “top down” helped me approach a game
+world and determine what the confines are and what lives within it; to
+determine that, you need to make a game world map.
+Some designers really got into creating their world map and loved to share
+it with the player. A common pack-in with early computer games were
+lovingly rendered maps printed on parchment, cloth, and even faux leather.
+But you don’t need to create anything so fancy. Your world map can be
+something as simple as a flow chart created in Visio. It only needs to chart
+out where the player is going and what he’ ll find there. A map can also
+define the spatial relationships of locations in the world: this can help the
+designer determine how the player is going to get around and in what order.
+The game world map is important not only to help your team understand the
+connection of all the levels to one another, but offers the player several
+advantages as well.
+210 LEVEL 9 Everything I Learned about Level Design, I Learned from Level 9
+One of the earliest arcade games to expose the player to a map of sorts
+was Donkey Kong. It was a simple graphic of several Donkey Kongs
+stacked on top of one another with the challenge “how high can you get?”
+Challenging the player and letting them know ahead of time how many
+levels they have to climb in order to win the game whets the player’ s
+appetite. It gives them a goal to work toward.
+The next great advance in mapping came with the arcade game Ghosts ‘ n ’
+Goblins. Before starting play, a map was displayed with a little icon of the
+player at his current location. “You are here.” The camera then panned over
+the entire world, teasing the player with everything that was to come. I
+remember seeing this and thinking “I wonder what’ s in that ice level at the
+far end of the map?”
+Everything I Learned about Level Design, I Learned from Disneyland 211
+Even if your characters don’t physically travel anywhere in your game, you
+can still use a map to show progression. The fighting game Mortal Kombat
+displays a screen full of characters’ headshots, with most of them “ locked
+up ” at the beginning of the game. But by showing all the locked windows,
+the game’s map provides foreshadowing that there will be many characters
+that the player will eventually fight. As more opponents are unlocked, the
+player is then compelled to “collect them all.”
+Foreshadowing is a powerful tool to get a player excited about the activities
+and dangers found in a level. Building anticipation is just as important as
+delivering on it. In all my years of making haunted houses, I’ve found that a
+scare is bigger and better if the victim knows it’ s coming. It’s waiting for the
+scare to happen that drives them nuts.
+You can use lighting, sound effects, and geometry to make a level look
+foreboding. And remember, nothing says “ beware ” like skulls and
+skeletons strewn around an environment. You can never have too many
+skeletons11.
+11 While I believe that you can never have too many skeletons, I think it is possible to go
+overboard with filth and gore. Some horror games levels are splattered with blood and grime.
+Maybe it’s just me, but I never find these environments scary. What is scary is a befouled
+bathroom— but what makes it so scary is the smell and that you may have to touch
+something: two senses that are completely absent from a video gamer’s “ vocabulary.” And by
+the way, having a room decorated with corpses strung up like Christmas ornaments doesn’t
+make it particularly scary. It just looks … festive.
+212 LEVEL 9 Everything I Learned about Level Design, I Learned from Level 9
+Another lesson I learned from Disneyland is to provide foreshadowing with
+posters. The guest passes by posters advertising attractions as they enter
+the park. While the guests don’ t understand the significance of the images
+they ’ re seeing, the posters provide foreshadowing to future adventures. In
+games, one of the best use of posters is in Bioshock when the player, first
+entering Rapture, sees posters advertising the superpower- giving plasmids.
+Only once the player learns about plasmids and what they can do, is their
+signifi cance understood.
+Much like a game map, the level itself should help transport the player
+through the level from story point to story point. The always eloquent
+imagineers of Disneyland describe it this way:
+When we began designing Disneyland, we looked at it just as we do a
+motion picture. We had to tell a story, or in this case, a series of stories. In
+filmmaking, we develop a logical flow of events or scenes that will take our
+audience from point to point through a story. If I were to ‘ leapfrog ’ from
+Scene One to Scene Three, leaving out Scene Two, it would be like sending
+the entire audience out to the lobby for popcorn in the middle of the film12.
+Disneyland ’s attractions tell four different stories to their guests. I have found
+these stories have parallels with the player’ s goals within a video game
+level:
+• Escape/survive
+• Explore
+• Educate
+• Moral.
+With the escape/survive goal the player has to survive being in a place
+they have no business being in; whether it’ s a ghost- infested manor or a
+crazy factory where one misstep means being ground up into cat food.
+Storytelling is shown through action and location which moves the player
+along quickly, using gameplay centered on movement and combat.
+12 Disneyland The First Quarter Century, Walt Disney Productions, 1979.
+Everything I Learned about Level Design, I Learned from Disneyland 213
+The explore goal allows the player to discover the story at their own pace.
+The island village in The Legend of Zelda: The Wind Waker and city of
+Megaton in Fallout 3 let the player explore the environment and create the
+story in their own order. Freedom of mobility and conversation are
+important storytelling tools when exploring is the player’ s goal.
+While there are many educational games, the educate goal has yet to make
+the full transition into entertainment games. Educational games carry a
+stigma that they are only for younger or “ non - gamer ” audiences. There are
+exceptions. Assassin ’s Creed 2 exposes players to the history and
+characters of the Italian Renaissance. The developers of Guitar Hero
+promise their next title will teach players how to actually play a real guitar.
+Emphasize observation and imitation when determining the player’ s goals
+and gameplay.
+214 LEVEL 9 Everything I Learned about Level Design, I Learned from Level 9
+Examples of a moral goal can be found in many of Disneyland’ s attractions.
+Mr. Toad’s Wild Ride’s moral message is: “drive like an idiot and you’ll crash
+and go to hell.” Quite a statement for the happiest place on Earth! Games
+like Star Wars: the Force Unleashed and Fable 2 that allow the player to
+experience a “ good ” or “ bad ” endings have been around for a while, but
+such moral cause- and -effect rarely exists within the game’ s levels. Well,
+except for Bioshock. An early level is a horror show that warns the player of
+the dangers of using plasmids; ironically, the very thing you are injecting into
+yourself to give you superpowers. Use choice and consequence to deliver
+your level’ s moral goal and then make those choices impact gameplay.
+In addition to these goals you need to ask “what is the player’ s objective in
+this level?” Some levels exist to teach a specific gameplay move such as
+jumping, combat, driving, or how to play the game. Answering this question
+will guide and focus how you design the player’ s moment- to - moment
+gameplay within the level.
+The Beat Chart
+Now look at all the useful tools you have to help you: character, character
+actions, story, level themes, a world map. These are all you need to build an
+entire universe! In order to help organize my thoughts, I like to create a beat
+chart. A beat chart is a tool often used by Hollywood writers and directors
+to help organize and plan their movie’ s production. At the very least, your
+beat chart should contain the following information:
+• Level name • Mechanics
+• File name • NPCs
+• Player ’ s objective • Bonus materials
+• Story beat • Time of day
+• Play style • Color mapping
+• Enemies
+Creating a beat chart helps the designer determine gaps and clumping in
+your game. You can reorganize the game elements to spread things out
+and make the game feel more organic. Let’ s pretend we are making a game
+called Relic Raider. Our hero, Jake Hunter, travels the globe looking for lost
+treasure. We’ve developed our story and have brainstormed the gameplay
+and the game’s environments and enemies.
+Take a look at this sample beat chart and see if you spot any problems:
+The Beat Chart 215
+Relic Raider beat chart
+Game Level Name/File Name
+Element Shanghai/ Jungle Jungle Temple of the Mountain
+Roof01 01/ 02/ hidden skulls/ Escape!/
+Jung01 Jung02 Jung03 Road01
+Location Shanghai Jungle Jungle Ancient temple Mountain
+rooftops (int) pass
+Gameplay Stealth, Shooting Fighting Platform, Driving
+shooting, jumping
+jumping
+Objective Find crime Jungle Jungle Reach chamber Car chase
+boss Wu- Fan part 1 part 2 of skulls
+Story beat Jake steals Jake Jake finds Jake places Jake steals
+medallion, is explores temple of medallion in truck, flees
+caught by jungle skulls statue, Nazi Nazis
+Wu- Fan general Hauser
+shows up
+New .45, machine Machete No No No
+weapon gun
+Enemies Tong thug, Jaguar, Jaguar Jaguar, Nazi Nazi truck,
+axe man, native soldier Jeep w/
+machine (spear) machine
+gunner gun
+Mechanics Swinging Swinging Zip line Spiked pits, Falling
+rope, zip line rope, zip blow darts, rocks
+line crushing walls,
+fall -away floor
+NPC Wu- Fan Guide None Hauser None
+Bonus Art gallery 1 Art gallery Art gallery Alt. costume Art gallery
+materials 2 3 4
+Time of day Night Night Night Day Day
+Color Blue/red Green/ Green/ Green/gray Tan/sky
+mapping brown brown blue
+Did you spot all of the issues the beat chart exposed?
+• Level naming is inconsistent. Rather than have generic titles like “ jungle
+01 ” find a way to give them more descriptive names like “temple of the
+hidden skulls.”
+• Roof01 and Road01 could be mistaken for each other. Name the
+Shanghai level “ Shang01 ”; the more distinct, the better.
+216 LEVEL 9 Everything I Learned about Level Design, I Learned from Level 9
+• Since Jung03 doesn’t seem like it shares too many assets, I would call it
+“ temp01 ” to show that it’ s a different place than the other jungle levels.
+• Do you need two jungle levels back to back? Perhaps the activities in
+Jung01 and Jung02 would be better combined to make one improved
+jungle level?
+• The driving seems to get introduced a little late in the game. Before that
+seems to be four “ on - foot ” levels. Find a way to bring the driving in
+sooner, or lose a walking level.
+• While the other levels are very specific, the jungle objectives seem
+unfocused. Give the player more of a purpose.
+• Introduction of weapons seems to ramp up quickly and peter out fast.
+That ’s a warning sign that you need more interesting things for the
+player to do and toys for the player to use.
+• The enemies are clumped up at the beginning of the game. Enemy AI
+could be repurposed for more effective use. Jungle 02, while listed as a
+fighting level, doesn’t seem to have any enemies that would work well
+with fighting.
+• Repurpose mechanics like you would enemies. There are a lot of unique
+mechanics in the temple that will take time and effort to create. Can any
+of these be re- used in other ways?
+• Art galleries are a pretty basic reward. What other bonuses can you give
+the player rather than just the same thing over and over again?
+• There are three night levels in a row. Break some of this up with
+morning, evening, atmospheric effects like rain or snow, and so on. And
+the interior of a temple is going to be dark, so it doesn’ t make a
+difference if it’ s day.
+• There ’s a lot of green in that color map. Make sure that the visuals offer
+a more diverse palette, otherwise all the levels are going to feel the
+same.
+Just by spending a few hours creating and observing the patterns created
+by a beat chart, we were able to make significant improvements to
+production, gameplay and art before we built a single asset!
+Re - using Re - use
+While looking at the above beat chart, I noticed that there are several
+different gameplay systems: platforming, shooting, driving, and stealth.
+These different systems add diversity to a game, but when it comes to
+creating them they have nothing to do with each other. One of the most
+important design decisions you can make is how and when to re- use
+gameplay systems over the course of the game.
+The Gary Gygax Memorial Mapping Section 217
+If you use a game system less than three times over the course of the
+game, then it’ s not worth having. This doesn’ t mean that you have to have
+the same gameplay section over and over again— you can be smart with
+your art assets and repurpose them.
+For example, a vehicle system can support a jeep, a hatchback, and a
+sedan. Creating the vehicle system costs more time and money than it does
+to build the three different cars. But remember, there is only so far you can
+stretch your recycling: the same system we use for our cars can’ t support a
+hovercraft or motorcycle. Although they are both ground vehicles, they
+behave quite differently.
+There is always a trade- off between design and programming. Learn the
+limitations of the game system and craft your game accordingly. Create a
+small number of gameplay systems that you can re- use over and over again
+throughout your game. This will maximize your game as well as your
+schedule and budget. Use the limitations to your advantage. If you need
+examples, take a look at any game created by the Japanese developer
+Treasure Co. Ltd (Gunstar Heroes, Dynamite Heady, Ikaruga) who really
+knows how to milk a small palette of mechanics. When you are creating
+your beat chart, make sure you don’ t use the same gameplay systems back
+to back. Unless your game is specifically a driving game, don’ t follow a
+driving level with more driving.
+You can work with your artists on how to best re- use art assets as well.
+Simply re- coloring and re-texturing game items will make them look different
+from level to level.
+The Gary Gygax13
+Memorial Mapping Section
+There are many ways to start building level maps. The designers of the
+original Metal Gear built their levels out of Lego blocks. Many developers do
+rapid level prototyping in 3- D tools like Maya or 3D Studio Max. One
+designer I know liked to model his levels in clay. Myself, I like a ream of
+blank paper, a very sharp #2 pencil and an eraser. I like making maps on
+paper because it reminds me of the good old days of creating Dungeons
+and Dragon levels.
+13 Ernest Gary Gygax (1938– 2008) along with David “Dave” Arnenson (1947–2009), created
+the first role- playing fantasy game, Dungeons and Dragons. Creating dungeons and
+adventures for D& D served as the springboard for many a young game designer’s career,
+myself included.
 
 ---
-**Conexiones del Grafo (Obsidian):** [[INDEX]] · [[KICK_API_REFERENCE]] · [[CANON_KICK_PUBLIC_API_V2_FULL_REFERENCE]] · [[POPULAR_SLOTS_ONLY_ON_STAKE_TIERS]] · [[CANON_SLOTS_STAKE_RTP_VOLATILITY_DYNAMICS]] · #streaming_and_overlays
+
+## Sección 10: Part 3 — Controls [Entropy: 0.5]
+
+The Gary Gygax Memorial Mapping Section 219
+I have found that there are two types of three- dimensional video game level
+design: alleys and islands.
+Alleys create a directed gameplay experience; the player has a goal to
+reach and the level is built to help them reach it. Your alley can be narrow
+like those found in Portal or it can be wider to give the illusion of freedom
+and space, as seen in Call of Duty: Modern Warfare 2.
+Alleys offer the following advantages to designers:
+• It ’ s easier to place camera trigger zones when you know where and how
+the player will be entering and moving through the level.
+• You can get dramatic with your camera movements to inform the player,
+or enhance the action and drama.
+• You can remove the camera controls from the game, allowing the player
+to concentrate on gameplay.
+• You can create scripted, triggered gameplay events, since you know
+where the player is looking.
+• It ’ s easier to choreograph combat and other gameplay events like traps.
+• Bottlenecks can be created to prevent backtracking.
+• The designer can use illusional narrative to tell the level’ s story.
+The island level, in my opinion, is a bit more challenging to design and
+build. The game camera has to be flexible enough to accommodate a wide
+variety of widths and elevations. Scripted events are tough to execute, as
+there ’s no guarantee that the player will be looking in the right direction.
+Combat encounters can be completely circumnavigated by players. Even
+stagecraft-style tricks like faç ades are useless, as level geometry can be
+viewed and interacted with from all directions.
+Despite these limitations, island level design offers expansive space that
+allows the player the freedom to choose the order in which they want to
+experience the gameplay. Mario 64 is one of the earliest examples of island
+level design in which the player could choose to climb mountains, explore
+hills, or swim into underwater grottos in any order they liked. Islands allow
+for unparallel freedom for the player. In fact, an entire genre— the
+sandbox—has emerged as island level designs have grown bigger and
+bigger. Grand Theft Auto 4, Burnout Paradise, and Halo’s multiplayer levels
+are just huge island playgrounds.
+When creating these sandbox worlds, you should divide them up into
+distinct areas to aid the player’ s navigation and orientation, much like the
+“ lands ” of Disneyland. Disneyland goes through great pains to make each
+land visually distinct. Take Frontierland: It has everything you would expect
+in the old west; watering troughs, wooden cigar- store Indians, wagons,
+220 LEVEL 9 Everything I Learned about Level Design, I Learned from Level 9
+cactus, and even those old video game standbys: crates and barrels.
+(Frontierland ’s main thoroughfare was originally dirt road until guests
+complained about dusty pants and shoes.) Disneyland even themes the
+trashcans! For example, Frontierland’ s trashcans are painted to look like
+wood, while Tomorrowland’s are futuristic silver. You always know where you
+are even when throwing out the trash.
+The Gary Gygax Memorial Mapping Section 221
+The game Crackdown uses this technique throughout their sandbox world of
+Pacific City. Not only is each zone themed to aid navigation, but the themes
+match the criminal gang that the player has to overthrow. The Shai- Gen
+Corporation runs Chinatown while the tech- using Volk inhabit gleaming
+skyscrapers.
+Disneyland ’ s imagineers pioneered these types of architectural landmarks
+like Sleeping Beauty ’ s castle, the Matterhorn and Space Mountain, which
+they call weenies14. Weenies are used to get the interest of guests and
+draw them in their direction. Weenies don ’ t have to be
+giant castles or mountains. They can be interesting
+architectural elements like statues, bridges and
+buildings, or even natural elements like a distinct tree
+or rock. Theoretically, you want to string your weenies
+along your path to keep the player moving from one to
+the next. When creating 3 - D maps, make sure the path
+is clearly marked with weenies. I once created a map
+that looked like this:
+14 Walt Disney himself coined the term after the frankfurter that off- screen animal trainers
+would wave at their dog actors to get them to walk past the camera to where they wanted
+them to go.
+222 LEVEL 9 Everything I Learned about Level Design, I Learned from Level 9
+When I play tested this part of the level, players would
+travel down the road, see the path leading behind the
+house, and walk around the back of the house
+looking for treasure. When they emerged onto the
+road, they turned around and walked back down the
+way they came!
+I realized that the area needed a landmark (marked
+on the map) so when the player came out they were
+able to re- orient themselves.
+This brings up to an important truth about designing games: the player will
+ALWAYS find a way to break your game, whether they are doing it
+intentionally or not. Tackle this head- on by making the player play the game
+the way YOU want it to be played, but provide plenty of help to show them
+the way.
+Islands work particularly well for multiplayer games as you can
+accommodate many different styles of playing. Do you like to sneak around
+the back of the map? Islands provide a back to sneak around. You can still
+charge up the front if you want, or you can camp over on that hill and snipe
+to your heart’ s content15.
+But like ebony and ivory, alleys and islands can live together in perfect
+harmony. Islands can still have alley- like sections. Red Faction Guerrilla and
+Team Fortress 2 have interior spaces that feel like alley level designs, but
+their freedom of approach and wide perimeter edges mark them as islands.
+Uncharted 2: Among Thieves alternates between using alleys and islands
+frequently. Darksiders and the Maximo games use alleys for their dungeon
+levels and islands for their hubs and battle arenas. Whether to use island or
+alley all depends on the gameplay.
+Islands have the following advantages:
+• They give an extraordinary feeling of space and scale. It’s quite an
+experience the first time you realize a level goes on and on.
+15 Not that anyone reading this book would stoop so low as to be a camper. And remember,
+there is a special place in hell for spawn campers.
+The Dave Arnenson Memorial Mapping Section 223
+• Islands promote exploration, and encourage designers to fill in “ in
+between spaces” with secrets, additional missions, and objectives.
+• Gameplay options are laid out in front of the player like a smorgasbord.
+• Vehicle gameplay (like racing and car combat) feels better in wide- open
+spaces than in tight alleys.
+Sandboxes are tricky things because I have found that no matter what a
+player tells you, a world where the player can choose to do anything at
+anytime can be intimidating and confusing. Despite the freedom that the
+sandbox world promises the player, they should still get some prompting on
+what to do next even if they don’t want to do it. There ’ s a reason why your
+annoying cousin is always calling you in Grand Theft Auto 4.
+The Dave Arnenson Memorial Mapping Section
+Let ’s get cracking and get our game design down on paper with a map.
+When creating a map, you first must determine a scale. When drawing a
+top -down view map on graph paper, the size of the player usually equals
+one square. All other elements, such as treasure, mechanics, enemies or
+objects, are drawn in relation to the size of the player— much like how you
+determine player metrics. Represent these elements as icons on your map.
+Create a legend for the icons on your map so readers can determine what
+they are looking at. You will want to include:
+• Player ’ s starting point
+• Enemy starting locations
+• Doors, teleporters, gates
+• Puzzle mechanics (like levers and switches)
+• Treasure chests and power- ups
+• Traps, and their areas of effect
+• Significant landmarks (like statues, pools, pits, and so on).
+I start my level map creation process by roughing out the major locations
+where I want big events to happen: a treasure chamber, a battle arena, a
+puzzle room, a mechanic that you want the player to learn, a spectacular
+view, and so on. Then I start to think about what I can use to connect those
+rooms together: hallways, mazes, chasms, or passages. Then I usually
+move on to graph paper, which helps me communicate the scale of the
+level to the level artist. Often I will draw in elements such as the tombstones,
+crypts, mechanics, and enemies.
+
+---
+
+## Sección 11: Part 3 — Controls [Entropy: 0.385]
+
+226 LEVEL 9 Everything I Learned about Level Design, I Learned from Level 9
+When creating passages for a top- down view map for a 3-D level, I
+recommend making it five squares wide: that’ s the width of the player plus
+two more widths on either side. It provides enough room for the player to
+navigate, for combat to occur, and the camera to have some room to
+maneuver. However, I can guarantee that your first few efforts at level
+design will usually end up too small and too cramped, so don’ t be afraid to
+be generous with your proportions.
+Use geometry and lighting to help move the player down the path. Players
+are drawn towards light, while they tend to avoid or overlook dark places.
+You can use shapes like diagonal lines to draw the player’s eye in a specific
+direction. I learned my favorite trick from the designers at Naughty Dog, the
+creators of the Crash Bandicoot and Uncharted games. They use a trick
+they call the squint test. Take a look at the image below and squint your
+eyes until they are almost closed.
+What ’s the brightest thing on the screen? The main path. You can do the
+same thing in your game using color and lighting. Even if the player doesn’ t
+consciously notice this, they will still be able to see which way to go. If
+the player has someplace to go, don’ t waste their time with needless
+wandering. Never intentionally try to get the player lost. Instead, find ways
+for them to get quickly to the main objective. A good trick is to talk your
+way through a level design. Describe to someone else what the player
+will be doing. If you ever find yourself saying “then the player walks over
+The Dave Arnenson Memorial Mapping Section 227
+to here” , cut that section out of your game. Because a very important
+thing is:
+WALKING IS NEVER, EVER GAMEPLAY!
+Only lazy designers consider walking to be gameplay. You’ re not a lazy
+designer, are you? Of course you aren’t. You are an active designer. An
+active designer who creates active things for your active character to do.
+Actively.
+Prevent the player from walking for too long. Look at all the other things the
+player could be doing instead of walking.
+• Jumping • Swinging
+• Fighting • Flying
+• Collecting • Escaping
+• Climbing • Sneaking
+• Swimming • Exploring
+Speaking of exploring, let’ s talk about multiple paths. Which one to take?
+The one that leads to the harem of 1000 delights or the one that leads to
+the lava pits of Overfiend? Decisions, decisions.
+No matter how you slice it, multiple paths are a tricky thing to deal with,
+regardless of whether you are designing an alley or an island. They work
+better for some genres of games than others. The wide-open worlds found
+in FPSs, RPGs, and driving games require multiple paths just to keep
+traversal from getting boring.
+But multiple paths raise multiple questions that need to be addressed:
+Which path will the player choose? What can you do to entice a player to go
+down one path over another? What can the designer do to promote the
+player to use that alternate path? Hidden power-ups or cash prizes? Provide
+an achievement for all secrets discovered? Some producers balk at the idea
+of designing and building a part of the level that the player may never see.
+Whatever the answer you decide on, make sure that it provides something
+significant to your level.
+228 LEVEL 9 Everything I Learned about Level Design, I Learned from Level 9
+Some designers don ’ t like backtracking, when a player has to go back to
+a part of the level they ’ ve already been to. I don ’ t mind it. I think it ’ s a good
+way to get the most out of your level. I like to use backtracking for puzzles.
+I always say “ show the player the door first and then let them find the key.”
+Just don ’ t make the player go back and forth too many times. If you need
+to make the player go to a location more than twice, do something to it to
+make it different: add gameplay like (new) combat or collectibles, change
+the topography by having an earthquake change a flat spot into jumpable
+hills. A nice natural (or unnatural) disaster can work wonders.
+Conversely, you should design alternate ways for your player to get around
+your level and game world. These are unlocked as the player exposes more
+of the world. Anything is preferable to having to plod through the same
+terrain over and over again. Give the player a car or a horse to get through
+those slow spots, let them ride a train or get a lift in a zeppelin, or, if your
+fiction supports it, there’ s always the ever- popular teleporter.
+Just be aware that traveling in vehicles can really chew up the real estate.
+You ’ ll want to build that space into your levels. But it’ s a double- edged
+sword. Don’ t make the experience last too long, especially if it’ s something
+you will be doing often. Just remember the very important thing when it
+comes to traveling through levels:
+IF IT EVER FEELS LONG OR BORING,
+THEN IT IS
+Avoid boring levels! But how? Variety is one way.
+Fingers are another way of making a world feel
+deeper and fuller without having to build lots of
+complex geometry and multiple paths that the
+player may never take. Picture a linear path.
+Not too exciting, huh? You can place all type of
+hazards and enemies along the way to make
+things challenging for the player, but it’s just going
+to feel like a straight path even if you crinkle it up
+and bend it around.
+However, if you start to add fingers off of your
+path, little dead ends for the player to explore and
+go down, it makes the player feel like they are
+exploring the level and not just promenading down
+it. It expands the life of your level and you can
+promote the player exploring it. Let’ s take a look at
+our level now that we’ve added a few fingers off of
+the main path:
+Wrapping Up Mapping 229
+Now you have interesting places for the player to explore as they work their
+way through a level. While I wouldn’ t suggest putting something down a
+finger that is important to the critical path, you can place whatever you want
+down a finger: combat, treasure, bonus materials, or just something visual
+or fun. Remember this simple yet very important thing:
+EVERY FINGER SHOULD HAVE A REWARD AT THE END,
+EVEN IF IT’S JUST A TRASHCAN16
+Wrapping Up Mapping
+Creating elevations on a top- down view map can be a bit tricky. You can
+draw levels in different colors, but I find that gets visually crowded. Use
+tracing paper or paper and a light board to layer the elevations of your level,
+and break them up by the height of the player. Be sure to clearly mark
+which elevations are what so viewers can read them in the correct order.
+While you are at it, number the consecutive map pages or tape them
+together into one big map so they are easier to read. Just because a sheet
+of paper is square doesn’ t mean you have to design to a square shape.
+Cut, fold, extend— do whatever you have to do to make your map accurately
+represent your design.
+If you are drawing your map from the side view, determine the height of
+your character first and then draw the map to scale. It’ s a lot easier to show
+vertical gameplay from a side view. Sometimes you are going to need a
+combination of side and top view maps.
+You don’ t need to be working on a game with an isometric camera to
+use an isometric map. They’re a little trickier to draw, and they require
+some artistic skill to create, but they work great for showing things like
+elevation.
+16 Whether that trashcan has trash or treasure in it is up to you.
+
+---
+
+## Sección 12: Part 3 — Controls [Entropy: 0.53]
+
+232 LEVEL 9 Everything I Learned about Level Design, I Learned from Level 9
+Isometric maps work best when representing games using a 2.5- D camera.
+If you need to show depth or a part of the level that is obscured by
+geometry on your map, you can show the missing information using a
+cutaway or X-ray view. Or you can create a flap that can be lifted by the
+viewer to see what lies underneath. Make as many layers as you need to
+convey your idea for your level. Some of my levels have had so many
+panels, they started to look like an advent calendar!
+Other information to include on your level design maps:
+• Enemy spawn locations and detection/aggro radius.
+• “ Bread crumb” collectibles (like coins or Pac - Man dots) that lead the
+player through the level.
+• Secret entrances/breakable walls or other concealed locations.
+• Obstacles and barriers like walls, trees, tombstones, and so on.
+• Be sure to clearly mark specific terrain like cursed earth, swampy water,
+slippery ice, and hot lava.
+Illusional Narrative
+Illusional narrative is a storytelling trick I first observed when riding the
+Peter Pan’ s Flight attraction at Disneyland. Having flown over London and to
+Never- Land, we have reached the part where Peter Pan and Captain Hook
+are engaged in a pitched sword duel on the deck of the pirate ship. The
+Darling children have been captured by the pirate crew and watch the
+battle.
+The guest’ s ship flies around a corner (cleverly disguised as the sail of the
+pirate ship) and now. Peter Pan is victorious, the Darlings are freed, and
+Captain Hook is keeping himself from being eaten by the crocodile.
+Illusional narrative is the video game equivalent of what happens in the gutter
+of comic book panels or between edits in a movie: the player fills in story
+when given two or more images or environments. With the proper transition
+and presentation, you could convince a player that a train has crashed, a
+world has become overrun by aliens, or a character has crossed a room
+without animating a single element. The cost to production is significant.
+Real - time animations take time to produce and have to be ripped up and
+redone if the designer decides to change something in the level.
+Just make sure that the elements are viewed in the order of your story, and
+use gating mechanisms such as bottlenecks, camera views, checkpoints,
+turning elements on and off, or even plain ol’ doors to keep the player from
+“ turning back the page.”
+Gray Matters 233
+Gray Matters
+Armed with your level maps, you are now ready to start building (or have an
+artist start building) your game levels. But hold on there, tiger! Before you
+even start thinking about enemies, mechanics or even detailed geometry,
+you will have to flesh out your level in gray box form.
+A gray box level is created within an art tool (Maya and 3D Studio Max are
+the two most common industry art tools, though others exist). The gray box
+level shows the scale, size, and relationship of basic elements pertaining to
+camera and character metrics. It is pivotal in determining scale, camera,
+and pacing. Spend time running your game character around the gray box
+level. Have others play the level to find confusing areas and trouble spots.
+Iterate on your level while it’s still easy to make big sweeping changes. You
+may find that a level works better if you rip out an entire section and stitch
+the remaining pieces together. A straight hallway may be more thrilling with
+plenty of twists and turns to transform “boring old” enemies, mechanics,
+and treasure into unexpected surprises.
+234 LEVEL 9 Everything I Learned about Level Design, I Learned from Level 9
+As you are building your level, you might be wondering how long should a
+level be? Early in the production process, you should pace out a level to
+determine its overall length. Start your character at the beginning of your
+gray box level, then start walking. Don’ t worry about hazards or combat or
+collecting every music note in the level. Just walk from the start to the finish.
+Whatever time it took for you to get from point A to point B is roughly half
+the time it will take you in the final game. So if you need your levels to
+average a half- hour each, then it should take 15 minutes to pace out the
+level. While it seems weird to do this, remember that many publishers and
+reviewers are concerned with the overall length of a game. I tell developers
+that a single- player action game should last at least 8 to 10 hours. Going
+longer than that is great; just make sure your production schedule and team
+plans for it.
+Another pacing technique is to change the player’ s emotion every 15 to 20
+minutes. Sadly, the gamut of emotions experienced in most video games is
+pretty limited17, but you can make a player go from mystery to fear to panic
+to wonder using geometry alone.
+17 I would go as far as to say that most video games let the player experience only five
+emotions: aggression, fear, surprise, joy, and disappointment. And some games only
+disappoint.
+Gray Matters 235
+Divide your gameplay between “big moments” and
+“ small moments.” Don’t stack too many big moments
+next to each other— you ’ ll wear your player out.
+Conversely, small moments of calm and quiet will only
+feel boring if there are too many of them in a row.
+Shadow of the Colossus successfully balances the big
+moments of battling giant monsters and quiet
+moments of traveling through the expansive game
+world.
+Time of day and weather can be used to emphasize
+events and elements in your level. How would the
+player traverse the level if it were covered in snow or
+took place during a blizzard? How would a fairy
+village look differently if it were set at night? Make
+sure that any weather effects extend to the player
+character, the mechanics, the enemies, and other elements in the level. If
+one element isn’ t affected by the weather, it will ruin the entire effect. Give
+your game levels a variety of atmospheric effects and times of day to keep
+things interesting.
+Variety should be applied to the level
+geometry as well as to gameplay.
+Alternating interior and exterior
+spaces keeps your level from feeling
+like too much of the same physical
+space. You don’ t have to alternate the
+spaces in between every room but
+break it up according to what feels
+natural. Players usually feel safer in
+large spaces. Tighter spaces feel
+more mysterious and dangerous. Be
+mindful of your camera placement
+throughout your level design. Allow
+enough room in tight spaces for the
+player and camera to move around or just resort to a fixed or rail camera.
+When staging combat, larger spaces allow you to throw bigger and larger
+groups of bad guys in, while narrower spaces work better for one- on - one
+battles.
+Verticality is very important when designing levels. Alternating elevation
+makes an environment feel natural, provides much- needed variety, and
+allows designers to set up “Kodak moments” of any impressive visuals like
+statues, vistas, and horizons. As a player walks or climbs up, they feel like
+they are making progress and heading towards a goal.
+236 LEVEL 9 Everything I Learned about Level Design, I Learned from Level 9
+However, as a player travels downwards, they may try to skip elevations by
+jumping downwards. If the player can be killed by very long drops, make
+sure that the player has a way to look down to gauge the metrics of the
+drop. There’ s nothing more annoying than falling to your death if it looks like
+you can safely make the drop. If you don’ t want the player to drop down,
+then corral them in the direction you want them to travel with switchbacks,
+ladders, or other climbable surfaces.
+My golden rule of level design is this very important thing:
+IF IT LOOKS LIKE THE PLAYER CAN GO THERE,
+THEN THEY SHOULD BE ABLE TO
+Establish a visual language within
+your level to establish where the
+player can and cannot go. Use low
+walls, shrubbery, or rock walls to
+indicate impassable areas in the level
+to the player. They will learn that
+these visual cues mean “you can’ t go
+there. ” Whatever you do, please don’ t
+be a lazy designer and use invisible
+walls.
+Nothing breaks immersion faster and
+makes a level feel less like a real
+place than smacking headlong into a
+big fat wall of nothing.
+Want to screw with your player’ s head? Have your character travel from right
+to left, particularly if you are making a 2-D game. Western audiences are
+used to reading and viewing information in a left to right orientation. Making
+a character walk from right to left can make a player feel uneasy, even if
+Gray Matters 237
+they can’t articulate why18. I find this works best when the character is
+entering the boss’s lair at the end of the game.
+Another fun way to torture your player using level geometry is to force them
+to walk across very thin platforms over great heights, boiling lava, or swirling
+whirlpools. Increase the danger by using a bird’ s - eye view camera to view
+the action. I call these perilous situations sphincter twitchers, and use
+them in all of my level designs. Even if the player is never in danger of
+dying, they sure will feel like they are!
+When working with your artist, unless the surface is specifically designed
+like a ramp, stairs or natural incline, make sure any geometry that the player
+18 I have no idea if this trick works on Azeri- reading players.
+238 LEVEL 9 Everything I Learned about Level Design, I Learned from Level 9
+can stand on (like platforms) is relatively flat. Most characters are not
+programmed to adjust their body to uneven surfaces and, even if they are,
+they can “ stutter ” or misstep as they are playing their walking animations.
+Try to have smooth transitions between even small elevations to avoid this
+problem.
+While making a level feel like a real place helps the designer create the
+level, remember that you shouldn’ t be bound by realism: this is a game after
+all, and you are only limited by how real you want to make it.
+However, here is a cautionary tale about realism. A friend of mine was a
+designer who joined the team of an action shooter. The levels had already
+been created by the artists, who were extremely proud that they had created
+architecturally accurate buildings. These buildings had realistic nooks,
+stairwells, in-scale hallways, and even bathrooms on each level. The
+buildings were almost completely unusable in the game as the spaces didn’ t
+allow for gameplay or work well with the game camera. Think of it this way: in
+the movie Star Wars we never saw the toilets on the Death Star. I’ m sure they
+were there just off camera, but because we didn’ t need to see them, we
+didn ’t have to see them. Omit any parts of your building, temple, city, and so
+on that doesn’ t help support telling the story that you want to tell.
+Stop! Wait, you haven’ t built your gray box levels yet have you?
+Good, because you will want to create a playground first. A playground is
+a gray box level not intended to be used in the game. It is a separate
+testing ground for game mechanics and hazards. All mechanics and
+hazards should be tested and tweaked in the playground until they feel
+right, then you can use them in your levels. Here are a few things to test in
+your own playground:
+• Create ground angles to test basic walking, running, inverse kinematics
+(IK), and other technology to make sure the player looks good while
+moving even when not on level ground.
+• Build several simple boxes at a variety of elevations to test the player’ s
+metrics with jumping, hoisting, teeter, etc. You should create any specific
+length and height geometry to test double and wall jumps.
+• Test mechanics and hazards to determine distance, timing, and
+lethality.
+The sister to the playground is the combat arena. This is just like a
+playground but used by the dev team to test combat systems, cover
+systems, and enemies. Have a way to quickly spawn and test combinations
+of enemies to create the best combat experiences. I’ d rather hold off on
+talking about this because— SPOILER ALERT— the next two chapters are all
+about combat and enemies!
+Leave the Training Level for Last 239
+Leave the Training Level for Last
+The training level is where the player learns all of the basics of gameplay.
+It teaches the player the game’ s basics. It is the player’ s first impression of
+gameplay. It stokes the player’ s enthusiasm19 for the rest of the game.
+You ’ d think that this is the most important level of the game.
+You ’ d think!
+Unfortunately, the training level is often left until the end of the game’ s
+production. Now, I know why this is done. Developers will argue that you
+won ’t know the most important lessons of the gameplay until everything is in
+the game. They state that by the end of the game’ s production, the art team
+is capable of creating the best- looking art and effects for the training level in
+order to give the first level of the game the biggest bang for the buck.
+Sometimes they claim the player will learn the basics over the course of the
+game. The reality is, production schedules get tight and priorities shift,
+resulting in the training level usually not getting the love and attention it
+deserves.
+You may want to consider creating the training level first. Sure, it may not
+look as pretty, but your team can always go back and polish up the art.
+The advantage is that you, along with the player, will be learning the basics,
+and can accurately determine what the player should learn before the
+designer blinders kick in. A training level always benefits from a pair of
+fresh eyes.
+Even better, don’ t have a training level at all. I have found that in the best
+games, the player is always learning new moves, gaining new gear,
+experiencing new gameplay, and constantly learning. Why not make your
+entire game the training level?
+Now that we’ ve started to create our levels, what are we going to fill them
+with? I have a sneaking suspicion we’ ll find out in the next chapter …
+19 Hey, I think I found a sixth emotion!
+240 LEVEL 9 Everything I Learned about Level Design, I Learned from Level 9
+Level 9’ s Universal Truths and Clever Ideas:
+• Even a cliché can be made compelling.
+• Use the “ Mexican pizza” technique to make level themes
+unique.
+• Level names can help convey mood and info to your
+player.
+• Design from the top down: world, level, experience to
+moment - to- moment gameplay.
+• You can never have too many skeletons.
+• Use level maps and posters to give information and build
+anticipation.
+• Determine the theme of your levels: escape/survive,
+explore, educate or moral.
+• Use the beat chart to point out weaknesses in your
+game’ s overall design.
+• Design your games using a tight set of gameplay systems
+and mechanics: maximize play through re- use.
+• The player will always find a way to break your game.
+• Make the player play the game the way you want it to be
+played.
+• Is your level an alley or island? Design to each style’ s
+strength.
+• Map and gray box your levels to plan camera placement,
+prevent architectural issues and gameplay problems.
+• Walking is never, ever gameplay.
+Level 9’s Universal Truths and Clever Ideas 241
+• If it feels too long or too boring, then it is.
+• Every finger should have a reward at the end, even if
+it’ s just a trashcan.
+• If it looks like the player can go there, then they
+should.
+• Use playgrounds and combat arenas to test metrics and
+systems.
+• Leave the training level for last (or not).
+• The entire game should train the player.
+
+---
+
+## Sección 13: Part 3 — Controls [Entropy: 0.804]
+
+T
+Levei 10
+The Elements of Combat
+Every action is seen to fall into one of three main categories, guarding, hitting,
+or moving. Here, then, are the elements of combat, whether in war or pugilism.
+B.H. Liddell Hart
+British military theorist Sir Basil Liddell Hart may have died before video
+games became popular, but his quote neatly covers the basics of video
+game combat. Combat is a popular and major component of a video game
+player ’s moves and activities. A good combat system requires much
+thought and work from the development team in order to get it right. But
+before we dive into combat, we need to open and look into the messy can
+of violence.
+The simple truth is this: many video
+games are violent.
+Let me amend that.
+Video games are about action. Some
+of those actions, like hitting, shooting,
+stabbing and killing, are violent.
+However, anyone who assumes that
+all video games are violent obviously
+knows nothing about video games. A
+large number of video games don’ t
+rely on violence, from the first video
+game, Tennis for Two, all the way to
+the latest iPhone puzzle game. I
+could fill this entire book with a
+catalog of non-violent games. But
+somehow, it’ s always the Dooms, Mortal Kombats, and Grand Theft Autos
+that get all of the attention. Why? Because:
+244 LEVEL 10 The Elements of Combat
+1. Violence in video games is graphic, dramatic and visceral.
+2. As a result of the above, it offers a player the quickest positive response
+feedback loop.
+The player does an action (hitting, shooting), sees the immediate result
+(enemy is killed by attack), which grants a reward (experience, money,
+power- up). This elegant feedback loop allows for quick and frequent player
+to -world interaction. It’ s Freud’ s pleasure principle1 in practice. Ring the bell,
+a reward is gained. Why stop ringing the bell?
+Another reason why violence is common in video games is that other
+human interactions like conversation, romance,
+comedy and manipulation are hard to recreate in
+games! The result is (a) alternate methods of
+gameplay aren’ t explored by development teams
+as often as violent ones. (b) Because game
+players tend to buy the same types of games over
+and over, (c) publishers find that newer styles of
+play are harder to sell.2 (d) Parents and other
+social groups who mean well don’ t always find out
+all of the facts before leaping to the assumption
+that all video games are violent.
+Let ’ s avoid all of this stress by doing our part as
+responsible members of society and keep mature
+games out of the hands of younger gamers. There
+are plenty of alternative games out there. You
+wouldn ’t take a little kid to a R- rated movie, so
+why would you let them play a M-rated video
+game?
+As mentioned back in Level 3, the ESRB reviews
+and provides ratings for game content. At their
+website3 you can find their descriptors of violence
+found in games:
+• Comic mischief. Depictions or dialogue involving slapstick or
+suggestive humor.
+1 The fact that a developer called “id” created the FPS, a genre that directly adheres to
+Freud’ s pleasure principle, is almost too delicious to ignore.
+2 EA’ s marketing team tried to cancel their best selling game, The Sims, during its entire
+development; they thought no one would buy it!
+3 http://www.esrb.org/ratings/ratings_guide.jsp
+400 Quatloos on the Newcomer! 245
+• Cartoon violence. Violent actions involving cartoon- like situations and
+characters. May include violence where a character is unharmed after
+the action has been inflicted.
+• Fantasy violence. Violent actions of a fantasy nature, involving human
+or non - human characters in situations easily distinguishable from real life.
+• Violence. Scenes involving aggressive conflict. May contain bloodless
+dismemberment.
+• Intense violence. Graphic and realistic- looking depictions of physical
+conflict. May involve extreme and/or realistic blood, gore, weapons and
+depictions of human injury and death.
+When designing violence in games you should realize that it’ s all about
+context. The more violent activities the player does themselves, the higher
+the rating. Ask yourself these following questions to help determine the
+proper rating for your game:
+• Does the player do the violence themselves? Do they use realistic weapons?
+• How frequently does the player perform the violent act?
+• Does the game reward the player for performing violent acts? Does the
+game show that violence is “not appropriate” in any way?
+• How graphic is the violence? Is there dismemberment? Do the game
+visuals linger on the violence?
+• Is there leftover residue like bloodstains or gibs? Better graphics equal
+more realistic graphics equals more realistic violence.
+• Is the violence against “bad guys?” Do the enemies suffer as they are
+being killed/defeated?
+Now that you know how violent your gameplay will be, let’ s start to design
+how it is going to happen.
+400 Quatloos on the Newcomer!
+When designing combat moves for your character, first consider your
+character ’s personality. Is your character acrobatic like the Prince of Persia?
+Is your character jumpy like Mario? Stealthy like Solid Snake? Brutal like
+246 LEVEL 10 The Elements of Combat
+Kratos? Each of these characters has a uniquely different combat style
+because they have uniquely different personalities.
+What genre is your game? What kind of gameplay experiences do you want
+the player to have? These questions will help determine your character’ s
+weapons. Or maybe you just have your hero carry a laser scimitar and a
+phase - plasma pistol. Either way is fine.
+Study real- world fighting styles to make your character’ s attacks feel more
+realistic and distinct. Give your character a signature weapon. It will help
+quickly define their personality to the player. Can you picture Cloud Strife
+without his huge sword or Bayonetta without her guns? Your character’ s
+weapon is going to dictate how they fight. Rygar’ s throwable shield creates
+a different combat experience than a Big Daddy’s melee drill. Even if your
+hero uses an unconventional weapon like a giant spatula or bubble wand,
+brainstorm all the different uses to which the player could put them. The
+more original, the better!
+Now that you’ ve chosen your weapon, let’s fight!
+In combat, the attack used totally depends on the player’ s distance to the
+target. Check out the four ranges of combat: close range, medium range,
+long range and area effect.
+Knowing what your character’ s combat range (or ranges) is going to be
+makes a huge difference in how the player approaches combat during
+gameplay. A Mario game is almost exclusively close/medium range combat
+whereas Contra is a long range combat game. As a result, Mario must
+come into close contact with enemies in order to defeat them, while in
+Contra, the player’ s goal is to keep away from enemies and keep them from
+ever getting close by shooting them at a distance.
+400 Quatloos on the Newcomer! 247
+Close range combat consists of grapples, punches, strikes, sweeps, tickle
+fights, and quick burst moves like head butts and upper cuts.
+Medium range combat consists of weapon swings, flying kicks, and dash
+attacks.
+Long range combat consists of shooting or throwing projectiles or spells
+at enemies.
+Area effects, like smart bombs and “ super ” attacks will affect enemies at
+long range or on the entire screen.
+In addition, attacks can be delivered from four different elevations to give
+combat variety: standing, low, high, and aerial. While you don’ t have to use
+all four of these elevations in your game, you will have to make each of
+these elevations have their own set of attacks as they make the player deal
+with combat in very different ways:
+Standing position is the basic shoulder height of the player. Man- sized
+and larger opponents can be struck at this elevation.
+Low position strikes are at the waist height (or lower) of the enemy and
+delivered from a crouched or kneeling position.
+High position attacks are delivered over the head of an average height
+enemy. They can only be done by jumping then attacking. High attacks are
+used against flying or large enemies like bosses.
+Aerial position is when a player has jumped or flown into the air to attack.
+Aerial attacks can be extended jumps like those found in Devil May Cry and
+Dante ’s Inferno or they can be true flying like in Marvel Ultimate Alliance or
+Dark Void.
+Attacks from any elevation and range can be delivered both vertically and
+horizontally. In Maximo: Ghosts to Glory we designed enemies that could
+only be defeated by one of the two attacks.
+A skeleton guard wore an armored helmet that deflected Maximo’s overhead
+vertical attack. Another skeleton warrior used a shield that blocked Maximo’ s
+horizontal attacks. The solution was to use the opposite direction attacks to
+smash the skeletons.
+248 LEVEL 10 The Elements of Combat
+Attack Control Range Speed Direction Damage Special
+Slash Square Close Med Horizontal Medium
+(10 hps)
+Can be
+blocked by
+shield
+Overhead
+strike
+Triangle Close Med Vertical Medium
+(10 hps)
+Can be
+thwarted by
+helmet
+Thrust Forward
+on stick,
+Triangle
+Close Fast Forward Strong
+(25 hps)
+Knockback to
+target
+Jump strike X, down
+on stick,
+Triangle
+Close/
+medium
+Slow Downward Strong
+(25 hps)
+Stun to any
+target in
+two -unit radius
+An attack matrix like the one above is useful to track important information
+about combat moves. An attack matrix should include the following data:
+• Attack name
+• Control scheme
+• Range of attack
+• Speed of attack
+• Direction of attack
+• Damage —in terms of strength as well numeric damage (usually
+expressed as a value or percentage)
+• Special —anything that distinguishes the attack from other attack moves
+Feel free to add as many columns as you might need to your attack matrix
+to accommodate degrees of severity, defensive items/moves, and so on.
+You can use an attack matrix to track combat moves and compare and
+contrast values for maximum variety. Each attack should be distinct and
+usable in a specific combat situation.
+Timing is one of the major keys to great combat. When the player presses a
+button, the character should quickly perform the attack. If you want your
+combat animations to feel smooth, then you must strive to have your game
+run at 60 frames per second. While many games run satisfactorily at 30 fps,
+lagging and stuttering that can happen at these lower frame rates will really
+impact your player’ s combat experience. Don’ t waste time with long and
+elaborate wind-up animations. If you do this, it will throw off the player’ s
+timing and they may end up missing or striking when they don’t want to.
+Quick moves can be rapidly done in succession, but they tend to lead to
+button mashing.
+400 Quatloos on the Newcomer! 249
+Lunges are more fluid thrusts that return the player back to his original
+standing position. By combining quick strikes and lunges you can create a
+combat chain that will keep the player’ s basic attack from feeling boring.
+To create a combat chain, create three or more attack moves that will run
+one after another. If the player presses the attack move once, play the first
+animation. If the player presses the button again within a short (usually
+within a second) time period, the player goes into a second attack move.
+Usually, this second attack move deals more damage, so there is an
+advantage for the player to “ chain ” these attacks together. A third attack will
+do even more damage, and so on.
+If the player is allowed to land multiple hits in a row, make sure that your
+animation (or game code) also moves the player character forward;
+otherwise, when the enemy is knocked back, the player won’ t be able to
+land the next attack in the chain. The hero in the image below misses
+because he doesn’ t translate forward. His attack only succeeds when he
+shifts forward.
+OK, remember when I told you back one page ago that you shouldn’ t do
+elaborate wind- up animations? I meant it— but only on that page. Elaborate
+wind -ups are awesome because they lead to powerful attacks that can chop
+a player in two! These moves work great when the player is wielding an
+oversized or heavy weapon. Because of the long wind- up, the player is
+forced to risk the wait for the reward of landing a more powerful attack! Risk
+vs reward. Remember it. It’s gonna be big.
+Speaking of rewards, use particle and visual effects to make attacks feel
+more dynamic and rewarding; from “slice streaks” on sword attacks and
+speed lines for dash moves like those seen in the Onimusha games, or
+250 LEVEL 10 The Elements of Combat
+resort to those old standbys of fire trails and blood splatters like in Madworld
+(Sega, 2009). Be big, be dynamic, and be dramatic! Give big action moves
+like ground pounds and smashing uppercuts big screen effects that fill the
+screen with debris, dust, lightning bolts and other eye-catchers. The more
+spectacular the better!
+So what happens when you actually
+hit something? A strike without a
+reaction animation from the enemy
+doesn ’t feel like the player has hit
+anything. It’s like the attack is merely
+skipping off the surface of the enemy.
+If you can’ t afford to have the enemy
+have reaction animations (due to memory limitations, for example) at least
+have effects and sound effects that indicate that a successful hit has
+landed. Powerful sound effects make attacks feel more rewarding. Vocal
+reactions such as a big “ Oof! ” from enemies are always satisfying!
+Exaggerate the impact of a powerful
+hit to heighten the feeling of strength
+of the attack and increase drama. The
+enemy should react to wherever
+they ’ ve been hit. Got cracked in the
+coconut? The enemy’ s head (and
+some teeth) should fly. Kick out their
+leg and a bone should splinter or they should at least topple to the ground.
+This kind of animation is getting easier to do within the game code using
+rag doll physics systems like Havok and PhysX, but sometimes nothing
+beats good old fashion key frame animation.
+If conflict is drama, then combat
+should be a freakin’ opera complete
+with flying spear- carrying valkyries
+and a glass- shattering fat lady! Hype
+up that drama! A particularly powerful
+strike should be accompanied with a
+camera shake, a rumble from the
+controller ’s actuator or combat
+slowing down to show off the power of the hit. Batman: Arkham Asylum uses
+slow motion to indicate that the player has defeated the last of the enemies
+in a combat encounter.
+Before I forget, here’s a pearl of wisdom: close battles are more exciting.
+Don ’ t get me wrong, kicking hordes of enemies’ asses can be quite
+satisfying, but just make sure that your player is evenly matched to his skill
+level for the majority of the game.
+400 Quatloos on the Newcomer! 251
+You can really pull out all of the stops if you use a cinematic finishing move
+where the action slows or freezes and the camera pans around the action.
+These finishes are frequently seen in fighting games like the Soul Calibur and
+Street Fighter titles, but they ’ ve crept into other action games since they just
+look so darn cool! This is because of this very important thing:
+PEOPLE WANT TO PLAY GAMES THAT MAKE THEM LOOK COOL
+And nothing makes a player look cooler than a QTE. Just look at the Mighty
+Bedbug in action below. You have to admit that pressing button prompts to
+create a choreographed combat sequence makes the battle look spectacular.
+Case in point: Batman’ s combat in Batman: Arkham Asylum relies on QTEs
+to choreograph combat moves rather than leaving the player to flounder
+around on their own. Why? Because Batman is a badass. He’ d never miss a
+punch. Why should the player? The result? When the player successfully
+does an attack using a QTE, the player feels like an expert of combat— just
+like Batman.
+While QTEs have been around since Dragon ’s Lair, they can be found in
+some of the most recent action games. They are combat- oriented
+minigames that are activated within combat when an enemy or boss has
+reached a certain level of health. The player has to press a certain button or
+complete a certain move (like waggle a motion controller or analog stick)
+within a very short window of time. If the player is successful, they are
+rewarded with an animation of the hero performing an elaborate attack on
+an enemy. Most QTEs require several button presses for the player to reach
+the end of the sequence, which ends in the death of the enemy or boss.
+Here are some tips when designing QTEs:
+• Reserve QTEs only for the most bombastic and elaborate attacks. Since
+control during QTEs is limited, ask yourself “is this something the player
+can do instead?” You can always use single button QTEs like those
+found in Darksiders or Batman: Arkham Asylum as finishing moves.
+252 LEVEL 10 The Elements of Combat
+• Always position the button prompt in the same location on screen.
+Otherwise the player will get confused about what button they have to
+press.
+• Allow the player time to recognize the button prompt and then press the
+button. This recognition usually takes most players a beat (a “ one - one
+hundred ” count).
+• If the player fails to press the correct button in time, then try to get the
+player back to that QTE state quickly. For example, if it took three
+different sets of patterns to reach the QTE, don’ t repeat those three sets
+if the player fails. Have the player repeat one set before the QTE is
+activated.
+• I ’m torn over instant player kills for failing QTEs. On the one hand, it
+allows for some very bitchin’ animations of your hero getting ripped
+apart by the boss monster. On the other hand, I’m against instant kills in
+general. I recommend the player taking substantial damage from failing
+a QTE sequence, that way they can survive to try again. If they are on
+their last bit of health, you can still have that bitchin’ animation play …
+I have played targeting systems that allow the player to choose enemies in
+front or behind them by selecting a specific button or direction with the
+analog stick4. Other games treat targeting like a QTE, where the window of
+opportunity to attack lasts as long as the enemy is in view or nearby.
+Melee is hand- to -hand combat. Pretty much all the rules of combat apply
+but remember that those hands can be lethal weapons and hold impromptu
+weapons found in the world: props or objects such as lead pipes, chairs, or
+even cars! Make it easy for players to pick up and drop these items—
+provide on-screen prompts if you have to.
+4 The Mark of Kri (SCEA, 2002) had an innovative lock- on system that had the player use the
+DualShock controller’s analog stick to do a “radar style” sweep to target a sequence of
+enemies that could be programmed by the player. The technique was patented by the game
+creators.
+400 Quatloos on the Newcomer! 253
+When designing weapons, think about their speed, their range, the damage
+they do and what other effects they may have, such as fire or poison. If a
+weapon is upgradable, then make sure the effects are seen on the weapon.
+Merely adding a +3 to the stats doesn’ t provide the player with the
+gameplay information and visual rewards that they deserve.
+While swinging a weapon around, be
+mindful of it sorting through objects. That
+just looks bad. Instead, have weapons
+respond to the world, such as rebounding
+off of stone or metal surfaces or blades
+sinking into wooden ones. Be aware of the
+flipside of this, that the player’ s weapon will
+rebound off of any non- breakable item in the
+world. Carefully design your combat
+environments to use this to the player’ s
+advantage and disadvantage. For example,
+a hero would learn he couldn’ t swing his giant axe around in an arena filled
+with unbreakable stone pillars lest he risk rebounding off of them, which
+would give the skeletons a chance to attack.
+Stealth kills are quick attacks used to kill
+or disable an enemy in one move without
+alerting other enemies nearby. They are
+usually performed from a crouch or cover
+position or by positioning the player behind
+their target. They often use QTE style
+prompts to activate and reward players
+with dramatic enemy kills. Make sure that
+stealth kills can only be done under certain
+conditions (in the right position, while under
+cover, while in shadow), otherwise players will constantly use them over
+regular attacks as an exploit. Don’ t let a cool move become stale to the
+player.
+Grapples are similar to stealth kills in that a
+player can activate them under specific
+circumstances. Grapples are rare in most
+games with the exception of the fighting and
+wrestling genres (for example, WWE
+Smackdown vs. Raw 2010 (THQ, 2009)). It’ s
+difficult to program two-character collision
+as it requires the main character and the
+enemy to be animated together so the
+moves look natural and sorting doesn’ t
+occur. However, if you take the time and
+254 LEVEL 10 The Elements of Combat
+effort, you can have your hero pull off some pretty devastating attacks and
+slams. Just like with grabbing items, make it easy for players to grab and
+release their opponents. Many games make this a context-sensitive move.
+What ’s another way to make the player look like an expert? Use a lock- on
+system. The later Legend of Zelda games have a particularly good lock- on
+system in which the player can lock onto the enemy closest/in front of them
+with a button press and flick the analog stick to select the next one over to
+the right or left. As long as the button remains depressed, the player is
+locked on to an enemy. As each enemy is dispatched, the targeting system
+latches onto the next available enemy. Lock- on systems require HUD visuals
+to help the player track their targets. Here are some examples:
+Now You Have to Kiss Me
+Letting the player miss isn’ t such a
+bad thing. The player will be forced to
+become more skilled with their
+attacks, which will make them feel like
+more of a badass as they master
+combat timing. Or if the player just
+doesn ’t get it, you can always
+increase an enemy’s collision
+dynamically if the player misses or
+dies too many times in a row. Or you
+can offer to drop the game down to a
+lower difficulty setting. Do whatever
+you can to keep your player playing.
+On Moving 255
+On Moving
+If you take any martial art, you quickly learn that moving is just as important
+as attacking. The goal in a real- life fight5 is NOT to get hit. Why should video
+games be any different? Allow your player moves that give them options for
+retreating or avoiding damage, and also ones that can be combined with
+combat moves for quicker or more powerful attacks.
+Dodges and rolls allow players to get the heck out of dodge and quickly
+move out of the way of attacks. They should be quick and easy to perform
+too: a button press and single control stick move. Mind your metrics. Make
+sure your dodge lets the player get completely clear of wide- range attacks
+and longer- reaching weapons like halberds and huge swords, or radius
+based attacks like explosions and magic spells— otherwise you might be
+doing what they call in WOW “the graveyard hustle.”
+After the player does a dodge, there should be a beat to allow the player to
+get back on their feet. Not only does it give the player a chance to reorient
+themselves, but it keeps the player from using it as a movement exploit.
+Allow players to use dodges and rolls to get past hazards. They add a nice
+moment of tension when dashing through a closing door or rolling under a
+swinging blade. But be careful. During a roll or dash, the camera has a
+tendency to collide with whatever the player is trying to avoid. I don’ t
+suggest having the camera to pass through the hazard (that looks sloppy)
+or have the camera dip down with the player (as that gets disorienting.)
+Consider the camera locking in place as the player dodges and then have it
+“ catch up” with the player when they’ ve cleared the obstacle.
+5 Not that I’ m advocating fighting in the real world: remember, the first rule of fight club is
+… oops, I’ ve already said too much.
+256 LEVEL 10 The Elements of Combat
+Dashes are forward moves that can be used for defense or attack. Like
+dodges, dashes should be very quick to perform. Many action games like
+Devil May Cry (Capcom, 2001) and Darksiders (THQ, 2009) have dash
+moves that can be upgraded with more powerful sword or punch moves.
+Even your basic dash move should do something besides move the player.
+You want a dash to feel quick and powerful. And fast. And dare I say,
+dashing?
+The player should be able to use the dash to ram into enemies or smash
+breakable objects. Even though a dash targets one enemy, you can have
+the player’s momentum continue to have him hit several enemies at once or
+create a “sonic boom” to send bad guys flying! Whee!
+While generally used for traversal, jump
+moves can be combat moves too. Where
+would Mario be without his famous “butt
+bounce” attack? The collision zone
+should be like a good pair of pants;
+there should be plenty of room in the
+butt. Don’t make these pixel- perfect
+attacks. After the attack hits, apply recoil
+bounce to move the player a short
+distance away so the player doesn’ t
+land on or next to the enemy and
+take damage. If the enemy hasn’ t
+been killed by the butt bounce,
+minimize risk to the player by putting
+the enemy in a stunned state.
+On Moving 257
+Many games allow the player to maneuver during this recoil bounce to let
+the player chain bounce attacks off of the heads of multiple enemies! Make
+sure you award an escalating bonus for each additional bad guy bounced.
+Make it a big moment for the player— they ’ve just done something cool!
+You don’ t have to be a short Italian plumber to do jump attacks. Weapon
+wielding tough guys can do these moves too. Just make sure you follow
+these guidelines:
+• Make sure the player’s maximum jump is taller than the tallest enemy
+you can jump attack. Otherwise you’ ll be colliding with the enemy’s head
+or shoulders, which will look strange.
+• When the player lands, apply the same rules as an attack impact: stop
+the action for a beat by freezing the enemy or world’ s action, generate
+explosive effects, rumble the controller— anything to make the attack feel
+more powerful.
+• Even if the player misses, the strike could generate some radial effect; a
+stun or knock back for nearby enemies, for example.
+• Allow the player a quick recovery— they ’ll want to get back into action
+immediately.
+• Then again, you could give the player a delay as part of the risk/reward
+of perfoming the attack. For example, Mario firmly plants his butt into the
+ground after a butt bounce. If he misses an enemy, he’ s vulnerable for a
+beat to getting hurt by an enemy.
+If jumping is a little too frivolous for your big bad space marine or soldier,
+you can have them vault over obstacles to add variety to battlefield
+movement. Vaulting works well with cover systems (see below) and ducking.
+258 LEVEL 10 The Elements of Combat
+Gears of War 2 (Microsoft Games Studio, 2008) provides players with a
+prompt to notify them when they can vault over a low wall.
+On Guarding
+WATCH OUT!
+That ’ s how fast you have to respond to an attack, so you’ d better make sure
+your block is quick to pull off! Blocks can be either general or positional.
+General blocks are found in action games; a single button press to cross
+weapons, arms, or lift a shield to block an incoming attack. They’ re an
+all - purpose block for any situation and enemy. It doesn’ t matter if your shield
+is a one-handed buckler or Roman Scuta, the function is still the same: the
+player blocks an attack with the press of a button, holding it aside during
+the rest of combat.
+Don ’ t underestimate the use of sound effects in conjunction with a block. A
+nice loud CLANG! lets the player know they’ ve successfully executed a
+block. Or have sparks or some other effect (as long as it’ s not blood)
+visually clue the player in. Some blocks displace the player back a little bit
+to make the player have to move back in to hold his ground. Giving a
+successful block a disadvantage is a bit douchy, but if you want to, then go
+ahead — it ’s your game.
+Positional blocks correlate to a particular elevation and require a stick
+move and/or button press to block at the appropriate height, whether it’ s a
+high or low. You find these blocks most often in fighting games. You’ ll have
+On Guarding 259
+to decide whether a player can hold a block or not. Arm blocks are usually
+quick and drop down after a second or so. Other fighting and action games
+allow the player to hold the block indefinitely, or at least until an enemy does
+an attack that breaks the player’ s block or knocks them off their feet. Shield
+blocks can last longer, allowing the player to “ hide ” behind the shield for an
+extended period of time. Some designers don’ t like letting the player camp
+a block, but that can be circumnavigated with breakable shields or giving
+enemies knockback attacks. Oh, and don’ t forget to prevent your shield
+from sorting through the ground when the player crouches to block low
+attacks.
+As a designer, you need to decide whether your shield is breakable or not. It
+will make a big difference to how the player uses it. In the first Maximo
+game, we had a breakable shield. The player was able to upgrade it to a
+stronger shield through the course of the game. However, as it was still a
+limited resource we found that players were reluctant to use it, preferring to
+jump and dodge out of the way of attacks instead. In the sequel, we wanted
+to promote shield usage, so we made it unbreakable. Players were much
+happier to block now that the worry of breakage was taken away. But
+shields aren’ t just for blocking anymore:
+• Combine with dash move to clear obstacles
+• Smash enemies at close range
+• Throw a shield as a short-range projectile
+• Use the shield as a sled down steep inclines
+• Place shield over head to protect from falling debris or lava
+• Use shield as a crowbar to move large objects
+• Keep shield on back to protect from back- stabbing enemies.
+Heck, attach a shield to a chain like in Rygar, and it becomes a whole new
+weapon!
+If a shield isn’ t enough protection, then armor will do the trick. There are
+several things to consider when giving the player armor. Encumbrance is
+one. The more armor the player wears, the slower (and noisier) the player
+260 LEVEL 10 The Elements of Combat
+becomes. You usually find encumbrance in RPGs, not often in action
+games. It’ s fine if you are trying to be “ realistic ” but if your game’ s emphasis
+is on action and combat, it may be better to not use it.
+Perhaps your game makes a distinction between different parts of the
+body in combat? If so, you can use the “paper doll” approach to armor.
+The player has to armor his head, torso, arms, hands, legs and feet.
+This feels more realistic and gives your player more items to buy and
+collect. However, it does require an interface— usually quite large, as it
+has to show the entire body. Make sure it’ s easy for players to find,
+select and change their armor. And discard or sell unwanted armor
+as well.
+Your hero has finally defeated the first boss and won his prize: a new suit of
+armor. But don’ t cop out and just give your player a +2 chainmail shirt.
+Whenever the player earns an armor upgrade, make it look dramatically
+different. For example, full plate looks substantially different (and cooler)
+than a leather jerkin. By visually improving the player’s armor, the player can
+tell their “ rank ” at a glance.
+Give it a unique name too, like the “Holy Armor of Protection” or “ Dragon
+Scale Armor.” This will make the player feel like they’ ve won something
+important and worth having.
+But armor is not just for protection. Isaac’ s spacesuit in Dead Space has a
+health meter right down the spine. Players can check their status at a
+glance without the need for a HUD.
+Ghosts ‘N Goblins also shows health status but in reverse: as the
+armor pops off, the player gets closer to death. This is a good trick for
+enemies too, as it lets the player know how many hits are left to defeating
+a foe.
+Armor upgrades are a great way to give a player a new ability. Can’ t move
+that heavy block? This hydraulically powered armor can help you move it. It
+State of the Art Bang Bang 261
+doesn ’t even have to be a “ suit of armor.” Mario’ s Tanooki6 suit not only
+added protection, but let him fly, grow, and turn into an invincible statue.
+What ’s great about armor is it’ s an easy way for the player to customize
+their character without changing the base model. World of Warcraft does it
+right. You can find, buy and even make custom gear— and when another
+player sees your pimp helmet, they’ re gonna want one too. It’ s a great way
+to motivate players to spend more time in your game. It doesn’ t have to be
+armor; it can be hats, unique weapons or mounts. The more customization
+you allow the player, the better.
+State of the Art Bang Bang
+Ooooh! Guns, guns, guns!
+Clarence Boddiker (RoboCop)
+Shooting is simple. Aim the gun, pull the trigger. Right? But let’s look at
+some of the most popular multiplayer shooters and see how wide they vary
+from each other:
+Quake has maps that promote linear action and predictable looping
+movement patterns. Weapon and armor pickups can change the dynamics
+of the action in a heartbeat.
+Halo is played more like a sport, with game-like modes of play. The rhythm
+of the action is slower than many shooters, partially due to the player’ s
+6 Tanuki are Japanese raccoon dogs. Mario wears Tanuki footie pajamas with raccoon ears. It’ s
+adorable. Really.
+262 LEVEL 10 The Elements of Combat
+regenerating health, promotes “attack then retreat” strategies. Vehicles play
+a big part of the gameplay as well.
+Call of Duty: Modern Warfare has a multiplayer mode that concentrates
+on short-range combat with intense action. Players can concentrate on
+upgrading their weapons and characters like in an RPG.
+Team Fortress 2 resembles an RPG but the players assume widely varying
+skill -based roles. The game modes promote teamwork over single player
+actions.
+Left4Dead is also all about teamwork; in fact, you can’ t win without it. While
+most multiplayer shooters match opponents one- to -one, Left4Dead pits a
+handful of players against an endless horde of zombies. Game modes
+resemble stories more than in other shooters.
+Even in games where shooting isn ’ t the main focus of play, ranged combat
+can immediately change the dynamic of the game. This is why I recommend
+that if a game isn ’ t a shooter then guns should be saved until later in the
+game. Let the player get used to their moves and attacks without a gun first.
+When you feel like they ’ ve learned all they can, then go ahead and arm them.
+Creative Director Hardy LeBel, who has designed many successful shooters
+like Halo: Combat Evolved and SOCOM 3, says that ranged combat is about
+building a distinctive rhythm. There are several factors that influence that
+rhythm such as targeting methods, reload times, weapon fire rate, weapon
+accuracy, rate of fire and lethality, the availability of ammunition, the
+availability of area- of-effect weapons like grenades, player health mechanics,
+and so on. Even level design, AI behavior and mechanics all contribute to
+that rhythm. Whew! That’ s a lot to digest at once, so let’ s start with the
+three As: action, aiming and ammo.
+Action is the loading, firing and unloading of a gun. Here are some
+questions you need to ask about a weapon’ s action:
+State of the Art Bang Bang 263
+• How quickly can the player reload their gun?
+• Does the player need to reload with a button press or does it occur
+automatically? You can create some great risk/reward gameplay around
+reloading a gun, as the player is vulnerable during loading (such as in
+Gears of War, where a properly executed manual reload is faster, but a
+botched one is even slower and leaves the player defenseless for
+longer).
+• Is there a limit to the ammo? Does the player even need to reload the
+gun at all?
+• What is the gun’ s rate of fire? A faster firing gun is going to use ammo
+quicker than a single shot weapon. Can the weapon be fired one shot at
+a time or in bursts?
+• Does the firing bloom obscure the player’ s view?
+• Can a shot take out more than one target at a time?
+Aiming is how the player sights a target. Aiming is a huge issue in games.
+It can make or break a shooter. Early shooters relied on the player’ s reflexes
+and skill in positioning the cursor over the target and pulling the trigger at
+the right time. Until Halo: Combat Evolved (Microsoft, 2001), most successful
+fi rst- person shooters were played on PCs— partially because of the ease of
+aiming with a mouse. To help players manage the tricky task of aiming with
+the Xbox’ s analog sticks, the game used aim assist.
+No matter what type of aiming method you use (aim assist, auto- aim, free
+aiming, and so on), you need to design and implement targeting mechanics
+for the tastes of your target audience.
+• How does the player aim? Is there a scope? How much of the player’ s
+view does the scope obstruct?
+• How does depth of field affect aiming? An effective visual trick is to have
+far- away objects that are blurry suddenly become clear when viewed
+through a long-range sight.
+• Is aiming manual? Does the gun have drift? Can the player steady their
+shot? From how far away can a player make a shot?
+• Is aiming automatic? Is there a quick- fire mode? Is there an auto- aiming/
+lock on system?
+• When you fire the gun, does it kick, throwing off the player’ s aim? Does
+it rise like a Thompson submachine gun?
+• Are there systems to improve the player’ s aiming such as laser pointers,
+bullet time or heat-seeking ammo?
+• Can the player move while aiming? Are there limitations to where the
+player can aim, like diagonally or overhead?
+264 LEVEL 10 The Elements of Combat
+• Does the scope detect other ways of seeing the target such as IR,
+motion detection or heartbeat? Can the gun be modified in any way to
+become silenced or have additional add- on weapons like grenade
+launchers or bayonets?
+• Can the player use shooting for puzzle solving, or trick shooting? Shoot
+targets? Shoot locks off of doors? Shoot the gun out of the hands of
+enemies? Ricochet a bullet into an enemy?
+• Can the player disable the targeting mechanism or replace it with
+another style?
+The targeting reticule and/or the iron sights on your weapons should be one
+of the most sophisticated feedback mechanisms in your game. They will
+likely need to communicate aim, bullet spread, recoil, jamming, overheat,
+ammo, successful hits vs near misses, friend or foe, and the list goes on
+and on. And it will need to accomplish that while remaining useful and
+unobtrusive to the player. A great deal of time and writing could be
+dedicated to designing the targeting reticules for shooting, but suffice it to
+say this very important thing applies:
+PLAY THE BEST SHOOTERS AND STUDY THEIR SOLUTIONS
+Taking some time to deconstruct the mechanics and behaviors of the
+best- in - breed games will add immeasurably to your own gameplay.
+Ammo is what the player shoots. Ammo raises it own questions:
+• Where and how is ammo carried? Is there a limit to the amount of ammo
+carried by a player? Do you need the right ammo for the right gun?
+• Does ammo have any special effects like incendiary, poisonous, heat
+seeking, or armor- piercing properties?
+• What happens when a shot misses a target? Does it impact against
+something in the environment? Does it affect that item? Break glass?
+Chip plaster? Ricochet off of metal?
+The Best Gun for You 265
+Here are a few more tricks to make your gunplay more effective:
+• Accentuate the excitement and danger of a gunfight with sound: weapon
+firing, bullet impacts, enemy gunfire, whizzing bullets, and so on.
+• Play the SFX of the gunshot and bullet impact at full volume regardless
+of the target’s distance to the player. This will let them know whether
+they scored a successful shot. Don’ t forget to let the player hear the
+voiceover of the character, too.
+• Don ’t forget the weapon visual effects. Muzzle flash, spent shells kicking
+out and smoke from the barrel all make the experience more realistic.
+• In general, players like gunfights at shorter ranges, as they are more
+exciting.
+• Regardless of how graphic your weapon hits are, show some sort of
+impact effect when a bullet hits its target— from sparks to explosions to
+spraying gore.
+• Needless to say, level design IS game design when it comes to building
+the rhythm of ranged combat. If you design spaces that are long, open
+corridors and you have a high lethality combat model, players will play
+cautiously. If you have lots of cover and break line- of-sight frequently
+PLUS you have a regenerating health model, then gunfights will feel like
+swirling dogfights as players engage and disengage to heal.
+Mr. LeBel leaves us with this important thought: “ in general, players expect
+ranged combat to feel powerful and satisfying. It’ s an easy mistake to try
+and make ranged weapons weak to help offset the perception of too much
+power in the hands of the player; fight that impulse and try to remember to
+be “ generous ” to the player, and they will thank you for it.”
+The Best Gun for You
+When designing guns, even if you are creating made- up weapons, it’ s
+helpful to start with their real- life counterparts; after all, weapons are built for
+particular roles that can directly apply to their use in your game. But that will
+only get you halfway there. You should consider thinking about them in
+terms of effectiveness:
+266 LEVEL 10 The Elements of Combat
+But balancing weapons can be tricky, especially if basing them on real
+world equivalents. There are gun- nut players that have their own opinions
+about which gun is better and how they should perform. You could go crazy
+trying to please everyone, so base your weapons on what fits the needs of
+your game first. Here are some guidelines to get you started:
+• Pistols fire in a straight line (unless you are that guy from Wanted),
+which will dictate where you can shoot and who you can shoot. One
+enemy at a time unless your ammo pierces several enemies at once!
+That ’s going to keep the pace of shooting slow. Pistols usually require
+frequent reloading too, as their magazines carry from 6 to 15 rounds.
+• Rifles, especially sniper rifles, mean the player has to aim and shoot.
+You usually can’ t fire from the hip with a rifle. That means the player is
+going to be vulnerable and usually looking down a scope, which means
+tunnel blindness. Sounds like a good opportunity for an enemy to sneak
+up … Many rifles carry large quantities of ammo: some have drum
+magazines that hold up to 100 rounds.
+• Shotguns and flamethrowers fire in a cone, rather than a straight line.
+The cone is a shorter range than a pistol or rifle but can hit several
+targets at once. Both weapons do high damage to targets when hit at
+close range. Shotguns carry less ammo than guns or rifles, and
+flamethrowers go through propellant at a fast rate. A flamethrower’ s blast
+can be maintained for an extended time and does residual damage to
+an enemy.
+The Best Gun for You 267
+• Automatic weapons allow you to fire quickly, but accuracy goes out
+the window. This high rate of fire also uses up ammo fast, regardless of
+larger magazine sizes. Designing your machine gun to have a little kick,
+drift or spray will not only make it feel real, but push the player to master
+using the weapon accurately. Are your automatic weapons one handed
+or two? Can the player use two at the same time? This will determine
+what other actions the player can do while shooting.
+• Heavy weapons pack a big punch, but usually take a while to warm up
+or cool down. The Heavy’ s minigun in Team Fortress 2 takes a few
+beats to start spinning, but the player has a way to keep the gun
+spinning even when they aren’ t shooting with it. The disadvantage is
+enemies hear you coming a mile away… Grenade launchers are also
+harder to aim, but do big damage. The Call of Duty games change the
+targeting on their grenade launcher to make it feel different and less
+accurate. The result is a very different “ shooting ” experience than a
+pistol or rifle. Magazine sizes vary from a dozen grenades to hundreds
+of rounds for fast-shooting miniguns.
+No matter what the weapon, think about the range, speed and strength of
+the weapon. You can use an attack matrix like the one below to track these
+values and compare and contrast your weapons for maximum variety.
+Weapon Range
+Short Medium Long
+Dual pistols
+Assault rifle
+Shotgun
+Sniper rifle
+Strong
+Strong but slow
+Very strong
+N/A
+Weak
+Very strong
+N/A
+Medium
+N/A
+Weak
+N/A
+Very strong
+Notice how there is very little overlap in weapon attributes, and any overlap
+that does exist has a disadvantage like shooting/reloading speed. Keeping
+the weapons distinct will help in making the game feel well rounded.
+Ranged combat weapons aren’ t always guns. Fantasy games, for example,
+have a wide variety of projectiles from arrows to magic missiles to cones of
+cold. Regardless of the genre, as long as you design your ranged combat
+with the guidelines set down for guns: range, damage and the three As, you
+should be fine.
+268 LEVEL 10 The Elements of Combat
+One last question to ask is in a multiplayer game, should you allow friendly
+fi re or not? It totally depends on the gameplay mode. It seems much more
+logical to have friendly fire in a player vs player mode than in a cooperative
+mode. Whatever your choice, allow the player to turn it on or off.
+Oh no. You’ ve just run out of bullets. Now what?
+Players feel incredibly powerless when they’ re playing a shooter and have
+nothing to shoot with! So give your player a melee weapon that is always
+available. It can be a knife, fists or even a pistol whip or clubbing attack with
+a rifle butt. Giving the player this option to bash the baddie allows things to
+feel fair and realistic. The Gears of War games don’t mess around in this
+department: they give you a chainsaw mounted onto your gun!
+They say you can never have enough guns, but you don’ t want your player
+to be carrying around a golf bag full of firearms. Many games limit weapons
+Run and Gun 269
+to a main gun and a side arm. But if you do that, you’ ll need to be able to
+switch between them quickly; preferably with a single button press.
+Call of Duty: Modern Warfare 2 allows you to draw your side arm faster than
+you can raise your rifle; helpful for those situations requiring a quick shot.
+Gears of War and Uncharted use a cover system. This not only allows the
+player a way to take cover against surface or barricade to avoid being shot,
+but to also fire “ blindly ” or in a limited manner at the enemy. The player is
+often penalized for avoiding risk by not being able to aim while under cover.
+Cover systems usually require a button press or command by the player to
+place them in and out of this mode. Be careful that your cover system
+doesn ’t become too “ sticky ”, otherwise the player may be going into cover
+when they don’ t want to.
+Run and Gun
+There are many, many ways to shoot at things in video games: from a
+plane, from a train, out of a box, at a fox— you name it! Here are the main
+elements of a shooting gallery screen:
+1. Turret showing weapon and player
+2. Shootable object containing reward or powerup
+3. Ground -based target
+4. Visual element that indicates why the player can’ t shoot “ past the
+screen ”
+5. Aerial target (note the clear indication to the player that it has been hit)
+6. Smaller aerial target (generally worth more points)
+7. Smaller ground target (also worth more points).
+270 LEVEL 10 The Elements of Combat
+Mounted ranged combat is a shooting gallery style gameplay where the
+players defend against waves of incoming enemies. Players will tend to fire
+constantly if the weapon has unlimited ammo, or in short bursts if it doesn’ t.
+You can also get the player to fire in bursts if the weapon needs a cool
+down time. To help the player aim, add tracer bullets. Not only does it look
+cool, but it will help players get “ leads ” on fast moving enemies or ones with
+erratic movement patterns. Let the player know the range of the weapon. If
+the player can’ t reach a target, then create a good visual justification as to
+why there are areas of the screen the player can’ t hit.
+As both the target and the weapon move during aerial combat and
+vehicular combat, give the player opportunities to line the target up in their
+sights. If the player has a chance to see the target coming, line up the
+target and fire at the target they will feel in control. If too many targets whip
+by the player without giving him a chance to react, the player will resort to
+firing blindly which will make the experience seem mindless and frustrating.
+Adjust the speed of the targets or the craft either naturally or artificially to
+give the player ample shooting opportunities.
+Not Just Shooting 271
+Rail shooter gameplay happens when player movement control is taken
+out of the equation. Games like House of the Dead: Overkill (Sega, 2009)
+and Star Fox (Nintendo, 1993) are rail shooters. You can also find rail
+shooter sequences in titles like Red Faction Guerrilla, Uncharted 2 and Wet.
+A unique advantage of rail shooters is that the game developer has
+complete control over the game camera and the sequence of events. This
+allows the developer to create scares they know the player will experience,
+furious shooting sequences and dramatic scripted events.
+In fact, some rail shooters bear more resemblance to a theme park dark ride
+like Disneyland ’ s Haunted Mansion7 than a video game. In fact, interactive
+dark rides have started to appear in theme parks around the world8,
+completing the circle of inspiration from dark ride to video game to dark ride.
+Not Just Shooting
+You don’ t really need a gun or melee weapon to defeat enemies. There are
+so many ways; one hardly knows what to choose! The more variety you
+introduce into your combat, the more fun the player will have:
+7 This reminds me of the time Disneyland’s Haunted Mansion literally became a shooter. In the
+summer of 1974, a Disneyland guest wielding a .22 pistol took a shot at one of the duelist
+ghosts in the Ballroom scene. The bullet made a hole in the giant pane of glass used to
+create the scene’s pepper ghost illusion. The management was frantic. It had taken a
+helicopter to originally install the giant sheet of glass and they’ d have to rip the ceiling off
+the ride in order to replace it. However, a clever imagineer took one look at the spider- web
+cracks in the glass and slapped a rubber spider over the bullet hole. Voila` , problem solved!
+The spider is there to this day.
+8 On your next vacation, why not travel the world playing interactive dark rides? Buzz
+Lightyear’ s Space Ranger Spin (Walt Disney World, Florida), Men In Black: Alien Attack
+(Universal Studios Florida), Laser Raiders (Legoland Windsor, UK), Challenge of Tutankhamen
+(Six Flags, Belgium), Labyrinth of the Minotaur (Terra Mitica Theme Park, Spain) and Toy
+Story Midway Mania (Disney’ s California Adventure); all dark ride rail shooters.
+272 LEVEL 10 The Elements of Combat
+Grenades. When
+throwing grenades, allow
+the player to predict the
+arc. Gears of War and
+Uncharted both have
+“ throw path” targeting
+aids to assist the player.
+Don ’ t neglect the effects
+when those suckers
+blow. Kick up dust, debris and blow props sky high to really sell the
+explosion.
+Throwing a grenade should always carry the risk/reward of having it
+accidently go off if held for too long, or even bounce back at the player.
+Soldiers “ cook ” their grenades by holding on to them after pulling the pin to
+make sure it goes off where it lands. Call of Duty: Modern Warfare not only
+uses a HUD element to warn players of an incoming grenade, but allows
+players to pick it up and throw it back! Remember that grenades can also
+be shot from rifles and launchers for greater accuracy and range.
+Since many players duck back under cover after throwing a grenade, make
+sure you provide enough sound, visual and controller rumble cues to inform
+the player when a grenade detonates, even if they aren’t looking at where it
+landed. If a player gets too close to an exploding grenade, don’ t hesitate to
+blow them up as well.
+Sometimes you just need to blow up
+everything. It doesn’ t matter if you
+are calling in carpet bombing or a
+magical meteor storm; smart bombs
+are great one-shot solutions to keep
+the baddies off your back, if only for a
+few seconds. Show the player the
+controls for a smart bomb so they
+don ’ t confuse it with a regular attack.
+When activated, smart bombs should
+destroy everything on screen save the player. If there are destructible items,
+they should blow up too.
+You have a few options to how the player can activate a smart bomb,
+depending on how much tension you want to create. In Defender, the smart
+bomb is immediate while in R-Type, the player has to charge up the smart
+bomb before firing it. Let them know what they are working toward so they
+can make an accurate decision as to when to use it. Be careful that you
+don ’ t let it charge up too fast or be used too frequently, otherwise all the
+bad guys in your carefully designed combat encounters will be wiped out in
+the blink of an eye!
+Not Just Shooting 273
+Wherever there are explosions, there
+is fire. Sometimes there’ s fire even
+without the explosions— things just
+need to be burned. Fire creates
+great-looking visuals and lingering
+damage to enemies and
+environments. But fire takes no sides:
+players should get hurt by fire if they
+stray into it. The fire should eventually
+burn out so the player doesn’ t paint
+themselves into a napalm- colored
+corner.
+Fire also means flamethrowers. The
+closer you are to your enemy, the
+more damage a flamethrower should do. Flamethrowers are the weapon of
+choice for players who don ’ t like to aim. Allow them to “ fire and forget ” or
+“ hose down ” enemies with flame.
+Don ’ t forget to use fire- based weapons as a gameplay mechanic too.
+Flaming swords and other weapons don’ t just do extra damage to ice
+themed enemies, they can ignite braziers, detonate explosives, burn through
+rope, illuminate dark areas, cauterize wounds; the gameplay possibilities are
+vast.
+Another lingering indirect attack is poison.
+Make sure you have an associated visual for
+poisoned items. A green gassy effect, a
+dripping blade, a hovering “ death ’s head”
+effect are all traditional video game indicators
+of poison. Players should be able to tell when
+they are wielding a poisoned item or have
+poisoned an enemy— make the visual unique
+and distinct. As a poisoned character loses
+health, make sure each increment that the
+poison takes has a clear sound effect and
+visual effect associated with it. You are creating
+a timer in which the focus of the player will shift
+from regular gameplay to “find and administer
+the antidote.” If the antidote is an inventory
+based item, don’ t make it too hard for the
+player to retrieve it. Even if poison is uncommon, make the antidote more
+common. There is no worse feeling in a video game than making the player
+feel like death is inevitable. Always give them a fighting chance.
+274 LEVEL 10 The Elements of Combat
+Another horrible feeling for players is to take control away from them. While
+stunning, knockback, transformation, loss of balance and sliding are
+worthwhile tools to use in lieu of taking damage, they should be used
+judiciously by the designer.
+• Stun. When hit by a stun, the player loses all control of the character for
+a short period of time, usually leaving the player in danger of being hit
+by an enemy attack or finishing move. Stuns are usually accompanied
+by visual (like cartoony stars or “tweeting birds” ) and sound effects.
+• Knockback. The player is knocked back through the air a short
+distance then falls to the ground. A knockback (or KB) can be lethal if a
+player is on a platform or next to a ledge. Be careful not to put the
+player into a situation where they can be “double bolted9” by KBs.
+• Knockdown. The player is knocked to the ground, which requires a
+second or two to get back up. While on the ground, the player is
+vulnerable to additional attacks. In some games, getting back up is
+automatic, in others it requires button mashing, stick waggling or a QTE.
+• Latching on. An enemy grabs or latches on to the player, pinning their
+arms and restricting their movement. Enemies can cause damage for
+9 The term “ double bolting” comes from the Ratchet and Clank games when a player is hit by
+an enemy and loses bolts, the game’ s unit of currency. The bolts disappear if not collected
+after a period of time. However, there are some situations where the player is knocked by an
+enemy into another hazard or enemy which causes more bolts to fly out of the player. The
+player is stunned by the attack and cannot regain control fast enough to collect any of the
+first bolts before they disappear, let alone the ones that were just knocked out of them.
+Thus they lose double the bolts from the initial attack.
+Dammit Jones, Where Doesn’t It Hurt? 275
+every second they are latched on. Enemies can be shaken off by
+waggling the controls, or performing jump or spin moves.
+• Transformation. The player has been hit by a magic spell that
+transforms the character into some other form. In Ghosts ‘N Goblins,
+Arthur turned into a frog. In Maximo, the hero could be transformed into
+a zombie, an old man and a baby. In all cases, the player’ s move set
+becomes limited; they cannot attack or jump and in some cases, lose
+almost all control. During a transformation, game controls can be
+reversed to sow player confusion (for example, push controls left and the
+player moves right). I recommend ending the transformation quickly.
+Reserve for special occasions as the player will tire of it if used too often.
+• Loss of balance. This animation is used as a teeter move. The player
+briefly loses complete control as the character reacts to losing their
+balance. This works well as an indicator rather than a disabling move.
+• Sliding/skidding. After a run, dash or jump move, the character slides
+to regain their balance. While this adds quite a bit of personality to the
+character, it can be annoying especially when it happens several times in
+a row as the player struggles to bring the player to a stop. Like a KB, a
+skid can slide a character right off the edge of a narrow platform.
+Don ’t let enemies have all of the fun! Design enemy- disabling attacks to
+give your players the advantage in combat. Use caution when creating
+attacks with these types of results. Consider what it is adding to the
+gameplay. Ask yourself this very important thing:
+ALWAYS STRIVE TO ENABLE THE PLAYER, EVEN WHEN YOU’ RE
+DISABLING THEM
+Remember, don’t let enemies have all of the fun! Design enemy- disabling
+attacks to give your player the advantage in combat. They’ll thank you for it.
+Dammit Jones, Where Doesn ’ t It Hurt?
+In order for all this combat to mean anything, the player has to have
+something to lose. That means health and lives.
+To calculate the player’ s starting health, I suggest calculating in terms of the
+maximum damage the player can take. For example, at the beginning of the
+game, your hero can take 20 hits from enemies before losing a life and
+without replenishing health. Next determine how much damage an average
+enemy ’ s attack does. In this example, a normal hit will cause 10 hit points
+of damage. That means the player’s starting health should be 10 x 20 hit
+points = 200 health.
+276 LEVEL 10 The Elements of Combat
+There are many ways losing that health can be represented to the player.
+Numbers are simple and transparent but boring. They stand out against
+cluttered HUDs like those found in MMOs and RPGs. Just keep the font
+legible.
+A health bar doesn’ t take much space running
+along the top or side of the screen. They can be
+framed with themed artwork to make them look
+more interesting and part of the HUD. However, it
+can be difficult to tell when small amounts of
+damage have been taken. A health bar can be
+segmented for readability.
+If you are feeling artistic, icons can represent the
+player ’ s health with simple visuals: human outlines
+that go from green to red (WWE Smackdown),
+crystal globes of blood (Diablo) or hearts (Legend
+of Zelda).
+Some platform games use a companion
+character as the player’ s health meter. For
+example, Crash Bandicoot is followed by a tiki
+head that loses feathers with each hit the player
+takes. The problem with this system is that it
+cannot support a large amount of health.
+Things are more direct with character- based
+health systems. Ghosts ‘N Goblins represents
+health with armor that pops off the player. Dead
+Space and Ghostbusters have status meters as
+part of the character’ s armor or equipment. The
+characters of Resident Evil clutch their
+midsections and limp when they’ ve taken
+damage. Many car combat and driving games show visible damage to the
+vehicle. You know your car is close to death in Grand Theft Auto when you
+are dragging a bumper and your engine is smoking! Whatever method you
+use, you need to have some sort of feedback: the player can’ t always keep
+their eye on the health bar, so these character- based feedback mechanisms
+make it possible for the player to gauge how close to death or restart they
+are. They can then adjust their strategy (retreat, heal themselves, etc.)
+based on this knowledge. Just make sure these systems don’ t interfere with
+the player’s movement or attacks.
+Many modern games have moved towards a HUD-less health system. As
+the player takes damage, the screen becomes splattered with blood which
+gets thicker as more damage is taken. More dramatic effects, like turning
+Death: What is It Good For? 277
+the whole screen blood red, monochromatic or blurry, can be used too.
+Sound and music can drop off and be replaced by heavy breathing and a
+heartbeat. In Batman: Arkham Asylum, whenever the player is hit by a taser
+attack, the screen’ s video “short circuits.”
+Other systems that defy classification have shown up over the years. In
+Sonic the Hedgehog, as long as the player holds one collectable ring, they
+cannot be killed. Or at the other end of the scale, Bushido Blade 2 featured
+so many one- hit kill attacks that the health bar was completely dropped.
+Players can regain health with the aid of power-ups, increases in level or
+experience and even time. Halo: Combat Evolved pioneered the concept of
+regenerating health in first person shooters. As long as the player wasn’ t
+taking damage, the health meter would refill at a slow but steady rate. The
+Ratchet and Clank games ditched health altogether as the developer wanted
+the player to reach the end of the game, not constantly see a game over
+screen.
+Whatever method of displaying health is used, the player should clearly
+know when they are getting hurt and losing health. Don’ t skimp on the
+dramatic animations and particle effects. Both a hit sound effect and a
+vocal reaction (“ ow! ”, “ oomph! ” , and so on) should play. Health should
+deplete in a very obvious manner, because with every hit the player is closer
+to losing their life.
+Death: What is It Good For?
+Let ’s face it, lives and the game over screen are an outmoded concept.
+When video games first arrived, their goal was to suck quarters as fast as
+possible out of the player’ s pocket. The best way to achieve that was to
+make the player want to keep playing despite being killed as often as
+possible. Additonal lives became a good short- term goal for the player to
+keep in the game. When game characters became little people in lieu of
+blips and spaceships, the concept of dying came with them. (After all a
+spaceship doesn’ t die, does it?) The emotional impact of the finality of
+dying (Unless … Quick! Get that next quarter into the slot!) was too good to
+pass up.
+When games moved to home systems, lives followed— but the players had
+paid for their game and there were no more quarters to gain. So why kill the
+player? Why not let them finish the game they’ve paid for?
+Another problem with killing off a player often is that it discourages the
+player from continuing the game fairly. For example, players of Doom
+(id,1993) found that it was easier to restart the game from a saved file than
+278 LEVEL 10 The Elements of Combat
+it was from an in- game
+checkpoint. By using this
+exploit, the player ceased to
+worry about death and never
+even saw the game over
+screen.
+Many developers have caught
+on to this and abandoned the concept of player lives. Instead of killing the
+player and ending the game, players are reset to checkpoints within the
+level, where they can keep trying over and over until they succeed. In Prince
+of Persia: the Sands of Time, the player can “rewind time” to a point where
+the player is safe. This type of mechanic has to be carefully implemented
+though: it is possible for a player to get into a situation where they can’ t
+rewind far enough to avoid death and would die all over again. A narrator
+tells the player “ that ’s not how the story happened” before the character
+restarts from a checkpoint. In Batman: Arkham Asylum, the player is given a
+chance to save the caped crusader from a fall to death by pressing a QTE
+button. If successful, Batman climbs back up to safety.
+However, some genres like action and survival horror still utilize lives and
+game over screens. If you have to kill your player, remember the following:
+• Let the player know that they have lives and that they will be lost. Players
+become protective of their character and will fear for their safety.
+• Display lives clearly in the HUD. Make it clear when the player is losing
+a life.
+• Allow the player plenty of opportunities to regain lives. They can happen
+during level ups, be power- ups, or rewards for collecting objects.
+• When killing a player character, do it quickly. Don’ t create a long, drawn
+out death animation that the player has to watch over and over again
+when things get hard in the game.
+• The same goes for game over screens. Don’ t make the player sit
+through long death sequence cutscenes. Make the path to restarting
+gameplay after death as quick as possible.
+• When killing a player, make it as violent as your rating allows. Let the
+player really feel some pain when it happens. Empathy toward the game
+character will motivate the player towards self- preservation.
+• If the player earns something during one life, don’ t double punish them
+by taking it away from them when they lose that life.
+• If killing the player during a boss round, don’t make the player have to
+play the whole sequence all over again. Why not let them continue on
+with the fight as if nothing ever happened, or only punish them with a
+little bit of boss health regained?
+Level 10’s Universal Truths and Clever Ideas 279
+• That said, the threat of death is a great motivator for the player to do
+better and learn that skill or control. Just use this power judiciously,
+okay? I trust you.
+• If using alternate death systems, like the player dies if their NPC partner
+dies, make it clear that (a) the player needs to protect the partner
+character with their lives and (b) they will die if they don’ t.
+Think very carefully about using lives in your game. If you don’ t think killing
+the player will make the game experience better or more exciting, or think it
+will actually be more frustrating, then don’t do it. Because this very
+important thing applies:
+YOU WANT TO KEEP THEM PLAYING
+Never give the player a good reason to stop. Once you’ ve lost them, you
+may never get them back. Instead of a game over screen, why not create a
+“ keep going” screen? When the player dies or leave the game, show them
+a preview of the next level, the next story point or the next treasure item,
+weapon or powerup? Give the player a sneak peek to get them so excited
+that they won’ t want to stop playing!
+Now stick close, we’ re moving into dangerous territory in the next level: one
+populated by hordes of enemies!
+Level 10’ s Universal Truths and Clever Ideas:
+• Be mindful of ESRB guidelines when creating violent
+gameplay.
+• Violence is all about context: a violent act is going to
+feel more violent if it is the player who does it.
+• Give your character a signature attack or weapon.
+• Create an attack matrix to track your combat moves and
+reactions.
+• People want to play games that make them look cool.
+• Use a lock- on system to enable the player during combat.
+• Close battles are more exciting.
+280 LEVEL 10 The Elements of Combat
+• Use QTEs to heighten combat drama but don’ t overdo
+them as they get old.
+• Fighting enemies is supposed to be fun.
+• Be aware of the three As when designing projectile
+combat.
+• Use attacks to hamper and incapacitate the player rather
+than kill.
+• Make it clear to the player that they have taken damage.
+• Always strive to enable the player even when disabling
+them.
+• Keep the player playing.
+T
+LeveI 11
+They All Want You Dead
+Video games are populated with a plethora of beings that want to kill you:
+aliens and androids, pirates and parasites, mercenaries and mushroom
+people. However, I realize not every video game features slobbering,
+sword - wielding enemies— often they use guns too!
+Yes, yes. I realize that there are plenty of other video games that use other
+forms of conflict, such as time, human competitors, or even the player’ s own
+skill, to challenge the player. But we are not talking about those types of
+games1. As I flip back to Level 3 , I am reminded of three types of conflict
+found in stories: man vs nature (like a hurricane or a giant white whale);
+man vs self (where the hero is struggling with an internal problem issue
+like “where to go for lunch2”) and man vs man, or in the case of video
+games, man vs zombie, or man vs ninja pirate, or man vs
+hideous - alien - creature - made - from - the - skins - of- your- dead - crewmates.
+1 Yet.
+2 I have seen large groups of full- grown people completely paralyzed by this internal conflict.
+282 LEVEL 11 They All Want You Dead
+Those are the type of enemies we are going to be talking about. While
+zombies and ninja pirates and alien thingee enemies are great fun to
+design, you first need to follow this very important golden rule:
+FORM FOLLOWS FUNCTION
+Hey! I saw you trying to design that winged skeleton enemy3 without
+thinking about how he’ s going to attack. Put down the pencil as I repeat
+myself; because THIS REALLY IS VERY IMPORTANT:
+FORM FOLLOWS FUNCTION!
+You need to (not “would kinda like to” ) determine the function of an enemy
+first. So many things are resting on the decisions in your design; how it will
+be coded by the programmer, how the rigging model will be built by the
+animator, how it will be textured by the artist. These important enemy
+attributes are:
+• Size
+• Behavior
+• Speed
+• Movement
+• Attacks
+• Aggression4
+• Health
+3 He does look pretty awesome though.
+4 I realize that aggression is considered part of behavior, but since combat is often treated
+by designers as its own system, it deserved its own heading.
+They All Want You Dead 283
+All of these attributes, along with your level’ s theme, will allow you to
+determine who your enemies are, what they will end up looking like and how
+well they will work together when they are placed in the game. Having to
+redo an enemy character again and again and again is a big morale killer
+for your team and a huge waste of time and money5.
+Speaking of huge, enemies come in a wide range of sizes:
+Short enemies are no taller than the character’ s waist.
+Average enemies are roughly the same height as the player character.
+Large enemies are several heads6 taller than the player.
+Huge enemies are at least twice the player’ s own size.
+Gigantic enemies are so large that they can only be completely seen from
+a distance.
+The size of the enemy will determine how the player will fight it. For
+example, a short enemy can only be fought by crouching, or with a low
+attack like an upward sweep or radial spin attack. On the other end of the
+scale, a huge enemy with a vulnerable head can only be reached with a
+jump attack. Design your combat so the player “fights their way up” the
+enemy: an average enemy should be able to be hit by a low and medium
+5 And irresponsible. Please do not be an irresponsible designer.
+6 Artists measure characters in terms of “ heads” — literally the height of one average human
+head. For example, an average six- foot human is seven heads tall, while a heroic character is
+eight and a half heads tall.
+284 LEVEL 11 They All Want You Dead
+attack, a huge enemy should be hit by a low, medium and high attack, and
+so on.
+Size also influences health. Larger enemies traditionally have more health
+(are harder to kill) than smaller ones. This might account for why many
+bosses are so darn big. Size will also dictate the enemy ’ s reaction to
+attacks. Hit a short enemy with a knockback attack and they should go
+flying. Hit a large enemy with the same
+attack, and it may not even budge.
+You ’ d be lucky if a gigantic enemy
+even notices your attack, let alone
+reacts to it.
+They say variety is the spice of life.
+I don’ t know about spice, but I
+do know it is variety that keeps a
+player from getting bored. Size can
+influence a player’ s emotions too.
+Defeating a huge enemy can make
+a player feel heroic while defeating a
+short one can make them feel like
+a bully.
+Now that you’ ve determined size, ask yourself, what is my enemy’ s
+behavior?
+• How does my enemy move?
+• What does my enemy do when in combat?
+• What does my enemy do when it is hurt?
+Answer these, and you will have the foundation to a robust enemy. The goal
+when designing enemy behavior is to not repeat behaviors. Even better,
+A patroller moves back and forth or
+up and down in a mechanical
+fashion. The path of movement can
+be more involved than this, but its
+movement is always predictable.
+A chaser pursues a player if they are
+approached or some other condition
+is met. In many games, patrollers can
+turn into chasers when they see the
+player or the player attacks them.
+design your enemy’s behaviors to complement each other.
+They All Want You Dead 285
+A shooter is an enemy that fires a
+projectile. Shooting patrollers and
+chasers will fire at the player once
+they ’ve been spotted. Due to the
+nature of the attack, this enemy
+will try to keep distance between
+itself and the player rather than
+engage them.
+A guard is an enemy whose AI priority is to guard an item or location (like a
+doorway) rather than actively pursue the player. Guard behavior can be
+easily combined with chasing or shooting if the player manages to steal the
+item or get past the guard.
+A flyer is an enemy that, well … flies.
+They are aerial patrollers but because
+the flying adds another dimension
+(literally) to the movement, they
+deserve their own classification.
+Flyers can swoop down to attack
+players or you can have them fire
+projectiles from a safe distance.
+Flyers are more advanced enemies,
+as their movement and attack
+patterns are more difficult for the
+player to predict. Players trying to
+attack flyers usually stop to target or
+make a jump attack.
+286 LEVEL 11 They All Want You Dead
+A bomber is a flyer that attacks from
+above rather than from the side.
+Bombers are common in 2- D games
+as it is often difficult for a player to
+use a 3- D camera to see an enemy
+above them.
+A burrower is an enemy with an invulnerable state that allows it to get into
+an advantageous position to attack the player. The player must wait for the
+enemy to emerge before they can attack it.
+They All Want You Dead 287
+A teleporter is an enemy that can change position around the playfield. The
+player must attack quickly lest the enemy teleport out of harm’ s way. The
+teleporter varies from the burrower in that the teleportation is instantaneous,
+giving the player no time to attack. Give your player a way to disrupt the
+enemy ’s teleportation, such as a stun or another disruptive attack.
+A blocker is an enemy that defends itself against the player’ s attack with a
+shield or other defensive device. The shield can either be circumnavigated
+with an attack from another direction or elevation (such as from down low or
+from behind), or the player can disarm the enemy with a specific move or
+attack. Shields can make the enemy temporarily invulnerable, requiring the
+player to break the shield with a specific move or action, or wait around until
+the invulnerable state passes.
+attacks and uses AI that mimics the
+player ’s own. Doppelganger enemies
+force the players to use moves or
+weapons in an unusual manner in
+order to defeat “ themselves. ”
+The goal of having all of these
+different behavior types is to have
+enemies that complement each
+other. Enemies should “ live
+harmoniously ” with each other, creating interesting combat puzzles for the
+player to solve.
+Once you create enemy behavior that works well together, it will create
+gameplay. The player will learn how to perform threat analysis. This forces
+the player to ask themselves: “Which of these two enemies is going to be
+the bigger threat? I must kill that one first and figure out how to defend
+against the other one(s) until I do.”
+A doppelganger is an enemy that looks like the player and has moves,
+288 LEVEL 11 They All Want You Dead
+Here are a few interesting enemy combinations that I’ ve found work well
+together:
+• A blocker with a shooter positioned behind him. As the player tries to
+whittle down the blocker, the shooter is taking pot- shots at the player.
+• A big chaser and a group of smaller flyers. While the player goes after
+the big guy, the little guys attack. However, if you leave the big guy
+alone and go after the flyers, you’ re gonna get thumped.
+• A teleporter and a chaser. As the player tries to catch the teleporter, he
+leaves himself open to the chaser’ s attacks.
+They All Want You Dead 289
+• A guard and a bomber. While the
+player is tied up with the guard,
+the bombers attack from above.
+Depending on speed and
+movement, an enemy can be more
+dangerous, harder to target and
+more frightening. Use the different
+speeds: non - mobile, slow,
+medium, fast, and quick for your
+enemies.
+The difference between a hazard and an enemy is mobility and AI, but every
+rule has its exceptions. Just because an enemy is non - mobile doesn’ t
+mean it can’ t move. Movement = character and life. A humongous
+tentacled Cthulhu- esque creature may be immobile due to its sheer size or
+even technology limitations, but a player would still consider it an enemy.
+Non -mobile enemies like a robotic wall- mounted laser-sighted machine gun
+can still have enough AI to make life difficult for the player. Design ways to
+keep the player engaged as they attack non-mobile enemies, whether it’ s a
+timing puzzle that stands between the enemy and the player, or even a
+puzzle that’s part of the enemy itself.
+The speed, size and strength7 of an enemy are inversely proportional: small
+enemies are fast but not strong, big enemies are strong but not fast.
+Medium -sized enemies can be either strong or fast, but if you give them
+7 Hey! It’ s the three Ss!
+290 LEVEL 11 They All Want You Dead
+both attributes they end up feeling “cheap” as they’ ve been given an
+advantage that the player cannot match. Whenever an enemy is extremely
+overpowered or too perfect at making attacks, it feels like the player is
+fighting a computer rather than an actual living creature.
+But I digress.
+A slow enemy works best when there are lots of them. One zombie isn’ t
+very threatening, but a dozen of the slow- moving undead can make even
+the most stalwart hero a little nervous. Often a slow enemy packs a big
+wallop: if the player gets hit, it’ s their own damn fault. Or you can give a
+slow - moving enemy a fast attack to keep the player on their toes. Slow
+enemies often have built-in defenses, allowing them to brace themselves
+against a player’ s attack or casually swat them aside. If you want your
+enemy to feel powerful, have them move slowly like the Tyrant, Nemesis
+and Dr. Salvador from the Resident Evil series. The inevitability of the bad
+guy advancing on the hero can make the player panic and make fatal
+mistakes.
+They All Want You Dead 291
+Medium speed is just what it sounds like: the speed of the enemy’ s
+movement and attacks will likely match the player’ s own speed. Medium
+speed may be a little predictable, but useful for most situations. I’ve found
+it ’s helpful to make medium-speed enemies run slightly slower than the
+player, especially when chasing them. This allows the player to retreat at
+their running speed if necessary without fear of getting cut down from
+behind. The player can then reorient themselves and face the enemy in time
+to deliver an attack or effectively defend. It’ s OK to tweak speed values here
+and there to get the effect you want. There’ s no hard and fast rule when it
+comes to this; you’ ve just got to do what feels right and fair.
+Fast enemies either dart forward to quickly strike and back away, or they
+move quickly around and then jump in to do multiple attacks. A fast enemy
+works great in horror and action games. The player will have less time to
+react to an incoming enemy and may panic and make dumb mistakes—
+until they learn to keep their cool. However, don’ t make a fast enemy
+constantly attack the player, as they get frustrated by getting hit by
+something they can’ t hit back— unless this is the strategy you want. The
+smaller the enemy, the quicker they are. Give fast- moving enemies an
+erratic movement pattern to give your players a real challenge.
+292 LEVEL 11 They All Want You Dead
+A quick enemy moves in bursts. They can move blindingly fast— so fast that
+it may seem unfair to the player, but you can balance that by limiting their
+attacks and moves. Help the player see quick moves coming by playing a
+warning animation. This will allow the player to dodge, block, or strike before
+the enemy completes its quick move.
+What is your enemy’s movement style? Does your enemy charge the
+player like a bat out of hell? Does it zigzag erratically to avoid taking fire?
+Does it make a beeline and then retreat? Does it jump from cover to cover?
+Does it crawl on the walls to ambush the player from above? Does it run
+away and never fight at all8? Knowing your enemy’ s movement styles will not
+only determine their attacks but also their personality.
+Determine whether your enemy moves randomly or predictably. Avoid
+extremes and insert variety. Too random and the player might feel the
+enemy moves too arbitrarily. Too predictable and an enemy feels too
+“ game -y.”
+The best solution doesn’t include unpredictability. For Crash Bandicoot 2,
+Naughty Dog tried creating more behavioral AI with less simple patterns.
+Focus groups found them inferior. The players liked the challenge of figuring
+out the enemy’ s patterns. On the flipside, players like unpredictability in
+sports games. Predictable patterns become “ holes ” for the player to exploit,
+which ruins the experience.
+Coordinating several enemies’ movements adds complexity. Consider how
+your enemies behave and group together during a fight. Some enemies can
+use flocking behavior to create realistic group movement.
+Look at the movement behaviors of
+different animals, birds, and insects
+for inspiration. Humans usually move
+in straight lines. Predatory mammals
+like wolves and tigers move in looping
+arcs as they circle their prey. Crabs
+move sideways rather than in straight
+lines. Birds fly in swooping patterns
+as they catch updrafts to aid their
+flight. Insects zigzag as they course
+correct during flight.
+8 Personally, I think enemies are more fun when you can fight them.
+They All Want You Dead 293
+Let ’s consider how the bad guys in a Bruce Lee movie fight scene behave.
+Bruce Lee is surrounded by dozens of karate experts, but they never attack
+him in more than groups of ones and twos. They are very polite, those kung
+fu villains. This strategy works well in games too. It allows you to create the
+illusion of a group without overtaxing your game or the player.
+Work with your programmer to create pathing AI. Determine the needs of
+your enemies to figure out how they are going to move around. Here are
+some questions that should be addressed when creating pathing and
+behavior AI:
+• How mobile are your enemies? Do they have more than one movement
+speed? Can they can break into a run or slide to a stop? Do they leap
+over obstacles or use doors?
+• How aggressive is your enemy? Fast- moving frothing berserkers or
+slowly advancing stone- cold killers? Enemies can even be cautious or
+cowardly, afraid to get hurt or die. Giving an enemy a sense of self
+preservation makes them feel like real people.
+• How much of a team player is your enemy? Do they raise the alarm and
+alert other enemies to assist them? Will they try to keep a player pinned
+down while another closes in for a melee attack or better shot? Will they
+try to flush a player into the open where another enemy will have the
+advantage? Will one grab and grapple the player while another attacks
+them? Do they have a “ partner ”, like a guard dog or attack drone?
+• How defensive is your enemy? Do they crouch or duck behind objects?
+Do they use cover or hold the line? Do they act stealthily when they spot
+a player? Do they try to attack from behind and sneak up on a player?
+Do they have defensive items like shields or defense systems?
+• How versatile is your enemy? Can they pick up and use dropped
+weapons or health? Do they drive vehicles or man weapon
+emplacements? Can they take over functions for other enemies if they
+are killed? Can they fly or use non- ground - based movement?
+294 LEVEL 11 They All Want You Dead
+Most AI characters use a waypoint navigation
+system to move around. A grid or path is laid
+out by the designer that determines where the
+AI moves. As the AI moves, the programmer
+can determine what movement and animations
+are played to create specific AI behavior. Areas
+can be designated as “ go ” or “ no - go ” areas
+based on world geometry or to achieve a
+specific AI behavior.
+All this means is that your bad guys either
+travel along a preplanned network of paths or
+wander around within the confines of an
+invisible box (or sphere).
+This allows the designer to choreograph a world event with an enemy— like
+crashing through a wall or reaching a specific spot at a particular time.
+However, placing waypoints can be time-consuming and they don’t always
+meet all of the AI needs.
+Because most waypoint-guided enemies are programmed to determine the
+shortest and quickest path to the player, be careful of enemies clipping
+corners and objects. You can fix this by tweaking your waypoint paths. Pull
+the waypoints in a bit at corners or near objects to compensate for this
+movement.
+Bring on the Bad Guys
+You are walking through a graveyard winding your way through the
+tombstones when you see a skeleton blocking your path, ready to fight.
+Wait a second. Rewind. There’s a much more dramatic way to introduce this
+bad guy into your world.
+Bring on the Bad Guys 295
+You are walking through a graveyard, winding your way through the
+tombstones. One of them shakes as you pass by. Suddenly the camera
+zooms in on the player as the screen shakes and the controller rumbles.
+The camera whip- pans around to a grave as a hand thrusts itself out of the
+ground. The tombstone shatters into a million shards as a skeleton bursts
+from the grave, its eyes glowing evilly and bony fingers clenched, ready to
+fight! Now that’ s exciting!
+Enemy introductions are a really effective way to tell the player that they’ ve
+encountered something new, exciting, and dangerous:
+• Freeze the camera or zoom in on the creature: let the player get a good
+look at what’ s about to kick their butt!
+• Display the name of the enemy on screen— players like to put a name to
+an enemy.
+• Foreshadow: Resident Evil 2 provides a great “what the hell was that?”
+moment when a licker enemy runs past a window right before you
+encounter it. It builds up suspense for when the licker actually appears
+to the player. Make it an event!
+• Devil May Cry does a great job of introducing all of its enemies in a very
+dramatic way. Have them smash through a window, kick down a door,
+blast into the world in an explosion of special effects— anything to give
+your bad guys a good first impression!
+Spawning an enemy into the world is just as important as removing them.
+You want to make sure that the player isn’ t able to slaughter the enemies
+before they get a chance to arrive on the scene. Some games make
+enemies invulnerable upon spawning or have them spawn from off screen
+where the player can’t reach them. You may consider creating a hazard or
+mechanic that allows the enemy to spawn on the playfield without getting
+killed.
+296 LEVEL 11 They All Want You Dead
+In Maximo: Ghosts to Glory, we created coffins that burst through the ground
+to deliver enemies into the world. If the player collided with them, they would
+be knocked backwards. If they swung at them, they would shatter the coffin,
+but the enemy inside wouldn’ t be hurt and would go right into their attack
+routine. Why go through all of this trouble? Because of this very important
+thing:
+FIGHTING ENEMIES IS SUPPOSED TO BE FUN!
+In an action game you are going to be fighting a lot of enemies, so do
+whatever you can to make it awesome! Explosive effects, funny or dramatic
+hit reaction animations, cool and/or gory kills and, of course, lots of
+feedback and rewards9.
+When the enemy is defeated or killed, what happens to the enemy? Do they
+vanish in a puff of smoke or pop like soap bubbles? Do they dramatically
+clutch their hearts and die an agonizing death? Do they explode? How is
+treasure delivered to the player after the enemy is defeated10?
+Determine how the enemy model is removed from the world. Do they fade
+away, leaving only weapon pickups where their bodies once were? Do they
+dissolve into a pile of goo that then melts away? Or do bodies stay on
+screen as a gory reminder of your combat? Remember, what happens to
+your enemy affects your ESRB rating.
+Every action game I’ ve worked on has had one enemy that does this
+attack behavior: step 1: enemy sees player; step 2: enemy charges player
+9 We’ ll talk about how to make the most of rewards in Level 13.
+10 Looks like Level 13 has its work cut out for it!
+Bring on the Bad Guys 297
+like a madman; step 3: when said enemy gets
+close enough to the player, they explode. While
+this sounds exciting, the execution always
+causes problems.
+Third person cameras tend to flip around
+to show the back of the player and first
+person cameras only show the player’ s POV
+from the front, the player never sees the
+exploder pursuing them and therefore never
+gets an indication that they are about to get
+blown up real good. Sure, you can give the
+player a warning by calling out that special
+enemy on a mini- map or have some sort of
+grenade detector HUD element like in Call of
+Duty: Modern Warfare 2, but odds are that
+guy ’ s still gonna catch up to you and then your
+head is going to fly one way and your giblets the other. What I’ m trying to
+say is, no matter how you make it easier for the player to avoid getting
+blown up, this still isn’ t a very good enemy design. Why? Because of this
+very important thing:
+ENEMIES SHOULD BE FOUGHT, NOT AVOIDED
+I ’m not talking about the type of avoiding where the enemy is a whirling
+dervish and you have to dodge out of its way before it hits you. No. I’ m
+talking about the “this enemy is too hard, too cheap, too much of a hassle
+to fight I don’ t want to fight him” type of enemy.
+As a designer, you should strive to make the player WANT to fight the
+enemy. Your job is to make the player realize that there are plenty of
+advantages in risking life and limb to fight the bad guys:
+They have the loot. Gold, bolts,
+experience points, health— it doesn’ t
+matter what it is as long as they have
+it and you want it.
+298 LEVEL 11 They All Want You Dead
+They block the path. This is a lot
+easier to pull off in a 2-D game. You
+can block the player artificially to
+force a fight, like a battle arena …
+They have the key. And you need
+that key to get through the gate that
+leads to the next room, section or
+level. I’ ve always wondered: why is it
+the last enemy you fight is always the
+one who is holding the key?
+You need to take their power. Tired
+of getting shot at? Defeat that enemy
+and take their bigger, better gun!
+Want to upgrade your +1 mace to a
++2? Then kick that orc’ s ass!
+Bring on the Bad Guys 299
+They ’ re making fun of you. Taunts are a great way to motivate players
+into fighting. Having an enemy taunt or challenge a player if they’ re standing
+still for too long not only can force a player into attacking, but is a great way
+to get some character into the enemy. Taunts work great in multiplayer
+fighting games like Street Fighter where the player takes a risk by taking a
+break from combat or defense to mock their opponent.
+It makes you feel like a badass
+(aka it’ s fun to fight). Nothing will
+keep a player fighting more than
+having a solid combat system. To
+achieve that, see Level 10 .
+Don’t forget to let enemies have a
+chance to be a badass too! Give your
+enemies some sweet attacks like these:
+Melee attacks: Do they use hands/
+claws/tentacles/feet? Do they have
+raking attacks or punches? Do they know martial arts? Can they grab or
+ensnare? Can they perform throws? Can they “ground pound” or cause
+earthquake attacks?
+Weapon combat: Do they use weapons? One-handed or two- handed
+weapons? Are they a barbaric or skilled fighter? Can they disarm or be
+disarmed by the player? Can their weapon be used by the player? Can the
+weapon extend, be thrown, or boomerang?
+Projectile combat: Do they use guns/magic spells/ranged weapons? How
+accurate are they with their attacks? Will they blindly fire or wait for the
+perfect shot? Do they track movement or lead when aiming? Do they need
+to reload? Is their projectile explosive? Can they be disarmed? Do they have
+a close range melee attack if engaged or disarmed?
+Persistent damage: Does your enemy’ s attack have a side effect like acid/
+poison/fire? Does it do damage with the attack or as a lingering effect? Can
+it be healed by the player or does it wear off over time? Can it be countered
+by player equipment/gear?
+300 LEVEL 11 They All Want You Dead
+Telegraphing attacks is important for effective enemy combat. An enemy
+should have a “ tell ” animation that informs an observant player that the
+enemy is about to go all stabby, shooty, or clawey. Tells include:
+• Cocking a fist back to punch
+• Growls or yells before swinging weapon or charging
+• Part of anatomy (like twitching tail or reptilian fins) moves before
+attacking
+• Weapon ’s laser sight has to acquire target before firing
+• Weapon or spell “ charges up” before firing.
+Not every attack needs to do damage to the player. There are plenty of
+ways to give the player grief without doing them permanent harm:
+Block/parry: the enemy can block or parry the player’s attack, causing
+a stagger in the player’ s combat flow. This can break combat chains,
+reset combo meters, and cause the player’ s weapon to rebound or
+Bring on the Bad Guys 301
+ricochet. Whatever the source of the block, be it a force field, an actual
+shield or a defensive grab, don’ t ever make the player wonder why it
+happened.
+Knockback: rather than taking damage, the player is knocked backwards
+when hit. Putting distance between the enemy and player can upset any
+combat chain or disrupt any activity the player was engaged in, like spell
+casting or operating a mechanic. It is particularly effective when the player
+is hit while standing on a narrow platform knocking them off or to their
+death.
+Stun: the player is stunned into a
+defenseless state. It can either be
+while standing or down to the ground.
+The player should lose momentary
+control; just as long as it doesn’ t
+last too long, which can be very
+frustrating for players. Circling
+stars and tweeting birds effect are
+optional.
+Freeze/paralyze/capture: acts like
+a stun, but can be broken out of
+by performing button mashing or
+furious waggling of the control stick.
+Characters are often entombed with
+a freeze attack. The player may or
+may not take damage during this
+attack. Make sure you have a cool
+“ victorious breaking free” animation
+and effect when the player finally
+regains control.
+302 LEVEL 11 They All Want You Dead
+Repair/heal: the enemy regains health.
+I suggest using this infrequently as it
+can feel unfair to the player. This works
+best if the enemy has a healing
+animation as well as a health bar to
+show that they’ ve returned to their fully
+(or partially) healed state. Consider
+allowing the player to attack the enemy
+to disrupt their heal.
+Buff: this works like the heal, but the
+enemy is gaining power to charge an
+attack. Usually this can be found
+when charging magical attacks. You
+also find it in shooters when the bad
+guy is charging up their weapon to
+unleash hell on the player. The enemy
+can either be in an invulnerable state
+while buffing up or the reverse, which
+would cause the enemy to lose the
+advantage they sought.
+Thief: the enemy steals money or
+equipment from the player, causing
+the gameplay dynamic to shift from
+“ fight the enemy” to “ get that bastard
+who just stole my chainmail!” Make
+sure the player has a fair opportunity
+to get back what’ s been stolen. Never
+steal anything the player has bought
+or won as part of progression: make
+it something that is (somewhat) easily
+replaceable.
+Bring on the Bad Guys 303
+Leech: the enemy drains the player’ s
+“ charged up” resources. This can be
+super meter power, mana, shield
+power, fuel. Usually the player doesn’ t
+have an opportunity to regain the
+resource from the enemy that
+attacked it. Once it’ s gone, it’ s gone.
+Players will soon pick up that leeching
+enemies should be dispatched as
+soon as possible.
+Unexpected behaviors: if the player
+is expecting a movement pattern or attack,
+having another up their sleeve adds a nice
+bit of variety to the encounter. The variety
+adds to the illusion that your enemy is
+learning to react and defend against the
+player. The player will have to adjust their
+battle plan as they go rather than falling into
+the same old routine.
+Vulnerabilities or resistances? Make sure
+they ’ re clear to the player and follow logic.
+Of course, that murderous snow angel is
+going to be vulnerable to fire, just like that
+flaming pyre corpse is just going to laugh in
+your face when you wave that burning torch
+in front of him. Let the player make logical connections— don ’ t ever let them
+wonder why something doesn’t work. Enemy taunts are great for conveying
+that information. The smugger or more cutting the enemy’s taunt, the better.
+Just don’ t overdo it; even the funniest or best- delivered line gets boring after
+the third time.
+304 LEVEL 11 They All Want You Dead
+Even if an enemy has fierce attacks, nimble defenses and cool behaviors,
+there still has to be a way to kill them. Determining an enemy’ s health is
+done the same way you would for player characters. Balance your enemy’ s
+health in relationship to the player’ s attack. Start with how many hits you
+want your enemy to take before it dies. Consider all of the different attacks
+your hero has when determining this. Your goblin enemy may be able to
+withstand three normal hits, but a holy sword may be able to kill him in one
+stroke.
+All of the notes about displaying player health applies to the enemy’ s health
+as well. Refer to Level 10 rather than making me retype it all here.
+I Love Designing Enemies
+Enemies offer a designer a chance to really flex your creative muscle. It’ s
+fun to come up with horrible monsters and evil villains. Personally, I find
+adversaries to be the most interesting characters in a story. And not just the
+“ big bad” bosses. Look at all of the great cannon fodder found in movies
+and comics: Imperial stormtroopers, orcs, Cobra troopers, death eaters, AIM
+scientists, parademons, Nazi soldiers, those henchmen in James Bond films
+that flip through the air whenever a grenade explodes.
+But I’m proud to report that no one comes up with more creative cannon
+fodder than video games. In games, anything can be an enemy! An angry
+pickle! An irate toaster! Whatever the heck a goomba is! A whole glorious
+world of psychopathic possibilities is yours for the choosing… but rather
+than overwhelm you with a huge list11, I’ ve created the Alphabetical
+Bestiary of Choices:
+11 Besides, that’ s what books like the AD& D Monster Manual are for!
+I Love Designing Enemies 305
+A is for arachnid, our pois ’ nous,
+crawly friend. Beware his webby
+legs or you’ ll meet a sticky end.
+Battlemechs, huge and metal,
+with cannons all a- blazin ’. Stand
+beneath their feet and you’ ll go
+squish just like a raisin.
+C is for criminals, quite the
+cowardly lot. Better catch them
+quickly or you’ re likely to be shot.
+306 LEVEL 11 They All Want You Dead
+D is for the dinosaur that’ s
+chewing on my rear. Who
+said genetic engineering was
+such a good idea?
+Evil creepy children, blank eyes
+stare so sadly. They’ re easy to
+dispose of (’ cept when guarded by
+Big Daddy.)
+Flying devils bedevil you while
+climbing a wall. Give ‘em a whack,
+knock ‘em back, before they make
+you fall.
+I Love Designing Enemies 307
+I hate those Ghosts who chase
+me merely out of habit. But they’ ll
+run the other way if I eat a power
+pellet.
+Henchmen, mercs and soldiers:
+they ’ll kill you for a buck. My
+advice? Shoot them first. If they
+shoot back, duck.
+Irradiated Insects! It’ s my house
+they invade. Someone know where
+I can find a 10-foot can of Raid?
+308 LEVEL 11 They All Want You Dead
+Do not shoot a Jungle Beast, treat
+with kindness instead. Even when
+they steal your gal, throwing barrels
+at your head.
+Killer Plants may look pretty, but
+do not stop to smell. Shooting
+thorns and whipping weeds will
+send you straight to hell.
+A Lich is just a skel’ ton that has a
+fancy name. You should place a score
+or more of these into your game.
+I Love Designing Enemies 309
+M is for mutant freaks, scarred by
+radiation. Their drippy flesh could
+use a little bit of lotion.
+Red Ninjas vanish from sight,
+throwing stars at you.
+If they do any other attacks, make
+sure to tint them blue.
+Orcs, the standard foe of any
+knight or wizard. Can be fought by
+the score in any game by Blizzard.
+310 LEVEL 11 They All Want You Dead
+P is for the pirates who sail the
+seven seas, in ships laden with
+treasure and crews full of disease.
+Dragon, spider, alien: whichever
+type of fiend; they’ re always harder
+to defeat when they are called: “ the
+Queen. ”
+Robots are a paradox— they ’ re
+s ’ posed to make life better. But
+when they’ re in video games, they
+always make me deader.
+I Love Designing Enemies 311
+Spaceships, as an enemy, come
+in many flavors. Try Galaxian,
+Sinistar, or plain ol’ Space Invaders.
+T is for treasure chest; their
+mimics should be banned. First
+you ’re reaching for the gold, but
+then you lose your hand.
+Darn those Unholy cultists! Their
+demons are a blight. They’ re crazy;
+but without these guys, there’ d be
+no one to fight.
+312 LEVEL 11 They All Want You Dead
+Vampire bats are all a- twitter,
+flying rather quickly. Trying to draw
+a bead on them is making me feel
+sickly.
+Werewolves have fearsome
+claws, sharp and ready to maul.
+But rendering all that hair makes
+games slow to a crawl.
+Xenomorphs are nothing but an
+intergalactic pest! Infest your ship,
+eat your brains, and burst right
+through your chest.
+I Love Designing Enemies 313
+Behold these enemies of Yore!
+Gorgons and animal- men. (Lead
+designer ’ s been watching
+Harryhausen films again.)
+Zombies are the final foe, so with
+your gun take aim. They’d be so
+much scarier if not in every game.
+If you don’ t want to use any of those traditional enemies, don’ t sweat it.
+Come up with your own foes! Here’ s how:
+• Start with your theme. Brainstorm the types of enemies based on your
+game ’s environment. For example, an ice world can have killer
+snowmen, yetis, disgruntled skaters, snowball- throwing midgets, and
+penguins with machine guns.
+• … Or start with your story. Who is the main enemy in your story? For
+example, in an original trilogy Star Wars game, I would expect to be
+314 LEVEL 11 They All Want You Dead
+fighting stormtroopers no matter what planet I am on. Other villains
+can appear, but the player should be constantly reminded of their
+arch - nemesis.
+• Come up with a way to tie them together. What’ s the one visual or
+behavioral cue that will differentiate your enemy from the others in your
+game? Or from other games? Within your game, you can create groups
+of enemies based on shapes, color, physical attributes, weapons, or
+uniforms.
+• Be economical with your enemies. Re- use models, animations, and
+textures wherever possible to get the most bang for your production
+buck. When creating similar enemies with different behaviors and
+attacks, make them look different at a glance. I call this design mentality
+“Red Ninja/Blue Ninja” as a red ninja enemy may be set to hop and
+throw shuriken, while a blue ninja may use dash attacks with sai. Sub
+Zero and Scorpion, two of the most famous characters from Mortal
+Kombat series, were originally just reskinned versions of each other12.
+• Does the enemy belong in your world? You wouldn’ t expect to find a
+cybernetic death-mecha in a Super Mario game; that world is too
+whimsical for such “ serious ” enemies. Conversely, a goomba would be
+seriously out of place in a realistic Medal of Honor style title.
+• Make your enemy look like an enemy. Glowing red eyes, demonic
+horns, fangs, clawed hands, spikes, skull ornamentation, ragged capes,
+fearsome masks and helmets that obscure faces. Sure, this is
+stereotypical imagery but if your player sees a character in the world with
+any of these visual traits, they’re going to shoot first and ask questions
+later. Stereotypes are stereotypes for a reason: they’ re easy for the
+viewer to understand. Don’t be afraid to use them to your advantage.
+• … Or go against expectation and type. You can go against “ type ”
+and juxtapose your enemy’ s visual with their behavior. How about a cute
+bunny that turns into a slavering killer? Or a hulking troll that will burst
+into tears when attacked? The more personality you can add to make
+your enemy feel and look unique, the better13.
+I Hate You to Pieces
+When introducing your boss to the player, do it in a memorable fashion.
+Who can forget Darth Vader’ s entrance in Star Wars? Make sure the player
+12 Of course, in the case of Sub- Zero and Scorpion it would be “ blue ninja, yellow ninja”,
+which doesn’t quite have the same zing.
+13 Just remember not to violate the triangle of weirdness.
+I Hate You to Pieces 315
+gets a good look at the villain, that they understand “this is the bad guy”
+they will eventually fight. You always want to give your main villain14 their
+“Joker moment”, where the bad guy executes a henchman or some other
+NPC to show what a truly bad guy (or girl or he- she - demon) he is. This can
+happen within the game or a cutscene.
+Have other characters talk about how bad the boss is before you introduce
+him. Or give the player information in collectable form like audio clips or
+data files or letters to warn the player about the enemy. This works when
+dropping hints to the player on how to defeat the enemy or boss. Arm them
+with knowledge along with the firepower. Anticipation of fighting the boss will
+be greater if the player knows the fight is coming.
+When I was working on a game based on the movie Demolition Man, the
+designers were presented with an interesting challenge. Simon, the movie’ s
+bad guy, didn’ t fight the hero until the very end of the game. But the
+designers knew that Simon had to be a recurring villain in the game so they
+came up with a clever solution.
+At the start of every level, Simon would run out onto the screen, shake his
+fist at the player and then run off. The effect on the player was electric.
+They ’ d shake their fist back and say: “ Oooh! That darn Simon! I’ m a- gonna
+git him!” and then proceed to blast their way through a half hour of
+gameplay. By the time the player reached the next level, they were probably
+so heady from all the killin’ , they forgot why they were there until Simon
+would run out again, shake his fist and re- energize the player. This taught
+me a very important thing:
+14 If you can have other enemies than just the main villian have this “ being bad” moment,
+then that’ s even better.
+316 LEVEL 11 They All Want You Dead
+MAKE THE PLAYER HATE THEIR ENEMY
+How? Simple. Make sure your boss does bad things! This is why villains are
+always killing off their own henchmen: so they have someone to kill if they
+can ’ t kill the main characters! Have the enemy take something the player
+needs or cares about. Kill the hero’ s parents, kidnap the princess girlfriend,
+burn down their quaint village, you get the idea. Whatever your enemy does,
+make sure it impacts the gameplay as well as the story. Make the parent the
+blacksmith that gives the hero that magic sword. Does the girlfriend heal the
+hero whenever he visits her hut? Not anymore! The enemy just kidnapped
+her! And now that the village is burned to the ground, where is the player
+going to store all the collectables he’ s found? Japanese RPGs do this
+right — they kill off the player’s girlfriend, who happens to be your best party
+member. Are those tears I see? Are they being shed for a lost love or
+because you can no longer heal every other turn?
+When it comes time to design your boss fights, don’ t feel like you have to
+kill the boss at the end of each battle. In fact, it’ s better if you don’ t. It gives
+the player someone to fight later in the game. Because your player will have
+“ history ” with this bad guy, they will hate them even more! If you kill off your
+enemy in the first act, who is left for the player to fight? Unmotivated, your
+hero loses the will to live, starts drinking, moves in with his parents15.
+Pathetic.
+And more importantly, not fun.
+Taunts are a great way to get the player’s Irish16 up, but you have to be
+careful not to overuse them. To paraphrase Spider- Man, “ With great power,
+15 Oh right, his parents are dead! Now you’ ve turned your hero into a homeless person. Are
+you happy with yourself?
+16 I apologize to any Irish people reading this, especially Irish people who are prone to get
+angry at authors.
+Non-Enemy Enemies 317
+comes dialogue- the - player- is - going - to - tire - of- hearing - over- and - over- again. ”
+Taunt the player physically as well as verbally. You can even build them
+into your enemy’ s attack moves. For example, in Maximo: Ghosts to Glory,
+there is a sword- wielding skeleton that, every time he’ d successfully hit the
+player, would do a little flourish with his sword, like a gunslinger spinning his
+guns before he holstered them. This flourish was created to give the player
+an opportunity to strike back and wipe the grin off that cocky little so- and
+so ’s face.
+Simple animations like idles and taunts go a long way in making an enemy
+feel smarter than they actually are and provide lots of character. Has the
+player retreated too far for the enemy to attack? Have it berate the player or
+make “come here” gestures. Did the player successfully elude the enemy
+with stealth? It should shrug its shoulders and mutter that they must have
+been seeing things. Some games have guard enemies taking smoking
+breaks or falling asleep at their post to make them easier pickings for the
+hero. But keep in mind you don’ t want every one of your enemies to act this
+way, otherwise you’ ve just thwarted the uniqueness you were trying to
+achieve.
+One last thing about enemies: sometimes you should let the bad guys win.
+I don’t mean killing off the player in order to give your enemies a victory, but
+don ’t baby your players either17. Let the enemy get in a hit (or a cheap shot)
+once in a while. Give the enemy a temporary invulnerable attack state. Force
+the player to run away or at least block an attack. Have your enemies
+outnumber the player several times over. Let them sweat it out as to whether
+they ’ll survive the encounter. The player should feel like they are actually in
+danger from the enemies. A bad guy isn’ t going to feel very threatening if
+the player doesn’ t have to struggle to defeat them. And the player’ s victory
+is going to feel hollow if the enemies don’ t provide a challenge.
+Non - Enemy Enemies
+As mentioned at the start of this chapter, not every game has physical
+enemies that are to be overcome with hot lead and cold steel. There are
+plenty of ways to push and punish your player without resorting to fighting
+sentient beings.
+Gremlin. This character looks like an enemy, but doesn’ t directly engage
+the player. Instead, a gremlin will disrupt the game by undoing the player’ s
+17 I ’ll be talking more about difficulty in Level 13, so hold your horses.
+318 LEVEL 11 They All Want You Dead
+progress. For example, SimCity features a Godzilla- like monster that stomps
+through the player’ s city leaving destruction in its wake.
+Tormentor. This enemy challenges and taunts the player throughout the
+course of the game, but never directly confronts or attacks them. The
+alien overlord of Space Fury and Portal’s sentient computer GLaDOS are
+examples of tormentor enemies. In the case of Portal, the player can
+“ defeat ” GLaDOS by tearing her apart but it is implied that - SPOILER
+ALERT!! - she is “ still alive” at the end of the game.
+Time. “Time pressure makes people think something is a lot more
+complicated than it really is18.” Found primarily in skill-based games like
+driving/racing and puzzle games, a ticking clock is a great way to unnerve
+the player, creating pressure without using an enemy. Some games will
+allow the player to extend or slow the clock for temporary relief. If the player
+doesn ’t achieve the objective or finish the task within the allotted time, the
+player either loses a life or the scenario is reset. Time can also be used
+as an endgame, where the player has to escape a base before it blows
+up.
+Human competitor. Player vs player, competitive or cooperative—
+regardless of the gameplay mode, I find the best and worst thing about
+multiplayer games is… the other players19. Your friends (and complete
+strangers) will always find new ways to torture, torment, and humiliate you
+during a game. As a designer, never underestimate the power of one
+upmanship and revenge. Just give the players the tools they need to act on
+these and sit back and watch the fun unfold. As the old saying goes, keep
+your friends close and your enemies closer, because sometimes they are
+the same person.
+How to Create the World ’ s Greatest
+Boss Battle
+Video game BOSS (n): a large and/or challenging enemy that blocks a player’ s
+progression and acts as the climax/ending to the game’ s environment, level, or
+world.
+18 A succinct quote from Portal designer Kim Swift from GDC 08: Portal Creators on Writing,
+Multiplayer and Government Interrogation Techniques, Chris Faylor, Shacknews.com (http://
+www.shacknews.com/featuredarticle.x?id=784).
+19 I am reminded of Jean- Paul Sartre’ s famous quote: “ Hell is other people.” As Sartre died
+in 1980, we’ ll never know whether he would have appreciated a good deathmatch.
+Who’s the Boss? 319
+At first glance, a boss battle may appear to be an encounter with a very,
+very, very large enemy with too much health. But this is an underestimation.
+Bosses are very complex creatures with many unique and separate working
+parts that should be thoughtfully designed.
+Just like with enemies, boss characters are fun to create. But before you
+start designing your boss, you must first make sure that you have
+completely defined the player’ s move and attack set. Once that’s set, there
+are three different ways to design a boss fight:
+• Learned moves. The boss encounter is designed around the player’ s
+existing set of moves. You don’ t have to teach the player anything new
+and they feel like they’ ve mastered those skills when they defeat the
+boss. The Mario titles design their bosses this way.
+• New abilities. The boss encounter is designed around the player
+gaining a new weapon or new move. The player’ s learning curve is part
+of the boss round’ s difficulty. You find this in many of the bosses in the
+Legend of Zelda series.
+• Combination. No one is saying these two design styles are mutually
+exclusive. Make sure to stage your encounter with emphasis placed on
+one style or the other— don ’ t try to do both at once.
+Who ’ s the Boss?
+Boss design is just like enemy design, where form should follow function.
+Knowing the boss’ movement and attacks will determine the boss’
+appearance: if he can shoot, give your boss a gun (or a magic spell or a
+rocket launcher or a large nose to sneeze out nose goblins), and if he can
+defend himself, give him a shield (or a force field or protective cowling or a
+missile -deflecting karate move). In a nutshell, if they can do it, they should
+have it.
+Next, consider how does the boss relate to the hero? No, I don’ t mean in a
+“ Darth Vader is your father” way, but rather what does the boss represent?
+The James Bond movies of the 1960s and 1970s had a really good formula
+for bad guys. There were technically three “boss types” that Bond had to
+defeat.
+320 LEVEL 11 They All Want You Dead
+The first villain was the arch henchman; the physical adversary. A muscle
+bound goon that would beat the tar out of Bond until he turned the tables
+with one of his spy gadgets or a deftly executed judo move to throw the
+goon into a pool of piranhas. Physical adversaries in the Bond films are the
+classic henchmen like Jaws, Tee Hee, and OddJob. In video games, these
+characters are monstrously large, freakishly hideous, and very heavily
+armed.
+The second villain type is the mastermind; the mental adversary. These
+villains are fought at the film’ s climax. Usually mastermind intelligence leaves
+the hero at a disadvantage and against overwhelming odds. In video
+games, this is when the boss gets into their robotic suit to blast away at the
+hero or forces the player to solve an environmental puzzle that, when
+solved, brings the cackling villain to his knees.
+Even though the mastermind has been defeated, there is still one more
+“ villain ” to defeat: the global threat. This isn’ t a person so much as a threat
+to the hero’s world. This can be the timer on Goldfinger’ s nuclear bomb,
+Hugo Drax’s deadly spore bombs, or SPECTRE’ s space- capsule - eating
+rocket.
+Some questions to consider when designing bosses:
+• What makes the boss a worthy adversary? Most bosses have the upper
+hand on the player in size, strength, firepower, and defenses— make
+sure the player knows they are in trouble even before the fight begins.
+• What does the boss represent to the hero? In many games and movies,
+the villain is merely an obstacle to the hero gaining true love (rescuing
+the princess) or a threat to peace. But don’ t be content with those
+tropes. Villains can represent the inner demons of the hero; in Return of
+the Jedi, Luke Skywalker must reject the dark side and become like his
+Size Matters 321
+father in order to defeat the Emperor (or at least motivate daddy to toss
+the old bastard down a shaft.)
+• What does the hero gain by defeating the villain? It shouldn’t be
+treasure, weapons, or power. In most movies and games, the hero is
+content to merely save the world and restore the status quo. But in the
+classic “ Hero ’s Journey” story structure, the hero returns from their
+adventure with knowledge. For example, in Indiana Jones and the
+Temple of Doom, Indy finds out that fortune and glory aren’ t the only
+important things in life.
+• Every good villain has their own motivation and goals. Give your boss a
+more compelling motivation than “ he ’s evil.” I find “ the seven deadly sins
+of man” (lust, gluttony, greed, sloth, wrath, envy, and pride) to be a
+great starting point for villainous motivations. The Joker lives to create
+chaos and amuse himself. Voldemort wanted to regain his corporeal
+form and power. Whatever the villain’ s motivations and goals, they have
+to come in conflict with the hero’ s own. The boss is the primary obstacle
+to the hero’s success. Only once the villain is defeated can the hero truly
+achieve their goal.
+• What ’s the boss’ job? In video games, most bosses are guardians; the
+guardian of a magic weapon, of a captured princess, of progression. But
+by keeping it at just this, you are doing a disservice to your villain. Give
+the boss a motivation.
+• Is your game based on a licensed property? Remember that these boss
+fights are the highlight of the fan’ s play experience. If you aren’ t a fan of
+the property yourself, research it enough to find out what the player
+would want to do. It’s safe to say that a Star Wars fan will find a
+lightsaber fight against Darth Vader a lot more thrilling than shooting
+down his advanced TIE fighter.
+Congratulations. You’ ve done a great job giving your boss a believable
+motivation, clear goals, and an intriguing backstory. It looks menacing and
+has awesome attacks and behaviors. But the most common way to make a
+boss look bad and dangerous is to make it huge.
+Size Matters
+A bigger boss means a badder boss… and bigger camera problems. You
+can start to solve this by always focusing the camera on the boss. As the
+boss should completely command the player’ s attention, you should never
+let the boss, or the player, leave the camera view. Avoid placing your
+camera:
+322 LEVEL 11 They All Want You Dead
+• Too high: the high angle de-emphasizes drama and the scale of the
+boss.
+• Too low: the foreshortening that
+happens makes it hard to gauge
+the distance to the boss and see
+incoming attacks. It can also
+cause clipping issues if the
+camera drops through level
+geometry.
+Use elevation in the level and with the
+boss to help rectify some of this.
+Allow the player to reach the boss by
+climbing geometry to higher
+elevations. Or you can bring the boss
+down to the player’s level just in time
+for the player to give the enemy a good smack to the face. One thing you
+want to avoid is crotch whacking. This is when the height of the player is
+just tall enough to reach the crotch of the huge boss.
+A big boss means big attacks. Why be content with the boss throwing rocks
+when you can have it throw cars? Why not buildings? Or entire city blocks?
+The more dramatic your attacks, the more memorable they are. Take
+inspiration from games with bombastic bosses like Contra and God of War
+3. Regardless of how spectacular the attacks are, you will need to give the
+player an opportunity to fight back. The player needs to work out when it is
+Size Matters 323
+safe for them to attack. They need to memorize the boss attack patterns.
+Patterns are at the heart of every traditional boss fight and are created when
+several attacks and behaviors are strung together into a predictable
+sequence. Here’ s a simple example to show how patterns can be created.
+Let ’ s say the player is fighting a giant mech armed with a laser cannon. The
+cannon ’ s laser sight sweeps the arena three times (fig. 1). Once the sight
+has acquired a target (the player), the cannon will fire a stream of laser
+blasts —first to the right, then to the left, then in the middle of the arena. The
+mech ’ s cannon then transforms into a larger weapon. This new form
+charges up for a second (fig. 2) and then fires a single thick beam that
+sweeps the ground of the arena which can only be avoided by jumping or
+ducking behind cover (fig. 3). When the attack is over, the mech’ s chest
+cowling pops open and vents steam (fig. 4). After a couple of seconds the
+cowling snaps back closed in a burst of electricity and the mech re
+transforms its cannon back into its original configuration. The attacks cycle
+until there is a break in the pattern initiated by the player, such as the player
+taking damage, dying, or successfully attacking the boss.
+This example shows the components of a boss fight: the primary attack, the
+invulnerable attack, the vulnerable state, and opportunities.
+The primary attack, the laser blasts, create movement patterns for the
+player to memorize and follow (left, right, center). As long as the player
+knows that sequence, they’ ll be able to avoid taking damage.
+Movement patterns should be easy to remember, but feel free to change the
+order of events to add some variety. Random movement patterns can be
+used, but I have found that many players find them difficult to determine
+and get frustrated if they don’ t “ luck ” into a favorable pattern.
+The invulnerable attack, the charged cannon shot, is a dramatic, large
+scale attack that forces the player to take avoiding action. As the player
+cannot hurt the boss during this attack, the player must act defensively,
+breaking up the play pattern.
+324 LEVEL 11 They All Want You Dead
+The vulnerable state, the mech’ s chest cowling opening up, reveals the
+boss Achilles heel to the player and is vulnerable to the player’ s attacks.
+This should be the chance the player has to inflict the most damage on the
+boss. The boss weak spot should be visually designed to be obvious to the
+player: make it flash, glow, or highlight it in some manner. It should stick out
+like a sore thumb. You can prolong a vulnerable state by stunning or
+incapacitating the boss— it becomes very clear to the player that they have
+a chance to attack without the fear of being attacked back. Make sure you
+end the vulnerable state with an attack/event of some sort (in this case the
+electric burst), which pushes the player away from the boss and informs the
+player that their chance to attack the boss is over.
+Opportunities, like the cannon changing form, are chances the player has
+to attack. The window of opportunity is usually shorter than the one given by
+the vulnerable state. Taunts work well for this too. Just don’ t overuse any
+vocal cues, otherwise the player will get tired of hearing them over and over
+again.
+I like to think of boss fights as a
+dance between the enemy and the
+player. Alternate between offensive
+and defensive moves for both the
+boss and player. Get more mileage
+out of your boss attacks and moves
+by changing the timing, speed, and
+range; just make sure these changes
+escalate. Most bosses start out pretty
+easy and get harder as they go. This
+is why many bosses have several
+rounds of patterns— the boss gets
+madder and the threats ramp up until the ultimate climax when the boss is
+defeated.
+Even as your boss is trying to kill the player, make sure to do all you can to
+keep the fight going. Provide plenty of opportunities for the player to regain
+health or power during the fight. Tools like dynamic difficulty will
+programmatically determine what the player needs to succeed. You can
+apply dynamic difficulty to enemy AI, reaction times— in fact, just about
+anything. Delivering the right power- up exactly when the player needs it
+makes the boss fight feel exciting and dramatic.
+I have a confession. While most games design the final boss to be the
+hardest, I have designed them to be one of the easiest. Why? Because I
+want the player to end the game on a high note and feel like the biggest
+badass on the face of the planet. They’ ve already done the hard part—
+playing through the entire game.
+Size Matters 325
+When the player gives the boss their comeuppance, use animations, sound
+cues, and visual effects to show that the player is damaging it. A robotic
+enemy can shoot off sparks, a fleshy foe can spray out gouts of blood or
+ichor. Other bosses will limp or crawl as they are close to death. Work with
+your artist to build your boss to have parts of it get chopped off or use
+several models that show increasingly damaged states. No matter how your
+boss goes, remember this very important thing:
+LET THE PLAYER ADMINISTER THE COUP DE GRACE
+The last strike of the fight needs to be delivered by the player. It’ s very
+important psychologically for the player to feel that they have won. This is
+the climax of the encounter— don ’ t rob your player of their victory with a
+cutscene or a canned animation. Once the boss is dead, let the player
+savor the moment with celebratory text, music, or effects.
+Sometimes, due to story or licensing needs, your enemy will escape at the
+end of a boss fight. As the enemy escapes, do it with style. Having an
+enemy escape to fight another day shows to the player that they are a
+worthy adversary and another encounter is coming. But even if the boss
+escapes, you still need to make the end of the fight satisfying. You need the
+false kill. You must first knock the boss to his knees before he gets up and
+runs away. Hold camera on that defeated boss for a moment. Let him curse
+the player’ s good luck (because it’ s never skill that defeats a bad guy,
+right?) Make sure it’ s clear to the player that they’ ve won the fight.
+One more thing. Sometimes the player is going to die. When they do, make
+sure they return to a safe respawn point. The boss shouldn’t attack until the
+player is ready to fight. Consider keeping the boss’ game state upon the
+player respawn. This means picking up the fight where the player left it
+rather than restarting the entire boss fight sequence from the beginning.
+326 LEVEL 11 They All Want You Dead
+Location, Location, Location
+Where a boss fight takes place is just as important as designing the fight
+itself. The level is an extension of the boss fight— and sometimes, the level
+IS the boss fight.
+The basic boss fight takes place either in a circular arena or a linear screen
+wide walkway. This allows the camera to stay focused on the boss who
+generally inhabits the center or back of the room with occasional trips to the
+side and outer edges. For more dynamic boss fights, add elevation to the
+arena. Devil May Cry had an interesting fight where the player kept
+alternating between fighting the boss on the walls of a castle and in the
+castle ’s courtyard.
+Think about the boss in relationship to the environment. How will a boss use
+the level for movement or attacks? Having dynamic elements like collapsing
+statues or walls or break away floors can keep things exciting and surprising
+as the environment gets wrecked by the boss (and the player) over the
+course of the battle. Bust that joint up! Just be aware that if the player has
+to replay the boss fight, it may get a little stale seeing the event happen
+again and again.
+Designing boss arenas with dynamic level elements is the best of both
+worlds. The arena contains dynamic objects and elements that will react to a
+certain boss attack or action. These can be breakable windows, smashable
+floorboards, crushable computer consoles, and so on. This way, no matter
+what order the boss interacts with these elements during the battle,
+interesting things will happen. It creates a different experience every time.
+A scrolling battle, where the player and boss fight their way through
+several locations, makes for a dynamic boss fight. First determine the
+method of player locomotion during the fight. Are they fighting on foot
+Why Not to Create the World’s Greatest Boss Battle 327
+(chasing each other?), on top of vehicles (like the moving train in Uncharted
+2: Among Thieves or hopping from car to car as in Wet), or while piloting
+vehicles? (Maybe they are vehicles!) Just be careful as scrolling boss fights
+require as much work, if not more than a full level.
+Another variation is the puzzle boss: a boss that is actually invulnerable
+and cannot be defeated by a direct assault by the player. Instead of
+fighting, the player has to survive the boss’ attacks long enough to use
+objects in the level that will defeat it. Spidey can’ t actually hurt the Rhino
+boss in Spider-Man 2 (Activision, 2004) but if Spidey can trick the Rhino into
+smashing into electrified machinery, he can defeat him. The most obvious
+(and hilarious) example of a puzzle boss is in You Have To Burn The Rope
+( http://www.youhavetoburntherope.net ) where the Grinning Colossus can
+only be defeated by … well, I’ ll let you guess how to beat this one20.
+Why Not to Create the World ’ s Greatest
+Boss Battle
+Some designers believe that boss fights are too “ old school” ; that they grind
+game progression to a halt; that the time and effort to create bosses with
+their non- reusable artwork, hard- coded behaviors, and unique animations
+just isn’ t worth the production cost. They create a skill gateway; whenever
+someone has told me that they’ ve quit playing a game, it was usually
+because a boss was too hard.
+An alternative to these problems can be found in turning the boss fight on
+its head. Instead of making it about a big creature, make it about big drama.
+20 Spoiler alert: you have to burn the rope.
+328 LEVEL 11 They All Want You Dead
+Make the fight personal to the player,
+and more about pivotal moments in
+the story.
+My friend, designer Paul Guirao
+(Dead to Rights, Afro Samurai),
+created what I thought was the best
+boss fight design I had ever heard.
+During the course of his game, the
+player would learn to arm- wrestle in
+order to win cigarettes— the game’ s
+currency while the hero was in prison.
+At the climax of the game, the hero is knocked to the ground by the villain
+who attempts to plunge a dagger into the hero’s eye! The player has to use
+his arm-wrestling skill to force the dagger away, and eventually turn it on the
+villain himself.
+Paul ’s design really opened my eyes (groan) to what a boss fight could be.
+It sounded awesome and dramatic and very different to anything else I had
+seen in games. What I really liked about it was:
+Emphasized drama over scale: it didn’ t need a rocket- fi ring colossus
+rampaging through a city to be exciting.
+Intimacy creates urgency: because the camera view was to be very tight
+(only the faces of the two characters, their hands, and the dagger were to
+be shown), the impending danger was heightened to a degree not seen in
+most video games.
+Better utilizes existing assets: all the assets for the fight — the hero, the
+villain, the dagger, the arm-wrestling HUD meter— were used in other parts
+of the game. Nothing new had to be created to make this boss fight
+playable.
+Told story with boss fight, not cutscenes: video games are interactive
+entertainment —playing the story is always better than watching it.
+SPOILER ALERT!
+Years later, as I played the ending of Call of Duty: Modern Warfare 2 I was
+reminded of Paul’ s knife- fight design. In CoD:MW2, your player character is
+stabbed in the chest by the villain who is now killing your commanding
+officer. The player has to (painfully) pull the knife from his own chest and
+hurl it into the eye of the bad guy (in very dramatic slo- mo).
+Had the designers at Infinity Ward heard of Paul’ s knife-fight design idea?
+Or was it just a good idea for a boss fight whose time had finally come? All I
+Level 11’s Universal Truths and Clever Ideas 329
+know is it was as awesome and dramatic as Paul’ s boss fight idea had
+sounded to me all those years ago.
+Level 11’ s Universal Truths and Clever Ideas:
+• Form follows function.
+• Design your enemies to complement and contrast with
+each other.
+• Carefully balance the enemy’s strength, speed, and size.
+• Fighting enemies is supposed to be fun.
+• Enemies are meant to be fought, not avoided.
+• Not every enemy attack has to do damage.
+• You always want the player to hate the enemy.
+• Use dynamic difficulty to give the player some help.
+• Watch out for camera issues when creating a large- scale
+boss.
+• Where the boss fight takes place is just as important as
+who the player is fighting.
+• The player has to give the boss the killing blow.
+• There are other types of enemies besides big stompy
+monsters.
+• Emphasize drama over scale.
+
+---
+
+## Sección 14: Part 3 — Controls [Entropy: 0.786]
+
+T
+LeveI 12
+The Nuts and Bolts
+of Mechanics
+If you find a path with no obstacles, it probably doesn ’ t lead anywhere.
+Author unknown
+There ’s nothing worse than an empty level you just walk through1, so we
+need to start throwing things in the player’ s way. Good things, bad things,
+things that make the player cry with pleasure and weep with sadness. We
+need mechanics. Lucky for us, there are four types of these beauties to
+work with: mechanics, hazards, props, and puzzles.
+Before we dig in, be aware that mechanics is another term that suffers
+from MDS: multiple definition syndrome. Board game designers say
+mechanics are the gameplay systems used to play a game. These are
+things like turns, action points, resource management, bidding, and even
+rolling the dice.
+Video game mechanics are objects that create gameplay when the player
+interacts with them. They can be jumped on, activated with a button press,
+or pushed around. Combine them with interesting level layouts and
+enemies. Some of the more common video game mechanics include:
+• Opening/closing doors • Slippery floors
+• Pushable blocks • Conveyor belts
+• Switches and levers • Moving platforms.
+Platforms are a beloved mechanic of action game designers. They come in
+a wide variety of styles and flavors that can be used to bedevil and delight
+players. Here’ s a suitable- for- framing chart that I’ ve devised to help you
+identify platforms in the wild. Be careful, some of them bite!
+1 Because WALKING IS NOT GAMEPLAY!!
+
+The Nuts and Bolts of Mechanics 333
+You would think that something like doors would be easy to design; after
+all, we all have used them in the real world, right? But doors open their own
+set of issues. Think about how the player is meant to open a door.
+Normally? Carefully? Aggressively? Remember, the character’ s personality
+comes into play when thinking about this. Kratos kicks open doors. “ Soap ”
+Mctavish uses explosives to blow open doors. Jill Valentine opens doors
+very slowly and carefully. Does a player have to pick the lock before they
+enter?
+Be mindful of which way your door opens. Does it open in? Does it rise up
+like a portcullis? Does it lower down? Does it swing out? All of these
+opening actions can lead to different gameplay scenarios. Mappy (Namco,
+1983) used doors to whack and temporally stun enemies. A portcullis in an
+action game might lower back down after raised, requiring the player to
+dash under it before it drops down. Even a simple door in a survival horror
+game can be closed in the face of an enemy to buy the player the time to
+reload or escape.
+Despite their benefits, doors can bring their own problems. Quickly opening
+doors can clip into the player or cause the player to get knocked back.
+Make sure your player doesn’ t get caught on doors and doorway geometry.
+It may seem like an insignificant problem, but after getting caught up in
+hundreds of doorways, your player will be pissed off. That’ s the reason why
+so many games make opening doors a canned animation sequence. The
+early Resident Evil games designed their level loading to correspond with
+the player opening a door. Not only did it mask the loading of the level
+section, but it built tension as the door slowly swung open.
+Make sure you know the answers to these questions and then keep the
+method of entry consistent throughout your entire game.
+Some doors are just not meant to be opened. Locked doors are perfect for
+getting players to find another route through a level, but just make sure it’ s
+super clear why they can’ t get through. Your locked door can look like it’ s
+made out of unbreakable metal, have a huge lock on it that the player
+334 LEVEL 12 The Nuts and Bolts of Mechanics
+doesn ’t have the key for, or it can be blocked with debris that the player
+can ’ t move. Whatever the choice, the appearance needs to be obvious to
+avoid frustration. Locked doors are often (some say too often) used to
+introduce this common gameplay scenario: the quest to find the key2.
+Switches, cranks, and levers are another old standby in video game
+design. Some designers love using them, others avoid them like the plague.
+I admit that nothing makes my eyes roll faster than seeing a lever sitting in
+the middle of a room. It’s something that screams “ video game” to me. How
+many times in your life have you actually pulled a lever? But, they are very
+useful for a variety of gameplay mechanics. If you do use switches and
+levers, keep them visually simple. Now I know that one of the great
+pleasures in designing video games is creating fantastical things, but
+players will clearly understand the “cause and effect” if you keep things
+grounded in reality.
+Whatever you end up doing with your switches and levers, make sure that:
+• You consider placing a visual effect like a glow or an icon on your switch
+or lever. Because levers are usually shown as slender poles, the player
+might have a hard time seeing them.
+• The player sees the effect of activating the switch/pulling the lever. That
+means using a camera cut, voice, and/or sound effect to make sure it’ s
+clear.
+• The switch/button should change appearance to show that it is in a new
+state. Have it change color, position or shape. If the switch is a one- way
+switch (one that only operates once), play a nice meaty sound effect to
+indicate that it’s permanently changed its state. If it’ s a resetting switch,
+then play a “ timer ” sound effect to indicate that that switch is going to
+revert back to its original state. You can even display a timer graphic so
+the player knows how much time they have left.
+2 We’ ll talk more about keys in Level 13.
+Holy Death Trap! 335
+Cranks are like levers and switches that take time for the player to activate.
+Some cranks are operated by pressing a button and holding it, while others
+require furious button mashing to open. Some games turn rotating a crank
+into a rhythm game where the player has to sync button presses with the
+animation of the character onscreen. You can even turn a crank into a
+combat puzzle like the ones in Devil May Cry. If turning a crank takes X
+seconds to activate, then spawn enemies to attack the player as they are
+turning it. If the enemies hit the player, he’ ll be knocked off the crank, which
+will unwind the crank’ s progress. The player will have to alternate between
+fighting enemies and turning the crank.
+Need a little more help coming up with mechanics? I just happen to have a
+list in Bonus Level 6 .
+Holy Death Trap!
+Hazards are the mechanic’ s nasty little brother who will slip an M-80 into
+your underpants when you aren’ t looking. They look like mechanics, they
+336 LEVEL 12 The Nuts and Bolts of Mechanics
+often act like mechanics, but they will kill a player just for snoring too loud.
+Hazards may also resemble enemies, but the key difference is intelligence
+and/or mobility. All hazards have predictable patterns and limited
+movement.
+• Spiky pits
+• Smashing blocks
+• Blasting flames
+• Exploding barrels
+• Laser-guided missile launching turrets.
+When you are designing hazards, the first rule is to make sure that they look
+dangerous. That means spiky, flamey, frosty, sparky, poison-y. Slap a big
+death ’s head on it if you have to.
+When creating your mechanics, take inspiration from the theme of your
+level. Create things that look like they belong in the level. For example, in
+the dungeon level of Maximo: Ghosts to Glory, we had:
+• Grabbing prisoner hands that pop out from grates
+• Suit of armor wielding a chopping axe
+• Spinning spiked iron maidens
+• A toxic sewer filled with floating coffin platforms.
+Get inspiration from dangerous-looking things in the real world; from spiny
+cacti to razor wire. Use shape, color, sound effects, and particle effects:
+anything to make it clear to the player that they WILL get hurt if they touch/
+collide with this hazard. And to demonstrate this point, there follows a great
+example of what I DON’T mean.
+Holy Death Trap! 337
+I was designing a hazard and took the design to the artist who was going to
+be building it. I suggested that the hazard be colored red, as many cultures
+associate the color red with danger. The artist said “ that ’s too predictable. I
+think it should have yellow and black stripes.” I was intrigued (I was thinking
+of the yellow and black hazard edging found on loading docks) so I asked
+her why. She replied “because bees have black and yellow stripes and
+everyone knows that bees are dangerous.”
+Epilogue no. 1: The hazard ended up red.
+That story reminds of another story. A designer and I were reviewing level
+designs. This particular level featured a ship that would sail away as the
+player started the level. The player had to run to catch up with the ship,
+otherwise they would literally miss the boat. I told the designer that I thought
+that the player would stop and look around to get their bearings when they
+started a level. If the player took the time to do that, they’ ll literally miss the
+boat. What would happen to the player if that happened? He said “Oh, we
+can just drop a big rock on the player’ s head so they’ll die and have to start
+the level over again.”
+Epilogue no. 2: We didn’t make that level. As a result, I came up with this
+very important thing:
+338 LEVEL 12 The Nuts and Bolts of Mechanics
+NO DROPPING ROCKS ON THE
+PLAYER ’ S HEAD3
+Instant death hazards just suck. They are
+cheap and mean-spirited. If the player is going
+to die because of a hazard, let them die
+because they didn’ t pay attention or get the
+timing right. Make them realize it was their fault
+they died, not because the designer decided
+they needed to die. Death is never a good way
+to educate the player. It just makes the player
+frustrated and sad.
+The secret to balancing great video game
+design is knowing this:
+Diffi culty = promotes pain and loss.
+Challenge = promotes skill and improvement.
+A difficult game does whatever it can to punish the player. A challenging
+game confronts the player with obstacles that can be overcome with skill
+and knowledge. I believe a challenging game is much more rewarding than
+a difficult one.
+Some gamers absolutely love difficult games. The list of ridiculously difficult
+games could fill this entire chapter: Demon ’ s Souls, the Ninja Gaiden
+series, Contra, Ikaruga, Shinobi, Devil May Cry 3, the Ghosts ‘n Goblins
+series, Defender, Battletoads. I admit, it is quite an accomplishment to
+finish a difficult game, but those that do are in the minority. If you want
+players to play your game to completion, then your game needs to be
+challenging, not difficult.
+When I first started designing video games, I would refer to the balance
+between challenge and difficulty as the “fun curve. ” There is a point in the
+game where things have ceased to be challenging and drop straight into
+difficult and frustrating. The goal was to never “go over the fun curve.” Years
+later, I learned there was an actual psychological theory about the fun curve
+called “flow. ” We’ ll get to flow in a moment.
+My key to keep players from “going over the fun curve” is to create
+ramping gameplay. A designer must build one gameplay system upon the
+last, teaching the player a new move and how to master it against
+mechanics and enemies. These gameplay elements are combined and
+gently intensify as the game progresses. But I’ m getting ahead of myself. If
+3 I mean that figuratively as well as literally.
+Time to Die 339
+we are going to talk about the timepiece, we are going to have to examine
+the clockworks first.
+Time to Die
+Another important mechanic is the timing puzzle. Timing puzzles are
+mechanics that move. They are perfect for creating tense moments where
+the player has to wait for the right moment to dash through whirling blades
+or smashing pylons4. They cause anticipation for the player as they wait for
+the right moment to jump to a moving platform. A timing puzzle should have
+the following:
+1. The hazard must have a discernable movement pattern. Back and forth,
+up and down, zigzag, circular, or figure of eight: it doesn’ t matter, just
+as long as the player can track its movement.
+2. The hazard must have predictable timing. Random timing is unfair to
+the player, who needs to understand the pattern to be successful.
+3. The window of opportunity must be tight, but not impossible. Allow
+leeway for the player at the start and close of the window’ s opening.
+4. Use “ tells ” in the world to give the player clues to where it is safe to
+stand and where they will be hurt or killed. Bloodstains, grooves in the
+floor, lighting and shadows, sound effects, particle effects, geometry,
+decorative elements; players notice these things and will learn to use
+them as markers for success.
+Props are mechanics after a big Thanksgiving dinner; they don’ t move
+unless someone asks them to get off the couch and do the dishes. These
+4 To this day, I still get tense thinking about those spinning paddles in the Spectre chamber
+of Dragon ’s Lair; a scenario which may be the first video game timing puzzle.
+340 LEVEL 12 The Nuts and Bolts of Mechanics
+items can be placed by designers and artists into the level to make it feel
+more like a real place. Sometimes they act as barricades or obstacles for
+the player to avoid, jump over, or take cover behind:
+• Desks and chairs
+• Parked cars
+• Barricades
+• Statues and gravestones
+• Trees and shrubbery
+• Fences and walls
+• Potted plants and water coolers.
+Thinking up props can be an entertaining exercise in free association and
+brainstorming. Start with the predictable items that you would find in your
+level and go from there. Here’ s an exercise— come up with as many items
+and props for the following level themes:
+• Easy: the street of a Wild West town
+• Medium: a supervillain’ s lair
+• Hard: Chinese clothing factory.
+Pro tip: if you find your brainstorming ideas getting silly or filthy, you know
+you ’ ve reached a good place to stop. Let it settle overnight or for a day or
+two before starting again. Or take a research break and look for more
+inspiration in books, games, movies, or the interwebs.
+Don ’ t be satisfied with merely thinking up items to decorate your world—
+allow your players to interact with them. Start with natural reactions. If you
+shoot a water cooler it should explode in a watery splash. Let players knock
+over light items or shove around heavy ones. Let players closely examine
+interesting pieces of statues, bookshelves, or paintings.
+You can shoot or smash props to access new areas or yield treasure. In the
+Lego games (like Lego Star Wars and Lego Batman), you can pretty much
+destroy anything— all yielding studs, the game’s version of money. There’ s
+nothing more satisfying than busting up junk to get tons of treasure, but try
+not to overdo it as it can turn your carefully designed gameplay into a
+mindless smash- fest.
+Crates are breakable items that yield goodies and double as platforms, but
+they ’ re also overused clichés that have become a joke within the gaming
+industry; visually boring and, frankly, a lazy fallback for designers and artists
+who don’t want to burn the brainpower to think up more interesting
+breakable objects.
+The Music of Mechanics 341
+Gaming website Old Man Murray5 created a review system called “start to
+crate” that gauges the time it takes a player to encounter a crate in a game.
+While the article is meant to be satire, I find it to be a good gauge to
+determine just how creative your game is. Rather than reinvent the wheel…
+err, crate, here is a list of 50 breakable objects you can populate your game
+with other than a crate:
+Barrel, treasure chest, vase, urn, trash can, mailbox, newspaper stand, baby
+carriage, metal drum, cargo container, cardboard box, cage, lantern, lamp post,
+filing cabinet, fish tank, toy box, keg, hay bale, pile of skulls, dog house, bird
+house, Tiki idol, statue, fortune- telling machine, church donation box,
+suggestion box, ATM, hollow tree stump, attaché case, safe, suitcase, TV
+monitor, fuel tank, refrigerator, oven, breadbox, bureau, wardrobe, parked car,
+coffin, arcade machine, soda machine, fire hydrant, vending machine, oxygen
+canister, filled shopping cart, one- armed bandit, copy machine, and toilet.
+There. You never have to have a crate in your game again. You’re welcome.
+There is one more type of mechanic, which is the rarest one of all. It’ s the
+mechanic that’s “ just for fun.” This can be the player piano that plinks out a
+tune as you approach it or the toilet that flushes if you interact with it. Don’ t
+be afraid to include these just- for-fun props in your own game.
+The Music of Mechanics
+In the great chili pot that is video game design, hazards are the beans. Just
+like beans, they act as filler when you don’ t have enough meat to go around
+5 See http://www.oldmanmurray.com/features/39.html for the article in question.
+342 LEVEL 12 The Nuts and Bolts of Mechanics
+and … they help the designer make “ music. ”6 The goal of good level design
+is to help the player achieve what psychologist Mihá ly Csí kszentmih á lyi7
+calls flow. (I told you we’ d get back to it.)
+Cs í kszentmih á lyi ’s theory proposes that there is a point between boredom
+and difficulty. A place where players become so engrossed that they
+become energized, focused, and unaware of time. But in order to create
+flow, you need to know how to orchestrate these elements together.
+Reaching the state of flow feels like making music; it’ s the rhythm of a great
+level. A natural rhythm of the player’s movement and actions— or flow—
+starts to emerge as he traverses the level8.
+To me, game element placement is orchestrated like the instruments in
+Sergei Prokofiev’ s Peter and the Wolf. In this famous musical piece, each
+6 Yes, I went there.
+7 Pronounced “cheek sent me high- ee” You can bet your ass that I cut ‘ n ’ pasted that name.
+8 The ancient Greeks believed there was a correlation between music and mathematics. The
+Playstation game Vib Ribbon (SCE, 1999) uses musical beats from any music CD to generate
+gameplay mechanics and hazards. The same ideas shown here in my example can be applied
+from a mathematical persepective, where the gameplay elements and mechanics are combined
+to create a formula of successful gameplay. I am told that game designer Mark Cerny (Marble
+Madness, Crash Bandicoot, among others) works this way.
+The Music of Mechanics 343
+character (Peter, a duck, a cat, a bird, and the wolf) are represented by a
+different musical instrument. The piece starts out with Peter (represented by
+strings) walking through the forest. This musical theme gives the impression
+of movement, just like where the player is learning how to do the basics in a
+game: walking, driving, and manipulating the game character.
+Then Peter is joined by the bird, which adds a higher register flute to the
+music. The two themes intertwine, adding excitement to the music; just like
+treasure and collectables keep the player excited and motivated to continue
+playing. The duck (represented by an oboe) joins in and the music speeds
+up and gets more complex, similar to the addition of complex movements
+and mechanics to your level design. When the lower register cat (a clarinet)
+comes in, the music picks up as the cat chases the bird, adding a little
+conflict to the piece— much like hazards in a level.
+Once all the characters are together, the wolf’ s dangerous sounding theme
+comes in; this echoes the arrival of enemy characters in a game. The music
+in Peter and the Wolf intensifies as the wolf eats the duck, is attacked by the
+bird, and threatens and battles the heroes until they are rescued by the
+crashing arrival of hunters. (Represented by drums.)
+Let ’s take a look at how we can introduce and orchestrate gameplay
+elements the same way that Peter and the Wolf adds instruments.
+1. Start your player moving through the world with simple movement
+challenges: walking, jumping, and collecting goodies.
+2. Then add one mechanic. Repeat it a couple of times so the player
+understands how it works.
+3. Add a second mechanic, and let the player learn that one too. Then
+combine the first one with the second.
+4. Make things exciting with a hazard. Let players get used to doing the
+things they would normally do in the game (traversal, collection,
+interaction with mechanics) but now with the hazard being part of the
+equation.
+5. Now come the enemies! Give the players a chance to learn how to fight
+them.
+344 LEVEL 12 The Nuts and Bolts of Mechanics
+6. Combine the enemies with the hazards for more excitement.
+7. Finally, just as the player is getting used to all of these game elements,
+toss one of them on their head just to keep the player on his toes!
+Well - designed enemies and hazards go together like peanut butter and
+chocolate! If you create them to complement each other9, they’ ll end up
+being versatile tools when populating your level. Think about what order you
+want the player to do the activities and set up the scenario for the players to
+figure out. Here are a few examples of how to combine enemies and
+hazards to make life more difficult for your players:
+The player has to jump over the hazardous pit with an enemy waiting on the
+other side. Place the enemy far enough away so he doesn’ t engage the
+player until he safely lands after the jump. To make this scenario more
+intense, have the pit have a timing element to it: pit opens and closes,
+a pendulum swings back and forth, fire gouts up, block slides down,
+and so on.
+Here ’ s an enemy that throws or shoots a projectile through the path of a
+moving hazard. Design the timing so that it passes through when the
+opening appears. The solution is for the player to dispatch the enemy (with
+their own projectile) before running through the moving hazard. Or the
+player can use the moving obstacle as cover to get in closer to the enemy.
+9 This is easy because form always follows function, right?
+A Nice Little Calm Spot 345
+The whirling saw blade in this chamber will cut the player in half if they
+collide with it, which makes fighting these multiple enemies a challenge; the
+player has to dance between combat and avoiding the hazard. However,
+the blade should also kill the enemies, which makes the player feel clever
+when he lures them to their death by saw blade. Give the player plenty of
+opportunities to turn the death traps against their makers. It’ s all about the
+villains getting their comeuppance!
+Fire pit, moving obstacle, whirling blade; there are many more combinations
+you can do with just these three mechanics. As these examples show, you
+really only need a few mechanics and enemy types to make a rich play
+experience. A well-designed game uses a handful of mechanics. The key is
+how you combine them. Play any game by developers Treasure (Gunstar
+Heroes, Dynamite Heady, Ikaruga) or Naughty Dog (Crash Bandicoot,
+Uncharted) to see some great examples of how to get the most out of your
+mechanics.
+Be mindful that it is possible for players to get bored with mechanics if they
+are repeated too often, so think about the context in which they are used.
+Think of a good mechanic like a baseball pitcher. You need to rotate them
+in and out of your game to keep them fresh and effective.
+A Nice Little Calm Spot
+Now that we’ ve gotten past the
+hazards with our lives, let’s talk about
+a friendlier mechanic: checkpoints.
+Checkpoints are predesignated
+locations within the level where the
+player can save their progress, take
+a break, or reassess their choices
+of equipment, route, and so on.
+They can be invisible to the player
+346 LEVEL 12 The Nuts and Bolts of Mechanics
+or visible. You will want to determine which method is better for your own
+game.
+Visible checkpoints offer the player a target in the level, provide a sense of
+security when they are activated, and can be an opportunity for an exciting
+or fun animation. The player feels a sense of accomplishment every time
+they reach and activate one.
+On the other hand, visible checkpoints can look “ gamey ” and sometimes
+require explanation on how they can be activated.
+Invisible checkpoints don’ t break the player’s immersion while playing the
+game. However, as they are invisible, the player may not be sure when they
+are activating a checkpoint or where they will respawn upon death. This can
+be frustrating for the player as they wonder how far back in the level they
+will end up.
+No matter which style checkpoint you use, here are a few rules of thumb to
+remember:
+• Always face the checkpoint in the direction you want the player to travel
+in. Otherwise they’ ll get turned around or have to reorient the camera
+upon respawn.
+• Never place a checkpoint next to a hazard or in the detection zone of
+an enemy. It’ s totally cheap to take damage when you (re)appear in a
+level.
+• Players should respawn on the ground. That way they don’ t have to wait
+for the character to land on the ground. Also, avoid long respawn
+animations for the same reason.
+• Place the checkpoint on flat, even ground to avoid any collision
+problems upon respawn.
+• Make sure your game’ s saved data is retained whenever a checkpoint is
+activated. Don’t make the player have to go into another menu just to
+save the game.
+Riddle Me This
+Puzzle mechanics can be tricky; not just because they can be difficult to
+design or because they often require unique assets to create. It’s just that
+puzzles are tricky to classify. Here’ s one definition I’ ve found:
+A puzzle is fun and has a right answer.
+Scott Kim
+Riddle Me This 347
+While Mr. Kim has designed waaaay more puzzles than I ever will10, this
+defi nition doesn’ t feel quite right to me. What bothers me is the use of the
+word “ fun. ” Fun is completely subjective, like the words “ funny ” and “ sexy. ”
+What I think is fun may not be fun for you. And frankly, I don’ t find many
+puzzles in video games to be fun. For me, there’ s nothing worse than a
+puzzle whose solution I just can’ t fathom. At least with a difficult boss
+monster, you can brute force your way through to victory. You just can’ t do
+that with a puzzle. So, with apologies to Mr. Kim, I have created my own
+defi nition:
+A puzzle is a challenge that has a right answer.
+Scott Rogers
+The difference is the word “ challenge. ” That’s a puzzle’ s job (and the entire
+game for that matter!) to challenge the player. And the challenge of the
+puzzle is “solve me.”
+The player first needs to know what reward is offered for solving the puzzle.
+It can be to open a door, create a picture, or translate a message; just
+make sure the player knows “what do I need to do?” I always think this very
+important thing applies:
+SHOW ‘EM THE DOOR AND THEN SEND ‘EM AFTER THE KEY11
+When creating the puzzle, keep the puzzle’ s pieces simple and modular.
+You only need a few pieces to create many combinations. Work with as few
+moving pieces as possible to prevent the player from getting confused.
+Make sure that when a puzzle piece is adjusted, the player can see that it’ s
+10 Go to http://www.scottkim.com for loads of puzzley goodness, including free games!
+11 It doesn’ t have to be a door. And it doesn’t have to be a key. I’ m speaking metaphorically
+here.
+348 LEVEL 12 The Nuts and Bolts of Mechanics
+been adjusted and a clear way to return it to its original position. Many times
+it ’s easy to lose track of progress. Keep the pieces uniform unless
+irregularity is part of the puzzle. Uniformity and consistency will keep it easy
+for a player to understand how the elements fit together. Let them
+concentrate on the puzzle, not the manipulation of the pieces. When the
+player interacts with a puzzle piece, a simple button press should show a
+result. It may not automatically lead to the solution, but they should get the
+idea that repeating the action will eventually get them there.
+When I’ m confronted with a puzzle in a game, I “ check the puzzle” against
+every ability I have, every item I’ m carrying and every object in the room. So
+I think about what the piece is and its relationship to the other pieces as well
+as to the entire puzzle. If the relationship of the puzzle pieces isn’ t clear, it’ s
+easy to get stumped. Make sure that you avoid cultural references or arcane
+or unusual uses of pieces to solve the puzzle.
+For example, Resident Evil 2 had a puzzle where
+the player needed to open a door in a police
+station. The puzzle required placing chess pieces
+into a control panel. Whaaaat? First of all, since
+when do you find chess pieces in a police station,
+let alone ones that operate a control panel? Now if
+it had been… I don’ t know… the ID cards of dead
+police officers found throughout the station, it
+would have made more sense. What I’ m getting at
+is: tie the puzzle into the game’ s story and it won’ t
+seem so abstract to the player.
+Players should have all the tools nearby that they need to solve the puzzle.
+It ’ s not fair to make the player run all over the level, let alone the game
+world, wondering what works to solve the puzzle and what doesn’ t.
+The layout of the puzzle is as much a clue as the pieces. If you present a
+board style layout, players can visualize movement and patterns using the
+board as a guide before they tackle the problem. If puzzle pieces move in a
+particular fashion, then players can visualize the consequences of moving
+the pieces. Just like with timing puzzles, movement and layout will help the
+player see patterns emerge which will help them reach their goal.
+Puzzles in video games are essentially gating mechanisms. If you have lots
+of puzzles, then make sure there are multiple paths of progression.
+Eventually, they will have to come back to the puzzle that stumped them to
+solve it. But perhaps players will have figured out how to solve it in the
+meantime.
+Tell the player whether they are close to finding the solution… or not.
+Remember that kid’ s game where you are searching for a hidden item and
+Riddle Me This 349
+another player says, “ you ’re hot” and “ you ’ re cold” depending on how close
+you are? Essentially, that’ s what the game designer needs to do for the
+player. Make your hints relevant to the puzzle. Ask yourself “ what would I
+want to know at this point?” Remind the player what their goal is. Use
+camera cuts to show cause and effects that happen during the puzzle. Use
+voice and sound effects to give positive reinforcement. There are really only
+four ways to solve a puzzle: reason, knowledge, skill, or plain ol’ dumb luck.
+The best puzzles allow players to use all four of these in some capacity to
+solve the puzzle. Granted you don’ t want the player to stumble onto the
+solution, but if that’s what it takes, then a stumped player should at least be
+able to do that.
+You need to give the player the “A - Ha! ” moment
+(no, it’ s not the moment when you realize that
+“Take On Me” is a pretty catchy song). It’ s the
+moment when they realize how the puzzle fits
+together and the solution. They may still need to
+execute the puzzle, but that part should happen
+quickly; by that point, it’ s just a matter of getting
+the grunt work done.
+However, if they don’t get that “A - Ha! ” moment
+and fail to solve the puzzle, don’ t make it a big
+deal. Find a way for the puzzle to be solved regardless of the player. Give
+the player hints or even the answer if you have to. Of course, getting the
+solution without solving the puzzle should cost the player something— a
+bonus or cash, as in the diminishing rewards in the Professor Layton games.
+Should you take hints or guess an answer wrongly don’t make the
+punishment or payment something so severe as losing a life. Let the
+decision to pay-to-progress be the player’ s choice to pay the fine and skip
+ahead. Progression is a right, not a reward.
+Players are generally smarter than you think when it comes to solving
+puzzles, but don’ t resort to cryptic or nonsensical solutions. An example of
+this is in an adventure game where the player had to disguise themselves
+350 LEVEL 12 The Nuts and Bolts of Mechanics
+as a non- player character to gain entry into a location. In order to create the
+disguise, the player had to stick tape over a hole in a fence that a cat
+passed through. The cat’ s back would rub against the tape and hair would
+stick to the tape which the player would use to create a mustache disguise.
+However, the non-player character that the player was disguising
+themselves as DIDN’ T EVEN HAVE A MUSTACHE!! My very important
+motto for creating puzzles has since become:
+NO CAT MUSTACHES
+In other words, don’t be so damn clever. If you have created a Rube
+Goldberg style12 solution to your puzzle, then you’ ve overthought it and it
+needs to be simplified. The conflict isn’ t “game designer vs player” but
+“ player vs puzzle.” So check your ego at the door and do what’ s right for
+the player and the game.
+Of course, up to now, we’ ve been talking about puzzles that you find in
+story- based games. But there are plenty of other puzzle-based games:
+• Dexterity-based action puzzles like Bejeweled or Puzzle Quest
+• Observation puzzles like the Mystery Case Files games
+• Pure puzzles like Sudoku or crosswords
+• Knowledge puzzles like Buzz! or You Don’ t Know Jack.
+When creating trivia and knowledge puzzles, don’ t assume everyone knows
+what you do. Keep your questions short and clear. Do your research and
+determine what kind of questions your audience would want to answer.
+Make sure you have a wide range of difficulty from simple to obscure, but
+mostly simple. Write lots of questions. Knowledge games cease to be fun
+the minute you have answered all of the questions.
+There are many different ways a player can answer a question. Which one is
+right for your game?
+Multiple choice: give players a range of choices— at least three. Create
+“ close answers,” with answers that are similar to the real answer or ones
+that could be easily confused with the real answer. Remember to change
+things up by allowing the player to select the wrong answer from a group of
+correct ones.
+Find the object/image: the player must hunt for the answer among a
+variety of images or objects. Don’ t make the hunt be pixel perfect, allow for
+12 Rube Goldberg was a newspaper cartoonist who drew very complex and amusing
+contraptions to do very simple things. The famous board game “Mouse Trap” is unofficially
+based on his cartoons.
+A Short Word on Minigames and Microgames 351
+plenty of space around the item so the player can eventually spot and select
+the answer. Play with image orientation, color, and size to keep your players
+hunting.
+Fill in the answer: this requires keyboard or writing tablet input. Make sure
+your word parser is flexible enough to allow for synonyms, colloquialisms,
+and regional terms. DS game Scribblenauts has 22,802 words in their
+vocabulary! If your puzzle’ s vocabulary is smaller than that, consider letting
+the player learn what words are available so they don’ t waste time guessing
+ones that aren’t available.
+A Short Word on Minigames and Microgames
+A minigame is a simple game created to provide variety, represent
+activities, and add value to a product. Many minigames are based on or are
+variations of classic arcade and classic home console games.
+A microgame is a minigame that takes seconds to play. Half of the
+challenge of microgames is learning how to play them within the short time
+allotted. The Warioware titles are compilations of microgames.
+Minigames offer many advantages to game developers. They are quick to
+create and test, they are easy to play, and they can be used as metaphors
+for complex player activities. I truly believe ANY activity can be represented
+by a minigame. Observe:
+• Lockpicking: The Elder Scrolls IV: Oblivion (2K, 2006)
+• Hacking electronics: Batman: Arkham Asylum (WBI, 2009)
+• Portrait painting: Spongebob Atlantis Squarepantis (THQ, 2008)
+• Tagging walls: The Warriors (Rockstar, 2005)
+• Cooking dinner: Cooking Mama (Majesco, 2006)
+• Serving dinner: Diner Dash (Playfirst, 2003)
+• Sex: God of War (SCEA, 2005).
+Any activity.
+When designing a minigame, make sure to:
+• Keep the controls simple. Minigames by their nature imply easy- to - learn
+gameplay.
+• Keep the gameplay sessions short. No longer than 5 to 10 minutes.
+Microgames can last only a few seconds long.
+• How does progression work? It is designed or random? Ramp the difficulty
+gently. Minigames are meant to provide variety, not torture the player.
+352 LEVEL 12 The Nuts and Bolts of Mechanics
+• Add new elements with each progression. Progression doesn’ t mean
+every level: it can be a grouping of levels. Progression can represent a
+major element like a new weapon or enemy or minor like a change in an
+enemy ’s movement pattern or bonus modifier. Even a different
+background art, sound effect, or song keeps the game from getting stale
+or repetitive.
+• Consider limiting the minigame’ s controls to only a few buttons. Assign
+only one action per button or control stick to keep control schemes simple.
+• If possible, allow for player customization. The web- based minigame
+Upgrade Complete (Kongregate, 2009) allows the player to upgrade
+EVERYTHING, including the player’ s ship, the background graphics, and
+even the copyright screen!
+• How does your minigame end? Does it have an end? Make sure the
+victory condition is clear to the player. Some games can be played
+“ forever ” — or at least until the kill screen appears.
+Minigames don’ t even need to be segregated from the core game. The
+platformer/puzzle game Henry Hatsworth in the Puzzling Adventure (EA
+Games, 2009) and the RPG/puzzle game Puzzle Quest (D3, 2007) combine
+two styles of gameplay; platforming and puzzle. If you do this in your own
+game, just make sure you allow time for the player to make a “ brain shift”
+between the two gaming styles; give them a second to reorient themselves
+with a “ ready ” screen or pause in the action.
+And finally, when you’ve run out of all other creative ideas of minigames and
+puzzles, you can always resort to “ Whack- A - Mole. ”
+Level 12’s Universal Truths and Clever Ideas 353
+I consider “ Whack- A - Mole ” the last stop on the designer’ s creativity train.
+And here’ s why:
+• It relies solely on the player’ s reaction time, which requires no thought or
+decision making from the player.
+• It ’s random, which doesn’ t allow the player to utilize strategy.
+• It ’s very repetitive. There’ s no variety to the gameplay other than possibly
+the speed of the popping moles.
+• It requires almost no input from the player other than a single motion,
+button press, or click.
+• It is an “endless game” —there is no end unless the designer dictates it.
+Usually the player stops because they’ re tired of playing it.
+I know you can design something more engaging than that! Let’ s move on
+to something more exciting: power- ups!!
+Level 12’ s Universal Truths and Clever Ideas:
+• Design mechanics, hazards and props that work with
+enemies and complement each other.
+• Good game design is like music: it has a rhythm that the
+player can feel.
+• Games should be challenging, not overly difficult.
+• No rocks on the heads of the player: be fair when
+punishing your player.
+• Be creative: don’t resort to worn-out cliché s like crates
+and whack- a- mole unless you have to.
+• No cat mustaches: don’ t make puzzles so cryptic that
+the player can’t use logic, knowledge, or skill to solve
+them.
+• A puzzle is a challenge that has a right answer.
+354 LEVEL 12 The Nuts and Bolts of Mechanics
+• Show them the door and then send them after the key.
+• Give the player opportunities to catch their breath by
+providing plenty of checkpoints.
+• Keep minigames and microgames simple and short.
+T
+LeveI 13
+Now You ’ re Playing
+with Power
+The power- up can be found in every
+genre of gaming, from driving and
+puzzle games to action- adventures
+and shooters. They are dropped by
+defeated enemies, hidden in treasure
+chests and breakable crates, and
+sometimes just lying all over the
+place in the middle of the road.
+A well- designed power- up is
+concentrated action! A player only
+has to touch it to become energized
+to move at lightning speeds, blow up
+the world and return from the dead!
+The great thing about a power- up is
+its effects are immediate: who
+wouldn ’t want to immediately gain awesome power?! The only downside is
+that its effects are usually temporary, so use that power wisely. A designer
+should be wise when creating power-up and ask the following questions:
+• What does the power- up do?
+• What does it look like? How will it (or its effects) visually stand out in the
+world? Does it glow or strobe? Rotate or bounce?
+• Can power-ups be combined or can the player only have one active at
+once? Can the player retrieve power-ups that are unused or discarded?
+• How does it affect the player’ s movement? Rate of speed? Number or
+type of attacks? Health or status?
+• How are its effects communicated to the player visually? Aurally?
+356 LEVEL 13 Now You’re Playing with Power
+• What is the player’ s trade- off for using the power- up? Some reduce
+speed or mobility or the type of moves you can do while under the
+influence of the power- up.
+• If the power- up ability is temporary, what cues will let the player know
+they are about to expire? Is there a HUD element? A visual cue? A
+sound cue? A music cue? Does it last until you lose a life?
+Consider how the player will be collecting the collectable or power- up.
+• Do they have to walk over it to collect it?
+• Do they have to reach out and actively choose to pick it up?
+• Some power- ups are automatically drawn towards the player when they
+get a certain distance from them. If so, how close does the player have
+to be, how quickly does this happen and so on?
+• Perhaps the power- up or collectable is activated when the player gets
+into its proximity?
+Knowing how close the player needs to get will help you determine the
+effects of the power- up once it’ s collected.
+Power- ups boil down into four categories: defensive, offensive,
+movement, and game changers.
+Now You’re Playing with Power 357
+Defensive power- ups help boost the player’ s ability to survive damage
+and continue progress in the game. The most common defensive power
+ups include:
+• Health - up: refills the player’ s health meter. Can be a partial or full refill.
+If they fill up different amounts, make sure they look different.
+• Ability recharge: like a health-up but recharges an ability meter rather
+than the player’ s health.
+• Extra life: when collected, the player gains one more life/restart that will
+allow them to continue the game after they lose all of their health.
+• Invulnerability: the player cannot be hurt when hit by an enemy or their
+attack. An invulnerable player is usually still open to affects from hazards
+that use physics and geometry, (for example, falling off a cliff edge)
+otherwise problems can arise with collision detection.
+• Invincibility: as with invulnerability— the player cannot be hurt when hit
+by an enemy or their attack— but they can also automatically destroy
+most enemies by colliding with them, as seen in Metroid’s screw attack
+and Mario Kart’s super star. Many games don’ t allow this kind of ability
+to work on bosses or only cause minor damage.
+• Protective: temporary forcefields, physical shields, or auras that protect
+the player from enemy projectiles, fire, or poisonous floors. Protective
+power- ups may or may not have their own “ health meter” to show how
+much use remains. Protective defenses are different from invulnerability
+and invincibility because they usually can be improved, modified, and
+extended by the player.
+• Indirect attack: commonly found in fast- moving car combat and
+kart-racing games, this power- up lets the player “fire and forget”
+smokescreens, oil slicks, and black bombs with fuses on top, causing
+havoc to those unlucky enemies and players behind them.
+358 LEVEL 13 Now You’re Playing with Power
+• Smart bomb: A clear the game screen when things get too tough or the
+player needs a moment to breathe during all of the action.
+Offensive power- ups improve or modify attacks, allowing players to defeat
+enemies faster, more efficiently, or more spectacularly.
+• Ammo boost: the player’s ammunition is fully restocked. Most ammo
+boosts pertain to a specific weapon in the player’ s inventory.
+• Buffs: from hacking orcs to shooting hoops, these power- ups increase
+the player’ s skills and abilities for a short period of time. Awesome flame
+effects are optional.
+• Multi - weapon: a power-up that improves your current weapon without
+fundamentally changing it. Contra ’ s spread attack fires five projectiles in
+a fan- shaped configuration while heat- seeking rockets will home in on
+enemies.
+• Weapon upgrade/swap: this power- up increases the strength, speed,
+and damage of the player’ s attack, or can change their weapon to an
+entirely new one (sometimes more powerful, sometimes as powerful but
+with differing capabilities that may be more suitable— and hence more
+useful — in a particular situation). New visuals usually accompany the
+change. Ghosts ‘N Goblins lets the player change from lance to dagger
+to torch. Flamethrowers, rocket launchers, and shotguns are popular
+choices.
+• Damage modifier: Flame! Poison! Ice! Electricity! These power- ups
+improve the player’ s base damage, usually accompanied with a dynamic
+visual.
+• Direction: this power- up allows the player to change/augment the
+direction of their attack, most commonly found in shooters to allow the
+player to shoot behind as well as above and below them. The change in
+Now You’re Playing with Power 359
+direction can also be applied to the projectile, as in the case of enemy
+seeking missiles.
+• Companion: when picked up, a small object appears next to the player
+that can provide an additional attack or shielding function. The
+companion may or may not have hit points. Many last until the player is
+destroyed or for a specific duration of time. Galaga (Namco, 1981)
+added the novel twist that a captured ship became your companion. You
+lost a life, but you gained double shot ability.
+Movement power- ups allow the player to improve their existing movement,
+or add some new ones. Be particularly careful to account for these power
+ups when designing player metrics.
+• Speed change: nitro boosts and other power- ups allow the player to
+move at incredible speeds. As a trade-off, the player usually has less
+control of the vehicle or character because of the faster reaction time
+needed.
+• Access: the player gains access to locations normally unreachable via
+an ability bestowed by the power- up. The access methods are as varied
+as flying, helicoptering, gliding, and swimming. For example, Mario’ s bee
+suit in Super Mario Galaxy.
+• Size change: depending on the game, changing size can allow a whole
+suite of abilities, least of which is being able to get into tiny holes. In
+Super Mario Bros. the super mushroom not only increases the player’ s
+size, but it allows the player to take one extra hit, and to break bricks to
+access new locations. The mini mushroom in New Super Mario Bros.
+causes Mario to shrink, allowing the player to leap great distances.
+360 LEVEL 13 Now You’re Playing with Power
+Game changers alter the dynamics of the gameplay and the player’ s
+interaction with the game in a significant manner.
+• Score/treasure modifiers: whether it’ s a Crazy Taxi fare multiplier or
+Rock Band’ s star power, the value of any points/treasure collected by
+the player is increased for a short period of time.
+• Change state: this power- up changes the play dynamics in the game.
+For example, in Pac - Man, the player flees from the enemy ghosts. When
+he eats a power pellet, the ghosts become vulnerable and the player
+can become the aggressor.
+• Magnetic: this power- up draws treasure items towards the player,
+relieving them of the risk of entering dangerous territory or having to
+“ clean up” treasure and collectables after combat.
+• Invisibility/disguise: the player is rendered temporarily undetectable by
+enemies and hazards, allowing the player to safely avoid potentially
+deadly combat and enter locations barred by annoyingly alert guards.
+• Comedy power- up: a power- up that exists solely to surprise and
+amuse the player. MDK’s “ Earthworm Jim” power- up drops a cow onto
+enemies ’ heads.
+“Love Thy Player” 361
+Most power-ups are content to sit still and wait
+patiently to be consumed by the player, while
+others have a keen sense of self- preservation.
+Power- ups have been known to move upon
+spawning out of their hiding place, like the
+super mushrooms in Super Mario Bros. Still
+others will run and hide when they spot the
+player, like the “cowardly power- up ” in MDK.
+Give your player a chance to catch these
+mobile power- ups. Do not make them move
+faster than the player or make them resistant to
+the lure of a magnetic power- up.
+Power- ups can be designed to work
+conditionally. In Maximo: Ghosts to Glory, we
+had an armor power- up that only worked when
+the player had collected the full set of armor.
+Another one required a special ability to
+activate. As long as the conditions for gaining
+these special powers are clear to the player,
+there ’ s no reason why you can’ t add this
+technique to your design arsenal.
+Not all power- ups are delicious and useful. Very
+evil game designers in their secret lair high in
+the Alps have created anti - power- ups. Like a
+chocolate truffle stuffed with dog poo, these
+sinister collectables look like regular, nice
+power- ups but they hold a deadly surprise.
+Poisonous power- ups that can sap health, slow
+movement, drain experience, or even turn the player into a zombie, complete
+with backward control schemes. While they are fun, they are only fun once or
+twice. I suggest using anti - power- ups judiciously and with caution.
+“ Love Thy Player ”
+Pureiya aishi nasai
+Once upon a time, a Japanese game director1 told me this should be the
+motto of all game designers. I agree with him, although I have a different
+way of saying it:
+1 A different Japanese game director from the “fisherman ” from Level 4, btw.
+362 LEVEL 13 Now You’re Playing with Power
+The game designer should be the gentle hand on the rear of the player,
+pushing them ever upwards2.
+There are many systems that the designer can
+use to enable the player during the game, and
+we ’ ve already talked about some of them in
+other chapters: checkpoints, hoists and teeters,
+aim assist, ramping difficulty. But there are
+others that are worth discussing: dynamic
+difficulty balancing, difficulty level adjustment,
+rubberbanding, game length, and autosave.
+Dynamic difficulty balancing (or DDB) is a
+way to adjust the challenge and rewards for the
+player based on performance. For example, if
+the player dies too often fighting an enemy,
+then the enemy’ s health is reduced slightly or
+the enemy doesn’ t attack as often. If the player
+is low on health and opens a treasure chest, a
+health - up will pop out— but if the player isn’t low on health when they open
+the chest, the player will be rewarded with treasure instead. The goal of
+DDB is to give the player what they need when they need it in order to
+propel the player along to success.
+Difficulty level adjustment gives a player the option to shift the game
+down to a lower difficulty setting if too many parameters, such as multiple
+player deaths, are detected. The player can be given the option to decline
+or it may be that the adjustment happens automatically. Personally, I don’ t
+recommend the latter as many players find it insulting.
+Rubberbanding is used primarily in racing games, but it can be used
+anytime the player needs to follow or catch any other character or vehicle. If
+2 Not as concise, but much more pronounceable.
+“Love Thy Player” 363
+the player gets too far behind, the opponent(s) will slow down enough to let
+the player catch up. A great solution because racing on an empty track
+sucks!
+The game ’s length is actually a good tool for adjusting difficulty. Take for
+example a battle arena. If the player fights bad guys for about 10 minutes,
+with sufficient health and a modicum of skill, they should be able to survive
+just fine. However, make that player fight for a half- hour and player fatigue
+and attrition start to set in. Odds are the player won’t survive the encounter.
+My rule of thumb for gameplay length is this very important thing:
+IF IT FEELS TOO LONG, HARD, OR BORING, THEN IT PROBABLY IS
+Trust your feelings, Luke. After you play a level a thousand times3 you will
+know when your level gets boring. That said, you must be very, very careful
+as you can develop what I call “designer blinders. ” Designer blinders
+occur when you’ve played your game so many times that you will require a
+much more difficult level to feel challenged than the consumers, who will
+only play it a few times. It is a very common problem within game
+development, which I have seen happen many, many times. We’ ll talk about
+how to solve this problem later in Level 17. In the meantime, consolidate
+your level. Kill the boring parts. Death to boring! Don’ t be afraid to cut
+elements if it will make your game better.
+Autosaving is when the game periodically records and saves game data
+automatically. This way, the player can concentrate on playing the game
+rather than micromanaging their game’ s save files. Autosave is helpful for
+when the game crashes4 or if the player forgets to save their game at a
+critical part and then dies. Many games autosave whenever loading a new
+area (for example, Fallout 3).
+For every positive example of player difficulty, there is at least one negative
+one. Here’ s a story illustrating what I don ’ t mean about how to design
+player difficulty: I was reviewing an enemy encounter with a creative director.
+I told him that I thought the encounter wasn’ t bad, but could stand to be a
+little more challenging. He agreed and his instructions to me were, “ The
+player has to die three times before they can progress.” I thought, “ I ’ m
+3 Honestly, you will play a level a thousand times (at least) between setting it up, populating
+it, testing the mechanics, hazards and combat, placing the collectibles and readjusting them,
+and then finally officially play testing it.
+4 But your game isn’ t going to crash, is it?
+364 LEVEL 13 Now You’re Playing with Power
+sorry, Mr. Creative Director, I know you are my boss and all, but you are an
+idiot. ” But I didn’t say it because I wanted to keep my job.
+What I did do was not design the encounter so the player had to die three
+times to progress. And neither should you. Player death should never be a
+yardstick for game design. “ Rewarding ” the player with damage or death is
+negative reinforcement.
+In Maximo, one of the enemies was a treasure chest mimic: a fun enemy
+that, when “ opened ” up, snapped and attacked the player like a dog. But it
+had an unfortunate side effect. I saw players actually cringe before opening
+a chest because they expected it to be a mimic. While it was fun for the
+designer to watch the player get tricked, it was not fun for the player. This
+defeats the point of the game: to have fun. Your players will hate you for it
+and stop playing the game. This is bad, because the ultimate goal of any
+game designer should be to keep the player playing. If I ever create this
+kind of enemy again, I will give some clues to the player so they can spot
+this enemy and make preparations for it. It can be as simple as a color
+change or the wobbling pots with an enemy inside in Legend of Zelda: Spirit
+Tracks.
+The way I see it, if the player can play through and finish the entire game,
+then they will be happy. They will be happy enough to tell others how much
+they liked your game and they will be happy enough to buy your next game.
+It ’s a win- win for all parties involved.
+More Wealth Than You Can Imagine! 365
+More Wealth Than You Can Imagine!
+I don’ t know, I can imagine quite a bit.
+Han Solo
+Game designers have many very
+powerful tools to keep the player
+playing: Mystery, delight, pride, and
+power we’ ve already talked about, but
+now we come to the two most
+powerful of these tools: greed and
+reward.
+Greed will get players to do
+interesting things. They will grind their
+way through the grindiest MMOs to
+get that stronger sword, that unique
+hat, gain that next level. They will
+jump onto the smallest platform
+festooned with the deadliest traps just
+to grab that one additional coin. They
+will fight the biggest, meanest
+enemies just to find out what comes
+next in the story. Or to score that achievement. The following very
+important thing rings true:
+NEVER UNDERESTIMATE THE GREED OF THE PLAYER
+But … instead of using the player’ s greed for evil— luring the player to their
+death to prove that you, the game designer, are cleverer than the player—
+use their greed for good instead:
+• Use the promise of treasure and items to motivate players to fight
+enemies.
+• Give the player a personal and customizable space to show off their
+trophies and rewards. Once they start seeing some of the “ shelves ”
+filling up, they’ ll want to “ catch them all.”
+366 LEVEL 13 Now You’re Playing with Power
+• Exploit the “me too” factor. Keeping up with the Joneses is a powerful
+urge for the player, especially in the multiplayer space. I was once
+playing World of Warcraft and minding my own business when I saw
+another player ride by on a mechanical chicken mount. All of a sudden,
+my player agenda went from “get to the next level” to “ MUST OWN
+ROBOT CHICKEN!”
+• Create “ guidelines ” when placing treasure and hidden objects. Sharp
+players will pick up on these guidelines and their observations will be
+rewarded. For example, in Maximo: Ghosts to Glory, buried treasure
+chests were placed next to trees. If there weren’ t trees in the level, they
+were hidden next to similar vertical architectural elements like pillars or
+gravestones.
+• Like the dots in Pac -Man World or rings in any Sonic the Hedgehog
+game, you can string collectables through the level to guide the player
+where to go next.
+More Wealth Than You Can Imagine! 367
+• The designers of Half- Life (Valve, 1998) have an interesting method of
+introducing a new weapon or item to players. First, the player hears
+about the new item from another character. Second, the player sees the
+item in the possession of another character. Third, the player sees the
+item being used by another character and finally, the player obtains and
+uses the new item for themselves. By the time the new item is in the
+player ’s hands, not only have they learned what it looks like, what it is
+and what it does, but they want it for themselves.
+Like greed, rewards are a powerful player motivator. A reward is what the
+player is ultimately working towards. After all, you can’ t have a game without
+a victory condition, and you should never have a victory without a reward.
+• Expose the player to what rewards are available early in the game. This
+way they have a laundry list of things “to do” throughout the game and
+what they will get for achieving them.
+• Reward the player as soon as possible, reward often, and provide some
+variety and surprise to the rewards.
+• A win condition needs to show evidence of success. There’s no such
+thing as enough fanfare. Be dramatic, exciting, and even a little goofy.
+Or a lot goofy! Set off fireworks, do exciting camera pans around the
+player, have the player character jump in the air excitedly, play cheering
+crowds and slot-machine sound effects. Use visual effects and particles,
+lots and lots of particles! The more, the better! You want the player to
+feel like they are the victors of World War III, the scorer of the winning
+run at a baseball game, and a lottery winner all at the same time.
+• Whatever the reward is, make it matter to the player. Award the player
+something that gives them the edge on the next level and is the solution
+to a problem that plagued them on the last. The best reward is the one
+a player doesn’ t realize they need until they get it.
+368 LEVEL 13 Now You’re Playing with Power
+In video games, rewards come in many shapes and sizes: scoring,
+achievements, treasure, loot, power- ups, souvenirs, bonus materials,
+praise, surprise, and progression.
+Back in the prehistoric era of video games5 the player’ s only reward was a
+high score. Scoring is a useful system to showcase the player’ s success in
+a very simple way: a number and three little letters. It’s a little hard to
+describe to someone these days why seeing your three initials displayed on
+an arcade game screen was so exciting, but it was a little like writing your
+name in wet cement: something the whole world can see to show that YOU
+were the master of the game— at least until the game’ s power was turned
+off for the night and the scoreboard reset6. Many gamers thrive on
+competition, even when it’ s against themselves, and love having the
+bragging rights that come with getting a high score. But is scoring in
+gaming still relevant?
+That was the question many game developers asked themselves in the late
+1990s. As the arcade scene was dying and most gaming had moved to
+PCs and home consoles, scoring represented the old school. Scoring was
+regarded as a remnant of game designs whose sole intent was to keep
+players dropping quarters into the slot. Scoring soon became regarded as a
+meaningless number compared to collecting 100% of the game’s secrets
+and finishing the game’s story. A simple numeric score just wasn’ t as sexy
+or cinematic as a full-blown ending cutscene. Scoring in gaming was almost
+as dead as the dodo.
+Almost.
+In the early 2000s, scoring started to matter again with the rising popularity
+of browser games like Bejeweled (Popcap, 2001) and Feeding Frenzy
+(Popcap, 2004). When leaderboards were introduced to Xbox Live (and
+later to the Playstation Network), scoring was off and running again, where it
+remains a lively part of gaming to this day.
+Achievements are high scores with personality. Debuting with Halo 2 on
+the Xbox 360, achievements motivate players to show off their in- game
+skills and brag about their accomplishments. Doing a task X number
+of times; completing game goals like defeating bosses, collecting one
+specific item (or all of them), or just finishing the game are all valid
+achievements.
+5 Back in those days, the only video games we had to play with were two rocks connected by
+vines to one bigger rock. Now get off my lawn, you darned kids!
+6 This is why it was always better when you got the high score at a 7- 11. Those places
+NEVER closed!
+More Wealth Than You Can Imagine! 369
+Achievements are great fun for the developer to create— as much as they
+are for the player to collect. You can give your achievements clever names
+and fun icons. Usually published before the game’ s release, achievement
+lists act as a play “ to - do ” list. Achievements are a great way for designers to
+point out gameplay concepts to players that they otherwise may not think of
+attempting. Achievements can be awarded for anything the developer
+desires. Here are a few of my favorites:
+• Easiest achievement ever: press start to play (The Simpsons)
+• Not bulletproof: died on easy level (50 Cent: Bulletproof)
+• Street cleaner: hide five dead bodies in bales of hay (Assassin ’ s
+Creed 2)
+• Be polite: provide an enemy with a freezecam shot of you doffing your
+hat (Team Fortress 2)
+• Six degrees of Schaefer: played with or against any player who has this
+achievement (which means that at least one player in the chain has
+played the game with creator Tim Schaefer) (Br ütal Legend)
+• You ’ ve wasted your life: be idle for 5 minutes (Saw)
+• Losing his mind: decapitate a captain with a shield (Conan)
+• Wheeeeeee!: slide 330 feet continuously through blood (Fairy Tale
+Fights)
+• Skidmark: give 50 wedgies (Bully: Scholarship edition)
+• I feel so funky: get slimed by a charging ghost (Ghostbusters)
+• Jawa juicer: crush five Jawas by using the grinder in the garbage
+processing room (The Force Unleashed: Ultimate Sith Edition)
+• The cake: you found the cake, yummy! (X-Men origins: Wolverine).
+Money! Money! Money! Who doesn’ t love getting treasure? The way the
+coins jingle merrily when they pop out of a treasure chest… The way they
+370 LEVEL 13 Now You’re Playing with Power
+glitter and sparkle on the ground after spilling out of a headless enemy…
+The way they spin in place, luring you to jump through a flaming hoop of
+death and over a pit of needle- sharp pungie knives…
+Yeah, collecting treasure is great and all, but what are you going to
+spend it on? In order to make treasure mean anything, you need an
+economic system. When designing treasure items for your game, create
+them in escalating values. 1, 5, 10, 50, 100… You get the idea. But don’ t
+spread your values too far apart either. The last thing you want is
+the virtual equivalent of pennies; treasure that no one wants to pick
+up.
+One of the things I love about video games is that I am far richer than I am
+in real life. A player feels great when they are flush with cash. The benefit of
+having wads of dough is that the player has lots of choices when
+shopping — but to do that you have to make sure there are plenty of items
+for the player to buy. It’ s always fun to give the player choices between two
+really good things. Not only do they have the delicious agony over what to
+buy, but it gives them something to look forward to buying the next time
+they go shopping. Stock your stores with a variety of things and find ways to
+rotate the stock to keep the selection from getting stale. Next, determine the
+price your items will be. Start by classifying your treasure, loot, and other
+buyable items by their rarity: common, uncommon, rare, and unique. Then
+apply a price to each of the items. Think about what items you want
+available to the player from the beginning of the game. Always have some
+items that can be bought quickly and others that lie tantalizingly out of
+reach. If I only had a few more coins!
+Once you’ ve created a preliminary economy (don’ t worry about setting it
+in stone, prices will change over the course of production as you figure
+out what the player will want or need) then think about placing treasure in
+the world. If you want the player to be able to afford $300 worth of items,
+then make sure there is at least $300 worth of treasure in the level. You
+will have to answer the question, “does treasure regenerate?” If it does,
+then be aware that players can “ mine ” levels for treasure, which can
+completely screw up your economy. On the other hand, replaying a level
+without any treasure to act as a motivator isn’ t fun for the player. You may
+want the player to replay a level multiple times so they can collect enough
+money to buy what they need. A shortage of funds encourages replay, or
+exploration off the beaten path. By exposing the player to all the items they
+could buy at the beginning of the game (via an “ability tree” like in Dante ’ s
+Inferno), the player can start to plan how they are going to spend their
+money once they earn it. Sometimes the player might have to buy cheaper
+and necessary gear like ammo or health- ups in order to progress. Give the
+player options.
+More Wealth Than You Can Imagine! 371
+Use color to clarify your treasure’s value like the old standbys of copper,
+silver, and gold. Or use different shapes like coins, bags, and gems. Don’ t
+get too diverse or crazy, otherwise players will mistake treasure items for
+power- ups.
+Does your treasure have encumbrance, meaning there is a limit to what the
+player can carry? If so, then how are they going to carry it? Many RPGs and
+MMOs have a limit to encumbrance, forcing players to find other storage
+solutions such as magical bags of holding or a bank. Whatever the solution,
+make sure that the player doesn’ t have to shuttle cash from their storage to
+the store. Just have it come out of the player’ s account to avoid all of the
+hassle.
+Your treasure doesn’ t even have to be money. Treasure can be bolts as in
+Ratchet and Clank, studs as in the Lego games, souls as in God of War
+series —even trash, such as the bottle caps in Fallout. It doesn’ t matter what
+it looks like, as long as it’ s sparkly and makes a satisfying cha- ching! sound
+effect when you collect it!
+Speaking of all that treasure, where is your player going to spend it? Most
+RPGs have friendly (and not so friendly) stores that sell all manner of
+372 LEVEL 13 Now You’re Playing with Power
+adventuring goods. Borderlands and Bioshock use vending machines. Make
+your store specific to the game you’ re making. A racing game could have a
+garage where players can buy car upgrades and customizations. A sports
+game could have a sporting goods shop. It’ s just one more way to add
+character and theme to your game.
+Hey, maybe that slightly creepy guy in the trenchcoat over there in the alley
+has the magic sword we’ re looking for? Let’s go talk to him.
+Who ’s there? Come in, come in. I have everything the daring hero needs to
+survive. Take a look around and don’ t be afraid to ask for help:
+Offense. Need a new sword? Lusting after that more powerful gun? How
+about a nice magic missile spell? It was owned by a little old witch who only
+used it on Sundays…
+Defense. Armor, shields, helmets, forcefield generators: I’ ve got everything
+that can repel a blade or deflect a laser beam.
+Repairs. Swung that sword a little too hard, did ya? Well it will only cost you
+a few coins to get it swing-worthy again…
+Replenishable resources. Ammunition, health potions, batteries, gasoline;
+we ’ ll get you back up and running again!
+Skills. Want to learn a whirlwind sword attack? Or how to add +2 to your
+accuracy skill? How about a nice set that grants a lock- picking ability? All ya
+need is some cash…
+Access. I ’ ve got keys, treasure maps and even a statue that looks like it
+may fit into a hole. I’ ll bet it opens a secret door somewhere…
+Vanity. That hat looks very stylish on ya. So does that new costume; much
+better than your old one, if I do say so myself.
+Whimsy. Oh, I absolutely think your hair would look better pink, sir. And yes
+Ma ’ am, a mustache is just the thing ya need.
+Information. For just a few coins, I can tell you where the King is handing
+out jobs for adventurers such as yourself…
+Saves. Only the cruelest of designers would charge someone to keep
+playing … that will be $100 gold, good sir. Thanks and come again!
+Let ’s get out of this place; it’ s horribly overpriced, especially since you can
+find most of this stuff lying around the levels.
+More Wealth Than You Can Imagine! 373
+Loot is all the great stuff you can buy, but it’ s FREE!
+Well, if you consider navigating through the temple of
+eternal pain and defeating the goblin army free. The
+difference between loot you buy and loot you find is
+you should always find much better loot on your
+adventure. Save the best weapons, the strongest
+armor, and the shootiest guns for loot. Let the player
+earn their keep by solving puzzles, surviving hazards,
+and defeating bosses. And remember this very
+important thing:
+THE BEST REWARDS ARE HARD WON
+Souvenirs are physical (well, virtual) reminders of the
+player ’s adventures during the game. Souvenirs can
+be displayed back at the player’ s
+base or castle or spaceship or condo.
+Give the player a special place to
+show them off, like Lara Croft’ s trophy
+room in Tomb Raider Anniversary
+(Eidos, 2006) or a nice shelf with
+proper lighting. They can be animated
+interactive exhibits like those found in
+Lego Indiana Jones: the Original
+Adventures (Lucasarts, 2008) or virtual museums like the one in Uncharted
+2: Among Thieves. No matter which style you choose, use a tight camera or
+viewer to let the player get a good look at ‘em and a label to remind them
+where they found the souvenir.
+Not all souvenirs should be kept on a shelf. Turning souvenirs into useful
+game items gives those items more meaning. Defeat the Lich King in World
+of Warcraft and take his sword. Mega Man takes the powers of the Robot
+Masters as he defeats them. Instead of awarding a dragon skin rug, why
+not give the player a pair of dragon skin boots? That way, as long as the
+player wears the boots, everyone will know who slew the red dragon. Make
+sure to give the souvenir items special properties too. Those red dragon
+boots may allow a player resistance to fire attacks or let them walk over hot
+coals or on lava. It may even give them a special flaming kick attack. Make
+it special and the player will want to get to the next encounter to see what
+they can win.
+The biggest problem with bonus features is they are usually created at the
+last minute by the production team. Design them early but they should be
+one of the last things you create. This way, you can judge just what
+constitutes a “ bonus ” to the player by comparing it to the rest of the game’ s
+content. Bonus materials may include:
+374 LEVEL 13 Now You’re Playing with Power
+• Costume changes. Costume changes help add a little variety— and
+humor —to your bonus features. The Starkiller from Star Wars: The Force
+Unleashed can wear costumes from the game’ s other levels. Kratos in
+God of War can unlock a business suit or chef’ s costume.
+• Alternate models. Create a new look for your
+hero or villains! In Uncharted 2: Among Thieves
+players can unlock a fat version of the hero,
+while in Batman: Arkham Asylum players can
+turn all the enemies into skeletons.
+• Alternate modes. Ah, big head mode. You
+are so easy to code and yet you get so many
+laughs. Is it any wonder why we love you? Silly
+modes run the gamut from changing an
+enemy ’s exploding body parts into birthday
+presents to turning all the cars in a game pink.
+You are only limited by your imagination and
+how much time you have left in your production
+schedule.
+• Downloadable content (DLC). Usually
+downloaded via console networks like Xbox
+Live Arcade, Playstation Network or WiiWare,
+downloadable content can take many forms,
+including many of those bonuses included on
+this list. DLC offers a way for games to live beyond their average play life
+with additional weapons, gameplay modes, achievements, character
+models, and new levels.
+• New levels. The most time-consuming of all bonus materials to make,
+new levels (and game content) is becoming more popular as DLC. By
+scheduling it as additional material that is released after the game has
+shipped, the development team can put more time, effort, and polish
+into the levels— thus keeping up the quality of the material.
+• Music. Want to listen to the game’ s music without playing the game?
+Simple. Create an audio player to allow the player to hear the music. Or
+you can just let them insert the game disc into a CD player.
+• Commentary. An audio track of the team talking about the game’ s
+development. Starting with Half-Life 2: Lost Coast, developer Valve has
+made interactive in-game commentary one of their standard bonus
+features.
+• “ Making of” video. A documentary-style featurette (or feature) that
+explores the game’ s creation. These are very time-consuming to make;
+however, they can be a great way to spotlight your hard-working team.
+• Model viewers. Players can view the 3-D models and assets in the
+game. Allow the player camera control to pan around, rotate, and zoom
+in and out on your models to show them off in the best possible light.
+More Wealth Than You Can Imagine! 375
+This feature is particularly good in games like RTSs, where the
+characters are normally viewed from a more distant camera angle.
+• Art viewers. The most common of bonus features: just scan your
+preproduction art and Voil à ! You ’ re done! OK lazy, you can do better than
+that. Don ’ t be content to just show a slideshow of your team ’ s art. Set the
+images to music or commentary from the artists. They don ’ t often get a
+chance to speak up. Show more than just drawings of characters too:
+show off environments, props, maps, and design materials that will make
+the player appreciate all the hard work you ’ ve put into your games. Make
+sure the player has control over the pace of the presentation. Don’ t make
+them wait around for the next piece of art to appear. How about a
+magnifier so they can zoom in closely to examine the art? (You can even
+hide a reward within the art for the player to find!) Or have the player
+collect pieces of the art to be assembled like a puzzle, which gives a
+reward based on the artwork when solved.
+• Promotional materials. Promo materials are more commonly found in
+sequels as the assets are usually created late in the game’ s production
+process. If included with long- standing franchises, they can be
+particularly interesting for nostalgia purposes.
+• Trailers. Movie trailers (especially relevant if the game is a movie tie- in),
+previews of other games, a sneak peak at a sequel. Just don’ t make
+watching them mandatory: allow the player the option to skip them.
+• Minigames. While some whole games are collections of minigames7,
+don ’t forget to include them in bigger games too. They provide the
+player a chance to take a break from the protracted grind of a longer
+adventure without ever having to “ leave the disc.” Give your minigame a
+place to live, such as an arcade. Minigames are moderately easy to
+make: just identify some of your game’ s most fun gameplay and re
+contextualize it. In God of War, we did just that— everything in the
+“Challenge of the Gods” was already in the game code, it just gave the
+player a different set of victory conditions. Some minigames give
+rewards that can be used back in the main game’ s economy system.
+Sometimes they are promotional tools, as seen in the case of the iPhone
+game Mass Effect Galaxy, which gives players a reward in Mass Effect 2
+for completing it. Or you can just rip- off Galaxian like everyone else.
+• Multiplayer modes. While describing multiplayer gameplay could take
+up an entire chapter8 there are still other modes that aren ’ t directly related
+to gameplay. Asset trading, chat functions, spectator modes, friends, and
+rival rosters that allow you to check your friend ’ s game stats — these
+additional modes will give your game value. Remember to keep their
+interfaces intuitive and user- friendly. Follow the rules found in Level 8: not
+7 For examples, just check out most of the games on the Wii.
+8 It does, in Level 14. Coming up next!
+376 LEVEL 13 Now You’re Playing with Power
+too many clicks, keep the game screens down to a minimum, use icons
+over text, and so on, to keep functions and intent clear.
+• Alternate endings. Will the player turn out good or evil? Save the world
+or get blown up? Get the girl or get the boy? Many RPG, adventure,
+action, and survival horror games offer multiple endings to their stories.
+Examples include Star Wars: Knights of the Old Republic, the Fable
+series, Heavy Rain and the games in the Resident Evil series. Multiple
+endings are a great way to get the player to replay the game, as long as
+the player knows there are multiple endings to be seen. I’ ve found that
+it ’ s no longer enough to just have a few different endings based on the
+decisions made at a few key moments in the game. The struggle
+between good and evil is much more interesting if they are evenly
+matched. Build systems and opportunities for the player to “ course
+correct ” towards one outcome or another. Make the outcome be the
+player ’s choice, rather than one decided by the game.
+• Cheats. Cheats are usually reserved for use by the development team
+during production. Cheat modes can be enabled to give the player
+unlimited resources like health, ammo, lives, or just plain ol’
+invulnerability. I suggest that you don’ t enable cheats until the player has
+played through the game once, otherwise they are CHEATING!!!…
+themselves out of experiencing the game the way it was meant to be
+played. Some games go as far as to encourage “ proper ” play: cheats
+might not get the “ good ” ending of a game or they might be marked out
+as a cheater as in GTA. In Team Fortress 2, anyone who didn’t use a
+cheat received a special wearable angel’ s halo called “ the cheater’ s
+lament. ”
+As an industry, we are really, really good about making the player feel really,
+really bad. We kill player characters at the drop of a hat, force them into
+near impossible situations, and then mock them when they fail. We’ll steal
+from them in a heartbeat and we’ ll mess with their minds any chance we
+More Wealth Than You Can Imagine! 377
+can get. What we’ re not very good at doing is offering praise. And as an
+industry, we wonder why players complain about games. But as anyone
+who deals with children knows, praise is the best way to get people to do
+what you want them to do. What we need to do is make the player feel like
+the best person in the world instead. The best example I’ve seen of giving a
+player praise is in Zak and Wiki: the Quest For Barbaros’ Treasure (Capcom,
+2007). Whenever the player does something correctly, the following
+happens:
+• A “ success ” musical sting plays.
+• The hero does a funny reaction or victory animation.
+• There is a particle effect coming off the hero.
+• Wiki, the player’ s monkey sidekick congratulates the player (in text form)
+on how good they just did; Wiki also has his own musical sting and
+particle effect.
+Not only does all of the above play out whenever the player completes a
+puzzle, but also:
+• A burst of special effects tints the screen yellow with streaking stars.
+• A success musical tune plays, longer than the sting.
+• A “look at me!” animation from the hero displaying the puzzle piece or
+item they’ ve just won.
+• The name of the item the player has just won.
+Eight things to support praising the player in the forms of character
+animation, visual effects, music, and text for solving one puzzle! Fantastic!
+This game made me feel like I was the smartest player in the world and as
+a result, I wanted to keep playing! Just remember that you can have too
+much of a good thing. Praise ceases to be meaningful if you receive it for
+doing nothing or insignificant acts.
+See how often you can stroke the
+player ’s ego during the course of the
+game. NPCs in Fable either recoil in
+horror or compliment the hero
+depending on what alignment he is,
+which is exactly what the player wants
+to hear, especially since they’ ve spent
+so much time cultivating their
+goodness or evil.
+There are other rewards than just
+treasure … I’ m talking about surprise and fun. At Disneyland, Pirate’ s Lair is
+378 LEVEL 13 Now You’re Playing with Power
+a pirate- themed playground. Guests at Pirate’s Lair can interact with several
+items, including a bilge pump and a turn wheel.
+As you turn the wheel, a rope on a
+pulley starts to pull a treasure chest
+up from underwater. In a video game,
+once the treasure chest is revealed,
+the player would get their treasure
+and go on their way.
+However, if you keep cranking the
+wheel and raising the chest, a
+clinging skeleton is revealed who is
+trying to keep the chest for himself.
+The skeleton serves no purpose other
+than to get a laugh out of the viewer.
+There ’ s no reason why video games
+can ’ t have little moments like this. Some game developers do similar things
+such as Marvel Comics creator Stan Lee appearing in Marvel Ultimate
+Alliance 2, Ape Escape’s monkeys in Metal Gear Solid 3’s jungle level, or
+Braid’ s homage to Mario’ s World 1- 1.
+Some will argue that progression isn’ t much of a reward, and that the
+player shouldn’ t be rewarded for merely finishing the game; after all, isn’ t
+the point to finish it? There are a lot of things competing for your player’ s
+free time. What can be done to keep them engaged? You only need a great
+story, intriguing level design, ridiculously cool boss battles, and awesome
+upgrades. Easy, right? But what if more than one player wants to play? Well,
+that ’ s why we’ re moving on to Level 14!
+Level 13’ s Universal Truths and Clever Ideas:
+• Create power- ups that are compatible and complementary
+to the player’ s actions and attacks.
+• Love thy player! Give them the tools to succeed like DDB
+and rubberbanding.
+• If something in your game is too difficult or boring,
+then it is. Get rid of it.
+• Never underestimate the greed of the player, and use it
+to prompt interesting scenarios and challenges.
+Level 13’s Universal Truths and Clever Ideas 379
+• Plan out your economy for the entire game. Price items
+according to when you want the players to earn them.
+• Provide enough money for the player so they have
+choices when shopping.
+• Have a variety of cool things to buy. Make the player
+have to choose over (at least) two really good things, so
+they come back for more.
+• Determine whether scoring is right for your game, then
+reward the player when high scores or achievements are
+obtained.
+• Don’t forget bonus materials and DLC. Remember that it
+takes time to make this content so don’ t leave it until
+the end of your production.
+• Some rewards are just for fun.
+
+---
+
+## Sección 15: Part 3 — Controls [Entropy: 0.731]
+
+T
+LeveI 14
+Multiplayer — the More
+the Merrier
+The first true multiplayer game I remember playing was Gauntlet (Atari,
+1985) where up to four people were able to play together. Because of
+the arcade cabinet’ s configuration, what I remember most from playing
+Gauntlet (other than “elf needs food badly” ) is that my friends and I
+would push and jostle each other as we played the game. Even though
+Gauntlet is a cooperative game, we sure didn’ t play it that way. We were
+always trying to grab the health or be the first to activate the “ smart
+bomb ” potion.
+The jostling continued through the years with Teenage Mutant Ninja Turtles
+(Konami, 1989) and Captain America and the Avengers (Data East, 1991).
+When Doom (id Software, 1993) reared its ugly demon head, the jostling
+became virtual via our local area network (LAN) connection. And by jostling,
+I mean blasting each other with plasma rifles during death matches.
+Multiplayer jostling has since evolved even further:
+382 LEVEL 14 Multiplayer—the More the Merrier
+Head - to - head: two or more players compete against each other in real time
+on the same game system. Most sports, action, and some FPS games
+allow for head- to -head play.
+Network/peer- to - peer: two or more play with and against each other in
+real time on machines connected via LAN or wide area network (WAN, aka
+“ the Internet” ). The difference between the two is proximity: WAN extends
+past a room, office, or campus. LAN parties (where everyone brings their
+computer over to someone’ s house to play a FPS) are still quite popular
+social events. Or they can be wireless as with the Nintendo DS.
+Client server LAN: a computer that is big and fast enough to handle
+multiple users at once. Some MMO games and MMORPGs use client
+servers to handle the enormous
+traffic, and have many LANs to
+handle the user demand.
+Once you’ ve decided how your player
+is going to connect, you have to
+determine what they are going to
+play. There are broadly three different
+styles of play found in multiplayer
+games:
+In competitive games, players have the same objective but work against
+each other— often fighting to the “ death ” to complete an objective first or
+achieve the highest score.
+Cooperative games give players the same objective while (in theory)
+working together to achieve them. After playing Gauntlet with my stupid
+friends, I realized even a cooperative game can easily dissolve into a
+competitive one.
+Conjugate gameplay has players sharing the same gameplay space but
+not the same goals. With the rise of massively multiplayer online games
+(MMOs) and massively multiplayer online role- playing games
+(MMORPGs), conjugate gameplay has become increasingly frequent as
+dozens if not hundreds of players dash around the game world at the same
+time, each with their own agendas and motivations.
+So just what are these motivations? Well, I’ m glad you asked, otherwise I
+wouldn ’ t have had anything to write about for the next few pages. Look at all
+of these game modes found in multiplayer games; some unique to the
+genre. You can easily combine these modes to create conjugate gameplay
+scenarios:
+Multiplayer—the More the Merrier 383
+• Death match/free- for- all. It’ s every man for himself as players battle
+each other for high scores or jockey for the best weapon. Usually
+players all start on common ground at the beginning of a death match
+and gain (or lose) equipment that gives them an edge over the course of
+the game.
+• Team death match. This mode has teams of players killing each other
+for dominance. There can even be competitive goals within this mode,
+where players on the same team can compete for the highest score.
+• Fighting. Two players enter, one player leaves. Starting with Karate
+Champ (Data East, 1984), fighting games quickly evolved into their own
+genre of game. Fighting games often feature head- to -head play, as slow
+data transmission can cause lag which would interrupt the crucial
+split-second timing required. This problem seems less of an issue as the
+release of classic fighting titles such as Street Fighter and Mortal Kombat
+on Xbox Live Arcade has shown.
+• Survival. Usually the goal of survival game mode is to defeat all of the
+enemy or survive getting from point A to B. Players of the Left 4 Dead
+series watch each other’s backs in combat as well as help each other
+heal when in danger. Survival mode most resembles that found in
+single - player games with cooperative modes.
+• Area/territory control. The player has to travel to and protect/defend a
+certain location from AI enemies or human players. The excitement
+comes from the tug- of-war struggle of attacking, retreating, and retaking
+an objective as you attempt to “move the line” closer to the final area.
+An area control map game can last hours
+given the right two teams.
+• Defend/king of the hill. Much like area
+control, but one team of players is given a
+certain location, which needs to be defended
+for a designated period of time.
+• Capture the flag. This game mode has
+one player become a target of the other
+players, either by possessing an object (like a
+flag or Halo ’ s oddball skull) or being
+designated as “ it ” by the game code. The
+384 LEVEL 14 Multiplayer—the More the Merrier
+player that is “ it ” is sometimes handicapped while they are “ it. ” This can
+be played both competitively and cooperatively with other team mates
+protecting the player.
+• Race/driving. Racing modes have players competing for position or
+time. Often that competition can get nasty if players are given the means
+to mess with the other players during the race (such as Mario Kart’ s
+power-ups). For combat races, use a regressive system where the
+player in front is the most vulnerable to attack from the other players
+who are coming up from behind. Burnout Paradise (EA, 2008) introduced
+the “Easy Drive” mode where multiple drivers can participate in events
+and socialize as they drive1.
+• Team objective. The players are given an objective, usually one that
+can only be achieved by working together. The Army of Two series and
+Fat Princess requires “all hands on deck” in order to win the game.
+• Man vs God. One player is God
+who controls almost everything.
+The other is man who has limited
+resources. God makes life difficult
+for man. Man tries to survive
+despite overwhelming odds2.
+• Gambling. Games of chance
+where players play competitively
+or in conjugate to achieve the
+highest score (or at least beat the
+odds.) Avoid progressive systems
+where the rich get richer, and the
+poor get poorer.
+1 I wonder if this will lead to virtual cell- phone laws?
+2 Unless you are a masochist, this only sounds like fun if you are God.
+How Many is the Right Number? 385
+• Reflex. How fast is your trigger
+finger? Quiz and puzzle games
+often have players see who’ s
+faster to determine victory, or at
+least give them an opportunity to
+use their…
+• Knowledge. There ’ s nothing like
+proving you ’ re smarter than the
+guy sitting next to you on the sofa.
+This genre has remained
+consistently present in video
+games such as the You Don ’ t Know Jack, Buzz! and the Scene It? series.
+• Creation. LittleBigPlanet, The Sims and Spore’s multiplayer components
+consist of players visiting or interacting with a player’s creations. It’s a
+great way to extend the life of a game, as your players are creating the
+content for you! For example, LittleBigPlanet: Game of the Year Edition
+showcased 18 brand new levels that were created by the communities ’
+top -rated player creators. A whole subgenre of “ play ” emerged when
+players of The Sims were given tools to make “ stories ” of their
+characters. These movies became just as popular as the game!
+• Virtual life. Playstation’ s Home, Second Life (Linden Research Group,
+2003) and Animal Crossing (Nintendo, 2001) are just a few of the virtual
+worlds where players can customize their world and interact with other
+online occupants. What started as text- only chatrooms have become the
+reality described in Neil Stephenson’ s visionary book Snow Crash.
+How Many is the Right Number?
+You may be wondering how many players should multiplayer support? Take,
+for example, a melee-based fighting game like Street Fighter; With more
+than two players, there would be all types of problems. Players would bunch
+up as they fought making it hard to see individual players. Collision
+detection would be problematic and it would all just devolve into mob
+warfare rather than the contest of skills that make a good fighting game. On
+the other hand, an MMORPG like World of Warcraft would feel empty if it
+only allowed a few hundred players to roam around at the same time. Well,
+you might not be, but I am. So, how many players should there be? Let’ s
+look at the numbers:
+• Fighting game (Street Fighter) = 2 players
+• Fighting game (Power Stone) = 4 players
+386 LEVEL 14 Multiplayer—the More the Merrier
+• Social games (Uno) = 4 players
+• Action platformers (LittleBigPlanet) = 4 players
+• Driving (Burnout Paradise) = 8 players
+• FPS (Call of Duty: Modern Warfare 2) = 16 players
+• FPS (MAG) = 64, 128 or 256 (depending on game mode)
+• MMORPG (World of Warcraft) roughly 4000 to 5000 per server.
+As you can see, there is a HUGE difference between the numbers of
+players. So, the answer to the question is: “whatever is right for your game.”
+MMORPGS, or Hell is Other People
+The MMORPG genre has evolved rapidly to have its own set of tropes and
+methods of play, some of which hardly qualify as “ playing ” at all. Becoming
+familiar with these tropes and including
+them in your own design will not only fill
+out your game but keep you competitive.
+• Buffing. Spell casting that affects not
+only the caster, but the entire party.
+This allows players to assume certain
+roles during gameplay. For example,
+if a cleric is able to prepare a healing
+buff (via hotkey), as players take
+damage he can restore them fully to
+allow them to continue fighting.
+• Character customization. A huge appeal
+of any MMO is being able to assume the role
+of another character and to get lost in that
+fantasy life. The level of player character
+customization can range from preset
+character templates to making characters
+fully customizable down to sex, eye color,
+and nose length. Within the game, further
+encourage customization and let the player
+buy or win clothing, weapons, armor, gear,
+and mounts that fit the personality and class
+of the character they are playing.
+• Chatting. A text or voice chat system in
+your game is expected these days. Players
+will use MMOs as a social gathering place
+as much as a place to play your game.
+MMORPGs, or Hell is Other People 387
+• Crafting. Crafting is combining harvested, found, or bought items to
+create new gear and weapons. Players first need to find “ recipes ” and
+“ components ” for creating items in order to craft objects. Just like
+creating characters, it’ s better to let the player craft items so they
+become recognizable as “their creations.” As crafting can create
+powerful items and weapons, the time it takes to make these creations is
+usually time consuming. Sometimes players can craft in workshop
+locations to reduce crafting time. You can use skill- based minigames to
+successfully initiate the crafting process. Some games allow for “ trial
+and error” style crafting, with the player running the risk of destroyed
+components if they fail in their attempt. Just don’ t allow a player to
+destroy a hard to get an expensive crafting item. It’ s not fair to punish
+the player twice!
+• Economy. Many MMO games thrive on an economy system. Players
+win treasures that allow them to customize characters, buy better
+weapons and gear, craft items, and buy housing and mounts, even their
+own castles! (Or space stations, secret HQs, and so on.) Be sure to
+balance the effort the player puts into earning the money and the items
+they can buy with it. Allow for players to carry treasure as well as store it
+away in personal safes or public banks. Many MMOs have developed an
+economy that spills over into the real world, where players buy in- game
+money for real world cash. Many game creators frown on this practice,
+preferring to control the world’ s economy themselves.
+• Grinding. As the players level up their characters, the rate of their
+progression slows down. Many quests require quest items to complete,
+and obtaining those items can be time consuming as well. For example,
+in Mafia Wars (Zynga, 2009), to complete the “Extort a Corrupt Judge”
+job, you must own the relevant blackmail photo items. To earn blackmail
+photos you must complete the “Take Compromising Photo” job. But
+before that, you must have a disposable camera, which can either be
+gifted to the player by other players or dropped during the “Rob an
+Electronics Store” job— but there is no guarantee that you’ ll get the item
+when you pull the job! As you can see, placing several steps between
+the player and completion of the goal can get very time consuming…
+388 LEVEL 14 Multiplayer—the More the Merrier
+and it can also get very frustrating for the player who feels like their
+progress has been artificially slowed. If anything gets a player to quit
+playing a MMO, it’ s the “ grind. ” While it’ s not really possible to remove
+grinding completely from long- term MMO gaming, whatever can be done
+to reduce this phenomenon, or at least make it entertaining, will be
+appreciated by your players.
+• Instanced dungeons. In order to make MMO gaming a unique
+experience for your players, dungeons are instanced. Content such as
+enemies and loot or even the level map are randomly generated to
+provide a different experience each time it is played. These dungeons
+exist “ outside ” of the game world, allowing for several groups of players
+to be in the same albeit alternate versions of the dungeon at the same
+time. That way, players don’t have to wait for the dungeon to “ restock ”
+between player interactions.
+• Item collection. Item collection is a huge motivating factor for players in
+MMORPGs. Create items that not only improve combat but other
+in - game abilities— especially tedious ones like crafting, mining, or
+harvesting resources. Most items fall along a rarity scheme: common,
+uncommon, rare, and unique. Create special items that can only be
+gained by defeating specific creatures (getting these items is known as
+“ drops ” ), seasonal items that are only available at certain times of the
+year, or by attending specific world events.
+• Open world structure. Most MMOs feature sandbox worlds where the
+player can (presumably) go anywhere and do anything. However, that is
+merely an illusion you will need to maintain for the player. In reality, you
+will need to build the world in the way you want the player to play the
+game. Gating mechanisms, such as level or gear requirements will
+prevent players from travelling to places they aren’ t ready for. Some
+games allow players to wander into higher- level sections, but the
+ass -kicking they receive at the hands of the enemies will usually force
+them to retreat until they’ve reached the necessary level to tackle the
+area ’s foes.
+MMORPGs, or Hell is Other People 389
+• Griefi ng. Griefing is when a player will harass another player by
+constantly killing them. Design systems and create a rule structure for
+your world to combat this bad behavior. Make sure your policies are
+clear to the players, and a warning/zero tolerance system helps keep
+the peace.
+• Guilds. Players are social animals and, as a result, they form groups.
+Players will form parties of characters, called guilds, in order to explore,
+socialize, and run raids. As a designer, you will want to create in- game
+meeting places for guilds to socialize. While it requires a lot of work, you
+may want to also design tools to promote guilds within your game world.
+Useful guild tools include communication tools, stat tracking, calendars
+for running raids, and guild asset customization.
+• Player housing. Everyone likes to play house. Give your player a
+personal space to show off their achievements, display their souvenirs,
+or just “ park ” their player safely between game sessions. Having a home
+base will make the player feel much more connected and “at home” in
+the game world, which will make it become a place they want to return
+to again and again.
+• Player vs player. Players love to see how strong their characters are by
+killing other player characters. However, not everyone wants to run the
+risk of being randomly killed while they play. As a precaution, many
+390 LEVEL 14 Multiplayer—the More the Merrier
+MMOs have dedicated PvP servers. Another alternative is that your world
+has PvP combat restricted to certain locations.
+• Raids. Raids are when players team up to defeat difficult game
+scenarios, such as storming a castle or battling a particularly fearsome
+enemy. Players that assemble and lead a raid need to be one part
+strategist, one part manager, and one part social director. As a designer,
+you want to create scenarios that can be overcome by a variety of party
+configurations, and even allow for the player’ s creative thinking or just
+plain dumb luck. Creating and cultivating the legends of these raid
+targets will let the players know that they have to marshal their forces to
+defeat them. Design systems that make it easy for players to share the
+loot after the raid is over based on each player’ s performance.
+• Spawn camping. A practice by players who wait for an enemy or player
+to appear at a spawn point to kill them. It’ s a practice frowned upon by
+most MMO creators and you will have to develop safeguards into your
+game to discourage or disable this kind of behavior.
+• Trading/auctions. Because players often end up with lots of identical
+loot, or with items that their character class can’t use, trading and
+auctions are good solutions to help players clear out inventory. Make
+Level 14’s Universal Truths and Clever Ideas 391
+sure it’ s simple for your players to trade items without ripping each other
+off. Create locations in your game world to promote trading. Some
+games have auction houses, where regular auctions are held and
+players can bid on items using in- game treasure.
+As you can see there are lots of ways to design play and activities for
+multiple players. Just remember this very important thing:
+PLAYERS WILL ALWAYS DO THE LAST THING YOU EXPECT…
+AND SOMETIMES YOU SHOULD LET THEM DO IT
+Multiplayer offers some great opportunities for players to “ find the fun” in
+your design. Give your players a chance to personalize the way they play,
+just don’ t let them exploit it in ways that ruin the fun for other players.
+Design your game systems thoroughly, and you will be able to anticipate
+problems before you start production.
+Level 14’ s Universal Truths and Clever Ideas:
+• Offer your players a variety of game modes and
+objectives.
+• The right number of players is whatever is right for your
+gameplay.
+• Allow players to customize their characters, their
+objects, their world.
+• New play patterns will emerge when players are given
+the tools to create.
+• Determine what level you want players to negatively
+interact with other players (like PvP).
+• Players will always do the last thing you expect, but
+sometimes that’ s OK.
+
+---
+
+## Sección 16: Part 3 — Controls [Entropy: 0.575]
+
+T
+Leve I 15
+Some Notes on Music1
+When the imagineers were creating the Star Wars Star Tours attraction at
+Disneyland, they initially intended the experience to be “ realistic ”; the
+audience would hear only the sound of the Starspeeder 3000 and the pilot’ s
+dialogue. However, when they tested the attraction, something didn’ t feel
+right. Without John Williams’ music, the attraction just didn’ t seem like “ Star
+Wars ” and so the classic theme was added in.
+Music brings a lot to any entertainment experience, be it a theme park
+attraction, movie, or a video game. But it also requires a lot of work and
+coordination between many members of a team, which contributes to why
+music and sound is usually left until late in production. This is a mistake.
+Sound and music can bring so much to a game that to leave it to the last
+minute is missing out on great design opportunities.
+1 Get it? Notes?
+394 LEVEL 15 Some Notes on Music
+Music and sound in gaming has come a long way in a short time. Back in
+the 1970s and 1980s, arcade and console programmers had only electronic
+beeps and boops to play with. Even with the limitations, game creators were
+able to create some simple but memorable musical themes (or even just
+jingles) for games like Pac - Man, Donkey Kong, and The Legend of Zelda.
+Sound advances happened with almost every system; voice synthesizing
+and MIDI format audio meant that music became more lush. However,
+game creators were limited because sound and music files took up a good
+amount of memory on cartridges.
+The big jump in game music came with CD media games. Starting with Red
+Book audio (Red Book being the set of standards for CD audio), music and
+audio in games was not only able to sound just like any other recorded
+music, but it was possible to store more of it on the CD. As games moved
+onto DVD media, the biggest problem with sound and music, storage
+space, was no longer an insurmountable issue. Nowadays streaming sound
+(compressed into MP3s, Ogg Vorbis, or console- specific formats and
+decompressed as needed by the sound chip) is used on modern PC and
+console games. Emphasis shifted from the programmatic issues with music
+and sound to what to do with it creatively.
+The first question you need to ask yourself when thinking about music
+design is, “what kind of music do I want?” There are really two answers to
+this question: licensed or original.
+Licensed music is previously recorded music that can be “ licensed ” for
+use in a game for a fee. While music publishers own the rights to the
+recorded music, there are also companies that work on behalf of the
+publishers to negotiate licensing deals including ASCAP (the American
+Society of Composers, Artists and Publishers) and Third Element. Obtaining
+Some Notes on Music 395
+the rights to music licenses and negotiating deals is usually handled by the
+game ’s publisher.
+Because video games currently don’ t generate royalties once published,
+game publishers will negotiate one -time buy- out fees for music licenses
+lasting over a period of 7 years to “life of product.” Licensing fees can range
+from $2,500 to over $30,000 a song. The more popular and prestigious a
+song is, the higher the licensing fee. I don’ t
+want to think how much the licensing fees were
+for The Beatles: Rock Band (EA, 2009).
+If the song you want for your game is too
+expensive for your budget, don’ t fret— there are
+still plenty of options. You can license a less
+expensive cover version of a song— this was
+done in the first Guitar Hero (Activision, 2005).
+Or, you can find a similar sounding but less
+expensive song at a music library. In fact,
+libraries are great if your game calls for a wide
+variety of musical styles or requires incidental
+music, like that heard on a radio or in the
+background of a bar scene.
+Your other option is to use original music. Original music is a composition
+that is created specifically for your game. Unless you can compose,
+perform, and record your own music, then I suggest hiring a music director
+to work with your team2. Not only will they create the music, but they can
+also handle the resources required for performing, recording, and preparing
+the music for your game. Even though that’ s a lot of work, there is still
+plenty of prep work for a game designer to do before you even get to that
+stage.
+I find it helps to be able to talk to a music director in their own language,
+even if you can’ t write music, play an instrument, or carry a tune. You just
+have to know what you like and have an opinion about it! Provide
+examples of what you want for your composer: try to cut out as much of
+the guesswork as possible. For Maximo: Ghosts to Glory, I gave the
+composer a “mix tape” of music from movie soundtracks and songs I
+thought would be appropriate for the game’ s levels. While they say that “ a
+little knowledge is dangerous”, I have found it useful to develop a musical
+vocabulary so you are speaking the composer’ s language. It will make it
+that much easier to request changes when you know what to listen for and
+what it’s called.
+2 That is, if you don’ t already have a music director working on your team.
+396 LEVEL 15 Some Notes on Music
+Here are a few musical terms that I have found useful to know:
+• Accent: to place emphasis on a beat to make it louder or longer. As in,
+“ that beat could use a little more accent.”
+• Beat: the “ pulse ” of the music. Music is measured in beats. Music can
+have fast beats or slow beats.
+• Chord: three or more tones that create a harmony.
+• Instrument: an object that produces music. Synthesized music
+replicates the sounds instruments make. The instrument used can
+greatly change the theme and mood of a piece.
+• Mood: the “ feel ” or theme of a musical piece. The mood of a musical
+piece can be based on emotion (fear, excitement), action (sneaky,
+combat) or even location (tropical, Russian). Mood is created by
+instruments and changes in tempo and beat.
+• Octave: this is the interval between one musical pitch and another with
+half or double its frequency; one octave up has twice the pitch. One
+octave down has half the pitch. Usually, I find that you will be telling the
+composer to bring something “up an octave” or “down an octave” to
+make it sound higher or lower pitched.
+• Pitch: the highness or lowness of a tone. A tone’ s pitch can be adjusted
+either higher (to sound like the Chipmunks) or lower (to sound demonic).
+A tone’ s frequency is adjusted to add variety into game sounds without
+creating new sounds, for example a sword clanging on metal can have
+its frequency changed so the player doesn’t have to hear the same
+sound over and over.
+• Rhythm: the controlled movement of music in time. Ravel’ s Bolero
+builds in rhythm to a frantic conclusion.
+• Tempo: the rate of speed of the music, which can range from very very
+slow to very very very fast. There’ s even a specific tempo for walking
+speed called andante!
+• Theme: the “ heart ” of the musical composition. Usually a composer will
+come up with the theme first and then “ flesh it out” to fit the length
+required. For example, John Williams’ Raiders of the Lost Ark March was
+created when Steven Spielberg couldn’ t decide between which of two
+themes he liked better… so he had Williams combine them together!
+• Tone: the sound or characteristic of a particular voice or instrument.
+• Upbeat: refers to the last beat of a measure, but can be used to refer to
+making the music sound happier, friendlier, or faster.
+• Volume: referring to the softness or loudness of the music.
+Now that you can communicate with your music director, you need to
+consider the genre of your game. What style of music do you want for your
+Some Notes on Music 397
+game? A traditional route would be to use the style of music generally
+associated with that genre. Say you are making a sci-fi game. Do you want
+orchestral music like John Williams’ score from Star Wars, or something like
+Vangelis ’ synthesized music from Blade Runner, or go old school with 1950s
+theremin music in the style of the original The Day the Earth Stood Still? Feel
+free to go in another creative direction: how would a sci-fi game feel with a
+hip - hop soundtrack? Or a trance soundtrack? Or polka?
+Creating a temporary soundtrack of your game will cut down on the
+guesswork for your composer and give them clear examples of what you
+want. Finding music for temporary tracks is amazingly easy in this age of
+digital miracles and wonders. By using the Internet, finding music is
+incredibly simple compared to the past, when we had to scour our CD
+collections or go into “the field” with microphone and recorders to get
+samples from the real world. But with the advent of iTunes, YouTube,
+Pandora, and other music-finding websites, assembling tracks is a breeze—
+put in a couple of keywords and you’ ll get hundreds, if not thousands, of
+results. You can even have the programmers insert this music into your
+game as is, but there is a danger that your team will really start to like (or
+hate) the temp tracks and complain if they are changed! Also, make
+absolutely sure you don’ t leave any music in your game that you don’ t
+have a license for— you may have to pay huge amounts to use the sample,
+or scrap all the work!
+Next, prepare a list of your musical needs. To determine this, figure out how
+many levels/environments/chapters/race tracks/unique encounters your
+game has. Each one of these levels will require background music, literally
+music that plays in the background as a kind of audio backdrop for
+gameplay.
+Traditionally, background music is themed towards the level. Spooky music
+on the haunted house level, medieval music for the castle level, jungle
+drums for the jungle level— you get the idea.
+Background music tracks usually run for a few minutes and loop over again
+to save space in memory and composition time. Work with your music
+director to make sure the transition between the beginning and the end of
+398 LEVEL 15 Some Notes on Music
+the song sounds correct and isn’ t marred by silence or an awkward change
+in tempo.
+The next question to ask is do you want— or more realistically, can you
+afford —to have background music on every level? You may have to re- use
+tracks throughout the game. For example, in Maximo vs. Army of Zin, we
+had two songs created for each world and alternated between them so the
+player wouldn’t have to hear the same song twice in a row.
+Instead of having a straightforward song- per- level system, you may want to
+work with your sound programmer and music director to create a dynamic
+score instead. In this method of scoring a game, music is broken up into
+themes that play when a certain situation arises. For example, dynamic
+music can kick in during combat to make a fight feel more exciting and fast
+paced. The main theme music will come back in once the fight is won.
+Dynamic scoring is similar to the music convention leitmotif, in which a
+specific character or scenario has a specific musical theme associated with
+them. One of the most commonly known leitmotifs is from the Star Wars
+films. Darth Vader, Luke Skywalker, Yoda, and the Princess Leia/Han Solo
+romance all have unique themes that play whenever the characters are on
+screen. The most commonly encountered dynamic score themes include:
+• Mystery. The player has entered a new and mysterious locale. A little
+bit of mysterious music can help set the mood.
+Some Notes on Music 399
+• Warning. Sinister or menacing music that plays whenever the player is
+entering a hazardous area or about to encounter enemies. This type of
+theme can be found in many horror games.
+• Combat. Exciting music that plays whenever the player is engaged in
+combat.
+• Chase/fast movement. Chased by dinosaurs? Pursuing villains? Giant
+boulder hot on your heels? A fast-paced chase theme will make the
+action feel even more exciting.
+• Victory. Be sure to sonically reward your players, even if it’ s a “ sting ” (a
+very short piece of music) to let the player know when a fight is over and
+they are victorious or to celebrate a successfully accomplished event in
+the game. The Legend of Zelda games have some great examples of
+rewarding players with music.
+• Walking. While most games play “ walking ” music, I believe that if you
+play slow music, then the player is going to move slowly. But if you
+make the music’ s beat faster than the player can walk, it will motivate
+the player to move faster. In other words, remember this very
+important thing:
+ALWAYS MAKE THE MUSIC MORE EXCITING THAN THE ACTION
+ON SCREEN
+Don ’ t forget to budget in music for your title screen, pause/options/save
+screen, game over screen or any bonus or minigames your games may
+have. Your opening theme is very important: it’ s the first piece of music the
+player hears and will set the stage for the rest of the game. I suggest using
+your best piece of music for the start screen to really get the player excited
+about playing your game.
+Environmental effects are the music of the world around us. Locations
+have their own special background sounds; a graveyard at night sounds
+very different to a city during lunch hour. Sometimes music can just be too
+400 LEVEL 15 Some Notes on Music
+overbearing or not “ right ” for certain environments or games. Combining
+environmental effects with a dynamic score to punctuate action can be very
+effective. In Maximo: Ghosts to Glory, the hub levels were designed to have
+environmental effects to help the player get into the mood of the locations
+while the gameplay levels had more traditional background music.
+When is a sound not a sound? When it’ s silence. Silence has a powerful
+effect on the listener. Often sound is used judiciously to indicate that
+something special is happening to the player or the world. It can be used to
+indicate great speed (when the music drops off as the player engages the
+boost in Burnout), intense action moments (as in “refl ex time ” in F.E.A.R.),
+for suspense, or even a character’ s failed attempt at humor3.
+Sounds Like a Game to Me
+Next, assemble a list of sound effects. Develop your sound effect lists as
+you develop the move sets of your characters and enemies. Start with
+cataloging the basic sound effects for your main character:
+• Movement. Start with the sounds for walking and running on specific
+surfaces like stone, gravel, metal, and splashing through water to make
+your character feel grounded in the world. Jumping, landing, rolling, and
+sliding all need sounds too to let the player know they’ ve pulled off the
+moves.
+• Attacks. Making swings and kicks “ swoosh ” will make them sound
+more dynamic. Make unique attacks sound distinct, like Pac- Man ’ s
+“ eating a ghost” or Mario’ s jump/stomp.
+• Impacts. A nice meaty “ whack ” will make a punch or kick feel more
+powerful. Weapons, spells, and explosions all need dynamic and loud
+sounds to make the player know they’ ve hit something or someone.
+Don ’t forget object reaction effects like breaking wood, shattering glass,
+and clanging metal.
+3 Usually accompanied with the sound of crickets— so I guess it isn’ t silent after all…
+Sounds Like a Game to Me 401
+• Weapons. Guns bang, swords clang, and laser blasters “pew pew!”
+The bigger the weapon, the bigger the sound effect. Your weapons can
+also sound as unique as they look: for example, Star Wars’ iconic hum
+of a lightsaber.
+• Hit reactions. “ Oomph!s ” , “ Ow!s ” , and “Aarrgh!s ” may sound funny
+while you are recording them, but they are some of the most important
+sounds in the game. Whenever the player gets hit, they need to know it!
+• Vocal cues. Need to communicate to the player? Use your character.
+Having your hero say “ What ’s this?” when they spot treasure or “ That ’ s
+better! ” after being healed will not only let the player know what’ s been
+accomplished or is possible but it ’ s a chance to add some character
+to your character. Don’ t forget effort
+cues, such as grunts of exertion when
+pushing moveable blocks and pulling
+stubborn levers.
+• Death. Nothing says “ you ’re dead”, better
+than a good blood- curdling scream. Make
+sure you account for all the horrible ways to
+go, from a groan when getting slain to the
+gurgle of death by drowning to a long
+scream when plummeting off a cliff.
+• Success. Use both “ musical ” and vocal
+sound effects to indicate success to your
+player. Play a “ sting ” to let players know
+they ’ re a winner and don’ t forget to have
+your character celebrate vocally with a
+“ woo - hoo! ” or “ yeah! ”
+For temporary sound effects, I suggest buying CD libraries from sound
+effect providers like Sound Ideas or Hollywood Edge. Their libraries have
+sounds for things you can’ t even believe anyone would ever need: cougars
+sneezing or the hum of a nuclear reactor. They even have sound effects
+from some of the most popular Hollywood movies and TV shows. Even if
+you don’t have a dedicated sound effects designer on staff, they are useful
+tools to have around the studio. Be prepared to spend many hours trying to
+fi nd “ the right” sound effect.
+You can also find many sound effects online for free (though of course
+always check for copyright and so on— better to be sure than on the end of
+a zillion dollar lawsuit later). However, even with all of these great resources
+online, sometimes you just can’ t find the effect you need. This is why I turn
+to sound editing tools like Sound Forge or Vegas. With these programs I can
+quickly and easily mix together two or more sounds to get an idea across to
+my sound effects designer.
+402 LEVEL 15 Some Notes on Music
+Decide whether your sound effects are realistic or cartoony. This will
+generally be set by the theme of your game, but sometimes there are
+exceptions. Realistic sounds make the world feel grounded in reality but
+sometimes the sounds can be too subdued. Cartoony sound effects are
+exaggerated and great for “video game- y ” things like extra lives and
+treasure collection, but sometimes they are a little too “on the nose” and risk
+taking the player out of the game’ s world. Make sure your sound designer is
+using sound to its greatest potential. Make sounds go “ up ” in pitch and
+tempo to make something sound positive, like collecting an extra life or
+completing a task. Make sound effects go “ down ” to reinforce negative and
+failure situations.
+Regardless of which style you choose, sometimes your sound designer will
+have to “ sweeten ” a sound effect because the real world version just
+doesn ’t sound right. For example, I have found that breaking bones never
+sound right; they sound more like dry twigs cracking. Instead, we
+“ sweetened ” the effect with the sound of a bowling ball cracking into pins.
+When you are creating attack and reaction sound effects for your
+characters, work with your animators to determine timing. You want to
+make sure your sound effect doesn’ t last longer or end before the animation
+does. Once you have determined the animation’s timing, create the sound
+effect to fit. Make sure your sound programmer knows what frame of
+animation the sound effect is supposed to play on.
+Sounds can be used to give the player a warning or clue to something
+else in the game. The whistle of a falling bombshell can give the player
+enough of a chance to dive for cover. A crackle of electricity or ominous
+thrum of magical power will give the player pause when approaching a
+protected doorway. A player can search for an item like a lost pocket
+watch or misplaced cell phone by following the sound of its ticking or
+ringing.
+Sounds Like a Game to Me 403
+Be careful not to have too many sounds playing at once. To prevent sound
+effects from creating cacophony, you will have to prioritize them. Your sound
+programmer can help you designate sounds into three categories: local,
+distant, and priority.
+Local sound effects play when the player is close to the source of the
+sound effect. This may be a babbling brook, a ticking clock, a ringing
+phone, the hum of machinery, or the growls of an enemy. As the player gets
+further from the source, these sound effects fade away.
+Distant sound effects are sounds that the player can hear even if they are
+far from the sound’ s source. These include explosions, a wolf’ s howl,
+approaching vehicle engines, or the ominous thrum of a tower o’ doom.
+Priority sound effects are sounds that will always play regardless of
+where the player is. These are sounds that provide the player gameplay
+feedback, including: loss of health, collection of treasures/goodies, score
+or combo increase, power-up or countdown timer, successful enemy hit,
+death, world interaction such as landing, collision or weapon impacts, and
+footsteps/swim strokes/wing flaps.
+Just as when naming level files, give your music and sound cues descriptive
+but short names so the viewer doesn’ t have to guess what they are. For
+example, music for level 2 of your game may be called Lv2Song.wav, and
+the sound file for a variation on a robot enemy’ s blaster shot may be
+roblast2.wav.
+Sound is not only effective for communicating what is going on in the
+game, but it can be used for gameplay. Whole genres of games are
+centered on music, from Dance Dance Revolution (Konami, 1998) to Band
+Hero (Activision, 2009). When creating sound - based and music- based
+gameplay, don’ t rely completely on the sound. Create visuals to echo the
+music and sound. You can never provide too many clues for the player
+and you get the benefit of creating gameplay that can be played by
+impaired players.
+Short -term memory games like Simon (Milton Bradley, 1978) or PaRappa
+the Rapper (SCE, 1996) require the player to memorize and repeat a short
+404 LEVEL 15 Some Notes on Music
+piece of music. It helps to have a visual component to the gameplay,
+not only to help players remember which notes to play, but also to
+accommodate deaf (and tone deaf) players.
+Rhythm games like Taiko: Drum Master (Namco, 2004), Rhythm Heaven
+(Nintendo, 2008), and the Guitar Hero series require the player to keep the
+beat in time to the music. Many of these games require or come with
+specific peripherals resembling instruments from guitars to maracas. When
+designing rhythm games, make sure you account for player fatigue as many
+of these games require constant hand and wrist movement. Provide
+mandatory breaks between songs or levels for players to prevent injuries.
+Pitch games have players sing in order to match a song’ s pitch. These
+games require a microphone to play as seen in the SingStar or Karaoke
+Revolution series of games.
+Music creation games blur the lines between music creation tool and
+game. Electroplankton (Nintendo, 2005) and Fluid (SCEI, 1998) feature
+charming player characters and dynamic on-screen activity but their end
+goals are not to win, but to create and enjoy.
+Other music games defy classification: Vib - Ribbon (SCE, 1999) creates
+platform -esque gameplay based on whatever CD the player inserts, creating
+different play experiences with every game. Rez (Sega, 2001) is a classic rail
+shooter with the added layer of the player creating complex electronic music
+with each enemy they destroy. Battle of the Bands (THQ, 2008) is a rhythm
+game where players play a musical tug- of-war (from disco to country for
+example) as they launch attacks at each other.
+As you can see, there are plenty of ways to use music and sound in
+gameplay. Don’t neglect them; they’ re one more tool for a designer to use.
+Level 15’ s Universal Truths and Clever Ideas:
+• Determine sound needs early in production: don’ t wait
+until the last minute.
+• Learn how to “speak musician” to communicate your
+desires to the composer.
+• Communicate important game actions to the player using
+sound effects and vocal cues.
+Level 15’s Universal Truths and Clever Ideas 405
+• Don’t use music and sound effects you don’ t have the
+rights to use.
+• Use music to move the game’ s action.
+• Use leitmotifs to help tell your story.
+• Determine sound and music’ s proximity and timing to
+make it feel more realistic and interactive.
+• Silence can be as powerful as music.
+• Use music and sound effects as gameplay (but make sure
+you have accompanying visuals for sound-impaired
+players).
+
+---
+
+## Sección 17: Part 3 — Controls [Entropy: 0.854]
+
+T
+Leve I 16
+Cutscenes, or No One’s
+Gonna Watch ‘ Em Anyway
+A cutscene is an animated or live- action sequence used to advance the
+story, create spectacle, and provide atmosphere, dialogue, character
+development, and reveal clues that would otherwise be missed by the
+player during gameplay. The player often has no control over the game
+while a cutscene plays.
+I find cutscenes to be a double- edged sword. On one hand, they usually
+look fantastic, allowing your game world and characters to be shown in a
+way that may not be reproducible in the game engine. However cutscenes
+carry a stigma. There is a history of many cutscenes being too long, not
+necessary to the story or a downright chore to watch. Many players will skip
+408 LEVEL 16 Cutscenes, or No One’s Gonna Watch ‘Em Anyway
+through cutscenes (if the game gives them the option to do this!) in order to
+“ get to the game.” To avoid this, you should first ask yourself this very
+important thing:
+CAN IT BE DONE IN THE GAME?
+We’ ll answer that in a minute. Just as there are many ways to make movies,
+there are many ways to make cutscenes: full motion video, animated, flash
+animated, prerendered, puppet shows, and scripted events.
+Full motion video (or FMV) cutscenes were popular when video games
+were first being published on CD media. Titles like Wing Commander III:
+Heart of the Tiger (Origin, 1994), Command and Conquer (EA, 1995), and
+The Horde (Crystal Dynamics, 1994) featured live-action cutscenes featuring
+Hollywood actors and production values. FMVs are usually produced by an
+outside production company, as they require all the resources of a motion
+picture production.
+FMVs became so popular during the mid- 1990s that several systems
+dedicated to playing interactive movies were produced. Game systems
+like the 3DO Interactive player, Philips CD-I, and Sega Mega CD (as well as
+PCs) specialized in games with extensive or playable FMV sequences such
+as Night Trap (Sega, 1992), Sewer Shark (Sony Imagesoft, 1992),
+Phantasmagoria (Sierra Online, 1995), and Psychic Detective (EA, 1995).
+Even though DVD media can easily handle the file size of the videos, FMVs
+have become less popular with game developers these days. They’ re
+usually deemed too expensive to produce for something the game’ s
+audience may not even watch.
+Animated cutscenes or full motion animations offer a stylistic alternative
+to FMVs. A cell animated or stop motion animated cutscene is converted
+into a video format playable by the game’ s engine, which is then shown
+during the game’ s title and story sequences. Players have no control over
+the game during these sequences. Due to the involved production, generally
+long shooting time and cost, animated cutscenes are scarce in video
+games. However, there have been many gorgeous examples of animated
+cutscenes such as the Neverhood titles (Dreamworks Interactive, 1996), The
+Curse of Monkey Island (Lucasarts, 1997), and the Professor Layton series
+(Nintendo, 2007).
+Flash animated sequences are animated sequences created in Adobe
+Flash, which, due to the use of still images and simple movement, lends
+the animation a certain distinctive visual style. While Flash is often used
+for a game’ s animatics, some games used Flash animations for their
+cutscenes such as in the Sly Cooper series (SCE, 2002), and the first God
+of War.
+Cutscenes, or No One’s Gonna Watch ‘Em Anyway 409
+Prerendered cutscenes are created using high- resolution versions of the
+game ’s character models and environments, with cinematic cameras to
+create dynamic and dramatic choreography, imagery, and storytelling.
+Players have no control over the game during these sequences. With
+enough money, time, and manpower, these prerendered cutscenes can look
+spectacular —check out any Blizzard title, Final Fantasy series game, or
+Namco1 fighting game to see what I mean.
+Puppet shows use in-game assets such as characters and environments
+to create cutscenes. These are called puppet shows because the
+characters in early versions of these cutscenes moved unnaturally, giving
+them the impression of marionettes. Visually, they are only distinguished
+from gameplay by the use of a cinematic camera. Puppet shows can be
+non -interactive or allow the player limited character and camera movement
+(such as looking around with the main character’ s head) as seen in
+Assassin ’s Creed (Ubisoft, 2007), and the Call of Duty: Modern Warfare
+series.
+Scripted events are similar to puppet shows where in-game assets are
+used to create animated sequences, but here the player is allowed limited
+to full interaction with the game during the sequence. Since their inclusion
+in games such as Half- Life (Valve, 1998), The Operative: No One Lives
+Forever (Fox Interactive, 2000), and the Call of Duty series, scripted events
+have become the preferred method to convey story without upsetting the
+pace of gameplay. They are quite common in FPS and action games, but
+if not properly choreographed players run the risk of missing/not seeing
+the event. They can also get repetitive if the player has to experience them
+repeatedly due to dying before the event’ s objectives can be completed2.
+Here are a few ways to make sure your player is watching your scripted
+event:
+• Have your events activate only when the player character is actually
+looking at/facing the scripted event.
+• Build your level geometry to “frame the scene” so the player gets a clear
+view of the action.
+• Move the camera around the environment to give the player an idea of
+its layout and space.
+• If you have a mobile camera, be sure to start your event from the
+player ’s POV or position. This is particularly important for cutscenes that
+1 During the production of Tekken 3, I remember the game’ s Japanese producer proudly
+telling me that the game’s spectacular cinematics were the work of just two animators. He
+then told me that both of them ended up in the hospital due to exhaustion.
+2 This often leads to the “Groundhog Day” phenomenon, where the player feels like they are
+caught in a time loop having to live out the same sequence of events over and over again.
+410 LEVEL 16 Cutscenes, or No One’s Gonna Watch ‘Em Anyway
+use the in- game camera to show events like geometry changing position
+or when giving hints about puzzle elements or revealing enemies. You
+want to use the camera to always show a clear cause and effect, such
+as “pull this lever and that door opens.”
+The good news is, you can now determine which type of storytelling device
+is best for your cutscene. The bad news is, you now have to write it.
+How to Write a Screenplay in Eight Easy Steps
+There are so many books on screenwriting, I’ m not going to even attempt
+to go into the level of detail that they do. If you are interested in reading
+an in-depth analysis on screenwriting, then I suggest the following
+books3:
+• Screenplay: the Foundations of Screenwriting by Syd Field (Dell, 1984)
+• Story; Substance, Structure, Style and the Principles of Screenwriting by
+Robert McKee (It Books, 1997)
+• Screenwriting 434 (a Practical Guide to Step- Outlining & Writing Your
+Screenplay) by Lew Hunter (Perigee Trade, 2004).
+Since you are reading this book and not theirs, here is a quick and dirty
+guide to teach you how to write your screenplay like a professional, so it
+can be used by storyboard artists, cutscene animators, or voice actors.
+Step 1. Outline your story. If you don’ t know the beginning, middle, and
+end of your story, you won’ t know what the heck you are writing. But you’ ve
+already learned this back in Level 3, right?
+Step 2. Break your story down scene by scene to determine which
+characters are in each scene and what locations they take place in. This is
+going to be important for staging as well as asset creation purposes. You
+may not be able to have 10,000 Orcish warriors charging over a hill in a
+puppet show cutscene. You may want to play around with the order of your
+cutscenes. Maybe you want to start with a flashback, because there is more
+action in a later scene than in your first scene. For example, in SpongeBob
+Squarepants: Atlantis Squarepantis (THQ, 2007), we started the game at the
+end of the story because it was the scene with the most action and we
+wanted the game to start with a high action scene. I find it better to start
+with a bang to grab the viewer’ s attention.
+3 Do me a favor and read them AFTER you’ve finished this one, OK?
+How to Write a Screenplay in Eight Easy Steps 411
+Step 3. Determine which scenes of your story are going to be cutscenes vs
+being told through gameplay. I prefer to tell as much of the story through
+gameplay as this is what the player will be doing the most— playing the
+game. You want to save cutscenes for big moments— kissing and blowing
+things up— things that the game engine cannot support.
+Don ’ t make the player watch something they should doing. It’ s always
+better to have the player do than watch… Wait a second, that’ s a very
+important thing. Let me try that again.
+IT ’S ALWAYS BETTER TO HAVE THE PLAYER DO THAN WATCH
+Step 4. Write your scenes and dialogue. Determine what needs to happen
+and what needs to be said. Try to communicate it with action as much (if
+not more) than with words. Write to entertain. It doesn’t hurt to be funny
+either. What you do need to be is brief. As Shakespeare once said, “ brevity
+is the soul of wit.” Or in other words, keep it short. Don’ t bore with a lot of
+yapping and psycho/technobabble4. Try to get your point across in as few
+words as possible. I used to treat writing dialogue like a game of “ Name
+that Tune.” “George, I can write that dialogue in 12 lines.” “ Oh yeah, well, I
+can write that in eight lines or less.” “ Write. That. Dialogue!”
+Step 5. Write your script in the official screenplay format. If you are going to
+be a writing professional (hey, you’ re writing a video game, so guess what?
+You are a writing professional) then you’ d better learn to do it the way the
+pros do. Every other entertainment professional uses this format, so there’ s
+no reason to reinvent the wheel. Here’ s a simple style guide:
+SCENE #. INT./EXT. (choose one) — LOCATION — TIME OF DAY
+CAMERA ANGLE
+Describe the setting, introduce CHARACTERS in ALL CAPS,
+highlight any ACTION in ALL CAPS too.
+CHARACTER ’S NAME
+(actor ’s direction goes in parenthesis)
+Dialogue is written here. Keep it brief.
+That ’s pretty much the basics of screenwriting format! There are plenty of
+screenwriting formatting programs like Final Draft or Movie Magic available if
+you want to save time pressing the “ tab ” key on your keyboard.
+Step 6. Read your dialogue. Out loud. Dialogue often sounds great “ in your
+head ” when you’ ve written it down, but sounds strange or clunky when it’ s
+read out5. Expect to rewrite (and rewrite and rewrite) your dialogue.
+4 Yes, Metal Gear Solid series, I’ m still looking at you.
+5 I am reminded of Harrison Ford’s quote to George Lucas about Star Wars’ dialogue:
+“ George, you can type this sh* t, but you sure as hell can’t say it.”
+412 LEVEL 16 Cutscenes, or No One’s Gonna Watch ‘Em Anyway
+Step 7. Let it simmer for a day or two. Often you will get new ideas, think of
+better ways to write scenes or dialogue. Have someone else read it and
+give you their feedback. Try not to hover too much over them as they do it.
+Step 8. Prepare your script for voice actors using a spreadsheet program
+like Microsoft Excel. Break out the character ’ s dialogue line by line as this is
+the way voice actors read and record their dialogue. Having the actor’ s lines
+isolated will make it easier for them and you to get through what they need to
+read without having to page through a lengthy script. Make sure to retain
+scene numbers on your spreadsheet. Remember to give each line of
+dialogue a file name so the sound engineer has something to name each
+sound file when they cut up the session tracks. This will be the same file your
+programmer uses to put the track into the game.
+Cold Steele VO Script: Jake Steele dialogue (Actor TBD )
+File Name Dialogue Notes
+Opening_01_01 Those terrorist bastards have hidden from Opening cinematic
+us for too long, Montoya.
+Opening_01_02 Well, they’re about to get a taste of COLD Place emphasis on “ cold
+STEEL. steel ”
+Opening_01_03 Saddle up amigo, we’re going hunting.
+Opening_01_04 Heh. You can say that again.
+Opening_01_05 Montoya! Noooooo! Montoya is killed by terrorist
+Cutscene_01_01 Just because you’ ve got me trussed up
+like a Thanksgiving turkey, doesn’ t mean
+you ’ ve won, Von Slaughter.
+Cutscene_01_02 I wouldn’ t give you the map even if I did Jake is slapped by Von
+have it… Ungh! Slaughter at end of line
+Cutscene_01_03 Go ahead, sucker. Do your worst. Hurt, but not defeated
+Jake_Climb_01 Unnnh! Climbs mountain
+Jake_Climb_02 Umphf! Umphf! Alternate climbing take
+Jake_Collect_01 Come to papa. Collects pick- up or cash
+Jake_Collect_02 This will come in useful. Collects pick- up or cash
+Jake_Collect_03 Heh heh. Collects pick- up or cash
+Jake_Health_01 Oh yeah, that’ s the stuff. Drinks health tonic
+Jake_Health_02 That was a good one. Drinks health tonic
+Jake_Yell_01 Yaaaaah!! Jake ’ s charge move
+Jake_Yell_02 Here I come, suckers! Alt charge move
+Jake_Victory_01 Take that, sucker!
+Jake_Victory_02 Ha ha! That’ s how we did it in the old
+days!
+How to Write a Screenplay in Eight Easy Steps 413
+File Name Dialogue Notes
+Jake_Hit_01 Ow!
+Jake_Hit_02 Oomph!
+Jake_Hit_03 Aarrgh!
+Jake_Death_01 Yaaaaaaaah! Jake falls off cliff
+Jake_Death_02 Ung! Ooooh! Jake is shot and drops to
+his knees
+Jake_Death_03 Not again! Uhhhhh! Alternate death take
+Jake_Death_04 YAAAAAAAAAAAAAAAAAAA! Burned to death
+As you may have noticed from above, VO (that stands for voice over,
+btw. And btw stands for by the way, btw) scripts have a lot of
+“ YAAAAAAAAAAAAAAA! ” and “ Oomph! ” and “ Unngh! ” in them. Voice actors
+read these lines very literally so write it the way you want it to sound. There’ s
+a big difference to a voice actor between “Arg! ” and “Aaaargh! ”. One’ s a
+pirate and the other is a death rattle.
+If you’ re not sure how to spell a grunt, hit reaction, or death cry, I suggest
+reading comic books. They’ re filled with all sorts of onomatopoeic6 words
+like POW! CRASH! And AIIEEE!
+6 That’s a fancy way of saying “ It ’s spelled like it sounds.”
+414 LEVEL 16 Cutscenes, or No One’s Gonna Watch ‘Em Anyway
+Now that you’ ve written your script and broken it out, I find it helpful to
+record a temp track. This is a track of moderately talented amateur actors
+and team members— such as you— reading the lines for the purposes of
+determining audio file size and length. All you need to record a temp track is
+your script, a willing actor, a decent microphone, computer software that
+can record audio, and a quiet, non- echoing place to record. Try to do your
+best to read the line the way you will eventually want it performed by a
+professional voice actor. However, it’ s a bad idea to animate a character’ s
+lip synch to a temp track: the actor’ s performance is going to end up very
+different than that of the temp actor. You should only use temp track audio
+for timing and blocking purpose.
+Speaking of voice actors, while you could play the part of Jake Steele,
+international terrorist killer, you really should hire a professional actor for
+the final game. I’ve had the privilege of working with dozens of VO actors
+over the years and, believe me, there is a HUGE difference in the
+performance you get from an actor versus an amateur. You want the best
+for your game, right? So hire an actor. (Or two. Or three. Or a dozen.)
+But before you can hire an actor, you’ re going to need to hire a voice
+director.
+Voice directors are extremely helpful people (and usually very nice too).
+They will help you cast your game’ s characters based on the description of
+the character you give them. Make sure you’re accurate with what you send
+them and don’ t be vague. If necessary, give the voice director the name of
+an existing actor you are imagining would be perfect for the role. Who
+knows, you may even be able to get them for the part7! They will book the
+studio time and help you get the best rate. A voice director will help you
+schedule your time to get the most recording time with your actors. They will
+direct the actors during the voiceover sessions and work with the sound
+technicians to get the best quality results.
+As you get ready for the voiceover session, send the script to the voice
+director. It doesn’ t have to be the final draft, but make sure you let the
+voice director know that you will be bringing changes to the script with
+you. On the day of the voice session, be sure to bring the following
+with you:
+• Extra physical copies of the script.
+• A highlighter, for calling out lines to the actor in the script during the
+session.
+• A ballpoint pen or pencil, to make notes and to keep track of changes to
+the script. (Trust me, there will be changes.)
+7 This happened to game developer Tim Schaeffer, who thought he could never get Jack Black
+to play the lead in Brütal Legend.
+How to Write a Screenplay in Eight Easy Steps 415
+• Images of the characters the actors are playing. Bring whatever you
+can to give the actor an idea of what the character looks like. In many
+cases, VO actors will play several parts in your game so even if it’ s
+“drooling alien no. 2” bring an image to help them bring that character
+to life (and send it ahead of time to the voice director as well to aid in
+casting).
+• A book or handheld game. “Hurry up and wait” is the motto of the
+entertainment industry. There is always plenty of “ down time” as actors
+and sound technicians prepare for the session. Keep out of their way,
+but don’t wander off too far.
+• Beverages and snacks— voice sessions can last all day if not all week.
+And even though all you’ re doing is sitting and listening to actors all day,
+it can be exhausting! Be prepared!
+If you aren’t the game writer/designer, make sure your writer/designer is on
+hand when it’ s time for the voiceover recording session too. Very often,
+there will need to be script rewrites and the actors and voice director don’ t
+always know the context of the line. You may need something very specific
+for your game: don’t leave it up to someone else. Not that there’s any
+problem with improvisation— giving an actor free reign to create great
+additions and alternate takes on your script will not only give you plenty of
+material to work with, but the actors enjoy doing it too— and if they enjoy
+working with you, they will want to work with you again in the future.
+And finally, have fun! Remember, you are getting paid to sit in a room
+listening to actors say lines that you have written! It doesn’ t get much better
+than that!
+416 LEVEL 16 Cutscenes, or No One’s Gonna Watch ‘Em Anyway
+Level 16’ s Universal Truths and Clever Ideas:
+• Your cutscenes should fit the style, budget, and schedule
+of your game.
+• Learn and write your script in the standard screenwriting
+format.
+• Start your game off with a bang to draw audiences in.
+• It ’ s better to have the player do than watch: tell your
+story using gameplay.
+• Allow the player to skip cutscenes, and don’ t make them
+watch them over and over again.
+• Keep your cutscenes short to save player’ s time and your
+money.
+• Use cutscenes for kissing and explosions: save your
+cutscenes for big spectacular moments and intimate
+ones. Do everything else in gameplay.
+• Professional actors make a big difference. Use them
+whenever possible.
+• Break out your actor’ s material when preparing for voice
+acting sessions.
+T
+Leve I 17
+And Now the Hard Part
+If you followed the instructions in this book, you are now the proud creator
+of a great game idea and a 200- plus page game design document. You
+have everything you need to make an actual video game, right? Wrong!
+Your work is just beginning. Before you actually make the game, you will
+have to find a publisher to publish your game. And to find a publisher, you
+will need a pitch.
+A pitch is a streamlined, easily digestible version of your game design
+document. It contains everything that’ s great and original about your game
+without all the “twiddley bits1. ”
+Since most pitches are presented to groups in boardrooms, I highly
+recommend using Microsoft PowerPoint or some other presentation software
+to create your pitch document. To help, I have included an outline of what
+you should include in a pitch presentation in Bonus Level 9 . The basics of
+this document are these:
+• Title screen with logo
+• Company profile
+• High concept
+• A few pages of details
+• Proof of why your game will be awesome/make everyone lots of money.
+When creating a pitch presentation, remember the basics of making
+presentation slides: choose a font that you can read, don’ t put too much
+information on one page, and everyone loves pictures.
+1 “ Twiddley bits” is game industry lingo for all the details you’ve worked really hard on but
+other people don’ t really need to hear about when you are telling them about your game.
+They’ re important to making the game, but not to selling it to a publisher.
+418 LEVEL 17 And Now the Hard Part
+No One Cares About Your Stupid Little World
+Putting together a good pitch presentation is like putting together an artist’ s
+portfolio: you want to show off your best work, but not include too many
+pieces and overwhelm your audience.
+This was a story pitch I once sat through. The minute the writer started
+telling us the intricate machinations of his fantasy world, I tuned him out.
+It was just too much information to process at once. While worlds are fun to
+create and inventing a world’ s details is important to making a world feel
+real, realize that nobody else cares about your world and those details at
+this stage. I didn’t care who the Nebulons were or what the significance of a
+Galactic Imperium was. I just wanted to know how the game played. Don’ t
+overburden your reader with story details. Keep it simple and more
+importantly, keep those details to yourself… for now.
+Here are a few more rules of thumb when pitching:
+• Pitch to the right people. Just like when you created your game
+outline, you need to consider to whom you are selling your idea. Too
+many times, coming out of a pitch presentation, I’ ve heard “ That was a
+great pitch, but we’ d never publish that type of game.” This is sad,
+because if the developer had taken a little time to do some research
+about the publisher, that situation would have never happened. You don’ t
+No One Cares about Your Stupid Little World 419
+want to waste your time (not to mention the publisher’ s). Some publishers
+only publish certain genres of games. Don’ t pitch a family game to a
+publisher who specializes in hardcore action games. That said, many
+publishers do publish a wide range of titles and their company objectives
+may change. Timing is everything. You may make a pitch right when the
+publisher decides they want to make a RTS about cybernetic death
+mecha piloted by farm animals. Then again, maybe not.
+• Pitch in a controlled environment. You can never be sure where a
+pitch presentation is going to take place, but you want to pitch your
+game in a location where the audience’ s attention is on you and your
+presentation. Pitching on the show floor of E3 = not good. Pitching in a
+private meeting room at E3 = much better.
+• Be prepared. Just like any other type of performance, you need to
+practice. Practice giving your pitch in front of your peers. Invite them to
+give you feedback on content as well as your performance. Don’ t be
+afraid to access your inner actor. You will be telling the story and the
+narrative of your game to the publisher, so you want to get them as
+excited about your game as you are excited to make it. If there is
+420 LEVEL 17 And Now the Hard Part
+someone on your team better suited to speak in front of a group then
+have them give the presentation instead— with your supervision of
+course. You will still want to be present at the pitch to help them answer
+questions and fill in details. You want your game to shine in the best
+possible light and you only have one chance to impress. Make sure your
+computer is compatible with any type of set up, and always bring
+backup data on a thumb drive or disc. I have seen presentations stop
+cold because the sound isn’ t working correctly. Bring plenty of copies of
+documents. This is a little harder to predict because the number of
+attendees can be unpredictable. Here’ s another situation to consider:
+would you still be able to make your pitch if the power went out? So, as
+the Boy Scouts say, be prepared.
+• Know your project inside and out (and then some). Even though
+your game hasn’ t even been made yet, you should know everything you
+can about it. Publishers will ask questions to try and poke holes in your
+design. It’ s not that they’ re malicious; they’ re just looking for topics that
+may cause trouble once the game starts production. Be able to talk
+about your game in- depth but remember not to go on and on; you don’ t
+want to drown your audience in details unless they ask for them. If you
+don ’t know an answer to a question, it helps to say, I’d like to hear your
+thoughts on that.”
+• Keep the focus. Production teams sometimes bring in several pitch
+ideas in an attempt to find out what the publisher is interested in. I’ m not
+sure I agree with that strategy. More pitches means that (a) the meeting
+will go on longer, (b) less time will be spent on each game presentation,
+and (c) you may not get consensus on which idea is the best. There will
+always be one idea that stands out from the others, so why muddy the
+waters? I say let the attendees concentrate on that one idea. You may
+have to revisit the publisher to pitch another game idea. If you do
+present several ideas at a pitch meeting, then make sure that all of the
+presentations are at the same level of quality.
+• Pitch to represent. Even if you don ’ t have a great game pitch or truly
+original idea, but you have a great piece of technology or a prototype
+gameplay mechanic then it may not hurt to present it to a publisher.
+Sometimes a publisher has a license but hasn ’ t picked a studio to
+develop it into a game. Sometimes, timing and good luck play just as
+much a part of the pitch process as having a great game idea and strong
+presentation. In my 5 plus years working at a publisher and hearing
+scores of video game pitches, I have developed the “pitch equation” :
+GAME DEMO > GAME DESIGN DOCUMENT > PRESENTATION > PITCH
+Game demos are a lot of work. If not planned for properly, they take
+time away from the production of the main game. They can really disrupt
+Video Games is a Haaaard Business 421
+the flow of your production and can lead to crunch time: long hours
+trying to get content into your game. However, demos show you are
+serious about making your game and allow potential publishers a chance
+to get their hands on code, which sometimes is the best way to sell the
+game.
+Video Games is a Haaaard Business
+Making video games may sound like fun and games, but it is a lot of hard
+work. It takes lots of effort and hours to design and create a game. And
+even after all of that hard work, a game that may seem like a “sure hit”
+may get poor reviews or mediocre sales. There are plenty of examples of
+well made and fun games that received great reviews and still did badly
+sales -wise. Sometimes the publisher may not be able to finance the
+promotion of the game to the level you feel it deserves. Sales projections
+may be set at levels that the game just can’ t reach. It’ s not all the
+publisher ’s fault though. Sometimes team members may not put their best
+work into the game; family and health issues may distract them from their
+jobs. God forbid your lead designer or a key team member gets sick or
+dies during production. Remember this very important thing:
+VIDEO GAMES ARE MADE BY PEOPLE
+These things happen, so you want to give your game a fighting chance
+to be the best possible. Most games that go badly are the result of
+bad planning. Here’ s a list for troubleshooting your game during
+production:
+• Plan ahead. Prepare for team illnesses and vacation. Prepare for
+hardware failure, brown-outs, or other technical issues.
+• Be smart when creating your design. Don’ t overpromise content and bite
+off more than the team can chew.
+• Try to lock down design and content as soon as possible; constantly
+changing content in the pursuit of perfection will eventually wear down
+your team and may even kill your game.
+• Players will always find ways to break your game, so make sure to play
+the game like they would. Don’ t just play the game the way it’ s “ meant
+to be played.” Do unusual things and bang on the game until it breaks.
+Then fix it and keep working.
+• If you are creating an international version of your games, make sure you
+account for sensitive cultural difference. For example, Titan Studios, the
+422 LEVEL 17 And Now the Hard Part
+creators of Fat Princess (SCE, 2009) had to redesign their cartoony
+four- fingered game characters to have five fingers2 for the game’ s
+release in Japan.
+• Find ways to remove design blinders, the phenomena that happens
+when you are too close to your game. It results in game creators
+thinking their game is too easy or half- baked elements “good enough.”
+Recruit other people to play your game and give feedback. Use focus
+group testing when applicable and iterate on your game design in all
+stages of production. This is something that publishers are really good
+at … providing what I call the “10,000 foot view” — an objective look at
+your game. They’ ll help you identify weak spots and strengthen the
+good parts.
+• If something doesn’t work, then throw it out. Don’ t be precious with your
+ideas. They’re a dime a dozen. When you do throw something out, have
+a backup plan in mind. Don’t make throwing away work a habit. It’ s
+better to plan things out to anticipate problems than to waste work. It’ s
+better to be getting rid of good ideas; that means you have too many
+good ideas! You can always use them on the sequel3.
+Cutting content happens in every game. But the more you cut during
+preproduction, the less you will have to cut during production. Make sure
+you are cutting content for the right reasons. Don’ t cut or change content
+that connect and have an impact on multiple game systems or you will be
+asking for trouble.
+2 There are at least three explanations to why the four-fingered visual is considered taboo in
+Japan. Yubitsume is the practice done by members of the Yakuza; the cutting off at the
+knuckle of the pinkie finger as atonement. The resulting mutilated hand has the appearance
+of having four fingers. The number four, pronounced Shi , also means death. It’ s an unlucky
+number; much like 13 is in western cultures. The Burakumin are a social class that is still met
+with discrimination. The four- fingered sign was used to designate Burakumin (because they
+often worked with four-legged animals) and became a derogatory gesture. Modern Buraku
+activist groups have sued over the use of the four- fingered sign in Japanese media.
+3 S.I.F.S. — “ save it for the sequel” — was a popular saying at many of the studios I
+worked at.
+Video Games is a Haaaard Business 423
+I don’t want to go too much into game
+production (that could fill an entirely different
+book) but you should consider how to go
+about building your game. Some teams create
+a vertical slice that acts as a demo to be
+shown to publishers and a template for the
+rest of the game. A vertical slice is a level or
+sequence of your game that has been
+designed, built, and polished to the highest
+level of playability possible. A vertical slice has
+the highest quality of controls, camera, visuals,
+gameplay, code, effects, and audio that the
+final version of the game will have. Usually the
+target is 80% of final game quality. While experienced teams can create
+vertical slices in a matter of months, it is a very time- consuming process
+that can lead to crunch time—long working hours that can be very
+stressful to the team as they rush to create, insert and test content into
+the game.
+A horizontal layer is another alternative to game production. The
+team bring all elements of the game, from beginning to end, “ up ” at the
+same time in gray box form. When creating gray box levels, geometry is
+roughly built and character animation assets are mostly placeholders.
+Details such as texturing, effects, and sound are generally absent at this
+point. Once all game assets have been play tested and approved, then the
+team oves on to the next step of “ prettying up” and polishing the game
+even further.
+424 LEVEL 17 And Now the Hard Part
+The hardest thing about presenting gray box gameplay to other team
+members (and publishers and marketing partners, and so on) is that it
+requires them to use their imagination. Don’ t laugh, even in a creative
+industry such as making games, that ability is rarer than you’ d think. The
+trick is to not let these people get the wrong idea about your game. Make
+sure there is concept art on hand to help communicate these visuals before
+they are in the game. What’ s great about this type of iteration is it gives the
+team a chance to play around with the game and discover what’ s great
+about it. If bouncing off of enemies’ heads turns out to be more fun than
+fighting them, then it’ s not too late to adjust the design to compensate for
+the gameplay.
+There is a design concept called emergent gameplay; gameplay that will
+“ just happen” if the player is given a set of gameplay tools and a chance to
+play with them. However, the problem arises when designers use the
+concept of emergent gameplay as an excuse to underdesign gameplay,
+hoping that the player will “find the fun.”
+I say “emergent, eschmergent!” There’ s no such thing as accidental design.
+Knowing how all of the gameplay elements work with each other is part of
+the design process. If you take the time to plan and think about how the
+elements relate to each other, the outcomes of those relationships can be
+predicted. Granted, unusual relationships can emerge from bugs and other
+inconsistencies, but you should never plan your game design around those!
+If something unexpected does happen and it doesn’t break your game,
+remember: “ it ’s not a bug, it’s a feature!”
+Planning ahead. That’ s the secret to successful game production.
+What to Do for an Encore? 425
+What to Do for an Encore?
+If your game reviews well or sells well, or if your publisher can afford to pay
+you a second time around, then you may get to make a sequel. Publishers
+like sequels. Now that I have worked for both a developer and a publisher, I
+think I have a good perspective on sequels. Just like in Hollywood, they are
+safe(r) bets: proven intellectual property (IP) that doesn’ t need to be
+explained to the audience: “if you loved the first one, you’ ll love the
+second! ”
+It ’s easy to understand why that is appealing to a publisher, but it’ s not
+without its problems. Sequels often sadly seem to represent a missed
+opportunity. Some teams just “ phone in” or rush to make their sequel,
+creating retreads of the last game. Sequels should be treated as an
+opportunity to get it right. The first time you make a game, you are limited
+by several factors: you have to build a team, build an engine, figure out
+just what the heck this character and the gameplay is going to be. Get the
+whole thing to work and actually be fun. Then you hope that the audience
+is going to like and buy it. Once you’ ve finished that, you’ ve licked the
+hard part— especially if you’ ve sold well enough to warrant a sequel. You
+should start your preproduction with the driving desire to make the game
+perfect4.
+4 OK, odds are you will never obtain perfection, but it’ s not a bad goal to shoot for. Then
+again, it didn’ t help Duke Nukem Forever, did it?
+426 LEVEL 17 And Now the Hard Part
+For example, after finishing the first Maximo game, I went to my producer
+with a list of 40 things I thought were broken and needed to be fixed in the
+sequel (to my delight, I was able to get 39 of those requests fulfilled!). While
+the first game sold better, I still think the second game is a better game. We
+wouldn ’ t have had the opportunity to make that better game if we didn’ t
+have a chance to make a sequel.
+Besides, if there were no sequels, there would be no Grand Theft Auto 3,
+Call of Duty: Modern Warfare, Burnout Paradise, Curse of Monkey Island,
+Resident Evil 2 or Resident Evil 4, Lego Star Wars original trilogy… you
+get the idea. Here is some advice on making a video game sequel:
+• Use the “ spine ” of the original game as a basis of your gameplay design
+for the sequel. Take everything that was good in the first game and
+improve on it. Take everything that was bad and throw it away. It seems
+like common sense, but it’ s not all that common— things like lousy
+camera, controls, and gameplay mechanics are “justifi ed” by teams
+because they were in the first game. Just because they were in the first
+game, doesn’ t mean they were that good. Don’ t be afraid to cut out the
+bad bits. If it’ s better than the original, no one will complain. My friend,
+project manager George Collins recommends that every sequel should
+be “ 30/70 ”: 30 percent new material and ideas and 70 percent based on
+the original game. It’s not a bad formula to follow.
+• Don ’t let the player down. They expect certain things in the sequel and
+you shouldn’ t disappoint. For example, if your audience loved the
+wall - running mechanic in your first game, then by all means, keep wall
+running in the sequel.
+• Name it something other than “GameName 2. ” Names are really impor
+tant to a game. Personally, I think both the Batman (Batman Returns,
+Batman Begins, and so on) and the Indiana Jones and the… movie
+franchises did it right. Their titles are mysterious and keep furthering the
+fiction rather than reducing it to a numbered outing.
+• Always introduce something new… This may seem to be pandering to
+marketing, but make sure there are five new things in your game for the
+back of the box, preferably new gameplay concepts to bring something
+fresh. Also, try to introduce at least one new hero and villain to the
+franchise. Remind the player that this is a new experience, not just a
+rehash.
+• … But don’ t make it too new. In Maximo vs. Army of Zin, we didn’ t
+realize that the players wanted to fight more supernatural enemies;
+we had them battling clockwork creatures instead. The fans were
+unhappy because we deviated away from what they liked in the
+fi rst title.
+Level 17’s Universal Truths and Clever Ideas 427
+• The further down the road you are, the more opportunity you have for
+change. Why not try doing something wildly different? This, of course,
+requires buy-in from your publisher and marketing department so it can
+be tricky to pull off. I’ve worked on franchises that were in their 5th, 8th
+or even 16th incarnation and sometimes a completely new direction is
+what it needed to shake things up. Give it a try, it worked for both the
+Grand Theft Auto and Wolfenstein franchises5!
+Level 17’ s Universal Truths and Clever Ideas:
+• Demo > GDD > pitch presentation > pitch outline.
+• Cater your pitch to the right audience.
+• Be prepared for any technical problem.
+• Know your game completely to answer any question your
+audience might have.
+• Practice your pitch in front of an audience.
+• Video games are made by people: schedule in “ people
+issues” , both good and bad.
+• Remove designer blinders by looking at your game
+holistically and through focus testing.
+• Build games using either horizontal layer or vertical slice
+style production— pick one and go!
+• If something doesn’t work in your game, throw it out,
+but try to plan ahead to avoid this.
+• Avoid crunch time with responsible design goals and
+detailed production planning.
+5 Just be aware that it may not work too. Nothing is ever guaranteed in video games.
+428 LEVEL 17 And Now the Hard Part
+• Don’ t rely on emergent gameplay to make your game fun.
+All good design is preplanned.
+• Use the 30
+/70% rule when creating sequels: repeat all
+the stuff that was great in the first game, throw out
+everything that didn’ t work.
+• Don’ t let legacy keep your sequel down. Take a hard look
+at what can be improved from the first game.
+• Don’ t let the player down.
+Continue?
+Time To Level Up!
+So, let’s see… We’ ve thought up some game designs, we’ ve written some
+game design documents, we’ ve eaten some chili, and we’ ve pitched our
+game.
+Congratulations! You’ve leveled up!
+And just like in games, you’ re just getting started. Now it’ s time for you to
+learn firsthand that making video games is the best job in the world. Do me
+a favor, as you zoom ahead and make your own games, keep this book in
+your back pocket; hopefully it will come in helpful the next time you get
+stuck.
+Finally, always remember these three things:
+• Take a break every once in a while. You’ re only human and you’ re only
+making games. You’ re not a heart surgeon. No one is going to die if you
+leave something until tomorrow.
+• Always be fair and generous. This is a very small industry and word gets
+around very fast when you aren’ t.
+• Always keep playing games— even the bad ones.
+• Not many people make games for a living, so enjoy every minute of it:
+after all, you could be flipping burgers instead.
+OK, so I lied, there were four things.
+430 Continue?
+T
+Bonus Levei 1
+The One -Sheet Sample
+The following are examples of one- sheet templates used for creating a
+concept overview. The one-sheet template is a very important document;
+not just for the team and managers to “be on the same page” with the
+project priorities and objectives, but as a tool to pass on to management,
+marketing, sales, licensors, and get them excited about your game.
+Ultimately, the style in which you create the one-sheet doesn’ t matter as
+much as the information in it. The first example is a text- only version, while
+the second adds images. No matter what the format, keep them short and
+informative.
+Reiterate the points on the one-sheet every time you talk about the game.
+You ’ ll know when it eventually sinks in to your team mates when you talk to
+them about a design feature and they reply with “ But that’ s not what it says
+on the one- sheet ” and they’ re right. Consider it a victory. (We designers
+need to take them where we can!)
+432 Bonus Level 1 The One-Sheet Sample
+
+---
+
+## Sección 18: Part 3 — Controls [Entropy: 0.635]
+
+T
+Bonus Levei 2
+The Ten - Page Design
+Document Sample
+Unlike the one- pager, which should be kept to one page, the ten- pager is
+more a set of guidelines than a strict policy1. It’s more of a “ ten - pointer ”
+than a ten- pager, but feel free to dedicate a page to a topic.
+What ’s important is that all the broad strokes of information are included
+and the document is accessible and exciting to read. The foundation of this
+document will turn into your pitch and GDD.
+Page 1: Title Page
+Include a graphic if possible, a title (preferably a logo) and your contact
+information, target platform, target audience, target rating, and expected
+shipping date.
+Page 2: Story and Gameplay
+Page 2 should include a few short paragraphs about the story (beginning,
+middle, and ending … or at least a cliffhanger) mentioning the setting, the
+characters, and the conflict. Gameplay description should give a brief idea
+of the flow of the game— break it into stages or bullet points if its easier to
+convey info that way.
+1 Kind of like the pirate’s code.
+436 Bonus Level 2 The Ten-Page Design Document Sample
+Page 3: Game Flow
+How does the player grow as the challenges increase? How does this tie
+into the story? Briefly describe how these systems will work (experience
+points, money, score, collectibles) and what the player gains as they grow
+(new abilities, weapons, additional moves, unlockables).
+Page 4: Character(s) and Controls
+Who does the player control? What is his/her/its story? What can they do
+that is unique/special to this game? Can the player do several types of
+activities? (Driving, shooting, and so on.) Does the player ever change
+characters? What is the difference in play?
+Show control mapping highlighting some of the special/unique moves to
+this product. Include image of SKU’ s controller for reference.
+Page 5: Main Gameplay Concepts and
+Platform Specific Features
+What kind of play does the player engage in? What genres are they?
+(Driving, shooting, platform, and so on.) How is the sequence of play
+broken up? (Levels? Rounds? Story chapters?) If there are multiple
+minigames, list them out by name and give short descriptions. If there are
+specific cool gameplay scenarios, list them. USPs from the concept
+overview should be included and briefly detailed here. Diagrams are good
+to illustrate game concepts.
+What game features are unique and capitalize on the platform’ s hardware?
+(Hard drive, touch screen, multiple screen, memory card, and so on.)
+Provide examples.
+Page 6: Game World
+Where does the gameplay take place? List the environments the player will
+visit with short descriptions. How do they tie into the story? What mood is
+being evoked in each world? How are they connected? (Linear or hub- style
+navigation?) Include a simple flow diagram of how the player would navigate
+the world.
+The Ten-Page Design Document Sample 437
+Page 7: Interface
+How does the player navigate the shell of the game? What mood is evoked
+with the interface screens? What music is used? Include a simple flow
+diagram of how the player will navigate the interface.
+Page 8: Mechanics and Power- ups
+Gameplay mechanics. What unique mechanics are in the game? How do
+they relate to the player’ s actions? How will they be used in the
+environment?
+Power- ups. If applicable, what kind of power-ups/collectibles can the player
+collect? What are the benefits of collecting them? Can they be used to buy
+items, abilities, and so on?
+Page 9: Enemies and Bosses
+Enemies. If applicable, what kind of enemies does the player face? What
+kind of cool attacks do they have? Describe the enemy AI. What makes
+them unique?
+Bosses. If applicable, what kind of boss characters does the player face?
+What environments do they appear in? How does the player defeat them?
+What does the player get for defeating them?
+Page 10: Cutscenes, Bonus Material, and Comps
+How are the cutscenes going to be presented? When do they appear; in
+between levels? At the beginning and end of the game? What format have
+they been created in? (CG? Flash? Puppet show?)
+What material will the player be able to unlock? What incentive is there for
+the player to play again?
+What other games will be your competition upon market release?
+438 Bonus Level 2 The Ten-Page Design Document Sample
+The Ten-Page Design Document Sample 439
+440 Bonus Level 2 The Ten-Page Design Document Sample
+The Ten-Page Design Document Sample 441
+442 Bonus Level 2 The Ten-Page Design Document Sample
+The Ten-Page Design Document Sample 443
+444 Bonus Level 2 The Ten-Page Design Document Sample
+T
+Bonus Levei 3
+Game Design Document
+Template
+The following pages are a template for creating a game design document or
+GDD. The GDD is skewed towards an action, adventure, platform, RPG, and
+shooter-style game. However, most of the elements listed in the template
+can be adapted for any style of game.
+Don ’ t feel like you have to fill in every detail of information while creating the
+GDD, but it is better to have areas of the design roughed out than to not
+have them at all. I tell the developers I work with that a “ TBD ” is better than
+nothing at all.
+Remember that a GDD is a living thing: everything in it is liquid and might
+change due to anything from technology limitations to production time
+realities.
+In the end, use the information in this template in the way that’ s best for
+YOU and your team. If you need to draw more pictures, then do so. If you
+need to break the data up into “ one - pagers ” then do that. (See Bonus
+Level 1 .)
+446 Bonus Level 3 Game Design Document Template
+COVER
+(Insert evocative cover image here)
+YOUR GAME ’ S TITLE
+Document version number (keep this current!)
+Written by (your team name here)
+Point of contact (producer or lead designer w/phone number)
+Date of publishing
+Version number
+Footer should always have:
+Copyright Company Date Page number Current date
+GDD Outline 447
+GDD Outline (for action, adventure, platform,
+RPG, or shooter- video game)
+Table of contents— remember to keep this current
+Revision history—update this with publishing dates and track which author
+updated the material
+Game goals—this includes:
+Game ’s “ high concept”
+The “back of the box” listing of any new/novel mechanics or gameplay
+features
+Include all Internet and wireless features
+Story overview—remember to keep this short and frame it in the context of
+the gameplay. This includes:
+Set up— how does the player start the game?
+Locations and how they relate to the narrative— how does the player get
+from one location to the next?
+Finale — what is the ending? What is the player expected to be/have done
+by the end of the game?
+Game controls
+Overview — list specific moves the player will be doing, but don’t go into
+detail on the actual moves … yet
+Control scheme
+Show an image of a controller (controllers if game is on multiple platforms)
+with corresponding button mapping
+Technological requirements— keep this brief as many of these features will
+be included in the game’ s technical design document (TDD).
+What tools is this game going to use?
+• How are camera, physics, bosses, and so on going to be done?
+Implemented by programmer? By designer? Hard coded?
+Scripted?
+What design tools is this game going to use?
+• Level creation tools
+• Scripting system
+Proposed tools for cheats— include controls for cheats
+• Level cheat
+• Invulnerability cheat
+• Camera cheat
+• Other cheats (full health, full armor, full money, and so on)
+448 Bonus Level 3 Game Design Document Template
+Front end of the game
+Indicate what credit screens will be shown when game is first turned on
+including:
+• Publisher
+• Studio logo
+• Licensors
+• Third party software manufacturers
+• Legal screen
+Cutscene description (if applicable)—no need to reproduce the entire
+script here, just give the reader an idea of what it is about.
+Attract mode description (if applicable)—give a description of what in
+game material will be shown if the game is left idle on the start screen.
+Title/start screen—what is the first impression of the actual game? Include:
+An image of the title/start screen
+Detail of what is presented to the player
+• Title name and how it appears on screen
+• Any associated animation/graphics
+A list of what selection options are available to the player
+How the player interfaces with the options (cursor, d- pad, and so on)
+Save/load file— describe how a game file is saved and loaded
+How to name/designate a save file— keyboard or other file- naming
+convention
+List details of saved file shown to player
+• Name
+• Date
+• Level location or chapter name/number
+• Time played elapsed
+• An image of what a saved game file looks like (if applicable)
+Detail any cross-save features
+Player options— include image, sound and music, and player interface
+details. Detail out connecting links to options.
+• Video settings
+• Audio settings
+• Music settings
+• Subtitle settings
+• Contrast tool
+• Alternate control settings (reverse joystick, feedback on/off, and
+so on)
+GDD Outline 449
+Other screens—these could be unlockable content accessed from the title
+screen. Make sure to include image, sound and music, and player interface
+details. Possible screens include:
+Credits
+• Team photo
+• Studio images
+Bonus material— include image of screens, how will player interact with
+interface, activate this material? (unlockable, buyable, Easter eggs, and
+so on)
+• Alternate costumes or weapons
+• Cheats
+• Functional cheats (invulnerability, full health, and so on)
+• Licensor required cheats (for marketing purpose)
+• Other cheats (big- head mode, color swap, and so on)
+• Art/sound/animation galleries
+• Video player to replay cutscenes, movies, and so on
+• Trailers for other games/products
+Special features
+• Commentary
+• Team interviews
+• Deleted material
+• Documentary
+• Gag reels
+Game flowchart— show how all the screens from “ title/start screen” to “ game
+over ” connect to each other.
+Loading screen—what does player see when the game is loading? Include:
+An image of the pause screen (and indicate if there are multiple images
+used)
+Overview of data presented to player on pause screen (hints, trivia
+questions, minigame)
+Game camera(s)—call out any specific camera types
+Image of camera’ s point of view any of the following applicable
+cameras:
+• First person
+• Third person
+• Three -quarters view
+• 2.5 - D view
+• Forced scroll
+• Spline
+• Locked camera
+450 Bonus Level 3 Game Design Document Template
+Description of logic system for camera
+• Game -specific situations requiring unique cameras
+• Camera troubleshooting guide— examples of what camera will do
+when encountering problems
+Logic for cheat/screenshot camera
+• How developer/publisher can access and operate this camera
+HUD system—information presented on screen to the player. Include images
+of all of the following:
+Health/status
+Lives/continues
+Money/score/rank
+Power/fuel
+Ammunition
+Abilities/skills
+Timer
+Map or navigation system
+Options: links to outside screens
+Plings/context sensitive information
+Targeting system/reticule/cursor
+Speedometer
+If a game is HUD-less, describe how the above information is going to be
+conveyed to the player.
+Player character(s)
+Character name
+Inspirational image or concept drawing of your character
+Short description explaining player’ s motivation and relationships to other
+major/player characters
+Player metrics
+Size relationships of player character to other elements/characters in the
+world
+Movement (walk, run, sneak, duck, roll, crawl)
+• Show metrics
+Navigation (jump, swim, fly)
+• Show metrics
+• Conditions for navigation moves
+Hoist/hang
+• Show metrics
+Context-sensitive moves (push/pull, operate switch, swing, and
+so on)
+GDD Outline 451
+• Show examples and metrics
+• Conditions for context- sensitive moves
+Reactions/damage/death
+• Show examples and metrics
+Idles
+Player skills
+Description of basic skills
+List of skill upgrades
+• Description of skills
+• Skill modifiers
+• Player metrics (if applicable)
+Player inventory tools (equipment, spells, buffs, and so on)
+List of tools
+• Image of tools
+• What does each tool do?
+• Controls for using tool
+Inventory screen
+• Image of inventory screen
+• How does player access inventory?
+• How does player select tool from inventory?
+Combat: melee combat
+• Combat moves— include metrics and controls
+• Combat reactions— include metrics and controls
+—Block
+—Dodge
+—Parry
+—Grab
+• Types of effects (damage, knockback, stun, poison, and so on)
+• Combat progression— how player improves moves
+• Descriptions of combo moves
+—Controls for combo moves
+—Combo progression
+• Combat gauge
+—Combat gauge descriptors/combat value modifiers based on
+descriptors
+• Descriptions of combo moves
+—Controls for combo moves
+—Combo progression
+452 Bonus Level 3 Game Design Document Template
+Weapon combat
+Weapon progression
+• Technology tree
+• Weapon inspiration/concept images
+• Weapon damage and effects
+—Targeting system details
+—Lock-on system details
+• Ammo required
+• Range
+• Special attributes (breakable, degrades)
+• Controls
+—How does player use weapons
+—How does player swap weapons?
+Power- ups/state modifiers
+List of power- ups/state modifiers
+• Description including image
+• Effect
+• Duration
+• Effect on controls (if valid)
+Health
+Health (general)
+• HUD display
+• How to replenish health
+• Power- ups and health items
+• Warning for player when health is low
+Alternate states (stunned, poisoned, turned into a baby)
+• Controls
+• Show examples and metrics
+Lives (if applicable)
+• How are lives earned?
+• How are lives lost?
+• What happens when you run out of lives?
+Death
+• Instant death conditions— (combat, fire, drowning, and so on)
+• Game over conditions:
+—Penalty for dying
+—Game over screen (show image of game over screen)
+GDD Outline 453
+Checkpoints
+• Continue system
+Scoring (if applicable)
+Point values
+Bonuses
+• What gives a bonus?
+Leaderboard setup
+• Image
+• Elements that contribute to scoring
+Achievements
+• List
+• Icon image
+Rewards and economy
+Monetary system
+• Shopping interface
+—Description
+—Player navigation
+• What does it buy?
+• Cost
+Vehicles
+How does player enter/exit vehicle?
+How does vehicle interact with world, enemies, objects, and so on
+Vehicle description
+• Image of vehicle
+Vehicle controls
+Vehicle metrics (size, speed, and so on)
+Attributes (armor, weapons, and so on)
+• Attribute stats
+• Special effects
+Major characters in story—anyone mentioned in the above story outline,
+preferably ones that have impact on the story or gameplay.
+These include allies/helpers, love interests, rivals/villains
+Include visuals
+• What is their relationship to the player character?
+• Where do they appear?
+Game progression outline
+Overview of all game levels— insert game beat chart here. Remember
+to:
+454 Bonus Level 3 Game Design Document Template
+• Include story beats to show how gameplay and story intertwine
+• Indicate if story beat is a cutscene or in game
+Indicate progression/reward elements for the player
+• Show where new skills, abilities, weapons, and collectibles are
+earned in relation to the story
+Gameplay classifications
+Descriptions of gameplay types (stealth, battle arena, driving, flying,
+and so on)
+World overview/level select/navigation screen
+Image(s) of world overview screen (if applicable)
+List of game levels available on World Overview
+Description of how information is presented to player
+Details on how player will navigate this screen (cursor, character,
+and so on)
+Animation (character and/or elements) required for this screen
+Sound and music required for level select screen
+Universal game mechanics—list mechanics that will be found throughout
+the game. Always include images of each mechanic.
+Platform mechanics
+• Description
+• Metrics in relationship to player
+Portal mechanics
+• Doors
+—Handle/switch operated
+—Key operated
+—Breakable
+—Hatch (context- sensitive move)
+• Teleportals
+—Description and image
+—Effects
+—Navigational aids
+Checkpoints
+Breakable objects (crates, furniture, grass clumps, and so on)
+• How is item broken
+• What items are yielded/percentage of yield
+• Other effects (explosion, timer, switch, and so on)
+Non - breakable objects (treasure chests, and so on)
+• Description and image
+GDD Outline 455
+• What items are yielded/percentage of yield
+• Other effects (explosion, timer, switch, and so on)
+Puzzle objects (pushable blocks, keys, and so on)
+• Description and image
+• How does player interact
+Switches
+• Description and image
+• How does player interact
+Climbable/swingable objects
+• Description and image
+• How does player interact
+Game levels—list out each of the level mentioned in the world overview
+Name/title of levels
+• Short description of level
+• Player ’ s objective (training, get from A to B, find key, and so on)
+• Reward of level (level up, magic sword, progression, and so on)
+• Major gameplay found in this level (stealth, platform, vehicle,
+and so on)
+—Sub - game found in level, with description of gameplay and
+control scheme
+• Enemies found on this level
+• Visual style guides for level
+—Include inspirational and concept artwork
+—Time of day
+—Color guide
+• Music for level
+—Provide examples/sound files
+Hub level
+• Description/image of hub
+• List of locations found in hub
+• Requirements for travel/unlock
+• State changes
+• Save/load options (if applicable)
+Training level
+• Goals of training level
+—List of training level activities
+Level specific mechanics
+• Hazards (spikes, flame jet, laser fields, and so on)
+456 Bonus Level 3 Game Design Document Template
+—Description and image
+—Timing information
+—Damage/effect
+—How does it affect player? (Movement, health, and so on)
+—How does player avoid/thwart?
+—Special effects or elements needed
+Level specific contextual mechanics
+• Description and image
+• Timing information
+• Effect
+• How does it affect player? (Movement, health, and so on)
+• How does player interact?
+• Special effects or elements needed
+General enemy rules
+Behavior types (patroller, hunter, flyer, and so on)
+AI rules and detection metrics
+Spawn parameters
+Defeat parameters
+Reward yield rules
+Level - specifi c enemies
+Enemy image
+Enemy description— include enemy type
+Levels enemy is encountered
+Movement pattern— show metrics
+Attacks
+• Damage value
+• Damage effects (knockback, stun, and so on)
+Reactions/damage/death
+Idles
+Special effects
+Reward yield
+Bosses
+Description and image of boss
+• Include scale
+Call out weak points/attack spots
+Interaction with player (will hurt player if collides, only hurt player when in
+specific state, and so on)
+Movement patterns
+• Show metrics in relationship to player
+GDD Outline 457
+Attack patterns
+• Warnings
+• Specifi c attack
+—Damage done
+—Special effects
+• Reactions/damage/death
+• Idles
+Description of player’ s experience
+• Description of intro/cutscene
+• Include number of rounds
+• Progression/ramping of action
+Description and image of environment
+• Hazards and mechanics used
+• Power- ups and collectibles found
+• Other enemies used in boss fight
+How is the boss defeated?
+Reward yield
+Non - player characters
+NPC type overview (information, mission deliverer, escort/defend,
+and so on)
+Character list
+• Name, sex, age
+• Background material
+• NPC type
+• Level where encountered
+Interacting with NPCs
+• Dialogue
+• Collision
+NPC rewards
+Collectibles/object sets
+List of items
+• Images
+• Level(s) found on
+• What object or set unlocks (if applicable)
+Minigames
+Types of minigames
+How are minigames accessed
+Player controls
+458 Bonus Level 3 Game Design Document Template
+Elements needed/repurposed
+Levels encountered
+Cutscenes
+List of cutscenes
+Short outline of each cutscene
+Level where cutscene is presented
+Music and SFX
+List of music
+• Level where music is needed— don ’ t forget title, pause, options, end
+credits
+• Tone/feeling of music
+Licensor points and concerns
+Appendixes
+Player character animation lists
+Enemy character animations lists
+Sound effects list
+Music list
+• Level location
+Cutscene scripts
+• Cutscene storyboards
+VO scripts
+• Player
+• Enemies
+• Bosses
+• NPC barks
+In - game text
+• Warning screens
+• Tutorial text
+• Character dialogue/subtitles
+T
+Bonus Levei 4
+The Medium -Sized List of
+Story Themes
+• Adventure: period piece
+• Adventure: pulp/“ two - fi sted ”
+action
+• Adventure: survival/disaster
+• Adventure: swashbuckler/pirate
+• Blaxplotation/grindhouse
+• Caper/heist/thief
+• Cartoon/anthropomorphic
+• Comedy: romantic
+• Comedy: screwball/slapstick
+• Crime drama/police
+• Documentary/showbiz
+• Educational
+• Erotic
+• Espionage
+• Family drama
+• Fantasy: fairytale
+• Fantasy: mythology (Greek,
+Japanese, Chinese, Norse, and
+so on)
+• Fantasy: swords and sorcery
+• Fantasy: whimsical
+• Film noir/hard- boiled detective
+• Game show
+• Horror: B- movie/giant monster
+• Horror: gothic (vampire,
+werewolf, Frankenstein)
+• Horror: sci- fi
+• Horror: torture porn/slasher
+• Horror: zombie/end of the world
+• Martial arts/ninja
+• Medical drama
+• Mobster/gangster
+• Musical
+• Music/rock ‘ n ’ roll
+• Mystery
+• Nurture/tamagotchi
+• Political
+• School/teen drama
+• Sci - fi : cyberpunk
+• Sci - fi : Japanese/Sentai/giant
+robot
+• Sci - fi : realistic
+• Sci - fi: retro (1930s)
+• Sci - fi: space opera
+• Sci - fi : steampunk
+• Sci - fi : undersea
+• Sports: Olympic
+• Sports: racing
+• Sports: team (American football,
+soccer, hockey, baseball,
+basketball, and so on)
+• Superhero
+• War (World War I, World War II,
+American Revolution, Crusades,
+Napoleonic, American Civil War,
+Iraq conflict, Vietnam1)
+• Western/spaghetti western
+1 I apologize in advance to all of my international readers for my American bias towards
+warfare and history.
+
+---
+
+## Sección 19: Part 3 — Controls [Entropy: 0.5]
+
+T
+Bonus Levei 5
+The Big List of
+Environments1
+• Abandoned city
+• Air/clouds
+• Airplane
+• Airport/airship port
+• Alien planet
+• Alien ship
+• Amphitheatre
+• Ancient ruins
+• Aquarium
+• Arcade
+• Atlantis
+• Bank
+• Bar/cantina
+• Barren rock (planetoid or moon)
+• Battlefield/war zone/no man’ s
+land
+• Bayou
+• Beach
+• Biomechanical area (à la Alien)
+• Boardwalk
+• Campsite
+• Candy land
+• Carnival
+• Casino/Las Vegas/Atlantic City
+• Castle
+• Cave
+• Chemical plant
+• Chinatown
+• Chinese temple
+• Church
+• Circus
+• City street
+• Cliff city
+• Clock tower
+• Concert hall
+• Construction site
+• Crack house
+• Cruise ship
+• Cyberspace/computer world (à la
+Tron)
+• Desert
+• Desert island
+• Disco
+• Dungeon/catacombs
+• Egypt/Egyptian tomb
+• Factory
+1 I must have made half a dozen versions of this list over the years, so this is as much for me
+as it is for you!
+462 Bonus Level 5 The Big List of Environments
+• Fairytale land
+• Famous monument
+• Farm/ranch
+• Fast food restaurant
+• Fire level/world
+• Forest
+• Fort
+• Fort Knox/treasury
+• Freeway
+• Funeral home
+• Futuristic city
+• Garden
+• Giant-sized world (can be
+applied to any theme)
+• Glacier/ice flow
+• Graveyard
+• Haunted house
+• Heaven/Olympus
+• Hospital
+• Hotel/inn
+• House
+• Ice
+• Indian reservation/village/burial
+ground
+• Inside a creature/on top of a
+giant creature
+• Japanese dojo/temple
+• Jungle
+• Junkyard
+• Kitchen
+• Laboratory
+• Library
+• “ Little ” world (where the player
+has been shrunken down)
+• Mall/marketplace
+• Mansion
+• Marina/seaport
+• Mayan jungle/temple
+• Maze/hedge/labyrinth
+• Medieval village
+• Metropolis/megalopolis/arcology
+• Military base/Area 51
+• Mines
+• Missile silo
+• Monastery
+• Mountain
+• Movie set/TV studio
+• Movie theatre
+• Moving train
+• Museum
+• New York City
+• North pole
+• Nuclear reactor
+• Ocean park (à la “ Sea World” )
+• Ocean surface
+• Offi ce building
+• Oil refinery
+• Opera house
+• Oriental temple/dojo
+• Palace
+• Park
+• Pirate ship/town
+• Playground
+• Police station
+• Prehistoric village/caves
+• Prison
+• Racetrack
+• Restaurant
+• River
+• Rooftops
+• Russian city/military base
+• Rustic village
+• Savannah/veldt
+• School/elementary/college
+• Secret lair
+• Sewer
+The Big List of Environments 463
+• Ship/boat deck/interior
+• Sky/clouds
+• Skyscraper
+• Sock puppet world
+• Space station/spaceport
+• Sporting arena
+• Strip club
+• Submarine interior
+• Suburbs
+• Subway
+• Superhero HQ/supervillain lair
+• Surface of the sun
+• Swamp
+• Temple
+• Theatre stage
+• Theme park
+• Topiary maze/garden
+• Toy land
+• Toy store
+• Train station
+• Treehouse/village
+• Undersea base/city/grotto
+• Underwater
+• Underworld/Hell
+• Urban city
+• Utopia
+• Volcano
+• Warehouse
+• Wild West town
+• Zeppelin interior
+• Zoo/wild animal preserve
+
+T
+Bonus Levei 6
+Mechanics and Hazards
+• Moving platforms: horizontal,
+vertical, diagonal
+• Sinking/shrinking/collapsing
+platforms
+• Ladders
+• Swingable vine/trapeze
+• Zip line
+• Conveyer belt
+• Slippery ice
+• Spring/trampoline/jump pad/air
+gust
+• Accelerator
+• Pendulum/swinging object timing
+puzzle
+• Rotating platform
+• Spinning hazard
+• Hazard that smashes down or up
+• Blasting flame/wind/cannon
+timing puzzle
+• Exploding object
+• Breakable object
+• Climbable wall surface
+• Deadly surface/sticky floor/
+poison gas that slows player
+movement
+• Object that grabs the player,
+requiring another move to break
+free
+• Teleportal
+• Opening/closing door/drawbridge
+• Locked door requiring a key or
+some other method to open
+• Treasure chest
+• Health/ammo dispenser
+• Spotlight that player must avoid
+(stealth)
+• Push block
+• Floor switch/pressure plate
+• Lever
+• Crank/pump
+• Balance beam
+• Carryable/throwable object
+• Shootable target
+• Catapult that launches player or
+object
+• Two - stage openable or breakable
+object
+• Lighting fixture to control light/
+darkness effect
+
+T
+Bonus Levei 7
+Enemy Design Template
+Enemy name: ___________________________________
+Enemy image: (insert concept or inspirational image here)
+Description: (write a short description of the enemy; what is the enemy’ s
+personality and motivation?)
+Animation list:
+• Stand
+• Idle
+• Taunts
+• Attacks (melee)
+• Attacks (projectile)
+• Hit reactions
+• Death animations
+• Victory animations
+Movement patterns: (add as many as necessary)
+• Move 1: (image and description of enemy’ s movement)
+• Move 2: (image and description of enemy’s movement)
+Attack descriptions: (add as many as necessary)
+• Attack 1: (melee, projectile, special)
+• Attack 2: (melee, projectile, special)
+Enemy is defeated by: (how will the player defeat the enemy?)
+Damage description: (how is damage communicated to the player? Do
+they require any special visual effects?)
+Particle effects: (what visual effects are required for attacks, movement or
+damage states?)
+Projectiles: (if used, list what projectiles will be needed for attacks)
+468 Bonus Level 7 Enemy Design Template
+HUD elements: (are there any additional HUD elements required for the
+enemy fight, such as icons for QTEs?)
+Sound effects list: (match the sound effects list with the animation list)
+Voice effects list: (match the voice effects list with the animation list)
+Special requirements for player character: (does the player need any
+special animations, effects, and so on to go with the enemy’s attack? List
+them here)
+Player reward: (what does the player get, if anything, for defeating the
+enemy?)
+T
+Bonus Levei 8
+Boss Design Template
+Boss name: ___________________________________
+Boss image: (insert concept or inspirational image here)
+Description: (write a short description of the boss: what is the boss’
+personality and motivation?)
+Animation list:
+• Stand
+• Idle
+• Taunts
+• Attacks (melee)
+• Attacks (projectile)
+• Hit reactions
+• Death animations
+• Victory animations
+Movement patterns: (add as many as necessary)
+• Move 1: (image and description of boss’ movement)
+• Move 2: (image and description of boss’ movement)
+Attack descriptions: (add as many as necessary)
+• Attack 1: (melee, projectile, special)
+• Attack 2: (melee, projectile, special)
+Boss is defeated by: (how will the player defeat the boss? Does the boss
+have any weak spots or vulnerable states?)
+Damage description: (what does the boss’ health bar look like? How is
+damage communicated to the player? Do they require any special visual
+effects?)
+Particle effects: (what visual effects are required for attacks, movement or
+damage states)
+Projectiles: (if used, list what projectiles will be needed for attacks)
+470 Bonus Level 8 Boss Design Template
+HUD elements: (are there any additional HUD elements required for the
+boss fight, such as icons for QTEs)
+Sound effects list: (match the sound effects list with the animation list)
+Voice effects list: (match the voice effects list with the animation list)
+Special requirements for player character: (does the player need any
+special animations, effects, and so on to go with the boss attack? List them
+here)
+Player reward: (what does the player get for defeating the boss?)
+Boss Fight Arena
+Arena image: (insert image of environment; could be a concept drawing or
+map)
+Arena description: (write a short description of the environment and what
+the action is that takes place there)
+Level elements: (are there any mechanics, hazards, or props that will be
+needed for the boss fight?)
+Boss fight music tracks: (list music tracks here, including notes on any
+contextual music)
+T
+Bonus Levei 9
+High Concept Pitch
+Presentation
+Slide 1: Cover Page
+Start with a compelling image and logo that sums up your game.
+Put date of presentation on the PowerPoint so the people you present to will
+remember when the meeting took place.
+For author credits use the studio’ s name; remember no one makes a game
+by themselves.
+Include contact information: email address and/or phone number.
+472 Bonus Level 9 High Concept Pitch Presentation
+Slide 2: Company Profile
+Briefly outline who you are, what you’ ve done, and how long you’ ve been
+doing it for. This is a great place to showcase the covers of any games your
+studio ’ s created.
+Obviously you can skip creating this slide if you are presenting to your own
+peers.
+Slide 3: Target Specs
+This slide covers the very basics of the game. What kind of game is it? What
+is it rated? Who is the audience? How long will it take to play?
+Slide 4: Game Story 473
+Slide 4: Game Story
+Who is the player? What is the game’ s story? What’s the conflict? Don’ t
+forget a beginning, middle, and end, or at least a cliffhanger that gets the
+reader/audience interested in knowing the ending.
+474 Bonus Level 9 High Concept Pitch Presentation
+Slide 5: Game Goals
+What are the most kick- ass features of your game? Why should the
+audience/reader care about your game? Aim for five “ back of the box”
+goals.
+Slide 6: Gameplay Summary 475
+Slide 6: Gameplay Summary
+This slide should briefly cover the major points of gameplay. What are the
+basics of play for the game? What is the camera view? How will the play
+expand/increase in challenge during the course of the game? What
+environments will the game happen in? What are the “ hooks ” that make this
+game unique?
+476 Bonus Level 9 High Concept Pitch Presentation
+Slide 7: Gameplay details 477
+Slide 7: Gameplay details
+Go into some of the more interesting details of the gameplay. The goal is to
+give the audience/reader an idea of what it is going to be like as they play
+the game. If any gameplay elements are important enough to the game, go
+ahead and dedicate a specific slide to them so the audience/reader is clear
+on how they impact gameplay and what they add to the game experience.
+478 Bonus Level 9 High Concept Pitch Presentation
+Slide 8: Download strategy
+Most games these days require download support to extend the life of the
+game beyond release. Outline these plans on this slide.
+Slide 9: Production Specs 479
+Slide 9: Production Specs
+Share the production plans here. How big is the team dedicated to making
+it? How long will it take to create the game? How much is it going to cost to
+make the game?
+
+---
+**Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #streaming_and_overlays

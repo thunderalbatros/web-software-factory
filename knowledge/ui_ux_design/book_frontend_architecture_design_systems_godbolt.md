@@ -1,4 +1,4 @@
-﻿# 📚 Libro Completo: Frontend Architecture for Design Systems
+# 📚 Libro Completo: Frontend Architecture for Design Systems
 
 **Alcance:** Fuente bibliográfica completa sobre Arquitectura CSS Escalable, Sistemas de Diseño Modulares, Documentación Viva y Pruebas Visuales Automatizadas (Frontend Architecture for Design Systems — Micah Godbolt (O'Reilly)). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
@@ -7,21 +7,16 @@
 > **Archivo Fuente:** `Frontend-Architecture-for-Design-Systems-Micah-Godbolt.pdf`  
 > **Páginas Originales:** 216  
 > **Secciones Extraídas:** 53  
-> **Fecha de Ingesta:** 2026-10-19  
+> **Fecha de Ingesta:** 2026-10-19
 
 ---
 
-## Sección 1: Foundations & Introduction
-
--- 1 of 216 --
+## Sección 1: Foundations & Introduction [Entropy: 0.358]
 
 Frontend Architecture for
 Design Systems
 A Modern Blueprint for Scalable and Sustainable Websites
 Micah Godbolt
-
--- 2 of 216 --
-
 Frontend Architecture
 by Micah Godbolt
 Copyright © 2016 Micah Godbolt. All rights reserved.
@@ -46,9 +41,6 @@ Revision History for the First Edition
 2016-01-25: First Release
 See http://oreilly.com/catalog/errata.csp?isbn=9781491926789 for release
 details.
-
--- 3 of 216 --
-
 The O’Reilly logo is a registered trademark of O’Reilly Media, Inc.
 Frontend Architecture for Design Systems, the cover image, and related
 trade dress are trademarks of O’Reilly Media, Inc.
@@ -63,9 +55,6 @@ intellectual property rights of others, it is your responsibility to ensure that
 your use thereof complies with such licenses and/or rights.
 978-1-491-92678-9
 [LSI]
-
--- 4 of 216 --
-
 Preface
 Conventions Used in This Book
 The following typographical conventions are used in this book:
@@ -85,14 +74,8 @@ TIP
 This element signifies a tip or suggestion.
 NOTE
 This element signifies a general note.
-
--- 5 of 216 --
-
 WARNING
 This element indicates a warning or caution.
-
--- 6 of 216 --
-
 Who This Book Is For
 This book is not a technical manual, though there are plenty of code samples
 along the way. This book is not purely theoretical, though it spends as much
@@ -122,9 +105,6 @@ books does require permission. Answering a question by citing this book and
 quoting example code does not require permission. Incorporating a
 significant amount of example code from this book into your product’s
 documentation does require permission.
-
--- 7 of 216 --
-
 We appreciate, but do not require, attribution. An attribution usually includes
 the title, author, publisher, and ISBN. For example: “Frontend Architecture
 for Design Systems by Micah Godbolt (O’Reilly). Copyright 2016 Micah
@@ -156,9 +136,7 @@ O’Reilly Media, Inc.
 
 ---
 
-## Sección 2: Foundations & Introduction
-
--- 8 of 216 --
+## Sección 2: Foundations & Introduction [Entropy: 0.25]
 
 1005 Gravenstein Highway North
 Sebastopol, CA 95472
@@ -175,11 +153,9 @@ Find us on Facebook: http://facebook.com/oreilly
 Follow us on Twitter: http://twitter.com/oreillymedia
 Watch us on YouTube: http://www.youtube.com/oreillymedia
 
--- 9 of 216 --
-
 ---
 
-## Sección 3: Part I. Origins
+## Sección 3: Part I. Origins [Entropy: 0.286]
 
 In the beginning was the Web, and the Web was good. Well, in this case, the
 beginning was the early 90s, and “good” meant a site had found its way onto
@@ -207,9 +183,6 @@ masters and hire Perl script kiddies, or the other way around.
 Eventually these decisions had all been made, and the modern web team
 began to assemble like a news team called to a large seashell. At every
 stage, every crossroad, former webmasters found themselves needing to
-
--- 10 of 216 --
-
 focus on a smaller chunk of the web process. Some of them focused on
 serving files over a server, while others improved their skills in accessing a
 database, while still others found joy in creating graphics and images.
@@ -238,9 +211,6 @@ continued to focus their efforts on convincing others to treat content as a
 valuable asset.
 Years passed and the fight for content was far from over. But even as one
 more designer was asked to “just make something up” for the homepage
-
--- 11 of 216 --
-
 copy, a new rallying cry could be heard in the distance. December 16, 2008,
 was the day that Kristina Halvorson stood up high atop the “A List Apart”
 blog and raised a banner for content strategy. She asked us all to “take up the
@@ -269,9 +239,6 @@ redirected any mobile device to a stripped-down, mobile-friendly “m.dot”
 website. Neither solution really solved the problem. Pinch and zoom sites
 were difficult to navigate in order to finalize purchases or sign up for
 services, and increasing mobile traffic meant increasing lost revenue.
-
--- 12 of 216 --
-
 Although m.dot sites were more user friendly for mobile devices, they
 required development teams to maintain two separate websites.
 Many m.dot sites languished, failing to be updated as frequently as their
@@ -304,9 +271,7 @@ In a single article, the web development industry had been transformed.
 
 ---
 
-## Sección 4: Part I. Origins
-
--- 13 of 216 --
+## Sección 4: Part I. Origins [Entropy: 0.28]
 
 The Seeds of Frontend Architecture
 It was with this history in mind that I started to think about the notion of
@@ -338,9 +303,6 @@ away by waves of technical debt.
 This process wouldn’t be sustainable as the complexity of our projects
 grew. So instead of doing things the way we’ve always done them (because
 they’ve always worked in the past), I began to imagine how a project would
-
--- 14 of 216 --
-
 differ if we made frontend development “a critical asset worthy of strategic
 planning and meaningful investment.” What if we had a voice in things like
 CSS frameworks, documentation tools, build processes naming conventions,
@@ -371,9 +333,6 @@ opportunity? These ponderings led to a lightning talk about frontend
 architecture at my company’s annual retreat, and a speaking opportunity at
 CSS Dev Conf that led me to focus my thoughts into a concise 45-minute
 presentation.
-
--- 15 of 216 --
-
 On October 13, 2014, given to a packed room inside a New Orleans
 conference center, “Raising a Banner for Frontend Architecture” was a
 rallying cry for the developers who had already been on the front lines of this
@@ -391,11 +350,9 @@ their Twitter bios to read “frontend architect.” And I, being one of those t
 make the change, haven’t looked back since. No matter the title I currently
 hold at my present job, I am a frontend architect.
 
--- 16 of 216 --
-
 ---
 
-## Sección 5: Chapter 1. The Discipline of
+## Sección 5: Chapter 1. The Discipline of [Entropy: 0.265]
 
 Frontend Architecture
 Frontend architecture is a collection of tools and processes that aims to
@@ -424,9 +381,6 @@ what the end product, the code, will look like.
 Once a frontend architect sets the vision, the project has a standard
 against which to test code. Without a design for the finished product, how
 could we determine whether or not our code actually has met that
-
--- 17 of 216 --
-
 standard? A carefully designed system will have checks and balances
 ensuring that all code contributed to that system adds perceivable
 value, rather than just adding lines of bloat.
@@ -456,9 +410,6 @@ management, and never writing a line of code again. I can personally
 attest that not only do I write more code as an architect, but I get to write
 in a greater variety of languages, and for a larger number of tools. It’s not
 that I write less code, but simply that the audience of my code has
-
--- 18 of 216 --
-
 changed. A frontend developer’s audience is the end user, whereas a
 frontend architect’s audience is the developers themselves.
 Adopting an Architectural Process
@@ -487,9 +438,6 @@ What’s the Catch?
 I know this isn’t going to be an easy task. The changes I am suggesting have a
 tangible cost, and anyone in a position to make these decisions will always
 need to weigh the risks and the possible benefits. For anyone who hasn’t had
-
--- 19 of 216 --
-
 the experience of working with a frontend architect, this can be a difficult
 risk to take.
 The chicken-or-egg dilemma is that to overcome the objections of spending
@@ -507,9 +455,7 @@ architected design system could be.
 
 ---
 
-## Sección 6: Chapter 2. Alpha Project
-
--- 20 of 216 --
+## Sección 6: Chapter 2. Alpha Project [Entropy: 0.265]
 
 This past year, I was given an opportunity of a lifetime when asked to
 architect a solution for Red Hat that would let the company share its existing
@@ -537,9 +483,6 @@ override, no HTML tag styles constantly changing around us. We were
 practically building a brand-new website right inside the old one. And just
 like replacing every board on a ship, one by one, we are hopeful that we can
 eventually retire the old theme system and rely solely on our own.
-
--- 21 of 216 --
-
 With such freedom in front of us, we knew we had an opportunity to create a
 large wish list...and actually get most of it! That wish list included:
 Modular content
@@ -570,9 +513,6 @@ system, we quickly realized the power of what we’d built.
 With every new request to build a couple of bands, or even a full 12-band
 page, we found that we had less and less work to do. Instead of approaching
 each new band as a unique snowflake, we were able to break it down into its
-
--- 22 of 216 --
-
 smallest parts and determine if any new layouts or components were
 necessary for our system to build it.
 Every story ended with exhaustive documentation, a suite of regression tests,
@@ -597,11 +537,9 @@ that you can build smarter, more reusable code. Fight to make your frontend
 design system matter. Take up the banner for frontend architecture, and join
 the fight with me.
 
--- 23 of 216 --
-
 ---
 
-## Sección 7: Chapter 3. The Pillars of
+## Sección 7: Chapter 3. The Pillars of [Entropy: 0.28]
 
 Frontend Architecture
 Every building needs a solid foundation, four walls, and a roof. These are
@@ -628,9 +566,6 @@ property meant to last several years.
 Do not take the upcoming chapters as a list of topics to master. To be a
 frontend architect is to be in a state of constant learning. This constant state
 of learning is what defines us. Our inch-deep, mile-wide understanding of the
-
--- 24 of 216 --
-
 entire frontend development space is what allows us to be champions for
 new technologies and methodologies.
 One of our strongest skills is that we can spend an hour with a new
@@ -658,9 +593,6 @@ build processes continue to grow in complexity, as do the tools that we
 use to create them. These tools bring incredible gains in productivity,
 efficiency, and consistency, as well as the risk of over-engineering and
 unnecessary abstraction.
-
--- 25 of 216 --
-
 Just as our workflows have evolved, so has the way we work. We are no
 longer spending our time making the CMS markup “look like” some
 Photoshop comp. As we move to designing in the browser, and creating
@@ -690,11 +622,9 @@ This pillar will look at those various types of documentation your team
 might need to write, the tools used to make publication easier, and the
 types of end users that will ingest the content.
 
--- 26 of 216 --
-
 ---
 
-## Sección 8: Part II. The Code Pillar
+## Sección 8: Part II. The Code Pillar [Entropy: 0.25]
 
 Good code never happens by accident. It’s not that developers are inherently
 lazy, or that we cannot be trusted, but left to our own devices, we are capable
@@ -721,11 +651,9 @@ solution, but discovering the needs of a new project and matching them up
 with the current frontend development landscape is what you have been
 called in to do.
 
--- 27 of 216 --
-
 ---
 
-## Sección 9: Chapter 4. HTML
+## Sección 9: Chapter 4. HTML [Entropy: 0.75]
 
 One of the first challenges you’ll face as a frontend architect will be to tackle
 the markup you want your developers to be writing and your CMS to be
@@ -752,9 +680,6 @@ In the world of web publishing, it was pretty common for the frontend team to
 have little to no control over the markup. This was often due to feature
 development (which included HTML output) being done weeks or even
 months before the frontend team came onto the project. It was made worse by
-
--- 28 of 216 --
-
 the fact that the origins of the markup were obfuscated by complex rendering
 processes, and did not come from a single template. This meant updating the
 markup was extremely difficult for anyone not familiar with the complexities
@@ -787,9 +712,6 @@ If we were working on a small project, or simply had a page where we had a
 huge body field to fill out, controlling the markup was pretty easy. While this
 situation offered great flexibility, it also meant that we were responsible for
 maintaining all of the code. Changes that would be simple in a CMS template
-
--- 29 of 216 --
-
 had to be propagated throughout the pages by hand. So we’d write markup
 like this:
 <header>
@@ -822,9 +744,6 @@ Automation
 As the frontend architect, you’ll need to evaluate the processes that produce
 your markup. How much control will you have over the order of the content,
 the elements used, and the CSS classes applied to them? How difficult will it
-
--- 30 of 216 --
-
 be to change these things in the future? Are templates easily accessible, or
 will you need to task a backend developer with the change? Is your markup
 even based on a templating system? Can you propagate changes throughout
@@ -860,9 +779,7 @@ visual appearance. Let’s look at that navigation example again with a BEMstyle
 
 ---
 
-## Sección 10: Chapter 4. HTML
-
--- 31 of 216 --
+## Sección 10: Chapter 4. HTML [Entropy: 0.695]
 
 At first glance, this approach seems quite verbose! And while I will not
 argue that point, I will argue that it is the perfect level of verbosity. With a
@@ -894,9 +811,6 @@ language into its smallest pieces. By doing this, we can create rules about
 how to put it back together again. It is by breaking down the visual language
 that we learn how to create our proverbial sentences, paragraphs, chapters,
 and novels. The goal of this conversion is to create a scalable and
-
--- 32 of 216 --
-
 maintainable codebase that faithfully reproduces anything that the language is
 able to express.
 We’ll dive further into creating design systems in future chapters, but it is
@@ -925,9 +839,6 @@ does, and what does not, resonate with the project you are about to tackle.
 OOCSS Approach
 The following snippet shows the Object-Oriented CSS approach to creating
 an HTML toggle.
-
--- 33 of 216 --
-
 <div class="toggle simple">
 <div class="toggle-control open">
 <h1 class="toggle-title">Title 1</h1>
@@ -960,9 +871,6 @@ CSS would look like this:
 <div class="toggle toggle-simple">
 <div class="toggle-control is-active">
 <h2 class="toggle-title">Title 1</h2>
-
--- 34 of 216 --
-
 </div>
 <div class="toggle-details is-active">
 ...
@@ -994,9 +902,7 @@ between the two (other than the difference in how code is structured in an
 
 ---
 
-## Sección 11: Chapter 4. HTML
-
--- 35 of 216 --
+## Sección 11: Chapter 4. HTML [Entropy: 0.635]
 
 SMACSS approach) is the use of skins instead of submodules, and the is
 prefixing the state classes.
@@ -1027,9 +933,6 @@ become quite long. Elements are added after a double underscore (e.g.,
 toggle__details) and modifiers are added after a double dash
 (toggle__details--active). This makes it very clear that details is an
 element and that active is a modifier. The use of a double dash also means
-
--- 36 of 216 --
-
 that your block name could be news-feed without confusing feed for a
 modifier.
 The advantage of this approach over OOCSS or SMACSS is that every class
@@ -1052,11 +955,9 @@ have a team willing to commit to a single, unified approach. If you decide to
 use OOSMABEM, then more power to you! I look forward to reading about
 it.
 
--- 37 of 216 --
-
 ---
 
-## Sección 12: Chapter 5. CSS
+## Sección 12: Chapter 5. CSS [Entropy: 0.575]
 
 One of the greatest things about this industry is that we can freely sit down
 with fellow developers and have a cup of coffee. That might not seem like a
@@ -1087,9 +988,6 @@ industry.
 The great thing about having consistent caffeine- or alcohol-fueled
 conversations with other developers is that we always have a pulse on what
 people are excited about, and in what direction they are headed. This is
-
--- 38 of 216 --
-
 important to me not because I depend on others to know what to do next, but
 rather because I am able to validate the things I am learning and the
 discoveries I myself am making. Every year I look back at how my approach
@@ -1121,9 +1019,6 @@ in CSS a few years ago, why it didn’t work, and where we are now.
 Specificity Wars and the Pains of Inheritance
 It wasn’t that many years ago when we were still dealing with the 100%
 dynamic or 100% static markup that I described in the previous chapter.
-
--- 39 of 216 --
-
 Regardless of the side of the spectrum we were on, the effect on our CSS
 was that we almost always started from a global scope and worked our way
 down, getting more specific with each new level of the cascade. We’d start
@@ -1159,9 +1054,6 @@ background. But that’s OK! We could just add another class and overwrite
 the offending sidebar styles, right?
 <body>
 <div id="main">
-
--- 40 of 216 --
-
 <h2>I'm a Header</h2>
 </div>
 <div id="sidebar">
@@ -1199,9 +1091,7 @@ calendar to the footer and the header size will change.
 
 ---
 
-## Sección 13: Chapter 5. CSS
-
--- 41 of 216 --
+## Sección 13: Chapter 5. CSS [Entropy: 0.765]
 
 Multiple inheritance
 This single H2 is now getting styles from three different sources. This
@@ -1233,9 +1123,6 @@ completely different folders, further dividing the role of the sidebar and the
 role of the calendar module. Now that we have defined the sidebar’s role to
 that of just layout, we don’t even allow element styles inside of that Sass
 partial. If you are going to place something in the sidebar and want to have it
-
--- 42 of 216 --
-
 styled, that element needs to be part of a component, and defined in the
 component folder.
 BEM, while not necessarily a CSS methodology, teaches us the value of
@@ -1274,9 +1161,6 @@ color: red;
 /* Layout folder */
 .main {
 float: left;
-
--- 43 of 216 --
-
 ...
 }
 .sidebar {
@@ -1307,9 +1191,6 @@ Even at the calendar level, we still haven’t applied a single style to our
 H2 elements. There’s no need to override base, sidebar, or calendar
 header styles before styling new H2s in our calendar module.
 Other Principles to Help You Along the Way
-
--- 44 of 216 --
-
 Single Responsibility Principle
 Throughout my time at Red Hat, I found that a few other things helped me
 immensely when architecting our approach to writing CSS.
@@ -1342,9 +1223,6 @@ will also affect the calendar header unless you do the following:
 </div>
 <div class="blog">
 <h2 class="primary-header">This Is a Blog Header</h2>
-
--- 45 of 216 --
-
 </div>
 .primary-header {
 color: red;
@@ -1381,9 +1259,7 @@ will remain red, and enforcing the single responsibility principle throughout
 
 ---
 
-## Sección 14: Chapter 5. CSS
-
--- 46 of 216 --
+## Sección 14: Chapter 5. CSS [Entropy: 0.75]
 
 your project will ensure that further changes to the blog header are done with
 little work or possible regressions.
@@ -1418,9 +1294,6 @@ The intention of these styles is to decrease the size of the calendar header
 when it is inside of a blog article. From a design standpoint, that might make
 perfect sense, and what you end up with is a calendar component that changes
 appearance depending on where it is placed. This conditional styling is what
-
--- 47 of 216 --
-
 I like to call a “context,” and is something I use quite extensively throughout
 my design systems.
 The main problem with this approach is that the decreased font size
@@ -1454,9 +1327,6 @@ With this approach, we are still able to decrease the size of the calendar
 header when it is inside of a blog article, but by placing all of the calendarheader contextual styles into the calendar file, we can see all of the possible
 variations of the calendar header in a single location. This makes updating
 the calendar module easier (as we know all of the conditions in which it
-
--- 48 of 216 --
-
 might change), and allows us to create proper test coverage for each of the
 variations.
 Component Modifiers
@@ -1490,9 +1360,6 @@ font-size: 1.6em;
 color: red;
 font-size: 2.4em;
 }
-
--- 49 of 216 --
-
 In the preceding example, we have created a calendar--nested modifier
 using the traditional BEM syntax. This class by itself does nothing, but when
 it is applied to the calendar component, the elements inside of the component
@@ -1518,11 +1385,9 @@ one another accountable during code review. If you do this, you will have
 cemented the code pillar of your frontend architecture and set your team up
 for success.
 
--- 50 of 216 --
-
 ---
 
-## Sección 15: Chapter 6. JavaScript
+## Sección 15: Chapter 6. JavaScript [Entropy: 0.691]
 
 While many would argue that JavaScript should not be a required part of our
 web technology stack, it is nonetheless an integral part of many of the
@@ -1550,9 +1415,6 @@ use, you first need to determine which tools are necessary to achieve your
 goals.
 This applies not only to JavaScript frameworks, but to CMS, MVC, and CSS
 frameworks as well. There are many successful websites that are nothing
-
--- 51 of 216 --
-
 more than a static site generator, a small set of hand-crafted Sass files, and a
 few dozen JavaScript functions.
 Start with the assumption that you aren’t using Drupal or WordPress, that you
@@ -1582,9 +1444,6 @@ brace in JavaScript, you have the potential of breaking your entire site.
 Due to the critical nature of writing proper JavaScript, it is best practice to
 implement some type of linting/hinting tool along with whatever unit tests you
 have in your application. Including one of these tools in your workflow will
-
--- 52 of 216 --
-
 not only let you catch code that could break your application, but it can also
 help you enforce rules about how the code is formatted, or even how it is
 written.
@@ -1614,9 +1473,6 @@ $('.yellow-alert')
 .on('click', function() {
 console.log($(this).html());
 });
-
--- 53 of 216 --
-
 The code is short and easy to read, it’s true. We know that .red-alert puts
 a red background on the element and then binds a click function that will
 print the contents of the element to the console.
@@ -1651,9 +1507,7 @@ add_background() and log_text_on_click() functions
 
 ---
 
-## Sección 16: Chapter 6. JavaScript
-
--- 54 of 216 --
+## Sección 16: Chapter 6. JavaScript [Entropy: 0.25]
 
 If we needed to change console.log($(this).html());
 to console.log($(this).text()); we could do it in a single place
@@ -1672,11 +1526,9 @@ developer’s idea of good code will be quite different from the next, and the
 next. Creating a baseline of coding standards is the only way to ensure that
 code reviews are fair, and that developers know what is expected of them.
 
--- 55 of 216 --
-
 ---
 
-## Sección 17: Chapter 7. Red Hat Code
+## Sección 17: Chapter 7. Red Hat Code [Entropy: 0.346]
 
 The fall of 2014 saw the launch of the Redhat.com website. I’d only been on
 this multiyear project since the spring prior, so while I was pretty familiar
@@ -1703,9 +1555,6 @@ CSS was written with the assumption that Bootstrap had already washed
 all over it. Pull those styles out, and the page becomes completely
 broken.
 Core Site CSS: 500 KB
-
--- 56 of 216 --
-
 Though each band of content typically had a single file associated with it,
 the styles from that single file were never the single source of truth for
 that band. Styles cascaded in from several different locations and were
@@ -1735,9 +1584,6 @@ CSS for anything we wanted to share, and while we were at it, we should
 update the markup on our site as well.
 I was quite certain that such a drastic departure from our current design
 approach would have me laughed right out of the room. Therefore you can
-
--- 57 of 216 --
-
 understand my surprise when they not only said “yes,” but we were given
 several weeks to work out the new system while the newly launched site was
 in code freeze. So here we had a fully fleshed-out design, a very capable
@@ -1767,9 +1613,6 @@ most of them shared a number of common layout patterns (see Figure 7-1).
 We had content with a sidebar, content in equally sized columns, galleries of
 images or icons that spanned five per row, and black and white cards that
 held their content inside a bit of padding and a background.
-
--- 58 of 216 --
-
 Figure 7-1. The various layouts of our design system
 We quickly realized that if we created a method for reusing these few simple
 layout concepts, we could create the layout for every single band in our
@@ -1785,9 +1628,7 @@ a majority of them with just a small handful of components.
 
 ---
 
-## Sección 18: Chapter 7. Red Hat Code
-
--- 59 of 216 --
+## Sección 18: Chapter 7. Red Hat Code [Entropy: 0.37]
 
 A component, as compared to a layout, describes the visual appearence of a
 small piece of content. Components are meant to be dumb and flexible. They
@@ -1811,9 +1652,6 @@ Just prior to our contemplating these new rules, my Twitter stream had been
 bombarded by a story about Chuck Jones and a list of nine rules that he’d
 purportedly written for the writers and animators of the Road Runner
 cartoon. This list set forth the rules under which the entire Road Runner
-
--- 60 of 216 --
-
 universe was meant to run. Rules like “The road runner cannot harm the
 coyote, except by going ‘beep beep’” and “No dialog, ever, except ‘beep
 beep’” helped guide the animators and writters of each cartoon to create a
@@ -1844,9 +1682,6 @@ unique design and rules, and a solidly written data schema is written to the
 spec of its parent schema, our Road Runner Rules needed to be written with
 their own set of governing rules.
 These are the rules we eventually came up with:
-
--- 61 of 216 --
-
 Only include immutable rules, not general instructions
 Always boil each rule down to its simplest expression
 Always state the rule first, then explain “If not, then what?”
@@ -1872,9 +1707,6 @@ are applied directly to that selector, modified only by contexts and
 themes.
 Elements never use top margins. The first element touches the top of its
 component.
-
--- 62 of 216 --
-
 JavaScript is never bound to any element class. Functionality is “opted
 in” via data attributes.
 These rules cover not only the specific relationship between layout and
@@ -1906,9 +1738,7 @@ completely remove all of the associated CSS without fear of breaking some
 
 ---
 
-## Sección 19: Chapter 7. Red Hat Code
-
--- 63 of 216 --
+## Sección 19: Chapter 7. Red Hat Code [Entropy: 0.605]
 
 other component that “hijacked inheritance” and became reliant on that CSS.
 It’s because of this desire to not “use and abuse the cascade” that I made sure
@@ -1927,9 +1757,6 @@ This is not to say that our title can never be altered or modified by an outside
 force. What this does mean is that anything that these modifiers or contexts do
 to an element will be defined in the same place as the element’s original
 styles, not in some other location. So while I have no objections to .some-
-
--- 64 of 216 --
-
 context .rh-standard-band-title, these styles will always be defined
 in the Standard Band Sass partial, and never anywhere else.
 Opt-in Modifiers
@@ -1957,9 +1784,6 @@ pass any necessary value into it. It may be a few more characters, but using
 data attributes makes it really obvious that our component has a property of
 data-align and that it can be set to a variety of values.
 OK, now back to that example.
-
--- 65 of 216 --
-
 The rh-card--layout is a layout tool that we use to wrap content inside of
 padding and a background. This card (Figure 7-4) has a black background
 because we’ve stated that data-rh-theme="dark" sets a black background
@@ -1976,9 +1800,6 @@ background: white;
 background: black;
 }
 &[data-rh-justify="center"]{
-
--- 66 of 216 --
-
 ...
 }
 &[data-rh-justify="top"]{
@@ -1993,9 +1814,6 @@ and justify (Figure 7-5).
 Figure 7-5. A card with vertically justified content
 So with a single switch in a data attribute, we can switch the appearance of
 this card based on values specific to the card’s Sass partial.
-
--- 67 of 216 --
-
 Now one thing that we have not defined in the card Sass partial is alignment.
 We typically leave left/right/center alignment as an option for individual
 components using data-rh-align, so we’ve intentionally chosen to not opt
@@ -2008,9 +1826,6 @@ One of the mantras of our design system is that a component should look the
 same regardless of where you place it. But just as we want our components
 to be resilient and predictable, we also want them to be smart and flexible.
 This is the reason that we came up with context styles.
-
--- 68 of 216 --
-
 A context style means that a component can define the way it behaves when it
 is inside of some other parent element, or when that parent has a specific
 data attribute. Again, we aren’t setting all H2s in our sidebar to be green, but
@@ -2025,9 +1840,6 @@ When we switch from the dark to the light theme, you can see that not only
 does the background change color (the modifier), but the icon changes color
 as well from white to black (Figure 7-8). Now I’m not saying that our new
 theme is forcing all of the child text elements to change color (the title and
-
--- 69 of 216 --
-
 button didn’t change at all). This is an opt-in style on the icon, written right
 inside of the link-tile Sass file (Figure 7-9).
 These opt-in contexts allow us to create variations for any component
@@ -2045,15 +1857,10 @@ component and know without a doubt all of its possible visual variations.
 
 ---
 
-## Sección 20: Chapter 7. Red Hat Code
-
--- 70 of 216 --
+## Sección 20: Chapter 7. Red Hat Code [Entropy: 0.295]
 
 Figure 7-8. This light theme card has a black icon
 Figure 7-9. The icon subscribes to the dark context to turn white
-
--- 71 of 216 --
-
 Figure 7-10. The icon subscribes to the light context to turn black
 Semantic Grids
 With a solid foundation for our components, the next thing we needed to do
@@ -2076,9 +1883,6 @@ the .logo-wall band, and every other new combination of content that
 needed layout.
 Our solution was to create a collection of common grid patterns that could be
 applied to a layout via a data attribute (Figure 7-11). With the attribute set on
-
--- 72 of 216 --
-
 the parent element, all of the child elements would fall into whatever grid
 type they were placed into. This allowed us to keep our separation between
 layouts and components, while still providing a solution for setting our grid
@@ -2089,9 +1893,6 @@ areas). This attribute once again shows how data attributes are great at
 organizing numerous context values. With this single attribute we can pass in
 dozens of different layouts, each used to set the widths and margins of the
 contained components.
-
--- 73 of 216 --
-
 In this case, with gallery5 passed in, the CSS is applying roughly a 20%
 width to all of its child elements. By placing all of the grid information in the
 parent element, we are able to drop any combination of components into the
@@ -2104,9 +1905,6 @@ band. We didn’t have to write new CSS (modular) and we didn’t have to
 apply classes to the content (semantic). It’s a win-win! Now we have an
 inventory of galleries and common layout combinations of our 12-column
 grid (6 6, 3 9, 4 4 4, etc). These layouts cover 99% of the content we need to
-
--- 74 of 216 --
-
 create. If we find that we need something more unique, we can create a
 custom grid layout, document it, and make it available for anyone to apply to
 their content.
@@ -2115,11 +1913,9 @@ house our components and apply layouts to them, we can start building our
 logo walls, featured events, blog teasers, and every other band our site
 requires.
 
--- 75 of 216 --
-
 ---
 
-## Sección 21: Part III. The Process Pillar
+## Sección 21: Part III. The Process Pillar [Entropy: 0.25]
 
 The process pillar was created in order to define the steps required to get
 code from the developer’s brain to the user’s browser. It encompasses each
@@ -2146,9 +1942,6 @@ an email, we now:
 mark completed tasks
 2. Set up development environments where you can properly test code
 changes
-
--- 76 of 216 --
-
 3. Create build processes that compile, validate, and test code
 4. Get feedback from story owners before any code is accepted
 5. Push the committed code to a central code repository
@@ -2170,11 +1963,9 @@ requirements into published code. Then we will dive right into the heart of
 the process in discussing the role of task runners and how they help us to
 create better code in less time.
 
--- 77 of 216 --
-
 ---
 
-## Sección 22: Chapter 8. Workflow
+## Sección 22: Chapter 8. Workflow [Entropy: 0.352]
 
 At the heart of the process pillar is the workflow. The workflow is how
 ideas are turned into reality; or less altruistically, how bugs are squashed and
@@ -2193,9 +1984,6 @@ Figure 8-1. The old development workflow
 The New Development Workflow
 In stark contrast to the previous workflow, which focused on waterfall
 handoffs from product owner to UX to development and design to frontend
-
--- 78 of 216 --
-
 developer, our modern workflow is something completely different. In order
 to create performant, responsive, accessible websites, we will have to turn
 this old workflow model on its head. When we do, we get something like the
@@ -2220,9 +2008,6 @@ frontend solutions.
 Prototypes provide a common space for discussion and feedback. They put
 fully fleshed-out ideas into both desktop and mobile browsers. This is the
 place where ideas can be formed, tossed out, revived, polished. Once
-
--- 79 of 216 --
-
 developers and product owners are satisfied with the work, they can also be
 accepted.
 It’s not until this point of acceptance that we move our prototype (which has
@@ -2252,9 +2037,6 @@ developers.
 Now, we can’t make any assumptions about what our developers know or are
 already equipped with, so our frontend workflow starts as soon as a new
 developer is hired. It is important to understand all of the steps required for a
-
--- 80 of 216 --
-
 new developer, sitting down in front of code for the first time, with a new
 laptop, to write their first line of quality code.
 Provisioning
@@ -2287,9 +2069,7 @@ running locally.
 
 ---
 
-## Sección 23: Chapter 8. Workflow
-
--- 81 of 216 --
+## Sección 23: Chapter 8. Workflow [Entropy: 0.439]
 
 So now our developer has a code editor, a browser, and a local site that they
 can edit. What else could they ever need before they start working? How
@@ -2319,9 +2099,6 @@ writing tasks for the homepage doesn’t want this new button?
 What happens if one person is updating the CTA on the “about us” page,
 and someone else has a task directing them to change the CTA on the
 “contact us” page?
-
--- 82 of 216 --
-
 Why is a simple change to the global CTA button being grouped together
 with dozens of other local and global changes?
 Instead of stories to make several changes to a single page, we should be
@@ -2352,9 +2129,6 @@ Before our new developer dives into writing some new CSS, let’s have them
 follow a common and well-accepted practice of creating a feature branch. A
 feature branch is a Git branch that forks off of your main development
 branch, and lets you develop and commit code with the intent of eventually
-
--- 83 of 216 --
-
 merging the feature back into the main branch. The advantage of this
 approach is that you don’t commit incomplete code to the master branch. You
 are committing the code in a place where others can check it out and test it
@@ -2386,9 +2160,6 @@ They could opt to create a button modifier so our button would include both
 .cta-large {
 padding: 16px;
 }
-
--- 84 of 216 --
-
 /* Example HTML would be <a class="cta cta-large">
 Or they could use data attributes instead of classes and write:
 .cta[data-size="large"] {
@@ -2421,9 +2192,7 @@ contribution is the best contribution that it could be.
 
 ---
 
-## Sección 24: Chapter 8. Workflow
-
--- 85 of 216 --
+## Sección 24: Chapter 8. Workflow [Entropy: 0.295]
 
 So, now that our developer’s code has been merged into the main branch, it’s
 time to get this code into production.
@@ -2454,9 +2223,6 @@ create an icon font; or process our images to reduce file size, we are creating
 compiled assets. What are we supposed to do with all of these files? What
 happens if we commit them? Is it possible to avoid committing them and still
 have a functioning website?
-
--- 86 of 216 --
-
 In many cases, you will find yourself forced to commit these assets. It’s not
 ideal, but unless you want to ditch your preprocessor and write that CSS file
 by hand, you might just need to add it to the repo. The advantage of this
@@ -2488,9 +2254,6 @@ This approach offers more than just the convenience of keeping our
 repository clean—it also helps to protect us from unexpected regressions. If
 we are committing compiled assets, whenever my feature branch is merged
 into master, the compiled assets in master are 100% the product of how my
-
--- 87 of 216 --
-
 machine compiled those assets. Once another developer’s feature branch gets
 merged in, my feature is going to be rendered with the assets compiled on
 that developer’s computer.
@@ -2524,9 +2287,7 @@ commit, and persist even after the branch that created that commit is deleted.
 
 ---
 
-## Sección 25: Chapter 8. Workflow
-
--- 88 of 216 --
+## Sección 25: Chapter 8. Workflow [Entropy: 0.295]
 
 There’s nothing saying that this single commit has to even get merged back
 into master. I’ll talk about the process we use at Red Hat in Chapter 10. For
@@ -2551,9 +2312,6 @@ Homebrew
 Sublime Text Package Control
 RPM
 PEAR
-
--- 89 of 216 --
-
 Regardless of which type of code you write (PHP, Node, Ruby, CMS
 module, Mac software, Unix software, VIM plug-in, IDE plug-in), you’ll find
 that someone has written a package manager for distributing it. Considering
@@ -2584,17 +2342,12 @@ Take some time and look at the various options you have for your project.
 You’re never locked into a single system (many projects are on Bower and
 NPM), but you’ll want to be confident in whatever system you decide on, as
 your users will be creating build systems that depend on this code. So then
-
--- 90 of 216 --
-
 let’s talk about the build system you’ll be using to create this shareable code,
 and the systems that rely on code published by others.
 
--- 91 of 216 --
-
 ---
 
-## Sección 26: Chapter 9. Task Runners
+## Sección 26: Chapter 9. Task Runners [Entropy: 0.328]
 
 For many frontend developers, Sass was our first build system, or task
 runner. Before Sass, our workflow was to hit Save on our CSS file and then
@@ -2624,9 +2377,6 @@ maps from folders of PNG files, or to query image files and return height and
 width values.
 So now, with a single compass compile command, a developer could
 compile all of their Sass into a target CSS directory, while each image URL
-
--- 92 of 216 --
-
 is resolved to the image folder, and font references resolved to the font
 folder. The Sass could be compiled using popular frameworks like Susy
 grids, Modular Scale, Breakpoint, and Color Schemer. It could do all of this
@@ -2654,9 +2404,6 @@ Create sym links
 Compile Sass
 Concatenate JavaScript
 Load third-party JavaScript libraries
-
--- 93 of 216 --
-
 Compile Icon-font from SVGs
 Process images, reducing file size, cropping to multiple sizes
 Rsync files to remove server
@@ -2681,9 +2428,6 @@ Diving in Deeper
 When I first started diving into frontend architecture, before finding Grunt, I
 became really interested in creating Compass modules. I started off by
 creating small gems that would let me scaffold new projects, and thinking
-
--- 94 of 216 --
-
 how I could use a gem to distribute a base set of styles to several websites at
 a time. While both of these use cases were valid, they express the limit of
 what I would have been capable of doing without learning a ton more Ruby.
@@ -2718,9 +2462,7 @@ grunt.initConfig({
 
 ---
 
-## Sección 27: Chapter 9. Task Runners
-
--- 95 of 216 --
+## Sección 27: Chapter 9. Task Runners [Entropy: 0.391]
 
 sass: {
 options: {
@@ -2755,9 +2497,6 @@ In this area, we are able to group various individual tasks into a custom
 parent task. The default task is what happens when you just type grunt
 into the command line. You can add more tasks, like Sass Lint, to the
 default task, or create other custom parent tasks like test or deploy.
-
--- 96 of 216 --
-
 Now let’s do the same thing in GulpJS:
 var gulp = require('gulp');
 var sass = require('gulp-sass');
@@ -2787,9 +2526,6 @@ before sending it to a final destination. There are two major advantages
 here. First, the concurrent nature of this approach means that processing
 our Sass isn’t blocking our other tasks from running. And second, pipes
 mean that Gulp can perform multiple operations on a single asset,
-
--- 97 of 216 --
-
 whereas Grunt would have to write CSS to a temp folder, then perform a
 second operation on those temp assets.
 Is There a Clear Winner?
@@ -2810,11 +2546,9 @@ quickly develop quality code and then deploy that code to testing, staging,
 and production environments, you’ve done your job regardless of your
 choice in framework.
 
--- 98 of 216 --
-
 ---
 
-## Sección 28: Chapter 10. Red Hat Process
+## Sección 28: Chapter 10. Red Hat Process [Entropy: 0.34]
 
 At Red Hat, our frontend development team has the incredible advantage of
 working multiple sprints ahead of our backend development. We set longterm goals for the features we want to build or update, and once we have a
@@ -2842,9 +2576,6 @@ Our problem was that Drupal had a very opinionated rendering engine, and it
 was very difficult to prototype the markup that Drupal would render without
 actually running Drupal itself. So we decided to upend the Drupal rendering
 pipeline and insert our own solution. We wanted a solution that could be
-
--- 99 of 216 --
-
 shared between our prototyping tool, Drupal, WordPress, or any other
 platform that wanted to use our design system. We started with the Twig
 templating language, as it was mature and robust, and had both PHP and
@@ -2874,9 +2605,6 @@ This Twig file accepts a set of data defined by the JSON schema.
 Optional data is gated behind if statements, and data arrays are looped
 through.
 Sass partial
-
--- 100 of 216 --
-
 All of the component styles originate from this single Sass partial. It gets
 compiled into the primary style.css file, or can be loaded in as an
 individual CSS file.
@@ -2905,9 +2633,6 @@ JSON schema. Whenever there is a change made to the functionality of a
 component, that change originates in the schema and is then spread out to the
 other files within the component. It is because of the importance of this single
 file that we call this process a schema-driven design system.
-
--- 101 of 216 --
-
 Schema-Driven Design System
 By now, test-driven design is a pretty common and accepted practice in
 software development. Before writing a line of code, we write a suite of
@@ -2948,9 +2673,7 @@ two or three logo images:
 
 ---
 
-## Sección 29: Chapter 10. Red Hat Process
-
--- 102 of 216 --
+## Sección 29: Chapter 10. Red Hat Process [Entropy: 0.46]
 
 "type": "array",
 "format": "tabs",
@@ -3000,9 +2723,6 @@ two or three logo images:
 "title": "Logo File",
 "description": "Upload your logo",
 "type": "string",
-
--- 103 of 216 --
-
 yp g ,
 "format": "file"
 }
@@ -3040,9 +2760,6 @@ schema represents either a single piece of data, or a group of data that will
 be described in a subschema. So after stating that this schema will describe
 an object of key/value pairs, we state that only the body field is required.
 Line 5:
-
--- 104 of 216 --
-
 "headline": {
 "type": "string",
 "format": "text"
@@ -3065,9 +2782,6 @@ me explain why.
 For this logo design, we were asked to create a layout that could accept
 either two or three logos. Figure 10-1 shows the mockup we were given.
 Figure 10-1. The “three up” mockup
-
--- 105 of 216 --
-
 Anyone who’s seen this design before will quickly realize that there is an
 important piece of information missing. What happens to the layout when
 there are only two logos? Does the layout remain the same, with simply a
@@ -3085,9 +2799,6 @@ Line 11:
 "oneOf": [
 {
 ...
-
--- 106 of 216 --
-
 },
 {
 ...
@@ -3121,9 +2832,6 @@ template. Because this value is required, the only way to satisfy the schema
 is to pass the string 2up as the layout value.
 If the specifications required us to allow the user to choose which layout they
 wanted to use, we could update this enum value to ["2up", "3up"] instead.
-
--- 107 of 216 --
-
 Because we’ve decided to not let the user select the layout, we added a
 "hidden": true to our property options. This is a cue to hide this value
 from the UI, but still pass a value to our template.
@@ -3159,9 +2867,7 @@ that we’re using a JSON pointer. This allows us to point to an external
 
 ---
 
-## Sección 30: Chapter 10. Red Hat Process
-
--- 108 of 216 --
+## Sección 30: Chapter 10. Red Hat Process [Entropy: 0.68]
 
 definition rather than define one here. The value #/definitions/logo
 instructs the pointer to look at the local schema root #, and then return the
@@ -3195,9 +2901,6 @@ line 64:
 "description": "Upload your logo",
 "type": "string",
 "format": "file"
-
--- 109 of 216 --
-
 }
 },
 "required": ["file"]
@@ -3237,9 +2940,6 @@ file. Let’s first take a look at what some valid data will look like:
 ]
 }
 }
-
--- 110 of 216 --
-
 This is what our Twig template might look like:
 <div class="logo-wall">
 {% if headline %}
@@ -3270,9 +2970,6 @@ A set of definitions needed to create a template file that accounts for
 every possible variation in the data.
 A description of the UI we’d prefer our users encounter when entering
 this data. Figure 10-4 shows an example of our schema rendered with the
-
--- 111 of 216 --
-
 JSON-editor library.
 This is a powerful combination of benefits to be gained from 91 lines of
 JSON. For the design system that we are creating, it is the perfect vehicle for
@@ -3286,17 +2983,12 @@ have removed a majority of the guesswork that accompanied previous asset
 handoffs.
 By following a public standard, we are constantly finding third-party tools
 that add value and functionality to our design system. Our strict adherence to
-
--- 112 of 216 --
-
 a schema system has paid off in so many areas that I am confident I will
 never create another design system without them again. This is a schemadriven design system.
 
--- 113 of 216 --
-
 ---
 
-## Sección 31: Part IV. The Testing Pillar
+## Sección 31: Part IV. The Testing Pillar [Entropy: 0.295]
 
 As frontend architects, one of our greatest roles is to oversee the
 development of the website and design system, but anyone who has been in a
@@ -3325,9 +3017,6 @@ Here are a few things to remember when you start looking at planning test
 coverage for your application:
 Tests are written while the site is being built, or even before actual code
 is written.
-
--- 114 of 216 --
-
 They are living code, committed with or next to the system repository.
 All tests must pass before any code is merged into the master branch.
 Running the suite on the master branch should always return a passing
@@ -3338,11 +3027,9 @@ correct UI, or deliver a performant experience. So instead of trying to
 oversee thousands of lines of code, an architect should focus on creating a
 system for quality and complete test coverage.
 
--- 115 of 216 --
-
 ---
 
-## Sección 32: Chapter 11. Unit Testing
+## Sección 32: Chapter 11. Unit Testing [Entropy: 0.662]
 
 Unit testing is the process of breaking down your application to the smallest
 possible functions, and creating a repeatable, automated test that should
@@ -3370,9 +3057,6 @@ framework quickly.
 Let’s review some of these basic concepts now, and then we’ll have an
 opportunity to look at the code in action.
 The Unit
-
--- 116 of 216 --
-
 “Do one thing, and do it well” is the mantra when you are building an
 application with unit tests. Too often we write functions that try to do too
 many things. Not only is this very inefficient, as it does not lead to reuse, but
@@ -3401,9 +3085,6 @@ Now these three functions can be used throughout our entire application, not
 just for calculating shipping costs. If we have another part of the application
 that needs to find a distribution center, or to calculate the distance between
 two addresses, those functions have already been created. We aren’t
-
--- 117 of 216 --
-
 reproducing small units of functionality over and over again in separate,
 larger functions.
 Better Testing
@@ -3431,9 +3112,6 @@ shipping, and finish with three functions that make their associate test pass.
 With this done, not only have we built the functionality required for our
 application to look up shipping cost, but we have complete test coverage for
 these functions.
-
--- 118 of 216 --
-
 A Test-Driven Example
 At its core, unit testing is extremely simple. The basic idea is to call the
 function being tested, passing it preset values and describing what the result
@@ -3472,9 +3150,7 @@ in the test output.
 
 ---
 
-## Sección 33: Chapter 11. Unit Testing
-
--- 119 of 216 --
+## Sección 33: Chapter 11. Unit Testing [Entropy: 0.28]
 
 With these tests (and others) in place, we have a single suite to run that will
 assert whether or not our system is working. If someone were to change the
@@ -3504,9 +3180,6 @@ debt before trying to tackle your larger debt, writing some simple, but still
 valuable, tests will be a great place to build momentum.
 Once you have a working suite providing some basic coverage, start looking
 at the parts of the system that are either the most critical, or have had
-
--- 120 of 216 --
-
 recurring trouble in the past. Create stories for your backlog for each of them
 and make sure to pull them forward as often as possible.
 Coverage from the Start
@@ -3530,11 +3203,9 @@ long as those tasks are only removed when everyone agrees that coverage
 isn’t necessary, we can be confident that any feature requiring coverage is
 given the time needed to finish that task.
 
--- 121 of 216 --
-
 ---
 
-## Sección 34: Chapter 12. Performance
+## Sección 34: Chapter 12. Performance [Entropy: 0.286]
 
 Testing
 The purpose of any testing is to protect users from a degraded or broken
@@ -3561,9 +3232,6 @@ designers, we feel that our creativity is being stifled if we can’t toss aroun
 hi-res images and full-screen video with reckless abandon. As developers,
 we think that we can’t do our job without a CSS framework, a couple
 JavaScript frameworks, and dozens of jQuery plug-ins. Less is no fun!
-
--- 122 of 216 --
-
 As a person that has been living within a financial budget for the past four
 years, I certainly understand what it means to not get everything I want. On
 the other hand, when I do make a large, budgeted purchase, I do so without a
@@ -3593,9 +3261,6 @@ ways to improve and optimize their own sites. And if they had been looking
 at your site to determine their budgets, you’ve now pushed them to reduce
 their budgets as well!
 Averaged Baseline
-
--- 123 of 216 --
-
 Regardless of your competition, it is always important to compare your
 performance baselines to industry averages and general best practices. There
 is no reason to settle for mediocre just because your competition is throwing
@@ -3623,9 +3288,6 @@ over year. Reaching back to April of 2011, the average page was a skimpy
 769 KB!
 While page weight is not the only factor affecting the load time of your
 website, it certainly plays a large part. Page weight also has another side
-
--- 124 of 216 --
-
 effect as we remember that more and more people are accessing our sites on
 mobile devices, and they are paying to download those bytes. The heavier
 your page, the more you are going to be costing your customers, especially in
@@ -3657,9 +3319,7 @@ functionality, can often add significant weight to your site. Consider if the
 
 ---
 
-## Sección 35: Chapter 12. Performance
-
--- 125 of 216 --
+## Sección 35: Chapter 12. Performance [Entropy: 0.28]
 
 same thing could be done with CSS for modern browsers with reasonable
 fallbacks for older ones.
@@ -3691,9 +3351,6 @@ concatenate them into single files.
 Combine individual image files into a single image map or icon font.
 You’ll find many great tools to do this for you automatically (Compass,
 Grunt/Gulp plug-ins).
-
--- 126 of 216 --
-
 Lazy-load assets not required for initial page load. This could be
 JavaScript that isn’t needed until the user interacts with the page, or
 images that are far below the initial load window.
@@ -3723,9 +3380,6 @@ blocking content that it loads after the document has completely rendered.
 Time to document complete
 Once all of the initially requested assets have been loaded, the document
 is considered to be “complete.” Time to document complete doesn’t
-
--- 127 of 216 --
-
 include assets pulled in by JavaScript, so lazy-loading assets won’t
 increase this metric.
 Hybrid Metrics
@@ -3748,9 +3402,6 @@ Legible font sizes
 Speed Index
 As stated on the project page, the speed index is the average time at which
 visible parts of the page are displayed. It is expressed in milliseconds and
-
--- 128 of 216 --
-
 dependent on size of the view port.
 This hybrid timing metric provides a score that takes into account many of the
 metrics just discussed, and combines them with a measurement of what the
@@ -3782,9 +3433,6 @@ desktop: {
 options: {
 paths: ["/en", "/en/services"],
 locale: "en_US",
-
--- 129 of 216 --
-
 strategy: "desktop",
 threshold: 80
 }
@@ -3818,9 +3466,7 @@ You can currently get a limited-use API key at the WebPageTest website.
 
 ---
 
-## Sección 36: Chapter 12. Performance
-
--- 130 of 216 --
+## Sección 36: Chapter 12. Performance [Entropy: 0.25]
 
 $ npm install grunt-perfbudget --save-dev
 // Added to Gruntfile.js
@@ -3849,11 +3495,9 @@ you’ll be in a good position to continue developing features and making
 improvements to your website while being sure that none of the changes you
 push out ever break your budget.
 
--- 131 of 216 --
-
 ---
 
-## Sección 37: Chapter 13. Visual Regression
+## Sección 37: Chapter 13. Visual Regression [Entropy: 0.31]
 
 Testing
 Tell me if this is a familiar scene: you’ve been working on your website
@@ -3881,9 +3525,6 @@ rhythm needs fixing. It doesn’t matter if the feature had been signed off and
 agreed upon, there is a difference between what is live and the specific
 version of the Photoshop file the decision maker has been poring over for the
 past week.
-
--- 132 of 216 --
-
 Having had this happen to me over and over again, let me explore a few of
 the common reasons that this merry-go-round has so much trouble stopping
 and letting you off.
@@ -3913,9 +3554,6 @@ these defects, and you can only hope that the changes you are making aren’t
 going to make even more work for you the next time a designer takes a peek
 at the contact form.
 Waffling Decision Makers
-
--- 133 of 216 --
-
 According to the law of infinite probability, given enough features, pored
 over by enough decision makers, there is a 100% chance that someone will
 find something that they want to change.
@@ -3946,9 +3584,6 @@ With these baseline images either committed to the repo, or marked approved
 in some testing database, we now have a record of the exact signed-off,
 agreed-upon pixels that make up any particular feature (in our case, a contact
 form). Before any line of code is committed back to the master branch, visual
-
--- 134 of 216 --
-
 regression testing gives us a method to test every feature in our site, and
 make sure that nothing unexpected has visibly changed.
 We will also be guarded against bug reports that are nothing more than
@@ -3981,9 +3616,7 @@ CSS unit testing
 
 ---
 
-## Sección 38: Chapter 13. Visual Regression
-
--- 135 of 216 --
+## Sección 38: Chapter 13. Visual Regression [Entropy: 0.28]
 
 Quixote is an example of a unique class of diffing tools that look for unit
 differences instead of visual differences. Quixote can be used to set
@@ -4017,9 +3650,6 @@ elements, turn off animation, or even replace always-changing content
 with consistent, mock content to avoid failures when the “newest blog
 post” gets updated.
 GUI-based comparison and change approval
-
--- 136 of 216 --
-
 Projects like Diffux store test history, and provide test feedback inside of
 a web-based graphical user interface. Baseline images are stored in a
 database, and any changes to those baselines must be approved or
@@ -4036,11 +3666,9 @@ environments like Jenkins or Travis CI.
 We’ll cover PhantomCSS and how to integrate it into your project in the next
 chapter, which takes a look at Red Hat’s approach to testing.
 
--- 137 of 216 --
-
 ---
 
-## Sección 39: Chapter 14. Red Hat Testing
+## Sección 39: Chapter 14. Red Hat Testing [Entropy: 0.31]
 
 Visual Regression in Action
 PhantomCSS has been my go-to tool for the past few years because it
@@ -4066,9 +3694,6 @@ Now before you run off and download the first Grunt PhantomCSS you find
 on Google, I’ll have to warn you that it is awfully stale. Sadly, someone
 grabbed the prime namespace and then just totally disappeared. This has led
 to a few people taking it upon themselves to continue on with the codebase,
-
--- 138 of 216 --
-
 merging in existing pull requests and keeping things current. One of the better
 ones is maintained by Anselm Hannemann. Here’s how you install it:
 npm i --save-dev git://github.com/anselmh/grunt-phantomcss.git
@@ -4096,9 +3721,6 @@ results: After we run comparison tests, the results will be placed in this
 folder.
 viewportSize: We can always adjust the viewport size with Casper.js.
 src: This is just a path to our test file, relative to our gruntfile.
-
--- 139 of 216 --
-
 Our Test File
 Next, in the phantomcss.js file, this is where Casper.js kicks in. PhantomCSS
 is going to spin up a PhantomJS web browser, but it is up to Casper.js to
@@ -4124,9 +3746,6 @@ Next, we need to test our button to make sure it behaves like we’d expect
 when we hover over it. We can use CasperJS to actually move the cursor
 inside of PhantomJS so that when we take our next screenshot, named ctalink-hover, the button will be in its hovered state. Figure 14-2 shows the
 result.
-
--- 140 of 216 --
-
 Figure 14-2. The baseline image for our cta-link in hovered state
 Making a Comparison
 With those baselines in place, we are now able to run the test over and over
@@ -4143,9 +3762,6 @@ As expected, the change from uppercase to lowercase created a failure. Not
 only was the text different, but the button ended up being smaller. The third
 “fail” image shows us in pink which pixels were different between the two
 images.
-
--- 141 of 216 --
-
 Running the Entire Suite
 After doing this for each component (or feature) we want to test, we can run
 $grunt phantomcss and it will do the following:
@@ -4160,9 +3776,6 @@ and committed when the component was created Figure 14-4.
 7. Report if all images are the same (PASS!) or if there is an image that
 has changed (FAIL!).
 8. Repeat this process for every component and layout in our library.
-
--- 142 of 216 --
-
 Figure 14-4. All of the baseline images created by our visual regression test
 What Do We Do with Failing Tests?
 Obviously, if you are tasked with changing the appearance of a component
@@ -4177,9 +3790,7 @@ find out what changed on the pagination component, and fix it.
 
 ---
 
-## Sección 40: Chapter 14. Red Hat Testing
-
--- 143 of 216 --
+## Sección 40: Chapter 14. Red Hat Testing [Entropy: 0.31]
 
 On the other hand, you might determine that the changes you made to the
 cta-link should have affected the pagination too. Perhaps they share the
@@ -4199,9 +3810,6 @@ your code is merged in, it doesn’t cause failures when others run the test.
 Figure 14-6. Commit new baseline images when your code changes the component appearance
 The magic of this approach is that at any given time, every single component
 in your entire system has a “gold standard” image that the current state can be
-
--- 144 of 216 --
-
 compared to. Your test suite can also be run at any time, in any branch, and it
 should always pass without a single failure, which is a solid foundation to
 build upon.
@@ -4232,9 +3840,6 @@ Good encapsulation was important to us. We put everything in the component
 folder, and I mean everything! For example:
 The Twig template with the component’s canonical markup
 The JSON schema describing valid data for the template
-
--- 145 of 216 --
-
 The documentation file, which fed into our Hologram style guide
 explaining component features, options, and implementation details
 Sass files for typographic and layout styles
@@ -4249,9 +3854,6 @@ the same folder regardless of the test file location. With dozens of different
 components in our system, each with several tests, this process just didn’t
 scale. So one of the key changes I made was to put baseline images into a
 folder called baseline right next to each test file (see Figure 14-7).
-
--- 146 of 216 --
-
 Figure 14-7. A typical component folder
 Run Each Component Test Suite Individually
 In addition to changing the location of the baseline images, I changed the test
@@ -4259,9 +3861,6 @@ behavior to test each component individually, instead of all together.
 So, instead of running all 100+ tests and telling me if the build passed or
 failed, I now get a pass/fail for each component, as shown in Figures 14-8
 and 14-9.
-
--- 147 of 216 --
-
 Figure 14-8. Everything passes!
 Figure 14-9. Failing tests
 Test Portability
@@ -4274,9 +3873,6 @@ start with casper.thenOpen('http://mysite.com/page2'). This
 becomes problematic because the order in which Grunt ran these files was
 alphabetical. So as soon as I added a test starting with a letter one earlier in
 the alphabet than my current starting test, my test suite broke!
-
--- 148 of 216 --
-
 The fix involved calling casper.start as soon as Grunt initiates the task,
 and then all of the tests can start with casper.thenOpen:
 // cta.tests.js
@@ -4312,11 +3908,9 @@ addition, we found it getting easier and easier. We could now consistently
 utilize and adapt current components, or create new ones with little fear of
 breaking others.
 
--- 149 of 216 --
-
 ---
 
-## Sección 41: Part V. The Documentation Pillar
+## Sección 41: Part V. The Documentation Pillar [Entropy: 0.34]
 
 Let’s face it: our frontend code is getting more and more complex with every
 project we start. I’m not saying this is a bad thing, it’s just that this rapid rate
@@ -4344,9 +3938,6 @@ dedication to documentation.
 We’d spent so many years living with highly declarative systems that we
 simply defaulted to keeping our understanding of these new systems locked
 away in our heads. Getting this information out of heads and into
-
--- 150 of 216 --
-
 documentation won’t be an easy transition, but the time lost from not having
 documentation outweighs the time it would have taken to write it. As the
 proverb goes, the palest ink is better than the best memory.
@@ -4374,9 +3965,6 @@ behind it that layers on search, navigation, and visual presentation. Other
 documentation is used to display system assets, driven by the styles, scripts,
 templates, and schemas we are writing.
 Static Documentation
-
--- 151 of 216 --
-
 Hologram is a Ruby-based general documentation tool. It allows you to
 make small documentation entries all throughout your codebase, then it
 gathers them into a single static website. These Markdown-formatted
@@ -4409,9 +3997,6 @@ specification upon which you can validate your data. In the realm of frontend
 architecture, we can use JSON schema to document the data that each of our
 templates or patterns is expecting. A JSON hyper-schema can also be used to
 describe the various methods in which we can interface with our design
-
--- 152 of 216 --
-
 system over HTTP, including validating, rendering, and testing. JSON
 schemas are code-driven documentation because they serve a functional
 purpose of validation and driving editor tools. Schemas also produce a very
@@ -4421,9 +4006,7 @@ implement a feature.
 
 ---
 
-## Sección 42: Chapter 15. Style Guides
-
--- 153 of 216 --
+## Sección 42: Chapter 15. Style Guides [Entropy: 0.575]
 
 As our stylesheets evolve from a list of declarative statements to a system of
 variables, functions, and logic, we need to make sure that our documentation
@@ -4449,9 +4032,6 @@ $ gem install hologram
 Hologram Configuration
 With the gem installed, we configure Hologram by creating a YAML file with
 the following:
-
--- 154 of 216 --
-
 destination: ./docs
 documentation_assets: ./doc_assets
 code_example_templates: ./code_example_templates
@@ -4486,9 +4066,6 @@ Hologram uses, which you could alter however you need:
 </div>
 </div>
 </div>
-
--- 155 of 216 --
-
 Notice the two variables of rendered_example and code_example. The
 rendered example is your example printed directly onto the page,
 whereas the code example is passed into a <pre> tag, properly escaped,
@@ -4510,9 +4087,6 @@ what the values mean, and how it is rendered in the style guide.
 Hologram Documentation Block
 This example would be inside of your _buttons.scss file. The hologram
 content is put inside of a CSS comment, starting with the word “doc”:
-
--- 156 of 216 --
-
 /*doc
 ---
 title: Primary Button
@@ -4537,9 +4111,6 @@ block keywords (html_example, js_example, haml_example, and others)
 that will not only display the markup with syntax highlighting, but will also
 render the markup onto the page.
 Figure 15-2 shows this button rendered in the Hologram style guide.
-
--- 157 of 216 --
-
 Figure 15-2. The primary button rendered in the style guide
 title
 This is the human-readable title for this piece of documentation.
@@ -4559,9 +4130,6 @@ and pulls anything wrapped in /*doc */ into the style guide, using the
 YAML frontmatter to define its title and category. The end result is a build
 folder containing all of the dependencies (CSS, JavaScript, images) and an
 HTML file for each of your style guide categories.
-
--- 158 of 216 --
-
 Each page contains all of the documentation that matches that category,
 converted from Markdown and code blocks into standard HTML. The pages
 are then wrapped in the header and footer templates, pulling in CSS,
@@ -4594,9 +4162,7 @@ to be.
 
 ---
 
-## Sección 43: Chapter 15. Style Guides
-
--- 159 of 216 --
+## Sección 43: Chapter 15. Style Guides [Entropy: 0.5]
 
 SassDoc, on the other hand, is the complete opposite. SassDoc, a tool for
 documenting your Sass’s variables, mixins, extends, and functions, is very
@@ -4627,9 +4193,6 @@ and extract anything you have tagged with SassDoc’s special documentation
 syntax. It will then use all of that information to build out a fully featured
 static documentation site. Let’s dive right into SassDoc’s syntax, and see
 what our documented code looks like once processed.
-
--- 160 of 216 --
-
 Using SassDoc
 SassDoc uses a three-slash Sass comment to let us signify that the following
 code needs to be included into our documentation. All you need to do is
@@ -4654,9 +4217,6 @@ and we already have extremely professional-looking documentation built out
 of static HTML, CSS, and JavaScript. With a simple push to GitHub pages,
 you now have documentation that displays a list of your system’s variables.
 But SassDoc does way more than that! We’re just getting started.
-
--- 161 of 216 --
-
 Figure 15-3. A rendered SassDoc style guide
 Exploring SassDoc
 Let’s create another variable and look at some of the annotation types
@@ -4672,9 +4232,6 @@ The first line of the doc block is always the description that SassDoc will
 display above the variable. This can be multiple lines, and is compiled as
 Markdown, so it supports headings, lists, links, and anything else you want to
 throw at it. Just make sure that each line is preceded by the three slashes.
-
--- 162 of 216 --
-
 After the description, we are free to use one of SassDoc’s numerous
 annotation types. First up is the @type annotation. If this variable is simply a
 reference to another variable, or possibly the result of a function, it is helpful
@@ -4694,9 +4251,6 @@ As you can see in Figure 15-4, our @access private has set a [Private]
 flag on the variable title, our description is rendered with all of its
 Markdown glory, and our type is specified below.
 Figure 15-4. Our $foreground-adjust variable rendered in SassDoc
-
--- 163 of 216 --
-
 Digging Deep into SassDoc
 Now that we’ve seen the basics for documenting our Sass design system,
 let’s jump ahead and see how this looks when we have a more complete set
@@ -4737,9 +4291,7 @@ font-size: $button-font-size;
 
 ---
 
-## Sección 44: Chapter 15. Style Guides
-
--- 164 of 216 --
+## Sección 44: Chapter 15. Style Guides [Entropy: 0.4]
 
 @mixin button($bg_color:"red") {
 background: $bg_color;
@@ -4764,17 +4316,11 @@ function as well, and SassDoc is able to track all of those dependencies and
 list them right at the bottom of the mixin documentation.
 Putting everything together, Figure 15-5 shows what the button documentation
 looks like.
-
--- 165 of 216 --
-
 Figure 15-5. Our button mixin rendered in SassDoc
 The %btn-core placeholder doesn’t use any new annotation types, but as it
 is a dependency of our button mixin, and is dependent on a few of our
 variables, those relationships are spelled out automatically for us, as shown
 in Figure 15-6.
-
--- 166 of 216 --
-
 Figure 15-6. Our %btn-core extend, rendered in SassDoc
 As shown in Figure 15-7, our get_foreground() function shows an
 example of the @return annotation, allowing us to describe what type of
@@ -4785,17 +4331,11 @@ followed that example. Notice also the “Requires” and “Used by” sections
 These automatically generated relationships are incredibly valuable, and as
 each one of them is a link to the mixin or variable definitions, it makes your
 documentation incredibly easy to navigate.
-
--- 167 of 216 --
-
 Figure 15-7. Our get_foreground function rendered in SassDoc
 Conclusion
 As the examples in this chapter demonstrate, static documentation systems
 can be a powerful way of capturing the ins and outs of your design system.
 Hologram provides the tools to create a very open and customizable set of
-
--- 168 of 216 --
-
 documentation pages. Whether you are writing onboarding docs or capturing
 the proper markup for a call-to-action button, Hologram will give you the
 flexibility to write, catalog, and present it in style.
@@ -4816,11 +4356,9 @@ code-driven environment, our documentation is driven purely by the code
 that we write. We’ll talk about a couple examples of that in the following
 chapters.
 
--- 169 of 216 --
-
 ---
 
-## Sección 45: Chapter 16. Pattern Libraries
+## Sección 45: Chapter 16. Pattern Libraries [Entropy: 0.875]
 
 In case you haven’t come across Brad Frost’s Atomic Design principles, let
 me give you a quick introduction. They will without doubt change the way
@@ -4848,9 +4386,6 @@ Now that Atomic Design has equipped us with a methodology for creating
 our website out of small composable pieces, wouldn’t it be great if we had a
 tool that allowed us to prototype new page designs with ease? This is where
 Pattern Lab steps in.
-
--- 170 of 216 --
-
 Pattern Lab (or PL) is a static site generator that allows you to document all
 of the building blocks of your site. It turns your atoms, molecules, organisms,
 and layouts into a browsable website where you can not only view each
@@ -4877,14 +4412,8 @@ server. After a little compiling and spinning up a simple web server, we are
 treated with this: a prepopulated, simple style guide with sample atoms,
 molecules, organisms, templates, and even fully built pages, like the
 homepage in Figure 16-1.
-
--- 171 of 216 --
-
 Figure 16-1. The homepage preview in Pattern Lab
 Pattern Lab in Action
-
--- 172 of 216 --
-
 The best way to understand what is going on under the hood is to start from
 this finished view, and work our way backward into the system of templates
 and data files that Pattern Lab holds. To do that, we are going to look at our
@@ -4918,9 +4447,6 @@ of that data file:
 "alt": "Mountains"
 }
 },
-
--- 173 of 216 --
-
 "headline" : {
 "medium" : "Top 10 mountain ranges for hiking"
 }
@@ -4963,9 +4489,7 @@ from our page, templates-homepage:
 
 ---
 
-## Sección 46: Chapter 16. Pattern Libraries
-
--- 174 of 216 --
+## Sección 46: Chapter 16. Pattern Libraries [Entropy: 0.855]
 
 <section class="section latest-posts">
 <h2 class="section-title">Latest Posts</h2>
@@ -5000,9 +4524,6 @@ This means that when the block-hero molecule gets imported into the page,
 it will be using the data in the hero data object to render any variables:
 {
 "img": {
-
--- 175 of 216 --
-
 "landscape-16x9": {
 "src": "../../images/sample/landscape-16x9-mountains.jpg",
 "alt": "Mountains"
@@ -5039,9 +4560,6 @@ the key of url, and the template would pick up whatever value we tossed in:
 },
 "headline" : {
 "medium" : "Top 10 mountain ranges for hiking"
-
--- 176 of 216 --
-
 }
 }
 However, because we didn’t specify a value, Pattern Lab is smart enough to
@@ -5068,9 +4586,6 @@ not just put the image tag into the block-hero like the H2 headline? In the end,
 it’s always up to you and your team as to how much you want to abstract your
 templates, but the value of all image tags being produced by a single template
 can be quite significant.
-
--- 177 of 216 --
-
 Imagine that in the future you decide to add a class or data attribute to all of
 your image tags. If each template handled its own image tags, you’d be
 updating dozens of molecules. But if all images were handled by a single
@@ -5105,9 +4620,7 @@ our systems even better. That’s where JSON schemas come in. Instead of
 
 ---
 
-## Sección 47: Chapter 16. Pattern Libraries
-
--- 178 of 216 --
+## Sección 47: Chapter 16. Pattern Libraries [Entropy: 0.265]
 
 diving into a generic example here, I will take some time in Chapter 17 to
 explain how JSON schemas took Red Hat from a system like Pattern Lab to a
@@ -5115,11 +4628,9 @@ fully integrated design system—a system that not only powers our style
 guide, but is also the basis of our content editing system, and the rendering
 engine for the majority of our site.
 
--- 179 of 216 --
-
 ---
 
-## Sección 48: Chapter 17. Red Hat
+## Sección 48: Chapter 17. Red Hat [Entropy: 0.795]
 
 Documentation
 As I’ve looked back on the year-long process of developing the new design
@@ -5147,9 +4658,6 @@ time developing onboarding documentation, which explained not only how to
 set up this style guide, but how to use it, create new content for it, and push
 out new releases of it as well. Hologram was a great tool for this, as we
 could simply create a documentation folder, fill it up with Markdown files,
-
--- 180 of 216 --
-
 and have Hologram pull them into our style guide based on how each page
 was categorized.
 Everything was going just fine until we remembered that the original goal
@@ -5182,9 +4690,6 @@ title: CTA Component
 category: Component - CTA
 ---
 - A "Call-to-Action" component contains one or more CTA buttons.
-
--- 181 of 216 --
-
 ## Primary Button
 ```html_example
 {% include "cta.twig" with {'type': 'primary'} %}
@@ -5219,9 +4724,6 @@ category: Component - CTA
 CTA Button
 </a>
 </div>
-
--- 182 of 216 --
-
 ```
 ## Secondary Button
 ```html_example
@@ -5251,9 +4753,6 @@ cards, each with different settings and content:
 ---
 hologram: true
 title: Card Layout
-
--- 183 of 216 --
-
 category: Layout - Card
 ---
 {%
@@ -5293,9 +4792,7 @@ data = {
 
 ---
 
-## Sección 49: Chapter 17. Red Hat
-
--- 184 of 216 --
+## Sección 49: Chapter 17. Red Hat [Entropy: 0.743]
 
 %}
 Our first task is to create a data set that will describe what we want to build.
@@ -5324,9 +4821,6 @@ in components %} means for each item in our components array (which we
 call component), do the following: import the template found in each array’s
 template property, and pass the entire array into that template as the new
 data context. So first we import the image_embed.twig file and pass in an
-
--- 185 of 216 --
-
 image source, then we import cta.twig and specify that we want the type to
 be primary:
 {
@@ -5360,9 +4854,6 @@ other important thing to remember is that for us, once the rendering process
 begins, we have no control over the markup other than what is in this data.
 We don’t have the option to tweak the source order of a layout for this one
 case, or add an extra container div to a component in another. These
-
--- 186 of 216 --
-
 limitations, or restraints, are what ended up making our system as robust and
 powerful as it turned out to be. But before we got to that point, we needed to
 shed a bit of weight.
@@ -5393,9 +4884,6 @@ our style guide were equal consumers of the Pattern Library. When we
 created a new band design in the style guide, the only tool we had for
 manipulating the markup was our JSON data array. We had no way of
 altering the markup or adding custom CSS for some special, one-off use case.
-
--- 187 of 216 --
-
 This meant that anything we built in the style guide, we were confident could
 reproduce in production without modification to the templates.
 At this point, our production environment was ingesting our CSS and
@@ -5430,9 +4918,7 @@ collected and formatted correctly, the rendered HTML would be identical
 
 ---
 
-## Sección 50: Chapter 17. Red Hat
-
--- 188 of 216 --
+## Sección 50: Chapter 17. Red Hat [Entropy: 0.385]
 
 regardless of whether it was passed in from a static file, or created inside of
 a complex CMS.
@@ -5467,9 +4953,6 @@ it is not valid because tertiary isn’t an allowed type value:
 }
 ]
 }
-
--- 189 of 216 --
-
 Because the JSON schema allows us to use references to describe the CTA
 you can put into a card, group, or band, we never have to duplicate our
 schema files, and just like Twig templates, we keep a single canonical
@@ -5501,9 +4984,6 @@ repetitive tasks as much as the next person. I could really feel the pain of our
 developers who were configuring dozens and dozens of input fields just so
 that they would match the schemas I had already written. I also couldn’t help
 but wonder how powerful our design system could be if the work that we did
-
--- 190 of 216 --
-
 in schemas, templates, and styles could be automatically and
 programmatically imported into our CMS without a single hour of backend
 dev intervention.
@@ -5535,9 +5015,6 @@ components used, or the values of some of the properties. This way if we
 needed to create a logo wall, which always contained image embeds, with
 five per row, we could simply use a pattern instead of setting all of those
 manually.
-
--- 191 of 216 --
-
 It turns out that patterns could also be written as JSON schemas. Each pattern
 band looked very similar to our canonical band schema, and described data
 that would always validate if passed through that schema. But it was more
@@ -5559,9 +5036,7 @@ rendering, and styling content inside of our CMS.
 
 ---
 
-## Sección 51: Chapter 18. Conclusion
-
--- 192 of 216 --
+## Sección 51: Chapter 18. Conclusion [Entropy: 0.325]
 
 One of the greatest lessons I have learned about frontend architecture over
 the life of this project is that, as with any good architect, your job is never
@@ -5591,9 +5066,6 @@ that we still have to be willing to iterate and try out new things. We don’t
 walk into a new site build with an arsenal of table-based layout and static
 Photoshop comps, so never assume that the tool you’ve been using for the
 past several builds is still the best choice to get the job done.
-
--- 193 of 216 --
-
 But most of all, if you are feeling drawn to taking up the mantle of the
 frontend architect, remember that you are never alone. There are many
 practitioners of the art, regardless of the title that they hold.
@@ -5601,9 +5073,6 @@ Don’t be afraid to ask for help. Don’t be afraid to share what you learn.
 Don’t be afraid to stand up on a stage and encourage others to follow this
 discipline. And no matter what you do, never under any circumstance be
 afraid to write it all down in a book.
-
--- 194 of 216 --
-
 Index
 Symbols
 @access annotation, Exploring SassDoc
@@ -5622,9 +5091,6 @@ BackstopJS, The Many Faces of Visual Regression Testing
 BEM (Block Element Modifier), BEM Approach, A Modern, Modular
 Approach
 branches, Development
-
--- 195 of 216 --
-
 C
 CasperJS, The Many Faces of Visual Regression Testing, The Testing
 Tools
@@ -5643,9 +5109,6 @@ competitive baseline, Competitive Baseline
 compiled assets, Committing Compiled Assets
 component deliverables, A Standard Set of Deliverables
 component modifiers, Component Modifiers
-
--- 196 of 216 --
-
 component-based diffing, The Many Faces of Visual Regression Testing,
 The Many Faces of Visual Regression Testing
 components, Cataloging Components
@@ -5666,9 +5129,6 @@ unit testing, The Many Faces of Visual Regression Testing
 CSS methodologies
 BEM approach, BEM Approach, A Modern, Modular Approach
 OOCSS approach, OOCSS Approach, A Modern, Modular Approach
-
--- 197 of 216 --
-
 selecting, The Many Faces of Modular CSS Methodologies, A Modern,
 Modular Approach
 SMACSS approach, SMACSS Approach, A Modern, Modular
@@ -5689,9 +5149,6 @@ managing change in, Visual Regression in Action-Conclusion
 schema-driven vs. test-driven, Schema-Driven Design System-Moving
 to the Twig File
 standardizing deliverables with, A Standard Set of Deliverables
-
--- 198 of 216 --
-
 writing requests, Story Writing
 desktop browser-driven testing, The Many Faces of Visual Regression
 Testing
@@ -5714,9 +5171,7 @@ Dorn, Jeremy, Stage 5: Automating the Creation of New Patterns
 
 ---
 
-## Sección 52: Chapter 18. Conclusion
-
--- 199 of 216 --
+## Sección 52: Chapter 18. Conclusion [Entropy: 0.49]
 
 Drupal, Stage 4: Creating a Unified Rendering Engine
 F
@@ -5737,9 +5192,6 @@ provisioning, Provisioning
 story writing, Story Writing
 version control, Spinning Up Local
 Frost, Brad, Pattern Libraries
-
--- 200 of 216 --
-
 functions
 writing reusable, The Unit
 writing testable, Better Testing
@@ -5759,9 +5211,6 @@ Grunt PageSpeed, Grunt PageSpeed
 Grunt Perfbudget, Grunt Perfbudget
 GUI-based comparison, The Many Faces of Visual Regression Testing
 H
-
--- 201 of 216 --
-
 Halvorson, Kristina, Origins
 Hannemann, Anselm, Setting Up Grunt
 headless browser-driven testing, The Many Faces of Visual Regression
@@ -5781,9 +5230,6 @@ Automation-Modular Markup: 100% Automation, 100% Control
 procedural vs. static markup, Markup of the Web’s Past-Static
 Markup: 0% Automation, 100% Control
 HTTP requests, Number of HTTP Requests
-
--- 202 of 216 --
-
 HTTPArchive, Averaged Baseline
 hybrid metrics, Hybrid Metrics
 I
@@ -5804,9 +5250,6 @@ Modern, Modular Approach, Location-Dependent Nightmare
 M
 m.dot websites, Origins
 Marcotte, Ethan, Origins
-
--- 203 of 216 --
-
 Markdown-formatted documentation, The Documentation Pillar,
 Hologram Conclusion
 markup
@@ -5826,9 +5269,6 @@ open source concept, CSS
 opt-in context, Opt-in Context-Opt-in Context
 opt-in modifiers, Opt-in Modifiers-Opt-in Modifiers
 P
-
--- 204 of 216 --
-
 package managers, Distribution Channels
 page weights, Page Weight
 page-based diffing, The Many Faces of Visual Regression Testing
@@ -5848,9 +5288,6 @@ performance testing
 hybrid metrics, Hybrid Metrics
 overview, Performance Testing
 raw metrics, Raw Metrics-Timing Metrics
-
--- 205 of 216 --
-
 setting a budget for, Setting a Performance Budget-Averaged
 Baseline
 setting up, Setting Up Performance Tests-Grunt Perfbudget
@@ -5870,9 +5307,6 @@ task runners, Task Runners-Is There a Clear Winner?
 workflow, Workflow-Distribution Channels
 prototypes, Prototyping, Waffling Decision Makers
 provisioning, Provisioning
-
--- 206 of 216 --
-
 Q
 Quixote, The Many Faces of Visual Regression Testing
 QUnit, A Test-Driven Example
@@ -5893,9 +5327,6 @@ automating new pattern creation, Stage 5: Automating the Creation of
 New Patterns-Creating Patterns
 pattern library, Stage 2: We Just Reinvented Pattern Lab-Stage 2:
 We Just Reinvented Pattern Lab
-
--- 207 of 216 --
-
 separating pattern library and style guide, Stage 3: Splitting the
 Pattern Library from the Style Guide
 static style guide, Stage 1: A Static Style Guide-Stage 1: A Static
@@ -5920,9 +5351,7 @@ Component Test Suite Individually
 
 ---
 
-## Sección 53: Chapter 18. Conclusion
-
--- 208 of 216 --
+## Sección 53: Chapter 18. Conclusion [Entropy: 0.325]
 
 running entire testing suite, Running the Entire Suite
 test file, Our Test File
@@ -5943,9 +5372,6 @@ SassDoc
 annotation types in, Exploring SassDoc
 benefits of, The Documentation Pillar, SassDoc
 installing, Installing SassDoc
-
--- 209 of 216 --
-
 internal dependencies, Internal Dependencies
 task runners and, Task Runners
 using, Using SassDoc
@@ -5967,9 +5393,6 @@ Speed Index, Speed Index
 static documentation, The Documentation Pillar, Conclusion, Stage 1: A
 Static Style Guide-Stage 1: A Static Style Guide
 static markup, Static Markup: 0% Automation, 100% Control
-
--- 210 of 216 --
-
 story writing, Story Writing
 style guides
 Hologram, Style Guides-Hologram Conclusion
@@ -5989,9 +5412,6 @@ Red Hat testing, Visual Regression in Action-Conclusion
 unit testing, Unit Testing-Coverage from the Start
 visual regression testing, Visual Regression Testing-The Many Faces
 of Visual Regression Testing
-
--- 211 of 216 --
-
 time to Document Complete, Timing Metrics
 time to first byte (TTFB), Timing Metrics
 time to start render, Timing Metrics
@@ -6011,9 +5431,6 @@ committing compiled assets, Committing Compiled Assets
 continuous integration, Continuous Integration Server
 creating feature branches, Development
 package managers for, Distribution Channels
-
--- 212 of 216 --
-
 tagged releases, Tagged Releases
 visual regression testing, Visual Regression Testing-The Many Faces of
 Visual Regression Testing
@@ -6034,16 +5451,10 @@ continuous integration servers, Continuous Integration Server-Why
 Would You Ever Want to Do This?
 development, Development-Development
 distribution, Distribution
-
--- 213 of 216 --
-
 distribution channels, Distribution Channels
 frontend, Frontend Workflow-Story Writing
 old vs. new, The Old Development Workflow-Development
 Wraith, The Many Faces of Visual Regression Testing
-
--- 214 of 216 --
-
 About the Author
 Micah Godbolt, frontend architect, author, podcaster, trainer and speaker at
 worldwide open source events, is often found promoting frontend
@@ -6053,9 +5464,6 @@ outside of Portland with his wife and two children.
 Micah has worked as a contractor for Red Hat, Inc. However, the views
 expressed in this book are solely those of the author and do not reflect the
 views of any current or past employer, including Red Hat, Inc.
-
--- 215 of 216 --
-
 Colophon
 The animal on the cover of Frontend Architecture for Design Systems is a
 pink-headed warbler (Cardellina vericolor). Found mostly in Guatemala and

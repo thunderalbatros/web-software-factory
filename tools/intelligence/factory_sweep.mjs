@@ -15,7 +15,8 @@ import { fileURLToPath } from 'node:url';
 import { verifyConstitutionLock, verifyAntiRewardHackingFloors } from './constitution_guard.mjs';
 import { runPreFlightChecks } from './instincts_engine.mjs';
 import { runAstAudit } from './ast_guard.mjs';
-import { verifyAndProvisionD1 } from '../provision_d1.mjs';
+import { compileDesignTokens } from '../design/token_compiler.mjs';
+import { runRyuxDesignGate } from '../audit/ryux_design_gate.mjs';
 import { runEvalMatrix } from './eval_matrix.mjs';
 import { runTextGradOptimizer } from './textgrad_skill_optimizer.mjs';
 import { runTechScout } from './tech_scout.mjs';
@@ -47,16 +48,18 @@ export async function runFactorySweep() {
   report.steps.preflight = { passed: preflightOk };
   if (!preflightOk) report.passed = false;
 
-  // Stage 3: AST Symbolic Guard + D1 Edge Schema Parity
-  console.log(`\n[STAGE 3/6] Running AST & Symbolic Code Guard + D1 Edge SQL Parity...`);
+  // Stage 3: AST Symbolic Guard + W3C DTCG Token Compiler & RYUX Design Gate
+  console.log(`\n[STAGE 3/6] Running AST & Symbolic Code Guard + W3C DTCG 2025.10 Token & RYUX Gate...`);
   const astRes = runAstAudit();
-  const d1Res = await verifyAndProvisionD1();
-  report.steps.astAndD1 = {
-    passed: astRes.passed && d1Res.passed,
+  const tokRes = compileDesignTokens();
+  const ryuxRes = runRyuxDesignGate();
+  report.steps.astAndDesign = {
+    passed: astRes.passed && tokRes.passed && ryuxRes.passed,
     astScore: astRes.score,
-    d1TablesVerified: d1Res.tablesVerified
+    ryuxScore: ryuxRes.score,
+    tokensCompiled: tokRes.writtenFiles.length
   };
-  if (!astRes.passed || !d1Res.passed) report.passed = false;
+  if (!astRes.passed || !tokRes.passed || !ryuxRes.passed) report.passed = false;
 
   // Stage 4: 5-Dimensional Eval Matrix (Omni-RAG v5 + Ragas + PQC)
   console.log(`\n[STAGE 4/6] Running 5-Dimensional Eval Matrix (Omni-RAG v5 + Ragas P@3 + PQC)...`);

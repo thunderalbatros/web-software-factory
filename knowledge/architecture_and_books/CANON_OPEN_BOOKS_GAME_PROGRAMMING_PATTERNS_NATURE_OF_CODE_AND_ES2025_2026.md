@@ -1,4 +1,4 @@
-﻿# Tratado Canónico de Libros Abiertos: Game Programming Patterns (Nystrom), The Nature of Code (Shiffman), Exploring JS ES2025 (Rauschmayer), Crafting Interpreters & WebGL2 Fundamentals (2026)
+# Tratado Canónico de Libros Abiertos: Game Programming Patterns (Nystrom), The Nature of Code (Shiffman), Exploring JS ES2025 (Rauschmayer), Crafting Interpreters & WebGL2 Fundamentals (2026)
 
 **Alcance:** Aplicable a la arquitectura de juegos interactivos y overlays (`overlay-*`, `wheel-*`, `site/js/house-games.js`, `site/js/motion-fx.js`), optimización del motor V8 de JavaScript (`site/js/`, `worker/index.js`), parsers léxicos/AST de comandos de RealtimeHub (`tools/intelligence/ast_guard.mjs`) y físicas procedimentales 2D/3D. Prohibido crear objetos efímeros dentro de bucles `requestAnimationFrame` a 60 FPS; usar siempre el patrón `Object Pool` y `Dirty Flag`.
 

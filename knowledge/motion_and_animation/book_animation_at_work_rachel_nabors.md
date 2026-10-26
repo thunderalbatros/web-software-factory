@@ -1,4 +1,4 @@
-﻿# 📚 Libro Completo: Animation at Work
+# 📚 Libro Completo: Animation at Work
 
 **Alcance:** Fuente bibliográfica completa sobre Animación Web Funcional, Percepción Humana del Movimiento, Transiciones Cognitivas y Coreografía de UI (Animation at Work — Rachel Nabors (A Book Apart)). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
@@ -7,57 +7,11 @@
 > **Archivo Fuente:** `dokumen.pub_animation-at-work-9781937557591.pdf`  
 > **Páginas Originales:** 88  
 > **Secciones Extraídas:** 22  
-> **Fecha de Ingesta:** 2026-10-19  
+> **Fecha de Ingesta:** 2026-10-19
 
 ---
 
-## Sección 1: Foundations & Introduction
-
-ANIMATION
-AT WORK
-RACHEL NABORS
-FOREWORD BY
-DAN MALL
--- 1 of 88 --
-
-MORE FROM A BOOK APART BRIEFS
-Color Accessibility Workflows
-Geri Coady
-Making Sense of Color Management
-Craig Hockenberry
-Working the Command Line
-Remy Sharp
-Pricing Design
-Dan Mall
-Get Ready for CSS Grid Layout
-Rachel Andrew
-Visit abookapart.com for our full list of titles.
-
--- 2 of 88 --
-
-Copyright © 2017 Rachel Nabors
-All rights reserved
-Publisher: Jeffrey Zeldman
-Designer: Jason Santa Maria
-Executive Director: Katel LeDû
-Editor: Lisa Maria Martin
-Technical Editor: Kirupa Chinnathambi
-Copyeditor: Kate Towsey
-Proofreader: Katel LeDû
-Book Producer: Ron Bilodeau
-ISBN: 978-1-937557-59-1
-A Book Apart
-New York, New York
-http://abookapart.com
-
--- 3 of 88 --
-
-TABLE OF CONTENTS
-1 | Introduction
-
----
-
-## Sección 2: Chapter 3
+## Sección 1: Chapter 3 [Entropy: 0.05]
 
 5 | Human Perception and Animation
 17 | Patterns and Purpose
@@ -65,7 +19,7 @@ TABLE OF CONTENTS
 
 ---
 
-## Sección 3: Chapter 5
+## Sección 2: Chapter 5 [Entropy: 0.37]
 
 44 | Communicating Animation
 55 | Best Practices and Other Educated Guesses
@@ -73,9 +27,6 @@ TABLE OF CONTENTS
 72 | Resources
 75 | References
 78 | Index
-
--- 4 of 88 --
-
 FOREWORD
 When I fIrst saW Toy Story in 1995, I immediately knew I
 wanted to be an animator. Years later, I went to college for it,
@@ -104,13 +55,7 @@ web animation, tips for collaborating with colleagues to get the
 work done, and much more.
 Without further ado, welcome to animation at work.
 —Dan Mall
-
--- 5 of 88 --
-
 To Joe, the best cheerleader and support crew I could ask for.
-
--- 6 of 88 --
-
 1 I n t r o d u c t I o n
 INTRODUCTION
 Before I Worked In WeB development, I was an award-winning cartoonist. I always wanted to see my comics moving on a
@@ -144,9 +89,6 @@ Animation is not limited to motion: you can change something’s color or opacit
 without moving it.
 • Motion design is a branch of animation and/or graphic design,
 depending on your perspective. You could say that motion
-
--- 7 of 88 --
-
 2 A n I M At I o n At Wo r K
 design is to animation what graphic design is to illustration:
 the latter serves as a form of expression and communication,
@@ -179,9 +121,6 @@ for cinemas around the country, causing animation studios to
 sprout like weeds. One young man chose to head west and start
 his own animation studio closer to Hollywood, where housing
 and labor were cheaper. His name was Walt Disney.
-
--- 8 of 88 --
-
 3 I n t r o d u c t I o n
 Disney did have rivals and equals—animation giants in their
 own right, like Chuck Jones of Warner Bros. fame. But Disney
@@ -219,9 +158,7 @@ of a user’s fingertips with immediate, visual feedback—animation. The iPhone
 
 ---
 
-## Sección 4: Chapter 5
-
--- 9 of 88 --
+## Sección 3: Chapter 5 [Entropy: 0.34]
 
 4 A n I M At I o n At Wo r K
 ing app interfaces that maximized use of space and responded
@@ -254,13 +191,8 @@ enough budget left over, or avoided altogether. But there is
 power in animation. The power to create experiences that go
 beyond mere linked documents. The power to immerse users
 in an illusion of life. And that power is about to be yours.
-
--- 10 of 88 --
-
 HUMAN PERCEPTION
 AND ANIMATION
--- 11 of 88 --
-
 6 A n I M At I o n At Wo r K
 We have a tendency in the web industry to relegate animation to the very last moment in a project’s production, tacking it
 on at the end as a nice-to-have. But animation is so much more
@@ -291,9 +223,6 @@ visual processes in our brains (Fig 1.1):
 for tracking location, motion, and physical relationships.
 • A newer process for distinguishing things by their properties—like color and shape—that evolved when our primate
 ancestors acquired color vision.
-
--- 12 of 88 --
-
 7 H u M A n P e r c e P t I o n A n d A n I M At I o n
 Margaret Livingstone called these the “Where System” and
 the “What System” in her book Vision and Art: The Biology of
@@ -317,9 +246,6 @@ Fig 1.1: the human visual system differs from that of most other mammals: color 
 means we’re not completely bound to motion like our primitive ancestors, but motion
 remains a strong and ancient component of how our brains construct our perception of
 reality.
-
--- 13 of 88 --
-
 8 A n I M At I o n At Wo r K
 CUTS AND CONTEXT SWITCHING
 Animation can add critical context to seemingly disconnected
@@ -352,9 +278,7 @@ conversation without motion.
 
 ---
 
-## Sección 5: Chapter 5
-
--- 14 of 88 --
+## Sección 4: Chapter 5 [Entropy: 0.295]
 
 9 H u M A n P e r c e P t I o n A n d A n I M At I o n
 Early operating systems were entirely cut-based. This was
@@ -381,9 +305,6 @@ or a second color to clarify, our users would still waste time
 having to decode the information on the screen.
 Fig 1.3: this dropdown goes from one state to the other, no animations—just a cut from
 one to the other.
-
--- 15 of 88 --
-
 10 A n I M At I o n At Wo r K
 Alternatively, if we make the relationship explicit through
 animation, that’s time users can spend thinking about what to
@@ -403,9 +324,6 @@ between cuts. People like you and I—who work on computers
 day in and day out—have adapted, but new users, casual users,
 Fig 1.4: there are many ways to achieve the same after state, but only by animating the
 process will the true nature of the spheres’ relationship become crystal clear.
-
--- 16 of 88 --
-
 11 H u M A n P e r c e P t I o n A n d A n I M At I o n
 incapacitated users, and folks just not in the mental prime of
 their life can get snagged on these cognitive bottlenecks.
@@ -419,9 +337,6 @@ uI, our brains do the inbetweening for us.
 Fig 1.5: In this sequence of drawings, the extreme left and right cats (in blue) are in “key
 poses.” the grey cats in transitional states between them are “in-between” frames. You
 may have heard Flash developers refer to these intermediate states as “tweens.”
-
--- 17 of 88 --
-
 12 A n I M At I o n At Wo r K
 There is research in film narrative that seems to support this
 as well, indicating that cuts between actions cause a sort of
@@ -446,9 +361,6 @@ can think of animation as a shortcut through the brain’s GPU,
 so to speak.
 Fig 1.7: Animation lets the visual cortex handle spatial association and content change,
 freeing up the rest of the brain to stay on task.
-
--- 18 of 88 --
-
 13 H u M A n P e r c e P t I o n A n d A n I M At I o n
 THE CONE OF VISION
 The human eye is most sensitive to color and details in a very
@@ -483,9 +395,7 @@ attention.
 
 ---
 
-## Sección 6: Chapter 5
-
--- 19 of 88 --
+## Sección 5: Chapter 5 [Entropy: 0.34]
 
 14 A n I M At I o n At Wo r K
 Change blindness and animacy
@@ -510,9 +420,6 @@ sight as a cone of Vision, with
 color sensitivity at the center and
 motion sensitivity toward the
 edges.
-
--- 20 of 88 --
-
 15 H u M A n P e r c e P t I o n A n d A n I M At I o n
 But animacy can be overdone. Cut interfaces are mentally
 taxing, as we’ve seen, because reorienting and puzzling out
@@ -528,9 +435,6 @@ Cone of Vision.
 Fig 1.9: Future generations will not remember these ads that wiggled and shook
 and sometimes even blared sounds at honest citizens of the Internet. (Watch the
 accompanying video.)
-
--- 21 of 88 --
-
 16 A n I M At I o n At Wo r K
 DESIGNING WITH ANIMATION
 ISN’T ROCKET SCIENCE! (BUT
@@ -552,13 +456,8 @@ categories and see when and how to apply them. Armed with
 the knowledge of how animation works with the human brain,
 you’ll be even better able to decide when and where to use these
 types of animations for your users’ benefit.
-
--- 22 of 88 --
-
 PATTERNS AND
 PURPOSE
--- 23 of 88 --
-
 18 A n I M At I o n At Wo r K
 so We can use anImatIons to tap into users’ visual systems
 and give them a cognitive speed boost, terrific! But before
@@ -590,9 +489,6 @@ reaction.
 details by showing instead of telling.
 • Decorations do not convey new information and are
 purely aesthetic.
-
--- 24 of 88 --
-
 19 PAt t e r n s A n d P u r P o s e
 Let’s have a look at each of them and see how they impact
 the user’s experience.
@@ -628,9 +524,7 @@ much effort.
 
 ---
 
-## Sección 7: Chapter 5
-
--- 25 of 88 --
+## Sección 6: Chapter 5 [Entropy: 0.28]
 
 20 A n I M At I o n At Wo r K
 Supplements
@@ -647,9 +541,6 @@ Fig 2.1: on this nike page, transitions are used to navigate forwards and backwa
 a linear continuum of sneakers. (Watch the accompanying video.)
 Fig 2.2: on Fluevog’s website, transitions move users from the browsing context to the
 searching context. (Watch the accompanying video.)
-
--- 26 of 88 --
-
 21 PAt t e r n s A n d P u r P o s e
 When a user adds a product to their shopping cart on glossier.
 com, rather than taking them to a whole new shopping cart page,
@@ -660,9 +551,6 @@ lets the user dismiss the shopping cart and continue shopping.
 Fig 2.3: Glossier.com uses supplemental animation to show and hide the user’s shopping
 cart, keeping them in the shopping context longer without forcing them into the
 purchasing context. (Watch the accompanying video.)
-
--- 27 of 88 --
-
 22 A n I M At I o n At Wo r K
 The shopping cart sidebar uses an additional supplemental
 animation to quickly and subtly attract the user’s eye: a progress
@@ -686,9 +574,6 @@ Button hovers are classic examples for this kind of animation,
 Fig 2.4: on the Monterey Bay Aquarium’s site, hovering on a button triggers an animation
 that gives the user feedback that the element is interactive. (Watch the accompanying
 video.)
-
--- 28 of 88 --
-
 23 PAt t e r n s A n d P u r P o s e
 partly because the gain of giving users visual feedback on buttons is so measurable and important to business.
 design studio Animal’s site uses a bar of color across the top
@@ -712,9 +597,6 @@ lengthy page load with something visually engaging!)
 Fig 2.5: design studio Animal uses a progress to let users know how much of the page has
 loaded, and an animated logo to indicate when it’s fully loaded. (Watch the accompanying
 video.)
-
--- 29 of 88 --
-
 24 A n I M At I o n At Wo r K
 Coin famously uses demonstrative animations to explain
 their consolidation card’s value proposition to curious visitors
@@ -722,9 +604,6 @@ as they scroll through the site (Fig 2.7)—no need to press play
 Fig 2.6: turbotax both informs their users and masks long page loads by demonstrating
 what’s going on after the user submits their us tax forms. (Watch the accompanying
 video.)
-
--- 30 of 88 --
-
 25 PAt t e r n s A n d P u r P o s e
 and sit through a video ad or wade through paragraphs of
 expository content. This page is the very essence of “show,
@@ -739,9 +618,6 @@ ask, “What can a user learn from this animation? Does this
 guide them or show them something they wouldn’t know
 Fig 2.7: As visitors scroll through coin’s site, the company’s value proposition plays out in
 front of them. (Watch the accompanying video.)
-
--- 31 of 88 --
-
 26 A n I M At I o n At Wo r K
 otherwise?” If the answer is no, you might have a decorative
 animation on your hands.
@@ -752,9 +628,7 @@ Fig 2.8: revisionist History’s site uses decorative animations to add visual i
 
 ---
 
-## Sección 8: Chapter 5
-
--- 32 of 88 --
+## Sección 7: Chapter 5 [Entropy: 0.385]
 
 27 PAt t e r n s A n d P u r P o s e
 to allow for the visual content on the page to be more austere,
@@ -765,9 +639,6 @@ animations may not have added new information, but they crucially reinforced the
 sported indistinguishable photographs of the same devices.
 Fig 2.9: Polygon uses decorative animations as a showstopping feature to stand out from
 the competition. (Watch the accompanying video.)
-
--- 33 of 88 --
-
 28 A n I M At I o n At Wo r K
 PURPOSE
 Once we’ve started noticing patterns, it’s easier to talk about
@@ -802,9 +673,6 @@ opportunities to bring animation into the discussion.
 • Information architecture and navigation structure can be
 augmented with motion design. How can you reinforce a
 user’s location in the site’s data space? How can you convey
-
--- 34 of 88 --
-
 29 PAt t e r n s A n d P u r P o s e
 their transition from location to location within that space,
 or their progression through tasks?
@@ -837,9 +705,6 @@ there. If the design of the pages is identical and its content
 the same, a supplemental animation might be just the trick
 to bring the changes into play.
 • Content insertion or removal is a prime candidate for animation: tooltips, menus, dialogs, sequenced information.
-
--- 35 of 88 --
-
 30 A n I M At I o n At Wo r K
 • Wordy descriptions can indicate something being told
 instead of shown. Can a demonstration do it better?
@@ -868,9 +733,7 @@ Then, to help quantify that context, ask the following questions:
 
 ---
 
-## Sección 9: Chapter 5
-
--- 36 of 88 --
+## Sección 8: Chapter 5 [Entropy: 0.52]
 
 31 PAt t e r n s A n d P u r P o s e
 • Does it show the user where information came from
@@ -909,9 +772,6 @@ board. Prioritizing them will net you big wins.
 people a lot, but require more effort to execute. To make
 sure the result is what you expect, run some prototypes by
 users and gauge their reactions. The animation may not be
-
--- 37 of 88 --
-
 32 A n I M At I o n At Wo r K
 as important as thought, or if it is, use the results of the test
 to help justify prioritizing the time for it in the future. Try
@@ -925,9 +785,6 @@ justification to work on them. If someone else magically
 gets them done, have a long talk with them. Maybe they
 Fig 2.10: Plot your potential animations on the chart according to how necessary and
 difficult to implement they are.
-
--- 38 of 88 --
-
 33 PAt t e r n s A n d P u r P o s e
 know a technique worth learning—or they might need their
 priorities adjusted.
@@ -941,9 +798,6 @@ USEFUL AND NECESSARY,
 THEN BEAUTIFUL
 The Shaker people have a design philosophy that suffuses their
 craftsmanship: “Don’t make something unless it is both necFig 2.11: divide your chart into quadrants to help identify your priorities.
-
--- 39 of 88 --
-
 34 A n I M At I o n At Wo r K
 essary and useful; but if it is both necessary and useful, don’t
 hesitate to make it beautiful.”
@@ -961,13 +815,8 @@ opportunities to use them. But great animation ideas must be
 conveyed across great teams. And to do that, we need a technical vocabulary developers understand. In the next chapter we’re
 going to focus on the terminology of web animations and how
 their different components work together.
-
--- 40 of 88 --
-
 ANATOMY OF A WEB
 ANIMATION
--- 41 of 88 --
-
 36 A n I M At I o n At Wo r K
 I once had a project where a designer gave me an animated
 GIF to recreate in CSS. (Please, please do not send developers
@@ -1002,9 +851,7 @@ function keywords:
 
 ---
 
-## Sección 10: Chapter 5
-
--- 42 of 88 --
+## Sección 9: Chapter 5 [Entropy: 0.415]
 
 37 A n Ato M Y o F A W e B A n I M At I o n
 Each of these easings works best in different situations:
@@ -1039,9 +886,6 @@ a fun way to get a feel for the way easings work.
 But you might prefer starting with the tried and true formulae at easings.net. These have been used in interaction design
 for years. Is your brand gentle and elegant like a Sine curve, or
 fast-paced and bursting with energy like the steeper Expo? Give
-
--- 43 of 88 --
-
 38 A n I M At I o n At Wo r K
 them all a spin, and copy and paste the formulae for the ones
 that feel the most like your brand.
@@ -1075,9 +919,6 @@ cubic-bezier
 (.61,-0.23,.36,1.35)
 Fig 3.2: An easings chart can tamp down on proliferating easing usage and provide a
 unified feel for your site’s animations.
-
--- 44 of 88 --
-
 39 A n Ato M Y o F A W e B A n I M At I o n
 DURATION
 Animation is change over time. To create any animation, it helps
@@ -1112,9 +953,6 @@ think of and document our animation durations in terms of
 milliseconds first.
 The average time it takes people to react to visual change is
 about 215 ms. Thus, it makes sense that 200-300 ms is a recur-
-
--- 45 of 88 --
-
 40 A n I M At I o n At Wo r K
 ring sweet spot among game and interaction developers. Durations in this range tend to be the workhorses in an interface.
 The Model Human Processor (a system used to quantify
@@ -1150,9 +988,7 @@ animations faster or slower for debugging (Fig 3.3).
 
 ---
 
-## Sección 11: Chapter 5
-
--- 46 of 88 --
+## Sección 10: Chapter 5 [Entropy: 0.406]
 
 41 A n Ato M Y o F A W e B A n I M At I o n
 Timing scales
@@ -1168,9 +1004,6 @@ Fig 3.3: Firefox’s developer tools offer presets as well as customization opti
 cubic Bézier curves. dragging the handles on the curve changes the playback rate of the
 animation, with steeper segments running faster than more gradual slopes. (Watch the
 accompanying video.)
-
--- 47 of 88 --
-
 42 A n I M At I o n At Wo r K
 [It] is about an agreed-upon synchronization of animation
 choreography. Imagine how an orchestra might play together.
@@ -1202,9 +1035,6 @@ demonstrations
 Fig 3.4: this timing scale is inspired by the Fibonacci sequence: 100 + 300 = 400, 300 + 400
 = 700. referring to a chart like this will, once again, help standardize animations across a
 site.
-
--- 48 of 88 --
-
 43 A n Ato M Y o F A W e B A n I M At I o n
 record all this information in storyboards (we’ll get to those
 in the next chapter), it leaves a clear blueprint for others to
@@ -1233,13 +1063,8 @@ Now that we have all the building blocks required to describe
 and document an animation, we’ll dive into how to turn animations into deliverables for your teams. We’ll meet some old
 tools from studio animation and learn how to rally support for
 an animation agenda.
-
--- 49 of 88 --
-
 COMMUNICATING
 ANIMATION
--- 50 of 88 --
-
 45 c o M M u n I c At I n G A n I M At I o n
 anImatIon sIts at the IntersectIon of UX, development,
 and design. This means it can bring teams together—or drive
@@ -1278,9 +1103,7 @@ create microanimations with descriptive names like “pop,”
 
 ---
 
-## Sección 12: Chapter 5
-
--- 51 of 88 --
+## Sección 11: Chapter 5 [Entropy: 0.295]
 
 46 A n I M At I o n At Wo r K
 greater design pattern, or combined with other microanimations to create macroanimations—for instance, a modal that
@@ -1298,9 +1121,6 @@ vocabularies that yield huge benefits when it comes time to
 document visual deliverables with text. salesforce’s Lightning
 design system provides developers with a host of these microFig 4.1: salesforce provides a rich vocabulary of predefined microanimations for
 developers to use and combine into new patterns. (Watch the accompanying video.)
-
--- 52 of 88 --
-
 47 c o M M u n I c At I n G A n I M At I o n
 animations to compose whatever custom designs or interfaces
 its users create. In this way, Salesforce engenders brand compliance by providing easy-to-reach-for defaults (Fig 4.1).
@@ -1327,9 +1147,6 @@ To build scalable, maintainable, integrated designs, we need
 to document not just the anatomy of their animations (as seen
 in Chapter 3), but also how those animations should be choreographed in the context of user interaction. Lucky for us, we
 have a couple of tools that can help.
-
--- 53 of 88 --
-
 48 A n I M At I o n At Wo r K
 Storyboards
 In 1933, Disney Studios crafted the world’s first storyboards
@@ -1361,9 +1178,6 @@ demonstrate or test an animation’s look and feel with them,
 and they are clunky to integrate with existing online design
 guidelines. But, as far as quantifying what changes when, tried
 and true storyboards can’t be beat.
-
--- 54 of 88 --
-
 49 c o M M u n I c At I n G A n I M At I o n
 Animatics
 Where storyboards excel at providing deliverable values and
@@ -1391,9 +1205,7 @@ frame explains what benefit the animation provides. (Watch the accompanying vide
 
 ---
 
-## Sección 13: Chapter 5
-
--- 55 of 88 --
+## Sección 12: Chapter 5 [Entropy: 0.355]
 
 50 A n I M At I o n At Wo r K
 Prototypes
@@ -1420,9 +1232,6 @@ stop-motion films. I made this one
 with Post-Its and a stop-motion app
 on my phone. (Watch the
 accompanying video.)
-
--- 56 of 88 --
-
 51 c o M M u n I c At I n G A n I M At I o n
 Verbal and visual documentation
 Prototypes, unlike storyboards, are terrible for documentation: only code-savvy team members can read them, and the
@@ -1442,9 +1251,6 @@ on smaller teams and projects on a shoestring budget, while the
 latter reinforces the authority of a larger enterprise.
 Fig 4.4: the best approach to documentation is to couple verbal and visual descriptions
 together.
-
--- 57 of 88 --
-
 52 A n I M At I o n At Wo r K
 GENERATING BUY-IN
 Now we know how to share animations in formats that communicate their actions and the technical details required to recreate
@@ -1473,9 +1279,6 @@ voice and tone, reinforcing branding.
 • Shorter design and development time. If animations don’t
 need to be tooled from scratch for every bit of interaction,
 spinning up rich new experiences is that much faster.
-
--- 58 of 88 --
-
 53 c o M M u n I c At I n G A n I M At I o n
 Show, don’t tell
 There’s one sure way to drive home how much difference animation makes: show it. As Robert Greene wrote in his Machiavellian book, The 48 Laws of Power, “It is much more powerful
@@ -1510,9 +1313,7 @@ accessibility, branding, and performance folks. Because animation touches so man
 
 ---
 
-## Sección 14: Chapter 5
-
--- 59 of 88 --
+## Sección 13: Chapter 5 [Entropy: 0.265]
 
 54 A n I M At I o n At Wo r K
 bring people together who otherwise might never collaborate.
@@ -1533,14 +1334,9 @@ your partners useful, on-brand defaults to get started with. But
 more than anything, it’s up to you to bring people together,
 which requires setting egos aside and solving problems greater
 than any of us can tackle alone.
-
--- 60 of 88 --
-
 BEST PRACTICES AND
 OTHER EDUCATED
 GUESSES
--- 61 of 88 --
-
 56 A n I M At I o n At Wo r K
 anImatIon on the WeB is nothing new, but it’s enjoying a
 comeback at a time when we care deeply about accessibility
@@ -1569,9 +1365,6 @@ with your companions. A good server facilitates this. No sooner
 have you set your fork down than your dinner plate seemingly
 disappears and is replaced with a dessert dish. As Heather Daggett, senior experience design prototyper at Intuit who works
 regularly with animation, put it:
-
--- 62 of 88 --
-
 57 B e s t P r Ac t I c e s A n d ot H e r e d u c At e d G u e s s e s
 Users should only notice your animation if you need to attract
 their attention in that moment. Otherwise, micro-interactions
@@ -1595,9 +1388,6 @@ void as soon as the user dismisses them (Fig 5.1). This gives a
 UI an unfinished, unreliable feel.
 To provide a user with a consistent experience, we must
 invest early and wisely in a system that waits for an exit animation to finish before removing an element or changing state.
-
--- 63 of 88 --
-
 58 A n I M At I o n At Wo r K
 Avoid FOULS
 You may have heard of flashes of unstyled text, or FOUT, that
@@ -1611,9 +1401,6 @@ page with the loaded content. These can happen in any order,
 Fig 5.1: sights like this are unfortunately commonplace: on duluth trading company’s
 site, the dropdowns expand downward when users hover over their link. But when the
 mouse moves away, those submenus disappear. (Watch the accompanying video.)
-
--- 64 of 88 --
-
 59 B e s t P r Ac t I c e s A n d ot H e r e d u c At e d G u e s s e s
 and when they do, they leave users wondering (again!), “What
 just happened?”
@@ -1631,9 +1418,7 @@ for placeholder content until the real content loads. (Watch the accompanying vi
 
 ---
 
-## Sección 15: Chapter 5
-
--- 65 of 88 --
+## Sección 14: Chapter 5 [Entropy: 0.34]
 
 60 A n I M At I o n At Wo r K
 Fig 5.3: this example of FouLs comes from a version of my own site, rachelnabors.com.
@@ -1644,9 +1429,6 @@ users always see loaded states in the correct order—loading to
 loaded—and never see the unloaded state. This requires building with an “always be loading” mentality, where the default
 state of content in a JavaScript-enabled environment is a loading
 state. If you use automated testing in your development pipeline, test for these different states.
-
--- 66 of 88 --
-
 61 B e s t P r Ac t I c e s A n d ot H e r e d u c At e d G u e s s e s
 For an embarrassing example of a FOULS, look no further
 than my own site (Fig 5.3). As of this writing, I use JavaScript to
@@ -1681,9 +1463,6 @@ smears (Fig 5.4). You can show the eye a series of images with
 these motion blurs at a low frame rate, and it will look much
 more fluid than the same series without blur at a higher frame
 rate. Even Pixar adds motion blur to its films to help fast movements register better at low frame rates.
-
--- 67 of 88 --
-
 62 A n I M At I o n At Wo r K
 On the web, we don’t have motion blur. But we do have
 hardware constraints: 60 FPS happens to be the upper limit of
@@ -1701,9 +1480,6 @@ up on increasingly large screens, this will become an issue.
 Fig 5.4: this young chicken was moving so fast that her leg disappeared into a smear of
 motion when I photographed her. When something moves quickly in our field of vision, it will
 stimulate a continuous smear of photoreceptors in our retina, not unlike what you see here.
-
--- 68 of 88 --
-
 63 B e s t P r Ac t I c e s A n d ot H e r e d u c At e d G u e s s e s
 • When the frame rate varies. When an animation jumps from
 60 FPS to 34 FPS then back again—even quickly—it can disrupt a user’s flow. A 30 FPS animation that consistently runs
@@ -1725,9 +1501,6 @@ things over large areas.
 Fig 5.5a: Imagine moving an image across a large screen like a tV or a billboard in a short
 amount of time. At 60 FPs, the ball only has 10 frames to move from its start position to
 its ends position.
-
--- 69 of 88 --
-
 64 A n I M At I o n At Wo r K
 Fig 5.5b: ten frames mean ten individual orange balls are rendered onto the screen. the
 human eye is so sensitive, it will register each and every one of them. this makes the ball
@@ -1736,9 +1509,6 @@ Fig 5.5c: But if we add motion blur to each of those frames, they create that �
 motion” we saw in the image of the chicken. Although your retina can perceive change at
 much higher rates, this artificial smear fools your retina into seeing a more smooth and
 continuous motion.
-
--- 70 of 88 --
-
 65 B e s t P r Ac t I c e s A n d ot H e r e d u c At e d G u e s s e s
 RESPECT USER COGNITION
 DIFFERENCES
@@ -1775,9 +1545,7 @@ from our designs.
 
 ---
 
-## Sección 16: Chapter 5
-
--- 71 of 88 --
+## Sección 15: Chapter 5 [Entropy: 0.295]
 
 66 A n I M At I o n At Wo r K
 • Vestibular disorders describe a host of disorders of the
@@ -1806,9 +1574,6 @@ aren’t limited to iOS7: earlier operating systems like Windows
 ME even had settings to turn off individual UI animations.
 What it all comes down to is empowering our users to
 choose how they want to experience the web. And we can
-
--- 72 of 88 --
-
 67 B e s t P r Ac t I c e s A n d ot H e r e d u c At e d G u e s s e s
 let those users choose for themselves whether they want full,
 partial, or no animation, and what speed it plays at.
@@ -1820,9 +1585,6 @@ Someday browsers might offer some of these as global settings for users. There i
 media query. But until then, we have options, and we can accommodate all users without leaving animation out of the equation.
 Fig 5.6: Apple’s ios provides a “reduce Motion” option in their accessibility features that
 replaces the system’s zooms with fades. (Watch the accompanying video.)
-
--- 73 of 88 --
-
 68 A n I M At I o n At Wo r K
 Fig 5.7: At devtoolschallenger.com, visitors are greeted with the option to reduce
 animations as well as turn on music.
@@ -1830,9 +1592,6 @@ Fig 5.8: At devtoolschallenger.com, hovering over the menu bar option causes the
 “lift up,” signaling, “if you click me, expect me to slide further up.” Hovering over the same
 options when it’s open causes the panel to “nudge downward,” saying, “if you click me, I
 will slide further down.” (Watch the accompanying video.)
-
--- 74 of 88 --
-
 69 B e s t P r Ac t I c e s A n d ot H e r e d u c At e d G u e s s e s
 Signal oncoming animations
 One thing that can be helpful for all users is signaling what
@@ -1863,9 +1622,6 @@ and quickly we share our findings with each other, helping us
 all learn and iterate faster. Unlike other industries who hoard
 their company secrets, the web thrives on openness. We are
 constantly iterating, shipping, speaking, writing, tweeting, coding, forking, pushing. We share our triumphs, our research, our
-
--- 75 of 88 --
-
 70 A n I M At I o n At Wo r K
 knowledge. We test more, iterate faster, and spread knowledge
 farther than anyone else. And with UI animation, we have the
@@ -1879,9 +1635,6 @@ forward to the day when we can see an entire book dedicated
 to the science and best practices of animation for the web. Until
 then, may these notes serve you well.
 Go forth and animate... responsibly!
-
--- 76 of 88 --
-
 71 Ac k n ow l e d g m e n t s
 ACKNOWLEDGMENTS
 This book might never have come to be if it weren’t for the
@@ -1914,9 +1667,7 @@ eagerness to know more.
 
 ---
 
-## Sección 17: Chapter 5
-
--- 77 of 88 --
+## Sección 16: Chapter 5 [Entropy: 0.515]
 
 72 A n I M At I o n At Wo r K
 RESOURCES
@@ -1943,9 +1694,6 @@ my favorite:
 Ian Crook and Peter Beare is a course on the topic unto itself.
 • Design for Motion by Austin Shaw features interviews with
 many prominent and accomplished motion designers alongside their work.
-
--- 78 of 88 --
-
 73 r e s o u r c e s
 If you want to learn more about studio animation, there are
 two industry staples:
@@ -1975,9 +1723,6 @@ If you’d like to master the art and science of storyboarding:
 I wrote a guide for net Mag.
 • If you want to go even deeper, Storyboard Design Course by
 Giuseppe Christian is an excellent guide to storyboard techniques from a film perspective.
-
--- 79 of 88 --
-
 74 A n I M At I o n At Wo r K
 Lots of scientific research in the field of animation and interaction exists, some of it more applicable than others. I encourage you to keep an eye out for new and old research relevant
 to the field:
@@ -1992,9 +1737,6 @@ robust, and reusable Abstractions (PdF) by Scott E. Hudson
 and John T. Stasko is one of my favorite papers on the topic
 of interface animation.
 • the AcM digital Library contains a wealth of papers on all topics of human-computer interaction and computer animation.
-
--- 80 of 88 --
-
 75 r e F e r e n c e s
 REFERENCES
 Shortened URLs are numbered sequentially; the related long
@@ -2005,7 +1747,7 @@ animation.pdf
 
 ---
 
-## Sección 18: Chapter 1
+## Sección 17: Chapter 1 [Entropy: 0.25]
 
 01-01 https://smartech.gatech.edu/bitstream/handle/1853/3627/93-17.pdf
 01-02 https://www.ncbi.nlm.nih.gov/pmc/articles/PMc3208769/
@@ -2013,7 +1755,7 @@ animation.pdf
 
 ---
 
-## Sección 19: Chapter 2
+## Sección 18: Chapter 2 [Entropy: 0.25]
 
 02-01 https://web.nike.com/xp/sbdunk/index.html
 02-02 https://www.fluevog.com
@@ -2025,7 +1767,7 @@ animation.pdf
 
 ---
 
-## Sección 20: Chapter 3
+## Sección 19: Chapter 3 [Entropy: 0.25]
 
 03-01 http://cubic-bezier.com/
 03-02 http://easings.net/
@@ -2036,293 +1778,15 @@ animation.pdf
 03-07 https://en.wikipedia.org/wiki/Human_processor_model
 03-08 http://alistapart.com/article/more-meaningful-typography
 03-09 https://www.lightningdesignsystem.com/
-
--- 81 of 88 --
-
 76 A N I M AT I O N AT WO R K
 
 ---
 
-## Sección 21: Chapter 4
+## Sección 20: Chapter 4 [Entropy: 0.25]
 
 04-01 https://www.lightningdesignsystem.com/guidelines/motion/
 04-02 goo.gl/PyBXI7
 04-03 http://boords.com
-
----
-
-## Sección 22: Chapter 5
-
-05-01 http://women.duluthtrading.com/
-05-02 http://www.dailymail.co.uk/sciencetech/article-2542583/Scientists-record-fastest-time-human-image-takes-just-13-milliseconds.html
-05-03 https://en.wikipedia.org/wiki/Time_perception
-05-04 https://developer.mozilla.org/en-US/docs/Web/API/Web_Animations_API
-05-05 https://www.w3.org/TR/UNDERSTANDING-WCAG20/seizure.html
-05-06 http://vestibular.org/understanding-vestibular-disorder
-05-07 https://github.com/w3c/csswg-drafts/issues/442
-05-08 http://devtoolschallenger.com/
-Resources
-06-01 http://webanimationweekly.com/
-06-02 http://slack.animationatwork.com/
-06-03 http://rachelnabors.com/css-animations-course/
-06-04 http://shop.oreilly.com/product/0636920050858.do
-06-05 http://rachelnabors.com/waapi
-06-06 https://www.bloomsbury.com/uk/motion-graphics-9781472569004/
-06-07 http://www.routledgetextbooks.com/textbooks/9781138812093/
-06-08 https://www.abebooks.com/book-search/title/the-illusion-of-life-disney-animation/
-06-09 http://www.theanimatorssurvivalkit.com/
-06-10 https://www.goodreads.com/book/show/969189.Tezuka_School_of_
-Animation_1
-06-11 http://www.chuckjones.com/bugs-director-chuck-amuck/
-06-12 https://www.goodreads.com/book/show/6342111-starting-point
-06-13 https://www.goodreads.com/book/show/18223763-turning-point
-
--- 82 of 88 --
-
-77 R E f E R E N C E S
-06-14 http://www.creativebloq.com/web-design/create-storyboards-your-animations-21619177
-06-15 https://www.goodreads.com/book/show/4096346-the-storyboard-design-course
-06-16 http://www.thefunctionalart.com/
-06-17 https://www.goodreads.com/book/show/56580.Vision_and_Art
-06-18 https://smartech.gatech.edu/bitstream/handle/1853/3627/93-17.pdf
-06-19 http://dl.acm.org/
-Videos
-fig 1.9 Bouncy Ad
-fig 2.1 Transitions (Nike)
-fig 2.2 Transitions (fluevog)
-fig 2.3 Context
-fig 2.4 Hovering and Input
-fig 2.5 Page Load Progress
-fig 2.6 Page Load
-fig 2.7 Storytelling
-fig 2.8 Adding Visual Interest
-fig 2.9 Decorative Animation
-fig 3.3 firefox Tools
-fig 4.1 Salesforce Vocabulary
-fig 4.3 Stop-motion
-fig 5.1 Providing an Exit
-fig 5.2 facebook Shimmer
-fig 5.3 fOULS
-fig 5.6 Accessibility features
-fig 5.8 Anticipation
-
--- 83 of 88 --
-
-78 A n I M At I o n At Wo r K
-A
-acceleration 37
-Adobe After Effects 49
-alerts 20
-animacy 14
-Animal Design Studio 23
-animatics 49
-animating responsibly 69
-animation
-definition of 1
-animation language 45
-animation patterns 18
-animation vocabulary 46
-Apple 66
-B
-best practices 56
-bounces 37
-branding 29
-Broadway 15
-C
-Camtasia 49
-Catmull, Ed 30
-Central Processing Unit (CPU) 12
-change blindness 14
-changing states 9
-Chrome 37, 40
-cinematography 8
-cognition differences 65
-cognitive bottlenecks 29
-Coin 25
-collaboration 52
-color 6
-Cone of Vision 13–14, 40
-consistency 57
-content
-insertion 30
-removal 30
-context 28
-CSS 1, 36–37, 50
-cubic Bézier curve 37
-cushioning 36
-cut 8
-D
-Daggett, Heather 56
-deceleration 37
-decorations 18, 25–27
-demonstrations 18, 23–24
-Disney 48
-Disney, Walt 2
-documentation 51
-documenting animation 47–50
-dropdowns 20
-Duluth Trading Company 58
-duration 39–40, 45
-E
-easing 36–38, 45
-Etsy 4
-F
-Facebook Shimmer 59
-feedback 18, 22–23
-Fibonacci 42
-Firefox 37, 40
-Flash 1, 3, 56, 69
-flashes of white 29
-Fluevog 19
-form 6
-FOULS 58–61
-FOUT 58–59
-Framer 50
-frame rates 61
-frames per second (FPS) 61
-INDEX
-
--- 84 of 88 --
-
-79 I N D E X
-G
-generating buy-in 52
-genie effect 3
-GIF 36
-Glossier 21–22
-Google 39, 53
-Graphics Processing Unit (GPU) 12
-Greene, Robert 53
-H
-HTML 50
-Hudson, Scott E. 11
-human visual system 6–10
-I
-in-betweening 10
-infographics 23
-information architecture 28
-interaction design 29
-Intuit 4
-InVision 50
-iOS7 66
-iPad 66
-iPhone 3, 66
-J
-JavaScript 1, 39, 61
-Jones, Chuck 3
-L
-Lasseter, John 43
-Lee, Amy 41
-Livingstone, Margaret 7
-loading states 59
-location 6
-M
-Macintosh 3
-Mickey Mouse 2
-microanimations 45
-microdistractions 15
-microinteractions 45
-Microsoft 66
-Model Human Processor 40
-Monterey Bay Aquarium 22
-motion design
-definition of 1
-N
-navigation structure 28
-Nielsen, Jakob 39
-Nike 19, 28
-O
-onstant rate of change 37
-P
-PDF 48
-peripheral vision 13
-Pixar 30, 43
-Polygon 27
-position 6
-Post-Its 48
-prioritization 30–33
-production speed 40
-properties 42–43, 45
-prototypes 50
-purpose 28
-Q
-Quicktime 49
-R
-reduce motion 66
-Revisionist History 27
-S
-saccades 13
-Sailor Moon 2
-Salesforce 41
-Lightning Design System 46
-Sarafian, Katherine 30
-
--- 85 of 88 --
-
-80 A n I M At I o n At Wo r K
-seizures 65
-Shakers 34
-shape 6
-Silicon Valley 4
-slowing 36
-speeding up; slowing down 37
-Stasko, John T. 11
-storyboards 48
-supplements 18
-T
-Technicolor 3
-Tezuka, Osamu 3
-the beautifully shaded penny 30
-time warps 65
-timing scales 41–42
-tooltips 20
-transitions 18–19
-TurboTax 23
-Twelve Principles of Animation 3
-U
-UI animation 4, 45
-definition of 2
-UI pattern libraries 45
-V
-vestibular disorders 66
-videos 30
-visual cortex 12
-W
-W3C 65
-Warner Bros. 3
-web animation
-definition of 2
-web app 4
-What System 7
-Where System 7
-Windows 3
-Windows ME 66
-wordy descriptions 30
-
--- 86 of 88 --
-
-ABOUT A BOOK APART
-We cover the emerging and essential topics in web design and
-development with style, clarity, and above all, brevity—because
-working designer-developers can’t afford to waste time.
-COLOPHON
-The text is set in FF Yoga and its companion, FF Yoga Sans,
-both by Xavier Dupré. Headlines and cover are set in Titling
-Gothic by David Berlow.
-
--- 87 of 88 --
-
-ABOUT THE AUTHOR
-Rachel Nabors began telling stories online as a teenager with
-her award-winning web comics. Her love of web technologies
-transformed into a career in front-end development, where she
-has worked with Mozilla, the W3C, and currently Microsoft
-to build the web forward. She tends the web animation community via the Animation at Work slack and her web animation
-newsletter. When she isn’t traveling the world, giving talks and
-kissing puppies, she can be found perched in Seattle, sipping
-a cup of fancy tea!
-
--- 88 of 88 --
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_EMIL_KOWALSKI_ANIMATIONS_ON_THE_WEB]] · [[CANON_2D_3D_GRAPHICS_SHADERS_AND_AESTHETICS_2026]] · [[CANON_HOLO_SHADERS_3D_PACK_CHOREOGRAPHY_AND_WEBAUDIO_SFX_2026]] · [[CANON_ANIMATION_PRINCIPLES_ILLUSION_OF_LIFE_DISNEY]] · #motion_and_animation

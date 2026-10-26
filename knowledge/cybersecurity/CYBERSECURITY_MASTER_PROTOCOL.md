@@ -1,4 +1,4 @@
-﻿---
+---
 version: 1.1.0
 tipo: research
 tags:
@@ -9,6 +9,8 @@ tags:
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-10-17
 ---
+
+> **Alcance:** Literatura canónica de ciberseguridad web, criptografía aplicada, protección de identidad OAuth 2.1, defensa XSS/CSP/CSRF y blindaje de aplicaciones en tiempo real.
 
 # 🛡️ PROTOCOLO MAESTRO DE CIBERSEGURIDAD WEB (Zero Trust & App Integrity)
 

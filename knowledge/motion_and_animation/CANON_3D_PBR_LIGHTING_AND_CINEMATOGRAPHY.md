@@ -1,20 +1,20 @@
-> **Alcance:** Literatura canónica y tratados técnicos de animación a 60 FPS, shaders GPU, física de resortes (spring physics), arte técnico 3D y micro-interacciones fluidas para sitios web modernos y overlays OBS.
-
 ---
 version: 1.0.0
 tipo: guia
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - tech-stack
   - canonico
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
-# 🎨 Guía Maestra: Renderizado 3D, Materiales PBR, Iluminación y Cinematografía en Yendo
+> **Alcance:** Literatura canónica y tratados técnicos de animación a 60 FPS, shaders GPU, física de resortes (spring physics), arte técnico 3D y micro-interacciones fluidas para sitios web modernos y overlays OBS.
+
+# 🎨 Guía Maestra: Renderizado 3D, Materiales PBR, Iluminación y Cinematografía en WebFactory
 
 > [!info] Clasificación y Alcance
-> Esta guía documenta los principios científicos e industriales de **Physically Based Rendering (PBR)** formulados por Allegorithmic (Substance), las técnicas de iluminación cinematográfica de **Blain Brown** (*Cinematography: Theory and Practice*) y la optimización de bajo nivel para **React Three Fiber y WebGL**, estableciendo la constitución visual para todos los avatares, trofeos y escenas 3D de **Yendo Mobile**.
+> Esta guía documenta los principios científicos e industriales de **Physically Based Rendering (PBR)** formulados por Allegorithmic (Substance), las técnicas de iluminación cinematográfica de **Blain Brown** (*Cinematography: Theory and Practice*) y la optimización de bajo nivel para **React Three Fiber y WebGL**, estableciendo la constitución visual para todos los avatares, trofeos y escenas 3D de **la Web Software Factory**.
 > 
 > **Clasificación:** `3D Graphics / PBR Guide / Cinematografía / Iluminación 3 Puntos / WebGL Performance`  
 > **Departamentos Asignados:** `MOTION_ART_DIRECTOR_AGENT · CREATIVE_TECH · CORE_AGENT · UI_AGENT`  
@@ -36,7 +36,7 @@ graph TD
         T1 & T2 & T3 & T4 --> VRAM_BAD["Consumo VRAM: 16 MB por objeto (Lento)"]
     end
 
-    subgraph "Flujo de Texturas PBR Empaquetadas ORM (Estándar Yendo)"
+    subgraph "Flujo de Texturas PBR Empaquetadas ORM (Estándar WebFactory)"
         P1["Albedo / Base Color (sRGB) - 1024x1024"]
         P2["ORM Pack: R=Oclusión, G=Roughness, B=Metallic"]
         P3["Normal Map (OpenGL +Y)"]
@@ -55,7 +55,7 @@ graph TD
 3. **Metallic (Máscara Conductora):**
    - Mapa binario: los píxeles deben ser estrictamente `0.0` (dieléctrico) o `1.0` (metal puro). Los valores intermedios solo se admiten en transiciones de borde o corrosión.
 4. **Empaquetado de Texturas ORM (Occlusion, Roughness, Metallic):**
-   - **Regla Estricta Yendo:** En lugar de cargar tres archivos de imagen independientes, se unifican en los canales RGB de un solo archivo:
+   - **Regla Estricta WebFactory:** En lugar de cargar tres archivos de imagen independientes, se unifican en los canales RGB de un solo archivo:
      * **Canal Rojo (R):** Ambient Occlusion (AO).
      * **Canal Verde (G):** Roughness.
      * **Canal Azul (B):** Metallic.
@@ -67,7 +67,7 @@ graph TD
 
 En *Cinematography: Theory and Practice*, Blain Brown demuestra que la dimensionalidad y la emoción de una escena se construyen mediante el control preciso del ratio de contraste entre la luz y la sombra (*Chiaroscuro*).
 
-En el entorno **Dark-First (#121212)** de Yendo, la iluminación tridimensional en [`ModelViewer3D.tsx`](file:///c:/Users/Tomi/yendo_mobile/src/components/3d/ModelViewer3D.tsx) se orquesta según este esquema:
+En el entorno **Dark-First (#121212)** de WebFactory, la iluminación tridimensional en [`ModelViewer3D.tsx`](file:///c:/Users/Tomi/web_software_factory/src/components/3d/ModelViewer3D.tsx) se orquesta según este esquema:
 
 ```mermaid
 graph LR
@@ -82,7 +82,7 @@ graph LR
 2. **Luz de Relleno (Fill Light):**
    - Posición: Iluminación ambiental difusa al 35%-40% de la luz clave. Evita que las zonas oscuras se conviertan en negro absoluto sin detalles.
 3. **Luz de Contra o Recorte (Rim / Backlight):**
-   - Posición: `[-3, -2, -2]`. Incide desde atrás sobre los bordes del modelo con el color primario de Yendo (**`#FF5500`**).
+   - Posición: `[-3, -2, -2]`. Incide desde atrás sobre los bordes del modelo con el color primario de WebFactory (**`#FF5500`**).
    - **Efecto Cinematográfico:** Separa al personaje u objeto del fondo oscuro profundo `#121212`, creando un halo luminoso distintivo de alta sofisticación.
 
 ---

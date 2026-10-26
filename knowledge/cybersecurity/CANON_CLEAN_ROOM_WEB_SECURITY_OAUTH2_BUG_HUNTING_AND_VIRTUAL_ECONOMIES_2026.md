@@ -1,4 +1,4 @@
-﻿# Tratado Canónico Clean-Room: Seguridad de Navegadores (Zalewski), Bug Hunting & APIs (Stuttard, Yaworski, Madden, Richer), Secure by Design (Johnsson, Liran Tal), Transacciones ACID (Jim Gray, Karwin), Economía Virtual ($DIG) y Modelo CRO LIFT (2026)
+# Tratado Canónico Clean-Room: Seguridad de Navegadores (Zalewski), Bug Hunting & APIs (Stuttard, Yaworski, Madden, Richer), Secure by Design (Johnsson, Liran Tal), Transacciones ACID (Jim Gray, Karwin), Economía Virtual ($DIG) y Modelo CRO LIFT (2026)
 
 **Alcance:** Aplicable al blindaje criptográfico y de endpoints en `worker/index.js`, flujos OAuth 2.1 PKCE con RealtimeHub (`site/js/auth-oauth.js`), contabilidad transaccional de puntos virtuales `$DIG`, prevención de condiciones de carrera (`TOCTOU`), diseño de dominio seguro y optimización de conversión ética (`Squad 2`, `Squad 3`, `Squad 6` y `Squad 8`). Sintetiza en sala limpia (*Clean-Room*) los principios de Zalewski, Stuttard/Pinto, Yaworski, Madden, Richer, Johnsson, Liran Tal, Gray/Reuter, Karwin, Lehdonvirta/Castronova y Blanks/Goward.
 

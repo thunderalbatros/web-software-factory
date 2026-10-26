@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Web Software Factory — Deterministic Universal Component Testbench Sandbox</title>
+  <link rel="stylesheet" href="/templates/vanilla-edge/site/css/design-tokens.css" />
+  <link rel="stylesheet" href="/templates/vanilla-edge/site/css/ui-primitives.css" />
+  <style>
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+      caret-color: transparent !important;
+    }
+    body {
+      margin: 0;
+      padding: 24px;
+      background: oklch(0.13 0.015 260);
+      color: oklch(0.96 0.008 260);
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    }
+    .testbench-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1360px;
+      margin: 0 auto;
+    }
+    .tb-stage {
+      padding: 20px;
+      border-radius: 14px;
+      background: oklch(0.18 0.018 260);
+      border: 1px solid oklch(1 0 0 / 0.08);
+    }
+    .tb-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 16px;
+      background: oklch(0.20 0.02 260);
+      border: 1px solid oklch(1 0 0 / 0.1);
+      border-radius: 12px;
+    }
+    .tb-brand {
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      color: oklch(0.96 0.008 260);
+      font-size: 15px;
+    }
+    .tb-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: oklch(0.74 0.17 160 / 0.15);
+      color: oklch(0.74 0.17 160);
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .tb-card {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 16px;
+      border-radius: 12px;
+      background: oklch(0.21 0.02 260);
+      border: 1px solid oklch(1 0 0 / 0.1);
+    }
+    .tb-card-title {
+      font-size: 16px;
+      font-weight: 700;
+      color: oklch(0.96 0.008 260);
+      margin: 0;
+    }
+    .tb-card-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: oklch(0.76 0.015 260);
+    }
+    .tb-btn {
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: none;
+      background: oklch(0.82 0.18 85);
+      color: oklch(0.14 0.02 260);
+      font-weight: 800;
+      font-size: 13px;
+      text-align: center;
+    }
+    [data-dynamic-mask="true"] {
+      background: oklch(0.25 0.02 260) !important;
+      color: transparent !important;
+      border-radius: 4px;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <main class="testbench-grid" aria-label="Component Testbench Sandbox">
+    <!-- 1. Site Header Component -->
+    <section class="tb-stage" data-testbench="site-header" aria-label="Header Sandbox">
+      <header class="tb-topbar site-header">
+        <span class="tb-brand">WEB SOFTWARE FACTORY // STUDIO</span>
+        <div style="display:flex;gap:8px;align-items:center;">
+          <span class="tb-pill">W3C DTCG 2025.10</span>
+          <span class="tb-pill" data-dynamic-mask="true">v2.2.0</span>
+        </div>
+      </header>
+    </section>
+
+    <!-- 2. Hero Section Component -->
+    <section class="tb-stage" data-testbench="hero-section" aria-label="Hero Sandbox">
+      <article class="tb-card hero-section">
+        <div class="tb-card-meta">
+          <span>ASTRO 5 & VANILLA EDGE</span>
+          <span style="color:oklch(0.74 0.17 160);font-weight:700;">LCP &lt; 1.2s</span>
+        </div>
+        <h2 class="tb-card-title">High-Converting Web Architecture</h2>
+        <div class="tb-card-meta">
+          <span>OKLCH 90/8/2 Palette</span>
+          <span>Utopia Fluid Scales</span>
+        </div>
+        <div class="tb-btn">START BUILDING</div>
+      </article>
+    </section>
+
+    <!-- 3. Bento Card Component -->
+    <section class="tb-stage" data-testbench="bento-card" aria-label="Bento Card Sandbox">
+      <div class="tb-card bento-card" aria-label="Bento Feature Card">
+        <div class="tb-card-meta">
+          <span>CLOUDFLARE WORKERS STATIC ASSETS</span>
+          <span>300+ EDGE POPs</span>
+        </div>
+        <h2 class="tb-card-title">Instant Speculation Rules</h2>
+        <p style="margin:0;font-size:12px;color:oklch(0.76 0.015 260);">Zero-CLS layout ergonomics with native View Transitions API and GPU compositor animations.</p>
+        <div class="tb-btn">EXPLORE SPECS</div>
+      </div>
+    </section>
+
+    <!-- 4. Pricing Card Component -->
+    <section class="tb-stage" data-testbench="pricing-card" aria-label="Pricing Card Sandbox">
+      <div class="tb-card pricing-card">
+        <div class="tb-card-meta">
+          <span>ENTERPRISE PLAN</span>
+          <span class="tabular-nums">$49 / MO</span>
+        </div>
+        <h2 class="tb-card-title">Full-Stack Edge Deployment</h2>
+        <p style="margin:0;font-size:12px;color:oklch(0.76 0.015 260);">Includes D1 SQLite persistence, Valibot schema validation, and automated 5-Gate QA.</p>
+        <div class="tb-btn">ACTIVATE PLAN</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

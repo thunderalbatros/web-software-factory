@@ -1,7 +1,7 @@
-﻿# Web Software Factory Studio — Virtual AI Agency Blueprint (SOTA 2026)
+# Web Software Factory Studio — Virtual AI Agency Blueprint (SOTA 2026)
 
 > **Model:** Anthropic *Orchestrator-Workers* + *Evaluator-Optimizer* + *ISO/IEC 26550 SPLE* + *Paperclip Virtual Agency*  
-> **Status:** Active Multi-Project Operational Model (`example-client.pages.dev` + Client Product Line)  
+> **Status:** Active Multi-Project Operational Model (`web-software-factory` Studio + Client Product Line)  
 > **Host Environment:** Windows / Antigravity IDE (Zero Daemon Overhead, Sub-500ms Rust/Zig Gates)
 
 ---
@@ -48,10 +48,10 @@ Our **Web Software Factory Studio** operates as an elite, multi-disciplinary vir
 | **1** | **Orchestrator & ToM-SWE Lead** | `orchestrator` | Decomposes goals into atomic tasks (`<=300 lines`), consults `tom_swe_engine.mjs`, and coordinates handoffs. | `subagent-driven-development`, `tom-swe-modeling`, `verify-before-claim`, `finops-context-budget` |
 | **2** | **Product & Spec-Kit Architect** | `product-spec-architect` | Selects stack (`astro-edge` vs `vanilla-edge`), archetype, and generates `.specify/{constitution,spec,plan,tasks}.md`. | `modularity`, `constraint-driven-development`, `tools/factory.mjs spec` |
 | **3** | **UX & Design Director** | `ux-designer` | Crafts W3C DTCG `2025.10` OKLCH tokens, Utopia `clamp()` scales, wireframes, and binds the 67 MIT style skills. | `ryux`, `modern-frontend-design`, `design-system-architect`, `minimal-surface-hierarchy`, `utopia-fluid-ergonomics`, `21st-ui`, `extract-design` |
-| **4** | **Copywriting & CRO Strategist** | `copywriting-cro-strategist` | Writes conversion-optimized headlines, CTAs, pricing tables, and microcopy (`Fogg B=MAP`, Cialdini, zero AI-slop). | `copywriting`, `cro`, `marketing-psychology`, `stop-slop`, `hallmark` |
-| **5** | **Senior Frontend & Motion Engineer** | `senior-coder` | Implements Astro 5 Islands or Vanilla JS, View Transitions API, CSS Scroll-Driven Animations, `@starting-style`, `interpolate-size`, and 3D Specular Tilt. | `motion-engineer`, `animation-performance`, `emil-design-eng`, `vanilla-motion-choreography`, `obs-overlays` |
+| **4** | **Copywriting & CRO Strategist** | `copywriting-cro-strategist` | Writes conversion-optimized headlines, CTAs, pricing tables, and microcopy (`Fogg B=MAP`, Cialdini, zero AI-slop). | `copywriting`, `cro`, `pricing-and-onboarding-cro`, `marketing-psychology`, `stop-slop`, `hallmark` |
+| **5** | **Senior Frontend & Motion Engineer** | `senior-coder` | Implements Astro 5 Islands or Vanilla JS, View Transitions API, CSS Scroll-Driven Animations, `@starting-style`, `interpolate-size`, and 3D Specular Tilt. | `baseline-ui`, `motion-engineer`, `animation-performance`, `emil-design-eng`, `vanilla-motion-choreography` |
 | **6** | **Edge Full-Stack Architect** | `edge-fullstack-architect` | Builds Cloudflare Workers APIs, D1 SQLite schemas, Write-Through coalescing, OAuth 2.1 PKCE, and `AES-256-GCM` encryption. | `workers-best-practices`, `cloudflare-durable-objects`, `error-handling`, `security-and-hardening` |
-| **7** | **SEO, AEO & GEO Architect** | `seo-aeo-geo-architect` | Optimizes for Google & AI Answer Engines (`llms.txt`, `llms-full.txt`, `sitemap.xml`, `Schema.org JSON-LD`, `Speculation Rules API`). | `web-quality-skills`, `web-perf`, `tools/audit/floor_and_aeo_guard.mjs` |
+| **7** | **SEO, AEO & GEO Architect** | `seo-aeo-geo-architect` | Optimizes for Google & AI Answer Engines (`llms.txt`, `llms-full.txt`, `sitemap.xml`, `Schema.org JSON-LD`, `Speculation Rules API`). | `ai-seo-and-geo`, `web-quality-skills`, `web-perf`, `tools/audit/floor_and_aeo_guard.mjs` |
 | **8** | **QA, Visual & Security Gatekeeper** | `qa-auditor` | Independent *Evaluator-Optimizer* running `ryux_design_gate`, `odiff-bin` SIMD, `oxlint` Rust, `a11y_tree_snapshot`, and `break-ui`. | `cto-hitl-visual-gate`, `ui-test`, `break-ui`, `security-audit`, `adverse-review`, `silent-failure-hunter` |
 | **9** | **Tech Scout & Omni-RAG Curator** | `tech-scout` | Researches SOTA repos/papers, runs Sandcastle benchmarks, and maintains the `Omni-RAG v5` (`24,746+` chunks) knowledge graph. | `research`, `sandboxed-experiments`, `firecrawl`, `kb-retrieval`, `kb-writing`, `self-evolving-factory` |
 

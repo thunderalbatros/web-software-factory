@@ -1,4 +1,4 @@
-﻿/**
+/**
  * tools/lib/project_loader.mjs — Agnostic Project Manifest Loader for the Web Software Factory
  * ============================================================================================
  * Decouples the Software Factory (tools/audit/*, tools/intelligence/*, tools/build_dist.mjs)
@@ -66,22 +66,32 @@ export function loadProjectConfig(inputPath = '') {
     }
   }
 
+  const hasManifest = fs.existsSync(manifestPath);
+  const isStudioRoot = !hasManifest && path.resolve(projectRoot) === path.resolve(FACTORY_ROOT);
   const id = rawConfig.id || path.basename(projectRoot).toLowerCase();
   const archetype = rawConfig.archetype || 'standard-web';
   const stack = rawConfig.stack || 'vanilla-edge';
   const complianceProfile = rawConfig.complianceProfile || (archetype === 'streamer-casino-suite' ? 'gambling-18plus' : 'standard-web');
 
   const pathsCfg = rawConfig.paths || {};
-  const entryHtml = pathsCfg.entryHtml || 'index.html';
+  const entryHtml = pathsCfg.entryHtml || (isStudioRoot ? 'templates/vanilla-edge/index.html' : 'index.html');
   const distDir = pathsCfg.distDir || 'dist';
-  const workerEntry = pathsCfg.workerEntry || 'worker/index.js';
+  const workerEntry = pathsCfg.workerEntry || (isStudioRoot ? 'templates/vanilla-edge/worker/index.js' : 'worker/index.js');
   const tokensPath = pathsCfg.tokensPath || 'tokens/design.tokens.json';
-  const designCssPath = pathsCfg.designCssPath || (stack === 'astro-edge' ? 'src/styles/design-tokens.css' : 'site/css/design-tokens.css');
+  const designCssPath = pathsCfg.designCssPath || (
+    isStudioRoot
+      ? 'templates/vanilla-edge/site/css/design-tokens.css'
+      : (stack === 'astro-edge' ? 'src/styles/design-tokens.css' : 'site/css/design-tokens.css')
+  );
+  const cssDir = pathsCfg.cssDir || (isStudioRoot ? 'templates/vanilla-edge/site/css' : (stack === 'astro-edge' ? 'src/styles' : 'site/css'));
+  const siteDir = pathsCfg.siteDir || (isStudioRoot ? 'templates/vanilla-edge/site' : 'site');
   const selectorCachePath = pathsCfg.selectorCachePath || 'memory/selector_cache.json';
 
   const sourceDirs = Array.isArray(pathsCfg.sourceDirs)
     ? pathsCfg.sourceDirs
-    : (stack === 'astro-edge' ? ['src', 'public', 'worker'] : ['site', 'worker']);
+    : (isStudioRoot
+      ? ['templates/vanilla-edge/site', 'templates/vanilla-edge/worker', 'templates/astro-edge/worker']
+      : (stack === 'astro-edge' ? ['src', 'public', 'worker'] : ['site', 'worker']));
 
   const overlays = Array.isArray(pathsCfg.overlays) ? pathsCfg.overlays : [];
   const requiredOverlaysInAudit = Array.isArray(pathsCfg.requiredOverlaysInAudit)
@@ -90,7 +100,9 @@ export function loadProjectConfig(inputPath = '') {
 
   const coreJsFiles = Array.isArray(pathsCfg.coreJsFiles)
     ? pathsCfg.coreJsFiles
-    : [];
+    : (isStudioRoot
+      ? ['templates/vanilla-edge/site/js/app.js', 'templates/vanilla-edge/worker/index.js', 'templates/astro-edge/worker/index.js']
+      : []);
 
   const dataFiles = Array.isArray(pathsCfg.dataFiles)
     ? pathsCfg.dataFiles
@@ -137,6 +149,8 @@ export function loadProjectConfig(inputPath = '') {
       workerEntry,
       tokensPath,
       designCssPath,
+      cssDir,
+      siteDir,
       selectorCachePath,
       sourceDirs,
       overlays,

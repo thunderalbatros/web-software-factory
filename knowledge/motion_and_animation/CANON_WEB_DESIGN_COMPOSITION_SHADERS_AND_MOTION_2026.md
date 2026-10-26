@@ -1,4 +1,4 @@
-﻿# Tratado Canónico: Diseño Gráfico Avanzado, Composición, Ciencia del Color OKLCH, Shaders y Animación Web (SOTA 2026)
+# Tratado Canónico: Diseño Gráfico Avanzado, Composición, Ciencia del Color OKLCH, Shaders y Animación Web (SOTA 2026)
 
 **Alcance:** Este documento establece la doctrina técnica y estética actualizada (2025–2026) de nuestra Web Software Factory para **Diseño Gráfico, Percepción Visual Gestalt, Ciencia del Color `OKLCH` + `APCA`, Tokens `W3C DTCG`, Micro-Interacciones (*Devouring Details*), Animaciones Nativas CSS (`@starting-style`, `interpolate-size`, `linear()`, `View Transitions`, `Scroll-Driven Animations`), `GSAP` (Licencia 100% Gratuita) y Shaders `SDF` / `TSL`**. NO es fuente de contratos de API de streaming (ver `KICK_API_REFERENCE.md`), NI de esquemas de bases de datos Edge, NI de psicometría de apuestas.
 

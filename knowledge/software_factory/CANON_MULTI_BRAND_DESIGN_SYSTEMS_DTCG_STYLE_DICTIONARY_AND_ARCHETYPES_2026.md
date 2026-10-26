@@ -1,4 +1,6 @@
-﻿# CANON: Multi-Brand Design Systems (W3C DTCG 2025.10, Style Dictionary v4, OKLCH & Industry Archetypes)
+# CANON: Multi-Brand Design Systems (W3C DTCG 2025.10, Style Dictionary v4, OKLCH & Industry Archetypes)
+
+> **Alcance:** Estándares ISO/IEC 26550 SPLE, Spec-Driven Development, compilación de tokens W3C DTCG y automatización de la Web Software Factory.
 
 > **Scope:** Canonical design engineering guide for Squad 1, Squad 4, Squad 5, and Squad 8 on theming and crafting bespoke, non-generic websites across diverse industries using a unified 3-Tier W3C DTCG Token Architecture.
 > **Sources Verified:** W3C Design Tokens Community Group (`DTCG 2025.10` Format Module); Style Dictionary v4 ESM Architecture; Björn Ottosson (OKLCH Perceptual Color Space); Myndex APCA Contrast (`Lc`); Utopia Fluid Responsive Design (`clamp()`); Alla Kholmatova (*Design Systems*); Adam Wathan & Steve Schoger (*Refactoring UI*) `[VERIFICADO: 2026-10-25]`.
@@ -35,8 +37,8 @@ When `node tools/factory.mjs new <slug> --archetype <type>` is invoked, Squad 4 
 ## 3. Agentic SEO (AEO) & Conversion Rate Optimization (CRO) Standard
 
 Every website produced by the Factory ships with **100/100 Agentic SEO (AEO)** and **CRO Foundations** out of the box:
-1. **`/llms.txt`:** Markdown manifest at the site root summarizing the business value proposition, services/products, pricing structure, and canonical URLs so AI search engines (ChatGPT Search, Perplexity, Google AI Overviews) cite the client accurately.
-2. **`/robots.txt` & `Schema.org JSON-LD`:** Structured `<script type="application/ld+json">` (`WebSite`, `Organization`, `LocalBusiness`, `Product`, or `SoftwareApplication`) embedded in `<head>`.
+1. **`/llms.txt` & `/llms-full.txt`:** Markdown manifests at the site root summarizing the business value proposition, services/products, pricing structure, and canonical URLs so AI search engines (ChatGPT Search, Perplexity, Google AI Overviews) cite the client accurately.
+2. **`/robots.txt`, `Schema.org JSON-LD` & `Speculation Rules API` (`speculationrules`):** Structured `<script type="application/ld+json">` (`WebSite`, `Organization`, `LocalBusiness`, `Product`, or `SoftwareApplication`) and `<script type="speculationrules">` (`eagerness: "moderate"`) embedded in `<head>` for near-zero LCP navigation.
 3. **Fogg Behavior Model ($B = MAP$) & Cialdini Ethical Conversion:** Above-the-fold clarity of the primary user job within 3 seconds, verifiable social proof, friction-free primary CTA (`min-height: 44px` tap target), and zero layout shift (`CLS = 0`).
 
 ---

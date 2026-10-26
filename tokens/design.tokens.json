@@ -1,93 +1,131 @@
 {
-  "$schema": "https://tr.designtokens.org/format/",
-  "$description": "Web Software Factory Studio — Base Multi-Brand W3C DTCG 2025.10 Design Tokens (OKLCH Perceptual Color Space, Utopia Fluid Scales & Native CSS Motion)",
+  "$schema": "https://tr.designtokens.org/format/2025.10/",
+  "meta": {
+    "standard": "W3C DTCG 2025.10",
+    "archetype": "standard-web",
+    "styleSkill": "bento",
+    "chromaticRule": "90% Neutral Surface / 8% Supporting Accent / 2% High-Chroma CTA (OKLCH + APCA)"
+  },
   "color": {
-    "$type": "color",
     "surface": {
       "canvas": {
-        "$value": "oklch(13.2% 0.016 258)",
-        "$description": "90% Chromatic budget: Deep dark canvas / viewport background (#06080d)"
+        "$type": "color",
+        "$value": "oklch(0.13 0.015 258)",
+        "$description": "90% Primary background canvas"
       },
-      "surface-1": {
-        "$value": "oklch(16.5% 0.022 258)",
-        "$description": "Section primary surface (#0b0f19)"
+      "elevated": {
+        "$type": "color",
+        "$value": "oklch(0.18 0.018 258)",
+        "$description": "Elevated card surface (+5% L)"
       },
-      "surface-2": {
-        "$value": "oklch(20.1% 0.027 258)",
-        "$description": "Cards, navigation bar, side panels (#111624)"
+      "interactive": {
+        "$type": "color",
+        "$value": "oklch(0.22 0.022 258)",
+        "$description": "Interactive hover surface (+9% L)"
       },
-      "surface-3": {
-        "$value": "oklch(23.8% 0.031 258)",
-        "$description": "Elevated popovers, dropdowns, modal dialogs (#171d2e)"
-      },
-      "surface-hover": {
-        "$value": "oklch(27.5% 0.036 258)",
-        "$description": "Interactive hover surface (#1e263a)"
+      "glass": {
+        "$type": "color",
+        "$value": "oklch(0.20 0.02 258 / 0.76)",
+        "$description": "Glassmorphic sticky header surface"
       }
     },
     "text": {
-      "high": {
-        "$value": "oklch(100% 0 0)",
-        "$description": "Primary high-contrast text (APCA Lc >= 90)"
+      "primary": {
+        "$type": "color",
+        "$value": "oklch(0.96 0.008 258)",
+        "$description": "Primary headline & body text (APCA Lc >= 90)"
       },
-      "med": {
-        "$value": "oklch(94.5% 0.008 250 / 0.90)",
-        "$description": "Secondary body text (APCA Lc >= 75)"
+      "secondary": {
+        "$type": "color",
+        "$value": "oklch(0.76 0.015 258)",
+        "$description": "Supporting copy (APCA Lc >= 65)"
       },
-      "low": {
-        "$value": "oklch(86.2% 0.016 252 / 0.78)",
-        "$description": "Muted metadata & labels (APCA Lc >= 60)"
+      "muted": {
+        "$type": "color",
+        "$value": "oklch(0.62 0.015 258)",
+        "$description": "Metadata & captions (APCA Lc >= 50)"
       }
     },
     "brand": {
-      "primary": {
-        "$value": "oklch(72.0% 0.190 255)",
-        "$description": "2% Focal CTA accent: High-conversion primary brand accent"
+      "accent": {
+        "$type": "color",
+        "$value": "oklch(0.74 0.17 162)",
+        "$description": "8% Supporting brand accent"
       },
-      "secondary": {
-        "$value": "oklch(78.5% 0.155 195)",
-        "$description": "8% Secondary interactive accent"
+      "cta": {
+        "$type": "color",
+        "$value": "oklch(0.82 0.18 85)",
+        "$description": "2% High-conversion focal CTA"
       },
-      "highlight": {
-        "$value": "oklch(88.2% 0.182 92)",
-        "$description": "Premium badge / highlight accent"
+      "ctaInk": {
+        "$type": "color",
+        "$value": "oklch(0.14 0.02 258)",
+        "$description": "High-contrast ink on CTA button"
       }
     },
-    "status": {
-      "success": {
-        "$value": "oklch(82.0% 0.210 148)",
-        "$description": "Semantic success indicator"
+    "border": {
+      "subtle": {
+        "$type": "color",
+        "$value": "oklch(1 0 0 / 0.08)",
+        "$description": "1px subtle hairline border"
       },
-      "warning": {
-        "$value": "oklch(84.0% 0.175 84)",
-        "$description": "Semantic warning indicator"
-      },
-      "danger": {
-        "$value": "oklch(64.5% 0.235 22)",
-        "$description": "Semantic error/destructive indicator"
+      "highlight": {
+        "$type": "color",
+        "$value": "oklch(1 0 0 / 0.18)",
+        "$description": "Interactive hover hairline"
       }
     }
   },
   "typography": {
-    "$type": "dimension",
-    "fluid-scale": {
-      "step--1": { "$value": "clamp(0.8125rem, 0.78rem + 0.16vw, 0.9375rem)" },
-      "step-0": { "$value": "clamp(1rem, 0.95rem + 0.25vw, 1.125rem)" },
-      "step-1": { "$value": "clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem)" },
-      "step-2": { "$value": "clamp(1.5625rem, 1.38rem + 0.9vw, 2.125rem)" },
-      "step-3": { "$value": "clamp(1.9531rem, 1.65rem + 1.5vw, 3rem)" },
-      "step-4": { "$value": "clamp(2.4414rem, 1.95rem + 2.4vw, 4.25rem)" }
+    "fontFamily": {
+      "sans": {
+        "$type": "fontFamily",
+        "$value": "'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+      },
+      "display": {
+        "$type": "fontFamily",
+        "$value": "'Inter', system-ui, -apple-system, sans-serif"
+      },
+      "mono": {
+        "$type": "fontFamily",
+        "$value": "'JetBrains Mono', ui-monospace, SFMono-Regular, monospace"
+      }
+    },
+    "scale": {
+      "stepMinus1": {
+        "$type": "dimension",
+        "$value": "clamp(0.82rem, 0.78rem + 0.2vw, 0.92rem)"
+      },
+      "step0": {
+        "$type": "dimension",
+        "$value": "clamp(1rem, 0.95rem + 0.25vw, 1.125rem)"
+      },
+      "step1": {
+        "$type": "dimension",
+        "$value": "clamp(1.22rem, 1.12rem + 0.5vw, 1.5rem)"
+      },
+      "step2": {
+        "$type": "dimension",
+        "$value": "clamp(1.5rem, 1.3rem + 1vw, 2.25rem)"
+      },
+      "step3": {
+        "$type": "dimension",
+        "$value": "clamp(1.9rem, 1.55rem + 1.6vw, 3rem)"
+      },
+      "step4": {
+        "$type": "dimension",
+        "$value": "clamp(2.25rem, 1.8rem + 2.2vw, 3.75rem)"
+      }
     }
   },
-  "motion": {
-    "easing": {
-      "out-expo": { "$value": "cubic-bezier(0.16, 1, 0.3, 1)" },
-      "spring-snappy": { "$value": "cubic-bezier(0.22, 1, 0.36, 1)" }
+  "radius": {
+    "card": {
+      "$type": "dimension",
+      "$value": "18px"
     },
-    "duration": {
-      "fast": { "$value": "150ms" },
-      "normal": { "$value": "240ms" },
-      "slow": { "$value": "420ms" }
+    "pill": {
+      "$type": "dimension",
+      "$value": "9999px"
     }
   }
 }

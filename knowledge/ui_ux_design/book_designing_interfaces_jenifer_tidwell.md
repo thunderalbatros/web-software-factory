@@ -1,36 +1,25 @@
-﻿# 📚 Libro Completo: Designing Interfaces: Patterns for Effective Interaction Design
+# 📚 Libro Completo: Designing Interfaces: Patterns for Effective Interaction Design (2nd Ed)
 
-**Alcance:** Fuente bibliográfica completa sobre Patrones de Diseño de Interacción, Navegación, Tablas de Datos, Dashboards, Modales y Controles Visuales (Designing Interfaces: Patterns for Effective Interaction Design — Jenifer Tidwell (O'Reilly)). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre UI/UX Navigation Patterns, Information Architecture, Data Tables & Controls (Designing Interfaces: Patterns for Effective Interaction Design (2nd Ed) — Jenifer Tidwell). Aplicable a Web Software Factory y Enterprise Web App. NO sustituye los contratos de negocio ni las reglas inmutables en `CANON_*`.
 
-> **Autor:** Jenifer Tidwell (O'Reilly)  
-> **Dominio:** Patrones de Diseño de Interacción, Navegación, Tablas de Datos, Dashboards, Modales y Controles Visuales  
+> **Autor:** Jenifer Tidwell  
+> **Dominio:** UI/UX Navigation Patterns, Information Architecture, Data Tables & Controls  
 > **Archivo Fuente:** `Designing-Interfaces-2nd-Ed-Jenifer-Tidwell.pdf`  
-> **Páginas Originales:** 577  
-> **Secciones Extraídas:** 55  
-> **Fecha de Ingesta:** 2026-10-19  
+> **Páginas Originales:** 577 (100% Ingerido, Cero Truncamiento)  
+> **Secciones Técnicas Extraídas:** 25 (Entropía Técnica Media: 0.628)  
+> **Fecha de Ingesta:** 2026-10-26
 
 ---
 
-## Sección 1: Foundations & Introduction
-
--- 1 of 577 --
-
--- 2 of 577 --
+## Sección 1: Core Concepts & Foundations [Entropy: 0.397]
 
 Designing Interfaces
 Download from Wow! eBook <www.wowebook.com>
-
--- 3 of 577 --
-
--- 4 of 577 --
 
 Designing Interfaces
 Second Edition
 Jenifer Tidwell
 Beijing · Cambridge · Farnham · Köln · Sebastopol · Tokyo
-
--- 5 of 577 --
-
 Designing Interfaces, Second Edition
 by Jenifer Tidwell
 Copyright © 2011 Jenifer Tidwell. All rights reserved.
@@ -57,9 +46,6 @@ While every precaution has been taken in the preparation of this book, the publi
 no responsibility for errors or omissions, or for damages resulting from the use of the information contained herein.
 ISBN: 978-1-449-37970-4
 [TI]
-
--- 6 of 577 --
-
 Contents
 Introduction to the Second Edition.. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . xi
 Preface. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . xv
@@ -82,9 +68,6 @@ Streamlined Repetition 19
 Keyboard Only 20
 Other People’s Advice 21
 Personal Recommendations 22
-
--- 7 of 577 --
-
 vi Contents
 2. Organizing the Content:
 Information Architecture and Application Structure.. . . . . . . . . . . . . . . . . . . 25
@@ -119,9 +102,6 @@ Sequence Map 118
 Breadcrumbs 121
 Annotated Scrollbar 124
 Animated Transition 127
-
--- 8 of 577 --
-
 Contents vii
 4. Organizing the Page: Layout of Page Elements.. . . . . . . . . . . . . . . . . . . . . . . 131
 The Basics of Page Layout 132
@@ -156,9 +136,6 @@ Alphabet Scroller 230
 Cascading Lists 232
 Tree Table 234
 New-Item Row 236
-
--- 9 of 577 --
-
 viii Contents
 6. Doing Things: Actions and Commands.. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 239
 Pushing the Boundaries 242
@@ -189,9 +166,6 @@ Radial Table 323
 Multi-Y Graph 328
 Small Multiples 331
 Treemap 336
-
--- 10 of 577 --
-
 Contents ix
 8. Getting Input from Users: Forms and Controls.. . . . . . . . . . . . . . . . . . . . . . . . 341
 The Basics of Form Design 341
@@ -225,9 +199,6 @@ News Box 430
 Content Leaderboard 434
 Recent Chatter 438
 Download from Wow! eBook <www.wowebook.com>
-
--- 11 of 577 --
-
 x Contents
 10. Going Mobile. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 441
 The Challenges of Mobile Design 442
@@ -257,13 +228,6 @@ Contrasting Font Weights 516
 Skins and Themes 519
 References. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 523
 Index.. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 527
-
----
-
-## Sección 2: Foundations & Introduction
-
--- 12 of 577 --
-
 Introduction to the Second Edition
 In the five years since the first edition of Designing Interfaces was published, many things
 have changed.
@@ -290,9 +254,6 @@ Also, designers cannot ignore the influence of online social networks. When I’
 early phase of a design project, I need to think about its connections to blogs, Twitter,
 Facebook, comment areas, forums, and all the other ways that people talk to one another
 online. I would be remiss not to do so. Users spend a lot of their online time “doing” social
-
--- 13 of 577 --
-
 xii Introduction to the Second Edition
 interaction, and sophisticated users expect social-network support as a matter of course.
 It’s unusual now to find any website that doesn’t somehow connect to or from a social
@@ -323,16 +284,13 @@ A chapter about mobile design
 
 ---
 
-## Sección 3: Chapter 10, Going Mobile, contains some patterns that are specific to mobile devices.
+## Sección 2: Chapter 10, Going Mobile, contains some patterns that are specific to mobile devices. [Entropy: 0.75]
 
 In particular, the patterns are aimed at the platforms most designers are likely to target:
 touch-screen devices with full connectivity, such as iPhones. Both apps and websites
 are covered. Again, this is not intended to cover all aspects of mobile design—simply
 the patterns and ideas that can help you create a graceful mobile interface even if you’re
 not a mobile UI specialist.
-
--- 14 of 577 --
-
 Introduction to the Second Edition xiii
 The existence of this chapter brings up an interesting point. A “good” pattern should
 be invariant across different platforms, perhaps including mobile ones. However,
@@ -364,16 +322,14 @@ For instance, Card Stack was renamed to Module Tabs, and Closable Panels to Coll
 Panels; I made these changes to conform to current terminology and other pattern
 libraries. Similarly, Accordion was factored out from Collapsible Panels and made into
 its own pattern, since other designers, design writers, and pattern collections have
-converged on the term “accordion” for this particular technique. Meanwhile, OneWindow Drilldown and Two-Panel Selector—both from the original book’s chapter on
+converged on the term “accordion” for this particular technique. Meanwhile, One-
+Window Drilldown and Two-Panel Selector—both from the original book’s chapter on
 information architecture—have been narrowed down to deal specifically with lists of
 items.
 New examples, new research, and new connections to other pattern libraries
 Almost every pattern has at least one new pictorial example, and many of them have
 an “In other libraries” section that directs the reader to the same pattern (or patterns
 that closely resemble it) in other collections. These might provide you with new insights or examples. Also, some patterns in this book have been slightly rewritten to
-
--- 15 of 577 --
-
 xiv Introduction to the Second Edition
 account for new thinking or research on the issue. Row Striping is one of these; some
 experiments were run to find out the value of the technique, and the pattern refers
@@ -399,9 +355,6 @@ saw little need to put them into this edition:
 I hope that in the next few years, we’ll see new sets of patterns for other areas of design:
 online games, geographic systems, online communities, and more. I see a rich and rewarding area of inquiry here, and that’s terrific. I encourage other design thinkers to jump in and
 write other patterns—or challenge us pattern writers to make the existing collections better!
-
--- 16 of 577 --
-
 Preface
 Once upon a time, interface designers worked with a woefully small toolbox.
 We had a handful of simple controls: text fields, buttons, menus, tiny icons, and modal
@@ -427,13 +380,6 @@ does. Impatient users often won’t give you the benefit of the doubt. Worse, if
 an unusable website or web application, frustrated users can give up and switch to your
 competitor with just the click of a button. So the cost of building a mediocre interface is
 higher than it used to be, too.
-
----
-
-## Sección 4: Chapter 10, Going Mobile, contains some patterns that are specific to mobile devices.
-
--- 17 of 577 --
-
 xvi Preface
 Devices like phones, TVs, and car dashboards once were the exclusive domain of industrial designers. But now those devices have become smart. Increasingly powerful computers drive them, and software-based features and applications are multiplying in response
 to market demands. They’re here to stay, whether or not they are easy to use. At this rate,
@@ -450,9 +396,6 @@ Spreadsheets Browsers Calendars
 Media players Information graphics Immersive games
 Web pages Social spaces E-commerce sites
 Figure P-1. A sampler of interface idioms
-
--- 18 of 577 --
-
 Preface xvii
 The second effect is a loosening of the rules for putting together interfaces from these
 idioms. It no longer surprises anyone to see several of these idioms mixed up in one
@@ -490,9 +433,6 @@ toolbox of idioms and frameworks (large-scale), individual elements (small-scale
 patterns (covering the range), then you can put together something that “feels familiar”
 while remaining original.
 And that gets you the best of both worlds.
-
--- 19 of 577 --
-
 xviii Preface
 About Patterns in General
 In essence, patterns are structural and behavioral features that improve the “habitability” of something—a user interface, a website, an object-oriented program, or a building.
@@ -526,13 +466,6 @@ You should almost always follow good design principles and heuristics, of course
 And organizations need designers to follow style guides so that their products stay
 self-consistent. But patterns are intended to be only suggestions; you can follow them
 or reject them, depending on your design context and user needs.
-
----
-
-## Sección 5: Chapter 10, Going Mobile, contains some patterns that are specific to mobile devices.
-
--- 20 of 577 --
-
 Preface xix
 Relationships among elements, not single elements
 A text field is not a pattern. The spatial relationships between a text field and a piece
@@ -565,9 +498,6 @@ The Design of Sites; the Little Springs mobile patterns, now known as Design4Mob
 Yahoo! Design Pattern Library, which morphed into Designing Web Interfaces; and the
 rest of the O’Reilly design pattern library, including Designing Social Interfaces, Designing
 Gestural Interfaces, and the first edition of this book.
-
--- 21 of 577 --
-
 xx Preface
 About the Patterns in This Book
 So there’s nothing really new in here. If you’ve done any web or UI design, or even thought
@@ -600,9 +530,6 @@ Good design can’t be reduced to a recipe. It’s a creative process, and one t
 you as you work—in any given project, for instance, you won’t understand some design issues until you’ve designed your way into a dead end. I’ve personally done that many times.
 And design isn’t linear. Most chapters in this book are arranged more or less by scale,
 and therefore by their approximate order in the design progression: large decisions about
-
--- 22 of 577 --
-
 Preface xxi
 content and scope are made first, followed by navigation, page design, and eventually
 the details of interactions with forms and toolbars and such. But you’ll often find yourself moving back and forth through this progression. Maybe you’ll know very early in
@@ -642,13 +569,6 @@ and even if you need to solve a common design problem (such as how to fit too mu
 content onto a page), a given pattern might be a poor solution within that context. No
 reference can substitute for good design judgment. Nor can it substitute for a good design
 process, which helps you find and recover from design mistakes.
-
----
-
-## Sección 6: Chapter 10, Going Mobile, contains some patterns that are specific to mobile devices.
-
--- 23 of 577 --
-
 xxii Preface
 Ultimately, you should be able to leave a reference like this behind. As you become an experienced designer, you will internalize these ideas to the point that you don’t even notice
 you’re using them anymore; the patterns become second nature and a permanent part of
@@ -678,9 +598,6 @@ interactivity.
 • New interface designers and usability specialists.
 • More experienced designers who want to see how other designs solve certain problems; the examples can serve as a sourcebook for ideas.
 • Professionals in adjacent fields, such as technical writing, product design, and information architecture.
-
--- 24 of 577 --
-
 Preface xxiii
 • Managers who want to understand what’s involved in good interface design.
 • Open source developers and enthusiasts. This isn’t quite “open source design,” but the
@@ -712,9 +629,6 @@ and how to use them to communicate knowledge and meaning.
 • Chapter 8, Getting Input from Users, deals with forms and controls. Along with the
 patterns, this chapter has a table that maps data types to various controls that can
 represent them.
-
--- 25 of 577 --
-
 xxiv Preface
 • Chapter 9, Using Social Media, discusses the ways that one might integrate contemporary social media into a website or application design. Although designers don’t
 always make these choices for a site, they sometimes do, and social media may influence your design in any case.
@@ -749,13 +663,6 @@ bookquestions@oreilly.com
 For more information about our books, conferences, Resource Centers, and the O’Reilly
 Network, see our website at:
 http://www.oreilly.com
-
----
-
-## Sección 7: Chapter 10, Going Mobile, contains some patterns that are specific to mobile devices.
-
--- 26 of 577 --
-
 Preface xxv
 Safari® Books Online
 Safari Books Online is an on-demand digital library that lets you
@@ -787,13 +694,9 @@ Finally, I am enormously grateful to Rich, who supported me wholeheartedly throu
 this second-edition project; and to Matthew, who right now is too young to understand
 how helpful his sweet hugs actually were. I love you both!
 
--- 27 of 577 --
-
--- 28 of 577 --
-
 ---
 
-## Sección 8: Chapter 1
+## Sección 3: Chapter 1 [Entropy: 0.786]
 
 What Users Do
 This book is almost entirely about the look and behavior of applications, web apps, and
@@ -821,9 +724,6 @@ So, this chapter will talk about people. It covers a few fundamental ideas brief
 introduction, and then discusses some patterns that differ from those in the rest of the
 book. They describe human behaviors—as opposed to system behaviors—that the software you design may need to support. Software that supports these human behaviors
 better helps users achieve their goals.
-
--- 29 of 577 --
-
 2 Chapter 1: What Users Do
 A Means to an End
 Everyone who uses a tool—software or otherwise—has a reason for using it. For instance:
@@ -860,9 +760,6 @@ Let’s use the “why” approach to dig a little deeper into some typical desi
 * This is the same principle that underlies a well-known technique called root-cause analysis. But root-cause
 analysis is a tool for fixing organizational failures; here, we use its “five whys” (more or less) to understand
 everyday user behaviors and feature requests.
-
--- 30 of 577 --
-
 A Means to an End 3
 • Why does a mid-level manager use an email client? Yes, of course—“to read email.”
 Why does she read and send email in the first place? To converse with other people.
@@ -897,13 +794,6 @@ of an application or site. Among these softer factors, you may find the critical
 design factor that makes your application more appealing and successful.
 So, be curious. Specialize in finding out what your users are really like, and what they
 really think and feel.
-
----
-
-## Sección 9: Chapter 1
-
--- 31 of 577 --
-
 4 Chapter 1: What Users Do
 The Basics of User Research
 Empirical discovery is the only really good way to obtain this information. To get a design
@@ -938,9 +828,6 @@ cycle. It’s expensive. But it’s worth it, because you stand a better chance 
 problem—you’ll build the right thing in the first place.
 Fortunately, lots of books, courses, and methodologies now exist to help you. Although
 this book does not address user research, here are some methods and topics to consider:
-
--- 32 of 577 --
-
 The Basics of User Research 5
 Direct observation
 Interviews and onsite user visits put you directly into the user’s world. You can ask
@@ -974,9 +861,6 @@ point is to understand the audience as best you can.
 The difference is that as a designer, you’re trying to understand the people who use the
 software. A marketing professional tries to understand those who buy it.
 Download from Wow! eBook <www.wowebook.com>
-
--- 33 of 577 --
-
 6 Chapter 1: What Users Do
 It’s not easy to understand the real issues that underlie users’ interactions with a system.
 Users don’t always have the language or introspective skill to explain what they really need
@@ -1012,13 +896,6 @@ do your users expect a short, tightly focused exchange about something very spec
 do they prefer a conversation that’s more of a free-ranging exploration? In other words,
 how much openness is there in the interface? Too little, and your users feel trapped and
 unsatisfied; too much, and they stand there paralyzed, not knowing what to do next, unprepared for that level of interaction.
-
----
-
-## Sección 10: Chapter 1
-
--- 34 of 577 --
-
 Users’ Motivation to Learn 7
 Therefore, you need to choose how much freedom your users have to act arbitrarily. At
 one end of the scale might be a software installation wizard: the user is carried through
@@ -1052,9 +929,6 @@ and widget sophistication, and in the places where help is (or isn’t) offered.
 The applications in the first group have lots of complex functionality, but they don’t generally walk the user through tasks step by step. They assume users already know what to
 do, and they optimize for efficient operation, not learnability; they tend to be documentcentered or list-driven (with a few being command-line applications). They often have
 entire books and courses written about them. Their learning curves are steep.
-
--- 35 of 577 --
-
 8 Chapter 1: What Users Do
 The applications in the second group are the opposite: restrained in functionality but
 helpful about explaining it along the way. They present simplified interfaces, assuming no
@@ -1088,9 +962,6 @@ too, especially if you look for them.
 describe human behaviors—not interface design elements—and they’re not prescriptive,
 like the patterns in other chapters. Instead of being structured like the other patterns,
 these are presented as small essays.)
-
--- 36 of 577 --
-
 The Patterns 9
 Again, an interface that supports these patterns well will help users achieve their goals
 far more effectively than interfaces that don’t support them. And the patterns are not just
@@ -1120,13 +991,6 @@ Those “dire consequences” don’t even have to be very bad. Mere annoyance c
 to deter someone from trying things out voluntarily. Clicking away pop-up windows, reentering data that was mistakenly erased, suddenly muting the volume on one’s laptop
 when a website unexpectedly plays loud music—all can be discouraging. When you design almost any kind of software interface, make many avenues of exploration available
 for users to experiment with, without costing the user anything.
-
----
-
-## Sección 11: Chapter 1
-
--- 37 of 577 --
-
 10 Chapter 1: What Users Do
 Here are some examples:
 • A photographer tries out a few image filters in an image-processing application. He
@@ -1157,9 +1021,6 @@ This also means you shouldn’t hide introductory functionality behind anything 
 needs to be read or waited for, such as registrations, long sets of instructions, slow-to-load
 screens, advertisements, and so on. These are discouraging because they block users from
 finishing that first task quickly.
-
--- 38 of 577 --
-
 The Patterns 11
 Satisficing
 “This is good enough.
@@ -1193,9 +1054,6 @@ devices.
 • Keep in mind that a complicated interface imposes a large cognitive cost on new
 users. Visual complexity will often tempt nonexperts to satisfice: they look for the
 first thing that may work.
-
--- 39 of 577 --
-
 12 Chapter 1: What Users Do
 Satisficing is why many users end up with odd habits after they’ve been using a system
 for a while. Long ago, a user may have learned Path A to do something, and even though
@@ -1226,13 +1084,6 @@ Deferred Choices
 This follows from people’s desire for instant gratification. If you ask a task-focused user
 unnecessary questions in the process, he may prefer to skip the questions and come back
 to them later.
-
----
-
-## Sección 12: Chapter 1
-
--- 40 of 577 --
-
 The Patterns 13
 For example, some web-based bulletin boards have long and complicated procedures
 for registering users. Screen names, email addresses, privacy preferences, avatars, selfdescriptions…the list goes on and on. “But I just wanted to post one little thing,” says the
@@ -1265,9 +1116,6 @@ more likely to register if they’re first allowed to experience the website—d
 and engaged—and then asked later about who they are. Some sites let you complete
 an entire purchase without registering, then ask you at the end if you want to create a
 no-hassle login with the personal information provided in the purchase step.
-
--- 41 of 577 --
-
 14 Chapter 1: What Users Do
 Incremental Construction
 “Let me change this. That doesn’t look right; let me change it again.
@@ -1301,9 +1149,6 @@ When one uses an interface repeatedly, some frequent physical actions become ref
 pressing Ctrl-S to save a document, clicking the Back button to leave a web page, pressing Return to close a modal dialog box, using gestures to show and hide windows—even
 pressing a car’s brake pedal. The user no longer needs to think consciously about these
 actions. They’ve become habitual.
-
--- 42 of 577 --
-
 The Patterns 15
 This tendency helps people become expert users of a tool (and helps create a sense of flow,
 too). Habituation also measurably improves efficiency, as you can imagine. But it can also
@@ -1338,13 +1183,6 @@ have any effect, because it slips right under the user’s consciousness.
 (I’ve seen at least one application that sets up the confirmation dialog box’s buttons randomly from one invocation to another. One actually has to read the buttons to figure out
 what to click! This isn’t necessarily the best way to do a confirmation dialog box—in fact,
 it’s better to not have them at all under most circumstances—but at least this design sidesteps habituation creatively.)
-
----
-
-## Sección 13: Chapter 1
-
--- 43 of 577 --
-
 16 Chapter 1: What Users Do
 Microbreaks
 “I’m waiting for the train. Let me do something useful for two minutes.”
@@ -1375,9 +1213,6 @@ and sender. You can also give her a chance to “star” or otherwise annotate i
 Long load times deserve another mention. Taking too long to load content is a sure way
 to make users give up on your app—especially during microbreaks! Make sure the page is
 engineered so that readable, useful content loads first, and with very little delay.
-
--- 44 of 577 --
-
 The Patterns 17
 Spatial Memory
 “I swear that button was here a minute ago. Where did it go?”
@@ -1411,9 +1246,6 @@ same order, on all subpages in a site.
 Incidentally, the tops and bottoms of lists and menus are special locations, cognitively
 speaking. People notice and remember them more than items in the middle of a list. The
 first and last items are perhaps the worst ones to change out from under the user.
-
--- 45 of 577 --
-
 18 Chapter 1: What Users Do
 Prospective Memory
 “I’m putting this here to remind myself to deal with it later.”
@@ -1449,13 +1281,6 @@ In many cases, that kind of hands-off flexibility is all you really need. Give p
 to create their own reminder systems. Just don’t try to design a system that’s too smart for
 its own good. For instance, don’t assume that just because a window’s been idle for a while,
 that no one’s using it and it should be closed. In general, don’t “helpfully” clean up files or
-
----
-
-## Sección 14: Chapter 1
-
--- 46 of 577 --
-
 The Patterns 19
 objects that the system may think are useless; someone may be leaving them around for
 a reason. Also, don’t organize or sort things automatically unless the user asks the system
@@ -1492,9 +1317,6 @@ Scripting environments are even more general. Unix and its variants allow you to
 anything you can type into a shell. You can recall and execute single commands, even
 long ones, with a Ctrl-P and Return. You can take any set of commands you issue to the
 command line, put them in a for loop, and execute them by pressing the Return key once.
-
--- 47 of 577 --
-
 20 Chapter 1: What Users Do
 Or you can put them in a shell script (or in a for loop in a shell script) and execute them as
 a single command. Scripting is very powerful, and when complex, it becomes full-fledged
@@ -1528,9 +1350,6 @@ component set you use.
 • The Tab key typically moves the keyboard focus—the control that gets keyboard entries at the moment—from one control to the next, and Shift-Tab moves backward.
 This is sometimes called tab traversal. Many users expect it to work on form-style
 interfaces.
-
--- 48 of 577 --
-
 The Patterns 21
 • Most standard controls, even radio buttons and combo boxes, let users change their
 values from the keyboard by using arrow keys, the Return key, or the space bar.
@@ -1564,13 +1383,6 @@ programming contest; for a few days, every contestant writes the best MATLAB cod
 can to solve a difficult science problem. The fastest, most accurate code wins. The catch is
 that every player can see everyone else’s code—and copying is encouraged! The “advice”
 in this case is indirect, taking the form of shared code, but it’s quite influential. In the end,
-
----
-
-## Sección 15: Chapter 1
-
--- 49 of 577 --
-
 22 Chapter 1: What Users Do
 the winning program is never truly original, but it’s undoubtedly better code than any solo
 effort would have been. (In many respects, this is a microcosm of open source software
@@ -1604,22 +1416,15 @@ along with a personal message—one the user typed, not an automatic “personal
 that can potentially carry a very high recommendation. After all, someone cared enough
 to think about you and take time to write a note. The specialness declines as the sender
 CCs more and more email addresses, though.
-
--- 50 of 577 --
-
 The Patterns 23
 When a user posts a link to her Facebook or Twitter stream, that carries other implications: “I thought this was cool, and it represents something about who I am.” Followers
 are still likely to read these links, especially if they trust that the poster has good taste.
 Furthermore, followers may repost or retweet it themselves, as will their followers, ad
 infinitum. This is how memes start, content goes viral, and the social web rolls on.
 
--- 51 of 577 --
-
--- 52 of 577 --
-
 ---
 
-## Sección 16: Chapter 2
+## Sección 4: Chapter 2 [Entropy: 0.67]
 
 Organizing the Content: Information
 Architecture and Application Structure
@@ -1646,9 +1451,6 @@ designing.
 Information architecture (IA) is the art of organizing an information space. It encompasses
 many things: presenting, searching, browsing, labeling, categorizing, sorting, manipulating, and strategically hiding information. Especially if you’re working with a new product,
 this is where you should start.
-
--- 53 of 577 --
-
 26 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 The Big Picture
 Let’s look at the very highest level of your application first. From the designer’s perspective, your site or application probably serves several functions: a software service—maybe
@@ -1678,9 +1480,6 @@ the user’s primary goal: information, process, and creation. *
 This list gives us a framework within which to fit the idioms and patterns we’ll talk about
 in this and other chapters.
 * “Rich Internet Screen Design,” in UX Magazine: http://www.uxmag.com/design/rich-internet-applicationscreen-design.
-
--- 54 of 577 --
-
 The Big Picture 27
 Show One Single Thing
 Is this really what your page does? The whole point of the page’s design is to show or play a
@@ -1716,13 +1515,6 @@ messages or other communications, tables, trees. There are more, of course.
 Lists present rich challenges in information architecture. How long is the list? Is it flat or
 hierarchical, and if it is a hierarchy, what kind? How is it ordered, and can the user change
 that ordering dynamically? Should it be filtered or searched? What information or operations are associated with each list item, and when and how should they be shown?
-
----
-
-## Sección 17: Chapter 2
-
--- 55 of 577 --
-
 28 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 Because lists are so common, a solid grasp of the different ways to present them can
 benefit any designer. It’s the same theme again—by learning and formalizing these techniques, you can expand your own thinking about how to present content in different and
@@ -1755,16 +1547,13 @@ image editors, editors that create vector graphics, and spreadsheets.
 
 ---
 
-## Sección 18: Chapter 8 of the previous edition of this book discusses how to design different aspects of
+## Sección 5: Chapter 8 of the previous edition of this book discusses how to design different aspects of [Entropy: 0.804]
 
 these tools. But at the level of application structure or IA, the following patterns are often
 found:
 • Canvas Plus Palette describes most of these applications. This highly recognizable,
 well-established pattern for visual editors sets user expectations very strongly.
 • Almost all applications of this type provide Many Workspaces—usually windows containing different documents, which enable users to work on them in parallel.
-
--- 56 of 577 --
-
 The Patterns 29
 • Alternative Views let users see one document or workspace through different lenses, to
 view various aspects of the thing they’re creating.
@@ -1800,9 +1589,6 @@ other patterns that support each other in well-defined ways—they are “guilds
 2. News Stream
 3. Picture Manager
 4. Dashboard
-
--- 57 of 577 --
-
 30 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 5. Canvas Plus Palette
 6. Wizard
@@ -1822,9 +1608,6 @@ Feature, Search, and Browse
 Search Feature
 Browse
 Figure 2-1. EMS
-
--- 58 of 577 --
-
 The Patterns 31
 What
 Put three elements on the main page of the site or app: a featured article or product, a
@@ -1860,13 +1643,6 @@ If the category labels open in place to show subcategories, the list behaves lik
 sites, such as Amazon, turn the category labels into menus: when the pointer rolls over the
 label, a menu of subcategories appears.
 Download from Wow! eBook <www.wowebook.com>
-
----
-
-## Sección 19: Chapter 8 of the previous edition of this book discusses how to design different aspects of
-
--- 59 of 577 --
-
 32 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 Choose the features well. Features are a good way to sell items, advertise specials, and call
 attention to breaking news. However, they also define what your site is about. The items
@@ -1880,15 +1656,9 @@ Examples
 This pattern applies well to websites such as news outlets (CNET, Figure 2-2), publishers (Lulu), knowledge bases (About.com, Figure 2-3), and, of course, e-commerce sites
 (Amazon, Figure 2-4; and EMS, at the top of the pattern in Figure 2-1).
 Figure 2-2. CNET
-
--- 60 of 577 --
-
 The Patterns 33
 Figure 2-3. About.com
 Figure 2-4. Amazon
-
--- 61 of 577 --
-
 34 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 News Stream
 Figure 2-5. Twitter
@@ -1905,9 +1675,6 @@ Why
 People can keep up with a news stream easily, since the latest items reliably appear on top
 with no effort on the part of the user. They can check in often and be assured of seeing
 what they need to see.
-
--- 62 of 577 --
-
 The Patterns 35
 People go to many sites or apps each day to keep up with their friends’ activities, engage
 in conversations, or follow topics or blogs of interest. When multiple “news” sources can
@@ -1946,9 +1713,6 @@ Give a date or timestamp; consider using relative times, such as “Yesterday”
 Where
 If an item’s source is a website, link to that website. If it comes from one of your organization’s blogs, link to that. (But here’s another interpretation of “where”: can you
 get geolocation data about the item, and show it on a map?)
-
--- 63 of 577 --
-
 36 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 When there’s more to an item than can be shown easily in the list display, show a “More”
 link or button. You might design a way to show the entire contents of an item within
@@ -1979,13 +1743,6 @@ Examples
 Digg (Figure 2-6) and Google News (Figure 2-7) are both public News Streams. Their
 purposes and designs are very different, but they share some of the features talked about
 in this pattern. Digg shows all incoming items in one large list; Google News splits them
-
----
-
-## Sección 20: Chapter 8 of the previous edition of this book discusses how to design different aspects of
-
--- 64 of 577 --
-
 The Patterns 37
 into topics, within which the most recent news articles are shown first. (Drilling down
 into the topic shows a page with a single list.) Both show comparable item information:
@@ -1994,9 +1751,6 @@ the submitter’s name, while Google News shows the article author’s name. And
 sites, you can mark items of interest—with a “digg” in one, a star in the other—and share
 them via email.
 Figure 2-6. Digg
-
--- 65 of 577 --
-
 38 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 Figure 2-7. Google News
 The previous two examples show public News Streams; the next two show personal News
@@ -2011,15 +1765,9 @@ But note the differences, too. Google Reader lets the user split a potentially h
 give the user this option by default, as of this writing. Instead, it automatically (and unpredictably) switches between a filtered “Top Stories” view, and a “Most Recent” view that
 shows everything. However, Facebook excels at the immediate response. Posting a short
 comment to a Facebook entry is almost as easy as thinking about it.
-
--- 66 of 577 --
-
 The Patterns 39
 Figure 2-8. Facebook
 Figure 2-9. Google Reader
-
--- 67 of 577 --
-
 40 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 Picture Manager
 Figure 2-10. Two views of iPhoto
@@ -2047,9 +1795,6 @@ Patterns and other components that often play parts in this guild include:
 • Sharing Widget
 • Search box
 • Social comments and discussion
-
--- 68 of 577 --
-
 The Patterns 41
 How
 Set up two principal views: a Thumbnail Grid of the items in the list, and a large view of a
@@ -2086,13 +1831,6 @@ simple, comprehensible visual grouping of all these features.
 Link the item to the previous and next items in the list by providing “previous” and “next”
 buttons, especially if you use One-Window Drilldown to display the single-item view (which
 also requires a “back” button). See the Pyramid navigational pattern in Chapter 3.
-
----
-
-## Sección 21: Chapter 8 of the previous edition of this book discusses how to design different aspects of
-
--- 69 of 577 --
-
 42 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 The browsing interface
 The contents of the Thumbnail Grid should be driven by a browsing interface that might be
@@ -2114,13 +1852,11 @@ choice: when a signed-in user who “owns” content visits the home page, shoul
 her own personal collections, or the featured content that the rest of the public sees? Or
 both?
 Examples
-Picasa and Adobe Bridge, along with iPhoto (shown in Figure 2-10), are desktop applications for managing personal collections of images. Their browsing interfaces—all TwoPanel Selectors—vary in complexity from iPhoto’s very simple design to Adobe Bridge’s
+Picasa and Adobe Bridge, along with iPhoto (shown in Figure 2-10), are desktop applications for managing personal collections of images. Their browsing interfaces—all Two-
+Panel Selectors—vary in complexity from iPhoto’s very simple design to Adobe Bridge’s
 numerous panels and filters. Picasa (Figure 2-11) and iPhoto use One-Window Drilldown to
 reach the single-item view, while Adobe Bridge (Figure 2-12) puts all three views together
 on one page.
-
--- 70 of 577 --
-
 The Patterns 43
 Figure 2-11. Two views of Picasa
 Figure 2-12. Adobe Bridge, which contains all views in one complex window
@@ -2129,9 +1865,6 @@ video collections. Browsing images at Flickr is different from browsing in a pri
 by which one explores the Flickr universe. Social elements are critical to Flickr’s vitality,
 too. But you can still see a Thumbnail Grid, a single-item view reached via One-Window
 Drilldown, item details, and a Pyramid navigational pattern (previous, next, up).
-
--- 71 of 577 --
-
 44 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 Figure 2-13. Flickr
 Even video sites fit this pattern. When you view someone’s YouTube channel, you can
@@ -2144,9 +1877,6 @@ TED’s browsing interface is more complex (see Figure 2-15). Its home page offe
 fields on and off, visitors can narrow down the field of videos and find the ones they want.
 Rolling over a thumbnail gives item details. Clicking on it brings you to a single-item
 view, which looks a lot like YouTube’s.
-
--- 72 of 577 --
-
 The Patterns 45
 Figure 2-15. TED
 In other libraries
@@ -2154,9 +1884,6 @@ The Image Browser pattern at Welie.com describes some aspects of a Picture Manag
 http://welie.com/patterns/showPattern.php?patternID=image-browsing
 Dashboard
 Figure 2-16. Fitbit
-
--- 73 of 577 --
-
 46 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 What
 Arrange data displays into a single information-dense page, updated regularly. Show users
@@ -2180,7 +1907,7 @@ A dashboard is also a guild of interlocking patterns and components. Many online
 
 ---
 
-## Sección 22: Chapter 5)
+## Sección 6: Chapter 5) [Entropy: 0.912]
 
 • Row Striping
 • Information graphics (see Chapter 7)
@@ -2197,9 +1924,6 @@ see the tab contents side by side.
 Use One-Window Drilldown to let users see additional details about the data—they should
 be able to click on links or graphics to find out more. Datatips work well to show individual
 data points when the pointer rolls over an information graphic.
-
--- 74 of 577 --
-
 The Patterns 47
 Choose appropriate and well-designed information graphics for the data you need to
 show. Gauges, dials, pie charts, and 3D bar charts look nice, but they are rarely the best
@@ -2217,9 +1941,6 @@ My Yahoo! is a portal-style dashboard, showing weather, news, email, and other p
 someone would check frequently throughout the day or week. It can be rearranged via
 Movable Panels, and a user can decide which sections and widgets to show.
 Figure 2-17. My Yahoo!
-
--- 75 of 577 --
-
 48 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 Netvibes offers fully customizable dashboards that can be hooked up to a broad-based
 web search (see Figure 2-18). With this, someone can stay abreast of conversations, pictures, and articles about a fast-moving topic. A tool tip shows the first few words of an
@@ -2229,9 +1950,6 @@ Google Analytics is more like the Fitbit example in Figure 2-16 at the top of th
 it uses information graphics to show a visual snapshot of a system. In Figure 2-19, the
 system is a website, and the dashboard illustrates log data.
 Download from Wow! eBook <www.wowebook.com>
-
--- 76 of 577 --
-
 The Patterns 49
 Figure 2-19. Google Analytics
 In other libraries
@@ -2243,9 +1961,6 @@ http://www.uxmag.com/design/rich-internet-application-screen-design
 Finally, you may be interested in Stephen Few’s book, Information Dashboard
 Design: The Effective Visual Communication of Data (O’Reilly, http://oreilly.com/
 catalog/9780596100162/).
-
--- 77 of 577 --
-
 50 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 Canvas Plus Palette
 Figure 2-20. Photoshop CS5
@@ -2254,9 +1969,6 @@ Place an iconic palette next to a blank canvas; the user clicks on the palette b
 Use when
 You’re designing any kind of graphical editor. A typical use case involves creating new
 objects and arranging them on some virtual space.
-
--- 78 of 577 --
-
 The Patterns 51
 Why
 This pair of panels—a palette with which to create things, and a canvas on which to put
@@ -2287,19 +1999,9 @@ vary greatly.
 Examples
 The Raven vector editor (Figure 2-21), by Aviary, and Sumo Paint (Figure 2-22) are two
 web-based graphic editors that follow this pattern faithfully.
-
----
-
-## Sección 23: Chapter 5)
-
--- 79 of 577 --
-
 52 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 Figure 2-21. Raven
 Figure 2-22. Sumo Paint
-
--- 80 of 577 --
-
 The Patterns 53
 Adobe Flash Builder places its palette of Flex UI components at the lower left, as shown in
 Figure 2-23. Next to the icons, the palette shows text labels that clarify exactly what kind
@@ -2311,9 +2013,6 @@ Taking a trip back in time, let’s look at one of the interfaces that populariz
 MacPaint (see Figure 2-24). The pattern hasn’t changed much since 1984—the basic elements are all there, in the same spatial configuration used by contemporary software such
 as Photoshop. Photoshop and other visual builders, in fact, still use many of MacPaint’s
 icons more than 20 years later.
-
--- 81 of 577 --
-
 54 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 Figure 2-24. MacPaint, circa 1984
 In other libraries
@@ -2322,9 +2021,6 @@ Theresa Neil. An article in UX Magazine explains these layouts:
 http://www.uxmag.com/design/rich-internet-application-screen-design
 Wizard
 Figure 2-25. The first two steps of the My Yahoo! setup Wizard
-
--- 82 of 577 --
-
 The Patterns 55
 What
 Lead the user through the interface step by step to do tasks in a prescribed order.
@@ -2355,9 +2051,6 @@ that if he follows the instructions, things will turn out OK.
 But the very need for a Wizard indicates that a task may be too complicated. If you can simplify a task to the point where a short form or a few button clicks can do the trick instead,
 that’s a better solution. (Keep in mind, too, that Wizards are considered a bit patronizing
 in some Asian cultures.)
-
--- 83 of 577 --
-
 56 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 How
 “Chunking” the task
@@ -2392,13 +2085,6 @@ If you instead choose to keep all the steps on one page, you could use one of se
 • Titled Sections, with prominent numbers in the titles. This is most useful for tasks that
 aren’t heavily branched, since all steps can be visible at once.
 • Responsive Enabling, in which all the steps are present on the page, but each one remains disabled until the user has finished the previous step.
-
----
-
-## Sección 24: Chapter 5)
-
--- 84 of 577 --
-
 The Patterns 57
 • Responsive Disclosure, in which you wait to show a step on the UI until the user finishes the previous one. Personally, I think this is the most elegant way to implement
 a short Wizard. It’s dynamic, compact, and easy to use.
@@ -2418,9 +2104,6 @@ leading the user through a relatively complex series of steps, one screen at a t
 the list of steps on the lefthand side (which can’t be clicked) gives the user an overview of
 what to expect.
 Figure 2-26. Mint’s add-a-bank Wizard
-
--- 85 of 577 --
-
 58 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 The Microsoft Office designers have done away with many of its Wizards, but a few remain—
 and for good reason. Importing data into Excel is a potentially bewildering task. The
@@ -2437,9 +2120,6 @@ http://quince.infragistics.com/Patterns/Wizard.aspx
 Wizard is one of the canonical RIA screen layouts described by Bill Scott and Theresa
 Neil. An article in UX Magazine explains these layouts:
 http://www.uxmag.com/design/rich-internet-application-screen-design
-
--- 86 of 577 --
-
 The Patterns 59
 Settings Editor
 Figure 2-28. Mac OS system preferences
@@ -2461,9 +2141,6 @@ showPattern.php?patternID=product-configurator.)
 Why
 Though both use forms, a Settings Editor is distinct from a Wizard, and it has very particular requirements. A user must be able to find and edit a desired property without
 being forced to walk through a prescribed sequence of steps—random access is important.
-
--- 87 of 577 --
-
 60 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 To aid findability, the properties should be grouped into categories that are well labeled
 and make immediate sense.
@@ -2498,29 +2175,16 @@ Windows 7 offers the “outrageously large number of properties” that require 
 Settings Editor down to the page that lets you change the desktop theme. (There’s one more
 level, too—if you want to change the desktop icons or some other obscure thing, you need
 to launch a dialog from a link on the last screen.)
-
----
-
-## Sección 25: Chapter 5)
-
--- 88 of 577 --
-
 The Patterns 61
 The designers mitigated some of the problems with a deep hierarchy, however. For instance,
 they put a list of shortcuts on the top-level page; these are probably the items users look for
 most often. They put a search box on the top and clickable Breadcrumbs beside it. And by putting lists of items on the top two levels, they show users which items fall into which categories.
 Figure 2-29. Windows 7 settings editor
-
--- 89 of 577 --
-
 62 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 Yahoo! (Figure 2-30) and Facebook (Figure 2-31) both use tabs to present the pages of
 their profile editors. The Yahoo! example is actually two-level; see the tabs across the top.
 Figure 2-30. Yahoo! profile settings
 Figure 2-31. Facebook profile settings
-
--- 90 of 577 --
-
 The Patterns 63
 Amazon has one single link for all account-related information: “Your Account” (see
 Figure 2-32). This Menu Page (Chapter 3) lists account settings alongside order information, credit card management, digital content, and even community and wish-list activity. The clean, tight page organization is terrific—if I have any questions about what’s
@@ -2528,9 +2192,6 @@ going on with my relationship to Amazon, I know I can find it somewhere on this 
 (Contrast this to Facebook, which habitually obscures certain profile information behind
 complicated design.)
 Figure 2-32. Amazon account settings
-
--- 91 of 577 --
-
 64 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 Alternative Views
 Figure 2-33. Google Maps
@@ -2552,9 +2213,6 @@ There are several other reasons for Alternative Views:
 • A user might need to temporarily view data through a different “lens” or perspective in order to gain insight into a problem. Consider a map user switching between
 views of street information and topographic information (see Figure 2-33 at the top
 of the pattern).
-
--- 92 of 577 --
-
 The Patterns 65
 • If a user is editing a slideshow or website, for instance, he may do most of his editing
 while using a “structural” view of the document, containing editing handles, markers
@@ -2590,9 +2248,6 @@ show different views of a work product. In the slideshow, the user normally edit
 at a time, along with its notes, but sometimes the user needs to see all the slides laid out
 on a virtual table. (Not shown is a third view, in which PowerPoint takes over the screen
 and actually plays the slideshow.) In the website example, Illustrator shows an “outline”
-
--- 93 of 577 --
-
 66 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 view of the graphic objects in the document—most useful if you have a lot of complex and
 layered objects—and the normal, fully rendered view of the artwork. The outline view
@@ -2603,20 +2258,10 @@ News sites and blogs often show lots of “extras” in the margins around an ar
 which are animated or interactive. But some sites considerately provide a print view—a
 version of the article that has none of that extra stuff. The formatting is simple, and the
 branding is minimal. The example in Figure 2-36 is from CNN.
-
----
-
-## Sección 26: Chapter 5)
-
--- 94 of 577 --
-
 The Patterns 67
 Figure 2-36. CNN web and print views of an article
 In other libraries
 http://quince.infragistics.com/Patterns/Alternative%20Views.aspx
-
--- 95 of 577 --
-
 68 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 Many Workspaces
 Figure 2-37. Firefox windows and tabs
@@ -2639,9 +2284,6 @@ Why
 People multitask. They go off on tangents, abandon trains of thought, stop working on
 task A to switch to task B, and eventually come back to something they left hanging. One
 way or the other, they will multitask, so you might as well support it directly with a welldesigned interface for doing so.
-
--- 96 of 577 --
-
 The Patterns 69
 Side-by-side comparisons between two or more items can help people learn and gain
 insight. Let users pull up pages or documents next to each other without having to laboriously switch context from one to another.
@@ -2677,9 +2319,6 @@ typical TweetDeck columns. This maintains the spirit of a News Stream by keeping
 the updates visible at once; had these columns been in different tabs or windows, a user
 wouldn’t be able to see all the updates as they happen.
 Download from Wow! eBook <www.wowebook.com>
-
--- 97 of 577 --
-
 70 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 Figure 2-38. TweetDeck
 On tiny mobile screens, you don’t have room to show anything side by side. Safari on the
@@ -2687,9 +2326,6 @@ iPhone has solved this problem by letting the user open up to eight websites at 
 using a Carousel to shuffle between them (see Figure 2-39). A user swipes to the right and
 left to reach the other windows.
 Figure 2-39. Safari’s browser windows on the iPhone
-
--- 98 of 577 --
-
 The Patterns 71
 Multi-Level Help
 Traditional
@@ -2715,9 +2351,6 @@ trying to accomplish. Someone approaching it for the first time ever (or the fir
 a while) needs different support than someone who uses it frequently. Even among firsttime users, enormous differences exist in commitment level and learning styles. Some
 people want to read a tutorial, some won’t; most find tool tips helpful, but a few find them
 irritating.
-
--- 99 of 577 --
-
 72 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 Help texts that are provided on many levels at once—even when they don’t look like traditional “help systems”—reach everyone who needs them. Many good help techniques
 put the help texts within easy reach, but not directly in the user’s face all the time, so users
@@ -2752,13 +2385,6 @@ in WinHelp or Mac Help. The help resource is often an online manual—an entire
 book—reached via menu items on a Help menu, or from Help buttons on dialog
 boxes and HTML pages.
 • “Live” technical support, usually via email, the Web, Twitter, or telephone.
-
----
-
-## Sección 27: Chapter 5)
-
--- 100 of 577 --
-
 The Patterns 73
 • Informal community support. This applies only to the most heavily used and invested software—the likes of Photoshop, Linux, Mac OS X, or MATLAB—but users
 may consider it a highly valuable resource. Use social networking resources for these,
@@ -2775,9 +2401,6 @@ the user: easy ways to customize the Firefox look, connections to social media, 
 to help resources (see Figure 2-42). The page also confirms for the user that the install
 was successful; if the user needs to do anything more, such as get security updates, the
 introductory page will say so.
-
--- 101 of 577 --
-
 74 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 Figure 2-42. Firefox startup page
 Each tool on the browser window has a tool tip (see Figure 2-43). The basic buttons—
@@ -2789,9 +2412,6 @@ more appropriate choice than Input Hints (which would be displayed beside the te
 because it keeps the window clean and uncluttered. Furthermore, not much knowledge
 is lost when a user starts typing into the text field, erasing the prompt. See the pattern
 descriptions for Input Hints and Input Prompt in Chapter 8.
-
--- 102 of 577 --
-
 The Patterns 75
 Figure 2-44. Firefox input prompts
 Some dialogs attempt to describe themselves, as shown in Figure 2-45.
@@ -2799,9 +2419,6 @@ Figure 2-45. Firefox toolbars dialog
 Other dialogs offer links to the formal help system; an appropriate help page is displayed
 in a browser window when the user clicks the round purple button in the lower-left corner (see Figures 2-46 and 2-47).
 Figure 2-46. Firefox preferences dialog
-
--- 103 of 577 --
-
 76 Chapter 2: Organizing the Content: Information Architecture and Application Structure
 Figure 2-47. Firefox preferences dialog help page
 Finally, if all other sources of help are exhausted, a user can turn to the wider user community for advice. We’ve now moved beyond the realm of software design per se, but this
@@ -2813,11 +2430,9 @@ invested, perhaps because they use the product every day at work or at home—as
 case with Firefox—or because they have some emotional attachment to it.
 Figure 2-48. Firefox support forums
 
--- 104 of 577 --
-
 ---
 
-## Sección 28: Chapter 3
+## Sección 7: Chapter 3 [Entropy: 0.28]
 
 Getting Around:
 Navigation, Signposts, and Wayfinding
@@ -2843,9 +2458,6 @@ signposts include page and window titles, web page logos and other branding devi
 tabs, and selection indicators. Patterns and techniques such as good global and local navigation links, Sequence Map, Breadcrumbs, and Annotated Scrollbar—all described in this
 chapter—tell users where they currently are, and often where they can go with only one
 more jump. They help a user to stay “found” and to plan his next steps.
-
--- 105 of 577 --
-
 78 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 Wayfinding is what people do as they find their way toward their goal. The term is pretty
 self-explanatory. But how people actually do it is quite a research subject—specialists
@@ -2883,9 +2495,6 @@ The Cost of Navigation
 When you walk into an unfamiliar room, you look around. In a fraction of a second, you
 take in the shape of the room, the furnishings, the light, the ways out, and other clues; very
 quickly, you make some assumptions about what this room is and how it relates to why
-
--- 106 of 577 --
-
 The Cost of Navigation 79
 you walked in. Then you need to do what you came in to do. Where? How? You might be
 able to answer immediately—or not. Or maybe you’re just distracted by other interesting
@@ -2924,13 +2533,6 @@ everything else on the main page? Again, try shrinking it, isolating it with whi
 putting it in an out-of-the-way spot. Can you use progressive disclosure to gradually show
 more content on the same page? Can you use Module Tabs or an Accordion to hide some
 content by default?
-
----
-
-## Sección 29: Chapter 3
-
--- 107 of 577 --
-
 80 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 Sometimes it’s appropriate to bury functionality inside pages that take more than one
 jump to get to, such as that extra 20% of tasks left over from the 80% you made easily
@@ -2951,7 +2553,7 @@ noncontent aspects of the site or application: sign-in, help, print, Settings Ed
 
 ---
 
-## Sección 30: Chapter 2), language tools, and so on.
+## Sección 8: Chapter 2), language tools, and so on. [Entropy: 0.975]
 
 Associative and inline navigation embed links in or near the actual content. As the user
 reads or interacts with the site, these links present options that might be immediately
@@ -2965,9 +2567,6 @@ The “spoke” screens focus tightly on their jobs, making careful use of space
 may not have room to list all the other major screens. The iPhone home screen is a
 good example; the Menu Page pattern found on some websites is another.
 Figure 3-1. Hub and spoke
-
--- 108 of 577 --
-
 Navigational Models 81
 Fully connected
 Many websites follow this model. There’s a home page or screen, but it and every
@@ -2986,9 +2585,6 @@ more jumps to get from one arbitrary subpage to another. Using drop-down menus,
 the Fat Menus pattern, or the Sitemap Footer pattern with a multi-level site converts it
 to a fully connected one, which is preferable.
 Figure 3-3. Multi-level
-
--- 109 of 577 --
-
 82 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 Stepwise
 Slideshows, process flows, and Wizards (see Chapter 2) lead the user step by step
@@ -3009,9 +2605,6 @@ these in more detail. Panning and zooming are still navigation—so offer contro
 panning (moving horizontally or vertically), zooming in and out, and resetting to a
 known position and state. Figure 3-6 shows an example of pan-and-zoom.
 Figure 3-6. Pan-and-zoom
-
--- 110 of 577 --
-
 Navigational Models 83
 Flat navigation
 Some types of applications need little or no navigation at all. Consider Canvas Plus
@@ -3033,9 +2626,6 @@ users, it removes some of the burden of learning the site.
 A
 B
 Figure 3-8. Clear entry points
-
--- 111 of 577 --
-
 84 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 Bookmarks
 Bookmarks (Figure 3-9), permalinks, deep links, and Deep-linked State are all ways
@@ -3059,13 +2649,6 @@ is in the middle of a full-screen slideshow, she doesn’t want to see a complic
 navigation menu! She would rather just focus on the slideshow itself, so Back/Next controls and an Escape Hatch are all that’s necessary. The presence of full navigation options is
 not without cost: it takes up space, clutters the screen, incurs cognitive load, and signals
 to the user that leaving the page doesn’t matter.
-
----
-
-## Sección 31: Chapter 2), language tools, and so on.
-
--- 112 of 577 --
-
 Design Conventions for Websites 85
 Third, all these mechanisms and patterns can be rendered on-screen in different ways. A
 complex site or app might use tabs, or menus, or a sidebar tree view to show the global navigation on each page—that’s something you don’t need to decide until you start laying out the
@@ -3100,9 +2683,6 @@ play. The front of a site may have a News Box, which links users to the items po
 recently. Content Leaderboards show the most frequently shared or commented pieces,
 while Recent Chatter directs users to ongoing conversations. And Social Links and Sharing
 Widgets connect users directly to social media services. See Chapter 9 for these patterns.
-
--- 113 of 577 --
-
 86 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 The Patterns
 To recap, this chapter talks about several aspects of navigation: overall structure or model,
@@ -3130,9 +2710,6 @@ Animated Transition helps users stay oriented as they move from one place to ano
 a visual trick, nothing more, but it’s very effective at preserving a user’s sense of where he
 is and what’s happening.
 13. Animated Transition
-
--- 114 of 577 --
-
 The Patterns 87
 Clear Entry Points
 A
@@ -3157,9 +2734,6 @@ For the sake of these users, list a few options for getting started. If those op
 user’s expectations, he can confidently choose one and begin working—this contributes
 to immediate gratification. If not, at least he knows now what the site or app actually does,
 because you’ve defined the important tasks or categories up front. You’ve made the application more self-explanatory.
-
--- 115 of 577 --
-
 88 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 How
 When the site is visited or the application started, present these entry points as “doors”
@@ -3179,13 +2753,6 @@ itself, make the iPad look inviting, and direct the user toward resources for bu
 or learning more. The global navigation recedes visually, compared to the strong, welldefined entry points. On the rest of the page, more text and links make the page denser,
 but this is all the user sees above the fold.
 Figure 3-12. iPad page on Apple’s site
-
----
-
-## Sección 32: Chapter 2), language tools, and so on.
-
--- 116 of 577 --
-
 The Patterns 89
 Fireworks and other applications show a startup dialog when the application is started (see
 Figure 3-13). This orients a new or infrequent user to the possibilities for action; creating
@@ -3195,9 +2762,6 @@ since it adds one more step—and no value—to the process of getting started o
 Figure 3-13. Fireworks startup dialog
 In other libraries
 http://quince.infragistics.com/Patterns/Clear%20Entry%20Points.aspx
-
--- 117 of 577 --
-
 90 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 Menu Page
 Figure 3-14. Craigslist
@@ -3216,9 +2780,6 @@ use some of the page space for promotional items or other interesting content, a
 Page wouldn’t be the right design choice. Likewise, a site that needs to explain its value
 and purpose should use the space to do that instead.
 It takes some audacity to design a Menu Page, because you must be very confident that:
-
--- 118 of 577 --
-
 The Patterns 91
 • Visitors know what the site or app is about.
 • They know what they came for and how to find it.
@@ -3251,9 +2812,6 @@ Finally, reconsider whether you have anything else to say on this page. Home pag
 in particular, is quite valuable for drawing in users. Is there an interesting article teaser
 you can put there? A work of visual art? A News Box (see Chapter 9)? If such things would
 annoy more than intrigue, continue designing a pure Menu Page.
-
--- 119 of 577 --
-
 92 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 Examples
 In the website for MIT (Figure 3-15), the “Education” page shows very little explanatory
@@ -3268,18 +2826,12 @@ several top-level categories for those resources, as shown in the global navigat
 landing page for each of those categories is a Menu Page (Figure 3-16). The articles are
 shown with thumbnail images and summary text; the rich format gives the viewer enough
 of a context to decide whether to invest time in clicking through to the article.
-
--- 120 of 577 --
-
 The Patterns 93
 Figure 3-16. A Menu Page from AIGA’s website
 Last, the Museum of Modern Art uses large images and little text on this Menu Page (see
 Figure 3-17). This page is intriguing enough to hook a user on its own, without featuring
 any particular content at all.
 Figure 3-17. A Menu Page from MoMA’s website
-
--- 121 of 577 --
-
 94 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 In other libraries
 The Directory Navigation pattern at the following URL describes one specialized use of
@@ -3306,13 +2858,6 @@ Back/Next (or Previous/Next) links or buttons are all well and good. People know
 do with them. But a user doesn’t necessarily want to be locked into a page sequence that
 he can’t easily get out of: having gone seven pages in, will he need to click the Back button
 seven times to get back where he started? Not fun!
-
----
-
-## Sección 33: Chapter 2), language tools, and so on.
-
--- 122 of 577 --
-
 The Patterns 95
 By putting a link back to the parent page on each sequence page, you increase the user’s
 options. You’ve now got three main navigation options instead of two—Back, Next, and
@@ -3344,9 +2889,6 @@ Figure 3-19. Flickr
 The New York Times interactive feature shown in Figure 3-20 is another Picture Manager.
 The parent page shows an irregular Thumbnail Grid of clickable pictures; the item page
 (shown in Figure 3-21) contains arrow buttons to traverse the series of photos. Note that
-
--- 123 of 577 --
-
 96 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 this shows the user where she is in the sequence—“121 of 176”—which is a nice touch.
 There is no “Up” button, but the only other control in that panel, “Close,” returns the user
@@ -3354,9 +2896,6 @@ to the parent page. (It thus makes an interesting use of a Modal Panel.)
 Figure 3-20. A New York Times interactive feature; this is the parent page, where all the photos are
 shown
 Figure 3-21. A child page from the same feature, showing Back, Next, and Close buttons near the photo
-
--- 124 of 577 --
-
 The Patterns 97
 Modal Panel
 Figure 3-22. Modal Panel schematic
@@ -3382,9 +2921,6 @@ a decision about something he just doesn’t care about. But when used appropria
 modal panel channels the user’s attention into the next decision that he needs to make.
 There are no other navigation possibilities to distract him.
 Download from Wow! eBook <www.wowebook.com>
-
--- 125 of 577 --
-
 98 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 How
 In the same space on the screen where the user’s attention lies, place a panel, dialog box,
@@ -3415,13 +2951,6 @@ on SlideShare that requires you to be signed in, the modal panel in Figure 3-23 
 There are only three ways to deal with it: sign in, register, or click the familiar “X” button
 in the upper-right corner. This is very typical of many lightbox-highlighted modal panels
 on the Web.
-
----
-
-## Sección 34: Chapter 2), language tools, and so on.
-
--- 126 of 577 --
-
 The Patterns 99
 Figure 3-23. SlideShare’s login modal panel
 Likewise, Kayak uses a similar lightbox for a modified search—but this one actually points
@@ -3432,9 +2961,6 @@ The “shade” form of a Mac modal dialog box draws attention to itself as it d
 the window title bar (animated, of course). These and other application-level modal dialogs
 actually prevent the user from interacting with the rest of the application, so the user is forced
 to finish or dismiss this thread of work before doing anything else (see Figure 3-25).
-
--- 127 of 577 --
-
 100 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 Figure 3-25. A modal panel in a Mac application
 In other libraries
@@ -3445,9 +2971,6 @@ Neil (O’Reilly, http://oreilly.com/catalog/9780596516253/). Other types of ove
 Deep-linked State
 http://
 Figure 3-26. Deep-linked State schematic
-
--- 128 of 577 --
-
 The Patterns 101
 What
 Capture the state of a site or app in a URL that can be saved or sent to other people. When
@@ -3475,9 +2998,6 @@ the URL will bring it all back.
 Consider what other parameters or interface states you might want users to save: zoom levels,
 magnification, viewing modes, search results, and so on. Not all of these should necessarily be captured, since loading the Deep-linked State shouldn’t trample on settings that a user
 doesn’t want changed. Work carefully through some usage scenarios to figure this out.
-
--- 129 of 577 --
-
 102 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 URLs are the best format for saving Deep-linked States: they are universally understood,
 portable, short, and supported by a vast variety of tools, such as bookmarking services.
@@ -3501,9 +3021,6 @@ Many Eyes, the visualization tools published by IBM, gives visitors the ability 
 their own custom information graphics, based on plot types and data sets offered by the site
 (see Figure 3-28). They’re highly interactive and rich. To share one of these visualizations,
 you can either generate JavaScript for it (for embedding), or create a snapshot image.
-
--- 130 of 577 --
-
 The Patterns 103
 Figure 3-28. Capturing the state of a visualization at Many Eyes
 Its interface doesn’t advertise it, but YouTube lets you put a timestamp into the URL for a
@@ -3511,9 +3028,6 @@ video. When loaded, this brings the viewer directly to the specified time in the
 site http://youtubetime.com explains how to do it (see Figure 3-29): add #t=XmYs to the end
 of the URL, where X is the number of minutes and Y the number of seconds.
 Figure 3-29. YouTubeTime’s explanation of how to use the URL to deep-link into the middle of a video
-
--- 131 of 577 --
-
 104 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 Escape Hatch
 Figure 3-30. Escape Hatch schematic
@@ -3540,13 +3054,6 @@ How
 Put a button or link on the page that brings the user back to a “safe place.” This might be
 a home page, a hub page in a hub-and-spoke design, or any page with full navigation and
 something self-explanatory on it. Exactly what it links to will depend upon the application’s design.
-
----
-
-## Sección 35: Chapter 2), language tools, and so on.
-
--- 132 of 577 --
-
 The Patterns 105
 Examples
 Websites often use clickable site logos as home-page links, usually in the upper left of a
@@ -3566,9 +3073,6 @@ Sometimes literalism works. Google Labs offers features that aren’t ready for 
 they occasionally break. In the example shown in Figure 3-32, Google Maps gives the user
 an explicit “escape hatch” URL to use when things go wrong.
 Figure 3-32. Google Maps Labs Escape Hatch
-
--- 133 of 577 --
-
 106 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 In other libraries
 These two patterns are named “Home Link.” The concept is very similar to Escape Hatch.
@@ -3584,9 +3088,6 @@ The site or app has many pages in many categories, possibly in a hierarchy with 
 more levels. You want to expose most of these pages to people casually exploring the site,
 so they can see what’s available. Your users are comfortable with drop-down menus (click
 to see them) or fly-outs (roll over them with the pointer).
-
--- 134 of 577 --
-
 The Patterns 107
 Why
 Fat Menus make a complex site more discoverable. They expose many more navigation
@@ -3623,9 +3124,6 @@ menu is a different height but the same width, and follows a strict common page 
 (they’re all laid out the same way). The style blends in with the site, and the generous
 whitespace makes it easy to read. Ads are worked into the design, but not obnoxiously.
 The nonrectangular shape adds a polished look.
-
--- 135 of 577 --
-
 108 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 Figure 3-34. Starbucks coffee menu
 As shown in Figure 3-35, Slate’s menus are less readable and more crowded (in keeping
@@ -3633,9 +3131,6 @@ with the overall style of the site). These don’t take full advantage of horizo
 either. But the idea of using them to show featured articles is clever—the knowledgeable
 user can skim a large number of headlines by rolling over the menus.
 Figure 3-35. Slate’s News & Politics menu
-
--- 136 of 577 --
-
 The Patterns 109
 The American Red Cross doesn’t merely float its menus over the top of the page (see
 Figure 3-36). When the user rolls over any top-level menu item, the resultant Fat Menu
@@ -3646,13 +3141,6 @@ Figure 3-36. The American Red Cross menus (all of them)
 WebMD uses an alphabetical sorting order for its long, flat list of health topics, as shown
 in Figure 3-37.
 Figure 3-37. WebMD’s Health A–Z menu
-
----
-
-## Sección 36: Chapter 2), language tools, and so on.
-
--- 137 of 577 --
-
 110 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 Sitemap Footer
 Figure 3-38. Whole Foods footer
@@ -3675,9 +3163,6 @@ By showing so many links on every page, you make it possible for a user to jump 
 from any subpage to any other subpage (or major page, anyhow). You thus turn a multilevel site—where subpages aren’t linked to the subpages in other site sections—into a fully
 connected site. The footer is where the user’s attention lands when she reads to the end of a
 page. By placing interesting links there, you entice the user to stay on the site and read more.
-
--- 138 of 577 --
-
 The Patterns 111
 Finally, showing users the whole site map gives them a strong sense of how the site is constructed and where they might find relevant features. In complex sites, that could be valuable.
 You may find yourself trying to choose between a Sitemap Footer design and a Fat Menus
@@ -3712,9 +3197,6 @@ Here are some features that can often be found in Sitemap Footers:
 • Contact information
 • Current promotions
 • Donation or volunteer information, for nonprofits
-
--- 139 of 577 --
-
 112 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 Examples
 REI’s website demonstrates the difference between task-oriented top-of-page global navigation and an effective Sitemap Footer (see Figure 3-39). Shopping, learning, and travel
@@ -3723,17 +3205,11 @@ footer handles secondary tasks that are nevertheless important: “about” info
 Figure 3-39. REI header and footer
 The Los Angeles Times footer shows much of the same content as the double tab in the
 header, but flattened and organized somewhat differently (see Figure 3-40).
-
--- 140 of 577 --
-
 The Patterns 113
 Figure 3-40. Los Angeles Times header and footer
 The Wall Street Journal has an immense footer (see Figure 3-41). This is probably larger
 than you’ll want to make yours.
 Figure 3-41. Wall Street Journal footer
-
--- 141 of 577 --
-
 114 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 Flickr, as always, is minimalist (see Figure 3-42). It eschews the column structure that
 most other sites use for their Sitemap Footers, and uses rows instead. MapQuest uses columns, but it also does a lovely job in a small amount of space (see Figure 3-43).
@@ -3745,9 +3221,6 @@ http://ui-patterns.com/patterns/FatFooter
 The name “Fat Footer” has sometimes been used for this pattern, with a slightly expanded definition. For some wonderful examples, see the Smashing Magazine article titled “Informative
 and Usable Footers in Web Design”:
 http://www.smashingmagazine.com/2009/06/17/informative-and-usable-footers-in-webdesign/
-
--- 142 of 577 --
-
 The Patterns 115
 Sign-in Tools
 Figure 3-44. Flickr sign-in tools
@@ -3771,13 +3244,6 @@ Cluster together tools such as the following:
 • Profile settings
 • Site help
 Download from Wow! eBook <www.wowebook.com>
-
----
-
-## Sección 37: Chapter 2), language tools, and so on.
-
--- 143 of 577 --
-
 116 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 • Customer service
 • Shopping cart
@@ -3799,15 +3265,9 @@ Figure 3-45. Clockwise from top left: Mint, Twitter, Amazon, and Gmail
 Scribd uses almost all of the tools listed in this pattern (see Figure 3-46). Since there are
 so many of them, a drop-down menu seems appropriate to keep them from cluttering the
 corner of the page. iTunes also uses a drop down (see Figure 3-47).
-
--- 144 of 577 --
-
 The Patterns 117
 Figure 3-46. Scribd sign-in tools
 Figure 3-47. iTunes sign-in tools
-
--- 145 of 577 --
-
 118 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 Sequence Map
 Figure 3-48. Hanna Andersson order sequence map
@@ -3831,9 +3291,6 @@ or column if you can, to keep it from competing visually with the actual page co
 Give the current page’s indicator some special treatment, such as making it lighter or
 darker than the others; do something similar with the already-visited pages.
 For the user’s convenience, you might want to put the map near or next to the main navigation controls, usually Back and Next buttons.
-
--- 146 of 577 --
-
 The Patterns 119
 How should you label each page’s indicator on the map? If the pages or steps are numbered, use the numbers—they’re short and easy to understand. But you should also put
 the page titles in the map. (Keep the titles short, so the map can accommodate them.) This
@@ -3850,18 +3307,12 @@ pages in a numbered sequence. The Sequence Map at the top is a critical control 
 Installation wizards usually require a lot of steps. The one shown in Figure 3-51, from
 Adobe, has a typical Sequence Map on the lefthand side. Its steps are disabled when they’re
 irrelevant or bypassed, such as this trial installation that has no Adobe ID.
-
--- 147 of 577 --
-
 120 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 Figure 3-50. Mini Cooper product configurator, with sequence map in upper left
 Figure 3-51. Adobe CS5 installer, with sequence map at left
 In other libraries
 http://ui-patterns.com/patterns/StepsLeft
 http://developer.yahoo.com/ypatterns/navigation/bar/progress.html
-
--- 148 of 577 --
-
 The Patterns 121
 Breadcrumbs
 Figure 3-52. Target breadcrumbs
@@ -3890,13 +3341,6 @@ telling the user how he got to where he is from the top of the site or app. But 
 true if the user has drilled straight down from the top, with no sidetracking, or following
 other branches, or dead ends, or searching, or linking directly from other pages…not
 likely.
-
----
-
-## Sección 38: Chapter 2), language tools, and so on.
-
--- 149 of 577 --
-
 122 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 Instead, Breadcrumbs are best for telling you where you are relative to the rest of the app
 or site—it’s about context, not just history. Look at the Target example in Figure 3-52.
@@ -3921,9 +3365,6 @@ The Windows 7 control panel is a hierarchical Settings Editor that can be three 
 Appearance and Personalization category (which has at least six subcategories in addition
 to Personalization).
 Figure 3-53. Windows 7 control panel
-
--- 150 of 577 --
-
 The Patterns 123
 Online communities such as the one shown in Figure 3-54 often have deep hierarchies:
 forum categories, forums, subforums, yet more subforums, and threads. Breadcrumbs help
@@ -3942,9 +3383,6 @@ http://www.welie.com/patterns/showPattern.php?patternID=crumbs
 http://patternry.com/p=breadcrumbs/
 http://quince.infragistics.com/Patterns/Breadcrumbs.aspx
 http://www.smashingmagazine.com/2009/03/17/breadcrumbs-in-web-design-examplesand-best-practices-2/
-
--- 151 of 577 --
-
 124 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 Annotated Scrollbar
 Figure 3-56. MSNBC scrollbar showing page sections
@@ -3956,9 +3394,6 @@ You’re designing either a document-centric application or a pan-and-zoom inter
 such as a map or large visualization. Users will scan this document or graphic for items of
 note, such as specific page numbers or landmarks. They might have trouble keeping track
 of where they are and where to go next as they scroll.
-
--- 152 of 577 --
-
 The Patterns 125
 Why
 Even though the user remains within one navigational space as she scrolls through the
@@ -3991,13 +3426,6 @@ The tkdiff application shown in Figure 3-57 visually highlights the differences 
 two versions of a text file: newly added sections are marked in green, changed sections are
 in blue, and deleted sections are in red. An Annotated Scrollbar serves as an overall map,
 thus making large file “diffs” easier to comprehend.
-
----
-
-## Sección 39: Chapter 2), language tools, and so on.
-
--- 153 of 577 --
-
 126 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 Figure 3-57. tkdiff
 Chrome annotates its scrollbar with search results (see Figure 3-58). When you search for
@@ -4007,9 +3435,6 @@ scroll directly to those points in the document.
 Figure 3-58. Chrome “Find” results
 In other libraries
 http://quince.infragistics.com/Patterns/Annotated%20Scrollbar.aspx
-
--- 154 of 577 --
-
 The Patterns 127
 Animated Transition
 Figure 3-59. Mac OS dock transition
@@ -4023,9 +3448,6 @@ whole thing. This is especially useful for information graphics, such as maps an
 Alternatively, the interface might have sections that can be closed and opened again, either by the system or by the user—such as trees with closable parent nodes, standalone
 windows that open and close, or an interface built with Collapsible Panels (Chapter 4).
 Animated Transition might also be used when users jump from one separate page to another.
-
--- 155 of 577 --
-
 128 Chapter 3: Getting Around: Navigation, Signposts, and Wayfinding
 Why
 All of these transformations can disrupt a user’s sense of where she is in the virtual space.
@@ -4060,22 +3482,15 @@ com/ypatterns/richinteraction/transition/) and Designing Web Interfaces are as f
 • Self-healing
 • Slide
 • Spotlight
-
--- 156 of 577 --
-
 The Patterns 129
 In other libraries
 For more discussion and tons of great examples of the Animated Transitions in the preceding list, see the Transition cluster of patterns at the Yahoo! Design Pattern Library:
 http://developer.yahoo.com/ypatterns/richinteraction/transition/
 In addition, Scott and Neil’s Designing Web Interfaces contains an entire chapter on transitions. It covers some of the same ground as the Yahoo! site, but it’s worth reading.
 
--- 157 of 577 --
-
--- 158 of 577 --
-
 ---
 
-## Sección 40: Chapter 4
+## Sección 9: Chapter 4 [Entropy: 0.565]
 
 Organizing the Page:
 Layout of Page Elements
@@ -4093,9 +3508,6 @@ alignment—all predictable and rational approaches to page design. This chapter
 But the changeable, interactive nature of computer displays makes layout easier in some
 ways, harder in others. We’ll talk about why that’s true. Some of these patterns work as
 well in print as they do on-screen, but most of them would be useless in print—they presume that the user will interact with the page.
-
--- 159 of 577 --
-
 132 Chapter 4: Organizing the Page: Layout of Page Elements
 The Basics of Page Layout
 This section discusses several elements of page layout: visual hierarchy, visual flow, and
@@ -4119,9 +3531,6 @@ characteristics at a time on emphasized text to differentiate it from body text.
 Figure 4-1. Large text in a hierarchy
 Blocks of smaller items—such as body text, links, or interactive tools—can be emphasized
 or deemphasized with these tools. See Figure 4-2 for examples of each.
-
--- 160 of 577 --
-
 The Basics of Page Layout 133
 Density
 A dense, heavy-looking block has stronger contrast with the surrounding page; an
@@ -4144,9 +3553,6 @@ less about raw visual characteristics than meaning: if someone is looking for a 
 for instance, her eyes will go straight to the text fields on the page. (She may not even read
 the labels for those text fields.)
 Download from Wow! eBook <www.wowebook.com>
-
--- 161 of 577 --
-
 134 Chapter 4: Organizing the Page: Layout of Page Elements
 Figure 4-3. Emphasizing small items
 High-contrast, dramatic images draw attention; so do pictures of faces. But much of the
@@ -4166,13 +3572,6 @@ the sidebar “Four Important Gestalt Principles” on page 139).
 Similar items look like peers (see Figure 4-5). If you have a few things “of a type” and you
 want viewers to see them as equally interesting alternatives, give them an identical (and
 distinctive) graphic treatment.
-
----
-
-## Sección 41: Chapter 4
-
--- 162 of 577 --
-
 The Basics of Page Layout 135
 Is one item more “special” than the others like it? Give it a slightly different treatment,
 such as a contrasting background color, but otherwise keep it consistent with the others
@@ -4188,9 +3587,6 @@ Figure 4-4. Grouping related items Figure 4-5. Peer items
 Figure 4-6. Distinguishing one item among peers Figure 4-7. Lists of items
 Indented and shrunken text tucked under a stronger element modifies that stronger element.
 Image captions, secondary text, comments, and so forth all behave this way (see Figure 4-8).
-
--- 163 of 577 --
-
 136 Chapter 4: Organizing the Page: Layout of Page Elements
 Containment implies a parent/child relationship (see Figure 4-9). Use boxes, blocks of
 background color, Module Tabs, Accordions, and text blocks or tool groups surrounded by
@@ -4216,9 +3612,6 @@ to the right places in the right order.
 The next time you pick up a magazine, look at some well-designed ads, and notice what
 your eyes gravitate toward. The best commercial graphic artists are masters at setting up
 focal points to manipulate what you see first.
-
--- 164 of 577 --
-
 The Basics of Page Layout 137
 So how do you create a good visual flow? One simple way is to use implied lines, either
 curved or straight, to connect elements on the page (see Figure 4-10). This creates a visual
@@ -4231,9 +3624,6 @@ Likewise, if you’re designing a form, arrange the controls along a continuous 
 put “I’m finished” buttons (OK, Cancel, Submit, Buy, etc.) at the end of that line (see
 Figure 4-12). See the patterns Right/Left Alignment and Diagonal Balance for two concrete
 approaches to form layout, and Prominent “Done” Button in Chapter 6.
-
--- 165 of 577 --
-
 138 Chapter 4: Organizing the Page: Layout of Page Elements
 Figure 4-12. OK button at the end of a form
 It’s not hard to set up a layout that flows well, but be on your guard against layout choices
@@ -4245,9 +3635,6 @@ Figure 4-13 shows a distinctly poor example of visual flow and visual hierarchy.
 many focal points are there, and how do they compete with one another? Where does
 your eye want to go first, and why? What does this page say is important?
 Figure 4-13. Weather Underground’s jumbled visual hierarchy
-
--- 166 of 577 --
-
 The Basics of Page Layout 139
 Four Important Gestalt Principles
 The.theory.behind.grouping.and.alignment.was.developed.early.in.the.20th.century.by.the.
@@ -4278,13 +3665,6 @@ Proximity Similarity
 Continuity Closure
 All together now
 Figure 4-14. Four Gestalt principles
-
----
-
-## Sección 42: Chapter 4
-
--- 167 of 577 --
-
 140 Chapter 4: Organizing the Page: Layout of Page Elements
 Using Dynamic Displays
 Everything I’ve discussed so far applies equally to UIs, websites, posters, billboards, and
@@ -4318,9 +3698,6 @@ with other lesser items around it, whereas Grid of Equals makes several “peer�
 similar. (You could use both in separate sections of a large page, of course.)
 2. Center Stage
 3. Grid of Equals
-
--- 168 of 577 --
-
 The Patterns 141
 The next group of patterns represents alternative ways of “chunking” content on a page
 or window. They’re useful when you have more content than you can comfortably put
@@ -4348,9 +3725,6 @@ for arranging a page that can change size and shape at the user’s whim.
 13. Liquid Layout
 Visual Framework
 Figure 4-15. JAQK
-
--- 169 of 577 --
-
 142 Chapter 4: Organizing the Page: Layout of Page Elements
 What
 Design each page to use the same basic layout, colors, and stylistic elements, but give the
@@ -4381,9 +3755,6 @@ For titles, subtitles, ordinary text, callout text, and minor text
 Writing style and grammar
 Titles, names, content, short descriptions, any long blocks of text, and anything else
 that uses language
-
--- 170 of 577 --
-
 The Patterns 143
 All other pages or windows should also share the following, as appropriate:
 • “You are here” signposts, such as titles, logos, Breadcrumb trails, global navigation
@@ -4414,19 +3785,9 @@ its subsidiary or related sites (such as its blog and its conference site) must 
 like the main TED site, but still have distinct visual identities. In this case, the two related
 sites share most of their framework elements with the TED site, with some key differences
 (see Figure 4-18).
-
----
-
-## Sección 43: Chapter 4
-
--- 171 of 577 --
-
 144 Chapter 4: Organizing the Page: Layout of Page Elements
 Figure 4-16. JetBlue website
 Figure 4-17. TED website
-
--- 172 of 577 --
-
 The Patterns 145
 Figure 4-18. TED-associated websites, with related but slightly different visual frameworks
 Center Stage
@@ -4434,9 +3795,6 @@ Figure 4-19. Flash editor
 What
 Put the most important part of the UI into the largest subsection of the page or window;
 cluster secondary tools and content around it in smaller panels.
-
--- 173 of 577 --
-
 146 Chapter 4: Organizing the Page: Layout of Page Elements
 Use when
 The page’s primary job is to show a single unit of coherent information to the user, let him
@@ -4473,9 +3831,6 @@ Headlines
 Big headlines are focal points, and can draw the user’s eye to the top of the Center
 Stage. That happens in print media too, of course. See the chapter introduction and
 Titled Sections for more.
-
--- 174 of 577 --
-
 The Patterns 147
 Context
 What does the user expect to see when she opens up the page? A graphic editor? A long
@@ -4499,9 +3854,6 @@ Figure 4-20. Google Docs text editor
 Text-based content such as blog articles is often crowded with too many items in the
 margins. The sites for Newfangled (Figure 4-21) and Steepster (Figure 4-22) give their
 main content enough space to compete with the navigation and other peripheral features.
-
--- 175 of 577 --
-
 148 Chapter 4: Organizing the Page: Layout of Page Elements
 Notice the percentage of space devoted to the main article for both of these sites, and how
 high on the page the article starts.
@@ -4509,9 +3861,6 @@ Figure 4-21. Newfangled article
 Figure 4-22. Steepster article
 In other libraries
 http://www.welie.com/patterns/showPattern.php?patternID=center-stage
-
--- 176 of 577 --
-
 The Patterns 149
 Grid of Equals
 Figure 4-23. Nike
@@ -4533,13 +3882,6 @@ Figure out how to lay out each item in the grid. Do they have thumbnail images o
 story)? Render them with more than just blocks of body text: make headlines of different colors, be creative with whitespace, and use images if you can do so evenly across all
 items. Experiment with ways to fit all the right information into a relatively small space—
 tall, wide, or square—and apply that template to the items you need to display.
-
----
-
-## Sección 44: Chapter 4
-
--- 177 of 577 --
-
 150 Chapter 4: Organizing the Page: Layout of Page Elements
 Now arrange the items in a grid. You could use a single row, or a matrix that’s two, three,
 or more items wide. Consider page width as you do this design work—what will your design look like in a narrow window? Will most of your users have large browser windows?
@@ -4558,9 +3900,6 @@ pattern) use a rigid template for each item. The overall effect is rhythmic and 
 Note how each site uses a different balance of text and imagery.
 Figure 4-24. Hulu
 Download from Wow! eBook <www.wowebook.com>
-
--- 178 of 577 --
-
 The Patterns 151
 Figure 4-25. CNN
 The examples from MapQuest (Figure 4-26) and IBM (Figure 4-27) show how to do this
@@ -4568,9 +3907,6 @@ with only a single row of items. (Technically it’s still a “grid.”) The co
 and that’s true of the Hulu and CNN examples, too. Most of the examples I’ve seen of this
 pattern use it to showcase linked content.
 Figure 4-26. MapQuest
-
--- 179 of 577 --
-
 152 Chapter 4: Organizing the Page: Layout of Page Elements
 Figure 4-27. An inner page at IBM’s website
 In other libraries
@@ -4579,9 +3915,6 @@ Johnson:
 http://designshack.co.uk/articles/css/15-tips-for-designing-terrific-tables
 Titled Sections
 Figure 4-28. JetBlue’s titled sections
-
--- 180 of 577 --
-
 The Patterns 153
 What
 Define separate sections of content by giving each one a visually strong title, separating
@@ -4596,7 +3929,7 @@ obvious. (See this chapter’s introduction for a discussion of visual hierarchy
 
 ---
 
-## Sección 45: Chapter 2 for a definition of information architecture.)
+## Sección 10: Chapter 2 for a definition of information architecture.) [Entropy: 0.966]
 
 When the user sees a page sectioned neatly into chunks like this, her eye is guided along
 the page more comfortably. The human visual system always looks for bigger patterns,
@@ -4614,9 +3947,6 @@ the chapter introduction for more on visual hierarchy.
 • Boxes made from etched, beveled, or raised lines are familiar on desktop UIs. But
 they can get lost—and just become visual noise—if they’re too big, too close to each
 other, or deeply nested.
-
--- 181 of 577 --
-
 154 Chapter 4: Organizing the Page: Layout of Page Elements
 If the page is still too overwhelming, try using Module Tabs, an Accordion, or Collapsible
 Panels to hide some of the content.
@@ -4631,9 +3961,6 @@ Figure 4-29. Amazon account settings
 The iPhone sync utility shown in Figure 4-30 shows one nice-looking way to put very
 different kinds of content into titled boxes. These sections show very little internal consistency (other than typography)—they share no mutual grid, alignment, or layout plan.
 But the boxes and whitespace break up the page so much that this doesn’t really matter.
-
--- 182 of 577 --
-
 The Patterns 155
 Figure 4-30. iPhone sync utility
 In other libraries
@@ -4641,9 +3968,6 @@ http://quince.infragistics.com/Patterns/Titled%20Sections.aspx
 http://patternry.com/p=content-groups/
 Module Tabs
 Figure 4-31. MapQuest
-
--- 183 of 577 --
-
 156 Chapter 4: Organizing the Page: Layout of Page Elements
 What
 Put modules of content into a small tabbed area so that only one module is visible at a
@@ -4673,9 +3997,6 @@ itself. (Color alone isn’t usually enough. If you have only two tabs, make sur
 But the tabs don’t have to be literal tabs, and they don’t have to be at the top of the stack
 of modules. You can put them in a lefthand column, or underneath, or even turned 90
 degrees with the text read sideways.
-
--- 184 of 577 --
-
 The Patterns 157
 When deployed on web pages, Module Tabs tend to be distinct from navigational tabs
 (those used for global navigation, or separate documents, or for loading new pages). Tabs
@@ -4691,9 +4012,6 @@ two other pattern libraries.)
 Examples
 Microsoft Office for Windows 7 uses a “ribbon” atop documents, instead of the traditional menu and toolbars (see Figure 4-32). The ribbon is essentially a set of Module Tabs.
 Figure 4-32. Two tabs on the Excel ribbon
-
--- 185 of 577 --
-
 158 Chapter 4: Organizing the Page: Layout of Page Elements
 Some Module Tabs in Mac OS don’t look like tabs—they look like buttons. They behave
 exactly like tabs, however. The tabs are across the top, labeled “Audio,” “Photos,” “Movies,”
@@ -4701,13 +4019,6 @@ and “Widgets,” as shown in Figure 4-33.
 Figure 4-33. iWeb
 Tabs can work along the sides of a module too, as shown in Figure 4-34.
 Figure 4-34. SourceForge
-
----
-
-## Sección 46: Chapter 2 for a definition of information architecture.)
-
--- 186 of 577 --
-
 The Patterns 159
 In other libraries
 http://developer.yahoo.com/ypatterns/navigation/tabs/moduletabs.html
@@ -4724,9 +4035,6 @@ You have a lot of heterogeneous content to show on the page, possibly including 
 blocks, lists, buttons, form controls, or images. You don’t have room for everything.
 Some of the page content comes in groups or modules (or can be sorted into coherent
 groups). Those modules have the following characteristics:
-
--- 187 of 577 --
-
 160 Chapter 4: Organizing the Page: Layout of Page Elements
 • Users may want to see more than one module at a time.
 • Some modules are much taller or shorter than others, but they’re all of similar width.
@@ -4761,9 +4069,6 @@ the abrupt and unexpected disappearance of a previously open module: “Hey, whe
 other menu go? It was right here!”
 When used in an application or when the user is signed in to a website, an Accordion ought
 to preserve its state of opened and closed modules between sessions. This isn’t as important for navigation menus as it is for tool palettes.
-
--- 188 of 577 --
-
 The Patterns 161
 Accordions can be nested if the module contents need further subdivision, but they tend
 to look confusing. Users find it hard to tell the difference between an “outer” accordion
@@ -4782,9 +4087,6 @@ person’s images. Within each pane, content might be further subdivided or orga
 which Picasa does in the example in Figure 4-36 with Titled Sections. Chrome’s developer
 tools, on the other hand, nest Accordions inside each other (see Figure 4-37). You can figure out the nesting scheme if you stare at it hard enough, but it’s not easy.
 Figure 4-36. Picasa lefthand sidebar
-
--- 189 of 577 --
-
 162 Chapter 4: Organizing the Page: Layout of Page Elements
 Figure 4-37. Chrome righthand sidebar, with nested accordions
 CNN uses an Accordion to show personalized material (see Figure 4-38). Only one panel
@@ -4792,9 +4094,6 @@ can be open at once in this implementation. If it were up to me, I’d want to s
 these panels open at the same time, but maybe CNN had a very limited amount of vertical
 space to work with.
 Figure 4-38. CNN sidebar
-
--- 190 of 577 --
-
 The Patterns 163
 As shown in Figure 4-39, the Yahoo! Developer Network uses an Accordion in its footer to
 let users hide and show sections that they care about (or don’t). Note the use of a Sitemap
@@ -4808,9 +4107,6 @@ Designing Web Interfaces by Bill Scott and Theresa Neil (O’Reilly, http://orei
 catalog/9780596516253/) also describes an Accordion pattern.
 Collapsible Panels
 Figure 4-40. Google Maps
-
--- 191 of 577 --
-
 164 Chapter 4: Organizing the Page: Layout of Page Elements
 What
 Put secondary or optional material into panels that can be opened and closed by the user.
@@ -4844,13 +4140,6 @@ Put each supporting module into a panel that the user can open and close via a s
 click. Label the button or link with the module’s name or simply “More,” and consider
 using a chevron or rotating triangle to indicate that more content is hidden there. When
 the user closes the panel, collapse the space used by that panel and devote it to other content (such as by moving up the content below it on the page).
-
----
-
-## Sección 47: Chapter 2 for a definition of information architecture.)
-
--- 192 of 577 --
-
 The Patterns 165
 Consider animating the panels as they open and close. It appears less dislocating when
 they smoothly zip open and closed again.
@@ -4873,9 +4162,6 @@ and a user can bring it back by selecting a menu item (or by using a keyboard sh
 Note the asymmetry—it’s much easier to hide it than to show it, at least until the user
 memorizes the keyboard sequence! With a web page, or with an app that isn’t frequently
 used, a visible button to bring back the panel would be a better choice.
-
--- 193 of 577 --
-
 166 Chapter 4: Organizing the Page: Layout of Page Elements
 Figure 4-42. Firefox bookmarks sidebar
 At the time of this writing, YouTube places many Collapsible Panels on a video’s page (see
@@ -4885,15 +4171,9 @@ to these expandable areas by highlighting them in blue on rollover. They’re al
 default, and they close themselves when the page is reloaded. The resultant page is less
 cluttered than it would otherwise be, while still providing interesting information to users
 inspired enough to open these panels.
-
--- 194 of 577 --
-
 The Patterns 167
 Figure 4-43. YouTube’s collapsible panels; three states are shown: neither panel open, video description
 panel open, and statistics panel open (both cannot be open at once)
-
--- 195 of 577 --
-
 168 Chapter 4: Organizing the Page: Layout of Page Elements
 In other libraries
 http://www.welie.com/patterns/showPattern.php?patternID=collapsible-panels
@@ -4909,9 +4189,6 @@ Use when
 You’re designing either a desktop application, or a website that most users sign in to. News
 portals, Dashboards, and Canvas Plus Palette apps often use Movable Panels. You want users
 to feel a sense of ownership of the software, or at least have fun playing with it.
-
--- 196 of 577 --
-
 The Patterns 169
 The page in question is a major part of the app or site—something that users see often
 or for long periods of time. You have a lot of heterogeneous content to show on the page,
@@ -4944,9 +4221,6 @@ may do this on infrequently visited websites that provide some kind of entertain
 instance. Personalization can increase engagement and buy-in.
 Finally, a Movable Panels design easily accommodates new modules introduced over time,
 such as those contributed by third parties.
-
--- 197 of 577 --
-
 170 Chapter 4: Organizing the Page: Layout of Page Elements
 How
 Give each module a name, a title bar, and a default size, and arrange them on the page in
@@ -4972,19 +4246,9 @@ iGoogle, shown in Figures 4-45 and 4-46, demonstrates the mechanics of dragging 
 dropping a Movable Panel around a page. A user grabs the title bar of a panel; at the beginning of the drag operation, a dotted-line “ghost” shows the place where the panel had
 been. As the panel is dragged near another drop zone between panels, another “ghost”
 appears there—if the user lets go of the panel now, that’s where it will land.
-
----
-
-## Sección 48: Chapter 2 for a definition of information architecture.)
-
--- 198 of 577 --
-
 The Patterns 171
 Figure 4-45. iGoogle, after starting a panel drag
 Figure 4-46. iGoogle, about to finish a panel drag
-
--- 199 of 577 --
-
 172 Chapter 4: Organizing the Page: Layout of Page Elements
 Desktop applications might use Movable Panels in a couple of ways: to show all the major
 tool windows in a complex application such as MATLAB, or to arrange small palette windows around a document, as Photoshop and other Canvas Plus Palette applications do.
@@ -4994,9 +4258,6 @@ palette windows out on the desktop, where a user can freely move them, resize th
 stack them in Module Tabs.
 Figure 4-47. MATLAB desktop
 Figure 4-48. Photoshop desktop
-
--- 200 of 577 --
-
 The Patterns 173
 In other libraries
 http://quince.infragistics.com/Patterns/Movable%20Panels.aspx
@@ -5009,9 +4270,6 @@ Right/Left Alignment
 Figure 4-49. Mac OS system preferences
 What
 When designing a two-column form or table, right-align the labels on the left and leftalign the items on the right.
-
--- 201 of 577 --
-
 174 Chapter 4: Organizing the Page: Layout of Page Elements
 Use when
 You’re laying out a form or any other set of items that have text labels in front of them.
@@ -5048,9 +4306,6 @@ separated by only a few pixels. The net effect will probably be a ragged (unalig
 edge—that’s usually OK. If some labels are too long to make this work, try breaking them
 into multiple lines, or resort to putting the labels above the control, in which case this
 pattern becomes irrelevant.
-
--- 202 of 577 --
-
 The Patterns 175
 Then left-align the controls against an imaginary line a few pixels away from the right
 edges of the labels. Make them precisely aligned, pixel-perfect—if they’re not, the controls will look messy. (The human visual system is really good at picking out slight
@@ -5069,9 +4324,6 @@ Figure 4-50. Mac OS address book entry
 In other libraries
 http://quince.infragistics.com/Patterns/Right%20Aligned%20Labels.aspx
 http://www.uxmatters.com/mt/archives/2006/07/label-placement-in-forms.php
-
--- 203 of 577 --
-
 176 Chapter 4: Organizing the Page: Layout of Page Elements
 Diagonal Balance
 Figure 4-51. Windows 7 control panel
@@ -5087,13 +4339,6 @@ Visually prominent features such as titles, tabs, and buttons should contribute 
 put them on opposite sides, too, they often balance one another out. (Think of them as
 weights—the bigger or more “contrasty” the features are, the heavier they are; the closer to
 the edge they get, the more you need to put on the other side to compensate.)
-
----
-
-## Sección 49: Chapter 2 for a definition of information architecture.)
-
--- 204 of 577 --
-
 The Patterns 177
 Besides being nicer to look at, a diagonal balance also sets up the page so that the user’s eye
 moves easily from the top left to the bottom right—an ideal visual flow for users who speak
@@ -5121,9 +4366,6 @@ Examples
 The simple screen shown in Figure 4-52 directs the viewer’s attention to the lower right,
 where the call to action sits.
 Download from Wow! eBook <www.wowebook.com>
-
--- 205 of 577 --
-
 178 Chapter 4: Organizing the Page: Layout of Page Elements
 Figure 4-52. Starbucks WiFi screen
 The focal points in the site shown in Figure 4-53 are the logo, the moving car, the “Let’s
@@ -5132,9 +4374,6 @@ Motor” tag line, and the dealer-locator text field at bottom right—all in a 
 forcefully than the other examples. Undoubtedly, the designers of the site wanted to encourage people to use the text field. If it were at the bottom left instead, the page would
 lose much of its punch, and the text field might get lost in the page.
 Figure 4-53. Mini Cooper website from 2005
-
--- 206 of 577 --
-
 The Patterns 179
 Responsive Disclosure
 Figure 4-54. AutoTrader
@@ -5158,9 +4397,6 @@ UI, he can form a correct mental model of the task more quickly and easily. None
 awkward context switches that separate wizard screens impose exist here: when a user is
 yanked out of his workflow into a rigid set of modal screens shown one at a time, it feels
 like more of an imposition than if the UI had stayed within the user’s working context.
-
--- 207 of 577 --
-
 180 Chapter 4: Organizing the Page: Layout of Page Elements
 Furthermore, since the UI is kept together on one page, the user can easily go back and
 change his mind about earlier choices. As each step is redone, he immediately sees the
@@ -5195,13 +4431,6 @@ including the word Other, for instance, an extra text field would appear for the
 enter a number.
 * Johnson, J.A., et al. 1989. “The Xerox ‘Star’: A Retrospective.” IEEE Computer 22(9), 11–29. See also http://
 www.digibarn.com/friends/curbow/star/retrospect/.
-
----
-
-## Sección 50: Chapter 2 for a definition of information architecture.)
-
--- 208 of 577 --
-
 The Patterns 181
 Examples
 The Kayak example in Figure 4-55 hides the calendar and comparison box until the user
@@ -5212,9 +4441,6 @@ selection made in a drop-down or other limited-choice control. The examples in F
 4-56, from Google Docs, do this: when the user changes the “Question Type” selection,
 the follow-on questions change accordingly. (So does the AutoTrader example, at the top
 of the pattern in Figure 4-54.)
-
--- 209 of 577 --
-
 182 Chapter 4: Organizing the Page: Layout of Page Elements
 Figure 4-56. Google Docs form field creation
 In other libraries
@@ -5222,9 +4448,6 @@ http://patternry.com/p=inline-input-adder/
 http://quince.infragistics.com/Patterns/Responsive%20Disclosure.aspx
 Responsive Enabling
 Figure 4-57. TurboTax
-
--- 210 of 577 --
-
 The Patterns 183
 What
 Starting with a UI that is mostly disabled, guide a user through a series of steps by enabling more of the UI as each step is done.
@@ -5256,9 +4479,6 @@ field (or checkbox, respectively) at the top or left of the disabled items, whic
 natural top-to-bottom and left-to-right “flow” of the interface.
 When you design an interface that uses Responsive Enabling or Responsive Disclosure,
 be sure to disable only things that really can’t or shouldn’t be used. Be wary of overconstraining the user’s experience in an attempt to make the interface friendlier or easier
-
--- 211 of 577 --
-
 184 Chapter 4: Organizing the Page: Layout of Page Elements
 to understand. When you decide what to disable, carefully consider each item. Is it being
 disabled for a really good reason? Can that functionality be enabled all the time? As usual,
@@ -5283,16 +4503,10 @@ string; the user has fewer buttons to think about, plus some assurance that the 
 “knows” what she’s trying to type. Address entry is thus made easier and more pleasant.
 (When only a few streets match, the system takes away the keyboard altogether and shows
 the streets as a list of choices—see the Autocompletion pattern in Chapter 8.)
-
--- 212 of 577 --
-
 The Patterns 185
 Figure 4-59. Lexus hybrid navigation system
 In other libraries
 http://quince.infragistics.com/Patterns/Responsive%20Enabling.aspx
-
--- 213 of 577 --
-
 186 Chapter 4: Organizing the Page: Layout of Page Elements
 Liquid Layout
 Figure 4-60. Mac OS open dialog
@@ -5314,13 +4528,6 @@ users?
 Giving the user a little control over the layout of the page makes your UI more flexible
 under changing conditions. It may also make the user feel less antagonistic toward the UI,
 since he can bend it to fit his immediate needs and contexts.
-
----
-
-## Sección 51: Chapter 2 for a definition of information architecture.)
-
--- 214 of 577 --
-
 The Patterns 187
 If you need more convincing, consider what happens to a fixed-layout “nonliquid” UI
 when the language or font size changes. Do columns still line up? Do pages suddenly
@@ -5355,9 +4562,6 @@ This is good because the user can see as much of the filesystem hierarchy as he 
 rather than being constrained to a tiny predetermined space. See Figure 4-60 at the top
 of the pattern.
 * “Use Reading Performance or User Preference,” from http://usability.gov/guidelines/.
-
--- 215 of 577 --
-
 188 Chapter 4: Organizing the Page: Layout of Page Elements
 When a Liquid Layout is used on text in a browser, the floated elements should handle the
 resize gracefully, as in the Drupal.org example shown in Figure 4-61. Note also that the
@@ -5368,9 +4572,6 @@ Google Docs allows the user to shrink the window to a very narrow size (see Figu
 Though it places long toolbars across the top of the document, those toolbars wrap around
 and collapse gracefully as the window shrinks. (The user can’t resize it to be smaller than
 the smallest size shown here.)
-
--- 216 of 577 --
-
 The Patterns 189
 Figure 4-62. Google Docs slideshow editor
 In other libraries
@@ -5378,20 +4579,16 @@ http://www.welie.com/patterns/showPattern.php?patternID=liquid-layout
 http://quince.infragistics.com/Patterns/Liquid%20Layout.aspx
 http://www.designofsites.com/designing-effective-page-layouts/expanding-screen-width
 
--- 217 of 577 --
-
--- 218 of 577 --
-
 ---
 
-## Sección 52: Chapter 5
+## Sección 11: Chapter 5 [Entropy: 0.25]
 
 Lists of Things
 This chapter covers only one topic: how to display lists of items in an interactive setting. Just items. Actual data—complex and highly structured data sets—isn’t covered until
 
 ---
 
-## Sección 53: Chapter 7.
+## Sección 12: Chapter 7. [Entropy: 0.28]
 
 Why do lists merit their own chapter, you may ask?
 Consider the many types of items that get shown in lists: articles, pages, photos, videos,
@@ -5406,13 +4603,10 @@ refer to other chapters and patterns. Menus are handled in Chapter 6, complicate
 
 ---
 
-## Sección 54: Chapter 7, and links and other navigational mechanisms in Chapter 3. Mobile platforms
+## Sección 13: Chapter 7, and links and other navigational mechanisms in Chapter 3. Mobile platforms [Entropy: 0.984]
 
 have very specific design constraints, so Chapter 10 will be referred to as well. But there’s
 still a lot left over.
-
--- 219 of 577 --
-
 192 Chapter 5: Lists of Things
 Use Cases for Lists
 Before jumping into a design, it’s useful to analyze the use cases for a list. What will people
@@ -5448,9 +4642,6 @@ Length
 • How long is the list? Can it fit in the space you’ve designed for it?
 • Could the list sometimes be “bottomless”? For example, web search results often constitute such a long list that the user will never reach the end; likewise for items taken
 from a very large and deep archive.
-
--- 220 of 577 --
-
 Back to Information Architecture 193
 Order
 • Does the list have a natural order, such as alphabetical or by time?
@@ -5485,9 +4676,6 @@ Interaction
 they be selected for inspection, or for performing tasks on them? Or are they links or
 buttons to be clicked on?
 • Does it make sense for the user to select multiple items at a time?
-
--- 221 of 577 --
-
 194 Chapter 5: Lists of Things
 Dynamic behavior
 • How long does it take to load the whole list? Can it be more or less immediate, or will
@@ -5516,13 +4704,6 @@ open—and searching on item contents can be done smoothly by automatically open
 used for small spaces that cannot accommodate a Two-Panel Selector, such as mobile
 screens or small module panels. It does lead to “pogo sticking” between the list screen
 and the item screen, though, so browsing and searching are not so easy.
-
----
-
-## Sección 55: Chapter 7, and links and other navigational mechanisms in Chapter 3. Mobile platforms
-
--- 222 of 577 --
-
 Some Solutions 195
 Now let’s shift our attention to the items themselves. How much detail should you show
 with each item, assuming the user will click through to see the whole thing? Again, you
@@ -5559,9 +4740,6 @@ something specific, especially if a text search doesn’t behave as desired? The
 techniques and patterns apply to all the previously listed ways to show a list and its items
 (except maybe a Carousel, which has tighter constraints):
 Download from Wow! eBook <www.wowebook.com>
-
--- 223 of 577 --
-
 196 Chapter 5: Lists of Things
 “How can I manage a very long list?”
 • Pagination lets you load the list in sections, putting the onus on the user to load those
@@ -5573,7 +4751,6452 @@ a ridiculously long page or take a ridiculously long time. A good Pagination con
 shows the user how many pages of items there are, as well as letting a user jump
 among those pages.
 • Infinite List is a single-page alternative to Pagination. The first section of a long list
-gets loaded, and at the bottom the user
+gets loaded, and at the bottom the user finds a button that loads and appends the
+next section. The user stays on one page. Common in mobile designs, this pattern
+can be found in Chapter 10. Don’t discount it for regular web pages, however! This
+pattern is useful when you don’t actually know how long the list will be, or when it’s
+“bottomless.”
+• A variant on Infinite List has the list automatically loading itself as the user scrolls
+down. See the Continuous Scrolling pattern at the following page:
+http://ui-patterns.com/patterns/ContinuousScrolling
+• When a very long alphabetized list is kept in a scrolled box, consider using an Alphabet
+Scroller. Related to Annotated Scrollbar (Chapter 3), this device shows the alphabet arrayed along the scrollbar itself; the user can then jump directly to a desired letter.
+• Direct searching via a “Find” field may be critical for helping your users to find specific items. Also, filtering a list—screening out entire classes of items that don’t meet
+certain criteria—can help shorten a list to a manageable size.
+So far, this section has talked mostly about flat lists: those that have no categories, containment, or hierarchy. However a list might be rendered, you may still want to break it
+up into categories for clarity.
+“How can I show a list that’s organized into categories or hierarchies?”
+• Titled Sections (Chapter 4) work well for a single level of containment. Just separate
+the list into sections with titles, and perhaps allow the user to sort the list within a
+single section so as not to disrupt the categorization. If you only have a few sections,
+try an Accordion—this lets the user close list sections that she doesn’t need.
+• For two or more levels of hierarchy, basic trees are the standby solution. These are
+normally presented with indented hierarchy levels, and with icons such as pluses
+and minuses (commonly found on Windows) or rotating triangles. The levels can be
+closed and opened by the users or automatically by the interface as needed. Many UI
+toolkits offer tree implementations.
+The Patterns 197
+• Cascading Lists take a tree’s vertically oriented hierarchy and turn it on its side,
+with a series of columns that list all the possibilities at every level of the hierarchy.
+Popularized by Mac OS, this pattern allows very effective browsing and overviews of
+hierarchies at the cost of large amounts of space. (It does not work in a small window
+or screen.)
+• When the items are heavily structured and you want to present them in a table but
+they come organized in a hierarchy, consider a Tree Table. Literally, it combines a tree
+with a table, and it’s exactly what it sounds like.
+The Patterns
+First are the three patterns that place item details next to, inside, or on a different page
+from the list itself:
+1. Two-Panel Selector
+2. One-Window Drilldown
+3. List Inlay
+The next few patterns cover ways to show lists of various sorts—image-based lists
+(Thumbnail Grid and Carousel), tables (Row Striping), long lists (Pagination, Jump to Item,
+Alphabet Scroller), and hierarchies (Cascading Lists and Tree Table). If you’re using a table or
+Tree Table, consider making it a Sortable Table (see Chapter 7).
+4. Thumbnail Grid
+5. Carousel
+6. Row Striping
+7. Pagination
+8. Jump to Item
+9. Alphabet Scroller
+10. Cascading Lists
+11. Tree Table
+Finally, New-Item Row lets a user add items to a list however that list may be rendered.
+12. New-Item Row
+198 Chapter 5: Lists of Things
+Two-Panel Selector
+Figure 5-1. Mac OS system preferences
+What
+Put two side-by-side panels on the interface. In the first one, show a list of items that the
+user can select at will; in the second one, show the content of the selected item.
+Use when
+You have a list of items to show. Each item has interesting content associated with it, such
+as the text of an email message, a long article, a full-sized image, contained items (if the
+list is a set of categories or folders), or details about a file’s size or date.
+You want the user to see the overall structure of the list and keep that list in view all the
+time, but you also want him to be able to browse through the items easily and quickly.
+People won’t need to see the details or content of more than one item at a time.
+Physically, the display you’re working with is large enough to show two separate panels
+at once. Very small cell phone displays cannot cope with this pattern, but many larger
+mobile devices can.
+Why
+This is a learned convention, but it’s an extremely common and powerful one. People
+quickly learn that they’re supposed to select an item in one panel to see its contents in the
+other. They might learn it from their email clients, or from Windows Explorer, or from
+websites; whatever the case, they apply the concept to other applications that look similar.
+The Patterns 199
+When both panels are visible side by side, users can quickly shift their attention back and
+forth, looking now at the overall structure of the list (“How many more unread email messages do I have?”), and now at an object’s details (“What does this email say?”). This tight
+integration has several advantages over other physical structures, such as two separate
+windows or One-Window Drilldown:
+• It reduces physical effort. The user’s eyes don’t have to travel a long distance between
+the panels, and he can change the selection with a single mouse click or key press
+rather than first navigating between windows or pages (which can take an extra
+mouse click).
+• It reduces visual cognitive load. When a window pops to the top, or when a page’s
+contents are completely changed (as happens with One-Window Drilldown), the user
+suddenly has to pay more attention to what he’s now looking at; when the window
+stays mostly stable, as in a Two-Panel Selector, the user can focus on the smaller area
+that did change. There is no major “context switch” on the page.
+• It reduces the user’s memory burden. Think about the email example again: when
+the user is looking at just the text of an email message, there’s nothing on-screen to
+remind him of where that message is in the context of his inbox. If he wants to know,
+he has to remember, or navigate back to the list. But if the list is already on-screen,
+he merely has to look, not remember. The list thus serves as a “You are here” signpost
+(see Chapter 3 for an explanation of signposts).
+• It’s faster than loading a new page for each item, as can happen with One-Window
+Drilldown.
+How
+Place the selectable list on the top or left panel, and the details panel below it or to its right.
+This takes advantage of the visual flow that most users who read left-to-right languages
+will expect (so try reversing it for right-to-left language readers).
+When the user selects an item, immediately show its contents or details in the second
+panel. Selection should be done with a single click. But while you’re at it, give the user
+a way to change his selection from the keyboard, particularly with the arrow keys—this
+helps reduce both the physical effort and the time required for browsing, and contributes
+to keyboard-only usability (see Keyboard Only in Chapter 1).
+Make the selected item visually obvious. Most GUI toolkits have a particular way of showing selection (e.g., reversing the foreground and background of the selected list item). If
+that doesn’t look good, or if you’re not using a GUI toolkit with this feature, try to make
+the selected item a different color and brightness than the unselected ones—that helps it
+stand out.
+200 Chapter 5: Lists of Things
+What should the selectable list look like? It depends—on the inherent structure of the
+content, or perhaps on the task to be performed. For instance, most filesystem viewers
+show the directory hierarchy, since that’s how filesystems are structured. Animation and
+video editing software use interactive timelines. A GUI builder may simply use the layout
+canvas itself; selected objects on it then show their properties in a property editor next to
+the canvas.
+A Two-Panel Selector has identical semantics to tabs: one area for the selectors, and one
+area next to it for the content of the selected thing. Likewise, a List Inlay is like an Accordion
+(Chapter 4), and One-Window Drilldown is like a Menu Page (Chapter 3).
+When the select-and-show concept is extended through multiple panels to facilitate navigation through a hierarchical information architecture, you get the Cascading Lists pattern.
+Examples
+Many email clients use this pattern to show a list of email messages next to the currently
+selected message (see Figure 5-2). Such listings benefit from being nearly as wide as the
+whole window, so it makes sense to put the listing on top of the second panel, not to its
+left. (Also, this example shows the use of a third selector panel on the left that lets the user
+choose which mailbox to work in.)
+Figure 5-2. Mac Mail on a desktop
+The Patterns 201
+Like many other Picture Managers, Picasa (Figure 5-3) lists the various image folders and
+categories in its Two-Panel Selector. The result is a second list, of images. When the user
+selects an image, the whole window is replaced; see One-Window Drilldown.
+Figure 5-3. Picasa
+In other libraries
+http://quince.infragistics.com/Patterns/Two-Panel%20Selector.aspx
+http://www.welie.com/patterns/showPattern.php?patternID=overview-detail
+202 Chapter 5: Lists of Things
+One-Window Drilldown
+Figure 5-4. Mac Mail on iPhone
+What
+Show a list or menu of items in a single window. When the user selects an item from the
+list, show the details or contents of that item in the window, replacing the list.
+Use when
+You have a list of items to show. Each item has interesting content associated with it, such
+as the text of an email message, a long article, a full-size image, or details about a file’s size
+or date.
+You have very little space to work with—not enough for a Two-Panel Selector or a List Inlay.
+For instance, the design might be intended for a very small mobile screen, or for a selfcontained web page sidebar or widget.
+Alternatively, the list items and contents might just be large. You might need the entire
+screen or window to show the list, and again to show the contents of an item. Online
+forums tend to work this way, requiring the whole width of the page to list conversation
+topics and a separate scrolled page to show the conversations themselves.
+The Patterns 203
+Why
+In a very constrained space, this may be the only reasonable option for presenting a list
+and item details. It gives each view the entire available space to “spread out” on the page.
+Like Menu Page in Chapter 3, however, this pattern has the benefit of simplicity. A list of
+items (or links) is easy to understand: to see more of an item, you click or tap on it and
+thus “drill down” one level. Then you can come back up to the main list or menu to go to
+another item.
+How
+Create the list using whatever layout or format you find best—simple text names, multiline “fat rows” with text formatting, trees or outlines, and Thumbnail Grids all work fine, as
+do other formats. Vertically scroll it if necessary to fit it into the available space.
+When the user clicks, taps, or otherwise selects one of the list items, replace the list display
+with a display of the item details or contents. On it, place a Back or Cancel button that
+brings the user back to the list screen (unless the platform supplies hardware buttons for
+such).
+The item screen may offer additional navigational possibilities, such as drilling down further into the item details, stepping down into an item contained within that item (as in a
+hierarchy), or going “sideways” to the previous or next item in the list (as discussed in the
+next paragraph). In each case, replace the previous screen with the new one, and make
+sure the user can easily step back to the previous screen.
+One disadvantage of this pattern is that to go from item to item, the user must “pogostick” between the list page and the item page. It takes a lot of clicks or taps to see more
+than a few items, and the user certainly can’t flick between them quickly (as with Two-
+Panel Selector) or compare them easily (as with List Inlay). You can mitigate this problem
+by using Back and Next links to connect the user directly to the previous and next items
+in the list—see the Pyramid pattern in Chapter 3.
+Examples
+Examples abound in mobile designs, as shown in Figure 5-4. Contrast this mobile version
+of a mail client with its desktop counterpart shown in the Two-Panel Selector pattern. For
+instance, the One-Window Drilldown approach requires more text to be shown in the list, so
+the user has enough context to identify messages and triage them.
+You can find One-Window Drilldown in full-size applications and web pages, too. Forums
+and communities tend to use it a lot—topics are listed on one page, and discussion threads
+are on their own pages. Ravelry demonstrates this approach, as do about six million other
+online forums (see Figure 5-5).
+204 Chapter 5: Lists of Things
+Figure 5-5. Ravelry forums
+The Picasa desktop application, a Picture Manager, uses a Two-Panel Selector beside a
+Thumbnail Grid for its browsing interface (see Figure 5-6). But once the user clicks a photo,
+Picasa replaces the entire contents of the window (except the bottom toolbar) with a new
+layout—one that shows the photo itself in Center Stage, with a set of tools next to it.
+The Patterns 205
+Figure 5-6. Picasa
+In other libraries
+http://quince.infragistics.com/Patterns/One-Window%20Drilldown.aspx
+206 Chapter 5: Lists of Things
+List Inlay
+Figure 5-7. Kayak’s expanding list items
+What
+Show a list of items as rows in a column. When the user selects an item, open that item’s
+details in place, within the list itself. Allow items to be opened and closed independently
+of each other.
+Use when
+You have a list of items to show. Each item has interesting content associated with it, such
+as the text of an email message, a long article, a full-size image, or details about a file’s size
+or date. The item details don’t take up a large amount of space, but they’re not so small
+that you can fit them all in the list itself.
+You want the user to see the overall structure of the list and keep that list in view all the
+time, but you also want her to browse through the items easily and quickly. Users may
+want to see two or more item contents at a time, for comparison.
+The list of items has a vertically oriented, columnar structure.
+The Patterns 207
+Why
+A List Inlay shows an item’s details within the context of the list itself. The user can see the
+surrounding items, which might help in understanding and using the item contents.
+Also, a user can see the details of multiple items at once. This is not possible in Two-Panel
+Selector, One-Window Drilldown, rollover windows, or most other ways of displaying item
+details. If your use cases call for frequent comparison of two or more items, this might be
+the best option.
+Because a List Inlay is neatly contained within a vertical column, it can be combined well
+with a Two-Panel Selector to present a three-level containment hierarchy. Consider an
+email client or RSS reader, for instance—the messages or articles might be viewed in a List
+Inlay, while the item containers (mailboxes, groupings, filters, etc.) are shown next to it in
+a Two-Panel Selector structure.
+How
+Show list items in a column. When the user clicks on one, open the item in place to show
+the details of that item. A similar gesture should close the item back up again.
+When an item is opened, enlarge the item’s space downward, pushing the subsequent
+items down the page. Other items do the same when opened. A scrolled area should be
+used to contain this ever-changing vertical structure, since it could get very tall indeed!
+To close the details panel, use a control that clearly indicates its purpose (e.g., “Close”
+or “X”). Some implementations of List Inlay only put that control at the end of the details
+panel, but users may need it at the top if the panel is long and they don’t want to move
+down the whole thing. Put a closing control very near the original “open” control (or replace one with the other). This at least ensures that the user’s pointer won’t move very far
+if she wants to open an item, glance at it, close it, and move on.
+Use an Animated Transition as the item opens and closes, to keep the user oriented and to
+focus attention on the newly opened item.
+If your application permits the user to edit items, you could use a List Inlay to open an editor instead of item details (or in addition to them).
+A list that uses List Inlays works the same way as an Accordion: everything lies in a single
+column, with panels opening and closing in situ within it. Likewise, a Two-Panel Selector
+works like a set of tabs, and One-Window Drilldown is like a Menu Page (Chapter 3).
+Examples
+Google Reader (Figure 5-8) uses a List Inlay within the context of a Two-Panel Selector. It
+has a multi-level hierarchy of containers to present; the containers are shown in the tree
+selector on the left, but the list of articles takes up Center Stage and the user can then open
+them in place to read them.
+208 Chapter 5: Lists of Things
+Figure 5-8. Google Reader
+The Patterns 209
+Rather than forcing the user to pogo-stick back and forth from the list of book reviews
+to the actual text of each review, Amazon’s mobile site lets users read them in a List Inlay.
+The list of items on the left tempts the user with short teasers from each review, and when
+a user is interested enough to keep reading, she can tap the title to read the whole thing
+(Figure 5-9). The existence of plus and minus controls signals to the user that these items
+expand.
+Figure 5-9. Amazon reviews on the iPhone
+In other libraries
+http://www.patternry.com/p=inline-expand/
+Bill Scott and Theresa Neil identified this technique in their book, Designing Web
+Interfaces (O’Reilly, http://oreilly.com/catalog/9780596516253/). List Inlays are one of a set
+of inlay techniques that includes Dialog Inlays and Detail Inlays.
+The Accordion pattern exists in many pattern libraries, including this one. Much of the
+design advice proffered for Accordion can apply equally well to List Inlay. (There really isn’t
+a huge practical difference between them.)
+210 Chapter 5: Lists of Things
+Thumbnail Grid
+Figure 5-10. Hanna Andersson product listing
+What
+Arrange a list of visually interesting items into a “small multiples” grid of thumbnail images. Let the user select one or more thumbnails to view or manage those items.
+Use when
+The list items have small visual representations that uniquely identify them: images, logos,
+screen captures, reduced photos, and so forth. These tend to be similar in size and style.
+The list may be long, and it may be divided into Titled Sections (Chapter 4).
+You want to show a little bit of metadata (information about the item) with each one, such
+as its name and date, but you don’t need to show a lot of that—the picture should take up
+most of the space devoted to the item.
+The Patterns 211
+Users will want an overview of the whole list, and they may need to scan it quickly to find
+a particular item of interest. Users may also need to select one or more items at a time for
+moving, deleting, or viewing.
+Why
+A Thumbnail Grid is a dense, attractive presentation of large numbers of items. Related to
+Grid of Equals (Chapter 4), this pattern creates a visual hierarchy that shows the list items
+as peers, and a strong grid tends to draw the eye to that part of the page.
+It might be easier to show the list items in text form, but sometimes pictures can be recognized and differentiated more easily than text.
+Thumbnails that are roughly square make easy targets for fingertips (on touch screens)
+and for indirect pointing devices as well. This pattern works well on mobile devices with
+relatively high-resolution touch screens, such as iPhones.
+How
+Arrange the item thumbnails into a 2D grid. Scale the thumbnails so that they’re approximately the same size, to keep the grid tidy. Place the text metadata close to the thumbnail,
+but in small print in order to maintain the thumbnail’s visual prominence.
+Some Thumbnail Grids look much nicer when the thumbnails all have similar width and
+height. If you’re working with graphics that come in different sizes or aspect ratios (the
+ratio of width to height), or if they’re large, some image processing will need to be done to
+construct thumbnails. Try to find a size and aspect ratio that works reasonably well with
+all of them, even if some images will be cropped to fit it. (Reducing image size is easy;
+cropping appropriately is not. Be careful to preserve the image’s integrity by choosing the
+most relevant piece of the image to show, when possible.)
+An exception is if you’re dealing with images whose size and proportion are useful information to the viewer. For instance, a set of personal photos will contain some that are in a
+landscape format and some in a portrait (vertical) format. There’s no need to crop these to
+match an idealized thumbnail—the user will want to see which photos are which!
+On the other hand, a thumbnail gallery of products (such as shoes or shirts) should all
+have the same height and width, with the products presented consistently within those
+photos.
+Download from Wow! eBook <www.wowebook.com>
+212 Chapter 5: Lists of Things
+Examples
+Mac OS Finder displays a variety of thumbnail types for a file directory listing (see Figure
+5-11). When a file is an image, a shrunken version of that image is shown; for directories,
+a simple folder; for files without an available visual, just the file type (e.g., “DOC”) over
+a generic icon. The thumbnail grid is not at all uniform, so it doesn’t look as clean as the
+others in this pattern, but the size and style variations communicate useful information
+to the user.
+Figure 5-11. Mac OS Finder
+AIGA’s design archives (Figure 5-12) and YouTube (Figure 5-13) are two Picture Managers
+that show no text information and lots of text information, respectively.
+The Patterns 213
+Figure 5-12. AIGA design archives
+Figure 5-13. YouTube
+214 Chapter 5: Lists of Things
+Zappos (Figure 5-14) and Hanna Andersson (Figure 5-10, at the top of the pattern) demonstrate nicely designed Thumbnail Grids for product galleries. Uniformity is beautiful
+here—the similarities and differences between products show up with stunning clarity,
+and a strong visual rhythm exists on the page.
+Figure 5-14. Zappos
+Mobile devices need Thumbnail Grids in many contexts: to show applications, features, and
+images themselves. Note the relative sizes of the thumbnails in Figure 5-15; the Google
+Images and iPhone home screen examples are just big enough to be touched easily by
+human fingertips. The Facebook example is more relaxed, with more space around each
+item.
+The Patterns 215
+Figure 5-15. Thumbnail Grids on the iPhone: Facebook, Google Images, and the home screen
+In other libraries
+http://ui-patterns.com/patterns/Thumbnail
+Carousel
+Figure 5-16. Marriott
+What
+Arrange a list of visually interesting items into a horizontal strip or arc, and let the user
+scroll or swipe the image thumbnails back and forth to view them. Enlarge the center
+item, if appropriate.
+216 Chapter 5: Lists of Things
+Use when
+The list items have visual representations that uniquely identify them: images, logos,
+screen captures, reduced photos, and so forth. These tend to be similar in size and style.
+The list is flat (i.e., not divided into categories or containers).
+You want to show a little bit of metadata (information about the item) with each one, such
+as its name and date, but you don’t need to show a lot of that—the picture should take up
+most of the space devoted to the item.
+Each item is potentially of interest. Users will browse the items casually; they won’t normally search for a specific item, or need to get an overall look at the entire list at once.
+If someone does look for a specific item, he won’t mind moving past many items before
+finding the one he’s looking for. You may be able to order the items with the most interesting ones first, or in chronological order.
+You don’t have enough vertical space for a Thumbnail Grid, and you may not have a lot of
+horizontal space either, but you need to make this list look interesting and attractive.
+Why
+A Carousel offers an engaging interface for browsing visual items, encouraging the user
+to inspect the items that are in view and to see what’s next. A user can’t easily jump to a
+certain point deep in the list, so he has to scroll through everything—this pattern thus
+encourages browsing and serendipity.
+Carousels are compact vertically, so they may be a better solution than a Thumbnail Grid for
+a small space. Horizontally, they can be either compact or spread out.
+If a particular implementation focuses attention on a central item or selection, such as by
+enlarging it, this pattern delivers “focus plus context”—users get a detailed view of one
+item, while also seeing the ones immediately around it. See Chapter 7 for more discussion
+of this principle.
+How
+First, create thumbnails for each item shown in the Carousel. See the Thumbnail Grid pattern for issues related to thumbnail size and proportion (keeping in mind that Carousels
+impose even stricter restraints—thumbnails of different size or aspect ratio tend to look
+more awkward in Carousels than in Thumbnail Grids). Place the text metadata close to the
+thumbnail, but in small print in order to maintain the thumbnail’s visual prominence.
+In a horizontal scrolling widget, arrange the thumbnails horizontally, either randomly or
+in an order that makes obvious sense to the user (such as by date). Show a small number
+of them—fewer than 10—and hide the rest on either side. Put large arrows on the left and
+right for paging through the Carousel; each click on an arrow should move more than one
+item. Animate this scrolling for extra visual interest.
+The Patterns 217
+If users will want to move quickly through a long list, as though they are looking for something in particular, put a scrollbar below the Carousel in addition to the arrows. You may
+find that users do this a lot; if so, consider restructuring the list as a more conventional
+vertical list, and add a “find” capability.
+You may choose to enlarge the central item in the Carousel to draw attention to it. This
+gives the Carousel single-selection semantics—the enlarged item is clearly the selected
+one, and you can then do dynamic things based on that selection, such as showing text
+details about it, or offering video controls if the items are video thumbnails.
+Some Carousels are straight; some are curved or circular. These usually use the trick of a
+3D perspective, in which items shrink and are partially obscured as they drift farther away
+from the center.
+In the mobile design space, the Filmstrip pattern (Chapter 10) is a variant on a Carousel.
+Only one item at a time is shown on the small screen, and the user swipes or scrolls back
+and forth to see other items.
+Examples
+Many websites use a basic, linear Carousel for browsing products. Amazon and Google
+Books show book covers this way (see Figure 5-17); note the different amounts of text
+metadata and the implications for design. How much information should be provided
+with each book? How tightly packed should the book covers be?
+Figure 5-17. Amazon and Google Books
+218 Chapter 5: Lists of Things
+Apple and Flickr (Figures 5-18 and 5-19) provide horizontal scrollbars along with their
+Carousels. These may contain a lot of items, so a scrollbar is needed for fast progress
+through them. Note that Apple’s Carousel uses an Annotated Scrollbar (Chapter 3) to help
+users find product categories. The horizontal aspect of this list makes for a graceful presentation of the product names, but it wouldn’t scale much beyond a small handful of
+categories—it’s quite unusual to present a categorized list in a Carousel. Flat lists usually
+work better.
+Figure 5-18. Apple product carousel
+Figure 5-19. Flickr organizational tools
+Cover Flow (Figure 5-20) is essentially a media Carousel that enlarges the central, selected
+item. Compare it to a curved Carousel in an Web Platform app (Figure 5-21); these are similar
+in behavior, but very different in visual styling.
+Figure 5-20. Cover Flow in iTunes
+The Patterns 219
+Figure 5-21. Sherpa for Web Platform (image courtesy of http://www.androidtapp.com/sherpa-discover-yourworld/sherpa-nearest-dining-on-carousel/)
+The New York Times presents some of its feature articles in a Carousel (see Figure 5-22).
+These are the kinds of articles that may tempt a user to look at each one and browse
+slowly; it wouldn’t work for all of the Times’ countless daily articles, since people mostly
+skim the headlines and cherry-pick articles of interest. Features are different, however.
+Figure 5-22. New York Times feature articles
+In other libraries
+http://developer.yahoo.com/ypatterns/selection/carousel.html
+http://ui-patterns.com/patterns/Carousel
+http://welie.com/patterns/showPattern.php?patternID=carrousel
+220 Chapter 5: Lists of Things
+Row Striping
+Figure 5-23. JetBlue
+What
+Use two similar shades to alternately color the backgrounds of the table rows.
+Use when
+Your interface presents data in a large multicolumn table, but the table’s rows are difficult
+to separate visually. Users will need to look up specific data items in the table.
+Why
+Blocks of gentle color define and delineate the information contained inside them, even
+when you can’t use whitespace to separate the data into “chunks.” Cartographers and
+graphic designers have known this color-block technique for ages. (Remember that colored backgrounds are also effective for defining page sections and articulating a visual
+hierarchy. See Chapter 4 for more information.)
+The Patterns 221
+When someone looks at a large data table with a single background color, she will tend to
+see the columns as coherent objects due to proximity—the table entries in a column are
+closer to one another than they are to the other entries in their rows. But you want the
+viewer to read the table “row-wise” as well as column-wise. By coloring adjacent rows differently, you turn the rows into coherent visual objects, too. (This takes advantage of the
+Gestalt principles of continuity and closure; again, see Chapter 4.)
+Specifically, Row Striping helps a user:
+• Follow a row from left to right and back again, without confusing the rows
+• See the “footprint” of the table itself, as separate from its containing page
+However, Row Striping introduces more visual noise into the page. Some users in some
+contexts may find that it slows them down or that it makes the table harder to use.
+Two studies on Row Striping, also known as zebra striping, indicate that it has a small but
+noticeable benefit for lookup speed and accuracy—under some conditions. The tables for
+which lookup improved were fairly large, with many rows and several widely spaced columns; a smaller table showed no benefit one way or the other. The researchers also noted
+that when asked about it, users said they preferred Row Striping! See the two articles at
+the following URLs for discussions of these studies, and for links to the original research
+performed by Formulate Information Design:
+http://www.alistapart.com/articles/zebrastripingdoesithelp/
+http://www.alistapart.com/articles/zebrastripingmoredataforthecase/
+How
+Pick a pair of quiet, low-saturation colors that are similar in value but not identical. (In
+other words, one needs to be a wee bit darker than the other.) Good choices are light blue
+and white, beige and white, or two similar shades of gray—assuming the text on top of
+them is dark. Generally, one of the colors is your page’s background color.
+Alternate the color from row to row. If the rows are thin, you could also experiment with
+grouping the rows—the first three are white, the next three are blue, and so on—but the
+research described a few paragraphs up found that users preferred single-line striping.
+222 Chapter 5: Lists of Things
+This pattern virtually eliminates the need for horizontal lines between the rows (though
+you could use them if they are very thin and inconspicuous). If your columns are aligned
+with one another, you don’t need vertical lines between them, nor a heavy border around
+the table—the viewer’s sense of visual closure will kick in, and the row colors will define
+the edges of the table for you. However, if row striping isn’t working well for your users,
+you might try very thin horizontal lines instead, since they have a similar effect of forcing
+the eye to see horizontal groups instead of vertical groups.
+Examples
+The JetBlue example at the top of the pattern (Figure 5-23) shows several lines per row.
+The data itself is multiline and carefully formatted; some row separation other than
+whitespace was needed here. Lightweight horizontal rules may have worked too, but Row
+Striping makes coherent shapes out of the rows.
+Single-row striping is more common. iTunes uses it to good effect, as shown in Figure 5-24.
+Figure 5-24. iTunes
+The Excel ledger spreadsheet shown in Figure 5-25 permits the user to change gridline
+styles, and Row Striping is among the possibilities. This sheet makes it fairly easy to follow
+the lines from left to right and back again.
+The Patterns 223
+Figure 5-25. Excel ledger, with stripes
+But look what happens when the gray row backgrounds are stripped away, as shown in
+Figure 5-26. The columns suddenly become much stronger visually, and each row is harder
+to read from left to right. Some designers, however, find this design to be cleaner and more
+pleasing. There’s no absolutely correct answer about whether to use Row Striping or not.
+Figure 5-26. Excel ledger, without stripes
+224 Chapter 5: Lists of Things
+In other libraries
+This technique is also known in many places as “alternating row colors” or “zebra striping.” Descriptions abound on the Web:
+http://ui-patterns.com/patterns/AlternatingRowColors
+http://www.welie.com/patterns/showPattern.php?patternID=zebra-table
+http://quince.infragistics.com/Patterns/Alternating%20Row%20Colors.aspx
+Pagination
+Figure 5-27. Songza pagination control
+What
+Break up a very long list into pages, and load them one at a time. Provide controls for the
+user to navigate the list—next, previous, first, and last pages.
+Use when
+You’re showing a list that might be very, very long. Most users will either look for a particular item or browse the top of the list for relevant items (e.g., with search results); in any
+case, they won’t really want to see the entire list.
+The technology you’re using doesn’t support loading the entire list into a single page or
+scrolled area, for any of the following reasons:
+• Loading the whole list would take too much time, and you don’t want to make the
+user wait. This might be the case over a slow Internet connection or with a slow
+backend server.
+• Rendering the list would take too much time.
+• The list is effectively “bottomless,” and implementing an Infinite List or a continuously
+scrolling list (which both handle bottomless lists) isn’t feasible for some reason.
+Why
+Pagination breaks a list into chunks that a user can easily take in without being overwhelmed. Furthermore, it puts the choice to see more into the user’s hands—do you want
+to load more items from the list, or is this page of items enough for you?
+The Patterns 225
+This pattern also has the advantage of being very common on the Web, especially (though
+not exclusively) for search results. It’s easy to implement, and may come prebuilt in some
+systems.
+How
+First, you’ll need to decide how many items will be in each page. Base this on the amount
+of space each item takes up, the screen sizes users are likely to have (don’t forget to consider mobile platforms), the time it takes to load or show the items, and the likelihood that
+the user will find one or more desired items in the first page.
+This is fairly important: the first page should be enough! The odds are good that most
+users won’t go beyond that first page of items, so if they can’t find what they’re looking for
+in that first page, they may get discouraged. (If you’re dealing with a search facility, make
+sure that it returns high-quality results at the top of that first page.)
+On pages that users may linger over, such as lists of products or videos, consider letting
+the user set the number of items per page. Some people are irritated by having to page
+back and forth to see all the items of interest.
+Next, you’ll need to decide how to present the pagination controls. They’re usually found
+at the bottom of the page, but some designs also have them at the top—if a user really does
+need to go to a subsequent page of items, there’s no need to make him scroll all the way
+down the page.
+Consider these elements in the pagination control:
+• Previous and Next links, with arrows or triangles for emphasis. Disable the Previous
+link when the user is on the first page and the Next link when the user is on the last
+page (if there is a known last page).
+• A link to the first page. This should always be visible; remember that the first page is
+supposed to contain the most relevant items.
+• A sequence of numbered links to pages. Don’t link the page the user is on, of course;
+instead, show it in a contrasting color and type size to give the user a “You are here”
+navigational clue.
+• Ellipses to cut out parts of the sequence if there are too many pages to reasonably
+show in the control—more than 20, for instance. Again, keep the first page, and the
+last page if the list isn’t “bottomless.” Keep the pages immediately before and after the
+user’s current page. Elide the rest.
+• Optionally, the total number of pages (if known). You could do this in several ways,
+such as showing text like “Page 2 out of 45,” or simply showing the last page as a
+numbered link at the end of the pagination control. See the examples for some ideas.
+226 Chapter 5: Lists of Things
+Examples
+Digg and Google both do an excellent job of including all the elements and cues from
+the preceding list. The screenshots in Figure 5-28 show the most interesting pagination
+control states: first and last pages for only a small number of items, and the first, middle,
+and last pages for a very large number of items. Note that Digg uses ellipses to manage
+large numbers, and Google simply omits the beginning and end of the range. Digg knows
+exactly how many pages of items there are, whereas Google’s list is sometimes bottomless.
+(The last Google example shows the last page of a search that wasn’t bottomless—it only
+returned 21 pages of results.)
+Figure 5-28. Digg and Google examples
+Figure 5-29 shows a gallery of examples from all over the Web. Notice which ones are
+easier to parse visually—Which link is which? Where should I click next?—and which
+ones give you sufficient information about your location and the total number of pages.
+Also note the size of the click targets. How accurate does the user have to be with her
+mouse or fingertip?
+The Patterns 227
+Figure 5-29. Counterclockwise from top: Kayak, Drupal.org, Flickr, Target, Last.fm, Mothering.com,
+Amazon, eBay, YouTube, and Hulu
+In other libraries
+http://www.welie.com/patterns/showPattern.php?patternID=paging
+http://ui-patterns.com/patterns/Pagination
+http://www.patternry.com/p=search-pagination/
+http://quince.infragistics.com/Patterns/Paging.aspx
+The Yahoo! pattern library has two versions of the Pagination pattern, one for search and
+one for other types of items:
+http://developer.yahoo.com/ypatterns/navigation/pagination/item.html
+http://developer.yahoo.com/ypatterns/navigation/pagination/search.html
+228 Chapter 5: Lists of Things
+Jump to Item
+“C-h-i”
+Figure 5-30. Font dialog on Mac OS
+What
+When the user types the name of an item into a table or tree, jump straight to that item
+and select it.
+Use when
+The interface uses a scrolling list, table, drop down, combo box, or tree to present a long
+list of items. These items are sorted, either alphabetically or numerically. The user wants
+to select one particular item quickly and accurately, and preferably with the keyboard.
+This pattern is often used in file finders, long lists of names, and drop-down boxes for state
+or country selection. You can also use it for numbers—such as years or dollar amounts—
+or even calendar time, such as months or days of the week.
+Why
+People aren’t good at scanning down long lists of words or numbers for a particular item.
+But computers are. Let them do what they’re good at!
+Another nice thing about this technique is that it lets the user keep her hands on the keyboard. As she moves through a form or dialog box, she might find it nice to select from a
+list simply by typing the first few characters of the item she wants—the system then picks
+the item for her, and she can continue on to the next thing. No scrolling or clicking is
+necessary; the user’s hand never has to move from the keyboard to the mouse.
+How
+When the user types the first letter or number of the item she’s looking for, jump to the
+first item that matches what the user typed: automatically scroll the list so that the item is
+visible, and select it.
+The Patterns 229
+As the user types more characters in rapid succession, keep changing the selection to the
+first exact match for the whole user-typed string. If there is no match, stay put at the nearest match, and don’t scroll back to the top of the list. You may want to beep at the user to
+tell her that there’s no match—some applications do, some don’t.
+Examples
+A variant of Jump to Item is used by GNU Emacs’ incremental-search facility (see Figure
+5-31). After the user enters i-search mode via Ctrl-S, each character typed brings the user
+to the first instance of that cumulative string in the document. It doesn’t matter that the
+original material wasn’t sorted.
+Figure 5-31. Emacs
+Once an occurrence of the string has been found, the user can find subsequent ones by
+pressing Ctrl-S repeatedly. In some ways, this incremental search is more convenient—
+and certainly faster—than typical desktop “Find” dialog boxes, which don’t update continuously as you type the search string.
+Furthermore, Emacs can highlight all other instances of that string in the document in
+addition to scrolling to the first one. This gives the user lots of extra contextual information about the search she’s conducting. Is it a common string, or not? Are they clustered
+together, or scattered?
+230 Chapter 5: Lists of Things
+Alphabet Scroller
+Figure 5-32. About.com
+What
+Show the letters of the alphabet arrayed along the scrollbar of an alphabetized list.
+Use when
+Users will be searching for very specific items in a long list, which is usually rendered as
+a scrolled list, table, or tree. You want to make item finding as easy and quick to achieve
+as possible.
+Why
+Alphabet scrollers are not common, but their use is self-explanatory. They provide an interactive map to the list content, in much the same way as an Annotated Scrollbar (Chapter 3).
+They’re closely related to Jump to Item—both enable immediate jumping to a point in an
+ordered list.
+This pattern probably arose from physical books (such as dictionaries) and notebooks
+(such as address books) that use tabs to mark points in the alphabet.
+The Patterns 231
+How
+Place a long alphabetized list into a scrolled area. Along the scrollbar, show the letters of
+the alphabet; when the user clicks on a letter, scroll the list to that point (see Figure 5-32,
+at the top of the pattern).
+There are multiple operational examples of alphabetized lists working this way, but there
+is no reason why another ordering—by number or by date, for example—couldn’t also
+work well. Consider expanding this pattern beyond the alphabet!
+Examples
+The iPhone offers what is probably the best-known example of this pattern. Figure 5-33
+shows its built-in Contacts app.
+Figure 5-33. iPhone contacts list
+232 Chapter 5: Lists of Things
+Cascading Lists
+Figure 5-34. Mac OS font dialog
+What
+Express a hierarchy by showing selectable lists of the items in each hierarchy level.
+Selection of any item shows that item’s children in the next list.
+Use when
+The list items are arranged in a hierarchy. The hierarchy might be deep, and it might have
+many items on each level. A tree (outline) would work, but the user would have to scroll
+up and down a lot to see all the items, and he wouldn’t get a good overview of the items at
+higher levels in the hierarchy.
+The hierarchy may be a literal one, such as a filesystem, or a conceptual one—this pattern
+is often used to let a user navigate and choose items within categories or make a series of
+interdependent choices, as with the fonts in the example in Figure 5-34 at the top of the
+pattern.
+The Patterns 233
+Why
+By spreading the hierarchy out across several scrolled lists, you show more of it at once. It’s
+that simple. Visibility is helpful when you’re dealing with complex information structures.
+Also, laying the items out in lists organizes them nicely—a user can more easily keep track
+of what level he’s dealing with than he could with an outline format, since the hierarchy
+levels are in nice, predictable, fixed-position lists.
+How
+Put the first level of the hierarchy in the leftmost list (which should use single-selection
+semantics). When the user selects an item in it, show that item’s children in the next list
+to the right. Do the same with the child items in this second list; show its selected item’s
+children in the third list. And so on.
+Once the user reaches items with no children—the “leaf ” items, as opposed to “branches”—
+you might want to show the details of the last-selected item at the far right. An image file
+typically displays a thumbnail; you might instead offer a UI for editing an item, reading
+its content, or whatever is appropriate for your particular application.
+A nice thing about this pattern is that you can easily associate buttons with each list: delete
+the current item, move up, move down, and so on. Many toolkits will let you do this in
+tree controls via direct manipulation, but for those that don’t have built-in tree controls,
+this is a viable alternative.
+Examples
+The Mac OS Finder screenshot shown in Figure 5-35 is an extreme example, with seven
+levels. But it shows that the pattern scales well, letting the user drill down into deep filesystem hierarchies while staying oriented. (Warning: this can be confusing for people who
+aren’t familiar with this pattern and the concept of a hierarchy.)
+Figure 5-35. Mac OS Finder
+NeXTSTEP originally used this technique in its own File Viewer, circa 1990 or so. The
+example in Figure 5-36 is from http://www120.pair.com/mccarthy/nextstep/intro.htmld/
+Workspace.html.
+234 Chapter 5: Lists of Things
+Figure 5-36. NeXTSTEP File Viewer
+In other libraries
+http://quince.infragistics.com/Patterns/Cascading%20Lists.aspx
+Tree Table
+Figure 5-37. Mac OS Finder
+The Patterns 235
+What
+Put item fields in table-like columns, but use an indented outline structure in the first
+column to illustrate the tree structure.
+Use when
+The items in a list are highly structured, with specific attributes that are of interest to
+users. You can show them in a multicolumn list or table. But the items are primarily organized as a hierarchy, so you also want a tree to display them most of the time.
+Your users are relatively sophisticated with respect to interface usage; this is not an easy
+pattern for naive computer users to understand (and the same can be said about most
+hierarchical views, including trees and Cascading Lists).
+Why
+Combining the two data-viewing approaches into one view gives you the best of both
+worlds, at the cost of some visual and programming complexity. You can show the hierarchy of items, plus a matrix of additional data or item attributes, in one unified structure.
+How
+The examples show what you need to do: put the tree (really an outline) in the first column, and the item attributes in the subsequent columns. The rows—one item per row—
+are usually selectable. Naturally, this can be combined with Sortable Tables to produce a
+more browsable, interactive structure. Sorting on the columns disrupts the tree ordering,
+so you’ll need to provide an extra button or some other affordance to re-sort the table into
+the order required by the tree.
+This technique seems to have found a home in email clients and news readers, where
+threads of discussion form tree-like structures.
+Examples
+The Firefox browser once used a distinctive-looking Tree Table in one of its dialog boxes.
+The separators—horizontal lines—help to visually group the items in different categories,
+which isn’t a bad idea at all (see Figure 5-38).
+236 Chapter 5: Lists of Things
+Figure 5-38. Firefox Bookmarks Manager, from an early version of the browser
+In other libraries
+http://quince.infragistics.com/Patterns/Tree-Table.aspx
+New-Item Row
+Figure 5-39. Microsoft Outlook
+The Patterns 237
+What
+Use the last or first row in the list or table to create a new item in place.
+Use when
+The interface contains a table, list, tree view, or any other vertical presentation of a set of
+items (one item per row). At some point, the user needs to add new items to it. But you
+don’t have a lot of room to spare on the UI for extra buttons or options, and you want to
+make item creation very efficient and easy for the user.
+Why
+By letting the user type directly into the end (or the beginning) of the table, you put the
+act of creation into the same place where the item will ultimately “live.” It’s conceptually
+more coherent than putting it in some other part of the UI. Also, it makes the interface
+more elegant than having an entirely different UI for item creation—it uses less screen
+real estate, it reduces the amount of navigation that needs to be done (thus eliminating a
+“jump” to another window), and it’s less work for your users.
+How
+Give the user an easy and obvious way to initiate a new object from the first empty table
+row. A single mouse click in that row might start editing, for instance, or the row might
+contain a “New Whatever” pushbutton, or it might contain a dummy item as shown at the
+top of the pattern in Figure 5-39.
+At that point, the UI should create the new item and put it in that row. Each column in
+the table (if it’s a multicolumn table) should then be editable, thus letting the user set up
+the values of that item. The cells could have text fields in them, or drop-down lists, or
+whatever else is necessary to set the values quickly and precisely. As with any form-like
+user input, Good Defaults (Chapter 8) help save the user work by prefilling those values;
+the user doesn’t have to edit every column.
+There are still some loose ends to clean up, though. What happens if the user abandons the
+new item before finishing? You can establish a valid item right from the beginning—if the
+user abandons the edits at any time, the item exists until the user goes back and deletes it.
+Again, Good Defaults help by prefilling valid values if there are multiple fields.
+Depending on how it’s implemented, this pattern can resemble Input Prompt (Chapter 8).
+In both cases, a dummy value is set up for the user to edit into a real value, and that
+dummy value is worded as a “prompt” that shows the user what to do.
+Download from Wow! eBook <www.wowebook.com>
+Examples
+Excel’s built-in spreadsheet templates, such as the one shown in Figure 5-40 for budgeting, mark the New-Item Row very clearly by putting a blue box around the entire row. The
+PowerPoint outline view shown in Figure 5-41 affords creation of new slides by typing
+into the bottom row, but the interface is subtler and hard to notice. (I went looking for this
+feature before I found it; I never knew beforehand that it existed.)
+Figure 5-40. New entry in an Excel ledger
+Figure 5-41. New slide in a PowerPoint slideshow
+In other libraries
+http://quince.infragistics.com/Patterns/New-Item%20Row.aspx
+http://www.welie.com/patterns/showPattern.php?patternID=list-entry-view
+
+---
+
+## Sección 14: Chapter 6 [Entropy: 0.876]
+
+Doing Things: Actions and Commands
+This chapter is devoted to the “verbs” in the interface. We’ve spent a lot of pages talking
+about overall structure and flow, visual layout, and “nouns”—such as windows, text, links,
+and static elements in pages. Chapter 7 spends even more pages on nouns, and Chapter 8
+handles traditional (and a few nontraditional) controls and widgets: things that let users
+supply information and set state, but that don’t actually do much.
+So now let’s talk about buttons and menus.
+Sounds exciting, doesn’t it? Probably not. Desktop interfaces have used menu bars as long
+ago as the first Macintosh, and buttons for even longer. What we think of as “buttons” are
+only a visual rendering of a physical device that long predated GUIs.
+It’s true that there is a lot of history here, and there are many best practices to follow. The
+standard platform style guides, such as those for Windows and Macintosh, will generally
+get you pretty close to a workable UI. Most users depend upon learned conventions to
+negotiate menus and find buttons, so it behooves you to follow those conventions, even
+when they feel restrictive or nonsensical.
+Common functionality such as cut, copy, and paste also carries lots of historical baggage—if
+it could be reinvented now, it would probably work differently—but even moderately experienced desktop computer users have learned how it’s “supposed to work.” The same is
+true for pop-up menus (context menus), which some users seem to look for everywhere,
+and other users never think to look for at all. Drag-and-drop isn’t as bound by history,
+but it absolutely has to work the way users intuitively expect it to, or the illusion of direct
+manipulation is broken.
+That being said, you can do many things to make your interface less dull and more usable.
+Your goals should be to make the right actions available, label them well, make them easy
+to find, and support sequences of actions. There are a few creative ways to do it.
+240 Chapter 6: Doing Things: Actions and Commands
+First, I’ll list the common ways actions are rendered to the user:
+Buttons
+Buttons are placed directly onto the interface, without requiring the user to perform
+any action to see them, and are usually grouped semantically. (See the Button Groups
+pattern.) They’re big, readable, obvious, and extremely easy to use for even the most
+inexperienced computer users. But they take up a lot of space on the interface, unlike
+menu bars and pop-up menus. On landing pages, such as corporate home pages and
+product startup pages, calls to action are usually represented as single, large, eyecatching buttons—this is entirely appropriate for their purpose, which is to attract
+attention and say, “Click me!”
+Menu bars
+Menu bars are standard on most desktop applications. They generally show an application’s complete set of actions, organized in a mostly predictable way (such as
+File, Edit, or View). Some actions operate on the entire application, and some operate
+only on individually selected items. Menu bars often duplicate functionality found
+in context menus and toolbars because they are accessible—screen readers can read
+them, users can reach them via keyboard accelerators, and so on. (Accessibility alone
+makes menu bars indispensable in many products.) Menu bars appear in some web
+applications, especially productivity software, drawing programs, and other products
+that emulate desktop apps.
+Pop-up menus
+Also known as context menus, pop-up menus are raised with a right-mouse click or
+some similar gesture on panels or items. They usually list context-specific, common
+actions, not all the actions that are possible on the interface. Keep them short.
+Drop-down menus
+Users raise these menus by clicking on a drop-down control such as a combo box.
+However, drop-down controls are intended for selecting choices on a form, not for
+performing actions. Avoid using them for actions.
+Toolbars
+The canonical toolbar is a long, thin row of iconic buttons. Often they have other
+kinds of buttons or controls on them too, such as text fields or Dropdown Choosers
+(see Chapter 8). Iconic toolbars work best when the portrayed actions have obvious
+visual renderings; when the actions really need to be described with words, try other
+controls, such as combo boxes or buttons with text labels. Cryptic icons are a classic
+source of confusion and unusability.
+Links
+Buttons 9don’t need borders. Thanks to the Web, everyone understands that colored
+text (especially blue text) usually indicates a clickable link. In a UI area where actions
+are expected but where you don’t need to draw attention or clutter the page, you can
+use simple clickable “link” text for actions instead of buttons. When the user rolls the
+mouse over the text, change the cursor and underline the text to reinforce the impression of clickability.
+Action panels
+These are essentially menus that the user doesn’t need to post; they’re always visible
+on the main interface. They are a fine substitute for toolbars when actions are better
+described verbally than visually. See the Action Panel pattern.
+Hover tools
+If you \want to show two or more actions for each item on an interface but you don’t
+want to clutter the page with lots of repeated buttons, you can make those buttons
+invisible until the mouse hovers over the item. (This is great for mouse-driven interfaces, but it doesn’t work well for touch screens.) See the Hover Tools pattern for more.
+Then there are invisible actions, which don’t have any labels at all to announce what they
+do. Users need to know (or guess) that they’re there, unless you put written instructions
+on the UI. Therefore, they don’t help with discovery at all, since users can’t read over them
+to find out what actions are possible. With buttons, links, and menus, the UI actions are
+available for inspection, so users learn from those. In usability tests, I’ve seen many users
+look at a new product and methodically walk down the menu bar, item by item, just to
+find out what it can do.
+That being said, you almost always need to use one or more of the following invisible actions. People often expect to be able to double-click on items, for example. However, the
+keyboard (or the equivalent) is sometimes the only means of access for visually impaired
+users and people who can’t use a mouse. In addition, the expert users of some operating
+systems and applications prefer to work by typing commands into a shell and/or by using
+its keyboard actions.
+Double-clicking on items
+Users tend to view double-clicking as either “open this item” or “do whatever the default thing is with this item,” depending on context. In a graphical editor, for instance,
+double-clicking on an element often means opening a property sheet or specialized
+editor for it. Double-clicking an application’s icon in most operating systems launches that application. Double-clicking a piece of text might edit it in place.
+Keyboard actions
+Keyboard shortcuts, such as the well-known Ctrl-S to save, should be designed into
+most desktop applications for accessibility and efficient use. The major UI platforms,
+including Windows, Mac, and some Linux environments, each have style guides that
+describe the standard shortcuts—and they’re all very similar. Additionally, menus
+and controls often have underlined access keys, which let users reach those controls
+without mouse-clicking or tabbing. (Press the Alt key, and then press the key corresponding to the underlined letter, to invoke these actions.)
+242 Chapter 6: Doing Things: Actions and Commands
+Drag-and-drop
+Dragging and dropping items on an interface usually means either “move this here”
+or “do this to that.” In other words, someone might drag a file onto an application
+icon to say, “Open this file in that application.” Or she might drag that file from one
+place in a file finder to another place, thus moving or copying the item. Drag-anddrop is context-dependent, but it almost always results in one of these two actions.
+Typed commands
+Command-line interfaces generally allow free-form access to all the actions in the
+software system, whether it’s an operating system or an application. I consider these
+kinds of actions “invisible” because most command-line interfaces (CLIs) don’t easily divulge the available commands. They’re not very discoverable, though they’re
+quite powerful once you learn what’s available—much can be done with a single wellconstructed command. As such, CLIs are best for users committed to learning the
+software very well.
+Pushing the Boundaries
+Some application idioms give you freedom to design nonstandard buttons and controls.
+Visual editors, media players, applications intended mostly for experts, instant messaging,
+games, and anything that’s supposed to be fun and interesting all have users who might
+be curious enough to figure out how to use unusual but well-designed interface elements.
+Where can you be more creative? Consider the items on the first list in the preceding section; visible buttons and menus are easier to use than invisible actions, such as keyboard
+shortcuts. Generalizing from that, actions could be:
+• Clickable icons
+• Clickable text that doesn’t look like a button
+• Something that reacts when the mouse pointer rolls over it
+• Some object that looks like it may be manipulated by the user
+• Something placed on almost any piece of screen real estate
+But how much creativity can you get away with before the application becomes too hard
+to figure out?
+For a real-life example, we’ll look at the GarageBand application, shown in Figure 6-1.
+There’s a lot going on in this interface. Some objects are obviously buttons, such as the
+player controls—rewind, play, fast forward, and so forth—and the scrollbar arrows. You
+will find some sliders and knobs, too.
+Pushing the Boundaries 243
+Figure 6-1. GarageBand
+But look harder at the far right of the window, between the red line and the wood-grain
+edge. To your eyes, what pieces of the interface look clickable? Why? If you want, you can
+look ahead to Figure 6-2 and cheat. (And if you already know GarageBand, please bear
+with me.)
+Draggable along the horizontal axis.
+When you click “play,” the music starts
+where the red bar is.
+Also draggable along the horizontal axis.
+This purple arrow defines the end of the song.
+Brings up a menu of values for the time line grid:
+1/2 note, 1/4 note, 1/8 note, etc.
+Selectable “regions” of each track, which can
+also be multiple-selected, dragged, and moved
+from row to row.
+Movable “spheres” that act like control points
+for the volume: up to make it louder, down
+to make it softer, side to side to adjust the
+slope of the line.
+The “playhead lock” button, whatever that does.
+Resizes the window when dragged.
+Click to move the slider all the
+way down or all the way up.
+Figure 6-2. GarageBand actions
+244 Chapter 6: Doing Things: Actions and Commands
+Figure 6-2 shows which objects on the interface perform actions. You clearly couldn’t
+have known what they all do, since this book doesn’t give you the benefit of tool tips, rollover cursors, or experimentation. But did you figure out that some of these objects could
+be clicked or manipulated? I’m guessing you did.
+How? You probably know that interfaces that look like this offer a lot of functionality
+through direct manipulation, so you have good grounds for assuming that every interesting visual feature does something. You might know that sliders, such as the volume slider
+at the bottom, sometimes have “jump buttons” at the ends—and you might have recognized the volume slider itself from iTunes. You might guess that tiny squarish icons tend
+to be buttons, often for presentation-related actions; Word and PowerPoint use a lot of
+them. You might have seen a vertical line topped with an inverted triangle in some other
+context—maybe movable, maybe not. But didn’t this triangle look like it was movable?
+When an object looks like it might let you do something, such as click it or drag it, we
+say it “affords” performing that action. Traditional raised-edge buttons afford pushing; a
+slider thumb affords dragging; a text field affords typing; a blue underlined word affords
+clicking. And anything that reacts to the mouse cursor affords something, although you
+can’t necessarily tell what!
+Figure 6-2 points out the affordances in the GarageBand interface. This is an important
+concept. In software interfaces, the user doesn’t get many sensory clues about what can be
+tweaked or handled: visuals give most of the clues, and mouse rollovers do the rest. Use
+them to communicate affordances well.
+Here’s some specific design advice:
+• Follow conventions whenever possible. Reuse UI concepts and controls that people
+already know, such as the volume sliders in the example.
+• Use pseudo-3D shading and drop shadows to make things look “raised.”
+• When the mouse pointer hovers over items that can be clicked or dragged, turn the
+pointer into something different, such as a finger or a hand.
+• Use tool tips, or some other descriptive text, to tell the user what the objects under
+the mouse pointer do. If you don’t need them, that’s great—you have a self-describing
+design—but many users expect tool tips anyway.
+The Patterns 245
+The Patterns
+The first patterns in this chapter talk about three of the many ways to present actions.
+When you find yourself reflexively putting actions on an application’s menu bar or popup menu, stop for a moment and consider using one of these instead.
+1. Button Groups
+2. Hover Tools
+3. Action Panel
+Prominent “Done” Button improves the single most important button on many web pages
+and dialog boxes. Smart Menu Items is a technique for improving some of the actions you
+put on menus; this is a very general pattern, useful for many kinds of menus (or buttons
+or links).
+4. Prominent “Done” Button
+5. Smart Menu Items
+We’d like it if all the user-initiated actions in an application could be completed instantly,
+but that’s not reality. Preview shows the user what’s going to happen before a timeconsuming action is committed. Progress Indicator is a well-known technique for letting
+the user know what’s going on while an operation proceeds, while Cancelability refers to a
+UI’s ability to stop an operation when the user asks it to.
+6. Preview
+7. Progress Indicator
+8. Cancelability
+The last three patterns—Multi-Level Undo, Command History, and Macros—all deal with
+sequences of actions. These three interlocking patterns are most useful in complex applications, especially those whose users are committed to learning the software well and
+using it extensively. (That’s why the examples come from complex software such as Linux,
+Photoshop, Word, and MATLAB.) Be warned that these patterns are not easy to implement. They require the application to model a user’s actions as discrete, describable, and
+sometimes reversible operations, and such a model is very hard to retrofit into an existing software architecture. The Command pattern in the classic book Design Patterns
+(Addison-Wesley Professional) is one good place to look for implementation advice.
+And that’s as close as this book gets to implementation details. We’ll now return to the
+realm of interface design.
+9. Multi-Level Undo
+10. Command History
+11. Macros
+246 Chapter 6: Doing Things: Actions and Commands
+Button Groups
+3 4
+Figure 6-3. Google Docs main screen header, with four button groups highlighted
+What
+Present related actions as a small cluster of buttons, aligned and with similar graphic
+treatments. Create multiple groups if there are more than three or four actions.
+Use when
+There are many actions to show on the interface. You want to make sure they are all visible
+all the time, but you need to visually organize them so that they’re not chaotic or hard to
+sort out. Some of these actions are similar to each other—they have similar or complementary effects, for instance, or they operate with similar semantics—and they can thus
+be assembled into groups of two to five.
+Button Groups can be used for app-wide operations (such as Open or Preferences), itemspecific actions (Save, Edit, Delete), or any other scope. Actions with different scope
+ought not to be grouped together, however.
+Why
+Button Groups help make an interface self-describing. Well-defined clusters of buttons are
+easy to pick out of a complex layout, and because they’re so visible, they instantly communicate the availability of those actions. They announce, “These are the actions you’ve
+got to work with in this context.”
+The Gestalt principles discussed in Chapter 4 apply here. Proximity hints at relatedness;
+if the buttons are all together, they probably do similar things. So does visual similarity;
+if you make all the buttons the same dimensions, for instance, they look like they belong
+together. Conversely, button groups that are separated in space—or that are different in
+shape—imply unrelated groups of actions.
+The Patterns 247
+Proper sizing and alignment help the Button Group form a larger composite visual shape
+(this is the principle of closure).
+How
+Make a group out of the buttons in question. Label them with short but unambiguous
+verbs or verb phrases, and don’t use jargon unless users expect it. Do not mix buttons that
+affect different things or have different scope; separate them into different groups.
+All buttons in the group should have the same graphic treatment: borders, color, height
+and/or width, icon style, dynamic effects, and so on. You can line them up in a single column, or arrange them in a single row if they aren’t too wide.
+(However, treat them differently if one action is a “primary” action, such as a Submit button on a web form. A primary action is an action that you want most users to take, or that
+most users will expect to take. Give that button a stronger graphic treatment to make it
+stand out among the others.)
+If all the buttons in a group act on the same object or objects, put the Button Group to
+the left or right of those objects. You could put them below the objects instead, but users
+often have a “blind spot” at the bottom of complex UI elements such as multicolumn lists
+and trees—the buttons may not be seen at all. To make them more visible, keep the rest
+of the interface clean and uncluttered. If you have a specific design that works better with
+the buttons at the bottom, usability-test it and find out. If there are enough buttons and
+if they have icons, you could also put them on a toolbar or toolbar-like strip at the top of
+the page.
+By using Button Groups, you’re trying to avoid a crowded mess of buttons and links, or
+perhaps a long and plodding list of actions with no apparent differentiation at all. With
+this pattern, you create a miniature visual hierarchy of actions: the user can see at a glance
+what’s related and what’s important.
+Examples
+Standard tools for WYSIWYG editors are often grouped by function. The two examples
+shown in Figure 6-4, from Word and Flash Builder, show some common tools in groupings that actually aid recognition.
+As shown in Figure 6-5, iTunes places Button Groups at each of the four corners of the
+main window, plus the standard title bar buttons (such as close and minimize). When the
+user browses the Music Store, even more actions are contained in the web-page-like third
+panel (not shown)—links constitute many of the actions there—and a button for each
+song in the table.
+248 Chapter 6: Doing Things: Actions and Commands
+Figure 6-4. Microsoft Word and Adobe Flash Builder
+There are no fewer than 13 buttons on this interface, and I’m not even counting the four
+scrollbar buttons or the three clickable table headers. There’s a lot to do here, but thanks to
+careful visual and semantic organization, the interface is never overwhelming.
+Alternative
+views
+Standard title
+bar buttons
+Player
+controls
+Playlist
+actions
+Search
+Figure 6-5. iTunes
+In other libraries
+http://quince.infragistics.com/Patterns/Button%20Groups.aspx
+The Patterns 249
+Hover Tools
+Figure 6-6. Twitter
+What
+Place buttons and other actions next to the items they act upon, but hide them until the
+user hovers the pointer over them.
+Use when
+There are many actions to show on the interface. You want a clean, uncluttered look most
+of the time, but you have to put those actions somewhere, preferably on or next to the
+items they act upon. You’ve already allocated the space to show those actions, but they just
+make things too crowded and busy if they’re all visible all the time.
+Hover Tools are commonly used in list interfaces, in which many small items—photos,
+messages, search results, and so on—are displayed in a column or list. The user can perform a number of actions on each one.
+You don’t intend the interface to be used with fingertips, as with a touchpad device—
+you’re certain that almost all users will interact with your UI via a mouse. (If your UI is a
+web page, consider carefully whether it should behave differently on a touchpad versus a
+desktop or laptop platform.)
+Why
+Hover Tools reveal themselves exactly when and where they’re needed. They stay out of
+sight otherwise, allowing the UI to remain clean and uncluttered. They appear when the
+user requests them, and by appearing in response to the user’s gesture, they draw attention
+to themselves.
+250 Chapter 6: Doing Things: Actions and Commands
+Pop-up (right-click) menus, pull-down menus, and menu bars also meet these criteria,
+but they are not discoverable enough for some kinds of interfaces—they’re best used on
+traditional desktop applications, not web-based interfaces. (And sometimes they’re not
+the best choice on traditional applications, either.) Hover Tools are more easily discoverable
+because the gesture that produces them—a rollover—is so simple and natural.
+Unfortunately, Hover Tools currently don’t work so well on touch devices. A rollover with
+a mouse is an easy, natural act that leads to discovery; but on a touchpad, the only way a
+user can see the Hover Tools is if she actually touches the hover area, which is a more committing act. It doesn’t help much with discovery at all.
+How
+Design each item or hover area with enough space to show all the available actions. Hide
+the ones that clutter the interface too much, and show them only when the user hovers the
+mouse pointer over the area in question.
+Respond quickly to the hover, and don’t use an Animated Transition—simply show the
+tools immediately, and hide them immediately when the user moves the pointer away.
+Likewise, never enlarge the hover area or otherwise rearrange the page when the user
+hovers the pointer over it. The idea is to make the hover action as lightweight and quick
+as possible so that the user can easily reach the necessary tools.
+If the hover area is an item in a list, you may wish to highlight the item by changing its
+background color or drawing a border around it. The act of showing tools will draw the
+user’s eyes to that area, but highlighting the item will do so even more.
+Consider Hover Tools as an alternative to a drop-down menu, a pop-up menu, an Action
+Panel, a List Inlay with buttons in it, or a set of buttons repeated in each item.
+Examples
+Grooveshark uses Hover Tools to show per-song actions (see Figure 6-7). The alternatives
+would have been to show all the tools all the time—busy, but not terrible—or to move the
+tools to the top toolbar, where they would only operate on songs selected in the list. That’s
+rather complicated for the designer, the programmer, and especially the user: she would
+have to figure out how to select a song, and then make the spatial and logical connection
+between the selected song(s) and the tools at the top of the table. In contrast, the Hover
+Tools are right there and self-explanatory.
+The Patterns 251
+Figure 6-7. Grooveshark
+The benefit of the Hover Tools pattern is a cleaner interface, but one drawback is that the
+user can’t immediately see the available actions. Zillow’s search results page, shown in
+Figure 6-8, shows one possible compromise: “gray out” the tools normally, and show them
+more strongly when the mouse hovers over the item.
+Figure 6-8. Zillow
+252 Chapter 6: Doing Things: Actions and Commands
+Some implementations of Hover Tools use a lightweight overlay to show buttons or controls such as sliders. This is similar to the Dropdown Chooser pattern in Chapter 8, the
+only difference being your intent to use it for actions and not settings. In Figure 6-9, the
+YouTube player uses a hover to show the volume slider.
+Figure 6-9. YouTube player
+In other libraries
+http://patternry.com/p=hover-reveal-tools/
+http://www.flickr.com/photos/designingwebinterfaces/tags/hoverrevealtools/
+Action Panel
+Figure 6-10. iPhoto
+What
+Instead of using menus, present a group of related actions on a UI panel that’s richly organized and always visible.
+The Patterns 253
+Use when
+You have a list of items, and a set of actions that can be performed on each one—too many
+to show all the actions for each item, and too many for Hover Tools. You could put them
+into a menu, but you may not have a menu bar at all, or you’d rather make the actions
+more discoverable than they would be on menu bars. Same for pop-up menus; they’re just
+not visible enough. Your users may not even realize the pop-up menus exist.
+Or maybe your set of possible actions is too complex for a menu. Menus are best at showing a flat set of actions (since pull-right menus, or cascading menus, are hard for some
+users to manipulate) in a very simple, linear, one-line-per-item presentation. If your actions need to be grouped, and especially if those groups don’t fit the standard top-level
+menu names—such as File, Edit, View, Tools, and so on—you might want a different
+presentation altogether.
+This pattern can take up a lot of screen space, so it’s not usually a good choice for small
+devices.
+Why
+There are three main reasons to use Action Panels instead of menus or per-item buttons:
+visibility, available space, and freedom of presentation.
+By placing the actions out on the main UI and not hiding them inside a traditional menu,
+you make those actions fully visible to the user. Really, Action Panels are menus in the
+generic sense; they just aren’t found in menu bars, drop downs, or pop ups. Users don’t
+have to do anything to see what’s on an Action Panel—it’s right there in front of them—so
+your interface is more discoverable. This is particularly nice for users who aren’t already
+familiar with the traditional document model and its menu bars.
+There are many, many ways to structure objects on an interface: lists, grids or tables,
+hierarchies, and just about any custom structure you can devise. But Button Groups and
+traditional menus only give you a list (and not a very long one at that). An Action Panel is
+free-form—it gives you as much freedom to visually organize verbs as you have for nouns.
+Use it wisely!
+How
+Putting the Action Panel on the UI
+Set aside a block of space on the interface for the Action Panel. Place it below or to the side
+of the target of the action. The target is usually a list, table, or tree of selectable items, but
+it might also be a document in Center Stage (Chapter 4). Remember that proximity is important. If you place the Action Panel too far away from whatever it acts on, users may not
+grasp the relationship between them.
+254 Chapter 6: Doing Things: Actions and Commands
+The panel could be a simple rectangle on the page. It could be one of several tiled panels
+on the page, perhaps a Movable Panel (see Chapter 4), a “drawer” in Mac OS X, or even a
+separate window. If it’s closable, make it very easy to reopen, especially if those actions are
+present only on the Action Panel and aren’t duplicated on a menu!
+Odds are good that you’ll need to show different actions at different times. So, the contents of the action panel may depend on the state of the application (e.g., are there any
+open documents yet?), on the items selected in some list somewhere, or other factors. Let
+the Action Panel be dynamic. The changes will attract the user’s attention, which is good.
+Structuring the actions
+Next, you need to decide how to structure the actions you need to present. Here are some
+ways you could do it:
+• Simple lists
+• Multicolumn lists
+• Categorized lists, such as the PowerPoint example earlier
+• Tables or grids
+• Trees
+• Any combination of these in one panel
+If you categorize the actions, consider using a task-centered approach. Group them according to what people intend to do. However, try to present them linearly. Imagine reading the actions aloud to someone who can’t see the screen—can you proceed through
+them in a logical fashion, with obvious start and end points? That, of course, is how a
+blind user would “hear” the interface.
+Labeling the actions
+For each action’s label, you could use text, icons, or both, depending on what conveys the
+nature of the actions best. In fact, if you use mostly icons, you end up with…a traditional
+toolbar! (Or a palette, if your UI is a visual builder-style application.)
+Text labels on an Action Panel can be longer than those on a menu or a button. You can use
+multiline labels, for instance—no need to be overly parsimonious with words here. Just
+remember that longer, more descriptive labels are better for first-time or infrequent users
+who need to learn (or be reminded) what these actions do. The extra space spent on long
+labels may not be appreciated in high-performance interfaces used mostly by experienced
+users. If there are too many words, even first-time users’ eyes will glaze over.
+The Patterns 255
+Examples
+The example in Figure 6-10 is from iPhoto. Other Picture Managers, such as Picasa (Figure
+6-11), use similar panels to contain per-image actions. Compare the complexity of the
+Picasa Action Panel with the relatively simple one in iPhoto; both work for their particular
+audiences and needs (iPhoto for novice users, Picasa for more experienced users).
+Figure 6-11. Picasa
+The screenshot of Windows Finder in Windows XP (see Figure 6-12) shows a directory
+of pictures with an Action Panel attached to it. Microsoft calls this feature a Task Pane. The
+panel is composed of closable subpanels (see the Collapsible Panels pattern in Chapter 4),
+each of which contains a manageable handful of related actions.
+Note that the first two sections, Picture Tasks and File and Folder Tasks, are completely
+task-oriented: they’re phrased as verbs (View, Order, Print, and Copy), and they anticipate
+actions that users will commonly want to perform. But the third section in this panel,
+Other Places, is a list of objects instead.
+256 Chapter 6: Doing Things: Actions and Commands
+Figure 6-12. Windows Finder
+In other libraries
+Other web resources often call this pattern a Task Pane, including this pattern from
+Infragistics:
+http://quince.infragistics.com/Patterns/Task%20Pane.aspx
+The Patterns 257
+Prominent “Done” Button
+Figure 6-13. Songza
+What
+Place the button that finishes a transaction at the end of the visual flow; make it big and
+well labeled.
+Use when
+Whenever you need to put a button such as Done, Submit, OK, or Continue on your interface, you should use this pattern. More generally, use a visually prominent button for
+the final step of any transaction—such as an online purchase—or to commit a group of
+settings.
+Why
+A well-understood, obvious last step gives your users a sense of closure. There’s no doubt
+that the transaction will be done when that button is clicked; don’t leave them hanging,
+wondering whether their work took effect.
+Making that last step obvious is what this pattern is really about. Doing it well draws on
+the layout concepts in Chapter 4—visual hierarchy, visual flow, grouping, and alignment.
+How
+Create a button that actually looks like a button, not a link; either use platform standards
+for pushbuttons, or use a large or medium-size button graphic with bold colors and welldefined borders. This will help the button stand out on the page, and not get lost among
+other things.
+258 Chapter 6: Doing Things: Actions and Commands
+When labeling the button, prefer text labels to icons. They’re easier to understand for
+actions such as this, especially since most users will look for a button labeled “Done” or
+“Submit.” The text in that label can be a verb or a short verb phrase that describes what
+will happen in the user’s terms—“Send,” “Buy,” or “Change Record” (for example) are
+more specific than “Done,” and can sometimes communicate more effectively.
+Place the button where the user is most likely to find it. Trace the task flow down through
+the page or form or dialog box, and put the button just beyond the last step. Usually that
+will be on the bottom and/or right of the page. Your page layouts may have a standard
+place for them (see the Visual Framework pattern in Chapter 4), or the platform standard
+may prescribe it; if so, use the standard place.
+In any case, make sure the button is near the last text field or control. If it’s too far away,
+the user may not find it immediately upon finishing her work, and she may go looking
+for other affordances in her quest for “what to do next.” On the Web, users may end up
+abandoning the page (and possibly a purchase) without realizing it.
+Examples
+Figure 6-14 shows a typical web form. You can see the action buttons without even reading the labels, due to visual design alone:
+• The blue color stands out. It’s a saturated color, it contrasts with the white background, and it echoes the blue of the headlines. (A white or light gray button with a
+black border would blend into the form.)
+• The graphic used for each button looks like a button. It’s a rounded or “pill” shape,
+with a very slight drop shadow, which makes it pop out from the background. The
+buttons are large, too.
+• Both buttons are positioned directly under the body of the form itself. Both the task
+flow (the user will work from top to bottom) and the visual flow bring the user’s eye
+to rest at that button.
+• Each button is set off by whitespace on its left, right, and bottom.
+The Patterns 259
+Figure 6-14. OneHourCourses.com
+JetBlue, Kayak, and Southwest (see Figure 6-15) use strong buttons on their home page
+flight-search interfaces. These follow all the guidelines for Prominent “Done” Buttons, and
+again, you can see them immediately. The corresponding American Airlines button, on
+the other hand, gets lost in its form—it’s too small, too far removed from the end of the
+form, too close to the form border, and too similar to other elements in the form to stand
+out well (see Figure 6-16). Furthermore, the label “GO” isn’t as on-task as “Search” or
+“Find flights.”
+Download from Wow! eBook <www.wowebook.com>
+260 Chapter 6: Doing Things: Actions and Commands
+Figure 6-15. JetBlue, Kayak, and Southwest
+Figure 6-16. American Airlines
+The Patterns 261
+In other libraries
+Some other pattern libraries define patterns that are very closely related, such as Primary
+Action and Action Button. Luke Wroblewski, in his book Web Form Design (Rosenfeld
+Media), discusses primary versus secondary actions in forms such as those described in
+this pattern.
+http://www.welie.com/patterns/showPattern.php?patternID=action-button
+http://patternry.com/p=primary-secondary-actions/
+http://quince.infragistics.com/Patterns/Primary%20Action.html
+Smart Menu Items
+Figure 6-17. Mac Mail
+What
+Change menu labels dynamically to show precisely what they will do when invoked.
+Use when
+Your UI has menu items that operate on specific documents or items, such as Close, or
+that behave slightly differently in different contexts, such as Undo.
+Why
+Menu items that say exactly what they’re going to do make the UI self-explanatory. The
+user doesn’t have to stop and figure out what object will be affected. She’s also less likely
+to accidentally do something she didn’t intend, such as deleting “Chapter 8” instead of
+“Footnote 3.” It thus encourages safe exploration.
+262 Chapter 6: Doing Things: Actions and Commands
+How
+Every time the user changes the selected object (or current document, last undoable operation, etc.), change the menu items that operate on it to include the specifics of the action.
+Obviously, if there is no selected object at all, you should disable the menu item, thus
+reinforcing the connection between the item and its object.
+Incidentally, this pattern could also work for button labels, or links, or anything else that
+is a “verb” in the context of the UI.
+What if there are multiple selected objects? There’s not a whole lot of guidance out there—
+in existing software, this pattern mostly applies to documents and undo operations—but
+you could write in a plural, as in “Delete Selected Objects.”
+Examples
+Figure 6-18 shows a menu from Illustrator’s menu bar. The last filter the user applied in
+this case was the “Drop Shadow” filter. The menu remembers that, so it changes its first
+two items to (1) reapply the same filter again, and (2) modify the filter before reapplying.
+(“Drop Shadow…” brings up the dialog box to modify it.) There are so many filters the
+user might have applied that it’s quite useful to be reminded of the last one. And the accelerator keystrokes are handy for repeated application of the same filter!
+Figure 6-18. Illustrator
+The previous two examples are from application menu bars, but this pattern can also be
+used effectively in per-item tools, such as the drop-down menu in Gmail (see Figure 6-19).
+The menu item “Add [person] to Contacts list” is much clearer and more self-explanatory
+than a generic alternative, such as “Add sender to Contacts list.”
+The Patterns 263
+Figure 6-19. Gmail menu
+Preview
+Figure 6-20. PowerPoint print dialog
+What
+Show users a preview or summary of what will happen when they perform an action.
+264 Chapter 6: Doing Things: Actions and Commands
+Use when
+The user is just about to perform a “heavyweight” action, such as opening a large file,
+printing a 10-page document, submitting a form that took time to fill out, or committing a purchase over the Web. The user wants some assurance that he’s doing it correctly.
+Doing it incorrectly would be time-consuming or otherwise costly.
+Alternatively, the user might be about to perform some visual change with a hard-topredict result, such as applying a filter to a photo. He wants to know in advance whether
+the effect will be desirable.
+Why
+Previews help prevent errors. A user may have made a typo, or he may have misunderstood something that led to the action in question (such as purchasing the wrong item
+online). By showing him a summary or visual description of what’s about to happen, you
+give him a chance to back out or correct any mistakes.
+Previews can also help an application become more self-describing. If someone’s never
+used a certain action before, or doesn’t know what it will do under certain circumstances,
+a preview explains it better than documentation—the user learns about the action exactly
+when and where he needs to.
+How
+Just before the user commits an action, display whatever information gives him the clearest picture of what’s about to happen. If it’s a print preview, show what the page will look
+like on the chosen paper size; if it’s an image operation, show a close-up of what the image
+will look like; if it’s a transaction, show a summary of everything the system knows about
+that transaction. Show what’s important—no more, no less.
+Give the user a way to commit the action straight from the preview page. There’s no need to
+make the user close the preview or navigate elsewhere.
+Likewise, give the user a way to back out. If he can salvage the transaction by correcting information previously entered, give him a chance to do that too, with “Change” buttons next
+to changeable information. In some wizards and other linear processes, this might just be a
+matter of navigating a few steps backward.
+Examples
+Picasa permits users to apply one of several filters to a photo (see Figure 6-21). Each filter
+has a preview thumbnail associated with it—what you see really is what you get! A user
+might need to experiment with many similar filters before finding one that has the desired
+effect, and he wants quick turnaround. This is a classic preview situation. (Photoshop and
+other image processing applications use similar previews.)
+The Patterns 265
+Figure 6-21. Picasa
+Online product builders and customizers often use Previews to show what the user has
+created so far. The customizable Starbucks card in Figure 6-22 is a good example: in this
+review step, the user has a chance to go back and change things, or move ahead with card
+creation, or ask for help, or abandon the whole transaction.
+Figure 6-22. Starbucks card customizer
+266 Chapter 6: Doing Things: Actions and Commands
+In other libraries
+http://quince.infragistics.com/Patterns/Preview.aspx
+http://ui-patterns.com/patterns/LivePreview
+The book Designing Web Interfaces by Bill Scott and Theresa Neil (O’Reilly, http://oreilly.
+com/catalog/9780596516253/) also describes a \\. (Live Preview differs from Preview in
+that it shows changes immediately as they are made.)
+Progress Indicator
+Figure 6-23. Mac OS Copy dialog
+What
+Show the user how much progress has been made so far on a time-consuming operation.
+Use when
+A time-consuming operation interrupts the UI, or runs in the background, for longer
+than two seconds or so.
+Why
+Users get impatient when the UI just sits there. Even if you change the mouse pointer to a
+clock or hourglass (which you should in any case, if the rest of the UI is locked out), you
+don’t want to make a user wait for an unspecified length of time.
+Experiments show that if users see an indication that something is going on, they’re much
+more patient, even if they have to wait longer than they would without a Progress Indicator.
+Maybe it’s because they know that “the system is thinking,” and it isn’t just hung or waiting
+for them to do something.
+How
+Show an animated indicator of how much progress has been made. Either verbally or
+graphically (or both), tell the user:
+• What’s currently going on
+• What proportion of the operation is complete
+The Patterns 267
+• How much time remains
+• How to stop it
+As far as time estimates are concerned, it’s OK to be wrong sometimes, as long as your
+estimates converge on something accurate quickly. But sometimes the UI can’t tell how
+far along it is. In that case, show something animated that is noncommittal about percentages. Think about the browsers’ image loops that keep rolling while a page loads.
+Most GUI toolboxes provide a widget or dialog box that implements this pattern. Beware
+of potentially tricky threading issues, however—the Progress Indicator must be updated
+consistently while the operation itself proceeds uninhibited. If you can, keep the rest of
+the UI alive, too. Don’t lock up the UI while the Progress Indicator is visible.
+If it’s possible to cancel the operation whose progress is being monitored, offer a cancel
+button or similar affordance on or near the Progress Indicator; that’s where a user is likely
+to look for it. See the Cancelability pattern (next) for more information.
+Examples
+When a Flickr user uploads multiple image files (which can take awhile), Flickr displays a
+rich and informative Progress Indicator (see Figure 6-24). It shows each file’s size, progress,
+and status, along with an overall progress bar at the bottom. When the whole upload is
+done, it tells you so boldly and directs you to the next logical activity. (Another nice touch
+is that the page title itself gives you a percentage done.)
+Figure 6-24. Flickr multiple upload progress indicator
+268 Chapter 6: Doing Things: Actions and Commands
+Grooveshark’s interface takes a little while to load. Its Progress Indicator is a whimsical and
+well-branded outline of a hammerhead shark, gradually filling left to right as the page
+code loads (see Figure 6-25).
+Figure 6-25. Grooveshark
+In other libraries
+http://quince.infragistics.com/Patterns/Progress%20Indicator.aspx
+http://www.welie.com/patterns/showPattern.php?patternID=processing-page
+The book Designing Web Interfaces also describes a Progress Indicator pattern.
+The Patterns 269
+Cancelability
+Figure 6-26. Firefox
+What
+Provide a way to instantly cancel a time-consuming operation, with no side effects.
+Use when
+A time-consuming operation interrupts the UI, or runs in the background, for longer
+than two seconds or so—such as when you print a file, query a database, or load a large
+file. Alternatively, the user is engaged in an activity that literally or apparently shuts out
+most other interactions with the system, such as when working with a modal dialog box.
+Why
+Users change their minds. Once a time-consuming operation starts, a user may want to
+stop it, especially if a Progress Indicator tells her that it’ll take awhile. Or the user may have
+started it by accident in the first place. Cancelability certainly helps with error prevention
+and recovery—a user can cancel out of something she knows will fail, such as loading a
+page from a web server she realizes is down.
+In any case, a user will feel better about exploring the interface and trying things out if she
+knows that anything is cancelable. It encourages Safe Exploration (see Chapter 1), which in
+turn makes the interface easier and more fun to learn.
+How
+First, find out if there’s a way to speed up the time-consuming operation so that it appears to be instantaneous. It doesn’t even have to be genuinely fast; if a user perceives it as
+immediate, that’s good enough. On the Web or a networked application, this may mean
+preloading data or code—sending it to the client before it’s asked for—or sending data
+in increments, showing it to the user as it comes in. Remember, people can only read so
+fast. You might as well use the loading time to let the user read the first page of data, then
+another page, and so on.
+270 Chapter 6: Doing Things: Actions and Commands
+But if you really do need Cancelability, here’s how to do it. Put a Cancel button directly on
+the interface, next to the Progress Indicator (which you are using, right?) or wherever the
+results of the operation will appear. Label it with the word Stop or Cancel, and/or put an
+internationally recognizable stop icon on it: a red octagon, or a red circle with a horizontal
+bar, or an “X”.
+When the user clicks or presses the Cancel button, cancel the operation immediately. If
+you wait too long—for more than a second or two—the user may doubt that the cancel actually worked (or you may just dissuade him from using it, since he might as well wait for
+the operation to finish). Tell the user that the cancel worked—halt the Progress Indicator,
+and show a status message on the interface, for instance.
+Multiple parallel operations present a challenge. How does the user cancel a particular
+one and not others? The Cancel button’s label or tool tip can state exactly what gets canceled when it’s clicked (see the Smart Menu Items pattern for a similar concept). If the
+actions are presented as a list or a set of panels, you might consider providing a separate
+Cancel button for each action to avoid ambiguity.
+Examples
+The Adobe AIR install dialog, shown in Figure 6-27, is a simple, stripped-down example
+of Cancelability.
+Figure 6-27. Adobe AIR installation dialog
+When long file-copy operations stack up in Mac OS, each can be separately canceled,
+though they’re all shown in the same dialog (see Figure 6-28). This makes sense—none
+of the copy operations depend on any of the others, and so any can be canceled without
+affecting the others.
+The Patterns 271
+Figure 6-28. Mac OS Copy dialog, with four copy operations
+Multi-Level Undo
+Figure 6-29. Photoshop
+What
+Provide a way to easily reverse a series of actions performed by the user.
+272 Chapter 6: Doing Things: Actions and Commands
+Use when
+You’re building a highly interactive UI that is more complex than simple navigation or
+form fill-in. This includes mail readers, database software, authoring tools, graphics software, and programming environments.
+Why
+The ability to undo a long sequence of operations lets users feel that the interface is safe
+to explore. While they learn the interface, they can experiment with it, confident that they
+aren’t making irrevocable changes—even if they accidentally do something “bad.” This is
+true for users of all levels of skill, not just beginners.*
+Once the user knows the interface well, she can move through it with the confidence
+that mistakes aren’t permanent. If her finger slips and she hits the wrong menu item, no
+complicated and stressful recovery is necessary; she doesn’t have to revert to saved files,
+shut down and start afresh, or go ask a system administrator to restore a backup file. This
+spares users wasted time and occasional mental anguish.
+Multi-Level Undo also lets expert users explore work paths quickly and easily. For instance,
+a Photoshop user might perform a series of filtering operations on an image, study the
+result to see if she likes it, and then undo back to her starting point. Then she might try
+out another series of filters, maybe save it, and undo again. She could do this without
+Multi-Level Undo, but it would take a lot more time (for closing and reloading the image).
+When a user works creatively, speed and ease of use are important for maintaining the
+experience of flow. See Chapter 1 for more information, especially the Safe Exploration and
+Incremental Construction patterns.
+How
+Undoable operations
+The software your UI is built on first needs a strong model of what an action is—what it’s
+called, what object it was associated with, and how to reverse it. Then you can build an
+interface on it.
+Decide which operations need to be undoable. Any action that might change a file or
+database—anything that could be permanent—should be undoable, while transient or
+view-related states often are not. Specifically, these kinds of changes are expected to be
+undoable in most applications:
+• Text entry for documents or spreadsheets
+• Database transactions
+* Alan Cooper and Robert Reimann devote an entire chapter to the undo concept in their book About Face 2.0:
+The Essentials of Interaction Design (Wiley).
+The Patterns 273
+• Modifications to images or painting canvases
+• Layout changes—position, size, stacking order, or grouping—in graphics applications
+• File operations, such as deleting or modifying files
+• Creation, deletion, or rearrangement of objects such as email messages or spreadsheet columns
+• Any cut, copy, or paste operation
+The following kinds of changes are generally not undoable. Even if you think you want to
+go above and beyond the call of duty and make them undoable, consider that you might
+thoroughly irritate users by cluttering up the “undo stack” with useless undos.
+• Text or object selection
+• Navigation between windows or pages
+• Mouse cursor and text cursor locations
+• Scrollbar position
+• Window or panel positions and sizes
+• Changes made in an uncommitted or modal dialog box
+Some operations are on the borderline. Form fill-in, for instance, is sometimes undoable
+and sometimes not. However, if tabbing out of a changed field automatically commits that
+change, it’s probably a good idea to make it undoable.
+(Certain kinds of operations are impossible to undo, but usually the nature of the application makes that obvious to users with any experience at all. Impossible undos include the
+purchase step of an e-commerce transaction, posting a message to a forum or chat room,
+or sending an email—as much as we’d sometimes like that to be undoable!)
+In any case, make sure the undoable operations make sense to the user. Be sure to define
+and name them in terms of how the user thinks about the operations, not how the computer thinks about them. You should be able to undo a block of typed text, for instance, in
+chunks of words, not letter by letter.
+Design an undo stack
+Each operation goes on the top of the stack as it is performed. Each undo reverses the
+operation at the top first, then the one below it, then the next, and so on. Redo works its
+way back up the stack likewise.
+274 Chapter 6: Doing Things: Actions and Commands
+The stack should be at least 10 to 12 items long to be the most useful, and longer if you
+can manage it. Long-term observation or usability testing may tell you what your usable
+limit is. (Constantine and Lockwood assert that having more than a dozen items is usually
+unnecessary, since “users are seldom able to make effective use of more levels.” * Expert
+users of high-powered software might tell you differently. As always, know your users.)
+Presentation
+Finally, decide how to present the undo stack to the user. Most desktop applications put
+Undo/Redo items on the Edit menu. Also, Undo is usually hooked up to Ctrl-Z or its
+equivalent. The best-behaved applications use Smart Menu Items to tell the user exactly
+which operation is next up on the undo stack.
+But see the screenshot at the top of this pattern (Figure 6-29) for a different, more visual presentation. Photoshop shows a scrolling list of the undoable operations—including
+ones that were already undone (two are shown, in gray). It lets the user pick the point in
+the stack that she wants to revert to. A visual command history like this can be quite useful, even just as a reminder of what you’ve recently done. See the Command History pattern
+for more information.
+Examples
+Figure 6-30 shows a more typical presentation of Multi-Level Undo. In this case, the user
+typed some text and then inserted a table. The first undo removes the table. Once that’s
+done, the following undo—the next action in the undo stack—represents the typed text,
+and invoking Undo again will remove that text. Meanwhile, the user has the opportunity
+to “undo the undo” with the Redo menu item. If we’re at the top of the stack (as in the
+first screenshot), there is no Redo, and that menu item is overloaded with a Repeat action.
+Confusing? You bet. Most users will never develop a clear mental picture of the algorithms being used here; most people don’t know what a “stack” is, let alone how it is used
+in conjunction with Repeat and Redo. That’s why the Smart Menu Items are absolutely
+critical to usability here. They explain exactly what’s going to happen, which reduces the
+cognitive burden on the user.
+* Larry Constantine and Lucy Lockwood, “Instructive Interaction: Making Innovative Interfaces Self-Teaching,”
+http://foruse.com/articles/instructive.htm.
+The Patterns 275
+Figure 6-30. Microsoft Word
+In other libraries
+http://patternry.com/p=undo/
+http://quince.infragistics.com/Patterns/Undo.aspx
+Command History
+Figure 6-31. MATLAB’s command history, show in the lower left
+What
+As the user performs actions, keep a visible record of those actions—what was done to
+what, and when.
+276 Chapter 6: Doing Things: Actions and Commands
+Use when
+Users perform long and complex sequences of actions, with either a GUI or a command
+line. Most users are fairly experienced, or if not, they at least want an efficient interface
+that’s supportive of long-term and recurring work. Graphical editors and programming
+environments are usually good candidates.
+Why
+Sometimes a user needs to remember or review what he did in the course of working with
+the software. For instance, he may want to do any of these things:
+• Repeat an action or command done earlier, which he doesn’t remember well
+• Recall the order in which some actions were done
+• Repeat a sequence of operations, originally done to one object, on a different object
+• Keep a log of his actions, for legal or security reasons
+• Convert an interactive series of commands into a script or macro (see the Macros pattern in this chapter)
+Computers are good at keeping an accurate record of steps taken; people aren’t. Take
+advantage of that.
+How
+Keep a running list of the actions taken by the user. If the interface is driven from a command line, you have it easy—just record everything typed there. If you can, keep track of
+the history across sessions, so the user can see what was done even a week ago or longer.
+If it’s a graphic interface, or a combination of graphic and command-line interfaces,
+things get a little more complicated. Find a way to express each action in one consistent,
+concise way, usually with words (though there’s no reason why it can’t be done visually).
+Make sure you define these with the right granularity—if one action is done en masse to
+17 objects, record it as one action, not 17.
+What commands should be recorded, and what shouldn’t? See the Multi-Level Undo pattern for a thorough discussion of what commands should “count.” If a command is undoable, it should be recorded in the history, too.
+Finally, display the history to the user. That display should be optional in most software,
+since it will almost certainly play a supporting role in the user’s work, not a starring role.
+Lists of commands—oldest to newest—tend to work well. If you’d like, you could timestamp the history display somehow. MATLAB, shown earlier in Figure 6-31, puts a date
+and time into the history whenever the program restarts.
+The Patterns 277
+Examples
+Unix and its many variants use shell programs, such as tcsh and bash, that keep track of
+their own command histories in files. The user can call it up with the “history” command,
+as shown in Figure 6-32. The history is also accessible through various command-line
+constructs, such as !! (reuse the last command), !3 (reuse the command issued three
+commands ago), and Ctrl-P, which you can issue repeatedly to show the previous commands one at a time.
+Figure 6-32. Unix shell
+Photoshop’s undo stack, also seen in the Multi-Level Undo pattern, is effectively a command
+history. You can use it to undo the actions you performed, but you don’t have to; you can
+also just look at it and scroll through it, reviewing what you did. It uses icons to identify
+different classes of actions, which is unusual, but nice to use (see Figure 6-33).
+Figure 6-33. Photoshop, again
+278 Chapter 6: Doing Things: Actions and Commands
+Macros
+Figure 6-34. Photoshop
+What
+Macros are single actions composed of other, smaller actions. Users can create them by
+putting together sequences of actionsUse when:
+Users may want to repeat long sequences of actions or commands. They might want to
+loop over lists of files, images, database records, or other objects, for instance, doing the
+same things to each object. You might already have implemented Multi-Level Undo or
+Command History.
+Why
+No one wants to perform the same set of repetitive interactive tasks over, and over, and
+over again! This is exactly what computers are supposed to be good at. Chapter 1 described a user-behavior pattern called Streamlined Repetition; macros are precisely the
+kind of mechanism that can support that well.
+Macros obviously help users work faster. But by reducing the number of commands or
+gestures needed to get something done, they also reduce the possibility of finger slips,
+oversights, and similar mistakes.
+You might also recall the concept of “flow,” also discussed in Chapter 1. When a long sequence of actions can be compressed down into a single command or keyboard shortcut,
+the experience of flow is enhanced—the user can accomplish more with less effort and
+time, and she can keep her larger goals in sight without getting bogged down in details.
+The Patterns 279
+How
+Provide a way for the user to “record” a sequence of actions and easily “play them back”
+at any time. The playback should be as easy as giving a single command, pressing a single
+button, or dragging and dropping an object.
+Defining the macro
+The user should be able to give the macro a name of her choice. Let her review the action
+sequence somehow, so she can check her work or revisit a forgotten sequence to see what
+it did (as in the Command History pattern). Make it possible for one macro to refer to another, so they can build on each other.
+Users will certainly want to save macros from one day to the next, so make sure they’re
+persistent—save them to files or a database. Present them in a searchable, sortable, and
+even categorizable list, depending on the needs of your users.
+Running the macro
+The macro itself could be played back literally, to keep things simple; or, if it acts upon an
+object that can change from one invocation to another, you could allow the sequence to
+be parameterized (e.g., use a placeholder or variable instead of a literal object). Macros
+should also be able to act on many things at once.
+How the names of the macros (or the controls that launch them) are presented depends
+heavily upon the nature of the application, but consider putting them with built-in actions
+rather than making them second-class citizens.
+The ability to record these sequences—plus the facility for macros to build on one other—
+create the potential for the user to invent an entirely new linguistic or visual grammar, a
+grammar that is finely tuned to her own environment and work habits. This is a very powerful capability. In reality, it’s programming; but if your users don’t think of themselves as
+programmers, don’t call it that or you’ll scare them off. (“I don’t know how to program
+anything; I must not be able to do this.”)
+Examples
+Microsoft Excel allows macros to be recorded, named, stored along with the document,
+and even assigned to a keyboard shortcut. The user can also choose to run a macro from a
+button on the toolbar, or an ActiveX control in the document itself (which means macros
+can be used as callbacks for buttons, text fields, etc.).
+The Excel macros shown in Figures 6-35 and 6-36 are written in Visual Basic, and the user
+can hand-edit them if desired. This is when it becomes programming. Because Visual
+Basic provides access to so much general-purpose functionality—most of it not directly
+related to, say, spreadsheet operations—macros can be a serious security risk for Office
+280 Chapter 6: Doing Things: Actions and Commands
+applications. By sharply constraining the functionality available to macros and by limiting
+the number of ways users can run macros (e.g., only by clicking on toolbar buttons), you
+can trade power for safety.
+(Note that not all versions of Excel allow Visual Basic macros as of this writing.)
+Figure 6-35. Excel macro recording
+Figure 6-36. Excel macros, written in Visual Basic
+
+---
+
+## Sección 15: Chapter 7 [Entropy: 0.646]
+
+Showing Complex Data: Trees, Charts,
+and Other Information Graphics
+Information graphics—including maps, tables, and graphs—communicate knowledge visually rather than verbally. When done well, they let people use their eyes and minds to
+draw their own conclusions; they show, rather than tell.
+These are my favorite kinds of interfaces. However, poor tools or inadequate design can
+sharply limit what you can do with them, and many information-rich interfaces just don’t
+quite work as well as they could.
+The patterns in this chapter will help you make the best of the tools you have, and introduce you to some useful and interesting innovations in interactive information graphics.
+The ideas described in this introduction can help you sort out which design aspects are
+most important to you in a given interface.
+The Basics of Information Graphics
+Information graphics simply means data presented visually, with the goal of imparting
+knowledge to the user. I’m including tables and tree views in that description because they
+are inherently visual, even though they’re constructed primarily from text instead of lines
+and polygons. Other familiar static information graphics include maps, flowcharts, bar
+plots, and diagrams of real-world objects.
+But we’re dealing with computers, not paper. You can make almost any good static design
+better with interactivity. Interactive tools let the user hide and show information as she
+needs it, and they put the user in the “driver’s seat” as she chooses how to view and explore
+that information.
+Even the mere act of manipulating and rearranging the data in an interactive graphic has
+value—the user becomes a participant in the discovery process, not just a passive observer. This can be invaluable. The user may not end up producing the world’s best-designed
+plot or table, but the process of manipulating that plot or table puts her face to face with
+aspects of the data that she may never have noticed on paper.
+282 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+Ultimately, the user’s goal in using information graphics is to learn something. But the
+designer needs to understand what the user needs to learn. The user might be looking for
+something very specific, such as a particular street on a map, in which case she needs to be
+able to find it—say, by searching directly, or by filtering out extraneous information. She
+needs to get a “big picture” only to the extent necessary to reach that specific data point.
+The ability to search, filter, and zero in on details is critical.
+On the other hand, she might be trying to learn something less concrete. She might look
+at a map to grasp the layout of a city rather than to find a specific address. Or she may
+be a scientist visualizing a biochemical process, trying to understand how it works. Now
+overviews are important; she needs to see how the parts interconnect with the whole. She
+may want to zoom in, zoom back out again, look at the details occasionally, and compare
+one view of the data to another.
+Good interactive information graphics offer users answers to these questions:
+• How is this data organized?
+• What’s related to what?
+• How can I explore this data?
+• Can I rearrange this data to see it differently?
+• How can I see only the data that I need?
+• What are the specific data values?
+In these sections, keep in mind that the term information graphics is a very big umbrella. It
+covers plots, graphs, maps, tables, trees, timelines, and diagrams of all sorts; the data can
+be huge and multilayered, or small and focused. Many of these techniques apply surprisingly well to graphic types that you wouldn’t expect.
+Before describing the patterns themselves, let’s set the stage by talking about some of the
+questions posed in the previous list.
+Organizational Models: How Is This Data Organized?
+The first thing a user sees in any information visualization is the shape you’ve chosen for
+the data. Ideally, the data itself has an inherent structure that suggests this shape to you.
+Table 7-1 shows a variety of organizational models. Which of these fits your data best?
+The Basics of Information Graphics 283
+Table 7-1. Organizational models
+Model Diagram Common graphics
+Linear List, single-variable plot
+Tabular Spreadsheet, multicolumn list, Sortable Table, Radial
+Table, Multi-Y Graph, other multivariable plots
+Hierarchical Tree, Cascading Lists, Tree Table, Treemap, Radial
+Table, directed graph
+Network of interconnections Directed graph, flowchart, Radial Table
+Geographic (or spatial) Map, schematic, scatter plot
+Textual Word cloud, directed graph
+Other Plots of various sorts, such as parallel coordinate plots,
+Treemaps, etc.
+Try these out against the data you’re trying to show. If two or more might fit, consider
+which ones play up which aspects of your data. If your data could be both geographic
+and tabular, for instance, showing it as only a table may obscure its geographic nature—a
+viewer may miss interesting features or relationships in the data if it’s not shown as a map,
+too.
+Preattentive Variables: What’s Related to What?
+The organizational model you choose tells the user a lot about the shape of the data.
+Part of this message operates at a subconscious level; people recognize trees, tables, and
+maps, and they immediately make some assumptions about the underlying data before
+they even start to think consciously about it. But it’s not just the shape that does this. The
+look of the individual data elements also works at a subconscious level in the user’s mind:
+things that look alike must be associated with each other.
+If you’ve read Chapter 4, that should sound familiar—you already know about the Gestalt
+principles. (If you jumped ahead in the book, this might be a good time to go back and
+read the introduction to Chapter 4.) Most of those principles, especially similarity and
+continuity, will come into play here, too. I’ll tell you a little more about how they work.
+Download from Wow! eBook <www.wowebook.com>
+284 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+Certain visual features operate preattentively: they convey information before the viewer
+pays conscious attention. Take a look at Figure 7-1 and find the blue objects.
+Figure 7-1. Find the blue objects
+I’m guessing that you can do that pretty quickly. Now look at Figure 7-2 and do the same.
+Figure 7-2. Find the blue objects again
+You did that pretty quickly too, right? In fact, it doesn’t matter how many red objects there
+are; the amount of time it takes you to find the blue ones is constant! You might think it
+should be linear with the total number of objects—order-N time, in algorithmic terms—
+but it’s not. Color operates at a primitive cognitive level. Your visual system does the hard
+work for you, and it seems to work in a “massively parallel” fashion.
+On the other hand, visually monotonous text forces you to read the values and think
+about them. Figure 7-3 shows exactly the same problem with numbers instead of colors.
+How fast can you find the numbers that are greater than one?
+The Basics of Information Graphics 285
+Figure 7-3. Find the values greater than one
+When dealing with text such as this, your “search time” really is linear with the number
+of items. But what if we still used text, but made the target numbers physically larger than
+the others, as in Figure 7-4?
+Figure 7-4. Find the values greater than one again
+Now we’re back to constant time again. Size is, in fact, another preattentive variable. The
+fact that the larger numbers protrude into their right margins also helps you find them—
+alignment is yet another preattentive variable.
+Figure 7-5 shows many known preattentive variables.
+286 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+Color hue
+Color brightness
+Color saturation
+Texture
+Position and alignment
+Orientation
+Size
+Shape
+Figure 7-5. Eight preattentive variables
+This concept has profound implications for text-based information graphics, like the table
+of numbers shown earlier in Figure 7-3. If you want some data points to stand out from
+the others, you have to make them look different by varying their color, size, or some other
+preattentive variable. More generally, you can use these variables to differentiate classes or
+dimensions of data on any kind of information graphic. This is sometimes called encoding.
+When you have to plot a multidimensional data set, you can use several different visual
+variables to encode all those dimensions in a single static display. Consider the scatter plot
+shown in Figure 7-6. Position is used along the x- and y-axes; color hue encodes a third
+variable. The shape of the scatter markers could encode yet a fourth variable, but in this
+case, shape is redundant with color hue. The redundant encoding helps a user visually
+separate the three data groups.
+All of this is related to a general graphic design concept called layering. When you look
+at well-designed graphics of any sort, you perceive different classes of information on
+the page. Preattentive factors such as color cause some of them to “pop” out of the page,
+and similarity causes you to see those as connected to each other, as though each was on
+a transparent layer over the base graphic. It’s an extremely effective way of segmenting
+data—each layer is simpler than the whole graphic, and the viewer can study each in turn,
+but relationships among the whole are preserved and emphasized.
+The Basics of Information Graphics 287
+Figure 7-6. Encoding three variables in a scatter plot
+Navigation and Browsing: How Can I Explore This Data?
+A user’s first investigation of an interactive data graphic may be browsing—just looking
+around to see what’s there. He may also navigate through it to find some specific thing
+he’s seeking. Filtering and searching can serve that purpose too, but navigation through
+the “virtual space” of a data set is often better. Spatial Memory (Chapter 1) kicks in, and the
+user can see points of interest in context with the rest of the data.
+There’s a famous mantra in the information visualization field: “Focus plus context.” A
+good visualization should permit a user to focus on a point of interest, while simultaneously showing enough stuff around that point of interest to give the user a sense of where
+it is in the big picture.
+Here are some common techniques for navigation and browsing:
+Scroll and pan
+If the whole data display won’t fit on-screen at once, you could put it in a scrolled
+window, giving the user easy and familiar access to the off-screen portions. Scrollbars
+are familiar to almost everyone and are easy to use. However, some displays are too
+big, or their size is indeterminate (thus making scrollbars inaccurate), or they have
+data beyond the visible window that needs to be retrieved or recalculated (thus making
+scrollbars too slow to respond). Instead of using scrollbars in those cases, try setting
+288 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+up buttons that the user has to click to retrieve the next screenful of data. Other applications do panning instead, in which the information graphic is “grabbed” with the
+cursor and dragged until the point of interest is found, like in Google Maps.
+These are appropriate for different situations, but the basic idea is the same: to interactively move the visible part of the graphic. Sometimes Overview Plus Detail can
+help the user stay oriented. A small view of the whole graphic can be shown with an
+indicator rectangle showing the visible “viewport”; the user might pan by dragging
+that rectangle, in addition to using scrollbars or however else it’s done.
+Zoom
+Zooming changes the scale of the section being viewed, whereas scrolling changes the
+location. When you present a data-dense map or graph, consider offering the user the
+ability to zoom in on points of interest. It means you don’t have to pack every single
+data detail into the full view—if you have lots of labels, or very tiny features (especially on maps), that may be impossible anyway. As the user zooms in, those features
+can emerge when they have enough space.
+Most zooms are triggered with a mouse click or button press, and the whole viewing
+area changes scale at once. But that’s not the only way to zoom. Some applications
+create nonlinear distortions of the information graphic as the user moves the mouse
+pointer over the graphic: whatever is under the pointer is zoomed, but the stuff far
+away from the pointer stays the same scale. See the Local Zooming pattern for more
+information.
+Open and close points of interest
+Tree views typically let users open and close parent items at will, so they can inspect
+the contents of those items. Some hierarchically structured diagrams and graphs also
+give users the chance to open and close parts of the diagram “in place,” without having to open a new window or go to a new screen. With these mechanisms, the user
+can explore containment or parent/child relationships easily, without leaving that
+window. The Cascading Lists pattern (Chapter 5) describes another effective way to
+explore a hierarchy; it works entirely on single-click opening and closing of items.
+Drill down into points of interest
+Some information graphics just present a “top level” of information. A user might
+click or double-click on a map to see information about the city she just clicked on, or
+she might click on key points in a diagram to see subdiagrams. This “drilling down”
+might reuse the same window, use a separate panel on the same window, or bring up
+a new window. This technique is similar to opening and closing points of interest, except that the viewing occurs separately from the graphic and is not integrated into it.
+If you also provide a search facility for an interactive information graphic, consider linking the search results to whichever of the aforementioned techniques is in use. In other
+words, when a user searches for the city of Sydney on a map, show the map zooming and/
+or panning to that point. The search user thus gets some of the benefits of context and
+spatial memory.
+The Basics of Information Graphics 289
+Sorting and Rearranging: Can I Rearrange This Data to
+See It Differently?
+Sometimes just rearranging an information graphic can reveal unexpected relationships.
+Look at Figure 7-7, taken from the National Cancer Institute’s online mortality charts.
+It shows the number of deaths from lung cancer in the state of Texas. The major metropolitan regions in Texas are arranged alphabetically—not an unreasonable default order
+if you’re going to look up specific cities, but as presented, the data doesn’t lead you to ask
+very many interesting questions. It’s not clear why Abilene, Alice, Amarillo, and Austin all
+seem to have similar numbers, for instance; it may just be chance.
+Figure 7-7. Cancer data by city, sorted alphabetically
+But this chart lets you reorder the data into numerically descending order, as in Figure
+7-8. Suddenly the graph becomes much more interesting. Galveston is ranked first—
+why is that, when its neighbor, Houston, is further down the scale? What’s special about
+Galveston? (OK, you need to know something about Texas geography to ask these questions, but you get my point.) Likewise, why the difference between neighbors Dallas and
+Fort Worth? And apparently the Mexico-bordering southern cities of El Paso, Brownsville,
+and Laredo have less lung cancer than the rest of Texas; why might that be? You can’t answer these questions with this data set, but at least you can ask them.
+290 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+Figure 7-8. The same chart, sorted numerically
+People who can interact with data graphics this way have more opportunities to learn
+from the graphic. Sorting and rearranging puts different data points next to each other,
+thus letting users make different kinds of comparisons—it’s far easier to compare neighbors than widely scattered points. And users tend to zero in on the extreme ends of scales,
+as I did in the preceding example.
+How else can you apply this concept? The Sortable Table pattern talks about one obvious
+way: when you have a many-columned table, users might want to sort the rows according
+to their choice of column. This pattern is pretty common. (Many table implementations
+also permit rearrangement of the columns themselves, by dragging.) Trees might allow
+reordering of their child nodes. Diagrams and connected graphs might allow spatial repositioning of their elements, while retaining their connectivity. Use your imagination!
+Consider these methods of sorting and rearranging:
+• Alphabetically
+• Numerically
+• By date or time
+• By physical location
+• By category or tag
+• By popularity—heavily used versus lightly used
+The Basics of Information Graphics 291
+• User-designed arrangement
+• Completely random (you never know what you might see)
+For a subtle example, take a look at Figure 7-9. Bar charts that show multiple data values
+on each bar (known as stacked bar charts) might also be amenable to rearranging—the
+bar segments nearest the baseline are the easiest to evaluate and compare, so you might
+want to let users determine which variable is next to the baseline.
+The light blue variable in this example might be the same height from bar to bar. Does it
+vary, and how? Which light blue bars are the tallest? You really can’t tell until you move
+that data series to the baseline—that transformation lines up the bases of all those blue
+rectangles. Now a visual comparison is easy: light-blue bars 6 and 12 are the tallest, and
+the variation seems loosely correlated to the overall bar heights.
+Figure 7-9. Rearrangement of a stacked bar chart
+Searching and Filtering: How Can I See Only the Data That I Need?
+Sometimes you don’t want to see an entire data set at once. You might start with the whole
+thing and narrow it down to what you need—filtering—or you might build up a subset
+of the data via searching or querying. Most users won’t even distinguish between filtering
+and querying (though there’s a big difference from, say, a database’s point of view). The
+user’s intent is the same: to zero in on whatever part of the data is of interest, and get rid
+of the rest.
+The simplest filtering and querying techniques offer users a choice of which aspects of the
+data to view. Checkboxes and other one-click controls turn parts of the interactive graphic
+on and off. A table might show some columns and not others, per the user’s choice; a map
+might show only the points of interest (e.g., restaurants) selected by the user. The Dynamic
+Queries pattern, which can offer very rich interaction, is a logical extension of simple filter
+controls such as these.
+Sometimes simply highlighting a subset of the data, rather than hiding or removing the
+rest, is sufficient. That way a user can see that subset in context with the rest of the data.
+Interactively, you can do this with simple controls, as described earlier. The Data Brushing
+pattern describes a variation of data highlighting; it highlights the same data in several
+data graphics at once.
+292 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+Look at Figure 7-10. This interactive ski-trail map can show four categories of trails,
+coded by symbol, plus other features such as ski lifts and base lodges. When everything
+is “turned on” at once, it’s so crowded that it’s hard to read anything! But users can click
+on the trail symbols, as shown, to turn the data “layers” on and off. The screenshot on
+the left shows no highlighted trails; the one on the right switches on the trails rated black
+diamond with a single click.
+Figure 7-10. Interactive ski map
+Searching mechanisms vary heavily from one type of graphic to another. A table or tree
+should permit textual searches, of course; a map should offer searches on addresses and
+other physical locations; numeric charts and plots might let users search for specific data
+values or ranges of values. What are your users interested in searching on?
+When the search is done and results obtained, you might set up the interface to show the
+results in context, on the graphic—you could scroll the table or map so that the searchedfor item is in the middle of the viewport, for instance. Seeing the results in context with
+the rest of the data helps the user understand the results better. The Jump to Item pattern
+in Chapter 5 is a common way to search and scroll in one step.
+The best filtering and querying interfaces are:
+Highly interactive
+They respond as quickly as possible to the user’s searching and filtering. (Don’t react
+to individual keystrokes if it significantly slows down the user’s typing, however.)
+The Basics of Information Graphics 293
+Iterative
+They let a user refine the search, query, or filter until she gets the desired results.
+They might also combine these operations: a user might do a search, get a screenful
+of results, and then filter those results down to what she wants.
+Contextual
+They show results in context with surrounding data, to make it easier for a user to understand where they are in a data space. This is also true for other kinds of searches,
+as it happens; the best text search facilities show the search terms embedded in sentences, for instance.
+Complex
+They go beyond simply switching entire data sets on and off, and allow the user to
+specify nuanced combinations of conditions for showing data. For instance, can this
+information graphic show me all the items for which conditions X, Y, and Z are true,
+but A and B are false, within the time range M–N? Such complexity lets users test
+hypotheses about the data, and explore the data set in creative ways.
+The Actual Data: What Are the Specific Data Values?
+Several common techniques help a viewer get specific values out of an information graphic. Know your audience—if they’re only interested in getting a qualitative sense of the
+data, there’s no need for you to spend large amounts of time or pixels labeling every little
+thing. But some actual numbers or text is usually necessary.
+Since these techniques all involve text, don’t forget the graphic design principles that will
+make text look good: readable fonts, appropriate font size (not too big, not too small),
+proper visual separation between unrelated text items, alignment of related items, no
+heavy-bordered boxes, and no unnecessary obscuring of data.
+Labels
+Many information graphics put labels directly on the graphic, such as town names on a
+map. Labels can also identify the values of symbols on a scatter plot, bars on a bar graph,
+and other things that might normally force the user to depend on axes or legends.
+Labels are easier to use. They communicate data values precisely and unambiguously
+(when placed correctly), and they’re located in or beside the data point of interest—no
+going back and forth between the data point and a legend. The downside is that they
+clutter up a graphic when overused, so be careful.
+Legends
+When you use color, texture, line style, symbols, or size on an information graphic
+to represent values (or categories or value ranges), the legend shows the user what
+represents what. You should place the legend on the same page as the graphic itself so
+the user’s eyes don’t need to travel far between the data and the legend.
+294 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+Axes, rulers, scales, and timelines
+Whenever position represents data, as it does on plots and maps (but not on most
+diagrams), these tell the user what values those positions represent. They are reference lines or curves on which reference values are marked. The user has to draw an
+imaginary line from the point of interest to the axis, and maybe interpolate to find the
+right number. This is more of a burden on the user than direct labeling. But labeling
+clutters things when the data is dense, and many users don’t need to derive precise
+values from graphics; they just want a more general sense of the values involved. For
+those situations, axes are appropriate.
+Datatips
+This chapter describes the Datatips pattern. Datatips, which are tool tips that show
+data values when the user hovers over a point of interest, have the physical proximity advantages of labels without the clutter. They only work in interactive graphics,
+though.
+Data Spotlight
+Like Datatips, a data spotlight highlights data when the user hovers over a point of
+interest. But instead of showing the specific point’s value, it displays a “slice” of the
+data in context with the rest of the information graphic, often by dimming the rest of
+the data. See the Data Spotlight pattern.
+Data brushing
+A technique called data brushing lets users select a subset of the data in the information graphic and see how that data fits into other contexts. You use this with two
+or more information graphics; for instance, selecting some outliers in a scatter plot
+causes those same data points to be highlighted in a table showing the same data. For
+more information, see the Data Brushing pattern in this chapter.
+The Patterns
+Because this book is about interactive software, most of these patterns describe ways to
+interact with the data: moving through it; sorting, selecting, inserting, or changing items;
+and probing for specific values or sets of values. A few of them deal only with static graphics: information designers have known about Multi-Y Graph and Small Multiples for a while
+now, but they translate well to the world of software.
+The Patterns 295
+And don’t forget the patterns elsewhere in this book. From Chapter 2, recall Alternative
+Views, which can help you structure an interactive graphic. Chapter 3 offers Annotated
+Scrollbar and Animated Transition, which help users to stay oriented within large and complex data spaces. If your graphic is a table, you might also use some of the patterns in
+
+---
+
+## Sección 16: Chapter 5, such as Row Striping, Alphabet Scroller, and Jump to Item. [Entropy: 0.93]
+
+The first group of patterns can be applied to most varieties of interactive graphics, regardless of the data’s underlying structure. (Some are harder to learn and use than others, so
+don’t throw them at every data graphic you create—Data Brushing and Local Zooming in
+particular, are “power tools,” best for sophisticated computer users.) These six interactive
+tools permit users to focus on certain parts of the data set while maintaining the context
+of the entire graphic.
+1. Overview Plus Detail
+2. Datatips
+3. Data Spotlight
+4. Dynamic Queries
+5. Data Brushing
+6. Local Zooming
+The remaining patterns are ways to construct complex data graphics for multidimensional data—data that has many attributes or variables. They encourage users to ask different
+kinds of questions about the data, and to make different types of comparisons among data
+elements.
+7. Sortable Table
+8. Radial Table
+9. Multi-Y Graph
+10. Small Multiples
+11. Treemap
+296 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+Overview Plus Detail
+Figure 7-11. Perl community diagram (http://labs.linkfluence.net/fpw09/map/)
+What
+Place an overview of the graphic next to a zoomed “detail view.” As the user drags a viewport around the overview, show that part of the graphic in the detail view.
+Use when
+You’re showing a large data set in a large information graphic—especially an image or a
+map. You want users to stay oriented with respect to the “big picture,” but you also want
+them to zoom down into the fine details. Users will browse through the data, inspect
+small areas, or search for points of interest. High-level overviews are necessary for finding
+those points of interest, but users don’t need to see all available detail for all data points at
+once—zooming in on a small piece is sufficient for getting fine detail.
+Why
+It’s an age-old way of dealing with complexity: present a high-level view of what’s going on
+and let the users zoom from that view into the details as they need to, keeping both levels
+visible on the same page for quick iteration.
+Edward Tufte uses the terms micro reading and macro reading to describe a similar concept for printed maps, diagrams, and other static information graphics. The user has the
+large structure in front of her at all times, while being able to peer into the small details at
+will: “The pace of visualization is condensed, slowed, and personalized.” Similarly, users
+of Overview Plus Detail can scroll methodically through the content, jump around, compare, contrast, move quickly, or move slowly.
+Finally, the overview can serve as a “You are here” sign. A user can tell at a glance where
+she is in the context of the whole data set by looking for the viewport on the overview.
+The Patterns 297
+How
+Show an overview of the data set at all times. It can be an inset panel, as in the example at
+the top of the pattern (see Figure 7-11 at the top of the pattern). It could also be a panel
+beside the detail view, or even another window, in the case of a multiwindow application
+such as Photoshop.
+On that overview, place a viewport. They’re usually red boxes by convention, but they
+don’t have to be—they just need to be visible at a glance, so consider the other colors used
+in the overview panel. If the graphic is typically dark, make it light; if the graphic is light,
+make it dark. Make the viewport draggable with the pointer, so users can grab it and slide
+it around the overview.
+The detail view shows a magnified “projection” of what’s inside the viewport. The two
+should be synchronized. If the viewport moves, the detail view changes accordingly; if the
+viewport is made smaller, the magnification should increase. Likewise, if the detail view
+has scrollbars or some other panning capability, the viewport should move along with it.
+The response of one to the other should be immediate, within one-tenth of a second (the
+standard response time for direct manipulation).
+Examples
+Photoshop places the image canvas (the “detail view”) on the left and the overview on the
+right. The Navigator window shows the whole image, with a red box showing the size and
+scroll position of the image’s canvas window (see Figure 7-12).
+Figure 7-12. Photoshop
+298 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+Google Finance uses an interactive overview panel to let the user adjust the time period
+shown on the graph. Note the grab handles on the viewport sides and the year labels that
+tell the user what timescale the overview uses (see Figure 7-13).
+Figure 7-13. Google Finance
+The New York Times also uses a timeline to drive its infographic about environmental
+change (see Figure 7-14). Users select events on the timeline to see details about them.
+A Pyramid navigation pattern is also at work here: the user can jump to the next item by
+clicking the Next button in the upper right.
+Figure 7-14. The New York Times interactive feature (http://www.nytimes.com/interactive/2010/04/22/
+science/earth/20100422_environment_timeline.html)
+The Patterns 299
+In other libraries
+http://patternbrowser.org/code/pattern/pattern_anzeigen.php?4,226,17,0,0,247
+http://quince.infragistics.com/Patterns/Overview%20Plus%20Detail.aspx
+The broad concept of “overview and detail” can be found in numerous books on information visualization, including those by Edward Tufte, mentioned earlier.
+Datatips
+Figure 7-15. SPOT Adventures live map
+What
+As the mouse rolls over a point of interest on the graphic, put the data values for that point
+into a tool tip or some other floating window.
+Use when
+You’re showing an overview of a data set, in almost any form. More data is “hidden behind” specific points on that graphic, such as the names of streets on a map or the values
+of bars in a bar chart. The user is able to “point at” places of interest with a mouse cursor
+or a touch screen.
+300 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+Why
+Looking at specific data values is a common task in data-rich graphics. Users will want the
+overview, but they might also look for particular facts that aren’t present in the overview.
+Datatips let you present small, targeted chunks of context-dependent data, and they put
+that data right where the user’s attention is focused: the mouse pointer. If the overview is
+reasonably well organized, users will find it easy to look up what they need, and you won’t
+need to put it all on the graphic. Datatips can substitute for labels.
+Also, some people might just be curious. What else is here? What can I find out? Datatips
+offer an easy, rewarding form of interactivity. They’re quick (no page loading!), they’re
+lightweight, and they offer intriguing little glimpses into an otherwise invisible data set.
+If you find yourself trying to use a Datatip to show an enlargement of the data that it’s
+hovering over, rather than data values, consider using the Local Zooming pattern instead.
+How
+Use a tool tip–like window to show the data associated with that point. It doesn’t have to
+be technically a “tool tip”—all that matters is that it appears where the pointer is, it’s layered atop the graphic, and it’s temporary. Users will get the idea pretty quickly.
+Inside that window, format the data appropriately. Denser is usually better, since a tool tip
+window is expected to be small; don’t let the window get so large that it obscures too much
+of the graphic while it’s visible. And place it well. If there’s a way to programmatically position it so that it covers as little content as possible, try that.
+You might even want to format the Datatip differently depending on the situation. An
+interactive map might let the user toggle between seeing place names and seeing latitude/
+longitude coordinates, for example. If you have a few data sets plotted as separate lines on
+one graph, the Datatips might be labeled differently for each line, or have different kinds
+of data in them.
+Many Datatips offer links that the user can click on. This lets the user “drill down” into
+parts of the data that may not be visible at all on the main information graphic. The
+Datatip is beautifully self-describing—it offers not only information, but also a link and
+instructions for drilling down.
+An alternative way of dynamically showing hidden data is to reserve some panel on or
+next to the graphic as a static data window. As the user rolls over various points on the
+graphic, data associated with those points appears in the data window. It’s the same idea,
+but using a reserved space rather than a temporary Datatip. The user has to shift her attention from the pointer to that panel, but you never have a problem with the rest of the
+graphic being hidden. Furthermore, if that data window can retain its data, the user can
+view it while doing something else with the mouse.
+The Patterns 301
+In contemporary interactive infographics, Datatips often work in conjunction with a Data
+Spotlight mechanism. The spotlight shows a slice through the data—for example, a line or
+set of scattered points—while the Datatips shows the specific data point that’s under the
+mouse pointer.
+Examples
+The San Francisco Crimespotting feature uses both Datatips (see Figure 7-16) and a Data
+Spotlight. All incidents of theft are highlighted on the map (via the spotlight), but a Datatip
+describes the particular incident at which the user is pointing. Note also the link to the
+raw data about this crime.
+Figure 7-16. San Francisco Crimespotting (http://sanfrancisco.crimespotting.org/)
+Some data sets are so dense or text-rich that they can’t easily be labeled at all. The graph
+from IBM’s Many Eyes project, shown in Figure 7-17, depends upon Datatips to communicate critical labels to the user. The Datatip offers plenty of space to express the text and
+numbers of interest—far more than labels can. It also tells the user that clicking on this
+part of the graph will highlight the relevant data—again, a Data Spotlight in action.
+302 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+Figure 7-17. Many Eyes graph (http://manyeyes.alphaworks.ibm.com/manyeyes/visualizations/usgovernment-expenses-1962-2004)
+So many geographic information graphics are built upon Google Maps that it deserves
+a particular mention. Its API makes it fairly easy to create Datatips specialized to the application’s needs, such as the SPOT Adventures example at the top of the pattern (Figure
+7-15) and in the example in Figure 7-18.
+Figure 7-18. California Stimulus Map (http://www.recovery.ca.gov/html/funding/stimulus%20map/
+districtsmap.jsp)
+The Patterns 303
+In other libraries
+http://patternbrowser.org/code/pattern/pattern_anzeigen.php?4,237,17,0,0,258
+http://quince.infragistics.com/Patterns/Data%20Tips.aspx
+Data Spotlight
+Figure 7-19. Google Public Data Explorer
+What
+As the mouse rolls over an area of interest on the graphic, highlight that slice of data and
+dim the rest.
+Use when
+The graphic contains so much information that it tends to obscure its own structure. It
+might be difficult for a viewer to pick out relationships and trace connections among the
+data because of its sheer richness.
+The data itself is structurally complex—it might have several independent variables and
+complicated “slices” of dependent data such as lines, areas, scattered sets of points, or
+systems of connections. (If the rolled-over data is merely a point or a simple shape, a
+Datatip is a better solution than a Data Spotlight. They’re often used in conjunction with
+each other, though.)
+Why
+A Data Spotlight untangles the threads of data from each other. It’s one way that you can
+offer “focus plus context” on a complex infographic: a user eliminates some of the visual
+clutter on the graphic by quieting most of it, focusing only on the data slice of interest.
+However, the rest of the data is still there to provide context.
+Download from Wow! eBook <www.wowebook.com>
+304 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+It also permits dynamic exploration by letting a user flick quickly from one data slice to
+another. She can see both large differences and very small differences that way—as long as
+the Data Spotlight transitions quickly and smoothly (without flicker) from one data slice to
+another as the mouse moves, even very tiny differences will be visible.
+Finally, Data Spotlights can be fun and engaging to use.
+How
+First, design the information graphic so that it doesn’t initially depend on a Data Spotlights.
+Try to keep the data slices visible and coherent so that a user can follow what’s going on
+without interacting with the graphic. (Someone may print it, after all.)
+To create a spotlight effect, make the spotlighted data either a light color or a saturated
+color, while the other data fades to a darker or grayer color. Make the reaction very quick
+on rollover to give the user a sense of immediacy and smoothness.
+Besides triggering a spotlight when the mouse rolls over data elements, you might also put
+“hot spots” onto legends and other references to the data.
+Consider a “spotlight mode.” In this, the Data Spotlight waits for a longer initial mouse
+hover before turning itself on. Once in that mode, the user’s mouse motions cause immediate changes to the spotlight. This means the spotlight effect won’t be triggered accidentally, when a user just happens to roll the mouse over the graphic. The Crimespotting
+example (shown in Figure 7-20) does this.
+An alternative to the mouse rollover gesture is a simple mouse click or finger tap. This
+lacks the immediacy of rollovers, but it works on touchpads and it isn’t as subject to accidental triggering. However, you may want to reserve the mouse click for a different action,
+such as drilling down into the data.
+Use Datatips to describe specific data points, describe the data slice being highlighted, and
+offer instructions where necessary.
+Examples
+The San Francisco Crimespotting project puts a Data Spotlight on the different types of
+crimes found in this geographic area. When the user hovers the mouse over a single data
+element—a crime report—or over the legend that describes the crime types (shown in
+Figure 7-20), all reports of that type are highlighted with light circles. The rest of the
+graphic is darkened, in the style of a lightbox.
+The Patterns 305
+Figure 7-20. San Francisco Crimespotting
+The Washington Post’s interactive “Top Secret” graphic looks fine by itself, but the chart
+is complicated and may be hard for a passive viewer to follow (see Figure 7-21). The Data
+Spotlight lets the user easily see the information associated with a particular agency.
+306 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+Figure 7-21. The Washington Post’s interactive feature (http://projects.washingtonpost.com/top-secretamerica/)
+Sometimes a graphic can’t easily show all the available data. The Radial Table graphic from
+the Wall Street Journal, shown in Figure 7-22, uses a variety of interactive tools to let the
+user explore the tracking-data connections among websites. Clicking on a cell shows specific relationships; rolling over nonclicked cells shows a “ghost” of the relationship lines.
+The “Show all” command makes a graphic that looks interesting, but doesn’t give the user
+much actionable information—the limited interactive views are far more interesting!
+The Patterns 307
+Figure 7-22. Wall Street Journal interactive feature
+308 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+Dynamic Queries
+Figure 7-23. Google Public Data Explorer
+What
+Provide ways to filter the data set immediately and interactively. Employ easy-to-use standard controls, such as sliders and checkboxes, to define which slices or layers of the data
+set get shown. As the user adjusts those controls, show the results immediately on the data
+display.
+Use when
+You’re showing the user a large, multivariate data set, of any shape, with any presentation.
+Users need to filter out some of the data in order to accomplish any of several objectives—
+to get rid of irrelevant parts of the data set, to see which data points meet certain criteria,
+to understand relationships among the various data attributes, or simply to explore the
+data set and see what’s there.
+The data set itself has a fixed and predictable set of attributes (or parameters, variables,
+dimensions, whatever term you prefer) that are of interest to users. They are usually numeric and range-bounded; they might also be sortable strings, dates, categories, or enumerations (sets of numbers representing non-numeric values). Or they might be visible
+areas of data on the information display itself that can be interactively selected.
+Dynamic Queries can also apply to search results. Faceted searches might use a dynamic
+query interface to let users explore a rich database of items, such as products, images, or
+text.
+The Patterns 309
+Why
+First, Dynamic Queries are easy to learn. No complicated query language is necessary at the
+user’s end; well-understood controls are used to express common-sense Boolean expressions such as “price > $70 AND price < $100”. They lack the full expressive power of a query
+language—only simple queries are possible without making the UI too complicated—but in
+most cases, that’s enough. It’s a judgment call you have to make.
+Second, the immediate feedback encourages open-ended exploration of the data set. As
+the user moves a slider thumb, for instance, she sees the visible data contract or expand.
+As she adds or removes different subsets of the data, she sees where they go and how
+they change the display. She can concoct long and complex query expressions incrementally, by tweaking this control, then that, then another. Thus, a continuous and interactive
+“question and answer session” is carried on between the user and the data. The immediate
+feedback shortens the iteration loop so that exploration is fun and a state of flow is possible. (See Chapter 1, Incremental Construction.)
+Third—and this is a little subtler—the presence of labeled dynamic-query controls clarifies what the queryable attributes are in the first place. If one of the data attributes is a
+number that ranges from 0 to 100, for instance, the user can learn that just by seeing a
+slider that has 0 at one end and 100 at the other end.
+How
+The best way to design a dynamic query depends on your data display, the kinds of queries you think should be made, and your toolkit’s capabilities. As mentioned, most programs map data attributes to ordinary controls that live next to the data display. This
+allows querying on many variables at once, not just those encoded by spatial features on
+the display. Plus, most people know how to use sliders and buttons.
+Other programs afford interactive selection directly on the information display. Usually
+the user draws a box around a region of interest and the data in that region is removed (or
+retained while the rest of the data is removed). This is manipulation at its most direct, but
+it has the disadvantage of being tied to the spatial rendering of the data. If you can’t draw
+a box around it—or otherwise select points of interest—you can’t query on it! See the Data
+Brushing pattern for the pros and cons of a very similar technique.
+Back to controls, then: picking controls for dynamic queries is similar to the act of picking
+controls for any kind of form—the choices arise from the data type, the kind of query to
+be made, and the available controls. Some common choices include:
+• Sliders to specify a single number within a range.
+• Double sliders or slider pairs to specify a subset of a range: “Show data points that are
+greater than this number, but less than this other number.”
+310 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+• Radio buttons or drop-down (combo) boxes to pick one value out of several possible
+values. You might also use these to pick entire variables or data sets. In either case,
+“All” is frequently used as an additional metavalue.
+• Checkboxes or toggles to pick an arbitrary subset of values, variables, or data layers.
+• Text fields to type in single values, perhaps to be used in a Fill-in-the-Blanks context
+(see Chapter 8). Remember that text fields leave more room for errors and typos than
+do sliders and buttons, but are better for precise values.
+Examples
+The example in Figure 7-24 shows a set of six filters for a treemap (see the Treemap pattern
+in this chapter). The checkboxes, filters 1 and 2, screen out entire swaths of data with two
+very simple canned queries: is this item available, and does it have a picture?
+The remaining filters use double sliders. Each has two independently movable slider
+“thumbs” that let a user define a range. The Price slider sets a range of about $80 to about
+$1,000 (admittedly not very realistic), and as the user moves either end of the range, the
+whole treemap shifts and changes to reflect the new price range. The same is true for the
+other sliders.
+Figure 7-24. Hive Group treemap adjustment panel
+The Patterns 311
+The San Francisco Crimespotting project (see Figure 7-25) offers a set of simple, comprehensible toggles to show crime data for different times of day—dark, light, commute,
+swing shift, and so on. The user can also choose specific times of day with the clock-like
+control. To narrow down the calendar dates, a long bar chart (itself a data display) permits
+a range selection via a double slider, in addition to standard calendar drop downs.
+Figure 7-25. San Francisco Crimespotting
+In other libraries
+http://patternbrowser.org/code/pattern/pattern_anzeigen.php?4,231,17,0,0,252
+http://www.infovis-wiki.net/index.php?title=Dynamic_query
+Both the name and the concept for Dynamic Queries originated in the early 1990s with
+several seminal papers by Christopher Ahlberg, Christopher Williamson, and Ben
+Shneiderman. You can find some of these papers online, including the following:
+http://hcil.cs.umd.edu/trs/91-11/91-11.html
+http://hcil.cs.umd.edu/trs/93-01/93-01.html
+312 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+Data Brushing
+Figure 7-26. BBN Cornerstone
+What
+Let the user select data items in one view; show the same data selected simultaneously in
+another view.
+Use when
+You can show two or more information graphics at a time. You might have two line plots
+and a scatter plot, or a scatter plot and a table, or a diagram and a tree, or a map and a
+timeline, whatever—as long as each graphic is showing the same data set.
+Why
+Data Brushing offers a very rich form of interactive data exploration. First, the user can select data points using an information graphic itself as a “selector.” Sometimes it’s easier to
+find points of interest visually than by less direct means, such as Dynamic Queries—outliers
+on a plot can be seen and manipulated immediately, for instance, while figuring out how
+to define them numerically might take a few seconds (or longer). “Do I want all points
+where X > 200 and Y > 5.6? I can’t tell; just let me draw a box around that group of points.”
+Second, by seeing the selected or “brushed” data points simultaneously in the other
+graphic(s), the user can observe those points in at least one other graphical context. That
+can be invaluable. To use the outlier example again, the user might want to know where
+those outliers are in a different data space, indexed by different variables—and by learning that, she might gain immediate insight into the phenomenon that produced the data.
+The Patterns 313
+A larger principle here is coordinated or linked views. Multiple views on the same data can
+be linked or synchronized so that certain manipulations—zooming, panning, selection,
+and so forth—done to one view are simultaneously shown in the others. Coordination reinforces the idea that the views are simply different perspectives on the same data. Again,
+the user focuses on the same data in different contexts, which can lead to insight.
+How
+First, how will users select or “brush” the data? It’s the same problem you’d have with any
+selectable collection of objects: users might want one object or several, contiguous or
+separate, selected all at once or incrementally. Consider these ideas:
+• Drawing a rubber-band box around the data points (this is very common)
+• Single selection by clicking with the mouse
+• Selecting a range (if that makes sense) by Shift-clicking, as one can often do with lists
+• Adding and subtracting points by Ctrl-clicking, also like lists
+• Drawing an arbitrary “lasso” shape around the data points
+• Inverting the selection via a menu item, button, or key
+If you go exclusively with a rubber-band box, consider leaving the box on-screen after the
+selection gesture. Some systems, such as Cornerstone, permit interactive resizing of the
+brushing box. Actually, the user can benefit from any method of interactively expanding
+or reducing the brushed set of points, because she can see the newly brushed points “light
+up” immediately in the other views, which creates more possibility for insight.
+As you can see, it’s important that the other views react immediately to Data Brushing.
+Make sure the system can handle a fast turnaround.
+If the brushed data points appear with the same visual characteristics in all the data views,
+including the graphic where the brushing occurs, the user can more easily find them and
+recognize them as being brushed. They also form a single perceptual layer (see the section
+“Preattentive Variables: What’s Related to What?” on page 283). Color hue is the preattentive
+variable most frequently used for brushing, probably because you can see a bright color
+so easily even when your attention is focused elsewhere.
+Examples
+The screenshots shown in both Figures 7-26 and 7-27 are taken from Cornerstone, a statistics and graphing package. The three windows in Figure 7-27 represent a scatter plot,
+a histogram of the residuals of one of the plotted variables, and a table of the raw data.
+All views afford brushing; you can see the brushing box around two of the histogram’s
+columns. Both plots show the brushed data in red, while the table shows it in gray. If you
+“brushed” a car model in the table, you would see the dot representing that model appear
+in red in the top plot, plus a red strip in the histogram.
+314 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+Figure 7-27. BBN Cornerstone, again
+Maps lend themselves well to Data Brushing, because data shown in a geographic context
+can often be organized and rendered in other ways as well. The following three examples
+show map-based Data Brushing: images in a filmstrip-like line (from Flickr, Figure 7-28),
+GPS tracker locations in chronological order (from SPOT Adventures, Figure 7-29), and
+Foursquare checkins by a person going from one social event to another, also in chronological order (from Weeplaces, Figure 7-30). In all three examples, selection of items in
+the linear view causes the items to “light up” in the map view. Flickr and SPOT also do the
+reverse—they let the user select items on the map itself, so they light up in the linear view.
+Figure 7-28. Flickr map (http://www.flickr.com/map/)
+The Patterns 315
+Figure 7-29. SPOT Adventures live map
+Figure 7-30. Weeplaces (http://weeplaces.com)
+In other libraries
+http://quince.infragistics.com/Patterns/Data%20Brushing.aspx
+This pattern, called Linked Multiples, is a generalization of Data Brushing:
+http://patternbrowser.org/code/pattern/pattern_anzeigen.php?4,225,17,0,0,246
+316 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+Local Zooming
+Figure 7-31. The DateLens calendar
+What
+Show all the data in a single dense page, with small-scale data items. Wherever the mouse
+goes, distort the page to make those data items large and readable.
+Use when
+You’re showing a large data set using any organizational form—plots, maps, networks,
+or even tables—on either a large or a small screen. The user is able to “point at” places of
+interest with a mouse cursor or a touch screen.
+Users will browse through the data or search for points of interest within that organizational structure (e.g., finding a date in a calendar). High-level overviews are necessary for
+finding those points of interest, but users don’t need to see all available detail for all data
+points at once—zooming in is sufficient for getting fine detail.
+Some forms of Local Zooming, especially fisheye lenses, are appropriate only if your users
+are willing to learn a new interaction technique to gain proficiency with a particular application. Using Local Zooming can require patience.
+Why
+Ordinary zooming works well for most high-density information graphics, but it takes
+away context: a fully zoomed view no longer shows an overview of the whole data set.
+Local Zooming focuses on local detail while retaining context. The user remains in the
+same conceptual space.
+The Patterns 317
+One possible cost of Local Zooming, however, is distortion of that conceptual space. Notice
+how the introduction of a fisheye—a type of local zoom that maintains topological continuity between the zoomed area and the rest of the view—changes the landscape in
+Figure 7-31. Suddenly the overview doesn’t look the same as it did before: landmarks have
+moved, and spatial relationships have changed (“It used to be halfway down the right side
+of the screen, but it’s not there anymore”).
+Other kinds of Local Zooming don’t introduce distortion, but instead hide parts of the
+overview. With a virtual magnifying glass, for instance, the user can see the zoomed area
+and part of the larger context, but not what’s hidden by the magnifying glass “frame.”
+The Overview Plus Detail pattern is a viable alternative to Local Zooming. It too offers both
+detail (focus) and a full overview (context) in the same page, but it separates the two levels
+of scale into two side-by-side views, rather than integrating them into one distorted view.
+If Local Zooming is too difficult to implement or too hard for users to interact with, fall
+back to Overview Plus Detail.
+The Datatips pattern is another viable alternative. Again, you get both overview and detail,
+but the information shown isn’t really a “zoom” as much as a description of the data at
+that point. And a Datatip is an ephemeral item layered over the top of the graphic, whereas
+Local Zooming can be an integral part of the graphic and can therefore be printed and
+screen-captured.
+How
+Fill all the available space with the whole data set, drawn very small. Stretch it to fill the
+window dynamically (see the Liquid Layout pattern in Chapter 4). Remove detail as necessary. If text is an important element, use tiny fonts where you can; if the text still won’t fit,
+use abstract visual representations such as solid rectangles or lines that approximate text.
+Offer a local zoom mode. When the user turns it on and moves the pointer around, enlarge the small area directly under the pointer.
+What the enlargement actually looks like depends on the kind of information graphic
+you use—it doesn’t have to be literal, like a magnifying glass on a page. The DateLens,
+in Figure 7-31, uses both horizontal and vertical enlargement and compression. But the
+TableLens, in Figure 7-32, uses only a vertical enlargement and compression because the
+data points of interest are whole rows, not a single cell in a row. A map or image, however,
+needs to control both directions tightly in order to preserve its scale. In other words, don’t
+stretch or squish a map. It’s harder to read that way.
+Local zoom lenses can be finicky to drive, because the user might be aiming at very tiny
+hit targets. They don’t look tiny—they’re magnified under the lens!—but the user actually
+moves the pointer through the overview space, not the zoomed space. A small motion becomes a big jump. So when the data points are discrete, like table cells or network nodes,
+you might consider jumping directly from one focal point to another.
+318 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+It should be noted that fisheye views are an “advanced maneuver” in data visualization.
+Fisheye views distort the area immediately around the zoom to achieve topological continuity with the rest of the graphic. (The DateLens is a fisheye, but the other examples
+in this pattern are not.) This distortion can cause discomfort for the user who moves it
+around a lot, for instance.
+Examples
+The DateLens, shown in Figure 7-31 at the top of the pattern, was a calendar application
+that worked on both the desktop and a mobile device. (It was experimental, and support
+for it ceased back around 2004.) It shows an overview of your calendar—each row is a
+week—with blue blocks where your appointments are. For details, click on a cell. That cell
+then expands, using an Animated Transition (Chapter 3), to show the day’s schedule. In this
+design, the entire graphic compresses to allow room for the focused day, except for the
+row and the column containing that cell. (That actually provides useful information about
+the week’s schedule and about other weeks’ Thursday appointments.)
+The Inxight TableLens permitted the user to open arbitrary numbers of rows and move
+that “window” up and down the table. Figure 7-32 shows four magnified rows. Note that
+the only enlargement here is in the vertical direction.
+Figure 7-32. Inxight TableLens
+The Mac OS dock does a simple version of Local Zooming (Figure 7-33), as does Google
+Images (Figure 7-34).
+The Patterns 319
+Figure 7-33. Mac OS dock
+Figure 7-34. Google Images
+Cartifact’s map lenses—literal ones, yet remarkably beautiful—allow the user to set both
+the magnification level and the drawing style inside the lens (see Figure 7-35). These
+remove much of the user’s need to keep zooming into the map for detail, then back out
+again for context, then back in again for more detail. The alternate drawing styles (aerial,
+Cartifact, historic, and 3D oblique) let the user see one area in several complementary
+ways, without affecting the entire map.
+320 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+Figure 7-35. Cartifact map lenses (http://cartifact.com/webmaps/)
+In other libraries
+http://patternbrowser.org/code/pattern/pattern_anzeigen.php?4,222,17,0,0,243
+http://quince.infragistics.com/Patterns/Local%20Zooming.aspx
+Sortable Table
+Figure 7-36. iTunes sortable table header
+What
+Show the data in a table, and let the user sort the table rows according to the cell values
+in a selected column.
+Use when
+The interface shows multivariate information that the user may want to explore, reorder,
+customize, search through for a single item, or simply understand on the basis of those
+different variables.
+The Patterns 321
+Why
+Giving the user the ability to change the sorting order of a table has powerful effects. First,
+it facilitates exploration. A user can now learn things from the data that she may never
+have been able to otherwise. How many of this kind? What proportion of this to that? Is
+there only one of these? What’s first or last? Suddenly it becomes easier to find specific
+items, too; a user need only remember one attribute of the item in question (e.g., its lastedited date), sort on that attribute, and look up the value she remembers.
+Furthermore, if the sort order is retained from one invocation of the software to another,
+this is a way for the user to effectively customize the UI for her preferred usage patterns.
+Some users want the table sorted first to last, some last to first, and some by a variable no
+one else thinks is interesting. It’s good to give a user that kind of control.
+Finally, the clickable-header concept is familiar to many users now, and they may expect
+it even if you don’t provide it.
+How
+Choose the columns (i.e., the variables) carefully. What would a user want to sort by or
+search for? Conversely, what doesn’t need to be shown in this table? What can be hidden
+until the user asks for more detail about a specific item?
+The table headers should have some visual affordance that can be clicked on. Many have
+beveled, button-like borders, or blue underlined text. You should use up or down arrows
+to show whether the sort is in ascending or descending order. (And the presence of an
+arrow shows which column was last sorted on—a fortuitous side effect!) Consider using
+rollover effects, such as highlighting or cursor changes, on the headers to reinforce the
+impression of clickability.
+Use a stable sort algorithm. This means that if a user sorts first by name and then by date,
+the resultant list will show ordered groups of same-date items that are each sorted by
+name within the group. In other words, the current sort order will be retained in the next
+sort to the extent possible—subtle, but very useful.
+If your UI technology permits, you might let users reorder columns by dragging and
+dropping.
+Examples
+Inxight’s TableLens is a table whose rows compress down into tiny bars, the lengths of
+which represent the values of the table cells. (Users can click on specific rows to see ordinarylooking table rows, but that’s not what I want to talk about here.) One of the wonderful
+things about this visualization is the ability to sort on any column—when the data is
+highly correlated, as in this example, the user can see that correlation before her eyes.
+Download from Wow! eBook <www.wowebook.com>
+322 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+The data set shown in Figure 7-37 comprises houses for sale in Santa Clara County,
+California. In this screenshot, the user has clicked on the Bedroom column header, thus
+sorting on that variable: the more bedrooms, the longer the blue bar. Previously, the stablesorted table had been sorted on Square Foot (representing the size of the house), so you
+see a secondary “saw-tooth” pattern there; all houses with four bedrooms, for instance, are
+sorted by size. The Baths variable almost mirrors the Square Foot attribute, and so does
+Price, which indicates a rough correlation. And it makes intuitive sense—the more bedrooms a house has, the more bathrooms it’s likely to have, and the bigger it’s likely to be.
+You can imagine other questions that can be answered by this kind of interactive graphic.
+Does zip code correlate to price? How strong is the correlation between price and square
+footage? Do certain realtors work only in certain cities? How many realtors are there?
+And so on.
+Figure 7-37. Inxight TableLens
+In other libraries
+http://ui-patterns.com/patterns/SortByColumn
+http://www.welie.com/patterns/showPattern.php?patternID=table-sorter
+http://quince.infragistics.com/Patterns/Sortable%20Table.aspx
+http://patternbrowser.org/code/pattern/pattern_anzeigen.php?4,233,17,0,0,254
+The Patterns 323
+Radial Table
+Figure 7-38. Analysis of car purchases (http://mkweb.bcgsc.ca/circos/intro/general_data/)
+What
+Show a table or list of items as a circle instead of a column. Draw connections among
+items through the interior of the circle.
+Use when
+You have a long list or table of items and you need to show arbitrary relationships among
+them: flows, connections, affinities, similarities, and even numerical values (encoded by
+the thickness of the connection).
+Why
+A circular presentation enables free-form connection lines to be visualized far more easily than a line or column of elements would permit. Such connections have a shorter,
+straighter distance to travel when drawn between points on an arc than points on a line,
+324 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+and viewers can usually see patterns in the data more easily. (This is not always the case.
+If you can, try out different types of connection visualizations to see if it’s true for your
+particular data sets.)
+Even when there are no connections to draw, some kinds of tabular data might be easier
+to see when drawn as a circle—very long data sets with both large-scale and small-scale
+features, for instance. Large-scale features might include groups and clusters, upper levels
+of a hierarchy, or labels for large numbers of items. See the examples for illustrations.
+From the website of Circos, a creator of radial table designs, comes this explanation:
+Within the circle, the resolution varies linearly, increasing with radial position. This
+makes the center of the circle ideal for compactly displaying summary statistics or
+indicating points of interest (i.e. low resolution data) which the reader can then follow
+outward to explore the data in greater detail (i.e. high resolution data).*
+Finally, radial information graphics can be beautiful. When drawn skillfully, these kinds
+of visualizations are fresh, attractive, and engaging.
+How
+Bend the linear table or list into a circle and put the text labels around the outside of the
+circle (if you need them). Some Radial Tables place the x-axis on one half of the circle and
+the y-axis on the other half; this is useful if your data table is trying to show connections
+between two one-dimensional sets of items.
+If the original table shows multiple columns of dependent data—numbers, bars, pictograms,
+scatter plots, and so on—arrange those either inside or outside the circle, depending on the
+visual scale and interrelatedness of these features. Large-scale, convergent features should
+go inside; small-scale, detailed, divergent features should go outside, where they have
+more space.
+If the items in the table are categorized, you could encode those categories as groups
+separated by gaps, or in different colors, or as arcs parallel to the circle (either inside or
+outside the data axis).
+Inside the circle, draw relationships among the items. Those relationships might take the
+shape of free-form lines or arcs between table cells. The line color and thickness can encode additional variables about the relationships, such as source or destination (color),
+and volume or strength (thickness). Sometimes these relationships need to be drawn so
+thickly that they’re hard to distinguish from each other. Here are some ways to deal with
+that problem:
+* http://mkweb.bcgsc.ca/circos/intro/circular_approach/
+The Patterns 325
+• Eliminate superfluous lines; draw only what you want viewers to focus on.
+• Use drawing algorithms that can cluster lines together and keep them visually
+organized.
+• If the graphic is interactive, use techniques such as Data Spotlight and Dynamic Queries
+to let the user see chosen subsets of the lines.
+You may need to explain how to interpret a Radial Table. These graphics can be very useful
+to the patient and informed viewer, but their meaning may not be immediately apparent
+to a viewer who is naive or not motivated to spend time studying the graphic carefully. If
+your users are likely to move on without understanding the Radial Table, consider simplifying it or using an easier alternative rendering.
+Examples
+SolidSX Software Explorer is an application that draws Radial Tables of software packages.
+Figure 7-39 shows dependencies, calls, and hierarchical relationships among code elements in a library. Note the containing arcs around the outside of the circle (showing the
+static hierarchy), and the call-graph lines within the circle, which are carefully drawn for
+clarity.
+Figure 7-39. SolidSX Software Explorer (http://www.solidsourceit.com/products/SolidSX-source-codedependency-analysis.html)
+326 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+From the Eigenfactor Project and Moritz Stefaner comes an elegant diagram of citation
+patterns among branches of science, shown in Figure 7-40. There are many connections,
+but they are drawn so well that the viewer can follow them with some degree of success.
+The diagram shows which fields of science are more insular than others (e.g., economics)
+and which are better connected.
+Figure 7-40. Eigenfactor science citation patterns (http://well-formed.eigenfactor.org/radial.html)
+The genetics diagram in Figure 7-41 demonstrates that the curved format can be effective
+in illustrating data patterns other than connections. The diagram could have been “unrolled” into a horizontal strip-chart format, but this version is more compact and arguably
+more readable than a long, thin linear chart. Note that the line charts on the inside of the
+table are a larger-scale feature than the tiny multicolored slivers around the outside of the
+circle, so they are appropriately shown inside the circle.
+The Patterns 327
+Figure 7-41. Genomic chart of a bacterium (http://www.plosone.org/article/info:doi/10.1371/journal.
+pone.0011748)
+In other libraries
+http://patternbrowser.org/code/pattern/pattern_anzeigen.php?4,217,17,0,0,238
+For many more examples, visit the Circos and Visual Complexity websites:
+http://mkweb.bcgsc.ca/circos/
+http:/visualcomplexity.com/
+328 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+Multi-Y Graph
+Figure 7-42. New York Times graphic
+What
+Stack multiple graph lines in one panel; let them all share the same x-axis.
+Use when
+You present two or more graphs, usually simple line plots, bar charts, or area charts (or
+any combination thereof). The data in those graphs all share the same x-axis, often a timeline, but otherwise they describe different things, perhaps with different units or scale on
+the y-axis. You want to encourage the viewer to find “vertical” relationships among the
+data sets being shown—correlations, similarities, unexpected differences, and so on.
+Why
+Aligning the graphs along the x-axis first tells the viewer that these data sets are related, and then it lets her make side-by-side comparisons of the data. In Figure 7-42, the
+proximity of the two graphs makes visible the correlations in the curves’ shapes; you can
+see that spikes in the bottom graph generally line up with interesting features in the top
+graph, and the grid lines enable precise observation. For instance, the vertical grid line
+between 1990 and 1991 lines up peaks in both curves.
+You could have done this by superimposing one graph upon the other. But by showing
+each graph individually, with its own y-axis, you enable each graph to be viewed on its
+own merits without visual interference from the other.
+The Patterns 329
+Also, these data sets have very different Y values: one ranges from zero to nearly 150,
+while the other ranges from −30 to +20! You couldn’t put them on the same y-axis anyhow
+without the first one looking like a flat line. You’d need to draw another y-axis along the
+left side, and then you’d need to choose a scaling that doesn’t make the graph look too
+odd. Even so, direct superimposition encourages the viewer to think that the data sets use
+the same Y scale, and to compare them on that basis—“apples to apples,” instead of “apples
+to oranges.” If that’s not the case, superimposing them can be misleading.
+How
+Stack one graph on top of the other. Use one x-axis for both, but separate the y-axes into
+different vertical spaces. If the y-axes need to overlap somewhat, they can, but try to keep
+the graphs from visually interfering with each other.
+Sometimes you don’t need y-axes at all; maybe it’s not important to let the user find exact
+values (or maybe the graph itself contains exact values, such as labeled bar charts). In that
+case, simply move the graph curves up and down until they don’t interfere with each other.
+Label each graph so that its identity is unambiguous. Use vertical grid lines if possible;
+they let viewers follow an X value from one data set to another, for easier comparison.
+They also make it possible to discover an exact value for a data point of interest (or one
+close to it) without making the user take out a straightedge and pencil.
+Examples
+Google Trends allows a user to compare the use frequency of different search terms. The
+example in Figure 7-43 shows two sports-related terms that are comparable in volume, so
+they’re easy to compare in one simple chart. But Google Trends goes beyond that. Relative
+search volume is illustrated on the top chart, while the bottom chart shows news reference
+volume. The metrics and their scales are different, so Trends uses two separate y-axes.
+Figure 7-43. Google Trends
+330 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+The example in Figure 7-44 shows an interactive multi-Y graph constructed in MATLAB.
+You can manipulate the three data traces’ y-axes, color-coded on the left, with the mouse—
+you can drag the traces up and down the graph, “stretch” them vertically by sliding the
+colored axis end caps, and even change the displayed axis range by editing the y-axis limits in place. Here’s why that’s interesting: you might notice that the traces look similar, as
+though they were correlated somehow—all three drop in value just after the vertical line
+labeled 1180, for instance. But just how similar are they? Move them and see.
+Figure 7-44. MATLAB plot
+Your eyes are very, very good at discerning relationships among data graphics. By stacking
+and superimposing the differently scaled plot traces shown in Figure 7-45, a user might
+gain valuable insight into whatever phenomenon produced this data.
+Figure 7-45. MATLAB plot, again
+The Patterns 331
+The information graphics in a multi-Y display don’t need to be traditional graphs. The
+weather chart shown in Figure 7-46 uses a series of pictograms to illustrate expected
+weather conditions; these are aligned with the same time-based x-axis that the graph uses.
+(This chart hints at the next pattern, Small Multiples.)
+Figure 7-46. Weather chart from The Weather Channel
+In other libraries
+http://quince.infragistics.com/Patterns/Multi-Y%20Graph.aspx
+Small Multiples
+Figure 7-47. Climate heat map, from a University of Oregon publication
+332 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+What
+Create many small pictures of the data using two or three data dimensions. Tile them on
+the page according to one or two additional data dimensions, either in a single comicstrip sequence or in a 2D matrix.
+Use when
+You need to display a large data set with more than two dimensions or independent
+variables. It’s easy to show a single “slice” of the data as a picture—as a plot, table, map,
+or image, for instance—but you find it hard to show more dimensions than that. Users
+might be forced to look at one plot at a time, flipping back and forth among them to see
+differences.
+When using Small Multiples, you need to have a fairly large display area available. Mobile
+devices rarely do this well, unless each individual picture is very tiny. Use this pattern
+when most users will be seeing these on a large screen or on printed paper.
+That being said, sparklines are a particular type of Small Multiples that can be very effective
+at tiny scales, such as in running text or in a column of table cells. They are essentially
+miniature graphs, stripped of all labels and axes, created to show the shape or envelope of
+a simple data set.
+Why
+Small Multiples are data-rich—they show a lot of information at one time, but in a comprehensible way. Every individual picture tells a story. But when you put them all together,
+and demonstrate how each picture varies from one to the next, an even bigger story is told.
+As Edward Tufte put it in his classic book, Envisioning Information (Graphics Press), “Small
+multiple designs, multivariate and data bountiful, answer directly by visually enforcing
+comparisons of changes, of the differences among objects, of the scope of alternatives.”
+(Tufte named and popularized Small Multiples in his famous books about visualization.)
+Think about it this way. If you can encode some dimensions in each individual picture,
+but you need to encode an extra dimension that just won’t fit in the pictures, how could
+you do it?
+Sequential presentation
+Express that dimension varying across time. You can play them like a movie, use
+Back/Next buttons to page one at a time, and so on.
+3D presentation
+Place the pictures along a third spatial axis, the z-axis.
+Small multiples
+Reuse the x- and y-axes at a larger scale.
+The Patterns 333
+Side-by-side placement of pictures lets a user glance from one to the other freely and
+rapidly. She doesn’t have to remember what was shown in a previous screen, as would be
+required by a sequential presentation (although a movie can be very effective at showing
+tiny differences between frames). She also doesn’t have to decode or rotate a complicated
+3D plot, as would be required if you place 2D pictures along a third axis. Sequential and
+3D presentations sometimes work very well, but not always, and they often don’t work in
+a noninteractive setting at all.
+How
+Choose whether to represent one extra data dimension or two. With only one, you can lay
+out the images vertically, horizontally, or even line-wrapped, like a comic strip—from the
+starting point, the user can read through to the end. With two data dimensions, you should
+use a 2D table or matrix—express one data dimension as columns, and the other as rows.
+Whether you use one dimension or two, label the Small Multiples with clear captions—
+individually if necessary, or otherwise along the sides of the display. Make sure the users
+understand which data dimension is varying across the multiples, and whether you’re
+encoding one or two data dimensions.
+Each image should be similar to the others: the same size and/or shape, the same axis
+scaling (if you’re using plots), and the same kind of content. When you use Small Multiples,
+you’re trying to bring out the meaningful differences between the things being shown. Try
+to eliminate the visual differences that don’t mean anything.
+Of course, you shouldn’t use too many Small Multiples on one page. If one of the data dimensions has a range of 1 to 100, you probably don’t want 100 rows or columns of small
+multiples, so what do you do? You could bin those 100 values into, say, five bins containing 20 values each. Or you could use a technique called shingling, which is similar to binning but allows substantial overlap between the bins. (That means some data points will
+appear more than once, but that may be a good thing for users trying to discern patterns
+in the data; just make sure it’s labeled well so that they know what’s going on.)
+Some small-multiple plots with two extra encoded dimensions are called trellis plots or
+trellis graphs. William Cleveland, a noted authority on statistical graphing, uses this term,
+and so do the software packages S-PLUS and R.
+Examples
+The North American climate graph, at the top of the pattern in Figure 7-47, shows many encoded variables. Underlying each small-multiple picture is a 2D geographic map, of course,
+and overlaid on that is a color-coded “graph” of some climate metric, such as temperature.
+With any one picture, you can see interesting shapes in the color data; they might prompt a
+viewer to ask questions about why blobs of color appear over certain parts of the continent.
+334 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+The Small Multiples display as a whole encodes two additional variables: each column is
+a month of the year, and each row represents a climate metric. Your eyes have probably
+followed the changes across the rows, noting changes through the year, and comparisons
+up and down the columns are easy, too.
+The example shown in Figure 7-48 uses the grid to encode two independent variables—
+ethnicity/religion and income—into the state-by-state geographic data. The dependent
+variable, encoded by color, is the estimated level of public support for school vouchers
+(orange representing support, green opposition). The resultant graphic is very rich and
+nuanced, telling countless stories about Americans’ attitudes toward the topic.
+Figure 7-48. Geographic and demographic small-multiples chart (http://www.stat.columbia.edu/~cook/
+movabletype/archives/2009/07/hard_sell_for_b.html)
+The Patterns 335
+A more abstract two-dimensional trellis plot, also called a coplot in William Cleveland’s
+Visualizing Data, is shown in Figure 7-49. Created with the R software package, this example shows a quantity measured along four dimensions: latitude, longitude, depth, and
+magnitude. The values along the depth and magnitude dimensions overlap—this is the
+shingling technique mentioned earlier.
+Figure 7-49. Trellis plot of earthquake data (http://www.sph.umich.edu/~nichols/biostat_bbagmarch2001.pdf)
+In other libraries
+http://patternbrowser.org/code/pattern/pattern_anzeigen.php?4,298,17,0,0,319
+http://quince.infragistics.com/Patterns/Small%20Multiples.aspx
+See also the works by Edward Tufte and William Cleveland listed earlier.
+336 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+Treemap
+Figure 7-50. SmartMoney Map of the Market (http://www.smartmoney.com/map-of-the-market/)
+What
+Express multidimensional and/or hierarchical data as rectangles of various sizes. You can
+nest those rectangles to show the hierarchy, and color or label them to show additional
+variables.
+Use when
+Your data is tree-shaped (hierarchical). Alternatively, it may be multivariate—each item has
+several attributes, such as size and category, which permit items to be grouped according to
+those attributes. Users want to see an overview of many data points—maybe hundreds or
+thousands—and they’re using screens large enough to accommodate a large display.
+Your users should be patient and motivated enough to learn to use an unusual interface.
+Treemaps are not always easy to read, especially for people who haven’t seen them before. Furthermore, they work better on-screen than they do on paper, because Datatips,
+Dynamic Queries, and other interactive mechanisms can help users understand the data.
+The Patterns 337
+Why
+Treemaps encode many data attributes into a single dense diagram. By taking advantage
+of position, size, containment, color hue and/or value, and labeling, a treemap packs a lot
+of information into a space that encourages the human visual system to seek out trends,
+relationships among variables, and specific points of interest.
+Look at the SmartMoney treemap in Figure 7-50, which shows the past 52 weeks’ performance of more than 500 publicly traded stocks. Section size illustrates the relative sizes of
+different market sectors and of companies within those sectors—the blocks of solid color
+are individual companies. You can instantly see that in the past year, the big gainers in
+bright green were from the Technology and Consumer Cyclicals categories, and the losers
+in red have been in the Financial and Energy categories.
+This treemap makes it very easy to get an instant overview and to spot outliers. It encourages you to see relationships between size and color, size and position, and position and
+color—all of which give you different kinds of insight into the market. It would take you
+forever to get that insight from a long table of stock prices.
+How
+The critical step in designing a treemap is deciding which data attributes are encoded by
+which visual variables:
+Rectangle size
+Usually this encodes a numeric value, such as size, price, or percentage. Make each
+rectangle’s area proportional to that number. If the number has too great a range,
+you’ll end up with some enormous rectangles and some microscopic rectangles, in
+which case you could either let the user zoom in on them for a closer look, or filter out the large ones to let the small ones scale up. Dynamic Queries (earlier in this
+chapter) are often used for that. Refer back to Figure 7-24 for an example of Dynamic
+Queries used in conjunction with a treemap.
+Grouping and nesting
+If your data is already inherently hierarchical, like a taxonomic tree or a filesystem,
+you should group and nest the rectangles accordingly. If not, see whether the data
+items have a natural grouping or categorization that is meaningful to the user. Do
+they have several possible categorizations? You might consider giving the user a
+choice on how to group them. Do they have no obvious categorization at all? Then
+you could take a numeric attribute, such as price, and bin it into categories ($0 to $5,
+$5 to $10, etc.). Or you could not group the data items at all. But consider whether
+some other type of information graphic may be more appropriate; grouping is one of
+the treemap’s strengths.
+338 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+Color
+You can use color to represent a numeric or otherwise ordered value, as in the
+SmartMoney example in Figure 7-50, or another categorization. For a numeric value,
+choose two colors for the “endpoints” of the range of possible values, such as red
+and green, white and blue, yellow and red, and so on; shades of color between those
+endpoints represent values in between. For a categorization, use a different hue to
+represent each category. (If the shades are too similar, though, viewers may assume
+an ordering where there isn’t one.)
+Position
+A rectangle’s position within the treemap is partially dictated by where it belongs in
+the hierarchy or categorization. But within a category, you might still have freedom
+to decide where a given rectangle goes. Some treemaps place the largest rectangles
+in the upper left of a category, and then space-fill the rest of the category so that the
+smallest rectangles are in the lower right. This establishes a nice rhythm on the page,
+and it helps the user to visually compare the number of small or large rectangles in
+each main category. In this case, position doesn’t encode yet another variable; instead, it’s redundant with size and grouping. But other treemap implementations do
+encode an order—by age, or alphabetical by name, for example. It depends on how
+many variables you want to encode at once.
+Most treemaps allow users to drill down to the actual data items. Mouse rollovers, for instance, usually produce largish tool tips that describe the item in full (see the Datatips pattern in this chapter). You’ll usually have to elide some text anyway to fit the descriptions
+into the treemap blocks, so this is a good thing to do. Furthermore, a single or double click
+often brings the user to some other page or window about that item.
+As for implementation, it is not trivial to write code to lay out a treemap in a pleasing way.
+Fortunately, many algorithms exist for drawing a treemap. Some are in academic papers;
+some are in open source software or freeware; and others are in products. The different
+algorithms vary according to how they choose the rectangles’ aspect ratios (i.e., the proportion between width and height; the squarer, the better), how they fill the space for a
+given category, and their stability with respect to data changes.
+You may need to explain how to interpret a Treemap. These graphics can be very useful to
+the patient and informed viewer, but their meaning isn’t immediately apparent to a viewer
+who is naive or not motivated to spend time studying the graphic carefully. If your users
+are likely to move on without understanding the Treemap, consider simplifying it or using
+an easier alternative rendering.
+The Patterns 339
+Examples
+The now-defunct Newsmap illustrated the “news landscape” as described by Google
+News (see Figure 7-51). At any given moment, the Newsmap could collect Google’s top
+headlines and draw a treemap in which the largest blocks represented the most reportedon stories. The encodings here are:
+• Block size: “popularity” of news item; how many news outlets reported this story
+• Color hue: topic
+• Top-level grouping: also topic
+• Color value (darkness/lightness): age
+Because the headline’s text size is proportional to block size, which in turn is proportional
+to popularity, your eyes are immediately drawn to the biggest news items. (What did you
+read first? Perhaps the “False warnings” headline, then “Please Work for Free!”?) The
+treemap is thus an automatically constructed visual hierarchy.
+Figure 7-51. Newsmap
+340 Chapter 7: Showing Complex Data: Trees, Charts, and Other Information Graphics
+From the Hive Group comes a small collection of similar treemap visualizations: items
+available for purchase from Amazon, world population data, and so on. Figure 7-52 shows
+a list of articles recently promoted via Digg.
+Some encodings—block size, color hue, grouping—are settable by the user via the bar on
+the top (“Group by,” “Size represents,” “Color represents”). That kind of customizability is
+really handy in this type of application. After all, there are many data attributes associated
+with each article—too many to be encoded by the available three or four visual variables.
+The treemap designers didn’t know which attributes each user would be most interested
+in. They made a good default guess, and put in a simple, learnable UI to allow users to do
+their own thing.
+Figure 7-52. Hive Group visualization of Digg articles (http://www.hivegroup.com/gallery/)
+In other libraries
+http://patternbrowser.org/code/pattern/pattern_anzeigen.php?4,215,17,0,0,236
+http://quince.infragistics.com/Patterns/Treemap.aspx
+Ben Shneiderman invented the treemap in 1990, and he and his colleagues at the
+University of Maryland have been refining the technique for some time now. A history of
+the treemap, along with many links to papers and implementations, can be found at http://
+www.cs.umd.edu/hcil/treemap-history/.
+
+---
+
+## Sección 17: Chapter 8 [Entropy: 0.912]
+
+Getting Input from Users:
+Forms and Controls
+Sooner or later, the software you design will probably ask the user to answer some kind of
+question. It might even happen in the first few minutes of interaction. Where should this
+software be installed? What’s your login name? What words do you want to search for?
+These kinds of interactions are among the easiest to design. Everyone knows how to use
+text fields, checkboxes, and combo boxes. These input controls are often the first interface
+elements that novice designers use as they build their first GUIs and websites.
+Still, it doesn’t take much to set up a potentially awkward interaction. Here’s another sample question: for what location do you want a weather report? The user might wonder, do
+I specify a location by city, country, postal code, or what? Are abbreviations OK? What if I
+misspell it? What if I ask for a city it doesn’t know about? Isn’t there a map to choose from?
+And why can’t it remember the location I gave it yesterday, anyhow?
+This chapter discusses ways to smooth out these problems. The patterns, techniques, and
+controls described here apply mostly to form design—a form being simply a series of
+question/answer pairs. However, they will also be useful in other contexts, such as for
+single controls on web pages or on application toolbars. Input design and form design
+are core skills for interaction designers, as you can use them in every genre and on every
+platform.
+The Basics of Form Design
+First, a few principles to remember when doing input and form design:
+Make sure the user understands what’s asked for, and why
+This is entirely context-dependent, and any generalizations here risk sounding
+vapid, but let’s try anyway. You should write labels with words that your target users
+understand—plain language for novice or occasional users, and carefully chosen jargon or specialized vocabulary for domain experts. If you design a long or tedious
+form, explain why you need all the information you’re asking for, break it up into
+descriptive Titled Sections, and give some reassurance that sensitive information will
+342 Chapter 8: Getting Input from Users: Forms and Controls
+be handled with care. If you’re putting a button on a toolbar (or somewhere else that’s
+too crowded for a label) and the button’s function isn’t immediately obvious, use a
+descriptive tool tip or other type of context-sensitive help to tell the user what it does.
+If you can, avoid asking the question at all
+Asking the user to answer a question, especially if it comes in the middle of some
+other task, is a bit of an imposition. You might be asking him to break his train of
+thought and deal with something he hadn’t expected to think about. Even in the best
+of cases, typing into text fields isn’t most people’s idea of a fun time. Can you “prefill”
+an input control with already-known or guessable information, as the Autocompletion
+pattern recommends? Can you offer Good Defaults that remove the burdens of choice
+from most of your users? Can you avoid asking for the information altogether?
+There’s one glaring exception to this principle: security. Sometimes we use input controls in a challenge/response context, such as asking for passwords or credit card
+numbers. You obviously don’t want to circumvent these security mechanisms by casually prefilling sensitive information.
+Knowledge “in the world” is often more accurate than knowledge “in the head”
+You can’t expect human beings to recall lists of things perfectly. If you ask users to
+make a choice from a prescribed set of items, try to make that list available to them
+so that they can read over it. Drop downs, combo boxes, lists, and other such controls
+put all the choices out there for the user to review.
+(Obviously, a user can remember his name, birthday, address, state or country, phone
+number, and other common personal information—and he can type such information very easily and accurately. There’s no need for “knowledge in the world” in these
+cases; text fields work just fine, and are easier to use than drop downs.)
+Similarly, if you ask for input that needs to be formatted in a specific way, you might
+want to offer the user clues about how to format it. Even if the user has used your UI
+before, he may not remember what’s required—a gentle reminder may be welcome.
+Good Defaults, Structured Format, and Input Hints all serve this purpose. Autocompletion
+goes a step further by telling the user what input is valid, or by reminding the user
+what he entered some previous time.
+Respond sensitively to errors, and be forgiving when possible
+Accept multiple formats for dates, addresses, phone numbers, credit card numbers,
+and so on, per the Forgiving Format pattern. If a user does enter information that the
+form rejects, show an error message as soon as it becomes clear that the user made a
+mistake (you may need to wait until more form fields are filled out before deciding
+that for sure). On the form, politely indicate which input field is problematic, why,
+and how the user might fix it. See the patterns called Password Strength Meter and
+Same-Page Error Messages.
+The Basics of Form Design 343
+Beware a literal translation from the underlying programming model
+Many forms are built to edit database records, or to edit objects in an object-oriented
+programming language. Given a data structure like these to fill out, it’s really easy to
+design a form to do it. Each structure element gets (1) a label, and (2) a control (or a
+bundle of controls acting together). Put them in some rational order, lay them out top
+to bottom, and you’re done, right?
+Not entirely. This kind of implementation-driven form design does work, but it can
+give you a utilitarian and dull interface—or a difficult one. What if the structure
+elements don’t match up with the input the user expects to give, for instance? And
+what if the structure is, say, 30 elements long? For some contexts, such as property
+sheets in a programming environment, it’s appropriate to show everything the way
+it’s implemented—that’s part of the point. But for everything else, a more elegant and
+user-centered presentation is better.
+So, here’s the challenge: can you exploit dependencies among the structure elements,
+familiar graphic constructs (such as address labels), unstated assumptions, or knowledge of the user gained from previous interactions to make the form less onerous?
+Can you turn the problem into one handled by direct manipulation, such as dragging
+and dropping things around? Be creative!
+Usability-test it
+For some reason, when input forms are involved, it’s particularly easy for designers and users to make radically different assumptions about terminology, possible
+answers, intrusiveness, and other context-of-use issues. This book has said it before,
+and will say it again: do some usability testing, even if you’re reasonably sure your
+design is good. This will give you empirical evidence of what works and what doesn’t
+for your particular situation.
+Your choice of controls will affect the user’s expectation of what is asked for, so choose wisely
+A radio box suggests a one-of-many choice, while a one-line text field suggests a
+short, open-ended answer. Consciously or not, people will use the physical form of
+a control—its type, its size, and so forth—to figure out what’s being asked for, and
+they’ll set their expectations accordingly. If you use a text field to ask for a number,
+users may believe that any number is OK; if they enter “12” and you then surprise
+them with an error dialog box saying “The number you enter must be between 1 and
+10,” you’ve yanked the rug out from under them. A slider or spin box would have
+been better.
+The following section gives you a table of possible controls for different input types.
+You or the engineers you work with will need to decide the semantics of each question. Is it binary? A date or time? One-of-many? Many-of-many? Open-ended but
+requiring validation? Look it up here, and then choose a control based on your particular design constraints.
+Download from Wow! eBook <www.wowebook.com>
+344 Chapter 8: Getting Input from Users: Forms and Controls
+Control Choice
+The next sections describe controls and patterns for the kinds of information you might
+require from the user, such as numbers or choices from lists. It’s not a complete set by any
+means; in fact, you can probably come up with plenty of others. But the types shown here
+are common, and the listed controls are among your best choices for clarity and usability.
+Consider these factors when choosing among the possible controls for a given information type:
+Available space
+Some controls take up lots of screen real estate; others are smaller, but may be harder
+to use than larger ones. Short forms on web pages might be able to spend that screen
+space on radio buttons or illustrated lists, whereas complex applications may need to
+pack as much content as possible into small spaces. Toolbars and table-style property
+sheets are especially constraining, since they generally allow for only one text line of
+height and often not much width, either.
+User sophistication with respect to general computer usage
+Text fields should be familiar to almost all users of anything you’d design, but not everyone would be comfortable using a double-thumbed slider. For that matter, many
+occasional computer users don’t know how to handle a multiple-selection listbox,
+either.
+User sophistication with respect to domain knowledge
+A text field might be fine if your users know that, say, only the numbers 1–10 and
+20–30 are valid. Beginners will stumble, but if they’re a very small part of your user
+base (and if the context is readily learned), maybe that’s OK—a tiny text field might
+be better than using a big set of interlinked controls.
+Expectations from other applications
+For instance, Bold/Italic/Underline controls are known as iconic buttons; it would
+just be weird to see them as radio buttons instead.
+Available technology
+As of this writing, HTML provides only a very small subset of the controls in common usage on the desktop: text fields, radio boxes and checkboxes, scrolled lists, and
+simple drop downs. Commercial and open source GUI toolkits provide richer sets
+of controls. Their offerings vary, but many of them are extensible via programming,
+allowing you to create custom controls for specific situations.
+Control Choice 345
+The following sections summarize the various control options for four common input
+scenarios: lists of items, text, numbers, and dates or times. Each choice is illustrated with
+a typical example, taken from the Windows 2000 look-and-feel. (Keep in mind that these
+examples are not necessarily the best possible rendering of these controls! You do have
+some freedom when you decide how to draw them, especially on the Web. See Chapter 9’s
+introduction for further discussion.)
+Lists of Items
+A wide variety of familiar controls allow users to select items or options from lists. Your
+choice of control depends on the number of items or options to be selected (one or many)
+and the number of potentially selectable items (two, a handful, or many).
+Here are controls for selecting one of two options (a binary choice).
+Checkbox
+•. Pros:.simple;.low.space.consumption
+•. Cons:. can. only. express. one. choice,. so. its. inverse. remains. implied. and. unstated;. this. can.
+lead. to.confusion.about.what.it.means. when.
+it’s.off
+Two radio buttons
+•. Pros:.both.choices.are.stated.and.visible
+•. Cons:.higher.space.consumption
+Two-choice drop-down list
+•. Pros:.both.choices.are.stated;.low.and.predictable. space. consumption;. easily. expandable.
+later.to.more.than.two.choices
+•. Cons:.only.one.choice.is.visible.at.a.time;.requires.
+some.dexterity
+“Press-and-stick” toggle button
+•. Pros:.same.as.for.checkbox;.when.iconic,.very.
+low.space.consumption
+•. Cons:.same.as.for.checkbox;.also,.not.as.standard.as.a.checkbox.for.text.choices
+346 Chapter 8: Getting Input from Users: Forms and Controls
+The following controls are for selecting one of N items, where N is small.
+N radio buttons
+•. Pros:.all.choices.are.always.visible
+•. Cons:.high.space.consumption
+N-item drop-down list
+•. Pros:.low.space.consumption
+•. Cons:.only.one.choice.is.visible.at.a.time,.except.
+when.the.menu.is.open;.requires.some.dexterity
+N-item set of mutually exclusive iconic
+toggle buttons
+•. Pros:. low. space. consumption;. all. choices. are.
+visible
+•. Cons:. icons. might. be. cryptic,. requiring. tool.
+tips. for. understanding;. user. might. not. know.
+they’re.mutually.exclusive
+Single-selection list or table
+•. Pros:.many.choices.are.visible;.can.be.kept.as.
+small.as.three.items
+•. Cons:. higher. space. consumption. than. dropdown.list.or.spinner
+Spinner
+•. Pros:.low.space.consumption
+•. Cons:.only.one.choice.is.ever.visible.at.a.time;.
+requires. a. lot. of. dexterity;. unfamiliar. to. naive.
+computer.users;.drop-down.list.is.usually.a.better.choice
+Control Choice 347
+These controls are for selecting one of N items, where N is large.
+N-item drop-down list, scrolled if
+necessary
+•. Pros:.low.space.consumption
+•. Cons:.only.one.choice.is.visible.at.a.time,.
+except.when.menu.is.open;.requires.a.
+lot.of.dexterity.to.scroll.through.items.
+on.the.drop-down.menu
+Single-selection list or table
+•. Pros:. many. choices. are. visible;. can. be.
+kept.small.if.needed
+•. Cons:. higher. space. consumption. than.
+drop-down.list
+Single-selection tree or Cascading List,
+with items arranged into categories
+•. Pros:.many.choices.are.visible;.organization.helps.findability.in.some.cases
+•. Cons:.may.be.unfamiliar.to.naive.computer. users;. high. space. consumption;.
+requires.high.dexterity
+Custom browser, such as for files,
+colors, or fonts
+•. Pros:. suited. for. browsing. available.
+choices
+•. Cons:.may.be.unfamiliar.to.some.users;.
+difficult. to. design;. usually. a. separate.
+window,. so. it’s. less. immediate. than.
+controls.placed.directly.on.the.page
+348 Chapter 8: Getting Input from Users: Forms and Controls
+Here are controls for selecting many of N items, in any order.
+Array of N checkboxes
+•. Pros:.all.choices.are.stated.and.visible
+•. Cons:.high.space.consumption
+Array of N toggle buttons
+•. Pros:.low.space.consumption;.all.choices.
+are.visible
+•. Cons:. icons. might. be. cryptic,. requiring.
+tool. tips. for. understanding;. might. look.
+mutually.exclusive
+Multiple-selection list or table
+•. Pros:. many. choices. are. visible;. can. be.
+kept.small.if.needed
+•. Cons:.not.all.choices.are.visible.without.
+scrolling;. high. (but. bounded). space.
+consumption;.user.might.not.realize.it’s.
+multiple-selection
+List with checkbox items
+•. Pros:.many.choices.are.visible;.can.be.kept.
+small.if.needed;.affordance.for.selection.is.
+obvious
+•. Cons:.not.all.choices.are.visible.without.
+scrolling;. high. (but. bounded). space.
+consumption
+Multiple-selection tree or Cascading
+List, with items arranged into
+categories
+•. Pros:.many.choices.are.visible;.organization.helps.findability.in.some.cases
+•. Cons:. may. be. unfamiliar. to. naive. computer. users;. requires. high. dexterity;.
+looks.the.same.as.single-selection.tree
+Control Choice 349
+Custom browser, such as for files,
+colors, or fonts
+•. Pros:.suited.for.browsing.available.choices
+•. Cons:.may.be.unfamiliar.to.some.users;.
+difficult. to. design;. usually. a. separate.
+window,.so.it’s.less.immediate.than.controls.placed.directly.on.the.page
+List Builder pattern
+•. Pros:.selected.set.is.easy.to.view;.selection. can. be. an. ordered. list. if. desired;.
+easily.handles.a.large.source.list
+•. Cons:.very.high.space.consumption.due.
+to. two. lists;. does. not. easily. handle. a.
+large.set.of.selected.objects
+Use these controls for constructing an unordered list of user-entered items.
+List or table with Add or New button
+•. Pros:.“add”.action.is.visible.and.obvious
+•. Cons:.higher.space.consumption;.visual.clutter
+List or table with New-Item Row pattern
+•. Pros:.lower.space.consumption;.editing.is.done.
+in.place
+•. Cons:.“add”. action. is. not. quite. as. obvious. as. a.
+button
+350 Chapter 8: Getting Input from Users: Forms and Controls
+List or table that can receive dragged-anddropped items
+•. Pros:. visually. elegant. and. space-saving;. dragand-drop.is.efficient.and.intuitive
+•. Cons:.“add”.action.is.not.visible,.so.users.may.not.
+know.the.list.is.a.drop.target
+These controls are useful for constructing an ordered list of items.
+Unordered list with “up” and “down”
+affordances
+•. Pros:.rearrangement.actions.are.visible
+•. Cons:.higher.space.consumption
+Unordered list that offers internal dragand-drop for reordering items
+•. Pros:.visually.elegant.and.space-saving;.dragand-drop.is.efficient.and.intuitive
+•. Cons:.rearrangement.actions.are.not.visible,.so.
+users.may.not.know.they’re.available
+Text
+Collecting text input from a user is one of the most basic form tasks. The controls typically are chosen according to the number of lines to be entered, whether or not the lines
+are predetermined choices, and whether or not the text will include formatting.
+The following control is for entering one line of text.
+Single-line text field
+Control Choice 351
+These controls are useful for entering either one line of text or a one-of-N choice.
+Combo box
+•. Pros:.quicker.to.use.than.a.separate.dialog.
+box;.familiar
+•. Cons:.limited.number.of.items.can.reasonably.fit.in.drop.down
+Text field with More button or
+Dropdown Chooser
+•. Pros:. permits. the. launch. of. a. specialized.
+chooser. dialog. box,. e.g.,. a. file. finder. or.
+drop.down
+•. Cons:. not. as. familiar. as. a. combo. box. to.
+some.users;.dialogs.are.not.as.immediate
+This control is for entering multiple lines of unformatted text.
+Multiline text area
+These controls are for entering multiple lines of formatted text.
+Text area with inline tags
+•. Pros:. skilled. users. can. avoid. the.
+toolbar.by.typing.tags.directly
+•. Cons:.not.truly.WYSIWYG
+352 Chapter 8: Getting Input from Users: Forms and Controls
+Rich-text editor
+•. Pros:.immediacy,.since.the.edited.
+text.serves.as.a.preview
+•. Cons:. use. of. toolbar. is. required,.
+so.it.cannot.always.be.keyboardonly
+Numbers
+Because numbers often must follow more complex formatting rules, entering numbers
+on a form is slightly more complex than entering basic text. The choice of input options
+depends on the type of number you enter and its allowable range.
+The following are controls for entering numbers of any type or format.
+Text field using Forgiving Format
+•. Pros:.visually.elegant;.permits.wide.variety.of.formats.or.
+data.types
+•. Cons:.expected.format.is.not.evident.from.the.control’s.
+form,.so.it.may.cause.temporary.confusion;.requires.careful.backend.validation
+Text field using Structured Format
+•. Pros:.desired.format.evident.from.control’s.form
+•. Cons:. possibly. higher. space. consumption;. more. visual.
+complexity;. does. not. permit. any. deviation. from. the.
+specified. format,. even. if. user. needs. to. do. so;. may. be.
+more.difficult.for.assistive.technologies.than.a.single.field
+Spin box (best for integers or discrete steps)
+•. Pros:.user.can.arrive.at.a.value.via.mouse.clicks,.without.
+touching.the.keyboard;.can.also.type.directly.if.desired
+•. Cons:. not. familiar. to. all. users;. you. may. need. to. hold.
+down. the. button. long. enough. to. reach. the. desired.
+value;.requires.dexterity.to.use.tiny.buttons
+Control Choice 353
+Use these controls for entering numbers from a bounded range.
+Slider
+•. Pros:. obvious. metaphor;. position. of. value. in.
+range.is.shown.visually;.the.user.cannot.enter.a.
+number.outside.the.range
+•. Cons:. high. space. consumption;. unobvious.
+keyboard. access;. tick. labels. can. make. it. very.
+crowded
+Spinner
+•. Pros:. values. are. constrained. to. be. in. range.
+when. buttons. are. used;. low. space. consumption;.supports.both.keyboard-only.and.mouseonly.access
+•. Cons:.not.familiar.to.all.users;.requires.dexterity.
+to. use. tiny. buttons;. needs. validation;. cannot.
+visually.see.value.within.range
+Text field with after-the-fact error checking
+(can have Input Hints, Input Prompt, etc.)
+•. Pros:.familiar.to.everyone;.low.space.consumption;.keyboard.access
+•. Cons:. requires. validation;. no. constraints. on.
+what.can.be.entered,.so.you.have.to.communicate.the.range.by.some.other.means
+Slider with text field (can take the form
+of a Dropdown Chooser with a slider on the
+drop down)
+•. Pros:.allows.both.visual.and.numeric.forms.of.
+input
+•. Cons:.complex;.high.space.consumption.when.
+both.elements.are.on.the.page;.requires.validation.of.text.field.when.the.user.types.the.value
+354 Chapter 8: Getting Input from Users: Forms and Controls
+These controls are for entering a subrange from a larger range.
+Double slider (can be used with two text fields)
+•. Pros:.lower.space.consumption.than.two.sliders
+•. Cons:. unfamiliar. to. most. users;. no. keyboard. access.
+unless.you.also.use.text.fields
+Two sliders (also can be used with text fields)
+•. Pros:.less.intimidating.than.a.double.slider
+•. Cons:. very. high. space. consumption;. no. keyboard.
+access.unless.text.fields.are.used,.too
+Two spinners (can be linked via Fill-in-the-
+Blanks)
+•. Pros:. values. are. constrained. to. be. in. range. when.
+buttons.are.used;.low.space.consumption;.supports.
+both.keyboard-only.and.mouse-only.access
+•. Cons:. not. familiar. to. all. users;. requires. dexterity. to.
+use.tiny.buttons;.needs.validation;.cannot.visually.see.
+value.within.range
+Two text fields with error checking (can use
+Input Hints, Input Prompt, or Fill-in-the-Blanks)
+•. Pros:. familiar. to. everyone;. much. lower. space. consumption.than.sliders
+•. Cons:.requires.validation;.no.constraints.on.what.can.
+be.entered,.so.you.need.to.communicate.the.range.
+by.some.other.means
+Control Choice 355
+Dates or Times
+Because of the potential formats and internationalization issues, dates and times can be
+a tricky item to accept from users. Input options for dates or times include the following.
+Forgiving Format text field
+•. Pros:. visually. simple;. permits. wide. variety. of.
+formats.or.data.types;.keyboard.access
+•. Cons:.expected.format.not.evident.from.control’s. form,. so. it. may. cause. brief. confusion;.
+requires.careful.backend.validation
+Structured Format text field
+•. Pros:.desired.format.evident.from.control’s.form
+•. Cons:. possibly. higher. space. consumption;.
+more.visual.clutter;.does.not.permit.deviation.
+from. specified. format,. even. if. user. wants. to.
+do.so;.may.be.more.difficult.for.screen.readers.
+than.a.single.field
+Calendar or clock control
+•. Pros:.obvious.metaphor;.input.is.constrained.to.
+allowable.values
+•. Cons:.high.space.consumption;.may.not.provide.
+keyboard-only.access
+Dropdown Chooser with calendar or clock
+control
+•. Pros:.combines.the.advantages.of.text.field.and.
+calendar.control;.low.space.consumption
+•. Cons:.complex.interaction;.requires.dexterity.to.
+pick.values.from.a.drop.down
+356 Chapter 8: Getting Input from Users: Forms and Controls
+The Patterns
+As you might have guessed if you read through the control tables in the preceding section,
+most of these patterns describe controls—specifically, how you can combine controls
+with other controls and text in ways that make them easier to use. Some patterns define
+structural relationships between elements, such as Dropdown Chooser and Fill-in-the-Blanks.
+Others, such as Good Defaults and Autocompletion, discuss the values of controls and how
+those values change.
+A large number of these patterns deal primarily with text fields: Forgiving Format,
+Structured Format, Fill-in-the-Blanks, Input Hints, Input Prompt, Password Strength Meter, and
+Autocompletion. That shouldn’t be surprising. Text fields are as common as dirt, but they
+don’t make it easy for users to figure out what should go in them. They’re easiest to use
+when presented in a context that makes their usage clear. The patterns give you many
+ways to create that context.
+1. Forgiving Format
+2. Structured Format
+3. Fill-in-the-Blanks
+4. Input Hints
+5. Input Prompt
+6. Password Strength Meter
+7. Autocompletion
+The next two patterns deal with controls other than text fields. Dropdown Chooser describes a way to create a custom control, and List Builder, referenced in the control table
+shown earlier, describes a commonly reinvented combination of controls that lets users
+construct a list of items.
+8. Dropdown Chooser
+9. List Builder
+You should design the remaining patterns into the whole form. They apply equally well to
+text fields, drop downs, radio buttons, lists, and other stateful controls, but you should use
+them consistently within a form (or within a dialog box, or even an entire application).
+10. Good Defaults
+11. Same-Page Error Messages
+Patterns from other chapters apply to form design as well. From Chapter 4, Right/Left
+Alignment discusses one way to arrange labels alongside controls. Labels can also be placed
+above the form fields (at the cost of vertical space, but with plenty of horizontal room for
+long labels), or left-aligned along the left edge of the form. The choice can affect the speed
+of form completion.
+The Patterns 357
+Chapters 3 and 4 also give you some larger-scale design possibilities. A gatekeeper form—
+any form that stands between the user and his immediate goal, such as sign-up or purchase
+forms—should be in Center Stage, with very few distractions on the page. Alternatively,
+you might make it a Modal Panel, layered over the page.
+If you have a long form that covers different topics, you might consider breaking it up into
+Titled Sections or even separate pages. (Tabs tend to work poorly as grouping mechanisms
+for forms.) If you break up a form into a sequence of pages, use the Wizard and Sequence
+Map patterns to show users where they are and where they’re going.
+Finally, forms should use a Prominent “Done” Button (Chapter 6) for the completion or submission action. If you have secondary actions, such as a form reset or a help link, make
+those less prominent.
+Forgiving Format
+Figure 8-1. Weather.com
+What
+Permit users to enter text in a variety of formats and syntax, and make the application
+interpret it intelligently.
+Use when
+Your UI asks for data that users might type with an unpredictable mix of whitespace, hyphens, abbreviations, or capitalizations. More generally, the UI can accept input of various
+kinds from the user—different meanings, formats, or syntax. But you want to keep the
+interface visually simple.
+Why
+The user just wants to get something done, not think about “correct” formats and complex
+UIs. Computers are good at figuring out how to handle input of different types (up to a
+point, anyway). It’s a perfect match: let the user type whatever he needs, and if it’s reasonable, make the software do the right thing with it.
+358 Chapter 8: Getting Input from Users: Forms and Controls
+This can help simplify the UI tremendously, making it much easier to figure out. It may
+even remove the requirement for an Input Hint or Input Prompt, though they’re often seen
+together, as in the example in Figure 8-1.
+You might consider Structured Format as an alternative, but that pattern works best when
+the input format is entirely predictable (and usually numeric, like telephone numbers).
+How
+The catch (you knew there would be one): it turns a UI design problem into a programming problem. You have to think about what kinds of text a user is likely to type in. Maybe
+you ask for a date or time, and only the format varies—that’s an easy case. Or maybe you
+ask for search terms, and the variation is what the software does with the data. That’s
+harder. Can the software disambiguate one case from another? How?
+Each application uses this pattern differently. Just make sure the software’s response to
+various input formats matches what users expect it to do. Test, test, and test again with
+real users.
+Examples
+The New York Times uses Forgiving Format in several features that need information from
+users. Figure 8-2 shows examples from its real estate search and from its financial quotes
+feature.
+Figure 8-2. Two text fields in the New York Times website
+One place where this pattern should be used, but usually isn’t, is when credit card numbers are requested from the user. As long as 16 digits are typed, why should the form care
+whether the user separates them by spaces, or by hyphens, or by nothing at all? It’s not
+difficult to strip out separating characters. PayPal, for example, doesn’t accept spaces in
+credit card numbers (see Figure 8-3).
+The Patterns 359
+Figure 8-3. PayPal
+Figure 8-4 comes from Outlook’s tool for setting up a meeting. Look at the “Start time:”
+and “End time:” fields at the bottom of the screenshot—you don’t need to give it a fully
+defined date, like what’s in the text fields now. If today is April 24 and you want to set up
+a meeting for April 29, you can type any of the following terms:
+• next Thu
+• nxt thu
+• thu
+• 29/4/2004
+• 4/29/2004
+• 29/4
+• 4/29
+• five days
+• 5 days
+And so on—there are probably other accepted formats, too. The specified date then is
+“echoed back” to the user in the appropriate format for the user’s language and location.
+Figure 8-4. Microsoft Outlook
+In other libraries
+http://ui-patterns.com/patterns/ForgivingFormat
+http://quince.infragistics.com/Patterns/Forgiving%20Format.aspx
+360 Chapter 8: Getting Input from Users: Forms and Controls
+Structured Format
+Figure 8-5. Photoshop installation screen
+What
+Instead of using one text field, use a set of text fields that reflect the structure of the requested data.
+Use when
+Your interface requests a specific kind of text input from the user, formatted in a certain
+way. That format is familiar and well defined, and you don’t expect any users to need to
+deviate from the format you expect. Examples include credit card information, local telephone numbers, and license strings or numbers.
+It’s generally a bad idea to use this pattern for any data in which the preferred format may
+vary from user to user. Consider especially what might happen if your interface is used in
+other countries. Names, addresses, postal codes, and telephone numbers all have different
+standard formats in different places. Consider using Forgiving Format in those cases.
+Why
+The structure of the text fields gives the user a clue about what kind of input is being
+requested. For example, she can mentally map the six text fields in Figure 8-5 to the sixchunk number written on her Photoshop CD case, and conclude that that’s the license
+number she now needs to type in. Expectations are clear. She probably also realizes that
+she doesn’t need to type in any spaces or hyphens to separate the six chunks.
+This pattern usually gets implemented as a set of small text fields instead of one big one.
+That alone can reduce data entry errors. It’s easier for someone to double-check several
+short strings (two to five characters or so) than one long one, especially when numbers are
+involved. Likewise, it’s easier to transcribe or memorize a long number when it’s broken
+up into chunks. That’s how the human brain works.
+Contrast this pattern to Forgiving Format, which takes the opposite tack: it allows you to
+type in data in any format, without providing structural evidence of what’s being asked
+for. (You can use other clues instead, like Input Hints.) Structured Format is better for very
+predictable formats, Forgiving Format for open-ended input.
+The Patterns 361
+How
+Design a set of text fields that reflect the format being asked for. Keep the text fields short,
+as clues to the length of the input.
+Once the user has typed all the digits or characters in the first text field, confirm it for her
+by automatically moving the input focus to the next field. She can still go back and re-edit
+the first one, of course, but now she knows how many digits are required there.
+You can also use Input Prompts to give the user yet more clues about what’s expected. In
+fact, structured format fields for dates often do use Input Prompts, such as “dd/mm/yyyy”.
+Examples
+At its simplest, Structured Format literally can take the shape of the data, complete with
+spaces, hyphens, and parentheses, as illustrated in the following table.
+Telephone.number (504).555-1212
+Credit.card.number 1021.1234.5678.0000
+Date 12/25/2004
+ISBN.number 0-1950-1919-9
+For date input, LiveJournal uses Structured Format in combination with a drop down to
+choose a month (see Figure 8-6). It defaults to the current day and time.
+Figure 8-6. LiveJournal
+In other libraries
+http://ui-patterns.com/patterns/StructuredFormat
+http://quince.infragistics.com/Patterns/Structured%20Format.aspx
+362 Chapter 8: Getting Input from Users: Forms and Controls
+Fill-in-the-Blanks
+Figure 8-7. The New York Times
+What
+Arrange one or more fields in the form of a prose sentence or phrase, with the fields as
+“blanks” to be filled in by the user.
+Use when
+You need to ask the user for input, usually one-line text, a number, or a choice from a
+drop-down list. You tried to write it out as a set of label/control pairs, but the labels’ typical declarative style (such as “Name:” and “Address:”) isn’t clear enough for users to understand what’s going on. You can, however, verbally describe the action to be taken once
+everything’s filled out, in an active-voice sentence or phrase.
+Why
+Fill-in-the-Blanks helps to make the interface self-explanatory. After all, we all know how to
+finish a sentence. (A verb phrase or noun phrase will do the trick, too.) Seeing the input,
+or “blanks,” in the context of a verbal description helps the user understand what’s going
+on and what’s being asked of him.
+How
+Write the sentence or phrase using all your word-crafting skills. Use controls in place of
+words.
+If you’re going to embed the controls in the middle of the phrase instead of at the end, this
+pattern works best with text fields, drop-down lists, and combo boxes—in other words,
+controls with the same form factor (width and height) as words in the sentence. Also,
+make sure the baseline of the sentence text lines up with the text baselines in the controls,
+or it’ll look sloppy. Size the controls so that they are just long enough to contain the user’s
+choices, and maintain proper word spacing between them and the surrounding words.
+The Patterns 363
+This is particularly useful for defining conditions, as one might do when searching for
+items or filtering them out of a display. The Excel and eBay examples in Figures 8-8 and
+8-9 illustrate the point. Robert Reimann and Alan Cooper describe this pattern as an ideal
+way to handle queries; their term for it is natural language output. *
+There’s a big “gotcha” in this pattern, however: it becomes very hard to properly localize
+the interface (convert it to a different language), since comprehension now depends upon
+word order in a natural language. For some international products or websites, that’s a
+nonstarter. You may have to rearrange the UI to make it work in a different language;
+at the very least, work with a competent translator to make sure the UI can be localized.
+Examples
+The Excel cell-formatting dialog box shown in Figure 8-8 lets you choose the phrases
+in this “sentence” from drop-down boxes. As the phrases change, the subsequent text
+fields—showing 0.7 and 0.9 in this example—might be replaced by other controls, such as
+a single text field for “greater than.”
+Figure 8-8. Excel
+When users search for items on eBay, they can use a long form to filter search results
+according to various criteria. The form shown in Figure 8-9 has several examples of
+Fill-in-the-Blanks.
+* See their book About Face 2.0: The Essentials of Interaction Design (Wiley), page 205.
+364 Chapter 8: Getting Input from Users: Forms and Controls
+Figure 8-9. eBay search filter form
+In other libraries
+http://ui-patterns.com/patterns/FillInTheBlanks
+Input Hints
+Figure 8-10. Twitter registration page
+What
+Beside or below an empty text field, place a phrase or example that explains what is
+required.
+The Patterns 365
+Use when
+The interface presents a text field, but the kind of input it requires isn’t obvious to all users.
+You don’t want to put more than a few words into the text field’s label.
+Why
+A text field that explains what goes into it frees users from having to guess. The hint provides context that the label itself may not provide. If you visually separate the hint from
+the main label, users who know what to do can more or less ignore the hint, and stay
+focused on the label and control.
+How
+Write a short example or explanatory sentence, and put it below or beside the text field.
+The hint may be visible all the time, or it may appear when the text field receives input
+focus.
+Keep the text in the hint small and inconspicuous, though readable; consider using a font
+two points smaller than the label font. (A one-point difference will look more like a mistake than an intended font-size change.) Also, keep the hint short. Beyond a sentence or
+two, many users’ eyes will glaze over, and they’ll ignore the text altogether.
+This pattern is often used in conjunction with Forgiving Format, as illustrated by the Word
+example in Figure 8-11, or Structured Format. Alternative solutions include Input Prompt
+(in which a short hint goes into the control itself), tool tips that show a description on
+hover, and Good Defaults (which put an actual valid value into the control). The advantage
+of Input Hints is that it leaves the control blank—the user is forced to consider the question
+and give an answer, which is sometimes better than letting the user not think about it at all.
+Examples
+The printing dialog boxes used by several Microsoft Office applications supply an Input
+Hint below a Forgiving Format text field—it takes page numbers, page ranges, or both
+(Figure 8-11). The hint is very useful to anyone who’s never had to use the “Pages” option,
+but users who already understand it don’t need to focus on the written text; they can just
+go straight for the input field.
+366 Chapter 8: Getting Input from Users: Forms and Controls
+Figure 8-11. Microsoft Word print dialog
+Longer descriptions can be used in Input Hints when necessary. The examples from Gmail’s
+registration page, shown in Figure 8-12, are about as long as you’d want to put next to a
+text field—a user can click the links for further information. But most users will never
+follow a link when they’re filling out a form, especially if they’re trying to get through it
+quickly and don’t have major privacy concerns, so don’t depend on linked pages to convey
+critical information.
+Figure 8-12. Gmail registration page
+Blogger places Input Hints on the far right of the form, with horizontal rules that align the
+controls with their hints (see Figure 8-13). This is a graceful way to structure a page full
+of Input Hints.
+The Patterns 367
+Figure 8-13. Blogger registration page
+Some forms show an Input Hint when the user puts input focus into the text field itself (see
+Figure 8-14). This is nice because the hidden hints don’t clutter the interface or add visual
+noise; however, the user doesn’t see them at all until he clicks on (or tabs into) the text
+field. If you use these, note that you must leave space for them in the interface, just as you
+would for Hover Tools (Chapter 6). Twitter, shown first in this example, uses both kinds.
+368 Chapter 8: Getting Input from Users: Forms and Controls
+Figure 8-14. Twitter, Yahoo!, and Hotmail registration pages, all with dynamic Input Hints
+In other libraries
+http://quince.infragistics.com/Patterns/Input%20Hints.aspx
+The Patterns 369
+Input Prompt
+Figure 8-15. Yahoo! registration page
+What
+Prefill a text field or drop down with a prompt that tells the user what to do or type.
+Use when
+The UI presents a text field, drop down, or combo box for input. Normally you would use
+a good default value, but you can’t in this case—perhaps there is no reasonable default, as
+in the Yahoo! form in Figure 8-15.
+Why
+It helps make the UI self-explanatory. Like Input Hints, an Input Prompt is a sneaky way of
+supplying help information for controls whose purpose or format may not be immediately clear.
+With an Input Hint, someone quickly scanning the UI can easily ignore the hint (or miss
+it entirely). Sometimes this is your desired outcome. But an Input Prompt sits right where
+the user will type, so it can’t be ignored. The advantage here is that the user doesn’t have to
+guess whether she has to deal with this control or not—the control itself tells her she does.
+(Remember that users don’t fill out forms for fun—they’ll do as little as needed to finish
+up and get out of there.) A question or an imperative “Fill me in!” is likely to be noticed.
+An interesting side effect of this pattern is that users may not even bother to read the label
+that prefixes the text field. Look again at Figure 8-15. The label “Name” is now completely
+superfluous, in terms of the form’s meaning. Because the user’s eye will be drawn first to
+the text fields, the “First Name” and “Last Name” prompts probably will be read before the
+“Name” label anyway! That being said, don’t remove the labels—that prompt is gone once
+the user types over it, and on subsequent readings of this form, she may not remember
+what the control asks for.
+If you’re very careful to implement this pattern correctly, you may be able to do away with
+the label altogether. The prompt must be put back when the user erases the value, and the
+requested information must be very familiar to the user (such as name or email).
+Download from Wow! eBook <www.wowebook.com>
+370 Chapter 8: Getting Input from Users: Forms and Controls
+How
+Choose an appropriate prompt string, perhaps beginning with one of these words:
+• For a drop-down list, use Select, Choose, or Pick.
+• For a text field, use Type or Enter.
+End it with a noun describing what the input is, such as “Choose a state,” “Type your message here,” or “Enter the patient’s name.” Put this phrase into the control where the value
+would normally be. (The prompt itself shouldn’t be a selectable value in a drop down; if
+the user selects it, it’s not clear what the software should do with it.)
+Since the point of the exercise was to tell the users what they were required to do before
+proceeding, don’t let the operation proceed until they’ve done it! As long as the prompt
+is still sitting untouched in the control, disable the button (or other device) that lets the
+user finish this part of the operation. That way, you won’t have to throw an error message
+at the user.
+For text fields, put the prompt back into the field as soon as the user erases the typed
+response.
+Use Good Defaults instead of an Input Prompt when you can make a very accurate guess
+about what value the user will put in. The user’s email address may already have been
+typed somewhere else, for instance, and the originating country can often be detected by
+websites.
+Examples
+Figures 8-16 and 8-17 are two examples of forms that depend on the Input Prompt, in the
+absence of actual labels. Both are asking for very simple, well-understood answers that
+users should be able to type or select without thinking very hard about them. Both put
+the Input Prompt back into the field if there is no user-typed value, as shown by the second
+screenshot in each example. (Apple then turns the field yellow to reinforce that the value
+is required to complete the form; this is a gentle variant of Same-Page Error Messages.)
+The Culinary Culture example demonstrates the striking visual look that can be achieved
+with a skillful combination of typography, icon design, and Input Prompt.
+Figure 8-16. Apple’s purchase form
+The Patterns 371
+Figure 8-17. CulinaryCulture.com
+In other libraries
+http://quince.infragistics.com/Patterns/Input%20Prompt.aspx
+http://ui-patterns.com/patterns/InputPrompt
+Password Strength Meter
+Figure 8-18. Gmail registration page
+What
+Give the user immediate feedback on the validity and strength of a new password while
+it is being typed.
+372 Chapter 8: Getting Input from Users: Forms and Controls
+Use when
+The UI asks the user to choose a new password. This is quite common for site registrations. Your site or system cares about having strong passwords, and you want to actively
+help users choose good ones.
+Why
+Strong passwords protect both the individual user and the entire site, especially when the
+site handles sensitive information and/or social interactions. Weak passwords ought to be
+disallowed because they permit break-ins.
+A Password Strength Meter gives immediate feedback to the user about his new password—
+is it strong enough or not? Does he need to make up a new one, and if so, with what characteristics (numbers, capital letters, etc.)? If your system is going to reject weak passwords,
+it’s usually best to do it instantly, not after the user has submitted the registration form.
+How
+While the user types his new password, or after keyboard focus leaves the text field, show
+an estimate of the password strength beside the text field. At minimum, display a text and/
+or graphic label indicating a weak, medium, or strong password, and special wording to
+describe a too-short or invalid password. Colors help: red for unacceptable, green or blue
+for good, and some other color (often yellow) in between.
+If you can, show additional text with specific advice on how to make a weak password
+better—a minimum length of eight characters (for instance), or the inclusion of numbers
+or capital letters. A user might get frustrated if he repeatedly fails to produce a valid password, so help him be successful.
+Also, the form containing the password field should use Input Hints or other text to explain
+this beforehand. A short reminder of good password heuristics can be useful to users who
+need reminders, and if your system will actually reject weak passwords, you should warn
+the user about it before he finishes the form! Many systems require a minimum number
+of characters for a valid password, such as six or eight.
+(Remember, never actually show a password, and don’t make suggestions of alternative
+passwords. General hints are all you can really give.)
+An explanation of password security is beyond the scope of a UI pattern. There are excellent online and print references for this topic, however, should you need to understand it
+more deeply.
+The Patterns 373
+Examples
+Blogger’s Password Strength Meter, shown in Figure 8-19, displays five states, one of which
+(“Too short”) tells the user specifically how to fix the password—eight characters are required. The blue link puts up a window describing how to create a strong password, and
+there is an Input Hint (not shown) on the right side that tells the user about the eightcharacter minimum.
+Figure 8-19. Blogger’s five states
+MSN shows only three states (see Figure 8-20). It also uses an Input Hint to describe the
+minimum—“Six-character minimum with no spaces”—and offers a link to a more detailed explanation. This meter is visually more heavyweight than Blogger’s.
+374 Chapter 8: Getting Input from Users: Forms and Controls
+Figure 8-20. MSN’s three states
+Yahoo! offers specific, detailed password advice in two different Input Hints that appear
+when the password field received input focus (see Figure 8-21).
+Figure 8-21. Yahoo!
+In other libraries
+http://ui-patterns.com/patterns/PasswordStrengthMeter
+Code to do password checking is available for JavaScript and other languages. Look online
+not just for the term password strength meter but also password meter, password checker,
+and other variations.
+The Patterns 375
+Autocompletion
+Figure 8-22. Amazon
+What
+As the user types into a text field, anticipate the possible answers, show a selectable list of
+them, and automatically complete the entry when appropriate.
+Use when
+The user types something predictable, such as a URL, the user’s own name or address,
+today’s date, or a filename. You can make a reasonable guess as to what she’s attempting to
+type—perhaps there’s a saved history of things this user has previously typed, for instance,
+or perhaps she is picking from a set of preexisting values, such as a list of filenames in a
+directory.
+Search boxes, browser URL fields, email fields, common web forms (such as site registration or purchase), text editors, and command lines all seem to be much easier to use when
+supported by Autocompletion.
+Why
+Autocompletion saves time, energy, cognitive burden, and wrist strain for the user. It turns
+a laborious typing effort into a simple pick list (or less, if a single completion can be reliably supplied). You can thus save your users countless seconds of work, and contribute to
+the good health of thousands of wrists.
+When the typed entries are long and hard to type (or remember), like URLs or email addresses, Autocompletion is quite valuable. It reduces a user’s memory burden by supplying
+“knowledge in the world” in the form of a drop-down list. An additional benefit can be
+error prevention: the longer or stranger the string that must be typed, the greater the odds
+of the user making a typographical error. Autocompleted entries have no such problems.
+376 Chapter 8: Getting Input from Users: Forms and Controls
+For mobile devices, it’s even more valuable. Typing text on a tiny device is no fun; if a user
+needs to enter a long string of letters, appropriate Autocompletion can save her a great deal
+of time and frustration. Again, email addresses and URLs are excellent candidates, to support mobile email and web usage.
+Autocompletion is also common in text editors and command-line UIs. As users type commands or phrases, the application or shell might offer suggestions for completion. Code
+editors and OS shells are well suited for this, because the language used is limited and predictable (as opposed to a human language, such as English); it’s therefore easier to guess
+what the user tries to type.
+Finally, lists of possible autocompletions can serve as a map or guide to a large world of
+content. Search engines and site-wide search boxes do this well—when the user types the
+beginning of a phrase, an Autocompletion drop down shows likely completions that other
+people have typed (or that refer to available content). Thus, small corrections and gentle
+guidance are provided to a curious or uncertain user, and they offer a way to navigate a
+small corner of the public mental landscape.
+How
+With each additional character that the user types, the software quietly forms a list of the
+possible completions to that partially entered string. If the user enters one of a limited
+number of possible valid values, use that set of valid values. If the possible values are wide
+open, one of these might supply completions:
+• Previous entries typed by this user, stored in a preferences or history mechanism
+• Common phrases that many users have used in the past, supplied as a built-in “dictionary” for the application
+• Possible matches drawn from the content being searched or perused, as for a sitewide search box
+• Other artifacts appropriate to the context, such as company-wide contact lists for
+internal email
+From here, you can approach the interaction design of Autocompletion in two ways. One is
+to show the user a list of possible completions on demand—for example, by pressing the
+Tab key—and let him choose one explicitly by picking from that list. Many code editors
+do this (see Figure 8-26 in the Examples section). It’s probably better used when the user
+would recognize what he wants when he sees it, but may not remember how to type it
+without help. “Knowledge in the world is better than knowledge in the head.”
+The other way is to wait until there’s only one reasonable completion, and then put it in
+front of the user, unprompted. Word does this with a tool tip; many forms do it by filling
+in the remainder of the entry but with selection turned on, so another keystroke would
+wipe out the autocompleted part. Either way, the user gets a choice about whether to retain the Autocompletion or not—and the default is to not keep it.
+The Patterns 377
+You can use both approaches together, as in Figure 8-26.
+Make sure that Autocompletion doesn’t irritate users. If you guess wrong, the user won’t
+like it—he then has to erase the Autocompletion and retype what he meant in the first
+place, avoiding having Autocompletion pick the wrong completion yet again. These interaction details can help prevent irritation:
+• Always give the user a choice to take the completion or not take it; default to “no.”
+• Don’t interfere with ordinary typing. If the user intends to type a certain string and
+just keeps typing in spite of the attempts at Autocompletion, make sure the result is
+what the user intended to type.
+• If the user keeps rejecting a certain Autocompletion in one place, don’t keep offering
+it. Let it go at some point.
+• Guess correctly.
+Here’s one possible way to implement Autocompletion cheaply. You can turn a text field
+into a combo box (which is a combination of a typable text field and a drop down). Each
+time the user enters a unique value into the text field, make a new drop-down item for it.
+Now, if your GUI toolkit allows type-ahead in combo boxes (as many do), the drop-down
+items are automatically used to complete whatever the user types. Refer back to Figure
+8-22 at the top of the pattern for a typical example; most web browsers now keep the most
+recently visited sites in a combo box where the user types URLs.
+Examples
+Many email clients, of course, use Autocompletion to help users fill in To: and CC: fields.
+They generally draw on an address book, contacts list, or list of addresses you’ve exchanged email with. The example from Mac Mail, shown in Figure 8-23, shows a single
+completion suggested upon typing the letter c; the completed text is automatically highlighted, so a single keystroke can get rid of it. You can thus type straight “through” the
+completion if it’s wrong.
+Figure 8-23. Mac Mail
+Drop-down lists of Autocompletion possibilities can take many forms. Figure 8-24 shows
+several examples of drop-down list formatting.
+378 Chapter 8: Getting Input from Users: Forms and Controls
+Figure 8-24. Counterclockwise from top left: Chrome, Firefox, Kayak, Google, Safari for iPhone, and
+Mac OS Spotlight
+Dopplr, shown in Figure 8-25, doesn’t show the whole long list of completions. Instead, it
+simply tells the user that there are 40 possible completions (for instance), and puts them
+behind a link.
+The Patterns 379
+Figure 8-25. Dopplr
+Finally, code editors such as Visual Studio invest in very complex Autocompletion mechanisms (see Figure 8-26). Visual Studio’s IntelliSense completes the built-in keywords of a
+programming language, of course, but it also draws on the functions, classes, and variable
+names defined by the user. It even can show the arguments to functions that you invoke
+(in the righthand screenshot). Furthermore, both “select from a list” and “take the one
+completion that matches” approaches are supported, and you can call up Autocompletion
+on demand by pressing Ctrl-space bar.
+Autocompletion in Visual Studio thus serves as a typing aid, a memory aid, and a browser
+of context-appropriate functions and classes. It’s very useful.
+Figure 8-26. Visual Studio
+In other libraries
+http://developer.yahoo.com/ypatterns/selection/autocomplete.html
+http://ui-patterns.com/patterns/Autocomplete
+http://patternry.com/p=autocomplete/
+http://www.welie.com/patterns/showPattern.php?patternID=autocomplete
+(Note that most other libraries call this pattern “Autocomplete.”)
+380 Chapter 8: Getting Input from Users: Forms and Controls
+Dropdown Chooser
+Figure 8-27. Microsoft Word
+What
+Extend the concept of a menu by using a drop-down or pop-up panel to contain a more
+complex value-selection UI.
+Use when
+The user needs to supply input that is a choice from a set (such as in the color example
+in Figure 8-27), a date or time, a number, or anything other than free text typed at a keyboard. You want to provide a UI that supports that choice—a nice visual rendering of the
+choices, for instance, or interactive tools—but you don’t want to use space on the main
+page for that; a tiny space showing the current value is all you want.
+Why
+Most users are very familiar with the drop-down list control (called a “combo box” when
+used with a free-typing text field). Many applications successfully extend this concept to
+drop downs that aren’t simple lists, such as trees, 2D grids, and arbitrary layouts. Users
+seem to understand them with no problem, as long as the controls have down-arrow buttons to indicate that they open when clicked.
+Dropdown Choosers encapsulate complex UIs in a small space, so they are a fine solution
+for many situations. Toolbars, forms, dialog boxes, and web pages of all sorts use them
+now. The page the user sees remains simple and elegant, and the chooser UI only shows
+itself when the user requests it—an appropriate way to hide complexity until it is needed.
+The Patterns 381
+How
+For the Dropdown Chooser control’s “closed” state, show the current value of the control in
+either a button or a text field. To its right, put a down arrow. This may be in its own button
+or not, as you see fit; experiment and see what looks good and makes sense to your users.
+A click on the arrow (or the whole control) brings up the chooser panel, and a second
+click closes it again.
+Design a chooser panel for the choice the user needs to make. Make it relatively small
+and compact; its visual organization should be a familiar format, such as a list, a table, an
+outline-type tree, or a specialized format like a calendar or calculator (see the examples in
+the next section). See Chapter 5 for a discussion of list presentation.
+Scrolling the panel is OK if the user understands that it’s a choice from a large set, such as
+a file from a filesystem, but keep in mind that scrolling one of these pop-up panels is not
+easy for people without perfect dexterity!
+Links or buttons on the panel can in turn bring up secondary UIs—for example, colorchooser dialog boxes, file-finder dialog boxes, or help pages—that help the user choose
+a value. These devices usually are modal dialog boxes. In fact, if you intend to use one of
+these modal dialogs as the primary way the user picks a value (say, by launching it from a
+button), you could use a Dropdown Chooser instead of going straight to the modal dialog.
+The pop-up panel could contain the most common or recently chosen items. By making
+frequently chosen items so easy to pick, you reduce the total time (or number of clicks) it
+takes for an average user to pick values.
+Examples
+Photoshop’s compact, interaction-rich toolbars use Dropdown Choosers heavily. Two examples, Brush and Opacity, are shown in Figure 8-28. The Brush chooser is a selectable
+list with a twist—it has extra controls such as a slider, a text field, and a pull-right button
+(the circular one) for yet more choices. The Opacity chooser is a simple slider, and the text
+field above it echoes its value.
+Figure 8-28. Photoshop drop downs
+382 Chapter 8: Getting Input from Users: Forms and Controls
+The Thumbnail Grid pattern (Chapter 5) is often used in Dropdown Choosers in place of a
+text-based menu. The examples from PowerPoint (Figure 8-29) and iWeb (Figure 8-30)
+demonstrate two styles of Thumbnail Grid.
+Figure 8-29. Microsoft PowerPoint
+Figure 8-30. iWeb “Theme” Dropdown Chooser
+The Patterns 383
+In other libraries
+http://quince.infragistics.com/Patterns/Drop%20Down%20Chooser.aspx
+You could also look online for specific types of Dropdown Choosers, such as color pickers,
+date pickers or calendars, font pickers, or numeric sliders.
+List Builder
+Figure 8-31. A dialog box from Microsoft Outlook
+What
+Show both the “source” and the “destination” lists on the same page; let the user move
+items between them, via buttons or drag-and-drop.
+Use when
+You’re asking the user to create a list of items by choosing them from another list. The
+source list may be long—too long to easily show as a set of checkboxes, for instance.
+Why
+The key to this pattern is to show both lists on the same page. The user can see what’s
+what—she doesn’t have to jump to and from a modal chooser dialog box, for instance.
+A simpler alternative to List Builder might be a single list of checkbox items. Both solve the
+“select a subset” problem. But if you have a very large source list (such as an entire filesystem),
+a list of checkboxes doesn’t scale—the user can’t easily see what’s been checked off, and
+thus may not get a clear picture of what she selected. She has to keep scrolling up and
+down to see it all.
+384 Chapter 8: Getting Input from Users: Forms and Controls
+How
+Put the source list and the destination list next to each other, either left to right or top
+to bottom. Between the two lists, put Add and Remove buttons (unless your users find
+drag-and-drop to be obvious, not requiring explanation). You could label the buttons with
+words, arrows, or both.
+This pattern provides room for other buttons, too. If the destination list is ordered, use
+Move Up and Move Down buttons, as shown in Figure 8-31. (They could have arrow
+icons too, instead of or in addition to the words.)
+Depending on what kind of items you deal with, you could either move the items literally from the source to the destination—so the source list “loses” the item—or maintain
+a source list that doesn’t change. A listing of files in a filesystem shouldn’t change; users
+would find it bizarre if it did, since they see such a list as a model of the underlying filesystem, and the files aren’t actually deleted. But the list of “Available fields” in the Outlook
+example in Figure 8-31 does lose the items. That’s a judgment call.
+Give the lists multiple-selection semantics instead of single-selection, so users can move
+large numbers of items from list to list.
+Examples
+Most modern implementations of this pattern depend upon drag-and-drop to move
+items between areas; if those items are visual, all the better. Flickr, shown in Figure 8-32,
+demonstrates a more contemporary approach to a List Builder: you can drag items from a
+potentially long list of source images into a “batch” group in order to perform operations
+on all batched images at once. Large text tells the user what to do at critical moments in
+the interaction, such as starting a new batch or removing an image from the batch.
+Figure 8-32. Flickr
+In other libraries
+http://www.welie.com/patterns/showPattern.php?patternID=parts-selector
+The Patterns 385
+Good Defaults
+Figure 8-33. Kayak
+What
+Wherever appropriate, prefill form fields with your best guesses at the values the user
+wants.
+Use when
+Your UI asks the user any questions requiring form-like input (such as text fields or radio
+buttons), and you want to reduce the amount of work that users have to do. Perhaps most
+users will answer in a certain way, or the user has already provided enough contextual information for the UI to make an accurate guess. For technical or semirelevant questions,
+maybe he can’t be expected to know or care about the answer, and “whatever the system
+decides” is OK.
+But supplying defaults is not always wise when answers might be sensitive or politically
+charged, such as passwords, gender, or citizenship. Making assumptions like that, or prefilling fields with data you should be careful with, can make users uncomfortable or angry.
+(And for the love of all that is good in the world, don’t leave “Please send me advertising
+email” checkboxes checked by default!)
+386 Chapter 8: Getting Input from Users: Forms and Controls
+Why
+By providing reasonable default answers to questions, you save the users work. It’s really
+that simple. You spare the user the effort of thinking about, or typing, the answer. Filling
+in forms is never fun, but if having default answers provided halves the time it takes the
+user to work through the form, he’ll be grateful.
+Even if the default isn’t what the user wants, at least you offered an example of what kind
+of answer is asked for. That alone can save him a few seconds of thought—or, worse, an
+error message.
+Sometimes you may run into an unintended consequence of Good Defaults. If a user can
+skip over a field, that question may not “register” mentally with him. He may forget that
+it was asked; he may not understand the implications of the question, or of the default
+value. The act of typing an answer, selecting a value, or clicking a button forces the user to
+address the issue consciously, and that can be important if you want the user to learn the
+application effectively.
+How
+Prefill the text fields, combo boxes, and other controls with a reasonable default value.
+You could do this when you show the page to the user for the first time, or you could use
+the information the user supplies early in the application to dynamically set later default
+values. (For instance, if someone supplies a U.S. zip code, you can infer the state, country,
+and municipality from just that number.)
+Don’t choose a default value just because you think you shouldn’t leave any blank controls.
+Do so only when you’re reasonably sure that most users, most of the time, won’t change
+it—otherwise, you will create extra work for everybody. Know your users!
+Occasional-use interfaces such as software installers deserve a special note. You should
+ask users for some technical information, such as the location of the install, in case they
+want to customize it. But 90% of users probably won’t. And they won’t care where you
+install it, either—it’s just not important to them. So it’s perfectly reasonable to supply a
+default location.
+The Patterns 387
+Examples
+Kayak (Figure 8-33) supplies default values when a user begins a search for flights. Most
+are quite reasonable: a round-trip economy flight with one traveler is common, and the
+“From” city can be derived from either the user’s geographic location or the user’s previous searches. (The departure and arrival dates seem arbitrary, however.) The effect of
+having all these defaults is that the user spends less time thinking about those parts of the
+form, and she gets a quicker path to her immediate goal—the search results.
+When an image canvas is resized in Photoshop, the dialog box shown in Figure 8-34 appears. The original image was 476 × 306, as shown. These dimensions become the default
+Width and Height, which is very convenient for several use cases. If I want to put a thin
+frame around the image, I can start with the existing dimensions and increase them by
+just two pixels each; if I want to make the image canvas wider but not taller, I only need to
+change the Width field; or I could just click OK now and nothing changes.
+Figure 8-34. A dialog from Photoshop
+In other libraries
+http://patternry.com/p=good-defaults/
+http://ui-patterns.com/patterns/GoodDefaults
+388 Chapter 8: Getting Input from Users: Forms and Controls
+Same-Page Error Messages
+Figure 8-35. Netflix registration box
+What
+Place form error messages directly on the page with the form itself; mark the top of the
+page with an error message, and if possible, put indicators next to the originating controls.
+Use when
+Users might enter form information that somehow isn’t acceptable. They may skip required fields, enter numbers that cannot be parsed, or type invalid email addresses, for
+instance. You want to encourage them to try again. You want to point out typos before
+they become a problem, and help puzzled users understand what is asked for.
+Why
+Traditionally, applications have reported error messages to users via modal dialog boxes.
+Those messages could be very helpful, pointing out what the problem was and how you
+could fix it. The problem is that you had to click away the modal dialog box to fix the error.
+And with the dialog box gone, you couldn’t read the error message anymore! (Maybe you
+were supposed to memorize the message.)
+Then, when web forms came along, error messages often were reported on a separately
+loaded page, shown after you clicked the Submit button. Again, you can read the message,
+but you have to click the Back button to fix the problem; once you do that, the message is
+gone. Then you need to scan the form to find the field with the error, which takes effort
+and is error-prone.
+Most web forms now place the error message on the form itself. By keeping both messages
+and controls together on the same page, you allow the user to read the message and make
+the form corrections easily, with no jumping around or error-prone memorization.
+The Patterns 389
+Even better, some web forms put error messages physically next to the controls where the
+errors were made. Now the user can see at a glance where the problems were—no need to
+hunt down the offending field based just on its name—and the instructions for fixing it
+are right there, easily visible.
+How
+First, design the form to prevent certain kinds of errors. Use drop downs instead of open
+text fields, if the choices are limited and not easy to type. For text fields, offer Input Hints,
+Input Prompts, Forgiving Format, Autocompletion, and Good Defaults to support text entry.
+Clearly mark all the required fields as required (with asterisks), and don’t ask for too many
+required fields in the first place.
+When errors do happen, you should show some kind of error message on top of the form,
+even if you put the detailed messages next to the controls. The top is the first thing people
+see. (It’s also good for visually impaired users—the top of the form is read to them first,
+so they know immediately that the form has an error.) Put an attention-getting graphic
+there, and use text that’s stronger than the body text: make it red and bold, for instance.
+Now mark the form fields that caused the errors. Put specific messages next to them, if
+you can—this will require extra space beside, above, or below the fields—but at the least,
+use color and/or a small graphic to mark the field, as shown in Figure 8-35.Users commonly associate red with errors in this context. Use it freely, but since so many people are
+colorblind with respect to red, use other cues, too: language, bold text (not huge), and
+graphics.
+If you’re designing for the Web or some other client/server system, try to do as much validation as you can on the client side. It’s much quicker. Put the error messages on the page
+that’s already loaded, if possible, to avoid a page-load wait.
+A tutorial on error-message writing is beyond the scope of this pattern, but here are some
+quick guidelines:
+• Make them short, but detailed enough to explain both which field it is and what went
+wrong: “You haven’t given us your address” versus “Not enough information.”
+• Use ordinary language, not computerese: “Is that a letter in your zip code?” versus
+“Numeric validation error.”
+• Be polite: “Sorry, but something went wrong! Please click ‘Go’ again” versus “JavaScript
+Error 693” or “This form contains no data.”
+Examples
+Twitter’s and Mint’s registration pages (Figures 8-36 and 8-37, respectively) show either
+an error message or an “OK” message. This can help for short forms.
+390 Chapter 8: Getting Input from Users: Forms and Controls
+Figure 8-36. Twitter registration page
+Figure 8-37. Mint registration page
+Yahoo! uses humor in some of its error messages, while others are straight (see Figure 8-38).
+Figure 8-38. Yahoo! registration page
+The Patterns 391
+When you add a not fully specified item to your cart at Hanna Andersson’s site, it uses
+a gentle message to remind you to fill in missing information, as shown in Figure 8-39.
+(The Input Prompt makes it too easy to overlook this field on the form, actually.) Once you
+do add it, the same space might be used for an additional message of interest. Note also
+that once the form detects that enough information is present, it puts the Begin Checkout
+button on the form.
+Figure 8-39. Hanna Andersson’s purchase form
+In other libraries
+http://ui-patterns.com/patterns/InputFeedback
+http://www.welie.com/patterns/showPattern.php?patternID=input-error
+These two patterns are named “Input Feedback” and “Input Error Message.” You can
+search for similar variations on the pattern name.
+
+---
+
+## Sección 18: Chapter 9 [Entropy: 0.728]
+
+Using Social Media
+In 2009 and 2010, social media went mainstream. Companies, products, and nonprofits
+rushed to establish presences on Facebook, Twitter, and media repositories such as Flickr
+and YouTube. If they already had blogs, the streams of bite-size messages on Twitter and
+Facebook gave those blogs new audiences. Organizations discovered that if they published
+a steady stream of appealing content, customers and influencers would pay attention to
+them—and if a piece of content “went viral,” that organization’s brand would spread far
+and wide. For free!
+Well, not really for free.
+Organizations put in a lot of effort to establish successful social media presences. Someone
+has to spend a lot of time writing and disseminating content; someone else needs to spend
+time reading relevant conversations across the Web and responding sensitively to them.
+Valuable home page real estate may support these social media efforts, and pages on other
+sites (such as Facebook or YouTube) must be designed and tended. And someone needs to
+devise an overall strategy: where is effort spent, when, and on what topics?
+A few best practices are emerging that can inform those efforts. Social media is still a
+young field, and specific recommendations will change rapidly over the months and
+years. Like the rest of this book, this chapter’s principles and patterns aren’t hard-and-fast
+rules, though ideally they will outlast 2010’s most popular sites and technologies.
+This chapter will focus on one aspect of online social interaction: how to use the various
+forms of social media to promote a brand, share an idea, disseminate a video or other artistic expression, and otherwise support your particular enterprise. The key is to acquire
+followers—people who voluntarily listen to what you have to say. Brands that create excellent experiences for their followers gain huge audiences from their social media efforts.
+(Here, we will keep the scope of this chapter broad enough to include “brands” that are
+personal, nonprofit, arts-based, cause-driven, or just for fun.)
+Download from Wow! eBook <www.wowebook.com>
+394 Chapter 9: Using Social Media
+What This Chapter Does Not Cover
+Personal use of social media varies dramatically from person to person. There may be
+best practices for personal consumption of social media—in fact, that might be a very fun
+conversation to have among practitioners. But this book was written for designers of sites
+and software, and so the focus will be on what those designers need.
+Another topic this chapter will not cover is the design of online communities. That’s an
+art unto itself, and its patterns and best practices are somewhat different from the ones
+that are described in this chapter. As of this writing, a few organizations and brands have
+successfully built online communities around their brand, but there’s not much evidence
+that they actually help the brand. (If the brand is an online community, such as Stack
+Overflow or Ravelry, that’s a different story; they can be quite successful. In any case, this
+chapter doesn’t address them.)
+Finally, many sites have sprung up that use social interaction in innovative ways. Delicious,
+Yelp, Foursquare, and others have all created products out of collective intelligence, mediated online. I expect that more of these kinds of sites will arise over the years. Erin Malone
+and Christian Crumlish have skillfully written about some of these ways of gathering and
+concentrating opinions in their book Designing Social Interfaces (O’Reilly, http://oreilly.com/
+catalog/9780596154936/). This chapter complements that book.
+The Basics of Social Media
+What principles and patterns should you consider as you help develop a strategy for using
+social media?
+The first topic is so obvious and so basic that I gave it the number zero. It’s something you
+need to do before you create any social media presence at all:
+0. Listen.
+Find out where people are talking about your brand, product, organization—or competitors. Go beyond that, too: which broad topics touch on your brand’s purpose or
+mission, and what are people saying about those topics? If your organization has
+something positive to contribute, take part in those conversations.
+• Find the online conversations and read them. Use tools to help you monitor
+them if necessary, especially if you’re working for a well-known brand with a
+strong online presence.
+• Make sure the organization knows what is being said about it, even if the comments are negative.
+• In reputable places with a large readership, such as certain well-known blogs,
+have someone from your organization sign up and participate in the conversations. Make it clear that that person formally represents the organization.
+The Basics of Social Media 395
+• When you participate, answer questions, offer information, gently correct
+misperceptions, and acknowledge gripes.
+• Be a responsive, dignified presence; don’t be too chatty, and don’t be too defensive. And hold back on the sales pitches.
+Now we’ll talk about the active, creative aspects of using social media. How do you
+build a fruitful social media presence that people enjoy following?
+The following six principles come more or less in order of importance. If you don’t
+write content that people like to read (principle 1), there’s no point in spending effort
+to disseminate it or make it findable, for instance. Some of these recommendations
+will be relevant to your situation, and some will not. Principles 5 and 6, especially, are
+uncommon because of the effort they require.
+1. Produce good stuff.
+Write, design, record, or otherwise create items that people enjoy consuming. Produce
+them regularly and frequently enough to keep people interested. Set up conversations
+around those items to make them even more intriguing—invite Facebook comments,
+for instance—and participate in those conversations yourself.
+• Create an Editorial Mix that represents your organization well. Generate original
+content that appeals to different people, using a mixture of length, style, and
+media type (text, images, video, podcast).
+• Link to other people’s content. Use Repost and Comment to augment your original
+material and to give credit to other worthy sites on the Web.
+• Having Personal Voices in your mix can be more appealing than a single, generic
+corporate voice.
+• Use Conversation Starters to prompt followers to respond. Once someone engages
+in a conversation with you, she’s more likely to come back.
+2. Push that good stuff out to readers.
+Go to wherever they spend their time: email, Facebook, Twitter, RSS feeds, Digg, or
+wherever you discover your readers are hanging out online. With your readers’ permission, get your content into their personal News Streams (Chapter 2)—the daily flow of
+news and updates they get via those services. (In other words, make them followers.)
+• Use more than one social media channel or service to reach as many readers as
+you reasonably can. Meet them where they are; don’t expect them to join a new
+service just to get your updates.
+• Don’t overwhelm your followers with too much content. Use the different services wisely, according to the conventions developed for each one. Develop a
+Timing Strategy for releasing content.
+• Put Social Links on your home page to direct readers to your social media channels; make it easy for them to become followers.
+396 Chapter 9: Using Social Media
+• If your organization produces a lot of content and has many different audiences
+for different products or topics, consider using Specialized Streams instead of one
+very busy stream of content.
+• Use the Inverted Nano-pyramid to write status updates, summaries, and headlines.
+These attract more readers when they are written skillfully and “hook” people
+into reading more of your content.
+3. Let readers decide which stuff is good.
+Give readers a way to share your content with their own followers, and let readers
+send items privately to close ties. Gather feedback via voting systems, thumbs-up/
+down gadgets, and other systems. Note which items have active conversations about
+them, as this is another signal of “good”-ness.
+• Provide mechanisms for people to comment on the items you post, but be selective. Low-interest news items or blog posts don’t draw many comments, and empty
+comment areas don’t draw attention. Lively ones, however, can pull in more readers.
+• Put a Sharing Widget beside your posts, so people can easily share them with their
+own social followers. This is a very powerful mechanism; it disseminates your
+content to more people, engages the people who do the sharing, and gives you
+data about which items are most popular.
+• “Email this” buttons let readers send items privately to their closer social ties.
+Emailed articles are likely to be read by the recipients, since someone they know
+has specifically recommended it to them; this kind of Personal Recommendation
+(Chapter 1) is powerful.
+• When you post items such as product descriptions or recipes—things for which
+negative reviews won’t reflect badly on your organization—consider letting people review or rate these items. Their collective intelligence can identify the bad
+and good for other readers. (You may invite trouble, however, if you ask people
+to rate items that your organization directly produces and is invested in.)
+• Let viewers “vote up” their favorite pieces of content. You might do this with a
+“Like” control, a star, a thumbs-up, or some other mechanism. For more details,
+see the “Vote to Promote” pattern in the Yahoo! pattern library or in Designing
+Social Interfaces.
+4. Make the good stuff findable.
+Organize your home page well; put fresh content there regularly, and use sidebars to
+show most-viewed items, best-of lists, and other views into your library of content
+items. Show related items to users who click through, and make archived items and
+conversations available. Put your content where search engines can find it, because in
+the long run, that’s how most people will arrive at it anyway.
+The Basics of Social Media 397
+• Put a News Box on your home page to showcase your most recent articles, news
+items, blog posts, videos, and so on. These are usually “social objects,” disseminated via social media and commented upon by the public.
+• If you collect data on how many times an item is shared, emailed, rated, or commented upon, you can create a Content Leaderboard to showcase the most popular
+items.
+• Consider creating a “best-of ” list for your blog, video library, or other large collection of content. This gives newcomers a convenient place to start. Make sure
+someone curates it competently so that it remains both accurate and fresh.
+• When a reader clicks through to the blog post, news item, and so forth, show him
+a set of links to related content. Presumably the reader is interested in this topic;
+would he like to read more material on the same topic? Keep him reading and
+clicking through to pages on your site.
+• Check that your material shows up on search engines. Make sure the titles and
+other metadata identify the content items well. Also check that your site’s search
+box finds content correctly.
+• Maintain stable, well-named social media identities. Can a random Facebook user
+find the right Facebook page via a search for your organization’s name? Or does
+she have to go to your actual website and follow the Social Links to get there? (That
+should also be possible, of course, but searching within a social media site is less
+effort for the user.)
+5. Mingle readers’ good stuff with your good stuff.
+Publish guest-written articles, blog posts, reviews, and amateur videos. Hold photo
+contests and show off the winning images—with attribution, of course. Most organizations never quite reach this point, which is fine; it’s not appropriate for every
+company or nonprofit. But when your followers are both enthusiastic and talented,
+work with them!
+6. Foster community.
+Again, this is not appropriate for every organization, but some have built entire online communities around a well-loved idea or activity—gardening, gaming, music,
+technology, and so on. There’s not much evidence that communities actually help
+build a brand or increase market share, so don’t count on that. What these can do
+is give people an online place to go, where they can ask questions, form friendships,
+share ideas, help each other out, vent, be silly, and share things that they (not you)
+judge to be interesting.
+398 Chapter 9: Using Social Media
+The Patterns
+Consider using the following patterns for social content production:
+1. Editorial Mix
+2. Personal Voices
+3. Repost and Comment
+4. Conversation Starters
+5. Inverted Nano-pyramid
+When you design the mechanisms for when, where, and how to disseminate content, use
+these:
+6. Timing Strategy
+7. Specialized Streams
+8. Social Links
+9. Sharing Widget
+10. News Box
+11. Content Leaderboard
+12. Recent Chatter
+Editorial Mix
+Figure 9-1. Topics covered by Epicurious on Facebook
+The Patterns 399
+What
+Publish a regular series of articles or links that include a mix of news, human-interest
+pieces, photos, videos, public service announcements, and other types of content. Refrain
+from direct self-promotion most of the time.
+Use when
+You want to increase name recognition, goodwill toward your organization, connections
+with customers, and possibly sales. You want readers to follow and enjoy the content you
+publish, and you have the resources to find or produce that content.
+Why
+A variety of topics and media types will appeal to a broader group of people than a narrower set of interests. Some of those people may learn about topics they wouldn’t otherwise
+have known about, simply because you put it in their stream.
+A more fundamental point is that each piece needs to be interesting by itself. You want followers to read the pieces you write, follow the links you post, view your videos, and look
+forward to your future posts. Better yet, you want your followers to repost those items to
+their own followers and close ties—this gets your name out there to more people in a viral
+fashion. Some of them may then choose to follow you.
+How
+Choose a set of topics that are both related to your mission and interesting to lots of
+people. Of the organizations studied for this chapter, those topics have included food,
+sports, nature, travel, green technologies, politics, parenting, disaster relief, high tech, and
+science. People get passionate about these subjects. What topics can you cover that evoke
+passion and high interest?
+Develop a mix that’s appropriate for your organization. Everyone who uses social media
+successfully has a unique blend of content types and topics, though variety and “interestingness” are common to all.
+Long written content can be posted to your blog. That blog post can then be linked from
+shorter-form or microblogging sites, such as Twitter. (Most organizations don’t propagate
+all their blog posts to these other channels.) Short, ephemeral items might be posted directly to the microblogs.
+Encourage followers to comment on the things you post. This is more likely to happen
+on social networks such as Facebook, or microblogging sites such as Twitter. Sometimes
+people leave comments on blog posts, but as of this writing, conversations don’t take place
+on blogs when there are better alternatives.
+400 Chapter 9: Using Social Media
+Don’t overload the social media channels with too much content! See the Timing Strategy
+pattern for more information about quantity and timing.
+Avoid overt marketing most of the time. In a larger sense, of course, it’s all marketing; but
+readers know when they’re being subjected to a sales pitch, and they don’t like it. They
+probably didn’t subscribe to your updates to be deluged by commercials. So post informative or entertaining content most of the time, and limit the advertisements to very specific and useful items—discount codes, new products, or reminders about popular sales
+events. Ask yourself before posting: if your followers didn’t see this, would some of them
+be sad to have missed it?
+Here are some types of content that you may consider:
+• News articles
+• Interviews with subject experts
+• Short, pithy quotes and one-liners
+• Product reviews
+• Essays or videos about what happens “behind the scenes” at your organization
+• Recipes and how-to instructions
+• Public service announcements
+• Ways that people can help out with charities or other altruistic efforts
+• Humor
+• Opinion pieces
+• Letters from readers
+• Short stories, real or fictional
+• Musical or artistic performances, usually on video
+• Slideshows
+• Podcasts
+• Questions intended to evoke reader responses; see the Conversation Starters pattern
+• Regular commentary from high-profile employees; see the Personal Voices pattern
+• Other people’s blog posts; see the Repost and Comment pattern
+Remember that the material you provide in your social stream will be used by your followers for their own purposes: forming or supporting an online identity (“I’m interested in this
+topic”), passing information to their close ties, entertaining their larger circle of friends,
+indirectly stating an opinion, or just connecting. Will your followers be willing to do that
+with the content you produce? Is it funny, controversial, beautiful, truthful, or authentic?
+The Patterns 401
+Examples
+Starbucks publishes content that its customers would be interested in: subjects include
+coffee, tea, store specials, music, altruistic efforts, and other topics. Some are text-based
+articles, some are video clips, and some are reposted from other sources. Figure 9-2 shows
+Starbucks’ Facebook page.
+Corporate blogs need to achieve a delicate balance between focus and diversity of topics.
+As shown in Figure 9-3, Whole Foods’ blog deals with many topics related to natural food,
+whereas the Google blog, reflecting Google’s variety of products and services, covers a
+much broader range of topics.
+Figure 9-2. The Facebook page for Starbucks
+402 Chapter 9: Using Social Media
+Figure 9-3. Headlines from the Whole Foods and Google blogs
+Personal Voices
+Figure 9-4. Tony Hsieh’s Twitter feed
+The Patterns 403
+What
+Encourage individuals to use their own voices, separate from the social media streams
+published by the organization itself. Let them publish blogs and write guest blog posts;
+encourage them to use Twitter and other social channels.
+Use when
+You have social media champions within your organization—people who are willing to
+put themselves out there, as both individuals and representatives. These may be domain
+experts, engineers, marketing people, or even CEOs. You don’t object to having multiple
+social media voices, other than the one official voice of the organization.
+Why
+A personal voice humanizes your brand. Readers often connect better with an individual
+human being, with a name and a face, than with a brand or organization.
+How
+Let your employees write social content as themselves, with their names on their posts.
+Use personal anecdotes, experiences, memories, reviews of products in actual use, and
+other topics that humanize the author.
+Consider whether to publish guidelines for employees’ social media participation, beyond
+the obvious “don’t publish anything that will get us sued.” Some companies, such as SAP
+and Oracle, put their guidelines on the Web to serve as examples.
+Examples
+The CEO of Zappos tweets frequently, and as of this writing has 1.7 million followers (see
+Figure 9-4 at the top of the pattern). Tony Hsieh’s quirky, humorous, very personal tweets
+draw lots of attention, without ever being overt advertising for the brand. Zappos also
+encourages its other employees to use Twitter, and the company’s website devotes a page
+to the tweets sent out by its employees (see Figure 9-5).
+404 Chapter 9: Using Social Media
+Figure 9-5. Zappos employee tweets
+Several of CNN’s well-known anchors and reporters use Twitter, including Wolf Blitzer,
+Anderson Cooper, and Ed Henry (see Figure 9-6). These posts tend to have much more
+personality and intimacy than the “official” CNN tweets. For a complete list, see the CNN
+Twitter list called @CNN/anchors-and-reporters.
+The Patterns 405
+Figure 9-6. Personal Twitter feeds for CNN’s anchors
+Large technology companies Google and IBM encourage their employees to create public
+blogs, which are then listed prominently in corporate web pages; see Figure 9-7. (In fact,
+employees are the only social media presence that IBM has.)
+406 Chapter 9: Using Social Media
+Figure 9-7. Some of IBM’s and Google’s employee blogs
+Repost and Comment
+Figure 9-8. Mashable repost of a viral YouTube video
+The Patterns 407
+What
+Instead of always generating your own content, find works on other sites that you can
+link to, quote, or repost. Add your own commentary, or invite your readers to comment.
+Use when
+You see the role of your social media presence to partially be that of an aggregator: you
+find good stuff out there that you know your audience will enjoy, and you post it for them.
+You serve as an editor and thought leader whose taste is trusted by your readers.
+Not all organizations will find this pattern appropriate. Some may prefer to publish only
+the content they create themselves.
+Why
+If your presence is seen as a go-to site for good stuff, you’ll acquire more followers. These followers then see your logo or name whenever your reposted content appears in their streams.
+You don’t have to generate content every time you want to push something out to followers.
+Writing fresh, original content is hard, and more so when you have to do it weekly or more
+(as you should, to maintain freshness). In exchange for the time you spend looking for repostable items, you can put together a steady stream of posts that interest your readers.
+If the content you produce tends to be of only one type, such as essays or photos, including
+links to other people’s content gets you closer to a desired Editorial Mix.
+Reposts and links direct deserved attention toward other sites and people. On the Web,
+no organization is isolated; there are always other bloggers, reviewers, forums, and organizations that deal with similar topics. By reposting their work and giving credit where it’s
+due, you give them attention, validate them, and help them increase their readership. And
+social reciprocity may kick in—they might do the same for you!
+You become part of a larger conversation around events and topics of interest. By finding
+an obscure news story or video and showing it to your readers, for instance, you invite
+your readers to carry on a conversation around it, either in your repost or in the original
+poster’s context. (Your readers, in turn, may repost it themselves to their own followers.)
+How
+Find content that appeals to your followers. Use your judgment carefully: does it meet the
+same high standards that you use for your own content? Is it something that your followers will appreciate enough to repost to their own followers? Has it already been widely
+reposted on the Web so that you would look outdated if you reposted it? (And is it a scam
+or urban legend? Check first!)
+Make sure followers can tell what the reposted article is about. Does its title or summary
+describe it well enough to attract interested readers? If not, the onus is on you to create a
+headline or summary for it.
+408 Chapter 9: Using Social Media
+Give your followers a reason why you thought this was worth reposting. If you’re working
+in a blog, you have enough space to both quote portions of the source text and write a
+commentary. You should give the full URL to the original material, too. (In Twitter, use a
+URL shortening mechanism instead.)
+Facebook has a built-in link posting mechanism that captures the destination’s title, summary, and thumbnail picture—all the factual stuff. Use the message to summarize just enough
+to get the reader’s attention, and perhaps to write a commentary only a sentence or two long.
+If you use Twitter, you know about retweeting. Before Twitter provided an actual mechanism for it, Twitter users developed their own customs for retweeting and attributions.
+If tweets were significantly shorter than the maximum length, that would leave room for
+retweeters to add their own super-short commentary to a retweet (“Inspiring story.” “Will
+this work?” “What do you think?” “Ironic.”). But the built-in retweet doesn’t permit that,
+which is unfortunate. That being said, plenty of retweets stand on their own, since they’re
+just informational; someone might propagate a tweet about an upcoming event, for instance, and no commentary is expected.
+Finally, offer your followers a chance to comment on the works that you repost. Facebook
+comments are one obvious place; blog comments are another. When users do comment,
+engage with them and help carry the conversation forward. There might be a conversation
+already underway wherever the content was originally posted. However, your followers constitute a unique group of people! Their conversations might have an entirely different quality.
+Examples
+Many companies use their Facebook pages to repost other people’s content so that their followers can see things they wouldn’t have found on their own. In the examples in Figure 9-9,
+REI reposts items that further its mission to promote the outdoors and sell outdoor gear.
+(Note also the use of questions as Conversation Starters.)
+Figure 9-9. REI’s use of Repost and Comment
+The Patterns 409
+Figure 9-10 shows two ways that the American Red Cross’s blog reposts and comments
+upon other sites’ content. Politely, the blogger makes a point of thanking the person who
+called her attention to the earthquake graphic.
+Figure 9-10. The American Red Cross’s use of Repost and Comment
+Retweeting on Twitter can be done either with Twitter’s built-in mechanism or “by hand.”
+In Figure 9-11, Tim O’Reilly uses both.
+Figure 9-11. Two ways to retweet
+Download from Wow! eBook <www.wowebook.com>
+410 Chapter 9: Using Social Media
+Conversation Starters
+Figure 9-12. Tim Gunn posing a question to fans
+What
+Pose questions, riddles, or topics for discussion. Let your followers post answers and carry
+on conversations, with you and among themselves.
+Use when
+You want people to respond to you and other readers so that you can engage them. Your
+social media audience is capable of carrying on thoughtful discussions within the channel
+you’re using, and you are willing to moderate those conversations if necessary.
+Why
+If you invite readers to participate, especially on a topic that interests them, they often will!
+Once someone posts an answer to your conversation starter, he may come back and see
+the additional responses (or have the responses emailed to him, in some systems).
+You may also get more readers or followers simply because your conversation starters are
+entertaining. You thus get more exposure for your social media channel.
+The Patterns 411
+In the best of cases, the readers’ comments become interesting content in their own right.
+People talk to each other, debate each other, agree with each other, go off on tangents, and
+thus construct a conversational thread worth reading.
+Conceptually, this pattern has some overlap with the idea of “crowdsourcing” problem
+solutions. For instance, a blogger may ask her readers for answers to a factual question or
+for stories on how they solved a problem that she is facing.
+How
+Understand which topics might get your audience fired up. Ask them to share their opinions,
+guesses, and stories by posing questions. Some questions might have simple answers that are
+easy for users to type quickly; others might evoke long and thoughtful responses. Choose
+topics that will get your readers talking to each other—but consider whether a controversial
+topic might turn into an unwanted flame war, or reflect badly on your site or brand.
+As of this writing, Facebook seems to be the place where conversation starters work best.
+Short questions, sometimes with an accompanying link or photo, evoke answers from
+followers who read your updates in their news feeds, and Facebook is especially good at
+encouraging quick answers. (So is Twitter.)
+Some blogs seem conducive to long conversations in the comments; others don’t, perhaps
+because their readers haven’t established a tradition of extensive commenting. But those
+blogs that do have an active readership may pose a question to those readers at the end of
+a post—and readers respond.
+Examples
+Whole Foods and REI are two brands that use Facebook to initiate conversations with
+the public. Food and the outdoors are topics that many people find inspirational; the participants in the conversations shown in Figures 9-13 and 9-14 are probably responding
+to that more than to the brand itself. In the Whole Foods example, people happily share
+information that other readers find valuable.
+412 Chapter 9: Using Social Media
+Figure 9-13. One of Whole Foods’ conversation starters
+Figure 9-14. REI’s conversation starters
+The Patterns 413
+Blogs such as Boing Boing have very talkative readers. In Figure 9-15, one of the bloggers
+poses an open-ended question to the readership.
+Figure 9-15. Boing Boing’s conversation starter
+Inverted Nano-pyramid
+Figure 9-16. Short but informative tweet
+What
+Write short, dense status updates and headlines. The first few words are most important;
+they should catch the interest of the right readers, and transmit the most information.
+Use when
+You post updates to Twitter, Facebook, or other microblogging channels, or you write
+headlines for blog posts and articles.
+Why
+People skim updates and headlines quickly, to determine what’s worth their attention.
+Take full advantage of the small amount of space and time you have.
+Long tweets, status updates, and so on can’t be quoted or retweeted as effectively as short
+ones. You want followers to repost your updates and get your name out there in front of
+more people.
+414 Chapter 9: Using Social Media
+How
+Traditionally, print journalists have used the “inverted pyramid” for news reporting. The
+most important information is front-loaded into the first sentence and paragraph of a
+story. Secondary information comes next, and so on until the least important information ends up at the bottom. Since many readers won’t go any farther than the first few
+sentences, you should give them the essence of the story right at the beginning.
+Twitter’s ruthlessly low character limit forced us to learn how to write in a very short
+format. Every word counts; every character counts. So use the pyramid form—the most
+important points in front—but shrink your messages down to the size of a tweet or status
+update! Here are some ways to write them well:
+• Choose words that accurately represent the topic and scope of what you’re talking about.
+Use words that are specific, not general; make each word carry its weight. To help focus
+your thinking, consider whether people will understand you if your tweet or headline is
+taken completely out of context (as though it were a search result, for instance).
+• Strip out words that don’t carry their weight, especially linking words such as the and
+have, but don’t be so cryptic that you can’t be understood.
+• Use abbreviations sparingly; don’t sound like a text message written by a 10-year-old.
+• Make one single point. If you need to make two points or describe two links, use two
+tweets or status messages.
+• If you use a long word, try to find a shorter substitute. But if the longer word has
+character and specificity, you might choose to keep it to draw attention.
+• For phrasing, consider using one of the eight types of headlines described in Robert
+Bly’s The Copywriter’s Handbook (Holt Paperbacks). These are: direct, indirect,
+news, how-to, question, command, reason why, and testimonial. For a good online
+summary of these types, with examples, see Copyblogger’s summary at http://www.
+copyblogger.com/how-to-write-headlines-that-work/.
+• Be patient as you write. Short content requires more thought and iteration than you
+might expect.
+Examples
+The tweets shown in Figure 9-17 tell ultra-short stories. You can’t help but read them.
+The Patterns 415
+Figure 9-17. Ultra-short stories
+The news headlines shown in Figure 9-18 were designed to tempt readers to click through
+the link.
+Figure 9-18. News headlines designed to tempt readers to click through the link
+As shown in Figure 9-19, the American Red Cross uses Facebook status messages and
+links to both convey information and persuade the reader to learn more (links not shown).
+Figure 9-19. The American Red Cross’s Facebook status messages and links
+416 Chapter 9: Using Social Media
+Timing Strategy
+Figure 9-20. Possible social media timing for an organization
+What
+Pace your social media posts according to the expectations of the channels you use; some
+channels require more frequent posts, some less. Cross-post the best pieces, and consider
+when in the day or week you make your posts.
+Use when
+Anyone who uses social media should develop and follow a Timing Strategy.
+Why
+Overusing a social media channel can overwhelm your followers with too much chatter.
+Followers may drop you, or form a negative impression of your organization. Don’t irritate
+people.
+On the other hand, underusing a channel is an opportunity cost: you won’t have your
+name in front of followers as often as you could.
+Users of Twitter and Facebook in particular have expectations about how often they hear
+from nonfriend entities (such as company pages) in their personal news stream. The
+mechanisms of the channels themselves dictate some of this; tweets are shorter and more
+rapidly consumed than Facebook updates, for instance. These expectations may change
+as the technologies mature and shift.
+The Patterns 417
+How
+The most important thing is to understand users’ expectations about these channels. If
+you post too frequently, your updates clutter followers’ personal news streams to the point
+of being annoying, and they may unsubscribe from you.
+However, the advice here is only a starting point. You should watch the numbers of followers change as you use social media, listen to followers’ feedback, and be willing to
+adjust your timing strategy on the fly if followers leave.
+As of this writing, here are some of the posting frequencies that I have observed.
+Facebook pages tend to be updated only once per day, or less. Most of the successful and
+active pages I studied had a post rate of roughly once every two days, though some had
+two per day (such as Wired) and others had much fewer. Exceptions are sometimes made for
+time-sensitive events, concentrated outreach efforts, and crises such as major earthquakes—
+followers will tolerate short bursts of frequent posting if the cause is worthy. Your mileage
+may vary.
+Twitter posts can be much more frequent than Facebook updates. The organizations I
+studied posted between three and 15 tweets per day, on average. Also, these posts were
+usually made between noon and 8:00 p.m. Eastern Standard Time, with a lower rate on
+weekends. This is important because tweets should go out when the most people are online and listening—Twitter users (unlike Facebook users) tend not to scroll back through
+time to find interesting material. Note that many tweets from some organizations are
+direct replies to individuals; those can run up the count quickly.
+For organizations that use multiple social media channels, blog posts range between 0.5
+and 2.5 posts per day. This is where long-form writing takes place: essays, stories, interviews, and other content longer than one or two sentences. Sometimes these blogs
+“feed” the Facebook and Twitter efforts—selected blog entries (usually not all of them)
+are reposted as links in these other media, along with a one-sentence description. Lively
+conversations about the blog posts are more likely to take place on Facebook or Twitter
+than on the blog itself.
+Email should be infrequent. If you send email more than once every few days, you may get
+labeled as spam by some of your followers.
+I found no evidence of timing strategies for media repositories such as Flickr and YouTube.
+This is probably because they don’t normally “push” content out into followers’ personal
+news streams, as others do.
+418 Chapter 9: Using Social Media
+Examples
+The chart in Figure 9-21 shows the timing strategies for several companies and organizations that have strong social media presences. The data was collected over two months at
+the very beginning of 2010, in January and February. The numbers represent the average
+number of posts per day on each of three social media channels: Twitter, Facebook, and
+the organization’s main blog. (Not all of these sites had a main blog.) Clearly, the Twitter
+numbers are higher than the others, reflecting its more ephemeral nature.
+The last two companies, the American Red Cross and Partners in Health, are charities.
+Over the time period that I collected data, these two organizations were conducting intensive news and fundraising efforts related to the Haiti earthquake. Their usage of Facebook
+skyrocketed in January, and then faded back to something more normal in February; this
+shows up in the averages as slightly elevated Facebook numbers.
+Dell
+Whole Foods
+Coca-Cola
+Red Bull
+Starbucks
+REI
+Volkswagen
+American Red Cross
+ Partners in Health
+4
+8
+12
+Twitter
+Facebook
+Blog
+16
+Dell
+Whole Foods
+Coca-Cola
+Red Bull
+Starbucks
+REI
+Volkswagen
+American Red Cross
+Partners in Health
+Twitter
+10.5
+5.3
+3
+3
+2.7
+0.3
+Facebook
+0.5
+0.5
+0.2
+0.5
+1.3
+2.5
+0.6
+Blog
+1.4
+0.6
+0.6
+2.4
+Figure 9-21. Actual post rates for nine sites
+The Patterns 419
+Specialized Streams
+Figure 9-22. Wired blogs, specialized by topic
+What
+Divide your content stream into many different channels, each with a different readership
+and different “feel.” Use multiple Twitter identities, Facebook pages, blogs, and so on to
+steer these items to the right audiences.
+Use when
+Your organization generates a large number of status updates, news articles, blog posts, or
+other items that are socially distributed. You can categorize them easily by subject or some
+other factor (such as frequency or author). You have a large readership, but many readers
+are only interested in one or two of these categories, not all of them.
+420 Chapter 9: Using Social Media
+Why
+If you dump all of your organization’s updates into one huge stream, that stream might
+overwhelm its followers. For instance, a Facebook page shouldn’t be updated many times
+per day, lest its readers unsubscribe because of too many updates.
+With several discrete streams or pages to follow, people can easily pick and choose among
+the topics you offer, thus tailoring their own experience.
+How
+Categorize your updates according to your followers’ needs. Consider the following ways
+to segment a readership, and see if any of them can work for you. (Not all will be suitable
+for your organization, of course.)
+By product
+Do you sell different products to different types of customers, for instance? What
+are the common needs and perspectives of a product’s users? For example, users of
+smartphones will have one set of needs; users of desktop systems, quite another.
+By topic
+If you publish a lot of news articles or opinion pieces, how do you segment your market according to subject?
+By professional role
+See the Google example in Figure 9-25; some of its blogs are aimed at a general audience, some at managers, and some at developers.
+By social media usage style
+How often do your followers read their news stream? Some people practically live on
+Twitter; they may have a high tolerance for chatter. Other people will only want occasional updates, and those updates had better be worth reading. CNN has several news
+feeds that operate with different Timing Strategies to serve these different markets; see
+the example in Figure 9-23.
+Within the social media services that you’ve chosen to use, create different channels or
+streams. Each should be labeled clearly with your organization’s name and logo, and visually branded appropriately—there should be no question that this stream is an official part
+of the organization’s social media strategy.
+Direct people to those streams at the right points. Put links to them on your front page, or
+from your main presence on the social media services. For instance, if your organization
+has a main Facebook page, link to the Specialized Streams from that page. If you spend effort to build them, you might as well tell people about them.
+Consider using selected content from the Specialized Streams—not all of it, of course—in
+your main blog, Facebook page, or Twitter feed. Reference the Specialized Stream from that
+content so that interested readers can find it and subscribe.
+The Patterns 421
+Examples
+Updates are CNN’s business, and it generates a lot of them. CNN has a main Twitter feed that
+it updates every few hours with general-interest news stories, but as of this writing, “cnnbrk”
+(for breaking news) has almost three times as many followers. “cnnireport” is CNN’s third
+main Twitter stream, and the CNN site directs readers toward all three. However, for the
+skilled and motivated Twitter user, there are even more streams to be found! Entertainment,
+weather, technology, money, international news, and other topics all have their own specialized CNN Twitter feeds, though they’re not easy to find. Figure 9-23 shows some of CNN’s
+Twitter feeds.
+Figure 9-23. Some of CNN’s Twitter feeds
+Likewise, Wired divides its numerous updates into Twitter feeds that are specialized by
+topic. Many of these primarily tweet links to posts in Wired’s corresponding blogs—see
+Figure 9-22, which shows some of those blogs. One nice thing Wired does is post a long
+list of specialized Twitter feeds in its background image, as shown in Figure 9-24. (Even
+though they’re not clickable links, they still convey information.)
+422 Chapter 9: Using Social Media
+Figure 9-24. Wired’s main Twitter feed, with Specialized Streams listed in the lefthand margin
+Google has built many products, each of which has its own constituency (casual readers,
+developers, domain experts, etc.). It also serves many regions of the world, and evokes interest worldwide in many aspects of its operation. Google therefore sends out its updates
+via a diverse set of corporate blogs (see Figure 9-25). Its main blog publishes generalinterest stories, but it sometimes runs entries that are cross-posted from a more specific
+blog.
+Figure 9-25. Some of Google’s blogs
+Microsoft has a vast number of social content streams on Facebook, Twitter, YouTube,
+Flickr, MySpace, Delicious, forums, and blogs. Some are listed in Figure 9-26. They
+are aimed at customers for particular products, in particular roles; some are very specialized, and some are general with very large audiences. (Credit for this table goes to
+EngagementDB, at http://www.engagementdb.com/Company/77.)
+The Patterns 423
+Figure 9-26. A partial profile of Microsoft’s social presence
+Social Links
+Figure 9-27. Ten ways to follow Huffington Post
+424 Chapter 9: Using Social Media
+What
+On your site’s home page, put a group of links to your social media presences.
+Use when
+You are putting effort into supporting one or more social media channels—blogs,
+Facebook, Twitter, Delicious, and so on—and you want to drive people toward those
+channels. If they’re self-contained services, like Facebook, you don’t mind visitors going
+to those sites instead of remaining on your own site.
+Why
+If you’re already investing in various social media channels, you might as well tell people
+about them. Visitors to your home page may find those links quite useful, especially if
+they’re specifically looking for your social media presence.
+Widgets that let visitors follow you give them a convenient way to put your updates into
+their personal news stream. That’s valuable to you and to them, and it shows visitors that
+you are wise to the latest social technologies.
+How
+Create a small area containing well-labeled links to social media sites and public repositories: Facebook, Twitter, YouTube, Flickr, Delicious, your blog, and so on. RSS feeds often
+are found here, too. Some sites put their email sign-ups into this section.
+Brand icons will stand out more than ordinary links—you may want this for ease of findability. They are out of place in some designs, however, and simple text links in a “written
+invitation” may be refreshing. See the upcoming Slate, Whole Foods, and Copyblogger
+examples.
+A disadvantage of a Social Links section is that it may send your visitors to a different site,
+and they might stay there instead of continuing to peruse your own site. Social network
+sites, especially, have a long “dwell time”—once someone goes there, she tends to stay for
+a while and not come back. (Many news-based sites with strong social presences, such
+as CNN and Wired, do not have Social Links on their home page.) One way to avoid this
+problem is to change the links in the Social Links section into buttons. A Facebook button may bring up a widget to make the user a fan, for instance, rather than taking him to
+Facebook itself.
+The Patterns 425
+Some sites have more than one Twitter stream or Facebook page to reflect different aspects of their organization; see the Specialized Streams pattern for more discussion. Those
+streams may show up here. The Vancouver Olympics example in Figure 9-28 shows one
+way to handle this.
+Consider adding “hooks” to pique the viewer’s interest. For instance, Copyblogger uses
+its Social Link widget to tell the viewer that 48,206 people follow them on Twitter. That’s
+brilliant—it’s appealingly specific, it uses gentle peer pressure to convince you to follow
+them, and it puts a smile on your face. Similarly, Mashable shows how many people all together are following them, aggregated over several services (Twitter, Facebook, RSS, etc.).
+Examples
+Figure 9-28 shows the Social Links widgets on various home pages.
+Figure 9-28. The Social Links widgets on the home pages of (counterclockwise from upper left) Mashable,
+the American Red Cross, the Vancouver Olympics, Levi’s, Whole Foods, Copyblogger, and Slate
+In the examples shown in Figure 9-29, Microsoft and Ford use the greater space available
+on their sites’ inner pages. They show clickable samples of the latest social activity at each
+service they list. These live examples may make the social presences more alluring for
+people who are interested in the topic. (The disadvantage of such a treatment, of course,
+is the amount of space it consumes.)
+426 Chapter 9: Using Social Media
+Figure 9-29. A Microsoft Windows–related product page and one of Ford’s press release pages
+Sharing Widget
+Figure 9-30. Slate’s end-of-article sharing widget
+What
+Beside your articles, videos, and other pieces of content, place a set of controls that let
+viewers easily share that content with their own close ties and social followers. These often
+link to social media sites such as Facebook and Twitter.
+The Patterns 427
+Use when
+Sharing Widgets are used almost everywhere now. If you post original content of any kind,
+you would do well to have one of these, even if it’s rudimentary.
+Why
+It’s convenient for viewers who may really want to share this cool piece you wrote. It helps
+them do Repost and Comment, which supports their own social reputation.
+Your viewers will then disseminate your content for you through their own social contacts. An article recommended by a personal contact—especially a close tie, such as a
+family member or close friend—is more likely to be read than an article found randomly
+on the Web. See the Personal Recommendations pattern in Chapter 1.
+Some sharing tools let you track what gets shared, thus giving you data about which of
+your posts get disseminated broadly. You can then use that data for your own analysis and
+to display Content Leaderboards for the most-shared items.
+How
+You can build your own Sharing Widget, or you can use a third-party site such as ShareThis
+to construct one. Populate it with the sharing channels that you think will be most used by
+your followers, but don’t clutter it up with too many items. (At least find numbers on the
+relative popularity of social networking sites and bookmarking sites; you should always
+include the biggest ones. Facebook and email had the highest usage as of this writing,
+while Twitter was lower but rising rapidly.)
+You might consider putting the following services on your Sharing Widget:
+• Social networking sites such as Facebook and MySpace
+• Microblogging mechanisms such as Twitter
+• Public bookmarking sites such as Digg or Delicious
+• Email, which is still preferred by many Internet users
+• Sharing via an SMS message
+• Other, nonsharing tools, such as printing, commenting, or thumbs-up/down
+If you have space, you may also show counters for each sharing service: how many people
+have shared a particular piece of content via this channel? This gives readers an immediate sense of how “hot” this content is. (If the numbers are consistently low, you may not
+want to show them.)
+Place the Sharing Widget very close to the content to be shared. The top and bottom of an
+article are traditional places to put this, and some articles place it as an inset within the article (with the text flowing around it). You’re trying to keep the widget within the gaze of
+428 Chapter 9: Using Social Media
+someone reading the content. Also, before you put the Sharing Widget into a drop-down
+or anchored toolbar, think about accessibility—how will someone using a screen reader
+use this? And what about people who don’t have good mouse control? They may have an
+easier time with an area directly on the page.
+If you offer a Facebook sharing control, make sure your HTML page is structured correctly for Facebook’s linking tools to present it well. Verify that Facebook picks up the title,
+summary, and thumbnail correctly. (Check other social sharing mechanisms as well.)
+Examples
+Many sites create multiple Sharing Widgets for different contexts, as shown in Figure 9-31.
+A widget containing the top three services might appear near the top of the content, for
+instance, while a more complete widget might appear at the end. This complicates the
+design, but it might work well if you have a lot of services to show and not much space at
+the top.
+Figure 9-31. Sharing widgets from Wired, Boing Boing, Technorati, and Pandora
+Pop ups and drop downs to show the “long tail” of social services are a common way
+to implement progressive disclosure—the user doesn’t see the numerous other sharing
+services until she clicks on a button—but again, these hide functionality and are not as
+accessible as items shown directly on the page.
+Mashable, shown in Figure 9-32, uses three different strategies: a small Sharing Widget beside a news snippet on the front page, a slightly expanded widget on the page containing
+the article (it now has an Email feature and a Share button), and a pop up shown when the
+reader clicks the Share button.
+The Patterns 429
+Figure 9-32. Mashable’s Sharing Widgets
+In other libraries
+http://www.designingsocialinterfaces.com/patterns/Share_This
+Download from Wow! eBook <www.wowebook.com>
+430 Chapter 9: Using Social Media
+News Box
+Figure 9-33. American Red Cross News Box
+What
+On your site’s front page, show your latest news items, blog posts, videos, and other timesensitive content. Each item should attract the viewer with readable headlines, summaries, links to read more, and possibly thumbnail images.
+Use when
+Your organization regularly produces news items, original content about topics that are
+interesting to your site’s visitors, or “social objects” that gather comments and discussions.
+You want to encourage visitors to read those items.
+Why
+A News Box gives your visitors content that can hold their attention. Without it, a visitor
+may come to your site, glance briefly at it, see nothing interesting, and leave without lingering. With it, they may stay for a while and learn about your organization.
+It’s also informative. Visitors to your site may come with the intent of finding out about
+recent news or events, so give it to them.
+The Patterns 431
+Your website will get updated with new content on a regular basis. It’s considered a best
+practice to regularly refresh the content on a front page. Visitors can see that things are
+happening here—your site is not a ghost town, and they may even want to come back later
+to see what else happens.
+Once a visitor clicks on a news link, the “jump page” can have all kinds of other features:
+links to related stories, other blog posts, a Sharing Widget, reader comments, and other
+things you don’t have room for on the front page. All of these draw visitors in and keep
+them on your site, learning more and engaging more.
+The topics, words, and images you choose to display in a News Box all contribute to a first
+impression of your organization. A visitor will indirectly learn about your organization
+from the scope of the topics covered, the tone of voice used in the text, and other signals.
+How
+Place the News Box on your home page; it doesn’t have to be above the fold (though many
+sites put it there when they don’t need the whole home page to explain the site’s value
+proposition). Make the News Box large enough to contain a handful of news items, each
+of which has a generous amount of space—at least several lines of text. You may wish to
+divide the News Box into subsections for different sources or media types (such as photos
+or videos). Some sites create a subsection to show additional, smaller items—usually just
+linked headlines—in addition to the larger links to featured articles.
+Each item should have:
+• A headline, which is also a link to the main article.
+• A short description that “sells” the article to the reader.
+• A “more” link to the main article. This should look like a link, with underlining,
+chevrons, color, or other obvious visual cues.
+They may optionally have:
+• A thumbnail image. The most attractive News Boxes generally have these.
+• The date on which the content was released.
+• The source of the item—blog, news page, press release, YouTube, and so on. If your
+link sends viewers to a different site, it’s polite to tell them so.
+• A Sharing Widget and a link to reader comments. These are more commonly found on
+the destination page, where the whole article can be read.
+Every word counts in these headlines and summaries. Use the Inverted Nano-pyramid pattern to write the headlines, and eliminate all extraneous information (such as bylines or
+locations) in the summaries. If you can, have someone custom-write the summaries; don’t
+use the first line of the article. The tone and voice you use in these pieces of text help define your organization, so make sure they reflect its values accurately: informal, authoritative, humorous, youthful, silly, ironic, and so on.
+432 Chapter 9: Using Social Media
+If you’re pulling content from media repositories such as Flickr, they might have widgets
+you can install directly on your page. Make sure they don’t cause your home page to slow
+down or break.
+Examples
+Red Bull sponsors athletes in many different sports. Though its product is a drink, its
+News Box is full of news items about the athletes and events, as shown in Figure 9-34. The
+overall impression of the pictures and words is one of action and speed. Notice the rhythm
+of the layout, the brief but effective writing, and the clarity of links to articles and videos.
+Figure 9-34. Red Bull’s News Box
+Whole Foods seeks a very different audience and emotional “feel,” but its News Box is similar to Red Bull’s in its clarity and rhythm (see Figure 9-35).
+The Patterns 433
+Figure 9-35. Whole Foods’ News Box
+Ford’s News Box contains items of varied size and emphasis (see Figure 9-36). The visual
+hierarchy clearly shows which articles Ford wants you to see first; the large images and
+text attract your eyes upward and left first, but the smaller size of the “Latest Headlines”
+heading allows more of them to be packed into the available space.
+Figure 9-36. Ford’s News Box
+434 Chapter 9: Using Social Media
+But make sure you don’t make your headlines and summaries too short or cryptic. The
+news items in the Sierra Club’s News Box don’t explain themselves well enough to entice
+someone to click through (see Figure 9-37).
+Figure 9-37. The Sierra Club’s News Box
+Content Leaderboard
+Figure 9-38. From the Wall Street Journal
+What
+Show a list of the most popular articles, blog posts, videos, or other content pieces. Use
+social media-based metrics such as most shared, most emailed, and most blogged.
+The Patterns 435
+Use when
+Your site generates a large amount of content, authored either by your organization or by
+other participants. You may already have an organizing principle for all that content (e.g.,
+News Stream; see Chapter 2), but you also want readers to see what other readers found
+interesting. You have enough readers and sharers so that clear leaders can emerge among
+the content you publish.
+Why
+This is a way of crowdsourcing a “top 10 list” for your site. Metrics for sharing and emailing
+show what a readership likes—or at least what those readers think their own followers will
+like. If the readers have excellent taste, they’ll pull the best-quality pieces from your content;
+if not, they’ll at least find the wackiest or most dramatic ones. (You may not agree with their
+taste!) Either way, your other readers are likely to be interested in the same kinds of things.
+How
+Gather data about which items have been shared, emailed, and so forth. If you haven’t
+already, make sure a Sharing Widget of some kind is shown beside each piece of content so
+that readers can easily share things in the first place.
+Show a list of the most popular items for that day (or week, if the pace of your site is
+slower). The items in the list should be links to the original posts. Sites that track multiple
+such lists—emailed, blogged, and so on—often put them together into Module Tabs (see
+
+---
+
+## Sección 19: Chapter 4). [Entropy: 0.25]
+
+Content Leaderboards are usually displayed as small sidebars on the home page and internal pages. Most sites primarily present content according to some other priority, such
+as freshness or editorial choice; leaderboards don’t usually belong in Center Stage (see
+
+---
+
+## Sección 20: Chapter 4). [Entropy: 0.31]
+
+Examples
+The New York Times has an archetypical Content Leaderboard that you’ve probably seen
+(see Figure 9-39). It contains four leaderboards tabbed together, one of which shows
+search terms and not articles. When you read an article in a particular section such as
+Business the leaderboard changes to show the most popular articles in that section.
+Engadget uses an eye-catching leaderboard, shown in Figure 9-40, to display the most
+heavily commented posts. Compare this very bright display to the more neutral content
+leaderboards in Figure 9-41. Note also the different tab names, which reflect the different criteria these sites use to determine the “hottest” articles—though we can’t tell what
+criterion Mashable (at the top right) uses.
+436 Chapter 9: Using Social Media
+Figure 9-39. Content leaderboards on the New York Times’ website
+Figure 9-40. Engadget
+The Patterns 437
+Figure 9-41. Content leaderboards from Technology Review, Mashable (top right), and Wired (bottom)
+438 Chapter 9: Using Social Media
+Recent Chatter
+Figure 9-42. Recent Chatter on two blogs: Boing Boing and Kitchen Table Math
+What
+Show the latest reader comments, tweets, contributions, or other community activity in
+a sidebar.
+Use when
+You want to explicitly encourage participation—it’s fine if people read your pieces or follow you, but you want them to actually take that next step and contribute.
+You have a lot of social activity going on around the content you publish, and the comments are of a high enough quality that you’re comfortable showing snippets of them on
+your home page.
+The Patterns 439
+Why
+Readers know that your site is not a “ghost town.” They can see that there are other people
+here, actively taking part in conversations. This appeals to people, and may encourage
+them to contribute their own thoughts.
+Readers can be drawn into conversations if they’re shown snippets of dialog—they may
+want to respond to a particular comment, for instance.
+How
+Create a widget that shows a list of the latest activities in reverse chronological order. It
+doesn’t need to be placed above the fold; often these are in an inconspicuous place on the
+home page (or internal page).
+Decide which social activities you want to show. Comments are probably the most common thing to show, and they’re interesting to other readers; so are tweets on a certain
+topic. You could also display favoriting or voting activities (such as Vote to Promote in
+the Yahoo! pattern library), or sharing, but make sure these don’t swamp the comments,
+which are more appealing.
+In the list of recent chatter, show these pieces of information:
+• What the activity was, and a snippet of it if appropriate
+• The name of the reader who initiated this activity
+• The title of the affected content, and a link to it
+• Possibly a timestamp or relative time (e.g., “10 minutes ago”)
+Some blog software, including Blogger and WordPress, makes this very easy to do. There’s
+almost no cost to it, other than the screen space that a Recent Chatter area takes up.
+Examples
+As you can see in Figure 9-43, some sites feature different types of public contributions.
+Yelp shows reviews (“Fresh Lists”) and over-the-fence chatter in two different sections.
+MyStarbucksIdea shows the latest ideas posted by readers, but with titles only. Technology
+Review is a more traditional news site, and its Recent Chatter section is more understated
+than the blogs shown in Figure 9-42. Note that without direct quotes, MyStarbucksIdea
+and Technology Review have a less personal, more formal feel than Yelp or the blog examples shown in Figure 9-42. (This may be exactly what you want, of course.)
+Yahoo! News, shown in Figure 9-44, updates its Recent Chatter widget whenever someone
+“buzzes up” an article, which happens very, very frequently. It certainly shows activity, but
+because you don’t see people’s actual words, it isn’t nearly as engaging.
+Figure 9-43. Recent Chatter at Yelp, MyStarbucksIdea, and Technology Review
+Figure 9-44. Buzzing up at Yahoo! News
+
+---
+
+## Sección 21: Chapter 10 [Entropy: 0.31]
+
+Going Mobile
+If you have ever designed anything for the Web, you are already a mobile designer.
+Congratulations!
+That’s the reality of a world full of iPhones, other kinds of smartphones, ebook readers,
+tablet computers, and entire countries where people reach the Internet primarily through
+their phones. All these users will see your sites through browsers that are small, slow,
+quirky, and hard to interact with. They will use your sites in environmental conditions—
+and mindsets—that are entirely different from what they would experience if they were
+sitting quietly at a comfortable desk, in front of a large screen.
+Even if you don’t choose to become an expert at mobile design, you can still treat mobile
+design consciously and thoughtfully. A relatively small investment of knowledge, design
+work, and time can go a long way toward improving the mobile experience of the sites
+you design.
+For many sites, it will make sense for you to create a separate version of the site aimed
+at mobile users (or, at least, users of small screens). You would present a scaled-down,
+focused version of your site that answers the needs of users who are out moving around.
+In this chapter, we won’t go into the technical details of platform detection and how to
+present the correct design for the user’s situation (e.g., different CSS stylesheets)—but the
+knowledge is out there and fairly easy to find.
+Other sites will want to supply all of their functionality via the mobile site, but all of it
+would be tailored to the small screen and other mobile constraints. Again, many people
+view the Internet exclusively through their mobile device, and they’ll want all your site’s
+features. You may choose to do two separate and parallel designs, one for mobile and one
+for the desktop.
+442 Chapter 10: Going Mobile
+If you create tools and applications for large screens, instead of websites, this chapter may
+not apply to you at all. You and your organization may wish to evaluate whether your tools
+(or some subset thereof) could be re-created as apps on mobile devices and still be useful.
+Know your users—understand their needs, tasks, and contexts of use. Creating mobile
+apps is a nontrivial investment, but it may be worth it for you.
+The Challenges of Mobile Design
+When you design for a mobile platform, you face challenges that you don’t encounter when
+your user can be presumed to be sitting quietly in front of a large screen and keyboard.
+Tiny screen sizes
+Mobile devices just don’t offer much space to present information or choices. Sadly,
+you don’t have the luxury of sidebars, long header menus, big images that don’t do
+anything, or long lists of links. You need to strip your design down to its essence—
+take away all the extra stuff you can. Leave the most important functions on the front
+page and either discard the rest or bury them deeper in the site.
+Variable screen widths
+It’s hard to make a design that works well on three different screens that are 128 pixels
+wide, 320 pixels wide, and 600+ pixels wide—and there might be some in between,
+too. Scrolling down a mobile page isn’t terribly onerous (which is why width gets special mention, not height), but a design needs to use the available screen width intelligently. Some sites end up creating different versions—with different logo graphics,
+different navigation options, and so on—for the smallest keypad devices, and another
+for the iPhone-size class of touch devices (around 320 pixels wide).
+For an excellent discussion of design and technical issues related to screen width, see
+the following mobiForge article. A search for more recent articles may help you as well.
+http://mobiforge.com/designing/story/effective-design-multiple-screen-sizes
+Touch screens
+As of this writing, most mobile web access comes from devices with touch screens.
+Keypad devices obviously should be served too, since they constitute the majority of
+existing mobile devices, but you may want to bias the design toward the touch screen
+experience. Links on keypad devices can be navigated with keys fairly easily, as long as
+you follow good overall design principles (restricted content, linearized layout, etc.).
+It’s hard to touch small targets accurately with fingers. Make your links and buttons
+large enough to hit easily; at a minimum, make important hit targets at least 1 cm
+on each side, and put some space between them. This reduces the available space for
+other content, of course.
+The Challenges of Mobile Design 443
+Difficulty of typing text
+No one likes typing text on a touch screen or keypad. You should design interaction
+paths through your site or tool in such a way that typing is unnecessary or very limited. Use Autocompletion (Chapter 8) in text fields whenever possible, for instance,
+and prefill form fields whenever you can do so reliably. Remember that numbers are
+much easier than text in some contexts, however.
+Challenging physical environments
+People use their phones and other devices in all kinds of places: outside in the bright
+sun, in dark theaters, in conference rooms, cars, buses, trains, planes, stores, bathrooms, and in bed. Think about the ambient light differences, to begin with—tasteful
+gray text on a gray background may not work so well in direct sun. Think also about
+ambient noise differences: assume that some users won’t hear the device at all, and
+that others might find sudden noises jarring and inappropriate.
+Finally, think about motion. Tiny text is hard to read when the device (or the user)
+is moving around. And a tiny hit target on a touch screen device will be hard to
+use under the best of circumstances, but it can be nearly impossible on a rocking
+and jolting bus! Again, design for “fat fingers,” and design so that mistakes are easily
+corrected.
+Social influences and limited attention
+Most of the time, mobile users won’t spend lots of time and attention on your site
+or app. They’ll be looking at your design while doing other things—walking, riding
+in a vehicle, talking with other people, sitting in a meeting, or (God forbid) driving.
+Occasionally a mobile user will focus his full attention on the device, such as when
+playing a game, but he won’t do it as often as someone sitting at a keyboard will.
+Therefore, design for distracted users: make the task sequences easy, quick, and reentrant. And make everything self-explanatory.
+Another assumption you can make is that lots of mobile users will be engaging in
+conversations or other social situations. They may pass around the device to show
+people something on-screen. They may have people looking over their shoulder.
+They may need to suddenly turn off the sound if it’s not socially acceptable to have a
+noisy device—or they may turn it up to let others hear something. Does your design
+behave well in these situations? Can it support graceful social interaction?
+How to Approach a Mobile Design
+In his book Mobile Design and Development (O’Reilly, http://oreilly.com/catalog/
+9780596155452/), Brian Fling tells a difficult truth: “Great mobile products are created,
+never ported. Start by understanding your users and the benefits the medium has to offer.”
+If you’re simply trying to take a site’s usual content and cram it into a 320 × 480 window,
+stop. Take a big step back and look at the whole picture.
+444 Chapter 10: Going Mobile
+1. What do users in a mobile context actually need?
+A person who is out and about with a mobile device may only want to use your site (or
+app) in particular ways; she won’t have the same range of needs that a user of the full site
+will have. Design for use contexts such as these:
+• “I need to know this fact right now, quickly.”
+• “I have a few minutes to spare, so entertain me.” (See the Microbreaks pattern in
+
+---
+
+## Sección 22: Chapter 1.) [Entropy: 0.725]
+
+• “Connect me socially.”
+• “If there’s something I need to know right now, tell me.”
+• “What’s relevant to the place I’m in right now?”
+2. Strip the site or app down to its essence
+Don’t be afraid to take away all that other stuff—the extra content, eye-catching features,
+sidebars, pull quotes, ads, images, site maps, social links, and so on. Focus tightly on the
+few tasks that mobile users will need from your site, use minimal branding, and chuck
+the rest.
+In fact, make sure that even on the home page (for a website) or the first working page of
+an app, relevant content appears high on the screen. That means getting rid of the “layer
+cake effect” of logos, ads, tabs, and headers that stack up on the screen. See Figure 10-1
+for a poor example; the only piece of content that a user really cares about is the score at
+the bottom of the screen! (If the user rotated the phone sideways, the score wouldn’t even
+be visible above the fold.)
+Figure 10-1. NBA.com, where the only information the user cares about is at the bottom
+The Challenges of Mobile Design 445
+Having reduced the site to its minimal form, you should then make sure that a user who
+really needs the full nonmobile site can get it. Put a link to the full site in an obvious place.
+Remember that many of the world’s people can get web access only through their phones,
+so you can’t count on them just going to the full site on their large screen—they may not
+have one.
+Alternatively, you might create the two “separate and parallel” designs mentioned earlier,
+in which all the site’s functions and information are presented in the mobile site (meaning the user never has to go to the full nonmobile site). You may still need to strip down
+the home page or main screen. Instead of having a flat and broad navigational hierarchy
+in which the home page has a zillion links directly to other pages, you may need to reorganize the site so that the hierarchy is somewhat narrower and deeper. This lets you put
+fewer options on the home page, which means less clutter on a small screen. (Of course,
+you’ll have to balance that against the time it takes for a user to jump from page to page!)
+3. If you can, use the device’s hardware
+Mobile devices offer wonderful features that you don’t get on the desktop. Location, camera, voice integration, gestural input, haptic feedback such as bumps and vibrations, and
+other features may be available to you. Some devices multitask so that your app can be
+running in the background while the user is doing other things; can you use that?
+4. Linearize your content
+This goes back to the width problem. Many devices simply don’t give you enough pixels
+in the width dimension to do any interesting side-by-side layouts. Instead of forcing the
+issue, just accept that one way or another, your content will end up being laid out vertically. Order the mobile site’s content so that it “reads well” when laid out this way. See the
+Vertical Stack pattern in this chapter.
+(Several writers have pointed out that this linearization of content also makes the mobile
+site’s content more accessible to screen readers and other types of devices. This is a nontrivial point. Can your main site, in fact, be linearized this way? Does it make sense if you
+read the content in its HTML order, with no CSS styling or layout?)
+5. Optimize the most common interaction sequences
+Once you’ve decided which tasks your typical mobile users will want to perform, and
+you’ve narrowed down the site to only the most relevant content, try to make those tasks
+as easy as possible by following these heuristics:
+• Eliminate typing, or reduce it to as few characters as possible.
+• Use as few page loads as possible, and don’t inflate pages with unnecessary bytes.
+Download times can be very slow; most parts of the world are still outside the reach
+of high-bandwidth wireless Internet facilities.
+446 Chapter 10: Going Mobile
+• Reduce scrolling and sideways dragging, except where it eliminates page loads and
+typing. In other words, prefer one long vertical page to many small pages if you have
+to present a lot of content.
+• Reduce the number of taps it takes a user to reach the desired information or accomplish a task. Tapping large hit targets—or using hardware buttons—is better than
+typing by a long shot, but try to reduce them anyway.
+For more information on mobile design guidelines and an analysis of mobile usability
+tests done on various websites, see the Nielsen Norman Group’s study “Usability of Mobile
+Websites,” at http://www.nngroup.com/reports/mobile.
+Dan Saffer’s book Designing Gestural Interfaces (O’Reilly, http://oreilly.com/
+catalog/9780596518394/) discusses the common gestures used in touch screens, among
+other topics relevant to mobile devices.
+Finally, the Design For Mobile pattern library, at http://patterns.design4mobile.com, contains many good patterns in addition to those found in this book.
+Some Worthy Examples
+Here are some mobile versions of home pages that manage to meet most of the design
+constraints listed in the preceding section, while retaining the branding and personality
+of each site. Figure 10-2 shows examples of each.
+JetBlue.com
+If someone is accessing JetBlue’s website from a mobile device, it’s a really good bet
+that he’s actually traveling on JetBlue that day! He may be trying to get information
+about his flight, for instance. That’s exactly what the JetBlue mobile site offers. The
+first items are the most useful to a traveler: flight information, check-in, and alerts,
+with further options for booking flights and in-flight entertainment. The page is simple and linear, and the items are easy to read and tap.
+RuthsChris.com
+Mobile users who go to restaurant sites probably want to see locations, peruse menus,
+or make a reservation. This simple site does those tasks with style. (The site would be
+even better if the device’s browser knew the current location so that the user could tell
+the site to “find the restaurants closest to me.”)
+Boston.com
+This news site has a clean design and packs useful information into a small space: the
+weather, the baseball score, leading headlines, and the first 20 or so words of each article. The site satisfies mobile users’ needs to fill up a minute here and a minute there
+of “found time.” The entire area of each article summary can be tapped, making the
+summaries easy to navigate.
+The Challenges of Mobile Design 447
+Fidelity.com
+People who watch the financial markets compulsively will find current data on the
+three big U.S. market indexes at the top of the mobile page, plus a way to search for
+specific quotes and navigation links into other timely topics (such as news, watch
+lists, and personal portfolios). Useful information is surfaced right on the home page,
+and a much deeper data set is easily available from the choices given.
+Figure 10-2. Good examples of mobile sites: JetBlue, Ruth’s Chris, Boston.com, and Fidelity
+Download from Wow! eBook <www.wowebook.com>
+448 Chapter 10: Going Mobile
+The Patterns
+In the introduction, we talked about the need to structure content in a vertical column for
+maximum flexibility. The Vertical Stack pattern goes into more detail.
+1. Vertical Stack
+A mobile application needs a way to show its top-level navigational structure. A persistent toolbar across the top or bottom of each app page is one standard way to organize a
+mobile interface; tabs and full-page menus are two other common ways. Less obvious, yet
+worth mentioning, are the Filmstrip and Touch Tools patterns.
+2. Filmstrip
+3. Touch Tools
+Mobile web pages often use the Bottom Navigation pattern for their global menus, preferring to use valuable top-of-page space for more immediately relevant content.
+4. Bottom Navigation
+Lists are everywhere in the mobile world—lists of apps, pictures, messages, contacts, actions, settings, everything! Both web pages and applications should present well-designed
+lists that look good and are usable. Ordinary text lists are often adequate, and Carousels
+and Thumbnail Grids work beautifully in mobile designs. (See Chapter 5 for those patterns
+and more discussion of list design.) Consider using a Thumbnail-and-Text List as well, because they’re usually simpler than Carousels and Thumbnail Grids. Sometimes an Infinite List
+suits the needs of mobile designs.
+5. Thumbnail-and-Text List
+6. Infinite List
+The remaining patterns are a grab bag of topics related to mobile design.
+7. Generous Borders
+8. Text Clear Button
+9. Loading Indicators
+10. Richly Connected Apps
+11. Streamlined Branding
+The Patterns 449
+Vertical Stack
+Figure 10-3. Google News vertical layout
+What
+Order the mobile page’s content in a vertical column, with little or no use of side-by-side
+elements. Let text elements line-wrap, and let the page scroll down past the bottom of
+most device screens.
+Use when
+Most mobile web pages that must work on devices of different sizes should use this pattern, especially if they contain text-based content and forms. (Immersive content, such as
+a full-screen video or game, won’t generally use this because it doesn’t usually scroll like
+a text-based page does.)
+When going from one page to another is expensive—as is the case with web pages, which
+take time to download—this pattern is applicable. On the other hand, an app that resides
+on the device can go from page to page almost instantly, since the content doesn’t have to
+be downloaded. For these, it makes more sense to structure the content into single screenfuls so that the user never has to scroll vertically—she can just tap or swipe. But vertical
+scrolling of a long page is preferable to interminable waits for downloads.
+450 Chapter 10: Going Mobile
+Why
+Devices come in different widths. You can’t always anticipate what the actual width in
+pixels will be, unless you detect the screen width at runtime or build apps for particular
+devices. (You can create optimized designs for single devices or standard device-specific
+widths, but not everyone has the resources to do so.)
+A fixed-width design that’s too big for the physical device can scroll sideways or be
+zoomed, but these designs are never as usable as those that let the user simply scroll down.
+Font sizes may also change unbeknownst to you, and as in the Liquid Layout pattern, a
+Vertical Stack with line-wrapped text elements will adjust gracefully when this happens.
+How
+Lay out the page’s content in a scrolling vertical column. Put the most important items on
+top and less important items farther down so that most users can see the important stuff.
+Useful content—from the user’s perspective, that is—should show up in the first 100 pixels (or less) of this Vertical Stack. This top part of the screen is precious real estate. Don’t
+waste it with too-tall logos, ads, or endless toolbars all stacked up into a “layer cake” that
+pushes all the useful content off the bottom of the page! That annoys users to no end.
+Put form labels above their controls, not next to them, to save horizontal space. You will
+need all the space you can get to show text fields and choice controls with adequate width.
+Put buttons side by side only if you’re really sure their total width will never be wider than
+the visible screen. If the buttons contain long text that might be subject to localization or
+font enlargements, forget it.
+Thumbnail images can fit beside text fairly easily, and it’s common to do this in lists of
+articles, contacts, books, and so on—see the Thumbnail-and-Text List pattern. Make sure
+the design degrades well when the screen width is reduced to 128 pixels (or whatever the
+realistic minimum happens to be when you create your design).
+Examples
+The sites for ESPN, the Washington Post, and REI (Figure 10-4) demonstrate three styles
+of using a Vertical Stack. ESPN places only the most immediately relevant content on the
+home page, preferring to put the rest behind menu items on the bottom of the page. The
+Washington Post puts it all out there; the stack shown in the figure is just a small fragment
+of the entire page! REI simply shows a menu of all the available places and ways to shop,
+with no ads or teasers on its home page.
+The Patterns 451
+Figure 10-4. Vertical Stacks on the mobile sites for ESPN, the Washington Post, and REI
+452 Chapter 10: Going Mobile
+Filmstrip
+Figure 10-5. iPhone Weather app
+What
+Arrange top-level pages side by side, and let the user swipe them back and forth to view
+them one at a time.
+Use when
+You have pages of content that are conceptually parallel, such as the weather in different
+cities or the scores in different sports. Users won’t mind swiping through these pages,
+going through several before reaching the one they’re looking for, because they are all
+potentially interesting.
+This pattern can sometimes be a viable alternative to other navigation schemes for mobile
+apps, such as toolbars, tabs, or full-page menus.
+Why
+Each item to be displayed can occupy the entire screen; no space needs to be used for tabs
+or other navigation.
+Since the user can’t jump straight to a desired screen—he has to swipe through others to
+get there—this pattern encourages browsing and serendipity.
+Swiping seems to be a very satisfying gesture for some users.
+The Patterns 453
+A disadvantage of this pattern is that it doesn’t scale very well; you can’t use too many toplevel pages, or users might get irritated at having to swipe too many times to get to a desired page. Another disadvantage is lack of transparency. A new user, just seeing your app
+for the first time, cannot easily see that swiping is how he gets from one page to another.
+How
+Essentially, a Filmstrip is like a Carousel (see Chapter 5) for a mobile application’s main
+pages. One difference is that a Carousel usually shows metadata—information about the
+item or page—and context, such as fragments of the previous and next pages. Mobile apps
+that use Filmstrips as a top-level organizing device don’t generally do that.
+If you want to give the user a clue that multiple top-level pages exist, and that he can swipe
+between them, use a dot indicator like the Weather app uses at the bottom of its screen.
+Examples
+The iPhone’s built-in Weather app (shown in Figure 10-5, at the top of the pattern) uses
+a Filmstrip to show the weather in the various geographic locations that the user chooses.
+Likewise, ESPN’s iPhone app structures its main pages as a Filmstrip. The user swipes back
+and forth between football, baseball, basketball, and other sports scores (see Figure 10-6).
+Figure 10-6. ESPN application
+454 Chapter 10: Going Mobile
+Touch Tools
+Figure 10-7. Touch tools on the iPhone photo viewer
+What
+Show tools only in response to a touch or key press, and put them in a small, dynamic
+overlay atop the content.
+Use when
+You are designing an immersive or full-screen experience, such as videos, photos, games,
+maps, or books. To manage that experience, the user will sometimes need controls—
+navigation tools, media player tools, information about the content, and so forth. The
+tools require significant space, but are only needed sometimes.
+Why
+The content is allowed to dominate the experience most of the time. The user isn’t distracted by controls taking space and attention away from the content. Remember that in a
+mobile context, space and attention are even more precious resources than usual.
+The user controls the experience by choosing when to show the tools.
+The Patterns 455
+How
+Show the unadorned content using the full screen. When the user touches the device’s
+screen or presses a particular key or softkey, show the tools.
+Many apps only show Touch Tools when the user touches a certain region of the screen.
+This way, the user doesn’t accidentally bring up the tools just by ordinary handling of the
+device. Also, you can bring up different tools when different regions of the screen are
+touched—the Stanza book reader does this, for instance. See the example in Figure 10-9.
+Show the tools in a small, translucent area that appears to float above the content. The
+translucency makes the tools look ephemeral (which they are).
+Remove the tools after a few seconds of nonuse, or immediately if the user taps the screen
+outside the bounds of the tools. It can be annoying to wait for the tools to go away by
+themselves.
+Examples
+The video player on the iPhone shows Touch Tools when the user taps the indicated area
+of the screen (see Figure 10-8). They go away again after about five seconds of nonuse.
+Figure 10-8. YouTube for iPhone Touch Tools
+Stanza, one of the many ebook readers on smartphones and other touch screen devices,
+also uses Touch Tools. Most of the time, the full screen is used to show book text. But when
+the user taps the center of the screen, extra information and controls appear—book title,
+author, chapter and page, settings, search, viewing mode, and a menu of yet more tools.
+To explain this and the page-turning gestures, a first-time reader is shown an explanatory
+dialog. See Figure 10-9.
+456 Chapter 10: Going Mobile
+Figure 10-9. The Stanza book reader: default page, with Touch Tools, and an explanatory dialog
+Bottom Navigation
+Figure 10-10. Amazon’s Bottom Navigation
+The Patterns 457
+What
+Place global navigation at the bottom of the page, below the fold.
+Use when
+A mobile website needs to show some global navigation links, but these links represent
+low-priority paths through the interface for many users.
+Your highest priority on the site’s front page is to show fresh, interesting content.
+Why
+The top of a mobile home page is precious real estate. You should generally put only the
+two or three most important navigation links there—if any at all—and devote the rest of
+the front page to content that will interest most users.
+A user looking for navigational links can easily scroll to the bottom of a page, even when
+those links are far below the fold.
+How
+Create a set of vertically arranged menu items on the bottom of the page. Make them easy
+to tap with a finger on touch screens—stretch them across the full width of the mobile
+page, and make the text large and readable.
+This pattern is closely related to the Sitemap Footer pattern in Chapter 3. In a mobile application, you probably aren’t trying to fit an entire site map into the footer—you only
+have room for a few well-chosen links. But the idea is similar: instead of taking up too
+much top-of-page space for navigation, you can push it to the bottom of the page, where
+real estate is less valuable.
+Examples
+NPR puts an extensive footer across the bottom of each of its pages (see Figure 10-11). It
+includes standard navigational links, a search box, the full-size site, a link to download an
+app, and a font size control.
+Amazon uses a simpler, shorter Bottom Navigation system. See the screenshot in Figure 10-10
+at the top of the pattern.
+In contrast, Google uses a more web-like footer on many of its mobile properties (see
+Figure 10-12). These links are smaller and look more like the brand, but they are far
+harder to hit with clumsy fingertips.
+458 Chapter 10: Going Mobile
+Figure 10-11. NPR’s Bottom Navigation Figure 10-12. Google Images footer
+The Patterns 459
+Thumbnail-and-Text List
+Figure 10-13. iPhone App Store
+What
+Present a selectable list of items, with each item containing a thumbnail image, some text,
+and possibly smaller text as well. If appropriate, use bold colors, icons, and other visual
+differentiators.
+Use when
+You need to show lists of articles, blog entries, videos, applications, or other complex
+content. Many or all of these have associated images. You want to invite the user to click
+on these items and view them.
+Why
+Thumbnail images improve text-only lists because they look appealing, help identify
+items, and establish a generous height for the list items.
+460 Chapter 10: Going Mobile
+Reading conditions on mobile devices are rarely ideal. By adding colorful images, you can
+improve the visual differentiation among items, which helps people scan and parse the
+list quickly.
+Many news and blog websites have converged on this design pattern as a way to show
+links to their articles. They look more appealing, and more “finished,” than similar sites
+that only list article titles or text fragments.
+How
+Place a thumbnail image next to the text of the item. Most sites and apps put the thumbnail on the left.
+In addition to picture thumbnails, you can include other visual markers, such as five-star
+ratings or icons representing people’s social presence.
+Don’t be afraid to use bright or saturated colors. You probably wouldn’t design so much
+visual stimulation in a desktop context, but in a mobile context, it works. Even if the colors seem garish, don’t worry—small screens can handle strong colors better than large
+screens can!
+Examples
+Many news sites use this pattern to show their articles. Yahoo! News and Boston.com offer
+good examples. Special-interest journalism sites such as Mashable also use Thumbnail-and-
+Text Lists effectively for their feature articles. See Figure 10-14.
+Figure 10-14. Yahoo! News, Boston.com, and Mashable
+Videos and other media fit this pattern naturally. As shown in Figure 10-15, YouTube, IMDb,
+and Kobo show thumbnails representing their videos, movies, and books. Note the rating
+stars on the YouTube and Kobo listings (and on the iPhone app store, in Figure 10-13 at the
+top of the pattern). These help a user scan down a list and pick out items with more stars.
+The Patterns 461
+IMDb also shows user ratings, but it eschews stars in favor of plain text, and it doesn’t
+draw the eye—it just blends in with the rest of the text. Note also that the subdued and
+tasteful colors of the Kobo book reader look beautiful, but don’t help differentiate items as
+strongly as the bolder colors used by YouTube or the app store.
+Figure 10-15. YouTube, IMDb, and Kobo apps
+Finally, many apps show Thumbnail-and-Text Lists of other, diverse kinds of items: birds
+(from iBird Explorer), products (the Google iPhone app), and menu items in a complex
+information architecture (Buzz Aldrin’s Portal to Science and Space Exploration); see
+Figure 10-16.
+Figure 10-16. iBird, Google, and Buzz Aldrin
+462 Chapter 10: Going Mobile
+Infinite List
+Figure 10-17. iPhone Mail app
+What
+At the bottom of a long list, put a button that loads and appends more items to the list.
+Use when
+You need to show long lists of email messages, search results, an archive of articles or blog
+posts, or anything else that is effectively “bottomless.”
+Users are likely to find desired items near the top, but they sometimes need to search
+further.
+Why
+The initial loading of a screenful or two of items is fast, and the user doesn’t get stuck waiting
+for a very long initial page load before she sees anything useful.
+Each subsequent loading of a new chunk of items is also fast, and it’s under user control—
+the user decides when (and whether) she needs to load more items.
+Since the new items are just appended to the current page, the user never has to contextshift by going to a new page to see new items, as she would with paginated search results.
+How
+When the page or list is initially sent to the mobile device, truncate the list at a reasonable
+length. That length will vary greatly with item size, download time, and the user’s goal—is
+she reading everything (as with Facebook), or just scanning a large number of items to
+find the one she wants (as with search results)?
+At the bottom of the scrolled page, put a button that lets the user load and show more
+items. Let the user know how many more will be loaded.
+The Patterns 463
+Alternatively, you could use no button at all. After the user has loaded and can view the
+first chunk of items, silently start loading the next chunk. Append them to the visible list
+when they’re ready, and the user has scrolled down to the end of the original list. (This is
+your clue that the user may want to see more. If the user doesn’t scroll down, don’t bother
+getting more items.)
+In software engineering, this well-known approach to managing lists of undefined length
+is often called lazy loading.
+Examples
+Several iPhone applications use Infinite Lists, including Mail (Figure 10-17), as well as
+iTunes and third-party apps such as Facebook (Figure 10-18). The iTunes button only
+loads 10 more items, which seems like too small a number for an eager music listener, but
+the Mail app loads many screenfuls of new messages; it seems to balance download time
+and quantity fairly well. The Facebook app, like the full-size Facebook page, loads up the
+first several pages of updates and then lets the user load more.
+Figure 10-18. Facebook and iTunes
+You can also do this with a web page. Gmail Buzz loads a few screenfuls of updates and
+then offers a “Load more” button; so does Mashable (see Figure 10-19).
+464 Chapter 10: Going Mobile
+Figure 10-19. Buzz and Mashable
+Generous Borders
+Figure 10-20. Best Western’s mobile site
+The Patterns 465
+What
+On devices with touch screens, put large margins and whitespace around buttons, links,
+and any other tappable control.
+Use when
+You need to use buttons with text labels, or a list of items, or ordinary text-based links—in
+short, any touch target that isn’t already large on the screen.
+Why
+Touch targets must be large enough for clumsy fingers to hit successfully. In particular,
+they need to be tall enough, which is challenging for buttons and links that consist only
+of text.
+How
+Surround each touch target with enough inner margin, border, and surrounding
+whitespace to make a sufficiently large hit target for fingertips.
+One trick is to make the whitespace immediately surrounding a target tappable. The button will look the same size, thus fitting into your visual design as expected, but you gain
+a few pixels of sensitivity in each direction around the button. Dan Saffer, in Designing
+Gestural Interfaces, uses the term iceberg tips for controls such as these—they are bigger
+than they appear.
+Exactly how big to make these targets is a very good question. Ideally, you want a size that
+ends up large enough on the physical device to be manipulated by most people—many of
+whom will have large fingers. Some others will not have great control over their fingertips.
+Yet others will be using their mobile devices in challenging conditions: bad light, moving
+vehicles, little attention to spare.
+So ultimately, how big should you make your targets? It depends on whom you ask.
+There’s no consensus on minimum target size, but different references make these claims:
+• 3/4 × 3/4 inches, separated by 1/8 inch (http://www.sapdesignguild.org/resources/
+TSDesignGL/Index.htm)
+• 9.6 mm (http://portal.acm.org/citation.cfm?id=1152260)
+• 1 × 1 cm square (Nokia’s S60 5th Edition C++ Developer’s Library v2.1, among others)
+• 44 × 44 pixels on an iPhone (iPhone Human Interface Guidelines)
+And there’s more. See Luke Wroblewski’s discussion at http://www.lukew.com/ff/entry.
+asp?1085 for even more information.
+466 Chapter 10: Going Mobile
+Examples
+The IMDb application for the iPhone reliably puts plenty of margin space around its
+touch targets. The whole application has a relaxed, uncramped feeling, as shown in
+Figure 10-21.
+Figure 10-21. Screens from the IMDb app
+The Epicurious app is similar, though its visual styling is quite different. The buttons for
+key actions—“find a recipe,” “view recipe”—are quite large and distinctive, as shown in
+Figure 10-22.
+Figure 10-22. Screens from the Epicurious app
+The Patterns 467
+Text Clear Button
+Figure 10-23. The URL box in Safari
+What
+Clear a text field with one button press.
+Use when
+Whenever a text field is needed in the mobile interface, consider using a Text Clear Button.
+It is especially valuable for fields that hold long strings of text, such as search strings,
+URLs, and multiline text.
+Why
+Erasing long strings of text letter by letter is slow and error-prone. Don’t force your users
+to do this.
+Some mobile platforms have no facility for cut, copy, and paste. A cut operation may suffice for erasing text—so would the selection of all of a text field’s contents—but even if
+those exist it’s easier just to tap a single target to erase the field.
+How
+Put a simple “X” or “Clear” button into the text field. A button beside the text field can
+also work, though you’d want to usability-test it to find out whether users see it or not—
+they may see it as a “Go” or “Search” button instead.
+If the platform offers a “Clear” button as a built-in feature for text fields, use it. I have
+watched users struggle to clear text fields when this feature was not provided, on early
+versions of Web Platform—it’s painful to watch people erase a long search field letter by letter
+by letter. I’ve also watched people use iPhone apps that didn’t use its standard clear button;
+these users had a strong expectation that the “X” button would appear in text fields, and
+were unhappy when it wasn’t provided.
+Download from Wow! eBook <www.wowebook.com>
+468 Chapter 10: Going Mobile
+Examples
+There aren’t many varied examples of this pattern to show as of this writing. Figure 10-24
+shows the websites of two large search engines that insert a Text Clear Button into their
+search fields.
+Figure 10-24. Clear buttons as used by Google and Bing
+Loading Indicators
+Figure 10-25. The iPhone Stocks app waiting for chart data
+What
+While a page or page section is loading, show a progress indicator in the place where it
+will be (or where the user tapped or clicked).
+The Patterns 469
+Use when
+The user has to wait for content to load, especially in a page that changes dynamically in
+response to user interaction.
+Why
+Loading new content can be slow and erratic over mobile connections.
+You should always show as much of a partially loaded page as you can, so the user can
+actually see something useful.
+In general, progress indicators make loading times appear faster to a user. She is reassured
+that something is actually happening in response to a gesture, especially when that indicator appears where the gesture occurred.
+How
+Show as much of the page as can be loaded quickly, but if part of it takes a long time, such
+as a graphic or video, show a lightweight animated progress indicator where the graphic
+will appear. (The mobile platform may supply a default indicator.)
+When the user initiates an action that causes part of the page to be reloaded—or loads a
+whole new page—show a progress indicator in situ on the page.
+Examples
+Flickr’s mobile website uses loading indicators very skillfully. When the user taps a picture
+thumbnail to see the whole picture, the thumbnail is overlaid by a Flickr logo that moves
+until the new image is ready to show (see Figure 10-26).
+Figure 10-26. Flickr’s animated loading indicator
+When an iPhone installs a new app, the app’s icon literally shows a miniature progress bar
+to show how far it’s gotten with the download (see Figure 10-27). It’s cute, and its meaning
+is unmistakable.
+470 Chapter 10: Going Mobile
+Figure 10-27. iPhone’s app installation progress bar
+Richly Connected Apps
+Figure 10-28. Freedom Trail app for iPhone
+What
+Inside your mobile app put direct links to other apps, such as the phone dialer, map, or
+browser. “Prefill” them with data from the user’s current context.
+The Patterns 471
+Use when
+The mobile app shows data that is “connectable” in obvious ways, such as phone numbers
+and hyperlinks.
+More subtly, your app may offer ways to capture images (via the device camera), sound,
+or video. It may even be aware of social networking conventions, such as Facebook or
+Twitter usernames. In all cases, your app might direct the user to another app to perform
+these device-based functions.
+Why
+A user can only see one mobile app at a time, even when multiple apps are being used at
+once, and it’s annoying to switch between them by hand.
+Mobile devices often have enough context and available functionality to offer intelligent
+paths between apps.
+As of this writing, mobile devices have no good way to arbitrarily shuffle small amounts
+of information from one application to another. On the desktop, you can type easily, or
+use copy and paste, or even use the filesystem. You don’t have those options on a mobile
+platform. So, you need to support moving that data automatically.
+How
+In your app, keep track of data that might be closely associated with other apps or services. When the user taps or selects that data, or uses special affordances that you provide,
+open another app and handle the data there.
+Here are some examples. Consider all the ways that data in your app can connect directly
+to other mobile functions.
+• Phone numbers connect to the dialer.
+• Addresses connect to the map, or to the contacts app.
+• Dates connect to the calendar.
+• Email addresses connect to the email app.
+• Hyperlinks connect to the browser.
+• Music and videos connect to media players.
+In addition, you might be able to do such things as take a picture, or use a map, entirely
+within the context of your application.
+You can do some of this on a desktop, but the walled-garden nature of many mobile devices makes it easier to launch the “right” app for certain kinds of data. You don’t have to
+decide which email reader to use, or which address or contact management system, and
+so on. Plus, many mobile devices supply a phone dialer, a camera, and geographic location services.
+472 Chapter 10: Going Mobile
+Examples
+The Freedom Trail application for the iPhone, shown in Figure 10-28, explicitly illustrates
+its links to other apps. The user chooses whether to follow them for more information, or
+just to stay within the app; this transparency is useful and refreshing.
+The Facebook app for iPhone connects to the camera on the device (see Figure 10-29).
+The integration is close; users can take a picture and immediately post it to Facebook,
+without ever seeming to leave the Facebook app. Facebook can also reach the preexisting
+photos on the iPhone.
+Figure 10-29. Facebook’s integration with the camera
+The iPhone’s map application (Figure 10-30) connects to the contacts app to add a person’s address to her contact info, and to email and MMS for sharing a location. (Of course,
+many other applications, both mobile and otherwise, also have “Email this” or “Share this”
+features. See the Sharing Widget pattern in Chapter 9, for example.)
+The Patterns 473
+Figure 10-30. The iPhone map application connecting to contacts, mail, and MMS
+Streamlined Branding
+Figure 10-31. Walmart’s mobile site compared to its full site
+474 Chapter 10: Going Mobile
+What
+Use your organization’s logo, colors, and other brand elements on the mobile site or app,
+but keep them small on the screen and fast to load.
+Use when
+All mobile apps or sites that are associated with a company or organization should use this.
+Why
+Users need to be able to identify your app or site as yours. In usability testing, people
+respond well to reliable, familiar branding, especially when the brand is already known
+outside of the mobile context.
+Mobile screens don’t have much space to spare for elements that aren’t actual content.
+Mobile network connections can be slow, and heavyweight images don’t download fast
+enough.
+How
+Create a small version of your logo, no taller than around 50 pixels, so that it takes up as
+little vertical space as you can get away with. If you’re creating different designs for different screen sizes or platforms, consider making different versions of the logo for each.
+Apply your brand’s colors and font families in the mobile design. A basic text interface
+may function well enough, but it won’t look professional or polished.
+Avoid using very large and complex images as stylistic elements. Download time is as
+important in a mobile context as on the desktop (and often more so). If you’re working in
+HTML, depend on stylesheets when you can, rather than handcrafted images.
+Strong contrast and large, readable text will help people use your mobile site when the
+conditions are poor (bright light, motion, distraction). Even if your brand calls for visual
+subtlety and small, tasteful text, do what needs to be done for the sake of usability—adapt
+the brand look to the platform.
+Examples
+There are good examples of this pattern all over the mobile web. Going back to the first
+example given in this chapter, JetBlue pares down its branding to a look that is polished
+and recognizable, but works well on even a tiny mobile device (see Figure 10-32).
+The Patterns 475
+Figure 10-32. JetBlue’s mobile branding
+Fandango’s mobile site also takes a minimalist approach (see Figure 10-33). Like JetBlue,
+Fandango uses a polished-looking logo and style, but the site loads fast and can be used
+on tiny screens. None of the bandwidth-hogging images, ads, or video is loaded onto the
+mobile device.
+Figure 10-33. Fandango’s mobile branding
+476 Chapter 10: Going Mobile
+Whole Foods maintains a very consistent brand look across its full-page and mobile sites.
+But its mobile site consumes more above-the-fold space than necessary with top navigation,
+and it downloads several large images, making it slower than it could be (see Figure 10-34).
+Figure 10-34. Whole Foods’ mobile branding
+Chipotle’s mobile website shows how not to do mobile branding (see Figure 10-35). The
+brand is strong enough on the main site, but none of it shows up on the mobile site except for
+a too-small version of the logo! The site uses only a neutral font and colors. (To be fair, the site
+does supply an iPhone app that has stronger branding, but it’s not likely that a very occasional
+customer will bother with the hassle of downloading it if the website fills her needs.)
+Figure 10-35. Chipotle’s mobile branding (or lack thereof)
+
+---
+
+## Sección 23: Chapter 11 [Entropy: 0.28]
+
+Making It Look Good:
+Visual Style and Aesthetics
+In 2002, a research group discovered something interesting. The Stanford Web Credibility
+Project * set out to learn what causes people to trust or distrust websites, and much of what
+they found made intuitive sense: company reputation, customer service, sponsorships,
+and ads all helped users decide whether or not a website was credible.
+But the most important factor—number one on their list—was the appearance of the
+website. Users did not trust sites that looked amateurish. Sites that made the effort to craft
+a nice, professionally designed look made a lot more headway with users, even if those
+users had few other reasons to trust the site.
+Here’s another data point. Donald Norman, one of the best-known gurus of interaction
+design, concluded that “positive affect enhances creative, breadth-first thinking whereas
+negative affect focuses cognition, enhancing depth-first processing and minimizing distractions.” He added: “Positive affect makes people more tolerant of minor difficulties and
+more flexible and creative in finding solutions.” † Interfaces actually become more usable
+when people enjoy using them.
+Looking good matters.
+For many chapters now, we’ve talked about the structure, form, and behavior of an application; now we’ll focus more on its “skin” or its “look-and-feel.” Chapter 4 discussed some
+graphic design basics. That chapter covered visual hierarchy, visual flow, focal points, and
+the Gestalt principles of proximity, similarity, continuity, and closure. These topics form
+the foundation of page organization, and should not be shortchanged.
+* See http://credibility.stanford.edu.
+† See Donald Norman, “Emotion and Design: Attractive Things Work Better,” at http://jnd.org/dn.mss/emotion_design_attractive_things_work_better.html. See also his book on the subject, Emotional Design: Why We
+Love (or Hate) Everyday Things (Basic Books).
+478 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+But there’s more to a nice house than just its room layout. When you pay for a welldesigned new house, you also expect beautiful carpets, paint colors, wall textures, and
+other surface treatments. Without them, a house can be perfectly functional but uninspiring. Completing the job means paying attention to detail, fit, and finish.
+Beautiful details don’t necessarily affect the efficiency with which people accomplish tasks
+in the house or interface (although research indicates that it sometimes does). But they
+certainly affect whether or not people enjoy it. That, in turn, affects other behavior—such
+as how long users linger and explore, whether they choose to go there again, and whether
+they recommend it to other people.
+You could even think about it as a moral issue. What kind of experience do you want
+your users to have? Do you want to give them an all-gray application that bores them, or
+a flashy ad-filled application that irritates them? Would you rather give them something
+they enjoy looking at, maybe for hours at a time?
+Of course, far more than visual style influences a user’s emotional response (affect).
+
+---
+
+## Sección 24: Chapter 1 began discussing other considerations, such as how well you anticipate users’ [Entropy: 0.858]
+
+usage habits. Software can pleasantly surprise people with considerate design. Tightly
+packed layouts evoke a different affective response than sparse, open layouts. Language
+and verbal tone play a huge part in this response, as does the quality of the software
+itself—does it “just work,” and is it fast and responsive?
+A well-designed interface takes all of these factors into account. When content, meaning,
+and interactive behavior all work in concert with your visual style, you can evoke a chosen
+emotional response very effectively.
+With products and websites, stylistic elements are often designed to support branding.
+The design of any software product or site expresses something about the organization
+that produced it (even if it’s a loosely knit group of open source developers). It might say
+something neutral, or it might send a focused message: “You can trust us,” “We’re cool,”
+“We build exciting things.” A brand identity encompasses more than just a logo and tag
+line. It runs throughout an organization’s product designs, its website, and its advertising
+materials—in fact, the brand’s chosen color schemes, fonts, iconography, and vocabulary show up everywhere. When planned well, a complete brand identity is coherent and
+intentional.
+Same Content, Different Styles 479
+A brand identity is important because it establishes familiarity and sets expectations for
+someone’s experience with an organization’s products. Ultimately, a good brand should
+make people feel better about using those products. Look at what Apple was able to do
+with brand loyalty: many people love Apple products and seek them out.
+In any case, whether or not they are intended to support a brand, stylistic elements make
+statements about your product. They communicate attributes such as reliability, excitement, playfulness, energy, calmness, strength, tension, and joy. What do you want to
+communicate?
+This chapter discusses more visual design concepts, this time focusing less on formal
+structure and more on these emotionally based attributes. The chapter won’t make an
+artist out of you—that takes serious practice and study. But the patterns capture some
+techniques commonly found on well-designed artifacts and explain why they work.
+Same Content, Different Styles
+To explore how styles evoke different visceral and emotional reactions, we can try applying different visual styles to identical content. The actual content isn’t even that important—we’re looking for immediate, prerational reactions here, not the impressions gained
+from reading and interacting with the content.
+The CSS Zen Garden website (http://csszengarden.com) offers us exactly that situation.
+Invented as a showcase for CSS-based web design, this site provides a single HTML page
+to all participants—everyone gets the same body text, the same HTML tags, and the same
+lists of links. Participants then create unique CSS files to define new visual designs for the
+page, and contribute them to the site. Visitors can browse through all the contributed CSS
+designs. It’s a delightful way to spend an hour or three, especially if you’re teaching yourself about visual design and trying to understand what you do and do not like.
+Figures 11-1 through 11-8 present a sample of these designs. In each case, the basic content
+is the same; only the design has changed. Take some time to examine each one. When you
+look at each design, what is your immediate, visceral reaction? What words come to mind
+that describe the page? Does it draw you in, repel you, make you nervous, or delight you?
+Download from Wow! eBook <www.wowebook.com>
+480 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+Figure 11-1. Design 1
+Same Content, Different Styles 481
+Figure 11-2. Design 2
+482 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+Figure 11-3. Design 3
+Same Content, Different Styles 483
+Figure 11-4. Design 4
+484 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+Figure 11-5. Design 5
+Same Content, Different Styles 485
+Figure 11-6. Design 6
+486 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+Figure 11-7. Design 7
+Same Content, Different Styles 487
+Figure 11-8. Design 8
+488 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+The Basics of Visual Design
+As you looked at the Zen Garden examples, you might have observed how they achieve
+such different impressions—a page’s color scheme may cause you to either smile or cringe,
+for example. Using these examples as a touchstone, we can talk about some of the principles of good visual design.
+You might recall that we already covered some visual design principles in Chapters
+4 and 7. Those chapters explored how the human visual system responds cognitively to
+certain inputs. The time it takes for someone to click on an orange square out of a field
+of blue squares, for example, doesn’t depend upon a user’s aesthetic sense or cultural
+expectations.
+But now we’re talking about emotional and visceral reactions—does a single orange square
+add tension to a design, brightness, balance, or nothing at all? The answer depends on so
+many factors that it’s genuinely hard to get it “right” without a lot of practice. The cognitive aspects of these design choices certainly play a part; for starters, you can make a page
+hard or easy to read (a cognitive effect). But each person is unique. Each person has a
+different history of experiences, associations, and preferences; and each person is part of
+a culture that imposes its own meanings on color, typography, and imagery.
+Furthermore, the context of the design affects the user’s response. Users see your design
+as part of a genre (such as office applications, games, or e-commerce sites), and they
+will have certain expectations about what’s appropriate, trite or original, and dull or interesting. Branding also sets expectations. So here’s the problem: as soon as you learn a
+“rule” for evoking an emotional reaction using a design principle, you can find a million
+exceptions.
+That being said, if you know your audience well, visceral and emotional responses are
+surprisingly predictable. For example, most readers of this book probably thought that
+the first CSS example was a calm, soothing design, but that the second one was noisier
+and tenser. Why is that?
+The answer lies in a combination of many factors working in concert: color, typography, spaciousness, angles and shapes, repeated visual motifs, texture, images, and cultural
+references.
+Color
+Color is immediate. It’s one of the first things you perceive about a design, along with
+basic forms and shapes. Yet the application of color to art and design is infinitely subtle—
+master painters have studied it for centuries. We can only scratch the surface here.
+When devising a color scheme for an interface, first rule out anything that makes the text
+difficult to read:
+• Always put dark foregrounds against light backgrounds, and vice versa—to test, pull
+the design into an image tool such as Photoshop and desaturate it (make it grayscale).
+The Basics of Visual Design 489
+• Never use red versus green as a critical color distinction, since many colorblind people won’t be able to see the difference. Statistically, 10% of men have some form of
+colorblindness, as do about 1% of women.
+• Never put bright blue, small text on a bright red or orange background or vice versa,
+because human eyes quickly get fatigued when reading text written in complementary colors (colors on opposite sides of the color wheel).
+With that out of the way, here are some very approximate rules for color usage:
+Warm versus cool
+Red, orange, yellow, brown, and beige are considered “warm” colors. Blue, green,
+purple, gray (in large quantities), and white are considered “cool.” The yellow CSS
+Zen Garden in Design 6 (Figure 11-6) feels vividly “hot,” despite the cool gray metallic surface used behind the content itself. Sites and interfaces that need to connote
+respectability and conservativeness often use predominantly cool colors (especially
+blue). Still, warm and cool colors can combine very effectively to achieve a balanced
+look—and they frequently do, in classic paintings and poster designs.
+Dark versus light background
+The pages with light backgrounds—white, beige, and light gray—feel very different
+from the ones with very dark backgrounds. Light is more typical of computer interfaces (and printed pages); dark pages can feel edgier, more somber, or more energetic,
+depending on other design aspects.
+High versus low contrast
+Whether the background is dark or light, the elements on that background might
+have either high or low contrast against it. Strong contrast evokes tension, strength,
+and boldness; low contrast is more soothing and relaxing.
+Saturated versus unsaturated
+Highly saturated, or pure, colors—brilliant yellows, reds, and greens, for example—
+evoke energy, vividness, brightness, and warmth. They are daring; they have character. But when overused, they can tire the eyes, so most UI designs use them sparingly; they often choose only one or two. Muted colors, either dark or light (tones or
+tints, respectively), make up the bulk of most color palettes. The green and blue Zen
+Garden design gets away with two saturated colors by using white borders, white text,
+and dark halos to separate the green and blue. (Even so, you probably wouldn’t want
+to stare at that green all day long in a desktop application.)
+Combinations of hues
+Once you start combining colors, interesting effects happen. Two saturated colors
+can evoke far more energy, motion, or richness than one alone. A page that combines
+one saturated color with a set of muted colors directs attention to the saturated color
+and sets up “layers” of color—the brighter and stronger ones appear closer to the
+viewer, while the grayer and paler colors recede. Strong dimensionality can make a
+design dramatic. Flatter designs, with more muted or lighter colors, are calmer. See
+the Few Hues, Many Values pattern for more discussion.
+490 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+Typography
+By choosing a font (properly called a typeface) for a piece of text, you decide what kind
+of voice that text is “spoken” in. The voice might be loud or soft, friendly or formal, colloquial or authoritative, hip or old-fashioned.
+As with color, readability—the cognitive part—comes first when choosing type. Small
+text—or what’s called “body text” in print and on websites—demands careful choice. The
+following considerations for body text also apply to “label fonts” in GUIs, used to caption
+text fields and other controls:
+• On computer displays, sans-serif fonts often work better at very small point sizes,
+unlike print, in which the serifed fonts tend to be more readable as body text. Pixels
+aren’t big enough to render tiny serifs well. (Some serifed fonts, such as Georgia, do
+look OK, though.)
+• Avoid italicized, cursive, or otherwise ornamental fonts; they are unreadable at small
+sizes.
+• Highly geometric fonts tend to be difficult to read at small point sizes, as the circular
+letters (e, c, d, o, etc.) are hard to differentiate. Futura, Univers, and some other mid-
+20th-century fonts are like this.
+• All-caps is too hard to read for body text, though it works fine for headlines and short
+texts. Capital letters tend to look similar, and are hard for a reader to differentiate.
+• Set large amounts of text in a medium-width column when possible—say, around 10
+to 12 English words on average. Don’t right-justify narrower columns of text; let it be
+“ragged right.”
+Now for the visceral and emotional aspects. Fonts have distinctive voices—they have different graphic characteristics, textures, and colors on the page. For instance, some fonts
+are dense and dark, while others are more open—look at the thickness of strokes and the
+relative sizes of letter openings for clues, and use the “squint test” if you need a fresh and
+objective look at the font. Some fonts have narrower letters than others, and some font
+families have “condensed” versions to make them even narrower. The separation between
+lines of text (the leading) might be distant or close, making the block of text look either
+more open or more solid.
+Serifs and curves add another dimension to font color and texture. Serifs add a level of
+scale that’s much smaller than the letterform itself, and that adds refinement to the font’s
+texture—the thick sans-serif fonts look blunt, strong, or even coarse in comparison (especially Helvetica). The curves and angles used in each letterform, including those that form
+the serifs, combine to form an overall texture. Compare an old-fashioned typeface such
+as Goudy Old Style to another classic serifed font such as Didot; they look very different
+on the page. See Figure 11-9.
+The Basics of Visual Design 491
+Figure 11-9. Eight fonts, as rendered on Mac OS X; notice the different sizes, densities, textures, and
+formalities
+Though it’s not always easy to explain why, some fonts speak with a formal voice, while
+others speak with an informal voice. Comic Sans and other playful fonts are certainly
+informal, but so is Georgia, when compared to Didot or Baskerville. All-caps and capitalized words speak more formally than lowercase; italics speak informally. In the CSS Zen
+Garden designs shown earlier, Design 8 (Figure 11-8) uses an all-caps, sans-serif font
+to speak in a cool and removed voice. Meanwhile, Design 5 (Figure 11-5), which uses
+Georgia, speaks in a warm and informal voice.
+492 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+Cultural aspects come into play here, too. Old-fashioned fonts, usually with serifs, tend to
+look—wait for it—old-fashioned, although anything set in Futura (a sans-serif font) still
+looks like it came from a 1963 science textbook. Verdana has been used so much on the
+Web that it’s now standard for that medium. And Chicago always will be the original Mac
+font, no matter what context it’s used in.
+Spaciousness and Crowding
+Some of the CSS Zen Garden designs use plenty of whitespace, while others crowd the
+page elements together. Spaciousness on a page gives an impression of airiness, openness,
+quiet, calmness, freedom, or stateliness and dignity, depending on other design factors.
+Crowded designs can evoke urgency or tension under some circumstances. Why? Because
+text and other graphic elements need to “breathe”—when they’re colliding against each
+other or against the edges or borders of the page, they cause visual tension. Our eyes
+want to see margins around things. We get slightly disturbed by designs such as CSS
+Zen Garden Design 2 (Figure 11-2), which shoves the headlines right against the text.
+Likewise, the compact layout of Design 6 (Figure 11-6) somehow contributes to the busy,
+industrial feel of the page, though it doesn’t have collisions like Design 2.
+However, not all crowded designs evoke that kind of tension. Some connote friendliness
+and comfort. If you give the text and other elements just enough space and reduce the
+interline spacing (leading) to the smallest amount that is comfortably readable, you might
+achieve a friendlier and less rarified look. Design 5 (Figure 11-5) illustrates this well.
+Angles and Curves
+A page composed of straight up-and-down lines and right angles generally looks calmer
+and more still than a page containing diagonal lines and nonrectangular shapes. Likewise,
+a page with many different angles has more apparent motion than a page with a single
+repeated angle on it; see Design 7 (Figure 11-7) for a dramatic example. Design 6 uses
+angles to create uneasiness and visual interest.
+Curves can also add motion and liveliness, but not always. A design made with a lot of
+circles and circular arcs can be calming and restful. But a curve swooping through a page
+sets the whole design in motion, and a few carefully chosen curves in an otherwise rectangular design add sophistication and interest. Design 8 (Figure 11-8) uses a single large elliptical curve for a dramatic effect—it contrasts strongly against the otherwise rectilinear
+design, so its impact is high.
+The Basics of Visual Design 493
+Wherever two curves intersect, notice what the geometrical tangents to those curves are
+doing. Are the tangents at right angles? That results in a calmer, more still composition;
+if they cross at a more acute angle, the design has more tension and apparent motion.
+(Again, these aren’t hard-and-fast rules, but they’re generally true.)
+When using angles, curves, and nonrectangular shapes, think about where the focal points
+are: at sharp angles, where lines cross, and where multiple lines converge, for instance. Use
+these focal points to draw the viewer’s eye where you want it to go.
+Texture and Rhythm
+Texture adds richness to a visual design. As described in the “Typography” section, text
+forms its own texture,* and you can control the look of that texture by choosing good
+fonts. For many pages and interfaces, fonts are the most important texture element.
+But other kinds of textures deserve attention, too. Blank regions, such as the strips of
+empty space down the sides of a web page, can look much better when filled with a texture. You also can use textures to surround strong visual elements and set them off, as
+done in Designs 6 and 7. Textures add visual interest, and depending on what they look
+like, they can add warmth, richness, excitement, or tension. The most effective textures
+in interface design are subtle, not vivid checkerboards of eye-hurting colors. They use
+gentle color gradations and very tiny details. When spread over large areas, their impact
+is greater than you might think. Figure 11-10 shows some of the margin textures in the
+CSS designs. Single-pixel dots, parallel lines, and finely drawn grids are nice geometric
+textures; they’re easy to generate and render, and they add refinement to a design. See the
+Hairlines pattern.
+Be careful when using textures behind words on a computer screen—it rarely works. All
+but the subtlest textures interfere with the readability of small text. You can put them behind large text, but watch the way the edges of the letterforms interact with the different
+colors in the texture, as that can visually distort the letters. Try fading a texture into a solid
+color as it approaches a block of text.
+* On an interesting etymological note, the English words text, texture, and textile all derive from the same Latin
+root, texere, meaning “to weave.” Isn’t that evocative?
+494 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+Figure 11-10. Details of textures in four CSS designs
+Images
+Each of the CSS Zen Garden designs reproduced here uses imagery. Some of the images
+are photographs; others are iconic semi-abstract pictures. In all cases, the images exist
+purely to set the mood of the design. These particular designs can go as far as they need
+to set that mood, since in the CSS Zen Garden, design is more important than content.
+Your situation is probably different. In most web pages and applications, content and ease
+of use are more important than style. You should use purely decorative images sparingly
+and with great care on functional GUIs, since they tend to be distracting.
+That being said, you should look at the functional icons and images in your design—
+such as toolbar icons and website image links—and see if they make the emotional statement you want the whole design to make. Use the same criteria listed here: color, texture,
+angles, curves, spacing, and so on. Specifically, color schemes, angles, and curves should
+be consistent across an icon set. Don’t make them look too much alike, though, or users
+won’t see the differences easily. Larger icons usually “feel” better than small ones, partly
+because you can draw them more generously and partly because of the crowding and
+space issues discussed earlier.
+The Basics of Visual Design 495
+Back to decorative imagery. Photographs are extraordinary tools for evoking emotional responses. How many web pages have you seen showing happy, smiling faces? Kids
+flying kites? Competent-looking businesspeople in crisp suits? How about roads winding through beautiful mountain scenery? Sunsets or beaches? Rolling grassy hills under
+sunny blue skies?
+These kinds of pictures appeal to our deepest human instincts, and they all predispose the
+viewer to respond positively—as long as the context is right. If you try to put powerful
+images like these on an unassuming little utility application, users might laugh or criticize
+it as marketing overkill. This is a delicate area, so if you’re not sure something works, test
+it with users.
+Cultural References
+A design might remind you of something cultural—a brand, movie, art style, historical
+era, literary genre, or inside joke. A familiar reference may evoke memories or emotions
+strong enough to trump all these other design factors, though the best designs make cultural references work in concert with everything else.
+Design 7 might remind you of 1970s pop art. That’s almost certainly deliberate. The feel
+of the page is informal, lively, and playful—note the angles, color, typography, and denim
+texture. The emotional reaction from most American adults probably will be “silly,” “nostalgic,” “retro cool,” or something like that. Everything in this design works together to
+produce a specific gut reaction. Some other CSS Zen Garden designs that are not shown
+here replicate the styles of Bauhaus, art nouveau, Dadaism, comic books, and even Sovietera Communist propaganda posters.
+Obviously, if you make overt cultural references, consider your audience. A 10-year-old
+will not get the 1970s pop-art reference. Chances are good that a young adult in India
+won’t either. But if your audience is sufficiently well defined for you to know that a cultural reference will be familiar to them, it can be a good “hook” to engage a viewer emotionally with your design.
+Cultural references rarely are used in functional application designs, but you can see them
+in Skins and Themes for platforms and individual applications. You also can find cultural
+references in applications like QuickBooks, in which some pages are designed to look like
+checks and bills. They actually move beyond a stylistic treatment and become an interaction metaphor, but the metaphor still is entirely cultural—someone who has never seen a
+checkbook wouldn’t respond in the same way as someone who has.
+Repeated Visual Motifs
+A good design has unity: it hangs together as one entity, with each element supporting the
+others structurally and viscerally. That’s a hard goal to achieve. I can’t give you hard-andfast rules on how to do it; it takes skill and practice.
+496 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+But one thing that contributes greatly toward visual unity is the repetition of visual elements or motifs. We’ve already talked about angles and curves; you can use diagonal lines
+of the same angle, or lines with similar curvature, as repeated elements in a design. The
+Corner Treatments pattern talks about a common way to do this.
+Also consider typography. Use only one main body-text font, though other fonts can work
+very effectively in small areas such as sidebars or navigation links. (Their contrast to the
+main font makes them stand out.) If you have several headlines or titled sections, use the
+same headline font for them. You also can pull smaller graphic elements—line width and
+color, for instance—out of your fonts into the rest of the design. See the Borders That Echo
+Fonts pattern.
+When similar groupings of text or controls repeat along a line, a visual rhythm results. You
+can see this especially in the “Select a Design” sections of Designs 3, 4, and 8. They show
+each design name/author pair in a well-defined grouping, and then repeat that grouping
+along a column. You easily could accomplish the same effect with form fields, palette buttons, and other UI elements.
+Rhythms like these can be powerful design tools. Use them with care, and apply them to
+groups of comparable things—users will assume that similarity in form means similarity
+in function. Chapter 4 discusses element repetition as part of a visual hierarchy; see the
+Grid of Equals pattern there. Repetition also lies at the heart of other layout patterns such
+as Thumbnail Grid (Chapter 5), Thumbnail-and-Text List (Chapter 10), and Small Multiples
+(Chapter 7).
+What This Means for Desktop Applications
+Those of you who work on websites might already be familiar with everything discussed
+so far. People expect websites—and by extension, web applications—to have strong
+graphic styling, and you rarely will find them looking completely plain and neutral.
+But what if you work on desktop applications? If you try to apply these principles just to
+the controls’ look-and-feel—how the controls are drawn—you may not have many choices. Java applications get to choose from a few look-and-feel options, most of which are
+native looking or fairly neutral. Linux applications have some nice choices too, such as
+GNOME’s application themes. But native Windows or Mac applications generally use the
+standard platform look-and-feel, unless you’re willing to work hard to develop a custom
+one.
+Given the situation, you can be forgiven for just using the platform look-and-feel standards, and concentrating your graphic design attentions elsewhere.
+What This Means for Desktop Applications 497
+But some applications now look more “web-ish” or “designer-y” than they used to, and
+they generally look better for it. Microsoft Money 2000 was one of the first mainstream
+applications to break the mold. Its designers chose to use background images in the top
+margins, gradient fills, anti-aliased headline fonts, and an unusual color scheme. Other
+applications have since done similar things.
+Even if you do use a neutral look-and-feel for your actual widgetry, there still are ways to
+be creative.
+Backgrounds
+Unobtrusive images, gradient fills, and subtle textures or repeated patterns in large
+background areas can brighten up an interface to an amazing extent. Use them in
+dialog or page backgrounds; tree, table, or list backgrounds; or box backgrounds (in
+conjunction with a box border). See the Deep Background pattern for more.
+Colors and fonts
+You often can control overall color schemes and fonts in a native-looking UI, too. For
+instance, you might draw headlines in an unusual font at several point sizes larger
+than standard dialog text, and maybe even on a strip of contrasting background color.
+Consider using these if you design a page layout with Titled Sections (Chapter 4).
+Borders
+Borders offer another possibility for creative styling. Again, if you use Titled Sections
+or any other kind of physical grouping, you might be able to change how box borders
+are drawn. Solid-color boxes of narrow widths work best; beveled borders look very
+1990s now. See Corner Treatments and Borders That Echo Fonts.
+Images
+In some UI toolkits, certain controls let you replace their standard look-and-feel with
+custom images on a per-item basis. Buttons often allow this, for instance, so your buttons, including their borders, can look like anything you want. Tables, trees, and lists
+sometimes permit you to define how their items are drawn (in Java Swing, you have
+complete control over item rendering, and several other toolkits at least let you use
+custom icons). You also can place static images on UI layouts, giving you the ability
+to put images of any dimension just about anywhere.
+The biggest danger here is accessibility. Operating systems such as Windows let users
+change desktop color/font themes, and that’s not just for fun—visually impaired users
+use desktop themes with high-contrast color schemes and giant fonts just so they can see
+what they’re doing. Make sure your design works with those high-contrast themes. It’s the
+right thing to do.*
+* And, depending on who buys your software, it may also be the legal thing to do. The U.S. government, for
+example, requires that all software used by federal agencies be accessible to people with disabilities. See http://
+www.section508.gov for more information.
+498 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+Along the same lines, you might replace ordinary text labels with images containing
+unusual fonts, maybe with halos, drop-shadow effects, or complex backgrounds. This
+is common in web pages. If you insist on using an image for text, you need to provide
+enough information with that image to let a screen reader such as JAWS read it aloud.
+(How exactly you do that depends entirely upon the UI technology you’re using.)
+Another danger is fatiguing your users. If you design an application meant to be used at
+full size or for a long time, tone down the saturated colors, huge text, high contrast, and
+eye-catching textures—make the design quiet, not loud. More importantly, if your application is meant to be used in high-stress situations, such as a control panel for heavy
+machinery, strip out anything superfluous that might distract users from the task. Here,
+cognitive concerns are far more important than aesthetics.
+The Patterns
+All of these patterns (except Skins and Themes) draw on the concepts described in the introduction. They talk about specific ways to apply those concepts; Corner Treatments, for
+instance, captures one kind of repeated visual motif, and Borders That Echo Fonts captures
+another. Deep Background and Hairlines touch on texture choice, and fonts are discussed in
+Contrasting Font Weights.
+1. Deep Background
+2. Few Hues, Many Values
+3. Corner Treatments
+4. Borders That Echo Fonts
+5. Hairlines
+6. Contrasting Font Weights
+The Skins and Themes pattern is different. It deals more with metadesign—it says nothing
+about how you design the specific look-and-feel of your application, but how you design
+your application to let others replace your look-and-feel with their own designs.
+7. Skins and Themes
+The Patterns 499
+Deep Background
+Figure 11-11. Firefox download page
+What
+Place an image or gradient into the page’s background that visually recedes behind the
+foreground elements.
+Use when
+Your page layout has strong visual elements (such as text blocks, groups of controls, or
+windows), and it isn’t very dense or busy. You want the page to look distinctive and attractive; you may have a visual branding strategy in mind. You’d like to use something more
+interesting than flat white or gray for the page background.
+Why
+Backgrounds that have soft focus, color gradients, and other distance cues appear to recede behind the more sharply defined content in front of them. The content thus seems to
+“float” in front of the background. This pseudo-3D look results in a strong figure/ground
+effect—it attracts the viewer’s eye to the content.
+Fancy explanations aside, it just looks good.
+Download from Wow! eBook <www.wowebook.com>
+500 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+How
+Use a background that has one or more of these characteristics:
+Soft focus
+Keep lines fuzzy and avoid too much small detail—sharp lines interfere with readability of the content atop it, especially if that content is text or small icons. (You can
+kind of get away with sharp lines if they are low-contrast, but even then, text doesn’t
+work well over them unless the text contrasts strongly with the background.)
+Color gradients
+Bright, saturated colors are OK, but again, hard lines between them are not. Allow
+colors to blend into each other. In fact, if you don’t have an image to use in the background, you can create a simple color gradient in your favorite drawing tool—it still
+looks better than a solid color. (You don’t need to store or download pure gradients as
+images, either. On the Web, you can create them by repeating one-pixel-wide strips,
+either horizontally or vertically. In systems where you can use code to generate large
+areas of color, gradients generally are easy to program.)
+Depth cues
+Fuzzy detail and vertical color gradients are two features that tell our visual systems
+about distance. To understand why, imagine a photograph of a hilly landscape—the
+farther away something is, the softer and hazier the color is. Other depth cues include
+texture gradients (features that get smaller as they get farther away) and lines radiating from vanishing points.
+No strong focal points
+The background shouldn’t compete with the main content for the user’s attention.
+Diffuse (weak) focal points can work, but make sure they contribute to a balanced
+composition on the whole page, rather than distracting the viewer from seeing the
+parts of the page he should look at instead. See Figure 11-12.
+Diffuse focal points Strong focal point
+Figure 11-12. Diffuse versus strong focal points
+The Patterns 501
+As you design an interface with a Deep Background, consider what happens when the user
+changes the size of the page. How will the background accommodate a larger (or smaller)
+size? Will it rescale to fit, or will the window just clip an unscaled image? Clipping is probably less unsettling to the user; it’s how most web pages behave, and it feels more stable.
+Besides, you don’t have to worry about changing aspect ratios, which is problematic with
+many images.
+Examples
+In Figure 11-13, four Mac OS background images illustrate the relative difficulties of
+reading text and icons over complex backgrounds. The first two make it quite hard to
+distinguish the folders and application shortcuts; the third is easier, and the fourth is the
+easiest by far. Note the characteristics of these four backgrounds: high versus low contrast
+with the text, hard versus soft focus, and general “noisiness.”
+Figure 11-13. Four Mac OS backgrounds of varying readability
+Some websites make heavy use of textures that lend the whole site a distinctive look. In
+the example from Ecoki, shown in Figure 11-14, the textures are everywhere; but because
+they are lightweight and low-contrast, they don’t interfere with the readability of the text.
+502 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+Figure 11-14. Ecoki home page
+The version of the Mercedes-Benz website shown in Figure 11-15 uses an image as a background. This image has some very strong focal points—the cars, of course—and they are
+the central features of the page. But the outer parts of the image, which are much softer,
+are Deep Backgrounds for other content: the search box, the four small images at the bottom, and the “4MATIC All-Wheel Drive” tag line.
+The most interesting aspect of this figure is the darker band running down the lefthand
+side. The site needed a navigation bar with small text, but layering those links directly
+over the background image wouldn’t have worked—the words may have been unreadable
+over small detail, and would have gotten lost in the composition. A translucent smokedglass background highlights those white links by increasing contrast; it balances the page
+(which otherwise is right-weighted); it doesn’t obscure the nice background image; and it
+adds a sense of layered depth.
+The Patterns 503
+Figure 11-15. Mercedes-Benz
+Few Hues, Many Values
+Figure 11-16. Mint
+504 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+What
+Choose one, two, or at most three major color hues to use in the interface. Create a color
+palette by selecting assorted values (levels of brightness) from within those few hues.
+Use when
+You want a relatively conservative color scheme for an application or site. You want to
+avoid a flashy, rainbow-colored, “angry fruit salad” look, but you still want the interface
+to have some character.
+Why
+Where colors are concerned, sometimes less is better. Too many color hues scattered
+throughout the interface, especially when they’re bright and saturated, can potentially
+make a design noisy and cluttered. The colors compete for the user’s attention.
+But when you use many subtle variations on a single color, you can create a design that has
+depth and dimension. Consider the blue-green, yellow-green, and orange colors used in the
+example in Figure 11-16 and reproduced in the color strips in Figure 11-17. Notice how the
+more saturated colors move forward, while the paler colors appear to recede. (Grayer tones
+will tend to recede as well, hence the drop-shadow effect seen in the Mint page.)
+Figure 11-17. Colors used in Mint’s interface
+How
+As mentioned earlier, pick one, two, or even three main hues. You get black and white for
+free, but gray counts. In fact, gray works very well in multiple values and brightness levels;
+it’s very versatile, especially if you add a little color to make it more blue (cool) or more
+beige (warm).
+The Patterns 505
+Within those hues, vary the color value to get a range of bright and dark shades. You also
+can vary the saturation at the same time; this can produce subtler color combinations
+than you would get by varying just the value. Use as many of these colors as you want to
+compile a color palette for the application.
+You can, of course, use other colors in the interface besides these hues; just use them
+sparingly. Icons, ads, and other features that take up relatively small spaces don’t have to
+fit this restricted color scheme. You might want to choose only one or two accent colors
+too, such as using red or cyan to mark points of interest. In fact, using a single hue for the
+“background” of the UI actually emphasizes these minor colors because they don’t get lost
+in a sea of color hues.
+Examples
+The graph in Figure 11-18 uses two hues, blue and pink, to show its data. Blue represents
+boys’ names and pink represents girls’ names. Within those colors, the color value represents the popularity of those names in 2003. A third color, dark gray, shows the frame
+around the data—the grid lines, the numbers, and the title—and a dark blue highlights
+the selected name (“Dale”).
+This color combination is very effective, both cognitively and aesthetically. The hues and
+values mean something with respect to the data, and the coding is very easy to follow—
+you hardly even need the legend after you’ve looked at it once. Aesthetically, the whole
+thing has a layered richness that isn’t garish, as rainbow hues would have been. And in U.S.
+culture, people understand light blues and pinks as “baby” colors, so the emotional and
+cultural connection is there, too. See http://babynamewizard.com.
+Figure 11-18. Baby Name Wizard
+Figure 11-19 shows two websites that make very restrained use of color. The first balances
+hot and cool colors, while the second uses a single color for most of the design, reserving
+the hot orange color to accent the call-to-action buttons.
+506 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+Figure 11-19. OnlineMBARankings.com and AdLucent.com
+In other libraries
+http://quince.infragistics.com/Patterns/Few%20Hues.aspx
+The Patterns 507
+Corner Treatments
+Figure 11-20. JetBlue
+What
+Instead of using ordinary right angles, use curves or diagonals for some of the interface’s
+box corners. Make these corner treatments consistent across the interface.
+Use when
+The interface uses rectangular elements such as boxes, buttons, menus, and tabs.
+Why
+The repetition of visual motifs helps unify a design. When you devise a single “corner”
+motif and use it consistently in many places, it gives a distinctive look to the whole design.
+It’s certainly less boring than ordinary right-angled corners.
+How
+Many websites use curved corners. Others use diagonal lines, and a few use cutouts. What
+you choose depends on the overall look of your site. Do you have a logo, an image, or a
+font that has eye-catching visual elements to it? Use one of those visual elements. Are you
+going for something soothing (as curves often are), edgy, or energetic? Try out several
+different ideas.
+508 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+Not all of the rectangular elements in the interface need to use corner treatments—don’t
+use too much of a good thing. But group boxes or panels usually do, and tabs commonly
+are done this way, too. If you use corner treatments on one element in a repeated group,
+do them all for consistency.
+Furthermore, not every corner on a given box needs to use a corner treatment. Sometimes
+two opposing corners get it, such as the upper right and lower left. Sometimes it’s just one
+corner, usually the upper left or upper right.
+Everywhere the element is repeated, make sure it resembles the others. In other words,
+curved corners should use the same type of curve (though not necessarily the same radius). Angles should all be the same angle—don’t mix a 45-degree angle motif with a
+20-degree angle, for instance. Also, curved and right angles tend to mix badly on visually
+busy sites. Use Corner Treatments this with care.
+Examples
+The JetBlue website in Figure 11-20 at the top of the pattern repeats its curved corners all
+over the site: in menu bars, the main content box, tabs, and buttons. Pandora, shown in
+Figure 11-21, does the same, even for “callout” pop ups containing lyrics.
+In other libraries
+http://quince.infragistics.com/Patterns/Corner%20Treatments.aspx
+Figure 11-21. Pandora
+The Patterns 509
+The Getty Museum’s site in Figure 11-22 uses bars across the tops of its content boxes,
+and curves on the bottom corners. (The tabs also use curved corners, which is common.)
+Figure 11-22. Getty.org
+Borders That Echo Fonts
+Figure 11-23. A MoMA online exhibit from 2002
+Download from Wow! eBook <www.wowebook.com>
+510 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+What
+When drawing borders and other lines, use the same color, thickness, and curves used by
+one of the design’s major fonts.
+Use when
+Your design contains a font carefully chosen for its visual effect, such as the font used in
+headlines, a title, or a logotype.
+Why
+The repetition of visual motifs helps unify a design. Fonts and borders work at similar
+scales in a design—only a few pixels wide—and when they reinforce each other visually,
+their effect is magnified. When they clash (especially if you use many different kinds of
+borders), their contributions are weakened.
+How
+First, pick a font from your design. Title and headline fonts often work well, as do fonts
+used in logotypes, but sometimes body text works, too. Observe its formal properties:
+color, primary line thickness, texture, curve radius, angles, and spacing.
+Now try to draw borders and lines that use some of those same properties. The color
+should be the same as the font’s, though you can cheat on thickness and make borders
+a bit thinner than the font’s strokes. If the font has pronounced circular curves, as many
+modern sans-serif fonts do, try using that same curve radius on the border corners.
+If it’s a particularly interesting font, ask yourself what makes it interesting. See if you can
+pull those visual elements from the font into the rest of the design.
+You don’t need to do this with all the borders in your interface, of course; just a few will
+do, especially if the lines are thick. Be careful not to make borders too thick or coarse.
+Thick borders make a strong statement, and after a point, they overwhelm whatever’s
+inside them. Images usually can handle a thicker border than lightweight body text, for
+instance. You can use single-pixel lines effectively in combination with heavier borders.
+The Patterns 511
+Examples
+In Figure 11-24, Mochimedia uses its logotype’s “fat curves” all over the design. The heavy
+black border strongly echoes the logotype; so do the icons, the headline, the top menu bar,
+and the cartoon character itself.
+Figure 11-24. Mochimedia
+Many sites use very thin borders and separator lines that reflect the visual qualities of a
+body font. In Good’s website, shown in Figure 11-25, the one-pixel dotted lines echo the
+delicate serifed body font in the sidebar. (A sans-serif font might be better echoed by a
+solid line.)
+512 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+Figure 11-25. Detail of Good’s site
+Dakine’s website from several years ago mixes it up a bit. In Figure 11-26, it uses many varied design elements, but the jagged white lines do in fact echo the logo font. All together,
+they lend a feeling of motion, tension, and edginess to the page, which was undoubtedly
+what its designers were after—Dakine sells sports equipment to a young demographic.
+Right angles in
+corners
+Thick lines with
+diagonals
+Thick diagonals around picture Logo uses diagonals and right angles
+Yet more
+diagonals
+Figure 11-26. Dakine
+The Patterns 513
+Hairlines
+Figure 11-27. Front page of HermitageMuseum.org
+What
+Use one-pixel-wide lines in borders, horizontal rules, and textures.
+Use when
+You want a refined and sophisticated look to your interface.
+How
+Here are some of the many ways you can use hairlines in an interface:
+• To demarcate Titled Sections by underlining the titles
+• To separate different content areas, either with horizontal or vertical rules or with
+closed borders
+• As guidelines to lead the eye through a composition
+• Between areas of different background colors to clarify the boundary between them
+514 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+• In textures, such as a grid or a block of horizontal lines
+• In icons, images, and drawn graphics
+• As borders around controls, such as buttons
+Hairlines look particularly good when placed near very thin sans-serif fonts. Remember
+that a gray line looks thinner than a black line, even if both are a single pixel wide. The same
+is true for other lighter colors, such as the teal used in Figure 11-27 at the top of this pattern.
+The less contrast between the line and its background, the thinner and lighter it appears.
+Another way you can lighten a hairline—and add another texture while you’re at it—is to
+make it a dotted line instead of a solid line. As of this writing, finely drawn dotted lines are
+becoming common on the Web, even as underlines for links.
+A trick to increase the tension and edginess in a design is to push a hairline flush up
+against the bottom of a line of text. Design 8 of the CSS Zen Garden designs does exactly
+that with its title and headlines (see Figure 11-8, back in the introduction).
+Examples
+The website in Figure 11-28 shows hairlines used in many places: as a faint grid in the background, as horizontal rules, and as very lightweight borders around the boxes. The hairlines
+work with the background texture and excellent typography to create a very rich look.
+Figure 11-28. Colly.com
+The Patterns 515
+Likewise, hairlines are used in several ways in the design studio site shown in Figure 11-29.
+Note their usage in the logo, in the dotted separator lines, and in the diagonal texture used
+around the thumbnails and at the bottom of the page.
+Figure 11-29. RibbonsOfRed.com
+516 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+Contrasting Font Weights
+Figure 11-30. TED
+What
+Use at least two contrasting fonts—one thin and lightweight, another heavier and darker—
+to separate different levels of information and add visual interest.
+Use when
+Text makes up important elements on the page, and you want the page’s organization to
+be very clear at first glance. You want the page to look dramatic.
+Why
+When two fonts differ in weight, they form a strong and vibrant visual contrast.
+Aesthetically, contrast contributes to a dramatic and eye-catching look. High typographic
+contrast, which includes size, texture, and color—but especially weight—guarantees that
+your page will not look dull.
+You can use this contrast to structure the text on the page. For instance, heavier-looking
+letters can form titles and headlines, thus helping build a visual hierarchy. The bold text
+in Figure 11-30 pulls the eye toward it. Thus, contrasting font weights contribute to the
+cognitive perception of the page as much as the aesthetics. (See Chapter 4 for a discussion
+of visual hierarchy.)
+How
+This pattern has many possible applications. This book already mentioned the use of bold
+text for headlines, but applications might include:
+• Creating very strong, magazine-like headlines and subheads
+• Separating labels from data in a two-column listing
+• Separating navigational links from information
+• Indicating selection, such as selected links or list items
+• Emphasizing words in a phrase
+• Separating one word from another in a logotype
+The Patterns 517
+If you’re using fonts that are larger than body text, make sure the contrast is strong enough
+to be noticed. When the font family offers several weights, as does Helvetica Neue, pick
+ones that are at least a couple of steps apart—if the contrast is weak, it looks accidental,
+not intentional. (The same goes for other font attributes. If you make two text elements
+different sizes, make them really different; if you want to mix font families, make sure they
+don’t look too much alike!)
+Examples
+In Figure 11-31, a film site from the National Film Board of Canada uses three very different font sizes in a harmonious and compact composition. Its drama and starkness reflect
+the seriousness of the film’s subject.
+Figure 11-31. Detail of Waterlife.nfb.ca
+The playful design in Figure 11-32 has a more complex visual hierarchy, rendered
+with many font styles and sizes. Contrasting Font Weights is used to emphasize the
+“WORKFLOW” headline, the arrows, the column titles, and particular phrases within
+the body text. The weighted phrases are not only a heavier font weight; they are also white,
+while the surrounding body text is gray. This gives the phrases even more contrast against
+the dark background, thus increasing their visual weight.
+Figure 11-32. A page from KaleidoscopeApp.com
+Finally, Figure 11-33 shows one of the most dramatic type size differences I have ever seen
+on the Web. Because they are dark, the enormous headline letters remain in balance (sort
+of) with the body text. Within the block of body text, Contrasting Font Weights is again used
+for emphasized words and phrases; likewise for the URL in the upper left, which places a
+heavier font next to a lighter one.
+Figure 11-33. JonBrousseau.com
+The Patterns 519
+Skins and Themes
+Figure 11-34. Four sample Firefox themes
+What
+Open up the look-and-feel architecture of your application so that users and third parties
+can design their own graphics and styles.
+Use when
+Your user base includes a large population of people who know your interface well.
+For those people, the interface has relatively low cognitive requirements—it’s not used
+in high-stress situations, for instance—so it’s not necessary to make all elements easily
+recognizable.
+Furthermore, these users like to tinker. They value style, and they are inclined to set software preferences to suit their tastes.
+Why
+When people rearrange and customize their personal space, physical or virtual, they derive a sense of ownership of that space. This is a basic human need (though not all people
+act on it; many people are perfectly content with software’s “factory settings”). Changing
+simple color and font preferences is one common way to customize someone’s software
+environment, but Skins and Themes go far beyond color schemes and fonts.
+There’s evidence all over the Internet that users really like themes. Actually, we’re talking
+about two groups of users here: those who download and use themes, and those who not
+only use them but also design them. Those who design them see themes as an opportunity to be creative, and to get their work out into the public eye. Many are graphic artists.
+These people may get to know your UI design very, very well.
+In any case, there are numerous applications and web services out there that have skins
+or themes, and the sheer number of user-designed themes is enormous. The number of
+person-hours spent on these works is testimony to the power of the creative impulse. For
+the designers, skinnable applications fulfill another basic human need: creativity.
+520 Chapter 11: Making It Look Good: Visual Style and Aesthetics
+(The difference between a skin and a theme in this context is vague. Some applications
+or sites use one, and some use the other. As of this writing, themes seems to be the term
+of choice for the concept of user-designed interface styles, while the term skins appears to
+apply more to physical skins on laptops or mobile devices. That wasn’t the case when the
+first edition of this book was written.)
+How
+Exactly how to design and implement a skinnable application depends entirely on the UI
+technologies you use, so it’s very hard to generalize anything here.
+First, remember that any native Windows application can already be changed by a skin
+or theme. Several popular browsers can be “themed” as well, as shown in Figure 11-34.
+Second, themes for web services such as WordPress (see Figure 11-35) affect far more
+than just the graphic styling shown on the blog pages. Their themes also determine how
+blog posts are laid out, what content appears in the sidebars, and even what information gets shown or hidden for each entry. Designing a UI architecture to support this is
+hard, and beyond the scope of this book. I encourage you to look at existing examples of
+themed applications and websites.
+One objection that is sometimes raised about skins is that they make interfaces harder to
+use. That’s true about many badly designed skins. Ask yourself, though: how much does
+that matter? Does each application have to be cognitively perfect? (Look-and-feel defaults
+aren’t perfect, though they’re certainly more usability-tested than skins are.) For an application that someone already knows well and that doesn’t require high cognitive demands, there’s a point at which its basic usability is “good enough” and personal aesthetic
+preferences take over. When skins are available, people make that choice for themselves,
+whether or not they’ve educated themselves about usability.
+To an extent, you can—and should, as part of a designer’s responsibility—decide at which
+level to permit theming and skinning. You may only allow colors, fonts, and backgrounds
+to be changed. You may permit bitmap-level skinning that preserves layout while changing the look-and-feel of controls. Or you may allow full customizability; it’s up to you to
+decide if that kind of freedom is likely to make the interface criminally hard to use.
+I’m going to speculate that excellent application design—such as well-chosen functionality, easily understood organizational models, appropriate navigation, good page layout,
+and standard widgetry—can make an interface more resilient to bad themes. Design it as
+well as you can, and then put it out there for people to customize at a level you decide is
+appropriate. See what happens!
+The Patterns 521
+Examples
+Figure 11-35 shows four of the many themes available for WordPress blogs. Vast numbers
+of themes are also available for other blogs and website systems, such as Blogger and
+Drupal. Most such themes are further customizable by the end users (especially those
+who know how to edit HTML and CSS).
+Figure 11-35. Four WordPress themes
+In other libraries
+http://quince.infragistics.com/Patterns/Skins.aspx
+
+---
+
+## Sección 25: Chapter 1 began discussing other considerations, such as how well you anticipate users’ [Entropy: 0.265]
+
+About the Author
+Jenifer Tidwell is a writer and consultant in interaction design, information architecture,
+and pre-design analysis. She has been designing and building complex applications and
+web interfaces for almost two decades. Her clients and past employers include Google,
+The MathWorks, nonprofits, and startups. She was one of the first designers to write patterns for user interface design, back in the late 1990s when the concept was first being
+applied to software. She lives near Boston, Massachusetts, with her husband, her son,
+and a small parrot.
+Colophon
+The animal on the cover of Designing Interfaces is a Mandarin duck (Aix galericulata), one
+of the most beautiful of the duck species. Originating in China, these colorful birds can
+be found in southeast Russia, northern China, Japan, southern England, and Siberia. The
+males have diverse and colorful plumage, characterized by an iridescent crown, chestnutcolored cheeks, and a white eye stripe that extends from their red bills to the back of their
+heads. Females are less flamboyant in appearance and tend to be gray, white, brown, and
+greenish-brown, with a white throat and foreneck.
+These birds live in woodland areas near streams and lakes. Being omnivorous, they tend
+to have a seasonal diet, eating acorns and grains in autumn; insects, land snails, and
+aquatic plants in spring; and dew worms, grasshoppers, frogs, fish, and mollusks during
+the summer months.
+The mating ritual of Mandarin ducks begins with an elaborate and complex courtship
+dance that involves shaking movements, mimed drinking gestures, and preening. Males
+fight each other to win a female, but it is ultimately the female who decides her mate.
+Mandarin ducklings instinctively follow their notoriously protective mothers, who will
+feign injury to distract predators such as otters, raccoon dogs, mink, polecats, eagle owls,
+and grass snakes.
+Mandarin ducks are not an endangered species, but they are considered to be threatened.
+Loggers continuously encroach upon their habitats, and hunters and poachers prize the
+males for their plumage. Their meat is considered unpalatable by humans, and they are
+generally not hunted for food.
+The cover image is from Johnson’s Natural History. The cover font is Adobe ITC Garamond.
+The text font is Adobe Minion Pro, and the heading and note font is Adobe Myriad Pro
+Condensed.
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[DESIGN_MASTERY_2026]] · [[AGENT_CREATIVE_AND_VISUAL_AWARENESS_2026]] · [[CANON_REFACTORING_UI_WATHAN_SCHOGER]] · [[CANON_PRACTICAL_UI_ADHAM_DANNAWAY]] · #ui_ux_design

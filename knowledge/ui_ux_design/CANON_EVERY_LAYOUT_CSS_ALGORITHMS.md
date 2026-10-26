@@ -1,4 +1,7 @@
-﻿# CANON: Every Layout — Algorithmic CSS Layout Primitives
+# CANON: Every Layout — Algorithmic CSS Layout Primitives
+
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Web Software Factory.
+
 > **Authors:** Heydon Pickering & Andy Bell  
 > **Source:** Every-Layout.dev & Axiomatic CSS  
 > **Category:** UI/UX & Web Layout Architecture  

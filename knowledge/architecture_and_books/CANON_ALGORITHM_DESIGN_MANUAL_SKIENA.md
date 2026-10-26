@@ -1,15 +1,15 @@
-> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
 
 # 🧮 Tratado Canónico: The Algorithm Design Manual (Steven S. Skiena)
 ### Basado en: *The Algorithm Design Manual (3rd Edition)*
@@ -23,7 +23,7 @@ ultima_revision: 2026-08-27
 Steven Skiena enseña que diseñar algoritmos eficientes no consiste en memorizar código, sino en **identificar el modelo matemático subyacente**:
 
 1. **Problemas Espaciales y de Proximidad:** Búsqueda del vecino más cercano ($K$-Nearest Neighbors) en un plano bidimensional.
-   - *Solución Yendo:* No filtrar por fuerza bruta $O(N)$ en JavaScript. Utilizar índices espaciales **GiST / R-Tree en PostGIS** con la función `ST_DWithin`, reduciendo la complejidad a $O(log N)$ sobre millones de coordenadas en CABA.
+   - *Solución WebFactory:* No filtrar por fuerza bruta $O(N)$ en JavaScript. Utilizar índices espaciales **GiST / R-Tree en PostGIS** con la función `ST_DWithin`, reduciendo la complejidad a $O(log N)$ sobre millones de coordenadas en CABA.
 2. **Problemas de Cobertura y Quórum Grupal:** Optimización combinatoria para emparejamiento social y ruteo de itinerarios grupales (Previa $\to$ Venue $\to$ After).
 
 ---

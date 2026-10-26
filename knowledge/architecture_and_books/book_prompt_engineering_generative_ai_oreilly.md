@@ -1,4 +1,4 @@
-﻿# 📚 Libro Completo: Prompt Engineering for Generative AI
+# 📚 Libro Completo: Prompt Engineering for Generative AI
 
 **Alcance:** Fuente bibliográfica completa sobre Ingeniería de Prompts, Estructuración de Contexto y Agentes (Prompt Engineering for Generative AI — James Phoenix & Mike Taylor (O'Reilly)). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
@@ -7,21 +7,15 @@
 > **Archivo Fuente:** `Prompt-Engineering-for-Generative-AI.epub`  
 > **Páginas Originales:** 14  
 > **Secciones Extraídas:** 113  
-> **Fecha de Ingesta:** 2026-10-19  
+> **Fecha de Ingesta:** 2026-10-19
 
 ---
 
-## Sección 1: Chapter 1. The Five Principles of Prompting
+## Sección 1: Chapter 1. The Five Principles of Prompting [Entropy: 0.265]
 
-Prompt Engineering for Generative AI 
+Prompt Engineering for Generative AI
 
- 
- 
-
- 
-
-
- Prompt engineering is the process of discovering prompts that reliably yield useful or desired results.
+Prompt engineering is the process of discovering prompts that reliably yield useful or desired results.
 
 A prompt is the input you provide, typically text, when interfacing with an AI model like ChatGPT or Midjourney. The prompt serves as a set of instructions the model uses to predict the desired response: text from large language models (LLMs) like ChatGPT , or images from diffusion models like Midjourney .
 
@@ -49,47 +43,29 @@ This is already a remarkable response for a naive prompt, which feels like magic
 
 However, if you planned to put this prompt into production, you’d benefit from investing more work into getting it right. Mistakes cost you money in terms of the fees OpenAI charges based on the length of the prompt and response, as well as the time spent fixing mistakes. If you were building a product name generator with thousands of users, there are some obvious issues you’d want attempt to fix:
 
- 
- Vague direction 
- 
+Vague direction
 
 You’re not briefing the AI on what style of name you want, or what attributes it should have. Do you want a single word or a concatenation? Can the words be made up, or is it important that they’re in real English? Do you want the AI to emulate somebody you admire who is famous for great product names?
 
- 
- Unformatted output 
- 
+Unformatted output
 
 You’re getting back a list of separated names line by line, of unspecified length. When you run this prompt multiple times, you’ll see sometimes it comes back with a numbered list, and often it has text at the beginning, which makes it hard to parse programmatically.
 
- 
- Missing examples 
- 
+Missing examples
 
 You haven’t given the AI any examples of what good names look like. It’s autocompleting using an average of its training data, i.e., the entire internet (with all its inherent bias), but is that what you want? Ideally you’d feed it examples of successful names, common names in an industry, or even just other names you like.
 
- 
- Limited evaluation 
- 
+Limited evaluation
 
 You have no consistent or scalable way to define which names are good or bad, so you have to manually review each response. If you can institute a rating system or other form of measurement, you can optimize the prompt to get better results and identify how many times it fails.
 
- 
- No task division 
- 
+No task division
 
 You’re asking a lot of a single prompt here: there are lots of factors that go into product naming, and this important task is being naively outsourced to the AI all in one go, with no task specialization or visibility into how it’s handling this task for you.
 
- 
- 
-
 Addressing these problems is the basis for the core principles we use throughout this book. There are many different ways to ask an AI model to do the same task, and even slight changes can make a big difference. LLMs work by continuously predicting the next token (approximately three-fourths of a word), starting from what was in your prompt. Each new token is selected based on its probability of appearing next, with an element of randomness (controlled by the temperature parameter). As demonstrated in Figure 1-1 , the word shoes had a lower probability of coming after the start of the name AnyFit (0.88%), where a more predictable response would be Athletic (72.35%).
 
- 
-
- 
- Figure 1-1. How the response breaks down into tokens 
-
- 
+Figure 1-1. How the response breaks down into tokens
 
 LLMs are trained on essentially the entire text of the internet, and are then further fine-tuned to give helpful responses. Average prompts will return average responses, leading some to be underwhelmed when their results don’t live up to the hype. What you put in your prompt changes the probability of every word generated, so it matters a great deal to the results you’ll get. These models have seen the best and worst of what humans have produced and are capable of emulating almost anything if you know the right way to ask. OpenAI charges based on the number of tokens used in the prompt and the response, so prompt engineers need to make these tokens count by optimizing prompts for cost, quality, and reliability.
 
@@ -124,56 +100,39 @@ While no prompt is ever perfect, this prompt is optimized to reliably deliver so
 
 ---
 
-## Sección 2: Chapter 1. The Five Principles of Prompting
+## Sección 2: Chapter 1. The Five Principles of Prompting [Entropy: 0.265]
 
 Overview of the Five Principles of Prompting
 
 The process for optimizing this prompt follows the Five Principles of Prompting , which we will dissect using this example in the remainder of this chapter, and recall throughout the book. They map exactly to the five issues we raised when discussing the naive text prompt. You’ll find references back to these principles throughout the rest of the book to help you connect the dots to how they’re used in practice. The Five Principles of Prompting are as follows:
 
- 
- Give Direction 
- 
+Give Direction
 
 Describe the desired style in detail, or reference a relevant persona
 
- 
- Specify Format 
- 
+Specify Format
 
 Define what rules to follow, and the required structure of the response
 
- 
- Provide Examples 
- 
+Provide Examples
 
 Insert a diverse set of test cases where the task was done correctly
 
- 
- Evaluate Quality 
- 
+Evaluate Quality
 
 Identify errors and rate responses, testing what drives performance.
 
- 
- Divide Labor 
- 
+Divide Labor
 
 Split tasks into multiple steps, chained together for complex goals
-
- 
- 
 
 These principles are not short-lived tips or hacks but are generally accepted conventions that are useful for working with any level of intelligence, biological or artificial. These principles are model-agnostic and should work to improve your prompt no matter which generative text or image model you’re using. We first published these principles in July 2022 in the blog post “Prompt Engineering: From Words to Art and Copy” , and they have stood the test of time, including mapping quite closely to OpenAI’s own Prompt Engineering Guide , which came a year later. Anyone who works closely with generative AI models is likely to converge on a similar set of strategies for solving common issues, and throughout this book you’ll see hundreds of demonstrative examples of how they can be useful for improving your prompts.
 
 We have provided downloadable one-pagers for text and image generation you can use as a checklist when applying these principles. These were created for our popular Udemy course The Complete Prompt Engineering for AI Bootcamp (70,000+ students), which was based on the same principles but with different material to this book.
 
- 
+Text Generation One-Pager
 
- Text Generation One-Pager 
-
- Image Generation One-Pager 
-
- 
+Image Generation One-Pager
 
 To show these principles apply equally well to prompting image models, let’s use the following example, and explain how to apply each of the Five Principles of Prompting to this specific scenario. Copy and paste the entire input prompt into the Midjourney Bot in Discord, including the link to the image at the beginning, after typing /imagine to trigger the prompt box to appear (requires a free Discord account, and a paid Midjourney account).
 
@@ -183,23 +142,13 @@ https://s.mj.run/TKAsyhNiKmc stock photo of business meeting
 of 4 people watching on white MacBook on top of glass-top
 table, Panasonic, DC-GH5
 
- Figure 1-2 shows the output.
+Figure 1-2 shows the output.
 
- 
-
- 
- Figure 1-2. Stock photo of business meeting 
-
- 
+Figure 1-2. Stock photo of business meeting
 
 This prompt takes advantage of Midjourney’s ability to take a base image as an example by uploading the image to Discord and then copy and pasting the URL into the prompt ( https://s.mj.run/TKAsyhNiKmc ), for which the royalty-free image from Unsplash is used ( Figure 1-3 ). If you run into an error with the prompt, try uploading the image yourself and reviewing Midjourney’s documentation for any formatting changes.
 
- 
-
- 
- Figure 1-3. Photo by Mimi Thian on Unsplash 
-
- 
+Figure 1-3. Photo by Mimi Thian on Unsplash
 
 Let’s compare this well-engineered prompt to what you get back from Midjourney if you naively ask for a stock photo in the simplest way possible. Figure 1-4 shows an example of what you get without prompt engineering, an image with a darker, more stylistic take on a stock photo than you’d typically expect.
 
@@ -207,22 +156,13 @@ Input:
 
 people in a business meeting
 
- Figure 1-4 shows the output.
+Figure 1-4 shows the output.
 
 Although less prominent an issue in v5 of Midjourney onwards, community feedback mechanisms (when users select an image to resize to a higher resolution, that choice may be used to train the model) have reportedly biased the model toward a fantasy aesthetic, which is less suitable for the stock photo use case. The early adopters of Midjourney came from the digital art world and naturally gravitated toward fantasy and sci-fi styles, which can be reflected in the results from the model even when this aesthetic is not suitable.
 
- 
-
- 
- Figure 1-4. People in a business meeting 
-
- 
+Figure 1-4. People in a business meeting
 
 Throughout this book the examples used will be compatiable with ChatGPT Plus (GPT-4) as the text model and Midjourney v6 or Stable Diffusion XL as the image model, though we will specify if it’s important. These foundational models are the current state of the art and are good at a diverse range of tasks. The principles are intended to be future-proof as much as is possible, so if you’re reading this book when GPT-5, Midjourney v7, or Stable Diffusion XXL is out, or if you’re using another vendor like Google, everything you learn here should still prove useful.
-
- 
-
- 
 
 1. Give Direction
 
@@ -230,7 +170,7 @@ One of the issues with the naive text prompt discussed earlier was that it wasn�
 
 By the way, a human would also struggle to complete this task without a good brief , which is why creative and branding agencies require a detailed briefing on any task from their clients.
 
- Tip 
+Tip
 
 Although it’s not a perfect mapping, it can be helpful to imagine what context a human might need for this task and try including it in the prompt.
 
@@ -243,7 +183,7 @@ foot size, in the style of Elon Musk.
 
 ---
 
-## Sección 3: Chapter 1. The Five Principles of Prompting
+## Sección 3: Chapter 1. The Five Principles of Prompting [Entropy: 0.25]
 
 Return the results as a comma-separated list, in this format:
 Product description: A shoe that fits any foot size
@@ -373,14 +313,9 @@ https://s.mj.run/TKAsyhNiKmc stock photo of business meeting
 of four people gathered around a campfire outdoors in the
 woods, Panasonic, DC-GH5
 
- Figure 1-5 shows the output.
+Figure 1-5 shows the output.
 
- 
-
- 
- Figure 1-5. Stock photo of business meeting in the woods 
-
- 
+Figure 1-5. Stock photo of business meeting in the woods
 
 Role-playing is also important for image generation, and one of the quite powerful ways you can give Midjourney direction is to supply the name of an artist or art style to emulate. One artist that features heavily in the AI art world is Van Gogh, known for his bold, dramatic brush strokes and vivid use of colors. Watch what happens when you include his name in the prompt, as shown in Figure 1-6 .
 
@@ -388,20 +323,15 @@ Input:
 
 people in a business meeting, by Van Gogh
 
- Figure 1-6 shows the output.
+Figure 1-6 shows the output.
 
- 
-
- 
- Figure 1-6. People in a business meeting, by Van Gogh 
-
- 
+Figure 1-6. People in a business meeting, by Van Gogh
 
 To get that last prompt to work, you need to strip back a lot of the other direction. For example, losing the base image and the words stock photo as well as the camera Panasonic, DC-GH5 helps bring in Van Gogh’s style. The problem you may run into is that often with too much direction, the model can quickly get to a conflicting combination that it can’t resolve. If your prompt is overly specific, there might not be enough samples in the training data to generate an image that’s consistent with all of your criteria. In cases like these, you should choose which element is more important (in this case, Van Gogh) and defer to that.
 
 ---
 
-## Sección 4: Chapter 1. The Five Principles of Prompting
+## Sección 4: Chapter 1. The Five Principles of Prompting [Entropy: 0.295]
 
 Direction is one of the most commonly used and broadest principles. It can take the form of simply using the right descriptive words to clarify your intent, or channeling the personas of relevant business celebrities. While too much direction can narrow the creativity of the model, too little direction is the more common problem.
 
@@ -494,7 +424,7 @@ When briefing a colleague or training a junior employee on a new task, it’s on
 
 ---
 
-## Sección 5: Chapter 1. The Five Principles of Prompting
+## Sección 5: Chapter 1. The Five Principles of Prompting [Entropy: 0.265]
 
 There’s a trade-off between reliability and creativity: go past three to five examples and your results will become more reliable, while sacrificing creativity. The more examples you provide, and the lesser the diversity between them, the more constrained the response will be to match your examples. If you change all of the examples to animal names in the previous prompt, you’ll have a strong effect on the response, which will reliably return only names including animals.
 
@@ -581,7 +511,7 @@ To utilize the API, you’ll need to create an OpenAI account and then navigate 
 
 ---
 
-## Sección 6: Chapter 1. The Five Principles of Prompting
+## Sección 6: Chapter 1. The Five Principles of Prompting [Entropy: 0.65]
 
 Warning 
 
@@ -748,7 +678,7 @@ Having these responses in a spreadsheet is already useful, because you can see r
 
 ---
 
-## Sección 7: Chapter 1. The Five Principles of Prompting
+## Sección 7: Chapter 1. The Five Principles of Prompting [Entropy: 0.74]
 
 Input:
 
@@ -883,7 +813,7 @@ A simple rating system such as this one can be useful in judging prompt quality 
 
 ---
 
-## Sección 8: Chapter 1. The Five Principles of Prompting
+## Sección 8: Chapter 1. The Five Principles of Prompting [Entropy: 0.265]
 
 Iterating on and testing prompts can lead to radical decreases in the length of the prompt and therefore the cost and latency of your system. If you can find another prompt that performs equally as well (or better) but uses a shorter prompt, you can afford to scale up your operation considerably. Often you’ll find in this process that many elements of a complex prompt are completely superfluous, or even counterproductive. 
 
@@ -1022,7 +952,7 @@ As you build out your prompt, you start to get to the point where you’re askin
 
 ---
 
-## Sección 9: Chapter 1. The Five Principles of Prompting
+## Sección 9: Chapter 1. The Five Principles of Prompting [Entropy: 0.25]
 
 One of the core principles of engineering is to use task decomposition to break problems down into their component parts, so you can more easily solve each individual problem and then reaggregate the results. Breaking your AI work into multiple calls that are chained together can help you accomplish more complex tasks, as well as provide more visibility into what part of the chain is failing.
 
@@ -1143,7 +1073,7 @@ the OneFit technology.
 
 ---
 
-## Sección 10: Chapter 1. The Five Principles of Prompting
+## Sección 10: Chapter 1. The Five Principles of Prompting [Entropy: 0.25]
 
 Conclusion:
 The OneFit UltraStride Shoes represent a breakthrough in
@@ -1207,7 +1137,7 @@ You also explored the role of prompt engineering in generating product names and
 
 ---
 
-## Sección 11: Chapter 1. The Five Principles of Prompting
+## Sección 11: Chapter 1. The Five Principles of Prompting [Entropy: 0.265]
 
 In the next chapter, you will be introduced to text generation models. You will learn about the different types of foundation models and their capabilities, as well as their limitations. The chapter will also review the standard OpenAI offerings, as well as competitors and open source alternatives. By the end of the chapter, you will have a solid understanding of the history of text generation models and their relative strengths and weaknesses. This book will return to image generation prompting in Chapters 7 , 8 , and 9 , so you should feel free to skip ahead if that is your immediate need. Get ready to dive deeper into the discipline of prompt engineering and expand your comfort working with AI.
 
@@ -1226,7 +1156,7 @@ In the next chapter, you will be introduced to text generation models. You will 
 
 ---
 
-## Sección 12: Chapter 2. Introduction to Large Language Models for Text Generation
+## Sección 12: Chapter 2. Introduction to Large Language Models for Text Generation [Entropy: 0.316]
 
 In artificial intelligence, a recent focus has been the evolution of large language models. Unlike their less-flexible predecessors, LLMs are capable of handling and learning from a much larger volume of data, resulting in the emergent capability of producing text that closely resembles human language output. These models have generalized across diverse applications, from writing content to automating software development and enabling real-time interactive chatbot experiences.
 
@@ -1325,7 +1255,7 @@ One of the remarkable features of transformers is their ability to comprehend th
 
 ---
 
-## Sección 13: Chapter 2. Introduction to Large Language Models for Text Generation
+## Sección 13: Chapter 2. Introduction to Large Language Models for Text Generation [Entropy: 0.268]
 
 Probabilistic Text Generation: The Decision Mechanism
 
@@ -1407,7 +1337,7 @@ Founded with a mission to ensure that artificial general intelligence benefits a
 
 ---
 
-## Sección 14: Chapter 2. Introduction to Large Language Models for Text Generation
+## Sección 14: Chapter 2. Introduction to Large Language Models for Text Generation [Entropy: 0.25]
 
 The original GPT model by OpenAI was more than a mere research output; it was a compelling demonstration of the potential of transformer-based architectures. This model showcased the initial steps toward making machines understand and generate human-like language, laying the foundation for future advancements.
 
@@ -1494,7 +1424,7 @@ Also, Google released two smaller open source models based on the same architect
 
 ---
 
-## Sección 15: Chapter 2. Introduction to Large Language Models for Text Generation
+## Sección 15: Chapter 2. Introduction to Large Language Models for Text Generation [Entropy: 0.265]
 
 Meta’s Llama and Open Source
 
@@ -1558,7 +1488,7 @@ The market for LLMs is dominated by OpenAI at the time of writing, with its stat
 
 ---
 
-## Sección 16: Chapter 2. Introduction to Large Language Models for Text Generation
+## Sección 16: Chapter 2. Introduction to Large Language Models for Text Generation [Entropy: 0.265]
 
 For now, the best way to get a sense for what the models are good at is to run the same prompt across multiple models and compare the responses. One thing that regularly stands out in our work is that GPT-4 is much better at following instructions, as is demonstrated in the following example where it was the only model to respond in the right format, with names that matched the examples (starting with the letter i ), as desired.
 
@@ -1626,7 +1556,7 @@ In the next chapter, you will learn all the basic prompt engineering techniques 
 
 ---
 
-## Sección 17: Chapter 3. Standard Practices for Text Generation with ChatGPT
+## Sección 17: Chapter 3. Standard Practices for Text Generation with ChatGPT [Entropy: 0.638]
 
 Simple prompting techniques will help you to maximize the output and formats from LLMs. You’ll start by tailoring the prompts to explore all of the common practices used for text generation.
 
@@ -1839,7 +1769,7 @@ This code will output:
 
 ---
 
-## Sección 18: Chapter 3. Standard Practices for Text Generation with ChatGPT
+## Sección 18: Chapter 3. Standard Practices for Text Generation with ChatGPT [Entropy: 0.568]
 
 The use of regular expressions allows for efficient pattern matching, making it possible to handle variations in the input text, such as the presence or absence of leading spaces or tabs. Let’s explore how these patterns work:
 
@@ -1991,7 +1921,7 @@ Here is an example of the JSON structure:
 
 ---
 
-## Sección 19: Chapter 3. Standard Practices for Text Generation with ChatGPT
+## Sección 19: Chapter 3. Standard Practices for Text Generation with ChatGPT [Entropy: 0.694]
 
 Output:
 
@@ -2195,7 +2125,7 @@ The input prompt facilitates the delegation of more control flow tasks to a lang
 
 ---
 
-## Sección 20: Chapter 3. Standard Practices for Text Generation with ChatGPT
+## Sección 20: Chapter 3. Standard Practices for Text Generation with ChatGPT [Entropy: 0.769]
 
 Handling Invalid Payloads in YAML
 
@@ -2418,7 +2348,7 @@ The example generated is a well-formatted CSV file, which can be loaded directly
 
 ---
 
-## Sección 21: Chapter 3. Standard Practices for Text Generation with ChatGPT
+## Sección 21: Chapter 3. Standard Practices for Text Generation with ChatGPT [Entropy: 0.325]
 
 Remember, GPT models rely heavily on the format you specify. For instance, specifying CSV implies the AI should use commas as separators. Be clear about the desired format for optimal results.
 
@@ -2569,7 +2499,7 @@ Return a valid result to a question or statement
 
 ---
 
-## Sección 22: Chapter 3. Standard Practices for Text Generation with ChatGPT
+## Sección 22: Chapter 3. Standard Practices for Text Generation with ChatGPT [Entropy: 0.37]
 
 Ask for more context to appropriately answer the question
 
@@ -2689,7 +2619,7 @@ This allows you to create new content that shares similar characteristics with t
 
 ---
 
-## Sección 23: Chapter 3. Standard Practices for Text Generation with ChatGPT
+## Sección 23: Chapter 3. Standard Practices for Text Generation with ChatGPT [Entropy: 0.4]
 
 This consistency can be crucial for businesses and organizations that need to communicate with a unified voice across different channels and platforms. The benefits of this technique include:
 
@@ -2881,7 +2811,7 @@ replacements.
 
 ---
 
-## Sección 24: Chapter 3. Standard Practices for Text Generation with ChatGPT
+## Sección 24: Chapter 3. Standard Practices for Text Generation with ChatGPT [Entropy: 0.25]
 
 Summarization is an invaluable application of AI, enabling users to quickly extract key insights from lengthy articles, reports, or research papers. This process can help individuals make informed decisions, save time, and prioritize their reading. AI-generated summaries can also facilitate information sharing among teams, allowing for more efficient collaboration and communication.
 
@@ -3067,7 +2997,7 @@ When the text is fragmented into isolated words, the resulting list lacks the or
 
 ---
 
-## Sección 25: Chapter 3. Standard Practices for Text Generation with ChatGPT
+## Sección 25: Chapter 3. Standard Practices for Text Generation with ChatGPT [Entropy: 0.25]
 
 The main issues with this poor chunking example include:
 
@@ -3259,7 +3189,7 @@ Splitting by sentence is possible using NLP libraries such as spaCy . Ensure tha
 
 ---
 
-## Sección 26: Chapter 3. Standard Practices for Text Generation with ChatGPT
+## Sección 26: Chapter 3. Standard Practices for Text Generation with ChatGPT [Entropy: 0.586]
 
 In Example 3-3 , the code demonstrates sentence detection using the spaCy library in Python.
 
@@ -3411,7 +3341,7 @@ In the context of prompt engineering, the sliding window approach offers several
 
 ---
 
-## Sección 27: Chapter 3. Standard Practices for Text Generation with ChatGPT
+## Sección 27: Chapter 3. Standard Practices for Text Generation with ChatGPT [Entropy: 0.665]
 
 Text Chunking Packages
 
@@ -3608,7 +3538,7 @@ ChatGPT models, such as GPT-3.5-turbo and GPT-4, utilize tokens similarly to pre
 
 ---
 
-## Sección 28: Chapter 3. Standard Practices for Text Generation with ChatGPT
+## Sección 28: Chapter 3. Standard Practices for Text Generation with ChatGPT [Entropy: 0.343]
 
 Normally, chat history is structured with a system message first, and then succeeded by alternating exchanges between the user and the assistant .
 
@@ -3789,7 +3719,7 @@ Limitations and Challenges in Sentiment Analysis
 
 ---
 
-## Sección 29: Chapter 3. Standard Practices for Text Generation with ChatGPT
+## Sección 29: Chapter 3. Standard Practices for Text Generation with ChatGPT [Entropy: 0.659]
 
 Despite the advancements in LLMs and the application of prompt engineering techniques, sentiment analysis still faces some limitations and challenges:
 
@@ -3985,7 +3915,7 @@ Since each prompt is built upon preceding outputs, it is imperative to ensure th
 
 ---
 
-## Sección 30: Chapter 3. Standard Practices for Text Generation with ChatGPT
+## Sección 30: Chapter 3. Standard Practices for Text Generation with ChatGPT [Entropy: 0.295]
 
 Evaluate Quality
 
@@ -4153,7 +4083,7 @@ and messages.
 
 ---
 
-## Sección 31: Chapter 3. Standard Practices for Text Generation with ChatGPT
+## Sección 31: Chapter 3. Standard Practices for Text Generation with ChatGPT [Entropy: 0.334]
 
 Example responses:
 - I could not find an answer.
@@ -4319,7 +4249,7 @@ deck of 52 cards without replacement.
 
 ---
 
-## Sección 32: Chapter 3. Standard Practices for Text Generation with ChatGPT
+## Sección 32: Chapter 3. Standard Practices for Text Generation with ChatGPT [Entropy: 0.62]
 
 In the first draw, the probability of drawing a heart is 13/52.
 
@@ -4500,7 +4430,7 @@ Classify user reviews into categories like “Positive,” “Negative,” or �
 
 ---
 
-## Sección 33: Chapter 3. Standard Practices for Text Generation with ChatGPT
+## Sección 33: Chapter 3. Standard Practices for Text Generation with ChatGPT [Entropy: 0.635]
 
 Email filtering 
  
@@ -4648,7 +4578,7 @@ Input:
 
 ---
 
-## Sección 34: Chapter 3. Standard Practices for Text Generation with ChatGPT
+## Sección 34: Chapter 3. Standard Practices for Text Generation with ChatGPT [Entropy: 0.391]
 
 for idx , rating in enumerate ( ratings ): 
  style = "concise" if idx % 2 == 0 else "verbose" 
@@ -4751,7 +4681,7 @@ Let’s experiment with creating a meta prompt for the copywriting example.
 
 ---
 
-## Sección 35: Chapter 3. Standard Practices for Text Generation with ChatGPT
+## Sección 35: Chapter 3. Standard Practices for Text Generation with ChatGPT [Entropy: 0.34]
 
 Input:
 
@@ -4876,7 +4806,7 @@ You’ve learned several best practices and effective prompt engineering techniq
 
 ---
 
-## Sección 36: Chapter 4. Advanced Techniques for Text Generation with LangChain
+## Sección 36: Chapter 4. Advanced Techniques for Text Generation with LangChain [Entropy: 0.361]
 
 Using simple prompt engineering techniques will often work for most tasks, but occasionally you’ll need to use a more powerful toolkit to solve complex generative AI problems. Such problems and tasks include:
 
@@ -5071,7 +5001,7 @@ Make sure to leverage the SystemMessage for delivering explicit directions. Open
 
 ---
 
-## Sección 37: Chapter 4. Advanced Techniques for Text Generation with LangChain
+## Sección 37: Chapter 4. Advanced Techniques for Text Generation with LangChain [Entropy: 0.65]
 
 Let’s create a joke generator in LangChain.
 
@@ -5204,7 +5134,7 @@ The | pipe operator is a key component of LangChain Expression Language (LCEL) t
 
 ---
 
-## Sección 38: Chapter 4. Advanced Techniques for Text Generation with LangChain
+## Sección 38: Chapter 4. Advanced Techniques for Text Generation with LangChain [Entropy: 0.695]
 
 In LCEL, the | operator is similar to the Unix pipe operator. It takes the output of one component and feeds it as input to the next component in the chain. This allows you to easily connect and combine different components to create a complex chain of operations:
 
@@ -5388,7 +5318,7 @@ The Pydantic (JSON) parser takes advantage of the Pydantic library in Python. Py
 
 ---
 
-## Sección 39: Chapter 4. Advanced Techniques for Text Generation with LangChain
+## Sección 39: Chapter 4. Advanced Techniques for Text Generation with LangChain [Entropy: 0.725]
 
 Input:
 
@@ -5511,7 +5441,7 @@ Most eval metrics rely on a set of test cases, which are input and output pairin
 
 ---
 
-## Sección 40: Chapter 4. Advanced Techniques for Text Generation with LangChain
+## Sección 40: Chapter 4. Advanced Techniques for Text Generation with LangChain [Entropy: 0.765]
 
 With the GPT-4 answer being taken as the correct answer, it’s now possible to rate the accuracy of smaller models like GPT-3.5-turbo and Mixtral 8x7b (called mistral-small in the API). If you can achieve good enough accuracy with a smaller model, you can save money or decrease latency. In addition, if that model is available open source like Mistral’s model , you can migrate that task to run on your own servers, avoiding sending potentially sensitive data outside of your organization. We recommend testing with an external API first, before going to the trouble of self-hosting an OS model.
 
@@ -5675,7 +5605,7 @@ The code does the following:
 
 ---
 
-## Sección 41: Chapter 4. Advanced Techniques for Text Generation with LangChain
+## Sección 41: Chapter 4. Advanced Techniques for Text Generation with LangChain [Entropy: 0.65]
 
 for i, row in tqdm(df.iterrows(), total=len(df)) : Iterates over each row in the dataframe df , with a progress bar.
 
@@ -5786,7 +5716,7 @@ This code demonstrates the simple exact string matching evaluator from LangChain
 
 ---
 
-## Sección 42: Chapter 4. Advanced Techniques for Text Generation with LangChain
+## Sección 42: Chapter 4. Advanced Techniques for Text Generation with LangChain [Entropy: 0.734]
 
 evaluator.evaluate_string_pairs(... : All that remains is to run the evaluator by passing in the prediction and prediction_b (GPT-3.5 and Mistral, respectively), as well as the input prompt, and reference data, which serves as the ground truth.
 
@@ -5913,7 +5843,7 @@ Input:
 
 ---
 
-## Sección 43: Chapter 4. Advanced Techniques for Text Generation with LangChain
+## Sección 43: Chapter 4. Advanced Techniques for Text Generation with LangChain [Entropy: 0.75]
 
 function = OPENAI_FUNCTIONS . get ( function_name ) 
 
@@ -6101,7 +6031,7 @@ Input:
 
 ---
 
-## Sección 44: Chapter 4. Advanced Techniques for Text Generation with LangChain
+## Sección 44: Chapter 4. Advanced Techniques for Text Generation with LangChain [Entropy: 0.74]
 
 result = chain . invoke ( 
  { 
@@ -6262,7 +6192,7 @@ On the other hand, with few-shot learning, which involves providing a few exampl
 
 ---
 
-## Sección 45: Chapter 4. Advanced Techniques for Text Generation with LangChain
+## Sección 45: Chapter 4. Advanced Techniques for Text Generation with LangChain [Entropy: 0.75]
 
 Due to the token LLM context length, you will often finding yourself competing between adding lots of high-quality k-shot examples into your prompts while still aiming to generate an effective and deterministic LLM output.
 
@@ -6422,7 +6352,7 @@ Now, to tie all these elements together:
 
 ---
 
-## Sección 46: Chapter 4. Advanced Techniques for Text Generation with LangChain
+## Sección 46: Chapter 4. Advanced Techniques for Text Generation with LangChain [Entropy: 0.475]
 
 # Provide a new character from Lord of the Rings: 
  formatted_prompt = dynamic_prompt . format ( character = "Frodo" ) 
@@ -6543,7 +6473,7 @@ As for structured data, given its already indexed and stored state, you can util
 
 ---
 
-## Sección 47: Chapter 4. Advanced Techniques for Text Generation with LangChain
+## Sección 47: Chapter 4. Advanced Techniques for Text Generation with LangChain [Entropy: 0.62]
 
 There are multiple Python packages that can help with your data ingestion, including Unstructured , LlamaIndex , and LangChain .
 
@@ -6711,7 +6641,7 @@ Balancing the length of each document is also a crucial factor. If a document is
 
 ---
 
-## Sección 48: Chapter 4. Advanced Techniques for Text Generation with LangChain
+## Sección 48: Chapter 4. Advanced Techniques for Text Generation with LangChain [Entropy: 0.575]
 
 You might encounter specific challenges while text splitting, such as:
 
@@ -6843,7 +6773,7 @@ Using the preceding text variable, start by importing RecursiveCharacterText​S
 
 ---
 
-## Sección 49: Chapter 4. Advanced Techniques for Text Generation with LangChain
+## Sección 49: Chapter 4. Advanced Techniques for Text Generation with LangChain [Entropy: 0.538]
 
 The length_function is defined as len to determine the size of the chunks. It’s also possible to modify the length_function argument to use a tokenizer count instead of using the default len function, which will count characters:
 
@@ -6978,7 +6908,7 @@ Scenes/world building
 
 ---
 
-## Sección 50: Chapter 4. Advanced Techniques for Text Generation with LangChain
+## Sección 50: Chapter 4. Advanced Techniques for Text Generation with LangChain [Entropy: 0.75]
 
 Sequential Chain
 
@@ -7175,7 +7105,7 @@ Input:
 
 ---
 
-## Sección 51: Chapter 4. Advanced Techniques for Text Generation with LangChain
+## Sección 51: Chapter 4. Advanced Techniques for Text Generation with LangChain [Entropy: 0.605]
 
 story_result = master_chain . invoke ({ "genre" : "Fantasy" }) 
 
@@ -7323,7 +7253,7 @@ In LCEL you must ensure that the first part of your LCEL chain is a runnable typ
 
 ---
 
-## Sección 52: Chapter 4. Advanced Techniques for Text Generation with LangChain
+## Sección 52: Chapter 4. Advanced Techniques for Text Generation with LangChain [Entropy: 0.665]
 
 # This will error: 
  bad_chain = bad_first_input | prompt 
@@ -7463,7 +7393,7 @@ The refine documents chain ( Figure 4-6 ) creates an LLM response through a cyc
 
 ---
 
-## Sección 53: Chapter 4. Advanced Techniques for Text Generation with LangChain
+## Sección 53: Chapter 4. Advanced Techniques for Text Generation with LangChain [Entropy: 0.334]
 
 Figure 4-6. Refine documents chain 
 
@@ -7587,7 +7517,7 @@ In the next chapter, you’ll learn about vector databases, including how to int
 
 ---
 
-## Sección 54: Chapter 5. Vector Databases with FAISS and Pinecone
+## Sección 54: Chapter 5. Vector Databases with FAISS and Pinecone [Entropy: 0.349]
 
 This chapter introduces the concept of embeddings and vector databases, discussing how they can be used to provide relevant context in prompts.
 
@@ -7657,7 +7587,7 @@ Retrieval can also be done using traditional database searches or web browsing, 
 
 ---
 
-## Sección 55: Chapter 5. Vector Databases with FAISS and Pinecone
+## Sección 55: Chapter 5. Vector Databases with FAISS and Pinecone [Entropy: 0.514]
 
 For example, if your author Mike told a chatbot “My name is Mike,” then three messages later asked, “What is my name?” it can easily recall the right answer. The message containing Mike’s name is still within the context window of the chat. However, if it was 3,000 messages ago, the text of those messages may be too large to fit inside the context window. Without this important context, it might hallucinate a name or refuse to answer for lack of information. A keyword search might help but could return too many irrelevant documents or fail to recall the right context in which the information was captured in the past. There may be many times Mike mentioned the word name in different formats, and for different reasons. By passing the question to the vector database, it can return the top three similar messages from the chat that match what the user asked:
 
@@ -7756,7 +7686,7 @@ The term loading in this context refers to the act of computing or retrieving th
 
 ---
 
-## Sección 56: Chapter 5. Vector Databases with FAISS and Pinecone
+## Sección 56: Chapter 5. Vector Databases with FAISS and Pinecone [Entropy: 0.553]
 
 There is a cost associated with retrieving embeddings from OpenAI, but it is relatively inexpensive at $0.0004 per 1,000 tokens at the time of writing. For instance, the King James version of the Bible, which comprises around 800,000 words or approximately 4,000,000 tokens, would cost about $1.60 to retrieve all the embeddings for the entire document.
 
@@ -7844,7 +7774,7 @@ Training your own embeddings can be done with tools like word2vec, a method to r
 
 ---
 
-## Sección 57: Chapter 5. Vector Databases with FAISS and Pinecone
+## Sección 57: Chapter 5. Vector Databases with FAISS and Pinecone [Entropy: 0.575]
 
 Input:
 
@@ -7967,7 +7897,7 @@ Input:
 
 ---
 
-## Sección 58: Chapter 5. Vector Databases with FAISS and Pinecone
+## Sección 58: Chapter 5. Vector Databases with FAISS and Pinecone [Entropy: 0.529]
 
 # Extract and reshape the vector for 'cake' 
  cakevec = tfidf_matrix [:, cake_idx ] . toarray () . reshape ( 1 , - 1 ) 
@@ -8074,7 +8004,7 @@ Input:
 
 ---
 
-## Sección 59: Chapter 5. Vector Databases with FAISS and Pinecone
+## Sección 59: Chapter 5. Vector Databases with FAISS and Pinecone [Entropy: 0.556]
 
 ... 
 
@@ -8195,7 +8125,7 @@ The line index = faiss.IndexFlatL2(vectors.shape[1]) creates a FAISS index for e
 
 ---
 
-## Sección 60: Chapter 5. Vector Databases with FAISS and Pinecone
+## Sección 60: Chapter 5. Vector Databases with FAISS and Pinecone [Entropy: 0.631]
 
 Then you add the array of vectors to the created FAISS index with index.add(vectors) .
 
@@ -8304,7 +8234,7 @@ You can merge two FAISS indices using the faiss.IndexFlatL2 index’s add method
 
 ---
 
-## Sección 61: Chapter 5. Vector Databases with FAISS and Pinecone
+## Sección 61: Chapter 5. Vector Databases with FAISS and Pinecone [Entropy: 0.502]
 
 In this code, reconstruct_n(0, index2.ntotal) is used to fetch all vectors from index2 , and then index1.add() is used to add those vectors to index1 , effectively merging the two indices.
 
@@ -8424,7 +8354,7 @@ Hosted vector databases often have optimized infrastructure and algorithms that 
 
 ---
 
-## Sección 62: Chapter 5. Vector Databases with FAISS and Pinecone
+## Sección 62: Chapter 5. Vector Databases with FAISS and Pinecone [Entropy: 0.635]
 
 Support 
  
@@ -8586,7 +8516,7 @@ Input:
 
 ---
 
-## Sección 63: Chapter 5. Vector Databases with FAISS and Pinecone
+## Sección 63: Chapter 5. Vector Databases with FAISS and Pinecone [Entropy: 0.68]
 
 if not done : 
  print ( f """Failed to get embeddings after 
@@ -8699,7 +8629,7 @@ You have now effectively emulated the job FAISS was doing, returning the relevan
 
 ---
 
-## Sección 64: Chapter 5. Vector Databases with FAISS and Pinecone
+## Sección 64: Chapter 5. Vector Databases with FAISS and Pinecone [Entropy: 0.75]
 
 When you upserted the records into Pinecone, you passed the batch number as metadata. Pinecone supports the following formats of metadata:
 
@@ -8860,7 +8790,7 @@ Next, the AttributeInfo class is used to structure metadata for each book. Throu
 
 ---
 
-## Sección 65: Chapter 5. Vector Databases with FAISS and Pinecone
+## Sección 65: Chapter 5. Vector Databases with FAISS and Pinecone [Entropy: 0.575]
 
 # Analysis 
  analysis = [ 
@@ -8991,7 +8921,7 @@ The key to effective retrieval is understanding the trade-offs and selecting the
 
 ---
 
-## Sección 66: Chapter 5. Vector Databases with FAISS and Pinecone
+## Sección 66: Chapter 5. Vector Databases with FAISS and Pinecone [Entropy: 0.25]
 
 Summary
 
@@ -9016,7 +8946,7 @@ In the next chapter on autonomous agents, you will enter the futuristic world of
 
 ---
 
-## Sección 67: Chapter 6. Autonomous Agents with
+## Sección 67: Chapter 6. Autonomous Agents with [Entropy: 0.412]
 
 Memory and Tools 
 
@@ -9156,7 +9086,7 @@ The primary goal for a self-driving car is safe and efficient navigation from po
 
 ---
 
-## Sección 68: Chapter 6. Autonomous Agents with
+## Sección 68: Chapter 6. Autonomous Agents with [Entropy: 0.31]
 
 Available actions 
  
@@ -9306,7 +9236,7 @@ Having established a thought, it then decides on an action using one of the avai
 
 ---
 
-## Sección 69: Chapter 6. Autonomous Agents with
+## Sección 69: Chapter 6. Autonomous Agents with [Entropy: 0.64]
 
 The LLM is then reminded not to make assumptions about what a tool might return, and it should explicitly outline its intended action and the corresponding input.
 
@@ -9427,7 +9357,7 @@ You can now abstract the regex into a Python function that will always find the 
 
 ---
 
-## Sección 70: Chapter 6. Autonomous Agents with
+## Sección 70: Chapter 6. Autonomous Agents with [Entropy: 0.665]
 
 # Find all occurrences of action and action_input 
  actions = action_pattern . findall ( text ) 
@@ -9596,7 +9526,7 @@ LangChain agents will automatically do all of the preceding steps in a concise m
 
 ---
 
-## Sección 71: Chapter 6. Autonomous Agents with
+## Sección 71: Chapter 6. Autonomous Agents with [Entropy: 0.698]
 
 Before exploring LangChain agents and what they have to offer, it’s vital that you learn tools and how to create and use them.
 
@@ -9768,7 +9698,7 @@ Implements ReAct logic, using tools like Tavily’s Search for interactions with
 
 ---
 
-## Sección 72: Chapter 6. Autonomous Agents with
+## Sección 72: Chapter 6. Autonomous Agents with [Entropy: 0.695]
 
 Self-Ask with Search
  
@@ -9931,7 +9861,7 @@ For single task executions requiring multiple parses, OpenAI functions offer par
 
 ---
 
-## Sección 73: Chapter 6. Autonomous Agents with
+## Sección 73: Chapter 6. Autonomous Agents with [Entropy: 0.695]
 
 Use Cases for OpenAI Functions
 
@@ -10182,7 +10112,7 @@ Customizing Standard Agents
 
 ---
 
-## Sección 74: Chapter 6. Autonomous Agents with
+## Sección 74: Chapter 6. Autonomous Agents with [Entropy: 0.75]
 
 It’s worth considering how to customize LangChain agents. Key function arguments can include the following:
 
@@ -10352,7 +10282,7 @@ The llm_with_tools will then be called.
 
 ---
 
-## Sección 75: Chapter 6. Autonomous Agents with
+## Sección 75: Chapter 6. Autonomous Agents with [Entropy: 0.52]
 
 OpenAIToolsAgentOutputParser is used to parse the output.
 
@@ -10521,7 +10451,7 @@ With five to six lines of code, you can easily integrate a MongoDBChatMessageHis
 
 ---
 
-## Sección 76: Chapter 6. Autonomous Agents with
+## Sección 76: Chapter 6. Autonomous Agents with [Entropy: 0.71]
 
 chat_message_history . messages 
  # [HumanMessage(content='I love programming!!', 
@@ -10669,7 +10599,7 @@ While ConversationBufferMemory is a well-known memory type, it has limitations s
 
 ---
 
-## Sección 77: Chapter 6. Autonomous Agents with
+## Sección 77: Chapter 6. Autonomous Agents with [Entropy: 0.716]
 
 ConversationBufferWindowMemory
 
@@ -10858,7 +10788,7 @@ To illustrate, consider how a Python function’s docstring is utilized to provi
 
 ---
 
-## Sección 78: Chapter 6. Autonomous Agents with
+## Sección 78: Chapter 6. Autonomous Agents with [Entropy: 0.535]
 
 Give Direction and Specify Format
 
@@ -10961,7 +10891,7 @@ The BaseCallbackHandler class acts as a foundation for monitoring and responding
 
 ---
 
-## Sección 79: Chapter 6. Autonomous Agents with
+## Sección 79: Chapter 6. Autonomous Agents with [Entropy: 0.695]
 
 class BaseCallbackHandler : 
  """Base callback handler that can be used to handle callbacks from 
@@ -11142,7 +11072,7 @@ As you can observe, making the same request twice often results in cb.total_toke
 
 ---
 
-## Sección 80: Chapter 6. Autonomous Agents with
+## Sección 80: Chapter 6. Autonomous Agents with [Entropy: 0.316]
 
 LangChain supports concurrent runs, letting you execute multiple requests at the same time:
 
@@ -11206,7 +11136,7 @@ In Chapter 7 , you’ll be introduced to image generation using generative AI. 
 
 ---
 
-## Sección 81: Chapter 7. Introduction to Diffusion Models for
+## Sección 81: Chapter 7. Introduction to Diffusion Models for [Entropy: 0.265]
 
 Image Generation 
 
@@ -11270,7 +11200,7 @@ The DALL-E model was not open sourced nor released to the public, but it inspire
 
 ---
 
-## Sección 82: Chapter 7. Introduction to Diffusion Models for
+## Sección 82: Chapter 7. Introduction to Diffusion Models for [Entropy: 0.265]
 
 Figure 7-5. DALL-E 2 image quality 
 
@@ -11343,7 +11273,7 @@ While DALL-E 2’s waitlist continued to build, researchers from the CompVis Gro
 
 ---
 
-## Sección 83: Chapter 7. Introduction to Diffusion Models for
+## Sección 83: Chapter 7. Introduction to Diffusion Models for [Entropy: 0.25]
 
 Figure 7-10. GitHub developer adoption of Stable Diffusion 
 
@@ -11411,7 +11341,7 @@ In this chapter, you explored the different approaches taken by organizations li
 
 ---
 
-## Sección 84: Chapter 7. Introduction to Diffusion Models for
+## Sección 84: Chapter 7. Introduction to Diffusion Models for [Entropy: 0.25]
 
 In the next chapter, you will learn practical tips for handling image generation with AI. The chapter will equip you with the necessary knowledge and techniques to create visually stunning and unique images. From format modifiers to art-style replication, you will discover the power of prompt engineering in creating captivating and original visual content. Get ready to unleash your creativity and take your image generation skills to the next level.
 
@@ -11430,7 +11360,7 @@ In the next chapter, you will learn practical tips for handling image generation
 
 ---
 
-## Sección 85: Chapter 8. Standard Practices for Image Generation with Midjourney
+## Sección 85: Chapter 8. Standard Practices for Image Generation with Midjourney [Entropy: 0.265]
 
 In this chapter, you’ll use standardized techniques to maximize the output and formats from diffusion models. You’ll start by tailoring the prompts to explore all of the common practices used for image generation. All images are generated by Midjourney v5, unless otherwise noted. The techniques discussed were devised to be transferrable to any future or alternative model.
 
@@ -11543,7 +11473,7 @@ If you didn’t go to art school or don’t know much about film or photography,
 
 ---
 
-## Sección 86: Chapter 8. Standard Practices for Image Generation with Midjourney
+## Sección 86: Chapter 8. Standard Practices for Image Generation with Midjourney [Entropy: 0.25]
 
 Midjourney gives you four options with various artists, art styles, modifiers, and other words, including an estimation of what is happening in the image and what subjects or elements are contained. For example, Midjourney correctly identifies a group of people looking at a laptop in an office, in Figure 8-6 . You can select the option you want by number, and Midjourney will generate an image with that prompt, in the same style as the original. There is similar open source technology available named CLIP Interrogator , though the richness of the prompt and ability to replicate the style of the uploaded image is lacking compared to Midjourney.
 
@@ -11652,7 +11582,7 @@ Negative prompts are useful if you want to completely negate something, but ofte
 
 ---
 
-## Sección 87: Chapter 8. Standard Practices for Image Generation with Midjourney
+## Sección 87: Chapter 8. Standard Practices for Image Generation with Midjourney [Entropy: 0.265]
 
 By default all words in a prompt have an equal weighting of 1, although words at the beginning of the prompt have a greater effect, which is why we typically put the subject of our image there by convention, i.e., painting of the Golden Gate Bridge . You can change the weights of sections of the prompt in Midjourney by adding a hard break with two colon characters, :: , and a number denoting the new weight. With this method you can make an image that is primarily Van Gogh but with a dash of Dali.
 
@@ -11757,7 +11687,7 @@ The solution is inpainting , which is available in most implementations of Stabl
 
 ---
 
-## Sección 88: Chapter 8. Standard Practices for Image Generation with Midjourney
+## Sección 88: Chapter 8. Standard Practices for Image Generation with Midjourney [Entropy: 0.28]
 
 Input:
 
@@ -11895,7 +11825,7 @@ Many people think of using a real image as a baseline when prompting for inpaint
 
 ---
 
-## Sección 89: Chapter 8. Standard Practices for Image Generation with Midjourney
+## Sección 89: Chapter 8. Standard Practices for Image Generation with Midjourney [Entropy: 0.25]
 
 Prompt Rewriting
 
@@ -12034,7 +11964,7 @@ quietude.
 
 ---
 
-## Sección 90: Chapter 8. Standard Practices for Image Generation with Midjourney
+## Sección 90: Chapter 8. Standard Practices for Image Generation with Midjourney [Entropy: 0.265]
 
 Take this output and add the subject of your painting, Times Square. It can also help to modify the prompt to make it flow better, as the prompts ChatGPT writes can be too instructive:
 
@@ -12130,7 +12060,7 @@ One common mistake is to continue to build out longer and longer prompts, withou
 
 ---
 
-## Sección 91: Chapter 8. Standard Practices for Image Generation with Midjourney
+## Sección 91: Chapter 8. Standard Practices for Image Generation with Midjourney [Entropy: 0.25]
 
 Input:
 
@@ -12190,7 +12120,7 @@ In the next chapter, you will dive deeper into the world of image generation and
 
 ---
 
-## Sección 92: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion
+## Sección 92: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion [Entropy: 0.65]
 
 Most work with AI images only requires simple prompt engineering techniques, but there are more powerful tools available when you need more creative control over your output, or want to train custom models for specific tasks. These more complex abilities often requires more technical ability and structured thinking as part of the workflow of creating the final image.
 
@@ -12293,7 +12223,7 @@ This line runs the pipe model on the prompt to generate an image. The num_infere
 
 ---
 
-## Sección 93: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion
+## Sección 93: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion [Entropy: 0.604]
 
 image.save(f"astronaut_rides_horse.png") 
  
@@ -12455,7 +12385,7 @@ Heavy users of Stable Diffusion typically recommend the AUTOMATIC1111 (pronounce
 
 ---
 
-## Sección 94: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion
+## Sección 94: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion [Entropy: 0.355]
 
 You can use the normal text-to-image Stable Diffusion model, but also run image-to-image (similar to the base image feature in Midjourney), as well as upscaling finished images for higher quality, and inpainting (as is offered by DALL-E). It’s even possible to train and run custom models within this interface, and there are thousands of models shared publicly in communities such as Hugging Face and Civitai .
 
@@ -12539,7 +12469,7 @@ The sampling methods available are relatively complex and technical to explain, 
 
 ---
 
-## Sección 95: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion
+## Sección 95: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion [Entropy: 0.268]
 
 Another important parameter is the CFG Scale (Classifier Free Guidance—the same as the guidance_scale introduced in the Stable Diffusion Inference Google Colab example). As a rule of thumb, here are common values for CFG Scale and what they equate to:
 
@@ -12627,7 +12557,7 @@ The parameters are the same as the normal Text2Image mode with the addition of d
 
 ---
 
-## Sección 96: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion
+## Sección 96: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion [Entropy: 0.328]
 
 Input:
 
@@ -12729,7 +12659,7 @@ Img2Img also supports inpainting and outpainting and provides a simple canvas to
 
 ---
 
-## Sección 97: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion
+## Sección 97: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion [Entropy: 0.28]
 
 Figure 9-15. Inpainting canvas in Img2Img 
 
@@ -12818,7 +12748,7 @@ In the URL field for the Git repository, paste the link to the extension: https:
 
 ---
 
-## Sección 98: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion
+## Sección 98: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion [Entropy: 0.301]
 
 Click Install.
 
@@ -12906,7 +12836,7 @@ The M-LSD (Mobile Line Segment Detection) technique is quite often used in archi
 
 ---
 
-## Sección 99: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion
+## Sección 99: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion [Entropy: 0.28]
 
 Input:
 
@@ -13020,7 +12950,7 @@ Click Install.
 
 ---
 
-## Sección 100: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion
+## Sección 100: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion [Entropy: 0.322]
 
 WebUI will download and install the necessary files for SAM on your local version of Stable Diffusion.
 
@@ -13094,7 +13024,7 @@ bitsandbytes==0.35.0 gradio natsort safetensors xformers
 
 ---
 
-## Sección 101: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion
+## Sección 101: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion [Entropy: 0.74]
 
 Run the next cell to set the output directory of the model when it is finished running. It’s recommended to save the model to Google Drive (even if temporarily) because you can more reliably download large files (4–5 GB) from there than you can from the Google Colab filesystem. Ensure that you have selected the right base model from the Hugging Face hub runwayml/stable-diffusion-v1-5 and choose a name for your token for the output directory (usually ukj or zwx ; more on this later):
 
@@ -13237,7 +13167,7 @@ plt.savefig('grid.png', dpi=72)
 
 ---
 
-## Sección 102: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion
+## Sección 102: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion [Entropy: 0.352]
 
 Finally, you want to run the conversion process to get a .ckpt file, which is what you will use in AUTOMATIC1111:
 
@@ -13340,7 +13270,7 @@ The architecture of SDXL is a perfect example of splitting a task into multiple 
 
 ---
 
-## Sección 103: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion
+## Sección 103: Chapter 9. Advanced Techniques for Image Generation with Stable Diffusion [Entropy: 0.265]
 
 One quality-of-life modification you can make is to install the aspect ratio selector extension, which can be loaded with image sizes or aspect ratios you use regularly, allowing one-click setting of the correct size and aspect ratio for either model.
 
@@ -13393,7 +13323,7 @@ In the next chapter, you’ll get the chance to put everything you’ve learned 
 
 ---
 
-## Sección 104: Chapter 10. Building AI-Powered Applications
+## Sección 104: Chapter 10. Building AI-Powered Applications [Entropy: 0.661]
 
 In this chapter, you’ll apply the five principles of prompting to an end-to-end AI workflow for content writing. The service will write blog posts based on the user’s responses to interview questions, in the style of the user’s writing. This system was first documented on the Saxifrage blog .
 
@@ -13553,7 +13483,7 @@ First, import the required tools and then fetch the web page content related to 
 
 ---
 
-## Sección 105: Chapter 10. Building AI-Powered Applications
+## Sección 105: Chapter 10. Building AI-Powered Applications [Entropy: 0.81]
 
 If you would like to dive deeper into the create_all_summaries function, check custom_summarize_chain.py .
 
@@ -13722,7 +13652,7 @@ Let’s explore the BlogOutlineGenerator class in detail:
 
 ---
 
-## Sección 106: Chapter 10. Building AI-Powered Applications
+## Sección 106: Chapter 10. Building AI-Powered Applications [Entropy: 0.77]
 
 # Custom types: 
  from custom_summarize_chain import DocumentSummary 
@@ -13890,7 +13820,7 @@ Finally, the prompt for generating each section is very context rich:
 
 ---
 
-## Sección 107: Chapter 10. Building AI-Powered Applications
+## Sección 107: Chapter 10. Building AI-Powered Applications [Entropy: 0.5]
 
 The section_prompt elegantly sets the stage by announcing the specific section you’re working on, using {subheading.title} . But it doesn’t stop there. By feeding the LLM with {relevant_documents} , it offers background and depth, while explicitly cautioning against plagiarism. Moreover, by including insights from your interview via {self.questions_and_answers} , the prompt ensures that valuable information is front and center. Finally, it sets clear expectations on the format, the inclusion of certain features, and the topic at hand. This makes the LLM not just a tool but an informed coauthor, working diligently alongside you to create content.
 
@@ -14011,7 +13941,7 @@ conversational tone.
 
 ---
 
-## Sección 108: Chapter 10. Building AI-Powered Applications
+## Sección 108: Chapter 10. Building AI-Powered Applications [Entropy: 0.52]
 
 Evaluate Quality
 
@@ -14140,7 +14070,7 @@ Input:
 
 ---
 
-## Sección 109: Chapter 10. Building AI-Powered Applications
+## Sección 109: Chapter 10. Building AI-Powered Applications [Entropy: 0.75]
 
 image_paths . append ( filename ) 
 
@@ -14282,7 +14212,7 @@ When you run gradio, you get an inline interface you can use directly or a URL t
 
 ---
 
-## Sección 110: Chapter 10. Building AI-Powered Applications
+## Sección 110: Chapter 10. Building AI-Powered Applications [Entropy: 0.298]
 
 After initializing the interface, input a topic by clicking the Summarize and Generate Questions button. This will then collect and summarize the Google results as well as generate interview questions.
 
@@ -14427,7 +14357,7 @@ Mayo Oshin, founder and CEO, Siennai Analytics, early LangChain contributor
 
 ---
 
-## Sección 111: Chapter 10. Building AI-Powered Applications
+## Sección 111: Chapter 10. Building AI-Powered Applications [Entropy: 0.265]
 
 Phoenix and Taylor’s guide is a lighthouse amidst the vast ocean of generative AI. Their book became a cornerstone for my team at Phiture AI Labs, as we learned to harness LLMs and diffusion models for creating marketing assets that resonate with the essence of our clients’ apps and games. Through prompt engineering, we’ve been able to generate bespoke, on-brand content at scale. This isn’t just theory; it’s a practical masterclass in transforming AI’s raw potential into tailored solutions, making it an essential read for developers looking to elevate their AI integration to new heights of creativity and efficiency. 
 
@@ -14503,7 +14433,7 @@ The requirements.txt file is generated for Python 3.9. If you want to use a diff
 
 ---
 
-## Sección 112: Chapter 10. Building AI-Powered Applications
+## Sección 112: Chapter 10. Building AI-Powered Applications [Entropy: 0.295]
 
 `pip install pip-tools`
 `pip-compile requirements.in`
@@ -14635,7 +14565,7 @@ We appreciate, but generally do not require, attribution. An attribution usually
 
 ---
 
-## Sección 113: Chapter 10. Building AI-Powered Applications
+## Sección 113: Chapter 10. Building AI-Powered Applications [Entropy: 0.25]
 
 If you feel your use of code examples falls outside fair use or the permission given above, feel free to contact us at permissions@oreilly.com .
 

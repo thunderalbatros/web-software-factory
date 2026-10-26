@@ -1,5 +1,7 @@
 # Canon: World-Class Free Courses & Curricula on Agentic AI & Systems (2026)
 
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
+
 ## 1. DeepLearning.AI — Agentic AI (Prof. Andrew Ng)
 - **Institución:** DeepLearning.AI en colaboración con líderes de la industria.
 - **Acceso:** Gratuito en [deeplearning.ai/short-courses](https://www.deeplearning.ai/short-courses/).

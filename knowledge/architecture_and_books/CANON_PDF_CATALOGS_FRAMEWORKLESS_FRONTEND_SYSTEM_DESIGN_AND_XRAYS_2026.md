@@ -1,4 +1,4 @@
-﻿# Tratado Canónico Clean-Room: Desarrollo Frontend Sin Frameworks (Strazzullo, Farrell, Resig, Frisbie), Diseño de Sistemas en Tiempo Real (Alex Xu Vol. 1 & 2), Rayos-X de Diseño (Adam Tornhill), Arquitecturas Evolutivas (Neal Ford) e Inmutabilidad (Perry) (2026)
+# Tratado Canónico Clean-Room: Desarrollo Frontend Sin Frameworks (Strazzullo, Farrell, Resig, Frisbie), Diseño de Sistemas en Tiempo Real (Alex Xu Vol. 1 & 2), Rayos-X de Diseño (Adam Tornhill), Arquitecturas Evolutivas (Neal Ford) e Inmutabilidad (Perry) (2026)
 
 **Alcance:** Aplicable a la arquitectura Vanilla JS de `site/js/` y `overlay-*`, componentes encapsulados, diseño de sistemas en tiempo real en `worker/index.js` (Leaderboards, WebSockets, Rate Limiters y Billetera `$DIG`), detección forense de deuda técnica (`tools/intelligence/ast_guard.mjs`) y funciones de aptitud evolutiva (`Squad 0`, `Squad 2`, `Squad 4`, `Squad 6` y `Squad 9`).
 

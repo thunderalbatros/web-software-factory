@@ -1,23 +1,17 @@
-﻿**Alcance:** Libro completo Reinforcement Learning: An Introduction (Sutton & Barto): procesos de decisión de Markov, bandidos contextuales y políticas óptimas. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+# 📚 Libro Completo: Reinforcement Learning: An Introduction (2nd Edition)
 
----
-titulo: "Reinforcement Learning: An Introduction (2nd Edition)"
-autor: "Richard S. Sutton & Andrew G. Barto"
-dominio: "RL, Procesos de Decisión de Markov y Aprendizaje por Recompensa"
-tipo: "libro_tecnico_completo"
-paginas_originales: 352
-secciones_totales: 158
-fecha_ingesta: "2026-10-06T02:44:11.673Z"
----
+**Alcance:** Fuente bibliográfica completa sobre Markov Decision Processes, Bandits, Bellman Equations & Policy Optimization (Reinforcement Learning: An Introduction (2nd Edition) — Richard S. Sutton & Andrew G. Barto). Aplicable a Web Software Factory y Enterprise Web App. NO sustituye los contratos de negocio ni las reglas inmutables en `CANON_*`.
 
-# 📖 Reinforcement Learning: An Introduction (2nd Edition)
-**Autor:** Richard S. Sutton & Andrew G. Barto | **Dominio:** RL, Procesos de Decisión de Markov y Aprendizaje por Recompensa | **Páginas originales:** 352
-
-> **Nota de Arquitectura Centinela:** Este documento contiene el texto íntegro estructurado por secciones y capítulos para consulta profunda del equipo de agentes y búsqueda híbrida (BM25 + semántica).
+> **Autor:** Richard S. Sutton & Andrew G. Barto  
+> **Dominio:** Markov Decision Processes, Bandits, Bellman Equations & Policy Optimization  
+> **Archivo Fuente:** `Reinforcement-Learning-An-Introduction-2nd-Ed-Sutton-Barto.pdf`  
+> **Páginas Originales:** 352 (100% Ingerido, Cero Truncamiento)  
+> **Secciones Técnicas Extraídas:** 20 (Entropía Técnica Media: 0.632)  
+> **Fecha de Ingesta:** 2026-10-26
 
 ---
 
-## [Sección 1] Introducción y Fundamentos
+## Sección 1: Core Concepts & Foundations [Entropy: 0.62]
 
 i
 Reinforcement Learning:
@@ -29,14 +23,8 @@ A Bradford Book
 The MIT Press
 Cambridge, Massachusetts
 London, England
-
--- 1 of 352 --
-
 ii
 In memory of A. Harry Klopf
-
--- 2 of 352 --
-
 Contents
 Preface . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . viii
 Series Forward . . . . . . . . . . . . . . . . . . . . . . . . . . . . . xii
@@ -59,9 +47,6 @@ I Tabular Solution Methods 27
 2.5 Optimistic Initial Values . . . . . . . . . . . . . . . . . . . . . 39
 2.6 Upper-Confidence-Bound Action Selection . . . . . . . . . . . 41
 iii
-
--- 3 of 352 --
-
 iv CONTENTS
 2.7 Gradient Bandits . . . . . . . . . . . . . . . . . . . . . . . . . 42
 2.8 Associative Search (Contextual Bandits) . . . . . . . . . . . . 46
@@ -91,9 +76,6 @@ iv CONTENTS
 5.2 Monte Carlo Estimation of Action Values . . . . . . . . . . . . 119
 5.3 Monte Carlo Control . . . . . . . . . . . . . . . . . . . . . . . 120
 5.4 Monte Carlo Control without Exploring Starts . . . . . . . . . 124
-
--- 4 of 352 --
-
 CONTENTS v
 5.5 Off-policy Prediction via Importance Sampling . . . . . . . . . 127
 5.6 Incremental Implementation . . . . . . . . . . . . . . . . . . . 133
@@ -123,13 +105,6 @@ CONTENTS v
 8.1 Models and Planning . . . . . . . . . . . . . . . . . . . . . . . 195
 8.2 Integrating Planning, Acting, and Learning . . . . . . . . . . . 198
 8.3 When the Model Is Wrong . . . . . . . . . . . . . . . . . . . . 203
-
----
-
-## [Sección 2] Introducción y Fundamentos
-
--- 5 of 352 --
-
 vi CONTENTS
 8.4 Prioritized Sweeping . . . . . . . . . . . . . . . . . . . . . . . 206
 8.5 Full vs. Sample Backups . . . . . . . . . . . . . . . . . . . . . 210
@@ -155,9 +130,6 @@ III Frontiers 265
 13 Neuroscience 271
 14 Applications and Case Studies 273
 14.1 TD-Gammon . . . . . . . . . . . . . . . . . . . . . . . . . . . 273
-
--- 6 of 352 --
-
 CONTENTS vii
 14.2 Samuel’s Checkers Player . . . . . . . . . . . . . . . . . . . . . 279
 14.3 The Acrobot . . . . . . . . . . . . . . . . . . . . . . . . . . . . 282
@@ -172,9 +144,6 @@ CONTENTS vii
 15.5 Other Frontier Dimensions . . . . . . . . . . . . . . . . . . . . 306
 References 311
 Index 338
-
--- 7 of 352 --
-
 viii PREFACE
 Preface
 We first came to focus on what is now known as reinforcement learning in late
@@ -208,13 +177,6 @@ now a large field, with hundreds of active researchers around the world in diver
 neuroscience. Particularly important have been the contributions establishing
 and developing the relationships to the theory of optimal control and dynamic
 programming. The overall problem of learning from interaction to achieve
-
----
-
-## [Sección 3] Introducción y Fundamentos
-
--- 8 of 352 --
-
 PREFACE ix
 goals is still far from being solved, but our understanding of it has improved
 significantly. We can now place component ideas, such as temporal-difference
@@ -249,9 +211,6 @@ artificial intelligence, or neural networks. In this case, it may be desirable t
 cover only a subset of the material. We recommend covering Chapter 1 for a
 brief overview, Chapter 2 through Section 2.2, Chapter 3 except Sections 3.4,
 3.5 and 3.9, and then selecting sections from the remaining chapters according
-
--- 9 of 352 --
-
 x PREFACE
 to time and interests. The five chapters of Part II build on each other and are
 best covered in sequence; of these, Chapter 6 is the most important for the
@@ -289,13 +248,6 @@ Cohen, Paul Utgoff, Martha Steenstrup, Gerry Tesauro, Mike Jordan, Leslie
 Kaelbling, Andrew Moore, Chris Atkeson, Tom Mitchell, Nils Nilsson, Stuart
 Russell, Tom Dietterich, Tom Dean, and Bob Narendra. We thank Michael
 Littman, Gerry Tesauro, Bob Crites, Satinder Singh, and Wei Zhang for providing specifics of Sections 4.7, 15.1, 15.4, 15.5, and 15.6 respectively. We
-
----
-
-## [Sección 4] Introducción y Fundamentos
-
--- 10 of 352 --
-
 PREFACE xi
 thank the the Air Force Office of Scientific Research, the National Science
 Foundation, and GTE Laboratories for their long and farsighted support.
@@ -306,14 +258,8 @@ Steenstrup, Paul Cohen, Sridhar Mahadevan, Jette Randlov, Brian Sheppard,
 Thomas O’Connell, Richard Coggins, Cristina Versino, John H. Hiett, Andreas Badelt, Jay Ponte, Joe Beck, Justus Piater, Martha Steenstrup, Satinder Singh, Tommi Jaakkola, Dimitri Bertsekas, Torbj¨orn Ekman, Christina
 Bj¨orkman, Jakob Carlstr¨om, and Olle Palmgren. Finally, we thank Gwyn
 Mitchell for helping in many ways, and Harry Stanton and Bob Prior for being our champions at MIT Press.
-
--- 11 of 352 --
-
 xii
 Series Forward
-
--- 12 of 352 --
-
 SUMMARY OF NOTATION xiii
 Summary of Notation
 Capital letters are used for random variables and major algorithm variables.
@@ -352,9 +298,6 @@ w, wt vector of (possibly learned) weights underlying an approximate value funct
 x(s) vector of features visible when in state s
 w>x inner product of vectors, w>x = ∑
 i wixi; e.g., ˆv(s,w) = w>x(s)
-
--- 13 of 352 --
-
 xiv SUMMARY OF NOTATION
 δt temporal-difference error at t (a random variable, even though not upper case)
 Et(s) eligibility trace for state s at t
@@ -365,11 +308,9 @@ et eligibility trace vector at t
 α, β step-size parameters
 λ decay-rate parameter for eligibility traces
 
--- 14 of 352 --
-
 ---
 
-## [Sección 5] Chapter 1
+## Sección 2: Chapter 1 [Entropy: 0.701]
 
 The Reinforcement Learning
 Problem
@@ -393,8 +334,6 @@ designs through mathematical analysis or computational experiments. The
 approach we explore, called reinforcement learning, is much more focused on
 goal-directed learning from interaction than are other approaches to machine
 learning.
--- 15 of 352 --
-
 2 CHAPTER 1. THE REINFORCEMENT LEARNING PROBLEM
 1.1 Reinforcement Learning
 Reinforcement learning is like many topics with names ending in -ing, such
@@ -430,13 +369,6 @@ so that it acts correctly in situations not present in the training set. This is
 an important kind of learning, but alone it is not adequate for learning from
 interaction. In interactive problems it is often impractical to obtain examples
 of desired behavior that are both correct and representative of all the situations in which the agent has to act. In uncharted territory—where one would
-
----
-
-## [Sección 6] Chapter 1
-
--- 16 of 352 --
-
 1.1. REINFORCEMENT LEARNING 3
 expect learning to be most beneficial—an agent must be able to learn from its
 own experience.
@@ -472,9 +404,6 @@ supervised learning without explicitly specifying how such an ability would
 finally be useful. Other researchers have developed theories of planning with
 general goals, but without considering planning’s role in real-time decisionmaking, or the question of where the predictive models necessary for planning
 would come from. Although these approaches have yielded many useful results,
-
--- 17 of 352 --
-
 4 CHAPTER 1. THE REINFORCEMENT LEARNING PROBLEM
 their focus on isolated subproblems is a significant limitation.
 Reinforcement learning takes the opposite tack, starting with a complete,
@@ -507,13 +436,6 @@ intelligence back toward simple general principles. Since the late 1960’s, man
 artificial intelligence researchers presumed that there are no general principles
 to be discovered, that intelligence is instead due to the possession of vast numbers of special purpose tricks, procedures, and heuristics. It was sometimes
 said that if we could just get enough relevant facts into a machine, say one million, or one billion, then it would become intelligent. Methods based on general
-
----
-
-## [Sección 7] Chapter 1
-
--- 18 of 352 --
-
 1.2. EXAMPLES 5
 principles, such as search or learning, were characterized as “weak methods,”
 whereas those based on specific knowledge were called “strong methods.” This
@@ -543,9 +465,6 @@ the recharger in the past.
 • Phil prepares his breakfast. Closely examined, even this apparently mundane activity reveals a complex web of conditional behavior and interlocking goal–subgoal relationships: walking to the cupboard, opening it,
 selecting a cereal box, then reaching for, grasping, and retrieving the
 box. Other complex, tuned, interactive sequences of behavior are required to obtain a bowl, spoon, and milk jug. Each step involves a series
-
--- 19 of 352 --
-
 6 CHAPTER 1. THE REINFORCEMENT LEARNING PROBLEM
 of eye movements to obtain information and to guide reaching and locomotion. Rapid judgments are continually made about how to carry the
 objects or whether it is better to ferry some of them to the dining table
@@ -582,13 +501,6 @@ and even aspirations. Throughout this book we are being abstract in this way
 when we talk about agents and their environments.
 In all of these examples the agent can use its experience to improve its performance over time. The chess player refines the intuition he uses to evaluate
 positions, thereby improving his play; the gazelle calf improves the efficiency
-
----
-
-## [Sección 8] Chapter 1
-
--- 20 of 352 --
-
 1.3. ELEMENTS OF REINFORCEMENT LEARNING 7
 with which it can run; Phil learns to streamline making his breakfast. The
 knowledge the agent brings to the task at the start—either from previous experience with related tasks or built into it by design or evolution—influences
@@ -626,9 +538,6 @@ signal is the primary basis for altering the policy. If an action selected by th
 policy is followed by low reward, then the policy may be changed to select
 some other action in that situation in the future. In general, reward signals
 may be stochastic functions of the state of the environment and the actions
-
--- 21 of 352 --
-
 8 CHAPTER 1. THE REINFORCEMENT LEARNING PROBLEM
 taken.
 Whereas the reward signal indicates what is good in an immediate sense,
@@ -668,13 +577,6 @@ the model might predict the resultant next state and next reward. Models
 are used for planning, by which we mean any way of deciding on a course of
 action by considering possible future situations before they are actually experienced. Methods for solving reinforcement learning problems that use models
 and planning are called model-based methods, as opposed to simpler modelfree methods that are explicitly trial-and-error learners—viewed as almost the
-
----
-
-## [Sección 9] Chapter 1
-
--- 22 of 352 --
-
 1.4. LIMITATIONS AND SCOPE 9
 opposite of planning. In Chapter 9 we explore reinforcement learning systems
 that simultaneously learn by trial and error, learn a model of the environment, and use the model for planning. Modern reinforcement learning spans
@@ -707,9 +609,6 @@ enable more efficient search. Although evolution and learning share many feature
 by themselves to be especially well suited to reinforcement learning problems.
 For simplicity, in this book when we use the term “reinforcement learning
 method” we do not include evolutionary methods.
-
--- 23 of 352 --
-
 10 CHAPTER 1. THE REINFORCEMENT LEARNING PROBLEM
 However, we do include some methods that, like evolutionary methods,
 do not appeal to value functions. These methods search in spaces of policies
@@ -744,13 +643,6 @@ X O
 If the board fills up with neither player getting three in a row, the game is
 a draw. Because a skilled player can play so as never to lose, let us assume
 that we are playing against an imperfect player, one whose play is sometimes
-
----
-
-## [Sección 10] Chapter 1
-
--- 24 of 352 --
-
 1.5. AN EXTENDED EXAMPLE: TIC-TAC-TOE 11
 incorrect and allows us to win. For the moment, in fact, let us consider draws
 and losses to be equally bad for us. How might we construct a player that will
@@ -790,9 +682,6 @@ the probability of our winning from that state. We treat this estimate as the
 state’s value, and the whole table is the learned value function. State A has
 higher value than state B, or is considered “better” than state B, if the current
 estimate of the probability of our winning from A is higher than it is from B.
-
--- 25 of 352 --
-
 12 CHAPTER 1. THE REINFORCEMENT LEARNING PROBLEM
 ..
 •
@@ -836,13 +725,6 @@ however, we select randomly from among the other moves instead. These are
 called exploratory moves because they cause us to experience states that we
 might otherwise never see. A sequence of moves made and considered during
 a game can be diagrammed as in Figure 1.1.
-
----
-
-## [Sección 11] Chapter 1
-
--- 26 of 352 --
-
 1.5. AN EXTENDED EXAMPLE: TIC-TAC-TOE 13
 While we are playing, we change the values of the states in which we find
 ourselves during the game. We attempt to make them more accurate estimates
@@ -885,9 +767,6 @@ search the space of policies, but learning a value function takes advantage of
 information available during the course of play.
 This simple example illustrates some of the key features of reinforcement
 learning methods. First, there is the emphasis on learning while interacting
-
--- 27 of 352 --
-
 14 CHAPTER 1. THE REINFORCEMENT LEARNING PROBLEM
 with an environment, in this case with an opponent player. Second, there is a
 clear goal, and correct behavior requires planning or foresight that takes into
@@ -924,13 +803,6 @@ learning. Neural networks are not the only, or necessarily the best, way to do
 this.
 In this tic-tac-toe example, learning started with no prior knowledge beyond the rules of the game, but reinforcement learning by no means entails a
 tabula rasa view of learning and intelligence. On the contrary, prior information can be incorporated into reinforcement learning in a variety of ways that
-
----
-
-## [Sección 12] Chapter 1
-
--- 28 of 352 --
-
 1.6. SUMMARY 15
 can be critical for efficient learning. We also had access to the true state in the
 tic-tac-toe example, whereas reinforcement learning can also be applied when
@@ -964,9 +836,6 @@ other computational approaches by its emphasis on learning by an agent from
 direct interaction with its environment, without relying on exemplary supervision or complete models of the environment. In our opinion, reinforcement
 learning is the first field to seriously address the computational issues that
 arise when learning from interaction with an environment in order to achieve
-
--- 29 of 352 --
-
 16 CHAPTER 1. THE REINFORCEMENT LEARNING PROBLEM
 long-term goals.
 Reinforcement learning uses a formal framework defining the interaction
@@ -1003,13 +872,6 @@ system’s behavior over time. One of the approaches to this problem was develop
 a nineteenth century theory of Hamilton and Jacobi. This approach uses the
 concepts of a dynamical system’s state and of a value function, or “optimal
 return function,” to define a functional equation, now often called the Bell-
-
----
-
-## [Sección 13] Chapter 1
-
--- 30 of 352 --
-
 1.7. HISTORY OF REINFORCEMENT LEARNING 17
 man equation. The class of methods for solving optimal control problems by
 solving this equation came to be known as dynamic programming (Bellman,
@@ -1045,9 +907,6 @@ did not occur until the work of Chris Watkins in 1989, whose treatment of
 reinforcement learning using the MDP formalism has been widely adopted
 (Watkins, 1989). Since then these relationships have been extensively developed by many researchers, most particularly by Dimitri Bertsekas and John
 Tsitsiklis (1996), who coined the term “neurodynamic programming” to refer
-
--- 31 of 352 --
-
 18 CHAPTER 1. THE REINFORCEMENT LEARNING PROBLEM
 to the combination of dynamic programming and neural networks. Another
 term currently in use is “approximate dynamic programming.” These various
@@ -1086,13 +945,6 @@ with that situation weakened, so that, when it recurs, they will be
 less likely to occur. The greater the satisfaction or discomfort, the
 greater the strengthening or weakening of the bond. (Thorndike,
 1911, p. 244)
-
----
-
-## [Sección 14] Chapter 1
-
--- 32 of 352 --
-
 1.7. HISTORY OF REINFORCEMENT LEARNING 19
 Thorndike called this the “Law of Effect” because it describes the effect of
 reinforcing events on the tendency to select actions. Thorndike later modified
@@ -1130,9 +982,6 @@ under its floor (Shannon, 1952). Other early computational investigations of
 trial-and-error learning were those of Minsky and of Farley and Clark, both
 in 1954. In his Ph.D. dissertation, Minsky discussed computational models of
 reinforcement learning and described his construction of an analog machine
-
--- 33 of 352 --
-
 20 CHAPTER 1. THE REINFORCEMENT LEARNING PROBLEM
 composed of components he called SNARCs (Stochastic Neural-Analog Reinforcement Calculators). Farley and Clark described another neural-network
 learning machine designed to learn by trial and error. In the 1960s the terms
@@ -1167,20 +1016,14 @@ emphasis on learning from a teacher, but still included trial and error. Unfortu
 impact subsequent reinforcement learning research.
 More influential was the work of Donald Michie. In 1961 and 1963 he
 described a simple trial-and-error learning system for learning how to play
-
----
-
-## [Sección 15] Chapter 1
-
--- 34 of 352 --
-
 1.7. HISTORY OF REINFORCEMENT LEARNING 21
 tic-tac-toe (or naughts and crosses) called MENACE (for Matchbox Educable
 Naughts and Crosses Engine). It consisted of a matchbox for each possible
 game position, each matchbox containing a number of colored beads, a different color for each possible move from that position. By drawing a bead at
 random from the matchbox corresponding to the current game position, one
 could determine MENACE’s move. When a game was over, beads were added
-to or removed from the boxes used during play to reinforce or punish MENACE’s decisions. Michie and Chambers (1968) described another tic-tac-toe
+to or removed from the boxes used during play to reinforce or punish MEN-
+ACE’s decisions. Michie and Chambers (1968) described another tic-tac-toe
 reinforcement learner called GLEE (Game Learning Expectimaxing Engine)
 and a reinforcement learning controller called BOXES. They applied BOXES
 to the task of learning to balance a pole hinged to a movable cart on the basis
@@ -1208,9 +1051,6 @@ low-memory machines for improving the probability of reward in these problems. L
 mathematician and physicist M. L. Tsetlin and colleagues (published posthumously in Tsetlin, 1973) and has been extensively developed since then within
 engineering (see Narendra and Thathachar, 1974, 1989). These developments
 included the study of stochastic learning automata, which are methods for up-
-
--- 35 of 352 --
-
 22 CHAPTER 1. THE REINFORCEMENT LEARNING PROBLEM
 dating action probabilities on the basis of reward signals. Stochastic learning
 automata were foreshadowed by earlier work in psychology, beginning with
@@ -1249,13 +1089,6 @@ reinforcement learning within artificial intelligence was Harry Klopf (1972,
 1975, 1982). Klopf recognized that essential aspects of adaptive behavior
 were being lost as learning researchers came to focus almost exclusively on
 supervised learning. What was missing, according to Klopf, were the hedonic
-
----
-
-## [Sección 16] Chapter 1
-
--- 36 of 352 --
-
 1.7. HISTORY OF REINFORCEMENT LEARNING 23
 aspects of behavior, the drive to achieve some result from the environment, to
 control the environment toward desired ends and away from undesired ends.
@@ -1287,9 +1120,6 @@ modifying this function on-line. (It is possible that these ideas of Shannon’s
 also influenced Bellman, but we know of no evidence for this.) Minsky (1961)
 extensively discussed Samuel’s work in his “Steps” paper, suggesting the connection to secondary reinforcement theories, both natural and artificial.
 As we have discussed, in the decade following the work of Minsky and
-
--- 37 of 352 --
-
 24 CHAPTER 1. THE REINFORCEMENT LEARNING PROBLEM
 Samuel, little computational work was done on trial-and-error learning, and
 apparently no computational work at all was done on temporal-difference
@@ -1326,13 +1156,6 @@ Ph.D. dissertation and extended to use backpropagation neural networks in
 Anderson’s (1986) Ph.D. dissertation. Around this time, Holland (1986) incorporated temporal-difference ideas explicitly into his classifier systems. A key
 step was taken by Sutton in 1988 by separating temporal-difference learning
 from control, treating it as a general prediction method. That paper also introduced the TD(λ) algorithm and proved some of its convergence properties.
-
----
-
-## [Sección 17] Chapter 1
-
--- 38 of 352 --
-
 1.8. BIBLIOGRAPHICAL REMARKS 25
 As we were finalizing our work on the actor–critic architecture in 1981, we
 discovered a paper by Ian Witten (1977) that contains the earliest known publication of a temporal-difference learning rule. He proposed the method that
@@ -1366,9 +1189,6 @@ the books by Szepesv´ari (2010), Bertsekas and Tsitsiklis (1996), and Kaelbling
 (1993a). Books that take a control or operation research perspective are those
 of Si et al. (2004), Powell (2011), and Lewis and Liu (2012). Two special
 issues of the journal Machine Learning focus on reinforcement learning: Sutton
-
--- 39 of 352 --
-
 26 CHAPTER 1. THE REINFORCEMENT LEARNING PROBLEM
 (1992) and Kaelbling (1996). Useful surveys are provided by Barto (1995b);
 Kaelbling, Littman, and Moore (1996); and Keerthi and Ravindran (1997).
@@ -1403,18 +1223,10 @@ the tic-tac-toe problem as posed?
 
 ---
 
-## [Sección 18] Chapter 1
-
--- 40 of 352 --
-
----
-
-## [Sección 19] Part I
+## Sección 3: Part I [Entropy: 0.328]
 
 Tabular Solution Methods
--- 41 of 352 --
-
--- 42 of 352 --
+29
 In this part of the book we describe almost all the core ideas of reinforcement learning algorithms in their simplest forms, that in which the state and
 action spaces are small enough for the approximate action-value function to be
 represented as an array, or table. In this case, the methods can often find exact
@@ -1444,12 +1256,9 @@ can be combined with model learning and planning methods (such as dynamic
 programming) for a complete and unified solution to the tabular reinforcement
 learning problem.
 
--- 43 of 352 --
--- 44 of 352 --
-
 ---
 
-## [Sección 20] Chapter 2
+## Sección 4: Chapter 2 [Entropy: 0.635]
 
 Multi-arm Bandits
 The most important feature distinguishing reinforcement learning from other
@@ -1477,8 +1286,6 @@ is a simple version of the n-armed bandit problem. We use this problem to
 introduce a number of basic learning methods which we extend in later chapters
 to apply to the full reinforcement learning problem. At the end of this chapter,
 we take a step closer to the full reinforcement learning problem by discussing
--- 45 of 352 --
-
 32 CHAPTER 2. MULTI-ARM BANDITS
 what happens when the bandit problem becomes associative, that is, when
 actions are taken in more than one situation.
@@ -1513,13 +1320,6 @@ exploration may produce the greater total reward in the long run. For example,
 suppose the greedy action’s value is known with certainty, while several other
 actions are estimated to be nearly as good but with substantial uncertainty.
 The uncertainty is such that at least one of these other actions probably is
-
----
-
-## [Sección 21] Chapter 2
-
--- 46 of 352 --
-
 2.2. ACTION-VALUE METHODS 33
 actually better than the greedy action, but you don’t know which one. If
 you have many time steps ahead on which to make action selections, then it
@@ -1557,9 +1357,6 @@ chosen Nt(a) times prior to t, yielding rewards R1, R2, . . . , RNt(a), then its
 is estimated to be
 Qt(a) = R1 + R2 + · · · + RNt(a)
 Nt(a) . (2.1)
-
--- 47 of 352 --
-
 34 CHAPTER 2. MULTI-ARM BANDITS
 If Nt(a) = 0, then we define Qt(a) instead as some default value, such as
 Q1(a) = 0. As Nt(a) → ∞, by the law of large numbers, Qt(a) converges
@@ -1601,13 +1398,6 @@ and behavior of various methods as they improve with experience over 1000
 steps, as in Figure 2.1. We call this suite of test tasks the 10-armed testbed.
 Figure 2.1 compares a greedy method with two ε-greedy methods (ε = 0.01
 and ε = 0.1), as described above, on the 10-armed testbed. Both methods
-
----
-
-## [Sección 22] Chapter 2
-
--- 48 of 352 --
-
 2.2. ACTION-VALUE METHODS 35
 = 0 (greedy)
 𝜀 = 0 (greedy)
@@ -1642,9 +1432,6 @@ multiple actions have the same maximal action value. Here such ties were
 broken randomly. An alternative that has a similar effect is to add a very
 small amount of randomness to each of the initial action values, so that ties
 effectively never happen.
-
--- 49 of 352 --
-
 36 CHAPTER 2. MULTI-ARM BANDITS
 formed their action-value estimates using the sample-average technique. The
 upper graph shows the increase in expected reward with experience. The
@@ -1682,9 +1469,6 @@ learning requires a balance between exploration and exploitation.
 2.3 Incremental Implementation
 The action-value methods we have discussed so far all estimate action values
 as sample averages of observed rewards. The obvious implementation is to
-
--- 50 of 352 --
-
 2.3. INCREMENTAL IMPLEMENTATION 37
 maintain, for each action a, a record of all the rewards that have followed the
 selection of that action. Then, when the estimate of the value of action a is
@@ -1740,13 +1524,6 @@ Target − OldEstimate
 . (2.4)
 The expression [Target − OldEstimate] is an error in the estimate. It is
 reduced by taking a step toward the “Target.” The target is presumed to
-
----
-
-## [Sección 23] Chapter 2
-
--- 51 of 352 --
-
 38 CHAPTER 2. MULTI-ARM BANDITS
 indicate a desirable direction in which to move, though it may be noisy. In
 the case above, for example, the target is the kth reward.
@@ -1787,9 +1564,6 @@ i=1 α(1 − α)k−i = 1, as you can check yourself. Note that the weight, α(1
 α)k−i, given to the reward Ri depends on how many rewards ago, k − i, it was
 1The notation (a, b] as a set denotes the real interval between a and b including b but
 not including a. Thus, here we are saying that 0 < α ≤ 1.
-
--- 52 of 352 --
-
 2.5. OPTIMISTIC INITIAL VALUES 39
 observed. The quantity 1 − α is less than 1, and thus the weight given to Ri
 decreases as the number of intervening rewards increases. In fact, the weight
@@ -1828,13 +1602,6 @@ and empirical research.
 All the methods we have discussed so far are dependent to some extent on
 the initial action-value estimates, Q1(a). In the language of statistics, these
 methods are biased by their initial estimates. For the sample-average methods,
-
----
-
-## [Sección 24] Chapter 2
-
--- 53 of 352 --
-
 40 CHAPTER 2. MULTI-ARM BANDITS
 0%
 20%
@@ -1854,7 +1621,8 @@ Q0 = 0, = 0.1 1
 Steps
 𝜀
 𝜀
-Figure 2.2: The effect of optimistic initial action-value estimates on the 10armed testbed. Both methods used a constant step-size parameter, α = 0.1.
+Figure 2.2: The effect of optimistic initial action-value estimates on the 10-
+armed testbed. Both methods used a constant step-size parameter, α = 0.1.
 the bias disappears once all actions have been selected at least once, but for
 methods with constant α, the bias is permanent, though decreasing over time
 as given by (2.6). In practice, this kind of bias is usually not a problem, and
@@ -1876,9 +1644,6 @@ greedy method using Q1(a) = +5, for all a. For comparison, also shown is an
 worse because it explores more, but eventually it performs better because its
 exploration decreases with time. We call this technique for encouraging exploration optimistic initial values. We regard it as a simple trick that can be
 quite effective on stationary problems, but it is far from being a generally useful approach to encouraging exploration. For example, it is not well suited to
-
--- 54 of 352 --
-
 2.6. UPPER-CONFIDENCE-BOUND ACTION SELECTION 41
 nonstationary problems because its drive for exploration is inherently temporary. If the task changes, creating a renewed need for exploration, this method
 cannot help. Indeed, any method that focuses on the initial state in any special
@@ -1923,13 +1688,6 @@ term, the term is decreased. On the other hand, each time an action other a is
 selected t is increased; as it appears in the numerator the uncertainty estimate
 is increased. The use of the natural logarithm means that the increase gets
 smaller over time, but is unbounded; all actions will eventually be selected, but
-
----
-
-## [Sección 25] Chapter 2
-
--- 55 of 352 --
-
 42 CHAPTER 2. MULTI-ARM BANDITS
 𝜀-greedy 𝜀 = 0.1
 UCB c = 2
@@ -1956,9 +1714,6 @@ So far in this chapter we have considered methods that estimate action values
 and use those estimates to select actions. This is often a good approach,
 but it is not the only one possible. In this section we consider learning a
 numerical preference Ht(a) for each action a. The larger the preference, the
-
--- 56 of 352 --
-
 2.7. GRADIENT BANDITS 43
 more often that action is taken, but the preference has no interpretation in
 terms of reward. Only the relative preference of one action over another is
@@ -2002,13 +1757,6 @@ where the measure of performance here is the expected reward:
 E[Rt] = ∑
 b
 πt(b)q(b).
-
----
-
-## [Sección 26] Chapter 2
-
--- 57 of 352 --
-
 44 CHAPTER 2. MULTI-ARM BANDITS
 %
 Optimal
@@ -2060,9 +1808,6 @@ b
 ∂Ht(a) = 0. As
 Ht(a) is changed, some actions’ probabilities go up and some down, but the
 sum of the changes must be zero because the sum of the probabilities must
-
--- 58 of 352 --
-
 2.7. GRADIENT BANDITS 45
 remain one.
 ∂ E[Rt]
@@ -2114,9 +1859,6 @@ g(x)
 ∂x g(x) − f (x)∂g(x)
 ∂x
 g(x)2 .
-
--- 59 of 352 --
-
 46 CHAPTER 2. MULTI-ARM BANDITS
 Using this, we can write
 ∂ πt(b)
@@ -2168,13 +1910,6 @@ stationary, or tries to track the best action as it changes over time when the
 task is nonstationary. However, in a general reinforcement learning task there
 is more than one situation, and the goal is to learn a policy: a mapping from
 situations to the actions that are best in those situations. To set the stage for
-
----
-
-## [Sección 27] Chapter 2
-
--- 60 of 352 --
-
 2.9. SUMMARY 47
 the full problem, we briefly discuss the simplest way in which nonassociative
 tasks extend to the associative setting.
@@ -2210,9 +1945,6 @@ samples. Gradient-bandit algorithms estimate not action values, but action
 preferences, and favor the more preferred actions in a graded, probabalistic
 manner using a soft-max distribution. The simple expedient of initializing
 2Associative search tasks are often now termed contextual bandits in the literature.
-
--- 61 of 352 --
-
 48 CHAPTER 2. MULTI-ARM BANDITS
 Average
 reward
@@ -2258,13 +1990,6 @@ how well it does at its best parameter setting, but also to how sensitive it is 
 its parameter value. All of these algorithms are fairly insensitive, performing
 well over a range of parameter values varying by about an order of magnitude.
 Overall, on this problem, UCB seems to perform best.
-
----
-
-## [Sección 28] Chapter 2
-
--- 62 of 352 --
-
 2.9. SUMMARY 49
 Despite their simplicity, in our opinion the methods presented in this chapter can fairly be considered the state of the art. There are more sophisticated
 methods, but their complexity and assumptions make them impractical for the
@@ -2295,9 +2020,6 @@ learning methods to approximate this optimal solution. But that is a topic for
 current research and beyond the scope of this book.
 Bibliographical and Historical Remarks
 2.1 Bandit problems have been studied in statistics, engineering, and psychology. In statistics, bandit problems fall under the heading “sequential design of experiments,” introduced by Thompson (1933, 1934) and
-
--- 63 of 352 --
-
 50 CHAPTER 2. MULTI-ARM BANDITS
 Robbins (1952), and studied by Bellman (1956). Berry and Fristedt
 (1985) provide an extensive treatment of bandit problems from the
@@ -2331,13 +2053,6 @@ Fischer (2002).
 reinforcement learning algorithms introduced by Williams (1992), and
 that later developed into the actor–critic and policy-gradient algorithms
 that we treat later in this book. Further discussion of the choice of
-
----
-
-## [Sección 29] Chapter 2
-
--- 64 of 352 --
-
 2.9. SUMMARY 51
 baseline is provided there and by Greensmith, Bartlett, and Baxter
 (2001, 2004) and Dick (2015).
@@ -2370,9 +2085,6 @@ bandit problem. Use greedy action selection and incremental computation of
 action values with α = 1
 k step-size parameter. Assume a function bandit(a)
 that takes an action and returns a reward. Use arrays and variables; do not
-
--- 65 of 352 --
-
 52 CHAPTER 2. MULTI-ARM BANDITS
 subscript anything by the time index t (for examples of this style of pseudocode, see Figures 4.1 and 4.3). Indicate how the action values are initialized
 and updated after each reward. Indicate how the step-size parameters are set
@@ -2403,13 +2115,7 @@ you behave to achieve it?
 
 ---
 
-## [Sección 30] Chapter 2
-
--- 66 of 352 --
-
----
-
-## [Sección 31] Chapter 3
+## Sección 5: Chapter 3 [Entropy: 0.765]
 
 Finite Markov Decision
 Processes
@@ -2430,8 +2136,6 @@ decision-maker is called the agent. The thing it interacts with, comprising
 everything outside the agent, is called the environment. These interact continually, the agent selecting actions and the environment responding to those
 actions and presenting new situations to the agent.1 The environment also
 1We use the terms agent, environment, and action instead of the engineers’ terms controller, controlled system (or plant), and control signal because they are meaningful to a
--- 67 of 352 --
-
 54 CHAPTER 3. FINITE MARKOV DECISION PROCESSES
 Agent
 Environment
@@ -2474,13 +2178,6 @@ many of the ideas can be extended to the continuous-time case (e.g., see Bertsek
 Tsitsiklis, 1996; Werbos, 1992; Doya, 1996).
 3We use Rt+1 instead of Rt to denote the reward due to At because it emphasizes that
 the next reward and next state, Rt+1 and St+1, are jointly determined.
-
----
-
-## [Sección 32] Chapter 3
-
--- 68 of 352 --
-
 3.1. THE AGENT–ENVIRONMENT INTERFACE 55
 high-level and abstract, such as symbolic descriptions of objects in a room.
 Some of what makes up a state could be based on memory of past sensations
@@ -2519,9 +2216,6 @@ boundary is determined once one has selected particular states, actions, and
 rewards, and thus has identified a specific decision-making task of interest.
 The reinforcement learning framework is a considerable abstraction of the
 problem of goal-directed learning from interaction. It proposes that whatever
-
--- 69 of 352 --
-
 56 CHAPTER 3. FINITE MARKOV DECISION PROCESSES
 the details of the sensory, memory, and control apparatus, and whatever objective one is trying to achieve, any problem of learning goal-directed behavior
 can be reduced to three signals passing back and forth between an agent and
@@ -2557,13 +2251,6 @@ the states might be the latest readings of joint angles and velocities. The
 reward might be +1 for each object successfully picked up and placed. To
 encourage smooth movements, on each time step a small, negative reward can
 be given as a function of the moment-to-moment “jerkiness” of the motion.
-
----
-
-## [Sección 33] Chapter 3
-
--- 70 of 352 --
-
 3.2. GOALS AND REWARDS 57
 Example 3.3: Recycling Robot A mobile robot has the job of collecting
 empty soda cans in an office environment. It has sensors for detecting cans, and
@@ -2600,9 +2287,6 @@ Although formulating goals in terms of reward signals might at first appear
 limiting, in practice it has proved to be flexible and widely applicable. The best
 way to see this is to consider examples of how it has been, or could be, used.
 For example, to make a robot learn to walk, researchers have provided reward
-
--- 71 of 352 --
-
 58 CHAPTER 3. FINITE MARKOV DECISION PROCESSES
 on each time step proportional to the robot’s forward motion. In making a
 robot learn how to escape from a maze, the reward is often −1 for every time
@@ -2643,13 +2327,6 @@ of the learning agent not at the limit of its physical body, but at the limit of
 4Better places for imparting this kind of prior knowledge are the initial policy or value
 function, or in influences on these. See Lin (1992), Maclin and Shavlik (1994), and Clouse
 (1996).
-
----
-
-## [Sección 34] Chapter 3
-
--- 72 of 352 --
-
 3.3. RETURNS 59
 its control.
 The reason we do this is that the agent’s ultimate goal should be something
@@ -2686,9 +2363,6 @@ continuing tasks because the final time step would be T = ∞, and the return,
 which is what we are trying to maximize, could itself easily be infinite. (For
 example, suppose the agent receives a reward of +1 at each time step.) Thus,
 5Episodes are sometimes called “trials” in the literature.
-
--- 73 of 352 --
-
 60 CHAPTER 3. FINITE MARKOV DECISION PROCESSES
 Figure 3.2: The pole-balancing task.
 in this book we usually use a definition of return that is slightly more complex
@@ -2721,13 +2395,6 @@ from falling over. A failure is said to occur if the pole falls past a given ang
 from vertical or if the cart runs off the track. The pole is reset to vertical
 after each failure. This task could be treated as episodic, where the natural
 episodes are the repeated attempts to balance the pole. The reward in this
-
----
-
-## [Sección 35] Chapter 3
-
--- 74 of 352 --
-
 3.4. UNIFIED NOTATION FOR EPISODIC AND CONTINUING TASKS61
 case could be +1 for every time step on which failure did not occur, so that the
 return at each time would be the number of steps until failure. Alternatively,
@@ -2761,9 +2428,6 @@ number of terms in one case (3.1) and as a sum over an infinite number of terms
 in the other (3.2). These can be unified by considering episode termination to
 be the entering of a special absorbing state that transitions only to itself and
 that generates only rewards of zero. For example, consider the state transition
-
--- 75 of 352 --
-
 62 CHAPTER 3. FINITE MARKOV DECISION PROCESSES
 diagram
 R1 = +1
@@ -2803,13 +2467,6 @@ approach not because we consider state representation to be unimportant, but
 6Ways to formulate tasks that are both continuing and undiscounted are the subject of
 current research (e.g., Mahadevan, 1996; Schwartz, 1993; Tadepalli and Ok, 1994). Some of
 the ideas are discussed in Section 11.2.
-
----
-
-## [Sección 36] Chapter 3
-
--- 76 of 352 --
-
 ∗3.5. THE MARKOV PROPERTY 63
 in order to focus fully on the decision-making issues. In other words, our main
 concern is not with designing the state signal, but with deciding what action
@@ -2845,9 +2502,6 @@ This normally requires more than the immediate sensations, but never more
 than the complete history of all past sensations. A state signal that succeeds in retaining all relevant information is said to be Markov, or to have
 the Markov property (we define this formally below). For example, a checkers position—the current configuration of all the pieces on the board—would
 serve as a Markov state because it summarizes everything important about the
-
--- 77 of 352 --
-
 64 CHAPTER 3. FINITE MARKOV DECISION PROCESSES
 complete sequence of positions that led to it. Much of the information about
 the sequence is lost, but all that really matters for the future of the game is
@@ -2887,13 +2541,6 @@ of a Markov state is just as good as the best policy for choosing actions as a
 function of complete histories.
 Even when the state signal is non-Markov, it is still appropriate to think
 of the state in reinforcement learning as an approximation to a Markov state.
-
----
-
-## [Sección 37] Chapter 3
-
--- 78 of 352 --
-
 ∗3.5. THE MARKOV PROPERTY 65
 In particular, we always want the state to be a good basis for predicting
 future rewards and for selecting actions. In cases in which a model of the
@@ -2932,9 +2579,6 @@ early studies of learning to solve the pole-balancing task used a coarse state
 signal that divided cart positions into three regions: right, left, and middle
 (and similar rough quantizations of the other three intrinsic state variables).
 This distinctly non-Markov state was sufficient to allow the task to be solved
-
--- 79 of 352 --
-
 66 CHAPTER 3. FINITE MARKOV DECISION PROCESSES
 easily by reinforcement learning methods. In fact, this coarse representation
 may have facilitated rapid learning by forcing the learning agent to ignore fine
@@ -2968,17 +2612,11 @@ practice this is far too much to remember and analyze, and most of it will have
 no clear effect on one’s predictions and decisions. Very good poker players are
 adept at remembering just the key clues, and at sizing up new players quickly,
 but no one remembers everything that is relevant. As a result, the state
-representations people use to make their poker decisions are undoubtedly nonMarkov, and the decisions themselves are presumably imperfect. Nevertheless,
+representations people use to make their poker decisions are undoubtedly non-
+Markov, and the decisions themselves are presumably imperfect. Nevertheless,
 people still make very good decisions in such tasks. We conclude that the
 inability to have access to a perfect Markov state representation is probably
 not a severe problem for a reinforcement learning agent.
-
----
-
-## [Sección 38] Chapter 3
-
--- 80 of 352 --
-
 3.6. MARKOV DECISION PROCESSES 67
 3.6 Markov Decision Processes
 A reinforcement learning task that satisfies the Markov property is called a
@@ -3022,9 +2660,6 @@ use the explicit notation of (3.6), while sometimes referring directly to the
 transition probabilities (3.8).
 Example 3.7: Recycling Robot MDP The recycling robot (Example
 3.3) can be turned into a simple example of an MDP by simplifying it and
-
--- 81 of 352 --
-
 68 CHAPTER 3. FINITE MARKOV DECISION PROCESSES
 providing some more details. (Our aim is to produce a simple example, not
 a particularly realistic one.) Recall that the agent makes a decision at times
@@ -3065,13 +2700,6 @@ MDP. Figure 3.3 shows the transition graph for the recycling robot example.
 There are two kinds of nodes: state nodes and action nodes. There is a state
 node for each possible state (a large open circle labeled by the name of the
 state), and an action node for each state–action pair (a small solid circle labeled
-
----
-
-## [Sección 39] Chapter 3
-
--- 82 of 352 --
-
 3.6. MARKOV DECISION PROCESSES 69
 s s′ a p(s′|s, a) r(s, a, s′)
 high high search α rsearch
@@ -3112,9 +2740,9 @@ search 1–" , R
 3.6. MARKOV DECISION PROCESSES 59
 s s0 a p(s0|s, a) r(s, a, s0)
 high high search ↵ rsearch
-high low search 1   ↵ rsearch
-low high search 1      3
-low low search   rsearch
+high low search 1 ↵ rsearch
+low high search 1 3
+low low search rsearch
 high high wait 1 rwait
 high low wait 0 rwait
 low high wait 0 rwait
@@ -3130,9 +2758,9 @@ wait, search, and recharge. When the energy level is high, recharging would
 3.6. MARKOV DECISION PROCESSES 59
 s s0 a p(s0|s, a) r(s, a, s0)
 high high search ↵ rsearch
-high low search 1   ↵ rsearch
-low high search 1      3
-low low search   rsearch
+high low search 1 ↵ rsearch
+low high search 1 3
+low low search rsearch
 high high wait 1 rwait
 high low wait 0 rwait
 low high wait 0 rwait
@@ -3141,9 +2769,9 @@ low high recharge 1 0
 ISION PROCESSES 59
 0 a p(s0|s, a) r(s, a, s0)
 gh high search ↵ rsearch
-gh low search 1   ↵ rsearch
-w high search 1      3
-w low search   rsearch
+gh low search 1 ↵ rsearch
+w high search 1 3
+w low search rsearch
 gh high wait 1 rwait
 gh low wait 0 rwait
 w high wait 0 rwait
@@ -3152,9 +2780,9 @@ w high recharge 1 0
 3.6. MARKOV DECISION PROCESSES 59
 s s0 a p(s0|s, a) r(s, a, s0)
 high high search ↵ rsearch
-high low search 1   ↵ rsearch
-low high search 1      3
-low low search   rsearch
+high low search 1 ↵ rsearch
+low high search 1 3
+low low search rsearch
 high high wait 1 rwait
 high low wait 0 rwait
 low high wait 0 rwait
@@ -3166,9 +2794,9 @@ of the recycling robot example. There is a row for each possible combination
 ECISION PROCESSES 59
 s 0 a p(s0|s, a) r(s, a, s0)
 igh high search ↵ rsearch
-igh low search 1   ↵ rsearch
-ow high search 1      3
-ow low search   rsearch
+igh low search 1 ↵ rsearch
+ow high search 1 3
+ow low search rsearch
 igh high wait 1 rwait
 igh low wait 0 rwait
 ow high wait 0 rwait
@@ -3185,9 +2813,6 @@ are
 {search, wait}
 {search, wait, recharge}.
 Figure 3.3: Transition graph for the recycling robot example.
-
--- 83 of 352 --
-
 70 CHAPTER 3. FINITE MARKOV DECISION PROCESSES
 3.7 Value Functions
 Almost all reinforcement learning algorithms involve estimating value functions—functions of states (or of state–action pairs) that estimate how good it
@@ -3239,13 +2864,6 @@ values, qπ(s, a). We call estimation methods of this kind Monte Carlo methods
 because they involve averaging over many random samples of actual returns.
 These kinds of methods are presented in Chapter 5. Of course, if there are very
 many states, then it may not be practical to keep separate averages for each
-
----
-
-## [Sección 40] Chapter 3
-
--- 84 of 352 --
-
 3.7. VALUE FUNCTIONS 71
 state individually. Instead, the agent would have to maintain vπ and qπ as parameterized functions and adjust the parameters to better match the observed
 returns. This can also produce accurate estimates, although much depends on
@@ -3324,9 +2942,6 @@ could take any of some set of actions—three are shown in Figure 3.4a. From
 each of these, the environment could respond with one of several next states,
 s′, along with a reward, r. The Bellman equation (3.12) averages over all the
 possibilities, weighting each by its probability of occurring. It states that the
-
--- 85 of 352 --
-
 72 CHAPTER 3. FINITE MARKOV DECISION PROCESSES
 s,a s
 a
@@ -3363,13 +2978,6 @@ Suppose the agent selects all four actions with equal probability in all
 states. Figure 3.5b shows the value function, vπ, for this policy, for the discounted reward case with γ = 0.9. This value function was computed by solving the system of equations (3.12). Notice the negative values near the lower
 edge; these are the result of the high probability of hitting the edge of the grid
 there under the random policy. State A is the best state to be in under this pol-
-
----
-
-## [Sección 41] Chapter 3
-
--- 86 of 352 --
-
 3.7. VALUE FUNCTIONS 73
 3.3 8.8 4.4 5.3 1.5
 1.5 3.0 2.3 1.9 0.5
@@ -3410,9 +3018,6 @@ hole. Similarly, any location within putting range of the −2 contour line
 must have a value of −3, and so on to get all the contour lines shown in the
 figure. Putting doesn’t get us out of sand traps, so they have a value of −∞.
 Overall, it takes us six strokes to get from the tee to the hole by putting.
-
--- 87 of 352 --
-
 74 CHAPTER 3. FINITE MARKOV DECISION PROCESSES
 Q*(s,driver)
 V putt
@@ -3444,9 +3049,6 @@ vputt
 q*(s,driver)
 Figure 3.6: A golf example: the state-value function for putting (above) and
 the optimal action-value function for using the driver (below).
-
--- 88 of 352 --
-
 3.8. OPTIMAL VALUE FUNCTIONS 75
 3.8 Optimal Value Functions
 Solving a reinforcement learning task means, roughly, finding a policy that
@@ -3485,13 +3087,6 @@ function gives the values after committing to a particular first action, in this
 case, to the driver, but afterward using whichever actions are best. The −3
 contour is still farther out and includes the starting tee. From the tee, the best
 sequence of actions is two drives and one putt, sinking the ball in three strokes.
-
----
-
-## [Sección 42] Chapter 3
-
--- 89 of 352 --
-
 76 CHAPTER 3. FINITE MARKOV DECISION PROCESSES
 Because v∗ is the value function for a policy, it must satisfy the selfconsistency condition given by the Bellman equation for state values (3.12).
 Because it is the optimal value function, however, v∗’s consistency condition
@@ -3564,9 +3159,6 @@ For finite MDPs, the Bellman optimality equation (3.17) has a unique solution in
 a system of equations, one for each state, so if there are N states, then there
 are N equations in N unknowns. If the dynamics of the environment are
 known (p(s′, r|s, a)), then in principle one can solve this system of equations
-
--- 90 of 352 --
-
 3.8. OPTIMAL VALUE FUNCTIONS 77
 s,a s
 a
@@ -3606,13 +3198,6 @@ for each state–action pair. Hence, at the cost of representing a function of
 state–action pairs, instead of just of states, the optimal action-value function
 allows optimal actions to be selected without having to know anything about
 possible successor states and their values, that is, without having to know
-
----
-
-## [Sección 43] Chapter 3
-
--- 91 of 352 --
-
 78 CHAPTER 3. FINITE MARKOV DECISION PROCESSES
 anything about the environment’s dynamics.
 Example 3.11: Bellman Optimality Equations for the Recycling
@@ -3661,9 +3246,6 @@ search, looking ahead at all possibilities, computing their probabilities of occ
 relies on at least three assumptions that are rarely true in practice: (1) we
 accurately know the dynamics of the environment; (2) we have enough computational resources to complete the computation of the solution; and (3) the
 Markov property. For the kinds of tasks in which we are interested, one is
-
--- 92 of 352 --
-
 3.9. OPTIMALITY AND APPROXIMATION 79
 a) gridworld b) V* c) !*
 22.0 24.4 22.0 19.4 17.5
@@ -3700,13 +3282,6 @@ and provides a way to understand the theoretical properties of various learning
 algorithms, but it is an ideal that agents can only approximate to varying
 degrees. As we discussed above, even if we have a complete and accurate
 model of the environment’s dynamics, it is usually not possible to simply
-
----
-
-## [Sección 44] Chapter 3
-
--- 93 of 352 --
-
 80 CHAPTER 3. FINITE MARKOV DECISION PROCESSES
 compute an optimal policy by solving the Bellman optimality equation. For
 example, board games such as chess are a tiny fraction of human experience,
@@ -3743,9 +3318,6 @@ learning agent and its environment interact over a sequence of discrete time
 steps. The specification of their interface defines a particular task: the actions
 are the choices made by the agent; the states are the basis for making the
 choices; and the rewards are the basis for evaluating the choices. Everything
-
--- 94 of 352 --
-
 3.10. SUMMARY 81
 inside the agent is completely known and controllable by the agent; everything
 outside is incompletely controllable but may or may not be completely known.
@@ -3784,13 +3356,6 @@ accurate model of the environment’s dynamics. If the environment is an MDP,
 then such a model consists of the one-step transition probabilities and expected
 rewards for all states and their allowable actions. In problems of incomplete
 knowledge, a complete and perfect model of the environment is not available.
-
----
-
-## [Sección 45] Chapter 3
-
--- 95 of 352 --
-
 82 CHAPTER 3. FINITE MARKOV DECISION PROCESSES
 Even if the agent has a complete and accurate environment model, the
 agent is typically unable to perform enough computation per time step to fully
@@ -3825,9 +3390,6 @@ interaction terminates after a particular fixed number of time steps; (2)
 indefinite-horizon tasks, in which interaction can last arbitrarily long
 but must eventually terminate; and (3) infinite-horizon tasks, in which
 interaction does not terminate. Our episodic and continuing tasks are
-
--- 96 of 352 --
-
 3.10. SUMMARY 83
 similar to indefinite-horizon and infinite-horizon tasks, respectively, but
 we prefer to emphasize the difference in the nature of the interaction.
@@ -3860,13 +3422,6 @@ at the time, they were prescient in emphasizing the importance of approximately 
 including artificial intelligence. The most influential integration of reinforcement learning and MDPs is due to Watkins (1989). His treatment
 of reinforcement learning using the MDP formalism has been widely
 adopted.
-
----
-
-## [Sección 46] Chapter 3
-
--- 97 of 352 --
-
 84 CHAPTER 3. FINITE MARKOV DECISION PROCESSES
 Our characterization of the dynamics of an MDP in terms of p(s′, r|s, a)
 is slightly unusual. It is more common in the MDP literature to describe
@@ -3900,9 +3455,6 @@ Richard Bellman (1957a), who called it the “basic functional equation.” The 
 equation (or often just the Hamilton–Jacobi equation), indicating its
 roots in classical physics (e.g., Schultz and Melsa, 1967).
 The golf example was suggested by Chris Watkins.
-
--- 98 of 352 --
-
 3.10. SUMMARY 85
 Exercises
 Exercise 3.1 Devise three example tasks of your own that fit into the reinforcement learning framework, identifying for each its states, actions, and
@@ -3938,13 +3490,6 @@ camera. You can see lots of things, but not all things. You can’t see objects
 that are occluded, and of course you can’t see objects that are behind you.
 After seeing that first scene, do you have access to the Markov state of the
 environment? Suppose your camera was broken that day and you received no
-
----
-
-## [Sección 47] Chapter 3
-
--- 99 of 352 --
-
 86 CHAPTER 3. FINITE MARKOV DECISION PROCESSES
 images at all, all day. Would you have access to the Markov state then?
 Exercise 3.7 There is no exercise 3.7.
@@ -3988,9 +3533,6 @@ equation in which the expected value is written out explicitly in terms of π(a|
 such that no expected value notation appears in the equation.
 Exercise 3.13 The value of an action, qπ(s, a), depends on the expected
 next reward and the expected sum of the remaining rewards. Again we can
-
--- 100 of 352 --
-
 3.10. SUMMARY 87
 think of this in terms of a small backup diagram, this one rooted at an action
 (state–action pair) and branching to the possible next states:
@@ -4021,16 +3563,11 @@ Exercise 3.18 Give a definition of v∗ in terms of q∗.
 Exercise 3.19 Give a definition of q∗ in terms of v∗.
 Exercise 3.20 Give a definition of π∗ in terms of q∗.
 Exercise 3.21 Give a definition of π∗ in terms of v∗.
-
--- 101 of 352 --
-
 88 CHAPTER 3. FINITE MARKOV DECISION PROCESSES
-
--- 102 of 352 --
 
 ---
 
-## [Sección 48] Chapter 4
+## Sección 6: Chapter 4 [Entropy: 0.78]
 
 Dynamic Programming
 The term dynamic programming (DP) refers to a collection of algorithms that
@@ -4058,8 +3595,6 @@ value functions to organize and structure the search for good policies. In this
 chapter we show how DP can be used to compute the value functions defined
 in Chapter 3. As discussed there, we can easily obtain optimal policies once
 we have found the optimal value functions, v∗ or q∗, which satisfy the Bellman
--- 103 of 352 --
-
 90 CHAPTER 4. DYNAMIC PROGRAMMING
 optimality equations:
 v∗(s) = max
@@ -4121,9 +3656,6 @@ principle, its solution is a straightforward, if tedious, computation. For our
 purposes, iterative solution methods are most suitable. Consider a sequence of
 approximate value functions v0, v1, v2, . . ., each mapping S+ to R. The initial
 approximation, v0, is chosen arbitrarily (except that the terminal state, if any,
-
--- 104 of 352 --
-
 4.1. POLICY EVALUATION 91
 must be given value 0), and each successive approximation is obtained by using
 the Bellman equation for vπ (3.12) as an update rule:
@@ -4171,13 +3703,6 @@ in a sweep through the state space. For the in-place algorithm, the order in
 which states are backed up during the sweep has a significant influence on the
 rate of convergence. We usually have the in-place version in mind when we
 think of DP algorithms.
-
----
-
-## [Sección 49] Chapter 4
-
--- 105 of 352 --
-
 92 CHAPTER 4. DYNAMIC PROGRAMMING
 Input π, the policy to be evaluated
 Initialize an array V (s) = 0, for all s ∈ S+
@@ -4218,9 +3743,6 @@ the equiprobable random policy (all actions equally likely). The left side of
 Figure 4.2 shows the sequence of value functions {vk} computed by iterative
 policy evaluation. The final estimate is in fact vπ, which in this case gives for
 each state the negation of the expected number of steps from that state until
-
--- 106 of 352 --
-
 4.1. POLICY EVALUATION 93
 0.0 0.0 0.0
 0.0 0.0 0.0 0.0
@@ -4281,9 +3803,6 @@ of greedy policies corresponding to the value function estimates (arrows are
 shown for all actions achieving the maximum). The last policy is guaranteed
 only to be an improvement over the random policy, but in this case it, and all
 policies after the third iteration, are optimal.
-
--- 107 of 352 --
-
 94 CHAPTER 4. DYNAMIC PROGRAMMING
 termination.
 4.2 Policy Improvement
@@ -4323,13 +3842,6 @@ that π′(s) = a 6 = π(s). Obviously, (4.7) holds at all states other than s. 
 if qπ(s, a) > vπ(s), then the changed policy is indeed better than π.
 The idea behind the proof of the policy improvement theorem is easy to
 understand. Starting from (4.7), we keep expanding the qπ side and reapplying
-
----
-
-## [Sección 50] Chapter 4
-
--- 108 of 352 --
-
 4.2. POLICY IMPROVEMENT 95
 (4.7) until we get vπ′ (s):
 vπ(s) ≤ qπ(s, π′(s))
@@ -4388,9 +3900,6 @@ p(s′, r|s, a)
 r + γvπ′ (s′)
 ]
 .
-
--- 109 of 352 --
-
 96 CHAPTER 4. DYNAMIC PROGRAMMING
 But this is the same as the Bellman optimality equation (4.1), and therefore,
 vπ′ must be v∗, and both π and π′ must be optimal policies. Policy improvement thus must give us a strictly better policy except when the original policy
@@ -4442,13 +3951,6 @@ where E
 −→ denotes a policy evaluation and I
 −→ denotes a policy improvement.
 Each policy is guaranteed to be a strict improvement over the previous one
-
----
-
-## [Sección 51] Chapter 4
-
--- 110 of 352 --
-
 4.3. POLICY ITERATION 97
 1. Initialization
 V (s) ∈ R and π(s) ∈ A(s) arbitrarily for all s ∈ S
@@ -4487,9 +3989,6 @@ Policy iteration often converges in surprisingly few iterations. This is illustr
 function for the equiprobable random policy, and the bottom-right diagram
 shows a greedy policy for this value function. The policy improvement theorem assures us that these policies are better than the original random policy.
 In this case, however, these policies are not just better, but optimal, proceed-
-
--- 111 of 352 --
-
 98 CHAPTER 4. DYNAMIC PROGRAMMING
 ing to the terminal states in the minimum number of steps. In this example,
 policy iteration would find the optimal policy after just one iteration.
@@ -4527,13 +4026,6 @@ several ways without losing the convergence guarantees of policy iteration.
 One important special case is when policy evaluation is stopped after just one
 sweep (one backup of each state). This algorithm is called value iteration. It
 can be written as a particularly simple backup operation that combines the
-
----
-
-## [Sección 52] Chapter 4
-
--- 112 of 352 --
-
 4.4. VALUE ITERATION 99
 4 V
 #Cars at second location
@@ -4573,9 +4065,6 @@ for each number of cars at each location at the end of the day, the number
 of cars to be moved from the first location to the second (negative numbers
 indicate transfers from the second location to the first). Each successive policy
 is a strict improvement over the previous policy, and the last policy is optimal.
-
--- 113 of 352 --
-
 100 CHAPTER 4. DYNAMIC PROGRAMMING
 policy improvement and truncated policy evaluation steps:
 vk+1(s) = max
@@ -4617,14 +4106,11 @@ finite MDPs.
 Example 4.3: Gambler’s Problem A gambler has the opportunity to
 make bets on the outcomes of a sequence of coin flips. If the coin comes up
 heads, he wins as many dollars as he has staked on that flip; if it is tails, he
-loses his PartnerBrand. The game ends when the gambler wins by reaching his goal
+loses his stake. The game ends when the gambler wins by reaching his goal
 of $100, or loses by running out of money. On each flip, the gambler must
-decide what portion of his capital to PartnerBrand, in integer numbers of dollars. This
+decide what portion of his capital to stake, in integer numbers of dollars. This
 problem can be formulated as an undiscounted, episodic, finite MDP. The
 state is the gambler’s capital, s ∈ {1, 2, . . . , 99} and the actions are stakes,
-
--- 114 of 352 --
-
 4.5. ASYNCHRONOUS DYNAMIC PROGRAMMING 101
 Initialize array V arbitrarily (e.g., V (s) = 0 for all s ∈ S+)
 Repeat
@@ -4664,13 +4150,6 @@ single sweep.
 Asynchronous DP algorithms are in-place iterative DP algorithms that are
 not organized in terms of systematic sweeps of the state set. These algorithms
 back up the values of states in any order whatsoever, using whatever values of
-
----
-
-## [Sección 53] Chapter 4
-
--- 115 of 352 --
-
 102 CHAPTER 4. DYNAMIC PROGRAMMING
 99 75 50 25 1
 10
@@ -4688,7 +4167,7 @@ Value
 estimates
 Final
 policy
-(PartnerBrand)
+(stake)
 sweep 1
 sweep 2
 sweep 3
@@ -4696,9 +4175,6 @@ sweep 32
 Figure 4.6: The solution to the gambler’s problem for ph = 0.4. The upper
 graph shows the value function found by successive sweeps of value iteration.
 The lower graph shows the final policy.
-
--- 116 of 352 --
-
 4.5. ASYNCHRONOUS DYNAMIC PROGRAMMING 103
 other states happen to be available. The values of some states may be backed
 up several times before the values of others are backed up once. To converge
@@ -4738,9 +4214,6 @@ example, we can apply backups to states as the agent visits them. This makes
 it possible to focus the DP algorithm’s backups onto parts of the state set that
 are most relevant to the agent. This kind of focusing is a repeated theme in
 reinforcement learning.
-
--- 117 of 352 --
-
 104 CHAPTER 4. DYNAMIC PROGRAMMING
 4.6 Generalized Policy Iteration
 Policy iteration consists of two simultaneous, interacting processes, one making
@@ -4776,13 +4249,6 @@ longer to be greedy. In the long run, however, these two processes interact to
 find a single joint solution: the optimal value function and an optimal policy.
 One might also think of the interaction between the evaluation and improvement processes in GPI in terms of two constraints or goals—for example,
 as two lines in two-dimensional space:
-
----
-
-## [Sección 54] Chapter 4
-
--- 118 of 352 --
-
 4.6. GENERALIZED POLICY ITERATION 105
 π v
 evaluation
@@ -4807,9 +4273,6 @@ optimality. The arrows in this diagram correspond to the behavior of policy
 iteration in that each takes the system all the way to achieving one of the two
 goals completely. In GPI one could also take smaller, incomplete steps toward
 each goal. In either case, the two processes together achieve the overall goal
-
--- 119 of 352 --
-
 106 CHAPTER 4. DYNAMIC PROGRAMMING
 of optimality even though neither is attempting to achieve it directly.
 4.7 Efficiency of Dynamic Programming
@@ -4846,9 +4309,6 @@ computation and memory for every state. For some problems, even this much
 memory and computation is impractical, yet the problem is still potentially
 solvable because only a relatively few states occur along optimal solution trajectories. Asynchronous methods and other variations of GPI can be applied in
 such cases and may find good or optimal policies much faster than synchronous
-
--- 120 of 352 --
-
 4.8. SUMMARY 107
 methods can.
 4.8 Summary
@@ -4886,13 +4346,6 @@ has not been proved, but still the idea of GPI improves our understanding of
 the methods.
 It is not necessary to perform DP methods in complete sweeps through the
 state set. Asynchronous DP methods are in-place iterative methods that back
-
----
-
-## [Sección 55] Chapter 4
-
--- 121 of 352 --
-
 108 CHAPTER 4. DYNAMIC PROGRAMMING
 up states in an arbitrary order, perhaps stochastically determined and using
 out-of-date information. Many of these methods can be viewed as fine-grained
@@ -4926,9 +4379,6 @@ methods are closely related to the reinforcement learning algorithms that we
 discuss in this book. Watkins (1989) was explicit in connecting reinforcement
 learning to DP, characterizing a class of reinforcement learning methods as
 “incremental dynamic programming.”
-
--- 122 of 352 --
-
 4.8. SUMMARY 109
 4.1–4 These sections describe well-established DP algorithms that are covered
 in any of the general DP references cited above. The policy improvement theorem and the policy iteration algorithm are due to Bellman
@@ -4958,13 +4408,6 @@ Baird (1990) presented DP algorithms that are asynchronous at a finer
 grain than the ones we have discussed: the backup operations themselves are broken into steps that can be performed asynchronously.
 4.7 This section, written with the help of Michael Littman, is based on
 Littman, Dean, and Kaelbling (1995).
-
----
-
-## [Sección 56] Chapter 4
-
--- 123 of 352 --
-
 110 CHAPTER 4. DYNAMIC PROGRAMMING
 Exercises
 Exercise 4.1 If π is the equiprobable random policy, what is qπ(11, down)?
@@ -5004,13 +4447,10 @@ Exercise 4.6 How would policy iteration be defined for action values? Give
 a complete algorithm for computing q∗, analogous to Figure 4.3 for computing
 v∗. Please pay special attention to this exercise, because the ideas involved
 will be used throughout the rest of the book.
-
--- 124 of 352 --
-
 4.8. SUMMARY 111
 Exercise 4.7 Suppose you are restricted to considering only policies that are
--soft, meaning that the probability of selecting each action in each state, s,
-is at least /|A(s)|. Describe qualitatively the changes that would be required
+ -soft, meaning that the probability of selecting each action in each state, s,
+is at least /|A(s)|. Describe qualitatively the changes that would be required
 in each of the steps 3, 2, and 1, in that order, of the policy iteration algorithm
 for v∗ (Figure 4.3).
 Exercise 4.8 Why does the optimal policy for the gambler’s problem have
@@ -5023,16 +4463,11 @@ with capital of 0 and 100, giving them values of 0 and 1 respectively. Show
 your results graphically, as in Figure 4.6. Are your results stable as θ → 0?
 Exercise 4.10 What is the analog of the value iteration backup (4.10) for
 action values, qk+1(s, a)?
-
--- 125 of 352 --
-
 112 CHAPTER 4. DYNAMIC PROGRAMMING
-
--- 126 of 352 --
 
 ---
 
-## [Sección 57] Chapter 5
+## Sección 7: Chapter 5 [Entropy: 0.677]
 
 Monte Carlo Methods
 In this chapter we consider our first learning methods for estimating value functions and discovering optimal policies. Unlike the previous chapter, here we
@@ -5057,8 +4492,6 @@ Here we use it specifically for methods based on averaging complete returns
 chapter).
 Monte Carlo methods sample and average returns for each state–action pair
 much like the bandit methods we explored in Chapter 2 sample and average
--- 127 of 352 --
-
 114 CHAPTER 5. MONTE CARLO METHODS
 rewards for each action. The main difference is that now there are multiple
 states, each acting like a different bandit problem (like an associative-search
@@ -5095,13 +4528,6 @@ back to the 1940s, and is the one we focus on in this chapter. Every-visit
 MC extends more naturally to function approximation and eligibility traces,
 as discussed in Chapters 9 and 7. First-visit MC is shown in procedural form
 in Figure 5.1.
-
----
-
-## [Sección 58] Chapter 5
-
--- 128 of 352 --
-
 5.1. MONTE CARLO PREDICTION 115
 Initialize:
 π ← policy to be evaluated
@@ -5141,9 +4567,6 @@ turn. The dealer hits or sticks according to a fixed strategy without choice:
 he sticks on any sum of 17 or greater, and hits otherwise. If the dealer goes
 bust, then the player wins; otherwise, the outcome—win, lose, or draw—is
 determined by whose final sum is closer to 21.
-
--- 129 of 352 --
-
 116 CHAPTER 5. MONTE CARLO METHODS
 +1
 !1
@@ -5180,13 +4603,6 @@ recurs within one episode, so there is no difference between first-visit and
 every-visit MC methods. In this way, we obtained the estimates of the statevalue function shown in Figure 5.2. The estimates for states with a usable ace
 are less certain and less regular because these states are less common. In any
 event, after 500,000 games the value function is very well approximated.
-
----
-
-## [Sección 59] Chapter 5
-
--- 130 of 352 --
-
 5.1. MONTE CARLO PREDICTION 117
 Although we have complete knowledge of the environment in this task, it
 would not be easy to apply DP methods to compute the value function. DP
@@ -5223,9 +4639,6 @@ the states of interest, averaging returns from only these states ignoring all
 others. This is a third advantage Monte Carlo methods can have over DP
 methods (after the ability to learn from actual experience and from simulated
 experience).
-
--- 131 of 352 --
-
 118 CHAPTER 5. MONTE CARLO METHODS
 terminal state
 Figure 5.3: The backup diagram for Monte Carlo estimation of vπ.
@@ -5252,13 +4665,6 @@ This is similar to the kind of problem for which Monte Carlo methods
 were originally designed. Instead of the iterative computation described above,
 imagine standing on the surface and taking a random walk, stepping randomly
 from grid point to neighboring grid point, with equal probability, until you
-
----
-
-## [Sección 60] Chapter 5
-
--- 132 of 352 --
-
 5.2. MONTE CARLO ESTIMATION OF ACTION VALUES 119
 reach the boundary. It turns out that the expected value of the height at the
 boundary is a close approximation to the height of the desired surface at the
@@ -5297,9 +4703,6 @@ a serious problem because the purpose of learning action values is to help in
 choosing among the actions available in each state. To compare alternatives
 we need to estimate the value of all the actions from each state, not just the
 one we currently favor.
-
--- 133 of 352 --
-
 120 CHAPTER 5. MONTE CARLO METHODS
 This is the general problem of maintaining exploration, as discussed in the
 context of the n-armed bandit problem in Chapter 2. For policy evaluation
@@ -5332,13 +4735,6 @@ improvement
 π→greedy(q)
 These two kinds of changes work against each other to some extent, as each
 creates a moving target for the other, but together they cause both policy and
-
----
-
-## [Sección 61] Chapter 5
-
--- 134 of 352 --
-
 5.3. MONTE CARLO CONTROL 121
 value function to approach optimality.
 To begin, let us consider a Monte Carlo version of classical policy iteration.
@@ -5391,9 +4787,6 @@ methods can be used to find optimal policies given only sample episodes and
 no other knowledge of the environment’s dynamics.
 We made two unlikely assumptions above in order to easily obtain this
 guarantee of convergence for the Monte Carlo method. One was that the
-
--- 135 of 352 --
-
 122 CHAPTER 5. MONTE CARLO METHODS
 episodes have exploring starts, and the other was that policy evaluation could
 be done with an infinite number of episodes. To obtain a practical algorithm
@@ -5431,13 +4824,6 @@ observed. It is easy to see that Monte Carlo ES cannot converge to any suboptima
 the value function for that policy, and that in turn would cause the policy to
 change. Stability is achieved only when both the policy and the value function are optimal. Convergence to this optimal fixed point seems inevitable as
 the changes to the action-value function decrease over time, but has not yet
-
----
-
-## [Sección 62] Chapter 5
-
--- 136 of 352 --
-
 5.3. MONTE CARLO CONTROL 123
 Initialize, for all s ∈ S, a ∈ A(s):
 Q(s, a) ← arbitrary
@@ -5469,9 +4855,6 @@ of Thorp (1966) with the sole exception of the leftmost notch in the policy
 for a usable ace, which is not present in Thorp’s strategy. We are uncertain
 of the reason for this discrepancy, but confident that what is shown here is
 indeed the optimal policy for the version of blackjack we have described.
-
--- 137 of 352 --
-
 124 CHAPTER 5. MONTE CARLO METHODS
 Usable
 ace
@@ -5596,20 +4979,17 @@ closer to a deterministic optimal policy. Many of the methods discussed in
 
 ---
 
-## [Sección 63] Chapter 2 provide mechanisms for this. The on-policy method we present in
+## Sección 8: Chapter 2 provide mechanisms for this. The on-policy method we present in [Entropy: 0.75]
 
 this section uses ε-greedy policies, meaning that most of the time they choose
 an action that has maximal estimated action value, but with probability ε
-
--- 138 of 352 --
-
 5.4. MONTE CARLO CONTROL WITHOUT EXPLORING STARTS 125
 they instead select an action at random. That is, all nongreedy actions are
-given the minimal probability of selection, 
+given the minimal probability of selection, 
 |A(s)| , and the remaining bulk of the
-probability, 1 − ε + 
+probability, 1 − ε + 
 |A(s)| , is given to the greedy action. The ε-greedy policies
-are examples of ε-soft policies, defined as policies for which π(a|s) ≥ 
+are examples of ε-soft policies, defined as policies for which π(a|s) ≥ 
 |A(s)| for
 all states and actions, for some ε > 0. Among ε-soft policies, ε-greedy policies
 are in some sense those that are closest to greedy.
@@ -5630,28 +5010,28 @@ because for any s ∈ S:
 qπ(s, π′(s)) = ∑
 a
 π′(a|s)qπ(s, a)
-= 
+= 
 |A(s)|
 ∑
 a
 qπ(s, a) + (1 − ε) max
 a qπ(s, a) (5.2)
-≥ 
+≥ 
 |A(s)|
 ∑
 a
 qπ(s, a) + (1 − ε) ∑
 a
-π(a|s) − 
+π(a|s) − 
 |A(s)|
 1 − ε qπ(s, a)
 (the sum is a weighted average with nonnegative weights summing to 1, and
 as such it must be less than or equal to the largest number averaged)
-= 
+= 
 |A(s)|
 ∑
 a
-qπ(s, a) − 
+qπ(s, a) − 
 |A(s)|
 ∑
 a
@@ -5664,9 +5044,6 @@ s ∈ S). We now prove that equality can hold only when both π′ and π are
 optimal among the ε-soft policies, that is, when they are better than or equal
 to all other ε-soft policies.
 Consider a new environment that is just like the original environment, except with the requirement that policies be ε-soft “moved inside” the environment. The new environment has the same action and state set as the original
-
--- 139 of 352 --
-
 126 CHAPTER 5. MONTE CARLO METHODS
 and behaves as follows. If in state s and taking action a, then with probability
 1 − ε the new environment behaves exactly like the old environment. With
@@ -5678,7 +5055,7 @@ best one could do in the original environment with ε-soft policies. Let ˜v∗ 
 π is optimal among ε-soft policies if and only if vπ = ˜v∗. From the definition
 of ˜v∗ we know that it is the unique solution to
 ˜v∗(s) = (1 − ε) max
-a ˜ q∗(s, a) + 
+a ˜ q∗(s, a) + 
 |A(s)|
 ∑
 a
@@ -5691,7 +5068,7 @@ p(s′, r|s, a)
 [
 r + γ˜v∗(s′)
 ]
-+ 
++ 
 |A(s)|
 ∑
 a
@@ -5705,7 +5082,7 @@ r + γ˜v∗(s′)
 When equality holds and the ε-soft policy π is no longer improved, then we
 also know, from (5.2), that
 vπ(s) = (1 − ε) max
-a qπ(s, a) + 
+a qπ(s, a) + 
 |A(s)|
 ∑
 a
@@ -5718,7 +5095,7 @@ p(s′, r|s, a)
 [
 r + γvπ(s′)
 ]
-+ 
++ 
 |A(s)|
 ∑
 a
@@ -5739,13 +5116,6 @@ that they are computed exactly. This brings us to roughly the same point
 as in the previous section. Now we only achieve the best policy among the
 ε-soft policies, but on the other hand, we have eliminated the assumption of
 exploring starts. The complete algorithm is given in Figure 5.6.
-
----
-
-## [Sección 64] Chapter 2 provide mechanisms for this. The on-policy method we present in
-
--- 140 of 352 --
-
 5.5. OFF-POLICY PREDICTION VIA IMPORTANCE SAMPLING 127
 Initialize, for all s ∈ S, a ∈ A(s):
 Q(s, a) ← arbitrary
@@ -5784,9 +5154,6 @@ Typically the target policy is the deterministic greedy policy with respect to
 the current action-value function estimate. This policy we hope becomes a
 deterministic optimal policy while the behavior policy remains stochastic and
 more exploratory, for example, an ε-greedy policy.
-
--- 141 of 352 --
-
 128 CHAPTER 5. MONTE CARLO METHODS
 Importance sampling is a general technique for estimating expected values
 under one distribution given samples from another. We apply this technique
@@ -5835,13 +5202,6 @@ t Gt
 |T(s)| . (5.4)
 When importance sampling is done as a simple average in this way it is called
 ordinary importance sampling.
-
----
-
-## [Sección 65] Chapter 2 provide mechanisms for this. The on-policy method we present in
-
--- 142 of 352 --
-
 5.5. OFF-POLICY PREDICTION VIA IMPORTANCE SAMPLING 129
 An important alternative is weighted importance sampling, which uses a
 weighted average, defined as
@@ -5876,9 +5236,6 @@ practice, the weighted estimator usually has dramatically lower variance and is
 strongly preferred. A complete every-visit MC algorithm for off-policy policy
 evaluation using weighted importance sampling is given at the end of the next
 section in Figure 5.9.
-
--- 143 of 352 --
-
 130 CHAPTER 5. MONTE CARLO METHODS
 Example 5.4: Off-policy Estimation of a Blackjack State Value
 We applied both ordinary and weighted importance-sampling methods to estimate the value of a single blackjack state from off-policy data. Recall that
@@ -5911,9 +5268,6 @@ error
 2
 Figure 5.7: Weighted importance sampling produces lower error estimates of
 the value of a single blackjack state from off-policy episodes (see Example 5.4).
-
--- 144 of 352 --
-
 5.5. OFF-POLICY PREDICTION VIA IMPORTANCE SAMPLING 131
 100,000 1,000,000 10,000,000 100,000,000
 0.1
@@ -5957,13 +5311,6 @@ after millions of episodes, the estimates fail to converge to the correct value
 of 1. In contrast, the weighted importance-sampling algorithm would give an
 estimate of exactly 1 everafter the first episode that was consistent with the
 target policy (i.e., that ended with the back action). This is clear because
-
----
-
-## [Sección 66] Chapter 2 provide mechanisms for this. The on-policy method we present in
-
--- 145 of 352 --
-
 132 CHAPTER 5. MONTE CARLO METHODS
 that algorithm produces a weighted average of the returns consistent with the
 target policy, all of which would be exactly 1.
@@ -6032,9 +5379,6 @@ k=0
 k=0
 1.8k
 = ∞.
-
--- 146 of 352 --
-
 5.6. INCREMENTAL IMPLEMENTATION 133
 5.6 Incremental Implementation
 Monte Carlo prediction methods can be implemented incrementally, on an
@@ -6076,9 +5420,6 @@ gives a complete episode-by-episode incremental algorithm for Monte Carlo
 policy evaluation. The algorithm is nominally for the off-policy case, using
 weighted importance sampling, but applies as well to the on-policy case just
 by choosing the target and behavior policies as the same.
-
--- 147 of 352 --
-
 134 CHAPTER 5. MONTE CARLO METHODS
 Initialize, for all s ∈ S, a ∈ A(s):
 Q(s, a) ← arbitrary
@@ -6103,13 +5444,6 @@ weighted importance sampling. The approximation Q converges to qπ (for all
 encountered state–action pairs) even though all actions are selected according
 to a potentially different policy, μ. In the on-policy case (π = μ), W is always
 1.
-
----
-
-## [Sección 67] Chapter 2 provide mechanisms for this. The on-policy method we present in
-
--- 148 of 352 --
-
 5.7. OFF-POLICY MONTE CARLO CONTROL 135
 5.7 Off-Policy Monte Carlo Control
 We are now ready to present an example of the second class of learning control
@@ -6141,9 +5475,6 @@ how serious this problem is. If it is serious, the most important way to address
 it is probably by incorporating temporal-difference learning, the algorithmic
 idea developed in the next chapter. Alternatively, if γ is less than 1, then the
 idea developed in the next section may also help significantly.
-
--- 149 of 352 --
-
 136 CHAPTER 5. MONTE CARLO METHODS
 Initialize, for all s ∈ S, a ∈ A(s):
 Q(s, a) ← arbitrary
@@ -6190,13 +5521,6 @@ later factors are all independent of the return and of expected value 1; they
 do not change the expected update, but they add enormously to its variance.
 In some cases they could even make the variance infinite. Let us now consider
 an idea for avoiding this large extraneous variance.
-
----
-
-## [Sección 68] Chapter 2 provide mechanisms for this. The on-policy method we present in
-
--- 150 of 352 --
-
 ∗5.8. IMPORTANCE SAMPLING ON TRUNCATED RETURNS 137
 The essence of the idea is to think of discounting as determining a probability of termination or, equivalently, a degree of partial termination. For any
 γ ∈ [0, 1), we can think of the return G0 as partly terminating in one step,
@@ -6264,9 +5588,6 @@ t + (1 − γ) ∑T (t)−1
 h=t+1 γh−t−1ρh
 t
 ) . (5.9)
-
--- 151 of 352 --
-
 138 CHAPTER 5. MONTE CARLO METHODS
 5.9 Summary
 The Monte Carlo methods presented in this chapter learn value functions and
@@ -6305,13 +5626,6 @@ selected to cover all possibilities. Such exploring starts can sometimes be arra
 from real experience. In on-policy methods, the agent commits to always
 exploring and tries to find the best policy that still explores. In off-policy
 methods, the agent also explores, but learns a deterministic optimal policy
-
----
-
-## [Sección 69] Chapter 2 provide mechanisms for this. The on-policy method we present in
-
--- 152 of 352 --
-
 5.9. SUMMARY 139
 that may be unrelated to the policy followed.
 Off-policy Monte Carlo prediction refers to learning the value function of
@@ -6342,9 +5656,6 @@ and Wheeler (1986) studied a Monte Carlo method for ergodic finite Markov
 chains that used the return accumulated from one visit to a state to the next
 as a reward for adjusting a learning automaton’s action probabilities.
 Barto and Duff (1994) discussed policy evaluation in the context of classical Monte Carlo algorithms for solving systems of linear equations. They used
-
--- 153 of 352 --
-
 140 CHAPTER 5. MONTE CARLO METHODS
 the analysis of Curtiss (1954) to point out the computational advantages of
 Monte Carlo policy evaluation for large problems. Singh and Sutton (1996)
@@ -6374,13 +5685,6 @@ does it drop off for the whole last row on the left? Why are the frontmost
 values higher in the upper diagrams than in the lower?
 Exercise 5.2 What is the backup diagram for Monte Carlo estimation of qπ?
 Exercise 5.3 What is the Monte Carlo estimate analogous to (5.5) for action
-
----
-
-## [Sección 70] Chapter 2 provide mechanisms for this. The on-policy method we present in
-
--- 154 of 352 --
-
 5.9. SUMMARY 141
 Starting line
 Finish
@@ -6408,9 +5712,6 @@ the car is at one of a discrete set of grid positions, the cells in the diagram.
 velocity is also discrete, a number of grid cells moved horizontally and vertically
 per time step. The actions are increments to the velocity components. Each
 may be changed by +1, −1, or 0 in one step, for a total of nine actions.
-
--- 155 of 352 --
-
 142 CHAPTER 5. MONTE CARLO METHODS
 Both velocity components are restricted to be nonnegative and less than 5,
 and they cannot both be zero. Each episode begins in one of the randomly
@@ -6428,11 +5729,9 @@ state. Exhibit several trajectories following the optimal policy.
 ∗Exercise 5.10 Modify the algorithm for off-policy Monte Carlo control (Figure 5.10) to use the idea of the truncated weighted-average estimator (5.9).
 Note that you will first need to convert this equation to action values.
 
--- 156 of 352 --
-
 ---
 
-## [Sección 71] Chapter 6
+## Sección 9: Chapter 6 [Entropy: 0.75]
 
 Temporal-Difference Learning
 If one had to identify one idea as central and novel to reinforcement learning,
@@ -6457,8 +5756,6 @@ problem. Given some experience following a policy π, both methods update
 their estimate v of vπ for the nonterminal states St occurring in that experience.
 Roughly speaking, Monte Carlo methods wait until the return following the
 visit is known, then use that return as a target for V (St). A simple every-visit
--- 157 of 352 --
-
 144 CHAPTER 6. TEMPORAL-DIFFERENCE LEARNING
 Monte Carlo method suitable for nonstationary environments is
 V (St) ← V (St) + α
@@ -6520,9 +5817,6 @@ with care and imagination this can take us a long way toward obtaining the
 advantages of both Monte Carlo and DP methods.
 Figure 6.1 specifies TD(0) completely in procedural form, and Figure 6.2
 shows its backup diagram. The value estimate for the state node at the top of
-
--- 158 of 352 --
-
 6.1. TD PREDICTION 145
 Input: the policy π to be evaluated
 Initialize V (s) arbitrarily (e.g., V (s) = 0, ∀s ∈ S+)
@@ -6557,13 +5851,6 @@ travel time to 35 minutes. Unfortunately, at this point you get stuck behind
 a slow truck, and the road is too narrow to pass. You end up having to follow
 the truck until you turn onto the side street where you live at 6:40. Three
 minutes later you are home. The sequence of states, times, and predictions is
-
----
-
-## [Sección 72] Chapter 6
-
--- 159 of 352 --
-
 146 CHAPTER 6. TEMPORAL-DIFFERENCE LEARNING
 road
 35
@@ -6610,9 +5897,6 @@ to go after exiting the highway. The error, Gt − V (St), at this time is eight
 would of course make the rewards the negative of the elapsed time. But since we are
 concerned here only with prediction (policy evaluation), we can keep things simple by using
 positive numbers.
-
--- 160 of 352 --
-
 6.1. TD PREDICTION 147
 actual
 outcome
@@ -6657,13 +5941,6 @@ predictions.
 Besides giving you something to do while waiting in traffic, there are several
 computational reasons why it is advantageous to learn based on your current
 predictions rather than waiting until termination when you know the actual
-
----
-
-## [Sección 73] Chapter 6
-
--- 161 of 352 --
-
 148 CHAPTER 6. TEMPORAL-DIFFERENCE LEARNING
 return. We briefly discuss some of these next.
 6.2 Advantages of TD Prediction Methods
@@ -6695,9 +5972,6 @@ If both TD and Monte Carlo methods converge asymptotically to the correct predic
 other words, which method learns faster? Which makes the more efficient use
 of limited data? At the current time this is an open question in the sense
 that no one has been able to prove mathematically that one method converges
-
--- 162 of 352 --
-
 6.2. ADVANTAGES OF TD PREDICTION METHODS 149
 A B C D E 1 0 0 0 0 0
 start
@@ -6725,13 +5999,6 @@ true values as more episodes are experienced. Averaging over many episode
 sequences, Figure 6.7 shows the average error in the predictions found by
 TD(0) and constant-α MC, for a variety of values of α, as a function of number of episodes. In all cases the approximate value function was initialized
 to the intermediate value V (s) = 0.5, for all s. The TD method is consistently better than the MC method on this task over this number of episodes.
-
----
-
-## [Sección 74] Chapter 6
-
--- 163 of 352 --
-
 150 CHAPTER 6. TEMPORAL-DIFFERENCE LEARNING
 0.8
 0.2
@@ -6772,9 +6039,6 @@ Figure 6.7: Learning curves for TD(0) and constant-α MC methods, for various
 values of α, on the prediction problem for the random walk. The performance
 measure shown is the root mean-squared (RMS) error between the value function learned and the true value function, averaged over the five states. These
 data are averages over 100 different sequences of episodes.
-
--- 164 of 352 --
-
 6.3. OPTIMALITY OF TD(0) 151
 6.3 Optimality of TD(0)
 Suppose there is available only a finite amount of experience, say 10 episodes
@@ -6811,9 +6075,6 @@ mean-squared error measure shown in Figure 6.8. How is it that batch TD
 was able to perform better than this optimal method? The answer is that the
 Monte Carlo method is optimal only in a limited way, and that TD is optimal
 in a way that is more relevant to predicting returns. But first let’s develop our
-
--- 165 of 352 --
-
 152 CHAPTER 6. TEMPORAL-DIFFERENCE LEARNING
 . 0
 .05
@@ -6856,13 +6117,6 @@ and since we have already decided that B has value 3
 value 3
 4 as well. One way of viewing this answer is that it is based on first
 modeling the Markov process, in this case as
-
----
-
-## [Sección 75] Chapter 6
-
--- 166 of 352 --
-
 6.3. OPTIMALITY OF TD(0) 153
 A B
 r = 1
@@ -6904,9 +6158,6 @@ because it computes the true certainty-equivalence estimate. This explains
 the advantage of TD(0) shown in the batch results on the random walk task
 (Figure 6.8). The relationship to the certainty-equivalence estimate may also
 explain in part the speed advantage of nonbatch TD(0) (e.g., Figure 6.7). Although the nonbatch methods do not achieve either the certainty-equivalence
-
--- 167 of 352 --
-
 154 CHAPTER 6. TEMPORAL-DIFFERENCE LEARNING
 or the minimum squared-error estimates, they can be understood as moving
 roughly in these directions. Nonbatch TD(0) may be faster than constant-α
@@ -6946,21 +6197,14 @@ learned the values of states. Now we consider transitions from state–action
 pair to state–action pair, and learn the value of state–action pairs. Formally
 these cases are identical: they are both Markov chains with a reward process.
 The theorems assuring the convergence of state values under TD(0) also apply
-
----
-
-## [Sección 76] Chapter 6
-
--- 168 of 352 --
-
 6.4. SARSA: ON-POLICY TD CONTROL 155
 Initialize Q(s, a), ∀s ∈ S, a ∈ A(s), arbitrarily, and Q(terminal-state, ·) = 0
 Repeat (for each episode):
 Initialize S
-Choose A from S using policy derived from Q (e.g., -greedy)
+Choose A from S using policy derived from Q (e.g., -greedy)
 Repeat (for each step of episode):
 Take action A, observe R, S′
-Choose A′ from S′ using policy derived from Q (e.g., -greedy)
+Choose A′ from S′ using policy derived from Q (e.g., -greedy)
 Q(S, A) ← Q(S, A) + α[R + γQ(S′, A′) − Q(S, A)]
 S ← S′; A ← A′;
 until S is terminal
@@ -6995,9 +6239,6 @@ through the middle of the grid. The actions are the standard four—up, down,
 right, and left—but in the middle region the resultant next states are shifted
 upward by a “wind,” the strength of which varies from column to column. The
 strength of the wind is given below each column, in number of cells shifted
-
--- 169 of 352 --
-
 156 CHAPTER 6. TEMPORAL-DIFFERENCE LEARNING
 S G
 0 0 0 0 1 1 1 1 2 2
@@ -7015,9 +6256,6 @@ Time steps
 S G
 0 0 0 0 1 1 1 1 2 2
 Figure 6.11: Results of Sarsa applied to the windy gridworld.
-
--- 170 of 352 --
-
 6.5. Q-LEARNING: OFF-POLICY TD CONTROL 157
 upward. For example, if you are one cell to the right of the goal, then the
 action left takes you to the cell just above the goal. Let us treat this as an
@@ -7060,19 +6298,12 @@ state–action pair, so the top node, the root of the backup, must be a small,
 filled action node. The backup is also from action nodes, maximizing over all
 those actions possible in the next state. Thus the bottom nodes of the backup
 diagram should be all these action nodes. Finally, remember that we indicate
-
----
-
-## [Sección 77] Chapter 6
-
--- 171 of 352 --
-
 158 CHAPTER 6. TEMPORAL-DIFFERENCE LEARNING
 Initialize Q(s, a), ∀s ∈ S, a ∈ A(s), arbitrarily, and Q(terminal-state, ·) = 0
 Repeat (for each episode):
 Initialize S
 Repeat (for each step of episode):
-Choose A from S using policy derived from Q (e.g., -greedy)
+Choose A from S using policy derived from Q (e.g., -greedy)
 Take action A, observe R, S′
 Q(S, A) ← Q(S, A) + α[R + γ maxa Q(S′, a) − Q(S, A)]
 S ← S′;
@@ -7097,9 +6328,6 @@ the longer but safer path through the upper part of the grid. Although Qlearning
 is worse than that of Sarsa, which learns the roundabout policy. Of course, if
 ε were gradually reduced, then both methods would asymptotically converge
 to the optimal policy.
-
--- 172 of 352 --
-
 6.5. Q-LEARNING: OFF-POLICY TD CONTROL 159
 Reward
 per
@@ -7122,9 +6350,6 @@ R
 Figure 6.13: The cliff-walking task. The results are from a single run, but
 smoothed.
 Figure 6.14: The backup diagram for Q-learning.
-
--- 173 of 352 --
-
 160 CHAPTER 6. TEMPORAL-DIFFERENCE LEARNING
 6.6 Games, Afterstates, and Other Special Cases
 In this book we try to present a uniform approach to a wide class of tasks,
@@ -7158,13 +6383,6 @@ value function would immediately assess both equally. Any learning about the
 position–move pair on the left would immediately transfer to the pair on the
 right.
 Afterstates arise in many tasks, not just games. For example, in queuing
-
----
-
-## [Sección 78] Chapter 6
-
--- 174 of 352 --
-
 6.7. SUMMARY 161
 tasks there are actions such as assigning customers to servers, rejecting customers, or discarding information. In such cases the actions are in fact defined
 in terms of their immediate effects, which are completely known. For example, in the access-control queuing example described in the previous section,
@@ -7196,9 +6414,6 @@ respect to the current value function. When the first process is based on experi
 have grouped the TD control methods according to whether they deal with
 this complication by using an on-policy or off-policy approach. Sarsa and
 actor–critic methods are on-policy methods, and Q-learning and R-learning
-
--- 175 of 352 --
-
 162 CHAPTER 6. TEMPORAL-DIFFERENCE LEARNING
 are off-policy methods.
 The methods presented in this chapter are today the most widely used reinforcement learning methods. This is probably due to their great simplicity:
@@ -7233,13 +6448,6 @@ University of Michigan, where Holland was teaching. Holland’s ideas led to a
 number of TD-related systems, including the work of Booker (1982) and the
 bucket brigade of Holland (1986), which is related to Sarsa as discussed below.
 6.1–2 Most of the specific material from these sections is from Sutton (1988),
-
----
-
-## [Sección 79] Chapter 6
-
--- 176 of 352 --
-
 6.7. SUMMARY 163
 including the TD(0) algorithm, the random walk example, and the term
 “temporal-difference learning.” The characterization of the relationship
@@ -7273,9 +6481,6 @@ by Wilson (1994).
 6.5 Q-learning was introduced by Watkins (1989), whose outline of a convergence proof was later made rigorous by Watkins and Dayan (1992).
 More general convergence results were proved by Jaakkola, Jordan, and
 Singh (1994) and Tsitsiklis (1994).
-
--- 177 of 352 --
-
 164 CHAPTER 6. TEMPORAL-DIFFERENCE LEARNING
 6.6 R-learning is due to Schwartz (1993). Mahadevan (1996), Tadepalli
 and Ok (1994), and Bertsekas and Tsitsiklis (1996) have studied reinforcement learning for undiscounted continuing tasks. In the literature,
@@ -7311,13 +6516,6 @@ down and then up again, particularly at high α’s. What could have caused
 this? Do you think this always occurs, or might it be a function of how the
 approximate value function was initialized?
 Exercise 6.5 Above we stated that the true values for the random walk task
-
----
-
-## [Sección 80] Chapter 6
-
--- 178 of 352 --
-
 6.7. SUMMARY 165
 are 1
 6 , 2
@@ -7366,16 +6564,11 @@ considerations might impact the comparison of this method with Sarsa?
 Exercise 6.11 Describe how the task of Jack’s Car Rental (Example 4.2)
 could be reformulated in terms of afterstates. Why, in terms of this specific
 task, would such a reformulation be likely to speed convergence?
-
--- 179 of 352 --
-
 166 CHAPTER 6. TEMPORAL-DIFFERENCE LEARNING
-
--- 180 of 352 --
 
 ---
 
-## [Sección 81] Chapter 7
+## Sección 10: Chapter 7 [Entropy: 0.75]
 
 Eligibility Traces
 Eligibility traces are one of the basic mechanisms of reinforcement learning.
@@ -7400,8 +6593,6 @@ eligibility traces is called the forward view, and the more mechanistic view is
 called the backward view. The forward view is most useful for understanding
 what is computed by methods using eligibility traces, whereas the backward
 view is more appropriate for developing intuition about the algorithms them-
--- 181 of 352 --
-
 168 CHAPTER 7. ELIGIBILITY TRACES
 selves. In this chapter we present both views and then establish senses in
 which they are equivalent, that is, in which they describe the same algorithms
@@ -7438,13 +6629,6 @@ is updated in the direction of the complete return:
 Gt = Rt+1 + γRt+2 + γ2Rt+3 + · · · + γT −t−1RT ,
 where T is the last time step of the episode. Let us call this quantity the target
 of the backup. Whereas in Monte Carlo backups the target is the return, in
-
----
-
-## [Sección 82] Chapter 7
-
--- 182 of 352 --
-
 7.1. N -STEP TD PREDICTION 169
 TD (1-step) 2-step 3-step n-step Monte Carlo
 Figure 7.1: The spectrum ranging from the one-step backups of simple TD
@@ -7469,9 +6653,6 @@ Notationally, it is useful to retain full generality for the correction term. We
 define the general n-step return as
 Gt+n
 t (c) = Rt+1 + γRt+2 + · · · + γn−1Rh + γnc,
-
--- 183 of 352 --
-
 170 CHAPTER 7. ELIGIBILITY TRACES
 for any n ≥ 1 and any scalar correction c ∈ R. The time h = t + n is called
 the horizon of the n-step return.
@@ -7517,9 +6698,6 @@ t=0
 ∆t(s), (7.4)
 with of course V0 of the next episode being the VT of this one. You may
 recall how in Section 6.3 we carried this idea one step further, deferring the
-
--- 184 of 352 --
-
 7.1. N -STEP TD PREDICTION 171
 increments until they could be summed over a whole set of episodes, in batch
 updating.
@@ -7564,13 +6742,6 @@ n-step TD methods with a range of values for n and α. The performance
 measure for each algorithm and parameter setting, shown on the vertical axis,
 is the square-root of the average squared error between its predictions at the
 end of the episodenfor the 19 states and their true values, then averaged over
-
----
-
-## [Sección 83] Chapter 7
-
--- 185 of 352 --
-
 172 CHAPTER 7. ELIGIBILITY TRACES
 On-line n-step TD methods Off-line n-step TD methods
 ↵ ↵
@@ -7595,6 +6766,7 @@ n=16
 n=32
 n=32 
 n=64 128 
+512256
 Figure 7.2: Performance of n-step TD methods as a function of α, for various
 values of n, on a 19-state random walk task (Example 7.1).
 the first 10 episodes and 100 repetitions of the whole experiment (the same
@@ -7618,9 +6790,6 @@ backups with guaranteed convergence properties. Averaging produces a substantial
 and infinite-step returns to obtain another way of interrelating TD and Monte
 Carlo methods. In principle, one could even average experience-based backups with DP backups to get a simple combination of experience-based and
 model-based methods (see Chapter 8).
-
--- 186 of 352 --
-
 7.2. THE FORWARD VIEW OF TD(λ) 173
 A backup that averages simpler component backups is called a complex
 backup. The backup diagram for a complex backup consists of the backup
@@ -7655,9 +6824,6 @@ t (Vt(St+n)) + λT −t−1Gt, (7.6)
 as indicated in the figures. This equation makes it clearer what happens when
 λ = 1. In this case the main sum goes to zero, and the remaining term reduces
 to the conventional return, Gt. Thus, for λ = 1, backing up according to the
-
--- 187 of 352 --
-
 174 CHAPTER 7. ELIGIBILITY TRACES
 1!"
 (1!") "
@@ -7687,16 +6853,9 @@ t T
 Time
 Weight
 total area = 1
-is (1    ) 2
-is  T  t 1
+is (1 ) 2
+is T t 1
 Figure 7.4: Weighting given in the λ-return to each of the n-step returns.
-
----
-
-## [Sección 84] Chapter 7
-
--- 188 of 352 --
-
 7.2. THE FORWARD VIEW OF TD(λ) 175
 Time
 rt+3
@@ -7744,9 +6903,6 @@ but not obviously better or worse than the way it is done with simple n-step
 methods by varying n. Ultimately, the most compelling motivation for the λ
 way of mixing n-step backups is that there in a simple algorithm—TD(λ)—for
 achieving it. This is a mechanism issue rather than a theoretical one. In the
-
--- 189 of 352 --
-
 176 CHAPTER 7. ELIGIBILITY TRACES
 On-line TD(λ), accumulating traces On-line TD(λ), dutch traces
 On-line λ-return Off-line λ-return
@@ -7807,9 +6963,6 @@ On-line TD(λ), replacing traces True on-line TD(λ)
 λ=.975
 Figure 7.6: Performance of all λ-based algorithms on the 19-state random walk
 (Example 7.1). The λ = 0 line is the same for all five on-line algorithms.
-
--- 190 of 352 --
-
 7.3. THE BACKWARD VIEW OF TD(λ) 177
 next few sections we develop the mechanistic, or backward, view of eligibility
 traces as used in TD(λ).
@@ -7841,13 +6994,6 @@ times of visits to a state
 Eligibility traces keep a simple record of which states have recently been
 visited, where “recently” is defined in terms of γλ. The traces are said to indicate the degree to which each state is eligible for undergoing learning changes
 should a reinforcing event occur. The reinforcing events we are concerned with
-
----
-
-## [Sección 85] Chapter 7
-
--- 191 of 352 --
-
 178 CHAPTER 7. ELIGIBILITY TRACES
 are the moment-by-moment one-step TD errors. For example, the TD error
 for state-value prediction is
@@ -7883,9 +7029,6 @@ E(s) ← γ λE(s)
 S ← S′
 until S is terminal
 Figure 7.7: On-line tabular TD(λ).
-
--- 192 of 352 --
-
 7.3. THE BACKWARD VIEW OF TD(λ) 179
 !t et et et et
 Time
@@ -7901,41 +7044,41 @@ St-1
 St-2
 St-3
 xiv
- t temporal-di↵erence error at t (a r
+ t temporal-di↵erence error at t (a r
 Et(s) eligibility trace for state s at t
 Et(s, a) eligibility trace for a state–action
 et eligibility trace vector at t
-  discount-rate parameter
+ discount-rate parameter
 " probability of random action in "
-↵,   step-size parameters
-  decay-rate parameter for eligibilit
+↵, step-size parameters
+ decay-rate parameter for eligibilit
 xiv SUMMARY OF
- t temporal-di↵erence error at t (a random variable, eve
+ t temporal-di↵erence error at t (a random variable, eve
 Et(s) eligibility trace for state s at t
 Et(s, a) eligibility trace for a state–action pair
 et eligibility trace vector at t
-  discount-rate parameter
+ discount-rate parameter
 " probability of random action in "-greedy policy
-↵,   step-size parameters
-  decay-rate parameter for eligibility traces
+↵, step-size parameters
+ decay-rate parameter for eligibility traces
 xiv SUMMARY OF NOTATION
- t temporal-di↵erence error at t (a random variable, even though not upper case
+ t temporal-di↵erence error at t (a random variable, even though not upper case
 Et(s) eligibility trace for state s at t
 Et(s, a) eligibility trace for a state–action pair
 et eligibility trace vector at t
-  discount-rate parameter
+ discount-rate parameter
 " probability of random action in "-greedy policy
-↵,   step-size parameters
-  decay-rate parameter for eligibility traces
+↵, step-size parameters
+ decay-rate parameter for eligibility traces
 xiv SUMMARY OF NOTATION
- t temporal-di↵erence error at t (a random variable, even though not upper case)
+ t temporal-di↵erence error at t (a random variable, even though not upper case)
 Et(s) eligibility trace for state s at t
 Et(s, a) eligibility trace for a state–action pair
 et eligibility trace vector at t
-  discount-rate parameter
+ discount-rate parameter
 " probability of random action in "-greedy policy
-↵,   step-size parameters
-  decay-rate parameter for eligibility traces
+↵, step-size parameters
+ decay-rate parameter for eligibility traces
 Figure 7.8: The backward or mechanistic view. Each update depends on the
 current TD error combined with eligibility traces of past events.
 rule (6.2), which we henceforth call TD(0). In terms of Figure 7.8, TD(0) is
@@ -7946,10 +7089,5066 @@ because its eligibility trace is smaller, as suggested in the figure. We say tha
 the earlier states are given less credit for the TD error.
 If λ = 1, then the credit given to earlier states falls only by γ per step. This
 turns out to be just the right thing to do to achieve Monte Carlo behavior.
-
+For example, remember that the TD error, δt, includes an undiscounted term
+of Rt+1. In passing this back k steps it needs to be discounted, like any reward
+in a return, by γk, which is just what the falling eligibility trace achieves. If
+λ = 1 and γ = 1, then the eligibility traces do not decay at all with time. In
+this case the method behaves like a Monte Carlo method for an undiscounted,
+episodic task. If λ = 1, the algorithm is also known as TD(1).
+TD(1) is a way of implementing Monte Carlo algorithms that is more general than those presented earlier and that significantly increases their range
+of applicability. Whereas the earlier Monte Carlo methods were limited to
+episodic tasks, TD(1) can be applied to discounted continuing tasks as well.
+Moreover, TD(1) can be performed incrementally and on-line. One disadvantage of Monte Carlo methods is that they learn nothing from an episode until
+it is over. For example, if a Monte Carlo control method does something that
+produces a very poor reward but does not end the episode, then the agent’s
+tendency to do that will be undiminished during the episode. On-line TD(1),
+on the other hand, learns in an n-step TD way from the incomplete ongoing
+episode, where the n steps are all the way up to the current step. If something
+unusually good or bad happens during an episode, control methods based on
+180 CHAPTER 7. ELIGIBILITY TRACES
+TD(1) can learn immediately and alter their behavior on that same episode.
+It is revealing to revisit the 19-state random walk example (Example 7.1)
+to see how well the backward-view TD(λ) algorithm does in approximating
+the ideal of the forward-view λ-return algorithm. The performances of off-line
+and on-line TD(λ) with accumulating traces are shown in the upper-right and
+middle-right panels of Figure 7.6. In the off-line case it has been proven that
+the λ-return algorithm and TD(λ) are identical in their overall updates at the
+end of the episode. Thus, the one set of results in the upper-right panel is
+sufficient for both of these algorithms. However, recall that the off-line case
+is not our main focus, as all of its performance levels are generally lower and
+obtained over a narrower range of parameter values than can be obtained with
+on-line methods, as we saw earlier for n-step methods in Figure 7.2 and for
+λ-return methods in the upper two panels of Figure 7.6.
+In the on-line case, the performances of TD(λ) with accumulating traces
+(middle-right panel) are indeed much better and closer to that of the on-line
+λ-return algorithm (upper-left panel). If λ = 0, then in fact it is the identical
+algorithm at all α, and if α is small, then for all λ it is a close approximation to
+the λ-return algorithm by the end of each episode. However, if both parameters
+are larger, for example λ > 0.9 and α > 0.5, then the algorithms perform
+substantially differently: the λ-return algorithm performs a little less well
+whereas TD(λ) is likely to be unstable. This is not a terrible problem, as
+these parameter values are higher than one would want to use anyway, but it
+is a weakness of the method.
+Two alternative variations of eligibility traces have been proposed to address these limitations of the accumulating trace. On each step, all three trace
+types decay the traces of the non-visited states in the same way, that is, according to (7.8), but they differ in how the visited state is incremented. The
+first trace variation is the replacing trace. Suppose a state is visited and then
+revisited before the trace due to the first visit has fully decayed to zero. With
+accumulating traces the revisit causes a further increment in the trace (7.9),
+driving it greater than 1, whereas, with replacing traces, the trace is simply
+reset to 1:
+Et(St) = 1. (7.12)
+In the special case of λ = 1, TD(λ) with replacing traces is closely related
+to first-visit Monte Carlo methods. The second trace variation, called the
+dutch trace, is sort of intermediate between accumulating and replacing traces,
+depending on the step-size parameter α. Dutch traces are defined by
+Et(St) = (1 − α)γλEt−1(St) + 1. (7.13)
+Note that as α approaches zero, the dutch trace becomes the accumulating
+7.4. EQUIVALENCES OF FORWARD AND BACKWARD VIEWS 181
+times of state visits
+accumulating traces
+dutch traces (α = 0.5)
+replacing traces
+Figure 7.9: The three different kinds of traces. Accumulating traces add up
+each time a state is visited, whereas replacing traces are reset to one, and
+dutch traces do something inbetween, depending on α (here we show them for
+α = 0.5). In all cases the traces decay at a rate of γλ per step; here we show
+γλ = 0.8 such that the traces have a time constant of approximately 5 steps
+(the last four visits are on successive steps).
+trace, and, if α = 1, the dutch trace becomes the replacing trace. Figure 7.9
+contrasts the three kinds of traces, showing the behavior of the dutch trace for
+α = 1/2. The performances of TD(λ) with these two kinds of traces are shown
+as additional panels in (7.6). In both cases, performance is more robust to the
+parameter values than it is with accumulating traces. The performance with
+dutch traces in particular achieves our goal of an on-line causal algorithm that
+closely approximates the λ-return algorithm.
+7.4 Equivalences of Forward and Backward Views
+It is sometimes possible to prove that two learning methods originating in
+different ways are in fact equivalent in the strong sense that the value functions
+they produce are exactly the same on every time step. A simple case of this is
+that one-step methods and all λ-based methods are equivalent if λ = 0. This
+follows immediately from the fact that their backup targets are all the same.
+Another easy-to-see example is the equivalence at λ = 1 of off-line TD(λ) and
+the constant-α MC methods, as noted in the previous section. Of particular
+interest are equivalences between forward-view algorithms, which are often
+more intuitive and clearer conceptually, and backward-view algorithms that
+are efficient and causal. The best example of this that we have encountered so
+far is the equivalence at all λ of the off-line λ-return algorithm (forward view)
+and off-line TD(λ) with accumulating traces (backward view). That was an
+equivalence of value functions at the end of episodes and, because they are offline methods which don’t change values within an episode, it is a step-by-step
+equivalence as well. This equivalence was proved formally in the first edition
+182 CHAPTER 7. ELIGIBILITY TRACES
+of this book, and was verified empirically here on the 19-state random-walk
+example in producing the upper-left panel of Figure 7.6.
+For on-line methods (and λ > 0) the first edition of this book established
+only approximate episode-by-episode equivalences between the λ-return algorithm and TD(λ). In the random-walk problem, at the end of episodes, TD(λ)
+with accumulating traces is almost the same as the λ-return algorithm, but
+only for small α and λ. With dutch traces the approximation is closer, but it
+is still not exact even on an episode-by-episode basis (compare the upper-left
+and middle left panels of Figure 7.6). Only recently has an interesting exact
+equivalence been established between a λ-based forward view and an efficient
+backward-view implementation, in particular, between a “real-time” λ-return
+algorithm and the “true online TD(λ)” algorithm (van Seijen and Sutton,
+2014). This is a striking and revealing result, but a little technical. The best
+way to present it is using the notation of linear function approximation, which
+we develop in Chapter 9. We postpone development of the real-time λ-return
+algorithm until then and present here only the backward-view algorithm.
+True online TD(λ) is defined by the dutch trace (Eqs. 7.13 and 7.8) and
+the following value function update:
+Vt+1(s) = Vt(s) + α[δt + Vt(St) − Vt−1(St)]Et(s) − αIsSt
+[Vt(St) − Vt−1(St)],
+for all s ∈ S, where Ixy is an identity-indicator function, equal to 1 if x = y
+and 0 otherwise. An efficient implementation is given as a boxed algorithm in
+Figure 7.10.
+Results on the 19-state random-walk example for true online TD(λ) are
+given in the lower-left panel of Figure 7.6. We see that in this example true
+on-line TD(λ) appears to perform slightly better than the on-line λ-return
+algorithm, but not necessarly better than TD(λ) with dutch traces; most of
+the performance improvement seems to come from the dutch traces rather
+than the slightly different or extra terms in the equations above. Of course,
+this is just one example; benefits of the exact equivalence may appear on other
+problems. One thing we can say in that these slight differences enable true
+on-line TD(λ) with λ = 1 to be exactly equivalent by the end of the episode
+to the constant-α MC method, while making updates on-line and in real-time.
+The same cannot be said for any of the other methods.
+7.5. SARSA(λ) 183
+Initialize V (s) arbitrarily (but set to 0 if s is terminal)
+Vold ← 0
+Repeat (for each episode):
+Initialize E(s) = 0, for all s ∈ S
+Initialize S
+Repeat (for each step of episode):
+A ← action given by π for S
+Take action A, observe reward, R, and next state, S′
+∆ ← V (S) − Vold
+Vold ← V (S′)
+δ ← R + γV (S′) − V (S)
+E(S) ← (1 − α)E(S) + 1
+For all s ∈ S:
+V (s) ← V (s) + α(δ + ∆)E(s)
+E(s) ← γ λE(s)
+V (S) ← V (S) − α∆
+S ← S′
+until S is terminal
+Figure 7.10: Tabular true on-line TD(λ).
+7.5 Sarsa(λ)
+How can eligibility traces be used not just for prediction, as in TD(λ), but for
+control? As usual, the main idea of one popular approach is simply to learn
+action values, Qt(s, a), rather than state values, Vt(s). In this section we show
+how eligibility traces can be combined with Sarsa in a straightforward way to
+produce an on-policy TD control method. The eligibility trace version of Sarsa
+we call Sarsa(λ), and the original version presented in the previous chapter
+we henceforth call one-step Sarsa.
+The idea in Sarsa(λ) is to apply the TD(λ) prediction method to state–
+action pairs rather than to states. Obviously, then, we need a trace not just
+for each state, but for each state–action pair. Let Et(s, a) denote the trace for
+state–action pair s, a. The traces can be any of the three types—accumulating,
+replace, or dutch—and are updated in essentially the same way as before except
+of course being triggered by visiting the state–action pair (here given using the
+identity-indicator notation):
+Et(s, a) = γλEt−1(s, a) + IsSt IaAt (accumulating)
+Et(s, a) = (1 − α)γλEt−1(s, a) + IsSt IaAt (dutch)
+Et(s, a) = (1 − IsSt IaAt )γλEt−1(s, a) + IsSt IaAt (replacing)
+for all s ∈ S, a ∈ A. Otherwise Sarsa(λ) is just like TD(λ), substituting
+184 CHAPTER 7. ELIGIBILITY TRACES
+λ
+T-t-1
+s , a t
+1−λ
+(1−λ) λ
+(1−λ) λ2
+Σ = 1
+t
+sT
+Sarsa(λ)
+St
+ST
+, At
+Figure 7.11: Sarsa(λ)’s backup diagram.
+state–action variables for state variables—Qt(s, a) for Vt(s) and Et(s, a) for
+Et(s):
+Qt+1(s, a) = Qt(s, a) + αδt Et(s, a), for all s, a
+where
+δt = Rt+1 + γQt(St+1, At+1) − Qt(St, At).
+Figure 7.11 shows the backup diagram for Sarsa(λ). Notice the similarity to
+the diagram of the TD(λ) algorithm (Figure 7.3). The first backup looks ahead
+one full step, to the next state–action pair, the second looks ahead two steps,
+and so on. A final backup is based on the complete return. The weighting of
+each backup is just as in TD(λ) and the λ-return algorithm.
+One-step Sarsa and Sarsa(λ) are on-policy algorithms, meaning that they
+approximate qπ(s, a), the action values for the current policy, π, then improve
+the policy gradually based on the approximate values for the current policy.
+The policy improvement can be done in many different ways, as we have seen
+throughout this book. For example, the simplest approach is to use the ε-
+greedy policy with respect to the current action-value estimates. Figure 7.12
+shows the complete Sarsa(λ) algorithm for this case.
+Example 7.2: Traces in Gridworld The use of eligibility traces can
+substantially increase the efficiency of control algorithms. The reason for this
+7.5. SARSA(λ) 185
+Initialize Q(s, a) arbitrarily, for all s ∈ S, a ∈ A(s)
+Repeat (for each episode):
+E(s, a) = 0, for all s ∈ S, a ∈ A(s)
+Initialize S, A
+Repeat (for each step of episode):
+Take action A, observe R, S′
+Choose A′ from S′ using policy derived from Q (e.g., ε-greedy)
+δ ← R + γQ(S′, A′) − Q(S, A)
+E(S, A) ← E(S, A) + 1 (accumulating traces)
+or E(S, A) ← (1 − α)E(S, A) + 1 (dutch traces)
+or E(S, A) ← 1 (replacing traces)
+For all s ∈ S, a ∈ A(s):
+Q(s, a) ← Q(s, a) + αδ E(s, a)
+E(s, a) ← γ λE(s, a)
+S ← S′; A ← A′
+until S is terminal
+Figure 7.12: Tabular Sarsa(λ).
+Path taken Action values increased
+by one-step Sarsa
+Action values increased
+by Sarsa(!) with !=0.9
+Figure 7.13: Gridworld example of the speedup of policy learning due to the
+use of eligibility traces.
+186 CHAPTER 7. ELIGIBILITY TRACES
+is illustrated by the gridworld example in Figure 7.13. The first panel shows
+the path taken by an agent in a single episode, ending at a location of high
+reward, marked by the *. In this example the values were all initially 0, and
+all rewards were zero except for a positive reward at the * location. The
+arrows in the other two panels show which action values were strengthened as
+a result of this path by one-step Sarsa and Sarsa(λ) methods. The one-step
+method strengthens only the last action of the sequence of actions that led to
+the high reward, whereas the trace method strengthens many actions of the
+sequence. The degree of strengthening (indicated by the size of the arrows)
+falls off (according to γλ or (1 − α)γλ) with steps from the reward. In this
+example, the fall off is 0.9 per step.
+7.6 Watkins’s Q(λ)
+When Chris Watkins (1989) first proposed Q-learning, he also proposed a
+simple way to combine it with eligibility traces. Recall that Q-learning is an
+off-policy method, meaning that the policy learned about need not be the same
+as the one used to select actions. In particular, Q-learning learns about the
+greedy policy while it typically follows a policy involving exploratory actions—
+occasional selections of actions that are suboptimal according to Q. Because
+of this, special care is required when introducing eligibility traces.
+Suppose we are backing up the state–action pair St, At at time t. Suppose
+that on the next two time steps the agent selects the greedy action, but on
+the third, at time t + 3, the agent selects an exploratory, nongreedy action. In
+learning about the value of the greedy policy at St, At we can use subsequent
+experience only as long as the greedy policy is being followed. Thus, we can use
+the one-step and two-step returns, but not, in this case, the three-step return.
+The n-step returns for all n ≥ 3 no longer have any necessary relationship to
+the greedy policy.
+Thus, unlike TD(λ) or Sarsa(λ), Watkins’s Q(λ) does not look ahead all
+the way to the end of the episode in its backup. It only looks ahead as far
+as the next exploratory action. Aside from this difference, however, Watkins’s
+Q(λ) is much like TD(λ) and Sarsa(λ). Their lookahead stops at episode’s end,
+whereas Q(λ)’s lookahead stops at the first exploratory action, or at episode’s
+end if there are no exploratory actions before that. Actually, to be more
+precise, one-step Q-learning and Watkins’s Q(λ) both look one action past the
+first exploration, using their knowledge of the action values. For example,
+suppose the first action, At+1, is exploratory. Watkins’s Q(λ) would still do
+the one-step update of Qt(St, At) toward Rt+1 +γ maxa Qt(St+1, a). In general,
+7.6. WATKINS’S Q(λ) 187
+1!"
+(1!") "
+(1!") "2
+Watkins's Q(")
+OR
+first
+non-greedy
+action "n!1
+s , a t t
+st+n
+"
+T-t-1
+St
+St-n
+, At
+Figure 7.14: The backup diagram for Watkins’s Q(λ). The series of component
+backups ends either with the end of the episode or with the first nongreedy
+action, whichever comes first.
+if At+n is the first exploratory action, then the longest backup is toward
+Rt+1 + γRt+2 + · · · + γn−1Rt+n + γn max
+a Qt(St+n, a),
+where we assume off-line updating. The backup diagram in Figure 7.14 illustrates the forward view of Watkins’s Q(λ), showing all the component backups.
+The mechanistic or backward view of Watkins’s Q(λ) is also very simple.
+Eligibility traces are used just as in Sarsa(λ), except that they are set to zero
+whenever an exploratory (nongreedy) action is taken. The trace update is
+best thought of as occurring in two steps. First, the traces for all state–action
+pairs are either decayed by γλ or, if an exploratory action was taken, set to 0.
+Second, the trace corresponding to the current state and action is incremented
+by 1. The overall result is
+Et(s, a) =
+{ γλEt−1(s, a) + IsSt · IaAt if Qt−1(St, At) = maxa Qt−1(St, a);
+IsSt · IaAt otherwise.
+One could also use analogous dutch or replacing traces here. The rest of the
+algorithm is defined by
+Qt+1(s, a) = Qt(s, a) + αδt Et(s, a), ∀s ∈ S, a ∈ A(s)
+188 CHAPTER 7. ELIGIBILITY TRACES
+Initialize Q(s, a) arbitrarily, for all s ∈ S, a ∈ A(s)
+Repeat (for each episode):
+E(s, a) = 0, for all s ∈ S, a ∈ A(s)
+Initialize S, A
+Repeat (for each step of episode):
+Take action A, observe R, S′
+Choose A′ from S′ using policy derived from Q (e.g., ε-greedy)
+A∗ ← argmaxa Q(S′, a) (if A′ ties for the max, then A∗ ← A′)
+δ ← R + γQ(S′, A∗) − Q(S, A)
+E(S, A) ← E(S, A) + 1 (accumulating traces)
+or E(S, A) ← (1 − α)E(S, A) + 1 (dutch traces)
+or E(S, A) ← 1 (replacing traces)
+For all s ∈ S, a ∈ A(s):
+Q(s, a) ← Q(s, a) + αδ E(s, a)
+If A′ = A∗, then E(s, a) ← γ λE(s, a)
+else E(s, a) ← 0
+S ← S′; A ← A′
+until S is terminal
+Figure 7.15: Tabular version of Watkins’s Q(λ) algorithm.
+where
+δt = Rt+1 + γ max
+a′ Qt(St+1, a′) − Qt(St, At).
+Figure 7.15 shows the complete algorithm in pseudocode.
+Unfortunately, cutting off traces every time an exploratory action is taken
+loses much of the advantage of using eligibility traces. If exploratory actions
+are frequent, as they often are early in learning, then only rarely will backups
+of more than one or two steps be done, and learning may be little faster than
+one-step Q-learning.
+7.7 Off-policy Eligibility Traces using Importance Sampling
+The eligibility traces in Watkins’s Q(λ) are a crude way to deal with offpolicy training. First, they treat the off-policy aspect as binary; either the
+target policy is followed and traces continue normally, or it is deviated from
+and traces are cut off completely; there is nothing inbetween. But the target
+policy may take different actions with different positive probabilities, as may
+the behavior policy, in which case following and deviating will be a matter of
+7.8. IMPLEMENTATION ISSUES 189
+degree. In Chapter 5 we saw how to use the ratio of the two probabilities of
+taking the action to more precisely assign credit to a single action, and the
+product of ratios to assign credit to a sequence.
+Second, Watkins’s Q(λ) confounds bootstrapping and off-policy deviation.
+Bootstrapping refers to the degree to which an algorithm builds its estimates
+from other estimates, like TD and DP, or does not, like MC methods. In
+TD(λ) and Sarsa(λ), the λ parameter controls the degree of bootstrapping,
+with the value λ = 1 denoting no bootstrapping, turning these TD methods
+into MC methods. But the same cannot be said for Q(λ). As soon as there is a
+deviation from the target policy Q(λ) cuts the trace and uses its value estimate
+rather than waiting for the actual rewards—it bootstraps even if λ = 1. Ideally
+we would like to totally de-couple bootstrapping from the off-policy aspect, to
+use λ to specify the degree of bootstrapping while using importance sampling
+to correct independently for the degree of off-policy deviation.
+7.8 Implementation Issues
+It might at first appear that methods using eligibility traces are much more
+complex than one-step methods. A naive implementation would require every
+state (or state–action pair) to update both its value estimate and its eligibility
+trace on every time step. This would not be a problem for implementations
+on single-instruction, multiple-data parallel computers or in plausible neural
+implementations, but it is a problem for implementations on conventional serial
+computers. Fortunately, for typical values of λ and γ the eligibility traces of
+almost all states are almost always nearly zero; only those that have recently
+been visited will have traces significantly greater than zero. Only these few
+states really need to be updated because the updates at the others will have
+essentially no effect.
+In practice, then, implementations on conventional computers keep track
+of and update only the few states with nonzero traces. Using this trick, the
+computational expense of using traces is typically a few times that of a onestep method. The exact multiple of course depends on λ and γ and on the
+expense of the other computations. Cichosz (1995) has demonstrated a further implementation technique that further reduces complexity to a constant
+independent of λ and γ. Finally, it should be noted that the tabular case is
+in some sense a worst case for the computational complexity of traces. When
+function approximation is used (Chapter 9), the computational advantages of
+not using traces generally decrease. For example, if artificial neural networks
+and backpropagation are used, then traces generally cause only a doubling of
+the required memory and computation per step.
+190 CHAPTER 7. ELIGIBILITY TRACES
+∗7.9 Variable λ
+The λ-return can be significantly generalized beyond what we have described
+so far by allowing λ to vary from step to step, that is, by redefining the trace
+update as
+Et(s) =
+{ γ λt Et−1(s) if s 6 = St;
+γ λt Et−1(s) + 1 if s = St,
+where λt denotes the value of λ at time t. This is an advanced topic because
+the added generality has never been used in practical applications, but it is
+interesting theoretically and may yet prove useful. For example, one idea is to
+vary λ as a function of state: λt = λ(St). If a state’s value estimate is believed
+to be known with high certainty, then it makes sense to use that estimate fully,
+ignoring whatever states and rewards are received after it. This corresponds to
+cutting off all the traces once this state has been reached, that is, to choosing
+the λ for the certain state to be zero or very small. Similarly, states whose
+value estimates are highly uncertain, perhaps because even the state estimate
+is unreliable, can be given λs near 1. This causes their estimated values to
+have little effect on any updates. They are “skipped over” until a state that is
+known better is encountered. Some of these ideas were explored formally by
+Sutton and Singh (1994).
+The eligibility trace equation above is the backward view of variable λs.
+The corresponding forward view is a more general definition of the λ-return:
+Gλ
+t =
+∞ ∑
+n=1
+G(n)
+t (1 − λt+n)
+t+n−1 ∏
+i=t+1
+λi
+=
+T −1 ∑
+k=t+1
+G(k−t)
+t (1 − λk)
+k−1 ∏
+i=t+1
+λi + Gt
+T −1 ∏
+i=t+1
+λi.
+7.10 Conclusions
+Eligibility traces in conjunction with TD errors provide an efficient, incremental way of shifting and choosing between Monte Carlo and TD methods. Traces
+can be used without TD errors to achieve a similar effect, but only awkwardly.
+A method such as TD(λ) enables this to be done from partial experiences and
+with little memory and little nonmeaningful variation in predictions.
+As we mentioned in Chapter 5, Monte Carlo methods may have advantages in non-Markov tasks because they do not bootstrap. Because eligibility
+7.10. CONCLUSIONS 191
+traces make TD methods more like Monte Carlo methods, they also can have
+advantages in these cases. If one wants to use TD methods because of their
+other advantages, but the task is at least partially non-Markov, then the use
+of an eligibility trace method is indicated. Eligibility traces are the first line
+of defense against both long-delayed rewards and non-Markov tasks.
+By adjusting λ, we can place eligibility trace methods anywhere along
+a continuum from Monte Carlo to one-step TD methods. Where shall we
+place them? We do not yet have a good theoretical answer to this question,
+but a clear empirical answer appears to be emerging. On tasks with many
+steps per episode, or many steps within the half-life of discounting, it appears
+significantly better to use eligibility traces than not to (e.g., see Figure 9.12).
+On the other hand, if the traces are so long as to produce a pure Monte Carlo
+method, or nearly so, then performance degrades sharply. An intermediate
+mixture appears to be the best choice. Eligibility traces should be used to
+bring us toward Monte Carlo methods, but not all the way there. In the
+future it may be possible to vary the trade-off between TD and Monte Carlo
+methods more finely by using variable λ, but at present it is not clear how this
+can be done reliably and usefully.
+Methods using eligibility traces require more computation than one-step
+methods, but in return they offer significantly faster learning, particularly
+when rewards are delayed by many steps. Thus it often makes sense to use
+eligibility traces when data are scarce and cannot be repeatedly processed, as
+is often the case in on-line applications. On the other hand, in off-line applications in which data can be generated cheaply, perhaps from an inexpensive
+simulation, then it often does not pay to use eligibility traces. In these cases
+the objective is not to get more out of a limited amount of data, but simply
+to process as much data as possible as quickly as possible. In these cases the
+speedup per datum due to traces is typically not worth their computational
+cost, and one-step methods are favored.
+Bibliographical and Historical Remarks
+7.1–2 The forward view of eligibility traces in terms of n-step returns and the
+λ-return is due to Watkins (1989), who also first discussed the error
+reduction property of n-step returns. Our presentation is based on
+the slightly modified treatment by Jaakkola, Jordan, and Singh (1994).
+The results in the random walk examples were made for this text based
+on work of Sutton (1988) and Singh and Sutton (1996). The use of
+backup diagrams to describe these and other algorithms in this chapter
+is new, as are the terms “forward view” and “backward view.”
+192 CHAPTER 7. ELIGIBILITY TRACES
+TD(λ) was proved to converge in the mean by Dayan (1992), and with
+probability 1 by many researchers, including Peng (1993), Dayan and
+Sejnowski (1994), and Tsitsiklis (1994). Jaakkola, Jordan, and Singh
+(1994), in addition, first proved convergence of TD(λ) under on-line
+updating. Gurvits, Lin, and Hanson (1994) proved convergence of a
+more general class of eligibility trace methods.
+7.3 TD(λ) with accumulating traces was introduced by Sutton (1988, 1984).
+Replacing traces are due to Singh and Sutton (1996). Dutch traces are
+due to van Seijen and Sutton (2014, in prep).
+Eligibility traces came into reinforcement learning via the fecund ideas
+of Klopf (1972). Our use of eligibility traces was based on Klopf’s
+work (Sutton, 1978a, 1978b, 1978c; Barto and Sutton, 1981a, 1981b;
+Sutton and Barto, 1981a; Barto, Sutton, and Anderson, 1983; Sutton,
+1984). We may have been the first to use the term “eligibility trace”
+(Sutton and Barto, 1981). The idea that stimuli produce aftereffects
+in the nervous system that are important for learning is very old. See
+Section 14.??.
+7.4 The episode-by-episode equivalence of forward and backward views,
+and the relationships to Monte Carlo methods, were proved by Sutton
+(1988) for undiscounted episodic tasks, then extended to the general
+case in the first edition of this book (1989). We see these as now
+superceded by the analyses and step-by-step equivalences in Section
+9.??.
+7.5 Sarsa(λ) was first explored as a control method by Rummery and Niranjan (1994; Rummery, 1995). Our presentation of replacing traces
+omits a subtlety which is sometimes found to be beneficial: clearing
+(setting to zero) the traces of all the actions not taken in the state that
+is visited, as suggested by Singh and Sutton (1996). This can also be
+done in Q(λ). Nowadays we would recommend just using dutch traces,
+which generalize better to function approximation.
+7.6 Watkins’s Q(λ) is due to Watkins (1989). Peng’s Q(λ) is due to Peng
+and Williams (Peng, 1993; Peng and Williams, 1994, 1996). Rummery
+(1995) made extensive comparative studies of these algorithms.
+Convergence has still not been proved for any control method for 0 <
+λ < 1.
+7.10. CONCLUSIONS 193
+7.8-9 The ideas in these two sections were generally known for many years,
+but beyond what is in the sources cited in the sections themselves, this
+text may be the first place they have been described. Perhaps the first
+published discussion of variable λ was by Watkins (1989), who pointed
+out that the cutting off of the backup sequence (Figure 7.14) in his
+Q(λ) when a nongreedy action was selected could be implemented by
+temporarily setting λ to 0.
+Exercises
+Exercise 7.1 Why do you think a larger random walk task (19 states instead
+of 5) was used in the examples of this chapter? Would a smaller walk have
+shifted the advantage to a different value of n? How about the change in leftside outcome from 0 to −1? Would that have made any difference in the best
+value of n?
+Exercise 7.2 Why do you think on-line methods worked better than off-line
+methods on the example task?
+∗Exercise 7.3 In the lower part of Figure 7.2, notice that the plot for n = 3 is
+different from the others, dropping to low performance at a much lower value of
+α than similar methods. In fact, the same was observed for n = 5, n = 7, and
+n = 9. Can you explain why this might have been so? In fact, we are not sure
+ourselves. See http://www.cs.utexas.edu/~ikarpov/Classes/RL/RandomWalk/
+for an attempt at a thorough answer by Igor Karpov.
+Exercise 7.4 The parameter λ characterizes how fast the exponential weighting in Figure 7.4 falls off, and thus how far into the future the λ-return algorithm looks in determining its backup. But a rate factor such as λ is sometimes
+an awkward way of characterizing the speed of the decay. For some purposes it
+is better to specify a time constant, or half-life. What is the equation relating
+λ and the half-life, τλ, the time by which the weighting sequence will have
+fallen to half of its initial value?
+Exercise 7.5 (programming) Draw a backup diagram for Sarsa(λ) with
+replacing traces.
+Exercise 7.6 Write pseudocode for an implementation of TD(λ) that updates only value estimates for states whose traces are greater than some small
+positive constant.
+Exercise 7.7 Write equations or pseudocode for Sarsa(λ) and/or Q(λ) with
+dutch traces. Do the same for a true-on-line version.
+194 CHAPTER 7. ELIGIBILITY TRACES
 
 ---
-> *[Truncated at 420 KB for optimal local RAG indexing speed]*
+
+## Sección 11: Chapter 8 [Entropy: 0.283]
+
+Planning and Learning with
+Tabular Methods
+In this chapter we develop a unified view of methods that require a model
+of the environment, such as dynamic programming and heuristic search, and
+methods that can be used without a model, such as Monte Carlo and temporaldifference methods. We think of the former as planning methods and of the
+latter as learning methods. Although there are real differences between these
+two kinds of methods, there are also great similarities. In particular, the heart
+of both kinds of methods is the computation of value functions. Moreover, all
+the methods are based on looking ahead to future events, computing a backedup value, and then using it to update an approximate value function. Earlier
+in this book we presented Monte Carlo and temporal-difference methods as
+distinct alternatives, then showed how they can be seamlessly integrated by
+using eligibility traces such as in TD(λ). Our goal in this chapter is a similar
+integration of planning and learning methods. Having established these as
+distinct in earlier chapters, we now explore the extent to which they can be
+intermixed.
+8.1 Models and Planning
+By a model of the environment we mean anything that an agent can use to
+predict how the environment will respond to its actions. Given a state and an
+action, a model produces a prediction of the resultant next state and next reward. If the model is stochastic, then there are several possible next states and
+next rewards, each with some probability of occurring. Some models produce
+a description of all possibilities and their probabilities; these we call distribution models. Other models produce just one of the possibilities, sampled
+196CHAPTER 8. PLANNING AND LEARNING WITH TABULAR METHODS
+according to the probabilities; these we call sample models. For example, consider modeling the sum of a dozen dice. A distribution model would produce
+all possible sums and their probabilities of occurring, whereas a sample model
+would produce an individual sum drawn according to this probability distribution. The kind of model assumed in dynamic programming—estimates of the
+state transition probabilities and expected rewards, p(s′|s, a) and r(s, a, s′)—
+is a distribution model. The kind of model used in the blackjack example in
+
+---
+
+## Sección 12: Chapter 5 is a sample model. Distribution models are stronger than sample [Entropy: 0.68]
+
+models in that they can always be used to produce samples. However, in surprisingly many applications it is much easier to obtain sample models than
+distribution models.
+Models can be used to mimic or simulate experience. Given a starting state
+and action, a sample model produces a possible transition, and a distribution
+model generates all possible transitions weighted by their probabilities of occurring. Given a starting state and a policy, a sample model could produce an
+entire episode, and a distribution model could generate all possible episodes
+and their probabilities. In either case, we say the model is used to simulate
+the environment and produce simulated experience.
+The word planning is used in several different ways in different fields. We
+use the term to refer to any computational process that takes a model as
+input and produces or improves a policy for interacting with the modeled
+environment:
+planning
+model policy
+Within artificial intelligence, there are two distinct approaches to planning according to our definition. In state-space planning, which includes the approach
+we take in this book, planning is viewed primarily as a search through the state
+space for an optimal policy or path to a goal. Actions cause transitions from
+state to state, and value functions are computed over states. In what we
+call plan-space planning, planning is instead viewed as a search through the
+space of plans. Operators transform one plan into another, and value functions, if any, are defined over the space of plans. Plan-space planning includes
+evolutionary methods and partial-order planning, a popular kind of planning
+in artificial intelligence in which the ordering of steps is not completely determined at all stages of planning. Plan-space methods are difficult to apply
+efficiently to the stochastic optimal control problems that are the focus in reinforcement learning, and we do not consider them further (but see Section 15.6
+for one application of reinforcement learning within plan-space planning).
+The unified view we present in this chapter is that all state-space planning
+methods share a common structure, a structure that is also present in the
+8.1. MODELS AND PLANNING 197
+learning methods presented in this book. It takes the rest of the chapter to
+develop this view, but there are two basic ideas: (1) all state-space planning
+methods involve computing value functions as a key intermediate step toward
+improving the policy, and (2) they compute their value functions by backup
+operations applied to simulated experience. This common structure can be
+diagrammed as follows:
+values
+backups
+model simulated
+experience policy
+Dynamic programming methods clearly fit this structure: they make sweeps
+through the space of states, generating for each state the distribution of possible transitions. Each distribution is then used to compute a backed-up value
+and update the state’s estimated value. In this chapter we argue that various other state-space planning methods also fit this structure, with individual
+methods differing only in the kinds of backups they do, the order in which
+they do them, and in how long the backed-up information is retained.
+Viewing planning methods in this way emphasizes their relationship to the
+learning methods that we have described in this book. The heart of both
+learning and planning methods is the estimation of value functions by backup
+operations. The difference is that whereas planning uses simulated experience
+generated by a model, learning methods use real experience generated by the
+environment. Of course this difference leads to a number of other differences,
+for example, in how performance is assessed and in how flexibly experience
+can be generated. But the common structure means that many ideas and
+algorithms can be transferred between planning and learning. In particular,
+in many cases a learning algorithm can be substituted for the key backup step
+of a planning method. Learning methods require only experience as input, and
+in many cases they can be applied to simulated experience just as well as to real
+experience. Figure 8.1 shows a simple example of a planning method based on
+one-step tabular Q-learning and on random samples from a sample model. This
+method, which we call random-sample one-step tabular Q-planning, converges
+to the optimal policy for the model under the same conditions that one-step
+tabular Q-learning converges to the optimal policy for the real environment
+(each state–action pair must be selected an infinite number of times in Step
+1, and α must decrease appropriately over time).
+In addition to the unified view of planning and learning methods, a second
+theme in this chapter is the benefits of planning in small, incremental steps.
+This enables planning to be interrupted or redirected at any time with little wasted computation, which appears to be a key requirement for efficiently
+intermixing planning with acting and with learning of the model. More surprisingly, later in this chapter we present evidence that planning in very small
+198CHAPTER 8. PLANNING AND LEARNING WITH TABULAR METHODS
+Do forever:
+1. Select a state, S ∈ S, and an action, A ∈ A(s), at random
+2. Send S, A to a sample model, and obtain
+a sample next reward, R, and a sample next state, S′
+3. Apply one-step tabular Q-learning to S, A, R, S′:
+Q(S, A) ← Q(S, A) + α[R + γ maxa Q(S′, a) − Q(S, A)]
+Figure 8.1: Random-sample one-step tabular Q-planning
+steps may be the most efficient approach even on pure planning problems if
+the problem is too large to be solved exactly.
+8.2 Integrating Planning, Acting, and Learning
+When planning is done on-line, while interacting with the environment, a number of interesting issues arise. New information gained from the interaction
+may change the model and thereby interact with planning. It may be desirable
+to customize the planning process in some way to the states or decisions currently under consideration, or expected in the near future. If decision-making
+and model-learning are both computation-intensive processes, then the available computational resources may need to be divided between them. To begin
+exploring these issues, in this section we present Dyna-Q, a simple architecture integrating the major functions needed in an on-line planning agent. Each
+function appears in Dyna-Q in a simple, almost trivial, form. In subsequent
+sections we elaborate some of the alternate ways of achieving each function
+and the trade-offs between them. For now, we seek merely to illustrate the
+ideas and stimulate your intuition.
+Within a planning agent, there are at least two roles for real experience: it
+can be used to improve the model (to make it more accurately match the real
+environment) and it can be used to directly improve the value function and
+policy using the kinds of reinforcement learning methods we have discussed in
+previous chapters. The former we call model-learning, and the latter we call
+direct reinforcement learning (direct RL). The possible relationships between
+experience, model, values, and policy are summarized in Figure 8.2. Each
+arrow shows a relationship of influence and presumed improvement. Note how
+experience can improve value and policy functions either directly or indirectly
+via the model. It is the latter, which is sometimes called indirect reinforcement
+learning, that is involved in planning.
+8.2. INTEGRATING PLANNING, ACTING, AND LEARNING 199
+planning
+value/policy
+experience model
+model
+learning
+acting
+direct
+RL
+Figure 8.2: Relationships among learning, planning, and acting.
+Both direct and indirect methods have advantages and disadvantages. Indirect methods often make fuller use of a limited amount of experience and
+thus achieve a better policy with fewer environmental interactions. On the
+other hand, direct methods are much simpler and are not affected by biases
+in the design of the model. Some have argued that indirect methods are always superior to direct ones, while others have argued that direct methods
+are responsible for most human and animal learning. Related debates in psychology and AI concern the relative importance of cognition as opposed to
+trial-and-error learning, and of deliberative planning as opposed to reactive
+decision-making. Our view is that the contrast between the alternatives in
+all these debates has been exaggerated, that more insight can be gained by
+recognizing the similarities between these two sides than by opposing them.
+For example, in this book we have emphasized the deep similarities between
+dynamic programming and temporal-difference methods, even though one was
+designed for planning and the other for modelfree learning.
+Dyna-Q includes all of the processes shown in Figure 8.2—planning, acting, model-learning, and direct RL—all occurring continually. The planning
+method is the random-sample one-step tabular Q-planning method given in
+Figure 8.1. The direct RL method is one-step tabular Q-learning. The modellearning method is also table-based and assumes the world is deterministic.
+After each transition St, At Rt+1, St+1, the model records in its table entry
+for St, At the prediction that Rt+1, St+1 will deterministically follow. Thus, if
+the model is queried with a state–action pair that has been experienced before,
+it simply returns the last-observed next state and next reward as its prediction. During planning, the Q-planning algorithm randomly samples only from
+state–action pairs that have previously been experienced (in Step 1), so the
+model is never queried with a pair about which it has no information.
+The overall architecture of Dyna agents, of which the Dyna-Q algorithm is
+200CHAPTER 8. PLANNING AND LEARNING WITH TABULAR METHODS
+real
+direct RL
+update
+Model
+planning update
+search
+control
+Policy/value functions
+experience
+model
+learning
+Environment
+simulated
+experience
+Figure 8.3: The general Dyna Architecture
+one example, is shown in Figure 8.3. The central column represents the basic
+interaction between agent and environment, giving rise to a trajectory of real
+experience. The arrow on the left of the figure represents direct reinforcement
+learning operating on real experience to improve the value function and the
+policy. On the right are model-based processes. The model is learned from real
+experience and gives rise to simulated experience. We use the term search control to refer to the process that selects the starting states and actions for the
+simulated experiences generated by the model. Finally, planning is achieved
+by applying reinforcement learning methods to the simulated experiences just
+as if they had really happened. Typically, as in Dyna-Q, the same reinforcement learning method is used both for learning from real experience and for
+planning from simulated experience. The reinforcement learning method is
+thus the “final common path” for both learning and planning. Learning and
+planning are deeply integrated in the sense that they share almost all the same
+machinery, differing only in the source of their experience.
+Conceptually, planning, acting, model-learning, and direct RL occur simultaneously and in parallel in Dyna agents. For concreteness and implementation
+on a serial computer, however, we fully specify the order in which they occur
+within a time step. In Dyna-Q, the acting, model-learning, and direct RL processes require little computation, and we assume they consume just a fraction
+of the time. The remaining time in each step can be devoted to the planning
+process, which is inherently computation-intensive. Let us assume that there
+is time in each step, after acting, model-learning, and direct RL, to complete
+n iterations (Steps 1–3) of the Q-planning algorithm. Figure 8.4 shows the
+complete algorithm for Dyna-Q.
+8.2. INTEGRATING PLANNING, ACTING, AND LEARNING 201
+Initialize Q(s, a) and M odel(s, a) for all s ∈ S and a ∈ A(s)
+Do forever:
+(a) S ← current (nonterminal) state
+(b) A ← -greedy(S, Q)
+(c) Execute action A; observe resultant reward, R, and state, S′
+(d) Q(S, A) ← Q(S, A) + α[R + γ maxa Q(S′, a) − Q(S, A)]
+(e) M odel(S, A) ← R, S′ (assuming deterministic environment)
+(f) Repeat n times:
+S ← random previously observed state
+A ← random action previously taken in S
+R, S′ ← M odel(S, A)
+Q(S, A) ← Q(S, A) + α[R + γ maxa Q(S′, a) − Q(S, A)]
+Figure 8.4: Dyna-Q Algorithm. M odel(s, a) denotes the contents of the model
+(predicted next state and reward) for state–action pair s, a. Direct reinforcement learning, model-learning, and planning are implemented by steps (d),
+(e), and (f), respectively. If (e) and (f) were omitted, the remaining algorithm
+would be one-step tabular Q-learning.
+Example 8.1: Dyna Maze Consider the simple maze shown inset in
+Figure 8.5. In each of the 47 states there are four actions, up, down, right, and
+left, which take the agent deterministically to the corresponding neighboring
+states, except when movement is blocked by an obstacle or the edge of the
+maze, in which case the agent remains where it is. Reward is zero on all
+transitions, except those into the goal state, on which it is +1. After reaching
+the goal state (G), the agent returns to the start state (S) to begin a new
+episode. This is a discounted, episodic task with γ = 0.95.
+The main part of Figure 8.5 shows average learning curves from an experiment in which Dyna-Q agents were applied to the maze task. The initial
+action values were zero, the step-size parameter was α = 0.1, and the exploration parameter was = 0.1. When selecting greedily among actions, ties
+were broken randomly. The agents varied in the number of planning steps,
+n, they performed per real step. For each n, the curves show the number of
+steps taken by the agent in each episode, averaged over 30 repetitions of the
+experiment. In each repetition, the initial seed for the random number generator was held constant across algorithms. Because of this, the first episode
+was exactly the same (about 1700 steps) for all values of n, and its data are
+not shown in the figure. After the first episode, performance improved for all
+values of n, but much more rapidly for larger values. Recall that the n = 0
+agent is a nonplanning agent, utilizing only direct reinforcement learning (onestep tabular Q-learning). This was by far the slowest agent on this problem,
+despite the fact that the parameter values (α and ε) were optimized for it. The
+202CHAPTER 8. PLANNING AND LEARNING WITH TABULAR METHODS
+800
+400
+1 4
+2 0 1 0 3 0 4 0 5 0
+0 planning steps
+(direct RL only)
+Episodes
+Steps
+per
+episode 5 planning steps
+50 planning steps
+S
+G
+actions
+Figure 8.5: A simple maze (inset) and the average learning curves for Dyna-Q
+agents varying in their number of planning steps (n) per real step. The task
+is to travel from S to G as quickly as possible.
+nonplanning agent took about 25 episodes to reach (ε-)optimal performance,
+whereas the n = 5 agent took about five episodes, and the n = 50 agent took
+only three episodes.
+Figure 8.6 shows why the planning agents found the solution so much faster
+than the nonplanning agent. Shown are the policies found by the n = 0 and
+n = 50 agents halfway through the second episode. Without planning (n = 0),
+each episode adds only one additional step to the policy, and so only one step
+(the last) has been learned so far. With planning, again only one step is learned
+during the first episode, but here during the second episode an extensive policy
+has been developed that by the episode’s end will reach almost back to the
+start state. This policy is built by the planning process while the agent is still
+wandering near the start state. By the end of the third episode a complete
+optimal policy will have been found and perfect performance attained.
+In Dyna-Q, learning and planning are accomplished by exactly the same algorithm, operating on real experience for learning and on simulated experience
+for planning. Because planning proceeds incrementally, it is trivial to intermix
+planning and acting. Both proceed as fast as they can. The agent is always
+reactive and always deliberative, responding instantly to the latest sensory
+information and yet always planning in the background. Also ongoing in the
+8.3. WHEN THE MODEL IS WRONG 203
+S
+G
+S
+G
+WITHOUT PLANNING (N=0) WITH PLANNING (N=50) n n
+Figure 8.6: Policies found by planning and nonplanning Dyna-Q agents
+halfway through the second episode. The arrows indicate the greedy action in
+each state; no arrow is shown for a state if all of its action values are equal.
+The black square indicates the location of the agent.
+background is the model-learning process. As new information is gained, the
+model is updated to better match reality. As the model changes, the ongoing
+planning process will gradually compute a different way of behaving to match
+the new model.
+8.3 When the Model Is Wrong
+In the maze example presented in the previous section, the changes in the
+model were relatively modest. The model started out empty, and was then
+filled only with exactly correct information. In general, we cannot expect to be
+so fortunate. Models may be incorrect because the environment is stochastic
+and only a limited number of samples have been observed, because the model
+was learned using function approximation that has generalized imperfectly, or
+simply because the environment has changed and its new behavior has not
+yet been observed. When the model is incorrect, the planning process will
+compute a suboptimal policy.
+In some cases, the suboptimal policy computed by planning quickly leads
+to the discovery and correction of the modeling error. This tends to happen
+when the model is optimistic in the sense of predicting greater reward or better
+state transitions than are actually possible. The planned policy attempts to
+exploit these opportunities and in doing so discovers that they do not exist.
+Example 8.2: Blocking Maze A maze example illustrating this relatively
+minor kind of modeling error and recovery from it is shown in Figure 8.7.
+Initially, there is a short path from start to goal, to the right of the barrier,
+as shown in the upper left of the figure. After 1000 time steps, the short
+path is “blocked,” and a longer path is opened up along the left-hand side of
+204CHAPTER 8. PLANNING AND LEARNING WITH TABULAR METHODS
+Cumulative
+reward
+0 1000 2000 3000
+Time steps
+0
+Dyna-Q+
+Dyna-Q
+Dyna-AC
+S
+G G
+S
+Figure 8.7: Average performance of Dyna agents on a blocking task. The left
+environment was used for the first 1000 steps, the right environment for the
+rest. Dyna-Q+ is Dyna-Q with an exploration bonus that encourages exploration. Dyna-AC is a Dyna agent that uses an actor–critic learning method
+instead of Q-learning.
+the barrier, as shown in upper right of the figure. The graph shows average
+cumulative reward for Dyna-Q and two other Dyna agents. The first part of the
+graph shows that all three Dyna agents found the short path within 1000 steps.
+When the environment changed, the graphs become flat, indicating a period
+during which the agents obtained no reward because they were wandering
+around behind the barrier. After a while, however, they were able to find the
+new opening and the new optimal behavior.
+Greater difficulties arise when the environment changes to become better
+than it was before, and yet the formerly correct policy does not reveal the
+improvement. In these cases the modeling error may not be detected for a
+long time, if ever, as we see in the next example.
+Example 8.3: Shortcut Maze The problem caused by this kind of environmental change is illustrated by the maze example shown in Figure 8.8.
+Initially, the optimal path is to go around the left side of the barrier (upper
+left). After 3000 steps, however, a shorter path is opened up along the right
+side, without disturbing the longer path (upper right). The graph shows that
+two of the three Dyna agents never switched to the shortcut. In fact, they
+never realized that it existed. Their models said that there was no shortcut, so the more they planned, the less likely they were to step to the right
+8.3. WHEN THE MODEL IS WRONG 205
+Cumulative
+reward
+S
+G G
+S
+0 3000 6000
+Time steps
+0
+Dyna-Q + Dyna-Q
+Dyna-AC
+Figure 8.8: Average performance of Dyna agents on a shortcut task. The left
+environment was used for the first 3000 steps, the right environment for the
+rest.
+and discover it. Even with an ε-greedy policy, it is very unlikely that an
+agent will take so many exploratory actions as to discover the shortcut.
+The general problem here is another version of the conflict between exploration and exploitation. In a planning context, exploration means trying
+actions that improve the model, whereas exploitation means behaving in the
+optimal way given the current model. We want the agent to explore to find
+changes in the environment, but not so much that performance is greatly degraded. As in the earlier exploration/exploitation conflict, there probably is
+no solution that is both perfect and practical, but simple heuristics are often
+effective.
+The Dyna-Q+ agent that did solve the shortcut maze uses one such heuristic. This agent keeps track for each state–action pair of how many time steps
+have elapsed since the pair was last tried in a real interaction with the environment. The more time that has elapsed, the greater (we might presume)
+the chance that the dynamics of this pair has changed and that the model of
+it is incorrect. To encourage behavior that tests long-untried actions, a special “bonus reward” is given on simulated experiences involving these actions.
+In particular, if the modeled reward for a transition is R, and the transition
+has not been tried in τ time steps, then planning backups are done as if that
+transition produced a reward of R + κ√τ , for some small κ. This encourages the agent to keep testing all accessible state transitions and even to plan
+206CHAPTER 8. PLANNING AND LEARNING WITH TABULAR METHODS
+long sequences of actions in order to carry out such tests.1 Of course all this
+testing has its cost, but in many cases, as in the shortcut maze, this kind of
+computational curiosity is well worth the extra exploration.
+8.4 Prioritized Sweeping
+In the Dyna agents presented in the preceding sections, simulated transitions
+are started in state–action pairs selected uniformly at random from all previously experienced pairs. But a uniform selection is usually not the best;
+planning can be much more efficient if simulated transitions and backups are
+focused on particular state–action pairs. For example, consider what happens
+during the second episode of the first maze task (Figure 8.6). At the beginning
+of the second episode, only the state–action pair leading directly into the goal
+has a positive value; the values of all other pairs are still zero. This means
+that it is pointless to back up along almost all transitions, because they take
+the agent from one zero-valued state to another, and thus the backups would
+have no effect. Only a backup along a transition into the state just prior to
+the goal, or from it into the goal, will change any values. If simulated transitions are generated uniformly, then many wasteful backups will be made before
+stumbling onto one of the two useful ones. As planning progresses, the region
+of useful backups grows, but planning is still far less efficient than it would
+be if focused where it would do the most good. In the much larger problems
+that are our real objective, the number of states is so large that an unfocused
+search would be extremely inefficient.
+This example suggests that search might be usefully focused by working
+backward from goal states. Of course, we do not really want to use any methods
+specific to the idea of “goal state.” We want methods that work for general
+reward functions. Goal states are just a special case, convenient for stimulating
+intuition. In general, we want to work back not just from goal states but from
+any state whose value has changed. Assume that the values are initially correct
+given the model, as they were in the maze example prior to discovering the
+goal. Suppose now that the agent discovers a change in the environment and
+changes its estimated value of one state. Typically, this will imply that the
+values of many other states should also be changed, but the only useful onestep backups are those of actions that lead directly into the one state whose
+value has already been changed. If the values of these actions are updated,
+1The Dyna-Q+ agent was changed in two other ways as well. First, actions that had
+never before been tried before from a state were allowed to be considered in the planning
+step (f) of Figure 8.4. Second, the initial model for such actions was that they would lead
+back to the same state with a reward of zero.
+8.4. PRIORITIZED SWEEPING 207
+then the values of the predecessor states may change in turn. If so, then actions
+leading into them need to be backed up, and then their predecessor states may
+have changed. In this way one can work backward from arbitrary states that
+have changed in value, either performing useful backups or terminating the
+propagation.
+As the frontier of useful backups propagates backward, it often grows
+rapidly, producing many state–action pairs that could usefully be backed up.
+But not all of these will be equally useful. The values of some states may
+have changed a lot, whereas others have changed little. The predecessor pairs
+of those that have changed a lot are more likely to also change a lot. In a
+stochastic environment, variations in estimated transition probabilities also
+contribute to variations in the sizes of changes and in the urgency with which
+pairs need to be backed up. It is natural to prioritize the backups according to
+a measure of their urgency, and perform them in order of priority. This is the
+idea behind prioritized sweeping. A queue is maintained of every state–action
+pair whose estimated value would change nontrivially if backed up, prioritized
+by the size of the change. When the top pair in the queue is backed up, the
+effect on each of its predecessor pairs is computed. If the effect is greater
+than some small threshold, then the pair is inserted in the queue with the new
+priority (if there is a previous entry of the pair in the queue, then insertion results in only the higher priority entry remaining in the queue). In this way the
+effects of changes are efficiently propagated backward until quiescence. The
+full algorithm for the case of deterministic environments is given in Figure 8.9.
+Example 8.4: Prioritized Sweeping on Mazes Prioritized sweeping
+has been found to dramatically increase the speed at which optimal solutions
+are found in maze tasks, often by a factor of 5 to 10. A typical example is
+shown in Figure 8.10. These data are for a sequence of maze tasks of exactly
+the same structure as the one shown in Figure 8.5, except that they vary
+in the grid resolution. Prioritized sweeping maintained a decisive advantage
+over unprioritized Dyna-Q. Both systems made at most n = 5 backups per
+environmental interaction.
+Example 8.5: Rod Maneuvering The objective in this task is to maneuver
+a rod around some awkwardly placed obstacles to a goal position in the fewest
+number of steps (Figure 8.11). The rod can be translated along its long axis
+or perpendicular to that axis, or it can be rotated in either direction around
+its center. The distance of each movement is approximately 1/20 of the work
+space, and the rotation increment is 10 degrees. Translations are deterministic
+and quantized to one of 20 × 20 positions. The figure shows the obstacles and
+the shortest solution from start to goal, found by prioritized sweeping. This
+problem is still deterministic, but has four actions and 14,400 potential states
+(some of these are unreachable because of the obstacles). This problem is
+208CHAPTER 8. PLANNING AND LEARNING WITH TABULAR METHODS
+Initialize Q(s, a), M odel(s, a), for all s, a, and P Queue to empty
+Do forever:
+(a) S ← current (nonterminal) state
+(b) A ← policy(S, Q)
+(c) Execute action A; observe resultant reward, R, and state, S′
+(d) M odel(S, A) ← R, S′
+(e) P ← |R + γ maxa Q(S′, a) − Q(S, A)|.
+(f) if P > θ, then insert S, A into P Queue with priority P
+(g) Repeat n times, while P Queue is not empty:
+S, A ← f irst(P Queue)
+R, S′ ← M odel(S, A)
+Q(S, A) ← Q(S, A) + α[R + γ maxa Q(S′, a) − Q(S, A)]
+Repeat, for all ¯ S, ¯ A predicted to lead to S:
+¯ R ← predicted reward for ¯ S, ¯ A, S
+P ← | ¯ R + γ maxa Q(S, a) − Q( ¯ S, ¯ A)|.
+if P > θ then insert ¯ S, ¯ A into P Queue with priority P
+Figure 8.9: The prioritized sweeping algorithm for a deterministic environment.
+Backups
+until
+optimal
+solution
+10 3
+105
+107
+0 47 94 186 376 752 1504 3008 6016
+Gridworld size (#states)
+Dyna-Q
+prioritized
+sweeping
+Figure 8.10: Prioritized sweeping significantly shortens learning time on the
+Dyna maze task for a wide range of grid resolutions. Reprinted from Peng and
+Williams (1993).
+8.4. PRIORITIZED SWEEPING 209
+Start
+Goal
+Figure 8.11: A rod-maneuvering task and its solution by prioritized sweeping.
+Reprinted from Moore and Atkeson (1993).
+probably too large to be solved with unprioritized methods.
+Prioritized sweeping is clearly a powerful idea, but the algorithms that have
+been developed so far appear not to extend easily to more interesting cases.
+The greatest problem is that the algorithms appear to rely on the assumption
+of discrete states. When a change occurs at one state, these methods perform
+a computation on all the predecessor states that may have been affected. If
+function approximation is used to learn the model or the value function, then
+a single backup could influence a great many other states. It is not apparent
+how these states could be identified or processed efficiently. On the other hand,
+the general idea of focusing search on the states believed to have changed in
+value, and then on their predecessors, seems intuitively to be valid in general.
+Additional research may produce more general versions of prioritized sweeping.
+Extensions of prioritized sweeping to stochastic environments are relatively
+straightforward. The model is maintained by keeping counts of the number of
+times each state–action pair has been experienced and of what the next states
+were. It is natural then to backup each pair not with a sample backup, as we
+have been using so far, but with a full backup, taking into account all possible
+next states and their probabilities of occurring.
+210CHAPTER 8. PLANNING AND LEARNING WITH TABULAR METHODS
+8.5 Full vs. Sample Backups
+The examples in the previous sections give some idea of the range of possibilities for combining methods of learning and planning. In the rest of this
+chapter, we analyze some of the component ideas involved, starting with the
+relative advantages of full and sample backups.
+Much of this book has been about different kinds of backups, and we have
+considered a great many varieties. Focusing for the moment on one-step backups, they vary primarily along three binary dimensions. The first two dimensions are whether they back up state values or action values and whether they
+estimate the value for the optimal policy or for an arbitrary given policy. These
+two dimensions give rise to four classes of backups for approximating the four
+value functions, q∗, v∗, qπ, and vπ. The other binary dimension is whether the
+backups are full backups, considering all possible events that might happen,
+or sample backups, considering a single sample of what might happen. These
+three binary dimensions give rise to eight cases, seven of which correspond to
+specific algorithms, as shown in Figure 8.12. (The eighth case does not seem
+to correspond to any useful backup.) Any of these one-step backups can be
+used in planning methods. The Dyna-Q agents discussed earlier use q∗ sample
+backups, but they could just as well use q∗ full backups, or either full or sample qπ backups. The Dyna-AC system uses vπ sample backups together with
+a learning policy structure. For stochastic problems, prioritized sweeping is
+always done using one of the full backups.
+When we introduced one-step sample backups in Chapter 6, we presented
+them as substitutes for full backups. In the absence of a distribution model,
+full backups are not possible, but sample backups can be done using sample
+transitions from the environment or a sample model. Implicit in that point
+of view is that full backups, if possible, are preferable to sample backups.
+But are they? Full backups certainly yield a better estimate because they are
+uncorrupted by sampling error, but they also require more computation, and
+computation is often the limiting resource in planning. To properly assess the
+relative merits of full and sample backups for planning we must control for
+their different computational requirements.
+For concreteness, consider the full and sample backups for approximating
+q∗, and the special case of discrete states and actions, a table-lookup representation of the approximate value function, Q, and a model in the form of
+estimated dynamics, ˆp(s′, r|s, a). The full backup for a state–action pair, s, a,
+is:
+Q(s, a) ← ∑
+s′,r
+ˆp(s′, r|s, a)
+[
+r + γ max
+a′ Q(s′, a′)
+]
+. (8.1)
+8.5. FULL VS. SAMPLE BACKUPS 211
+Full backups
+(DP)
+Sample backups
+(one-step TD)
+Value
+estimated
+V !(s)
+V*(s)
+Q!(a,s)
+Q*(a,s)
+s
+a
+s'
+r
+policy evaluation
+s
+a
+s'
+r
+max
+value iteration
+s
+a
+r
+s'
+TD(0)
+s,a
+a'
+s'
+r
+Q-policy evaluation
+s,a
+a'
+s'
+r
+max
+Q-value iteration
+s,a
+a'
+s'
+r
+Sarsa
+s,a
+a'
+s'
+r
+Q-learning
+max
+S'
+R
+S'
+R
+vπ
+v*
+qπ
+q*
+A
+R
+S'
+A'
+Figure 8.12: The one-step backups.
+212CHAPTER 8. PLANNING AND LEARNING WITH TABULAR METHODS
+The corresponding sample backup for s, a, given a sample next state and reward, S′ and R (from the model), is the Q-learning-like update:
+Q(s, a) ← Q(s, a) + α
+[
+R + γ max
+a′ Q(S′, a′) − Q(s, a)
+]
+, (8.2)
+where α is the usual positive step-size parameter.
+The difference between these full and sample backups is significant to the
+extent that the environment is stochastic, specifically, to the extent that, given
+a state and action, many possible next states may occur with various probabilities. If only one next state is possible, then the full and sample backups given
+above are identical (taking α = 1). If there are many possible next states, then
+there may be significant differences. In favor of the full backup is that it is an
+exact computation, resulting in a new Q(s, a) whose correctness is limited only
+by the correctness of the Q(s′, a′) at successor states. The sample backup is
+in addition affected by sampling error. On the other hand, the sample backup
+is cheaper computationally because it considers only one next state, not all
+possible next states. In practice, the computation required by backup operations is usually dominated by the number of state–action pairs at which Q
+is evaluated. For a particular starting pair, s, a, let b be the branching factor
+(i.e., the number of possible next states, s′, for which ˆp(s′|s, a) > 0). Then
+a full backup of this pair requires roughly b times as much computation as a
+sample backup.
+If there is enough time to complete a full backup, then the resulting estimate is generally better than that of b sample backups because of the absence
+of sampling error. But if there is insufficient time to complete a full backup,
+then sample backups are always preferable because they at least make some
+improvement in the value estimate with fewer than b backups. In a large problem with many state–action pairs, we are often in the latter situation. With
+so many state–action pairs, full backups of all of them would take a very long
+time. Before that we may be much better off with a few sample backups at
+many state–action pairs than with full backups at a few pairs. Given a unit
+of computational effort, is it better devoted to a few full backups or to b times
+as many sample backups?
+Figure 8.13 shows the results of an analysis that suggests an answer to
+this question. It shows the estimation error as a function of computation
+time for full and sample backups for a variety of branching factors, b. The
+case considered is that in which all b successor states are equally likely and
+in which the error in the initial estimate is 1. The values at the next states
+are assumed correct, so the full backup reduces the error to zero upon its
+completion. In this case, sample backups reduce the error according to
+√b−1
+bt
+where t is the number of sample backups that have been performed (assuming
+8.6. TRAJECTORY SAMPLING 213
+b = 2 (branching factor)
+b =10
+b =100
+b =1000
+b =10,000
+sample
+backups
+full
+backups
+0
+0 1b 2b
+RMS error
+in value
+estimate
+Number of computations max
+a0 Q(s0, a0)
+Figure 8.13: Comparison of efficiency of full and sample backups.
+sample averages, i.e., α = 1/t). The key observation is that for moderately
+large b the error falls dramatically with a tiny fraction of b backups. For these
+cases, many state–action pairs could have their values improved dramatically,
+to within a few percent of the effect of a full backup, in the same time that
+one state–action pair could be backed up fully.
+The advantage of sample backups shown in Figure 8.13 is probably an
+underestimate of the real effect. In a real problem, the values of the successor states would themselves be estimates updated by backups. By causing
+estimates to be more accurate sooner, sample backups will have a second advantage in that the values backed up from the successor states will be more
+accurate. These results suggest that sample backups are likely to be superior
+to full backups on problems with large stochastic branching factors and too
+many states to be solved exactly.
+8.6 Trajectory Sampling
+In this section we compare two ways of distributing backups. The classical
+approach, from dynamic programming, is to perform sweeps through the entire
+state (or state–action) space, backing up each state (or state–action pair) once
+per sweep. This is problematic on large tasks because there may not be time
+to complete even one sweep. In many tasks the vast majority of the states are
+irrelevant because they are visited only under very poor policies or with very
+low probability. Exhaustive sweeps implicitly devote equal time to all parts
+214CHAPTER 8. PLANNING AND LEARNING WITH TABULAR METHODS
+of the state space rather than focusing where it is needed. As we discussed in
+
+---
+
+## Sección 13: Chapter 4, exhaustive sweeps and the equal treatment of all states that they [Entropy: 0.725]
+
+imply are not necessary properties of dynamic programming. In principle,
+backups can be distributed any way one likes (to assure convergence, all states
+or state–action pairs must be visited in the limit an infinite number of times),
+but in practice exhaustive sweeps are often used.
+The second approach is to sample from the state or state–action space according to some distribution. One could sample uniformly, as in the Dyna-Q
+agent, but this would suffer from some of the same problems as exhaustive
+sweeps. More appealing is to distribute backups according to the on-policy
+distribution, that is, according to the distribution observed when following the
+current policy. One advantage of this distribution is that it is easily generated; one simply interacts with the model, following the current policy. In an
+episodic task, one starts in the start state (or according to the starting-state
+distribution) and simulates until the terminal state. In a continuing task, one
+starts anywhere and just keeps simulating. In either case, sample state transitions and rewards are given by the model, and sample actions are given by
+the current policy. In other words, one simulates explicit individual trajectories and performs backups at the state or state–action pairs encountered along
+the way. We call this way of generating experience and backups trajectory
+sampling.
+It is hard to imagine any efficient way of distributing backups according
+to the on-policy distribution other than by trajectory sampling. If one had
+an explicit representation of the on-policy distribution, then one could sweep
+through all states, weighting the backup of each according to the on-policy distribution, but this leaves us again with all the computational costs of exhaustive sweeps. Possibly one could sample and update individual state–action
+pairs from the distribution, but even if this could be done efficiently, what
+benefit would this provide over simulating trajectories? Even knowing the
+on-policy distribution in an explicit form is unlikely. The distribution changes
+whenever the policy changes, and computing the distribution requires computation comparable to a complete policy evaluation. Consideration of such
+other possibilities makes trajectory sampling seem both efficient and elegant.
+Is the on-policy distribution of backups a good one? Intuitively it seems
+like a good choice, at least better than the uniform distribution. For example,
+if you are learning to play chess, you study positions that might arise in real
+games, not random positions of chess pieces. The latter may be valid states,
+but to be able to accurately value them is a different skill from evaluating
+positions in real games. We will also see in Chapter 9 that the on-policy
+distribution has significant advantages when function approximation is used.
+Whether or not function approximation is used, one might expect on-policy
+8.6. TRAJECTORY SAMPLING 215
+focusing to significantly improve the speed of planning.
+Focusing on the on-policy distribution could be beneficial because it causes
+vast, uninteresting parts of the space to be ignored, or it could be detrimental
+because it causes the same old parts of the space to be backed up over and
+over. We conducted a small experiment to assess the effect empirically. To
+isolate the effect of the backup distribution, we used entirely one-step full
+tabular backups, as defined by (8.1). In the uniform case, we cycled through
+all state–action pairs, backing up each in place, and in the on-policy case we
+simulated episodes, backing up each state–action pair that occurred under
+the current -greedy policy ( = 0.1). The tasks were undiscounted episodic
+tasks, generated randomly as follows. From each of the |S| states, two actions
+were possible, each of which resulted in one of b next states, all equally likely,
+with a different random selection of b states for each state–action pair. The
+branching factor, b, was the same for all state–action pairs. In addition, on
+all transitions there was a 0.1 probability of transition to the terminal state,
+ending the episode. We used episodic tasks to get a clear measure of the quality
+of the current policy. At any point in the planning process one can stop and
+exhaustively compute v˜π(s0), the true value of the start state under the greedy
+policy, ˜π, given the current action-value function Q, as an indication of how
+well the agent would do on a new episode on which it acted greedily (all the
+while assuming the model is correct).
+The upper part of Figure 8.14 shows results averaged over 200 sample
+tasks with 1000 states and branching factors of 1, 3, and 10. The quality
+of the policies found is plotted as a function of the number of full backups
+completed. In all cases, sampling according to the on-policy distribution resulted in faster planning initially and retarded planning in the long run. The
+effect was stronger, and the initial period of faster planning was longer, at
+smaller branching factors. In other experiments, we found that these effects
+also became stronger as the number of states increased. For example, the
+lower part of Figure 8.14 shows results for a branching factor of 1 for tasks
+with 10,000 states. In this case the advantage of on-policy focusing is large
+and long-lasting.
+All of these results make sense. In the short term, sampling according to the
+on-policy distribution helps by focusing on states that are near descendants
+of the start state. If there are many states and a small branching factor,
+this effect will be large and long-lasting. In the long run, focusing on the
+on-policy distribution may hurt because the commonly occurring states all
+already have their correct values. Sampling them is useless, whereas sampling
+other states may actually perform some useful work. This presumably is why
+the exhaustive, unfocused approach does better in the long run, at least for
+small problems. These results are not conclusive because they are only for
+216CHAPTER 8. PLANNING AND LEARNING WITH TABULAR METHODS
+b=10
+b=3
+b=1
+on-policy
+uniform 1000 S TATES
+1
+3
+Value of
+start state
+under
+greedy
+policy
+0 5,000 10,000 15,000 20,000
+Computation time, in full backups
+1
+3
+Value of
+start state
+under
+greedy
+policy
+0 50,000 100,000 150,000 200,000
+Computation time, in full backups
+b=1
+10,000 S TATES
+uniform
+on-policy
+uniform
+on-policy
+on-policy
+uniform
+Figure 8.14: Relative efficiency of backups distributed uniformly across the
+state space versus focused on simulated on-policy trajectories. Results are for
+randomly generated tasks of two sizes and various branching factors, b.
+8.7. HEURISTIC SEARCH 217
+problems generated in a particular, random way, but they do suggest that
+sampling according to the on-policy distribution can be a great advantage
+for large problems, in particular for problems in which a small subset of the
+state–action space is visited under the on-policy distribution.
+8.7 Heuristic Search
+The predominant state-space planning methods in artificial intelligence are
+collectively known as heuristic search. Although superficially different from
+the planning methods we have discussed so far in this chapter, heuristic search
+and some of its component ideas can be combined with these methods in
+useful ways. Unlike these methods, heuristic search is not concerned with
+changing the approximate, or “heuristic,” value function, but only with making
+improved action selections given the current value function. In other words,
+heuristic search is planning as part of a policy computation.
+In heuristic search, for each state encountered, a large tree of possible
+continuations is considered. The approximate value function is applied to the
+leaf nodes and then backed up toward the current state at the root. The
+backing up within the search tree is just the same as in the max-backups
+(those for v∗ and q∗) discussed throughout this book. The backing up stops
+at the state–action nodes for the current state. Once the backed-up values of
+these nodes are computed, the best of them is chosen as the current action,
+and then all backed-up values are discarded.
+In conventional heuristic search no effort is made to save the backed-up
+values by changing the approximate value function. In fact, the value function is generally designed by people and never changed as a result of search.
+However, it is natural to consider allowing the value function to be improved
+over time, using either the backed-up values computed during heuristic search
+or any of the other methods presented throughout this book. In a sense we
+have taken this approach all along. Our greedy and ε-greedy action-selection
+methods are not unlike heuristic search, albeit on a smaller scale. For example, to compute the greedy action given a model and a state-value function, we
+must look ahead from each possible action to each possible next state, backup
+the rewards and estimated values, and then pick the best action. Just as in
+conventional heuristic search, this process computes backed-up values of the
+possible actions, but does not attempt to save them. Thus, heuristic search
+can be viewed as an extension of the idea of a greedy policy beyond a single
+step.
+The point of searching deeper than one step is to obtain better action
+218CHAPTER 8. PLANNING AND LEARNING WITH TABULAR METHODS
+selections. If one has a perfect model and an imperfect action-value function,
+then in fact deeper search will usually yield better policies.2 Certainly, if the
+search is all the way to the end of the episode, then the effect of the imperfect
+value function is eliminated, and the action determined in this way must be
+optimal. If the search is of sufficient depth k such that γk is very small, then the
+actions will be correspondingly near optimal. On the other hand, the deeper
+the search, the more computation is required, usually resulting in a slower
+response time. A good example is provided by Tesauro’s grandmaster-level
+backgammon player, TD-Gammon (Section 15.1). This system used TD(λ)
+to learn an afterstate value function through many games of self-play, using a
+form of heuristic search to make its moves. As a model, TD-Gammon used a
+priori knowledge of the probabilities of dice rolls and the assumption that the
+opponent always selected the actions that TD-Gammon rated as best for it.
+Tesauro found that the deeper the heuristic search, the better the moves made
+by TD-Gammon, but the longer it took to make each move. Backgammon
+has a large branching factor, yet moves must be made within a few seconds.
+It was only feasible to search ahead selectively a few steps, but even so the
+search resulted in significantly better action selections.
+So far we have emphasized heuristic search as an action-selection technique,
+but this may not be its most important aspect. Heuristic search also suggests
+ways of selectively distributing backups that may lead to better and faster
+approximation of the optimal value function. A great deal of research on
+heuristic search has been devoted to making the search as efficient as possible.
+The search tree is grown selectively, deeper along some lines and shallower
+along others. For example, the search tree is often deeper for the actions
+that seem most likely to be best, and shallower for those that the agent will
+probably not want to take anyway. Can we use a similar idea to improve the
+distribution of backups? Perhaps it can be done by preferentially updating
+state–action pairs whose values appear to be close to the maximum available
+from the state. To our knowledge, this and other possibilities for distributing
+backups based on ideas borrowed from heuristic search have not yet been
+explored.
+We should not overlook the most obvious way in which heuristic search
+focuses backups: on the current state. Much of the effectiveness of heuristic
+search is due to its search tree being tightly focused on the states and actions
+that might immediately follow the current state. You may spend more of
+your life playing chess than checkers, but when you play checkers, it pays to
+think about checkers and about your particular checkers position, your likely
+next moves, and successor positions. However you select actions, it is these
+states and actions that are of highest priority for backups and where you
+2There are interesting exceptions to this. See, e.g., Pearl (1984).
+8.7. HEURISTIC SEARCH 219
+1 2
+4 5
+7
+8 9
+Figure 8.15: The deep backups of heuristic search can be implemented as a
+sequence of one-step backups (shown here outlined). The ordering shown is
+for a selective depth-first search.
+most urgently want your approximate value function to be accurate. Not only
+should your computation be preferentially devoted to imminent events, but so
+should your limited memory resources. In chess, for example, there are far too
+many possible positions to store distinct value estimates for each of them, but
+chess programs based on heuristic search can easily store distinct estimates for
+the millions of positions they encounter looking ahead from a single position.
+This great focusing of memory and computational resources on the current
+decision is presumably the reason why heuristic search can be so effective.
+The distribution of backups can be altered in similar ways to focus on the
+current state and its likely successors. As a limiting case we might use exactly
+the methods of heuristic search to construct a search tree, and then perform the
+individual, one-step backups from bottom up, as suggested by Figure 8.15. If
+the backups are ordered in this way and a table-lookup representation is used,
+then exactly the same backup would be achieved as in heuristic search. Any
+state-space search can be viewed in this way as the piecing together of a large
+number of individual one-step backups. Thus, the performance improvement
+observed with deeper searches is not due to the use of multistep backups as
+such. Instead, it is due to the focus and concentration of backups on states
+and actions immediately downstream from the current state. By devoting a
+large amount of computation specifically relevant to the candidate actions, a
+much better decision can be made than by relying on unfocused backups.
+220CHAPTER 8. PLANNING AND LEARNING WITH TABULAR METHODS
+8.8 Monte Carlo Tree Search
+8.9 Summary
+We have presented a perspective emphasizing the surprisingly close relationships between planning optimal behavior and learning optimal behavior. Both
+involve estimating the same value functions, and in both cases it is natural
+to update the estimates incrementally, in a long series of small backup operations. This makes it straightforward to integrate learning and planning
+processes simply by allowing both to update the same estimated value function. In addition, any of the learning methods can be converted into planning
+methods simply by applying them to simulated (model-generated) experience
+rather than to real experience. In this case learning and planning become even
+more similar; they are possibly identical algorithms operating on two different
+sources of experience.
+It is straightforward to integrate incremental planning methods with acting
+and model-learning. Planning, acting, and model-learning interact in a circular
+fashion (Figure 8.2), each producing what the other needs to improve; no other
+interaction among them is either required or prohibited. The most natural
+approach is for all processes to proceed asynchronously and in parallel. If
+the processes must share computational resources, then the division can be
+handled almost arbitrarily—by whatever organization is most convenient and
+efficient for the task at hand.
+In this chapter we have touched upon a number of dimensions of variation
+among state-space planning methods. One of the most important of these is
+the distribution of backups, that is, of the focus of search. Prioritized sweeping focuses on the predecessors of states whose values have recently changed.
+Heuristic search applied to reinforcement learning focuses, inter alia, on the
+successors of the current state. Trajectory sampling is a convenient way of focusing on the on-policy distribution. All of these approaches can significantly
+speed planning and are current topics of research.
+Another interesting dimension of variation is the size of backups. The
+smaller the backups, the more incremental the planning methods can be.
+Among the smallest backups are one-step sample backups. We presented one
+study suggesting that one-step sample backups may be preferable on very large
+problems. A related issue is the depth of backups. In many cases deep backups
+can be implemented as sequences of shallow backups.
+8.9. SUMMARY 221
+Bibliographical and Historical Remarks
+8.1 The overall view of planning and learning presented here has developed gradually over a number of years, in part by the authors (Sutton,
+1990, 1991a, 1991b; Barto, Bradtke, and Singh, 1991, 1995; Sutton and
+Pinette, 1985; Sutton and Barto, 1981b); it has been strongly influenced by Agre and Chapman (1990; Agre 1988), Bertsekas and Tsitsiklis (1989), Singh (1993), and others. The authors were also strongly
+influenced by psychological studies of latent learning (Tolman, 1932)
+and by psychological views of the nature of thought (e.g., Galanter and
+Gerstenhaber, 1956; Craik, 1943; Campbell, 1960; Dennett, 1978).
+8.2–3 The terms direct and indirect, which we use to describe different kinds
+of reinforcement learning, are from the adaptive control literature (e.g.,
+Goodwin and Sin, 1984), where they are used to make the same kind of
+distinction. The term system identification is used in adaptive control
+for what we call model-learning (e.g., Goodwin and Sin, 1984; Ljung
+and S¨oderstrom, 1983; Young, 1984). The Dyna architecture is due to
+Sutton (1990), and the results in these sections are based on results
+reported there.
+8.4 Prioritized sweeping was developed simultaneously and independently
+by Moore and Atkeson (1993) and Peng and Williams (1993). The
+results in Figure 8.10 are due to Peng and Williams (1993). The results
+in Figure 8.11 are due to Moore and Atkeson.
+8.5 This section was strongly influenced by the experiments of Singh (1993).
+8.7 For further reading on heuristic search, the reader is encouraged to
+consult texts and surveys such as those by Russell and Norvig (2009)
+and Korf (1988). Peng and Williams (1993) explored a forward focusing
+of backups much as is suggested in this section.
+Exercises
+Exercise 8.1 There is no Exercise 8.1.
+Exercise 8.2 Why did the Dyna agent with exploration bonus, Dyna-Q+,
+perform better in the first phase as well as in the second phase of the blocking
+and shortcut experiments?
+222CHAPTER 8. PLANNING AND LEARNING WITH TABULAR METHODS
+Exercise 8.3 Careful inspection of Figure 8.8 reveals that the difference
+between Dyna-Q+ and Dyna-Q narrowed slightly over the first part of the
+experiment. What is the reason for this?
+Exercise 8.4 (programming) The exploration bonus described above actually changes the estimated values of states and actions. Is this necessary?
+Suppose the bonus κ√τ was used not in backups, but solely in action selection.
+That is, suppose the action selected was always that for which Q(S, a)+κ√τSa
+was maximal. Carry out a gridworld experiment that tests and illustrates the
+strengths and weaknesses of this alternate approach.
+Exercise 8.5 The analysis above assumed that all of the b possible next
+states were equally likely to occur. Suppose instead that the distribution was
+highly skewed, that some of the b states were much more likely to occur than
+most. Would this strengthen or weaken the case for sample backups over full
+backups? Support your answer.
+Exercise 8.6 Some of the graphs in Figure 8.14 seem to be scalloped in
+their early portions, particularly the upper graph for b = 1 and the uniform
+distribution. Why do you think this is? What aspects of the data shown
+support your hypothesis?
+Exercise 8.7 (programming) If you have access to a moderately large
+computer, try replicating the experiment whose results are shown in the lower
+part of Figure 8.14. Then try the same experiment but with b = 3. Discuss
+the meaning of your results.
+
+---
+
+## Sección 14: Chapter 9 [Entropy: 0.75]
+
+Approximate Solution Methods
+On-policy Approximation of
+Action Values
+We have so far assumed that our estimates of value functions are represented
+as a table with one entry for each state or for each state–action pair. This is
+a particularly clear and instructive case, but of course it is limited to tasks
+with small numbers of states and actions. The problem is not just the memory
+needed for large tables, but the time and data needed to fill them accurately.
+In other words, the key issue is that of generalization. How can experience
+with a limited subset of the state space be usefully generalized to produce a
+good approximation over a much larger subset?
+This is a severe problem. In many tasks to which we would like to apply
+reinforcement learning, most states encountered will never have been experienced exactly before. This will almost always be the case when the state
+or action spaces include continuous variables or complex sensations, such as
+a visual image. The only way to learn anything at all on these tasks is to
+generalize from previously experienced states to ones that have never been
+seen.
+Fortunately, generalization from examples has already been extensively
+studied, and we do not need to invent totally new methods for use in reinforcement learning. To a large extent we need only combine reinforcement learning
+methods with existing generalization methods. The kind of generalization we
+require is often called function approximation because it takes examples from a
+desired function (e.g., a value function) and attempts to generalize from them
+to construct an approximation of the entire function. Function approximation
+is an instance of supervised learning, the primary topic studied in machine
+learning, artificial neural networks, pattern recognition, and statistical curve
+fitting. In principle, any of the methods studied in these fields can be used in
+226CHAPTER 9. ON-POLICY APPROXIMATION OF ACTION VALUES
+reinforcement learning as described in this chapter.
+9.1 Value Prediction with Function Approximation
+As usual, we begin with the prediction problem of estimating the state-value
+function vπ from experience generated using policy π. The novelty in this
+chapter is that the approximate value function is represented not as a table
+but as a parameterized functional form with parameter vector w ∈ Rn. We
+will write ˆv(s,w) ≈ vπ(s) for the approximated value of state s given weight
+vector w. For example, ˆv might be the function computed by an artificial
+neural network, with w the vector of connection weights. By adjusting the
+weights, any of a wide range of different functions ˆv can be implemented by
+the network. Or ˆv might be the function computed by a decision tree, where
+w is all the parameters defining the split points and leaf values of the tree.
+Typically, the number of parameters n (the number of components of w) is
+much less than the number of states, and changing one parameter changes the
+estimated value of many states. Consequently, when a single state is backed
+up, the change generalizes from that state to affect the values of many other
+states.
+All of the prediction methods covered in this book have been described
+as backups, that is, as updates to an estimated value function that shift its
+value at particular states toward a “backed-up value” for that state. Let us
+refer to an individual backup by the notation s 7 → v, where s is the state
+backed up and v is the backed-up value, or target, that s’s estimated value
+is shifted toward. For example, the Monte Carlo backup for value prediction is St 7 → Gt, the TD(0) backup is St 7 → Rt+1 + γˆv(St+1,wt), and the
+general TD(λ) backup is St 7 → Gλ
+t . In the DP policy evaluation backup
+s 7 → Eπ[Rt+1 + γˆv(St+1,wt) | St = s], an arbitrary state s is backed up, whereas
+in the the other cases the state, St, encountered in (possibly simulated) experience is backed up.
+It is natural to interpret each backup as specifying an example of the
+desired input–output behavior of the estimated value function. In a sense, the
+backup s 7 → v means that the estimated value for state s should be more like
+v. Up to now, the actual update implementing the backup has been trivial:
+the table entry for s’s estimated value has simply been shifted a fraction of the
+way toward v. Now we permit arbitrarily complex and sophisticated function
+approximation methods to implement the backup. The normal inputs to these
+methods are examples of the desired input–output behavior of the function
+9.1. VALUE PREDICTION WITH FUNCTION APPROXIMATION 227
+they are trying to approximate. We use these methods for value prediction
+simply by passing to them the s 7 → v of each backup as a training example. We
+then interpret the approximate function they produce as an estimated value
+function.
+Viewing each backup as a conventional training example in this way enables
+us to use any of a wide range of existing function approximation methods for
+value prediction. In principle, we can use any method for supervised learning
+from examples, including artificial neural networks, decision trees, and various kinds of multivariate regression. However, not all function approximation
+methods are equally well suited for use in reinforcement learning. The most sophisticated neural network and statistical methods all assume a static training
+set over which multiple passes are made. In reinforcement learning, however,
+it is important that learning be able to occur on-line, while interacting with
+the environment or with a model of the environment. To do this requires
+methods that are able to learn efficiently from incrementally acquired data.
+In addition, reinforcement learning generally requires function approximation
+methods able to handle nonstationary target functions (target functions that
+change over time). For example, in GPI control methods we often seek to
+learn qπ while π changes. Even if the policy remains the same, the target
+values of training examples are nonstationary if they are generated by bootstrapping methods (DP and TD). Methods that cannot easily handle such
+nonstationarity are less suitable for reinforcement learning.
+What performance measures are appropriate for evaluating function approximation methods? Most supervised learning methods seek to minimize
+the root-mean-squared error (RMSE) over some distribution over the inputs.
+In our value prediction problem, the inputs are states and the target function is
+the true value function vπ, so RMSE for an approximation ˆv, using parameter
+w, is
+RMSE(w) =
+√∑
+s∈S
+d(s)
+[
+vπ(s) − ˆv(s,w)
+]2
+, (9.1)
+where d : S → [0, 1], such that ∑
+s d(s) = 1, is a distribution over the states
+specifying the relative importance of errors in different states. This distribution is important because it is usually not possible to reduce the error to
+zero at all states. After all, there are generally far more states than there
+are components to w. The flexibility of the function approximator is thus a
+scarce resource. Better approximation at some states can be gained, generally,
+only at the expense of worse approximation at other states. The distribution
+specifies how these trade-offs should be made.
+The distribution d is also usually the distribution from which the states in
+the training examples are drawn, and thus the distribution of states at which
+228CHAPTER 9. ON-POLICY APPROXIMATION OF ACTION VALUES
+backups are done. If we wish to minimize error over a certain distribution of
+states, then it makes sense to train the function approximator with examples
+from that same distribution. For example, if you want a uniform level of error
+over the entire state set, then it makes sense to train with backups distributed
+uniformly over the entire state set, such as in the exhaustive sweeps of some
+DP methods. Henceforth, let us assume that the distribution of states at which
+backups are done and the distribution that weights errors, d, are the same.
+A distribution of particular interest is the one describing the frequency with
+which states are encountered while the agent is interacting with the environment and selecting actions according to π, the policy whose value function we
+are approximating. We call this the on-policy distribution, in part because it
+is the distribution of backups in on-policy control methods. Minimizing error
+over the on-policy distribution focuses function approximation resources on
+the states that actually occur while following the policy, ignoring those that
+never occur. The on-policy distribution is also the one for which it is easiest to
+get training examples using Monte Carlo or TD methods. These methods generate backups from sample experience using the policy π. Because a backup
+is generated for each state encountered in the experience, the training examples available are naturally distributed according to the on-policy distribution.
+Stronger convergence results are available for the on-policy distribution than
+for other distributions, as we discuss later.
+It is not completely clear that we should care about minimizing the RMSE.
+Our goal in value prediction is potentially different because our ultimate purpose is to use the predictions to aid in finding a better policy. The best predictions for that purpose are not necessarily the best for minimizing RMSE.
+However, it is not yet clear what a more useful alternative goal for value prediction might be. For now, we continue to focus on RMSE.
+An ideal goal in terms of RMSE would be to find a global optimum, a
+parameter vector w∗ for which RMSE(w∗) ≤ RMSE(w) for all possible w.
+Reaching this goal is sometimes possible for simple function approximators
+such as linear ones, but is rarely possible for complex function approximators
+such as artificial neural networks and decision trees. Short of this, complex
+function approximators may seek to converge instead to a local optimum, a
+parameter vector w∗ for which RMSE(w∗) ≤ RMSE(w) for all w in some
+neighborhood of w∗. Although this guarantee is only slightly reassuring, it is
+typically the best that can be said for nonlinear function approximators. For
+many cases of interest in reinforcement learning, convergence to an optimum,
+or even all bound of an optimum may still be achieved with some methods.
+Other methods may in fact diverge, with their RMSE approaching infinity in
+the limit.
+9.2. GRADIENT-DESCENT METHODS 229
+In this section we have outlined a framework for combining a wide range
+of reinforcement learning methods for value prediction with a wide range of
+function approximation methods, using the backups of the former to generate
+training examples for the latter. We have also outlined a range of RMSE performance measures to which these methods may aspire. The range of possible
+methods is far too large to cover all, and anyway too little is known about
+most of them to make a reliable evaluation or recommendation. Of necessity,
+we consider only a few possibilities. In the rest of this chapter we focus on
+function approximation methods based on gradient principles, and on linear
+gradient-descent methods in particular. We focus on these methods in part
+because we consider them to be particularly promising and because they reveal key theoretical issues, but also because they are simple and our space
+is limited. If we had another chapter devoted to function approximation, we
+would also cover at least memory-based and decision-tree methods.
+9.2 Gradient-Descent Methods
+We now develop in detail one class of learning methods for function approximation in value prediction, those based on gradient descent. Gradient-descent
+methods are among the most widely used of all function approximation methods and are particularly well suited to online reinforcement learning.
+In gradient-descent methods, the parameter vector is a column vector with
+a fixed number of real valued components, w = (w1, w2, . . . , wn)> (the > here
+denotes transpose), and the approximate value function ˆv(s,w) is a smooth
+differentiable function of w for all s ∈ S. We will be updating w at each of
+a series of discrete time steps, t = 1, 2, 3, . . ., so we will need a notation wt
+for the weight vector at each step. For now, let us assume that, on each step,
+we observe a new example St 7 → vπ(St) consisting of a (possibly randomly
+selected) state St and its true value under the policy. These states might be
+successive states from an interaction with the environment, but for now we do
+not assume so. Even though we are given the exact, correct values, vπ(St) for
+each St, there is still a difficult problem because our function approximator has
+limited resources and thus limited resolution. In particular, there is generally
+no w that gets all the states, or even all the examples, exactly correct. In
+addition, we must generalize to all the other states that have not appeared in
+examples.
+We assume that states appear in examples with the same distribution, d,
+over which we are trying to minimize the RMSE as given by (9.1). A good
+strategy in this case is to try to minimize error on the observed examples.
+Gradient-descent methods do this by adjusting the parameter vector after
+230CHAPTER 9. ON-POLICY APPROXIMATION OF ACTION VALUES
+each example by a small amount in the direction that would most reduce the
+error on that example:
+wt+1 = wt − 1
+2α∇
+[
+vπ(St) − ˆv(St,wt)
+]2
+= wt + α
+[
+vπ(St) − ˆv(St,wt)
+]
+∇ˆv(St,wt), (9.2)
+where α is a positive step-size parameter, and ∇f (wt), for any expression
+f (wt), denotes the vector of partial derivatives with respect to the components
+of the weight vector:
+(∂f (wt)
+∂wt,1
+, ∂f (wt)
+∂wt,2
+, . . . , ∂f (wt)
+∂wt,n
+)>
+.
+This derivative vector is the gradient of f with respect to wt. This kind of
+method is called gradient descent because the overall step in wt is proportional
+to the negative gradient of the example’s squared error. This is the direction
+in which the error falls most rapidly.
+It may not be immediately apparent why only a small step is taken in the
+direction of the gradient. Could we not move all the way in this direction
+and completely eliminate the error on the example? In many cases this could
+be done, but usually it is not desirable. Remember that we do not seek or
+expect to find a value function that has zero error on all states, but only an
+approximation that balances the errors in different states. If we completely
+corrected each example in one step, then we would not find such a balance. In
+fact, the convergence results for gradient methods assume that the step-size
+parameter decreases over time. If it decreases in such a way as to satisfy the
+standard stochastic approximation conditions (2.7), then the gradient-descent
+method (9.2) is guaranteed to converge to a local optimum.
+We turn now to the case in which the target output, Vt, of the tth training
+example, St 7 → Vt, is not the true value, vπ(St), but some, possibly random,
+approximation of it. For example, Vt might be a noise-corrupted version of
+vπ(St), or it might be one of the backed-up values using ˆv mentioned in the
+previous section. In such cases we cannot perform the exact update (9.2)
+because vπ(St) is unknown, but we can approximate it by substituting Vt in
+place of vπ(St). This yields the general gradient-descent method for state-value
+prediction:
+wt+1 = wt + α
+[
+Vt − ˆv(St,wt)
+]
+∇ˆv(St,wt). (9.3)
+If Vt is an unbiased estimate, that is, if E[Vt] = vπ(St), for each t, then wt is
+guaranteed to converge to a local optimum under the usual stochastic approximation conditions (2.7) for decreasing the step-size parameter α.
+9.2. GRADIENT-DESCENT METHODS 231
+For example, suppose the states in the examples are the states generated
+by interaction (or simulated interaction) with the environment using policy
+π. Let Gt denote the return following each state, St. Because the true value
+of a state is the expected value of the return following it, the Monte Carlo
+target Vt = Gt is by definition an unbiased estimate of vπ(St). With this
+choice, the general gradient-descent method (9.3) converges to a locally optimal approximation to vπ(St). Thus, the gradient-descent version of Monte
+Carlo state-value prediction is guaranteed to find a locally optimal solution.
+Similarly, we can use n-step TD returns and their averages for Vt. For
+example, the gradient-descent form of TD(λ) uses the λ-return, Vt = Gλ
+t , as
+its approximation to vπ(St), yielding the forward-view update:
+wt+1 = wt + α
+[
+Gλ
+t − ˆv(St,wt)
+]
+∇ˆv(St,wt). (9.4)
+Unfortunately, for λ < 1, Gλ
+t is not an unbiased estimate of vπ(St), and thus
+this method does not converge to a local optimum. The situation is the same
+when DP targets are used such as Vt = Eπ[Rt+1 + γˆv(St+1,wt) | St]. Nevertheless, such bootstrapping methods can be quite effective, and other performance guarantees are available for important special cases, as we discuss later
+in this chapter. For now we emphasize the relationship of these methods to
+the general gradient-descent form (9.3). Although increments as in (9.4) are
+not themselves gradients, it is useful to view this method as a gradient-descent
+method (9.3) with a bootstrapping approximation in place of the desired output, vπ(St).
+As (9.4) provides the forward view of gradient-descent TD(λ), so the backward view is provided by
+wt+1 = wt + αδt et, (9.5)
+where δt is the usual TD error, now using ˆv,
+δt = Rt+1 + γˆv(St+1,wt) − ˆv(St,wt), (9.6)
+and et = (et,1, et,2, . . . , et,n)> is a column vector of eligibility traces, one for
+each component of wt, updated by
+et = γλet−1 + ∇ˆv(St,wt), (9.7)
+with e0 = 0. A complete algorithm for on-line gradient-descent TD(λ) is given
+in Figure 9.1.
+Two methods for gradient-based function approximation have been used
+widely in reinforcement learning. One is multilayer artificial neural networks
+using the error backpropagation algorithm. This maps immediately onto the
+equations and algorithms just given, where the backpropagation process is the
+way of computing the gradients. The second popular form is the linear form,
+which we discuss extensively in the next section.
+232CHAPTER 9. ON-POLICY APPROXIMATION OF ACTION VALUES
+Initialize w as appropriate for the problem, e.g., w = 0
+Repeat (for each episode):
+e = 0
+S ← initial state of episode
+Repeat (for each step of episode):
+A ← action given by π for S
+Take action A, observe reward, R, and next state, S′
+δ ← R + γˆv(S′,w) − ˆv(S,w)
+e ← γλe + ∇ˆv(S,w)
+w ← w + αδ e
+S ← S′
+until S′ is terminal
+Figure 9.1: On-line gradient-descent TD(λ) for estimating vπ.
+9.3 Linear Methods
+One of the most important special cases of gradient-descent function approximation is that in which the approximate function, ˆv, is a linear function of the
+parameter vector, w. Corresponding to every state s, there is a vector of features x(s) = (x1(s), x2(s), . . . , xn(s))>, with the same number of components
+as w. The features may be constructed from the states in many different ways;
+we cover a few possibilities below. However the features are constructed, the
+approximate state-value function is given by
+ˆv(s,w) = w>x(s) =
+n ∑
+i=1
+wixi(s). (9.8)
+In this case the approximate value function is said to be linear in the parameters, or simply linear.
+It is natural to use gradient-descent updates with linear function approximation. The gradient of the approximate value function with respect to w in
+this case is
+∇ˆv(s,w) = x(s).
+Thus, the general gradient-descent update (9.3) reduces to a particularly simple form in the linear case. In addition, in the linear case there is only one
+optimum w∗ (or, in degenerate cases, one set of equally good optima). Thus,
+any method guaranteed to converge to or near a local optimum is automatically guaranteed to converge to or near the global optimum. Because it is
+simple in these ways, the linear, gradient-descent case is one of the most favorable for mathematical analysis. Almost all useful convergence results for
+9.3. LINEAR METHODS 233
+learning systems of all kinds are for linear (or simpler) function approximation
+methods.
+In particular, the gradient-descent TD(λ) algorithm discussed in the previous section (Figure 9.1) has been proved to converge in the linear case if
+the step-size parameter is reduced over time according to the usual conditions
+(2.7). Convergence is not to the minimum-error parameter vector, w∗, but to
+a nearby parameter vector, w∞, whose error is bounded according to
+RMSE(w∞) ≤ 1 − γλ
+1 − γ RMSE(w∗). (9.9)
+That is, the asymptotic error is no more than 1−γλ
+1−γ times the smallest possible
+error. As λ approaches 1, the bound approaches the minimum error. An analogous bound applies to other on-policy bootstrapping methods. For example,
+linear gradient-descent DP backups (9.3), with the on-policy distribution, will
+converge to the same result as TD(0). Technically, this bound applies only to
+discounted continuing tasks, but a related result presumably holds for episodic
+tasks. There are also a few technical conditions on the rewards, features, and
+decrease in the step-size parameter, which we are omitting here. The full
+details can be found in the original paper (Tsitsiklis and Van Roy, 1997).
+Critical to the above result is that states are backed up according to the
+on-policy distribution. For other backup distributions, bootstrapping methods
+using function approximation may actually diverge to infinity. Examples of
+this and a discussion of possible solution methods are given in Chapter 10.
+Beyond these theoretical results, linear learning methods are also of interest because in practice they can be very efficient in terms of both data and
+computation. Whether or not this is so depends critically on how the states
+are represented in terms of the features. Choosing features appropriate to the
+task is an important way of adding prior domain knowledge to reinforcement
+learning systems. Intuitively, the features should correspond to the natural
+features of the task, those along which generalization is most appropriate. If
+we are valuing geometric objects, for example, we might want to have features
+for each possible shape, color, size, or function. If we are valuing states of a
+mobile robot, then we might want to have features for locations, degrees of
+remaining battery power, recent sonar readings, and so on.
+In general, we also need features for combinations of these natural qualities.
+This is because the linear form prohibits the representation of interactions
+between features, such as the presence of feature i being good only in the
+absence of feature j. For example, in the pole-balancing task (Example 3.4),
+a high angular velocity may be either good or bad depending on the angular
+position. If the angle is high, then high angular velocity means an imminent
+danger of falling, a bad state, whereas if the angle is low, then high angular
+234CHAPTER 9. ON-POLICY APPROXIMATION OF ACTION VALUES
+Figure 9.2: Coarse coding. Generalization from state X to state Y depends
+on the number of their features whose receptive fields (in this case, circles)
+overlap. These states have one feature in common, so there will be slight
+generalization between them.
+velocity means the pole is righting itself, a good state. In cases with such
+interactions one needs to introduce features for conjunctions of feature values
+when using linear function approximation methods. We next consider some
+general ways of doing this.
+Coarse Coding
+Consider a task in which the state set is continuous and two-dimensional. A
+state in this case is a point in 2-space, a vector with two real components. One
+kind of feature for this case is those corresponding to circles in state space,
+as shown in Figure 9.2. If the state is inside a circle, then the corresponding
+feature has the value 1 and is said to be present; otherwise the feature is 0 and
+is said to be absent. This kind of 1–0-valued feature is called a binary feature.
+Given a state, which binary features are present indicate within which circles
+the state lies, and thus coarsely code for its location. Representing a state
+with features that overlap in this way (although they need not be circles or
+binary) is known as coarse coding.
+Assuming linear gradient-descent function approximation, consider the effect of the size and density of the circles. Corresponding to each circle is a
+single parameter (a component of w) that is affected by learning. If we train
+at one point (state) X, then the parameters of all circles intersecting X will be
+affected. Thus, by (9.8), the approximate value function will be affected at all
+points within the union of the circles, with a greater effect the more circles a
+point has “in common” with X, as shown in Figure 9.2. If the circles are small,
+then the generalization will be over a short distance, as in Figure 9.3a, whereas
+9.3. LINEAR METHODS 235
+a) Narrow generalization b) Broad generalization c) Asymmetric generalization
+Figure 9.3: Generalization in linear function approximation methods is determined by the sizes and shapes of the features’ receptive fields. All three of
+these cases have roughly the same number and density of features.
+if they are large, it will be over a large distance, as in Figure 9.3b. Moreover,
+the shape of the features will determine the nature of the generalization. For
+example, if they are not strictly circular, but are elongated in one direction,
+then generalization will be similarly affected, as in Figure 9.3c.
+Features with large receptive fields give broad generalization, but might
+also seem to limit the learned function to a coarse approximation, unable
+to make discriminations much finer than the width of the receptive fields.
+Happily, this is not the case. Initial generalization from one point to another
+is indeed controlled by the size and shape of the receptive fields, but acuity,
+the finest discrimination ultimately possible, is controlled more by the total
+number of features.
+Example 9.1: Coarseness of Coarse Coding This example illustrates
+the effect on learning of the size of the receptive fields in coarse coding. Linear
+function approximation based on coarse coding and (9.3) was used to learn a
+one-dimensional square-wave function (shown at the top of Figure 9.4). The
+values of this function were used as the targets, Vt. With just one dimension,
+the receptive fields were intervals rather than circles. Learning was repeated
+with three different sizes of the intervals: narrow, medium, and broad, as
+shown at the bottom of the figure. All three cases had the same density of
+features, about 50 over the extent of the function being learned. Training
+examples were generated uniformly at random over this extent. The step-size
+parameter was α = 0.2
+m , where m is the number of features that were present
+at one time. Figure 9.4 shows the functions learned in all three cases over the
+course of learning. Note that the width of the features had a strong effect early
+in learning. With broad features, the generalization tended to be broad; with
+narrow features, only the close neighbors of each trained point were changed,
+causing the function learned to be more bumpy. However, the final function
+236CHAPTER 9. ON-POLICY APPROXIMATION OF ACTION VALUES
+40
+640
+10240
+Narrow
+features
+desired
+function
+Medium
+features Broad
+features
+#Examples approximation
+feature
+width
+Figure 9.4: Example of feature width’s strong effect on initial generalization
+(first row) and weak effect on asymptotic accuracy (last row).
+learned was affected only slightly by the width of the features. Receptive
+field shape tends to have a strong effect on generalization but little effect on
+asymptotic solution quality.
+Tile Coding
+Tile coding is a form of coarse coding that is particularly well suited for use on
+sequential digital computers and for efficient on-line learning. In tile coding
+the receptive fields of the features are grouped into exhaustive partitions of
+the input space. Each such partition is called a tiling, and each element of the
+partition is called a tile. Each tile is the receptive field for one binary feature.
+An immediate advantage of tile coding is that the overall number of features
+that are present at one time is strictly controlled and independent of the input
+state. Exactly one feature is present in each tiling, so the total number of
+features present is always the same as the number of tilings. This allows
+the step-size parameter, α, to be set in an easy, intuitive way. For example,
+choosing α = 1
+m , where m is the number of tilings, results in exact one-trial
+learning. If the example s 7 → v is received, then whatever the prior value,
+ˆv(s,w), the new value will be ˆv(s,w) = v. Usually one wishes to change more
+slowly than this, to allow for generalization and stochastic variation in target
+outputs. For example, one might choose α = 1
+10m , in which case one would
+move one-tenth of the way to the target in one update.
+Because tile coding uses exclusively binary (0–1-valued) features, the weighted
+9.3. LINEAR METHODS 237
+sum making up the approximate value function (9.8) is almost trivial to compute. Rather than performing n multiplications and additions, one simply
+computes the indices of the m n present features and then adds up the
+m corresponding components of the parameter vector. The eligibility trace
+computation (9.7) is also simplified because the components of the gradient,
+∇ˆv(s,w), are also usually 0, and otherwise 1.
+The computation of the indices of the present features is particularly easy
+if gridlike tilings are used. The ideas and techniques here are best illustrated
+by examples. Suppose we address a task with two continuous state variables.
+Then the simplest way to tile the space is with a uniform two-dimensional
+grid:
+Given the x and y coordinates of a point in the space, it is computationally
+easy to determine the index of the tile it is in. When multiple tilings are used,
+each is offset by a different amount, so that each cuts the space in a different
+way. In the example shown in Figure 9.5, an extra row and an extra column
+of tiles have been added to the grid so that no points are left uncovered. The
+two tiles highlighted are those that are present in the state indicated by the
+X. The different tilings may be offset by random amounts, or by cleverly designed deterministic strategies (simply offsetting each dimension by the same
+increment is known not to be a good idea). The effects on generalization and
+asymptotic accuracy illustrated in Figures 9.3 and 9.4 apply here as well. The
+width and shape of the tiles should be chosen to match the width of generalization that one expects to be appropriate. The number of tilings should be
+chosen to influence the density of tiles. The denser the tiling, the finer and
+more accurately the desired function can be approximated, but the greater the
+computational costs.
+It is important to note that the tilings can be arbitrary and need not be
+uniform grids. Not only can the tiles be strangely shaped, as in Figure 9.6a,
+but they can be shaped and distributed to give particular kinds of generalization. For example, the stripe tiling in Figure 9.6b will promote generalization
+along the vertical dimension and discrimination along the horizontal dimension, particularly on the left. The diagonal stripe tiling in Figure 9.6c will
+promote generalization along one diagonal. In higher dimensions, axis-aligned
+stripes correspond to ignoring some of the dimensions in some of the tilings,
+238CHAPTER 9. ON-POLICY APPROXIMATION OF ACTION VALUES
+that is, to hyperplanar slices.
+Another important trick for reducing memory requirements is hashing—a
+consistent pseudo-random collapsing of a large tiling into a much smaller set
+of tiles. Hashing produces tiles consisting of noncontiguous, disjoint regions
+randomly spread throughout the state space, but that still form an exhaustive
+tiling. For example, one tile might consist of the four subtiles shown below:
+one
+tile
+Through hashing, memory requirements are often reduced by large factors with
+little loss of performance. This is possible because high resolution is needed
+in only a small fraction of the state space. Hashing frees us from the curse of
+dimensionality in the sense that memory requirements need not be exponential
+in the number of dimensions, but need merely match the real demands of the
+task. Good public-domain implementations of tile coding, including hashing,
+are widely available.
+Radial Basis Functions
+Radial basis functions (RBFs) are the natural generalization of coarse coding
+to continuous-valued features. Rather than each feature being either 0 or 1,
+it can be anything in the interval [0, 1], reflecting various degrees to which
+the feature is present. A typical RBF feature, i, has a Gaussian (bell-shaped)
+response xi(s) dependent only on the distance between the state, s, and the
+tiling #1
+tiling #2
+Shape of tiles ! Generalization
+#Tilings ! Resolution of final approximation
+2D state
+space
+Figure 9.5: Multiple, overlapping gridtilings.
+9.3. LINEAR METHODS 239
+a) Irregular b) Log stripes c) Diagonal stripes
+Figure 9.6: Tilings.
+ci
+!i
+ci +1 ci -1
+Figure 9.7: One-dimensional radial basis functions.
+feature’s prototypical or center state, ci, and relative to the feature’s width,
+σi:
+xi(s) = exp
+(
+−||s − ci||2
+2σ2
+i
+)
+.
+The norm or distance metric of course can be chosen in whatever way seems
+most appropriate to the states and task at hand. Figure 9.7 shows a onedimensional example with a Euclidean distance metric.
+An RBF network is a linear function approximator using RBFs for its features. Learning is defined by equations (9.3) and (9.8), exactly as in other linear function approximators. The primary advantage of RBFs over binary features is that they produce approximate functions that vary smoothly and are
+differentiable. In addition, some learning methods for RBF networks change
+the centers and widths of the features as well. Such nonlinear methods may
+be able to fit the target function much more precisely. The downside to RBF
+networks, and to nonlinear RBF networks especially, is greater computational
+complexity and, often, more manual tuning before learning is robust and efficient.
+240CHAPTER 9. ON-POLICY APPROXIMATION OF ACTION VALUES
+Kanerva Coding
+On tasks with very high dimensionality, say hundreds of dimensions, tile coding
+and RBF networks become impractical. If we take either method at face
+value, its computational complexity increases exponentially with the number
+of dimensions. There are a number of tricks that can reduce this growth (such
+as hashing), but even these become impractical after a few tens of dimensions.
+On the other hand, some of the general ideas underlying these methods can
+be practical for high-dimensional tasks. In particular, the idea of representing
+states by a list of the features present and then mapping those features linearly
+to an approximation may scale well to large tasks. The key is to keep the
+number of features from scaling explosively. Is there any reason to think this
+might be possible?
+First we need to establish some realistic expectations. Roughly speaking, a
+function approximator of a given complexity can only accurately approximate
+target functions of comparable complexity. But as dimensionality increases,
+the size of the state space inherently increases exponentially. It is reasonable
+to assume that in the worst case the complexity of the target function scales
+like the size of the state space. Thus, if we focus the worst case, then there
+is no solution, no way to get good approximations for high-dimensional tasks
+without using resources exponential in the dimension.
+A more useful way to think about the problem is to focus on the complexity
+of the target function as separate and distinct from the size and dimensionality
+of the state space. The size of the state space may give an upper bound on
+complexity, but short of that high bound, complexity and dimension can be
+unrelated. For example, one might have a 1000-dimensional task where only
+one of the dimensions happens to matter. Given a certain level of complexity,
+we then seek to be able to accurately approximate any target function of that
+complexity or less. As the target level of complexity increases, we would like
+to get by with a proportionate increase in computational resources.
+From this point of view, the real source of the problem is the complexity of
+the target function, or of a reasonable approximation of it, not the dimensionality of the state space. Thus, adding dimensions, such as new sensors or new
+features, to a task should be almost without consequence if the complexity of
+the needed approximations remains the same. The new dimensions may even
+make things easier if the target function can be simply expressed in terms of
+them. Unfortunately, methods like tile coding and RBF coding do not work
+this way. Their complexity increases exponentially with dimensionality even if
+the complexity of the target function does not. For these methods, dimensionality itself is still a problem. We need methods whose complexity is unaffected
+9.4. CONTROL WITH FUNCTION APPROXIMATION 241
+by dimensionality per se, methods that are limited only by, and scale well
+with, the complexity of what they approximate.
+One simple approach that meets these criteria, which we call Kanerva
+coding, is to choose binary features that correspond to particular prototype
+states. For definiteness, let us say that the prototypes are randomly selected
+from the entire state space. The receptive field of such a feature is all states
+sufficiently close to the prototype. Kanerva coding uses a different kind of
+distance metric than in is used in tile coding and RBFs. For definiteness,
+consider a binary state space and the hamming distance, the number of bits
+at which two states differ. States are considered similar if they agree on enough
+dimensions, even if they are totally different on others.
+The strength of Kanerva coding is that the complexity of the functions
+that can be learned depends entirely on the number of features, which bears
+no necessary relationship to the dimensionality of the task. The number of
+features can be more or less than the number of dimensions. Only in the worst
+case must it be exponential in the number of dimensions. Dimensionality itself
+is thus no longer a problem. Complex functions are still a problem, as they
+have to be. To handle more complex tasks, a Kanerva coding approach simply
+needs more features. There is not a great deal of experience with such systems,
+but what there is suggests that their abilities increase in proportion to their
+computational resources. This is an area of current research, and significant
+improvements in existing methods can still easily be found.
+9.4 Control with Function Approximation
+We now extend value prediction methods using function approximation to
+control methods, following the pattern of GPI. First we extend the statevalue prediction methods to action-value prediction methods, then we combine
+them with policy improvement and action selection techniques. As usual, the
+problem of ensuring exploration is solved by pursuing either an on-policy or
+an off-policy approach.
+The extension to action-value prediction is straightforward. In this case
+it is the approximate action-value function, ˆq ≈ qπ, that is represented as a
+parameterized functional form with parameter vector w. Whereas before we
+considered random training examples of the form St 7 → Vt, now we consider examples of the form St, At 7 → Qt. The target output, Qt, can be any approximation of qπ(St, At), including the usual backed-up values such as the full Monte
+Carlo return, Gt, or the one-step Sarsa-style return, Gt+1 + γ ˆq(St+1, At+1,wt).
+242CHAPTER 9. ON-POLICY APPROXIMATION OF ACTION VALUES
+The general gradient-descent update for action-value prediction is
+wt+1 = wt + α
+[
+Qt − ˆq(St, At,wt)
+]
+∇ˆq(St, At,wt).
+For example, the backward view of the action-value method analogous to
+TD(λ) is
+wt+1 = wt + αδt et,
+where
+δt = Rt+1 + γ ˆq(St+1, At+1,wt) − ˆq(St, At,wt),
+and
+et = γλet−1 + ∇ˆq(St, At,wt),
+with e0 = 0. We call this method gradient-descent Sarsa(λ), particularly
+when it is elaborated to form a full control method. For a constant policy,
+this method converges in the same way that TD(λ) does, with the same kind
+of error bound (9.9).
+To form control methods, we need to couple such action-value prediction
+methods with techniques for policy improvement and action selection. Suitable
+techniques applicable to continuous actions, or to actions from large discrete
+sets, are a topic of ongoing research with as yet no clear resolution. On the
+other hand, if the action set is discrete and not too large, then we can use the
+techniques already developed in previous chapters. That is, for each possible
+action, a, available in the current state, St, we can compute ˆq(St, a,wt) and
+then find the greedy action a∗
+t = argmaxa ˆq(St, a,wt). Policy improvement
+is done by changing the estimation policy to the greedy policy (in off-policy
+methods) or to a soft approximation of the greedy policy such as the ε-greedy
+policy (in on-policy methods). Actions are selected according to this same
+policy in on-policy methods, or by an arbitrary policy in off-policy methods.
+Figures 9.8 and 9.9 show examples of on-policy (Sarsa(λ)) and off-policy
+(Watkins’s Q(λ)) control methods using function approximation. Both methods use linear, gradient-descent function approximation with binary features,
+such as in tile coding and Kanerva coding. Both methods use an ε-greedy
+policy for action selection, and the Sarsa method uses it for GPI as well. Both
+compute the sets of present features, Fa, corresponding to the current state
+and all possible actions, a. If the value function for each action is a separate linear function of the same features (a common case), then the indices of
+the Fa for each action are essentially the same, simplifying the computation
+significantly.
+9.4. CONTROL WITH FUNCTION APPROXIMATION 243
+Let w and e be vectors with one component for each possible feature
+Let Fa, for every possible action a, be a set of feature indices, initially empty
+Initialize w as appropriate for the problem, e.g., w = 0
+Repeat (for each episode):
+e = 0
+S, A ← initial state and action of episode (e.g., ε-greedy)
+FA ← set of features present in S, A
+Repeat (for each step of episode):
+For all i ∈ FA:
+ei ← ei + 1 (accumulating traces)
+or ei ← 1 (replacing traces)
+Take action A, observe reward, R, and next state, S′
+δ ← R − ∑
+i∈FA wi
+If S′ is terminal, then w ← w + αδ e; go to next episode
+For all a ∈ A(S′):
+Fa ← set of features present in S′, a
+Qa ← ∑
+i∈Fa wi
+A′ ← new action in S′ (e.g., ε-greedy)
+δ ← δ + γQA′
+w ← w + αδ e
+e ← γλe
+S ← S′
+A ← A′
+Figure 9.8: Linear, gradient-descent Sarsa(λ) with binary features and ε-
+greedy policy. Updates for both accumulating and replacing traces are specified.
+244CHAPTER 9. ON-POLICY APPROXIMATION OF ACTION VALUES
+Let w and e be vectors with one component for each possible feature
+Let Fa, for every possible action a, be a set of feature indices, initially empty
+Initialize w as appropriate for the problem, e.g., w = 0
+Repeat (for each episode):
+e = 0
+S ← initial state of episode
+Repeat (for each step of episode):
+For all a ∈ A(S):
+Fa ← set of features present in S, a
+Qa ← ∑
+i∈Fa wi
+A∗ ← argmaxa Qa
+A ← A∗ with prob. 1 − ε, else a random action ∈ A(S)
+If A 6 = A∗, then e = 0
+Take action A, observe reward, R, and next state, S′
+δ ← R − QA
+For all i ∈ FA:
+ei ← ei + 1 (accumulating traces)
+or ei ← 1 (replacing traces)
+If S′ is terminal, then w ← w + αδ e; go to next episode
+For all a ∈ A(S′):
+Fa ← set of features present in S′, a
+Qa ← ∑
+i∈Fa wi
+δ ← δ + γ maxa∈A(S′) Qa
+w ← w + αδ e
+e ← γλe
+S ← S′
+Figure 9.9: A linear, gradient-descent version of Watkins’s Q(λ) with binary
+features and ε-greedy policy. Updates for both accumulating and replacing
+traces are specified.
+9.4. CONTROL WITH FUNCTION APPROXIMATION 245
+All the methods we have discussed above have used accumulating eligibility
+traces. Although replacing traces (Section 7.8) are known to have advantages
+in tabular methods, replacing traces do not directly extend to the use of function approximation. Recall that the idea of replacing traces is to reset a state’s
+trace to 1 each time it is visited instead of incrementing it by 1. But with function approximation there is no single trace corresponding to a state, just a trace
+for each component of w, which corresponds to many states. One approach
+that seems to work well for linear, gradient-descent function approximation
+methods with binary features is to treat the features as if they were states for
+the purposes of replacing traces. That is, each time a state is encountered that
+has feature i, the trace for feature i is set to 1 rather than being incremented
+by 1, as it would be with accumulating traces.
+When working with state–action traces, it may also be useful to clear (set
+to zero) the traces of all nonselected actions in the states encountered (see
+Section 7.8). This idea can also be extended to the case of linear function
+approximation with binary features. For each state encountered, we first clear
+the traces of all features for the state and the actions not selected, then we set
+to 1 the traces of the features for the state and the action that was selected.
+As we noted for the tabular case, this may or may not be the best way to
+proceed when using replacing traces. A procedural specification of both kinds
+of traces, including the optional clearing for nonselected actions, is given for
+the Sarsa algorithm in Figure 9.8.
+Example 9.2: Mountain–Car Task Consider the task of driving an underpowered car up a steep mountain road, as suggested by the diagram in the
+upper left of Figure 9.10. The difficulty is that gravity is stronger than the
+car’s engine, and even at full throttle the car cannot accelerate up the steep
+slope. The only solution is to first move away from the goal and up the opposite slope on the left. Then, by applying full throttle the car can build up
+enough inertia to carry it up the steep slope even though it is slowing down
+the whole way. This is a simple example of a continuous control task where
+things have to get worse in a sense (farther from the goal) before they can get
+better. Many control methodologies have great difficulties with tasks of this
+kind unless explicitly aided by a human designer.
+The reward in this problem is −1 on all time steps until the car moves past
+its goal position at the top of the mountain, which ends the episode. There are
+three possible actions: full throttle forward (+1), full throttle reverse (−1),
+and zero throttle (0). The car moves according to a simplified physics. Its
+position, pt, and velocity, ˙pt, are updated by
+pt+1 = bound[pt + ˙pt+1
+]
+˙pt+1 = bound[ ˙pt + 0.001At − 0.0025 cos(3pt)],
+246CHAPTER 9. ON-POLICY APPROXIMATION OF ACTION VALUES
+!1.2 Position
+
+---
+
+## Sección 15: Chapter 9 [Entropy: 0.75]
+
+0.6
+Step 428
+Goal
+Position
+0
+!.07
+ 
+.07
+Velocity Velocity
+ Velocity
+Velocity
+ Velocity
+ Velocity
+ Position
+Position
+Position
+2 7
+1 2 0
+1 0 4
+4 6
+Episode 12
+Episode 104 Episode 1000 Episode 9000
+MOUNTAIN C AR
+Figure 9.10: The mountain–car task (upper left panel) and the cost-to-go
+function (− maxa ˆq(s, a,w)) learned during one run.
+where the bound operation enforces −1.2 ≤ pt+1 ≤ 0.5 and −0.07 ≤ ˙pt+1 ≤
+0.07. When pt+1 reached the left bound, ˙pt+1 was reset to zero. When it
+reached the right bound, the goal was reached and the episode was terminated.
+Each episode started from a random position and velocity uniformly chosen
+from these ranges. To convert the two continuous state variables to binary
+features, we used gridtilings as in Figure 9.5. We used ten 9 × 9 tilings, each
+offset by a random fraction of a tile width.
+The Sarsa algorithm in Figure 9.8 (using replace traces and the optional
+clearing) readily solved this task, learning a near optimal policy within 100
+episodes. Figure 9.10 shows the negative of the value function (the cost-togo function) learned on one run, using the parameters λ = 0.9, ε = 0, and
+α = 0.05 (e.g., 0.5
+m ). The initial action values were all zero, which was optimistic
+(all true values are negative in this task), causing extensive exploration to
+occur even though the exploration parameter, ε, was 0. This can be seen in
+the middle-top panel of the figure, labeled “Step 428.” At this time not even
+one episode had been completed, but the car has oscillated back and forth in
+the valley, following circular trajectories in state space. All the states visited
+frequently are valued worse than unexplored states, because the actual rewards
+have been worse than what was (unrealistically) expected. This continually
+drives the agent away from wherever it has been, to explore new states, until
+a solution is found. Figure 9.11 shows the results of a detailed study of the
+9.5. SHOULD WE BOOTSTRAP? 247
+!= . 9
+500
+700
+0 0.2 0.4 0.6 0.8 1 1.2 0 0.2 0.4 0.6 0.8 1 1.2
+" × 5
+REPLACE TRACES ACCUMULATE TRACES
+!= 1
+!= . 9 9
+!= . 9 5
+!= 0
+!= . 4 != . 7
+!= . 8
+!= . 5
+!= 0
+!= . 3
+!= . 6
+" × 5
+Steps per episode
+averaged over
+first 20 trials
+and 30 runs
+first 20 episodes
+Figure 9.11: The effect of α, λ, and the kind of traces on early performance
+on the mountain–car task. This study used five 9 × 9 tilings.
+effect of the parameters α and λ, and of the kind of traces, on the rate of
+learning on this task.
+9.5 Should We Bootstrap?
+At this point you may be wondering why we bother with bootstrapping methods at all. Nonbootstrapping methods can be used with function approximation more reliably and over a broader range of conditions than bootstrapping
+methods. Nonbootstrapping methods achieve a lower asymptotic error than
+bootstrapping methods, even when backups are done according to the onpolicy distribution. By using eligibility traces and λ = 1, it is even possible to
+implement nonbootstrapping methods on-line, in a step-by-step incremental
+manner. Despite all this, in practice bootstrapping methods are usually the
+methods of choice.
+In empirical comparisons, bootstrapping methods usually perform much
+better than nonbootstrapping methods. A convenient way to make such comparisons is to use a TD method with eligibility traces and vary λ from 0 (pure
+bootstrapping) to 1 (pure nonbootstrapping). Figure 9.12 summarizes a collection of such results. In all cases, performance became much worse as λ
+approached 1, the nonbootstrapping case. The example in the upper right of
+the figure is particularly significant in this regard. This is a policy evaluation
+(prediction) task and the performance measure used is RMSE (at the end of
+each episode, averaged over the first 20 episodes). Asymptotically, the λ = 1
+case must be best according to this measure, but here, short of the asymptote,
+248CHAPTER 9. ON-POLICY APPROXIMATION OF ACTION VALUES
+accumulating
+traces
+0.2
+0.3
+0.4
+0.5
+0 0.2 0.4 0.6 0.8 1
+!
+R ANDOM W ALK
+5 0
+150
+250
+Failures per
+100,000 steps
+0 0.2 0.4 0.6 0.8 1
+!
+C ART AND POLE
+450
+550
+650
+Steps per
+episode
+0 0.2 0.4 0.6 0.8 1
+!
+M OUNTAIN C AR
+replacing
+traces
+160
+180
+200
+220
+240
+Cost per
+episode
+0 0.2 0.4 0.6 0.8 1
+!
+PUDDLE W ORLD
+replacing
+traces
+accumulating
+traces
+replacing
+traces
+accumulating
+traces
+RMS error
+Figure 9.12: The effect of λ on reinforcement learning performance. In all
+cases, the better the performance, the lower the curve. The two left panels
+are applications to simple continuous-state control tasks using the Sarsa(λ) algorithm and tile coding, with either replacing or accumulating traces (Sutton,
+1996). The upper-right panel is for policy evaluation on a random walk task
+using TD(λ) (Singh and Sutton, 1996). The lower right panel is unpublished
+data for the pole-balancing task (Example 3.4) from an earlier study (Sutton,
+1984).
+9.6. SUMMARY 249
+we see it performing much worse.
+At this time it is unclear why methods that involve some bootstrapping
+perform so much better than pure nonbootstrapping methods. It could be
+that bootstrapping methods learn faster, or it could be that they actually
+learn something better than nonbootstrapping methods. The available results
+indicate that nonbootstrapping methods are better than bootstrapping methods at reducing RMSE from the true value function, but reducing RMSE is
+not necessarily the most important goal. For example, if you add 1000 to the
+true action-value function at all state–action pairs, then it will have very poor
+RMSE, but you will still get the optimal policy. Nothing quite that simple is
+going on with bootstrapping methods, but they do seem to do something right.
+We expect the understanding of these issues to improve as research continues.
+9.6 Summary
+Reinforcement learning systems must be capable of generalization if they are to
+be applicable to artificial intelligence or to large engineering applications. To
+achieve this, any of a broad range of existing methods for supervised-learning
+function approximation can be used simply by treating each backup as a training example. Gradient-descent methods, in particular, allow a natural extension to function approximation of all the techniques developed in previous
+chapters, including eligibility traces. Linear gradient-descent methods are
+particularly appealing theoretically and work well in practice when provided
+with appropriate features. Choosing the features is one of the most important
+ways of adding prior domain knowledge to reinforcement learning systems.
+Linear methods include radial basis functions, tile coding, and Kanerva coding. Backpropagation methods for multilayer neural networks are methods for
+nonlinear gradient-descent function approximation.
+For the most part, the extension of reinforcement learning prediction and
+control methods to gradient-descent forms is straightforward for the on-policy
+case. On-policy bootstrapping methods converge reliably with linear gradientdescent function approximation to a solution with mean-squared error bounded
+by 1−γλ
+1−γ times the minimum possible error. Bootstrapping methods are of
+persistent interest in reinforcement learning, despite their limited theoretical
+guarantees, because in practice they usually work significantly better than
+nonbootstrapping methods. The off-policy case involves considerably greater
+subtlety and is postponed to a later (future) chapter.
+250CHAPTER 9. ON-POLICY APPROXIMATION OF ACTION VALUES
+Bibliographical and Historical Remarks
+Despite our treatment of generalization and function approximation late in
+the book, they have always been an integral part of reinforcement learning. It
+is only in the last decade or less that the field has focused on the tabular case,
+as we have here for the first seven chapters. Bertsekas and Tsitsiklis (1996)
+present the state of the art in function approximation in reinforcement learning, and the collection of papers by Boyan, Moore, and Sutton (1995) is also
+useful. Some of the early work with function approximation in reinforcement
+learning is discussed at the end of this section.
+9.2 Gradient-descent methods for the minimizing mean-squared error in supervised learning are well known. Widrow and Hoff (1960) introduced
+the least-mean-square (LMS) algorithm, which is the prototypical incremental gradient-descent algorithm. Details of this and related algorithms are provided in many texts (e.g., Widrow and Stearns, 1985;
+Bishop, 1995; Duda and Hart, 1973).
+Gradient-descent analyses of TD learning date back at least to Sutton
+(1988). Methods more sophisticated than the simple gradient-descent
+methods covered in this section have also been studied in the context of
+reinforcement learning, such as quasi-Newton methods (Werbos, 1990)
+and recursive-least-squares methods (Bradtke, 1993, 1994; Bradtke and
+Barto, 1996; Bradtke, Ydstie, and Barto, 1994). Bertsekas and Tsitsiklis (1996) provide a good discussion of these methods.
+The earliest use of state aggregation in reinforcement learning may
+have been Michie and Chambers’s BOXES system (1968). The theory
+of state aggregation in reinforcement learning has been developed by
+Singh, Jaakkola, and Jordan (1995) and Tsitsiklis and Van Roy (1996).
+9.3 TD(λ) with linear gradient-descent function approximation was first explored by Sutton (1984, 1988), who proved convergence of TD(0) in the
+mean to the minimal RMSE solution for the case in which the feature
+vectors, {x(s) : s ∈ S}, are linearly independent. Convergence with
+probability 1 for general λ was proved by several researchers at about
+the same time (Peng, 1993; Dayan and Sejnowski, 1994; Tsitsiklis, 1994;
+Gurvits, Lin, and Hanson, 1994). In addition, Jaakkola, Jordan, and
+Singh (1994) proved convergence under on-line updating. All of these
+results assumed linearly independent feature vectors, which implies at
+least as many components to wt as there are states. Convergence of linear TD(λ) for the more interesting case of general (dependent) feature
+vectors was first shown by Dayan (1992). A significant generalization
+9.6. SUMMARY 251
+and strengthening of Dayan’s result was proved by Tsitsiklis and Van
+Roy (1997). They proved the main result presented in Section 9.2,
+the bound on the asymptotic error of TD(λ) and other bootstrapping
+methods. Recently they extended their analysis to the undiscounted
+continuing case (Tsitsiklis and Van Roy, 1999).
+Our presentation of the range of possibilities for linear function approximation is based on that by Barto (1990). The term coarse coding is
+due to Hinton (1984), and our Figure 9.2 is based on one of his figures.
+Waltz and Fu (1965) provide an early example of this type of function
+approximation in a reinforcement learning system.
+Tile coding, including hashing, was introduced by Albus (1971, 1981).
+He described it in terms of his “cerebellar model articulator controller,”
+or CMAC, as tile coding is known in the literature. The term “tile
+coding” is new to this book, though the idea of describing CMAC in
+these terms is taken from Watkins (1989). Tile coding has been used in
+many reinforcement learning systems (e.g., Shewchuk and Dean, 1990;
+Lin and Kim, 1991; Miller, Scalera, and Kim, 1994; Sofge and White,
+1992; Tham, 1994; Sutton, 1996; Watkins, 1989) as well as in other
+types of learning control systems (e.g., Kraft and Campagna, 1990;
+Kraft, Miller, and Dietz, 1992).
+Function approximation using radial basis functions (RBFs) has received wide attention ever since being related to neural networks by
+Broomhead and Lowe (1988). Powell (1987) reviewed earlier uses of
+RBFs, and Poggio and Girosi (1989, 1990) extensively developed and
+applied this approach.
+What we call “Kanerva coding” was introduced by Kanerva (1988) as
+part of his more general idea of sparse distributed memory. A good review of this and related memory models is provided by Kanerva (1993).
+This approach has been pursued by Gallant (1993) and by Sutton and
+Whitehead (1993), among others.
+9.4 Q(λ) with function approximation was first explored by Watkins (1989).
+Sarsa(λ) with function approximation was first explored by Rummery
+and Niranjan (1994). The mountain–car example is based on a similar
+task studied by Moore (1990). The results on it presented here are from
+Sutton (1996) and Singh and Sutton (1996).
+Convergence of the Sarsa control method presented in this section has
+not been proved. The Q-learning control method is now known not
+to be sound and will diverge for some problems. Convergence results
+for control methods with state aggregation and other special kinds of
+252CHAPTER 9. ON-POLICY APPROXIMATION OF ACTION VALUES
+function approximation are proved by Tsitsiklis and Van Roy (1996),
+Singh, Jaakkola, and Jordan (1995), and Gordon (1995).
+The use of function approximation in reinforcement learning goes back to
+the early neural networks of Farley and Clark (1954; Clark and Farley, 1955),
+who used reinforcement learning to adjust the parameters of linear threshold
+functions representing policies. The earliest example we know of in which
+function approximation methods were used for learning value functions was
+Samuel’s checkers player (1959, 1967). Samuel followed Shannon’s (1950)
+suggestion that a value function did not have to be exact to be a useful guide
+to selecting moves in a game and that it might be approximated by linear
+combination of features. In addition to linear function approximation, Samuel
+experimented with lookup tables and hierarchical lookup tables called signature tables (Griffith, 1966, 1974; Page, 1977; Biermann, Fairfield, and Beres,
+1982).
+At about the same time as Samuel’s work, Bellman and Dreyfus (1959)
+proposed using function approximation methods with DP. (It is tempting to
+think that Bellman and Samuel had some influence on one another, but we
+know of no reference to the other in the work of either.) There is now a
+fairly extensive literature on function approximation methods and DP, such
+as multigrid methods and methods using splines and orthogonal polynomials
+(e.g., Bellman and Dreyfus, 1959; Bellman, Kalaba, and Kotkin, 1973; Daniel,
+1976; Whitt, 1978; Reetz, 1977; Schweitzer and Seidmann, 1985; Chow and
+Tsitsiklis, 1991; Kushner and Dupuis, 1992; Rust, 1996).
+Holland’s (1986) classifier system used a selective feature-match technique
+to generalize evaluation information across state–action pairs. Each classifier
+matched a subset of states having specified values for a subset of features, with
+the remaining features having arbitrary values (“wild cards”). These subsets
+were then used in a conventional state-aggregation approach to function approximation. Holland’s idea was to use a genetic algorithm to evolve a set
+of classifiers that collectively would implement a useful action-value function.
+Holland’s ideas influenced the early research of the authors on reinforcement
+learning, but we focused on different approaches to function approximation.
+As function approximators, classifiers are limited in several ways. First, they
+are state-aggregation methods, with concomitant limitations in scaling and in
+representing smooth functions efficiently. In addition, the matching rules of
+classifiers can implement only aggregation boundaries that are parallel to the
+feature axes. Perhaps the most important limitation of conventional classifier systems is that the classifiers are learned via the genetic algorithm, an
+evolutionary method. As we discussed in Chapter 1, there is available during learning much more detailed information about how to learn than can be
+9.6. SUMMARY 253
+used by evolutionary methods. This perspective led us to instead adapt supervised learning methods for use in reinforcement learning, specifically gradientdescent and neural network methods. These differences between Holland’s
+approach and ours are not surprising because Holland’s ideas were developed
+during a period when neural networks were generally regarded as being too
+weak in computational power to be useful, whereas our work was at the beginning of the period that saw widespread questioning of that conventional
+wisdom. There remain many opportunities for combining aspects of these
+different approaches.
+A number of reinforcement learning studies using function approximation
+methods that we have not covered previously should be mentioned. Barto,
+Sutton, and Brouwer (1981) and Barto and Sutton (1981b) extended the idea
+of an associative memory network (e.g., Kohonen, 1977; Anderson, Silverstein,
+Ritz, and Jones, 1977) to reinforcement learning. Hampson (1983, 1989) was
+an early proponent of multilayer neural networks for learning value functions.
+Anderson (1986, 1987) coupled a TD algorithm with the error backpropagation
+algorithm to learn a value function. Barto and Anandan (1985) introduced a
+stochastic version of Widrow, Gupta, and Maitra’s (1973) selective bootstrap
+algorithm, which they called the associative reward-penalty (AR−P ) algorithm.
+Williams (1986, 1987, 1988, 1992) extended this type of algorithm to a general
+class of REINFORCE algorithms, showing that they perform stochastic gradient ascent on the expected reinforcement. Gullapalli (1990) and Williams
+devised algorithms for learning generalizing policies for the case of continuous
+actions. Phansalkar and Thathachar (1995) proved both local and global convergence theorems for modified versions of REINFORCE algorithms. Christensen and Korf (1986) experimented with regression methods for modifying
+coefficients of linear value function approximations in the game of chess. Chapman and Kaelbling (1991) and Tan (1991) adapted decision-tree methods for
+learning value functions. Explanation-based learning methods have also been
+adapted for learning value functions, yielding compact representations (Yee,
+Saxena, Utgoff, and Barto, 1990; Dietterich and Flann, 1995).
+Exercises
+Exercise 9.1 Show that table-lookup TD(λ) is a special case of general TD(λ)
+as given by equations (9.5–9.7).
+Exercise 9.2 State aggregation is a simple form of generalizing function approximation in which states are grouped together, with one table entry (value
+estimate) used for each group. Whenever a state in a group is encountered, the
+group’s entry is used to determine the state’s value, and when the state is up-
+254CHAPTER 9. ON-POLICY APPROXIMATION OF ACTION VALUES
+dated, the group’s entry is updated. Show that this kind of state aggregation
+is a special case of a gradient method such as (9.4).
+Exercise 9.3 The equations given in this section are for the on-line version
+of gradient-descent TD(λ). What are the equations for the off-line version?
+Give a complete description specifying the new weight vector at the end of an
+episode, w′, in terms of the weight vector used during the episode, w. Start
+by modifying a forward-view equation for TD(λ), such as (9.4).
+Exercise 9.4 For off-line updating, show that equations (9.5–9.7) produce
+updates identical to (9.4).
+Exercise 9.5 How could we reproduce the tabular case within the linear
+framework?
+Exercise 9.6 How could we reproduce the state aggregation case (see Exercise 8.4) within the linear framework?
+Exercise 9.7 Suppose we believe that one of two state dimensions is more
+likely to have an effect on the value function than is the other, that generalization should be primarily across this dimension rather than along it. What
+kind of tilings could be used to take advantage of this prior knowledge?
+
+---
+
+## Sección 16: Chapter 10 [Entropy: 0.05]
+
+Off-policy Approximation of
+Action Values
+256CHAPTER 10. OFF-POLICY APPROXIMATION OF ACTION VALUES
+
+---
+
+## Sección 17: Chapter 11 [Entropy: 0.725]
+
+Policy Approximation
+All of the methods we have considered so far in this book have learned the
+values of states or state–action pairs. To use them for control, we learned
+the values of state–action pairs, and then used those action values directly to
+implement the policy (e.g., ε-greedy) and select actions. All methods of this
+form can be called action-value methods.
+In this chapter we explore methods that are not action-value methods.
+They may still compute action (or state) values, but they do not use them
+directly to select actions. Instead, the policy is represented directly, with its
+own weights independent of any value function.
+11.1 Actor–Critic Methods
+Actor–critic methods are TD methods that have a separate memory structure
+to explicitly represent the policy independent of the value function. The policy
+structure is known as the actor, because it is used to select actions, and the
+estimated value function is known as the critic, because it criticizes the actions
+made by the actor. Learning is always on-policy: the critic must learn about
+and critique whatever policy is currently being followed by the actor. The
+critique takes the form of a TD error. This scalar signal is the sole output
+of the critic and drives all learning in both actor and critic, as suggested by
+Figure 11.1.
+Actor–critic methods are the natural extension of the idea of gradientbandit methods (Section 2.7) to TD learning and to the full reinforcement
+learning problem. Typically, the critic is a state-value function. After each
+action selection, the critic evaluates the new state to determine whether things
+have gone better or worse than expected. That evaluation is the TD error:
+258 CHAPTER 11. POLICY APPROXIMATION
+Policy
+TD
+error
+Environment
+Value
+Function
+reward
+state action
+Actor
+Critic
+Figure 11.1: The actor–critic architecture.
+δt = Rt+1 + γVt(St+1) − V (St),
+where Vt is the value function implemented by the critic at time t. This TD
+error can be used to evaluate the action just selected, the action At taken in
+state St. If the TD error is positive, it suggests that the tendency to select At
+should be strengthened for the future, whereas if the TD error is negative, it
+suggests the tendency should be weakened. Suppose actions are generated by
+the Gibbs softmax method:
+πt(a|s) = Pr{At = a | St = s} = eHt(s,a)
+∑
+b eHt(s,b) ,
+where the Ht(s, a) are the values at time t of the modifiable policy parameters
+of the actor, indicating the tendency to select (preference for) each action a
+when in each state s at time t. Then the strengthening or weakening described
+above can be implemented by increasing or decreasing Ht(St, At), for instance,
+by
+Ht+1(St, At) = Ht(St, At) + βδt,
+where β is another positive step-size parameter.
+This is just one example of an actor–critic method. Other variations select
+the actions in different ways, or use eligibility traces like those described in the
+11.2. ELIGIBILITY TRACES FOR ACTOR–CRITIC METHODS 259
+next chapter. Another common dimension of variation, as in reinforcement
+comparison methods, is to include additional factors varying the amount of
+credit assigned to the action taken, At. For example, one of the most common
+such factors is inversely related to the probability of selecting At, resulting in
+the update rule:
+Ht(St, At) = Ht(St, At) + βδt
+[
+1 − πt(At|St)
+]
+.
+These issues were explored early on, primarily for the immediate reward case
+(Sutton, 1984; Williams, 1992) and have not been brought fully up to date.
+Many of the earliest reinforcement learning systems that used TD methods
+were actor–critic methods (Witten, 1977; Barto, Sutton, and Anderson, 1983).
+Since then, more attention has been devoted to methods that learn action-value
+functions and determine a policy exclusively from the estimated values (such
+as Sarsa and Q-learning). This divergence may be just historical accident.
+For example, one could imagine intermediate architectures in which both an
+action-value function and an independent policy would be learned. In any
+event, actor–critic methods are likely to remain of current interest because of
+two significant apparent advantages:
+• They require minimal computation in order to select actions. Consider a
+case where there are an infinite number of possible actions—for example,
+a continuous-valued action. Any method learning just action values must
+search through this infinite set in order to pick an action. If the policy
+is explicitly stored, then this extensive computation may not be needed
+for each action selection.
+• They can learn an explicitly stochastic policy; that is, they can learn
+the optimal probabilities of selecting various actions. This ability turns
+out to be useful in competitive and non-Markov cases (e.g., see Singh,
+Jaakkola, and Jordan, 1994).
+In addition, the separate actor in actor–critic methods makes them more appealing in some respects as psychological and biological models. In some cases
+it may also make it easier to impose domain-specific constraints on the set of
+allowed policies.
+11.2 Eligibility Traces for Actor–Critic Methods
+In this section we describe how to extend the actor–critic methods introduced
+in Section 11.1 to use eligibility traces. This is fairly straightforward. The
+260 CHAPTER 11. POLICY APPROXIMATION
+critic part of an actor–critic method is simply on-policy learning of vπ. The
+TD(λ) algorithm can be used for that, with one eligibility trace for each state.
+The actor part needs to use an eligibility trace for each state–action pair.
+Thus, an actor–critic method needs two sets of traces, one for each state and
+one for each state–action pair.
+Recall that the one-step actor–critic method updates the actor by
+Ht+1(s, a) =
+{ Ht(s, a) + αδt if a = At and s = St
+Ht(s, a) otherwise,
+where δt is the TD(λ) error (7.10), and Ht(s, a) is the preference for taking
+action a at time t if in state s. The preferences determine the policy via, for
+example, a softmax method (Section 2.3). We generalize the above equation
+to use eligibility traces as follows:
+Ht+1(s, a) = Ht(s, a) + αδt Et(s, a), (11.1)
+where Et(s, a) denotes the trace at time t for state–action pair s, a. For the
+simplest case mentioned above, the trace can be updated as in Sarsa(λ).
+In Section 11.1 we also discussed a more sophisticated actor–critic method
+that uses the update
+Ht+1(s, a) =
+{ Ht(s, a) + αδt[1 − πt(a|s)] if a = At and s = St
+Ht(s, a) otherwise.
+To generalize this equation to eligibility traces we can use the same update
+(11.1) with a slightly different trace. Rather than incrementing the trace by 1
+each time a state–action pair occurs, it is updated by 1 − πt(St, At):
+Et(s, a) =
+{ γλEt−1(s, a) + 1 − πt(St, At) if s = St and a = At;
+γλEt−1(s, a) otherwise, (11.2)
+for all s, a.
+11.3 R-Learning and the Average-Reward Setting
+When the policy is approximated, we generally have to abandon the discountedreward setting that we have relied on up to now. We replace it with the
+average-reward setting, which we discuss in this section.
+R-learning is an off-policy control method for the advanced version of the
+reinforcement learning problem in which one neither discounts nor divides
+11.3. R-LEARNING AND THE AVERAGE-REWARD SETTING 261
+experience into distinct episodes with finite returns. In this average-reward
+setting, one seeks to maximize the average reward per time step. The value
+functions for a policy, π, are defined relative to the average expected reward
+per step under the policy, ¯r(π):
+¯r(π) = lim
+n→∞
+n
+n ∑
+t=1
+Eπ[Rt] .
+This average reward is well defined if we assume that the process is ergodic
+(nonzero probability of reaching any state from any other under any policy),
+and thus that ¯r(π) does not depend on the starting state. From any state, in
+the long run the average reward is the same, but there is a transient. From
+some states better-than-average rewards are received for a while, and from
+others worse-than-average rewards are received. It is this transient that defines
+the value of a state:
+vπ(s) =
+∞ ∑
+k=1
+Eπ[Rt+k − ¯r(π) | St = s] ,
+and the value of a state–action pair is similarly the transient difference in
+reward when starting in that state and taking that action:
+qπ(s, a) =
+∞ ∑
+k=1
+Eπ[Rt+k − ¯r(π) | St = s, At = a] .
+We call these relative values because they are relative to the average reward
+under the current policy.
+There are subtle distinctions that need to be drawn between different kinds
+of optimality in the undiscounted continuing case. Nevertheless, for most
+practical purposes it may be adequate simply to order policies according to
+their average reward per time step, in other words, according to their ¯r(π).
+For now let us consider all policies that attain the maximal value of ¯r(π) to
+be optimal.
+Other than its use of relative values, R-learning is a standard TD control
+method based on off-policy GPI, much like Q-learning. It maintains two policies, a behavior policy and an estimation policy, plus an action-value function
+and an estimated average reward. The behavior policy is used to generate
+experience; it might be the ε-greedy policy with respect to the action-value
+function. The estimation policy is the one involved in GPI. It is typically the
+greedy policy with respect to the action-value function. If π is the estimation
+policy, then the action-value function, Q, is an approximation of qπ and the
+average reward, ¯ R, is an approximation of ¯r(π). The complete algorithm is
+given in Figure 11.2.
+262 CHAPTER 11. POLICY APPROXIMATION
+Initialize ¯ R and Q(s, a), for all s, a, arbitrarily
+Repeat forever:
+S ← current state
+Choose action A in S using behavior policy (e.g., -greedy)
+Take action A, observe R, S′
+δ ← R − ¯ R + maxa Q(S′, a) − Q(S, A)
+Q(S, A) ← Q(S, A) + αδ
+If Q(S, A) = maxa Q(S, a), then:
+¯ R ← ¯ R + βδ
+Figure 11.2: R-learning: An off-policy TD control algorithm for undiscounted,
+continuing tasks. The scalars α and β are step-size parameters.
+Example 11.1: An Access-Control Queuing Task This is a decision
+task involving access control to a set of n servers. Customers of four different
+priorities arrive at a single queue. If given access to a server, the customers
+pay a reward of 1, 2, 4, or 8, depending on their priority, with higher priority
+customers paying more. In each time step, the customer at the head of the
+queue is either accepted (assigned to one of the servers) or rejected (removed
+from the queue). In either case, on the next time step the next customer
+in the queue is considered. The queue never empties, and the proportion of
+(randomly distributed) high priority customers in the queue is h. Of course a
+customer can be served only if there is a free server. Each busy server becomes
+free with probability p on each time step. Although we have just described
+them for definiteness, let us assume the statistics of arrivals and departures are
+unknown. The task is to decide on each step whether to accept or reject the
+next customer, on the basis of his priority and the number of free servers, so
+as to maximize long-term reward without discounting. Figure 11.3 shows the
+solution found by R-learning for this task with n = 10, h = 0.5, and p = 0.06.
+The R-learning parameters were α = 0.01, β = 0.01, and = 0.1. The initial
+action values and ¯ R were zero.
+Exercises
+∗Exercise 11.1 Design an on-policy method for undiscounted, continuing
+tasks.
+11.3. R-LEARNING AND THE AVERAGE-REWARD SETTING 263
+1 2 3 4 5 6 7 8 9 10 0
+!15
+!10
+!5
+5
+priority 8
+priority 4
+priority 2
+priority 1
+Number of free servers
+2
+ACCEPT
+REJECT
+1 2 3 4 5 6 7 8 9 10
+Number of free servers
+Priority
+1 POLICY
+Value of
+best action
+V ALUE
+FUNCTION
+Figure 11.3: The policy and value function found by R-learning on the accesscontrol queuing task after 2 million steps. The drop on the right of the graph is
+probably due to insufficient data; many of these states were never experienced.
+The value learned for ¯ R was about 2.73.
+264 CHAPTER 11. POLICY APPROXIMATION
+
+---
+
+## Sección 18: Part III [Entropy: 0.25]
+
+Frontiers
+267
+In this last part of the book we discuss some of the frontiers of reinforcement
+learning research, including its relationship to neuroscience and animal learning behavior, a sampling of reinforcement learning applications, and prospects
+for the future of reinforcement learning.
+
+---
+
+## Sección 19: Chapter 14 [Entropy: 0.84]
+
+Psychology
+270 CHAPTER 12. PSYCHOLOGY
+Neuroscience
+272 CHAPTER 13. NEUROSCIENCE
+Applications and Case Studies
+In this final chapter we present a few case studies of reinforcement learning.
+Several of these are substantial applications of potential economic significance.
+One, Samuel’s checkers player, is primarily of historical interest. Our presentations are intended to illustrate some of the trade-offs and issues that arise in
+real applications. For example, we emphasize how domain knowledge is incorporated into the formulation and solution of the problem. We also highlight
+the representation issues that are so often critical to successful applications.
+The algorithms used in some of these case studies are substantially more complex than those we have presented in the rest of the book. Applications of
+reinforcement learning are still far from routine and typically require as much
+art as science. Making applications easier and more straightforward is one of
+the goals of current research in reinforcement learning.
+14.1 TD-Gammon
+One of the most impressive applications of reinforcement learning to date is
+that by Gerry Tesauro to the game of backgammon (Tesauro, 1992, 1994,
+1995). Tesauro’s program, TD-Gammon, required little backgammon knowledge, yet learned to play extremely well, near the level of the world’s strongest
+grandmasters. The learning algorithm in TD-Gammon was a straightforward
+combination of the TD(λ) algorithm and nonlinear function approximation
+using a multilayer neural network trained by backpropagating TD errors.
+Backgammon is a major game in the sense that it is played throughout the
+world, with numerous tournaments and regular world championship matches.
+It is in part a game of chance, and it is a popular vehicle for waging significant
+sums of money. There are probably more professional backgammon players
+274 CHAPTER 14. APPLICATIONS AND CASE STUDIES
+white pieces move
+counterclockwise
+1 2 3 4 5 6 7 8 9 10 11 12
+18 17 16 15 14 13 19 20 21 22 23 24
+black pieces
+move clockwise
+Figure 14.1: A backgammon position
+than there are professional chess players. The game is played with 15 white
+and 15 black pieces on a board of 24 locations, called points. Figure 14.1 shows
+a typical position early in the game, seen from the perspective of the white
+player.
+In this figure, white has just rolled the dice and obtained a 5 and a 2. This
+means that he can move one of his pieces 5 steps and one (possibly the same
+piece) 2 steps. For example, he could move two pieces from the 12 point, one
+to the 17 point, and one to the 14 point. White’s objective is to advance all of
+his pieces into the last quadrant (points 19–24) and then off the board. The
+first player to remove all his pieces wins. One complication is that the pieces
+interact as they pass each other going in different directions. For example, if
+it were black’s move in Figure 14.1, he could use the dice roll of 2 to move a
+piece from the 24 point to the 22 point, “hitting” the white piece there. Pieces
+that have been hit are placed on the “bar” in the middle of the board (where
+we already see one previously hit black piece), from whence they reenter the
+race from the start. However, if there are two pieces on a point, then the
+opponent cannot move to that point; the pieces are protected from being hit.
+Thus, white cannot use his 5–2 dice roll to move either of his pieces on the 1
+point, because their possible resulting points are occupied by groups of black
+pieces. Forming contiguous blocks of occupied points to block the opponent is
+one of the elementary strategies of the game.
+Backgammon involves several further complications, but the above description gives the basic idea. With 30 pieces and 24 possible locations (26, counting the bar and off-the-board) it should be clear that the number of possible
+backgammon positions is enormous, far more than the number of memory elements one could have in any physically realizable computer. The number of
+moves possible from each position is also large. For a typical dice roll there
+might be 20 different ways of playing. In considering future moves, such as
+14.1. TD-GAMMON 275
+Vt+1! Vt
+hidden units (40-80)
+backgammon position (198 input units)
+predicted probability
+of winning, Vt
+TD error,
+. . . . . .
+. . . . . .
+. . . . . .
+15.1. TD-GAMMON 263
+gation algorithm (Rumelhart, Hinton, and Williams, 1986). Recall that the
+general update rule for this case is
+wt+1 = wt + ↵
+h
+Rt+1 + ˆv(St+1,wt) ˆv(St,wt)
+i
+et, (15.1)
+where wt is the vector of all modifiable parameters (in this case, the weights
+of the network) and et is a vector of eligibility traces, one for each component
+of wt, updated by
+et = et 1 + rwt ˆv(St,wt),
+with e0 = 0. The gradient in this equation can be computed e ciently by the
+backpropagation procedure. For the backgammon application, in which = 1
+and the reward is always zero except upon winning, the TD error portion of the
+learning rule is usually just ˆv(St+1,w) ˆv(St,w), as suggested in Figure 15.2.
+To apply the learning rule we need a source of backgammon games. Tesauro
+obtained an unending sequence of games by playing his learning backgammon
+player against itself. To choose its moves, TD-Gammon considered each of the
+20 or so ways it could play its dice roll and the corresponding positions that
+would result. The resulting positions are afterstates as discussed in Section 6.8.
+The network was consulted to estimate each of their values. The move was
+then selected that would lead to the position with the highest estimated value.
+Continuing in this way, with TD-Gammon making the moves for both sides,
+it was possible to easily generate large numbers of backgammon games. Each
+game was treated as an episode, with the sequence of positions acting as
+the states, S0, S1, S2, . . .. Tesauro applied the nonlinear TD rule (15.1) fully
+incrementally, that is, after each individual move.
+The weights of the network were set initially to small random values. The
+initial evaluations were thus entirely arbitrary. Since the moves were selected
+on the basis of these evaluations, the initial moves were inevitably poor, and
+the initial games often lasted hundreds or thousands of moves before one side
+or the other won, almost by accident. After a few dozen games however,
+performance improved rapidly.
+After playing about 300,000 games against itself, TD-Gammon 0.0 as described above learned to play approximately as well as the best previous
+backgammon computer programs. This was a striking result because all the
+previous high-performance computer programs had used extensive backgammon knowledge. For example, the reigning champion program at the time
+was, arguably, Neurogammon, another program written by Tesauro that used
+a neural network but not TD learning. Neurogammon’s network was trained
+on a large training corpus of exemplary moves provided by backgammon experts, and, in addition, started with a set of features specially crafted for
+TD error
+general update rule for this case is
+wt+1 = wt + ↵
+h
+Rt+1 + ˆv(St+1,wt) ˆv(St,wt)
+i
+et, (15.1)
+where wt is the vector of all modifiable parameters (in this case, the weights
+of the network) and et is a vector of eligibility traces, one for each component
+of wt, updated by
+et = et 1 + rwt ˆv(St,wt),
+with e0 = 0. The gradient in this equation can be computed e ciently by the
+backpropagation procedure. For the backgammon application, in which = 1
+and the reward is always zero except upon winning, the TD error portion of the
+learning rule is usually just ˆv(St+1,w) ˆv(St,w), as suggested in Figure 15.2.
+To apply the learning rule we need a source of backgammon games. Tesauro
+obtained an unending sequence of games by playing his learning backgammon
+player against itself. To choose its moves, TD-Gammon considered each of the
+20 or so ways it could play its dice roll and the corresponding positions that
+would result. The resulting positions are afterstates as discussed in Section 6.8.
+The network was consulted to estimate each of their values. The move was
+then selected that would lead to the position with the highest estimated value.
+Continuing in this way, with TD-Gammon making the moves for both sides,
+it was possible to easily generate large numbers of backgammon games. Each
+game was treated as an episode, with the sequence of positions acting as
+the states, S0, S1, S2, . . .. Tesauro applied the nonlinear TD rule (15.1) fully
+incrementally, that is, after each individual move.
+The weights of the network were set initially to small random values. The
+initial evaluations were thus entirely arbitrary. Since the moves were selected
+on the basis of these evaluations, the initial moves were inevitably poor, and
+the initial games often lasted hundreds or thousands of moves before one side
+or the other won, almost by accident. After a few dozen games however,
+performance improved rapidly.
+After playing about 300,000 games against itself, TD-Gammon 0.0 as described above learned to play approximately as well as the best previous
+backgammon computer programs. This was a striking result because all the
+previous high-performance computer programs had used extensive backgammon knowledge. For example, the reigning champion program at the time
+was, arguably, Neurogammon, another program written by Tesauro that used
+a neural network but not TD learning. Neurogammon’s network was trained
+on a large training corpus of exemplary moves provided by backgammon experts, and, in addition, started with a set of features specially crafted for
+Figure 14.2: The neural network used in TD-Gammon
+the response of the opponent, one must consider the possible dice rolls as well.
+The result is that the game tree has an effective branching factor of about 400.
+This is far too large to permit effective use of the conventional heuristic search
+methods that have proved so effective in games like chess and checkers.
+On the other hand, the game is a good match to the capabilities of TD
+learning methods. Although the game is highly stochastic, a complete description of the game’s state is available at all times. The game evolves over
+a sequence of moves and positions until finally ending in a win for one player
+or the other, ending the game. The outcome can be interpreted as a final
+reward to be predicted. On the other hand, the theoretical results we have
+described so far cannot be usefully applied to this task. The number of states
+is so large that a lookup table cannot be used, and the opponent is a source
+of uncertainty and time variation.
+TD-Gammon used a nonlinear form of TD(λ). The estimated value, ˆv(s),of
+any state (board position) s was meant to estimate the probability of winning
+starting from state s. To achieve this, rewards were defined as zero for all
+time steps except those on which the game is won. To implement the value
+function, TD-Gammon used a standard multilayer neural network, much as
+shown in Figure 14.2. (The real network had two additional units in its final
+layer to estimate the probability of each player’s winning in a special way
+called a “gammon” or “backgammon.”) The network consisted of a layer of
+input units, a layer of hidden units, and a final output unit. The input to the
+network was a representation of a backgammon position, and the output was
+an estimate of the value of that position.
+In the first version of TD-Gammon, TD-Gammon 0.0, backgammon positions were represented to the network in a relatively direct way that involved
+little backgammon knowledge. It did, however, involve substantial knowledge
+276 CHAPTER 14. APPLICATIONS AND CASE STUDIES
+of how neural networks work and how information is best presented to them.
+It is instructive to note the exact representation Tesauro chose. There were a
+total of 198 input units to the network. For each point on the backgammon
+board, four units indicated the number of white pieces on the point. If there
+were no white pieces, then all four units took on the value zero. If there was
+one piece, then the first unit took on the value 1. If there were two pieces,
+then both the first and the second unit were 1. If there were three or more
+pieces on the point, then all of the first three units were 1. If there were more
+than three pieces, the fourth unit also came on, to a degree indicating the
+number of additional pieces beyond three. Letting n denote the total number of pieces on the point, if n > 3, then the fourth unit took on the value
+(n−3)/2. With four units for white and four for black at each of the 24 points,
+that made a total of 192 units. Two additional units encoded the number of
+white and black pieces on the bar (each took the value n/2, where n is the
+number of pieces on the bar), and two more encoded the number of black and
+white pieces already successfully removed from the board (these took the value
+n/15, where n is the number of pieces already borne off). Finally, two units
+indicated in a binary fashion whether it was white’s or black’s turn to move.
+The general logic behind these choices should be clear. Basically, Tesauro
+tried to represent the position in a straightforward way, making little attempt
+to minimize the number of units. He provided one unit for each conceptually
+distinct possibility that seemed likely to be relevant, and he scaled them to
+roughly the same range, in this case between 0 and 1.
+Given a representation of a backgammon position, the network computed
+its estimated value in the standard way. Corresponding to each connection
+from an input unit to a hidden unit was a real-valued weight. Signals from
+each input unit were multiplied by their corresponding weights and summed
+at the hidden unit. The output, h(j), of hidden unit j was a nonlinear sigmoid
+function of the weighted sum:
+h(j) = σ
+(∑
+i
+wij xi
+)
+= 1
+1 + e− ∑
+i wij xi ,
+where xi is the value of the ith input unit and wij is the weight of its connection
+to the jth hidden unit. The output of the sigmoid is always between 0 and
+1, and has a natural interpretation as a probability based on a summation of
+evidence. The computation from hidden units to the output unit was entirely
+analogous. Each connection from a hidden unit to the output unit had a
+separate weight. The output unit formed the weighted sum and then passed
+it through the same sigmoid nonlinearity.
+TD-Gammon used the gradient-descent form of the TD(λ) algorithm described in Section 9.2, with the gradients computed by the error backpropa-
+14.1. TD-GAMMON 277
+gation algorithm (Rumelhart, Hinton, and Williams, 1986). Recall that the
+general update rule for this case is
+wt+1 = wt + α
+[
+Rt+1 + γˆv(St+1,wt) − ˆv(St,wt)
+]
+et, (14.1)
+where wt is the vector of all modifiable parameters (in this case, the weights
+of the network) and et is a vector of eligibility traces, one for each component
+of wt, updated by
+et = γλet−1 + ∇ˆv(St,wt),
+with e0 = 0. The gradient in this equation can be computed efficiently by the
+backpropagation procedure. For the backgammon application, in which γ = 1
+and the reward is always zero except upon winning, the TD error portion of the
+learning rule is usually just ˆv(St+1,w) − ˆv(St,w), as suggested in Figure 14.2.
+To apply the learning rule we need a source of backgammon games. Tesauro
+obtained an unending sequence of games by playing his learning backgammon
+player against itself. To choose its moves, TD-Gammon considered each of the
+20 or so ways it could play its dice roll and the corresponding positions that
+would result. The resulting positions are afterstates as discussed in Section 6.6.
+The network was consulted to estimate each of their values. The move was
+then selected that would lead to the position with the highest estimated value.
+Continuing in this way, with TD-Gammon making the moves for both sides,
+it was possible to easily generate large numbers of backgammon games. Each
+game was treated as an episode, with the sequence of positions acting as
+the states, S0, S1, S2, . . .. Tesauro applied the nonlinear TD rule (14.1) fully
+incrementally, that is, after each individual move.
+The weights of the network were set initially to small random values. The
+initial evaluations were thus entirely arbitrary. Since the moves were selected
+on the basis of these evaluations, the initial moves were inevitably poor, and
+the initial games often lasted hundreds or thousands of moves before one side
+or the other won, almost by accident. After a few dozen games however,
+performance improved rapidly.
+After playing about 300,000 games against itself, TD-Gammon 0.0 as described above learned to play approximately as well as the best previous
+backgammon computer programs. This was a striking result because all the
+previous high-performance computer programs had used extensive backgammon knowledge. For example, the reigning champion program at the time
+was, arguably, Neurogammon, another program written by Tesauro that used
+a neural network but not TD learning. Neurogammon’s network was trained
+on a large training corpus of exemplary moves provided by backgammon experts, and, in addition, started with a set of features specially crafted for
+278 CHAPTER 14. APPLICATIONS AND CASE STUDIES
+Program Hidden Training Opponents Results
+Units Games
+TD-Gam 0.0 40 300,000 other programs tied for best
+TD-Gam 1.0 80 300,000 Robertie, Magriel, ... −13 pts / 51 games
+TD-Gam 2.0 40 800,000 various Grandmasters −7 pts / 38 games
+TD-Gam 2.1 80 1,500,000 Robertie −1 pt / 40 games
+TD-Gam 3.0 80 1,500,000 Kazaros +6 pts / 20 games
+Table 14.1: Summary of TD-Gammon Results
+backgammon. Neurogammon was a highly tuned, highly effective backgammon program that decisively won the World Backgammon Olympiad in 1989.
+TD-Gammon 0.0, on the other hand, was constructed with essentially zero
+backgammon knowledge. That it was able to do as well as Neurogammon and
+all other approaches is striking testimony to the potential of self-play learning
+methods.
+The tournament success of TD-Gammon 0.0 with zero backgammon knowledge suggested an obvious modification: add the specialized backgammon
+features but keep the self-play TD learning method. This produced TD-
+Gammon 1.0. TD-Gammon 1.0 was clearly substantially better than all previous backgammon programs and found serious competition only among human
+experts. Later versions of the program, TD-Gammon 2.0 (40 hidden units)
+and TD-Gammon 2.1 (80 hidden units), were augmented with a selective twoply search procedure. To select moves, these programs looked ahead not just
+to the positions that would immediately result, but also to the opponent’s possible dice rolls and moves. Assuming the opponent always took the move that
+appeared immediately best for him, the expected value of each candidate move
+was computed and the best was selected. To save computer time, the second
+ply of search was conducted only for candidate moves that were ranked highly
+after the first ply, about four or five moves on average. Two-ply search affected
+only the moves selected; the learning process proceeded exactly as before. The
+most recent version of the program, TD-Gammon 3.0, uses 160 hidden units
+and a selective three-ply search. TD-Gammon illustrates the combination of
+learned value functions and decide-time search as in heuristic search methods. In more recent work, Tesauro and Galperin (1997) have begun exploring
+trajectory sampling methods as an alternative to search.
+Tesauro was able to play his programs in a significant number of games
+against world-class human players. A summary of the results is given in Table 14.1. Based on these results and analyses by backgammon grandmasters
+(Robertie, 1992; see Tesauro, 1995), TD-Gammon 3.0 appears to be at, or
+very near, the playing strength of the best human players in the world. It
+may already be the world champion. These programs have already changed
+14.2. SAMUEL’S CHECKERS PLAYER 279
+the way the best human players play the game. For example, TD-Gammon
+learned to play certain opening positions differently than was the convention
+among the best human players. Based on TD-Gammon’s success and further
+analysis, the best human players now play these positions as TD-Gammon
+does (Tesauro, 1995).
+14.2 Samuel’s Checkers Player
+An important precursor to Tesauro’s TD-Gammon was the seminal work of
+Arthur Samuel (1959, 1967) in constructing programs for learning to play
+checkers. Samuel was one of the first to make effective use of heuristic search
+methods and of what we would now call temporal-difference learning. His
+checkers players are instructive case studies in addition to being of historical
+interest. We emphasize the relationship of Samuel’s methods to modern reinforcement learning methods and try to convey some of Samuel’s motivation
+for using them.
+Samuel first wrote a checkers-playing program for the IBM 701 in 1952.
+His first learning program was completed in 1955 and was demonstrated on
+television in 1956. Later versions of the program achieved good, though not
+expert, playing skill. Samuel was attracted to game-playing as a domain for
+studying machine learning because games are less complicated than problems
+“taken from life” while still allowing fruitful study of how heuristic procedures
+and learning can be used together. He chose to study checkers instead of
+chess because its relative simplicity made it possible to focus more strongly on
+learning.
+Samuel’s programs played by performing a lookahead search from each
+current position. They used what we now call heuristic search methods to
+determine how to expand the search tree and when to stop searching. The
+terminal board positions of each search were evaluated, or “scored,” by a
+value function, or “scoring polynomial,” using linear function approximation.
+In this and other respects Samuel’s work seems to have been inspired by the
+suggestions of Shannon (1950). In particular, Samuel’s program was based on
+Shannon’s minimax procedure to find the best move from the current position.
+Working backward through the search tree from the scored terminal positions,
+each position was given the score of the position that would result from the
+best move, assuming that the machine would always try to maximize the score,
+while the opponent would always try to minimize it. Samuel called this the
+backed-up score of the position. When the minimax procedure reached the
+search tree’s root—the current position—it yielded the best move under the
+assumption that the opponent would be using the same evaluation criterion,
+280 CHAPTER 14. APPLICATIONS AND CASE STUDIES
+shifted to its point of view. Some versions of Samuel’s programs used sophisticated search control methods analogous to what are known as “alpha-beta”
+cutoffs (e.g., see Pearl, 1984).
+Samuel used two main learning methods, the simplest of which he called
+rote learning. It consisted simply of saving a description of each board position
+encountered during play together with its backed-up value determined by the
+minimax procedure. The result was that if a position that had already been
+encountered were to occur again as a terminal position of a search tree, the
+depth of the search was effectively amplified since this position’s stored value
+cached the results of one or more searches conducted earlier. One initial problem was that the program was not encouraged to move along the most direct
+path to a win. Samuel gave it a “a sense of direction” by decreasing a position’s
+value a small amount each time it was backed up a level (called a ply) during
+the minimax analysis. “If the program is now faced with a choice of board
+positions whose scores differ only by the ply number, it will automatically
+make the most advantageous choice, choosing a low-ply alternative if winning
+and a high-ply alternative if losing” (Samuel, 1959, p. 80). Samuel found this
+discounting-like technique essential to successful learning. Rote learning produced slow but continuous improvement that was most effective for opening
+and endgame play. His program became a “better-than-average novice” after
+learning from many games against itself, a variety of human opponents, and
+from book games in a supervised learning mode.
+Rote learning and other aspects of Samuel’s work strongly suggest the
+essential idea of temporal-difference learning—that the value of a state should
+equal the value of likely following states. Samuel came closest to this idea
+in his second learning method, his “learning by generalization” procedure for
+modifying the parameters of the value function. Samuel’s method was the same
+in concept as that used much later by Tesauro in TD-Gammon. He played
+his program many games against another version of itself and performed a
+backup operation after each move. The idea of Samuel’s backup is suggested
+by the diagram in Figure 14.3. Each open circle represents a position where
+the program moves next, an on-move position, and each solid circle represents
+a position where the opponent moves next. A backup was made to the value of
+each on-move position after a move by each side, resulting in a second on-move
+position. The backup was toward the minimax value of a search launched from
+the second on-move position. Thus, the overall effect was that of a backup
+consisting of one full move of real events and then a search over possible events,
+as suggested by Figure 14.3. Samuel’s actual algorithm was significantly more
+complex than this for computational reasons, but this was the basic idea.
+Samuel did not include explicit rewards. Instead, he fixed the weight of the
+most important feature, the piece advantage feature, which measured the num-
+14.2. SAMUEL’S CHECKERS PLAYER 281
+hypothetical events
+actual events
+backup
+Figure 14.3: The backup diagram for Samuel’s checkers player.
+ber of pieces the program had relative to how many its opponent had, giving
+higher weight to kings, and including refinements so that it was better to trade
+pieces when winning than when losing. Thus, the goal of Samuel’s program
+was to improve its piece advantage, which in checkers is highly correlated with
+winning.
+However, Samuel’s learning method may have been missing an essential
+part of a sound temporal-difference algorithm. Temporal-difference learning
+can be viewed as a way of making a value function consistent with itself, and
+this we can clearly see in Samuel’s method. But also needed is a way of tying
+the value function to the true value of the states. We have enforced this via
+rewards and by discounting or giving a fixed value to the terminal state. But
+Samuel’s method included no rewards and no special treatment of the terminal
+positions of games. As Samuel himself pointed out, his value function could
+have become consistent merely by giving a constant value to all positions.
+He hoped to discourage such solutions by giving his piece-advantage term a
+large, nonmodifiable weight. But although this may decrease the likelihood of
+finding useless evaluation functions, it does not prohibit them. For example,
+a constant function could still be attained by setting the modifiable weights
+so as to cancel the effect of the nonmodifiable one.
+Since Samuel’s learning procedure was not constrained to find useful evaluation functions, it should have been possible for it to become worse with
+experience. In fact, Samuel reported observing this during extensive self-play
+training sessions. To get the program improving again, Samuel had to intervene and set the weight with the largest absolute value back to zero. His
+interpretation was that this drastic intervention jarred the program out of local
+optima, but another possibility is that it jarred the program out of evaluation
+282 CHAPTER 14. APPLICATIONS AND CASE STUDIES
+functions that were consistent but had little to do with winning or losing the
+game.
+Despite these potential problems, Samuel’s checkers player using the generalization learning method approached “better-than-average” play. Fairly good
+amateur opponents characterized it as “tricky but beatable” (Samuel, 1959).
+In contrast to the rote-learning version, this version was able to develop a
+good middle game but remained weak in opening and endgame play. This
+program also included an ability to search through sets of features to find
+those that were most useful in forming the value function. A later version
+(Samuel, 1967) included refinements in its search procedure, such as alphabeta pruning, extensive use of a supervised learning mode called “book learning,” and hierarchical lookup tables called signature tables (Griffith, 1966) to
+represent the value function instead of linear function approximation. This
+version learned to play much better than the 1959 program, though still not
+at a master level. Samuel’s checkers-playing program was widely recognized
+as a significant achievement in artificial intelligence and machine learning.
+14.3 The Acrobot
+Reinforcement learning has been applied to a wide variety of physical control
+tasks (e.g., for a collection of robotics applications, see Connell and Mahadevan, 1993). One such task is the acrobot, a two-link, underactuated robot
+roughly analogous to a gymnast swinging on a high bar (Figure 14.4). The first
+joint (corresponding to the gymnast’s hands on the bar) cannot exert torque,
+but the second joint (corresponding to the gymnast bending at the waist)
+can. The system has four continuous state variables: two joint positions and
+two joint velocities. The equations of motion are given in Figure 14.5. This
+system has been widely studied by control engineers (e.g., Spong, 1994) and
+machine-learning researchers (e.g., Dejong and Spong, 1994; Boone, 1997).
+One objective for controlling the acrobot is to swing the tip (the “feet”)
+above the first joint by an amount equal to one of the links in minimum time.
+In this task, the torque applied at the second joint is limited to three choices:
+positive torque of a fixed magnitude, negative torque of the same magnitude,
+or no torque. A reward of −1 is given on all time steps until the goal is reached,
+which ends the episode. No discounting is used (γ = 1). Thus, the optimal
+value, v∗(s), of any state, s, is the minimum time to reach the goal (an integer
+number of steps) starting from s.
+Sutton (1996) addressed the acrobot swing-up task in an on-line, modelfree
+context. Although the acrobot was simulated, the simulator was not available
+14.3. THE ACROBOT 283
+! 1
+! 2
+Goal: Raise tip above line
+Torque
+applied
+here
+tip
+Figure 14.4: The acrobot.
+¨θ1 = −d−1
+1 (d2 ¨θ2 + φ1)
+¨θ2 =
+(
+m2l2
+c2 + I2 − d2
+d1
+)−1 (
+τ + d2
+d1
+φ1 − m2l1lc2 ˙θ2
+1 sin θ2 − φ2
+)
+d1 = m1l2
+c1 + m2(l2
+1 + l2
+c2 + 2l1lc2 cos θ2) + I1 + I2
+d2 = m2(l2
+c2 + l1lc2 cos θ2) + I2
+φ1 = −m2l1lc2 ˙θ2
+2 sin θ2 − 2m2l1lc2 ˙θ2 ˙θ1 sin θ2
++ (m1lc1 + m2l1)g cos(θ1 − π/2) + φ2
+φ2 = m2lc2g cos(θ1 + θ2 − π/2)
+Figure 14.5: The equations of motions of the simulated acrobot. A time
+step of 0.05 seconds was used in the simulation, with actions chosen after
+every four time steps. The torque applied at the second joint is denoted by
+τ ∈ {+1, −1, 0}. There were no constraints on the joint positions, but the
+angular velocities were limited to ˙θ1 ∈ [−4π, 4π] and ˙θ2 ∈ [−9π, 9π]. The
+constants were m1 = m2 = 1 (masses of the links), l1 = l2 = 1 (lengths of
+links), lc1 = lc2 = 0.5 (lengths to center of mass of links), I1 = I2 = 1 (moments
+of inertia of links), and g = 9.8 (gravity).
+284 CHAPTER 14. APPLICATIONS AND CASE STUDIES
+for use by the agent/controller in any way. The training and interaction were
+just as if a real, physical acrobot had been used. Each episode began with
+both links of the acrobot hanging straight down and at rest. Torques were
+applied by the reinforcement learning agent until the goal was reached, which
+always happened eventually. Then the acrobot was restored to its initial rest
+position and a new episode was begun.
+The learning algorithm used was Sarsa(λ) with linear function approximation, tile coding, and replacing traces as in Figure 9.8. With a small, discrete
+action set, it is natural to use a separate set of tilings for each action. The
+next choice is of the continuous variables with which to represent the state.
+A clever designer would probably represent the state in terms of the angular
+position and velocity of the center of mass and of the second link, which might
+make the solution simpler and consistent with broad generalization. But since
+this was just a test problem, a more naive, direct representation was used in
+terms of the positions and velocities of the links: θ1, ˙θ1, θ2, and ˙θ2. The two
+angles are restricted to a limited range by the physics of the acrobot (see Figure 14.5) and the two angles are naturally restricted to [0, 2π]. Thus, the state
+space in this task is a bounded rectangular region in four dimensions.
+This leaves the question of what tilings to use. There are many possibilities, as discussed in Chapter 9. One is to use a complete grid, slicing
+the four-dimensional space along all dimensions, and thus into many small
+four-dimensional tiles. Alternatively, one could slice along only one of the
+dimensions, making hyperplanar stripes. In this case one has to pick which
+dimension to slice along. And of course in all cases one has to pick the width of
+the slices, the number of tilings of each kind, and, if there are multiple tilings,
+how to offset them. One could also slice along pairs or triplets of dimensions
+to get other tilings. For example, if one expected the velocities of the two links
+to interact strongly in their effect on value, then one might make many tilings
+that sliced along both of these dimensions. If one thought the region around
+zero velocity was particularly critical, then the slices could be more closely
+spaced there.
+Sutton used tilings that sliced in a variety of simple ways. Each of the four
+dimensions was divided into six equal intervals. A seventh interval was added
+to the angular velocities so that tilings could be offset by a random fraction
+of an interval in all dimensions (see Chapter 9, subsection “Tile Coding”). Of
+the total of 48 tilings, 12 sliced along all four dimensions as discussed above,
+dividing the space into 6 × 7 × 6 × 7 = 1764 tiles each. Another 12 tilings sliced
+along three dimensions (3 randomly offset tilings each for each of the 4 sets of
+three dimensions), and another 12 sliced along two dimensions (2 tilings for
+each of the 6 sets of two dimensions. Finally, a set of 12 tilings depended each
+on only one dimension (3 tilings for each of the 4 dimensions). This resulted
+14.3. THE ACROBOT 285
+1000
+1 100 200 300 400
+Steps per episode
+(log scale)
+Episodes
+typical
+single run
+median of
+10 runs
+smoothed
+average of
+10 runs
+Figure 14.6: Learning curves for Sarsa(λ) on the acrobot task.
+in a total of approximately 25, 000 tiles for each action. This number is small
+enough that hashing was not necessary. All tilings were offset by a random
+fraction of an interval in all relevant dimensions.
+The remaining parameters of the learning algorithm were α = 0.2/48,
+λ = 0.9, = 0, and w0 = 0. The use of a greedy policy (ε = 0) seemed
+preferable on this task because long sequences of correct actions are needed to
+do well. One exploratory action could spoil a whole sequence of good actions.
+Exploration was ensured instead by starting the action values optimistically, at
+the low value of 0. As discussed in Section 2.7 and Example 9.2, this makes the
+agent continually disappointed with whatever rewards it initially experiences,
+driving it to keep trying new things.
+Figure 14.6 shows learning curves for the acrobot task and the learning algorithm described above. Note from the single-run curve that single episodes
+were sometimes extremely long. On these episodes, the acrobot was usually spinning repeatedly at the second joint while the first joint changed only
+slightly from vertical down. Although this often happened for many time steps,
+it always eventually ended as the action values were driven lower. All runs
+ended with an efficient policy for solving the problem, usually lasting about
+75 steps. A typical final solution is shown in Figure 14.7. First the acrobot
+pumps back and forth several times symmetrically, with the second link always
+down. Then, once enough energy has been added to the system, the second
+link is swung upright and stabbed to the goal height.
+286 CHAPTER 14. APPLICATIONS AND CASE STUDIES
+Figure 14.7: A typical learned behavior of the acrobot. Each group is a series
+of consecutive positions, the thicker line being the first. The arrow indicates
+the torque applied at the second joint.
+14.4 Elevator Dispatching
+Waiting for an elevator is a situation with which we are all familiar. We press a
+button and then wait for an elevator to arrive traveling in the right direction.
+We may have to wait a long time if there are too many passengers or not
+enough elevators. Just how long we wait depends on the dispatching strategy
+the elevators use to decide where to go. For example, if passengers on several
+floors have requested pickups, which should be served first? If there are no
+pickup requests, how should the elevators distribute themselves to await the
+next request? Elevator dispatching is a good example of a stochastic optimal
+control problem of economic importance that is too large to solve by classical
+techniques such as dynamic programming.
+Crites and Barto (1996; Crites, 1996) studied the application of reinforcement learning techniques to the four-elevator, ten-floor system shown in Figure 14.8. Along the right-hand side are pickup requests and an indication
+of how long each has been waiting. Each elevator has a position, direction,
+and speed, plus a set of buttons to indicate where passengers want to get
+off. Roughly quantizing the continuous variables, Crites and Barto estimated
+that the system has over 1022 states. This large state set rules out classical dynamic programming methods such as value iteration. Even if one state
+could be backed up every microsecond it would still require over 1000 years to
+complete just one sweep through the state space.
+14.4. ELEVATOR DISPATCHING 287
+elevator
+going up
+dropoff
+request pickup
+request
+(down)
+age of
+request
+D
+U
+D
+U
+D
+U
+D
+U
+D
+U
+D
+U
+D
+U
+D
+U
+D
+U
+hall
+buttons
+Figure 14.8: Four elevators in a ten-story building.
+In practice, modern elevator dispatchers are designed heuristically and evaluated on simulated buildings. The simulators are quite sophisticated and detailed. The physics of each elevator car is modeled in continuous time with
+continuous state variables. Passenger arrivals are modeled as discrete, stochastic events, with arrival rates varying frequently over the course of a simulated
+day. Not surprisingly, the times of greatest traffic and greatest challenge to the
+dispatching algorithm are the morning and evening rush hours. Dispatchers
+are generally designed primarily for these difficult periods.
+The performance of elevator dispatchers is measured in several different
+ways, all with respect to an average passenger entering the system. The average waiting time is how long the passenger waits before getting on an elevator,
+and the average system time is how long the passenger waits before being
+dropped off at the destination floor. Another frequently encountered statistic
+is the percentage of passengers whose waiting time exceeds 60 seconds. The
+objective that Crites and Barto focused on is the average squared waiting time.
+This objective is commonly used because it tends to keep the waiting times
+low while also encouraging fairness in serving all the passengers.
+Crites and Barto applied a version of one-step Q-learning augmented in
+several ways to take advantage of special features of the problem. The most
+important of these concerned the formulation of the actions. First, each elevator made its own decisions independently of the others. Second, a number
+of constraints were placed on the decisions. An elevator carrying passengers
+could not pass by a floor if any of its passengers wanted to get off there, nor
+288 CHAPTER 14. APPLICATIONS AND CASE STUDIES
+could it reverse direction until all of its passengers wanting to go in its current
+direction had reached their floors. In addition, a car was not allowed to stop
+at a floor unless someone wanted to get on or off there, and it could not stop to
+pick up passengers at a floor if another elevator was already stopped there. Finally, given a choice between moving up or down, the elevator was constrained
+always to move up (otherwise evening rush hour traffic would tend to push all
+the elevators down to the lobby). These last three constraints were explicitly
+included to provide some prior knowledge and make the problem easier. The
+net result of all these constraints was that each elevator had to make few and
+simple decisions. The only decision that had to be made was whether or not
+to stop at a floor that was being approached and that had passengers waiting
+to be picked up. At all other times, no choices needed to be made.
+That each elevator made choices only infrequently permitted a second simplification of the problem. As far as the learning agent was concerned, the
+system made discrete jumps from one time at which it had to make a decision
+to the next. When a continuous-time decision problem is treated as a discretetime system in this way it is known as a semi-Markov decision process. To a
+large extent, such processes can be treated just like any other Markov decision
+process by taking the reward on each discrete transition as the integral of the
+reward over the corresponding continuous-time interval. The notion of return
+generalizes naturally from a discounted sum of future rewards to a discounted
+integral of future rewards:
+Gt =
+∞ ∑
+k=0
+γkRt+k+1 becomes Gt =
+∫ ∞
+e−βτ Rt+τ dτ,
+where Rt on the left is the usual immediate reward in discrete time and Rt+τ
+on the right is the instantaneous reward at continuous time t + τ . In the
+elevator problem the continuous-time reward is the negative of the sum of the
+squared waiting times of all waiting passengers. The parameter β > 0 plays a
+role similar to that of the discount-rate parameter γ ∈ [0, 1).
+The basic idea of the extension of Q-learning to semi-Markov decision problems can now be explained. Suppose the system is in state S and takes action
+A at time t1, and then the next decision is required at time t2 in state S′.
+After this discrete-event transition, the semi-Markov Q-learning backup for a
+tabular action-value function, Q, would be:
+Q(S, A) ← Q(S, A)+α
+[∫ t2
+t1
+e−β(τ −t1)Rτ dτ + e−β(t2−t1) min
+a Q(S′, a) − Q(S, A)
+]
+.
+Note how e−β(t2−t1) acts as a variable discount factor that depends on the
+amount of time between events. This method is due to Bradtke and Duff
+(1995).
+14.4. ELEVATOR DISPATCHING 289
+One complication is that the reward as defined—the negative sum of the
+squared waiting times—is not something that would normally be known while
+an actual elevator was running. This is because in a real elevator system one
+does not know how many people are waiting at a floor, only how long it has
+been since the button requesting a pickup on that floor was pressed. Of course
+this information is known in a simulator, and Crites and Barto used it to
+obtain their best results. They also experimented with another technique that
+used only information that would be known in an on-line learning situation
+with a real set of elevators. In this case one can use how long since each button
+has been pushed together with an estimate of the arrival rate to compute an
+expected summed squared waiting time for each floor. Using this in the reward
+measure proved nearly as effective as using the actual summed squared waiting
+time.
+For function approximation, a nonlinear neural network trained by backpropagation was used to represent the action-value function. Crites and Barto
+experimented with a wide variety of ways of representing states to the network.
+After much exploration, their best results were obtained using networks with
+47 input units, 20 hidden units, and two output units, one for each action.
+The way the state was encoded by the input units was found to be critical to
+the effectiveness of the learning. The 47 input units were as follows:
+• 18 units: Two units encoded information about each of the nine hall
+buttons for down pickup requests. A real-valued unit encoded the elapsed
+time if the button had been pushed, and a binary unit was on if the
+button had not been pushed.
+• 16 units: A unit for each possible location and direction for the car whose
+decision was required. Exactly one of these units was on at any given
+time.
+• 10 units: The location of the other elevators superimposed over the 10
+floors. Each elevator had a “footprint” that depended on its direction
+and speed. For example, a stopped elevator caused activation only on
+the unit corresponding to its current floor, but a moving elevator caused
+activation on several units corresponding to the floors it was approaching,
+with the highest activations on the closest floors. No information was
+provided about which one of the other cars was at a particular location.
+• 1 unit: This unit was on if the elevator whose decision was required was
+at the highest floor with a passenger waiting.
+• 1 unit: This unit was on if the elevator whose decision was required was
+at the floor with the passenger who had been waiting for the longest
+amount of time.
+290 CHAPTER 14. APPLICATIONS AND CASE STUDIES
+SECTOR
+DLB
+HUFF1
+LQF
+HUFF2
+FIM
+ESA/nq
+ESA
+RL1
+RL2
+HUFF1
+LQF
+HUFF2
+FIM
+ESA/nq
+ESA
+RL1
+RL2
+20
+60
+Average
+waiting
+and
+system
+times
+SECTOR
+DLB
+HUFF1
+LQF
+HUFF2
+FIM
+ESA/nq
+ESA
+RL1
+RL2
+Dispatcher
+1
+% Waiting
+>1 minute
+SECTOR
+DLB
+Dispatcher
+200
+600
+Dispatcher
+Average
+squared
+waiting
+time
+Figure 14.9: Comparison of elevator dispatchers. The SECTOR dispatcher is
+similar to what is used in many actual elevator systems. The RL1 and RL2
+dispatchers were constructed through reinforcement learning.
+• 1 unit: Bias unit was always on.
+Two architectures were used. In RL1, each elevator was given its own
+action-value function and its own neural network. In RL2, there was only
+one network and one action-value function, with the experiences of all four
+elevators contributing to learning in the one network. In both cases, each
+elevator made its decisions independently of the other elevators, but shared
+a single reward signal with them. This introduced additional stochasticity as
+far as each elevator was concerned because its reward depended in part on the
+actions of the other elevators, which it could not control. In the architecture
+in which each elevator had its own action-value function, it was possible for
+different elevators to learn different specialized strategies (although in fact
+they tended to learn the same strategy). On the other hand, the architecture
+with a common action-value function could learn faster because it learned
+simultaneously from the experiences of all elevators. Training time was an issue
+here, even though the system was trained in simulation. The reinforcement
+learning methods were trained for about four days of computer time on a 100
+mips processor (corresponding to about 60,000 hours of simulated time). While
+this is a considerable amount of computation, it is negligible compared with
+what would be required by any conventional dynamic programming algorithm.
+The networks were trained by simulating a great many evening rush hours
+while making dispatching decisions using the developing, learned action-value
+functions. Crites and Barto used the Gibbs softmax procedure to select actions as described in Section 2.3, reducing the “temperature” gradually over
+training. A temperature of zero was used during test runs on which the performance of the learned dispatchers was assessed.
+Figure 14.9 shows the performance of several dispatchers during a simulated
+evening rush hour, what researchers call down-peak traffic. The dispatchers
+14.5. DYNAMIC CHANNEL ALLOCATION 291
+include methods similar to those commonly used in the industry, a variety
+of heuristic methods, sophisticated research algorithms that repeatedly run
+complex optimization algorithms on-line (Bao et al., 1994), and dispatchers
+learned by using the two reinforcement learning architectures. By all of the
+performance measures, the reinforcement learning dispatchers compare favorably with the others. Although the optimal policy for this problem is unknown,
+and the state of the art is difficult to pin down because details of commercial
+dispatching strategies are proprietary, these learned dispatchers appeared to
+perform very well.
+14.5 Dynamic Channel Allocation
+An important problem in the operation of a cellular telephone system is how
+to efficiently use the available bandwidth to provide good service to as many
+customers as possible. This problem is becoming critical with the rapid growth
+in the use of cellular telephones. Here we describe a study due to Singh and
+Bertsekas (1997) in which they applied reinforcement learning to this problem.
+Mobile telephone systems take advantage of the fact that a communication
+channel—a band of frequencies—can be used simultaneously by many callers
+if these callers are spaced physically far enough apart that their calls do not
+interfere with each another. The minimum distance at which there is no interference is called the channel reuse constraint. In a cellular telephone system,
+the service area is divided into a number of regions called cells. In each cell
+is a base station that handles all the calls made within the cell. The total
+available bandwidth is divided permanently into a number of channels. Channels must then be allocated to cells and to calls made within cells without
+violating the channel reuse constraint. There are a great many ways to do
+this, some of which are better than others in terms of how reliably they make
+channels available to new calls, or to calls that are “handed off” from one cell
+to another as the caller crosses a cell boundary. If no channel is available for
+a new or a handed-off call, the call is lost, or blocked. Singh and Bertsekas
+considered the problem of allocating channels so that the number of blocked
+calls is minimized.
+A simple example provides some intuition about the nature of the problem.
+Imagine a situation with three cells sharing two channels. The three cells are
+arranged in a line where no two adjacent cells can use the same channel without
+violating the channel reuse constraint. If the left cell is serving a call on channel
+1 while the right cell is serving another call on channel 2, as in the left diagram
+below, then any new call arriving in the middle cell must be blocked.
+292 CHAPTER 14. APPLICATIONS AND CASE STUDIES
+1 2 1 1 2
+Obviously, it would be better for both the left and the right cells to use channel
+1 for their calls. Then a new call in the middle cell could be assigned channel 2,
+as in the right diagram, without violating the channel reuse constraint. Such
+interactions and possible optimizations are typical of the channel assignment
+problem. In larger and more realistic cases with many cells, channels, and
+calls, and uncertainty about when and where new calls will arrive or existing
+calls will have to be handed off, the problem of allocating channels to minimize
+blocking can become extremely complex.
+The simplest approach is to permanently assign channels to cells in such a
+way that the channel reuse constraint can never be violated even if all channels
+of all cells are used simultaneously. This is called a fixed assignment method.
+In a dynamic assignment method, in contrast, all channels are potentially
+available to all cells and are assigned to cells dynamically as calls arrive. If
+this is done right, it can take advantage of temporary changes in the spatial
+and temporal distribution of calls in order to serve more users. For example,
+when calls are concentrated in a few cells, these cells can be assigned more
+channels without increasing the blocking rate in the lightly used cells.
+The channel assignment problem can be formulated as a semi-Markov decision process much as the elevator dispatching problem was in the previous
+section. A state in the semi-MDP formulation has two components. The first
+is the configuration of the entire cellular system that gives for each cell the
+usage state (occupied or unoccupied) of each channel for that cell. A typical
+cellular system with 49 cells and 70 channels has a staggering 7049 configurations, ruling out the use of conventional dynamic programming methods. The
+other state component is an indicator of what kind of event caused a state
+transition: arrival, departure, or handoff. This state component determines
+what kinds of actions are possible. When a call arrives, the possible actions
+are to assign it a free channel or to block it if no channels are available. When
+a call departs, that is, when a caller hangs up, the system is allowed to reassign
+the channels in use in that cell in an attempt to create a better configuration.
+At time t the immediate reward, Rt, is the number of calls taking place at
+that time, and the return is
+Gt =
+∫ ∞
+e−βτ Rt+τ dτ,
+where β > 0 plays a role similar to that of the discount-rate parameter γ. Maximizing the expectation of this return is the same as minimizing the expected
+(discounted) number of calls blocked over an infinite horizon.
+14.5. DYNAMIC CHANNEL ALLOCATION 293
+This is another problem greatly simplified if treated in terms of afterstates
+(Section 6.6). For each state and action, the immediate result is a new configuration, an afterstate. A value function is learned over just these configurations. To select among the possible actions, the resulting configuration was
+determined and evaluated. The action was then selected that would lead to
+the configuration of highest estimated value. For example, when a new call
+arrived at a cell, it could be assigned to any of the free channels, if there were
+any; otherwise, it had to be blocked. The new configuration that would result
+from each assignment was easy to compute because it was always a simple deterministic consequence of the assignment. When a call terminated, the newly
+released channel became available for reassigning to any of the ongoing calls.
+In this case, the actions of reassigning each ongoing call in the cell to the newly
+released channel were considered. An action was then selected leading to the
+configuration with the highest estimated value.
+Linear function approximation was used for the value function: the estimated value of a configuration was a weighted sum of features. Configurations
+were represented by two sets of features: an availability feature for each cell
+and a packing feature for each cell–channel pair. For any configuration, the
+availability feature for a cell gave the number of additional calls it could accept
+without conflict if the rest of the cells were frozen in the current configuration.
+For any given configuration, the packing feature for a cell–channel pair gave
+the number of times that channel was being used in that configuration within
+a four-cell radius of that cell. All of these features were normalized to lie between −1 and 1. A semi-Markov version of linear TD(0) was used to update
+the weights.
+Singh and Bertsekas compared three channel allocation methods using a
+simulation of a 7×7 cellular array with 70 channels. The channel reuse constraint was that calls had to be 3 cells apart to be allowed to use the same channel. Calls arrived at cells randomly according to Poisson distributions possibly
+having different means for different cells, and call durations were determined
+randomly by an exponential distribution with a mean of three minutes. The
+methods compared were a fixed assignment method (FA), a dynamic allocation method called “borrowing with directional channel locking” (BDCL), and
+the reinforcement learning method (RL). BDCL (Zhang and Yum, 1989) was
+the best dynamic channel allocation method they found in the literature. It is
+a heuristic method that assigns channels to cells as in FA, but channels can be
+borrowed from neighboring cells when needed. It orders the channels in each
+cell and uses this ordering to determine which channels to borrow and how
+calls are dynamically reassigned channels within a cell.
+Figure 14.10 shows the blocking probabilities of these methods for mean
+arrival rates of 150, 200, and 350 calls/hour as well as for a case in which
+294 CHAPTER 14. APPLICATIONS AND CASE STUDIES
+0 10 20 30 40 50
+Nonuniform
+350 calls/hour
+200 calls/hour
+150 calls/hour
+RL
+BDCL
+FA
+% Blocking
+Traffic
+Figure 14.10: Performance of FA, BDCL, and RL channel allocation methods
+for different mean call arrival rates.
+different cells had different mean arrival rates. The reinforcement learning
+method learned on-line. The data shown are for its asymptotic performance,
+but in fact learning was rapid. The RL method blocked calls less frequently
+than did the other methods for all arrival rates and soon after starting to learn.
+Note that the differences between the methods decreased as the call arrival rate
+increased. This is to be expected because as the system gets saturated with
+calls there are fewer opportunities for a dynamic allocation method to set up
+favorable usage patterns. In practice, however, it is the performance of the
+unsaturated system that is most important. For marketing reasons, cellular
+telephone systems are built with enough capacity that more than 10% blocking
+is rare.
+Nie and Haykin (1996) also studied the application of reinforcement learning to dynamic channel allocation. They formulated the problem somewhat
+differently than Singh and Bertsekas did. Instead of trying to minimize the
+probability of blocking a call directly, their system tried to minimize a more
+indirect measure of system performance. Cost was assigned to patterns of
+channel use depending on the distances between calls using the same channels. Patterns in which channels were being used by multiple calls that were
+close to each other were favored over patterns in which channel-sharing calls
+were far apart. Nie and Haykin compared their system with a method called
+MAXAVAIL (Sivarajan, McEliece, and Ketchum, 1990), considered to be one
+of the best dynamic channel allocation methods. For each new call, it selects
+the channel that maximizes the total number of channels available in the entire system. Nie and Haykin showed that the blocking probability achieved by
+their reinforcement learning system was closely comparable to that of MAX-
+AVAIL under a variety of conditions in a 49-cell, 70-channel simulation. A
+14.6. JOB-SHOP SCHEDULING 295
+key point, however, is that the allocation policy produced by reinforcement
+learning can be implemented on-line much more efficiently than MAXAVAIL,
+which requires so much on-line computation that it is not feasible for large
+systems.
+The studies we described in this section are so recent that the many questions they raise have not yet been answered. We can see, though, that there
+can be different ways to apply reinforcement learning to the same real-world
+problem. In the near future, we expect to see many refinements of these
+applications, as well as many new applications of reinforcement learning to
+problems arising in communication systems.
+14.6 Job-Shop Scheduling
+Many jobs in industry and elsewhere require completing a collection of tasks
+while satisfying temporal and resource constraints. Temporal constraints say
+that some tasks have to be finished before others can be started; resource
+constraints say that two tasks requiring the same resource cannot be done
+simultaneously (e.g., the same machine cannot do two tasks at once). The
+objective is to create a schedule specifying when each task is to begin and
+what resources it will use that satisfies all the constraints while taking as
+little overall time as possible. This is the job-shop scheduling problem. In its
+general form, it is NP-complete, meaning that there is probably no efficient
+procedure for exactly finding shortest schedules for arbitrary instances of the
+problem. Job-shop scheduling is usually done using heuristic algorithms that
+take advantage of special properties of each specific instance.
+Zhang and Dietterich (1995, 1996; Zhang, 1996) were motivated to apply
+reinforcement learning to job-shop scheduling because the design of domainspecific, heuristic algorithms can be expensive and time-consuming. Their
+goal was to show how reinforcement learning can be used to learn how to
+quickly find constraint-satisfying schedules of short duration in specific domains, thereby reducing the amount of hand engineering required. They addressed the NASA space shuttle payload processing problem (SSPP), which
+requires scheduling the tasks required for installation and testing of shuttle
+cargo bay payloads. An SSPP typically requires scheduling for two to six
+shuttle missions, each requiring between 34 and 164 tasks. An example of
+a task is MISSION-SEQUENCE-TEST, which has a duration of 7200 time
+units and requires the following resources: two quality control officers, two
+technicians, one ATE, one SPCDS, and one HITS. Some resources are divided
+into pools, and if a task needs more than one resource of a specific type, the
+resources must belong to the same pool, and the pool has to be the right one.
+296 CHAPTER 14. APPLICATIONS AND CASE STUDIES
+For example, if a task needs two quality control officers, they both have to be
+in the pool of quality control officers working on the same shift at the right
+site. It is not too hard to find a conflict-free schedule for a job, one that
+meets all the temporal and resource constraints, but the objective is to find a
+conflict-free schedule with the shortest possible total duration, which is much
+more difficult.
+How can you do this using reinforcement learning? Job-shop scheduling
+is usually formulated as a search in the space of schedules, what is called a
+discrete, or combinatorial, optimization problem. A typical solution method
+would sequentially generate schedules, attempting to improve each over its
+predecessor in terms of constraint violations and duration (a hill-climbing, or
+local search, method). You could think of this as a nonassociative reinforcement learning problem of the type we discussed in Chapter 2 with a very large
+number of possible actions: all the possible schedules! But aside from the
+problem of having so many actions, any solution obtained this way would just
+be a single schedule for a single job instance. In contrast, what Zhang and
+Dietterich wanted their learning system to end up with was a policy that could
+quickly find good schedules for any SSPP. They wanted it to learn a skill for
+job-shop scheduling in this specific domain.
+For clues about how to do this, they looked to an existing optimization
+approach to SSPP, in fact, the one actually in use by NASA at the time of
+their research: the iterative repair method developed by Zweben and Daun
+(1994). The starting point for the search is a critical path schedule, a schedule
+that meets the temporal constraints but ignores the resource constraints. This
+schedule can be constructed efficiently by scheduling each task prior to launch
+as late as the temporal constraints permit, and each task after landing as early
+as these constraints permit. Resource pools are assigned randomly. Two types
+of operators are used to modify schedules. They can be applied to any task
+that violates a resource constraint. A Reassign-Pool operator changes the
+pool assigned to one of the task’s resources. This type of operator applies only
+if it can reassign a pool so that the resource requirement is satisfied. A Move
+operator moves a task to the first earlier or later time at which its resource
+needs can be satisfied and uses the critical path method to reschedule all of
+the task’s temporal dependents.
+At each step of the iterative repair search, one operator is applied to the
+current schedule, selected according to the following rules. The earliest task
+with a resource constraint violation is found, and a Reassign-Pool operator is applied to this task if possible. If more than one applies, that is, if
+several different pool reassignments are possible, one is selected at random.
+If no Reassign-Pool operator applies, then a Move operator is selected at
+random based on a heuristic that prefers short-distance moves of tasks having
+14.6. JOB-SHOP SCHEDULING 297
+few temporal dependents and whose resource requirements are close to the
+task’s overallocation. After an operator is applied, the number of constraint
+violations of the resulting schedule is determined. A simulated annealing procedure is used decide whether to accept or reject this new schedule. If ∆V
+denotes the number of constraint violations removed by the repair, then the
+new schedule is accepted with probability exp(−∆V /T ), where T is the current computational temperature that is gradually decreased throughout the
+search. If accepted, the new schedule becomes the current schedule for the
+next iteration; otherwise, the algorithm attempts to repair the old schedule
+again, which will usually produce different results due to the random decisions
+involved. Search stops when all constraints are satisfied. Short schedules are
+obtained by running the algorithm several times and selecting the shortest of
+the resulting conflict-free schedules.
+Zhang and Dietterich treated entire schedules as states in the sense of
+reinforcement learning. The actions were the applicable Reassign-Pool and
+Move operators, typically numbering about 20. The problem was treated
+as episodic, each episode starting with the same critical path schedule that
+the iterative repair algorithm would start with and ending when a schedule
+was found that did not violate any constraint. The initial state—a critical
+path schedule—is denoted S0. The rewards were designed to promote the
+quick construction of conflict-free schedules of short duration. The system
+received a small negative reward (−0.001) on each step that resulted in a
+schedule that still violated a constraint. This encouraged the agent to find
+conflict-free schedules quickly, that is, with a small number of repairs to S0.
+Encouraging the system to find short schedules is more difficult because what
+it means for a schedule to be short depends on the specific SSPP instance. The
+shortest schedule for a difficult instance, one with a lot of tasks and constraints,
+will be longer than the shortest schedule for a simpler instance. Zhang and
+Dietterich devised a formula for a resource dilation factor (RDF), intended to
+be an instance-independent measure of a schedule’s duration. To account for
+an instance’s intrinsic difficulty, the formula makes use of a measure of the
+resource overallocation of S0. Since longer schedules tend to produce larger
+RDFs, the negative of the RDF of the final conflict-free schedule was used as
+a reward at the end of each episode. With this reward function, if it takes N
+repairs starting from a schedule s to obtain a final conflict-free schedule, Sf ,
+the return from s is −RDF (Sf ) − 0.001(N − 1).
+This reward function was designed to try to make a system learn to satisfy
+the two goals of finding conflict-free schedules of short duration and finding
+conflict-free schedules quickly. But the reinforcement learning system really
+has only one goal—maximizing expected return—so the particular reward values determine how a learning system will tend to trade off these two goals.
+298 CHAPTER 14. APPLICATIONS AND CASE STUDIES
+Setting the immediate reward to the small value of −0.001 means that the
+learning system will regard one repair, one step in the scheduling process, as
+being worth 0.001 units of RDF. So, for example, if from some schedule it is
+possible to produce a conflict-free schedule with one repair or with two, an
+optimal policy will take extra repair only if it promises a reduction in final
+RDF of more than 0.001.
+Zhang and Dietterich used TD(λ) to learn the value function. Function
+approximation was by a multilayer neural network trained by backpropagating
+TD errors. Actions were selected by an ε-greedy policy, with ε decreasing
+during learning. One-step lookahead search was used to find the greedy action.
+Their knowledge of the problem made it easy to predict the schedules that
+would result from each repair operation. They experimented with a number of
+modifications to this basic procedure to improve its performance. One was to
+use the TD(λ) algorithm backward after each episode, with the eligibility trace
+extending to future rather than to past states. Their results suggested that this
+was more accurate and efficient than forward learning. In updating the weights
+of the network, they also sometimes performed multiple weight updates when
+the TD error was large. This is apparently equivalent to dynamically varying
+the step-size parameter in an error-dependent way during learning.
+They also tried an experience replay technique due to Lin (1992). At any
+point in learning, the agent remembered the best episode up to that point.
+After every four episodes, it replayed this remembered episode, learning from
+it as if it were a new episode. At the start of training, they similarly allowed
+the system to learn from episodes generated by a good scheduler, and these
+could also be replayed later in learning. To make the lookahead search faster
+for large-scale problems, which typically had a branching factor of about 20,
+they used a variant they called random sample greedy search that estimated
+the greedy action by considering only random samples of actions, increasing
+the sample size until a preset confidence was reached that the greedy action of
+the sample was the true greedy action. Finally, having discovered that learning
+could be slowed considerably by excessive looping in the scheduling process,
+they made their system explicitly check for loops and alter action selections
+when a loop was detected. Although all of these techniques could improve the
+efficiency of learning, it is not clear how crucial all of them were for the success
+of the system.
+Zhang and Dietterich experimented with two different network architectures. In the first version of their system, each schedule was represented using
+a set of 20 handcrafted features. To define these features, they studied small
+scheduling problems to find features that had some ability to predict RDF. For
+example, experience with small problems showed that only four of the resource
+pools tended to cause allocation problems. The mean and standard deviation
+14.6. JOB-SHOP SCHEDULING 299
+of each of these pools’ unused portions over the entire schedule were computed,
+resulting in 10 real-valued features. Two other features were the RDF of the
+current schedule and the percentage of its duration during which it violated
+resource constraints. The network had 20 input units, one for each feature, a
+hidden layer of 40 sigmoidal units, and an output layer of 8 sigmoidal units.
+The output units coded the value of a schedule using a code in which, roughly,
+the location of the activity peak over the 8 units represented the value. Using the appropriate TD error, the network weights were updated using error
+backpropagation, with the multiple weight-update technique mentioned above.
+The second version of the system (Zhang and Dietterich, 1996) used a
+more complicated time-delay neural network (TDNN) borrowed from the field
+of speech recognition (Lang, Waibel, and Hinton, 1990). This version divided
+each schedule into a sequence of blocks (maximal time intervals during which
+tasks and resource assignments did not change) and represented each block by
+a set of features similar to those used in the first program. It then scanned
+a set of “kernel” networks across the blocks to create a set of more abstract
+features. Since different schedules had different numbers of blocks, another
+layer averaged these abstract features over each third of the blocks. Then a
+final layer of 8 sigmoidal output units represented the schedule’s value using
+the same code as in the first version of the system. In all, this network had
+1123 adjustable weights.
+A set of 100 artificial scheduling problems was constructed and divided into
+subsets used for training, determining when to stop training (a validation set),
+and final testing. During training they tested the system on the validation
+set after every 100 episodes and stopped training when performance on the
+validation set stopped changing, which generally took about 10,000 episodes.
+They trained networks with different values of λ (0.2 and 0.7), with three
+different training sets, and they saved both the final set of weights and the
+set of weights producing the best performance on the validation set. Counting
+each set of weights as a different network, this produced 12 networks, each of
+which corresponded to a different scheduling algorithm.
+Figure 14.11 shows how the mean performance of the 12 TDNN networks
+(labeled G12TDN) compared with the performances of two versions of Zweben
+and Daun’s iterative repair algorithm, one using the number of constraint
+violations as the function to be minimized by simulated annealing (IR-V)
+and the other using the RDF measure (IR-RDF). The figure also shows the
+performance of the first version of their system that did not use a TDNN
+(G12N). The mean RDF of the best schedule found by repeatedly running
+an algorithm is plotted against the total number of schedule repairs (using a
+log scale). These results show that the learning system produced scheduling
+algorithms that needed many fewer repairs to find conflict-free schedules of the
+300 CHAPTER 14. APPLICATIONS AND CASE STUDIES
+1.15
+1.2
+1.25
+1.3
+1.35
+1.4
+1.45
+1.5
+1024 2048 4096 8192 16384 32768 65536 131072 262144
+RDF
+Accepted Repairs
+G12TDN
+G12N
+IR-RDF
+IR-V
+Figure 14.11: Comparison of accepted schedule repairs. Reprinted with permission from Zhang and Dietterich, 1996.
+same quality as those found by the iterative repair algorithms. Figure 14.12
+compares the computer time required by each scheduling algorithm to find
+schedules of various RDFs. According to this measure of performance, the
+best trade-off between computer time and schedule quality is produced by
+the non-TDNN algorithm (G12N). The TDNN algorithm (G12TDN) suffered
+due to the time it took to apply the kernel-scanning process, but Zhang and
+Dietterich point out that there are many ways to make it run faster.
+These results do not unequivocally establish the utility of reinforcement
+learning for job-shop scheduling or for other difficult search problems. But
+they do suggest that it is possible to use reinforcement learning methods to
+learn how to improve the efficiency of search. Zhang and Dietterich’s jobshop scheduling system is the first successful instance of which we are aware
+in which reinforcement learning was applied in plan-space, that is, in which
+states are complete plans (job-shop schedules in this case), and actions are plan
+modifications. This is a more abstract application of reinforcement learning
+than we are used to thinking about. Note that in this application the system
+learned not just to efficiently create one good schedule, a skill that would
+not be particularly useful; it learned how to quickly find good schedules for
+a class of related scheduling problems. It is clear that Zhang and Dietterich
+went through a lot of trial-and-error learning of their own in developing this
+example. But remember that this was a groundbreaking exploration of a new
+aspect of reinforcement learning. We expect that future applications of this
+kind and complexity will become more routine as experience accumulates.
+14.6. JOB-SHOP SCHEDULING 301
+1.15
+1.2
+1.25
+1.3
+1.35
+1.4
+1.45
+1.5
+16 32 64 128 256 512 1024 2048
+RDF
+CPU Time (Seconds)
+G12TDN
+G12N
+IR-RDF
+IR-V
+Figure 14.12: Comparison of CPU time. Reprinted with permission from
+Zhang and Dietterich, 1996.
+302 CHAPTER 14. APPLICATIONS AND CASE STUDIES
+
+---
+
+## Sección 20: Chapter 15 [Entropy: 0.84]
+
+Prospects
+In this book we have tried to present reinforcement learning not as a collection
+of individual methods, but as a coherent set of ideas cutting across methods.
+Each idea can be viewed as a dimension along which methods vary. The set
+of such dimensions spans a large space of possible methods. By exploring
+this space at the level of dimensions we hope to obtain the broadest and
+most lasting understanding. In this chapter we use the concept of dimensions
+in method space to recapitulate the view of reinforcement learning we have
+developed in this book and to identify some of the more important gaps in our
+coverage of the field.
+15.1 The Unified View
+All of the reinforcement learning methods we have explored in this book have
+three key ideas in common. First, the objective of all of them is the estimation
+of value functions. Second, all operate by backing up values along actual or
+possible state trajectories. Third, all follow the general strategy of generalized policy iteration (GPI), meaning that they maintain an approximate value
+function and an approximate policy, and they continually try to improve each
+on the basis of the other. These three ideas that the methods have in common
+circumscribe the subject covered in this book. We suggest that value functions, backups, and GPI are powerful organizing principles potentially relevant
+to any model of intelligence.
+Two of the most important dimensions along which the methods vary are
+shown in Figure 15.1. These dimensions have to do with the kind of backup
+used to improve the value function. The horizontal dimension is whether they
+are sample backups (based on a sample trajectory) or full backups (based
+304 CHAPTER 15. PROSPECTS
+width
+of backup
+height
+(depth)
+of backup
+Temporaldifference
+learning
+Dynamic
+programming
+Monte
+Carlo
+...
+Exhaustive
+search
+Figure 15.1: A slice of the space of reinforcement learning methods.
+on a distribution of possible trajectories). Full backups of course require a
+model, whereas sample backups can be done either with or without a model
+(another dimension of variation). The vertical dimension corresponds to the
+depth of backups, that is, to the degree of bootstrapping. At three of the
+four corners of the space are the three primary methods for estimating values:
+DP, TD, and Monte Carlo. Along the left edge of the space are the samplebackup methods, ranging from one-step TD backups to full-return Monte Carlo
+backups. Between these is a spectrum including methods based on n-step
+backups and mixtures of n-step backups such as the λ-backups implemented
+by eligibility traces.
+DP methods are shown in the extreme upper-right corner of the space because they involve one-step full backups. The lower-right corner is the extreme
+case of full backups so deep that they run all the way to terminal states (or, in
+a continuing task, until discounting has reduced the contribution of any further
+rewards to a negligible level). This is the case of exhaustive search. Intermedi-
+15.1. THE UNIFIED VIEW 305
+ate methods along this dimension include heuristic search and related methods
+that search and backup up to a limited depth, perhaps selectively. There are
+also methods that are intermediate along the horizontal dimension. These
+include methods that mix full and sample backups, as well as the possibility
+of methods that mix samples and distributions within a single backup. The
+interior of the square is filled in to represent the space of all such intermediate
+methods.
+A third important dimension is that of function approximation. Function
+approximation can be viewed as an orthogonal spectrum of possibilities ranging
+from tabular methods at one extreme through state aggregation, a variety
+of linear methods, and then a diverse set of nonlinear methods. This third
+dimension might be visualized as perpendicular to the plane of the page in
+Figure 15.1.
+Another dimension that we heavily emphasized in this book is the binary
+distinction between on-policy and off-policy methods. In the former case, the
+agent learns the value function for the policy it is currently following, whereas
+in the latter case it learns the value function for the policy that it currently
+thinks is best. These two policies are often different because of the need
+to explore. The interaction between this dimension and the bootstrapping
+and function approximation dimension discussed in Chapter 9 illustrates the
+advantages of analyzing the space of methods in terms of dimensions. Even
+though this did involve an interaction between three dimensions, many other
+dimensions were found to be irrelevant, greatly simplifying the analysis and
+increasing its significance.
+In addition to the four dimensions just discussed, we have identified a
+number of others throughout the book:
+Definition of return Is the task episodic or continuing, discounted or undiscounted?
+Action values vs. state values vs. afterstate values What kind of values should be estimated? If only state values are estimated, then either
+a model or a separate policy (as in actor–critic methods) is required for
+action selection.
+Action selection/exploration How are actions selected to ensure a suitable
+trade-off between exploration and exploitation? We have considered only
+the simplest ways to do this: ε-greedy and softmax action selection, and
+optimistic initialization of values.
+Synchronous vs. asynchronous Are the backups for all states performed
+simultaneously or one by one in some order?
+306 CHAPTER 15. PROSPECTS
+Replacing vs. accumulating traces If eligibility traces are used, which kind
+is most appropriate?
+Real vs. simulated Should one backup real experience or simulated experience? If both, how much of each?
+Location of backups What states or state–action pairs should be backed
+up? Modelfree methods can choose only among the states and state–
+action pairs actually encountered, but model-based methods can choose
+arbitrarily. There are many potent possibilities here.
+Timing of backups Should backups be done as part of selecting actions, or
+only afterward?
+Memory for backups How long should backed-up values be retained? Should
+they be retained permanently, or only while computing an action selection, as in heuristic search?
+Of course, these dimensions are neither exhaustive nor mutually exclusive.
+Individual algorithms differ in many other ways as well, and many algorithms
+lie in several places along several dimensions. For example, Dyna methods use
+both real and simulated experience to affect the same value function. It is also
+perfectly sensible to maintain multiple value functions computed in different
+ways or over different state and action representations. These dimensions do,
+however, constitute a coherent set of ideas for describing and exploring a wide
+space of possible methods.
+15.2 State Estimation
+15.3 Temporal Abstraction
+15.4 Predictive Representations
+15.5 Other Frontier Dimensions
+Much research remains to be done within this space of reinforcement learning
+methods. For example, even for the tabular case no control method using
+multistep backups has been proved to converge to an optimal policy. Among
+planning methods, basic ideas such as trajectory sampling and focusing sample
+backups are almost completely unexplored. On closer inspection, parts of the
+15.5. OTHER FRONTIER DIMENSIONS 307
+space will undoubtedly turn out to have far greater complexity and greater
+internal structure than is now apparent. There are also other dimensions along
+which reinforcement learning can be extended, we have not yet mentioned,
+that lead to a much larger space of methods. Here we identify some of these
+dimensions and note some of the open questions and frontiers that have been
+left out of the preceding chapters.
+One of the most important extensions of reinforcement learning beyond
+what we have treated in this book is to eliminate the requirement that the
+state representation have the Markov property. There are a number of interesting approaches to the non-Markov case. Most strive to construct from the
+given state signal and its past values a new signal that is Markov, or more
+nearly Markov. For example, one approach is based on the theory of partially
+observable MDPs (POMDPs). POMDPs are finite MDPs in which the state
+is not observable, but another “sensation” signal stochastically related to the
+state is observable. The theory of POMDPs has been extensively studied for
+the case of complete knowledge of the dynamics of the POMDP. In this case,
+Bayesian methods can be used to compute at each time step the probability of
+the environment’s being in each state of the underlying MDP. This probability
+distribution can then be used as a new state signal for the original problem.
+The downside for the Bayesian POMDP approach is its computational expense and its strong reliance on complete environment models. Some of the
+recent work pursuing this approach is by Littman, Cassandra, and Kaelbling
+(1995), Parr and Russell (1995), and Chrisman (1992). If we are not willing
+to assume a complete model of a POMDP’s dynamics, then existing theory
+seems to offer little guidance. Nevertheless, one can still attempt to construct
+a Markov state signal from the sequence of sensations. Various statistical and
+ad hoc methods along these lines have been explored (e.g., Chrisman, 1992;
+McCallum, 1993, 1995; Lin and Mitchell, 1992; Chapman and Kaelbling, 1991;
+Moore, 1994; Rivest and Schapire, 1987; Colombetti and Dorigo, 1994; Whitehead and Ballard, 1991; Hochreiter and Schmidhuber, 1997).
+All of the above methods involve constructing an improved state representation from the non-Markov one provided by the environment. Another
+approach is to leave the state representation unchanged and use methods that
+are not too adversely affected by its being non-Markov (e.g., Singh, Jaakkola,
+and Jordan, 1994, 1995; Jaakkola, Singh and Jordan, 1995). In fact, most
+function approximation methods can be viewed in this way. For example, state
+aggregation methods for function approximation are in effect equivalent to a
+non-Markov representation in which all members of a set of states are mapped
+into a common sensation. There are other parallels between the issues of function approximation and non-Markov representations. In both cases the overall
+problem divides into two parts: constructing an improved representation, and
+308 CHAPTER 15. PROSPECTS
+making do with the current representation. In both cases the “making do”
+part is relatively well understood, whereas the constructive part is unclear
+and wide open. At this point we can only guess as to whether or not these
+parallels point to any common solution methods for the two problems.
+Another important direction for extending reinforcement learning beyond
+what we have covered in this book is to incorporate ideas of modularity and
+hierarchy. Introductory reinforcement learning is about learning value functions and one-step models of the dynamics of the environment. But much of
+what people learn does not seem to fall exactly into either of these categories.
+For example, consider what we know about tying our shoes, making a phone
+call, or traveling to London. Having learned how to do such things, we are
+then able to choose among them and plan as if they were primitive actions.
+What we have learned in order to do this are not conventional value functions
+or one-step models. We are able to plan and learn at a variety of levels and
+flexibly interrelate them. Much of our learning appears not to be about learning values directly, but about preparing us to quickly estimate values later in
+response to new situations or new information. Considerable reinforcement
+learning research has been directed at capturing such abilities (e.g., Watkins,
+1989; Dayan and Hinton, 1993; Singh, 1992a, 1992b; Ring, 1994, Kaelbling,
+1993b; Sutton, 1995).
+Researchers have also explored ways of using the structure of particular
+tasks to advantage. For example, many problems have state representations
+that are naturally lists of variables, like the readings of multiple sensors or actions that are lists of component actions. The independence or near independence of some variables from others can sometimes be exploited to obtain more
+efficient special forms of reinforcement learning algorithms. It is sometimes
+even possible to decompose a problem into several independent subproblems
+that can be solved by separate learning agents. A reinforcement learning problem can usually be structured in many different ways, some reflecting natural
+aspects of the problem, such as the existence of physical sensors, and others
+being the result of explicit attempts to decompose the problem into simpler
+subproblems. Possibilities for exploiting structure in reinforcement learning
+and related planning problems have been studied by many researchers (e.g.,
+Boutilier, Dearden, and Goldszmidt, 1995; Dean and Lin, 1995). There are
+also related studies of multiagent or distributed reinforcement learning (e.g.,
+Littman, 1994; Markey, 1994; Crites and Barto, 1996; Tan, 1993).
+Finally, we want to emphasize that reinforcement learning is meant to be a
+general approach to learning from interaction. It is general enough not to require special-purpose teachers and domain knowledge, but also general enough
+to utilize such things if they are available. For example, it is often possible
+to accelerate reinforcement learning by giving advice or hints to the agent
+15.5. OTHER FRONTIER DIMENSIONS 309
+(Clouse and Utgoff, 1992; Maclin and Shavlik, 1994) or by demonstrating instructive behavioral trajectories (Lin, 1992). Another way to make learning
+easier, related to “shaping” in psychology, is to give the learning agent a series
+of relatively easy problems building up to the harder problem of ultimate interest (e.g., Selfridge, Sutton, and Barto, 1985). These methods, and others not
+yet developed, have the potential to give the machine-learning terms training
+and teaching new meanings that are closer to their meanings for animal and
+human learning.
+310 CHAPTER 15. PROSPECTS
+References
+Agrawal, R. (1995). Sample mean based index policies with O(logn) regret
+for the multi-armed bandit problem. Advances in Applied Probability,
+27:1054–1078.
+Agre, P. E. (1988). The Dynamic Structure of Everyday Life. Ph.D. thesis, Massachusetts Institute of Technology. AI-TR 1085, MIT Artificial
+Intelligence Laboratory.
+Agre, P. E., Chapman, D. (1990). What are plans for? Robotics and Autonomous Systems, 6:17–34.
+Albus, J. S. (1971). A theory of cerebellar function. Mathematical Biosciences,
+10:25–61.
+Albus, J. S. (1981). Brain, Behavior, and Robotics. Byte Books, Peterborough, NH.
+Anderson, C. W. (1986). Learning and Problem Solving with Multilayer Connectionist Systems. Ph.D. thesis, University of Massachusetts, Amherst.
+Anderson, C. W. (1987). Strategy learning with multilayer connectionist
+representations. Proceedings of the Fourth International Workshop on
+Machine Learning, pp. 103–114. Morgan Kaufmann, San Mateo, CA.
+Anderson, J. A., Silverstein, J. W., Ritz, S. A., Jones, R. S. (1977). Distinctive features, categorical perception, and probability learning: Some
+applications of a neural model. Psychological Review, 84:413–451.
+Andreae, J. H. (1963). STELLA: A scheme for a learning machine. In
+Proceedings of the 2nd IFAC Congress, Basle, pp. 497–502. Butterworths,
+London.
+Andreae, J. H. (1969a). A learning machine with monologue. International
+Journal of Man–Machine Studies, 1:1–20.
+Andreae, J. H. (1969b). Learning machines—a unified view. In A. R. Meetham
+and R. A. Hudson (eds.), Encyclopedia of Information, Linguistics, and
+Control, pp. 261–270. Pergamon, Oxford.
+312 CHAPTER 15. PROSPECTS
+Andreae, J. H. (1977). Thinking with the Teachable Machine. Academic
+Press, London.
+Arthur, W. B. (1991). Designing economic agents that act like human agents:
+A behavioral approach to bounded rationality. The American Economic
+Review 81 (2):353-359.
+Auer, P., Cesa-Bianchi, N., Fischer, P. (2002). Finite-time analysis of the
+multiarmed bandit problem. Machine learning, 47(2-3):235–256.
+Baird, L. C. (1995). Residual algorithms: Reinforcement learning with function approximation. In Proceedings of the Twelfth International Conference
+on Machine Learning, pp. 30–37. Morgan Kaufmann, San Francisco.
+Bao, G., Cassandras, C. G., Djaferis, T. E., Gandhi, A. D., Looze, D. P.
+(1994). Elevator dispatchers for down peak traffic. Technical report. ECE
+Department, University of Massachusetts, Amherst.
+Barnard, E. (1993). Temporal-difference methods and Markov models. IEEE
+Transactions on Systems, Man, and Cybernetics, 23:357–365.
+Barto, A. G. (1985). Learning by statistical cooperation of self-interested
+neuron-like computing elements. Human Neurobiology, 4:229–256.
+Barto, A. G. (1986). Game-theoretic cooperativity in networks of self-interested
+units. In J. S. Denker (ed.), Neural Networks for Computing, pp. 41–46.
+American Institute of Physics, New York.
+Barto, A. G. (1990). Connectionist learning for control: An overview. In
+T. Miller, R. S. Sutton, and P. J. Werbos (eds.), Neural Networks for
+Control, pp. 5–58. MIT Press, Cambridge, MA.
+Barto, A. G. (1991). Some learning tasks from a control perspective. In
+L. Nadel and D. L. Stein (eds.), 1990 Lectures in Complex Systems, pp. 195–
+223. Addison-Wesley, Redwood City, CA.
+Barto, A. G. (1992). Reinforcement learning and adaptive critic methods. In
+D. A. White and D. A. Sofge (eds.), Handbook of Intelligent Control: Neural, Fuzzy, and Adaptive Approaches, pp. 469–491. Van Nostrand Reinhold,
+New York.
+Barto, A. G. (1995a). Adaptive critics and the basal ganglia. In J. C. Houk,
+J. L. Davis, and D. G. Beiser (eds.), Models of Information Processing in
+the Basal Ganglia, pp. 215–232. MIT Press, Cambridge, MA.
+Barto, A. G. (1995b). Reinforcement learning. In M. A. Arbib (ed.), Handbook of Brain Theory and Neural Networks, pp. 804–809. MIT Press, Cambridge, MA.
+Barto, A. G., Anandan, P. (1985). Pattern recognizing stochastic learning
+15.5. OTHER FRONTIER DIMENSIONS 313
+automata. IEEE Transactions on Systems, Man, and Cybernetics, 15:360–
+375.
+Barto, A. G., Anderson, C. W. (1985). Structural learning in connectionist
+systems. In Program of the Seventh Annual Conference of the Cognitive
+Science Society, pp. 43–54.
+Barto, A. G., Anderson, C. W., Sutton, R. S. (1982). Synthesis of nonlinear control surfaces by a layered associative search network. Biological
+Cybernetics, 43:175–185.
+Barto, A. G., Bradtke, S. J., Singh, S. P. (1991). Real-time learning and
+control using asynchronous dynamic programming. Technical Report 91-
+57. Department of Computer and Information Science, University of Massachusetts, Amherst.
+Barto, A. G., Bradtke, S. J., Singh, S. P. (1995). Learning to act using
+real-time dynamic programming. Artificial Intelligence, 72:81–138.
+Barto, A. G., Duff, M. (1994). Monte Carlo matrix inversion and reinforcement learning. In J. D. Cohen, G. Tesauro, and J. Alspector (eds.), Advances in Neural Information Processing Systems: Proceedings of the 1993
+Conference, pp. 687–694. Morgan Kaufmann, San Francisco.
+Barto, A. G., Jordan, M. I. (1987). Gradient following without back-propagation
+in layered networks. In M. Caudill and C. Butler (eds.), Proceedings of the
+IEEE First Annual Conference on Neural Networks, pp. II629–II636. SOS
+Printing, San Diego, CA.
+Barto, A. G., Sutton, R. S. (1981a). Goal seeking components for adaptive
+intelligence: An initial assessment. Technical Report AFWAL-TR-81-
+1070. Air Force Wright Aeronautical Laboratories/Avionics Laboratory,
+Wright-Patterson AFB, OH.
+Barto, A. G., Sutton, R. S. (1981b). Landmark learning: An illustration of
+associative search. Biological Cybernetics, 42:1–8.
+Barto, A. G., Sutton, R. S. (1982). Simulation of anticipatory responses
+in classical conditioning by a neuron-like adaptive element. Behavioural
+Brain Research, 4:221–235.
+Barto, A. G., Sutton, R. S., Anderson, C. W. (1983). Neuronlike elements
+that can solve difficult learning control problems. IEEE Transactions on
+Systems, Man, and Cybernetics, 13:835–846. Reprinted in J. A. Anderson and E. Rosenfeld (eds.), Neurocomputing: Foundations of Research,
+pp. 535–549. MIT Press, Cambridge, MA, 1988.
+Barto, A. G., Sutton, R. S., Brouwer, P. S. (1981). Associative search net-
+314 CHAPTER 15. PROSPECTS
+work: A reinforcement learning associative memory. Biological Cybernetics, 40:201–211.
+Bellman, R. E. (1956). A problem in the sequential design of experiments.
+Sankhya, 16:221–229.
+Bellman, R. E. (1957a). Dynamic Programming. Princeton University Press,
+Princeton.
+Bellman, R. E. (1957b). A Markov decision process. Journal of Mathematical
+Mechanics, 6:679–684.
+Bellman, R. E., Dreyfus, S. E. (1959). Functional approximations and dynamic programming. Mathematical Tables and Other Aids to Computation, 13:247–251.
+Bellman, R. E., Kalaba, R., Kotkin, B. (1973). Polynomial approximation—A
+new computational technique in dynamic programming: Allocation processes. Mathematical Computation, 17:155–161.
+Berry, D. A., Fristedt, B. (1985). Bandit Problems. Chapman and Hall,
+London.
+Bertsekas, D. P. (1982). Distributed dynamic programming. IEEE Transactions on Automatic Control, 27:610–616.
+Bertsekas, D. P. (1983). Distributed asynchronous computation of fixed points.
+Mathematical Programming, 27:107–120.
+Bertsekas, D. P. (1987). Dynamic Programming: Deterministic and Stochastic
+Models. Prentice-Hall, Englewood Cliffs, NJ.
+Bertsekas, D. P. (1995). Dynamic Programming and Optimal Control. Athena
+Scientific, Belmont, MA.
+Bertsekas, D. P., Tsitsiklis, J. N. (1989). Parallel and Distributed Computation: Numerical Methods. Prentice-Hall, Englewood Cliffs, NJ.
+Bertsekas, D. P., Tsitsiklis, J. N. (1996). Neuro-Dynamic Programming.
+Athena Scientific, Belmont, MA.
+Biermann, A. W., Fairfield, J. R. C., Beres, T. R. (1982). Signature table systems and learning. IEEE Transactions on Systems, Man, and Cybernetics,
+12:635–648.
+Bishop, C. M. (1995). Neural Networks for Pattern Recognition. Clarendon,
+Oxford.
+Booker, L. B. (1982). Intelligent Behavior as an Adaptation to the Task
+Environment. Ph.D. thesis, University of Michigan, Ann Arbor.
+15.5. OTHER FRONTIER DIMENSIONS 315
+Boone, G. (1997). Minimum-time control of the acrobot. In 1997 International Conference on Robotics and Automation, pp. 3281–3287. IEEE
+Robotics and Automation Society.
+Boutilier, C., Dearden, R., Goldszmidt, M. (1995). Exploiting structure in
+policy construction. In Proceedings of the Fourteenth International Joint
+Conference on Artificial Intelligence, pp. 1104–1111. Morgan Kaufmann.
+Boyan, J. A., Moore, A. W. (1995). Generalization in reinforcement learning:
+Safely approximating the value function. In G. Tesauro, D. S. Touretzky,
+and T. Leen (eds.), Advances in Neural Information Processing Systems:
+Proceedings of the 1994 Conference, pp. 369–376. MIT Press, Cambridge,
+MA.
+Boyan, J. A., Moore, A. W., Sutton, R. S. (eds.). (1995). Proceedings of
+the Workshop on Value Function Approximation. Machine Learning Conference 1995. Technical Report CMU-CS-95-206. School of Computer
+Science, Carnegie Mellon University, Pittsburgh, PA.
+Bradtke, S. J. (1993). Reinforcement learning applied to linear quadratic
+regulation. In S. J. Hanson, J. D. Cowan, and C. L. Giles (eds.), Advances in Neural Information Processing Systems: Proceedings of the 1992
+Conference, pp. 295–302. Morgan Kaufmann, San Mateo, CA.
+Bradtke, S. J. (1994). Incremental Dynamic Programming for On-Line Adaptive Optimal Control. Ph.D. thesis, University of Massachusetts, Amherst.
+Appeared as CMPSCI Technical Report 94-62.
+Bradtke, S. J., Barto, A. G. (1996). Linear least–squares algorithms for
+temporal difference learning. Machine Learning, 22:33–57.
+Bradtke, S. J., Ydstie, B. E., Barto, A. G. (1994). Adaptive linear quadratic
+control using policy iteration. In Proceedings of the American Control Conference, pp. 3475–3479. American Automatic Control Council, Evanston,
+IL.
+Bradtke, S. J., Duff, M. O. (1995). Reinforcement learning methods for
+continuous-time Markov decision problems. In G. Tesauro, D. Touretzky,
+and T. Leen (eds.), Advances in Neural Information Processing Systems:
+Proceedings of the 1994 Conference, pp. 393–400. MIT Press, Cambridge,
+MA.
+Bridle, J. S. (1990). Training stochastic model recognition algorithms as
+networks can lead to maximum mutual information estimates of parameters. In D. S. Touretzky (ed.), Advances in Neural Information Processing
+Systems: Proceedings of the 1989 Conference, pp. 211–217. Morgan Kaufmann, San Mateo, CA.
+316 CHAPTER 15. PROSPECTS
+Broomhead, D. S., Lowe, D. (1988). Multivariable functional interpolation
+and adaptive networks. Complex Systems, 2:321–355.
+Bryson, A. E., Jr. (1996). Optimal control—1950 to 1985. IEEE Control
+Systems, 13(3):26–33.
+Bush, R. R., Mosteller, F. (1955). Stochastic Models for Learning. Wiley,
+New York.
+Byrne, J. H., Gingrich, K. J., Baxter, D. A. (1990). Computational capabilities of single neurons: Relationship to simple forms of associative and
+nonassociative learning in aplysia. In R. D. Hawkins and G. H. Bower
+(eds.), Computational Models of Learning, pp. 31–63. Academic Press,
+New York.
+Camerer, C. (2003). Behavioral game theory: Experiments in strategic interaction. Princeton University Press.
+Campbell, D. T. (1960). Blind variation and selective survival as a general
+strategy in knowledge-processes. In M. C. Yovits and S. Cameron (eds.),
+Self-Organizing Systems, pp. 205–231. Pergamon, New York.
+Carlstr¨om, J., Nordstr¨om, E. (1997). Control of self-similar ATM call traffic
+by reinforcement learning. In Proceedings of the International Workshop
+on Applications of Neural Networks to Telecommunications 3, pp. 54–62.
+Erlbaum, Hillsdale, NJ.
+Chapman, D., Kaelbling, L. P. (1991). Input generalization in delayed reinforcement learning: An algorithm and performance comparisons. In Proceedings of the Twelfth International Conference on Artificial Intelligence,
+pp. 726–731. Morgan Kaufmann, San Mateo, CA.
+Chow, C.-S., Tsitsiklis, J. N. (1991). An optimal one-way multigrid algorithm
+for discrete-time stochastic control. IEEE Transactions on Automatic
+Control, 36:898–914.
+Chrisman, L. (1992). Reinforcement learning with perceptual aliasing: The
+perceptual distinctions approach. In Proceedings of the Tenth National
+Conference on Artificial Intelligence, pp. 183–188. AAAI/MIT Press, Menlo
+Park, CA.
+Christensen, J., Korf, R. E. (1986). A unified theory of heuristic evaluation functions and its application to learning. In Proceedings of the Fifth
+National Conference on Artificial Intelligence, pp. 148–152. Morgan Kaufmann, San Mateo, CA.
+Cichosz, P. (1995). Truncating temporal differences: On the efficient implementation of TD(λ) for reinforcement learning. Journal of Artificial
+15.5. OTHER FRONTIER DIMENSIONS 317
+Intelligence Research, 2:287–318.
+Clark, W. A., Farley, B. G. (1955). Generalization of pattern recognition in a
+self-organizing system. In Proceedings of the 1955 Western Joint Computer
+Conference, pp. 86–91.
+Clouse, J. (1996). On Integrating Apprentice Learning and Reinforcement
+Learning TITLE2. Ph.D. thesis, University of Massachusetts, Amherst.
+Appeared as CMPSCI Technical Report 96-026.
+Clouse, J., Utgoff, P. (1992). A teaching method for reinforcement learning
+systems. In Proceedings of the Ninth International Machine Learning
+Conference, pp. 92–101. Morgan Kaufmann, San Mateo, CA.
+Colombetti, M., Dorigo, M. (1994). Training agent to perform sequential
+behavior. Adaptive Behavior, 2(3):247–275.
+Connell, J. (1989). A colony architecture for an artificial creature. Technical
+Report AI-TR-1151. MIT Artificial Intelligence Laboratory, Cambridge,
+MA.
+Connell, J., Mahadevan, S. (1993). Robot Learning. Kluwer Academic,
+Boston.
+Craik, K. J. W. (1943). The Nature of Explanation. Cambridge University
+Press, Cambridge.
+Crites, R. H. (1996). Large-Scale Dynamic Optimization Using Teams of
+Reinforcement Learning Agents. Ph.D. thesis, University of Massachusetts,
+Amherst.
+Crites, R. H., Barto, A. G. (1996). Improving elevator performance using reinforcement learning. In D. S. Touretzky, M. C. Mozer, and M. E. Hasselmo
+(eds.), Advances in Neural Information Processing Systems: Proceedings
+of the 1995 Conference, pp. 1017–1023. MIT Press, Cambridge, MA.
+Cross, J. G. (1973). A stochastic learning model of economic behavior. The
+Quarterly Journal of Economics 87 (2):239-266.
+Curtiss, J. H. (1954). A theoretical comparison of the efficiencies of two
+classical methods and a Monte Carlo method for computing one component
+of the solution of a set of linear algebraic equations. In H. A. Meyer (ed.),
+Symposium on Monte Carlo Methods, pp. 191–233. Wiley, New York.
+Cziko, G. (1995). Without Miracles: Universal Selection Theory and the
+Second Darvinian Revolution. MIT Press, Cambridge, MA.
+Daniel, J. W. (1976). Splines and efficiency in dynamic programming. Journal
+of Mathematical Analysis and Applications, 54:402–407.
+318 CHAPTER 15. PROSPECTS
+Dayan, P. (1991). Reinforcement comparison. In D. S. Touretzky, J. L. Elman, T. J. Sejnowski, and G. E. Hinton (eds.), Connectionist Models: Proceedings of the 1990 Summer School, pp. 45–51. Morgan Kaufmann, San
+Mateo, CA.
+Dayan, P. (1992). The convergence of TD(λ) for general λ. Machine Learning,
+8:341–362.
+Dayan, P., Hinton, G. E. (1993). Feudal reinforcement learning. In S. J. Hanson, J. D. Cohen, and C. L. Giles (eds.), Advances in Neural Information Processing Systems: Proceedings of the 1992 Conference, pp. 271–278.
+Morgan Kaufmann, San Mateo, CA.
+Dayan, P., Sejnowski, T. (1994). TD(λ) converges with probability 1. Machine
+Learning, 14:295–301.
+Dean, T., Lin, S.-H. (1995). Decomposition techniques for planning in stochastic domains. In Proceedings of the Fourteenth International Joint Conference on Artificial Intelligence, pp. 1121–1127. Morgan Kaufmann. See
+also Technical Report CS-95-10, Brown University, Department of Computer Science, 1995.
+DeJong, G., Spong, M. W. (1994). Swinging up the acrobot: An example
+of intelligent control. In Proceedings of the American Control Conference,
+pp. 2158–2162. American Automatic Control Council, Evanston, IL.
+Denardo, E. V. (1967). Contraction mappings in the theory underlying dynamic programming. SIAM Review, 9:165–177.
+Dennett, D. C. (1978). Brainstorms, pp. 71–89. Bradford/MIT Press, Cambridge, MA.
+Dick, T. (2015). A Regret-full Perspective on Policy Gradient Methods for
+Reinforcement Learning. MSc Thesis, University of Alberta.
+Dietterich, T. G., Flann, N. S. (1995). Explanation-based learning and reinforcement learning: A unified view. In A. Prieditis and S. Russell (eds.),
+Proceedings of the Twelfth International Conference on Machine Learning,
+pp. 176–184. Morgan Kaufmann, San Francisco.
+Doya, K. (1996). Temporal difference learning in continuous time and space.
+In D. S. Touretzky, M. C. Mozer, and M. E. Hasselmo (eds.), Advances in
+Neural Information Processing Systems: Proceedings of the 1995 Conference, pp. 1073–1079. MIT Press, Cambridge, MA.
+Doyle, P. G., Snell, J. L. (1984). Random Walks and Electric Networks. The
+Mathematical Association of America. Carus Mathematical Monograph
+22.
+15.5. OTHER FRONTIER DIMENSIONS 319
+Dreyfus, S. E., Law, A. M. (1977). The Art and Theory of Dynamic Programming. Academic Press, New York.
+Duda, R. O., Hart, P. E. (1973). Pattern Classification and Scene Analysis.
+Wiley, New York.
+Duff, M. O. (1995). Q-learning for bandit problems. In A. Prieditis and
+S. Russell (eds.), Proceedings of the Twelfth International Conference on
+Machine Learning, pp. 209–217. Morgan Kaufmann, San Francisco.
+Estes, W. K. (1950). Toward a statistical theory of learning. Psychololgical
+Review, 57:94–107.
+Farley, B. G., Clark, W. A. (1954). Simulation of self-organizing systems by
+digital computer. IRE Transactions on Information Theory, 4:76–84.
+Feldbaum, A. A. (1965). Optimal Control Systems. Academic Press, New
+York.
+Fogel, L. J., Owens, A. J., Walsh, M. J. (1966). Artificial intelligence through
+simulated evolution. John Wiley and Sons.
+Friston, K. J., Tononi, G., Reeke, G. N., Sporns, O., Edelman, G. M. (1994).
+Value-dependent selection in the brain: Simulation in a synthetic neural
+model. Neuroscience, 59:229–243.
+Fu, K. S. (1970). Learning control systems—Review and outlook. IEEE
+Transactions on Automatic Control, 15:210–221.
+Galanter, E., Gerstenhaber, M. (1956). On thought: The extrinsic theory.
+Psychological Review, 63:218–227.
+Gallant, S. I. (1993). Neural Network Learning and Expert Systems. MIT
+Press, Cambridge, MA.
+Gallistel, C. R. (2005). Deconstructing the law of effect. Games and Economic
+Behavior 52 (2), 410-423.
+G¨allmo, O., Asplund, L. (1995). Reinforcement learning by construction
+of hypothetical targets. In J. Alspector, R. Goodman, and T. X. Brown
+(eds.), Proceedings of the International Workshop on Applications of Neural
+Networks to Telecommunications 2, pp. 300–307. Erlbaum, Hillsdale, NJ.
+Gardner, M. (1973). Mathematical games. Scientific American, 228(1):108–
+115.
+Gelperin, A., Hopfield, J. J., Tank, D. W. (1985). The logic of limax learning.
+In A. Selverston (ed.), Model Neural Networks and Behavior, pp. 247–261.
+Plenum Press, New York.
+Gittins, J. C., Jones, D. M. (1974). A dynamic allocation index for the
+320 CHAPTER 15. PROSPECTS
+sequential design of experiments. In J. Gani, K. Sarkadi, and I. Vincze
+(eds.), Progress in Statistics, pp. 241–266. North-Holland, Amsterdam–
+London.
+Goldberg, D. E. (1989). Genetic Algorithms in Search, Optimization, and
+Machine Learning. Addison-Wesley, Reading, MA.
+Goldstein, H. (1957). Classical Mechanics. Addison-Wesley, Reading, MA.
+Goodwin, G. C., Sin, K. S. (1984). Adaptive Filtering Prediction and Control.
+Prentice-Hall, Englewood Cliffs, NJ.
+Gordon, G. J. (1995). Stable function approximation in dynamic programming. In A. Prieditis and S. Russell (eds.), Proceedings of the Twelfth International Conference on Machine Learning, pp. 261–268. Morgan Kaufmann, San Francisco. An expanded version was published as Technical Report CMU-CS-95-103. Carnegie Mellon University, Pittsburgh, PA, 1995.
+Gordon, G. J. (1996). Chattering in SARSA(λ). CMU learning lab internal
+report.
+Gordon, G. J. (1996). Stable fitted reinforcement learning. In D. S. Touretzky, M. C. Mozer, M. E. Hasselmo (eds.), Advances in Neural Information
+Processing Systems: Proceedings of the 1995 Conference, pp. 1052–1058.
+MIT Press, Cambridge, MA.
+Gordon, G. J. (2001). Reinforcement learning with function approximation
+converges to a region. Advances in neural information processing systems.
+Greensmith, E., Bartlett, P. L., Baxter, J. (2001). Variance reduction techniques for gradient estimates in reinforcement learning. In Advances in
+Neural Information Processing Systems: Proceedings of the 2000 Conference, pp. 1507–1514.
+Greensmith, E., Bartlett, P. L., Baxter, J. (2004). Variance reduction techniques for gradient estimates in reinforcement learning. Journal of Machine
+Learning Research 5, 1471-1530.
+Griffith, A. K. (1966). A new machine learning technique applied to the game
+of checkers. Technical Report Project MAC, Artificial Intelligence Memo
+94. Massachusetts Institute of Technology, Cambridge, MA.
+Griffith, A. K. (1974). A comparison and evaluation of three machine learning
+procedures as applied to the game of checkers. Artificial Intelligence,
+5:137–148.
+Gullapalli, V. (1990). A stochastic reinforcement algorithm for learning realvalued functions. Neural Networks, 3:671–692.
+Gurvits, L., Lin, L.-J., Hanson, S. J. (1994). Incremental learning of evalua-
+15.5. OTHER FRONTIER DIMENSIONS 321
+tion functions for absorbing Markov chains: New methods and theorems.
+Preprint.
+Hampson, S. E. (1983). A Neural Model of Adaptive Behavior. Ph.D. thesis,
+University of California, Irvine.
+Hampson, S. E. (1989). Connectionist Problem Solving: Computational Aspects of Biological Learning. Birkhauser, Boston.
+Hawkins, R. D., Kandel, E. R. (1984). Is there a cell-biological alphabet for
+simple forms of learning? Psychological Review, 91:375–391.
+Herrnstein, R. J. (1970). On the Law of Effect. Journal of the Experimental
+Analysis of Behavior 13 (2), 243-266.
+Hersh, R., Griego, R. J. (1969). Brownian motion and potential theory.
+Scientific American, 220:66–74.
+Hesterberg, T. C. (1988), Advances in importance sampling, Ph.D. Dissertation, Statistics Department, Stanford University.
+Hilgard, E. R., Bower, G. H. (1975). Theories of Learning. Prentice-Hall,
+Englewood Cliffs, NJ.
+Hinton, G. E. (1984). Distributed representations. Technical Report CMU-
+CS-84-157. Department of Computer Science, Carnegie-Mellon University,
+Pittsburgh, PA.
+Hochreiter, S., Schmidhuber, J. (1997). LTSM can solve hard time lag problems. In Advances in Neural Information Processing Systems: Proceedings
+of the 1996 Conference, pp. 473–479. MIT Press, Cambridge, MA.
+Holland, J. H. (1975). Adaptation in Natural and Artificial Systems. University of Michigan Press, Ann Arbor.
+Holland, J. H. (1976). Adaptation. In R. Rosen and F. M. Snell (eds.),
+Progress in Theoretical Biology, vol. 4, pp. 263–293. Academic Press, New
+York.
+Holland, J. H. (1986). Escaping brittleness: The possibility of general-purpose
+learning algorithms applied to rule-based systems. In R. S. Michalski,
+J. G. Carbonell, and T. M. Mitchell (eds.), Machine Learning: An Artificial
+Intelligence Approach, vol. 2, pp. 593–623. Morgan Kaufmann, San Mateo,
+CA.
+Houk, J. C., Adams, J. L., Barto, A. G. (1995). A model of how the basal
+ganglia generates and uses neural signals that predict reinforcement. In
+J. C. Houk, J. L. Davis, and D. G. Beiser (eds.), Models of Information
+Processing in the Basal Ganglia, pp. 249–270. MIT Press, Cambridge, MA.
+322 CHAPTER 15. PROSPECTS
+Howard, R. (1960). Dynamic Programming and Markov Processes. MIT
+Press, Cambridge, MA.
+Hull, C. L. (1943). Principles of Behavior. Appleton-Century, New York.
+Hull, C. L. (1952). A Behavior System. Wiley, New York.
+Jaakkola, T., Jordan, M. I., Singh, S. P. (1994). On the convergence of
+stochastic iterative dynamic programming algorithms. Neural Computation, 6:1185–1201.
+Jaakkola, T., Singh, S. P., Jordan, M. I. (1995). Reinforcement learning algorithm for partially observable Markov decision problems. In G. Tesauro,
+D. S. Touretzky, T. Leen (eds.), Advances in Neural Information Processing Systems: Proceedings of the 1994 Conference, pp. 345–352. MIT Press,
+Cambridge, MA.
+Kaelbling, L. P. (1993a). Hierarchical learning in stochastic domains: Preliminary results. In Proceedings of the Tenth International Conference on
+Machine Learning, pp. 167–173. Morgan Kaufmann, San Mateo, CA.
+Kaelbling, L. P. (1993b). Learning in Embedded Systems. MIT Press, Cambridge, MA.
+Kaelbling, L. P. (ed.). (1996). Special issue of Machine Learning on reinforcement learning, 22.
+Kaelbling, L. P., Littman, M. L., Moore, A. W. (1996). Reinforcement learning: A survey. Journal of Artificial Intelligence Research, 4:237–285.
+Kakutani, S. (1945). Markov processes and the Dirichlet problem. Proceedings
+of the Japan Academy, 21:227–233.
+Kalos, M. H., Whitlock, P. A. (1986). Monte Carlo Methods. Wiley, New
+York.
+Kanerva, P. (1988). Sparse Distributed Memory. MIT Press, Cambridge, MA.
+Kanerva, P. (1993). Sparse distributed memory and related models. In
+M. H. Hassoun (ed.), Associative Neural Memories: Theory and Implementation, pp. 50–76. Oxford University Press, New York.
+Kashyap, R. L., Blaydon, C. C., Fu, K. S. (1970). Stochastic approximation.
+In J. M. Mendel and K. S. Fu (eds.), Adaptive, Learning, and Pattern
+Recognition Systems: Theory and Applications, pp. 329–355. Academic
+Press, New York.
+Keerthi, S. S., Ravindran, B. (1997). Reinforcement learning. In E. Fiesler and
+R. Beale (eds.), Handbook of Neural Computation, C3. Oxford University
+Press, New York.
+15.5. OTHER FRONTIER DIMENSIONS 323
+Kimble, G. A. (1961). Hilgard and Marquis’ Conditioning and Learning.
+Appleton-Century-Crofts, New York.
+Kimble, G. A. (1967). Foundations of Conditioning and Learning. Appleton-
+Century-Crofts, New York.
+Klopf, A. H. (1972). Brain function and adaptive systems—A heterostatic
+theory. Technical Report AFCRL-72-0164, Air Force Cambridge Research
+Laboratories, Bedford, MA. A summary appears in Proceedings of the International Conference on Systems, Man, and Cybernetics. IEEE Systems,
+Man, and Cybernetics Society, Dallas, TX, 1974.
+Klopf, A. H. (1975). A comparison of natural and artificial intelligence.
+SIGART Newsletter, 53:11–13.
+Klopf, A. H. (1982). The Hedonistic Neuron: A Theory of Memory, Learning,
+and Intelligence. Hemisphere, Washington, DC.
+Klopf, A. H. (1988). A neuronal model of classical conditioning. Psychobiology, 16:85–125.
+Kohonen, T. (1977). Associative Memory: A System Theoretic Approach.
+Springer-Verlag, Berlin.
+Koller, D., Friedman, N. (2009). Probabilistic Graphical Models: Principles
+and Techniques. MIT Press, 2009.
+Korf, R. E. (1988). Optimal path finding algorithms. In L. N. Kanal and
+V. Kumar (eds.), Search in Artificial Intelligence, pp. 223–267. Springer
+Verlag, Berlin.
+Koza, J. R. (1992). Genetic programming: On the programming of computers
+by means of natural selection (Vol. 1). MIT press.
+Kraft, L. G., Campagna, D. P. (1990). A summary comparison of CMAC
+neural network and traditional adaptive control systems. In T. Miller,
+R. S. Sutton, and P. J. Werbos (eds.), Neural Networks for Control, pp. 143–
+169. MIT Press, Cambridge, MA.
+Kraft, L. G., Miller, W. T., Dietz, D. (1992). Development and application
+of CMAC neural network-based control. In D. A. White and D. A. Sofge
+(eds.), Handbook of Intelligent Control: Neural, Fuzzy, and Adaptive Approaches, pp. 215–232. Van Nostrand Reinhold, New York.
+Kumar, P. R., Varaiya, P. (1986). Stochastic Systems: Estimation, Identification, and Adaptive Control. Prentice-Hall, Englewood Cliffs, NJ.
+Kumar, P. R. (1985). A survey of some results in stochastic adaptive control.
+SIAM Journal of Control and Optimization, 23:329–380.
+324 CHAPTER 15. PROSPECTS
+Kumar, V., Kanal, L. N. (1988). The CDP: A unifying formulation for heuristic search, dynamic programming, and branch-and-bound. In L. N. Kanal
+and V. Kumar (eds.), Search in Artificial Intelligence, pp. 1–37. Springer-
+Verlag, Berlin.
+Kushner, H. J., Dupuis, P. (1992). Numerical Methods for Stochastic Control
+Problems in Continuous Time. Springer-Verlag, New York.
+Lai, T. L., Robbins, H. (1985). Asymptotically efficient adaptive allocation
+rules. Advances in applied mathematics, 6(1):4–22.
+Lang, K. J., Waibel, A. H., Hinton, G. E. (1990). A time-delay neural network
+architecture for isolated word recognition. Neural Networks, 3:33–43.
+Lin, C.-S., Kim, H. (1991). CMAC-based adaptive critic self-learning control.
+IEEE Transactions on Neural Networks, 2:530–533.
+Lin, L.-J. (1992). Self-improving reactive agents based on reinforcement learning, planning and teaching. Machine Learning, 8:293–321.
+Lin, L.-J., Mitchell, T. (1992). Reinforcement learning with hidden states.
+In Proceedings of the Second International Conference on Simulation of
+Adaptive Behavior: From Animals to Animats, pp. 271–280. MIT Press,
+Cambridge, MA.
+Littman, M. L. (1994). Markov games as a framework for multi-agent reinforcement learning. In Proceedings of the Eleventh International Conference on Machine Learning, pp. 157–163. Morgan Kaufmann, San Francisco.
+Littman, M. L., Cassandra, A. R., Kaelbling, L. P. (1995). Learning policies
+for partially observable environments: Scaling up. In A. Prieditis and
+S. Russell (eds.), Proceedings of the Twelfth International Conference on
+Machine Learning, pp. 362–370. Morgan Kaufmann, San Francisco.
+Littman, M. L., Dean, T. L., Kaelbling, L. P. (1995). On the complexity of
+solving Markov decision problems. In Proceedings of the Eleventh Annual
+Conference on Uncertainty in Artificial Intelligence, pp. 394–402.
+Liu, J. S. (2001). Monte Carlo strategies in scientific computing. Berlin,
+Springer-Verlag.
+Ljung, L., S¨oderstrom, T. (1983). Theory and Practice of Recursive Identification. MIT Press, Cambridge, MA.
+Lovejoy, W. S. (1991). A survey of algorithmic methods for partially observed
+Markov decision processes. Annals of Operations Research, 28:47–66.
+Luce, D. (1959). Individual Choice Behavior. Wiley, New York.
+15.5. OTHER FRONTIER DIMENSIONS 325
+Maclin, R., Shavlik, J. W. (1994). Incorporating advice into agents that learn
+from reinforcements. In Proceedings of the Twelfth National Conference
+on Artificial Intelligence, pp. 694–699. AAAI Press, Menlo Park, CA.
+Mahadevan, S. (1996). Average reward reinforcement learning: Foundations,
+algorithms, and empirical results. Machine Learning, 22:159–196.
+Markey, K. L. (1994). Efficient learning of multiple degree-of-freedom control
+problems with quasi-independent Q-agents. In M. C. Mozer, P. Smolensky,
+D. S. Touretzky, J. L. Elman, and A. S. Weigend (eds.), Proceedings of the
+1990 Connectionist Models Summer School. Erlbaum, Hillsdale, NJ.
+Mazur, J. E. (1994). Learning and Behavior, 3rd ed. Prentice-Hall, Englewood
+Cliffs, NJ.
+McCallum, A. K. (1993). Overcoming incomplete perception with utile distinction memory. In Proceedings of the Tenth International Conference on
+Machine Learning, pp. 190–196. Morgan Kaufmann, San Mateo, CA.
+McCallum, A. K. (1995). Reinforcement Learning with Selective Perception
+and Hidden State. Ph.D. thesis, University of Rochester, Rochester, NY.
+Mendel, J. M. (1966). A survey of learning control systems. ISA Transactions,
+5:297–303.
+Mendel, J. M., McLaren, R. W. (1970). Reinforcement learning control and
+pattern recognition systems. In J. M. Mendel and K. S. Fu (eds.), Adaptive, Learning and Pattern Recognition Systems: Theory and Applications,
+pp. 287–318. Academic Press, New York.
+Michie, D. (1961). Trial and error. In S. A. Barnett and A. McLaren (eds.),
+Science Survey, Part 2, pp. 129–145. Penguin, Harmondsworth.
+Michie, D. (1963). Experiments on the mechanisation of game learning. 1.
+characterization of the model and its parameters. Computer Journal,
+1:232–263.
+Michie, D. (1974). On Machine Intelligence. Edinburgh University Press,
+Edinburgh.
+Michie, D., Chambers, R. A. (1968). BOXES: An experiment in adaptive
+control. In E. Dale and D. Michie (eds.), Machine Intelligence 2, pp. 137–
+152. Oliver and Boyd, Edinburgh.
+Miller, S., Williams, R. J. (1992). Learning to control a bioreactor using a neural net Dyna-Q system. In Proceedings of the Seventh Yale Workshop on
+Adaptive and Learning Systems, pp. 167–172. Center for Systems Science,
+Dunham Laboratory, Yale University, New Haven.
+Miller, W. T., Scalera, S. M., Kim, A. (1994). Neural network control of
+326 CHAPTER 15. PROSPECTS
+dynamic balance for a biped walking robot. In Proceedings of the Eighth
+Yale Workshop on Adaptive and Learning Systems, pp. 156–161. Center
+for Systems Science, Dunham Laboratory, Yale University, New Haven.
+Minsky, M. L. (1954). Theory of Neural-Analog Reinforcement Systems and
+Its Application to the Brain-Model Problem. Ph.D. thesis, Princeton University.
+Minsky, M. L. (1961). Steps toward artificial intelligence. Proceedings of the
+Institute of Radio Engineers, 49:8–30. Reprinted in E. A. Feigenbaum and
+J. Feldman (eds.), Computers and Thought, pp. 406–450. McGraw-Hill,
+New York, 1963.
+Minsky, M. L. (1967). Computation: Finite and Infinite Machines. Prentice-
+Hall, Englewood Cliffs, NJ.
+Montague, P. R., Dayan, P., Sejnowski, T. J. (1996). A framework for mesencephalic dopamine systems based on predictive Hebbian learning. Journal
+of Neuroscience, 16:1936–1947.
+Moore, A. W. (1990). Efficient Memory-Based Learning for Robot Control.
+Ph.D. thesis, University of Cambridge.
+Moore, A. W. (1994). The parti-game algorithm for variable resolution reinforcement learning in multidimensional spaces. In J. D. Cohen, G. Tesauro
+and J. Alspector (eds.), Advances in Neural Information Processing Systems: Proceedings of the 1993 Conference, pp. 711–718. Morgan Kaufmann, San Francisco.
+Moore, A. W., Atkeson, C. G. (1993). Prioritized sweeping: Reinforcement
+learning with less data and less real time. Machine Learning, 13:103–130.
+Moore, J. W., Desmond, J. E., Berthier, N. E., Blazis, E. J., Sutton, R. S., and
+Barto, A. G. (1986). Simulation of the classically conditioned nictitating
+membrane response by a neuron-like adaptive element: I. Response topography, neuronal firing, and interstimulus intervals. Behavioural Brain
+Research, 21:143–154.
+Narendra, K. S., Thathachar, M. A. L. (1974). Learning automata—A survey.
+IEEE Transactions on Systems, Man, and Cybernetics, 4:323–334.
+Narendra, K. S., Thathachar, M. A. L. (1989). Learning Automata: An
+Introduction. Prentice-Hall, Englewood Cliffs, NJ.
+Narendra, K. S., Wheeler, R. M. (1986). Decentralized learning in finite
+Markov chains. IEEE Transactions on Automatic Control, AC31(6):519–
+526.
+Nie, J., Haykin, S. (1996). A dynamic channel assignment policy through
+15.5. OTHER FRONTIER DIMENSIONS 327
+Q-learning. CRL Report 334. Communications Research Laboratory,
+McMaster University, Hamilton, Ontario.
+Now´e, A., Vrancx, P., De Hauwere, Y. M. (2012). Game theory and multiagent reinforcement learning. In Reinforcement Learning (pp. 441-470).
+Springer Berlin Heidelberg.
+Page, C. V. (1977). Heuristics for signature table analysis as a pattern recognition technique. IEEE Transactions on Systems, Man, and Cybernetics,
+7:77–86.
+Parr, R., Russell, S. (1995). Approximating optimal policies for partially
+observable stochastic domains. In Proceedings of the Fourteenth International Joint Conference on Artificial Intelligence, pp. 1088–1094. Morgan
+Kaufmann.
+Pavlov, P. I. (1927). Conditioned Reflexes. Oxford University Press, London.
+Pearl, J. (1984). Heuristics: Intelligent Search Strategies for Computer Problem Solving. Addison-Wesley, Reading, MA.
+Pearl, J. (1995). Causal diagrams for empirical research. Biometrika, 82(4),
+669-688.
+Balke, A., Pearl, J. (1994). Counterfactual probabilities: Computational
+methods, bounds and applications. In Proceedings of the Tenth International Conference on Uncertainty in Artificial Intelligence (pp. 46-54).
+Morgan Kaufmann.
+Peng, J. (1993). Efficient Dynamic Programming-Based Learning for Control.
+Ph.D. thesis, Northeastern University, Boston.
+Peng, J., Williams, R. J. (1993). Efficient learning and planning within the
+Dyna framework. Adaptive Behavior, 1(4):437–454.
+Peng, J., Williams, R. J. (1994). Incremental multi-step Q-learning. In
+W. W. Cohen and H. Hirsh (eds.), Proceedings of the Eleventh International
+Conference on Machine Learning, pp. 226–232. Morgan Kaufmann, San
+Francisco.
+Peng, J., Williams, R. J. (1996). Incremental multi-step Q-learning. Machine
+Learning, 22:283–290.
+Phansalkar, V. V., Thathachar, M. A. L. (1995). Local and global optimization
+algorithms for generalized learning automata. Neural Computation, 7:950–
+973.
+Poggio, T., Girosi, F. (1989). A theory of networks for approximation and
+learning. A.I. Memo 1140. Artificial Intelligence Laboratory, Massachusetts
+Institute of Technology, Cambridge, MA.
+328 CHAPTER 15. PROSPECTS
+Poggio, T., Girosi, F. (1990). Regularization algorithms for learning that are
+equivalent to multilayer networks. Science, 247:978–982.
+Powell, M. J. D. (1987). Radial basis functions for multivariate interpolation: A review. In J. C. Mason and M. G. Cox (eds.), Algorithms for
+Approximation, pp. 143–167. Clarendon Press, Oxford.
+Powell, W. B. (2011). Approximate Dynamic Programming: Solving the Curses
+of Dimensionality, Second edition. John Wiley and Sons.
+Precup, D., Sutton, R. S., Dasgupta, S. (2001). Off-policy temporal-difference
+learning with function approximation. In Proceedings of the 18th International Conference on Machine Learning.
+Precup, D., Sutton, R. S., Singh, S. (2000). Eligibility traces for off-policy
+policy evaluation. In Proceedings of the 17th International Conference on
+Machine Learning, pp. 759–766. Morgan Kaufmann.
+Puterman, M. L. (1994). Markov Decision Problems. Wiley, New York.
+Puterman, M. L., Shin, M. C. (1978). Modified policy iteration algorithms
+for discounted Markov decision problems. Management Science, 24:1127–
+1137.
+Reetz, D. (1977). Approximate solutions of a discounted Markovian decision
+process. Bonner Mathematische Schriften, 98:77–92.
+Ring, M. B. (1994). Continual Learning in Reinforcement Environments.
+Ph.D. thesis, University of Texas, Austin.
+Rivest, R. L., Schapire, R. E. (1987). Diversity-based inference of finite
+automata. In Proceedings of the Twenty-Eighth Annual Symposium on
+Foundations of Computer Science, pp. 78–87. Computer Society Press of
+the IEEE, Washington, DC.
+Robbins, H. (1952). Some aspects of the sequential design of experiments.
+Bulletin of the American Mathematical Society, 58:527–535.
+Robertie, B. (1992). Carbon versus silicon: Matching wits with TD-Gammon.
+Inside Backgammon, 2:14–22.
+Rosenblatt, F. (1962). Principles of Neurodynamics: Perceptrons and the
+Theory of Brain Mechanisms. Spartan Books, Washington, DC.
+Ross, S. (1983). Introduction to Stochastic Dynamic Programming. Academic
+Press, New York.
+Rubinstein, R. Y. (1981). Simulation and the Monte Carlo Method. Wiley,
+New York.
+Rumelhart, D. E., Hinton, G. E., Williams, R. J. (1986). Learning internal
+15.5. OTHER FRONTIER DIMENSIONS 329
+representations by error propagation. In D. E. Rumelhart and J. L. Mc-
+Clelland (eds.), Parallel Distributed Processing: Explorations in the Microstructure of Cognition, vol. I, Foundations. Bradford/MIT Press, Cambridge, MA.
+Rummery, G. A. (1995). Problem Solving with Reinforcement Learning.
+Ph.D. thesis, Cambridge University.
+Rummery, G. A., Niranjan, M. (1994). On-line Q-learning using connectionist systems. Technical Report CUED/F-INFENG/TR 166. Engineering
+Department, Cambridge University.
+Russell, S., Norvig, P. (2009). Artificial Intelligence: A Modern Approach.
+Prentice-Hall, Englewood Cliffs, NJ.
+Rust, J. (1996). Numerical dynamic programming in economics. In H. Amman, D. Kendrick, and J. Rust (eds.), Handbook of Computational Economics, pp. 614–722. Elsevier, Amsterdam.
+Samuel, A. L. (1959). Some studies in machine learning using the game
+of checkers. IBM Journal on Research and Development, 3:211–229.
+Reprinted in E. A. Feigenbaum and J. Feldman (eds.), Computers and
+Thought, pp. 71–105. McGraw-Hill, New York, 1963.
+Samuel, A. L. (1967). Some studies in machine learning using the game of
+checkers. II—Recent progress. IBM Journal on Research and Development, 11:601–617.
+Schultz, D. G., Melsa, J. L. (1967). State Functions and Linear Control
+Systems. McGraw-Hill, New York.
+Schultz, W., Dayan, P., Montague, P. R. (1997). A neural substrate of prediction and reward. Science, 275:1593–1598.
+Schwartz, A. (1993). A reinforcement learning method for maximizing undiscounted rewards. In Proceedings of the Tenth International Conference on
+Machine Learning, pp. 298–305. Morgan Kaufmann, San Mateo, CA.
+Schweitzer, P. J., Seidmann, A. (1985). Generalized polynomial approximations in Markovian decision processes. Journal of Mathematical Analysis
+and Applications, 110:568–582.
+Selfridge, O. J., Sutton, R. S., Barto, A. G. (1985). Training and tracking in
+robotics. In A. Joshi (ed.), Proceedings of the Ninth International Joint
+Conference on Artificial Intelligence, pp. 670–672. Morgan Kaufmann, San
+Mateo, CA.
+Shannon, C. E. (1950). Programming a computer for playing chess. Philosophical Magazine, 41:256–275.
+330 CHAPTER 15. PROSPECTS
+Shelton, C. R. (2001). Importance Sampling for Reinforcement Learning with
+Multiple Objectives. PhD thesis, Massachusetts Institute of Technology.
+Shewchuk, J., Dean, T. (1990). Towards learning time-varying functions with
+high input dimensionality. In Proceedings of the Fifth IEEE International
+Symposium on Intelligent Control, pp. 383–388. IEEE Computer Society
+Press, Los Alamitos, CA.
+Si, J., Barto, A., Powell, W., Wunsch, D. (Eds.). (2004). Handbook of learning
+and approximate dynamic programming. John Wiley and Sons.
+Singh, S. P. (1992a). Reinforcement learning with a hierarchy of abstract
+models. In Proceedings of the Tenth National Conference on Artificial
+Intelligence, pp. 202–207. AAAI/MIT Press, Menlo Park, CA.
+Singh, S. P. (1992b). Scaling reinforcement learning algorithms by learning
+variable temporal resolution models. In Proceedings of the Ninth International Machine Learning Conference, pp. 406–415. Morgan Kaufmann,
+San Mateo, CA.
+Singh, S. P. (1993). Learning to Solve Markovian Decision Processes. Ph.D. thesis, University of Massachusetts, Amherst. Appeared as CMPSCI Technical Report 93-77.
+Singh, S. P., Bertsekas, D. (1997). Reinforcement learning for dynamic channel
+allocation in cellular telephone systems. In Advances in Neural Information
+Processing Systems: Proceedings of the 1996 Conference, pp. 974–980. MIT
+Press, Cambridge, MA.
+Singh, S. P., Jaakkola, T., Jordan, M. I. (1994). Learning without stateestimation in partially observable Markovian decision problems. In W. W. Cohen and H. Hirsch (eds.), Proceedings of the Eleventh International Conference on Machine Learning, pp. 284–292. Morgan Kaufmann, San Francisco.
+Singh, S. P., Jaakkola, T., Jordan, M. I. (1995). Reinforcement learing with
+soft state aggregation. In G. Tesauro, D. S. Touretzky, T. Leen (eds.),
+Advances in Neural Information Processing Systems: Proceedings of the
+1994 Conference, pp. 359–368. MIT Press, Cambridge, MA.
+Singh, S. P., Sutton, R. S. (1996). Reinforcement learning with replacing
+eligibility traces. Machine Learning, 22:123–158.
+Sivarajan, K. N., McEliece, R. J., Ketchum, J. W. (1990). Dynamic channel
+assignment in cellular radio. In Proceedings of the 40th Vehicular Technology Conference, pp. 631–637.
+Skinner, B. F. (1938). The Behavior of Organisms: An Experimental Analysis.
+15.5. OTHER FRONTIER DIMENSIONS 331
+Appleton-Century, New York.
+Sofge, D. A., White, D. A. (1992). Applied learning: Optimal control for
+manufacturing. In D. A. White and D. A. Sofge (eds.), Handbook of
+Intelligent Control: Neural, Fuzzy, and Adaptive Approaches, pp. 259–281.
+Van Nostrand Reinhold, New York.
+Spong, M. W. (1994). Swing up control of the acrobot. In Proceedings of the
+1994 IEEE Conference on Robotics and Automation, pp. 2356-2361. IEEE
+Computer Society Press, Los Alamitos, CA.
+Staddon, J. E. R. (1983). Adaptive Behavior and Learning. Cambridge
+University Press, Cambridge.
+Sutton, R. S. (1978a). Learning theory support for a single channel theory of
+the brain. Unpublished report.
+Sutton, R. S. (1978b). Single channel theory: A neuronal theory of learning. Brain Theory Newsletter, 4:72–75. Center for Systems Neuroscience,
+University of Massachusetts, Amherst, MA.
+Sutton, R. S. (1978c). A unified theory of expectation in classical and instrumental conditioning. Bachelors thesis, Stanford University.
+Sutton, R. S. (1984). Temporal Credit Assignment in Reinforcement Learning.
+Ph.D. thesis, University of Massachusetts, Amherst.
+Sutton, R. S. (1988). Learning to predict by the method of temporal differences. Machine Learning, 3:9–44.
+Sutton, R. S. (1990). Integrated architectures for learning, planning, and
+reacting based on approximating dynamic programming. In Proceedings
+of the Seventh International Conference on Machine Learning, pp. 216–
+224. Morgan Kaufmann, San Mateo, CA.
+Sutton, R. S. (1991a). Dyna, an integrated architecture for learning, planning,
+and reacting. SIGART Bulletin, 2:160–163. ACM Press.
+Sutton, R. S. (1991b). Planning by incremental dynamic programming. In
+L. A. Birnbaum and G. C. Collins (eds.), Proceedings of the Eighth International Workshop on Machine Learning, pp. 353–357. Morgan Kaufmann,
+San Mateo, CA.
+Sutton, R. S. (1995). TD models: Modeling the world at a mixture of time
+scales. In A. Prieditis and S. Russell (eds.), Proceedings of the Twelfth International Conference on Machine Learning, pp. 531–539. Morgan Kaufmann, San Francisco.
+Sutton, R. S. (1996). Generalization in reinforcement learning: Successful
+examples using sparse coarse coding. In D. S. Touretzky, M. C. Mozer
+332 CHAPTER 15. PROSPECTS
+and M. E. Hasselmo (eds.), Advances in Neural Information Processing
+Systems: Proceedings of the 1995 Conference, pp. 1038–1044. MIT Press,
+Cambridge, MA.
+Sutton, R. S. (ed.). (1992). Special issue of Machine Learning on reinforcement learning, 8. Also published as Reinforcement Learning. Kluwer
+Academic, Boston, 1992.
+Sutton, R. S., Barto, A. G. (1981a). Toward a modern theory of adaptive
+networks: Expectation and prediction. Psychological Review, 88:135–170.
+Sutton, R. S., Barto, A. G. (1981b). An adaptive network that constructs
+and uses an internal model of its world. Cognition and Brain Theory,
+3:217–246.
+Sutton, R. S., Barto, A. G. (1987). A temporal-difference model of classical conditioning. In Proceedings of the Ninth Annual Conference of the
+Cognitive Science Society, pp. 355-378. Erlbaum, Hillsdale, NJ.
+Sutton, R. S., Barto, A. G. (1990). Time-derivative models of Pavlovian
+reinforcement. In M. Gabriel and J. Moore (eds.), Learning and Computational Neuroscience: Foundations of Adaptive Networks, pp. 497–537.
+MIT Press, Cambridge, MA.
+Sutton, R. S., Mahmood, A. R., Precup, D., van Hasselt, H. (2014). A new
+Q(λ) with interim forward view and Monte Carlo equivalence. In Proceedings of the 31st International Conference on Machine Learning, Beijing,
+China.
+Sutton, R. S., Pinette, B. (1985). The learning of world models by connectionist networks. In Proceedings of the Seventh Annual Conference of the
+Cognitive Science Society, pp. 54–64.
+Sutton, R. S., Singh, S. (1994). On bias and step size in temporal-difference
+learning. In Proceedings of the Eighth Yale Workshop on Adaptive and
+Learning Systems, pp. 91–96. Center for Systems Science, Dunham Laboratory, Yale University, New Haven.
+Sutton, R. S., Whitehead, D. S. (1993). Online learning with random representations. In Proceedings of the Tenth International Machine Learning
+Conference, pp. 314–321. Morgan Kaufmann, San Mateo, CA.
+Szepesvri, C. (2010). Algorithms for reinforcement learning. Synthesis Lectures on Artificial Intelligence and Machine Learning 4(1), 1–103.
+Szita, I. (2012). Reinforcement learning in games. In Reinforcement Learning
+(pp. 539-577). Springer Berlin Heidelberg.
+Tadepalli, P., Ok, D. (1994). H-learning: A reinforcement learning method to
+15.5. OTHER FRONTIER DIMENSIONS 333
+optimize undiscounted average reward. Technical Report 94-30-01. Oregon
+State University, Computer Science Department, Corvallis.
+Tan, M. (1991). Learning a cost-sensitive internal representation for reinforcement learning. In L. A. Birnbaum and G. C. Collins (eds.), Proceedings
+of the Eighth International Workshop on Machine Learning, pp. 358–362.
+Morgan Kaufmann, San Mateo, CA.
+Tan, M. (1993). Multi-agent reinforcement learning: Independent vs. cooperative agents. In Proceedings of the Tenth International Conference on
+Machine Learning, pp. 330–337. Morgan Kaufmann, San Mateo, CA.
+Tesauro, G. J. (1986). Simple neural models of classical conditioning. Biological Cybernetics, 55:187–200.
+Tesauro, G. J. (1992). Practical issues in temporal difference learning. Machine Learning, 8:257–277.
+Tesauro, G. J. (1994). TD-Gammon, a self-teaching backgammon program,
+achieves master-level play. Neural Computation, 6(2):215–219.
+Tesauro, G. J. (1995). Temporal difference learning and TD-Gammon. Communications of the ACM, 38:58–68.
+Tesauro, G. J., Galperin, G. R. (1997). On-line policy improvement using
+Monte-Carlo search. In Advances in Neural Information Processing Systems: Proceedings of the 1996 Conference, pp. 1068–1074. MIT Press,
+Cambridge, MA.
+Tham, C. K. (1994). Modular On-Line Function Approximation for Scaling
+up Reinforcement Learning. PhD thesis, Cambridge University.
+Thathachar, M. A. L. and Sastry, P. S. (1985). A new approach to the design
+of reinforcement schemes for learning automata. IEEE Transactions on
+Systems, Man, and Cybernetics, 15:168–175.
+Thompson, W. R. (1933). On the likelihood that one unknown probability
+exceeds another in view of the evidence of two samples. Biometrika,
+25:285–294.
+Thompson, W. R. (1934). On the theory of apportionment. American Journal
+of Mathematics, 57:450–457.
+Thorndike, E. L. (1911). Animal Intelligence. Hafner, Darien, CT.
+Thorp, E. O. (1966). Beat the Dealer: A Winning Strategy for the Game of
+Twenty-One. Random House, New York.
+Tolman, E. C. (1932). Purposive Behavior in Animals and Men. Century,
+New York.
+334 CHAPTER 15. PROSPECTS
+Tsetlin, M. L. (1973). Automaton Theory and Modeling of Biological Systems.
+Academic Press, New York.
+Tsitsiklis, J. N. (1994). Asynchronous stochastic approximation and Qlearning. Machine Learning, 16:185–202.
+Tsitsiklis, J. N. (2002). On the convergence of optimistic policy iteration.
+Journal of Machine Learning Research, 3:59–72.
+Tsitsiklis, J. N. and Van Roy, B. (1996). Feature-based methods for large
+scale dynamic programming. Machine Learning, 22:59–94.
+Tsitsiklis, J. N., Van Roy, B. (1997). An analysis of temporal-difference
+learning with function approximation. IEEE Transactions on Automatic
+Control, 42:674–690.
+Tsitsiklis, J. N., Van Roy, B. (1999). Average cost temporal-difference learning. Automatica, 35:1799–1808. Also: Technical Report LIDS-P-2390.
+Laboratory for Information and Decision Systems, Massachusetts Institute
+of Technology, Cambridge, MA, 1997.
+Turing, A. M. (1950). Computing machinery and intelligence. Mind 433–460.
+Turing, A. M. (1948). Intelligent Machinery, A Heretical Theory. The Turing
+Test: Verbal Behavior as the Hallmark of Intelligence, 105.
+Ungar, L. H. (1990). A bioreactor benchmark for adaptive network-based
+process control. In W. T. Miller, R. S. Sutton, and P. J. Werbos (eds.),
+Neural Networks for Control, pp. 387–402. MIT Press, Cambridge, MA.
+Urbanowicz, R. J., Moore, J. H. (2009). Learning classifier systems: A complete introduction, review, and roadmap. Journal of Artificial Evolution
+and Applications.
+Waltz, M. D., Fu, K. S. (1965). A heuristic approach to reinforcement learning
+control systems. IEEE Transactions on Automatic Control, 10:390–398.
+Watkins, C. J. C. H. (1989). Learning from Delayed Rewards. Ph.D. thesis,
+Cambridge University.
+Watkins, C. J. C. H., Dayan, P. (1992). Q-learning. Machine Learning,
+8:279–292.
+Wiering, M., Van Otterlo, M. (2012). Reinforcement Learning. Springer Berlin
+Heidelberg.
+Werbos, P. J. (1977). Advanced forecasting methods for global crisis warning
+and models of intelligence. General Systems Yearbook, 22:25–38.
+Werbos, P. J. (1982). Applications of advances in nonlinear sensitivity analysis. In R. F. Drenick and F. Kozin (eds.), System Modeling and Optimiza-
+15.5. OTHER FRONTIER DIMENSIONS 335
+tion, pp. 762–770. Springer-Verlag, Berlin.
+Werbos, P. J. (1987). Building and understanding adaptive systems: A statistical/numerical approach to factory automation and brain research. IEEE
+Transactions on Systems, Man, and Cybernetics, 17:7–20.
+Werbos, P. J. (1988). Generalization of back propagation with applications to
+a recurrent gas market model. Neural Networks, 1:339–356.
+Werbos, P. J. (1989). Neural networks for control and system identification. In
+Proceedings of the 28th Conference on Decision and Control, pp. 260–265.
+IEEE Control Systems Society.
+Werbos, P. J. (1990). Consistency of HDP applied to a simple reinforcement
+learning problem. Neural Networks, 3:179–189.
+Werbos, P. J. (1992). Approximate dynamic programming for real-time control and neural modeling. In D. A. White and D. A. Sofge (eds.), Handbook
+of Intelligent Control: Neural, Fuzzy, and Adaptive Approaches, pp. 493–
+525. Van Nostrand Reinhold, New York.
+White, D. J. (1969). Dynamic Programming. Holden-Day, San Francisco.
+White, D. J. (1985). Real applications of Markov decision processes. Interfaces, 15:73–83.
+White, D. J. (1988). Further real applications of Markov decision processes.
+Interfaces, 18:55–61.
+White, D. J. (1993). A survey of applications of Markov decision processes.
+Journal of the Operational Research Society, 44:1073–1096.
+Whitehead, S. D., Ballard, D. H. (1991). Learning to perceive and act by trial
+and error. Machine Learning, 7:45–83.
+Whitt, W. (1978). Approximations of dynamic programs I. Mathematics of
+Operations Research, 3:231–243.
+Whittle, P. (1982). Optimization over Time, vol. 1. Wiley, New York.
+Whittle, P. (1983). Optimization over Time, vol. 2. Wiley, New York.
+Widrow, B., Gupta, N. K., Maitra, S. (1973). Punish/reward: Learning with
+a critic in adaptive threshold systems. IEEE Transactions on Systems,
+Man, and Cybernetics, 3:455–465.
+Widrow, B., Hoff, M. E. (1960). Adaptive switching circuits. In 1960
+WESCON Convention Record Part IV, pp. 96–104. Institute of Radio
+Engineers, New York. Reprinted in J. A. Anderson and E. Rosenfeld,
+Neurocomputing: Foundations of Research, pp. 126–134. MIT Press, Cambridge, MA, 1988.
+336 CHAPTER 15. PROSPECTS
+Widrow, B., Smith, F. W. (1964). Pattern-recognizing control systems. In
+J. T. Tou and R. H. Wilcox (eds.), Computer and Information Sciences,
+pp. 288–317. Spartan, Washington, DC.
+Widrow, B., Stearns, S. D. (1985). Adaptive Signal Processing. Prentice-Hall,
+Englewood Cliffs, NJ.
+Williams, R. J. (1986). Reinforcement learning in connectionist networks: A
+mathematical analysis. Technical Report ICS 8605. Institute for Cognitive
+Science, University of California at San Diego, La Jolla.
+Williams, R. J. (1987). Reinforcement-learning connectionist systems. Technical Report NU-CCS-87-3. College of Computer Science, Northeastern
+University, Boston.
+Williams, R. J. (1988). On the use of backpropagation in associative reinforcement learning. In Proceedings of the IEEE International Conference
+on Neural Networks, pp. I263–I270. IEEE San Diego section and IEEE
+TAB Neural Network Committee.
+Williams, R. J. (1992). Simple statistical gradient-following algorithms for
+connectionist reinforcement learning. Machine Learning, 8:229–256.
+Williams, R. J., Baird, L. C. (1990). A mathematical analysis of actor-critic
+architectures for learning optimal controls through incremental dynamic
+programming. In Proceedings of the Sixth Yale Workshop on Adaptive
+and Learning Systems, pp. 96–101. Center for Systems Science, Dunham
+Laboratory, Yale University, New Haven.
+Wilson, S. W. (1994). ZCS: A zeroth order classifier system. Evolutionary
+Computation, 2:1–18.
+Witten, I. H. (1976). The apparent conflict between estimation and control—
+A survey of the two-armed problem. Journal of the Franklin Institute,
+301:161–189.
+Witten, I. H. (1977). An adaptive optimal controller for discrete-time Markov
+environments. Information and Control, 34:286–295.
+Witten, I. H., Corbin, M. J. (1973). Human operators and automatic adaptive
+controllers: A comparative study on a particular control task. International Journal of Man–Machine Studies, 5:75–104.
+Woodworth, R. S., Schlosberg, H. (1938). Experimental psychology. New York:
+Henry Holt and Company.
+Yee, R. C., Saxena, S., Utgoff, P. E., Barto, A. G. (1990). Explaining temporal
+differences to create useful concepts for evaluating states. In Proceedings
+of the Eighth National Conference on Artificial Intelligence, pp. 882–888.
+15.5. OTHER FRONTIER DIMENSIONS 337
+AAAI Press, Menlo Park, CA.
+Young, P. (1984). Recursive Estimation and Time-Series Analysis. Springer-
+Verlag, Berlin.
+Zhang, M., Yum, T. P. (1989). Comparisons of channel-assignment strategies
+in cellular mobile telephone systems. IEEE Transactions on Vehicular
+Technology, 38:211-215.
+Zhang, W. (1996). Reinforcement Learning for Job-shop Scheduling. Ph.D.
+thesis, Oregon State University. Technical Report CS-96-30-1.
+Zhang, W., Dietterich, T. G. (1995). A reinforcement learning approach to
+job-shop scheduling. In Proceedings of the Fourteenth International Joint
+Conference on Artificial Intelligence, pp. 1114–1120. Morgan Kaufmann.
+Zhang, W., Dietterich, T. G. (1996). High-performance job-shop scheduling
+with a time–delay TD(λ) network. In D. S. Touretzky, M. C. Mozer,
+M. E. Hasselmo (eds.), Advances in Neural Information Processing Systems: Proceedings of the 1995 Conference, pp. 1024–1030. MIT Press,
+Cambridge, MA.
+Zweben, M., Daun, B., Deale, M. (1994). Scheduling and rescheduling with
+iterative repair. In M. Zweben and M. S. Fox (eds.), Intelligent Scheduling,
+pp. 241–255. Morgan Kaufmann, San Francisco.
+338 CHAPTER 15. PROSPECTS
+Index
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #architecture_and_books

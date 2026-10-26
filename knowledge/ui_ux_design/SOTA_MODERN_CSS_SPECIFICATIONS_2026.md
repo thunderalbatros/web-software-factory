@@ -1,4 +1,7 @@
-﻿# SOTA: Modern CSS Specifications & Web Platform Baseline (2025/2026)
+# SOTA: Modern CSS Specifications & Web Platform Baseline (2025/2026)
+
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Web Software Factory.
+
 > **Source:** W3C CSS Working Group, Google Chrome Devs, web.dev Baseline 2025/2026  
 > **Category:** Web Platform Architecture, Modern CSS & Next-Gen Frontend  
 > **Target Audience:** WebFactory Frontend Engineers & Design System Architects  

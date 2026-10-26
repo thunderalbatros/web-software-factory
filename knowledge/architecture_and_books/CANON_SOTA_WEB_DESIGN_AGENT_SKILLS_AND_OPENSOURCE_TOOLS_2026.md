@@ -1,4 +1,6 @@
-﻿# CANON: SOTA Web Design, Agent Skills & Open-Source Tooling (Q3/Q4 2026)
+# CANON: SOTA Web Design, Agent Skills & Open-Source Tooling (Q3/Q4 2026)
+
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
 
 > **Canon Authority:** WebFactory Agency R&D & Tech Scouting Division  
 > **Date:** October 2026  

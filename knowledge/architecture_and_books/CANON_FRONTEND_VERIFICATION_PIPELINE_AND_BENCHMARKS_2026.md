@@ -1,4 +1,4 @@
-﻿# Tratado Canónico: Frontend Verification Pipeline, Visual Snapshot Regression & SOTA Benchmarks (2025–2026)
+# Tratado Canónico: Frontend Verification Pipeline, Visual Snapshot Regression & SOTA Benchmarks (2025–2026)
 
 **Alcance:** Este documento establece la arquitectura canónica del **Pipeline de Verificación Frontend Automatizado**, **Regresión Visual de Píxeles (Playwright + Pixelmatch)**, **Compuertas de Fusión Calificadas para Producción (PQC — Production-Qualified Change Merge Gates)** y el estado del arte de los **Benchmarks Agénticos Frontend (Design2Code, Design Arena, SWE-bench Multimodal, WebArena)** para la Software Factory de Web Software Factory Studio. NO es fuente de tokens de diseño CSS (ver `site/css/design-tokens.css` y `DESIGN_MASTERY_2026.md`), NI de orquestación RAG (ver `CANON_SELF_EVOLVING_SOFTWARE_FACTORY_AND_SPECULATIVE_RAG_2026.md`), NI de matemáticas de azar (ver `CANON_PROVABLY_FAIR_GAMES_2026.md`).
 

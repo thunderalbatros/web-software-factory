@@ -1,8 +1,10 @@
-﻿# CANON: Everything Claude Code (ECC) — Autonomous Agent Harness & Continuous Learning Architecture (2026)
+# CANON: Everything Claude Code (ECC) — Autonomous Agent Harness & Continuous Learning Architecture (2026)
+
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
 
 > **Origin:** `affaan-m/ECC` (Everything Claude Code) by Affaan Mustafa  
 > **Adaptation:** Web Software Factory Studio Engineering Suite & Google Antigravity IDE  
-> **Status:** Canonical Knowledge Base Document (Ingested for Centinela RAG & Multi-Agent Swarm)  
+> **Status:** Canonical Knowledge Base Document (Ingested for Web Software Factory RAG & Multi-Agent Swarm)  
 > **Classification:** Software Engineering / Autonomous Agent Harnesses / Operational Discipline  
 
 ---
@@ -158,7 +160,7 @@ For live stream casino, predictions, and engagement suites, ECC provides the `pr
 | **Test Suites** | 100% Green | 12/12 test suites passing cleanly |
 
 ---
-*Ingested into Centinela RAG. Verified: October 17, 2026.*
+*Ingested into Web Software Factory RAG. Verified: October 17, 2026.*
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #architecture_and_books

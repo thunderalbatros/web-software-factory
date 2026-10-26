@@ -1,4 +1,4 @@
-﻿# 📚 Libro Completo: Atomic Design (Edición Español)
+# 📚 Libro Completo: Atomic Design (Edición Español)
 
 **Alcance:** Fuente bibliográfica completa sobre Metodología Atomic Design: Átomos, Moléculas, Organismos, Plantillas y Páginas para Sistemas de Diseño Web (Atomic Design (Edición Español) — Brad Frost). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
@@ -7,22 +7,16 @@
 > **Archivo Fuente:** `Atomic-Design-Brad-Frost-Spanish.pdf`  
 > **Páginas Originales:** 178  
 > **Secciones Extraídas:** 89  
-> **Fecha de Ingesta:** 2026-10-19  
+> **Fecha de Ingesta:** 2026-10-19
 
 ---
 
-## Sección 1: Foundations & Introduction
+## Sección 1: Foundations & Introduction [Entropy: 0.31]
 
 Diseño atómico
 Brad Frost
-
--- 1 of 178 --
-
 Diseño atómico
 Brad Frost
-
--- 2 of 178 --
-
 Tabla de contenido
 1. Diseño de sistemas Crea sistemas de diseño, no páginas 8
 2. Metodología de diseño atómico Átomos, moléculas, organismos, plantillas y
@@ -36,9 +30,6 @@ Gracias y agradecimientos
 Recursos
 184
 Sobre el Autor 191
-
--- 3 of 178 --
-
 Copyright © 2016 Brad Frost Todos los derechos reservados
 Editorial: Brad Frost
 Redactor: Owen Gregory
@@ -46,9 +37,6 @@ Diseñador de libros impresos: Rachel Arnold Sager
 Diseñador de libros electrónicos: Rachel Andrew
 ISBN: 978-0-9982966-0-9
 Creado con orgullo en Pittsburgh, Pensilvania
-
--- 4 of 178 --
-
 6 DISEÑO ATÓMICO
 Prefacio
 Era 2013 y nos acurrucamos con Brad Frost y Jennifer Brook alrededor de una mesa de
@@ -85,9 +73,6 @@ el momento en que nos dimos cuenta de lo rápido que íbamos a poder
 movernos, un caso poderoso para invertir en este enfoque modular inteligente.
 Casi cuatro años después, no hemos mirado atrás. Brad continuó
 refinando sus técnicas y herramientas en los proyectos que siguieron,
-
--- 5 of 178 --
-
 ADELANTE 7
 incluyendo sitios de gran éxito para Entertainment Weekly y Time, Inc. Hemos
 utilizado estas lecciones para ayudar a los equipos de productos internos a hacer
@@ -121,9 +106,6 @@ práctica de diseño; y estamos emocionados de que también traiga la misma
 combustión creativa a su proceso.
 - Josh Clark y Dan Mall , Colaboradores frecuentes de Brad y sus mayores
 admiradores
-
--- 6 of 178 --
-
 8 DISEÑO ATÓMICO
 7 http://www.uie.com/articles/magic_escalator/
 8 http://en.wikipedia.org/wiki/Scrum_%28software_development%29
@@ -133,9 +115,7 @@ Sistemas
 
 ---
 
-## Sección 2: CAPÍTULO 1 / DISEÑO DE SISTEMAS 9
-
--- 7 of 178 --
+## Sección 2: CAPÍTULO 1 / DISEÑO DE SISTEMAS 9 [Entropy: 0.25]
 
 Hace mucho, mucho tiempo, existían estas cosas llamadas
 libros.
@@ -170,9 +150,6 @@ familiar con el que navegar por esta nueva y valiente World Wide Web. Conceptos 
 los marcadores y la paginación ayudaron a los nuevos usuarios de la web a explorar y
 eventualmente dominar un medio completamente nuevo usando convenciones con las
 que ya se sentían cómodos.
-
--- 8 of 178 --
-
 10 DISEÑO ATÓMICO
 La página fue, y sigue siendo, una metáfora muy visible y útil para los
 usuarios de la web. También tiene una profunda influencia en cómo se
@@ -197,11 +174,9 @@ contiene más de 30.000
 páginas? "
 El navegador Chrome muestra el mensaje "Esta página web no está disponible".
 
--- 9 of 178 --
-
 ---
 
-## Sección 3: CAPÍTULO 1 / DISEÑO DE SISTEMAS 11
+## Sección 3: CAPÍTULO 1 / DISEÑO DE SISTEMAS 11 [Entropy: 0.28]
 
 Todas las afirmaciones anteriores cometen el error fundamental de
 asumir que una página es algo uniforme, aislado y cuantificable. La
@@ -237,9 +212,6 @@ exitosas: modularidad.
 La modularidad es mucho más antigua que la web. La Revolución
 Industrial trajo consigo piezas intercambiables y la línea de montaje de
 Henry Ford transformó para siempre la fabricación de automóviles.
-
--- 10 of 178 --
-
 12 DISEÑO ATÓMICO
 proceso. Los primeros automóviles y componentes se fabricaron
 individualmente, lo que provocó muchas pesadillas de seguridad y
@@ -275,11 +247,9 @@ avalancha de dispositivos de hoy ya los está llevando al límite. No
 pueden soportar lo que se avecina.
 - El manifiesto favorable al futuro
 
--- 11 of 178 --
-
 ---
 
-## Sección 4: CAPÍTULO 1 / DISEÑO DE SISTEMAS 13
+## Sección 4: CAPÍTULO 1 / DISEÑO DE SISTEMAS 13 [Entropy: 0.25]
 
 Nos guste o no, este universo multidispositivo es nuestra realidad. Ya era bastante difícil lograr que
 nuestras páginas web se mostraran de manera consistente en un puñado de navegadores de escritorio,
@@ -298,9 +268,6 @@ Todas las organizaciones finalmente se están dando cuenta de que
 arrasar todo su sitio web y reemplazarlo con un sitio web New-And-Shiny
 ™ cada tres a ocho años no es (y nunca fue) una solución óptima.
 Estos son solo algunos de los dispositivos conectados de los que debemos preocuparnos.
-
--- 12 of 178 --
-
 14 DISEÑO ATÓMICO
 ¡Afuera con lo viejo! ¡Entra con lo nuevo! Sin duda, es una perspectiva atractiva.
 Pero incluso antes de que se levante el confeti de la fiesta de lanzamiento,
@@ -340,11 +307,9 @@ Capital-A Agile es una metodología específica para el desarrollo de
 software, equipada con un manifiesto y marcos de acompañamiento como Melé
 y Inclinarse .
 
--- 13 of 178 --
-
 ---
 
-## Sección 5: CAPÍTULO 1 / DISEÑO DE SISTEMAS 15
+## Sección 5: CAPÍTULO 1 / DISEÑO DE SISTEMAS 15 [Entropy: 0.295]
 
 Minúsculas: ágil es más un deseo informal de crear un proceso eficiente.
 Este deseo ciertamente puede implicar la adopción de
@@ -377,9 +342,6 @@ de automóviles y más.
 Para abordar adecuadamente este panorama digital cada vez más diverso y
 ecléctico, debemos revisar drásticamente nuestra percepción del contenido y las
 herramientas que utilizamos para administrarlo.
-
--- 14 of 178 --
-
 dieciséis DISEÑO ATÓMICO
 En el futuro, lo que creo es que vamos a tener una mejor gestión de
 contenido y herramientas de publicación de contenido. Tendremos
@@ -415,11 +377,9 @@ otros aspectos de la web, incluido CSS, el lenguaje de estilo de la web.
 Metodologías como OOCSS , SMACSS , y BEM han surgido para ayudar a los
 diseñadores web a crear y mantener arquitecturas CSS modulares.
 
--- 15 of 178 --
-
 ---
 
-## Sección 6: CAPÍTULO 1 / DISEÑO DE SISTEMAS 17
+## Sección 6: CAPÍTULO 1 / DISEÑO DE SISTEMAS 17 [Entropy: 0.265]
 
 Reparado visualmente
 La modularidad no solo se está infiltrando en el lado del código del estilo en la web, sino
@@ -452,9 +412,6 @@ bonito paginador encapsulado. El diseñador Dan Mall se basó en la idea de
 Samantha con un concepto llamado collages de elementos , que demuestran
 exploraciones de la atmósfera de diseño en un collage ampliado de elementos de
 interfaz.
-
--- 16 of 178 --
-
 18 DISEÑO ATÓMICO
 Al dividir las exploraciones visuales en partes más pequeñas, los diseñadores ahorran
 tiempo y esfuerzo al tiempo que evitan presentar diseños prematuros e irreales a los
@@ -465,7 +422,7 @@ con los objetivos del proyecto. Discutiremos estos conceptos con más detalle en
 
 ---
 
-## Sección 7: capítulo 4, pero basta con decir que el flujo de trabajo de diseño visual está
+## Sección 7: capítulo 4, pero basta con decir que el flujo de trabajo de diseño visual está [Entropy: 0.265]
 
 cambiando a lo grande.
 Diseño de interfaz de usuario sistemático
@@ -484,11 +441,9 @@ base muy necesaria para que los diseñadores creen diseños flexibles.
 Los mosaicos de estilo, un concepto creado por la diseñadora Samantha Warren, permiten a los
 diseñadores explorar el color, la tipografía y la textura sin tener que desarrollar composiciones completamente realizadas.
 
--- 17 of 178 --
-
 ---
 
-## Sección 8: CAPÍTULO 1 / DISEÑO DE SISTEMAS 19
+## Sección 8: CAPÍTULO 1 / DISEÑO DE SISTEMAS 19 [Entropy: 0.25]
 
 que se adaptan inteligentemente a cualquier tamaño de pantalla. Quizás lo más
 importante es que el diseño receptivo ayudó a que los diseñadores se entusiasmaran con
@@ -521,9 +476,6 @@ preensamblados, estilos CSS y JavaScript para agregar funcionalidad a
 componentes interactivos como menús desplegables y carruseles. En
 esencia, estos marcos son prácticos kits de herramientas para ensamblar
 interfaces rápidamente.
-
--- 18 of 178 --
-
 20 DISEÑO ATÓMICO
 Y vaya, estas cosas son populares. Mientras escribo esto, Bootstrap es el repositorio
 más popular en el sitio de intercambio de código. GitHub , con más de 77.000 estrellas y
@@ -544,11 +496,9 @@ proyectos adicionales, lo que les brinda más estabilidad financiera para el añ
 las startups, un lugar donde Bootstrap está
 Bootstrap proporciona una colección de componentes de UI para acelerar el desarrollo.
 
--- 19 of 178 --
-
 ---
 
-## Sección 9: CAPÍTULO 1 / DISEÑO DE SISTEMAS 21
+## Sección 9: CAPÍTULO 1 / DISEÑO DE SISTEMAS 21 [Entropy: 0.25]
 
 omnipresente: los productos mínimos viables pueden lanzarse antes, lo que lleva a
 respuestas más rápidas con respecto a la viabilidad de los productos.
@@ -574,9 +524,6 @@ manera. "¿Por qué no todos los navegadores simplemente se estandarizan en WebK
 pantalla?" "¡Utilice siempre jQuery!" "¡Nunca uses jQuery!" "¡Solo usa frameworks!"
 "¡Nunca uses frameworks!"
 En el futuro, todos se visten igual. Crédito de la ilustración: Melissa Frost.
-
--- 20 of 178 --
-
 22 DISEÑO ATÓMICO
 Al igual que en el mundo real, las diversas necesidades, objetivos y deseos de los
 proyectos web conducen a una miríada de soluciones diferentes. Por supuesto, hay un
@@ -615,11 +562,9 @@ forma en que las convenciones de nomenclatura de un marco concuerdan con
 una base de código y un flujo de trabajo existentes debe discutirse
 adecuadamente antes de abordar el tren del marco.
 
--- 21 of 178 --
-
 ---
 
-## Sección 10: CAPÍTULO 1 / DISEÑO DE SISTEMAS 23
+## Sección 10: CAPÍTULO 1 / DISEÑO DE SISTEMAS 23 [Entropy: 0.265]
 
 Ahora que hemos superado los marcos, es importante dar un paso atrás y
 reconocer que, conceptualmente, estos marcos son muy acertados. Es una
@@ -651,9 +596,6 @@ diseño y patrones de interfaz de usuario. Este libro no detallará todas las
 categorías de guías de estilo, pero es importante echar un vistazo a cada una
 para comprender mejor cómo cada guía de estilo influye en las demás y cómo las
 guías de estilo para la web encajan en un ecosistema más amplio.
-
--- 22 of 178 --
-
 24 DISEÑO ATÓMICO
 Identidad de la marca
 Las pautas de identidad de marca definen los activos y materiales que hacen que
@@ -673,11 +615,9 @@ de tapa dura (recuerde, ¿esas cosas con las páginas?), Pero como con todo lo
 demás, las guías de estilo de marca se abren camino en línea.
 Guía de estilo de marca de la Universidad de West Virginia.
 
--- 23 of 178 --
-
 ---
 
-## Sección 11: CAPÍTULO 1 / DISEÑO DE SISTEMAS 25
+## Sección 11: CAPÍTULO 1 / DISEÑO DE SISTEMAS 25 [Entropy: 0.265]
 
 Lenguaje de diseño
 Si bien las pautas de identidad de marca son bastante táctiles, las pautas del lenguaje de
@@ -697,9 +637,6 @@ marca. Por ejemplo, es probable que algún día Google desarrolle un nuevo lengu
 para reemplazar el diseño de materiales, por lo que mientras la marca general de Google
 permanecerá intacta, el vocabulario de diseño en torno a sus productos cambiará.
 Lenguaje de diseño de materiales de Google.
-
--- 24 of 178 --
-
 26 DISEÑO ATÓMICO
 Voz y tono
 Las personas interactúan con las marcas a través de una gran variedad de canales y
@@ -721,11 +658,9 @@ tono de la empresa deben cambiar en una variedad de escenarios. Las
 brillantes pautas de voz y tono de MailChimp definir
 Pautas de voz y tono de MailChimp
 
--- 25 of 178 --
-
 ---
 
-## Sección 12: CAPÍTULO 1 / DISEÑO DE SISTEMAS 27
+## Sección 12: CAPÍTULO 1 / DISEÑO DE SISTEMAS 27 [Entropy: 0.25]
 
 cómo cambia el tono de la marca según los tipos de contenido, de modo que cuando se
 rechaza la tarjeta de crédito de un usuario, los escritores saben que deben alejarse de
@@ -742,9 +677,6 @@ torno a la puntuación y la gramática, pero no siempre tienen que ser tan detal
 estilo de escritura de la Universidad de Dalhousie proporciona una lista concisa de principios y
 mejores prácticas que deben seguir los contribuyentes de contenido.
 La guía de estilo de escritura de The Economist.
-
--- 26 of 178 --
-
 28 DISEÑO ATÓMICO
 Guías de estilo de código
 Es esencial que los equipos escriban código legible, escalable y fácil de mantener.
@@ -758,11 +690,9 @@ inconsistente.
 La guía de estilo de código de GitHub proporciona las mejores prácticas para escribir HTML, CSS, JavaScript y
 Ruby dentro de su organización.
 
--- 27 of 178 --
-
 ---
 
-## Sección 13: CAPÍTULO 1 / DISEÑO DE SISTEMAS 29
+## Sección 13: CAPÍTULO 1 / DISEÑO DE SISTEMAS 29 [Entropy: 0.25]
 
 Bibliotecas de patrones
 Y ahora para el evento principal. Las bibliotecas de patrones, también conocidas como guías
@@ -782,9 +712,6 @@ tanto desde el punto de vista del diseño y desarrollo como desde la perspectiva
 organizacional. He aquí por qué las guías de estilo son ahora herramientas
 esenciales para el diseño y desarrollo web moderno.
 Código para la biblioteca de patrones de Estados Unidos
-
--- 28 of 178 --
-
 30 DISEÑO ATÓMICO
 Constantemente asombroso
 Las guías de estilo web promueven la coherencia y la cohesión a través de una
@@ -820,11 +747,9 @@ se produzca una verdadera colaboración, es fundamental que los equipos hablen u
 idioma común. Las guías de estilo están ahí para ayudar a establecer ese vocabulario
 compartido.
 
--- 29 of 178 --
-
 ---
 
-## Sección 14: CAPÍTULO 1 / DISEÑO DE SISTEMAS 31
+## Sección 14: CAPÍTULO 1 / DISEÑO DE SISTEMAS 31 [Entropy: 0.265]
 
 Las guías de estilo establecen un vocabulario coherente y compartido entre
 todos los involucrados en un proyecto, Fomentar la colaboración entre
@@ -853,9 +778,6 @@ especiales pueden apreciar mejor la coherencia y comprender por qué sus
 solicitudes de diseños personalizados reciben rechazo.
 Dar nombres a patrones como 'Blocks Three-Up' en la guía de estilo de Starbucks ayuda a los miembros del
 equipo a hablar el mismo idioma.
-
--- 30 of 178 --
-
 32 DISEÑO ATÓMICO
 Un flujo de trabajo empático
 La educación no solo es importante para los clientes y las partes interesadas. Una buena guía
@@ -888,11 +810,9 @@ recompensas de velocidad que los kits de herramientas de interfaz de usuario lis
 Es cierto que diseñar un sistema de diseño de interfaz y crear una biblioteca de
 patrones personalizados inicialmente requiere mucho tiempo, pensamiento y
 
--- 31 of 178 --
-
 ---
 
-## Sección 15: CAPÍTULO 1 / DISEÑO DE SISTEMAS 33
+## Sección 15: CAPÍTULO 1 / DISEÑO DE SISTEMAS 33 [Entropy: 0.28]
 
 esfuerzo. Pero una vez que se establece la biblioteca de patrones, el diseño y el
 desarrollo posteriores se vuelven mucho más rápidos, lo que tiende a hacer
@@ -926,9 +846,6 @@ otros patrones de interfaz comunes, por lo que no es necesario tirar al bebé co
 agua de la bañera. Una guía de estilo proporciona una base sólida como una roca
 para todo el trabajo futuro, incluso si ese trabajo futuro puede parecer totalmente
 diferente.
-
--- 32 of 178 --
-
 34 DISEÑO ATÓMICO
 Desafíos de la guía de estilo
 A estas alturas, los beneficios de crear sistemas de diseño deberían ser muy
@@ -958,11 +875,9 @@ los cronogramas agresivos y los presupuestos finitos restan valor al esfuerzo
 requerido para hacer que las guías de estilo sucedan, incluso cuando los equipos
 están comprometidos con la causa.
 
--- 33 of 178 --
-
 ---
 
-## Sección 16: CAPÍTULO 1 / DISEÑO DE SISTEMAS 35
+## Sección 16: CAPÍTULO 1 / DISEÑO DE SISTEMAS 35 [Entropy: 0.25]
 
 Proyectos auxiliares
 Las bibliotecas de patrones a menudo se tratan como proyectos auxiliares, en
@@ -999,9 +914,6 @@ fomentar una cultura de colaboración.
 Sin pensar en un público más amplio, las guías de estilo pueden parecer
 demasiado vagas o demasiado técnicas, lo que puede intimidar a otras
 disciplinas y hacerlas creer que estos recursos no son para ellos.
-
--- 34 of 178 --
-
 36 DISEÑO ATÓMICO
 Estructura de la guía de estilo
 Para que las guías de estilo sean recursos útiles para todos en una
@@ -1021,11 +933,9 @@ a control de calidad y probarse si se hicieran cambios.
 La página de inicio de la guía de estilo de Yelp tiene un diseño atractivo y un texto de introducción
 importante que explica el propósito y la audiencia de la guía.
 
--- 35 of 178 --
-
 ---
 
-## Sección 17: CAPÍTULO 1 / DISEÑO DE SISTEMAS 37
+## Sección 17: CAPÍTULO 1 / DISEÑO DE SISTEMAS 37 [Entropy: 0.25]
 
 Falta una metodología clara
 Por mucho que adoro las bibliotecas de patrones allí afuera , No puedo evitar
@@ -1045,9 +955,6 @@ aumentando a un ritmo asombroso, la necesidad de crear sistemas de diseño
 de interfaz reflexivos y deliberados se está volviendo más evidente que nunca.
 Ingrese al diseño atómico.
 El 'Bloque de resaltado' parece útil, pero ¿dónde se usa este patrón?
-
--- 36 of 178 --
-
 38 DISEÑO ATÓMICO
 7 http://www.uie.com/articles/magic_escalator/
 8 http://en.wikipedia.org/wiki/Scrum_%28software_development%29
@@ -1058,9 +965,7 @@ Metodología
 
 ---
 
-## Sección 18: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 39
-
--- 37 of 178 --
+## Sección 18: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 39 [Entropy: 0.25]
 
 Mi búsqueda de una metodología para crear sistemas de diseño de interfaces me
 llevó a buscar inspiración en otros campos e industrias. Dado este mundo
@@ -1082,9 +987,6 @@ Si eres como yo, es posible que necesites un repaso para recordar cómo se
 ve una ecuación química, así que aquí tienes:
 Un ejemplo de una ecuación química que muestra la combinación de átomos de hidrógeno y oxígeno para
 formar una molécula de agua.
-
--- 38 of 178 --
-
 40 DISEÑO ATÓMICO
 Las reacciones químicas se representan mediante ecuaciones químicas, que a
 menudo muestran cómo los elementos atómicos se combinan para formar
@@ -1115,9 +1017,6 @@ dividir en un conjunto finito de elementos atómicos:
 ɕ
 ɕ
 La tabla periódica de elementos químicos.
-
--- 39 of 178 --
-
 Aparentemente, la estrategia del Sr. Rae de hacer que los estudiantes equilibren de
 manera aturdidora toneladas de ecuaciones químicas funcionó, porque volveré a ella
 todos estos años después en busca de inspiración sobre cómo abordar el diseño de
@@ -1136,12 +1035,9 @@ están compuestos por los mismos elementos HTML.
 
 ---
 
-## Sección 19: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 41
+## Sección 19: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 41 [Entropy: 0.25]
 
 La tabla periódica de elementos HTML de Josh Duck.
-
--- 40 of 178 --
-
 42 DISEÑO ATÓMICO
 Debido a que comenzamos con un conjunto finito similar de bloques de construcción,
 podemos aplicar el mismo proceso que ocurre en el mundo natural para diseñar y
@@ -1165,11 +1061,9 @@ sumergirnos en cada etapa con un poco más de detalle.
 El diseño atómico consiste en átomos, moléculas, organismos, plantillas y páginas que trabajan conjuntamente
 para crear sistemas de diseño de interfaces eficaces.
 
--- 41 of 178 --
-
 ---
 
-## Sección 20: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 43
+## Sección 20: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 43 [Entropy: 0.25]
 
 Átomos
 Si los átomos son los bloques de construcción básicos de la materia, entonces el Los
@@ -1186,9 +1080,6 @@ gas helio inerte). En el mismo
 42 https://developer.mozilla.org/en-US/docs/Web/HTML/Element
 Los átomos incluyen etiquetas HTML
 básicas como entradas, etiquetas y botones.
-
--- 42 of 178 --
-
 44 DISEÑO ATÓMICO
 De esta manera, cada átomo de interfaz tiene sus propias propiedades únicas, como
 las dimensiones de una imagen principal o el tamaño de fuente de un encabezado
@@ -1208,9 +1099,6 @@ atómicos (hidrógeno y oxígeno).
 En interfaces, Las moléculas son grupos relativamente simples de elementos UI que
 funcionan juntos como una unidad. Por ejemplo, una etiqueta de formulario, una entrada
 de búsqueda y un botón pueden unirse para crear una molécula de formulario de búsqueda.
-
--- 43 of 178 --
-
 Cuando se combinan, estos átomos abstractos de repente tienen un propósito. La
 etiqueta átomo ahora define el átomo de entrada. Al hacer clic en el botón atom
 ahora se envía el formulario. El resultado es un componente simple, portátil y
@@ -1234,9 +1122,7 @@ de etiqueta, un átomo de entrada y un átomo de botón.
 
 ---
 
-## Sección 21: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 45
-
--- 44 of 178 --
+## Sección 21: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 45 [Entropy: 0.25]
 
 46 DISEÑO ATÓMICO
 Organismos
@@ -1255,15 +1141,12 @@ navegación principal y un formulario de búsqueda. Vemos este tipo de organismo
 todos los sitios web que visitamos.
 Este organismo encabezado está compuesto por una molécula de formulario de búsqueda, un
 átomo de logotipo y una molécula de navegación primaria.
-
--- 45 of 178 --
-
 Los organismos como los encabezados de sitios web consisten en moléculas más pequeñas como navegación
 principal, formularios de búsqueda, navegación de utilidades y logotipos.
 
 ---
 
-## Sección 22: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 47
+## Sección 22: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 47 [Entropy: 0.25]
 
 Mientras que algunos organismos pueden constar de diferentes tipos de
 moléculas, otros organismos pueden constar de la misma molécula repetida una
@@ -1280,16 +1163,10 @@ productos relacionados.
 Ahora que tenemos organismos definidos en nuestro sistema de diseño,
 podemos romper nuestra analogía química y aplicar todos estos componentes
 a algo que se parezca a una página web.
-
--- 46 of 178 --
-
 48 DISEÑO ATÓMICO
 Plantillas
 Un organismo de cuadrícula de productos en el sitio web de comercio electrónico de Gap consiste en la misma
 molécula de artículo de producto repetida una y otra vez.
-
--- 47 of 178 --
-
 Ahora, amigos, es hora de decirle adiós a nuestra analogía química. El lenguaje
 de los átomos, moléculas y organismos conlleva una jerarquía útil para que
 construyamos deliberadamente los componentes de nuestros sistemas de
@@ -1310,12 +1187,9 @@ funcionan juntos en el contexto de un diseño para
 
 ---
 
-## Sección 23: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 49
+## Sección 23: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 49 [Entropy: 0.265]
 
 La plantilla de la página de inicio consta de organismos y moléculas aplicados a un diseño.
-
--- 48 of 178 --
-
 50 DISEÑO ATÓMICO
 Demuestre que las partes se suman a un todo que funciona bien. Discutiremos esto más en un
 momento.
@@ -1337,20 +1211,14 @@ necesarias para los tipos de contenido que pueblan ciertos patrones de diseño. 
 plantilla de la página de inicio de Time Inc. muestra algunos componentes clave en acción al
 mismo tiempo que demuestra la estructura del contenido con respecto al tamaño de las
 imágenes y la longitud de los caracteres:
-
--- 49 of 178 --
-
 La plantilla de la página de inicio de Time Inc. demuestra la estructura subyacente del contenido.
 
 ---
 
-## Sección 24: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 51
+## Sección 24: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 51 [Entropy: 0.25]
 
 Ahora que hemos establecido el sistema esquelético de nuestras páginas, ¡pongamos un
 poco de carne en los huesos!
-
--- 50 of 178 --
-
 52 DISEÑO ATÓMICO
 Paginas
 Las páginas son instancias específicas de plantillas que muestran cómo se ve una
@@ -1365,11 +1233,9 @@ Esto es lo que sus partes interesadas firmarán. Y aquí es donde ve todos
 esos componentes que se unen para formar una interfaz de usuario
 hermosa y funcional. ¡Emocionante!
 
--- 51 of 178 --
-
 ---
 
-## Sección 25: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 53
+## Sección 25: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 53 [Entropy: 0.25]
 
 Además de demostrar la interfaz final como la verán sus usuarios, Las
 páginas son esenciales para probar la eficacia del sistema de diseño
@@ -1383,9 +1249,6 @@ inicio de Time Inc., podemos ver cómo se mantienen todos esos patrones de
 diseño subyacentes.
 La etapa de la página reemplaza el contenido del marcador de posición con contenido representativo real para
 dar vida al sistema de diseño.
-
--- 52 of 178 --
-
 54 DISEÑO ATÓMICO
 En la etapa de la página, podemos ver cómo se ve la página de inicio de Time Inc. con contenido representativo
 real en su lugar. Con el contenido real en su lugar, podemos ver si los componentes de la interfaz de usuario
@@ -1394,11 +1257,9 @@ Debemos crear sistemas que establezcan patrones de diseño reutilizables y que
 también reflejen con precisión la realidad del contenido que colocamos dentro de
 esos patrones.
 
--- 53 of 178 --
-
 ---
 
-## Sección 26: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 55
+## Sección 26: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 55 [Entropy: 0.265]
 
 Las páginas también proporcionan un lugar para articular variaciones en las plantillas,
 lo cual es crucial para establecer sistemas de diseño robustos y confiables. A
@@ -1440,9 +1301,6 @@ diseño.
 ɕ
 ɕ
 ɕ
-
--- 54 of 178 --
-
 56 DISEÑO ATÓMICO
 Ventajas del diseño atómico
 Entonces, ¿por qué pasar por todo este rigamarole? ¿Para qué sirve el diseño atómico?
@@ -1468,11 +1326,9 @@ retroalimentación estrecho entre marcar y evaluar.
 - Frank Chimero
 El diseño atómico permite a los diseñadores atravesar lo abstracto y lo concreto.
 
--- 55 of 178 --
-
 ---
 
-## Sección 27: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 57
+## Sección 27: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 57 [Entropy: 0.265]
 
 El diseño atómico nos permite bailar entre contextos como el pintor Frank
 describe tan elocuentemente. Los átomos, moléculas y organismos que
@@ -1510,9 +1366,6 @@ El contenido debe estar estructurado y la estructuración altera su
 contenido, el diseño altera el contenido. No es "contenido y luego
 diseño", o "contenido o diseño". Es 'contenido y diseño'.
 - Mark Boulton
-
--- 56 of 178 --
-
 58 DISEÑO ATÓMICO
 Un sistema de diseño bien elaborado se adapta al contenido que vive dentro de él,
 y el contenido bien elaborado es consciente de cómo se presenta en el contexto
@@ -1537,11 +1390,9 @@ reflejan con precisión el contenido que vive dentro de ellos. Si el nombre de u
 persona se ajustara a cinco líneas dentro del patrón, tendríamos que abordar ese
 comportamiento roto a un nivel más atómico.
 
--- 57 of 178 --
-
 ---
 
-## Sección 28: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 59
+## Sección 28: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 59 [Entropy: 0.265]
 
 El contenido que viertemos en nuestras IU en la etapa de la página influirá en las
 características y parámetros de los patrones de diseño subyacentes.
@@ -1578,9 +1429,6 @@ básicos", "Componentes", "Plantillas", "Funciones" y "Aplicaciones". ¿Estas
 etiquetas tienen sentido para ti? No importa. Al establecer una taxonomía
 que tuviera sentido para su organización, todos pudieron incorporarse a
 los principios del diseño atómico y trabajar juntos de manera eficaz.
-
--- 58 of 178 --
-
 60 DISEÑO ATÓMICO
 El “diseño atómico” como palabra de moda encapsula los conceptos de diseño y
 desarrollo modular, que se convierte en una abreviatura útil para convencer a las
@@ -1600,11 +1448,9 @@ de su banco, lo que sea. Para demostrarlo, apliquemos el diseño atómico a la
 aplicación móvil nativa Instagram.
 Diseño atómico aplicado a la aplicación móvil nativa Instagram.
 
--- 59 of 178 --
-
 ---
 
-## Sección 29: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 61
+## Sección 29: CAPÍTULO 2 / METODOLOGÍA DE DISEÑO ATÓMICO 61 [Entropy: 0.265]
 
 Veamos esta interfaz atomizada de Instagram:
 ɕ Átomos: Esta pantalla de la interfaz de usuario de Instagram consta de un puñado
@@ -1640,9 +1486,6 @@ interfaz de usuario independientemente de la tecnología utilizada para crearlos
 ɕ
 ɕ
 ɕ
-
--- 60 of 178 --
-
 62 DISEÑO ATÓMICO
 El diseño atómico en teoría y en la práctica.
 Este capítulo presentó la metodología de diseño atómico y demostró cómo los
@@ -1663,9 +1506,6 @@ usuario. A estas alturas te estarás preguntando
 cómo haces realidad el diseño
 atómico. Bueno, no temas, querido lector, porque el resto del libro se enfoca en
 herramientas y procesos para hacer realidad tus sueños de diseño atómico.
-
--- 61 of 178 --
-
 Pattern Lab y las cualidades de las
 guías de estilo efectivas
 Herramientas de
@@ -1673,9 +1513,7 @@ el comercio
 
 ---
 
-## Sección 30: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO sesenta y cinco
-
--- 62 of 178 --
+## Sección 30: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO sesenta y cinco [Entropy: 0.37]
 
 En el capítulo anterior, presenté la metodología de diseño atómico para
 construir interfaces de usuario. Espero que encuentres que el diseño atómico es
@@ -1717,9 +1555,6 @@ código abierto mantenido por desarrolladores web Dave Olsen ,
 ɕ
 ɕ
 ɕ
-
--- 63 of 178 --
-
 66 DISEÑO ATÓMICO
 Brian Muenzenmeyer y yo para ejecutar sistemas de diseño atómico. Si bien
 hablaré con entusiasmo de Pattern Lab y sus diversas características, quiero
@@ -1749,11 +1584,9 @@ compila esos patrones en una interfaz de usuario funcional dentro de un
 shell de biblioteca de patrones.
 Entonces, ¿cómo se ve Pattern Lab fuera de la caja? Redoble de tambores por favor.
 
--- 64 of 178 --
-
 ---
 
-## Sección 31: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 67
+## Sección 31: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 67 [Entropy: 0.445]
 
 No es un diseño terriblemente inspirador, ¿eh? Lo crea o no, este mínimo (incluso se
 podría decir
@@ -1778,9 +1611,6 @@ Node.js para usar la herramienta, ya que la salida de Pattern Lab es HTML, CSS y
 JavaScript independiente del backend. Entonces, como cualquier decisión
 tecnológica, elija una biblioteca de patrones
 Un panel de control de Pattern Lab predeterminado. Lo que le falta en buena apariencia, lo compensa en utilidad.
-
--- 65 of 178 --
-
 68 DISEÑO ATÓMICO
 herramienta que se adapta a la infraestructura de su organización y se adapta a la forma en
 que su equipo trabaja en conjunto.
@@ -1801,11 +1631,9 @@ más grandes (organismos), que a su vez se incluyen en patrones aún más
 grandes (plantillas).
 Muñecas de anidación rusas. Credito de imagen: S. Faric en Flickr
 
--- 66 of 178 --
-
 ---
 
-## Sección 32: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 69
+## Sección 32: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 69 [Entropy: 0.346]
 
 Construir interfaces de usuario de esta manera mantiene las cosas SECO , que es
 un principio informático de larga data que significa "no te repitas". Lo que esto
@@ -1830,9 +1658,6 @@ Lab. Puede nombrar y clasificar estas carpetas como desee, incluido el
 cambio de las etiquetas "átomos", "moléculas" y "organismos", "plantillas" y
 "páginas". La consideración más importante es establecer el nombre y la
 categorización que sea más efectivo para su equipo.
-
--- 67 of 178 --
-
 70 DISEÑO ATÓMICO
 Ahora que sabemos cómo es una inclusión, pongámosla en práctica y
 echemos un vistazo a algunos patrones de un sitio web que ayudé a crear
@@ -1844,11 +1669,9 @@ cómo se construye este patrón.
 Para el sitio web de Time Inc., creamos una molécula de bloque básica que consta de una imagen en
 miniatura, un título y un extracto.
 
--- 68 of 178 --
-
 ---
 
-## Sección 33: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 71
+## Sección 33: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 71 [Entropy: 0.515]
 
 < div clase = " poste de bloque ">
 < a href = "{{url}}">
@@ -1870,9 +1693,6 @@ Ahora pasemos a organismos más complejos como el encabezado del
 sitio web, que se parece un poco a esto:
 El encabezado del sitio web consta de convenciones bastante comunes, como un átomo de logotipo, una
 molécula de navegación primaria y una molécula de formulario de búsqueda.
-
--- 69 of 178 --
-
 72 DISEÑO ATÓMICO
 Cuando abrimos el capó para ver el marcado del encabezado en
 Pattern Lab, vemos lo siguiente:
@@ -1893,18 +1713,13 @@ moléculas se incluyen en organismos aún más grandes. Ahora tomemos estos
 componentes y conectemos a un diseño. Tome la plantilla de la página de inicio,
 por ejemplo:
 
--- 70 of 178 --
-
 ---
 
-## Sección 34: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 73
+## Sección 34: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 73 [Entropy: 0.5]
 
 La plantilla de la página de inicio de Time Inc. consta de algunos patrones repetibles: un
 encabezado global, un área de héroe, algunas secciones (que contienen una imagen, un
 título, un extracto y una llamada a la acción), un área con cuatro elementos, un área de hechos y un pie de página global.
-
--- 71 of 178 --
-
 74 DISEÑO ATÓMICO
 Dé un paseo rápido por la plantilla de la página de inicio y verá algunos patrones
 bastante estándar: un encabezado del sitio en la parte superior, un pie de página del
@@ -1942,11 +1757,9 @@ En esta etapa del juego, los patrones más pequeños ya están construidos, por
 lo que todo lo que debe hacer la plantilla es colocarlos en el contexto de un
 diseño de página y darles nombres únicos.
 
--- 72 of 178 --
-
 ---
 
-## Sección 35: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 75
+## Sección 35: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 75 [Entropy: 0.319]
 
 Echando un vistazo más de cerca al código, observe que ciertos patrones como
 {{> organismo-encabezado}} y {{> organismos-pie de página}} están
@@ -1985,19 +1798,14 @@ contenido que vive dentro de ellos.
 Para demostrar cómo Pattern Lab intercambia dinámicamente contenido real en plantillas,
 echemos un vistazo a una comparación en paralelo de la plantilla de la página de inicio y
 los niveles de página de Time Inc.:
-
--- 73 of 178 --
-
 76 DISEÑO ATÓMICO
 Una comparación en paralelo de la plantilla de la página de inicio y los niveles de página de Time Inc. La plantilla
 articula la estructura de contenido del sistema de diseño, mientras que la página muestra cómo se ve el sistema
 con el contenido real que muestra.
 
--- 74 of 178 --
-
 ---
 
-## Sección 36: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 77
+## Sección 36: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 77 [Entropy: 0.31]
 
 A la izquierda tenemos el nivel de plantilla, que articula la estructura de
 contenido de los patrones que componen la página web. Y a la derecha
@@ -2035,9 +1843,6 @@ coincida con el nombre del patrón de página (para la página de inicio de Time
 Inc., lo llamaremos
 00-homepage.json) dentro de /
 paginas directorio.
-
--- 75 of 178 --
-
 78 DISEÑO ATÓMICO
 Cuando nos abrimos
 00-homepage.json podemos anular los datos del marcador de
@@ -2058,11 +1863,9 @@ Dentro del directorio 'páginas' tenemos el patrón de la página de inicio, as�
 que coincide con el nombre del patrón. Aquí es donde anularemos el contenido predeterminado
 con contenido específico de la página.
 
--- 76 of 178 --
-
 ---
 
-## Sección 37: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 79
+## Sección 37: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 79 [Entropy: 0.25]
 
 Este proceso de establecer valores predeterminados para datos dinámicos y luego
 reemplazarlos con contenido específico de la página continúa para cada sección del
@@ -2097,9 +1900,6 @@ realidades de nuestro contenido, debemos tener en cuenta esas preguntas del tipo
 "qué pasaría si".
 ¿Cómo abordamos todo tipo de variaciones de la interfaz de usuario sin
 agotarnos en el proceso? Laboratorio de patrones pseudopatrón rasgo
-
--- 77 of 178 --
-
 80 DISEÑO ATÓMICO
 nos permite articular escenarios a veces tremendamente diferentes con solo unos
 pocos cambios en nuestros datos.
@@ -2130,11 +1930,9 @@ del mundo, Corporación, División global"
 Una lista de colaboradores del
 proyecto en nuestra aplicación hipotética.
 
--- 78 of 178 --
-
 ---
 
-## Sección 38: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 81
+## Sección 38: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 81 [Entropy: 0.545]
 
 "nombre" : "Sara Smith" ,
 "título" : "Título corto"
@@ -2166,9 +1964,6 @@ del patrón de bloque.
 El panel del administrador
 La interfaz de usuario introduce
 acciones adicionales de edición y eliminación.
-
--- 79 of 178 --
-
 82 DISEÑO ATÓMICO
 < div clase = " cuadra " >
 < img src = " {{img}} " alt = " {{ nombre }} "/> < h3 >
@@ -2212,11 +2007,9 @@ Establece un CMS ad hoc. El establecimiento de datos predeterminados y específi
 de la página sirve como un sistema de administración de contenido ad hoc.
 ɕ
 
--- 80 of 178 --
-
 ---
 
-## Sección 39: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 83
+## Sección 39: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 83 [Entropy: 0.325]
 
 Como se mencionó anteriormente, las herramientas de diseño estático no están bien
 equipadas para manejar datos dinámicos, pero también es excesivo instalar WordPress,
@@ -2255,9 +2048,6 @@ queremos crear diseños receptivos, pero crear patrones fluidos tiene ventajas
 adicionales. Cuanto más fluido es un componente de la interfaz de usuario,
 más resistente y versátil se vuelve. Imagine poder tomar un componente,
 digamos un control deslizante de la galería de fotos, y colocarlo
-
--- 81 of 178 --
-
 84 DISEÑO ATÓMICO
 en cualquier lugar que lo necesitemos. A veces, es posible que necesitemos que sea un elemento
 de sangrado completo que ocupe toda la ventana gráfica. En otras ocasiones, es posible que
@@ -2298,19 +2088,14 @@ ventana gráfica, lo he encontrado más útil como herramienta de educación par
 Mediante la creación de una herramienta de cambio de tamaño de la ventana gráfica independiente del
 dispositivo directamente en la biblioteca de patrones, clientes y colegas
 
--- 82 of 178 --
-
 ---
 
-## Sección 40: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 85
+## Sección 40: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 85 [Entropy: 0.295]
 
 Pattern Lab muestra un diseño en una ventana de visualización pequeña.
 Pattern Lab muestra un diseño en una ventana de visualización mediana.
 puede llegar a apreciar el hecho de que su sistema de diseño debe verse y
 funcionar bien sin importar el tamaño de la ventana gráfica.
-
--- 83 of 178 --
-
 86 DISEÑO ATÓMICO
 Pattern Lab muestra un diseño en una ventana de visualización grande.
 Una mirada debajo del capó con vista de código
@@ -2329,11 +2114,9 @@ incluyen CSS y JavaScript específicos del patrón. El sistema de diseño Lightn
 de Salesforce, por ejemplo, muestra el HTML de un patrón, así como todo el (S)
 CSS que pertenece a ese patrón.
 
--- 84 of 178 --
-
 ---
 
-## Sección 41: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 87
+## Sección 41: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 87 [Entropy: 0.295]
 
 Incluir código de front-end lleva a los autores a escribirlo de manera más consistente, pero eso
 no garantiza la perfección. Todavía hay espacio para que los desarrolladores se vuelvan
@@ -2349,9 +2132,6 @@ de estilo Rizzo muestra el código de inclusión para que los equipos extraigan 
 componente de interfaz de usuario adecuado.
 El sistema de diseño Lightning de Salesforce muestra el código HTML y SCSS de los componentes de la interfaz de usuario.
 La biblioteca de patrones del sistema de diseño Rizzo de Lonely Planet muestra el uso de la plantilla.
-
--- 85 of 178 --
-
 88 DISEÑO ATÓMICO
 Esta configuración permite que el equipo de desarrollo central mantenga una única fuente de
 verdad para el código de front-end de todos los patrones. Para que los desarrolladores se
@@ -2366,11 +2146,9 @@ las bibliotecas de patrones que cree deben mostrar los tipos de código que le
 permiten a usted y a su equipo de desarrollo ser lo más efectivos posible.
 La vista de código de Pattern Lab muestra tanto el código de plantilla de un patrón como el HTML compilado.
 
--- 86 of 178 --
-
 ---
 
-## Sección 42: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 89
+## Sección 42: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 89 [Entropy: 0.325]
 
 Pattern Lab muestra documentación de patrones importante junto con los ejemplos de patrones vivos,
 lo que ayuda a los equipos a comunicar definiciones, uso, ejemplos, recursos externos y más.
@@ -2394,9 +2172,6 @@ patrones creando un archivo Markdown que corresponda al nombre de un
 patrón (p. Ej.
 patrón-nombre.md), que mostrará la descripción del patrón en la
 vista de lista de la biblioteca.
-
--- 87 of 178 --
-
 90 DISEÑO ATÓMICO
 Pattern Lab también proporciona una característica interesante (me atrevo a decir) que
 le permite adjuntar anotaciones a cualquier elemento de la interfaz de usuario y ver esas
@@ -2410,9 +2185,6 @@ Al mirar varios patrones en una biblioteca, me pregunto: "Genial, pero
 características de los patrones es una cosa, pero existe la oportunidad de
 proporcionar información contextual adicional sobre sus patrones de IU.
 La función de anotación de Pattern Lab es interactiva y está integrada en la interfaz de usuario activa.
-
--- 88 of 178 --
-
 Gracias al enfoque de inclusión de muñecas de anidación rusa descrito
 anteriormente, Pattern Lab puede mostrar qué patrones componen cualquier
 componente dado y también mostrar dónde se emplean esos patrones en el
@@ -2433,13 +2205,10 @@ someterse a control de calidad para garantizar que nada se rompa con
 
 ---
 
-## Sección 43: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 91
+## Sección 43: CAPÍTULO 3 / HERRAMIENTAS DEL COMERCIO 91 [Entropy: 0.28]
 
 La función de linaje de Pattern Lab muestra qué patrones componen cualquier componente y también muestra
 todos los lugares en los que se emplea ese componente.
-
--- 89 of 178 --
-
 92 DISEÑO ATÓMICO
 los cambios. La función de linaje también ayuda a señalar patrones redundantes e
 infrautilizados para que los equipos puedan eliminarlos de la biblioteca de patrones a medida
@@ -2475,9 +2244,6 @@ preparar su organización para el éxito a largo plazo.
 ɕ
 ɕ
 ɕ
-
--- 90 of 178 --
-
 Personas, procesos y cómo hacer realidad los
 sistemas de diseño
 El atómico
@@ -2485,9 +2251,7 @@ Flujo de trabajo
 
 ---
 
-## Sección 44: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 95
-
--- 91 of 178 --
+## Sección 44: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 95 [Entropy: 0.265]
 
 Hablar es barato. Y hasta ahora, hemos estado hablando mucho. ¡Eso no quiere
 decir que no haya sido una conversación productiva! Después de todo, hemos
@@ -2520,9 +2284,6 @@ matices decepcionantes del mal trabajo.
 Establecer y mantener sistemas de diseño de interfaz exitosos requiere un
 esfuerzo de toda la organización, y este capítulo discutirá cómo superar las
 muchas peculiaridades de los seres humanos para que sucedan.
-
--- 92 of 178 --
-
 96 DISEÑO ATÓMICO
 Cuándo establecer un sistema de diseño
 Entonces, ¿cuándo es el mejor momento para establecer un sistema de diseño de
@@ -2558,11 +2319,9 @@ Por desgracia, descubrí que puedo exagerar los sistemas de diseño hasta que me
 quede azul en la cara, pero los trajes no siempre ven las cosas a través de la misma
 lente que la gente en el suelo. Una simple reformulación de la pregunta ayuda
 
--- 93 of 178 --
-
 ---
 
-## Sección 45: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 97
+## Sección 45: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 97 [Entropy: 0.25]
 
 inmensamente. Es mucho más efectivo simplemente preguntar " ¿Le gusta
 ahorrar tiempo y dinero? ¿Si o no? "Si la respuesta a esa pregunta es
@@ -2608,9 +2367,6 @@ hacer realidad un sistema de diseño.
 ɕ
 ɕ
 ɕ
-
--- 94 of 178 --
-
 98 DISEÑO ATÓMICO
 Muestre, no cuente: el poder de los inventarios de interfaces
 Si tan solo conseguir la aceptación fuera tan fácil como tener algunas conversaciones oportunas
@@ -2634,11 +2390,9 @@ que componen su interfaz de usuario.
 Aquí hay una colección de todos los estilos de botones únicos que se encuentran en la página de inicio de
 United.com. Un inventario de interfaz redondea y categoriza todos los patrones únicos que componen una interfaz.
 
--- 95 of 178 --
-
 ---
 
-## Sección 46: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 99
+## Sección 46: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 99 [Entropy: 0.25]
 
 Realización de una auditoría de interfaz
 ¿Cómo se lleva a cabo una auditoría de interfaz? ¿Cómo reúne todos los
@@ -2672,9 +2426,6 @@ pantalla. Algunas herramientas posibles incluyen:
 ɕ Photoshop o Sketch
 ɕ Evernote Web Clipper
 ɕ Documentos de Google o Microsoft Word
-
--- 96 of 178 --
-
 100 DISEÑO ATÓMICO
 ɕ Presentaciones de Google (si está interesado, he creado una Presentaciones de Google
 plantilla de inventario de interfaz )
@@ -2701,11 +2452,9 @@ Es importante que todos los participantes capturen capturas de pantalla con el m
 combinarlas más tarde. Creé una plantilla de inventario de la interfaz de Presentaciones de Google para que
 los equipos la utilicen como punto de partida.
 
--- 97 of 178 --
-
 ---
 
-## Sección 47: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 101
+## Sección 47: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 101 [Entropy: 0.25]
 
 Que patrones capturar
 ¿Qué categorías de elementos de la interfaz deben capturarse? Obviamente,
@@ -2755,9 +2504,6 @@ alojada en su dominio.
 ɕ
 ɕ
 ɕ
-
--- 98 of 178 --
-
 102 DISEÑO ATÓMICO
 ɕ
 ɕ
@@ -2781,11 +2527,9 @@ importante agregar, restar o modificar estas categorías para que se adapten mej
 las necesidades de su organización.
 Un ejemplo de patrones de botones únicos capturados en un inventario de interfaz para el sitio web de un banco importante.
 
--- 99 of 178 --
-
 ---
 
-## Sección 48: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 103
+## Sección 48: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 103 [Entropy: 0.25]
 
 Tiempo lo es todo
 Es importante establecer límites de tiempo en el ejercicio de captura de pantalla
@@ -2802,9 +2546,6 @@ interfaces? Respuesta corta:
 todo. Debe documentarse cualquier parte de la
 IU que su organización gestione o pueda gestionar.
 Un ejemplo de varios elementos de formulario capturados en un inventario de interfaz para el sitio web de un banco importante.
-
--- 100 of 178 --
-
 104 DISEÑO ATÓMICO
 Esto es difícil ya que las organizaciones tienden a favorecer ciertas partes de la
 experiencia (
@@ -2842,11 +2583,9 @@ participantes deben enviar sus diapositivas al líder del ejercicio. El líder
 luego combinará todo en un superdocumento gigante, que pronto se
 convertirá en una bola de demolición de verdad y justicia.
 
--- 101 of 178 --
-
 ---
 
-## Sección 49: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 105
+## Sección 49: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 105 [Entropy: 0.25]
 
 Paso 5: reagruparse y establecer los próximos pasos
 Con el überdocumento en la mano, es hora de que toda la organización
@@ -2882,9 +2621,6 @@ fusionados?
 biblioteca de patrones vivos?
 ɕ
 ɕ
-
--- 102 of 178 --
-
 106 DISEÑO ATÓMICO
 Beneficios de un inventario de interfaz
 Crear un inventario de interfaz puede ser una tarea ardua, pero los
@@ -2924,11 +2660,9 @@ sus partes interesadas, e incluso ha creado un inventario de interfaz para
 mostrarles el choque de trenes inconsistente que es la interfaz de usuario actual. Y
 sin embargo, a pesar de todos tus esfuerzos, siguen derribando
 
--- 103 of 178 --
-
 ---
 
-## Sección 50: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 107
+## Sección 50: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 107 [Entropy: 0.25]
 
 buena idea de establecer un sistema de diseño de interfaces y una biblioteca de
 patrones. ¿Qué debe hacer un equipo web responsable?
@@ -2954,9 +2688,6 @@ piezas de la caja en una mesa, arremangarse y luego comenzar a construir
 su creación.
 Una forma de abordar un proyecto de Lego es simplemente arrojar las piezas sobre una mesa y rebuscar en la
 pila para encontrar las piezas que necesita. Imagen adaptada de "Multiscreen UX Design" de Wolfram Nagel.
-
--- 104 of 178 --
-
 108 DISEÑO ATÓMICO
 Este enfoque de un proyecto de Lego es sin duda una estrategia viable,
 incluso si es sin disculpas al azar. La única vez que prestas atención a la pila
@@ -2985,11 +2716,9 @@ Tomarse el tiempo para organizar las piezas que componen sus creaciones finales 
 obra de una manera más pausada y eficiente. Imagen adaptada de "Multiscreen UX Design" de
 Wolfram Nagel.
 
--- 105 of 178 --
-
 ---
 
-## Sección 51: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 109
+## Sección 51: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 109 [Entropy: 0.25]
 
 pila de ladrillos y tiempo de combustión reinventando patrones, puede
 crear un sistema organizado de componentes que le ayudarán a producir
@@ -3014,9 +2743,6 @@ Tomarse el tiempo para organizar las piezas que componen sus creaciones finales 
 una manera más pausada y eficiente. En lugar de tamizar un montón de ladrillos al azar, un inventario
 organizado de componentes puede producir un trabajo mejor y más rápido. Imagen adaptada de
 "Multiscreen UX Design" de Wolfram Nagel.
-
--- 106 of 178 --
-
 110 DISEÑO ATÓMICO
 Por supuesto, es preferible que sus clientes, colegas y partes interesadas se
 entusiasmen con la creación de un sistema de diseño de interfaz, o
@@ -3055,11 +2781,9 @@ unidimensional; el mundo de la impresión está impregnado de matices y artesan�
 que estoy diciendo es que la naturaleza bidireccional e interactiva de la web agrega
 muchas más dimensiones a lo que constituye un buen diseño. Velocidad,
 
--- 107 of 178 --
-
 ---
 
-## Sección 52: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 111
+## Sección 52: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 111 [Entropy: 0.265]
 
 El tamaño de la pantalla, el entorno, las capacidades tecnológicas, el factor de forma,
 la ergonomía, la usabilidad, la accesibilidad, el contexto y las preferencias del usuario
@@ -3081,9 +2805,6 @@ simplemente traducir un PDF a la web fuera factible y atractiva. Así que eso es
 hicimos, ¡y durante un tiempo realmente funcionó!
 Érase una vez, la web se consumía principalmente en las pantallas de escritorio, de ahí esta vieja máquina de
 aspecto crujiente.
-
--- 108 of 178 --
-
 112 DISEÑO ATÓMICO
 Sin embargo, esto no vino sin consecuencias. Esta perspectiva de impresión de
 la web reforzó la noción de que los diseños web, al igual que sus contrapartes
@@ -3107,11 +2828,9 @@ los procesos de impresión a este nuevo medio. Simplemente
 Esta es la web: un popurrí de dispositivos, tamaños de pantalla, capacidades, factores de forma, velocidades
 de red, tipos de entrada y más.
 
--- 109 of 178 --
-
 ---
 
-## Sección 53: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 113
+## Sección 53: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 113 [Entropy: 0.25]
 
 Mirar un teléfono inteligente, una tableta y una computadora de escritorio uno
 al lado del otro erosiona rápidamente la suposición de que un diseño web
@@ -3130,9 +2849,6 @@ Nuestro trabajo es crear grandes experiencias para las personas que utilizan una
 dispositivos, tamaños de pantalla, velocidades de red, capacidades de dispositivos,
 Además de todos los dispositivos con capacidad web que nos interesan hoy en día, debemos entender que el
 panorama de dispositivos y web es cada vez más grande y más diverso todo el tiempo.
-
--- 110 of 178 --
-
 114 DISEÑO ATÓMICO
 características del navegador, tipos de entrada, factores de forma, contextos
 y preferencias. Sin duda, es una tarea hercúlea, pero todas estas variables
@@ -3173,11 +2889,9 @@ Muerte a la cascada
 Dime si has escuchado esto antes. Un equipo tiene la tarea de crear un sitio web. Una vez que
 se ha asentado el polvo de la reunión inicial, una experiencia de usuario
 
--- 111 of 178 --
-
 ---
 
-## Sección 54: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 115
+## Sección 54: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 115 [Entropy: 0.25]
 
 El diseñador se va, baja la cabeza y, finalmente, emerge con un documento PDF
 gigante que detalla toda la experiencia. Este documento de estructura metálica
@@ -3215,9 +2929,6 @@ finalmente obtiene la aprobación de las partes interesadas.
 El diseñador visual, aliviado de que finalmente hayan completado su trabajo,
 avanza de puntillas hasta la entrada de Code Cave. Deslizan el diseño
 aprobado debajo de la puerta, y mientras se alejan
-
--- 112 of 178 --
-
 116 DISEÑO ATÓMICO
 gritar: “¿Puedes hacer esto en tres semanas? ¡Ya estamos retrasados y
 nos quedamos sin presupuesto! "
@@ -3257,11 +2968,9 @@ como un puñetazo en el estómago. Ya sea que haya soportado este proceso de
 primera mano o no, es importante reconocer que el estilo Henry Ford proceso de
 cascada cada vez es menos probable que resulte en un gran trabajo digital.
 
--- 113 of 178 --
-
 ---
 
-## Sección 55: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 117
+## Sección 55: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 117 [Entropy: 0.25]
 
 El proceso en cascada puede tener sentido para la impresión, la arquitectura,
 la fabricación y otros medios físicos, ya que los errores y los cambios son
@@ -3289,9 +2998,6 @@ activo el trabajo está hecho, nunca deben simplemente
 desvanecerse del proyecto. Es crucial para
 El proceso en cascada, en el que las disciplinas se transmiten el trabajo entre sí en orden secuencial, no es
 probable que dé como resultado un gran trabajo digital.
-
--- 114 of 178 --
-
 118 DISEÑO ATÓMICO
 cada disciplina para continuar consultando con los demás para asegurarse de
 que su visión se convierta en el producto final. Entonces, en lugar de un proceso
@@ -3314,11 +3020,9 @@ Un flujo de trabajo más colaborativo implica un equipo multidisciplinario que t
 el proceso. Si bien el trabajo activo aumentará y disminuirá, cada disciplina continúa consultando con los otros
 miembros del equipo para asegurarse de que sus conocimientos estén presentes en el trabajo final.
 
--- 115 of 178 --
-
 ---
 
-## Sección 56: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 119
+## Sección 56: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 119 [Entropy: 0.25]
 
 a menudo se colocan en el mismo contenedor que Python, Java, PHP, Ruby, C ++ y
 otros lenguajes de programación. Este malentendido tiende a provocar una grave
@@ -3352,9 +3056,6 @@ exclusivamente digitales como:
 ɕ ergonomía
 ɕ reproducción de color y texto
 ɕ densidad de pixeles
-
--- 116 of 178 --
-
 120 DISEÑO ATÓMICO
 ɕ rendimiento de desplazamiento
 ɕ peculiaridades del dispositivo y del navegador
@@ -3396,11 +3097,9 @@ un proceso digital exitoso, aunque, a diferencia de la escultura, tenemos el pod
 de
 ¡deshacer!
 
--- 117 of 178 --
-
 ---
 
-## Sección 57: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 121
+## Sección 57: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 121 [Entropy: 0.25]
 
 Es esencial lograr que las partes interesadas se sientan cómodas con la revisión de los
 trabajos en progreso en lugar de diseños y códigos completamente preparados. Como
@@ -3418,9 +3117,6 @@ comunicación constante, los circuitos de retroalimentación ajustados y la
 verdadera colaboración se convierten en el pegamento que sostiene
 Un proceso digital iterativo es similar a la escultura de piedra sustractiva, donde la fidelidad se construye a lo
 largo de muchas iteraciones. Credito de imagen: Mike Beauregard en Flickr
-
--- 118 of 178 --
-
 122 DISEÑO ATÓMICO
 el proceso juntos. Haga que todo su equipo se comprometa con una
 conversación honesta y una colaboración genuina, y los detalles de su
@@ -3458,11 +3154,9 @@ para lograr la aceptación de las partes interesadas. Por más minuciosos que
 sean estos documentos, no muestran la imagen completa y, a menudo, hacen
 suposiciones peligrosas sobre el diseño visual y la funcionalidad técnica.
 
--- 119 of 178 --
-
 ---
 
-## Sección 58: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 123
+## Sección 58: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 123 [Entropy: 0.25]
 
 En lugar de saltar directamente a documentos de alta fidelidad, es mejor Comience
 con bocetos de baja fidelidad que establezcan lo que aparece en una
@@ -3480,9 +3174,6 @@ las pantallas pequeñas para obligar al equipo a centrarse en el contenido centr
 jerarquía. Ahora puede preguntar: "¿Tenemos las cosas correctas en esta pantalla?"
 "¿Están en el orden general correcto?"
 Wireframes HTML básicos para la página de inicio del Greater Pittsburgh Community Food Bank.
-
--- 120 of 178 --
-
 124 DISEÑO ATÓMICO
 Estas estructuras alámbricas en escala de grises en bloques ayudan a establecer los
 patrones de contenido para la pantalla, pero los diseñadores de UX también pueden articular
@@ -3501,11 +3192,9 @@ cálculo.
 Para el rediseño del sitio web de TechCrunch, Jennifer Brook definió patrones de visualización gestual en todo
 el sitio, que no hacen suposiciones sobre la estética o la funcionalidad.
 
--- 121 of 178 --
-
 ---
 
-## Sección 59: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 125
+## Sección 59: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 125 [Entropy: 0.25]
 
 Con unas pocas columnas simples de la hoja de cálculo, podemos articular qué
 patrones de visualización deben incluirse en una plantilla determinada y qué patrones
@@ -3532,9 +3221,6 @@ esfuerzo, y desafortunadamente gran parte de ese trabajo se encuentra en la
 sala de montaje. Debe haber una forma más eficiente.
 Una hoja de cálculo simple puede articular qué contenido y patrones de visualización van en una página
 determinada mientras describe su orden y propósito.
-
--- 122 of 178 --
-
 126 DISEÑO ATÓMICO
 Resulta que hay un camino mejor a seguir para llegar a los valores
 estéticos sin tener que hacer un montón de trabajo de diseño inicial.
@@ -3558,11 +3244,9 @@ Para el inicio del rediseño del sitio web del Banco de Alimentos de Pittsburgh,
 interesadas una variedad de sitios web relevantes durante veinte segundos cada uno. Los participantes votaron
 sobre lo felices que serían si el sitio en particular fuera suyo. Luego discutimos los resultados.
 
--- 123 of 178 --
-
 ---
 
-## Sección 60: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 127
+## Sección 60: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 127 [Entropy: 0.25]
 
 Cuando termine el ejercicio, cuente rápidamente los puntajes y regrese al
 grupo para discutir los resultados. Tenga una conversación sobre los sitios
@@ -3591,9 +3275,6 @@ iniciales de alta fidelidad? Esa es la pregunta que respondió la diseñadora
 Samantha Warren cuando creó azulejos de estilo , un producto que es más tangible
 que una tabla de estado de ánimo, pero no tan alta como una composición
 completamente horneada.
-
--- 124 of 178 --
-
 128 DISEÑO ATÓMICO
 Azulejos de estilo (junto con sus contrapartes en el navegador, prototipos de estilo )
 permiten a los diseñadores explorar el color, la tipografía, la textura, los iconos y
@@ -3604,11 +3285,9 @@ significa que la retroalimentación y la discusión pueden ocurrir antes.
 Para el proyecto de rediseño del sitio web de Entertainment Weekly, los diseñadores visuales utilizaron mosaicos
 de estilo para explorar el color, el tipo, la textura y más.
 
--- 125 of 178 --
-
 ---
 
-## Sección 61: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 129
+## Sección 61: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 129 [Entropy: 0.25]
 
 Los mosaicos de estilo facilitan la conversación para descubrir qué valoran
 las partes interesadas y qué no. “¿Este mosaico de estilo resuena mejor
@@ -3634,9 +3313,6 @@ elementos , que son colecciones de exploraciones de diseño de componentes de IU
 de elementos proporcionan un campo de juego para que los diseñadores apliquen la atmósfera
 de diseño a los elementos reales de la interfaz, sin dejar de tener un diseño y una presentación
 muy refinada.
-
--- 126 of 178 --
-
 130 DISEÑO ATÓMICO
 Al igual que los mosaicos de estilo, los collages de elementos están destinados a
 facilitar la discusión sobre la dirección estética del proyecto. Está muy claro que estos
@@ -3658,11 +3334,9 @@ Un collage de elementos para el rediseño de Entertainment Weekly aplicó color,
 elementos reales de la interfaz. Estos collages permitieron importantes conversaciones sobre la dirección
 estética del proyecto.
 
--- 127 of 178 --
-
 ---
 
-## Sección 62: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 131
+## Sección 62: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 131 [Entropy: 0.25]
 
 Chef de preparación de front-end
 Como comentamos anteriormente, los desarrolladores front-end a menudo se relegan a
@@ -3681,9 +3355,6 @@ de preparación, el flujo de los chefs principales se interrumpiría y el ritmo 
 cocina se detendría.
 Un chef de preparación corta verduras, adoba la carne, hace ensaladas y prepara otros ingredientes para que
 el personal principal de la cocina pueda concentrarse en cocinar las comidas y en la colaboración.
-
--- 128 of 178 --
-
 132 DISEÑO ATÓMICO
 Los desarrolladores front-end deben ser los cocineros preparadores del
 proceso de diseño web. Si los desarrolladores no están codificando desde el
@@ -3724,11 +3395,9 @@ ejercicio de prueba intuitiva de 20 segundos, luego crear mosaicos de estilo y c
 elementos para explorar las direcciones de diseño iniciales.
 ɕ
 
--- 129 of 178 --
-
 ---
 
-## Sección 63: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 133
+## Sección 63: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 133 [Entropy: 0.295]
 
 ɕ Desarrolladores front-end puede configurar dependencias del proyecto, stub out
 plantillas básicas y escribir marcado estructural para los patrones que el
@@ -3760,9 +3429,6 @@ Del concepto al completo
 Convertir las exploraciones en patrones terminados es un proceso
 borroso e imperfecto. Esto no debería sorprenderle en absoluto en este
 punto del libro.
-
--- 130 of 178 --
-
 134 DISEÑO ATÓMICO
 Para el proyecto TechCrunch, Dan Mall se basó en las conversaciones de diseño
 iniciales del equipo para crear una exploración visual del encabezado del sitio.
@@ -3783,11 +3449,9 @@ Usando la exploración de Dan como referencia, creé una versión HTML del encab
 Este prototipo en escala de grises nos ayudó a demostrar la interactividad y cómo el encabezado se adaptaría en
 todo el espectro de resolución.
 
--- 131 of 178 --
-
 ---
 
-## Sección 64: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 135
+## Sección 64: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 135 [Entropy: 0.283]
 
 Este prototipo en escala de grises nos permitió demostrar interactividad y
 capacidad de respuesta, lo que generó aún más discusión. En conjunto,
@@ -3808,9 +3472,6 @@ enfocamos en diseñar un patrón específico, simultáneamente tomamos en
 cuenta el contexto de dónde se emplearía ese patrón.
 El encabezado con el que lanzamos fue la culminación de muchas conversaciones y decisiones sobre el
 contenido, el diseño y la funcionalidad del patrón.
-
--- 132 of 178 --
-
 136 DISEÑO ATÓMICO
 Inicialmente, los diseños en el navegador tienden a parecer toscos en el mejor de los
 casos, lo cual está bien. La intención es eliminar la arquitectura de información básica
@@ -3826,11 +3487,9 @@ En un proceso más iterativo, habrá casos en los que algunos patrones se desarr
 página parcialmente terminada puede parecer inusual fuera de contexto, pero la comunicación entre el
 equipo y las partes interesadas debería aliviar la confusión.
 
--- 133 of 178 --
-
 ---
 
-## Sección 65: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 137
+## Sección 65: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 137 [Entropy: 0.25]
 
 El papel de las composiciones en una era post-PSD
 Hasta este punto hemos estado hablando de establecer una dirección estética
@@ -3856,19 +3515,14 @@ imagen completa de cómo podría verse la interfaz de usuario. El truco es
 saber
 Cuándo pintar esas imágenes completas y saber cuánto tiempo permanecer
 en documentos de diseño estáticos.
-
--- 134 of 178 --
-
 138 DISEÑO ATÓMICO
 Dan Mall creó una composición completa para demostrar cómo se vería una plantilla de artículo destacado para
 TechCrunch. Este artefacto se utilizó para mostrar el sistema de diseño en contexto y obtener la aprobación del
 diseño general. Las revisiones de diseño posteriores se manejarían en el navegador.
 
--- 135 of 178 --
-
 ---
 
-## Sección 66: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 139
+## Sección 66: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 139 [Entropy: 0.265]
 
 Para el proyecto TechCrunch, creamos una composición solo para la plantilla del
 artículo
@@ -3902,9 +3556,6 @@ confirmar o rechazar realmente cualquier hipótesis de diseño.
 Cambiemos la frase "diseñar en el navegador" por
 "decidir en el navegador".
 - Dan Mall
-
--- 136 of 178 --
-
 140 DISEÑO ATÓMICO
 Una vez que los diseños están en el navegador, deben permanecer en el
 navegador. En esta etapa del proceso, el punto de producción se traslada a los
@@ -3926,11 +3577,9 @@ Esta ilustración de Trent Walton de Paravel articula perfectamente un proceso d
 Al obtener los diseños en el navegador antes, los equipos pueden iterar sobre el diseño y abordar las muchas
 consideraciones que solo se pueden abordar una vez que el diseño está en el navegador.
 
--- 137 of 178 --
-
 ---
 
-## Sección 67: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 141
+## Sección 67: CAPÍTULO 4 / EL FLUJO DE TRABAJO ATÓMICO 141 [Entropy: 0.25]
 
 Tráelo a casa
 El sistema de diseño va tomando forma y el equipo está cocinando con gas para
@@ -3963,9 +3612,6 @@ incluido en una hermosa guía de estilo.
 Este capítulo exploró todo lo que se necesita para crear un sistema de diseño de
 interfaz de usuario eficaz. En el próximo capítulo, discutiremos cómo
 asegurarnos de que el sistema de diseño continúe siendo exitoso a largo plazo.
-
--- 138 of 178 --
-
 Hacer que los sistemas de diseño resistan la prueba
 del tiempo
 Manteniendo
@@ -3973,9 +3619,7 @@ Sistemas de diseño
 
 ---
 
-## Sección 68: Capítulo 5
-
--- 139 of 178 --
+## Sección 68: Capítulo 5 [Entropy: 0.265]
 
 E hicieron un sistema de diseño, entregaron una guía de estilo y vivieron
 felices para siempre. ¿Derecha?
@@ -3995,9 +3639,7 @@ museo, mientras que un sistema es una entidad viva que respira. Un estilo
 
 ---
 
-## Sección 69: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 143
-
--- 140 of 178 --
+## Sección 69: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 143 [Entropy: 0.25]
 
 144 DISEÑO ATÓMICO
 La guía puede proporcionar documentación y servir como un recurso útil, pero la
@@ -4021,9 +3663,6 @@ existe como una rama que simplemente proporciona documentación útil.
 El problema con esta mentalidad es que casi puedes ver que la biblioteca de
 patrones se rompe y se desliza hacia el abismo. Una vez que la biblioteca de
 patrones deja de reflejar el estado actual de los productos
-
--- 141 of 178 --
-
 sirve, se vuelve obsoleto. Y cuando la biblioteca de patrones que
 administra el sistema de diseño ya no es precisa, el proceso de
 mantenimiento del sitio web se convierte en un puñado de revisiones y
@@ -4053,9 +3692,7 @@ es globalmente
 
 ---
 
-## Sección 70: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 145
-
--- 142 of 178 --
+## Sección 70: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 145 [Entropy: 0.25]
 
 146 DISEÑO ATÓMICO
 modifique el patrón desplegable en el sistema de diseño para eliminar el estilo
@@ -4095,11 +3732,9 @@ proyecto con un alcance finito, sino más bien un
 producto
 destinado a crecer y evolucionar con el tiempo:
 
--- 143 of 178 --
-
 ---
 
-## Sección 71: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 147
+## Sección 71: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 147 [Entropy: 0.265]
 
 Centrarse en la entrega de la guía de estilo como clímax es una historia
 incorrecta para contar. Un sistema no es un proyecto con un final, es la
@@ -4130,9 +3765,6 @@ de diseño para el éxito a largo plazo, debe:
 ɕ Hágalo contextual.
 ɕ Haz que dure.
 Profundicemos en cada uno de estos puntos con un poco más de detalle.
-
--- 144 of 178 --
-
 148 DISEÑO ATÓMICO
 Que sea oficial
 Su guía de estilo inicial puede comenzar su vida como un proyecto paralelo, el
@@ -4169,11 +3801,9 @@ diferencia en el mundo, ya que proporciona algo tangible para que las partes
 interesadas reaccionen. Otra vez:
 mostrar, no contar.
 
--- 145 of 178 --
-
 ---
 
-## Sección 72: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 149
+## Sección 72: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 149 [Entropy: 0.25]
 
 2: demuestre que es útil
 Con un sistema de diseño incipiente pero tangible implementado, puede tener
@@ -4183,7 +3813,7 @@ diseño ayudó a ahorrar tiempo y dinero (consulte " Patrones de lanzamiento ”
 
 ---
 
-## Sección 73: capítulo 4), luego describa cómo esos beneficios aumentarían aún más si la
+## Sección 73: capítulo 4), luego describa cómo esos beneficios aumentarían aún más si la [Entropy: 0.25]
 
 organización invirtiera en un sistema de diseño oficial y completo.
 Consiga miembros del equipo de diferentes disciplinas que lo respalden y
@@ -4206,9 +3836,6 @@ puedes ganar la guerra. Su equipo debe seguir creciendo y ampliando el
 sistema de diseño en toda la capacidad que pueda hasta que su valor sea
 innegable. A medida que más personas se beneficien del sistema, terminará
 con un sistema de base que puede ayudar a impulsar el esfuerzo.
-
--- 146 of 178 --
-
 150 DISEÑO ATÓMICO
 Establecer un equipo de sistema de diseño
 Con la iniciativa del sistema de diseño aprobada, ahora es el momento de poner en
@@ -4243,11 +3870,9 @@ usuarios son los equipos de
 toda la organización quienes tomarán el sistema y emplearán sus
 patrones de interfaz para aplicaciones específicas.
 
--- 147 of 178 --
-
 ---
 
-## Sección 74: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 151
+## Sección 74: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 151 [Entropy: 0.265]
 
 El sistema de diseño
 hacedores y sistema de diseño
@@ -4263,9 +3888,6 @@ El sistema de diseño informa nuestro diseño de producto. Nuestro diseño de
 producto informa al sistema de diseño.
 - Jina Bolton, Salesforce
 Diseñadores de sistemas y usuarios.
-
--- 148 of 178 --
-
 152 DISEÑO ATÓMICO
 Ambas perspectivas son fundamentales para el éxito del sistema de diseño,
 por lo que es tan importante que los creadores y los usuarios tengan una
@@ -4302,11 +3924,9 @@ Y luego estan agencias externas, contratistas y consultores.
 ¿Cuál es el papel de un tercero cuando se trata del mantenimiento a largo
 plazo del sistema de diseño de un cliente? Por un lado, externo
 
--- 149 of 178 --
-
 ---
 
-## Sección 75: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 153
+## Sección 75: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 153 [Entropy: 0.25]
 
 los socios están un poco en desventaja, ya que en realidad no trabajan para la
 organización de sus clientes. Un sistema de diseño exitoso debe convertirse en
@@ -4338,9 +3958,6 @@ corporación multinacional con equipos de desarrollo y socios externos repartido
 por todo el mundo. Si este es el caso, es posible que los creadores de sistemas de
 diseño y los usuarios rara vez (o nunca) se encuentren, lo que significa que la
 documentación útil y una perspectiva nítida se vuelven mucho más importantes.
-
--- 150 of 178 --
-
 154 DISEÑO ATÓMICO
 Una de las mayores ventajas de establecer un sistema de diseño reflexivo es que
 permite a las organizaciones escalar las mejores prácticas. Si todas esas mejores
@@ -4364,11 +3981,9 @@ constantemente en su desarrollo.
 Existe un espectro de relaciones potenciales entre los usuarios y los creadores del sistema de diseño, y el
 tamaño y la composición de su empresa indudablemente darán forma a esas relaciones.
 
--- 151 of 178 --
-
 ---
 
-## Sección 76: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 155
+## Sección 76: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 155 [Entropy: 0.25]
 
 Inevitablemente, habrá disciplinas que hagan el trabajo de forma activa, mientras que
 otras pueden asumir un papel más de asesoramiento. Los responsables del diseño y
@@ -4406,9 +4021,6 @@ cómo manejar el cambio. Considera lo siguiente:
 una aplicación específica? ¿Se modifica el patrón? ¿Recomiendas usar
 un patrón diferente? ¿Es necesario crear un nuevo patrón?
 ¿Cómo se manejan las solicitudes de nuevos patrones? ɕ
-
--- 152 of 178 --
-
 156 DISEÑO ATÓMICO
 ɕ
 ɕ
@@ -4451,11 +4063,9 @@ organización.
 Desarrollar una estrategia para manejar los cambios de patrones es crucial,
 por eso Inayaili de León Persson y el equipo web de Canonical gastaron
 
--- 153 of 178 --
-
 ---
 
-## Sección 77: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 157
+## Sección 77: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 157 [Entropy: 0.265]
 
 Es hora de trazar su estrategia mientras creaban el marco de interfaz de
 Vanilla.
@@ -4476,9 +4086,6 @@ visual, mejoras de rendimiento, mejoras de accesibilidad, refactorización de c�
 actualizaciones de mejores prácticas de UX, etc.
 El equipo web de Canonical trazó el proceso de decisión utilizado para administrar las actualizaciones y adiciones a
 los patrones en el marco de front-end de Vanilla.
-
--- 154 of 178 --
-
 158 DISEÑO ATÓMICO
 Los encargados del mantenimiento del sistema de diseño deben
 comprender por qué y cuándo modificar los patrones, cómo realizar esos
@@ -4512,11 +4119,9 @@ Tener un plan para dejar de lado los patrones es una gran idea. Pero, ¿cómo se
 los patrones del sistema de diseño sin quitar la alfombra de debajo de las personas que
 confían en esos patrones en sus
 
--- 155 of 178 --
-
 ---
 
-## Sección 78: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 159
+## Sección 78: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 159 [Entropy: 0.265]
 
 aplicaciones? Para abordar este problema, Salesforce creó una utilidad ordenada
 llamada Sass Deprecate que marca los patrones que se dirigen al bloque de corte
@@ -4549,9 +4154,6 @@ sincronizadas. La idea es que debería poder realizar un cambio en un patrón de
 ver ese cambio reflejado automáticamente en la biblioteca de patrones
 y en cualquier
 lugar donde el patrón esté incluido en la producción.
-
--- 156 of 178 --
-
 160 DISEÑO ATÓMICO
 Esta técnica elimina cualquier duplicación de esfuerzo y asegura que la
 biblioteca de patrones y las aplicaciones que utilizan los patrones
@@ -4571,11 +4173,9 @@ factores, incluida la arquitectura técnica y la estructura organizativa.
 El santo grial de los sistemas de diseño es un entorno en el que realizar cambios en un patrón de interfaz de
 usuario actualiza simultáneamente la biblioteca de patrones y las aplicaciones de producción.
 
--- 157 of 178 --
-
 ---
 
-## Sección 79: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 161
+## Sección 79: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 161 [Entropy: 0.265]
 
 Eliminación de obstáculos técnicos
 Mantener una biblioteca de patrones sincronizada con los entornos de producción
@@ -4594,9 +4194,6 @@ los pros y los contras de cada estrategia para alimentar a un
 Lonely Planet creó una API para sus patrones de interfaz de usuario que es consumida tanto por su biblioteca de
 patrones como por su entorno de producción. Al construir su sistema de diseño de esta manera, los cambios en
 los patrones de la interfaz de usuario se reflejan automáticamente tanto en la biblioteca de patrones como en el entorno de producción.
-
--- 158 of 178 --
-
 162 DISEÑO ATÓMICO
 diseñar el sistema en aplicaciones para mantener ambas bases de código en
 sincronía. Si bien no detallaré cada una de las estrategias de Marcelo, vale la
@@ -4628,11 +4225,9 @@ mismos patrones de marcado una y otra vez. La buena noticia es que
 muchos CMS y entornos de aplicaciones también utilizan lenguajes de
 plantillas para servir el marcado de front-end.
 
--- 159 of 178 --
-
 ---
 
-## Sección 80: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 163
+## Sección 80: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 163 [Entropy: 0.31]
 
 El lenguaje de plantillas puede servir como puente entre su biblioteca
 de patrones y los entornos de producción. Si usa un lenguaje de
@@ -4655,9 +4250,6 @@ plantilla.
 - Evan Lovely, Tecnología Phase2
 Un lenguaje de plantillas como Moustache, Handlebars, Underscore, Jade y otros pueden servir como un puente que
 permite que el código de front-end se comparta entre la biblioteca de patrones y la aplicación de producción.
-
--- 160 of 178 --
-
 164 DISEÑO ATÓMICO
 ¿Es compatible tu cultura con el santo grial?
 Es posible que haya leído la última sección y haya pensado: “¡Eso es asombroso!
@@ -4679,11 +4271,9 @@ gigantesca, pero como puede imaginar, es una tarea bastante difícil. La inmensi
 naturaleza descentralizada de la organización.
 Los Borradores de los Estándares de Diseño Web de EE. UU. Son el sistema de diseño del gobierno federal de los Estados Unidos.
 
--- 161 of 178 --
-
 ---
 
-## Sección 81: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 165
+## Sección 81: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 165 [Entropy: 0.25]
 
 significa que una biblioteca de patrones sincronizados no se puede lograr sin
 una reestructuración dramática de cómo se construyen los sitios web del
@@ -4719,9 +4309,6 @@ confirmar que la funcionalidad y los controles son intuitivos. La gente de front
 debe asegurarse de que el componente responda, sea accesible y funcione. Los
 desarrolladores de back-end deben asegurarse de que el componente esté
 correctamente conectado al sistema de back-end. Entiendes la idea.
-
--- 162 of 178 --
-
 166 DISEÑO ATÓMICO
 Una guía de estilo bien elaborada puede ayudar a administrar todas estas
 partes móviles y garantizar que las muchas perspectivas que influyen en cada
@@ -4745,11 +4332,9 @@ ocurre por casualidad, y esto puede ser problemático cuando se obtiene
 Un carrusel de página de inicio en un sitio como Walmart requiere la participación de muchas disciplinas y
 partes interesadas diferentes. Una guía de estilo puede ayudar a reunir esas diferentes perspectivas bajo un mismo techo.
 
--- 163 of 178 --
-
 ---
 
-## Sección 82: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 167
+## Sección 82: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 167 [Entropy: 0.25]
 
 una guía de estilo del suelo. Si los equipos piensan que hacer una guía de
 estilo útil implica hacer algo grande y oficial con una marca personalizada
@@ -4769,9 +4354,6 @@ La visibilidad es de vital importancia para la salud continua de su sistema de
 diseño. Un esfuerzo tan importante no debería estar escondido
 La guía de estilo de Yelp tiene una portada atractiva y amigable que explica qué es el recurso, para
 quién es y cómo usarlo.
-
--- 164 of 178 --
-
 168 DISEÑO ATÓMICO
 en un rincón oscuro de su intranet. ¿Qué pasos puede tomar para asegurarse de
 que el sistema de diseño siga siendo la piedra angular de sus flujos de trabajo de
@@ -4809,11 +4391,9 @@ consideraciones para usar los botones de nuestro sistema en toda su aplicación"
 ɕ
 ɕ
 
--- 165 of 178 --
-
 ---
 
-## Sección 83: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 169
+## Sección 83: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 169 [Entropy: 0.265]
 
 Tener una base para todos estos materiales es una gran idea, y
 mantenerlos adyacentes (o incluso dentro) de la guía de estilo también
@@ -4833,9 +4413,6 @@ un cambio de propuesta y que se requieren comentarios.
 - Micah Sivitz, Shyp
 El equipo de diseño de materiales publica un útil registro de cambios dentro de su guía de estilo para que los
 usuarios puedan conocer fácilmente las últimas actualizaciones y mejoras del sistema.
-
--- 166 of 178 --
-
 170 DISEÑO ATÓMICO
 Integrar esta comunicación en el flujo de trabajo diario del equipo mantiene
 comprometidos a los creadores, usuarios y partes interesadas, y ayuda a tranquilizar a
@@ -4878,11 +4455,9 @@ también pueden servir como una gran referencia a la que volver.
 ɕ
 ɕ
 
--- 167 of 178 --
-
 ---
 
-## Sección 84: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 171
+## Sección 84: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 171 [Entropy: 0.25]
 
 ɕ Inducción: Una excelente manera de inyectar su sistema de diseño en la cultura de
 su empresa es incorporar la capacitación del sistema de diseño directamente en el
@@ -4922,9 +4497,6 @@ creadores y usuarios.
 ɕ
 ɕ
 ɕ
-
--- 168 of 178 --
-
 172 DISEÑO ATÓMICO
 Gracias a herramientas como GitHub, los usuarios de sistemas de diseño no tienen que ser
 relegados al papel de consumidores tontos. Las personas que usan el sistema día tras día
@@ -4945,11 +4517,9 @@ un plan de ataque para abordar cualquier problema y sugerencia.
 El sistema Draft US Web Digital Standards rastrea los problemas usando GitHub, proporcionando un lugar para
 que los usuarios y los creadores presenten errores y tengan conversaciones sobre el meollo de la cuestión.
 
--- 169 of 178 --
-
 ---
 
-## Sección 85: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 173
+## Sección 85: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 173 [Entropy: 0.265]
 
 ɕ Solicitudes de comentarios: Administrar un sistema que potencialmente se puede
 implementar en cientos de aplicaciones puede resultar complicado. Antes de
@@ -4988,9 +4558,6 @@ visibilidad y agrega una carga innecesaria a su equipo y socios, lo que limita l
 efectividad y el potencial del recurso. Y los temores de revelar sus secretos
 comerciales son completamente infundados. Estos son patrones de interfaz de
 usuario, no códigos nucleares.
-
--- 170 of 178 --
-
 174 DISEÑO ATÓMICO
 Además de facilitar el acceso a la documentación importante, una guía
 de estilo pública ayuda a crear responsabilidad organizacional.
@@ -5011,11 +4578,9 @@ por eso quería unirme a este equipo.
 - Jina Bolton
 Styleguides.io reúne más de 150 guías de estilo para el público de organizaciones de todo el mundo.
 
--- 171 of 178 --
-
 ---
 
-## Sección 86: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 175
+## Sección 86: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 175 [Entropy: 0.25]
 
 Desde que se unió a Salesforce, ayudó a crear el exitoso Lightning Design
 System y ayuda a administrar su creciente equipo de sistemas de diseño.
@@ -5039,14 +4604,11 @@ que aumenta la eficacia de la documentación.
 El sistema de diseño Harmony de Intuit incluye una biblioteca de patrones, principios de diseño, voz y tono,
 pautas de marketing y más. Alojar esta útil documentación bajo un mismo techo ayuda a aumentar su visibilidad y
 eficacia.
-
--- 172 of 178 --
-
 176 DISEÑO ATÓMICO
 Otra forma de ampliar la funcionalidad de la biblioteca de patrones es incluir pautas
 para los patrones de la plataforma nativa junto con los patrones basados en la web.
 Podemos mirar al sistema de diseño Harmony de Intuit una vez más para ver un ejemplo
-de cómo los patrones de plataforma móvil nativa para iOS y Android pueden vivir junto a
+de cómo los patrones de plataforma móvil nativa para iOS y Web Platform pueden vivir junto a
 sus contrapartes basadas en la web.
 Hágalo independiente del contexto
 La forma en que se nombran los patrones de la interfaz de usuario indudablemente
@@ -5064,15 +4626,13 @@ contenido
 patrones que viven dentro de ellos. Por ejemplo, si trabaja en un sitio de comercio
 electrónico, puede tener la tentación de llamar a un bloque que contiene una imagen
 de producto y un título como "tarjeta de producto".
-La biblioteca de patrones Harmony de Intuit incluye botones para cambiar entre web, iOS y Android para cada
+La biblioteca de patrones Harmony de Intuit incluye botones para cambiar entre web, iOS y Web Platform para cada
 patrón. Esto permite al equipo mantener un sistema de diseño mayoritariamente consistente en todas las
 plataformas, pero también documentar las divergencias de patrones cuando ocurren.
 
--- 173 of 178 --
-
 ---
 
-## Sección 87: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 177
+## Sección 87: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 177 [Entropy: 0.265]
 
 Pero nombrar las cosas de esta manera limita inmediatamente qué tipo de contenido
 puede vivir dentro de él. Al nombrar el patrón simplemente "tarjeta", puede poner todo
@@ -5097,9 +4657,6 @@ demostrar el contexto para que los usuarios del sistema de diseño comprendan
 cómo y dónde usarlos correctamente. La mayoría de los patrones
 Un buen ejercicio al nombrar patrones es difuminar el contenido para que sus nombres reflejen las estructuras de
 los patrones en lugar del contenido que vive dentro de ellos.
-
--- 174 of 178 --
-
 178 DISEÑO ATÓMICO
 las bibliotecas muestran una demostración de cada patrón de interfaz de usuario, pero como
 hemos comentado, esos patrones no viven en el vacío. ¿Dónde se utilizan exactamente estos
@@ -5120,9 +4677,6 @@ exactamente qué patrones y plantillas deberían probarse si se hicieran cambios
 en un patrón en particular.
 La biblioteca de componentes de Material Design no solo contiene un ejemplo de cada componente;
 documenta a fondo el uso del componente con muchas imágenes y videos para respaldarlo.
-
--- 175 of 178 --
-
 Haz que dure
 Hacer un sistema de diseño es un esfuerzo increíble e importante. Pero
 sin el mantenimiento adecuado, el valor de su sistema de diseño se
@@ -5132,13 +4686,10 @@ que aumenta de valor con el tiempo.
 
 ---
 
-## Sección 88: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 179
+## Sección 88: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 179 [Entropy: 0.265]
 
 Herramientas como Pattern Lab brindan información sobre el linaje, lo que permite a los equipos ver qué
 componentes más pequeños se incluyen en un componente determinado, así como dónde se usa cada patrón.
-
--- 176 of 178 --
-
 180 DISEÑO ATÓMICO
 Como hemos comentado a lo largo de este capítulo, hacer que su sistema
 de diseño resista la prueba del tiempo requiere una cantidad significativa
@@ -5161,11 +4712,9 @@ Con el mantenimiento adecuado, su sistema de diseño debería aumentar de valor 
 de buen vino, en lugar de un automóvil usado que acaba de salir del lote. Credito de imagen: Sabin Paul Croce en
 Flickr y Ray Larabie en Flickr
 
--- 177 of 178 --
-
 ---
 
-## Sección 89: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 181
+## Sección 89: CAPÍTULO 5 / MANTENIMIENTO DE LOS SISTEMAS DE DISEÑO 181 [Entropy: 0.25]
 
 Así que ahí lo tienes. Para crear un sistema de diseño que se pueda
 mantener, debe:
@@ -5208,8 +4757,5 @@ sistemas de diseño, ser deliberado en cómo construye interfaces de usuario,
 establecer un flujo de trabajo colaborativo y basado en patrones y configurar
 procesos para mantener con éxito su sistema de diseño, espero que usted y su
 equipo puedan crear grandes cosas juntos. ¡Avanza y sé atómico!
-
--- 178 of 178 --
-
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[DESIGN_MASTERY_2026]] · [[AGENT_CREATIVE_AND_VISUAL_AWARENESS_2026]] · [[CANON_REFACTORING_UI_WATHAN_SCHOGER]] · [[CANON_PRACTICAL_UI_ADHAM_DANNAWAY]] · #ui_ux_design

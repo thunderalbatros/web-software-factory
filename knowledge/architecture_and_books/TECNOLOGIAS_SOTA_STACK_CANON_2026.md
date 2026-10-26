@@ -1,27 +1,27 @@
-> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
+
 # 🚀 TECNOLOGÍAS SOTA STACK CANON 2026: GUÍA DE ESPECIALIZACIÓN Y MAESTRÍA TÉCNICA
 
 **Custodia:** [[MANAGER_AGENT]] · [[CORE_ENGINEERING_SQUAD]] · [[DATA_PLATFORM_SQUAD]] · [[RESEARCHER_AGENT]]  
-**Contexto de Operación:** React Native 0.86 · Expo SDK 57 (Fabric / Bridgeless) · TypeScript ~6.0 · Zustand 5 · Supabase PostgreSQL 17 + PostGIS · GCP Serverless · Qdrant Vector Engine · n8n · Maestro  
-**Norma Obligatoria:** Todo componente, hook, migración SQL, mutación reactiva o pipeline de datos en Yendo DEBE anclarse en las directivas de este compendio de 210 fuentes canónicas.
+**Contexto de Operación:** Modern Web UI (CSS/WAAPI) 0.86 · Expo SDK 57 (Fabric / Bridgeless) · TypeScript ~6.0 · Zustand 5 · Supabase PostgreSQL 17 + PostGIS · GCP Serverless · Qdrant Vector Engine · n8n · Maestro  
+**Norma Obligatoria:** Todo componente, hook, migración SQL, mutación reactiva o pipeline de datos en WebFactory DEBE anclarse en las directivas de este compendio de 210 fuentes canónicas.
 
 ---
 
 ## 📑 Índice de Dominios Tecnológicos
 
-1. [[#1. React Native (0.86+ / New Architecture Fabric)]]
+1. [[#1. Modern Web UI (CSS/WAAPI) (0.86+ / New Architecture Fabric)]]
 2. [[#2. Expo (SDK 57 / EAS / Bridgeless)]]
 3. [[#3. TypeScript (~6.0 / Type-Level Programming)]]
 4. [[#4. Zustand (v5 / Concurrencia React 19 / MMKV)]]
@@ -31,7 +31,7 @@ ultima_revision: 2026-08-27
 
 ---
 
-## 1. React Native (0.86+ / New Architecture Fabric)
+## 1. Modern Web UI (CSS/WAAPI) (0.86+ / New Architecture Fabric)
 
 ### Principios Fundamentales
 - **Cero JS Bridge:** El renderizador Fabric monta vistas nativas síncronamente mediante JSI (JavaScript Interface) y C++ TurboModules. Ninguna animación o cálculo de layout pasa por el canal asíncrono serializado JSON.
@@ -39,30 +39,30 @@ ultima_revision: 2026-08-27
 - **Micro-interacciones en UI Thread:** Todo gesto de arrastre, expansión de BottomSheet o física de muelle corre como worklet compilado en el hilo de UI nativo a 60–120 FPS.
 
 ### Síntesis de Fuentes Canónicas (1–30)
-1. *React Native Official Architecture Guide (Fabric & TurboModules)*: Desacopla la interfaz del ciclo de eventos de JavaScript.
-2. *React Native Bridgeless Mode RFC*: Supresión definitiva de `MessageQueue` y llamadas síncronas directas.
+1. *Modern Web UI (CSS/WAAPI) Official Architecture Guide (Fabric & TurboModules)*: Desacopla la interfaz del ciclo de eventos de JavaScript.
+2. *Modern Web UI (CSS/WAAPI) Bridgeless Mode RFC*: Supresión definitiva de `MessageQueue` y llamadas síncronas directas.
 3. *Yoga Engine Memory Specifications*: Optimización de nodos planos y cálculo estático de márgenes.
-4. *React 19 Concurrency & Transitions in React Native*: Uso de `startTransition` y `useDeferredValue` para búsquedas pesadas sin bloquear el render táctil.
-5. *React Native Performance Playbook (Hermes & Systrace)*: Perfilado de Cold Start (<1200ms) y eliminación de TTI lag.
+4. *React 19 Concurrency & Transitions in Modern Web UI (CSS/WAAPI)*: Uso de `startTransition` y `useDeferredValue` para búsquedas pesadas sin bloquear el render táctil.
+5. *Modern Web UI (CSS/WAAPI) Performance Playbook (Hermes & Systrace)*: Perfilado de Cold Start (<1200ms) y eliminación de TTI lag.
 6. *Nitro Modules C++ Bindings*: Puentes ultrarrápidos para módulos de cámara, criptografía y almacenamiento MMKV.
-7. *React Native 0.86 Migration Guide*: Estandarización de componentes funcionales puros sin lifecycle obsoleto.
+7. *Modern Web UI (CSS/WAAPI) 0.86 Migration Guide*: Estandarización de componentes funcionales puros sin lifecycle obsoleto.
 8. *Metro Bundler Tree-Shaking & RAM Bundles*: Empaquetado quirúrgico para bundles móviles de bajo peso.
-9. *Android NDK JNI Bridge Tuning*: Minimizador de cruce de memoria entre Java y C++.
+9. *Web Platform NDK JNI Bridge Tuning*: Minimizador de cruce de memoria entre Java y C++.
 10. *iOS Metal 3 Rendering Pipeline*: Renderizado por hardware en dispositivos Apple.
-11. *React and React Native (6ed 2026, Mikhail Sakhniuk)*: Arquitectura multiplataforma de grado empresarial.
-12. *React Native in Action (Nader Dabit)*: Patrones de navegación nativa y desacoplamiento de estado.
-13. *Mastering React Native Architecture (Eric Masiello)*: Modularización y límites de dominio.
+11. *React and Modern Web UI (CSS/WAAPI) (6ed 2026, Mikhail Sakhniuk)*: Arquitectura multiplataforma de grado empresarial.
+12. *Modern Web UI (CSS/WAAPI) in Action (Nader Dabit)*: Patrones de navegación nativa y desacoplamiento de estado.
+13. *Mastering Modern Web UI (CSS/WAAPI) Architecture (Eric Masiello)*: Modularización y límites de dominio.
 14. *Cross-Platform Mobile Development (Derek Wheelden)*: Pruebas unitarias de integración de plataforma.
 15. *High Performance JavaScript & Mobile Web (Zakas)*: Gestión de memoria y recolección de basura defensiva.
-16. *The Complete React Native Engineer (Robin Heinze)*: Manejo de errores y resiliencia en release.
+16. *The Complete Modern Web UI (CSS/WAAPI) Engineer (Robin Heinze)*: Manejo de errores y resiliencia en release.
 17. *Fabric Deep Dive: C++ Native Components (William Candillon)*: Creación de vistas de alto rendimiento.
 18. *120 FPS Engineering (Software Mansion)*: Eliminación de jank en listas complejas y pantallas de mapas.
-19. *React Native Performance Tuning (Callstack)*: Diagnóstico de fuga de memoria y listeners huérfanos.
+19. *Modern Web UI (CSS/WAAPI) Performance Tuning (Callstack)*: Diagnóstico de fuga de memoria y listeners huérfanos.
 20. *JSI and Native Modules from Scratch (Simon Grimm)*: Construcción de plugins de hardware nativo.
 21. *Building Large Scale Apps (Meta Open Source)*: Escalabilidad en monorepos y micro-paquetes.
 22. *Hermes AOT JavaScript Engine (ACM SIGPLAN)*: Optimización de bytecode precompilado.
 23. *Cross-Platform Performance Study (IEEE Software)*: Comparativa empírica de latencia de cuadro.
-24. *Memory Management in Hybrid Architectures (ACM Digital Library)*: Prevención de OOM en Android.
+24. *Memory Management in Hybrid Architectures (ACM Digital Library)*: Prevención de OOM en Web Platform.
 25. *Thread Synchronization in Native Bridges (Springer)*: Patrones de exclusión mutua en C++.
 26. *Static Analysis and Bundle Tree Optimization (JSS)*: Supresión de código muerto en producción.
 27. *Real-Time Gesture Latency on Mobile Displays (HCI)*: Respuesta táctil sub-16ms.
@@ -75,23 +75,23 @@ ultima_revision: 2026-08-27
 ## 2. Expo (SDK 57 / EAS / Bridgeless)
 
 ### Principios Fundamentales
-- **Continuous Native Generation (CNG):** Prohibido tocar carpetas `/android` o `/ios` manualmente; la configuración nativa se genera de forma declarativa mediante Config Plugins versionados en `app.json`.
-- **EAS Build & Update Criptográfico:** Firmado determinístico de binarios (APK/AAB) y manifiestos de actualización OTA con rollback automático ante fallas en el primer inicio.
-- **Hardware SecureStore Enclave:** Almacenamiento de tokens JWT de Supabase cifrados en hardware vía Android KeyStore / iOS Secure Enclave (MMKV cifrado con clave en SecureStore).
+- **Continuous Native Generation (CNG):** Prohibido tocar carpetas `/Web Platform` o `/ios` manualmente; la configuración nativa se genera de forma declarativa mediante Config Plugins versionados en `app.json`.
+- **EAS Build & Update Criptográfico:** Firmado determinístico de binarios (Web Bundle/AAB) y manifiestos de actualización OTA con rollback automático ante fallas en el primer inicio.
+- **Hardware SecureStore Enclave:** Almacenamiento de tokens JWT de Supabase cifrados en hardware vía Web Platform KeyStore / iOS Secure Enclave (MMKV cifrado con clave en SecureStore).
 
 ### Síntesis de Fuentes Canónicas (31–60)
 31. *Expo SDK 57 Canonical Reference*: APIs estándar de ubicación, sensores y media.
 32. *EAS Build Config Plugins Architecture*: Modificación segura del AndroidManifest e Info.plist.
 33. *EAS Update Code Signing*: Protocolo de integridad criptográfica para actualizaciones inalámbricas.
 34. *Expo Modules API (Swift & Kotlin DSL)*: Desarrollo de módulos nativos limpios y tipados.
-35. *Expo Deep Linking & Android Intent Filters*: Ruteo de autenticación OAuth y callbacks.
+35. *Expo Deep Linking & Web Platform Intent Filters*: Ruteo de autenticación OAuth y callbacks.
 36. *Expo SecureStore Hardware Keystore*: Custodia de claves criptográficas y secretos locales.
 37. *Expo Image Progressive WebP/AVIF*: Decodificación nativa con caché LRU de alto impacto visual.
 38. *Expo Video ExoPlayer/AVPlayer Pipeline*: Reproducción acelerada por hardware de videos en feeds.
 39. *Expo GL Headless Lifecycle*: Contextos WebGL 2.0 con recolección limpia de VRAM.
 40. *Expo Prebuild Guarantees*: Reproducibilidad determinística de compilaciones nativas.
 41. *Expo for Professionals (Charlie Cheever)*: Buenas prácticas de despliegue industrial.
-42. *Practical React Native with Expo (Damien Cosset)*: Flujos de CI/CD automatizados.
+42. *Practical Modern Web UI (CSS/WAAPI) with Expo (Damien Cosset)*: Flujos de CI/CD automatizados.
 43. *Building Native Mobile Apps with Expo (Simon Grimm)*: Integración de autenticación social.
 44. *Modern Mobile Workflows with EAS (Wojciech Bilicki)*: Perfiles de compilación dev, preview y prod.
 45. *Enterprise Expo: Multi-Tenant Architecture*: Estrategias de empaquetado y gobernanza.
@@ -108,7 +108,7 @@ ultima_revision: 2026-08-27
 56. *Automated UI Testing on Cloud Device Farms*: Integración de pruebas móviles distribuidas.
 57. *Optimizing Asset Delivery via CDN Edge*: Distribución global de texturas y fuentes tipográficas.
 58. *Offline-First Architecture with SQLite & MMKV*: Sincronización resiliente sin conexión.
-59. *Memory Profiling in Low-End Android*: Manejo de límites estrictos de RAM (2GB - 4GB).
+59. *Memory Profiling in Low-End Web Platform*: Manejo de límites estrictos de RAM (2GB - 4GB).
 60. *Config Plugins AST Manipulation*: Reglas de transformación limpia de archivos de proyecto.
 
 ---
@@ -170,7 +170,7 @@ ultima_revision: 2026-08-27
 96. *Slice Pattern Architecture*: Descomposición de grandes máquinas de estado en submódulos ordenados.
 97. *Fine-Grained Selectors & `useShallow`*: Optimización matemática de ciclos de render.
 98. *Optimistic Updates with Rollback*: Mutaciones instantáneas de UI con reversión limpia ante fallas.
-99. *Zustand + React Native MMKV Adapter*: Persistencia síncrona en memoria flash nativa.
+99. *Zustand + Modern Web UI (CSS/WAAPI) MMKV Adapter*: Persistencia síncrona en memoria flash nativa.
 100. *Transient State Subscriptions*: Suscripciones a valores de alta frecuencia (scroll, acelerómetro) sin re-renderizar.
 101. *State Management in React (Michelle Gienow)*: Comparativa y evolución de stores reactivos.
 102. *Micro State Management with Hooks (Daishi Kato)*: Filosofía y arquitectura atómica de Zustand.
@@ -180,7 +180,7 @@ ultima_revision: 2026-08-27
 106. *Mastering Zustand (Jack Herrington)*: Construcción de stores empresariales limpios.
 107. *React 19 State Management (Theo - t3.gg)*: Por qué Zustand superó a Redux y Context.
 108. *Daishi Kato on React Concurrency (React Advanced)*: Manejo de transiciones asíncronas en stores.
-109. *High-Performance React Native State (Software Mansion)*: Integración con gestos táctiles.
+109. *High-Performance Modern Web UI (CSS/WAAPI) State (Software Mansion)*: Integración con gestos táctiles.
 110. *Offline-First State with MMKV (William Candillon)*: Recuperación instantánea tras cierre forzado.
 111. *Comparative State Management Evaluation (ACM SAC)*: Benchmarks de consumo de memoria y CPU.
 112. *Tearing Prevention in Concurrent Architectures (React RFC)*: Especificación formal de sincronización.
@@ -251,7 +251,7 @@ ultima_revision: 2026-08-27
 155. *Cloud Run Jobs: Batch Ingestion Workers*: Procesamiento por lotes desatendido a coste cero en reposo.
 156. *Cloud Tasks: Asynchronous HTTP Task Queuing*: Desacoplamiento de eventos y limitación de tasa de peticiones.
 157. *Google Cloud Storage: Lifecycle Management*: Políticas de archivado y compresión de multimedia.
-158. *Firebase Test Lab: Physical Android Matrix*: Pruebas de compatibilidad en dispositivos reales.
+158. *Firebase Test Lab: Physical Web Platform Matrix*: Pruebas de compatibilidad en dispositivos reales.
 159. *Cloud Trace & Cloud Monitoring (OpenTelemetry)*: Trazabilidad de latencia p95 por fase del pipeline.
 160. *Google Cloud IAM: Workload Identity Federation*: Autenticación segura sin claves JSON permanentes.
 161. *Google Cloud Certified Professional Architect Guide (Sullivan)*: Diseño de arquitecturas cloud resilientes.
@@ -273,7 +273,7 @@ ultima_revision: 2026-08-27
 177. *DORA Metrics Framework (IT Revolution)*: Medición de frecuencia de despliegue y tiempo de recuperación.
 178. *Cost Optimization in Cloud Run Workloads (IEEE Cloud)*: Ajuste de memoria y concurrencia por contenedor.
 179. *Zero-Downtime Migration with KMS (ACM CCS)*: Cifrado en tránsito y en reposo de nivel bancario.
-180. *Automated Robo-Test Crawlers in Android (ACM FSE)*: Exploración heurística de interfaces móviles.
+180. *Automated Robo-Test Crawlers in Web Platform (ACM FSE)*: Exploración heurística de interfaces móviles.
 
 ---
 
@@ -297,22 +297,22 @@ ultima_revision: 2026-08-27
 190. *Automating LLM Agent Workflows with n8n*: Coordinación de tareas asíncronas entre squads de IA.
 191. *Maestro Mobile Testing Framework Documentation*: Definición declarativa de flujos de usuario en YAML.
 192. *Maestro vs Appium vs Detox*: Reducción a cero de esperas arbitrarias y sincronización con el hilo nativo.
-193. *Declarative E2E Testing for React Native*: Pruebas determinísticas sin modificar el código de la app.
+193. *Declarative E2E Testing for Modern Web UI (CSS/WAAPI)*: Pruebas determinísticas sin modificar el código de la app.
 194. *Maestro Cloud Automation & CI/CD*: Ejecución paralela en matrices de dispositivos móviles.
 195. *Automated Screenshot Regression with Maestro*: Verificación de fidelidad visual frente a wireframes.
 196. *Reanimated 4 Worklet Scheduling*: Ejecución síncrona de cálculos físicos directamente en el hilo de UI.
 197. *Gesture Handler v2 State Machine*: Intercepción táctil nativa sin interferir con el scroll del sistema.
 198. *Physics-Based Spring Animations*: Calibración de masa, amortiguación y rigidez para una sensación táctil premium.
-199. *Motion Graphics Coding in React Native*: Implementación de curvas cúbicas Bézier e inercia cinemática.
+199. *Motion Graphics Coding in Modern Web UI (CSS/WAAPI)*: Implementación de curvas cúbicas Bézier e inercia cinemática.
 200. *High-Frequency Touch on 120Hz Displays*: Tasa de muestreo táctil óptima para pantallas ProMotion / AMOLED.
 201. *Shopify FlashList Recycling Architecture*: Reciclaje de celdas nativas que elimina los picos de recolección de basura.
-202. *React Native Skia 2D Shaders*: Programación en GPU mediante SkSL para efectos visuales avanzados.
+202. *Modern Web UI (CSS/WAAPI) Skia 2D Shaders*: Programación en GPU mediante SkSL para efectos visuales avanzados.
 203. *Skia Dynamic Glows & Radar Pulses*: Animación matemática de ondas concéntricas a 120 FPS sostenidos.
 204. *Memory Profiling: FlatList vs FlashList*: Reducción del 80% en uso de memoria en feeds infinitos.
 205. *GPU Canvas Lifecycle Management*: Liberación estricta de texturas para evitar memory leaks al navegar.
 206. *React Three Fiber Mobile Optimization*: Descarte automático de geometrías y materiales al desmontar vistas 3D.
 207. *Moti: Universal Animations*: Micro-interacciones limpias declaradas mediante propiedades de estilo.
-208. *Fastlane Delivery Automation*: Generación y firma automática de artefactos APK y entrega vía bots.
+208. *Fastlane Delivery Automation*: Generación y firma automática de artefactos Web Bundle y entrega vía bots.
 209. *Penpot Open Source Design Tokens API*: Sincronización continua de paletas de color, radios y tipografías.
 210. *Penpot MCP Server for Antigravity*: Conexión directa entre el lienzo de diseño visual y el entorno de programación agéntica.
 
@@ -334,7 +334,7 @@ ultima_revision: 2026-08-27
 - [[PostGIS]]
 - [[Supabase]]
 - [[Reanimated]]
-- [[React Native Skia]]
+- [[Modern Web UI (CSS/WAAPI) Skia]]
 - [[React Three Fiber]]
 - [[Rive]]
 - [[Zero-Downtime Migrations]]

@@ -7,7 +7,7 @@
 > **Fuente URL:** https://www.youtube.com/watch?v=sal78ACtGTc  
 > **Fecha de Ingesta:** 2026-10-06  
 > **Tipo:** Transcripción Íntegra de Clase Magistral con Marcas de Tiempo  
-> **Estado:** Procesado y Disponible para Ingesta RAG en Centinela  
+> **Estado:** Procesado y Disponible para Ingesta RAG en Web Software Factory  
 
 ---
 

@@ -1,4 +1,4 @@
-﻿# CATÁLOGO MAESTRO CURADO: Libros, Documentación Oficial y Videocursos Gratuitos (Filtro de Calidad 2026)
+# CATÁLOGO MAESTRO CURADO: Libros, Documentación Oficial y Videocursos Gratuitos (Filtro de Calidad 2026)
 
 **Alcance:** Aplicable a todos los Squads de la Software Factory Web y Web Software Factory Studio (`Squad 0` a `Squad 7`) como mapa de fuentes primarias verificadas de ingeniería web minimalista, animaciones 60 FPS, shaders, WebAudio, ciberseguridad, juegos interactivos para espectadores de realtime-stream.com, gamificación, psicología del juego y marketing CRO.
 
@@ -17,7 +17,7 @@ Toda fuente de conocimiento incorporada en el cerebro **Supercharged Omni-RAG v3
 
 ## 2. Biblioteca de Libros Completos Ingeridos en `knowledge/` (52 Libros Completos Indexados)
 
-Tras completar **"La Gran Mudanza"** desde *Centinela Studio*, *Yendo Mobile* y las bibliotecas locales (`Downloads/` y `Desktop/`) mediante `tools/intelligence/book_pdf_ingester.mjs` (`pdf-parse` + extractor nativo `.epub`) y `tools/intelligence/vault_migrator.mjs`, el cerebro RAG cuenta con **52 libros técnicos completos** organizados por dominio:
+Tras completar **"La Gran Mudanza"** desde *la Web Software Factory*, *la Web Software Factory* y las bibliotecas locales (`Downloads/` y `Desktop/`) mediante `tools/intelligence/book_pdf_ingester.mjs` (`pdf-parse` + extractor nativo `.epub`) y `tools/intelligence/vault_migrator.mjs`, el cerebro RAG cuenta con **52 libros técnicos completos** organizados por dominio:
 
 ### 2.1 Diseño de Juegos Interactivos, Matemática de Slots, Gamificación y Psicología Conductual (17 Libros)
 1. **Yu-kai Chou** — *Actionable Gamification: Beyond Points, Badges, and Leaderboards* (`knowledge/actionable_gamification.md`, `844 KB`)

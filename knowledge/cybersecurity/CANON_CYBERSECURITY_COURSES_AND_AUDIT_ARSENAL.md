@@ -1,19 +1,19 @@
-> **Alcance:** Literatura canónica de ciberseguridad web, criptografía aplicada, protección de identidad OAuth 2.1, defensa XSS/CSP/CSRF y blindaje de aplicaciones en tiempo real.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
+> **Alcance:** Literatura canónica de ciberseguridad web, criptografía aplicada, protección de identidad OAuth 2.1, defensa XSS/CSP/CSRF y blindaje de aplicaciones en tiempo real.
+
 # 🎓 Arsenal Educativo Canónico: Cursos Universitarios Libres y Currículas de Hacking Ético
 
-Este documento sistematiza e ingesta el conocimiento transferible de los programas universitarios de élite (MIT, Stanford, PortSwigger, DEF CON) y las currículas de formación técnica profunda en YouTube (freeCodeCamp, TCM, IppSec, LiveOverflow, HackerSploit, Simply Cyber, John Hammond). Transforma el contenido teórico y táctico en **capacidades defensivas y de auditoría continua para los agentes de Yendo**.
+Este documento sistematiza e ingesta el conocimiento transferible de los programas universitarios de élite (MIT, Stanford, PortSwigger, DEF CON) y las currículas de formación técnica profunda en YouTube (freeCodeCamp, TCM, IppSec, LiveOverflow, HackerSploit, Simply Cyber, John Hammond). Transforma el contenido teórico y táctico en **capacidades defensivas y de auditoría continua para los agentes de WebFactory**.
 
 ---
 
@@ -39,8 +39,8 @@ graph TD
 - **Núcleo de Conocimiento:**
   - **6.858:** Modelos de aislamiento de procesos, sandboxing a nivel de sistema operativo, análisis estático y dinámico de código, seguridad en navegadores web (Same-Origin Policy, CSP, sandboxing iframes) y mitigación de canales laterales.
   - **6.875:** Fundamentos rigurosos de teoría de la complejidad en criptografía, funciones pseudoaleatorias (PRF), construcciones de firmas basadas en árboles de Merkle, pruebas de conocimiento cero (ZKP) y computación segura multipartita (MPC).
-- **Transferencia a Yendo:**
-  - Diseño del aislamiento del runtime en Expo/React Native frente a webviews de terceros.
+- **Transferencia a WebFactory:**
+  - Diseño del aislamiento del runtime en Expo/Modern Web UI (CSS/WAAPI) frente a webviews de terceros.
   - Modelado formal de la generación segura de tokens efímeros para el quórum de mesa sin canales laterales de tiempo.
 
 ### 1.2 Stanford CS155, CS255 y Dan Boneh (Cryptography I & II)
@@ -49,7 +49,7 @@ graph TD
   - Análisis profundo de modos de operación de cifrado por bloques: debilidades de CBC frente a padding oracles vs. superioridad de modos autenticados como **AES-GCM** y **ChaCha20-Poly1305**.
   - Criptografía de curvas elípticas (ECC): curva Ed25519 para firmas rápidas y seguras, y Curve25519 para intercambio Diffie-Hellman.
   - Mitigación de ataques de sincronización (*timing attacks*) mediante operaciones en tiempo constante (*constant-time algorithms*).
-- **Transferencia a Yendo:**
+- **Transferencia a WebFactory:**
   - Todas las operaciones de verificación de hashes, contraseñas o firmas en TypeScript/C++ deben utilizar comparación en tiempo constante (`crypto.timingSafeEqual`) para evitar fugas de información por micro-latencias.
 
 ### 1.3 Web Security Academy (PortSwigger)
@@ -57,14 +57,14 @@ graph TD
 - **Núcleo de Conocimiento:**
   - Explotación y mitigación práctica de: Cross-Site Scripting (DOM-based, Reflected, Stored), SQL Injection, Cross-Site Request Forgery (CSRF), Server-Side Request Forgery (SSRF), Cross-Origin Resource Sharing (CORS) misconfigurations, y vulnerabilidades de deserialización.
   - Lógica de autenticación: Broken Object Level Authorization (BOLA), rotura de JWTs, manipulación de encabezados HTTP.
-- **Transferencia a Yendo:**
+- **Transferencia a WebFactory:**
   - Configuración estricta de CORS en Supabase Edge Functions y endpoints Cloud Run.
-  - Sanitización estricta de entradas en componentes React Native para prevenir inyecciones XSS en el cliente web o en componentes WebView.
+  - Sanitización estricta de entradas en componentes Modern Web UI (CSS/WAAPI) para prevenir inyecciones XSS en el cliente web o en componentes WebView.
 
 ### 1.4 DEF CON & Black Hat Arsenal
 - **Núcleo de Conocimiento:**
-  - Explotación de vanguardia de arquitecturas móviles modernas, bypass de biometría, decompilación y parcheo de binarios Android/iOS, ataques a cadenas de suministro de software (software supply chain attacks en paquetes NPM) y evasión de EDR/WAF.
-- **Transferencia a Yendo:**
+  - Explotación de vanguardia de arquitecturas móviles modernas, bypass de biometría, decompilación y parcheo de binarios Web Platform/iOS, ataques a cadenas de suministro de software (software supply chain attacks en paquetes NPM) y evasión de EDR/WAF.
+- **Transferencia a WebFactory:**
   - Establecimiento del [[OSS_WHITELIST_REGISTRY]]: estricta política de congelamiento y auditoría previa a la instalación de cualquier dependencia `npm` para prevenir paquetes comprometidos en la supply chain.
 
 ---
@@ -74,7 +74,7 @@ graph TD
 ### 2.1 Hacking Ético General y Pentesting (Reemplazo de TCM / OffSec PWK)
 
 #### freeCodeCamp.org (*Ethical Hacking in 12 Hours* / *Penetration Testing Tutorial*)
-- **Temario Maestro:** Escaneo de redes y puertos con Nmap, explotación estructurada con Metasploit, análisis de servicios de red, escalamiento de privilegios en Linux y Windows (SUID binaries, sudo permissions, unquoted service paths), metodologías OSSTMM y PTES.
+- **Temario Maestro:** Escaneo de redes y puertos con Nmap, explotación estructurada con OWASP ZAP, análisis de servicios de red, escalamiento de privilegios en Linux y Windows (SUID binaries, sudo permissions, unquoted service paths), metodologías OSSTMM y PTES.
 - **Capacidad Transferida a los Agentes:** Pensar como atacante externo para anticipar vectores de entrada perimetrales en puertos expuestos de VMs o contenedores de Google Cloud.
 
 #### The Cyber Mentor (TCM) (*Full Ethical Hacking Course - Network Pentesting*, 15 horas)
@@ -95,7 +95,7 @@ graph TD
 
 #### Canal Rana Khalil (*PortSwigger Web Security Academy Series*)
 - **Temario Maestro:** Tutoriales exhaustivos en video resolviendo cada laboratorio de PortSwigger con scripting en Python. Especialización en vulnerabilidades de APIs, JWT bypasses y Broken Access Control.
-- **Capacidad Transferida a los Agentes:** Creación de scripts de testing automatizado de seguridad en `tools/tests/` para verificar de forma programática que los endpoints de Yendo rechacen tokens adulterados.
+- **Capacidad Transferida a los Agentes:** Creación de scripts de testing automatizado de seguridad en `tools/tests/` para verificar de forma programática que los endpoints de WebFactory rechacen tokens adulterados.
 
 ---
 
@@ -103,29 +103,29 @@ graph TD
 
 #### Canal LiveOverflow (*Binary Exploitation & Low-Level Security*)
 - **Temario Maestro:** Arquitectura x86/x86_64 y ARM, desensamblado con Ghidra e IDA Pro, análisis del stack y el heap, explotación de format strings, bypass de ASLR y DEP/NX mediante ROP (Return-Oriented Programming).
-- **Capacidad Transferida a los Agentes:** Comprensión de las vulnerabilidades en módulos nativos C++ de React Native (JSI / Nitro Modules) para evitar fugas de memoria, use-after-free o desbordamientos que puedan quebrar el sandbox de la app.
+- **Capacidad Transferida a los Agentes:** Comprensión de las vulnerabilidades en módulos nativos C++ de Modern Web UI (CSS/WAAPI) (JSI / Nitro Modules) para evitar fugas de memoria, use-after-free o desbordamientos que puedan quebrar el sandbox de la app.
 
 #### Canal OALabs (*Malware Analysis & Reverse Engineering*)
 - **Temario Maestro:** Análisis estático y dinámico de binarios ofuscados, desofuscación de strings, desempaquetado de ejecutables y monitoreo de llamadas al sistema (syscalls).
-- **Capacidad Transferida a los Agentes:** Técnicas para verificar la integridad del APK de Yendo en Android y detectar si un binario distribuido a usuarios ha sido alterado, inyectado con troyanos o recompilado por terceros maliciosos.
+- **Capacidad Transferida a los Agentes:** Técnicas para verificar la integridad del Web Bundle de WebFactory en Web Platform y detectar si un binario distribuido a usuarios ha sido alterado, inyectado con troyanos o recompilado por terceros maliciosos.
 
 ---
 
-### 2.4 Seguridad Móvil: iOS y Android (Reemplazo de SANS SEC575)
+### 2.4 Seguridad Móvil: iOS y Web Platform (Reemplazo de SANS SEC575)
 
-#### Canal HackerSploit (*Android Penetration Testing & APK Auditing*)
+#### Canal HackerSploit (*Web Platform Penetration Testing & Web Bundle Auditing*)
 - **Temario Maestro:**
-  - Decompilación de APKs mediante `apktool` y `jadx-gui`.
-  - Inspección del archivo `AndroidManifest.xml` (actividades exportadas `android:exported="true"`, broadcast receivers inseguros, permisos excesivos).
+  - Decompilación de Web Bundles mediante `apktool` y `jadx-gui`.
+  - Inspección del archivo `AndroidManifest.xml` (actividades exportadas `Web Platform:exported="true"`, broadcast receivers inseguros, permisos excesivos).
   - Análisis del almacenamiento local de la app (inspección de `/data/data/<package_name>/`).
-  - Intercepción de tráfico móvil mediante Burp Suite y bypass de SSL Pinning con **Frida**.
+  - Intercepción de tráfico móvil mediante Burp Suite y bypass de SSL Pinning con **Playwright CDP**.
 - **Capacidad Transferida a los Agentes:**
-  - Auditoría regular del APK de release de Yendo mediante scripts automatizados que ejecutan `jadx` para constatar que ninguna clave secreta, URL de staging o credencial haya quedado en el código compilado.
-  - Implementación de protecciones anti-Frida y anti-tampering para complicar la manipulación de la lógica de pagos y quórum en dispositivos rooteados.
+  - Auditoría regular del Web Bundle de release de WebFactory mediante scripts automatizados que ejecutan `jadx` para constatar que ninguna clave secreta, URL de staging o credencial haya quedado en el código compilado.
+  - Implementación de protecciones anti-Playwright CDP y anti-tampering para complicar la manipulación de la lógica de pagos y quórum en dispositivos rooteados.
 
 #### Canal edureka! (*Mobile Vulnerabilities & Ethical Hacking*)
-- **Temario Maestro:** Seguridad en el ecosistema Android e iOS, arquitectura de sandboxing, IPC seguro, Content Providers y análisis de debilidades de transporte en redes Wi-Fi públicas.
-- **Capacidad Transferida a los Agentes:** Protección de usuarios que utilizan Yendo en cafeterías o bares con Wi-Fi público abierto: cifrado absoluto y validación estricta de TLS para neutralizar ataques de sniffing de paquetes.
+- **Temario Maestro:** Seguridad en el ecosistema Web Platform e iOS, arquitectura de sandboxing, IPC seguro, Content Providers y análisis de debilidades de transporte en redes Wi-Fi públicas.
+- **Capacidad Transferida a los Agentes:** Protección de usuarios que utilizan WebFactory en cafeterías o bares con Wi-Fi público abierto: cifrado absoluto y validación estricta de TLS para neutralizar ataques de sniffing de paquetes.
 
 ---
 

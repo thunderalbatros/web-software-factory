@@ -1,10 +1,10 @@
-﻿**Alcance:** Masterclass de Nielsen Norman Group (NN/g): Heurística #8 de Diseño Estético y Minimalista, relación señal-ruido y jerarquía visual. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+**Alcance:** Masterclass de Nielsen Norman Group (NN/g): Heurística #8 de Diseño Estético y Minimalista, relación señal-ruido y jerarquía visual. .
 
 ---
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -19,10 +19,10 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Diseño Estético y Minimalista para Yendo Mobile
+# Informe Técnico: Diseño Estético y Minimalista para la Web Software Factory
 
 **Fecha:** 24 de enero de 2021 (Referencia del Artículo)
-**Autor:** RESEARCHER_AGENT & UI_ARCHITECT, Yendo Mobile
+**Autor:** RESEARCHER_AGENT & UI_ARCHITECT, la Web Software Factory
 **Fuente:** "Aesthetic and Minimalist Design (Usability Heuristic #8)" por Therese Fessenden (NN/g)
 
 ---
@@ -31,7 +31,7 @@ ultima_revision: 2026-08-27
 
 El principio central del diseño estético y minimalista, según Nielsen Norman Group, radica en la **optimización de la utilidad y la usabilidad mediante la eliminación de "ruido" y la maximización de la "señal"**, todo ello envuelto en una experiencia visualmente atractiva que genera una primera impresión positiva y refuerza la identidad de marca. No se trata de una mera tendencia visual, sino de una filosofía que busca la máxima eficiencia comunicativa y funcional.
 
-La tesis arquitectónica para Yendo Mobile es construir interfaces que sean inherentemente **claras, eficientes y memorables**. Esto se logra mediante una síntesis quirúrgica de la estética (que genera confianza y placer) y el minimalismo (que garantiza la utilidad y reduce la fricción). Cada elemento en la interfaz de Yendo debe ser **útil o hermoso**, contribuyendo directamente a las invariantes de "Venue", "Experiencia" y "Grupo", y reflejando nuestro ADN de "pisa internet" con una ejecución técnica impecable. La arquitectura debe facilitar un diseño donde la información relevante sea inmediatamente perceptible y las interacciones sean intuitivas, sin sobrecargar al usuario.
+La tesis arquitectónica para la Web Software Factory es construir interfaces que sean inherentemente **claras, eficientes y memorables**. Esto se logra mediante una síntesis quirúrgica de la estética (que genera confianza y placer) y el minimalismo (que garantiza la utilidad y reduce la fricción). Cada elemento en la interfaz de WebFactory debe ser **útil o hermoso**, contribuyendo directamente a las invariantes de "Venue", "Experiencia" y "Grupo", y reflejando nuestro ADN de "pisa internet" con una ejecución técnica impecable. La arquitectura debe facilitar un diseño donde la información relevante sea inmediatamente perceptible y las interacciones sean intuitivas, sin sobrecargar al usuario.
 
 ---
 
@@ -51,7 +51,7 @@ El análisis del principio de diseño estético y minimalista revela varias impl
 
 ---
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
 ### Web UI / Vanilla & Modern Frontend & Web Platform 57
 
@@ -88,7 +88,7 @@ El análisis del principio de diseño estético y minimalista revela varias impl
 
 ## 4. Principios Rectores y Citas Clave
 
-Los siguientes principios guiarán el diseño y desarrollo de Yendo Mobile, inspirados en el diseño estético y minimalista:
+Los siguientes principios guiarán el diseño y desarrollo de la Web Software Factory, inspirados en el diseño estético y minimalista:
 
 1.  **Propósito en Cada Píxel:** Cada elemento en la interfaz debe tener una razón de ser, ya sea funcional o estética. Si no es útil ni hermoso, es "ruido" y debe ser eliminado.
     *   *"Have nothing in your houses that you do not know to be useful, or believe to be beautiful."* — William Morris (citado por Don Norman)
@@ -100,12 +100,12 @@ Los siguientes principios guiarán el diseño y desarrollo de Yendo Mobile, insp
 3.  **La Utilidad es el Corazón del Minimalismo:** El diseño minimalista no es la ausencia de elementos, sino la presencia de solo los elementos necesarios para maximizar la utilidad y la usabilidad de las tareas del usuario.
     *   *"A minimalist design contains all necessary elements to support user tasks."* — NN/g
 
-4.  **La Belleza Genera Confianza:** Una interfaz estéticamente agradable no solo es más memorable, sino que también se percibe como más usable y competente, estableciendo una base sólida para la identidad de marca de Yendo.
+4.  **La Belleza Genera Confianza:** Una interfaz estéticamente agradable no solo es más memorable, sino que también se percibe como más usable y competente, estableciendo una base sólida para la identidad de marca de WebFactory.
     *   *"Attractive things work better."* — Don Norman
 
-5.  **Comunicación Visual Consistente:** Utilizar un sistema de diseño robusto (tokens, componentes) para asegurar que la jerarquía, el contraste y el balance visual comuniquen de manera uniforme y efectiva, reforzando la marca Yendo en cada interacción.
+5.  **Comunicación Visual Consistente:** Utilizar un sistema de diseño robusto (tokens, componentes) para asegurar que la jerarquía, el contraste y el balance visual comuniquen de manera uniforme y efectiva, reforzando la marca WebFactory en cada interacción.
 
-Al adherirnos a estos principios, Yendo Mobile construirá una experiencia que no solo "pisa internet" con tecnología de vanguardia, sino que también deleita y empodera a sus usuarios a través de un diseño intencional y de clase mundial.
+Al adherirnos a estos principios, la Web Software Factory construirá una experiencia que no solo "pisa internet" con tecnología de vanguardia, sino que también deleita y empodera a sus usuarios a través de un diseño intencional y de clase mundial.
 
 ---
 

@@ -1,15 +1,15 @@
-> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
 
 # 🧠 Canon de Ingeniería Agéntica 01: Papers Fundacionales y Arquitectura Cognitiva
 
@@ -44,7 +44,7 @@ flowchart TD
 
 ### 1.2 Los 5 Patrones de Orquestación Anthropic
 1. **Prompt Chaining:** Cadena secuencial donde la salida de un paso es la entrada del siguiente. Clave para tareas con orden rígido (ej. Especificación -> Tipos -> Implementación).
-2. **Routing:** Clasifica la intención y la dirige a un prompt o modelo especializado (ej. Router de Yendo que despacha a `CORE_ENGINEERING` o `DATA_PLATFORM`).
+2. **Routing:** Clasifica la intención y la dirige a un prompt o modelo especializado (ej. Router de WebFactory que despacha a `CORE_ENGINEERING` o `DATA_PLATFORM`).
 3. **Parallelization (Sectioning / Voting):**
    - *Sectioning:* Dividir una tarea grande en partes independientes procesadas en paralelo.
    - *Voting:* Ejecutar el mismo prompt en múltiples instancias y realizar un consenso para maximizar confiabilidad.
@@ -59,7 +59,7 @@ flowchart TD
 - El razonamiento aislado (*Chain-of-Thought*) genera alucinaciones porque el modelo no tiene contacto con el estado real del sistema.
 - La acción aislada (*Action-Only*) ejecuta comandos a ciegas sin formular planes ni interpretar los resultados de las herramientas.
 
-### 2.2 El Bucle ReAct en Yendo
+### 2.2 El Bucle ReAct en WebFactory
 ReAct entrelaza trazas de pensamiento verbal con acciones concretas en un ciclo continuo:
 $$\text{Pensamiento (Thought)} \longrightarrow \text{Acción (Action)} \longrightarrow \text{Observación (Observation)}$$
 
@@ -93,7 +93,7 @@ sequenceDiagram
     Env-->>A: Código 0 (Éxito)
 ```
 
-### 3.2 Aplicación al Bloque `REFLECTION` de Yendo
+### 3.2 Aplicación al Bloque `REFLECTION` de WebFactory
 Cada entrega de código finaliza con:
 ```
 REFLECTION

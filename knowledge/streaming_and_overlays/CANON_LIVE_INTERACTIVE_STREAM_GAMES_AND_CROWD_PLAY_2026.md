@@ -1,4 +1,4 @@
-﻿# CANON: Diseño e Ingeniería de Juegos Interactivos en Vivo para Espectadores de realtime-stream.com (Crowd Play & Premios en Vivo 2026)
+# CANON: Diseño e Ingeniería de Juegos Interactivos en Vivo para Espectadores de realtime-stream.com (Crowd Play & Premios en Vivo 2026)
 
 **Alcance:** Aplicable a Web Software Factory Studio (Web App en `site/`, Overlays OBS en `overlay-*` y `wheel-*`, Backend Edge en `worker/index.js` y `core/src/index.ts`). Prohibido usar mecánicas de pago por entrada (buy-ins) o custodia de dinero de espectadores (`AGENTS.md §2.2`).
 

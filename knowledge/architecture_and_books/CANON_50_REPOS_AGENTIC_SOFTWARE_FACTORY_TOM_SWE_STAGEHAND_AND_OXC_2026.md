@@ -1,4 +1,4 @@
-﻿# CANON: Arquitectura de Software Factory Agéntica (50 Repositorios SOTA, ToM-SWE, Stagehand, Browserbase UI-Test y Oxc Rust Toolchain — 2026)
+# CANON: Arquitectura de Software Factory Agéntica (50 Repositorios SOTA, ToM-SWE, Stagehand, Browserbase UI-Test y Oxc Rust Toolchain — 2026)
 
 **Alcance:** Aplicable a toda la arquitectura de la Software Factory Agéntica de Web Software Factory Studio (`site/`, `worker/index.js`, `core/`, `overlay-*`, `wheel-*`, `tools/intelligence/`, `tools/audit/`, `.agents/skills/`, `memory/`). Define la topología de 3 estratos, el pipeline autónomo de 5 fases, el modelado mental de 3 niveles (`ToM-SWE`), la verificación adversarial guiada por diffs (`ui-test` + `Stagehand`), el linting en Rust en `<50ms` (`oxlint`) y el catálogo maestro de 50 repositorios open-source organizados en 7 capas operativas bajo restricción estricta de hardware ligero (HP 250 G8, 0 Docker, USD 0).
 
@@ -89,7 +89,7 @@ Para evitar el caos de scripts sueltos, nuestra Software Factory organiza sus ca
 7. **`block/goose`**: Agente local extensible mediante servidores MCP para automatización de builds y diagnósticos (`references/bleeding-edge/agents-mcp/goose`).
 8. **`mastra-ai/mastra`**: Framework TypeScript para grafos de flujo de trabajo deterministas, handoffs entre agentes y trazas OpenTelemetry.
 9. **`langgenius/dify`**: Orquestación visual LLMOps y pipelines RAG empresariales (referencia arquitectónica).
-10. **`n8n-io/n8n`**: Automatización de flujos híbridos y webhooks externos (integrado vía MCP `yendo-rag`).
+10. **`n8n-io/n8n`**: Automatización de flujos híbridos y webhooks externos (integrado vía MCP `webfactory-rag`).
 
 ### Capa 2: Protocolo MCP e Inteligencia de Contexto Estructural (Repos #11–#19)
 11. **`modelcontextprotocol/servers`**: Servidores MCP oficiales de referencia (`filesystem`, `git`, `fetch`, `memory`) (`references/factory-expansion/agents/mcp-official-servers`).

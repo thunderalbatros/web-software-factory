@@ -1,4 +1,4 @@
-﻿/**
+/**
  * tools/intelligence/eval_matrix.mjs — Multi-Dimensional Eval Matrix
  * =============================================================================
  * Inspired by Promptfoo, addyosmani/agent-house, and Eval-Harness EDD.
@@ -40,17 +40,17 @@ export async function runEvalMatrix(projectInput = '') {
   // --------------------------------------------------------------------------
   // Dimension 1: Omni-RAG v4 Bilingual Retrieval Recall, MRR & Latency (18 Golden Queries)
   // --------------------------------------------------------------------------
-  console.log(`[DIMENSION 1] Testing Omni-RAG v4 Bilingual Precision, MRR & Latency (18 Golden Queries)...`);
+  console.log(`[DIMENSION 1] Testing Omni-RAG v5 Bilingual Precision, MRR & Latency (30 Golden Queries)...`);
   getOrBuildMiniSearchIndex();
-  await queryKnowledge("warmup", 1, { fastLocalOnly: true });
+  await queryKnowledge("software factory architecture design tokens cloudflare workers", 5, { fastLocalOnly: true });
 
   const ragQueries = [
-    { q: "OBS Browser Source performance impact budget", expectedKeyword: "cpu" },
-    { q: "RealtimeHub compliance spectator zero custody", expectedKeyword: "free" },
-    { q: "juegos interactivos en vivo para espectadores de RealtimeHub", expectedKeyword: "mines" },
+    { q: "software product line engineering iso 26550 domain application", expectedKeyword: "pohl" },
+    { q: "plantillas web modernas astro 5 islands cloudflare static assets", expectedKeyword: "astro-edge" },
+    { q: "tokens de diseño multi-marca w3c dtcg style dictionary arquetipos", expectedKeyword: "oklch" },
     { q: "marco octalysis gamificación recompensas variables", expectedKeyword: "hooked" },
     { q: "marketing conversion cro afiliados aversion a la perdida", expectedKeyword: "cialdini" },
-    { q: "sistema de bountys only on PartnerBrand tiers multiplicador", expectedKeyword: "bet_id" },
+    { q: "agentic seo optimizacion motores respuesta llms-full schema json-ld", expectedKeyword: "speculationrules" },
     { q: "ciberseguridad defensa xss trustedtypes csp oauth", expectedKeyword: "dompurify" },
     { q: "animaciones 60fps emil kowalski modal entrance scale waapi", expectedKeyword: "0.95" },
     { q: "shaders glsl bordes laser webaudio dynamicscompressor", expectedKeyword: "zzfx" },
@@ -58,7 +58,7 @@ export async function runEvalMatrix(projectInput = '') {
     { q: "cloudflare durable objects websocket sqlite", expectedKeyword: "hibernation" },
     { q: "catalogo maestro libros documentacion oficial videocursos", expectedKeyword: "curated_master_books" },
     { q: "tipografia matematica grilla suiza proporcion aurea", expectedKeyword: "bringhurst" },
-    { q: "probabilidad matematica slots rtp volatilidad", expectedKeyword: "barboianu" },
+    { q: "validacion esquemas edge cloudflare workers ligero typescript", expectedKeyword: "valibot" },
     { q: "game feel creating web animations springs wwdc", expectedKeyword: "swink" },
     { q: "behavior model b=map misbehaving thaler conversion", expectedKeyword: "fogg" },
     { q: "arquitectura rag hipporag sqlite fts5 contextual retrieval rerank", expectedKeyword: "lightrag" },
@@ -74,7 +74,6 @@ export async function runEvalMatrix(projectInput = '') {
     { q: "frameworkless alex xu leaderboard sliding window tornhill hotspot x-rays jon skeet", expectedKeyword: "strazzullo" },
     { q: "poeaa fowler money allocation unit of work goos c4 simon brown functional core imperative shell", expectedKeyword: "walking skeleton" },
     { q: "biblioteca ingerida real-time rendering akenine-moller game engine architecture serious cryptography aumasson", expectedKeyword: "gregory" },
-    { q: "theory of gambling statistical logic procedural storytelling tanya short tarn adams web audio api boris smus", expectedKeyword: "epstein" },
     { q: "50 repositorios software factory three-tier memory selector cache browserbase ui-test oxlint context7", expectedKeyword: "tom-swe" }
   ];
 
@@ -248,9 +247,10 @@ export async function runEvalMatrix(projectInput = '') {
   const hasVisualHarness = fs.existsSync(visualHarnessPath);
   if (!hasVisualHarness) pqcScore -= 25;
 
-  // 5.4 Check D1 Provisioning Tool Readiness
-  const d1ToolPath = path.join(ROOT, 'tools', 'provision_d1.mjs');
-  const hasD1Tool = fs.existsSync(d1ToolPath);
+  // 5.4 Check Factory Master CLI & Edge Bundler Readiness
+  const d1ToolPath = path.join(ROOT, 'tools', 'factory.mjs');
+  const buildToolPath = path.join(ROOT, 'tools', 'build_dist.mjs');
+  const hasD1Tool = fs.existsSync(d1ToolPath) && fs.existsSync(buildToolPath);
   if (!hasD1Tool) pqcScore -= 25;
 
   // 5.5 Check ToM-SWE 3-Tier Memory & Diff-UI Adversarial + Stagehand + Oxc Gate

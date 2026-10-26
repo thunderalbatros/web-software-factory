@@ -186,7 +186,16 @@ export function runNegativeSelfTest() {
   }
 }
 
-export function runAstAudit(targetDirs = ['site/js', 'core/src', 'worker']) {
+export function runAstAudit(targetDirs = [
+  'site/js',
+  'core/src',
+  'worker',
+  'templates/vanilla-edge/site/js',
+  'templates/vanilla-edge/worker',
+  'templates/astro-edge/worker',
+  'tools/design',
+  'tools/lib'
+]) {
   console.log(`\n======================================================`);
   console.log(`🛡️  AST & SYMBOLIC CODE GUARD AUDIT`);
   console.log(`======================================================\n`);

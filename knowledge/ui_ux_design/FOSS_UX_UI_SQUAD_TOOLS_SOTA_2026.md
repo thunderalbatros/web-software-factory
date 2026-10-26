@@ -1,19 +1,19 @@
-﻿> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
-
 ---
 version: 1.0.0
 tipo: guia
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - tech-stack
   - canonico
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
-# Ecosistema Open-Source SOTA para Potenciar el Squad Agéntico de UX/UI en Yendo
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
 
-Este dossier establece la hoja de ruta para la incorporación de herramientas de código abierto (OSS) diseñadas para transformar al equipo de agentes de Yendo en una agencia autónoma de Producto, Diseño de Interacción y Accesibilidad de nivel mundial.
+# Ecosistema Open-Source SOTA para Potenciar el Squad Agéntico de UX/UI en WebFactory
+
+Este dossier establece la hoja de ruta para la incorporación de herramientas de código abierto (OSS) diseñadas para transformar al equipo de agentes de WebFactory en una agencia autónoma de Producto, Diseño de Interacción y Accesibilidad de nivel mundial.
 
 ---
 
@@ -28,27 +28,27 @@ En 2026, la interacción de agentes con interfaces móviles ha superado la mera 
 ### A. Microsoft OmniParser (Percepción Visual y Semántica de Pantallas Móviles)
 - **Repositorio:** `microsoft/OmniParser`
 - **Función:** Tokenizador visual de interfaces móviles. Toma capturas de pantalla de la app en ejecución y las descompone en elementos accionables (botones, campos, íconos) con sus respectivas cajas delimitadoras (*bounding boxes*) y jerarquías visuales.
-- **Impacto en Yendo:** Permite al agente de QA y diseño "ver" la interfaz renderizada real en emulador, midiendo si los botones cumplen con la Ley de Fitts (>=48dp) y si el contraste visual de los textos sobre fotos cumple la norma WCAG AAA.
+- **Impacto en WebFactory:** Permite al agente de QA y diseño "ver" la interfaz renderizada real en emulador, midiendo si los botones cumplen con la Ley de Fitts (>=48dp) y si el contraste visual de los textos sobre fotos cumple la norma WCAG AAA.
 
 ### B. Penpot (Alternativa Soberana y Open-Source a Figma)
 - **Tecnología:** Vectorial nativa basada en SVG, estándares web y API REST abierta.
-- **Impacto en Yendo:** Permite generar tableros visuales, wireframes y componentes mediante código y llamadas MCP. Elimina el bloqueo de suscripciones privativas y permite sincronización bidireccional entre el código React Native y los esquemas visuales.
+- **Impacto en WebFactory:** Permite generar tableros visuales, wireframes y componentes mediante código y llamadas MCP. Elimina el bloqueo de suscripciones privativas y permite sincronización bidireccional entre el código Modern Web UI (CSS/WAAPI) y los esquemas visuales.
 
 ### C. Style Dictionary (Amazon) + Tokens Studio Engine
 - **Tecnología:** Motor agnóstico para compilación y versionado de Design Tokens.
-- **Impacto en Yendo:** Fuente única de la verdad (*Single Source of Truth*) para la paleta OLED (`#121212`, `#1E1E1E`, `#FF5500`), tipografías (Plus Jakarta Sans, Inter), radios de curvatura y físicas de resorte. Compila automáticamente hacia React Native, Skia, Tailwind y Penpot.
+- **Impacto en WebFactory:** Fuente única de la verdad (*Single Source of Truth*) para la paleta OLED (`#121212`, `#1E1E1E`, `#FF5500`), tipografías (Plus Jakarta Sans, Inter), radios de curvatura y físicas de resorte. Compila automáticamente hacia Modern Web UI (CSS/WAAPI), Skia, Tailwind y Penpot.
 
 ### D. Flashlight (BAM / GeekyAnts)
-- **Tecnología:** Profiler de rendimiento móvil para React Native, equivalente a Lighthouse pero para aplicaciones móviles.
-- **Impacto en Yendo:** Mide con precisión milimétrica los FPS reales, el consumo de CPU y el tiempo de respuesta interactiva (TTI). Garantiza que ninguna animación con Reanimated o Skia caiga por debajo de 60 FPS.
+- **Tecnología:** Profiler de rendimiento móvil para Modern Web UI (CSS/WAAPI), equivalente a Lighthouse pero para aplicaciones móviles.
+- **Impacto en WebFactory:** Mide con precisión milimétrica los FPS reales, el consumo de CPU y el tiempo de respuesta interactiva (TTI). Garantiza que ninguna animación con Reanimated o Skia caiga por debajo de 60 FPS.
 
 ### E. Axe-core & `react-native-a11y`
 - **Tecnología:** Motor estándar de auditoría de accesibilidad.
-- **Impacto en Yendo:** Evaluación determinística en CI/CD que certifica roles de accesibilidad, etiquetas de voz para lectores de pantalla y ratios de contraste de color.
+- **Impacto en WebFactory:** Evaluación determinística en CI/CD que certifica roles de accesibilidad, etiquetas de voz para lectores de pantalla y ratios de contraste de color.
 
 ### F. Simulación de Usuarios Sintéticos (Synthetic Personas)
 - **Tecnología:** Frameworks multi-agente basados en `Generative Agents` (Stanford) y `CrewAI`.
-- **Impacto en Yendo:** Simulación de arquetipos porteños ("Martín, 24 años, introvertido, busca speakeasy tranquilo" vs "Florencia, 29 años, extrovertida, busca jam de jazz") recorriendo los flujos de la app para detectar puntos de fricción cognitiva antes de pruebas de campo con usuarios reales.
+- **Impacto en WebFactory:** Simulación de arquetipos porteños ("Martín, 24 años, introvertido, busca speakeasy tranquilo" vs "Florencia, 29 años, extrovertida, busca jam de jazz") recorriendo los flujos de la app para detectar puntos de fricción cognitiva antes de pruebas de campo con usuarios reales.
 
 ---
 
@@ -61,4 +61,4 @@ En 2026, la interacción de agentes con interfaces móviles ha superado la mera 
 - [[YENDO_DNA]]
 - [[YENDO_LIBRARY]]
 - [[Reanimated]]
-- [[React Native Skia]]
+- [[Modern Web UI (CSS/WAAPI) Skia]]

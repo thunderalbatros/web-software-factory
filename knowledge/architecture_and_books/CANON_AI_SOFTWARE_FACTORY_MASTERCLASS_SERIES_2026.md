@@ -1,4 +1,6 @@
-﻿# Canon: Masterclass Series — Industrial AI Software Factories (2026)
+# Canon: Masterclass Series — Industrial AI Software Factories (2026)
+
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
 
 > **Curaduría:** Antigravity Tech Lead & SOTA Research Squad  
 > **Fuente:** Análisis e ingesta exhaustiva de 8 conferencias y masterclasses canónicas de líderes de la industria (Cursor, Warp, Factory.ai, Tessl, theSeniorDev, David Ondrej, Leon van Zyl, How I AI).  

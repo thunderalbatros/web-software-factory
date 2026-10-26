@@ -1,190 +1,66 @@
-﻿# 📚 Libro Completo: Effective TypeScript: 62 Specific Ways to Improve Your TypeScript
+# 📚 Libro Completo: Effective TypeScript: 62 Specific Ways to Improve Your TypeScript
 
-**Alcance:** Fuente bibliográfica completa sobre Ingeniería Avanzada en TypeScript, Diseño de Tipos Estrictos, Contratos de API y Prevención de Bugs en Runtime (Effective TypeScript: 62 Specific Ways to Improve Your TypeScript — Dan Vanderkam (O'Reilly)). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre TypeScript Type System, Type Design & Strict Inference (Effective TypeScript: 62 Specific Ways to Improve Your TypeScript — Dan Vanderkam). Aplicable a Web Software Factory y Enterprise Web App. NO sustituye los contratos de negocio ni las reglas inmutables en `CANON_*`.
 
-> **Autor:** Dan Vanderkam (O'Reilly)  
-> **Dominio:** Ingeniería Avanzada en TypeScript, Diseño de Tipos Estrictos, Contratos de API y Prevención de Bugs en Runtime  
+> **Autor:** Dan Vanderkam  
+> **Dominio:** TypeScript Type System, Type Design & Strict Inference  
 > **Archivo Fuente:** `dokumen.pub_effective-typescript-62-specific-ways-to-improve-your-typescript-1nbsped-9781492053712-1492053716.pdf`  
-> **Páginas Originales:** 264  
-> **Secciones Extraídas:** 52  
-> **Fecha de Ingesta:** 2026-10-19  
+> **Páginas Originales:** 264 (100% Ingerido, Cero Truncamiento)  
+> **Secciones Técnicas Extraídas:** 194 (Entropía Técnica Media: 0.552)  
+> **Fecha de Ingesta:** 2026-10-26
 
 ---
 
-## Sección 1: Foundations & Introduction
+## Sección 1: Item 5: Limit Use of the any Type 20 [Entropy: 0.25]
 
-Dan Vanderkam
-Effective
-TypeScript62 Specific Ways to Improve Your TypeScript
-
--- 1 of 264 --
-
-Praise for Effective TypeScript
-“Effective TypeScript explores the most common questions we see when working with
-TypeScript and provides practical, results-oriented advice. Regardless of your level of
-TypeScript experience, you can learn something from this book.”
-—Ryan Cavanaugh, Engineering Lead for TypeScript
-at Microsoft
-“This book is packed with practical recipes and must be kept on the desk of every
-professional TypeScript developer. Even if you think you know TypeScript already,
-get this book and you won’t regret it.”
-—Yakov Fain, Java Champion
-“TypeScript is taking over the development world...The deeper understanding of
-TypeScript this book provides will help many developers shine as they take advantage of
-TypeScript’s powerful features.”
-—Jason Killian, Cofounder of TypeScript NYC and
-former TSLint maintainer
-“This book is not just about what TypeScript can do—it teaches why each language
-feature is useful, and where to apply patterns to get the greatest effect. The book focuses
-on practical advice that will be useful in day-to-day work, with just enough theory to give
-the reader a deep understanding of how everything works. I consider myself to be an
-advanced TypeScript user, and I learned a number of new things from this book.”
-—Jesse Hallett, Senior Software Engineer, Originate, Inc.
-
--- 2 of 264 --
-
-Dan Vanderkam
-Effective TypeScript
-62 Specific Ways to Improve Your TypeScript
-Boston Farnham Sebastopol Tokyo Beijing Boston Farnham Sebastopol Tokyo Beijing
-
--- 3 of 264 --
-
-978-1-492-05374-3
-[LSI]
-Effective TypeScript
-by Dan Vanderkam
-Copyright © 2020 Dan Vanderkam. All rights reserved.
-Printed in the United States of America.
-Published by O’Reilly Media, Inc., 1005 Gravenstein Highway North, Sebastopol, CA 95472.
-O’Reilly books may be purchased for educational, business, or sales promotional use. Online editions are
-also available for most titles (http://oreilly.com). For more information, contact our corporate/institutional
-sales department: 800-998-9938 or corporate@oreilly.com.
-Acquisitions Editor: Jennifer Pollock
-Development Editor: Angela Rufino
-Production Editor: Deborah Baker
-Copyeditor: Jasmine Kwityn
-Proofreader: Kim Wimpsett
-Indexer: Judith McConville
-Interior Designer: David Futato
-Cover Designer: Karen Montgomery
-Illustrator: Rebecca Demarest
-November 2019: First Edition
-Revision History for the First Edition
-2019-10-16: First Release
-See http://oreilly.com/catalog/errata.csp?isbn=9781492053743 for release details.
-The O’Reilly logo is a registered trademark of O’Reilly Media, Inc. Effective TypeScript, the cover image,
-and related trade dress are trademarks of O’Reilly Media, Inc.
-The views expressed in this work are those of the author, and do not represent the publisher’s views.
-While the publisher and the author have used good faith efforts to ensure that the information and
-instructions contained in this work are accurate, the publisher and the author disclaim all responsibility
-for errors or omissions, including without limitation responsibility for damages resulting from the use of
-or reliance on this work. Use of the information and instructions contained in this work is at your own
-risk. If any code samples or other technology this work contains or describes is subject to open source
-licenses or the intellectual property rights of others, it is your responsibility to ensure that your use
-thereof complies with such licenses and/or rights.
-
--- 4 of 264 --
-
-For Alex.
-You’re just my type.
-
--- 5 of 264 --
-
--- 6 of 264 --
-
-Table of Contents
-Preface. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . xi
-1. Getting to Know TypeScript. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 1
-Item 1: Understand the Relationship Between TypeScript and JavaScript 1
-Item 2: Know Which TypeScript Options You’re Using 7
-Item 3: Understand That Code Generation Is Independent of Types 10
-Item 4: Get Comfortable with Structural Typing 16
-Item 5: Limit Use of the any Type 20
 2. TypeScript’s Type System. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 25
-Item 6: Use Your Editor to Interrogate and Explore the Type System 25
-Item 7: Think of Types as Sets of Values 29
-Item 8: Know How to Tell Whether a Symbol Is in the Type Space or Value
-Space 35
-Item 9: Prefer Type Declarations to Type Assertions 40
-Item 10: Avoid Object Wrapper Types (String, Number, Boolean, Symbol,
-BigInt) 43
-Item 11: Recognize the Limits of Excess Property Checking 46
-Item 12: Apply Types to Entire Function Expressions When Possible 49
-Item 13: Know the Differences Between type and interface 52
-Item 14: Use Type Operations and Generics to Avoid Repeating Yourself 56
-Item 15: Use Index Signatures for Dynamic Data 64
-Item 16: Prefer Arrays, Tuples, and ArrayLike to number Index Signatures 67
-Item 17: Use readonly to Avoid Errors Associated with Mutation 71
-Item 18: Use Mapped Types to Keep Values in Sync 77
-3. Type Inference. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 81
-Item 19: Avoid Cluttering Your Code with Inferable Types 81
-vii
-
--- 7 of 264 --
-
-Item 20: Use Different Variables for Different Types 87
-Item 21: Understand Type Widening 90
-Item 22: Understand Type Narrowing 93
-Item 23: Create Objects All at Once 96
-Item 24: Be Consistent in Your Use of Aliases 99
-Item 25: Use async Functions Instead of Callbacks for Asynchronous Code 102
-Item 26: Understand How Context Is Used in Type Inference 107
-Item 27: Use Functional Constructs and Libraries to Help Types Flow 111
-4. Type Design. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 117
-Item 28: Prefer Types That Always Represent Valid States 117
-Item 29: Be Liberal in What You Accept and Strict in What You Produce 122
-Item 30: Don’t Repeat Type Information in Documentation 125
-Item 31: Push Null Values to the Perimeter of Your Types 127
-Item 32: Prefer Unions of Interfaces to Interfaces of Unions 131
-Item 33: Prefer More Precise Alternatives to String Types 134
-Item 34: Prefer Incomplete Types to Inaccurate Types 138
-Item 35: Generate Types from APIs and Specs, Not Data 142
-Item 36: Name Types Using the Language of Your Problem Domain 147
-Item 37: Consider “Brands” for Nominal Typing 149
-5. Working with any. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 153
-Item 38: Use the Narrowest Possible Scope for any Types 153
-Item 39: Prefer More Precise Variants of any to Plain any 155
-Item 40: Hide Unsafe Type Assertions in Well-Typed Functions 157
-Item 41: Understand Evolving any 159
-Item 42: Use unknown Instead of any for Values with an Unknown Type 162
-Item 43: Prefer Type-Safe Approaches to Monkey Patching 166
-Item 44: Track Your Type Coverage to Prevent Regressions in Type Safety 168
-6. Types Declarations and @types. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 171
-Item 45: Put TypeScript and @types in devDependencies 171
-Item 46: Understand the Three Versions Involved in Type Declarations 173
-Item 47: Export All Types That Appear in Public APIs 177
-Item 48: Use TSDoc for API Comments 178
-Item 49: Provide a Type for this in Callbacks 181
-Item 50: Prefer Conditional Types to Overloaded Declarations 185
-Item 51: Mirror Types to Sever Dependencies 187
-Item 52: Be Aware of the Pitfalls of Testing Types 189
-7. Writing and Running Your Code. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 195
-Item 53: Prefer ECMAScript Features to TypeScript Features 195
-viii | Table of Contents
 
 ---
 
-## Sección 2: Foundations & Introduction
+## Sección 2: Item 18: Use Mapped Types to Keep Values in Sync 77 [Entropy: 0.25]
 
--- 8 of 264 --
+Space 35
+BigInt) 43
+3. Type Inference. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 81
 
-Item 54: Know How to Iterate Over Objects 200
-Item 55: Understand the DOM hierarchy 202
-Item 56: Don’t Rely on Private to Hide Information 207
-Item 57: Use Source Maps to Debug TypeScript 210
+---
+
+## Sección 3: Item 27: Use Functional Constructs and Libraries to Help Types Flow 111 [Entropy: 0.25]
+
+vii
+4. Type Design. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 117
+
+---
+
+## Sección 4: Item 37: Consider “Brands” for Nominal Typing 149 [Entropy: 0.25]
+
+5. Working with any. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 153
+
+---
+
+## Sección 5: Item 44: Track Your Type Coverage to Prevent Regressions in Type Safety 168 [Entropy: 0.25]
+
+6. Types Declarations and @types. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 171
+
+---
+
+## Sección 6: Item 52: Be Aware of the Pitfalls of Testing Types 189 [Entropy: 0.25]
+
+7. Writing and Running Your Code. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 195
+
+---
+
+## Sección 7: Item 57: Use Source Maps to Debug TypeScript 210 [Entropy: 0.25]
+
+viii | Table of Contents
 8. Migrating to TypeScript. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 215
-Item 58: Write Modern JavaScript 216
-Item 59: Use @ts-check and JSDoc to Experiment with TypeScript 223
-Item 60: Use allowJs to Mix TypeScript and JavaScript 228
-Item 61: Convert Module by Module Up Your Dependency Graph 229
-Item 62: Don’t Consider Migration Complete Until You Enable noImplicitAny 234
+
+---
+
+## Sección 8: Item 62: Don’t Consider Migration Complete Until You Enable noImplicitAny 234 [Entropy: 0.84]
+
 Index. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 237
 Table of Contents | ix
-
--- 9 of 264 --
-
--- 10 of 264 --
 
 Preface
 In the spring of 2016, I visited my old coworker Evan Martin at Google’s San Fran‐
@@ -214,9 +90,6 @@ The Effective books are intended to be the “standard second book” on their t
 You’ll get the most out of Effective TypeScript if you have some previous practical
 experience working with JavaScript and TypeScript. My goal with this book is not to
 xi
-
--- 11 of 264 --
-
 teach you TypeScript or JavaScript but to help you advance from a beginning or inter‐
 mediate user to an expert. The items in this book do this by helping you build mental
 models of how TypeScript and its ecosystem work, making you aware of pitfalls and
@@ -254,9 +127,6 @@ interesting to you.
 Each item’s title conveys the key takeaway. These are the things you should remember
 as you’re using TypeScript, so it’s worth skimming the table of contents to get them in
 xii | Preface
-
--- 12 of 264 --
-
 your head. If you’re writing documentation, for example, and have a nagging sense
 that you shouldn’t be writing type information, then you’ll know to go read Item 30:
 Don’t repeat type information in documentation.
@@ -293,13 +163,6 @@ I occasionally edit the error messages for clarity and brevity, but I never remo
 error. If you copy/paste a code sample into your editor, you should get exactly the
 errors indicated, no more no less.
 Preface | xiii
-
----
-
-## Sección 3: Foundations & Introduction
-
--- 13 of 264 --
-
 To draw attention to the lack of an error, I use // OK:
 let str = 'not a number';
 let num: number = str as any; // OK
@@ -335,9 +198,6 @@ variables, statements, and keywords.
 Constant width bold
 Shows commands or other text that should be typed literally by the user.
 xiv | Preface
-
--- 14 of 264 --
-
 Constant width italic
 Shows text that should be replaced with user-supplied values or by values deter‐
 mined by context.
@@ -364,9 +224,6 @@ Dan Vanderkam (O’Reilly). Copyright 2020 Dan Vanderkam, 978-1-492-05374-3.”
 If you feel your use of code examples falls outside fair use or the permission given
 above, feel free to contact us at permissions@oreilly.com.
 Preface | xv
-
--- 15 of 264 --
-
 O’Reilly Online Learning
 For more than 40 years, O’Reilly Media has provided technol‐
 ogy and business training, knowledge, and insight to help
@@ -399,9 +256,6 @@ for introducing me to TypeScript and showing me how to think about it. To Douwe
 Osinga for connecting me with O’Reilly and being supportive of the project. To Brett
 Slatkin for advice on structure and for showing me that someone I knew could write
 xvi | Preface
-
--- 16 of 264 --
-
 an Effective book. To Scott Meyers for coming up with this format and for his “Effec‐
 tive Effective Books” blog post, which provided essential guidance.
 To my reviewers, Rick Battagline, Ryan Cavanaugh, Boris Cherny, Yakov Fain, Jesse
@@ -417,7 +271,8 @@ ships at TSConf 2018, and by a talk of Jesse Hallett’s at the April 2019 TypeS
 NYC Meetup.
 • Both Basarat’s guide and helpful answers by DeeV and GPicazo on Stack Over‐
 flow were essential in writing Item 9.
-• Item 10 builds on similar advice in Item 4 of Effective JavaScript (AddisonWesley).
+• Item 10 builds on similar advice in Item 4 of Effective JavaScript (Addison-
+Wesley).
 • I was inspired to write Item 11 by mass confusion around this topic at the August
 2019 TypeScript NYC Meetup.
 • Item 13 was greatly aided by several questions about type vs. interface on Stack
@@ -438,13 +293,6 @@ Know (O’Reilly).
 • Item 37 was inspired by Jason Killian’s talk at the very first TypeScript NYC
 Meetup in September 2017.
 Preface | xvii
-
----
-
-## Sección 4: Foundations & Introduction
-
--- 17 of 264 --
-
 • Item 41 is based on the TypeScript 2.1 release notes. The term “evolving any” is
 not widely used outside the TypeScript compiler itself, but I find it useful to have
 a name for this unusual pattern.
@@ -479,11 +327,9 @@ during this project and so understanding of all the working vacations, mornings,
 nings, and weekends I needed to complete it.
 xviii | Preface
 
--- 18 of 264 --
-
 ---
 
-## Sección 5: CHAPTER 1
+## Sección 9: CHAPTER 1 [Entropy: 0.28]
 
 Getting to Know TypeScript
 Before we dive into the details, this chapter helps you understand the big picture of
@@ -498,7 +344,11 @@ help you be a more effective TypeScript developer.
 TypeScript’s type system also has some unusual aspects that you should be aware of.
 Later chapters cover the type system in much greater detail, but this one will alert you
 to some of the surprises that it has in store.
-Item 1: Understand the Relationship Between TypeScript
+
+---
+
+## Sección 10: Item 1: Understand the Relationship Between TypeScript [Entropy: 0.554]
+
 and JavaScript
 If you use TypeScript for long, you’ll inevitably hear the phrase “TypeScript is a
 superset of JavaScript” or “TypeScript is a typed superset of JavaScript.” But what does
@@ -508,8 +358,6 @@ to each is the foundation for using TypeScript well.
 TypeScript is a superset of JavaScript in a syntactic sense: so long as your JavaScript
 program doesn’t have any syntax errors then it is also a TypeScript program. It’s quite
 likely that TypeScript’s type checker will flag some issues with your code. But this is
--- 19 of 264 --
-
 an independent problem. TypeScript will still parse your code and emit JavaScript.
 (This is another key part of the relationship. We’ll explore this more in Item 3.)
 TypeScript files use a .ts (or .tsx) extension, rather than the .js (or .jsx) extension of a
@@ -539,9 +387,6 @@ The : string is a type annotation that is specific to TypeScript. Once you use o
 you’ve gone beyond plain JavaScript (see Figure 1-1).
 Figure 1-1. All JavaScript is TypeScript, but not all TypeScript is JavaScript
 2 | Chapter 1: Getting to Know TypeScript
-
--- 20 of 264 --
-
 This is not to say that TypeScript doesn’t provide value for plain JavaScript programs.
 It does! For example, this JavaScript program:
 let city = 'new york city';
@@ -581,9 +426,10 @@ Whoops! What went wrong? This program is valid JavaScript (and hence Type‐
 Script). And it ran without throwing any errors. But it clearly didn’t do what you
 intended. Even without adding type annotations, TypeScript’s type checker is able to
 spot the error (and offer a helpful suggestion):
-Item 1: Understand the Relationship Between TypeScript and JavaScript | 3
 
--- 21 of 264 --
+---
+
+## Sección 11: Item 1: Understand the Relationship Between TypeScript and JavaScript | 3 [Entropy: 0.626]
 
 for (const state of states) {
 console.log(state.capitol);
@@ -633,13 +479,6 @@ console.log(state.capital);
 Now the errors match the problem and the suggested fix is correct. By spelling out
 our intent, you’ve also helped TypeScript spot other potential problems. For instance,
 4 | Chapter 1: Getting to Know TypeScript
-
----
-
-## Sección 6: CHAPTER 1
-
--- 22 of 264 --
-
 had you only misspelled capitol once in the array, there wouldn’t have been an error
 before. But with the type annotation, there is:
 const states: State[] = [
@@ -670,9 +509,10 @@ of these statements, even though they do not throw exceptions at runtime:
 const a = null + 7; // Evaluates to 7 in JS
 // ~~~~ Operator '+' cannot be applied to types ...
 const b = [] + 12; // Evaluates to '12' in JS
-Item 1: Understand the Relationship Between TypeScript and JavaScript | 5
 
--- 23 of 264 --
+---
+
+## Sección 12: Item 1: Understand the Relationship Between TypeScript and JavaScript | 5 [Entropy: 0.478]
 
 // ~~~~~~~ Operator '+' cannot be applied to types ...
 alert('Hello', 'TypeScript'); // alerts "Hello"
@@ -712,16 +552,17 @@ Script programs are not, in general, valid JavaScript programs.
 • TypeScript adds a type system that models JavaScript’s runtime behavior and tries
 to spot code which will throw exceptions at runtime. But you shouldn’t expect it
 6 | Chapter 1: Getting to Know TypeScript
-
--- 24 of 264 --
-
 to flag every exception. It is possible for code to pass the type checker but still
 throw at runtime.
 • While TypeScript’s type system largely models JavaScript behavior, there are
 some constructs that JavaScript allows but TypeScript chooses to bar, such as call‐
 ing functions with the wrong number of arguments. This is largely a matter of
 taste.
-Item 2: Know Which TypeScript Options You’re Using
+
+---
+
+## Sección 13: Item 2: Know Which TypeScript Options You’re Using [Entropy: 0.325]
+
 Does this code pass the type checker?
 function add(a, b) {
 return a + b;
@@ -751,13 +592,10 @@ when noImplicitAny is off:
 function add(a, b) {
 return a + b;
 }
-Item 2: Know Which TypeScript Options You’re Using | 7
 
 ---
 
-## Sección 7: CHAPTER 1
-
--- 25 of 264 --
+## Sección 14: Item 2: Know Which TypeScript Options You’re Using | 7 [Entropy: 0.686]
 
 If you mouse over the add symbol in your editor, it will reveal what TypeScript has
 inferred about the type of that function:
@@ -797,9 +635,6 @@ const x: number = null;
 A similar error would have occurred had you used undefined instead of null.
 If you mean to allow null, you can fix the error by making your intent explicit:
 8 | Chapter 1: Getting to Know TypeScript
-
--- 26 of 264 --
-
 const x: number | null = null;
 If you do not wish to permit null, you’ll need to track down where it came from and
 add either a check or an assertion:
@@ -835,13 +670,18 @@ language.
 TypeScript.
 • Use strictNullChecks to prevent “undefined is not an object”-style runtime
 errors.
-Item 2: Know Which TypeScript Options You’re Using | 9
 
--- 27 of 264 --
+---
+
+## Sección 15: Item 2: Know Which TypeScript Options You’re Using | 9 [Entropy: 0.05]
 
 • Aim to enable strict to get the most thorough checking that TypeScript can
 offer.
-Item 3: Understand That Code Generation Is Independent
+
+---
+
+## Sección 16: Item 3: Understand That Code Generation Is Independent [Entropy: 0.638]
+
 of Types
 At a high level, tsc (the TypeScript compiler) does two things:
 • It converts next-generation TypeScript/JavaScript to an older version of Java‐
@@ -871,9 +711,6 @@ type checking and output go hand in hand. You can think of all TypeScript errors
 being similar to warnings in those languages: it’s likely that they indicate a problem
 and are worth investigating, but they won’t stop the build.
 10 | Chapter 1: Getting to Know TypeScript
-
--- 28 of 264 --
-
 Compiling and Type Checking
 This is likely the source of some sloppy language that is common around TypeScript.
 You’ll often hear people say that their TypeScript “doesn’t compile” as a way of saying
@@ -913,13 +750,10 @@ The instanceof check happens at runtime, but Rectangle is a type and so it canno
 affect the runtime behavior of the code. TypeScript types are “erasable”: part of com‐
 pilation to JavaScript is simply removing all the interfaces, types, and type annota‐
 tions from your code.
-Item 3: Understand That Code Generation Is Independent of Types | 11
 
 ---
 
-## Sección 8: CHAPTER 1
-
--- 29 of 264 --
+## Sección 17: Item 3: Understand That Code Generation Is Independent of Types | 11 [Entropy: 0.662]
 
 To ascertain the type of shape you’re dealing with, you’ll need some way to recon‐
 struct its type at runtime. In this case you can check for the presence of a height
@@ -966,9 +800,6 @@ constructor(public width: number) {}
 }
 class Rectangle extends Square {
 12 | Chapter 1: Getting to Know TypeScript
-
--- 30 of 264 --
-
 constructor(public width: number, public height: number) {
 super(width);
 }
@@ -1006,10 +837,10 @@ function asNumber(val: number | string): number {
 return typeof(val) === 'string' ? Number(val) : val;
 }
 (as number is a type assertion. For more on when it’s appropriate to use these, see
-Item 9.)
-Item 3: Understand That Code Generation Is Independent of Types | 13
 
--- 31 of 264 --
+---
+
+## Sección 18: Item 3: Understand That Code Generation Is Independent of Types | 13 [Entropy: 0.602]
 
 Runtime Types May Not Be the Same as Declared Types
 Could this function ever hit the final console.log?
@@ -1051,9 +882,6 @@ You Cannot Overload a Function Based on TypeScript Types
 Languages like C++ allow you to define multiple versions of a function that differ
 only in the types of their parameters. This is called “function overloading.” Because
 14 | Chapter 1: Getting to Know TypeScript
-
--- 32 of 264 --
-
 the runtime behavior of your code is independent of its TypeScript types, this con‐
 struct isn’t possible in TypeScript:
 function add(a: number, b: number) { return a + b; }
@@ -1091,13 +919,10 @@ functions and target ES5, which predates generators, then tsc will emit some
 helper code to make things work. This may have some overhead vs. a native
 implementation of generators. In any case, this has to do with the emit target and
 language levels and is still independent of the types.
-Item 3: Understand That Code Generation Is Independent of Types | 15
 
 ---
 
-## Sección 9: CHAPTER 1
-
--- 33 of 264 --
+## Sección 19: Item 3: Understand That Code Generation Is Independent of Types | 15 [Entropy: 0.37]
 
 Things to Remember
 • Code generation is independent of the type system. This means that TypeScript
@@ -1107,7 +932,11 @@ types cannot affect the runtime behavior or performance of your code.
 need some way to reconstruct it. Tagged unions and property checking are com‐
 mon ways to do this. Some constructs, such as class, introduce both a Type‐
 Script type and a value that is available at runtime.
-Item 4: Get Comfortable with Structural Typing
+
+---
+
+## Sección 20: Item 4: Get Comfortable with Structural Typing [Entropy: 0.572]
+
 JavaScript is inherently duck typed: if you pass a function a value with all the right
 properties, it won’t care how you made the value. It will just use it. (“If it walks like a
 duck and talks like a duck…”) TypeScript models this behavior, and it can sometimes
@@ -1136,9 +965,6 @@ calculateLength(v); // OK, result is 5
 What is interesting is that you never declared the relationship between Vector2D and
 NamedVector. And you did not have to write an alternative implementation of
 16 | Chapter 1: Getting to Know TypeScript
-
--- 34 of 264 --
-
 calculateLength calculateLength for NamedVectors. TypeScript’s type system is
 modeling JavaScript’s runtime behavior (Item 1). It allowed calculateLength to be
 called with a NamedVector because its structure was compatible with Vector2D. This is
@@ -1178,9 +1004,10 @@ your types are “open.”
 This can sometimes lead to surprises:
 function calculateLengthL1(v: Vector3D) {
 let length = 0;
-Item 4: Get Comfortable with Structural Typing | 17
 
--- 35 of 264 --
+---
+
+## Sección 21: Item 4: Get Comfortable with Structural Typing | 17 [Entropy: 0.765]
 
 for (const axis of Object.keys(v)) {
 const coord = v[axis];
@@ -1224,9 +1051,6 @@ eter of type C guarantees that it will be either C or a subclass of it.
 Structural typing is beneficial when you’re writing tests. Say you have a function that
 runs a query on a database and processes the results:
 18 | Chapter 1: Getting to Know TypeScript
-
--- 36 of 264 --
-
 interface Author {
 first: string;
 last: string;
@@ -1269,18 +1093,19 @@ Things to Remember
 • Understand that JavaScript is duck typed and TypeScript uses structural typing to
 model this: values assignable to your interfaces might have properties beyond
 those explicitly listed in your type declarations. Types are not “sealed.”
-Item 4: Get Comfortable with Structural Typing | 19
 
 ---
 
-## Sección 10: CHAPTER 1
-
--- 37 of 264 --
+## Sección 22: Item 4: Get Comfortable with Structural Typing | 19 [Entropy: 0.295]
 
 • Be aware that classes also follow structural typing rules. You may not have an
 instance of the class you expect!
 • Use structural typing to facilitate unit testing.
-Item 5: Limit Use of the any Type
+
+---
+
+## Sección 23: Item 5: Limit Use of the any Type [Entropy: 0.68]
+
 TypeScript’s type system is gradual and optional: gradual because you can add types to
 your code bit by bit and optional because you can disable the type checker whenever
 you like. The key to these features is the any type:
@@ -1311,9 +1136,6 @@ calculateAge(birthDate); // OK
 The birth date parameter should be a Date, not a string. The any type has let you
 break the contract of calculateAge. This can be particularly problematic because
 20 | Chapter 1: Getting to Know TypeScript
-
--- 38 of 264 --
-
 JavaScript is often willing to implicitly convert between types. A string will some‐
 times work where a number is expected, only to break in other circumstances.
 There Are No Language Services for any Types
@@ -1333,9 +1155,10 @@ const formatName = (p: Person) => `${p.first} ${p.last}`;
 const formatNameAny = (p: any) => `${p.first} ${p.last}`;
 then you can select first in your editor, choose “Rename Symbol,” and change it to
 firstName (see Figures 1-5 and 1-6).
-Item 5: Limit Use of the any Type | 21
 
--- 39 of 264 --
+---
+
+## Sección 24: Item 5: Limit Use of the any Type | 21 [Entropy: 0.716]
 
 Figure 1-5. Renaming a symbol in vscode.
 Figure 1-6. Choosing the new name. The TypeScript language service ensures that all
@@ -1362,9 +1185,6 @@ Here’s code that manages that component:
 function renderSelector(props: ComponentProps) { /* ... */ }
 let selectedId: number = 0;
 22 | Chapter 1: Getting to Know TypeScript
-
--- 40 of 264 --
-
 function handleSelectItem(item: any) {
 selectedId = item.id;
 }
@@ -1400,13 +1220,10 @@ source of these uncaught errors.
 TypeScript aims to make your life easier, but TypeScript with lots of any types can be
 harder to work with than untyped JavaScript because you have to fix type errors and
 still keep track of the real types in your head. When your types match reality, it frees
-Item 5: Limit Use of the any Type | 23
 
 ---
 
-## Sección 11: CHAPTER 1
-
--- 41 of 264 --
+## Sección 25: Item 5: Limit Use of the any Type | 23 [Entropy: 0.325]
 
 you from the burden of having to keep type information in your head. TypeScript will
 keep track of it for you.
@@ -1418,11 +1235,9 @@ ices. It can mask real problems, harm developer experience, and undermine con‐
 fidence in the type system. Avoid using it when you can!
 24 | Chapter 1: Getting to Know TypeScript
 
--- 42 of 264 --
-
 ---
 
-## Sección 12: CHAPTER 2
+## Sección 26: CHAPTER 2 [Entropy: 0.31]
 
 TypeScript’s Type System
 TypeScript generates code (Item 3), but the type system is the main event. This is why
@@ -1433,7 +1248,11 @@ avoid. TypeScript’s type system is surprisingly powerful and able to express t
 you might not expect a type system to be able to. The items in this chapter will give
 you a solid foundation to build upon as you write TypeScript and read the rest of this
 book.
-Item 6: Use Your Editor to Interrogate and Explore the
+
+---
+
+## Sección 27: Item 6: Use Your Editor to Interrogate and Explore the [Entropy: 0.692]
+
 Type System
 When you install TypeScript, you get two executables:
 • tsc, the TypeScript compiler
@@ -1446,8 +1265,6 @@ ices like autocomplete are one of the things that make TypeScript such a joy to 
 But beyond convenience, your editor is the best place to build and test your knowl‐
 edge of the type system. This will help you build an intuition for when TypeScript is
 able to infer types, which is key to writing compact, idiomatic code (see Item 19).
--- 43 of 264 --
-
 The details will vary from editor to editor, but you can generally mouse over a symbol
 to see what TypeScript considers its type (see Figure 2-1).
 Figure 2-1. An editor (vscode) showing that the inferred type of the num symbol is
@@ -1465,9 +1282,6 @@ the type of a variable change in the branch of a conditional is a tremendous way
 build confidence in the type system (see Figure 2-3).
 Figure 2-3. The type of message is string | null outside the branch but string inside.
 26 | Chapter 2: TypeScript’s Type System
-
--- 44 of 264 --
-
 You can inspect individual properties in a larger object to see what TypeScript has
 inferred about them (see Figure 2-4).
 Figure 2-4. Inspecting how TypeScript has inferred types in an object
@@ -1490,9 +1304,10 @@ return elOrId;
 return document.body;
 } else {
 const el = document.getElementById(elOrId);
-Item 6: Use Your Editor to Interrogate and Explore the Type System | 27
 
--- 45 of 264 --
+---
+
+## Sección 28: Item 6: Use Your Editor to Interrogate and Explore the Type System | 27 [Entropy: 0.424]
 
 return el;
 // ~~~~~~~~~~ 'HTMLElement | null' is not assignable to 'HTMLElement'
@@ -1523,12 +1338,13 @@ prototype: Request;
 new(input: RequestInfo, init?: RequestInit): Request;
 };
 Here you can see that the Request type and value are being modeled separately (see
-Item 8). You’ve seen RequestInfo already. Clicking through on RequestInit shows
+
+---
+
+## Sección 29: Item 8). You’ve seen RequestInfo already. Clicking through on RequestInit shows [Entropy: 0.355]
+
 everything you can use to construct a Request:
 28 | Chapter 2: TypeScript’s Type System
-
--- 46 of 264 --
-
 interface RequestInit {
 body?: BodyInit | null;
 cache?: RequestCache;
@@ -1546,7 +1362,11 @@ use them.
 • Use your editor to build an intuition for how the type system works and how
 TypeScript infers types.
 • Know how to jump into type declaration files to see how they model behavior.
-Item 7: Think of Types as Sets of Values
+
+---
+
+## Sección 30: Item 7: Think of Types as Sets of Values [Entropy: 0.451]
+
 At runtime, every variable has a single value chosen from JavaScript’s universe of val‐
 ues. There are many possible values, including:
 • 42
@@ -1562,13 +1382,10 @@ This is best thought of as a set of possible values. This set is known as the do
 the type. For instance, you can think of the number type as the set of all number val‐
 ues. 42 and -37.25 are in it, but 'Canada' is not. Depending on strictNullChecks,
 null and undefined may or may not be part of the set.
-Item 7: Think of Types as Sets of Values | 29
 
 ---
 
-## Sección 13: CHAPTER 2
-
--- 47 of 264 --
+## Sección 31: Item 7: Think of Types as Sets of Values | 29 [Entropy: 0.765]
 
 The smallest set is the empty set, which contains no values. It corresponds to the
 never type in TypeScript. Because its domain is empty, no values are assignable to a
@@ -1610,9 +1427,6 @@ interface Identified {
 id: string;
 }
 30 | Chapter 2: TypeScript’s Type System
-
--- 48 of 264 --
-
 Think of this interface as a description of the values in the domain of its type. Does
 the value have an id property whose value is assignable to (a member of) string?
 Then it’s an Identifiable.
@@ -1653,9 +1467,10 @@ keyof (A&B) = (keyof A) | (keyof B)
 keyof (A|B) = (keyof A) & (keyof B)
 If you can build an intuition for why these equations hold, you’ll have come a long
 way toward understanding TypeScript’s type system!
-Item 7: Think of Types as Sets of Values | 31
 
--- 49 of 264 --
+---
+
+## Sección 32: Item 7: Think of Types as Sets of Values | 31 [Entropy: 0.644]
 
 Another perhaps more common way to write the PersonSpan type would be with
 extends:
@@ -1688,9 +1503,6 @@ interface Vector2D { x: number; y: number; }
 interface Vector3D { x: number; y: number; z: number; }
 The sets haven’t changed, so neither has the Venn diagram.
 32 | Chapter 2: TypeScript’s Type System
-
--- 50 of 264 --
-
 While both interpretations are workable for object types, the set interpretation
 becomes much more intuitive when you start thinking about literal types and union
 types. extends can also appear as a constraint in a generic type, and it also means
@@ -1732,13 +1544,10 @@ isn’t strictly hierarchical. What’s the relationship between string|number a
 string|Date, for instance? Their intersection is non-empty (it’s string), but neither
 is a subset of the other. The relationship between their domains is clear, even though
 these types don’t fit into a strict hierarchy (see Figure 2-8).
-Item 7: Think of Types as Sets of Values | 33
 
 ---
 
-## Sección 14: CHAPTER 2
-
--- 51 of 264 --
+## Sección 33: Item 7: Think of Types as Sets of Values | 33 [Entropy: 0.73]
 
 Figure 2-8. Union types may not fit into a hierarchy but can be thought of in terms of
 sets of values.
@@ -1773,9 +1582,6 @@ when it would result in a proper TypeScript type:
 type T = Exclude<string|Date, string|number>; // Type is Date
 type NonZeroNums = Exclude<number, 0>; // Type is still just number
 34 | Chapter 2: TypeScript’s Type System
-
--- 52 of 264 --
-
 Table 2-1 summarizes the correspondence between TypeScript terms and terms from
 set theory.
 Table 2-1. TypeScript terms and set terms
@@ -1799,16 +1605,21 @@ erties that were not mentioned in the type declaration.
 section of A’s domain and B’s domain. For object types, this means that values in A
 & B have the properties of both A and B.
 • Think of “extends,” “assignable to,” and “subtype of ” as synonyms for “subset of.”
-Item 8: Know How to Tell Whether a Symbol Is in the Type
+
+---
+
+## Sección 34: Item 8: Know How to Tell Whether a Symbol Is in the Type [Entropy: 0.28]
+
 Space or Value Space
 A symbol in TypeScript exists in one of two spaces:
 • Type space
 • Value space
 This can get confusing because the same name can refer to different things depending
 on which space it’s in:
-Item 8: Know How to Tell Whether a Symbol Is in the Type Space or Value Space | 35
 
--- 53 of 264 --
+---
+
+## Sección 35: Item 8: Know How to Tell Whether a Symbol Is in the Type Space or Value Space | 35 [Entropy: 0.698]
 
 interface Cylinder {
 radius: number;
@@ -1844,9 +1655,6 @@ Script Playground, which shows you the generated JavaScript for your TypeScript
 source. Types are erased during compilation (Item 3), so if a symbol disappears then
 it was probably in type space (see Figure 2-9).
 36 | Chapter 2: TypeScript’s Type System
-
--- 54 of 264 --
-
 Figure 2-9. The TypeScript playground showing generated JavaScript. The symbols on
 the first two lines go away, so they were in type space.
 Statements in TypeScript can alternate between type space and value space. The sym‐
@@ -1881,13 +1689,10 @@ The TypeScript type introduced by a class is based on its shape (its properties 
 methods) while the value is the constructor.
 There are many operators and keywords that mean different things in a type or value
 context. typeof, for instance:
-Item 8: Know How to Tell Whether a Symbol Is in the Type Space or Value Space | 37
 
 ---
 
-## Sección 15: CHAPTER 2
-
--- 55 of 264 --
+## Sección 36: Item 8: Know How to Tell Whether a Symbol Is in the Type Space or Value Space | 37 [Entropy: 0.825]
 
 type T1 = typeof p; // Type is Person
 type T2 = typeof email;
@@ -1926,9 +1731,6 @@ const first: Person['first'] = p['first']; // Or p.first
 Person['first'] is a type here since it appears in a type context (after a :). You can
 put any type in the index slot, including union types or primitive types:
 38 | Chapter 2: TypeScript’s Type System
-
--- 56 of 264 --
-
 type PersonEl = Person['first' | 'last']; // Type is string
 type Tuple = [string, number, Date];
 type TupleEl = Tuple[number]; // Type is string | number | Date
@@ -1967,9 +1769,10 @@ body: string}
 // ~~~~~~ Duplicate identifier 'string'
 // Binding element 'string' implicitly has an 'any' type
 ) { /* ... */ }
-Item 8: Know How to Tell Whether a Symbol Is in the Type Space or Value Space | 39
 
--- 57 of 264 --
+---
+
+## Sección 37: Item 8: Know How to Tell Whether a Symbol Is in the Type Space or Value Space | 39 [Entropy: 0.505]
 
 The problem is that Person and string are being interpreted in a value context.
 You’re trying to create a variable named Person and two variables named string.
@@ -1994,7 +1797,11 @@ distinction and understand how to tell which it is.
 • typeof, this, and many other operators and keywords have different meanings
 in type space and value space.
 • Some constructs such as class or enum introduce both a type and a value.
-Item 9: Prefer Type Declarations to Type Assertions
+
+---
+
+## Sección 38: Item 9: Prefer Type Declarations to Type Assertions [Entropy: 0.75]
+
 TypeScript seems to have two ways of assigning a value to a variable and giving it a
 type:
 interface Person { name: string };
@@ -2006,13 +1813,6 @@ the type. The latter (as Person) performs a type assertion. This tells TypeScrip
 despite the type it inferred, you know better and would like the type to be Person.
 In general, you should prefer type declarations to type assertions. Here’s why:
 40 | Chapter 2: TypeScript’s Type System
-
----
-
-## Sección 16: CHAPTER 2
-
--- 58 of 264 --
-
 const alice: Person = {};
 // ~~~~~ Property 'name' is missing in type '{}'
 // but required in type 'Person'
@@ -2051,9 +1851,10 @@ But this suffers from all the same issues as a more direct use of type assertion
 example:
 const people = ['alice', 'bob', 'jan'].map(name => ({} as Person));
 // No error
-Item 9: Prefer Type Declarations to Type Assertions | 41
 
--- 59 of 264 --
+---
+
+## Sección 39: Item 9: Prefer Type Declarations to Type Assertions | 41 [Entropy: 0.734]
 
 So how do you use a type declaration in this context instead? The most straightfor‐
 ward way is to declare a variable in the arrow function:
@@ -2090,15 +1891,16 @@ Because TypeScript doesn’t have access to the DOM of your page, it has no way 
 knowing that #myButton is a button element. And it doesn’t know that the current
 Target of the event should be that same button. Since you have information that
 TypeScript does not, a type assertion makes sense here. For more on DOM types, see
-Item 55.
+
+---
+
+## Sección 40: Item 55. [Entropy: 0.635]
+
 You may also run into the non-null assertion, which is so common that it gets a spe‐
 cial syntax:
 const elNull = document.getElementById('foo'); // Type is HTMLElement | null
 const el = document.getElementById('foo')!; // Type is HTMLElement
 42 | Chapter 2: TypeScript’s Type System
-
--- 60 of 264 --
-
 Used as a prefix, ! is boolean negation. But as a suffix, ! is interpreted as an assertion
 that the value is non-null. You should treat ! just like any other assertion: it is erased
 during compilation, so you should only use it if you have information that the type
@@ -2128,19 +1930,20 @@ Things to Remember
 • Know how to annotate the return type of an arrow function.
 • Use type assertions and non-null assertions when you know something about
 types that TypeScript does not.
-Item 10: Avoid Object Wrapper Types (String, Number,
+
+---
+
+## Sección 41: Item 10: Avoid Object Wrapper Types (String, Number, [Entropy: 0.25]
+
 Boolean, Symbol, BigInt)
 In addition to objects, JavaScript has seven types of primitive values: strings, num‐
 bers, booleans, null, undefined, symbol, and bigint. The first five have been around
 since the beginning. The symbol primitive was added in ES2015, and bigint is in the
 process of being finalized.
-Item 10: Avoid Object Wrapper Types (String, Number, Boolean, Symbol, BigInt) | 43
 
 ---
 
-## Sección 17: CHAPTER 2
-
--- 61 of 264 --
+## Sección 42: Item 10: Avoid Object Wrapper Types (String, Number, Boolean, Symbol, BigInt) | 43 [Entropy: 0.815]
 
 Primitives are distinguished from objects by being immutable and not having meth‐
 ods. You might object that strings do have methods:
@@ -2183,9 +1986,6 @@ There are object wrapper types for the other primitives as well: Number for numb
 Boolean for booleans, Symbol for symbols, and BigInt for bigints (there are no object
 wrappers for null and undefined).
 44 | Chapter 2: TypeScript’s Type System
-
--- 62 of 264 --
-
 These wrapper types exist as a convenience to provide methods on the primitive val‐
 ues and to provide static methods (e.g., String.fromCharCode). But there’s usually no
 reason to instantiate them directly.
@@ -2224,9 +2024,10 @@ annotation with a capital letter:
 const s: String = "primitive";
 const n: Number = 12;
 const b: Boolean = true;
-Item 10: Avoid Object Wrapper Types (String, Number, Boolean, Symbol, BigInt) | 45
 
--- 63 of 264 --
+---
+
+## Sección 43: Item 10: Avoid Object Wrapper Types (String, Number, Boolean, Symbol, BigInt) | 45 [Entropy: 0.331]
 
 Of course, the values at runtime are still primitives, not objects. But TypeScript per‐
 mits these declarations because the primitive types are assignable to the object wrap‐
@@ -2246,7 +2047,11 @@ values. Avoid instantiating them or using them directly.
 • Avoid TypeScript object wrapper types. Use the primitive types instead: string
 instead of String, number instead of Number, boolean instead of Boolean, symbol
 instead of Symbol, and bigint instead of BigInt.
-Item 11: Recognize the Limits of Excess Property Checking
+
+---
+
+## Sección 44: Item 11: Recognize the Limits of Excess Property Checking [Entropy: 0.554]
+
 When you assign an object literal to a variable with a declared type, TypeScript makes
 sure it has the properties of that type and no others:
 interface Room {
@@ -2266,9 +2071,6 @@ Room type, which you can see by introducing an intermediate variable:
 const obj = {
 numDoors: 1,
 46 | Chapter 2: TypeScript’s Type System
-
--- 64 of 264 --
-
 ceilingHeightFt: 10,
 elephant: 'present',
 };
@@ -2311,13 +2113,10 @@ property that’s a string and any other properties, so long as those don’t in
 Mode property set to something other than true or false.
 It’s easy to forget how expansive TypeScript types can be. Here are a few more values
 that are assignable to Options:
-Item 11: Recognize the Limits of Excess Property Checking | 47
 
 ---
 
-## Sección 18: CHAPTER 2
-
--- 65 of 264 --
+## Sección 45: Item 11: Recognize the Limits of Excess Property Checking | 47 [Entropy: 0.571]
 
 const o1: Options = document; // OK
 const o2: Options = new HTMLAnchorElement; // OK
@@ -2348,7 +2147,11 @@ darkMode?: boolean;
 [otherOptions: string]: unknown;
 }
 const o: Options = { darkmode: true }; // OK
-Item 15 discusses when this is and is not an appropriate way to model your data.
+
+---
+
+## Sección 46: Item 15 discusses when this is and is not an appropriate way to model your data. [Entropy: 0.481]
+
 A related check happens for “weak” types, which have only optional properties:
 interface LineChartOptions {
 logscale?: boolean;
@@ -2358,9 +2161,6 @@ areaChart?: boolean;
 const opts = { logScale: true };
 const o: LineChartOptions = opts;
 48 | Chapter 2: TypeScript’s Type System
-
--- 66 of 264 --
-
 // ~ Type '{ logScale: boolean; }' has no properties in common
 // with type 'LineChartOptions'
 From a structural point of view, the LineChartOptions type should include almost all
@@ -2386,7 +2186,11 @@ Conflating these processes will make it harder for you to build a mental model o
 assignability.
 • Be aware of the limits of excess property checking: introducing an intermediate
 variable will remove these checks.
-Item 12: Apply Types to Entire Function Expressions When
+
+---
+
+## Sección 47: Item 12: Apply Types to Entire Function Expressions When [Entropy: 0.487]
+
 Possible
 JavaScript (and TypeScript) distinguishes a function statement and a function
 expression:
@@ -2396,9 +2200,10 @@ const rollDice3 = (sides: number): number => { /* ... */ }; // Also expression
 An advantage of function expressions in TypeScript is that you can apply a type dec‐
 laration to the entire function at once, rather than specifying the types of the parame‐
 ters and return type individually:
-Item 12: Apply Types to Entire Function Expressions When Possible | 49
 
--- 67 of 264 --
+---
+
+## Sección 48: Item 12: Apply Types to Entire Function Expressions When Possible | 49 [Entropy: 0.75]
 
 type DiceRollFn = (sides: number) => number;
 const rollDice: DiceRollFn = sides => { /* ... */ };
@@ -2441,13 +2246,6 @@ return quote;
 // }
 (See Item 25 for more on Promises and async/await.)
 50 | Chapter 2: TypeScript’s Type System
-
----
-
-## Sección 19: CHAPTER 2
-
--- 68 of 264 --
-
 There’s a bug here: if the request for /quote fails, the response body is likely to con‐
 tain an explanation like “404 Not Found.” This isn’t JSON, so response.json() will
 return a rejected Promise with a message about invalid JSON. This obscures the real
@@ -2490,9 +2288,10 @@ const response = await fetch(input, init);
 if (!response.ok) {
 return new Error('Request failed: ' + response.status);
 }
-Item 12: Apply Types to Entire Function Expressions When Possible | 51
 
--- 69 of 264 --
+---
+
+## Sección 49: Item 12: Apply Types to Entire Function Expressions When Possible | 51 [Entropy: 0.52]
 
 return response;
 }
@@ -2510,7 +2309,11 @@ their parameters and return type.
 look for an existing one. If you’re a library author, provide types for common
 callbacks.
 • Use typeof fn to match the signature of another function.
-Item 13: Know the Differences Between type and
+
+---
+
+## Sección 50: Item 13: Know the Differences Between type and [Entropy: 0.734]
+
 interface
 If you want to define a named type in TypeScript, you have two options. You can use
 a type, as shown here:
@@ -2530,9 +2333,6 @@ become increasingly blurred over the years, to the point that in many situations
 can use either. You should be aware of the distinctions that remain between type and
 interface and be consistent about which you use in which situation. But you should
 52 | Chapter 2: TypeScript’s Type System
-
--- 70 of 264 --
-
 also know how to write the same types using both, so that you’ll be comfortable read‐
 ing TypeScript that uses either.
 The examples in this item prefix type names with I or T solely to
@@ -2574,9 +2374,10 @@ interface IFnWithProperties {
 (x: number): number;
 prop: string;
 }
-Item 13: Know the Differences Between type and interface | 53
 
--- 71 of 264 --
+---
+
+## Sección 51: Item 13: Know the Differences Between type and interface | 53 [Entropy: 0.75]
 
 You can remember this syntax by reminding yourself that in JavaScript, functions are
 callable objects.
@@ -2619,13 +2420,6 @@ interface VariableMap {
 then you might want a type that attaches the name to the variable. This would be:
 type NamedVariable = (Input | Output) & { name: string };
 54 | Chapter 2: TypeScript’s Type System
-
----
-
-## Sección 20: CHAPTER 2
-
--- 72 of 264 --
-
 This type cannot be expressed with interface. A type is, in general, more capable
 than an interface. It can be a union, and it can also take advantage of more
 advanced features like mapped or conditional types.
@@ -2667,9 +2461,10 @@ standard library. The Array interface, for example, is defined in lib.es5.d.ts. 
 this is all you get. But if you add ES2015 to the lib entry of your tsconfig.json, Type‐
 Script will also include lib.es2015.d.ts. This includes another Array interface with
 additional methods like find that were added in ES2015. They get added to the other
-Item 13: Know the Differences Between type and interface | 55
 
--- 73 of 264 --
+---
+
+## Sección 52: Item 13: Know the Differences Between type and interface | 55 [Entropy: 0.545]
 
 Array interface via merging. The net effect is that you get a single Array type with
 exactly the right methods.
@@ -2691,7 +2486,11 @@ Things to Remember
 • Know how to write the same types using either syntax.
 • In deciding which to use in your project, consider the established style and
 whether augmentation might be beneficial.
-Item 14: Use Type Operations and Generics to Avoid
+
+---
+
+## Sección 53: Item 14: Use Type Operations and Generics to Avoid [Entropy: 0.568]
+
 Repeating Yourself
 This script prints the dimensions, surface areas, and volumes of a few cylinders:
 console.log('Cylinder 1 x 1 ',
@@ -2706,9 +2505,6 @@ console.log('Cylinder 2 x 1 ',
 Is this code uncomfortable to look at? It should be. It’s extremely repetitive, as though
 the same line was copied and pasted, then modified. It repeats both values and con‐
 56 | Chapter 2: TypeScript’s Type System
-
--- 74 of 264 --
-
 stants. This has allowed an error to creep in (did you spot it?). Much better would be
 to factor out some functions, a constant, and a loop:
 const surfaceArea = (r, h) => 2 * Math.PI * r * (r + h);
@@ -2749,9 +2545,10 @@ x: number;
 y: number;
 }
 function distance(a: Point2D, b: Point2D) { /* ... */ }
-Item 14: Use Type Operations and Generics to Avoid Repeating Yourself | 57
 
--- 75 of 264 --
+---
+
+## Sección 54: Item 14: Use Type Operations and Generics to Avoid Repeating Yourself | 57 [Entropy: 0.75]
 
 This is the type system equivalent of factoring out a constant instead of writing it
 repeatedly. Duplicated types aren’t always so easy to spot. Sometimes they can be
@@ -2794,13 +2591,6 @@ interface TopNavState {
 userId: string;
 pageTitle: string;
 58 | Chapter 2: TypeScript’s Type System
-
----
-
-## Sección 21: CHAPTER 2
-
--- 76 of 264 --
-
 recentFiles: string[];
 }
 Rather than building up State by extending TopNavState, you’d like to define TopNav
@@ -2828,9 +2618,10 @@ called Pick:
 type Pick<T, K> = { [k in K]: T[k] };
 (This definition isn’t quite complete, as you will see.) You use it like this:
 type TopNavState = Pick<State, 'userId' | 'pageTitle' | 'recentFiles'>;
-Item 14: Use Type Operations and Generics to Avoid Repeating Yourself | 59
 
--- 77 of 264 --
+---
+
+## Sección 55: Item 14: Use Type Operations and Generics to Avoid Repeating Yourself | 59 [Entropy: 0.731]
 
 Pick is an example of a generic type. Continuing the analogy to removing code dupli‐
 cation, using Pick is the equivalent of calling a function. Pick takes two types, T and
@@ -2876,9 +2667,6 @@ update(options: OptionsUpdate) { /* ... */ }
 You can construct OptionsUpdate from Options using a mapped type and keyof:
 type OptionsUpdate = {[k in keyof Options]?: Options[k]};
 60 | Chapter 2: TypeScript’s Type System
-
--- 78 of 264 --
-
 keyof takes a type and gives you a union of the types of its keys:
 type OptionsKeys = keyof Options;
 // Type is "width" | "height" | "color" | "label"
@@ -2921,9 +2709,10 @@ height,
 weight,
 favoriteColor,
 };
-Item 14: Use Type Operations and Generics to Avoid Repeating Yourself | 61
 
--- 79 of 264 --
+---
+
+## Sección 56: Item 14: Use Type Operations and Generics to Avoid Repeating Yourself | 61 [Entropy: 0.75]
 
 }
 // Return type inferred as { userId: string; name: string; age: number, ... }
@@ -2960,13 +2749,6 @@ const couple2: DancingDuo<{first: string}> = [
 ];
 {first: string} does not extend Name, hence the error.
 62 | Chapter 2: TypeScript’s Type System
-
----
-
-## Sección 22: CHAPTER 2
-
--- 80 of 264 --
-
 At the moment, TypeScript always requires you to write out the
 generic parameter in a declaration. Writing DancingDuo instead of
 DancingDuo<Name> won’t cut it. If you want TypeScript to infer the
@@ -2986,7 +2768,11 @@ const couple2 = dancingDuo([
 // '{ first: string; }' but required in type 'Name'
 ]);
 For a particularly useful variation on this, see inferringPick in
-Item 26.
+
+---
+
+## Sección 57: Item 26. [Entropy: 0.586]
+
 You can use extends to complete the definition of Pick from earlier. If you run the
 original version through the type checker, you get an error:
 type Pick<T, K> = {
@@ -3009,9 +2795,10 @@ type FirstMiddle = Pick<Name, 'first' | 'middle'>;
 // ~~~~~~~~~~~~~~~~~~
 // Type '"middle"' is not assignable
 // to type '"first" | "last"'
-Item 14: Use Type Operations and Generics to Avoid Repeating Yourself | 63
 
--- 81 of 264 --
+---
+
+## Sección 58: Item 14: Use Type Operations and Generics to Avoid Repeating Yourself | 63 [Entropy: 0.355]
 
 Repetition and copy/paste coding are just as bad in type space as they are in value
 space. The constructs you use to avoid repetition in type space may be less familiar
@@ -3028,7 +2815,11 @@ types. These include keyof, typeof, indexing, and mapped types.
 types instead of repeating types. Use extends to constrain generic types.
 • Familiarize yourself with generic types defined in the standard library such as
 Pick, Partial, and ReturnType.
-Item 15: Use Index Signatures for Dynamic Data
+
+---
+
+## Sección 59: Item 15: Use Index Signatures for Dynamic Data [Entropy: 0.776]
+
 One of the best features of JavaScript is its convenient syntax for creating objects:
 const rocket = {
 name: 'Falcon 9',
@@ -3047,9 +2838,6 @@ The [property: string]: string is the index signature. It specifies three things
 A name for the keys
 This is purely for documentation; it is not used by the type checker in any way.
 64 | Chapter 2: TypeScript’s Type System
-
--- 82 of 264 --
-
 A type for the key
 This needs to be some combination of string, number, or symbol, but generally
 you just want to use string (see Item 16).
@@ -3090,9 +2878,10 @@ rowStr.split(',').forEach((cell, i) => {
 row[header[i]] = cell;
 });
 return row;
-Item 15: Use Index Signatures for Dynamic Data | 65
 
--- 83 of 264 --
+---
+
+## Sección 60: Item 15: Use Index Signatures for Dynamic Data | 65 [Entropy: 0.795]
 
 });
 }
@@ -3137,13 +2926,6 @@ type Row3 =
 | { a: number; }
 | { a: number; b: number; }
 66 | Chapter 2: TypeScript’s Type System
-
----
-
-## Sección 23: CHAPTER 2
-
--- 84 of 264 --
-
 | { a: number; b: number; c: number; }
 | { a: number; b: number; c: number; d: number };
 The last form is the most precise, but it may be less convenient to work with.
@@ -3174,15 +2956,20 @@ runtime—for example, if you’re loading them from a CSV file.
 access.
 • Prefer more precise types to index signatures when possible: interfaces,
 Records, or mapped types.
-Item 16: Prefer Arrays, Tuples, and ArrayLike to number
+
+---
+
+## Sección 61: Item 16: Prefer Arrays, Tuples, and ArrayLike to number [Entropy: 0.319]
+
 Index Signatures
 JavaScript is a famously quirky language. Some of the most notorious quirks involve
 implicit type coercions:
 > "0" == 0
 true
-Item 16: Prefer Arrays, Tuples, and ArrayLike to number Index Signatures | 67
 
--- 85 of 264 --
+---
+
+## Sección 62: Item 16: Prefer Arrays, Tuples, and ArrayLike to number Index Signatures | 67 [Entropy: 0.75]
 
 but these can usually be avoided by using === and !== instead of their more coercive
 cousins.
@@ -3220,9 +3007,6 @@ If you use Object.keys to list the keys of an array, you get strings back:
 > Object.keys(x)
 [ '0', '1', '2' ]
 68 | Chapter 2: TypeScript’s Type System
-
--- 86 of 264 --
-
 TypeScript attempts to bring some sanity to this by allowing numeric keys and distin‐
 guishing between these and strings. If you dig into the type declarations for Array
 (Item 6), you’ll find this in lib.es5.d.ts:
@@ -3264,9 +3048,10 @@ i; // Type is number
 x; // Type is number
 });
 If you need to break out of the loop early, you’re best off using a C-style for(;;) loop:
-Item 16: Prefer Arrays, Tuples, and ArrayLike to number Index Signatures | 69
 
--- 87 of 264 --
+---
+
+## Sección 63: Item 16: Prefer Arrays, Tuples, and ArrayLike to number Index Signatures | 69 [Entropy: 0.646]
 
 for (let i = 0; i < xs.length; i++) {
 const x = xs[i];
@@ -3308,16 +3093,13 @@ Things to Remember
 as an index signature is a purely TypeScript construct which is designed to help
 catch bugs.
 70 | Chapter 2: TypeScript’s Type System
+• Prefer Array, tuple, or ArrayLike types to using number in an index signature
+yourself.
 
 ---
 
-## Sección 24: CHAPTER 2
+## Sección 64: Item 17: Use readonly to Avoid Errors Associated with [Entropy: 0.665]
 
--- 88 of 264 --
-
-• Prefer Array, tuple, or ArrayLike types to using number in an index signature
-yourself.
-Item 17: Use readonly to Avoid Errors Associated with
 Mutation
 Here’s some code to print the triangular numbers (1, 1+2, 1+2+3, etc.):
 function printTriangles(n: number) {
@@ -3351,9 +3133,10 @@ while ((num = arr.pop()) !== undefined) {
 // ~~~ 'pop' does not exist on type 'readonly number[]'
 sum += num;
 }
-Item 17: Use readonly to Avoid Errors Associated with Mutation | 71
 
--- 89 of 264 --
+---
+
+## Sección 65: Item 17: Use readonly to Avoid Errors Associated with Mutation | 71 [Entropy: 0.806]
 
 return sum;
 }
@@ -3392,9 +3175,6 @@ return sum;
 }
 Now printTriangles does what you expect:
 72 | Chapter 2: TypeScript’s Type System
-
--- 90 of 264 --
-
 1 In practice you might just write lines.join('\n').split(/\n\n+/), but bear with me.
 > printTriangles(5)
 1
@@ -3431,9 +3211,10 @@ paragraphs.push(currPara);
 currPara.length = 0; // Clear the lines
 }
 };
-Item 17: Use readonly to Avoid Errors Associated with Mutation | 73
 
--- 91 of 264 --
+---
+
+## Sección 66: Item 17: Use readonly to Avoid Errors Associated with Mutation | 73 [Entropy: 0.698]
 
 for (const line of lines) {
 if (!line) {
@@ -3477,13 +3258,6 @@ currPara.length = 0; // Clear lines
 }
 };
 74 | Chapter 2: TypeScript’s Type System
-
----
-
-## Sección 25: CHAPTER 2
-
--- 92 of 264 --
-
 for (const line of lines) {
 if (!line) {
 addParagraph();
@@ -3522,9 +3296,10 @@ Third, you could use an assertion to remove the readonly-ness of the array:
 paragraphs.push(currPara as string[]);
 Since you’re assigning currPara to a new array in the very next statement, this doesn’t
 seem like the most offensive assertion.
-Item 17: Use readonly to Avoid Errors Associated with Mutation | 75
 
--- 93 of 264 --
+---
+
+## Sección 67: Item 17: Use readonly to Avoid Errors Associated with Mutation | 75 [Entropy: 0.71]
 
 An important caveat to readonly is that it is shallow. You saw this with readonly
 string[][] earlier. If you have a readonly array of objects, the objects themselves are
@@ -3567,9 +3342,6 @@ obj = {...obj, bye: 34}; // OK
 This can prevent issues with aliasing and mutation involving objects rather than
 arrays.
 76 | Chapter 2: TypeScript’s Type System
-
--- 94 of 264 --
-
 2 React’s useCallback hook is another technique to avoid creating new functions on every render.
 Things to Remember
 • If your function does not modify its parameters then declare them readonly.
@@ -3579,7 +3351,11 @@ implementation.
 where mutations occur.
 • Understand the difference between const and readonly.
 • Understand that readonly is shallow.
-Item 18: Use Mapped Types to Keep Values in Sync
+
+---
+
+## Sección 68: Item 18: Use Mapped Types to Keep Values in Sync [Entropy: 0.382]
+
 Suppose you’re writing a UI component for drawing scatter plots. It has a few differ‐
 ent types of properties that control its display and behavior:
 interface ScatterProps {
@@ -3605,9 +3381,10 @@ newProps: ScatterProps
 let k: keyof ScatterProps;
 for (k in oldProps) {
 if (oldProps[k] !== newProps[k]) {
-Item 18: Use Mapped Types to Keep Values in Sync | 77
 
--- 95 of 264 --
+---
+
+## Sección 69: Item 18: Use Mapped Types to Keep Values in Sync | 77 [Entropy: 0.75]
 
 if (k !== 'onClick') return true;
 }
@@ -3652,13 +3429,6 @@ If you set it up the right way, it can. The key is to use a mapped type and an o
 const REQUIRES_UPDATE: {[k in keyof ScatterProps]: boolean} = {
 xs: true,
 78 | Chapter 2: TypeScript’s Type System
-
----
-
-## Sección 26: CHAPTER 2
-
--- 96 of 264 --
-
 ys: true,
 xRange: true,
 yRange: true,
@@ -3701,9 +3471,10 @@ then we would have been forced into the same fail open/fail closed choice.
 Mapped types are ideal if you want one object to have exactly the same properties as
 another. As in this example, you can use this to make TypeScript enforce constraints
 on your code.
-Item 18: Use Mapped Types to Keep Values in Sync | 79
 
--- 97 of 264 --
+---
+
+## Sección 70: Item 18: Use Mapped Types to Keep Values in Sync | 79 [Entropy: 0.295]
 
 Things to Remember
 • Use mapped types to keep related values and types synchronized.
@@ -3711,11 +3482,9 @@ Things to Remember
 interface.
 80 | Chapter 2: TypeScript’s Type System
 
--- 98 of 264 --
-
 ---
 
-## Sección 27: CHAPTER 3
+## Sección 71: CHAPTER 3 [Entropy: 0.4]
 
 Type Inference
 For programming languages used in industry, “statically typed” and “explicitly typed”
@@ -3734,15 +3503,17 @@ This chapter shows you some of the problems that can arise with type inference a
 how to fix them. After reading it, you should have a good understanding of how
 TypeScript infers types, when you still need to write type declarations, and when it’s a
 good idea to write type declarations even when a type can be inferred.
-Item 19: Avoid Cluttering Your Code with Inferable Types
+
+---
+
+## Sección 72: Item 19: Avoid Cluttering Your Code with Inferable Types [Entropy: 0.75]
+
 The first thing that many new TypeScript developers do when they convert a code‐
 base from JavaScript is fill it with type annotations. TypeScript is about types, after all!
 But in TypeScript many annotations are unnecessary. Declaring types for all your
 variables is counterproductive and is considered poor style.
 Don’t write:
 let x: number = 12;
--- 99 of 264 --
-
 Instead, just write:
 let x = 12;
 If you mouse over x in your editor, you’ll see that its type has been inferred as number
@@ -3783,9 +3554,6 @@ died: {
 where: 'Battle Creek, MI',
 when: 'Nov. 26, 1883'
 82 | Chapter 3: Type Inference
-
--- 100 of 264 --
-
 }
 };
 Again, the types are exactly the same. Writing the type in addition to the value just
@@ -3827,9 +3595,10 @@ function logProduct(product: Product) {
 const id: number = product.id;
 // ~~ Type 'string' is not assignable to type 'number'
 const name: string = product.name;
-Item 19: Avoid Cluttering Your Code with Inferable Types | 83
 
--- 101 of 264 --
+---
+
+## Sección 73: Item 19: Avoid Cluttering Your Code with Inferable Types | 83 [Entropy: 0.644]
 
 const price: number = product.price;
 console.log(id, name, price);
@@ -3871,18 +3640,15 @@ app.get('/health', (request: express.Request, response: express.Response) => {
 response.send('OK');
 });
 84 | Chapter 3: Type Inference
-
----
-
-## Sección 28: CHAPTER 3
-
--- 102 of 264 --
-
 // Do this:
 app.get('/health', (request, response) => {
 response.send('OK');
 });
-Item 26 goes into more depth on how context is used in type inference.
+
+---
+
+## Sección 74: Item 26 goes into more depth on how context is used in type inference. [Entropy: 0.562]
+
 There are a few situations where you may still want to specify a type even where it can
 be inferred.
 One is when you define an object literal:
@@ -3920,9 +3686,10 @@ out into uses of the function.
 Say you have a function which retrieves a stock quote:
 function getQuote(ticker: string) {
 return fetch(`https://quotes.example.com/?q=${ticker}`)
-Item 19: Avoid Cluttering Your Code with Inferable Types | 85
 
--- 103 of 264 --
+---
+
+## Sección 75: Item 19: Avoid Cluttering Your Code with Inferable Types | 85 [Entropy: 0.795]
 
 .then(response => response.json());
 }
@@ -3968,9 +3735,6 @@ nature) generally should not. This is similar in spirit to test-driven developme
 Writing the full type signature first helps get you the function you want, rather than
 the one the implementation makes expedient.
 86 | Chapter 3: Type Inference
-
--- 104 of 264 --
-
 A final reason to annotate return values is if you want to use a named type. You might
 choose not to write a return type for this function, for example:
 interface Vector2D { x: number; y: number; }
@@ -3995,14 +3759,19 @@ local variables in their bodies.
 • Consider using explicit annotations for object literals and function return types
 even when they can be inferred. This will help prevent implementation errors
 from surfacing in user code.
-Item 20: Use Different Variables for Different Types
+
+---
+
+## Sección 76: Item 20: Use Different Variables for Different Types [Entropy: 0.283]
+
 In JavaScript it’s no problem to reuse a variable to hold a differently typed value for a
 different purpose:
 let id = "12-34-56";
 fetchProduct(id); // Expects a string
-Item 20: Use Different Variables for Different Types | 87
 
--- 105 of 264 --
+---
+
+## Sección 77: Item 20: Use Different Variables for Different Types | 87 [Entropy: 0.752]
 
 id = 123456;
 fetchProductBySerialNumber(id); // Expects a number
@@ -4038,13 +3807,6 @@ While a union type does work, it may create more issues down the road. Union typ
 are harder to work with than simple types like string or number because you usually
 have to check what they are before you do anything with them.
 88 | Chapter 3: Type Inference
-
----
-
-## Sección 29: CHAPTER 3
-
--- 106 of 264 --
-
 The better solution is to introduce a new variable:
 const id = "12-34-56";
 fetchProduct(id);
@@ -4078,13 +3840,18 @@ This item focused on scalar values, but similar considerations apply to objects.
 more on that, see Item 23.
 Things to Remember
 • While a variable’s value can change, its type generally does not.
-Item 20: Use Different Variables for Different Types | 89
 
--- 107 of 264 --
+---
+
+## Sección 78: Item 20: Use Different Variables for Different Types | 89 [Entropy: 0.28]
 
 • To avoid confusion, both for human readers and for the type checker, avoid reus‐
 ing variables for differently typed values.
-Item 21: Understand Type Widening
+
+---
+
+## Sección 79: Item 21: Understand Type Widening [Entropy: 0.87]
+
 As Item 7 explained, at runtime every variable has a single value. But at static analysis
 time, when TypeScript is checking your code, a variable has a set of possible values,
 namely, its type. When you initialize a variable with a constant but don’t provide a
@@ -4118,9 +3885,6 @@ what should the type of mixed be? Here are a few possibilities:
 • readonly [string, number]
 • (string|number)[]
 90 | Chapter 3: Type Inference
-
--- 108 of 264 --
-
 • readonly (string|number)[]
 • [any, any]
 • any[]
@@ -4159,9 +3923,10 @@ x: 1,
 };
 v.x = 3;
 v.x = '3';
-Item 21: Understand Type Widening | 91
 
--- 109 of 264 --
+---
+
+## Sección 80: Item 21: Understand Type Widening | 91 [Entropy: 0.764]
 
 v.y = 4;
 v.name = 'Pythagoras';
@@ -4205,13 +3970,6 @@ y: 2,
 const v2 = {
 x: 1 as const,
 92 | Chapter 3: Type Inference
-
----
-
-## Sección 30: CHAPTER 3
-
--- 110 of 264 --
-
 y: 2,
 }; // Type is { x: 1; y: number; }
 const v3 = {
@@ -4230,7 +3988,11 @@ Things to Remember
 • Understand how TypeScript infers a type from a constant by widening it.
 • Familiarize yourself with the ways you can affect this behavior: const, type anno‐
 tations, context, and as const.
-Item 22: Understand Type Narrowing
+
+---
+
+## Sección 81: Item 22: Understand Type Narrowing [Entropy: 0.361]
+
 The opposite of widening is narrowing. This is the process by which TypeScript goes
 from a broad type to a narrower one. Perhaps the most common example of this is
 null checking:
@@ -4247,9 +4009,10 @@ exclude null from the type union within this block, resulting in a narrower type
 which is much easier to work with. The type checker is generally quite good at nar‐
 rowing types in conditionals like these, though it can occasionally be thwarted by ali‐
 asing (Item 24).
-Item 22: Understand Type Narrowing | 93
 
--- 111 of 264 --
+---
+
+## Sección 82: Item 22: Understand Type Narrowing | 93 [Entropy: 0.659]
 
 You can also narrow a variable’s type for the rest of a block by throwing or returning
 from a branch. For example:
@@ -4295,9 +4058,6 @@ with this check! Similar surprises can come from falsy primitive values:
 function foo(x?: number|string|null) {
 if (!x) {
 94 | Chapter 3: Type Inference
-
--- 112 of 264 --
-
 x; // Type is string | number | null | undefined
 }
 }
@@ -4339,9 +4099,10 @@ function returns true.
 Some functions are able to use type guards to perform type narrowing across arrays
 or objects. If you do some lookups in an array, for instance, you may wind up with an
 array of nullable types:
-Item 22: Understand Type Narrowing | 95
 
--- 113 of 264 --
+---
+
+## Sección 83: Item 22: Understand Type Narrowing | 95 [Entropy: 0.68]
 
 const jackson5 = ['Jackie', 'Tito', 'Jermaine', 'Marlon', 'Michael'];
 const members = ['Janet', 'Michael'].map(
@@ -4369,7 +4130,11 @@ Things to Remember
 of control flow.
 • Use tagged/discriminated unions and user-defined type guards to help the pro‐
 cess of narrowing.
-Item 23: Create Objects All at Once
+
+---
+
+## Sección 84: Item 23: Create Objects All at Once [Entropy: 0.694]
+
 As Item 20 explained, while a variable’s value may change, its type in TypeScript gen‐
 erally does not. This makes some JavaScript patterns easier to model in TypeScript
 than others. In particular, it means that you should prefer creating objects all at once,
@@ -4380,13 +4145,6 @@ pt.x = 3;
 pt.y = 4;
 In TypeScript, this will produce errors on each assignment:
 96 | Chapter 3: Type Inference
-
----
-
-## Sección 31: CHAPTER 3
-
--- 114 of 264 --
-
 const pt = {};
 pt.x = 3;
 // ~ Property 'x' does not exist on type '{}'
@@ -4411,7 +4169,11 @@ const pt = {} as Point;
 pt.x = 3;
 pt.y = 4; // OK
 But the better way is by building the object all at once and using a declaration (see
-Item 9):
+
+---
+
+## Sección 85: Item 9): [Entropy: 0.445]
+
 const pt: Point = {
 x: 3,
 y: 4,
@@ -4427,9 +4189,10 @@ You can build the larger object all at once instead using the object spread oper
 tor, ...:
 const namedPoint = {...pt, ...id};
 namedPoint.name; // OK, type is string
-Item 23: Create Objects All at Once | 97
 
--- 115 of 264 --
+---
+
+## Sección 86: Item 23: Create Objects All at Once | 97 [Entropy: 0.71]
 
 You can also use the object spread operator to build up objects field by field in a typesafe way. The key is to use a new variable on every update so that each gets a new
 type:
@@ -4470,9 +4233,6 @@ return {...a, ...b};
 const president = addOptional(firstLast, hasMiddle ? {middle: 'S'} : null);
 president.middle // OK, type is string | undefined
 98 | Chapter 3: Type Inference
-
--- 116 of 264 --
-
 Sometimes you want to build an object or array by transforming another one. In this
 case the equivalent of “building objects all at once” is using built-in functional con‐
 structs or utility libraries like Lodash rather than loops. See Item 27 for more on this.
@@ -4480,7 +4240,11 @@ Things to Remember
 • Prefer to build objects all at once rather than piecemeal. Use object spread
 ({...a, ...b}) to add properties in a type-safe way.
 • Know how to conditionally add properties to an object.
-Item 24: Be Consistent in Your Use of Aliases
+
+---
+
+## Sección 87: Item 24: Be Consistent in Your Use of Aliases [Entropy: 0.415]
+
 When you introduce a new name for a value:
 const borough = {name: 'Brooklyn', location: [40.688, -73.979]};
 const loc = borough.location;
@@ -4509,9 +4273,10 @@ bbox?: BoundingBox;
 The geometry of the polygon is specified by the exterior and holes properties. The
 bbox property is an optimization that may or may not be present. You can use it to
 speed up a point-in-polygon check:
-Item 24: Be Consistent in Your Use of Aliases | 99
 
--- 117 of 264 --
+---
+
+## Sección 88: Item 24: Be Consistent in Your Use of Aliases | 99 [Entropy: 0.78]
 
 function isPointInPolygon(polygon: Polygon, pt: Coordinate) {
 if (polygon.bbox) {
@@ -4556,13 +4321,6 @@ errors. This leads us to the golden rule of aliasing: if you introduce an alias,
 consistently.
 Using box in the property check fixes the error:
 100 | Chapter 3: Type Inference
-
----
-
-## Sección 32: CHAPTER 3
-
--- 118 of 264 --
-
 function isPointInPolygon(polygon: Polygon, pt: Coordinate) {
 const box = polygon.bbox;
 if (box) {
@@ -4605,9 +4363,10 @@ if (!bbox) {
 calculatePolygonBbox(polygon); // Fills in polygon.bbox
 // Now polygon.bbox and bbox refer to different values!
 }
-Item 24: Be Consistent in Your Use of Aliases | 101
 
--- 119 of 264 --
+---
+
+## Sección 89: Item 24: Be Consistent in Your Use of Aliases | 101 [Entropy: 0.415]
 
 TypeScript’s control flow analysis tends to be quite good for local variables. But for
 properties you should be on guard:
@@ -4631,7 +4390,11 @@ variable, use it consistently.
 • Use destructuring syntax to encourage consistent naming.
 • Be aware of how function calls can invalidate type refinements on properties.
 Trust refinements on local variables more than on properties.
-Item 25: Use async Functions Instead of Callbacks for
+
+---
+
+## Sección 90: Item 25: Use async Functions Instead of Callbacks for [Entropy: 0.75]
+
 Asynchronous Code
 Classic JavaScript modeled asynchronous behavior using callbacks. This leads to the
 infamous “pyramid of doom”:
@@ -4647,9 +4410,6 @@ console.log(3);
 });
 console.log(4);
 102 | Chapter 3: Type Inference
-
--- 120 of 264 --
-
 // Logs:
 // 4
 // 3
@@ -4694,9 +4454,10 @@ const response3 = await fetch(url3);
 // ...
 }
 }
-Item 25: Use async Functions Instead of Callbacks for Asynchronous Code | 103
 
--- 121 of 264 --
+---
+
+## Sección 91: Item 25: Use async Functions Instead of Callbacks for Asynchronous Code | 103 [Entropy: 0.81]
 
 When you target ES5 or earlier, the TypeScript compiler will perform some elaborate
 transformations to make async and await work. In other words, whatever your run‐
@@ -4740,13 +4501,6 @@ way:
 function timeout(millis: number): Promise<never> {
 return new Promise((resolve, reject) => {
 104 | Chapter 3: Type Inference
-
----
-
-## Sección 33: CHAPTER 3
-
--- 122 of 264 --
-
 setTimeout(() => reject('timeout'), millis);
 });
 }
@@ -4786,9 +4540,10 @@ callback(_cache[url]);
 } else {
 fetchURL(url, text => {
 _cache[url] = text;
-Item 25: Use async Functions Instead of Callbacks for Asynchronous Code | 105
 
--- 123 of 264 --
+---
+
+## Sección 92: Item 25: Use async Functions Instead of Callbacks for Asynchronous Code | 105 [Entropy: 0.795]
 
 callback(text);
 });
@@ -4834,9 +4589,6 @@ async function getJSON(url: string) {
 const response = await fetch(url);
 const jsonPromise = response.json(); // Type is Promise<any>
 106 | Chapter 3: Type Inference
-
--- 124 of 264 --
-
 return jsonPromise;
 }
 Things to Remember
@@ -4844,7 +4596,11 @@ Things to Remember
 • Prefer async and await to raw Promises when possible. They produce more con‐
 cise, straightforward code and eliminate whole classes of errors.
 • If a function returns a Promise, declare it async.
-Item 26: Understand How Context Is Used in Type
+
+---
+
+## Sección 93: Item 26: Understand How Context Is Used in Type [Entropy: 0.442]
+
 Inference
 TypeScript doesn’t just infer types based on values. It also considers the context in
 which the value occurs. This usually works well but can sometimes lead to surprises.
@@ -4870,9 +4626,10 @@ function setLanguage(language: Language) { /* ... */ }
 setLanguage('JavaScript'); // OK
 let language = 'JavaScript';
 setLanguage(language);
-Item 26: Understand How Context Is Used in Type Inference | 107
 
--- 125 of 264 --
+---
+
+## Sección 94: Item 26: Understand How Context Is Used in Type Inference | 107 [Entropy: 0.626]
 
 // ~~~~~~~~ Argument of type 'string' is not assignable
 // to parameter of type 'Language'
@@ -4911,13 +4668,6 @@ function panTo(where: [number, number]) { /* ... */ }
 panTo([10, 20]); // OK
 const loc = [10, 20];
 108 | Chapter 3: Type Inference
-
----
-
-## Sección 34: CHAPTER 3
-
--- 126 of 264 --
-
 panTo(loc);
 // ~~~ Argument of type 'number[]' is not assignable to
 // parameter of type '[number, number]'
@@ -4956,9 +4706,10 @@ panTo(loc);
 // parameter of type 'readonly [number, number]'
 // Types of property 'length' are incompatible
 // Type '3' is not assignable to type '2'
-Item 26: Understand How Context Is Used in Type Inference | 109
 
--- 127 of 264 --
+---
+
+## Sección 95: Item 26: Understand How Context Is Used in Type Inference | 109 [Entropy: 0.734]
 
 Objects
 The problem of separating a value from its context also comes up when you factor
@@ -5000,9 +4751,6 @@ noImplicitAny errors:
 const fn = (a, b) => {
 // ~ Parameter 'a' implicitly has an 'any' type
 110 | Chapter 3: Type Inference
-
--- 128 of 264 --
-
 // ~ Parameter 'b' implicitly has an 'any' type
 console.log(a + b);
 }
@@ -5013,14 +4761,22 @@ console.log(a + b);
 }
 callWithRandomNumbers(fn);
 or to apply a type declaration to the entire function expression if one is available. See
-Item 12.
+
+---
+
+## Sección 96: Item 12. [Entropy: 0.37]
+
 Things to Remember
 • Be aware of how context is used in type inference.
 • If factoring out a variable introduces a type error, consider adding a type declara‐
 tion.
 • If the variable is truly a constant, use a const assertion (as const). But be aware
 that this may result in errors surfacing at use, rather than definition.
-Item 27: Use Functional Constructs and Libraries to Help
+
+---
+
+## Sección 97: Item 27: Use Functional Constructs and Libraries to Help [Entropy: 0.364]
+
 Types Flow
 JavaScript has never included the sort of standard library you find in Python, C, or
 Java. Over the years many libraries have tried to fill the gap. jQuery provided helpers
@@ -5039,9 +4795,10 @@ somewhat imperative style:
 const csvData = "...";
 const rawRows = csvData.split('\n');
 const headers = rawRows[0].split(',');
-Item 27: Use Functional Constructs and Libraries to Help Types Flow | 111
 
--- 129 of 264 --
+---
+
+## Sección 98: Item 27: Use Functional Constructs and Libraries to Help Types Flow | 111 [Entropy: 0.75]
 
 const rows = rawRows.slice(1).map(rowStr => {
 const row = {};
@@ -5086,13 +4843,6 @@ const rowsB = rawRows.slice(1)
 The solution in each case is to provide a type annotation for {}, either {[column:
 string]: string} or Record<string, string>.
 112 | Chapter 3: Type Inference
-
----
-
-## Sección 35: CHAPTER 3
-
--- 130 of 264 --
-
 The Lodash version, on the other hand, passes the type checker without modification:
 const rows = rawRows.slice(1)
 .map(rowStr => _.zipObject(headers, rowStr.split(',')));
@@ -5133,9 +4883,10 @@ Say you want to start with allPlayers and make a list of the highest-paid player
 each team ordered by salary.
 Here’s a solution without Lodash. It requires a type annotation where you don’t use
 functional constructs:
-Item 27: Use Functional Constructs and Libraries to Help Types Flow | 113
 
--- 131 of 264 --
+---
+
+## Sección 99: Item 27: Use Functional Constructs and Libraries to Help Types Flow | 113 [Entropy: 0.765]
 
 const teamToPlayers: {[team: string]: BasketballPlayer[]} = {};
 for (const player of allPlayers) {
@@ -5179,9 +4930,6 @@ It’s always correct.
 Even some of the quirkier shorthands in Lodash can be modeled accurately in Type‐
 Script. For instance, why would you want to use _.map instead of the built-in
 114 | Chapter 3: Type Inference
-
--- 132 of 264 --
-
 Array.prototype.map? One reason is that instead of passing in a callback you can
 pass in the name of a property. These calls all produce the same result:
 const namesA = allPlayers.map(player => player.name) // Type is string[]
@@ -5205,15 +4953,10 @@ Things to Remember
 • Use built-in functional constructs and those in utility libraries like Lodash
 instead of hand-rolled constructs to improve type flow, increase legibility, and
 reduce the need for explicit type annotations.
-Item 27: Use Functional Constructs and Libraries to Help Types Flow | 115
-
--- 133 of 264 --
-
--- 134 of 264 --
 
 ---
 
-## Sección 36: CHAPTER 4
+## Sección 100: CHAPTER 4 [Entropy: 0.265]
 
 Type Design
 Show me your flowcharts and conceal your tables, and I shall continue to be mystified.
@@ -5228,7 +4971,11 @@ them, and writing declarations with them. This chapter discusses the design of t
 types themselves. The examples in this chapter are all written with TypeScript in
 mind, but most of the ideas are more broadly applicable.
 If you write your types well, then with any luck your flowcharts will be obvious, too.
-Item 28: Prefer Types That Always Represent Valid States
+
+---
+
+## Sección 101: Item 28: Prefer Types That Always Represent Valid States [Entropy: 0.795]
+
 If you design your types well, your code should be straightforward to write. But if you
 design your types poorly, no amount of cleverness or documentation will save you.
 Your code will be confusing and bug prone.
@@ -5239,8 +4986,6 @@ Suppose you’re building a web application that lets you select a page, loads t
 tent of that page, and then displays it. You might write the state like this:
 interface State {
 pageText: string;
--- 135 of 264 --
-
 isLoading: boolean;
 error?: string;
 }
@@ -5283,9 +5028,6 @@ failed? which is loading?) and too much: the State type allows both isLoading an
 error to be set, even though this represents an invalid state. This makes both
 render() and changePage() impossible to implement well.
 118 | Chapter 4: Type Design
-
--- 136 of 264 --
-
 Here’s a better way to represent the application state:
 interface RequestPending {
 state: 'pending';
@@ -5332,9 +5074,10 @@ const pageText = await response.text();
 state.requests[newPage] = {state: 'ok', pageText};
 } catch (e) {
 state.requests[newPage] = {state: 'error', error: '' + e};
-Item 28: Prefer Types That Always Represent Valid States | 119
 
--- 137 of 264 --
+---
+
+## Sección 102: Item 28: Prefer Types That Always Represent Valid States | 119 [Entropy: 0.75]
 
 }
 }
@@ -5376,13 +5119,6 @@ return rightSideStick;
 return leftSideStick;
 }
 120 | Chapter 4: Type Design
-
----
-
-## Sección 37: CHAPTER 4
-
--- 138 of 264 --
-
 But there’s a problem with this implementation: we can only be confident returning
 the left setting if the right one is neutral. So you should check for that:
 function getStickSetting(controls: CockpitControls) {
@@ -5426,9 +5162,10 @@ done, the plane had lost too much altitude to recover and it crashed into the oc
 killing all 228 people on board.
 The point of all this is that there is no good way to implement getStickSetting
 given that input! The function has been set up to fail. In most planes the two sets of
-Item 28: Prefer Types That Always Represent Valid States | 121
 
--- 139 of 264 --
+---
+
+## Sección 103: Item 28: Prefer Types That Always Represent Valid States | 121 [Entropy: 0.346]
 
 controls are mechanically connected. If the copilot pulls back, the pilot’s controls will
 also pull back. The state of these controls is simple to express:
@@ -5448,7 +5185,11 @@ Things to Remember
 and error-prone code.
 • Prefer types that only represent valid states. Even if they are longer or harder to
 express, they will save you time and pain in the end!
-Item 29: Be Liberal in What You Accept and Strict in What
+
+---
+
+## Sección 104: Item 29: Be Liberal in What You Accept and Strict in What [Entropy: 0.626]
+
 You Produce
 This idea is known as the robustness principle or Postel’s Law, after Jon Postel, who
 wrote it in the context of TCP:
@@ -5465,9 +5206,6 @@ It is convenient that the result of viewportForBounds can be passed directly to
 setCamera to position the camera.
 Let’s look at the definitions of these types:
 122 | Chapter 4: Type Design
-
--- 140 of 264 --
-
 interface CameraOptions {
 center?: LngLat;
 zoom?: number;
@@ -5509,13 +5247,10 @@ which is also problematic. The issue is that the type declaration for viewportFo
 Bounds indicates that it is liberal not just in what it accepts but also in what it pro‐
 duces. The only type-safe way to use the camera result is to introduce a code branch
 for each component of the union type (Item 22).
-Item 29: Be Liberal in What You Accept and Strict in What You Produce | 123
 
 ---
 
-## Sección 38: CHAPTER 4
-
--- 141 of 264 --
+## Sección 105: Item 29: Be Liberal in What You Accept and Strict in What You Produce | 123 [Entropy: 0.78]
 
 The return type with lots of optional properties and union types makes viewportFor
 Bounds difficult to use. Its broad parameter type is convenient, but its broad return
@@ -5560,9 +5295,6 @@ const bounds = calculateBoundingBox(f);
 const camera = viewportForBounds(bounds);
 setCamera(camera);
 124 | Chapter 4: Type Design
-
--- 142 of 264 --
-
 const {center: {lat, lng}, zoom} = camera; // OK
 zoom; // Type is number
 window.location.search = `?v=@${lat},${lng}z${zoom}`;
@@ -5579,7 +5311,11 @@ Things to Remember
 types are more common in parameter types than return types.
 • To reuse types between parameters and return types, introduce a canonical form
 (for return types) and a looser form (for parameters).
-Item 30: Don’t Repeat Type Information in
+
+---
+
+## Sección 106: Item 30: Don’t Repeat Type Information in [Entropy: 0.424]
+
 Documentation
 What’s wrong with this code?
 /**
@@ -5598,9 +5334,10 @@ Let’s assume that the code represents the desired behavior. There are a few is
 this comment:
 • It says that the function returns the color as a string when it actually returns an
 {r, g, b} object.
-Item 30: Don’t Repeat Type Information in Documentation | 125
 
--- 143 of 264 --
+---
+
+## Sección 107: Item 30: Don’t Repeat Type Information in Documentation | 125 [Entropy: 0.46]
 
 • It explains that the function takes zero or one arguments, which is already clear
 from the type signature.
@@ -5624,7 +5361,11 @@ function getForegroundColor(page?: string): Color {
 // ...
 }
 If you want to describe a particular parameter, use an @param JSDoc annotation. See
-Item 48 for more on this.
+
+---
+
+## Sección 108: Item 48 for more on this. [Entropy: 0.385]
+
 Comments about a lack of mutation are also suspect. Don’t just say that you don’t
 modify a parameter:
 /** Does not modify nums */
@@ -5640,20 +5381,17 @@ much clearer name than just time, and temperatureC is a much clearer name than
 temperature. Item 37 describes “brands,” which provide a more type-safe approach
 to modeling units.
 126 | Chapter 4: Type Design
-
----
-
-## Sección 39: CHAPTER 4
-
--- 144 of 264 --
-
 Things to Remember
 • Avoid repeating type information in comments and variable names. In the best
 case it is duplicative of type declarations, and in the worst it will lead to conflict‐
 ing information.
 • Consider including units in variable names if they aren’t clear from the type (e.g.,
 timeMs or temperatureC).
-Item 31: Push Null Values to the Perimeter of Your Types
+
+---
+
+## Sección 109: Item 31: Push Null Values to the Perimeter of Your Types [Entropy: 0.517]
+
 When you first turn on strictNullChecks, it may seem as though you have to add
 scores of if statements checking for null and undefined values throughout your
 code. This is often because the relationships between null and non-null values are
@@ -5683,9 +5421,10 @@ number[], which seems fine. But it has a bug and a design flaw:
 2]) will return [1, 2] rather than [0, 2].
 • If the nums array is empty, the function will return [undefined, undefined].
 This sort of object with several undefineds will be difficult for clients to work
-Item 31: Push Null Values to the Perimeter of Your Types | 127
 
--- 145 of 264 --
+---
+
+## Sección 110: Item 31: Push Null Values to the Perimeter of Your Types | 127 [Entropy: 0.75]
 
 with and is exactly the sort of type that this item discourages. We know from
 reading the source code that min and max will either both be undefined or nei‐
@@ -5730,9 +5469,6 @@ result = [Math.min(num, result[0]), Math.max(num, result[1])];
 return result;
 }
 128 | Chapter 4: Type Design
-
--- 146 of 264 --
-
 The return type is now [number, number] | null, which is easier for clients to work
 with. The min and max can be retrieved with either a non-null assertion:
 const [min, max] = extent([0, 1, 2])!;
@@ -5773,9 +5509,10 @@ checks, and bugs.
 A better design would wait until all the data used by the class is available:
 class UserPosts {
 user: UserInfo;
-Item 31: Push Null Values to the Perimeter of Your Types | 129
 
--- 147 of 264 --
+---
+
+## Sección 111: Item 31: Push Null Values to the Perimeter of Your Types | 129 [Entropy: 0.55]
 
 posts: Post[];
 constructor(user: UserInfo, posts: Post[]) {
@@ -5814,11 +5551,8 @@ for surfacing the behavior of functions with respect to null values.
 
 ---
 
-## Sección 40: CHAPTER 4
+## Sección 112: Item 32: Prefer Unions of Interfaces to Interfaces of [Entropy: 0.448]
 
--- 148 of 264 --
-
-Item 32: Prefer Unions of Interfaces to Interfaces of
 Unions
 If you create an interface whose properties are union types, you should ask whether
 the type would make more sense as a union of more precise interfaces.
@@ -5857,9 +5591,10 @@ type: 'fill' | 'line' | 'point';
 layout: FillLayout | LineLayout | PointLayout;
 paint: FillPaint | LinePaint | PointPaint;
 }
-Item 32: Prefer Unions of Interfaces to Interfaces of Unions | 131
 
--- 149 of 264 --
+---
+
+## Sección 113: Item 32: Prefer Unions of Interfaces to Interfaces of Unions | 131 [Entropy: 0.75]
 
 As before, would it make sense to have type: 'fill' but then a LineLayout and
 PointPaint? Certainly not. Convert Layer to a union of interfaces to exclude this
@@ -5907,9 +5642,6 @@ interface Person {
 name: string;
 // These will either both be present or not be present
 132 | Chapter 4: Type Design
-
--- 150 of 264 --
-
 placeOfBirth?: string;
 dateOfBirth?: Date;
 }
@@ -5953,9 +5685,10 @@ interface PersonWithBirth extends Name {
 placeOfBirth: string;
 dateOfBirth: Date;
 }
-Item 32: Prefer Unions of Interfaces to Interfaces of Unions | 133
 
--- 151 of 264 --
+---
+
+## Sección 114: Item 32: Prefer Unions of Interfaces to Interfaces of Unions | 133 [Entropy: 0.406]
 
 type Person = Name | PersonWithBirth;
 Now you get some of the same benefits as with the nested object:
@@ -5974,7 +5707,11 @@ because they obscure the relationships between these properties.
 • Consider adding a “tag” to your structure to facilitate TypeScript’s control flow
 analysis. Because they are so well supported, tagged unions are ubiquitous in
 TypeScript code.
-Item 33: Prefer More Precise Alternatives to String Types
+
+---
+
+## Sección 115: Item 33: Prefer More Precise Alternatives to String Types [Entropy: 0.554]
+
 The domain of the string type is big: "x" and "y" are in it, but so is the complete text
 of Moby Dick (it starts "Call me Ishmael…" and is about 1.2 million characters long).
 When you declare a variable of type string, you should ask whether a narrower type
@@ -5994,13 +5731,6 @@ artist: 'Miles Davis',
 title: 'Kind of Blue',
 releaseDate: 'August 17th, 1959', // Oops!
 134 | Chapter 4: Type Design
-
----
-
-## Sección 41: CHAPTER 4
-
--- 152 of 264 --
-
 recordingType: 'Studio', // Oops!
 }; // OK
 The releaseDate field is incorrectly formatted (according to the comment) and "Stu
@@ -6040,9 +5770,10 @@ a function like this:
 function getAlbumsOfType(recordingType: string): Album[] {
 // ...
 }
-Item 33: Prefer More Precise Alternatives to String Types | 135
 
--- 153 of 264 --
+---
+
+## Sección 116: Item 33: Prefer More Precise Alternatives to String Types | 135 [Entropy: 0.765]
 
 How does the caller of this function know what recordingType is expected to be? It’s
 just a string. The comment explaining that it’s "studio" or "live" is hidden in the
@@ -6079,9 +5810,6 @@ of strings. This is precisely what the keyof Album type is:
 type K = keyof Album;
 // Type is "artist" | "title" | "releaseDate" | "recordingType"
 136 | Chapter 4: Type Design
-
--- 154 of 264 --
-
 So the fix is to replace string with keyof T:
 function pluck<T>(record: T[], key: keyof T) {
 return record.map(r => r[key]);
@@ -6114,9 +5842,10 @@ autocomplete in your editor.
 string has some of the same problems as any: when used inappropriately, it permits
 invalid values and hides relationships between types. This thwarts the type checker
 and can hide real bugs. TypeScript’s ability to define subsets of string is a powerful
-Item 33: Prefer More Precise Alternatives to String Types | 137
 
--- 155 of 264 --
+---
+
+## Sección 117: Item 33: Prefer More Precise Alternatives to String Types | 137 [Entropy: 0.34]
 
 way to bring type safety to JavaScript code. Using more precise types will both catch
 errors and improve the readability of your code.
@@ -6128,14 +5857,22 @@ the domain of a variable. You’ll get stricter type checking and improve the de
 opment experience.
 • Prefer keyof T to string for function parameters that are expected to be proper‐
 ties of an object.
-Item 34: Prefer Incomplete Types to Inaccurate Types
+
+---
+
+## Sección 118: Item 34: Prefer Incomplete Types to Inaccurate Types [Entropy: 0.295]
+
 In writing type declarations you’ll inevitably find situations where you can model
 behavior in a more precise or less precise way. Precision in types is generally a good
 thing because it will help your users catch bugs and take advantage of the tooling that
 TypeScript provides. But take care as you increase the precision of your type declara‐
 tions: it’s easy to make mistakes, and incorrect types can be worse than no types at all.
 Suppose you are writing type declarations for GeoJSON, a format we’ve seen before in
-Item 31. A GeoJSON Geometry can be one of a few types, each of which have differ‐
+
+---
+
+## Sección 119: Item 31. A GeoJSON Geometry can be one of a few types, each of which have differ‐ [Entropy: 0.626]
+
 ently shaped coordinate arrays:
 interface Point {
 type: 'Point';
@@ -6157,13 +5894,6 @@ interface Point {
 type: 'Point';
 coordinates: GeoPosition;
 138 | Chapter 4: Type Design
-
----
-
-## Sección 42: CHAPTER 4
-
--- 156 of 264 --
-
 }
 // Etc.
 You publish your more precise types to the world and wait for the adulation to roll in.
@@ -6203,9 +5933,10 @@ true,
 ["case", [">", 20, 10], "red", "blue", "green"], // Too many values
 ["**", 2, 31], // Should be an error: no "**" function
 ["rgb", 255, 128, 64],
-Item 34: Prefer Incomplete Types to Inaccurate Types | 139
 
--- 157 of 264 --
+---
+
+## Sección 120: Item 34: Prefer Incomplete Types to Inaccurate Types | 139 [Entropy: 0.825]
 
 ["rgb", 255, 0, 127, 0] // Too many values
 ];
@@ -6250,9 +5981,6 @@ length: 4 | 6 | 8 | 10 | 12 | 14 | 16 // etc.
 interface RGBCall {
 0: 'rgb';
 140 | Chapter 4: Type Design
-
--- 158 of 264 --
-
 1: Expression4;
 2: Expression4;
 3: Expression4;
@@ -6298,9 +6026,10 @@ const okExpressions: Expression4[] = [
 ['*', 2, 3, 4],
 // ~~~~~~~~~~~~~~ Type '["*", number, ...]' is not assignable to type 'string'
 ];
-Item 34: Prefer Incomplete Types to Inaccurate Types | 141
 
--- 159 of 264 --
+---
+
+## Sección 121: Item 34: Prefer Incomplete Types to Inaccurate Types | 141 [Entropy: 0.325]
 
 Once again, in trying to be more precise we’ve overshot and become inaccurate.
 These inaccuracies can be corrected, but you’ll want to expand your test set to con‐
@@ -6317,7 +6046,11 @@ types.
 edge the gaps using any or unknown.
 • Pay attention to error messages and autocomplete as you make typings increas‐
 ingly precise. It’s not just about correctness: developer experience matters, too.
-Item 35: Generate Types from APIs and Specs, Not Data
+
+---
+
+## Sección 122: Item 35: Generate Types from APIs and Specs, Not Data [Entropy: 0.68]
+
 The other items in this chapter have discussed the many benefits of designing your
 types well and shown what can go wrong if you don’t. A well-designed type makes
 TypeScript a pleasure to use, while a poorly designed one can make it miserable. But
@@ -6338,13 +6071,6 @@ const helper = (coords: any[]) => {
 // ...
 };
 142 | Chapter 4: Type Design
-
----
-
-## Sección 43: CHAPTER 4
-
--- 160 of 264 --
-
 1 GeoJSON is also known as RFC 7946. The very readable spec is at http://geojson.org.
 const {geometry} = f;
 if (geometry) {
@@ -6380,9 +6106,10 @@ This is true for many geometries, including points, lines, and polygons. But a G
 JSON geometry can also be a GeometryCollection, a heterogeneous collection of
 other geometries. Unlike the other geometry types, it does not have a coordinates
 property.
-Item 35: Generate Types from APIs and Specs, Not Data | 143
 
--- 161 of 264 --
+---
+
+## Sección 123: Item 35: Generate Types from APIs and Specs, Not Data | 143 [Entropy: 0.643]
 
 If you call calculateBoundingBox on a Feature whose geometry is a GeometryCollec
 tion, it will throw an error about not being able to read property 0 of undefined.
@@ -6426,9 +6153,6 @@ repository using the GitHub GraphQL API you might write:
 query {
 repository(owner: "Microsoft", name: "TypeScript") {
 144 | Chapter 4: Type Design
-
--- 162 of 264 --
-
 createdAt
 description
 }
@@ -6471,9 +6195,10 @@ Loading Apollo Project
 Generating query files with 'typescript' target - wrote 2 files
 You need a GraphQL schema to generate types for a query. Apollo gets this from the
 api.github.com/graphql endpoint. The output looks like this:
-Item 35: Generate Types from APIs and Specs, Not Data | 145
 
--- 163 of 264 --
+---
+
+## Sección 124: Item 35: Generate Types from APIs and Specs, Not Data | 145 [Entropy: 0.562]
 
 export interface getLicense_repository_licenseInfo {
 __typename: "License";
@@ -6515,20 +6240,17 @@ not match reality: there may be edge cases that you’ve missed.
 Even if you’re not aware of it, you are already benefiting from code generation. Type‐
 Script’s type declarations for the browser DOM API are generated from the official
 146 | Chapter 4: Type Design
-
----
-
-## Sección 44: CHAPTER 4
-
--- 164 of 264 --
-
 interfaces (see Item 55). This ensures that they correctly model a complicated system
 and helps TypeScript catch errors and misunderstandings in your own code.
 Things to Remember
 • Consider generating types for API calls and data formats to get type safety all the
 way to the edge of your code.
 • Prefer generating code from specs rather than data. Rare cases matter!
-Item 36: Name Types Using the Language of Your Problem
+
+---
+
+## Sección 125: Item 36: Name Types Using the Language of Your Problem [Entropy: 0.373]
+
 Domain
 There are only two hard problems in Computer Science: cache invalidation and nam‐
 ing things.
@@ -6555,9 +6277,10 @@ There are a few issues here:
 name? A common name?
 • The boolean endangered field is also ambiguous. What if an animal is extinct? Is
 the intent here “endangered or worse?” Or does it literally mean endangered?
-Item 36: Name Types Using the Language of Your Problem Domain | 147
 
--- 165 of 264 --
+---
+
+## Sección 126: Item 36: Name Types Using the Language of Your Problem Domain | 147 [Entropy: 0.659]
 
 • The habitat field is very ambiguous, not just because of the overly broad string
 type (Item 33) but also because it’s unclear what’s meant by “habitat.”
@@ -6601,9 +6324,6 @@ The situation is much improved with the second version. If you want to learn mor
 about the Köppen climate classification system or track down what the precise mean‐
 ing of a conservation status is, then there are myriad resources online to help you.
 148 | Chapter 4: Type Design
-
--- 166 of 264 --
-
 Every domain has specialized vocabulary to describe its subject. Rather than invent‐
 ing your own terms, try to reuse terms from the domain of your problem. These
 vocabularies have often been honed over years, decades, or centuries and are well
@@ -6632,16 +6352,15 @@ Things to Remember
 readability and level of abstraction of your code.
 • Avoid using different names for the same thing: make distinctions in names
 meaningful.
-Item 37: Consider “Brands” for Nominal Typing
-Item 4 discussed structural (“duck”) typing and how it can sometimes lead to surpris‐
+
+---
+
+## Sección 127: Item 37: Consider “Brands” for Nominal Typing | 149 [Entropy: 0.75]
+
 ing results:
 interface Vector2D {
 x: number;
 y: number;
-Item 37: Consider “Brands” for Nominal Typing | 149
-
--- 167 of 264 --
-
 }
 function calculateNorm(p: Vector2D) {
 return Math.sqrt(p.x * p.x + p.y * p.y);
@@ -6685,13 +6404,6 @@ function listAbsolutePath(path: AbsolutePath) {
 // ...
 }
 150 | Chapter 4: Type Design
-
----
-
-## Sección 45: CHAPTER 4
-
--- 168 of 264 --
-
 function isAbsolutePath(path: string): path is AbsolutePath {
 return path.startsWith('/');
 }
@@ -6735,9 +6447,10 @@ return false;
 }
 return true;
 }
-Item 37: Consider “Brands” for Nominal Typing | 151
 
--- 169 of 264 --
+---
+
+## Sección 128: Item 37: Consider “Brands” for Nominal Typing | 151 [Entropy: 0.71]
 
 function binarySearch<T>(xs: SortedList<T>, x: T): boolean {
 // ...
@@ -6770,11 +6483,9 @@ than at runtime. You can use this technique to model properties outside of Type�
 Script’s type system.
 152 | Chapter 4: Type Design
 
--- 170 of 264 --
-
 ---
 
-## Sección 46: CHAPTER 5
+## Sección 129: CHAPTER 5 [Entropy: 0.31]
 
 Working with any
 Type systems were traditionally binary affairs: either a language had a fully static type
@@ -6785,7 +6496,11 @@ This is essential for migrating existing JavaScript codebases to TypeScript bit 
 parts of your code. It is both powerful and prone to abuse. Learning to use any wisely
 is essential for writing effective TypeScript. This chapter walks you through how to
 limit the downsides of any while still retaining its benefits.
-Item 38: Use the Narrowest Possible Scope for any Types
+
+---
+
+## Sección 130: Item 38: Use the Narrowest Possible Scope for any Types [Entropy: 0.707]
+
 Consider this code:
 function processBar(b: Bar) { /* ... */ }
 function f() {
@@ -6801,8 +6516,6 @@ const x: any = expressionReturningFoo(); // Don't do this
 processBar(x);
 }
 function f2() {
--- 171 of 264 --
-
 const x = expressionReturningFoo();
 processBar(x as any); // Prefer this
 }
@@ -6843,9 +6556,6 @@ problematic, you won’t know.
 You may also run into situations where you get a type error for just one property in a
 larger object:
 154 | Chapter 5: Working with any
-
--- 172 of 264 --
-
 const config: Config = {
 a: 1,
 b: 2,
@@ -6878,15 +6588,20 @@ type safety elsewhere in your code.
 • Never return an any type from a function. This will silently lead to the loss of
 type safety for any client calling the function.
 • Consider @ts-ignore as an alternative to any if you need to silence one error.
-Item 39: Prefer More Precise Variants of any to Plain any
+
+---
+
+## Sección 131: Item 39: Prefer More Precise Variants of any to Plain any [Entropy: 0.295]
+
 The any type encompasses all values that can be expressed in JavaScript. This is a vast
 set! It includes not just all numbers and strings, but all arrays, objects, regular expres‐
 sions, functions, classes, and DOM elements, not to mention null and undefined.
 When you use an any type, ask whether you really had something more specific in
 mind. Would it be OK to pass in a regular expression or a function?
-Item 39: Prefer More Precise Variants of any to Plain any | 155
 
--- 173 of 264 --
+---
+
+## Sección 132: Item 39: Prefer More Precise Variants of any to Plain any | 155 [Entropy: 0.825]
 
 Often the answer is “no,” in which case you might be able to retain some type safety
 by using a more specific type:
@@ -6930,13 +6645,6 @@ return true;
 return false;
 }
 156 | Chapter 5: Working with any
-
----
-
-## Sección 47: CHAPTER 5
-
--- 174 of 264 --
-
 1 If you are using React, you should use the built-in useMemo hook, rather than rolling your own.
 If this sort of type fits your needs, you might also be interested in the unknown type.
 See Item 42.
@@ -6956,7 +6664,11 @@ Things to Remember
 • When you use any, think about whether any JavaScript value is truly permissible.
 • Prefer more precise forms of any such as any[] or {[id: string]: any} or ()
 => any if they more accurately model your data.
-Item 40: Hide Unsafe Type Assertions in Well-Typed
+
+---
+
+## Sección 133: Item 40: Hide Unsafe Type Assertions in Well-Typed [Entropy: 0.4]
+
 Functions
 There are many functions whose type signatures are easy to write but whose imple‐
 mentations are quite difficult to write in type-safe code. And while writing type-safe
@@ -6969,9 +6681,10 @@ Suppose you want to make a function cache its last call. This is a common techni
 for eliminating expensive function calls with frameworks like React.1 It would be nice
 to write a general cacheLast wrapper that adds this behavior to any function. Its dec‐
 laration is easy to write:
-Item 40: Hide Unsafe Type Assertions in Well-Typed Functions | 157
 
--- 175 of 264 --
+---
+
+## Sección 134: Item 40: Hide Unsafe Type Assertions in Well-Typed Functions | 157 [Entropy: 0.765]
 
 declare function cacheLast<T extends Function>(fn: T): T;
 Here’s an attempt at an implementation:
@@ -7017,9 +6730,6 @@ easy to type and implement. But the object variation is more interesting. As wit
 cacheLast, it’s easy to write its type signature:
 declare function shallowObjectEqual<T extends object>(a: T, b: T): boolean;
 158 | Chapter 5: Working with any
-
--- 176 of 264 --
-
 The implementation requires some care since there’s no guarantee that a and b have
 the same keys (see Item 54):
 function shallowObjectEqual<T extends object>(a: T, b: T): boolean {
@@ -7048,7 +6758,11 @@ ation and assertions to check for object equality throughout your code!
 Things to Remember
 • Sometimes unsafe type assertions are necessary or expedient. When you need to
 use one, hide it inside a function with a correct signature.
-Item 41: Understand Evolving any
+
+---
+
+## Sección 135: Item 41: Understand Evolving any [Entropy: 0.379]
+
 In TypeScript a variable’s type is generally determined when it is declared. After this,
 it can be refined (by checking if it is null, for instance), but it cannot expand to
 include new values. There is one notable exception to this, however, involving any
@@ -7059,13 +6773,10 @@ const out = [];
 for (let i = start; i < limit; i++) {
 out.push(i);
 }
-Item 41: Understand Evolving any | 159
 
 ---
 
-## Sección 48: CHAPTER 5
-
--- 177 of 264 --
+## Sección 136: Item 41: Understand Evolving any | 159 [Entropy: 0.75]
 
 return out;
 }
@@ -7110,9 +6821,6 @@ val // Type is number
 }
 val // Type is number | RegExp
 160 | Chapter 5: Working with any
-
--- 178 of 264 --
-
 A final case that triggers this “evolving any” behavior is if a variable is initially null.
 This often comes up when you set a value in a try/catch block:
 let val = null; // Type is any
@@ -7155,9 +6863,10 @@ return out;
 }
 Put another way, “evolving” any types are only any when you write to them. If you try
 to read from them while they’re still any, you’ll get an error.
-Item 41: Understand Evolving any | 161
 
--- 179 of 264 --
+---
+
+## Sección 137: Item 41: Understand Evolving any | 161 [Entropy: 0.499]
 
 Implicit any types do not evolve through function calls. The arrow function here trips
 up inference:
@@ -7183,7 +6892,11 @@ allowed to evolve. You should be able to recognize and understand this construct
 where it occurs.
 • For better error checking, consider providing an explicit type annotation instead
 of using evolving any.
-Item 42: Use unknown Instead of any for Values with an
+
+---
+
+## Sección 138: Item 42: Use unknown Instead of any for Values with an [Entropy: 0.584]
+
 Unknown Type
 Suppose you want to write a YAML parser (YAML can represent the same set of val‐
 ues as JSON but allows a superset of JSON’s syntax). What should the return type of
@@ -7195,9 +6908,6 @@ But this flies in the face of Item 38’s advice to avoid “contagious” any t
 cally by not returning them from functions.
 Ideally you’d like your users to immediately assign the result to another type:
 162 | Chapter 5: Working with any
-
--- 180 of 264 --
-
 2 With the exception of never.
 interface Book {
 name: string;
@@ -7238,13 +6948,10 @@ of all other sets. This is the source of any’s power but also the reason it’
 Since the type checker is set-based, the use of any effectively disables it.
 The unknown type is an alternative to any that does fit into the type system. It has the
 first property (any type is assignable to unknown) but not the second (unknown is only
-Item 42: Use unknown Instead of any for Values with an Unknown Type | 163
 
 ---
 
-## Sección 49: CHAPTER 5
-
--- 181 of 264 --
+## Sección 139: Item 42: Use unknown Instead of any for Values with an Unknown Type | 163 [Entropy: 0.794]
 
 assignable to unknown and, of course, any). The never type is the opposite: it has the
 second property (can be assigned to any other type) but not the first (nothing can be
@@ -7289,9 +6996,6 @@ typeof(val) === 'object' && val !== null &&
 }
 function processValue(val: unknown) {
 164 | Chapter 5: Working with any
-
--- 182 of 264 --
-
 if (isBook(val)) {
 val; // Type is Book
 }
@@ -7327,12 +7031,12 @@ Things to Remember
 • The unknown type is a type-safe alternative to any. Use it when you know you
 have a value but do not know what its type is.
 • Use unknown to force your users to use a type assertion or do type checking.
-Item 42: Use unknown Instead of any for Values with an Unknown Type | 165
 
--- 183 of 264 --
+---
+
+## Sección 140: Item 43: Prefer Type-Safe Approaches to Monkey [Entropy: 0.809]
 
 • Understand the difference between {}, object, and unknown.
-Item 43: Prefer Type-Safe Approaches to Monkey
 Patching
 One of the most famous features of JavaScript is that its objects and classes are “open”
 in the sense that you can add arbitrary properties to them. This is occasionally used
@@ -7365,9 +7069,6 @@ downsides. As with any use of any, you lose type safety and language services:
 (document as any).monky = 'Tamarin'; // Also OK, misspelled
 (document as any).monkey = /Tamarin/; // Also OK, wrong type
 166 | Chapter 5: Working with any
-
--- 184 of 264 --
-
 The best solution is to move your data out of document or the DOM. But if you can’t
 (perhaps you’re using a library that requires it or are in the process of migrating a
 JavaScript application), then you have a few next-best options available.
@@ -7406,13 +7107,10 @@ interface MonkeyDocument extends Document {
 /** Genus or species of monkey patch */
 monkey: string;
 }
-Item 43: Prefer Type-Safe Approaches to Monkey Patching | 167
 
 ---
 
-## Sección 50: CHAPTER 5
-
--- 185 of 264 --
+## Sección 141: Item 43: Prefer Type-Safe Approaches to Monkey Patching | 167 [Entropy: 0.418]
 
 (document as MonkeyDocument).monkey = 'Macaque';
 TypeScript is OK with the type assertion because Document and MonkeyDocument
@@ -7426,7 +7124,11 @@ Things to Remember
 • If you must store data on built-in types, use one of the type-safe approaches (aug‐
 mentation or asserting a custom interface).
 • Understand the scoping issues of augmentations.
-Item 44: Track Your Type Coverage to Prevent Regressions
+
+---
+
+## Sección 142: Item 44: Track Your Type Coverage to Prevent Regressions [Entropy: 0.5]
+
 in Type Safety
 Are you safe from the problems associated with any types once you’ve added type
 annotations for values with implicit any types and enabled noImplicitAny? The
@@ -7446,9 +7148,6 @@ There are many ways to do this, including the type-coverage package on npm:
 $ npx type-coverage
 9985 / 10117 98.69%
 168 | Chapter 5: Working with any
-
--- 186 of 264 --
-
 This means that, of the 10,117 symbols in this project, 9,985 (98.69%) had a type
 other than any or an alias to any. If a change inadvertently introduces an any type and
 it flows through your code, you’ll see a corresponding drop in this percentage.
@@ -7483,9 +7182,10 @@ give an entire module an any type:
 declare module 'my-module';
 Now you can import anything from my-module without error. These symbols all have
 any types and will lead to more any types if you pass values through them:
-Item 44: Track Your Type Coverage to Prevent Regressions in Type Safety | 169
 
--- 187 of 264 --
+---
+
+## Sección 143: Item 44: Track Your Type Coverage to Prevent Regressions in Type Safety | 169 [Entropy: 0.566]
 
 import {someMethod, someSymbol} from 'my-module'; // OK
 const pt1 = {
@@ -7518,9 +7218,7 @@ revisit decisions about using any and increase type safety over time.
 
 ---
 
-## Sección 51: CHAPTER 6
-
--- 188 of 264 --
+## Sección 144: CHAPTER 6 [Entropy: 0.28]
 
 Types Declarations and @types
 Dependency management can be confusing in any language, and TypeScript is no
@@ -7529,7 +7227,11 @@ work in TypeScript and show you how to work through some of the issues that can
 come up with them. It will also help you craft your own type declaration files to pub‐
 lish and share with others. By writing great type declarations, you can help not just
 your own project but the entire TypeScript community.
-Item 45: Put TypeScript and @types in devDependencies
+
+---
+
+## Sección 145: Item 45: Put TypeScript and @types in devDependencies [Entropy: 0.43]
+
 The Node Package Manager, npm, is ubiquitous in the JavaScript world. It provides
 both a repository of JavaScript libraries (the npm registry) and a way to specify which
 versions of them you depend on (package.json).
@@ -7544,8 +7246,6 @@ devDependencies
 These packages are used to develop and test your code but are not required at
 runtime. Your test framework would be an example of a devDependency. Unlike
 dependencies, these are not installed transitively with your packages.
--- 189 of 264 --
-
 peerDependencies
 These are packages that you require at runtime but don’t want to be responsible
 for tracking. The canonical example is a plug-in. Your jQuery plug-in is compati‐
@@ -7583,9 +7283,6 @@ This will result in a package.json file that looks something like this:
 {
 "devDependencies": {
 172 | Chapter 6: Types Declarations and @types
-
--- 190 of 264 --
-
 "@types/lodash": "^16.8.19",
 "typescript": "^3.5.3"
 },
@@ -7602,7 +7299,11 @@ Things to Remember
 your project to ensure that everyone on the team is using a consistent version.
 • Put @types dependencies in devDependencies, not dependencies. If you need
 @types at runtime, then you may want to rework your process.
-Item 46: Understand the Three Versions Involved in Type
+
+---
+
+## Sección 146: Item 46: Understand the Three Versions Involved in Type [Entropy: 0.325]
+
 Declarations
 Dependency management rarely conjures up happy feelings for software developers.
 Usually you just want to use a library and not think too much about whether its tran‐
@@ -7619,9 +7320,10 @@ things as simple as possible but no simpler.” Understanding the full complexit
 TypeScript package management will help you diagnose and fix problems. And it will
 help you make more informed decisions when it comes time to publish type declara‐
 tions of your own.
-Item 46: Understand the Three Versions Involved in Type Declarations | 173
 
--- 191 of 264 --
+---
+
+## Sección 147: Item 46: Understand the Three Versions Involved in Type Declarations | 173 [Entropy: 0.5]
 
 Here’s how dependencies in TypeScript are supposed to work. You install a package as
 a direct dependency, and you install its types as a dev dependency (see Item 45):
@@ -7662,13 +7364,6 @@ motivated by an attempt to more precisely type popular JavaScript libraries like
 Lodash, React, and Ramda. It makes sense that the type declarations for these libra‐
 ries would want to use the latest and greatest features to get you better type safety.
 174 | Chapter 6: Types Declarations and @types
-
----
-
-## Sección 52: CHAPTER 6
-
--- 192 of 264 --
-
 If this happens, you’ll experience it as type errors in the @types declarations them‐
 selves. The solution is to either upgrade your TypeScript version, use an older version
 of the type declarations, or, if you really can’t update TypeScript, stub out the types
@@ -7710,9 +7405,10 @@ which points to a .d.ts file:
 "version": "1.3.0",
 "description": "String left pad",
 "main": "index.js",
-Item 46: Understand the Three Versions Involved in Type Declarations | 175
 
--- 193 of 264 --
+---
+
+## Sección 148: Item 46: Understand the Three Versions Involved in Type Declarations | 175 [Entropy: 0.535]
 
 "types": "index.d.ts",
 // ...
@@ -7753,13 +7449,2150 @@ rewards: well-written type declarations can help you learn how to use libraries 
 rectly and can greatly improve your productivity with them. As you run into issues
 with dependency management, keep the three versions in mind.
 176 | Chapter 6: Types Declarations and @types
-
--- 194 of 264 --
-
 If you are publishing packages, weigh the pros and cons of bundling type declarations
 versus publishing them on DefinitelyTyped. The official recommendation is to bun‐
 dle type declarations only if the library is written in TypeScript. This works well in
-practice since tsc can automatically generate type declarations for you (us
+practice since tsc can automatically generate type declarations for you (using the dec
+laration compiler option). For JavaScript libraries, handcrafted type declarations are
+more likely to contain errors, and they’ll require more updates. If you publish your
+type declarations on DefinitelyTyped, the community will help you support and
+maintain them.
+Things to Remember
+• There are three versions involved in an @types dependency: the library version,
+the @types version, and the TypeScript version.
+• If you update a library, make sure you update the corresponding @types.
+• Understand the pros and cons of bundling types versus publishing them on Defi‐
+nitelyTyped. Prefer bundling types if your library is written in TypeScript and
+DefinitelyTyped if it is not.
+
+---
+
+## Sección 149: Item 47: Export All Types That Appear in Public APIs [Entropy: 0.4]
+
+Use TypeScript long enough and you’ll eventually find yourself wanting to use a type
+or interface from a third-party module only to find that it isn’t exported. Fortu‐
+nately TypeScript’s tools for mapping between types are rich enough that, as a library
+user, you can almost always find a way to reference the type you want. As a library
+author, this means that you ought to just export your types to begin with. If a type
+ever appears in a function declaration, it is effectively exported. So you may as well
+make things explicit.
+Suppose you want to create some secret, unexported types:
+interface SecretName {
+first: string;
+last: string;
+}
+interface SecretSanta {
+name: SecretName;
+gift: string;
+}
+export function getGift(name: SecretName, gift: string): SecretSanta {
+// ...
+}
+
+---
+
+## Sección 150: Item 47: Export All Types That Appear in Public APIs | 177 [Entropy: 0.448]
+
+As a user of your module, I cannot directly import SecretName or SecretSanta, only
+getGift. But this is no barrier: because those types appear in an exported function
+signature, I can extract them. One way is to use the Parameters and ReturnType
+generic types:
+type MySanta = ReturnType<typeof getGift>; // SecretSanta
+type MyName = Parameters<typeof getGift>[0]; // SecretName
+If your goal in not exporting these types was to preserve flexibility, then the jig is up!
+You’ve already committed to them by putting them in a public API. Do your users a
+favor and export them.
+Things to Remember
+• Export types that appear in any form in any public method. Your users will be
+able to extract them anyway, so you may as well make it easy for them.
+
+---
+
+## Sección 151: Item 48: Use TSDoc for API Comments [Entropy: 0.505]
+
+Here’s a TypeScript function to generate a greeting:
+// Generate a greeting. Result is formatted for display.
+function greet(name: string, title: string) {
+return `Hello ${title} ${name}`;
+}
+The author was kind enough to leave a comment describing what this function does.
+But for documentation intended to be read by users of your functions, it’s better to
+use JSDoc-style comments:
+/** Generate a greeting. Result is formatted for display. */
+function greetJSDoc(name: string, title: string) {
+return `Hello ${title} ${name}`;
+}
+The reason is that there is a nearly universal convention in editors to surface JSDocstyle comments when the function is called (see Figure 6-1).
+Figure 6-1. JSDoc-style comments are typically surfaced in tooltips in your editor.
+Whereas the inline comment gets no such treatment (see Figure 6-2).
+178 | Chapter 6: Types Declarations and @types
+Figure 6-2. Inline comments are typically not shown in tooltips.
+The TypeScript language service supports this convention, and you should take
+advantage of it. If a comment describes a public API, it should be JSDoc. In the con‐
+text of TypeScript, these comments are sometimes called TSDoc. You can use many of
+the usual conventions like @param and @returns:
+/**
+* Generate a greeting.
+* @param name Name of the person to greet
+* @param salutation The person's title
+* @returns A greeting formatted for human consumption.
+*/
+function greetFullTSDoc(name: string, title: string) {
+return `Hello ${title} ${name}`;
+}
+This lets editors show the relevant documentation for each parameter as you’re writ‐
+ing out a function call (as shown in Figure 6-3).
+Figure 6-3. An @param annotation lets your editor show documentation for the current
+parameter as you type it.
+You can also use TSDoc with type definitions:
+/** A measurement performed at a time and place. */
+interface Measurement {
+/** Where was the measurement made? */
+position: Vector3D;
+/** When was the measurement made? In seconds since epoch. */
+time: number;
+/** Observed momentum */
+momentum: Vector3D;
+}
+
+---
+
+## Sección 152: Item 48: Use TSDoc for API Comments | 179 [Entropy: 0.4]
+
+As you inspect individual fields in a Measurement object, you’ll get contextual docu‐
+mentation (see Figure 6-4).
+Figure 6-4. TSDoc for a field is shown when you mouse over that field in your editor.
+TSDoc comments are formatted using Markdown, so if you want to use bold, italic,
+or bulleted lists, you can (see Figure 6-5):
+/**
+* This _interface_ has **three** properties:
+* 1. x
+* 2. y
+* 3. z
+*/
+interface Vector3D {
+x: number;
+y: number;
+z: number;
+}
+Figure 6-5. TSDoc comments
+180 | Chapter 6: Types Declarations and @types
+Try to avoid writing essays in your documentation, though: the best comments are
+short and to the point.
+JSDoc includes some conventions for specifying type information (@param {string}
+name ...), but you should avoid these in favor of TypeScript types (Item 30).
+Things to Remember
+• Use JSDoc-/TSDoc-formatted comments to document exported functions,
+classes, and types. This helps editors surface information for your users when it’s
+most relevant.
+• Use @param, @returns, and Markdown for formatting.
+• Avoid including type information in documentation (see Item 30).
+
+---
+
+## Sección 153: Item 49: Provide a Type for this in Callbacks [Entropy: 0.427]
+
+JavaScript’s this keyword is one of the most notoriously confusing parts of the lan‐
+guage. Unlike variables declared with let or const, which are lexically scoped, this is
+dynamically scoped: its value depends not on the way in which it was defined but on
+the way in which it was called.
+this is most often used in classes, where it typically references the current instance of
+an object:
+class C {
+vals = [1, 2, 3];
+logSquares() {
+for (const val of this.vals) {
+console.log(val * val);
+}
+}
+}
+const c = new C();
+c.logSquares();
+This logs:
+4
+Now look what happens if you try to put logSquares in a variable and call that:
+const c = new C();
+const method = c.logSquares;
+method();
+
+---
+
+## Sección 154: Item 49: Provide a Type for this in Callbacks | 181 [Entropy: 0.734]
+
+This version throws an error at runtime:
+Uncaught TypeError: Cannot read property 'vals' of undefined
+The problem is that c.logSquares() actually does two things: it calls C.proto
+type.logSquares and it binds the value of this in that function to c. By pulling out a
+reference to logSquares, you’ve separated these, and this gets set to undefined.
+JavaScript gives you complete control over this binding. You can use call to explic‐
+itly set this and fix the problem:
+const c = new C();
+const method = c.logSquares;
+method.call(c); // Logs the squares again
+There’s no reason that this had to be bound to an instance of C. It could have been
+bound to anything. So libraries can, and do, make the value of this part of their APIs.
+Even the DOM makes use of this. In an event handler, for instance:
+document.querySelector('input')!.addEventListener('change', function(e) {
+console.log(this); // Logs the input element on which the event fired.
+});
+this binding often comes up in the context of callbacks like this one. If you want to
+define an onClick handler in a class, for example, you might try this:
+class ResetButton {
+render() {
+return makeButton({text: 'Reset', onClick: this.onClick});
+}
+onClick() {
+alert(`Reset ${this}`);
+}
+}
+When Button calls onClick, it will alert “Reset undefined.” Oops! As usual, the cul‐
+prit is this binding. A common solution is to create a bound version of the method
+in the constructor:
+class ResetButton {
+constructor() {
+this.onClick = this.onClick.bind(this);
+}
+render() {
+return makeButton({text: 'Reset', onClick: this.onClick});
+}
+onClick() {
+alert(`Reset ${this}`);
+}
+}
+182 | Chapter 6: Types Declarations and @types
+The onClick() { ... } definition defines a property on ResetButton.prototype.
+This is shared by all instances of ResetButton. When you bind this.onClick = ...
+in the constructor, it creates a property called onClick on the instance of ResetBut
+ton with this bound to that instance. The onClick instance property comes before
+the onClick prototype property in the lookup sequence, so this.onClick refers to
+the bound function in the render() method.
+There is a shorthand for binding that can sometimes be convenient:
+class ResetButton {
+render() {
+return makeButton({text: 'Reset', onClick: this.onClick});
+}
+onClick = () => {
+alert(`Reset ${this}`); // "this" always refers to the ResetButton instance.
+}
+}
+Here we’ve replaced onClick with an arrow function. This will define a new function
+every time a ResetButton is constructed with this set to the appropriate value. It’s
+instructive to look at the JavaScript that this generates:
+class ResetButton {
+constructor() {
+var _this = this;
+this.onClick = function () {
+alert("Reset " + _this);
+};
+}
+render() {
+return makeButton({ text: 'Reset', onClick: this.onClick });
+}
+}
+So what does this all have to do with TypeScript? Because this binding is part of
+JavaScript, TypeScript models it. This means that if you’re writing (or typing) a
+library that sets the value of this on callbacks, then you should model this, too.
+You do this by adding a this parameter to your callback:
+function addKeyListener(
+el: HTMLElement,
+fn: (this: HTMLElement, e: KeyboardEvent) => void
+) {
+el.addEventListener('keydown', e => {
+fn.call(el, e);
+});
+}
+
+---
+
+## Sección 155: Item 49: Provide a Type for this in Callbacks | 183 [Entropy: 0.685]
+
+The this parameter is special: it’s not just another positional argument. You can see
+this if you try to call it with two parameters:
+function addKeyListener(
+el: HTMLElement,
+fn: (this: HTMLElement, e: KeyboardEvent) => void
+) {
+el.addEventListener('keydown', e => {
+fn(el, e);
+// ~ Expected 1 arguments, but got 2
+});
+}
+Even better, TypeScript will enforce that you call the function with the correct this
+context:
+function addKeyListener(
+el: HTMLElement,
+fn: (this: HTMLElement, e: KeyboardEvent) => void
+) {
+el.addEventListener('keydown', e => {
+fn(e);
+// ~~~~~ The 'this' context of type 'void' is not assignable
+// to method's 'this' of type 'HTMLElement'
+});
+}
+As a user of this function, you can reference this in the callback and get full type
+safety:
+declare let el: HTMLElement;
+addKeyListener(el, function(e) {
+this.innerHTML; // OK, "this" has type of HTMLElement
+});
+Of course, if you use an arrow function here, you’ll override the value of this. Type‐
+Script will catch the issue:
+class Foo {
+registerHandler(el: HTMLElement) {
+addKeyListener(el, e => {
+this.innerHTML;
+// ~~~~~~~~~ Property 'innerHTML' does not exist on type 'Foo'
+});
+}
+}
+Don’t forget about this! If you set the value of this in your callbacks, then it’s part of
+your API, and you should include it in your type declarations.
+184 | Chapter 6: Types Declarations and @types
+Things to Remember
+• Understand how this binding works.
+• Provide a type for this in callbacks when it’s part of your API.
+
+---
+
+## Sección 156: Item 50: Prefer Conditional Types to Overloaded [Entropy: 0.608]
+
+Declarations
+How would you write a type declaration for this JavaScript function?
+function double(x) {
+return x + x;
+}
+double can be passed either a string or a number. So you might use a union type:
+function double(x: number|string): number|string;
+function double(x: any) { return x + x; }
+(These examples all make use of TypeScript’s concept of function overloading. For a
+refresher, see Item 3.)
+While this declaration is accurate, it’s a bit imprecise:
+const num = double(12); // string | number
+const str = double('x'); // string | number
+When double is passed a number, it returns a number. And when it’s passed a string,
+it returns a string. This declaration misses that nuance and will produce types that
+are hard to work with.
+You might try to capture this relationship using a generic:
+function double<T extends number|string>(x: T): T;
+function double(x: any) { return x + x; }
+const num = double(12); // Type is 12
+const str = double('x'); // Type is "x"
+Unfortunately, in our zeal for precision we’ve overshot. The types are now a little too
+precise. When passed a string type, this double declaration will result in a string
+type, which is correct. But when passed a string literal type, the return type is the
+same string literal type. This is wrong: doubling 'x' results in 'xx', not 'x'.
+Another option is to provide multiple type declarations. While TypeScript only allows
+you to write one implementation of a function, it allows you to write any number of
+type declarations. You can use this to improve the type of double:
+
+---
+
+## Sección 157: Item 50: Prefer Conditional Types to Overloaded Declarations | 185 [Entropy: 0.689]
+
+function double(x: number): number;
+function double(x: string): string;
+function double(x: any) { return x + x; }
+const num = double(12); // Type is number
+const str = double('x'); // Type is string
+This is progress! But is this declaration correct? Unfortunately there’s still a subtle
+bug. This type declaration will work with values that are either a string or a number,
+but not with values that could be either:
+function f(x: number|string) {
+return double(x);
+// ~ Argument of type 'string | number' is not assignable
+// to parameter of type 'string'
+}
+This call to double is safe and should return string|number. When you overload
+type declarations, TypeScript processes them one by one until it finds a match. The
+error you’re seeing is a result of the last overload (the string version) failing, because
+string|number is not assignable to string.
+While you could patch this issue by adding a third string|number overload, the best
+solution is to use a conditional type. Conditional types are like if statements (condi‐
+tionals) in type space. They’re perfect for situations like this one where there are a few
+possibilities that you need to cover:
+function double<T extends number | string>(
+x: T
+): T extends string ? string : number;
+function double(x: any) { return x + x; }
+This is similar to the first attempt to type double using a generic, but with a more
+elaborate return type. You read the conditional type like you’d read a ternary (?:)
+operator in JavaScript:
+• If T is a subset of string (e.g., string or a string literal or a union of string liter‐
+als), then the return type is string.
+• Otherwise return number.
+With this declaration, all of our examples work:
+const num = double(12); // number
+const str = double('x'); // string
+// function f(x: string | number): string | number
+function f(x: number|string) {
+return double(x);
+}
+186 | Chapter 6: Types Declarations and @types
+The number|string example works because conditional types distribute over unions.
+When T is number|string, TypeScript resolves the conditional type as follows:
+(number|string) extends string ? string : number
+-> (number extends string ? string : number) |
+(string extends string ? string : number)
+-> number | string
+While the type declaration using overloading was simpler to write, the version using
+conditional types is more correct because it generalizes to the union of the individual
+cases. This is often the case for overloads. Whereas overloads are treated independ‐
+ently, the type checker can analyze conditional types as a single expression, distribut‐
+ing them over unions. If you find yourself writing an overloaded type declarations,
+consider whether it might be better expressed using a conditional type.
+Things to Remember
+• Prefer conditional types to overloaded type declarations. By distributing over
+unions, conditional types allow your declarations to support union types without
+additional overloads.
+
+---
+
+## Sección 158: Item 51: Mirror Types to Sever Dependencies [Entropy: 0.394]
+
+Suppose you’ve written a library for parsing CSV files. Its API is simple: you pass in
+the contents of the CSV file and get back a list of objects mapping column names to
+values. As a convenience for your NodeJS users, you allow the contents to be either a
+string or a NodeJS Buffer:
+function parseCSV(contents: string | Buffer): {[column: string]: string}[] {
+if (typeof contents === 'object') {
+// It's a buffer
+return parseCSV(contents.toString('utf8'));
+}
+// ...
+}
+The type definition for Buffer comes from the NodeJS type declarations, which you
+must install:
+npm install --save-dev @types/node
+When you publish your CSV parsing library, you include the type declarations with
+it. Since your type declarations depend on the NodeJS types, you include these as a
+devDependency (Item 45). If you do this, you’re liable to get complaints from two
+groups of users:
+
+---
+
+## Sección 159: Item 51: Mirror Types to Sever Dependencies | 187 [Entropy: 0.37]
+
+• JavaScript developers who wonder what these @types modules are that they’re
+depending on.
+• TypeScript web developers who wonder why they’re depending on NodeJS.
+These complaints are reasonable. The Buffer behavior isn’t essential and is only rele‐
+vant for users who are using NodeJS already. And the declaration in @types/node is
+only relevant to NodeJS users who are also using TypeScript.
+TypeScript’s structural typing (Item 4) can help you out of the jam. Rather than using
+the declaration of Buffer from @types/node, you can write your own with just the
+methods and properties you need. In this case that’s just a toString method that
+accepts an encoding:
+interface CsvBuffer {
+toString(encoding: string): string;
+}
+function parseCSV(contents: string | CsvBuffer): {[column: string]: string}[] {
+// ...
+}
+This interface is dramatically shorter than the complete one, but it does capture our
+(simple) needs from a Buffer. In a NodeJS project, calling parseCSV with a real
+Buffer is still OK because the types are compatible:
+parseCSV(new Buffer("column1,column2\nval1,val2", "utf-8")); // OK
+If your library only depends on the types for another library, rather than its imple‐
+mentation, consider mirroring just the declarations you need into your own code.
+This will result in a similar experience for your TypeScript users and an improved
+experience for everyone else.
+If you depend on the implementation of a library, you may still be able to apply the
+same trick to avoid depending on its typings. But this becomes increasingly difficult
+as the dependence grows larger and more essential. If you’re copying a large portion
+of the type declarations for another library, you may want to formalize the relation‐
+ship by making the @types dependency explicit.
+This technique is also helpful for severing dependencies between your unit tests and
+production systems. See the getAuthors example in Item 4.
+Things to Remember
+• Use structural typing to sever dependencies that are nonessential.
+• Don’t force JavaScript users to depend on @types. Don’t force web developers to
+depend on NodeJS.
+188 | Chapter 6: Types Declarations and @types
+
+---
+
+## Sección 160: Item 52: Be Aware of the Pitfalls of Testing Types [Entropy: 0.698]
+
+You wouldn’t publish code without writing tests for it (I hope!), and you shouldn’t
+publish type declarations without writing tests for them, either. But how do you test
+types? If you’re authoring type declarations, testing is an essential but surprisingly
+fraught undertaking. It’s tempting to make assertions about types inside the type sys‐
+tem using the tools that TypeScript provides. But there are several pitfalls with this
+approach. Ultimately it’s safer and more straightforward to use dtslint or a similar
+tool that inspects types from outside of the type system.
+Suppose you’ve written a type declaration for a map function provided by a utility
+library (the popular Lodash and Underscore libraries both provide such a function):
+declare function map<U, V>(array: U[], fn: (u: U) => V): V[];
+How can you check that this type declaration results in the expected types? (Presuma‐
+bly there are separate tests for the implementation.) One common technique is to
+write a test file that calls the function:
+map(['2017', '2018', '2019'], v => Number(v));
+This will do some blunt error checking: if your declaration of map only listed a single
+parameter, this would catch the mistake. But does it feel like something is missing
+here?
+The equivalent of this style of test for runtime behavior might look something like
+this:
+test('square a number', () => {
+square(1);
+square(2);
+});
+Sure, this tests that the square function doesn’t throw an error. But it’s missing any
+checks on the return value, so there’s no real test of the behavior. An incorrect imple‐
+mentation of square would still pass this test.
+This approach is common in testing type declaration files because it’s simple to copy
+over existing unit tests for a library. And while it does provide some value, it would
+be much better to actually check some types!
+One way is to assign the result to a variable with a specific type:
+const lengths: number[] = map(['john', 'paul'], name => name.length);
+This is exactly the sort of superfluous type declaration that Item 19 would encourage
+you to remove. But here it plays an essential role: it provides some confidence that the
+map declaration is at least doing something sensible with the types. And indeed you
+can find many type declarations in DefinitelyTyped that use exactly this approach for
+
+---
+
+## Sección 161: Item 52: Be Aware of the Pitfalls of Testing Types | 189 [Entropy: 0.75]
+
+testing. But, as we’ll see, there are a few fundamental problems with using assignment
+for testing.
+One is that you have to create a named variable that is likely to be unused. This adds
+boilerplate, but also means that you’ll have to disable some forms of linting.
+A common workaround is to define a helper:
+function assertType<T>(x: T) {}
+assertType<number[]>(map(['john', 'paul'], name => name.length));
+This eliminates the unused variable issue, but there are still surprises.
+A second issue is that we’re checking assignability of the two types rather than equal‐
+ity. Often this works as you’d expect. For example:
+const n = 12;
+assertType<number>(n); // OK
+If you inspect the n symbol, you’ll see that its type is actually 12, a numeric literal
+type. This is a subtype of number and so the assignability check passes, just as you’d
+expect.
+So far so good. But things get murkier when you start checking the types of objects:
+const beatles = ['john', 'paul', 'george', 'ringo'];
+assertType<{name: string}[]>(
+map(beatles, name => ({
+name,
+inYellowSubmarine: name === 'ringo'
+}))); // OK
+The map call returns an array of {name: string, inYellowSubmarine: boolean}
+objects. This is assignable to {name: string}[], sure, but shouldn’t we be forced to
+acknowledge the yellow submarine? Depending on the context you may or may not
+really want to check for type equality.
+If your function returns another function, you may be surprised at what’s considered
+assignable:
+const add = (a: number, b: number) => a + b;
+assertType<(a: number, b: number) => number>(add); // OK
+const double = (x: number) => 2 * x;
+assertType<(a: number, b: number) => number>(double); // OK!?
+Are you surprised that the second assertion succeeds? The reason is that a function in
+TypeScript is assignable to a function type, which takes fewer parameters:
+const g: (x: string) => any = () => 12; // OK
+190 | Chapter 6: Types Declarations and @types
+This reflects the fact that it’s perfectly fine to call a JavaScript function with more
+parameters than it’s declared to take. TypeScript chooses to model this behavior
+rather than bar it, largely because it is pervasive in callbacks. The callback in the
+Lodash map function, for example, takes up to three parameters:
+map(array, (name, index, array) => { /* ... */ });
+While all three are available, it’s very common to use only one or sometimes two, as
+we have so far in this item. In fact, it’s quite rare to use all three. By disallowing this
+assignment, TypeScript would report errors in an enormous amount of JavaScript
+code.
+So what can you do? You could break apart the function type and test its pieces using
+the generic Parameters and ReturnType types:
+const double = (x: number) => 2 * x;
+let p: Parameters<typeof double> = null!;
+assertType<[number, number]>(p);
+// ~ Argument of type '[number]' is not
+// assignable to parameter of type [number, number]
+let r: ReturnType<typeof double> = null!;
+assertType<number>(r); // OK
+But if “this” isn’t complicated enough, there’s another issue: map sets the value of this
+for its callback. TypeScript can model this behavior (see Item 49), so your type decla‐
+ration should do so. And you should test it. How can we do that?
+Our tests of map so far have been a bit black box in style: we’ve run an array and func‐
+tion through map and tested the type of the result, but we haven’t tested the details of
+the intermediate steps. We can do so by filling out the callback function and verifying
+the types of its parameters and this directly:
+const beatles = ['john', 'paul', 'george', 'ringo'];
+assertType<number[]>(map(
+beatles,
+function(name, i, array) {
+// ~~~~~~~ Argument of type '(name: any, i: any, array: any) => any' is
+// not assignable to parameter of type '(u: string) => any'
+assertType<string>(name);
+assertType<number>(i);
+assertType<string[]>(array);
+assertType<string[]>(this);
+// ~~~~ 'this' implicitly has type 'any'
+return name.length;
+}
+));
+This surfaced a few issues with our declaration of map. Note the use of a non-arrow
+function so that we could test the type of this.
+Here is a declaration that passes the checks:
+
+---
+
+## Sección 162: Item 52: Be Aware of the Pitfalls of Testing Types | 191 [Entropy: 0.635]
+
+declare function map<U, V>(
+array: U[],
+fn: (this: U[], u: U, i: number, array: U[]) => V
+): V[];
+There remains a final issue, however, and it is a major one. Here’s a complete type
+declaration file for our module that will pass even the most stringent tests for map but
+is worse than useless:
+declare module 'overbar';
+This assigns an any type to the entire module. Your tests will all pass, but you won’t
+have any type safety. What’s worse, every call to a function in this module will quietly
+produce an any type, contagiously destroying type safety throughout your code. Even
+with noImplicitAny, you can still get any types through type declarations.
+Barring some advanced trickery, it’s quite difficult to detect an any type from within
+the type system. This is why the preferred method for testing type declarations is to
+use a tool that operates outside the type checker.
+For type declarations in the DefinitelyTyped repository, this tool is dtslint. It oper‐
+ates through specially formatted comments. Here’s how you might write the last test
+for the map function using dtslint:
+const beatles = ['john', 'paul', 'george', 'ringo'];
+map(beatles, function(
+name, // $ExpectType string
+i, // $ExpectType number
+array // $ExpectType string[]
+) {
+this // $ExpectType string[]
+return name.length;
+}); // $ExpectType number[]
+Rather than checking assignability, dtslint inspects the type of each symbol and
+does a textual comparison. This matches how you’d manually test the type declara‐
+tions in your editor: dtslint essentially automates this process. This approach does
+have some drawbacks: number|string and string|number are textually different but
+the same type. But so are string and any, despite being assignable to each other,
+which is really the point.
+Testing type declarations is tricky business. You should test them. But be aware of the
+pitfalls of some of the common techniques and consider using a tool like dtslint to
+avoid them.
+Things to Remember
+• When testing types, be aware of the difference between equality and assignability,
+particularly for function types.
+192 | Chapter 6: Types Declarations and @types
+• For functions that use callbacks, test the inferred types of the callback parame‐
+ters. Don’t forget to test the type of this if it’s part of your API.
+• Be wary of any in tests involving types. Consider using a tool like dtslint for
+stricter, less error-prone checking.
+
+---
+
+## Sección 163: CHAPTER 7 [Entropy: 0.25]
+
+Writing and Running Your Code
+This chapter is a bit of a grab bag: it covers some issues that come up in writing code
+(not types) as well as issues you may run into when you run your code.
+
+---
+
+## Sección 164: Item 53: Prefer ECMAScript Features to TypeScript [Entropy: 0.81]
+
+Features
+The relationship between TypeScript and JavaScript has changed over time. When
+Microsoft first started work on TypeScript in 2010, the prevailing attitude around
+JavaScript was that it was a problematic language that needed to be fixed. It was com‐
+mon for frameworks and source-to-source compilers to add missing features like
+classes, decorators, and a module system to JavaScript. TypeScript was no different.
+Early versions included home-grown versions of classes, enums, and modules.
+Over time TC39, the standards body that governs JavaScript, added many of these
+same features to the core JavaScript language. And the features they added were not
+compatible with the versions that existed in TypeScript. This left the TypeScript team
+in an awkward predicament: adopt the new features from the standard or break exist‐
+ing code?
+TypeScript has largely chosen to do the latter and eventually articulated its current
+governing principle: TC39 defines the runtime while TypeScript innovates solely in
+the type space.
+There are a few remaining features from before this decision. It’s important to recog‐
+nize and understand these, because they don’t fit the pattern of the rest of the lan‐
+guage. In general, I recommend avoiding them to keep the relationship between
+TypeScript and JavaScript as clear as possible.
+Enums
+Many languages model types that can take on a small set of values using enumerations
+or enums. TypeScript adds them to JavaScript:
+enum Flavor {
+VANILLA = 0,
+CHOCOLATE = 1,
+STRAWBERRY = 2,
+}
+let flavor = Flavor.CHOCOLATE; // Type is Flavor
+Flavor // Autocomplete shows: VANILLA, CHOCOLATE, STRAWBERRY
+Flavor[0] // Value is "VANILLA"
+The argument for enums is that they provide more safety and transparency than bare
+numbers. But enums in TypeScript have some quirks. There are actually several var‐
+iants on enums that all have subtly different behaviors:
+• A number-valued enum (like Flavor). Any number is assignable to this, so it’s
+not very safe. (It was designed this way to make bit flag structures possible.)
+• A string-valued enum. This does offer type safety, and also more transparent val‐
+ues at runtime. But it’s not structurally typed, unlike every other type in Type‐
+Script (more on this momentarily).
+• const enum. Unlike regular enums, const enums go away completely at runtime.
+If you changed to const enum Flavor in the previous example, the compiler
+would rewrite Flavor.CHOCOLATE as 0. This also breaks our expectations around
+how the compiler behaves and still has the divergent behaviors between string
+and number-valued enums.
+• const enum with the preserveConstEnums flag set. This emits runtime code for
+const enums, just like for a regular enum.
+That string-valued enums are nominally typed comes as a particular surprise, since
+every other type in TypeScript uses structural typing for assignability (see Item 4):
+enum Flavor {
+VANILLA = 'vanilla',
+CHOCOLATE = 'chocolate',
+STRAWBERRY = 'strawberry',
+}
+let flavor = Flavor.CHOCOLATE; // Type is Flavor
+flavor = 'strawberry';
+// ~~~~~~ Type '"strawberry"' is not assignable to type 'Flavor'
+196 | Chapter 7: Writing and Running Your Code
+This has implications when you publish a library. Suppose you have a function that
+takes a Flavor:
+function scoop(flavor: Flavor) { /* ... */ }
+Because a Flavor at runtime is really just a string, it’s fine for your JavaScript users to
+call it with one:
+scoop('vanilla'); // OK in JavaScript
+but your TypeScript users will need to import the enum and use that instead:
+scoop('vanilla');
+// ~~~~~~~~~ '"vanilla"' is not assignable to parameter of type 'Flavor'
+import {Flavor} from 'ice-cream';
+scoop(Flavor.VANILLA); // OK
+These divergent experiences for JavaScript and TypeScript users are a reason to avoid
+string-valued enums.
+TypeScript offers an alternative to enums that is less common in other languages: a
+union of literal types.
+type Flavor = 'vanilla' | 'chocolate' | 'strawberry';
+let flavor: Flavor = 'chocolate'; // OK
+flavor = 'mint chip';
+// ~~~~~~ Type '"mint chip"' is not assignable to type 'Flavor'
+This offers as much safety as the enum and has the advantage of translating more
+directly to JavaScript. It also offers similarly strong autocomplete in your editor:
+function scoop(flavor: Flavor) {
+if (flavor === 'v
+// Autocomplete here suggests 'vanilla'
+}
+For more on this approach, see Item 33.
+Parameter Properties
+It’s common to assign properties to a constructor parameter when initializing a class:
+class Person {
+name: string;
+constructor(name: string) {
+this.name = name;
+}
+}
+TypeScript provides a more compact syntax for this:
+
+---
+
+## Sección 165: Item 53: Prefer ECMAScript Features to TypeScript Features | 197 [Entropy: 0.689]
+
+class Person {
+constructor(public name: string) {}
+}
+This is called a “parameter property,” and it is equivalent to the code in the first exam‐
+ple. There are a few issues to be aware of with parameter properties:
+• They are one of the few constructs which generates code when you compile to
+JavaScript (enums are another). Generally compilation just involves erasing types.
+• Because the parameter is only used in generated code, the source looks like it has
+unused parameters.
+• A mix of parameter and non-parameter properties can hide the design of your
+classes.
+For example:
+class Person {
+first: string;
+last: string;
+constructor(public name: string) {
+[this.first, this.last] = name.split(' ');
+}
+}
+This class has three properties (first, last, name), but this is hard to read off the
+code because only two are listed before the constructor. This gets worse if the con‐
+structor takes other parameters, too.
+If your class consists only of parameter properties and no methods, you might con‐
+sider making it an interface and using object literals. Remember that the two are
+assignable to one another because of structural typing Item 4:
+class Person {
+constructor(public name: string) {}
+}
+const p: Person = {name: 'Jed Bartlet'}; // OK
+Opinions are divided on parameter properties. While I generally avoid them, others
+appreciate the saved keystrokes. Be aware that they do not fit the pattern of the rest of
+TypeScript, and may in fact obscure that pattern for new developers. Try to avoid hid‐
+ing the design of your class by using a mix of parameter and non-parameter proper‐
+ties.
+Namespaces and Triple-Slash Imports
+Before ECMAScript 2015, JavaScript didn’t have an official module system. Different
+environments added this missing feature in different ways: Node.js used require and
+module.exports whereas AMD used a define function with a callback.
+198 | Chapter 7: Writing and Running Your Code
+TypeScript also filled this gap with its own module system. This was done using a
+module keyword and “triple-slash” imports. After ECMAScript 2015 added an official
+module system, TypeScript added namespace as a synonym for module, to avoid con‐
+fusion:
+namespace foo {
+function bar() {}
+}
+/// <reference path="other.ts"/>
+foo.bar();
+Outside of type declarations, triple-slash imports and the module keyword are just a
+historical curiosity. In your own code, you should use ECMASCript 2015–style mod‐
+ules (import and export). See Item 58.
+Decorators
+Decorators can be used to annotate or modify classes, methods, and properties. For
+example, you could define a logged annotation that logs all calls to a method on a
+class:
+class Greeter {
+greeting: string;
+constructor(message: string) {
+this.greeting = message;
+}
+@logged
+greet() {
+return "Hello, " + this.greeting;
+}
+}
+function logged(target: any, name: string, descriptor: PropertyDescriptor) {
+const fn = target[name];
+descriptor.value = function() {
+console.log(`Calling ${name}`);
+return fn.apply(this, arguments);
+};
+}
+console.log(new Greeter('Dave').greet());
+// Logs:
+// Calling greet
+// Hello, Dave
+This feature was initially added to support the Angular framework and requires the
+experimentalDecorators property to be set in tsconfig.json. Their implementa‐
+tion has not yet been standardized by TC39 at the time of this writing, so any code
+you write today using decorators is liable to break or become non-standard in the
+
+---
+
+## Sección 166: Item 53: Prefer ECMAScript Features to TypeScript Features | 199 [Entropy: 0.295]
+
+future. Unless you’re using Angular or another framework that requires annotations
+and until they’re standardized, don’t use TypeScript’s decorators.
+Things to Remember
+• By and large, you can convert TypeScript to JavaScript by removing all the types
+from your code.
+• Enums, parameter properties, triple-slash imports, and decorators are historical
+exceptions to this rule.
+• In order to keep TypeScript’s role in your codebase as clear as possible, I recom‐
+mend avoiding these features.
+
+---
+
+## Sección 167: Item 54: Know How to Iterate Over Objects [Entropy: 0.641]
+
+This code runs fine, and yet TypeScript flags an error in it. Why?
+const obj = {
+one: 'uno',
+two: 'dos',
+three: 'tres',
+};
+for (const k in obj) {
+const v = obj[k];
+// ~~~~~~ Element implicitly has an 'any' type
+// because type ... has no index signature
+}
+Inspecting the obj and k symbols gives a clue:
+const obj = { /* ... */ };
+// const obj: {
+// one: string;
+// two: string;
+// three: string;
+// }
+for (const k in obj) { // const k: string
+// ...
+}
+The type of k is string, but you’re trying to index into an object whose type only has
+three specific keys: 'one', 'two', and 'three'. There are strings other than these
+three, so this has to fail.
+Plugging in a narrower type declaration for k fixes the issue:
+let k: keyof typeof obj; // Type is "one" | "two" | "three"
+for (k in obj) {
+200 | Chapter 7: Writing and Running Your Code
+const v = obj[k]; // OK
+}
+So the real question is: why is the type of k in the first example inferred as string
+rather than "one" | "two" | "three"?
+To understand, let’s look at a slightly different example involving an interface and a
+function:
+interface ABC {
+a: string;
+b: string;
+c: number;
+}
+function foo(abc: ABC) {
+for (const k in abc) { // const k: string
+const v = abc[k];
+// ~~~~~~ Element implicitly has an 'any' type
+// because type 'ABC' has no index signature
+}
+}
+It’s the same error as before. And you can “fix” it using the same sort of declaration
+(let k: keyof ABC). But in this case TypeScript is right to complain. Here’s why:
+const x = {a: 'a', b: 'b', c: 2, d: new Date()};
+foo(x); // OK
+The function foo can be called with any value assignable to ABC, not just a value with
+“a,” “b,” and “c” properties. It’s entirely possible that the value will have other proper‐
+ties, too (see Item 4). To allow for this, TypeScript gives k the only type it can be con‐
+fident of, namely, string.
+Using the keyof declaration would have another downside here:
+function foo(abc: ABC) {
+let k: keyof ABC;
+for (k in abc) { // let k: "a" | "b" | "c"
+const v = abc[k]; // Type is string | number
+}
+}
+If "a" | "b" | "c" is too narrow for k, then string | number is certainly too nar‐
+row for v. In the preceding example one of the values is a Date, but it could be any‐
+thing. The types here give a false sense of certainty that could lead to chaos at
+runtime.
+So what if you just want to iterate over the object’s keys and values without type
+errors? Object.entries lets you iterate over both simultaneously:
+
+---
+
+## Sección 168: Item 54: Know How to Iterate Over Objects | 201 [Entropy: 0.475]
+
+function foo(abc: ABC) {
+for (const [k, v] of Object.entries(abc)) {
+k // Type is string
+v // Type is any
+}
+}
+While these types may be hard to work with, they are at least honest!
+You should also be aware of the possibility of prototype pollution. Even in the case of
+an object literal that you define, for-in can produce additional keys:
+> Object.prototype.z = 3; // Please don't do this!
+> const obj = {x: 1, y: 2};
+> for (const k in obj) { console.log(k); }
+x
+y
+z
+Hopefully this doesn’t happen in a nonadversarial environment (you should never
+add enumerable properties to Object.prototype), but it is another reason that for-in
+produces string keys even for object literals.
+If you want to iterate over the keys and values in an object, use either a keyof declara‐
+tion (let k: keyof T) or Object.entries. The former is appropriate for constants
+or other situations where you know that the object won’t have additional keys and
+you want precise types. The latter is more generally appropriate, though the key and
+value types are more difficult to work with.
+Things to Remember
+• Use let k: keyof T and a for-in loop to iterate objects when you know exactly
+what the keys will be. Be aware that any objects your function receives as parame‐
+ters might have additional keys.
+• Use Object.entries to iterate over the keys and values of any object.
+
+---
+
+## Sección 169: Item 55: Understand the DOM hierarchy [Entropy: 0.74]
+
+Most of the items in this book are agnostic about where you run your TypeScript: in a
+web browser, on a server, on a phone. This one is different. If you’re not working in a
+browser, skip ahead!
+The DOM hierarchy is always present when you’re running JavaScript in a web
+browser. When you use document.getElementById to get an element or docu
+ment.createElement to create one, it’s always a particular kind of element, even if
+202 | Chapter 7: Writing and Running Your Code
+you’re not entirely familiar with the taxonomy. You call the methods and use the
+properties that you want and hope for the best.
+With TypeScript, the hierarchy of DOM elements becomes more visible. Knowing
+your Nodes from your Elements and EventTargets will help you debug type errors
+and decide when type assertions are appropriate. Because so many APIs are based on
+the DOM, this is relevant even if you’re using a framework like React or d3.
+Suppose you want to track a user’s mouse as they drag it across a <div>. You write
+some seemingly innocuous JavaScript:
+function handleDrag(eDown: Event) {
+const targetEl = eDown.currentTarget;
+targetEl.classList.add('dragging');
+const dragStart = [eDown.clientX, eDown.clientY];
+const handleUp = (eUp: Event) => {
+targetEl.classList.remove('dragging');
+targetEl.removeEventListener('mouseup', handleUp);
+const dragEnd = [eUp.clientX, eUp.clientY];
+console.log('dx, dy = ', [0, 1].map(i => dragEnd[i] - dragStart[i]));
+}
+targetEl.addEventListener('mouseup', handleUp);
+}
+const div = document.getElementById('surface');
+div.addEventListener('mousedown', handleDrag);
+TypeScript’s type checker flags no fewer than 11 errors in these 14 lines of code:
+function handleDrag(eDown: Event) {
+const targetEl = eDown.currentTarget;
+targetEl.classList.add('dragging');
+// ~~~~~~~ Object is possibly 'null'.
+// ~~~~~~~~~ Property 'classList' does not exist on type 'EventTarget'
+const dragStart = [
+eDown.clientX, eDown.clientY];
+// ~~~~~~~ Property 'clientX' does not exist on 'Event'
+// ~~~~~~~ Property 'clientY' does not exist on 'Event'
+const handleUp = (eUp: Event) => {
+targetEl.classList.remove('dragging');
+// ~~~~~~~~ Object is possibly 'null'.
+// ~~~~~~~~~ Property 'classList' does not exist on type 'EventTarget'
+targetEl.removeEventListener('mouseup', handleUp);
+// ~~~~~~~~ Object is possibly 'null'
+const dragEnd = [
+eUp.clientX, eUp.clientY];
+// ~~~~~~~ Property 'clientX' does not exist on 'Event'
+// ~~~~~~~ Property 'clientY' does not exist on 'Event'
+console.log('dx, dy = ', [0, 1].map(i => dragEnd[i] - dragStart[i]));
+}
+targetEl.addEventListener('mouseup', handleUp);
+// ~~~~~~~ Object is possibly 'null'
+}
+
+---
+
+## Sección 170: Item 55: Understand the DOM hierarchy | 203 [Entropy: 0.68]
+
+const div = document.getElementById('surface');
+div.addEventListener('mousedown', handleDrag);
+// ~~~ Object is possibly 'null'
+What went wrong? What’s this EventTarget? And why might everything be null?
+To understand the EventTarget errors it helps to dig into the DOM hierarchy a bit.
+Here’s some HTML:
+<p id="quote">and <i>yet</i> it moves</p>
+If you open your browser’s JavaScript console and get a reference to the p element,
+you’ll see that it’s an HTMLParagraphElement:
+const p = document.getElementsByTagName('p')[0];
+p instanceof HTMLParagraphElement
+// True
+An HTMLParagraphElement is a subtype of HTMLElement, which is a subtype of Ele
+ment, which is a subtype of Node, which is a subtype of EventTarget. Here are some
+examples of types along the hierarchy:
+Table 7-1. Types in the DOM Hierarchy
+Type Examples
+EventTarget window, XMLHttpRequest
+Node document, Text, Comment
+Element includes HTMLElements, SVGElements
+HTMLElement <i>, <b>
+HTMLButtonElement <button>
+An EventTarget is the most generic of DOM types. All you can do with it is add
+event listeners, remove them, and dispatch events. With this in mind, the classList
+errors start to make a bit more sense:
+function handleDrag(eDown: Event) {
+const targetEl = eDown.currentTarget;
+targetEl.classList.add('dragging');
+// ~~~~~~~ Object is possibly 'null'
+// ~~~~~~~~~ Property 'classList' does not exist on type 'EventTarget'
+// ...
+}
+As its name implies, an Event’s currentTarget property is an EventTarget. It could
+even be null. TypeScript has no reason to believe that it has a classList property.
+While an EventTargets could be an HTMLElement in practice, from the type system’s
+perspective there’s no reason it couldn’t be window or XMLHTTPRequest.
+204 | Chapter 7: Writing and Running Your Code
+Moving up the hierarchy we come to Node. A couple of examples of Nodes that are not
+Elements are text fragments and comments. For instance, in this HTML:
+<p>
+And <i>yet</i> it moves
+<!-- quote from Galileo -->
+</p>
+the outermost element is an HTMLParagraphElement. As you can see here, it has chil
+dren and childNodes:
+> p.children
+HTMLCollection [i]
+> p.childNodes
+NodeList(5) [text, i, text, comment, text]
+children returns an HTMLCollection, an array-like structure containing just the
+child Elements (<i>yet</i>). childNodes returns a NodeList, an Array-like collec‐
+tion of Nodes. This includes not just Elements (<i>yet</i>) but also text fragments
+(“And,” “it moves”) and comments (“quote from Galileo”).
+What’s the difference between an Element and an HTMLElement? There are non-
+HTML Elements including the whole hierarchy of SVG tags. These are SVGElements,
+which are another type of Element. What’s the type of an <html> or <svg> tag?
+They’re HTMLHtmlElement and SVGSvgElement.
+Sometimes these specialized classes will have properties of their own—for example,
+an HTMLImageElement has a src property, and an HTMLInputElement has a value
+property. If you want to read one of these properties off a value, its type must be spe‐
+cific enough to have that property.
+TypeScript’s type declarations for the DOM make liberal use of literal types to try to
+get you the most specific type possible. For example:
+document.getElementsByTagName('p')[0]; // HTMLParagraphElement
+document.createElement('button'); // HTMLButtonElement
+document.querySelector('div'); // HTMLDivElement
+but this is not always possible, notably with document.getElementById:
+document.getElementById('my-div'); // HTMLElement
+While type assertions are generally frowned upon (Item 9), this is a case where you
+know more than TypeScript does and so they are appropriate. There’s nothing wrong
+with this, so long as you know that #my-div is a div:
+document.getElementById('my-div') as HTMLDivElement;
+with strictNullChecks enabled, you will need to consider the case that docu
+ment.getElementById returns null. Depending on whether this can really happen,
+you can either add an if statement or an assertion (!):
+
+---
+
+## Sección 171: Item 55: Understand the DOM hierarchy | 205 [Entropy: 0.739]
+
+const div = document.getElementById('my-div')!;
+These types are not specific to TypeScript. Rather, they are generated from the formal
+specification of the DOM. This is an example of the advice of Item 35 to generate
+types from specs when possible.
+So much for the DOM hierarchy. What about the clientX and clientY errors?
+function handleDrag(eDown: Event) {
+// ...
+const dragStart = [
+eDown.clientX, eDown.clientY];
+// ~~~~~~~ Property 'clientX' does not exist on 'Event'
+// ~~~~~~~ Property 'clientY' does not exist on 'Event'
+// ...
+}
+In addition to the hierarchy for Nodes and Elements, there is also a hierarchy for
+Events. The Mozilla documentation currently lists no fewer than 52 types of Event!
+Plain Event is the most generic type of event. More specific types include:
+UIEvent
+Any sort of user interface event
+MouseEvent
+An event triggered by the mouse such as a click
+TouchEvent
+A touch event on a mobile device
+WheelEvent
+An event triggered by rotating the scroll wheel
+KeyboardEvent
+A key press
+The problem in handleDrag is that the events are declared as Event, while clientX
+and clientY exist only on the more specific MouseEvent type.
+So how can you fix the example from the start of this item? TypeScript’s declarations
+for the DOM make extensive use of context (Item 26). Inlining the mousedown han‐
+dler gives TypeScript more information to work with and removes most of the errors.
+You can also declare the parameter type to be MouseEvent rather than Event. Here’s a
+version that uses both techniques to fix the errors:
+function addDragHandler(el: HTMLElement) {
+el.addEventListener('mousedown', eDown => {
+const dragStart = [eDown.clientX, eDown.clientY];
+const handleUp = (eUp: MouseEvent) => {
+el.classList.remove('dragging');
+206 | Chapter 7: Writing and Running Your Code
+el.removeEventListener('mouseup', handleUp);
+const dragEnd = [eUp.clientX, eUp.clientY];
+console.log('dx, dy = ', [0, 1].map(i => dragEnd[i] - dragStart[i]));
+}
+el.addEventListener('mouseup', handleUp);
+});
+}
+const div = document.getElementById('surface');
+if (div) {
+addDragHandler(div);
+}
+The if statement at the end handles the possibility that there is no #surface element.
+If you know that this element exists, you could use an assertion instead (div!). add
+DragHandler requires a non-null HTMLElement, so this is an example of pushing null
+values to the perimeter (Item 31).
+Things to Remember
+• The DOM has a type hierarchy that you can usually ignore while writing Java‐
+Script. But these types become more important in TypeScript. Understanding
+them will help you write TypeScript for the browser.
+• Know the differences between Node, Element, HTMLElement, and EventTarget, as
+well as those between Event and MouseEvent.
+• Either use a specific enough type for DOM elements and Events in your code or
+give TypeScript the context to infer it.
+
+---
+
+## Sección 172: Item 56: Don’t Rely on Private to Hide Information [Entropy: 0.331]
+
+JavaScript has historically lacked a way to make properties of a class private. The
+usual workaround is a convention of prefixing fields that are not part of a public API
+with underscores:
+class Foo {
+_private = 'secret123';
+}
+But this only discourages users from accessing private data. It is easy to circumvent:
+const f = new Foo();
+f._private; // 'secret123'
+TypeScript adds public, protected, and private field modifiers that seem to provide
+some enforcement:
+
+---
+
+## Sección 173: Item 56: Don’t Rely on Private to Hide Information | 207 [Entropy: 0.78]
+
+class Diary {
+private secret = 'cheated on my English test';
+}
+const diary = new Diary();
+diary.secret
+// ~~~~~~ Property 'secret' is private and only
+// accessible within class 'Diary'
+But private is a feature of the type system and, like all features of the type system, it
+goes away at runtime (see Item 3). Here’s what this snippet looks like when TypeScript
+compiles it to JavaScript (with target=ES2017):
+class Diary {
+constructor() {
+this.secret = 'cheated on my English test';
+}
+}
+const diary = new Diary();
+diary.secret;
+The private indicator is gone, and your secret is out! Much like the _private con‐
+vention, TypeScript’s access modifiers only discourage you from accessing private
+data. With a type assertion, you can even access a private property from within Type‐
+Script:
+class Diary {
+private secret = 'cheated on my English test';
+}
+const diary = new Diary();
+(diary as any).secret // OK
+In other words, don’t rely on private to hide information!
+So what should you do if you want something more robust? The traditional answer
+has been to take advantage of one of JavaScript’s most reliable ways to hide informa‐
+tion: closures. You can create one in a constructor:
+declare function hash(text: string): number;
+class PasswordChecker {
+checkPassword: (password: string) => boolean;
+constructor(passwordHash: number) {
+this.checkPassword = (password: string) => {
+return hash(password) === passwordHash;
+}
+}
+}
+const checker = new PasswordChecker(hash('s3cret'));
+checker.checkPassword('s3cret'); // Returns true
+208 | Chapter 7: Writing and Running Your Code
+JavaScript offers no way to access the passwordHash variable from outside of the con‐
+structor of PasswordChecker. This does have a few downsides, however: specifically,
+because passwordHash can’t be seen outside the constructor, every method that uses it
+also has to be defined there. This results in a copy of each method being created for
+every class instance, which will lead to higher memory use. It also prevents other
+instances of the same class from accessing private data. Closures may be inconven‐
+ient, but they will certainly keep your data private!
+A newer option is to use private fields, a proposed language feature that is solidifying
+as this book goes to print. In this proposal, to make a field private both for type
+checking and at runtime, prefix it with a #:
+class PasswordChecker {
+#passwordHash: number;
+constructor(passwordHash: number) {
+this.#passwordHash = passwordHash;
+}
+checkPassword(password: string) {
+return hash(password) === this.#passwordHash;
+}
+}
+const checker = new PasswordChecker(hash('s3cret'));
+checker.checkPassword('secret'); // Returns false
+checker.checkPassword('s3cret'); // Returns true
+The #passwordHash property is not accessible from outside the class. In contrast to
+the closure technique, it is accessible from class methods and from other instances of
+the same class. For ECMAScript targets that don’t natively support private fields, a
+fallback implementation using WeakMaps is used instead. The upshot is that your data
+is still private. This proposal was stage 3 and support was being added to TypeScript
+as this book went to print. If you’d like to use it, check the TypeScript release notes to
+see if it’s generally available.
+Finally, if you are worried about security, rather than just encapsulation, then there
+are others concerns to be aware of such as modifications to built-in prototypes and
+functions.
+Things to Remember
+• The private access modifier is only enforced through the type system. It has no
+effect at runtime and can be bypassed with an assertion. Don’t assume it will keep
+data hidden.
+• For more reliable information hiding, use a closure.
+
+---
+
+## Sección 174: Item 57: Use Source Maps to Debug TypeScript [Entropy: 0.68]
+
+When you run TypeScript code, you’re actually running the JavaScript that the Type‐
+Script compiler generates. This is true of any source-to-source compiler, be it a mini‐
+fier, a compiler, or a preprocessor. The hope is that this is mostly transparent, that you
+can pretend that the TypeScript source code is being executed without ever having to
+look at the JavaScript.
+This works well until you have to debug your code. Debuggers generally work on the
+code you’re executing and don’t know about the translation process it went through.
+Since JavaScript is such a popular target language, browser vendors collaborated to
+solve this problem. The result is source maps. They map positions and symbols in a
+generated file back to the corresponding positions and symbols in the original source.
+Most browsers and many IDEs support them. If you’re not using them to debug your
+TypeScript, you’re missing out!
+Suppose you’ve created a small script to add a button to an HTML page that incre‐
+ments every time you click it:
+function addCounter(el: HTMLElement) {
+let clickCount = 0;
+const button = document.createElement('button');
+button.textContent = 'Click me';
+button.addEventListener('click', () => {
+clickCount++;
+button.textContent = `Click me (${clickCount})`;
+});
+el.appendChild(button);
+}
+addCounter(document.body);
+If you load this in your browser and open the debugger, you’ll see the generated Java‐
+Script. This closely matches the original source, so debugging isn’t too difficult, as you
+can see in Figure 7-1.
+210 | Chapter 7: Writing and Running Your Code
+Figure 7-1. Debugging generated JavaScript using Chrome’s developer tools. For this sim‐
+ple example, the generated JavaScript closely resembles the TypeScript source.
+Let’s make the page more fun by fetching an interesting fact about each number from
+numbersapi.com:
+function addCounter(el: HTMLElement) {
+let clickCount = 0;
+const triviaEl = document.createElement('p');
+const button = document.createElement('button');
+button.textContent = 'Click me';
+button.addEventListener('click', async () => {
+clickCount++;
+const response = await fetch(`http://numbersapi.com/${clickCount}`);
+const trivia = await response.text();
+triviaEl.textContent = trivia;
+button.textContent = `Click me (${clickCount})`;
+});
+el.appendChild(triviaEl);
+el.appendChild(button);
+}
+If you open up your browser’s debugger now, you’ll see that the generated source has
+gotten dramatically more complicated (see Figure 7-2).
+
+---
+
+## Sección 175: Item 57: Use Source Maps to Debug TypeScript | 211 [Entropy: 0.31]
+
+Figure 7-2. In this case the TypeScript compiler has generated JavaScript that doesn’t
+closely resemble the original TypeScript source. This will make debugging more difficult.
+To support async and await in older browsers, TypeScript has rewritten the event
+handler as a state machine. This has the same behavior, but the code no longer bears
+such a close resemblance to the original source.
+This is where source maps can help. To tell TypeScript to generate one, set the source
+Map option in your tsconfig.json:
+{
+"compilerOptions": {
+"sourceMap": true
+}
+}
+Now when you run tsc, it generates two output files for each .ts file: a .js file and
+a .js.map file. The latter is the source map.
+212 | Chapter 7: Writing and Running Your Code
+With this file in place, a new index.ts file appears in your browser’s debugger. You can
+set breakpoints and inspect variables in it, just as you’d hope (see Figure 7-3).
+Figure 7-3. When a source map is present, you can work with the original TypeScript
+source in your debugger, rather than the generated JavaScript.
+Note that index.ts appears in italics in the file list on the left. This indicates that it isn’t
+a “real” file in the sense that the web page included it. Rather, it was included via the
+source map. Depending on your settings, index.js.map will contain either a reference
+to index.ts (in which case the browser loads it over the network) or an inline copy of
+it (in which case no request is needed).
+There are a few things to be aware of with source maps:
+• If you are using a bundler or minifier with TypeScript, it may generate a source
+map of its own. To get the best debugging experience, you want this to map all
+the way back to the original TypeScript sources, not the generated JavaScript. If
+your bundler has built-in support for TypeScript, then this should just work. If
+not, you may need to hunt down some flags to make it read source map inputs.
+• Be aware of whether you’re serving source maps in production. The browser
+won’t load source maps unless the debugger is open, so there’s no performance
+impact for end users. But if the source map contains an inline copy of your origi‐
+nal source code, then there may be content that you didn’t intend to publicize.
+Does the world really need to see your snarky comments or internal bug tracker
+URLs?
+
+---
+
+## Sección 176: Item 57: Use Source Maps to Debug TypeScript | 213 [Entropy: 0.31]
+
+You can also debug NodeJS programs using source maps. This is typically done via
+your editor or by connecting to your node process from a browser’s debugger. Con‐
+sult the Node docs for details.
+The type checker can catch many errors before you run your code, but it is no substi‐
+tute for a good debugger. Use source maps to get a great TypeScript debugging expe‐
+rience.
+Things to Remember
+• Don’t debug generated JavaScript. Use source maps to debug your TypeScript
+code at runtime.
+• Make sure that your source maps are mapped all the way through to the code that
+you run.
+• Depending on your settings, your source maps might contain an inline copy of
+your original code. Don’t publish them unless you know what you’re doing!
+214 | Chapter 7: Writing and Running Your Code
+1 Z. Gao, C. Bird, and E. T. Barr, “To Type or Not to Type: Quantifying Detectable Bugs in JavaScript,” ICSE
+2017, http://earlbarr.com/publications/typestudy.pdf.
+2 Brie Bunge, “Adopting TypeScript at Scale,” JSConf Hawaii 2019, https://youtu.be/P-J9Eg7hJwE.
+
+---
+
+## Sección 177: CHAPTER 8 [Entropy: 0.265]
+
+Migrating to TypeScript
+You’ve heard that TypeScript is great. You also know from painful experience that
+maintaining your 15-year-old, 100,000-line JavaScript library isn’t. If only it could
+become a TypeScript library!
+This chapter offers some advice about migrating your JavaScript project to TypeScript
+without losing your sanity and abandoning the effort.
+Only the smallest codebases can be migrated in one fell swoop. The key for larger
+projects is to migrate gradually. Item 60 discusses how to do this. For a long migra‐
+tion, it’s essential to track your progress and make sure you don’t backslide. This cre‐
+ates a sense of momentum and inevitability to the change. Item 61 discusses ways to
+do this.
+Migrating a large project to TypeScript won’t necessarily be easy, but it does offer a
+huge potential upside. A 2017 study found that 15% of bugs fixed in JavaScript
+projects on GitHub could have been prevented with TypeScript.1 Even more impres‐
+sive, a survey of six months’ worth of postmortems at AirBnb found that 38% of them
+could have been prevented by TypeScript.2 If you’re advocating for TypeScript at your
+organization, stats like these will help! So will running some experiments and finding
+early adopters. Item 59 discusses how to experiment with TypeScript before you
+begin migration.
+Since this chapter is largely about JavaScript, many of the code samples are either
+pure JavaScript (and not expected to pass the type checker) or checked with looser
+settings (e.g., with noImplicitAny off).
+
+---
+
+## Sección 178: Item 58: Write Modern JavaScript [Entropy: 0.734]
+
+In addition to checking your code for type safety, TypeScript compiles your Type‐
+Script code to any version of JavaScript code, all the way back to 1999 vintage ES3.
+Since TypeScript is a superset of the latest version of JavaScript, this means that you
+can use tsc as a “transpiler”: something that takes new JavaScript and converts it to
+older, more widely supported JavaScript.
+Taking a different perspective, this means that when you decide to convert an existing
+JavaScript codebase to TypeScript, there’s no downside to adopting all the latest Java‐
+Script features. In fact, there’s quite a bit of upside: because TypeScript is designed to
+work with modern JavaScript, modernizing your JS is a great first step toward adopt‐
+ing TypeScript.
+And because TypeScript is a superset of JavaScript, learning to write more modern
+and idiomatic JavaScript means you’re learning to write better TypeScript, too.
+This item gives a quick tour of some of the features in modern JavaScript, which I’m
+defining here as everything introduced in ES2015 (aka ES6) and after. This material is
+covered in much greater detail in other books and online. If any of the topics men‐
+tioned here are unfamiliar, you owe it to yourself to learn more about them. Type‐
+Script can be tremendously helpful when you’re learning a new language feature like
+async/await: it almost certainly understands the feature better than you do and can
+guide you toward correct usage.
+These are all worth understanding, but by far the most important for adopting Type‐
+Script are ECMAScript Modules and ES2015 classes.
+Use ECMAScript Modules
+Before the 2015 version of ECMAScript there was no standard way to break your
+code into separate modules. There were many solutions, from multiple <script>
+tags, manual concatenation, and Makefiles to node.js-style require statements or
+AMD-style define callbacks. TypeScript even had its own module system (Item 53).
+Today there is one standard: ECMAScript modules, aka import and export. If your
+JavaScript codebase is still a single file, if you use concatenation or one of the other
+module systems, it’s time to switch to ES modules. This may require setting up a tool
+like webpack or ts-node. TypeScript works best with ES modules, and adopting them
+will facilitate your transition, not least because it will allow you to migrate modules
+one at a time (see Item 61).
+The details will vary depending on your setup, but if you’re using CommonJS like
+this:
+216 | Chapter 8: Migrating to TypeScript
+// CommonJS
+// a.js
+const b = require('./b');
+console.log(b.name);
+// b.js
+const name = 'Module B';
+module.exports = {name};
+then the ES module equivalent would look like:
+// ECMAScript module
+// a.ts
+import * as b from './b';
+console.log(b.name);
+// b.ts
+export const name = 'Module B';
+Use Classes Instead of Prototypes
+JavaScript has a flexible prototype-based object model. But by and large JS developers
+have ignored this in favor of a more rigid class-based model. This was officially
+enshrined into the language with the introduction of the class keyword in ES2015.
+If your code uses prototypes in a straightforward way, switch to using classes. That is,
+instead of:
+function Person(first, last) {
+this.first = first;
+this.last = last;
+}
+Person.prototype.getName = function() {
+return this.first + ' ' + this.last;
+}
+const marie = new Person('Marie', 'Curie');
+const personName = marie.getName();
+write:
+class Person {
+first: string;
+last: string;
+constructor(first: string, last: string) {
+this.first = first;
+this.last = last;
+}
+getName() {
+return this.first + ' ' + this.last;
+
+---
+
+## Sección 179: Item 58: Write Modern JavaScript | 217 [Entropy: 0.67]
+
+}
+}
+const marie = new Person('Marie', 'Curie');
+const personName = marie.getName();
+TypeScript struggles with the prototype version of Person but understands the classbased version with minimal annotations. If you’re unfamiliar with the syntax, Type‐
+Script will help you get it right.
+For code that uses older-style classes, the TypeScript language service offers a “Con‐
+vert function to an ES2015 class” quick fix that can speed this up (Figure 8-1).
+Figure 8-1. The TypeScript language service offers a quick fix to convert older-style
+classes to ES2015 classes.
+Use let/const Instead of var
+JavaScript’s var has some famously quirky scoping rules. If you’re curious to learn
+more about them, read Effective JavaScript. But better to avoid var and not worry!
+Instead, use let and const. They’re truly block-scoped and work in much more intu‐
+itive ways than var.
+Again, TypeScript will help you here. If changing var to let results in an error, then
+you’re almost certainly doing something you shouldn’t be.
+Nested function statements also have var-like scoping rules:
+function foo() {
+bar();
+function bar() {
+console.log('hello');
+}
+}
+218 | Chapter 8: Migrating to TypeScript
+When you call foo(), it logs hello because the definition of bar is hoisted to the top
+of foo. This is surprising! Prefer function expressions (const bar = () => { ... })
+instead.
+Use for-of or Array Methods Instead of for(;;)
+In classic JavaScript you used a C-style for loop to iterate over an array:
+for (var i = 0; i < array.length; i++) {
+const el = array[i];
+// ...
+}
+In modern JavaScript you can use a for-of loop instead:
+for (const el of array) {
+// ...
+}
+This is less prone to typos and doesn’t introduce an index variable. If you want the
+index variable, you can use forEach:
+array.forEach((el, i) => {
+// ...
+});
+Avoid using the for-in construct to iterate over arrays as it has many surprises (see
+
+---
+
+## Sección 180: Item 16). [Entropy: 0.328]
+
+Prefer Arrow Functions Over Function Expressions
+The this keyword is one of the most famously confusing aspects of JavaScript
+because it has different scoping rules than other variables:
+class Foo {
+method() {
+console.log(this);
+[1, 2].forEach(function(i) {
+console.log(this);
+});
+}
+}
+const f = new Foo();
+f.method();
+// Prints Foo, undefined, undefined in strict mode
+// Prints Foo, window, window (!) in non-strict mode
+Generally you want this to refer to the relevant instance of whichever class you’re in.
+Arrow functions help you do that by keeping the this value from their enclosing
+scope:
+
+---
+
+## Sección 181: Item 58: Write Modern JavaScript | 219 [Entropy: 0.75]
+
+class Foo {
+method() {
+console.log(this);
+[1, 2].forEach(i => {
+console.log(this);
+});
+}
+}
+const f = new Foo();
+f.method();
+// Always prints Foo, Foo, Foo
+In addition to having simpler semantics, arrow functions are more concise. You
+should use them whenever possible. For more on this binding, see Item 49. With the
+noImplicitThis (or strict) compiler option, TypeScript will help you get your
+this-binding right.
+Use Compact Object Literals and Destructuring Assignment
+Instead of writing:
+const x = 1, y = 2, z = 3;
+const pt = {
+x: x,
+y: y,
+z: z
+};
+you can simply write:
+const x = 1, y = 2, z = 3;
+const pt = { x, y, z };
+In addition to being more concise, this encourages consistent naming of variables
+and properties, something your human readers will appreciate as well (Item 36).
+To return an object literal from an arrow function, wrap it in parentheses:
+['A', 'B', 'C'].map((char, idx) => ({char, idx}));
+// [ { char: 'A', idx: 0 }, { char: 'B', idx: 1 }, { char: 'C', idx: 2 } ]
+There is also shorthand for properties whose values are functions:
+const obj = {
+onClickLong: function(e) {
+// ...
+},
+onClickCompact(e) {
+// ...
+}
+};
+The inverse of compact object literals is object destructuring. Instead of writing:
+220 | Chapter 8: Migrating to TypeScript
+const props = obj.props;
+const a = props.a;
+const b = props.b;
+you can write:
+const {props} = obj;
+const {a, b} = props;
+or even:
+const {props: {a, b}} = obj;
+In this last example only a and b become variables, not props.
+You may specify default values when destructuring. Instead of writing:
+let {a} = obj.props;
+if (a === undefined) a = 'default';
+write this:
+const {a = 'default'} = obj.props;
+You can also destructure arrays. This is particularly useful with tuple types:
+const point = [1, 2, 3];
+const [x, y, z] = point;
+const [, a, b] = point; // Ignore the first one
+Destructuring can also be used in function parameters:
+const points = [
+[1, 2, 3],
+[4, 5, 6],
+];
+points.forEach(([x, y, z]) => console.log(x + y + z));
+// Logs 6, 15
+As with compact object literal syntax, destructuring is concise and encourages consis‐
+tent variable naming. Use it!
+Use Default Function Parameters
+In JavaScript, all function parameters are optional:
+function log2(a, b) {
+console.log(a, b);
+}
+log2();
+This outputs:
+undefined undefined
+This is often used to implement default values for parameters:
+
+---
+
+## Sección 182: Item 58: Write Modern JavaScript | 221 [Entropy: 0.421]
+
+function parseNum(str, base) {
+base = base || 10;
+return parseInt(str, base);
+}
+In modern JavaScript, you can specify the default value directly in the parameter list:
+function parseNum(str, base=10) {
+return parseInt(str, base);
+}
+In addition to being more concise, this makes it clear that base is an optional param‐
+eter. Default parameters have another benefit when you migrate to TypeScript: they
+help the type checker infer the type of the parameter, removing the need for a type
+annotation. See Item 19.
+Use async/await Instead of Raw Promises or Callbacks
+
+---
+
+## Sección 183: Item 25 explains why async and await are preferable, but the gist is that they’ll sim‐ [Entropy: 0.583]
+
+plify your code, prevent bugs, and help types flow through your asynchronous code.
+Instead of either of these:
+function getJSON(url: string) {
+return fetch(url).then(response => response.json());
+}
+function getJSONCallback(url: string, cb: (result: unknown) => void) {
+// ...
+}
+write this:
+async function getJSON(url: string) {
+const response = await fetch(url);
+return response.json();
+}
+Don’t Put use strict in TypeScript
+ES5 introduced “strict mode” to make some suspect patterns more explicit errors. You
+enable it by putting 'use strict' in your code:
+'use strict';
+function foo() {
+x = 10; // Throws in strict mode, defines a global in non-strict.
+}
+If you’ve never used strict mode in your JavaScript codebase, then give it a try. The
+errors it finds are likely to be ones that the TypeScript compiler will find, too.
+222 | Chapter 8: Migrating to TypeScript
+3 https://github.com/tc39/proposals
+But as you transition to TypeScript, there’s not much value in keeping 'use strict'
+in your source code. By and large, the sanity checks that TypeScript provides are far
+stricter than those offered by strict mode.
+There is some value in having a 'use strict' in the JavaScript that tsc emits. If you
+set the alwaysStrict or strict compiler options, TypeScript will parse your code in
+strict mode and put a 'use strict' in the JavaScript output for you.
+In short, don’t write 'use strict' in your TypeScript. Use alwaysStrict instead.
+These are just a few of the many new JavaScript features that TypeScript lets you use.
+TC39, the body that governs JS standards, is very active, and new features are added
+year to year. The TypeScript team is currently committed to implementing any fea‐
+ture that reaches stage 3 (out of 4) in the standardization process, so you don’t even
+have to wait for the ink to dry. Check out the TC39 GitHub repo3 for the latest. As of
+this writing, the pipeline and decorators proposals in particular have great potential
+to impact TypeScript.
+Things to Remember
+• TypeScript lets you write modern JavaScript whatever your runtime environ‐
+ment. Take advantage of this by using the language features it enables. In addi‐
+tion to improving your codebase, this will help TypeScript understand your code.
+• Use TypeScript to learn language features like classes, destructuring, and async/
+await.
+• Don’t bother with 'use strict': TypeScript is stricter.
+• Check the TC39 GitHub repo and TypeScript release notes to learn about all the
+latest language features.
+
+---
+
+## Sección 184: Item 59: Use @ts-check and JSDoc to Experiment with [Entropy: 0.295]
+
+TypeScript
+Before you begin the process of converting your source files from JavaScript to Type‐
+Script (Item 60), you may want to experiment with type checking to get an initial read
+on the sorts of issues that will come up. TypeScript’s @ts-check directive lets you do
+exactly this. It directs the type checker to analyze a single file and report whatever
+issues it finds. You can think of it as an extremely loose version of type checking:
+looser even than TypeScript with noImplicitAny off (Item 2).
+
+---
+
+## Sección 185: Item 59: Use @ts-check and JSDoc to Experiment with TypeScript | 223 [Entropy: 0.716]
+
+Here’s how it works:
+// @ts-check
+const person = {first: 'Grace', last: 'Hopper'};
+2 * person.first
+// ~~~~~~~~~~~~ The right-hand side of an arithmetic operation must be of type
+// 'any', 'number', 'bigint', or an enum type
+TypeScript infers the type of person.first as string, so 2 * person.first is a type
+error, no type annotations required.
+While it may surface this sort of blatant type error, or functions called with too many
+arguments, in practice, // @ts-check tends to turn up a few specific types of errors:
+Undeclared Globals
+If these are symbols that you’re defining, then declare them with let or const. If they
+are “ambient” symbols that are defined elsewhere (in a <script> tag in an HTML file,
+for instance), then you can create a type declarations file to describe them.
+For example, if you have JavaScript like this:
+// @ts-check
+console.log(user.firstName);
+// ~~~~ Cannot find name 'user'
+then you could create a file called types.d.ts:
+interface UserData {
+firstName: string;
+lastName: string;
+}
+declare let user: UserData;
+Creating this file on its own may fix the issue. If it does not, you may need to explic‐
+itly import it with a “triple-slash” reference:
+// @ts-check
+/// <reference path="./types.d.ts" />
+console.log(user.firstName); // OK
+This types.d.ts file is a valuable artifact that will become the basis for your project’s
+type declarations.
+Unknown Libraries
+If you’re using a third-party library, TypeScript needs to know about it. For example,
+you might use jQuery to set the size of an HTML element. With @ts-check, Type‐
+Script will flag an error:
+224 | Chapter 8: Migrating to TypeScript
+// @ts-check
+$('#graph').style({'width': '100px', 'height': '100px'});
+// ~ Cannot find name '$'
+The solution is to install the type declarations for jQuery:
+$ npm install --save-dev @types/jquery
+Now the error is specific to jQuery:
+// @ts-check
+$('#graph').style({'width': '100px', 'height': '100px'});
+// ~~~~~ Property 'style' does not exist on type 'JQuery<HTMLElement>'
+In fact, it should be .css, not .style.
+@ts-check lets you take advantage of the TypeScript declarations for popular Java‐
+Script libraries without migrating to TypeScript yourself. This is one of the best rea‐
+sons to use it.
+DOM Issues
+Assuming you’re writing code that runs in a web browser, TypeScript is likely to flag
+issues around your handling of DOM elements. For example:
+// @ts-check
+const ageEl = document.getElementById('age');
+ageEl.value = '12';
+// ~~~~~ Property 'value' does not exist on type 'HTMLElement'
+The issue is that only HTMLInputElements have a value property, but document.getE
+lementById returns the more generic HTMLElement (see Item 55). If you know that
+the #age element really is an input element, then this is an appropriate time to use a
+type assertion (Item 9). But this is still a JS file, so you can’t write as HTMLInputEle
+ment. Instead, you can assert a type using JSDoc:
+// @ts-check
+const ageEl = /** @type {HTMLInputElement} */(document.getElementById('age'));
+ageEl.value = '12'; // OK
+If you mouse over ageEl in your editor, you’ll see that TypeScript now considers it an
+HTMLInputElement. Take care as you type the JSDoc @type annotation: the parenthe‐
+ses after the comment are required.
+This leads to another type of error that comes up with @ts-check, inaccurate JSDoc,
+as explained next.
+Inaccurate JSDoc
+If your project already has JSDoc-style comments, TypeScript will begin checking
+them when you flip on @ts-check. If you previously used a system like the Closure
+
+---
+
+## Sección 186: Item 59: Use @ts-check and JSDoc to Experiment with TypeScript | 225 [Entropy: 0.812]
+
+Compiler that used these comments to enforce type safety, then this shouldn’t cause
+major headaches. But you may be in for some surprises if your comments were more
+like “aspirational JSDoc”:
+// @ts-check
+/**
+* Gets the size (in pixels) of an element.
+* @param {Node} el The element
+* @return {{w: number, h: number}} The size
+*/
+function getSize(el) {
+const bounds = el.getBoundingClientRect();
+// ~~~~~~~~~~~~~~~~~~~~~ Property 'getBoundingClientRect'
+// does not exist on type 'Node'
+return {width: bounds.width, height: bounds.height};
+// ~~~~~~~~~~~~~~~~~~~ Type '{ width: any; height: any; }' is not
+// assignable to type '{ w: number; h: number; }'
+}
+The first issue is a misunderstanding of the DOM: getBoundingClientRect() is
+defined on Element, not Node. So the @param tag should be updated. The second is a
+mismatch between proprties specified in the @return tag and the implementation.
+Presumably the rest of the project uses the width and height properties, so the
+@return tag should be updated.
+You can use JSDoc to gradually add type annotations to your project. The TypeScript
+language service will offer to infer type annotations as a quick fix for code where it’s
+clear from usage, as shown here and in Figure 8-2:
+function double(val) {
+return 2 * val;
+}
+Figure 8-2. The TypeScript Language Services offer a quick fix to infer paramter types
+from usage.
+This results in a correct JSDoc annotation:
+226 | Chapter 8: Migrating to TypeScript
+// @ts-check
+/**
+* @param {number} val
+*/
+function double(val) {
+return 2 * val;
+}
+This can be helpful to encourage types to flow through your code with @ts-check.
+But it doesn’t always work so well. For instance:
+function loadData(data) {
+data.files.forEach(async file => {
+// ...
+});
+}
+If you use the quick fix to annotate data, you’ll wind up with:
+/**
+* @param {{
+* files: { forEach: (arg0: (file: any) => Promise<void>) => void; };
+* }} data
+*/
+function loadData(data) {
+// ...
+}
+This is structural typing gone awry (Item 4). While the function would technically
+work on any sort of object with a forEach method with that signature, the intent was
+most likely for the parameter to be {files: string[]}.
+You can get much of the TypeScript experience in a JavaScript project using JSDoc
+annotations and @ts-check. This is appealing because it requires no changes in your
+tooling. But it’s best not to go too far in this direction. Comment boilerplate has real
+costs: it’s easy for your logic to get lost in a sea of JSDoc. TypeScript works best
+with .ts files, not .js files. The goal is ultimately to convert your project to TypeScript,
+not to JavaScript with JSDoc annotations. But @ts-check can be a useful way to
+experiment with types and find some initial errors, especially for projects that already
+have extensive JSDoc annotations.
+Things to Remember
+• Add "// @ts-check" to the top of a JavaScript file to enable type checking.
+• Recognize common errors. Know how to declare globals and add type declara‐
+tions for third-party libraries.
+• Use JSDoc annotations for type assertions and better type inference.
+
+---
+
+## Sección 187: Item 59: Use @ts-check and JSDoc to Experiment with TypeScript | 227 [Entropy: 0.265]
+
+• Don’t spend too much time getting your code perfectly typed with JSDoc.
+Remember that the goal is to convert to .ts!
+
+---
+
+## Sección 188: Item 60: Use allowJs to Mix TypeScript and JavaScript [Entropy: 0.361]
+
+For a small project, you may be able to convert from JavaScript to TypeScript in one
+fell swoop. But for a larger project this “stop the world” approach won’t work. You
+need to be able to transition gradually. That means you need a way for TypeScript and
+JavaScript to coexist.
+The key to this is the allowJs compiler option. With allowJs, TypeScript files and
+JavaScript files may import one another. For JavaScript files this mode is extremely
+permissive. Unless you use @ts-check (Item 59), the only errors you’ll see are syntax
+errors. This is “TypeScript is a superset of JavaScript” in the most trivial sense.
+While it’s unlikely to catch errors, allowJs does give you an opportunity to introduce
+TypeScript into your build chain before you start making code changes. This is a
+good idea because you’ll want to be able to run your tests as you convert modules to
+TypeScript (Item 61).
+If your bundler includes TypeScript integration or has a plug-in available, that’s usu‐
+ally the easiest path forward. With browserify, for instance, you run npm install
+--sav-dev tsify and add it as a plug-in:
+$ browserify index.ts -p [ tsify --noImplicitAny ] > bundle.js
+Most unit testing tools have an option like this as well. With the jest tool, for
+instance, you install ts-jest and pass TypeScript sources through it by specifying a
+jest.config.js like:
+module.exports = {
+transform: {
+'^.+\\.tsx?$': 'ts-jest',
+},
+};
+If your build chain is custom, your task will be more involved. But there’s always a
+good fallback option: when you specify the outDir option, TypeScript will generate
+pure JavaScript sources in a directory that parallels your source tree. Usually your
+existing build chain can be run over that. You may need to tweak TypeScript’s Java‐
+Script output so that it closely matches your original JavaScript source, (e.g., by speci‐
+fying the target and module options).
+Adding TypeScript into your build and test process may not be the most enjoyable
+task, but it is an essential one that will let you begin to migrate your code with
+confidence.
+228 | Chapter 8: Migrating to TypeScript
+Things to Remember
+• Use the allowJs compiler option to support mixed JavaScript and TypeScript as
+you transition your project.
+• Get your tests and build chain working with TypeScript before beginning largescale migration.
+
+---
+
+## Sección 189: Item 61: Convert Module by Module Up Your Dependency [Entropy: 0.28]
+
+Graph
+You’ve adopted modern JavaScript, converting your project to use ECMAScript mod‐
+ules and classes (Item 58). You’ve integrated TypeScript into your build chain and
+have all your tests passing (Item 60). Now for the fun part: converting your JavaScript
+to TypeScript. But where to begin?
+When you add types to a module, it’s likely to surface new type errors in all the mod‐
+ules that depend on it. Ideally you’d like to convert each module once and be done
+with it. This implies that you should convert modules going up the dependency
+graph: starting with the leaves (modules that depend on no others) and moving up to
+the root.
+The very first modules to migrate are your third-party dependencies since, by defini‐
+tion, you depend on them but they do not depend on you. Usually this means instal‐
+ling @types modules. If you use the lodash utility library, for example, you’d run npm
+install --save-dev @types/lodash. These typings will help types flow through
+your code and surface issues in your use of the libraries.
+If your code calls external APIs, you may also want to add type declarations for these
+early on. Although these calls may happen anywhere in your code, this is still in the
+spirit of moving up the dependency graph since you depend on the APIs but they do
+not depend on you. Many types flow from API calls, and these are generally difficult
+to infer from context. If you can find a spec for the API, generate types from that (see
+
+---
+
+## Sección 190: Item 35). [Entropy: 0.25]
+
+As you migrate your own modules, it’s helpful to visualize the dependency graph.
+Figure 8-3 shows an example graph from a medium-sized JavaScript project, made
+using the excellent madge tool.
+
+---
+
+## Sección 191: Item 61: Convert Module by Module Up Your Dependency Graph | 229 [Entropy: 0.502]
+
+Figure 8-3. The dependency graph for a medium-sized JavaScript project. Arrows indi‐
+cate dependencies. Darker-shaded boxes indicate that a module is involved in a circular
+dependency.
+The bottom of this dependency graph is the circular dependency between utils.js and
+tickers.js. There are many modules that depend on these two, but they only depend on
+one another. This pattern is quite common: most projects will have some sort of util‐
+ity module at the bottom of the dependency graph.
+As you migrate your code, focus on adding types rather than refactoring. If this is an
+old project, you’re likely to notice some strange things and want to fix them. Resist
+this urge! The immediate goal is to convert your project to TypeScript, not to
+improve its design. Instead, write down code smells as you detect them and make a
+list of future refactors.
+There are a few common errors you’ll run into as you convert to TypeScript. Some of
+these were covered in Item 59, but new ones include:
+Undeclared Class Members
+Classes in JavaScript do not need to declare their members, but classes in TypeScript
+do. When you rename a class’s .js file to .ts, it’s likely to show errors for every single
+property you reference:
+230 | Chapter 8: Migrating to TypeScript
+class Greeting {
+constructor(name) {
+this.greeting = 'Hello';
+// ~~~~~~~~ Property 'greeting' does not exist on type 'Greeting'
+this.name = name;
+// ~~~~ Property 'name' does not exist on type 'Greeting'
+}
+greet() {
+return this.greeting + ' ' + this.name;
+// ~~~~~~~~ ~~~~ Property ... does not exist
+}
+}
+There’s a helpful quick fix (see Figure 8-4) for this that you should take advantage of.
+Figure 8-4. The quick fix to add declarations for missing members is particularly helpful
+in converting a class to TypeScript.
+This will add declarations for the missing members based on usage:
+class Greeting {
+greeting: string;
+name: any;
+constructor(name) {
+this.greeting = 'Hello';
+this.name = name;
+}
+greet() {
+return this.greeting + ' ' + this.name;
+}
+}
+TypeScript was able to get the type for greeting correct, but not the type for name.
+After applying this quick fix, you should look through the property list and fix the
+any types.
+If this is the first time you’ve seen the full property list for your class, you may be in
+for a shock. When I converted the main class in dygraph.js (the root module in
+
+---
+
+## Sección 192: Item 61: Convert Module by Module Up Your Dependency Graph | 231 [Entropy: 0.671]
+
+Figure 8-3), I discovered that it had no fewer than 45 member variables! Migrating to
+TypeScript has a way of surfacing bad designs like this that were previously implicit.
+It’s harder to justify a bad design if you have to look at it. But again, resist the urge to
+refactor now. Note the oddity and think about how you’d fix it some other day.
+Values with Changing Types
+TypeScript will complain about code like this:
+const state = {};
+state.name = 'New York';
+// ~~~~ Property 'name' does not exist on type '{}'
+state.capital = 'Albany';
+// ~~~~~~~ Property 'capital' does not exist on type '{}'
+This topic is covered in more depth in Item 23, so you may want to brush up on that
+item if you run into this error. If the fix is trivial, you can build the object all at once:
+const state = {
+name: 'New York',
+capital: 'Albany',
+}; // OK
+If it is not, then this is an appropriate time to use a type assertion:
+interface State {
+name: string;
+capital: string;
+}
+const state = {} as State;
+state.name = 'New York'; // OK
+state.capital = 'Albany'; // OK
+You should fix this eventually (see Item 9), but this is expedient and will help you
+keep the migration going.
+If you’ve been using JSDoc and @ts-check (Item 59), be aware that you can actually
+lose type safety by converting to TypeScript. For instance, TypeScript flags an error in
+this JavaScript:
+// @ts-check
+/**
+* @param {number} num
+*/
+function double(num) {
+return 2 * num;
+}
+double('trouble');
+// ~~~~~~~~~ Argument of type '"trouble"' is not assignable to
+// parameter of type 'number'
+232 | Chapter 8: Migrating to TypeScript
+When you convert to TypeScript, the @ts-check and JSDoc stop being enforced. This
+means the type of num is implicitly any, so there’s no error:
+/**
+* @param {number} num
+*/
+function double(num) {
+return 2 * num;
+}
+double('trouble'); // OK
+Fortunately there’s a quick fix available to move JSDoc types to TypeScript types. If
+you have any JSDoc, you should use what’s shown in Figure 8-5.
+Figure 8-5. Quick fix to copy JSDoc annotations to TypeScript type annotations
+Once you’ve copied type annotations to TypeScript, make sure to remove them from
+the JSDoc to avoid redundancy (see Item 30):
+function double(num: number) {
+return 2 * num;
+}
+double('trouble');
+// ~~~~~~~~~ Argument of type '"trouble"' is not assignable to
+// parameter of type 'number'
+This issue will also be caught when you turn on noImplicitAny, but you may as well
+add the types now.
+Migrate your tests last. They should be at the top of your dependency graph (since
+your code doesn’t depend on them), and it’s extremely helpful to know that your tests
+continue to pass during the migration despite your not having changed them at all.
+Things to Remember
+• Start migration by adding @types for third-party modules and external API calls.
+
+---
+
+## Sección 193: Item 61: Convert Module by Module Up Your Dependency Graph | 233 [Entropy: 0.31]
+
+• Begin migrating your modules from the bottom of the dependency graph
+upwards. The first module will usually be some sort of utility code. Consider vis‐
+ualizing the dependency graph to help you track progress.
+• Resist the urge to refactor your code as you uncover odd designs. Keep a list of
+ideas for future refactors, but stay focused on TypeScript conversion.
+• Be aware of common errors that come up during conversion. Copy JSDoc anno‐
+tations if necessary to avoid losing type safety as you convert.
+
+---
+
+## Sección 194: Item 62: Don’t Consider Migration Complete Until You [Entropy: 0.602]
+
+Enable noImplicitAny
+Converting your whole project to .ts is a big accomplishment. But your work isn’t
+done quite yet. Your next goal is to turn on the noImplicitAny option (Item 2). Type‐
+Script code without noImplicitAny is best thought of as transitional because it can
+mask real errors you’ve made in your type declarations.
+For example, perhaps you’ve used the “Add all missing members” quick fix to add
+property declarations to a class (Item 61). You’re left with an any type and would like
+to fix it:
+class Chart {
+indices: any;
+// ...
+}
+indices sounds like it should be an array of numbers, so you plug in that type:
+class Chart {
+indices: number[];
+// ...
+}
+No new errors result, so you then keep moving. Unfortunately, you’ve made a mis‐
+take: number[] is the wrong type. Here’s some code from elsewhere in the class:
+getRanges() {
+for (const r of this.indices) {
+const low = r[0]; // Type is any
+const high = r[1]; // Type is any
+// ...
+}
+}
+234 | Chapter 8: Migrating to TypeScript
+Clearly number[][] or [number, number][] would be a more accurate type. Does it
+surprise you that indexing into a number is allowed? Take this as an indication of just
+how loose TypeScript can be without noImplicitAny.
+When you turn on noImplicitAny, this becomes an error:
+getRanges() {
+for (const r of this.indices) {
+const low = r[0];
+// ~~~~ Element implicitly has an 'any' type because
+// type 'Number' has no index signature
+const high = r[1];
+// ~~~~ Element implicitly has an 'any' type because
+// type 'Number' has no index signature
+// ...
+}
+}
+A good strategy for enabling noImplicitAny is to set it in your local client and start
+fixing errors. The number of errors you get from the type checker gives you a good
+sense of your progress. You can commit the type corrections without committing the
+tsconfig.json change until you get the number of errors down to zero.
+There are many other knobs you can turn to increase the strictness of type checking,
+culminating with "strict": true. But noImplicitAny is the most important one
+and your project will get most of the benefits of TypeScript even if you don’t adopt
+other settings like strictNullChecks. Give everyone on your team a chance to get
+used to TypeScript before you adopt stricter settings.
+Things to Remember
+• Don’t consider your TypeScript migration done until you adopt noImplicitAny.
+Loose type checking can mask real mistakes in type declarations.
+• Fix type errors gradually before enforcing noImplicitAny. Give your team a
+chance to get comfortable with TypeScript before adopting stricter checks.
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #architecture_and_books

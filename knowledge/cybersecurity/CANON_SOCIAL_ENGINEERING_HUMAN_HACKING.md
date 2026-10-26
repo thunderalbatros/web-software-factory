@@ -1,15 +1,15 @@
-> **Alcance:** Literatura canónica de ciberseguridad web, criptografía aplicada, protección de identidad OAuth 2.1, defensa XSS/CSP/CSRF y blindaje de aplicaciones en tiempo real.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de ciberseguridad web, criptografía aplicada, protección de identidad OAuth 2.1, defensa XSS/CSP/CSRF y blindaje de aplicaciones en tiempo real.
 
 # 🎭 Tratado Canónico: Ingeniería Social y Seguridad Humana (Hadnagy)
 ### Basado en: *Social Engineering: The Art of Human Hacking*
@@ -26,7 +26,7 @@ Christopher Hadnagy demuestra que los cortafuegos y el cifrado más sofisticados
 
 ---
 
-## 2. Blindaje del Check-in en Puerta en Yendo
+## 2. Blindaje del Check-in en Puerta en WebFactory
 
 En la noche porteña, el "amiguismo" y los fraudes en puerta son masivos:
 - **Check-in Primario Inmune a Presión Humana:** El sistema de Geofencing GPS (<150m) + Biometría en Hardware no depende de la voluntad o simpatía del personal de seguridad. El ticket se valida criptográficamente contra el backend.

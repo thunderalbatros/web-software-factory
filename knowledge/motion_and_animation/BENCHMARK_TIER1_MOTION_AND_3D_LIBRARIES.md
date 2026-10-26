@@ -1,19 +1,19 @@
-> **Alcance:** Literatura canónica y tratados técnicos de animación a 60 FPS, shaders GPU, física de resortes (spring physics), arte técnico 3D y micro-interacciones fluidas para sitios web modernos y overlays OBS.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
+> **Alcance:** Literatura canónica y tratados técnicos de animación a 60 FPS, shaders GPU, física de resortes (spring physics), arte técnico 3D y micro-interacciones fluidas para sitios web modernos y overlays OBS.
+
 # 🧠 Benchmark Vault: Cerebro de Referencias Visuales, Físicas de UI y Pipeline 3D (Tier-1)
 
-Este documento constituye la **Biblia Canónica y Norma Innegociable** para la concepción, animación y manufactura técnica de cualquier componente de interfaz, micro-interacción en `react-native-reanimated` o script en Python para [[Blender]] en el ecosistema [[Yendo Buenos Aires]].
+Este documento constituye la **Biblia Canónica y Norma Innegociable** para la concepción, animación y manufactura técnica de cualquier componente de interfaz, micro-interacción en `react-native-reanimated` o script en Python para [[Blender]] en el ecosistema [[WebFactory Buenos Aires]].
 
 Queda estrictamente prohibido el diseño especulativo, amateur o estático. Toda pieza visual debe anclarse en la psicología de producto y en las formulaciones físico-matemáticas de los gigantes tecnológicos ([[Apple]], [[Duolingo]], [[Uber]], [[Tinder]]).
 
@@ -25,9 +25,9 @@ La investigación empírica de retención demuestra que las aplicaciones con mas
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│ PSICOLOGÍA DEL AVATAR: EL PUENTE EMOCIONAL DE YENDO                          │
+│ PSICOLOGÍA DEL AVATAR: EL PUENTE EMOCIONAL DE webfactory                          │
 ├────────────────────────────────┬────────────────────────────────────────────┤
-│ Principio Antropológico        │ Implementación en el Carpincho Yendo       │
+│ Principio Antropológico        │ Implementación en el Carpincho WebFactory       │
 ├────────────────────────────────┼────────────────────────────────────────────┤
 │ 1. [[Baby Schema]]             │ Silueta ovoide, cabeza redondeada, ojos    │
 │    (Konrad Lorenz)             │ grandes y serenos. Reduce la amígdala.     │
@@ -202,8 +202,8 @@ def exportar_glb_optimizado(ruta_salida):
 
 ## 🔗 4. Matriz de Trazabilidad y Grafo de Conocimiento
 
-*   Verificación de VRAM móvil: [[Yendo Design System Tier1]]
-*   Filosofía del Tercer Lugar y Quórum Dunbar: [[YENDO DNA]] y [[YENDO LIBRARY]]
+*   Verificación de VRAM móvil: [[WebFactory Design System Tier1]]
+*   Filosofía del Tercer Lugar y Quórum Dunbar: [[webfactory DNA]] y [[webfactory LIBRARY]]
 *   Pipeline de Optimización y Compresión: [[optimizar asset 3d]]
 *   Componente Productivo Dual-Mode: [[CapybaraSpatial3D]]
 *   Motor de Hápticos Asimétricos: [[haptics engine]]

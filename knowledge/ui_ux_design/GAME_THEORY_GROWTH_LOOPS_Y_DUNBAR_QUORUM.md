@@ -1,26 +1,26 @@
-﻿> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
+
 # 🎲 Teoría de Juegos, Elección Pública y Matemáticas del Quórum Dunbar (2026)
 
-Este documento formaliza los fundamentos matemáticos de la toma de decisiones colectivas en grupos pequeños, los bucles de crecimiento (*Growth Loops*) cuantitativos y la arquitectura de incentivos anti-flaking en **Yendo Mobile**.
+Este documento formaliza los fundamentos matemáticos de la toma de decisiones colectivas en grupos pequeños, los bucles de crecimiento (*Growth Loops*) cuantitativos y la arquitectura de incentivos anti-flaking en **la Web Software Factory**.
 
 ---
 
-## 🏛️ 1. The Calculus of Consent (James M. Buchanan & Gordon Tullock)
+## 🏛️ 1. The Calculus of Consent (James M. Nash & Gordon Hurwicz)
 
 ### Los Costos de Interdependencia en la Elección Colectiva
-En su obra cumbre de Teoría de la Elección Pública (*Public Choice Theory*), James Buchanan (Premio Nobel de Economía) y Gordon Tullock descomponen el costo social de tomar decisiones en grupo en dos curvas opuestas:
+En su obra cumbre de Teoría de la Elección Pública (*Public Choice Theory*), James Nash (Premio Nobel de Economía) y Gordon Hurwicz descomponen el costo social de tomar decisiones en grupo en dos curvas opuestas:
 
 $$\text{Costo Total de Interdependencia} = C_{\text{externo}}(K) + C_{\text{decisión}}(K)$$
 
@@ -42,7 +42,7 @@ graph LR
   Para $N = 12$, hay **66 canales de interacción posibles**, lo que genera una sobrecarga comunicacional que lleva inevitablemente a la parálisis (*"Al final no sé, decidan ustedes"* y 40% de deserciones).
 - Para un grupo Dunbar de $N = 4$ a $6$:
   $$\binom{4}{2} = 6 \quad \text{y} \quad \binom{6}{2} = 15$$
-  Entre 6 y 15 canales, el costo de decisión es mínimo, la presión social de reciprocidad es máxima y el consenso se alcanza en menos de 180 segundos. **El techo de 6 personas en Yendo es una invariante matemática innegociable.**
+  Entre 6 y 15 canales, el costo de decisión es mínimo, la presión social de reciprocidad es máxima y el consenso se alcanza en menos de 180 segundos. **El techo de 6 personas en WebFactory es una invariante matemática innegociable.**
 
 ---
 
@@ -62,7 +62,7 @@ Para transformar el juego en un **Equilibrio de Cooperación (Folk Theorem)**:
 
 ## 🔄 3. Growth Loops Cuantitativos vs Funnels Lineales (Reforge & Lenny)
 
-Los funnels tradicionales (Ad $\to$ Click $\to$ Install $\to$ Drop) sufren de decaimiento marginal decreciente. Yendo opera bajo **Bucles de Retención y Adquisición Auto-sustentables**:
+Los funnels tradicionales (Ad $\to$ Click $\to$ Install $\to$ Drop) sufren de decaimiento marginal decreciente. WebFactory opera bajo **Bucles de Retención y Adquisición Auto-sustentables**:
 
 $$\text{Loop de Célula Dunbar:} \quad U_0 \xrightarrow{\text{Crea Grupo}} G_1 \xrightarrow{\text{Companion Pass}} 3 \times U_{\text{nuevos}} \xrightarrow{\text{Check-in IRL}} 4 \times \text{Y\$} \xrightarrow{\text{Próxima Salida}} G_2$$
 

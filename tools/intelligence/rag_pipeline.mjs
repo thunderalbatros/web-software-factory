@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Web Software Factory Studio — Supercharged Omni-RAG v4 Intelligence Pipeline
  * =============================================================================
  * SOTA Self-Contained Hybrid Retrieval Architecture (2026):
@@ -110,14 +110,18 @@ const BILINGUAL_THESAURUS = [
   { match: /\b(software\s*factory|fabrica|fábrica|sple|iso\s*26550|spec-kit|sdd|molde|moldes|astro|plantilla|template|multi-proyecto)\b/i, expand: 'CANON_SPLE_ISO26550_AND_SOFTWARE_FACTORIES_ARCHITECTURE_2026 CANON_ASTRO5_CLOUDFLARE_WORKERS_AND_MODERN_WEB_TEMPLATES_2026 CANON_SOTA_AGENT_TEAM_TOPOLOGY_AND_2026_WEB_STACK_AUDIT CANON_AI_SOFTWARE_FACTORY_SOTA_2026-10-24 spec-kit astro-edge vanilla-edge' },
   { match: /\b(tokens|dtcg|oklch|apca|style\s*dictionary|arquetipo|arquetipos|marca|multi-marca|tema|temas|paleta|color)\b/i, expand: 'CANON_MULTI_BRAND_DESIGN_SYSTEMS_DTCG_STYLE_DICTIONARY_AND_ARCHETYPES_2026 CANON_WEB_DESIGN_COMPOSITION_SHADERS_AND_MOTION_2026 oklch apca w3c dtcg 90/8/2 chromatic budget book_frontend_architecture_design_systems_godbolt' },
   { match: /\b(marketing|conversion|conversión|cro|copywriting|copy|titular|cta|persuasion|persuasión|aversion|pérdida|nudge|fogg|psicologia|psicología)\b/i, expand: 'CANON_GAMIFICATION_PSYCHOLOGY_CRO_AND_STREAM_MARKETING_2026 nudge_thaler_sunstein cialdini social proof scarcity loss aversion endowed progress book_fogg_behavior_model_bj_fogg CANON_PREDICTABLY_IRRATIONAL_ARIELY_TRAMPAS_DESEO' },
-  { match: /\b(seo|aeo|geo|llms\.txt|llms-full|schema\.org|json-ld|sitemap|indexacion|indexación|speculation\s*rules|prerender|cwv|lcp|inp|cls)\b/i, expand: 'CANON_SOTA_AGENT_TEAM_TOPOLOGY_AND_2026_WEB_STACK_AUDIT CANON_MULTI_BRAND_DESIGN_SYSTEMS_DTCG_STYLE_DICTIONARY_AND_ARCHETYPES_2026 llms.txt llms-full.txt speculationrules json-ld lcp inp cls web-quality-skills' },
+  { match: /\b(seo|aeo|geo|llms\.txt|llms-full|schema\.org|json-ld|sitemap|indexacion|indexación|speculation\s*rules|prerender|cwv|lcp|inp|cls|agentic\s*seo)\b/i, expand: 'skill_ai-seo-and-geo CANON_SOTA_AGENT_TEAM_TOPOLOGY_AND_2026_WEB_STACK_AUDIT CANON_MULTI_BRAND_DESIGN_SYSTEMS_DTCG_STYLE_DICTIONARY_AND_ARCHETYPES_2026 llms.txt llms-full.txt speculationrules json-ld lcp inp cls web-quality-skills' },
   { match: /\b(animacion|animaciones|animación|fluidez|60fps|60-fps|escala|modal|kowalski|spring|gpu|game\s*feel|bezier|swink|kirupa|view\s*transitions|scroll-driven)\b/i, expand: 'CANON_EMIL_KOWALSKI_ANIMATIONS_ON_THE_WEB CANON_VISUAL_SOTA_HUNT_2026-10-24 CANON_BOOK_DESIGNING_FOR_PERFORMANCE_LARA_HOGAN modal entrance scale 0.95 composite transform opacity waapi view-transition creating_web_animations_kirupa book_game_feel_steve_swink' },
   { match: /\b(shader|shaders|glsl|holografico|holográfico|3d|tilt|audio|webaudio|zzfx|webgl|webgpu)\b/i, expand: 'CANON_2D_3D_GRAPHICS_SHADERS_AND_AESTHETICS_2026 CANON_OPEN_BOOKS_SHADERS_SDF_AND_WEB_ANIMATION_MASTERY_2026 glsl sdf dynamicscompressor zzfx CANON_3D_PBR_AND_CINEMATOGRAPHY_GUIDE' },
   { match: /\b(ciberseguridad|seguridad|vulnerabilidad|vulnerabilidades|xss|csp|dompurify|trustedtypes|oauth|pkce|fraude|bot|criptografia|criptografía|owasp)\b/i, expand: 'CANON_CYBERSECURITY_DEVSECOPS_2026 CYBERSECURITY_MASTER_PROTOCOL ANTI_BOT_STEALTH_GUIDE owasp asvs xss dompurify trustedtypes csp oauth 2.1 pkce thumbmarkjs turnstile CANON_REAL_WORLD_CRYPTOGRAPHY_DAVID_WONG' },
   { match: /\b(libro|libros|curso|cursos|documentacion|documentación|catalogo|catálogo|fuentes)\b/i, expand: 'CURATED_MASTER_BOOKS_COURSES_AND_DOCS_CATALOG_2026 CANON_SOFTWARE_FACTORY_CURRICULUM_BOOKS_PAPERS_AND_VIDEO_COURSES_2026 CANON_BOOKS_SOFTWARE_FACTORIES_AND_AI_ENGINEERING' },
-  { match: /\b(diseño|minimalista|jerarquia|jerarquía|contraste|tipografia|tipografía|layout|grilla|ux|ui|fitts|aurea|áurea|bringhurst|ryux|utopia|clamp)\b/i, expand: 'DESIGN_MASTERY_2026 CANON_EVERY_LAYOUT_CSS_ALGORITHMS laws_of_ux_using_psychology_to_design_better_ CANON_UX_HUMAN_EXPERIENCE_ACCESSIBILITY_2026 90/8/2 apca wcag book_elements_of_typographic_style_bringhurst CANON_PRACTICAL_UI_ADHAM_DANNAWAY CANON_REFACTORING_UI_WATHAN_SCHOGER' },
-  { match: /\b(base de datos|sqlite|d1|durable objects|websocket|hibernation|cloudflare|arquitectura|sre|resiliencia|agentes|workers|hono|valibot)\b/i, expand: 'CANON_CLOUDFLARE_D1_WORKERS_PAID_FINOPS_AND_EDGE_OPTIMIZATION_2026 designing_data_intensive_applications clean_architecture durable objects sqlite wal indexes hibernation database_internals release_it CANON_VALIBOT_EDGE_SCHEMA_VALIDATION' },
-  { match: /\b(rag|lightrag|hipporag|fts5|bm25|rrf|rerank|reranker|chunking|embeddings|vector|qdrant)\b/i, expand: 'CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026 lightrag hipporag sqlite fts5 bm25 contextual retrieval reciprocal rank fusion cross-encoder onnx' }
+  { match: /\b(suiza|proporcion|proporción|aurea|áurea|bringhurst|tipografia|tipografía)\b/i, expand: 'book_elements_of_typographic_style_bringhurst CANON_CLEAN_ROOM_SWISS_TYPOGRAPHY_COLOR_LIGHT_AND_CSS_SECRETS_2026 CANON_OPEN_BOOKS_TYPOGRAPHY_COLOR_GRIDS_AND_WEB_PERF_2026' },
+  { match: /\b(chromium|grigorik|hpbn|butterick|renderingng)\b/i, expand: 'CANON_OPEN_BOOKS_TYPOGRAPHY_COLOR_GRIDS_AND_WEB_PERF_2026 renderingng' },
+  { match: /\b(validacion|validación|esquemas|valibot|zod)\b/i, expand: 'CANON_50_REPOS_AGENTIC_SOFTWARE_FACTORY_TOM_SWE_STAGEHAND_AND_OXC_2026 CANON_TYPESCRIPT_RAUSCHMAYER_ZOD_VALIBOT_AND_DATA_ORIENTED_2026 CANON_WEB_SOFTWARE_FACTORY_MCP_DTCG_AND_LIGHTNINGCSS_2026' },
+  { match: /\b(diseño|minimalista|jerarquia|jerarquía|contraste|layout|ux|ui|fitts|ryux|utopia|clamp)\b/i, expand: 'DESIGN_MASTERY_2026 CANON_EVERY_LAYOUT_CSS_ALGORITHMS laws_of_ux_using_psychology_to_design_better_ CANON_UX_HUMAN_EXPERIENCE_ACCESSIBILITY_2026 90/8/2 apca wcag CANON_PRACTICAL_UI_ADHAM_DANNAWAY CANON_REFACTORING_UI_WATHAN_SCHOGER' },
+  { match: /\b(base de datos|sqlite|d1|durable objects|websocket|hibernation|cloudflare|sre|resiliencia|workers|hono)\b/i, expand: 'CANON_CLOUDFLARE_D1_WORKERS_PAID_FINOPS_AND_EDGE_OPTIMIZATION_2026 designing_data_intensive_applications clean_architecture durable objects sqlite wal indexes hibernation database_internals release_it' },
+  { match: /\b(rag|lightrag|hipporag|fts5|bm25|rrf|rerank|reranker|chunking|embeddings|vector|qdrant)\b/i, expand: 'CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026 lightrag hipporag sqlite fts5 bm25 contextual retrieval reciprocal rank fusion cross-encoder onnx' },
+  { match: /\b(akenine-moller|game\s*engine\s*architecture|real-time\s*rendering)\b/i, expand: 'LIBRARY_INGEST_02_MOTION_SHADERS_GAME_ENGINE_AND_AUDIO_25_BOOKS_2026 jason gregory real-time rendering' }
 ];
 
 export function expandQueryBilingual(query) {
@@ -163,9 +167,8 @@ function scanKnowledgeFiles(dir, maxDepth = 4, depth = 0, mode = 'full') {
         if (SKIP_FILES_REGEX.test(lower)) continue;
 
         if (mode === 'references-root') {
-          const isKickDocs = fp.includes('KickDevDocs');
           const isRootDoc = lower === 'readme.md' || lower === 'skill.md' || lower === 'index.md';
-          if ((isKickDocs && lower.endsWith('.md')) || (isRootDoc && depth <= 3)) {
+          if (isRootDoc && depth <= 3) {
             files.push(fp);
           }
         } else if (lower.endsWith('.md') || lower.endsWith('.markdown')) {
@@ -240,6 +243,15 @@ function createDocumentChunks(filePath) {
   if (!cleanText) return [];
 
   const CORE_PROJECT_TREATISES = new Set([
+    'CANON_AGENTIC_HARNESS_ENGINEERING_ACI_EDD_BOOKS_AND_COURSES_2026',
+    'CANON_WEB_SOFTWARE_FACTORY_MCP_DTCG_AND_LIGHTNINGCSS_2026',
+    'CANON_BOOKS_SOFTWARE_FACTORIES_AND_AI_ENGINEERING',
+    'ai_engineering',
+    'CANON_SPLE_ISO26550_AND_SOFTWARE_FACTORIES_ARCHITECTURE_2026',
+    'CANON_ASTRO5_CLOUDFLARE_WORKERS_AND_MODERN_WEB_TEMPLATES_2026',
+    'CANON_MULTI_BRAND_DESIGN_SYSTEMS_DTCG_STYLE_DICTIONARY_AND_ARCHETYPES_2026',
+    'CANON_SOTA_AGENT_TEAM_TOPOLOGY_AND_2026_WEB_STACK_AUDIT',
+    'CANON_SOFTWARE_FACTORY_CURRICULUM_BOOKS_PAPERS_AND_VIDEO_COURSES_2026',
     'CANON_ELITE_MULTI_AGENT_WEB_SOFTWARE_FACTORY_TOPOLOGY_2026',
     'CANON_WEB_DESIGN_COMPOSITION_SHADERS_AND_MOTION_2026',
     'CANON_AUTOMATED_VISUAL_QA_VLM_CRITIC_AND_CTO_HITL_GATE_2026',
@@ -250,22 +262,25 @@ function createDocumentChunks(filePath) {
     'CANON_EMIL_KOWALSKI_ANIMATIONS_ON_THE_WEB',
     'CANON_2D_3D_GRAPHICS_SHADERS_AND_AESTHETICS_2026',
     'CANON_HOLO_SHADERS_3D_PACK_CHOREOGRAPHY_AND_WEBAUDIO_SFX_2026',
-    'CANON_STAKE_CHALLENGES_BOUNTY_SYSTEM_AND_FAST_MEDIA_PIPELINE_2026',
     'CANON_EVERY_LAYOUT_CSS_ALGORITHMS',
     'CANON_UX_HUMAN_EXPERIENCE_ACCESSIBILITY_2026',
     'CANON_CYBERSECURITY_DEVSECOPS_2026',
     'CURATED_MASTER_BOOKS_AND_COURSES_2026',
+    'CURATED_MASTER_BOOKS_COURSES_AND_DOCS_CATALOG_2026',
     'DESIGN_MASTERY_2026',
     'AGENT_CREATIVE_AND_VISUAL_AWARENESS_2026',
-    'POPULAR_SLOTS_ONLY_ON_STAKE_TIERS',
     'CYBERSECURITY_MASTER_PROTOCOL',
     'ANTI_BOT_STEALTH_GUIDE',
-    'KWS_EDGE_AUDIO_STREAMING_SOTA',
+    'LIBRARY_INGEST_02_MOTION_SHADERS_GAME_ENGINE_AND_AUDIO_25_BOOKS_2026',
+    'book_game_feel_steve_swink',
     'INDEX'
   ]);
   const isHighPriorityCanon = rel.startsWith('knowledge/') && CORE_PROJECT_TREATISES.has(fileName);
   const isVaultOrMasterclass = rel.startsWith('knowledge/') && (
     fileName.startsWith('CANON_') ||
+    fileName.startsWith('TREATISE_') ||
+    fileName.startsWith('LIBRARY_INGEST_') ||
+    fileName.startsWith('CURATED_') ||
     fileName.startsWith('VAULT_') ||
     fileName.startsWith('MASTERCLASS_') ||
     fileName.startsWith('COURSE_') ||
@@ -289,7 +304,7 @@ function createDocumentChunks(filePath) {
 
   // Extract optional LEC-015 Scope Anchor
   const scopeMatch = cleanText.match(/\*\*Alcance:\*\*\s*([^\n]+)/i);
-  const scopeHeader = scopeMatch ? ` [Scope: ${scopeMatch[1].trim().slice(0, 110)}]` : '';
+  const scopeHeader = scopeMatch ? ` [Scope: ${scopeMatch[1].trim().slice(0, 220)}]` : '';
 
   const maxChunkChars = category === 'canon-book' ? 3800 : 1900;
   const sections = cleanText.split(/\n(?=#{1,3}\s+)/);
@@ -311,6 +326,11 @@ function createDocumentChunks(filePath) {
     const heading = headingMatch ? headingMatch[1].trim() : `Section ${idx + 1}`;
     const trimmedSec = sec.trim();
     if (trimmedSec.length < 45) return;
+
+    const hLow = heading.toLowerCase();
+    if (/^(copyright|colophon|dedication|acknowledgments|praise for|other titles|subject index|author index)$/i.test(hLow)) {
+      return;
+    }
 
     if (trimmedSec.length > maxChunkChars + 100) {
       const subBlocks = splitLongBlock(trimmedSec, maxChunkChars, 180);
@@ -359,14 +379,59 @@ const SQLITE_FTS_FILE = path.join(CACHE_DIR, 'omni_rag_fts5.sqlite');
  * Prepares extended lowercase buffers for Engine B (IDF + Minimal-Span Proximity)
  * Fixes v3 flaw where only 450-char snippet was indexed in _searchBuf!
  */
-function prepareChunksForFastSearch(chunks) {
-  for (let i = 0; i < chunks.length; i++) {
-    const c = chunks[i];
-    if (!c._titleLower) c._titleLower = `${c.title || ''} ${c.section || ''} ${c.id || ''}`.toLowerCase();
-    if (!c._searchBuf) {
-      c._searchBuf = `${c._titleLower} ${(c.snippet || '').toLowerCase()}`;
+function addTokensToInvertedMap(invMap, str, chunkIdx) {
+  const seen = new Set();
+  const rawTokens = str.replace(/[^a-z0-9\u00e0-\u00fc_./=-]+/g, ' ').split(/\s+/);
+  for (let k = 0; k < rawTokens.length; k++) {
+    const t = rawTokens[k];
+    if (t.length >= 2 && !seen.has(t)) {
+      seen.add(t);
+      let list = invMap.get(t);
+      if (!list) {
+        list = [];
+        invMap.set(t, list);
+      }
+      list.push(chunkIdx);
+      if (t.includes('_') || t.includes('-') || t.includes('/') || t.includes('.') || t.includes('=')) {
+        const parts = t.split(/[_./=-]+/);
+        for (let p = 0; p < parts.length; p++) {
+          const sub = parts[p];
+          if (sub.length >= 2 && !seen.has(sub)) {
+            seen.add(sub);
+            let sList = invMap.get(sub);
+            if (!sList) {
+              sList = [];
+              invMap.set(sub, sList);
+            }
+            sList.push(chunkIdx);
+          }
+        }
+      }
     }
   }
+}
+
+function prepareChunksForFastSearch(chunks) {
+  const bodyInv = new Map();
+  const titleInv = new Map();
+
+  for (let i = 0; i < chunks.length; i++) {
+    const c = chunks[i];
+    const idStr = String(c.id || '');
+    if (/(book_elements_of_typographic_style_bringhurst|CANON_CLEAN_ROOM_SWISS_TYPOGRAPHY|CANON_OPEN_BOOKS_TYPOGRAPHY_COLOR_GRIDS_AND_WEB_PERF_2026|CANON_TYPESCRIPT_RAUSCHMAYER|CANON_50_REPOS_AGENTIC)/i.test(idStr)) {
+      c.category = 'canon-treatise';
+    } else if (c.category === 'canon-book' && idStr.startsWith('knowledge/') &&
+        /\/(CANON_|TREATISE_|LIBRARY_INGEST_|CURATED_|COMPENDIO_|SOTA_|VAULT_|MASTERCLASS_|TRATADO_)/i.test(idStr)) {
+      c.category = 'canon-vault';
+    }
+    const titleLower = `${c.title || ''} ${c.section || ''} ${idStr}`.toLowerCase();
+    const bodyLower = `${titleLower} ${(c.text || c.snippet || '').slice(0, 2600).toLowerCase()}`;
+    c._titleLower = titleLower;
+    addTokensToInvertedMap(titleInv, titleLower, i);
+    addTokensToInvertedMap(bodyInv, bodyLower, i);
+  }
+  chunks._bodyInv = bodyInv;
+  chunks._titleInv = titleInv;
 }
 
 /**
@@ -384,6 +449,7 @@ function buildOrOpenSqliteFts5Index(chunks, forceRebuild = false) {
       const db = new DatabaseSyncClass(SQLITE_FTS_FILE);
       const row = db.prepare('SELECT count(*) AS cnt FROM chunks_fts').get();
       if (row && row.cnt >= Math.floor(chunks.length * 0.95)) {
+        try { db.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');"); } catch (_) {}
         cachedSqliteDb = db;
         return db;
       }
@@ -430,6 +496,7 @@ function buildOrOpenSqliteFts5Index(chunks, forceRebuild = false) {
       );
     }
     db.exec('COMMIT');
+    try { db.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');"); } catch (_) {}
     cachedSqliteDb = db;
     return db;
   } catch (_) {
@@ -462,16 +529,18 @@ function querySqliteFts5(sqliteDb, chunkMap, terms, limit = 20) {
     }
     if (cleanTerms.length === 0) return [];
 
+    if (!sqliteDb._ftsStmt) {
+      sqliteDb._ftsStmt = sqliteDb.prepare(`
+        SELECT id, source, category, title, snippet,
+               bm25(chunks_fts, 6.0, 3.5, 1.0) AS raw_bm25
+        FROM chunks_fts
+        WHERE chunks_fts MATCH ?
+        ORDER BY raw_bm25 ASC
+        LIMIT 36
+      `);
+    }
     const ftsMatchExpr = cleanTerms.map(t => `"${t}"`).join(' OR ');
-    const stmt = sqliteDb.prepare(`
-      SELECT id, source, category, title, snippet,
-             bm25(chunks_fts, 6.0, 3.5, 1.0) AS raw_bm25
-      FROM chunks_fts
-      WHERE chunks_fts MATCH ?
-      ORDER BY raw_bm25 ASC
-      LIMIT 36
-    `);
-    const rows = stmt.all(ftsMatchExpr);
+    const rows = sqliteDb._ftsStmt.all(ftsMatchExpr);
     const scored = rows.map(r => {
       const baseBm25 = Math.max(0.01, -Number(r.raw_bm25 || 0));
       const catMult = r.category === 'canon-treatise'
@@ -496,42 +565,21 @@ function querySqliteFts5(sqliteDb, chunkMap, terms, limit = 20) {
 
 function buildMiniSearchInstance(chunks) {
   prepareChunksForFastSearch(chunks);
-  if (!MiniSearchClass) return null;
+  if (!MiniSearchClass) {
+    return { _fastChunks: chunks, search: null };
+  }
+  const treatiseChunks = chunks.filter(c => c.category === 'canon-treatise');
   const mini = new MiniSearchClass({
-    fields: ['title', 'section', 'text'],
-    storeFields: ['id', 'source', 'title', 'section', 'category', 'snippet', 'text'],
+    fields: ['title', 'section', 'snippet'],
+    storeFields: ['id', 'source', 'title', 'section', 'category', 'snippet'],
     searchOptions: {
-      boost: { title: 4, section: 2.5, text: 1 },
-      boostDocument: (docId, term, doc) => {
-        if (!doc) return 1.0;
-        if (doc.category === 'canon-treatise') return 3.6;
-        if (doc.category === 'canon-vault') return 2.4;
-        if (doc.category === 'canon-book') return 1.8;
-        return 1.0;
-      },
-      fuzzy: 0.15,
+      boost: { title: 4, section: 2.5, snippet: 1 },
+      fuzzy: false,
       prefix: true
     }
   });
-  const fileCounts = new Map();
-  const miniChunks = [];
-  for (let i = 0; i < chunks.length; i++) {
-    const c = chunks[i];
-    if (c.category === 'canon-treatise') {
-      miniChunks.push(c);
-    } else {
-      const base = String(c.source || c.id).split('#')[0];
-      const count = fileCounts.get(base) || 0;
-      const maxForCat = c.category === 'canon-vault' ? 16 : 10;
-      if (count < maxForCat) {
-        fileCounts.set(base, count + 1);
-        miniChunks.push(c);
-      }
-    }
-  }
-  mini.addAll(miniChunks);
-  mini._fastChunks = miniChunks;
-  mini._fastIds = new Set(miniChunks.map(c => c.id));
+  mini.addAll(treatiseChunks);
+  mini._fastChunks = chunks;
   return mini;
 }
 
@@ -548,14 +596,14 @@ function buildChunkMap(chunks) {
  */
 export function getOrBuildMiniSearchIndex(force = false) {
   const now = Date.now();
-  if (!force && cachedIndex && now - lastIndexTime < 300_000) {
+  if (!force && cachedIndex && now - lastIndexTime < 3_600_000) {
     return cachedIndex;
   }
 
   if (!force && fs.existsSync(CACHE_FILE)) {
     try {
       const stats = fs.statSync(CACHE_FILE);
-      if (now - stats.mtimeMs < 1_800_000) {
+      if (now - stats.mtimeMs < 30 * 24 * 3_600_000) {
         const raw = fs.readFileSync(CACHE_FILE, 'utf8');
         const chunks = JSON.parse(raw);
         if (Array.isArray(chunks) && chunks.length > 0 && chunks.length < 150000) {
@@ -635,41 +683,76 @@ function capResultsPerFile(items, maxPerFile = 2, limit = 20) {
 function runLocalSemanticVectorRanker(chunks, queryString, limit = 20) {
   const tokens = queryString
     .toLowerCase()
-    .replace(/[^\p{L}\p{N}_./-]+/gu, ' ')
+    .replace(/[^\p{L}\p{N}_./=-]+/gu, ' ')
     .split(/\s+/)
     .filter(t => t.length >= 2);
   if (tokens.length === 0) return [];
 
-  const uniqueTokens = [...new Set(tokens)].slice(0, 20);
+  const uniqueTokens = [...new Set(tokens)].slice(0, 24);
   const tLen = uniqueTokens.length;
   const N = chunks.length || 1;
   const docFreq = new Int32Array(tLen);
   const candidates = [];
   const minMatchesRequired = tLen >= 4 ? 2 : 1;
 
-  // Pass 1: Single scan over chunks recording bitmask of matched tokens & exact document frequency
-  for (let i = 0; i < N; i++) {
-    const c = chunks[i];
-    const searchBuf = c._searchBuf || '';
-    const titleLower = c._titleLower || '';
-    let mask = 0;
-    let titleMask = 0;
-    let mCount = 0;
+  if (chunks._bodyInv && chunks._titleInv) {
+    const maskArr = new Int32Array(N);
+    const titleMaskArr = new Int32Array(N);
+    const mCountArr = new Uint8Array(N);
+    const touched = [];
 
     for (let j = 0; j < tLen; j++) {
       const tok = uniqueTokens[j];
-      if (searchBuf.includes(tok)) {
-        mask |= (1 << j);
-        docFreq[j]++;
-        mCount++;
-        if (titleLower.includes(tok)) {
-          titleMask |= (1 << j);
+      const bit = 1 << j;
+      const bList = chunks._bodyInv.get(tok);
+      if (bList) {
+        docFreq[j] = bList.length;
+        for (let p = 0; p < bList.length; p++) {
+          const idx = bList[p];
+          if (maskArr[idx] === 0) touched.push(idx);
+          maskArr[idx] |= bit;
+          mCountArr[idx]++;
+        }
+      }
+      const tList = chunks._titleInv.get(tok);
+      if (tList) {
+        for (let p = 0; p < tList.length; p++) {
+          titleMaskArr[tList[p]] |= bit;
         }
       }
     }
 
-    if (mCount >= minMatchesRequired || titleMask !== 0) {
-      candidates.push({ idx: i, mask, titleMask });
+    for (let k = 0; k < touched.length; k++) {
+      const idx = touched[k];
+      const titleMask = titleMaskArr[idx];
+      if (mCountArr[idx] >= minMatchesRequired || titleMask !== 0) {
+        candidates.push({ idx, mask: maskArr[idx], titleMask });
+      }
+    }
+  } else {
+    for (let i = 0; i < N; i++) {
+      const c = chunks[i];
+      const searchBuf = c._searchBuf || '';
+      const titleLower = c._titleLower || '';
+      let mask = 0;
+      let titleMask = 0;
+      let mCount = 0;
+
+      for (let j = 0; j < tLen; j++) {
+        const tok = uniqueTokens[j];
+        if (searchBuf.includes(tok)) {
+          mask |= (1 << j);
+          docFreq[j]++;
+          mCount++;
+          if (titleLower.includes(tok)) {
+            titleMask |= (1 << j);
+          }
+        }
+      }
+
+      if (mCount >= minMatchesRequired || titleMask !== 0) {
+        candidates.push({ idx: i, mask, titleMask });
+      }
     }
   }
 
@@ -736,8 +819,7 @@ async function runLocalOnnxCrossEncoderRerank(query, candidates, limit = 8) {
   try {
     if (!cachedOnnxReranker) {
       const candidatePaths = [
-        path.join(ROOT, 'node_modules', '@huggingface', 'transformers', 'src', 'transformers.js'),
-        'C:/Users/tomas/.zcode/workspace/default/centinela-studio/node_modules/@huggingface/transformers/src/transformers.js'
+        path.join(ROOT, 'node_modules', '@huggingface', 'transformers', 'src', 'transformers.js')
       ];
       let tfMod = null;
       for (const p of candidatePaths) {
@@ -828,8 +910,15 @@ export function reciprocalRankFusion(rankedLists, k = 60, maxPerFile = 2) {
  * @param {number} limit - Maximum returned documents
  * @param {object} options - { fastLocalOnly: boolean, useOnnxRerank: boolean }
  */
+const queryLruCache = new Map();
+const MAX_QUERY_CACHE = 128;
+
 export async function queryKnowledge(query, limit = 8, options = {}) {
   const qClean = sanitizeRagPayload(String(query || '').trim());
+  const cacheKey = `${qClean.toLowerCase()}|${limit}|${Boolean(options.fastLocalOnly)}|${Boolean(options.useOnnxRerank)}`;
+  if (queryLruCache.has(cacheKey)) {
+    return queryLruCache.get(cacheKey);
+  }
   const qTerms = qClean.toLowerCase().split(/\s+/).filter(t => t.length > 1);
   const stopWords = new Set([
     'que', 'qué', 'como', 'cómo', 'por', 'para', 'con', 'del', 'las', 'los', 'una', 'uno',
@@ -863,21 +952,8 @@ export async function queryKnowledge(query, limit = 8, options = {}) {
   const rankedLists = [];
   const indexData = getOrBuildMiniSearchIndex();
 
-  // Engine A1: Native C-Compiled SQLite FTS5 over 100% of all ~21,600 chunks (<10ms)
-  let ftsDeepChunks = [];
-  if (indexData.sqliteDb) {
-    const ftsTerms = [...significantTerms.slice(0, 6), ...bilingualExpansion.split(/\s+/).slice(0, 3)];
-    const ftsResults = querySqliteFts5(indexData.sqliteDb, indexData.chunkMap, ftsTerms, 20);
-    if (ftsResults.length > 0) {
-      rankedLists.push(ftsResults);
-      if (indexData.chunkMap) {
-        ftsDeepChunks = ftsResults.map(r => indexData.chunkMap.get(r.id)).filter(Boolean);
-      }
-    }
-  }
-
   // Engine A2: Local Lexical Search via MiniSearch BM25 with Levenshtein Typo Tolerance (<8ms)
-  if (indexData.mini) {
+  if (indexData.mini && typeof indexData.mini.search === 'function') {
     try {
       const conciseTerms = significantTerms.slice(0, 6).join(' ') || qClean;
       const searchRes = indexData.mini.search(conciseTerms, {
@@ -899,16 +975,10 @@ export async function queryKnowledge(query, limit = 8, options = {}) {
     } catch (_) {}
   }
 
-  // Engine B: Single-Pass Bitmask Exact IDF + LightRAG Dual-Level Ranker (<15ms over Canon Pool + Deep FTS5 Hits)
+  // Engine B: Single-Pass Bitmask Exact IDF + LightRAG Dual-Level Ranker (<15ms over Canon Pool)
   const fastChunks = indexData.mini?._fastChunks || indexData.chunks;
-  const fastIds = indexData.mini?._fastIds;
-  let semanticPool = fastChunks;
-  if (fastIds && ftsDeepChunks.length > 0) {
-    const extra = ftsDeepChunks.filter(c => c && !fastIds.has(c.id));
-    if (extra.length > 0) semanticPool = [...fastChunks, ...extra];
-  }
   const semanticResults = runLocalSemanticVectorRanker(
-    semanticPool,
+    fastChunks,
     searchQuery,
     20
   );
@@ -916,11 +986,20 @@ export async function queryKnowledge(query, limit = 8, options = {}) {
     rankedLists.push(semanticResults);
   }
 
+  // Engine A1: Native C-Compiled SQLite FTS5 over 100% of all ~21,600 chunks (on-demand deep book fallback)
+  if (indexData.sqliteDb && (options.deepFts || semanticResults.length < 5)) {
+    const ftsTerms = [...significantTerms.slice(0, 6), ...bilingualExpansion.split(/\s+/).slice(0, 3)];
+    const ftsResults = querySqliteFts5(indexData.sqliteDb, indexData.chunkMap, ftsTerms, 20);
+    if (ftsResults.length > 0) {
+      rankedLists.push(ftsResults);
+    }
+  }
+
   // Engine C: Qdrant Cloud Hybrid Search (if configured in local .env)
   const searchTerms = significantTerms.length > 0 ? significantTerms : qTerms;
   if (!options.fastLocalOnly && QDRANT_HOST && QDRANT_API_KEY && searchTerms.length > 0) {
     try {
-      const res = await fetch(`${QDRANT_HOST}/collections/centinela_knowledge/points/scroll`, {
+      const res = await fetch(`${QDRANT_HOST}/collections/web_factory_knowledge/points/scroll`, {
         method: 'POST',
         signal: AbortSignal.timeout(2500),
         headers: {
@@ -947,8 +1026,8 @@ export async function queryKnowledge(query, limit = 8, options = {}) {
           const text = (payload.text || payload.content || '').toString();
           const title = payload.title || payload.heading || `Qdrant Node #${p.id}`;
           return {
-            id: `qdrant://centinela_knowledge/${p.id}`,
-            source: `qdrant://centinela_knowledge/${p.id}`,
+            id: `qdrant://web_factory_knowledge/${p.id}`,
+            source: `qdrant://web_factory_knowledge/${p.id}`,
             title: String(title).slice(0, 85),
             snippet: text.replace(/\s+/g, ' ').slice(0, 450),
             text: text.slice(0, 2000)
@@ -990,7 +1069,13 @@ export async function queryKnowledge(query, limit = 8, options = {}) {
     } catch (_) {}
   }
 
-  return fused.slice(0, limit);
+  const finalOut = fused.slice(0, limit);
+  if (queryLruCache.size >= MAX_QUERY_CACHE) {
+    const oldestKey = queryLruCache.keys().next().value;
+    queryLruCache.delete(oldestKey);
+  }
+  queryLruCache.set(cacheKey, finalOut);
+  return finalOut;
 }
 
 /**
@@ -1097,7 +1182,7 @@ export async function getClusterStats() {
     local_omni_rag_v5: {
       chunks_count: indexData.chunks.length,
       sqlite_fts5_active: Boolean(indexData.sqliteDb),
-      minisearch_active: Boolean(indexData.mini),
+      minisearch_active: Boolean(indexData.mini && typeof indexData.mini.search === 'function'),
       code_graph_files: graphData?.codeGraph?.nodes?.length || 0,
       code_graph_edges: graphData?.codeGraph?.edges?.length || 0,
       wiki_graph_nodes: graphData?.wikiGraph?.nodes?.length || 0,

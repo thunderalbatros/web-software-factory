@@ -1,4 +1,6 @@
-﻿# Matt Pocock: Engineering Arsenal, Repositories & Agent Methodologies (2026)
+# Matt Pocock: Engineering Arsenal, Repositories & Agent Methodologies (2026)
+
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
 
 > **Subject:** In-depth architectural analysis of Matt Pocock's open-source repositories, AI engineering tools, and developer philosophies.  
 > **Profile Reference:** [https://github.com/mattpocock?tab=repositories](https://github.com/mattpocock?tab=repositories)  

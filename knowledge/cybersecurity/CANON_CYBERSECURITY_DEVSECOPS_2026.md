@@ -1,4 +1,4 @@
-﻿---
+---
 version: 1.1.0
 tipo: research
 tags:
@@ -11,6 +11,8 @@ ultima_revision: 2026-10-17
 ---
 
 # 🔒 Tratado Canónico: Ciberseguridad Defensiva Web, DevSecOps y Zero Trust (2026)
+
+> **Alcance:** Literatura canónica de ciberseguridad defensiva web, protección de identidad OAuth 2.1 PKCE, defensa XSS/CSP/CSRF (`DOMPurify`, `TrustedTypes`) y blindaje Zero Trust en Cloudflare Workers.
 
 ## 1. Visión y Objetivos Fundacionales
 La seguridad en WebFactory Web se fundamenta en los principios de **Confianza Cero (Zero Trust)**, **OWASP Top 10 Web (2026)** y **OWASP ASVS v4.0 (Application Security Verification Standard)**. El modelo defensivo garantiza que ninguna credencial crítica resida en el cliente web, los mensajes de chat no autenticados no puedan inyectar código malicioso en la interfaz ni en OBS Browser Sources, y los pipelines de edge computing (Cloudflare Workers + Durable Objects) operen con aislamiento estricto y privilegios mínimos.
@@ -26,9 +28,9 @@ La seguridad en WebFactory Web se fundamenta en los principios de **Confianza Ce
 - **V3 Session Management:** Tokens de sesión efímeros con cookies `HttpOnly`, `Secure` y `SameSite=Strict`.
 
 ### 2.2 Hardening de Aplicaciones Web y Protección contra XSS / CSRF
-- **Defensa contra DOM-based XSS:** Validación sintáctica de inputs de usuario con sanitización estricta antes de renderizar en modales, leaderboards o alertas en vivo.
+- **Defensa contra DOM-based XSS:** Validación sintáctica de inputs de usuario con sanitización estricta mediante `DOMPurify` y políticas `TrustedTypes` (`require-trusted-types-for 'script'`) antes de renderizar en modales, tablas o componentes dinámicos.
 - **Subresource Integrity (SRI):** Toda librería externa o script de terceros (Google Fonts, animaciones de respaldo) debe validar hashes SHA-384.
-- **Frame Sandboxing (OBS & Embeds):** Configuración de headers `X-Frame-Options: SAMEORIGIN` y `frame-ancestors` para evitar ataques de Clickjacking.
+- **Frame Sandboxing (Embeds):** Configuración de headers `X-Frame-Options: SAMEORIGIN` y `frame-ancestors` para evitar ataques de Clickjacking.
 
 ### 2.3 Seguridad en Edge Workers & Cloudflare Durable Objects
 - **Aislamiento de Entorno:** Ejecución de cada canal de streaming en una sala aislada de Durable Objects con almacenamiento transaccional SQLite.
@@ -66,6 +68,5 @@ La seguridad en WebFactory Web se fundamenta en los principios de **Confianza Ce
 
 ## Relaciones de Contexto
 - [[CYBERSECURITY_MASTER_PROTOCOL]]
-- [[fair-draws]]
-- [[provably-fair-games]]
+- [[ANTI_BOT_STEALTH_GUIDE]]
 - [[anti-fraud-fingerprinting]]

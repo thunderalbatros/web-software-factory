@@ -1,4 +1,7 @@
-﻿# CANON: Animations on the Web — Masterclass & Motion Engineering
+# CANON: Animations on the Web — Masterclass & Motion Engineering
+
+> **Alcance:** Literatura canónica y tratados técnicos de animación a 60 FPS, shaders GPU, física de resortes (spring physics), arte técnico 3D y micro-interacciones fluidas para sitios web modernos.
+
 > **Author:** Emil Kowalski (Design Engineer at Linear, Creator of Sonner, Vaul & animations.dev)  
 > **Category:** Motion Design, UI Micro-Interactions & GPU Animation  
 > **Target Audience:** WebFactory Frontend Engineers & Motion Subagents  

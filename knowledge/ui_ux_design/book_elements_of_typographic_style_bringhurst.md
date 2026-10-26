@@ -1,14 +1,14 @@
-﻿# 📚 Libro Completo (Síntesis Maestra): The Elements of Typographic Style & Swiss Grid Systems
+# 📚 Libro Completo (Síntesis Maestra): The Elements of Typographic Style & Swiss Grid Systems
 
 **Alcance:** Tratado técnico integral sobre tipografía matemática (*The Elements of Typographic Style* — Robert Bringhurst) y sistemas de grillas suizas (*Grid Systems in Graphic Design* — Josef Müller-Brockmann). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub.
 
 > **Autores:** Robert Bringhurst & Josef Müller-Brockmann  
 > **Dominio:** Tipografía Matemática, Ritmo Vertical, Escalas Modulares, Grillas Suizas Asimétricas y Espacio Negativo  
-> **Aplicación Directa:** `site/css/style.css`, `site/css/diggity-intel.css`, Design System 90/8/2  
+> **Aplicación Directa:** `site/css/style.css`, `site/css/diggity-intel.css`, Design System 90/8/2
 
 ---
 
-## Sección 1: Principios Fundamentales de Robert Bringhurst (*The Elements of Typographic Style*)
+## Sección 1: Principios Fundamentales de Robert Bringhurst (*The Elements of Typographic Style*) [Entropy: 0.559]
 
 ### 1.1 La Tipografía como Honor al Contenido
 - *"Typography exists to honor content."* En una interfaz web de lujo oscuro (Dark Glassmorphism), la tipografía nunca debe competir con los datos financieros o multiplicadores (`100x`, `$20 USD`), sino revelar su jerarquía en menos de `50ms` de fijación ocular.
@@ -45,7 +45,7 @@
 
 ---
 
-## Sección 2: Sistemas de Grillas Suizas de Josef Müller-Brockmann (*Grid Systems in Graphic Design*)
+## Sección 2: Sistemas de Grillas Suizas de Josef Müller-Brockmann (*Grid Systems in Graphic Design*) [Entropy: 0.31]
 
 ### 2.1 Filosofía Constructivista de la Grilla
 - *"The grid system is an aid, not a guarantee. It permits a number of possible uses and each designer can look for a solution appropriate to his personal style. But one must learn how to use the grid; it is an art that requires practice."*

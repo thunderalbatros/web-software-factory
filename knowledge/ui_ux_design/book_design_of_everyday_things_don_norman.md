@@ -1,13 +1,13 @@
-﻿# 📚 Libro Completo (Síntesis Maestra): The Design of Everyday Things & Inspired Product Discovery
+# 📚 Libro Completo (Síntesis Maestra): The Design of Everyday Things & Inspired Product Discovery
 
 **Alcance:** Tratado técnico integral sobre psicología de la interacción (*The Design of Everyday Things* — Don Norman) y descubrimiento de productos tecnológicos (*Inspired* — Marty Cagan). Aplicable a la Software Factory Web y client-portal.
 
 > **Autores:** Don Norman & Marty Cagan  
-> **Dominio:** Affordances, Signifiers, Modelos Mentales, Prevención de Errores y Descubrimiento de Productos Web  
+> **Dominio:** Affordances, Signifiers, Modelos Mentales, Prevención de Errores y Descubrimiento de Productos Web
 
 ---
 
-## Sección 1: Psicología de los Objetos e Interfaces Digitales (*The Design of Everyday Things* — Don Norman)
+## Sección 1: Psicología de los Objetos e Interfaces Digitales (*The Design of Everyday Things* — Don Norman) [Entropy: 0.409]
 
 ### 1.1 Los 6 Principios Fundamentales de la Interacción
 1. **Affordances (Prestaciones)**: La relación entre las propiedades de un componente UI y la capacidad del usuario para determinar cómo podría usarse (ej. una tarjeta de Bounty que levita `translateY(-6px)` al pasar el cursor comunica que es interactiva).
@@ -30,7 +30,7 @@
 
 ---
 
-## Sección 2: Construcción de Productos que los Usuarios Aman (*Inspired* — Marty Cagan)
+## Sección 2: Construcción de Productos que los Usuarios Aman (*Inspired* — Marty Cagan) [Entropy: 0.286]
 
 ### 2.1 Los 4 Riesgos Críticos de Todo Producto Digital
 1. **Riesgo de Valor (Value Risk)**: ¿Los espectadores y streamers realmente quieren usar esta función?

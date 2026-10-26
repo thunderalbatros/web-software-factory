@@ -1,4 +1,4 @@
-﻿# CANON: Gamificación, Psicología del Juego, Marketing de Streams y Optimización de Conversión (CRO) 2026
+# CANON: Gamificación, Psicología del Juego, Marketing de Streams y Optimización de Conversión (CRO) 2026
 
 **Alcance:** Aplicable a Web Software Factory Studio (Portal Web `site/`, Sistema de Lealtad `$DIG`, Bounties *Only on PartnerBrand*, Tienda de Recompensas, Sorteos y Embudos de Afiliados VIP). Sujeto a las reglas éticas de Juego Responsable `+18` (`AGENTS.md §2.2`).
 

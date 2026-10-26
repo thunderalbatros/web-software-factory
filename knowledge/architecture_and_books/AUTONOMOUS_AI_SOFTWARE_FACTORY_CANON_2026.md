@@ -1,5 +1,7 @@
 # Canon & Architecture: Autonomous AI Software Factory (2026)
 
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
+
 ## 1. Fundamentos y Origen: Del Paradigma Industrial a los Agentes LLM
 El concepto de **Software Factory** surge formalmente en 2004 con la obra de Jack Greenfield, Keith Short, Steve Cook y John Crupi (*Software Factories: Assembling Applications with Patterns, Models, Frameworks, and Tools*, Wiley). El objetivo central fue desmantelar la "artesanía manual" del software en favor de una verdadera **industrialización basada en economías de alcance (*economies of scope*)**: líneas de producción estandarizadas que generan familias completas de software.
 

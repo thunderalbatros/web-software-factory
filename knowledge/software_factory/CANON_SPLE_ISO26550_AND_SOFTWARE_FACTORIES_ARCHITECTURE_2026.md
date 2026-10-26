@@ -1,4 +1,6 @@
-﻿# CANON: Software Product Line Engineering (ISO/IEC 26550) & Agentic Web Software Factories (2026)
+# CANON: Software Product Line Engineering (ISO/IEC 26550) & Agentic Web Software Factories (2026)
+
+> **Alcance:** Estándares ISO/IEC 26550 SPLE, Spec-Driven Development, compilación de tokens W3C DTCG y automatización de la Web Software Factory.
 
 > **Scope:** Canonical architectural treatise for Squad 0–9 on Software Product Line Engineering (SPLE), ISO/IEC 26550, Greenfield & Short *Software Factories*, Clements & Northrop *Product Lines*, Pohl *Variability Management*, and Spec-Driven Multi-Project Web Delivery (`factory.project.json` + `spec-kit`).
 > **Sources Verified:** ISO/IEC 26550 Reference Model; Jack Greenfield & Keith Short (*Software Factories*, Wiley); Paul Clements & Linda Northrop (*Software Product Lines: Practices and Patterns*, CMU SEI); Klaus Pohl, Günter Böckle & Frank van der Linden (*Software Product Line Engineering*, Springer); GitHub `spec-kit` (MIT); ThoughtWorks Technology Radar (2025–2026) `[VERIFICADO: 2026-10-25]`.

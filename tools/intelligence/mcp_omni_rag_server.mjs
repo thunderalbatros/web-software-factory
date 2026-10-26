@@ -2,28 +2,32 @@
 /**
  * tools/intelligence/mcp_omni_rag_server.mjs
  * =============================================================================
- * 🔌 WEB SOFTWARE FACTORY STUDIO — SUPERCHARGED OMNI-RAG v5 MCP SERVER (STDIO)
+ * 🔌 WEB SOFTWARE FACTORY STUDIO — SUPERCHARGED OMNI-RAG v5.2 & STUDIO MCP SERVER
  * =============================================================================
- * Exposes our local C-compiled SQLite FTS5 + MiniSearch + Exact IDF/LightRAG +
- * Squad Semantic Router + AST CodeGraph PageRank + Obsidian [[Wikilink]] Graph
- * over the standard Model Context Protocol (JSON-RPC 2.0 stdio).
+ * Exposes our local C-compiled SQLite FTS5 + Inverted Index + MiniSearch +
+ * AST CodeGraph PageRank + Obsidian [[Wikilink]] Graph + W3C DTCG 2025.10 Token
+ * Compiler + 67 Design Styles Catalog + 5-Gate Visual/UX Auditor over MCP (stdio).
  * =============================================================================
  */
 
 import readline from 'node:readline';
 import { queryKnowledge, queryCodeGraph, getClusterStats } from './rag_pipeline.mjs';
 import { routeQueryToSquads } from './squad_semantic_router.mjs';
+import { compileDesignTokens, getStyleCatalog, buildDtcgTokensObject } from '../design/token_compiler.mjs';
+import { runRyuxDesignGate } from '../audit/ryux_design_gate.mjs';
+import { runCognitiveUxAudit } from '../audit/cognitive_ux_auditor.mjs';
+import { runDiffUiAdversarialGate } from '../audit/diff_ui_adversarial.mjs';
 
 const SERVER_INFO = {
-  name: 'web-factory-omni-rag-v5',
-  version: '5.0.0'
+  name: 'web-factory-omni-rag-v5.2',
+  version: '5.2.0'
 };
 
 const TOOLS = [
   {
     name: 'omni_rag_query',
     description:
-      'Query the Supercharged Omni-RAG v5 Web Software Factory Brain (226 canonical books, video courses, and treatises on UI/UX, OKLCH/DTCG Tokens, 60-FPS Motion, Astro 5, Cloudflare Edge/D1, CRO/Copywriting, OWASP Security, and ISO/IEC 26550 Software Factories). Uses C-compiled SQLite FTS5 + MiniSearch + IDF/LightRAG + 1-Hop Obsidian [[Wikilink]] Graph.',
+      'Query the Supercharged Omni-RAG v5.2 Web Software Factory Brain (226 canonical books, video courses, and treatises on UI/UX, OKLCH/DTCG Tokens, 60-FPS Motion, Astro 5, Cloudflare Edge/D1, CRO/Copywriting, OWASP Security, and ISO/IEC 26550 Software Factories). Uses C-compiled SQLite FTS5 + Inverted Token Index + MiniSearch + 1-Hop Obsidian [[Wikilink]] Graph.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -37,7 +41,7 @@ const TOOLS = [
   {
     name: 'code_graph_query',
     description:
-      'Query the deterministic AST CodeGraph + PageRank centrality index across all JS/TS/MJS files in site/, worker/, core/, overlay-*, and tools/. Returns classes, functions, window globals, /api/* routes, and caller/callee edges.',
+      'Query the deterministic AST CodeGraph + PageRank centrality index across all JS/TS/MJS files in templates/, projects/, and tools/. Returns classes, functions, window globals, /api/* routes, and caller/callee edges.',
     inputSchema: {
       type: 'object',
       properties: {
@@ -49,10 +53,43 @@ const TOOLS = [
   },
   {
     name: 'omni_rag_stats',
-    description: 'Return live health and node counts for Supercharged Omni-RAG v5, AST CodeGraph, Obsidian WikiGraph, and Qdrant Cloud.',
+    description: 'Return live health and node counts for Supercharged Omni-RAG v5.2, AST CodeGraph, Obsidian WikiGraph, and Inverted Index.',
     inputSchema: {
       type: 'object',
       properties: {}
+    }
+  },
+  {
+    name: 'factory_style_catalog',
+    description: 'Inspect the 67 MIT design style skills (awesome-design-skills) and 4 web archetypes (saas-b2b, ecommerce, marketing, portfolio), or preview the W3C DTCG 2025.10 OKLCH tokens for a specific style and archetype.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        archetype: { type: 'string', description: 'Optional archetype (saas-b2b, ecommerce, marketing, portfolio).' },
+        style: { type: 'string', description: 'Optional style name (e.g. linear-style, vercel-geist, stripe-editorial, bento, brutalist, swiss-grid).' }
+      }
+    }
+  },
+  {
+    name: 'factory_compile_tokens',
+    description: 'Compile W3C DTCG 2025.10 JSON tokens (tokens/design.tokens.json) and production OKLCH + Utopia fluid CSS (design-tokens.css) for the Studio or a specific project.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        project: { type: 'string', description: 'Optional project slug or directory path.' },
+        archetype: { type: 'string', description: 'Archetype (saas-b2b, ecommerce, marketing, portfolio).' },
+        style: { type: 'string', description: 'Style skill name from the 67 available styles.' }
+      }
+    }
+  },
+  {
+    name: 'factory_run_audit',
+    description: 'Run the deterministic RYUX v2.14.2 Design Gate, Cognitive UX Auditor, and Diff-UI Adversarial + Oxc Rust Linter Gate on the Studio or a specific project.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        project: { type: 'string', description: 'Optional project slug or directory path.' }
+      }
     }
   }
 ];
@@ -104,12 +141,7 @@ rl.on('line', async (line) => {
         const route = routeQueryToSquads(q);
         const hits = await queryKnowledge(q, lim, { fastLocalOnly: true, useOnnxRerank: useRerank });
         sendResponse(id, {
-          content: [
-            {
-              type: 'text',
-              text: JSON.stringify({ squadRoute: route.primarySquad, results: hits }, null, 2)
-            }
-          ]
+          content: [{ type: 'text', text: JSON.stringify({ squadRoute: route.primarySquad, results: hits }, null, 2) }]
         });
       } else if (toolName === 'code_graph_query') {
         const res = queryCodeGraph(args.symbol_or_file || '', Number(args.limit || 8));
@@ -120,6 +152,28 @@ rl.on('line', async (line) => {
         const st = await getClusterStats();
         sendResponse(id, {
           content: [{ type: 'text', text: JSON.stringify(st, null, 2) }]
+        });
+      } else if (toolName === 'factory_style_catalog') {
+        const cat = getStyleCatalog();
+        const preview = buildDtcgTokensObject(args.archetype || 'saas-b2b', args.style || 'bento');
+        sendResponse(id, {
+          content: [{ type: 'text', text: JSON.stringify({ catalog: cat, tokenPreview: preview }, null, 2) }]
+        });
+      } else if (toolName === 'factory_compile_tokens') {
+        const res = compileDesignTokens({
+          projectDir: args.project || '',
+          archetype: args.archetype || 'saas-b2b',
+          style: args.style || 'bento'
+        });
+        sendResponse(id, {
+          content: [{ type: 'text', text: JSON.stringify(res, null, 2) }]
+        });
+      } else if (toolName === 'factory_run_audit') {
+        const ryux = runRyuxDesignGate();
+        const cog = runCognitiveUxAudit();
+        const diff = runDiffUiAdversarialGate(args.project || '');
+        sendResponse(id, {
+          content: [{ type: 'text', text: JSON.stringify({ ryux, cognitiveUx: cog, diffUi: diff }, null, 2) }]
         });
       } else {
         sendError(id, -32601, `Unknown tool: ${toolName}`);

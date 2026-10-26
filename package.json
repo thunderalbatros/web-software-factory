@@ -1,13 +1,15 @@
 {
   "name": "web-software-factory-studio",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "private": true,
   "type": "module",
-  "description": "Multi-Project Web Software Factory Studio (ISO/IEC 26550 SPLE, Spec-Kit SDD, Astro 5 / Vanilla-Edge, 9-Role Agent Team & Omni-RAG v5)",
+  "description": "Multi-Project Web Software Factory Studio (ISO/IEC 26550 SPLE, Spec-Kit SDD, W3C DTCG 2025.10 OKLCH, Astro 5 / Vanilla-Edge, LightningCSS, 9-Role Agent Team & Omni-RAG v5.2)",
   "scripts": {
     "factory": "node tools/factory.mjs",
     "factory:status": "node tools/factory.mjs status",
     "factory:styles": "node tools/factory.mjs styles",
+    "factory:tokens": "node tools/design/token_compiler.mjs",
+    "factory:harvest": "node tools/design/build_vanilla_primitives.mjs",
     "factory:new": "node tools/factory.mjs new",
     "factory:spec": "node tools/factory.mjs spec",
     "factory:snapshot": "node tools/factory.mjs snapshot",
@@ -27,8 +29,17 @@
     "audit:eval": "node tools/intelligence/eval_matrix.mjs"
   },
   "dependencies": {
+    "@playwright/mcp": "^0.0.28",
     "dnum": "^2.18.0",
     "fzstd": "^0.1.1",
-    "uplot": "^1.6.32"
+    "lightningcss": "^1.33.0",
+    "minisearch": "^7.1.2",
+    "odiff-bin": "^4.1.2",
+    "oxlint": "^0.16.0",
+    "pixelmatch": "^6.0.0",
+    "playwright-core": "^1.51.0",
+    "pngjs": "^7.0.0",
+    "uplot": "^1.6.32",
+    "valibot": "^1.5.0"
   }
 }

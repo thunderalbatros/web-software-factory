@@ -8,10 +8,12 @@ secciones_totales: 284
 fecha_ingesta: "2026-10-06T02:43:45.734Z"
 ---
 
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
+
 # 📖 Pro TypeScript: Application-Scale JavaScript Development
 **Autor:** Steve Fenton | **Dominio:** Tipado Fuerte, Generics Avanzados y Arquitectura Node | **Páginas originales:** 304
 
-> **Nota de Arquitectura Centinela:** Este documento contiene el texto íntegro estructurado por secciones y capítulos para consulta profunda del equipo de agentes y búsqueda híbrida (BM25 + semántica).
+> **Nota de Arquitectura Web Software Factory:** Este documento contiene el texto íntegro estructurado por secciones y capítulos para consulta profunda del equipo de agentes y búsqueda híbrida (BM25 + semántica).
 
 ---
 
@@ -23,17 +25,11 @@ Application-Scale JavaScript Development
 Second Edition
 —
 Steve Fenton
-
--- 1 of 304 --
-
 Pro TypeScript
 Application-Scale JavaScript
 Development
 Second Edition
 Steve Fenton
-
--- 2 of 304 --
-
 Pro TypeScript: Application-Scale JavaScript Development
 Steve Fenton
 Basingstoke, United Kingdom
@@ -84,17 +80,11 @@ Any source code or other supplementary material referenced by the author in this
 GitHub via the book's product page, located at www.apress.com/9781484232484. For more detailed information,
 please visit http://www.apress.com/source-code.
 Printed on acid-free paper
-
--- 3 of 304 --
-
 For Rebecca, Lily, Deborah, Victoria, and Mum
 
 ---
 
 ## [Sección 2] Introducción y Fundamentos
-
--- 4 of 304 --
-
 v
 Contents
 About the Author �����������������������������������������������������������������������������������������������������xv
@@ -119,9 +109,6 @@ Mapped Types �����������������������
 Type Assertions������������������������������������������������������������������������������������������������������������������������������������� 20
 Type Guards ������������������������������������������������������������������������������������������������������������������������������������������ 21
 Discriminated Unions���������������������������������������������������������������������������������������������������������������������������� 23
-
--- 5 of 304 --
-
 ■ Contents
 vi
 Operators������������������������������������������������������������������������������������������������������������������������ 24
@@ -158,9 +145,6 @@ Type Constraints ���������������������
 ---
 
 ## [Sección 3] Introducción y Fundamentos
-
--- 6 of 304 --
-
 ■ Contents
 vii
 TypeScript Futures ��������������������������������������������������������������������������������������������������������� 61
@@ -197,9 +181,6 @@ Type Checking ����������������������
 ---
 
 ## [Sección 4] Introducción y Fundamentos
-
--- 7 of 304 --
-
 ■ Contents
 viii
 Ambient Declarations ����������������������������������������������������������������������������������������������������� 95
@@ -230,9 +211,6 @@ Restrictions�����������������������
 Real Mixins ����������������������������������������������������������������������������������������������������������������������������������������� 125
 Summary ���������������������������������������������������������������������������������������������������������������������� 126
 Key Points �������������������������������������������������������������������������������������������������������������������� 127
-
--- 8 of 304 --
-
 ■ Contents
 ix
 ■Chapter 5: Understanding the Runtime ������������������������������������������������������������� 129
@@ -267,9 +245,6 @@ Real-Time Communications �������������������
 ---
 
 ## [Sección 5] Introducción y Fundamentos
-
--- 9 of 304 --
-
 ■ Contents
 x
 Storage ������������������������������������������������������������������������������������������������������������������������� 174
@@ -307,9 +282,6 @@ Key Points �����������������������
 ---
 
 ## [Sección 6] Introducción y Fundamentos
-
--- 10 of 304 --
-
 ■ Contents
 xi
 ■Chapter 8: Exceptions, Memory, and Performance�������������������������������������������� 217
@@ -340,9 +312,6 @@ Refactoring �����������������������
 Isolating Dependencies ���������������������������������������������������������������������������������������������������������������������� 254
 Summary ���������������������������������������������������������������������������������������������������������������������� 255
 Key Points �������������������������������������������������������������������������������������������������������������������� 256
-
--- 11 of 304 --
-
 ■ Contents
 xii
 ■Appendix 1: JavaScript Quick Reference ���������������������������������������������������������� 257
@@ -376,9 +345,6 @@ Check JavaScript ���������������������
 ---
 
 ## [Sección 7] Introducción y Fundamentos
-
--- 12 of 304 --
-
 ■ Contents
 xiii
 ■Appendix 3: Bitwise Flags ��������������������������������������������������������������������������������� 273
@@ -390,9 +356,6 @@ Example: The Fizz Buzz Kata ������������������
 Common Coding Kata Rules ����������������������������������������������������������������������������������������� 279
 Summary ���������������������������������������������������������������������������������������������������������������������� 280
 Index ��������������������������������������������������������������������������������������������������������������������� 281
-
--- 13 of 304 --
-
 xv
 About the Author
 Steve Fenton is the Principal Developer at Profound Works. He has been
@@ -404,9 +367,6 @@ writes unit-testing frameworks, behavior-driven development frameworks,
 and web crawlers. He lives in Basingstoke, United Kingdom, with his
 wife Rebecca and daughter Lily, and enjoys studying psychology and
 philosophy.
-
--- 14 of 304 --
-
 xvii
 Acknowledgments
 A book is enjoyable when you work with the right people, and those people are Gwenan Spearing at Apress
@@ -419,9 +379,6 @@ Diullei Gomes, Masahiro Wakame, Jason Jarrett, Bart van der Schoor, John Reilly,
 Hoban, Jonathan Turner, and of course - Ryan Cavanaugh.
 I am also grateful to all of my amazing colleagues, past and present, who inspire me to keep learning
 and growing.
-
--- 15 of 304 --
-
 xix
 Introduction
 Atwood’s Law: any application that can be written in JavaScript will eventually be written
@@ -464,9 +421,6 @@ developer tools displaying your TypeScript code during in-browser debugging.
 ---
 
 ## [Sección 8] Introducción y Fundamentos
-
--- 16 of 304 --
-
 ■ IntroduCtIon
 xx
 Figure 1. TypeScript language feature sources
@@ -501,9 +455,6 @@ packaged with a view to growing your program to millions of lines of code.
 
 structural type system and describes the details on type erasure, type inference,
 and ambient declarations.
-
--- 17 of 304 --
-
 ■ IntroduCtIon
 xxi
 
@@ -571,9 +522,6 @@ an example for you to try, along with techniques you can use to make katas more
 effective.
 The TypeScript Components
 TypeScript is made up of three distinct but complementary parts, which are shown in Figure 2.
-
--- 18 of 304 --
-
 ■ IntroduCtIon
 xxii
 Figure 2. The TypeScript components
@@ -603,9 +551,6 @@ spread like wildfire. Nearly every computer in the world has a JavaScript interp
 is perceived as a browser-based scripting language, JavaScript has been running on web servers since its
 inception, supported on Netscape Enterprise Server, IIS (since 1996), and on Node since 2011. JavaScript can
 even be used to write native applications on operating systems such as Windows.
-
--- 19 of 304 --
-
 ■ IntroduCtIon
 xxiii
 Despite its popularity, it hasn't received much respect from developers — possibly because it contains
@@ -654,9 +599,6 @@ behavior as discussed in Chapter 1. A common JavaScript example is shown in List
 ---
 
 ## [Sección 19] Chapter 10: Automated Testing: a walkthrough of automated testing in your
-
--- 20 of 304 --
-
 ■ IntroduCtIon
 xxiv
 Listing 1. Type juggling
@@ -698,9 +640,6 @@ scoped to the function they are declared in, or the global scope if they are not
 can be further complications caused by the accidental omission of the var keyword within a function, thus
 promoting the variable into the global scope. More complications are caused by variable hoisting, resulting in
 all variables within a function behaving as if they were declared at the top of the function.
-
--- 21 of 304 --
-
 ■ IntroduCtIon
 xxv
 The introduction of the const and let variable declarations have gone some way to solving this
@@ -744,9 +683,6 @@ provided by Microsoft. I often use the TypeScript Playground when answering ques
 ---
 
 ## [Sección 20] Chapter 10: Automated Testing: a walkthrough of automated testing in your
-
--- 22 of 304 --
-
 ■ IntroduCtIon
 xxvi
 From the Visual Studio 2013 Spring Update (Update 2), TypeScript is a first-class language in Visual
@@ -796,9 +732,6 @@ https://www.dartlang.org/
 ---
 
 ## [Sección 21] Chapter 10: Automated Testing: a walkthrough of automated testing in your
-
--- 23 of 304 --
-
 ■ IntroduCtIon
 xxvii
 There are also converters that will compile from most languages to JavaScript, including C#, Ruby, Java,
@@ -824,9 +757,6 @@ Key Points
 • Compiling from TypeScript to JavaScript is known specifically as transpiling.
 • TypeScript is not the only alternative way of writing JavaScript, but it has gained
 incredible traction in its first five years.
-
--- 24 of 304 --
-
 1 © Steve Fenton 2018
 S. Fenton, Pro TypeScript, https://doi.org/10.1007/978-1-4842-3249-1_1
 
@@ -867,9 +797,6 @@ the feature in context. For the purposes of introducing and explaining features,
 to the point; this allows the chapter to be read end to end. However, this also means you can refer back to the
 chapter as a reference later on. Once you have read this chapter, you should know everything you will need
 to understand the more complex examples described throughout the rest of the book.
-
--- 25 of 304 --
-
 ---
 
 ## [Sección 23] Chapter 1 ■ typeSCript Language FeatureS
@@ -919,9 +846,6 @@ const radius2 = 4;
 with (Math) {
 const area2 = PI * radius2 * radius2;
 }
-
--- 26 of 304 --
-
 ---
 
 ## [Sección 25] Chapter 1 ■ typeSCript Language FeatureS
@@ -951,9 +875,6 @@ unsafe assignment is detected when a string is assigned to the radius variable. 
 explanation of type inference in Chapter 3. For now, rest assured that type inference is a good thing, and it
 will save you a lot of effort.
 Figure 1-1. Static type checking
-
--- 27 of 304 --
-
 ---
 
 ## [Sección 26] Chapter 1 ■ typeSCript Language FeatureS
@@ -990,9 +911,6 @@ When you limit the scope of a variable, it means it cannot be manipulated from o
 which it was created. The scope follows a nesting rule that allows a variable to be used in the current scope,
 and in inner nested scopes – but not outside. In other words, you can use variables declared in the current
 scope and variables from wider scopes. See Listing 1-3.
-
--- 28 of 304 --
-
 ---
 
 ## [Sección 27] Chapter 1 ■ typeSCript Language FeatureS
@@ -1031,9 +949,6 @@ console.log('Name 2: ' + firstName);
 If in place of the let keyword the var keyword had been used, both logging statements would show the
 name “Tudor,” as shown in Listing 1-5. Despite both variables appearing to be a separate declaration, only
 one variable named firstName exists, and it is overwritten by the nested scope.
-
--- 29 of 304 --
-
 ---
 
 ## [Sección 28] Chapter 1 ■ typeSCript Language FeatureS
@@ -1072,9 +987,6 @@ Types
 TypeScript is optionally statically typed; this means that types are checked automatically to prevent
 accidental assignments of invalid values. It is possible to opt out of this by declaring dynamic variables.
 Static type checking reduces errors caused by accidental misuse of types. You can also create types to replace
-
--- 30 of 304 --
-
 ---
 
 ## [Sección 29] Chapter 1 ■ typeSCript Language FeatureS
@@ -1098,9 +1010,6 @@ annotation and assigning the value. Although this is the style shown in many exa
 practice this is the one you will use the least.
 Figure 1-2. TypeScript autocompletion
 Figure 1-3. Typed variable combinations
-
--- 31 of 304 --
-
 ---
 
 ## [Sección 30] Chapter 1 ■ typeSCript Language FeatureS
@@ -1140,9 +1049,6 @@ heightInCentimeters: 183
 in typeScript after the identifier helps to reinforce that the type annotation is optional. it also allows you to use
 the full range of variable statements, including const and let. this style of type annotation is also inspired by
 type theory.
-
--- 32 of 304 --
-
 ---
 
 ## [Sección 31] Chapter 1 ■ typeSCript Language FeatureS
@@ -1186,9 +1092,6 @@ directly represent the underlying JavaScript types and follow the standards set 
 • symbol – a unique, immutable symbol, substitutable for a string as an object key
 There are no special types to represent integers or other specific variations on the numeric type as it
 wouldn’t be practical to perform static analysis to ensure all possible values assigned are valid.
-
--- 33 of 304 --
-
 ---
 
 ## [Sección 32] Chapter 1 ■ typeSCript Language FeatureS
@@ -1234,9 +1137,6 @@ Lorry
 }
 const type = VehicleType.Lorry;
 const typeName = VehicleType[type]; // 'Lorry'
-
--- 34 of 304 --
-
 ---
 
 ## [Sección 33] Chapter 1 ■ typeSCript Language FeatureS
@@ -1268,9 +1168,6 @@ switching individual bits in a sequence on and off. To ensure that each value in
 single bit, the numbering must follow the binary sequence whereby each value is a power of two, for example:
 1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1,024, 2,048, 4,096, and so on
 Figure 1-4. Using a multi-block enumeration
-
--- 35 of 304 --
-
 ---
 
 ## [Sección 34] Chapter 1 ■ typeSCript Language FeatureS
@@ -1314,9 +1211,6 @@ const enum VehicleType {
 PedalCycle,
 MotorCycle,
 Car,
-
--- 36 of 304 --
-
 ---
 
 ## [Sección 35] Chapter 1 ■ typeSCript Language FeatureS
@@ -1357,9 +1251,6 @@ type SeriesOfTypes = string | number | boolean | Error;
 When creating a union type, consider using a type alias to reduce the repetition of the definition in your
 program and to give the concept a name. A union can be created using any types available in your program,
 not just primitive types.
-
--- 37 of 304 --
-
 ---
 
 ## [Sección 36] Chapter 1 ■ typeSCript Language FeatureS
@@ -1399,9 +1290,6 @@ random = 12;
 random = true;
 The behavior of literal types is similar to the behavior of enumerations, so if you are using only numbers
 in your literal type, consider whether an enumeration would be more expressive in your program.
-
--- 38 of 304 --
-
 ---
 
 ## [Sección 37] Chapter 1 ■ typeSCript Language FeatureS
@@ -1436,9 +1324,6 @@ should opt for whichever you feel is more readable. Note that the array is insta
 using the empty array literal ([]). You can also instantiate it with values, by adding them within the brackets,
 separated by commas.
 Figure 1-5. Intersection type members
-
--- 39 of 304 --
-
 ---
 
 ## [Sección 38] Chapter 1 ■ typeSCript Language FeatureS
@@ -1486,9 +1371,6 @@ const monumentsOrderedByHeight = monuments.sort(compareMonumentHeights);
 const tallestMonument = monumentsOrderedByHeight[0];
 // Peter the Great
 console.log(tallestMonument.name);
-
--- 40 of 304 --
-
 ---
 
 ## [Sección 39] Chapter 1 ■ typeSCript Language FeatureS
@@ -1515,9 +1397,6 @@ n-tuples).
 • Triple: 3 items
 • Quadruple: 4 items
 Figure 1-6. Autocompletion members for tuple types
-
--- 41 of 304 --
-
 ---
 
 ## [Sección 40] Chapter 1 ■ typeSCript Language FeatureS
@@ -1554,9 +1433,6 @@ console.log(octopus.tentacles);
 delete dictionary['octopus vulgaris'];
 Dictionaries can be used to map language translations, or anywhere you need to look up items against a
 unique key.
-
--- 42 of 304 --
-
 ---
 
 ## [Sección 41] Chapter 1 ■ typeSCript Language FeatureS
@@ -1600,9 +1476,6 @@ backlight: boolean;
 type ReadOnly<T> = { readonly [k in keyof T]: T[k]; }
 type Optional<T> = {[k in keyof T]?: T[k]; }
 type Nullable<T> = {[k in keyof T]: T[k] | null; }
-
--- 43 of 304 --
-
 ---
 
 ## [Sección 42] Chapter 1 ■ typeSCript Language FeatureS
@@ -1645,9 +1518,6 @@ interface House {
 bedrooms: number;
 bathrooms: number;
 }
-
--- 44 of 304 --
-
 ---
 
 ## [Sección 43] Chapter 1 ■ typeSCript Language FeatureS
@@ -1686,9 +1556,6 @@ in error unless a type guard is used. A type guard is a statement that results i
 for example the if-statement in the example checks that the type of the variable is a string, which means the
 compiler knows the type in both the if-branch, and the else-branch (because if it isn’t a string, it must be a
 number).
-
--- 45 of 304 --
-
 ---
 
 ## [Sección 44] Chapter 1 ■ typeSCript Language FeatureS
@@ -1736,9 +1603,6 @@ function customTypeGuardExample(treadmill: SpeedControllable | InclineControllab
 // Error: Property does not exist
 const a = treadmill.increaseSpeed();
 const b = treadmill.lift();
-
--- 46 of 304 --
-
 ---
 
 ## [Sección 45] Chapter 1 ■ typeSCript Language FeatureS
@@ -1782,9 +1646,6 @@ height: number;
 }
 // Union
 type Prism = Cube | Cuboid;
-
--- 47 of 304 --
-
 ---
 
 ## [Sección 46] Chapter 1 ■ typeSCript Language FeatureS
@@ -1826,9 +1687,6 @@ When incrementing or decrementing an enumeration, the number representation is u
 Listing 1-31 shows how incrementing the size variable results in the next element in the enumeration and
 decrementing the size variable results in the previous element in the enumeration. Beware when you use
 this method as you can increase and decrease the value beyond the bounds of the enumeration.
-
--- 48 of 304 --
-
 ---
 
 ## [Sección 47] Chapter 1 ■ typeSCript Language FeatureS
@@ -1871,9 +1729,6 @@ Listing 1-32. Binary plus operator
 const num = 5 + 1;
 // '51': string
 const str = 5 + '1';
-
--- 49 of 304 --
-
 ---
 
 ## [Sección 48] Chapter 1 ■ typeSCript Language FeatureS
@@ -1912,9 +1767,6 @@ Logical Operators
 Logical operators are usually used to test Boolean variables or to convert an expression into a Boolean value.
 This section explains how logical operators are used in TypeScript for this purpose, and how logical AND
 and logical OR operators can be used outside of the context of Boolean types.
-
--- 50 of 304 --
-
 ---
 
 ## [Sección 49] Chapter 1 ■ typeSCript Language FeatureS
@@ -1957,9 +1809,6 @@ variable as shown in Listing 1-35. Given that a variable can be undefined or nul
 want to check for both, this is a useful feature. If you want to perform a type-safe check with no juggling, you
 can use the three-character operators === or !==; for example, if (myProperty === false) tests that the
 type on both sides of the comparison are the same and their values are the same.
-
--- 51 of 304 --
-
 ---
 
 ## [Sección 50] Chapter 1 ■ typeSCript Language FeatureS
@@ -2001,9 +1850,6 @@ OR Operator
 The common use of the logical OR (||) operator is to test that one of two sides to an expression are true.
 The left-hand side is evaluated first and the evaluation ends if the left-hand side is true. If the left-hand side
 is not true, the right-hand side of the expression is evaluated.
-
--- 52 of 304 --
-
 ---
 
 ## [Sección 51] Chapter 1 ■ typeSCript Language FeatureS
@@ -2043,9 +1889,6 @@ let caravan: Caravan;
 if (caravan && caravan.rooms > 5) {
 //...
 }
-
--- 53 of 304 --
-
 ---
 
 ## [Sección 52] Chapter 1 ■ typeSCript Language FeatureS
@@ -2084,9 +1927,6 @@ Listing 1-41. Array destructuring
 const triangles = [1, 3, 6, 10, 15, 21];
 // Destructuring
 const [first, second] = triangles;
-
--- 54 of 304 --
-
 ---
 
 ## [Sección 53] Chapter 1 ■ typeSCript Language FeatureS
@@ -2124,9 +1964,6 @@ console.log(second);
 console.log(fourth);
 One creative use of destructing is to swap the values of variables without introducing intermediate
 variables. Listing 1-44 transfers the values in one go using a destructuring assignment.
-
--- 55 of 304 --
-
 ---
 
 ## [Sección 54] Chapter 1 ■ typeSCript Language FeatureS
@@ -2164,9 +2001,6 @@ console.log(school);
 console.log(team);
 When you use a rest parameter in object destructuring, it will result in an object containing all the
 properties that you didn’t explicitly unpack. Listing 1-47 demonstrates object destructuring rest parameters.
-
--- 56 of 304 --
-
 ---
 
 ## [Sección 55] Chapter 1 ■ typeSCript Language FeatureS
@@ -2203,9 +2037,6 @@ Tuples and destructuring are a powerful combination. If you have a method that r
 can immediately destructure it into named variables. This keeps the lifespan of the tuple type as short as
 possible and expresses the return value better by making each variable explicit. Listing 1-50 shows the
 tuple/destructuring combination in action.
-
--- 57 of 304 --
-
 ---
 
 ## [Sección 56] Chapter 1 ■ typeSCript Language FeatureS
@@ -2245,9 +2076,6 @@ const utilityService = {
 recycling: 'Rocky',
 construction: 'Rubble'
 };
-
--- 58 of 304 --
-
 ---
 
 ## [Sección 57] Chapter 1 ■ typeSCript Language FeatureS
@@ -2288,9 +2116,6 @@ Listing 1-54 the function returns a string. Each return statement is checked aga
 the return value is compatible with the return type. You can use the void type to indicate that the function
 does not return a value. This will prevent code inside the function from returning a value and stop calling
 code from assigning the result of the function to a variable.
-
--- 59 of 304 --
-
 ---
 
 ## [Sección 58] Chapter 1 ■ typeSCript Language FeatureS
@@ -2332,9 +2157,6 @@ return 'The average is ' + average;
 }
 // 'The average is 5'
 const result = getAverage(4, 6);
-
--- 60 of 304 --
-
 ---
 
 ## [Sección 59] Chapter 1 ■ typeSCript Language FeatureS
@@ -2375,9 +2197,6 @@ values as default values — you aren’t restricted to compile-time constants a
 default value could be calculated, or even obtained from one of the parameters (as is the case for parameter
 endAt in Listing 1-56), or refer to any property, variable, constant, or other value that can be accessed from
 within the function body.
-
--- 61 of 304 --
-
 ---
 
 ## [Sección 60] Chapter 1 ■ typeSCript Language FeatureS
@@ -2418,9 +2237,6 @@ you have considered the other options and chosen to use overloads that is a perf
 selection.
 In many languages, each overload has its own implementation but in TypeScript the overloads all
 decorate a single implementation, as highlighted in Listing 1-58. The actual signature of the function
-
--- 62 of 304 --
-
 ---
 
 ## [Sección 61] Chapter 1 ■ typeSCript Language FeatureS
@@ -2465,9 +2281,6 @@ There are some rules to follow when using specialized overload signatures
 • There must be at least one nonspecialized signature.
 • Each specialized signature must return a subtype of a nonspecialized signature.
 • The implementation signature must be compatible with all signatures.
-
--- 63 of 304 --
-
 ---
 
 ## [Sección 62] Chapter 1 ■ typeSCript Language FeatureS
@@ -2516,9 +2329,6 @@ This is an unusual technique, but is necessary for the purposes of defining the 
 expect from web browsers. The specialized overloads inspect the value being passed and select the overload
 based on that value, for example, if you pass a name argument with the value "blockquote", the second
 signature in Listing 1-60 will be matched and the return type is NodeListOf<HTMLQuoteElement>.
-
--- 64 of 304 --
-
 ---
 
 ## [Sección 63] Chapter 1 ■ typeSCript Language FeatureS
@@ -2557,9 +2367,6 @@ The ScopeLosingExample object uses the standard syntax to create the function th
 timer expires. The scope of this is lost when the function is invoked by the timer, so the value of this.text
 is undefined, as we are no longer in the object context. In the ScopePreservingExample the only change is
 the use of the arrow syntax, which fixes the scope problem and allows the correct value to be obtained.
-
--- 65 of 304 --
-
 ---
 
 ## [Sección 64] Chapter 1 ■ typeSCript Language FeatureS
@@ -2606,9 +2413,6 @@ Listing 1-64. Currying with arrow functions
 const multiply = (a: number) => (b: number) => a * b;
 // Pass both arguments in sequence: 30
 const numA = multiply(5)(6);
-
--- 66 of 304 --
-
 ---
 
 ## [Sección 65] Chapter 1 ■ typeSCript Language FeatureS
@@ -2648,9 +2452,6 @@ const kilo = orderOfMagnitude(hecta);
 If you are struggling to come up with a real application of this feature, a practical example is shown in
 Listing 1-66, where instead of repeating the first argument of a logging function, it can be specified a single
 time and applied each time the logging function is called. This reduces repetition and improves readability.
-
--- 67 of 304 --
-
 ---
 
 ## [Sección 66] Chapter 1 ■ typeSCript Language FeatureS
@@ -2694,9 +2495,6 @@ interface Vehicle {
 new(): Vehicle;
 // Properties
 currentLocation: Point;
-
--- 68 of 304 --
-
 ---
 
 ## [Sección 67] Chapter 1 ■ typeSCript Language FeatureS
@@ -2733,9 +2531,6 @@ defined in the standard library and the interface that is defined in your TypeSc
 can find out more about extending existing objects in Chapter 5, and about specifically extending native
 browser functionality in Chapter 6.
 Figure 1-7. The native NodeList
-
--- 69 of 304 --
-
 ---
 
 ## [Sección 68] Chapter 1 ■ typeSCript Language FeatureS
@@ -2777,9 +2572,6 @@ in a class, they can be used to describe any structure you can conceive in your 
 functions, variables, objects, or combinations thereof. When a method accepts an options object as a
 parameter, which is common in JavaScript frameworks such as jQuery, an interface can be used to provide
 autocompletion for the complex object argument.
-
--- 70 of 304 --
-
 ---
 
 ## [Sección 69] Chapter 1 ■ typeSCript Language FeatureS
@@ -2822,9 +2614,6 @@ play() {
 const song = this.getRandomSong();
 song.play();
 }
-
--- 71 of 304 --
-
 ---
 
 ## [Sección 70] Chapter 1 ■ typeSCript Language FeatureS
@@ -2864,9 +2653,6 @@ play() {
 console.log('Playing ' + this.title + ' by ' + this.artist);
 }
 }
-
--- 72 of 304 --
-
 ---
 
 ## [Sección 71] Chapter 1 ■ typeSCript Language FeatureS
@@ -2913,9 +2699,6 @@ Listing 1-73. Properties and methods
 class Playlist {
 private songs: Song[] = [];
 static readonly maxSongCount = 30;
-
--- 73 of 304 --
-
 ---
 
 ## [Sección 72] Chapter 1 ■ typeSCript Language FeatureS
@@ -2960,9 +2743,6 @@ asin: string;
 }
 class WarehouseLocation {
 private _stockItem: StockItem;
-
--- 74 of 304 --
-
 ---
 
 ## [Sección 73] Chapter 1 ■ typeSCript Language FeatureS
@@ -3005,9 +2785,6 @@ return 0;
 return a.title > b.title ? 1 : -1;
 }
 }
-
--- 75 of 304 --
-
 ---
 
 ## [Sección 74] Chapter 1 ■ typeSCript Language FeatureS
@@ -3050,9 +2827,6 @@ automatic constructor that would be generated would match it exactly.
 If the subclass accepts additional arguments there are a couple of rules you need to follow. The super
 call to the base class must be the first statement in the subclass constructor and you cannot specify a more
 restrictive access modifier for a parameter on the subclass than it has on the base class.
-
--- 76 of 304 --
-
 ---
 
 ## [Sección 75] Chapter 1 ■ typeSCript Language FeatureS
@@ -3093,9 +2867,6 @@ logger = new Logger();
 // Create an instance of a sub-class
 logger = new InvasiveLogger();
 logger.notify('Hello World');
-
--- 77 of 304 --
-
 ---
 
 ## [Sección 76] Chapter 1 ■ typeSCript Language FeatureS
@@ -3134,9 +2905,6 @@ this.count++;
 alert(this.count);
 }
 }
-
--- 78 of 304 --
-
 ---
 
 ## [Sección 77] Chapter 1 ■ typeSCript Language FeatureS
@@ -3176,9 +2944,6 @@ document.getElementById('target').onclick = (e) => {
 const target = <Element>e.target || e.srcElement;
 clickCounter.registerClick(target.id);
 };
-
--- 79 of 304 --
-
 ---
 
 ## [Sección 78] Chapter 1 ■ typeSCript Language FeatureS
@@ -3221,9 +2986,6 @@ const display = new Display();
 const television = new Television();
 const hiFi = new HiFi();
 let isDisplay;
-
--- 80 of 304 --
-
 ---
 
 ## [Sección 79] Chapter 1 ■ typeSCript Language FeatureS
@@ -3262,9 +3024,6 @@ pass a string. Without the quotes, you would be testing the value of a variable,
 If you want to obtain the type name at runtime, you may be tempted to use the typeof operator.
 Unfortunately, this will return the type name ’object’ for all classes. This means you need to inspect the
 constructor of the instance to find the type name. This can be done as shown in Listing 1-85.
-
--- 81 of 304 --
-
 ---
 
 ## [Sección 80] Chapter 1 ■ typeSCript Language FeatureS
@@ -3303,9 +3062,6 @@ reversedList.push(list[i]);
 return reversedList;
 }
 const letters = ['a', 'b', 'c', 'd'];
-
--- 82 of 304 --
-
 ---
 
 ## [Sección 81] Chapter 1 ■ typeSCript Language FeatureS
@@ -3344,9 +3100,6 @@ persist(model: T): TId;
 class CustomerRepository implements Repository<Customer, CustomerId> {
 constructor(private customers: Customer[]) {
 }
-
--- 83 of 304 --
-
 ---
 
 ## [Sección 82] Chapter 1 ■ typeSCript Language FeatureS
@@ -3391,9 +3144,6 @@ super(accountIdValue);
 function onlyAcceptsOrderId(orderId: OrderId) {
 // ...
 }
-
--- 84 of 304 --
-
 ---
 
 ## [Sección 83] Chapter 1 ■ typeSCript Language FeatureS
@@ -3436,9 +3186,6 @@ will be made to keep TypeScript in step with the developments in the ECMAScript 
 language will not be limited by ECMAScript developments though and the road map currently contains
 a range of features being considered for implementation to support a richer type system and improved
 tooling.
-
--- 85 of 304 --
-
 ---
 
 ## [Sección 84] Chapter 1 ■ typeSCript Language FeatureS
@@ -3470,9 +3217,6 @@ the same name in the same common root will result in a single definition.
 • Classes bring structure to your TypeScript program and make it possible to use
 common design patterns.
 • You can obtain type information at runtime, but this should be used responsibly.
-
--- 86 of 304 --
-
 63 © Steve Fenton 2018
 S. Fenton, Pro TypeScript, https://doi.org/10.1007/978-1-4842-3249-1_2
 
@@ -3514,9 +3258,6 @@ to a certain size, it becomes difficult to track the dependencies between your c
 can become unwieldy. While you can load your one massive file asynchronously, the entire program must
 be loaded before it can run. Namespaces can be a dangerous trap as they can feel frictionless when you first
 start writing your TypeScript program; but long term they will become a decision you regret.
-
--- 87 of 304 --
-
 ---
 
 ## [Sección 86] Chapter 2 ■ Code organization
@@ -3562,9 +3303,6 @@ a dotted-syntax when supplying the namespace identifier. These two alternatives 
 with the first and second levels in the hierarchy being nested, and the third level being added using the
 dotted notation. In practical terms, all these declarations have added to the same hierarchy, as the calling
 code shows.
-
--- 88 of 304 --
-
 ---
 
 ## [Sección 87] Chapter 2 ■ Code organization
@@ -3609,9 +3347,6 @@ public port: string,
 public displacement: number) {
 }
 }
-
--- 89 of 304 --
-
 ---
 
 ## [Sección 88] Chapter 2 ■ Code organization
@@ -3653,9 +3388,6 @@ within the project in the compilation, which means you don’t need to specifica
 you refer to them. Other code editors require a hint to help them discover the source of the code you are
 depending on. The format for these hints is a reference comment, as shown in Listing 2-5. Whether you need
 to use these hints or not, you will be responsible for making the code available at runtime.
-
--- 90 of 304 --
-
 ---
 
 ## [Sección 89] Chapter 2 ■ Code organization
@@ -3693,9 +3425,6 @@ better way to organize your code. Where namespaces limit the number of items in 
 go a step further and add nothing to the global scope. Modules also provide a solution to naming conflicts,
 as each file provides a new context for identifiers. Modules also have a killer-feature: you can load them
 asynchronously on demand. So, let’s now take a look at modules.
-
--- 91 of 304 --
-
 ---
 
 ## [Sección 90] Chapter 2 ■ Code organization
@@ -3742,9 +3471,6 @@ public port: string,
 public displacement: number = defaultDisplacement) {
 }
 }
-
--- 92 of 304 --
-
 ---
 
 ## [Sección 91] Chapter 2 ■ Code organization
@@ -3785,9 +3511,6 @@ arrival(ship: Boat) {
 this.dockedShips.push(ship);
 }
 }
-
--- 93 of 304 --
-
 ---
 
 ## [Sección 92] Chapter 2 ■ Code organization
@@ -3826,9 +3549,6 @@ import Yacht from './Listing-2-012';
 // Error: Module has no default export
 import Ship from './Listing-2-007';
 const yacht = new Yacht('The Sea Princess', 'Tadley', 150);
-
--- 94 of 304 --
-
 ---
 
 ## [Sección 93] Chapter 2 ■ Code organization
@@ -3870,9 +3590,6 @@ load modules in browsers.
 • AMD Modules. As well as managing module loading, the Asynchronous Module
 Definition style allows multiple modules to be loaded at the same time, even when
 they depend on each other. RequireJS is the most common implementation of AMD.
-
--- 95 of 304 --
-
 ---
 
 ## [Sección 94] Chapter 2 ■ Code organization
@@ -3915,9 +3632,6 @@ Listing 2-17. Dynamic module loading System modules
 // Declaration for the require function (System JS)
 declare const System: { import(module: string): Promise<any>; };
 // Import - doesn't actually emit code
-
--- 96 of 304 --
-
 ---
 
 ## [Sección 95] Chapter 2 ■ Code organization
@@ -3959,9 +3673,6 @@ language with its own idioms, so when you are considering transposing ideas from
 worth weighing up the benefits. Mixing namespaces with modules has no upside, and several drawbacks, so
 avoid doing it.
 Figure 2-1. TypeScript Module Navigation
-
--- 97 of 304 --
-
 ---
 
 ## [Sección 96] Chapter 2 ■ Code organization
@@ -3999,9 +3710,6 @@ spend more time specifying which files should and shouldn’t be included). A ty
 shown in Figure 2-2, with the README.md and package.json files within the dist folder, and the .js and .d.ts
 files being copied into the src folder.
 Figure 2-2. Directory structure for packaging
-
--- 98 of 304 --
-
 ---
 
 ## [Sección 97] Chapter 2 ■ Code organization
@@ -4049,9 +3757,6 @@ Listing 2-19. package.json
 "types": "src/TypeSpec.d.ts",
 "dependencies": { },
 "devDependencies": { },
-
--- 99 of 304 --
-
 ---
 
 ## [Sección 98] Chapter 2 ■ Code organization
@@ -4096,9 +3801,6 @@ Decorators are relevant to both horizontal and vertical architectures, but can b
 in the context of vertical architectures. Decorators can be used to take care of cross-cutting concerns such
 as logging, authorization, or validation. When used correctly, this aspect-oriented style of programming can
 minimize the code required to satisfy these shared responsibilities.
-
--- 100 of 304 --
-
 ---
 
 ## [Sección 99] Chapter 2 ■ Code organization
@@ -4140,9 +3842,6 @@ be used as the descriptor. This means you can choose to observe, modify, or repl
 In the case of the logging method decorator, the original method in the descriptor is wrapped with a
 logging function, which logs the fact the method was called as well as the arguments passed and the value
 returned. Each time the method is called, the information is logged.
-
--- 101 of 304 --
-
 ---
 
 ## [Sección 100] Chapter 2 ■ Code organization
@@ -4182,9 +3881,6 @@ A decorator factory is a function that returns a decorator function. The factory
 parameters that can be used in the creation of the decorator.
 In Listing 2-25, the logging decorator has been converted into a decorator factory. The factory accepts a
 title that is prepended to the logging message.
-
--- 102 of 304 --
-
 ---
 
 ## [Sección 101] Chapter 2 ■ Code organization
@@ -4225,9 +3921,6 @@ constructor. This is slightly more complex than the method decorator, but the ex
 quickly adapted from logging to some other purpose.
 The class decorator is only passed a single argument, representing the constructor of the class being
 decorated.
-
--- 103 of 304 --
-
 ---
 
 ## [Sección 102] Chapter 2 ■ Code organization
@@ -4269,9 +3962,6 @@ function log(target: any, key: string) {
 let value = target[key];
 // Replacement getter
 const getter = function () {
-
--- 104 of 304 --
-
 ---
 
 ## [Sección 103] Chapter 2 ■ Code organization
@@ -4316,9 +4006,6 @@ otherwise, use modules rather than namespaces; and never mix the two. Use a cons
 keep your dependency management simple, and avoid default exports.
 By using the file system as a form of namespacing, your modules will be easier to find and consume; so
 pay attention to the naming of both files and folders.
-
--- 105 of 304 --
-
 ---
 
 ## [Sección 104] Chapter 2 ■ Code organization
@@ -4335,9 +4022,6 @@ Key Points
 haven’t chosen one yet, consider using SystemJS as it works everywhere. UMD is a
 good alternative as it works with AMD and CommonJS module systems.
 • You can package your code to make it easier to reuse in other programs.
-
--- 106 of 304 --
-
 83 © Steve Fenton 2018
 S. Fenton, Pro TypeScript, https://doi.org/10.1007/978-1-4842-3249-1_3
 
@@ -4371,9 +4055,6 @@ Cambridge University Press, 1910). Type theory is a system in which each term is
 are restricted based on the types. TypeScript’s annotations are strikingly similar to the style of the building
 blocks of type theory, as shown in Figure 3-1.
 Figure 3-1. Type theory and TypeScript similarities
-
--- 107 of 304 --
-
 ---
 
 ## [Sección 106] Chapter 3 ■ the type SyStem
@@ -4418,9 +4099,6 @@ return width * height * depth;
 const volumeA = getVolume(10);
 // 32 (the 8 is ignored)
 const volumeB = getVolume(2, 4, 4, 8);
-
--- 108 of 304 --
-
 ---
 
 ## [Sección 107] Chapter 3 ■ the type SyStem
@@ -4439,9 +4117,6 @@ Figure 3-2 below.
 ■ Note One of the key points in typeScript’s type system is the optionality of the types. this effectively
 means you are not restricted to static types and can opt to use dynamic behavior whenever needed.
 Figure 3-2. TypeScript compiler errors
-
--- 109 of 304 --
-
 ---
 
 ## [Sección 108] Chapter 3 ■ the type SyStem
@@ -4489,9 +4164,6 @@ class Example {
 static avoidAccidentalEquivalence(id: CustomerId) {
 // Implementation
 }
-
--- 110 of 304 --
-
 ---
 
 ## [Sección 109] Chapter 3 ■ the type SyStem
@@ -4530,9 +4202,6 @@ and class heritage throughout your program.
 ■ Note you can’t rely on named types to create restrictions in a typeScript program, only unique structures.
 For interfaces, this means creating uniqueness using a uniquely named property or method. For classes, any
 private member will make the structure unique.
-
--- 111 of 304 --
-
 ---
 
 ## [Sección 110] Chapter 3 ■ the type SyStem
@@ -4577,9 +4246,6 @@ be supplied to evaluate the items in the array for the purposes of ordering, but
 omitted. Following the class is a simple demonstration of the class in action. This code is compiled into the
 JavaScript shown in Listing 3-4. In the compiled output all of the type information is gone and the class has
 been transformed into a common JavaScript pattern called a self-executing anonymous function.
-
--- 112 of 304 --
-
 ---
 
 ## [Sección 111] Chapter 3 ■ the type SyStem
@@ -4629,9 +4295,6 @@ Listing 3-5 shows how types can be inferred in progressively more indirect ways.
 add function is determined by working backward from the return statement. The type of the return statement
 is found by evaluating the type of the expression a + b, which in turn is done by inspecting the types of the
 individual parameters.
-
--- 113 of 304 --
-
 ---
 
 ## [Sección 112] Chapter 3 ■ the type SyStem
@@ -4673,9 +4336,6 @@ let y = [0, 1, null, 'a'];
 The process of determining the best common type is not just used for array literal expressions; they
 also are used to determine any case where multiple values have different types, such as the return type of a
 function or method that contains multiple return statements.
-
--- 114 of 304 --
-
 ---
 
 ## [Sección 113] Chapter 3 ■ the type SyStem
@@ -4717,9 +4377,6 @@ be inferred, allow it to be inferred. Put your faith in the compiler as far as y
 that you can trust it to do a good job. You can get the compiler to warn you about cases where it can’t find
 a type using a special flag (--noImplicitAny) that prevents the any type from being inferred. You can read
 more about code quality flags in Appendix 2.
-
--- 115 of 304 --
-
 ---
 
 ## [Sección 114] Chapter 3 ■ the type SyStem
@@ -4767,9 +4424,6 @@ you could simply add the code from Listing 3-10 to your program to extend the in
 All the interface definition blocks from the same common root are combined into a single type, so
 the DeviceMotionEvent still has all the original properties from the standard library and also has the
 motionDescription property from the additional interface block.
-
--- 116 of 304 --
-
 ---
 
 ## [Sección 115] Chapter 3 ■ the type SyStem
@@ -4810,9 +4464,6 @@ if a property refers to a nested object, the inspection continues to work down i
 compatibility.
 Listing 3-12 shows three differently named classes and a literal object that show all are compatible as far
 as the compiler is concerned.
-
--- 117 of 304 --
-
 ---
 
 ## [Sección 116] Chapter 3 ■ the type SyStem
@@ -4858,9 +4509,6 @@ parameters must also be compatible — in this case the optional hint parameter 
 a default parameter or by omitting the parameter entirely. If a class had a mandatory hint parameter, it
 would not be compatible with the types in Listing 3-12. As shown in the fourth type, literal objects can be
 compatible with classes as far as the compiler is concerned, as long as they pass the type comparison.
-
--- 118 of 304 --
-
 ---
 
 ## [Sección 117] Chapter 3 ■ the type SyStem
@@ -4904,9 +4552,6 @@ html(html: string): void;
 }
 declare function $(query: string): jQuery;
 $('#id').html('Hello World');
-
--- 119 of 304 --
-
 ---
 
 ## [Sección 118] Chapter 3 ■ the type SyStem
@@ -4934,9 +4579,6 @@ statements to target a file, the declaration file should be placed in the same f
 as the JavaScript file as shown in Figure 3-4.
 Figure 3-4. Declaration files
 Figure 3-3. Ambient declaration autocompletion
-
--- 120 of 304 --
-
 ---
 
 ## [Sección 119] Chapter 3 ■ the type SyStem
@@ -4974,9 +4616,6 @@ Key Points
 • All type information is removed during compilation.
 • You can let the compiler work out the types for you using type inference.
 • Ambient declarations add type information to existing JavaScript code.
-
--- 121 of 304 --
-
 99 © Steve Fenton 2018
 S. Fenton, Pro TypeScript, https://doi.org/10.1007/978-1-4842-3249-1_4
 
@@ -5015,9 +4654,6 @@ This is the key reason for any technique of code organization and in object orie
 toward layers of abstraction that allow you to skim high-level ideas first and dive further into the levels of
 detail when you need to. If you organize it well, a programmer maintaining the code will need to hold onto
 less concurrent information when attempting to understand your program.
-
--- 122 of 304 --
-
 ---
 
 ## [Sección 121] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5054,9 +4690,6 @@ reads the contents of a directory. The FileReader class reads the contents based
 files are added to the file tree, but where directories are found, there is a recursive call to this.getFiles.
 These calls would continue until the entire path, including all subfolders, are added to the file tree. The
 fs.reaaddirSync and fs.statSync methods belong to NodeJS, which is covered in more detail in Chapter 7.
-
--- 123 of 304 --
-
 ---
 
 ## [Sección 122] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5098,9 +4731,6 @@ contents: []
 }
 fileTree.push(fileItem);
 }
-
--- 124 of 304 --
-
 ---
 
 ## [Sección 123] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5139,9 +4769,6 @@ Encapsulation
 Encapsulation is fully supported in TypeScript. A class instance can contain properties as well as methods
 that operate on those properties; this is the encapsulation of data and behavior. The properties can also be
 hidden using the private access modifier, which hides the data from code outside of the class instance.
-
--- 125 of 304 --
-
 ---
 
 ## [Sección 124] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5182,9 +4809,6 @@ common kinds of duplication is logical branching, for example. the if and switch
 the program based on a property that should have been hidden using the private keyword. When you
 change the property, you then need to hunt down all these logical branches, which creates a worrying ripple
 of change throughout your code.
-
--- 126 of 304 --
-
 ---
 
 ## [Sección 125] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5226,9 +4850,6 @@ constructor() {
 // Instantiating the delegate HeatSensor
 this.sensors.push(new HeatSensor(this));
 }
-
--- 127 of 304 --
-
 ---
 
 ## [Sección 126] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5267,9 +4888,6 @@ It is possible to expand on this to demonstrate various decision points where ei
 delegation may be selected. Figure 4-1 describes the relationships between various car components. The
 chassis is the plain skeleton that a motor car is built on, the bare framework for a car. When the engine,
 driveshaft, and transmission are attached to the chassis, the combination is called a rolling chassis.
-
--- 128 of 304 --
-
 ---
 
 ## [Sección 127] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5293,9 +4911,6 @@ polymorphism with two functions with the same signature and return type (or two 
 structures, or two objects with similar structures) even if they do not explicitly implement a named type, as
 shown in Listing 4-4.
 Figure 4-1. Encapsulation and inheritance
-
--- 129 of 304 --
-
 ---
 
 ## [Sección 128] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5335,9 +4950,6 @@ navigate(satellite);
 Listing 4-4 illustrates polymorphism in TypeScript. The navigate function accepts any type compatible
 with the Vehicle interface. Specifically, this means any class or object that has a method named moveTo that
 accepts up to two arguments of type number.
-
--- 130 of 304 --
-
 ---
 
 ## [Sección 129] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5382,9 +4994,6 @@ superclasses.
 than one general-purpose interface.
 • Dependency inversion principle—depends on abstractions, not concretions.
 The five SOLID principles are discussed individually in the sections that follow.
-
--- 131 of 304 --
-
 ---
 
 ## [Sección 130] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5429,9 +5038,6 @@ To fix this class before it grows into a bigger problem, the two concerns can be
 Movie class that takes care of movie-related behavior and a MovieRepository that is responsible for storing
 the data as shown in Listing 4-6. If features are added to the Movie class, the MovieRepository requires no
 changes. If you were to change your data storage device, the Movie class wouldn’t need to change.
-
--- 132 of 304 --
-
 ---
 
 ## [Sección 131] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5477,9 +5083,6 @@ if you introduce code intended to pay off later, it almost always will not. Tryi
 be troublesome either because it turns out the code is never needed or because the real future turns out to be
 incompatible with the prediction. So, you will need to be pragmatic about this principle, which sometimes
 means introducing the code to solve a problem only when you first encounter the problem in real life.
-
--- 133 of 304 --
-
 ---
 
 ## [Sección 132] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5523,9 +5126,6 @@ What is wanted here is something like the following substitution property: If fo
 o1 of type S there is an object o2 of type T such that for all programs P defined in terms of T,
 the behavior of P is unchanged when o1 is substituted for o2 then S is a subtype of T.
 —Barbara Liskov
-
--- 134 of 304 --
-
 ---
 
 ## [Sección 133] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5570,9 +5170,6 @@ copyDocument();
 printDocument(document: Document);
 stapleDocument(document: Document, tray: number);
 }
-
--- 135 of 304 --
-
 ---
 
 ## [Sección 134] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5618,9 +5215,6 @@ stapleDocument(document: Document, tray: number) {
 When you follow the ISP, client code is not forced to depend on methods it doesn’t intend to use. Large
 interfaces tend to encourage calling code that is organized in similar large chunks, whereas a series of small
 interfaces allows the client to implement small maintainable adapters to communicate with the interface.
-
--- 136 of 304 --
-
 ---
 
 ## [Sección 135] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5667,9 +5261,6 @@ interface LightSource {
 switchOn();
 switchOff();
 }
-
--- 137 of 304 --
-
 ---
 
 ## [Sección 136] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5717,9 +5308,6 @@ TypeScript code examples.
 The following example demonstrates the strategy pattern and the abstract factory pattern. These are just
 2 of the 24 patterns described in the original Gang of Four book. The patterns are described in general below
 and then used to improve the design of a small program.
-
--- 138 of 304 --
-
 ---
 
 ## [Sección 137] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5741,9 +5329,6 @@ creation of related objects without specifying their concrete classes. The aim o
 depend on the behavior of the abstract factory, which will be implemented by different concrete classes that
 are either changed at compile time or runtime.
 Figure 4-2. The strategy pattern
-
--- 139 of 304 --
-
 ---
 
 ## [Sección 138] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5756,9 +5341,6 @@ car wash can run different grades of wash depending on how much the driver spend
 the wheel cleaning strategy, which consists of an interface for wheel cleaning classes, and two strategies that
 provide either a basic or executive clean.
 Figure 4-3. The abstract factory pattern
-
--- 140 of 304 --
-
 ---
 
 ## [Sección 139] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5803,9 +5385,6 @@ console.log('Blow drying car');
 Listing 4-15 shows the CarWashProgram class before it is updated to use the abstract factory pattern. This
 is a typical example of a class that knows too much. It is tightly coupled to the concrete cleaning classes and
 is responsible for creating the relevant classes based on the selected program.
-
--- 141 of 304 --
-
 ---
 
 ## [Sección 140] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5849,9 +5428,6 @@ interface ValetFactory {
 getWheelCleaning() : WheelCleaning;
 getBodyCleaning() : BodyCleaning;
 }
-
--- 142 of 304 --
-
 ---
 
 ## [Sección 141] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5898,9 +5474,6 @@ const bodyWash = this.cleaningFactory.getBodyCleaning();
 bodyWash.cleanBody();
 }
 }
-
--- 143 of 304 --
-
 ---
 
 ## [Sección 142] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5946,9 +5519,6 @@ dance() {
 console.log('Dancing');
 }
 }
-
--- 144 of 304 --
-
 ---
 
 ## [Sección 143] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -5990,9 +5560,6 @@ const allRounder = new AllRounder();
 allRounder.act();
 allRounder.dance();
 allRounder.sing();
-
--- 145 of 304 --
-
 ---
 
 ## [Sección 144] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -6031,9 +5598,6 @@ The other restriction on mixins is that although method implementations are mapp
 augmented class, property values are not mapped; this is demonstrated in Listing 4-23. When you
 implement a property from a mixin you need to initialize it in the augmented class. To avoid confusion, it is
 best to define a required property in the mixin, but provide no default value.
-
--- 146 of 304 --
-
 ---
 
 ## [Sección 145] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -6071,9 +5635,6 @@ applyMixins(Actor, [Acts]);
 const actor = new Actor();
 // Logs 'Acting'
 actor.act();
-
--- 147 of 304 --
-
 ---
 
 ## [Sección 146] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -6114,9 +5675,6 @@ alert('Singing');
 }
 };
 }
-
--- 148 of 304 --
-
 ---
 
 ## [Sección 147] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -6161,9 +5719,6 @@ in any other programming paradigm; this is why the patterns and principles are s
 of object orientation in this chapter complement the testing techniques in Chapter 10.
 You can practice and improve your object-oriented design skills as well as your unit testing skills using
 coding katas. These are described in Appendix 4 and there are some example katas for you to try out.
-
--- 149 of 304 --
-
 ---
 
 ## [Sección 148] Chapter 4 ■ ObjeCt OrientatiOn in typeSCript
@@ -6174,9 +5729,6 @@ Key Points
 • Design patterns are existing, well-known solutions to common problems.
 • You don’t have to implement a design pattern exactly as it is described.
 • Mixins provide an alternative mechanism for composition.
-
--- 150 of 304 --
-
 129 © Steve Fenton 2018
 S. Fenton, Pro TypeScript, https://doi.org/10.1007/978-1-4842-3249-1_5
 
@@ -6214,9 +5766,6 @@ the queue only when a function has been completed, but another may revisit the q
 transfers control, for example, by calling another function. In the latter case, another statement may be
 executed before the second function is called. Despite the alarming nature of these potential differences, it is
 rare to find that they cause any problems in practice.
-
--- 151 of 304 --
-
 ---
 
 ## [Sección 150] Chapter 5 ■ Understanding the rUntime
@@ -6241,9 +5790,6 @@ console.log(performance.now() - testStart);
 }
 test();
 Figure 5-1. JavaScript features in browser vs. server environments
-
--- 152 of 304 --
-
 ---
 
 ## [Sección 151] Chapter 5 ■ Understanding the rUntime
@@ -6284,9 +5830,6 @@ Listing 5-3. C-like scope
 var scope = 1;
 {
 var scope = 2;
-
--- 153 of 304 --
-
 ---
 
 ## [Sección 152] Chapter 5 ■ Understanding the rUntime
@@ -6329,9 +5872,6 @@ The down-level compilation of Listing 5-5 replaces the const keyword with the va
 renames the second variable scope_1, as shown in Listing 5-6; this prevents the inner variable from
 overwriting the outer one. The compiler is smart enough to avoid naming collisions, so if you already had a
 variable that you had named scope_1, the compiler would pick a different name.
-
--- 154 of 304 --
-
 ---
 
 ## [Sección 153] Chapter 5 ■ Understanding the rUntime
@@ -6372,9 +5912,6 @@ console.log(kind);
 var kind = 'Ruffed Lemur';
 }
 lemur();
-
--- 155 of 304 --
-
 ---
 
 ## [Sección 154] Chapter 5 ■ Understanding the rUntime
@@ -6399,9 +5936,6 @@ passed along with the request. The main thread is then able to process the event
 long-running process ends, the callback function is then called, being passed any relevant arguments. This
 adds the callback to the event queue, where it is executed in turn.
 Figure 5-2. Blocking call
-
--- 156 of 304 --
-
 ---
 
 ## [Sección 155] Chapter 5 ■ Understanding the rUntime
@@ -6428,9 +5962,6 @@ arguments; these will be passed into the callback. You can also use the apply me
 identical to call, except you pass the arguments as an array, as shown in Listing 5-10. If your result is already
 an array, this results in the values being exploded in to separate arguments.
 Figure 5-3. Using a callback
-
--- 157 of 304 --
-
 ---
 
 ## [Sección 156] Chapter 5 ■ Understanding the rUntime
@@ -6470,9 +6001,6 @@ const max = Math.max.apply(null, numbers);
 console.log(max);
 The pattern of using callbacks is one example of functions passed as arguments. The next section
 describes how powerful this language feature is and how it can be used in other ways.
-
--- 158 of 304 --
-
 ---
 
 ## [Sección 157] Chapter 5 ■ Understanding the rUntime
@@ -6513,9 +6041,6 @@ publisher.notify('Test message');
 ■ Note When you pass a function as an argument, you must omit the parentheses; for example,
 go(callbackFunction) rather than go(callbackFunction()); otherwise the function is executed and the
 return value is passed instead.
-
--- 159 of 304 --
-
 ---
 
 ## [Sección 158] Chapter 5 ■ Understanding the rUntime
@@ -6561,9 +6086,6 @@ const result = this.data[id];
 if (typeof result == 'undefined') {
 throw new Error('No matching record');
 }
-
--- 160 of 304 --
-
 ---
 
 ## [Sección 159] Chapter 5 ■ Understanding the rUntime
@@ -6607,9 +6129,6 @@ FictitiousAPI.getData(3, (data) => {
 console.log(data.name);
 FictitiousAPI.getData(4, (data) => {
 console.log(data.name);
-
--- 161 of 304 --
-
 ---
 
 ## [Sección 160] Chapter 5 ■ Understanding the rUntime
@@ -6654,9 +6173,6 @@ static getData(id: number, callback: (error: string, data: FictitiousData) => vo
 // Simulating async data access with a timeout
 window.setTimeout(() => {
 const result = this.data[id];
-
--- 162 of 304 --
-
 ---
 
 ## [Sección 161] Chapter 5 ■ Understanding the rUntime
@@ -6701,9 +6217,6 @@ console.log('Caught ' + error);
 return;
 }
 console.log(data.name);
-
--- 163 of 304 --
-
 ---
 
 ## [Sección 162] Chapter 5 ■ Understanding the rUntime
@@ -6750,9 +6263,6 @@ Porthos
 D'Artagnan
 Caught No matching record
 The next step in evolving this code is to drastically improve its readability using promises.
-
--- 164 of 304 --
-
 ---
 
 ## [Sección 163] Chapter 5 ■ Understanding the rUntime
@@ -6799,9 +6309,6 @@ When we call the getData method, we are now given back a promise, as shown in Li
 place of a callback, the promise object has a then method, which accepts a function. In this simple case,
 the primary benefit of the promise is that it separates the concerns of the getData signature, and the then
 signature. There are more substantial benefits to come.
-
--- 165 of 304 --
-
 ---
 
 ## [Sección 164] Chapter 5 ■ Understanding the rUntime
@@ -6850,9 +6357,6 @@ return FictitiousAPI.getData(4);
 console.log(data.name);
 return FictitiousAPI.getData(5);
 })
-
--- 166 of 304 --
-
 ---
 
 ## [Sección 165] Chapter 5 ■ Understanding the rUntime
@@ -6896,9 +6400,6 @@ console.log('Caught ' + error);
 No matter how long each individual promise takes to fulfill, the values passed in the then block will be
 ordered the same as the promises that were passed in. In the case of Listing 5-26, the results will always be
 ordered Aramis, Athos, Porthos, D’Artagnan, even if the asynchronous operations succeeded in a different order.
-
--- 167 of 304 --
-
 ---
 
 ## [Sección 166] Chapter 5 ■ Understanding the rUntime
@@ -6945,9 +6446,6 @@ console.log('Error making request: ', error);
 };
 request.open('get', './api/musketeers.json', true);
 request.send();
-
--- 168 of 304 --
-
 ---
 
 ## [Sección 167] Chapter 5 ■ Understanding the rUntime
@@ -6991,9 +6489,6 @@ parallel, and a long-running listener may delay the execution of the subsequent 
 same event. When an event is triggered, each event listener is queued in the same order it is attached; if
 the first listener takes 2 s to run, the second listener is blocked for at least 2 s and will only execute once it
 reaches the top of the event queue.
-
--- 169 of 304 --
-
 ---
 
 ## [Sección 168] Chapter 5 ■ Understanding the rUntime
@@ -7041,9 +6536,6 @@ Good programmers write code that humans can understand.
 </div>
 </body>
 </html>
-
--- 170 of 304 --
-
 ---
 
 ## [Sección 169] Chapter 5 ■ Understanding the rUntime
@@ -7084,9 +6576,6 @@ Listing 5-33. Custom events
 function CustomEvent(event, params) {
 params = params || { bubbles: false, cancelable: false, detail: undefined };
 const evt = <any>document.createEvent('CustomEvent');
-
--- 171 of 304 --
-
 ---
 
 ## [Sección 170] Chapter 5 ■ Understanding the rUntime
@@ -7133,9 +6622,6 @@ EventType[EventType.MyCustomEvent],
 }
 }
 );
-
--- 172 of 304 --
-
 ---
 
 ## [Sección 171] Chapter 5 ■ Understanding the rUntime
@@ -7159,9 +6645,6 @@ pair with a string key and value of any type, including primitive types, objects
 function, it is commonly called a method. Whenever you create a class in TypeScript, it is represented using
 JavaScript objects, but there are also many built-in objects that you can use.
 Figure 5-4. Event phases
-
--- 173 of 304 --
-
 ---
 
 ## [Sección 172] Chapter 5 ■ Understanding the rUntime
@@ -7203,9 +6686,6 @@ NodeList.prototype.each = function (callback) {
 for (let node of this) {
 callback.call(node);
 }};
-
--- 174 of 304 --
-
 ---
 
 ## [Sección 173] Chapter 5 ■ Understanding the rUntime
@@ -7251,9 +6731,6 @@ for (let node of this) {
 callback.call(node, node);
 }
 };
-
--- 175 of 304 --
-
 ---
 
 ## [Sección 174] Chapter 5 ■ Understanding the rUntime
@@ -7294,9 +6771,6 @@ const lemur = new Lemur('Sloth Lemur');
 lemur.isExtinct = true;
 // true
 console.log(lemur.isExtinct);
-
--- 176 of 304 --
-
 ---
 
 ## [Sección 175] Chapter 5 ■ Understanding the rUntime
@@ -7338,9 +6812,6 @@ One common solution to the potential absence of this feature is to use a polyfil
 a simple polyfill that tests for the presence of the classList API and then adds it to the HTMLElement or
 Element prototype. The replacement function splits the string of class names to create an array, or it returns
 an empty array if there are no class names.
-
--- 177 of 304 --
-
 ---
 
 ## [Sección 176] Chapter 5 ■ Understanding the rUntime
@@ -7384,9 +6855,6 @@ The JavaScript runtime is well known for its quirks and surprises, but on the wh
 will shield you from most of the common faux pas. Using block-level variable declarations and keeping the
 global scope clear will help the compiler to help you, so it is worth using the structural features of TypeScript
 such as classes as well as either modules or namespaces, to enclose functions and variables.
-
--- 178 of 304 --
-
 ---
 
 ## [Sección 177] Chapter 5 ■ Understanding the rUntime
@@ -7410,9 +6878,6 @@ publisher.
 • You can extend all JavaScript objects and almost everything in JavaScript is an object.
 • You can seal or freeze objects to prevent further changes.
 • You can polyfill missing behavior to make new features available on old platforms.
-
--- 179 of 304 --
-
 159 © Steve Fenton 2018
 S. Fenton, Pro TypeScript, https://doi.org/10.1007/978-1-4842-3249-1_6
 
@@ -7450,9 +6915,6 @@ Web browsers are typically made up of the components shown in Figure 6-1. User i
 • JavaScript interpreter
 • Networking
 • Storage
-
--- 180 of 304 --
-
 ---
 
 ## [Sección 179] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -7478,9 +6940,6 @@ the document, would typically occur just before drawing the page. Additional ref
 the JavaScript code requests the size or position of an element when the layout has the invalid flag. This
 additional reflow is needed to ensure the information supplied for the size or position is up to date.
 Figure 6-1. Web browser components
-
--- 181 of 304 --
-
 ---
 
 ## [Sección 180] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -7523,9 +6982,6 @@ container.classList.add('highlight');
 // Operations that require a reflow
 const imageHeight = image.offsetHeight;
 const containerHeight = container.offsetHeight;
-
--- 182 of 304 --
-
 ---
 
 ## [Sección 181] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -7569,9 +7025,6 @@ specification.
 systems.
 • At some point in time you will encounter an end user who has JavaScript switched
 off entirely.
-
--- 183 of 304 --
-
 ---
 
 ## [Sección 182] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -7602,9 +7055,6 @@ page would be refreshed using a timer every 10 seconds. Once the page had loaded
 used to grab new data from the iframe and update parts of the visible page based on the hidden page in the
 iframe. The architecture of this mechanism is shown in Figure 6-2.
 Figure 6-2. Updating a web page by refreshing a second page in an iframe
-
--- 184 of 304 --
-
 ---
 
 ## [Sección 183] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -7651,9 +7101,6 @@ Listing 6-3. HTML document for DOM examples
 The document is an HTML5 web page with a level-one heading and a division with an id of “content.”
 The aim of the following examples is to obtain a reference to this element, make changes to it, and listen to
 events generated within it.
-
--- 185 of 304 --
-
 ---
 
 ## [Sección 184] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -7695,9 +7142,6 @@ const a = elements[0];
 The final type you will come across is the NodeListOf<Element> returned from the document.
 querySelectorAll method, as shown in Listing 6-6. Despite this, you can still use a type assertion to work
 with the specialized HTML element of your choice.
-
--- 186 of 304 --
-
 ---
 
 ## [Sección 185] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -7735,9 +7179,6 @@ of HTML. The existing contents of the element will be discarded in favor of the 
 downsides to this approach; not only does this involve hard-coding HTML strings in your program, but also
 there can be security risks if you use this method to insert user-generated or third-party content. On the
 positive side, this is the simplest way to completely replace the entire contents of an element.
-
--- 187 of 304 --
-
 ---
 
 ## [Sección 186] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -7777,9 +7218,6 @@ There are many different ways of attaching event listeners, with some browsers l
 standards-compliant method of adding listeners. The addEventListener method is the standards-compliant
 way to add an event listener for a DOM event, although some older browsers still rely on the attachEvent
 method (which also requires that the event name is prefixed with 'on').
-
--- 188 of 304 --
-
 ---
 
 ## [Sección 187] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -7825,9 +7263,6 @@ The two major branches of the addEvent method handle the browser differences, wi
 each branch that handles either a single element of a collection of elements. When all browsers support the
 addEventListener method, the second half of the method will become redundant.
 This addEvent method will be used wherever events are needed in this chapter.
-
--- 189 of 304 --
-
 ---
 
 ## [Sección 188] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -7852,9 +7287,6 @@ updated with the dependencies. You can also directly edit the package.json file 
 names in either the dependencies or development dependencies sections.
 Figure 6-3. Installing libraries in Visual Studio with the Package Manager Extension
 Figure 6-4. Installing type definitions in Visual Studio with the Package Manager Extension
-
--- 190 of 304 --
-
 ---
 
 ## [Sección 189] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -7898,9 +7330,6 @@ of the codes described in the HTTP specification maintained by the W3C (1999).
 The open method accepts the HTTP verb for the request and the URL. The third parameter sets whether
 the request is asynchronous. Finally, with the state change listener attached and with the request set up with
 an HTTP verb and URL, the send method can be used to begin the request.
-
--- 191 of 304 --
-
 ---
 
 ## [Sección 190] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -7943,9 +7372,6 @@ Listing 6-13. HTTP Post method
 httpPost(url: string, data: string) {
 return new Promise<XMLHttpRequest>((resolve, reject) => {
 const request = new XMLHttpRequest();
-
--- 192 of 304 --
-
 ---
 
 ## [Sección 191] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -7988,9 +7414,6 @@ Although server configuration is beyond the scope of this chapter, for a server 
 accept and respond to the preflight OPTIONS request that is issued before the actual cross-origin request with
 an Access-Control-Allow-Origin response header. This header indicates the domains that the server is
 willing to communicate with. This acts as a handshake between the client and server to verify that the crossdomain communication can proceed.
-
--- 193 of 304 --
-
 ---
 
 ## [Sección 192] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8035,9 +7458,6 @@ width: 1280,
 height: 720
 }
 };
-
--- 194 of 304 --
-
 ---
 
 ## [Sección 193] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8082,9 +7502,6 @@ browser window results in a new page session.
 Listing 6-18 shows how simple the session storage API is, allowing a simple key/value pair to be stored
 with the setItem method. Both the key and the value must be strings, so objects would need to be serialized
 to a string to be stored.
-
--- 195 of 304 --
-
 ---
 
 ## [Sección 194] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8125,9 +7542,6 @@ localStorage.setItem(storageKey, 'Stored value ' + Date.now());
 addEvent(window, 'storage', (event: StorageEvent) => {
 console.log(`${event.key} "${event.oldValue}" changed to "${event.newValue}"`);
 });
-
--- 196 of 304 --
-
 ---
 
 ## [Sección 195] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8174,9 +7588,6 @@ constructor(public productId: number, public name: string) {
 Listing 6-22 shows an empty ProductDatabase class. This will be expanded to perform database
 operations such as storing, retrieving, and deleting products. This class will also reduce the dependency on
 the IndexedDB API in the program code.
-
--- 197 of 304 --
-
 ---
 
 ## [Sección 196] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8218,9 +7629,6 @@ new Product(1, 'My first product'),
 new Product(2, 'My second product'),
 new Product(3, 'My third product')
 ];
-
--- 198 of 304 --
-
 ---
 
 ## [Sección 197] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8265,9 +7673,6 @@ getProduct(productId: number, callback: (result: Product) => void) {
 // Open the database
 const openDatabaseRequest = indexedDB.open(this.name, this.version);
 openDatabaseRequest.onsuccess = () => {
-
--- 199 of 304 --
-
 ---
 
 ## [Sección 198] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8314,9 +7719,6 @@ import { addEvent } from './Listing-6-011';
 import { Product } from './Listing-6-021';
 import { ProductDatabase } from './Listing-6-025';
 const db = new ProductDatabase('ExampleDatabase', 1);
-
--- 200 of 304 --
-
 ---
 
 ## [Sección 199] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8357,9 +7759,6 @@ productStore.add(product);
 }
 The code to call the addProduct method is shown in Listing 6-29. Because the ProductDatabase class has
 handled the connection request, all the calling code needs to do is supply the new product that is to be stored.
-
--- 201 of 304 --
-
 ---
 
 ## [Sección 200] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8398,9 +7797,6 @@ import { Product } from './Listing-6-021';
 import { ProductDatabase } from './Listing-6-030';
 const db = new ProductDatabase('ExampleDatabase', 1);
 db.deleteProduct(4);
-
--- 202 of 304 --
-
 ---
 
 ## [Sección 201] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8443,9 +7839,6 @@ console.log('Failed to delete: ' + deleteRequest.error.name);
 The examples in this section have all used the TypeScript arrow function syntax. This is not to preserve
 the meaning of the this keyword, but to reduce the noise of the many nested function declarations that
 would otherwise be present in the code.
-
--- 203 of 304 --
-
 ---
 
 ## [Sección 202] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8488,9 +7881,6 @@ navigator.geolocation.getCurrentPosition(success);
 // You are here: Lat = 51.5033 Long = 0.1197
 // Altitude = 15 (Accuracy = 0)
 // Heading = 0 Speed = 0
-
--- 204 of 304 --
-
 ---
 
 ## [Sección 203] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8534,9 +7924,6 @@ function error() {
 console.log('Position information not available.');
 }
 const watch = navigator.geolocation.watchPosition(success, error);
-
--- 205 of 304 --
-
 ---
 
 ## [Sección 204] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8583,9 +7970,6 @@ battery: BatteryManager;
 mozBattery: BatteryManager;
 webkitBattery: BatteryManager;
 }
-
--- 206 of 304 --
-
 ---
 
 ## [Sección 205] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8629,9 +8013,6 @@ API is to display the information obtained as shown in the example, you could us
 event to sound an alarm if a device is taken off charge, either to warn the user or as a rudimentary security
 mechanism that detects the device is being stolen. You could also use the battery information to be sensitive
 to low-battery situations — perhaps by throttling your application when the battery is below 20%.
-
--- 207 of 304 --
-
 ---
 
 ## [Sección 206] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8671,9 +8052,6 @@ Unlike the battery sensor, which supplies a manager with properties that can be 
 proximity API is based on the userproximity and deviceproximity events, which pass an event argument
 containing the data. If the sensor is not available or the API is not supported on the device, these events will
 never fire; otherwise the event handler will be called whenever there is a change in the proximity status.
-
--- 208 of 304 --
-
 ---
 
 ## [Sección 207] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8716,9 +8094,6 @@ rotation.beta + '<br />' +
 rotation.gamma + '</p>';
 }
 addEvent(window, 'devicemotion', sensorChange);
-
--- 209 of 304 --
-
 ---
 
 ## [Sección 208] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8760,9 +8135,6 @@ Simply put, sensors can be used to supply measurements to the user, but with a l
 could be used to provide interesting user interactions, adaptive interfaces, or inventive games. Perhaps you’ll
 choose to change the theme of the page based on the ambient light, control page elements using motion or
 rotation, or even log the quality of the user’s sleep using a combination of light, motion, and noise sensors.
-
--- 210 of 304 --
-
 ---
 
 ## [Sección 209] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8804,9 +8176,6 @@ If you run this example enough times, you will encounter a frailty in this imple
 starts to run immediately in the background, which means it may start posting messages before the message
 event handler has been added. This problem would never occur normally in JavaScript as the main thread is
 not available to process other items in the event loop until a function completes.
-
--- 211 of 304 --
-
 ---
 
 ## [Sección 210] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8847,9 +8216,6 @@ console.log(response.id, response.message);
 };
 worker.addEventListener('message', workerMessageReceived);
 worker.postMessage('Start');
-
--- 212 of 304 --
-
 ---
 
 ## [Sección 211] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8894,9 +8260,6 @@ formats.
 allows real-time audio and video streams.
 • You can store data on the local computer using session storage, local storage, or
 IndexedDB. However, there is no guarantee the data will persist.
-
--- 213 of 304 --
-
 ---
 
 ## [Sección 212] ChApTer 6 ■ runnIng TypeSCrIpT In A BrowSer
@@ -8907,9 +8270,6 @@ most accurate available method of finding the location.
 implementation pattern.
 • Web Workers run in a separate thread, with messages being posted between the
 main thread and the worker thread, and vice versa.
-
--- 214 of 304 --
-
 195 © Steve Fenton 2018
 S. Fenton, Pro TypeScript, https://doi.org/10.1007/978-1-4842-3249-1_7
 
@@ -8946,9 +8306,6 @@ WebStorm all run on Windows, OSX, and Linux).
 Install Node
 You can download the installer for your chosen platform from the NodeJS website
 https://nodejs.org/en/download/
-
--- 215 of 304 --
-
 ---
 
 ## [Sección 214] Chapter 7 ■ running typeSCript on a Server
@@ -8977,9 +8334,6 @@ super-terse version will make the npM examples easier to understand.
 Once you have the package.json file, the only thing you need to know to add a dependency is its name.
 For all the examples below we are using Express, which is a lightweight web framework for Node.
 Figure 7-1. Empty TypeScript project
-
--- 216 of 304 --
-
 ---
 
 ## [Sección 215] Chapter 7 ■ running typeSCript on a Server
@@ -8995,9 +8349,6 @@ npm install express --save
 Whether you use the UI, or directly type the command, the save flag in the install command results in
 the package.json file being updated to show the dependency, as shown in Listing 7-3.
 Figure 7-2. Installing NPM packages via Visual Studio
-
--- 217 of 304 --
-
 ---
 
 ## [Sección 216] Chapter 7 ■ running typeSCript on a Server
@@ -9028,9 +8379,6 @@ Listing 7-4. Updated package.json with node type definition
 }
 }
 Figure 7-3. Installing NPM packages via package.json
-
--- 218 of 304 --
-
 ---
 
 ## [Sección 217] Chapter 7 ■ running typeSCript on a Server
@@ -9068,9 +8416,6 @@ running the command node app.js from the folder containing the source code (note
 compiled JavaScript file in this command, not the TypeScript file). You should see the message “Listening
 on localhost:8080” in the command window as shown in Figure 7-4. The server runs for as long as the
 command window remains open.
-
--- 219 of 304 --
-
 ---
 
 ## [Sección 218] Chapter 7 ■ running typeSCript on a Server
@@ -9090,9 +8435,6 @@ import * as http from 'http';
 const portNumber = 8080;
 Figure 7-4. Running the program
 Figure 7-5. Calling the program from a browser
-
--- 220 of 304 --
-
 ---
 
 ## [Sección 219] Chapter 7 ■ running typeSCript on a Server
@@ -9127,9 +8469,6 @@ To use Express, you’ll need both the Express dependency, and the Express type 
 dependency. A more complete version of the package.json file for the application is shown in Listing 7-7,
 which includes these two dependencies.
 Figure 7-6. Displaying information about the request
-
--- 221 of 304 --
-
 ---
 
 ## [Sección 220] Chapter 7 ■ running typeSCript on a Server
@@ -9176,9 +8515,6 @@ A correct request to this example should include firstName and lastName query st
 Express maps the query string to the request.query property. The full example request address of http://
 localhost:8080/?firstname=John&lastname=Smith will result in the message “You requested John
 Smith” being returned in the response, as shown in Figure 7-7.
-
--- 222 of 304 --
-
 ---
 
 ## [Sección 221] Chapter 7 ■ running typeSCript on a Server
@@ -9214,9 +8550,6 @@ arguments to the app.use method. In Listing 7-10 the handler function has been c
 deliberate error. The error handler is set using the app.use method and logs errors to the console before
 returning a 500 response code.
 Figure 7-7. Calling the Express program
-
--- 223 of 304 --
-
 ---
 
 ## [Sección 222] Chapter 7 ■ running typeSCript on a Server
@@ -9253,9 +8586,6 @@ next: NextFunction) => void;
 Each middleware is called in turn and must either call the next middleware using the next() function,
 or end the response. If no middleware ends the response, the result is a 404 error.
 Figure 7-8. General error in the browser
-
--- 224 of 304 --
-
 ---
 
 ## [Sección 223] Chapter 7 ■ running typeSCript on a Server
@@ -9305,9 +8635,6 @@ import * as http from 'http';
 import * as path from 'path';
 import * as bodyParser from 'body-parser';
 import * as methodOverride from 'method-override';
-
--- 225 of 304 --
-
 ---
 
 ## [Sección 224] Chapter 7 ■ running typeSCript on a Server
@@ -9345,9 +8672,6 @@ home page. The name of the file should match the name used in Listing 7-13 when 
 The Pug view for the home page is shown in Listing 7-14. The template extends a shared layout, which can
 be used to provide a consistent HTML layout for all your pages, or for groups of pages. The template for the
 home page inserts a heading, paragraph, and anchor tag into the “content” zone of the shared layout.
-
--- 226 of 304 --
-
 ---
 
 ## [Sección 225] Chapter 7 ■ running typeSCript on a Server
@@ -9388,9 +8712,6 @@ node server.js
 You should see the output shown in Figure 7-9, which means the route, route handler, view templates,
 and style sheet are all loading successfully. If you click on the books link, you will receive an error because
 there is not yet a handler for this route.
-
--- 227 of 304 --
-
 ---
 
 ## [Sección 226] Chapter 7 ■ running typeSCript on a Server
@@ -9416,9 +8737,6 @@ For this handler to work there must be a view with the specified name in the vie
 shows the book.pug template that will render the data supplied by the request handler. The template reuses the
 layout.pug file, which is the default layout for the application and renders the title from the model object.
 Figure 7-9. Home Page
-
--- 228 of 304 --
-
 ---
 
 ## [Sección 227] Chapter 7 ■ running typeSCript on a Server
@@ -9462,9 +8780,6 @@ legend Add a Book
 div
 label Title *
 br
-
--- 229 of 304 --
-
 ---
 
 ## [Sección 228] Chapter 7 ■ running typeSCript on a Server
@@ -9507,9 +8822,6 @@ response.render('book', { title: 'Books', 'books': [newBook] });
 To send the form post to the submit function, the route must be registered in the app.ts file. Listing 7-23
 shows the updated routes, which has the new post route that will forward matching requests to be handled by
 the book.submit function.
-
--- 230 of 304 --
-
 ---
 
 ## [Sección 229] Chapter 7 ■ running typeSCript on a Server
@@ -9539,9 +8851,6 @@ you don’t add this folder, the MongoDB server will stop immediately when you t
 the data in a different directory if you want to. You will also need to supply the path to MongoDB when you
 start the database server. For now, just add the default directory.
 Figure 7-10. Book Page
-
--- 231 of 304 --
-
 ---
 
 ## [Sección 230] Chapter 7 ■ running typeSCript on a Server
@@ -9585,9 +8894,6 @@ const Book = mongoose.model<Book>('Book', bookSchema);
 export function list(request: express.Request, response: express.Response) {
 Book.find({})
 .then((res) => {
-
--- 232 of 304 --
-
 ---
 
 ## [Sección 231] Chapter 7 ■ running typeSCript on a Server
@@ -9640,9 +8946,6 @@ Because the query is executed asynchronously, the code that depends on the resul
 appropriate then block. If you forget to place your code inside the then block, the response will be sent
 before the query is finished. Errors are handled using the catch block. The books collection is added to the
 model object passed to the view.
-
--- 233 of 304 --
-
 ---
 
 ## [Sección 232] Chapter 7 ■ running typeSCript on a Server
@@ -9679,9 +8982,6 @@ Pug’s each loop will handle an empty array but not an undefined value. The if 
 each loop in the example prevents undefined values reaching the each loop.
 You now have a fully functioning application that will save and display books. You can enter a book into
 the form, as shown in Figure 7-11.
-
--- 234 of 304 --
-
 ---
 
 ## [Sección 233] Chapter 7 ■ running typeSCript on a Server
@@ -9694,9 +8994,6 @@ case you may want to consider an appropriate backup strategy for your data. You 
 MongoDB backup methods at https://docs.mongodb.com/manual/core/backups/.
 Figure 7-12. Stored Book
 Figure 7-11. Completed Book Form
-
--- 235 of 304 --
-
 ---
 
 ## [Sección 234] Chapter 7 ■ running typeSCript on a Server
@@ -9725,9 +9022,6 @@ types organization in NPM.
 • Express supplies a lightweight and flexible application framework that is easier to
 use than the lower-level Node HTTP request and response.
 • Mongoose and MongoDB supply simple persistence with an asynchronous API.
-
--- 236 of 304 --
-
 217 © Steve Fenton 2018
 S. Fenton, Pro TypeScript, https://doi.org/10.1007/978-1-4842-3249-1_8
 
@@ -9766,9 +9060,6 @@ browser to browser and varies by platform, but if CTRL + SHIFT + I fails to work
 machine or CMD + OPT + I fails on your Mac, you can try the F12 key, or find the tools in the browser’s menu
 listed under “Developer Tools, Browser Console” or a similar name. For Node, the error and warning output
 will appear in the console window you use to run the HTTP server.
-
--- 237 of 304 --
-
 ---
 
 ## [Sección 236] Chapter 8 ■ exCeptions, MeMory, and perforManCe
@@ -9812,9 +9103,6 @@ You can use custom exceptions in a throw statement to classify the kind of error
 a common exception pattern to create a general ApplicationError class and inherit from it to create more
 specific kinds of errors. Any code that handles exceptions is then able to take different actions based on the
 type of error that has been thrown, as demonstrated in the later section on exception handling.
-
--- 238 of 304 --
-
 ---
 
 ## [Sección 237] Chapter 8 ■ exCeptions, MeMory, and perforManCe
@@ -9853,9 +9141,6 @@ Exception Handling
 When an exception is thrown, the program will be terminated unless the exception is handled. To handle an
 exception you can use a try-catch block, a try-finally block, or even a try-catch-finally block. In any of these
 cases, the code that may result in an exception being thrown is wrapped within the try block.
-
--- 239 of 304 --
-
 ---
 
 ## [Sección 238] Chapter 8 ■ exCeptions, MeMory, and perforManCe
@@ -9895,9 +9180,6 @@ throw err;
 ■ Note By handling only custom exceptions, you can ensure that you are only handling the types of
 exceptions that you know you can recover from. if you use the default catch block with no instanceof check,
 you are taking responsibility for every type of exception that may occur within your program.
-
--- 240 of 304 --
-
 ---
 
 ## [Sección 239] Chapter 8 ■ exCeptions, MeMory, and perforManCe
@@ -9907,9 +9189,6 @@ ApplicationError such as the InputError described earlier in this chapter. To il
 handling exceptions at different levels in the class hierarchy, Figure 8-1 shows a more complex hierarchy
 that extends the ApplicationError and InputError classes.
 Figure 8-1. Error class hierarchy
-
--- 241 of 304 --
-
 ---
 
 ## [Sección 240] Chapter 8 ■ exCeptions, MeMory, and perforManCe
@@ -9918,9 +9197,6 @@ When you choose to handle the InputError category of exceptions, you will be han
 exceptions as shown in Figure 8-2: InputError, BelowMinError, AboveMaxError, and InvalidLengthError.
 All other exceptions will be passed up the call stack as if they were unhandled.
 Figure 8-2. Handling InputError exceptions
-
--- 242 of 304 --
-
 ---
 
 ## [Sección 241] Chapter 8 ■ exCeptions, MeMory, and perforManCe
@@ -9934,9 +9210,6 @@ Exceptions will crop up again shortly with the discussion on performance because
 performance cost associated with creating and handling exceptions in your program. Despite this, if you are
 using them only to signal when the routine cannot continue, you shouldn’t worry about their runtime cost.
 Figure 8-3. Handling ApplicationError exceptions
-
--- 243 of 304 --
-
 ---
 
 ## [Sección 242] Chapter 8 ■ exCeptions, MeMory, and perforManCe
@@ -9980,9 +9253,6 @@ const readProximity = function () {
 const sensor = new ProximitySensor();
 try {
 sensor.open();
-
--- 244 of 304 --
-
 ---
 
 ## [Sección 243] Chapter 8 ■ exCeptions, MeMory, and perforManCe
@@ -10026,9 +9296,6 @@ Garbage Collection
 When memory is no longer needed, it needs to be freed for it to be allocated to other objects in your
 program. The process used to determine whether memory can be freed is called garbage collection. There
 are several styles of garbage collection that you will encounter depending on the runtime environment.
-
--- 245 of 304 --
-
 ---
 
 ## [Sección 244] Chapter 8 ■ exCeptions, MeMory, and perforManCe
@@ -10055,9 +9322,6 @@ Object B 1 No
 Object C 1 No
 Object D 1 No
 Object E 0 Yes
-
--- 246 of 304 --
-
 ---
 
 ## [Sección 245] Chapter 8 ■ exCeptions, MeMory, and perforManCe
@@ -10069,9 +9333,6 @@ step to optimize the memory usage.
 The use of mark-and-sweep garbage collection algorithms means that you rarely need to worry about
 garbage collection or memory leaks in your TypeScript program.
 Figure 8-4. Mark and sweep
-
--- 247 of 304 --
-
 ---
 
 ## [Sección 246] Chapter 8 ■ exCeptions, MeMory, and perforManCe
@@ -10114,9 +9375,6 @@ let result = communicationLines.calculate(4);
 if (result !== 6) {
 throw new Error('Test failed for team size of 4.');
 }
-
--- 248 of 304 --
-
 ---
 
 ## [Sección 247] Chapter 8 ■ exCeptions, MeMory, and perforManCe
@@ -10161,9 +9419,6 @@ totalRunTime: testTime,
 iterationAverageTime: (testTime / this.iterations)
 };
 }
-
--- 249 of 304 --
-
 ---
 
 ## [Sección 248] Chapter 8 ■ exCeptions, MeMory, and perforManCe
@@ -10203,9 +9458,6 @@ optimization opportunities.
 It is possible to get a very different result by adjusting the code as shown in Listing 8-12. The only
 change made to the code is to check the call to communicationLines.calculate with a team size of four
 results in seven communication lines. This test will fail and an exception will be raised.
-
--- 250 of 304 --
-
 ---
 
 ## [Sección 249] Chapter 8 ■ exCeptions, MeMory, and perforManCe
@@ -10245,9 +9497,6 @@ remember that your program will return different results due to differences such
 nesting depth, number of object created, and many other factors. Before you make any optimizations, make
 sure you have taken measurements so you can compare the performance before and after any changes to
 decide whether they have made a positive impact.
-
--- 251 of 304 --
-
 ---
 
 ## [Sección 250] Chapter 8 ■ exCeptions, MeMory, and perforManCe
@@ -10279,9 +9528,6 @@ within the catch block.
 you find you must manage a resource, use a try-finally block to clean up.
 • When it comes to performance, you need before and after measurements to back up
 any code you change in the name of optimization.
-
--- 252 of 304 --
-
 233 © Steve Fenton 2018
 S. Fenton, Pro TypeScript, https://doi.org/10.1007/978-1-4842-3249-1_9
 
@@ -10321,9 +9567,6 @@ This is a typical representation of all but the most common operations in jQuery
 generous by not mentioning any copying and pasting of examples (we have all done it). If our developer
 workflow for even the most common libraries involves flipping between the documentation and our code,
 there must be a better way. Type definitions are that better way.
-
--- 253 of 304 --
-
 ---
 
 ## [Sección 252] Chapter 9 ■ Using JavasCript Libraries
@@ -10356,9 +9599,6 @@ submit it to the Definitely Typed project to help other programmers in the futur
 A sample of the running application is shown in Figure 9-2. The application allows you to reserve seats
 and select from a range of food options.
 Figure 9-1. Adding the jQuery type definition
-
--- 254 of 304 --
-
 ---
 
 ## [Sección 253] Chapter 9 ■ Using JavasCript Libraries
@@ -10392,9 +9632,6 @@ Listing 9-2. The HTML page
 </tr>
 </thead>
 Figure 9-2. Knockout application
-
--- 255 of 304 --
-
 ---
 
 ## [Sección 254] Chapter 9 ■ Using JavasCript Libraries
@@ -10442,9 +9679,6 @@ self.availableMeals = [
 { mealName: "Premium (lobster)", price: 34.95 },
 { mealName: "Ultimate (whole zebra)", price: 290 }
 ];
-
--- 256 of 304 --
-
 ---
 
 ## [Sección 255] Chapter 9 ■ Using JavasCript Libraries
@@ -10480,9 +9714,6 @@ app.ts using a reference comment or import statement.
 Listing 9-4. The quick type definition fix
 declare var ko: any;
 Figure 9-3. The compiler errors
-
--- 257 of 304 --
-
 ---
 
 ## [Sección 256] Chapter 9 ■ Using JavasCript Libraries
@@ -10519,9 +9750,6 @@ self.meal = ko.observabel(initialMeal);
 // Non-existent method caught by compiler
 ko.apply(new ReservationsViewModel(), document.body);
 Figure 9-4. The first iteration
-
--- 258 of 304 --
-
 ---
 
 ## [Sección 257] Chapter 9 ■ Using JavasCript Libraries
@@ -10557,9 +9785,6 @@ This updated type definition provides more comprehensive type checking, ensuring
 argument is passed to applyBindings and that all arguments passed are the correct type. It also allows
 development tools to provide useful type hints and autocompletion as shown in Figure 9-6.
 Figure 9-5. The second iteration
-
--- 259 of 304 --
-
 ---
 
 ## [Sección 258] Chapter 9 ■ Using JavasCript Libraries
@@ -10597,9 +9822,6 @@ Listing 9-10 demonstrates the “divide and conquer” technique by moving the d
 applyBindings method into a separate KnockoutApplyBindings interface. This is then used in the Knockout
 interface to bind the type information to the method.
 Figure 9-6. Autocompletion for the applyBindings method
-
--- 260 of 304 --
-
 ---
 
 ## [Sección 259] Chapter 9 ■ Using JavasCript Libraries
@@ -10642,9 +9864,6 @@ process(name: string) {
 return old_process(name);
 }
 }
-
--- 261 of 304 --
-
 ---
 
 ## [Sección 260] Chapter 9 ■ Using JavasCript Libraries
@@ -10686,9 +9905,6 @@ output from your TypeScript files. At runtime, it makes no difference whether th
 in TypeScript or JavaScript as long as you add only type annotations and don’t restructure the program.
 It is best to save any restructuring work until your entire program is written in TypeScript as the
 refactoring support for TypeScript is more intelligent.
-
--- 262 of 304 --
-
 ---
 
 ## [Sección 261] Chapter 9 ■ Using JavasCript Libraries
@@ -10713,9 +9929,6 @@ in generating type information for an entire library in one go.
 type definition file.
 • Because JavaScript is entirely dynamic, you will probably discover and fix bugs that
 you didn’t know existed when you upgrade to TypeScript.
-
--- 263 of 304 --
-
 245 © Steve Fenton 2018
 S. Fenton, Pro TypeScript, https://doi.org/10.1007/978-1-4842-3249-1_10
 
@@ -10750,9 +9963,6 @@ will be useful whether you choose to write tests before you code, write tests af
 program, or wish to automate tests rather than perform them manually.
 ■ Note The acronym TDD was originally coined for test-driven development, but the revised description of
 test-driven design pays tribute to the role this practice plays in helping to shape the design of your program.
-
--- 264 of 304 --
-
 ---
 
 ## [Sección 263] ChapTer 10 ■ auTomaTeD TesTing
@@ -10793,9 +10003,6 @@ Listing 10-1. Package dependencies
 }
 }
 Once you have downloaded these packages, you are ready to start writing code.
-
--- 265 of 304 --
-
 ---
 
 ## [Sección 264] ChapTer 10 ■ auTomaTeD TesTing
@@ -10835,9 +10042,6 @@ The describe method accepts the name for a suite of specifications and a functio
 one. The it method represents a single specification. The language used in the suite and the specification is
 intended to be human readable. In this case, combining the suite description with the specification text reads,
 A FizzBuzz generator should return the number 1 when 1 is played.
-
--- 266 of 304 --
-
 ---
 
 ## [Sección 265] ChapTer 10 ■ auTomaTeD TesTing
@@ -10869,9 +10073,6 @@ const result = fizzBuzz.generate(1);
 expect(result).toBe(1);
 });
 Figure 10-1. The Jest test result
-
--- 267 of 304 --
-
 ---
 
 ## [Sección 266] ChapTer 10 ■ auTomaTeD TesTing
@@ -10893,9 +10094,6 @@ the code ensures that tests for each variation are written and fail before you w
 to pass. Knowing your tests will fail if the behavior is incorrect will give you confidence when you later
 refactor your program.
 Figure 10-2. The failing test result
-
--- 268 of 304 --
-
 ---
 
 ## [Sección 267] ChapTer 10 ■ auTomaTeD TesTing
@@ -10928,9 +10126,6 @@ return input;
 }
 }
 Figure 10-3. The passing test suite
-
--- 269 of 304 --
-
 ---
 
 ## [Sección 268] ChapTer 10 ■ auTomaTeD TesTing
@@ -10962,9 +10157,6 @@ const result = fizzBuzz.generate(2);
 expect(result).toBe(2);
 });
 Figure 10-4. The passing test suite of three tests
-
--- 270 of 304 --
-
 ---
 
 ## [Sección 269] ChapTer 10 ■ auTomaTeD TesTing
@@ -11006,9 +10198,6 @@ let fizzBuzz: FizzBuzz;
 const FIZZ = 'Fizz';
 const BUZZ = 'Buzz'
 const FIZZ_BUZZ = 'FizzBuzz';
-
--- 271 of 304 --
-
 ---
 
 ## [Sección 270] ChapTer 10 ■ auTomaTeD TesTing
@@ -11049,9 +10238,6 @@ const result = fizzBuzz.generate(30);
 expect(result).toBe(FIZZ_BUZZ);
 });
 });
-
--- 272 of 304 --
-
 ---
 
 ## [Sección 271] ChapTer 10 ■ auTomaTeD TesTing
@@ -11079,9 +10265,6 @@ constructor(private storage: Storage) {
 generate(input: number): string | number {
 if (input === 3) {
 Figure 10-5. The passing test suite of three tests
-
--- 273 of 304 --
-
 ---
 
 ## [Sección 272] ChapTer 10 ■ auTomaTeD TesTing
@@ -11124,9 +10307,6 @@ TypeScript called TypeSpec that you can use to combine business specifications a
 have used Jest in this chapter as I would prefer programmers to start with more common tools. You can find
 out more about TypeSpec on GitHub:
 https://github.com/Steve-Fenton/TypeSpec
-
--- 274 of 304 --
-
 ---
 
 ## [Sección 273] ChapTer 10 ■ auTomaTeD TesTing
@@ -11144,9 +10324,6 @@ ever fail.
 • You should refactor both production code and test code.
 • You can isolate your dependencies using simple objects, and these are preferable to
 clever tools that may bind your test too tightly to the implementation.
-
--- 275 of 304 --
-
 257 © Steve Fenton 2018
 S. Fenton, Pro TypeScript, https://doi.org/10.1007/978-1-4842-3249-1
 APPENDIX 1
@@ -11178,9 +10355,6 @@ variable = 10;
 You can store arrays in a variable. You can use the empty literal [] to create a new empty array and add
 items using array.push. You can also create and fill an array in a single step by placing the value inside the
 array literal, as shown in Listing A1-2.
-
--- 276 of 304 --
-
 appendix 1 ■ JavaScript Quick reference
 Listing A1-2. Arrays
 // Creating an empty array and adding values
@@ -11219,9 +10393,6 @@ return 'Hello ' + name;
 ---
 
 ## [Sección 274] ChapTer 10 ■ auTomaTeD TesTing
-
--- 277 of 304 --
-
 appendix 1 ■ JavaScript Quick reference
 // 'Hello Steve'
 let greeting = myFunction('Steve');
@@ -11259,9 +10430,6 @@ A switch statement is useful for controlling multiple branches based on a single
 specific values will cause branching. Listing A1-6 shows a typical switch statement that can execute different
 code based on the value of the style variable. The default condition will execute if no other condition has
 been executed.
-
--- 278 of 304 --
-
 appendix 1 ■ JavaScript Quick reference
 Listing A1-6. Switch statement
 // Switch statements
@@ -11300,9 +10468,6 @@ console.log(names[i]);
 You can simplify the code in Listing A1-7 using a for-of loop. A for-of loop removes the need to track the
 index number with a variable, and sets the value of each iteration directly in a variable for you to use. Listing
 A1-8 shows the for-of equivalent of the first example; the result is more expressive and readable.
-
--- 279 of 304 --
-
 appendix 1 ■ JavaScript Quick reference
 Listing A1-8. For-of loop
 const names = ['Lily', 'Rebecca', 'Debbye', 'Ann'];
@@ -11343,9 +10508,6 @@ const classicString = 'Line One\n' +
 ---
 
 ## [Sección 275] ChapTer 10 ■ auTomaTeD TesTing
-
--- 280 of 304 --
-
 appendix 1 ■ JavaScript Quick reference
 // Back-ticked strings
 const backtickedString = `Line One
@@ -11387,9 +10549,6 @@ alert(message);
 }).catch(function (error) {
 alert(error);
 });
-
--- 281 of 304 --
-
 appendix 1 ■ JavaScript Quick reference
 When you implement your own promise, using new Promise, your function should accept arguments
 for handlers that you call in the event of success and failure. These handlers are a loose contract; any
@@ -11402,9 +10561,6 @@ TypeScript language, I have included it with the TypeScript information rather t
 is much more to learn in JavaScript and in the different environments it executes in than I could place here.
 Having read this quick start, you should be able to read this book without coming across anything too
 surprising as all the TypeScript language features are described in detail.
-
--- 282 of 304 --
-
 265 © Steve Fenton 2018
 S. Fenton, Pro TypeScript, https://doi.org/10.1007/978-1-4842-3249-1
 APPENDIX 2
@@ -11439,9 +10595,6 @@ generate output using some of the different compiler options.
 ---
 
 ## [Sección 276] ChapTer 10 ■ auTomaTeD TesTing
-
--- 283 of 304 --
-
 APPENDIX 2 ■ TyPEScrIPT comPIlEr
 Listing A2-1. Sample TypeScript code
 import * as Dependency from './module';
@@ -11480,9 +10633,6 @@ define(["require", "exports", "./module"], factory);
 }
 })(function (require, exports) {
 "use strict";
-
--- 284 of 304 --
-
 APPENDIX 2 ■ TyPEScrIPT comPIlEr
 exports.__esModule = true;
 var Dependency = require("./module");
@@ -11527,9 +10677,6 @@ var val = example.exampleMethod();
 Both AMD and System module kinds can also be used with the --outFile flag, which combines your
 program into a single JavaScript file. Before you do this, please read about this flag in the Combined Output
 section below.
-
--- 285 of 304 --
-
 APPENDIX 2 ■ TyPEScrIPT comPIlEr
 ECMAScript Target Version
 The target flag allows you to set the target ECMAScript version. Currently you can target multiple versions
@@ -11579,9 +10726,6 @@ const val = example.exampleMethod();
 ---
 
 ## [Sección 277] ChapTer 10 ■ auTomaTeD TesTing
-
--- 286 of 304 --
-
 APPENDIX 2 ■ TyPEScrIPT comPIlEr
 TypeScript tracks the ECMAScript proposal, which means the latest versions of TypeScript and
 JavaScript will be very similar. The only real difference in the compiled code is type erasure, as there are no
@@ -11615,9 +10759,6 @@ If you are writing a new program from scratch, it should be a simple task to swi
 guidance of the compiler. For an existing program, you may decide to switch these flags on, fix some of the
 problems the compiler finds, and then switch it back off. This will let you refine your code in many discrete
 sessions, until you can finally leave them switched on permanently.
-
--- 287 of 304 --
-
 APPENDIX 2 ■ TyPEScrIPT comPIlEr
 Defaults
 There are many options that are set to the correct option, in terms of code quality, by default. The values for
@@ -11654,9 +10795,6 @@ case 1:
 // Allowed
 num = num * 2;
 break;
-
--- 288 of 304 --
-
 APPENDIX 2 ■ TyPEScrIPT comPIlEr
 case 2:
 // Allowed
@@ -11695,9 +10833,6 @@ tsc --noUnusedLocals true app.ts
 ---
 
 ## [Sección 278] ChapTer 10 ■ auTomaTeD TesTing
-
--- 289 of 304 --
-
 APPENDIX 2 ■ TyPEScrIPT comPIlEr
 Unused Parameters
 The noUnusedParameters flag highlights function and method parameters that are not used. This flag
@@ -11715,9 +10850,6 @@ Check JavaScript
 The checkJs flag can be used alongside the allowJs flag and causes the compiler to report errors in the
 JavaScript files.
 tsc --allowJs true --checkJs true app.ts
-
--- 290 of 304 --
-
 273 © Steve Fenton 2018
 S. Fenton, Pro TypeScript, https://doi.org/10.1007/978-1-4842-3249-1
 APPENDIX 3
@@ -11750,9 +10882,6 @@ var personality = DiscFlags.Drive | DiscFlags.Conscientiousness;
 var hasD = (personality & DiscFlags.Drive) == DiscFlags.Drive;
 // false
 var hasI = (personality & DiscFlags.Influence) == DiscFlags.Influence;
-
--- 291 of 304 --
-
 Appendix 3 ■ Bitwise FlAgs
 // false
 var hasS = (personality & DiscFlags.Steadiness) == DiscFlags.Steadiness;
@@ -11798,9 +10927,6 @@ Binary Decimal
 ---
 
 ## [Sección 279] ChapTer 10 ■ auTomaTeD TesTing
-
--- 292 of 304 --
-
 Appendix 3 ■ Bitwise FlAgs
 // DiscFlags.Influence
 var matchingTraits = personalityA & personalityB;
@@ -11825,9 +10951,6 @@ First set Second set Bitwise operation Result
 1001 0011 | (OR) 1011
 1011 1101 ^ (XOR) 0110
 1011 n/a ~ (NOT) 0100
-
--- 293 of 304 --
-
 277 © Steve Fenton 2018
 S. Fenton, Pro TypeScript, https://doi.org/10.1007/978-1-4842-3249-1
 APPENDIX 4
@@ -11869,9 +10992,6 @@ perform the operations you normally undertake using point, click, and touch.
 ---
 
 ## [Sección 280] ChapTer 10 ■ auTomaTeD TesTing
-
--- 294 of 304 --
-
 APPENDIX 4 ■ CoDINg KAtAs
 ■ Note the term coding kata was coined by “Pragmatic” Dave thomas. He also maintains a library of kata
 ideas at http://codekata.com/.
@@ -11908,9 +11028,6 @@ a kata to refactor the code.
 The rules of the kata should reflect the aspirations of the team; this usually means following practices
 such as test-first programming, pairing, and refactoring. With TypeScript in particular, you should aim to
 exercise the object-oriented programming practices described in Chapter 3.
-
--- 295 of 304 --
-
 APPENDIX 4 ■ CoDINg KAtAs
 Example: The Fizz Buzz Kata
 The Fizz Buzz Kata is the canonical example of a coding kata. It originated as a job interview test created by
@@ -11952,9 +11069,6 @@ code. When we refactor, the tests should pass every time we stop typing.
 ---
 
 ## [Sección 281] ChapTer 10 ■ auTomaTeD TesTing
-
--- 296 of 304 --
-
 APPENDIX 4 ■ CoDINg KAtAs
 There are also a couple of catchy slogans to deal with before we continue.
 • Arrange-Act-Assert. Also known as the triple-A, or AAA pattern. This describes the
@@ -11994,9 +11108,6 @@ You can use the following resources to learn more about katas and test-driven de
 • 99 Bottles of OOP (e-book, 2016) by Sandi Metz and Katrina Owen
 • Ian Cooper’s NDC presentation: “TDD: Where Did It All Go Wrong?”
 https://vimeo.com/68375232
-
--- 297 of 304 --
-
 281 © Steve Fenton 2018
 S. Fenton, Pro TypeScript, https://doi.org/10.1007/978-1-4842-3249-1
          A
@@ -12081,9 +11192,6 @@ Index
 ---
 
 ## [Sección 282] ChapTer 10 ■ auTomaTeD TesTing
-
--- 298 of 304 --
-
 ■ INDEX
 ClickLogger class, 148
 Code organization
@@ -12191,9 +11299,6 @@ error handling, 203–204
 multiple routes, 203
 package.json file, 201
 program implementation, 202–203
-
--- 299 of 304 --
-
 ■ INDEX
 Extending objects, 151
 alternative solution
@@ -12299,9 +11404,6 @@ event phases, 151
 ---
 
 ## [Sección 283] ChapTer 10 ■ auTomaTeD TesTing
-
--- 300 of 304 --
-
 ■ INDEX
 extending objects (see Extending objects)
 features, 130
@@ -12405,9 +11507,6 @@ open recursion
 code implementation, 101–102
 FileReader class, 100
 JavaScript runtime (cont.)
-
--- 301 of 304 --
-
 ■ INDEX
 LimitedFileReader class, 101–102
 SyncFileReader, 102
@@ -12515,9 +11614,6 @@ Switch statement, 259–260
 ---
 
 ## [Sección 284] ChapTer 10 ■ auTomaTeD TesTing
-
--- 302 of 304 --
-
 ■ INDEX
          T
 Tagged union, 23–24
@@ -12628,9 +11724,6 @@ type erasure
 code transformation, 88
 ordered array class, 88
 self-executing anonymous function, 88
-
--- 303 of 304 --
-
 ■ INDEX
 type inference
 annotations, 91–92
@@ -12700,8 +11793,5 @@ World Wide Web Consortium (W3C), 185
 XMLHttpRequest object, 170
 XMLHttpRequest mechanism, 146
 XOR operator, 275
-
--- 304 of 304 --
-
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #architecture_and_books

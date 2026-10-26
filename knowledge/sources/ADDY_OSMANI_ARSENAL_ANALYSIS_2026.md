@@ -1,4 +1,6 @@
-﻿# Addy Osmani GitHub Arsenal Analysis (2026) — Agentic Engineering & Web Quality
+# Addy Osmani GitHub Arsenal Analysis (2026) — Agentic Engineering & Web Quality
+
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
 
 > **Scope Anchor:** Deep technical investigation of Addy Osmani's GitHub repositories (`https://github.com/addyosmani?tab=repositories`) for Web Software Factory Studio (`example-client.pages.dev`), covering both the AI Agent Squad (`agent-skills`, `web-quality-skills`, `adverse`, `agent-house`, `factory`, `agent-engineer`, `clarity`, `context-buddy`) and the production Web & OBS Streaming Suite (`critical`, `visibly.js`, `agentic-seo`, `quicklink`, `oust`).
 > **Verification Tag:** `[VERIFICADO: https://api.github.com/users/addyosmani/repos, 2026-10-17]`

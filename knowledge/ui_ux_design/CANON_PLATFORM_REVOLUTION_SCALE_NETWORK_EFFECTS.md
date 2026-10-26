@@ -1,15 +1,15 @@
-﻿> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
 
 # 🌐 Tratado Canónico: Platform Revolution & Platform Scale
 ### Basado en: *Platform Revolution* (Parker, Van Alstyne, Choudary) & *Platform Scale* (Sangeet Paul Choudary)
@@ -28,7 +28,7 @@ Una **Plataforma** no posee el inventario ni produce el contenido; es una infrae
 
 En el mercado del ocio nocturno y cultural:
 - **Ticketeras Tradicionales (Pipelines):** Compran derechos exclusivos de venta, montan un sitio web lento, cobran comisiones abusivas y tratan cada evento como un producto cerrado.
-- **Yendo (Plataforma Multisitio):** Orquesta interacciones en tiempo real entre organizadores de eventos/venues y squads de usuarios que buscan experiencias sociales espontáneas o planificadas.
+- **WebFactory (Plataforma Multisitio):** Orquesta interacciones en tiempo real entre organizadores de eventos/venues y squads de usuarios que buscan experiencias sociales espontáneas o planificadas.
 
 ---
 
@@ -66,12 +66,12 @@ Toda plataforma escalable debe reducir su propuesta de valor a una **Interacció
 ## 3. Dinámica de Efectos de Red (Network Effects)
 
 1. **Efectos de Red Directos (Same-side):**
-   - Más amigos de un usuario en Yendo → mayor valor del grafo social, mayor facilidad de quórum.
+   - Más amigos de un usuario en WebFactory → mayor valor del grafo social, mayor facilidad de quórum.
 2. **Efectos de Red Cruzados (Cross-side):**
    - Más venues verificados en CABA → mayor atractivo para los usuarios.
    - Más usuarios activos en una zona (ej: Palermo Soho a la medianoche) → mayor incentivo para que los bares carguen ofertas de última hora para llenar mesas.
 3. **Congestión y Externalidades Negativas:**
-   - Si un venue se satura de mala calidad o spam, se produce churn masivo de usuarios. El rol de Yendo como curador es actuar como **Guardián de Calidad (Quality Governance)** mediante filtros determinísticos y reputación verificada.
+   - Si un venue se satura de mala calidad o spam, se produce churn masivo de usuarios. El rol de WebFactory como curador es actuar como **Guardián de Calidad (Quality Governance)** mediante filtros determinísticos y reputación verificada.
 
 ---
 

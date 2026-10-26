@@ -1,4 +1,4 @@
-﻿/**
+/**
  * tools/intelligence/spec_generator.mjs — Spec-Driven Development (SDD) Engine
  * =============================================================================
  * Inspired by Zach Lloyd (Warp) and Dru Knox (Tessl).
@@ -134,12 +134,54 @@ export function generateSoftwareSpec(featureTitle, description, options = {}) {
     'utf8'
   );
 
+  // Anthropic Long-Running Agent Harness artifacts (.specify/memory/features.json & PROGRESS.md)
+  const featuresJsonPath = path.join(SPECIFY_MEM_DIR, 'features.json');
+  let featuresList = [];
+  if (fs.existsSync(featuresJsonPath)) {
+    try { featuresList = JSON.parse(fs.readFileSync(featuresJsonPath, 'utf8')); } catch (_) { featuresList = []; }
+  }
+  const existingIdx = featuresList.findIndex(f => f.slug === slug);
+  const featureEntry = {
+    id: `FEAT-${String(existingIdx >= 0 ? existingIdx + 1 : featuresList.length + 1).padStart(3, '0')}`,
+    slug,
+    title: featureTitle,
+    description,
+    passes: false,
+    verification_command: techSpec.verification_harness.gate_command,
+    acceptance_criteria: productSpec.acceptance_criteria,
+    updated_at: timestamp
+  };
+  if (existingIdx >= 0) {
+    featuresList[existingIdx] = { ...featuresList[existingIdx], ...featureEntry };
+  } else {
+    featuresList.push(featureEntry);
+  }
+  fs.writeFileSync(featuresJsonPath, JSON.stringify(featuresList, null, 2) + '\n', 'utf8');
+
+  const progressMdPath = path.join(SPECIFY_MEM_DIR, 'PROGRESS.md');
+  if (!fs.existsSync(progressMdPath)) {
+    fs.writeFileSync(
+      progressMdPath,
+      `# Cross-Session Agent Harness Progress Log — ${projectConfig.name} (\`${projectConfig.id}\`)\n\n` +
+      `> **Protocol (Anthropic Long-Running Harness):** Read \`features.json\`, \`PROGRESS.md\`, and \`git log -n 5\` at session start. Implement 1 feature per atomic cycle, run \`${techSpec.verification_harness.gate_command}\`, update \`passes: true\`, and append handoff notes below.\n\n` +
+      `- **[${timestamp}] Initializer Agent:** Scaffolded \`${slug}\` (\`${featureTitle}\`) in \`.specify/specs/${slug}/\` and registered in \`features.json\`.\n`,
+      'utf8'
+    );
+  } else {
+    fs.appendFileSync(
+      progressMdPath,
+      `- **[${timestamp}] Spec Generator:** Registered/updated feature \`${slug}\` (\`${featureTitle}\`) in \`features.json\`.\n`,
+      'utf8'
+    );
+  }
+
   console.log(`\n======================================================`);
   console.log(`📐 SPEC-DRIVEN DEVELOPMENT (SDD + SPEC-KIT) GENERATED`);
   console.log(`Project:  ${projectConfig.id} (${projectConfig.archetype})`);
   console.log(`Feature:  ${featureTitle}`);
   console.log(`JSON:     docs/specs/${slug}.spec.json`);
   console.log(`Spec-Kit: .specify/specs/${slug}/{spec.md,plan.md,tasks.md}`);
+  console.log(`Harness:  .specify/memory/{features.json,PROGRESS.md}`);
   console.log(`======================================================\n`);
 
   return combinedSpec;

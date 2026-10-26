@@ -1,5 +1,7 @@
 # Canon: Seminal Academic Papers on Agentic Software Engineering (2026)
 
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
+
 ## 1. MetaGPT: Meta Programming for a Multi-Agent Collaborative Framework
 - **Autores:** Sirui Hong, Mingchen Zhuge, Jonathan Chen, Xiawu Zheng, Cheng Cheng, Ceyao Zhang, Jinlin Wang, Zili Wang, Steven Hoi, Chenglin Wu (ICLR 2024 Oral).
 - **Referencia:** [arXiv:2308.00352](https://arxiv.org/abs/2308.00352).

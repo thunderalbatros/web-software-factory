@@ -1,15 +1,15 @@
-﻿> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
 
 # 🎨 Tratado Canónico: Designing for Emotion (Aarron Walter)
 ### Basado en: *Designing for Emotion* (A Book Apart Series)
@@ -28,7 +28,7 @@ Aarron Walter adapta la pirámide de Maslow al diseño de software y productos d
                     /   \
                    /     \
                   / PLACER\       ◄─── Sorpresa, Delicia, Personalidad,
-                 /---------\           Vínculo Afectivo (Yendo Carpincho)
+                 /---------\           Vínculo Afectivo (WebFactory Carpincho)
                 / USABILIDAD\     ◄─── Fácil de aprender, intuitivo, sin errores
                /-------------\
               / CONFIABILIDAD \   ◄─── Estable, rápido, sin caídas de servidor
@@ -46,10 +46,10 @@ Aarron Walter adapta la pirámide de Maslow al diseño de software y productos d
 
 Walter documenta cómo MailChimp conquistó el mercado dominado por corporaciones grises a través de **Freddie el Chimpancé**, un personaje con personalidad definida que rompía la tensión de enviar campañas de email.
 
-### El Caso Canónico del Carpincho Yendo:
+### El Caso Canónico del Carpincho WebFactory:
 En Argentina, el carpincho no es un animal genérico: es un **ícono cultural y afectivo** asociado a la tranquilidad, la naturaleza comunitaria (vive en manadas armónicas), la simpatía y la sabiduría relajada ("chill").
 
-1. **Antropomorfismo Controlado:** El Carpincho Yendo no interrumpe como el infame Clippy de Microsoft; actúa como un compañero silente y festivo en los momentos de victoria:
+1. **Antropomorfismo Controlado:** El Carpincho WebFactory no interrumpe como el infame Clippy de Microsoft; actúa como un compañero silente y festivo en los momentos de victoria:
    - Al lograr el Quórum con amigos: El Carpincho brinda con un mate o un trago.
    - Al completar el check-in presencial en el venue: El Carpincho se pone lentes de sol y festeja con confeti Skia.
    - En estados vacíos (Empty States): El Carpincho está tomando sol en el pasto con un cartel simpático: *"No hay planes acá todavía... ¿armamos la previa?"*.
@@ -73,5 +73,5 @@ Walter subraya que el deleite emocional no proviene de grandes animaciones invas
 - [[CANON_100_THINGS_DESIGNER_PEOPLE_WEINSCHENK]]
 - [[CANON_ACTIONABLE_GAMIFICATION_OCTALYSIS_CHOU]]
 - [[Reanimated]]
-- [[React Native Skia]]
+- [[Modern Web UI (CSS/WAAPI) Skia]]
 - [[Capybara Mascot]]

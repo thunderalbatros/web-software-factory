@@ -1,32 +1,32 @@
-﻿> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
+
 # 📐 Síntesis de Descubrimientos: Proporción Áurea, Neuroestética y Dunbar UI
 
 ## 1. Fundamentos Científicos y Neuroestética (HCI & Neurobiología)
 
-A partir de la ingesta de las 36 fuentes canónicas de [[.knowledge/golden_ratio_design_sources.md]], se extraen conclusiones determinantes para la interfaz de **Yendo Mobile**:
+A partir de la ingesta de las 36 fuentes canónicas de [[.knowledge/golden_ratio_design_sources.md]], se extraen conclusiones determinantes para la interfaz de **la Web Software Factory**:
 
 ### A. Reducción de la Carga Cognitiva Cerebral (Di Dio et al., 2007 - fMRI)
 - Los estudios de resonancia magnética funcional (*fMRI*) demuestran que las proporciones basadas en $\Phi$ (1.618) activan selectivamente la **ínsula anterior derecha** del cerebro humano, generando una respuesta de agrado perceptivo involuntario.
-- **Impacto en Yendo:** El cerebro consume **menor glucosa y fatiga visual** al decodificar pantallas compuestas bajo la serie de Fibonacci, facilitando la toma de decisiones en contextos dinámicos (reservar una cancha en la calle o evaluar un quórum con una sola mano).
+- **Impacto en WebFactory:** El cerebro consume **menor glucosa y fatiga visual** al decodificar pantallas compuestas bajo la serie de Fibonacci, facilitando la toma de decisiones en contextos dinámicos (reservar una cancha en la calle o evaluar un quórum con una sola mano).
 
 ### B. Efecto de Usabilidad Estética (Tractinsky et al., 2000)
 - *"Lo que es estéticamente equilibrado se percibe como más fácil de usar"*. Una composición armónica minimiza la tolerancia a la frustración e incrementa la sensación subjetiva de velocidad de la aplicación.
 
 ---
 
-## 2. Los 4 Pilares Matemáticos en la UI de Yendo
+## 2. Los 4 Pilares Matemáticos en la UI de WebFactory
 
 ```
 ┌─────────────────────────────────────────────────────────────┐

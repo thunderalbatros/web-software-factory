@@ -4,15 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{PROJECT_NAME}} — Sitio Oficial</title>
-  <meta name="description" content="{{PROJECT_NAME}} — Plataforma web construida con la Web Software Factory (OKLCH, WCAG 2.2 AA, Cloudflare Edge).">
+  <meta name="description" content="{{PROJECT_NAME}} — Plataforma web construida con la Web Software Factory (OKLCH, W3C DTCG 2025.10, WCAG 2.2 AA, Cloudflare Edge).">
   <link rel="stylesheet" href="/site/css/design-tokens.css">
+  <link rel="stylesheet" href="/site/css/ui-primitives.css">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "{{PROJECT_NAME}}",
-    "url": "{{PROJECT_DOMAIN}}"
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "name": "{{PROJECT_NAME}}",
+        "url": "{{PROJECT_DOMAIN}}"
+      },
+      {
+        "@type": "Organization",
+        "name": "{{PROJECT_NAME}}",
+        "url": "{{PROJECT_DOMAIN}}"
+      }
+    ]
   }
   </script>
   <script type="speculationrules">
@@ -33,20 +43,104 @@
   </script>
 </head>
 <body>
-  <header aria-label="Navegación principal">
-    <nav aria-label="Menú principal">
+  <header class="site-header" aria-label="Navegación principal">
+    <nav class="container site-nav" aria-label="Menú principal">
       <strong>{{PROJECT_NAME}}</strong>
+      <ul class="site-nav-links">
+        <li><a href="#features">Capacidades</a></li>
+        <li><a href="#pricing">Planes</a></li>
+        <li><a href="#faq">Preguntas</a></li>
+      </ul>
     </nav>
   </header>
-  <main id="main-content" aria-label="Contenido principal">
-    <section aria-label="Hero principal">
+
+  <main id="main-content" class="container" aria-label="Contenido principal">
+    <section class="hero-section" aria-label="Propuesta de valor principal" data-scroll-reveal>
+      <span class="hero-badge">W3C DTCG 2025.10 • OKLCH • Cloudflare Edge</span>
       <h1>{{PROJECT_NAME}}</h1>
-      <p>Arquitectura de alta conversión con tokens OKLCH, escalas fluidas Utopia y despliegue en Cloudflare Workers.</p>
+      <p class="hero-lead">Arquitectura web de alta conversión diseñada con tokens perceptuales OKLCH 90/8/2, escalas fluidas Utopia, animaciones nativas a 60 FPS y despliegue global en Cloudflare Workers Static Assets.</p>
+      <div class="hero-actions" aria-label="Acciones principales">
+        <a href="#pricing" class="btn-primary btn-spring" data-cta="primary" aria-label="Comenzar ahora con {{PROJECT_NAME}}">Comenzar ahora</a>
+        <button type="button" class="btn-secondary" data-open-modal="demo-modal" aria-label="Abrir demostración interactiva">Ver demostración</button>
+      </div>
+    </section>
+
+    <section id="features" class="section-block" aria-label="Métricas y capacidades clave" data-content-visibility="auto">
+      <div class="section-header">
+        <h2>Ingeniería Visual y Rendimiento Determinista</h2>
+        <p>Primitivas CSS Baseline 2026 sin sobrecarga de frameworks pesados en el hilo principal.</p>
+      </div>
+      <div class="bento-grid">
+        <article class="bento-card bento-span-8 spotlight-card holo-glare" data-tilt-3d aria-label="Rendimiento Core Web Vitals">
+          <div>
+            <h3>Velocidad Instantánea en el Borde</h3>
+            <p>Pre-renderizado especulativo, View Transitions API y activos inmutables distribuidos en más de 300 nodos de Cloudflare.</p>
+          </div>
+          <p class="metric-value tabular-nums" data-count-to="100">100</p>
+        </article>
+        <article class="bento-card bento-span-4 spotlight-card" data-tilt-3d aria-label="Contraste Perceptual APCA">
+          <div>
+            <h3>Precisión Cromática OKLCH</h3>
+            <p>Jerarquía de superficie 90/8/2 con contraste APCA verificado y tipografía fluida sin saltos de layout.</p>
+          </div>
+          <p class="metric-value tabular-nums" data-count-to="60">60</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="pricing" class="section-block" aria-label="Planes y precios transparentes" data-content-visibility="auto">
+      <div class="section-header">
+        <h2>Planes diseñados para escalar con tu operación</h2>
+        <p>Activación inmediata, sin costos ocultos y con garantía de rendimiento en producción.</p>
+      </div>
+      <div class="pricing-grid">
+        <article class="pricing-card" aria-label="Plan Inicial">
+          <h3>Esencial</h3>
+          <p class="price-tag tabular-nums">$0</p>
+          <p>Ideal para validar producto y lanzar con velocidad instantánea en el borde.</p>
+          <a href="#features" class="btn-secondary" aria-label="Seleccionar Plan Esencial">Empezar gratis</a>
+        </article>
+        <article class="pricing-card" data-featured="true" aria-label="Plan Profesional Recomendado">
+          <h3>Profesional</h3>
+          <p class="price-tag tabular-nums">$49</p>
+          <p>Arquitectura completa con analítica en el borde, SEO/GEO automatizado y soporte prioritario.</p>
+          <a href="#features" class="btn-primary btn-spring" aria-label="Seleccionar Plan Profesional">Activar Plan Profesional</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="faq" class="section-block" aria-label="Preguntas frecuentes" data-content-visibility="auto">
+      <div class="section-header">
+        <h2>Preguntas frecuentes</h2>
+        <p>Respuestas claras sobre arquitectura, seguridad y despliegue.</p>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item" name="faq-group" open>
+          <summary>¿Cómo garantiza el sitio una puntuación perfecta en Core Web Vitals?</summary>
+          <p>Utilizamos CSS Baseline 2026, animaciones exclusivas del compositor GPU (transform y opacity) y Speculation Rules API para navegación instantánea.</p>
+        </details>
+        <details class="faq-item" name="faq-group">
+          <summary>¿Qué estándares de seguridad y accesibilidad aplica de fábrica?</summary>
+          <p>Cumple con WCAG 2.2 AA, contraste perceptual APCA, cabeceras estrictas CSP + HSTS y sanitización contra DOM-XSS verificada por AST.</p>
+        </details>
+      </div>
     </section>
   </main>
-  <footer aria-label="Pie de página legal">
-    <small>&copy; 2026 {{PROJECT_NAME}}. Todos los derechos reservados.</small>
+
+  <dialog id="demo-modal" class="dialog-modal" aria-label="Demostración del sistema">
+    <h2>Arquitectura Verificada</h2>
+    <p>Este modal utiliza el elemento nativo HTML5 <code>&lt;dialog&gt;</code> con transiciones discretas <code>@starting-style</code> sin dependencias externas.</p>
+    <div class="hero-actions">
+      <button type="button" class="btn-secondary" data-close-modal="demo-modal" aria-label="Cerrar ventana de demostración">Cerrar</button>
+    </div>
+  </dialog>
+
+  <footer class="site-footer" aria-label="Pie de página legal">
+    <div class="container">
+      <small>&copy; 2026 {{PROJECT_NAME}}. Todos los derechos reservados.</small>
+    </div>
   </footer>
+
   <script src="/site/js/app.js" defer></script>
 </body>
 </html>

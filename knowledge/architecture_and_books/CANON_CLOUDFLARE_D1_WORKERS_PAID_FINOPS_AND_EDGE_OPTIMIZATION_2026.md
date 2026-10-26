@@ -1,4 +1,4 @@
-﻿# CANON: Optimización de Cloudflare D1, Workers Paid (USD 5/mes), FinOps Guardrails, Smart Placement y Cifrado en Reposo (2026)
+# CANON: Optimización de Cloudflare D1, Workers Paid (USD 5/mes), FinOps Guardrails, Smart Placement y Cifrado en Reposo (2026)
 
 **Alcance:** Aplicable a la arquitectura de borde en Cloudflare Workers (`worker/index.js`, `wrangler.toml`), base de datos serverless SQLite Cloudflare D1 (`WebFactory_production`), sincronización de baja latencia entre USA (OBS Studio Browser Sources en `overlay-*` y `wheel-*`) y Argentina (`#control-panel`, `#admin-hub`), clientes web en `site/js/`, y protección criptográfica de credenciales OAuth 2.1 en `kv_store`. Relacionado con [[CANON_OPEN_BOOKS_WEB_SECURITY_OWASP_AND_SQLITE_INTERNALS_2026]], [[CANON_QASIMHBTI_BOOKS_SQLITE_SCALABILITY_EDGE_CACHE_AND_ALGORITHMS_2026]], [[CANON_POEAA_FOWLER_GOOS_FREEMAN_C4_SIMON_BROWN_AND_FUNCTIONAL_CORE_2026]], [[CANON_CYBERSECURITY_DEVSECOPS_2026]] y [[CANON_AGENT_TOKEN_EFFICIENCY_ANTIGRAVITY_2026-10-24]].
 

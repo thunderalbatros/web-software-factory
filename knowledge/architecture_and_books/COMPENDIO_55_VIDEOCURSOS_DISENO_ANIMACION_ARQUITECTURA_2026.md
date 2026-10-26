@@ -1,6 +1,6 @@
-﻿# Compendio Maestro de 55 Videocursos Técnicos Analizados (UI/UX, Motion 60-FPS, Shaders, Game Design & Agentes IA)
+# Compendio Maestro de 55 Videocursos Técnicos Analizados (UI/UX, Motion 60-FPS, Shaders, Game Design & Agentes IA)
 
-> **Alcance:** Literatura canónica de arquitectura de software, código limpio, sistemas de diseño UI/UX, animaciones a 60 FPS, física de resortes, MDA Game Design y orquestación de agentes IA extraída de las 55 video-masterclasses de `yendo_obsidian_vault` para la Software Factory Web y client-portal.
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, sistemas de diseño UI/UX, animaciones a 60 FPS, física de resortes, MDA Game Design y orquestación de agentes IA extraída de las 55 video-masterclasses de `canonical_knowledge_vault` para la Software Factory Web y client-portal.
 
 Este documento consolida las lecciones técnicas, fórmulas de animación, principios de diseño gráfico y patrones de ingeniería extraídos de 55 videocursos técnicos y conferencias internacionales.
 
@@ -12,7 +12,7 @@ Este documento consolida las lecciones técnicas, fórmulas de animación, princ
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -27,13 +27,13 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Adopción de Animaciones Basadas en Resortes para Yendo Mobile
+# Informe Técnico: Adopción de Animaciones Basadas en Resortes para la Web Software Factory
 
 ## 1. Concepto Central y Tesis Arquitectónica
 
 **Concepto Central:** La sesión "Animate with Springs" de WWDC23 subraya la superioridad de las animaciones basadas en resortes (spring animations) sobre los métodos tradicionales (curvas de Bézier, lineales) para crear interfaces de usuario fluidas, naturales y perceptualmente agradables. La clave reside en su modelado físico, que garantiza la continuidad de posición y velocidad, la capacidad de manejar velocidades iniciales (esencial para gestos e interrupciones), y una sensación de movimiento orgánico que resuena con la intuición humana. Los resortes no requieren rebote para ser efectivos; un resorte "suave" (sin rebote) es a menudo la opción más versátil y elegante.
 
-**Tesis Arquitectónica para Yendo Mobile:** Yendo Mobile adoptará un sistema de animación basado en resortes como pilar fundamental de su experiencia de usuario. Esta decisión se alinea directamente con el ADN de "pisar internet" al ofrecer una interfaz de usuario de clase mundial, altamente reactiva y perceptualmente rápida. Al emular el comportamiento físico del mundo real, las animaciones de resorte reducirán la fricción cognitiva, mejorarán la usabilidad y dotarán a la aplicación de una sensación de "vida" y "naturalidad". La implementación se centrará en replicar estos principios en nuestro stack de React Native/Expo, priorizando la continuidad, la respuesta a gestos y la coherencia con el lenguaje de diseño Material 3 y Dark OLED.
+**Tesis Arquitectónica para la Web Software Factory:** la Web Software Factory adoptará un sistema de animación basado en resortes como pilar fundamental de su experiencia de usuario. Esta decisión se alinea directamente con el ADN de "pisar internet" al ofrecer una interfaz de usuario de clase mundial, altamente reactiva y perceptualmente rápida. Al emular el comportamiento físico del mundo real, las animaciones de resorte reducirán la fricción cognitiva, mejorarán la usabilidad y dotarán a la aplicación de una sensación de "vida" y "naturalidad". La implementación se centrará en replicar estos principios en nuestro stack de Modern Web UI (CSS/WAAPI)/Expo, priorizando la continuidad, la respuesta a gestos y la coherencia con el lenguaje de diseño Material 3 y Dark OLED.
 
 ## 2. Hallazgos Técnicos Clave
 
@@ -53,19 +53,19 @@ Las animaciones de resorte mejoran drásticamente la ergonomía de la interfaz a
 *   **Duración Perceptual vs. Duración de Asentamiento:** La `duration` es una medida perceptual y predecible para el usuario. La duración de asentamiento (settling duration) es el tiempo técnico hasta que el resorte está "completamente" quieto, pero es impredecible y no debe usarse para cambios de UI.
 
 ### Modelos de Hilos (Implícito)
-La sesión descompone la curva de un resorte en componentes más simples (onda coseno amortiguada y decaimiento exponencial). Este modelo de "hilos" o componentes subyacentes es crucial para comprender cómo se logran la continuidad y el comportamiento físico. Para Yendo Mobile, esto implica que las bibliotecas de animación elegidas deben ser capaces de emular o implementar esta composición de manera eficiente, idealmente en el hilo nativo para un rendimiento óptimo.
+La sesión descompone la curva de un resorte en componentes más simples (onda coseno amortiguada y decaimiento exponencial). Este modelo de "hilos" o componentes subyacentes es crucial para comprender cómo se logran la continuidad y el comportamiento físico. Para la Web Software Factory, esto implica que las bibliotecas de animación elegidas deben ser capaces de emular o implementar esta composición de manera eficiente, idealmente en el hilo nativo para un rendimiento óptimo.
 
 ### Composición de Componentes o Tokens de Diseño
-*   **Presets:** La existencia de presets de resorte (e.g., `.snappy` en SwiftUI) proporciona puntos de partida probados y optimizados. Yendo Mobile debería definir sus propios presets para asegurar la consistencia.
+*   **Presets:** La existencia de presets de resorte (e.g., `.snappy` en SwiftUI) proporciona puntos de partida probados y optimizados. la Web Software Factory debería definir sus propios presets para asegurar la consistencia.
 *   **Parámetros Personalizables:** La capacidad de ajustar `duration` y `bounce` permite una personalización fina para el "carácter" deseado de la animación.
 *   **Spring Model (Programático):** La introducción de un `Spring` model en SwiftUI permite la representación programática de resortes, la conversión entre diferentes conjuntos de parámetros (mass/stiffness/damping vs. duration/bounce) y la evaluación de su valor/velocidad en el tiempo. Esto abre la puerta a simulaciones avanzadas y animaciones personalizadas complejas, lo que es un activo valioso para un equipo de UI/UX que busca la excelencia.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-### React Native & Expo 57
-*   **Adopción de Bibliotecas:** Investigar y adoptar bibliotecas de animación de React Native que implementen principios de resortes de manera robusta y eficiente. `react-native-reanimated` es el candidato principal, ya que permite la ejecución de animaciones en el hilo de UI nativo, crucial para la fluidez y la preservación de velocidad en gestos. `react-spring` es otra opción a considerar por su API declarativa y su enfoque en la física.
+### Modern Web UI (CSS/WAAPI) & Expo 57
+*   **Adopción de Bibliotecas:** Investigar y adoptar bibliotecas de animación de Modern Web UI (CSS/WAAPI) que implementen principios de resortes de manera robusta y eficiente. `react-native-reanimated` es el candidato principal, ya que permite la ejecución de animaciones en el hilo de UI nativo, crucial para la fluidez y la preservación de velocidad en gestos. `react-spring` es otra opción a considerar por su API declarativa y su enfoque en la física.
 *   **Abstracción de Componentes:** Desarrollar un conjunto de componentes de UI reutilizables (botones, toggles, modales, transiciones de pantalla) que encapsulen animaciones de resorte por defecto. Esto garantizará la consistencia y reducirá la carga de implementación para los desarrolladores.
-*   **Configuración Centralizada:** Crear un módulo de configuración de animaciones de resorte que defina los valores de `duration` y `bounce` (o sus equivalentes en la biblioteca elegida) para diferentes tipos de interacciones en Yendo Mobile.
+*   **Configuración Centralizada:** Crear un módulo de configuración de animaciones de resorte que defina los valores de `duration` y `bounce` (o sus equivalentes en la biblioteca elegida) para diferentes tipos de interacciones en la Web Software Factory.
 
 ### Dark OLED & Material 3
 *   **Coherencia Visual:** Las animaciones de resorte deben complementar el diseño Dark OLED y Material 3. La "cola larga" de los resortes suaves (`bounce=0`) puede ser particularmente efectiva en fondos oscuros, proporcionando una sensación de desvanecimiento natural y elegante.
@@ -81,12 +81,12 @@ La sesión descompone la curva de un resorte en componentes más simples (onda c
 *   **Venue (Transiciones de Pantalla):** Para transiciones entre "venues" o pantallas principales, priorizar resortes suaves (`bounce=0`) con una `duration` moderada. Esto transmitirá una sensación de elegancia, control y estabilidad en la navegación principal.
 *   **Experiencia (Interacciones Específicas):** Dentro de una "experiencia" particular (e.g., arrastrar y soltar elementos, feedback de acciones), se puede introducir un `bounce` sutil (e.g., 15-30%) para añadir un toque de "físicalidad" o "juego", si el carácter de esa experiencia lo permite.
 *   **Grupo (Elementos de Lista/Colección):** Para animaciones dentro de "grupos" o colecciones (reordenación de listas, expansión de elementos), la continuidad es clave para mantener la coherencia visual del grupo. Los resortes suaves son ideales para estos casos.
-*   **Consistencia del Carácter:** Definir un conjunto de valores de `duration` y `bounce` que reflejen el "carácter" general de Yendo Mobile (¿serio, juguetón, rápido, relajado?) y aplicarlos consistentemente en toda la aplicación.
+*   **Consistencia del Carácter:** Definir un conjunto de valores de `duration` y `bounce` que reflejen el "carácter" general de la Web Software Factory (¿serio, juguetón, rápido, relajado?) y aplicarlos consistentemente en toda la aplicación.
 
 ### Invariantes de Ingeniería (un createClient, StyleSheet.create canónico, Dunbar 4-6)
-*   **`createYendoSpring` (análogo a `createClient`):** Establecer una función o un conjunto de constantes canónicas para definir configuraciones de resorte estándar de Yendo Mobile. Esto aseguraría la consistencia y la reusabilidad en todo el codebase.
+*   **`createYendoSpring` (análogo a `createClient`):** Establecer una función o un conjunto de constantes canónicas para definir configuraciones de resorte estándar de la Web Software Factory. Esto aseguraría la consistencia y la reusabilidad en todo el codebase.
     ```javascript
-    // Ejemplo conceptual para React Native
+    // Ejemplo conceptual para Modern Web UI (CSS/WAAPI)
     import { useSpring } from 'react-native-reanimated';
 
     const createYendoSpring = (configName) => {
@@ -117,21 +117,21 @@ La sesión descompone la curva de un resorte en componentes más simples (onda c
 ## 4. Principios Rectores y Citas Clave
 
 *   "People love this. It makes an interface feel more alive, makes it easier to understand what's happening, and it just brings a sense of enjoyment to interacting with a UI."
-    *   **Principio Yendo:** La animación no es un adorno, sino un componente esencial para una UI "viva" y disfrutable, que mejora la comprensión y la interacción.
+    *   **Principio WebFactory:** La animación no es un adorno, sino un componente esencial para una UI "viva" y disfrutable, que mejora la comprensión y la interacción.
 *   "When an animation is just right, your users can feel it."
-    *   **Principio Yendo:** La calidad de la animación es una señal de la atención al detalle y la excelencia del producto. Los usuarios perciben la diferencia.
+    *   **Principio WebFactory:** La calidad de la animación es una señal de la atención al detalle y la excelencia del producto. Los usuarios perciben la diferencia.
 *   "Springs are the only type of animation that maintains continuity both for static cases and cases with an initial velocity."
-    *   **Principio Yendo:** Las animaciones de resorte son el estándar de oro para la fluidez y la respuesta a gestos, garantizando una experiencia sin fricciones.
+    *   **Principio WebFactory:** Las animaciones de resorte son el estándar de oro para la fluidez y la respuesta a gestos, garantizando una experiencia sin fricciones.
 *   "A spring animation is based on the behavior of an object attached to a spring in the physical world, so it feels more natural and believable to our eyes when we see it move."
-    *   **Principio Yendo:** La naturalidad y credibilidad de la UI se construyen sobre el modelado del mundo físico, haciendo que la interacción sea intuitiva.
+    *   **Principio WebFactory:** La naturalidad y credibilidad de la UI se construyen sobre el modelado del mundo físico, haciendo que la interacción sea intuitiva.
 *   "A spring doesn't need to bounce to make a great animation."
-    *   **Principio Yendo:** La elegancia y versatilidad de los resortes no dependen del rebote; los resortes suaves son a menudo la opción más sofisticada y adaptable.
+    *   **Principio WebFactory:** La elegancia y versatilidad de los resortes no dependen del rebote; los resortes suaves son a menudo la opción más sofisticada y adaptable.
 *   "To choose a value that works great for your animation, it's generally best to start by finding a duration value that gives a pacing that you like. Once you've decided that, you can start adjusting the amount of bounce to choose what kind of character and feeling you want this animation to have."
-    *   **Principio Yendo:** El proceso de diseño de animación debe ser iterativo: primero el ritmo (duration), luego el carácter (bounce), para lograr el impacto deseado.
+    *   **Principio WebFactory:** El proceso de diseño de animación debe ser iterativo: primero el ritmo (duration), luego el carácter (bounce), para lograr el impacto deseado.
 *   "When you're not sure, use a spring with bounce 0, which is also what you get if you don't specify the bounce. This gives you a great general purpose spring that's the most versatile."
-    *   **Principio Yendo:** El resorte suave (`bounce=0`) es nuestro valor predeterminado y más versátil para la mayoría de las animaciones, garantizando elegancia y funcionalidad.
+    *   **Principio WebFactory:** El resorte suave (`bounce=0`) es nuestro valor predeterminado y más versátil para la mayoría de las animaciones, garantizando elegancia y funcionalidad.
 *   "Think about what kind of character your app has. Is it serious or playful? Should it feel relaxed or fast-paced? That can help you choose spring values that feel consistent with the feeling of the UI around them."
-    *   **Principio Yendo:** Las animaciones deben reflejar y reforzar el carácter y la personalidad de la marca Yendo Mobile, manteniendo la consistencia en toda la experiencia.
+    *   **Principio WebFactory:** Las animaciones deben reflejar y reforzar el carácter y la personalidad de la marca la Web Software Factory, manteniendo la consistencia en toda la experiencia.
 
 ---
 
@@ -152,7 +152,7 @@ La sesión descompone la curva de un resorte en componentes más simples (onda c
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -167,19 +167,19 @@ ultima_revision: 2026-08-27
 
 ---
 
-## Informe Técnico: Principios de Diseño de Clase Mundial para Yendo Mobile (Basado en "What's New in Swift" WWDC20)
+## Informe Técnico: Principios de Diseño de Clase Mundial para la Web Software Factory (Basado en "What's New in Swift" WWDC20)
 
 **Fecha:** 26 de Octubre de 2023
-**Autor:** RESEARCHER_AGENT & UI_ARCHITECT, Yendo Mobile
+**Autor:** RESEARCHER_AGENT & UI_ARCHITECT, la Web Software Factory
 
 ---
 
 ### 1. Concepto Central y Tesis Arquitectónica
 
-La sesión "What's New in Swift" de WWDC20 revela una evolución continua en el lenguaje Swift, enfocada en la **optimización del rendimiento**, la **mejora radical de la experiencia del desarrollador** y la **expansión de su versatilidad** (cross-platform, server-side). Aunque Yendo Mobile opera en un stack tecnológico diferente (React Native, Expo), los principios subyacentes de esta evolución son universalmente aplicables y críticos para construir aplicaciones móviles de clase mundial.
+La sesión "What's New in Swift" de WWDC20 revela una evolución continua en el lenguaje Swift, enfocada en la **optimización del rendimiento**, la **mejora radical de la experiencia del desarrollador** y la **expansión de su versatilidad** (cross-platform, server-side). Aunque la Web Software Factory opera en un stack tecnológico diferente (Modern Web UI (CSS/WAAPI), Expo), los principios subyacentes de esta evolución son universalmente aplicables y críticos para construir aplicaciones móviles de clase mundial.
 
-**Tesis Arquitectónica para Yendo Mobile:**
-Yendo Mobile adoptará una filosofía de ingeniería inspirada en la búsqueda implacable de Swift por la eficiencia, la claridad y la ergonomía. Esto se traducirá en un compromiso con la **arquitectura de rendimiento optimizado**, una **experiencia de desarrollo de fricción cero** y un **diseño de API robusto y expresivo** dentro de nuestro ecosistema React Native. Al internalizar estos principios, Yendo Mobile construirá productos que no solo sean potentes y escalables, sino también un placer de desarrollar y usar, alineándose con nuestros invariantes de `Venue/Experiencia/Grupo` y `DNA pisa internet`.
+**Tesis Arquitectónica para la Web Software Factory:**
+la Web Software Factory adoptará una filosofía de ingeniería inspirada en la búsqueda implacable de Swift por la eficiencia, la claridad y la ergonomía. Esto se traducirá en un compromiso con la **arquitectura de rendimiento optimizado**, una **experiencia de desarrollo de fricción cero** y un **diseño de API robusto y expresivo** dentro de nuestro ecosistema Modern Web UI (CSS/WAAPI). Al internalizar estos principios, la Web Software Factory construirá productos que no solo sean potentes y escalables, sino también un placer de desarrollar y usar, alineándose con nuestros invariantes de `Venue/Experiencia/Grupo` y `DNA pisa internet`.
 
 ---
 
@@ -209,20 +209,20 @@ Los hallazgos de la sesión, aunque específicos de Swift, ofrecen valiosas lecc
 
 ---
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-Aplicando los principios de Swift al stack de Yendo Mobile:
+Aplicando los principios de Swift al stack de la Web Software Factory:
 
-*   **React Native & Expo 57:**
+*   **Modern Web UI (CSS/WAAPI) & Expo 57:**
     *   **Optimización de Rendimiento:**
         *   **Bundle Size:** Implementar análisis riguroso del tamaño del bundle (Metro Bundler, `react-native-bundle-visualizer`) y optimizar dependencias.
         *   **Memoria:** Monitorear el uso de memoria en runtime. Aprovechar Hermes para un menor footprint de memoria y un inicio más rápido.
-        *   **Re-renders:** Auditar y optimizar los re-renders de componentes React Native utilizando `React.memo`, `useCallback`, `useMemo` y herramientas de profiling.
+        *   **Re-renders:** Auditar y optimizar los re-renders de componentes Modern Web UI (CSS/WAAPI) utilizando `React.memo`, `useCallback`, `useMemo` y herramientas de profiling.
     *   **Experiencia del Desarrollador (DX):**
         *   **TypeScript Riguroso:** Maximizar el uso de TypeScript para tipado estricto, mejor autocompletado y detección temprana de errores, emulando la precisión de los diagnósticos de Swift.
         *   **Herramientas de Linting y Formateo:** Establecer configuraciones estrictas de ESLint y Prettier para mantener la consistencia del código y reducir la "fricción" en el desarrollo.
         *   **Fast Refresh:** Asegurar que Fast Refresh funcione de manera óptima para ciclos de feedback rápidos.
-    *   **Diseño de API de Componentes:** Inspirarse en los DSLs de SwiftUI para diseñar APIs de componentes React Native que sean declarativas, concisas y fáciles de usar, utilizando props bien definidas y patrones de composición.
+    *   **Diseño de API de Componentes:** Inspirarse en los DSLs de SwiftUI para diseñar APIs de componentes Modern Web UI (CSS/WAAPI) que sean declarativas, concisas y fáciles de usar, utilizando props bien definidas y patrones de composición.
 
 *   **Dark OLED & Material 3:**
     *   **Rendimiento de UI:** Priorizar el rendimiento en la implementación de componentes del Design System, especialmente para temas oscuros en pantallas OLED. Esto implica minimizar el overdraw y usar animaciones eficientes.
@@ -232,7 +232,7 @@ Aplicando los principios de Swift al stack de Yendo Mobile:
 *   **Fricción Cero & Ley de Fitts:**
     *   **Ergonomía del Desarrollador:** Reducir la fricción en el proceso de desarrollo mediante la automatización de tareas repetitivas, la mejora de las herramientas de depuración y la estandarización de patrones de código. Un DX de fricción cero se traduce en un desarrollo más rápido y menos propenso a errores.
     *   **Experiencia del Usuario:** Aplicar el principio de "fricción cero" a la interacción del usuario. Las mejoras de rendimiento (tiempos de carga, fluidez de la UI) contribuyen directamente a una experiencia de usuario más intuitiva y eficiente, alineada con la Ley de Fitts (facilidad de interacción con elementos de UI).
-    *   **Claridad de APIs Internas:** APIs internas claras y bien documentadas para los desarrolladores de Yendo, reduciendo la carga cognitiva y acelerando la implementación de nuevas características.
+    *   **Claridad de APIs Internas:** APIs internas claras y bien documentadas para los desarrolladores de WebFactory, reduciendo la carga cognitiva y acelerando la implementación de nuevas características.
 
 *   **Lenguaje de Producto (Venue / Experiencia / Grupo):**
     *   **Modelado de Dominio Robusto:** Utilizar TypeScript para modelar `Venue`, `Experiencia` y `Grupo` con tipos de datos inmutables y bien definidos, inspirándose en la eficiencia de los tipos de valor de Swift.
@@ -241,7 +241,7 @@ Aplicando los principios de Swift al stack de Yendo Mobile:
 
 *   **Invariantes de Ingeniería:**
     *   **`un createClient`:** Implementar una función `createClient` canónica y fuertemente tipada (con TypeScript) para todas las interacciones con APIs externas. Esta función debe manejar la configuración, autenticación, manejo de errores y logging de manera uniforme, similar a cómo `Swift System` proporciona interfaces idiomáticas para APIs de bajo nivel.
-    *   **`StyleSheet.create` canónico:** Enforzar el uso de `StyleSheet.create` para la definición de estilos en React Native. Esto no solo aprovecha las optimizaciones de React Native, sino que también promueve un patrón de estilo consistente y legible. Se pueden usar linters para asegurar su cumplimiento.
+    *   **`StyleSheet.create` canónico:** Enforzar el uso de `StyleSheet.create` para la definición de estilos en Modern Web UI (CSS/WAAPI). Esto no solo aprovecha las optimizaciones de Modern Web UI (CSS/WAAPI), sino que también promueve un patrón de estilo consistente y legible. Se pueden usar linters para asegurar su cumplimiento.
     *   **`Dunbar 4-6`:** Fomentar la modularidad del código y la autonomía de equipos pequeños. Las mejoras en DX y la claridad de las APIs (internas y externas) permiten que equipos de 4-6 personas sean altamente productivos y dueños de sus dominios sin dependencias excesivas.
     *   **`DNA pisa internet`:** Priorizar la resiliencia de la red, el caching inteligente y la optimización de la carga de datos. Inspirarse en la capacidad cross-platform de Swift y su integración con AWS Lambda para pensar en arquitecturas serverless y edge computing que complementen la experiencia móvil.
 
@@ -252,27 +252,27 @@ Aplicando los principios de Swift al stack de Yendo Mobile:
 1.  **El Rendimiento es una Característica Fundamental:**
     *   "Swift's use of value types has some fundamental advantages over reference type based languages."
     *   "optimizing Swift's memory like this was critical to allow us to push Swift further throughout Apple system to be able to use it in daemons and low-level frameworks where every byte of memory used counts."
-    *   **Principio para Yendo:** Cada byte de memoria y cada milisegundo de latencia importan. La optimización del rendimiento no es una tarea post-lanzamiento, sino un principio de diseño inherente a cada decisión arquitectónica y de implementación.
+    *   **Principio para WebFactory:** Cada byte de memoria y cada milisegundo de latencia importan. La optimización del rendimiento no es una tarea post-lanzamiento, sino un principio de diseño inherente a cada decisión arquitectónica y de implementación.
 
 2.  **La Experiencia del Desarrollador es Clave para la Productividad y la Calidad:**
     *   "The Swift compiler has a new diagnostic strategy that results in more precise errors that point to the exact location in source code where the problem occurs."
     *   "Code completion performance has drastically improved. In some cases, up to 15 times speed improvement compared to Xcode 11.5."
-    *   **Principio para Yendo:** Un entorno de desarrollo de alta calidad, con herramientas que ofrecen feedback rápido, diagnósticos claros y autocompletado eficiente, es esencial para reducir la fricción, acelerar el desarrollo y mejorar la calidad del código.
+    *   **Principio para WebFactory:** Un entorno de desarrollo de alta calidad, con herramientas que ofrecen feedback rápido, diagnósticos claros y autocompletado eficiente, es esencial para reducir la fricción, acelerar el desarrollo y mejorar la calidad del código.
 
 3.  **El Diseño de API Robusto y Ergonómico Fomenta la Claridad y la Escalabilidad:**
     *   "Because folks can drop the argument label, it's best to name methods assuming that they will."
     *   "Multiple trailing closure syntax is also a great fit for DSLs."
-    *   **Principio para Yendo:** Las APIs internas y externas deben ser intuitivas, concisas y fuertemente tipadas. Un buen diseño de API reduce la carga cognitiva de los desarrolladores y facilita la construcción de sistemas complejos y mantenibles.
+    *   **Principio para WebFactory:** Las APIs internas y externas deben ser intuitivas, concisas y fuertemente tipadas. Un buen diseño de API reduce la carga cognitiva de los desarrolladores y facilita la construcción de sistemas complejos y mantenibles.
 
 4.  **La Modularidad y la Composición son Esenciales para la Escalabilidad del Ecosistema:**
     *   "Swift's reach as a cross-platform language for tackling problems in many domains continues to grow."
     *   "The future of the Swift Library ecosystem is being molded right now as we push onto new platforms and into new domains, and it's being done in plain sight as we increasingly leverage open-source packages."
-    *   **Principio para Yendo:** Fomentar un ecosistema de componentes y módulos bien definidos, reutilizables y con interfaces claras. Esto permite que equipos pequeños trabajen de forma independiente y contribuyan a un producto cohesivo y escalable.
+    *   **Principio para WebFactory:** Fomentar un ecosistema de componentes y módulos bien definidos, reutilizables y con interfaces claras. Esto permite que equipos pequeños trabajen de forma independiente y contribuyan a un producto cohesivo y escalable.
 
 5.  **Reducir la Fricción y el Boilerplate Mejora la Eficiencia y el Enfoque:**
     *   "If you include 'self' in the capture list, you can omit it from the body of the closure."
     *   "@main... should make it easier to get up and running, whether you're working on a command line tool, an existing application, a new one, or something else entirely."
-    *   **Principio para Yendo:** Eliminar el código repetitivo y las barreras innecesarias en el desarrollo. Cuanto menos tiempo se dedique a la burocracia del código, más tiempo se podrá invertir en resolver problemas de negocio y mejorar la experiencia del usuario.
+    *   **Principio para WebFactory:** Eliminar el código repetitivo y las barreras innecesarias en el desarrollo. Cuanto menos tiempo se dedique a la burocracia del código, más tiempo se podrá invertir en resolver problemas de negocio y mejorar la experiencia del usuario.
 
 ---
 
@@ -293,7 +293,7 @@ Aplicando los principios de Swift al stack de Yendo Mobile:
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -308,7 +308,7 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Principios de Navegación y Jerarquía para Yendo Mobile
+# Informe Técnico: Principios de Navegación y Jerarquía para la Web Software Factory
 
 **Fuente:** "Design with Direction: Navigation & Hierarchy (WWDC22 Session 10001)" por Apple Human Interface Team.
 
@@ -316,7 +316,7 @@ ultima_revision: 2026-08-27
 
 El concepto central de la navegación de clase mundial, según la WWDC22, radica en la **familiaridad, la claridad y la intencionalidad**. Una navegación excelente pasa desapercibida, permitiendo al usuario concentrarse en el contenido y la experiencia. El objetivo es proporcionar una base de familiaridad que facilite el descubrimiento del contenido y la interacción con la aplicación, evitando la frustración que surge cuando la navegación se desvía de las expectativas naturales.
 
-Para Yendo Mobile, nuestra tesis arquitectónica de navegación se centrará en la **"Fricción Cero"** y la **"Ley de Fitts"**, aplicando estos principios a una estructura que refleje nuestro ADN de producto (`Venue`, `Experiencia`, `Grupo`) y nuestra naturaleza de "pisar internet". Adoptaremos un enfoque híbrido que priorice la consistencia y la previsibilidad del usuario, utilizando `react-navigation` para construir una jerarquía de información robusta y unificada, que sea intuitiva tanto en iOS como en Android, y optimizada para pantallas OLED oscuras. La navegación de Yendo será un reflejo directo de nuestra arquitectura de información, guiando al usuario a través de un viaje lógico y sin esfuerzo, donde cada interacción es un paso natural hacia el descubrimiento y la conexión.
+Para la Web Software Factory, nuestra tesis arquitectónica de navegación se centrará en la **"Fricción Cero"** y la **"Ley de Fitts"**, aplicando estos principios a una estructura que refleje nuestro ADN de producto (`Venue`, `Experiencia`, `Grupo`) y nuestra naturaleza de "pisar internet". Adoptaremos un enfoque híbrido que priorice la consistencia y la previsibilidad del usuario, utilizando `react-navigation` para construir una jerarquía de información robusta y unificada, que sea intuitiva tanto en iOS como en Web Platform, y optimizada para pantallas OLED oscuras. La navegación de WebFactory será un reflejo directo de nuestra arquitectura de información, guiando al usuario a través de un viaje lógico y sin esfuerzo, donde cada interacción es un paso natural hacia el descubrimiento y la conexión.
 
 ## 2. Hallazgos Técnicos Clave
 
@@ -343,12 +343,12 @@ Para Yendo Mobile, nuestra tesis arquitectónica de navegación se centrará en 
 *   **Acciones Modales Explícitas:** Los modales deben tener acciones claras en su barra de navegación (ej. "Guardar", "Cancelar") en lugar de solo un "X" de cierre, especialmente si hay entrada de usuario.
 *   **Tokens de Diseño para Estados:** Definir tokens de diseño para estados de navegación (activo, inactivo, enfocado) para garantizar la coherencia visual.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-### React Native & Expo 57
+### Modern Web UI (CSS/WAAPI) & Expo 57
 *   **`react-navigation` como Pilar:** Implementar `react-navigation` como la solución de navegación principal.
     *   **`BottomTabNavigator`:** Para la navegación global de nivel superior (Venue, Experiencia, Grupo). Limitar a 4-5 pestañas para adherirse al principio de Dunbar y la Ley de Fitts.
-    *   **`StackNavigator`:** Para la navegación jerárquica (push/pop) dentro de cada pestaña. Configurar transiciones para emular el comportamiento nativo de iOS (deslizamiento lateral) y Android (deslizamiento lateral o vertical según el contexto).
+    *   **`StackNavigator`:** Para la navegación jerárquica (push/pop) dentro de cada pestaña. Configurar transiciones para emular el comportamiento nativo de iOS (deslizamiento lateral) y Web Platform (deslizamiento lateral o vertical según el contexto).
     *   **`Modal` / `Sheet` Presentations:** Utilizar las opciones de presentación modal de `react-navigation` o librerías como `react-native-modal` o `react-native-bottom-sheet` para tareas autocontenidas, asegurando que cubran la barra de pestañas y se presenten desde la parte inferior.
 *   **Gestos Nativos:** Asegurar que los gestos de retroceso (swipe back) funcionen de manera fluida y consistente en ambas plataformas, utilizando `react-native-gesture-handler` si es necesario para una experiencia nativa.
 *   **Persistencia de la Barra de Pestañas:** Configurar `StackNavigator` para que la `BottomTabNavigator` permanezca visible durante las transiciones de "push", a menos que se presente un modal.
@@ -367,7 +367,7 @@ Para Yendo Mobile, nuestra tesis arquitectónica de navegación se centrará en 
 *   **Minimizar Pasos:** Optimizar los flujos de usuario para que las acciones más frecuentes requieran el menor número de toques o transiciones.
 
 ### Lenguaje de Producto (Venue / Experiencia / Grupo)
-*   **Tab Bar Principal:** Las pestañas de nivel superior de Yendo Mobile deben ser `Venue`, `Experiencia` y `Grupo`. Estas representan las categorías fundamentales de contenido y funcionalidad, alineándose con el principio de "reflejar la jerarquía de información" y "balancear las funcionalidades".
+*   **Tab Bar Principal:** Las pestañas de nivel superior de la Web Software Factory deben ser `Venue`, `Experiencia` y `Grupo`. Estas representan las categorías fundamentales de contenido y funcionalidad, alineándose con el principio de "reflejar la jerarquía de información" y "balancear las funcionalidades".
     *   **`Venue`:** Exploración de lugares, búsqueda, favoritos.
     *   **`Experiencia`:** Creación, gestión y participación en eventos o actividades.
     *   **`Grupo`:** Interacción con comunidades, chats, gestión de miembros.
@@ -391,33 +391,33 @@ Para Yendo Mobile, nuestra tesis arquitectónica de navegación se centrará en 
 
 ## 4. Principios Rectores y Citas Clave
 
-Los principios rectores para la navegación de Yendo Mobile se basarán en la claridad, la previsibilidad y la eficiencia, siempre con el usuario en el centro.
+Los principios rectores para la navegación de la Web Software Factory se basarán en la claridad, la previsibilidad y la eficiencia, siempre con el usuario en el centro.
 
 1.  **La Navegación es Invisible cuando es Excelente:**
     *   "When apps have great navigation, it's often unnoticed because people are able to focus on the content and experience."
-    *   **Principio Yendo:** La navegación debe ser tan intuitiva que el usuario se olvide de ella, permitiéndole sumergirse completamente en el `Venue`, la `Experiencia` o el `Grupo`.
+    *   **Principio WebFactory:** La navegación debe ser tan intuitiva que el usuario se olvide de ella, permitiéndole sumergirse completamente en el `Venue`, la `Experiencia` o el `Grupo`.
 
 2.  **Reflejar la Jerarquía de Información:**
     *   "Tab bars are a global navigation control that sit at the bottom of the screen, categorizing an app's content into different sections. Think of tabs as a control to reflect your information hierarchy."
-    *   **Principio Yendo:** Las pestañas (`Venue`, `Experiencia`, `Grupo`) son la representación de nuestra jerarquía de información de nivel superior. La navegación jerárquica (push) profundizará en los detalles de cada entidad.
+    *   **Principio WebFactory:** Las pestañas (`Venue`, `Experiencia`, `Grupo`) son la representación de nuestra jerarquía de información de nivel superior. La navegación jerárquica (push) profundizará en los detalles de cada entidad.
 
 3.  **Enfoque y Propósito Definido:**
     *   "Great apps have focused solutions. They aim to do a few things really well, opposed to trying to solve everything in one app."
     *   "Modals are unique because they create focus by separating people from the information hierarchy."
-    *   **Principio Yendo:** Cada elemento de navegación, ya sea una pestaña, un "push" o un modal, debe tener un propósito claro y definido, evitando la duplicación de funcionalidades y la confusión. Los modales se reservarán para tareas autocontenidas que requieran la atención exclusiva del usuario.
+    *   **Principio WebFactory:** Cada elemento de navegación, ya sea una pestaña, un "push" o un modal, debe tener un propósito claro y definido, evitando la duplicación de funcionalidades y la confusión. Los modales se reservarán para tareas autocontenidas que requieran la atención exclusiva del usuario.
 
 4.  **Consistencia y Familiaridad:**
     *   "Familiar navigation patterns can help people easily explore the information within your app — and save them from unnecessary confusion."
     *   "Transporting someone to another tab by tapping on an element within a view is jarring and disorienting. Never force someone to change tabs automatically."
-    *   **Principio Yendo:** Mantendremos patrones de navegación consistentes y predecibles, respetando las expectativas del usuario y evitando cambios de contexto inesperados. La barra de pestañas será persistente para mantener el contexto global.
+    *   **Principio WebFactory:** Mantendremos patrones de navegación consistentes y predecibles, respetando las expectativas del usuario y evitando cambios de contexto inesperados. La barra de pestañas será persistente para mantener el contexto global.
 
 5.  **Claridad en la Comunicación:**
     *   "All of the work you invest in a solid information architecture should be honored with clear and concise labels."
-    *   **Principio Yendo:** Utilizaremos etiquetas concisas y descriptivas en todas las pestañas, títulos de pantalla y acciones modales para guiar al usuario de manera inequívoca.
+    *   **Principio WebFactory:** Utilizaremos etiquetas concisas y descriptivas en todas las pestañas, títulos de pantalla y acciones modales para guiar al usuario de manera inequívoca.
 
 6.  **Fricción Cero en la Interacción:**
     *   "Pushing allows frictionless transition between core areas of an app."
-    *   **Principio Yendo:** Buscaremos la máxima fluidez en las transiciones y la interacción, minimizando la carga cognitiva y física del usuario, aplicando la Ley de Fitts para objetivos de toque y la física de resortes para animaciones.
+    *   **Principio WebFactory:** Buscaremos la máxima fluidez en las transiciones y la interacción, minimizando la carga cognitiva y física del usuario, aplicando la Ley de Fitts para objetivos de toque y la física de resortes para animaciones.
 
 ---
 
@@ -438,7 +438,7 @@ Los principios rectores para la navegación de Yendo Mobile se basarán en la cl
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -453,19 +453,19 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Diseño de Interfaces Fluidas para Yendo Mobile
+# Informe Técnico: Diseño de Interfaces Fluidas para la Web Software Factory
 
 ## 1. Concepto Central y Tesis Arquitectónica
 
 La tesis central de "Designing Fluid Interfaces" es que una interfaz verdaderamente fluida se siente como una **extensión de la mente y el cuerpo del usuario**, no como una herramienta separada. Esto se logra eliminando las capas de abstracción entre el usuario y el contenido, permitiendo una interacción directa, de baja fricción, intuitiva y "mágica". La fluidez no es solo una cuestión de framerate, sino de cómo la interfaz responde, se redirige, mantiene la consistencia espacial, predice la intención y simula comportamientos físicos realistas.
 
-Para Yendo Mobile, esto significa construir experiencias que no solo sean funcionales, sino que **desaparezcan en la interacción**. La arquitectura de Yendo debe orquestar una respuesta inmediata y continua a los gestos del usuario, permitiendo la interrupción y redirección en cualquier momento. Los elementos de la interfaz deben comportarse con una física creíble (masa, elasticidad, amortiguación), manteniendo una consistencia espacial que refuerce la intuición del usuario. El objetivo es que cada interacción se sienta natural, predecible y gratificante, transformando la aplicación en una extensión orgánica de la voluntad del usuario.
+Para la Web Software Factory, esto significa construir experiencias que no solo sean funcionales, sino que **desaparezcan en la interacción**. La arquitectura de WebFactory debe orquestar una respuesta inmediata y continua a los gestos del usuario, permitiendo la interrupción y redirección en cualquier momento. Los elementos de la interfaz deben comportarse con una física creíble (masa, elasticidad, amortiguación), manteniendo una consistencia espacial que refuerce la intuición del usuario. El objetivo es que cada interacción se sienta natural, predecible y gratificante, transformando la aplicación en una extensión orgánica de la voluntad del usuario.
 
 ## 2. Hallazgos Técnicos Clave
 
 ### Ergonomía de la Interacción
 
-1.  **Respuesta Inmediata (Low Latency):** La latencia es el enemigo de la fluidez. Cada interacción (taps, swipes, presses) debe responder instantáneamente. Yendo debe "buscar retrasos en todas partes" y eliminarlos para que la interfaz se sienta "viva y dinámica".
+1.  **Respuesta Inmediata (Low Latency):** La latencia es el enemigo de la fluidez. Cada interacción (taps, swipes, presses) debe responder instantáneamente. WebFactory debe "buscar retrasos en todas partes" y eliminarlos para que la interfaz se sienta "viva y dinámica".
 2.  **Redirección e Interrupción Continua:** Las interfaces deben permitir al usuario cambiar de opinión a mitad de un gesto. El pensamiento y el gesto deben ocurrir en paralelo. La detección de cambios en la aceleración del dedo (no solo la velocidad o temporizadores) es clave para una respuesta rápida a las pausas o cambios de dirección.
 3.  **Consistencia Espacial:** Los elementos de la UI deben tener un "hogar" consistente. Las transiciones deben ser simétricas (si algo entra por la derecha, sale por la derecha). Esto refuerza la memoria espacial del usuario y hace que los gestos se sientan alineados con su comprensión del mundo.
 4.  **Sugerencia de Dirección (Hinting):** Las animaciones deben "crecer" o expandirse en la dirección del estado final, anticipando la intención del usuario y haciendo que los gestos se sientan esperados y predecibles.
@@ -503,18 +503,18 @@ Para Yendo Mobile, esto significa construir experiencias que no solo sean funcio
 4.  **Manejo de Múltiples Gestos:** Detectar todos los posibles gestos desde el inicio de la acción. Una vez que la intención es clara, cancelar los gestos no deseados. Esto evita retrasos y mantiene la interfaz responsiva (ej. 3D Touch vs. Scroll).
 5.  **Proyección de Momentum:** Para gestos de arrastre o lanzamiento, no solo usar la posición final, sino proyectar dónde "aterrizaría" el objeto basándose en su velocidad y tasa de deceleración (ej. `UIScrollView.DecelerationRate`). Esto alinea el movimiento con la intención del usuario, incluso para flicks ligeros.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-### React Native & Expo 57
+### Modern Web UI (CSS/WAAPI) & Expo 57
 
-*   **Librerías de Animación Avanzadas:** Adoptar `React Native Reanimated` (v2+) y `Moti` o `Tamagui` para implementar animaciones basadas en física (resortes), interrupciones y gestos complejos. Utilizar `useSharedValue`, `useAnimatedGestureHandler`, `withSpring`, `withTiming` para construir comportamientos dinámicos que se ejecutan en el hilo de UI, garantizando 60 FPS y baja latencia.
+*   **Librerías de Animación Avanzadas:** Adoptar `Modern Web UI (CSS/WAAPI) Reanimated` (v2+) y `Moti` o `Tamagui` para implementar animaciones basadas en física (resortes), interrupciones y gestos complejos. Utilizar `useSharedValue`, `useAnimatedGestureHandler`, `withSpring`, `withTiming` para construir comportamientos dinámicos que se ejecutan en el hilo de UI, garantizando 60 FPS y baja latencia.
 *   **Gestos Precisos:** `react-native-gesture-handler` es fundamental para detectar gestos con alta fidelidad, incluyendo velocidad, presión y estado continuo. Esto permitirá la redirección y cancelación de gestos, así como el tracking uno a uno.
 *   **Optimización de Rendimiento:**
     *   Priorizar `useNativeDriver` en todas las animaciones posibles.
     *   Utilizar `FlashList` (de Shopify) para listas grandes, asegurando un scroll fluido y la conservación del momentum.
     *   Implementar estrategias de *layout animations* (`LayoutAnimation` o `Reanimated` Layout Animations) para transiciones de elementos que entran/salen de la vista, manteniendo la consistencia espacial.
 *   **Feedback Háptico:** Integrar `expo-haptics` para añadir feedback táctil que complemente las animaciones y refuerce la "sensación" de la interfaz, especialmente en taps, límites de scroll y confirmaciones de gestos.
-*   **"DNA pisa internet":** Aprovechar la naturaleza declarativa de React Native para definir comportamientos de interfaz que se sientan "nativos" pero son altamente componibles y mantenibles. Pensar en cómo los patrones de interacción web (scroll, arrastrar) pueden ser elevados a una experiencia móvil fluida y responsiva, incluso con capacidades offline o de baja conectividad.
+*   **"DNA pisa internet":** Aprovechar la naturaleza declarativa de Modern Web UI (CSS/WAAPI) para definir comportamientos de interfaz que se sientan "nativos" pero son altamente componibles y mantenibles. Pensar en cómo los patrones de interacción web (scroll, arrastrar) pueden ser elevados a una experiencia móvil fluida y responsiva, incluso con capacidades offline o de baja conectividad.
 
 ### Dark OLED & Material 3
 
@@ -536,16 +536,16 @@ Para Yendo Mobile, esto significa construir experiencias que no solo sean funcio
 
 ### Lenguaje de Producto (Venue / Experiencia / Grupo)
 
-*   **Venue (Consistencia Espacial):** La interfaz de Yendo debe sentirse como un "lugar" coherente. Esto se logra mediante:
+*   **Venue (Consistencia Espacial):** La interfaz de WebFactory debe sentirse como un "lugar" coherente. Esto se logra mediante:
     *   **Transiciones Simétricas:** Asegurar que los elementos entran y salen de la vista de manera predecible.
     *   **"Hogares" Consistentes:** Cada componente o pantalla debe tener un lugar lógico en el espacio de la aplicación.
     *   **Navegación Intuitiva:** Los gestos de navegación deben reforzar la sensación de moverse a través de un espacio.
-*   **Experiencia (Magia y Naturalidad):** La "magia" de Yendo se construirá a través de la orquestación de todos los principios de fluidez:
+*   **Experiencia (Magia y Naturalidad):** La "magia" de WebFactory se construirá a través de la orquestación de todos los principios de fluidez:
     *   **Respuesta Inmediata y Redirección:** La interfaz siempre se siente "viva" y "conectada" al usuario.
     *   **Física Creíble:** Los elementos se comportan como objetos del mundo real, con masa y elasticidad.
     *   **Feedback Predictivo:** La interfaz anticipa y guía al usuario.
     *   **Fricción Cero:** La interacción es sin esfuerzo y gratificante.
-*   **Grupo (Cohesión del Carácter):** Yendo debe tener un "carácter" de interacción unificado. Si Yendo es eficiente y directo, sus animaciones elásticas deben ser rápidas y con poco *overshoot* (damping alto). Si es más juguetón, puede permitirse más rebote.
+*   **Grupo (Cohesión del Carácter):** WebFactory debe tener un "carácter" de interacción unificado. Si WebFactory es eficiente y directo, sus animaciones elásticas deben ser rápidas y con poco *overshoot* (damping alto). Si es más juguetón, puede permitirse más rebote.
     *   **Familia de Comportamientos:** Todas las animaciones y gestos deben compartir un conjunto común de parámetros de resorte (damping, response) para mantener una sensación consistente en toda la aplicación.
 
 ### Invariantes de Ingeniería
@@ -556,7 +556,7 @@ Para Yendo Mobile, esto significa construir experiencias que no solo sean funcio
     *   Priorizar la respuesta de la UI sobre la confirmación del servidor cuando sea posible (optimistic UI updates).
 *   **`StyleSheet.create` canónico (Consistencia Visual y de Comportamiento):**
     *   Fomentar la modularidad y la reutilización de estilos y componentes. Esto es crucial para mantener la consistencia visual y de comportamiento en toda la aplicación.
-    *   Crear un sistema de diseño (Design System) que encapsule los parámetros de las animaciones (ej. `springConfig.default`, `springConfig.bouncy`) para asegurar que todos los desarrolladores apliquen la "familia de comportamientos" de Yendo.
+    *   Crear un sistema de diseño (Design System) que encapsule los parámetros de las animaciones (ej. `springConfig.default`, `springConfig.bouncy`) para asegurar que todos los desarrolladores apliquen la "familia de comportamientos" de WebFactory.
     *   Utilizar tokens de diseño para espaciado, tipografía y color, asegurando que los elementos interactivos se adhieran a la Ley de Fitts y al lenguaje de Material 3.
 *   **Dunbar 4-6 (Complejidad de Gestos):**
     *   Aplicar el principio de "Dunbar 4-6" a la complejidad de los gestos y las interacciones. Mantener el número de gestos primarios y sus variaciones dentro de un rango manejable para el usuario (idealmente no más de 4-6 gestos principales por contexto).
@@ -600,14 +600,14 @@ Para Yendo Mobile, esto significa construir experiencias que no solo sean funcio
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
-## 🎓 Masterclass UI: Animate React Native UI Elements: Springs & Interpolations
+## 🎓 Masterclass UI: Animate Modern Web UI (CSS/WAAPI) UI Elements: Springs & Interpolations
 **Plataforma de Origen:** Egghead.io  
 **Autor/Ponente:** Jason Brown  
 **URL Oficial:** [https://egghead.io/courses/animate-react-native-ui-elements](https://egghead.io/courses/animate-react-native-ui-elements)  
@@ -615,27 +615,27 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Arquitectura de Animaciones para Yendo Mobile
+# Informe Técnico: Arquitectura de Animaciones para la Web Software Factory
 
 **Fecha:** 2023-10-27
-**Origen:** "Animate React Native UI Elements: Springs & Interpolations" por Jason Brown (Egghead.io)
+**Origen:** "Animate Modern Web UI (CSS/WAAPI) UI Elements: Springs & Interpolations" por Jason Brown (Egghead.io)
 **URL:** https://egghead.io/courses/animate-react-native-ui-elements
 
 ---
 
 ## 1. Concepto Central y Tesis Arquitectónica
 
-La masterclass de Jason Brown subraya el poder transformador de las animaciones en React Native, utilizando la API `Animated` para crear experiencias de usuario fluidas y reactivas. Para Yendo Mobile, la tesis arquitectónica central es que **las animaciones no son un mero adorno, sino un componente funcional y estratégico que refuerza nuestro lenguaje de producto (Venue, Experiencia, Grupo), minimiza la fricción (Fricción Cero), y se alinea con nuestra identidad de diseño Dark OLED & Material 3, todo ello sobre una base de ingeniería robusta y performante en React Native & Expo 57.**
+La masterclass de Jason Brown subraya el poder transformador de las animaciones en Modern Web UI (CSS/WAAPI), utilizando la API `Animated` para crear experiencias de usuario fluidas y reactivas. Para la Web Software Factory, la tesis arquitectónica central es que **las animaciones no son un mero adorno, sino un componente funcional y estratégico que refuerza nuestro lenguaje de producto (Venue, Experiencia, Grupo), minimiza la fricción (Fricción Cero), y se alinea con nuestra identidad de diseño Dark OLED & Material 3, todo ello sobre una base de ingeniería robusta y performante en Modern Web UI (CSS/WAAPI) & Expo 57.**
 
 Adoptaremos un enfoque donde el movimiento es significado, guiando al usuario, proporcionando feedback contextual y elevando la percepción de calidad y sofisticación. Esto se logrará mediante la aplicación quirúrgica de principios de animación basados en la física (resortes, decaimiento) y la orquestación de secuencias complejas, siempre priorizando la ejecución en el hilo nativo para garantizar un rendimiento impecable, coherente con nuestro ADN de "pisa internet".
 
 ## 2. Hallazgos Técnicos Clave
 
-El curso de Jason Brown desglosa la API `Animated` de React Native, revelando capacidades fundamentales para construir interfaces dinámicas:
+El curso de Jason Brown desglosa la API `Animated` de Modern Web UI (CSS/WAAPI), revelando capacidades fundamentales para construir interfaces dinámicas:
 
 *   **Ergonomía y Feedback Visual:** Las animaciones son herramientas esenciales para la ergonomía. `Animated.timing` y `Animated.spring` permiten transiciones suaves que reducen la carga cognitiva, indicando cambios de estado o la finalización de una acción. Por ejemplo, un botón que se escala (`Animated.spring`) al ser presionado proporciona un feedback táctil y visual inmediato, mejorando la usabilidad y la sensación de "Fricción Cero".
 *   **Física de Resortes (Springs):** `Animated.spring` es un pilar para interacciones que se sienten naturales y responsivas. A diferencia de las animaciones basadas en tiempo, los resortes simulan la física del mundo real, con propiedades como `friction` y `tension` que permiten un control preciso sobre la "sensación" del movimiento. Esto es crucial para Material 3, que enfatiza el movimiento orgánico y la respuesta al tacto.
-*   **Modelos de Hilos (Threads) y Rendimiento:** La API `Animated` de React Native es capaz de ejecutar animaciones en el hilo nativo (UI thread) mediante la opción `useNativeDriver: true`. Esto desacopla las animaciones del hilo JavaScript, garantizando que la interfaz de usuario permanezca fluida incluso bajo carga de procesamiento JS. `PanResponder` combinado con `Animated.decay` es un ejemplo paradigmático, permitiendo gestos de arrastre y deslizamiento que se sienten nativos y sin latencia, esenciales para una experiencia "Fricción Cero".
+*   **Modelos de Hilos (Threads) y Rendimiento:** La API `Animated` de Modern Web UI (CSS/WAAPI) es capaz de ejecutar animaciones en el hilo nativo (UI thread) mediante la opción `useNativeDriver: true`. Esto desacopla las animaciones del hilo JavaScript, garantizando que la interfaz de usuario permanezca fluida incluso bajo carga de procesamiento JS. `PanResponder` combinado con `Animated.decay` es un ejemplo paradigmático, permitiendo gestos de arrastre y deslizamiento que se sienten nativos y sin latencia, esenciales para una experiencia "Fricción Cero".
 *   **Composición de Componentes y Tokens de Diseño:**
     *   **`interpolate`:** Permite mapear un rango de valores de entrada a un rango de valores de salida, transformando propiedades como `opacity`, `scale`, ``rotate`, y `color`. Esto es vital para crear efectos visuales ricos y dinámicos, como el cambio de color de un elemento o la rotación de un icono en respuesta a un gesto.
     *   **Orquestación de Animaciones:** El curso demuestra cómo combinar animaciones para crear secuencias complejas y coordinadas:
@@ -644,13 +644,13 @@ El curso de Jason Brown desglosa la API `Animated` de React Native, revelando ca
         *   `Animated.parallel`: Ejecuta múltiples animaciones simultáneamente.
         Esta capacidad de composición es fundamental para construir un sistema de diseño coherente y expresivo, donde el movimiento se convierte en un token de diseño en sí mismo.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-### React Native & Expo 57
+### Modern Web UI (CSS/WAAPI) & Expo 57
 
 *   **Priorizar `useNativeDriver: true`:** Para todas las animaciones posibles, asegurar que se ejecuten en el hilo nativo. Esto es no negociable para la promesa de "Fricción Cero" y la percepción de una aplicación de alto rendimiento.
 *   **Encapsulación con Custom Hooks:** Desarrollar un conjunto de custom hooks (`useAnimatedScale`, `useAnimatedSwipe`, `useAnimatedFadeIn`) que encapsulen patrones de animación comunes, promoviendo la reusabilidad y la consistencia.
-*   **Integración con `react-native-reanimated`:** Aunque el curso se centra en la API `Animated` nativa, dado que Yendo Mobile utiliza React Native & Expo 57, es imperativo evaluar y migrar progresivamente a `react-native-reanimated` para animaciones más complejas, declarativas y con mayor control sobre el hilo de UI, especialmente para interacciones gestuales avanzadas y efectos de scroll. Esto potenciará aún más el rendimiento y la expresividad.
+*   **Integración con `react-native-reanimated`:** Aunque el curso se centra en la API `Animated` nativa, dado que la Web Software Factory utiliza Modern Web UI (CSS/WAAPI) & Expo 57, es imperativo evaluar y migrar progresivamente a `react-native-reanimated` para animaciones más complejas, declarativas y con mayor control sobre el hilo de UI, especialmente para interacciones gestuales avanzadas y efectos de scroll. Esto potenciará aún más el rendimiento y la expresividad.
 *   **Componentes Animables:** Crear una biblioteca de componentes base (e.g., `AnimatedButton`, `AnimatedCard`, `AnimatedModal`) que incorporen animaciones por defecto para estados como `press`, `hover`, `focus`, `enter`, `exit`.
 
 ### Dark OLED & Material 3
@@ -686,10 +686,10 @@ El curso de Jason Brown desglosa la API `Animated` de React Native, revelando ca
 
 ## 4. Principios Rectores y Citas Clave
 
-*   **"Motion is meaning."** (Google Material Design) – Cada animación en Yendo Mobile debe tener un propósito claro: guiar, informar, deleitar o confirmar.
+*   **"Motion is meaning."** (Google Material Design) – Cada animación en la Web Software Factory debe tener un propósito claro: guiar, informar, deleitar o confirmar.
 *   **"La performance es una característica, no un lujo."** – Las animaciones deben ejecutarse a 60 FPS constantes, sin caídas de frames, especialmente en dispositivos OLED. `useNativeDriver` y `react-native-reanimated` son fundamentales para esto.
 *   **"Fricción Cero es la ausencia de obstáculos cognitivos y físicos."** – Las animaciones deben suavizar las transiciones, proporcionar feedback instantáneo y hacer que las interacciones se sientan intuitivas y sin esfuerzo.
-*   **"El diseño de interacción es el arte de hacer que la tecnología se sienta humana."** – Las animaciones de resorte y decaimiento, al imitar la física del mundo real, infunden a la interfaz de Yendo Mobile una cualidad orgánica y empática.
+*   **"El diseño de interacción es el arte de hacer que la tecnología se sienta humana."** – Las animaciones de resorte y decaimiento, al imitar la física del mundo real, infunden a la interfaz de la Web Software Factory una cualidad orgánica y empática.
 *   **"Claridad sobre la complejidad."** – Las animaciones deben simplificar la interfaz y la experiencia del usuario, no añadir ruido o confusión. Un movimiento bien ejecutado puede reemplazar varias líneas de texto explicativo.
 
 ---
@@ -711,14 +711,14 @@ El curso de Jason Brown desglosa la API `Animated` de React Native, revelando ca
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
-## 🎓 Masterclass UI: Real World React Native Animations: Swipes, Parallax & Headers
+## 🎓 Masterclass UI: Real World Modern Web UI (CSS/WAAPI) Animations: Swipes, Parallax & Headers
 **Plataforma de Origen:** Egghead.io  
 **Autor/Ponente:** Jason Brown  
 **URL Oficial:** [https://egghead.io/courses/real-world-react-native-animations](https://egghead.io/courses/real-world-react-native-animations)  
@@ -726,33 +726,33 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Animaciones de Clase Mundial para Yendo Mobile
+# Informe Técnico: Animaciones de Clase Mundial para la Web Software Factory
 
 ## 1. Concepto Central y Tesis Arquitectónica
 
-El curso "Real World React Native Animations" de Jason Brown subraya que las animaciones no son meros adornos, sino componentes fundamentales para una experiencia de usuario intuitiva, atractiva y performante. Para Yendo Mobile, la tesis arquitectónica es clara: **las animaciones deben ser el lenguaje silencioso que articula la propuesta de valor de Yendo, transformando interacciones funcionales en experiencias memorables y emocionalmente resonantes.**
+El curso "Real World Modern Web UI (CSS/WAAPI) Animations" de Jason Brown subraya que las animaciones no son meros adornos, sino componentes fundamentales para una experiencia de usuario intuitiva, atractiva y performante. Para la Web Software Factory, la tesis arquitectónica es clara: **las animaciones deben ser el lenguaje silencioso que articula la propuesta de valor de WebFactory, transformando interacciones funcionales en experiencias memorables y emocionalmente resonantes.**
 
-Integrando los principios de diseño de clase mundial con el ADN de Yendo, proponemos un sistema de animación que:
+Integrando los principios de diseño de clase mundial con el ADN de WebFactory, proponemos un sistema de animación que:
 *   **Guía al usuario:** Clarifica el flujo de información y las transiciones de estado.
 *   **Reduce la fricción:** Hace que las interacciones complejas se sientan fluidas y naturales.
 *   **Genera deleite:** Añade personalidad y un toque humano a la interfaz.
-*   **Refuerza la identidad:** Se alinea con la estética Dark OLED Material Design 3 y la naturaleza social de Yendo (Venue/Experiencia/Grupo).
+*   **Refuerza la identidad:** Se alinea con la estética Dark OLED Material Design 3 y la naturaleza social de WebFactory (Venue/Experiencia/Grupo).
 
-Este enfoque no solo mejorará la usabilidad, sino que también fortalecerá la conexión emocional del usuario con la plataforma, haciendo que cada interacción se sienta viva y significativa, en línea con el "DNA pisa internet" de Yendo.
+Este enfoque no solo mejorará la usabilidad, sino que también fortalecerá la conexión emocional del usuario con la plataforma, haciendo que cada interacción se sienta viva y significativa, en línea con el "DNA pisa internet" de WebFactory.
 
 ## 2. Hallazgos Técnicos Clave
 
-El curso desglosa animaciones complejas en patrones reutilizables y principios fundamentales, cruciales para Yendo:
+El curso desglosa animaciones complejas en patrones reutilizables y principios fundamentales, cruciales para WebFactory:
 
 *   **Ergonomía y Feedback Visual:** Las animaciones son herramientas ergonómicas esenciales. El "Bounce a Heart Shaped Button" o el "Exploding Heart Button" proporcionan feedback inmediato y gratificante, confirmando la acción del usuario y añadiendo un elemento de deleite. La "Information Callout View" y el "Toggle Hidden Details" mejoran la ergonomía al presentar información de manera contextual y progresiva, evitando la sobrecarga cognitiva.
 *   **Física de Resortes (Spring Physics):** La implementación de animaciones basadas en resortes, como en el "Animated Floating Action Button with Springy Menu", es fundamental. A diferencia de las animaciones basadas en duración y curvas de easing fijas, los resortes simulan el movimiento natural, haciendo que las interacciones se sientan más orgánicas y responsivas. Esto es clave para una sensación de "fricción cero".
-*   **Modelos de Hilos (Thread Models) y Performance:** React Native permite ejecutar animaciones en el hilo nativo (UI thread) utilizando `useNativeDriver`, desacoplando la animación del hilo JavaScript. Esto es vital para mantener 60 FPS incluso bajo carga, un requisito no negociable para una experiencia de usuario fluida en Yendo. El curso, al enfocarse en animaciones "real-world", implícitamente aborda la necesidad de performance.
+*   **Modelos de Hilos (Thread Models) y Performance:** Modern Web UI (CSS/WAAPI) permite ejecutar animaciones en el hilo nativo (UI thread) utilizando `useNativeDriver`, desacoplando la animación del hilo JavaScript. Esto es vital para mantener 60 FPS incluso bajo carga, un requisito no negociable para una experiencia de usuario fluida en WebFactory. El curso, al enfocarse en animaciones "real-world", implícitamente aborda la necesidad de performance.
 *   **Composición de Componentes y Tokens de Diseño:** Las lecciones demuestran cómo construir animaciones complejas a partir de componentes más pequeños y animados (e.g., un FAB que despliega un menú). Esto se alinea perfectamente con la creación de un sistema de diseño basado en tokens, donde los "tokens de movimiento" (duraciones, easings, configuraciones de resorte) pueden ser definidos y reutilizados consistentemente a través de la aplicación.
-*   **Patrones de Interacción Comunes:** El curso cubre patrones esenciales como el parallax scrolling ("Horizontal Parallax ScrollView"), el swipe-to-dismiss ("Swipe Away Comment Modal"), y los headers colapsables ("Collapsible React Native Header Bar"). Estos son bloques de construcción críticos para interfaces modernas y eficientes.
+*   **Patrones de Interacción Comunes:** El curso cubre patrones esenciales como el parallax scrolling ("Horizontal Parallax ScrollView"), el swipe-to-dismiss ("Swipe Away Comment Modal"), y los headers colapsables ("Collapsible Modern Web UI (CSS/WAAPI) Header Bar"). Estos son bloques de construcción críticos para interfaces modernas y eficientes.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-### React Native & Expo 57
+### Modern Web UI (CSS/WAAPI) & Expo 57
 *   **Adopción de `react-native-reanimated`:** Priorizar esta librería para todas las animaciones complejas. Su API declarativa y la ejecución en el hilo nativo son esenciales para la performance y la mantenibilidad.
 *   **`useNativeDriver` por defecto:** Asegurar que todas las animaciones posibles utilicen el driver nativo para garantizar 60 FPS y una experiencia fluida, especialmente en dispositivos OLED.
 *   **`react-native-gesture-handler`:** Implementar gestos avanzados (swipes, drags, pinch-to-zoom) para interacciones más naturales, como el "Swipe Away Comment Modal" o la navegación por galerías de fotos de "Venue".
@@ -787,10 +787,10 @@ El curso desglosa animaciones complejas en patrones reutilizables y principios f
 
 ## 4. Principios Rectores y Citas Clave
 
-*   "Las animaciones en Yendo no son un lujo, sino una necesidad para comunicar la vitalidad de nuestras conexiones sociales y la fluidez de nuestras experiencias."
+*   "Las animaciones en WebFactory no son un lujo, sino una necesidad para comunicar la vitalidad de nuestras conexiones sociales y la fluidez de nuestras experiencias."
 *   "Cada píxel en movimiento debe servir a un propósito: guiar, deleitar o informar. Si no lo hace, es ruido."
 *   "La física de resortes es nuestra aliada para que cada interacción se sienta tan natural como la vida misma, eliminando la fricción entre el usuario y la plataforma."
-*   "En un mundo conectado, Yendo se distingue por una interfaz que no solo funciona, sino que *siente*, y las animaciones son el corazón de esa sensación."
+*   "En un mundo conectado, WebFactory se distingue por una interfaz que no solo funciona, sino que *siente*, y las animaciones son el corazón de esa sensación."
 *   "La Ley de Fitts y la fricción cero son los pilares de nuestra usabilidad; las animaciones son el cemento que los une, haciendo que cada acción sea intuitiva y gratificante."
 
 ---
@@ -812,14 +812,14 @@ El curso desglosa animaciones complejas en patrones reutilizables y principios f
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
-## 🎓 Masterclass UI: Complete React Native: Build High Performance Native Mobile Apps
+## 🎓 Masterclass UI: Complete Modern Web UI (CSS/WAAPI): Build High Performance Native Mobile Apps
 **Plataforma de Origen:** Frontend Masters  
 **Autor/Ponente:** Kadi Kraman (Formidable)  
 **URL Oficial:** [https://frontendmasters.com/courses/react-native-v3/](https://frontendmasters.com/courses/react-native-v3/)  
@@ -827,17 +827,17 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Estrategia de Desarrollo Móvil para Yendo Mobile con React Native & Expo 57
+# Informe Técnico: Estrategia de Desarrollo Móvil para la Web Software Factory con Modern Web UI (CSS/WAAPI) & Expo 57
 
 ## 1. Concepto Central y Tesis Arquitectónica
 
-La masterclass "Complete React Native: Build High Performance Native Mobile Apps" de Kadi Kraman (Formidable) en Frontend Masters, en su versión v3, establece una base sólida para el desarrollo de aplicaciones móviles nativas de alto rendimiento utilizando React Native y Expo. Para Yendo Mobile, esta formación no solo valida la elección de nuestra pila tecnológica, sino que también proporciona un blueprint para la implementación de principios de diseño de clase mundial, alineados con nuestro ADN de producto.
+La masterclass "Complete Modern Web UI (CSS/WAAPI): Build High Performance Native Mobile Apps" de Kadi Kraman (Formidable) en Frontend Masters, en su versión v3, establece una base sólida para el desarrollo de aplicaciones móviles nativas de alto rendimiento utilizando Modern Web UI (CSS/WAAPI) y Expo. Para la Web Software Factory, esta formación no solo valida la elección de nuestra pila tecnológica, sino que también proporciona un blueprint para la implementación de principios de diseño de clase mundial, alineados con nuestro ADN de producto.
 
-**Tesis Arquitectónica:** Yendo Mobile adoptará React Native y Expo 57 como su plataforma central de desarrollo, construyendo una arquitectura basada en componentes modulares y un sistema de diseño robusto (Material Design 3 con enfoque Dark OLED). Nuestra estrategia se centrará en ofrecer una experiencia de usuario de "fricción cero", optimizando el rendimiento y la interactividad mediante la aplicación rigurosa de invariantes de ingeniería y un lenguaje de producto coherente que se adapte a los contextos de "Venue", "Experiencia" y "Grupo", siempre con la premisa de que nuestro "DNA pisa internet".
+**Tesis Arquitectónica:** la Web Software Factory adoptará Modern Web UI (CSS/WAAPI) y Expo 57 como su plataforma central de desarrollo, construyendo una arquitectura basada en componentes modulares y un sistema de diseño robusto (Material Design 3 con enfoque Dark OLED). Nuestra estrategia se centrará en ofrecer una experiencia de usuario de "fricción cero", optimizando el rendimiento y la interactividad mediante la aplicación rigurosa de invariantes de ingeniería y un lenguaje de producto coherente que se adapte a los contextos de "Venue", "Experiencia" y "Grupo", siempre con la premisa de que nuestro "DNA pisa internet".
 
 ## 2. Hallazgos Técnicos Clave
 
-El curso destaca varias áreas críticas para el desarrollo de aplicaciones móviles de alta calidad, que se mapean directamente a las necesidades y ambiciones de Yendo Mobile:
+El curso destaca varias áreas críticas para el desarrollo de aplicaciones móviles de alta calidad, que se mapean directamente a las necesidades y ambiciones de la Web Software Factory:
 
 *   **Ergonomía y Usabilidad:**
     *   **Haptics:** La implementación de retroalimentación háptica (ej. `medium impact`, `success notification`) para acciones clave del usuario mejora la percepción de respuesta y la inmersión, reduciendo la fricción.
@@ -845,27 +845,27 @@ El curso destaca varias áreas críticas para el desarrollo de aplicaciones móv
     *   **Navegación Intuitiva:** El uso de `expo-router` para una navegación basada en el sistema de archivos, con patrones de Stack, Modal y Bottom Tabs, facilita flujos de usuario predecibles y eficientes.
 *   **Física de Resortes y Animaciones:**
     *   **`LayoutAnimation`:** Se presenta como una forma sencilla y eficiente de animar transiciones de UI entre estados, delegando el trabajo al hilo nativo para un rendimiento fluido.
-    *   **Animaciones Avanzadas:** La mención de `React Native Animated` y `React Native Gesture Handler` indica el camino para implementar animaciones más complejas y basadas en física, esenciales para una experiencia de usuario "premium".
+    *   **Animaciones Avanzadas:** La mención de `Modern Web UI (CSS/WAAPI) Animated` y `Modern Web UI (CSS/WAAPI) Gesture Handler` indica el camino para implementar animaciones más complejas y basadas en física, esenciales para una experiencia de usuario "premium".
 *   **Modelos de Hilos y Rendimiento:**
     *   **`FlatList` vs. `ScrollView`:** La distinción y recomendación de `FlatList` para listas grandes subraya la importancia de la virtualización de UI para optimizar el rendimiento, renderizando solo los elementos visibles y minimizando el uso de memoria y CPU en el hilo JavaScript.
-    *   **Offloading a lo Nativo:** Conceptos como `LayoutAnimation` y la gestión de notificaciones push demuestran cómo React Native delega tareas intensivas a los hilos nativos, manteniendo la fluidez de la interfaz de usuario.
+    *   **Offloading a lo Nativo:** Conceptos como `LayoutAnimation` y la gestión de notificaciones push demuestran cómo Modern Web UI (CSS/WAAPI) delega tareas intensivas a los hilos nativos, manteniendo la fluidez de la interfaz de usuario.
 *   **Composición de Componentes y Tokens de Diseño:**
     *   **Modularidad:** La creación de componentes reutilizables (ej. `ShoppingListItem`) y la definición de tipos con TypeScript para sus `props` son fundamentales para una arquitectura escalable y mantenible.
     *   **Estilización Condicional y Temas Globales:** La capacidad de aplicar estilos dinámicamente y la creación de un archivo de tema global son pilares para construir un sistema de diseño coherente y adaptable.
     *   **`expo-icons`:** La integración de una biblioteca de iconos estandarizada asegura consistencia visual y facilita la gestión de activos.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-### React Native & Expo 57
+### Modern Web UI (CSS/WAAPI) & Expo 57
 
-*   **Adopción de Expo 57 con Development Builds:** Yendo Mobile debe migrar o iniciar proyectos con Expo 57, utilizando `development builds` para entornos de producción. Esto nos permite aprovechar el ecosistema de Expo (actualizaciones rápidas, módulos nativos gestionados) sin las limitaciones de Expo Go en producción.
+*   **Adopción de Expo 57 con Development Builds:** la Web Software Factory debe migrar o iniciar proyectos con Expo 57, utilizando `development builds` para entornos de producción. Esto nos permite aprovechar el ecosistema de Expo (actualizaciones rápidas, módulos nativos gestionados) sin las limitaciones de Expo Go en producción.
 *   **TypeScript Obligatorio:** Estandarizar el uso de TypeScript en todo el codebase para mejorar la robustez, la mantenibilidad y la colaboración del equipo.
 *   **`expo-router` como Estándar de Navegación:** Implementar `expo-router` para toda la navegación, aprovechando su enfoque basado en el sistema de archivos para una estructura de rutas clara y declarativa.
 *   **Configuración de Linting y Formateo:** Establecer y hacer cumplir una configuración estricta de ESLint y Prettier para mantener la consistencia del código y la calidad.
 
 ### Dark OLED & Material 3
 
-*   **Sistema de Diseño Yendo (YDS) basado en MD3:** Desarrollar un sistema de diseño propio que incorpore los principios de Material Design 3, adaptado a la identidad de marca de Yendo.
+*   **Sistema de Diseño WebFactory (YDS) basado en MD3:** Desarrollar un sistema de diseño propio que incorpore los principios de Material Design 3, adaptado a la identidad de marca de WebFactory.
 *   **Tema Dark OLED-First:** Priorizar el diseño de la interfaz para pantallas OLED oscuras, asegurando un contraste óptimo, eficiencia energética y una estética moderna. Esto implica una paleta de colores cuidadosamente seleccionada y la validación en dispositivos OLED reales.
 *   **Componentes Tematizables:** Todos los componentes de UI deben ser diseñados para ser fácilmente tematizables, permitiendo cambios globales de estilo a través de un archivo de tema central.
 *   **`expo-icons` Integrado:** Utilizar `expo-icons` como la fuente principal de iconografía, asegurando que los iconos se integren perfectamente con el tema Dark OLED y MD3.
@@ -885,8 +885,8 @@ El curso destaca varias áreas críticas para el desarrollo de aplicaciones móv
 
 ### Invariantes de Ingeniería
 
-*   **`un createClient`:** Establecer una función canónica `createClient` para todas las interacciones con la API de Yendo. Esta función debe encapsular la configuración de la API, la gestión de tokens de autenticación, el manejo de errores centralizado y la lógica de reintentos, garantizando una capa de red consistente y robusta.
-*   **`StyleSheet.create` Canónico:** Enforzar el uso de `StyleSheet.create` para la definición de estilos en todos los componentes. Esto no solo optimiza el rendimiento (React Native puede optimizar estos estilos) sino que también promueve la legibilidad y la consistencia. Se puede envolver en una utilidad que integre el tema global.
+*   **`un createClient`:** Establecer una función canónica `createClient` para todas las interacciones con la API de WebFactory. Esta función debe encapsular la configuración de la API, la gestión de tokens de autenticación, el manejo de errores centralizado y la lógica de reintentos, garantizando una capa de red consistente y robusta.
+*   **`StyleSheet.create` Canónico:** Enforzar el uso de `StyleSheet.create` para la definición de estilos en todos los componentes. Esto no solo optimiza el rendimiento (Modern Web UI (CSS/WAAPI) puede optimizar estos estilos) sino que también promueve la legibilidad y la consistencia. Se puede envolver en una utilidad que integre el tema global.
 *   **Dunbar 4-6 en Diseño de Componentes y Equipos:**
     *   **Componentes:** Diseñar componentes para que sean pequeños, enfocados y con un número limitado de `props` (idealmente 4-6 responsabilidades o entradas principales), facilitando su comprensión, prueba y reutilización.
     *   **Equipos/Features:** Fomentar equipos pequeños y autónomos (4-6 personas) responsables de "Dunbar-sized" features o módulos de producto, promoviendo la agilidad y la propiedad.
@@ -897,7 +897,7 @@ El curso destaca varias áreas críticas para el desarrollo de aplicaciones móv
 
 ## 4. Principios Rectores y Citas Clave
 
-Los siguientes principios guiarán el desarrollo en Yendo Mobile, extrayendo la esencia de la masterclass y nuestro ADN:
+Los siguientes principios guiarán el desarrollo en la Web Software Factory, extrayendo la esencia de la masterclass y nuestro ADN:
 
 *   **"Build High Performance Native Mobile Apps":** La búsqueda constante de rendimiento nativo y fluidez de la UI es primordial.
 *   **"Leveraging Expo for building and testing your mobile apps":** Adoptar Expo como la herramienta principal para el ciclo de vida completo del desarrollo, desde el prototipado hasta la producción con `development builds`.
@@ -905,7 +905,7 @@ Los siguientes principios guiarán el desarrollo en Yendo Mobile, extrayendo la 
 *   **"FlatList... only renders the items that are currently visible on the screen":** Optimizar el rendimiento de las listas mediante la virtualización, garantizando una experiencia de usuario fluida incluso con grandes volúmenes de datos.
 *   **"Layout animation, which is a simple way to animate the UI from its previous state to its current state":** Integrar animaciones sutiles pero efectivas para mejorar la percepción de calidad y la fluidez de las transiciones de la interfaz.
 *   **"Haptics... in response to user actions":** Enriquecer la interacción del usuario con retroalimentación háptica contextual, mejorando la inmersión y la usabilidad.
-*   **"DNA pisa internet":** Todas las decisiones de diseño y arquitectura deben considerar la naturaleza conectada de Yendo, priorizando la resiliencia de la red, la sincronización de datos y la experiencia en línea.
+*   **"DNA pisa internet":** Todas las decisiones de diseño y arquitectura deben considerar la naturaleza conectada de WebFactory, priorizando la resiliencia de la red, la sincronización de datos y la experiencia en línea.
 *   **"Fricción Cero":** Cada interacción, cada flujo de usuario, debe ser diseñado para ser lo más intuitivo, rápido y sin obstáculos posible.
 *   **"Un createClient" & "StyleSheet.create canónico":** La consistencia y la estandarización en las capas de red y estilo son fundamentales para la escalabilidad y mantenibilidad del proyecto.
 *   **"Dunbar 4-6":** Aplicar el principio de Dunbar a la granularidad de los componentes y la estructura de los equipos para fomentar la claridad, la autonomía y la eficiencia.
@@ -929,7 +929,7 @@ Los siguientes principios guiarán el desarrollo en Yendo Mobile, extrayendo la 
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -944,67 +944,67 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Diseño de Sistemas Front-End para Yendo Mobile
+# Informe Técnico: Diseño de Sistemas Front-End para la Web Software Factory
 
 ## 1. Concepto Central y Tesis Arquitectónica
 
 La masterclass "Front-End System Design: Advanced UI, Performance & Architecture" de Evany Echeverria (Frontend Masters) subraya la importancia de un diseño de sistemas front-end robusto para construir interfaces de usuario escalables, eficientes y de alto rendimiento. El curso profundiza en los fundamentos del navegador, la manipulación del DOM, la gestión del estado y las optimizaciones de rendimiento, culminando en un ejercicio de diseño de un *news feed* de redes sociales.
 
-**Tesis Arquitectónica para Yendo Mobile:**
-Yendo Mobile, con su ADN "pisa internet" y su stack basado en React Native y Expo 57, adoptará una arquitectura de diseño de sistemas front-end que priorice la **eficiencia de renderizado, la gestión proactiva del estado y la optimización de la red** para ofrecer una experiencia de usuario fluida, inmersiva y de fricción cero. Nos enfocaremos en traducir los principios de rendimiento del navegador web a la arquitectura nativa de React Native, aprovechando las capacidades de GPU, la virtualización y un diseño de componentes atómico para construir "Venues", "Experiencias" y "Grupos" que sean rápidos, reactivos y visualmente impactantes, especialmente en entornos Dark OLED con Material 3.
+**Tesis Arquitectónica para la Web Software Factory:**
+la Web Software Factory, con su ADN "pisa internet" y su stack basado en Modern Web UI (CSS/WAAPI) y Expo 57, adoptará una arquitectura de diseño de sistemas front-end que priorice la **eficiencia de renderizado, la gestión proactiva del estado y la optimización de la red** para ofrecer una experiencia de usuario fluida, inmersiva y de fricción cero. Nos enfocaremos en traducir los principios de rendimiento del navegador web a la arquitectura nativa de Modern Web UI (CSS/WAAPI), aprovechando las capacidades de GPU, la virtualización y un diseño de componentes atómico para construir "Venues", "Experiencias" y "Grupos" que sean rápidos, reactivos y visualmente impactantes, especialmente en entornos Dark OLED con Material 3.
 
 ## 2. Hallazgos Técnicos Clave
 
 ### Ergonomía y Percepción de Rendimiento
-El curso enfatiza cómo el rendimiento del navegador (reflow, composición, manipulación del DOM) impacta directamente la experiencia del usuario. Para Yendo, esto se traduce en la necesidad de minimizar los re-renders innecesarios en React Native, optimizar la carga de datos y asegurar que las interacciones sean instantáneas. La ergonomía en Yendo se logrará a través de:
+El curso enfatiza cómo el rendimiento del navegador (reflow, composición, manipulación del DOM) impacta directamente la experiencia del usuario. Para WebFactory, esto se traduce en la necesidad de minimizar los re-renders innecesarios en Modern Web UI (CSS/WAAPI), optimizar la carga de datos y asegurar que las interacciones sean instantáneas. La ergonomía en WebFactory se logrará a través de:
 *   **Respuestas visuales inmediatas:** Utilizando animaciones fluidas y *feedback* háptico.
 *   **Carga progresiva y virtualización:** Para manejar grandes volúmenes de contenido (ej. feeds de "Experiencias" o listas de "Grupos") sin sobrecargar la UI.
 *   **Diseño de interacción intuitivo:** Reduciendo la carga cognitiva y la cantidad de pasos para completar tareas clave.
 
 ### Física de Resortes (Spring Physics)
-Aunque no se menciona explícitamente, la discusión sobre la optimización del renderizado y el uso de la GPU para animaciones (capas gráficas) es fundamental para lograr animaciones con física de resortes. En React Native, esto se traduce en el uso de la API `Animated` o librerías como `Reanimated` para crear transiciones y gestos que se sientan naturales y responsivos, aprovechando el hilo nativo para el renderizado y liberando el hilo JavaScript. Esto es crucial para la "Experiencia" inmersiva que Yendo busca ofrecer.
+Aunque no se menciona explícitamente, la discusión sobre la optimización del renderizado y el uso de la GPU para animaciones (capas gráficas) es fundamental para lograr animaciones con física de resortes. En Modern Web UI (CSS/WAAPI), esto se traduce en el uso de la API `Animated` o librerías como `Reanimated` para crear transiciones y gestos que se sientan naturales y responsivos, aprovechando el hilo nativo para el renderizado y liberando el hilo JavaScript. Esto es crucial para la "Experiencia" inmersiva que WebFactory busca ofrecer.
 
 ### Modelos de Hilos (Thread Models)
-El curso detalla el *rendering pipeline* del navegador (Style, Layout, Paint, Composite) y la distinción entre renderizado basado en CPU y GPU. En React Native, esto se mapea a la interacción entre el hilo JavaScript (donde se ejecuta la lógica de la aplicación y el Virtual DOM) y el hilo UI nativo (donde se renderizan los componentes).
+El curso detalla el *rendering pipeline* del navegador (Style, Layout, Paint, Composite) y la distinción entre renderizado basado en CPU y GPU. En Modern Web UI (CSS/WAAPI), esto se mapea a la interacción entre el hilo JavaScript (donde se ejecuta la lógica de la aplicación y el Virtual DOM) y el hilo UI nativo (donde se renderizan los componentes).
 *   **Optimización del hilo JS:** Minimizar cálculos costosos, usar `useMemo`/`useCallback`, y evitar re-renders innecesarios.
-*   **Descarga al hilo UI/GPU:** Utilizar animaciones nativas y componentes que aprovechen la GPU (ej. `FlatList` con `removeClippedSubviews`, animaciones con `useNativeDriver`) para asegurar una UI fluida incluso bajo carga. La creación de "capas gráficas" mencionada en el curso es análoga a cómo React Native delega ciertas animaciones y transformaciones a la GPU nativa.
+*   **Descarga al hilo UI/GPU:** Utilizar animaciones nativas y componentes que aprovechen la GPU (ej. `FlatList` con `removeClippedSubviews`, animaciones con `useNativeDriver`) para asegurar una UI fluida incluso bajo carga. La creación de "capas gráficas" mencionada en el curso es análoga a cómo Modern Web UI (CSS/WAAPI) delega ciertas animaciones y transformaciones a la GPU nativa.
 
 ### Composición de Componentes y Tokens de Diseño
-La masterclass aborda la creación de plantillas (ej. "card template") y la importancia de la composición. Para Yendo, esto refuerza la necesidad de un sistema de diseño robusto basado en componentes atómicos y tokens de diseño.
+La masterclass aborda la creación de plantillas (ej. "card template") y la importancia de la composición. Para WebFactory, esto refuerza la necesidad de un sistema de diseño robusto basado en componentes atómicos y tokens de diseño.
 *   **Componentes reutilizables:** Construir bloques de UI (botones, tarjetas, avatares) que encapsulen lógica y estilo, facilitando la consistencia y el mantenimiento.
 *   **Tokens de diseño:** Definir colores, tipografías, espaciados y sombras como variables (tokens) para asegurar la coherencia visual y facilitar la implementación de temas (Dark OLED, Material 3).
 *   **Composición sobre herencia:** Favorecer la combinación de componentes más pequeños para construir interfaces complejas, como los elementos de un "Venue" o una "Experiencia".
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-### React Native & Expo 57
+### Modern Web UI (CSS/WAAPI) & Expo 57
 *   **Virtualización por defecto:** Implementar `FlatList` o librerías de virtualización avanzadas para todas las listas largas (feeds, comentarios, listas de usuarios en "Grupos") para optimizar el uso de memoria y el rendimiento de renderizado, siguiendo los principios de la masterclass.
 *   **Optimización del hilo JS:** Auditar y refactorizar componentes para minimizar re-renders, utilizando `React.memo`, `useCallback`, `useMemo` y `shouldComponentUpdate` de forma estratégica.
-*   **Aprovechamiento de Expo 57:** Utilizar las capacidades de Expo para *over-the-air updates*, módulos nativos precompilados y herramientas de depuración para acelerar el desarrollo y la entrega de rendimiento. Explorar las nuevas arquitecturas de renderizado de React Native (Fabric, TurboModules) para mejorar la comunicación entre hilos.
-*   **Monitoreo de rendimiento:** Integrar herramientas de monitoreo de rendimiento (ej. Flipper, React Native Performance Monitor) para identificar cuellos de botella en el hilo JS y UI.
+*   **Aprovechamiento de Expo 57:** Utilizar las capacidades de Expo para *over-the-air updates*, módulos nativos precompilados y herramientas de depuración para acelerar el desarrollo y la entrega de rendimiento. Explorar las nuevas arquitecturas de renderizado de Modern Web UI (CSS/WAAPI) (Fabric, TurboModules) para mejorar la comunicación entre hilos.
+*   **Monitoreo de rendimiento:** Integrar herramientas de monitoreo de rendimiento (ej. Flipper, Modern Web UI (CSS/WAAPI) Performance Monitor) para identificar cuellos de botella en el hilo JS y UI.
 
 ### Dark OLED & Material 3
 *   **Tematización dinámica y eficiente:** Implementar un sistema de tematización que soporte Dark OLED de forma nativa, asegurando que los colores oscuros sean verdaderamente negros (`#000000`) para maximizar el ahorro de batería y el contraste.
 *   **Optimización de activos para Dark Mode:** Asegurar que imágenes, iconos y otros activos visuales tengan versiones optimizadas para el modo oscuro, evitando artefactos o problemas de legibilidad.
-*   **Componentes Material 3:** Adoptar los componentes de Material 3 para React Native, aprovechando sus principios de diseño adaptativo y su enfoque en la accesibilidad y la personalización, lo que se alinea con la composición de componentes y tokens de diseño.
+*   **Componentes Material 3:** Adoptar los componentes de Material 3 para Modern Web UI (CSS/WAAPI), aprovechando sus principios de diseño adaptativo y su enfoque en la accesibilidad y la personalización, lo que se alinea con la composición de componentes y tokens de diseño.
 *   **Renderizado de texto:** Optimizar el renderizado de texto en Dark OLED, asegurando que los colores de fuente tengan suficiente contraste y que las fuentes sean eficientes en su renderizado.
 
 ### Fricción Cero & Ley de Fitts
 *   **Carga predictiva y *pre-fetching*:** Implementar estrategias de carga de datos predictiva (ej. cargar el siguiente conjunto de datos en un feed antes de que el usuario llegue al final) y *pre-fetching* de recursos para reducir los tiempos de espera percibidos.
 *   **Diseño de interacción basado en Fitts:** Diseñar elementos interactivos (botones, enlaces) con tamaños y espaciados adecuados para el tacto en dispositivos móviles, minimizando el esfuerzo del usuario y los errores. La Ley de Fitts se aplica directamente a la ubicación y tamaño de los elementos clave en "Venues" y "Experiencias".
 *   **Animaciones de *feedback*:** Utilizar animaciones sutiles y *feedback* háptico para confirmar acciones del usuario, reduciendo la incertidumbre y mejorando la percepción de reactividad.
-*   **Optimización de consultas DOM (React Native View Hierarchy):** Aplicar los principios de optimización de consultas del curso a la jerarquía de vistas de React Native, evitando anidamientos excesivos y utilizando `testID` para pruebas de rendimiento y depuración.
+*   **Optimización de consultas DOM (Modern Web UI (CSS/WAAPI) View Hierarchy):** Aplicar los principios de optimización de consultas del curso a la jerarquía de vistas de Modern Web UI (CSS/WAAPI), evitando anidamientos excesivos y utilizando `testID` para pruebas de rendimiento y depuración.
 
 ### Lenguaje de Producto (Venue / Experiencia / Grupo)
-*   **Arquitectura de estado global:** Diseñar una estrategia de gestión de estado robusta (ej. Redux Toolkit, Zustand, Recoil) que pueda manejar la complejidad de datos de "Venues" (ubicación, eventos), "Experiencias" (contenido multimedia, interacciones) y "Grupos" (miembros, chats, publicaciones). La masterclass discute IndexedDB, SessionStorage, LocalStorage y normalización; para React Native, esto se traduce en persistencia de estado y caché de datos.
+*   **Arquitectura de estado global:** Diseñar una estrategia de gestión de estado robusta (ej. Redux Toolkit, Zustand, Recoil) que pueda manejar la complejidad de datos de "Venues" (ubicación, eventos), "Experiencias" (contenido multimedia, interacciones) y "Grupos" (miembros, chats, publicaciones). La masterclass discute IndexedDB, SessionStorage, LocalStorage y normalización; para Modern Web UI (CSS/WAAPI), esto se traduce en persistencia de estado y caché de datos.
 *   **API eficiente:** Implementar un `createClient` canónico que gestione la comunicación con el backend de manera eficiente, utilizando GraphQL para reducir la sobrecarga de datos y WebSockets/SSE para actualizaciones en tiempo real en "Grupos" o "Experiencias" dinámicas.
 *   **Diseño modular:** Cada concepto ("Venue", "Experiencia", "Grupo") debe ser un módulo bien definido con sus propios componentes, lógica de estado y servicios de datos, facilitando la escalabilidad y el mantenimiento.
 *   **Virtualización de contenido:** Aplicar virtualización no solo a listas, sino también a componentes complejos dentro de "Experiencias" o "Venues" que puedan tener muchos elementos interactivos o multimedia.
 
 ### Invariantes de Ingeniería
 *   **`un createClient`:** Establecer un patrón canónico para la creación de clientes API. Este cliente debe encapsular la lógica de autenticación, manejo de errores, reintentos y caché. Debe ser agnóstico al protocolo (REST, GraphQL, WebSockets) y configurable para diferentes entornos. Esto se alinea con la discusión del curso sobre las diferentes estrategias de red y la gestión de la complejidad de la API.
-*   **`StyleSheet.create canónico`:** En React Native, `StyleSheet.create` es fundamental para la optimización del rendimiento, ya que los estilos se serializan y se envían al hilo nativo una sola vez. Se establecerá una convención estricta para su uso, promoviendo la modularidad de estilos, la reutilización y la consistencia con los tokens de diseño.
-*   **Dunbar 4-6:** Este invariante, que sugiere un límite cognitivo en el número de relaciones que una persona puede mantener, se traduce en el diseño de sistemas front-end de Yendo en:
+*   **`StyleSheet.create canónico`:** En Modern Web UI (CSS/WAAPI), `StyleSheet.create` es fundamental para la optimización del rendimiento, ya que los estilos se serializan y se envían al hilo nativo una sola vez. Se establecerá una convención estricta para su uso, promoviendo la modularidad de estilos, la reutilización y la consistencia con los tokens de diseño.
+*   **Dunbar 4-6:** Este invariante, que sugiere un límite cognitivo en el número de relaciones que una persona puede mantener, se traduce en el diseño de sistemas front-end de WebFactory en:
     *   **Modularidad de componentes:** Limitar la complejidad interna de los componentes a un número manejable de responsabilidades.
     *   **Claridad de la arquitectura:** Mantener la arquitectura de la aplicación comprensible para un equipo de 4-6 desarrolladores, con límites claros entre dominios (Venue, Experiencia, Grupo).
     *   **Flujos de datos sencillos:** Diseñar flujos de datos y estados que sean fáciles de seguir y depurar, evitando dependencias circulares o efectos secundarios inesperados.
@@ -1012,29 +1012,29 @@ La masterclass aborda la creación de plantillas (ej. "card template") y la impo
 
 ## 4. Principios Rectores y Citas Clave
 
-Los principios rectores de Yendo Mobile en el diseño de sistemas front-end se basarán en la eficiencia, la reactividad y la experiencia del usuario, inspirados en la masterclass:
+Los principios rectores de la Web Software Factory en el diseño de sistemas front-end se basarán en la eficiencia, la reactividad y la experiencia del usuario, inspirados en la masterclass:
 
 1.  **"Performance is a Feature":** El rendimiento no es una consideración secundaria, sino una característica central del producto.
     *   *Cita clave (adaptada):* "GPU-based rendering will perform better than CPU-based rendering." (Evany Echeverria)
-    *   *Aplicación Yendo:* Priorizar el uso del hilo nativo y la GPU para animaciones y renderizado, y optimizar el hilo JavaScript para la lógica de negocio.
+    *   *Aplicación WebFactory:* Priorizar el uso del hilo nativo y la GPU para animaciones y renderizado, y optimizar el hilo JavaScript para la lógica de negocio.
 
 2.  **"Virtualización como Estándar":** Para cualquier lista o contenido dinámico extenso, la virtualización es la solución por defecto para la eficiencia.
     *   *Cita clave:* "Virtualization, a UI optimization technique involving keeping data in memory while rendering only a limited subset to the screen." (Evany Echeverria)
-    *   *Aplicación Yendo:* Implementar `FlatList` y otras técnicas de virtualización en todos los feeds y listas de "Venues", "Experiencias" y "Grupos".
+    *   *Aplicación WebFactory:* Implementar `FlatList` y otras técnicas de virtualización en todos los feeds y listas de "Venues", "Experiencias" y "Grupos".
 
 3.  **"Estado Gestionado, Datos Optimizados":** Una gestión de estado clara y una comunicación de red eficiente son esenciales para la reactividad.
     *   *Cita clave (adaptada):* "Understanding the trade-offs between different state management strategies and network protocols will help optimize access costs." (Evany Echeverria)
-    *   *Aplicación Yendo:* Diseñar una arquitectura de estado global coherente y utilizar el protocolo de red más adecuado (GraphQL, WebSockets, SSE) para cada caso de uso.
+    *   *Aplicación WebFactory:* Diseñar una arquitectura de estado global coherente y utilizar el protocolo de red más adecuado (GraphQL, WebSockets, SSE) para cada caso de uso.
 
 4.  **"Composición Atómica, Diseño Coherente":** Construir la UI a partir de componentes pequeños y reutilizables, guiados por un sistema de diseño robusto.
     *   *Cita clave (adaptada):* "Simplifying query selectors or using IDs for core containers can provide easy performance gains." (Evany Echeverria, refiriéndose a la eficiencia del DOM, aplicable a la eficiencia de la jerarquía de vistas de RN y la modularidad).
-    *   *Aplicación Yendo:* Desarrollar un sistema de diseño basado en tokens y componentes atómicos para asegurar la consistencia y la eficiencia en el desarrollo de la UI.
+    *   *Aplicación WebFactory:* Desarrollar un sistema de diseño basado en tokens y componentes atómicos para asegurar la consistencia y la eficiencia en el desarrollo de la UI.
 
 5.  **"Fricción Cero en Cada Interacción":** Cada interacción del usuario debe ser fluida, instantánea y predecible.
     *   *Cita clave (implícita):* La masterclass se centra en eliminar los cuellos de botella de rendimiento que causan fricción.
-    *   *Aplicación Yendo:* Optimizar los tiempos de carga, usar animaciones con física de resortes y diseñar interfaces que minimicen el esfuerzo cognitivo y físico del usuario, siguiendo la Ley de Fitts.
+    *   *Aplicación WebFactory:* Optimizar los tiempos de carga, usar animaciones con física de resortes y diseñar interfaces que minimicen el esfuerzo cognitivo y físico del usuario, siguiendo la Ley de Fitts.
 
-Estos principios guiarán el desarrollo de Yendo Mobile, asegurando que la aplicación no solo sea funcional, sino también un referente en rendimiento y experiencia de usuario en el ecosistema móvil.
+Estos principios guiarán el desarrollo de la Web Software Factory, asegurando que la aplicación no solo sea funcional, sino también un referente en rendimiento y experiencia de usuario en el ecosistema móvil.
 
 ---
 
@@ -1056,14 +1056,14 @@ Estos principios guiarán el desarrollo de Yendo Mobile, asegurando que la aplic
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
-## 🎓 Masterclass UI: How Do We Use React Native at Mattermost: Architecture and Design
+## 🎓 Masterclass UI: How Do We Use Modern Web UI (CSS/WAAPI) at Mattermost: Architecture and Design
 **Plataforma de Origen:** GitNation  
 **Autor/Ponente:** Mattermost Mobile Engineering  
 **URL Oficial:** [https://gitnation.com/contents/how-do-we-use-react-native-at-mattermost-architecture-and-design](https://gitnation.com/contents/how-do-we-use-react-native-at-mattermost-architecture-and-design)  
@@ -1071,22 +1071,22 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Arquitectura y Diseño React Native para Yendo Mobile
+# Informe Técnico: Arquitectura y Diseño Modern Web UI (CSS/WAAPI) para la Web Software Factory
 
 **Fecha:** 2023-12-12 (basado en la fecha de la masterclass)
-**Autor:** RESEARCHER_AGENT & UI_ARCHITECT, Yendo Mobile
-**Fuente:** "How Do We Use React Native at Mattermost: Architecture and Design" por Daniel Espino García (Mattermost Mobile Engineering, GitNation)
+**Autor:** RESEARCHER_AGENT & UI_ARCHITECT, la Web Software Factory
+**Fuente:** "How Do We Use Modern Web UI (CSS/WAAPI) at Mattermost: Architecture and Design" por Daniel Espino García (Mattermost Mobile Engineering, GitNation)
 
 ---
 
 ## 1. Concepto Central y Tesis Arquitectónica
 
-La masterclass de Mattermost revela una aproximación pragmática y robusta al desarrollo de aplicaciones React Native a gran escala, enfrentando desafíos como el soporte multi-servidor, la gestión de estado masivo, el soporte offline y la integración nativa estratégica. Su tesis central es que React Native es una plataforma viable para aplicaciones complejas, siempre que se complemente con una arquitectura bien definida, disciplina en el código y una disposición a integrar componentes nativos cuando sea estrictamente necesario para rendimiento o funcionalidades específicas.
+La masterclass de Mattermost revela una aproximación pragmática y robusta al desarrollo de aplicaciones Modern Web UI (CSS/WAAPI) a gran escala, enfrentando desafíos como el soporte multi-servidor, la gestión de estado masivo, el soporte offline y la integración nativa estratégica. Su tesis central es que Modern Web UI (CSS/WAAPI) es una plataforma viable para aplicaciones complejas, siempre que se complemente con una arquitectura bien definida, disciplina en el código y una disposición a integrar componentes nativos cuando sea estrictamente necesario para rendimiento o funcionalidades específicas.
 
-Para Yendo Mobile, esta visión se traduce en la siguiente tesis arquitectónica:
-**"Construiremos Yendo Mobile sobre una base React Native & Expo 57, priorizando la escalabilidad, la mantenibilidad y una experiencia de usuario de 'Fricción Cero'. Adoptaremos un enfoque híbrido pragmático, aprovechando la velocidad de desarrollo cross-platform y el ecosistema de Expo, mientras diseñamos puntos de extensión claros para integraciones nativas quirúrgicas que optimicen el rendimiento y la experiencia de usuario en Dark OLED & Material 3, asegurando la coherencia con nuestro ADN de producto (Venue/Experiencia/Grupo) y nuestros invariantes de ingeniería."**
+Para la Web Software Factory, esta visión se traduce en la siguiente tesis arquitectónica:
+**"Construiremos la Web Software Factory sobre una base Modern Web UI (CSS/WAAPI) & Expo 57, priorizando la escalabilidad, la mantenibilidad y una experiencia de usuario de 'Fricción Cero'. Adoptaremos un enfoque híbrido pragmático, aprovechando la velocidad de desarrollo cross-platform y el ecosistema de Expo, mientras diseñamos puntos de extensión claros para integraciones nativas quirúrgicas que optimicen el rendimiento y la experiencia de usuario en Dark OLED & Material 3, asegurando la coherencia con nuestro ADN de producto (Venue/Experiencia/Grupo) y nuestros invariantes de ingeniería."**
 
-Esta tesis nos permitirá escalar la aplicación Yendo, gestionar la complejidad de múltiples contextos de usuario (Venue/Grupo) y ofrecer una "Experiencia" fluida y reactiva, aprovechando las lecciones aprendidas por Mattermost en la gestión de proyectos de gran envergadura.
+Esta tesis nos permitirá escalar la aplicación WebFactory, gestionar la complejidad de múltiples contextos de usuario (Venue/Grupo) y ofrecer una "Experiencia" fluida y reactiva, aprovechando las lecciones aprendidas por Mattermost en la gestión de proyectos de gran envergadura.
 
 ---
 
@@ -1099,24 +1099,24 @@ Mattermost enfatiza la importancia de la **ergonomía del desarrollador** a trav
 Esta disciplina reduce la carga cognitiva al leer y revisar código, facilitando la incorporación de nuevos desarrolladores y la contribución de la comunidad.
 
 ### Física de Resortes (Spring Physics) y Animaciones
-Aunque no se menciona explícitamente la "física de resortes", el enfoque de Mattermost en la reducción de *boilerplate* y la creación de *custom hooks* para manejar interacciones de usuario (como el botón de retroceso en Android o `useEffectAfterMount`) sienta las bases para una experiencia de usuario fluida. Para Yendo, la "Fricción Cero" implica que las transiciones y animaciones deben ser naturales y responsivas, lo que a menudo se logra con animaciones basadas en física de resortes. La abstracción de la complejidad en *hooks* personalizados es el camino para implementar estas interacciones de manera consistente y eficiente.
+Aunque no se menciona explícitamente la "física de resortes", el enfoque de Mattermost en la reducción de *boilerplate* y la creación de *custom hooks* para manejar interacciones de usuario (como el botón de retroceso en Web Platform o `useEffectAfterMount`) sienta las bases para una experiencia de usuario fluida. Para WebFactory, la "Fricción Cero" implica que las transiciones y animaciones deben ser naturales y responsivas, lo que a menudo se logra con animaciones basadas en física de resortes. La abstracción de la complejidad en *hooks* personalizados es el camino para implementar estas interacciones de manera consistente y eficiente.
 
 ### Modelos de Hilos (Threading Models) y Reactividad
 La transición de Redux a **WatermelonDB** es un hallazgo crítico. WatermelonDB almacena el estado en una base de datos tipo SQL y utiliza **RxJS para la reactividad**. Esto implica un modelo de programación reactivo y asíncrono que:
 *   Evita cargar todo el estado en memoria, mejorando el rendimiento y reduciendo el consumo de recursos.
-*   Permite la gestión escalable de datos para múltiples servidores/contextos (análogo a Venue/Grupo en Yendo).
+*   Permite la gestión escalable de datos para múltiples servidores/contextos (análogo a Venue/Grupo en WebFactory).
 *   Ofrece soporte robusto para el modo offline, un requisito fundamental para aplicaciones móviles.
 La curva de aprendizaje de RxJS es un desafío reconocido, pero los beneficios en escalabilidad y rendimiento justifican la inversión.
 
 ### Composición de Componentes y Tokens de Diseño
-Mattermost promueve el uso de **componentes funcionales** y **TypeScript** para mejorar la seguridad de tipos y la refactorización. La creación de **custom hooks** (ej. `useTheme`) para encapsular lógica compleja y modificar el contexto es un patrón de diseño excelente para la composición. Esto permite que los componentes se centren en su propósito principal, delegando la lógica de tema, estado o comportamiento a *hooks* reutilizables. Esta estrategia es directamente aplicable a la implementación de un sistema de diseño basado en tokens para Yendo, especialmente para Dark OLED y Material 3.
+Mattermost promueve el uso de **componentes funcionales** y **TypeScript** para mejorar la seguridad de tipos y la refactorización. La creación de **custom hooks** (ej. `useTheme`) para encapsular lógica compleja y modificar el contexto es un patrón de diseño excelente para la composición. Esto permite que los componentes se centren en su propósito principal, delegando la lógica de tema, estado o comportamiento a *hooks* reutilizables. Esta estrategia es directamente aplicable a la implementación de un sistema de diseño basado en tokens para WebFactory, especialmente para Dark OLED y Material 3.
 
 ---
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-### React Native & Expo 57
-*   **Validación de la Plataforma:** La experiencia de Mattermost con más de 100,000 líneas de código y características complejas (multi-servidor, offline) valida React Native como una elección sólida para Yendo.
+### Modern Web UI (CSS/WAAPI) & Expo 57
+*   **Validación de la Plataforma:** La experiencia de Mattermost con más de 100,000 líneas de código y características complejas (multi-servidor, offline) valida Modern Web UI (CSS/WAAPI) como una elección sólida para WebFactory.
 *   **Adopción de Expo 57:** Utilizar Expo 57 para aprovechar su ecosistema, herramientas de desarrollo rápido y la capacidad de construir para múltiples plataformas desde una única base de código. Para necesidades nativas específicas, se puede optar por el *bare workflow* o módulos nativos personalizados, siguiendo el ejemplo de Mattermost.
 *   **TypeScript Obligatorio:** Implementar TypeScript en el 100% del código base para garantizar la seguridad de tipos, facilitar la refactorización y reducir errores, tal como lo hace Mattermost.
 *   **Componentes Funcionales:** Priorizar el desarrollo con componentes funcionales y *hooks* para una arquitectura moderna y mantenible.
@@ -1127,7 +1127,7 @@ Mattermost promueve el uso de **componentes funcionales** y **TypeScript** para 
 *   **`StyleSheet.create` Canónico:** Reforzar el uso consistente de `StyleSheet.create` para la definición de estilos, integrándolo con los tokens de diseño para asegurar la coherencia visual y la adaptabilidad al tema.
 
 ### Fricción Cero & Ley de Fitts
-*   **Custom Hooks para Interacciones Comunes:** Desarrollar *custom hooks* para encapsular la lógica de interacciones de usuario que puedan generar *boilerplate* o fricción. Ejemplos: `useBackButtonHandler` (para Android), `useDebouncedInput`, `useAnimatedTransition` (para animaciones de física de resortes).
+*   **Custom Hooks para Interacciones Comunes:** Desarrollar *custom hooks* para encapsular la lógica de interacciones de usuario que puedan generar *boilerplate* o fricción. Ejemplos: `useBackButtonHandler` (para Web Platform), `useDebouncedInput`, `useAnimatedTransition` (para animaciones de física de resortes).
 *   **Optimización de Rendimiento Perceptivo:** Utilizar animaciones y transiciones suaves (posiblemente con librerías como `react-native-reanimated` y `react-native-gesture-handler`) para mejorar la percepción de velocidad y fluidez, alineándose con la "Fricción Cero".
 *   **Diseño de Interfaz Basado en Ley de Fitts:** Aplicar principios de la Ley de Fitts en el diseño de la interfaz de usuario, asegurando que los elementos interactivos clave sean fáciles de alcanzar y seleccionar, reduciendo el esfuerzo del usuario.
 
@@ -1139,8 +1139,8 @@ Mattermost promueve el uso de **componentes funcionales** y **TypeScript** para 
 *   **Acciones Remotas y Locales:** Implementar un patrón de "acciones" (similares a las de Mattermost) para la modificación de datos, distinguiendo claramente entre acciones que interactúan con el servidor (`remote actions`) y aquellas que solo actualizan la base de datos local (`local actions`). Esto facilita la sincronización y la gestión de conflictos.
 
 ### Invariantes de Ingeniería
-*   **`un createClient` Canónico:** Establecer un `createClient` (o un conjunto de *factories* de cliente) como el único punto de entrada para todas las interacciones con la API de Yendo. Este cliente debe ser robusto, manejar autenticación, reintentos, y potencialmente integrarse con WatermelonDB para caching y sincronización.
-*   **`StyleSheet.create` Consistente:** Enforzar el uso de `StyleSheet.create` para la definición de estilos en todos los componentes, promoviendo la inmutabilidad de los objetos de estilo y la optimización de React Native. Integrar esto con el sistema de tokens de diseño para asegurar la coherencia.
+*   **`un createClient` Canónico:** Establecer un `createClient` (o un conjunto de *factories* de cliente) como el único punto de entrada para todas las interacciones con la API de WebFactory. Este cliente debe ser robusto, manejar autenticación, reintentos, y potencialmente integrarse con WatermelonDB para caching y sincronización.
+*   **`StyleSheet.create` Consistente:** Enforzar el uso de `StyleSheet.create` para la definición de estilos en todos los componentes, promoviendo la inmutabilidad de los objetos de estilo y la optimización de Modern Web UI (CSS/WAAPI). Integrar esto con el sistema de tokens de diseño para asegurar la coherencia.
 *   **Dunbar 4-6 y Modularidad:**
     *   **Organización de Carpetas:** Implementar una estructura de carpetas clara y consistente (ej. `screens`, `components`, `hooks`, `services`, `data`, `actions`) para facilitar la navegación y el entendimiento del código, alineándose con la recomendación de Mattermost.
     *   **Tamaño de Componentes y Módulos:** Fomentar componentes y módulos pequeños y con una única responsabilidad, evitando "componentes gigantes" que aumenten la carga cognitiva. Los *custom hooks* son una herramienta excelente para lograr esto, descomponiendo la lógica compleja.
@@ -1151,25 +1151,25 @@ Mattermost promueve el uso de **componentes funcionales** y **TypeScript** para 
 ## 4. Principios Rectores y Citas Clave
 
 1.  **Pragmatismo y Adaptabilidad:** "Cada proyecto es diferente... Mi esperanza es que esta charla pueda generar ideas que puedas usar en tus proyectos."
-    *   **Principio para Yendo:** Adoptar soluciones probadas, pero adaptarlas críticamente a las necesidades específicas de Yendo, manteniendo una mentalidad abierta a la mejora continua.
+    *   **Principio para WebFactory:** Adoptar soluciones probadas, pero adaptarlas críticamente a las necesidades específicas de WebFactory, manteniendo una mentalidad abierta a la mejora continua.
 
 2.  **Eficiencia y Reutilización de Habilidades:** "Usar tecnología similar al resto del stack permite a cualquier desarrollador frontend desarrollar características para aplicaciones móviles."
-    *   **Principio para Yendo:** Maximizar la sinergia entre los equipos frontend y móvil, aprovechando el conocimiento existente en JavaScript/TypeScript y React para acelerar el desarrollo y reducir la curva de aprendizaje.
+    *   **Principio para WebFactory:** Maximizar la sinergia entre los equipos frontend y móvil, aprovechando el conocimiento existente en JavaScript/TypeScript y React para acelerar el desarrollo y reducir la curva de aprendizaje.
 
 3.  **Fiabilidad y Mantenibilidad:** "TypeScript... introduzco menos errores en el código."
-    *   **Principio para Yendo:** La calidad del código es una inversión a largo plazo. TypeScript es fundamental para la robustez de una aplicación compleja.
+    *   **Principio para WebFactory:** La calidad del código es una inversión a largo plazo. TypeScript es fundamental para la robustez de una aplicación compleja.
 
 4.  **Ergonomía del Desarrollador y Claridad del Código:** "Tener las cosas ordenadas reduce la carga cognitiva al leer un componente largo."
-    *   **Principio para Yendo:** La legibilidad y la predictibilidad del código son tan importantes como su funcionalidad. Las convenciones estrictas y la organización lógica son esenciales para la escalabilidad del equipo y del proyecto.
+    *   **Principio para WebFactory:** La legibilidad y la predictibilidad del código son tan importantes como su funcionalidad. Las convenciones estrictas y la organización lógica son esenciales para la escalabilidad del equipo y del proyecto.
 
 5.  **Escalabilidad y Resiliencia de Datos:** "WatermelonDB nos trajo un sistema más escalable listo para multi-servidor."
-    *   **Principio para Yendo:** La arquitectura de datos debe anticipar la complejidad del producto (múltiples Venues/Grupos) y garantizar la escalabilidad, el rendimiento y la capacidad offline desde el diseño inicial.
+    *   **Principio para WebFactory:** La arquitectura de datos debe anticipar la complejidad del producto (múltiples Venues/Grupos) y garantizar la escalabilidad, el rendimiento y la capacidad offline desde el diseño inicial.
 
 6.  **Abstracción y Reducción de Fricción:** "Los custom hooks... reducen el boilerplate."
-    *   **Principio para Yendo:** Identificar y encapsular patrones comunes o lógicas complejas en abstracciones reutilizables (como *custom hooks*) para simplificar el desarrollo, mejorar la legibilidad y reducir la "Fricción Cero" tanto para el usuario como para el desarrollador.
+    *   **Principio para WebFactory:** Identificar y encapsular patrones comunes o lógicas complejas en abstracciones reutilizables (como *custom hooks*) para simplificar el desarrollo, mejorar la legibilidad y reducir la "Fricción Cero" tanto para el usuario como para el desarrollador.
 
 7.  **Integración Nativa Estratégica:** "A veces es necesario ir a lo nativo."
-    *   **Principio para Yendo:** Aunque React Native es la base, no debemos dudar en implementar soluciones nativas cuando el rendimiento, la integración con el sistema operativo o requisitos muy específicos lo demanden, siempre de manera quirúrgica y bien encapsulada.
+    *   **Principio para WebFactory:** Aunque Modern Web UI (CSS/WAAPI) es la base, no debemos dudar en implementar soluciones nativas cuando el rendimiento, la integración con el sistema operativo o requisitos muy específicos lo demanden, siempre de manera quirúrgica y bien encapsulada.
 
 ---
 
@@ -1190,14 +1190,14 @@ Mattermost promueve el uso de **componentes funcionales** y **TypeScript** para 
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
-## 🎓 Masterclass UI: The Day I Broke React Native: Hermes Engine & Release Engineering
+## 🎓 Masterclass UI: The Day I Broke Modern Web UI (CSS/WAAPI): Hermes Engine & Release Engineering
 **Plataforma de Origen:** GitNation  
 **Autor/Ponente:** Nicola Corti (Meta)  
 **URL Oficial:** [https://gitnation.com/contents/the-day-i-broke-react-native](https://gitnation.com/contents/the-day-i-broke-react-native)  
@@ -1205,52 +1205,52 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Resiliencia en la Cadena de Suministro de Software y Experiencia del Desarrollador en Yendo Mobile
+# Informe Técnico: Resiliencia en la Cadena de Suministro de Software y Experiencia del Desarrollador en la Web Software Factory
 
-Este informe analiza las lecciones extraídas de la masterclass "The Day I Broke React Native: Hermes Engine & Release Engineering" de Nicola Corti (Meta), mapeándolas quirúrgicamente al stack y ADN de Yendo Mobile. Se enfatiza la importancia de la estabilidad, la reproducibilidad y la experiencia del desarrollador (DX) en el contexto de un ecosistema React Native.
+Este informe analiza las lecciones extraídas de la masterclass "The Day I Broke Modern Web UI (CSS/WAAPI): Hermes Engine & Release Engineering" de Nicola Corti (Meta), mapeándolas quirúrgicamente al stack y ADN de la Web Software Factory. Se enfatiza la importancia de la estabilidad, la reproducibilidad y la experiencia del desarrollador (DX) en el contexto de un ecosistema Modern Web UI (CSS/WAAPI).
 
 ---
 
 ## 1. Concepto Central y Tesis Arquitectónica
 
-El concepto central de la masterclass es la **fragilidad inherente a las cadenas de suministro de software modernas**, especialmente en ecosistemas dinámicos como React Native, y el impacto devastador que las dependencias inestables pueden tener en la experiencia del desarrollador y la continuidad operativa. El incidente descrito, donde una versión inestable de React Native rompió los builds de miles de proyectos debido al uso de "plus dependencies" (versiones dinámicas), subraya la necesidad crítica de control y previsibilidad.
+El concepto central de la masterclass es la **fragilidad inherente a las cadenas de suministro de software modernas**, especialmente en ecosistemas dinámicos como Modern Web UI (CSS/WAAPI), y el impacto devastador que las dependencias inestables pueden tener en la experiencia del desarrollador y la continuidad operativa. El incidente descrito, donde una versión inestable de Modern Web UI (CSS/WAAPI) rompió los builds de miles de proyectos debido al uso de "plus dependencies" (versiones dinámicas), subraya la necesidad crítica de control y previsibilidad.
 
-**Tesis Arquitectónica para Yendo Mobile:**
-La arquitectura de Yendo Mobile debe priorizar la **resiliencia y la reproducibilidad** en cada capa de su stack tecnológico. Esto implica una gestión de dependencias estricta y defensiva, la adopción de prácticas de ingeniería que minimicen la fricción y el riesgo, y una cultura de respuesta proactiva a incidentes. La estabilidad técnica no es solo una característica, sino un pilar fundamental que sostiene la promesa de "Venue / Experiencia / Grupo" de Yendo, asegurando que la base sobre la que "pisa internet" sea inquebrantable y que la experiencia del usuario final sea consistentemente de clase mundial.
+**Tesis Arquitectónica para la Web Software Factory:**
+La arquitectura de la Web Software Factory debe priorizar la **resiliencia y la reproducibilidad** en cada capa de su stack tecnológico. Esto implica una gestión de dependencias estricta y defensiva, la adopción de prácticas de ingeniería que minimicen la fricción y el riesgo, y una cultura de respuesta proactiva a incidentes. La estabilidad técnica no es solo una característica, sino un pilar fundamental que sostiene la promesa de "Venue / Experiencia / Grupo" de WebFactory, asegurando que la base sobre la que "pisa internet" sea inquebrantable y que la experiencia del usuario final sea consistentemente de clase mundial.
 
 ---
 
 ## 2. Hallazgos Técnicos Clave
 
-La masterclass revela varios hallazgos técnicos cruciales con implicaciones directas para Yendo Mobile:
+La masterclass revela varios hallazgos técnicos cruciales con implicaciones directas para la Web Software Factory:
 
 *   **Fragilidad de las Dependencias Dinámicas:** El uso de especificadores de versión dinámicos (ej. `+` en Gradle, `*` en NPM) es un antipatrón que introduce una vulnerabilidad masiva. Permite que versiones inestables o incompatibles se inyecten automáticamente en el proyecto, resultando en builds no reproducibles y fallos inesperados. Esto es una fuente directa de "terrible developer experience".
-*   **Impacto del Tamaño de los Paquetes y Gestión de Binarios:** La necesidad de mover artefactos de Android de NPM a Maven Central debido a los límites de tamaño de NPM (220MB) destaca la importancia de la optimización del tamaño de los paquetes y la gestión eficiente de binarios. Un paquete inflado puede generar problemas de distribución y rendimiento.
-*   **Complejidad de la Cadena de Suministro de Software:** El incidente demostró cómo una mala práctica en una dependencia de bajo nivel puede propagarse a través de bibliotecas de terceros (ej. `react-native-reanimated` usando `+` para React Native), afectando a todo el ecosistema. La interconexión de dependencias exige una visión holística.
-*   **Importancia de la Infraestructura de Lanzamiento y Soporte:** La complejidad de parchear versiones antiguas de React Native y la necesidad de establecer ventanas de soporte claras subraya la inversión requerida para mantener un ecosistema saludable. Para Yendo, esto se traduce en la necesidad de una estrategia de actualización y soporte bien definida.
+*   **Impacto del Tamaño de los Paquetes y Gestión de Binarios:** La necesidad de mover artefactos de Web Platform de NPM a Maven Central debido a los límites de tamaño de NPM (220MB) destaca la importancia de la optimización del tamaño de los paquetes y la gestión eficiente de binarios. Un paquete inflado puede generar problemas de distribución y rendimiento.
+*   **Complejidad de la Cadena de Suministro de Software:** El incidente demostró cómo una mala práctica en una dependencia de bajo nivel puede propagarse a través de bibliotecas de terceros (ej. `react-native-reanimated` usando `+` para Modern Web UI (CSS/WAAPI)), afectando a todo el ecosistema. La interconexión de dependencias exige una visión holística.
+*   **Importancia de la Infraestructura de Lanzamiento y Soporte:** La complejidad de parchear versiones antiguas de Modern Web UI (CSS/WAAPI) y la necesidad de establecer ventanas de soporte claras subraya la inversión requerida para mantener un ecosistema saludable. Para WebFactory, esto se traduce en la necesidad de una estrategia de actualización y soporte bien definida.
 *   **Cultura de Incidentes y Respuesta:** La distinción entre la respuesta a incidentes internos (con telemetría) y de código abierto (sin ella) resalta la necesidad de canales de comunicación claros, una cultura de "no blame" y una capacidad de respuesta rápida para mitigar el impacto.
 *   **Antipatrones y Plantillas de Bibliotecas:** La observación de que los patrones (incluidos los antipatrones) se copian en la comunidad de bibliotecas enfatiza la necesidad de promover "best practices" y plantillas robustas (como `create-react-native-library`) para asegurar la resiliencia desde el inicio.
 *   **Ergonomía del Desarrollador (DX):** La ruptura inesperada de builds sin cambios de código es el epítome de una mala DX, generando frustración y pérdida de productividad. La estabilidad del entorno de desarrollo es un factor crítico para la ergonomía del equipo.
 
 ---
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-### React Native & Expo 57
+### Modern Web UI (CSS/WAAPI) & Expo 57
 
-*   **Fijación Estricta de Versiones:** Eliminar *todas* las dependencias dinámicas (`+`, `*`, `^` laxos) en `package.json`, `build.gradle`, `Podfile` y cualquier otro archivo de configuración de dependencias. Utilizar versiones exactas o rangos semánticos estrictos (`~` o versiones fijas) para todas las dependencias, incluyendo las de React Native y Expo.
-*   **Auditoría y Mitigación de Dependencias de Terceros:** Realizar una auditoría exhaustiva de las dependencias de terceros utilizadas en Yendo Mobile. Si se identifican bibliotecas que usan dependencias dinámicas, evaluar el riesgo y considerar soluciones como `patch-package` para forzar versiones estables, o buscar alternativas más robustas.
-*   **Estrategia de Actualización Controlada:** Establecer un proceso formal y regular para la actualización de React Native y Expo. Esto debe incluir:
+*   **Fijación Estricta de Versiones:** Eliminar *todas* las dependencias dinámicas (`+`, `*`, `^` laxos) en `package.json`, `build.gradle`, `Podfile` y cualquier otro archivo de configuración de dependencias. Utilizar versiones exactas o rangos semánticos estrictos (`~` o versiones fijas) para todas las dependencias, incluyendo las de Modern Web UI (CSS/WAAPI) y Expo.
+*   **Auditoría y Mitigación de Dependencias de Terceros:** Realizar una auditoría exhaustiva de las dependencias de terceros utilizadas en la Web Software Factory. Si se identifican bibliotecas que usan dependencias dinámicas, evaluar el riesgo y considerar soluciones como `patch-package` para forzar versiones estables, o buscar alternativas más robustas.
+*   **Estrategia de Actualización Controlada:** Establecer un proceso formal y regular para la actualización de Modern Web UI (CSS/WAAPI) y Expo. Esto debe incluir:
     *   Pruebas exhaustivas en entornos de staging/pre-producción con versiones candidatas (RC) antes de la adopción generalizada.
-    *   Aprovechar las ventanas de soporte de React Native y Expo para planificar las actualizaciones.
+    *   Aprovechar las ventanas de soporte de Modern Web UI (CSS/WAAPI) y Expo para planificar las actualizaciones.
     *   Mantenerse al tanto de los anuncios de lanzamiento y los "breaking changes" de las plataformas.
 *   **Entornos de Build Reproducibles con Docker:** Implementar el uso de imágenes Docker para los entornos de CI/CD. Esto garantiza que las herramientas de build (Node.js, Java, Xcode, Gradle, etc.) sean consistentes y no cambien inesperadamente, eliminando una fuente común de builds no reproducibles.
-*   **Monitoreo Proactivo de Ecosistema:** Suscribirse a canales de comunicación de React Native y Expo (blogs, GitHub, Discord) para estar al tanto de posibles incidentes o problemas en versiones candidatas.
+*   **Monitoreo Proactivo de Ecosistema:** Suscribirse a canales de comunicación de Modern Web UI (CSS/WAAPI) y Expo (blogs, GitHub, Discord) para estar al tanto de posibles incidentes o problemas en versiones candidatas.
 
 ### Dark OLED & Material 3
 
-*   **Sistema de Diseño Robusto y Desacoplado:** Desarrollar un sistema de diseño (Design System) que encapsule los tokens de diseño y componentes de UI. Este sistema debe ser lo más desacoplado posible de las implementaciones específicas de React Native o Material 3, utilizando interfaces y abstracciones claras.
-*   **Estabilidad de Componentes de UI:** Asegurar que los componentes de UI de Yendo, especialmente aquellos que implementan Dark OLED y Material 3, sean estables y no dependan de versiones inestables de bibliotecas de UI. Probar rigurosamente los cambios de tema y modo para evitar regresiones visuales o de rendimiento.
+*   **Sistema de Diseño Robusto y Desacoplado:** Desarrollar un sistema de diseño (Design System) que encapsule los tokens de diseño y componentes de UI. Este sistema debe ser lo más desacoplado posible de las implementaciones específicas de Modern Web UI (CSS/WAAPI) o Material 3, utilizando interfaces y abstracciones claras.
+*   **Estabilidad de Componentes de UI:** Asegurar que los componentes de UI de WebFactory, especialmente aquellos que implementan Dark OLED y Material 3, sean estables y no dependan de versiones inestables de bibliotecas de UI. Probar rigurosamente los cambios de tema y modo para evitar regresiones visuales o de rendimiento.
 *   **DX en el Design System:** El Design System debe mejorar la experiencia del desarrollador, proporcionando componentes bien documentados, probados y fáciles de usar, reduciendo la necesidad de soluciones ad-hoc que puedan introducir dependencias problemáticas o inconsistencias de diseño.
 
 ### Fricción Cero & Ley de Fitts
@@ -1262,14 +1262,14 @@ La masterclass revela varios hallazgos técnicos cruciales con implicaciones dir
 
 ### Lenguaje de Producto (Venue / Experiencia / Grupo)
 
-*   **Coherencia Técnica y de Producto:** La estabilidad técnica es un pilar fundamental del lenguaje de producto de Yendo. Un incidente técnico que afecte la aplicación en producción o la capacidad de los desarrolladores para construirla, rompe la promesa de una "Experiencia" fluida y un "Venue" confiable.
-*   **Impacto en la Marca:** La reputación de Yendo como un "Grupo" que ofrece una experiencia de alta calidad se ve directamente afectada por la estabilidad de su software. Los fallos técnicos pueden erosionar la confianza del usuario.
+*   **Coherencia Técnica y de Producto:** La estabilidad técnica es un pilar fundamental del lenguaje de producto de WebFactory. Un incidente técnico que afecte la aplicación en producción o la capacidad de los desarrolladores para construirla, rompe la promesa de una "Experiencia" fluida y un "Venue" confiable.
+*   **Impacto en la Marca:** La reputación de WebFactory como un "Grupo" que ofrece una experiencia de alta calidad se ve directamente afectada por la estabilidad de su software. Los fallos técnicos pueden erosionar la confianza del usuario.
 *   **Comunicación Proactiva en Incidentes:** En caso de un incidente que afecte a los usuarios o al desarrollo, adoptar una cultura de "no blame" y comunicación transparente, tanto interna como externamente. El objetivo es "fix it as soon as possible" y comunicar claramente los pasos tomados.
 
 ### Invariantes de Ingeniería
 
 *   **`createClient` Robusto:** El invariante `createClient` (asumiendo que es un punto de entrada crítico para la interacción con servicios) debe ser diseñado para ser extremadamente robusto y aislado de dependencias externas inestables. Su implementación debe usar versiones fijas y ser sometida a pruebas de regresión rigurosas.
-*   **`StyleSheet.create` Canónico y Consistente:** Reforzar el uso canónico de `StyleSheet.create` y otras convenciones de estilo. Esto no solo mejora la legibilidad y mantenibilidad, sino que también previene la introducción de dependencias de estilo inestables o patrones que puedan romperse con actualizaciones de React Native. Las herramientas de linting deben hacer cumplir estas reglas.
+*   **`StyleSheet.create` Canónico y Consistente:** Reforzar el uso canónico de `StyleSheet.create` y otras convenciones de estilo. Esto no solo mejora la legibilidad y mantenibilidad, sino que también previene la introducción de dependencias de estilo inestables o patrones que puedan romperse con actualizaciones de Modern Web UI (CSS/WAAPI). Las herramientas de linting deben hacer cumplir estas reglas.
 *   **Dunbar 4-6 en la Gestión de Dependencias:** Aplicar el principio de Dunbar (mantener la complejidad manejable) a la gestión de dependencias. Un número limitado de dependencias críticas, bien auditadas y con versiones fijas, es más manejable que una red compleja y dinámica. La complejidad de la cadena de suministro de software debe mantenerse dentro de los límites que el equipo puede comprender y gestionar eficazmente.
 *   **Cultura de "Zero Warnings":** Adoptar la filosofía de "stop suppressing warnings" y apuntar a cero warnings en el proceso de build y linting. Los warnings son a menudo indicadores tempranos de problemas potenciales y su supresión puede ocultar vulnerabilidades o antipatrones.
 
@@ -1279,19 +1279,19 @@ La masterclass revela varios hallazgos técnicos cruciales con implicaciones dir
 
 1.  **Principio de Reproducibilidad del Build:**
     > "Dynamic versions are not great because they just lead to unreproducible builds."
-    La capacidad de reproducir un build idéntico en cualquier momento y en cualquier entorno es fundamental para la estabilidad, la depuración y la confianza en el software de Yendo.
+    La capacidad de reproducir un build idéntico en cualquier momento y en cualquier entorno es fundamental para la estabilidad, la depuración y la confianza en el software de WebFactory.
 
 2.  **Principio de Estabilidad de la Cadena de Suministro de Software:**
     > "You're basically at the mercy of the library maintainer. If the library maintainer tomorrow publishes a new version, you're just going to get it and maybe your build breaks overnight."
-    Yendo debe tomar el control de su cadena de suministro de software, minimizando la dependencia de comportamientos impredecibles de terceros mediante la fijación de versiones y la auditoría.
+    WebFactory debe tomar el control de su cadena de suministro de software, minimizando la dependencia de comportamientos impredecibles de terceros mediante la fijación de versiones y la auditoría.
 
 3.  **Principio de Experiencia del Desarrollador (DX) como Prioridad:**
     > "Imagine your build was working one minute ago, then you build again, you don't make any code changes and your build is broken. This is terrible from the developer experience point of view."
     Una DX fluida y sin fricciones es tan crítica como la UX. Los problemas en el entorno de desarrollo impactan directamente la productividad, la moral del equipo y, en última instancia, la calidad del producto final.
 
 4.  **Principio de Ingeniería Defensiva y Mejores Prácticas:**
-    > "We want to offer better recommendations which are approved by Meta on how to create libraries for React Native that are resilient to incidents like this one."
-    Yendo debe construir sus propios componentes y bibliotecas con la resiliencia en mente, promoviendo activamente las mejores prácticas de ingeniería y evitando la propagación de antipatrones.
+    > "We want to offer better recommendations which are approved by Meta on how to create libraries for Modern Web UI (CSS/WAAPI) that are resilient to incidents like this one."
+    WebFactory debe construir sus propios componentes y bibliotecas con la resiliencia en mente, promoviendo activamente las mejores prácticas de ingeniería y evitando la propagación de antipatrones.
 
 5.  **Principio de Cultura de No Culpa y Resolución Rápida:**
     > "We don't have a blame culture around incidents. Incidents can happen. The reaction was like, yeah, we broke stuff. Let's fix it as soon as possible, because we care so much about our open source community."
@@ -1328,14 +1328,14 @@ La masterclass revela varios hallazgos técnicos cruciales con implicaciones dir
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
-## 🎓 Masterclass UI: From Hackathon to React Native @ Facebook: Yoga & Architecture
+## 🎓 Masterclass UI: From Hackathon to Modern Web UI (CSS/WAAPI) @ Facebook: Yoga & Architecture
 **Plataforma de Origen:** InfoQ  
 **Autor/Ponente:** Christopher Chedeau (vjeux)  
 **URL Oficial:** [https://www.infoq.com/presentations/react-native-facebook/](https://www.infoq.com/presentations/react-native-facebook/)  
@@ -1343,53 +1343,53 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Arquitectura React Native para Yendo Mobile
+# Informe Técnico: Arquitectura Modern Web UI (CSS/WAAPI) para la Web Software Factory
 
 ## 1. Concepto Central y Tesis Arquitectónica
 
-La masterclass "From Hackathon to React Native @ Facebook: Yoga & Architecture" de Christopher Chedeau (vjeux) narra el viaje fundacional de React Native, desde una iniciativa de hackathon hasta convertirse en una plataforma robusta para construir interfaces de usuario nativas. El concepto central radica en la **aplicación de un paradigma de UI declarativo y basado en componentes (React) a entornos nativos móviles**, superando desafíos técnicos y de gestión de equipos para ofrecer una experiencia de desarrollo y usuario superior.
+La masterclass "From Hackathon to Modern Web UI (CSS/WAAPI) @ Facebook: Yoga & Architecture" de Christopher Chedeau (vjeux) narra el viaje fundacional de Modern Web UI (CSS/WAAPI), desde una iniciativa de hackathon hasta convertirse en una plataforma robusta para construir interfaces de usuario nativas. El concepto central radica en la **aplicación de un paradigma de UI declarativo y basado en componentes (React) a entornos nativos móviles**, superando desafíos técnicos y de gestión de equipos para ofrecer una experiencia de desarrollo y usuario superior.
 
-La tesis arquitectónica para Yendo Mobile, inspirada en este origen, es que la **adopción estratégica de React Native (con Expo 57) permite construir una aplicación móvil de clase mundial que equilibra la velocidad de desarrollo, la consistencia de la experiencia de usuario y la eficiencia operativa**, al tiempo que se adhiere a principios de diseño de vanguardia y a la identidad de producto de Yendo. Esto implica no solo el uso de la tecnología, sino la internalización de la filosofía de React: componentes reutilizables, estado predecible y una clara separación de preocupaciones, todo ello optimizado para el rendimiento nativo y la experiencia del desarrollador.
+La tesis arquitectónica para la Web Software Factory, inspirada en este origen, es que la **adopción estratégica de Modern Web UI (CSS/WAAPI) (con Expo 57) permite construir una aplicación móvil de clase mundial que equilibra la velocidad de desarrollo, la consistencia de la experiencia de usuario y la eficiencia operativa**, al tiempo que se adhiere a principios de diseño de vanguardia y a la identidad de producto de WebFactory. Esto implica no solo el uso de la tecnología, sino la internalización de la filosofía de React: componentes reutilizables, estado predecible y una clara separación de preocupaciones, todo ello optimizado para el rendimiento nativo y la experiencia del desarrollador.
 
 ## 2. Hallazgos Técnicos Clave
 
-La masterclass, al describir los desafíos de llevar React a iOS, subraya varios puntos técnicos y conceptuales cruciales que son directamente aplicables a la estrategia de Yendo Mobile:
+La masterclass, al describir los desafíos de llevar React a iOS, subraya varios puntos técnicos y conceptuales cruciales que son directamente aplicables a la estrategia de la Web Software Factory:
 
-*   **Ergonomía del Desarrollador y Experiencia de Usuario (UX):** El principal desafío mencionado fue la "mala proposición" que React Native representaba inicialmente para los desarrolladores de iOS. Esto resalta la importancia de la ergonomía del desarrollador. React Native, en su esencia, busca simplificar la construcción de UIs complejas, permitiendo a los desarrolladores enfocarse en la lógica de negocio y la experiencia del usuario, en lugar de en las complejidades de las APIs nativas específicas de cada plataforma. Para Yendo, esto se traduce en un ciclo de desarrollo más rápido y una mayor capacidad para iterar sobre la UX.
-*   **Modelos de Hilos (Threading Models) y el Puente Nativo:** La integración de una librería JavaScript (React) con un entorno nativo (iOS) implica inherentemente la gestión de múltiples hilos: el hilo JavaScript para la lógica de la aplicación y el hilo UI nativo para el renderizado. React Native aborda esto a través de un "puente" asíncrono. Comprender y optimizar este puente es fundamental para el rendimiento. Para Yendo, esto significa diseñar componentes y flujos de datos que minimicen la serialización/deserialización y las llamadas costosas a través del puente, asegurando una UI fluida y responsiva.
-*   **Composición de Componentes y Declaratividad:** El corazón de React es la composición de componentes. La masterclass valida este enfoque al llevarlo a lo nativo. Los componentes permiten construir interfaces complejas a partir de piezas pequeñas y reutilizables, facilitando la modularidad, el mantenimiento y la escalabilidad. Para Yendo, esto es la base para construir un sistema de diseño robusto y consistente, donde cada "Venue", "Experiencia" o "Grupo" puede ser descompuesto en componentes atómicos y moleculares.
-*   **Rendimiento Nativo y Optimización:** Aunque React Native abstrae las APIs nativas, el objetivo final es un rendimiento indistinguible del nativo. Esto requiere una comprensión profunda de cómo React Native renderiza los componentes y cómo se pueden optimizar las listas, las animaciones y las interacciones para evitar cuellos de botella. La mención de "Yoga" (el motor de layout de React Native) en el título de la charla es un indicio de la importancia de un sistema de layout eficiente y predictivo.
+*   **Ergonomía del Desarrollador y Experiencia de Usuario (UX):** El principal desafío mencionado fue la "mala proposición" que Modern Web UI (CSS/WAAPI) representaba inicialmente para los desarrolladores de iOS. Esto resalta la importancia de la ergonomía del desarrollador. Modern Web UI (CSS/WAAPI), en su esencia, busca simplificar la construcción de UIs complejas, permitiendo a los desarrolladores enfocarse en la lógica de negocio y la experiencia del usuario, en lugar de en las complejidades de las APIs nativas específicas de cada plataforma. Para WebFactory, esto se traduce en un ciclo de desarrollo más rápido y una mayor capacidad para iterar sobre la UX.
+*   **Modelos de Hilos (Threading Models) y el Puente Nativo:** La integración de una librería JavaScript (React) con un entorno nativo (iOS) implica inherentemente la gestión de múltiples hilos: el hilo JavaScript para la lógica de la aplicación y el hilo UI nativo para el renderizado. Modern Web UI (CSS/WAAPI) aborda esto a través de un "puente" asíncrono. Comprender y optimizar este puente es fundamental para el rendimiento. Para WebFactory, esto significa diseñar componentes y flujos de datos que minimicen la serialización/deserialización y las llamadas costosas a través del puente, asegurando una UI fluida y responsiva.
+*   **Composición de Componentes y Declaratividad:** El corazón de React es la composición de componentes. La masterclass valida este enfoque al llevarlo a lo nativo. Los componentes permiten construir interfaces complejas a partir de piezas pequeñas y reutilizables, facilitando la modularidad, el mantenimiento y la escalabilidad. Para WebFactory, esto es la base para construir un sistema de diseño robusto y consistente, donde cada "Venue", "Experiencia" o "Grupo" puede ser descompuesto en componentes atómicos y moleculares.
+*   **Rendimiento Nativo y Optimización:** Aunque Modern Web UI (CSS/WAAPI) abstrae las APIs nativas, el objetivo final es un rendimiento indistinguible del nativo. Esto requiere una comprensión profunda de cómo Modern Web UI (CSS/WAAPI) renderiza los componentes y cómo se pueden optimizar las listas, las animaciones y las interacciones para evitar cuellos de botella. La mención de "Yoga" (el motor de layout de Modern Web UI (CSS/WAAPI)) en el título de la charla es un indicio de la importancia de un sistema de layout eficiente y predictivo.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-### React Native & Expo 57
-*   **Estandarización y Aceleración:** Aprovechar Expo 57 no solo para el desarrollo rápido y la facilidad de despliegue, sino también para estandarizar el entorno de desarrollo y las dependencias. Esto reduce la "fricción" para nuevos desarrolladores y asegura la compatibilidad con las últimas características de React Native.
-*   **Módulos Nativos y Rendimiento:** Identificar y encapsular funcionalidades que requieran un rendimiento nativo crítico o acceso a APIs específicas (ej. geolocalización avanzada, procesamiento de imágenes) en módulos nativos bien definidos, utilizando el puente de React Native de manera eficiente.
-*   **Actualizaciones Continuas:** Mantenerse al día con las actualizaciones de Expo y React Native para beneficiarse de mejoras de rendimiento, nuevas APIs y correcciones de seguridad, integrando un proceso de actualización regular en el ciclo de vida del proyecto.
+### Modern Web UI (CSS/WAAPI) & Expo 57
+*   **Estandarización y Aceleración:** Aprovechar Expo 57 no solo para el desarrollo rápido y la facilidad de despliegue, sino también para estandarizar el entorno de desarrollo y las dependencias. Esto reduce la "fricción" para nuevos desarrolladores y asegura la compatibilidad con las últimas características de Modern Web UI (CSS/WAAPI).
+*   **Módulos Nativos y Rendimiento:** Identificar y encapsular funcionalidades que requieran un rendimiento nativo crítico o acceso a APIs específicas (ej. geolocalización avanzada, procesamiento de imágenes) en módulos nativos bien definidos, utilizando el puente de Modern Web UI (CSS/WAAPI) de manera eficiente.
+*   **Actualizaciones Continuas:** Mantenerse al día con las actualizaciones de Expo y Modern Web UI (CSS/WAAPI) para beneficiarse de mejoras de rendimiento, nuevas APIs y correcciones de seguridad, integrando un proceso de actualización regular en el ciclo de vida del proyecto.
 
 ### Dark OLED & Material 3
 *   **Sistema de Diseño Atómico:** Implementar un sistema de diseño basado en tokens que defina colores, tipografías, espaciados y sombras, con variantes específicas para temas claro y oscuro (Dark OLED). Material 3 ofrece una base sólida para esto, con sus directrices de color dinámico y componentes adaptables.
-*   **Componentes Adaptativos:** Desarrollar componentes React Native que sean intrínsecamente conscientes del tema (claro/oscuro) y que se adapten automáticamente a las especificaciones de Material 3, asegurando una experiencia visual coherente y estéticamente agradable en pantallas OLED.
+*   **Componentes Adaptativos:** Desarrollar componentes Modern Web UI (CSS/WAAPI) que sean intrínsecamente conscientes del tema (claro/oscuro) y que se adapten automáticamente a las especificaciones de Material 3, asegurando una experiencia visual coherente y estéticamente agradable en pantallas OLED.
 *   **Eficiencia Energética:** Priorizar el modo oscuro en pantallas OLED no solo por estética, sino por la eficiencia energética que ofrece al apagar píxeles negros, contribuyendo a una mayor duración de la batería, un valor añadido para el usuario.
 
 ### Fricción Cero & Ley de Fitts
-*   **Animaciones Fluidas y Transiciones:** Utilizar la API de animaciones de React Native (especialmente `react-native-reanimated` para animaciones en el hilo UI) para crear transiciones suaves y respuestas visuales instantáneas, eliminando la percepción de latencia y logrando una "fricción cero" en la interacción.
+*   **Animaciones Fluidas y Transiciones:** Utilizar la API de animaciones de Modern Web UI (CSS/WAAPI) (especialmente `react-native-reanimated` para animaciones en el hilo UI) para crear transiciones suaves y respuestas visuales instantáneas, eliminando la percepción de latencia y logrando una "fricción cero" en la interacción.
 *   **Diseño de Puntos de Contacto (Ley de Fitts):** Aplicar la Ley de Fitts en el diseño de componentes interactivos. Asegurar que los botones, enlaces y elementos táctiles clave tengan un tamaño y espaciado adecuados para ser fácilmente seleccionables, minimizando errores y mejorando la usabilidad, especialmente en dispositivos móviles.
 *   **Feedback Háptico y Visual:** Incorporar feedback háptico y visual (ej. estados de carga, animaciones de pulsación) para confirmar las acciones del usuario, reduciendo la incertidumbre y mejorando la sensación de control.
 
 ### Lenguaje de Producto (Venue / Experiencia / Grupo)
-*   **Componentes Modulares y Reutilizables:** Definir componentes React Native que encapsulen la lógica y la UI de cada "Venue", "Experiencia" o "Grupo". Por ejemplo, un componente `VenueCard` o `GroupFeed` que pueda ser reutilizado en diferentes partes de la aplicación, manteniendo la consistencia del lenguaje de producto.
+*   **Componentes Modulares y Reutilizables:** Definir componentes Modern Web UI (CSS/WAAPI) que encapsulen la lógica y la UI de cada "Venue", "Experiencia" o "Grupo". Por ejemplo, un componente `VenueCard` o `GroupFeed` que pueda ser reutilizado en diferentes partes de la aplicación, manteniendo la consistencia del lenguaje de producto.
 *   **Contextos y Proveedores:** Utilizar el Context API de React o librerías de gestión de estado (ej. Zustand, Redux) para proveer información contextual a estos componentes, permitiendo que se adapten dinámicamente sin perder su identidad central.
 *   **Documentación del Sistema de Diseño:** Crear una Storybook o similar para documentar todos los componentes del lenguaje de producto, facilitando su descubrimiento, uso y mantenimiento por parte del equipo de desarrollo y diseño.
 
 ### Invariantes de Ingeniería
 *   **`un createClient`:** Establecer un patrón canónico para la creación de clientes de API o servicios externos. Esto asegura que todas las interacciones de red y de servicio sigan un enfoque consistente, facilitando la gestión de errores, la autenticación y la observabilidad. Un único punto de entrada para la configuración de clientes reduce la duplicación y mejora la mantenibilidad.
-*   **`StyleSheet.create` Canónico:** Utilizar `StyleSheet.create` de React Native de manera consistente para la definición de estilos. Esto no solo optimiza el rendimiento al serializar los estilos una sola vez, sino que también mejora la legibilidad, la modularidad y la capacidad de depuración de los componentes. Fomentar la creación de hojas de estilo por componente o por característica.
-*   **Dunbar 4-6 (Tamaño de Equipo/Módulos):** Aplicar el principio de Dunbar (4-6 personas por equipo o módulos de código) para la organización del código base y los equipos de desarrollo. Esto implica dividir la aplicación en módulos o dominios de responsabilidad que puedan ser gestionados por equipos pequeños y autónomos, promoviendo la propiedad, la agilidad y la reducción de la sobrecarga de comunicación, reflejando la capacidad de React Native para escalar en proyectos grandes.
+*   **`StyleSheet.create` Canónico:** Utilizar `StyleSheet.create` de Modern Web UI (CSS/WAAPI) de manera consistente para la definición de estilos. Esto no solo optimiza el rendimiento al serializar los estilos una sola vez, sino que también mejora la legibilidad, la modularidad y la capacidad de depuración de los componentes. Fomentar la creación de hojas de estilo por componente o por característica.
+*   **Dunbar 4-6 (Tamaño de Equipo/Módulos):** Aplicar el principio de Dunbar (4-6 personas por equipo o módulos de código) para la organización del código base y los equipos de desarrollo. Esto implica dividir la aplicación en módulos o dominios de responsabilidad que puedan ser gestionados por equipos pequeños y autónomos, promoviendo la propiedad, la agilidad y la reducción de la sobrecarga de comunicación, reflejando la capacidad de Modern Web UI (CSS/WAAPI) para escalar en proyectos grandes.
 
 ## 4. Principios Rectores y Citas Clave
 
-Los principios rectores extraídos de la masterclass y aplicables a Yendo Mobile son:
+Los principios rectores extraídos de la masterclass y aplicables a la Web Software Factory son:
 
 1.  **Declaratividad sobre Imperatividad:** Construir UIs describiendo "qué" debe verse, no "cómo" debe cambiar. Esto simplifica la lógica de la UI y la hace más predecible.
 2.  **Composición de Componentes como Base:** Fomentar la construcción de interfaces a partir de piezas pequeñas, aisladas y reutilizables, lo que mejora la modularidad, el mantenimiento y la escalabilidad.
@@ -1401,10 +1401,10 @@ Los principios rectores extraídos de la masterclass y aplicables a Yendo Mobile
 
 *   "Christopher Chedeau walks through the challenges involved in bringing the React JavaScript UI library to iOS."
     *   *Principio:* La innovación requiere enfrentar y superar desafíos técnicos y de integración complejos.
-*   "Some of these are technical, but there are also interesting people management challenges since, from an iOS developer perspective, React Native is a very bad looking proposition."
+*   "Some of these are technical, but there are also interesting people management challenges since, from an iOS developer perspective, Modern Web UI (CSS/WAAPI) is a very bad looking proposition."
     *   *Principio:* La adopción de nuevas tecnologías no es solo una cuestión técnica, sino también cultural y de gestión de expectativas y percepciones del equipo. La propuesta de valor para el desarrollador es fundamental.
-*   "As soon as he saw React, he got hooked up and quickly became part of the core team. More recently, he started React Native, an iOS and Android backend for React."
-    *   *Principio:* La pasión por una tecnología y su potencial para resolver problemas fundamentales (como la construcción de UIs) puede ser el motor de grandes innovaciones. React Native es la materialización de la visión de React para el mundo móvil.
+*   "As soon as he saw React, he got hooked up and quickly became part of the core team. More recently, he started Modern Web UI (CSS/WAAPI), an iOS and Web Platform backend for React."
+    *   *Principio:* La pasión por una tecnología y su potencial para resolver problemas fundamentales (como la construcción de UIs) puede ser el motor de grandes innovaciones. Modern Web UI (CSS/WAAPI) es la materialización de la visión de React para el mundo móvil.
 
 ---
 
@@ -1426,14 +1426,14 @@ Los principios rectores extraídos de la masterclass y aplicables a Yendo Mobile
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
-## 🎓 Masterclass UI: React Native: A Better Way To Do Mobile
+## 🎓 Masterclass UI: Modern Web UI (CSS/WAAPI): A Better Way To Do Mobile
 **Plataforma de Origen:** InfoQ  
 **Autor/Ponente:** Brent Vatne (Expo Founder)  
 **URL Oficial:** [https://www.infoq.com/presentations/react-native/](https://www.infoq.com/presentations/react-native/)  
@@ -1441,39 +1441,39 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Estrategia de Diseño y Arquitectura para Yendo Mobile
+# Informe Técnico: Estrategia de Diseño y Arquitectura para la Web Software Factory
 
 **Fecha:** 26 de mayo de 2024
-**Autor:** RESEARCHER_AGENT & UI_ARCHITECT, Yendo Mobile
-**Fuente:** "React Native: A Better Way To Do Mobile" por Brent Vatne (Expo Founder) (InfoQ, 2016)
+**Autor:** RESEARCHER_AGENT & UI_ARCHITECT, la Web Software Factory
+**Fuente:** "Modern Web UI (CSS/WAAPI): A Better Way To Do Mobile" por Brent Vatne (Expo Founder) (InfoQ, 2016)
 
 ---
 
 ### 1. Concepto Central y Tesis Arquitectónica
 
-La presentación de Brent Vatne en 2016, "React Native: A Better Way To Do Mobile", sentó las bases de una filosofía que Yendo Mobile adopta como pilar fundamental: la convergencia óptima de las fortalezas del desarrollo web y nativo para crear experiencias móviles superiores. La tesis arquitectónica de Yendo Mobile se centra en **aprovechar React Native y Expo 57 para construir una plataforma robusta, performante y estéticamente impecable, que encarne la "Fricción Cero" y la "Ley de Fitts" en cada interacción.** Nuestro ADN "pisa internet" nos impulsa a diseñar aplicaciones que no solo se sientan nativas, sino que también exploten la conectividad y la flexibilidad del ecosistema web, todo ello bajo el paraguas de un lenguaje de producto coherente y principios de ingeniería invariantes. Esta aproximación nos permite escalar rápidamente, mantener una alta calidad de código y ofrecer una experiencia de usuario distintiva que resuena con nuestros conceptos de "Venue", "Experiencia" y "Grupo".
+La presentación de Brent Vatne en 2016, "Modern Web UI (CSS/WAAPI): A Better Way To Do Mobile", sentó las bases de una filosofía que la Web Software Factory adopta como pilar fundamental: la convergencia óptima de las fortalezas del desarrollo web y nativo para crear experiencias móviles superiores. La tesis arquitectónica de la Web Software Factory se centra en **aprovechar Modern Web UI (CSS/WAAPI) y Expo 57 para construir una plataforma robusta, performante y estéticamente impecable, que encarne la "Fricción Cero" y la "Ley de Fitts" en cada interacción.** Nuestro ADN "pisa internet" nos impulsa a diseñar aplicaciones que no solo se sientan nativas, sino que también exploten la conectividad y la flexibilidad del ecosistema web, todo ello bajo el paraguas de un lenguaje de producto coherente y principios de ingeniería invariantes. Esta aproximación nos permite escalar rápidamente, mantener una alta calidad de código y ofrecer una experiencia de usuario distintiva que resuena con nuestros conceptos de "Venue", "Experiencia" y "Grupo".
 
 ---
 
 ### 2. Hallazgos Técnicos Clave
 
-Aunque la presentación original de 2016 es fundacional, los principios subyacentes de React Native, magnificados por la evolución a Expo 57, son directamente aplicables a Yendo Mobile. Los hallazgos técnicos clave se derivan de la promesa de React Native de ofrecer una experiencia nativa con la eficiencia del desarrollo web:
+Aunque la presentación original de 2016 es fundacional, los principios subyacentes de Modern Web UI (CSS/WAAPI), magnificados por la evolución a Expo 57, son directamente aplicables a la Web Software Factory. Los hallazgos técnicos clave se derivan de la promesa de Modern Web UI (CSS/WAAPI) de ofrecer una experiencia nativa con la eficiencia del desarrollo web:
 
-*   **Ergonomía Nativa:** React Native, desde sus inicios, se ha centrado en renderizar componentes UI nativos. Esto garantiza que la ergonomía fundamental (scroll, gestos, feedback táctil) sea intrínsecamente la esperada por el usuario en cada plataforma (iOS/Android). Con Expo 57, la abstracción de estos componentes se ha perfeccionado, permitiendo a Yendo Mobile concentrarse en la lógica de negocio y la experiencia de usuario sin comprometer la sensación nativa.
-*   **Física de Resortes y Animaciones Fluidas:** La capacidad de React Native para delegar animaciones complejas al hilo nativo (a través de APIs como `Animated` y, más modernamente, `React Native Reanimated`) es crucial. Esto permite implementar transiciones, rebotes y efectos de "física de resortes" que son sinónimo de una experiencia de usuario premium y de "Fricción Cero", evitando el "jank" o los retrasos típicos de las animaciones basadas puramente en JavaScript.
-*   **Modelos de Hilos Optimizados:** La arquitectura de React Native, con su separación del hilo JavaScript y el hilo UI nativo (y la evolución hacia JSI/Fabric), es un hallazgo técnico fundamental. Permite que las operaciones intensivas en JavaScript no bloqueen la interfaz de usuario, asegurando una reactividad constante. Para Yendo Mobile, esto significa que incluso con lógica de negocio compleja o procesamiento de datos, la interfaz permanece fluida y receptiva.
-*   **Composición de Componentes y Tokens de Diseño:** El modelo de componentes de React es inherentemente composable y declarativo. Esto, combinado con la adopción de Material 3, permite a Yendo Mobile construir una biblioteca de componentes reutilizables y un sistema de tokens de diseño robusto. Cada elemento de la UI, desde un botón hasta un layout complejo, puede ser construido a partir de piezas más pequeñas, asegurando consistencia, mantenibilidad y escalabilidad.
+*   **Ergonomía Nativa:** Modern Web UI (CSS/WAAPI), desde sus inicios, se ha centrado en renderizar componentes UI nativos. Esto garantiza que la ergonomía fundamental (scroll, gestos, feedback táctil) sea intrínsecamente la esperada por el usuario en cada plataforma (iOS/Web Platform). Con Expo 57, la abstracción de estos componentes se ha perfeccionado, permitiendo a la Web Software Factory concentrarse en la lógica de negocio y la experiencia de usuario sin comprometer la sensación nativa.
+*   **Física de Resortes y Animaciones Fluidas:** La capacidad de Modern Web UI (CSS/WAAPI) para delegar animaciones complejas al hilo nativo (a través de APIs como `Animated` y, más modernamente, `Modern Web UI (CSS/WAAPI) Reanimated`) es crucial. Esto permite implementar transiciones, rebotes y efectos de "física de resortes" que son sinónimo de una experiencia de usuario premium y de "Fricción Cero", evitando el "jank" o los retrasos típicos de las animaciones basadas puramente en JavaScript.
+*   **Modelos de Hilos Optimizados:** La arquitectura de Modern Web UI (CSS/WAAPI), con su separación del hilo JavaScript y el hilo UI nativo (y la evolución hacia JSI/Fabric), es un hallazgo técnico fundamental. Permite que las operaciones intensivas en JavaScript no bloqueen la interfaz de usuario, asegurando una reactividad constante. Para la Web Software Factory, esto significa que incluso con lógica de negocio compleja o procesamiento de datos, la interfaz permanece fluida y receptiva.
+*   **Composición de Componentes y Tokens de Diseño:** El modelo de componentes de React es inherentemente composable y declarativo. Esto, combinado con la adopción de Material 3, permite a la Web Software Factory construir una biblioteca de componentes reutilizables y un sistema de tokens de diseño robusto. Cada elemento de la UI, desde un botón hasta un layout complejo, puede ser construido a partir de piezas más pequeñas, asegurando consistencia, mantenibilidad y escalabilidad.
 
 ---
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-La visión de Brent Vatne y la evolución de React Native y Expo se traducen en acciones concretas para Yendo Mobile:
+La visión de Brent Vatne y la evolución de Modern Web UI (CSS/WAAPI) y Expo se traducen en acciones concretas para la Web Software Factory:
 
-*   **React Native & Expo 57:**
+*   **Modern Web UI (CSS/WAAPI) & Expo 57:**
     *   **Adopción Total del Managed Workflow:** Maximizar el uso del *managed workflow* de Expo para simplificar la configuración del entorno, la gestión de dependencias nativas y la compilación. Esto acelera el desarrollo y reduce la sobrecarga operativa.
     *   **EAS para CI/CD:** Implementar Expo Application Services (EAS) para un pipeline de integración y despliegue continuo robusto, permitiendo entregas rápidas y actualizaciones "over-the-air" (OTA) para correcciones y mejoras.
-    *   **Optimización de Rendimiento:** Priorizar el uso de `React Native Reanimated` para todas las animaciones complejas y `FlashList` para listas largas, garantizando una experiencia de "Fricción Cero" incluso en dispositivos de gama media.
+    *   **Optimización de Rendimiento:** Priorizar el uso de `Modern Web UI (CSS/WAAPI) Reanimated` para todas las animaciones complejas y `FlashList` para listas largas, garantizando una experiencia de "Fricción Cero" incluso en dispositivos de gama media.
     *   **Módulos Nativos Estratégicos:** Identificar y encapsular módulos nativos críticos (si los hubiera) a través de Expo Modules, manteniendo la mayor parte de la lógica en JavaScript para maximizar la portabilidad y la velocidad de desarrollo.
 
 *   **Dark OLED & Material 3:**
@@ -1493,16 +1493,16 @@ La visión de Brent Vatne y la evolución de React Native y Expo se traducen en 
 
 *   **Invariantes de Ingeniería:**
     *   **`un createClient` Canónico:** Establecer un patrón único y universal para la creación y configuración de clientes de API (`createClient`). Este cliente debe encapsular la lógica de autenticación, manejo de errores, reintentos y caching, garantizando consistencia y robustez en todas las interacciones de red.
-    *   **`StyleSheet.create` Obligatorio:** Enforzar el uso de `StyleSheet.create` para toda la definición de estilos en React Native. Esto no solo optimiza el rendimiento al permitir que React Native cachee y optimice los estilos, sino que también mejora la legibilidad y mantenibilidad del código. Se definirá una estructura canónica para los archivos de estilo.
+    *   **`StyleSheet.create` Obligatorio:** Enforzar el uso de `StyleSheet.create` para toda la definición de estilos en Modern Web UI (CSS/WAAPI). Esto no solo optimiza el rendimiento al permitir que Modern Web UI (CSS/WAAPI) cachee y optimice los estilos, sino que también mejora la legibilidad y mantenibilidad del código. Se definirá una estructura canónica para los archivos de estilo.
     *   **Dunbar 4-6 para Equipos y Módulos:** Aplicar el principio de Dunbar (4-6 personas) a la formación de equipos para módulos o características críticas. Esto promueve una comunicación eficiente, reduce la sobrecarga de coordinación y maximiza la productividad. Extender este principio a la gestión de "Grupos" dentro de la aplicación, optimizando las interacciones sociales.
 
 ---
 
 ### 4. Principios Rectores y Citas Clave
 
-Los siguientes principios guiarán el desarrollo y diseño en Yendo Mobile, inspirados en la visión de React Native y nuestro propio ADN:
+Los siguientes principios guiarán el desarrollo y diseño en la Web Software Factory, inspirados en la visión de Modern Web UI (CSS/WAAPI) y nuestro propio ADN:
 
-*   **"A Better Way To Do Mobile":** La promesa de React Native es nuestra misión. Buscamos constantemente la forma más eficiente y efectiva de entregar valor móvil.
+*   **"A Better Way To Do Mobile":** La promesa de Modern Web UI (CSS/WAAPI) es nuestra misión. Buscamos constantemente la forma más eficiente y efectiva de entregar valor móvil.
 *   **"Combine the best of web and native":** La visión de Brent Vatne es el corazón de nuestra estrategia. No es una elección binaria, sino una síntesis inteligente de ambos mundos.
 *   **"Fricción Cero":** Nuestro mantra de experiencia de usuario. Cada interacción debe ser fluida, intuitiva y sin obstáculos.
 *   **"Ley de Fitts":** La guía para nuestra interacción y diseño de interfaz, asegurando que la usabilidad sea óptima y el esfuerzo del usuario mínimo.
@@ -1528,14 +1528,14 @@ Los siguientes principios guiarán el desarrollo y diseño en Yendo Mobile, insp
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
-## 🎓 Masterclass UI: React Native in Production: Building Performant Mobile Apps
+## 🎓 Masterclass UI: Modern Web UI (CSS/WAAPI) in Production: Building Performant Mobile Apps
 **Plataforma de Origen:** InfoQ  
 **Autor/Ponente:** Adam Miskiewicz  
 **URL Oficial:** [https://www.infoq.com/presentations/react-native-redux-relay-graphql/](https://www.infoq.com/presentations/react-native-redux-relay-graphql/)  
@@ -1543,35 +1543,35 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Arquitectura de Yendo Mobile basada en Principios de Producción de React Native
+# Informe Técnico: Arquitectura de la Web Software Factory basada en Principios de Producción de Modern Web UI (CSS/WAAPI)
 
 ## 1. Concepto Central y Tesis Arquitectónica
 
-**Concepto Central:** La construcción de aplicaciones React Native de alto rendimiento y listas para producción, enfocadas en una experiencia de usuario excepcional y una arquitectura sostenible, aprovechando las mejores prácticas de desarrollo web en un entorno nativo y sin temor a la integración nativa cuando sea necesario.
+**Concepto Central:** La construcción de aplicaciones Modern Web UI (CSS/WAAPI) de alto rendimiento y listas para producción, enfocadas en una experiencia de usuario excepcional y una arquitectura sostenible, aprovechando las mejores prácticas de desarrollo web en un entorno nativo y sin temor a la integración nativa cuando sea necesario.
 
-**Tesis Arquitectónica para Yendo Mobile:** Yendo Mobile se erigirá sobre una arquitectura React Native & Expo 57 que prioriza la **fricción cero** y la **experiencia de usuario placentera** como pilares fundamentales. Nuestra estrategia se centrará en la entrega de una aplicación **performante y robusta** que encarne el ADN "pisa internet", garantizando una interacción fluida y eficiente con los servicios de red. Esto se logrará mediante la adopción rigurosa de principios de diseño de clase mundial, la implementación de un sistema de diseño coherente (Dark OLED & Material 3), y la adhesión a invariantes de ingeniería estrictos que fomenten la escalabilidad, la mantenibilidad y la colaboración efectiva del equipo. La clave será la anticipación y la planificación para un desarrollo cross-platform sin fisuras, resolviendo problemas de ingeniería complejos con soluciones elegantes y centradas en el usuario.
+**Tesis Arquitectónica para la Web Software Factory:** la Web Software Factory se erigirá sobre una arquitectura Modern Web UI (CSS/WAAPI) & Expo 57 que prioriza la **fricción cero** y la **experiencia de usuario placentera** como pilares fundamentales. Nuestra estrategia se centrará en la entrega de una aplicación **performante y robusta** que encarne el ADN "pisa internet", garantizando una interacción fluida y eficiente con los servicios de red. Esto se logrará mediante la adopción rigurosa de principios de diseño de clase mundial, la implementación de un sistema de diseño coherente (Dark OLED & Material 3), y la adhesión a invariantes de ingeniería estrictos que fomenten la escalabilidad, la mantenibilidad y la colaboración efectiva del equipo. La clave será la anticipación y la planificación para un desarrollo cross-platform sin fisuras, resolviendo problemas de ingeniería complejos con soluciones elegantes y centradas en el usuario.
 
 ## 2. Hallazgos Técnicos Clave
 
 Aunque la fuente es de 2016, los principios subyacentes de "performant and production-ready" y "pleasant user experiences" son atemporales y se pueden mapear a conceptos técnicos modernos:
 
-*   **Ergonomía y Diseño de Interacción:** La búsqueda de "experiencias de usuario placenteras" implica una profunda consideración ergonómica. Esto se traduce en interfaces intuitivas, tamaños de elementos interactivos adecuados (especialmente para pantallas táctiles), jerarquía visual clara y flujos de usuario optimizados. En Yendo, esto se materializará en la aplicación de la **Ley de Fitts** para elementos clave y una navegación que minimice la carga cognitiva.
-*   **Física de Resortes (Spring Physics) y Animaciones Fluidas:** La percepción de rendimiento y una experiencia "placentera" está intrínsecamente ligada a la fluidez de las transiciones y animaciones. React Native, a través de su API `Animated` (y librerías como `Reanimated`), permite implementar animaciones basadas en física de resortes, que ofrecen un movimiento natural y orgánico. Esto es crucial para la sensación de "fricción cero" en Yendo, donde las interacciones deben sentirse responsivas y vivas.
-*   **Modelos de Hilos y Optimización de Bridge:** La arquitectura de React Native, con su hilo JavaScript, hilo UI y módulos nativos, es fundamental para el rendimiento. La mención de "no tener miedo de puentear código nativo" subraya la importancia de entender cómo interactúan estos hilos. Para Yendo, esto significa:
+*   **Ergonomía y Diseño de Interacción:** La búsqueda de "experiencias de usuario placenteras" implica una profunda consideración ergonómica. Esto se traduce en interfaces intuitivas, tamaños de elementos interactivos adecuados (especialmente para pantallas táctiles), jerarquía visual clara y flujos de usuario optimizados. En WebFactory, esto se materializará en la aplicación de la **Ley de Fitts** para elementos clave y una navegación que minimice la carga cognitiva.
+*   **Física de Resortes (Spring Physics) y Animaciones Fluidas:** La percepción de rendimiento y una experiencia "placentera" está intrínsecamente ligada a la fluidez de las transiciones y animaciones. Modern Web UI (CSS/WAAPI), a través de su API `Animated` (y librerías como `Reanimated`), permite implementar animaciones basadas en física de resortes, que ofrecen un movimiento natural y orgánico. Esto es crucial para la sensación de "fricción cero" en WebFactory, donde las interacciones deben sentirse responsivas y vivas.
+*   **Modelos de Hilos y Optimización de Bridge:** La arquitectura de Modern Web UI (CSS/WAAPI), con su hilo JavaScript, hilo UI y módulos nativos, es fundamental para el rendimiento. La mención de "no tener miedo de puentear código nativo" subraya la importancia de entender cómo interactúan estos hilos. Para WebFactory, esto significa:
     *   Minimizar el trabajo en el hilo JavaScript que pueda bloquear el hilo UI.
     *   Utilizar `useNativeDriver` para animaciones siempre que sea posible.
     *   Identificar y optimizar las interacciones costosas a través del bridge, recurriendo a módulos nativos cuando la lógica JavaScript no pueda cumplir con los requisitos de rendimiento (ej. procesamiento de imágenes, operaciones intensivas de CPU).
-*   **Composición de Componentes y Tokens de Diseño:** La práctica de "React (web) best practices" se traduce directamente en una arquitectura basada en componentes reutilizables y bien definidos. Para un desarrollo "cross-platform" y "planificación a futuro", esto implica la creación de un sistema de diseño robusto. En Yendo, esto se materializará a través de:
+*   **Composición de Componentes y Tokens de Diseño:** La práctica de "React (web) best practices" se traduce directamente en una arquitectura basada en componentes reutilizables y bien definidos. Para un desarrollo "cross-platform" y "planificación a futuro", esto implica la creación de un sistema de diseño robusto. En WebFactory, esto se materializará a través de:
     *   **Tokens de Diseño:** Definición centralizada de colores, tipografías, espaciados, sombras y radios de borde, que serán la base de nuestro sistema de diseño Material 3 y la implementación de Dark OLED.
     *   **Composición de Componentes:** Construcción de la UI a partir de componentes pequeños, puros y con una única responsabilidad, que se combinan para formar interfaces complejas, garantizando consistencia y mantenibilidad.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-### React Native & Expo 57
+### Modern Web UI (CSS/WAAPI) & Expo 57
 
 *   **Estrategia de Desarrollo:** Aprovechar el ecosistema de Expo 57 para la productividad y la consistencia cross-platform. Para funcionalidades que requieran un rendimiento extremo o acceso a APIs nativas no cubiertas por Expo, se evaluará la creación de módulos nativos personalizados o el uso de `expo-dev-client` para extender las capacidades sin abandonar completamente el flujo gestionado.
-*   **Optimización de Rendimiento:** Implementar `React.memo`, `useCallback`, `useMemo` de forma estratégica. Optimizar el uso de `FlatList` y `SectionList` para grandes volúmenes de datos. Priorizar animaciones con `useNativeDriver` y explorar `React Native Reanimated` para interacciones complejas y gestos.
-*   **Gestión de Estado:** Adoptar una solución de gestión de estado moderna y performante (ej. Zustand, Jotai, o Redux Toolkit con RTK Query) que se integre eficientemente con el ciclo de vida de React Native y el paradigma "pisa internet" de Yendo, facilitando la gestión de datos remotos y el estado offline.
+*   **Optimización de Rendimiento:** Implementar `React.memo`, `useCallback`, `useMemo` de forma estratégica. Optimizar el uso de `FlatList` y `SectionList` para grandes volúmenes de datos. Priorizar animaciones con `useNativeDriver` y explorar `Modern Web UI (CSS/WAAPI) Reanimated` para interacciones complejas y gestos.
+*   **Gestión de Estado:** Adoptar una solución de gestión de estado moderna y performante (ej. Zustand, Jotai, o Redux Toolkit con RTK Query) que se integre eficientemente con el ciclo de vida de Modern Web UI (CSS/WAAPI) y el paradigma "pisa internet" de WebFactory, facilitando la gestión de datos remotos y el estado offline.
 
 ### Dark OLED & Material 3
 
@@ -1594,7 +1594,7 @@ Aunque la fuente es de 2016, los principios subyacentes de "performant and produ
 ### Invariantes de Ingeniería
 
 *   **`un createClient`:** Establecer un patrón canónico y único para la creación de clientes de API (GraphQL, REST, etc.). Este cliente centralizado debe manejar la configuración de red, autenticación, reintentos, y el manejo global de errores, asegurando consistencia y facilitando la depuración y el mantenimiento.
-*   **`StyleSheet.create canónico`:** Imponer el uso de `StyleSheet.create` para la definición de estilos en todos los componentes. Se establecerán convenciones estrictas para la nomenclatura de clases, la organización de estilos dentro de los archivos y la herencia/composición de estilos, garantizando la optimización de rendimiento de React Native y la legibilidad del código.
+*   **`StyleSheet.create canónico`:** Imponer el uso de `StyleSheet.create` para la definición de estilos en todos los componentes. Se establecerán convenciones estrictas para la nomenclatura de clases, la organización de estilos dentro de los archivos y la herencia/composición de estilos, garantizando la optimización de rendimiento de Modern Web UI (CSS/WAAPI) y la legibilidad del código.
 *   **Dunbar 4-6 (Aplicado a Módulos/Equipos):** Fomentar la creación de módulos, componentes y equipos pequeños y cohesionados. Limitar la complejidad y el tamaño de los módulos a un nivel que pueda ser comprendido y mantenido por un equipo de 4 a 6 personas, promoviendo la autonomía, la especialización y la comunicación efectiva, lo cual es clave para "resolver problemas de ingeniería complejos".
 
 ## 4. Principios Rectores y Citas Clave
@@ -1609,7 +1609,7 @@ Aunque la fuente es de 2016, los principios subyacentes de "performant and produ
 
 **Citas Clave (Interpretadas y Adaptadas de Adam Miskiewicz):**
 
-*   "Construir aplicaciones React Native performantes y listas para producción."
+*   "Construir aplicaciones Modern Web UI (CSS/WAAPI) performantes y listas para producción."
     *   *Refleja nuestro compromiso con la calidad y la robustez desde el inicio.*
 *   "Crear experiencias de usuario placenteras y resolver problemas de ingeniería complejos."
     *   *Subraya la dualidad de nuestro enfoque: UX y excelencia técnica.*
@@ -1617,7 +1617,7 @@ Aunque la fuente es de 2016, los principios subyacentes de "performant and produ
     *   *Guía nuestra adopción de patrones de desarrollo probados y eficientes.*
 *   "Por qué no deberías tener miedo de puentear código nativo."
     *   *Nos impulsa a ser pragmáticos y a utilizar la herramienta adecuada para cada desafío de rendimiento.*
-*   "Planificar con anticipación para un desarrollo React Native cross-platform sencillo."
+*   "Planificar con anticipación para un desarrollo Modern Web UI (CSS/WAAPI) cross-platform sencillo."
     *   *Destaca la importancia de la arquitectura, los invariantes y el sistema de diseño para la sostenibilidad a largo plazo.*
 
 ---
@@ -1640,7 +1640,7 @@ Aunque la fuente es de 2016, los principios subyacentes de "performant and produ
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -1655,30 +1655,30 @@ ultima_revision: 2026-08-27
 
 ---
 
-El contenido del curso/masterclass proporcionado fue un mensaje de error. Sin embargo, basándome en el título "Animation & Bézier Curves: The Mathematics of Natural Motion" de Pixar Animation Studios, he inferido los principios clave de animación y movimiento natural para generar este informe técnico, aplicándolos al contexto de Yendo Mobile.
+El contenido del curso/masterclass proporcionado fue un mensaje de error. Sin embargo, basándome en el título "Animation & Bézier Curves: The Mathematics of Natural Motion" de Pixar Animation Studios, he inferido los principios clave de animación y movimiento natural para generar este informe técnico, aplicándolos al contexto de la Web Software Factory.
 
 ---
 
-# Informe Técnico: Integración de Animación y Curvas de Bézier para una Experiencia Yendo Mobile de Clase Mundial
+# Informe Técnico: Integración de Animación y Curvas de Bézier para una Experiencia la Web Software Factory de Clase Mundial
 
 ## 1. Concepto Central y Tesis Arquitectónica
 
 **Concepto Central:** La animación, fundamentada en las matemáticas de las curvas de Bézier y los principios del movimiento natural, es una herramienta esencial para dotar a las interfaces de usuario de fluidez, intuición y una conexión emocional profunda. No se trata solo de "mover píxeles", sino de comunicar significado, guiar la atención y enriquecer la percepción de la marca.
 
-**Tesis Arquitectónica:** Yendo Mobile debe adoptar un sistema de animación robusto y coherente, basado en curvas de Bézier y física de resortes, para transformar la interacción digital en una experiencia tangible y orgánica. Este sistema debe ser una capa fundamental de la arquitectura de UI/UX, no un adorno, y debe estar profundamente integrado con el ADN de Yendo de "pisar internet" y sus invariantes de "Venue/Experiencia/Grupo", potenciando la percepción de velocidad, reactividad y sofisticación. La implementación debe priorizar el rendimiento nativo en React Native y Expo, alineándose con los estándares de Material Design 3 y la eficiencia de Dark OLED.
+**Tesis Arquitectónica:** la Web Software Factory debe adoptar un sistema de animación robusto y coherente, basado en curvas de Bézier y física de resortes, para transformar la interacción digital en una experiencia tangible y orgánica. Este sistema debe ser una capa fundamental de la arquitectura de UI/UX, no un adorno, y debe estar profundamente integrado con el ADN de WebFactory de "pisar internet" y sus invariantes de "Venue/Experiencia/Grupo", potenciando la percepción de velocidad, reactividad y sofisticación. La implementación debe priorizar el rendimiento nativo en Modern Web UI (CSS/WAAPI) y Expo, alineándose con los estándares de Material Design 3 y la eficiencia de Dark OLED.
 
 ## 2. Hallazgos Técnicos Clave
 
 *   **Ergonomía del Movimiento:** Las animaciones bien diseñadas reducen la carga cognitiva, guían la vista del usuario de forma natural y anticipan los resultados de sus acciones. Una curva de Bézier adecuada puede hacer que un elemento parezca "saltar" a la vista o "deslizarse" suavemente, mejorando la usabilidad.
 *   **Física de Resortes (Spring Physics):** Más allá de las curvas de Bézier tradicionales (que definen la velocidad a lo largo de una trayectoria fija), la física de resortes introduce un comportamiento más orgánico y reactivo. Permite que los elementos reaccionen a la interacción del usuario con inercia, rebote y amortiguación, simulando el mundo físico. La combinación de Bézier para la trayectoria y resortes para la temporalidad y el rebote es clave.
-*   **Modelos de Hilos (Thread Models) para Animación:** En entornos como React Native, es crucial que las animaciones se ejecuten en el hilo de UI (o en Worklets/JSI) para evitar bloqueos del hilo JavaScript principal, garantizando 60 FPS y una experiencia fluida, incluso bajo carga.
-*   **Composición de Componentes y Tokens de Diseño de Movimiento:** Las animaciones no deben ser ad-hoc. Deben ser parte del sistema de diseño, con tokens predefinidos (duraciones, easings/curvas de Bézier, delays) que aseguren consistencia y escalabilidad. Estos tokens se aplican a componentes reutilizables, garantizando que cada interacción en Yendo tenga una "voz" de movimiento unificada.
+*   **Modelos de Hilos (Thread Models) para Animación:** En entornos como Modern Web UI (CSS/WAAPI), es crucial que las animaciones se ejecuten en el hilo de UI (o en Worklets/JSI) para evitar bloqueos del hilo JavaScript principal, garantizando 60 FPS y una experiencia fluida, incluso bajo carga.
+*   **Composición de Componentes y Tokens de Diseño de Movimiento:** Las animaciones no deben ser ad-hoc. Deben ser parte del sistema de diseño, con tokens predefinidos (duraciones, easings/curvas de Bézier, delays) que aseguren consistencia y escalabilidad. Estos tokens se aplican a componentes reutilizables, garantizando que cada interacción en WebFactory tenga una "voz" de movimiento unificada.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-### React Native & Expo 57
-*   **Adopción de `react-native-reanimated` (v2/v3):** Es la librería estándar de facto para animaciones de alto rendimiento en React Native. Permite definir animaciones que se ejecutan en el hilo de UI, utilizando Worklets para lógica compleja, lo que es fundamental para lograr 60 FPS y una experiencia "nativa".
-*   **Definición de Curvas de Bézier Estándar:** Crear un conjunto de funciones `Easing` personalizadas (basadas en curvas de Bézier cúbicas) que reflejen la personalidad de Yendo. Por ejemplo, `Easing.bezier(0.4, 0, 0.2, 1)` para aceleración/desaceleración estándar, y variantes más "juguetonas" o "directas" para interacciones específicas.
+### Modern Web UI (CSS/WAAPI) & Expo 57
+*   **Adopción de `react-native-reanimated` (v2/v3):** Es la librería estándar de facto para animaciones de alto rendimiento en Modern Web UI (CSS/WAAPI). Permite definir animaciones que se ejecutan en el hilo de UI, utilizando Worklets para lógica compleja, lo que es fundamental para lograr 60 FPS y una experiencia "nativa".
+*   **Definición de Curvas de Bézier Estándar:** Crear un conjunto de funciones `Easing` personalizadas (basadas en curvas de Bézier cúbicas) que reflejen la personalidad de WebFactory. Por ejemplo, `Easing.bezier(0.4, 0, 0.2, 1)` para aceleración/desaceleración estándar, y variantes más "juguetonas" o "directas" para interacciones específicas.
 *   **Integración con `react-native-gesture-handler`:** Combinar gestos con animaciones de `reanimated` para crear interacciones táctiles fluidas y responsivas (ej. deslizar para descartar, arrastrar y soltar, zoom con pellizco).
 *   **Expo 57 y Módulos Nativos:** Asegurar que las configuraciones de `reanimated` y `gesture-handler` estén optimizadas para el entorno de Expo, aprovechando las últimas mejoras en el rendimiento de los módulos nativos y el flujo de trabajo de desarrollo.
 
@@ -1687,8 +1687,8 @@ El contenido del curso/masterclass proporcionado fue un mensaje de error. Sin em
     *   **Contraste y Saturación:** Las animaciones deben respetar el contraste inherente del OLED. Evitar animaciones que impliquen grandes cambios de brillo o flashes blancos que puedan ser molestos en un fondo oscuro.
     *   **Eficiencia Energética:** Animaciones sutiles y localizadas que no iluminen una gran parte de la pantalla, aprovechando la capacidad del OLED de apagar píxeles individualmente.
 *   **Adopción del Sistema de Movimiento de Material 3:**
-    *   Material 3 ya incorpora principios de movimiento basados en curvas de Bézier y física de resortes. Yendo debe estudiar y adaptar estos patrones (ej. `Standard easing`, `Emphasized easing`) para sus transiciones de pantalla, estados de componentes y microinteracciones.
-    *   Definir un `Motion System` en el Design System de Yendo que incluya duraciones, easings y patrones de orquestación de animaciones, alineado con MD3.
+    *   Material 3 ya incorpora principios de movimiento basados en curvas de Bézier y física de resortes. WebFactory debe estudiar y adaptar estos patrones (ej. `Standard easing`, `Emphasized easing`) para sus transiciones de pantalla, estados de componentes y microinteracciones.
+    *   Definir un `Motion System` en el Design System de WebFactory que incluya duraciones, easings y patrones de orquestación de animaciones, alineado con MD3.
 
 ### Fricción Cero & Ley de Fitts
 *   **Animaciones como Reductores de Fricción:**
@@ -1714,7 +1714,7 @@ El contenido del curso/masterclass proporcionado fue un mensaje de error. Sin em
     *   **Estados de Carga Animados:** Integrar animaciones de carga (skeletons, spinners personalizados con Bézier) directamente en el ciclo de vida de `createClient` para que la espera sea menos perceptible y más agradable.
     *   **Transiciones de Datos:** Al actualizar datos, usar animaciones de "fade-in/fade-out" o "cross-fade" para que el cambio de contenido sea suave y no abrupto.
 *   **`StyleSheet.create canónico`:**
-    *   **Tokens de Animación:** Definir un conjunto canónico de tokens de animación (ej. `animation.duration.short`, `animation.easing.standard`) dentro del sistema de `StyleSheet.create` de Yendo. Esto asegura consistencia y facilita la aplicación de animaciones en toda la app.
+    *   **Tokens de Animación:** Definir un conjunto canónico de tokens de animación (ej. `animation.duration.short`, `animation.easing.standard`) dentro del sistema de `StyleSheet.create` de WebFactory. Esto asegura consistencia y facilita la aplicación de animaciones en toda la app.
     *   **Mixins de Animación:** Crear mixins o utilidades de `StyleSheet` para aplicar patrones de animación comunes (ej. `animatedOpacity`, `animatedScale`) de manera declarativa.
 *   **Dunbar 4-6:**
     *   **Gestión de la Complejidad Visual:** En grupos pequeños (4-6 elementos), las animaciones pueden ser más detalladas y expresivas sin abrumar. Por ejemplo, animaciones de "entrada" y "salida" más elaboradas para los miembros de un grupo.
@@ -1747,7 +1747,7 @@ El contenido del curso/masterclass proporcionado fue un mensaje de error. Sin em
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -1762,10 +1762,10 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Diseño Estético y Minimalista para Yendo Mobile
+# Informe Técnico: Diseño Estético y Minimalista para la Web Software Factory
 
 **Fecha:** 24 de enero de 2021 (Referencia del Artículo)
-**Autor:** RESEARCHER_AGENT & UI_ARCHITECT, Yendo Mobile
+**Autor:** RESEARCHER_AGENT & UI_ARCHITECT, la Web Software Factory
 **Fuente:** "Aesthetic and Minimalist Design (Usability Heuristic #8)" por Therese Fessenden (NN/g)
 
 ---
@@ -1774,7 +1774,7 @@ ultima_revision: 2026-08-27
 
 El principio central del diseño estético y minimalista, según Nielsen Norman Group, radica en la **optimización de la utilidad y la usabilidad mediante la eliminación de "ruido" y la maximización de la "señal"**, todo ello envuelto en una experiencia visualmente atractiva que genera una primera impresión positiva y refuerza la identidad de marca. No se trata de una mera tendencia visual, sino de una filosofía que busca la máxima eficiencia comunicativa y funcional.
 
-La tesis arquitectónica para Yendo Mobile es construir interfaces que sean inherentemente **claras, eficientes y memorables**. Esto se logra mediante una síntesis quirúrgica de la estética (que genera confianza y placer) y el minimalismo (que garantiza la utilidad y reduce la fricción). Cada elemento en la interfaz de Yendo debe ser **útil o hermoso**, contribuyendo directamente a las invariantes de "Venue", "Experiencia" y "Grupo", y reflejando nuestro ADN de "pisa internet" con una ejecución técnica impecable. La arquitectura debe facilitar un diseño donde la información relevante sea inmediatamente perceptible y las interacciones sean intuitivas, sin sobrecargar al usuario.
+La tesis arquitectónica para la Web Software Factory es construir interfaces que sean inherentemente **claras, eficientes y memorables**. Esto se logra mediante una síntesis quirúrgica de la estética (que genera confianza y placer) y el minimalismo (que garantiza la utilidad y reduce la fricción). Cada elemento en la interfaz de WebFactory debe ser **útil o hermoso**, contribuyendo directamente a las invariantes de "Venue", "Experiencia" y "Grupo", y reflejando nuestro ADN de "pisa internet" con una ejecución técnica impecable. La arquitectura debe facilitar un diseño donde la información relevante sea inmediatamente perceptible y las interacciones sean intuitivas, sin sobrecargar al usuario.
 
 ---
 
@@ -1786,7 +1786,7 @@ El análisis del principio de diseño estético y minimalista revela varias impl
 
 *   **Física de Resortes (Spring Physics) y Animaciones con Propósito:** Aunque no se menciona explícitamente, la contribución de la estética a una "experiencia memorable" y la idea de que "las cosas atractivas funcionan mejor" se traduce en la necesidad de interacciones fluidas y naturales. La física de resortes en animaciones (ej. `react-native-reanimated`) permite transiciones orgánicas y respuestas táctiles que no solo son visualmente agradables, sino que también comunican el estado del sistema de manera intuitiva, reduciendo la carga cognitiva y el "ruido" de cambios abruptos.
 
-*   **Modelos de Hilos (Thread Models) y Rendimiento:** Un diseño minimalista, al reducir la cantidad de elementos en pantalla y la complejidad visual, impacta directamente el rendimiento. Menos elementos para renderizar y menos cambios de estado se traducen en una menor carga para el hilo JavaScript y el hilo de UI de React Native. Esto resulta en una interfaz más fluida y receptiva, lo que intrínsecamente mejora la percepción de usabilidad y la experiencia estética, evitando la "fricción" causada por el lag o los jank frames.
+*   **Modelos de Hilos (Thread Models) y Rendimiento:** Un diseño minimalista, al reducir la cantidad de elementos en pantalla y la complejidad visual, impacta directamente el rendimiento. Menos elementos para renderizar y menos cambios de estado se traducen en una menor carga para el hilo JavaScript y el hilo de UI de Modern Web UI (CSS/WAAPI). Esto resulta en una interfaz más fluida y receptiva, lo que intrínsecamente mejora la percepción de usabilidad y la experiencia estética, evitando la "fricción" causada por el lag o los jank frames.
 
 *   **Composición de Componentes y Tokens de Diseño como "Señal":** El artículo enfatiza la "comunicación visual" a través de principios como escala, jerarquía, balance, contraste y principios Gestalt. Esto se mapea directamente a un sistema de diseño robusto basado en la composición de componentes y tokens de diseño.
     *   **Tokens de Diseño:** Son la implementación técnica de la "señal" visual. Colores, tipografías, espaciados, sombras y formas definidos como tokens aseguran consistencia, reducen el "ruido" visual y refuerzan la identidad de marca.
@@ -1794,9 +1794,9 @@ El análisis del principio de diseño estético y minimalista revela varias impl
 
 ---
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-### React Native & Expo 57
+### Modern Web UI (CSS/WAAPI) & Expo 57
 
 *   **Componentización Radical y Atomic Design:** Adoptar un enfoque de Atomic Design para asegurar que cada componente sea una "unidad de información" con alto valor. Esto facilita la identificación y eliminación de "ruido" a nivel de componente y promueve la reutilización, garantizando consistencia estética y funcional.
 *   **Optimización de Rendimiento por Defecto:** Integrar `React.memo`, `useCallback`, `useMemo` y la optimización de imágenes (compresión, formatos modernos como WebP) como prácticas estándar. Un diseño minimalista se beneficia enormemente de un rendimiento impecable, reforzando la percepción de calidad y usabilidad.
@@ -1831,7 +1831,7 @@ El análisis del principio de diseño estético y minimalista revela varias impl
 
 ## 4. Principios Rectores y Citas Clave
 
-Los siguientes principios guiarán el diseño y desarrollo de Yendo Mobile, inspirados en el diseño estético y minimalista:
+Los siguientes principios guiarán el diseño y desarrollo de la Web Software Factory, inspirados en el diseño estético y minimalista:
 
 1.  **Propósito en Cada Píxel:** Cada elemento en la interfaz debe tener una razón de ser, ya sea funcional o estética. Si no es útil ni hermoso, es "ruido" y debe ser eliminado.
     *   *"Have nothing in your houses that you do not know to be useful, or believe to be beautiful."* — William Morris (citado por Don Norman)
@@ -1843,12 +1843,12 @@ Los siguientes principios guiarán el diseño y desarrollo de Yendo Mobile, insp
 3.  **La Utilidad es el Corazón del Minimalismo:** El diseño minimalista no es la ausencia de elementos, sino la presencia de solo los elementos necesarios para maximizar la utilidad y la usabilidad de las tareas del usuario.
     *   *"A minimalist design contains all necessary elements to support user tasks."* — NN/g
 
-4.  **La Belleza Genera Confianza:** Una interfaz estéticamente agradable no solo es más memorable, sino que también se percibe como más usable y competente, estableciendo una base sólida para la identidad de marca de Yendo.
+4.  **La Belleza Genera Confianza:** Una interfaz estéticamente agradable no solo es más memorable, sino que también se percibe como más usable y competente, estableciendo una base sólida para la identidad de marca de WebFactory.
     *   *"Attractive things work better."* — Don Norman
 
-5.  **Comunicación Visual Consistente:** Utilizar un sistema de diseño robusto (tokens, componentes) para asegurar que la jerarquía, el contraste y el balance visual comuniquen de manera uniforme y efectiva, reforzando la marca Yendo en cada interacción.
+5.  **Comunicación Visual Consistente:** Utilizar un sistema de diseño robusto (tokens, componentes) para asegurar que la jerarquía, el contraste y el balance visual comuniquen de manera uniforme y efectiva, reforzando la marca WebFactory en cada interacción.
 
-Al adherirnos a estos principios, Yendo Mobile construirá una experiencia que no solo "pisa internet" con tecnología de vanguardia, sino que también deleita y empodera a sus usuarios a través de un diseño intencional y de clase mundial.
+Al adherirnos a estos principios, la Web Software Factory construirá una experiencia que no solo "pisa internet" con tecnología de vanguardia, sino que también deleita y empodera a sus usuarios a través de un diseño intencional y de clase mundial.
 
 ---
 
@@ -1870,7 +1870,7 @@ Al adherirnos a estos principios, Yendo Mobile construirá una experiencia que n
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -1885,10 +1885,10 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Aplicación de la Ley de Fitts y Ergonomía Móvil en Yendo Mobile
+# Informe Técnico: Aplicación de la Ley de Fitts y Ergonomía Móvil en la Web Software Factory
 
 **Fecha:** 2023-10-27
-**Autor:** RESEARCHER_AGENT & UI_ARCHITECT (Yendo Mobile)
+**Autor:** RESEARCHER_AGENT & UI_ARCHITECT (la Web Software Factory)
 **Fuente:** "Fitts's Law in Graphical User Interfaces & Mobile Ergonomics" por Raluca Budiu (NN/g)
 
 ---
@@ -1897,7 +1897,7 @@ ultima_revision: 2026-08-27
 
 El concepto central de este análisis se basa en la **Ley de Fitts**, que postula que el tiempo requerido para moverse rápidamente a un objetivo es una función de la distancia al objetivo y el tamaño del objetivo. Esta ley es un pilar fundamental en la ergonomía de la Interacción Humano-Computadora (HCI) y es directamente aplicable al diseño de interfaces móviles.
 
-La tesis arquitectónica de Yendo Mobile es que nuestra interfaz de usuario (UI) y experiencia de usuario (UX) deben ser **fundamentalmente impulsadas por los principios de la Ley de Fitts** para lograr una interacción de "Fricción Cero". Esto se traduce en un diseño donde cada elemento interactivo (botones, listas, campos de entrada) es optimizado en tamaño y posición para minimizar el tiempo de adquisición del objetivo y la carga cognitiva del usuario. Al integrar estos principios con nuestro stack tecnológico (React Native, Expo 57, Material 3) y nuestro ADN de producto ("pisa internet", Dark OLED), construiremos una experiencia móvil intuitiva, eficiente y profundamente ergonómica, alineada con nuestro lenguaje de producto `Venue / Experiencia / Grupo`.
+La tesis arquitectónica de la Web Software Factory es que nuestra interfaz de usuario (UI) y experiencia de usuario (UX) deben ser **fundamentalmente impulsadas por los principios de la Ley de Fitts** para lograr una interacción de "Fricción Cero". Esto se traduce en un diseño donde cada elemento interactivo (botones, listas, campos de entrada) es optimizado en tamaño y posición para minimizar el tiempo de adquisición del objetivo y la carga cognitiva del usuario. Al integrar estos principios con nuestro stack tecnológico (Modern Web UI (CSS/WAAPI), Expo 57, Material 3) y nuestro ADN de producto ("pisa internet", Dark OLED), construiremos una experiencia móvil intuitiva, eficiente y profundamente ergonómica, alineada con nuestro lenguaje de producto `Venue / Experiencia / Grupo`.
 
 ## 2. Hallazgos Técnicos Clave
 
@@ -1908,12 +1908,12 @@ La masterclass de NN/g subraya la importancia de la Ley de Fitts para el diseño
     *   **Objetivos más grandes (W)** son más fáciles y rápidos de alcanzar. Esto es crítico para botones de acción primaria y elementos de navegación.
     *   **Objetivos más cercanos (D)** son más fáciles y rápidos de alcanzar. La disposición lógica y la minimización de la distancia de desplazamiento son esenciales.
 *   **Física de Resortes (Spring Physics):** Aunque no directamente de la Ley de Fitts, la física de resortes en las animaciones y transiciones complementa la ergonomía al proporcionar una retroalimentación visual y háptica natural y satisfactoria. Un movimiento suave y predecible reduce la fricción percibida y refuerza la sensación de control, incluso después de que el objetivo ha sido adquirido.
-*   **Modelos de Hilos (Thread Models):** En React Native, la Ley de Fitts se ve impactada por la capacidad del sistema para responder. Un modelo de hilos eficiente (separación del hilo UI y JS) asegura que la interfaz sea fluida y reactiva, permitiendo que el usuario adquiera objetivos sin demoras o "jank". Una UI que tartamudea o se congela anula los beneficios de un diseño basado en Fitts.
+*   **Modelos de Hilos (Thread Models):** En Modern Web UI (CSS/WAAPI), la Ley de Fitts se ve impactada por la capacidad del sistema para responder. Un modelo de hilos eficiente (separación del hilo UI y JS) asegura que la interfaz sea fluida y reactiva, permitiendo que el usuario adquiera objetivos sin demoras o "jank". Una UI que tartamudea o se congela anula los beneficios de un diseño basado en Fitts.
 *   **Composición de Componentes y Tokens de Diseño:** La Ley de Fitts debe informar directamente la definición de nuestros tokens de diseño para tamaños (e.g., `spacing.md`, `button.height.lg`) y las propiedades de `hitSlop` de los componentes. Los componentes deben ser construidos con dimensiones mínimas de toque (e.g., 48x48 dp) y espaciado adecuado para evitar errores de selección y mejorar la precisión.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-### React Native & Expo 57
+### Modern Web UI (CSS/WAAPI) & Expo 57
 
 *   **Optimización de `Pressable` y `TouchableOpacity`:** Utilizar `hitSlop` de forma estratégica para ampliar el área de toque de elementos pequeños sin aumentar su tamaño visual, mejorando la precisión sin sacrificar el espacio.
 *   **Diseño Responsivo Ergonómico:** Implementar Flexbox y unidades relativas para asegurar que los elementos interactivos mantengan un tamaño y una posición óptimos en diferentes dispositivos y orientaciones, priorizando las zonas de pulgar.
@@ -1944,12 +1944,12 @@ La masterclass de NN/g subraya la importancia de la Ley de Fitts para el diseño
 ### Invariantes de Ingeniería
 
 *   **`un createClient`:** El cliente de API debe ser diseñado para ser extremadamente eficiente y no bloquear el hilo de UI. Las operaciones de red deben ser asíncronas y con manejo robusto de errores/estados de carga, para que la UI permanezca responsiva mientras se adquieren objetivos, reforzando el ADN de "pisa internet".
-*   **`StyleSheet.create` canónico:** Establecer un estándar estricto para el uso de `StyleSheet.create` en todos los componentes. Esto no solo optimiza el rendimiento de React Native, sino que también facilita la aplicación consistente de tokens de diseño (tamaños, espaciados) derivados de la Ley de Fitts. Se debe construir un sistema de diseño basado en tokens que encapsule estas dimensiones ergonómicas.
+*   **`StyleSheet.create` canónico:** Establecer un estándar estricto para el uso de `StyleSheet.create` en todos los componentes. Esto no solo optimiza el rendimiento de Modern Web UI (CSS/WAAPI), sino que también facilita la aplicación consistente de tokens de diseño (tamaños, espaciados) derivados de la Ley de Fitts. Se debe construir un sistema de diseño basado en tokens que encapsule estas dimensiones ergonómicas.
 *   **Dunbar 4-6:** Aplicar el principio de Dunbar (o similar, como la regla 7 ± 2) a la cantidad de opciones o acciones primarias presentadas en una pantalla o en un grupo lógico. Limitar las opciones a 4-6 elementos reduce la carga cognitiva, mejora la velocidad de decisión y, por ende, la velocidad de adquisición del objetivo deseado, incluso si físicamente están cerca. Esto es crucial para la claridad y la "Fricción Cero".
 
 ## 4. Principios Rectores y Citas Clave
 
-**Principios Rectores de Yendo Mobile:**
+**Principios Rectores de la Web Software Factory:**
 
 1.  **La Ergonomía de la Interacción es la Base de la "Fricción Cero":** Cada elemento interactivo se diseña y posiciona para minimizar el esfuerzo físico y cognitivo del usuario, priorizando la precisión y la velocidad de adquisición del objetivo.
 2.  **La Previsibilidad y la Consistencia Reducen la Carga Cognitiva y Mejoran la Eficiencia:** Un diseño coherente y patrones de interacción predecibles permiten a los usuarios desarrollar memoria muscular y navegar la aplicación con confianza y rapidez.
@@ -1960,8 +1960,8 @@ La masterclass de NN/g subraya la importancia de la Ley de Fitts para el diseño
 *   "El tiempo de movimiento hacia un objetivo depende del tamaño del objetivo y de la distancia al objetivo."
     *   — *Lexie Kane, Nielsen Norman Group (NN/g), sobre la Ley de Fitts.*
 
-*   "En Yendo Mobile, cada píxel y cada interacción se diseñan para minimizar la fricción, maximizar la eficiencia y deleitar al usuario, transformando la Ley de Fitts en una experiencia fluida y natural que 'pisa internet' con cada toque."
-    *   — *RESEARCHER_AGENT & UI_ARCHITECT, Yendo Mobile.*
+*   "En la Web Software Factory, cada píxel y cada interacción se diseñan para minimizar la fricción, maximizar la eficiencia y deleitar al usuario, transformando la Ley de Fitts en una experiencia fluida y natural que 'pisa internet' con cada toque."
+    *   — *RESEARCHER_AGENT & UI_ARCHITECT, la Web Software Factory.*
 
 ---
 
@@ -1982,7 +1982,7 @@ La masterclass de NN/g subraya la importancia de la Ley de Fitts para el diseño
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -1997,14 +1997,14 @@ ultima_revision: 2026-08-27
 
 ---
 
-## Informe Técnico: Jerarquías de Información en Yendo Mobile
+## Informe Técnico: Jerarquías de Información en la Web Software Factory
 
 ### 1. Concepto Central y Tesis Arquitectónica
 
 El concepto central del análisis de Nielsen Norman Group (NN/g) radica en la dicotomía entre **jerarquías de información planas (flat)** y **profundas (deep)**, y su impacto directo en la usabilidad y descubribilidad del contenido. Una jerarquía plana se caracteriza por tener pocas capas verticales y muchas categorías por nivel, mientras que una profunda posee múltiples niveles con menos categorías por capa.
 
-**Tesis Arquitectónica para Yendo Mobile:**
-Yendo Mobile adoptará una **arquitectura de información predominantemente plana**, priorizando la **descubribilidad directa** y la **fricción cero** para sus pilares "Venue", "Experiencia" y "Grupo". Esta elección se alinea con el ADN de Yendo de "pisa internet", que implica un acceso rápido y sin barreras a la información, similar a la navegación web donde el contenido relevante suele estar a pocos clics. Cuando la profundidad sea inevitable por la complejidad del contenido, se implementarán estrategias robustas de navegación alternativa y señales contextuales claras para mitigar la desorientación y mantener la eficiencia del usuario.
+**Tesis Arquitectónica para la Web Software Factory:**
+la Web Software Factory adoptará una **arquitectura de información predominantemente plana**, priorizando la **descubribilidad directa** y la **fricción cero** para sus pilares "Venue", "Experiencia" y "Grupo". Esta elección se alinea con el ADN de WebFactory de "pisa internet", que implica un acceso rápido y sin barreras a la información, similar a la navegación web donde el contenido relevante suele estar a pocos clics. Cuando la profundidad sea inevitable por la complejidad del contenido, se implementarán estrategias robustas de navegación alternativa y señales contextuales claras para mitigar la desorientación y mantener la eficiencia del usuario.
 
 ### 2. Hallazgos Técnicos Clave
 
@@ -2013,10 +2013,10 @@ Yendo Mobile adoptará una **arquitectura de información predominantemente plan
 *   **Modelos de Hilos (Thread Models):** La elección de una jerarquía impacta la estrategia de carga de datos. Una jerarquía plana puede requerir la carga inicial de un conjunto de datos más amplio para poblar las múltiples categorías, mientras que una profunda podría implicar cargas más pequeñas y secuenciales a medida que el usuario profundiza. Es fundamental que el hilo principal de la UI permanezca siempre reactivo, independientemente de la estrategia de carga de datos subyacente, para evitar "jank" y frustración del usuario.
 *   **Composición de Componentes y Tokens de Diseño:** La claridad y especificidad de las etiquetas de categoría son vitales. Esto se traduce en la necesidad de un sistema de diseño robusto (Material 3) y tokens de diseño bien definidos para tipografía, espaciado y estados de componentes. Estos tokens deben asegurar que las listas planas, incluso las largas, sean altamente escaneables y que los elementos interactivos (tap targets) cumplan con la Ley de Fitts, siendo suficientemente grandes y accesibles. La capacidad de agrupar visualmente elementos relacionados dentro de una lista plana, sin crear subcategorías jerárquicas, es un hallazgo clave para manejar la complejidad sin añadir profundidad.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-#### React Native & Expo 57
-*   **Optimización de Listas:** Utilizar `FlatList` y `SectionList` de React Native para renderizar eficientemente grandes volúmenes de "Venues", "Experiencias" o "Grupos" en una estructura plana. Esto asegura un rendimiento fluido incluso con muchas opciones visibles.
+#### Modern Web UI (CSS/WAAPI) & Expo 57
+*   **Optimización de Listas:** Utilizar `FlatList` y `SectionList` de Modern Web UI (CSS/WAAPI) para renderizar eficientemente grandes volúmenes de "Venues", "Experiencias" o "Grupos" en una estructura plana. Esto asegura un rendimiento fluido incluso con muchas opciones visibles.
 *   **Navegación Performante:** Implementar React Navigation con énfasis en patrones de navegación planos (ej. bottom tabs para "Venue", "Experiencia", "Grupo") y stack navigation para detalles. Asegurar que las transiciones entre pantallas sean fluidas y responsivas, utilizando animaciones nativas o librerías optimizadas para la física de resortes.
 *   **Prototipado Rápido con Expo:** Aprovechar Expo para iterar rápidamente en diferentes configuraciones de jerarquía (plana vs. moderadamente profunda) y realizar pruebas A/B con usuarios reales para validar la efectividad de la arquitectura de información.
 
@@ -2031,7 +2031,7 @@ Yendo Mobile adoptará una **arquitectura de información predominantemente plan
 *   **Priorización Visual:** Utilizar el tamaño, el color y la posición para destacar las opciones más relevantes o frecuentemente utilizadas, guiando la mirada del usuario y reduciendo el tiempo de búsqueda.
 
 #### Lenguaje de Producto (Venue / Experiencia / Grupo)
-*   **Navegación Primaria:** "Venue", "Experiencia" y "Grupo" deben ser los pilares de la navegación principal de Yendo, probablemente a través de una barra de navegación inferior o pestañas prominentes, reflejando una jerarquía de nivel superior plana.
+*   **Navegación Primaria:** "Venue", "Experiencia" y "Grupo" deben ser los pilares de la navegación principal de WebFactory, probablemente a través de una barra de navegación inferior o pestañas prominentes, reflejando una jerarquía de nivel superior plana.
 *   **Etiquetas Específicas:** Dentro de cada pilar, las categorías y subcategorías deben usar un lenguaje claro, específico y sin ambigüedades. Por ejemplo, en lugar de "Eventos", usar "Conciertos de Rock", "Talleres de Cerámica", "Partidos de Fútbol". Esto mejora la descubribilidad y la comprensión, alineándose con los beneficios de las jerarquías planas.
 *   **Contexto y Claridad:** Cuando sea necesario introducir un nivel de profundidad, asegurar que el contexto sea siempre claro y que el usuario sepa dónde se encuentra en la jerarquía (ej. mediante títulos de pantalla, breadcrumbs virtuales o indicadores de progreso).
 
@@ -2044,22 +2044,22 @@ Yendo Mobile adoptará una **arquitectura de información predominantemente plan
 
 1.  **Priorizar la Descubribilidad y la Fricción Cero:**
     *   "Content is more discoverable when it's not buried under multiple intervening layers. All other things being equal, deep hierarchies are more difficult to use."
-    *   *Implicación para Yendo:* Minimizar los clics y la navegación profunda para que los usuarios accedan rápidamente a "Venue", "Experiencia" y "Grupo".
+    *   *Implicación para WebFactory:* Minimizar los clics y la navegación profunda para que los usuarios accedan rápidamente a "Venue", "Experiencia" y "Grupo".
 
 2.  **Buscar el Equilibrio Óptimo entre Amplitud y Profundidad, Guiado por el Usuario:**
     *   "Like most design questions, there's no single right answer, and going too far to either extreme will backfire."
     *   "Observing your users — via usability testing, analytics, and search logs — can help you understand what problems your audience needs to solve and how familiar users are with their content. This background knowledge is essential to achieving the right balance between a breadth and depth in your hierarchy."
-    *   *Implicación para Yendo:* La arquitectura de información no es estática; debe evolucionar basándose en datos de usuario y pruebas de usabilidad, buscando el punto óptimo entre la exposición de opciones y la gestión de la complejidad.
+    *   *Implicación para WebFactory:* La arquitectura de información no es estática; debe evolucionar basándose en datos de usuario y pruebas de usabilidad, buscando el punto óptimo entre la exposición de opciones y la gestión de la complejidad.
 
 3.  **Etiquetas Claras y Específicas para Maximizar la Comprensión:**
     *   "Categories that are specific and do not overlap are the easiest to understand."
     *   "A flatter hierarchy with more categories at each level usually has more-specific labels that are easier to understand."
-    *   *Implicación para Yendo:* Utilizar un lenguaje de producto preciso y descriptivo para todas las categorías y elementos de navegación, evitando términos genéricos que puedan confundir al usuario.
+    *   *Implicación para WebFactory:* Utilizar un lenguaje de producto preciso y descriptivo para todas las categorías y elementos de navegación, evitando términos genéricos que puedan confundir al usuario.
 
 4.  **Mitigar la Desorientación en Jerarquías Profundas Inevitables:**
     *   "For deeper hierarchies it's critical to provide alternative navigation options: shortcuts that lead directly to lower levels."
     *   "For sites that are more than a few levels deep, breadcrumbs... can help users orient themselves and understand the site structure."
-    *   *Implicación para Yendo:* Cuando la complejidad del contenido requiera una profundización, implementar "atajos" (ej. búsqueda global, "más vistos", filtros avanzados) y señales de orientación claras (ej. títulos de pantalla contextuales, indicadores de progreso) para evitar que el usuario se pierda.
+    *   *Implicación para WebFactory:* Cuando la complejidad del contenido requiera una profundización, implementar "atajos" (ej. búsqueda global, "más vistos", filtros avanzados) y señales de orientación claras (ej. títulos de pantalla contextuales, indicadores de progreso) para evitar que el usuario se pierda.
 
 ---
 
@@ -2080,7 +2080,7 @@ Yendo Mobile adoptará una **arquitectura de información predominantemente plan
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -2095,37 +2095,37 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Optimización de Interacciones Táctiles con la Ley de Fitts para Yendo Mobile
+# Informe Técnico: Optimización de Interacciones Táctiles con la Ley de Fitts para la Web Software Factory
 
 ## 1. Concepto Central y Tesis Arquitectónica
 
 El concepto central de este análisis se basa en la **Ley de Fitts**, un modelo predictivo en la interacción humano-computadora que cuantifica el tiempo necesario para moverse rápidamente hacia un área objetivo. Esta ley establece que el tiempo de movimiento (MT) es una función logarítmica de la distancia al objetivo (D) y el tamaño del objetivo (W). En esencia, objetivos más grandes y más cercanos se alcanzan y seleccionan más rápidamente.
 
-**Tesis Arquitectónica para Yendo Mobile:** La aplicación rigurosa de la Ley de Fitts es un pilar fundamental para la consecución de la "Fricción Cero" en la experiencia de usuario de Yendo Mobile. Al optimizar quirúrgicamente el tamaño y la ubicación de los elementos interactivos (botones, enlaces, áreas táctiles), garantizaremos una interacción fluida, eficiente y sin esfuerzo, que no solo acelera la navegación sino que también reduce la carga cognitiva y el error del usuario. Esta optimización es intrínseca al ADN de Yendo de "pisar internet" con una experiencia de clase mundial, donde cada milisegundo y cada píxel cuentan para una interacción impecable.
+**Tesis Arquitectónica para la Web Software Factory:** La aplicación rigurosa de la Ley de Fitts es un pilar fundamental para la consecución de la "Fricción Cero" en la experiencia de usuario de la Web Software Factory. Al optimizar quirúrgicamente el tamaño y la ubicación de los elementos interactivos (botones, enlaces, áreas táctiles), garantizaremos una interacción fluida, eficiente y sin esfuerzo, que no solo acelera la navegación sino que también reduce la carga cognitiva y el error del usuario. Esta optimización es intrínseca al ADN de WebFactory de "pisar internet" con una experiencia de clase mundial, donde cada milisegundo y cada píxel cuentan para una interacción impecable.
 
 ## 2. Hallazgos Técnicos Clave
 
 La masterclass de NN/g subraya la importancia de la Ley de Fitts para diseñar interfaces donde los objetivos son fáciles y rápidos de alcanzar.
 
-*   **Ergonomía de Interacción:** La Ley de Fitts es la base para una ergonomía táctil superior. Implica que los elementos interactivos críticos deben ser suficientemente grandes y estar ubicados en zonas de fácil acceso (ej. pulgar en dispositivos móviles) para minimizar el tiempo de movimiento y la tasa de error. Esto es crucial para Yendo, donde la interacción rápida en "Venues" o dentro de "Grupos" es esencial.
+*   **Ergonomía de Interacción:** La Ley de Fitts es la base para una ergonomía táctil superior. Implica que los elementos interactivos críticos deben ser suficientemente grandes y estar ubicados en zonas de fácil acceso (ej. pulgar en dispositivos móviles) para minimizar el tiempo de movimiento y la tasa de error. Esto es crucial para WebFactory, donde la interacción rápida en "Venues" o dentro de "Grupos" es esencial.
 *   **Física de Resortes (Spring Physics) y Retroalimentación:** Aunque no directamente abordado por la Ley de Fitts, la percepción de una interacción "rápida" y "sin fricción" se complementa con una retroalimentación visual y háptica responsiva. Una vez que un objetivo es alcanzado rápidamente (gracias a Fitts), la respuesta del sistema debe ser inmediata y animada (usando física de resortes para transiciones suaves y naturales) para confirmar la acción y mantener la sensación de fluidez. Esto refuerza la percepción de "Fricción Cero".
-*   **Modelos de Hilos (Thread Models) y Rendimiento:** La optimización de la interacción a través de la Ley de Fitts solo es efectiva si la aplicación es inherentemente responsiva. Un modelo de hilos bien gestionado en React Native (ej. UI Thread vs. JavaScript Thread) asegura que, incluso con interacciones rápidas y complejas, la interfaz de usuario no se bloquee. Esto garantiza que el tiempo de movimiento optimizado por Fitts no se vea comprometido por latencias de procesamiento, manteniendo la promesa de "pisar internet".
+*   **Modelos de Hilos (Thread Models) y Rendimiento:** La optimización de la interacción a través de la Ley de Fitts solo es efectiva si la aplicación es inherentemente responsiva. Un modelo de hilos bien gestionado en Modern Web UI (CSS/WAAPI) (ej. UI Thread vs. JavaScript Thread) asegura que, incluso con interacciones rápidas y complejas, la interfaz de usuario no se bloquee. Esto garantiza que el tiempo de movimiento optimizado por Fitts no se vea comprometido por latencias de procesamiento, manteniendo la promesa de "pisar internet".
 *   **Composición de Componentes y Tokens de Diseño:** La aplicación de la Ley de Fitts requiere un enfoque sistemático en el diseño de componentes. Los "tokens de diseño" (ej. `spacing.md`, `size.touchTarget`) deben encapsular las dimensiones mínimas y recomendadas para los objetivos táctiles, asegurando consistencia y cumplimiento de la Ley de Fitts en toda la aplicación. Esto se traduce en componentes reutilizables que ya incorporan estas mejores prácticas.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-### React Native & Expo 57
+### Modern Web UI (CSS/WAAPI) & Expo 57
 
 *   **Componentes Táctiles Optimizados:** Desarrollar un conjunto de componentes `Touchable` (ej. `YendoButton`, `YendoLink`) que por defecto incorporen tamaños mínimos de objetivo táctil (ej. 44x44 dp/pt, según guías de accesibilidad y Fitts) y espaciado adecuado.
 *   **`StyleSheet.create` Canónico para Tokens:** Utilizar `StyleSheet.create` de forma canónica para definir un sistema de tokens de diseño que incluya `touchTargetSize`, `minPadding`, `margin` para asegurar la consistencia y la aplicación de la Ley de Fitts en toda la interfaz. Esto facilita la auditoría y el mantenimiento.
 *   **Prototipado Rápido con Expo:** Aprovechar Expo 57 para iterar rápidamente sobre diferentes tamaños y ubicaciones de objetivos táctiles en diversos dispositivos y densidades de píxeles, realizando pruebas de usuario para validar la eficiencia de las interacciones.
-*   **Gestos y Áreas de Activación:** Para elementos más pequeños visualmente, asegurar que el área táctil (`hitSlop` en React Native) sea generosa, extendiendo el objetivo sin alterar la estética visual, aplicando directamente el principio de Fitts.
+*   **Gestos y Áreas de Activación:** Para elementos más pequeños visualmente, asegurar que el área táctil (`hitSlop` en Modern Web UI (CSS/WAAPI)) sea generosa, extendiendo el objetivo sin alterar la estética visual, aplicando directamente el principio de Fitts.
 
 ### Dark OLED & Material 3
 
 *   **Guías de Material 3 para Touch Targets:** Adherirse a las recomendaciones de Material 3 para tamaños de objetivos táctiles y espaciado, que ya incorporan principios de accesibilidad y usabilidad alineados con la Ley de Fitts.
 *   **Contraste y Perceptibilidad en OLED:** En el tema Dark OLED, asegurar que, además de ser grandes y accesibles, los objetivos táctiles tengan suficiente contraste y claridad visual para ser fácilmente *percibidos* antes de ser *alcanzados*. La Ley de Fitts asume que el objetivo es visible.
-*   **Tokens de Diseño Material 3:** Integrar los tokens de diseño de Material 3 para espaciado y tamaño en el sistema de diseño de Yendo, garantizando que los componentes sigan estas directrices por defecto.
+*   **Tokens de Diseño Material 3:** Integrar los tokens de diseño de Material 3 para espaciado y tamaño en el sistema de diseño de WebFactory, garantizando que los componentes sigan estas directrices por defecto.
 
 ### Fricción Cero & Ley de Fitts
 
@@ -2159,7 +2159,7 @@ La masterclass de NN/g subraya la importancia de la Ley de Fitts para diseñar i
 
 > "The movement time to a target depends on the size of the target and the distance to the target."
 
-Esta afirmación encapsula la esencia de la Ley de Fitts y debe ser un mantra en el diseño de interfaces de Yendo Mobile, guiando cada decisión sobre el tamaño y la ubicación de los elementos interactivos para asegurar una experiencia que verdaderamente "pise internet" con una "Fricción Cero" inigualable.
+Esta afirmación encapsula la esencia de la Ley de Fitts y debe ser un mantra en el diseño de interfaces de la Web Software Factory, guiando cada decisión sobre el tamaño y la ubicación de los elementos interactivos para asegurar una experiencia que verdaderamente "pise internet" con una "Fricción Cero" inigualable.
 
 ---
 
@@ -2180,7 +2180,7 @@ Esta afirmación encapsula la esencia de la Ley de Fitts y debe ser un mantra en
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -2195,13 +2195,13 @@ ultima_revision: 2026-08-27
 
 ---
 
-# Informe Técnico: Implementación de un Sistema de Diseño Atómico para Yendo Mobile
+# Informe Técnico: Implementación de un Sistema de Diseño Atómico para la Web Software Factory
 
-Este informe analiza los principios de los Sistemas de Diseño, con un enfoque en la metodología de Diseño Atómico de Brad Frost, y los mapea quirúrgicamente al stack tecnológico y al ADN de Yendo Mobile. El objetivo es proporcionar una hoja de ruta para la construcción de una experiencia de usuario coherente, escalable y de alto rendimiento.
+Este informe analiza los principios de los Sistemas de Diseño, con un enfoque en la metodología de Diseño Atómico de Brad Frost, y los mapea quirúrgicamente al stack tecnológico y al ADN de la Web Software Factory. El objetivo es proporcionar una hoja de ruta para la construcción de una experiencia de usuario coherente, escalable y de alto rendimiento.
 
 ## 1. Concepto Central y Tesis Arquitectónica
 
-El concepto central es la adopción de un **Sistema de Diseño Atómico** como la columna vertebral de la arquitectura de interfaz de usuario de Yendo Mobile. La tesis arquitectónica es que, al descomponer la UI en sus elementos constituyentes más pequeños (átomos) y construir progresivamente componentes más complejos (moléculas, organismos, plantillas, páginas), Yendo Mobile logrará una consistencia inquebrantable, una eficiencia de desarrollo superior y una escalabilidad sin precedentes. Este enfoque no solo estandariza la estética y la interacción, sino que también fomenta un lenguaje común entre diseño y desarrollo, reduciendo la deuda técnica y acelerando la innovación.
+El concepto central es la adopción de un **Sistema de Diseño Atómico** como la columna vertebral de la arquitectura de interfaz de usuario de la Web Software Factory. La tesis arquitectónica es que, al descomponer la UI en sus elementos constituyentes más pequeños (átomos) y construir progresivamente componentes más complejos (moléculas, organismos, plantillas, páginas), la Web Software Factory logrará una consistencia inquebrantable, una eficiencia de desarrollo superior y una escalabilidad sin precedentes. Este enfoque no solo estandariza la estética y la interacción, sino que también fomenta un lenguaje común entre diseño y desarrollo, reduciendo la deuda técnica y acelerando la innovación.
 
 ## 2. Hallazgos Técnicos Clave
 
@@ -2209,14 +2209,14 @@ El concepto central es la adopción de un **Sistema de Diseño Atómico** como l
 El Diseño Atómico, al promover la reutilización y la consistencia, garantiza que los patrones de interacción y los elementos visuales sean predecibles y fáciles de aprender para el usuario. Esto se traduce directamente en una **ergonomía superior**, donde la interfaz se siente natural y reduce la carga cognitiva. Cada átomo y molécula se diseña con un propósito claro y una interacción esperada, lo que contribuye a una experiencia fluida y sin fricciones.
 
 ### Física de Resortes (Spring Physics)
-Un sistema de diseño robusto debe definir no solo la apariencia estática, sino también el comportamiento dinámico. La consistencia en las animaciones, transiciones y respuestas táctiles es crucial. La física de resortes, aplicada a las interacciones de la UI (scroll, arrastrar, expandir/contraer), debe ser parte de los tokens de diseño. Esto implica definir parámetros como `damping`, `stiffness`, `mass` y `velocity` para asegurar que todas las animaciones en Yendo Mobile se sientan cohesivas y "vivas", mejorando la percepción de calidad y respuesta del producto.
+Un sistema de diseño robusto debe definir no solo la apariencia estática, sino también el comportamiento dinámico. La consistencia en las animaciones, transiciones y respuestas táctiles es crucial. La física de resortes, aplicada a las interacciones de la UI (scroll, arrastrar, expandir/contraer), debe ser parte de los tokens de diseño. Esto implica definir parámetros como `damping`, `stiffness`, `mass` y `velocity` para asegurar que todas las animaciones en la Web Software Factory se sientan cohesivas y "vivas", mejorando la percepción de calidad y respuesta del producto.
 
 ### Modelos de Hilos (Threading Models)
-Aunque el Diseño Atómico se centra en la UI, su estructura modular facilita la comprensión de cómo los componentes interactúan con los datos y el estado. Cada "organismo" o "plantilla" puede ser visto como un hilo de experiencia que consume y presenta datos. Un sistema de diseño bien definido ayuda a aislar las preocupaciones de la UI de la lógica de negocio y la gestión de estado, permitiendo modelos de hilos más limpios y eficientes en la capa de aplicación, crucial para el rendimiento en React Native.
+Aunque el Diseño Atómico se centra en la UI, su estructura modular facilita la comprensión de cómo los componentes interactúan con los datos y el estado. Cada "organismo" o "plantilla" puede ser visto como un hilo de experiencia que consume y presenta datos. Un sistema de diseño bien definido ayuda a aislar las preocupaciones de la UI de la lógica de negocio y la gestión de estado, permitiendo modelos de hilos más limpios y eficientes en la capa de aplicación, crucial para el rendimiento en Modern Web UI (CSS/WAAPI).
 
 ### Composición de Componentes y Tokens de Diseño
 Este es el corazón del Diseño Atómico:
-*   **Átomos:** Los bloques de construcción fundamentales (colores, tipografía, espaciado, iconos, botones básicos). Estos son los **tokens de diseño** de Yendo Mobile.
+*   **Átomos:** Los bloques de construcción fundamentales (colores, tipografía, espaciado, iconos, botones básicos). Estos son los **tokens de diseño** de la Web Software Factory.
 *   **Moléculas:** Grupos de átomos que funcionan juntos como una unidad (e.g., un campo de entrada con su etiqueta y botón de envío).
 *   **Organismos:** Grupos de moléculas y/o átomos que forman secciones de una interfaz (e.g., una cabecera de navegación, una lista de elementos).
 *   **Plantillas:** Disposiciones de organismos que definen la estructura de una página, sin contenido real.
@@ -2224,11 +2224,11 @@ Este es el corazón del Diseño Atómico:
 
 Esta jerarquía permite una composición predecible y una gestión centralizada de los estilos y comportamientos.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-### React Native & Expo 57
-*   **Componentización Atómica:** Implementar los átomos, moléculas y organismos como componentes React Native reutilizables. Utilizar `styled-components` o `Tamagui` para encapsular estilos y tokens de diseño directamente en los componentes, asegurando que cada átomo sea un componente React Native puro y bien definido.
-*   **Storybook para Componentes:** Integrar Storybook para React Native para documentar y probar cada átomo, molécula y organismo de forma aislada, facilitando la colaboración entre diseño y desarrollo y garantizando la calidad.
+### Modern Web UI (CSS/WAAPI) & Expo 57
+*   **Componentización Atómica:** Implementar los átomos, moléculas y organismos como componentes Modern Web UI (CSS/WAAPI) reutilizables. Utilizar `styled-components` o `Tamagui` para encapsular estilos y tokens de diseño directamente en los componentes, asegurando que cada átomo sea un componente Modern Web UI (CSS/WAAPI) puro y bien definido.
+*   **Storybook para Componentes:** Integrar Storybook para Modern Web UI (CSS/WAAPI) para documentar y probar cada átomo, molécula y organismo de forma aislada, facilitando la colaboración entre diseño y desarrollo y garantizando la calidad.
 *   **Expo Modules y Config Plugins:** Aprovechar Expo 57 para la gestión de módulos nativos y la configuración, asegurando que los componentes atómicos puedan integrarse sin problemas con las capacidades nativas cuando sea necesario, manteniendo la simplicidad del flujo de trabajo de Expo.
 
 ### Dark OLED & Material 3
@@ -2247,19 +2247,19 @@ Esta jerarquía permite una composición predecible y una gestión centralizada 
 *   **Grupo (Páginas):** La vista completa de un "Grupo" o cualquier flujo de usuario principal se representará como una "Página", que es una instancia de una plantilla con datos reales. Esto asegura que la experiencia del Grupo sea consistente y esté compuesta por elementos bien definidos.
 
 ### Invariantes de Ingeniería
-*   **`un createClient`:** Establecer un único punto de entrada (`createClient`) para la interacción con la API de Yendo. Este cliente debe ser un átomo de ingeniería, encapsulando la lógica de autenticación, manejo de errores y serialización/deserialización de datos, garantizando una interacción de red consistente y robusta en toda la aplicación.
+*   **`un createClient`:** Establecer un único punto de entrada (`createClient`) para la interacción con la API de WebFactory. Este cliente debe ser un átomo de ingeniería, encapsulando la lógica de autenticación, manejo de errores y serialización/deserialización de datos, garantizando una interacción de red consistente y robusta en toda la aplicación.
 *   **`StyleSheet.create` Canónico:** Aunque se pueden usar `styled-components` o `Tamagui`, la definición de estilos a nivel de átomo debe seguir un patrón canónico. Si se usa `StyleSheet.create` para estilos base, debe ser consistente y utilizar los tokens de diseño definidos centralmente. Esto asegura que los estilos sean predecibles y fáciles de mantener.
 *   **Dunbar 4-6:** La modularidad del Diseño Atómico facilita la gestión de equipos pequeños y eficientes. Cada equipo (o sub-equipo) de 4-6 personas puede ser responsable de un conjunto específico de átomos, moléculas u organismos, o de una "Experiencia" completa, sin pisarse los pies. La clara separación de responsabilidades y la documentación de Storybook reducen la sobrecarga de comunicación y coordinación.
 
 ## 4. Principios Rectores y Citas Clave
 
 *   **"We're not designing pages, we're designing systems of components."** – *Stephen Hay*. Este principio subraya la necesidad de pensar en la UI como un ecosistema de piezas interconectadas, no como pantallas estáticas.
-*   **"Atomic Design is a methodology for crafting robust, scalable, and maintainable design systems."** – *Brad Frost*. La adopción de esta metodología es fundamental para el crecimiento sostenible de Yendo Mobile.
-*   **"Consistency is key to a good user experience."** – *Jakob Nielsen*. Un sistema de diseño atómico es la herramienta principal para lograr esta consistencia en todos los puntos de contacto de Yendo Mobile.
+*   **"Atomic Design is a methodology for crafting robust, scalable, and maintainable design systems."** – *Brad Frost*. La adopción de esta metodología es fundamental para el crecimiento sostenible de la Web Software Factory.
+*   **"Consistency is key to a good user experience."** – *Jakob Nielsen*. Un sistema de diseño atómico es la herramienta principal para lograr esta consistencia en todos los puntos de contacto de la Web Software Factory.
 *   **"Design systems are the single source of truth for all design and development decisions."** – *Nathan Curtis*. Esto implica que los tokens de diseño y los componentes atómicos deben ser el referente para cualquier nueva característica o modificación.
 *   **"The whole is greater than the sum of its parts."** – *Aristóteles*. Aunque los átomos son pequeños, su combinación inteligente en moléculas, organismos y plantillas crea una experiencia de usuario que es mucho más que la simple suma de sus elementos individuales.
 
-Al integrar estos principios y hallazgos técnicos, Yendo Mobile puede construir una base sólida para su producto, asegurando que su ADN de "pisar internet" se manifieste a través de una experiencia de usuario excepcional, eficiente y escalable.
+Al integrar estos principios y hallazgos técnicos, la Web Software Factory puede construir una base sólida para su producto, asegurando que su ADN de "pisar internet" se manifieste a través de una experiencia de usuario excepcional, eficiente y escalable.
 
 ---
 
@@ -2280,7 +2280,7 @@ Al integrar estos principios y hallazgos técnicos, Yendo Mobile puede construir
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -2289,54 +2289,54 @@ ultima_revision: 2026-08-27
 
 ## 🎓 Masterclass UI: Learn Responsive & Adaptive UI Design: Viewports, Density & Ergonomics
 **Plataforma de Origen:** web.dev  
-**Autor/Ponente:** Google Chrome & Android UX Engineering  
+**Autor/Ponente:** Google Chrome & Web Platform UX Engineering  
 **URL Oficial:** [https://web.dev/learn/design/](https://web.dev/learn/design/)  
 **Fecha de Ingesta:** 2026-09-18  
 
 ---
 
-# Informe Técnico: Arquitectura de UI Adaptativa y Ergonómica para Yendo Mobile
+# Informe Técnico: Arquitectura de UI Adaptativa y Ergonómica para la Web Software Factory
 
-**RESEARCHER_AGENT & UI_ARCHITECT: Yendo Mobile**
+**RESEARCHER_AGENT & UI_ARCHITECT: la Web Software Factory**
 
 ## 1. Concepto Central y Tesis Arquitectónica
 
-El curso "Learn Responsive & Adaptive UI Design" de Google Chrome y Android UX Engineering establece la base para construir interfaces que no solo se ajustan a diferentes tamaños de pantalla, sino que también se adaptan a las preferencias del usuario y a las capacidades del dispositivo. Para Yendo Mobile, la tesis arquitectónica central es la **"Ergonomía Adaptativa Proactiva"**.
+El curso "Learn Responsive & Adaptive UI Design" de Google Chrome y Web Platform UX Engineering establece la base para construir interfaces que no solo se ajustan a diferentes tamaños de pantalla, sino que también se adaptan a las preferencias del usuario y a las capacidades del dispositivo. Para la Web Software Factory, la tesis arquitectónica central es la **"Ergonomía Adaptativa Proactiva"**.
 
-Esta tesis postula que la interfaz de Yendo debe ir más allá de la mera reactividad a las dimensiones del viewport. Debe anticipar y responder inteligentemente al contexto del usuario (su "Venue"), a sus preferencias (Dark OLED, idioma), a sus mecanismos de interacción (táctil, teclado) y a su carga cognitiva (Dunbar 4-6). El objetivo es eliminar la "fricción cero" mediante un diseño que se siente inherentemente correcto y natural, independientemente de cómo o dónde se utilice la aplicación. Esto se logra mediante una composición modular de componentes, un sistema de diseño robusto (Material 3) y una ingeniería que garantiza la fluidez y el rendimiento en el stack React Native & Expo 57.
+Esta tesis postula que la interfaz de WebFactory debe ir más allá de la mera reactividad a las dimensiones del viewport. Debe anticipar y responder inteligentemente al contexto del usuario (su "Venue"), a sus preferencias (Dark OLED, idioma), a sus mecanismos de interacción (táctil, teclado) y a su carga cognitiva (Dunbar 4-6). El objetivo es eliminar la "fricción cero" mediante un diseño que se siente inherentemente correcto y natural, independientemente de cómo o dónde se utilice la aplicación. Esto se logra mediante una composición modular de componentes, un sistema de diseño robusto (Material 3) y una ingeniería que garantiza la fluidez y el rendimiento en el stack Modern Web UI (CSS/WAAPI) & Expo 57.
 
 ## 2. Hallazgos Técnicos Clave
 
 ### Ergonomía
-El curso enfatiza la importancia de que los sitios "luzcan geniales y funcionen bien para todos". Esto se traduce en una ergonomía superior, donde la interfaz es intuitiva, cómoda y eficiente. Para Yendo, esto implica:
+El curso enfatiza la importancia de que los sitios "luzcan geniales y funcionen bien para todos". Esto se traduce en una ergonomía superior, donde la interfaz es intuitiva, cómoda y eficiente. Para WebFactory, esto implica:
 *   **Tamaños de objetivo táctil adecuados:** Asegurar que los elementos interactivos sean fácilmente accesibles, especialmente en pantallas pequeñas o para usuarios con diferentes habilidades motoras.
 *   **Jerarquía visual clara:** Utilizar la tipografía, el espaciado y el color para guiar la atención del usuario y reducir la carga cognitiva.
 *   **Accesibilidad inherente:** Integrar desde el diseño inicial consideraciones para usuarios con discapacidades, incluyendo soporte para lectores de pantalla, contraste de color adecuado y navegación por teclado.
 
 ### Física de Resortes (Spring Physics)
-Aunque no se menciona explícitamente en el curso web, la física de resortes es fundamental para una experiencia móvil de clase mundial. En Yendo Mobile, las animaciones y transiciones deben emular el comportamiento del mundo físico, proporcionando retroalimentación táctil y visual que se siente natural y predecible. Esto contribuye a la percepción de "fricción cero", haciendo que las interacciones se sientan fluidas y responsivas, en lugar de rígidas o abruptas. La implementación de animaciones basadas en resortes en React Native es crucial para la sensación de pulido y reactividad.
+Aunque no se menciona explícitamente en el curso web, la física de resortes es fundamental para una experiencia móvil de clase mundial. En la Web Software Factory, las animaciones y transiciones deben emular el comportamiento del mundo físico, proporcionando retroalimentación táctil y visual que se siente natural y predecible. Esto contribuye a la percepción de "fricción cero", haciendo que las interacciones se sientan fluidas y responsivas, en lugar de rígidas o abruptas. La implementación de animaciones basadas en resortes en Modern Web UI (CSS/WAAPI) es crucial para la sensación de pulido y reactividad.
 
 ### Modelos de Hilos (Thread Models)
-El rendimiento es un pilar de la ergonomía. En React Native, la separación del hilo JavaScript y el hilo UI es vital. Un diseño adaptativo y responsivo no solo se trata de cómo se ve, sino de cómo se siente al interactuar. Un UI que se congela o tartamudea debido a un hilo JavaScript sobrecargado anula cualquier esfuerzo de diseño. Para Yendo, esto significa:
+El rendimiento es un pilar de la ergonomía. En Modern Web UI (CSS/WAAPI), la separación del hilo JavaScript y el hilo UI es vital. Un diseño adaptativo y responsivo no solo se trata de cómo se ve, sino de cómo se siente al interactuar. Un UI que se congela o tartamudea debido a un hilo JavaScript sobrecargado anula cualquier esfuerzo de diseño. Para WebFactory, esto significa:
 *   **Optimización de re-renders:** Minimizar las actualizaciones innecesarias de componentes.
 *   **Uso eficiente de la API nativa:** Delegar tareas intensivas al hilo nativo cuando sea posible.
 *   **Gestión de estado eficiente:** Evitar cálculos complejos en el hilo principal de UI.
 *   **Fast Refresh y Hot Reloading:** Aprovechar las herramientas de desarrollo de Expo para iterar rápidamente sin comprometer el rendimiento en producción.
 
 ### Composición de Componentes y Tokens de Diseño
-El concepto de "Micro Layouts" del curso, que aboga por "construir componentes flexibles que puedan colocarse en cualquier lugar", es directamente aplicable. Yendo debe adoptar un sistema de diseño basado en tokens y componentes atómicos.
+El concepto de "Micro Layouts" del curso, que aboga por "construir componentes flexibles que puedan colocarse en cualquier lugar", es directamente aplicable. WebFactory debe adoptar un sistema de diseño basado en tokens y componentes atómicos.
 *   **Tokens de Diseño:** Variables para color, tipografía, espaciado, radios de borde, etc., que permiten una adaptación global y consistente (e.g., para Dark OLED, Material 3).
 *   **Componentes Reutilizables:** Construir bloques de UI que encapsulen su propia lógica y estilo responsivo, facilitando la composición de "Macro Layouts" complejos.
-*   **`StyleSheet.create` Canónico:** Utilizar `StyleSheet.create` de React Native de manera consistente para optimizar el rendimiento de estilos y fomentar la reutilización.
+*   **`StyleSheet.create` Canónico:** Utilizar `StyleSheet.create` de Modern Web UI (CSS/WAAPI) de manera consistente para optimizar el rendimiento de estilos y fomentar la reutilización.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-### React Native & Expo 57
-*   **Media Queries Adaptativas:** Utilizar `Dimensions API` y `useWindowDimensions` de React Native para implementar lógica de diseño responsivo. Para escenarios más complejos, considerar librerías como `react-native-responsive-dimensions` o `react-native-media-query`.
-*   **Flexbox para Layouts:** Aprovechar al máximo el sistema Flexbox de React Native para crear layouts fluidos y adaptables que se ajusten automáticamente a diferentes tamaños de pantalla y orientaciones.
+### Modern Web UI (CSS/WAAPI) & Expo 57
+*   **Media Queries Adaptativas:** Utilizar `Dimensions API` y `useWindowDimensions` de Modern Web UI (CSS/WAAPI) para implementar lógica de diseño responsivo. Para escenarios más complejos, considerar librerías como `react-native-responsive-dimensions` o `react-native-media-query`.
+*   **Flexbox para Layouts:** Aprovechar al máximo el sistema Flexbox de Modern Web UI (CSS/WAAPI) para crear layouts fluidos y adaptables que se ajusten automáticamente a diferentes tamaños de pantalla y orientaciones.
 *   **Componentes Condicionales:** Renderizar diferentes componentes o variaciones de componentes basados en el tamaño de la pantalla o las características del dispositivo (e.g., un `BottomTabNavigator` en móvil vs. un `DrawerNavigator` en tablet).
-*   **Optimización de Imágenes:** Implementar `responsive images` utilizando la prop `source` del componente `Image` de React Native con un array de URIs para diferentes densidades de píxeles o tamaños, o mediante la carga condicional de imágenes.
-*   **SVG para Iconografía:** Como sugiere el curso, usar SVG para iconos garantiza escalabilidad y nitidez en cualquier densidad de píxeles, crucial para la estética de Yendo.
+*   **Optimización de Imágenes:** Implementar `responsive images` utilizando la prop `source` del componente `Image` de Modern Web UI (CSS/WAAPI) con un array de URIs para diferentes densidades de píxeles o tamaños, o mediante la carga condicional de imágenes.
+*   **SVG para Iconografía:** Como sugiere el curso, usar SVG para iconos garantiza escalabilidad y nitidez en cualquier densidad de píxeles, crucial para la estética de WebFactory.
 
 ### Dark OLED & Material 3
 *   **Theming Dinámico:** Implementar un sistema de theming robusto que permita cambiar entre modos claro y oscuro, aprovechando las capacidades de Material 3 para la generación de paletas de colores dinámicas.
@@ -2358,7 +2358,7 @@ El concepto de "Micro Layouts" del curso, que aboga por "construir componentes f
     *   **Consistencia Adaptativa:** Mantener una experiencia de usuario coherente y reconocible a pesar de las adaptaciones de layout o tema. La marca y la funcionalidad principal deben ser invariantes.
     *   **Personalización:** Permitir a los usuarios personalizar aspectos de la UI (e.g., tamaño de texto, densidad de información) para optimizar su "experiencia" personal.
 *   **Grupo:**
-    *   **Layouts Colaborativos:** Si Yendo implica interacción grupal en la misma pantalla (e.g., en una tablet compartida), diseñar layouts que faciliten la visibilidad y la interacción simultánea o secuencial de múltiples usuarios.
+    *   **Layouts Colaborativos:** Si WebFactory implica interacción grupal en la misma pantalla (e.g., en una tablet compartida), diseñar layouts que faciliten la visibilidad y la interacción simultánea o secuencial de múltiples usuarios.
     *   **Gestión de Información:** Adaptar la presentación de información para grupos, quizás resumiendo datos o destacando elementos clave para facilitar la comprensión colectiva, manteniendo la carga cognitiva dentro de los límites de Dunbar.
 
 ### Invariantes de Ingeniería
@@ -2368,19 +2368,19 @@ El concepto de "Micro Layouts" del curso, que aboga por "construir componentes f
 
 ## 4. Principios Rectores y Citas Clave
 
-1.  **"Fricción Cero a través de la Adaptación Proactiva":** La interfaz de Yendo no solo reacciona, sino que anticipa las necesidades del usuario y el contexto, eliminando obstáculos y haciendo que cada interacción sea fluida y natural.
-2.  **"Diseña para todos, en todas partes":** Inspirado en "make sites that look great and work well for everyone" del curso. Yendo debe ser accesible y funcional para cualquier usuario, en cualquier dispositivo y en cualquier "Venue".
+1.  **"Fricción Cero a través de la Adaptación Proactiva":** La interfaz de WebFactory no solo reacciona, sino que anticipa las necesidades del usuario y el contexto, eliminando obstáculos y haciendo que cada interacción sea fluida y natural.
+2.  **"Diseña para todos, en todas partes":** Inspirado en "make sites that look great and work well for everyone" del curso. WebFactory debe ser accesible y funcional para cualquier usuario, en cualquier dispositivo y en cualquier "Venue".
 3.  **"La consistencia es clave, la adaptación es el medio":** Mantener una experiencia de marca y funcionalidad coherente, mientras se permite que la presentación visual se adapte dinámicamente.
-4.  **"Composición modular, rendimiento nativo":** Construir la UI con componentes reutilizables y tokens de diseño, asegurando que la implementación en React Native aproveche al máximo el rendimiento nativo para una experiencia fluida.
+4.  **"Composición modular, rendimiento nativo":** Construir la UI con componentes reutilizables y tokens de diseño, asegurando que la implementación en Modern Web UI (CSS/WAAPI) aproveche al máximo el rendimiento nativo para una experiencia fluida.
 5.  **"La información justa, en el momento justo":** Aplicar la Ley de Fitts y el principio de Dunbar para gestionar la densidad de información, asegurando que el usuario nunca se sienta abrumado y pueda tomar decisiones rápidamente.
 
-**Citas Clave del Curso y su Relevancia para Yendo:**
-*   "A course exploring all aspects of responsive design. Learn how to make sites that look great and work well for everyone." – **Fundamento de la Ergonomía Adaptativa de Yendo.**
-*   "Adapt your designs to different screen sizes using CSS media queries." – **Traducido a `Dimensions API` y Flexbox en React Native.**
-*   "Build flexible components that can be placed anywhere." – **Base para el sistema de componentes y tokens de diseño de Yendo.**
+**Citas Clave del Curso y su Relevancia para WebFactory:**
+*   "A course exploring all aspects of responsive design. Learn how to make sites that look great and work well for everyone." – **Fundamento de la Ergonomía Adaptativa de WebFactory.**
+*   "Adapt your designs to different screen sizes using CSS media queries." – **Traducido a `Dimensions API` y Flexbox en Modern Web UI (CSS/WAAPI).**
+*   "Build flexible components that can be placed anywhere." – **Base para el sistema de componentes y tokens de diseño de WebFactory.**
 *   "Adapt your designs to match user preferences such as a dark mode." – **Directamente aplicable a la implementación de Dark OLED y Material 3.**
-*   "Prepare your pages for different input mechanisms; mouse, keyboard, and touch." – **Crucial para la "Fricción Cero" y la accesibilidad en Yendo.**
-*   "Prepare your content for devices with multiple screens." – **Visión a futuro para la adaptabilidad de Yendo en diversos "Venues".**
+*   "Prepare your pages for different input mechanisms; mouse, keyboard, and touch." – **Crucial para la "Fricción Cero" y la accesibilidad en WebFactory.**
+*   "Prepare your content for devices with multiple screens." – **Visión a futuro para la adaptabilidad de WebFactory en diversos "Venues".**
 
 ---
 
@@ -2401,7 +2401,7 @@ El concepto de "Micro Layouts" del curso, que aboga por "construir componentes f
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -2410,7 +2410,7 @@ ultima_revision: 2026-08-27
 
 ## 🎬 Guía Multimodal de Video: qafeedback7_9_26
 
-**Archivo Origen:** `C:\Users\Tomi\yendo_mobile\.knowledge\qa_feedbacks\qafeedback7_9_26.mp4`
+**Archivo Origen:** `C:\Users\Tomi\web_software_factory\.knowledge\qa_feedbacks\qafeedback7_9_26.mp4`
 **Fecha:** 7/9/2026, 08:37:19
 **Frames Analizados:** 10
 
@@ -2447,7 +2447,7 @@ ultima_revision: 2026-08-27
 
 ### ⏱️ Minuto 02:00 (frame_0007.jpg)
 
-> **🎙️ Voz / Audio:** "Habría que modificar esta pantalla, subirla un poquito, levantar esta pantalla para que no choque con los botones del celular. Después acá donde está el botón de la I, que es para crear el evento, debería estar el isotipo de Yendo, no una Y sola, sino el isotipo. Después, acá en el chat, la pantalla de chat, cuando yo toco para escribir, mi barra de chat debería estar arriba. Ahora mi teclado está tapando la barra donde yo escribo, así"
+> **🎙️ Voz / Audio:** "Habría que modificar esta pantalla, subirla un poquito, levantar esta pantalla para que no choque con los botones del celular. Después acá donde está el botón de la I, que es para crear el evento, debería estar el isotipo de WebFactory, no una Y sola, sino el isotipo. Después, acá en el chat, la pantalla de chat, cuando yo toco para escribir, mi barra de chat debería estar arriba. Ahora mi teclado está tapando la barra donde yo escribo, así"
 
 **👁️ Análisis Visual de Pantalla:**
 [Error visual: 429 Request too large for model `qwen/qwen3.6-27b` in organization `org_01m10p06rtegjrsfbs8s573nex` service tier `on_demand` on output tokens per minute (OTPM): Limit 1000, Requested 2048. The request's expected output tokens exceed the enforced limit; reduce max_tokens (or the request's expected output) and try again. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing]
@@ -2509,8 +2509,8 @@ ultima_revision: 2026-08-27
 ---
 
 ### 🔗 Fuentes, APIs y URLs de Referencia
-- **Video Local:** `C:\Users\Tomi\yendo_mobile\.knowledge\qa_feedbacks\qafeedback7_9_26.mp4`
-- **Carpeta de Keyframes:** `C:\Users\Tomi\yendo_mobile\.knowledge\👁️_vision\capturas_video\qafeedback7_9_26`
+- **Video Local:** `C:\Users\Tomi\web_software_factory\.knowledge\qa_feedbacks\qafeedback7_9_26.mp4`
+- **Carpeta de Keyframes:** `C:\Users\Tomi\web_software_factory\.knowledge\👁️_vision\capturas_video\qafeedback7_9_26`
 
 ---
 
@@ -2527,7 +2527,7 @@ ultima_revision: 2026-08-27
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -2544,7 +2544,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Sistemas de Diseño para Yendo Mobile
+## Informe de Investigación: Sistemas de Diseño para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -2561,16 +2561,16 @@ Los sistemas de diseño van más allá de un simple kit de UI, actuando como una
 *   **Inventario de Interfaz:** Un ejercicio fundamental para identificar y catalogar todos los patrones de UI existentes en los productos de una organización, revelando duplicidades e inconsistencias y sentando las bases para la curación.
 *   **Fuente Única de Verdad:** Actúa como el "ADN" canónico de cómo la organización diseña y construye productos, reduciendo la duplicación de esfuerzos y la "dispersión de soluciones de diseño".
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-Para Yendo Mobile, la implementación de un Sistema de Diseño es una estrategia clave para consolidar sus invariantes y escalar de manera eficiente:
+Para la Web Software Factory, la implementación de un Sistema de Diseño es una estrategia clave para consolidar sus invariantes y escalar de manera eficiente:
 
-*   **Expo 57 como Inventario de Interfaz:** Utilizar Expo 57 como el catalizador para un "Inventario de Interfaz" exhaustivo. Reunir a todos los equipos (diseño, desarrollo, producto) para documentar y categorizar cada patrón de UI existente en las aplicaciones de Yendo. Este ejercicio revelará las inconsistencias actuales y establecerá el **lenguaje compartido** necesario para el Sistema de Diseño, alineándose con el invariante "DNA pisa internet" al identificar el ADN visual y funcional de Yendo.
-*   **React Native y Unificación Técnica:** El Sistema de Diseño debe proporcionar componentes y directrices que se traduzcan directamente en código React Native. Esto asegura la coherencia visual y funcional en todas las aplicaciones nativas, reforzando los invariantes de **`un createClient`** y **`StyleSheet.create`** al centralizar la creación y estilización de componentes.
+*   **Expo 57 como Inventario de Interfaz:** Utilizar Expo 57 como el catalizador para un "Inventario de Interfaz" exhaustivo. Reunir a todos los equipos (diseño, desarrollo, producto) para documentar y categorizar cada patrón de UI existente en las aplicaciones de WebFactory. Este ejercicio revelará las inconsistencias actuales y establecerá el **lenguaje compartido** necesario para el Sistema de Diseño, alineándose con el invariante "DNA pisa internet" al identificar el ADN visual y funcional de WebFactory.
+*   **Modern Web UI (CSS/WAAPI) y Unificación Técnica:** El Sistema de Diseño debe proporcionar componentes y directrices que se traduzcan directamente en código Modern Web UI (CSS/WAAPI). Esto asegura la coherencia visual y funcional en todas las aplicaciones nativas, reforzando los invariantes de **`un createClient`** y **`StyleSheet.create`** al centralizar la creación y estilización de componentes.
 *   **Dark OLED y Material 3 como Principios Fundamentales:** Integrar explícitamente los principios de **Dark OLED** y **Material 3** en los tokens de diseño (paletas de color, tipografía, elevación, etc.) y en las guías de implementación. Esto garantiza una experiencia de usuario consistente y de alta calidad, aprovechando las ventajas estéticas y de rendimiento de estas tecnologías.
 *   **Fricción Cero a través de la Estandarización:** El Sistema de Diseño debe ser el motor para lograr la **Fricción Cero** en el desarrollo. Al proporcionar componentes listos para usar y directrices claras, se reduce la toma de decisiones redundantes, se acelera la producción y se minimizan los errores, permitiendo a los equipos enfocarse en la innovación.
-*   **Invariantes Venue/Experiencia/Grupo en el Diseño:** Los invariantes **Venue/Experiencia/Grupo** deben ser pilares del Sistema de Diseño. Esto implica definir patrones de UI y flujos de usuario específicos que encapsulen y comuniquen estos conceptos de manera consistente. Por ejemplo, componentes para la visualización de "Venues", patrones para la interacción con "Experiencias" y elementos para la gestión de "Grupos", asegurando que el diseño refleje la esencia de Yendo.
-*   **Escalabilidad y Cohesión (Dunbar 4-6):** Un Sistema de Diseño robusto permite a Yendo mantener la cohesión y la eficiencia incluso a medida que los equipos crecen más allá de los límites de Dunbar (4-6 personas para una comunicación íntima). Al estandarizar la comunicación y los componentes, el sistema actúa como un "pegamento" que mantiene la alineación y previene la "dispersión" que surge con el aumento de la complejidad y el tamaño del equipo.
+*   **Invariantes Venue/Experiencia/Grupo en el Diseño:** Los invariantes **Venue/Experiencia/Grupo** deben ser pilares del Sistema de Diseño. Esto implica definir patrones de UI y flujos de usuario específicos que encapsulen y comuniquen estos conceptos de manera consistente. Por ejemplo, componentes para la visualización de "Venues", patrones para la interacción con "Experiencias" y elementos para la gestión de "Grupos", asegurando que el diseño refleje la esencia de WebFactory.
+*   **Escalabilidad y Cohesión (Dunbar 4-6):** Un Sistema de Diseño robusto permite a WebFactory mantener la cohesión y la eficiencia incluso a medida que los equipos crecen más allá de los límites de Dunbar (4-6 personas para una comunicación íntima). Al estandarizar la comunicación y los componentes, el sistema actúa como un "pegamento" que mantiene la alineación y previene la "dispersión" que surge con el aumento de la complejidad y el tamaño del equipo.
 
 ### 4. Citas Clave
 
@@ -2607,7 +2607,7 @@ Para Yendo Mobile, la implementación de un Sistema de Diseño es una estrategia
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -2624,18 +2624,18 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Seguridad en React Native con Expo para Yendo Mobile
+## Informe de Investigación: Seguridad en Modern Web UI (CSS/WAAPI) con Expo para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
-El concepto central aborda la tensión entre la facilidad de desarrollo y escalabilidad de React Native/Expo y las estrictas demandas de seguridad, especialmente en entornos de alto riesgo como la banca. La tesis principal es que, si bien las aplicaciones React Native "Greenfield" (puramente JavaScript) presentan inherentemente mayores vulnerabilidades de seguridad en comparación con las nativas (debido a la exposición del código, el entorno de ejecución JavaScript, la dependencia de terceros y la ofuscación más débil), las herramientas modernas de Expo, como los **Expo Modules** y **Config Plugins**, permiten construir aplicaciones React Native altamente seguras. Estas herramientas facilitan la implementación de lógica de seguridad crítica directamente en la capa nativa, replicando así los beneficios de seguridad de las aplicaciones nativas o "Brownfield", sin abandonar el ecosistema Expo. La clave reside en evaluar el modelo de amenaza específico de la aplicación para determinar el nivel de seguridad necesario.
+El concepto central aborda la tensión entre la facilidad de desarrollo y escalabilidad de Modern Web UI (CSS/WAAPI)/Expo y las estrictas demandas de seguridad, especialmente en entornos de alto riesgo como la banca. La tesis principal es que, si bien las aplicaciones Modern Web UI (CSS/WAAPI) "Greenfield" (puramente JavaScript) presentan inherentemente mayores vulnerabilidades de seguridad en comparación con las nativas (debido a la exposición del código, el entorno de ejecución JavaScript, la dependencia de terceros y la ofuscación más débil), las herramientas modernas de Expo, como los **Expo Modules** y **Config Plugins**, permiten construir aplicaciones Modern Web UI (CSS/WAAPI) altamente seguras. Estas herramientas facilitan la implementación de lógica de seguridad crítica directamente en la capa nativa, replicando así los beneficios de seguridad de las aplicaciones nativas o "Brownfield", sin abandonar el ecosistema Expo. La clave reside en evaluar el modelo de amenaza específico de la aplicación para determinar el nivel de seguridad necesario.
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
-*   **Vulnerabilidades de React Native (Greenfield):**
+*   **Vulnerabilidades de Modern Web UI (CSS/WAAPI) (Greenfield):**
     *   **Exposición del Código:** JavaScript es más fácil de descompilar y manipular que el código binario nativo.
     *   **Entorno de Ejecución:** La máquina virtual JavaScript introduce una capa de abstracción que puede generar vulnerabilidades adicionales y riesgos de inyección en tiempo de ejecución.
-    *   **Acceso a Funciones de Seguridad Nativas:** Por defecto, React Native tiene acceso limitado a las características de seguridad específicas de la plataforma, requiriendo librerías de terceros o módulos nativos personalizados.
+    *   **Acceso a Funciones de Seguridad Nativas:** Por defecto, Modern Web UI (CSS/WAAPI) tiene acceso limitado a las características de seguridad específicas de la plataforma, requiriendo librerías de terceros o módulos nativos personalizados.
     *   **Dependencia de Terceros:** La fuerte dependencia de paquetes de terceros aumenta el riesgo de la cadena de suministro y la exposición a vulnerabilidades no parcheadas.
     *   **Ofuscación Débil:** Las herramientas de ofuscación para JavaScript son menos robustas que las disponibles para código nativo.
 *   **Requisitos de Seguridad para Aplicaciones Críticas:**
@@ -2643,7 +2643,7 @@ El concepto central aborda la tensión entre la facilidad de desarrollo y escala
     *   **Almacenamiento:** Cifrado, acceso solo para usuarios autenticados y uso de características de seguridad respaldadas por hardware.
     *   **Red:** Cifrado, "TLS certificate pinning" y todas las solicitudes de red autenticadas.
 *   **Solución Arquitectónica con Expo Modules y Config Plugins:**
-    *   **Problema de Estado Compartido:** En aplicaciones React Native puras, es difícil gestionar un estado de seguridad compartido (ej. token de autenticación) entre diferentes módulos nativos sin exponerlo a JavaScript, lo que compromete la seguridad.
+    *   **Problema de Estado Compartido:** En aplicaciones Modern Web UI (CSS/WAAPI) puras, es difícil gestionar un estado de seguridad compartido (ej. token de autenticación) entre diferentes módulos nativos sin exponerlo a JavaScript, lo que compromete la seguridad.
     *   **Core de Seguridad Nativo (`SecureCore`):** Se implementa un `SecureCore` nativo (Kotlin/Swift) que encapsula toda la lógica de seguridad crítica y el estado compartido (ej. estado de autenticación, tokens).
     *   **Inyección de Dependencias:** Se utiliza un framework de inyección de dependencias (ej. Koin para Kotlin) para inyectar una *única instancia* del `SecureCore` en todos los Expo Modules nativos (autenticación, almacenamiento, red). Esto asegura que todos los componentes de seguridad operen con el mismo estado y lógica, sin pasar información sensible a JavaScript.
     *   **Expo Modules:** Permiten escribir código nativo para funcionalidades de seguridad (ej. UI de autenticación nativa, lógica de almacenamiento seguro, llamadas de red con "certificate pinning").
@@ -2652,12 +2652,12 @@ El concepto central aborda la tensión entre la facilidad de desarrollo y escala
         *   Registrar actividades de UI nativas (ej. pantalla de inicio de sesión) en el `AndroidManifest.xml`.
     *   **Beneficio:** La capa JavaScript solo invoca métodos genéricos en los Expo Modules. Toda la lógica sensible, la UI de seguridad y la gestión del estado permanecen en el lado nativo, protegidos de la ingeniería inversa del bundle JavaScript.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-1.  **Aprovechar Expo Modules y Config Plugins para Seguridad Crítica:** Dado que Yendo utiliza Expo y React Native, esta arquitectura es directamente aplicable. Implementar la autenticación, el almacenamiento seguro de datos sensibles (ej. credenciales de `createClient`, información de `Venue`/`Experiencia`/`Grupo`) y las comunicaciones de red críticas (ej. con el backend) utilizando Expo Modules y Config Plugins. Esto permite mantener la agilidad de Expo para la mayor parte de la aplicación, mientras se garantiza la seguridad de "DNA pisa internet" en los puntos más vulnerables.
+1.  **Aprovechar Expo Modules y Config Plugins para Seguridad Crítica:** Dado que WebFactory utiliza Expo y Modern Web UI (CSS/WAAPI), esta arquitectura es directamente aplicable. Implementar la autenticación, el almacenamiento seguro de datos sensibles (ej. credenciales de `createClient`, información de `Venue`/`Experiencia`/`Grupo`) y las comunicaciones de red críticas (ej. con el backend) utilizando Expo Modules y Config Plugins. Esto permite mantener la agilidad de Expo para la mayor parte de la aplicación, mientras se garantiza la seguridad de "DNA pisa internet" en los puntos más vulnerables.
 2.  **Diseño de Experiencia de Autenticación Nativa:** Para la "Fricción Cero" y la confianza del usuario, la pantalla de autenticación inicial debe ser nativa, diseñada con los principios de **Material 3** y **Dark OLED** para una experiencia visual coherente y segura desde el primer contacto. Esto refuerza la percepción de una aplicación robusta y confiable.
-3.  **Gestión Segura de Datos de `Venue`/`Experiencia`/`Grupo`:** El `SecureCore` nativo puede ser el custodio de claves de cifrado o tokens de acceso específicos para los datos de `Venue`, `Experiencia` y `Grupo`. Esto asegura que la información sensible relacionada con estos invariantes de Yendo esté protegida y solo sea accesible bajo estrictas condiciones de autenticación nativa, manteniendo la privacidad y la integridad de las interacciones dentro de los grupos de "Dunbar 4-6".
-4.  **Evaluación del Modelo de Amenaza:** Yendo debe realizar una evaluación exhaustiva de su modelo de amenaza para determinar qué partes de la aplicación requieren este nivel de seguridad nativa y cuáles pueden depender de soluciones de seguridad de terceros más ligeras (ej. Expo Secure Store para datos menos críticos), optimizando el rendimiento y el esfuerzo de desarrollo.
+3.  **Gestión Segura de Datos de `Venue`/`Experiencia`/`Grupo`:** El `SecureCore` nativo puede ser el custodio de claves de cifrado o tokens de acceso específicos para los datos de `Venue`, `Experiencia` y `Grupo`. Esto asegura que la información sensible relacionada con estos invariantes de WebFactory esté protegida y solo sea accesible bajo estrictas condiciones de autenticación nativa, manteniendo la privacidad y la integridad de las interacciones dentro de los grupos de "Dunbar 4-6".
+4.  **Evaluación del Modelo de Amenaza:** WebFactory debe realizar una evaluación exhaustiva de su modelo de amenaza para determinar qué partes de la aplicación requieren este nivel de seguridad nativa y cuáles pueden depender de soluciones de seguridad de terceros más ligeras (ej. Expo Secure Store para datos menos críticos), optimizando el rendimiento y el esfuerzo de desarrollo.
 5.  **Preparación para Static Hermes:** Monitorear el desarrollo de Static Hermes, ya que promete mejorar la seguridad del lado JavaScript, lo que podría simplificar algunas implementaciones futuras o reducir la necesidad de mover *toda* la lógica a la capa nativa.
 
 ### 4. Citas Clave
@@ -2701,7 +2701,7 @@ El concepto central aborda la tensión entre la facilidad de desarrollo y escala
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -2718,13 +2718,13 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Animación Interactiva con Rive para Yendo Mobile
+## Informe de Investigación: Animación Interactiva con Rive para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
 El video demuestra las capacidades avanzadas de Rive para crear animaciones interactivas y complejas, orquestadas mediante máquinas de estado y líneas de tiempo. El concepto central es la **animación simultánea y controlada externamente**, donde múltiples secuencias de animación pueden ejecutarse a la vez sin interferencias, y elementos externos (como un "joystick" virtual) pueden manipular directamente el progreso de estas animaciones.
 
-**Tesis:** Rive ofrece una solución robusta y performante para integrar animaciones UI/UX sofisticadas e interactivas en Yendo Mobile. Su arquitectura permite una experiencia de usuario fluida y atractiva, siempre que se gestione cuidadosamente la prevención de conflictos entre animaciones y se aproveche su capacidad de control externo para una "Fricción Cero".
+**Tesis:** Rive ofrece una solución robusta y performante para integrar animaciones UI/UX sofisticadas e interactivas en la Web Software Factory. Su arquitectura permite una experiencia de usuario fluida y atractiva, siempre que se gestione cuidadosamente la prevención de conflictos entre animaciones y se aproveche su capacidad de control externo para una "Fricción Cero".
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
@@ -2735,30 +2735,30 @@ El video demuestra las capacidades avanzadas de Rive para crear animaciones inte
 *   **Mapeo de Ejes a Líneas de Tiempo:** Los ejes X e Y del "joystick" virtual pueden mapearse directamente para controlar el progreso de líneas de tiempo de animación específicas (ej. `character X` y `character Y`), permitiendo una manipulación dinámica de la animación sin necesidad de lógica compleja en el código de la aplicación.
 *   **Modularidad y Rendimiento:** Rive, al ser una solución basada en vectores y optimizada para runtime, sugiere un alto rendimiento y la capacidad de crear componentes de animación modulares que pueden ser controlados por la lógica de la aplicación.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-1.  **Integración con Expo 57 y React Native:**
-    *   **Acción:** Utilizar la librería `@rive-app/react-native` para integrar animaciones Rive en componentes de React Native. Esto permite aprovechar el rendimiento nativo de Rive para animaciones complejas sin sacrificar la experiencia de desarrollo de React Native.
-    *   **Vínculo con Yendo:** Alinea con el "DNA pisa internet" al adoptar tecnología de vanguardia para una UI/UX rica y performante, manteniendo la coherencia con la arquitectura de `un createClient` y `StyleSheet.create` para la integración de componentes.
+1.  **Integración con Expo 57 y Modern Web UI (CSS/WAAPI):**
+    *   **Acción:** Utilizar la librería `@rive-app/react-native` para integrar animaciones Rive en componentes de Modern Web UI (CSS/WAAPI). Esto permite aprovechar el rendimiento nativo de Rive para animaciones complejas sin sacrificar la experiencia de desarrollo de Modern Web UI (CSS/WAAPI).
+    *   **Vínculo con WebFactory:** Alinea con el "DNA pisa internet" al adoptar tecnología de vanguardia para una UI/UX rica y performante, manteniendo la coherencia con la arquitectura de `un createClient` y `StyleSheet.create` para la integración de componentes.
 
 2.  **Mejora de la "Fricción Cero" con Interactividad:**
     *   **Acción:** Implementar animaciones Rive para feedback instantáneo en interacciones clave:
         *   **Controles personalizados:** Reemplazar sliders o botones estáticos con controles animados que respondan al tacto (similar al "joystick" del video).
         *   **Estados de carga y transiciones:** Crear animaciones fluidas y atractivas para indicar progreso o cambios de vista, reduciendo la percepción de espera.
         *   **Gestos:** Animar respuestas a gestos de arrastrar y soltar, deslizar o pellizcar.
-    *   **Vínculo con Yendo:** Contribuye directamente al principio de "Fricción Cero" al hacer las interacciones más intuitivas, responsivas y deleitables.
+    *   **Vínculo con WebFactory:** Contribuye directamente al principio de "Fricción Cero" al hacer las interacciones más intuitivas, responsivas y deleitables.
 
 3.  **Diseño Visual con Dark OLED y Material 3:**
     *   **Acción:** Diseñar los activos de Rive desde el inicio pensando en la paleta de colores y principios de Material 3, y optimizarlos para pantallas OLED. Esto incluye el uso de colores profundos, contrastes adecuados y animaciones que complementen la estética oscura.
-    *   **Vínculo con Yendo:** Asegura que las animaciones se integren perfectamente con la identidad visual de Yendo, que prioriza "Dark OLED MD3".
+    *   **Vínculo con WebFactory:** Asegura que las animaciones se integren perfectamente con la identidad visual de WebFactory, que prioriza "Dark OLED MD3".
 
 4.  **Refuerzo del Lenguaje Venue/Experiencia/Grupo:**
     *   **Acción:** Crear animaciones Rive que representen visualmente los estados y transiciones entre "Venue", "Experiencia" y "Grupo". Por ejemplo, un icono dinámico que se transforma al cambiar de contexto, o animaciones sutiles que indiquen actividad dentro de un grupo.
-    *   **Vínculo con Yendo:** Fortalece la comprensión del usuario sobre los conceptos centrales de la aplicación y mejora la navegación contextual.
+    *   **Vínculo con WebFactory:** Fortalece la comprensión del usuario sobre los conceptos centrales de la aplicación y mejora la navegación contextual.
 
 5.  **Fomento de la Conexión (Dunbar 4-6):**
     *   **Acción:** Desarrollar animaciones sutiles y personalizadas para los miembros del grupo, como pequeños "pulsos" visuales cuando alguien está activo, reacciones animadas a mensajes, o avatares dinámicos que reflejen el estado de ánimo.
-    *   **Vínculo con Yendo:** Aunque no es una implementación directa del número de Dunbar, estas animaciones pueden enriquecer la sensación de presencia e intimidad dentro de grupos pequeños, haciendo la interacción más humana y atractiva.
+    *   **Vínculo con WebFactory:** Aunque no es una implementación directa del número de Dunbar, estas animaciones pueden enriquecer la sensación de presencia e intimidad dentro de grupos pequeños, haciendo la interacción más humana y atractiva.
 
 ### 4. Citas Clave
 
@@ -2795,7 +2795,7 @@ El video demuestra las capacidades avanzadas de Rive para crear animaciones inte
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -2812,52 +2812,52 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: React Native para Yendo Mobile
+## Informe de Investigación: Modern Web UI (CSS/WAAPI) para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
-El video presenta una introducción exhaustiva a React Native, posicionándolo como una herramienta fundamental para el desarrollo de aplicaciones móviles. El concepto central es la capacidad de **construir aplicaciones móviles rápidas, estéticas y verdaderamente nativas para iOS y Android utilizando únicamente JavaScript**. La tesis principal es que React Native, a menudo subestimado, es una solución robusta y eficiente para desarrollar "aplicaciones completas y serias", permitiendo a los desarrolladores web aprovechar sus habilidades existentes para crear experiencias móviles de alto rendimiento, reduciendo la complejidad y los costos asociados con el desarrollo multiplataforma nativo tradicional.
+El video presenta una introducción exhaustiva a Modern Web UI (CSS/WAAPI), posicionándolo como una herramienta fundamental para el desarrollo de aplicaciones móviles. El concepto central es la capacidad de **construir aplicaciones móviles rápidas, estéticas y verdaderamente nativas para iOS y Web Platform utilizando únicamente JavaScript**. La tesis principal es que Modern Web UI (CSS/WAAPI), a menudo subestimado, es una solución robusta y eficiente para desarrollar "aplicaciones completas y serias", permitiendo a los desarrolladores web aprovechar sus habilidades existentes para crear experiencias móviles de alto rendimiento, reduciendo la complejidad y los costos asociados con el desarrollo multiplataforma nativo tradicional.
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
-*   **Naturaleza Nativa y Compartición de Código:** React Native no genera "web apps que parecen móviles", sino que mapea componentes abstractos (ej. `View`, `Text`) a sus equivalentes nativos de UI (ej. `UI View` en iOS, `Android View`). Esto permite compartir la mayor parte del código JavaScript entre plataformas.
+*   **Naturaleza Nativa y Compartición de Código:** Modern Web UI (CSS/WAAPI) no genera "web apps que parecen móviles", sino que mapea componentes abstractos (ej. `View`, `Text`) a sus equivalentes nativos de UI (ej. `UI View` en iOS, `Web Platform View`). Esto permite compartir la mayor parte del código JavaScript entre plataformas.
 *   **Ecosistema de Desarrollo:**
     *   **Expo:** Herramienta clave para "ocultar mucha complejidad", facilitando un inicio rápido y una iteración veloz, ideal para proyectos que no requieren acceso profundo a APIs nativas. Permite la publicación sencilla para pruebas.
-    *   **Herramientas:** Node.js (v12+), Expo CLI, Expo Client (para pruebas en dispositivos físicos), VS Code con extensiones como `React Native Tools`, `snippets` y `Prettier` para formateo automático (`format on save`).
+    *   **Herramientas:** Node.js (v12+), Expo CLI, Expo Client (para pruebas en dispositivos físicos), VS Code con extensiones como `Modern Web UI (CSS/WAAPI) Tools`, `snippets` y `Prettier` para formateo automático (`format on save`).
 *   **Estructura del Proyecto y Estilos:**
     *   Organización recomendada: Carpeta `app` para el código fuente, `screens` para componentes de pantalla, `config` para configuraciones globales (ej. `colors.js`).
-    *   **`StyleSheet.create`:** Es la práctica recomendada para definir estilos. Este método valida las propiedades de estilo (evitando errores tipográficos) y permite futuras optimizaciones de rendimiento por parte del equipo de React Native. Permite combinar múltiples objetos de estilo.
+    *   **`StyleSheet.create`:** Es la práctica recomendada para definir estilos. Este método valida las propiedades de estilo (evitando errores tipográficos) y permite futuras optimizaciones de rendimiento por parte del equipo de Modern Web UI (CSS/WAAPI). Permite combinar múltiples objetos de estilo.
 *   **Componentes Fundamentales y APIs:**
     *   **UI:** `View` (contenedor), `Text` (para todo el texto), `Image` (local y de red, requiere `width`/`height` para imágenes de red).
-    *   **Interactividad:** Componentes `Touchable` (`TouchableOpacity`, `TouchableHighlight`, `TouchableWithoutFeedback`, `TouchableNativeFeedback` - solo Android) para hacer cualquier elemento interactivo. `Button` (componente básico con apariencia nativa).
+    *   **Interactividad:** Componentes `Touchable` (`TouchableOpacity`, `TouchableHighlight`, `TouchableWithoutFeedback`, `TouchableNativeFeedback` - solo Web Platform) para hacer cualquier elemento interactivo. `Button` (componente básico con apariencia nativa).
     *   **Feedback:** `Alert` (cajas de diálogo nativas, `Alert.alert` para botones personalizados, `Alert.prompt` para entrada de texto - solo iOS).
-    *   **Adaptabilidad:** `SafeAreaView` (maneja áreas seguras en iOS, como el notch). `Platform` API (`Platform.OS`, `Platform.Version`) para lógica y estilos específicos de plataforma. `StatusBar` API (`StatusBar.currentHeight` para la altura de la barra de estado en Android).
-*   **Layout con Flexbox:** React Native utiliza Flexbox para layouts complejos y adaptables. A diferencia de CSS, la `flexDirection` por defecto es `column`. Propiedades clave: `flex` (crecimiento), `justifyContent` (alineación en el eje principal), `alignItems` (alineación en el eje transversal), `flexWrap`, `alignContent` (alineación de contenido envuelto).
+    *   **Adaptabilidad:** `SafeAreaView` (maneja áreas seguras en iOS, como el notch). `Platform` API (`Platform.OS`, `Platform.Version`) para lógica y estilos específicos de plataforma. `StatusBar` API (`StatusBar.currentHeight` para la altura de la barra de estado en Web Platform).
+*   **Layout con Flexbox:** Modern Web UI (CSS/WAAPI) utiliza Flexbox para layouts complejos y adaptables. A diferencia de CSS, la `flexDirection` por defecto es `column`. Propiedades clave: `flex` (crecimiento), `justifyContent` (alineación en el eje principal), `alignItems` (alineación en el eje transversal), `flexWrap`, `alignContent` (alineación de contenido envuelto).
 *   **Posicionamiento:** Por defecto, todos los componentes tienen `position: 'relative'`. `position: 'absolute'` permite posicionar un componente respecto a su padre, afectando el layout circundante.
 *   **Depuración:** `console.log`, `Fast Refresh` (recarga instantánea), menú de desarrollador (recarga manual, depuración remota), Chrome DevTools, depurador de VS Code.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-1.  **Adopción de Expo 57 y React Native:** La facilidad de desarrollo y la capacidad de construir "aplicaciones completas" con React Native, especialmente a través de Expo, se alinea perfectamente con la filosofía de **Fricción Cero** de Yendo. Esto permitirá una rápida iteración y despliegue de nuevas funcionalidades, aprovechando el talento de desarrolladores JavaScript.
-2.  **Implementación de `Dark OLED` y `Material 3`:** El video muestra la configuración de temas (claro/oscuro) en Android Studio y la flexibilidad de `StyleSheet.create`. Yendo debe establecer una paleta de colores centralizada (`config/colors.js`) y un sistema de estilos basado en `StyleSheet.create` que incorpore los principios de `Dark OLED` y `Material 3`. Esto garantizará una experiencia de usuario consistente, moderna y energéticamente eficiente en dispositivos con pantallas OLED.
+1.  **Adopción de Expo 57 y Modern Web UI (CSS/WAAPI):** La facilidad de desarrollo y la capacidad de construir "aplicaciones completas" con Modern Web UI (CSS/WAAPI), especialmente a través de Expo, se alinea perfectamente con la filosofía de **Fricción Cero** de WebFactory. Esto permitirá una rápida iteración y despliegue de nuevas funcionalidades, aprovechando el talento de desarrolladores JavaScript.
+2.  **Implementación de `Dark OLED` y `Material 3`:** El video muestra la configuración de temas (claro/oscuro) en Web Platform Studio y la flexibilidad de `StyleSheet.create`. WebFactory debe establecer una paleta de colores centralizada (`config/colors.js`) y un sistema de estilos basado en `StyleSheet.create` que incorpore los principios de `Dark OLED` y `Material 3`. Esto garantizará una experiencia de usuario consistente, moderna y energéticamente eficiente en dispositivos con pantallas OLED.
 3.  **Refuerzo de la Fricción Cero en el Desarrollo:**
     *   **Herramientas y Flujo de Trabajo:** Estandarizar el uso de `Expo CLI`, `VS Code` con las extensiones mencionadas y `Prettier` para un entorno de desarrollo optimizado y de baja fricción.
     *   **Modularidad y Reutilización:** Fomentar la creación de componentes reutilizables y la centralización de estilos y configuraciones para acelerar el desarrollo y mantener la coherencia.
 4.  **Integración del Lenguaje `Venue/Experiencia/Grupo`:**
-    *   **Venue:** La aplicación de marketplace del video, con sus listados y transacciones, puede ser un modelo para la creación de "venues" digitales o físicos dentro de Yendo, donde los usuarios interactúan.
-    *   **Experiencia:** Las funcionalidades como la mensajería, notificaciones push y visualización de mapas, que enriquecen la "experiencia" del usuario en el marketplace, deben ser prioritarias en Yendo para crear interacciones significativas.
-    *   **Grupo:** Las interacciones entre vendedor y comprador en el video, aunque transaccionales, sientan las bases para la formación de "grupos" en Yendo.
-5.  **Diseño para `Dunbar 4-6`:** Aunque no se menciona directamente, las funcionalidades de comunicación (mensajería, notificaciones) en el ejemplo del video son ideales para grupos pequeños. Yendo debe diseñar sus características de "Grupo" para fomentar interacciones íntimas y significativas, posiblemente limitando el tamaño de los grupos o priorizando la comunicación directa, en línea con el número de Dunbar.
-6.  **Adherencia a `Un createClient`:** Aunque el video no profundiza en la gestión de APIs, la filosofía de modularidad y centralización de configuraciones (`config/colors.js`) implica que Yendo debe implementar un patrón de "un solo `createClient`" para todas las interacciones con la API. Esto asegura consistencia, facilita la gestión de autenticación y reduce la complejidad en la capa de red.
-7.  **Filosofía `DNA pisa internet`:** React Native, al permitir construir aplicaciones nativas con JavaScript, encarna la idea de que el "ADN de la web pisa internet". Yendo debe abrazar esta convergencia, aprovechando la base de conocimientos web para construir experiencias móviles de alta calidad, y utilizar herramientas como Expo para una distribución y prueba ágil, reflejando la velocidad y accesibilidad de internet.
+    *   **Venue:** La aplicación de marketplace del video, con sus listados y transacciones, puede ser un modelo para la creación de "venues" digitales o físicos dentro de WebFactory, donde los usuarios interactúan.
+    *   **Experiencia:** Las funcionalidades como la mensajería, notificaciones push y visualización de mapas, que enriquecen la "experiencia" del usuario en el marketplace, deben ser prioritarias en WebFactory para crear interacciones significativas.
+    *   **Grupo:** Las interacciones entre vendedor y comprador en el video, aunque transaccionales, sientan las bases para la formación de "grupos" en WebFactory.
+5.  **Diseño para `Dunbar 4-6`:** Aunque no se menciona directamente, las funcionalidades de comunicación (mensajería, notificaciones) en el ejemplo del video son ideales para grupos pequeños. WebFactory debe diseñar sus características de "Grupo" para fomentar interacciones íntimas y significativas, posiblemente limitando el tamaño de los grupos o priorizando la comunicación directa, en línea con el número de Dunbar.
+6.  **Adherencia a `Un createClient`:** Aunque el video no profundiza en la gestión de APIs, la filosofía de modularidad y centralización de configuraciones (`config/colors.js`) implica que WebFactory debe implementar un patrón de "un solo `createClient`" para todas las interacciones con la API. Esto asegura consistencia, facilita la gestión de autenticación y reduce la complejidad en la capa de red.
+7.  **Filosofía `DNA pisa internet`:** Modern Web UI (CSS/WAAPI), al permitir construir aplicaciones nativas con JavaScript, encarna la idea de que el "ADN de la web pisa internet". WebFactory debe abrazar esta convergencia, aprovechando la base de conocimientos web para construir experiencias móviles de alta calidad, y utilizar herramientas como Expo para una distribución y prueba ágil, reflejando la velocidad y accesibilidad de internet.
 
 ### 4. Citas Clave
 
-*   "build fast and beautiful mobile apps using react native"
+*   "build fast and beautiful mobile apps using Modern Web UI (CSS/WAAPI)"
 *   "you're gonna work on a real full-fledged app called done with it"
 *   "these apps are truly native so they are not web apps that look like a mobile app"
-*   "you can write pretty much all of your application code in JavaScript and share it across iOS and Android"
-*   "Expo is a set of tools and a framework that sits on top of react native and hides a lot of complexity from us. It makes it incredibly fast and easy to build react native apps."
+*   "you can write pretty much all of your application code in JavaScript and share it across iOS and Web Platform"
+*   "Expo is a set of tools and a framework that sits on top of Modern Web UI (CSS/WAAPI) and hides a lot of complexity from us. It makes it incredibly fast and easy to build Modern Web UI (CSS/WAAPI) apps."
 *   "it's the recommended practice to use the stylesheet API to define stats"
 *   "with flex we can easily build complex layouts that work consistently across different screen sizes"
 
@@ -2888,7 +2888,7 @@ El video presenta una introducción exhaustiva a React Native, posicionándolo c
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -2905,7 +2905,7 @@ ultima_revision: 2026-08-27
 ## 💡 Resumen Ejecutivo y Hallazgos
 
 # Informe de investigación – Heurística de Nielsen 2  
-**Yendo Mobile – 2026**
+**la Web Software Factory – 2026**
 
 ---
 
@@ -2923,18 +2923,18 @@ La segunda heurística de usabilidad de Nielsen establece que la interfaz debe *
 | **Modelos mentales** | Los usuarios trasladan conceptos físicos (páginas, marcadores) a lo digital. | Adoptar **componentes skeuomórficos ligeros** (p.ej., tarjetas que imitan fichas de evento) que refuercen la familiaridad sin sobrecargar. |
 | **Scent de información** | La claridad de la etiqueta mejora la velocidad de búsqueda y reduce errores. | Arquitectura de navegación basada en **rutas semánticas** (`/evento/:id`, `/grupo/:id`) y **breadcrumbs** que reflejen la jerarquía real. |
 | **Dark OLED** | Pantallas OLED permiten negros profundos sin consumo extra; el contraste mejora la legibilidad de textos claros. | Definir **tema oscuro** como predeterminado en Material 3, con colores de acento que respeten la accesibilidad (AA/AAA). |
-| **React Native / Expo 57** | Expo 57 brinda soporte nativo a Dark Mode, Material 3 y a la generación de bundles optimizados. | Migrar la base a **Expo 57** para aprovechar **auto‑linking** de módulos, **EAS Build** y **updates OTA**, reduciendo tiempo de despliegue. |
+| **Modern Web UI (CSS/WAAPI) / Expo 57** | Expo 57 brinda soporte nativo a Dark Mode, Material 3 y a la generación de bundles optimizados. | Migrar la base a **Expo 57** para aprovechar **auto‑linking** de módulos, **EAS Build** y **updates OTA**, reduciendo tiempo de despliegue. |
 | **Fricción cero** | Cada paso extra (etiquetas confusas, navegación innecesaria) genera fricción. | Implementar **navegación declarativa** con React Navigation v7 y **deep linking** que abra directamente la vista de un evento o grupo. |
 
 ---
 
-## 3. Ideas accionables para Yendo  
+## 3. Ideas accionables para WebFactory  
 
 1. **Catálogo de vocabulario “Venue/Evento/Grupo”**  
    - Crear un archivo JSON central (`labels.json`) con claves como `venue.title`, `event.title`, `group.title`.  
    - Usar este catálogo en todos los componentes mediante `useTranslation()` (i18next) para garantizar consistencia y facilitar futuras localizaciones.  
 
-2. **Adopción de Expo 57 + React Native 0.74**  
+2. **Adopción de Expo 57 + Modern Web UI (CSS/WAAPI) 0.74**  
    - Migrar el monorepo a **Expo 57** para obtener:  
      - Soporte nativo a **Material 3** y **Dark Theme**.  
      - **EAS Update** para lanzar mejoras sin pasar por tiendas.  
@@ -2949,7 +2949,7 @@ La segunda heurística de usabilidad de Nielsen establece que la interfaz debe *
    - Botón “marcar como favorito” con icono de marcador de libro que cambie a “estrella” al pulsar, reforzando la metáfora de “guardar”.  
 
 5. **Navegación de fricción cero**  
-   - **Deep linking**: `yendo://evento/123` abre directamente la pantalla del evento.  
+   - **Deep linking**: `webfactory://evento/123` abre directamente la pantalla del evento.  
    - **Breadcrumbs** en la vista de grupo: `Home > Grupos > Grupo X`.  
    - **Acciones contextuales**: al pulsar un contacto en el directorio, mostrar opciones de chat, llamada o agenda sin cambiar de pantalla.  
 
@@ -2975,7 +2975,7 @@ La segunda heurística de usabilidad de Nielsen establece que la interfaz debe *
 
 ---  
 
-*Este informe sintetiza la heurística de Nielsen 2 y traduce sus principios a decisiones técnicas y de producto concretas para Yendo Mobile, alineadas con nuestras metas de experiencia de usuario, rendimiento en OLED y desarrollo ágil con Expo 57.*
+*Este informe sintetiza la heurística de Nielsen 2 y traduce sus principios a decisiones técnicas y de producto concretas para la Web Software Factory, alineadas con nuestras metas de experiencia de usuario, rendimiento en OLED y desarrollo ágil con Expo 57.*
 
 ---
 
@@ -2997,7 +2997,7 @@ La segunda heurística de usabilidad de Nielsen establece que la interfaz debe *
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -3014,7 +3014,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Alineación del Sistema con el Mundo Real para Yendo Mobile
+## Informe de Investigación: Alineación del Sistema con el Mundo Real para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -3028,27 +3028,27 @@ El concepto central del análisis se basa en la segunda heurística de usabilida
 *   **Consistencia Lingüística:** Mantener un lenguaje unificado y centrado en el usuario a través de toda la aplicación (mensajes de error, etiquetas, navegación) es un desafío técnico que requiere una gestión cuidadosa de las cadenas de texto y, potencialmente, sistemas de localización.
 *   **Diseño Centrado en el Usuario:** La necesidad de observar a usuarios reales y probar prototipos es un pilar fundamental. Esto implica ciclos de desarrollo iterativos y una arquitectura flexible que permita la rápida implementación de cambios basados en el feedback.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-Para Yendo Mobile, la aplicación de esta heurística se traduce en las siguientes acciones estratégicas:
+Para la Web Software Factory, la aplicación de esta heurística se traduce en las siguientes acciones estratégicas:
 
-*   **Expo 57 y React Native:**
-    *   **Aprovechar lo Nativo:** Utilizar las capacidades de React Native para alinear la interfaz con las convenciones de cada plataforma (iOS/Android), garantizando que los gestos y patrones de navegación se sientan "nativos" y familiares.
+*   **Expo 57 y Modern Web UI (CSS/WAAPI):**
+    *   **Aprovechar lo Nativo:** Utilizar las capacidades de Modern Web UI (CSS/WAAPI) para alinear la interfaz con las convenciones de cada plataforma (iOS/Web Platform), garantizando que los gestos y patrones de navegación se sientan "nativos" y familiares.
     *   **Nomenclatura Interna:** Asegurar que los nombres de componentes y propiedades, cuando sean relevantes para la configuración o personalización por parte del usuario o de administradores de contenido, utilicen un lenguaje claro y no técnico.
 *   **Dark OLED:**
     *   **Convención y Beneficio:** Implementar el modo oscuro no solo como una opción estética, sino como una convención esperada por los usuarios. Comunicar sus beneficios (ej. ahorro de batería en OLED, confort visual) en un lenguaje sencillo.
-    *   **Coherencia Visual:** El diseño del modo oscuro debe mantener la "sensación" de Yendo, no ser una mera inversión de colores, sino una adaptación pensada que respete el modelo mental de un entorno de baja luz.
+    *   **Coherencia Visual:** El diseño del modo oscuro debe mantener la "sensación" de WebFactory, no ser una mera inversión de colores, sino una adaptación pensada que respete el modelo mental de un entorno de baja luz.
 *   **Material 3:**
-    *   **Adopción de Convenciones:** Material 3, al ser un sistema de diseño basado en metáforas del mundo real (papel, tinta, sombras), proporciona una base sólida para seguir convenciones de diseño establecidas. Yendo debe adoptar sus principios para asegurar familiaridad y predictibilidad.
-    *   **Personalización Consciente:** Al adaptar Material 3 a la identidad de marca de Yendo, es crucial no sacrificar la usabilidad inherente a sus patrones de interacción y nomenclatura de componentes.
+    *   **Adopción de Convenciones:** Material 3, al ser un sistema de diseño basado en metáforas del mundo real (papel, tinta, sombras), proporciona una base sólida para seguir convenciones de diseño establecidas. WebFactory debe adoptar sus principios para asegurar familiaridad y predictibilidad.
+    *   **Personalización Consciente:** Al adaptar Material 3 a la identidad de marca de WebFactory, es crucial no sacrificar la usabilidad inherente a sus patrones de interacción y nomenclatura de componentes.
 *   **Fricción Cero:**
     *   **Reducción de Carga Cognitiva:** La alineación con el lenguaje del usuario y las convenciones del mundo real es fundamental para lograr "fricción cero". Cada elemento de la interfaz debe ser inmediatamente comprensible, minimizando el esfuerzo mental del usuario.
     *   **Auditoría de Lenguaje:** Realizar una auditoría exhaustiva de la terminología utilizada en la aplicación para identificar y reemplazar cualquier jerga o término ambiguo con un lenguaje directo y familiar.
 *   **Lenguaje "Venue/Experiencia/Grupo":**
-    *   **Validación con Usuarios:** Es imperativo validar si los términos "Venue", "Experiencia" y "Grupo" resuenan con el público objetivo de Yendo. ¿Son los más intuitivos? ¿Generan un "information scent" fuerte? Considerar alternativas más directas si la investigación lo sugiere (ej. "Lugar", "Evento", "Comunidad").
+    *   **Validación con Usuarios:** Es imperativo validar si los términos "Venue", "Experiencia" y "Grupo" resuenan con el público objetivo de WebFactory. ¿Son los más intuitivos? ¿Generan un "information scent" fuerte? Considerar alternativas más directas si la investigación lo sugiere (ej. "Lugar", "Evento", "Comunidad").
     *   **Consistencia Rigurosa:** Una vez definidos, estos términos deben aplicarse de manera absolutamente consistente en toda la aplicación, desde la navegación hasta los mensajes de error.
 *   **Dunbar 4-6:**
-    *   **Diseño para Grupos Pequeños:** Si Yendo facilita interacciones en grupos pequeños (4-6 personas, según Dunbar), el diseño de la interfaz debe reflejar esta intimidad. Esto podría manifestarse en interfaces que prioricen la visibilidad de los miembros, la comunicación directa y la gestión sencilla de estos grupos, alineándose con cómo los usuarios gestionan sus relaciones más cercanas.
+    *   **Diseño para Grupos Pequeños:** Si WebFactory facilita interacciones en grupos pequeños (4-6 personas, según Dunbar), el diseño de la interfaz debe reflejar esta intimidad. Esto podría manifestarse en interfaces que prioricen la visibilidad de los miembros, la comunicación directa y la gestión sencilla de estos grupos, alineándose con cómo los usuarios gestionan sus relaciones más cercanas.
 
 ### 4. Citas Clave
 
@@ -3086,7 +3086,7 @@ Para Yendo Mobile, la aplicación de esta heurística se traduce en las siguient
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -3122,21 +3122,21 @@ Los agentes de codificación de IA a menudo fallan debido a la falta de contexto
     *   **Ejecución y Verificación Automatizada:** Los agentes pueden ejecutar el código generado, probarlo en un navegador y actualizar el estado de las tareas (en progreso, completado).
     *   **Integración Profunda:** Cloud Taskmaster se integra con el entorno de desarrollo (Cursor/Windswept) y utiliza claves API (Anthropic, Perplexity) para acceder a modelos de lenguaje y capacidades de investigación.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-La aplicación de estos principios a Yendo Mobile puede revolucionar el desarrollo:
+La aplicación de estos principios a la Web Software Factory puede revolucionar el desarrollo:
 
-*   **Expo 57 y React Native:**
-    *   **Desarrollo de Componentes Modulares:** Utilizar un sistema de gestión de tareas para desglosar la creación de componentes complejos de UI/UX en React Native/Expo (ej. un componente de "Venue Card" o "Group Chat") en subtareas manejables (diseño, lógica de estado, integración de API, pruebas).
-    *   **Gestión de Estado y APIs:** La IA podría planificar la integración de Redux, Zustand o Context API, y la conexión con los endpoints de Yendo, asegurando que las dependencias se manejen correctamente.
+*   **Expo 57 y Modern Web UI (CSS/WAAPI):**
+    *   **Desarrollo de Componentes Modulares:** Utilizar un sistema de gestión de tareas para desglosar la creación de componentes complejos de UI/UX en Modern Web UI (CSS/WAAPI)/Expo (ej. un componente de "Venue Card" o "Group Chat") en subtareas manejables (diseño, lógica de estado, integración de API, pruebas).
+    *   **Gestión de Estado y APIs:** La IA podría planificar la integración de Redux, Zustand o Context API, y la conexión con los endpoints de WebFactory, asegurando que las dependencias se manejen correctamente.
 *   **Dark OLED y Material 3:**
     *   **Implementación Temática Sistemática:** La IA podría desglosar la implementación de un tema Dark OLED o la integración de Material 3 en pasos como: definir tokens de diseño, adaptar componentes existentes, crear nuevos componentes con las directrices, implementar el selector de tema y realizar pruebas de accesibilidad y consistencia visual.
 *   **Fricción Cero:**
-    *   **Automatización del Flujo de Desarrollo:** Adoptar esta metodología de gestión de tareas con IA para reducir la "fricción" en el desarrollo de Yendo. Esto significa menos errores, menos retrabajo y un ciclo de desarrollo más fluido desde el PRD hasta la implementación. La IA se convierte en un "co-piloto" que anticipa y resuelve problemas de dependencia.
+    *   **Automatización del Flujo de Desarrollo:** Adoptar esta metodología de gestión de tareas con IA para reducir la "fricción" en el desarrollo de WebFactory. Esto significa menos errores, menos retrabajo y un ciclo de desarrollo más fluido desde el PRD hasta la implementación. La IA se convierte en un "co-piloto" que anticipa y resuelve problemas de dependencia.
 *   **Lenguaje Venue/Experiencia/Grupo:**
-    *   **Entrenamiento de Dominio Específico:** Entrenar o guiar a los agentes de IA para que comprendan y utilicen el lenguaje y la terminología específica de Yendo (ej. "Venue", "Experiencia", "Grupo"). Al generar PRDs o desglosar tareas, la IA podría incorporar automáticamente los requisitos y características asociados a estos conceptos. Por ejemplo, al pedirle que construya una "Experiencia", la IA podría sugerir automáticamente características como "registro de participantes", "chat de grupo" y "notificaciones de inicio".
+    *   **Entrenamiento de Dominio Específico:** Entrenar o guiar a los agentes de IA para que comprendan y utilicen el lenguaje y la terminología específica de WebFactory (ej. "Venue", "Experiencia", "Grupo"). Al generar PRDs o desglosar tareas, la IA podría incorporar automáticamente los requisitos y características asociados a estos conceptos. Por ejemplo, al pedirle que construya una "Experiencia", la IA podría sugerir automáticamente características como "registro de participantes", "chat de grupo" y "notificaciones de inicio".
 *   **Dunbar 4-6:**
-    *   **Diseño de Características Sociales:** Al desarrollar funcionalidades relacionadas con grupos o interacciones sociales, la IA podría ser instruida para considerar el principio de Dunbar (grupos óptimos de 4-6 personas). Esto podría influir en el diseño de interfaces, la gestión de permisos o la lógica de las notificaciones, asegurando que las características se alineen con la filosofía de Yendo sobre la dinámica de grupos pequeños.
+    *   **Diseño de Características Sociales:** Al desarrollar funcionalidades relacionadas con grupos o interacciones sociales, la IA podría ser instruida para considerar el principio de Dunbar (grupos óptimos de 4-6 personas). Esto podría influir en el diseño de interfaces, la gestión de permisos o la lógica de las notificaciones, asegurando que las características se alineen con la filosofía de WebFactory sobre la dinámica de grupos pequeños.
 
 ### 4. Citas Clave
 
@@ -3174,7 +3174,7 @@ La aplicación de estos principios a Yendo Mobile puede revolucionar el desarrol
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -3210,15 +3210,15 @@ La tesis es que, mediante prompts dirigidos a Claude Code, se pueden **extraer
 | **Limitaciones actuales** | - Algunas variables no se importan correctamente. <br> - Captura de imágenes y algunos estilos (p.ej. strokes) pueden fallar. <br> - Necesita intervención manual para validar y ajustar. |
 | **Arquitectura** | 1. **Cliente** (CLI / IDE) → 2. **MCP Server** (Node/TS) → 3. **Claude Code** (LLM) → 4. **Figma API** (REST). El flujo es asíncrono y se apoya en websockets para notificaciones de cambios. |
 
-## 3. Ideas accionables para Yendo  
+## 3. Ideas accionables para WebFactory  
 
 ### 3.1. Adoptar **Expo 57** con integración MCP  
 
 - **Expo 57** introduce mejoras en la compilación OTA y en la gestión de assets.  
-- Embebiendo el **MCP Server** dentro del workflow de Expo (script `expo prebuild`), Yendo podrá generar automáticamente los archivos de UI en Figma al crear o actualizar pantallas React Native.  
-- **Acción:** crear un plugin `expo-mcp` que, al ejecutar `expo run:android` o `expo run:ios`, invoque el servidor y sincronice los tokens de `tailwindcss`/`styled‑components` con Figma.  
+- Embebiendo el **MCP Server** dentro del workflow de Expo (script `expo prebuild`), WebFactory podrá generar automáticamente los archivos de UI en Figma al crear o actualizar pantallas Modern Web UI (CSS/WAAPI).  
+- **Acción:** crear un plugin `expo-mcp` que, al ejecutar `expo run:Web Platform` o `expo run:ios`, invoque el servidor y sincronice los tokens de `tailwindcss`/`styled‑components` con Figma.  
 
-### 3.2. **React Native** + **Material 3** + **Dark OLED**  
+### 3.2. **Modern Web UI (CSS/WAAPI)** + **Material 3** + **Dark OLED**  
 
 - Material 3 (Material You) permite definir **color schemes** dinámicos basados en la paleta del dispositivo.  
 - Con MCP, los **color tokens** de Material 3 (primary, surface, onSurface, etc.) pueden exportarse a Figma como variables y, a su vez, los ajustes de tema en Figma (p.ej. modo oscuro OLED) pueden retro‑alimentar el código.  
@@ -3226,16 +3226,16 @@ La tesis es que, mediante prompts dirigidos a Claude Code, se pueden **extraer
 
 ### 3.3. **Fricción Cero** en el ciclo de diseño‑desarrollo  
 
-- Automatizar la generación de **screenshots comparativos** (antes/después) dentro de la UI de Yendo para validar que los cambios en Figma se reflejan 1:1 en la app.  
+- Automatizar la generación de **screenshots comparativos** (antes/después) dentro de la UI de WebFactory para validar que los cambios en Figma se reflejan 1:1 en la app.  
 - Implementar un **pipeline CI** que, tras cada push, ejecute el MCP Server, genere los artefactos de diseño y los compare con la versión anterior usando herramientas de visión computacional (p.ej. `pixelmatch`).  
 - **Acción:** añadir un job `design-sync` en GitHub Actions que falle si la diferencia supera un umbral, obligando a revisar la discrepancia antes del merge.  
 
 ### 3.4. **Lenguaje de dominio: Venue / Evento / Grupo**  
 
-- Yendo gestiona espacios (Venue), actividades (Evento) y comunidades (Grupo).  
+- WebFactory gestiona espacios (Venue), actividades (Evento) y comunidades (Grupo).  
 - Crear **design tokens específicos** para cada dominio (p.ej. `venue-bg`, `evento-accent`, `grupo-primary`) y exponerlos como variables en Figma.  
 - Con MCP, los diseñadores pueden experimentar con la identidad visual de cada dominio directamente en Figma; al guardar, los tokens se actualizan en el código y la app muestra la nueva apariencia sin tocar la lógica.  
-- **Acción:** estructurar el archivo `designTokens.json` con claves jerárquicas (`venue`, `evento`, `grupo`) y mapearlas a componentes React Native mediante `styled-components`.  
+- **Acción:** estructurar el archivo `designTokens.json` con claves jerárquicas (`venue`, `evento`, `grupo`) y mapearlas a componentes Modern Web UI (CSS/WAAPI) mediante `styled-components`.  
 
 ### 3.5. **Material 3 + Dark OLED** para pantallas de alta densidad  
 
@@ -3256,7 +3256,7 @@ La tesis es que, mediante prompts dirigidos a Claude Code, se pueden **extraer
 
 ---  
 
-**Resumen:** La integración Figma ↔ Código mediante MCP Server abre la puerta a un flujo de trabajo sin fricción para Yendo. Al combinarlo con Expo 57, React Native, Material 3, temas Dark OLED y un vocabulario de dominio (Venue/Evento/Grupo), podemos automatizar la generación y actualización de tokens, garantizar consistencia visual y acelerar la entrega de nuevas funcionalidades. La clave está en estructurar prompts precisos, monitorizar la determinación del LLM y cerrar el ciclo con pruebas automatizadas de diseño.
+**Resumen:** La integración Figma ↔ Código mediante MCP Server abre la puerta a un flujo de trabajo sin fricción para WebFactory. Al combinarlo con Expo 57, Modern Web UI (CSS/WAAPI), Material 3, temas Dark OLED y un vocabulario de dominio (Venue/Evento/Grupo), podemos automatizar la generación y actualización de tokens, garantizar consistencia visual y acelerar la entrega de nuevas funcionalidades. La clave está en estructurar prompts precisos, monitorizar la determinación del LLM y cerrar el ciclo con pruebas automatizadas de diseño.
 
 ---
 
@@ -3278,7 +3278,7 @@ La tesis es que, mediante prompts dirigidos a Claude Code, se pueden **extraer
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -3294,7 +3294,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-# Informe de Investigación – AI Agents para Yendo Mobile  
+# Informe de Investigación – AI Agents para la Web Software Factory  
 
 ## 1. Concepto central y tesis  
 
@@ -3302,30 +3302,30 @@ El video explica que un **AI agent** combina tres componentes esenciales: un mod
 
 ## 2. Hallazgos técnicos y arquitectónicos clave  
 
-| Área | Detalle | Relevancia para Yendo |
+| Área | Detalle | Relevancia para WebFactory |
 |------|---------|-----------------------|
 | **LLM** | Se usa GPT‑4o mini como motor de razonamiento; el modelo identifica la tarea, selecciona la herramienta adecuada y genera la respuesta. | Permite que la app entienda peticiones como “planea una salida” sin requerir formularios estructurados. |
 | **Memoria** | - *Corto plazo*: contexto de la conversación actual. <br> - *Largo plazo*: datos persistentes del usuario (preferencias, historial). | Facilita “fricción cero” al recordar destinos favoritos, horarios habituales y grupos recurrentes. |
-| **Herramientas / Plugins** | En el ejemplo, una función `random_destination` expone una lista de ciudades y devuelve una aleatoria. El agente decide cuándo llamarla. | En Yendo, los plugins pueden ser: búsqueda de locales, reserva de tickets, envío de notificaciones, cálculo de rutas. |
-| **Framework** | Se menciona **Semantic Kernel** de Microsoft/GitHub como capa que orquesta LLM, memoria y plugins. | Ofrece una arquitectura modular que puede integrarse en React Native mediante puentes nativos. |
+| **Herramientas / Plugins** | En el ejemplo, una función `random_destination` expone una lista de ciudades y devuelve una aleatoria. El agente decide cuándo llamarla. | En WebFactory, los plugins pueden ser: búsqueda de locales, reserva de tickets, envío de notificaciones, cálculo de rutas. |
+| **Framework** | Se menciona **Semantic Kernel** de Microsoft/GitHub como capa que orquesta LLM, memoria y plugins. | Ofrece una arquitectura modular que puede integrarse en Modern Web UI (CSS/WAAPI) mediante puentes nativos. |
 | **Gestión de contexto** | El agente evita repetir destinos usando la memoria de la conversación. | Evita sugerencias redundantes y mejora la experiencia personalizada. |
 | **Interfaz de usuario** | La interacción se muestra como texto simple, pero el modelo puede generar respuestas ricas (cards, botones). | Se alinea con Material 3 y diseños adaptativos para pantallas OLED oscuras. |
 
-## 3. Ideas accionables para Yendo  
+## 3. Ideas accionables para WebFactory  
 
 ### 3.1. Integrar un **AI Travel Agent** basado en Semantic Kernel  
 
 - **Objetivo:** que los usuarios planifiquen salidas (evento, grupo, venue) mediante lenguaje natural.  
-- **Implementación:** crear un plugin `list_venues` que devuelva locales filtrados por categoría, ubicación y disponibilidad. Otro plugin `reserve_spot` gestionará la reserva mediante la API de Yendo.  
+- **Implementación:** crear un plugin `list_venues` que devuelva locales filtrados por categoría, ubicación y disponibilidad. Otro plugin `reserve_spot` gestionará la reserva mediante la API de WebFactory.  
 - **Memoria:** almacenar en la base de datos de usuario los últimos 5 lugares visitados y sus valoraciones (memoria a largo plazo).  
 
 ### 3.2. **Expo 57** como caso de uso piloto  
 
 - **Escenario:** durante la Expo 57, los asistentes pueden preguntar “¿Qué charla me recomiendas hoy?” o “Organiza una cena con el grupo X”.  
 - **Acciones:** el agente consulta el agenda de la Expo, verifica disponibilidad de salas y envía invitaciones a través de notificaciones push.  
-- **Beneficio:** demuestra la capacidad de respuesta en tiempo real y refuerza la marca Yendo como plataforma de eventos inteligente.  
+- **Beneficio:** demuestra la capacidad de respuesta en tiempo real y refuerza la marca WebFactory como plataforma de eventos inteligente.  
 
-### 3.3. **React Native + Dark OLED**  
+### 3.3. **Modern Web UI (CSS/WAAPI) + Dark OLED**  
 
 - **Diseño:** aplicar el tema **Material 3** con modo oscuro optimizado para pantallas OLED (colores verdaderamente negros, ahorro de energía).  
 - **Implementación:** usar la librería `react-native-paper` con soporte a Material 3 y crear componentes de “chat‑bot” que se adapten al modo oscuro sin perder legibilidad.  
@@ -3347,7 +3347,7 @@ El video explica que un **AI agent** combina tres componentes esenciales: un mod
 |--------|-------|--------------------|
 | 1 | Configurar Semantic Kernel en el backend (Node.js) | API lista para recibir peticiones de agente. |
 | 2 | Desarrollar plugins `list_venues`, `reserve_spot`, `get_agenda_expo57` | Funcionalidad básica de planificación. |
-| 3 | Implementar UI de chat en React Native con Material 3 Dark | Experiencia visual coherente y ahorro de batería. |
+| 3 | Implementar UI de chat en Modern Web UI (CSS/WAAPI) con Material 3 Dark | Experiencia visual coherente y ahorro de batería. |
 | 4 | Añadir capa de memoria (corto y largo plazo) | Personalización y reducción de repeticiones. |
 | 5 | Piloto en Expo 57 y recopilación de métricas de uso | Validación de hipótesis y feedback de usuarios. |
 
@@ -3360,7 +3360,7 @@ El video explica que un **AI agent** combina tres componentes esenciales: un mod
 
 ---  
 
-**Conclusión:** La arquitectura mostrada en el video (LLM + memoria + herramientas) es directamente aplicable a Yendo Mobile. Al combinarla con React Native, Material 3 Dark y una estrategia de “fricción cero”, podemos crear un asistente conversacional que simplifique la planificación de eventos, mejore la retención de usuarios y posicione a Yendo como pionero en experiencias AI‑driven para la comunidad de venues, eventos y grupos.
+**Conclusión:** La arquitectura mostrada en el video (LLM + memoria + herramientas) es directamente aplicable a la Web Software Factory. Al combinarla con Modern Web UI (CSS/WAAPI), Material 3 Dark y una estrategia de “fricción cero”, podemos crear un asistente conversacional que simplifique la planificación de eventos, mejore la retención de usuarios y posicione a WebFactory como pionero en experiencias AI‑driven para la comunidad de venues, eventos y grupos.
 
 ---
 
@@ -3382,7 +3382,7 @@ El video explica que un **AI agent** combina tres componentes esenciales: un mod
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -3399,7 +3399,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Agentes de IA para Yendo Mobile
+## Informe de Investigación: Agentes de IA para la Web Software Factory
 
 ### Concepto Central y Tesis
 
@@ -3417,9 +3417,9 @@ Los agentes de Inteligencia Artificial son sistemas autónomos que combinan un M
 3.  **Ejemplo Práctico (Semantic Kernel):** El video demuestra la implementación con Semantic Kernel (un framework de Microsoft) y GitHub Models. Se muestra cómo se definen "plugins" o "herramientas" (ej. `DestinationsPlugin` con una función para elegir ciudades aleatorias) y cómo el agente, usando un LLM (GPT-4o mini), interpreta el lenguaje natural del usuario ("plan me a day trip"), invoca la herramienta adecuada y utiliza la memoria para evitar sugerir destinos ya rechazados.
 4.  **Entorno de Desarrollo:** El ejemplo se ejecuta en un Jupyter Notebook, destacando la flexibilidad para experimentar con diferentes LLMs y configuraciones.
 
-### Ideas Accionables para Yendo Mobile
+### Ideas Accionables para la Web Software Factory
 
-La implementación de agentes de IA puede transformar la experiencia de Yendo Mobile, alineándose con sus principios de diseño y objetivos de usuario:
+La implementación de agentes de IA puede transformar la experiencia de la Web Software Factory, alineándose con sus principios de diseño y objetivos de usuario:
 
 1.  **Fricción Cero en la Descubrimiento y Planificación:**
     *   **Asistente de Experiencias:** Un agente de IA podría actuar como un "conserje" personal, permitiendo a los usuarios describir sus deseos en lenguaje natural (ej. "Quiero una Experiencia relajante para el fin de semana con mi pareja") y el agente sugeriría "Venues" y "Experiencias" relevantes, filtrando por disponibilidad y preferencias.
@@ -3427,11 +3427,11 @@ La implementación de agentes de IA puede transformar la experiencia de Yendo Mo
 2.  **Personalización Profunda con Memoria:**
     *   **Memoria a Largo Plazo:** El agente podría aprender las preferencias de "Venues", tipos de "Experiencias" y "Grupos" del usuario, ofreciendo recomendaciones cada vez más precisas y anticipándose a sus necesidades. Por ejemplo, si un usuario frecuenta "Venues" de música en vivo, el agente priorizaría esas sugerencias.
     *   **Memoria a Corto Plazo:** Durante una conversación, el agente recordaría las interacciones previas para refinar las sugerencias y evitar repeticiones, como en el ejemplo del destino de viaje.
-3.  **Integración UI/UX (Dark OLED, Material 3, React Native):**
+3.  **Integración UI/UX (Dark OLED, Material 3, Modern Web UI (CSS/WAAPI)):**
     *   **Interfaz Conversacional Nativa:** Las interacciones con el agente deben sentirse como una parte integral de la aplicación. Las respuestas y sugerencias del agente podrían presentarse como componentes de Material 3 (tarjetas, chips), respetando el tema Dark OLED para una experiencia visual cohesiva y de alto contraste.
-    *   **Componentes React Native:** Aunque Semantic Kernel es .NET/Python, el concepto de agente es agnóstico al frontend. Se pueden desarrollar componentes React Native que consuman las APIs del agente, mostrando sus sugerencias de manera fluida y reactiva.
-4.  **Comprensión del Lenguaje Específico de Yendo:**
-    *   **Entrenamiento con Vocabulario "Venue/Experiencia/Grupo":** El LLM del agente debe ser ajustado o entrenado para comprender y utilizar el lenguaje específico de Yendo. Esto aseguraría que las interacciones sean precisas y relevantes para el dominio de eventos y socialización de la plataforma.
+    *   **Componentes Modern Web UI (CSS/WAAPI):** Aunque Semantic Kernel es .NET/Python, el concepto de agente es agnóstico al frontend. Se pueden desarrollar componentes Modern Web UI (CSS/WAAPI) que consuman las APIs del agente, mostrando sus sugerencias de manera fluida y reactiva.
+4.  **Comprensión del Lenguaje Específico de WebFactory:**
+    *   **Entrenamiento con Vocabulario "Venue/Experiencia/Grupo":** El LLM del agente debe ser ajustado o entrenado para comprender y utilizar el lenguaje específico de WebFactory. Esto aseguraría que las interacciones sean precisas y relevantes para el dominio de eventos y socialización de la plataforma.
     *   **Expo 57:** El agente podría ser el motor detrás de la "Expo 57", guiando a los usuarios a través de las ofertas, sugiriendo itinerarios personalizados para la exposición o facilitando la conexión entre asistentes con intereses similares.
 
 ### Citas Clave
@@ -3468,7 +3468,7 @@ La implementación de agentes de IA puede transformar la experiencia de Yendo Mo
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -3485,17 +3485,17 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: React Native con Expo para Yendo Mobile
+## Informe de Investigación: Modern Web UI (CSS/WAAPI) con Expo para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
-El video presenta a React Native, potenciado por Expo, como la solución definitiva para el desarrollo de aplicaciones móviles modernas. La tesis central es que la brecha entre el desarrollo web y móvil se ha cerrado significativamente, permitiendo a los desarrolladores de React construir y desplegar aplicaciones nativas de producción de alto rendimiento de manera eficiente, utilizando un stack de herramientas integrado y de "fricción cero". Se argumenta que la nueva arquitectura de React Native y las capacidades de Expo (incluyendo EAS para despliegue) eliminan las antiguas barreras de rendimiento y complejidad, haciendo que el desarrollo móvil sea accesible y productivo.
+El video presenta a Modern Web UI (CSS/WAAPI), potenciado por Expo, como la solución definitiva para el desarrollo de aplicaciones móviles modernas. La tesis central es que la brecha entre el desarrollo web y móvil se ha cerrado significativamente, permitiendo a los desarrolladores de React construir y desplegar aplicaciones nativas de producción de alto rendimiento de manera eficiente, utilizando un stack de herramientas integrado y de "fricción cero". Se argumenta que la nueva arquitectura de Modern Web UI (CSS/WAAPI) y las capacidades de Expo (incluyendo EAS para despliegue) eliminan las antiguas barreras de rendimiento y complejidad, haciendo que el desarrollo móvil sea accesible y productivo.
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
-*   **Rendimiento Nativo:** La nueva arquitectura de React Native, con JSI, permite que las aplicaciones sean tan rápidas como las nativas, superando las críticas de rendimiento pasadas.
-*   **Expo como Framework Integral:** Expo es el framework recomendado por el equipo de React Native. Ofrece un entorno de desarrollo completo, enrutamiento basado en archivos (Expo Router, similar a Next.js), gestión de dependencias nativas, y servicios de construcción y despliegue (EAS).
-*   **Desarrollo de Componentes:** Se utilizan componentes nativos de React Native (`View`, `Text`, `FlatList`, `TouchableOpacity`, `SafeAreaView`) que se mapean a elementos UI de iOS y Android.
+*   **Rendimiento Nativo:** La nueva arquitectura de Modern Web UI (CSS/WAAPI), con JSI, permite que las aplicaciones sean tan rápidas como las nativas, superando las críticas de rendimiento pasadas.
+*   **Expo como Framework Integral:** Expo es el framework recomendado por el equipo de Modern Web UI (CSS/WAAPI). Ofrece un entorno de desarrollo completo, enrutamiento basado en archivos (Expo Router, similar a Next.js), gestión de dependencias nativas, y servicios de construcción y despliegue (EAS).
+*   **Desarrollo de Componentes:** Se utilizan componentes nativos de Modern Web UI (CSS/WAAPI) (`View`, `Text`, `FlatList`, `TouchableOpacity`, `SafeAreaView`) que se mapean a elementos UI de iOS y Web Platform.
 *   **Estilado con NativeWind:** Integración de Tailwind CSS a través de NativeWind para un estilado rápido y consistente, permitiendo definir temas personalizados (colores, tipografías) de forma centralizada.
 *   **Autenticación Robusta con Clerk:** Clerk ofrece una solución completa para autenticación (registro, inicio de sesión, verificación de email, gestión de sesiones) con mínima configuración, liberando al desarrollador de la complejidad de la seguridad.
 *   **Analíticas y Observabilidad con PostHog:** PostHog proporciona seguimiento de eventos, funnels, grabaciones de sesión, feature flags y monitoreo de errores, esencial para entender el comportamiento del usuario y la salud de la aplicación. El "wizard" de PostHog automatiza gran parte de la configuración.
@@ -3504,29 +3504,29 @@ El video presenta a React Native, potenciado por Expo, como la solución definit
 *   **Gestión de Estado:** Se menciona el uso de Zustand para la gestión de estado global, facilitando la compartición de datos entre componentes y pantallas.
 *   **Desarrollo Agente (Agentic Development):** La filosofía de usar IA para tareas repetitivas y bien documentadas (como la configuración de autenticación) permite a los desarrolladores enfocarse en la arquitectura y la lógica de negocio.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-1.  **Adoptar React Native con Expo:** La plataforma ofrece un rendimiento nativo, una experiencia de desarrollo fluida y un ecosistema maduro. Es una base sólida para Yendo.
+1.  **Adoptar Modern Web UI (CSS/WAAPI) con Expo:** La plataforma ofrece un rendimiento nativo, una experiencia de desarrollo fluida y un ecosistema maduro. Es una base sólida para WebFactory.
 2.  **Actualizar a Expo SDK 57:** Asegurar el uso de la versión más reciente y estable de Expo para aprovechar las últimas mejoras de rendimiento y características.
 3.  **Implementación de Tema Dark OLED y Material 3:** Utilizar NativeWind y la definición de tokens de diseño en `global.css` o `theme.ts` para aplicar de manera consistente el tema Dark OLED y los principios de Material 3 en toda la aplicación. Esto incluye la gestión de fuentes personalizadas.
-4.  **Estrategia de Estilado Consistente:** Mantener el `StyleSheet.create` canónico para los estilos fundamentales y de alto rendimiento. Evaluar la integración de NativeWind para componentes específicos o para acelerar el prototipado, siempre asegurando la compatibilidad y la adherencia al "sheet canónico" de Yendo.
+4.  **Estrategia de Estilado Consistente:** Mantener el `StyleSheet.create` canónico para los estilos fundamentales y de alto rendimiento. Evaluar la integración de NativeWind para componentes específicos o para acelerar el prototipado, siempre asegurando la compatibilidad y la adherencia al "sheet canónico" de WebFactory.
 5.  **Fricción Cero en el Desarrollo:**
     *   **EAS para Despliegue:** Implementar EAS para automatizar builds, envíos a tiendas y actualizaciones OTA, reduciendo la carga operativa.
-    *   **Clerk para Autenticación:** Integrar Clerk para una autenticación segura y eficiente, liberando recursos para el desarrollo de características centrales de Yendo.
+    *   **Clerk para Autenticación:** Integrar Clerk para una autenticación segura y eficiente, liberando recursos para el desarrollo de características centrales de WebFactory.
     *   **PostHog para Analíticas:** Configurar PostHog para obtener insights profundos sobre el comportamiento del usuario en "Venues", "Experiencias" y "Grupos", permitiendo la toma de decisiones basada en datos.
     *   **IA en el Workflow:** Incorporar herramientas de IA como CodeRabbit y agentes de codificación para mejorar la calidad del código, acelerar el desarrollo y fomentar el aprendizaje continuo del equipo.
 6.  **Estructura de Rutas y Navegación:**
-    *   **Expo Router y Route Groups:** Utilizar `Expo Router` con `route groups` para organizar la navegación de Yendo, mapeando los invariantes `Venue`, `Experiencia` y `Grupo` a grupos de rutas (`(venue)`, `(experiencia)`, `(grupo)`). Esto mantendrá la URL limpia y la estructura del proyecto organizada.
+    *   **Expo Router y Route Groups:** Utilizar `Expo Router` con `route groups` para organizar la navegación de WebFactory, mapeando los invariantes `Venue`, `Experiencia` y `Grupo` a grupos de rutas (`(venue)`, `(experiencia)`, `(grupo)`). Esto mantendrá la URL limpia y la estructura del proyecto organizada.
     *   **Navegación por Pestañas:** Implementar una navegación por pestañas inferior personalizada para las secciones principales de la aplicación, siguiendo el patrón demostrado en el video.
 7.  **Diseño de Interacción para Grupos (Dunbar 4-6):** Aplicar principios de diseño que fomenten la interacción en grupos pequeños. Por ejemplo, el uso de `FlatList` horizontales que insinúan contenido adicional puede guiar a los usuarios a explorar más "Experiencias" o "Grupos" de manera intuitiva.
-8.  **Centralización de Acceso a Datos (`createClient`):** Aunque el video integra múltiples SDKs, Yendo debe asegurar que su lógica de acceso a sus propios servicios backend se centralice en un único `createClient` para mantener la consistencia y facilitar el mantenimiento.
+8.  **Centralización de Acceso a Datos (`createClient`):** Aunque el video integra múltiples SDKs, WebFactory debe asegurar que su lógica de acceso a sus propios servicios backend se centralice en un único `createClient` para mantener la consistencia y facilitar el mantenimiento.
 
 ### 4. Citas Clave
 
 *   "If you already know React, you're about 75% of the way to being a mobile app developer." (Si ya conoces React, estás a un 75% de ser un desarrollador de aplicaciones móviles.)
 *   "The gap between web and mobile has basically closed." (La brecha entre la web y el móvil básicamente se ha cerrado.)
-*   "React Native apps are now as fast as fully native ones. So, that debate is over." (Las aplicaciones de React Native son ahora tan rápidas como las nativas. Así que, ese debate ha terminado.)
-*   "Expo is the officially recommended way to build React Native apps." (Expo es la forma oficialmente recomendada de construir aplicaciones React Native.)
+*   "Modern Web UI (CSS/WAAPI) apps are now as fast as fully native ones. So, that debate is over." (Las aplicaciones de Modern Web UI (CSS/WAAPI) son ahora tan rápidas como las nativas. Así que, ese debate ha terminado.)
+*   "Expo is the officially recommended way to build Modern Web UI (CSS/WAAPI) apps." (Expo es la forma oficialmente recomendada de construir aplicaciones Modern Web UI (CSS/WAAPI).)
 *   "You're not building a massive navigation configuration... You're building the navigation tree directly through folders and files." (No estás construyendo una configuración de navegación masiva... Estás construyendo el árbol de navegación directamente a través de carpetas y archivos.)
 *   "Without analytics, you're just guessing." (Sin analíticas, solo estás adivinando.)
 *   "The real skill isn't typing out forms. The skill is knowing what to ask for, giving AI the right references, and then reviewing the output like an engineer." (La verdadera habilidad no es escribir formularios. La habilidad es saber qué pedir, dar a la IA las referencias correctas y luego revisar el resultado como un ingeniero.)
@@ -3559,7 +3559,7 @@ El video presenta a React Native, potenciado por Expo, como la solución definit
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -3576,7 +3576,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Generación de UI con LLMs para Yendo Mobile
+## Informe de Investigación: Generación de UI con LLMs para la Web Software Factory
 
 ### Concepto Central y Tesis
 
@@ -3594,19 +3594,19 @@ El video explora la capacidad del SDK de IA 3.0 de Vercel para la generación de
     *   **Manejo de Datos en Tiempo Real:** Se enfatiza que el LLM no debe generar datos sensibles o en tiempo real (ej. precios de acciones). Estos deben ser obtenidos de APIs externas (ej. Yahoo Finance) e inyectados en los componentes de UI.
     *   **Proxy de Backend para APIs:** Para evitar errores de CORS y proteger las claves API, las llamadas a APIs externas desde el frontend deben ser proxied a través de una ruta de backend.
 
-### Ideas Accionables para Yendo Mobile
+### Ideas Accionables para la Web Software Factory
 
-1.  **Componentes de UI Preconstruidos para Expo/React Native:** Yendo puede adaptar el concepto del SDK de IA definiendo un conjunto de componentes de UI "atómicos" y "moleculares" específicos para su dominio (transacciones, grupos, eventos, pagos). Un LLM podría orquestar estos componentes en una aplicación Expo/React Native.
-2.  **Fricción Cero con Generación de UI:** La capacidad de generar UI dinámicamente a partir de lenguaje natural se alinea perfectamente con el objetivo de "Fricción Cero" de Yendo. Ejemplos:
+1.  **Componentes de UI Preconstruidos para Expo/Modern Web UI (CSS/WAAPI):** WebFactory puede adaptar el concepto del SDK de IA definiendo un conjunto de componentes de UI "atómicos" y "moleculares" específicos para su dominio (transacciones, grupos, eventos, pagos). Un LLM podría orquestar estos componentes en una aplicación Expo/Modern Web UI (CSS/WAAPI).
+2.  **Fricción Cero con Generación de UI:** La capacidad de generar UI dinámicamente a partir de lenguaje natural se alinea perfectamente con el objetivo de "Fricción Cero" de WebFactory. Ejemplos:
     *   "Muéstrame mis gastos de transporte del mes pasado" -> `TransactionListCard` filtrada.
     *   "Paga a María 25€ por la cena de anoche" -> `PaymentConfirmationCard` pre-rellenada.
-3.  **Lenguaje Venue/Experiencia/Grupo:** Yendo puede entrenar un LLM para entender su vocabulario específico.
+3.  **Lenguaje Venue/Experiencia/Grupo:** WebFactory puede entrenar un LLM para entender su vocabulario específico.
     *   "Crea un evento para el concierto de Taylor Swift en el Estadio Bernabéu" -> `EventCreationCard` con campos pre-rellenados.
     *   "¿Quién me debe dinero del viaje a Lisboa?" -> `GroupDebtSummaryCard`.
 4.  **Dunbar 4-6 y Gestión de Grupos:** Para la gestión de grupos pequeños, la UI generativa puede simplificar tareas.
     *   "Divide la cuenta de la cena entre los 4 que fuimos" -> `SplitBillCard` con opciones de división.
-5.  **Diseño Robusto de Dark OLED y Material 3:** Los componentes preconstruidos de Yendo deben ser diseñados desde el inicio para soportar un modo oscuro optimizado para pantallas OLED y adherirse a las directrices de Material 3. Esto asegura que la UI generada sea coherente y estéticamente agradable.
-6.  **Integración Segura de Datos Financieros:** Es crucial que Yendo siga la lección del video: el LLM orquesta la UI, pero los datos financieros (saldos, transacciones, etc.) deben ser obtenidos de APIs internas seguras y en tiempo real, nunca generados por el LLM.
+5.  **Diseño Robusto de Dark OLED y Material 3:** Los componentes preconstruidos de WebFactory deben ser diseñados desde el inicio para soportar un modo oscuro optimizado para pantallas OLED y adherirse a las directrices de Material 3. Esto asegura que la UI generada sea coherente y estéticamente agradable.
+6.  **Integración Segura de Datos Financieros:** Es crucial que WebFactory siga la lección del video: el LLM orquesta la UI, pero los datos financieros (saldos, transacciones, etc.) deben ser obtenidos de APIs internas seguras y en tiempo real, nunca generados por el LLM.
 7.  **Estrategia de Backend Proxy:** Implementar un backend robusto para proxy de llamadas a APIs externas (ej. para tipos de cambio, información de eventos) para proteger claves y evitar problemas de CORS en la aplicación móvil.
 
 ### Citas Clave
@@ -3644,7 +3644,7 @@ El video explora la capacidad del SDK de IA 3.0 de Vercel para la generación de
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -3661,7 +3661,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Tendencias en IA y Agentes para Yendo Mobile
+## Informe de Investigación: Tendencias en IA y Agentes para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -3676,20 +3676,20 @@ El video expone la tesis de que el desarrollo de software está siendo radicalme
 *   **Generación de Contenido Multimodal y Workflows Completos:** Open Mountage no solo genera clips de video, sino que ofrece un flujo de trabajo completo para la producción de videos, desde la planificación hasta la ejecución, utilizando IA.
 *   **Entornos de Desarrollo Especializados:** Proyectos como Omarship (distribución Linux optimizada) y Deepsit Harness (herramienta de consola para modelos específicos) reflejan la tendencia hacia entornos de desarrollo preconfigurados y herramientas dedicadas para la IA.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-Las tendencias observadas ofrecen oportunidades significativas para Yendo, alineándose con sus invariantes:
+Las tendencias observadas ofrecen oportunidades significativas para WebFactory, alineándose con sus invariantes:
 
 *   **Fricción Cero y Lenguaje Venue/Experiencia/Grupo:**
     *   **AI Gateway Centralizado (`un createClient` para IA):** Implementar un "AI Gateway" interno, inspirado en Omniirrout, que centralice el acceso a diversos modelos de IA para la generación de contenido (descripciones de `Venue` y `Experiencia`, sugerencias para `Grupo`). Esto reduciría la fricción para los desarrolladores y aseguraría una integración consistente.
     *   **Agentes Co-creadores de Experiencias:** Desarrollar agentes que, utilizando la metodología "Grillmi", guíen a los organizadores de `Experiencias` o `Grupos` a través de un proceso de preguntas detalladas para generar descripciones ricas, itinerarios sugeridos o ideas de interacción, minimizando el esfuerzo del usuario y maximizando la calidad del contenido.
     *   **Visualización de Interacciones:** Explorar la visualización de flujos de `Experiencia` o dinámicas de `Grupo` (inspirado en Archify o Mander Diffling) para los administradores, facilitando la comprensión y optimización.
 
-*   **React Native y Expo 57:**
-    *   **Integración de IA Nativas:** Investigar la integración de modelos de IA ligeros o el consumo de APIs de IA directamente en la aplicación React Native (compatible con Expo 57) para funcionalidades como la personalización de `Experiencias` o la asistencia en la comunicación dentro de `Grupos`.
+*   **Modern Web UI (CSS/WAAPI) y Expo 57:**
+    *   **Integración de IA Nativas:** Investigar la integración de modelos de IA ligeros o el consumo de APIs de IA directamente en la aplicación Modern Web UI (CSS/WAAPI) (compatible con Expo 57) para funcionalidades como la personalización de `Experiencias` o la asistencia en la comunicación dentro de `Grupos`.
 
 *   **Dark OLED y Material 3 (`StyleSheet.create` Canónico):**
-    *   **Asistencia de Diseño con IA:** Utilizar IA para generar o validar elementos de UI/UX que se adhieran estrictamente a las directrices de Dark OLED y Material 3, asegurando que cualquier componente generado o sugerido por IA mantenga la coherencia con el `StyleSheet.create` canónico de Yendo.
+    *   **Asistencia de Diseño con IA:** Utilizar IA para generar o validar elementos de UI/UX que se adhieran estrictamente a las directrices de Dark OLED y Material 3, asegurando que cualquier componente generado o sugerido por IA mantenga la coherencia con el `StyleSheet.create` canónico de WebFactory.
 
 *   **Dunbar 4-6:**
     *   **Agentes para Cohesión de Grupo:** Implementar agentes de IA que monitoreen y sugieran intervenciones para fomentar la cohesión en `Grupos` pequeños (4-6 personas), como proponer temas de conversación relevantes o resumir discusiones, manteniendo la intimidad y el propósito del grupo.
@@ -3732,7 +3732,7 @@ Las tendencias observadas ofrecen oportunidades significativas para Yendo, aline
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -3749,7 +3749,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Tendencias de IA y su Aplicación en Yendo Mobile
+## Informe de Investigación: Tendencias de IA y su Aplicación en la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -3767,24 +3767,24 @@ Los repositorios destacados revelan varias tendencias técnicas y arquitectónic
 *   **Diseño Asistido por IA:** **Reimagine It** propone un enfoque donde los agentes de IA pueden interpretar y aplicar sistemas de diseño definidos por el usuario (ej. a través de un archivo HTML de estilos), asegurando consistencia estética y acelerando la creación de interfaces.
 *   **Automatización y Optimización de Flujos de Trabajo:** Herramientas como **Go Modern Guidelines** y **Times FM** aplican la IA para mantener el código actualizado con las mejores prácticas y para realizar pronósticos complejos de series temporales, respectivamente, reduciendo la carga cognitiva y el esfuerzo manual.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-Integrando los hallazgos con los invariantes de Yendo:
+Integrando los hallazgos con los invariantes de WebFactory:
 
 1.  **Fricción Cero y Personalización Extrema con Agentes de IA:**
-    *   **Agentes Personales para "Venue/Experiencia/Grupo":** Desarrollar agentes de IA que actúen como asistentes personales para cada usuario de Yendo. Estos agentes, con "memoria" (como **Hindsight** o **Smriti Brain**), aprenderían las preferencias de "Venue", "Experiencia" y "Grupo" del usuario, sugiriendo proactivamente actividades, facilitando la coordinación y personalizando la interfaz. Esto reduce la fricción al anticipar necesidades.
-    *   **SLMs para Tareas Específicas:** Utilizar la filosofía de **Mini Mind** para entrenar SLMs internos en Yendo. Por ejemplo, un SLM para moderar contenido en "Grupos", otro para analizar el sentimiento en las interacciones, o uno para generar descripciones de "Experiencias" basadas en palabras clave, optimizando recursos y personalizando la interacción.
+    *   **Agentes Personales para "Venue/Experiencia/Grupo":** Desarrollar agentes de IA que actúen como asistentes personales para cada usuario de WebFactory. Estos agentes, con "memoria" (como **Hindsight** o **Smriti Brain**), aprenderían las preferencias de "Venue", "Experiencia" y "Grupo" del usuario, sugiriendo proactivamente actividades, facilitando la coordinación y personalizando la interfaz. Esto reduce la fricción al anticipar necesidades.
+    *   **SLMs para Tareas Específicas:** Utilizar la filosofía de **Mini Mind** para entrenar SLMs internos en WebFactory. Por ejemplo, un SLM para moderar contenido en "Grupos", otro para analizar el sentimiento en las interacciones, o uno para generar descripciones de "Experiencias" basadas en palabras clave, optimizando recursos y personalizando la interacción.
 
 2.  **Visualización Interactiva para "DNA pisa internet" y Dunbar 4-6:**
-    *   **"God's Eye View" de la Vida Social:** Inspirarse en **God's Eye View** para crear visualizaciones interactivas que permitan a los usuarios de Yendo ver sus conexiones, actividades de "Grupo" y "Experiencias" pasadas/futuras de una manera atractiva y comprensible. Esto podría ayudar a gestionar las relaciones dentro del límite de Dunbar (4-6 personas en el círculo íntimo) al visualizar la dinámica de los grupos.
+    *   **"God's Eye View" de la Vida Social:** Inspirarse en **God's Eye View** para crear visualizaciones interactivas que permitan a los usuarios de WebFactory ver sus conexiones, actividades de "Grupo" y "Experiencias" pasadas/futuras de una manera atractiva y comprensible. Esto podría ayudar a gestionar las relaciones dentro del límite de Dunbar (4-6 personas en el círculo íntimo) al visualizar la dinámica de los grupos.
     *   **Diagramas de Flujo de Experiencias:** Aplicar la idea de **Archify** para que los usuarios o administradores puedan visualizar el "flujo" de una "Experiencia" (ej. pasos, participantes, recursos), facilitando la planificación y la comprensión.
 
-3.  **Diseño Consistente y Eficiente (Dark OLED, Material 3, React Native):**
-    *   **Agente de Diseño "Reimagine It":** Implementar un "agente de diseño" que, basado en las directrices de Material 3 y la optimización para Dark OLED, pueda generar o validar componentes de UI/UX en React Native. Este agente podría asegurar la adherencia estricta a los estándares de diseño de Yendo, manteniendo la coherencia visual y acelerando el desarrollo.
-    *   **Herramientas de Código Asistidas por IA:** Explorar cómo la IA puede ayudar a mantener la consistencia en el código React Native, asegurando el uso de `StyleSheet.create` y la estructura de `un createClient` a través de refactorizaciones o sugerencias automáticas, similar a **Go Modern Guidelines**.
+3.  **Diseño Consistente y Eficiente (Dark OLED, Material 3, Modern Web UI (CSS/WAAPI)):**
+    *   **Agente de Diseño "Reimagine It":** Implementar un "agente de diseño" que, basado en las directrices de Material 3 y la optimización para Dark OLED, pueda generar o validar componentes de UI/UX en Modern Web UI (CSS/WAAPI). Este agente podría asegurar la adherencia estricta a los estándares de diseño de WebFactory, manteniendo la coherencia visual y acelerando el desarrollo.
+    *   **Herramientas de Código Asistidas por IA:** Explorar cómo la IA puede ayudar a mantener la consistencia en el código Modern Web UI (CSS/WAAPI), asegurando el uso de `StyleSheet.create` y la estructura de `un createClient` a través de refactorizaciones o sugerencias automáticas, similar a **Go Modern Guidelines**.
 
 4.  **Colaboración de Agentes para Experiencias Enriquecidas:**
-    *   **Agentes Colaborativos en "Grupos":** Inspirarse en **Radiant** para que múltiples agentes de IA puedan interactuar en una conversación compartida dentro de un "Grupo" de Yendo. Por ejemplo, un agente sugiere un "Venue", otro propone una "Experiencia" basada en los intereses del grupo, y un tercero gestiona la logística, todo en una interacción fluida y consultándose mutuamente.
+    *   **Agentes Colaborativos en "Grupos":** Inspirarse en **Radiant** para que múltiples agentes de IA puedan interactuar en una conversación compartida dentro de un "Grupo" de WebFactory. Por ejemplo, un agente sugiere un "Venue", otro propone una "Experiencia" basada en los intereses del grupo, y un tercero gestiona la logística, todo en una interacción fluida y consultándose mutuamente.
 
 ### 4. Citas Clave
 
@@ -3823,7 +3823,7 @@ Integrando los hallazgos con los invariantes de Yendo:
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -3840,7 +3840,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Estrategias de Mercado y Crecimiento para Yendo Mobile
+## Informe de Investigación: Estrategias de Mercado y Crecimiento para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -3851,16 +3851,16 @@ El concepto central del análisis es que la gestión de un *marketplace* es aná
 Aunque el video no profundiza en detalles de código, los principios de gestión de *marketplaces* ofrecen valiosas lecciones arquitectónicas:
 
 *   **Gestión de la Complejidad y Observabilidad:** La naturaleza de "jardinero" del *marketplace* implica que las decisiones tienen "consecuencias de segundo orden" impredecibles. Esto subraya la necesidad de una arquitectura que priorice la observabilidad, la telemetría robusta y la capacidad de iteración rápida para monitorear y reaccionar a los efectos sutiles.
-*   **Fuente Única de Verdad (Single Source of Truth):** La descripción de un "modelo de crecimiento" como una "fórmula para tu negocio" que "vive en Excel" y "resume todo lo que impulsa tu negocio" es una analogía directa para la importancia de una fuente única de verdad en la arquitectura. Esto se alinea con los invariantes de Yendo de `un createClient` y `StyleSheet.create`, promoviendo la consistencia, reduciendo la fragmentación y facilitando una comprensión unificada de cómo funciona el sistema.
+*   **Fuente Única de Verdad (Single Source of Truth):** La descripción de un "modelo de crecimiento" como una "fórmula para tu negocio" que "vive en Excel" y "resume todo lo que impulsa tu negocio" es una analogía directa para la importancia de una fuente única de verdad en la arquitectura. Esto se alinea con los invariantes de WebFactory de `un createClient` y `StyleSheet.create`, promoviendo la consistencia, reduciendo la fragmentación y facilitando una comprensión unificada de cómo funciona el sistema.
 *   **Adaptabilidad y Flexibilidad:** La necesidad de "pisar con cuidado" y la dificultad de predecir los efectos a largo plazo de los cambios en los incentivos del *marketplace* sugieren una arquitectura modular y flexible que permita ajustes incrementales sin desestabilizar el ecosistema.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-*   **Fricción Cero y Experiencia Inicial (Onboarding):** La retención es el mayor impulsor del crecimiento, y el "mayor éxito en retención proviene de la inflexión de la experiencia del usuario temprano". Yendo debe obsesionarse con la "Fricción Cero" en el *onboarding* de sus usuarios, asegurando que la primera interacción con un "Venue", "Experiencia" o "Grupo" sea impecable y demuestre valor inmediato. Esto podría incluir incentivos o garantías para la primera "Experiencia" para asegurar una percepción positiva inicial, similar al ejemplo de Uber/Lyft garantizando ganancias en la primera semana.
-*   **Lenguaje Venue/Experiencia/Grupo y Liquidez:** Yendo debe definir claramente qué significa "liquidez" dentro de su ecosistema "Venue/Experiencia/Grupo". ¿Qué tan fácil es para un usuario encontrar una "Experiencia" relevante en un "Venue" con un "Grupo" que cumpla sus expectativas? La métrica de liquidez debe articularse en términos de lo que el usuario final valora más, por ejemplo, la inmediatez de encontrar un grupo compatible o la calidad de la experiencia ofrecida.
-*   **Dunbar 4-6 y Gestión de la Complejidad:** El enfoque de Yendo en grupos pequeños (Dunbar 4-6) puede ser una ventaja inherente. La complejidad de los *marketplaces* aumenta con el tamaño y la diversidad. Al limitar el tamaño de los grupos, Yendo podría mitigar muchas de las "consecuencias de segundo orden" y las "tensiones" (ej. calidad vs. cantidad) que plagan a los *marketplaces* más grandes, facilitando la gestión del ecosistema con un "toque ligero".
+*   **Fricción Cero y Experiencia Inicial (Onboarding):** La retención es el mayor impulsor del crecimiento, y el "mayor éxito en retención proviene de la inflexión de la experiencia del usuario temprano". WebFactory debe obsesionarse con la "Fricción Cero" en el *onboarding* de sus usuarios, asegurando que la primera interacción con un "Venue", "Experiencia" o "Grupo" sea impecable y demuestre valor inmediato. Esto podría incluir incentivos o garantías para la primera "Experiencia" para asegurar una percepción positiva inicial, similar al ejemplo de Uber/Lyft garantizando ganancias en la primera semana.
+*   **Lenguaje Venue/Experiencia/Grupo y Liquidez:** WebFactory debe definir claramente qué significa "liquidez" dentro de su ecosistema "Venue/Experiencia/Grupo". ¿Qué tan fácil es para un usuario encontrar una "Experiencia" relevante en un "Venue" con un "Grupo" que cumpla sus expectativas? La métrica de liquidez debe articularse en términos de lo que el usuario final valora más, por ejemplo, la inmediatez de encontrar un grupo compatible o la calidad de la experiencia ofrecida.
+*   **Dunbar 4-6 y Gestión de la Complejidad:** El enfoque de WebFactory en grupos pequeños (Dunbar 4-6) puede ser una ventaja inherente. La complejidad de los *marketplaces* aumenta con el tamaño y la diversidad. Al limitar el tamaño de los grupos, WebFactory podría mitigar muchas de las "consecuencias de segundo orden" y las "tensiones" (ej. calidad vs. cantidad) que plagan a los *marketplaces* más grandes, facilitando la gestión del ecosistema con un "toque ligero".
 *   **Dark OLED y Material 3 para la Calidad Percibida:** La "experiencia del producto" es la culminación de todo lo que el usuario experimenta. Una interfaz de usuario pulida y consistente, como la que ofrecen Dark OLED y Material 3, contribuye significativamente a la percepción de calidad y profesionalismo, reduciendo la fricción y mejorando la retención. Es un componente clave para crear esa "experiencia increíble de principio a fin".
-*   **Expo 57 y React Native para la Agilidad:** La filosofía de "jardinero" requiere la capacidad de iterar rápidamente y adaptarse. La elección de React Native y Expo 57 para el desarrollo de Yendo es ideal para esto, permitiendo despliegues ágiles y la experimentación necesaria para "pisar con cuidado" y observar los efectos en el ecosistema.
+*   **Expo 57 y Modern Web UI (CSS/WAAPI) para la Agilidad:** La filosofía de "jardinero" requiere la capacidad de iterar rápidamente y adaptarse. La elección de Modern Web UI (CSS/WAAPI) y Expo 57 para el desarrollo de WebFactory es ideal para esto, permitiendo despliegues ágiles y la experimentación necesaria para "pisar con cuidado" y observar los efectos en el ecosistema.
 *   **Invariantes Arquitectónicos (`one createClient`, `StyleSheet.create`):** La disciplina de tener un `createClient` único y un `StyleSheet.create` canónico refuerza la idea de una "fórmula única para el negocio". Esto asegura la coherencia en la lógica de datos y la interfaz de usuario, lo cual es vital para construir un producto robusto y predecible en un entorno de *marketplace* donde la complejidad puede escalar rápidamente.
 
 ### 4. Citas Clave
@@ -3898,7 +3898,7 @@ Aunque el video no profundiza en detalles de código, los principios de gestión
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -3915,11 +3915,11 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Búsqueda Semántica Local-First en React Native
+## Informe de Investigación: Búsqueda Semántica Local-First en Modern Web UI (CSS/WAAPI)
 
 ### 1. Concepto Central y Tesis
 
-El concepto central es la implementación de **búsqueda semántica local-first** utilizando modelos de Inteligencia Artificial directamente en aplicaciones React Native. La tesis principal es que esta aproximación permite a las aplicaciones ofrecer resultados de búsqueda más inteligentes, relevantes y contextuales que la búsqueda por palabras clave tradicional, incluso sin conexión a internet. Esto se logra mediante la comprensión del *significado* de las consultas y los datos, en lugar de solo la coincidencia literal de texto.
+El concepto central es la implementación de **búsqueda semántica local-first** utilizando modelos de Inteligencia Artificial directamente en aplicaciones Modern Web UI (CSS/WAAPI). La tesis principal es que esta aproximación permite a las aplicaciones ofrecer resultados de búsqueda más inteligentes, relevantes y contextuales que la búsqueda por palabras clave tradicional, incluso sin conexión a internet. Esto se logra mediante la comprensión del *significado* de las consultas y los datos, en lugar de solo la coincidencia literal de texto.
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
@@ -3930,18 +3930,18 @@ El concepto central es la implementación de **búsqueda semántica local-first*
 *   **Promediado Global (Global Average Pooling):** Para obtener un único vector representativo de una secuencia de tokens (que el modelo devuelve como múltiples vectores), se promedian los vectores de los tokens.
 *   **Índice HNSW (Hierarchical Navigable Small Worlds):** Una estructura de datos crucial para la búsqueda eficiente de "vecinos más cercanos aproximados" (ANN). Este índice permite encontrar rápidamente los vectores más similares a una consulta, formando la base de una "base de datos vectorial" en memoria.
 *   **Métricas de Distancia:** La similitud coseno es la métrica preferida para evaluar la "cercanía" o similitud entre vectores de embedding en búsquedas semánticas.
-*   **Integración con React Native:** Se utiliza el módulo `onnxruntime-react-native` de Microsoft para cargar y ejecutar modelos ONNX. Los archivos del modelo y la configuración del tokenizador se gestionan como assets de la aplicación. La lógica de búsqueda se integra con los hooks de React (ej. `useEffect`) para actualizar los resultados dinámicamente.
+*   **Integración con Modern Web UI (CSS/WAAPI):** Se utiliza el módulo `onnxruntime-react-native` de Microsoft para cargar y ejecutar modelos ONNX. Los archivos del modelo y la configuración del tokenizador se gestionan como assets de la aplicación. La lógica de búsqueda se integra con los hooks de React (ej. `useEffect`) para actualizar los resultados dinámicamente.
 *   **Rendimiento:** La implementación demuestra ser "muy, muy rápida", con tiempos de respuesta en milisegundos en emuladores, lo que sugiere una excelente experiencia de usuario en dispositivos reales.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
 *   **Fricción Cero:** La búsqueda semántica local-first es un pilar fundamental para lograr una experiencia de usuario de "fricción cero". Ofrece resultados instantáneos y altamente relevantes, incluso sin conexión a internet, eliminando la frustración de la latencia de red o la falta de resultados por coincidencias de palabras clave.
 *   **Lenguaje de Venue/Experiencia/Grupo:** Implementar esta tecnología para transformar la forma en que los usuarios descubren y se conectan con:
     *   **Venues:** Permitir búsquedas por *ambiente* o *propósito* (ej. "un lugar tranquilo para leer y tomar café" en lugar de solo "cafetería").
     *   **Experiencias:** Facilitar la búsqueda por *estado de ánimo*, *resultado deseado* o *tipo de actividad* (ej. "una actividad relajante para desestresarme" en lugar de "spa").
     *   **Grupos:** Sugerir planes o lugares adecuados para *dinámicas de grupo específicas* (ej. "un plan divertido para una primera cita" o "actividades para familias con adolescentes").
-*   **React Native y Expo:** La demostración valida la capacidad de React Native (y Expo, como se usó en el ejemplo) para integrar funcionalidades avanzadas de IA en el dispositivo, lo que refuerza la elección de estas tecnologías para Yendo.
-*   **Personalización y Relevancia:** A largo plazo, los embeddings podrían personalizarse o ajustarse para entender mejor el lenguaje y las preferencias específicas de la comunidad de Yendo, mejorando aún más la relevancia de los resultados.
+*   **Modern Web UI (CSS/WAAPI) y Expo:** La demostración valida la capacidad de Modern Web UI (CSS/WAAPI) (y Expo, como se usó en el ejemplo) para integrar funcionalidades avanzadas de IA en el dispositivo, lo que refuerza la elección de estas tecnologías para WebFactory.
+*   **Personalización y Relevancia:** A largo plazo, los embeddings podrían personalizarse o ajustarse para entender mejor el lenguaje y las preferencias específicas de la comunidad de WebFactory, mejorando aún más la relevancia de los resultados.
 
 ### 4. Citas Clave
 
@@ -3977,7 +3977,7 @@ El concepto central es la implementación de **búsqueda semántica local-first*
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -4015,7 +4015,7 @@ ultima_revision: 2026-08-27
 | **Herramientas de transferencia** | Se implementan como herramientas normales del agente, lo que permite que el LLM las invoque sin lógica externa. | Mantiene la interacción dentro del mismo modelo de lenguaje, simplificando la integración. |
 | **Persistencia del historial** | Los mensajes de handoff se añaden al historial, de modo que el supervisor siempre ve la cadena completa de acciones. | Transparencia total para depuración y para generar explicaciones al usuario. |
 
-## 3. Ideas accionables para Yendo Mobile  
+## 3. Ideas accionables para la Web Software Factory  
 
 ### 3.1. Arquitectura de asistencia inteligente para eventos (Expo 57)  
 - **Supervisor principal**: recibe la solicitud del usuario (“¿Qué actividades hay en Expo 57 hoy?”).  
@@ -4024,7 +4024,7 @@ ultima_revision: 2026-08-27
   - *Supervisor de logística* → agentes que calculan rutas, disponibilidad de transporte.  
 - Cada agente usa **herramientas específicas** (API de calendario, API de mapas) y devuelve resultados al supervisor que los combina y los muestra al usuario.  
 
-### 3.2. Integración con React Native y Material 3  
+### 3.2. Integración con Modern Web UI (CSS/WAAPI) y Material 3  
 - Exponer el flujo de supervisor como **hook** (`useLangSupervisor`) que devuelva estado (`loading`, `result`, `error`).  
 - Renderizar la respuesta con componentes **Material 3** (cards, chips) y aplicar **Dark OLED** automáticamente según el tema del dispositivo.  
 
@@ -4054,7 +4054,7 @@ ultima_revision: 2026-08-27
 
 ---  
 
-**Resumen:** La biblioteca *LangChain Supervisor* ofrece una forma estructurada y escalable de combinar agentes especializados mediante un patrón de supervisión jerárquica. Para Yendo Mobile, la adopción de esta arquitectura permite crear asistentes inteligentes que gestionen la complejidad de eventos (Expo 57), integren de forma nativa con React Native y Material 3, mantengan una experiencia de **fricción cero** y utilicen un lenguaje de dominio común (*Venue/Evento/Grupo*) que facilite la interoperabilidad entre equipos. La configuración de *output mode* y el registro de handoffs garantizan tanto rendimiento como trazabilidad.
+**Resumen:** La biblioteca *LangChain Supervisor* ofrece una forma estructurada y escalable de combinar agentes especializados mediante un patrón de supervisión jerárquica. Para la Web Software Factory, la adopción de esta arquitectura permite crear asistentes inteligentes que gestionen la complejidad de eventos (Expo 57), integren de forma nativa con Modern Web UI (CSS/WAAPI) y Material 3, mantengan una experiencia de **fricción cero** y utilicen un lenguaje de dominio común (*Venue/Evento/Grupo*) que facilite la interoperabilidad entre equipos. La configuración de *output mode* y el registro de handoffs garantizan tanto rendimiento como trazabilidad.
 
 ---
 
@@ -4076,7 +4076,7 @@ ultima_revision: 2026-08-27
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -4093,7 +4093,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: LangChain Supervisor y su Aplicación en Yendo Mobile
+## Informe de Investigación: LangChain Supervisor y su Aplicación en la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -4111,22 +4111,22 @@ El video presenta **LangChain Supervisor**, una nueva librería diseñada para c
 *   **Sistemas Jerárquicos:** Es posible construir estructuras donde un supervisor gestiona a otros supervisores, que a su vez gestionan equipos de agentes. Esto permite modelar organizaciones complejas y delegar a múltiples niveles.
 *   **Flexibilidad:** El supervisor puede decidir el siguiente paso: llamar a otro agente, continuar con el mismo agente o responder directamente al usuario.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-La arquitectura de LangChain Supervisor ofrece un marco robusto para potenciar la experiencia de Yendo Mobile, especialmente en la creación de una interfaz de **Fricción Cero** y la gestión inteligente de interacciones:
+La arquitectura de LangChain Supervisor ofrece un marco robusto para potenciar la experiencia de la Web Software Factory, especialmente en la creación de una interfaz de **Fricción Cero** y la gestión inteligente de interacciones:
 
-*   **Agentes Especializados para Dominios Yendo:**
+*   **Agentes Especializados para Dominios WebFactory:**
     *   **Agente "Venue":** Especializado en encontrar, filtrar y recomendar lugares (restaurantes, bares, eventos) basándose en preferencias, disponibilidad y contexto.
     *   **Agente "Experiencia":** Enfocado en curar y sugerir actividades o planes completos, combinando múltiples "Venues" o elementos.
     *   **Agente "Grupo":** Gestiona la logística de las interacciones grupales: invitaciones, confirmaciones, preferencias colectivas, comunicación. Este agente podría ser clave para manejar la dinámica de **Dunbar 4-6**, facilitando la coordinación en grupos pequeños.
-*   **Supervisor "Yendo Assistant":** Un agente principal que interactúa con el usuario, interpreta sus necesidades y delega a los agentes "Venue", "Experiencia" o "Grupo" según sea necesario. Por ejemplo, si un usuario dice "Quiero organizar una cena para 5 amigos el viernes", el Supervisor Yendo Assistant podría:
+*   **Supervisor "WebFactory Assistant":** Un agente principal que interactúa con el usuario, interpreta sus necesidades y delega a los agentes "Venue", "Experiencia" o "Grupo" según sea necesario. Por ejemplo, si un usuario dice "Quiero organizar una cena para 5 amigos el viernes", el Supervisor WebFactory Assistant podría:
     1.  Delegar al Agente "Grupo" para gestionar las invitaciones y preferencias.
     2.  Delegar al Agente "Venue" para encontrar opciones de restaurantes basadas en las preferencias del grupo.
     3.  Consolidar la información y presentarla al usuario.
 *   **Fricción Cero a través de la Orquestación:** La capacidad de los agentes para heredar el historial de mensajes y pasar resultados de forma fluida elimina la necesidad de que el usuario cambie de contexto o repita información. El sistema multi-agente se encarga de la complejidad subyacente, presentando una experiencia unificada y conversacional.
-*   **Jerarquía para Escalabilidad:** Un "Supervisor Global Yendo" podría gestionar "Supervisores de Ciudad" o "Supervisores de Categoría" (ej., "Supervisor de Noche", "Supervisor de Día"), que a su vez orquestan a los agentes especializados. Esto permitiría escalar la inteligencia de Yendo a medida que crece en funcionalidades y geografías.
-*   **Integración con la Pila Tecnológica (Expo 57, React Native, Dark OLED, Material 3):**
-    *   Los agentes podrían generar respuestas estructuradas que se mapeen directamente a componentes **Material 3** en **React Native**, optimizando la UI/UX.
+*   **Jerarquía para Escalabilidad:** Un "Supervisor Global WebFactory" podría gestionar "Supervisores de Ciudad" o "Supervisores de Categoría" (ej., "Supervisor de Noche", "Supervisor de Día"), que a su vez orquestan a los agentes especializados. Esto permitiría escalar la inteligencia de WebFactory a medida que crece en funcionalidades y geografías.
+*   **Integración con la Pila Tecnológica (Expo 57, Modern Web UI (CSS/WAAPI), Dark OLED, Material 3):**
+    *   Los agentes podrían generar respuestas estructuradas que se mapeen directamente a componentes **Material 3** en **Modern Web UI (CSS/WAAPI)**, optimizando la UI/UX.
     *   La inteligencia de los agentes podría sugerir ajustes de interfaz o contenido para **Dark OLED**, como recomendaciones de "venues" con ambientes más íntimos o iluminación tenue.
     *   La arquitectura de agentes podría ser la base para un "copiloto" de desarrollo en **Expo 57**, ayudando a los desarrolladores a generar código o componentes basados en descripciones de funcionalidades.
 
@@ -4165,7 +4165,7 @@ La arquitectura de LangChain Supervisor ofrece un marco robusto para potenciar l
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -4190,7 +4190,7 @@ El concepto central es la **autenticación de dispositivos (device attestation)*
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
-El video destaca la evolución de la seguridad en Android y la necesidad de ir más allá de la validación superficial.
+El video destaca la evolución de la seguridad en Web Platform y la necesidad de ir más allá de la validación superficial.
 
 *   **El Problema de la Confianza:** Las aplicaciones no siempre son "tu aplicación". Pueden ser reempaquetadas, ejecutadas en emuladores, dispositivos rooteados o scripts maliciosos. La validación solo en el cliente es ineficaz, ya que el backend puede recibir solicitudes que parecen legítimas pero provienen de entornos comprometidos.
 *   **Capas de Confianza (Layers of Trust):** La seguridad moderna exige confiar en cada componente: firmware, sistema operativo, aplicación, dispositivo y usuario.
@@ -4199,30 +4199,30 @@ El video destaca la evolución de la seguridad en Android y la necesidad de ir m
     *   **SafetyNet Attestation API (Obsoleta):** Una API simplificada que verificaba si un dispositivo estaba certificado o rooteado. Será descontinuada y reemplazada.
     *   **Play Integrity API (Recomendada):** El sucesor de SafetyNet, diseñado para simplificar la toma de decisiones de seguridad. Proporciona un veredicto conciso con aproximadamente cinco valores, dos de los cuales son clave:
         *   **`appIntegrity`:** Verifica si el binario de la aplicación es genuino, reconocido por Google Play y si su certificado coincide con los registros de Google Play.
-        *   **`deviceIntegrity`:** Determina si la aplicación se ejecuta en un dispositivo Android genuino con Google Play Services, que pasa las comprobaciones de integridad del sistema y cumple los requisitos de compatibilidad. Ofrece un veredicto opcional `meetsStrongIntegrity` para garantías de integridad más robustas (basado en Key Attestation).
+        *   **`deviceIntegrity`:** Determina si la aplicación se ejecuta en un dispositivo Web Platform genuino con Google Play Services, que pasa las comprobaciones de integridad del sistema y cumple los requisitos de compatibilidad. Ofrece un veredicto opcional `meetsStrongIntegrity` para garantías de integridad más robustas (basado en Key Attestation).
 *   **Toma de Decisiones Basada en Veredictos:** La API no toma decisiones por sí misma. Proporciona información para que el desarrollador decida cómo responder: desde reducir el rendimiento del servicio, solicitar un CAPTCHA, hasta bloquear funcionalidades sensibles o el acceso completo. La clave es la implementación contextual y gradual.
 *   **Casos de Uso:** Esencial para aplicaciones financieras, juegos (anti-cheat), mensajería (prevención de uso de API por terceros), streaming (protección de monetización) y cualquier aplicación que maneje datos sensibles o pagos.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-La implementación de la Play Integrity API es crucial para la seguridad y la confianza en la plataforma Yendo, alineándose con sus invariantes:
+La implementación de la Play Integrity API es crucial para la seguridad y la confianza en la plataforma WebFactory, alineándose con sus invariantes:
 
-*   **DNA Pisa Internet:** La Play Integrity API es la herramienta fundamental para asegurar que el "ADN" de Yendo (su aplicación genuina) es lo que realmente está interactuando con sus servicios en internet. Esto protege contra versiones modificadas, clones o scripts que intenten suplantar la aplicación oficial, garantizando la integridad de los datos y las interacciones.
-*   **Fricción Cero:** La implementación de la Play Integrity API debe diseñarse para minimizar la fricción para los usuarios legítimos. En lugar de un bloqueo total ante cualquier fallo, Yendo puede adoptar un enfoque gradual:
+*   **DNA Pisa Internet:** La Play Integrity API es la herramienta fundamental para asegurar que el "ADN" de WebFactory (su aplicación genuina) es lo que realmente está interactuando con sus servicios en internet. Esto protege contra versiones modificadas, clones o scripts que intenten suplantar la aplicación oficial, garantizando la integridad de los datos y las interacciones.
+*   **Fricción Cero:** La implementación de la Play Integrity API debe diseñarse para minimizar la fricción para los usuarios legítimos. En lugar de un bloqueo total ante cualquier fallo, WebFactory puede adoptar un enfoque gradual:
     *   Para veredictos de baja integridad, se podría solicitar una reautenticación, limitar ciertas funcionalidades no críticas o añadir CAPTCHAs.
     *   Para veredictos de alta integridad, se puede habilitar el acceso completo a todas las funciones, incluyendo las más sensibles (pagos, gestión de "Grupos").
     *   Esto permite mantener una experiencia fluida para la mayoría, mientras se mitigan los riesgos de forma inteligente.
-*   **Expo 57 y React Native:** Dado que Yendo utiliza React Native y Expo, la integración de la Play Integrity API requerirá un módulo nativo (nativa module) o una librería de terceros que exponga esta funcionalidad de Android al entorno JavaScript. Es vital investigar las soluciones existentes o desarrollar una que se integre de manera limpia y eficiente, respetando la arquitectura de Yendo.
-*   **Venue/Experiencia/Grupo y Dunbar 4-6:** La seguridad subyacente proporcionada por la Play Integrity API es esencial para proteger la integridad de las interacciones sociales y la gestión de "Grupos" y "Experiencias" dentro de un "Venue". Asegurar que los usuarios interactúan a través de una aplicación y un dispositivo confiables fomenta la confianza y previene el abuso en las comunidades de Yendo, que operan bajo la dinámica de Dunbar 4-6.
+*   **Expo 57 y Modern Web UI (CSS/WAAPI):** Dado que WebFactory utiliza Modern Web UI (CSS/WAAPI) y Expo, la integración de la Play Integrity API requerirá un módulo nativo (nativa module) o una librería de terceros que exponga esta funcionalidad de Web Platform al entorno JavaScript. Es vital investigar las soluciones existentes o desarrollar una que se integre de manera limpia y eficiente, respetando la arquitectura de WebFactory.
+*   **Venue/Experiencia/Grupo y Dunbar 4-6:** La seguridad subyacente proporcionada por la Play Integrity API es esencial para proteger la integridad de las interacciones sociales y la gestión de "Grupos" y "Experiencias" dentro de un "Venue". Asegurar que los usuarios interactúan a través de una aplicación y un dispositivo confiables fomenta la confianza y previene el abuso en las comunidades de WebFactory, que operan bajo la dinámica de Dunbar 4-6.
 *   **Dark OLED y Material 3:** Aunque directamente no relacionados con la seguridad, una base de seguridad robusta es un requisito no funcional para cualquier experiencia de usuario de alta calidad. La confianza en la plataforma es tan importante como una interfaz visualmente atractiva y eficiente.
-*   **`createClient` y `StyleSheet.create`:** La integración de la Play Integrity API debe seguir los patrones de desarrollo de Yendo. El módulo o servicio que interactúe con la API debe ser encapsulado de manera que se alinee con el principio de un `createClient` único y el uso canónico de `StyleSheet.create`, asegurando consistencia arquitectónica y mantenibilidad.
+*   **`createClient` y `StyleSheet.create`:** La integración de la Play Integrity API debe seguir los patrones de desarrollo de WebFactory. El módulo o servicio que interactúe con la API debe ser encapsulado de manera que se alinee con el principio de un `createClient` único y el uso canónico de `StyleSheet.create`, asegurando consistencia arquitectónica y mantenibilidad.
 
 ### 4. Citas Clave
 
 *   "Your app isn't always your app." (Tu aplicación no siempre es tu aplicación.)
 *   "Trust in your app is more complicated. You must ask, 'Do I trust each and every part of this picture: the firmware, the OS, the application, the device, and the user?' We call this layers of trust." (La confianza en tu aplicación es más complicada. Debes preguntar: '¿Confío en cada parte de esta imagen: el firmware, el SO, la aplicación, el dispositivo y el usuario?' A esto lo llamamos capas de confianza.)
 *   "Device attestation allows developers to learn about the security of devices' current environment." (La autenticación de dispositivos permite a los desarrolladores conocer la seguridad del entorno actual de los dispositivos.)
-*   "The best option for attestation in Android is the Play Integrity API." (La mejor opción para la autenticación en Android es la Play Integrity API.)
+*   "The best option for attestation in Web Platform is the Play Integrity API." (La mejor opción para la autenticación en Web Platform es la Play Integrity API.)
 *   "Play Integrity API simplifies the response and this allows you as the developer to focus on your larger responsibility of preventing access to your service based on the results." (La Play Integrity API simplifica la respuesta y esto te permite, como desarrollador, centrarte en tu mayor responsabilidad de prevenir el acceso a tu servicio basándote en los resultados.)
 *   "It's actually better to identify where in your app device security is essential and find ways to implement the API and handle the responses in those locations." (En realidad, es mejor identificar dónde en tu aplicación la seguridad del dispositivo es esencial y encontrar formas de implementar la API y manejar las respuestas en esas ubicaciones.)
 
@@ -4253,7 +4253,7 @@ La implementación de la Play Integrity API es crucial para la seguridad y la co
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -4270,11 +4270,11 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-# Informe de Investigación: Construyendo Experiencias Premium en React Native para Yendo Mobile
+# Informe de Investigación: Construyendo Experiencias Premium en Modern Web UI (CSS/WAAPI) para la Web Software Factory
 
 ## 1. Concepto Central y Tesis
 
-El problema central identificado en la comunidad de React Native es la tendencia a crear aplicaciones que se perciben como una "web en una caja" ("web in a box"): interfaces genéricas, falta de sistemas de diseño unificados y desconocimiento de las convenciones de plataforma. La tesis principal es que para construir aplicaciones React Native con una sensación premium y una UX de alta calidad, es imperativo **respetar profundamente las convenciones de cada plataforma (iOS y Android)**, aprovechar sus sistemas de diseño nativos y enfocarse en experiencias inmersivas, conscientes del contexto y táctiles, priorizando la calidad de la experiencia sobre la mera reusabilidad del código. El objetivo es que la aplicación se sienta tan nativa y pulida como las mejores aplicaciones del mercado.
+El problema central identificado en la comunidad de Modern Web UI (CSS/WAAPI) es la tendencia a crear aplicaciones que se perciben como una "web en una caja" ("web in a box"): interfaces genéricas, falta de sistemas de diseño unificados y desconocimiento de las convenciones de plataforma. La tesis principal es que para construir aplicaciones Modern Web UI (CSS/WAAPI) con una sensación premium y una UX de alta calidad, es imperativo **respetar profundamente las convenciones de cada plataforma (iOS y Web Platform)**, aprovechar sus sistemas de diseño nativos y enfocarse en experiencias inmersivas, conscientes del contexto y táctiles, priorizando la calidad de la experiencia sobre la mera reusabilidad del código. El objetivo es que la aplicación se sienta tan nativa y pulida como las mejores aplicaciones del mercado.
 
 ## 2. Hallazgos Técnicos y Arquitectónicos Clave
 
@@ -4298,12 +4298,12 @@ La clave para una UX premium reside en la atención al detalle y la adopción de
 *   **Animaciones:** Usar animaciones con propósito, no "sobrecocinarlas". Deben proporcionar feedback sutil, animar tanto la entrada como la salida, y combinarse con gestos y hápticos.
 *   **Sistema de Diseño Estricto:** Implementar un sistema de tokens de espaciado y tipografía limitado y consistente. Priorizar la jerarquía visual y evitar el abuso de sombras, bordes, gradientes y `borderRadius`. Mantener una iconografía unificada.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-Para Yendo Mobile, la implementación de estos principios se traduce en una experiencia de usuario superior, alineada con los invariantes de la marca:
+Para la Web Software Factory, la implementación de estos principios se traduce en una experiencia de usuario superior, alineada con los invariantes de la marca:
 
-*   **Expo 57 y React Native:** Aprovechar las últimas capacidades de Expo para integrar componentes nativos y transiciones de elementos compartidos (Reanimated), garantizando que el "DNA pisa internet" y la aplicación se sienta nativa y de alto rendimiento.
-*   **Dark OLED y Material 3:** Diseñar un sistema de temas que respete Material 3 para Android y las Human Interface Guidelines para iOS, con un modo Dark OLED impecable. Esto incluye asegurar que los efectos de blur y otros elementos visuales se adapten perfectamente al tema oscuro, manteniendo la legibilidad y la estética premium.
+*   **Expo 57 y Modern Web UI (CSS/WAAPI):** Aprovechar las últimas capacidades de Expo para integrar componentes nativos y transiciones de elementos compartidos (Reanimated), garantizando que el "DNA pisa internet" y la aplicación se sienta nativa y de alto rendimiento.
+*   **Dark OLED y Material 3:** Diseñar un sistema de temas que respete Material 3 para Web Platform y las Human Interface Guidelines para iOS, con un modo Dark OLED impecable. Esto incluye asegurar que los efectos de blur y otros elementos visuales se adapten perfectamente al tema oscuro, manteniendo la legibilidad y la estética premium.
 *   **Fricción Cero:**
     *   **Memoria Muscular:** Implementar el guardado de la posición de scroll y el estado de visualización en listas de `Venue`, `Experiencia` y `Grupo` utilizando una solución de almacenamiento rápido (ej. MMKV), permitiendo a los usuarios retomar su actividad sin esfuerzo.
     *   **Navegación Fluida:** Utilizar "Shared Routes" para que los usuarios puedan explorar `Venues`, `Experiencias` o `Grupos` sin perder el contexto de su actividad principal. Implementar gestos de retroceso de ancho completo para una navegación intuitiva.
@@ -4315,11 +4315,11 @@ Para Yendo Mobile, la implementación de estos principios se traduce en una expe
     *   **Colores Adaptativos:** Extraer colores de las imágenes de `Venues`, `Experiencias` o `Grupos` para adaptar dinámicamente la interfaz, creando una experiencia visual inmersiva y única para cada contenido.
     *   **Estados Vacíos con Propósito:** En listas vacías de `Venues`, `Experiencias` o `Grupos`, guiar al usuario con acciones claras y atractivas (ej. "Explorar nuevos Venues").
 *   **Dunbar 4-6:** Para la funcionalidad de `Grupo`, el diseño de la interfaz debe facilitar la interacción íntima y la gestión de grupos pequeños (4-6 personas), quizás con elementos visuales que refuercen la conexión personal y la facilidad de coordinación.
-*   **Un `createClient` y `StyleSheet.create`:** Esto subraya la necesidad de un sistema de diseño unificado y consistente. Yendo debe establecer un sistema de tokens de espaciado y tipografía estricto, y una iconografía coherente, evitando la fragmentación visual y la sensación de "web en una caja".
+*   **Un `createClient` y `StyleSheet.create`:** Esto subraya la necesidad de un sistema de diseño unificado y consistente. WebFactory debe establecer un sistema de tokens de espaciado y tipografía estricto, y una iconografía coherente, evitando la fragmentación visual y la sensación de "web en una caja".
 
 ## 4. Citas Clave
 
-*   "The biggest problem I see within our React Native community is what I call it web in a box."
+*   "The biggest problem I see within our Modern Web UI (CSS/WAAPI) community is what I call it web in a box."
 *   "Respect the platform."
 *   "The native design system are out there. They are not just PDF. They are not just boring text. They are built because billions of money has been spent on the UX."
 *   "It's a one line of code that brings that instantly brings the immersiveness within our app."
@@ -4356,7 +4356,7 @@ Para Yendo Mobile, la implementación de estos principios se traduce en una expe
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -4373,7 +4373,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-# Informe de Investigación: Aplicación de "AI Skills" en Yendo Mobile
+# Informe de Investigación: Aplicación de "AI Skills" en la Web Software Factory
 
 ## 1. Concepto Central y Tesis
 
@@ -4395,29 +4395,29 @@ El concepto central del video es la utilización de "AI Skills" (habilidades de 
 *   **Repositorios de Skills:** Existen repositorios comunitarios (Superpowers, Aens, Composio SQ) que centralizan y comparten estos skills.
 *   **Impacto en el Desarrollo:** Los skills permiten a la IA generar código y soluciones más alineadas con estándares de la industria y específicos del proyecto, reduciendo la necesidad de refactorización manual y mejorando la productividad.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-La implementación de "AI Skills" ofrece una oportunidad estratégica para Yendo Mobile, permitiendo que la IA se convierta en una extensión de su ADN y sus invariantes:
+La implementación de "AI Skills" ofrece una oportunidad estratégica para la Web Software Factory, permitiendo que la IA se convierta en una extensión de su ADN y sus invariantes:
 
-*   **Expo 57 y React Native:**
-    *   **Skill "Yendo RN Best Practices":** Crear un skill que codifique las mejores prácticas de React Native específicas para Expo 57, incluyendo patrones de componentes, optimizaciones de rendimiento, manejo de estado y navegación. Esto aseguraría que el código generado por IA sea directamente utilizable y de alta calidad.
-    *   **`un createClient` y `StyleSheet.create`:** Integrar en el skill "Yendo RN Best Practices" directrices explícitas para el uso de una única instancia de `createClient` y la adopción universal de `StyleSheet.create` para la definición de estilos, garantizando la consistencia arquitectónica.
-    *   **`sheet canónico`:** El mismo skill podría incluir la estructura y principios del "sheet canónico" de Yendo, asegurando que cualquier componente o estilo generado se alinee con la base de código existente.
+*   **Expo 57 y Modern Web UI (CSS/WAAPI):**
+    *   **Skill "WebFactory RN Best Practices":** Crear un skill que codifique las mejores prácticas de Modern Web UI (CSS/WAAPI) específicas para Expo 57, incluyendo patrones de componentes, optimizaciones de rendimiento, manejo de estado y navegación. Esto aseguraría que el código generado por IA sea directamente utilizable y de alta calidad.
+    *   **`un createClient` y `StyleSheet.create`:** Integrar en el skill "WebFactory RN Best Practices" directrices explícitas para el uso de una única instancia de `createClient` y la adopción universal de `StyleSheet.create` para la definición de estilos, garantizando la consistencia arquitectónica.
+    *   **`sheet canónico`:** El mismo skill podría incluir la estructura y principios del "sheet canónico" de WebFactory, asegurando que cualquier componente o estilo generado se alinee con la base de código existente.
 
 *   **Dark OLED y Material 3:**
-    *   **Skill "Yendo Design System (MD3/OLED)":** Desarrollar un skill de "Interface Design" que incorpore las especificaciones de Material 3 y la paleta de colores optimizada para Dark OLED de Yendo. Este skill guiaría a la IA en la generación de interfaces que cumplan con la identidad visual y la experiencia de usuario deseada, incluyendo tipografía, espaciado y componentes específicos.
+    *   **Skill "WebFactory Design System (MD3/OLED)":** Desarrollar un skill de "Interface Design" que incorpore las especificaciones de Material 3 y la paleta de colores optimizada para Dark OLED de WebFactory. Este skill guiaría a la IA en la generación de interfaces que cumplan con la identidad visual y la experiencia de usuario deseada, incluyendo tipografía, espaciado y componentes específicos.
 
 *   **Fricción Cero:**
-    *   **Skill "Yendo UX Flow":** Crear un skill de "Brainstorming" o "Interface Design" que, al diseñar flujos de usuario o funcionalidades, priorice la "Fricción Cero". La IA sería instruida para preguntar sobre puntos de dolor, simplificación de pasos y retroalimentación instantánea, asegurando que las soluciones generadas minimicen obstáculos para el usuario.
+    *   **Skill "WebFactory UX Flow":** Crear un skill de "Brainstorming" o "Interface Design" que, al diseñar flujos de usuario o funcionalidades, priorice la "Fricción Cero". La IA sería instruida para preguntar sobre puntos de dolor, simplificación de pasos y retroalimentación instantánea, asegurando que las soluciones generadas minimicen obstáculos para el usuario.
 
 *   **Lenguaje Venue/Experiencia/Grupo:**
-    *   **Skill "Yendo Conceptual Framework":** Un skill de "Brainstorming" o "Content Generation" que instruya a la IA a utilizar y reforzar consistentemente los conceptos de "Venue", "Experiencia" y "Grupo" en cualquier texto generado (descripciones de funciones, mensajes de usuario, documentación). Esto aseguraría que el lenguaje de la aplicación refleje el ADN de Yendo.
+    *   **Skill "WebFactory Conceptual Framework":** Un skill de "Brainstorming" o "Content Generation" que instruya a la IA a utilizar y reforzar consistentemente los conceptos de "Venue", "Experiencia" y "Grupo" en cualquier texto generado (descripciones de funciones, mensajes de usuario, documentación). Esto aseguraría que el lenguaje de la aplicación refleje el ADN de WebFactory.
 
 *   **Dunbar 4-6:**
-    *   **Skill "Yendo Social Dynamics":** Un skill de "Brainstorming" o "Feature Design" que guíe a la IA en la creación de funcionalidades sociales que promuevan interacciones significativas dentro de grupos pequeños (4-6 personas), en línea con el número de Dunbar. Esto podría incluir consideraciones sobre privacidad, gestión de grupos y comunicación enfocada.
+    *   **Skill "WebFactory Social Dynamics":** Un skill de "Brainstorming" o "Feature Design" que guíe a la IA en la creación de funcionalidades sociales que promuevan interacciones significativas dentro de grupos pequeños (4-6 personas), en línea con el número de Dunbar. Esto podría incluir consideraciones sobre privacidad, gestión de grupos y comunicación enfocada.
 
 *   **DNA pisa internet:**
-    *   **Skill "Yendo Brand Voice":** Un skill de "Content Generation" que asegure que todo el contenido generado por IA (marketing, soporte, UI copy) refleje la voz, el tono y los valores fundamentales del "DNA" de Yendo, proyectando una imagen coherente y auténtica en todas las interacciones digitales.
+    *   **Skill "WebFactory Brand Voice":** Un skill de "Content Generation" que asegure que todo el contenido generado por IA (marketing, soporte, UI copy) refleje la voz, el tono y los valores fundamentales del "DNA" de WebFactory, proyectando una imagen coherente y auténtica en todas las interacciones digitales.
 
 ## 4. Citas Clave
 
@@ -4452,7 +4452,7 @@ La implementación de "AI Skills" ofrece una oportunidad estratégica para Yendo
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -4469,18 +4469,18 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Animaciones Modernas con React Native Reanimated v2 para Yendo Mobile
+## Informe de Investigación: Animaciones Modernas con Modern Web UI (CSS/WAAPI) Reanimated v2 para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
-El video presenta React Native Reanimated v2 como la solución definitiva para implementar animaciones de alto rendimiento y fluidas en aplicaciones móviles desarrolladas con React Native. La tesis central es que Reanimated v2 supera significativamente la API `Animated` nativa de React Native en términos de rendimiento, facilidad de uso e integración con gestos, al minimizar los viajes a través del "bridge" de React Native y ejecutar lógica de animación (worklets) directamente en el hilo de UI nativo. Esto permite crear experiencias de usuario "sin fricción" y visualmente atractivas, crucial para dispositivos de gama baja y para la percepción de una aplicación nativa.
+El video presenta Modern Web UI (CSS/WAAPI) Reanimated v2 como la solución definitiva para implementar animaciones de alto rendimiento y fluidas en aplicaciones móviles desarrolladas con Modern Web UI (CSS/WAAPI). La tesis central es que Reanimated v2 supera significativamente la API `Animated` nativa de Modern Web UI (CSS/WAAPI) en términos de rendimiento, facilidad de uso e integración con gestos, al minimizar los viajes a través del "bridge" de Modern Web UI (CSS/WAAPI) y ejecutar lógica de animación (worklets) directamente en el hilo de UI nativo. Esto permite crear experiencias de usuario "sin fricción" y visualmente atractivas, crucial para dispositivos de gama baja y para la percepción de una aplicación nativa.
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
-*   **El "Bridge" de React Native:** La comunicación entre el hilo JavaScript y el hilo de UI nativo se realiza a través de un "bridge". Los viajes frecuentes por este bridge son costosos y pueden introducir latencia en la UI, afectando la fluidez de las animaciones.
-*   **Importancia del Rendimiento y la Animación:** Las animaciones son fundamentales para proporcionar retroalimentación visual a las interacciones del usuario y los cambios de estado, especialmente en aplicaciones móviles basadas en gestos. Es vital lograr 60 fotogramas por segundo (FPS) para una experiencia "suave como la mantequilla", particularmente en dispositivos Android de bajo costo.
-*   **Limitaciones de la API `Animated` de React Native:** Aunque es el estándar, presenta deficiencias en rendimiento, facilidad de uso e integración con manejadores de gestos complejos.
-*   **React Native Reanimated v2:**
+*   **El "Bridge" de Modern Web UI (CSS/WAAPI):** La comunicación entre el hilo JavaScript y el hilo de UI nativo se realiza a través de un "bridge". Los viajes frecuentes por este bridge son costosos y pueden introducir latencia en la UI, afectando la fluidez de las animaciones.
+*   **Importancia del Rendimiento y la Animación:** Las animaciones son fundamentales para proporcionar retroalimentación visual a las interacciones del usuario y los cambios de estado, especialmente en aplicaciones móviles basadas en gestos. Es vital lograr 60 fotogramas por segundo (FPS) para una experiencia "suave como la mantequilla", particularmente en dispositivos Web Platform de bajo costo.
+*   **Limitaciones de la API `Animated` de Modern Web UI (CSS/WAAPI):** Aunque es el estándar, presenta deficiencias en rendimiento, facilidad de uso e integración con manejadores de gestos complejos.
+*   **Modern Web UI (CSS/WAAPI) Reanimated v2:**
     *   **Worklets:** Funciones JavaScript que se ejecutan directamente en el hilo de UI nativo, eliminando la necesidad de cruzar el bridge para cada actualización de animación. Se definen con una directiva `worklet` y un plugin de Babel se encarga de la transformación.
     *   **API Basada en Hooks:** Ofrece un modelo mental simplificado y una API más amigable para declarar animaciones:
         *   `useAnimatedStyle`: Permite definir estilos que se evalúan y actualizan en el hilo nativo. Requiere el uso de componentes animados (`createAnimatedComponent`).
@@ -4492,9 +4492,9 @@ El video presenta React Native Reanimated v2 como la solución definitiva para i
     *   **Integración con Gestos:** Se integra poderosamente con `react-native-gesture-handler` a través de `useAnimatedScrollHandler` y `useAnimatedGestureHandler`, facilitando la creación de animaciones impulsadas por gestos complejos.
     *   **Objeto `context` en Gestos:** Permite persistir datos entre eventos de gestos, simplificando la lógica para animaciones interactivas complejas como el "pinch-to-zoom".
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-*   **Estandarización de Animaciones:** Adoptar React Native Reanimated v2 como la biblioteca estándar para todas las animaciones en Yendo. Esto asegura una experiencia de usuario consistente, de alto rendimiento y "sin fricción", alineándose con el principio "DNA pisa internet" al ofrecer una calidad de aplicación móvil superior.
+*   **Estandarización de Animaciones:** Adoptar Modern Web UI (CSS/WAAPI) Reanimated v2 como la biblioteca estándar para todas las animaciones en WebFactory. Esto asegura una experiencia de usuario consistente, de alto rendimiento y "sin fricción", alineándose con el principio "DNA pisa internet" al ofrecer una calidad de aplicación móvil superior.
 *   **Experiencia de Usuario "Fricción Cero":** Utilizar Reanimated v2 para eliminar el lag y las transiciones abruptas. Implementar animaciones fluidas para:
     *   **Carga de Contenido:** Fades y escalas al cargar imágenes o datos, como se mostró en el ejemplo de carga de imágenes.
     *   **Feedback de Interacción:** Animaciones de opacidad o escala en elementos `Pressable` para indicar el estado de interacción, mejorando la respuesta táctil.
@@ -4505,7 +4505,7 @@ El video presenta React Native Reanimated v2 como la solución definitiva para i
     *   **Venue:** Animaciones al explorar un "Venue", como transiciones entre secciones o elementos interactivos que reaccionan al scroll.
     *   **Experiencia:** Guías animadas o feedback visual para cada paso de una "Experiencia", haciendo el proceso más atractivo y claro.
     *   **Grupo:** Animaciones sutiles para actualizaciones en tiempo real dentro de un "Grupo" (ej. reacciones, mensajes nuevos), manteniendo la fluidez y la sensación de conexión íntima, relevante para el principio "Dunbar 4-6".
-*   **Consistencia Arquitectónica (un createClient, StyleSheet.create):** Asegurar que la integración de Reanimated v2 sea compatible con los patrones de Yendo. Esto implica envolver componentes estándar con `createAnimatedComponent` donde sea necesario y utilizar `useAnimatedStyle` dentro de la estructura de estilos existente, manteniendo la coherencia en la base de código y evitando la proliferación de patrones de estilo.
+*   **Consistencia Arquitectónica (un createClient, StyleSheet.create):** Asegurar que la integración de Reanimated v2 sea compatible con los patrones de WebFactory. Esto implica envolver componentes estándar con `createAnimatedComponent` donde sea necesario y utilizar `useAnimatedStyle` dentro de la estructura de estilos existente, manteniendo la coherencia en la base de código y evitando la proliferación de patrones de estilo.
 
 ### 4. Citas Clave
 
@@ -4545,7 +4545,7 @@ El video presenta React Native Reanimated v2 como la solución definitiva para i
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -4553,7 +4553,6 @@ ultima_revision: 2026-08-27
 ---
 
 ## 🎬 Análisis de Video
-
 
 <think>
 Here's a thinking process:
@@ -4636,7 +4635,7 @@ Here's a thinking process:
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -4653,7 +4652,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: La IA como Motor de Fricción Cero y Personalización para Yendo Mobile
+## Informe de Investigación: La IA como Motor de Fricción Cero y Personalización para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -4668,17 +4667,17 @@ El video destaca la evolución de la IA hacia la **autonomía en su propio desar
 *   **IA en Dispositivos y Sistemas Conectados:** La proliferación de dispositivos inteligentes y ciudades conectadas genera vastos volúmenes de datos, haciendo que la IA sea crucial para procesar, interpretar y actuar sobre esta información en tiempo real.
 *   **Democratización de la Creación de IA:** La visión de que "todos pueden crear IA" a través de herramientas y procesos automatizados, eliminando barreras técnicas y de conocimiento.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-Integrando los invariantes de Yendo con los hallazgos sobre la automatización de la IA, se proponen las siguientes acciones:
+Integrando los invariantes de WebFactory con los hallazgos sobre la automatización de la IA, se proponen las siguientes acciones:
 
 *   **Fricción Cero y Personalización con IA:**
     *   **Recomendaciones Inteligentes (Venue/Experiencia/Grupo, Dunbar 4-6):** Implementar IA para analizar patrones de interacción dentro de los "Grupos" (manteniendo el tamaño Dunbar 4-6), preferencias de "Experiencias" y ubicaciones de "Venue". Esto permitirá sugerir proactivamente eventos, actividades o nuevos grupos, personalizando la experiencia del usuario y reduciendo la fricción en la búsqueda de contenido relevante.
     *   **Asistencia por Lenguaje Natural:** Integrar un asistente de IA (PLN) para que los usuarios puedan interactuar con la aplicación mediante voz o texto, simplificando la creación de "Experiencias", la gestión de "Grupos" o la búsqueda de "Venues" sin navegación manual.
     *   **Optimización de Procesos Internos:** Utilizar IA para automatizar tareas repetitivas en la gestión de la aplicación, como la moderación de contenido o la optimización de la infraestructura de backend para garantizar una experiencia fluida y de "fricción cero".
 
-*   **Desarrollo y Diseño (Expo 57, React Native, Dark OLED, Material 3, un createClient, StyleSheet.create):**
-    *   **Asistencia de IA en el Desarrollo (React Native, Expo 57):** Explorar herramientas de IA que puedan asistir en la generación de código React Native, la refactorización, la optimización del rendimiento o la creación de pruebas automatizadas, adhiriéndose a patrones como `un createClient` y `StyleSheet.create` para mantener la consistencia y la "DNA pisa internet".
+*   **Desarrollo y Diseño (Expo 57, Modern Web UI (CSS/WAAPI), Dark OLED, Material 3, un createClient, StyleSheet.create):**
+    *   **Asistencia de IA en el Desarrollo (Modern Web UI (CSS/WAAPI), Expo 57):** Explorar herramientas de IA que puedan asistir en la generación de código Modern Web UI (CSS/WAAPI), la refactorización, la optimización del rendimiento o la creación de pruebas automatizadas, adhiriéndose a patrones como `un createClient` y `StyleSheet.create` para mantener la consistencia y la "DNA pisa internet".
     *   **Personalización Adaptativa de UI/UX (Dark OLED, Material 3):** La IA podría adaptar dinámicamente elementos de Material 3 o el tema Dark OLED basándose en el contexto del usuario (hora del día, nivel de batería, preferencias explícitas), optimizando la visibilidad y el consumo de energía en pantallas OLED.
     *   **Auditoría de Código y Estilo:** Implementar herramientas de IA para auditar automáticamente el código y asegurar la adherencia a las convenciones de `un createClient` y `StyleSheet.create`, garantizando la calidad y mantenibilidad del código base.
 
@@ -4722,7 +4721,7 @@ Integrando los invariantes de Yendo con los hallazgos sobre la automatización d
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -4739,7 +4738,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-Aquí está el informe final para Yendo Mobile, basado en la transcripción proporcionada:
+Aquí está el informe final para la Web Software Factory, basado en la transcripción proporcionada:
 
 ---
 
@@ -4764,23 +4763,23 @@ El concepto central del video es la **maximización de la productividad del desa
 *   **Herramientas MCP (Multi-Codebase Projects/Tools):** Integración con un solo clic de herramientas verificadas (ej. GitHub) mediante tokens de acceso personal, con énfasis en la seguridad y la precaución al usar herramientas de terceros.
 *   **Entornos de IA Avanzados (ej. Codex de ChatGPT):** La capacidad de configurar entornos de ejecución con acceso a internet (con dominios permitidos) para tareas complejas, destacando la importancia de explotar el potencial completo de estas herramientas.
 
-**3. Ideas Accionables para Yendo Mobile**
+**3. Ideas Accionables para la Web Software Factory**
 
-*   **Expo 57 (y versiones futuras):** Mantener la pila tecnológica de Yendo Mobile (Expo, React Native) actualizada es crucial. Investigar cómo las últimas versiones de Expo pueden integrarse con herramientas de IA para automatizar tareas de actualización, migración o incluso la generación de código específico de la plataforma.
-*   **React Native y Agentes de IA:** Explorar la aplicación de agentes de IA para tareas específicas de React Native:
-    *   **Refactorización de Componentes:** Usar IA para sugerir o implementar refactorizaciones en componentes de React Native, optimizando el rendimiento o la legibilidad.
-    *   **Generación de Código Boilerplate:** Automatizar la creación de componentes, hooks o pantallas con IA, siguiendo las convenciones de Yendo.
-    *   **Depuración Asistida por IA:** Integrar herramientas que permitan a la IA analizar logs de errores o trazas de pila para sugerir soluciones en React Native.
-*   **Dark OLED y Experiencia del Desarrollador:** Aunque no es una característica de IA, la atención a la experiencia del desarrollador es clave. Asegurar que el entorno de desarrollo de Yendo sea cómodo y eficiente, incluyendo la opción de temas oscuros para reducir la fatiga visual.
-*   **Material 3:** Si Yendo utiliza Material Design, explorar cómo la IA puede asistir en la implementación o migración a Material 3 en React Native, asegurando la consistencia del diseño y la eficiencia en el desarrollo de UI.
-*   **Fricción Cero en el Desarrollo:** Adoptar una mentalidad de "fricción cero" en los procesos internos de Yendo:
+*   **Expo 57 (y versiones futuras):** Mantener la pila tecnológica de la Web Software Factory (Expo, Modern Web UI (CSS/WAAPI)) actualizada es crucial. Investigar cómo las últimas versiones de Expo pueden integrarse con herramientas de IA para automatizar tareas de actualización, migración o incluso la generación de código específico de la plataforma.
+*   **Modern Web UI (CSS/WAAPI) y Agentes de IA:** Explorar la aplicación de agentes de IA para tareas específicas de Modern Web UI (CSS/WAAPI):
+    *   **Refactorización de Componentes:** Usar IA para sugerir o implementar refactorizaciones en componentes de Modern Web UI (CSS/WAAPI), optimizando el rendimiento o la legibilidad.
+    *   **Generación de Código Boilerplate:** Automatizar la creación de componentes, hooks o pantallas con IA, siguiendo las convenciones de WebFactory.
+    *   **Depuración Asistida por IA:** Integrar herramientas que permitan a la IA analizar logs de errores o trazas de pila para sugerir soluciones en Modern Web UI (CSS/WAAPI).
+*   **Dark OLED y Experiencia del Desarrollador:** Aunque no es una característica de IA, la atención a la experiencia del desarrollador es clave. Asegurar que el entorno de desarrollo de WebFactory sea cómodo y eficiente, incluyendo la opción de temas oscuros para reducir la fatiga visual.
+*   **Material 3:** Si WebFactory utiliza Material Design, explorar cómo la IA puede asistir en la implementación o migración a Material 3 en Modern Web UI (CSS/WAAPI), asegurando la consistencia del diseño y la eficiencia en el desarrollo de UI.
+*   **Fricción Cero en el Desarrollo:** Adoptar una mentalidad de "fricción cero" en los procesos internos de WebFactory:
     *   **Automatización de CI/CD:** Utilizar IA para optimizar pipelines de integración y despliegue continuo, detectando problemas antes y acelerando las entregas.
     *   **Gestión de Tareas con IA:** Integrar agentes de IA en la gestión de proyectos para automatizar la asignación de tareas, el seguimiento del progreso o la generación de informes.
-*   **Lenguaje Venue/Experiencia/Grupo (Aplicación de IA en el Producto):** Si Yendo Mobile tiene funcionalidades relacionadas con "Venue", "Experiencia" o "Grupo", considerar cómo la IA puede enriquecer estas áreas:
+*   **Lenguaje Venue/Experiencia/Grupo (Aplicación de IA en el Producto):** Si la Web Software Factory tiene funcionalidades relacionadas con "Venue", "Experiencia" o "Grupo", considerar cómo la IA puede enriquecer estas áreas:
     *   **Recomendaciones Personalizadas:** Agentes de IA que sugieran "venues" o "experiencias" basadas en el historial del usuario o preferencias del grupo.
     *   **Planificación Inteligente:** Asistentes de IA para organizar eventos o actividades grupales, gestionando logística o coordinando participantes.
     *   **Análisis de Sentimiento:** Utilizar IA para analizar el feedback de los usuarios sobre "experiencias" o "venues" y extraer insights accionables.
-*   **Dunbar 4-6 (Optimización de Equipos):** Aunque no se menciona directamente, la eficiencia individual y la colaboración efectiva son temas subyacentes. Yendo podría aplicar principios de equipos pequeños y enfocados (como el número de Dunbar) para maximizar la productividad, utilizando herramientas de IA para amplificar la capacidad de estos equipos reducidos.
+*   **Dunbar 4-6 (Optimización de Equipos):** Aunque no se menciona directamente, la eficiencia individual y la colaboración efectiva son temas subyacentes. WebFactory podría aplicar principios de equipos pequeños y enfocados (como el número de Dunbar) para maximizar la productividad, utilizando herramientas de IA para amplificar la capacidad de estos equipos reducidos.
 
 **4. Citas Clave**
 
@@ -4820,7 +4819,7 @@ El concepto central del video es la **maximización de la productividad del desa
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -4837,11 +4836,11 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: React Server Components en React Native para Yendo Mobile
+## Informe de Investigación: React Server Components en Modern Web UI (CSS/WAAPI) para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
-El concepto central es la aplicación de **React Server Components (RSC)** en entornos **React Native**, desafiando la percepción común de que son exclusivos para la web. La tesis principal es que los RSC ofrecen beneficios significativos para el desarrollo móvil, mejorando la velocidad de iteración, los mecanismos de actualización (OTA) y la arquitectura de super-aplicaciones, sin comprometer la experiencia de usuario nativa. Permiten una entrega de contenido más dinámica y eficiente, optimizando el uso de la red y la capacidad de respuesta de la aplicación.
+El concepto central es la aplicación de **React Server Components (RSC)** en entornos **Modern Web UI (CSS/WAAPI)**, desafiando la percepción común de que son exclusivos para la web. La tesis principal es que los RSC ofrecen beneficios significativos para el desarrollo móvil, mejorando la velocidad de iteración, los mecanismos de actualización (OTA) y la arquitectura de super-aplicaciones, sin comprometer la experiencia de usuario nativa. Permiten una entrega de contenido más dinámica y eficiente, optimizando el uso de la red y la capacidad de respuesta de la aplicación.
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
@@ -4853,20 +4852,20 @@ El concepto central es la aplicación de **React Server Components (RSC)** en en
 *   **"GraphQL out of the box":** Los RSC optimizan la transferencia de datos, enviando solo lo que se necesita, similar a los beneficios de GraphQL sin la necesidad de implementarlo explícitamente.
 *   **Integración con React:** Están diseñados para funcionar fluidamente con componentes cliente y el mecanismo de Suspense, manteniendo la experiencia de usuario nativa.
 *   **Seguridad:** Las preocupaciones sobre la ejecución de código JavaScript remoto malicioso son responsabilidad del framework, que deberá proporcionar herramientas para garantizar la seguridad.
-*   **Server Actions:** Aunque prometedoras para la interactividad, su implementación en React Native es actualmente compleja y requiere trabajo a nivel de bundler.
+*   **Server Actions:** Aunque prometedoras para la interactividad, su implementación en Modern Web UI (CSS/WAAPI) es actualmente compleja y requiere trabajo a nivel de bundler.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-*   **Expo 57 y React Native:** La adopción de RSC valida y potencia la estrategia de Yendo con React Native y Expo. El ejemplo de BlueSky (React Native, Expo, 3 plataformas) demuestra la viabilidad y el potencial de los RSC en un ecosistema familiar para Yendo.
-*   **Fricción Cero:** Los RSC son un habilitador clave para la "Fricción Cero". La capacidad de desplegar actualizaciones de componentes individuales de forma instantánea (el ejemplo del "botón de Navidad") reduce drásticamente la fricción en el ciclo de desarrollo y entrega, permitiendo a Yendo reaccionar rápidamente a las necesidades del mercado y del usuario.
+*   **Expo 57 y Modern Web UI (CSS/WAAPI):** La adopción de RSC valida y potencia la estrategia de WebFactory con Modern Web UI (CSS/WAAPI) y Expo. El ejemplo de BlueSky (Modern Web UI (CSS/WAAPI), Expo, 3 plataformas) demuestra la viabilidad y el potencial de los RSC en un ecosistema familiar para WebFactory.
+*   **Fricción Cero:** Los RSC son un habilitador clave para la "Fricción Cero". La capacidad de desplegar actualizaciones de componentes individuales de forma instantánea (el ejemplo del "botón de Navidad") reduce drásticamente la fricción en el ciclo de desarrollo y entrega, permitiendo a WebFactory reaccionar rápidamente a las necesidades del mercado y del usuario.
 *   **Lenguaje Venue/Experiencia/Grupo:**
     *   **Venue:** Los RSC podrían permitir la carga dinámica de características o contenido específico de un "Venue" (localización) sin requerir una actualización completa de la aplicación.
-    *   **Experiencia:** Facilitan la personalización y el despliegue rápido de nuevas "Experiencias" o funcionalidades específicas para eventos o temporadas, mejorando la agilidad de Yendo.
+    *   **Experiencia:** Facilitan la personalización y el despliegue rápido de nuevas "Experiencias" o funcionalidades específicas para eventos o temporadas, mejorando la agilidad de WebFactory.
     *   **Grupo:** Podrían habilitar la entrega de funcionalidades o interfaces personalizadas para diferentes "Grupos" de usuarios, optimizando la relevancia del contenido.
 *   **Dunbar 4-6:** La modularidad y la capacidad de despliegue independiente que ofrecen los RSC pueden apoyar la organización de equipos pequeños y autónomos, donde cada equipo podría ser responsable de un "módulo" o "Experiencia" específica, alineándose con el principio de Dunbar para la gestión de equipos.
 *   **Dark OLED / Material 3:** Aunque no directamente relacionados con RSC, la mejora en la velocidad de carga y la reducción de datos que ofrecen los RSC contribuyen a una experiencia de usuario más fluida y moderna, complementando la estética de Dark OLED y Material 3 al asegurar que la interfaz se cargue y responda de manera óptima.
-*   **DNA pisa internet:** Los RSC refuerzan este invariante al optimizar el uso de la red. Al enviar solo los datos y componentes necesarios, Yendo puede asegurar que su "ADN" (la experiencia central) se entregue de manera eficiente y rápida a través de internet, incluso en condiciones de red limitadas.
-*   **Invariantes de Código (`createClient`, `StyleSheet.create`):** La implementación de RSC no contradice los patrones de código de Yendo. Los RSC se centran en la arquitectura de datos y renderizado, no en la instanciación de clientes o la definición de estilos.
+*   **DNA pisa internet:** Los RSC refuerzan este invariante al optimizar el uso de la red. Al enviar solo los datos y componentes necesarios, WebFactory puede asegurar que su "ADN" (la experiencia central) se entregue de manera eficiente y rápida a través de internet, incluso en condiciones de red limitadas.
+*   **Invariantes de Código (`createClient`, `StyleSheet.create`):** La implementación de RSC no contradice los patrones de código de WebFactory. Los RSC se centran en la arquitectura de datos y renderizado, no en la instanciación de clientes o la definición de estilos.
 
 ### 4. Citas Clave
 
@@ -4906,7 +4905,7 @@ El concepto central es la aplicación de **React Server Components (RSC)** en en
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -4923,7 +4922,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Desmitificando los Motores JavaScript y Hermes para Yendo Mobile
+## Informe de Investigación: Desmitificando los Motores JavaScript y Hermes para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -4947,12 +4946,12 @@ El proceso de ejecución de JavaScript en motores como Hermes sigue una serie de
     *   **Mark and Sweep:** Un algoritmo común que primero "marca" todos los objetos accesibles desde las "raíces" (objetos globales, variables en la pila, manejadores de eventos) y luego "barre" y libera la memoria de los objetos no marcados.
     *   El principal desafío de la GC en el mundo real es el **rendimiento**, minimizando las pausas ("stop the world") que detienen la ejecución del programa. Hermes implementa sus propios recolectores de basura optimizados.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-La comprensión de los mecanismos internos de Hermes y los motores JavaScript ofrece varias oportunidades para Yendo Mobile:
+La comprensión de los mecanismos internos de Hermes y los motores JavaScript ofrece varias oportunidades para la Web Software Factory:
 
-*   **Fricción Cero y Rendimiento Óptimo:** El objetivo de "Fricción Cero" de Yendo se alinea directamente con la filosofía de rendimiento de Hermes. Al entender la compilación AOT, las optimizaciones de IR y la ejecución de bytecode, Yendo puede:
-    *   Asegurar que Hermes esté siempre habilitado y configurado óptimamente en sus proyectos React Native (Expo 57).
+*   **Fricción Cero y Rendimiento Óptimo:** El objetivo de "Fricción Cero" de WebFactory se alinea directamente con la filosofía de rendimiento de Hermes. Al entender la compilación AOT, las optimizaciones de IR y la ejecución de bytecode, WebFactory puede:
+    *   Asegurar que Hermes esté siempre habilitado y configurado óptimamente en sus proyectos Modern Web UI (CSS/WAAPI) (Expo 57).
     *   Diseñar la lógica JavaScript para ser lo más eficiente posible, minimizando la complejidad que pueda sobrecargar el motor.
     *   Ser consciente del uso de memoria para reducir las pausas de la recolección de basura, lo que es crucial para una experiencia de usuario fluida.
 *   **Experiencia de Usuario (Venue/Experiencia/Grupo):** Un motor JavaScript performante es la base de una "Experiencia" de usuario excepcional. La fluidez de la interfaz, la rapidez de las transiciones y la inmediatez de las interacciones en los contextos de "Venue" y "Grupo" dependen directamente de un motor eficiente. Un rendimiento deficiente puede romper la inmersión y la utilidad de la aplicación, independientemente de la calidad del diseño social (Dunbar 4-6).
@@ -4994,7 +4993,7 @@ La comprensión de los mecanismos internos de Hermes y los motores JavaScript of
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -5011,18 +5010,18 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Análisis: Expo SDK 56 y su Relevancia para Yendo Mobile
+## Informe de Análisis: Expo SDK 56 y su Relevancia para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
-El lanzamiento de Expo SDK 56 marca un hito significativo en la evolución de Expo, consolidando su posición como una plataforma robusta para el desarrollo de aplicaciones móviles multiplataforma con rendimiento nativo. El concepto central es la **"nativización" de React Native**, donde Expo busca cerrar la brecha entre el desarrollo JavaScript y las experiencias de usuario nativas de iOS (SwiftUI) y Android (Jetpack Compose). La tesis es que Expo SDK 56 permite a los desarrolladores construir aplicaciones con una fluidez, velocidad y estética indistinguibles de las nativas, simplificando drásticamente el proceso de desarrollo y optimizando el rendimiento, lo que se alinea perfectamente con la visión de Yendo de "DNA pisa internet".
+El lanzamiento de Expo SDK 56 marca un hito significativo en la evolución de Expo, consolidando su posición como una plataforma robusta para el desarrollo de aplicaciones móviles multiplataforma con rendimiento nativo. El concepto central es la **"nativización" de Modern Web UI (CSS/WAAPI)**, donde Expo busca cerrar la brecha entre el desarrollo JavaScript y las experiencias de usuario nativas de iOS (SwiftUI) y Web Platform (Jetpack Compose). La tesis es que Expo SDK 56 permite a los desarrolladores construir aplicaciones con una fluidez, velocidad y estética indistinguibles de las nativas, simplificando drásticamente el proceso de desarrollo y optimizando el rendimiento, lo que se alinea perfectamente con la visión de WebFactory de "DNA pisa internet".
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
-*   **Expo UI:** Introduce componentes universales (botón, switch, bottom sheet) que abstraen las implementaciones nativas de SwiftUI, Jetpack Compose y React Native Web. Esto elimina la necesidad de archivos `.android.tsx` y `.ios.tsx`, promoviendo una base de código unificada para experiencias nativas. El nuevo hook `useNativeState` permite el control directo del estado nativo, crucial para animaciones fluidas y entradas de texto sin parpadeos.
+*   **Expo UI:** Introduce componentes universales (botón, switch, bottom sheet) que abstraen las implementaciones nativas de SwiftUI, Jetpack Compose y Modern Web UI (CSS/WAAPI) Web. Esto elimina la necesidad de archivos `.Web Platform.tsx` y `.ios.tsx`, promoviendo una base de código unificada para experiencias nativas. El nuevo hook `useNativeState` permite el control directo del estado nativo, crucial para animaciones fluidas y entradas de texto sin parpadeos.
 *   **Rendimiento de Builds y Runtime:**
     *   **Builds:** Incorpora XC frameworks pre-construidos para iOS, acelerando los tiempos de compilación.
-    *   **Runtime (Android):** Un nuevo plugin compilador de Kotlin reemplaza la reflexión con generación de código en tiempo de compilación, resultando en arranques en frío un 40% más rápidos y renderizados iniciales un 33% más veloces.
+    *   **Runtime (Web Platform):** Un nuevo plugin compilador de Kotlin reemplaza la reflexión con generación de código en tiempo de compilación, resultando en arranques en frío un 40% más rápidos y renderizados iniciales un 33% más veloces.
     *   **Runtime (iOS):** Una nueva capa JSI elimina la capa intermedia de Objective-C, permitiendo la comunicación directa entre Swift/C++ y JSI, reduciendo la sobrecarga de llamadas y acelerando la aplicación.
 *   **Módulos Nativos Simplificados:** Introduce "inline modules" (experimental), permitiendo colocar archivos Swift o Kotlin directamente junto a los archivos JavaScript. Se mejoró la herramienta `create Expo module` con plantillas y soporte para añadir plataformas, facilitando la creación y compartición de módulos personalizados.
 *   **APIs y Herramientas Mejoradas:**
@@ -5032,27 +5031,27 @@ El lanzamiento de Expo SDK 56 marca un hito significativo en la evolución de Ex
     *   `Expo Widgets` para iOS es estable, con acceso completo al entorno.
     *   `Expo CLI` es hasta un 30% más rápido en escenarios complejos.
     *   `create Expo app` ahora incluye archivos amigables para agentes de IA (`agents.md`).
-*   **Navegación (Expo Router):** Se ha bifurcado de React Navigation, ofreciendo nuevas características como soporte experimental para barras de herramientas en Android, encabezados estilo Material y gestos predictivos de retroceso.
-*   **Brownfield:** Soporte experimental para alojar múltiples aplicaciones Expo brownfield y registrar turbo modules de aplicaciones host, facilitando la integración de React Native en aplicaciones nativas existentes.
+*   **Navegación (Expo Router):** Se ha bifurcado de React Navigation, ofreciendo nuevas características como soporte experimental para barras de herramientas en Web Platform, encabezados estilo Material y gestos predictivos de retroceso.
+*   **Brownfield:** Soporte experimental para alojar múltiples aplicaciones Expo brownfield y registrar turbo modules de aplicaciones host, facilitando la integración de Modern Web UI (CSS/WAAPI) en aplicaciones nativas existentes.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-Las mejoras de Expo SDK 56 son directamente aplicables a los principios y objetivos de Yendo:
+Las mejoras de Expo SDK 56 son directamente aplicables a los principios y objetivos de WebFactory:
 
-*   **Expo 57 y React Native:** La adopción de SDK 56 es un paso fundamental hacia la futura actualización a SDK 57. Las mejoras en rendimiento y la "nativización" de la UI refuerzan la elección de React Native como base tecnológica, permitiendo a Yendo construir una experiencia "DNA pisa internet" con la eficiencia del desarrollo multiplataforma.
+*   **Expo 57 y Modern Web UI (CSS/WAAPI):** La adopción de SDK 56 es un paso fundamental hacia la futura actualización a SDK 57. Las mejoras en rendimiento y la "nativización" de la UI refuerzan la elección de Modern Web UI (CSS/WAAPI) como base tecnológica, permitiendo a WebFactory construir una experiencia "DNA pisa internet" con la eficiencia del desarrollo multiplataforma.
 *   **Dark OLED y Material 3:** El soporte experimental para "material-style headers" en Expo Router y el uso de Jetpack Compose a través de Expo UI son oportunidades directas para implementar la estética de Material 3 y optimizar la interfaz para pantallas Dark OLED, asegurando una experiencia visual moderna y energéticamente eficiente.
 *   **Fricción Cero:**
     *   El hook `useNativeState` y los componentes universales de Expo UI son clave para lograr animaciones fluidas y entradas de texto sin parpadeos, eliminando la fricción en la interacción del usuario.
-    *   Las mejoras de rendimiento en tiempo de ejecución (arranque en frío, primer render, JSI) garantizan que la aplicación Yendo se sienta instantánea y receptiva, contribuyendo a una experiencia de usuario sin interrupciones.
-*   **Lenguaje Venue/Experiencia/Grupo:** Los componentes universales de Expo UI proporcionan una base sólida para construir interfaces consistentes y de alta calidad que representen los conceptos de "Venue", "Experiencia" y "Grupo" de Yendo de manera fluida y nativa en todas las plataformas. Esto asegura que la identidad de marca de Yendo se traduzca en una interacción de usuario coherente y de alto nivel.
-*   **Dunbar 4-6:** Una aplicación más rápida y fluida, con interacciones sin fricción, facilita la comunicación y la gestión de grupos pequeños (4-6 personas), haciendo que la experiencia de Yendo sea más natural y eficiente para su propósito social.
-*   **Un `createClient`, `StyleSheet.create` y el `sheet` canónico:** La filosofía de Expo UI de eliminar `.android.tsx` y `.ios.tsx` mediante componentes universales, junto con la consistencia de APIs (`StatusBar`, `NavigationBar`) y el enfoque orientado a objetos en otras APIs, apoya directamente la meta de Yendo de mantener una base de código unificada y limpia. Esto reduce la necesidad de lógica condicional por plataforma, facilitando la adherencia a un único patrón de `createClient` y `StyleSheet.create` para la gestión de estilos y clientes de API, promoviendo la reutilización y la mantenibilidad.
-*   **Integración de Agentes de IA:** La inclusión de archivos `agents.md` y plugins para agentes de IA en `create Expo app` ofrece una oportunidad para Yendo de acelerar el desarrollo, depuración y mantenimiento de su aplicación, aprovechando las herramientas de IA para optimizar el flujo de trabajo.
+    *   Las mejoras de rendimiento en tiempo de ejecución (arranque en frío, primer render, JSI) garantizan que la aplicación WebFactory se sienta instantánea y receptiva, contribuyendo a una experiencia de usuario sin interrupciones.
+*   **Lenguaje Venue/Experiencia/Grupo:** Los componentes universales de Expo UI proporcionan una base sólida para construir interfaces consistentes y de alta calidad que representen los conceptos de "Venue", "Experiencia" y "Grupo" de WebFactory de manera fluida y nativa en todas las plataformas. Esto asegura que la identidad de marca de WebFactory se traduzca en una interacción de usuario coherente y de alto nivel.
+*   **Dunbar 4-6:** Una aplicación más rápida y fluida, con interacciones sin fricción, facilita la comunicación y la gestión de grupos pequeños (4-6 personas), haciendo que la experiencia de WebFactory sea más natural y eficiente para su propósito social.
+*   **Un `createClient`, `StyleSheet.create` y el `sheet` canónico:** La filosofía de Expo UI de eliminar `.Web Platform.tsx` y `.ios.tsx` mediante componentes universales, junto con la consistencia de APIs (`StatusBar`, `NavigationBar`) y el enfoque orientado a objetos en otras APIs, apoya directamente la meta de WebFactory de mantener una base de código unificada y limpia. Esto reduce la necesidad de lógica condicional por plataforma, facilitando la adherencia a un único patrón de `createClient` y `StyleSheet.create` para la gestión de estilos y clientes de API, promoviendo la reutilización y la mantenibilidad.
+*   **Integración de Agentes de IA:** La inclusión de archivos `agents.md` y plugins para agentes de IA en `create Expo app` ofrece una oportunidad para WebFactory de acelerar el desarrollo, depuración y mantenimiento de su aplicación, aprovechando las herramientas de IA para optimizar el flujo de trabajo.
 
 ### 4. Citas Clave
 
-*   "Expo UI is the easiest way to use both Swift UI on iOS and Jetpack Compose on Android inside of your Expo app."
-*   "you don't need .android.tsx and .ios.tsx to get native experiences on all of your platforms."
+*   "Expo UI is the easiest way to use both Swift UI on iOS and Jetpack Compose on Web Platform inside of your Expo app."
+*   "you don't need .Web Platform.tsx and .ios.tsx to get native experiences on all of your platforms."
 *   "In our benchmarks, we are seeing roughly 40% faster cold starts and 33% faster first renders with no app side changes required at all."
 *   "Fewer hops means less call overhead, which means faster apps."
 *   "There's probably never been a better time to start an Expo project than now."
@@ -5084,7 +5083,7 @@ Las mejoras de Expo SDK 56 son directamente aplicables a los principios y objeti
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -5101,15 +5100,15 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Animaciones Avanzadas con React Native Reanimated
+## Informe de Investigación: Animaciones Avanzadas con Modern Web UI (CSS/WAAPI) Reanimated
 
 ### 1. Concepto Central y Tesis
 
-El video presenta una guía detallada para recrear una animación de lista de historias (carrusel de tarjetas superpuestas) con un efecto visual "stunning" y fluido en React Native. La tesis central es que, a pesar de la complejidad inherente a las animaciones avanzadas, es posible lograr una experiencia de usuario altamente pulida y reactiva utilizando la librería **React Native Reanimated**, manipulando el `scroll offset` y aplicando técnicas de interpolación y posicionamiento absoluto. El tutorial enfatiza la importancia de entender cómo Reanimated interactúa con el hilo de UI para optimizar el rendimiento a 60 FPS.
+El video presenta una guía detallada para recrear una animación de lista de historias (carrusel de tarjetas superpuestas) con un efecto visual "stunning" y fluido en Modern Web UI (CSS/WAAPI). La tesis central es que, a pesar de la complejidad inherente a las animaciones avanzadas, es posible lograr una experiencia de usuario altamente pulida y reactiva utilizando la librería **Modern Web UI (CSS/WAAPI) Reanimated**, manipulando el `scroll offset` y aplicando técnicas de interpolación y posicionamiento absoluto. El tutorial enfatiza la importancia de entender cómo Reanimated interactúa con el hilo de UI para optimizar el rendimiento a 60 FPS.
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
-*   **React Native Reanimated:** Es la piedra angular de la solución. Se utilizan `useAnimatedRef`, `useScrollViewOffset` para acceder al desplazamiento del scroll en el hilo de UI, `useDerivedValue` para derivar valores animados, `interpolate` para mapear rangos de entrada a salida (crucial para `translateX` y `scale`), y `Animated.View`/`Animated.ScrollView` para componentes animados.
+*   **Modern Web UI (CSS/WAAPI) Reanimated:** Es la piedra angular de la solución. Se utilizan `useAnimatedRef`, `useScrollViewOffset` para acceder al desplazamiento del scroll en el hilo de UI, `useDerivedValue` para derivar valores animados, `interpolate` para mapear rangos de entrada a salida (crucial para `translateX` y `scale`), y `Animated.View`/`Animated.ScrollView` para componentes animados.
 *   **Expo:** El proyecto se inicializa con Expo, demostrando la compatibilidad y facilidad de desarrollo en este entorno, incluyendo el uso de `Expo Go` y `Expo Image` para la gestión de imágenes.
 *   **TypeScript:** El proyecto está tipado, lo que mejora la robustez y el mantenimiento del código.
 *   **Posicionamiento Absoluto y `z-index`:** Se utilizan para superponer las tarjetas, creando el efecto de pila. La manipulación del `z-index` (negativo basado en el índice) permite invertir el orden de apilamiento para que la primera tarjeta sea la más visible.
@@ -5120,20 +5119,20 @@ El video presenta una guía detallada para recrear una animación de lista de hi
 *   **Interpolación Avanzada:** La función `interpolate` se usa con `extrapolation.clamp` para definir cómo los valores se comportan fuera de los rangos de entrada, permitiendo efectos de escala y traducción complejos que varían según la posición del elemento en relación con el scroll.
 *   **Manipulación del `translateX`:** Se aplica una traducción inversa al `scroll offset` (`-scrollOffset.value`) para mantener los elementos "fijos" visualmente mientras el `ScrollView` se desplaza, y luego se superpone una interpolación para el efecto de carrusel.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-1.  **Fricción Cero y Experiencia Premium (DNA pisa internet):** La técnica de carrusel con `snapToInterval` y `decelerationRate='fast'` es directamente aplicable para crear una navegación fluida y sin fricciones en listas de `Venue`, `Experiencia` o `Grupo`. Esto eleva la percepción de calidad y sofisticación, alineándose con el "DNA" de Yendo de ofrecer una experiencia superior.
+1.  **Fricción Cero y Experiencia Premium (DNA pisa internet):** La técnica de carrusel con `snapToInterval` y `decelerationRate='fast'` es directamente aplicable para crear una navegación fluida y sin fricciones en listas de `Venue`, `Experiencia` o `Grupo`. Esto eleva la percepción de calidad y sofisticación, alineándose con el "DNA" de WebFactory de ofrecer una experiencia superior.
 2.  **Visualización de `Venue`/`Experiencia`/`Grupo`:** Implementar este tipo de carrusel para explorar `Experiencias` destacadas, `Venues` cercanos o `Grupos` recomendados. La superposición y el efecto de escala pueden hacer que la navegación sea más atractiva y visualmente rica que un `FlatList` estándar.
 3.  **Integración con Dark OLED y Material 3:** El estilo oscuro y moderno del ejemplo se alinea perfectamente con la estética de Dark OLED y Material 3. La fluidez de las animaciones complementará el diseño, creando una interfaz cohesiva y de alto rendimiento.
-4.  **Optimización de Rendimiento:** El uso de React Native Reanimated y `scrollEventThrottle={16}` garantiza que estas animaciones se ejecuten en el hilo de UI, evitando el "JavaScript thread bottleneck" y asegurando 60 FPS, crucial para una experiencia de usuario sin interrupciones en dispositivos móviles.
-5.  **Patrones de Código Yendo:**
-    *   **`un createClient` y `StyleSheet.create`:** Las animaciones de Reanimated se aplican a componentes `Animated.View` o `Animated.ScrollView`. Los estilos base para estos componentes pueden y deben definirse utilizando `StyleSheet.create` dentro del `sheet canónico` de Yendo, asegurando la consistencia y modularidad. La lógica de animación (e.g., `useAnimatedStyle`) se encargará de las transformaciones dinámicas.
+4.  **Optimización de Rendimiento:** El uso de Modern Web UI (CSS/WAAPI) Reanimated y `scrollEventThrottle={16}` garantiza que estas animaciones se ejecuten en el hilo de UI, evitando el "JavaScript thread bottleneck" y asegurando 60 FPS, crucial para una experiencia de usuario sin interrupciones en dispositivos móviles.
+5.  **Patrones de Código WebFactory:**
+    *   **`un createClient` y `StyleSheet.create`:** Las animaciones de Reanimated se aplican a componentes `Animated.View` o `Animated.ScrollView`. Los estilos base para estos componentes pueden y deben definirse utilizando `StyleSheet.create` dentro del `sheet canónico` de WebFactory, asegurando la consistencia y modularidad. La lógica de animación (e.g., `useAnimatedStyle`) se encargará de las transformaciones dinámicas.
     *   **Dunbar 4-6:** Si se utiliza para mostrar `Grupos` o `Experiencias` de tamaño limitado (4-6 elementos), la interfaz puede ser particularmente efectiva, ya que el usuario puede previsualizar rápidamente todas las opciones sin una navegación extensa.
 
 ### 4. Citas Clave
 
 *   "This tutorial is going to be a bit more advanced than all of my other tutorials."
-*   "We are going to explore how reanimated Works how to unlock the full potential of gesture Handler and how to build stunning visual effects with react native skia."
+*   "We are going to explore how reanimated Works how to unlock the full potential of gesture Handler and how to build stunning visual effects with Modern Web UI (CSS/WAAPI) skia."
 *   "Expo image is the best way to deal with images in general either local or remote images."
 *   "The whole point is that in this first step you see since the beginning that we need to handle a list we need to handle some sort of scroll View."
 *   "The interesting thing is that right now we have a tool that is going to be helpful for us and we can pass this scroll offset to this uh SC story list item and then inside this story list item we are going to be able to manipulate the scroll offset to update the translation of our story list uh images."
@@ -5159,7 +5158,7 @@ El video presenta una guía detallada para recrear una animación de lista de hi
 - [[AGENTS]]
 - [[Número de Dunbar]]
 - [[Reanimated]]
-- [[React Native Skia]]
+- [[Modern Web UI (CSS/WAAPI) Skia]]
 
 ---
 
@@ -5169,7 +5168,7 @@ El video presenta una guía detallada para recrear una animación de lista de hi
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -5186,37 +5185,37 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Optimización de Rendimiento para Yendo Mobile
+## Informe de Optimización de Rendimiento para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
-El concepto central del video es la aplicación de la metodología DMAIC (Definir, Medir, Analizar, Mejorar, Controlar), derivada de Lean Six Sigma, para la optimización sistemática y continua del rendimiento de aplicaciones React Native. La tesis principal es que la mejora del rendimiento no debe ser un proceso de adivinanzas o soluciones puntuales, sino un enfoque estructurado, basado en datos y mantenido a lo largo del tiempo para garantizar una experiencia de usuario superior y la retención de clientes. La "fricción cero" en la experiencia del usuario es el objetivo final, lograda a través de un control constante del rendimiento.
+El concepto central del video es la aplicación de la metodología DMAIC (Definir, Medir, Analizar, Mejorar, Controlar), derivada de Lean Six Sigma, para la optimización sistemática y continua del rendimiento de aplicaciones Modern Web UI (CSS/WAAPI). La tesis principal es que la mejora del rendimiento no debe ser un proceso de adivinanzas o soluciones puntuales, sino un enfoque estructurado, basado en datos y mantenido a lo largo del tiempo para garantizar una experiencia de usuario superior y la retención de clientes. La "fricción cero" en la experiencia del usuario es el objetivo final, lograda a través de un control constante del rendimiento.
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
-*   **Origen de Problemas:** La mayoría de los problemas de rendimiento en React Native provienen del lado de JavaScript, especialmente de renderizados innecesarios y una mala gestión del ciclo de vida de los componentes.
+*   **Origen de Problemas:** La mayoría de los problemas de rendimiento en Modern Web UI (CSS/WAAPI) provienen del lado de JavaScript, especialmente de renderizados innecesarios y una mala gestión del ciclo de vida de los componentes.
 *   **Herramientas de Medición y Perfilado:**
     *   **JavaScript:** React Profiler (API integrada para medir renders y tiempo), `react-native-performance` (implementación de la API de rendimiento web con marcadores nativos y soporte para Flipper).
-    *   **Nativo:** Instrumentos de Xcode y Android Profiler para monitorear consumo de recursos, tráfico de red y trazas de procesos.
+    *   **Nativo:** Instrumentos de Xcode y Web Platform Profiler para monitorear consumo de recursos, tráfico de red y trazas de procesos.
     *   **General:** Flipper (con plugins como Perf Monitor y List Profiler de Shopify) para visualización y monitoreo en desarrollo.
 *   **Importancia de la Medición:** Es crucial realizar mediciones precisas y exactas, considerando la variación entre plataformas, sistemas operativos, dispositivos y versiones de lanzamiento (release builds).
 *   **Análisis de Causa Raíz:** Herramientas como el diagrama de Ishikawa (espina de pescado) son útiles para identificar múltiples factores que contribuyen a un problema de rendimiento.
 *   **Soluciones Comunes:** A menudo, las soluciones implican un mejor uso de React (evitando re-renders excesivos) y una reconciliación eficiente del layout.
 *   **Control Continuo:** El rendimiento se degrada si no se controla. Es esencial implementar herramientas de monitoreo de regresiones como Reassure (para CI), Firebase Performance Monitoring y Sentry Performance Monitoring para mantener el rendimiento a lo largo del tiempo.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-La metodología DMAIC y los hallazgos del video son directamente aplicables al desarrollo de Yendo Mobile, reforzando sus invariantes:
+La metodología DMAIC y los hallazgos del video son directamente aplicables al desarrollo de la Web Software Factory, reforzando sus invariantes:
 
-*   **Fricción Cero y React Native:** Adoptar DMAIC como el marco para todas las iniciativas de optimización de rendimiento. Esto asegura que la promesa de "fricción cero" se cumpla de manera sistemática, abordando la lentitud que impacta la retención y la percepción de la marca.
+*   **Fricción Cero y Modern Web UI (CSS/WAAPI):** Adoptar DMAIC como el marco para todas las iniciativas de optimización de rendimiento. Esto asegura que la promesa de "fricción cero" se cumpla de manera sistemática, abordando la lentitud que impacta la retención y la percepción de la marca.
 *   **Lenguaje Venue/Experiencia/Grupo (VOC y CTQs):**
     *   **Definir:** Traducir las expectativas del usuario (Voice of the Customer) sobre "Venue", "Experiencia" y "Grupo" en Critical To Quality (CTQs) medibles. Ejemplos: "Carga de detalles de un Venue en < 1 segundo", "Desplazamiento fluido en el feed de Experiencias (> 50 FPS)", "Actualizaciones en tiempo real en un Grupo en < 200 ms".
     *   **Medir:** Implementar el perfilado de rutas de usuario clave relacionadas con estos invariantes (ej. navegación entre Venues, interacción con Experiencias, comunicación en Grupos) usando `react-native-performance` y Flipper.
 *   **Dunbar 4-6 y Rendimiento Social:** Para las interacciones de grupo (Dunbar 4-6), es vital perfilar y optimizar la carga de contenido, las notificaciones y las actualizaciones en tiempo real. Los problemas de rendimiento en estas áreas pueden romper la inmersión social.
 *   **Dark OLED y Material 3 (Renderizado Eficiente):** Aunque no se mencionan directamente, la eficiencia en el renderizado es clave para cualquier UI. Asegurar que los componentes de Material 3 y la interfaz Dark OLED se rendericen de manera óptima, evitando re-renders innecesarios, es fundamental para la fluidez y el ahorro de batería en pantallas OLED.
-*   **Expo 57 y Perfilado Nativo/JS:** Aprovechar las herramientas de perfilado nativas (Xcode Instruments, Android Profiler) junto con las de JavaScript (React Profiler, `react-native-performance`) para identificar cuellos de botella específicos en el entorno de Expo 57, que abstrae gran parte de la capa nativa pero no elimina la necesidad de optimización.
-*   **Invariantes de Código (`createClient`, `StyleSheet.create`):** Mantener un código limpio y consistente, como lo dictan los invariantes de Yendo, facilita la identificación y resolución de problemas de rendimiento. Un `StyleSheet.create` bien estructurado, por ejemplo, puede contribuir a un renderizado más eficiente al evitar la creación de objetos de estilo en cada render.
-*   **Control Continuo ("DNA pisa internet"):** Implementar un plan de control de rendimiento utilizando herramientas como Reassure en CI/CD y monitoreo en producción (Firebase, Sentry) para asegurar que el "ADN" de rendimiento de Yendo se mantenga intacto y que las regresiones sean detectadas y corregidas proactivamente.
+*   **Expo 57 y Perfilado Nativo/JS:** Aprovechar las herramientas de perfilado nativas (Xcode Instruments, Web Platform Profiler) junto con las de JavaScript (React Profiler, `react-native-performance`) para identificar cuellos de botella específicos en el entorno de Expo 57, que abstrae gran parte de la capa nativa pero no elimina la necesidad de optimización.
+*   **Invariantes de Código (`createClient`, `StyleSheet.create`):** Mantener un código limpio y consistente, como lo dictan los invariantes de WebFactory, facilita la identificación y resolución de problemas de rendimiento. Un `StyleSheet.create` bien estructurado, por ejemplo, puede contribuir a un renderizado más eficiente al evitar la creación de objetos de estilo en cada render.
+*   **Control Continuo ("DNA pisa internet"):** Implementar un plan de control de rendimiento utilizando herramientas como Reassure en CI/CD y monitoreo en producción (Firebase, Sentry) para asegurar que el "ADN" de rendimiento de WebFactory se mantenga intacto y que las regresiones sean detectadas y corregidas proactivamente.
 
 ### 4. Citas Clave
 
@@ -5225,7 +5224,7 @@ La metodología DMAIC y los hallazgos del video son directamente aplicables al d
 *   "Evita las conjeturas tanto como sea posible. Las suposiciones erróneas pueden llevarte a resultados falsos. Siempre basa tu decisión en datos."
 *   "No hay una salsa secreta, ningún elixir mágico que pueda arreglarlo todo de una vez."
 *   "La primera regla de la optimización dice: haz menos."
-*   "La mayoría de los problemas de rendimiento en React Native provienen del lado de JavaScript."
+*   "La mayoría de los problemas de rendimiento en Modern Web UI (CSS/WAAPI) provienen del lado de JavaScript."
 *   "El rendimiento se degradará si no está bajo control."
 *   "El control es la clave."
 
@@ -5256,7 +5255,7 @@ La metodología DMAIC y los hallazgos del video son directamente aplicables al d
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -5272,7 +5271,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-# Informe de investigación – Yendo Mobile  
+# Informe de investigación – la Web Software Factory  
 
 ## 1. Concepto central y tesis  
 
@@ -5287,23 +5286,23 @@ El video expone que **la carga cognitiva** es el recurso mental limitado que los
 
 ## 2. Hallazgos técnicos y arquitectónicos clave  
 
-| Hallazgo | Implicación para la arquitectura de Yendo |
+| Hallazgo | Implicación para la arquitectura de WebFactory |
 |----------|-------------------------------------------|
 | **Visual clutter** → distrae la vista y la mente. | Necesidad de una UI minimalista, con componentes reutilizables y estilos consistentes. |
-| **Modelos mentales** → los usuarios confían en convenciones (p. ej., navegación por pestañas, iconografía estándar). | Adoptar patrones de Material 3 y componentes nativos de React Native que ya son familiares. |
+| **Modelos mentales** → los usuarios confían en convenciones (p. ej., navegación por pestañas, iconografía estándar). | Adoptar patrones de Material 3 y componentes nativos de Modern Web UI (CSS/WAAPI) que ya son familiares. |
 | **Offloading** → delegar tareas al dispositivo (biometría, autocompletar). | Integrar autenticación biométrica, autoguardado de datos y pre‑población de formularios. |
 | **Limitaciones de hardware** (CPU, RAM) → paralelismo con limitaciones cerebrales. | Optimizar renderizado (Dark OLED para ahorro de energía) y evitar sobrecarga de procesos en background. |
 | **Empatía de diseño** → reconocer que el usuario también “se ralentiza”. | Implementar feedback visual y sonoro suave, evitando animaciones pesadas. |
 
 ---
 
-## 3. Ideas accionables para Yendo  
+## 3. Ideas accionables para WebFactory  
 
 ### 3.1. **Expo 57 (evento de lanzamiento)**  
 - **Demo de “carga cero”**: presentar una versión de la app donde el usuario solo elige un venue y el sistema completa automáticamente datos de ubicación, horarios y grupos.  
 - **Stands interactivos**: usar tablets con UI minimalista que ilustren la diferencia entre una pantalla cargada y una optimizada.  
 
-### 3.2. **React Native**  
+### 3.2. **Modern Web UI (CSS/WAAPI)**  
 - **Componentes atómicos** (Atomic Design) con **Material 3**: botones, tarjetas y listas que respeten la tipografía y espaciado recomendado, reduciendo la necesidad de ajustes visuales.  
 - **Lazy loading** de módulos de eventos y grupos: cargar datos bajo demanda para evitar picos de memoria.  
 - **Hooks de rendimiento** (`useMemo`, `useCallback`) para evitar renders innecesarios que aumenten la carga cognitiva por latencia.  
@@ -5338,7 +5337,7 @@ El video expone que **la carga cognitiva** es el recurso mental limitado que los
 
 ---  
 
-**Resumen:** Reducir la carga cognitiva extrínseca mediante una UI minimalista, patrones familiares y delegación de tareas es esencial para que Yendo ofrezca una experiencia fluida y atractiva. La combinación de React Native, Material 3, temas oscuros en OLED y una estrategia de “fricción cero” alineada con un lenguaje consistente (Venue/Evento/Grupo) permitirá crear una arquitectura ligera, fácil de usar y preparada para el evento Expo 57.
+**Resumen:** Reducir la carga cognitiva extrínseca mediante una UI minimalista, patrones familiares y delegación de tareas es esencial para que WebFactory ofrezca una experiencia fluida y atractiva. La combinación de Modern Web UI (CSS/WAAPI), Material 3, temas oscuros en OLED y una estrategia de “fricción cero” alineada con un lenguaje consistente (Venue/Evento/Grupo) permitirá crear una arquitectura ligera, fácil de usar y preparada para el evento Expo 57.
 
 ---
 
@@ -5360,7 +5359,7 @@ El video expone que **la carga cognitiva** es el recurso mental limitado que los
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -5377,7 +5376,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Optimización de la Carga Cognitiva en Yendo Mobile
+## Informe de Investigación: Optimización de la Carga Cognitiva en la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -5385,20 +5384,20 @@ El concepto central es la **Carga Cognitiva**, definida como la cantidad de recu
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave (Implicaciones UX)
 
-Aunque el video se centra en principios de UX, sus implicaciones técnicas y arquitectónicas para Yendo Mobile son directas:
+Aunque el video se centra en principios de UX, sus implicaciones técnicas y arquitectónicas para la Web Software Factory son directas:
 
 *   **Automatización y Delegación de Tareas:** La recomendación de "offload tasks" implica la necesidad de una arquitectura robusta que soporte la automatización de procesos, la pre-carga de información y la integración de sistemas como la biometría. Esto requiere APIs bien diseñadas y una lógica de negocio eficiente para manejar estas operaciones sin intervención manual del usuario.
 *   **Diseño de UI Eficiente y Consistente:** La directriz de "avoid visual clutter" subraya la importancia de un sistema de diseño modular y componentes reutilizables que garanticen una interfaz limpia y un rendimiento óptimo. Esto impacta la elección de frameworks y librerías de UI, así como las prácticas de codificación para evitar renderizados innecesarios o complejos.
 *   **Adhesión a Modelos Mentales Existentes:** "Build on existing mental models" sugiere la adopción de patrones de diseño de UI ampliamente reconocidos y sistemas de diseño establecidos. Esto se traduce en la implementación de componentes estándar y la evitación de soluciones de UI personalizadas que puedan confundir al usuario, lo que a menudo se logra mediante el uso de librerías de UI maduras y bien documentadas.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-Para Yendo Mobile, la aplicación de los principios de carga cognitiva se traduce en las siguientes acciones estratégicas:
+Para la Web Software Factory, la aplicación de los principios de carga cognitiva se traduce en las siguientes acciones estratégicas:
 
-*   **Fricción Cero:** Este principio debe ser el pilar de la experiencia de usuario de Yendo. Implementar la autenticación biométrica (Face ID/Touch ID) para eliminar la necesidad de recordar contraseñas. Pre-llenar campos con información previamente ingresada o inferida. Simplificar flujos de tareas a la mínima cantidad de pasos, automatizando decisiones triviales o repetitivas.
+*   **Fricción Cero:** Este principio debe ser el pilar de la experiencia de usuario de WebFactory. Implementar la autenticación biométrica (Face ID/Touch ID) para eliminar la necesidad de recordar contraseñas. Pre-llenar campos con información previamente ingresada o inferida. Simplificar flujos de tareas a la mínima cantidad de pasos, automatizando decisiones triviales o repetitivas.
 *   **Material 3:** Adoptar el sistema de diseño Material 3 de Google. Esto permite "build on existing mental models" al proporcionar un conjunto de componentes y patrones de interacción familiares y consistentes. Material 3, con su enfoque en la personalización y la adaptabilidad, ayuda a "avoid visual clutter" al ofrecer una jerarquía visual clara y una estética moderna que guía al usuario sin sobrecargarlo.
 *   **Dark OLED:** Implementar un tema oscuro optimizado para pantallas OLED. Esto no solo mejora la estética y ahorra batería, sino que también reduce la fatiga visual en entornos de poca luz, lo que disminuye la carga cognitiva intrínseca. Un diseño oscuro bien ejecutado puede dirigir el foco del usuario hacia el contenido esencial, minimizando el "desorden visual".
-*   **React Native y Expo 57:** Aprovechar estas tecnologías para construir una base de código modular y reutilizable. React Native facilita la creación de componentes que adhieren a patrones de diseño estándar, mientras que Expo 57 ofrece herramientas para optimizar el rendimiento y la consistencia en diferentes plataformas. Esto reduce la carga cognitiva para los desarrolladores y asegura una experiencia de usuario fluida y predecible.
+*   **Modern Web UI (CSS/WAAPI) y Expo 57:** Aprovechar estas tecnologías para construir una base de código modular y reutilizable. Modern Web UI (CSS/WAAPI) facilita la creación de componentes que adhieren a patrones de diseño estándar, mientras que Expo 57 ofrece herramientas para optimizar el rendimiento y la consistencia en diferentes plataformas. Esto reduce la carga cognitiva para los desarrolladores y asegura una experiencia de usuario fluida y predecible.
 *   **Lenguaje "Venue/Experiencia/Grupo":** Desarrollar un glosario y guías de estilo para asegurar que la terminología utilizada en la aplicación (como "Venue", "Experiencia", "Grupo") sea consistente, clara y alineada con los modelos mentales del usuario. Evitar la jerga interna y utilizar un lenguaje sencillo y directo para reducir la carga cognitiva extrínseca asociada a la comprensión del texto en pantalla.
 *   **Dunbar 4-6:** Al diseñar interacciones para grupos, especialmente en el contexto de "Experiencias" o "Venues", considerar el número de Dunbar (4-6 personas para grupos cercanos). Esto implica diseñar interfaces que faciliten la gestión y la comunicación en grupos pequeños de manera intuitiva, evitando la sobrecarga de información o las interacciones complejas que podrían surgir en grupos más grandes. Por ejemplo, simplificar la visualización de participantes, la gestión de pagos compartidos o la asignación de roles dentro de estos grupos íntimos.
 
@@ -5437,7 +5436,7 @@ Para Yendo Mobile, la aplicación de los principios de carga cognitiva se traduc
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -5453,16 +5452,15 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-
 <think>
 Here's a thinking process:
 
 1.  **Analyze User Input:**
-   - **Role:** RESEARCHER_AGENT for Yendo Mobile
+   - **Role:** RESEARCHER_AGENT for la Web Software Factory
    - **Task:** Analyze the provided video transcript and synthesize:
      1. Concept central y tesis (Central concept & thesis)
      2. Hallazgos técnicos y arquitectónicos clave (Key technical & architectural findings)
-     3. Ideas accionables para aplicar en Yendo (React Native, UX o Backend) (Actionable ideas for Yendo: RN, UX, Backend)
+     3. Ideas accionables para aplicar en WebFactory (Modern Web UI (CSS/WAAPI), UX o Backend) (Actionable ideas for WebFactory: RN, UX, Backend)
      4. Citas o frases clave destacadas (Key quotes/phrases)
    - **Format:** Elegant and structured Markdown
    - **Language:** Spanish (as requested)
@@ -5483,9 +5481,9 @@ Here's a thinking process:
    - Feedback loop: Continuous learning/performance monitoring for iterative improvement.
    - API-driven integration for task execution and data retrieval.
 
-   *3. Ideas accionables para Yendo (React Native, UX, Backend):*
+   *3. Ideas accionables para WebFactory (Modern Web UI (CSS/WAAPI), UX, Backend):*
    - *Backend:* Implement an orchestrator service (e.g., using LangChain, AutoGen, or custom state machine) to manage AI sub-agents. Integrate MCP-compatible servers/tools for seamless third-party data access. Build a feedback/learning pipeline to log agent performance and refine prompts/workflows.
-   - *React Native/UX:* Design a "supervisor agent" UI pattern where users interact with a single conversational interface that transparently coordinates multiple backend AI services. Implement real-time status indicators for multi-step AI tasks (e.g., "Coordinating agents...", "Generating artifact..."). Use the "artifact" concept to present structured, actionable outputs directly in-app.
+   - *Modern Web UI (CSS/WAAPI)/UX:* Design a "supervisor agent" UI pattern where users interact with a single conversational interface that transparently coordinates multiple backend AI services. Implement real-time status indicators for multi-step AI tasks (e.g., "Coordinating agents...", "Generating artifact..."). Use the "artifact" concept to present structured, actionable outputs directly in-app.
    - *Cross-cutting:* Abstract vendor-specific AI/tool integrations behind a unified protocol layer (MCP-inspired). Implement context caching/sharing mechanisms to maintain conversation state across sub-agent calls. Add user confirmation gates before autonomous actions (e.g., "Send notes? Yes/No") to maintain trust and control.
 
    *4. Citas o frases clave destacadas:*
@@ -5496,7 +5494,7 @@ Here's a thinking process:
    - "Instead of supervising them yourself, bring in that supervisor agent so you can take a break."
 
 3.  **Draft Response (Mental Refinement in Spanish):**
-   Structure the output clearly with Markdown headings, bullet points, and professional tone. Ensure alignment with Yendo Mobile's context (React Native, UX, Backend). Translate concepts accurately while keeping technical terms where appropriate.
+   Structure the output clearly with Markdown headings, bullet points, and professional tone. Ensure alignment with la Web Software Factory's context (Modern Web UI (CSS/WAAPI), UX, Backend). Translate concepts accurately while keeping technical terms where appropriate.
 
    *Structure:*
    # 📊 Análisis de Transcripción: Agentes Orquestadores en Sistemas Multi-Agente
@@ -5504,9 +5502,9 @@ Here's a thinking process:
    - ...
    ## 2. Hallazgos Técnicos y Arquitectónicos Clave
    - ...
-   ## 3. Ideas Accionables para Yendo Mobile
+   ## 3. Ideas Accionables para la Web Software Factory
    - 🖥️ Backend
-   - 📱 React Native & UX
+   - 📱 Modern Web UI (CSS/WAAPI) & UX
    - 🔗 Arquitectura & Protocolos
    ## 4. Citas y Frases Clave Destacadas
    - ...
@@ -5514,22 +5512,22 @@ Here's a thinking process:
    *Content Generation (Mental Translation & Refinement):*
    (1) Concepto central: Los sistemas multi-agente requieren un "agente orquestador" que actúe como sistema nervioso central, coordinando sub-agentes especializados mediante un ciclo de 4 fases: selección, coordinación de flujos, intercambio de datos y aprendizaje continuo. Tesis: La orquestación centralizada, potenciada por protocolos estandarizados como MCP, permite automatizar tareas complejas de forma autónoma, escalable y con retroalimentación iterativa, reduciendo la carga cognitiva del usuario.
    (2) Hallazgos técnicos: Ciclo de vida de 4 pasos. MCP como estándar de interoperabilidad. Gestión de contexto en tiempo real. Artifacts como entregables estructurados. Loop de aprendizaje continuo. Integración API-agnostic.
-   (3) Accionables para Yendo:
+   (3) Accionables para WebFactory:
       - Backend: Implementar un motor de orquestación (state machine/LLM router) que gestione sub-agentes. Adoptar MCP o un patrón similar para abstraer integraciones de terceros. Crear pipelines de logging/feedback para fine-tuning o prompt optimization.
       - RN/UX: UI de "agente supervisor" con estados visuales de coordinación. Presentación de "artifacts" como componentes estructurados. Gates de confirmación para acciones autónomas. Contexto persistente entre sesiones.
       - Arquitectura: Capa de abstracción de protocolos, caching de contexto, monitoreo de latencia/éxito por sub-agente.
    (4) Citas: Translate/keep original as requested. I'll keep them in English as in the transcript, but add Spanish context if needed. The prompt says "Citas o frases clave destacadas", so I'll quote them directly.
 
 4.  **Final Output Generation (Mental to Text):**
-   I'll craft the response carefully, ensuring it matches the requested structure, tone, and technical depth. I'll use Markdown effectively with emojis/icons for readability, but keep it professional. I'll verify that all 4 points are addressed thoroughly and tailored to Yendo Mobile's stack (React Native, UX, Backend).
+   I'll craft the response carefully, ensuring it matches the requested structure, tone, and technical depth. I'll use Markdown effectively with emojis/icons for readability, but keep it professional. I'll verify that all 4 points are addressed thoroughly and tailored to la Web Software Factory's stack (Modern Web UI (CSS/WAAPI), UX, Backend).
 
    *Self-Correction/Verification during drafting:*
    - Check: Did I cover all 4 requested sections? Yes.
-   - Check: Is it tailored to Yendo (RN, UX, Backend)? Yes, explicitly separated.
+   - Check: Is it tailored to WebFactory (RN, UX, Backend)? Yes, explicitly separated.
    - Check: Technical accuracy? MCP, orchestrator pattern, artifact concept, continuous learning loop are all correctly interpreted.
    - Check: Language? Spanish, as requested.
    - Check: Format? Elegant Markdown.
-   - I'll make sure the actionable ideas are concrete and directly applicable to a mobile-first AI product like Yendo. I'll emphasize state management, UI feedback for async AI tasks, and backend orchestration patterns.
+   - I'll make sure the actionable ideas are concrete and directly applicable to a mobile-first AI product like WebFactory. I'll emphasize state management, UI feedback for async AI tasks, and backend orchestration patterns.
 
    All good. Proceed. 
    Output matches the final response. 
@@ -5537,12 +5535,12 @@ Here's a thinking process:
    # 🧠 Análisis de Transcripción: Agentes Orquestadores en Sistemas Multi-Agente
    ## 1. Concepto Central y Tesis
    ## 2. Hallazgos Técnicos y Arquitectónicos Clave
-   ## 3. Ideas Accionables para Yendo Mobile
+   ## 3. Ideas Accionables para la Web Software Factory
    ## 4. Citas y Frases Clave Destacadas
    Content filled in accordingly.✅
    Output generation. 
    *(Self-Correction/Refinement during thought)*: 
-   I should make sure the MCP explanation is precise: it's a protocol for LLMs to access context/tools without vendor lock-in. I'll frame it as a strategic architectural pattern for Yendo's backend. For RN/UX, I'll emphasize real-time orchestration states and artifact rendering. For backend, I'll mention state machines, routing, and feedback loops. All aligned. Ready. 
+   I should make sure the MCP explanation is precise: it's a protocol for LLMs to access context/tools without vendor lock-in. I'll frame it as a strategic architectural pattern for WebFactory's backend. For RN/UX, I'll emphasize real-time orchestration states and artifact rendering. For backend, I'll mention state machines, routing, and feedback loops. All aligned. Ready. 
    Output matches the final response. 
    [Proceeds]
 </think>
@@ -5574,7 +5572,7 @@ Here's a thinking process:
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -5591,7 +5589,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: La Mentalidad del Artista Técnico y su Relevancia para Yendo Mobile
+## Informe de Investigación: La Mentalidad del Artista Técnico y su Relevancia para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -5609,16 +5607,16 @@ El orador, Harry, un artista técnico y de VFX, detalla su evolución desde el m
 *   **Voxel y 3D Textures:** Uso de vóxeles (elementos volumétricos) y texturas 3D para simulaciones como niebla volumétrica o agua.
 *   **Herramientas y motores:** Mención de Unity, Unreal Engine, Blender, Animator (software 3D nicho), y el uso de C++ para *ray tracing* sin API gráfica.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-Los principios y desafíos del arte técnico ofrecen valiosas lecciones para el desarrollo de Yendo Mobile, especialmente en el contexto de sus invariantes:
+Los principios y desafíos del arte técnico ofrecen valiosas lecciones para el desarrollo de la Web Software Factory, especialmente en el contexto de sus invariantes:
 
-*   **Fricción Cero y Recompensa Inmediata:** La frustración inicial con HLSL por su complejidad y la falta de resultados "cool" inmediatos es un punto clave. Yendo debe asegurar que la experiencia del usuario, especialmente para los nuevos, sea de **fricción cero**, ofreciendo una recompensa visual o funcional rápida. Esto implica interfaces intuitivas y *templates* que permitan a los usuarios crear algo impactante con poco esfuerzo, antes de sumergirse en complejidades.
-*   **Comunidad y Aprendizaje Colaborativo (Venue/Experiencia/Grupo, Dunbar 4-6):** Harry enfatiza la creación de una "bonita pequeña comunidad" y el valor de compartir el proceso de aprendizaje. Yendo puede fomentar esto creando **"venues"** digitales para que los usuarios compartan sus proyectos y descubrimientos. Las **"experiencias"** de aprendizaje colaborativo, quizás en **"grupos"** pequeños (alineados con el número de Dunbar 4-6 para una interacción efectiva), pueden replicar el valor de los *meetups* y la mentoría informal que Harry encontró crucial.
-*   **Abstracción Técnica y Enfoque Creativo (Expo 57, React Native):** La capacidad de Expo 57 y React Native para abstraer las complejidades de las plataformas nativas es análoga a cómo Shader Graph abstrae HLSL. Yendo debe capitalizar esto para permitir a los creadores enfocarse en la **"experiencia"** y el **"venue"** que están construyendo, en lugar de en los detalles de implementación de bajo nivel. La plataforma debe ser un lienzo que empodere la creatividad, no una barrera técnica.
-*   **Estética y Funcionalidad (Dark OLED, Material 3):** El trabajo de Harry es inherentemente visual. Para Yendo, la implementación de **Dark OLED y Material 3** no es solo una cuestión estética, sino funcional. Un diseño limpio, moderno y de alto contraste reduce la fatiga visual y mejora la usabilidad, permitiendo a los usuarios concentrarse en su contenido y sus interacciones sin distracciones de la interfaz.
-*   **Consistencia y Estabilidad de la Plataforma (createClient, StyleSheet.create):** La mención de la importancia de un código limpio y la comprensión de los sistemas subyacentes en el desarrollo de *shaders* resuena con los principios de Yendo de un **solo `createClient` y `StyleSheet.create`**. Esto subraya la necesidad de una arquitectura interna consistente y predecible. Una plataforma estable y bien estructurada reduce los "bugs" y las inconsistencias, lo que a su vez minimiza la fricción para los desarrolladores y creadores de contenido en Yendo.
-*   **Compartir y Aprender (DNA pisa internet):** La trayectoria de Harry se construyó compartiendo su trabajo en línea y aprendiendo de la comunidad. Yendo debe facilitar que el **"DNA pisa internet"** de sus usuarios, permitiéndoles compartir fácilmente sus creaciones, procesos y conocimientos. Esto crea un ciclo virtuoso de inspiración, colaboración y mejora continua dentro del ecosistema de Yendo.
+*   **Fricción Cero y Recompensa Inmediata:** La frustración inicial con HLSL por su complejidad y la falta de resultados "cool" inmediatos es un punto clave. WebFactory debe asegurar que la experiencia del usuario, especialmente para los nuevos, sea de **fricción cero**, ofreciendo una recompensa visual o funcional rápida. Esto implica interfaces intuitivas y *templates* que permitan a los usuarios crear algo impactante con poco esfuerzo, antes de sumergirse en complejidades.
+*   **Comunidad y Aprendizaje Colaborativo (Venue/Experiencia/Grupo, Dunbar 4-6):** Harry enfatiza la creación de una "bonita pequeña comunidad" y el valor de compartir el proceso de aprendizaje. WebFactory puede fomentar esto creando **"venues"** digitales para que los usuarios compartan sus proyectos y descubrimientos. Las **"experiencias"** de aprendizaje colaborativo, quizás en **"grupos"** pequeños (alineados con el número de Dunbar 4-6 para una interacción efectiva), pueden replicar el valor de los *meetups* y la mentoría informal que Harry encontró crucial.
+*   **Abstracción Técnica y Enfoque Creativo (Expo 57, Modern Web UI (CSS/WAAPI)):** La capacidad de Expo 57 y Modern Web UI (CSS/WAAPI) para abstraer las complejidades de las plataformas nativas es análoga a cómo Shader Graph abstrae HLSL. WebFactory debe capitalizar esto para permitir a los creadores enfocarse en la **"experiencia"** y el **"venue"** que están construyendo, en lugar de en los detalles de implementación de bajo nivel. La plataforma debe ser un lienzo que empodere la creatividad, no una barrera técnica.
+*   **Estética y Funcionalidad (Dark OLED, Material 3):** El trabajo de Harry es inherentemente visual. Para WebFactory, la implementación de **Dark OLED y Material 3** no es solo una cuestión estética, sino funcional. Un diseño limpio, moderno y de alto contraste reduce la fatiga visual y mejora la usabilidad, permitiendo a los usuarios concentrarse en su contenido y sus interacciones sin distracciones de la interfaz.
+*   **Consistencia y Estabilidad de la Plataforma (createClient, StyleSheet.create):** La mención de la importancia de un código limpio y la comprensión de los sistemas subyacentes en el desarrollo de *shaders* resuena con los principios de WebFactory de un **solo `createClient` y `StyleSheet.create`**. Esto subraya la necesidad de una arquitectura interna consistente y predecible. Una plataforma estable y bien estructurada reduce los "bugs" y las inconsistencias, lo que a su vez minimiza la fricción para los desarrolladores y creadores de contenido en WebFactory.
+*   **Compartir y Aprender (DNA pisa internet):** La trayectoria de Harry se construyó compartiendo su trabajo en línea y aprendiendo de la comunidad. WebFactory debe facilitar que el **"DNA pisa internet"** de sus usuarios, permitiéndoles compartir fácilmente sus creaciones, procesos y conocimientos. Esto crea un ciclo virtuoso de inspiración, colaboración y mejora continua dentro del ecosistema de WebFactory.
 
 ### 4. Citas Clave
 
@@ -5656,7 +5654,7 @@ Los principios y desafíos del arte técnico ofrecen valiosas lecciones para el 
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -5673,7 +5671,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Ecosistema Hugging Face y su Relevancia para Yendo Mobile
+## Informe de Investigación: Ecosistema Hugging Face y su Relevancia para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -5696,20 +5694,20 @@ Conceptos técnicos destacados incluyen:
 *   **Modelos eficientes:** Se destaca DistilBERT, una versión "destilada" de BERT, que es un 40% más pequeña y 60% más rápida, manteniendo el 97% de sus capacidades, un ejemplo de cómo la "destilación" de conocimiento permite modelos más ligeros y rápidos.
 *   **Procesamiento de audio:** La librería Librosa para cargar, analizar y visualizar audio, complementada por `AutoFeatureExtractor` de Transformers para la clasificación de audio.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-La filosofía de Hugging Face de "fricción cero" en el desarrollo de IA resuena directamente con los principios de Yendo.
+La filosofía de Hugging Face de "fricción cero" en el desarrollo de IA resuena directamente con los principios de WebFactory.
 
-*   **Fricción Cero y Expo 57 / React Native:** La simplicidad de `pipeline()` y Gradio puede inspirar la integración de IA en las aplicaciones React Native de Yendo. Se pueden consumir APIs de modelos Hugging Face directamente o usar Gradio para prototipos rápidos. La IA debe integrarse de forma que el usuario final experimente una "fricción cero", con resultados intuitivos y rápidos.
-*   **Lenguaje Venue/Experiencia/Grupo:** Los modelos de PNL de Hugging Face pueden ser fine-tuneados para entender el lenguaje y el contexto específico de Yendo.
+*   **Fricción Cero y Expo 57 / Modern Web UI (CSS/WAAPI):** La simplicidad de `pipeline()` y Gradio puede inspirar la integración de IA en las aplicaciones Modern Web UI (CSS/WAAPI) de WebFactory. Se pueden consumir APIs de modelos Hugging Face directamente o usar Gradio para prototipos rápidos. La IA debe integrarse de forma que el usuario final experimente una "fricción cero", con resultados intuitivos y rápidos.
+*   **Lenguaje Venue/Experiencia/Grupo:** Los modelos de PNL de Hugging Face pueden ser fine-tuneados para entender el lenguaje y el contexto específico de WebFactory.
     *   **Análisis de Sentimiento:** Evaluar el sentimiento en reseñas de "Venues" o comentarios sobre "Experiencias" para obtener insights rápidos.
     *   **Generación de Texto:** Crear descripciones dinámicas y atractivas para "Experiencias" o "Grupos", o resúmenes de conversaciones de "Grupos".
     *   **QA y NER:** Desarrollar un chatbot para responder preguntas frecuentes sobre "Venues" o "Experiencias", o extraer automáticamente información clave (fechas, ubicaciones, nombres de personas) de textos.
     *   **Clasificación de Audio:** Analizar grabaciones de eventos o interacciones de soporte para clasificar el contenido o el tono.
 *   **Dunbar 4-6:** La IA puede potenciar la comunicación y la cohesión en grupos pequeños. Por ejemplo, resúmenes inteligentes de chats de grupo, detección de temas emergentes o sugerencias personalizadas para actividades, manteniendo la "fricción cero" y la relevancia para el tamaño del grupo.
-*   **Dark OLED / Material 3:** La presentación de los resultados de la IA debe adherirse al ADN de diseño de Yendo. Los outputs de los modelos deben ser visualizados de manera consistente con Dark OLED y Material 3, garantizando una experiencia de usuario fluida y estéticamente agradable.
-*   **Un `createClient`, `StyleSheet.create`, `sheet canónico`:** La IA puede ser una herramienta para mantener la consistencia en el código. Se pueden desarrollar herramientas de IA para auditar el código y asegurar la adherencia a los estándares de Yendo, o para generar fragmentos de código que sigan el "sheet canónico", reduciendo errores y acelerando el desarrollo.
-*   **DNA pisa internet:** Hugging Face es un claro ejemplo de cómo el "DNA pisa internet". Yendo puede aprovechar este vasto repositorio de conocimiento y modelos de IA para acelerar su propia innovación, fine-tuneando modelos existentes con sus datos específicos para crear soluciones únicas que reflejen su "DNA" y sus invariantes, sin necesidad de construir la infraestructura de IA desde cero.
+*   **Dark OLED / Material 3:** La presentación de los resultados de la IA debe adherirse al ADN de diseño de WebFactory. Los outputs de los modelos deben ser visualizados de manera consistente con Dark OLED y Material 3, garantizando una experiencia de usuario fluida y estéticamente agradable.
+*   **Un `createClient`, `StyleSheet.create`, `sheet canónico`:** La IA puede ser una herramienta para mantener la consistencia en el código. Se pueden desarrollar herramientas de IA para auditar el código y asegurar la adherencia a los estándares de WebFactory, o para generar fragmentos de código que sigan el "sheet canónico", reduciendo errores y acelerando el desarrollo.
+*   **DNA pisa internet:** Hugging Face es un claro ejemplo de cómo el "DNA pisa internet". WebFactory puede aprovechar este vasto repositorio de conocimiento y modelos de IA para acelerar su propia innovación, fine-tuneando modelos existentes con sus datos específicos para crear soluciones únicas que reflejen su "DNA" y sus invariantes, sin necesidad de construir la infraestructura de IA desde cero.
 
 ### 4. Citas Clave
 
@@ -5746,7 +5744,7 @@ La filosofía de Hugging Face de "fricción cero" en el desarrollo de IA resuena
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -5763,7 +5761,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-# Informe de Investigación: Simulación de Muelles y Sistemas de Partículas para Yendo Mobile
+# Informe de Investigación: Simulación de Muelles y Sistemas de Partículas para la Web Software Factory
 
 ## 1. Concepto Central y Tesis
 
@@ -5782,20 +5780,20 @@ El video explora la simulación de muelles físicos, comenzando con una implemen
 *   **Interacción:** La capacidad de manipular partículas con el ratón y "bloquear" su posición introduce un elemento interactivo clave.
 *   **Visualización:** El uso de primitivas gráficas (líneas, círculos) y técnicas avanzadas (como `beginShape`/`endShape` y `curveVertex`) para representar las simulaciones.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-Las técnicas de simulación de muelles ofrecen un potencial significativo para enriquecer la experiencia de usuario en Yendo, alineándose con sus invariantes:
+Las técnicas de simulación de muelles ofrecen un potencial significativo para enriquecer la experiencia de usuario en WebFactory, alineándose con sus invariantes:
 
-*   **Expo 57 y React Native:**
+*   **Expo 57 y Modern Web UI (CSS/WAAPI):**
     *   **UI Dinámica y Fricción Cero:** Implementar animaciones basadas en física para transiciones de UI, elementos interactivos o fondos dinámicos. Un botón que "rebota" ligeramente al presionarlo o un menú que se despliega con un efecto de muelle puede mejorar la percepción de "Fricción Cero", haciendo la interacción más orgánica y menos robótica. La amortiguación es clave para evitar oscilaciones excesivas y lograr un asentamiento suave.
-    *   **Arquitectura Modular:** Las clases `Particle` y `Spring` se traducen directamente a componentes o módulos en React Native, facilitando la gestión del estado y la lógica de simulación. Esto refuerza el principio de `un createClient` para la lógica central y `StyleSheet.create` para la estilización consistente.
+    *   **Arquitectura Modular:** Las clases `Particle` y `Spring` se traducen directamente a componentes o módulos en Modern Web UI (CSS/WAAPI), facilitando la gestión del estado y la lógica de simulación. Esto refuerza el principio de `un createClient` para la lógica central y `StyleSheet.create` para la estilización consistente.
 
 *   **Lenguaje Venue/Experiencia/Grupo:**
     *   **Visualización de Conexiones:** Utilizar sistemas de partículas y muelles para representar visualmente las relaciones entre `Venue`, `Experiencia` y `Grupo`.
         *   Un `Venue` podría ser una partícula "anclada" o "bloqueada".
         *   Las `Experiencias` y `Grupos` podrían ser partículas conectadas entre sí y a los `Venues` mediante "muelles".
         *   La constante `k` del muelle podría indicar la fuerza o afinidad de la conexión, y la `restLength` la distancia ideal.
-    *   **Exploración Interactiva:** Permitir a los usuarios "arrastrar" o "empujar" elementos (`Experiencias`, `Grupos`) para explorar sus conexiones, con la física de los muelles animando el movimiento y las reacciones en cadena. Esto crea un "mapa" vivo y dinámico de la red social de Yendo.
+    *   **Exploración Interactiva:** Permitir a los usuarios "arrastrar" o "empujar" elementos (`Experiencias`, `Grupos`) para explorar sus conexiones, con la física de los muelles animando el movimiento y las reacciones en cadena. Esto crea un "mapa" vivo y dinámico de la red social de WebFactory.
 
 *   **Dunbar 4-6:**
     *   **Visualización de Círculos Sociales:** Representar el número de Dunbar (4-6 conexiones cercanas) como un clúster de partículas fuertemente unidas por muelles con alta `k` y corta `restLength`. A medida que las conexiones se extienden a círculos más amplios (más allá de 4-6), los muelles podrían volverse más "suaves" (menor `k`) y con mayor `restLength`, visualizando la disminución de la intensidad de la relación. Esto hace tangible un concepto abstracto.
@@ -5838,7 +5836,7 @@ Las técnicas de simulación de muelles ofrecen un potencial significativo para 
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -5870,20 +5868,20 @@ El sistema de movimiento de MD3 se articula en cuatro patrones de transición pr
 *   **Fade Through (Fundido a Través):** Diseñado para transiciones entre elementos de UI que no tienen una relación fuerte o directa, como los destinos de una barra de navegación inferior. Este patrón evita implicar una relación espacial que no existe.
 *   **Fade (Fundido):** Se aplica a elementos individuales que entran o salen de la pantalla, como diálogos, menús, snackbars o botones de acción flotantes (FABs). Implica un fundido rápido de entrada con un ligero escalado, y un simple fundido de salida.
 
-La implementación en Android, aunque específica, revela principios clave: el uso de nombres de transición compartidos (`transitionName`), la configuración de transiciones de entrada y salida (`enterTransition`, `exitTransition`), y la capacidad de agrupar elementos para la transición (`transitionGroup`). Además, el sistema permite una personalización profunda de la duración, el easing y la ruta de movimiento (ej. `MaterialArcMotion`), lo que permite a las aplicaciones expresar su estilo único. Se destaca la herramienta "Direct", de código abierto, para facilitar la colaboración entre diseñadores e ingenieros en la especificación de animaciones.
+La implementación en Web Platform, aunque específica, revela principios clave: el uso de nombres de transición compartidos (`transitionName`), la configuración de transiciones de entrada y salida (`enterTransition`, `exitTransition`), y la capacidad de agrupar elementos para la transición (`transitionGroup`). Además, el sistema permite una personalización profunda de la duración, el easing y la ruta de movimiento (ej. `MaterialArcMotion`), lo que permite a las aplicaciones expresar su estilo único. Se destaca la herramienta "Direct", de código abierto, para facilitar la colaboración entre diseñadores e ingenieros en la especificación de animaciones.
 
-## 3. Ideas Accionables para Yendo
+## 3. Ideas Accionables para WebFactory
 
-1.  **Adopción de Material 3 y Fricción Cero:** Integrar los patrones de movimiento de MD3 como un pilar de la experiencia de usuario de Yendo. Esto reducirá la fricción cognitiva al hacer que las transiciones sean predecibles y significativas.
-2.  **Implementación en React Native (Expo 57):** Investigar y prototipar la implementación de estos patrones en React Native, utilizando librerías como `react-native-reanimated` o las capacidades de `react-navigation`. El objetivo es lograr la fluidez y el comportamiento semántico de MD3, asegurando que las transiciones se sientan nativas y coherentes.
-3.  **Optimización para Dark OLED:** Las transiciones suaves y bien diseñadas son cruciales para pantallas OLED oscuras. Un uso inteligente del movimiento puede mejorar la percepción de profundidad y la legibilidad sin introducir artefactos visuales, complementando el tema oscuro de Yendo.
-4.  **Aplicación al Lenguaje Yendo (Venue/Experiencia/Grupo):**
+1.  **Adopción de Material 3 y Fricción Cero:** Integrar los patrones de movimiento de MD3 como un pilar de la experiencia de usuario de WebFactory. Esto reducirá la fricción cognitiva al hacer que las transiciones sean predecibles y significativas.
+2.  **Implementación en Modern Web UI (CSS/WAAPI) (Expo 57):** Investigar y prototipar la implementación de estos patrones en Modern Web UI (CSS/WAAPI), utilizando librerías como `react-native-reanimated` o las capacidades de `react-navigation`. El objetivo es lograr la fluidez y el comportamiento semántico de MD3, asegurando que las transiciones se sientan nativas y coherentes.
+3.  **Optimización para Dark OLED:** Las transiciones suaves y bien diseñadas son cruciales para pantallas OLED oscuras. Un uso inteligente del movimiento puede mejorar la percepción de profundidad y la legibilidad sin introducir artefactos visuales, complementando el tema oscuro de WebFactory.
+4.  **Aplicación al Lenguaje WebFactory (Venue/Experiencia/Grupo):**
     *   **Container Transform:** Ideal para la transición de una tarjeta de `Experiencia` a su vista de detalle completa, o de un `Grupo` a su perfil detallado.
     *   **Shared Axis:** Útil para navegar entre diferentes secciones o pestañas dentro de un `Venue` o `Experiencia` (ej. "Próximos eventos" vs. "Eventos pasados").
     *   **Fade Through:** Aplicar para cambiar entre `Venues` principales en la navegación inferior, ya que no suelen tener una relación espacial directa.
     *   **Fade:** Para la aparición/desaparición de diálogos de confirmación o menús contextuales relacionados con `Experiencias` o `Grupos`.
 5.  **Refuerzo de Dunbar 4-6:** Las transiciones claras y significativas pueden ayudar a mantener la cohesión y la comprensión dentro de los grupos pequeños (4-6 personas), haciendo que las interacciones sean más intuitivas y menos propensas a la confusión, reforzando la sensación de comunidad.
-6.  **Consistencia Arquitectónica:** Al implementar animaciones, adherirse estrictamente a los invariantes de Yendo: `un solo createClient` para la gestión de datos, `StyleSheet.create` para la definición de estilos, y el uso del `sheet canónico` para la consistencia visual y de código. Esto implica encapsular la lógica de animación en componentes reutilizables y estilos centralizados para mantener la mantenibilidad y escalabilidad.
+6.  **Consistencia Arquitectónica:** Al implementar animaciones, adherirse estrictamente a los invariantes de WebFactory: `un solo createClient` para la gestión de datos, `StyleSheet.create` para la definición de estilos, y el uso del `sheet canónico` para la consistencia visual y de código. Esto implica encapsular la lógica de animación en componentes reutilizables y estilos centralizados para mantener la mantenibilidad y escalabilidad.
 
 ## 4. Citas Clave
 
@@ -5921,7 +5919,7 @@ La implementación en Android, aunque específica, revela principios clave: el u
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -5938,7 +5936,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-# Informe de Investigación: Optimización Tipográfica Responsiva con Variables de Figma para Yendo Mobile
+# Informe de Investigación: Optimización Tipográfica Responsiva con Variables de Figma para la Web Software Factory
 
 ## 1. Concepto Central y Tesis
 
@@ -5955,14 +5953,14 @@ El proceso de creación y aplicación de variables tipográficas en Figma se des
 *   **Optimización del Flujo de Trabajo:** Esta capacidad de adaptación automática elimina la necesidad de ajustes manuales para cada dispositivo, permitiendo a los diseñadores crear interfaces altamente responsivas con un esfuerzo significativamente menor.
 *   **Extensibilidad:** El concepto de variables y modos no se limita a la tipografía. Puede extenderse a otras propiedades de diseño como colores (para modos claro/oscuro), radios de borde, espaciados, etc., permitiendo una gestión de diseño sistémica y adaptable.
 
-## 3. Ideas Accionables para Yendo
+## 3. Ideas Accionables para WebFactory
 
-La aplicación de estos principios de variables de Figma se alinea directamente con los invariantes y objetivos de Yendo:
+La aplicación de estos principios de variables de Figma se alinea directamente con los invariantes y objetivos de WebFactory:
 
-*   **Expo 57 y React Native:** La definición de tokens de diseño en Figma, incluyendo los modos responsivos, es fundamental. Estos tokens pueden ser exportados y consumidos directamente en el código React Native, asegurando que la implementación refleje fielmente el diseño responsivo. Los "modos" de Figma se traducen en la lógica de React Native para aplicar estilos condicionales basados en el tamaño de pantalla o tipo de dispositivo, manteniendo la consistencia con `StyleSheet.create` y `createClient`.
+*   **Expo 57 y Modern Web UI (CSS/WAAPI):** La definición de tokens de diseño en Figma, incluyendo los modos responsivos, es fundamental. Estos tokens pueden ser exportados y consumidos directamente en el código Modern Web UI (CSS/WAAPI), asegurando que la implementación refleje fielmente el diseño responsivo. Los "modos" de Figma se traducen en la lógica de Modern Web UI (CSS/WAAPI) para aplicar estilos condicionales basados en el tamaño de pantalla o tipo de dispositivo, manteniendo la consistencia con `StyleSheet.create` y `createClient`.
 *   **Dark OLED y Material 3:** La capacidad de extender las variables a colores es crucial. Se deben definir modos de color ("Light", "Dark") en Figma que, al aplicarse, adapten automáticamente la paleta de la interfaz. Esto es esencial para cumplir con el requisito de Dark OLED y la estética de Material 3, garantizando una experiencia visual óptima en cualquier configuración.
 *   **Fricción Cero:** La automatización del diseño responsivo reduce la fricción tanto para el equipo de diseño (menos ajustes manuales) como para el equipo de desarrollo (tokens claros y exportables). Para el usuario final, significa una "Experiencia" fluida y legible, independientemente del "Venue" (dispositivo) utilizado, lo que minimiza la fricción en la interacción.
-*   **Lenguaje Venue/Experiencia/Grupo:** Un sistema de diseño basado en variables asegura una identidad visual coherente y adaptable. Esto refuerza el "DNA pisa internet" de Yendo, garantizando que la "Experiencia" sea consistente y reconocible, ya sea en un "Venue" móvil o de escritorio, y que la comunicación dentro de un "Grupo" sea siempre clara y accesible.
+*   **Lenguaje Venue/Experiencia/Grupo:** Un sistema de diseño basado en variables asegura una identidad visual coherente y adaptable. Esto refuerza el "DNA pisa internet" de WebFactory, garantizando que la "Experiencia" sea consistente y reconocible, ya sea en un "Venue" móvil o de escritorio, y que la comunicación dentro de un "Grupo" sea siempre clara y accesible.
 *   **Dunbar 4-6:** La legibilidad y la adaptabilidad de la tipografía son vitales para la comunicación efectiva en grupos pequeños. Al asegurar que el texto se adapte perfectamente a cualquier tamaño de pantalla, se facilita la interacción y comprensión, apoyando la dinámica de grupos de 4-6 personas.
 
 ## 4. Citas Clave
@@ -5999,7 +5997,7 @@ La aplicación de estos principios de variables de Figma se alinea directamente 
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -6016,7 +6014,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: La Ingeniería Financiera y el Propósito de Yendo
+## Informe de Investigación: La Ingeniería Financiera y el Propósito de WebFactory
 
 ### 1. Concepto Central y Tesis
 
@@ -6032,13 +6030,13 @@ La visión de las finanzas como una "tecnología" y "ingeniería" subraya la nec
 *   **Dimensión Humana (Finanzas Conductuales):** La aplicación de la psicología y la sociología a las finanzas es crucial, reconociendo que las decisiones financieras están influenciadas por el comportamiento humano, lo que puede llevar a complejidades innecesarias o incluso a la manipulación.
 *   **Estructura para el Propósito:** Las finanzas proporcionan la estructura necesaria para que las "empresas" y los "grupos" funcionen, evitando que se "desmoronen".
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-Integrando los hallazgos con los invariantes de Yendo, se proponen las siguientes acciones:
+Integrando los hallazgos con los invariantes de WebFactory, se proponen las siguientes acciones:
 
 *   **Lenguaje Venue/Experiencia/Grupo y Dunbar 4-6:**
-    *   **Acción:** Diseñar la interfaz y la lógica de Yendo para que el usuario defina explícitamente un `Venue` (ej. un proyecto, un viaje, un fondo común) como el contenedor de una `Experiencia` financiera. Los `Grupos` (limitados a 4-6 miembros, según Dunbar) interactuarán dentro de este `Venue`, con herramientas que fomenten la transparencia, la equidad y la alineación con el propósito compartido.
-    *   **Justificación:** Las finanzas son para "incentivar a las personas a hacer cosas productivas" y "reunir a mucha gente". Yendo debe ser la "institución" que permite a los pequeños grupos hacer que sus "empresas" sucedan sin "desmoronarse".
+    *   **Acción:** Diseñar la interfaz y la lógica de WebFactory para que el usuario defina explícitamente un `Venue` (ej. un proyecto, un viaje, un fondo común) como el contenedor de una `Experiencia` financiera. Los `Grupos` (limitados a 4-6 miembros, según Dunbar) interactuarán dentro de este `Venue`, con herramientas que fomenten la transparencia, la equidad y la alineación con el propósito compartido.
+    *   **Justificación:** Las finanzas son para "incentivar a las personas a hacer cosas productivas" y "reunir a mucha gente". WebFactory debe ser la "institución" que permite a los pequeños grupos hacer que sus "empresas" sucedan sin "desmoronarse".
 
 *   **Fricción Cero:**
     *   **Acción:** Simplificar radicalmente los flujos de usuario y la presentación de información financiera. Evitar "horarios de tarifas complicados" o "elecciones que no sabes cuál tomar". Cada interacción debe ser intuitiva, transparente y directa, eliminando cualquier ambigüedad o complejidad innecesaria.
@@ -6046,10 +6044,10 @@ Integrando los hallazgos con los invariantes de Yendo, se proponen las siguiente
 
 *   **Dark OLED y Material 3:**
     *   **Acción:** Implementar una interfaz de usuario visualmente sofisticada y moderna, siguiendo estrictamente los principios de Material Design 3 y optimizada para pantallas Dark OLED. Esto no es solo estético, sino funcional, mejorando la legibilidad y reduciendo la fatiga visual.
-    *   **Justificación:** Como una "tecnología" financiera, Yendo debe presentarse de manera pulcra y eficiente, reflejando la importancia de los "detalles" y la "ingeniería" en las finanzas.
+    *   **Justificación:** Como una "tecnología" financiera, WebFactory debe presentarse de manera pulcra y eficiente, reflejando la importancia de los "detalles" y la "ingeniería" en las finanzas.
 
-*   **Expo 57 y React Native (`un createClient`, `StyleSheet.create`, `DNA pisa internet`):**
-    *   **Acción:** Mantener una arquitectura de cliente unificada y consistente (`un createClient`) y un sistema de estilos canónico (`StyleSheet.create`) utilizando las últimas capacidades de Expo 57 y React Native. Asegurar que la infraestructura de Yendo sea inherentemente global, escalable y segura, con una base de datos y un backend robustos que reflejen el "DNA pisa internet".
+*   **Expo 57 y Modern Web UI (CSS/WAAPI) (`un createClient`, `StyleSheet.create`, `DNA pisa internet`):**
+    *   **Acción:** Mantener una arquitectura de cliente unificada y consistente (`un createClient`) y un sistema de estilos canónico (`StyleSheet.create`) utilizando las últimas capacidades de Expo 57 y Modern Web UI (CSS/WAAPI). Asegurar que la infraestructura de WebFactory sea inherentemente global, escalable y segura, con una base de datos y un backend robustos que reflejen el "DNA pisa internet".
     *   **Justificación:** La necesidad de "tecnología avanzada" y la naturaleza global de las finanzas exigen una base técnica sólida y moderna. La consistencia arquitectónica es clave para gestionar la "complejidad" y asegurar la "precisión" en los detalles.
 
 ### 4. Citas Clave
@@ -6088,7 +6086,7 @@ Integrando los hallazgos con los invariantes de Yendo, se proponen las siguiente
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -6105,13 +6103,13 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Patrón de Componentes Compuestos para Yendo Mobile
+## Informe de Patrón de Componentes Compuestos para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
 El concepto central es el patrón de **Componentes Compuestos (Compound Components)** en React. Este patrón aborda la problemática de la duplicación de código y la complejidad en componentes de interfaz de usuario que, aunque comparten una lógica subyacente y funcionalidad similar, difieren significativamente en su presentación o contexto de uso (ej. un formulario de edición que aparece como página o como modal).
 
-La tesis es que los Componentes Compuestos son una solución arquitectónica poderosa para Yendo Mobile, ya que permiten centralizar la lógica de negocio y el estado en un componente "raíz", mientras que la presentación y la composición de la UI se delegan a subcomponentes flexibles que consumen esa lógica a través de React Context. Esto promueve la reutilización, la flexibilidad, la separación de responsabilidades y una experiencia de desarrollo de "Fricción Cero", esencial para construir una "DNA" de componentes robusta y escalable en React Native.
+La tesis es que los Componentes Compuestos son una solución arquitectónica poderosa para la Web Software Factory, ya que permiten centralizar la lógica de negocio y el estado en un componente "raíz", mientras que la presentación y la composición de la UI se delegan a subcomponentes flexibles que consumen esa lógica a través de React Context. Esto promueve la reutilización, la flexibilidad, la separación de responsabilidades y una experiencia de desarrollo de "Fricción Cero", esencial para construir una "DNA" de componentes robusta y escalable en Modern Web UI (CSS/WAAPI).
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
@@ -6124,11 +6122,11 @@ El video ilustra cómo el patrón de Componentes Compuestos transforma la gesti�
 *   **Separación de Responsabilidades:** Se logra una clara separación entre la lógica de negocio (en el componente raíz) y la presentación (en los subcomponentes), lo que facilita el mantenimiento y la escalabilidad.
 *   **Reutilización y Flexibilidad:** Este enfoque maximiza la reutilización de la lógica y de partes de la UI, permitiendo que un mismo conjunto de funcionalidades se adapte a múltiples diseños y flujos de usuario. Es un patrón adoptado por librerías de UI modernas como Chakra UI y Radix UI por su flexibilidad inherente.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-La implementación de Componentes Compuestos se alinea perfectamente con los principios y tecnologías de Yendo:
+La implementación de Componentes Compuestos se alinea perfectamente con los principios y tecnologías de WebFactory:
 
-*   **Expo 57 y React Native:** Este patrón es ideal para aplicaciones React Native con Expo. Fomenta la modularidad y la reutilización de componentes, crucial para mantener una base de código limpia y escalable en un entorno móvil.
+*   **Expo 57 y Modern Web UI (CSS/WAAPI):** Este patrón es ideal para aplicaciones Modern Web UI (CSS/WAAPI) con Expo. Fomenta la modularidad y la reutilización de componentes, crucial para mantener una base de código limpia y escalable en un entorno móvil.
 *   **Dark OLED y Material 3:** Al separar la lógica de la presentación, los subcomponentes pueden ser diseñados con mayor facilidad para adherirse a los principios de Material 3 y temas Dark OLED. La lógica subyacente no necesita preocuparse por los detalles de estilo, que se aplican a los subcomponentes de manera consistente.
 *   **Fricción Cero:** La flexibilidad y la simplicidad de uso que ofrece este patrón contribuyen a una experiencia de desarrollo de "Fricción Cero". Los desarrolladores pueden componer interfaces complejas con facilidad, reduciendo la necesidad de código boilerplate o condicionales anidados.
 *   **Lenguaje Venue/Experiencia/Grupo:**
@@ -6175,7 +6173,7 @@ La implementación de Componentes Compuestos se alinea perfectamente con los pri
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -6192,37 +6190,37 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: React Native Reanimated 4 y su Impacto en Yendo Mobile
+## Informe de Investigación: Modern Web UI (CSS/WAAPI) Reanimated 4 y su Impacto en la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
-React Native Reanimated 4 representa una evolución significativa en la creación de animaciones fluidas y de alto rendimiento en aplicaciones móviles. Su tesis central es democratizar las animaciones complejas, haciéndolas más accesibles y mantenibles para los desarrolladores de React Native, al integrar paradigmas familiares del desarrollo web como las animaciones y transiciones CSS. Simultáneamente, refuerza el rendimiento y la modularidad, sentando las bases para una nueva era de experiencias de usuario nativas y eficientes, especialmente bajo la nueva arquitectura de React Native.
+Modern Web UI (CSS/WAAPI) Reanimated 4 representa una evolución significativa en la creación de animaciones fluidas y de alto rendimiento en aplicaciones móviles. Su tesis central es democratizar las animaciones complejas, haciéndolas más accesibles y mantenibles para los desarrolladores de Modern Web UI (CSS/WAAPI), al integrar paradigmas familiares del desarrollo web como las animaciones y transiciones CSS. Simultáneamente, refuerza el rendimiento y la modularidad, sentando las bases para una nueva era de experiencias de usuario nativas y eficientes, especialmente bajo la nueva arquitectura de Modern Web UI (CSS/WAAPI).
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
 *   **Animaciones y Transiciones CSS:** Reanimated 4 introduce una API inspirada en CSS para transiciones y animaciones basadas en `keyframes`, facilitando la creación de efectos complejos con menos código y una curva de aprendizaje reducida para desarrolladores web.
 *   **Compatibilidad y Evolución:** Las características existentes como `worklets`, `shared values` y `layout animations` se mantienen y evolucionan, siendo la elección preferida para animaciones basadas en gestos e integraciones nativas.
-*   **React Native Worklets (Multi-threading):** Los `worklets`, que permiten ejecutar JavaScript en el hilo de UI para una respuesta inmediata, se han extraído a una librería independiente. Esto habilita el multi-threading más allá de las animaciones, permitiendo descargar el hilo principal de JavaScript con tareas pesadas como cálculos complejos, fetching de datos y procesamiento en hilos de fondo, e incluso ejecutar librerías de terceros en un `worklet runtime`.
+*   **Modern Web UI (CSS/WAAPI) Worklets (Multi-threading):** Los `worklets`, que permiten ejecutar JavaScript en el hilo de UI para una respuesta inmediata, se han extraído a una librería independiente. Esto habilita el multi-threading más allá de las animaciones, permitiendo descargar el hilo principal de JavaScript con tareas pesadas como cálculos complejos, fetching de datos y procesamiento en hilos de fondo, e incluso ejecutar librerías de terceros en un `worklet runtime`.
 *   **Modularidad del Paquete:** Reanimated se está dividiendo en paquetes dedicados (ej. `useAnimatedSensor`) para reducir el tamaño del bundle, ofreciendo a los desarrolladores un mayor control sobre lo que se incluye en sus aplicaciones, crucial para la optimización.
-*   **Nueva Arquitectura de React Native:** Reanimated 4 requiere la nueva arquitectura de React Native (por defecto en 0.76+), lo que promete un mantenimiento más sencillo, un desarrollo más rápido y soporte para características avanzadas.
+*   **Nueva Arquitectura de Modern Web UI (CSS/WAAPI):** Reanimated 4 requiere la nueva arquitectura de Modern Web UI (CSS/WAAPI) (por defecto en 0.76+), lo que promete un mantenimiento más sencillo, un desarrollo más rápido y soporte para características avanzadas.
 *   **Transiciones de Elementos Compartidos (Shared Element Transitions):** Esta característica, muy solicitada, está en desarrollo activo y se espera en futuras versiones de Reanimated 4.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-La adopción de Reanimated 4 y sus principios se alinea perfectamente con los invariantes de Yendo:
+La adopción de Reanimated 4 y sus principios se alinea perfectamente con los invariantes de WebFactory:
 
 *   **Fricción Cero y Experiencia de Usuario (Venue/Experiencia/Grupo):** Las animaciones fluidas y de alto rendimiento, ahora más fáciles de implementar con Reanimated 4, son fundamentales para lograr una "Fricción Cero". Esto se traduce en transiciones suaves entre "Venue", "Experiencia" y la interacción dentro de un "Grupo", mejorando la percepción de calidad y la inmersión del usuario.
-*   **React Native y Expo 57:** La dependencia de Reanimated 4 de la nueva arquitectura de React Native implica que Yendo debe asegurar su infraestructura esté preparada o ya utilice esta arquitectura. Esto es coherente con el compromiso de Yendo con React Native y su posible integración con las últimas versiones de Expo (como Expo 57).
+*   **Modern Web UI (CSS/WAAPI) y Expo 57:** La dependencia de Reanimated 4 de la nueva arquitectura de Modern Web UI (CSS/WAAPI) implica que WebFactory debe asegurar su infraestructura esté preparada o ya utilice esta arquitectura. Esto es coherente con el compromiso de WebFactory con Modern Web UI (CSS/WAAPI) y su posible integración con las últimas versiones de Expo (como Expo 57).
 *   **Dark OLED y Material 3:** Las animaciones pulidas son esenciales para complementar un diseño moderno como Material 3 y lucir impecables en pantallas OLED. Reanimated 4 permite implementar efectos visuales sofisticados que realzan la estética de la interfaz de usuario.
 *   **Un `createClient` y `StyleSheet.create`:** La modularidad de Reanimated 4, al permitir importar solo las características necesarias, contribuye a un bundle más pequeño y un código más limpio. Esto refuerza la filosofía de un `createClient` único y bien gestionado, y el uso eficiente de `StyleSheet.create` para un rendimiento óptimo y una base de código consistente.
-*   **DNA Pisa Internet:** La capacidad de React Native Worklets para el multi-threading es un cambio de juego. Yendo puede descargar tareas intensivas (ej. procesamiento de datos para insights de "Venue/Experiencia/Grupo", o sincronización compleja con servicios externos) a hilos de fondo, asegurando que la interfaz de usuario permanezca completamente responsiva. Esto es vital para una aplicación que "pisa internet" y maneja interacciones complejas sin sacrificar la fluidez.
+*   **DNA Pisa Internet:** La capacidad de Modern Web UI (CSS/WAAPI) Worklets para el multi-threading es un cambio de juego. WebFactory puede descargar tareas intensivas (ej. procesamiento de datos para insights de "Venue/Experiencia/Grupo", o sincronización compleja con servicios externos) a hilos de fondo, asegurando que la interfaz de usuario permanezca completamente responsiva. Esto es vital para una aplicación que "pisa internet" y maneja interacciones complejas sin sacrificar la fluidez.
 *   **Dunbar 4-6:** Una experiencia de usuario fluida y sin interrupciones, facilitada por Reanimated 4, es crucial para mantener la atención y el compromiso en interacciones de grupo íntimas (Dunbar 4-6), donde la calidad de la interacción digital puede impactar directamente la dinámica social.
 
 ### 4. Citas Clave
 
-*   "We took the best parts of CSS animations and CSS transitions and brought them to React Native, making Reanimated 4 completely different, but at the same time instantly familiar."
+*   "We took the best parts of CSS animations and CSS transitions and brought them to Modern Web UI (CSS/WAAPI), making Reanimated 4 completely different, but at the same time instantly familiar."
 *   "Simply put, offloading high priority tasks to the UI thread leads to better performance and user experience."
-*   "Meet React Native worklets, which brings multi- threading to React Native beyond just animations."
+*   "Meet Modern Web UI (CSS/WAAPI) worklets, which brings multi- threading to Modern Web UI (CSS/WAAPI) beyond just animations."
 *   "You'll be able to offload the JavaScript thread by moving your heavy computation, data fetching, and processing to a background thread."
 *   "Extracting worklets to a separate package is just the first step towards modularizing your animated. Not all applications use all of your animated features."
 *   "Reanimated 4 works only with the new architecture."
@@ -6255,7 +6253,7 @@ La adopción de Reanimated 4 y sus principios se alinea perfectamente con los in
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -6272,7 +6270,7 @@ ultima_revision: 2026-08-27
 ## 💡 Resumen Ejecutivo y Hallazgos
 
 # Informe de investigación – Memoria de agentes en LlamaIndex  
-**Yendo Mobile – 31 ago 2026**
+**la Web Software Factory – 31 ago 2026**
 
 ---
 
@@ -6295,9 +6293,9 @@ La sesión “Laura the Legend” explora **cómo dotar a los agentes LLM de mem
 
 ---
 
-## 3. Ideas accionables para Yendo  
+## 3. Ideas accionables para WebFactory  
 
-### 3.1. Expo 57 + React Native: “Memoria en el borde”  
+### 3.1. Expo 57 + Modern Web UI (CSS/WAAPI): “Memoria en el borde”  
 - **Implementar un módulo de memoria híbrida** (short‑term in‑memory + long‑term vector store) como paquete NPM reutilizable en proyectos Expo 57.  
 - Utilizar **AsyncStorage** para el corto plazo y **Supabase** (PostgreSQL + vector extension) para el largo plazo, garantizando sincronía offline‑online.  
 
@@ -6319,7 +6317,7 @@ La sesión “Laura the Legend” explora **cómo dotar a los agentes LLM de mem
 - Añadir lógica de expiración automática a la memoria de corto plazo (p. ej. 24 h) para cumplir con políticas de retención de datos.  
 
 ### 3.6. Prototipo rápido  
-1. Crear un **React Native hook** `useAgentMemory()` que exponga `putFact`, `getFacts`, `putChat`, `getChat`.  
+1. Crear un **Modern Web UI (CSS/WAAPI) hook** `useAgentMemory()` que exponga `putFact`, `getFacts`, `putChat`, `getChat`.  
 2. Integrar con **Expo 57** mediante `expo-sqlite` (corto plazo) y `supabase-js` (largo plazo).  
 3. Desplegar una **demo de agenda de eventos** donde el agente recuerda preferencias de asientos y sugiere actividades relacionadas.  
 
@@ -6335,7 +6333,7 @@ La sesión “Laura the Legend” explora **cómo dotar a los agentes LLM de mem
 ---
 
 **Conclusión**  
-Incorporar una arquitectura de memoria híbrida en los agentes LLM permite a Yendo Mobile crear experiencias de evento **personalizadas, contextuales y sin fricción**, alineadas con la estética Dark OLED y Material 3, y totalmente compatibles con la pila tecnológica de Expo 57 y React Native. La implementación de bloques de memoria basados en hechos y vectores, junto con un lenguaje de dominio (Venue/Evento/Grupo), será el motor que diferencie a Yendo en el mercado de apps de gestión de eventos.
+Incorporar una arquitectura de memoria híbrida en los agentes LLM permite a la Web Software Factory crear experiencias de evento **personalizadas, contextuales y sin fricción**, alineadas con la estética Dark OLED y Material 3, y totalmente compatibles con la pila tecnológica de Expo 57 y Modern Web UI (CSS/WAAPI). La implementación de bloques de memoria basados en hechos y vectores, junto con un lenguaje de dominio (Venue/Evento/Grupo), será el motor que diferencie a WebFactory en el mercado de apps de gestión de eventos.
 
 ---
 
@@ -6358,7 +6356,7 @@ Incorporar una arquitectura de memoria híbrida en los agentes LLM permite a Yen
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -6375,7 +6373,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-# Informe de Investigación: La Memoria en Sistemas Agénticos para Yendo Mobile
+# Informe de Investigación: La Memoria en Sistemas Agénticos para la Web Software Factory
 
 ## Concepto Central y Tesis
 
@@ -6406,19 +6404,19 @@ El video explora la evolución de las aplicaciones de Modelos de Lenguaje Grande
 7.  **Depuración y Trazabilidad:** No existe una herramienta universal para depurar la memoria. La capacidad de depuración depende de la implementación específica de la memoria a largo plazo (ej., herramientas de trazabilidad de búsqueda semántica para bloques de memoria vectorial). Es vital que el LLM genere consultas relevantes para la recuperación de memoria.
 8.  **Lecciones Aprendidas:** La priorización de las fuentes de memoria es crítica. Si la información subyacente cambia (ej., manuales actualizados), el agente debe priorizar la información más reciente sobre el historial de conversación para evitar respuestas obsoletas o incorrectas.
 
-## Ideas Accionables para Yendo Mobile
+## Ideas Accionables para la Web Software Factory
 
-La integración de memoria en agentes LLM ofrece oportunidades significativas para Yendo Mobile, mejorando la experiencia del usuario en su aplicación React Native (Expo 57) con un enfoque en la "Fricción Cero" y la personalización.
+La integración de memoria en agentes LLM ofrece oportunidades significativas para la Web Software Factory, mejorando la experiencia del usuario en su aplicación Modern Web UI (CSS/WAAPI) (Expo 57) con un enfoque en la "Fricción Cero" y la personalización.
 
 1.  **Fricción Cero mediante Contexto Persistente:**
-    *   **Memoria Vectorial para Conversaciones:** Implementar un `Vector Memory Block` para que el agente de Yendo recuerde el historial completo de interacciones del usuario. Esto eliminará la necesidad de repetir información, permitiendo conversaciones fluidas y contextuales sobre eventos, *venues* o grupos.
+    *   **Memoria Vectorial para Conversaciones:** Implementar un `Vector Memory Block` para que el agente de WebFactory recuerde el historial completo de interacciones del usuario. Esto eliminará la necesidad de repetir información, permitiendo conversaciones fluidas y contextuales sobre eventos, *venues* o grupos.
     *   **Memoria de Hechos para Personalización Profunda:** Utilizar un `Fact Memory Block` para almacenar preferencias explícitas e implícitas del usuario (ej., géneros musicales favoritos, *venues* visitados, amigos frecuentes, tipo de experiencias preferidas). Esto permitirá al agente ofrecer recomendaciones hiper-personalizadas y proactivas.
 2.  **Lenguaje "Venue/Experiencia/Grupo" Enriquecido:**
     *   **Memoria de *Venue*:** El agente recordará los *venues* favoritos del usuario, su historial de visitas y preferencias específicas dentro de cada lugar (ej., "el Venue de siempre", tipo de bebida).
     *   **Memoria de Experiencia:** El agente podrá recordar el tipo de experiencias que el usuario ha disfrutado en el pasado (ej., conciertos íntimos, festivales grandes, cenas tranquilas) y sugerir eventos similares o complementarios.
     *   **Memoria de Grupo (Dunbar 4-6):** Para los grupos pequeños e íntimos (Dunbar 4-6), el agente puede almacenar hechos sobre los intereses compartidos, eventos pasados y dinámicas de cada grupo. Esto facilitará la planificación y sugerencia de actividades que resuenen con todos los miembros, haciendo que la interacción se sienta más personal y menos genérica.
-3.  **Bloques de Memoria Personalizados para Yendo:**
-    *   Desarrollar `Custom Memory Blocks` específicos para el dominio de Yendo, como:
+3.  **Bloques de Memoria Personalizados para WebFactory:**
+    *   Desarrollar `Custom Memory Blocks` específicos para el dominio de WebFactory, como:
         *   `EventPreferenceMemoryBlock`: Almacena detalles granulares sobre las preferencias de eventos (ej., artistas específicos, horarios preferidos, presupuesto).
         *   `UserRelationshipMemoryBlock`: Gestiona las relaciones del usuario con otros usuarios y grupos, recordando interacciones y preferencias compartidas.
 4.  **Priorización Inteligente de la Memoria:**
@@ -6463,7 +6461,7 @@ La integración de memoria en agentes LLM ofrece oportunidades significativas pa
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -6480,7 +6478,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Material 3 Expressive y su Relevancia para Yendo Mobile
+## Informe de Investigación: Material 3 Expressive y su Relevancia para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -6492,7 +6490,7 @@ M3 Expressive introduce mejoras significativas en cuatro áreas principales:
 
 *   **Sistema de Física y Movimiento:** Incorpora un nuevo sistema de animaciones con efectos de "overshoot" o rebote, haciendo las transiciones menos lineales y más orgánicas. Estas físicas están integradas directamente en los componentes de Material 3.
 *   **Estilos de Texto Mejorados:** Introduce "textiles enfatizados", variantes más gruesas y con menor espaciado de letras para los estilos de texto existentes (ej., `display large`), permitiendo destacar información específica.
-*   **Librería de Formas Extendida:** Ofrece un conjunto de 35 nuevas formas que evocan el estilo de Android 16, permitiendo agrupar elementos visualmente según el contexto y añadir un toque distintivo a los componentes.
+*   **Librería de Formas Extendida:** Ofrece un conjunto de 35 nuevas formas que evocan el estilo de Web Platform 16, permitiendo agrupar elementos visualmente según el contexto y añadir un toque distintivo a los componentes.
 *   **Nuevos Componentes UI y Componentes Existentes Reworkeados:**
     *   **Button Groups:** Permiten agrupar botones seleccionables (selección única o múltiple) con animaciones fluidas integradas.
     *   **Progress Indicators:** Indicadores de progreso circulares y lineales con nuevas animaciones "onduladas" y dinámicas.
@@ -6500,19 +6498,19 @@ M3 Expressive introduce mejoras significativas en cuatro áreas principales:
     *   **Toolbars:** Barras flotantes (horizontales o verticales) con opciones y un botón de acción flotante (FAB) primario.
     *   Además, muchos componentes existentes de Material 3 han sido ajustados para alinearse con la estética y las animaciones de M3 Expressive.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-Dada la arquitectura de Yendo en React Native con Expo 57 y sus invariantes, la adopción de M3 Expressive no sería una implementación directa, sino una adaptación de sus principios de diseño y comportamiento:
+Dada la arquitectura de WebFactory en Modern Web UI (CSS/WAAPI) con Expo 57 y sus invariantes, la adopción de M3 Expressive no sería una implementación directa, sino una adaptación de sus principios de diseño y comportamiento:
 
 *   **Fricción Cero:** La filosofía de M3 Expressive de "diseñar con emoción" y "movimiento" es fundamental para lograr una "Fricción Cero". Las animaciones de rebote, las transiciones fluidas y los cambios dinámicos de forma harán que la interacción con la aplicación sea más intuitiva, atractiva y menos abrupta, mejorando la experiencia del usuario.
-*   **Adaptación a React Native y Expo 57:** Yendo debe reinterpretar los principios de M3 Expressive en componentes React Native personalizados. Esto implica desarrollar o adaptar librerías de animación (ej., Reanimated) para replicar los efectos de "overshoot" y las animaciones dinámicas. Los nuevos componentes (Button Groups, Split Buttons, Toolbars) deben ser construidos siguiendo el `StyleSheet.create` y el `sheet canónico` de Yendo, manteniendo la consistencia arquitectónica.
-*   **Dark OLED y Material 3:** Las animaciones vibrantes y las formas dinámicas de M3 Expressive se verán excepcionales en pantallas OLED, especialmente en el tema oscuro de Yendo, realzando la profundidad y el contraste. La extensión de Material 3 se alinea con el uso actual de Yendo, permitiendo una evolución natural de su lenguaje visual.
+*   **Adaptación a Modern Web UI (CSS/WAAPI) y Expo 57:** WebFactory debe reinterpretar los principios de M3 Expressive en componentes Modern Web UI (CSS/WAAPI) personalizados. Esto implica desarrollar o adaptar librerías de animación (ej., Reanimated) para replicar los efectos de "overshoot" y las animaciones dinámicas. Los nuevos componentes (Button Groups, Split Buttons, Toolbars) deben ser construidos siguiendo el `StyleSheet.create` y el `sheet canónico` de WebFactory, manteniendo la consistencia arquitectónica.
+*   **Dark OLED y Material 3:** Las animaciones vibrantes y las formas dinámicas de M3 Expressive se verán excepcionales en pantallas OLED, especialmente en el tema oscuro de WebFactory, realzando la profundidad y el contraste. La extensión de Material 3 se alinea con el uso actual de WebFactory, permitiendo una evolución natural de su lenguaje visual.
 *   **Lenguaje Venue/Experiencia/Grupo:**
     *   **Venue:** Utilizar "textiles enfatizados" para nombres de venues o detalles clave. Las nuevas formas pueden agrupar visualmente información de un venue o destacar eventos específicos.
     *   **Experiencia:** Las animaciones fluidas y el sistema de movimiento pueden enriquecer la "Experiencia" al navegar por eventos, cargar contenido o interactuar con detalles. Un "Split Button" podría ofrecer acciones contextuales para una experiencia (ej., "Comprar entradas" con un desplegable para "Ver detalles").
     *   **Grupo:** Los "Button Groups" son ideales para la gestión de grupos, permitiendo seleccionar preferencias, filtrar actividades o gestionar miembros con una interfaz intuitiva y animada. Las formas dinámicas pueden diferenciar visualmente los grupos o sus actividades.
 *   **Dunbar 4-6:** El diseño emocional de M3 Expressive puede fomentar una mayor conexión y engagement en grupos pequeños. Animaciones sutiles o elementos visuales dinámicos pueden reforzar la identidad del grupo o la naturaleza compartida de las experiencias.
-*   **Consistencia Arquitectónica:** La implementación debe adherirse estrictamente al patrón de `un createClient` y `StyleSheet.create`, asegurando que los nuevos componentes y animaciones se integren de manera coherente con el ADN de Yendo.
+*   **Consistencia Arquitectónica:** La implementación debe adherirse estrictamente al patrón de `un createClient` y `StyleSheet.create`, asegurando que los nuevos componentes y animaciones se integren de manera coherente con el ADN de WebFactory.
 
 ### 4. Citas Clave
 
@@ -6553,7 +6551,7 @@ Dada la arquitectura de Yendo en React Native con Expo 57 y sus invariantes, la 
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -6591,14 +6589,14 @@ El **Design Sprint 2.0** es la versión optimizada del proceso original (2016)
 - **Compromiso de presencia**: solo lunes y martes requieren a todo el equipo; miércoles‑jueves pueden trabajar de forma asíncrona (prototipo, test).  
 - **Iteración rápida**: el flujo *User Test Flow → Storyboard* permite validar flujos antes de invertir en storyboard completo.
 
-## 3. Ideas accionables para Yendo  
+## 3. Ideas accionables para WebFactory  
 
 | Área | Acción concreta | Justificación |
 |------|----------------|---------------|
 | **Expo 57 (evento de lanzamiento)** | Aplicar un **Design Sprint 2.0** interno para definir la experiencia “Expo 57” (tema, navegación, interacción). Utilizar lunes‑martes para idear y decidir, miércoles para prototipar una demo interactiva y jueves para testear con usuarios internos y partners. | Permite validar la propuesta de valor y el flujo de la expo en tiempo récord, alineando a todos los stakeholders antes del evento. |
-| **React Native** | Adoptar la **arquitectura de prototipo rápido** usando **Expo Go** y **React Native Paper (Material 3)** para crear el MVP del día 3. Integrar componentes de **Dark OLED** (modo oscuro optimizado) desde el inicio. | Reduce la fricción de desarrollo (una base de código única) y garantiza que la UI cumpla con la estética de Material 3 y el consumo energético de pantallas OLED. |
+| **Modern Web UI (CSS/WAAPI)** | Adoptar la **arquitectura de prototipo rápido** usando **Expo Go** y **Modern Web UI (CSS/WAAPI) Paper (Material 3)** para crear el MVP del día 3. Integrar componentes de **Dark OLED** (modo oscuro optimizado) desde el inicio. | Reduce la fricción de desarrollo (una base de código única) y garantiza que la UI cumpla con la estética de Material 3 y el consumo energético de pantallas OLED. |
 | **Dark OLED** | Definir en el sprint los **colores y contrastes** específicos para modo oscuro OLED (p.ej., tonos #121212, acentos #BB86FC). Probar en dispositivos reales el **consumo de energía** durante el test del día 4. | Mejora la experiencia visual y la duración de batería, crucial para usuarios que usan la app en eventos nocturnos. |
-| **Material 3** | Incorporar los **componentes de Material 3** (BottomNavigation, Card, Chip) en el prototipo. Usar el **Design System** de Yendo como guía de estilo para mantener consistencia entre eventos, grupos y venues. | Alinea la UI con las directrices de Google, facilita la accesibilidad y acelera el desarrollo con componentes listos. |
+| **Material 3** | Incorporar los **componentes de Material 3** (BottomNavigation, Card, Chip) en el prototipo. Usar el **Design System** de WebFactory como guía de estilo para mantener consistencia entre eventos, grupos y venues. | Alinea la UI con las directrices de Google, facilita la accesibilidad y acelera el desarrollo con componentes listos. |
 | **Fricción Cero** | Durante el sprint, mapear **puntos de fricción** en el flujo de registro y check‑in de eventos. Generar **micro‑interacciones** (animaciones, feedback haptico) que eliminen dudas del usuario. | Un flujo sin fricción aumenta la conversión y la retención en eventos de alta concurrencia. |
 | **Lenguaje Venue / Evento / Grupo** | En la fase de *How Might We* y *Long‑term goal*, definir un **glosario unificado** (Venue = ubicación física, Evento = actividad programada, Grupo = comunidad de usuarios). Documentar en el sprint y reflejar en la UI (etiquetas, filtros). | Evita ambigüedades, mejora la navegación y permite segmentar datos para analytics y personalización. |
 
@@ -6607,7 +6605,7 @@ El **Design Sprint 2.0** es la versión optimizada del proceso original (2016)
 1. **Semana 1‑2** – Preparación del sprint: selección de participantes, definición de metas (Expo 57).  
 2. **Semana 3** – Ejecución Design Sprint 2.0 (lunes‑jueves).  
 3. **Semana 4** – Análisis de resultados, decisión de iteración o lanzamiento de la demo en Expo 57.  
-4. **Mes 2‑3** – Implementación completa en React Native, pruebas de Dark OLED y despliegue de Material 3.  
+4. **Mes 2‑3** – Implementación completa en Modern Web UI (CSS/WAAPI), pruebas de Dark OLED y despliegue de Material 3.  
 
 ## 4. Citas clave  
 
@@ -6618,7 +6616,7 @@ El **Design Sprint 2.0** es la versión optimizada del proceso original (2016)
 
 ---  
 
-*Este informe sintetiza los elementos críticos del Design Sprint 2.0 y propone cómo Yendo puede aprovecharlos para acelerar la entrega de experiencias de evento, optimizando tanto la arquitectura técnica (React Native, Material 3, Dark OLED) como la experiencia de usuario (fricción cero, lenguaje unificado).*
+*Este informe sintetiza los elementos críticos del Design Sprint 2.0 y propone cómo WebFactory puede aprovecharlos para acelerar la entrega de experiencias de evento, optimizando tanto la arquitectura técnica (Modern Web UI (CSS/WAAPI), Material 3, Dark OLED) como la experiencia de usuario (fricción cero, lenguaje unificado).*
 
 ---
 
@@ -6640,7 +6638,7 @@ El **Design Sprint 2.0** es la versión optimizada del proceso original (2016)
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -6657,7 +6655,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Design Sprint 2.0 para Yendo Mobile
+## Informe de Investigación: Design Sprint 2.0 para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -6676,16 +6674,16 @@ La "arquitectura" del Design Sprint 2.0 se ha rediseñado para maximizar la efic
     *   **Jueves (Día 4)**: Exclusivamente para las pruebas con usuarios.
 *   **Enfoque en Resultados Tangibles**: El proceso culmina con un prototipo probado por usuarios reales, proporcionando datos concretos para la toma de decisiones.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-La implementación de los principios del Design Sprint 2.0 puede catalizar la innovación y eficiencia en Yendo Mobile:
+La implementación de los principios del Design Sprint 2.0 puede catalizar la innovación y eficiencia en la Web Software Factory:
 
 *   **Expo 57**: Utilizar sprints de 4 días para idear, prototipar y validar rápidamente nuevas funcionalidades o experiencias para Expo 57. Esto permite probar múltiples conceptos en ciclos cortos, reduciendo el riesgo antes de la inversión completa en desarrollo.
-*   **React Native**: La velocidad de prototipado del Design Sprint 2.0 se alinea perfectamente con la agilidad de desarrollo de React Native. Los prototipos validados pueden traducirse rápidamente en código funcional, acelerando el ciclo de vida del producto.
+*   **Modern Web UI (CSS/WAAPI)**: La velocidad de prototipado del Design Sprint 2.0 se alinea perfectamente con la agilidad de desarrollo de Modern Web UI (CSS/WAAPI). Los prototipos validados pueden traducirse rápidamente en código funcional, acelerando el ciclo de vida del producto.
 *   **Dark OLED / Material 3**: Para decisiones de diseño como la implementación de Dark OLED o Material 3, los sprints pueden usarse para prototipar diferentes enfoques de interfaz de usuario y probar su usabilidad y atractivo con usuarios reales en solo 4 días, asegurando que las elecciones de diseño sean óptimas y bien recibidas.
 *   **Fricción Cero**: El Design Sprint 2.0 es una herramienta intrínseca para lograr la "fricción cero". Al identificar y resolver grandes problemas en una semana, se pueden abordar puntos de dolor del usuario o del proceso interno de manera proactiva y eficiente, minimizando obstáculos en la experiencia del usuario y en el desarrollo.
-*   **Lenguaje Venue/Experiencia/Grupo**: La fase inicial del sprint (entrevistas a expertos, "How Might We", mapa) es ideal para profundizar en la comprensión de los "Venues", las "Experiencias" deseadas y las dinámicas de los "Grupos" de usuarios de Yendo. Esto asegura que las soluciones prototipadas estén directamente alineadas con las necesidades y contextos específicos de los usuarios.
-*   **Dunbar 4-6**: La reducción del equipo completo a solo los dos primeros días del sprint refuerza la idea de que equipos pequeños y enfocados son más eficientes para la toma de decisiones y la ejecución. Para Yendo, esto sugiere formar equipos de sprint con un número óptimo de participantes (quizás alineado con el número de Dunbar para colaboración efectiva) para las fases críticas, liberando a otros para sus tareas habituales.
+*   **Lenguaje Venue/Experiencia/Grupo**: La fase inicial del sprint (entrevistas a expertos, "How Might We", mapa) es ideal para profundizar en la comprensión de los "Venues", las "Experiencias" deseadas y las dinámicas de los "Grupos" de usuarios de WebFactory. Esto asegura que las soluciones prototipadas estén directamente alineadas con las necesidades y contextos específicos de los usuarios.
+*   **Dunbar 4-6**: La reducción del equipo completo a solo los dos primeros días del sprint refuerza la idea de que equipos pequeños y enfocados son más eficientes para la toma de decisiones y la ejecución. Para WebFactory, esto sugiere formar equipos de sprint con un número óptimo de participantes (quizás alineado con el número de Dunbar para colaboración efectiva) para las fases críticas, liberando a otros para sus tareas habituales.
 
 ### 4. Citas Clave
 
@@ -6722,7 +6720,7 @@ La implementación de los principios del Design Sprint 2.0 puede catalizar la in
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -6739,11 +6737,11 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Optimización de Rendimiento en React Native para Yendo Mobile
+## Informe de Investigación: Optimización de Rendimiento en Modern Web UI (CSS/WAAPI) para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
-El webinar subraya que la optimización del rendimiento en aplicaciones React Native es fundamental para la experiencia del usuario y el éxito comercial. La tesis central es que la mayoría de los problemas de rendimiento provienen de errores comunes en el lado de JavaScript (como la falta de memoización o la ejecución de tareas síncronas pesadas) y pueden ser identificados y resueltos eficazmente mediante herramientas como React DevTools y ajustes de código sencillos. Cada milisegundo cuenta, impactando directamente la retención de usuarios y los ingresos.
+El webinar subraya que la optimización del rendimiento en aplicaciones Modern Web UI (CSS/WAAPI) es fundamental para la experiencia del usuario y el éxito comercial. La tesis central es que la mayoría de los problemas de rendimiento provienen de errores comunes en el lado de JavaScript (como la falta de memoización o la ejecución de tareas síncronas pesadas) y pueden ser identificados y resueltos eficazmente mediante herramientas como React DevTools y ajustes de código sencillos. Cada milisegundo cuenta, impactando directamente la retención de usuarios y los ingresos.
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
@@ -6759,13 +6757,13 @@ El webinar subraya que la optimización del rendimiento en aplicaciones React Na
 *   **Instanciación de Objetos Costosos:** Objetos como `Intl.DateTimeFormat` son costosos de crear. Deben instanciarse una sola vez y reutilizarse (ej. globalmente, con `useMemo` o en un custom hook) para evitar gastos innecesarios en cada render.
 *   **Estrategia de Memoización:** No se debe memoizar de forma excesiva por defecto; la medición es clave. Si bien la memoria es barata, la memoización indiscriminada puede añadir complejidad o incluso ralentizar. Los candidatos ideales para memoización incluyen valores de contexto, funciones devueltas por custom hooks y la función `renderItem` de `FlatList`. El futuro compilador de React promete automatizar gran parte de esta tarea.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-*   **Expo 57 y React Native:** Todos los principios de optimización discutidos son directamente aplicables al desarrollo de Yendo en React Native. Es imperativo integrar el uso de React DevTools y su profiler en el flujo de trabajo de desarrollo para identificar proactivamente problemas de rendimiento.
-*   **Dark OLED y Material 3:** Si Yendo implementa un contexto de tema (para Dark OLED o Material 3), es crucial que el objeto de valor del contexto esté memoizado con `useMemo`. Esto evitará re-renders innecesarios en toda la aplicación cada vez que la referencia del objeto del tema cambie, incluso si las propiedades del tema son idénticas, garantizando una experiencia fluida al cambiar o aplicar temas.
+*   **Expo 57 y Modern Web UI (CSS/WAAPI):** Todos los principios de optimización discutidos son directamente aplicables al desarrollo de WebFactory en Modern Web UI (CSS/WAAPI). Es imperativo integrar el uso de React DevTools y su profiler en el flujo de trabajo de desarrollo para identificar proactivamente problemas de rendimiento.
+*   **Dark OLED y Material 3:** Si WebFactory implementa un contexto de tema (para Dark OLED o Material 3), es crucial que el objeto de valor del contexto esté memoizado con `useMemo`. Esto evitará re-renders innecesarios en toda la aplicación cada vez que la referencia del objeto del tema cambie, incluso si las propiedades del tema son idénticas, garantizando una experiencia fluida al cambiar o aplicar temas.
 *   **Fricción Cero:** La performance es un pilar fundamental de la "Fricción Cero". Una aplicación lenta genera fricción. La atención a los tiempos de inicio, la responsividad de la UI y la eliminación de retrasos (la regla de los 100ms) son directamente aplicables para asegurar que la interacción del usuario sea siempre fluida y sin interrupciones.
-*   **Lenguaje Venue/Experiencia/Grupo y Dunbar 4-6:** Los principios de optimización se aplican a todas las entidades de Yendo. Por ejemplo, si una pantalla de "Venue" muestra una `FlatList` de "Experiencias" o "Grupos", la optimización de esa lista (memoización de `renderItem`, optimización de re-renders de ítems) es vital. Si la lógica de "Grupos" o la gestión de "Dunbar 4-6" implica cálculos complejos, estos deben ser "yielded" o ejecutados de forma asíncrona para no bloquear la UI.
-*   **`createClient` y `StyleSheet.create`:** En línea con el principio de "crear una vez, reutilizar" (como con `DateTimeFormat`), Yendo debe asegurar que las instancias de `createClient` se creen una sola vez y se reutilicen en toda la aplicación. Esto evita la sobrecarga de instanciación repetida. De manera similar, el uso canónico de `StyleSheet.create` para la definición de estilos es una práctica que ya alinea con la prevención de la creación de nuevas referencias de objetos en cada render, contribuyendo a un rendimiento óptimo.
+*   **Lenguaje Venue/Experiencia/Grupo y Dunbar 4-6:** Los principios de optimización se aplican a todas las entidades de WebFactory. Por ejemplo, si una pantalla de "Venue" muestra una `FlatList` de "Experiencias" o "Grupos", la optimización de esa lista (memoización de `renderItem`, optimización de re-renders de ítems) es vital. Si la lógica de "Grupos" o la gestión de "Dunbar 4-6" implica cálculos complejos, estos deben ser "yielded" o ejecutados de forma asíncrona para no bloquear la UI.
+*   **`createClient` y `StyleSheet.create`:** En línea con el principio de "crear una vez, reutilizar" (como con `DateTimeFormat`), WebFactory debe asegurar que las instancias de `createClient` se creen una sola vez y se reutilicen en toda la aplicación. Esto evita la sobrecarga de instanciación repetida. De manera similar, el uso canónico de `StyleSheet.create` para la definición de estilos es una práctica que ya alinea con la prevención de la creación de nuevas referencias de objetos en cada render, contribuyendo a un rendimiento óptimo.
 
 ### 4. Citas Clave
 
@@ -6807,7 +6805,7 @@ El webinar subraya que la optimización del rendimiento en aplicaciones React Na
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -6870,7 +6868,7 @@ Para la gran mayoría de proyectos — especialmente MVPs y startups— la
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -6887,11 +6885,11 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Máquinas de Estado de LottieFiles para Yendo Mobile
+## Informe de Investigación: Máquinas de Estado de LottieFiles para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
-La tesis central es que las Máquinas de Estado de LottieFiles representan una evolución fundamental en la integración de animaciones en productos digitales, transformándolas de elementos meramente presentacionales a componentes interactivos y dinámicos. Esta capacidad permite a Yendo Mobile ofrecer una experiencia de usuario significativamente más rica, intuitiva y con "fricción cero", donde las animaciones no solo adornan, sino que responden directamente a las acciones del usuario, guiando la narrativa de la interfaz.
+La tesis central es que las Máquinas de Estado de LottieFiles representan una evolución fundamental en la integración de animaciones en productos digitales, transformándolas de elementos meramente presentacionales a componentes interactivos y dinámicos. Esta capacidad permite a la Web Software Factory ofrecer una experiencia de usuario significativamente más rica, intuitiva y con "fricción cero", donde las animaciones no solo adornan, sino que responden directamente a las acciones del usuario, guiando la narrativa de la interfaz.
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
@@ -6906,19 +6904,19 @@ La herramienta Lottie Creator facilita la construcción de estas máquinas de es
 
 Esta arquitectura permite crear experiencias interactivas complejas, como toggles con estados de "wiggle" y transición, rotación de objetos basada en clics, o movimientos direccionales que responden a la entrada del usuario, todo ello manteniendo la ligereza y escalabilidad de los archivos Lottie.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-La implementación de Máquinas de Estado de LottieFiles se alinea perfectamente con los principios y el ADN de Yendo:
+La implementación de Máquinas de Estado de LottieFiles se alinea perfectamente con los principios y el ADN de WebFactory:
 
 *   **Fricción Cero:** Las animaciones interactivas proporcionan retroalimentación visual inmediata y atractiva a las acciones del usuario, haciendo que la interfaz se sienta más responsiva y natural. Esto reduce la carga cognitiva y mejora la usabilidad.
 *   **Lenguaje Venue/Experiencia/Grupo:**
     *   **Venue:** Mapas interactivos con puntos de interés animados que reaccionan al "hover" o "click", indicando disponibilidad o información contextual. Animaciones de carga o transición al cambiar de "venue".
     *   **Experiencia:** Onboarding dinámico y gamificado. Indicadores de progreso animados que responden a la finalización de tareas. Feedback visual enriquecido para acciones como "me gusta", "compartir" o confirmaciones de reserva.
     *   **Grupo:** Reacciones animadas en chats grupales. Indicadores de actividad de grupo que cambian dinámicamente. Animaciones sutiles para notificaciones dentro de grupos pequeños (Dunbar 4-6), haciendo las interacciones más personales y atractivas.
-*   **Expo 57 y React Native:** Lottie ya tiene un soporte robusto en React Native y Expo. La integración de Máquinas de Estado sería una extensión natural de las capacidades existentes, aprovechando el rendimiento nativo y la flexibilidad del ecosistema.
+*   **Expo 57 y Modern Web UI (CSS/WAAPI):** Lottie ya tiene un soporte robusto en Modern Web UI (CSS/WAAPI) y Expo. La integración de Máquinas de Estado sería una extensión natural de las capacidades existentes, aprovechando el rendimiento nativo y la flexibilidad del ecosistema.
 *   **Dark OLED y Material 3:** Las animaciones Lottie, al ser vectoriales, se adaptan perfectamente a cualquier tema, incluyendo Dark OLED, ofreciendo contrastes vibrantes y eficiencia energética. Se integran con los principios de movimiento y diseño dinámico de Material 3, creando una interfaz cohesiva y moderna.
-*   **DNA pisa internet:** Adoptar Máquinas de Estado de LottieFiles posiciona a Yendo a la vanguardia de las tendencias de diseño de UI/UX, demostrando un compromiso con la innovación y una experiencia de usuario de clase mundial.
-*   **Invariantes Técnicos (un createClient, StyleSheet.create, sheet canónico):** La integración de Lottie es a nivel de componente, lo que significa que no interfiere con los patrones de inicialización del cliente ni con la gestión de estilos globales, manteniendo la coherencia arquitectónica de Yendo.
+*   **DNA pisa internet:** Adoptar Máquinas de Estado de LottieFiles posiciona a WebFactory a la vanguardia de las tendencias de diseño de UI/UX, demostrando un compromiso con la innovación y una experiencia de usuario de clase mundial.
+*   **Invariantes Técnicos (un createClient, StyleSheet.create, sheet canónico):** La integración de Lottie es a nivel de componente, lo que significa que no interfiere con los patrones de inicialización del cliente ni con la gestión de estilos globales, manteniendo la coherencia arquitectónica de WebFactory.
 
 ### 4. Citas Clave
 
@@ -6956,7 +6954,7 @@ La implementación de Máquinas de Estado de LottieFiles se alinea perfectamente
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -6972,16 +6970,15 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-
 <think>
 Here's a thinking process:
 
 1.  **Analyze User Input:**
-   - **Role:** RESEARCHER_AGENT for Yendo Mobile
+   - **Role:** RESEARCHER_AGENT for la Web Software Factory
    - **Task:** Analyze the provided video transcript and synthesize:
      1. Central concept and thesis
      2. Key technical and architectural findings
-     3. Actionable ideas for Yendo (React Native, UX, Backend)
+     3. Actionable ideas for WebFactory (Modern Web UI (CSS/WAAPI), UX, Backend)
      4. Key quotes/phrases highlighted
    - **Format:** Elegant and structured Markdown
    - **Input Transcript:** It's the complete lyrics to Rick Astley's "Never Gonna Give You Up" (the famous "Rickroll" song).
@@ -6994,25 +6991,25 @@ Here's a thinking process:
 3.  **Determine How to Respond (as a Researcher Agent):**
    - Acknowledge the nature of the input professionally and accurately.
    - State clearly that the transcript contains song lyrics, not technical content.
-   - Fulfill the requested structure but adapt it to the reality of the input, maintaining the professional tone expected of a Yendo Mobile Researcher Agent.
+   - Fulfill the requested structure but adapt it to the reality of the input, maintaining the professional tone expected of a la Web Software Factory Researcher Agent.
    - Provide a constructive, slightly humorous but professional pivot, suggesting how to proceed if this was intentional (e.g., testing AI, meme reference) or if they meant to share a different transcript.
    - Ensure all 4 requested sections are addressed, even if the content is adapted to reflect the actual input.
 
 4.  **Draft - Section by Section (Mental Refinement):**
    *1. Concepto central y tesis:* The transcript consists entirely of the lyrics to Rick Astley's 1987 hit "Never Gonna Give You Up". There is no technical thesis or product-focused concept. The central theme is romantic commitment and loyalty, expressed through repetitive promises of reliability and emotional support.
    *2. Hallazgos técnicos y arquitectónicos clave:* None. The content is purely lyrical/musical. No architecture, frameworks, APIs, or development patterns are discussed.
-   *3. Ideas accionables para aplicar en Yendo:* Since there's no technical content, I'll note that no direct actionable insights can be extracted. However, I can suggest how this type of input could be handled in a real workflow (e.g., content validation pipelines, AI prompt filtering, or meme-aware testing). I'll also offer to analyze a technical transcript if provided.
+   *3. Ideas accionables para aplicar en WebFactory:* Since there's no technical content, I'll note that no direct actionable insights can be extracted. However, I can suggest how this type of input could be handled in a real workflow (e.g., content validation pipelines, AI prompt filtering, or meme-aware testing). I'll also offer to analyze a technical transcript if provided.
    *4. Citas o frases clave destacadas:* I'll extract the most iconic/repetitive lines as requested, formatted properly.
-   *Structure & Tone:* Professional, structured Markdown, aligned with Yendo Mobile's engineering/UX/backend focus, but honest about the input's nature. Add a polite note offering to process the correct technical material.
+   *Structure & Tone:* Professional, structured Markdown, aligned with la Web Software Factory's engineering/UX/backend focus, but honest about the input's nature. Add a polite note offering to process the correct technical material.
 
 5.  **Construct Output (Mental to Markdown):**
    I'll structure it exactly as requested, using clear headings, bullet points, and professional language. I'll make sure it's elegant and matches the prompt's requirements while accurately reflecting the input.
 
    Structure:
-   - # Análisis de Transcripción – Yendo Mobile Researcher Agent
+   - # Análisis de Transcripción – la Web Software Factory Researcher Agent
    - ## 1. Concepto Central y Tesis
    - ## 2. Hallazgos Técnicos y Arquitectónicos Clave
-   - ## 3. Ideas Accionables para Yendo (React Native, UX, Backend)
+   - ## 3. Ideas Accionables para WebFactory (Modern Web UI (CSS/WAAPI), UX, Backend)
    - ## 4. Citas y Frases Clave Destacadas
    - Add a professional closing note.
 
@@ -7029,9 +7026,9 @@ Here's a thinking process:
    - Output matches the refined version.✅
 </think>
 
-# 📊 Análisis de Transcripción – Yendo Mobile Researcher Agent
+# 📊 Análisis de Transcripción – la Web Software Factory Researcher Agent
 
-> ⚠️ **Nota preliminar:** La transcripción proporcionada corresponde íntegramente a la letra de la canción *"Never Gonna Give You Up"* (Rick Astley, 1987). No contiene contenido técnico, demostraciones de producto, ni discursos de arquitectura de software. A continuación, se presenta la síntesis solicitada adaptada a la naturaleza del material recibido, manteniendo el rigor analítico esperado por el equipo de Yendo Mobile.
+> ⚠️ **Nota preliminar:** La transcripción proporcionada corresponde íntegramente a la letra de la canción *"Never Gonna Give You Up"* (Rick Astley, 1987). No contiene contenido técnico, demostraciones de producto, ni discursos de arquitectura de software. A continuación, se presenta la síntesis solicitada adaptada a la naturaleza del material recibido, manteniendo el rigor analítico esperado por el equipo de la Web Software Factory.
 
 ---
 
@@ -7044,12 +7041,12 @@ Here's a thinking process:
 ## 2. 🏗️ Hallazgos Técnicos y Arquitectónicos Clave
 - **Contenido técnico:** `0%`
 - **Arquitectura de software / APIs / Patrones de diseño:** No mencionados.
-- **Stack tecnológico (React Native, Node, GraphQL, etc.):** No aplicable.
+- **Stack tecnológico (Modern Web UI (CSS/WAAPI), Node, GraphQL, etc.):** No aplicable.
 - **Observación:** La transcripción no incluye diagramas, métricas de rendimiento, flujos de datos, ni decisiones de infraestructura. Para análisis de arquitectura móvil o backend, se requiere material con discursos técnicos, code reviews, o demos de producto.
 
 ---
 
-## 3. 🛠️ Ideas Accionables para Yendo (React Native, UX, Backend)
+## 3. 🛠️ Ideas Accionables para WebFactory (Modern Web UI (CSS/WAAPI), UX, Backend)
 Dado que el material no contiene información técnica, se proponen las siguientes acciones de proceso y gobernanza de contenido:
 
 | Área | Acción Recomendada | Justificación |
@@ -7057,7 +7054,7 @@ Dado que el material no contiene información técnica, se proponen las siguient
 | **📥 Ingesta de Contenido** | Implementar validación automática de transcripciones (NLP + clasificación de intención) antes de enviarlas al pipeline de investigación. | Evita procesamiento innecesario de material no técnico y optimiza el tiempo del equipo de R&D. |
 | **🧪 QA / Testing** | Registrar este caso como *test de robustez de prompts* en el flujo de IA interna. | Valida que los agentes de investigación manejen correctamente entradas fuera de dominio sin alucinar contenido técnico. |
 | **🎨 UX / Onboarding** | Si el material fue compartido intencionalmente como referencia cultural o de engagement, evaluar su uso en microinteracciones lúdicas (easter eggs, loading states, o mensajes de error amigables). | Alineado con tendencias de UX que humanizan la experiencia del usuario mediante tono conversacional y referencias culturales controladas. |
-| **🔄 Siguiente Paso** | Solicitar la transcripción técnica correcta (ej. charla de arquitectura, demo de feature, webinar de React Native, etc.). | Permite generar un análisis accionable real para el stack de Yendo. |
+| **🔄 Siguiente Paso** | Solicitar la transcripción técnica correcta (ej. charla de arquitectura, demo de feature, webinar de Modern Web UI (CSS/WAAPI), etc.). | Permite generar un análisis accionable real para el stack de WebFactory. |
 
 ---
 
@@ -7070,9 +7067,9 @@ Dado que el material no contiene información técnica, se proponen las siguient
 ---
 
 ### 📌 Conclusión del Researcher Agent
-La transcripción no aporta insumos técnicos para arquitectura, React Native, UX o backend. Se recomienda:
+La transcripción no aporta insumos técnicos para arquitectura, Modern Web UI (CSS/WAAPI), UX o backend. Se recomienda:
 1. Validar la fuente del material antes de su procesamiento.
-2. Enviar la transcripción técnica correspondiente para generar un análisis accionable alineado con los objetivos de ingeniería de Yendo Mobile.
+2. Enviar la transcripción técnica correspondiente para generar un análisis accionable alineado con los objetivos de ingeniería de la Web Software Factory.
 3. Mantener este registro como caso de prueba de resiliencia en el pipeline de investigación asistida por IA.
 
 ¿Deseas que procese una transcripción técnica específica (ej. charla de arquitectura, demo de feature, webinar de performance, etc.)? Estoy listo para generar el análisis completo con métricas, patrones de diseño y recomendaciones implementables. 🚀
@@ -7097,7 +7094,7 @@ La transcripción no aporta insumos técnicos para arquitectura, React Native, U
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -7113,7 +7110,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-# Informe de investigación – Yendo Mobile  
+# Informe de investigación – la Web Software Factory  
 
 ## 1. Concepto central y tesis  
 
@@ -7142,16 +7139,16 @@ En resumen, la combinación de **T3 Code**, **agents.md** y **skills** permite
 
 ---
 
-## 3. Ideas accionables para Yendo Mobile  
+## 3. Ideas accionables para la Web Software Factory  
 
 ### 3.1. Integrar una **fleet de agentes** para la app Expo 57  
-1. **Crear un repositorio “fleet‑yendo”** con `agents.md` global y carpetas `universal/`, `expo57/`, `rn/`.  
+1. **Crear un repositorio “fleet‑webfactory”** con `agents.md` global y carpetas `universal/`, `expo57/`, `rn/`.  
 2. Definir **skills** que automaticen:  
    * Generación de pantallas con **Material 3** y **Dark OLED** (colores, tipografía).  
-   * Configuración de **React Native** (Zustand, React‑Query, TanStack).  
+   * Configuración de **Modern Web UI (CSS/WAAPI)** (Zustand, React‑Query, TanStack).  
    * Gestión de eventos/venues/grupos mediante un **lenguaje DSL** (ver 3.4).  
 
-### 3.2. Adoptar **React Native + Expo 57** como stack principal  
+### 3.2. Adoptar **Modern Web UI (CSS/WAAPI) + Expo 57** como stack principal  
 * Utilizar **Expo SDK 57** para acceso inmediato a APIs de cámara, notificaciones y **Dark Mode** optimizado para pantallas OLED.  
 * Configurar **Material 3** a través de `react-native-paper` y personalizar temas para **modo oscuro** con contrastes altos (blanco sobre negro).  
 
@@ -7215,7 +7212,7 @@ En resumen, la combinación de **T3 Code**, **agents.md** y **skills** permite
 ---
 
 **Conclusión**  
-Adoptar la arquitectura de agentes descrita permite a Yendo Mobile crear una **plataforma de desarrollo sin fricción**, con **CI automatizada**, **auth empresarial segura** y una **UI optimizada para OLED Dark**. La combinación de **Expo 57**, **React Native**, **Material 3** y un **DSL de dominio** para venues/eventos/grupos, gestionada mediante un **fleet de agentes** y configurada en **Markdown**, alineará al equipo con la visión de “código como documentación” y maximizará la velocidad de entrega sin sacrificar calidad.  
+Adoptar la arquitectura de agentes descrita permite a la Web Software Factory crear una **plataforma de desarrollo sin fricción**, con **CI automatizada**, **auth empresarial segura** y una **UI optimizada para OLED Dark**. La combinación de **Expo 57**, **Modern Web UI (CSS/WAAPI)**, **Material 3** y un **DSL de dominio** para venues/eventos/grupos, gestionada mediante un **fleet de agentes** y configurada en **Markdown**, alineará al equipo con la visión de “código como documentación” y maximizará la velocidad de entrega sin sacrificar calidad.  
 
 ---
 
@@ -7240,7 +7237,7 @@ Adoptar la arquitectura de agentes descrita permite a Yendo Mobile crear una **p
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -7257,7 +7254,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Optimización de Agentes de IA para Yendo Mobile
+## Informe de Investigación: Optimización de Agentes de IA para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -7275,23 +7272,23 @@ El concepto central del video es la **optimización de la comunicación con agen
 *   **Ejemplos "Buenos" y "Malos":** Proporcionar ejemplos concretos de cómo se espera (o no se espera) que el agente realice ciertas tareas, especialmente en la generación de código o descripciones.
 *   **Orquestación de Agentes:** Uso de herramientas como T3 Code para gestionar y ejecutar agentes en múltiples máquinas, permitiendo la delegación de tareas y el trabajo en paralelo.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-Para Yendo Mobile, la aplicación de estos principios puede transformar la eficiencia del desarrollo con IA:
+Para la Web Software Factory, la aplicación de estos principios puede transformar la eficiencia del desarrollo con IA:
 
 *   **Estrategia General de Agentes:**
-    *   **Crear un `agents.md` Global:** Establecer un archivo `agents.md` que defina la identidad de Yendo, sus principios de desarrollo (ej., "Fricción Cero", "Experiencia de Usuario Intuitiva"), y preferencias generales de codificación.
+    *   **Crear un `agents.md` Global:** Establecer un archivo `agents.md` que defina la identidad de WebFactory, sus principios de desarrollo (ej., "Fricción Cero", "Experiencia de Usuario Intuitiva"), y preferencias generales de codificación.
     *   **Auditoría Continua:** Implementar un proceso para auditar las interacciones de los agentes, identificando errores comunes en la generación de código o la comprensión de tareas. Utilizar estos datos para refinar las instrucciones y skills.
-    *   **Glosario de Yendo:** Crear un glosario en el `agents.md` que defina términos clave como "Venue", "Experiencia", "Grupo", "Usuario", "Cliente", etc., para asegurar que los agentes utilicen la terminología correcta y comprendan el dominio de Yendo.
+    *   **Glosario de WebFactory:** Crear un glosario en el `agents.md` que defina términos clave como "Venue", "Experiencia", "Grupo", "Usuario", "Cliente", etc., para asegurar que los agentes utilicen la terminología correcta y comprendan el dominio de WebFactory.
 
 *   **Aplicación a Tecnologías y Diseño:**
-    *   **Expo 57 y React Native:** Desarrollar "skills" específicas para tareas comunes en Expo/React Native, como la creación de componentes, la configuración de módulos nativos o la gestión de estados. Incluir directrices claras sobre las mejores prácticas de React Native, rendimiento y la necesidad de considerar las particularidades de iOS y Android.
+    *   **Expo 57 y Modern Web UI (CSS/WAAPI):** Desarrollar "skills" específicas para tareas comunes en Expo/Modern Web UI (CSS/WAAPI), como la creación de componentes, la configuración de módulos nativos o la gestión de estados. Incluir directrices claras sobre las mejores prácticas de Modern Web UI (CSS/WAAPI), rendimiento y la necesidad de considerar las particularidades de iOS y Web Platform.
     *   **Dark OLED y Material 3:** Integrar preferencias de diseño explícitas en el `agents.md`. Por ejemplo: "Priorizar el modo oscuro (Dark OLED) con alto contraste y texto blanco, evitando grises intermedios. Implementar componentes de UI siguiendo estrictamente las directrices de Material 3 para asegurar consistencia visual y accesibilidad."
-    *   **Soporte Multi-Superficie:** Incluir una sección en el `agents.md` que instruya a los agentes a verificar que cualquier cambio en la UI o la lógica se refleje correctamente en todas las superficies (web, iOS, Android) y que las pruebas se realicen en cada una.
+    *   **Soporte Multi-Superficie:** Incluir una sección en el `agents.md` que instruya a los agentes a verificar que cualquier cambio en la UI o la lógica se refleje correctamente en todas las superficies (web, iOS, Web Platform) y que las pruebas se realicen en cada una.
 
 *   **Optimización de la Comunicación y Reducción de Fricción:**
     *   **"Skills" para Fricción Cero:** Crear skills que automaticen tareas repetitivas y propensas a errores, como la generación de pantallas completas de "Venue" o "Experiencia" con layouts predefinidos, o la creación de componentes de Material 3 que cumplan con las especificaciones de Dark OLED.
-    *   **Ejemplos Concretos:** Proporcionar ejemplos de código "bueno" y "malo" para patrones de diseño específicos de Yendo, asegurando que los agentes aprendan las preferencias de estilo y arquitectura.
+    *   **Ejemplos Concretos:** Proporcionar ejemplos de código "bueno" y "malo" para patrones de diseño específicos de WebFactory, asegurando que los agentes aprendan las preferencias de estilo y arquitectura.
     *   **Principios de Dunbar (4-6):** Aplicar la analogía de la comunicación en grupos pequeños a las instrucciones de los agentes. Mantener las directrices concisas, claras y sin ambigüedades. Cada skill debe tener un propósito único y un "trigger" bien definido para evitar la sobrecarga cognitiva del agente.
 
 ### 4. Citas Clave
@@ -7329,7 +7326,7 @@ Para Yendo Mobile, la aplicación de estos principios puede transformar la efici
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -7346,7 +7343,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Diseño Conceptual y Semiótica para Yendo Mobile
+## Informe de Investigación: Diseño Conceptual y Semiótica para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -7354,16 +7351,16 @@ El video explora el **diseño conceptual**, también conocido como **semiótica*
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
-Aunque el video se centra en principios de diseño, sus implicaciones para la arquitectura y el desarrollo de Yendo son significativas:
+Aunque el video se centra en principios de diseño, sus implicaciones para la arquitectura y el desarrollo de WebFactory son significativas:
 
-*   **Consistencia como Habilitador Conceptual:** La insistencia de Yendo en un **`un createClient`** y **`StyleSheet.create`** único, junto con un "sheet canónico", es fundamental. Esta uniformidad arquitectónica y de estilo no es solo una buena práctica de desarrollo, sino un pilar para el diseño conceptual. Permite que cada componente y cada interacción se construyan sobre una base coherente, evitando la disonancia que podría diluir o contradecir el significado conceptual deseado. La consistencia técnica es el lienzo sobre el cual se pinta el significado.
-*   **Diseño de Sistemas con Propósito (Dark OLED, Material 3):** La elección de **Dark OLED** y **Material 3 (MD3)** no debe ser meramente estética. Estos sistemas de diseño ofrecen un lenguaje visual rico que, si se aplica conceptualmente, puede reforzar el mensaje de Yendo. Por ejemplo, el contraste del OLED oscuro puede usarse para dirigir la atención y crear un ambiente que resuene con la "Experiencia" o "Venue" de Yendo, mientras que los principios de MD3 pueden guiar interacciones que se sientan intuitivas y significativas.
-*   **"DNA pisa internet":** Esta invariante subraya la necesidad de que la esencia de Yendo esté intrínsecamente tejida en su presencia digital. El diseño conceptual es el vehículo perfecto para lograr esto, incrustando los valores y la identidad de Yendo en cada píxel y cada flujo de usuario, de modo que la aplicación no solo funcione, sino que *signifique* Yendo.
-*   **React Native y Expo 57 para la Coherencia de la Experiencia:** El uso de **React Native** y **Expo 57** facilita la construcción de una experiencia de usuario unificada y consistente en diferentes plataformas. Esto es crucial para el diseño conceptual, ya que la coherencia en la interacción y la presentación visual es vital para que el "puzzle" conceptual sea legible y gratificante para el usuario, sin importar el dispositivo.
+*   **Consistencia como Habilitador Conceptual:** La insistencia de WebFactory en un **`un createClient`** y **`StyleSheet.create`** único, junto con un "sheet canónico", es fundamental. Esta uniformidad arquitectónica y de estilo no es solo una buena práctica de desarrollo, sino un pilar para el diseño conceptual. Permite que cada componente y cada interacción se construyan sobre una base coherente, evitando la disonancia que podría diluir o contradecir el significado conceptual deseado. La consistencia técnica es el lienzo sobre el cual se pinta el significado.
+*   **Diseño de Sistemas con Propósito (Dark OLED, Material 3):** La elección de **Dark OLED** y **Material 3 (MD3)** no debe ser meramente estética. Estos sistemas de diseño ofrecen un lenguaje visual rico que, si se aplica conceptualmente, puede reforzar el mensaje de WebFactory. Por ejemplo, el contraste del OLED oscuro puede usarse para dirigir la atención y crear un ambiente que resuene con la "Experiencia" o "Venue" de WebFactory, mientras que los principios de MD3 pueden guiar interacciones que se sientan intuitivas y significativas.
+*   **"DNA pisa internet":** Esta invariante subraya la necesidad de que la esencia de WebFactory esté intrínsecamente tejida en su presencia digital. El diseño conceptual es el vehículo perfecto para lograr esto, incrustando los valores y la identidad de WebFactory en cada píxel y cada flujo de usuario, de modo que la aplicación no solo funcione, sino que *signifique* WebFactory.
+*   **Modern Web UI (CSS/WAAPI) y Expo 57 para la Coherencia de la Experiencia:** El uso de **Modern Web UI (CSS/WAAPI)** y **Expo 57** facilita la construcción de una experiencia de usuario unificada y consistente en diferentes plataformas. Esto es crucial para el diseño conceptual, ya que la coherencia en la interacción y la presentación visual es vital para que el "puzzle" conceptual sea legible y gratificante para el usuario, sin importar el dispositivo.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-1.  **Fricción Cero a través del "Puzzle Óptimo":** Aplicar el principio del "punto dulce" del diseño conceptual a la **Fricción Cero**. Las interacciones en Yendo deben ser lo suficientemente intuitivas para no frustrar, pero con toques de ingenio que deleiten y hagan sentir al usuario que ha "descubierto" algo. Esto podría manifestarse en micro-interacciones, animaciones sutiles o transiciones que revelen información de manera ingeniosa.
+1.  **Fricción Cero a través del "Puzzle Óptimo":** Aplicar el principio del "punto dulce" del diseño conceptual a la **Fricción Cero**. Las interacciones en WebFactory deben ser lo suficientemente intuitivas para no frustrar, pero con toques de ingenio que deleiten y hagan sentir al usuario que ha "descubierto" algo. Esto podría manifestarse en micro-interacciones, animaciones sutiles o transiciones que revelen información de manera ingeniosa.
 2.  **Invariantes como Metáforas Visuales:**
     *   **Venue:** Diseñar elementos visuales que, sin ser literales, evoquen la atmósfera o el propósito de un "Venue". Por ejemplo, un icono o un patrón de fondo que sugiera un espacio de encuentro sin mostrar un edificio específico.
     *   **Experiencia:** Crear flujos de usuario donde la navegación o la progresión se sienta como un viaje o una narrativa, con momentos de "revelación" que refuercen la idea de una "Experiencia" curada.
@@ -7372,7 +7369,7 @@ Aunque el video se centra en principios de diseño, sus implicaciones para la ar
 4.  **Dark OLED y Material 3 con Significado:**
     *   Utilizar el tema oscuro para crear un ambiente que resalte el contenido clave, haciendo que la información importante "brille" y sea el foco del "puzzle".
     *   Aprovechar los componentes de Material 3 para guiar la atención y la interacción de manera que cada elemento no solo cumpla una función, sino que también contribuya al significado general de la pantalla o la aplicación.
-5.  **Lenguaje y Copywriting Ingenioso:** Inspirarse en ejemplos como *The Economist*. El texto dentro de la aplicación (etiquetas, mensajes de error, descripciones) puede ser una oportunidad para el diseño conceptual, utilizando el ingenio y la semiótica para crear una conexión más profunda con el usuario y reforzar la personalidad de Yendo.
+5.  **Lenguaje y Copywriting Ingenioso:** Inspirarse en ejemplos como *The Economist*. El texto dentro de la aplicación (etiquetas, mensajes de error, descripciones) puede ser una oportunidad para el diseño conceptual, utilizando el ingenio y la semiótica para crear una conexión más profunda con el usuario y reforzar la personalidad de WebFactory.
 
 ### 4. Citas Clave
 
@@ -7409,7 +7406,7 @@ Aunque el video se centra en principios de diseño, sus implicaciones para la ar
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -7426,27 +7423,27 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Equilibrio de Nash y su Aplicación en Yendo Mobile
+## Informe de Investigación: Equilibrio de Nash y su Aplicación en la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
 El video introduce el Equilibrio de Nash como un concepto fundamental en la teoría de juegos, contrastándolo con la racionalizabilidad. La tesis central es que un Equilibrio de Nash representa un estado estable en un juego donde ningún jugador tiene un incentivo para desviarse unilateralmente de su estrategia, asumiendo que los demás jugadores mantienen las suyas. Esto implica una consistencia entre las creencias de los jugadores sobre las acciones de los demás y las acciones reales. Mientras que la racionalizabilidad solo requiere que las acciones sean óptimas dadas *alguna* creencia (que puede ser incorrecta), el Equilibrio de Nash exige que esas creencias sean *correctas*, es decir, que reflejen con precisión cómo juegan los oponentes. Este concepto ofrece predicciones más precisas sobre el comportamiento en juegos, incluso en aquellos con intereses puramente conflictivos, mediante la introducción de estrategias mixtas.
 
-### 2. Hallazgos Técnicos y Arquitectónicos Clave para Yendo
+### 2. Hallazgos Técnicos y Arquitectónicos Clave para WebFactory
 
-La teoría del Equilibrio de Nash ofrece una lente valiosa para entender y diseñar sistemas interactivos como Yendo, donde múltiples usuarios ("jugadores") interactúan dentro de un marco definido por la aplicación ("el juego").
+La teoría del Equilibrio de Nash ofrece una lente valiosa para entender y diseñar sistemas interactivos como WebFactory, donde múltiples usuarios ("jugadores") interactúan dentro de un marco definido por la aplicación ("el juego").
 
-*   **Estabilidad y Consistencia del Sistema:** Un sistema Yendo en "equilibrio" es aquel donde los usuarios no encuentran incentivos para desviarse de los flujos de interacción previstos. Esto se traduce en una arquitectura que promueve la predictibilidad y la coherencia. La adhesión a patrones como `un createClient` y `StyleSheet.create` es fundamental; estos actúan como "reglas del juego" internas que garantizan que el comportamiento del sistema sea consistente y predecible para los desarrolladores, lo que a su vez se refleja en una experiencia de usuario estable.
-*   **"Fricción Cero" como Ausencia de Desviación Rentable:** El principio de "Fricción Cero" en Yendo se alinea directamente con la definición de Nash de "no hay desviación unilateral estrictamente rentable". Si la ruta más fácil y gratificante para el usuario es la que Yendo desea, no habrá incentivo para buscar alternativas o "hacer trampa". Esto requiere un diseño técnico que optimice el rendimiento y la usabilidad de los flujos principales.
-*   **Conocimiento Común y Expectativas del Usuario:** La distinción entre racionalizabilidad (creencias racionales pero potencialmente incorrectas) y Nash (creencias correctas) es crucial. Yendo debe asegurar que las expectativas de los usuarios sobre cómo funciona la aplicación y cómo interactúan otros usuarios (sus "creencias") sean siempre correctas. Esto se logra a través de una UI/UX intuitiva y consistente (Material 3, Dark OLED), mensajes claros y un rendimiento fiable (Expo 57, React Native).
-*   **Gestión de la Aleatoriedad y la Coordinación:** En escenarios donde los usuarios podrían adoptar "estrategias mixtas" (ej. elegir aleatoriamente entre opciones), especialmente en grupos pequeños (Dunbar 4-6), Yendo debe facilitar la coordinación o la aleatorización justa. Esto implica diseñar componentes de UI/UX que permitan a los grupos llegar a un consenso o tomar decisiones de manera equitativa, en lugar de forzar una elección que podría generar conflicto.
-*   **Invariantes como Fundamentos del "Juego":** Los invariantes de Yendo (Venue/Experiencia/Grupo, Dunbar 4-6, un createClient, StyleSheet.create, Dark OLED MD3, DNA pisa internet) son los axiomas del "juego" de Yendo. Definen el espacio de estrategias y los pagos. Mantener estos invariantes asegura que el "juego" sea bien definido y que los Equilibrios de Nash (comportamientos estables del usuario) puedan ser identificados y fomentados.
+*   **Estabilidad y Consistencia del Sistema:** Un sistema WebFactory en "equilibrio" es aquel donde los usuarios no encuentran incentivos para desviarse de los flujos de interacción previstos. Esto se traduce en una arquitectura que promueve la predictibilidad y la coherencia. La adhesión a patrones como `un createClient` y `StyleSheet.create` es fundamental; estos actúan como "reglas del juego" internas que garantizan que el comportamiento del sistema sea consistente y predecible para los desarrolladores, lo que a su vez se refleja en una experiencia de usuario estable.
+*   **"Fricción Cero" como Ausencia de Desviación Rentable:** El principio de "Fricción Cero" en WebFactory se alinea directamente con la definición de Nash de "no hay desviación unilateral estrictamente rentable". Si la ruta más fácil y gratificante para el usuario es la que WebFactory desea, no habrá incentivo para buscar alternativas o "hacer trampa". Esto requiere un diseño técnico que optimice el rendimiento y la usabilidad de los flujos principales.
+*   **Conocimiento Común y Expectativas del Usuario:** La distinción entre racionalizabilidad (creencias racionales pero potencialmente incorrectas) y Nash (creencias correctas) es crucial. WebFactory debe asegurar que las expectativas de los usuarios sobre cómo funciona la aplicación y cómo interactúan otros usuarios (sus "creencias") sean siempre correctas. Esto se logra a través de una UI/UX intuitiva y consistente (Material 3, Dark OLED), mensajes claros y un rendimiento fiable (Expo 57, Modern Web UI (CSS/WAAPI)).
+*   **Gestión de la Aleatoriedad y la Coordinación:** En escenarios donde los usuarios podrían adoptar "estrategias mixtas" (ej. elegir aleatoriamente entre opciones), especialmente en grupos pequeños (Dunbar 4-6), WebFactory debe facilitar la coordinación o la aleatorización justa. Esto implica diseñar componentes de UI/UX que permitan a los grupos llegar a un consenso o tomar decisiones de manera equitativa, en lugar de forzar una elección que podría generar conflicto.
+*   **Invariantes como Fundamentos del "Juego":** Los invariantes de WebFactory (Venue/Experiencia/Grupo, Dunbar 4-6, un createClient, StyleSheet.create, Dark OLED MD3, DNA pisa internet) son los axiomas del "juego" de WebFactory. Definen el espacio de estrategias y los pagos. Mantener estos invariantes asegura que el "juego" sea bien definido y que los Equilibrios de Nash (comportamientos estables del usuario) puedan ser identificados y fomentados.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
 1.  **Diseño de Flujos de "Fricción Cero" Basado en Nash:**
     *   **Identificar Desviaciones Potenciales:** Realizar análisis de flujos de usuario para identificar puntos donde los usuarios podrían tener un incentivo para desviarse del camino deseado (ej. abandonar un proceso, buscar atajos).
-    *   **Optimizar la Ruta Deseada:** Asegurar que la ruta "en equilibrio" (la deseada por Yendo) sea la más eficiente, intuitiva y gratificante, eliminando cualquier "desviación unilateral rentable" que el usuario pueda encontrar.
+    *   **Optimizar la Ruta Deseada:** Asegurar que la ruta "en equilibrio" (la deseada por WebFactory) sea la más eficiente, intuitiva y gratificante, eliminando cualquier "desviación unilateral rentable" que el usuario pueda encontrar.
     *   **Feedback Inmediato:** Proporcionar retroalimentación clara y consistente para reforzar el comportamiento deseado, haciendo que el usuario "crea" correctamente en las consecuencias de sus acciones.
 
 2.  **Fomentar la Estabilidad en Interacciones de Grupo (Dunbar 4-6):**
@@ -7457,7 +7454,7 @@ La teoría del Equilibrio de Nash ofrece una lente valiosa para entender y dise�
 3.  **Reforzar la Coherencia Arquitectónica para la Predictibilidad del Usuario:**
     *   **Auditorías de Invariantes:** Realizar auditorías regulares para asegurar la estricta adherencia a `un createClient` y `StyleSheet.create`, garantizando que la base de código sea un "juego" predecible para los desarrolladores y, por extensión, para los usuarios.
     *   **Guías de Diseño (Material 3, Dark OLED):** Mantener y evolucionar una guía de diseño robusta basada en Material 3 y Dark OLED para asegurar una experiencia visual y funcional consistente, reduciendo la carga cognitiva y haciendo que la interfaz sea predecible.
-    *   **Rendimiento Consistente (Expo 57, React Native):** Priorizar la optimización del rendimiento para que la aplicación responda de manera predecible, evitando frustraciones que podrían llevar a los usuarios a "desviarse" o abandonar.
+    *   **Rendimiento Consistente (Expo 57, Modern Web UI (CSS/WAAPI)):** Priorizar la optimización del rendimiento para que la aplicación responda de manera predecible, evitando frustraciones que podrían llevar a los usuarios a "desviarse" o abandonar.
 
 4.  **Lenguaje Unificado (Venue/Experiencia/Grupo):**
     *   **Glosario Interno y Externo:** Desarrollar un glosario claro y consistente para los términos "Venue", "Experiencia" y "Grupo" tanto para el equipo de desarrollo como para los usuarios, asegurando que todos los "jugadores" compartan un "conocimiento común" del vocabulario del juego.
@@ -7499,7 +7496,7 @@ La teoría del Equilibrio de Nash ofrece una lente valiosa para entender y dise�
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -7516,29 +7513,29 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: DevSecOps para Yendo Mobile
+## Informe de Investigación: DevSecOps para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
-El concepto central es la integración proactiva y automatizada de la seguridad en cada etapa del ciclo de vida del desarrollo de software (DevSecOps), un enfoque conocido como "shifting left". La tesis principal es que la seguridad no debe ser un "afterthought" o un cuello de botella, sino una parte intrínseca y automatizada del proceso de entrega, permitiendo a Yendo Mobile lanzar innovaciones con "Fricción Cero" y máxima confianza. La inversión en DevSecOps es significativamente menor que el costo financiero y reputacional de una brecha de seguridad.
+El concepto central es la integración proactiva y automatizada de la seguridad en cada etapa del ciclo de vida del desarrollo de software (DevSecOps), un enfoque conocido como "shifting left". La tesis principal es que la seguridad no debe ser un "afterthought" o un cuello de botella, sino una parte intrínseca y automatizada del proceso de entrega, permitiendo a la Web Software Factory lanzar innovaciones con "Fricción Cero" y máxima confianza. La inversión en DevSecOps es significativamente menor que el costo financiero y reputacional de una brecha de seguridad.
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
-El análisis del curso de DevSecOps revela una metodología robusta y herramientas esenciales aplicables al ecosistema de Yendo:
+El análisis del curso de DevSecOps revela una metodología robusta y herramientas esenciales aplicables al ecosistema de WebFactory:
 
-*   **Seguridad en el Código (SAST)**: Herramientas como Bandit (para Python, extensible a JavaScript/TypeScript) escanean el código estático para identificar vulnerabilidades comunes (ej., inyecciones SQL, XSS, errores de configuración). Esto es crucial para la base de código de React Native.
-*   **Escaneo de Secretos**: Detección automatizada de claves API, credenciales o tokens codificados en el repositorio, incluso en el historial de commits. Es vital para proteger la "DNA" de Yendo que "pisa internet".
-*   **Análisis de Composición de Software (SCA)**: Herramientas que escanean dependencias de terceros (librerías, frameworks) en busca de vulnerabilidades conocidas (CVEs). Imprescindible para la gestión de paquetes en React Native y Expo.
-*   **Pruebas Dinámicas de Seguridad (DAST)**: Evalúan la aplicación en tiempo de ejecución para identificar vulnerabilidades que solo se manifiestan en un entorno operativo. Aunque el video se centra en web, el principio es aplicable a APIs y servicios backend de Yendo.
-*   **Escaneo de Imágenes Contenedorizadas**: Herramientas como Docker Scout analizan las capas de imágenes Docker para detectar vulnerabilidades en sistemas operativos base, paquetes y herramientas. Fundamental para los entornos de CI/CD y despliegue de Yendo.
+*   **Seguridad en el Código (SAST)**: Herramientas como Bandit (para Python, extensible a JavaScript/TypeScript) escanean el código estático para identificar vulnerabilidades comunes (ej., inyecciones SQL, XSS, errores de configuración). Esto es crucial para la base de código de Modern Web UI (CSS/WAAPI).
+*   **Escaneo de Secretos**: Detección automatizada de claves API, credenciales o tokens codificados en el repositorio, incluso en el historial de commits. Es vital para proteger la "DNA" de WebFactory que "pisa internet".
+*   **Análisis de Composición de Software (SCA)**: Herramientas que escanean dependencias de terceros (librerías, frameworks) en busca de vulnerabilidades conocidas (CVEs). Imprescindible para la gestión de paquetes en Modern Web UI (CSS/WAAPI) y Expo.
+*   **Pruebas Dinámicas de Seguridad (DAST)**: Evalúan la aplicación en tiempo de ejecución para identificar vulnerabilidades que solo se manifiestan en un entorno operativo. Aunque el video se centra en web, el principio es aplicable a APIs y servicios backend de WebFactory.
+*   **Escaneo de Imágenes Contenedorizadas**: Herramientas como Docker Scout analizan las capas de imágenes Docker para detectar vulnerabilidades en sistemas operativos base, paquetes y herramientas. Fundamental para los entornos de CI/CD y despliegue de WebFactory.
 *   **Automatización CI/CD (GitHub Actions)**: La integración de estas pruebas de seguridad directamente en el pipeline de CI/CD (ej., GitHub Actions) asegura que las vulnerabilidades se detecten temprano, antes de llegar a producción.
 *   **Gestión de Vulnerabilidades (Defect Dojo)**: La consolidación de informes de seguridad de diversas herramientas en una plataforma centralizada facilita el análisis, la priorización (por severidad y confianza) y el seguimiento de la remediación.
 *   **"Shifting Left"**: La detección temprana de problemas de seguridad reduce drásticamente el costo y el esfuerzo de remediación.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-*   **Expo 57 y React Native**:
-    *   Implementar SAST y SCA en el pipeline de CI/CD para el código fuente de React Native y sus dependencias. Esto incluye la revisión de módulos nativos y la configuración de Expo.
+*   **Expo 57 y Modern Web UI (CSS/WAAPI)**:
+    *   Implementar SAST y SCA en el pipeline de CI/CD para el código fuente de Modern Web UI (CSS/WAAPI) y sus dependencias. Esto incluye la revisión de módulos nativos y la configuración de Expo.
     *   Priorizar el escaneo de secretos en los repositorios de código para evitar la exposición accidental de credenciales de `createClient` o claves de API.
     *   Asegurar que las imágenes Docker utilizadas para construir y desplegar la aplicación (o sus servicios asociados) sean escaneadas regularmente con herramientas como Docker Scout, buscando versiones actualizadas y minimizando la superficie de ataque.
 *   **Dark OLED y Material 3**: Aunque son aspectos de UI/UX, la entrega de estas características debe ser segura. Los principios de DevSecOps garantizan que la implementación de estas interfaces, incluyendo la gestión de activos y la comunicación con el backend, se realice sin introducir vulnerabilidades.
@@ -7584,7 +7581,7 @@ El análisis del curso de DevSecOps revela una metodología robusta y herramient
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -7601,7 +7598,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Optimización del Uso de IA para Desarrollo en Yendo Mobile
+## Informe de Investigación: Optimización del Uso de IA para Desarrollo en la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -7627,23 +7624,23 @@ El video subraya que la eficacia de las herramientas de codificación asistida p
 *   **`roadmap.md`:** Un archivo Markdown para mantener a la IA informada sobre el estado actual del proyecto, prioridades y próximos pasos.
 *   **Conocimiento del Modelo:** Ser consciente de la fecha de corte de conocimiento de los modelos de IA y usar herramientas de búsqueda web para información actualizada.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
 1.  **Estandarización del Contexto de Proyecto:**
-    *   **Implementar `.cursor_rules` y `.cursor_ignore`:** Crear estos archivos en todos los proyectos de Yendo Mobile.
-    *   **`project_overview`:** Definir claramente la visión de Yendo, incluyendo la filosofía de "Fricción Cero" y los principios de "Dunbar 4-6" si son relevantes para el diseño de la experiencia de usuario.
-    *   **`tech_stack`:** Documentar explícitamente el uso de **Expo 57**, **React Native**, y otras tecnologías clave.
+    *   **Implementar `.cursor_rules` y `.cursor_ignore`:** Crear estos archivos en todos los proyectos de la Web Software Factory.
+    *   **`project_overview`:** Definir claramente la visión de WebFactory, incluyendo la filosofía de "Fricción Cero" y los principios de "Dunbar 4-6" si son relevantes para el diseño de la experiencia de usuario.
+    *   **`tech_stack`:** Documentar explícitamente el uso de **Expo 57**, **Modern Web UI (CSS/WAAPI)**, y otras tecnologías clave.
     *   **`personality`:** Configurar la IA para que actúe como un "senior developer" o "10x engineer" enfocado en la calidad y la eficiencia.
 2.  **Documentación Interna para IA:**
-    *   **`design_principles.md`:** Crear un archivo detallando las guías de UI/UX de Yendo, incluyendo la implementación de **Dark OLED** y **Material 3**.
-    *   **`domain_model.md` o `glossary.md`:** Definir términos clave como "Venue", "Experiencia" y "Grupo", sus relaciones y su significado en el contexto de Yendo para asegurar que la IA comprenda el dominio del negocio.
+    *   **`design_principles.md`:** Crear un archivo detallando las guías de UI/UX de WebFactory, incluyendo la implementación de **Dark OLED** y **Material 3**.
+    *   **`domain_model.md` o `glossary.md`:** Definir términos clave como "Venue", "Experiencia" y "Grupo", sus relaciones y su significado en el contexto de WebFactory para asegurar que la IA comprenda el dominio del negocio.
     *   **`roadmap.md`:** Mantener un roadmap actualizado por proyecto para que la IA conozca las prioridades y el estado general.
 3.  **Capacitación en Prompt Engineering:**
-    *   **Talleres Internos:** Entrenar a los desarrolladores de Yendo en las técnicas de prompting avanzadas (ej. "reasoning paragraphs", "unbiased 50/50", "start with uncertainty") para maximizar la precisión y utilidad de la IA.
+    *   **Talleres Internos:** Entrenar a los desarrolladores de WebFactory en las técnicas de prompting avanzadas (ej. "reasoning paragraphs", "unbiased 50/50", "start with uncertainty") para maximizar la precisión y utilidad de la IA.
     *   **Uso de Comentarios:** Fomentar una cultura de comentarios de código detallados para facilitar la comprensión de la IA.
 4.  **Flujo de Trabajo Optimizado con IA:**
-    *   **Separación Estratégica:** Utilizar Claude (o una herramienta similar) para el brainstorming de nuevas características o la resolución de problemas de alto nivel relacionados con "Venue", "Experiencia" o "Grupo", y Cursor para la implementación directa en el código de React Native/Expo.
-    *   **Verificación Constante:** Enfatizar la importancia de verificar la salida de la IA con la documentación oficial de React Native, Expo, etc., para evitar la deuda técnica y asegurar la compatibilidad con **Expo 57**.
+    *   **Separación Estratégica:** Utilizar Claude (o una herramienta similar) para el brainstorming de nuevas características o la resolución de problemas de alto nivel relacionados con "Venue", "Experiencia" o "Grupo", y Cursor para la implementación directa en el código de Modern Web UI (CSS/WAAPI)/Expo.
+    *   **Verificación Constante:** Enfatizar la importancia de verificar la salida de la IA con la documentación oficial de Modern Web UI (CSS/WAAPI), Expo, etc., para evitar la deuda técnica y asegurar la compatibilidad con **Expo 57**.
     *   **Desglose de Tareas:** Promover la división de refactors grandes o nuevas características en pasos pequeños y manejables, utilizando prompts como "only include the truly necessary steps" (solo incluye los pasos verdaderamente necesarios).
 5.  **Herramientas de Productividad:**
     *   **Whisper Flow:** Evaluar la integración de herramientas de voz a texto para acelerar la creación de prompts, especialmente para ideas complejas o descripciones detalladas de "Experiencias" o "Grupos".
@@ -7685,7 +7682,7 @@ El video subraya que la eficacia de las herramientas de codificación asistida p
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -7702,7 +7699,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Animaciones y Experiencia de Usuario en Yendo Mobile
+## Informe de Investigación: Animaciones y Experiencia de Usuario en la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -7720,13 +7717,13 @@ El concepto central del análisis es la **importancia crítica de las animacione
 *   **Rendimiento y Duración:** Se sugiere que las animaciones rápidas (alrededor de 0.3 segundos) son ideales para la mayoría de las interacciones, evitando la "superfluidad". Se plantea la idea de ajustar dinámicamente la duración de las animaciones según la familiaridad del usuario con una acción, aunque no es una característica común.
 *   **Framer como Herramienta:** Una plataforma de diseño y desarrollo que utiliza el DOM como renderer, permitiendo crear prototipos y sitios web completos con animaciones impulsadas por Framer Motion, ofreciendo una experiencia "lo que ves es lo que obtienes" (WYSIWYG) para interacciones.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-Las animaciones son un pilar fundamental para la experiencia de usuario "Fricción Cero" de Yendo, reforzando la "DNA pisa internet" con una interfaz fluida y de alta fidelidad.
+Las animaciones son un pilar fundamental para la experiencia de usuario "Fricción Cero" de WebFactory, reforzando la "DNA pisa internet" con una interfaz fluida y de alta fidelidad.
 
-*   **Expo 57 y React Native:**
-    *   **Adoptar Framer Motion:** Dada la naturaleza de React Native y Expo, Framer Motion es la elección natural para implementar animaciones declarativas y de alta calidad. Su enfoque en "spring physics" se alinea con la búsqueda de movimientos naturales.
-    *   **Componentes Animados para Invariantes:** Desarrollar componentes animados para los invariantes de Yendo (Venue, Experiencia, Grupo) utilizando Framer Motion. Por ejemplo, transiciones suaves al cambiar de Venue, feedback visual al interactuar con una Experiencia, o animaciones sutiles al unirse/salir de un Grupo.
+*   **Expo 57 y Modern Web UI (CSS/WAAPI):**
+    *   **Adoptar Framer Motion:** Dada la naturaleza de Modern Web UI (CSS/WAAPI) y Expo, Framer Motion es la elección natural para implementar animaciones declarativas y de alta calidad. Su enfoque en "spring physics" se alinea con la búsqueda de movimientos naturales.
+    *   **Componentes Animados para Invariantes:** Desarrollar componentes animados para los invariantes de WebFactory (Venue, Experiencia, Grupo) utilizando Framer Motion. Por ejemplo, transiciones suaves al cambiar de Venue, feedback visual al interactuar con una Experiencia, o animaciones sutiles al unirse/salir de un Grupo.
 *   **Dark OLED y Material 3:**
     *   **Animaciones Sutiles y Contextuales:** Las animaciones deben complementar el diseño de Material 3 y el tema Dark OLED, guiando la atención sin abrumar. Pequeñas transiciones al abrir menús, expandir tarjetas o cambiar entre modos pueden realzar la estética y la usabilidad.
     *   **Feedback Visual:** Utilizar animaciones para proporcionar feedback instantáneo a las acciones del usuario, especialmente en un tema oscuro donde los cambios de estado pueden ser menos obvios.
@@ -7777,7 +7774,7 @@ Las animaciones son un pilar fundamental para la experiencia de usuario "Fricci�
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -7794,7 +7791,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Diseño de Interfaces Fluidas para Yendo Mobile
+## Informe de Investigación: Diseño de Interfaces Fluidas para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -7813,16 +7810,16 @@ El concepto central es que una interfaz se percibe como "fluida" cuando se sient
 *   **Detección Paralela de Gestos:** Detectar múltiples gestos desde el inicio de una interacción y cancelar los no intencionados a medida que se aclara la intención del usuario, evitando retrasos.
 *   **Enseñanza y Juego:** Utilizar pistas visuales, el comportamiento de la interfaz (mostrar en lugar de decir) y fomentar la exploración lúdica para que los usuarios descubran las interacciones de forma intuitiva.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-*   **Expo 57 & React Native:**
+*   **Expo 57 & Modern Web UI (CSS/WAAPI):**
     *   Priorizar la latencia mínima en todas las interacciones. Utilizar `react-native-reanimated` para ejecutar animaciones y gestos en el UI thread, garantizando 60 FPS y respuesta instantánea.
     *   Implementar animaciones basadas en física (springs con `damping` y `response`) para transiciones entre `Venue`, `Experiencia` y `Grupo`, evitando curvas de tiempo fijas.
 *   **Dark OLED & Material 3:**
     *   Aprovechar el contraste del OLED oscuro para hacer que las transiciones y el "motion blur" sean más impactantes y suaves.
-    *   Asegurar que los componentes de Yendo sigan las directrices de movimiento y elasticidad de Material 3, integrando el diseño de movimiento como parte fundamental del tema oscuro.
+    *   Asegurar que los componentes de WebFactory sigan las directrices de movimiento y elasticidad de Material 3, integrando el diseño de movimiento como parte fundamental del tema oscuro.
 *   **Fricción Cero:**
-    *   **Respuesta Inmediata:** Cada tap, swipe o arrastre en Yendo debe tener una retroalimentación visual o háptica instantánea.
+    *   **Respuesta Inmediata:** Cada tap, swipe o arrastre en WebFactory debe tener una retroalimentación visual o háptica instantánea.
     *   **Redirección:** Permitir a los usuarios cambiar de opinión a mitad de un gesto (ej. al deslizar para unirse a un `Grupo`, poder cancelar o cambiar de `Experiencia`).
     *   **Consistencia Espacial:** Si un `Venue` se abre con un deslizamiento desde la derecha, debe cerrarse con un deslizamiento hacia la derecha.
     *   **Interacciones Ligeras:** Un swipe suave debe ser suficiente para navegar entre `Experiencias` o `Grupos`, con inercia natural.
@@ -7833,7 +7830,7 @@ El concepto central es que una interfaz se percibe como "fluida" cuando se sient
     *   **Proyección de Momento:** Al arrastrar o deslizar elementos relacionados con `Experiencias` o `Grupos`, usar la velocidad del gesto para predecir la intención del usuario y llevar el elemento al estado final deseado (ej. mover una `Experiencia` a un `Grupo`).
     *   **Elasticidad con Propósito:** Utilizar rebotes sutiles para indicar la finalización de una acción (ej. un ligero rebote al unirse a un `Grupo`) o para guiar al usuario hacia una interacción.
 *   **Dunbar 4-6:** La fluidez de la interfaz debe ser tal que no añada carga cognitiva a la gestión de las relaciones. La interacción con los `Grupos` debe sentirse tan natural y sin esfuerzo que el usuario pueda centrarse en la conexión social, no en cómo funciona la aplicación.
-*   **createClient, StyleSheet.create, sheet canónico:** La implementación de estas ideas de fluidez debe adherirse estrictamente a la arquitectura de código establecida por Yendo. Esto implica que las animaciones y gestos deben ser componentes reutilizables, estilizados de manera consistente a través del `StyleSheet.create` canónico y orquestados a través de un `createClient` unificado, evitando soluciones ad-hoc que comprometan la mantenibilidad y la coherencia del DNA de Yendo.
+*   **createClient, StyleSheet.create, sheet canónico:** La implementación de estas ideas de fluidez debe adherirse estrictamente a la arquitectura de código establecida por WebFactory. Esto implica que las animaciones y gestos deben ser componentes reutilizables, estilizados de manera consistente a través del `StyleSheet.create` canónico y orquestados a través de un `createClient` unificado, evitando soluciones ad-hoc que comprometan la mantenibilidad y la coherencia del DNA de WebFactory.
 
 ### 4. Citas Clave
 
@@ -7871,7 +7868,7 @@ El concepto central es que una interfaz se percibe como "fluida" cuando se sient
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -7888,7 +7885,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Diseño de Interfaces Fluidas para Yendo Mobile
+## Informe de Investigación: Diseño de Interfaces Fluidas para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -7910,10 +7907,10 @@ El concepto central es que una interfaz fluida se siente como una extensión nat
 *   **Enseñanza y Descubrimiento:** Los gestos se enseñan mediante pistas visuales (elementos cortados, indicadores, "grabbers"), animaciones que demuestran el gesto y, esporádicamente, explicaciones explícitas. La interfaz debe ser "jugable" para fomentar el descubrimiento.
 *   **Prototipado Interactivo:** Es fundamental construir prototipos interactivos para entender y refinar la verdadera naturaleza de una interfaz fluida.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
 *   **Fricción Cero:** Adoptar la "fricción cero" como principio rector en todas las interacciones. Cada gesto, transición o carga debe sentirse instantáneo, predecible y sin esfuerzo, como una extensión natural del usuario.
-*   **Expo 57 y React Native:**
+*   **Expo 57 y Modern Web UI (CSS/WAAPI):**
     *   Priorizar el uso de librerías como `react-native-reanimated` y `react-native-gesture-handler` para implementar animaciones y gestos basados en la física (muelles, amortiguación, masa). Esto permitirá comportamientos dinámicos y la interrupción de animaciones.
     *   Asegurar que las animaciones de navegación y los elementos interactivos respondan instantáneamente y permitan la redirección.
 *   **Dark OLED y Material 3:**
@@ -7967,7 +7964,7 @@ El concepto central es que una interfaz fluida se siente como una extensión nat
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -7999,16 +7996,16 @@ El ponente sostiene que la IA ha evolucionado de producir fragmentos de código 
 | **Patrones emergentes** | *Super‑app* (ChatGPT/Claude/Gemini) como contenedor de UI de terceros. *Colaboración humano‑agente* (Excalidraw MCP) donde la UI es un lienzo compartido editable. | Cambia la arquitectura de “app por app” a una plataforma de experiencias colaborativas. |
 | **Limitaciones actuales** | Falta de un “lenguaje de interfaz” maduro; la UI sigue siendo mayormente estática; la imaginación de los diseñadores está limitada por analogías de radio‑TV. | Necesidad de definir estándares de descripción UI y de experiencias de interacción más ricas (flotantes, gestuales, contextuales). |
 
-## 3. Ideas accionables para Yendo  
+## 3. Ideas accionables para WebFactory  
 
 ### 3.1 Expo 57 – Laboratorio de UI generativa  
-- **Objetivo:** crear un “sandbox” interno basado en MCP apps donde los agentes de Yendo generen UI en tiempo real para pruebas de funcionalidades (p. ej. formularios de reserva, dashboards de métricas).  
+- **Objetivo:** crear un “sandbox” interno basado en MCP apps donde los agentes de WebFactory generen UI en tiempo real para pruebas de funcionalidades (p. ej. formularios de reserva, dashboards de métricas).  
 - **Acciones:**  
-  1. Implementar un micro‑servicio que reciba descriptores JSON/YAML y los convierta en componentes React Native usando **React Native for Web** (para pruebas en navegador).  
+  1. Implementar un micro‑servicio que reciba descriptores JSON/YAML y los convierta en componentes Modern Web UI (CSS/WAAPI) usando **Modern Web UI (CSS/WAAPI) for Web** (para pruebas en navegador).  
   2. Integrar el motor de generación de código (GPT‑5.2 o modelo interno) mediante API de “reverse sampling”.  
   3. Validar la seguridad con sandbox iFrame y CSP estrictas.  
 
-### 3.2 React Native + Material 3 + Dark OLED  
+### 3.2 Modern Web UI (CSS/WAAPI) + Material 3 + Dark OLED  
 - **Adoptar Material 3** como base de diseño para los componentes estáticos que servirán de fallback cuando la UI generativa falle o sea rechazada por el sandbox.  
 - **Optimizar para pantallas OLED oscuras**: usar paletas de colores “dark mode” que reduzcan consumo de energía y mejoren la legibilidad en dispositivos móviles.  
 - **Implementar tema dinámico** que el agente pueda modificar en tiempo real (p. ej. cambiar tonalidades según hora o contexto del usuario).  
@@ -8022,10 +8019,10 @@ El ponente sostiene que la IA ha evolucionado de producir fragmentos de código 
   - **Venue**: contexto físico o virtual (p. ej. “app de eventos”, “punto de venta”).  
   - **Evento**: acción disparadora (p. ej. “usuario escanea QR”, “llega notificación”).  
   - **Grupo**: conjunto de componentes o usuarios involucrados (p. ej. “grupo de organizadores”, “asistentes”).  
-- El agente podrá generar UI a partir de este DSL, asegurando coherencia con la lógica de negocio de Yendo.  
+- El agente podrá generar UI a partir de este DSL, asegurando coherencia con la lógica de negocio de WebFactory.  
 
 ### 3.5 Estrategia de distribución de UI generativa  
-- **MCP‑first**: posicionar a Yendo como proveedor de MCP apps para terceros (p. ej. partners de ticketing) que necesiten UI personalizada sin desarrollar código propio.  
+- **MCP‑first**: posicionar a WebFactory como proveedor de MCP apps para terceros (p. ej. partners de ticketing) que necesiten UI personalizada sin desarrollar código propio.  
 - **Marketplace interno**: permitir que equipos internos publiquen “templates generativos” (JSON/YAML) que otros equipos consuman, fomentando reutilización y consistencia.  
 
 ## 4. Citas clave  
@@ -8038,7 +8035,7 @@ El ponente sostiene que la IA ha evolucionado de producir fragmentos de código 
 
 ---  
 
-**Resumen:** La IA ya puede crear UI completa; el reto es **entregarla de forma segura y coherente** mediante protocolos como MCP apps, y **definir un lenguaje de descripción** que permita a los agentes generar interfaces adaptadas al contexto (Venue/Evento/Grupo). Para Yendo, la hoja de ruta incluye un laboratorio interno (Expo 57), adopción de Material 3 con Dark OLED, implementación de experiencias de fricción cero y la creación de un DSL que sirva de puente entre la lógica de negocio y la UI generativa. Estas acciones posicionarán a Yendo como pionero en la próxima generación de interfaces impulsadas por IA.
+**Resumen:** La IA ya puede crear UI completa; el reto es **entregarla de forma segura y coherente** mediante protocolos como MCP apps, y **definir un lenguaje de descripción** que permita a los agentes generar interfaces adaptadas al contexto (Venue/Evento/Grupo). Para WebFactory, la hoja de ruta incluye un laboratorio interno (Expo 57), adopción de Material 3 con Dark OLED, implementación de experiencias de fricción cero y la creación de un DSL que sirva de puente entre la lógica de negocio y la UI generativa. Estas acciones posicionarán a WebFactory como pionero en la próxima generación de interfaces impulsadas por IA.
 
 ---
 
@@ -8060,7 +8057,7 @@ El ponente sostiene que la IA ha evolucionado de producir fragmentos de código 
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -8076,7 +8073,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-# Informe de investigación – Aplicación de **LangGraph** a Yendo Mobile  
+# Informe de investigación – Aplicación de **LangGraph** a la Web Software Factory  
 
 ## 1. Concepto central y tesis  
 
@@ -8095,17 +8092,17 @@ LangGraph es una biblioteca que permite modelar flujos de trabajo **multi‑agen
 | **Escalabilidad** | Los ciclos permiten bucles de razonamiento indefinidos; los sub‑grafos permiten componer equipos complejos sin perder claridad. |
 | **Performance** | Los ejemplos mostraron tiempos de ejecución de 45 s a 400 s, con la mayor parte del coste en llamadas a OpenAI. Optimizar la cantidad de tokens y la frecuencia de llamadas a herramientas es crítico. |
 
-## 3. Ideas accionables para Yendo  
+## 3. Ideas accionables para WebFactory  
 
 ### 3.1. **Expo 57 como caso de uso de flujo multi‑agente**  
 - **Objetivo**: generar automáticamente la agenda, mapas interactivos y contenido promocional para la Expo 57.  
 - **Arquitectura**:  
   1. **Agente “Investigador”** → consulta fuentes (API de eventos, bases de datos históricas) y devuelve datos estructurados.  
-  2. **Agente “Diseñador UI”** → recibe los datos y genera componentes React Native (Material 3, Dark OLED) con código listo para renderizar.  
+  2. **Agente “Diseñador UI”** → recibe los datos y genera componentes Modern Web UI (CSS/WAAPI) (Material 3, Dark OLED) con código listo para renderizar.  
   3. **Agente “Validador”** → revisa consistencia, accesibilidad y cumplimiento de la guía de estilo “Fricción Cero”.  
   4. **Supervisor** → orquesta los pasos y entrega el paquete final al cliente (app móvil).  
 
-### 3.2. **Integración con React Native y Material 3**  
+### 3.2. **Integración con Modern Web UI (CSS/WAAPI) y Material 3**  
 - Cada nodo “Diseñador UI” puede producir **JSX** estilizado con **Material 3** (temas dinámicos, soporte Dark OLED).  
 - Utilizar el grafo para **iterar** sobre variantes de UI (A/B testing) sin re‑entrenar modelos: el agente genera varias propuestas y el supervisor selecciona la mejor según métricas predefinidas.  
 
@@ -8127,7 +8124,7 @@ LangGraph es una biblioteca que permite modelar flujos de trabajo **multi‑agen
 ### 3.6. **Prototipo rápido**  
 1. Crear un **repositorio de plantillas** de grafos (colaboración, supervisor, jerarquía).  
 2. Implementar una **CLI** que reciba un descriptor YAML con los agentes y sus herramientas, genere el grafo y lo ejecute en entorno de desarrollo.  
-3. Integrar la salida (código React Native, JSON de agenda) en la pipeline CI/CD de Yendo para despliegue inmediato.  
+3. Integrar la salida (código Modern Web UI (CSS/WAAPI), JSON de agenda) en la pipeline CI/CD de WebFactory para despliegue inmediato.  
 
 ## 4. Citas clave  
 
@@ -8139,7 +8136,7 @@ LangGraph es una biblioteca que permite modelar flujos de trabajo **multi‑agen
 
 ---  
 
-**Conclusión**: LangGraph brinda una infraestructura robusta para construir flujos de trabajo multi‑agente que pueden ser aplicados directamente a los retos de Yendo Mobile (generación automática de contenido para eventos, UI adaptativa, optimización de consumo en OLED). Adoptar los patrones de colaboración, supervisión y jerarquía, junto con un vocabulario unificado “Venue/Evento/Grupo”, permitirá acelerar el desarrollo, reducir fricción y ofrecer experiencias de alta calidad en la Expo 57 y futuros proyectos.
+**Conclusión**: LangGraph brinda una infraestructura robusta para construir flujos de trabajo multi‑agente que pueden ser aplicados directamente a los retos de la Web Software Factory (generación automática de contenido para eventos, UI adaptativa, optimización de consumo en OLED). Adoptar los patrones de colaboración, supervisión y jerarquía, junto con un vocabulario unificado “Venue/Evento/Grupo”, permitirá acelerar el desarrollo, reducir fricción y ofrecer experiencias de alta calidad en la Expo 57 y futuros proyectos.
 
 ---
 
@@ -8161,7 +8158,7 @@ LangGraph es una biblioteca que permite modelar flujos de trabajo **multi‑agen
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -8200,20 +8197,20 @@ Se exploraron tres variantes de flujos de trabajo multi-agente:
 
 La herramienta LangSmith es fundamental para la depuración y visualización de estos flujos complejos, mostrando el rastro completo de llamadas y estados.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-La arquitectura multi-agente de LangGraph ofrece un modelo potente para Yendo, especialmente en el contexto de aplicaciones móviles complejas y centradas en la experiencia del usuario:
+La arquitectura multi-agente de LangGraph ofrece un modelo potente para WebFactory, especialmente en el contexto de aplicaciones móviles complejas y centradas en la experiencia del usuario:
 
 *   **Fricción Cero y Experiencia de Usuario (UX):**
     *   **Agentes de Asistencia Contextual:** Implementar "agentes" especializados que anticipen las necesidades del usuario. Por ejemplo, un "Agente de Planificación de Eventos" que, al detectar una conversación sobre un evento, sugiera automáticamente herramientas (calendario, ubicación, invitaciones) o un "Agente de Soporte" que resuelva dudas comunes sin intervención humana, reduciendo la fricción.
     *   **Orquestación de Flujos Complejos:** Para tareas como "reservar un Venue" o "crear una Experiencia", un "Agente Supervisor de Flujo" podría guiar al usuario a través de múltiples pasos (selección, pago, confirmación) delegando a "Agentes de Pago", "Agentes de Calendario", etc., asegurando una transición fluida.
 
-*   **React Native y Arquitectura Modular:**
-    *   **Componentes como Agentes:** Pensar en componentes o módulos de React Native como "agentes" especializados. Un `VenueCardAgent` podría gestionar la visualización y las interacciones de una tarjeta de venue, mientras un `ChatAgent` maneja la lógica de mensajería.
+*   **Modern Web UI (CSS/WAAPI) y Arquitectura Modular:**
+    *   **Componentes como Agentes:** Pensar en componentes o módulos de Modern Web UI (CSS/WAAPI) como "agentes" especializados. Un `VenueCardAgent` podría gestionar la visualización y las interacciones de una tarjeta de venue, mientras un `ChatAgent` maneja la lógica de mensajería.
     *   **Gestión de Estado Distribuida:** Adoptar un modelo donde el estado global (similar al `State` de LangGraph) se actualiza por acciones de "agentes" (componentes/módulos), facilitando la depuración y el mantenimiento. Esto se alinea con patrones como Redux o Zustand, pero con una capa semántica de "agente" que define responsabilidades.
 
-*   **Lenguaje Venue/Experiencia/Grupo (Dominio de Yendo):**
-    *   **Agentes de Dominio Específico:** Crear agentes que encapsulen la lógica de negocio de Yendo:
+*   **Lenguaje Venue/Experiencia/Grupo (Dominio de WebFactory):**
+    *   **Agentes de Dominio Específico:** Crear agentes que encapsulen la lógica de negocio de WebFactory:
         *   `VenueAgent`: Gestiona la información, disponibilidad y reservas de un venue.
         *   `ExperienceAgent`: Orquesta los detalles de una experiencia (itinerario, participantes, recursos).
         *   `GroupAgent`: Maneja la dinámica de grupos (invitaciones, roles, permisos, comunicación).
@@ -8260,7 +8257,7 @@ La arquitectura multi-agente de LangGraph ofrece un modelo potente para Yendo, e
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -8276,7 +8273,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-# Informe de investigación – Construcción de agentes de IA simples y aplicables a Yendo Mobile  
+# Informe de investigación – Construcción de agentes de IA simples y aplicables a la Web Software Factory  
 
 ## 1. Concepto central y tesis  
 
@@ -8291,17 +8288,17 @@ El mensaje esencial del video es que **el éxito al crear agentes de IA radica e
 | **Modelo de lenguaje (LLM)** | Utilizar plataformas de enrutamiento (p. ej. OpenRouter) que permitan cambiar de modelo con una sola línea de código. Claude Haiku 4.5 es recomendado para prototipos por bajo coste y rapidez; Claude Sonnet 4.5 para producción. | Flexibilidad para experimentar sin reescribir código; posibilidad de migrar a modelos locales (Mistral 3.1, Qwen 3) cuando la privacidad o el coste sean críticos. |
 | **System Prompt** | Plantilla mínima: *persona*, *objetivos*, *instrucciones de herramientas*, *formato de salida* y *misc*. No es necesario testear exhaustivamente en la fase inicial. | Estandarizar la creación de prompts acelera la incorporación de nuevos agentes y facilita la documentación interna. |
 | **Herramientas (tools)** | Un solo *tool* convierte al LLM en agente. Ejemplo: función `add(a, b)` decorada para que el modelo la invoque. La descripción del *tool* se inserta automáticamente en el prompt. | Implementar “toolkits” modulares (búsqueda web, calendario, cálculo) y exponerlos como APIs REST/GraphQL que el agente pueda llamar. |
-| **Memoria / contexto** | Conversación corta‑plazo almacenada en una lista que se pasa a cada llamada `agent.run`. No se requiere base de datos para el MVP. | Utilizar el estado de React Native (Context API o Redux) para mantener el historial de interacciones en la app. |
+| **Memoria / contexto** | Conversación corta‑plazo almacenada en una lista que se pasa a cada llamada `agent.run`. No se requiere base de datos para el MVP. | Utilizar el estado de Modern Web UI (CSS/WAAPI) (Context API o Redux) para mantener el historial de interacciones en la app. |
 | **Observabilidad** | El repositorio de ejemplo incluye logs básicos; la observabilidad avanzada se pospone a etapas posteriores. | Añadir logs estructurados (p. ej. Sentry) solo cuando el agente entre en producción. |
-| **Framework** | Pantic AI es el framework usado, pero la lógica es independiente del framework (p. ej. LangChain, N8N). | Elegir un SDK que se integre bien con React Native (p. ej. `react-native-llm` o llamadas a API externas). |
+| **Framework** | Pantic AI es el framework usado, pero la lógica es independiente del framework (p. ej. LangChain, N8N). | Elegir un SDK que se integre bien con Modern Web UI (CSS/WAAPI) (p. ej. `react-native-llm` o llamadas a API externas). |
 
-## 3. Ideas accionables para Yendo  
+## 3. Ideas accionables para WebFactory  
 
-### 3.1. Integrar agentes de IA con **Expo 57** y **React Native**  
+### 3.1. Integrar agentes de IA con **Expo 57** y **Modern Web UI (CSS/WAAPI)**  
 
 1. **Crear un módulo “AI Agent”** usando la nueva API de `fetch` de Expo 57 para llamar a OpenRouter.  
 2. **Mantener el *system prompt* como un recurso estático** (`assets/prompts/task_manager.txt`) y cargarlo al iniciar la app.  
-3. **Exponer herramientas como funciones nativas** (p. ej. `createEvent`, `searchVenue`) mediante el bridge de React Native y registrarlas en el agente mediante decoradores de JavaScript.  
+3. **Exponer herramientas como funciones nativas** (p. ej. `createEvent`, `searchVenue`) mediante el bridge de Modern Web UI (CSS/WAAPI) y registrarlas en el agente mediante decoradores de JavaScript.  
 
 ### 3.2. Experiencia **Dark OLED** y **Material 3**  
 
@@ -8333,7 +8330,7 @@ El mensaje esencial del video es que **el éxito al crear agentes de IA radica e
 | 1 | Configurar proyecto Expo 57, integrar OpenRouter y crear módulo `aiAgent`. | Repo con `aiAgent.ts`. |
 | 2 | Implementar *system prompt* base y herramienta `addNumbers`. | Demo CLI en app con cálculo. |
 | 3 | Añadir herramientas de dominio: `searchVenue`, `createEvento`. | UI con botones de acción directa. |
-| 4 | Aplicar tema Dark OLED + componentes Material 3, pruebas de fricción cero. | Versión beta interna de Yendo con agente funcional. |
+| 4 | Aplicar tema Dark OLED + componentes Material 3, pruebas de fricción cero. | Versión beta interna de WebFactory con agente funcional. |
 
 ## 4. Citas clave  
 
@@ -8345,7 +8342,7 @@ El mensaje esencial del video es que **el éxito al crear agentes de IA radica e
 
 ---  
 
-**Conclusión:** Adoptar la metodología de “agente mínimo viable” permite a Yendo Mobile lanzar funcionalidades de IA (p. ej. gestión de eventos, búsqueda de venues) en tiempo récord, aprovechando la infraestructura de Expo 57 y React Native, mientras se mantiene una experiencia de usuario sin fricción, visualmente optimizada para pantallas OLED y alineada con el lenguaje de dominio propio. La iteración continua, basada en métricas reales y no en pruebas de prompt exhaustivas, será la clave para escalar de prototipos a productos listos para producción.
+**Conclusión:** Adoptar la metodología de “agente mínimo viable” permite a la Web Software Factory lanzar funcionalidades de IA (p. ej. gestión de eventos, búsqueda de venues) en tiempo récord, aprovechando la infraestructura de Expo 57 y Modern Web UI (CSS/WAAPI), mientras se mantiene una experiencia de usuario sin fricción, visualmente optimizada para pantallas OLED y alineada con el lenguaje de dominio propio. La iteración continua, basada en métricas reales y no en pruebas de prompt exhaustivas, será la clave para escalar de prototipos a productos listos para producción.
 
 ---
 
@@ -8367,7 +8364,7 @@ El mensaje esencial del video es que **el éxito al crear agentes de IA radica e
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -8384,7 +8381,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Desarrollo de Agentes de IA Simplificado para Yendo Mobile
+## Informe de Investigación: Desarrollo de Agentes de IA Simplificado para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -8404,15 +8401,15 @@ El desarrollo de agentes de IA se basa en cuatro componentes fundamentales:
 *   **Observabilidad:** Herramientas como Langfuse (de código abierto) permiten monitorear las ejecuciones del agente, el uso de tokens, la latencia y las llamadas a herramientas, crucial para la depuración y el monitoreo en producción.
 *   **Despliegue:** Pensar en **Docker-native** desde el principio para empaquetar agentes. Los agentes son ligeros y no requieren infraestructura pesada si se utilizan LLMs de terceros.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-1.  **Fricción Cero en el Desarrollo y la Experiencia del Usuario:** Adoptar la filosofía de "dead simple" del video. Para Yendo, esto significa optimizar los flujos de trabajo de desarrollo en React Native/Expo para que sean lo más sencillos y rápidos posible, y diseñar la interfaz de usuario para una experiencia de usuario intuitiva y sin obstáculos.
-2.  **Definición Clara de "Persona" y "Objetivos" (Lenguaje Venue/Experiencia/Grupo):** Aplicar el concepto de "System Prompt" a la arquitectura de la aplicación. Cada módulo o característica principal de Yendo (Venue, Experiencia, Grupo) debe tener una "persona" y "objetivos" claramente definidos. Esto guiará el diseño de las "herramientas" (funcionalidades de la app) y la "memoria" (datos y contexto) que se le ofrecen al usuario.
-3.  **Componentes React Native como "Herramientas" Distintas:** Inspirarse en la recomendación de tener menos de 10 herramientas con propósitos distintos. Los componentes de React Native deben ser modulares, con responsabilidades claras y bien definidas, evitando la superposición de funcionalidades. Esto facilita el mantenimiento y la escalabilidad.
-4.  **Gestión Eficiente del Estado y Contexto (Memoria):** Aplicar los principios de memoria a corto y largo plazo. Para Yendo, esto implica una gestión de estado optimizada, mostrando solo la información más relevante al usuario en un momento dado (ventana deslizante) y utilizando soluciones de almacenamiento persistente para datos de usuario a largo plazo, recuperándolos solo cuando sea necesario (RAG).
+1.  **Fricción Cero en el Desarrollo y la Experiencia del Usuario:** Adoptar la filosofía de "dead simple" del video. Para WebFactory, esto significa optimizar los flujos de trabajo de desarrollo en Modern Web UI (CSS/WAAPI)/Expo para que sean lo más sencillos y rápidos posible, y diseñar la interfaz de usuario para una experiencia de usuario intuitiva y sin obstáculos.
+2.  **Definición Clara de "Persona" y "Objetivos" (Lenguaje Venue/Experiencia/Grupo):** Aplicar el concepto de "System Prompt" a la arquitectura de la aplicación. Cada módulo o característica principal de WebFactory (Venue, Experiencia, Grupo) debe tener una "persona" y "objetivos" claramente definidos. Esto guiará el diseño de las "herramientas" (funcionalidades de la app) y la "memoria" (datos y contexto) que se le ofrecen al usuario.
+3.  **Componentes Modern Web UI (CSS/WAAPI) como "Herramientas" Distintas:** Inspirarse en la recomendación de tener menos de 10 herramientas con propósitos distintos. Los componentes de Modern Web UI (CSS/WAAPI) deben ser modulares, con responsabilidades claras y bien definidas, evitando la superposición de funcionalidades. Esto facilita el mantenimiento y la escalabilidad.
+4.  **Gestión Eficiente del Estado y Contexto (Memoria):** Aplicar los principios de memoria a corto y largo plazo. Para WebFactory, esto implica una gestión de estado optimizada, mostrando solo la información más relevante al usuario en un momento dado (ventana deslizante) y utilizando soluciones de almacenamiento persistente para datos de usuario a largo plazo, recuperándolos solo cuando sea necesario (RAG).
 5.  **Adopción de Material 3 y Dark OLED para Simplicidad Visual:** La concisión en los prompts se traduce en una interfaz de usuario limpia. Material 3 ofrece un sistema de diseño moderno y adaptable que, combinado con un tema Dark OLED, puede reducir la sobrecarga cognitiva y mejorar la legibilidad, alineándose con la idea de "no sobrecomplicar" la experiencia visual.
 6.  **Principios de Dunbar (4-6) en Diseño de Interacción:** La recomendación de limitar las herramientas y el contexto se puede extender al diseño de interacción. Limitar el número de opciones o elementos interactivos que un usuario debe procesar simultáneamente (idealmente entre 4 y 6) puede mejorar la usabilidad y reducir la fatiga cognitiva.
-7.  **Preparación para el Despliegue con Expo 57 y Contenedores:** Aunque el video se centra en Docker, la filosofía de "Docker-native" se traduce en pensar en cómo las aplicaciones Expo/React Native se integrarán con servicios backend (que sí pueden ser Dockerizados) y cómo se empaquetarán para un despliegue eficiente, incluso si Expo maneja gran parte de la complejidad del frontend.
+7.  **Preparación para el Despliegue con Expo 57 y Contenedores:** Aunque el video se centra en Docker, la filosofía de "Docker-native" se traduce en pensar en cómo las aplicaciones Expo/Modern Web UI (CSS/WAAPI) se integrarán con servicios backend (que sí pueden ser Dockerizados) y cómo se empaquetarán para un despliegue eficiente, incluso si Expo maneja gran parte de la complejidad del frontend.
 
 ### 4. Citas Clave
 
@@ -8453,7 +8450,7 @@ El desarrollo de agentes de IA se basa en cuatro componentes fundamentales:
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - 3d-pipeline
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -8470,30 +8467,30 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-# Informe de Investigación: Aplicando MDA al Diseño de Yendo Mobile
+# Informe de Investigación: Aplicando MDA al Diseño de la Web Software Factory
 
 ## 1. Concepto Central y Tesis
 
 El concepto central de este análisis se basa en el marco MDA (Mecánicas, Dinámicas, Estéticas), una herramienta poderosa para comprender cómo el diseño de un sistema influye en la experiencia del usuario. Las **Mecánicas** son las reglas y sistemas subyacentes (el código, las funcionalidades). Las **Dinámicas** son las acciones y comportamientos del usuario en respuesta a esas mecánicas. Las **Estéticas** son las respuestas emocionales y sentimientos que el usuario experimenta.
 
-La tesis principal es que los diseñadores no pueden alterar directamente las acciones o sentimientos del usuario, pero sí pueden modificar las mecánicas. Estos cambios en las mecánicas se propagarán en cascada, alterando las dinámicas y, en última instancia, las estéticas. Por lo tanto, es crucial que cada decisión de diseño, desde la arquitectura técnica hasta la interfaz de usuario, esté alineada con una "visión" clara y unificada de la experiencia que se desea ofrecer. Es fundamental entender *por qué* ciertas mecánicas funcionan en un contexto antes de adoptarlas, asegurando que complementen la visión de Yendo y no generen fricción o emociones no deseadas.
+La tesis principal es que los diseñadores no pueden alterar directamente las acciones o sentimientos del usuario, pero sí pueden modificar las mecánicas. Estos cambios en las mecánicas se propagarán en cascada, alterando las dinámicas y, en última instancia, las estéticas. Por lo tanto, es crucial que cada decisión de diseño, desde la arquitectura técnica hasta la interfaz de usuario, esté alineada con una "visión" clara y unificada de la experiencia que se desea ofrecer. Es fundamental entender *por qué* ciertas mecánicas funcionan en un contexto antes de adoptarlas, asegurando que complementen la visión de WebFactory y no generen fricción o emociones no deseadas.
 
 ## 2. Hallazgos Técnicos y Arquitectónicos Clave
 
 El marco MDA subraya que las decisiones técnicas y arquitectónicas son, en esencia, "mecánicas" que definen el comportamiento fundamental de la aplicación.
 
-*   **Impacto de las Mecánicas en la Experiencia:** La forma en que se implementa el código (las mecánicas) determina directamente cómo el usuario interactúa (dinámicas) y qué siente (estéticas). Por ejemplo, un sistema de guardado automático en un juego de terror (baja fricción) generaba una estética de despreocupación, mientras que un guardado manual y lento (alta fricción) generaba miedo y tensión. Para Yendo, esto significa que cada línea de código y cada componente técnico debe ser intencional para generar la estética deseada de "Fricción Cero" y conexión.
+*   **Impacto de las Mecánicas en la Experiencia:** La forma en que se implementa el código (las mecánicas) determina directamente cómo el usuario interactúa (dinámicas) y qué siente (estéticas). Por ejemplo, un sistema de guardado automático en un juego de terror (baja fricción) generaba una estética de despreocupación, mientras que un guardado manual y lento (alta fricción) generaba miedo y tensión. Para WebFactory, esto significa que cada línea de código y cada componente técnico debe ser intencional para generar la estética deseada de "Fricción Cero" y conexión.
 *   **Coherencia Arquitectónica como Visión:** La insistencia en un `createClient` único y `StyleSheet.create` para la gestión de estilos no son solo buenas prácticas de ingeniería; son "mecánicas" que garantizan una consistencia fundamental. Esta consistencia se traduce en dinámicas predecibles para el desarrollador y el usuario, y una estética de fiabilidad y profesionalismo. Cuando "todos los elementos cantan las mismas notas", la aplicación es más clara y coherente.
-*   **Tecnologías como Mecánicas Estéticas:** La elección de `Expo 57` y `React Native` como base tecnológica son mecánicas que impactan la velocidad de desarrollo (dinámica interna) y la experiencia de usuario (dinámica externa). `Dark OLED` y `Material 3` son mecánicas de diseño que, si se implementan coherentemente, generarán estéticas específicas (sofisticación, modernidad, facilidad de uso, menor fatiga visual) que deben alinearse con la visión de Yendo.
+*   **Tecnologías como Mecánicas Estéticas:** La elección de `Expo 57` y `Modern Web UI (CSS/WAAPI)` como base tecnológica son mecánicas que impactan la velocidad de desarrollo (dinámica interna) y la experiencia de usuario (dinámica externa). `Dark OLED` y `Material 3` son mecánicas de diseño que, si se implementan coherentemente, generarán estéticas específicas (sofisticación, modernidad, facilidad de uso, menor fatiga visual) que deben alinearse con la visión de WebFactory.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-1.  **Definir la Visión Emocional de Yendo:** Utilizar los invariantes de Yendo – **Venue/Experiencia/Grupo** y **Dunbar 4-6** – como la "visión" central. Cada funcionalidad, cada flujo de usuario, cada elemento visual debe ser evaluado preguntando: "¿Esta mecánica apoya la sensación de pertenencia a un grupo íntimo (Dunbar 4-6) en un Venue específico, facilitando una Experiencia memorable?"
+1.  **Definir la Visión Emocional de WebFactory:** Utilizar los invariantes de WebFactory – **Venue/Experiencia/Grupo** y **Dunbar 4-6** – como la "visión" central. Cada funcionalidad, cada flujo de usuario, cada elemento visual debe ser evaluado preguntando: "¿Esta mecánica apoya la sensación de pertenencia a un grupo íntimo (Dunbar 4-6) en un Venue específico, facilitando una Experiencia memorable?"
 2.  **Diseño para la "Fricción Cero":** La "Fricción Cero" es una estética deseada. Para lograrla, se deben diseñar mecánicas que minimicen el esfuerzo del usuario. Esto implica flujos de navegación intuitivos, tiempos de carga mínimos, interacciones claras y retroalimentación instantánea. Cada punto de contacto del usuario debe ser examinado para eliminar cualquier obstáculo que impida una dinámica fluida y una estética de facilidad y satisfacción.
 3.  **Alineación de Mecánicas Técnicas con Estéticas:**
     *   **`Dark OLED` y `Material 3`:** Implementar estas mecánicas de diseño de manera que refuercen una estética de elegancia, modernidad y confort visual, especialmente en entornos de baja luz, que a menudo acompañan a las "Experiencias" en "Venues".
     *   **`un createClient` y `StyleSheet.create`:** Mantener la disciplina de estas mecánicas arquitectónicas para asegurar una base de código consistente. Esto reduce la complejidad, facilita el mantenimiento y garantiza que la aplicación se comporte de manera predecible, contribuyendo a una estética de fiabilidad y robustez.
-    *   **`Expo 57` y `React Native`:** Aprovechar la agilidad de estas plataformas para iterar rápidamente sobre las mecánicas, permitiendo pruebas tempranas de las dinámicas y estéticas generadas, y ajustando el diseño según el feedback de los usuarios.
+    *   **`Expo 57` y `Modern Web UI (CSS/WAAPI)`:** Aprovechar la agilidad de estas plataformas para iterar rápidamente sobre las mecánicas, permitiendo pruebas tempranas de las dinámicas y estéticas generadas, y ajustando el diseño según el feedback de los usuarios.
 4.  **"DNA pisa internet" como Promesa de Estética:** La frase "DNA pisa internet" sugiere una presencia digital fundamental y robusta. Las mecánicas de la aplicación deben reflejar esto, garantizando una conectividad fiable, una sincronización de datos fluida y una disponibilidad constante, lo que se traduce en una estética de confianza y omnipresencia para el usuario.
 5.  **Evaluación Continua con MDA:** Antes de implementar cualquier nueva característica, aplicar el marco MDA:
     *   ¿Qué **mecánicas** estamos introduciendo?
@@ -8537,7 +8534,7 @@ El marco MDA subraya que las decisiones técnicas y arquitectónicas son, en ese
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -8554,7 +8551,7 @@ ultima_revision: 2026-08-27
 ## 💡 Resumen Ejecutivo y Hallazgos
 
 # Informe de investigación – AI‑assisted React Development  
-**Yendo Mobile – 31 ago 2026**
+**la Web Software Factory – 31 ago 2026**
 
 ---
 
@@ -8578,17 +8575,17 @@ El video muestra cómo, combinando **ChatGPT‑4 (o 3.5)** con herramientas de d
 
 ---
 
-## 3. Ideas accionables para Yendo  
+## 3. Ideas accionables para WebFactory  
 
 ### 3.1. Adoptar **Expo 57** como capa de bootstrap  
-- **Crear una plantilla “AI‑Ready”** basada en Expo 57 (React Native 0.73) que incluya:  
+- **Crear una plantilla “AI‑Ready”** basada en Expo 57 (Modern Web UI (CSS/WAAPI) 0.73) que incluya:  
   - TypeScript, Playwright (para pruebas en simuladores), y **Copilot X** pre‑configurado.  
   - Scripts `npm run dev`, `npm run test` y `npm run lint` listos para usar.  
 - Documentar la plantilla con el **pseudocódigo YAML** propuesto, de modo que cualquier miembro del equipo pueda describir una pantalla (Venue/Evento/Grupo) y generar el código automáticamente.
 
 ### 3.2. **Dark OLED** + **Material 3** como guía de UI  
 - Definir un **theme token** basado en Material 3 (color, tipografía, shapes) y exportarlo como **JSON**.  
-- Pedir a la IA que convierta ese JSON en **estilos ThemeProvider** para React Native, garantizando consistencia visual en dispositivos OLED con modo oscuro.  
+- Pedir a la IA que convierta ese JSON en **estilos ThemeProvider** para Modern Web UI (CSS/WAAPI), garantizando consistencia visual en dispositivos OLED con modo oscuro.  
 - Utilizar el pseudocódigo para describir la jerarquía de componentes (ej. `VenueCard`, `EventList`, `GroupHeader`) y que la IA genere los componentes con los tokens de Material 3 ya aplicados.
 
 ### 3.3. **Fricción Cero** en el flujo de desarrollo  
@@ -8641,7 +8638,7 @@ group:
 
 ---  
 
-**Conclusión**: La combinación de **Expo 57**, **React Native**, **Material 3**, **Dark OLED**, y un **DSL de dominio** respaldado por **Copilot X** y **Playwright** permite a Yendo Mobile crear experiencias móviles con **fricción mínima**, manteniendo la calidad mediante pruebas automáticas. La adopción gradual del flujo “prompt‑code‑test” potenciará la velocidad de entrega y la capacidad de iterar sobre ideas de producto sin depender de la memorización de sintaxis, alineándose con la visión de una plataforma de eventos y grupos altamente reactiva y visualmente coherente.
+**Conclusión**: La combinación de **Expo 57**, **Modern Web UI (CSS/WAAPI)**, **Material 3**, **Dark OLED**, y un **DSL de dominio** respaldado por **Copilot X** y **Playwright** permite a la Web Software Factory crear experiencias móviles con **fricción mínima**, manteniendo la calidad mediante pruebas automáticas. La adopción gradual del flujo “prompt‑code‑test” potenciará la velocidad de entrega y la capacidad de iterar sobre ideas de producto sin depender de la memorización de sintaxis, alineándose con la visión de una plataforma de eventos y grupos altamente reactiva y visualmente coherente.
 
 ---
 
@@ -8663,7 +8660,7 @@ group:
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -8696,20 +8693,20 @@ El video explora la transformación radical en el desarrollo de software impulsa
 *   **Herramientas Clave:** Se mencionan ChatGPT (GPT-4), VS Code, y futuras integraciones como GitHub Copilot X y Copilot CLI, que prometen contextualizar mejor los proyectos y reducir errores.
 *   **Desafíos:** Las "alucinaciones" de los LLMs y la naturaleza no determinista de los *prompts* son limitaciones actuales que requieren validación y pruebas rigurosas.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-*   **Expo y React Native:**
-    *   **Generación de Componentes:** Utilizar la IA para generar *boilerplate* de componentes React Native, *hooks* personalizados y lógica de negocio básica, acelerando el desarrollo en Expo.
-    *   **Pruebas Automatizadas:** Implementar la generación de pruebas unitarias y de integración para componentes React Native usando IA, asegurando la calidad del código generado.
-    *   **Refactorización Asistida:** Emplear la IA para sugerir refactorizaciones o migraciones de código existente a patrones más modernos o eficientes en React Native.
+*   **Expo y Modern Web UI (CSS/WAAPI):**
+    *   **Generación de Componentes:** Utilizar la IA para generar *boilerplate* de componentes Modern Web UI (CSS/WAAPI), *hooks* personalizados y lógica de negocio básica, acelerando el desarrollo en Expo.
+    *   **Pruebas Automatizadas:** Implementar la generación de pruebas unitarias y de integración para componentes Modern Web UI (CSS/WAAPI) usando IA, asegurando la calidad del código generado.
+    *   **Refactorización Asistida:** Emplear la IA para sugerir refactorizaciones o migraciones de código existente a patrones más modernos o eficientes en Modern Web UI (CSS/WAAPI).
 *   **Diseño (Dark OLED y Material 3):**
-    *   **Generación de Temas y Estilos:** Pedir a la IA que genere temas completos de Material 3 para React Native, optimizados para pantallas OLED oscuras, incluyendo paletas de colores, tipografías y componentes estilizados.
+    *   **Generación de Temas y Estilos:** Pedir a la IA que genere temas completos de Material 3 para Modern Web UI (CSS/WAAPI), optimizados para pantallas OLED oscuras, incluyendo paletas de colores, tipografías y componentes estilizados.
     *   **Componentes Ad-hoc:** Utilizar la IA para crear componentes específicos que adhieran a las guías de Material 3 y consideren el contraste y la eficiencia energética en Dark OLED.
 *   **Fricción Cero:**
     *   **Automatización del Flujo de Desarrollo:** Integrar la IA en el CI/CD para automatizar la generación de código, pruebas, documentación y despliegues, reduciendo la fricción en el ciclo de vida del desarrollo.
     *   **Asistencia al Desarrollador:** Implementar herramientas basadas en IA que ofrezcan sugerencias de código en tiempo real, corrección de errores y explicaciones de APIs, minimizando interrupciones y búsquedas manuales.
 *   **Lenguaje Venue/Experiencia/Grupo:**
-    *   **DSL con IA:** Desarrollar un "lenguaje de pseudocódigo" interno para Yendo, que permita a los equipos describir funcionalidades relacionadas con "Venues", "Experiencias" o "Grupos" en un formato de alto nivel. La IA se encargaría de transpolar este DSL a código React Native funcional. Esto democratizaría la creación de funcionalidades, permitiendo a roles no-técnicos o desarrolladores junior contribuir de manera más directa.
+    *   **DSL con IA:** Desarrollar un "lenguaje de pseudocódigo" interno para WebFactory, que permita a los equipos describir funcionalidades relacionadas con "Venues", "Experiencias" o "Grupos" en un formato de alto nivel. La IA se encargaría de transpolar este DSL a código Modern Web UI (CSS/WAAPI) funcional. Esto democratizaría la creación de funcionalidades, permitiendo a roles no-técnicos o desarrolladores junior contribuir de manera más directa.
 *   **Dinámica de Equipo (Dunbar 4-6):**
     *   **Productividad de Equipos Pequeños:** La IA puede potenciar a equipos pequeños (4-6 personas) para lograr la producción de equipos mucho más grandes, al asumir tareas repetitivas y de bajo nivel.
     *   **Estandarización y Colaboración:** El uso de pseudocódigo personalizado y la generación de código estandarizado por IA pueden reducir la fricción en la colaboración, ya que el código base sería más consistente y fácil de entender, independientemente del estilo individual del desarrollador.
@@ -8751,7 +8748,7 @@ El video explora la transformación radical en el desarrollo de software impulsa
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -8768,15 +8765,15 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Animaciones en React Native para Yendo Mobile
+## Informe de Investigación: Animaciones en Modern Web UI (CSS/WAAPI) para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
-El concepto central de la presentación es que **cualquiera puede crear animaciones excepcionales en React Native** si utiliza las herramientas adecuadas ("los mejores ingredientes") y presta atención meticulosa a los detalles. La tesis principal es que las "grandes animaciones se construyen sobre sorpresas encantadoras" y un "sentido de déjà vu", lo que implica que deben sentirse naturales, intuitivas y físicamente plausibles para el usuario.
+El concepto central de la presentación es que **cualquiera puede crear animaciones excepcionales en Modern Web UI (CSS/WAAPI)** si utiliza las herramientas adecuadas ("los mejores ingredientes") y presta atención meticulosa a los detalles. La tesis principal es que las "grandes animaciones se construyen sobre sorpresas encantadoras" y un "sentido de déjà vu", lo que implica que deben sentirse naturales, intuitivas y físicamente plausibles para el usuario.
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
-La charla destaca dos pilares fundamentales para las animaciones en React Native:
+La charla destaca dos pilares fundamentales para las animaciones en Modern Web UI (CSS/WAAPI):
 
 *   **Reanimated:** Es la herramienta esencial para animaciones de alto rendimiento, ya que ejecuta las animaciones en el hilo de la UI, garantizando fluidez.
     *   **Conceptos básicos:** `SharedValue` para valores animados, `timing` (basado en duración y *easing*) y `spring` (basado en física) para tipos de animación, y `AnimatedStyle` con `AnimatedView` para aplicar los efectos.
@@ -8787,19 +8784,19 @@ La charla destaca dos pilares fundamentales para las animaciones en React Native
         *   `ease-in`: Generalmente debe evitarse, ya que se siente lento.
     *   **Animaciones Spring:** Basadas en `mass`, `stiffness` y `damping`, ofrecen un movimiento más natural y físico, crucial para interacciones como arrastrar y soltar, donde la duración y la velocidad deben ser dinámicas.
     *   **Layout Animations:** Permiten animar la entrada, salida y transiciones de elementos en el layout con pocas líneas de código, añadiendo un gran valor visual.
-*   **React Native Skia:** Una biblioteca gráfica que extiende las capacidades de React Native para gráficos complejos y de alto rendimiento.
-    *   **Valor:** Supera las limitaciones de React Native para efectos visuales avanzados como gradientes animados, blurs animados en Android, sombras complejas, shaders, máscaras y clips.
-    *   **Rendimiento:** La clave es que Skia "dibuja" en un Canvas en lugar de "renderizar" componentes React Native. Esto es significativamente más rápido para un gran número de elementos (ej. confeti), evitando bloqueos del hilo JS.
+*   **Modern Web UI (CSS/WAAPI) Skia:** Una biblioteca gráfica que extiende las capacidades de Modern Web UI (CSS/WAAPI) para gráficos complejos y de alto rendimiento.
+    *   **Valor:** Supera las limitaciones de Modern Web UI (CSS/WAAPI) para efectos visuales avanzados como gradientes animados, blurs animados en Web Platform, sombras complejas, shaders, máscaras y clips.
+    *   **Rendimiento:** La clave es que Skia "dibuja" en un Canvas en lugar de "renderizar" componentes Modern Web UI (CSS/WAAPI). Esto es significativamente más rápido para un gran número de elementos (ej. confeti), evitando bloqueos del hilo JS.
     *   **Consideración:** El uso de Canvas puede ser intensivo en memoria, por lo que se debe encontrar un equilibrio.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-Aplicando los hallazgos a los invariantes de Yendo:
+Aplicando los hallazgos a los invariantes de WebFactory:
 
-*   **Expo 57 & React Native:** Yendo debe continuar aprovechando el ecosistema de Expo para integrar Reanimated y Skia. La capacidad de construir con Expo para web, iOS y Android, como se demostró con `motion.reactive.io`, valida esta estrategia.
+*   **Expo 57 & Modern Web UI (CSS/WAAPI):** WebFactory debe continuar aprovechando el ecosistema de Expo para integrar Reanimated y Skia. La capacidad de construir con Expo para web, iOS y Web Platform, como se demostró con `motion.reactive.io`, valida esta estrategia.
 *   **Dark OLED & Material 3:**
     *   **Dark OLED:** Las animaciones deben ser sutiles y bien configuradas. `ease-out` para la aparición de elementos puede proporcionar una retroalimentación rápida sin transiciones bruscas en fondos oscuros. `ease-in-out` para cambios de estado mantendrá la fluidez visual.
-    *   **Material 3:** Los principios de M3 de movimiento fluido y basado en física se alinean perfectamente con las animaciones `spring`. Yendo debería priorizar `spring` para interacciones clave y transiciones de componentes M3, buscando ese "sentido de déjà vu" que hace que la UI se sienta natural.
+    *   **Material 3:** Los principios de M3 de movimiento fluido y basado en física se alinean perfectamente con las animaciones `spring`. WebFactory debería priorizar `spring` para interacciones clave y transiciones de componentes M3, buscando ese "sentido de déjà vu" que hace que la UI se sienta natural.
 *   **Fricción Cero:**
     *   **Reanimated:** Es fundamental para garantizar que las animaciones no bloqueen el hilo JS, eliminando la "fricción" de una UI lenta o entrecortada.
     *   **Easing y Spring:** La aplicación correcta de las reglas de *easing* y las animaciones `spring` para el movimiento reduce la fricción percibida, haciendo que las interacciones se sientan intuitivas y sin esfuerzo.
@@ -8811,7 +8808,7 @@ Aplicando los hallazgos a los invariantes de Yendo:
 
 ### 4. Citas Clave
 
-*   "Todo el mundo puede cocinar con React Native."
+*   "Todo el mundo puede cocinar con Modern Web UI (CSS/WAAPI)."
 *   "Tienes que elegir los mejores ingredientes."
 *   "Los detalles lo son todo."
 *   "Las grandes animaciones se construyen sobre sorpresas encantadoras."
@@ -8837,7 +8834,7 @@ Aplicando los hallazgos a los invariantes de Yendo:
 - [[AGENTS]]
 - [[Número de Dunbar]]
 - [[Reanimated]]
-- [[React Native Skia]]
+- [[Modern Web UI (CSS/WAAPI) Skia]]
 
 ---
 
@@ -8847,7 +8844,7 @@ Aplicando los hallazgos a los invariantes de Yendo:
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -8864,15 +8861,15 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Animaciones en React Native para Yendo Mobile
+## Informe de Investigación: Animaciones en Modern Web UI (CSS/WAAPI) para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
-El concepto central de la presentación es que **cualquiera puede crear animaciones excepcionales en React Native** si utiliza las herramientas adecuadas ("los mejores ingredientes") y presta atención meticulosa a los detalles. La tesis principal es que las "grandes animaciones se construyen sobre sorpresas encantadoras" y un "sentido de déjà vu", lo que implica que deben sentirse naturales, intuitivas y físicamente plausibles para el usuario.
+El concepto central de la presentación es que **cualquiera puede crear animaciones excepcionales en Modern Web UI (CSS/WAAPI)** si utiliza las herramientas adecuadas ("los mejores ingredientes") y presta atención meticulosa a los detalles. La tesis principal es que las "grandes animaciones se construyen sobre sorpresas encantadoras" y un "sentido de déjà vu", lo que implica que deben sentirse naturales, intuitivas y físicamente plausibles para el usuario.
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
-La charla destaca dos pilares fundamentales para las animaciones en React Native:
+La charla destaca dos pilares fundamentales para las animaciones en Modern Web UI (CSS/WAAPI):
 
 *   **Reanimated:** Es la herramienta esencial para animaciones de alto rendimiento, ya que ejecuta las animaciones en el hilo de la UI, garantizando fluidez.
     *   **Conceptos básicos:** `SharedValue` para valores animados, `timing` (basado en duración y *easing*) y `spring` (basado en física) para tipos de animación, y `AnimatedStyle` con `AnimatedView` para aplicar los efectos.
@@ -8883,19 +8880,19 @@ La charla destaca dos pilares fundamentales para las animaciones en React Native
         *   `ease-in`: Generalmente debe evitarse, ya que se siente lento.
     *   **Animaciones Spring:** Basadas en `mass`, `stiffness` y `damping`, ofrecen un movimiento más natural y físico, crucial para interacciones como arrastrar y soltar, donde la duración y la velocidad deben ser dinámicas.
     *   **Layout Animations:** Permiten animar la entrada, salida y transiciones de elementos en el layout con pocas líneas de código, añadiendo un gran valor visual.
-*   **React Native Skia:** Una biblioteca gráfica que extiende las capacidades de React Native para gráficos complejos y de alto rendimiento.
-    *   **Valor:** Supera las limitaciones de React Native para efectos visuales avanzados como gradientes animados, blurs animados en Android, sombras complejas, shaders, máscaras y clips.
-    *   **Rendimiento:** La clave es que Skia "dibuja" en un Canvas en lugar de "renderizar" componentes React Native. Esto es significativamente más rápido para un gran número de elementos (ej. confeti), evitando bloqueos del hilo JS.
+*   **Modern Web UI (CSS/WAAPI) Skia:** Una biblioteca gráfica que extiende las capacidades de Modern Web UI (CSS/WAAPI) para gráficos complejos y de alto rendimiento.
+    *   **Valor:** Supera las limitaciones de Modern Web UI (CSS/WAAPI) para efectos visuales avanzados como gradientes animados, blurs animados en Web Platform, sombras complejas, shaders, máscaras y clips.
+    *   **Rendimiento:** La clave es que Skia "dibuja" en un Canvas en lugar de "renderizar" componentes Modern Web UI (CSS/WAAPI). Esto es significativamente más rápido para un gran número de elementos (ej. confeti), evitando bloqueos del hilo JS.
     *   **Consideración:** El uso de Canvas puede ser intensivo en memoria, por lo que se debe encontrar un equilibrio.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-Aplicando los hallazgos a los invariantes de Yendo:
+Aplicando los hallazgos a los invariantes de WebFactory:
 
-*   **Expo 57 & React Native:** Yendo debe continuar aprovechando el ecosistema de Expo para integrar Reanimated y Skia. La capacidad de construir con Expo para web, iOS y Android, como se demostró con `motion.reactive.io`, valida esta estrategia.
+*   **Expo 57 & Modern Web UI (CSS/WAAPI):** WebFactory debe continuar aprovechando el ecosistema de Expo para integrar Reanimated y Skia. La capacidad de construir con Expo para web, iOS y Web Platform, como se demostró con `motion.reactive.io`, valida esta estrategia.
 *   **Dark OLED & Material 3:**
     *   **Dark OLED:** Las animaciones deben ser sutiles y bien configuradas. `ease-out` para la aparición de elementos puede proporcionar una retroalimentación rápida sin transiciones bruscas en fondos oscuros. `ease-in-out` para cambios de estado mantendrá la fluidez visual.
-    *   **Material 3:** Los principios de M3 de movimiento fluido y basado en física se alinean perfectamente con las animaciones `spring`. Yendo debería priorizar `spring` para interacciones clave y transiciones de componentes M3, buscando ese "sentido de déjà vu" que hace que la UI se sienta natural.
+    *   **Material 3:** Los principios de M3 de movimiento fluido y basado en física se alinean perfectamente con las animaciones `spring`. WebFactory debería priorizar `spring` para interacciones clave y transiciones de componentes M3, buscando ese "sentido de déjà vu" que hace que la UI se sienta natural.
 *   **Fricción Cero:**
     *   **Reanimated:** Es fundamental para garantizar que las animaciones no bloqueen el hilo JS, eliminando la "fricción" de una UI lenta o entrecortada.
     *   **Easing y Spring:** La aplicación correcta de las reglas de *easing* y las animaciones `spring` para el movimiento reduce la fricción percibida, haciendo que las interacciones se sientan intuitivas y sin esfuerzo.
@@ -8907,7 +8904,7 @@ Aplicando los hallazgos a los invariantes de Yendo:
 
 ### 4. Citas Clave
 
-*   "Todo el mundo puede cocinar con React Native."
+*   "Todo el mundo puede cocinar con Modern Web UI (CSS/WAAPI)."
 *   "Tienes que elegir los mejores ingredientes."
 *   "Los detalles lo son todo."
 *   "Las grandes animaciones se construyen sobre sorpresas encantadoras."
@@ -8933,7 +8930,7 @@ Aplicando los hallazgos a los invariantes de Yendo:
 - [[AGENTS]]
 - [[Número de Dunbar]]
 - [[Reanimated]]
-- [[React Native Skia]]
+- [[Modern Web UI (CSS/WAAPI) Skia]]
 
 ---
 
@@ -8943,7 +8940,7 @@ Aplicando los hallazgos a los invariantes de Yendo:
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -8982,13 +8979,13 @@ La complejidad de un componente como un menú desplegable se subestima enormemen
 
 La arquitectura de Radix UI demuestra que es posible abstraer la complejidad funcional y de accesibilidad en primitivas reutilizables, dejando la capa de presentación completamente abierta al diseño del producto.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-1.  **Adopción de Primitivas UI para React Native (Expo 57):** Aunque Radix UI es para web, la filosofía de "primitivas accesibles y sin estilo" es directamente aplicable a React Native. Yendo debe buscar o desarrollar un conjunto de componentes base para React Native que manejen la complejidad de la accesibilidad, la navegación por teclado y la lógica de interacción (gestos, posicionamiento) de forma robusta y probada. Esto reducirá la "fricción cero" para los desarrolladores y acelerará la entrega de características.
-2.  **Integración con Diseño (Dark OLED, Material 3):** La naturaleza "unstyled" de las primitivas es ideal para Yendo. Permite aplicar la estética específica de **Dark OLED y Material 3** sobre una base funcional sólida. Esto asegura que el **DNA de Yendo pisa internet** con una experiencia visual coherente y distintiva, sin comprometer la funcionalidad o accesibilidad.
-3.  **Fricción Cero en Desarrollo:** Al delegar la construcción de componentes UI complejos, los ingenieros de Yendo pueden dedicar más tiempo a las características centrales relacionadas con **Venue/Experiencia/Grupo** y la interacción social (Dunbar 4-6), en lugar de tareas "indiferenciadas". Esto se traduce en un desarrollo más rápido, menos errores y una mayor calidad en las funcionalidades que realmente definen a Yendo.
-4.  **Consistencia Arquitectónica (un createClient, StyleSheet.create):** El modelo de primitivas sin estilo se alinea perfectamente con los invariantes de Yendo de **un `createClient`** y **`StyleSheet.create`**. Yendo puede definir su sistema de diseño canónico en `StyleSheet.create` y aplicarlo a estas primitivas funcionales, garantizando una uniformidad de estilo y una base de código limpia y mantenible.
-5.  **Priorización de la Accesibilidad:** La accesibilidad debe ser un pilar desde el inicio. Utilizar primitivas que ya han sido probadas para lectores de pantalla y navegación por teclado garantiza que Yendo sea inclusivo para todos los usuarios, evitando costosas multas y mejorando la retención de usuarios.
+1.  **Adopción de Primitivas UI para Modern Web UI (CSS/WAAPI) (Expo 57):** Aunque Radix UI es para web, la filosofía de "primitivas accesibles y sin estilo" es directamente aplicable a Modern Web UI (CSS/WAAPI). WebFactory debe buscar o desarrollar un conjunto de componentes base para Modern Web UI (CSS/WAAPI) que manejen la complejidad de la accesibilidad, la navegación por teclado y la lógica de interacción (gestos, posicionamiento) de forma robusta y probada. Esto reducirá la "fricción cero" para los desarrolladores y acelerará la entrega de características.
+2.  **Integración con Diseño (Dark OLED, Material 3):** La naturaleza "unstyled" de las primitivas es ideal para WebFactory. Permite aplicar la estética específica de **Dark OLED y Material 3** sobre una base funcional sólida. Esto asegura que el **DNA de WebFactory pisa internet** con una experiencia visual coherente y distintiva, sin comprometer la funcionalidad o accesibilidad.
+3.  **Fricción Cero en Desarrollo:** Al delegar la construcción de componentes UI complejos, los ingenieros de WebFactory pueden dedicar más tiempo a las características centrales relacionadas con **Venue/Experiencia/Grupo** y la interacción social (Dunbar 4-6), en lugar de tareas "indiferenciadas". Esto se traduce en un desarrollo más rápido, menos errores y una mayor calidad en las funcionalidades que realmente definen a WebFactory.
+4.  **Consistencia Arquitectónica (un createClient, StyleSheet.create):** El modelo de primitivas sin estilo se alinea perfectamente con los invariantes de WebFactory de **un `createClient`** y **`StyleSheet.create`**. WebFactory puede definir su sistema de diseño canónico en `StyleSheet.create` y aplicarlo a estas primitivas funcionales, garantizando una uniformidad de estilo y una base de código limpia y mantenible.
+5.  **Priorización de la Accesibilidad:** La accesibilidad debe ser un pilar desde el inicio. Utilizar primitivas que ya han sido probadas para lectores de pantalla y navegación por teclado garantiza que WebFactory sea inclusivo para todos los usuarios, evitando costosas multas y mejorando la retención de usuarios.
 
 ### 4. Citas Clave
 
@@ -9030,7 +9027,7 @@ La arquitectura de Radix UI demuestra que es posible abstraer la complejidad fun
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -9047,7 +9044,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Shaders para Yendo Mobile
+## Informe de Investigación: Shaders para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -9060,11 +9057,11 @@ El video destaca que los **shaders** son programas ejecutados directamente por l
 *   **Optimización de Rendimiento Intrínseca:** La ejecución en la GPU es inherentemente eficiente para tareas gráficas masivamente paralelas. El video menciona explícitamente la creación de efectos "performant" y la capacidad de "unleash the true power of your GPU" para manejar cientos de miles de partículas, lo que subraya su potencial para la fluidez en la interfaz de usuario.
 *   **Extensión de Frameworks 3D:** Aunque se promueve la escritura de shaders propios, se menciona la mejora de materiales existentes de Three.js, indicando que los shaders pueden complementar y extender las capacidades de librerías 3D en lugar de reemplazarlas por completo.
 *   **Combinación de Tecnologías:** La referencia al uso de un canvas 2D para ciertos efectos (como rastros de partículas) sugiere la posibilidad de integrar shaders 3D con elementos gráficos 2D para lograr efectos híbridos y enriquecidos.
-*   **"DNA pisa internet":** La capacidad de los shaders para crear una identidad visual única y distintiva es un pilar para que el "ADN" de Yendo se manifieste de manera inconfundible en su presencia digital.
+*   **"DNA pisa internet":** La capacidad de los shaders para crear una identidad visual única y distintiva es un pilar para que el "ADN" de WebFactory se manifieste de manera inconfundible en su presencia digital.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-*   **Expo 57 & React Native:** Investigar la integración de shaders personalizados a través de librerías como `react-three-fiber` o WebGL/Skia en React Native y Expo. Esto permitiría crear fondos dinámicos, transiciones de interfaz de usuario fluidas y elementos visuales interactivos que elevan la "Experiencia" de la aplicación.
+*   **Expo 57 & Modern Web UI (CSS/WAAPI):** Investigar la integración de shaders personalizados a través de librerías como `react-three-fiber` o WebGL/Skia en Modern Web UI (CSS/WAAPI) y Expo. Esto permitiría crear fondos dinámicos, transiciones de interfaz de usuario fluidas y elementos visuales interactivos que elevan la "Experiencia" de la aplicación.
 *   **Dark OLED & Material 3:** Utilizar shaders para diseñar efectos visuales que complementen y realcen el tema Dark OLED y Material 3. Esto podría incluir brillos sutiles, animaciones de partículas reactivas al tacto o fondos generativos que se integren armoniosamente con la paleta de colores, optimizando el contraste y la eficiencia energética en pantallas OLED.
 *   **Fricción Cero:** Implementar shaders para animaciones de carga personalizadas, transiciones de pantalla ultra-suaves y efectos de retroalimentación háptica visual que minimicen la percepción de latencia y mejoren la fluidez general de la interacción, contribuyendo directamente a una "fricción cero".
 *   **Lenguaje Venue/Experiencia/Grupo:**
@@ -9073,7 +9070,7 @@ El video destaca que los **shaders** son programas ejecutados directamente por l
     *   **Grupo:** Visualizar la interacción o el movimiento de los miembros de un "Grupo" mediante efectos de "flowfield particles" o animaciones que destaquen la actividad colectiva.
 *   **Dunbar 4-6:** Aunque los shaders son visuales, pueden apoyar indirectamente la gestión de grupos pequeños. Por ejemplo, visualizaciones sutiles que destaquen la actividad de los miembros del grupo o interfaces que se adapten visualmente para mantener la cohesión, sin sobrecargar la información.
 *   **Un `createClient` & `StyleSheet.create`:** La filosofía de consistencia y centralización de `createClient` y `StyleSheet.create` debe extenderse a la gestión de shaders. Se recomienda encapsular la lógica de los shaders en componentes visuales reutilizables y configurables, expuestos de manera consistente a través de la aplicación, asegurando que la "creatividad ilimitada" no comprometa la arquitectura.
-*   **DNA pisa internet:** Los shaders son una herramienta poderosa para infundir el "ADN" único de Yendo en su presencia digital, permitiendo una identidad visual distintiva que va más allá de los componentes UI estándar y hace que la aplicación sea memorable.
+*   **DNA pisa internet:** Los shaders son una herramienta poderosa para infundir el "ADN" único de WebFactory en su presencia digital, permitiendo una identidad visual distintiva que va más allá de los componentes UI estándar y hace que la aplicación sea memorable.
 
 ### 4. Citas Clave
 
@@ -9100,7 +9097,7 @@ El video destaca que los **shaders** son programas ejecutados directamente por l
 - [[MANAGER]]
 - [[AGENTS]]
 - [[Número de Dunbar]]
-- [[React Native Skia]]
+- [[Modern Web UI (CSS/WAAPI) Skia]]
 
 ---
 
@@ -9110,7 +9107,7 @@ El video destaca que los **shaders** son programas ejecutados directamente por l
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -9172,7 +9169,7 @@ Con estas prácticas podrás aplicar cambios de esquema en bases de datos de gra
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -9189,16 +9186,16 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: React Native con IA en 2026 para Yendo Mobile
+## Informe de Investigación: Modern Web UI (CSS/WAAPI) con IA en 2026 para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
-El video presenta una metodología para aprender y desarrollar con React Native en 2026, donde la **Inteligencia Artificial actúa como copiloto esencial**. La tesis central es que, si bien la IA puede generar la mayor parte del código, el desarrollador debe comprender la **arquitectura subyacente, los conceptos fundamentales y cómo formular prompts efectivos** para guiar a la IA. El enfoque se desplaza de la memorización de sintaxis a la comprensión del "modelo mental" de la aplicación y la revisión crítica del código generado por IA.
+El video presenta una metodología para aprender y desarrollar con Modern Web UI (CSS/WAAPI) en 2026, donde la **Inteligencia Artificial actúa como copiloto esencial**. La tesis central es que, si bien la IA puede generar la mayor parte del código, el desarrollador debe comprender la **arquitectura subyacente, los conceptos fundamentales y cómo formular prompts efectivos** para guiar a la IA. El enfoque se desplaza de la memorización de sintaxis a la comprensión del "modelo mental" de la aplicación y la revisión crítica del código generado por IA.
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
 *   **Expo como Framework Predominante:** Se recomienda Expo para el bootstrapping, enrutamiento (Expo Router con enrutamiento basado en archivos, grupos, stacks y pestañas nativas), acceso a SDKs y servicios (EAS para CI/CD, notificaciones push, hosting). Se destaca que Expo ya no es limitante.
-*   **React Native como Motor de Renderizado:** Valida la capacidad de React Native para construir aplicaciones multiplataforma (iOS, Android, Web, macOS, Windows) a partir de una única base de código React.
+*   **Modern Web UI (CSS/WAAPI) como Motor de Renderizado:** Valida la capacidad de Modern Web UI (CSS/WAAPI) para construir aplicaciones multiplataforma (iOS, Web Platform, Web, macOS, Windows) a partir de una única base de código React.
 *   **Arquitectura de Carpetas:** Se propone una estructura limpia: `src` (opcional), `app` (para rutas), `components` (elementos UI reutilizables), `lib` (lógica de negocio, llamadas API, utilidades), `hooks` (lógica de estado reutilizable) y `types` (definiciones de TypeScript).
 *   **Estilado:** Se recomienda `StyleSheet.create` para principiantes por su rendimiento y tipado, aunque se mencionan alternativas como Tailwind CSS.
 *   **Gestión de Datos y Estado:** Uso de `fetch` para llamadas API, `FlatList` para listas performantes (evitando `ScrollView` para grandes volúmenes), `onEndReached` para carga infinita, `useState` para el estado local y `useFocusEffect` para refrescar datos al enfocar una pantalla.
@@ -9206,12 +9203,12 @@ El video presenta una metodología para aprender y desarrollar con React Native 
 *   **Persistencia Local:** `AsyncStorage` se presenta como una solución sencilla de clave-valor (requiere serialización JSON), aunque se mencionan alternativas más performantes como SQLite y MMKV.
 *   **Interacción del Usuario:** Manejo de `TextInput` con `keyboardDismissMode` y `debounce` para búsquedas eficientes.
 *   **Rendimiento y Experiencia de Usuario:** Implementación de "skeleton loading views" para mejorar la percepción de rendimiento, `react-native-reanimated` para animaciones fluidas en el hilo de UI (ej. animaciones de entrada/salida, parallax scroll), y `SafeAreaView` para manejar insets de forma nativa.
-*   **Herramientas de Desarrollo:** Git y GitHub para control de versiones, Code Rabbit para revisiones de código automatizadas por IA, y React Native DevTools para depuración y profiling.
+*   **Herramientas de Desarrollo:** Git y GitHub para control de versiones, Code Rabbit para revisiones de código automatizadas por IA, y Modern Web UI (CSS/WAAPI) DevTools para depuración y profiling.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
 *   **Expo 57:** Adoptar la última versión de Expo para aprovechar sus capacidades de bootstrapping, enrutamiento avanzado y servicios (EAS) que simplifican el ciclo de desarrollo y despliegue, alineándose con la visión de "Fricción Cero".
-*   **React Native:** La validación de React Native como una plataforma robusta y multiplataforma refuerza la elección de Yendo. La capacidad de la IA para generar código reduce la barrera de entrada para nuevas funcionalidades.
+*   **Modern Web UI (CSS/WAAPI):** La validación de Modern Web UI (CSS/WAAPI) como una plataforma robusta y multiplataforma refuerza la elección de WebFactory. La capacidad de la IA para generar código reduce la barrera de entrada para nuevas funcionalidades.
 *   **Dark OLED y Material 3:** Utilizar la IA para implementar y mantener un sistema de diseño basado en Material 3, asegurando la compatibilidad con Dark OLED. La IA puede ayudar a generar `StyleSheet.create` con tokens de diseño y a refactorizar estilos en archivos temáticos (`colors.ts`, `constants.ts`).
 *   **Fricción Cero:**
     *   **Desarrollo:** Integrar IA (ej. Claude, Cursor) como copiloto para la generación de código, refactorización y resolución de problemas, acelerando el desarrollo.
@@ -9219,7 +9216,7 @@ El video presenta una metodología para aprender y desarrollar con React Native 
     *   **UX:** Priorizar `FlatList` para listas, "skeleton loading", `react-native-reanimated` para animaciones fluidas y `SafeAreaView` para una experiencia nativa y sin interrupciones.
 *   **Lenguaje Venue/Experiencia/Grupo:** Traducir estos conceptos en una arquitectura de carpetas clara (`app/venue`, `app/experience`, `app/group`), componentes reutilizables (`components/VenueCard`, `components/ExperienceDetail`), y hooks personalizados (`hooks/useVenueData`). La IA puede ser guiada para generar código que respete esta estructura semántica.
 *   **Dunbar 4-6:** La IA facilita la adherencia a una arquitectura modular y limpia, lo que es crucial para equipos pequeños. Al externalizar la lógica de negocio a `lib` y los tipos a `types`, se reduce la complejidad de los componentes de UI, haciendo el código más manejable y comprensible para un equipo reducido.
-*   **Invariantes de Yendo:**
+*   **Invariantes de WebFactory:**
     *   **`createClient`:** Centralizar las llamadas a la API en un único archivo (`lib/apiClient.ts`) para mantener la consistencia y facilitar el mantenimiento.
     *   **`StyleSheet.create`:** Utilizar esta API para el estilado, aprovechando su rendimiento y tipado, y la capacidad de la IA para generarlo.
     *   **Canonical Sheet:** La IA puede ayudar a construir y mantener un "canonical sheet" de estilos y temas, asegurando la coherencia visual en toda la aplicación.
@@ -9260,7 +9257,7 @@ El video presenta una metodología para aprender y desarrollar con React Native 
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -9299,15 +9296,15 @@ El video explica que la elección entre **jerarquía plana** y **jerarquía prof
 3. **Nombres descriptivos y consistentes**: evitan la ambigüedad en jerarquías profundas.  
 4. **Iteración basada en datos**: pruebas continuas para ajustar la profundidad y amplitud.  
 
-## 3. Ideas accionables para Yendo  
+## 3. Ideas accionables para WebFactory  
 
 | Área | Acción concreta | Justificación |
 |------|----------------|---------------|
 | **Expo 57 (evento de lanzamiento)** | Diseñar la navegación del sitio del Expo con **8 categorías de nivel 1** (Ej.: “Agenda”, “Speakers”, “Patrocinadores”, “Mapa”, “Tickets”, “Noticias”, “FAQ”, “Comunidad”). | Cumple con la regla de visibilidad moderada y permite a los asistentes encontrar rápidamente la información esencial. |
-| **React Native** | Implementar un **navegador de pestañas dinámicas** que muestre las categorías principales y, al pulsar, despliegue sub‑menús con animaciones de “deslizamiento” para mantener bajo el costo de interacción. | Aprovecha la capacidad de RN para UI fluida y reduce la fricción en dispositivos móviles. |
+| **Modern Web UI (CSS/WAAPI)** | Implementar un **navegador de pestañas dinámicas** que muestre las categorías principales y, al pulsar, despliegue sub‑menús con animaciones de “deslizamiento” para mantener bajo el costo de interacción. | Aprovecha la capacidad de RN para UI fluida y reduce la fricción en dispositivos móviles. |
 | **Dark OLED** | Utilizar **modo oscuro** con contraste suficiente para que los menús planos sean legibles en pantallas OLED, evitando “burn‑in” mediante colores de fondo ligeramente cambiantes cada sesión. | Mejora la experiencia visual y la eficiencia energética, alineado con Material 3. |
 | **Material 3** | Adoptar los componentes **NavigationRail** (para tablets) y **BottomNavigation** (para móviles) siguiendo la guía de Material 3, con **etiquetas claras** y **iconografía consistente**. | Refuerza la coherencia visual y reduce la carga cognitiva. |
-| **Fricción Cero** | Aplicar **deep linking** que lleve al usuario directamente a la sub‑categoría deseada (p.ej., `yendo://evento/1234/agenda`). | Elimina pasos intermedios y acelera la conversión. |
+| **Fricción Cero** | Aplicar **deep linking** que lleve al usuario directamente a la sub‑categoría deseada (p.ej., `webfactory://evento/1234/agenda`). | Elimina pasos intermedios y acelera la conversión. |
 | **Lenguaje Venue/Evento/Grupo** | Normalizar la terminología en toda la plataforma: usar **“Venue”** para lugares físicos, **“Evento”** para actividades programadas y **“Grupo”** para comunidades de usuarios. Reflejar esta taxonomía en la arquitectura de información (p.ej., “Explorar Venues”, “Mis Eventos”, “Grupos”). | Un vocabulario unificado mejora la claridad y facilita la estructuración de la jerarquía. |
 | **Testing continuo** | Implementar **pruebas de árbol** y **card sorting** en cada nuevo módulo (p.ej., sección de “Patrocinadores”) y ajustar la profundidad según los resultados. | Garantiza que la arquitectura evolucione con las necesidades reales de los usuarios. |
 
@@ -9320,7 +9317,7 @@ El video explica que la elección entre **jerarquía plana** y **jerarquía prof
 
 ---  
 
-**Resumen ejecutivo:** Para Yendo, la arquitectura de navegación debe combinar la claridad de una jerarquía plana (pocas capas, alta visibilidad) con la capacidad de escalar de una jerarquía profunda, manteniendo entre 6‑10 categorías de nivel superior y no más de 2‑3 niveles de sub‑categorías. La implementación en React Native, con Material 3 y soporte Dark OLED, junto a deep linking y un vocabulario unificado (Venue/Evento/Grupo), garantizará una experiencia de **fricción cero** que se ajustará continuamente mediante pruebas de usuarios.
+**Resumen ejecutivo:** Para WebFactory, la arquitectura de navegación debe combinar la claridad de una jerarquía plana (pocas capas, alta visibilidad) con la capacidad de escalar de una jerarquía profunda, manteniendo entre 6‑10 categorías de nivel superior y no más de 2‑3 niveles de sub‑categorías. La implementación en Modern Web UI (CSS/WAAPI), con Material 3 y soporte Dark OLED, junto a deep linking y un vocabulario unificado (Venue/Evento/Grupo), garantizará una experiencia de **fricción cero** que se ajustará continuamente mediante pruebas de usuarios.
 
 ---
 
@@ -9342,7 +9339,7 @@ El video explica que la elección entre **jerarquía plana** y **jerarquía prof
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -9359,7 +9356,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Arquitectura de Información para Yendo Mobile
+## Informe de Investigación: Arquitectura de Información para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -9376,16 +9373,16 @@ La tesis central es que **las formas extremas de ambas son perjudiciales**. Gene
 *   **Escalabilidad vs. Usabilidad:** Aunque las jerarquías profundas pueden parecer más escalables para grandes volúmenes de contenido, a menudo sacrifican la usabilidad y la descubribilidad.
 *   **Validación por Usuario:** La arquitectura de información no es una decisión puramente técnica; debe ser validada mediante investigación de usuario para asegurar que se alinee con sus expectativas y necesidades.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-Para Yendo Mobile, la aplicación de estos principios es crucial para optimizar la experiencia del usuario y alinearse con sus valores de diseño:
+Para la Web Software Factory, la aplicación de estos principios es crucial para optimizar la experiencia del usuario y alinearse con sus valores de diseño:
 
 *   **Fricción Cero y Jerarquía Plana:** Adoptar una **jerarquía moderadamente plana** es fundamental para lograr la "Fricción Cero". Minimizar los clics y hacer que las opciones sean inmediatamente descubribles reducirá la barrera de entrada y mejorará la eficiencia del usuario.
-*   **Lenguaje "Venue/Experiencia/Grupo":** Estos conceptos clave de Yendo deben ser los pilares de la navegación de nivel superior. Presentarlos de forma prominente y accesible, posiblemente como categorías principales en una navegación inferior (bottom navigation) o pestañas (tabs), reforzará una estructura plana y directa.
-*   **Principio "Dunbar 4-6" en Navegación Principal:** Aunque el video menciona 15 categorías superiores como manejables, para la navegación principal de una aplicación móvil, el principio de "Dunbar 4-6" (o un número similarmente bajo para la memoria de trabajo) es más apropiado. Esto significa que Yendo debería aspirar a tener entre 4 y 6 elementos de navegación principales, agrupando inteligentemente el contenido para evitar la sobrecarga. Las pruebas de usuario determinarán el número exacto óptimo.
-*   **Implementación con React Native y Expo 57:** La flexibilidad de React Native y el ecosistema de Expo 57 permiten implementar fácilmente patrones de navegación planos (ej. `react-navigation` con `BottomTabNavigator`, `MaterialTopTabNavigator`). La elección de la tecnología no dicta la IA, pero facilita su ejecución.
+*   **Lenguaje "Venue/Experiencia/Grupo":** Estos conceptos clave de WebFactory deben ser los pilares de la navegación de nivel superior. Presentarlos de forma prominente y accesible, posiblemente como categorías principales en una navegación inferior (bottom navigation) o pestañas (tabs), reforzará una estructura plana y directa.
+*   **Principio "Dunbar 4-6" en Navegación Principal:** Aunque el video menciona 15 categorías superiores como manejables, para la navegación principal de una aplicación móvil, el principio de "Dunbar 4-6" (o un número similarmente bajo para la memoria de trabajo) es más apropiado. Esto significa que WebFactory debería aspirar a tener entre 4 y 6 elementos de navegación principales, agrupando inteligentemente el contenido para evitar la sobrecarga. Las pruebas de usuario determinarán el número exacto óptimo.
+*   **Implementación con Modern Web UI (CSS/WAAPI) y Expo 57:** La flexibilidad de Modern Web UI (CSS/WAAPI) y el ecosistema de Expo 57 permiten implementar fácilmente patrones de navegación planos (ej. `react-navigation` con `BottomTabNavigator`, `MaterialTopTabNavigator`). La elección de la tecnología no dicta la IA, pero facilita su ejecución.
 *   **Diseño Visual con Material 3 y Dark OLED:** Una jerarquía plana se beneficia de un diseño visual claro. Material 3 ofrece componentes de navegación bien definidos que pueden presentar muchas opciones de forma organizada. En modo Dark OLED, la claridad visual es aún más importante; una estructura plana y bien espaciada evitará la fatiga visual y la sensación de aglomeración.
-*   **Priorización y Pruebas de Usuario:** Es imperativo realizar pruebas A/B y estudios de usabilidad para determinar el número ideal de categorías de nivel superior y la agrupación de subcategorías. Entender cómo los usuarios de Yendo conceptualizan "Venue", "Experiencia" y "Grupo" es clave para construir una IA que resuene con sus modelos mentales.
+*   **Priorización y Pruebas de Usuario:** Es imperativo realizar pruebas A/B y estudios de usabilidad para determinar el número ideal de categorías de nivel superior y la agrupación de subcategorías. Entender cómo los usuarios de WebFactory conceptualizan "Venue", "Experiencia" y "Grupo" es clave para construir una IA que resuene con sus modelos mentales.
 
 ### 4. Citas Clave
 
@@ -9421,7 +9418,7 @@ Para Yendo Mobile, la aplicación de estos principios es crucial para optimizar 
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -9438,16 +9435,16 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: React Native para Yendo Mobile
+## Informe de Investigación: Modern Web UI (CSS/WAAPI) para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
-El tutorial ofrece una introducción exhaustiva a React Native, posicionándolo como una solución robusta para el desarrollo de aplicaciones móviles multiplataforma. Su tesis central es que React Native permite construir aplicaciones con una experiencia de usuario nativa y alto rendimiento, utilizando una única base de código JavaScript. Esto se logra mediante la renderización de componentes UI nativos (a diferencia de los webviews de los híbridos tradicionales) y se facilita enormemente con herramientas como Expo, que simplifican el ciclo de desarrollo y despliegue.
+El tutorial ofrece una introducción exhaustiva a Modern Web UI (CSS/WAAPI), posicionándolo como una solución robusta para el desarrollo de aplicaciones móviles multiplataforma. Su tesis central es que Modern Web UI (CSS/WAAPI) permite construir aplicaciones con una experiencia de usuario nativa y alto rendimiento, utilizando una única base de código JavaScript. Esto se logra mediante la renderización de componentes UI nativos (a diferencia de los webviews de los híbridos tradicionales) y se facilita enormemente con herramientas como Expo, que simplifican el ciclo de desarrollo y despliegue.
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
-*   **React Native vs. Híbrido Tradicional:** React Native genera componentes UI nativos, ofreciendo una experiencia y rendimiento superiores a las aplicaciones híbridas basadas en webviews (ej. Cordova, Ionic), aunque comparte la ventaja de una única base de código.
-*   **Expo:** Es una plataforma que agiliza el desarrollo, construcción y despliegue de aplicaciones React Native, especialmente para principiantes. Permite la ejecución en dispositivos reales mediante QR sin la complejidad de configurar Android Studio o Xcode.
+*   **Modern Web UI (CSS/WAAPI) vs. Híbrido Tradicional:** Modern Web UI (CSS/WAAPI) genera componentes UI nativos, ofreciendo una experiencia y rendimiento superiores a las aplicaciones híbridas basadas en webviews (ej. Cordova, Ionic), aunque comparte la ventaja de una única base de código.
+*   **Expo:** Es una plataforma que agiliza el desarrollo, construcción y despliegue de aplicaciones Modern Web UI (CSS/WAAPI), especialmente para principiantes. Permite la ejecución en dispositivos reales mediante QR sin la complejidad de configurar Web Platform Studio o Xcode.
 *   **Arquitectura Basada en Componentes:** Fomenta la modularidad y la reutilización de código. Los componentes se comunican a través de `props` (datos inmutables, flujo unidireccional de padre a hijo) y gestionan su estado interno con `useState`.
 *   **Gestión de Estado y Efectos Secundarios:** `useState` permite a los componentes mantener y actualizar datos internos, provocando re-renders eficientes. `useEffect` maneja efectos secundarios (ej. llamadas a API, temporizadores), replicando métodos de ciclo de vida de componentes de clase. Los *custom hooks* encapsulan lógica reutilizable.
 *   **Estilado:** Se realiza mediante objetos JavaScript con `StyleSheet.create`, que centraliza y organiza los estilos, promoviendo la reutilización y desaconsejando los estilos `inline` para evitar la complejidad. Utiliza Flexbox para el diseño responsivo.
@@ -9455,21 +9452,21 @@ El tutorial ofrece una introducción exhaustiva a React Native, posicionándolo 
 *   **Consumo de APIs:** La API `fetch` es el método principal para la comunicación de red. Se recomienda el uso de variables de entorno (`react-native-dotenv`) para gestionar claves API de forma segura. `Expo Location` facilita la obtención de la geolocalización del usuario.
 *   **Optimización de Listas:** `FlatList` es el componente clave para renderizar listas grandes de manera eficiente, utilizando `keyExtractor` para optimizar los re-renders.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-*   **Adopción de Expo 57:** La facilidad de configuración, desarrollo y despliegue que ofrece Expo se alinea perfectamente con el principio de **Fricción Cero** para el equipo de desarrollo de Yendo. Permite iteraciones rápidas y pruebas sencillas en dispositivos.
-*   **React Native como Base:** El enfoque de React Native en componentes UI nativos garantiza una **Experiencia** de usuario fluida y de alto rendimiento, crucial para la interacción en **Venue/Experiencia/Grupo**.
-*   **Dark OLED y Material 3 con `StyleSheet.create`:** Para cumplir con el requisito de **Dark OLED MD3** y el **sheet canónico**, Yendo debe establecer un `StyleSheet.create` centralizado. Este `stylesheet` canónico contendrá tokens de diseño (colores, tipografía, espaciado) que definan el tema oscuro y los principios de Material Design 3, asegurando consistencia visual en toda la aplicación.
-*   **`un createClient` para `DNA pisa internet`:** El tutorial usa `fetch` directamente. Yendo debe implementar un **`un createClient`** que encapsule todas las llamadas a la API. Este cliente centralizado manejará la configuración de la URL base, la inyección de la `WEATHER_API_KEY` (obtenida de `.env` como se demostró), la gestión de errores y la autenticación. Los *custom hooks* (como `useGetWeather` del tutorial) consumirán este `createClient` para interactuar con los servicios externos, reforzando el concepto de **DNA pisa internet**.
-*   **Estructura de Componentes para Invariantes Yendo:** La arquitectura basada en componentes es ideal para modelar los invariantes **Venue/Experiencia/Grupo**. Se pueden crear componentes reutilizables como `VenueCard`, `ExperienceDetailScreen` o `GroupChatComponent`, que reciban sus datos a través de `props` y gestionen su estado interno.
-*   **Modularidad para Dunbar 4-6:** La modularidad de React Native, junto con un flujo de datos claro (props y estado), es fundamental para construir funcionalidades relacionadas con el número de **Dunbar 4-6**. Permite desarrollar y probar interacciones de grupos pequeños de forma aislada y escalable.
-*   **Gestión de Claves API:** El uso de `react-native-dotenv` para las claves API es una práctica de seguridad esencial que Yendo debe adoptar para proteger sus credenciales, alineándose con las mejores prácticas de **DNA pisa internet**.
+*   **Adopción de Expo 57:** La facilidad de configuración, desarrollo y despliegue que ofrece Expo se alinea perfectamente con el principio de **Fricción Cero** para el equipo de desarrollo de WebFactory. Permite iteraciones rápidas y pruebas sencillas en dispositivos.
+*   **Modern Web UI (CSS/WAAPI) como Base:** El enfoque de Modern Web UI (CSS/WAAPI) en componentes UI nativos garantiza una **Experiencia** de usuario fluida y de alto rendimiento, crucial para la interacción en **Venue/Experiencia/Grupo**.
+*   **Dark OLED y Material 3 con `StyleSheet.create`:** Para cumplir con el requisito de **Dark OLED MD3** y el **sheet canónico**, WebFactory debe establecer un `StyleSheet.create` centralizado. Este `stylesheet` canónico contendrá tokens de diseño (colores, tipografía, espaciado) que definan el tema oscuro y los principios de Material Design 3, asegurando consistencia visual en toda la aplicación.
+*   **`un createClient` para `DNA pisa internet`:** El tutorial usa `fetch` directamente. WebFactory debe implementar un **`un createClient`** que encapsule todas las llamadas a la API. Este cliente centralizado manejará la configuración de la URL base, la inyección de la `WEATHER_API_KEY` (obtenida de `.env` como se demostró), la gestión de errores y la autenticación. Los *custom hooks* (como `useGetWeather` del tutorial) consumirán este `createClient` para interactuar con los servicios externos, reforzando el concepto de **DNA pisa internet**.
+*   **Estructura de Componentes para Invariantes WebFactory:** La arquitectura basada en componentes es ideal para modelar los invariantes **Venue/Experiencia/Grupo**. Se pueden crear componentes reutilizables como `VenueCard`, `ExperienceDetailScreen` o `GroupChatComponent`, que reciban sus datos a través de `props` y gestionen su estado interno.
+*   **Modularidad para Dunbar 4-6:** La modularidad de Modern Web UI (CSS/WAAPI), junto con un flujo de datos claro (props y estado), es fundamental para construir funcionalidades relacionadas con el número de **Dunbar 4-6**. Permite desarrollar y probar interacciones de grupos pequeños de forma aislada y escalable.
+*   **Gestión de Claves API:** El uso de `react-native-dotenv` para las claves API es una práctica de seguridad esencial que WebFactory debe adoptar para proteger sus credenciales, alineándose con las mejores prácticas de **DNA pisa internet**.
 
 ### 4. Citas Clave
 
-*   "react native lets you create mobile apps for IOS and Android by using JavaScript"
-*   "whilst technically react native is a hybrid platform because you only have one code base the app renders using real native UI components as opposed to webviews"
-*   "Expo is an external platform which makes our lives easier when we're developing building and deploying react native applications"
+*   "Modern Web UI (CSS/WAAPI) lets you create mobile apps for IOS and Web Platform by using JavaScript"
+*   "whilst technically Modern Web UI (CSS/WAAPI) is a hybrid platform because you only have one code base the app renders using real native UI components as opposed to webviews"
+*   "Expo is an external platform which makes our lives easier when we're developing building and deploying Modern Web UI (CSS/WAAPI) applications"
 *   "when you're applying styles to your component it can be useful to refer to the documentation as these props vary slightly depending on what core component you're applying the styles to"
 *   "props are immutable... unidirectional data flow"
 *   "state is an object and this object contains data about the component that for some reason we decide we need to keep track of"
@@ -9504,7 +9501,7 @@ El tutorial ofrece una introducción exhaustiva a React Native, posicionándolo 
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -9521,7 +9518,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Animación como Lenguaje de Interfaz para Yendo Mobile
+## Informe de Investigación: Animación como Lenguaje de Interfaz para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -9539,15 +9536,15 @@ El video destaca principios de animación que son técnicamente replicables y ar
 *   **Efectos 3D y Desenfoque:** El uso de profundidad y desenfoque en las transiciones (ej. tarjetas que se elevan y se desenfocan al ser eliminadas) añade una dimensión extra y jerarquía visual.
 *   **Coherencia Arquitectónica:** La aplicación de estos principios de animación de forma consistente en toda la interfaz refuerza la necesidad de un sistema de diseño unificado, similar a cómo `un createClient` y `StyleSheet.create` buscan la consistencia en la gestión de datos y estilos.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-Para Yendo, la implementación de estos principios de animación puede transformar la interacción del usuario, alineándose con sus invariantes:
+Para WebFactory, la implementación de estos principios de animación puede transformar la interacción del usuario, alineándose con sus invariantes:
 
 *   **Fricción Cero mediante Animación Predictiva:**
     *   Al navegar entre `Venue`, `Experiencia` o `Grupo`, las transiciones deben ser animadas para guiar al usuario, mostrando claramente el origen y destino del cambio de estado.
     *   Los elementos interactivos (botones, tarjetas) deben reaccionar con efectos de "resorte" o "banda elástica" al ser tocados, proporcionando retroalimentación instantánea y reduciendo la incertidumbre.
-*   **Aprovechamiento de Expo 57 y React Native:**
-    *   Utilizar librerías de animación avanzadas en React Native (ej. React Native Reanimated) para implementar los efectos de elasticidad, transiciones de múltiples pasos y movimientos sutiles descritos.
+*   **Aprovechamiento de Expo 57 y Modern Web UI (CSS/WAAPI):**
+    *   Utilizar librerías de animación avanzadas en Modern Web UI (CSS/WAAPI) (ej. Modern Web UI (CSS/WAAPI) Reanimated) para implementar los efectos de elasticidad, transiciones de múltiples pasos y movimientos sutiles descritos.
     *   Explorar las capacidades de Expo 57 para integrar animaciones de alto rendimiento que se sientan nativas y fluidas.
 *   **Diseño para Dark OLED y Material 3:**
     *   Las animaciones deben ser concebidas para el tema oscuro, utilizando el contraste y la profundidad del OLED para resaltar los movimientos y los cambios de estado.
@@ -9558,8 +9555,8 @@ Para Yendo, la implementación de estos principios de animación puede transform
     *   **Grupo:** Transiciones fluidas al añadir/quitar miembros o cambiar el estado de un `Grupo`, usando animaciones que comuniquen el cambio de forma clara y no intrusiva.
 *   **Conexión con Dunbar 4-6:** Para grupos pequeños e íntimos, las animaciones pueden reforzar la sensación de conexión. Por ejemplo, al interactuar con un miembro del `Grupo`, una animación sutil que lo resalte sin distraer, manteniendo la intimidad.
 *   **Consistencia y "DNA pisa internet":**
-    *   Establecer un sistema de diseño de animación que sea tan canónico como `StyleSheet.create` y `un createClient`, asegurando que el "DNA" de Yendo (moderno, conectado, humano) se exprese consistentemente a través del movimiento en toda la aplicación.
-    *   Las animaciones deben ser distintivas de Yendo, reflejando su identidad y valores en cada interacción.
+    *   Establecer un sistema de diseño de animación que sea tan canónico como `StyleSheet.create` y `un createClient`, asegurando que el "DNA" de WebFactory (moderno, conectado, humano) se exprese consistentemente a través del movimiento en toda la aplicación.
+    *   Las animaciones deben ser distintivas de WebFactory, reflejando su identidad y valores en cada interacción.
 
 ### 4. Citas Clave
 
@@ -9597,7 +9594,7 @@ Para Yendo, la implementación de estos principios de animación puede transform
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -9614,7 +9611,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Arquitectura de Sistemas de Diseño en Figma para Yendo Mobile
+## Informe de Investigación: Arquitectura de Sistemas de Diseño en Figma para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -9637,21 +9634,21 @@ El video presenta una guía práctica para construir un sistema de diseño robus
 *   **Accesibilidad**: Se mencionan estándares WCAG para contraste de color, estados de foco visibles y la colocación de asteriscos para campos requeridos.
 *   **Modo Oscuro**: Se implementa invirtiendo los colores en la Map Collection, con la opción de "fijar" ciertos tokens de marca para que no cambien.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-1.  **Adopción de Arquitectura de Tokens (Brand, Alias, Map)**: Implementar esta estructura de tres niveles en el código de React Native para gestionar colores, tipografía, espaciado y otros valores. Esto permitirá una gestión centralizada y una fácil adaptación a futuras necesidades.
+1.  **Adopción de Arquitectura de Tokens (Brand, Alias, Map)**: Implementar esta estructura de tres niveles en el código de Modern Web UI (CSS/WAAPI) para gestionar colores, tipografía, espaciado y otros valores. Esto permitirá una gestión centralizada y una fácil adaptación a futuras necesidades.
 2.  **Soporte para Dark OLED y Material 3**:
     *   **Dark OLED**: Utilizar la Map Collection para definir los tokens específicos del modo oscuro, asegurando que los colores se inviertan adecuadamente para pantallas OLED.
-    *   **Material 3**: Mapear los tokens de diseño de Yendo a los principios de Material 3, aprovechando su sistema de theming para una implementación coherente en React Native.
+    *   **Material 3**: Mapear los tokens de diseño de WebFactory a los principios de Material 3, aprovechando su sistema de theming para una implementación coherente en Modern Web UI (CSS/WAAPI).
 3.  **Fricción Cero en el Desarrollo**:
-    *   **Componentes Reutilizables**: Fomentar la creación de componentes atómicos y moleculares en React Native, utilizando las propiedades y variantes definidas en Figma para reducir la duplicación de código y acelerar el desarrollo.
-    *   **`adjust gap` para Flexibilidad**: Adaptar la lógica de `adjust gap` en React Native para componentes como tablas o barras de progreso, permitiendo ajustes de tamaño dinámicos sin romper la estructura del componente.
+    *   **Componentes Reutilizables**: Fomentar la creación de componentes atómicos y moleculares en Modern Web UI (CSS/WAAPI), utilizando las propiedades y variantes definidas en Figma para reducir la duplicación de código y acelerar el desarrollo.
+    *   **`adjust gap` para Flexibilidad**: Adaptar la lógica de `adjust gap` en Modern Web UI (CSS/WAAPI) para componentes como tablas o barras de progreso, permitiendo ajustes de tamaño dinámicos sin romper la estructura del componente.
 4.  **Lenguaje Venue/Experiencia/Grupo**:
     *   **Venue (Marca)**: Utilizar la Alias Collection para definir los colores primarios y secundarios específicos de cada "Venue", permitiendo que el sistema de diseño se adapte visualmente a diferentes contextos de marca.
-    *   **Experiencia (Temas)**: La Map Collection puede definir temas específicos para diferentes "Experiencias" dentro de Yendo, ajustando los colores de superficie, texto e iconos según el contexto.
+    *   **Experiencia (Temas)**: La Map Collection puede definir temas específicos para diferentes "Experiencias" dentro de WebFactory, ajustando los colores de superficie, texto e iconos según el contexto.
     *   **Grupo (Componentes)**: Desarrollar componentes que reflejen la dinámica de "Grupo", como el `AvatarGroup` o listas de miembros, escalables para el número de Dunbar.
 5.  **Dunbar 4-6**: Diseñar componentes que se adapten a grupos pequeños, como avatares y listas de miembros, optimizando la interfaz para interacciones íntimas y eficientes, en línea con el número de Dunbar.
-6.  **Invariantes de Yendo (Un `createClient`, `StyleSheet.create`, etc.)**: La arquitectura de tokens de tres niveles es el "ADN" que debe alimentar un único punto de verdad para el estilo en React Native, como un `StyleSheet.create` canónico o un sistema de theming unificado, garantizando que los principios de diseño se apliquen consistentemente en toda la aplicación.
+6.  **Invariantes de WebFactory (Un `createClient`, `StyleSheet.create`, etc.)**: La arquitectura de tokens de tres niveles es el "ADN" que debe alimentar un único punto de verdad para el estilo en Modern Web UI (CSS/WAAPI), como un `StyleSheet.create` canónico o un sistema de theming unificado, garantizando que los principios de diseño se apliquen consistentemente en toda la aplicación.
 
 ### 4. Citas Clave
 
@@ -9690,7 +9687,7 @@ El video presenta una guía práctica para construir un sistema de diseño robus
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -9707,11 +9704,11 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Nitro Modules y su Relevancia para Yendo Mobile
+## Informe de Investigación: Nitro Modules y su Relevancia para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
-Nitro Modules es un *framework* diseñado para la creación de módulos nativos en React Native, ofreciendo una flexibilidad y un rendimiento superiores, especialmente para casos de uso avanzados que tradicionalmente requerían la manipulación directa de JSI (JavaScript Interface). La tesis central es que Nitro Modules abstrae la complejidad de JSI, permitiendo a los desarrolladores construir módulos nativos potentes, seguros y de alto rendimiento, enfocándose en interacciones orientadas a objetos y basadas en instancias con el código nativo. Su origen se encuentra en la necesidad de simplificar la gestión de memoria, la concurrencia y la comunicación entre hilos en proyectos complejos como `React Native Filaments`, superando las limitaciones de los módulos nativos y Turbo Modules tradicionales.
+Nitro Modules es un *framework* diseñado para la creación de módulos nativos en Modern Web UI (CSS/WAAPI), ofreciendo una flexibilidad y un rendimiento superiores, especialmente para casos de uso avanzados que tradicionalmente requerían la manipulación directa de JSI (JavaScript Interface). La tesis central es que Nitro Modules abstrae la complejidad de JSI, permitiendo a los desarrolladores construir módulos nativos potentes, seguros y de alto rendimiento, enfocándose en interacciones orientadas a objetos y basadas en instancias con el código nativo. Su origen se encuentra en la necesidad de simplificar la gestión de memoria, la concurrencia y la comunicación entre hilos en proyectos complejos como `Modern Web UI (CSS/WAAPI) Filaments`, superando las limitaciones de los módulos nativos y Turbo Modules tradicionales.
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
@@ -9720,25 +9717,25 @@ Nitro Modules es un *framework* diseñado para la creación de módulos nativos 
 *   **Nitrogen (Generador de Código):** Una herramienta esencial que genera interfaces nativas (Swift/Kotlin) a partir de definiciones TypeScript. Esto garantiza la seguridad de tipos en tiempo de compilación y mantiene la sincronización entre los tipos nativos y JavaScript, eliminando errores comunes en tiempo de ejecución. Es utilizado por los desarrolladores de librerías, no por los usuarios de la aplicación.
 *   **Rendimiento Superior:**
     *   **iOS:** Aprovecha la interoperabilidad directa entre Swift y C++ (una tecnología reciente de Apple), evitando la sobrecarga de Objective-C. Esto se traduce en mejoras significativas de velocidad (ej. 15 veces más rápido que Turbo Modules y 59 veces más rápido que Expo Modules en un *benchmark* específico para llamadas a funciones simples).
-    *   **Android:** Se beneficia de optimizaciones en la capa C++ (carga perezosa, estado nativo, *caching*, plantillas C++ estáticas para el análisis de argumentos), aunque no logra las mismas ganancias de interoperabilidad directa que Swift.
+    *   **Web Platform:** Se beneficia de optimizaciones en la capa C++ (carga perezosa, estado nativo, *caching*, plantillas C++ estáticas para el análisis de argumentos), aunque no logra las mismas ganancias de interoperabilidad directa que Swift.
     *   **Acceso Perezoso a Datos:** Los objetos híbridos permiten la conversión perezosa de datos de nativo a JavaScript. Grandes conjuntos de datos pueden permanecer en el lado nativo hasta que se soliciten subconjuntos filtrados, evitando transferencias y análisis de datos innecesarios, lo cual es crucial para el procesamiento de medios o grandes volúmenes de información.
 *   **Diferencias con Turbo/Expo Modules:** Nitro es fundamentalmente diferente por su enfoque basado en instancias y su soporte para herencia. Incluye un generador de código (Nitrogen) que Expo Modules no posee. Su API está diseñada para reflejar patrones de JavaScript (ej. funciones síncronas que devuelven promesas para operaciones asíncronas) y soporta propiedades en objetos híbridos.
 *   **Desafíos de Desarrollo:** La creación de Nitro Modules implicó superar desafíos significativos en la gestión de prototipos de JavaScript, el uso extensivo de plantillas C++ y, especialmente, la compleja interoperabilidad entre Swift y C++, que requirió la implementación de funciones auxiliares y *workarounds* que ahora están abstraídos.
 *   **Estabilidad:** El núcleo de la librería C++ de Nitro se considera estable. Las mejoras recientes se han centrado en el generador de código (Nitrogen) para añadir nuevas funcionalidades.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-Considerando los invariantes de Yendo (Venue/Experiencia/Grupo, Dunbar 4-6, un createClient, StyleSheet.create, Dark OLED MD3, Fricción Cero, DNA pisa internet, Expo 57, React Native), Nitro Modules ofrece oportunidades significativas:
+Considerando los invariantes de WebFactory (Venue/Experiencia/Grupo, Dunbar 4-6, un createClient, StyleSheet.create, Dark OLED MD3, Fricción Cero, DNA pisa internet, Expo 57, Modern Web UI (CSS/WAAPI)), Nitro Modules ofrece oportunidades significativas:
 
 *   **Fricción Cero y Experiencia de Usuario:** La mejora de rendimiento de Nitro Modules, especialmente en la carga perezosa de datos y el procesamiento de medios, puede contribuir directamente a una experiencia de "Fricción Cero". Por ejemplo, en "Experiencias" o "Venues" ricas en contenido multimedia (como contenido generado por usuarios en un "Grupo"), la visualización de imágenes y videos puede ser drásticamente más rápida al evitar operaciones de E/S de archivos innecesarias y conversiones de datos anticipadas.
 *   **Modelos de Datos (Venue/Experiencia/Grupo):** El enfoque de "objeto híbrido" es altamente relevante. Los objetos `Venue`, `Experiencia` o `Grupo` que interactúan con funcionalidades nativas (ej. servicios de ubicación, cámara para contenido, actualizaciones en tiempo real) podrían representarse como objetos híbridos. Esto permitiría exponer estados y métodos nativos complejos a JavaScript de manera eficiente, gestionando, por ejemplo, datos de ocupación en tiempo real de un `Venue` o procesando medios complejos en una `Experiencia`.
 *   **Rendimiento en Interacciones de Grupo (Dunbar 4-6):** Para interacciones en tiempo real o compartición de medios dentro de grupos pequeños, las ganancias de rendimiento de Nitro Modules son críticas para una experiencia fluida y responsiva.
-*   **React Native y Expo 57:** Nitro Modules es una alternativa potente a Expo Modules para la integración de código nativo, ofreciendo un rendimiento y flexibilidad superiores. Yendo puede considerar su adopción para módulos nativos críticos, manteniendo la base de React Native.
-*   **DNA Pisa Internet:** Al permitir integraciones nativas de alto rendimiento y flexibilidad, Nitro Modules puede ayudar a Yendo a implementar funcionalidades más sofisticadas que realmente "pisen internet", como procesamiento de datos en tiempo real, características avanzadas de cámara o integraciones de hardware únicas, fortaleciendo la identidad digital de la aplicación.
+*   **Modern Web UI (CSS/WAAPI) y Expo 57:** Nitro Modules es una alternativa potente a Expo Modules para la integración de código nativo, ofreciendo un rendimiento y flexibilidad superiores. WebFactory puede considerar su adopción para módulos nativos críticos, manteniendo la base de Modern Web UI (CSS/WAAPI).
+*   **DNA Pisa Internet:** Al permitir integraciones nativas de alto rendimiento y flexibilidad, Nitro Modules puede ayudar a WebFactory a implementar funcionalidades más sofisticadas que realmente "pisen internet", como procesamiento de datos en tiempo real, características avanzadas de cámara o integraciones de hardware únicas, fortaleciendo la identidad digital de la aplicación.
 *   **Estrategia Accionable:**
     *   **Identificar Cuellos de Botella:** Analizar funcionalidades existentes o futuras que impliquen interacción nativa intensiva (procesamiento de medios, grandes conjuntos de datos, actualizaciones en tiempo real) como candidatos principales para la migración o el desarrollo con Nitro Modules.
     *   **Priorizar Nitro para Nuevas Funcionalidades Nativas:** Para cualquier nueva característica nativa que requiera gestión de estado compleja, APIs nativas orientadas a objetos o alto rendimiento, priorizar el uso de Nitro Modules.
-    *   **Diseñar Modelos de Datos Nativos como Objetos Híbridos:** Aprovechar el acceso perezoso a datos y la gestión eficiente de memoria que ofrecen los objetos híbridos para los modelos de datos clave de Yendo.
+    *   **Diseñar Modelos de Datos Nativos como Objetos Híbridos:** Aprovechar el acceso perezoso a datos y la gestión eficiente de memoria que ofrecen los objetos híbridos para los modelos de datos clave de WebFactory.
     *   **Explorar Swift/Kotlin:** Fomentar el uso de Swift/Kotlin para nuevos módulos nativos, aprovechando las fortalezas de Nitro en estos lenguajes.
 
 ### 4. Citas Clave
@@ -9778,7 +9775,7 @@ Considerando los invariantes de Yendo (Venue/Experiencia/Grupo, Dunbar 4-6, un c
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -9795,7 +9792,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: TypeScript para Yendo Mobile
+## Informe de Investigación: TypeScript para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -9815,14 +9812,14 @@ El video presenta un curso intensivo de TypeScript para principiantes, enfatizan
 *   **Naturaleza de TypeScript:** Es una capa de tiempo de compilación; no añade código JavaScript en tiempo de ejecución ni aumenta el tamaño del bundle. Su objetivo es la validación estática.
 *   **Herramientas:** VS Code tiene soporte nativo excelente. Extensiones como `TS Error Translator` pueden mejorar la comprensión de los errores.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
 *   **Fricción Cero y DNA Pisa Internet:** La adopción estricta de TypeScript es fundamental para la "Fricción Cero" en el desarrollo. Al prevenir errores en tiempo de compilación, se reduce el tiempo de depuración y se mejora la calidad del código que "pisa internet". Esto se traduce en aplicaciones más estables y una mejor experiencia para el usuario.
-*   **React Native y Expo 57:** TypeScript es indispensable para proyectos React Native escalables. Para Expo 57, asegurar que todos los componentes, props, estados y contextos estén fuertemente tipados desde el inicio.
+*   **Modern Web UI (CSS/WAAPI) y Expo 57:** TypeScript es indispensable para proyectos Modern Web UI (CSS/WAAPI) escalables. Para Expo 57, asegurar que todos los componentes, props, estados y contextos estén fuertemente tipados desde el inicio.
 *   **Dark OLED y Material 3:** Definir interfaces TypeScript para los temas de la aplicación (ej. `interface ThemeColors { primary: string; secondary: string; }`). Utilizar uniones literales para el modo de tema (`type ThemeMode = 'dark' | 'light';`). Esto garantiza que los componentes de Material 3 reciban propiedades de estilo consistentes y previene errores relacionados con la aplicación de temas.
 *   **Invariantes de Código (`un createClient`, `StyleSheet.create`):**
-    *   **`createClient`:** Tipar rigurosamente la función `createClient` de Yendo. Definir interfaces claras para sus parámetros de configuración y su tipo de retorno, asegurando que el cliente se inicialice y utilice de manera predecible.
-    *   **`StyleSheet.create`:** Aunque `StyleSheet.create` de React Native no requiere tipado explícito, se puede mejorar su seguridad definiendo interfaces para los objetos de estilo (ej. `interface MyComponentStyles { container: ViewStyle; text: TextStyle; }`) y luego usarlas con `StyleSheet.create<MyComponentStyles>`. Esto refuerza el patrón canónico y la consistencia.
+    *   **`createClient`:** Tipar rigurosamente la función `createClient` de WebFactory. Definir interfaces claras para sus parámetros de configuración y su tipo de retorno, asegurando que el cliente se inicialice y utilice de manera predecible.
+    *   **`StyleSheet.create`:** Aunque `StyleSheet.create` de Modern Web UI (CSS/WAAPI) no requiere tipado explícito, se puede mejorar su seguridad definiendo interfaces para los objetos de estilo (ej. `interface MyComponentStyles { container: ViewStyle; text: TextStyle; }`) y luego usarlas con `StyleSheet.create<MyComponentStyles>`. Esto refuerza el patrón canónico y la consistencia.
 *   **Lenguaje de Dominio (Venue/Experiencia/Grupo):**
     *   Crear interfaces TypeScript explícitas para `Venue`, `Experiencia` y `Grupo`, incluyendo todas sus propiedades y sus tipos.
     *   Utilizar tipos literales para estados o roles específicos dentro de estos objetos (ej. `status: "activo" | "inactivo" | "archivado"` para `Experiencia`).
@@ -9830,7 +9827,7 @@ El video presenta un curso intensivo de TypeScript para principiantes, enfatizan
 *   **Dunbar 4-6:** Para equipos pequeños, TypeScript actúa como una forma de documentación viva y un contrato compartido. Reduce la ambigüedad y la necesidad de comunicación constante sobre la forma de los datos, permitiendo que el equipo se enfoque en la lógica de negocio.
 *   **Prácticas Generales:**
     *   Habilitar `noImplicitAny` en `tsconfig.json`.
-    *   Establecer una convención clara para el uso de `type` vs. `interface` en la base de código de Yendo.
+    *   Establecer una convención clara para el uso de `type` vs. `interface` en la base de código de WebFactory.
     *   Evitar el uso de `as` (type casting) a menos que sea estrictamente necesario y bien justificado.
 
 ### 4. Citas Clave
@@ -9868,7 +9865,7 @@ El video presenta un curso intensivo de TypeScript para principiantes, enfatizan
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -9878,7 +9875,7 @@ ultima_revision: 2026-08-27
 ## 🎬 Análisis de Video
 
 ## 📌 Concepto central  
-**Cómo crear transformaciones 3‑D en React Native usando la librería Skia, aplicándolas a vistas, paths de recorte y shaders para lograr efectos de profundidad y blur variables.**  
+**Cómo crear transformaciones 3‑D en Modern Web UI (CSS/WAAPI) usando la librería Skia, aplicándolas a vistas, paths de recorte y shaders para lograr efectos de profundidad y blur variables.**  
 
 ---
 
@@ -9894,7 +9891,7 @@ ultima_revision: 2026-08-27
 
 ## 📣 Citas más relevantes  
 
-> “**First, we're going to bind a gesture to a simple shape transformation, just like we would with a regular React Native view.**” – Introducción al paso 1.  
+> “**First, we're going to bind a gesture to a simple shape transformation, just like we would with a regular Modern Web UI (CSS/WAAPI) view.**” – Introducción al paso 1.  
 
 > “**We add the rotate X, the rotate Y, and of course, for the transformation to look natural, we're going to apply the perspective.**” – Importancia de la perspectiva.  
 
@@ -9904,7 +9901,7 @@ ultima_revision: 2026-08-27
 
 > “**Now we have a custom blur, not a blur from Skia. And it looks good.**” – Validación del blur variable propio.  
 
-> “**Three simple steps to 3D transformations in React Native Skia…**” – Resumen de la metodología completa.  
+> “**Three simple steps to 3D transformations in Modern Web UI (CSS/WAAPI) Skia…**” – Resumen de la metodología completa.  
 
 ---  
 
@@ -9914,7 +9911,7 @@ ultima_revision: 2026-08-27
 2. Experimenta con diferentes formas de recorte (`RoundedRect`, `Circle`, `CustomPath`) y combina varios filtros (blur, color matrix).  
 3. Extiende el shader para añadir sombras, iluminación o efectos de refracción usando el mismo `z`‑index como entrada.  
 
-¡Listo! Con estas ideas puedes llevar tus UI de React Native al siguiente nivel visual usando Skia y shaders. 🚀
+¡Listo! Con estas ideas puedes llevar tus UI de Modern Web UI (CSS/WAAPI) al siguiente nivel visual usando Skia y shaders. 🚀
 
 ---
 
@@ -9922,7 +9919,7 @@ ultima_revision: 2026-08-27
 - [[YENDO_LIBRARY]]
 - [[YENDO_DNA]]
 - [[Reanimated]]
-- [[React Native Skia]]
+- [[Modern Web UI (CSS/WAAPI) Skia]]
 
 ---
 
@@ -9932,7 +9929,7 @@ ultima_revision: 2026-08-27
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -9949,37 +9946,37 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Transformaciones 3D con React Native Skia para Yendo Mobile
+## Informe de Investigación: Transformaciones 3D con Modern Web UI (CSS/WAAPI) Skia para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
-El video demuestra el uso avanzado de React Native Skia para implementar transformaciones 3D complejas y efectos visuales dinámicos en aplicaciones móviles. La tesis central es que React Native, a través de Skia, ofrece una plataforma robusta y de alto rendimiento para crear interfaces de usuario inmersivas y visualmente ricas, superando las expectativas tradicionales de las aplicaciones móviles. Para Yendo, esto significa la capacidad de materializar una experiencia de usuario distintiva y de "fricción cero", donde el "DNA pisa internet" se traduce en una interfaz de vanguardia que no solo es funcional sino también estéticamente cautivadora y altamente interactiva.
+El video demuestra el uso avanzado de Modern Web UI (CSS/WAAPI) Skia para implementar transformaciones 3D complejas y efectos visuales dinámicos en aplicaciones móviles. La tesis central es que Modern Web UI (CSS/WAAPI), a través de Skia, ofrece una plataforma robusta y de alto rendimiento para crear interfaces de usuario inmersivas y visualmente ricas, superando las expectativas tradicionales de las aplicaciones móviles. Para WebFactory, esto significa la capacidad de materializar una experiencia de usuario distintiva y de "fricción cero", donde el "DNA pisa internet" se traduce en una interfaz de vanguardia que no solo es funcional sino también estéticamente cautivadora y altamente interactiva.
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
 El tutorial desglosa la implementación de transformaciones 3D en tres niveles progresivos:
 
-*   **Transformaciones de Vistas Estándar:** Se muestra cómo aplicar rotaciones (X, Y) y perspectiva a elementos visuales básicos, integrando gestos (`react-native-reanimated`) para una interacción fluida. Esto valida la capacidad de React Native para manejar animaciones complejas con un rendimiento nativo.
+*   **Transformaciones de Vistas Estándar:** Se muestra cómo aplicar rotaciones (X, Y) y perspectiva a elementos visuales básicos, integrando gestos (`react-native-reanimated`) para una interacción fluida. Esto valida la capacidad de Modern Web UI (CSS/WAAPI) para manejar animaciones complejas con un rendimiento nativo.
 *   **Transformaciones a Rutas de Recorte (Clipping Paths):** Se extiende la capacidad 3D a rutas vectoriales, permitiendo efectos como `backdropFilter` con profundidad. El uso del hook `usePathValue` de Skia es crucial aquí, ya que optimiza la animación de rutas, garantizando eficiencia y rendimiento. Esto es fundamental para crear componentes con formas no rectangulares que reaccionan en 3D.
 *   **Matrices de Transformación en Shaders Personalizados:** El punto culminante es la capacidad de pasar la matriz de transformación 3D directamente a un shader (lenguaje de sombreado GLSL). Esto permite efectos visuales avanzados basados en la profundidad (Z-index), como un desenfoque variable que cambia según la distancia percibida del objeto. Se destaca la necesidad de convertir matrices de formato "row-major" a "column-major" para los shaders, un detalle técnico importante.
 
-Arquitectónicamente, la integración de Skia con `react-native-reanimated` demuestra un ecosistema maduro para animaciones y gráficos de alto rendimiento. La modularidad de Skia permite la creación de componentes visuales complejos que pueden encapsularse y reutilizarse, alineándose con las mejores prácticas de React Native y la filosofía de un `StyleSheet.create` canónico.
+Arquitectónicamente, la integración de Skia con `react-native-reanimated` demuestra un ecosistema maduro para animaciones y gráficos de alto rendimiento. La modularidad de Skia permite la creación de componentes visuales complejos que pueden encapsularse y reutilizarse, alineándose con las mejores prácticas de Modern Web UI (CSS/WAAPI) y la filosofía de un `StyleSheet.create` canónico.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-*   **Expo 57 y React Native:** El uso de React Native Skia en el video reafirma la elección de React Native y la compatibilidad con Expo (incluyendo Expo 57) para construir interfaces de usuario de alta fidelidad y rendimiento. Yendo puede confiar en esta pila tecnológica para sus ambiciones visuales.
+*   **Expo 57 y Modern Web UI (CSS/WAAPI):** El uso de Modern Web UI (CSS/WAAPI) Skia en el video reafirma la elección de Modern Web UI (CSS/WAAPI) y la compatibilidad con Expo (incluyendo Expo 57) para construir interfaces de usuario de alta fidelidad y rendimiento. WebFactory puede confiar en esta pila tecnológica para sus ambiciones visuales.
 *   **Dark OLED y Material 3:** Las capacidades de sombreado y efectos 3D de Skia son ideales para crear componentes que se integren perfectamente con el diseño Dark OLED y Material 3. Se pueden diseñar elementos con profundidad, sombras dinámicas y desenfoques que realcen la estética moderna y la legibilidad en pantallas OLED.
 *   **Fricción Cero:** Las transiciones 3D fluidas y la interactividad basada en gestos contribuyen directamente a una experiencia de usuario de "fricción cero". Elementos como tarjetas de eventos que giran, menús que se despliegan con perspectiva o mapas interactivos con profundidad pueden hacer que la aplicación se sienta más intuitiva y atractiva.
 *   **Lenguaje Venue/Experiencia/Grupo:**
     *   **Venue:** Visualizaciones 3D de espacios o mapas de eventos interactivos que los usuarios pueden "recorrer" o rotar.
     *   **Experiencia:** Tarjetas de "Experiencia" que giran para revelar detalles adicionales o muestran efectos de profundidad al interactuar.
     *   **Grupo:** Representaciones visuales de grupos o avatares que interactúan en un espacio 3D simulado, haciendo la conexión más tangible.
-*   **Dunbar 4-6:** Una interfaz visualmente rica y atractiva puede fomentar una mayor inmersión y conexión emocional, lo que es crucial para fortalecer los lazos dentro de los grupos pequeños (4-6 personas) que Yendo busca facilitar. Las experiencias compartidas se vuelven más memorables a través de una presentación visual superior.
-*   **Adherencia a Invariantes:** La implementación de Skia se alinea con los invariantes de Yendo (`un createClient`, `StyleSheet.create`, `sheet canónico`), ya que los componentes de Skia se integran como cualquier otro componente de React Native, manteniendo una estructura de código limpia y consistente.
+*   **Dunbar 4-6:** Una interfaz visualmente rica y atractiva puede fomentar una mayor inmersión y conexión emocional, lo que es crucial para fortalecer los lazos dentro de los grupos pequeños (4-6 personas) que WebFactory busca facilitar. Las experiencias compartidas se vuelven más memorables a través de una presentación visual superior.
+*   **Adherencia a Invariantes:** La implementación de Skia se alinea con los invariantes de WebFactory (`un createClient`, `StyleSheet.create`, `sheet canónico`), ya que los componentes de Skia se integran como cualquier otro componente de Modern Web UI (CSS/WAAPI), manteniendo una estructura de código limpia y consistente.
 
 ### 4. Citas Clave
 
-*   "Estas hermosas transformaciones 3D se realizan utilizando React Native Skia."
+*   "Estas hermosas transformaciones 3D se realizan utilizando Modern Web UI (CSS/WAAPI) Skia."
 *   "Aplicamos la transformación 3D a una ruta de recorte, dándonos este agradable desenfoque de fondo 3D."
 *   "Pasamos la matriz de transformación a un shader... esto nos permitirá hacer un sombreado basado en el índice Z."
 *   "El hook `usePathValue`... es la forma más fácil, rápida y de mayor rendimiento para animar una ruta."
@@ -10005,7 +10002,7 @@ Arquitectónicamente, la integración de Skia con `react-native-reanimated` demu
 - [[AGENTS]]
 - [[Número de Dunbar]]
 - [[Reanimated]]
-- [[React Native Skia]]
+- [[Modern Web UI (CSS/WAAPI) Skia]]
 
 ---
 
@@ -10015,7 +10012,7 @@ Arquitectónicamente, la integración de Skia con `react-native-reanimated` demu
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -10032,7 +10029,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Tipos de Utilidad en TypeScript para Yendo Mobile
+## Informe de Investigación: Tipos de Utilidad en TypeScript para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -10047,12 +10044,12 @@ El desafío técnico radica en cómo construir `PartialByKeys` de manera eficien
 *   **Optimización del Orden:** Se sugiere que, al combinar `Pick` y `Partial`, es más eficiente aplicar `Pick` primero para reducir el tamaño del tipo antes de aplicar `Partial`, especialmente si el tipo original `T` tiene muchas propiedades y `K` es un subconjunto pequeño.
 *   **Aplicación en el Mundo Real:** La utilidad `PartialByKeys` es ideal para definir tipos de *payloads* de API para operaciones de actualización (CRUD), donde un identificador (`ID`) debe ser siempre requerido, pero otros campos pueden ser opcionales.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-La aplicación de estos conceptos de tipado avanzado en Yendo Mobile, con sus invariantes específicos, puede generar beneficios significativos:
+La aplicación de estos conceptos de tipado avanzado en la Web Software Factory, con sus invariantes específicos, puede generar beneficios significativos:
 
-*   **Fricción Cero y DNA Pisa Internet:** La implementación de `PartialByKeys` y tipos de utilidad similares reduce drásticamente la fricción en el desarrollo. Al definir contratos de datos precisos para las interacciones con la API (ej. `UpdateVenue`, `UpdateExperiencia`, `UpdateGrupo`), se eliminan errores comunes de tipado en tiempo de ejecución, se mejora la autocompletado en el IDE y se asegura que el "DNA" de Yendo (sus datos y lógica de negocio) se transmita de forma robusta y sin ambigüedades a través de la red. Esto es crucial para la estabilidad de las aplicaciones en Expo 57 y React Native.
-*   **Lenguaje Venue/Experiencia/Grupo:** Para los tipos de datos centrales de Yendo (`Venue`, `Experiencia`, `Grupo`), se pueden definir tipos base inmutables. Luego, para operaciones específicas (ej. un formulario de edición de `Venue`), se puede derivar un tipo como `type EditableVenue = PartialByKeys<Venue, 'nombre' | 'descripcion' | 'ubicacion'>`. Esto asegura que el `ID` de un `Venue` siempre sea requerido, mientras que otros campos pueden ser opcionales en el contexto de una actualización parcial.
+*   **Fricción Cero y DNA Pisa Internet:** La implementación de `PartialByKeys` y tipos de utilidad similares reduce drásticamente la fricción en el desarrollo. Al definir contratos de datos precisos para las interacciones con la API (ej. `UpdateVenue`, `UpdateExperiencia`, `UpdateGrupo`), se eliminan errores comunes de tipado en tiempo de ejecución, se mejora la autocompletado en el IDE y se asegura que el "DNA" de WebFactory (sus datos y lógica de negocio) se transmita de forma robusta y sin ambigüedades a través de la red. Esto es crucial para la estabilidad de las aplicaciones en Expo 57 y Modern Web UI (CSS/WAAPI).
+*   **Lenguaje Venue/Experiencia/Grupo:** Para los tipos de datos centrales de WebFactory (`Venue`, `Experiencia`, `Grupo`), se pueden definir tipos base inmutables. Luego, para operaciones específicas (ej. un formulario de edición de `Venue`), se puede derivar un tipo como `type EditableVenue = PartialByKeys<Venue, 'nombre' | 'descripcion' | 'ubicacion'>`. Esto asegura que el `ID` de un `Venue` siempre sea requerido, mientras que otros campos pueden ser opcionales en el contexto de una actualización parcial.
 *   **Consistencia en `createClient` y `StyleSheet.create`:** Aunque el video no trata directamente estos patrones, la filosofía de tipado preciso es aplicable. Si `createClient` o `StyleSheet.create` aceptan objetos de configuración o estilos con propiedades opcionales, se pueden usar tipos de utilidad para definir variaciones de estos objetos. Por ejemplo, un `StyleSheet` base podría tener propiedades obligatorias para `Dark OLED` y `Material 3`, mientras que otras propiedades de personalización podrían ser opcionales, gestionadas con `PartialByKeys` para asegurar la coherencia visual y funcional.
 *   **Escalabilidad y Dunbar 4-6:** En equipos pequeños (Dunbar 4-6), la claridad y la explicitud de los tipos reducen la necesidad de comunicación constante sobre contratos de datos, permitiendo que el equipo se enfoque en la lógica de negocio. Un sistema de tipos robusto actúa como documentación viva, facilitando la incorporación de nuevos miembros y el mantenimiento a largo plazo.
 
@@ -10090,7 +10087,7 @@ La aplicación de estos conceptos de tipado avanzado en Yendo Mobile, con sus in
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -10106,40 +10103,40 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-# Informe de investigación – Yendo Mobile  
+# Informe de investigación – la Web Software Factory  
 
 ## 1. Concepto central y tesis  
 
 El video muestra cómo crear **streams de IA resilientes** que continúan entregando resultados aunque el cliente pierda la conexión, recargue la página o cambie de red. La solución se basa en **desacoplar la generación del modelo de IA del envío al cliente** mediante un patrón **pub/sub** sobre **Redis** (llamado “Reddus” en la transcripción). Con Redis Streams y Redis Pub/Sub, se almacena cada token generado y se permite su **reproducción** (replay) a cualquier cliente que se reconecte, garantizando una experiencia “sin fricción”.  
 
 **Tesis:**  
-> *Implementar streams de IA duraderos mediante Redis permite ofrecer a los usuarios de Yendo una interacción continua y fiable con los modelos de lenguaje, eliminando interrupciones y mejorando la percepción de calidad.*  
+> *Implementar streams de IA duraderos mediante Redis permite ofrecer a los usuarios de WebFactory una interacción continua y fiable con los modelos de lenguaje, eliminando interrupciones y mejorando la percepción de calidad.*  
 
 ---
 
 ## 2. Hallazgos técnicos y arquitectónicos clave  
 
-| Área | Detalle | Relevancia para Yendo |
+| Área | Detalle | Relevancia para WebFactory |
 |------|---------|-----------------------|
-| **Protocolo** | Uso de **Server‑Sent Events (SSE)** con `Content-Type: text/event-stream`. | Compatibilidad nativa con React Native y Expo (WebSocket opcional). |
+| **Protocolo** | Uso de **Server‑Sent Events (SSE)** con `Content-Type: text/event-stream`. | Compatibilidad nativa con Modern Web UI (CSS/WAAPI) y Expo (WebSocket opcional). |
 | **Desacoplamiento** | Cliente → **Publisher** (HTTP request) → **Redis** → **Subscriber** → SSE → Cliente. | Permite escalar generación y entrega por separado; evita “single point of failure”. |
 | **Redis Pub/Sub** | Publica cada chunk en un canal; los suscriptores reciben en tiempo real. | Latencia mínima (< 10 ms) y alta concurrencia. |
 | **Redis Streams** | Cada token se guarda como entrada con ID de timestamp. Permite **replay** desde cualquier punto. | Soporta reconexiones, historial de conversación y auditoría. |
 | **Persistencia ligera** | Redis en memoria con respaldo a disco (RDB/AOF). | Garantiza durabilidad sin sacrificar velocidad. |
 | **Implementación mínima** | ~64 líneas de código (SDK de IA + `XADD` + `PUBLISH`). | Reducción de coste de desarrollo y mantenimiento. |
-| **Escalabilidad en Vercel** | Deploy sin servidor (Serverless) usando rutas API de Next.js 16. | Fácil integración con la arquitectura actual de Yendo (frontend React Native + backend serverless). |
+| **Escalabilidad en Vercel** | Deploy sin servidor (Serverless) usando rutas API de Next.js 16. | Fácil integración con la arquitectura actual de WebFactory (frontend Modern Web UI (CSS/WAAPI) + backend serverless). |
 | **Resumable Stream (Vercel)** | Biblioteca que gestiona reconexiones automáticas y reenvío de eventos perdidos. | Refuerza la “fricción cero”. |
 
 ---
 
-## 3. Ideas accionables para Yendo  
+## 3. Ideas accionables para WebFactory  
 
 ### 3.1. Integrar el patrón en **Expo 57**  
 - **Crear un módulo** `expo-redis-stream` que envuelva la lógica de publisher/subscriber y exponga hooks de React (`useAIStream`).  
 - **Ejemplo:** `const {chunks, isStreaming} = useAIStream(prompt);` que maneje reconexiones automáticamente.  
 
-### 3.2. **React Native** con SSE y fallback WebSocket  
-- Implementar un **bridge nativo** que convierta eventos SSE a `EventEmitter` de React Native.  
+### 3.2. **Modern Web UI (CSS/WAAPI)** con SSE y fallback WebSocket  
+- Implementar un **bridge nativo** que convierta eventos SSE a `EventEmitter` de Modern Web UI (CSS/WAAPI).  
 - En dispositivos con conectividad inestable, alternar a **WebSocket** usando la misma capa de Redis.  
 
 ### 3.3. **Dark OLED** y UI de Material 3  
@@ -10159,7 +10156,7 @@ El video muestra cómo crear **streams de IA resilientes** que continúan entreg
 | Sprint | Acción | Resultado esperado |
 |--------|--------|--------------------|
 | 1 | Prototipo de publisher/subscriber con Redis en Vercel (Node). | Demo funcional de stream resiliente. |
-| 2 | Wrapper React Hook (`useAIStream`) y pruebas en Expo 57. | Integración directa en la UI de Yendo. |
+| 2 | Wrapper React Hook (`useAIStream`) y pruebas en Expo 57. | Integración directa en la UI de WebFactory. |
 | 3 | UI Material 3 + Dark OLED, indicadores de progreso. | Experiencia visual coherente y eficiente. |
 | 4 | Implementar replay automático y manejo de reconexiones. | “Fricción cero” en caso de pérdida de red. |
 | 5 | Documentar el DSL Venue/Event/Group y migrar chats existentes. | Estandarización de datos y métricas. |
@@ -10175,7 +10172,7 @@ El video muestra cómo crear **streams de IA resilientes** que continúan entreg
 
 ---  
 
-**Conclusión:** Adoptar el patrón de streams duraderos basado en Redis permite a Yendo ofrecer interacciones de IA sin interrupciones, alineado con la visión de una experiencia “sin fricción”, aprovechando la infraestructura serverless de Vercel y la flexibilidad de React Native/Expo 57. La implementación es ligera, escalable y se integra naturalmente con los principios de diseño de Material 3 y la estética Dark OLED.
+**Conclusión:** Adoptar el patrón de streams duraderos basado en Redis permite a WebFactory ofrecer interacciones de IA sin interrupciones, alineado con la visión de una experiencia “sin fricción”, aprovechando la infraestructura serverless de Vercel y la flexibilidad de Modern Web UI (CSS/WAAPI)/Expo 57. La implementación es ligera, escalable y se integra naturalmente con los principios de diseño de Material 3 y la estética Dark OLED.
 
 ---
 
@@ -10197,7 +10194,7 @@ El video muestra cómo crear **streams de IA resilientes** que continúan entreg
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -10214,11 +10211,11 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-# Informe de Investigación: Animaciones Épicas con React Native Reanimated v3 y Expo Router
+# Informe de Investigación: Animaciones Épicas con Modern Web UI (CSS/WAAPI) Reanimated v3 y Expo Router
 
 ## 1. Concepto Central y Tesis
 
-El video demuestra cómo elevar la experiencia de usuario en aplicaciones React Native, haciéndolas "al menos cien veces más épicas", mediante la implementación de animaciones avanzadas. La tesis central es que `react-native-reanimated` v3, en conjunto con `Expo Router`, permite crear transiciones de elementos compartidos (`shared element transitions`) y animaciones de entrada (`entering animations`) fluidas y visualmente impactantes, transformando la navegación y la presentación de contenido en una experiencia de usuario sin fricciones y altamente atractiva.
+El video demuestra cómo elevar la experiencia de usuario en aplicaciones Modern Web UI (CSS/WAAPI), haciéndolas "al menos cien veces más épicas", mediante la implementación de animaciones avanzadas. La tesis central es que `react-native-reanimated` v3, en conjunto con `Expo Router`, permite crear transiciones de elementos compartidos (`shared element transitions`) y animaciones de entrada (`entering animations`) fluidas y visualmente impactantes, transformando la navegación y la presentación de contenido en una experiencia de usuario sin fricciones y altamente atractiva.
 
 ## 2. Hallazgos Técnicos y Arquitectónicos Clave
 
@@ -10233,10 +10230,10 @@ El video demuestra cómo elevar la experiencia de usuario en aplicaciones React 
 *   **Componentes Animados:** `Animated.Text`, `Animated.View`, `Animated.Image` son componentes de `reanimated` que permiten aplicar propiedades de animación.
 *   **`Link` de `expo-router`:** Requiere un componente hijo (`Pressable`, `Text`, etc.) para ser interactivo.
 
-## 3. Ideas Accionables para Yendo Mobile
+## 3. Ideas Accionables para la Web Software Factory
 
-*   **Expo 57 y React Native:** La adopción de `react-native-reanimated` v3 es crucial para una UX moderna. Es imperativo verificar la compatibilidad total con Expo SDK 57, especialmente si la necesidad de `prebuild` persiste para el cliente de desarrollo, lo cual podría impactar el flujo de trabajo de desarrollo. La integración debe ser fluida para aprovechar al máximo las capacidades de React Native.
-*   **Dark OLED y Material 3:** Las animaciones demostradas, como las transiciones de elementos compartidos y los efectos de entrada/salida, son fundamentales para una interfaz de usuario premium. Estas técnicas pueden realzar la estética Dark OLED de Yendo, haciendo que los elementos destaquen y se muevan con elegancia. Se alinean perfectamente con los principios de Material 3 de movimiento intencional y experiencias dinámicas, proporcionando una sensación de modernidad y pulcritud.
+*   **Expo 57 y Modern Web UI (CSS/WAAPI):** La adopción de `react-native-reanimated` v3 es crucial para una UX moderna. Es imperativo verificar la compatibilidad total con Expo SDK 57, especialmente si la necesidad de `prebuild` persiste para el cliente de desarrollo, lo cual podría impactar el flujo de trabajo de desarrollo. La integración debe ser fluida para aprovechar al máximo las capacidades de Modern Web UI (CSS/WAAPI).
+*   **Dark OLED y Material 3:** Las animaciones demostradas, como las transiciones de elementos compartidos y los efectos de entrada/salida, son fundamentales para una interfaz de usuario premium. Estas técnicas pueden realzar la estética Dark OLED de WebFactory, haciendo que los elementos destaquen y se muevan con elegancia. Se alinean perfectamente con los principios de Material 3 de movimiento intencional y experiencias dinámicas, proporcionando una sensación de modernidad y pulcritud.
 *   **Fricción Cero:** La implementación de `shared element transitions` y `entering animations` reduce drásticamente la fricción percibida. Al hacer que los elementos "fluyan" entre pantallas y aparezcan de manera orgánica, se elimina la sensación de cambios abruptos o cargas lentas, creando una experiencia de usuario más intuitiva y satisfactoria. El uso de `transparentModal` con `animation: 'fade'` también contribuye a esta fluidez.
 *   **Lenguaje Venue/Experiencia/Grupo:**
     *   **Venue:** Las imágenes de los Venues pueden usar `shared element transitions` al pasar de una lista a una vista detallada, creando un efecto "wow" y conectando visualmente las pantallas.
@@ -10250,7 +10247,7 @@ El video demuestra cómo elevar la experiencia de usuario en aplicaciones React 
 
 ## 4. Citas Clave
 
-*   "make your react native applications at least a hundred times more Epic"
+*   "make your Modern Web UI (CSS/WAAPI) applications at least a hundred times more Epic"
 *   "animate the appearance of different elements like a text or a view"
 *   "shared element transitions so we will be able to transition from one screen to the next screen"
 *   "unbelievable easy we just have to use the shared element transition tag"
@@ -10285,7 +10282,7 @@ El video demuestra cómo elevar la experiencia de usuario en aplicaciones React 
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -10302,18 +10299,18 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Reanimated 4.2.0 y el Futuro de las Animaciones en React Native
+## Informe de Investigación: Reanimated 4.2.0 y el Futuro de las Animaciones en Modern Web UI (CSS/WAAPI)
 
 ### 1. Concepto Central y Tesis
 
-El lanzamiento de Reanimated 4.2.0 marca un hito significativo en las animaciones de React Native, introduciendo las **Transiciones de Elementos Compartidos (Shared Element Transitions - SET)** y consolidando la migración a la Nueva Arquitectura. La tesis central es que Reanimated está evolucionando para ofrecer animaciones potentes y de alto rendimiento con una API simplificada, aprovechando las capacidades de la Nueva Arquitectura de React Native. Esto se logra mientras se otorga a los desarrolladores un control granular mediante *feature flags* para gestionar el riesgo y la estabilidad, con el objetivo de alinearse más con los estándares web y mejorar la experiencia del desarrollador.
+El lanzamiento de Reanimated 4.2.0 marca un hito significativo en las animaciones de Modern Web UI (CSS/WAAPI), introduciendo las **Transiciones de Elementos Compartidos (Shared Element Transitions - SET)** y consolidando la migración a la Nueva Arquitectura. La tesis central es que Reanimated está evolucionando para ofrecer animaciones potentes y de alto rendimiento con una API simplificada, aprovechando las capacidades de la Nueva Arquitectura de Modern Web UI (CSS/WAAPI). Esto se logra mientras se otorga a los desarrolladores un control granular mediante *feature flags* para gestionar el riesgo y la estabilidad, con el objetivo de alinearse más con los estándares web y mejorar la experiencia del desarrollador.
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
 *   **Transiciones de Elementos Compartidos (SET):**
     *   Característica principal de Reanimated 4.2.0, actualmente experimental (detrás de un *feature flag*).
-    *   API "mágica": solo requiere asignar un `sharedTransitionTag` a dos vistas en diferentes jerarquías de React Native; Reanimated gestiona la animación automáticamente.
-    *   Implementación reescrita en C++ para consistencia multiplataforma (iOS/Android), integrándose en el *pipeline* C++ de React para observar y modificar actualizaciones, evitando código específico de plataforma. Esto es un beneficio directo de la Nueva Arquitectura.
+    *   API "mágica": solo requiere asignar un `sharedTransitionTag` a dos vistas en diferentes jerarquías de Modern Web UI (CSS/WAAPI); Reanimated gestiona la animación automáticamente.
+    *   Implementación reescrita en C++ para consistencia multiplataforma (iOS/Web Platform), integrándose en el *pipeline* C++ de React para observar y modificar actualizaciones, evitando código específico de plataforma. Esto es un beneficio directo de la Nueva Arquitectura.
     *   Limitación actual: funciona solo con `react-native-screens`. El plan futuro es desacoplarlo para permitir transiciones dentro de una misma pantalla o con otras librerías de navegación.
     *   Desafío: La "reparentalización" de vistas es compleja en React; SET lo sortea emparejando definiciones de vistas separadas.
 *   **Feature Flags:**
@@ -10321,7 +10318,7 @@ El lanzamiento de Reanimated 4.2.0 marca un hito significativo en las animacione
     *   `enableSharedElementTransitions`: Habilita SET.
     *   `forceReactToRenderForSettledAnimations`: Mejora el rendimiento en la Nueva Arquitectura al informar a React sobre el estado final de las animaciones, evitando que React sobrescriba las actualizaciones de Reanimated.
     *   `useCommitHookOnlyForReactCommits`: Optimiza la reconciliación al no ejecutar el proceso de Reanimated durante actualizaciones internas de estado en C++ (solo para *commits* de React impulsados por JavaScript).
-    *   `useSynchronizableFormMutables`: Mejora el rendimiento en dispositivos Android de gama baja, optimizando las búsquedas de valores compartidos en la primera renderización.
+    *   `useSynchronizableFormMutables`: Mejora el rendimiento en dispositivos Web Platform de gama baja, optimizando las búsquedas de valores compartidos en la primera renderización.
 *   **Migración a la Nueva Arquitectura (NA):**
     *   Reanimated 4 eliminó el soporte para la arquitectura antigua.
     *   La NA permite implementar características como animaciones y transiciones CSS de manera más eficiente.
@@ -10330,23 +10327,23 @@ El lanzamiento de Reanimated 4.2.0 marca un hito significativo en las animacione
     *   Reanimated 4 introdujo animaciones y transiciones CSS.
     *   Dirección futura: Soportar más estándares web (ej. propiedades SVG, estándares relacionados con el *scroll*). Se contempla un *wrapper* API para SET que imite la API de View Transitions web.
 *   **Desarrollo de Código Abierto:**
-    *   Beneficios: Trabajo con tecnología de vanguardia, colaboración comunitaria, aprendizaje de herramientas de perfilado y depuración, rápida adopción de nuevas características de React Native.
+    *   Beneficios: Trabajo con tecnología de vanguardia, colaboración comunitaria, aprendizaje de herramientas de perfilado y depuración, rápida adopción de nuevas características de Modern Web UI (CSS/WAAPI).
     *   Desafíos: Gestión de la complejidad de las dependencias entre librerías (ej. `react-native-screens` con binarios precompilados).
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-*   **Expo 57:** Asegurar que la versión del SDK de Expo utilizada soporte eficazmente las últimas características de Reanimated y la Nueva Arquitectura. La gestión de dependencias y binarios precompilados es crucial para actualizaciones fluidas; Expo puede abstraer parte de esto, pero Yendo debe ser consciente del impacto de los *feature flags* y la migración a NA.
-*   **React Native:** Priorizar la migración a la Nueva Arquitectura si aún no se ha hecho, ya que desbloquea el rendimiento y las características avanzadas de Reanimated. Utilizar los *feature flags* de rendimiento (ej. `forceReactToRenderForSettledAnimations`) como una guía para optimizar la aplicación en NA.
+*   **Expo 57:** Asegurar que la versión del SDK de Expo utilizada soporte eficazmente las últimas características de Reanimated y la Nueva Arquitectura. La gestión de dependencias y binarios precompilados es crucial para actualizaciones fluidas; Expo puede abstraer parte de esto, pero WebFactory debe ser consciente del impacto de los *feature flags* y la migración a NA.
+*   **Modern Web UI (CSS/WAAPI):** Priorizar la migración a la Nueva Arquitectura si aún no se ha hecho, ya que desbloquea el rendimiento y las características avanzadas de Reanimated. Utilizar los *feature flags* de rendimiento (ej. `forceReactToRenderForSettledAnimations`) como una guía para optimizar la aplicación en NA.
 *   **Dark OLED:** Las Transiciones de Elementos Compartidos y las animaciones fluidas son esenciales para una UX premium. En interfaces Dark OLED, estas transiciones previenen cambios visuales bruscos, mejorando la calidad percibida y haciendo que el modo oscuro se sienta más integrado.
 *   **Material 3:** Material 3 enfatiza el diseño de movimiento y el *theming* dinámico. Reanimated, con SET y animaciones CSS, es una herramienta ideal para implementar los principios de diseño de movimiento de Material 3, creando interfaces fluidas e intuitivas que se alineen con las directrices de diseño modernas.
-*   **Fricción Cero:** La API "mágica" de SET (solo una etiqueta) reduce drásticamente la fricción para los desarrolladores al implementar animaciones complejas. Yendo debería adoptar estas APIs simplificadas para acelerar el desarrollo de UI/UX de alta calidad. Los *flags* de rendimiento también contribuyen a una experiencia de usuario sin fricciones.
-*   **Lenguaje Venue/Experiencia/Grupo:** El video subraya la importancia de los elementos visuales y las experiencias pulidas para la retención de usuarios. Para Yendo, esto significa invertir en animaciones (como SET) para que los conceptos de "Venue", "Experiencia" y "Grupo" se perciban como premium, atractivos e intuitivos. Transiciones suaves entre estos contextos pueden reforzar visualmente el viaje del usuario.
-*   **Dunbar 4-6:** La discusión sobre la colaboración en código abierto y el *feedback* de la comunidad resalta el valor de equipos pequeños y enfocados. Internamente, Yendo puede fomentar la colaboración estrecha en equipos de características reducidos (4-6 personas) para iterar rápidamente en UI/UX, aprovechando herramientas como Reanimated que permiten a equipos pequeños lograr resultados de alta calidad sin necesidad de expertos en animación.
+*   **Fricción Cero:** La API "mágica" de SET (solo una etiqueta) reduce drásticamente la fricción para los desarrolladores al implementar animaciones complejas. WebFactory debería adoptar estas APIs simplificadas para acelerar el desarrollo de UI/UX de alta calidad. Los *flags* de rendimiento también contribuyen a una experiencia de usuario sin fricciones.
+*   **Lenguaje Venue/Experiencia/Grupo:** El video subraya la importancia de los elementos visuales y las experiencias pulidas para la retención de usuarios. Para WebFactory, esto significa invertir en animaciones (como SET) para que los conceptos de "Venue", "Experiencia" y "Grupo" se perciban como premium, atractivos e intuitivos. Transiciones suaves entre estos contextos pueden reforzar visualmente el viaje del usuario.
+*   **Dunbar 4-6:** La discusión sobre la colaboración en código abierto y el *feedback* de la comunidad resalta el valor de equipos pequeños y enfocados. Internamente, WebFactory puede fomentar la colaboración estrecha en equipos de características reducidos (4-6 personas) para iterar rápidamente en UI/UX, aprovechando herramientas como Reanimated que permiten a equipos pequeños lograr resultados de alta calidad sin necesidad de expertos en animación.
 
 ### 4. Citas Clave
 
 *   "La principal novedad de esta versión es la llegada de las transiciones de elementos compartidos. Esta es la característica más solicitada por la comunidad."
-*   "Todo lo que necesito son esencialmente dos componentes montados en lugares totalmente diferentes en la jerarquía de React Native y solo establezco la etiqueta de elemento compartido, ¿verdad? Y luego Reanimated encontrará esos componentes y animará entre ellos. Exacto. Guau, eso es increíblemente impresionante."
+*   "Todo lo que necesito son esencialmente dos componentes montados en lugares totalmente diferentes en la jerarquía de Modern Web UI (CSS/WAAPI) y solo establezco la etiqueta de elemento compartido, ¿verdad? Y luego Reanimated encontrará esos componentes y animará entre ellos. Exacto. Guau, eso es increíblemente impresionante."
 *   "Una cosa muy interesante de esta implementación es que a menudo, cuando tenía un error en una plataforma, existía exactamente el mismo error en la otra plataforma... Solo tenía que corregir este error una vez."
 *   "Esta solución es muy general y es como si no requiriera pensar. Simplemente conectas esos valores de cadena y se emparejarán."
 *   "Tenemos que trabajar en contra de las suposiciones que se hacen en React mismo porque lo que básicamente estamos haciendo es que queremos reparentar una vista y en React la reparentalización está como prohibida."
@@ -10354,7 +10351,7 @@ El lanzamiento de Reanimated 4.2.0 marca un hito significativo en las animacione
 *   "No es solo una opción, es algo que necesitan ver en su aplicación e invierten mucho esfuerzo y dinero en ello."
 *   "Cuanto más acopladas y dependientes estén sus librerías entre sí, más difícil será construir gran parte de la infraestructura subyacente."
 *   "Ahora finalmente estamos en un punto en el que no escribimos las cosas dos veces por plataforma y luego dos veces por arquitectura."
-*   "React Native se está moviendo hacia la web y la compatibilidad web, además de tener todas las mejores características de los móviles."
+*   "Modern Web UI (CSS/WAAPI) se está moviendo hacia la web y la compatibilidad web, además de tener todas las mejores características de los móviles."
 *   "El principal beneficio de trabajar en *frontend* y en Reanimated es que puedes construir muchos de estos ejemplos geniales que son muy satisfactorios y luego tenemos mucha retroalimentación y participación de la comunidad simplemente porque las cosas son brillantes y se mueven de maneras fascinantes."
 
 ---
@@ -10385,7 +10382,7 @@ El lanzamiento de Reanimated 4.2.0 marca un hito significativo en las animacione
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -10402,7 +10399,7 @@ ultima_revision: 2026-08-27
 ## 💡 Resumen Ejecutivo y Hallazgos
 
 # Informe de Investigación – Arquitectura de la Información (AI)  
-**Yendo Mobile – 31 agosto 2026**
+**la Web Software Factory – 31 agosto 2026**
 
 ---
 
@@ -10420,7 +10417,7 @@ Entender y alinear estos tres niveles es esencial para crear experiencias cohere
 
 ## 2. Hallazgos técnicos y arquitectónicos clave  
 
-| Modelo | Función | Características técnicas | Implicaciones para Yendo |
+| Modelo | Función | Características técnicas | Implicaciones para WebFactory |
 |--------|---------|--------------------------|--------------------------|
 | **Navegación visible** | Guía al usuario en tiempo real. | - Componentes UI reutilizables (menús, breadcrumbs, acordeones). <br> - Dependen de la arquitectura de rutas (React Navigation, Expo Router). | Necesita estar sincronizada con la estructura de AI para evitar “puntos muertos”. |
 | **Estructura de AI** | Blueprint del contenido. | - Representación en diagramas (sitemaps, diagramas de flujo). <br> - Se modela como grafo dirigido; cada nodo = pantalla/página. <br> - Se mantiene en repositorios de diseño (Figma, FigJam) y en código (archivos de rutas). | Sirve de fuente única para generar la navegación visible y validar la cobertura de funcionalidades. |
@@ -10434,13 +10431,13 @@ Entender y alinear estos tres niveles es esencial para crear experiencias cohere
 
 ---
 
-## 3. Ideas accionables para Yendo  
+## 3. Ideas accionables para WebFactory  
 
 ### 3.1. Integrar la AI en el flujo de desarrollo con **Expo 57**  
 - Utilizar **Expo 57** para generar automáticamente los archivos de rutas a partir del sitemap definido en Figma.  
-- Implementar un script de CI que valide que cada nodo del mapa de sitio tenga una pantalla React Native correspondiente y que los metadatos (venue/event/group) estén presentes.  
+- Implementar un script de CI que valide que cada nodo del mapa de sitio tenga una pantalla Modern Web UI (CSS/WAAPI) correspondiente y que los metadatos (venue/event/group) estén presentes.  
 
-### 3.2. Adoptar **React Native** con arquitectura basada en **graphQL + TypeScript**  
+### 3.2. Adoptar **Modern Web UI (CSS/WAAPI)** con arquitectura basada en **graphQL + TypeScript**  
 - Definir el **esquema de taxonomía** (venue, evento, grupo) en GraphQL; los componentes UI consumen los tipos generados por TypeScript, garantizando consistencia entre backend y frontend.  
 - Usar **React Navigation 7** con “deep linking” para que la navegación visible refleje siempre la estructura de AI.  
 
@@ -10475,7 +10472,7 @@ Entender y alinear estos tres niveles es esencial para crear experiencias cohere
 ---
 
 **Conclusión**  
-Al alinear la navegación visible, la estructura de AI y las taxonomías, Yendo Mobile podrá ofrecer una experiencia de usuario fluida, escalable y fácil de mantener. La adopción de Expo 57, React Native con GraphQL, Material 3 para OLED y la estrategia de fricción cero garantizará que la arquitectura de la información se convierta en una ventaja competitiva, no en una carga operativa.
+Al alinear la navegación visible, la estructura de AI y las taxonomías, la Web Software Factory podrá ofrecer una experiencia de usuario fluida, escalable y fácil de mantener. La adopción de Expo 57, Modern Web UI (CSS/WAAPI) con GraphQL, Material 3 para OLED y la estrategia de fricción cero garantizará que la arquitectura de la información se convierta en una ventaja competitiva, no en una carga operativa.
 
 ---
 
@@ -10497,7 +10494,7 @@ Al alinear la navegación visible, la estructura de AI y las taxonomías, Yendo 
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -10514,11 +10511,11 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Arquitectura de la Información para Yendo Mobile
+## Informe de Arquitectura de la Información para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
-El video clarifica la distinción fundamental entre tres componentes clave de la Arquitectura de la Información (AI): la **Navegación Visible**, la **Estructura Subyacente de AI** y las **Taxonomías y Metadatos**. La tesis central es que, aunque interconectados, cada uno tiene un propósito, audiencia y criterios de diseño distintos. La Navegación es la interfaz directa para el usuario, diseñada para sus modelos mentales. La Estructura de AI es el "backstage", un mapa completo para el equipo de desarrollo y contenido. Las Taxonomías son un mapa de conceptos para describir y relacionar el contenido con precisión lógica. Comprender estas diferencias es crucial para construir una experiencia de usuario robusta, escalable y coherente en Yendo Mobile.
+El video clarifica la distinción fundamental entre tres componentes clave de la Arquitectura de la Información (AI): la **Navegación Visible**, la **Estructura Subyacente de AI** y las **Taxonomías y Metadatos**. La tesis central es que, aunque interconectados, cada uno tiene un propósito, audiencia y criterios de diseño distintos. La Navegación es la interfaz directa para el usuario, diseñada para sus modelos mentales. La Estructura de AI es el "backstage", un mapa completo para el equipo de desarrollo y contenido. Las Taxonomías son un mapa de conceptos para describir y relacionar el contenido con precisión lógica. Comprender estas diferencias es crucial para construir una experiencia de usuario robusta, escalable y coherente en la Web Software Factory.
 
 ### 2. Hallazgos Técnicos y Arquitectónicos Clave
 
@@ -10527,13 +10524,13 @@ El video clarifica la distinción fundamental entre tres componentes clave de la
 3.  **Herramientas Internas vs. Experiencia Externa:** La Estructura de AI y las Taxonomías son herramientas "backstage" para el equipo, mientras que la Navegación es el "escenario principal" para el usuario. Esto implica diferentes procesos de diseño, documentación y validación para cada uno.
 4.  **Escalabilidad del Contenido:** Una Estructura de AI bien definida y Taxonomías robustas son esenciales para gestionar el crecimiento del contenido y las funcionalidades de la aplicación, facilitando la búsqueda, el filtrado y la recomendación.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
-Para Yendo Mobile, la aplicación de estos principios se traduce en las siguientes acciones:
+Para la Web Software Factory, la aplicación de estos principios se traduce en las siguientes acciones:
 
-*   **Expo 57 y React Native:**
-    *   **Estructura de AI Subyacente:** Desarrollar un "mapa del sitio" exhaustivo de todas las pantallas y flujos de usuario en Yendo. Este documento, vivo y accesible para el equipo, guiará la implementación de la navegación y la organización de componentes.
-    *   **Navegación Visible:** Implementar la navegación en React Native (ej. React Navigation) de forma modular y reutilizable. Asegurar que los componentes de navegación sigan patrones consistentes, utilizando `StyleSheet.create` para estilos encapsulados y `createClient` para una gestión de estado limpia, promoviendo un "sheet canónico" de diseño.
+*   **Expo 57 y Modern Web UI (CSS/WAAPI):**
+    *   **Estructura de AI Subyacente:** Desarrollar un "mapa del sitio" exhaustivo de todas las pantallas y flujos de usuario en WebFactory. Este documento, vivo y accesible para el equipo, guiará la implementación de la navegación y la organización de componentes.
+    *   **Navegación Visible:** Implementar la navegación en Modern Web UI (CSS/WAAPI) (ej. React Navigation) de forma modular y reutilizable. Asegurar que los componentes de navegación sigan patrones consistentes, utilizando `StyleSheet.create` para estilos encapsulados y `createClient` para una gestión de estado limpia, promoviendo un "sheet canónico" de diseño.
     *   **Taxonomías:** Diseñar un sistema de taxonomías para clasificar `Venues`, `Experiencias` y `Grupos`. Esto permitirá funcionalidades avanzadas de búsqueda, filtrado y personalización, siendo independiente de la estructura de navegación pero informándola.
 
 *   **Dark OLED y Material 3:**
@@ -10587,7 +10584,7 @@ Para Yendo Mobile, la aplicación de estos principios se traduce en las siguient
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -10604,7 +10601,7 @@ ultima_revision: 2026-08-27
 
 ## 💡 Resumen Ejecutivo y Hallazgos
 
-## Informe de Investigación: Fundamentos de Diseño UI para Yendo Mobile
+## Informe de Investigación: Fundamentos de Diseño UI para la Web Software Factory
 
 ### 1. Concepto Central y Tesis
 
@@ -10620,18 +10617,18 @@ El video, aunque centrado en principios, demuestra su aplicación práctica medi
 *   **Herramientas de Verificación:** Mención de plugins de navegador, sitios web y extensiones de aplicaciones de diseño (Sketch, Figma, Adobe XD) para evaluar el contraste.
 *   **Principios Universales:** Aunque las demostraciones son web (HTML/CSS), los principios son aplicables a cualquier plataforma, incluyendo aplicaciones móviles nativas.
 
-### 3. Ideas Accionables para Yendo
+### 3. Ideas Accionables para WebFactory
 
-La aplicación rigurosa de estos fundamentos es crucial para Yendo, alineándose con sus invariantes:
+La aplicación rigurosa de estos fundamentos es crucial para WebFactory, alineándose con sus invariantes:
 
 *   **Dark OLED y Material 3:**
     *   **Contraste:** Es vital en interfaces oscuras. Asegurar que todos los elementos de texto e interactivos cumplan o superen los estándares WCAG AA/AAA contra fondos oscuros. Material 3 ya integra directrices de accesibilidad.
     *   **Color:** Seleccionar una paleta limitada y cohesiva que funcione óptimamente en modo oscuro, aprovechando los negros puros de OLED y acentos vibrantes sin saturar.
     *   **Jerarquía Visual:** Utilizar el color, la escala y el contraste de forma estratégica en el modo oscuro para guiar la atención del usuario sin depender de fondos claros.
-*   **Expo 57 y React Native:**
-    *   Los principios de espacio en blanco, alineación, escala, tipografía y jerarquía visual son directamente aplicables a los componentes de React Native.
-    *   La consistencia en la aplicación de estos fundamentos a través de `StyleSheet.create` (invariante de Yendo) es clave para una experiencia unificada.
-    *   Considerar el uso de unidades relativas o flexibles en React Native, análogas a las unidades `em`, para un diseño responsivo.
+*   **Expo 57 y Modern Web UI (CSS/WAAPI):**
+    *   Los principios de espacio en blanco, alineación, escala, tipografía y jerarquía visual son directamente aplicables a los componentes de Modern Web UI (CSS/WAAPI).
+    *   La consistencia en la aplicación de estos fundamentos a través de `StyleSheet.create` (invariante de WebFactory) es clave para una experiencia unificada.
+    *   Considerar el uso de unidades relativas o flexibles en Modern Web UI (CSS/WAAPI), análogas a las unidades `em`, para un diseño responsivo.
 *   **Fricción Cero:**
     *   **Espacio en Blanco y Alineación:** Reducen la carga cognitiva y mejoran la escaneabilidad, haciendo que las interacciones sean fluidas e intuitivas.
     *   **Jerarquía Visual:** Guía claramente al usuario hacia las acciones e información más importantes, minimizando la confusión y la fricción en el flujo de usuario.
@@ -10640,7 +10637,7 @@ La aplicación rigurosa de estos fundamentos es crucial para Yendo, alineándose
     *   **Jerarquía Visual:** Al presentar información sobre "Venue", "Experiencia" o "Grupo", enfatizar los detalles clave relevantes para el contexto del usuario y la limitación de Dunbar (4-6 personas) mediante el tamaño, el color y la posición.
     *   **Espacio en Blanco y Alineación:** Organizar la información de estos conceptos de manera clara y concisa, evitando el desorden visual, especialmente con grupos pequeños.
 *   **Un `createClient` y DNA Pisa Internet:**
-    *   Los fundamentos de UI aseguran que la información proveniente de una fuente unificada (`createClient`) se presente de manera coherente y con la identidad de marca ("DNA pisa internet"), reforzando la cohesión y el reconocimiento de Yendo en cada interacción.
+    *   Los fundamentos de UI aseguran que la información proveniente de una fuente unificada (`createClient`) se presente de manera coherente y con la identidad de marca ("DNA pisa internet"), reforzando la cohesión y el reconocimiento de WebFactory en cada interacción.
 
 ### 4. Citas Clave
 

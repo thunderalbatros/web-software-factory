@@ -1,142 +1,17 @@
-﻿# 📚 Libro Completo: Laws of UX: Using Psychology to Design Better Products & Services
+# 📚 Libro Completo: Laws of UX: Using Psychology to Design Better Products & Services
+
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Web Software Factory.
 
 > **Autor:** Jon Yablonski  
 > **Archivo Fuente:** `Laws-of-UX-Jon-Yablonski.pdf`  
 > **Páginas Originales:** 186  
 > **Secciones Extraídas:** 56  
 > **Fecha de Ingesta:** 2026-10-06  
-> **Tipo:** Texto Completo Estructurado para RAG Jerárquico  
+> **Tipo:** Texto Completo Estructurado para RAG Jerárquico
 
 ---
 
-## Sección 1: Introducción y Fundamentos
-
-JON YABLONSKI
-Laws of UX
-USING PSYCHOLOGY TO DESIGN
-BETTER PRODUCTS & SERVICES
-SECOND EDITION
-
--- 1 of 186 --
-
-ISBN: 978-1-098-14696-2
-US $55.99 CAN $69.99
-An understanding of psychology—specifically the psychology behind user behavior and
-interaction with digital interfaces—is perhaps the single most valuable nondesign skill a
-designer can have. The most elegant design can fail if it forces users to conform to the
-design instead of working within the “blueprint” of how humans perceive and process
-the world around them.
-With this updated second edition, you’ll learn how to apply key principles of psychology
-to build products and experiences that are more human-centered and intuitive. Author
-Jon Yablonski deconstructs familiar apps and experiences to provide clear examples of
-how UX designers can build interfaces that adapt to how users perceive and process
-digital interfaces.
-You’ll learn:
-• How psychology relates to new technology such as AI and spatial computing
-• The principles of psychology most useful for designers
-• How these psychology principles relate to UX heuristics
-• Predictive models including Fitts’s law, Jakob’s law, and Hick’s law
-• Ethical implications of using psychology in design
-• A practical framework for applying principles of psychology in your design process
-Jon Yablonski is a multidisciplinary designer who specializes in simplifying complex
-technology and making it intuitive through user research and interaction design.
-DESIGN
-Twitter: @oreillymedia
-linkedin.com/company/oreilly-media
-youtube.com/oreillymedia
-Laws of UX
-USING PSYCHOLOGY TO DESIGN BETTER PRODUCTS & SERVICES
-“Laws of UX serves as an excellent resource for both newcomers and professionals,
-encouraging them to delve into the deeper ‘why’ behind design choices instead of
-merely imitating existing patterns.” — Chris Desjardins, CEO, Tungsten
-
--- 2 of 186 --
-
-Praise for Laws of UX, Second Edition
-This is the book I didn’t know I needed at the start of my career
-and the one I insist on for my students and staff.
-—Andrés Currey Zapata, D.Sc.,
-EVP, UX Strategy + Founder
-Laws of UX serves as an excellent resource for both newcomers and
-professionals, encouraging them to delve into the deeper “why” behind
-design choices instead of merely imitating existing patterns.
-—Chris Desjardins,
-CEO, Tungsten
-Jon has broken down common psychology principles in a way that makes it
-easier to apply in everyday designs across all industries.
-—James Rampton,
-Lecturer, University of Michigan
-
--- 3 of 186 --
-
--- 4 of 186 --
-
-Laws of UX
-SECOND EDITION
-Using Psychology to Design
-Better Products & Services
-Jon Yablonski
-
--- 5 of 186 --
-
-978-1-098-14696-2
-[LSI]
-Laws of UX
-by Jon Yablonski
-Copyright © 2024 Jon Yablonski. All rights reserved.
-Printed in the United States of America.
-Published by O’Reilly Media, Inc., 1005 Gravenstein Highway North, Sebastopol, CA 95472.
-O’Reilly books may be purchased for educational, business, or sales promotional use. Online
-editions are also available for most titles (http://oreilly.com). For more information, contact our
-corporate/institutional sales department: 800-998-9938 or corporate@oreilly.com.
-Acquisitions Editor: Amanda Quinn
-Development Editor: Angela Rufino
-Production Editor: Christopher Faucher
-Copyeditor: Liz Wheeler
-Proofreader: Arthur Johnson
-Indexer: Ellen Troutman-Zaig
-Interior Designer: Monica Kamsvaag
-Cover Designer: Susan Thompson
-Illustrator: Kate Dullea
-May 2020: First Edition
-February 2024: Second Edition
-Revision History for the Second Edition
-2024-01-23: First Release
-See http://oreilly.com/catalog/errata.csp?isbn=9781098146962 for release details.
-The O’Reilly logo is a registered trademark of O’Reilly Media, Inc. Laws of UX, the cover image,
-and related trade dress are trademarks of O’Reilly Media, Inc.
-The views expressed in this work are those of the author and do not represent the publisher’s
-views. While the publisher and the author have used good faith efforts to ensure that the
-information and instructions contained in this work are accurate, the publisher and the author
-disclaim all responsibility for errors or omissions, including without limitation responsibility
-for damages resulting from the use of or reliance on this work. Use of the information and
-instructions contained in this work is at your own risk. If any code samples or other technology
-this work contains or describes is subject to open source licenses or the intellectual property
-rights of others, it is your responsibility to ensure that your use thereof complies with such
-licenses and/or rights.
-
--- 6 of 186 --
-
-Contents
-| Preface vii
-1 | Jakob’s Law 1
-2 | Fitts’s Law 15
-3 | Miller’s Law 29
-4 | Hick’s Law 39
-5 | Postel’s Law 53
-6 | Peak–End Rule 65
-7 | Aesthetic–Usability Effect 79
-8 | Von Restorff Effect 93
-9 | Tesler’s Law 107
-10 | Doherty Threshold 119
-11 | Applying Psychological Principles in Design 131
-12 | With Power Comes Responsibility 139
-| Index 155
-v
-
--- 7 of 186 --
-
--- 8 of 186 --
+## Sección 1: Introducción y Fundamentos [Entropy: 0.25]
 
 Preface
 This book had its origins in what felt at the time like the most arduous point of
@@ -169,9 +44,7 @@ vii
 
 ---
 
-## Sección 2: Introducción y Fundamentos
-
--- 9 of 186 --
+## Sección 2: Introducción y Fundamentos [Entropy: 0.25]
 
 directly relatable to my work as a designer. I was looking for a designer-friendly
 resource that just wasn’t available online, or at least not in the form I wanted it.
@@ -191,9 +64,6 @@ based on patterns of human behavior that’ve been observed time and time again.
 They’re not a replacement for user research, but they can be incredibly valuable
 for interpreting why people behave a certain way in general.
 VIII | PREFACE
-
--- 10 of 186 --
-
 Second Edition
 The craft of design has a dynamic nature that keeps evolving along with
 technology. With every new technological advancement, new constraints and
@@ -225,9 +95,6 @@ design of a product or experience, we can use some key principles from psycholog
 fundamental basis of human-centered design, and it’s the foundation of this
 book.
 PREFACE | IX
-
--- 11 of 186 --
-
 But knowing where to start can be a challenge. Which principles from psychology are useful? What are some examples of these principles at work? There’s
 an endless list of laws and theories that occupy this space, but there are a few
 that I’ve found particularly helpful and widely applicable. In this book, I explore
@@ -261,47 +128,27 @@ X | PREFACE
 
 ---
 
-## Sección 3: Introducción y Fundamentos
-
--- 12 of 186 --
-
-What’s in This Book
-
----
-
-## Sección 4: Chapter 1, “Jakob’s Law”
+## Sección 3: Chapter 1, “Jakob’s Law” [Entropy: 0.25]
 
 Users spend most of their time on other sites, and they prefer your site to
 work the same way as all the other sites they already know.
 
 ---
 
-## Sección 5: Chapter 2, “Fitts’s Law”
+## Sección 4: Chapter 2, “Fitts’s Law” [Entropy: 0.05]
 
 The time to acquire a target is a function of the distance to and size of the
 target.
 
 ---
 
-## Sección 6: Chapter 3, “Miller’s Law”
-
-The average person can keep only 7 (± 2) items in their working memory.
-
----
-
-## Sección 7: Chapter 4, “Hick’s Law”
+## Sección 5: Chapter 4, “Hick’s Law” [Entropy: 0.05]
 
 The time it takes to make a decision increases with the number and complexity of choices available.
 
 ---
 
-## Sección 8: Chapter 5, “Postel’s Law”
-
-Be conservative in what you do, be liberal in what you accept from others.
-
----
-
-## Sección 9: Chapter 6, “Peak–End Rule”
+## Sección 6: Chapter 6, “Peak–End Rule” [Entropy: 0.25]
 
 People judge an experience largely based on how they felt at its peak and
 at its end, rather than on the total sum or average of every moment of the
@@ -309,21 +156,21 @@ experience.
 
 ---
 
-## Sección 10: Chapter 7, “Aesthetic–Usability Effect”
+## Sección 7: Chapter 7, “Aesthetic–Usability Effect” [Entropy: 0.05]
 
 Users often perceive aesthetically pleasing design as design that’s more
 usable.
 
 ---
 
-## Sección 11: Chapter 8, “Von Restorff Effect”
+## Sección 8: Chapter 8, “Von Restorff Effect” [Entropy: 0.25]
 
 When multiple similar objects are present, the one that differs from the
 rest is most likely to be remembered.
 
 ---
 
-## Sección 12: Chapter 9, “Tesler’s Law”
+## Sección 9: Chapter 9, “Tesler’s Law” [Entropy: 0.25]
 
 Tesler’s law, also known as the law of conservation and complexity, states
 that for any system there is a certain amount of complexity that cannot be
@@ -331,24 +178,22 @@ reduced.
 
 ---
 
-## Sección 13: Chapter 10, “Doherty Threshold”
+## Sección 10: Chapter 10, “Doherty Threshold” [Entropy: 0.268]
 
 Productivity soars when a computer and its users interact at a pace
 (<400 ms) that ensures that neither has to wait on the other.
 PREFACE | XI
 
--- 13 of 186 --
-
 ---
 
-## Sección 14: Chapter 11, “Applying Psychological Principles in Design”
+## Sección 11: Chapter 11, “Applying Psychological Principles in Design” [Entropy: 0.25]
 
 This chapter considers ways designers can internalize and apply the psychological principles we’ve looked at in this book and then articulate them
 through principles that relate back to the goals and priorities of their team.
 
 ---
 
-## Sección 15: Chapter 12, “With Power Comes Responsibility”
+## Sección 12: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.28]
 
 Here, we take a closer look at the implications of using psychology to create
 more intuitive products and experiences.
@@ -376,9 +221,6 @@ US military recognized the importance of optimizing equipment and cockpit
 interfaces for aircraft. Psychologists Paul Fitts and Alphonse Chapanis observed
 that humans are prone to errors, particularly when under stress, regardless of
 XII | PREFACE
-
--- 14 of 186 --
-
 1 Cliff Kuang and Robert Fabricant, User Friendly: How the Hidden Rules of Design Are Changing the Way
 We Live, Work, and Play (New York: MCD/Farrar, Straus and Giroux, 2019), 86.
 their training.1 They also recognized that machines could be designed to align
@@ -411,9 +253,6 @@ Xerox PARC with the publication of The Psychology of Human–Computer Interactio
 which had a profound impact on the development of personal computing, as they
 applied cognitive psychology to enhance human interaction with computers.
 PREFACE | XIII
-
--- 15 of 186 --
-
 Another significant contribution from Xerox PARC was Smalltalk, an objectoriented programming language that enabled easy manipulation of multiple
 windows, mimicking the way people organize physical documents on a desk.
 Smalltalk established the metaphorical desktop that would become a mental
@@ -449,9 +288,7 @@ XIV | PREFACE
 
 ---
 
-## Sección 16: Chapter 12, “With Power Comes Responsibility”
-
--- 16 of 186 --
+## Sección 13: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.34]
 
 Psychology continues to inform how we can design systems that align with
 how people actually are, rather than how we want them to be. While technology and our interactions with it will keep evolving, psychology offers a lens
@@ -479,9 +316,6 @@ Sebastopol, CA 95472
 support@oreilly.com
 https://www.oreilly.com/about/contact.html
 PREFACE | XV
-
--- 17 of 186 --
-
 We have a web page for this book, where we list errata, examples, and any
 additional information. You can access this page at https://oreil.ly/laws-of-UX-2e.
 For news and information about our books and courses, visit https://
@@ -510,12 +344,6 @@ And finally, I owe Angela Rufino a great deal of gratitude for all of her advice
 patience, and feedback throughout the process.
 XVI | PREFACE
 
--- 18 of 186 --
-
--- 19 of 186 --
-
--- 20 of 186 --
-
 Jakob’s Law
 Users spend most of their time on other sites, and they prefer your site to
 work the same way as all the other sites they already know.
@@ -536,9 +364,6 @@ need to processing the layout and visual cues on the page in order to understand
 ensures a lower cognitive load. In other words, the less mental energy users have
 to spend learning an interface, the more they can dedicate to achieving their
 | 1
-
--- 21 of 186 --
-
 1 Jakob Nielsen, “End of Web Design,” Nielsen Norman Group, July 22, 2000, https://oreil.ly/-kfBV.
 2 Jakob Nielsen, “Mental Models,” Nielsen Norman Group, October 17, 2010, https://oreil.ly/2zrw7.
 objectives. The easier we make it for people to achieve their goals, the more likely
@@ -572,9 +397,7 @@ a psychological concept known as mental models.2
 
 ---
 
-## Sección 17: Chapter 12, “With Power Comes Responsibility”
-
--- 22 of 186 --
+## Sección 14: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.25]
 
 3 Donald A. Norman, The Design of Everyday Things: Revised and Expanded Edition (New York: Basic
 Books, 2013), 10.
@@ -609,9 +432,6 @@ inputs, and even buttons originated from the design of their tactile counterpart
 and, therefore, builds upon the conceptual model of what these elements should
 do and how they should work. The affordance3 of these elements, which is the
 JAKOB’S LAW | 3
-
--- 23 of 186 --
-
 relationship between them and the user in regard to what actions are possible,
 is clear due to the mapping between them and similar controls in the physical
 world.
@@ -633,9 +453,6 @@ and led to the app’s user count dramatically shrinking. Snapchat failed to ens
 the mental model of its users would be aligned with the redesigned version of the
 app, and the resulting mismatch caused a major backlash.
 4 | LAWS OF UX
-
--- 24 of 186 --
-
 But major redesigns don’t always drive users away—just ask Google. Google
 has a history of allowing users to opt in to redesigned versions of its products,
 like Google Calendar, YouTube, and Gmail. When the company launched a
@@ -648,9 +465,6 @@ switch when they were ready.
 Figure 1-2. Before (left) and after (right) comparison of YouTube redesign in 2017
 (source: YouTube)
 JAKOB’S LAW | 5
-
--- 25 of 186 --
-
 Most ecommerce websites also leverage preexisting mental models. By making use of familiar patterns and conventions, shopping sites such as Etsy (Figure 1-3) can effectively keep customers focused on the important stuff—finding
 and purchasing products. By conforming to users’ expectations about the process
 of selecting products, adding them to the virtual cart, and checking out, designers
@@ -662,9 +476,7 @@ products rather than on learning new interaction patterns (source: Etsy, 2023)
 
 ---
 
-## Sección 18: Chapter 12, “With Power Comes Responsibility”
-
--- 26 of 186 --
+## Sección 15: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.265]
 
 The use of mental models to inform design isn’t isolated to the digital
 space. Some of my favorite examples can be found in the automotive industry,
@@ -677,9 +489,6 @@ mental model of a car seat and then matches the controls to that mental model.
 Figure 1-4. Seat controls in the 2023 Mercedes-Benz EQS SUV,
 informed by our mental model of a car seat (source: Mercedes-Benz, 2023)
 JAKOB’S LAW | 7
-
--- 27 of 186 --
-
 Building upon existing mental models through the use of common components and interaction patterns to ensure familiarity is an effective way to introduce people to new technology as well. Take, for example, Apple’s Vision Pro,
 which makes use of components like sidebars, tabs, and search fields that people
 recognize and already understand how to use (Figure 1-5). Content is placed
@@ -690,9 +499,6 @@ enabling users to place content comfortably in their physical environment.
 Figure 1-5. Apple’s Vision Pro makes use of common components and interaction patterns
 (source: Apple, 2023)
 8 | LAWS OF UX
-
--- 28 of 186 --
-
 TECHNIQUE
 User Personas
 Have you ever heard another designer within your company or organization refer to “the user,” but it wasn’t quite clear who exactly this elusive person was? The process of design becomes more difficult when
@@ -710,9 +516,6 @@ the needs and goals of the user, which is useful for prioritizing new
 features.
 Figure 1-6. User persona example
 JAKOB’S LAW | 9
-
--- 29 of 186 --
-
 Any details about the user that are relevant to the feature or product
 you’re building will be useful as long as they’re based on research that’s
 been conducted with real users—completely fictional personas can be
@@ -738,9 +541,6 @@ of the user. The intention here is to add an additional layer of context that pr
 their mindset. This section often includes direct quotes from user
 research.
 10 | LAWS OF UX
-
--- 30 of 186 --
-
 KEY CONSIDERATION
 Sameness
 The examples we explored demonstrate how we can leverage users’
@@ -778,9 +578,7 @@ JAKOB’S LAW | 11
 
 ---
 
-## Sección 19: Chapter 12, “With Power Comes Responsibility”
-
--- 31 of 186 --
+## Sección 16: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.373]
 
 to see that this would not be an ideal situation, and conventions would
 eventually emerge out of pure necessity.
@@ -811,12 +609,6 @@ the unconventional route, be sure to test your design with users to ensure they
 understand how it works.
 12 | LAWS OF UX
 
--- 32 of 186 --
-
--- 33 of 186 --
-
--- 34 of 186 --
-
 Fitts’s Law
 The time to acquire a target is a function of the distance to and size of the
 target.
@@ -839,9 +631,6 @@ dexterity of users.
 To aid in this endeavor, we can apply Fitts’s law, which states that the time
 it takes for a user to engage with an object is relative to its size and the distance
 | 2
-
--- 35 of 186 --
-
 1 Paul M. Fitts, “The Information Capacity of the Human Motor System in Controlling the Amplitude of
 Movement,” Journal of Experimental Psychology 47, no. 6 (1954): 381–91.
 to it. In other words, as the size of an object increases, the time to select it goes
@@ -859,9 +648,6 @@ in ergonomics and human–computer interaction to model the act of pointing,
 either physically or virtually.1
 Figure 2-1. Diagram depicting Fitts’s law
 16 | LAWS OF UX
-
--- 36 of 186 --
-
 Fitts also proposed an index of difficulty metric to quantify the difficulty of a
 target selection task in which the distance to the center of the target (D) is like a
 signal and the tolerance or width of the target (W) is like noise:
@@ -898,9 +684,7 @@ FITTS’S LAW | 17
 
 ---
 
-## Sección 20: Chapter 12, “With Power Comes Responsibility”
-
--- 37 of 186 --
+## Sección 17: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.37]
 
 a lesson that we must continuously remind ourselves of: to design better technology means to design for humans, and to design for humans
 means to anticipate our emotions, limitations, and preconceptions.
@@ -930,9 +714,6 @@ that the interface is easy to use. Small touch targets add to the perception tha
 interface is less usable, even if the user is able to avoid errors when attempting to
 select a target.
 18 | LAWS OF UX
-
--- 38 of 186 --
-
 2 Kiran Dandekar, Balasundar I. Raju, and Mandayam A. Srinivasan, “3-D Finite-Element Models of Human
 and Monkey Fingertips to Investigate the Mechanics of Tactile Sense,” Journal of Biomechanical Engineering 125, no. 5 (2003): 682–91.
 3 Steven Hoober, “Design for Fingers, Touch, and People, Part 1,” UXmatters, March 6, 2017, https://
@@ -964,9 +745,6 @@ where accuracy is the highest (Figure 2-2). They also tend to focus on the cente
 of the screen, as opposed to scanning from the upper left to the lower right as is
 common on desktop devices.
 FITTS’S LAW | 19
-
--- 39 of 186 --
-
 Figure 2-2. Smartphone touch accuracy (illustration based on research by Steven Hoober)
 Next, let‘s look at a common example of Fitts’s law: form text labels. By
 associating a text label element with an input, designers and developers can
@@ -980,9 +758,7 @@ Figure 2-3. Touch target area on text label and form input
 
 ---
 
-## Sección 21: Chapter 12, “With Power Comes Responsibility”
-
--- 40 of 186 --
+## Sección 18: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.28]
 
 Continuing with forms, another common example of Fitts’s law can be
 found in the placement of form submission buttons. These buttons are usually
@@ -1008,9 +784,6 @@ located on this screen and do not provide haptic feedback when the user engages
 with them. This of course requires the driver to divert their attention from the
 road to the screen to access these controls, so Fitts’s law is of critical importance.
 FITTS’S LAW | 21
-
--- 41 of 186 --
-
 Figure 2-5. Lack of ample space between actions increases the likelihood of accidental selection
 (source: LinkedIn, 2023)
 Apple CarPlay follows Fitts’s law, providing ample space between interactive
@@ -1019,9 +792,6 @@ actions.
 Figure 2-6. Providing sufficient space between items increases usability,
 minimizing the chances of selecting the wrong action (source: Apple, 2023)
 22 | LAWS OF UX
-
--- 42 of 186 --
-
 I mentioned thumb zones with regard to touch target positioning earlier,
 and how positioning touch targets in hard-to-reach areas of the interface makes
 them harder to select. With the arrival of the larger iPhone 6 and iPhone 6 Plus,
@@ -1038,9 +808,6 @@ its movement, as long as the target area has been reached. The edges of the
 screen act as natural walls for the cursor, allowing users to reach targets on the
 edge of the screen more easily. Consider example targets along the screen edge
 FITTS’S LAW | 23
-
--- 43 of 186 --
-
 of desktop operating systems such as macOS (Figure 2-8), where designers have
 taken advantage of infinite targets by placing the app bar along the bottom of the
 screen and the application menu at the top of the screen, making it easy for users
@@ -1058,9 +825,6 @@ keeping interactive content at the same depth, minimizing neck and body movement
 because sharp-edged target areas tend to focus our eyes to the edges, decreasing
 precision.
 24 | LAWS OF UX
-
--- 44 of 186 --
-
 Figure 2-9. Apple’s visionOS recommends placing primary content within the center of the field
 of view relative to the user’s head, keeping interactive content at the same depth, and rounding
 interactive elements (source: Apple, 2023)
@@ -1084,9 +848,7 @@ FITTS’S LAW | 25
 
 ---
 
-## Sección 22: Chapter 12, “With Power Comes Responsibility”
-
--- 45 of 186 --
+## Sección 19: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.361]
 
 Contextual interview
 Transition into the contextual interview portion of a meeting by
@@ -1120,12 +882,6 @@ ample space between controls to avoid accidental selection of adjacent actions,
 and placing the controls in areas of the UI that allow them to be easily selected.
 26 | LAWS OF UX
 
--- 46 of 186 --
-
--- 47 of 186 --
-
--- 48 of 186 --
-
 Miller’s Law
 The average person can keep only 7 (
 ± 2) items in their working memory.
@@ -1147,9 +903,6 @@ to attribute such dogma to Miller’s law. In this chapter, we’ll explore the 
 of Miller’s “magical number seven” and the real value Miller’s law has to provide
 to UX designers.
 | 3
-
--- 49 of 186 --
-
 1 George A. Miller, “The Magical Number Seven, Plus or Minus Two: Some Limits on Our Capacity for
 Processing Information,” Psychological Review 63, no. 2 (1956): 81–97.
 Origins
@@ -1184,9 +937,7 @@ and entering information into forms all require mental resources. While
 
 ---
 
-## Sección 23: Chapter 12, “With Power Comes Responsibility”
-
--- 50 of 186 --
+## Sección 20: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.295]
 
 2 John Sweller, “Cognitive Load During Problem Solving: Effects on Learning,” Cognitive Science 12, no. 2
 (1988): 257–85.
@@ -1211,9 +962,6 @@ the task that someone wishes to perform or is related to the information
 they want to find. Tasks will become more difficult and users might start
 to feel overwhelmed, ultimately leading to frustration or even task abandonment—both symptoms of a bad user experience.
 MILLER’S LAW | 31
-
--- 51 of 186 --
-
 TECHNIQUE
 Chunking
 Miller’s fascination with short-term memory and memory span centered
@@ -1238,9 +986,6 @@ digits—sometimes significantly more than seven numbers—making it difficult
 to process and remember. A phone number that has been formatted (chunked) is
 much easier to both process and memorize (Figure 3-2).
 32 | LAWS OF UX
-
--- 52 of 186 --
-
 Figure 3-2. A (US) phone number with and without chunking applied
 Let’s move on to a slightly more complex example. When browsing the web,
 you’ll inevitably be faced with the dreaded “wall of text” (Figure 3-3)—content
@@ -1257,9 +1002,6 @@ discernible sections, line length has been reduced to improve readability, text
 links have been underlined, and key words have been highlighted to provide
 contrast with the surrounding text.
 MILLER’S LAW | 33
-
--- 53 of 186 --
-
 Figure 3-4. “Wall of text” improved with hierarchy, formatting, and appropriate line lengths
 (source: Wikipedia, 2019)
 Now let’s take a look at how chunking is applied in a broader context.
@@ -1274,9 +1016,7 @@ Figure 3-5. Example of chunking applied to dense information (source: Bloomberg,
 
 ---
 
-## Sección 24: Chapter 12, “With Power Comes Responsibility”
-
--- 54 of 186 --
+## Sección 21: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.373]
 
 While chunking is incredibly useful for bringing order to information-dense
 experiences, it can be found in many other places as well. Take, for example,
@@ -1295,9 +1035,6 @@ to separate functionality within the toolbar into discernible groups.
 Figure 3-7. Google Docs utilizes chunking to separate functions into discernible groups
 (source: Google Docs, 2023)
 MILLER’S LAW | 35
-
--- 55 of 186 --
-
 These examples demonstrate how chunking can be used to visually organize
 any content for easier comprehension. It helps those who are consuming the
 content to understand the underlying relationships and information hierarchy.
@@ -1325,9 +1062,6 @@ number well beyond seven, yet it is still easy to scan the list thanks to
 clear categorization and the use of whitespace and vertical dividers to
 separate sub-groupings.
 36 | LAWS OF UX
-
--- 56 of 186 --
-
 3 Nelson Cowan, “The Magical Number 4 in Short-Term Memory: A Reconsideration of Mental Storage
 Capacity,” Behavioral and Brain Sciences 24, no. 1 (2001): 87–114.
 4 Wei Ji Ma, Masud Husain, and Paul M. Bays, “Changing Concepts of Working Memory,” Nature Neuroscience 17, no. 3 (2014): 347–56.
@@ -1348,10 +1082,6 @@ our ability to complete tasks. Miller’s law teaches us to use chunking to orga
 content into smaller clusters to help users process, understand, and memorize
 easily.
 MILLER’S LAW | 37
-
--- 57 of 186 --
-
--- 58 of 186 --
 
 Hick’s Law
 The time it takes to make a decision increases with the number and
@@ -1377,9 +1107,7 @@ eliminate anything that doesn’t contribute to them successfully achieving thei
 
 ---
 
-## Sección 25: Chapter 12, “With Power Comes Responsibility”
-
--- 59 of 186 --
+## Sección 22: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.373]
 
 goal(s). We, in essence, strive to simplify complexity through efficiency and
 elegance.
@@ -1418,9 +1146,6 @@ effort required to find what we are looking for increases. This increase in ment
 effort is commonly referred to as cognitive load, which we covered in Chapter 3,
 “Miller’s Law”.
 40 | LAWS OF UX
-
--- 60 of 186 --
-
 1 “Why Do We Have a Harder Time Choosing When We Have More Options?,” The Decision Lab, August 16,
 2018, https://oreil.ly/mmpYT.
 2 Barry Schwartz, The Paradox of Choice: Why More Is Less (New York: HarperCollins, 2004).
@@ -1441,9 +1166,6 @@ Barry Schwartz and relates the ideas of psychologist Herbert A. Simon
 from the 1950s to the psychological stress that most consumers face
 today.
 HICK’S LAW | 41
-
--- 61 of 186 --
-
 3 Sheena S. Iyengar and Mark R. Lepper, “When Choice Is Demotivating: Can One Desire Too Much of a Good
 Thing?,” Journal of Personality and Social Psychology 79, no. 6 (2000): 995–1006.
 Schwartz was inspired by a study conducted by psychologists
@@ -1482,18 +1204,13 @@ within menus.
 
 ---
 
-## Sección 26: Chapter 12, “With Power Comes Responsibility”
-
--- 62 of 186 --
+## Sección 23: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.31]
 
 Figure 4-2. Modified TV remotes that simplify the “interface”
 (sources: Sam Weller via Twitter, 2015 [left]; Luke Hannon via Twitter, 2016 [right])
 Figure 4-3. A smart TV remote, which simplifies the controls to only those absolutely necessary
 (source: Apple, 2023)
 HICK’S LAW | 43
-
--- 63 of 186 --
-
 Now that we’ve looked at some examples of Hick’s law at work in the physical world, let’s shift our focus to the digital. As we’ve seen already, the number of
 choices available can have a direct impact on the time it takes to make a decision.
 We can ensure better user experiences by providing the right choices at the right
@@ -1512,9 +1229,6 @@ users because it mimics the way we actually learn: we often learn best by doing
 and building upon what we already know. By providing steps in a risk-free environment, we can enable new users to start interacting with an app without them
 feeling overwhelmed by an endless amount of possibilities for getting started.
 44 | LAWS OF UX
-
--- 64 of 186 --
-
 Figure 4-5. Screenshot from Notion’s progressive onboarding experience (source: Notion, 2023)
 Another common example of Hick’s law in action can be found with streaming services and the choices we’re presented when deciding on what to watch.
 Take, for example, Netflix, which found that its customers took an average of
@@ -1527,9 +1241,6 @@ others have enjoyed them.
 Figure 4-6. Netflix’s “Trending Now” and “Popular on Netflix” sections provide more weight to
 specific options via social proof (source: Netflix, 2023)
 HICK’S LAW | 45
-
--- 65 of 186 --
-
 TECHNIQUE
 Card Sorting
 As we’ve seen in the previous examples, the number of choices can have
@@ -1548,9 +1259,6 @@ The steps required during this exercise are relatively straightforward.
 While there are a variety of approaches to card sorting (closed versus
 open, moderated versus unmoderated), they all follow the same general
 46 | LAWS OF UX
-
--- 66 of 186 --
-
 4 In a closed exercise, the groups are predefined by the researcher.
 5 Jakob Nielsen, “Card Sorting: Pushing Users Beyond Terminology Matches,” Nielsen Norman Group,
 August 23, 2009, https://oreil.ly/bxhNN.
@@ -1584,9 +1292,7 @@ HICK’S LAW | 47
 
 ---
 
-## Sección 27: Chapter 12, “With Power Comes Responsibility”
-
--- 67 of 186 --
+## Sección 24: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.415]
 
 KEY CONSIDERATION
 Oversimplification
@@ -1617,9 +1323,6 @@ to simplify an interface, it can also make it harder to perform tasks or
 find information. This is especially true if the icons aren’t immediately
 recognizable to users, who more often than not will have a wide spectrum of knowledge and experience.
 48 | LAWS OF UX
-
--- 68 of 186 --
-
 Figure 4-8. Screenshot of the app bar from Facebook’s iOS app
 (source: Facebook, 2023)
 Another complicating factor is that similar icons may be used to
@@ -1643,9 +1346,6 @@ more critical when using icons for important elements such as navigation
 (Figure 4-9). The addition of text labels effectively reduces the abstraction of the icons alone by including additional information to help convey
 meaning and increase usability.
 HICK’S LAW | 49
-
--- 69 of 186 --
-
 Figure 4-9. Text labels accompany icons in the navigation
 on the X (formerly Twitter) web app (source: X, 2023)
 Conclusion
@@ -1662,12 +1362,6 @@ that isn’t helping the user achieve their goal, a critical part of the design 
 The less they have to think about what they need to do to reach their goal, the
 more likely it is they will achieve it.
 50 | LAWS OF UX
-
--- 70 of 186 --
-
--- 71 of 186 --
-
--- 72 of 186 --
 
 Postel’s Law
 Be conservative in what you do, be liberal in what you accept from others.
@@ -1694,9 +1388,7 @@ and form factors. To be capable of meeting users’ expectations, the products
 
 ---
 
-## Sección 28: Chapter 12, “With Power Comes Responsibility”
-
--- 73 of 186 --
+## Sección 25: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.34]
 
 1 Jon Postel, “RFC 793: Transmission Control Protocol,” September 1981, https://oreil.ly/uxMIB.
 and services designers build must be robust and adaptable. Postel’s law, also
@@ -1730,9 +1422,6 @@ of robustness: be conservative in what you do, be liberal in what you accept fro
 others.”1 The idea was that programs that send data (either to other machines or
 to different programs on the same machine) should conform to specifications,
 54 | LAWS OF UX
-
--- 74 of 186 --
-
 while programs that receive data should be robust enough to accept and parse
 nonconformant input, as long as the meaning is clear.
 Postel’s principle was originally intended to be a guideline for network engineering, specifically in regard to the transfer of data across computer networks.
@@ -1768,9 +1457,7 @@ POSTEL’S LAW | 55
 
 ---
 
-## Sección 29: Chapter 12, “With Power Comes Responsibility”
-
--- 75 of 186 --
+## Sección 26: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.265]
 
 2 “Why Do We Make Worse Decisions at the End of the Day?,” The Decision Lab, August 15, 2019, https://
 oreil.ly/0qEbe.
@@ -1802,9 +1489,6 @@ facial recognition system that enables Apple users to authenticate on their mobi
 devices without the need to provide a username or a password each time they
 attempt to unlock their devices.
 56 | LAWS OF UX
-
--- 76 of 186 --
-
 3 Ethan Marcotte, “Responsive Web Design,” A List Apart, May 25, 2010, https://oreil.ly/RYGX0.
 Figure 5-1. Face ID lets you securely unlock your iPhone or iPad, authenticate purchases, sign in
 to apps, and more (source: Apple, 2023)
@@ -1826,9 +1510,6 @@ creating web experiences, and it embodies the philosophy of accepting a broad
 spectrum of input while providing output that is reliably adaptable and not
 quarantined to specific dimensions or devices.
 POSTEL’S LAW | 57
-
--- 77 of 186 --
-
 Figure 5-2. Responsive web design embraces the fluid nature of the web
 Progressive enhancement, which describes a strategy for web design focusing
 on content and a gradual layering of styling and interaction, can also be considered an example of Postel’s law. First introduced by Steve Champeon and Nick
@@ -1854,9 +1535,7 @@ layer of functional enhancement is added by allowing the user to select the
 
 ---
 
-## Sección 30: Chapter 12, “With Power Comes Responsibility”
-
--- 78 of 186 --
+## Sección 27: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.265]
 
 microphone icon to invoke a voice assistant that will transcribe speech to text,
 thereby extending the input methods of the search box without taking away from
@@ -1878,9 +1557,6 @@ manner within a number of well-known companies—pictured here, from left to rig
 Carbon Design System by IBM, Lightning Design System by Salesforce, and Polaris by Shopify
 (source: IBM, Salesforce, Shopify, 2023)
 POSTEL’S LAW | 59
-
--- 79 of 186 --
-
 TECHNIQUE
 User Interviews
 Postel’s law is about bridging the communication gap between humans
@@ -1915,9 +1591,6 @@ conversation can lead to unexpected, fruitful insights. A general
 guide of themes to discuss can sometimes be more useful than a
 list of rigid questions.
 60 | LAWS OF UX
-
--- 80 of 186 --
-
 Build rapport with the interviewee
 An important yet sometimes overlooked step in conducting a user
 interview is making the interviewee feel comfortable. To build rapport with the interviewee, start by asking them about themselves,
@@ -1953,9 +1626,7 @@ POSTEL’S LAW | 61
 
 ---
 
-## Sección 31: Chapter 12, “With Power Comes Responsibility”
-
--- 81 of 186 --
+## Sección 28: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.325]
 
 such as Italian (Figure 5-5). Text orientation can also vary per region of
 the world—from left-to-right in many Western countries to right-to-left or
@@ -1977,9 +1648,6 @@ importance as the font size increases.
 Figure 5-6. Amazon.com adapting to minimum font size customization
 (source: Amazon, 2023)
 62 | LAWS OF UX
-
--- 82 of 186 --
-
 Conclusion
 Postel’s law can help us bridge the gap between human and machine. By designing systems that liberally accept variable human input and translate it into a
 structured, machine-friendly output, we transfer this burden away from users
@@ -1989,10 +1657,6 @@ scale and complexity. While it also means there is an increased opportunity for
 things to go wrong, we can anticipate and plan for this in design and thus ensure
 our work is more resilient.
 POSTEL’S LAW | 63
-
--- 83 of 186 --
-
--- 84 of 186 --
 
 Peak–End Rule
 People judge an experience largely based on how they felt at its peak and
@@ -2014,9 +1678,6 @@ feelings during the most emotionally intense moments and at the end are averaged
 determine whether we’d be willing to do it again or recommend it to others. This
 observation, known as the peak–end rule, strongly suggests we should pay close
 | 6
-
--- 85 of 186 --
-
 1 Daniel Kahneman, Barbara L. Fredrickson, Charles A. Schreiber, and Donald A. Redelmeier, “When More
 Pain Is Preferred to Less: Adding a Better End,” Psychological Science 4, no. 6 (1993): 401–5.
 2 Donald A. Redelmeier and Daniel Kahneman, “Patients’ Memories of Painful Medical Treatments: RealTime and Retrospective Evaluations of Two Minimally Invasive Procedures,” Pain 66, no. 1 (1996): 3–8.
@@ -2055,9 +1716,7 @@ experience positively because of the less painful end.
 
 ---
 
-## Sección 32: Chapter 12, “With Power Comes Responsibility”
-
--- 86 of 186 --
+## Sección 29: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.25]
 
 4 Daniel Kahneman and Amos Tversky, “Subjective Probability: A Judgment of Representativeness,” Cognitive
 Psychology 3, no. 3 (1972): 430–54.
@@ -2092,9 +1751,6 @@ on how we perceive an experience: we recall not the sum of how we felt
 throughout the experience but the average of how we felt during its peak
 emotional moments and at its end.
 PEAK–END RULE | 67
-
--- 87 of 186 --
-
 The peak–end rule is related to another cognitive bias known as the
 recency effect, which states that items near the end of a sequence are
 the easiest to recall.
@@ -2118,9 +1774,6 @@ the Spotify user experience journey that is bound to create a lasting positive
 impression.
 Figure 6-1. Spotify Wrapped 2022 (source: Spotify, 2022)
 68 | LAWS OF UX
-
--- 88 of 186 --
-
 6 Candice Hogan, “How Uber Leverages Applied Behavioral Science at Scale,” Uber Engineering (blog),
 January 28, 2019, https://oreil.ly/n1csD.
 Positive events aren’t the only ones that have an impact on how people feel
@@ -2149,9 +1802,7 @@ PEAK–END RULE | 69
 
 ---
 
-## Sección 33: Chapter 12, “With Power Comes Responsibility”
-
--- 89 of 186 --
+## Sección 30: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.265]
 
 and streaks, which celebrate learning milestones (Figure 6-3). These celebratory
 moments represent the accumulation of all the work that goes into learning
@@ -2167,9 +1818,6 @@ completed, the user is rewarded a new theme in the interface (Figure 6-4). These
 details reinforce the feeling of accomplishment and enhance the experience,
 creating positive mental snapshots for people that use this service.
 70 | LAWS OF UX
-
--- 90 of 186 --
-
 Figure 6-4. Legendary Level unlock screen (source: Duolingo, 2023)
 TECHNIQUE
 Journey Mapping
@@ -2181,9 +1829,6 @@ also creates a deeper shared understanding of the customer experience
 and aids in identifying the challenges and opportunities present within an
 experience.
 PEAK–END RULE | 71
-
--- 91 of 186 --
-
 Figure 6-5. Example journey map
 Like all design exercises, journey maps can and should be tailored to
 the purposes and goals of the project and be grounded in research that’s
@@ -2201,9 +1846,6 @@ the persona in that scenario. For example, Jane (persona) is using a
 ride-share service app to order a ride (scenario) that she expects to
 arrive at her exact location in 10 minutes or less (expectation).
 72 | LAWS OF UX
-
--- 92 of 186 --
-
 Experience
 The next part of a journey map is the experience section, which
 illustrates the actions, mindset, and emotions of the end user
@@ -2232,9 +1874,6 @@ of waiting (opportunity). That feature will need to be designed and
 developed by the product team (internal ownership) and can be
 monitored according to post-ride ratings (metric).
 PEAK–END RULE | 73
-
--- 93 of 186 --
-
 KEY CONSIDERATION
 Negativity Bias
 We have a tendency as humans not only to register negative events more
@@ -2262,9 +1901,7 @@ Figure 6-6. Real-time password validation (source: Mailchimp, 2023)
 
 ---
 
-## Sección 34: Chapter 12, “With Power Comes Responsibility”
-
--- 94 of 186 --
+## Sección 31: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.325]
 
 Setbacks can also be opportunities, however, if the right fallbacks
 are in place. Take, for example, the all-too-common 404 error page.
@@ -2278,9 +1915,6 @@ to choose the right approach.
 Figure 6-7. Various 404 pages that use humor and brand personality
 (sources [clockwise from top left]: Dribbble, Spotify, Pixar, and GitHub, 2023)
 PEAK–END RULE | 75
-
--- 95 of 186 --
-
 Conclusion
 Our memories are rarely a perfectly accurate record of events. How users recall
 an experience will determine how likely they are to use a product or service
@@ -2291,12 +1925,6 @@ moments make a lasting good impression. By paying close attention to these key
 moments of an experience, we can ensure users recollect the experience as a
 whole positively.
 76 | LAWS OF UX
-
--- 96 of 186 --
-
--- 97 of 186 --
-
--- 98 of 186 --
 
 Aesthetic–Usability
 Effect
@@ -2316,9 +1944,6 @@ be attractive design. In fact, an aesthetically pleasing design can influence us
 cognitive abilities, increases the perception of usability, and extends credibility.
 In other words, an aesthetically pleasing design creates a positive response in
 | 7
-
--- 99 of 186 --
-
 1 F. Gregory Ashby, Alice M. Isen, and And U. Turken, “A Neuropsychological Theory of Positive Affect and
 Its Influence on Cognition,” Psychological Review 106, no. 3 (1999): 529–50.
 2 Masaaki Kurosu and Kaori Kashimura, “Apparent Usability vs. Inherent Usability: Experimental Analysis
@@ -2342,9 +1967,6 @@ Kurosu and Kashimura tested 26 layout patterns of ATM interfaces
 (Figure 7-1) with 252 participants and asked each of them to rate each design
 according to both functionality and aesthetics.
 80 | LAWS OF UX
-
--- 100 of 186 --
-
 Figure 7-1. Sample layout patterns (source: Kurosu and Kashimura, 1995)
 The participants used a 10-point rating scale to evaluate the usability and
 visual attractiveness of each design. The results showed that their perception of
@@ -2352,9 +1974,6 @@ usability was strongly influenced by their perception of the attractiveness of t
 interface (Figure 7-2). In other words, apparent usability is less correlated with
 inherent ease of use than with apparent beauty.
 AESTHETIC–USABILITY EFFECT | 81
-
--- 101 of 186 --
-
 3 Noam Tractinsky, Adi S. Katz, and Dror Ikar, “What Is Beautiful Is Usable,” Interacting with Computers 13,
 no. 2 (2000): 127–45.
 Figure 7-2. Correlation of usability with beauty (source: Kurosu and Kashimura, 1995)
@@ -2368,9 +1987,7 @@ explored, as have the effects of aesthetics on usability testing (see the Key Co
 
 ---
 
-## Sección 35: Chapter 12, “With Power Comes Responsibility”
-
--- 102 of 186 --
+## Sección 32: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.28]
 
 PSYCHOLOGY CONCEPT
 Automatic Cognitive Processing
@@ -2406,9 +2023,6 @@ effort and optimizing performance. System 1 handles most of what we
 think and do, and System 2 takes over when necessary. The implications
 of this when it comes to digital products and experiences are monumental. We rely on System 1 to quickly identify information relevant to our
 AESTHETIC–USABILITY EFFECT | 83
-
--- 103 of 186 --
-
 4 Gitte Lindgaard, Gary Fernandes, Cathy Dudek, and Judith M. Brown, “Attention Web Designers: You Have
 50 Milliseconds to Make a Good First Impression!,” Behaviour and Information Technology 25, no. 2
 (2006): 115–26.
@@ -2433,9 +2047,6 @@ generations of designers with its products’ balance of functional minimalism a
 aesthetic beauty. Rams’s “less but better” approach, which emphasizes form following function, has directly resulted in some of the most well-designed products
 ever produced.
 84 | LAWS OF UX
-
--- 104 of 186 --
-
 Take, for example, the Braun SK4 record player (Figure 7-3), nicknamed
 “Snow White’s Coffin” due to its white metal casing and transparent lid. Constructed of powder-coated sheet metal with elmwood side panels, it stood in drastic contrast to the lavishly ornamented all-wood products more typically available
 to consumers at the time of its production in 1956. The SK4 was one of Braun’s
@@ -2451,9 +2062,7 @@ AESTHETIC–USABILITY EFFECT | 85
 
 ---
 
-## Sección 36: Chapter 12, “With Power Comes Responsibility”
-
--- 105 of 186 --
+## Sección 33: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.28]
 
 Now let’s take a look at an example of a brand that in many ways continues
 Braun’s legacy of functional minimalism balanced by refined aesthetics: Apple.
@@ -2472,9 +2081,6 @@ issues, but people are much more likely to overlook these issues due to the
 pleasing aesthetic that’s at the core of the design—the aesthetic–usability effect at
 work.
 86 | LAWS OF UX
-
--- 106 of 186 --
-
 Figure 7-5. Screenshot of various Apple interface designs (source: Apple, 2023)
 TECHNIQUE
 Usability Testing
@@ -2498,9 +2104,6 @@ it. This includes defining the objectives, writing a test script, and
 finding people to take part. Begin by establishing the goals of your
 test and what you are trying to learn. Is the goal to ensure how
 AESTHETIC–USABILITY EFFECT | 87
-
--- 107 of 186 --
-
 5 Mayya Azarova, “The Hawthorne Effect or Observer Bias in User Research,” Nielsen Norman Group, May 21,
 2023, https://oreil.ly/-UY6W.
 well users understand a specific feature or workflow? Document
@@ -2535,11 +2138,9 @@ Once you’ve conducted the test and captured data, it’s time to
 synthesize it into insights that can be turned into actionable next
 88 | LAWS OF UX
 
--- 108 of 186 --
-
 ---
 
-## Sección 37: Chapter 12, “With Power Comes Responsibility”
+## Sección 34: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.325]
 
 steps. Synthesis is best done as a group activity: include everyone
 who participated directly in the interview process. It’s even better if
@@ -2569,9 +2170,6 @@ you should learn more about. This is a totally valid outcome, and
 you can use those insights as the starting point for additional
 research.
 AESTHETIC–USABILITY EFFECT | 89
-
--- 109 of 186 --
-
 6 Andreas Sonderegger and Jürgen Sauer, “The Influence of Design Aesthetics in Usability Testing: Effects on
 User Performance and Perceived Usability,” Applied Ergonomics 41, no. 3 (2010): 403–10.
 KEY CONSIDERATION
@@ -2593,9 +2191,6 @@ model.” What this study implies is that perceived aesthetic quality
 has the potential to mask usability issues to an extent. This effect
 applies even when the device isn’t actually easier to use, and it could
 90 | LAWS OF UX
-
--- 110 of 186 --
-
 be problematic when it comes to usability tests, where identifying issues
 is critical.
 Keeping in mind the potential of aesthetics to influence perceived
@@ -2611,10 +2206,6 @@ likely to overlook minor usability issues. While this might seem like a good
 thing, it can actually mask usability problems and prevent issues from being
 discovered during usability testing.
 AESTHETIC–USABILITY EFFECT | 91
-
--- 111 of 186 --
-
--- 112 of 186 --
 
 1 Mark P. Mattson, “Superior Pattern Processing Is the Essence of the Evolved Human Brain,” Frontiers in
 Neuroscience 8, no. 8 (2014): 265.
@@ -2640,9 +2231,7 @@ objects.1 These traits have proven valuable for the survival of our species, and
 
 ---
 
-## Sección 38: Chapter 12, “With Power Comes Responsibility”
-
--- 113 of 186 --
+## Sección 35: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.28]
 
 2 Hedwig von Restorff, “Über die Wirkung von Bereichsbildungen im Spurenfeld,” Psychologische Forschung 18 (1933): 299–342.
 3 Shelley E. Taylor and Susan T. Fiske, “Salience, Attention, and Attribution: Top of the Head Phenomena,”
@@ -2672,9 +2261,6 @@ distinctiveness. Her initial findings would later be corroborated by research, s
 as that by Shelley Taylor and Susan Fiske (1978), suggesting that people are
 drawn to salient, novel, surprising, or distinctive stimuli.3
 94 | LAWS OF UX
-
--- 114 of 186 --
-
 4 Jakob Nielsen, “Tunnel Vision and Selective Attention,” Nielsen Norman Group, August 26, 2012,
 https://oreil.ly/8OHG-.
 5 Klaus Oberauer, “Working Memory and Attention—A Conceptual Analysis and Review,” Journal of Cognition
@@ -2704,9 +2290,6 @@ digital products and services is significant, since the interfaces people
 interact with must guide their attention, prevent them from being overwhelmed or distracted, and help them in finding the relevant information
 or action.
 VON RESTORFF EFFECT | 95
-
--- 115 of 186 --
-
 6 Kara Pernice, “Banner Blindness Revisited: Users Dodge Ads on Mobile and Desktop,” Nielsen Norman
 Group, April 22, 2018, https://oreil.ly/d1wTo.
 7 Raluca Budiu, “Change Blindness in UX: Definition,” Nielsen Norman Group, September 23, 2018, https://
@@ -2739,9 +2322,7 @@ drawn to the elements in question.
 
 ---
 
-## Sección 39: Chapter 12, “With Power Comes Responsibility”
-
--- 116 of 186 --
+## Sección 36: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.265]
 
 Examples
 As you can imagine, examples of the von Restorff effect can be found in every
@@ -2766,9 +2347,6 @@ communicate the importance of the content within the modal.
 Figure 8-1. Example of how contrast can be used to draw attention to important actions
 and help users avoid accidentally selecting the wrong option
 VON RESTORFF EFFECT | 97
-
--- 117 of 186 --
-
 Let’s take the button example a step further and look at an interface that
 moves beyond the simple use of color to create contrast. The floating action button (FAB), a design pattern introduced by Google’s Material Design (Figure 8-2),
 “performs the primary, or most common, action on a screen.” By providing
@@ -2789,9 +2367,6 @@ option (Figure 8-3) through the use of color (the darker color is applied to the
 popular” element at the top), and position (placing the card close to the center of
 the display).
 98 | LAWS OF UX
-
--- 118 of 186 --
-
 Figure 8-3. An example of the von Restorff effect in a pricing table (source: Notion, 2023)
 The von Restorff effect can also be seen in design elements intended to grab
 our attention. Take notifications, for example (Figure 8-4), which are meant to
@@ -2800,9 +2375,6 @@ elements can be found in almost every app or service and are designed to grab
 our attention, for better or worse.
 Figure 8-4. Employing the von Restorff effect to call attention to notifications (source: iOS, 2023)
 VON RESTORFF EFFECT | 99
-
--- 119 of 186 --
-
 We can extend the thinking behind the von Restorff effect and apply it
 to design going beyond singular elements as well. Take, for example, news
 websites, which commonly place emphasis on featured content in order to make
@@ -2827,9 +2399,7 @@ create contrast and how they affect different people:
 
 ---
 
-## Sección 40: Chapter 12, “With Power Comes Responsibility”
-
--- 120 of 186 --
+## Sección 37: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.28]
 
 8 “Understanding Success Criterion 1.4.3,” World Wide Web Consortium, September 2023.
 https://oreil.ly/GfD4i.
@@ -2863,9 +2433,6 @@ overused. The only thing worse than no contrast is way too much of
 it, which not only can dilute the power of the elements or content
 that you intended to stand out but can also visually overwhelm
 VON RESTORFF EFFECT | 101
-
--- 121 of 186 --
-
 people. It’s wise to use restraint when placing emphasis on visual
 elements to ensure they don’t compete with each other.
 The importance of moderation is even clearer when we take
@@ -2897,9 +2464,6 @@ remote and scalable studies.
 Common types of eye-tracking studies include heat map, gaze plot,
 fixation duration, attentional bias, and comparative studies. The type of
 102 | LAWS OF UX
-
--- 122 of 186 --
-
 study chosen depends on the research question and goals of the study,
 as well as the characteristics of the interface or object being studied. The
 following steps are typically involved in conducting an eye-tracking study:
@@ -2933,9 +2497,7 @@ VON RESTORFF EFFECT | 103
 
 ---
 
-## Sección 41: Chapter 12, “With Power Comes Responsibility”
-
--- 123 of 186 --
+## Sección 38: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.34]
 
 Conclusion
 The von Restorff effect is a powerful guideline for how to use contrast to direct
@@ -2949,12 +2511,6 @@ visually competing with each other, their power is diluted and they no longer
 stand out among the other elements. Additionally, we must be aware of how
 visual properties we use to create contrast are perceived by those with vision deficiencies and how those properties might affect people with motion sensitivities.
 104 | LAWS OF UX
-
--- 124 of 186 --
-
--- 125 of 186 --
-
--- 126 of 186 --
 
 Tesler’s Law
 Tesler’s law, also known as the law of conservation of complexity, states
@@ -2977,9 +2533,6 @@ complexity cannot be reduced any further but can only be transferred from one
 place to another. At this point, it finds its way either into the user interface or
 into the processes and workflows of designers and developers.
 | 9
-
--- 127 of 186 --
-
 1 Dan Saffer, Designing for Interaction: Creating Smart Applications and Clever Devices (Berkeley, CA:
 Peachpit Press, 2006), 56.
 Origins
@@ -3007,9 +2560,6 @@ etc. We get an incredible amount of benefit from our cognitive bias, but
 there are some downsides as well: it often leads to errors in memory,
 judgment, and decision making.
 108 | LAWS OF UX
-
--- 128 of 186 --
-
 2 Shane Parrish, “Complexity Bias: Why We Prefer Complicated to Simple,” Farnam Street, January 8, 2018,
 https://oreil.ly/i9di1.
 3 Hilary H. Farris and Russell Revlin, “Sensible Reasoning in Two Tasks: Rule Discovery and Hypothesis
@@ -3046,9 +2596,7 @@ TESLER’S LAW | 109
 
 ---
 
-## Sección 42: Chapter 12, “With Power Comes Responsibility”
-
--- 129 of 186 --
+## Sección 39: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.295]
 
 suggestions for the recipient as you begin to type their address, based on prior
 emails and/or your contacts (Figure 9-1). The complexity isn’t entirely gone; it’s
@@ -3067,9 +2615,6 @@ and time. It should be noted that Smart Compose is not the first time-saving
 feature introduced to Gmail by way of AI—there’s also Smart Reply, which scans
 an email for context and suggests several relevant quick-reply options.
 110 | LAWS OF UX
-
--- 130 of 186 --
-
 Figure 9-2. Example of Gmail’s Smart Compose feature (source: Gmail, 2023)
 Another place that Tesler’s law can commonly be observed is in the ubiquitous checkout process found on online shopping sites. Purchasing items online
 requires customers to provide lots of repetitive information, including billing and
@@ -3088,17 +2633,11 @@ any additional information. The customer experience thus becomes significantly
 less complex, with the complexity again shifted to the designers and developers
 responsible for the service.
 TESLER’S LAW | 111
-
--- 131 of 186 --
-
 Figure 9-3. The ability to inherit a shipping address from billing details within an ecommerce
 checkout simplifies the process and removes the need to type redundant information
 Figure 9-4. Apple Pay makes the checkout process as easy as selecting the payment option and
 verifying your purchase (source: Apple, 2023)
 112 | LAWS OF UX
-
--- 132 of 186 --
-
 Retail is an area in which you can find many innovative ways to abstract
 complexity away from users. Take, for example, Amazon’s Go stores (Figure 9-5),
 which provide a checkout-free shopping experience. First appearing as an experiment in downtown Seattle, they are now popping up in major metropolitan
@@ -3122,9 +2661,6 @@ what outcome they want via natural language. This intent-based paradigm sits
 in stark contrast to the command-based paradigm we’ve lived with for the last
 couple of decades, which requires commands via user actions within a graphical
 TESLER’S LAW | 113
-
--- 133 of 186 --
-
 user interface (GUI), resulting in feedback from the system. With intent-based
 interaction, the complexity of the system is abstracted away from the user, enabling them to simply describe the outcome they’d like to see. Take, for example,
 Spark, from product analytics company Mixpanel, which enables users to conduct in-depth analyses of data by simply asking questions in natural language
@@ -3141,9 +2677,7 @@ them access to the same powerful features.
 
 ---
 
-## Sección 43: Chapter 12, “With Power Comes Responsibility”
-
--- 134 of 186 --
+## Sección 40: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.388]
 
 4 John M. Carroll and Mary Beth Rosson, “Paradox of the Active User,” in Interfacing Thought: Cognitive
 Aspects of Human–Computer Interaction, ed. John M. Carroll (Cambridge, MA: MIT Press, 1987).
@@ -3169,9 +2703,6 @@ design it to fit within the context of use so that it can help these active
 new users, no matter what path they choose to take (e.g., tooltips with
 helpful information).
 TESLER’S LAW | 115
-
--- 135 of 186 --
-
 TECHNIQUE
 Progressive Disclosure
 Progressive disclosure is an interaction design technique that displays
@@ -3190,9 +2721,6 @@ quickly scan and find relevant information without needing to dig through
 a mountain of content in the process.
 Figure 9-7. Progressive disclosure menu on Stripe.com (source: Stripe, 2023)
 116 | LAWS OF UX
-
--- 136 of 186 --
-
 Conclusion
 Tesler’s law is important for designers to be aware of because it relates to a
 fundamental challenge we face throughout our work: how we manage complexity. We must first acknowledge that with any process, there will be a necessary
@@ -3204,10 +2732,6 @@ complexity from our interfaces, or else we ship that complexity to our users. Th
 can result in confusion, frustration, and a bad user experience. Where possible,
 designers and developers should handle complexity.
 TESLER’S LAW | 117
-
--- 137 of 186 --
-
--- 138 of 186 --
 
 Doherty Threshold
 Productivity soars when a computer and its users interact at a pace
@@ -3230,9 +2754,6 @@ Emotions can quickly turn to frustration and leave a negative lasting impact
 when users who are trying to achieve a task are met with slow processing, lack of
 feedback, or excessive load times. Often overlooked as more a technical best practice, speed should be considered an essential design feature that is core to good
 | 10
-
--- 139 of 186 --
-
 user experiences. Whether it’s the amount of time the product or service takes
 to initially load, how fast it is to respond to interactions and provide feedback, or
 how quickly subsequent pages load, the speed at which a system responds is key
@@ -3263,9 +2784,7 @@ suffers.
 
 ---
 
-## Sección 44: Chapter 12, “With Power Comes Responsibility”
-
--- 140 of 186 --
+## Sección 41: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.283]
 
 1 The original study has been lost to time, but you can read a copy of it on Jim Elliott’s Mainframe Blog:
 https://oreil.ly/8Gpua.
@@ -3300,9 +2819,6 @@ by intense and focused concentration on the present, combined with a
 sense of total control. For example, a task that’s too difficult can lead to
 heightened frustration, while a task that’s too easy can lead to boredom.
 DOHERTY THRESHOLD | 121
-
--- 141 of 186 --
-
 3 Joshua Gold and Joseph Ciorciari, “A Review on the Role of the Neuroscience of Flow States in the Modern
 World,” Behavioral Sciences 10, no. 9 (2020): 137, https://doi.org/10.3390/bs10090137.
 Finding the right balance requires matching the challenge with the skill of
@@ -3320,9 +2836,6 @@ to users in a timely fashion while the necessary processing is happening in the
 background. This technique helps to create the perception that a website or an
 app is performing faster than it actually is.
 122 | LAWS OF UX
-
--- 142 of 186 --
-
 One common example used by platforms such as Instagram (Figure 10-2)
 is the presentation of a skeleton screen when content is loading. This technique
 makes the site appear to load faster by instantly displaying placeholder blocks
@@ -3334,9 +2847,6 @@ material loads by reserving space for each item up front.
 Figure 10-2. Instagram’s skeleton screen helps the site appear to load faster
 (source: Instagram, 2023)
 DOHERTY THRESHOLD | 123
-
--- 143 of 186 --
-
 4 Brad A. Myers, “The Importance of Percent-Done Progress Indicators for Computer–Human Interfaces,”
 in CHI ’85: Proceedings of the SIGCHI Conference on Human Factors in Computing Systems (New York:
 Association for Computing Machinery, 1985), 11–17.
@@ -3360,9 +2870,7 @@ its accuracy.4
 
 ---
 
-## Sección 45: Chapter 12, “With Power Comes Responsibility”
-
--- 144 of 186 --
+## Sección 42: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.295]
 
 This simple UI pattern is effective for several reasons:
 • It reassures people that their action is being processed. •
@@ -3379,9 +2887,6 @@ improves the overall user experience by reassuring people that the app is loadin
 Figure 10-4. Gmail uses a simple yet distinctive animation to shorten the perceived wait time
 (source: Gmail, 2023)
 DOHERTY THRESHOLD | 125
-
--- 145 of 186 --
-
 5 Robert B. Miller, “Response Time in Man–Computer Conversational Transactions,” in Proceedings of
 the December 9–11, 1968, Fall Joint Computer Conference, Part I, vol. 33 (New York: Association for
 Computing Machinery, 1968), 267–77.
@@ -3403,9 +2908,6 @@ an error afterward in the event that the action isn’t successful. The required
 processing still happens in the background, but the user’s perception of the app’s
 performance is improved.
 126 | LAWS OF UX
-
--- 146 of 186 --
-
 Figure 10-6. Instagram optimistically displays comments on photos before they are actually
 posted to improve perceived performance (source: Instagram, 2023)
 KEY CONSIDERATION
@@ -3424,9 +2926,6 @@ too-fast response time can result in mistrust if it doesn’t align with the
 user’s expectations about the task being performed. Purposefully adding
 a delay to a process can actually increase its perceived value and instill
 DOHERTY THRESHOLD | 127
-
--- 147 of 186 --
-
 6 Mark Wilson, “The UX Secret That Will Ruin Apps for You,” Fast Company, July 6, 2016,
 https://oreil.ly/meoX2.
 a sense of trust, even when the process actually takes much less time.6
@@ -3446,9 +2945,7 @@ the opportunity to educate you (source: Google, 2023)
 
 ---
 
-## Sección 46: Chapter 12, “With Power Comes Responsibility”
-
--- 148 of 186 --
+## Sección 43: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.25]
 
 Conclusion
 Performance is not just a technical consideration for our development colleagues—it is an essential design feature. As designers, it is our responsibility to
@@ -3457,10 +2954,6 @@ as quickly and efficiently as possible. To this end, it’s important that we pr
 the appropriate feedback, leverage perceived performance, and use progress bars
 to reduce the overall sense of waiting.
 DOHERTY THRESHOLD | 129
-
--- 149 of 186 --
-
--- 150 of 186 --
 
 Applying
 Psychological
@@ -3486,9 +2979,6 @@ the posters available on the website and put them up on the walls for everyone
 to see (Figure 11-1). It makes me incredibly proud to see my work on office walls
 all around the world, but I also realize it serves a functional purpose: building
 | 11
-
--- 151 of 186 --
-
 awareness. By being constantly visible to the teams, these posters help to remind
 them of the various psychological principles that can help guide decisions during
 the design process. In addition to this, the posters serve as a reminder of the
@@ -3514,9 +3004,6 @@ to usability test findings and project recaps—and yes, psychology principles�
 be valuable to someone on the team. Additionally, show-and-tells are great for
 building speaking confidence in team members and giving people an opportunity to establish themselves as subject matter experts, and they indicate an overall
 132 | LAWS OF UX
-
--- 152 of 186 --
-
 dedication to and investment in continual learning on the part of the organization. It’s about creating a culture of dialogue and knowledge building within the
 team, which I’ve found means a lot to team members, myself included.
 While simply building awareness might not firmly embed these principles
@@ -3553,9 +3040,7 @@ APPLYING PSYCHOLOGICAL PRINCIPLES IN DESIGN | 133
 
 ---
 
-## Sección 47: Chapter 12, “With Power Comes Responsibility”
-
--- 153 of 186 --
+## Sección 44: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.25]
 
 a common mindset and overall design vision. When done correctly, the ultimate
 impact this has on a team is profound and has the potential to influence the
@@ -3591,9 +3076,6 @@ a defined amount of time (say, 10–15 minutes), writing each idea on a
 separate sticky note. By the end of this exercise, each participant should
 have a stack of ideas.
 134 | LAWS OF UX
-
--- 154 of 186 --
-
 Converge
 After divergence comes convergence, so the next step is to bring all those
 ideas together and identify themes. Participants are usually asked during
@@ -3626,9 +3108,6 @@ Good design principles are direct, clear, and actionable, not bland and
 obvious. Truisms can’t help with decision making because they are too
 vague and lack a clear stance (for example, “design should be intuitive”).
 APPLYING PSYCHOLOGICAL PRINCIPLES IN DESIGN | 135
-
--- 155 of 186 --
-
 Good design principles solve real questions
 You’ll want to make sure the principles you define can clearly resolve real
 questions and drive design decisions. Be careful, though—you don’t want
@@ -3667,9 +3146,7 @@ appropriate for your project or organization.
 
 ---
 
-## Sección 48: Chapter 12, “With Power Comes Responsibility”
-
--- 156 of 186 --
+## Sección 45: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.265]
 
 We now have a clear framework (Figure 11-2) that consists of a goal (design
 principle) and an observation (law) and establishes guidelines (rules) that designers can follow to meet this goal. You can repeat this process for each of the
@@ -3692,9 +3169,6 @@ and an observation and establishes rules that designers can follow to meet this
 goal.
 Figure 11-3. Another example design principle, observation, and rules
 APPLYING PSYCHOLOGICAL PRINCIPLES IN DESIGN | 137
-
--- 157 of 186 --
-
 Conclusion
 The most effective way to leverage psychology in the design process is to embed
 it into everyday decision making. In this chapter, we explored a few ways
@@ -3714,9 +3188,6 @@ its shared values through a set of clear design guidelines but also provides bot
 the psychological validation to support these guidelines and an agreed-upon set
 of rules that help ensure the team can consistently meet them.
 138 | LAWS OF UX
-
--- 158 of 186 --
-
 With Power Comes
 Responsibility
 In the previous chapters, we looked at how to leverage psychology to build
@@ -3744,9 +3215,6 @@ him (Figure 12-1), Skinner studied how the behavior of animals could be shaped
 by teaching them to perform desired actions in response to specific stimuli in
 an isolated environment. His earliest experiments involved placing a hungry rat
 | 12
-
--- 159 of 186 --
-
 1 B. F. Skinner, The Behavior of Organisms: An Experimental Analysis (New York: Appleton-Century, 1938).
 into the chamber and observing it while it discovered that a food pellet would
 be dispensed when it came into contact with a lever on one side.1 After a few
@@ -3765,9 +3233,7 @@ Figure 12-1. B. F. Skinner’s operant conditioning chamber, also known as the �
 
 ---
 
-## Sección 49: Chapter 12, “With Power Comes Responsibility”
-
--- 160 of 186 --
+## Sección 46: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.25]
 
 2 C. B. Ferster and B. F. Skinner, Schedules of Reinforcement (New York: Appleton-Century-Crofts, 1957).
 3 Natasha Dow Schüll, Addiction by Design: Machine Gambling in Las Vegas (Princeton, NJ: Princeton
@@ -3802,9 +3268,6 @@ Digital products and services have also been known to employ various methods wit
 of the apps we use every day. Everything from keeping you on a site for as long as
 possible to nudging you to make a purchase or tempting you to share content is
 WITH POWER COMES RESPONSIBILITY | 141
-
--- 161 of 186 --
-
 4 Michael Winnick and Robert Zolna, “Putting a Finger on Our Phone Obsession,” dscout, June 16, 2016,
 https://oreil.ly/eKBeX.
 behavior that can be shaped through reinforcement at the right time. Let’s take a
@@ -3824,9 +3287,6 @@ top of a content feed. It doesn’t take a stretch of the imagination to see the
 also in the variable “reward” it generates.
 Figure 12-2. Pull-to-refresh example on Instagram (source: Instagram, 2023)
 142 | LAWS OF UX
-
--- 162 of 186 --
-
 INFINITE LOOPS
 Infinite loops such as autoplay videos (Figure 12-3) and infinite scrolling feeds are
 designed to maximize time on site by removing friction. Without the need for the
@@ -3837,9 +3297,6 @@ time on site means more ads viewed—a model that is significantly more effectiv
 in generating revenue than displaying static ads.
 Figure 12-3. YouTube autoplays the next video (source: YouTube, 2023)
 WITH POWER COMES RESPONSIBILITY | 143
-
--- 163 of 186 --
-
 5 Catalina L. Toma and Jeffrey T. Hancock, “Self-Affirmation Underlies Facebook Use,” Personality and
 Social Psychology Bulletin 39, no. 3 (2013): 321–31.
 SOCIAL AFFIRMATION
@@ -3855,9 +3312,7 @@ social media (source: Facebook, 2023)
 
 ---
 
-## Sección 50: Chapter 12, “With Power Comes Responsibility”
-
--- 164 of 186 --
+## Sección 47: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.265]
 
 PERSONALIZATION
 Social media platforms frequently make use of machine learning algorithms to
@@ -3879,9 +3334,6 @@ span and working memory.
 Figure 12-5. TikTok’s personalized content recommendations powered
 by machine learning algorithms (source: Tiktok, 2023)
 WITH POWER COMES RESPONSIBILITY | 145
-
--- 165 of 186 --
-
 6 Yabing Liu, Krishna P. Gummadi, Balachander Krishnamurthy, and Alan Mislove, “Analyzing Facebook
 Privacy Settings: User Expectations vs. Reality,” in IMC ’11: Proceedings of the 2011 ACM SIGCOMM
 Internet Measurement Conference (New York: Association for Computing Machinery, 2011), 61–70.
@@ -3900,9 +3352,6 @@ Figure 12-6. Facebook’s privacy settings (source: Facebook, 2023)
 Despite these potential mismatches, studies suggest that default options
 often lead people to rationalize their acceptance and reject alternatives.7
 146 | LAWS OF UX
-
--- 166 of 186 --
-
 (LACK OF) FRICTION
 Another way to shape behavior with digital products and services is to remove
 as much friction as possible—especially friction around actions you want people
@@ -3916,9 +3365,6 @@ illustrates just how far companies will go to shape behavior by attempting to
 remove as many obstacles as possible.
 Figure 12-7. An example of Amazon’s now-deprecated Dash button (source: Amazon, 2019)
 WITH POWER COMES RESPONSIBILITY | 147
-
--- 167 of 186 --
-
 RECIPROCITY
 Reciprocation, or the tendency to repay the gestures of others, is a strong impulse
 we share as human beings. It’s a social norm we’ve come to value and even rely
@@ -3947,9 +3393,7 @@ alarming: they identified 1,818 instances of dark patterns, with the more popula
 
 ---
 
-## Sección 51: Chapter 12, “With Power Comes Responsibility”
-
--- 168 of 186 --
+## Sección 48: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.265]
 
 8 Arunesh Mathur, Gunes Acar, Michael J. Friedman, Elena Lucherini, Jonathan Mayer, Marshini Chetty,
 and Arvind Narayanan, “Dark Patterns at Scale: Findings from a Crawl of 11K Shopping Websites,” in
@@ -3959,9 +3403,6 @@ sites in the sample being more likely to feature them.8 To illustrate, consider
 Instagram, which makes use of the forced action pattern by providing no alternative option but to allow access to private data in order to proceed (Figure 12-9).
 Figure 12-9. An example of the forced action dark pattern (source: Instagram, 2023)
 WITH POWER COMES RESPONSIBILITY | 149
-
--- 169 of 186 --
-
 These are only some of the more common methods by which technology can
 be used to shape behavior in subtle ways. Data collected about user behavior can
 be used to fine-tune how a system responds to an individual, and these methods
@@ -3996,9 +3437,6 @@ you get the point. It’s hard to imagine these companies intended the negative
 consequences that resulted from the services they provided or the features they
 introduced. And yet those consequences did occur, and the harm created by these
 150 | LAWS OF UX
-
--- 170 of 186 --
-
 9 Adrian F. Ward, Kristen Duke, Ayelet Gneezy, and Maarten W. Bos, “Brain Drain: The Mere Presence of
 One’s Own Smartphone Reduces Available Cognitive Capacity,” Journal of the Association for Consumer
 Research 2, no. 2 (2017): 140–54.
@@ -4039,9 +3477,7 @@ WITH POWER COMES RESPONSIBILITY | 151
 
 ---
 
-## Sección 52: Chapter 12, “With Power Comes Responsibility”
-
--- 171 of 186 --
+## Sección 49: Chapter 12, “With Power Comes Responsibility” [Entropy: 0.25]
 
 a task, staying connected with friends or family, and so on. In other words,
 the corporate goals of the business and the human goals of the end user are
@@ -4077,9 +3513,6 @@ A better approach is to change the definition of the minimum viable product
 (MVP) to focus on nonideal scenarios first, as opposed to the path of least
 resistance. By placing edge cases at the center of our thinking, we can ensure
 152 | LAWS OF UX
-
--- 172 of 186 --
-
 that we’re creating more resilient products and services that consider the most
 vulnerable cases by default.
 DIVERSIFY TEAMS AND THINKING
@@ -4113,715 +3546,6 @@ Steve Jobs once referred to the personal computer as a “bicycle for the mind�
 a tool that could expand our capabilities and improve our lives. Fast-forward to
 now, and in many ways, that’s exactly what has been achieved. Many of us carry
 WITH POWER COMES RESPONSIBILITY | 153
-
----
-
-## Sección 53: Chapter 12, “With Power Comes Responsibility”
-
--- 173 of 186 --
-
-personal computers small enough to fit in our back pockets, with more computing power than anything available at the time of Jobs’s famous analogy. But we’ve
-also seen something that perhaps Jobs didn’t anticipate: instead of technology
-enhancing our abilities as humans, it’s become a vehicle for extracting our
-attention, monetizing our personal information, and exploiting our psychological
-vulnerabilities.
-At the heart of this effort is the total elimination of friction. We’ve been
-made to think that any friction within a user journey is negative and should
-be eliminated wherever possible, to the point that frictionless has become synonymous with good user experience. But friction can also be a valuable tool when
-used appropriately, from preventing errors, enhancing security, and avoiding
-unintentional actions and consequences to building credibility, promoting critical thought, or encouraging moderation. We can embrace friction to prevent
-abuse, protect privacy, steer people toward healthier digital habits, and encourage
-the consideration of long-term consequences versus short-term gain.
-154 | LAWS OF UX
-
--- 174 of 186 --
-
-Index
-A
-accessibility, consideration in von Restorff
-effect, 100
-active user, paradox of, 115
-addictive behavior
-keeping people hooked through behavior design, 151
-in machine-aided gambling, 141
-aesthetic-usability effect, 79-91
-automatic cognitive processing and, 83
-effect of aesthetics on usability tests, 90
-examples, 84-87
-origins of, 80
-overview, 79
-affordance, 3
-AI (artificial intelligence), 113
-use by Gmail in Smart Compose feature, 110
-Amazon Dash button (deprecated),
-removal of friction with, 147
-Amazon Go stores, checkout-free shopping, 113
-Amazon.com, adaptation to font size customization, 62
-animation
-avoiding distracting users with, 137
-use by Gmail to shorten perceived wait
-time, 125
-visually engaging people during loading
-or processing, 124
-Apple CarPlay, spacing between interactive
-elements, 22
-Apple installation screen with progress bar
-and estimated time to completion, 126
-Apple interface designs, aesthetic-usability
-effect example, 86
-Apple iPhones, Reachability feature, 23
-Apple MacOS, use of infinite targets, 23
-Apple Pay, simplification of checkout process, 111
-Apple visionOS, use of Fitts's law with, 24
-Apple's Face ID, 56
-Apple's Vision Pro, building on existing
-mental models, 8
-artificial intelligence (see AI)
-Artificial Intelligence Laboratory at M.I.T.,
-xiv
-attention
-limit on response time for keeping
-user's attention, 126
-making elements visually distinctive, 93
-(see also von Restorff effect)
-memory and, 95
--- 175 of 186 --
-
-negative events commanding more
-attention, 74
-paying close attention to intense points
-and final moments, 65
-(see also peak-end rule)
-required for complex problem solving,
-selective, 95
-automatic cognitive processing, 83
-autoplay videos, 143
-awareness of psychological concepts, building, 131
-using show-and-tell, 132
-using visibility, 131
-B
-banner blindness, 96
-Bauhaus philosophy, form follows function, 84
-beauty, correlation with usability, 80
-(see also aesthetic-usability effect)
-behavior (human)
-how technology shapes, 139-150
-dark patterns, 148
-default settings, 146
-importance of ethics, 150-152
-infinite loops, 143
-intermittent variable rewards, 142
-lack of friction, 147
-personalization, 145
-reciprocity, 148
-social affirmation, 144
-benign paroxysmal positional vertigo
-(BPPV), 102
-blur up technique, 124
-Braun SK4 record player, aestheticusability example, 84
-Bruner, Jerome, xiv
-C
-card sorting, 46
-Card, Stuart K., xiii
-Champeon, Steve, 58
-change blindness, 96
-Chapanis, Alfonse, xii, 17
-checkout process
-checkout-free shopping at Amazon Go
-stores, 113
-simplification for online shopping sites,
-choices
-prioritizing clarity over abundant
-choices, 136
-too many, leading to choice overload, 41
-chunking technique, 32
-examples of use, 32-36
-clarity over abundance of choice (design
-principle), 136
-cognitive biases, 67, 108
-cognitive load, 30
-increase in complex or busy interfaces,
-increase through oversimplification, 48
-increase through slow system response,
-cognitive processing, automatic, 83
-color
-color contrast and accessibility, 101
-use in creating visual emphasis, 98
-complexity
-burden of, who should bear, 107
-complex or busy interfaces resulting in
-longer decision times, 40
-law of conservation of, 107
-156 | INDEX
-
--- 176 of 186 --
-
-(see also Tesler's law)
-risk of oversimplification, 48
-simplification through efficiency and
-elegance, 40
-complexity bias, 108
-computer vision, 113
-confirmation bias, 67
-contextual inquiry technique, 25
-Csíkszentmihályi, Mihály, 121
-D
-dark patterns, use by technology to influence human behavior, 148
-data, looking beyond, 153
-decision fatigue, 55
-decision making, 40
-(see also Hick's law)
-automatic cognitive processing versus
-slow deliberation, 83
-formula calculating response time, 40
-power of default settings, 146
-default settings, 146
-design principles, 133-138
-best practices, 135
-connecting principles to laws, 136
-defining, steps in process, 134
-design resiliency, 61
-design systems, use of Postel's law, 59
-Doherty threshold, 119-129
-examples, 122-127
-key concepts, 119
-key consideration, friction, 127
-origins of, 121
-overview, 119
-Doherty, Walter J., 121
-Duolingo, understanding of how peak
-moments affect user experience, 69
-E
-ecommerce websites
-chunking technique, use of, 35
-leveraging preexisting mental models,
-payment services for purchases, 111
-use of dark patterns, 148
-email, complexity reduction in, 109
-emotionally intense moments (see peakend rule)
-Engelbart, Douglas, xiii
-ethics, importance in technology, 150-152
-ethical imperative, 151
-good intentions, unintended consequences, 150
-Etsy, leveraging preexisting mental models, 6
-eye tracking, 102
-eyes and hand gestures, input from, 24
-F
-Facebook
-default privacy settings, 146
-social affirmation with like buttons and
-comments, 144
-familiarity over novelty (design principle),
-fault tolerance
-graceful degradation, 58
-robustness principle, 54
-filter bubbles, 145
-Finck, Nick, 58
-Fitts, Paul, xii, 16
-Fitts’s law, 15-26
-contextual inquiry technique and, 25
-examples of use in digital interfaces,
-18-25
-INDEX | 157
-
----
-
-## Sección 54: Chapter 12, “With Power Comes Responsibility”
-
--- 177 of 186 --
-
-key consideration, the human factor, 17
-key considerations for touch targets, 15
-origins of, 16
-overview, 15
-flow (psychology concept), 121
-font size (default), customization of, 62
-form follows function, 84
-forms
-being conservative in amount of information asked for, 55
-comparison between form elements
-and control panel, 3
-restrictiveness in what they require
-from users, 56
-submission buttons, placement of, 21
-text labels, touch target area and form
-input, 20
-404 error pages, use of humor to mitigate
-negative experience, 75
-friction
-lack of, effects on human behavior, 147
-removal with infinite loops, 143
-slowing down too fast response times,
-value in appropriate uses of, 153
-functional minimalism balanced by
-refined aesthetics, 86
-G
-Gaussian blurs, 124
-Gestalt psychology, xii
-Gmail
-animation shortening perceived wait
-time, 125
-reducing complexity by populating
-from and to lines, 110
-goal gradient effect, 69
-Google Docs, use of chunking, 35
-Google Material Design guidelines, spacing between touch targets, 19
-Google Privacy Checkup process, extra
-time added to, 128
-Google Search, simplifying initial task and
-filtering results, 44
-Google, redesign of products, 5
-graceful degradation, 58
-grouping content and exposing relationships with chunking, 34
-H
-happy path, thinking beyond, 152
-HCD (see human-centered design)
-headings and subheadings, using to
-improve wall of text, 33
-Hick's law, 39-50
-card sorting technique, 46
-connecting design principles to, 136
-examples, 42-46
-key concepts, 39
-origins of, 40
-overview, 39
-paradox of choice, 41
-Hick, William Edmund, 40
-hierarchy, using to improve wall of text, 33
-Hoober, Steven, 19
-human factors, 17
-human factors engineering, xii
-human-centered design, xiv, 17, 53
-slowing down and being intentional,
-152-154
-diversifying teams and thinking, 153
-embracing friction, 153
-looking beyond data, 153
-thinking beyond the happy path, 152
-158 | INDEX
-
--- 178 of 186 --
-
-human-computer interaction, xiii
-Hyman, Ray, 40
-I
-icons, use in interfaces
-adding text labels to provide clarity, 49
-advantages and limitations of, 48
-IDEO, xiv
-idleness aversion, 69
-index of difficulty metric (Fitts's law), 17
-infinite loops, 143, 150
-infinite targets, use of Fitts's law with, 23
-infotainment systems in vehicles, spacing
-between items, 21
-input from users, acceptance in many variations and mechanisms, 54
-Instagram
-forced action dark pattern, 149
-optimistic UI with comments on photos before they're posted, 126
-pull-to-refresh feature, variable rewards
-with, 142
-skeleton screen shortening perceived
-load time, 123
-intent-based interaction, abstraction of
-complexity away from user, 114
-intermittent variable rewards, 142
-internationalization, design resiliency and,
-interviews with users, 60
-iOS, use of von Restorff effect to call attention to notifications, 100
-J
-Jakob's law, 1-12
-connecting design principles to, 137
-examples, 3-9
-key concepts, 1
-key consideration, sameness, 11
-mental models and, 2
-origins of, 2
-overview, 1
-questioning exclusive use of existing
-mental models, 11
-user personas technique and, 9
-Jobs, Steve, 153
-journey mapping, 71
-K
-Kahneman, Daniel, 66, 67, 83
-Kashimura, Kaori, 80
-Kay, Alan, xiv
-Koffka Kurt, xii
-Köhler, Wolfgang, xii
-Kurosu, Masaaki, 80
-L
-labyrinthitis, 102
-law of conservation of complexity (see Tesler's law)
-LinkedIn
-connection requests and reciprocity,
-spacing between items in connection
-confirmation screen, 21
-M
-machine learning, 113
-personalization and predictive recommendations, 145
-MacOS, use of infinite targets, 23
-magical number seven
-key consideration with, 36
-origin of, 30
-INDEX | 159
-
--- 179 of 186 --
-
-Mailchimp, mitigation of negativity bias,
-memory (human)
-limitations of short-term memory, 30
-recency effect, 68
-recognition prioritized over recall, 94
-working memory and attention, 95
-working memory buffer, 31
-memory bias, 67
-mental model mismatch, 4
-mental models
-about, 3
-leveraging existing models, 1, 6
-questioning exclusive use of existing
-models, 11
-Miller's law, 29-37
-chunking technique, 32
-examples of use, 32-36
-foundation for cognitive load theory, 30
-key concepts, 29
-magical number seven and, 36
-origins of, 30
-overview, 29
-Miller, George, 30
-minimum viable product (MVP), focusing
-on non-ideal scenarios first, 152
-MIT Artificial Intelligence Laboratory, xiv
-MIT Touch Lab study, 19
-Mixpanel, natural language Spark feature
-for data analytics, 114
-Moran, Thomas P., xiii
-motion, use to create visual contrast, 102
-N
-natural language, using to interact with
-computers, 113
-negative events providing emotional peaks,
-negative reinforcement, 140
-negativity bias, 74
-Netflix, handling of viewing options, 45
-Newell, Allen, xiii
-news websites, use of scale to create visual
-emphasis, 100
-Nielsen, Jakob, 2
-(see also Jakob's law)
-Nike.com
-chunking, use of, 35
-navigation menu not limited to seven
-items, 36
-Norman, Donald, xiv
-notifications, using von Restorff effect to
-call attention to, 100
-Notion
-progressive onboarding, example of
-Hick's law, 44
-use of von Restorff effect in pricing
-table, 98
-O
-onboarding, progressive onboarding experience, 44
-operant conditioning, 139
-perfection in slot machines, 141
-operational transparency, 69
-optimistic UI, 126
-options, too many in an interface, 40
-output, reliable and accessible (Postel's
-law), 54
-oversimplification, 39
-interface simplified to point of abstraction, 48
-160 | INDEX
-
----
-
-## Sección 55: Chapter 12, “With Power Comes Responsibility”
-
--- 180 of 186 --
-
-P
-page weight, impact on performance of
-websites and apps, 120
-Papert, Seymour, xiv
-paradox of the active user, 115
-peak-end rule, 65-76
-cognitive biases and, 67
-examples, 68-71
-identifying emotional peaks of users
-through journey mapping, 71
-key concepts, 65
-key consideration, negativity bias, 74
-origins of, 66
-overview, 65
-performance (system), critical importance
-to good user experience, 119
-personalization, 145
-Piaget, Jean, xiv
-position of touch targets, 19
-positive reinforcement, 140
-Postel's law, 53-63
-examples, 55-60
-key concepts, 53
-key consideration, design resiliency, 61
-origins of, 54
-overview, 53
-user interviews, making technology
-more human, 60
-Postel, Jonathan Bruce (Jon), 54
-power and responsibility, 139
-(see also responsible design)
-pricing tables, von Restorff effect in, 98
-Princeton University, study of use of dark
-patterns, 148
-productivity
-negative effects of slow system
-response time, 120
-relation of response time to, 119
-progress bars, 119
-benefits of using, 124
-using with estimated time to completion, 126
-progressive disclosure, 116
-progressive enhancement, 58
-psychological principles, applying in
-design, 131-138
-building awareness, 131-133
-using show-and-tell, 132
-using visibility, 131
-design principles, 133-138
-best practices, 135
-connecting principles to laws, 136
-defining, 134
-psychology concepts
-automatic cognitive processing, 83
-cognitive biases, 67
-cognitive load, 30
-complexity bias, 108
-flow, 121
-mental models, 3
-paradox of choice, 41
-selective attention, 95
-R
-Rams, Dieter, 84
-Reachability feature (Apple iPhones), 23
-recency effect, 68
-reciprocity, 148
-recommendations, 145
-Redelmeier, Donald A., 66
-reinforcement
-intermittent variable rewards, 142
-in Skinner's behaviorism, 139
-response times
-INDEX | 161
-
--- 181 of 186 --
-
-calculation in Hick's law, 40
-minimizing choices when response
-times are critical to decision making, 39
-responsible design, 139-154
-how technology shapes behavior,
-139-150
-dark patterns, 148
-default settings, 146
-infinite loops, 143
-intermittent variable rewards, 142
-lack of friction, 147
-personalization, 145
-reciprocity, 148
-social affirmation, 144
-importance of ethics in technology,
-150-152
-ethical imperative, 151
-good intentions, unintended consequences, 150
-slowing down and being intentional,
-152-154
-diversifying teams and thinking, 153
-embracing friction, 153
-looking beyond data, 153
-thinking beyond the happy path, 152
-responsive design, 57
-retail, abstracting complexity away from
-users, 113
-robustness principle, 54
-(see also Postel's law)
-S
-sameness, considerations with, 11
-Sauer, Jürgen, 90
-scale, use in von Restorff effect, 100
-Schwartz, Barry, 41
-selective attention, 95
-shape coding, 17
-short-term memory, limits of, 30
-(see also Miller's law)
-magical number seven and, 36
-new research findings, 37
-show-and-tell, 132
-Simon, Herbert A., 41
-sizing of touch targets, 18
-skeleton screen while content is loading,
-Skinner, B. F., 139
-slot machines, use of operant conditioning
-with, 141
-Smalltalk, xiv
-Smart Compose and Smart Reply features
-from Gmail, 110
-smart TV remotes, use of Hick's law, 42
-smartphones, 150
-daily use and intermittent variable
-rewards, 142
-presence of, causing reduction in cognitive capacity, 151
-touch accuracy, 19
-Snapchat
-mental model mismatch in redesign of,
-unintended consequences of use, 150
-social affirmation, 144
-social media
-negative consequences of participation,
-personalization and predictive recommendations, 145
-Sonderegger, Andreas, 90
-spacing between touch targets, 19
-162 | INDEX
-
--- 182 of 186 --
-
-Spark (from Mixpanel), use of natural language for data analysis, 114
-spatial computing, use of Fitts's law in, 24
-Spotify, use of peak-end rule, 68
-Stanford Research Institute (SRI), xiii
-Stripe.com, progressive disclosure menu,
-strokes, patterns, and shapes as visual
-cues, 101
-submission buttons on forms, placement
-of, 21
-Suri, Jane Fulton, xiv
-T
-TCP (Transmission Control Protocol),
-robustness principle, 54
-teams, diversifying teams and thinking, 153
-techniques
-card sorting, 46
-chunking, 32
-contextual inquiry, 25
-eye tracking, 102
-journey mapping, 71
-progressive disclosure, 116
-usability testing, 87
-user interviews, 60
-user personas, 9
-technology shaping human behavior (see
-behavior; responsible design)
-Tesler's law, 107-117
-examples, 109-114
-key concepts, 107
-key consideration, paradox of the active
-user, 115
-origins of, 108
-overview, 107
-progressive disclosure technique and,
-Tesler, Larry, 108
-text, wall of, 33
-Thadani, Arvind J., 121
-Three Mile Island nuclear disaster, xiv
-TikTok, personalization and content recommendations, 145
-touch targets, key considerations in Fitts's
-law, 15, 18
-Tractinsky, Katz, and Ikar (2000), 82
-TV remotes (smart TVs), use of Hick's law,
-Tversky, Amos, 67
-U
-Uber, reducing impact of wait time, 69
-University of Chicago, study of use of dark
-patterns, 148
-Unsplash, use of blur up technique to
-enable faster page loading, 124
-usability
-and aesthetically pleasing design, 79
-(see also aesthetic-usability effect)
-key aspect of good design, Fitts's law
-and, 15
-usability testing, 87
-effect of aesthetically pleasing design
-on usability tests, 90
-user experience (UX) design, xiv
-user interviews, 60
-user personas technique, 9
-items common to most personas, 10
-V
-visibility, using to internalize UX design
-principles, 131
-INDEX | 163
-
----
-
-## Sección 56: Chapter 12, “With Power Comes Responsibility”
-
--- 183 of 186 --
-
-vision and cognitive processing, 93
-visual emphasis
-advantages and disadvantages of, 94
-ways to create visual contrast, 100
-von Restorff effect, 93-104
-examples, 97-100
-eye tracking technique and, 102
-key concepts, 93
-key consideration, accessibility, 100
-origins of, 94
-overview, 93
-von Restorff, Hedwig, 94
-W
-wall of text
-example of, 33
-improved with hierarchy, formatting,
-and appropriate line lengths, 33
-Web Content Accessibility Guidelines
-(WCAG), 101
-websites and apps, page weight impacting
-performance of, 120
-websites, use of dark patterns, 148
-Wertheimer, Max, xii
-whitespace, using to improve wall of text,
-work practices and behaviors, understanding of, 25
-working memory and attention, 95
-World War II, xii
-X
-X (formerly Twitter), text labels accompanying icons on, 49
-Xerox Palo Alto Research Center (PARC),
-xiii
-Y
-YouTube
-autoplay videos, 143
-redesign in 2017, 5
-164 | INDEX
-
--- 184 of 186 --
-
-About the Author
-Jon Yablonski is a multidisciplinary designer who specializes in simplifying complex technology and making it intuitive through user research and interaction
-design. With over a decade of experience in design and development across various industries such as entertainment, retail, automotive, aerospace, and product,
-Jon brings a deep understanding of the relationship between human psychology
-and technology. When he’s not creating journey maps or crafting prototypes,
-Jon is creating digital tools to help designers, such as such as Laws of UX and
-Humane by Design.
-Colophon
-The cover illustration is by Susan Thompson. The cover fonts are Guardian
-Sans Condensed Medium and Gilroy Semibold. The text fonts are Scala Pro and
-BentonSans Book; the heading font is BentonSans Medium.
-
--- 185 of 186 --
-
-Learn from experts.
-Become one yourself.
-Books | Live online courses
-Instant answers | Virtual events
-Videos | Interactive learning
-Get started at oreilly.com.
-©2023 O’Reilly Media, Inc. O’Reilly is a registered trademark of O’Reilly Media, Inc. 175_6x9
-
--- 186 of 186 --
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[DESIGN_MASTERY_2026]] · [[AGENT_CREATIVE_AND_VISUAL_AWARENESS_2026]] · [[CANON_REFACTORING_UI_WATHAN_SCHOGER]] · [[CANON_PRACTICAL_UI_ADHAM_DANNAWAY]] · #ui_ux_design

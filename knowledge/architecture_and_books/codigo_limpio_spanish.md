@@ -1,25 +1,17 @@
-﻿**Alcance:** Libro completo Código Limpio (Robert C. Martin): principios de código limpio, funciones cohesivas, nombres semánticos, manejo de errores y refactorización. (Fuente migrada y curada desde Centinela Studio Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+# 📚 Libro Completo: Código Limpio (Clean Code)
 
----
-titulo: "Código Limpio: Manual de estilo para el desarrollo ágil de software"
-autor: "Robert C. Martin (Uncle Bob)"
-dominio: "Funciones Pequeñas, Nombres Claros y Cero Duplicación"
-tipo: "libro_tecnico_completo"
-paginas_originales: 644
-secciones_totales: 159
-fecha_ingesta: "2026-10-06T02:43:32.231Z"
----
+**Alcance:** Fuente bibliográfica completa sobre Clean Code, Modularity, Refactoring & Test-Driven Development (Código Limpio (Clean Code) — Robert C. Martin). Aplicable a Web Software Factory y Enterprise Web App. NO sustituye los contratos de negocio ni las reglas inmutables en `CANON_*`.
 
-# 📖 Código Limpio: Manual de estilo para el desarrollo ágil de software
-**Autor:** Robert C. Martin (Uncle Bob) | **Dominio:** Funciones Pequeñas, Nombres Claros y Cero Duplicación | **Páginas originales:** 644
-
-> **Nota de Arquitectura Centinela:** Este documento contiene el texto íntegro estructurado por secciones y capítulos para consulta profunda del equipo de agentes y búsqueda híbrida (BM25 + semántica).
+> **Autor:** Robert C. Martin  
+> **Dominio:** Clean Code, Modularity, Refactoring & Test-Driven Development  
+> **Archivo Fuente:** `Codigo-Limpio-Robert-C-Martin-Spanish.pdf`  
+> **Páginas Originales:** 644 (100% Ingerido, Cero Truncamiento)  
+> **Secciones Técnicas Extraídas:** 2 (Entropía Técnica Media: 1)  
+> **Fecha de Ingesta:** 2026-10-26
 
 ---
 
-## [Sección 1] Introducción y Fundamentos
-
--- 1 of 644 --
+## Sección 1: Core Concepts & Foundations [Entropy: 1]
 
 Cada año, se invierten innumerables horas y se pierden numerosos
 recursos debido a código mal escrito, ralentizando el desarrollo,
@@ -41,15 +33,11 @@ Imprescindible para cualquier desarrollador, ingeniero de software,
 director de proyectos, jefe de equipo o analista de sistemas
 interesado en crear código de mejor calidad.
 ¡El libro que todo programador debe leer!
--- 2 of 644 --
-
 Robert Cecil Martin
 Código limpio
 Manual de estilo para el desarrollo ágil de software
 ePub r1.1
 XcUiDi 21.03.2018
--- 3 of 644 --
-
 Título original: Clean code: A handbook of agile software craftsmanship
 Robert Cecil Martin, 2009
 Traducción: José Luis Gómez Celador
@@ -62,11 +50,7 @@ www.epublibre.org. La página, y sus editores, no obtienen ningún tipo de
 beneficio económico por ello. Si ha llegado a tu poder desde otra web debes saber
 que seguramente sus propietarios sí obtengan ingresos publicitarios mediante
 archivos como este
--- 4 of 644 --
-
 Para Ann Marie: El verdadero amor de mi vida.
--- 5 of 644 --
-
 Agradecimientos
 Me gustaría dar las gracias a mis dos artistas, Jeniffer Kohnke y Angela
 Brooks. Jennifer es la encargada de las impresionantes ilustraciones del inicio
@@ -91,8 +75,6 @@ Bob Koss, Michael Feathers, Michael Hill, Erik Meade, Jeff Langr, Pascal
 Roy, David Farber, Brett Schuchert, Dean Wampler, Tim Ottinger, Dave
 Thomas, James Grenning, Brian Button, Ron Jeffries, Lowell Lindstrom,
 Angelique Martin, Cindy Sprague, Libby Ottinger, Joleen Craig, Janice
--- 6 of 644 --
-
 Brown, Susan Rosso y el resto.
 Gracias Jim Newkirk, mi amigo y socio, que me ha enseñado más de lo
 que cree. Mi agradecimiento a Kent Beck, Martin Fowler, Ward
@@ -101,12 +83,6 @@ compatriotas y colegas. Gracias a John Vlissides por estar ahí cuando lo
 necesitaba. Gracias a todos los de Zebra por permitirme despotricar sobre la
 extensión que debe tener una función.
 Y, por último, darle las gracias por leer estos agradecimientos.
--- 7 of 644 --
-
----
-
-## [Sección 2] Introducción y Fundamentos
-
 Prólogo
 Una de nuestras golosinas preferidas en Dinamarca es Ga-Jol, con un fuerte
 sabor a regaliz, que constituye un complemento perfecto para nuestro
@@ -117,8 +93,6 @@ me encontré con este antiguo dicho danés:
 «La honestidad por las cosas pequeñas no es algo menor». Perfecto para
 que lo que pensaba escribir. Las cosas pequeñas importan. Este libro trata
 sobre humildes preocupaciones cuyo valor dista mucho de ser menor.
--- 8 of 644 --
-
 Dios está en los detalles, afirmó el arquitecto Ludwig mies van der Rohe.
 Esta cita recuerda argumentos contemporáneos sobre el papel de la
 arquitectura en el desarrollo de software, en especial en el universo ágil. Bob
@@ -153,8 +127,6 @@ Pero incluso en la industria automovilística, gran parte del trabajo no
 radica en la fabricación sino en el mantenimiento, o más bien en cómo
 evitarlo. En el software, el 80 por 100 o más de lo que hacemos se denomina
 cuantitativamente mantenimiento, el acto de reparar. En lugar de optar por la
--- 9 of 644 --
-
 típica costumbre occidental de crear software de calidad, debemos pensar
 como reparadores o mecánicos. ¿Qué piensan los directores japoneses de
 todo esto?
@@ -187,12 +159,6 @@ Shutsuke o disciplina: Significa ser disciplinado en la aplicación de las
 prácticas y reflejarlas en el trabajo y aceptar los cambios.
 Si acepta el reto, ha leído bien, el reto, de leer y llevar a la práctica este
 libro, podrá comprender y apreciar el último punto. Aquí nos acercamos a la
--- 10 of 644 --
-
----
-
-## [Sección 3] Introducción y Fundamentos
-
 raíz de la profesionalidad responsable de una profesión que debería
 preocuparse del ciclo vital de un producto. Al igual que mantenemos coches
 y otras máquinas, el mantenimiento divisible, esperar a que surjan los errores,
@@ -227,8 +193,6 @@ grandes árboles. ¿Y la integración de sencillas tareas preventivas en la vida
 diaria? Más vale prevenir que curar. El código limpio honra las raíces de la
 sabiduría popular, de antes o de ahora, y se puede aplicar con atención al
 detalle.
--- 11 of 644 --
-
 Incluso en la literatura arquitectónica encontramos ejemplos de estos
 detalles. Piense en los pomos de mies van der Rohe. Eso es seiri. Es la
 atención a todos los nombres de variables. Debe bautizar a una variable con
@@ -263,12 +227,6 @@ de programación u otra noción superior sea el motivo de la calidad; como
 seres cuya supuesta profesionalidad se debe al dominio de herramientas y
 métodos de diseño, nos sentimos insultados por el valor que los
 programadores añaden con tan sólo aplicar un estilo de sangrado coherente.
--- 12 of 644 --
-
----
-
-## [Sección 4] Introducción y Fundamentos
-
 Para citar mi propio libro de hace 17 años, dicho estilo distingue la excelencia
 de la simple competencia. La visión japonesa comprende el verdadero valor
 del trabajador cotidiano y, en especial, de los sistemas de desarrollo que
@@ -303,8 +261,6 @@ código, con nuestros colegas sobre el estado del código y, en especial, con
 nosotros mismos. ¿Hemos hecho todo lo posible para dejar las cosas mejor
 que como las encontramos? ¿Hemos refactorizado el código antes de
 terminarlo? No se trata de preocupaciones periféricas, sino que se encuentran
--- 13 of 644 --
-
 en la base misma de los valores Agile. En Serum se recomienda que la
 refactorización sea parte del concepto de Terminado. Ni la arquitectura ni el
 código limpio insisten en la perfección, sino en la honestidad y en hacerlo lo
@@ -325,14 +281,10 @@ Uncle Bob me enviara el manuscrito.
 Y tras completar este ejercicio, me dispongo a limpiar mi escritorio.
 James O. Coplien
 Mørdrup, Dinamarca
--- 14 of 644 --
-
 Introducción
 Reproducido con permiso de Thom Holwerda.
 http://www.osnews.com/story/19266/WTFs_m. © 2008 Focus Shift.
 ¿Qué puerta representa su código? ¿Qué puerta representa a su equipo o a su
--- 15 of 644 --
-
 empresa? ¿Por qué estamos en esa habitación? ¿Es una sencilla revisión del
 código o hemos detectado un sinfín de problemas terribles? ¿Depuramos
 presas del pánico el código que pensábamos que funcionaba? ¿Los clientes
@@ -367,12 +319,6 @@ siga nuestras descripciones mientras despedazamos módulos y los volvemos
 a ensamblar. Para ello necesitará tiempo y esfuerzo, pero creemos que merece
 la pena.
 Hemos dividido el libro en tres partes. Los primeros capítulos describen
--- 16 of 644 --
-
----
-
-## [Sección 5] Introducción y Fundamentos
-
 los principios, patrones y prácticas para crear código limpio. Incluyen
 abundante código y resultan difíciles de leer. Sirven como preparación a la
 segunda parte. Si abandona tras leer la primera sección, que tenga buena
@@ -407,11 +353,7 @@ hicimos nosotros, entonces comprenderá mucho mejor todos los principios,
 patrones, prácticas y heurística. Ya no será un conocimiento superficial. Se
 convertirá en algo profundo. Lo integrará de la misma forma que una
 bicicleta se convierte en una extensión propia una vez dominada la forma de
--- 17 of 644 --
-
 montar.
--- 18 of 644 --
-
 Sobre la imagen de cubierta
 La imagen de la portada es M104: la Galaxia del Sombrero. M104 se
 encuentra en Virgo, a unos 30 millones de años luz, y su núcleo es un súper
@@ -436,12 +378,6 @@ fotografía del Hubble (imagen superior) y la reciente imagen de infrarrojos
 del observatorio orbital Spitzer (inferior).
 Esta última muestra claramente la forma de anillo de la galaxia.
 A la luz, sólo vemos el borde frontal de la silueta del anillo.
--- 19 of 644 --
-
----
-
-## [Sección 6] Introducción y Fundamentos
-
 Imagen de portada: © Spitzet Space
 Telescope.
 La masa central oculta el resto.
@@ -451,12 +387,10 @@ de la masa central. Las dos imágenes
 combinadas nos ofrecen una vista desconocida
 hasta ahora e implican que hace tiempo era un
 auténtico infierno activo.
--- 20 of 644 --
+1
 Código Limpio
 Está leyendo este libro por dos motivos. Por un lado, es programador. Por
 otro, quiere ser mejor programador. Perfecto. Necesitamos mejores
--- 21 of 644 --
-
 programadores.
 Este libro trata sobre programación correcta. Está repleto de código. Lo
 analizaremos desde todas las direcciones. Desde arriba, desde abajo y desde
@@ -488,8 +422,6 @@ digamos. Esas máquinas tendrían que entendernos de tal forma que puedan
 traducir necesidades ambiguas en programas perfectamente ejecutados que
 satisfagan dichas necesidades a la perfección.
 Esto nunca sucederá. Ni siquiera los humanos, con toda su intuición y
--- 22 of 644 --
-
 creatividad, han sido capaces de crear sistemas satisfactorios a partir de las
 sensaciones de sus clientes. En realidad, si la disciplina de la especificación
 de requisitos nos ha enseñado algo es que los requisitos bien especificados
@@ -520,12 +452,6 @@ empezaron a distanciarse. No se corrigieron los errores entre una versión y la
 siguiente. Crecieron los tiempos de carga y aumentaron los fallos. Todavía
 recuerdo el día en que apagué el producto y nunca más lo volví a usar.
 Poco después, la empresa desapareció.
--- 23 of 644 --
-
----
-
-## [Sección 7] Introducción y Fundamentos
-
 Dos décadas después conocí a uno de los empleados de la empresa y le
 pregunté sobre lo que había pasado. La respuesta confirmó mis temores.
 Habían comercializado el producto antes de tiempo con graves fallos en el
@@ -557,8 +483,6 @@ Si es programador desde hace dos o tres años, probablemente haya sufrido los
 desastres cometidos por otros en el código. Si tiene más experiencia, lo habrá
 sufrido en mayor medida. El grado de sufrimiento puede ser significativo. En
 un periodo de un año o dos, los equipos que avancen rápidamente al inicio de
--- 24 of 644 --
-
 un proyecto pueden acabar a paso de tortuga. Cada cambio en el código
 afecta a dos o tres partes del mismo. Ningún cambio es trivial. Para ampliar o
 modificar el sistema es necesario comprender todos los detalles, efectos y
@@ -580,8 +504,6 @@ En última instancia, el equipo se rebela. Informan al director que no pueden
 seguir trabajando con ese código. Exigen un cambio de diseño. La dirección
 no requiere invertir en un cambio de diseño del proyecto, pero no puede
 ignorar el bajo nivel de productividad.
--- 25 of 644 --
-
 Acaba por ceder a las exigencias de los programadores y autoriza el gran
 cambio de diseño. Se selecciona un nuevo equipo. Todos quieren formar
 parte del nuevo equipo por ser un lienzo en blanco. Pueden empezar de cero y
@@ -614,12 +536,6 @@ nuestra. No somos profesionales.
 Puede que resulte duro escucharlo. ¿Cómo es posible que seamos
 responsables de tales desastres? ¿Qué pasa con los requisitos? ¿Y los plazos
 de entrega? ¿Y los directores incompetentes y los comerciales sin sentido?
--- 26 of 644 --
-
----
-
-## [Sección 8] Introducción y Fundamentos
-
 ¿No es también culpa suya?
 No. Los directores y los comerciales nos exigen la información que
 necesitan para realizar sus promesas y compromisos, e incluso cuando no
@@ -652,8 +568,6 @@ Los verdaderos profesionales saben que la segunda parte del enigma no es
 cierta. No se cumple un plazo de entrega cometiendo un error. De hecho, el
 error nos ralentiza de forma inmediata y hace que no lleguemos al plazo de
 entrega. La única forma de cumplirlo, la única forma de avanzar, es intentar
--- 27 of 644 --
-
 que el código siempre sea limpio.
 ¿El arte del código limpio?
 Imagine que cree que el código incorrecto es un obstáculo significativo.
@@ -682,8 +596,6 @@ Existen tantas definiciones como programadores. Por ello, he consultado la
 opinión de conocidos y experimentados programadores.
 Bjarne Stroustrup, inventor de C++ y autor
 de The C++ Programming Language
--- 28 of 644 --
-
 Me gusta que mi código sea elegante y
 eficaz. La lógica debe ser directa para
 evitar errores ocultos, las dependencias
@@ -717,12 +629,6 @@ Bjarne también menciona que el procesamiento de errores debe ser
 completo, lo que se relaciona con la disciplina de prestar atención a los
 detalles. El procesamiento de errores abreviado es una forma de ignorar los
 detalles. Otras son las fugas de memoria, las condiciones de carrera o el uso
--- 29 of 644 --
-
----
-
-## [Sección 9] Introducción y Fundamentos
-
 incoherente de los nombres. En definitiva, el código limpio muestra gran
 atención al detalle.
 Bjarne termina afirmando que el código limpio hace una cosa bien. No es
@@ -753,8 +659,6 @@ limpio debe mostrar de forma clara el suspense del problema que hay que
 resolver. Debe llevar ese suspense hasta un punto álgido para después
 demostrar al lector que los problemas y el suspense se han solucionado de
 forma evidente.
--- 30 of 644 --
-
 La frase «nítida abstracción» de Grady es un oxímoron fascinante. Nítido
 es casi un sinónimo de concreto, con un potente mensaje. El código debe ser
 específico y no especulativo. Sólo debe incluir lo necesario. Nuestros lectores
@@ -785,8 +689,6 @@ uno de sus pilares. Dave tiene razón. El código, sin pruebas, no es limpio.
 Independientemente de su elegancia, legibilidad y accesibilidad, si no tiene
 pruebas, no será limpio.
 Dave usa dos veces la palabra mínimo. Valora el código de tamaño
--- 31 of 644 --
-
 reducido, una opinión habitual en la literatura de software desde su
 concepción. Cuanto más pequeño, mejor.
 También afirma que el código debe ser culto, una referencia indirecta a la
@@ -815,12 +717,6 @@ prestado atención a los detalles. Se ha preocupado.
 Ron Jeffries, autor de Extreme
 Programming Installed y Extreme
 Programming Adventures in C#
--- 32 of 644 --
-
----
-
-## [Sección 10] Introducción y Fundamentos
-
 Ron comenzó su carrera como
 programador con Fortran en Strategic Air
 Command y ha escrito código para la
@@ -851,8 +747,6 @@ para generar un método que exprese con mayor claridad su cometido
 y varios métodos secundarios que expliquen cómo lo hace.
 La duplicación y la expresividad son dos factores que permiten
 mejorar considerablemente código que no sea limpio. Sin embargo,
--- 33 of 644 --
-
 existe otra cosa que también hago conscientemente, aunque sea más
 difícil de explicar.
 Tras años en este trabajo, creo que todos los programas están
@@ -885,8 +779,6 @@ patrones de diseño. Una de las mentes tras
 Smalltalk y la programación orientada a
 objetos. El padrino de todos a los que les
 importa el código.
--- 34 of 644 --
-
 Sabemos que estamos trabajando con
 código limpio cuando cada rutina que
 leemos resulta ser lo que esperábamos.
@@ -920,12 +812,6 @@ atractivo hace que el lenguaje parezca creado para el problema. Por tanto,
 somos responsables de que el lenguaje parezca sencillo. No es el lenguaje el
 que hace que los programas parezcan sencillos, sino el programador que
 consigue que el lenguaje lo parezca.
--- 35 of 644 --
-
----
-
-## [Sección 11] Introducción y Fundamentos
-
 Escuelas de pensamiento
 ¿Y yo (Uncle Bob)? ¿Qué es para mí el
 código limpio? En este libro le contaremos,
@@ -957,8 +843,6 @@ actuamos como si las enseñanzas y las técnicas fueran correctas. Después de
 todo, existe una forma correcta de practicar Hakkoryu Jiu Jitsu o Jeet Kune
 Do, pero esta corrección dentro de una escuela determinada no anula las
 enseñanzas de otra diferente.
--- 36 of 644 --
-
 Imagine que este libro es una descripción de la Escuela de mentores del
 código limpio. Las técnicas y enseñanzas impartidas son la forma en la que
 practicamos nuestro arte. Podemos afirmar que, si sigue nuestras enseñanzas,
@@ -989,8 +873,6 @@ resultados fueron fascinantes.
 La mayor parte de la reproducción eran desplazamientos entre módulos.
 Bob accede al módulo.
 Se desplaza hasta la función que tiene que cambiar.
--- 37 of 644 --
-
 Se detiene y piensa en las posibles opciones.
 Oh, vuelve al inicio del módulo para comprobar la inicialización de
 una variable.
@@ -1021,12 +903,6 @@ difícil de escribir en función de lo fácil o difícil de leer que sea el cód
 circundante. Si quiere avanzar rápidamente, terminar cuanto antes y que su
 código sea fácil de escribir, haga que sea fácil de leer.
 La regla del Boy Scout
--- 38 of 644 --
-
----
-
-## [Sección 12] Introducción y Fundamentos
-
 No basta con escribir código correctamente. El código debe limpiarse con el
 tiempo. Todos hemos visto que el código se corrompe con el tiempo, de
 modo que debemos adoptar un papel activo para evitarlo.
@@ -1055,8 +931,6 @@ responsabilidad única), OCP (Open Closed Principle o Principio
 Abierto/Cerrado) y DIP (Dependency Inversion Principle o Principio de
 inversión de dependencias) entre otros. Todos estos principios se describen
 detalladamente en PPP.
--- 39 of 644 --
-
 Conclusión
 Los libros sobre arte no le prometen que se convertirá en artista. Solamente
 pueden mostrarle herramientas, técnicas y procesos de pensamiento que otros
@@ -1078,13 +952,11 @@ Bibliografía
 [Knuth92]: Literate Programming, Donald E. Knuth, Center for the
 Study of Language and Information, Leland Stanford Junior University,
 1992.
--- 40 of 644 --
+2
 Nombres con sentido
 por Tim Ottinger
 Introducción
 En el software, los nombres son omnipresentes. Aparecen en variables,
--- 41 of 644 --
-
 funciones, argumentos, clases y paquetes. Asignamos nombres a archivos y a
 directorios, a archivos jar, war y ear. Usamos nombres constantemente. Por
 ello, debemos hacerlo bien. A continuación, veremos algunas reglas básicas
@@ -1119,12 +991,6 @@ return list1;
 ¿Por qué es complicado saber la función de este código? No hay
 expresiones complejas. Los espacios y el sangrado son razonables. Sólo hay
 tres variables y dos constantes. Ni siquiera contiene clases complejas o
--- 42 of 644 --
-
----
-
-## [Sección 13] Introducción y Fundamentos
-
 métodos polimórficos, sólo una lista de matrices (o eso parece).
 El problema no es la simplicidad del código sino su carácter implícito: el
 grado en el que el contexto no es explícito en el propio código.
@@ -1160,8 +1026,6 @@ List<Cell> flaggedCells = new ArrayList<Cell>();
 for (Cell cell : gameBoard)
 if (cell.isFlagged())
 flaggedCells.add(cell);
--- 43 of 644 --
-
 return flaggedCells;
 }
 Con estos sencillos cambios de nombre, es fácil saber qué sucede. Es la
@@ -1193,8 +1057,6 @@ ordenan alfabéticamente de forma conjunta y si las diferencias son muy
 evidentes, ya que es probable que el programador elija un objeto por nombre
 sin fijarse en los comentarios o la lista de métodos proporcionados por una
 clase.
--- 44 of 644 --
-
 Un ejemplo de nombre desinformativo sería el uso de la L minúscula o la
 O mayúscula como nombres de variables, sobre todo combinados. El
 problema, evidentemente, es que se parecen a las constantes 1 y 0
@@ -1226,12 +1088,6 @@ deben tener un significado diferente.
 Los nombres de series numéricas (a1, a2… aN) son lo contrario a los
 nombres intencionados. No desinforman, simplemente no ofrecen
 información; son una pista sobre la intención del autor. Fíjese en lo siguiente:
--- 45 of 644 --
-
----
-
-## [Sección 14] Introducción y Fundamentos
-
 public static void copyChars(char a1[], char a2[]) {
 for (int i = 0; i < a1.length; i++) {
 a2[i] = a1[i];
@@ -1265,8 +1121,6 @@ En ausencia de convenciones concretas, la variable moneyAmount no se
 distingue de money, customerInfo no se distingue de customer, accountData
 no se distingue de account y theMessage no se distingue de message. Debe
 diferenciar los nombres de forma que el lector aprecie las diferencias.
--- 46 of 644 --
-
 Usar nombres que se puedan pronunciar
 A los humanos se nos dan bien las palabras. Gran parte de nuestro cerebro se
 dedica al concepto de palabras. Y, por definición, las palabras son
@@ -1299,8 +1153,6 @@ Ahora se puede mantener una conversación inteligente: «Eh, Mikey, fíjate
 en este registro. La marca de tiempo de generación es para mañana. ¿Cómo
 es posible?»
 Usar nombres que se puedan buscar
--- 47 of 644 --
-
 Los nombres de una letra y las constantes numéricas tienen un problema: no
 son fáciles de localizar en el texto. Se puede detectar
 MAX_CLASSES_PER_STUDENT, pero el número 7 resulta más complicado. Las
@@ -1335,12 +1187,6 @@ se puede buscar. Se usa una función más extensa, pero comprobará que
 resulta mucho más fácil buscar WORK_DAYS_PER_WEEK que todas las instancias
 de 5 y filtrar la lista a los casos con el significado adecuado.
 Evitar codificaciones
--- 48 of 644 --
-
----
-
-## [Sección 15] Introducción y Fundamentos
-
 Ya tenemos suficientes codificaciones como para tener que añadir otras
 nuevas. Al codificar información de tipos o ámbitos en un nombre se dificulta
 la descodificación. No parece razonable que todos los nuevos empleados
@@ -1372,8 +1218,6 @@ Dificultan la legibilidad del código y pueden hacer que el sistema de
 codificación confunda al lector:
 PhoneNumber phoneString;
 // el nombre no cambia cuando cambia el tipo
--- 49 of 644 --
-
 Prefijos de miembros
 Tampoco es necesario añadir m_ como prefijo a los nombres de variables. Las
 clases y funciones tienen el tamaño necesario para no tener que hacerlo, y
@@ -1406,8 +1250,6 @@ No quiero que mis usuarios sepan que se trata de una interfaz, solamente que
 se trata de ShapeFactory. Si tengo que codificar la interfaz o la
 implementación, opto por ésta última. Es mejor usar ShapeFactoryImp o
 incluso CShapeFactory, que codificar la interfaz.
--- 50 of 644 --
-
 Evitar asignaciones mentales
 Los lectores no tienen que traducir mentalmente sus nombres en otros que ya
 conocen. Este problema suele aparecer al elegir entre no usar términos de
@@ -1434,12 +1276,6 @@ Customer, WikiPage, Account y AddressParser. Evite palabras como
 Manager, Processor, Data, o Info en el nombre de una clase. El nombre de
 una clase no debe ser un verbo.
 Nombres de métodos
--- 51 of 644 --
-
----
-
-## [Sección 16] Introducción y Fundamentos
-
 Los métodos deben tener nombres de verbo como postPayment, deletePage
 o save. Los métodos de acceso, de modificación y los predicados deben tener
 como nombre su valor y usar como prefijo get, set e is de acuerdo al
@@ -1468,8 +1304,6 @@ recurra a bromas culturales como eatMyShorts() si quiere decir abort().
 Diga lo que piense. Piense lo que diga.
 Una palabra por concepto
 Elija una palabra por cada concepto abstracto y manténgala. Por ejemplo,
--- 52 of 644 --
-
 resulta confuso usar fetch, retrieve y get como métodos equivalentes de
 clases distintas. ¿Cómo va a recordar qué método se corresponde a cada
 clase? Desafortunadamente, tendrá que recordar qué empresa, grupo o
@@ -1500,8 +1334,6 @@ Sin embargo, alguien puede decidir usar la palabra add por motivos de
 coherencia, aunque no sea en el mismo sentido. Imagine que hay varias
 clases en las que add crea un nuevo valor sumando o concatenando dos
 valores existentes. Imagine ahora que crea una nueva clase con un método
--- 53 of 644 --
-
 que añada su parámetro a una colección. ¿Este método debe tener el método
 add? Parece coherente ya que hay otros muchos métodos add, pero en este
 caso hay una diferencia semántica, de modo que debemos usar un nombre
@@ -1530,12 +1362,6 @@ mantenga su código podrá preguntar el significado a un experto en dominios.
 Separar los conceptos de dominio de soluciones y de problemas es parte
 del trabajo de un buen programador y diseñador. El código que tenga más
 relación con los conceptos del dominio de problemas tendrá nombres
--- 54 of 644 --
-
----
-
-## [Sección 17] Introducción y Fundamentos
-
 extraídos de dicho dominio.
 Añadir contexto con sentido
 Algunos nombres tienen significado por sí mismos, pero la mayoría no. Por
@@ -1568,8 +1394,6 @@ verb = “are”;
 pluralModifier = “s”;
 } else if (count == 1) {
 number = “1”;
--- 55 of 644 --
-
 verb = “is”;
 pluralModifier = “”;
 } else {
@@ -1612,8 +1436,6 @@ thereAreManyLetters(count);
 }
 private void thereAreManyLetters(int count) {
 number = “1”;
--- 56 of 644 --
-
 verb = “is”;
 pluralModifier = “”;
 }
@@ -1646,12 +1468,6 @@ de la clase Address pero no sirven como nombres de clase. Address sirve
 como nombre de clase. Para distinguir entre direcciones MAC, direcciones de
 puertos y direcciones Web, podría usar PostalAddress, MAC y URI. Los
 nombres resultantes son más precisos, el objetivo de cualquier nombre.
--- 57 of 644 --
-
----
-
-## [Sección 18] Introducción y Fundamentos
-
 Conclusión
 Lo más complicado a la hora de elegir un buen nombre es que requiere
 habilidad descriptiva y acervo cultural. Es un problema de formación más
@@ -1669,10 +1485,8 @@ deje que le detenga.
 Aplique estas reglas y compruebe si mejora o no la legibilidad de su
 código. Si es el encargado de mantener código de terceros, use herramientas
 para solucionar estos problemas. Obtendrá recompensas a corto y largo plazo.
--- 58 of 644 --
+3
 Funciones
--- 59 of 644 --
-
 En los inicios de la programación, creábamos sistemas a partir de rutinas y
 subrutinas. Después, en la época de Fortran y PL/1, creábamos nuestros
 sistemas con programas, subprogramas y funciones. En la actualidad, sólo las
@@ -1682,8 +1496,6 @@ Fíjese en el código del Listado 3-1. Es complicado encontrar una función
 extensa en FitNesse[10], pero acabé encontrando ésta. No sólo es extensa, sino
 que también contiene código duplicado, muchas cadenas y tipos de datos
 extraños, además de API poco habituales y nada evidentes. Intente
--- 60 of 644 --
-
 comprenderlo en los próximos tres minutos.
 Listado 3-1
 HtmlUtil.java (FitNesse 20070619).
@@ -1733,8 +1545,6 @@ buffer.append(“\n”)
 .append(“\n”);
 }
 if (includeSuiteSetup) {
--- 61 of 644 --
-
 WikiPage suiteTeardown =
 PageCrawlerImpl.getInheritedPage(
 SuiteResponder.SUITE_TEARDOWN_NAME,
@@ -1777,12 +1587,6 @@ pageData.setContent(newPageContent.toString());
 return pageData.getHtml();
 }
 A menos que sea un alumno de FitNesse, seguramente no entienda los
--- 62 of 644 --
-
----
-
-## [Sección 19] Introducción y Fundamentos
-
 detalles. Entenderá que la función se encarga de añadir páginas de
 configuración y detalles en una página de prueba, que después muestra en
 HTML. Si está familiarizado con JUnit[11], verá que esta función pertenece a
@@ -1814,8 +1618,6 @@ aproximada de 20 líneas.
 Beck en su casa de Oregon. Nos sentamos y comenzamos a programar. Me
 enseñó un atractivo programa de Java/Swing que había llamado Sparkle.
 Generaba un efecto visual en pantalla, similar a la varita mágica del hada de
--- 63 of 644 --
-
 Cenicienta. Al mover el ratón, salían estrellitas del cursor, y descendían a la
 parte inferior de la pantalla en un campo gravitatorio simulado. Cuando Kent
 me enseñó el código, me sorprendió la brevedad de las funciones. Estaba
@@ -1846,8 +1648,6 @@ anidadas. Por tanto, el nivel de sangrado de una función no debe ser mayor de
 uno o dos. Evidentemente, de esta forma las funciones son más fáciles de leer
 y entender.
 Hacer una cosa
--- 64 of 644 --
-
 Es evidente que el Listado 3-1 hace más de
 una cosa. Crea búferes, obtiene páginas,
 busca páginas heredadas, añade cadenas
@@ -1876,12 +1676,6 @@ HTML.
 Si una función sólo realiza los pasos situados un nivel por debajo del
 nombre de la función, entonces hace una cosa. En definitiva, creamos
 funciones para descomponer conceptos más amplios (es decir, el nombre de
--- 65 of 644 --
-
----
-
-## [Sección 20] Introducción y Fundamentos
-
 la función) en un conjunto de pasos en el siguiente nivel de abstracción. Es
 evidente que el Listado 3-1 contiene pasos en distintos niveles de abstracción,
 por lo que es obvio que hace más de una cosa. Incluso el Listado 3-2 tiene
@@ -1908,8 +1702,6 @@ La mezcla de niveles de abstracción en una función siempre resulta
 confusa. Los lectores no sabrán si una determinada expresión es un concepto
 esencial o un detalle. Peor todavía, si se mezclan detalles con conceptos
 esenciales, aumentarán los detalles dentro de la función.
--- 66 of 644 --
-
 Leer código de arriba a abajo: la regla descendente
 El objetivo es que el código se lea como un texto de arriba a abajo[14].
 Queremos que tras todas las funciones aparezcan las del siguiente nivel de
@@ -1938,8 +1730,6 @@ Fíjese en el Listado 3-7 del final del capítulo. Muestra la función
 testableHtml modificada de acuerdo a estos principios. Cada función
 presenta a la siguiente y se mantiene en un nivel de abstracción coherente.
 Instrucciones Switch
--- 67 of 644 --
-
 Es complicado usar una instrucción switch de tamaño reducido[15]. Aunque
 sólo tenga dos casos, es mayor de lo que un bloque o función debería ser.
 También es complicado crear una instrucción switch que haga una sola cosa.
@@ -1975,12 +1765,6 @@ número ilimitado de funciones que tienen la misma estructura.
 Por ejemplo, podríamos tener:
 isPayday(Employee e, Date date),
 o
--- 68 of 644 --
-
----
-
-## [Sección 21] Introducción y Fundamentos
-
 deliverPay(Employee e, Date date),
 o muchas otras, todas con la misma estructura.
 La solución al problema (véase el Listado 3-5) consiste en ocultar la
@@ -2018,8 +1802,6 @@ Mi regla general para las instrucciones switch es que se pueden tolerar si
 sólo aparecen una vez, se usan para crear objetos polimórficos y se ocultan
 tras una relación de herencia para que el resto del sistema no las pueda ver
 [G23]. Evidentemente, cada caso es diferente y en ocasiones se puede
--- 69 of 644 --
-
 incumplir una o varias partes de esta regla.
 Usar nombres descriptivos
 En el Listado 3-7, hemos cambiado el nombre de la función de ejemplo de
@@ -2051,8 +1833,6 @@ includeSetupAndTeardownPages, includeSetupPages,
 includeSuiteSetupPage e includeSetupPage. La estructura similar de estos
 nombres permite que la secuencia cuente una historia. En realidad, si ve la
 secuencia anterior, seguramente se pregunte qué ha pasado con
--- 70 of 644 --
-
 includeTeardownPages, includeSuiteTeardownPage e
 includeTeardownPage.
 Argumentos de funciones
@@ -2083,12 +1863,6 @@ difícil. Con dos argumentos el problema es más complejo. Con más de dos
 argumentos, probar cada combinación de valores adecuados es todo un reto.
 Los argumentos de salida son más difíciles de entender que los de entrada. Al
 leer una función, estamos acostumbrados al concepto de información añadida
--- 71 of 644 --
-
----
-
-## [Sección 22] Introducción y Fundamentos
-
 a la función a través de argumentos y extraída a través de un valor devuelto.
 No esperamos que la información se devuelva a través de los argumentos. Por
 ello, los argumentos de salida suelen obligamos a realizar una comprobación
@@ -2119,8 +1893,6 @@ de salida en lugar de un valor devuelto para realizar transformaciones resulta
 confuso. Si una función va a transformar su argumento de entrada, la
 transformación debe aparecer como valor devuelto. Sin duda
 StringBuffertransform(StringBuffer in) es mejor que void
--- 72 of 644 --
-
 transform(StringBuffer out), aunque la implementación del primer caso
 devuelva solamente el argumento de entrada. Al menos se ajusta a la forma
 de la transformación.
@@ -2149,8 +1921,6 @@ dos argumentos. De hecho, sería muy sorprendente ver Point(0). Sin
 embargo, en este caso ambos argumentos son componentes ordenados de un
 mismo valor, mientras que outputStream y name carecen de una cohesión o
 un orden natural.
--- 73 of 644 --
-
 Incluso funciones diádicas evidentes como assertEquals(expected,
 actual) resultan problemáticas. ¿Cuántas veces ha incluido el valor real en
 su posición esperada? Los dos argumentos carecen de un orden natural. El
@@ -2179,12 +1949,6 @@ Conviene recordar siempre que la igualdad de los valores de coma flotante es
 algo relativo.
 Objeto de argumento
 Cuando una función parece necesitar dos o más argumentos, es probable que
--- 74 of 644 --
-
----
-
-## [Sección 23] Introducción y Fundamentos
-
 alguno de ellos se incluya en una clase propia. Fíjese en la diferencia entre las
 dos siguientes declaraciones:
 Circle makeCircle (double x, double y, double radius);
@@ -2214,8 +1978,6 @@ su cometido, así como el orden y el cometido de los argumentos. En formato
 monádico, la función y el argumento deben formar un par de verbo y
 sustantivo. Por ejemplo, write(name) resulta muy evocador. Sea lo que sea
 name, sin duda se escribe (write).
--- 75 of 644 --
-
 Un nombre más acertado podría ser writeField(name), que nos dice que
 name es un campo (field). Éste es un ejemplo de palabra clave como
 nombre de función. Con este formato codificamos los nombres de los
@@ -2249,8 +2011,6 @@ return true;
 }
 return false;
 }
--- 76 of 644 --
-
 }
 El efecto secundario es la invocación de Session.initialize(). La
 función checkPassword, por su nombre, afirma comprobar la contraseña. El
@@ -2282,12 +2042,6 @@ los lenguajes orientados a objetos, pensados para actuar como argumento de
 salida. Es decir, sería más indicado invocar appendFooter como
 report.appendFooter();.
 Por lo general, los argumentos de salida deben evitarse. Si su función
--- 77 of 644 --
-
----
-
-## [Sección 24] Introducción y Fundamentos
-
 tiene que cambiar el estado de un elemento, haga que cambie el estado de su
 objeto contenedor.
 Separación de consultas de comando
@@ -2317,8 +2071,6 @@ if (attributeExists(“username”)) {
 setAttribute(“username”, “unclebob”);
 …
 }
--- 78 of 644 --
-
 Mejor excepciones que devolver códigos de error
 Devolver códigos de error de funciones de comando es un sutil
 incumplimiento de la separación de comandos de consulta. Hace que los
@@ -2356,8 +2108,6 @@ logger.log(e.getMessage());
 Extraer bloques Try/Catch
 Los bloques try/catch no son atractivos por naturaleza. Confunden la
 estructura del código y mezclan el procesamiento de errores con el normal.
--- 79 of 644 --
-
 Por ello, conviene extraer el cuerpo de los bloques try y catch en funciones
 individuales.
 public void delete(Page page) {
@@ -2391,12 +2141,6 @@ El imán de dependencias Error.java
 La devolución de códigos de error suele implicar que existe una clase o
 enumeración en la que se definen los códigos de error.
 public enum Error {
--- 80 of 644 --
-
----
-
-## [Sección 25] Introducción y Fundamentos
-
 OK,
 INVALID,
 NO_SUCH,
@@ -2429,8 +2173,6 @@ código reduciendo la duplicación.
 La duplicación puede ser la raíz de todos los problemas del software.
 Existen numerosos principios y prácticas para controlarla o eliminarla.
 Imagine que todas las formas normales de la base de datos de Codd sirvieran
--- 81 of 644 --
-
 para eliminar la duplicación de datos. Imagine también cómo la
 programación orientada a objetos concentra el código en clases base que en
 otros casos serian redundantes. La programación estructurada, la
@@ -2459,8 +2201,6 @@ mensaje hasta que se lea bien. El primer borrador puede estar desorganizado,
 de modo que lo retoca y mejora hasta que se lea de la forma adecuada.
 Cuando creo funciones, suelen ser extensas y complicadas, con
 abundancia de sangrados y bucles anidados. Con extensas listas de
--- 82 of 644 --
-
 argumentos, nombres arbitrarios y código duplicado, pero también cuento
 con una serie de pruebas de unidad que abarcan todas y cada una de las líneas
 de código.
@@ -2490,12 +2230,6 @@ correctos, y bien organizadas, pero no olvide que su verdadero objetivo es
 contar la historia del sistema y que las funciones que escriba deben encajar en
 un lenguaje claro y preciso que le sirva para contar esa historia.
 SetupTeardownIncluder
--- 83 of 644 --
-
----
-
-## [Sección 26] Introducción y Fundamentos
-
 Listado 3-7
 SetupTeardownIncluder.java.
 package fitnesse.html;
@@ -2540,8 +2274,6 @@ if (isSuite)
 includeSuiteSetupPage();
 includeSetupPage();
 }
--- 84 of 644 --
-
 private void includeSuiteSetupPage() throws Exception {
 include(SuiteResponder.SUITE_SETUP_NAME, “-setup”);
 }
@@ -2587,8 +2319,6 @@ newPageContent
 .append(pagePathName)
 .append(“\n”);
 }
--- 85 of 644 --
-
 }
 Bibliografía
 [KP78]: Kernighan and Plaugher, The Elements of Programming Style,
@@ -2601,7 +2331,7 @@ Software, Gamma et al., Addison Wesley, 1996.
 Addison-Wesley, 2000.
 [SP72]: Structured Programming, O. J. Dahl, E. W. Dijkstra, C. A. R.
 Hoare, Academic Press, London, 1972.
--- 86 of 644 --
+4
 Comentarios
 «No comente el código incorrecto, reescríbalo».
 Brian W. Kernighan y P. J. Plaugher[24]
@@ -2611,8 +2341,6 @@ nada más dañino que un comentario antiguo que propague mentiras y
 desinformación.
 Los comentarios no son como la Lista de Schindler. No son pura bondad.
 De hecho, en el mejor de los casos, son un mal necesario. Si los lenguajes de
--- 87 of 644 --
-
 programación fueran más expresivos o si pudiéramos dominarlos para
 expresar nuestras intenciones, no necesitaríamos demasiados comentarios,
 puede que incluso ninguno.
@@ -2650,12 +2378,6 @@ constante HTTP_DATE_REGEXP y su comentario explicativo.
 Se podría afirmar que los programadores deben ser lo bastante
 disciplinados como para mantener los comentarios actualizados, relevantes y
 precisos. De acuerdo, debería, pero esa energía debería invertirse en crear
--- 88 of 644 --
-
----
-
-## [Sección 27] Introducción y Fundamentos
-
 código claro y expresivo que no necesite comentario alguno.
 Los comentarios imprecisos son mucho peor que la ausencia de
 comentarios. Suelen confundir al usuario. Generan expectativas que nunca se
@@ -2685,8 +2407,6 @@ o esto otro:
 if (employee.isEligibleForFullBenefits())
 Apenas se tardan unos segundos en explicar nuestras intenciones en el
 código. En muchos casos, basta con crear una función que diga lo mismo que
--- 89 of 644 --
-
 el comentario que pensaba escribir.
 Comentarios de calidad
 Algunos comentarios son necesarios o beneficiosos. Veremos algunos de los
@@ -2715,8 +2435,6 @@ abstracto:
 protected abstract Responder responderInstance();
 Estos comentarios pueden ser útiles, pero es mejor usar el nombre de la
 función para transmitir la información siempre que sea posible. Por ejemplo,
--- 90 of 644 --
-
 en este caso el comentario sería redundante si cambiamos el nombre de la
 función por responderBeingTested. Veamos un ejemplo mejor:
 // el formato coincide con kk:mm:ss EEE, MMM dd, yyyy
@@ -2755,12 +2473,6 @@ ParentWidget parent =
 new BoldWidget(new MockWidgetRoot(), “‘‘‘bold text’’’”);
 AtomicBoolean failFlag = new AtomicBoolean();
 failFlag.set(false);
--- 91 of 644 --
-
----
-
-## [Sección 28] Introducción y Fundamentos
-
 //Nuestro mejor intento de obtener una condición de carrera
 //creando un gran número de procesos.
 for (int i = 0; i < 25000; i++) {
@@ -2801,8 +2513,6 @@ comprobar si los comentarios son correctos. Esto explica por qué la
 clarificación es necesaria y también arriesgada. Por ello, antes de escribir
 estos comentarios, asegúrese de que no hay una solución mejor y también de
 que sean precisos.
--- 92 of 644 --
-
 Advertir de las consecuencias
 En ocasiones es muy útil advertir a otros
 programadores de determinadas
@@ -2838,8 +2548,6 @@ acuerdo, pero el comentario es perfectamente razonable. Evita que un
 programador use un inicializador estático por motivos de eficacia.
 Comentarios TODO
 En ocasiones conviene usar notas con forma de comentarios //TODO. En el
--- 93 of 644 --
-
 siguiente caso, el comentario TODO explica por qué la función tiene una
 implementación incorrecta y cuál debe ser su futuro.
 // TODO-MdM no son necesarios
@@ -2873,12 +2581,6 @@ javadoc de la biblioteca estándar de Java son un ejemplo. Sería muy
 complicado crear programas de Java sin ellos.
 Si usa una API pública, debe crear javadoc de calidad para la misma, pero
 recuerde el siguiente consejo a lo largo del capítulo: los javadoc pueden ser
--- 94 of 644 --
-
----
-
-## [Sección 29] Introducción y Fundamentos
-
 tan ambiguos, amplios y descorteses como cualquier otro tipo de documento.
 Comentarios incorrectos
 Muchos comentarios pertenecen a esta categoría. Suelen ser excusas de
@@ -2912,8 +2614,6 @@ predeterminados? ¿Se cargan antes de la invocación de
 loadProperties.load o loadProperties.load captura la excepción, carga
 los valores predeterminados y después nos pasa la excepción para que la
 ignoremos? ¿O será que loadProperties.load carga todos los valores
--- 95 of 644 --
-
 predeterminados antes de intentar abrir el archivo? ¿Intentaba el autor
 consolarse por dejar el bloque catch vacío? Ésta es la posibilidad más temida,
 ¿se estaba diciendo que volviera más tarde para crear el código para cargar
@@ -2945,10 +2645,9 @@ No lo justifica ni transmite la intención ni la lógica. No es más fácil de l
 que el código. De hecho, es menos preciso y obliga al lector a aceptar la falta
 de precisión en lugar de a entenderlo. Es como un vendedor de coches de
 segunda menos que le asegura que no hace falta revisar el motor.
-Fíjese ahora en la legión de javadoc inútiles y redundantes del Listado 42, obtenido de Tomcat. Estos comentarios únicamente ensucian y oscurecen
+Fíjese ahora en la legión de javadoc inútiles y redundantes del Listado 4-
+2, obtenido de Tomcat. Estos comentarios únicamente ensucian y oscurecen
 el código. No tienen ninguna función documental. Para empeorar las cosas,
--- 96 of 644 --
-
 sólo le mostramos algunos. El módulo tiene muchos más.
 Listado 4-2
 ContainerBase.java (Tomcat).
@@ -2990,12 +2689,6 @@ protected Manager manager = null;
 protected Cluster cluster = null;
 /**
 * Nombre legible de este contenedor.
--- 97 of 644 --
-
----
-
-## [Sección 30] Introducción y Fundamentos
-
 */
 protected String name = null;
 /**
@@ -3031,8 +2724,6 @@ cuerpo del código, puede hacer que otro programador invoque la función con
 la esperanza de que devuelva algo cuando this.closed sea true. Ese pobre
 programador se encontrará en una sesión de depuración intentando
 determinar por qué el código se ejecuta tan lentamente.
--- 98 of 644 --
-
 Comentarios obligatorios
 Es una locura tener una regla que afirme que todas las funciones deben tener
 un javadoc o que todas las variables deben tener un comentario. Este tipo de
@@ -3070,8 +2761,6 @@ entradas.
 * 05-Nov-
 : Se añade un método getDescription() y se elimina la clase
 NotableDate (DG);
--- 99 of 644 --
-
 * 12-Nov-
 : IBD requiere el método setDescription(), una vez eliminada la
 clase NotableDate
@@ -3115,12 +2804,6 @@ private int dayOfMonth;
 Y aquí el parangón de la redundancia:
 /**
 * Devuelve el día del mes.
--- 100 of 644 --
-
----
-
-## [Sección 31] Introducción y Fundamentos
-
 *
 * @return el día del mes.
 */
@@ -3163,8 +2846,6 @@ En lugar de explotar en un comentario sin sentido, el programador
 debería haber sabido que su frustración se podría aliviar mejorando la
 estructura del código. Tendría que haber centrado su energía en extraer el
 último bloque try/catch en una función independiente, como muestra el
--- 101 of 644 --
-
 Listado 4-5.
 Listado 4-5
 startSending (refactorizado).
@@ -3204,8 +2885,6 @@ redactar documentación.
 /** El nombre. */
 private String name;
 /** La versión. */
--- 102 of 644 --
-
 private String version;
 /** El licenceName. */
 private String licenceName;
@@ -3237,8 +2916,6 @@ esta estructura. Por lo general, debe eliminarse, sobre todo la molesta hilera
 de barras al final.
 Piénselo de esta forma. Estas estructuras son atractivas si no las usa
 demasiado. Por ello, úselas esporádicamente y sólo cuando el beneficio sea
--- 103 of 644 --
-
 significativo. Si las usa en exceso, acabarán por ser ignoradas.
 Comentarios de llave de cierre
 En ocasiones, los programadores incluyen comentarios especiales en llaves
@@ -3275,12 +2952,6 @@ Asignaciones y menciones
 /* Añadido por Rick */
 Los sistemas de control de código fuente recuerdan a la perfección quién ha
 añadido qué y cuándo. No es necesario plagar el código con pequeñas
--- 104 of 644 --
-
----
-
-## [Sección 32] Introducción y Fundamentos
-
 menciones. Puede pensar que estos comentarios son útiles y que ayudan a
 otros a hablar sobre el código, pero en realidad sobreviven durante años y
 cada vez son menos precisos y relevantes. El sistema de control de código
@@ -3317,8 +2988,6 @@ década de 1960, en la que el código comentado pudo ser útil, pero hace
 tiempo que contamos con buenos sistemas de control de código fuente,
 sistemas que recuerdan el código por nosotros. Ya no tenemos que
 comentarlo. Elimínelo. No lo perderá. Se lo aseguro.
--- 105 of 644 --
-
 Comentarios HTML
 El HTML en comentarios de código fuente es una aberración, como puede
 apreciar en el siguiente fragmento. Dificulta la lectura de los comentarios
@@ -3354,8 +3023,6 @@ comentario local. Fíjese en el siguiente comentario javadoc. Aparte de su
 terrible redundancia, también ofrece información sobre el puerto
 predeterminado y la función no tiene control alguno sobre el puerto
 predeterminado. El comentario no describe la función sino otra parte distinta
--- 106 of 644 --
-
 del sistema. Evidentemente, no hay garantías de que el comentario cambie
 cuando lo haga el código que contiene el valor predeterminado.
 /**
@@ -3379,7 +3046,7 @@ Primera parte: Formato del Cuerpo de los Mensajes de Internet
 
 ---
 
-## [Sección 33] sección 6.8. Codificación de transferencia de contenidos Base64
+## Sección 2: sección 6.8. Codificación de transferencia de contenidos Base64 [Entropy: 1]
 
 El proceso de codificación representa grupos de 24 bits de la entrada
 como cadenas de salida de 4 caracteres codificados. Procediendo de
@@ -3398,8 +3065,6 @@ La conexión entre un comentario y el código que describe debe ser evidente.
 Si se ha preocupado de escribir un comentario, lo mínimo es que el lector que
 lo vea entienda a qué se refiere. Fíjese en este comentario obtenido de apache
 commons:
--- 107 of 644 --
-
 /*
 * comienza con una matriz de tamaño suficiente para albergar todos los
 pixeles
@@ -3429,8 +3094,6 @@ mi libro Agile Software Development, Principles, Patterns, and Practices y
 para el primero de mis artículos Craftsman publicados en la revista Software
 Development.
 Lo que me fascina de este módulo es que hubo un tiempo en que muchos
--- 108 of 644 --
-
 lo hubiéramos considerado bien documentado. Ahora vemos que es un
 auténtico desastre. A ver cuántos problemas detecta en los comentarios.
 Listado 4-7
@@ -3476,8 +3139,6 @@ f[i] = true;
 f[0] = f[1] = false;
 // cribar
 int j;
--- 109 of 644 --
-
 for (i = 2; i < Math.sqrt(s) + 1; i++)
 {
 if (f[i]) // si no está tachado, tachar sus múltiplos.
@@ -3522,12 +3183,6 @@ enteros
 */
 public class PrimeGenerator
 {
--- 110 of 644 --
-
----
-
-## [Sección 34] sección 6.8. Codificación de transferencia de contenidos Base64
-
 private static boolean[] crossedOut;
 private static int[] result;
 public static int[] generatePrimes(int maxValue)
@@ -3576,8 +3231,6 @@ private static boolean notCrossed(int i)
 return crossedOut[i] == false;
 }
 private static void putUncrossedIntegersIntoResult()
--- 111 of 644 --
-
 {
 result = new int[numberOfUncrossedIntegers()];
 for (int j = 0, i = 2; i < crossedOut.length; i++)
@@ -3608,11 +3261,9 @@ merezca el tiempo y el esfuerzo que los demás puedan dedicar a entenderlo.
 Bibliografía
 [KP78]: Kernighan and Plaugher, The Elements of Programming Style,
 2d. ed., McGraw-Hill, 1978.
--- 112 of 644 --
+5
 Formato
 Cuando los usuarios miran entre bastidores, queremos que queden
--- 113 of 644 --
-
 impresionados por el atractivo, la coherencia y la atención al detalle que
 perciben. Queremos que el orden les sorprenda, que abran los ojos con
 asombro cuando se desplacen por los módulos. Queremos que aprecien que
@@ -3641,12 +3292,6 @@ estilo y su disciplina sobrevivirán, aunque el código no lo haga.
 Veamos qué aspectos del formato nos permiten comunicarnos mejor.
 Formato vertical
 Comencemos por el tamaño vertical. ¿Qué tamaño debe tener un archivo
--- 114 of 644 --
-
----
-
-## [Sección 35] sección 6.8. Codificación de transferencia de contenidos Base64
-
 fuente? En Java, el tamaño de los archivos está relacionado con el tamaño de
 las clases, como veremos más adelante. Por el momento, nos detendremos en
 el tamaño de los archivos.
@@ -3668,8 +3313,6 @@ vertical supone una gran diferencia en tamaño absoluto.
 Junit, FitNesse y Time and Money tienen archivos relativamente
 pequeños. Ninguno supera las 500 líneas y la mayoría tienen menos de 200.
 Tomcat y Ant, por su parte, tienen archivos con varios miles de líneas de
--- 115 of 644 --
-
 longitud y más de la mitad superan las 200.
 ¿Qué significa todo esto? Aparentemente se pueden crear sistemas
 (FitNesse se aproxima a las 50 000 líneas) a partir de archivos de unas 200
@@ -3699,8 +3342,6 @@ abajo. Cada línea representa una expresión o una cláusula, y cada grupo de
 líneas representa un pensamiento completo. Estos pensamientos deben
 separarse mediante líneas en blanco.
 Fíjese en el Listado 5-1. Hay líneas en blanco que separan la declaración
--- 116 of 644 --
-
 del paquete, las importaciones y las funciones. Es una regla muy sencilla con
 un profundo efecto en el diseño visual del código. Cada línea en blanco es
 una pista visual que identifica un nuevo concepto independiente. Al avanzar
@@ -3738,12 +3379,6 @@ public static final String REGEXP = “‘‘‘.+?’’’”;
 private static final Pattern pattern = Pattern.compile(“‘‘‘(.+?)’’’”,
 Pattern.MULTILINE + Pattern.DOTALL);
 public BoldWidget(ParentWidget parent, String text) throws Exception {
--- 117 of 644 --
-
----
-
-## [Sección 36] sección 6.8. Codificación de transferencia de contenidos Base64
-
 super(parent);
 Matcher match = pattern.matcher(text);
 match.find();
@@ -3779,8 +3414,6 @@ m_properties.add(property);
 El Listado 5-4 es mucho más fácil de leer. Lo apreciamos a simple vista o
 al menos yo lo hago. Al mirarlo, veo que es una clase con dos variables y un
 método, sin tener que mover la cabeza ni la vista. El listado anterior nos
--- 118 of 644 --
-
 obliga a forzar la vista y a mover la cabeza para alcanzar el mismo nivel de
 comprensión.
 Listado 5-4
@@ -3810,8 +3443,6 @@ Declaraciones de variables
 Las variables deben declararse de la forma más aproximada a su uso. Como
 las funciones son muy breves, las variables locales deben aparecer en la parte
 superior de cada función, como en este ejemplo de Junit4.3.1.
--- 119 of 644 --
-
 private static void readPreferences() {
 InputStream is = null;
 try {
@@ -3854,12 +3485,6 @@ afterSuiteMethods.put(m.getMethod(), m);
 Variables de instancia
 Las variables de instancia, por su parte, deben declararse en la parte superior
 de la clase. Esto no debe aumentar la distancia vertical de las variables, ya
--- 120 of 644 --
-
----
-
-## [Sección 37] sección 6.8. Codificación de transferencia de contenidos Base64
-
 que en una clase bien diseñada se usan en muchos sino en todos sus métodos.
 Existen discrepancias sobre la ubicación de las variables de instancia.
 En C++ suele aplicarse la denominada regla de las tijeras, que sitúa todas las
@@ -3899,8 +3524,6 @@ public TestSuite(final Class<? extends TestCase> theClass) {
 public TestSuite(Class<? extends TestCase> theClass, String name) {
 …
 }
--- 121 of 644 --
-
 … … … …
 }
 Funciones dependientes
@@ -3940,8 +3563,6 @@ return pageName;
 protected void loadPage(String resource, FitNesseContext context)
 throws Exception {
 WikiPagePath path = PathParser.parse(resource);
--- 122 of 644 --
-
 crawler = context.root.getPageCrawler();
 crawler.setDeadEndStrategy(new VirtualEnabledPageCrawler());
 page = crawler.getPage(context.root, path);
@@ -3980,12 +3601,6 @@ funciones realice una operación similar. Fíjese en este fragmento de código
 de Junit 4.3.1:
 public class Assert {
 static public void assertTrue(String message, boolean condition) {
--- 123 of 644 --
-
----
-
-## [Sección 38] sección 6.8. Codificación de transferencia de contenidos Base64
-
 if (!condition)
 fail(message);
 }
@@ -4019,8 +3634,6 @@ mensaje en las primeras funciones sin necesidad de sumergirnos en los
 detalles. El Listado 5-5 se organiza de esta forma. Puede que otros ejemplos
 mejores sean los listados 15-5 y 3-7.
 Formato horizontal
--- 124 of 644 --
-
 ¿Qué ancho debe tener una línea? Para responderlo, fíjese en la anchura de
 las líneas de un programa convencional. De nuevo, examinamos siete
 proyectos diferentes. En la figura 5.2 puede ver la distribución de longitud de
@@ -4039,8 +3652,6 @@ monitores modernos son más anchos y los programadores noveles pueden
 reducir la fuente para encajar hasta 200 caracteres en la pantalla. No lo haga.
 Mi límite personal es de 120.
 Apertura y densidad horizontal
--- 125 of 644 --
-
 Usamos el espacio en blanco horizontal para asociar elementos directamente
 relacionados y separar otros con una relación menos estrecha. Fíjese en la
 siguiente función:
@@ -4080,12 +3691,6 @@ precedencia inferior.
 Desafortunadamente, muchas herramientas de formato de código ignoran
 la precedencia de los operadores e imponen un espaciado uniforme. Por ello,
 separaciones sutiles como las anteriores suelen perderse tras modificar el
--- 126 of 644 --
-
----
-
-## [Sección 39] sección 6.8. Codificación de transferencia de contenidos Base64
-
 formato del código.
 Alineación horizontal
 Cuando era programador de lenguajes de ensamblado[28], usaba la alineación
@@ -4122,8 +3727,6 @@ instrucciones de asignación, nos fijamos en los valores sin ver el operador.
 Para empeorarlo todo, las herramientas automáticas de formato suelen
 eliminar este tipo de alineación. Por tanto, al final, ya no lo uso. Ahora
 prefiero declaraciones y asignaciones sin alinear, como se muestra a
--- 127 of 644 --
-
 continuación, ya que resaltan una deficiencia importante. Si tengo listas
 extensas que deben alinearse, el problema es la longitud de las listas, no la
 falta de alineación. La longitud de la siguiente lista de declaraciones de
@@ -4162,8 +3765,6 @@ nivel del archivo, como las declaraciones de clases, no se sangran. Los
 métodos de una clase se sangran un nivel a la derecha de la clase. Las
 implementaciones de dichos métodos se implementan un nivel a la derecha
 de la declaración de los métodos. Las implementaciones de bloques se
--- 128 of 644 --
-
 implementan un nivel a la derecha de su bloque contenedor y así
 sucesivamente.
 Los programadores dependen de este sistema de sangrado. Alinean
@@ -4203,12 +3804,6 @@ e.printStackTrace();
 A la vista puede incluso apreciar la estructura del archivo sangrado.
 Detectamos inmediatamente las variables, constructores y métodos de acceso.
 En cuestión de segundos vemos que es una especie de interfaz de conexión,
--- 129 of 644 --
-
----
-
-## [Sección 40] sección 6.8. Codificación de transferencia de contenidos Base64
-
 con un tiempo de espera. La versión sin sangrar, por su parte, es
 prácticamente impenetrable.
 Romper el sangrado
@@ -4242,8 +3837,6 @@ punto y coma situado al final de un bucle while en la misma línea. A menos
 que lo haga visible y lo sangre en una línea propia, es difícil de ver.
 while (dis.read(buf, 0, readBufferSize) != -1)
 ;
--- 130 of 644 --
-
 Reglas de equipo
 Todo programador tiene sus reglas de
 formato preferidas, pero si forma parte de
@@ -4271,8 +3864,6 @@ Las reglas que uso personalmente son sencillas y se ilustran en el código del
 Listado 5-6. Considérelo un ejemplo de documento estándar de código
 óptimo.
 Listado 5-6
--- 131 of 644 --
-
 CodeAnalyzer.java.
 public class CodeAnalyzer implements JavaFileAnalysis {
 private int lineCount;
@@ -4319,12 +3910,6 @@ widestLineNumber = lineCount;
 public int getLineCount() {
 return lineCount;
 }
--- 132 of 644 --
-
----
-
-## [Sección 41] sección 6.8. Codificación de transferencia de contenidos Base64
-
 public int getMaxLineWidth() {
 return maxLineWidth;
 }
@@ -4357,10 +3942,8 @@ Arrays.sort(sortedwidths);
 return sortedwidths;
 }
 }
--- 133 of 644 --
+6
 Objetos y estructuras de datos
--- 134 of 644 --
-
 Hay una razón para que las variables sean privadas. No queremos que nadie
 más dependa de ellas. Queremos poder cambiar su tipo o implementación
 cuando deseemos. Entonces, ¿por qué tantos programadores añaden
@@ -4392,8 +3975,6 @@ ninguna! Y aun así la interfaz representa sin lugar a dudas una estructura de
 datos.
 Pero representa algo más que una estructura de datos. Los métodos
 refuerzan una política de acceso. Puede leer las coordenadas de forma
--- 135 of 644 --
-
 independiente, pero debe establecerlas de forma conjunta como operación
 atómica.
 El Listado 6-1, por su parte, se implementa claramente en coordenadas
@@ -4426,8 +4007,6 @@ los detalles de los datos, sino expresarlos en términos abstractos. Esto no se
 consigue simplemente mediante interfaces o métodos de establecimiento y
 recuperación. Hay que meditar seriamente la forma óptima de representar los
 datos que contiene un objeto. La peor opción es añadir métodos de
--- 136 of 644 --
-
 establecimiento y recuperación a ciegas.
 Antisimetría de datos y objetos
 Estos dos ejemplos ilustran la diferencia entre objetos y estructuras de datos.
@@ -4463,12 +4042,6 @@ Square s = (Square)shape;
 return s.side * s.side;
 }
 else if (shape instanceof Rectangle) {
--- 137 of 644 --
-
----
-
-## [Sección 42] sección 6.8. Codificación de transferencia de contenidos Base64
-
 Rectangle r = (Rectangle)shape;
 return r.height * r.width;
 }
@@ -4508,8 +4081,6 @@ return height * width;
 }
 public class Circle implements Shape {
 private Point center;
--- 138 of 644 --
-
 private double radius;
 public final double PI = 3.141592653589793;
 public double area() {
@@ -4540,8 +4111,6 @@ procedimientos y estructuras de datos.
 Los programadores experimentados saben que la idea de que todo es un
 objeto es un mito. En ocasiones solamente queremos sencillas estructuras de
 datos con procedimientos que operen en las mismas.
--- 139 of 644 --
-
 La ley de Demeter
 Existe una conocida heurística denominada Ley de Demeter[30] que afirma
 que un módulo no debe conocer los entresijos de los objetos que manipula.
@@ -4570,12 +4139,6 @@ considerarse un estilo descuidado y deben evitarse [G36]. Conviene dividirlas
 de esta forma:
 Options opts = ctxt.getOptions();
 File scratchDir = opts.getScratchDir();
--- 140 of 644 --
-
----
-
-## [Sección 43] sección 6.8. Codificación de transferencia de contenidos Base64
-
 final String outputDir = scratchDir.getAbsolutePath();
 ¿Incumplen estos dos fragmentos de
 código la Ley de Demeter? Sin duda el
@@ -4606,8 +4169,6 @@ significativas y también variables públicas o método públicos de acceso y
 mutación que hacen que las variables privadas sean públicas, y tientan a otras
 funciones externas a usar dichas variables de la misma forma que un
 programa por procedimientos usaría una estructura de datos[32]. Estos
--- 141 of 644 --
-
 híbridos dificultan la inclusión de nuevas funciones y también de nuevas
 estructuras de datos. Son lo peor de ambos mundos. Evítelos. Indican un
 diseño descuidado cuyos autores dudan, o peor todavía, desconocen, si
@@ -4639,8 +4200,6 @@ archivo de borrador de un nombre concreto.
 BufferedOutputStream bos = ctxt.createScratchFileStream(classFileName);
 Parece algo razonable para un objeto. Permite a ctxt ocultar sus detalles
 internos e impide que la función actual incumpla la Ley de Demeter y se
--- 142 of 644 --
-
 desplace por objetos que no debería conocer.
 Objetos de transferencia de datos
 La quintaesencia de una estructura de datos es una clase con variables
@@ -4676,12 +4235,6 @@ return street;
 public String getStreetExtra() {
 return streetExtra;
 }
--- 143 of 644 --
-
----
-
-## [Sección 44] sección 6.8. Codificación de transferencia de contenidos Base64
-
 public String getCity() {
 return city;
 }
@@ -4713,8 +4266,6 @@ comportamientos en objetos existentes. Las estructuras de datos muestran
 datos y carecen de comportamiento significativo. Esto facilita la inclusión de
 nuevos comportamientos en las estructuras de datos existentes, pero dificulta
 la inclusión de nuevas estructuras de datos en funciones existentes.
--- 144 of 644 --
-
 En un sistema, en ocasiones necesitaremos la flexibilidad de añadir
 nuevos tipos de datos, por lo que preferimos objetos para esa parte del
 sistema. En otros casos, querremos añadir nuevos comportamientos, para lo
@@ -4724,7 +4275,7 @@ eligen el enfoque más adecuado para cada tarea concreta.
 Bibliografía
 [Refactoring]: Refactoring: Improving the Design of Existing Code,
 Martin Fowler et al., Addison-Wesley, 1999.
--- 145 of 644 --
+7
 Procesar errores
 por Michael Feathers
 Le parecerá extraño encontrar una sección de control de errores en un libro
@@ -4735,8 +4286,6 @@ comprobar que el código hace lo que debe hacer.
 No obstante, la conexión con el código limpio debe ser evidente. Muchas
 bases de código están totalmente dominadas por el control de errores. Cuando
 digo que están dominadas, no quiero decir que únicamente realicen control de
--- 146 of 644 --
-
 código, sino que es prácticamente imposible ver lo que el código hace debido
 a todo ese control de errores. El control de errores es importante, pero si
 oscurece la lógica, es incorrecto.
@@ -4774,12 +4323,6 @@ logger.log(“Invalid handle for: ” + DEV1.toString());
 }
 El problema de estos enfoques es que confunden al invocador. El
 invocador debe comprobar inmediatamente los errores después de la
--- 147 of 644 --
-
----
-
-## [Sección 45] sección 6.8. Codificación de transferencia de contenidos Base64
-
 invocación. Desafortunadamente, es algo que se suele olvidar. Por ello, es
 más recomendable generar una excepción al detectar un error. El código de
 invocación es más limpio. Su lógica no se oscurece por el control de errores.
@@ -4815,8 +4358,6 @@ código es mejor porque se solventan dos preocupaciones: el algoritmo para
 apagar el dispositivo y el control de errores ahora se encuentran separados.
 Puede ver cada uno de ellos y entenderlos de forma independiente.
 Crear primero la instrucción try-catch-finally
--- 148 of 644 --
-
 Uno de los aspectos más interesantes de las excepciones es que definen un
 ámbito en el programa. Al ejecutar código en la parte try de una instrucción
 try-catch-finally, indicamos que la ejecución se puede cancelar en
@@ -4853,8 +4394,6 @@ return new ArrayList<RecordedGrip>();
 Ahora la prueba es correcta ya que capturamos la excepción y ya
 podemos refactorizar. Podemos reducir el tipo de la excepción capturada para
 que coincida con el tipo generado desde el constructor FileInputStream:
--- 149 of 644 --
-
 FileNotFoundException:
 public List<RecordedGrip> retrieveSection(String sectionName) {
 try {
@@ -4888,12 +4427,6 @@ comprobadas y, a pesar de los intentos, C++ tampoco, como sucede en
 Python o Ruby. Y en todos estos lenguajes se puede crear software robusto.
 Por ello, debemos decidir si las excepciones comprobadas valen su precio.
 ¿Qué precio? El precio de las excepciones comprobadas es un
--- 150 of 644 --
-
----
-
-## [Sección 46] sección 6.8. Codificación de transferencia de contenidos Base64
-
 incumplimiento del principio abierto/cerrado[33]. Si genera una excepción
 comprobada desde un método de su código y la cláusula catch se encuentra
 tres niveles por debajo, debe declarar dicha excepción en la firma de todos los
@@ -4925,8 +4458,6 @@ determinar el origen y la ubicación de un error. En Java, puede obtener un
 rastreo de pila de cualquier excepción; sin embargo, no le indicará el
 cometido de la función fallida.
 Redacte mensajes de error informativos y páselos junto a sus
--- 151 of 644 --
-
 excepciones. Mencione la operación fallida y el tipo de fallo. Si guarda
 registros en su aplicación, incluya información suficiente para poder registrar
 el error en la cláusula catch.
@@ -4962,8 +4493,6 @@ Debemos registrar un error y asegurarnos de poder continuar.
 En este caso, como sabemos que el trabajo es el mismo
 independientemente de la excepción, podemos simplificar el código si
 incluimos la API invocada y nos aseguramos de que devuelve un tipo de
--- 152 of 644 --
-
 excepción común:
 LocalPort port = new LocalPort(12);
 try {
@@ -5005,12 +4534,6 @@ definimos un único tipo de excepción para el fallo de puertos y podemos
 escribir un código mucho más limpio. A menudo, una única clase de
 excepción es suficiente para una zona concreta del código. La información
 enviada con la excepción puede distinguir los errores. Use clases diferentes
--- 153 of 644 --
-
----
-
-## [Sección 47] sección 6.8. Codificación de transferencia de contenidos Base64
-
 sólo para capturar una excepción y permitir el paso de otra distinta.
 Definir el flujo normal
 Si sigue los consejos de apartados
@@ -5044,8 +4567,6 @@ que devuelve la dieta diaria como total:
 public class PerDiemMealExpenses implements MealExpenses {
 public int getTotal() {
 // devolver la dieta diaria predeterminada
--- 154 of 644 --
-
 }
 }
 Es lo que se denomina Patrón de Caso Especial [Fowler]. Se crea una
@@ -5080,8 +4601,6 @@ superior o no. En ambos casos es incorrecto. ¿Qué debería hace como
 respuesta a la generación de NullPointerException desde el interior de su
 aplicación? Se puede afirmar que el problema de este código es la ausencia
 de una comprobación de null pero en realidad el problema es su exceso. Si
--- 155 of 644 --
-
 siente la tentación de devolver null desde un método, pruebe a generar una
 excepción o a devolver un objeto de caso especial. Si invoca un método que
 devuelva null desde una API de terceros, envuélvalo en un método que
@@ -5116,12 +4635,6 @@ métodos. A menos que trabaje con una API que espere que pase null, debe
 evitarlo siempre que sea posible. Veamos otro ejemplo, un sencillo método
 que calcula una métrica para dos puntos:
 public class MetricsCalculator
--- 156 of 644 --
-
----
-
-## [Sección 48] sección 6.8. Codificación de transferencia de contenidos Base64
-
 {
 public double xProjection(Point p1, Point p2) {
 return (p2.x – p1.x) * 1.5;
@@ -5161,8 +4674,6 @@ de procesar un null pasado por accidente. Como éste es el caso, el enfoque
 racional es impedir que se pase null de forma predeterminada. Si lo hace,
 puede diseñar código sabiendo que null en una lista de argumentos indica un
 problema y los errores serán menores.
--- 157 of 644 --
-
 Conclusión
 El código limpio es legible pero también debe ser robusto. No son objetivos
 opuestos. Podemos crear código limpio y robusto si consideramos el control
@@ -5173,14 +4684,12 @@ mantenimiento de nuestro código.
 Bibliografía
 [Martin]: Agile Software Development: Principles, Patterns, and
 Practices, Robert C. Martin, Prentice Hall, 2002.
--- 158 of 644 --
+8
 Límites
 por James Grenning
 No es habitual que controlemos todo el software de nuestros sistemas. En
 ocasiones, adquirimos paquetes de terceros o usamos código abierto. En otros
 casos, dependemos de equipos de nuestra propia empresa para producir
--- 159 of 644 --
-
 componentes o subsistemas que utilizamos. De algún modo debemos integrar
 este código externo con el nuestro. En este capítulo veremos prácticas y
 técnicas para definir con claridad los límites de nuestro software.
@@ -5213,12 +4722,6 @@ hashCode() int - Map
 isEmpty() boolean - Map
 keySet() Set - Map
 notify() void - Object
--- 160 of 644 --
-
----
-
-## [Sección 49] sección 6.8. Codificación de transferencia de contenidos Base64
-
 notifyAll() void - Object
 put(Object key, Object value) Object - Map
 putAll(Map t) void - Map
@@ -5253,8 +4756,6 @@ compatibilidad con genéricos en Java 5. Sin duda hemos visto sistemas que
 impiden el uso de genéricos debido a la gran cantidad de cambios necesarios
 para compensar el uso liberal de Map.
 Una forma más limpia de usar Map sería la siguiente. A ningún usuario
--- 161 of 644 --
-
 Sensor le importa si se usan genéricos o no. Esa opción se ha convertido (y
 siempre debería serlo) en un detalle de implementación.
 public class Sensors {
@@ -5287,8 +4788,6 @@ usarla. Tras ello, podríamos escribir el código para usar el código de tercer
 y comprobar si se comporta de la forma esperada. No deberíamos
 sorprendernos por tener que realizar extensas sesiones de depuración
 intentando localizar errores en nuestro código o en el suyo.
--- 162 of 644 --
-
 Aprender el código de terceros es complicado, y también integrarlo.
 Hacer ambas cosas al mismo tiempo es el doble de complicado. Necesitamos
 un enfoque diferente. En lugar de experimentar y probar el nuevo material en
@@ -5323,12 +4822,6 @@ logger.info(“hello”);
 }
 En esta ocasión descubrimos que Appender carece de flujo de salida, algo
 extraño, ya que parece lógico que lo tuviera. Tras recurrir a Google,
--- 163 of 644 --
-
----
-
-## [Sección 50] sección 6.8. Codificación de transferencia de contenidos Base64
-
 probamos lo siguiente:
 @Test
 public void testLogAddAppender() {
@@ -5367,8 +4860,6 @@ public void basicLogger() {
 BasicConfigurator.configure();
 logger.info(“basicLogger”);
 }
--- 164 of 644 --
-
 @Test
 public void addAppenderWithStream() {
 logger.addAppender(new ConsoleAppender(
@@ -5404,8 +4895,6 @@ forma incompatible con nuestras pruebas, lo sabremos al instante.
 Independientemente de que necesite los conocimientos proporcionados
 por las pruebas de aprendizaje, un límite claro debe estar respaldado por un
 conjunto de pruebas que ejerciten la interfaz de la misma forma que hace el
--- 165 of 644 --
-
 código de producción. Sin estas pruebas de límites para facilitar la transición,
 podríamos conservar la versión antigua más tiempo del necesario.
 Usar código que todavía no existe
@@ -5435,12 +4924,6 @@ Lo mejor de escribir la interfaz que deseábamos haber tenido era que la
 controlábamos. Esto hace que el código cliente sea más legible y se ciña a los
 objetivos previstos.
 En la figura 8.1 se aprecia que aislamos las clases
--- 166 of 644 --
-
----
-
-## [Sección 51] sección 6.8. Codificación de transferencia de contenidos Base64
-
 CommunicationsController de la API del transmisor (que no controlábamos
 y estaba por definir). Al usar nuestra propia interfaz específica de la
 aplicación, el código de CommunicationsController era limpio y expresivo.
@@ -5463,8 +4946,6 @@ una separación evidente y pruebas que definan expectativas. Debemos evitar
 que el código conozca los detalles de terceros. Es más aconsejable depender
 de algo que controlemos que de algo que no controlemos, y menos todavía si
 nos controla. Los límites de terceros se gestionan gracias a la presencia de
--- 167 of 644 --
-
 puntos mínimos en el código que hagan referencia a los mismos. Podemos
 envolverlos como hicimos con Map o usar un adaptador para convertir nuestra
 interfaz perfecta en la interfaz proporcionada. En cualquier caso, el código se
@@ -5477,13 +4958,11 @@ Bibliografía
 Software, Gamma et al., Addison Wesley, 19%.
 [WELC]: Working Effectively with Legacy Code, Addison-Wesley,
 2004.
--- 168 of 644 --
+9
 Pruebas de unidad
 Nuestra profesión ha evolucionado mucho en los últimos 10 años. En 1997
 nadie había oído hablar del Desarrollo guiado por pruebas (DGP). Para la
 mayoría, las pruebas de unidad eran pequeños fragmentos de código
--- 169 of 644 --
-
 desechable que creábamos para asegurarnos de que nuestros programas
 funcionaban. Escribíamos clases y métodos, y después código ad hoc para
 probarlos, lo que implicaba algún tipo de programa controlador que nos
@@ -5515,12 +4994,6 @@ asegurarme de que pasaran de false a true al cambiar el tiempo al valor
 correcto. Cuando superara una serie de pruebas, comprobaría que fueran
 adecuadas para todo el que tuviera que trabajar con el código. Me aseguraría
 de comprobar las pruebas y el código en el mismo paquete. Sí, hemos
--- 170 of 644 --
-
----
-
-## [Sección 52] sección 6.8. Codificación de transferencia de contenidos Base64
-
 avanzado mucho, pero nos queda mucho por avanzar. Los movimientos Agile
 y TDD han animado a muchos programadores a crear pruebas de unidad
 automatizadas y cada vez son más. Pero en esta alocada carrera por añadir
@@ -5547,8 +5020,6 @@ Realizar pruebas limpias
 Hace unos años me pidieron que dirigiera un equipo que había decidido
 explícitamente que su código de prueba no debía mantenerse con los mismos
 estándares de calidad que su código de producción. Podían incumplir las
--- 171 of 644 --
-
 reglas en sus pruebas de unidad. La premisa era «Rápido y directo». No era
 necesario que las variables tuvieran nombres adecuados, ni que las funciones
 de prueba fueran breves y descriptivas. No era necesario que el código de
@@ -5583,8 +5054,6 @@ corromperse. Al final, se quedaron sin pruebas, con un código de producción
 enmarañado y defectuoso, clientes frustrados y la sensación de que su
 esfuerzo les había fallado.
 En cierto modo tenían razón. Su esfuerzo les había fallado. Pero fue su
--- 172 of 644 --
-
 decisión de permitir que las pruebas fueran incorrectas lo que provocó el
 fallo. Si hubieran empleado pruebas limpias, su esfuerzo no habría fallado.
 Puedo afirmarlo con cierta seguridad porque he participado y dirigido
@@ -5615,12 +5084,6 @@ limitada y perderá la posibilidad de mejorar la estructura de dicho código.
 Cuanto menos limpias sean las pruebas, menos lo será el código. En última
 instancia perderá las pruebas y el código se corromperá.
 Pruebas limpias
--- 173 of 644 --
-
----
-
-## [Sección 53] sección 6.8. Codificación de transferencia de contenidos Base64
-
 ¿Qué hace que una prueba sea limpia? Tres elementos: legibilidad,
 legibilidad y legibilidad. La legibilidad es sin duda más importante en las
 pruebas de unidad que en el código de producción. ¿Qué hace que una prueba
@@ -5659,8 +5122,6 @@ crawler.addPage(root, PathParser.parse(“PageOne.ChildOne”));
 crawler.addPage(root, PathParser.parse(“PageTwo”));
 PageData data = pageOne.getData();
 WikiPageProperties properties = data.getProperties();
--- 174 of 644 --
-
 WikiPageProperty symLinks = properties.set(SymbolicPage.PROPERTY_NAME);
 symLinks.set(“SymPage”, “PageTwo”);
 pageOne.commit(data);
@@ -5703,8 +5164,6 @@ rodeado de miles de detalles que debe comprender antes de que las pruebas
 tengan sentido.
 Fíjese ahora en las pruebas mejoradas del Listado 9-2. Hacen
 exactamente lo mismo, pero se han refactorizado de forma más clara y
--- 175 of 644 --
-
 descriptiva.
 Listado 9-2
 SerializedPageResponderTest.java (refactorizado)
@@ -5741,12 +5200,6 @@ Comprobará que se ha eliminado gran parte de los detalles molestos. Las
 pruebas son concisas y sólo usan los tipos de datos y funciones que realmente
 necesitan. Todo el que lea estas pruebas sabrá rápidamente para qué sirven y
 no se perderá entre detalles irrelevantes.
--- 176 of 644 --
-
----
-
-## [Sección 54] sección 6.8. Codificación de transferencia de contenidos Base64
-
 Lenguaje de pruebas específico del dominio
 Las pruebas del Listado 9-2 ilustran la creación de un lenguaje específico del
 dominio para sus pruebas. En lugar de usar las API que los programadores
@@ -5777,8 +5230,6 @@ EnvironmentControllerTest.java
 @Test
 public void turnOnLoTempAlarmAtThreashold() throws Exception {
 hw.setTemp(WAY_TOO_COLD);
--- 177 of 644 --
-
 controller.tic();
 assertTrue(hw.heaterState());
 assertTrue(hw.blowerState());
@@ -5813,8 +5264,6 @@ mental[39], en este caso parece apropiado. Una vez que conocemos el
 significado, la vista pasa por la cadena y podemos interpretar los resultados.
 La lectura de la prueba es casi un placer. Fíjese en el Listado 9-5 y
 compruebe con qué facilidad entiende las pruebas.
--- 178 of 644 --
-
 Listado 9-5
 EnvironmentControllerTest.java (una selección mayor).
 @Test
@@ -5854,12 +5303,6 @@ StringBuffer es poco atractivo. Incluso en código de producción, intento
 evitarlo si el coste es mínimo, como podría suceder en el Listado 9-6. Pero
 esta aplicación es claramente un sistema incrustado en tiempo real y es
 probable que los recursos del equipo y la memoria estén limitados. Sin
--- 179 of 644 --
-
----
-
-## [Sección 55] sección 6.8. Codificación de transferencia de contenidos Base64
-
 embargo, el entorno de pruebas es improbable que lo esté. Es la naturaleza
 del estándar dual. Hay cosas que nunca haría en un entorno de producción
 totalmente válidas para un entorno de prueba. Suelen ser problemas de
@@ -5867,7 +5310,8 @@ memoria o eficacia de la CPU, pero nunca problemas de limpieza.
 Una afirmación por prueba
 Existe una escuela de pensamiento[40] que afirma que todas las funciones de
 prueba de una prueba JUnit sólo deben tener una instrucción de afirmación.
-Puede parecer una regla draconiana pero la ventaja se aprecia en el Listado 95. Las pruebas llegan a una misma conclusión, que se entiende de forma
+Puede parecer una regla draconiana pero la ventaja se aprecia en el Listado 9-
+5. Las pruebas llegan a una misma conclusión, que se entiende de forma
 rápida y sencilla.
 ¿Pero qué sucede con el Listado 9-2? No parece razonable afirmar que el
 resultado es XML y que contiene determinadas subcadenas. Sin embargo,
@@ -5889,8 +5333,6 @@ thenResponseShouldContain(
 }
 He cambiado los nombres de las funciones para usar la convención dadocuando-entonces[41]. De este modo las pruebas son más fáciles de leer.
 Desafortunadamente, al dividir las pruebas se genera código duplicado.
--- 180 of 644 --
-
 Podemos eliminar los duplicados por medio del patrón Método de
 plantilla[42] e incluir las partes dado/cuando en la clase base, y las partes
 entonces en derivaciones diferentes. O podríamos crear una clase de prueba
@@ -5923,8 +5365,6 @@ SerialDate d3 = SerialDate.addMonths(2, d1);
 assertEquals(31, d3.getDayOfMonth());
 assertEquals(7, d3.getMonth());
 assertEquals(2004, d3.getYYYY());
--- 181 of 644 --
-
 SerialDate d4 = SerialDate.addMonths(1, SerialDate.addMonths(1, d1));
 assertEquals(30, d4.getDayOfMonth());
 assertEquals(7, d4.getMonth());
@@ -5955,12 +5395,6 @@ rápida. Si lo hacen lentamente, no las ejecutará con frecuencia. Al no hacerlo
 no detectará los problemas con la suficiente antelación como para
 solucionarlos. No se sentirá con libertad para limpiar el código, que acabará
 corrompiéndose.
--- 182 of 644 --
-
----
-
-## [Sección 56] sección 6.8. Codificación de transferencia de contenidos Base64
-
 Independencia (Independent): Las pruebas no deben depender entre
 ellas. Una prueba no debe establecer condiciones para la siguiente. Debe
 poder ejecutar cada prueba de forma independiente y en el orden que desee.
@@ -5992,15 +5426,13 @@ Trabaje para que resulten expresivas y concisas. Invente API de prueba que
 actúen como lenguaje específico del dominio que le ayude a crear las
 pruebas.
 Si deja que las pruebas se corrompan, sucederá lo mismo con el código de
--- 183 of 644 --
-
 producción. Mantenga limpias las pruebas.
 Bibliografía
 [RSpec]: RSpec: Behavior Driven Development for Ruby Programmers,
 Aslak Hellesay, David Chelimsky, Pragmatic Bookshelf, 2008.
 [GOF]: Design Patterns: Elements of Reusable Object Oriented
 Software, Gamma et al., Addison-Wesley, 1996.
--- 184 of 644 --
+10
 Clases
 con Jeff Langr
 Hasta ahora nos hemos centrado en escribir bien líneas y bloques de código.
@@ -6008,8 +5440,6 @@ Nos hemos adentrado en la correcta composición de las funciones y en su
 interrelación. Pero a pesar de la atención dedicada a la expresividad de las
 instrucciones y las funciones, no tendremos código limpio hasta que nos
 fijemos en los niveles superiores de su organización. Hablemos sobre clases.
--- 185 of 644 --
-
 Organización de clases
 De acuerdo a la convención estándar de Java, una clase debe comenzar con
 una lista de variables. Las constantes estáticas públicas, si existen, deben
@@ -6037,12 +5467,6 @@ la pregunta inmediata es qué nivel de reducción. Con las funciones medimos
 el tamaño contando líneas físicas. Con las clases usamos otra medida distinta:
 las responsabilidades[45].
 El Listado 10-1 muestra una clase, SuperDashboard, que muestra 70
--- 186 of 644 --
-
----
-
-## [Sección 57] sección 6.8. Codificación de transferencia de contenidos Base64
-
 métodos públicos. Muchos programadores estarán de acuerdo en que es un
 tamaño excesivo. Algunos denominarían a SuperDashboard una clase Dios.
 Listado 10-1
@@ -6091,8 +5515,6 @@ public void setFileManager(FileManager fileManager)
 public ConfigManager getConfigManager()
 public void setConfigManager(ConfigManager configManager)
 public ClassLoader getClassLoader()
--- 187 of 644 --
-
 public void setClassLoader(ClassLoader classLoader)
 public Properties getProps()
 public String getUserHome()
@@ -6137,8 +5559,6 @@ Cinco métodos no es demasiado, ¿verdad? En este caso sí ya que a pesar
 del reducido número de métodos, SuperDashboard también tiene demasiadas
 responsabilidades.
 El nombre de una clase debe describir las responsabilidades que
--- 188 of 644 --
-
 desempeña. De hecho, el nombre es la primera forma para determinar el
 tamaño de una clase. Si no podemos derivar un nombre conciso para una
 clase, seguramente sea demasiado extenso. Cuanto más ambiguo sea el
@@ -6170,12 +5590,6 @@ cambios de otro código del sistema. La identificación de responsabilidades
 en nuestro código. Podemos extraer los tres métodos de SuperDashboard
 relacionados con la información de versiones en una clase independiente
 como Version (véase el Listado 10-3.) La clase Version es una construcción
--- 189 of 644 --
-
----
-
-## [Sección 58] sección 6.8. Codificación de transferencia de contenidos Base64
-
 que se puede reutilizar en otras aplicaciones.
 Listado 10-3
 Una clase con una única responsabilidad.
@@ -6210,8 +5624,6 @@ Todos los sistemas tienen una gran lógica y complejidad. El objetivo
 principal para gestionar dicha complejidad es organizarla para que un
 programador sepa dónde buscar y comprenda la complejidad directamente
 afectada en cada momento concreto. Por el contrario, un sistema con clases
--- 190 of 644 --
-
 multipropósito de mayor tamaño nos obliga a buscar entre numerosos
 elementos que no siempre necesitamos conocer.
 Para reformular los puntos anteriores, diremos que los sistemas deben
@@ -6244,8 +5656,6 @@ topOfStack++;
 elements.add(element);
 }
 public int pop() throws PoppedWhenEmpty {
--- 191 of 644 --
-
 if (topOfStack == 0)
 throw new PoppedWhenEmpty();
 int element = elements.get(--topOfStack);
@@ -6280,12 +5690,6 @@ Por tanto, dividir una gran función en otras más reducidas también nos
 permite dividir varias clases más reducidas. De este modo mejora la
 organización del programa y su estructura resulta más transparente. Como
 ejemplo, usaremos un ejemplo obtenido del libro de Knuth Literate
--- 192 of 644 --
-
----
-
-## [Sección 59] sección 6.8. Codificación de transferencia de contenidos Base64
-
 Programming[47]. El Listado 10-5 muestra una traducción a Java del
 programa PrintPrimes de Knuth. Para hacerle justicia, no es el programa que
 creó sino el resultado generado por su herramienta WEB. Lo usamos aquí por
@@ -6330,8 +5734,6 @@ N = 2;
 JPRIME = true;
 while (N < ORD && JPRIME) {
 while (MULT[N] < J)
--- 193 of 644 --
-
 MULT[N] = MULT[N] + P[N] + P[N];
 if (MULT[N] == J)
 JPRIME = false;
@@ -6376,8 +5778,6 @@ public static void main(String[] args) {
 final int NUMBER_OF_PRIME5 = 1000;
 int[] primes = PrimeGenerator.generate(NUMBER_OF_PRIMES);
 final int ROWS_PER_PAGE = 50;
--- 194 of 644 --
-
 final int COLUMNS_PER_PAGE = 4;
 RowColumnPagePrinter tablePrinter =
 new RowColumnPagePrinter(ROWS_PER_PAGE,
@@ -6423,8 +5823,6 @@ pageNumber++;
 private void printPage (int firstIndexOnPage,
 int lastIndexOnPage,
 int[] data) {
--- 195 of 644 --
-
 int firstIndexOfLastRowOnPage =
 firstIndexOnPage + rowsPerPage - 1;
 for (int firstIndexInRow = firstIndexOnPage;
@@ -6469,12 +5867,6 @@ return primes;
 private static void set2AsFirtsPrime() {
 primes[0] = 2;
 multiplesOfPrimeFactors.add(2);
--- 196 of 644 --
-
----
-
-## [Sección 60] sección 6.8. Codificación de transferencia de contenidos Base64
-
 }
 private static void checkOddNumbersForSubsequentPrimes() {
 int primeIndex = 1;
@@ -6522,8 +5914,6 @@ return multiple;
 }
 }
 Lo primero que apreciará es que ha aumentado la longitud del programa,
--- 197 of 644 --
-
 de una a casi tres páginas. Este aumento se debe a varios motivos. En primer
 lugar, el programa refactorizado usa nombres de variable más extensos y
 descriptivos. Por otra parte, usa declaraciones de funciones y clases como
@@ -6555,8 +5945,6 @@ de que el resto del sistema no funcione de la forma esperada. En un sistema
 limpio organizamos las clases para reducir los riesgos de los cambios.
 La clase Sql del Listado 10-9 se usa para generar cadenas SQL de forma
 correcta con los metadatos adecuados. Es un trabajo continuo y, como tal, no
--- 198 of 644 --
-
 admite funciones SQL como instrucciones update. Cuando la clase Sql tenga
 que admitir una instrucción update, tendremos que abrirla para realizar
 modificaciones. El problema de abrir una clase es el riesgo que conlleva.
@@ -6593,12 +5981,6 @@ mejorar. Sin embargo, la verdadera razón debe ser el cambio del sistema. Si
 la clase Sql se considera totalmente lógica, no debemos preocuparnos por
 separar las responsabilidades. Si no necesitamos funcionalidad de
 actualización en el futuro, podemos olvidarnos de Sql. Pero si tenemos que
--- 199 of 644 --
-
----
-
-## [Sección 61] sección 6.8. Codificación de transferencia de contenidos Base64
-
 abrir una clase, debemos corregir el diseño.
 ¿Y si optamos por una solución como la del Listado 10-10? Los métodos
 públicos de interfaz definidos en Sql en el Listado 10-9 se refactorizan en sus
@@ -6639,8 +6021,6 @@ public FindByKeySql(
 String table, Column[] columns, String keyColumn, String keyValue)
 @Override public String generate()
 }
--- 200 of 644 --
-
 public class PreparedInsertSql extends Sql {
 public PreparedInsertSql(String table, Column[] columns)
 @Override public String generate()
@@ -6675,8 +6055,6 @@ cuando los actualicemos con nuevas funciones o cambios. En un sistema
 ideal, incorporamos nuevas funciones ampliándolo, no modificando el código
 existente.
 Aislarnos de los cambios
--- 201 of 644 --
-
 Las necesidades cambiarán y también lo hará el código. En la programación
 orientada a objetos aprendemos que hay clases concretas que contienen
 detalles de implementación (el código) y clases abstractas que sólo
@@ -6712,12 +6090,6 @@ Microsoft para nuestra cartera de valores, diseñe el código de la
 implementación de prueba para que siempre devuelva 100 dólares por acción
 de Microsoft. Nuestra implementación de prueba de la interfaz
 StockExchange se reduce a una sencilla búsqueda de tabla. De este modo
--- 202 of 644 --
-
----
-
-## [Sección 62] sección 6.8. Codificación de transferencia de contenidos Base64
-
 podemos crear una prueba que espere un valor de cartera total de 500 dólares:
 public class PortfolioTest {
 private FixedStockExchangeStub exchange;
@@ -6752,16 +6124,12 @@ Bibliografía
 Rebecca Wirfs-Brock et al., Addison-Wesley, 2002.
 [PPP]: Agile Software Development: Principles, Patterns, and
 Practices, Robert C. Martin, Prentice Hall, 2002.
--- 203 of 644 --
-
 [Knuth92]: Literate Programming, Donald E. Knuth, Center for the
 Study of language and Information, Leland Stanford Junior University,
 1992.
--- 204 of 644 --
+11
 Sistemas
 por el Dr. Kevin Dean Wampler
--- 205 of 644 --
-
 «La complejidad es letal. Acaba con los desarrolladores y dificulta
 la planificación, generación y pruebas de los productos».
 —Ray Ozzie, CTO, Microsoft Corporation
@@ -6771,8 +6139,6 @@ Incluso la gestión de una ciudad existente sería demasiado para una sola
 persona. Y aun así, las ciudades funcionan (en la mayoría de los casos).
 Funcionan porque tienen equipos que controlan partes concretas de la ciudad,
 el alcantarillado, la red eléctrica, el tráfico, la seguridad, las normativas
--- 206 of 644 --
-
 urbanísticas, etc. Algunos se encargan de aspectos generales y otros se
 centran en los detalles.
 Las ciudades también funcionan porque disponen de evolucionados
@@ -6803,12 +6169,6 @@ ejemplo típico:
 public Service getService() {
 if (service == null)
 service = new MyServiceImpl (…); //¿Lo bastante predeterminado para la
--- 207 of 644 --
-
----
-
-## [Sección 63] sección 6.8. Codificación de transferencia de contenidos Base64
-
 mayoría de los casos?
 return service;
 }
@@ -6842,8 +6202,6 @@ no debemos permitir fallos de modularidad. El proceso de inicio de la
 construcción y conexión de objetos no es una excepción. Debemos
 modularizar este proceso y asegurarnos de contar con una estrategia global y
 coherente para resolver las dependencias principales.
--- 208 of 644 --
-
 Separar Main
 Una forma de separar la construcción del uso consiste en trasladar todos los
 aspectos de la construcción a main o a módulos invocados por main, y diseñar
@@ -6863,8 +6221,6 @@ aplicación debe crear las instancias LineItem que añadir a Order. En este
 caso, podemos usar el patrón de factoría abstracta[51] para que la aplicación
 controle cuándo crear LineItem, pero mantener los detalles de dicha
 construcción separados del código de la aplicación (véase la figura 11.2).
--- 209 of 644 --
-
 De nuevo vemos que todas las dependencias se desplazan desde main a la
 aplicación OrderProcessing, lo que significa que la aplicación se desconecta
 de los detalles de creación de LineItem. Esta capacidad se incluye en
@@ -6883,12 +6239,6 @@ administración de dependencias, un objeto no debe ser responsable de
 instanciar dependencias, sino que debe delegar esta responsabilidad en otro
 mecanismo autorizado, de modo que se invierte el control. Como la
 configuración es un aspecto global, este mecanismo autorizado suele ser la
--- 210 of 644 --
-
----
-
-## [Sección 64] sección 6.8. Codificación de transferencia de contenidos Base64
-
 rutina main o un contenedor de propósito especial.
 Las búsquedas JNDI son una implementación parcial de la inyección de
 dependencias, en las que un objeto solicita a un servidor de directorios un
@@ -6920,8 +6270,6 @@ factorías o crear proxies que se pueden usar para evaluación tardía y
 optimizaciones similares[54].
 Evolucionar
 Las ciudades nacen de pueblos, que nacen de asentamientos. Inicialmente, los
--- 211 of 644 --
-
 caminos son estrechos y prácticamente inexistentes, después se asfaltan y
 aumentan de tamaño.
 Los pequeños edificios y solares vacíos se llenan de otros mayores que
@@ -6954,12 +6302,6 @@ innecesarias al crecimiento orgánico. Imagine un bean de entidad para una
 clase Bank persistente. Un bean de entidad es una representación en memoria
 de datos relacionales, es decir, una fila de una tabla.
 Primero, debe definir una interfaz local (en proceso) o remota (MVJ
--- 212 of 644 --
-
----
-
-## [Sección 65] sección 6.8. Codificación de transferencia de contenidos Base64
-
 independiente), que los clientes usen. El Listado 1-1 muestra una posible
 interfaz local:
 Listado 11-1
@@ -6999,8 +6341,6 @@ public abstract String getCity();
 public abstract String getState();
 public abstract String getZipCode();
 public abstract void setStreetAddr1(String street1);
--- 213 of 644 --
-
 public abstract void setStreetAddr2(String street2);
 public abstract void setcity(String city);
 public abstract void setState(String state);
@@ -7044,8 +6384,6 @@ demasiado tiempo en la implementación de EJB y pruebas en un servidor
 real. La reutilización fuera de la arquitectura EJB2 es imposible, debido a esta
 estrecha conexión. Por último, incluso la programación orientada a objetos se
 ve afectada. Un bean no se puede heredar de otro. Fíjese en la lógica para
--- 214 of 644 --
-
 añadir una nueva cuenta. En bean EJB2 es habitual definir Objetos de
 transferencia de datos (Data Transfer Objects o DTO), estructuras sin
 comportamiento. Esto suele generar tipos redundantes con los mismos datos
@@ -7078,12 +6416,6 @@ mecanismo de declaración o programación.
 Si usamos la persistencia como ejemplo, podría declarar qué objetos y
 atributos (o patrones) deben conservarse y después delegar las tareas de
 persistencia a su estructura de persistencia. Las modificaciones de
--- 215 of 644 --
-
----
-
-## [Sección 66] sección 6.8. Codificación de transferencia de contenidos Base64
-
 comportamiento no son invasivas[57]
 para el código de destino. Veamos tres
 aspectos o mecanismos similares en Java.
@@ -7120,8 +6452,6 @@ this.accounts.add(account);
 }
 }
 }
--- 216 of 644 --
-
 // BankProxyHandler.java
 import java.lang.reflect.*;
 import java.util.*;
@@ -7163,8 +6493,6 @@ La API Proxy requiere un objeto InvocationHandler que invocar para
 implementar las invocaciones de métodos Bank realizadas en el proxy.
 BankProxyHandler usa la API de reflexión de Java para asignar las
 invocaciones de métodos genéricos a los métodos correspondientes de
--- 217 of 644 --
-
 BankImpl, y así sucesivamente.
 El código es abundante y complejo, incluso para este sencillo caso[59]. El
 uso de una de las bibliotecas de manipulación de bytes es igualmente
@@ -7194,12 +6522,6 @@ dependencias, que crea instancias de los principales objetos y las conecta
 bajo demanda.
 El Listado 11-4 muestra un fragmento tipo de un archivo de
 configuración de Spring V2.5, app.xml[62].
--- 218 of 644 --
-
----
-
-## [Sección 67] sección 6.8. Codificación de transferencia de contenidos Base64
-
 Listado 11-4
 Archivo de configuración de Spring 2.X
 <beans>
@@ -7230,8 +6552,6 @@ añadir otros objetos de decoración para transacciones, almacenamiento en
 caché y demás.
 En la aplicación, bastan unas líneas para solicitar al contenedor de ID los
 objetos de nivel superior del sistema, como se especifica en el archivo XML.
--- 219 of 644 --
-
 XmlBeanFactory bf =
 new XmlBeanFactory(new ClassPathResource(“app.xml”, getclass()));
 Bank bank = (Bank) bf.getBean(“bank”);
@@ -7270,8 +6590,6 @@ private Address address;
 @OneToMany (cascade = CascadeType.ALL, fetch = FetchType.EAGER,
 mappedBy=“bank”)
 private Collection<Account> accounts = new ArrayList<Account>();
--- 220 of 644 --
-
 public int getId() {
 return id;
 }
@@ -7307,12 +6625,6 @@ suficientes en el 80-90 por 100 de los casos en los que los aspectos son útiles
 Sin embargo, AspectJ ofrece un conjunto de herramientas avanzadas y
 completas para la separación de aspectos. El inconveniente de AspectJ es la
 necesidad de adoptar nuevas herramientas y aprender nuevas construcciones
--- 221 of 644 --
-
----
-
-## [Sección 68] sección 6.8. Codificación de transferencia de contenidos Base64
-
 del lenguaje. Los problemas de adopción se han mitigado parcialmente
 gracias a la introducción de un formato de anotación de AspectJ, en el que se
 usan anotaciones de Java 5 para definir aspectos con código puro de Java.
@@ -7344,8 +6656,6 @@ principales sitios Web del mundo han alcanzado una gran disponibilidad y
 rendimiento por medio de sofisticadas técnicas de almacenamiento en caché,
 seguridad, virtualización y demás, todo ello de forma eficaz y flexible ya que
 los diseños mínimamente conectados son adecuadamente simples en cada
--- 222 of 644 --
-
 nivel de abstracción y ámbito. Evidentemente, no quiere decir que
 acometamos los proyectos sin timón. Debemos tener expectativas del ámbito
 general, objetivos y un programa, así como la estructura general del sistema
@@ -7375,12 +6685,6 @@ decisiones con la mejor información posible. Una decisión prematura siempre
 es subjetiva. Si decidimos demasiado pronto, tendremos menos información
 del cliente, reflexión mental sobre el proyecto y experiencia con las opciones
 de implementación.
--- 223 of 644 --
-
----
-
-## [Sección 69] sección 6.8. Codificación de transferencia de contenidos Base64
-
 La agilidad que proporciona un sistema POJO con aspectos
 modularizados nos permite adoptar decisiones óptimas a tiempo,
 basadas en los conocimientos más recientes. Además, se reduce la
@@ -7408,8 +6712,6 @@ esencial de forma clara y concisa. En el mundo del software, ha renacido el
 interés por crear Lenguajes específicos del dominio (Domain-Specific
 Languages o DSL)[71], pequeños lenguajes independientes de creación de
 secuencias de comandos o API de lenguajes estándar que permiten crear
--- 224 of 644 --
-
 código que se lea de una forma estructurada, como lo escribiría un experto
 del dominio. Un buen DSL minimiza el vacío de comunicación entre un
 concepto de dominio y el código que lo implementa, al igual que las prácticas
@@ -7437,8 +6739,6 @@ olvide usar los elementos más sencillos que funcionen.
 Bibliografía
 [Alexander]: Christopher Alexander, A Timeless Way of Building,
 Oxford University Press, New York, 1979.
--- 225 of 644 --
-
 [AOSD]: Puerto de Desarrollo de software orientado a aspectos,
 http://aosd.net.
 [ASM]: Página de ASM, http://asm.objectweb.org/.
@@ -7467,16 +6767,10 @@ conference-Volume 2, Boston, Massachusetts, pp. 1024-1040,1972.
 2007.
 [GOF]: Design Patterns: Elements of Reusable Object Oriented
 Software, Gamma et al., Addison-Wesley, 1996.
--- 226 of 644 --
+12
 Emergencia
 con Jeff Langr
 Limpieza a través de diseños emergentes
--- 227 of 644 --
-
----
-
-## [Sección 70] sección 6.8. Codificación de transferencia de contenidos Base64
-
 Imagine que existieran cuatro sencillas reglas para crear diseños de calidad.
 Imagine que siguiéndolas accediera a la estructura y al diseño de su código y
 facilitara la aplicación de principios como SRP y DIP. Imagine que estas
@@ -7506,8 +6800,6 @@ elementos más fáciles de probar. Por lo tanto, hacer que nuestro sistema se
 pueda probar nos ayuda a crear mejores diseños.
 Las conexiones rígidas dificultan la creación de pruebas. Del mismo
 modo, cuantas más pruebas creemos, más usaremos principios como DIP y
--- 228 of 644 --
-
 herramientas con inyección de dependencias, interfaces y abstracción para
 minimizar dichas conexiones. Nuestros diseños mejorarán todavía más.
 En especial, seguir una sencilla regla que afirme que debemos realizar
@@ -7536,8 +6828,6 @@ mayores innecesaria. Los duplicados se manifiestan de diversas formas. Las
 líneas de código similar pueden modificarse para que parezcan refactorizadas,
 y hay otras formas de duplicación como la de implementación. Por ejemplo,
 podríamos tener dos métodos en una clase de colección:
--- 229 of 644 --
-
 int size() {}
 boolean isEmpty() {}
 Podríamos tener implementaciones separadas para cada método. El
@@ -7582,12 +6872,6 @@ public synchronized void rotate (int degrees) {
 replaceImage(ImageUtilities.getRotatedImage(image, degrees));
 }
 private void replaceImage(RenderedOp newImage) (
--- 230 of 644 --
-
----
-
-## [Sección 71] sección 6.8. Codificación de transferencia de contenidos Base64
-
 image.dispose();
 System.gc();
 image = newImage;
@@ -7630,8 +6914,6 @@ calculateBaseVacationHours();
 alterForLegalMinimums();
 applyToPayroll();
 }
--- 231 of 644 --
-
 private void calculateBaseVacationHours() { /* … */ };
 abstract protected void alterForLegalMinimums();
 private void applyToPayroll(); { /* … */ };
@@ -7666,8 +6948,6 @@ nombre de una clase y función, y que sus responsabilidades no nos
 sorprendan.
 También puede expresarse si reduce el tamaño de funciones y clases. Al
 hacerlo, resulta más sencillo asignarles nombres, crearlas y comprenderlas.
--- 232 of 644 --
-
 Otra forma de expresarse es usar una nomenclatura estándar. Los patrones de
 diseño, por ejemplo, se basan en la comunicación y en la capacidad de
 expresión. Al usar los nombres de patrones estándar, como COMMAND o
@@ -7699,12 +6979,6 @@ comportamiento. Este dogma debe evitarse y cambiarse por un enfoque más
 pragmático.
 Nuestro objetivo es reducir el tamaño general del sistema además del
 tamaño de clases y funciones, pero recuerde que esta regla es la de menor
--- 233 of 644 --
-
----
-
-## [Sección 72] sección 6.8. Codificación de transferencia de contenidos Base64
-
 prioridad de las cuatro. Por ello, aunque sea importante reducir la cantidad de
 clases y funciones, es más importante contar con pruebas, eliminar
 duplicados y expresarse correctamente.
@@ -7720,11 +6994,9 @@ Bibliografía
 Beck, Addison Wesley, 1999.
 [GOF]: Design Patterns: Elements of Reusable Object Oriented
 Software, Gamma et al., Addison-Wesley, 1996.
--- 234 of 644 --
+13
 Concurrencia
 por Brett L. Schuchert
--- 235 of 644 --
-
 “Los objetos son abstracciones de procesamiento.
 Los subprocesos son abstracciones de programaciones”.
 —James O. Coplien[74]
@@ -7755,8 +7027,6 @@ La desvinculación del qué del dónde puede mejorar considerablemente el
 rendimiento y la estructura de una aplicación. Desde un punto de vista
 estructural, la aplicación parece una serie de equipos colaboradores y no un
 gran bucle principal. Esto puede hacer que el sistema sea más fácil de
--- 236 of 644 --
-
 comprender y ofrece diversas formas de separar las preocupaciones.
 Pongamos por caso el modelo Servlet estándar de aplicaciones Web. Estos
 sistemas se ejecutan bajo un contenedor Web o EJB que gestiona
@@ -7790,12 +7060,6 @@ Imagine un sistema que interprete grandes conjuntos de datos pero que sólo
 ofrezca una solución completa tras procesarlos todos. Se podría procesar cada
 conjunto de datos en un equipo distinto, para poder procesarlos todos en
 paralelo.
--- 237 of 644 --
-
----
-
-## [Sección 73] sección 6.8. Codificación de transferencia de contenidos Base64
-
 Mitos e imprecisiones
 También existen motivos evidentes para adoptar la concurrencia aunque,
 como indicamos antes, sea complicada. Si no presta la suficiente atención,
@@ -7823,8 +7087,6 @@ La concurrencia suele acarrear un cambio fundamental de la estrategia
 de diseño.
 Desafíos
 ¿Qué hace que la programación concurrente sea tan complicada? Fíjese en la
--- 238 of 644 --
-
 siguiente clase:
 public class X {
 private int lastIdUsed;
@@ -7855,8 +7117,6 @@ número de rutas asciende a 2 704 156. Evidentemente, muchas generan
 resultados válidos. El problema es que algunas no lo hacen.
 Principios de defensa de la concurrencia
 A continuación le mostramos una serie de principios y técnicas para proteger
--- 239 of 644 --
-
 a sus sistemas de los problemas del código concurrente.
 Principio de responsabilidad única (SRP)
 SRP[78] establece que un método, clase o componente sólo debe tener un
@@ -7883,12 +7143,6 @@ inesperado. Una solución consiste en usar la palabra clave synchronized
 para proteger una sección importante del código que use el objeto
 compartido, aunque conviene limitar la cantidad de estas secciones. Cuantos
 más puntos actualicen datos compartidos, es más probable que:
--- 240 of 644 --
-
----
-
-## [Sección 74] sección 6.8. Codificación de transferencia de contenidos Base64
-
 Se olvide de proteger uno o varios de esos puntos, y se dañe el código
 que modifica los datos compartidos.
 Se duplique el esfuerzo necesario para garantizar la protección de todos
@@ -7917,8 +7171,6 @@ como si fueran los únicos del mundo y no existieran requisitos de
 sincronización. Por ejemplo, las subclases de HttpServlet reciben toda su
 información como parámetros pasados en los métodos doGet y doPost. Esto
 hace que cada servlet actúe como si dispusiera de su propio equipo. Mientras
--- 241 of 644 --
-
 el código del servlet sólo use variables locales, es imposible que cause
 problemas de sincronización. Evidentemente, muchas aplicaciones que usan
 servlet se topan con recursos compartidos como conexiones de base de
@@ -7946,8 +7198,6 @@ lecturas y escrituras simultáneas, y dispone de métodos que admiten
 operaciones de composición habituales que en caso contrario serian
 incompatibles con subprocesos. Si Java 5 es su entorno de desarrollo,
 comience con ConcurrentHashMap.
--- 242 of 644 --
-
 Existen otras clases añadidas para admitir diseño avanzado de
 concurrencia. Veamos algunos ejemplos:
 ReentrantLock Bloqueo que se puede adquirir en un método y liberar en
@@ -7979,12 +7229,6 @@ Bloqueo Dos o más procesos esperan a que ambos terminen. Cada
 proceso tiene un recurso y ninguno puede terminar hasta que
 obtenga el otro recurso.
 Bloqueo Procesos bloqueados, intentando realizar su labor pero
--- 243 of 644 --
-
----
-
-## [Sección 75] sección 6.8. Codificación de transferencia de contenidos Base64
-
 activo estorbándose unos a otros. Por motivos de resonancia, los
 procesos siguen intentando avanzar pero no pueden durante
 demasiado tiempo, o de forma indefinida.
@@ -8014,8 +7258,6 @@ El desafío consiste en equilibrar las necesidades de ambos para satisfacer
 un funcionamiento correcto, proporcionar una producción razonable y evitar
 la inanición. Una sencilla estrategia hace que los escritores esperen hasta que
 deje de haber lectores antes de realizar una actualización. Si hay lectores
--- 244 of 644 --
-
 continuos, los escritores perecen de inanición.
 Por otra parte, si hay escritores frecuentes y se les asigna prioridad, la
 producción se ve afectada. Determinar el equilibrio y evitar problemas de
@@ -8045,8 +7287,6 @@ Las dependencias entre métodos sincronizados generan sutiles errores en el
 código concurrente. Java cuenta con synchronized, que protege métodos
 individuales. No obstante, si hay más de un método sincronizado en la misma
 clase compartida, puede que su sistema sea incorrecto[85].
--- 245 of 644 --
-
 Recomendación: Evite usar más de un método en un objeto compartido.
 En ocasiones tendrá que usar más de un método en un objeto compartido.
 En ese caso, hay tres formas de crear código correcto:
@@ -8074,12 +7314,6 @@ rendimiento[87].
 Recomendación: Reduzca al máximo el tamaño de las secciones
 synchronized.
 Crear código de cierre correcto es complicado
--- 246 of 644 --
-
----
-
-## [Sección 76] sección 6.8. Codificación de transferencia de contenidos Base64
-
 Crear un sistema activo y que se ejecute indefinidamente es distinto a crear
 algo que funcione de forma temporal y después se cierre correctamente. Entre
 los problemas más habituales destacan los bloqueos[88], con procesos que
@@ -8111,8 +7345,6 @@ datos compartidos, la situación se vuelve más compleja.
 Recomendación: Cree pruebas que puedan detectar problemas y
 ejecútelas periódicamente, con distintas configuraciones de programación y
 del sistema, y cargas. Si las pruebas fallan, identifique el fallo. No lo ignore
--- 247 of 644 --
-
 porque las pruebas superen una ejecución posterior.
 Hay muchos factores que tener en cuenta. Veamos algunas
 recomendaciones concretas:
@@ -8140,8 +7372,6 @@ Puede parecer evidente pero no está de más recordarlo. Asegúrese de que el
 código funciona fuera de sus procesos. Por lo general, esto significa crear
 algunos POJO que los procesos deban invocar. Los POJO no son compatibles
 con los procesos y por tanto se pueden probar fuera de su entorno. Conviene
--- 248 of 644 --
-
 incluir en los POJO la mayor cantidad posible del sistema.
 Recomendación: No intente identificar fallos de procesos y que no sean
 de procesos al mismo tiempo. Asegúrese de que su código funciona fuera de
@@ -8167,12 +7397,6 @@ Ejecutar con más procesos que procesadores
 Cuando el sistema cambia de tarea, se producen reacciones. Para promover el
 intercambio de tareas, realice la ejecución con más procesos que
 procesadores o núcleos. Cuanto mayor sea la frecuencia de intercambio de las
--- 249 of 644 --
-
----
-
-## [Sección 77] sección 6.8. Codificación de transferencia de contenidos Base64
-
 tareas, más probabilidades existen de que el código carezca de una sección
 crítica o se produzcan bloqueos.
 Ejecutar en diferentes plataformas
@@ -8202,8 +7426,6 @@ añadiendo métodos como Object.wait(), Object.sleep(), Object.yield()
 y Object.priority().
 Estos métodos afectan al orden de ejecución y, por tanto, aumentan las
 posibilidades de detectar un error. Resulta más adecuado que el código
--- 250 of 644 --
-
 incorrecto falle lo antes posible y con frecuencia. Hay dos opciones de
 instrumentación de código:
 Manual.
@@ -8235,8 +7457,6 @@ todas consigo.
 Lo que necesitamos es una forma de hacerlo durante la fase de pruebas,
 no de producción. También debemos poder mezclar configuraciones entre
 ejecuciones, lo que aumenta las probabilidades de detectar los errores.
--- 251 of 644 --
-
 Evidentemente, si dividimos el sistema POJO que no sepa nada los
 procesos en clases que controlen los procesos, resultará más sencillo ubicar
 los puntos en los que instrumentar el código. Es más, podríamos crear
@@ -8272,12 +7492,6 @@ algunos fallos. Si la prueba es satisfactoria, al menos puede felicitarse por
 haber actuado correctamente. Aunque sea un tanto simple, puede resultar una
 opción razonable en lugar de recurrir a una herramienta más sofisticada. La
 herramienta ConTest[91], desarrollada por IBM, tiene un funcionamiento
--- 252 of 644 --
-
----
-
-## [Sección 78] sección 6.8. Codificación de transferencia de contenidos Base64
-
 similar pero es más sofisticada.
 El objetivo es que los procesos del código se ejecuten en distinto orden en
 momentos diferentes. La combinación de pruebas bien escritas y ejecuciones
@@ -8309,8 +7523,6 @@ clientes en lugar de obligar a los clientes a gestionar el estado compartido.
 Los problemas se acumularán. Los que no aparezcan inicialmente suelen
 considerarse esporádicos y suelen producirse en la fase de carga o de modo
 aparentemente aleatorio. Por tanto, debe poder ejecutar su código con
--- 253 of 644 --
-
 procesos en diferentes configuraciones y plataformas de forma repetida y
 continua. La capacidad de prueba, algo natural si aplica las tres leyes de
 TDD, implica cierto nivel de conectividad, lo que ofrece la compatibilidad
@@ -8329,12 +7541,10 @@ Patterns, 2d. ed., Doug Lea, Prentice Hall, 1999.
 Practices, Robert C. Martin, Prentice Hall, 2002.
 [PRAG]: The Pragmatic Programmer, Andrew Hunt, Dave Thomas,
 Addison-Wesley, 2000.
--- 254 of 644 --
+14
 Refinamiento sucesivo
 Caso práctico de un analizador de argumentos de línea de comandos
 Este capítulo es un caso práctico de refinamiento sucesivo. Veremos un
--- 255 of 644 --
-
 módulo que comienza correctamente pero no mantiene dicha corrección. Tras
 ello, veremos cómo se refactoriza y se limpia. Muchos hemos tenido que
 analizar argumentos de línea de comando. Si no disponemos de una utilidad
@@ -8369,12 +7579,6 @@ getBoolean, getInteger y getString para acceder a los valores de los
 argumentos por sus nombres.
 Si hay un problema, ya sea en la cadena de formato o en los argumentos
 de línea de comandos, se genera ArgsException. La descripción del error se
--- 256 of 644 --
-
----
-
-## [Sección 79] sección 6.8. Codificación de transferencia de contenidos Base64
-
 puede recuperar del método errorMessage de la excepción.
 Implementación de Args
 El Listado 14-2 es la implementación de la clase Args. Examínela con
@@ -8412,8 +7616,6 @@ else if (elementTail.equals(“#”))
 marshalers.put(elementId, new IntegerArgumentMarshaler());
 else if (elementTail.equals(“##”))
 marshalers.put(elementId, new DoubleArgumentMarshaler());
--- 257 of 644 --
-
 else if (elementTail.equals(“[*]”))
 marshalers.put(elementId, new StringArrayArgumentMarshaler());
 else
@@ -8463,8 +7665,6 @@ public boolean has(char arg) {
 return argsFound.contains(arg);
 }
 public int nextArgument() {
--- 258 of 644 --
-
 return currentArgument.nextIndex();
 }
 public boolean getBoolean(char arg) {
@@ -8501,12 +7701,6 @@ public void set (Iterator<String> currentArgument) throws ArgsException {
 booleanValue = true;
 }
 public static boolean getValue(ArgumentMarshaler am) {
--- 259 of 644 --
-
----
-
-## [Sección 80] sección 6.8. Codificación de transferencia de contenidos Base64
-
 if (am != null && am instanceof BooleanArgumentMarshaler)
 return ((BooleanArgumentMarshaler) am).booleanValue;
 else
@@ -8548,8 +7742,6 @@ throw new ArgsException(MISSING_INTEGER);
 throw new ArgsException(INVALID_INTEGER, parameter);
 }
 }
--- 260 of 644 --
-
 public static int getValue (ArgumentMarshaler am) {
 if (am != null && am instanceof IntegerArgumentMarshaler)
 return ((IntegerArgumentMarshaler) am).intValue;
@@ -8589,8 +7781,6 @@ return errorArgumentId;
 }
 public void setErrorArgumentId(char errorArgumentId) {
 this.errorArgumentId = errorArgumentId;
--- 261 of 644 --
-
 }
 public String getErrorParameter() {
 return errorParameter;
@@ -8640,12 +7830,6 @@ MISSING_STRING,
 MISSING_INTEGER, INVALID_INTEGER,
 MISSING_DOUBLE, INVALID_DOUBLE }
 }
--- 262 of 644 --
-
----
-
-## [Sección 81] sección 6.8. Codificación de transferencia de contenidos Base64
-
 Es sorprendente la cantidad de código necesario para detallar este sencillo
 concepto. Uno de los motivos es el uso de un lenguaje especialmente profuso.
 Java, al ser un lenguaje de tipos estáticos, requiere muchas palabras para
@@ -8677,8 +7861,6 @@ Muchos programadores noveles (como sucede con los alumnos) no
 siguen este consejo. Creen que el objetivo principal es que el programa
 funcione. Una vez que lo consiguen, pasan a la siguiente tarea, y conservan el
 estado funcional del programa, sea cual sea. Los programadores
--- 263 of 644 --
-
 experimentados saben que esto es un suicidio profesional.
 Args: El primer borrador
 El Listado 14-8 muestra una versión inicial de la clase Args. Funciona, pero
@@ -8718,8 +7900,6 @@ parseSchema();
 try {
 parseArguments();
 } catch (ArgsException e) {
--- 264 of 644 --
-
 }
 return valid;
 }
@@ -8767,12 +7947,6 @@ stringArgs.put(elementId, “”);
 private boolean isStringSchemaElement(String elementTail) {
 return elementTail.equals(“*”);
 }
--- 265 of 644 --
-
----
-
-## [Sección 82] sección 6.8. Codificación de transferencia de contenidos Base64
-
 private boolean isBooleanSchemaElement(String elementTail) {
 return elementTail.length() == 0;
 }
@@ -8819,8 +7993,6 @@ return true;
 private boolean isIntArg(char argChar) {
 return intArgs.containsKey(argChar);
 }
--- 266 of 644 --
-
 private void setIntArg(char argChar) throws ArgsException {
 currentArgument++;
 String parameter = null;
@@ -8869,8 +8041,6 @@ return "-[" + schema + “]”;
 else
 return “”;
 }
--- 267 of 644 --
-
 public String errorMessage() throws Exception {
 switch (errorCode) {
 case OK:
@@ -8917,8 +8087,6 @@ public boolean getBoolean(char arg) {
 return falseIfNull(booleanArgs.get(arg));
 }
 public boolean has(char arg) (
--- 268 of 644 --
-
 return argsFound.contains(arg);
 }
 public boolean isValid() {
@@ -8956,12 +8124,6 @@ private int numberOfArguments = 0;
 public Args(String schema, String[] args) {
 this.schema = schema;
 this.args = args;
--- 269 of 644 --
-
----
-
-## [Sección 83] sección 6.8. Codificación de transferencia de contenidos Base64
-
 valid = parse();
 }
 public boolean isValid() {
@@ -9008,8 +8170,6 @@ private void parseElement(char argChar) {
 if (isBoolean(argChar)) {
 numberOfArguments++;
 setBooleanArg(argChar, true);
--- 270 of 644 --
-
 } else
 unexpectedArguments.add(argChar);
 }
@@ -9052,8 +8212,6 @@ aprecia la semilla del desastre posterior y resulta evidente porqué.
 La versión posterior sólo tiene dos tipos de argumentos más que ésta:
 String e integer. La inclusión de sólo dos tipos más tiene un tremendo
 impacto negativo en el código. Lo convierte de algo que sería razonablemente
--- 271 of 644 --
-
 mantenible en algo que seguramente esté plagado de errores.
 Añadí los dos tipos de argumento de forma incremental. Primero, el
 argumento String, que genera lo siguiente:
@@ -9096,8 +8254,6 @@ parseSchemaElement(trimmedElement);
 }
 }
 return true;
--- 272 of 644 --
-
 }
 private void parseSchemaElement(String element) throws ParseException {
 char elementId = element.charAt(0);
@@ -9144,12 +8300,6 @@ private void parseElements(String arg) {
 for (int i = 1; i < arg.length(); i++)
 parseElement(arg.charAt(i));
 }
--- 273 of 644 --
-
----
-
-## [Sección 84] sección 6.8. Codificación de transferencia de contenidos Base64
-
 private void parseElement(char argChar) {
 if (setArgument(argChar))
 argsFound.add(argChar);
@@ -9196,8 +8346,6 @@ return “-[” + schema + “]”;
 else
 return “”;
 }
--- 274 of 644 --
-
 public String errorMessage() throws Exception {
 if (unexpectedArguments.size() > 0) {
 return unexpectedArgumentMessage();
@@ -9241,8 +8389,6 @@ return valid;
 Comprobará que empieza a desbocarse. No es terrible pero el desastre se
 está gestando. Basta con incluir el tipo de argumento integer para que
 resulte fatídico.
--- 275 of 644 --
-
 Entonces me detuve
 Todavía tenía que añadir otros dos tipos de argumentos y sabía que
 empeorarían las cosas. Si los forzaba, seguramente funcionarían pero
@@ -9273,12 +8419,6 @@ lograrlo, necesito una serie de pruebas automatizadas que ejecutar
 rápidamente y que verifiquen que el comportamiento del sistema no ha
 variado. Para la clase Args, creé una serie de pruebas de unidad y aceptación.
 Las pruebas de unidad se crearon en Java y se administraron con JUnit. Las
--- 276 of 644 --
-
----
-
-## [Sección 85] sección 6.8. Codificación de transferencia de contenidos Base64
-
 pruebas de aceptación se crearon como páginas wiki en FitNesse. Podría
 haber ejecutado estas pruebas en cualquier momento y, si eran satisfactorias,
 sabría que el sistema funcionaba de la forma especificada.
@@ -9314,8 +8454,6 @@ private void parseBooleanSchemaElement(char elementId) {
 booleanArgs.put(elementId, new BooleanArgumentMarshaler());
 }
 …
--- 277 of 644 --
-
 private void setBooleanArg(char argChar, boolean value) {
 booleanArgs.get(argChar).setBoolean(value);
 }
@@ -9353,8 +8491,6 @@ return am.getBoolean();
 Y tras ello añadí la lógica de detección de null.
 public boolean getBoolean(char arg) {
 Args.ArgumentMarshaler am = booleanArgs.get(arg);
--- 278 of 644 --
-
 return am != null && am.getBoolean();
 }
 Argumentos de cadena
@@ -9397,12 +8533,6 @@ public boolean getBoolean() {
 return booleanValue;
 }
 public void setString(String s) {
--- 279 of 644 --
-
----
-
-## [Sección 86] sección 6.8. Codificación de transferencia de contenidos Base64
-
 stringValue = s;
 }
 public String getString() {
@@ -9426,10 +8556,8838 @@ intArgs.put(elementId, new IntegerArgumentMarshaler());
 }
 …
 private void setIntArg(char argChar) throws ArgsException {
-currentArgume
-
+currentArgument++;
+String parameter = null;
+try {
+parameter = args[currentArgument];
+intArgs.get(argChar).setInteger(Integer.parseInt(parameter));
+} catch (ArrayIndexOutOfBoundsException e) {
+valid = false;
+errorArgumentId = argChar;
+errorCode = ErrorCode.MISSING_INTEGER;
+throw new ArgsException();
+} catch (NumberFormatException e) {
+valid = false;
+errorArgumentId = argChar;
+errorParameter = parameter;
+errorCode = ErrorCode.INVALID_INTEGER;
+throw new ArgsException();
+}
+}
+…
+public int getInt(char arg) {
+Args.ArgumentMarshaler am = intArgs.get(arg);
+return am == null ? 0 : am.getInteger();
+}
+…
+private class ArgumentMarshaler {
+private boolean booleanValue = false;
+private String stringValue;
+private int integerValue;
+public void setBoolean(boolean value) {
+booleanValue = value;
+}
+public boolean getBoolean() {
+return booleanValue;
+}
+public void setString(String s) {
+stringValue = s;
+}
+public String getString() {
+return stringValue == null ? “” : stringValue;
+}
+public void setInteger(int i) {
+integerValue = i;
+}
+public int getInteger() {
+return integerValue;
+}
+}
+Tras transferir la señalización a ArgumentMarshaler, comencé a transferir
+la funcionalidad a las variantes. El primer paso fue pasar la función
+setBoolean a BooleanArgumentMarshaller y garantizar su correcta
+invocación. Para ello creé un método set abstracto.
+private abstract class ArgumentMarshaler {
+protected boolean booleanValue = false;
+private String stringValue;
+private int integerValue;
+public void setBoolean(boolean value) {
+booleanValue = value;
+}
+public boolean getBoolean() {
+return booleanValue;
+}
+public void setString(String s) {
+stringValue = s;
+}
+public String getString() {
+return stringValue == null ? “” : stringValue;
+}
+public void set Integer(int i) {
+integerValue = i;
+}
+public int getInteger() {
+return integerValue;
+}
+public abstract void set(String s);
+}
+Tras ello, implementé el método set en BooleanArgumentMarshaller.
+private class BooleanArgumentMarshaler extends ArgumentMarshaler {
+public void set(String s) {
+booleanValue = true;
+}
+}
+Y por último cambié la invocación de setBoolean por la de set.
+private void setBooleanArg(char argChar, boolean value) {
+booleanArgs.get(argChar).set(“true”);
+}
+Las pruebas seguían siendo satisfactorias. Como este cambio hacía que
+set se implementara en BooleanArgumentMarshaler, eliminé el método
+setBoolean de la clase base ArgumentMarshaler.
+La función abstracta set acepta un argumento String pero la
+implementación de BooleanArgumentMarshaler no lo usa. He incluido el
+argumento porque sabía que StringArgumentMarshaler e
+IntegerArgumentMarshaler lo utilizarían.
+Tras ello, el objetivo era implementar el método get en
+BooleanArgumentMarshaler. La implementación de funciones get siempre es
+escabrosa ya que el tipo devuelto tiene que ser Object y en este caso debe
+convertirse a Boolean.
+public boolean getBoolean(char arg) {
+Args.ArgumentMarshaler am = booleanArgs.get(arg);
+return am != null && (Boolean)am.get();
+}
+Para compilarlo, añadí la función get a ArgumentMarshaler.
+private abstract class ArgumentMarshaler {
+…
+public Object get() {
+return null;
+}
+}
+Se compila y las pruebas fallan. Para que vuelvan a funcionar, basta con
+convertir get en abstracto e implementarlo en BooleanArgumentMarshaler.
+private abstract class ArgumentMarshaler {
+protected boolean booleanValue = false;
+…
+public abstract Object get();
+}
+private class BooleanArgumentMarshaler extends ArgumentMarshaler {
+public void set (String s) {
+booleanValue = true;
+}
+public Object get() {
+return booleanValue;
+}
+}
+De nuevo, las pruebas son satisfactorias. Ahora tanto get como set se
+implementan en BooleanArgumentMarshaler. Esto me permite eliminar la
+antigua función getBoolean de ArgumentMarshaler, cambiar la variable
+protegida booleanValue a BooleanArgumentMarshaler y convertirla en
+privada.
+Repetí el mismo patrón de cambios con las cadenas. Implementé set y
+get, eliminé las funciones sin usar y desplacé las variables.
+private void setStringArg(char argChar) throws ArgsException {
+currentArgument++;
+try {
+stringArgs.get(argChar).set(args[currentArgument]);
+} catch (ArrayIndexOutOfBoundsException e) {
+valid = false;
+errorArgumentId = argChar;
+errorCode = ErrorCode.MISSING_STRING;
+throw new ArgsException();
+}
+}
+…
+public String getString(char arg) {
+Args.ArgumentMarshaler am = stringArgs.get(arg);
+return am == null ? “” : (String) am.get();
+}
+…
+private abstract class ArgumentMarshaler {
+private int integerValue;
+public void setInteger(int i) {
+integerValue = i;
+}
+public int getInteger() {
+return integerValue;
+}
+public abstract void set(String s);
+public abstract Object get();
+}
+private class BooleanArgumentMarshaler extends ArgumentMarshaler {
+private boolean booleanValue = false;
+public void set(String s) {
+booleanValue = true;
+}
+public Object get() {
+return booleanValue;
+}
+}
+private class StringArgumentMarshaler extends ArgumentMarshaler {
+private String stringValue = “”;
+public void set(String s) {
+stringValue = s;
+}
+public Object get() {
+return stringValue;
+}
+}
+private class IntegerArgumentMarshaler extends ArgumentMarshaler {
+public void set(String s){
+}
+public Object get() {
+return null;
+}
+}
+}
+Por último, repetí el proceso con los enteros. Resulta más complicado ya
+que los enteros deben analizarse y la operación de análisis puede generar una
+excepción, pero el resultado es más indicado ya que el concepto de
+NumberFormatException se oculta totalmente en
+IntegerArgumentMarshaler.
+private boolean isIntArg(char argChar) { return intArgs.containsKey(argChar);
+}
+private void setIntArg(char argChar) throws ArgsException {
+currentArgument++;
+String parameter = null;
+try {
+parameter = args[currentArgument];
+intArgs.get(argChar).set(parameter);
+} catch (ArrayIndexOutOfBoundsException e) {
+valid = false;
+errorArgumentId = argChar;
+errorCode = ErrorCode.MISSING_INTEGER;
+throw new ArgsException();
+} catch (ArgsException e) {
+valid = false;
+errorArgumentId = argChar;
+errorParameter = parameter;
+errorCode = ErrorCode.INVALID_INTEGER;
+throw e;
+}
+}
+…
+private void setBooleanArg(char argChar) {
+try {
+booleanArgs.get(argChar).set(“true”);
+} catch (ArgsException e) {
+}
+}
+…
+public int getInt(char arg) {
+Args.ArgumentMarshaler am = intArgs.get(arg);
+return am == null ? 0 : (Integer) am.get();
+}
+…
+private abstract class ArgumentMarshaler {
+public abstract void set(String s) throws ArgsException;
+public abstract Object get();
+}
+…
+private class IntegerArgumentMarshaler extends ArgumentMarshaler {
+private int intValue = 0;
+public void set(String s) throws ArgsException {
+try {
+intValue = Integer.parseInt(s);
+} catch (NumberFormatException s) {
+throw new ArgsException();
+}
+}
+public Object get() {
+return intValue;
+}
+}
+Evidentemente, las pruebas seguían funcionando. Tras ello, me deshice
+de las distintas asignaciones de la parte superior del algoritmo, lo que hace
+que el sistema sea mucho más genérico. Sin embargo, no las puede eliminar
+ya que afectaría a la integridad del sistema. En su lugar, añadí un nuevo Map
+para ArgumentMarshaler y, tras ello, cambié uno a uno los métodos para que
+usaran la nueva asignación en lugar de las originales.
+public class Args {
+…
+private Map<Character, ArgumentMarshaler> booleanArgs =
+new HashMap<Character, ArgumentMarshaler>();
+private Map<Character, ArgumentMarshaler> stringArgs =
+new HashMap<Character, ArgumentMarshaler>();
+private Map<Character, ArgumentMarshaler> intArgs =
+new HashMap<Character, ArgumentMarshaler>();
+private Map<Character, ArgumentMarshaler> marshalers =
+new HashMap<Character, ArgumentMarshaler>();
+…
+private void parseBooleanSchemaElement(char elementId) {
+ArgumentMarshaler m = new BooleanArgumentMarshaler();
+booleanArgs.put(elementId, m);
+marshalers.put(elementId, m);
+}
+private void parseIntegerSchemaElement(char elementId) {
+ArgumentMarshaler m = new IntegerArgumentMarshaler();
+intArgs.put(elementId, m);
+marshalers.put(elementId, m);
+}
+private void parseStringSchemaElement(char elementId) {
+ArgumentMarshaler m = new StringArgumentMarshaler();
+stringArgs.put(elementId, m);
+marshalers.put(elementId, m);
+}
+Las pruebas seguían funcionando. Tras ello, cambié isBooleanArg de
+esto:
+private boolean isBooleanArg(char argChar) {
+return booleanArgs.containsKey(argChar);
+}
+a este otro:
+private boolean isBooleanArg(char argChar) {
+ArgumentMarshaler m = marshalers.get(argChar);
+return m instanceof BooleanArgumentMarshaler;
+}
+Las pruebas funcionaban, por lo que apliqué el mismo cambio en
+isIntArg e isStringArg.
+private boolean isIntArg(char argChar) {
+ArgumentMarshaler m = marshalers.get(argChar);
+return m instanceof IntegerArgumentMarshaler;
+}
+private boolean isStringArg(char argChar) {
+ArgumentMarshaler m = marshalers.get(argChar);
+return m instanceof StringArgumentMarshaler;
+}
+Las pruebas eran correctas, por lo que eliminé las invocaciones
+duplicadas de marshalers.get:
+private boolean setArgument(char argChar) throws ArgsException {
+ArgumentMarshaler m = marshalers.get(argChar);
+if (isBooleanArg(m))
+setBooleanArg(argChar);
+else if (isStringArg(m))
+setStringArg(argChar);
+else if (isIntArg(m))
+setIntArg(argChar);
+else
+return false;
+return true;
+}
+private boolean isIntArg (ArgumentMarshaler m) {
+return m instanceof IntegerArgumentMarshaler;
+}
+private boolean isStringArg (ArgumentMarshaler m) {
+return m instanceof StringArgumentMarshaler;
+}
+private boolean isBooleanArg (ArgumentMarshaler m) {
+return m instanceof BooleanArgumentMarshaler;
+}
+Los tres argumentos isxxxArg ya no tenían sentido, de modo que los
+reubiqué:
+private boolean setArgument(char argChar) throws ArgsException {
+ArgumentMarshaler m = marshalers.get(argChar);
+if (m instanceof BooleanArgumentMarshaler)
+setBooleanArg(argChar);
+else if (m instanceof StringArgumentMarshaler)
+setStringArg(argChar);
+else if (m instanceof IntegerArgumentMarshaler)
+setIntArg(argChar);
+else
+return false;
+return true;
+}
+Tras ello, empecé a usar la asignación marshalers en las funciones set,
+dividiendo el uso de las otras tres asignaciones. Comencé por los elementos
+boolean.
+private boolean setArgument(char argChar) throws ArgsException {
+ArgumentMarshaler m = marshalers.get(argChar);
+if (m instanceof BooleanArgumentMarshaler)
+setBooleanArg(m);
+else if (m instanceof StringArgumentMarshaler)
+setStringArg(argChar);
+else if (m instanceof IntegerArgumentMarshaler)
+setIntArg(argChar);
+else
+return false;
+return true;
+}
+…
+private void setBooleanArg(ArgumentMarshaler m) {
+try {
+m.set(“true”); // era: booleanArgs.get(argChar).set(“true”);
+} catch (ArgsException e) {
+}
+}
+Las pruebas seguían siendo correctas de modo que repetí la operación con
+las cadenas y los enteros. De esta manera se puede integrar parte del
+desagradable código de gestión de excepciones en la función setArgument.
+private boolean setArgument(char argChar) throws ArgsException {
+ArgumentMarshaler m = marshalers.get(argChar);
+try {
+if (m instanceof BooleanArgumentMarshaler)
+setBooleanArg(m);
+else if (m instanceof StringArgumentMarshaler)
+setStringArg(m);
+else if (m instanceof IntegerArgumentMarshaler)
+setIntArg(m);
+else
+return false;
+} catch (ArgsException e) {
+valid = false;
+errorArgumentId = argChar;
+throw e;
+}
+return true;
+}
+private void setIntArg(ArgumentMarshaler m) throws ArgsException {
+currentArgument++;
+String parameter = null;
+try {
+parameter = args[currentArgument];
+m.set(parameter);
+} catch (ArrayIndexOutOfBoundsException e) {
+errorCode = ErrorCode.MISSING_INTEGER;
+throw new ArgsException();
+} catch (ArgsException e) {
+errorParameter = parameter;
+errorCode = ErrorCode.INVALID_INTEGER;
+throw e;
+}
+}
+private void setStringArg(ArgumentMarshaler m) throws ArgsException {
+currentArgument++;
+try {
+m.set(args[currentArgument]);
+} catch (ArrayIndexOutOfBoundsException e) {
+errorCode = ErrorCode.MISSING_STRING;
+throw new ArgsException();
+}
+}
+Ya podía eliminar las tres asignaciones antiguas. Primero, debía cambiar
+la función getBoolean de:
+public boolean getBoolean(char arg) {
+Args.ArgumentMarshaler am = booleanArgs.get(arg);
+return am != null && (Boolean) am.get();
+}
+a:
+public boolean getBoolean(char arg) {
+Args.ArgumentMarshaler am = marshalers.get(arg);
+boolean b = false;
+try {
+b = am != null && (Boolean) am.get();
+} catch (ClassCastException e) {
+b = false;
+}
+return b;
+}
+Este último cambio puede parecer sorprendente. ¿Por qué de repente
+decidí enfrentarme a ClassCastException? Por tener una serie de pruebas de
+unidad y otra serie independiente de pruebas de aceptación creadas en
+FitNesse. Las pruebas de FitNesse garantizan que si se invoca getBoolean en
+un argumento no Booleano, se obtiene false. No sucede lo mismo con las
+pruebas de unidad. Hasta el momento, sólo había ejecutado las pruebas de
+unidad[93].
+Este último cambio me permitió extraer otro uso de la asignación
+boolean:
+private void parseBooleanSchemaElement(char elementId) {
+ArgumentMarshaler m = new BooleanArgumentMarshaler();
+booleanArgs.put(elementId, m);
+marshalers.put(elementId, m);
+}
+Y ahora ya podemos eliminar la asignación boolean.
+public class Args {
+…
+private Map<Character, ArgumentMarshaler> booleanArgs =
+new HashMap<Character, ArgmentMarshaler>();
+private Map<Character, ArgumentMarshaler> stringArgs =
+new HashMap<Character, ArgumentMarshaler>();
+private Map<Character, ArgumentMarshaler> intArgs =
+new HashMap<Character, ArgumentMarshaler>();
+private Map<Character, ArgumentMarshaler> marshalers =
+new HashMap<Character, ArgumentMarshaler>();
+…
+Tras ello, cambié los argumentos String e Integer de la misma forma y
+limpié los valores boolean.
+private void parseBooleanSchemaElement(char elementId) {
+marshalers.put(elementId, new BooleanArgumentMarshaler());
+}
+private void parseIntegerSchemaElement(char elementId) {
+marshalers.put(elementId, new IntegerArgumentMarshaler());
+}
+private void parseStringSchemaElement(char elementId) {
+marshalers.put(elementId, new StringArgumentMarshaler());
+}
+…
+public String getString(char arg) {
+Args.ArgumentMarshaler am = marshalers.get(arg);
+try {
+return am null ? “” : (String) am.get();
+} catch (ClassCastException e) {
+return “”;
+}
+}
+public int getInt(char arg) {
+Args.ArgumentMarshaler am = marshalers.get(arg);
+try {
+return am == null ? 0 : (Integer) am.get();
+} catch (Exception e) {
+return 0;
+}
+}
+…
+public class Args {
+…
+private Map<Character, ArgumentMarshaler> stringArgs =
+new HashMap<Character, ArgumentMarshaler>();
+private Map<Character, ArgumentMarshaler> intArgs =
+new HashMap<Character, ArgumentMarshaler>();
+private Map<Character, ArgumentMarshaler> marshalers =
+new HashMap<Character, ArgumentMarshaler>();
+…
+Seguidamente, dispuse en línea los tres métodos parse ya que no servían
+para mucho:
+private void parseSchemaElement(String element) throws ParseException {
+char elementId = element.charAt(0);
+String elementTail = element.substring(1);
+validateSchemaElementId(elementId);
+if (isBooleanSchemaElement(elementTail))
+marshalers.put(elementId, new BooleanArgumentMarshaler());
+else if (isStringSchemaElement(elementTail))
+marshalers.put(elementId, new StringArgumentMarshaler());
+else if (isIntegerSchemaElement(elementTail)) {
+marshalers.put(elementId, new IntegerArgumentMarshaler());
+} else {
+throw new ParseException(String.format(
+“Argument: %c has invalid format: %s.”, elementId, elementTail), 0);
+}
+}
+Es el momento de ver la estructura completa. El Listado 14-12 muestra la
+clase Args actual.
+Listado 14-12
+Args.java (tras la primera refactorización)
+package com.objectmentor.utilities.getopts;
+import java.text.ParseException;
+import java.util.*;
+public class Args {
+private String schema;
+private String[] args;
+private boolean valid = true;
+private Set<Character> unexpectedArguments = new TreeSet<Character>();
+private Map<Character, ArgumentMarshaler> marshalers =
+new HashMap<Character, ArgumentMarshaler>();
+private Set<Character> argsFound = new HashSet<Character>();
+private int currentArgument;
+private char errorArgumentId = ‘\0’;
+private String errorParameter = “TILT”;
+private ErrorCode errorCode = ErrorCode.OK;
+private enum ErrorCode {
+OK, MISSING_STRING, MISSING_INTEGER, INVALID_INTEGER,
+UNEXPECTED_ARGUMENT}
+public Args(String schema, String[] args) throws ParseException {
+this.schema = schema;
+this.args = args;
+valid = parse();
+}
+private boolean parse() throws ParseException {
+if (schema.length() == 0 && args.length == 0)
+return true;
+parseSchema();
+try {
+parseArguments();
+} catch (ArgsException e) {
+}
+return valid;
+}
+private boolean parseSchema() throws ParseException {
+for (String element : schema.split(“,”)) {
+if (element.length() > 0) {
+String trimmedElement = element.trim();
+parseSchemaElement(trimmedElement);
+}
+}
+return true;
+}
+private void parseSchemaElement(String element) throws ParseException {
+char elementId = element.charAt(0);
+String elementTail = element.substring(1);
+validateSchemaElementId(elementId);
+if (isBooleanSchemaElement(elementTail))
+marshalers.put(elementId, new BooleanArgumentMarshaler());
+else if (isStringSchemaElement(elementTail))
+marshalers.put(elementId, new StringArgumentWarshaler());
+else if (isIntegerSchemaElement(elementTail)) {
+marshalers.put(elementId, new IntegerArgumentMarshaler());
+} else {
+throw new ParseException(String.format(
+“Argument: %c has invalid format: %s.”, elementId, elementTail), 0);
+}
+}
+private void validateSchemaElementId(char elementId) throws ParseException
+{
+if (!Character.isLetter(elementId)) {
+throw new ParseException(
+“Bad character:” + elementId + “in Args format: ” + schema, 0);
+}
+}
+private boolean isStringSchemaElement(String elementTail) {
+return elementTail.equals(“*”);
+}
+private boolean isBooleanSchemaElement(String elementTail) {
+return elementTail.length() == 0;
+}
+private boolean isIntegerSchemaElement(String elementTail) {
+return elementTail.equals(“#”);
+}
+private boolean parseArguments() throws ArgsException {
+for (currentArgument=0; currentArgument<args.length; currentArgument++) {
+String arg = args[currentArgument];
+parseArgument(arg);
+}
+return true;
+}
+private void parseArgument(String arg) throws ArgsException {
+if (arg.startsWith(“-”))
+parseElements(arg);
+}
+private void parseElements(String arg) throws ArgsException {
+for (int i = 1; i < arg.length(); i++)
+parseElement(arg.charAt(i));
+}
+private void parseElement(char argChar) throws ArgsException {
+if (setArgument(argChar))
+argsFound.add(argChar);
+else {
+unexpectedArguments.add(argChar);
+errorCode = ErrorCode.UNEXPECTED_ARGUMENT;
+valid = false;
+}
+}
+private boolean setArgument(char argChar) throws ArgsException {
+ArgumentMarshaler m = marshalers.get(argChar);
+try {
+if (m instanceof BooleanArgumentMarshaler)
+setBooleanArg(m);
+else if (m instanceof StringArgumentMarshaler)
+setStringArg(m);
+else if (m instanceof IntegerArgumentMarshaler)
+setIntArg(m);
+else
+return false;
+} catch (ArgsException e) {
+valid = false;
+errorArgumentId = argChar;
+throw e;
+}
+return true;
+}
+private void setIntArg(ArgumentMarshaler m) throws ArgsException {
+currentArgument++;
+String parameter = null;
+try {
+parameter = args[currentArgument];
+m.set(parameter);
+} catch (ArrayIndexOutOfBoundsException e) {
+errorCode = ErrorCode.MISSING_INTEGER;
+throw new ArgsException();
+} catch (ArgsException e) {
+errorParameter = parameter;
+errorCode = ErrorCode.INVALID_INTEGER;
+throw e;
+}
+}
+private void setStringArg(ArgumentMarshaler m) throws ArgsException {
+currentArgument++;
+try {
+m.set (args[currentArgument]);
+} catch (ArrayIndexOutOfBoundsException e) {
+errorCode = ErrorCode.MISSING_STRING;
+throw new ArgsException();
+}
+}
+private void setBooleanArg(ArgumentMarshaler m) {
+try {
+m.set(“true”);
+} catch (ArgsException e) {
+}
+}
+public int cardinality() {
+return argsFound.size();
+}
+public String usage() {
+if (schema.length() > 0)
+return = “-[” + schema + “]”;
+else
+return “”;
+}
+public String errorMessage() throws Exception {
+switch (errorCode) {
+case OK:
+throw new Exception(“TILT: Should not get here.”);
+case UNEXPECTED_ARGUMENT:
+return unexpectedArgumentMessage();
+case MISSING_STRING:
+return String.format(“Could not find string parameter for -%c.”,
+errorArgumentId);
+case INVALID_INTEGER:
+return String.format(“Argument -%c expects an integer but was ‘%s’.”,
+errorArgumentId, errorParameter);
+case MISSING_INTEGER:
+return String.format(“Could not find integer parameter for -%c.”,
+errorArgumentId);
+}
+return “”;
+}
+private String unexpectedArgumentMessage() {
+StringBuffer message = new StringBuffer(“Argument(s) -”);
+for {char c : unexpectedArguments) {
+message.append(c);
+}
+message.append(“ unexpected.”);
+return message.toString();
+}
+public boolean getBoolean(char arg) {
+Args.ArgumentMarshaler am = marshalers.get(arg);
+boolean b = false;
+try {
+b = am != null && (Boolean) am.get();
+} catch (ClassCastException e) {
+b = false;
+}
+return b;
+}
+public String getString(char arg) {
+Args.ArgumentMarshaler am = marshalers.get (arg);
+try {
+return am == null ? “” : (String) am.get();
+} catch (ClassCastException e) {
+return “”;
+}
+}
+public int getInt(char arg) {
+Args.ArgumentMarshaler am = marshalers.get(arg);
+try {
+return am == null ? 0 : (Integer) am.get();
+} catch (Exception e) {
+return 0;
+}
+}
+public boolean has(char arg) {
+return argsFound.contains(arg);
+}
+public boolean isValid() {
+return valid;
+}
+private class ArgsException extends Exception {
+}
+private abstract class ArgumentMarshaler {
+public abstract void set(String s) throws ArgsException;
+public abstract Object get();
+}
+private class BooleanArgumentMarshaler extends ArgumentMarshaler {
+private boolean booleanValue = false;
+public void set(String s) {
+booleanValue = true;
+}
+public Object get() {
+return booleanValue;
+}
+}
+private class StringArgumentMarshaler extends ArgumentMarshaler {
+private String stringValue = “”;
+public void set(String s) {
+stringValue = s;
+}
+public Object get() {
+return stringValue;
+}
+}
+private class IntegerArgumentMarshaler extends ArgumentMarshaler {
+private int intValue = 0;
+public void set(String s) throws ArgsException {
+try {
+intValue = Integer.parseInt(s);
+} catch (NumberFormatException e) {
+throw new ArgsException();
+}
+}
+public Object get() {
+return intValue;
+}
+}
+}
+Tras todo este esfuerzo, es un tanto decepcionante. La estructura ha
+mejorado pero todavía hay demasiadas variables en la parte superior; se
+mantiene un terrible caso de tipos en setArgument; y todas las funciones set.
+Sin mencionar el procesamiento de errores. Todavía nos queda mucho trabajo
+por hacer.
+Mi intención es eliminar el caso de tipos de setArgument [G23] y que
+sólo incluya una invocación a ArgumentMarshaler.set. Para ello, debo
+desplazar setIntArg, setStringArg y setBooleanArg a las correspondientes
+variantes de ArgumentMarshaler. Pero hay un problema.
+Si se fija atentamente en setIntArg, comprobará que usa dos variables de
+instancia: args y currentArg. Para desplazar setIntArg hasta
+BooleanArgumentMarshaler, tengo que pasar args y currentArgs como
+argumentos de función. Muy desagradable [F1]. Resultaría más indicado
+pasar un argumento y no dos. Afortunadamente, la solución es sencilla.
+Podemos convertir la matriz args en list y pasar Iterator a las funciones
+set. Para el siguiente cambio necesité diez pasos, y superar todas las pruebas
+tras cada uno. Pero sólo mostraremos el resultado. Debería determinar la
+mayoría de estos pequeños pasos.
+public class Args {
+private String schema;
+private String[] args;
+private boolean valid = true;
+private Set<Character> unexpectedArguments = new TreeSet<Character>();
+private Map<Character, ArgumentMarshaler> marshalers =
+new HashMap<Character, ArgumentMarshaler>();
+private Set<Character> argsFound = new HashSet<Character>();
+private Iterator<String> currentArgument;
+private char errorArgumentId = ‘\0’;
+private String errorParameter = “TILT”;
+private ErrorCode errorCode = ErrorCode.OK;
+private List<String> argsList;
+private enum ErrorCode {
+OK, MISSING_STRING, MISSING_INTEGER, INVALID_INTEGER, UNEXPECTED_ARGUMENT
+}
+public Args(String schema. String[] args) throws ParseException {
+this.schema = schema;
+argsList = Arrays.asList(args);
+valid = parse();
+}
+private boolean parse() throws ParseException {
+if (schema.length() == 0 && argsList.size() == 0)
+return true;
+parseSchema();
+try {
+parseArguments();
+} catch (ArgsException e) {
+}
+return valid;
+}
+…
+private boolean parseArguments() throws ArgsException {
+for (currentArgument = argsList.iterator(); currentArgument.hasNext();) {
+String arg = currentArgument.next();
+parseArgument(arg);
+}
+return true;
+}
+…
+private void setIntArg(ArgumentMarshaler m) throws ArgsException {
+String parameter = null;
+try {
+parameter = currentArgument.next();
+m.set(parameter);
+} catch (NoSuchElementException e) {
+errorCode = ErrorCode.MISSING_INTEGER;
+throw new ArgsException();
+} catch (ArgsException e) {
+errorParameter = parameter;
+errorCode = ErrorCode.INVALID_INTEGER;
+throw e;
+}
+}
+private void setStringArg(ArgumentMarshaler m) throws ArgsException {
+try {
+m.set (currentArgument.next());
+} catch (NoSuchElementException e) {
+errorCode = ErrorCode.MISSING_STRING;
+throw new ArgsException();
+}
+}
+Son pequeños cambios que conservan el funcionamiento de las pruebas.
+Ahora podemos empezar a desplazar las funciones set a las correspondientes
+variantes. Primero, debemos realizar el siguiente cambio en setArgument:
+private boolean setArgument(char argChar) throws ArgsException {
+ArgumentMarshaler m = marshalers.get(argChar);
+if (m == null)
+return false;
+try {
+if (m instanceof BooleanArgumentMarshaler)
+setBooleanArg(m);
+else if (m instanceof StringArgumentMarshaler)
+setStringArg(m);
+else if (m instanceof IntegerArgumentMarshaler)
+setIntArg(m);
+else
+return false;
+} catch (ArgsException e) {
+valid = false;
+errorArgumentId = argChar;
+throw e;
+}
+return true;
+}
+Es un cambio importante ya que queremos eliminar totalmente la cadena
+if-else. Por tanto, debemos excluir la condición de error.
+Ya podemos empezar a desplazar las funciones set. La función
+setBooleanArg es trivial, de modo que la prepararemos en primer lugar. El
+objetivo es cambiar la función setBooleanArg para redirigirla a
+BooleanArgumentMarshaler.
+private boolean setArgument(char argChar) throws ArgsException {
+ArgumentMarshaler m = marshalers.get(argChar);
+if (m == null)
+return false;
+try {
+if (m instanceof BooleanArgumentMarshaler)
+setBooleanArg(m, currentArgument);
+else if (m instanceof StringArgumentMarshaler)
+setStringArg(m);
+else if (m instanceof IntegerArgumentMarshaler)
+setIntArg(m);
+} catch (ArgsException e) {
+valid = false;
+errorArgumentId = argChar;
+throw e;
+}
+return true;
+}
 ---
-> *[Truncated at 420 KB for optimal local RAG indexing speed]*
+private void setBooleanArg (ArgumentMarshaler m,
+Iterator<String> currentArgument)
+throws ArgsException {
+try {
+m.set(“true”);
+catch (ArgsException e) {
+}
+}
+¿No acabamos de incluir el procesamiento de excepciones? Añadir
+elementos para después excluirlos es habitual en los procesos de
+refactorización. Los pasos reducidos y la necesidad de que las pruebas sigan
+siendo correctas implican que los elementos cambien de posición. La
+refactorización es como resolver el cubo de Rubik. Se necesitan muchos
+pasos pequeños para lograr un objetivo mayor. Cada paso habilita el
+siguiente.
+Se preguntará por qué pasamos iterator si setBooleanArg no lo
+necesita. Pues porque setIntArg y setStringArg sí. Y como el objetivo es
+implementar las tres funciones a través de un método abstracto en
+ArgumentMarshaller, es necesario pasarlo a setBooleanArg.
+Ahora setBooleanArg no sirve de nada. Si hubiera una función set en
+ArgumentMarshaler, podríamos invocarla directamente. Es el momento de
+crear dicha función. El primer paso consiste en añadir el nuevo método
+abstracto a ArgumentMarshaler.
+private abstract class ArgumentMarshaler {
+public abstract void set(Iterator<String> currentArgument)
+throws ArgsException;
+public abstract void set (String s) throws ArgsException;
+public abstract Object get();
+}
+Evidentemente, esto afecta a todas las variantes, de modo que
+implementamos el nuevo método en cada una.
+private class BooleanArgumentMarshaler extends ArgumentMarshaler {
+private boolean booleanValue = false;
+public void set(Iterator<String> currentArgument) throws ArgsException {
+booleanValue = true;
+}
+public void set(String s) {
+booleanValue = true;
+}
+public Object get() {
+return booleanValue;
+}
+}
+private class StringArgumentMarshaler extends ArgumentMarshaler {
+private String stringValue = “”;
+public void set(Iterator<String> currentArgument) throws ArgsException {
+}
+public void set(String s) {
+stringValue = s;
+}
+public Object get() {
+return stringValue;
+}
+}
+private class IntegerArgumentMarshaler extends ArgumentMarshaler {
+private int intValue = 0;
+public void set(Iterator<String> currentArgument) throws ArgsException {
+}
+public void set(String s) throws ArgsException {
+try {
+intValue = Integer.parseInt(s);
+} catch (NumberFormatException e) {
+throw new ArgsException();
+}
+}
+public Object get() {
+return intValue;
+}
+}
+Y ahora ya podemos eliminar setBooleanArg:
+private boolean setArgument(char argChar) throws ArgsException {
+ArgumentMarshaler m = marshalers.get(argChar);
+if (m == null)
+return false;
+try {
+if (m instanceof BooleanArgumentMarshaler)
+m.set(currentArgument);
+else if (m instanceof StringArgumentMarshaler)
+setStringArg(m);
+else if (m instanceof IntegerArgumentMarshaler)
+setIntArg(m);
+} catch (ArgsException e) {
+valid = false;
+errorArgumentId = argChar;
+throw e;
+}
+return true;
+}
+Las pruebas siguen siendo satisfactorias y la función set se implementa
+en Boolean ArgumentMarshaler. Podemos repetir la operación con las
+cadenas y los enteros.
+private boolean setArgument(char argChar) throws ArgsException {
+ArgumentMarshaler m = marshalers.get(argChar);
+if (m == null)
+return false;
+try {
+if (m instanceof BooleanArgumentMarshaler)
+m.set(currentArgument);
+else if (m instanceof StringArgumentMarshaler)
+m.set(currentArgument);
+else if (m instanceof IntegerArgumentMarshaler)
+m.set(currentArgument);
+} catch (ArgsException e) {
+valid = false;
+errorArgumentId = argChar;
+throw e;
+}
+return true;
+}
+---
+private class StringArgumentMarshaler extends ArgumentMarshaler {
+private String stringValue = “”;
+public void set(Iterator<String> currentArgument) throws ArgsException {
+try {
+stringValue = currentArgument.next();
+} catch (NoSuchElementException e) {
+errorCode = ErrorCode.MISSING_STRING;
+throw new ArgsException();
+}
+}
+public void set(String s){
+}
+public Object get() {
+return stringValue;
+}
+}
+private class IntegerArgumentMarshaler extends ArgumentMarshaler {
+private int intValue = 0;
+public void set(Iterator<String> currentArgument) throws ArgsException {
+String parameter = null;
+try {
+parameter = currentArgument.next();
+set(parameter);
+} catch (NoSuchElementException e) {
+errorCode = ErrorCode.MISSING_INTEGER;
+throw new ArgsException();
+} catch (ArgsException e) {
+errorParameter = parameter;
+errorCode = ErrorCode.INVALID_INTEGER;
+throw e;
+}
+}
+public void set(String s) throws ArgsException {
+try {
+intValue = Integer.parseInt(s);
+} catch (NumberFormatException e) {
+throw new ArgsException();
+}
+}
+public Object get() {
+return intValue;
+}
+}
+Y el golpe de gracia: se elimina el caso de tipos.
+private boolean setArgument(char argChar) throws ArgsException {
+ArgumentMarshaler m = marshalers.get(argChar);
+if (m == null)
+return false;
+try {
+m.set(currentArgument);
+return true;
+} catch (ArgsException e) {
+valid = false;
+errorArgumentId = argChar;
+throw e;
+}
+}
+Ya podemos deshacernos de las funciones de
+IntegerArgumentMarshaler y limpiar el resto.
+private class IntegerArgumentMarshaler extends ArgumentMarshaler {
+private int intValue = 0
+public void set (Iterator<String> currentArgument) throws ArgsException {
+String parameter = null;
+try {
+parameter = currentArgument.next();
+intValue = Integer.parseInt(parameter);
+} catch (NoSuchElementException e) {
+errorCode = ErrorCode.MISSING_INTEGER;
+throw new ArgsException();
+} catch (NumberFormatException e) {
+errorParameter = parameter;
+errorCode = ErrorCode.INVALID_INTEGER;
+throw new ArgsException();
+}
+}
+public Object get() {
+return intValue;
+}
+}
+También podemos convertir ArgumentMarshaler en una interfaz.
+private interface ArgumentMarshaler {
+void set (Iterator<String> currentArgument) throws ArgsException;
+Object get();
+}
+Veamos ahora lo sencillo que resulta añadir un nuevo tipo de argumento a
+la estructura. Apenas necesitaremos cambios y los que apliquemos tendrán
+que ser aislados. En primer lugar, añadimos un nuevo caso de prueba para
+comprobar que el argumento double funciona correctamente:
+public void testSimpleDoublePresent() throws Exception {
+Args args = new Args(“x##”, new String[] {“-x”,“42.3”});
+assertTrue(args.isValid());
+assertEquals(1, args.cardinality());
+assertTrue(args.has(‘x’));
+assertEquals(42.3, args.getDouble(‘x’), .001);
+}
+Limpiamos el código de análisis de esquemas y añadimos la detección ##
+para el tipo de argumento double.
+private void parseSchemaElement(String element) throws ParseException {
+char elementId = element.charAt(0);
+String elementTail = element.substring(1);
+validateSchemaElementId(elementId);
+if (elementTail.length() == 0)
+marshalers.put(elementId, new BooleanArgumentMarshaler());
+else if (elementTail.equals(“*”))
+marshalers.put(elementId, new StringArgumentMarshaler());
+else if (elementTail.equals(“#”))
+marshalers.put(elementId, new IntegerArgumentMarshaler());
+else if (elementTail.equals(“##”))
+marshalers.put(elementId, new DoubleArgumentMarshaler());
+else
+throw new ParseException(String.format(
+“Argument: %c has invalid format: %s.”, elementId, elementTail), 0);
+}
+Seguidamente, creamos la clase DoubleArgumentMarshaler.
+private class DoubleArgumentMarshaler implements ArgumentMarshaler {
+private double doubleValue = 0;
+public void set(Iterator<String> currentArgument) throws ArgsException {
+String parameter = null;
+try {
+parameter = currentArgument.next();
+doubleValue = Double.parseDouble(parameter);
+} catch (NoSuchElementException e) {
+errorCode = ErrorCode.MISSING_DOUBLE;
+throw new ArgsException();
+} catch (NumberFormatException e) {
+errorParameter = parameter;
+errorCode = ErrorCode.INVALID_DOUBLE;
+throw new ArgsException();
+}
+}
+public Object get() {
+return doubleValue;
+}
+}
+Esto nos obliga a añadir un nuevo código de error (ErrorCode).
+private enum ErrorCode {
+OK, MISSING_STRING, MISSING_INTEGER, INVALID_INTEGER, UNEXPECTED_ARGUMENT,
+MISSING_DOUBLE, INVALID_DOUBLE}
+Y necesitamos una función getDouble.
+public double getDouble(char arg) {
+Args.ArgumentMarshaler am = marshalers.get(arg);
+try {
+return am = null ? 0 : (Double) am.get();
+} catch (Exception e) {
+return 0.0;
+}
+}
+Y todas las pruebas son correctas. Ha sido sencillo. A continuación
+comprobamos que el procesamiento de errores funciona correctamente. El
+siguiente caso de prueba comprueba que se declare un error si se proporciona
+una cadena que no se puede analizar a un argumento ##.
+public void testInvalidDouble() throws Exception {
+Args args = new Args(“x##”, new String[] {“-x”, “Forty two”});
+assertFalse(args.isValid());
+assertEquals(0, args.cardinality());
+assertFalse(args.has(‘x’));
+assertEquals(0, args.getInt(‘x’));
+assertEquals(“Argument -x expects a double but was ‘Forty two’.”,
+args.errorMessage());
+}
+---
+public String errorMessage() throws Exception {
+switch (errorCode) {
+case OK:
+throw new Exception(“TILT: Should not get here.”);
+case UNEXPECTED_ARGUMENT:
+return unexpectedArgumentMessage();
+case MISSING_STRING:
+return String.format(“Could not find string parameter for -%c.”,
+errorArgumentId);
+case INVALID_INTEGER:
+return String.format(“Argument -%c expects an integer but was ‘%s’.”,
+errorArgumentId, errorParameter);
+case MISSING_INTEGER:
+return String.format(“Could not find integer parameter for -%c.”,
+errorArgumentId);
+case INVALID_DOUBLE:
+return String.format(“Argument -%c expects a double but was ‘%s’.”,
+errorArgumentId, errorParameter);
+case MISSING_DOUBLE:
+return String.format(“Could not find double parameter for -%c”,
+errorArgumentId);
+}
+return “”;
+}
+Y las pruebas son satisfactorias. La siguiente prueba garantiza que se
+detecte correctamente la ausencia de un argumento double.
+public void testMissingDouble() throws Exception {
+Args args = new Args(“x##”, new String[]{"-x"});
+assertFalse (args.isValid());
+assertEquals(0, args.cardinality());
+assertFalse(args.has(‘x’));
+assertEquals(0.0, args.getDouble(‘x’), 0.01);
+assertEquals(“Could not find double parameter for -x.”,
+args.errorMessage());
+}
+Es correcto. La incluimos para que el ejemplo resulte más completo.
+El código de excepciones no es atractivo y no pertenece realmente a la
+clase Args. También generamos ParseException, que no nos pertenece. Por
+ello, combinamos todas las excepciones en una única clase ArgsException y
+la incluimos en su propio módulo.
+public class ArgsException extends Exception {
+private char errorArgumentId = ‘\0’;
+private String errorParameter = “TILT”;
+private ErrorCode errorCode = ErrorCode.OK;
+public ArgsException() {}
+public ArgsException(String message) { super(message); }
+public enum ErrorCode {
+OK, MISSING_STRING, MISSING_INTEGER, INVALID_INTEGER, UNEXPECTED_ARGUMENT,
+MISSING_DOUBLE, INVALID_DOUBLE }
+}
+…
+public class Args {
+…
+private char errorArgumentId = ‘\0’;
+private String errorParameter = “TILT”;
+private ArgsException.ErrorCode errorCode = ArgsException.ErrorCode.OK;
+private List<String> argsList;
+public Args(String schema, String[] args) throws ArgsException {
+this.schema = schema;
+argsList = Arrays.asList(args);
+valid = parse();
+}
+private boolean parse() throws ArgsException {
+if (schema.length() == 0 && argsList.size() == 0)
+return true;
+parseSchema();
+try {
+parseArguments();
+} catch (ArgsException e) {
+}
+return valid;
+}
+private boolean parseSchema() throws ArgsException {
+…
+}
+private void parseSchemaElement(String element) throws ArgsException {
+…
+else
+throw new ArgsException(
+String.format(“Argument: %c has invalid format: %s.”,
+elementId, elementTail));
+}
+private void validateSchemaElementId(char elementId) throws ArgsException {
+if (!Character.isLetter(elementId)) {
+throw new ArgsException(
+“Bad character:” + elementId + “in Args format: ” + schema);
+}
+}
+…
+private void parseElement(char argChar) throws ArgsException {
+if (setArgument(argChar))
+argsFound.add(argChar);
+else {
+unexpectedArguments.add(argChar);
+errorCode = ArgsException.ErrorCode.UNEXPECTED_ARGUMENT;
+valid = false;
+}
+}
+…
+private class StringArgumentMarshaler implements ArgumentMarshaler {
+private String stringValue = “”;
+public void set(Iterator<String> currentArgument) throws ArgsException {
+try {
+stringValue = currentArgument.next();
+} catch (NoSuchElementException e) {
+errorCode = ArgsException.ErrorCode.MISSING_STRING;
+throw new ArgsException();
+}
+}
+public Object get() {
+return stringValue;
+}
+}
+private class IntegerArgumentMarshaler implements ArgumentMarshaler {
+private int intValue = 0;
+public void set (Iterator<String> currentArgument) throws ArgsException {
+String parameter = null;
+try {
+parameter = currentArgument.next();
+intValue = Integer.parseInt(parameter);
+} catch (NoSuchElementException e) {
+errorCode = ArgsException.ErrorCode.MISSING_INTEGER;
+throw new ArgsException();
+} catch (NumberFormatException e) {
+errorParameter = parameter;
+errorCode = ArgsException.ErrorCode.INVALID_INTEGER;
+throw new ArgsException();
+}
+}
+public Object get() {
+return intValue;
+}
+}
+private class DoubleArgumentMarshaler implements ArgumentMarshaler {
+private double doubleValue = 0;
+public void set(Iterator<String> currentArgument) throws ArgsException {
+String parameter = null;
+try {
+parameter = currentArgument.next();
+doubleValue = Double.parseDouble(parameter);
+} catch (NoSuchElementException e) {
+errorCode = ArgsException.ErrorCode.MISSING_DOUBLE;
+throw new ArgsException();
+} catch (NumberFormatException e) {
+errorParameter = parameter;
+errorCode = ArgsException.ErrorCode.INVALID_DOUBLE;
+throw new ArgsException);
+}
+}
+public Object get() {
+return doubleValue;
+}
+}
+}
+Muy bien. Ahora, Args solamente genera ArgsException. Al desplazar
+ArgsException a un módulo propio, podemos añadir a dicho módulo gran
+parte del código de error y extraerlo del módulo Args. Es una posición natural
+y evidente para incluir todo el código y nos permitirá limpiar posteriormente
+el módulo Args.
+Ya hemos separado el código de excepciones y de error del módulo Args
+(véanse los listados del 14-13 al 14-16). Para ello realizamos una serie de 30
+pasos mínimos y las pruebas fueron satisfactorias entre todos ellos.
+Listado 14-13
+ArgsTest.java.
+package com.objectmentor.utilities.args;
+import junit.framework.TestCase;
+public class ArgsTest extends TestCase {
+public void testCreateWithNoSchemaOrArguments() throws Exception {
+Args args = new Args(“”, new String[0]);
+assertEquals(0, args.cardinality());
+}
+public void testWithNoSchemaButWithOneArgument() throws Exception {
+try {
+new Args(“”, new String[]{“-x”});
+fail();
+} catch (ArgsException e) {
+assertEquals(ArgsException.ErrorCode.UNEXPECTED_ARGUMENT,
+e.getErrorCode());
+assertEquals(‘x’, e.getErrorArgumentId());
+}
+}
+public void testWithNoSchemaButWithMultipleArguments() throws Exception {
+try {
+new Args(“”, new String[]{“-x”, “-y”});
+fail();
+} catch (ArgsException e) {
+assertEquals(ArgsException.ErrorCode.UNEXPECTED_ARGUMENT,
+e.getErrorCode());
+assertEquals(‘x’, e.getErrorArgumentId());
+}
+}
+public void testNonLetterSchema() throws Exception {
+try {
+new Args(“*”, new String[]{});
+fail(“Args constructor should have thrown exception”);
+} catch (ArgsException e) {
+assertEquals(ArgsException.ErrorCode.INVALID_ARGUMENT_NAME,
+e.getErrorCode());
+assertEquals(‘*’, e.getErrorArgumentId());
+}
+}
+public void testInvalidArgumentFormat() throws Exception {
+try {
+new Args(“f~”, new String[]{});
+fail(“Args constructor should have throws exception”);
+} catch (ArgsException e) {
+assertEquals(ArgsException.ErrorCode.INVALID_FORMAT, e.getErrorCode());
+assertEquals(‘f’, e.getErrorArgumentId());
+}
+}
+public void testSimpleBooleanPresent() throws Exception {
+Args args = new Args(“x”, new String []{“-x”});
+assertEquals(1, args.cardinality());
+assertEquals(true, args.getBoolean(‘x’));
+}
+public void testSimpleStringPresent() throws Exception {
+Args args = new Args(“x*”, new String[]{“-x”, “param”});
+assertEquals(1, args.cardinality());
+assertTrue(args.has(‘x’));
+assertEquals(“param”, args.getString(‘x’));
+}
+public void testMissingStringArgument() throws Exception {
+try {
+new Args(“x*”, new String[]{"-x"});
+fail();
+} catch (ArgsException e) {
+assertEquals(ArgsException.ErrorCode.MISSING_STRING, e.getErrorCode());
+assertEquals(‘x’, e.getErrorArgumentId());
+}
+}
+public void testSpacesInFormat() throws Exception {
+Args args = new Args(“x, y”, new String[]{“-xy”});
+assertEquals(2, args.cardinality());
+assertTrue(args.has(‘x’));
+assertTrue(args.has(‘y’));
+}
+public void testSimpleIntPresent() throws Exception {
+Args args = new Args(“x#”, new String[]{“-x”, “42”});
+assertEquals(1, args.cardinality());
+assertTrue(args.has(‘x’));
+assertEquals(42, args.getInt(‘x’));
+}
+public void testInvalidInteger() throws Exception {
+try {
+new Args(“x#”, new String[] {“-x”, “Forty two”});
+fail();
+} catch (ArgsException e) {
+assertEquals(ArgsException.ErrorCode.INVALID_INTEGER,
+e.getErrorCode());
+assertEquals(‘x’, e.getErrorArgumentId());
+assertEquals(“Forty two”, e.getErrorParameter());
+}
+}
+public void testMissingInteger() throws Exception {
+try {
+new Args(“x#”, new String[]{“-x”});
+fail();
+} catch (ArgsException e) {
+assertEquals(ArgsException.ErrorCode.MISSING_INTEGER,
+e.getErrorCode());
+assertEquals(‘x’, e.getErrorArgumentId());
+}
+}
+public void testSimpleDoublePresent() throws Exception {
+Args args = new Args(“x##”, new String[](“-x”, “42.3”});
+assertEquals(1, args.cardinality());
+assertTrue(args.has(‘x’));
+assertEquals(42.3, args.getDouble(‘x’), .001);
+}
+public void testInvalidDouble() throws Exception {
+try {
+new Args(“x##”, new String []{“-x”, “Forty two”});
+fail();
+} catch (ArgsException e) {
+assertEquals(ArgsException.ErrorCode.INVALID_DOUBLE, e.getErrorCode());
+assertEquals(‘x’, e.getErrorArgumentId());
+assertEquals(“Forty two”, e.getErrorParameter());
+}
+}
+public void testMissingDouble() throws Exception {
+try {
+new Args(“x##”, new String[]{“-x”});
+fail();
+} catch (ArgsException e) {
+assertEquals(ArgsException.ErrorCode.MISSING_DOUBLE, e.getErrorCode());
+assertEquals(‘x’, e.getErrorArgumentId());
+}
+}
+}
+Listado 14-14
+ArgsExceptionTest.java.
+public class ArgsExceptionTest extends TestCase {
+public void testUnexpectedMessage() throws Exception {
+ArgsException e =
+new ArgsException(ArgsException.ErrorCode.UNEXPECTED_ARGUMENT,
+‘x’, null);
+assertEquals(“Argument -x unexpected.”, e.errorMessage());
+}
+public void testMissingStringMessage() throws Exception {
+ArgsException e = new
+ArgsException(ArgsException.ErrorCode.MISSING_STRING,
+‘x’, null);
+assertEquals(“Could not find string parameter for –x.”,
+e.errorMessage());
+}
+public void testInvalidIntegerMessage() throws Exception {
+ArgsException e =
+new ArgsException(ArgsException.ErrorCode.INVALID_INTEGER,
+‘x’, “Forty two”);
+assertEquals(“Argument –x expects an integer but was ‘Forty two’.”,
+e.errorMessage());
+}
+public void testMissingIntegerMessage() throws Exception {
+ArgsException e =
+new ArgsException(ArgsException.ErrorCode.MISSING_INTEGER, ‘x’, null);
+assertEquals(“Could not find integer parameter for -x.”,
+e.errorMessage());
+}
+public void testInvalidDoubleMessage() throws Exception {
+ArgsException e = new
+ArgsException(ArgsException.ErrorCode.INVALID_DOUBLE,
+‘x’, “Forty two”);
+assertEquals(“Argument -x expects a double but was ‘Forty two’.”,
+e.errorMessage());
+}
+public void testMissingDoubleMessage() throws Exception {
+ArgsException e = new
+ArgsException(ArgsException.ErrorCode.MISSING_DOUBLE,
+‘x’, null);
+assertEquals(“Could not find double parameter for -x.”,
+e.errorMessage());
+}
+}
+Listado 14-15
+ArgsException.java.
+public class ArgsException extends Exception {
+private char errorArgumentId = ‘\0’;
+private String errorParameter = “TILT”;
+private ErrorCode errorCode = ErrorCode.OK;
+public ArgsException() {}
+public ArgsException(String message) {super(message);}
+public ArgsException(ErrorCode errorCode) {
+this.errorCode = errorCode;
+}
+public ArgsException(ErrorCode errorCode, String errorParameter) {
+this.errorCode = errorCode;
+this.errorParameter = errorParameter;
+}
+public ArgsException(ErrorCode errorCode, char errorArgumentId,
+String errorParameter) {
+this.errorCode = errorCode;
+this.errorParameter = errorParameter;
+this.errorArgumentId = errorArgumentId;
+}
+public char getErrorArgumentId() {
+return errorArgumentId;
+}
+public void setErrorArgumentId(char errorArgumentId) {
+this.errorArgumentId = errorArgumentId;
+}
+public String getErrorParameter() {
+return errorParameter;
+}
+public void setErrorParameter(String errorParameter) {
+this.errorParameter = errorParameter;
+}
+public ErrorCode getErrorCode() {
+return errorCode;
+}
+public void setErrorCode(ErrorCode errorCode) {
+this.errorCode = errorCode;
+}
+public String errorMessage() throws Exception {
+switch (errorCode) {
+case OK:
+throw new Exception(“TILT: Should not get here.”);
+case UNEXPECTED_ARGUMENT:
+return String.format(“Argument -%c unexpected.”, errorArgumentId);
+case MISSING_STRING:
+return String.format(“Could not find string parameter for -%c.”,
+errorArgumentId);
+case INVALID_INTEGER:
+return String.format(“Argument -%c expects an integer but was ‘%s’.”,
+errorArgumentId, errorParameter);
+case MISSING_INTEGER:
+return String.format(“Could not find integer parameter for -%c.”,
+errorArgumentId);
+case INVALID_DOUBLE:
+return String.format(“Argument -%c expects a double but was ‘%s’.”,
+errorArgumentId, errorParameter);
+case MISSING_DOUBLE:
+return String.format(“Could not find double parameter for -%c.”,
+errorArgumentId);
+}
+return “”;
+}
+public enum ErrorCode {
+OK, INVALID_FORMAT, UNEXPECTED_ARGUMENT, INVALID_ARGUMENT_NAME,
+MISSING_STRING,
+MISSING_INTEGER, INVALID_INTEGER,
+MISSING_DOUBLE, INVALID_DOUBLE}
+}
+Listado 14-16
+Args.java.
+public class Args {
+private String schema;
+private Map<Character, ArgumentMarshaler> marshalers =
+new HashMap<Character, ArgumentMarshaler>();
+private Set<Character> argsFound = new HashSet<Character>();
+private Iterator<String> currentArgument;
+private List<String> argsList;
+public Args(String schema, String[] args) throws ArgsException {
+this.schema = schema;
+argsList = Arrays.asList(args);
+parse();
+}
+private void parse() throws ArgsException {
+parseSchema();
+parseArguments();
+}
+private boolean parseSchema() throws ArgsException {
+for (String element : schema.split(“,”)) {
+if (element.length() > 0) {
+parseSchemaElement(element.trim());
+}
+}
+return true;
+}
+private void parseSchemaElement(String element) throws ArgsException {
+char elementId = element.charAt(0);
+String elementTail = element.substring(1);
+validateSchemaElementId(elementId);
+if (elementTail.length() == 0)
+marshalers.put(elementId, new BooleanArgumentMarshaler());
+else if (elementTail.equals(“*”))
+marshalers.put(elementId, new StringArgumentMarshaler());
+else if (elementTail.equals(“#”))
+marshalers.put(elementId, new IntegerArgumentMarshaler());
+else if (elementTail.equals(“##”))
+marshalers.put(elementId, new DoubleArgumentMarshaler());
+else
+throw new ArgsException(ArgsException.ErrorCode.INVALID_FORMAT,
+elementId, elementTail);
+}
+private void validateSchemaElementId(char elementId) throws ArgsException
+{
+if (!Character.isLetter(elementId)) {
+throw new ArgsException(ArgsException.ErrorCode.INVALID_ARGUMENT_NAME,
+elementId, null);
+}
+}
+private void parseArguments() throws ArgsException {
+for (currentArgument = argsList.iterator(); currentArgument.hasNext();) {
+String arg = currentArgument.next();
+parseArgument(arg);
+}
+}
+private void parseArgument(String arg) throws ArgsException {
+if (arg.startsWith(“-”))
+parseElements(arg);
+}
+private void parseElements(String arg) throws ArgsException {
+for (int i = 1; i < arg.length(); i++)
+parseElement(arg.charAt(i));
+}
+private void parseElement(char argChar) throws ArgsException {
+if (setArgument(argChar))
+argsFound.add(argChar);
+else {
+throw new ArgsException(ArgsException.ErrorCode.UNEXPECTED_ARGUMENT,
+argChar, null);
+}
+}
+private boolean setArgument(char argChar) throws ArgsException {
+ArgumentMarshaler m = marshalers.get(argChar);
+if (m == null)
+return false;
+try {
+m.set(currentArgument);
+return true;
+} catch (ArgsException e) {
+e.setErrorArgumentId(argChar);
+throw e;
+}
+}
+public int cardinality() {
+return argsFound.size();
+}
+public String usage() {
+if (schema.length() > 0)
+return "-[" + schema + “]”;
+else
+return “”;
+}
+public boolean getBoolean(char arg) {
+ArgumentMarshaler am = marshalers.get(arg);
+boolean b = false;
+try {
+b = am != null && (Boolean) am.get();
+} catch (ClassCastException e) {
+b = false;
+}
+return b;
+}
+public String getString(char arg) {
+ArgumentMarshaler am = marshalers.get(arg);
+try {
+return am == null ? “” : (String) am.get();
+} catch (ClassCastException e) {
+return “”;
+}
+}
+public int getInt(char arg) {
+ArgumentMarshaler am = marshalers.get(arg);
+try {
+return am == null ? 0 : (Integer) am.get();
+} catch (Exception e) {
+return 0;
+}
+}
+public double getDouble(char arg) {
+ArgumentMarshaler am = marshalers.get(arg);
+try {
+return am == null ? 0 : (Double) am.get();
+} catch (Exception e) {
+return 0.0;
+}
+}
+public boolean has(char arg) {
+return argsFound.contains(arg);
+}
+}
+La mayoría de los cambios realizados en la clase Args han sido
+eliminaciones. Gran parte del código se extrajo de Args y se añadió a
+ArgsException. Perfecto. También cambiamos todos los elementos
+ArgumentMarshaller a sus propios archivos. Mejor todavía.
+El diseño de software correcto se basa gran parte en las particiones, en
+crear zonas adecuadas para incluir distintos tipos de código. Esta separación
+hace que el código sea más fácil de entender y mantener.
+Especialmente interesante es el método errorMessage de ArgsException.
+Incumple claramente el SRP al incluir el formato de mensajes de error en
+Args. Args debe centrarse en el procesamiento de argumentos, no en el
+formato de los mensajes de error. Sin embargo, ¿realmente tiene sentido
+incluir el código de formato de mensajes de error en ArgsException?
+Francamente es un compromiso. Los usuarios que no deseen los mensajes
+de error proporcionados por ArgsException tendrán que crear los suyos
+propios, pero la utilidad de mensajes de error ya preparados es evidente.
+Ya debería haberse dado cuenta de la distancia recorrida con respecto a la
+solución mostrada al inicio del capítulo. Las transformaciones finales puede
+examinarlas por su cuenta.
+Conclusión
+No basta con que el código funcione. El código que funciona suele ser
+incorrecto. Los programadores que se conforman con código funcional no se
+comportan de forma profesional. Puede que teman que no tienen tiempo para
+mejorar la estructura y el diseño del código, pero discrepo. No hay nada que
+afecte más negativamente a un proyecto de desarrollo que el código
+incorrecto. Los plazos incorrectos se pueden rehacer y los requisitos
+equivocados se pueden volver a definir. La dinámica incorrecta de un equipo
+se puede reparar pero el código incorrecto se corrompe y se convierte en una
+carga que arrastra al equipo completo. He visto equipos dominados por el
+desastre que han generado y que han dominado su destino.
+Evidentemente, el código incorrecto se puede limpiar pero resulta muy
+costoso. Cuando el código se corrompe los módulos se insinúan unos a otros
+y generan multitud de dependencias ocultas y entrelazadas. La localización y
+división de dependencias antiguas es una tarea larga y complicada. Por otra
+parte, resulta relativamente sencillo mantener código limpio. Si comete un
+error en un módulo, es más fácil limpiarlo directamente. Mejor todavía, si
+cometió un error hace cinco minutos, es muy fácil limpiarlo ahora.
+Por tanto, la solución consiste en mantener el código limpio y sencillo
+siempre que se pueda y no dejar que llegue a corromperse.
+15
+Aspectos internos de JUnit
+JUnit es una de las estructuras de Java más conocidas. De concepción
+sencilla, definición precisa y documentación elegante. ¿Y su código? En este
+capítulo analizaremos un ejemplo extraído de la estructura JUnit.
+La estructura JUnit
+JUnit ha tenido muchos autores, comenzando por Kent Beck y Eric Gamma
+en un vuelo a Atlanta. Kent quería aprender Java y Eric quería saber más
+sobre la estructura de pruebas Smalltalk de Kent. “¿Hay algo más natural que
+dos fanáticos enciendan sus portátiles y empiecen a escribir código?”[94] Tras
+tres horas de trabajo de altura, habían creado los fundamentos de JUnit.
+El módulo que analizaremos es un inteligente fragmento de código que
+permite identificar errores de comparación de cadenas. El nombre del módulo
+es ComparisonCompactor. Dadas dos cadenas diferentes, como ABCDE y
+ABXDE, muestra la diferencia entre ambas generando una cadena como <…
+B[X]D…>.
+Podríamos explicarlo más, pero los casos de prueba son mejores. Fíjese
+en el Listado 15-1 para comprender los requisitos de este módulo. Analice la
+estructura de las pruebas. ¿Podrían ser más simples o más evidentes?
+Listado 15-1
+ComparisonCompactorTest.java.
+package junit.tests.framework;
+import junit.framework.ComparisonCompactor;
+import junit.framework.TestCase;
+public class ComparisonCompactorTest extends TestCase {
+public void testMessage() {
+String failure= new ComparisonCompactor(0, “b”, “c”).compact(“a”);
+assertTrue(“a expected:<[b]> but was:<[c]>”.equals(failure));
+}
+public void testStartSame() {
+String failure= new ComparisonCompactor(1, “ba”, “bc”).compact(null);
+assertEquals(“expected:<b[a]> but was:<b[c]>”, failure);
+}
+public void testEndSame() {
+String failure= new ComparisonCompactor(1, “ab”, “cb”).compact(null);
+assertEquals(“expected:<[a]b> but was:<[c]b>”, failure);
+}
+public void testSame() {
+String failure= new ComparisonCompactor(1, “ab”, “ab”).compact(null);
+assertEquals(“expected:<ab> but was:<ab>”, failure);
+}
+public void testNoContextStartAndEndSame() {
+String failure= new ComparisonCompactor(0, “abc”, “adc”).compact(null);
+assertEquals(“expected:<…[b]…> but was:<…[d]…>”, failure);
+}
+public void testStartAndEndContext() {
+String failure= new ComparisonCompactor(1, “abc”, “adc”).compact(null);
+assertEquals(“expected:<a[b]c> but was:<a[d]c>”, failure);
+}
+public void testStartAndEndContextWithEllipses() {
+String failure=
+new ComparisonCompactor(1, “abcde”, “abfde”).compact(null);
+assertEquals(“expected:<…b[c]d…> but was:<…b[f]d…>”, failure);
+}
+public void testComparisonErrorStartSameComplete() {
+String failure= new ComparisonCompactor(2, “ab”, “abc”).compact(null);
+assertEquals(“expected:<ab[]> but was:<ab[c]>”, failure);
+}
+public void testComparisonErrorEndSameComplete() {
+String failure= new ComparisonCompactor(0, “bc”, “abc”).compact(null);
+assertEquals(“expected:<[]…> but was:<[a]…>”, failure);
+}
+public void testComparisonErrorEndSameCompleteContext() {
+String failure= new ComparisonCompactor(2, “bc”, “abc”).compact(null);
+assertEquals(“expected:<[]bc> but was:<[a]bc>”, failure);
+}
+public void testComparisonErrorOverlapingMatches() {
+String failure= new ComparisonCompactor(0, “abc”, “abbc”).compact(null);
+assertEquals(“expected:<…[]…> but was:<…[b]…>”, failure);
+}
+public void testComparisonErrorOverlapingMatchesContext() {
+String failure= new ComparisonCompactor(2, “abc”, “abbc”).compact(null);
+assertEquals(“expected:<ab[]c> but was:<ab[b]c>”, failure);
+}
+public void testComparisonErrorOverlapingMatches2() {
+String failure= new ComparisonCompactor(0, “abcdde”,
+“abcde”).compact(null);
+assertEquals(“expected:<…[d]…> but was:<…[]…>”, failure);
+}
+public void testComparisonErrorOverlapingMatches2Context() {
+String failure=
+new ComparisonCompactor(2, “abcdde”, “abcde”).compact(null);
+assertEquals(“expected:<…cd[d]e> but was:<…cd[]e>”, failure);
+}
+public void testComparisonErrorWithActualNull() {
+String failure= new ComparisonCompactor(0, “a”, null).compact(null);
+assertEquals(“expected:<a> but was:<null>”, failure);
+}
+public void testComparisonErrorWithActualNullContext() {
+String failure= new ComparisonCompactor(2, “a”, null).compact(null);
+assertEquals(“expected:<a> but was:<null>”, failure);
+}
+public void testComparisonErrorWithExpectedNull() {
+String failure= new ComparisonCompactor(0, null, “a”).compact(null);
+assertEquals(“expected:<null> but was:<a>”, failure);
+}
+public void testComparisonErrorWithExpectedNullContext() {
+String failure= new ComparisonCompactor(2, null, “a”).compact(null);
+assertEquals(“expected:<null> but was:<a>”, failure);
+}
+public void testBug609972() {
+String failure= new ComparisonCompactor(10, “S&P500”, “0”).compact(null);
+assertEquals(“expected:<[S&P50]0> but was:<[]0>”, failure);
+}
+}
+Realicé un análisis de alcance de código en ComparisonCompactor con
+estas pruebas. El código se cubre en un 100 por 100. Cada línea, cada
+instrucción if y cada bucle for se ejecuta con las pruebas. De este modo sé
+que el código funciona y sus autores me merecen el mayor de los respetos.
+El código ComparisonCompactor se reproduce en el Listado 15-2.
+Examínelo. Creo que lo encontrará bien distribuido, razonablemente
+expresivo y estructuralmente sencillo. Cuando termine, lo diseccionaremos.
+Listado 15-2
+ComparisonCompactor.java (Original).
+package junit.framework;
+public class ComparisonCompactor {
+private static final String ELLIPSIS = “…”;
+private static final String DELTA_END = “]”;
+private static final String DELTA_START = “[”;
+private int fContextLength;
+private String fExpected;
+private String fActual;
+private int fPrefix;
+private int fSuffix;
+public ComparisonCompactor(int contextLength,
+String expected,
+String actual) {
+fContextLength = contextLength;
+fExpected = expected;
+fActual = actual;
+}
+public String compact(String message) {
+if (fExpected == null || fActual == null || areStringsEqual())
+return Assert.format(message, fExpected, fActual);
+findCommonPrefix();
+findCommonSuffix();
+String expected = compactString(fExpected);
+String actual = compactString(fActual);
+return Assert.format(message, expected, actual);
+}
+private String compactString(String source) {
+String result = DELTA_START +
+source.substring(fPrefix, source.length() -
+fSuffix + 1) + DELTA_END;
+if (fPrefix > 0)
+result = computeCommonPrefix() + result;
+if (fSuffix > 0)
+result = result + computeCommonSuffix();
+return result;
+}
+private void findCommonPrefix() {
+fPrefix = 0;
+int end = Math.min(fExpected.length(), fActual.length());
+for (; fPrefix < end; fPrefix++) {
+if (fExpected.charAt(fPrefix) != fActual.charAt(fPrefix))
+break;
+}
+}
+private void findCommonSuffix() {
+int expectedSuffix = fExpected.length() - 1;
+int actualSuffix = fActual.length() - 1;
+for (;
+actualSuffix >= fPrefix && expectedSuffix >= fPrefix;
+actualSuffix--, expectedSuffix--) {
+if (fExpected.charAt(expectedSuffix) != fActual.charAt(actualSuffix))
+break;
+}
+fSuffix = fExpected.length() - expectedSuffix;
+}
+private String computeCommonPrefix() {
+return (fPrefix > fContextLength ? ELLIPSIS : “”) +
+fExpected.substring(Math.max(0, fPrefix - fContextLength),
+fPrefix);
+}
+private String computeCommonSuffix() {
+int end = Math.min(fExpected.length() - fSuffix + 1 + fContextLength,
+fExpected.length());
+return fExpected.substring(fExpected.length() - fSuffix + 1, end) +
+(fExpected.length() - fSuffix + 1 < fExpected.length() -
+fContextLength ? ELLIPSIS : “”);
+}
+private boolean areStringsEqual() {
+return fExpected.equals(fActual);
+}
+}
+Puede que tenga varias quejas sobre el módulo. Incluye expresiones
+extensas y extraños elementos +1. Pero en general, está bastante bien.
+Después de todo, podría haber sido como el Listado 15-3.
+Listado 15-3
+ComparisonCompator.java (defactorizado)
+package junit.framework;
+public class ComparisonCompactor {
+private int ctxt;
+private String s1;
+private String s2;
+private int pfx;
+private int sfx;
+public ComparisonCompactor(int ctxt, String s1, String s2) {
+this.ctxt = ctxt;
+this.s1 = s1;
+this.s2 = s2;
+}
+public String compact(String msg) {
+if (s1 == null || s2 == null || s1.equals(s2))
+return Assert.format(msg, s1, s2);
+pfx = 0;
+for (; pfx < Math.min(s1.length(), s2.length()); pfx++) {
+if (s1.charAt(pfx) != s2.charAt(pfx))
+break;
+}
+int sfx1 = s1.length() - 1;
+int sfx2 = s2.length() - 1;
+for (; sfx2 >= pfx && sfx1 >= pfx; sfx2--, sfx1--) {
+if (s1.charAt(sfx1) != s2.charAt(sfx2))
+break;
+}
+sfx = s1.length() - sfx1;
+String cmp1 = compactString(s1);
+String cmp2 = compactString(s2);
+return Assert.format(msg, cmp1, cmp2);
+}
+private String compactString(String s) {
+String result =
+“[” + s.substring(pfx, s.length() - sfx + 1) + “]”;
+if (pfx > 0)
+result = (pfx > ctxt ? “…” : “”) +
+s1.substring(Math.max(0, pfx - ctxt), pfx) + result;
+if (sfx > 0) {
+int end = Math.min(s1.length() - sfx + 1 + ctxt, s1.length());
+result = result + (s1.substring(s1.length() - sfx + 1, end) +
+(s1.length() - sfx + 1 < s1.length() - ctxt ? “…” : “”));
+}
+return result;
+}
+}
+Aunque los autores hicieron un buen trabajo con este módulo, la Regla
+del Boy Scout[95] muestra que podrían haberlo dejado más limpio de lo que se
+encontró. ¿Cómo podemos mejorar el código original del Listado 15-2? Lo
+primero que no necesitamos es el prefijo f de las variables miembro [N6].
+Los entornos actuales hacen que este tipo de código de ámbito sea
+redundante, por lo que eliminaremos todas las f.
+private int contextLength;
+private String expected;
+private String actual;
+private int prefix;
+private int suffix;
+Tras ello, tenemos una condicional sin encapsular al inicio de la función
+compact [G28].
+public String compact(String message) {
+if (expected == null || actual == null || areStringsEqual())
+return Assert.format(message, expected, actual);
+findCommonPrefix();
+findCommonSuffix();
+String expected = compactString(this.expected);
+String actual = compactString(this.actual);
+return Assert.format(message, expected, actual);
+}
+Es necesario encapsular esta condicional para que nuestra intención sea
+más clara. Por tanto, extraemos un método que la explique.
+public String compact(String message) {
+if (shouldNotCompact())
+return Assert.format(message, expected, actual);
+findCommonPrefix();
+findCommonSuffix();
+String expected = compactString(this.expected);
+String actual = compactString(this.actual);
+return Assert.format(message, expected, actual);
+}
+private boolean shouldNotCompact() {
+return expected == null || actual == null || areStringsEqual();
+}
+En la función compact, this.expected y this.actual no son demasiado
+relevantes. Sucede al cambiar el nombre de fExpected por expected. ¿Por
+qué esta función tiene variables con los mismos nombres que las variables
+miembro? ¿No representan cosas diferentes?[N4]. Los nombres deben ser
+exclusivos.
+String compactExpected = compactString(expected);
+String compactActual = compactString(actual);
+Los negativos son más difíciles de entender que los positivos [G29]. Por
+ello, invertimos esa instrucción if para cambiar el sentido de la condicional.
+public String compact(String message) {
+if (canBeCompacted()) {
+findCommonPrefix();
+findCommonSuffix();
+String compactExpected = compactString(expected);
+String compactActual = compactString(actual);
+return Assert.format(message, compactExpected, compactActual);
+} else {
+return Assert.format(message, expected, actual);
+}
+}
+private boolean canBeCompacted() {
+return expected != null && actual != null && !areStringsEqual();
+}
+El nombre de la función es extraño [N7]. Aunque compacta las cadenas,
+puede que lo haga si canBeCompacted devuelve false. Al asignar el nombre
+compact a esta función se oculta el efecto secundario de la comprobación de
+errores. Además, la función devuelve un mensaje con formato, no sólo las
+cadenas compactadas. Por tanto, el nombre de la función debería ser
+formatCompactedComparison. De esta forma, se lee mejor junto al
+argumento de la función:
+public String formatCompactedComparison(String message) {
+El cuerpo de la instrucción if es donde se realiza la verdadera
+compactación de las cadenas. Debemos extraerlo como método con el
+nombre compactExpectedAndActual. Sin embargo, queremos que la función
+formatCompactedComparison realice todo el formato. La función compact…
+sólo debe realizar la compactación [G30], de modo que la dividimos de esta
+forma:
+…
+private String compactExpected;
+private String compactActual;
+…
+public String formatCompactedComparison(String message) {
+if (canBeCompacted()) {
+compactExpectedAndActual();
+return Assert.format(message, compactExpected, compactActual);
+} else {
+return Assert.format(message, expected, actual);
+}
+}
+private void compactExpectedAndActual() {
+findCommonPrefix();
+findCommonSuffix();
+compactExpected = compactString(expected);
+compactActual = compactString(actual);
+}
+Para ello, hemos tenido que ascender compactExpected y compactActual
+a variables miembro. No me gusta la forma en que las dos últimas líneas de la
+nueva función devuelven variables pero las dos primeras no lo hacen. No
+utilizan convenciones coherentes [G11]. Debemos cambiar
+findCommonPrefix y findCommonSuffix para que devuelvan los valores de
+prefijo y sufijo.
+private void compactExpectedAndActual() {
+prefixIndex = findCommonPrefix();
+suffixIndex = findCommonSuffix();
+compactExpected = compactString(expected);
+compactActual = compactString(actual);
+}
+private int findCommonPrefix() {
+int prefixIndex = 0;
+int end = Math.min(expected.length(), actual.length());
+for (; prefixIndex < end; prefixIndex++) {
+if (expected.charAt(prefixIndex) != actual.charAt(prefixIndex))
+break;
+}
+return prefixIndex;
+}
+private int findCommonSuffix() {
+int expectedSuffix = expected.length() - 1;
+int actualSuffix = actual.length() - 1;
+for (; actualSuffix >= prefixIndex && expectedSuffix >= prefixIndex;
+actualSuffix--, expectedSuffix--) {
+if (expected.charAt(expectedSuffix) != actual.charAt(actualSuffix))
+break;
+}
+return expected.length() - expectedSuffix;
+}
+También debemos cambiar los nombres de las variables miembro para
+que sean más preciosas [N1], ya que en el fondo son índices.
+Al examinar findCommonSuffix vemos una conexión temporal oculta
+[G31]; depende de que prefixIndex se calcule por findCommonPrefix. Si
+estas dos funcione se invocan de forma desordenada, la sesión de depuración
+posterior sería complicada. Por ello, para mostrar esta combinación temporal,
+haremos que findCommonSuffix acepte prefixIndex como argumento.
+private void compactExpectedAndActual() {
+prefixIndex = findCommonPrefix();
+suffixIndex = findCommonSuffix(prefixIndex);
+compactExpected = compactString(expected);
+compactActual = compactString(actual);
+}
+private int findCommonSuffix(int prefixIndex) {
+int expectedSuffix = expected.length() - 1;
+int actualSuffix = actual.length() - 1;
+for (; actualSuffix >= prefixIndex && expectedSuffix >= prefixIndex;
+actualSuffix--, expectedSuffix--) {
+if (expected.charAt(expectedSuffix) != actual.charAt(actualSuffix))
+break;
+}
+return expected.length() - expectedSuffix;
+}
+No me convence del todo. El hecho de pasar prefixIndex como
+argumento es un tanto arbitrario [G32]. Permite establecer el orden pero no
+explica la necesidad del mismo. Otro programador podría deshacer esta
+operación ya que no se indica en ningún momento para qué sirve el
+parámetro. Adoptemos un enfoque diferente.
+private void compactExpectedAndActual() {
+findCommonPrefixAndSuffix();
+compactExpected = compactString(expected);
+compactActual = compactString(actual);
+}
+private void findCommonPrefixAndSuffix() {
+findCommonPrefix();
+int expectedSuffix = expected.length() - 1;
+int actualSuffix = actual.length() - 1;
+for (;
+actualSuffix >= prefixIndex && expectedSuffix >= prefixIndex;
+actualSuffix--, expectedSuffix--
+) {
+if (expected.charAt(expectedSuffix) != actual.charAt(actualSuffix))
+break;
+}
+suffixIndex = expected.length() - expectedSuffix;
+}
+private void findCommonPrefix() {
+prefixIndex = 0;
+int end = Math.min(expected.length(), actual.length());
+for (; prefixIndex < end; prefixIndex++)
+if (expected.charAt(prefixIndex) != actual.charAt(prefixIndex))
+break;
+}
+Devolvemos findCommonPrefix y findCommonSuffix a su posición
+original, cambiamos el nombre de findCommonSuffix por
+findCommonPrefixAndSuffix y hacemos que invoque findCommonPrefix
+antes de hacer nada más. De ese modo se establece la naturaleza temporal de
+ambas funciones de forma más evidente que antes. Además, se muestra el
+mínimo atractivo de findCommonPrefixAndSuffix, que limpiaremos a
+continuación:
+private void findCommonPrefixAndSuffix() {
+findCommonPrefix();
+int suffixLength = 1;
+for (; !suffixOverlapsPrefix(suffixLength); suffixLength++) {
+if (charFromEnd(expected, suffixLength) !=
+charFromEnd(actual, suffixLength))
+break;
+}
+suffixIndex = suffixLength;
+}
+private char charFromEnd(String s, int i) {
+return s.charAt(s.length()-i);}
+private boolean suffixOverlapsPrefix(int suffixLength) {
+return actual.length() - suffixLength < prefixLength ||
+expected.length() - suffixLength < prefixLength;
+}
+Mucho mejor. Muestra que suffixIndex es en realidad la longitud del
+sufijo y que su nombre no es correcto. Lo mismo sucede con prefixIndex,
+aunque en ese caso índice y longitud son sinónimos. Incluso así, es más
+coherente usar length. El problema es que la variable suffixIndex no es de
+base cero, sino de base 1 y no es una verdadera longitud. Éste es el motivo de
+la abundancia de +1 en computeCommonSuffix [G33]. Lo corregimos. En el
+Listado 15-4 puede ver el resultado.
+Listado 15-4
+ComparisonCompactor.java (versión intermedia).
+public class ComparisonCompactor {
+…
+private int suffixLength;
+…
+private void findCommonPrefixAndSuffix() {
+findCommonPrefix();
+suffixLength = 0;
+for (; !suffixOverlapsPrefix(suffixLength); suffixLength++) {
+if (charFromEnd(expected, suffixLength) !=
+charFromEnd(actual, suffixLength))
+break;
+}
+}
+private char charFromEnd(String s, int i) {
+return s.charAt(s.length() - i - 1);
+}
+private boolean suffixOverlapsPrefix(int suffixLength) {
+return actual.length() - suffixLength <= prefixLength ||
+expected.length() - suffixLength <= prefixLength;
+}
+…
+private String compactString(String source) {
+String result =
+DELTA_START +
+source.substring(prefixLength, source.length() - suffixLength) +
+DELTA_END;
+if (prefixLength > 0)
+result = computeCommonPrefix() + result;
+if (suffixLength > 0)
+result = result + computeCommonSuffix();
+return result;
+}
+…
+private String computeCommonSuffix() {
+int end = Math.min(expected.length() - suffixLength +
+contextLength, expected.length()
+);
+return
+expected.substring(expected.length() - suffixLength, end) +
+(expected.length() - suffixLength <
+expected.length() - contextLength ?
+ELLIPSIS : “”);
+}
+Cambiamos +1 en computeCommonSuffix por un -1 en charFromEnd,
+donde tiene sentido, y dos operadores <= en suffixOverlapsPrefix,
+totalmente correctos. De este modo podemos cambiar el nombre de
+suffixIndex por suffixLength, lo que mejora considerablemente la
+legibilidad del código.
+Pero hay un problema. Al comenzar a eliminar los +1, me fijé en la
+siguiente línea de compactstring:
+if (suffixLength > 0)
+Búsquela en el Listado 15-4. Como ahora suffixLength es una unidad
+menos que antes, debemos cambiar el operador > por >=. Pero eso no tiene
+sentido. Ahora sí. Significa que no tenía sentido antes y que seguramente
+fuera un error. Bueno, no del todo. Tras un análisis detallado, vemos que
+ahora la instrucción if impide que se añada un sufijo de longitud cero. Antes
+de realizar el cambio, la instrucción if no funcionaba ya que suffixIndex
+nunca podía ser menos de uno.
+Esto cuestiona ambas instrucciones if en compactString. Parece como si
+se pudieran eliminar. Por ello, las comentamos y ejecutamos las pruebas.
+Satisfactorias. Reestructuremos compactString para eliminar las
+instrucciones if sobrantes y simplificar la función [G9].
+private String compactString(String source) {
+return
+computeCommonPrefix() +
+DELTA_START +
+source.substring(prefixLength, source.length() - suffixLength) +
+DELTA_END +
+computeCommonSuffix();
+}
+Mucho mejor. Ahora vemos que la función compactString simplemente
+combina los fragmentos. Probablemente lo podríamos limpiar más, en
+pequeñas operaciones, pero en lugar de desarrollar el resto de los cambios,
+mostraremos el resultado final en el Listado 15-5.
+Listado 15-5
+ComparisonCompactor.java (versión definitiva).
+package junit.framework;
+public class ComparisonCompactor {
+private static final String ELLIPSIS = “…”;
+private static final String DELTA_END = “]”;
+private static final String DELTA_START = “[”;
+private int contextLength;
+private String expected;
+private String actual;
+private int prefixLength;
+private int suffixLength;
+public ComparisonCompactor(
+int contextLength, String expected, String actual
+) {
+this.contextLength = contextLength;
+this.expected = expected;
+this.actual = actual;
+}
+public String formatCompactedComparison(String message) {
+String compactExpected = expected;
+String compactActual = actual;
+if (shouldBeCompacted()) {
+findCommonPrefixAndSuffix();
+compactExpected = compact(expected);
+compactActual = compact(actual);
+}
+return Assert.format(message, compactExpected, compactActual);
+}
+private boolean shouldBeCompacted() {
+return !shouldNotBeCompacted();
+}
+private boolean shouldNotBeCompacted() {
+return expected == null ||
+actual == null ||
+expected.equals(actual);
+}
+private void findCommonPrefixAndSuffix() {
+findCommonPrefix();
+suffixLength = 0;
+for (; !suffixOverlapsPrefix(); suffixLength++) {
+if (charFromEnd(expected, suffixLength) !=
+charFromEnd(actual, suffixLength)
+)
+break;
+}
+}
+private char charFromEnd(String s, int i) {
+return s.charAt(s.length() - i - 1);
+}
+private boolean suffixOverlapsPrefix() {
+return actual.length() - suffixLength <= prefixLength ||
+expected.length() - suffixLength <= prefixLength;
+}
+private void findCommonPrefix() {
+prefixLength = 0;
+int end = Math.min(expected.length(), actual.length());
+for (; prefixLength < end; prefixLength++)
+if (expected.charAt(prefixLength) != actual.charAt(prefixLength))
+break;
+}
+private String compact(String s) {
+return new StringBuilder()
+.append(startingEllipsis())
+.append(startingContext())
+.append(DELTA_START)
+.append(delta(s))
+.append(DELTA_END)
+.append(endingContext())
+.append(endingEllipsis())
+.toString();
+}
+private String startingEllipsis() {
+return prefixLength > contextLength ? ELLIPSIS : “”;
+}
+private String startingContext() {
+int contextStart = Math.max(0, prefixLength - contextLength);
+int contextEnd = prefixLength;
+return expected.substring(contextStart, contextEnd);
+}
+private String delta(String s) {
+int deltaStart = prefixLength;
+int deltaEnd = s.length() - suffixLength;
+return s.substring(deltaStart, deltaEnd);
+}
+private String endingContext() {
+int contextStart = expected.length() - suffixLength;
+int contextEnd =
+Math.min(contextStart + contextLength, expected.length());
+return expected.substring(contextStart, contextEnd);
+}
+private String endingEllipsis() {
+return (suffixLength > contextLength ? ELLIPSIS : “”);
+}
+}
+Bastante atractivo. El módulo se separa en un grupo de funciones de
+análisis y otro grupo de funciones de síntesis. Se ordenan topológicamente
+para que la definición de cada función aparezca donde realmente se usa.
+Primero se muestran las funciones de análisis y después las de síntesis. Si se
+fija atentamente, verá que he invertido algunas de las decisiones adoptadas
+inicialmente. Por ejemplo, he añadido algunos métodos extraídos a
+formatCompactedComparison y he modificado el sentido de la expresión
+shouldNotBeCompacted. Es algo habitual. A menudo, un cambio de
+refactorización lleva a otro que a su vez lleva a deshacer el primero. La
+refactorización es un proceso iterativo de ensayo y error, e inevitablemente
+converge en algo que consideramos digno de un profesional.
+Conclusión
+Hemos cumplido la Regla del Boy Scout. Hemos dejado este módulo más
+limpio de como lo encontramos. No es que no estuviera limpio originalmente,
+ya que el trabajo de sus autores es excelente, pero cualquier módulo se puede
+mejorar y es nuestra responsabilidad dejar el código más limpio de lo que lo
+encontramos.
+16
+Refactorización de SerialDate
+Si visita http://www.jfree.org/jcommon/index.php, encontrará la
+biblioteca JCommon. En su interior incluye el paquete org.jfree.date y,
+dentro de éste, la clase SerialDate. Vamos a analizar esta clase.
+El autor de SerialDate es David Gilbert. David es un programador
+experimentado y competente. Como veremos, muestra un elevado grado de
+profesionalidad y disciplina en su código. En lo que a éste respecta, se puede
+considerar de calidad. Y voy a despedazarlo.
+No es un acto de malicia, ni tampoco me creo mejor que David y con el
+derecho de juzgar su código. De hecho, si leyera algún código que he creado,
+seguramente tendría que objetar muchos aspectos del mismo. No es un acto
+de arrogancia. Lo que voy a hacer no es más que una revisión profesional,
+algo con lo que todos deberíamos sentirnos cómodos y algo que deberíamos
+agradecer si alguien lo hace. A través de las críticas es como podemos
+aprender, como hacen médicos, pilotos o abogados. Y nosotros, como
+programadores, también tenemos que aprender a hacerlo.
+Otra cosa más sobre David Gilbert: es más que un buen programador.
+David ha tenido el valor y la buena voluntad de ofrecer este código al público
+gratuitamente, para que cualquiera pueda usarlo y examinarlo. ¡Bien hecho!
+SerialDate (véase el Listado B-1) es una clase que representa una fecha
+en Java. ¿Para qué se necesita una clase que represente una fecha si Java ya
+cuenta con java.util.Date y java.util.Calendar, entre otras? El autor
+creó esta clase como respuesta a un problema que yo también he padecido. El
+comentario de su Javadoc inicial (línea 67) lo explica. Podríamos cuestionar
+su intención, pero yo también he sufrido este problema y se agradece una
+clase sobre fechas en lugar de horas.
+Primero, conseguir que funcione
+Hay varias pruebas de unidad en la clase SerialDateTests (véase el Listado
+B-2). Todas son satisfactorias. Desafortunadamente, un rápido examen
+demuestra que no comprueban todos los aspectos [T1]. Por ejemplo, al
+realizar una búsqueda de usos en el método MonthCodeToQuarter (línea 334)
+se indica que no se usa [F4]. Por lo tanto, las pruebas de unidad no lo
+comprueban. Por ello, recurrí a Clover para ver el alcance de las pruebas de
+unidad. Clover indicó que las pruebas sólo ejecutan 91 de las 185
+instrucciones ejecutables de SerialDate (aproximadamente el 50 por 100)
+[T2]. El mapa de alcance muestra grandes fragmentos de código sin ejecutar
+desperdigados por la clase.
+Mi objetivo era comprender la clase y refactorizarla, algo que no podía
+lograr sin una cobertura mayor de las pruebas. Por ello diseñé mi propia suite
+de pruebas de unidad independientes (véase el Listado B-4).
+Si se fija en las pruebas, comprobará que muchas están comentadas, ya
+que no se superaron. Representan un comportamiento que considero debería
+incluirse en SerialDate. Por tanto, al refactorizar SerialDate, intentaré que
+estas pruebas funcionen.
+Incluso con algunas de las pruebas comentadas, el informe de Clover
+indica que ahora ejecutan 170 (el 92 por ciento) de las 185 instrucciones
+ejecutables. Un gran resultado que creo que puedo mejorar.
+Las primeras pruebas comentadas (líneas 23-63) son un tanto
+pretenciosas. El programa no fue diseñado para superar estas pruebas, pero el
+comportamiento me parecía evidente [G2]. Desconozco por qué se ha creado
+el método testWeekdayCodeToString pero ya que está ahí, parece obvio que
+no debe distinguir entre mayúsculas y minúsculas. El diseño de las pruebas
+fue sencillo [T3] y más todavía que fueran satisfactorias; simplemente cambié
+las líneas 259 y 263 para usar equalsIgnoreCase.
+Comenté las pruebas de las líneas 32 y 45 ya que no estaba seguro de si
+las abreviaturas tues y thurs se admitían o no. Las pruebas de las líneas 153
+y 154 no se superaron, aunque deberían haberlo hecho [G2]. Podemos
+corregirlas, junto a las pruebas de las líneas 163 a la 213, si realizamos los
+siguientes cambios en la función stringToMonthCode.
+457 if ((result < 1) || (result > 12)) { result = -1;
+458 for (int i = 0; i < monthNames.length; i++) {
+459 if (s.equalsIgnoreCase(shortMonthNames[i])) {
+460 result = i + 1;
+461 break;
+462 }
+463 if (s.equalsIgnoreCase(monthNames[i])) {
+464 result = i + 1;
+465 break;
+466 }
+467 }
+468 }
+La prueba comentada de la línea 318 descubre un error en el método
+getFollowingDayOfWeek (línea 672). El 25 de diciembre de 2004 fue sábado
+y el siguiente sábado fue el 1 de enero de 2005. Sin embargo, al ejecutar la
+prueba, vemos que getFollowingDayOfWeek devuelve el 25 de diciembre
+como siguiente sábado después del 25 de diciembre, un error evidente [G3],
+[T1]. Vemos el problema en la línea 685. Es un error de condición de límite
+típico [T5]. Debería ser lo siguiente:
+685 if (baseDOW >= targetWeekday) {
+Conviene destacar que esta función sufrió una reparación anterior. El
+historial de cambios (línea 43) muestra que se corrigieron los errores en
+getPreviousDayOfWeek, getFollowingDayOfWeek y getNearestDayOfWeek
+[T6].
+La prueba de unidad testGetNearestDayOfWeek (línea 329), que prueba
+el método getNearestDayOfWeek (línea 705), inicialmente no era tan extensa
+y completa. Añadí multitud de casos de prueba ya que los iniciales no se
+superaban [T6]. Puede ver el patrón de fallos si se fija en los casos de prueba
+comentados. El patrón es revelador [T7]. Muestra que el algoritmo falla si el
+día más próximo es de una fecha futura. Evidentemente se trata de algún tipo
+de error de condición de límite [T5].
+El patrón de alcance de las pruebas generado por Clover también es
+interesante [T8]. La línea 719 nunca se ejecuta, lo que significa que la
+instrucción if de la línea 718 siempre es false, pero si nos fijamos en el
+código, indica que debe ser true. La variable adjust siempre es negativa y
+no puede ser mayor o igual a 4, por lo que el algoritmo es incorrecto.
+A continuación se muestra el algoritmo correcto:
+int delta = targetDOW - base.getDayOfWeek();
+int positiveDelta = delta + 7;
+int adjust = positiveDelta % 7;
+if (adjust > 3)
+adjust -= 7;
+return SerialDate.addDays (adjust, base);
+Por último, las pruebas de la líneas 417 y 429 se pueden superar si se
+genera IllegalArgumentException en lugar de devolver una cadena de error
+desde weekInMonthToString y relativeToString. Con estos cambios, todas
+las pruebas de unidad se superan y creo que ahora SerialDate funciona.
+Llega el momento de hacer que sea correcta.
+Hacer que sea correcta
+Describiremos SerialDate de arriba a abajo para mejorarla en nuestro
+recorrido. Aunque no lo veamos en este análisis, ejecutaré todas las pruebas
+de unidad de JCommon, incluida mi prueba de unidad mejorada para
+SerialDate, con todos los cambios efectuados. Por ello, tenga la seguridad
+de que todos los cambios que vea funcionan para JCommon.
+En la línea 1 vemos abundantes comentarios sobre información de
+licencia, derechos de autor, autores e historial de cambios. Asumo que hay
+ciertos aspectos legales que mostrar, por lo que los derechos de autor y las
+licencias deben conservarse. Por otra parte, el historial de cambios es una
+rémora de la década de 1960. Ahora tenemos herramientas de control de
+código fuente que se encargan de ello. Hay que eliminar este historial [C1].
+La lista de importación que comienza en la línea 61 se puede reducir por
+medio de java.text.* y java.util.*. [J1]
+No me convence el formato HTML del Javadoc (línea 67). Un archivo
+fuente con más de un lenguaje me parece un problema. Este comentario tiene
+cuatro lenguajes: Java, español, Javadoc y html [G1]. Con tantos lenguajes se
+hace difícil mantener la coherencia. Por ejemplo, la ubicación de las líneas 71
+y 72 se pierde al generar el Javadoc y además, ¿quién quiere ver <ul> y <li>
+en el código fuente? Una estrategia más acertada consiste en rodear el
+comentario con <pre> para que el formato del código fuente se conserve en el
+Javadoc[96].
+La línea 86 es la declaración de la clase. ¿Por qué se le asigna el nombre
+SerialDate? ¿Qué sentido tiene la palabra serial? ¿Es porque la clase se
+deriva de Serializable? Parece improbable.
+Basta de adivinanzas. Sé por qué (o al menos eso creo) se usa la palabra
+serial. La clave se encuentra en las constantes SERIAL_LOWER_BOUND y
+SERIAL_UPPER_BOUND de las líneas 98 y 101. Y una clave todavía mejor es el
+comentario de la línea 830. El nombre de la clase es SerialDate ya que se
+implementa con un número de serie, que parece ser el número de días desde
+el 30 de diciembre de 1899.
+Pero esto supone un problema. Por un lado, el término «número de serie»
+no es realmente correcto. Puede ser un detalle menor pero la representación
+es más un desplazamiento relativo que un número de serie. El término
+«número de serie» tiene que ver más con marcadores de identificación de
+productos que con fechas. Por ello, no lo considero especialmente descriptivo
+[N1]. Un término más descriptivo sería «ordinal».
+El segundo problema es más significativo. El nombre SerialDate implica
+una implementación. Esta clase es abstracta. No es necesario que implique
+nada sobre la implementación; de hecho, es aconsejable ocultarla. Por ello,
+creo que el nombre se encuentra en un nivel de abstracción incorrecto [N2].
+En mi opinión, el nombre de esta clase debería ser simplemente Date.
+Desafortunadamente, hay demasiadas clases con el nombre Date en la
+biblioteca de Java, de modo que no es el más adecuado. Como esta clase
+trabaja con días y no horas, podríamos usar Day, pero ya se usa en otros
+muchos puntos. Al final, opté por DayDate como mejor opción.
+A partir de ahora, usaremos DayDate. Recuerde que los listados que va a
+leer siguen usando SerialDate.
+Entiendo porque DayDate se hereda de Comparable y Serializable.
+¿Pero de MonthConstants? La clase MonthConstants (véase el Listado B-3)
+es una serie de constantes finales estáticas que definen los meses. Heredar de
+clases con constantes es un viejo truco que los programadores de Java usan
+para evitar expresiones como MonthConstants.January, pero es una mala
+idea [J2]. MonthConstants debería ser una enumeración.
+public abstract class DayDate implements Comparable,
+Serializable {
+public static enum Month {
+JANUARY(1),
+FEBRUARY(2),
+MARCH(3),
+APRIL(4),
+MAY(5),
+JUNE(6),
+JULY(7),
+AUGUST(8),
+SEPTEMBER(9),
+OCTOBER(10),
+NOVEMBER(11),
+DECEMBER(12);
+Month(int index) {
+this.index = index;
+}
+public static Month make(int monthIndex) {
+for (Month m : Month.values()) {
+if (m.index == monthIndex)
+return m;
+}
+throw new IllegalArgumentException(“Invalid month index ” + monthIndex);
+}
+public final int index;
+}
+Al cambiar MonthConstants por esta enumeración se modifica la clase
+DayDate y todos sus usuarios. Tardé una hora en realizar todos los cambios.
+Sin embargo, las funciones que antes aceptaban un valor int para el mes,
+ahora aceptan un enumerador Month. Esto significa que podemos deshacernos
+del método isValidMonthCode (línea 326) y de la comprobación de errores
+del código de los meses como en monthCodeToQuarter (línea 356) [G5]. Tras
+ello, en la línea 91, tenemos serialVersionUID. Esta variable se usa para
+controlar el señalizador. Si la cambiamos, con lo que todos los elementos
+DayDate escritos con una versión antigua del software serán ilegibles y se
+generará InvalidClassException. Si no declara la variable
+serialVersionUID, el compilador genera una automáticamente y será
+diferente cada vez que modifique el módulo. Ya sé que todos los documentos
+recomiendan el control manual de esta variable, pero creo que el control
+automático de la señalización es más seguro [G4]. Después de todo, prefiero
+depurar una InvalidClassException que el extraño comportamiento que se
+produciría si me olvido de cambiar serialVersionUID. Por ello, eliminaré la
+variable, al menos por ahora[97].
+Creo que el comentario de la línea 93 es redundante. Los comentarios
+redundantes sólo sirven para acumular mentiras y desinformación [C2]. Por
+ello los eliminaré.
+Los comentarios de las líneas 97 y 100 hablan sobre números de serie,
+que ya hemos mencionado antes [C1]. Las variables que describen son la
+primera y última fecha posible que DayDate puede describir. Podríamos
+hacer que fuera más claro [N1].
+public static final int EARLIEST_DATE_ORDINAL = 2; // 1/1/1900
+public static final int LATEST_DATE_ORDINAL = 2958465; // 12/31/9999
+Desconozco por qué EARLIEST_DATE_ORDINAL es 2 en lugar de 0. El
+comentario de la línea 829 sugiere que tiene que ver con la forma de
+representar fechas en Microsoft Excel. Hay información mucho más completa
+en una variante de DayDate: SpreadsheetDate (véase el Listado B-5). El
+comentario de la línea 71 describe este problema.
+El problema parece relacionado con la implementación de
+SpreadsheetDate y no con DayDate. Mi conclusión es que
+EARLIEST_DATE_ORDINAL y LATEST_DATE_ORDINAL no pertenecen a DayDate y
+deberían cambiarse a SpreadsheetDate [G6].
+De hecho, una búsqueda en el código demuestra que estas variables sólo
+se usan en SpreadsheetDate. Ni en DayDate, ni en otras clases de la
+estructura JCommon. Por lo tanto, las cambio por SpreadsheetDate.
+Las siguientes variables, MINIMUM_YEAR_SUPPORTED y
+MAXIMUM_YEAR_SUPPORTED (líneas 104 y 107), constituyen un dilema. Parece
+evidente que si DayDate es una clase abstracta que no dice nada sobre
+implementación, no debería informarnos de un año mínimo o máximo. De
+nuevo, siento la necesidad de cambiar las variables a SpreadsheetDate [G6].
+Pero una búsqueda rápida de los usuarios de estas variables muestra que otra
+clase las utiliza: RelativeDayOfWeekRule (véase el Listado B-6), Vemos
+dicho uso en las líneas 177 y 178, en la función getDate, donde se usan para
+comprobar que el argumento de getDate sea un año válido. El dilema es que
+un usuario de una clase abstracta necesita información sobre su
+implementación.
+Tendremos que proporcionar esta información sin contaminar DayDate.
+Por lo general, obtendríamos la información de implementación de una
+instancia de una variante. Sin embargo, la función getDate no recibe una
+instancia de DayDate, aunque sí la devuelve, lo que significa que debe crearla
+en alguna parte. La solución está en las líneas 187-205. La instancia DayDate
+se crea por medio de una de estas tres funciones: getPreviousDayOfWeek,
+getNearestDayOfWeek o getFollowingDayOfWeek. Si nos fijamos en el
+listado DayDate, vemos que estas funciones (líneas 638-724) devuelven una
+fecha creada por addDays (línea 571), que invoca createInstance (línea
+808), que crea SpreadsheetDate [G7].
+No es recomendable que las clases base conozcan sus variantes. Para
+corregirlo, debemos usar el patrón de factoría abstracta[98]
+y crear
+DayDateFactory. Esta factoría creará las instancias de DayDate que
+necesitamos y también responderá a preguntas sobre la implementación,
+como las fechas máxima y mínima.
+public abstract class DayDateFactory {
+private static DayDateFactory factory = new SpreadsheetDateFactory();
+public static void set Instance(DayDateFactory factory) {
+DayDateFactory.factory = factory;
+}
+protected abstract DayDate _makeDate(int ordinal);
+protected abstract DayDate _makeDate(int day, DayDate.Month month, int
+year);
+protected abstract DayDate _makeDate(int day, int month, int year);
+protected abstract DayDate _makeDate(java.util.Date date);
+protected abstract int _getMinimumYear();
+protected abstract int _getMaximumYear();
+public static DayDate makeDate(int ordinal) {
+return factory._makeDate(ordinal);
+}
+public static DayDate makeDate(int day, DayDate.Month month, int year) {
+return factory._makeDate(day, month, year);
+}
+public static DayDate makeDate(int day, int month, int year) {
+return factory._makeDate(day, month, year);
+}
+public static DayDate makeDate(java.util.Date date) {
+return factory._makeDate(date);
+}
+public static int getMinimumYear() {
+return factory._getMinimumYear();
+}
+public static int getMaximumYear() {
+return factory._getMaximumYear();
+}
+}
+Esta clase de factoría sustituye los métodos createInstance por métodos
+makeDate, lo que mejora ligeramente los nombres [N1]. De forma
+predeterminada es SpreadsheetDateFactory pero se puede cambiar por otra
+factoría. Los métodos estáticos delegados en métodos abstractos usan una
+combinación de los patrones de instancia única[99], decorador[100] y factoría
+abstracta que considero muy útil. SpreadsheetDateFactory tiene este
+aspecto:
+public class SpreadsheetDateFactory extends DayDateFactory {
+public DayDate _makeDate(int ordinal) {
+return new SpreadsheetDate(ordinal);
+}
+public DayDate _makeDate(int day, DayDate.Month month, int year) {
+return new SpreadsheetDate(day, month, year);
+}
+public DayDate _makeDate(int day, int month, int year) {
+return new SpreadsheetDate(day, month, year);
+}
+public DayDate _makeDate(Date date) {
+final GregorianCalendar calendar = new GregorianCalendar();
+calendar.setTime(date);
+return new SpreadsheetDate(
+calendar.get(Calendar.DATE),
+DayDate.Month.make(calendar.get(Calendar.MONTH) + 1),
+calendar.get(Calendar.YEAR));
+}
+protected int _getMinimumYear() {
+return SpreadsheetDate.MINIMUM_YEAR_SUPPORTED;
+}
+protected int _getMaximumYear() {
+return SpreadsheetDate.MAXIMUM_YEAR_SUPPORTED;
+}
+}
+Como puede apreciar, hemos enviado las variables
+MINIMUM_YEAR_SUPPORTED y MAXIMUM_YEAR_SUPPORTED a SpreadsheetDate,
+donde pertenecen [G6].
+El siguiente problema de DayDate son las constantes de días, comenzando
+en la línea 109. Deberían ser otra enumeración [J3]. Ya hemos visto este
+patrón, de modo que no lo repetiremos. Se incluye en los listados definitivos.
+Seguidamente, vemos una serie de tablas que comienzan en
+LAST_DAY_OF_MONTH (línea 140). El primer problema con estas tablas es que
+los comentarios que las describen son redundantes [C3]. Basta con sus
+nombres, de modo que eliminamos los comentarios.
+No hay motivos para que la tabla no sea privada [G8], ya que existe una
+función estática lastDayOfMonth que proporciona los mismos datos.
+La siguiente tabla, AGGREGATE_DAYS_TO_END_OF_MONTH, es más
+misteriosa, ya que no se usa en ninguna parte de la estructura JCommon [G9],
+de modo que la elimino.
+Lo mismo sucede con LEAP_YEAR_AGGREGATE_DAYS_TO_END_OF_MONTH.
+La siguiente tabla, AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH, sólo
+se usa en SpreadsheetDate (líneas 434 y 473), lo que me hace dudar si
+transferirla a SpreadsheetDate. La razón de no cambiarla es que la tabla no
+es específica de ninguna implementación concreta [G6]. Por otra parte, sólo
+existe la implementación SpreadsheetDate, de modo que la tabla debe
+acercarse a donde se vaya a usar [G10],
+Para zanjar la duda y ser coherentes [G11], deberíamos privatizar la tabla
+y mostrarla a través de una función como julianDateOfLastDayOfMonth.
+Pero nadie parece que la necesita. Es más, la tabla se puede cambiar a
+DayDate si una nueva implementación de DayDate la necesita. Así que la
+cambiamos.
+Lo mismo sucede con LEAP_YEAR_AGGREGATE_DAYS_TO_END_OF_MONTH.
+Tras ello, vemos tres grupos de constantes que se pueden convertir en
+enumeraciones (líneas 162-205). La primera selecciona una semana de un
+mes. La transformo en la enumeración WeekInMonth.
+public enum WeekInMonth {
+FIRST(1), SECOND(2), THIRD(3), FOURTH(4), LAST(0);
+public final int index;
+WeekInMonth(int index) {
+this.index = index;
+}
+}
+El segundo grupo de constantes (líneas 177-187) es más complicado. Las
+constantes INCLUDE_NONE, INCLUDE_FIRST, INCLUDE_SECOND e
+INCLUDE_BOTH se usan para describir si las fechas finales de un intervalo
+deben incluirse en el mismo. Matemáticamente, se describe como intervalo
+abierto, intervalo a medio abrir e intervalo cerrado. Creo que resulta más
+claro con la nomenclatura matemática [N3], de modo que lo cambio por la
+enumeración DateInterval con los enumeradores CLOSED, CLOSED_LEFT,
+CLOSED_RIGHT y OPEN.
+El tercer grupo de constantes (líneas 18-205) describen si la búsqueda de
+un día concreto de la semana devuelve la última instancia, la siguiente o la
+más próxima. Decidir un nombre adecuado es complicado. Al final, opté por
+WeekdayRange con los enumeradores LAST, NEXT y NEAREST.
+Puede que no esté de acuerdo con los nombres elegidos. Para mí tienen
+sentido. Lo importante es que ahora son más fáciles de cambiar [J3]. Ya no se
+pasan como enteros, sino como símbolos. Puedo usar la función de cambio de
+nombre de mi IDE para cambiar los nombres o los tipos sin preocuparme de
+haberme olvidado de un -1 o un 2 en alguna parte del código o de que la
+declaración de un argumento int no estén bien descrita.
+El campo de descripción de la línea 208 no parece que se use en ninguna
+parte. Lo elimino junto a sus elementos de acceso y mutación [G9]. También
+elimino el constructor predeterminado de la línea 213 [G12]. El compilador
+se encargará de generarlo.
+Podemos ignorar el método isValidWeekdayCode (líneas 216-238) ya que
+lo eliminamos al crear la enumeración Day.
+Llegamos al método stringToWeekdayCode (líneas 242-270). Los
+Javadoc que no suponen demasiado para la firma del método sobran [C3],
+[G12]. El único valor de este Javadoc es la descripción del valor devuelto -1.
+Sin embargo, como cambiamos a la enumeración Day, el comentario es en
+realidad incorrecto [C2]. Ahora el método genera
+IllegalArgumentException. Por ello, eliminamos el Javadoc.
+También elimino las palabras clave final de argumentos y declaraciones
+de variables, ya que no parecen servir de mucho [G12]. La eliminación de
+final no goza de gran aceptación. Por ejemplo, Robert Simmons[101]
+recomienda «… diseminar final por la totalidad del código». No estoy de
+acuerdo. Creo que existen casos para usar final, por ejemplo como constante
+ocasional, pero en general, esta palabra clave apenas añade valor y suele ser
+un estorbo. Puede que lo piense porque el tipo de errores que puede capturar
+final ya se capturan en las pruebas de unidad que he creado.
+Las instrucciones if duplicadas [G5] del bucle for (líneas 259 y 263) son
+irrelevantes, de modo que las conecté en una única instrucción if con el
+operador ||. También usé la enumeración Day para dirigir el bucle for y
+realicé otros cambios estéticos.
+Este método no pertenece realmente a DayDate. En realidad es la función
+de análisis de Day. Por lo tanto, lo cambié a la enumeración Day, lo que hizo
+que aumentara considerablemente de tamaño. Como el concepto de Day no
+depende de DayDate, extraje la enumeración Day de la clase DayDate a un
+archivo propio [G13].
+También cambié la siguiente función, weekdayCodeToString (líneas
+272-286) a la enumeración Day y le asigné el nombre toString.
+public enum Day {
+MONDAY(Calendar.MONDAY),
+TUESDAY(Calendar.TUESDAY),
+WEDNESDAY(Calendar.WEDNESDAY),
+THURSDAY(Calendar.THURSDAY),
+FRIDAY(Calendar.FRIDAY),
+SATURDAY(Calendar.SATURDAY),
+SUNDAY(Calendar.SUNDAY);
+public final int index;
+private static DateFormatSymbols dateSymbols = new DateFormatSymbols();
+Day(int day) {
+index = day;
+}
+public static Day make(int index) throws IllegalArgumentException {
+for (Day d : Day.values())
+if (d.index == index)
+return d;
+throw new IllegalArgumentException(
+String.format(“Illegal day index: %d.”, index));
+}
+public static Day parse(String s) throws IllegalArgumentException {
+String[] shortWeekdayNames =
+dateSymbols.getShortWeekdays();
+String[] weekDayNames =
+dateSymbols.getWeekdays();
+s = s.trim();
+for (Day day : Day.values()) {
+if (s.equalsIgnoreCase(shortWeekdayNames[day.index]) ||
+s.equalsIgnoreCase(weekDayNames[day.index])) {
+return day;
+}
+}
+throw new IllegalArgumentException(
+String.format(“%s is not a valid weekday string”, s));
+}
+public String toString() {
+return dateSymbols.getWeekdays()[index];
+}
+}
+Hay dos funciones getMonths (líneas 288-316). La primera invoca la
+segunda. La segunda solamente se invoca desde la primera. Por ello, las he
+combinado en una y las he simplificado considerablemente [G9], [G12], [F4].
+Por último, he cambiado el nombre por otro más descriptivo [N1].
+public static String[] getMonthNames() {
+return dateFormatSymbols.getMonths();
+}
+La función isValidMonthCode (líneas 326-346) es ahora irrelevante
+gracias a la enumeración Month, de modo que la elimino [G9].
+La función monthCodeToQuarter (líneas 356-375) parece sufrir envidia
+de las características[102] [G14] y seguramente pertenezca a la enumeración
+Month como método quarter, motivo por el que la sustituyo.
+public int quarter() {
+return 1 + (index-1)/3;
+}
+De este modo, la enumeración Month tiene tamaño suficiente como para
+estar en una clase propia. La extraigo de DayDate para mantener la
+coherencia con la enumeración Day [G11], [G13].
+Los dos siguientes métodos tienen el nombre monthCodeToString (líneas
+377-426). Vemos de nuevo que uno invoca al otro con un indicador. No es
+recomendable pasar un indicador como argumento de una función, en
+especial si dicho indicador sólo selecciona el formato del resultado [G15].
+Por tanto, cambio de nombre, simplifico y reestructuro estas funciones y las
+incluyo en la enumeración Month [N1], [N3], [C3], [G14].
+public String toString() {
+return dateFormatSymbols.getMonths()[index - 1];
+}
+public String toShortString() {
+return dateFormatSymbols.getShortMonths()[index – 1];
+}
+El siguiente método es stringToMonthCode (líneas 428-472). Lo cambio
+de nombre, lo paso a la enumeración Month y lo simplifico [N1], [N3], [C3],
+[G14], [G12].
+public static Month parse(String s) {
+s = s.trim();
+for (Month m : Month.values())
+if (m.matches(s))
+return m;
+try {
+return make(Integer.parseInt(s));
+}
+catch (NumberFormatException e) {}
+throw new IllegalArgumentException(“Invalid month ” + s);
+}
+private boolean matches(String a) {
+return s.equalsIgnoreCase(toString()) ||
+s.equalsIgnoreCase(toShortString());
+}
+El método isLeapYear (líneas 495-517) se puede modificar para que sea
+más expresivo [G16].
+public static boolean isLeapYear(int year) {
+boolean fourth = year % 4 == 0;
+boolean hundredth = year % 100 == 0;
+boolean fourHundredth = year % 400 == 0;
+return fourth && (!hundredth || fourHundredth);
+}
+La siguiente función, leapYearCount (líneas 519-536) no pertenece
+realmente a DayDate. Nadie la invoca, excepto los dos métodos de
+SpreadsheetDate, de modo que la desplazo hacia abajo [G6].
+La función lastDayOfMonth (líneas 538-560) usa la matriz
+LAST_DAY_OF_MONTH, que en realidad pertenece a la enumeración Month
+[G17], por lo que la cambio de ubicación. También simplifico la función y
+aumento su expresividad [G16].
+public static int lastDayOfMonth(Month month, int year) {
+if (month == Month.FEBRUARY && isLeapYear(year))
+return month.lastDay() + 1;
+else
+return month.lastDay();
+}
+Ahora empieza a ponerse interesante. La siguiente función es addDays
+(líneas 562-576). En primer lugar, como opera en las variables de DayDate,
+no debería ser estática [G18]. La cambio por un método de instancia. Por otra
+parte, invoca la función toSerial, cuyo nombre deberíamos cambiar por
+toOrdinal [N1]. Por último, el método se puede simplificar.
+public DayDate addDays(int days) {
+return DayDateFactory.makeDate(toOrdinal() + days);
+}
+Lo mismo sucede con addMonths (líneas 578-602). Debería ser un
+método de instancia [G18]. El algoritmo es un tanto complicado, de modo
+que recurro a la explicación de variables temporales[103] [G19] para que sea
+más transparente. También cambio el nombre del método getYYY por
+getYear [N1].
+public DayDate addMonths(int months) {
+int thisMonthAsOrdinal = 12 * getYear() + getMonth().index - 1;
+int resultMonthAsOrdinal = thisMonthAsOrdinal + months;
+int resultYear = resultMonthAsOrdinal / 12;
+Month resultMonth = Month.make(resultMonthAsOrdinal % 12 + 1);
+int lastDayOfResultMonth = lastDayOfMonth(resultMonth, resultYear);
+int resultDay = Math.min(getDayOfMonth(), lastDayOfResultMonth);
+return DayDateFactory.makeDate(resultDay, resultMonth, resultYear);
+}
+La función addYears (líneas 604-626) es similar al resto.
+public DayDate plusYears(int years) {
+int resultYear = getYear() + years;
+int lastDayOfMonthInResultYear = lastDayOfMonth(getMonth(), resultYear);
+int resultDay = Math.min(getDayOfMonth(), lastDayOfMonthInResultYear);
+return DayDateFactory.makeDate(resultDay, getMonth(), resultYear);
+}
+Hay algo que me preocupa sobre el cambio de estos métodos de estáticos
+a métodos de instancia. ¿La expresión date.addDays(5) aclara que el objeto
+date no cambia y que se devuelve una nueva instancia de DayDate o se
+supone, equivocadamente, que se añaden cinco días al objeto date? Pensará
+que no es un gran problema, pero un fragmento de código como el siguiente
+puede ser muy engañoso [G20].
+DayDate date = DateFactory.makeDate(5, Month.DECEMBER, 1952);
+date.addDays(7); // desplazar la fecha una semana
+Un lector de este código podría aceptar que addDays cambia el objeto
+date, de modo que necesitamos un nombre que acabe con la ambigüedad
+[N4]: plusDays y plusMonths. Creo que la intención del método se captura
+correctamente por medio de
+DayDate date = oldDate.plusDays(5);
+mientras que el siguiente no transmite con fluidez al lector que el objeto
+date ha cambiado:
+date.plusDays(5);
+Los algoritmos son cada vez más interesantes. getPreviousDayOfWeek
+(líneas 628-660) funciona pero es complicado. Tras meditar en lo que sucedía
+[G21], pude simplificarlo y aplicar la explicación de variables temporales
+[G19] para aclarar su significado. También lo cambié de método estático a
+método de instancia [G18] y me deshice del método de instancia duplicado
+[G5] (líneas 997-1008).
+public DayDate getPreviousDayOfWeek(Day targetDayOfWeek) {
+int offsetToTarget = targetDayOfWeek.index = getDayOfWeek().index;
+if (offsetToTarget >= 0)
+offsetToTarget - 7;
+return plusDays(offsetToTarget);
+}
+Sucede exactamente lo mismo con getFollowingDayOfWeek (líneas
+662-693).
+public DayDate getFollowingDayOfWeek(Day targetDayOfWeek) {
+int offsetToTarget = targetDayOfWeek.index - getDayOfWeek().index;
+if (offsetToTarget <= 0)
+offsetToTarget += 7;
+return plusDays(offsetToTarget);
+}
+La siguiente función es getNearestDayOfWeek (líneas 695-726), que
+corregimos en un apartado anterior. Pero esos cambios no son coherentes con
+el patrón actual de las dos últimas funciones [G11]. Por ello, recurro a la
+explicación de variables temporales [G19] para aclarar el algoritmo.
+public DayDate getNearestDayOfWeek(final Day targetDay) {
+int offsetToThisWeeksTarget = targetDay.index - getDayOfWeek().index;
+int offsetToFutureTarget = (offsetToThisWeeksTarget + 7) % 7;
+int offsetToPreviousTarget = offsetToFutureTarget - 7;
+if (offsetToFutureTarget > 3)
+return plusDays(offsetToPreviousTarget);
+else
+return plusDays(offsetToFutureTarget);
+}
+El método getEndOfCurrentMonth (líneas 728-740) es un tanto extraño
+ya que es un método de instancia que envidia [G14] a su propia clase
+aceptado un argumento DayDate. Lo convierto en un verdadero método de
+instancia y clarifico algunos de los nombres.
+public DayDate getEndOfMonth() {
+Month month = getMonth();
+int year = getYear();
+int lastDay = lastDayOfMonth(month, year);
+return DayDateFactory.makeDate(lastDay, month, year);
+}
+La refactorización de weekInMonthToString (líneas 742-761) resultó ser
+muy interesante. Mediante las herramientas de refactorización de mi IDE,
+primero cambié el método a la enumeración WeekInMonth creada antes y
+después cambié el nombre por toString. Tras ello, lo convertí en método de
+instancia. Todas las pruebas fueron correctas (¿adivina hacia dónde nos
+dirigimos?).
+Seguidamente, eliminé el método. Fallaron cinco afirmaciones (líneas
+411-415 del Listado B-4). Cambié estas líneas para usar los nombres de los
+enumeradores (FIRST, SECOND, etc.). Las pruebas fueron correctas. ¿Ve por
+qué? ¿Puede ver también por qué son necesarios estos pasos? La herramienta
+de refactorización se encargó de que los invocadores anteriores de
+weekInMonthToString invocaran ahora toString en el enumerador
+weekInMonth ya que todos los enumeradores implementan toString para
+devolver sus nombres…
+Desafortunadamente, me pasé de listo. A pesar de la elegancia de la
+cadena de refactorización, comprobé que los únicos usuarios de esta función
+eran las pruebas que acababa de modificar, de modo que las eliminé. Así
+pues, tras determinar que sólo las pruebas invocaban relativeToString
+(líneas 765-781), eliminé directamente la función y sus pruebas.
+Hemos llegado a los métodos abstractos de esta clase abstracta. Y el
+primero es toSerial (líneas 838-844). En un apartado anterior cambié el
+nombre por toOrdinal. Al verlo en este contexto, decidí que el cambio de
+nombre debería ser por getOrdinalDay. El siguiente método abstracto es
+toDate (líneas 838-844). Convierte DayDate en java.util.Date. ¿Por qué es
+abstracto? Si analizamos su implementación en SpreadsheetDate (líneas
+198-207 del Listado B-5), vemos que no depende de la implementación de
+esa clase [G6]. Por tanto, lo desplazo hacia arriba.
+Los métodos getYYYY, getMonth y getDayOfMonth son evidentemente
+abstractos. Sin embargo, getDayOfWeek debería ascender desde
+SpreadSheetDate ya que no depende de nada de lo que encontremos en
+DayDate [G6]. ¿O sí?
+Si se fija atentamente (línea 247 del Listado B-5), verá que el algoritmo
+depende implícitamente del origen del día ordinal (es decir, el día de la
+semana del día 0). Por ello, aunque esta función carezca de dependencias
+físicas que no se puedan cambiar a DayDate, cuenta con una dependencia
+lógica. Este tipo de dependencias lógicas me molestan [G22]. Si algo lógico
+depende de la implementación, también debería haber algo físico. Además,
+me parece que el propio algoritmo podría ser genérico y que debería depender
+en menor medida de la implementación [G6]. Por tanto, creé un método
+abstracto en DayDate con el nombre getDayOfWeekForOrdinalZero y lo
+implementé en SpreadsheetDate para devolver Day.SATURDAY. Tras ello,
+envié el método getDayOfWeek a DayDate y lo cambié para que invocara
+getOrdinalDay y getDayOfWeekForOrdinalZero.
+public Day getDayOfWeek() {
+Day startingDay = getDayOfWeekForOrdinalZero();
+int startingOffset = startingDay.index - Day.SUNDAY.index;
+return Day.make((getOrdinalDay() + startingOffset) % 7 + 1);
+}
+Fíjese en el comentario de las líneas 895-899. ¿Necesitamos realmente
+esta repetición? Como de costumbre, eliminé este comentario junto a los
+demás.
+El siguiente método es compare (líneas 902-913). De nuevo, es
+incorrectamente abstracto [G6], por lo que cambio la implementación a
+DayDate. Además, el nombre no es descriptivo [N1]. En realidad, este
+método devuelve la diferencia en días desde el argumento, por lo que cambié
+el nombre por daysSince. Tampoco existían pruebas para este método, de
+modo que las creé.
+Las seis siguientes funciones (líneas 915-980) son métodos abstractos que
+deben implementarse en DayDate, por lo que las extraje de SpreadsheetDate.
+La última función, isInRange (líneas 982-995), también debe extraerse y
+refactorizarse. La instrucción switch no es agradable [G23] y se puede
+modificar si enviamos los casos a la enumeración DateInterval.
+public enum DateInterval {
+OPEN {
+public boolean isIn(int d, int left, int right) {
+return d > left && d < right;
+}
+},
+CLOSED_LEFT {
+public boolean isIn(int d, int left, int right) {
+return d >= left && d < right;
+}
+},
+CLOSED_RIGHT {
+public boolean isIn(int d, int left, int right) {
+return d > left && d <= right;
+}
+},
+CLOSED {
+public boolean isIn(int d, int left, int right) {
+return d >= left && d <= right;
+}
+};
+public abstract boolean isIn(int d, int left, int right);
+}
+public boolean isInRange(DayDate d1, DayDate d2, DateInterval interval) {
+int left = Math.min(d1.getOrdinalDay(), d2.getOrdinalDay());
+int right = Math.max(d1.getOrdinalDay(), d2.getOrdinalDay());
+return interval.isIn(getOrdinalDay(), left, right);
+}
+Con esto llegamos al final de DayDate. Realizaremos una nueva pasada
+por la clase completa para comprobar cómo fluye. Primero, el comentario
+inicial está desfasado, de modo que lo reduzco y lo mejoro [C2].
+Tras ello, desplazo las enumeraciones restantes a sus propios archivos
+[G12].
+Seguidamente, desplazo la variable estática (dateFormatSymbols) y tres
+métodos estáticos (getMonthNames, isLeapYear, lastDayOfMonth) a una
+nueva clase con el nombre DateUtil [G6].
+Cambio los métodos abstractos a una posición superior, donde pertenecen
+[G24].
+Cambio Month.make por Month.fromInt [N1] y repito la operación con
+las demás enumeraciones. También creo un método de acceso toInt() para
+todas las enumeraciones y convierto en privado el campo index.
+Se produce una interesante duplicación [G5] en plusYears y plusMonths
+que conseguí eliminar extrayendo un nuevo método con el nombre
+correctLastDayOfMonth, lo que aclaraba el significado de los tres métodos.
+Me deshice del número mágico 1 [G25] y lo sustituí por
+Month.JANUARY.toInt() o Day.SUNDAY.toInt(), según el caso. Me detuve
+en limpiar los algoritmos de SpreadsheetDate. El resultado final se puede
+comprobar en los listados B.7 a B.16.
+El alcance del código en DayDate se ha reducido al 84.9 por 100, no
+porque se pruebe una cantidad menor de funcionalidad, sino porque la clase
+se ha reducido tanto que las líneas sin alcance tienen un peso mayor. Ahora,
+en DayDate las pruebas se aplican a 45 de las 53 instrucciones ejecutables.
+Las líneas sin alcance son tan triviales que no merece la pena probarlas.
+Conclusión
+Otra vez hemos aplicado la Regla del Boy Scout. Hemos entregado el código
+más limpio de lo que lo recibimos. Nos ha llevado tiempo, pero ha merecido
+la pena. El alcance de las pruebas ha aumentado, hemos corregido algunos
+errores y hemos aclarado y reducido el tamaño del código. La próxima
+persona que lo lea seguramente lo encontrará más fácil de leer. Y
+probablemente esa persona sea capaz de limpiarlo algo más de lo que hemos
+hecho nosotros.
+Bibliografía
+[GOF]: Design Patterns: Elements of Reusable Object Oriented
+Software, Gamma et al., Addison-Wesley, 1996.
+[Simmons04]: Hardcore Java, Robert Simmons, Jr., O’Reilly, 2004.
+[Refactoring]: Refactoring: Improving the Design of Existing Code,
+Martin Fowler et al., Addison-Wesley, 1999.
+[Beck97]: Smalltalk Best Practice Patterns, Kent Beck, Prentice Hall,
+1997.
+17
+Síntomas y heurística
+En su magnífico libro Refactoring[104], Martin Fowler identifica diversos
+síntomas de código (Smells). La lista que mostramos a continuación incluye
+muchos de los síntomas de Martin y otros propios. También contiene otras
+perlas y heurística que suelo emplear en mi trabajo.
+Para compilar esta lista he examinado diversos programas y los he
+refactorizado. Al aplicar un cambio, me preguntaba el por qué y anotaba el
+motivo. El resultado es una extensa lista de aspectos que no me «huelen»
+bien cuando leo código.
+La lista se debe leer de arriba a abajo, y también se puede usar como
+referencia.
+Comentarios
+C1: Información inapropiada
+No es apropiado que un comentario contenga información que se pueda
+almacenar en otro tipo de sistema como un sistema de control de código
+fuente, de seguimiento de problemas o de mantenimiento de registros. Los
+historiales de cambios, por ejemplo, abarrotan los archivos de código con
+abundante texto sin interés alguno. Por lo general, metadatos como autores,
+fechas de modificación, números SPR y similares no deben aparecer en los
+comentarios. Los comentarios deben reservarse para notas técnicas sobre el
+código y el diseño.
+C2: Comentario obsoleto
+Un comentario anticuado, irrelevante e incorrecto es obsoleto. Los
+comentarios envejecen rápidamente. Es recomendable no escribir un
+comentario que vaya a quedar obsoleto. Si detecta un comentario obsoleto,
+conviene actualizarlo o eliminarlo lo antes posible. Los comentarios
+obsoletos tienden a alejarse del código que describían. Se convierten en islas
+de irrelevancia y desorientación en el código.
+C3: Comentario redundante
+Un comentario es redundante si describe algo que ya se define correctamente
+por sí mismo. Por ejemplo:
+i++; // incrementar i
+Otro ejemplo es un Javadoc que no dice más (o incluso menos) que la
+firma de una función:
+/**
+* @param sellRequest
+* @return
+* @throws ManagedComponentException
+*/
+public SellResponse beginSellItem(SellRequest sellRequest)
+throws ManagedComponentException
+Los comentarios deben comunicar lo que el código no pueda expresar por
+sí mismo.
+C4: Comentario mal escrito
+Un comentario que merezca la pena escribir merece la pena ser leído. Si
+piensa escribir un comentario, asegúrese de que es el mejor que puede crear.
+Elija las palabras con atención. Use gramática y puntuación correctas. No
+divague. No afirme lo evidente. Sea breve.
+C5: Código comentado
+Me molesta ver grandes fragmentos de código comentado. ¿Quién sabe qué
+antigüedad tienen? ¿Quién sabe si tiene sentido o no? Pero nadie lo borra
+porque piensa que alguien más lo necesita.
+Ese código se estanca y se corrompe, y cada día que pasa es menos
+relevante. Invoca funciones que ya no existen. Usa variables cuyos nombres
+han cambiado. Se rige por convenciones obsoletas. Contamina los módulos
+en los que aparece y distrae a los usuarios que lo leen. El código comentado
+es una aberración.
+Cuando vea código comentado, elimínelo. No se preocupe, el sistema de
+control de código fuente lo recordará. Si alguien lo necesita, puede consultar
+una versión anterior. No sufra el código comentado para sobrevivir.
+Entorno
+E1: La generación requiere más de un paso
+La generación de un proyecto debería ser una operación sencilla. No debería
+tener que comprobar demasiados elementos del control de código fuente. No
+debería necesitar una secuencia de antiguos comandos ni secuencias de
+comandos dependientes del contexto para generar cada elemento. No debería
+tener que buscar los distintos archivos JAR, XML y similares necesarios para
+el sistema. Debería finalizar el sistema con un sencillo comando y después
+ejecutar otro igual de sencillo para generarlo.
+svn get mySystem
+cd mySystem
+ant all
+E2: Las pruebas requieren más de un paso
+Debería poder ejecutar todas las pruebas de unidad con un solo comando. En
+el mejor de los casos, debería poder ejecutarlas pulsando un botón de su IDE.
+En el peor, debería poder ejecutar un único comando en una línea de
+comandos. La capacidad de ejecutar todas las pruebas es tan importante que
+debe ser algo rápido, sencillo y obvio.
+Funciones
+F1: Demasiados argumentos
+Las funciones deben tener un número reducido de argumentos. Lo mejor es
+que no tengan, seguido de uno, dos y tres argumentos. Más de tres ya es
+cuestionable y debería evitarse (véase el capítulo 3).
+F2: Argumentos de salida
+Los argumentos de salida son ilógicos. El lector espera que los argumentos
+sean entradas, no salidas. Si su función tiene que cambiar el estado de algo,
+haga que cambie el estado del objeto en el que se invoca (véase el capítulo 3).
+F3: Argumentos de indicador
+Los argumentos booleanos declaran abiertamente que la función hace más de
+una cosa. Resultan confusos y deben eliminarse (véase el capítulo 3).
+F4: Función muerta
+Los métodos que nunca se invocan deben descartarse. La presencia de código
+muerto es innecesaria. No tema eliminar la función. Su sistema de control de
+código fuente la recordará.
+General
+G1: Varios lenguajes en un archivo de código
+Los modernos entornos de programación actuales permiten incluir varios
+lenguajes diferentes en el mismo archivo de código. Por ejemplo, un archivo
+de Java puede contener fragmentos de XML, HTML, YAML, JavaDoc,
+JavaScript, y similares. Además de HTML, un archivo JSP podría incluir
+Java, sintaxis de biblioteca de etiquetas, comentarios en español, Javadoc,
+XML, JavaScript, etc. Resulta confuso en el mejor de los casos y un desastre
+en el peor.
+Lo ideal sería que el archivo de código incluyera un solo lenguaje pero,
+en realidad, seguramente tendremos que usar más de uno. Debemos intentar
+minimizar la cantidad y el alcance de los lenguajes adicionales en nuestros
+archivos de código.
+G2: Comportamiento evidente no implementado
+De acuerdo al Principio de la Mínima Sorpresa[105], una función o clase debe
+implementar los comportamientos que otro programador esperaría. Por
+ejemplo, imagine una función que traduce el nombre de un día en una
+enumeración que represente dicho día.
+Day day = DayDate.StringToDay(String dayName);
+Esperaríamos que la cadena «Monday» se tradujera en Day.MONDAY.
+También esperaríamos la traducción de las abreviaturas habituales y que la
+función ignorara mayúsculas y minúsculas.
+Cuando un comportamiento obvio no se implementa, los lectores y
+usuarios del código ya no dependen de su intuición sobre los nombres de las
+funciones. Pierden su confianza en el autor original y se ven obligados a leer
+los detalles del código.
+G3: Comportamiento incorrecto en los límites
+Parece evidente afirmar que el código debe comportarse de forma correcta. El
+problema es que no nos damos cuenta de lo complicado que es dicho
+comportamiento correcto. Los programadores suelen crear funciones que
+esperan que funcionen y confían en su intuición más que en comprobar que el
+código funciona en todos los casos de límites.
+No existe sustituto para la meticulosidad. Las condiciones de límite, los
+casos extremos, las excepciones, representan algo que puede confundir a un
+algoritmo elegante e intuitivo. No dependa de su intuición. Busque todas las
+condiciones de límite y cree pruebas para cada una.
+G4: Medidas de seguridad canceladas
+Chernobyl se derritió porque el director de la central ignoró todos y cada uno
+de los mecanismos de seguridad. Impedían que se realizara un experimento.
+El resultado fue que el experimento no salió bien y el mundo fue testigo de la
+primera gran catástrofe nuclear para la población.
+Anular las medidas de seguridad es un riesgo. Puede que sea necesario
+ejercer el control manual sobre serialVersionUID pero siempre es
+arriesgado. La desactivación de determinadas advertencias del compilador (o
+de todas) puede ayudarle a conseguir la generación, pero corre el riesgo de
+sufrir interminables sesiones de depuración. Desactivar las pruebas que fallan
+y convencerse de que conseguirá que después sean satisfactorias es tan
+erróneo como pensar que sus tarjetas de crédito son dinero gratuito.
+G5: Duplicación
+Una de las reglas más importantes del libro y que debe tomarse muy en serio.
+La práctica totalidad de los autores que escriben sobre diseño de software
+mencionan esta regla. Dave Thomas y Andy Hunt la denominaron principio
+DRY[106] (Don't Repeat Yourself, No repetirse). Kent Beck la convirtió en
+uno de los principios fundamentales de la programación Extreme y la
+denominó «Una sola vez». Ron Jeffries sitúa esta regla en segunda posición,
+por debajo de la consecución satisfactoria de todas las pruebas.
+Siempre que vea duplicados en el código, indican una oportunidad de
+abstracción fallida. La duplicación podría convertirse en una subrutina o en
+otra clase. Al incluir la duplicación en una abstracción, aumenta el
+vocabulario del lenguaje del diseño. Otros programadores pueden usar sus
+creaciones abstractas. El código se vuelve más rápido y menos proclive a
+errores ya que ha aumentado el nivel de abstracción.
+El caso más evidente de duplicación es la presencia de fragmentos de
+código idéntico que parecen pegados repetidamente por el programador, sin
+sentido. Conviene reemplazarlos por métodos simples.
+Una forma más sutil es la cadena switch/case o if/else que aparece
+repetidamente en diversos módulos y que siempre prueba las mismas
+condiciones. Conviene reemplazar estas cadenas por polimorfismo.
+Y más sutiles todavía son los módulos con algoritmos similares pero que
+no comparten las mismas líneas de código. Sigue siendo duplicación y debe
+corregirse por medio del patrón de método de plantilla[107] o estrategia[108].
+En realidad, la mayoría de patrones de diseño aparecidos en los últimos
+15 años son formas de eliminar la duplicación. Las Formas normales de Codd
+también son una estrategia para eliminar la duplicación en esquemas de base
+de datos. Incluso la programación orientada a objetos es una estrategia para
+organizar módulos y eliminar la duplicación. No debería sorprenderle, ya que
+se trata de programación estructurada. Creo que el objetivo es evidente:
+localice los elementos duplicados y elimínelos siempre que pueda.
+G6: Código en un nivel de abstracción incorrecto
+Es importante crear abstracciones que separen conceptos generales de nivel
+superior de conceptos detallados de nivel inferior. Para ello, en ocasiones
+creamos clases abstractas que contengan los conceptos de nivel superior y
+variantes los de nivel inferior. Si lo hacemos, debemos asegurarnos de que la
+separación sea completa. Todos los conceptos de nivel inferior deben estar en
+las variantes y los de nivel superior en la clase base.
+Por ejemplo, constantes, variables o funciones de utilidad que solamente
+pertenezcan a la implementación detallada no deben aparecer en la clase base.
+La clase base no debe saber nada al respecto de estos elementos.
+Esta regla también se aplica a archivos fuente, componentes y módulos.
+El diseño correcto de software requiere la separación de conceptos en
+distintos niveles y su inclusión en contenedores diferentes. En ocasiones,
+dichos contenedores son clases base o variantes, y en otros casos son archivos
+fuente, módulos o componentes. Independientemente del caso, la separación
+debe ser completa. No queremos que conceptos de nivel inferior y superior se
+mezclen.
+Fíjese en este código:
+public interface Stack {
+Object pop() throws EmptyException;
+void push(Object o) throws FullException;
+double percentFull();
+class EmptyException extends Exception {}
+class FullException extends Exception {}
+}
+La función percentFull se encuentra en el nivel de abstracción
+equivocado. Aunque hay implementaciones de Stack en las que el concepto
+de amplitud es razonable, otras no pueden conocer su nivel de amplitud. Por
+tanto, la función debería incluirse en una interfaz derivada como
+BoundedStack.
+Pensará que la implementación podría devolver cero si la pila no tuviera
+límites. El problema es que no existen pilas totalmente sin límites. No se
+puede evitar OutOfMemoryException mediante la comprobación de
+stack.percentFull() < 50.0.
+La implementación de esta función para que devuelva 0 sería una mentira.
+La moraleja es que no puede mentir o escapar de una abstracción mal
+ubicada. El aislamiento de abstracciones es una de las operaciones más
+complicadas para los desarrolladores de software y no se puede corregir
+cuando se realiza de forma incorrecta.
+G7: Clases base que dependen de sus variantes
+El motivo más habitual para dividir conceptos en clases base y derivadas es
+para que los conceptos de nivel superior de la clase base sean independientes
+de los de nivel inferior de las derivadas. Por ello, cuando vemos clases base
+que mencionan los nombres de sus variantes, se intuye un problema. Por lo
+general, las clases base no deben saber nada sobre su derivadas.
+Evidentemente, hay excepciones. En ocasiones, el número de variantes es
+fijo y la clase base tiene código que elegir entre las variantes. Es muy
+habitual en implementaciones de equipos con estado finito. Sin embargo, en
+ese caso las variantes y la clase base están íntimamente unidas y siempre se
+implementan en el mismo archivo jar. En el caso general, deben
+implementarse en archivos independientes.
+Al implementar variantes y clases base en archivos diferentes y garantizar
+que los archivos de la clase base desconocen el contenido de los archivos de
+las variantes podemos implementar nuestros sistemas en componentes
+discretos e independientes. Al modificar dichos componentes, se pueden
+volver a implementar sin necesidad de implementar de nuevo los
+componentes base. De este modo se reduce significativamente el impacto del
+cambio y se facilita el mantenimiento de los sistemas.
+G8: Exceso de información
+Los módulos bien definidos tienen interfaces reducidas que nos permiten
+hacer mucho con poco. Los módulos definidos de forma incorrecta tienen
+interfaces más amplias que nos obligan a usar distintos gestos para realizar
+operaciones sencillas. Una interfaz bien definida no ofrece demasiadas
+funciones y las conexiones son reducidas. Una interfaz definida de forma
+incorrecta ofrece multitud de funciones que invocar y, por tanto, las
+conexiones son elevadas. Los buenos programadores de software aprenden a
+limitar la parte de sus clases y módulos que muestran en sus interfaces.
+Cuantos menos métodos tenga una clase, mejor. Cuantas menos variables
+conozca una función, mejor. Cuantas menos variables de instancia tenga una
+clase, mejor.
+Oculte sus datos. Oculte sus funciones de utilidad. Oculte sus constantes
+y elementos temporales. No cree clases con multitud de métodos y variables
+de instancia. No cree multitud de variables y funciones protegidas para sus
+subclases. Concéntrese en crear interfaces concisas y de tamaño reducido.
+Limite la información para reducir las conexiones.
+G9: Código muerto
+El código muerto es el que no se ejecuta. Se encuentra en el cuerpo de una
+instrucción if que comprueba una condición que no sucede. Se encuentra en
+el bloque catch de una instrucción try que carece de throws. Se encuentra
+en pequeños métodos de utilidad que nunca se invocan o en condiciones
+switch/case inexistentes.
+El problema del código muerto es que con el tiempo empieza a oler.
+Cuanto más antiguo es, más profundo el hedor que despide. Se debe a que el
+código muerto no se actualiza al cambiar los diseños. Sigue compilándose
+pero no se rige por nuevas convenciones o reglas. Se creó en un momento en
+el que el sistema era diferente. Debe tener un entierro digno. Bórrelo del
+sistema.
+G10: Separación vertical
+Variables y funciones deben definirse cerca de donde se utilicen. Las
+variables locales deben declararse por encima de su primer uso y deben tener
+un reducido ámbito vertical. No deben declararse a cientos de líneas de
+distancia de su uso.
+Las funciones privadas deben definirse justo debajo de su primer uso.
+Pertenecen al ámbito de la clase completa pero conviene limitar la distancia
+vertical entre las invocaciones y las definiciones. Para localizar una función
+privada debe bastar con buscar debajo de su primer uso.
+G11: Incoherencia
+Si hace algo de una forma concreta, aplique la misma técnica a operaciones
+similares. Esto entronca con el principio de mínima sorpresa. Preste atención
+a las convenciones que elija y, una vez elegidas, asegúrese de mantenerlas. Si
+en una función concreta usa la variable response para almacenar
+HttpServletResponse, use el mismo nombre de variable en las demás
+funciones que usen objetos HttpServletResponse. Si asigna el nombre
+processVerificationRequest a un método, use un nombre similar, como
+processDeletionRequest, para los métodos que procesen otros tipos de
+solicitudes.
+Este tipo de coherencia, si se aplica repetidamente, facilita la lectura y
+modificación del código.
+G12: Desorden
+¿Para qué sirve un constructor predeterminado sin implementación?
+Únicamente desordena el código y lo inunda de elementos sin sentido.
+Variables sin usar, funciones que nunca se invocan, comentarios que no
+añaden información, etc. Todos estos elementos sobran y deben eliminarse.
+Mantenga limpios sus archivos, bien organizados y sin elementos sobrantes.
+G13: Conexiones artificiales
+Los elementos que no dependen unos de otros no deben conectarse de forma
+artificial. Por ejemplo, las enumeraciones generales no deben incluirse en
+clases más específicas ya que esto obliga a la aplicación a saber más sobre
+dichas clases. Lo mismo sucede con funciones static de propósito general
+declaradas en clases específicas.
+Por lo general, una conexión artificial es la que se establece entre dos
+módulos sin un propósito directo. Es el resultado de incluir una variable,
+constante o función en una ubicación temporalmente útil pero inadecuada. Es
+un síntoma de falta de atención.
+Piense en dónde debe declarar sus funciones, constantes y variables. No
+las deje en el punto más cómodo.
+G14: Envidia de las características
+Uno de los síntomas de Martin Fowler[109]. Los métodos de una clase deben
+interesarse por las variables y funciones de la clase a la que pertenecen, no
+por las variables y funciones de otras clases. Cuando un método usa
+elementos de acceso y mutación de otro objeto para manipular los datos de
+éste, envidia el ámbito de la clase de dicho objeto. Desea formar parte de la
+otra clase para tener acceso directo a las variables que manipula.
+Por ejemplo:
+public class HourlyPayCalculator {
+public Money calculateWeeklyPay(HourlyEmployee e) {
+int tenthRate = e.getTenthRate().getPennies();
+int tenthsWorked = e.getTenthsWorked();
+int straightTime = Math.min(400, tenthsWorked);
+int overTime = Math.max(0, tenthsWorked - straightTime);
+int straightPay = straightTime * tenthRate;
+int overtimePay = (int)Math.round(overTime*tenthRate*1.5);
+return new Money(straightPay + overtimePay);
+}
+}
+El método calculateWeeklyPay se acerca al objeto HourlyEmployee para
+obtener los datos sobre los que opera. El método calculateWeeklyPay
+envidia el ámbito de HourlyEmployee. Su deseo es formar parte de
+HourlyEmployee.
+Es recomendable suprimir la envidia de características ya que muestra los
+detalles internos de una clase a otra. Sin embargo, en ocasiones es un mal
+necesario. Fíjese en lo siguiente:
+public class HourlyEmployeeReport {
+private HourlyEmployee employee;
+public HourlyEmployeeReport(HourlyEmployee e) {
+this.employee = e;
+}
+String reportHours() {
+return String.format(
+“Name: %s\tHours:%d.%1d\n”,
+employee.getName(),
+employee.getTenthsWorked()/10,
+employee.getTenthsWorked()%10);
+}
+}
+Evidentemente, el método reportHours envidia la clase HourlyEmployee.
+Por otra parte, no queremos que HourlyEmployee tenga que conocer el
+formato del informe. Al incluir la cadena de formato en la clase
+HourlyEmployee incumpliríamos varios de los principios del diseño orientado
+a objetos[110]. Conectaría HourlyEmployee al formato del informe y lo
+mostraría en los cambios de dicho formato.
+G15: Argumentos de selector
+No hay nada más abominable que un argumento false aislado al final de la
+invocación de una función. ¿Qué significa? ¿Qué cambiaría si fuera true? No
+sólo el propósito de un argumento de selector es difícil de recordar, sino que
+cada argumento de selector combina varias funciones en una. Los argumentos
+de selector son una forma indolente de evitar dividir una función de gran
+tamaño en otras menores. Fíjese en lo siguiente:
+public int calculateWeeklyPay(boolean overtime) {
+int tenthRate = getTenthRate();
+int tenthsWorked = getTenthsWorked();
+int straightTime = Math.min(400, tenthsWorked);
+int overTime = Math.max(0, tenthsWorked - straightTime);
+int straightPay = straightTime * tenthRate;
+double overtimeRate = overtime ? 1.5 : 1.0 * tenthRate;
+int overtimePay = (int)Math.round(overTime*overtimeRate);
+return straightPay + overtimePay;
+}
+Esta función se invoca con true si las horas extras se pagan como hora y
+media, y con false si se pagan como una hora normal. Ya es bastante malo
+tener que recordar lo que significa calculateWeeklyPay(false) cada vez
+que aparezca. Pero lo peor de esta función es que el autor ha perdido la
+oportunidad de crear lo siguiente:
+public int straightPay() {
+return getTenthsWorked() * getTenthRate();
+}
+public int overTimePay() {
+int overTimeTenths = Math.max(0, getTenthsWorked() - 400);
+int overTimePay = overTimeBonus(overTimeTenths);
+return straightPay() + overTimePay;
+}
+private int overTimeBonus(int overTimeTenths) {
+double bonus = 0.5 * getTenthRate() * overTimeTenths;
+return (int) Math.round(bonus);
+}
+Evidentemente, los selectores no deben ser boolean. Pueden ser
+enumeraciones, enteros u otro tipo de argumento que se use para seleccionar
+el comportamiento de la función. Es más recomendable tener varias
+funciones que pasar código a una función para seleccionar el
+comportamiento.
+G16: Intención desconocida
+Queremos que el código sea lo más expresivo posible. Expresiones extensas,
+notación Húngara y números mágicos distorsionan la intención del autor. Por
+ejemplo, veamos la función overTimePay cómo podría haber aparecido:
+public int m_otCalc() {
+return iThsWkd * iThsRte +
+(int) Math.round(0.5 * iThsRte *
+Math.max(0/ iThsWkd - 400)
+);
+}
+Aunque parezca reducida y densa, también es prácticamente
+impenetrable. Es recomendable dedicar tiempo a lograr que la intención de
+nuestro código sea aparente para nuestros lectores.
+G17: Responsabilidad desubicada
+Una de las principales decisiones de un programador de software es dónde
+ubicar el código. Por ejemplo, dónde incluir la constante PI. ¿En la clase
+Math? ¿Pertenece a la clase Trigonometry? ¿O a la clase Circle?
+El principio de mínima sorpresa vuelve a aparecer. El código debe
+ubicarse donde el lector espera encontrarlo. La constante PI debe incluirse
+junto a la declaración de las funciones trigonométricas. La constante
+OVERTIME_RATE debe declararse en la clase HourlyPayCalculator.
+En ocasiones presumimos de dónde añadimos una determinada
+funcionalidad. Incluimos una función porque nos resulta cómodo pero no
+porque sea intuitivo para el lector. Por ejemplo, puede que tengamos que
+imprimir un informe con el total de horas que ha trabajado un empleado.
+Podríamos sumar las horas en el código que imprime el informe o intentar
+mantener un total en el código que acepte horarios de trabajo.
+Una forma de tomar esta decisión consiste en analizar el nombre de las
+funciones. Imagine que el módulo del informe tiene la función
+getTotalHours. Imagine también que el módulo que acepta horarios de
+trabajo tiene la función saveTimeCard. ¿Cuál de las dos, por nombre, implica
+que calcula el total? La respuesta es evidente.
+Existen motivos de rendimiento para calcular el total como horarios de
+trabajo y no como informe impreso. Es correcto, pero el nombre de las
+funciones debería reflejarlo. Por ejemplo, debería haber una función
+computeRunningTotalOfHours en el módulo de horarios.
+G18: Elementos estáticos incorrectos
+Math.max (double a, double b) es un método estático correcto. No opera
+en una única instancia; de hecho, sería un error tener que usar new
+Math().max(a,b) o incluso a.max(b). Todos los datos que usa max provienen
+de sus dos argumentos, no de un objeto. Además, es prácticamente imposible
+que queramos que Math.max sea polimórfico. Sin embargo, en ocasiones
+creamos funciones estáticas que no deben serlo. Fíjese en este ejemplo:
+HourlyPayCalculator.calculatePay(employee, overtimeRate).
+De nuevo, parece una función estática razonable. No opera en un objeto
+concreto y recibe todos los datos de sus argumentos. Sin embargo, existe la
+posibilidad de que queramos que sea polimórfica. Puede que queramos
+implementar distintos algoritmos para calcular el precio de la hora, como por
+ejemplo. OvertimeHourlyPayCalculator y
+StraightTimeHourlyPayCalculator. En este caso, la función no debe ser
+estática. Debería ser una función miembro no estática de Employee.
+Por lo general, debe decantarse por métodos no estáticos. En caso de
+duda, convierta la función en no estática. Si realmente quiere que una función
+sea estática, asegúrese de que nunca querrá que sea polimórfica.
+G19: Usar variables explicativas
+Kent Beck escribió sobre este tema en su magnífico libro Smalltalk Best
+Practice Patterns[111] y, más recientemente en Implementation Patterns[112].
+Una de las técnicas más completas para que un programa sea legible consiste
+en dividir los cálculos en valores intermedios almacenados en variables con
+nombres descriptivos. Fíjese en este ejemplo de FitNesse:
+Matcher match = headerPattern.matcher(line);
+if(match.find())
+{
+String key = match.group(1);
+String value = match.group(2);
+headers.put(key.toLowercase(), value);
+}
+El simple uso de variables explicativas ilustra con claridad que el primer
+grupo comparado es la clave y el segundo es el valor.
+Es complicado excederse en esta técnica. Por lo general, es mejor tener
+más variables explicativas que menos. Es sorprendente que un módulo opaco
+se vuelva más transparente con tan sólo dividir los cálculos en valores
+intermedios con los nombres adecuados.
+G20: Los nombres de función deben indicar lo que
+hacen
+Fíjese en este código:
+Date newDate = date.add(5);
+¿Intuye que se añaden cinco días a la fecha o son semanas u horas? ¿La
+instancia date cambia y la función simplemente devuelve un nuevo objeto
+Date sin cambiar el antiguo? Por la invocación no podemos saber qué hace
+la función.
+Si la función añade cinco días a la fecha y después la cambia, el nombre
+debería ser addDaysTo o increaseByDays. Si, por otra parte, la función
+devuelve una nueva fecha con cinco días más pero no cambia la instancia
+date, el nombre debería ser daysLater o daysSince.
+Si tiene que fijarse en la implementación (o documentación) de la función
+para saber qué hace, tendrá que elegir un nombre más apropiado o modificar
+la funcionalidad para que se pueda incluir en funciones con nombres más
+acertados.
+G21: Comprender el algoritmo
+Se crea gran cantidad de código extraño porque los autores no se esfuerzan en
+comprender el algoritmo. Consiguen que algo funcione combinando
+instrucciones if e indicadores sin pararse a pensar en qué sucede realmente.
+La programación es una tarea de exploración. Creemos que conocemos el
+algoritmo adecuado para algo pero después lo modificamos y variamos hasta
+conseguir que funcione. ¿Cómo sabemos que funciona? Porque supera los
+casos de prueba que pensamos.
+No es un enfoque equivocado. De hecho, suele ser la única forma de
+conseguir que una función haga lo que pensamos que debe hacer. Sin
+embargo, no basta con conseguir que funcione.
+Antes de creer que hemos terminado con una función, asegúrese de
+entender su funcionamiento. No basta con que supere todas las pruebas.
+Tiene que estar seguro[113] de que la solución es la correcta.
+Por lo general, la forma óptima de saberlo consiste en refactorizar la
+función en algo tan limpio y expresivo que su funcionamiento sea evidente.
+G22: Convertir dependencias lógicas en físicas
+Si un módulo depende de otro, dicha dependencia debe ser física, no sólo
+lógica. El módulo dependiente no debe asumir aspectos (es decir,
+dependencias lógicas) sobre el módulo del que depende. Por el contrario,
+debe solicitar de forma explícita al módulo toda la información de la que
+depende.
+Por ejemplo, imagine que tiene que crear una función que imprima un
+informe de las horas trabajadas por cada empleado. La clase HourlyReporter
+recopila los datos y los pasa a HourlyReportFormatter para imprimirlos
+(véase el Listado 17-1).
+Listado 17-1
+HourlyReporter.java.
+public class HourlyReporter {
+private HourlyReportFormatter formatter;
+private List<LineItem> page;
+private final int PAGE_SIZE = 55;
+public HourlyReporter(HourlyReportFormatter formatter) {
+this.formatter = formatter;
+page = new ArrayList<LineItem>();
+}
+public void generateReport(List<HourlyEmployee> employees) {
+for (HourlyEmployee e : employees) {
+addLineItemToPage(e);
+if (page.size() == PAGE_SIZE)
+printAndClearItemList();
+}
+if (page.size() > 0)
+printAndClearItemList();
+}
+private void printAndClearItemList() {
+formatter.format(page);
+page.clear();
+}
+private void addLineItemToPage(HourlyEmployee e) {
+LineItem item = new LineItem();
+item.name = e.getName();
+item.hours = e.getTenthsWorked() / 10;
+item.tenths = e.getTenthsWorked() % 10;
+page.add(item);
+}
+public class LineItem {
+public String name;
+public int hours;
+public int tenths;
+}
+}
+Este código tiene una dependencia lógica que no se ha convertido en
+física. ¿La detecta? Es la constante PAGE_SIZE. ¿Para qué necesita
+HourlyReporter saber el tamaño de la página? El tamaño de la página debe
+ser responsabilidad de HourlyReportFormatter. La declaración de
+PAGE_SIZE en HourlyReporter representa una responsabilidad desubicada
+[G17] que hace que HourlyReporter asuma que conoce el tamaño que debe
+tener la página. Esta presunción es una dependencia lógica. HourlyReporter
+depende de que HourlyReportFormatter pueda procesar tamaños de página
+de hasta 55. Si alguna implementación de HourlyReportFormatter no puede
+asumir esos tamaños, se producirá un error. Podemos convertir en física esta
+dependencia si creamos un nuevo método en HourlyReportFormatter con el
+nombre getMaxPageSize(). Tras ello, HourlyReporter invoca esta función
+en lugar de usar la constante PAGE_SIZE.
+G23: Polimorfismo antes que If/Else o Switch/Case
+Puede parecer una sugerencia extraña dado el tema descrito en el capítulo 6.
+En este capítulo, afirmo que las instrucciones switch son adecuadas en partes
+del sistema en las que se añadan más funciones nuevas que tipos nuevos.
+Por un lado, la mayoría usamos instrucciones switch por ser una solución
+de fuerza bruta evidente, no por ser la solución perfecta. Por tanto, esta
+heurística nos recuerda que debemos considerar el uso de polimorfismo antes
+de usar switch.
+Por otra parte, los casos en que las funciones son más volátiles que los
+tipos son escasos. Por tanto, toda instrucción switch es sospechosa.
+Suelo aplicar la siguiente regla de una instrucción switch: No puede
+haber más de una instrucción switch por cada tipo de selección. Los casos
+de esa instrucción switch deben crear objetos polimórficos que ocupen el
+lugar de otras instrucciones switch similares en el resto del sistema.
+G24: Seguir las convenciones estándar
+Todos los equipos deben seguir un estándar de diseño de código basado en
+normas comunes de la industria. Este estándar debe especificar aspectos
+como dónde declarar variables de instancia, cómo asignar nombres a clases,
+métodos y variables, dónde añadir llaves, etc. El equipo no debe necesitar un
+documento que describa estas convenciones ya que su código proporciona los
+ejemplos.
+Todos los miembros del equipo deben seguir estas convenciones, lo que
+significa que no importa dónde añada cada uno las llaves mientras todos
+estén de acuerdo en dónde añadirlas.
+Si desea saber qué convenciones aplico, puede verlas en el código
+refactorizado de los listados B.7 a B.14 del apéndice B.
+G25: Sustituir números mágicos por constantes con
+nombre
+Es probablemente una de las reglas más antiguas del desarrollo de software.
+Recuerdo haberla leído a finales de la década de 1960 en manuales de
+COBOL, FORTRAN y PL/1. Por lo general, no es recomendable incluir
+números sin procesar en el código; debe ocultarlos tras constantes con
+nombres correctos. Por ejemplo, el número 86 400 debe ocultarse tras la
+constante SECONDS_PER_DAY. Si va a imprimir 55 líneas por página, la
+constante 55 debe ocultarse tras la constante LINES_PER_PAGE.
+Algunas constantes son tan fáciles de reconocer que no siempre necesitan
+una constante con nombre tras la que ocultarse mientras se usen junto a
+código explicativo. Por ejemplo:
+double milesWalked = feetWalked/5280.0;
+int dailyPay = hourlyRate * 8;
+double circumference = radius * Math.PI * 2;
+¿Necesitamos realmente las constantes FEET_PER_MILE,
+WORK_HOURS_PER_DAY y TWO en los ejemplos anteriores? El último caso es
+absurdo. Existen ciertas fórmulas en las que las constantes se escriben mejor
+como números sin procesar. Puede cuestionar el caso de
+WORK_HOURS_PER_DAY ya que las leyes o las convenciones pueden cambiar.
+Por otra parte, esa fórmula se lee perfectamente si se incluye el 8 por lo que
+no es necesario añadir 17 más. En el caso de FEET_PER_MILE, el número 5280
+es una constante tan conocida y exclusiva que los lectores la reconocerán
+aunque se muestre de forma independiente en una página sin contexto
+alguno.
+Constantes como 3.141592653589793 también son conocidas y
+reconocibles. Sin embargo, la probabilidad de errores es alta y no conviene
+mostrarlas tal cual. Siempre que alguien ve 3.1415927535890793, sabe que
+es π, y no se molestan en examinarlo (¿ha visto el error de un dígito?).
+Tampoco queremos que la gente use 3.14, 3.14159, 3.142, y similares. Por lo
+tanto, es una suerte contar con Math.PI.
+El término número mágico no sólo se aplica a números, sino a todo
+símbolo que tenga un valor que no sea descriptivo por sí mismo. Por ejemplo:
+assertEquals(7777, Employee.find(“John Doe”).employeeNumber());
+En esta afirmación hay dos números mágicos. El primero es obviamente
+7777, aunque no significa que no sea obvio. El segundo es «John Doe» y su
+cometido tampoco está claro.
+“John Doe” es el nombre del empleado #7777 en una conocida base de
+datos de pruebas creada por nuestro equipo. Todo el mundo sabe que al
+conectarse a la base de datos, ya cuenta con varios empleados con sus valores
+y atributos. Además, «John Doe» representa el único empleado por horas de
+la base de datos. Por tanto, la prueba debería ser la siguiente:
+assertEquals(
+HOURLY_EMPLOYEE_ID,
+Employee.find(HOURLY_EMPLOYEE_NAME).employeeNumber());
+G26: Precisión
+Esperar que la primera coincidencia de una consulta sea la única es una
+ingenuidad. El uso de números de coma flotante para representar divisas es
+casi un delito. Evitar bloqueos y/o la administración de transacciones por
+creer que las actualizaciones concurrentes no son posibles es pura indolencia.
+Declarar una variable como ArrayList cuando se necesita List es un exceso
+de restricciones. Crear todas las variables como protected de forma
+predeterminada es falta de restricciones.
+Al adoptar una decisión en el código, debe hacerlo de forma precisa.
+Debe saber por qué la adopta y cómo afrontará las excepciones. No sea
+indolente sobre la precisión de sus decisiones. Si decide invocar una función
+que pueda devolver null, asegúrese de comprobar null. Si consulta el que
+considera el único registro de una base de datos, asegúrese de que el código
+comprueba que no haya otros. Si tiene que trabajar con divisas, use
+enteros[114] y aplique el redondeo correcto. Si existe la posibilidad de una
+actualización concurrente, asegúrese de implementar algún tipo de
+mecanismo de bloqueo.
+En el código, la ambigüedad y las imprecisiones son el resultado de
+desacuerdos o de indolencia. En cualquier caso, elimínelas.
+G27: Estructura sobre convención
+Aplique las decisiones de diseño con estructura y no convenciones. Las
+convenciones de nomenclatura son correctas pero resultan inferiores a
+estructuras que refuerzan la compatibilidad. Por ejemplo, los casos switch
+con enumeraciones de nombres correctos son inferiores a clases base con
+métodos abstractos. No estamos obligados a implementar siempre la
+instrucción switch/case de la misma forma, pero las clases base hacen que
+las clases concretas implementen métodos abstractos.
+G28: Encapsular condicionales
+La lógica booleana es difícil de entender sin necesidad de verla en el contexto
+de una instrucción if o while. Extraiga funciones que expliquen el cometido
+de la condicional. Por ejemplo:
+if (shouldBeDeleted(timer))
+es preferible a
+if (timer.hasExpired() && !timer.isRecurrent())
+G29: Evitar condicionales negativas
+Las condicionales negativas son más difíciles de entender que las positivas.
+Por ello, siempre que sea posible, debe expresar las condiciones como
+positivas. Por ejemplo:
+if (buffer.shouldCompact())
+es preferible a
+if (!buffer.shouldNotCompact())
+G30: Las funciones sólo deben hacer una cosa
+Es tentador crear funciones con varias secciones que realicen una serie de
+operaciones. Este tipo de funciones hacen más de una cosa y deben
+convertirse en funciones de menor tamaño, cada una para una cosa. Por
+ejemplo:
+public void pay() {
+for (Employee e : employees) {
+if (e.isPayday()) {
+Money pay = e .calculatePay();
+e.deliverPay(pay);
+}
+}
+}
+Este fragmento de código realiza tres operaciones. Itera por todos los
+empleados, comprueba si cada uno debe recibir su paga y después paga al
+empleado. Se podría reescribir de esta forma:
+public void pay() {
+for (Employee e : employees)
+payifNecessary(e);
+}
+private void payifNecessary(Employee e) {
+if (e.isPayday())
+calculateAndDeliverPay(e);
+}
+private void calculateAndDeliverPay(Employee e) {
+Money pay = e.calculatePay();
+e.deliverPay(pay);
+}
+Cada una de estas funciones hace una sola cosa (véase el capítulo 3).
+G31: Conexiones temporales ocultas
+Las conexiones temporales suelen ser necesarias pero no debe ocultar la
+conexión. Estructure los argumentos de sus funciones de modo que el orden
+de invocación sea evidente. Fíjese en lo siguiente:
+public class MoogDiver {
+Gradient gradient;
+List<Spline> splines;
+public void dive(String reason) {
+saturateGradient();
+reticulateSplines();
+diveForMoog(reason);
+}
+…
+}
+El orden de las tres funciones es importante. Debe saturar el degradado
+antes de poder entrelazar las tiras, para después continuar.
+Desafortunadamente, el código no aplica esta conexión temporal. Otro
+programador podría invocar reticulateSplines antes de
+saturateGradient, lo que generaría UnsaturatedGradientException. Una
+solución más acertada sería:
+public class MoogDiver {
+Gradient gradient;
+List<Spline> splines;
+public void dive(String reason) {
+Gradient gradient = saturateGradient();
+List<Spline> splines = reticulateSplines(gradient);
+diveForMoog(splines, reason);
+}
+…
+}
+De este modo se muestra la conexión temporal generando una especie de
+embudo. Cada función genera un resultado que la siguiente necesita de modo
+que no se pueden invocar en otro orden.
+Puede argumentar que esto aumenta la complejidad de las funciones y
+tiene razón, pero ese incremento de complejidad sintáctica muestra la
+verdadera complejidad temporal de la situación.
+Observará que he mantenido las variables de instancia. Imagino que son
+necesarias para los métodos privados de las clases. Incluso así, conservo los
+argumentos para que la conexión temporal sea explícita.
+G32: Evitar la arbitrariedad
+Argumente la estructura de su código y asegúrese de que la estructura del
+código comunica dicho argumento. Si la estructura parece arbitraria, otros se
+verán con derecho a modificarla.
+Si la estructura parece coherente en la totalidad del sistema, otros la
+usarán y conservarán la convención. Por ejemplo, recientemente repasaba
+cambios realizados en FitNesse y descubrí lo siguiente:
+public class AliasLinkWidget extends ParentWidget
+{
+public static class VariableExpandingWidgetRoot {
+…
+…
+}
+El problema es que VariableExpandingWidgetRoot no debía estar en el
+ámbito de AliasLinkWidget. Es más, otras clases sin relación usaban
+AliasLinkWidget.VariableExpandingWidgetRoot y no tenían por qué saber
+nada de AliasLinkWidget. Puede que el programador añadiera
+VariableExpandingWidgetRoot a AliasWidget por comodidad o que
+realmente pensara que debía formar parte del ámbito de AliasWidget.
+Independientemente del motivo, el resultado será arbitrario. Las clases
+públicas que no son utilidades de otra clase no deben incluirse en el ámbito
+de otra clase. La convención es convertirlas en públicas en el nivel superior
+de su paquete.
+G33: Encapsular condiciones de límite
+Las condiciones de límite son difíciles de controlar. Aísle su procesamiento y
+no permita que se transfieran al resto del código. No necesitamos legiones de
++1 y -1 por todas partes. Fíjese en este ejemplo de FIT:
+if (level + 1 < tags.length)
+{
+parts = new Parse(body, tags, level + 1, offset + endTag);
+body = null;
+}
+level+1 aparece dos veces. Es una condición de límite que debe
+encapsularse en una variable con un nombre como nextLevel.
+int nextLevel = level + 1;
+if(nextLevel < tags.length) {
+parts = new Parse(body, tags, nextLevel, offset + endTag);
+body = null;
+}
+G34: Las funciones sólo deben descender un nivel de
+abstracción
+Las instrucciones de una función deben crearse en el mismo nivel de
+abstracción, un nivel por debajo de la operación descrita por el nombre de la
+función. Puede que sea la heurística más difícil de interpretar y aplicar.
+Aunque la idea es simple, como humanos nos cuesta mezclar niveles de
+abstracción. Fíjese en el siguiente código de FitNesse:
+public String render() throws Exception
+{
+StringBuffer html = new StringBuffer(“<hr”);
+if(size > 0)
+html.append(“ size=\“”).append(size + 1).append(“\””);
+html.append(“>”);
+return html.toString();
+}
+Si lo analiza, verá lo que sucede. Esta función crea la etiqueta HTML que
+traza una regla horizontal por la página. La altura de la regla se especifica en
+la variable size.
+Fíjese otra vez en el código. Este método mezcla al menos dos niveles de
+abstracción. El primero es la noción de que una regla horizontal tiene un
+tamaño. El segundo es la sintaxis de la propia etiqueta HR. El código proviene
+del módulo HruleWidget de FitNesse. Este módulo detecta una fila de cuatro
+o más guiones y la convierte en la correspondiente etiqueta HR. Cuantos más
+guiones haya, mayor será el tamaño.
+A continuación le muestro la refactorización del código. He cambiado el
+nombre del campo size para reflejar su verdadero cometido. Contenía el
+número de guiones adicionales.
+public String render() throws Exception
+{
+HtmlTag hr = new HtmlTag(“hr”);
+if (extraDashes > 0)
+hr.addAttribute(“size”, hrSize(extraDashes));
+return hr.html();
+}
+private String hrSize(int height)
+{
+int hrSize = height + 1;
+return String.format(“%d”, hrSize);
+}
+Este cambio separa correctamente los dos niveles de abstracción. La
+función render simplemente crea una etiqueta HR sin tener que saber nada
+sobre su sintaxis HTML. El módulo HtmlTag se encarga de los problemas
+sintácticos.
+De hecho, al realizar este cambio detecté un sutil error. El código original
+no incluía la barra final en la etiqueta HR, como haría el estándar XHTML (es
+decir, generaba <hr> en lugar de <hr/>). El módulo HtmlTag se había
+modificado hace tiempo para ajustarlo a XHTML.
+La separación de niveles de abstracción es una de las tareas más
+importantes de la refactorización, y también una de las más complejas. Por
+ejemplo, fíjese en el siguiente código. Fue mi primer intento de separar los
+niveles de abstracción del método HruleWidget.render.
+public String render() throws Exception
+{
+HtmlTag hr = new HtmlTag(“hr”);
+if (size > 0) {
+hr.addAttribute (“size”, “”+(size+1));
+}
+return hr.html();
+}
+Mi objetivo, en esta fase, es crear la separación necesaria y conseguir
+superar las pruebas. El objetivo lo alcancé fácilmente pero el resultado fue
+una función con niveles de abstracción mezclados. En este caso, fueron obra
+de la etiqueta HR y de la interpretación y el formato de la variable size. Esto
+indica que al dividir una función en líneas de abstracción, suelen aparecer
+nuevas líneas de abstracción ocultas por la estructura anterior.
+G35: Mantener los datos configurables en los niveles
+superiores
+Si tiene una constante como un valor predeterminado o de configuración que
+se conoce y se espera en un nivel superior de abstracción, no debe sepultarla
+en una función de nivel inferior. Muéstrela como argumento para esa función
+de nivel inferior invocado desde la función de nivel superior. Fíjese en este
+ejemplo de FitNesse:
+public static void main(String[] args) throws Exception
+{
+Arguments arguments = parseCommandLine(args);
+…
+}
+public class Arguments
+{
+public static final String DEFAULT_PATH = “.”;
+public static final String DEFAULT_ROOT = “FitNesseRoot”;
+public static final int DEFAULT_PORT = 80;
+public static final int DEFAULT_VERSION_DAYS = 14;
+…
+}
+Los argumentos de línea de comandos se analizan en la primera línea
+ejecutable de FitNesse. Los valores predeterminados de dichos argumentos se
+especifican al inicio de la clase Argument. No tiene que buscar instrucciones
+como la siguiente en los niveles inferiores del sistema:
+if (arguments.port == 0) // usar 80 de forma predeterminada
+Las constantes de configuración se encuentran en un nivel superior y son
+fáciles de cambiar. Se pasan al resto de la aplicación. Los niveles inferiores
+de la aplicación no poseen los valores de estas constantes.
+G36: Evitar desplazamientos transitivos
+Por lo general, no es recomendable que un módulo sepa demasiado sobre sus
+colaboradores. En concreto, si A colabora con B y B con C, no queremos que
+los módulos que usan A sepan nada sobre C (por ejemplo, o queremos
+a.getB().getC().doSomething();).
+Es lo que en ocasiones se denomina Ley de Demeter. Los programadores
+pragmáticos lo denominan Crear código silencioso[115]. En cualquier caso, se
+trata de garantizar que los módulos sólo tienen conocimiento de sus
+colaboradores inmediatos y no del mapa de navegación completo del sistema.
+Si varios módulos usan alguna variante de la instrucción a.getB().getC(),
+sería complicado cambiar el diseño y la arquitectura para intercalar Q entre
+B y C. Tendría que localizar todas las instancias de a.getB().getC() y
+convertirlas a a.getB().getQ().getC(). Es la forma en que las arquitecturas
+se vuelven rígidas. Demasiados módulos saben demasiado sobre la
+arquitectura. Por el contrario, queremos que nuestros colaboradores
+intermedios ofrezcan todos los servicios que necesitamos. No debemos
+deambular por el gráfico de objetos del sistema en busca del método que
+necesitamos invocar. Bastaría con poder usar:
+myCollaborator.doSomething().
+Java
+J1: Evitar extensas listas de importación mediante el
+uso de comodines
+Si usa dos o más clases de un paquete, importe el paquete completo con
+import package.*;
+Las listas extensas de importaciones intimidan al lector. No queremos
+colapsar la parte superior de los módulos con 80 líneas de importaciones, sino
+que sean una instrucción concisa de los paquetes con los que colaboramos.
+Las importaciones específicas son dependencias rígidas, mientras que las
+importaciones de comodín no. Si importa una clase concreta, esa clase debe
+existir, pero si importa un paquete con un comodín, no es necesario que
+existan clases concretas. La instrucción de importación simplemente añade el
+paquete a la ruta de búsqueda al localizar los nombres. Por tanto, no se
+genera una verdadera dependencia en estas importaciones y permiten aligerar
+las conexiones de nuestros módulos. En ocasiones, la lista extensa de
+importaciones puede resultar útil. Por ejemplo, si tiene que trabajar con
+código de legado y desea saber para qué clases crear elementos ficticios,
+puede examinar la lista de importaciones concretas para determinar los
+verdaderos nombres cualificados de todas esas clases y después añadirlos. No
+obstante, este uso de las importaciones concretas no es habitual. Es más,
+muchos IDE modernos le permiten convertir las importaciones con
+comodines en una lista de importaciones concretas con un solo comando. Por
+tanto, incluso en el caso anterior, es recomendable usar comodines. Las
+importaciones de comodín pueden probar conflictos de nombres y
+ambigüedades. Dos clases con el mismo nombre pero en paquetes diferentes
+tienen que importarse de forma concreta o al menos cualificarse de forma
+específica cuando se usen. Puede resultar molesto pero no es habitual que el
+uso de importaciones de comodín sea más indicado que el de importaciones
+concretas.
+J2: No heredar constantes
+Lo he visto muchas veces y siempre me molesta. Un programador añade
+constantes a una interfaz y después accede a las mismas heredando dicha
+interfaz. Fíjese en el siguiente código:
+public class HourlyEmployee extends Employee {
+private int tenthsWorked;
+private double hourlyRate;
+public Money calculatePay() {
+int straightTime = Math.min(tenthsWorked, TENTHS_PER_WEEK);
+int overTime = tenthsWorked - straightTime;
+return new Money(
+hourlyRate * (tenthsWorked + OVERTIME_RATE * overTime)
+);
+}
+…
+}
+¿De dónde salen las constantes TENTHS_PER_WEEK y OVERTIME_RATE?
+Puede que provengan de la clase Employee; comprobémoslo:
+public abstract class Employee implements PayrollConstants {
+public abstract boolean isPayday();
+public abstract Money calculatePay();
+public abstract void deliverPay(Money pay);
+}
+No, de ahí no. ¿Entonces de dónde? Fíjese atentamente en la clase
+Employee. Implementa PayrollConstants.
+public interface PayrollConstants {
+public static final int TENTHS_PER_WEEK = 400;
+public static final double OVERTIME_RATE = 1.5;
+}
+Es horrible. Las constantes se ocultan en la parte superior de la jerarquía
+de herencia. No use la herencia para burlar las reglas de ámbito del lenguaje.
+Use una importación estática:
+import static PayrollConstants.*;
+public class HourlyEmployee extends Employee {
+private int tenthsWorked;
+private double hourlyRate;
+public Money calculatePay() {
+int straightTime = Math.min(tenthsWorked, TENTHS_PER_WEEK);
+int overTime = tenthsWorked - straightTime;
+return new Money(
+hourlyRate * (tenthsWorked + OVERTIME_RATE * overTime)
+);
+}
+…
+}
+J3: Constantes frente a enumeraciones
+Ahora que se han añadido enumeraciones al lenguaje (Java 5), ¡úselas! No
+recurra al viejo truco de public static final int. El significado de int se
+puede perder. El de enum no, ya que pertenece a una enumeración con
+nombre.
+Es más, analice atentamente la sintaxis de las enumeraciones. Pueden
+tener métodos y campos, lo que las convierte en potentes herramientas que
+ofrecen mayor expresividad y flexibilidad que los int. Fíjese en esta variante
+del código:
+public class HourlyEmployee extends Employee {
+private int tenthsWorked;
+HourlyPayGrade grade;
+public Money calculatePay() {
+int straightTime = Math.min(tenthsWorked, TENTHS_PER_WEEK);
+int overTime = tenthsWorked - straightTime;
+return new Money(
+grade.rate() * (tenthsWorked + OVERTIME_RATE * overTime)
+);
+}
+…
+}
+public enum HourlyPayGrade {
+APPRENTICE {
+public double rate() {
+return 1.0;
+}
+},
+LEUTENANT_JOURNEYMAN (
+public double rate() {
+return 1.2;
+}
+},
+JOURNEYMAN {
+public double rate() {
+return 1.5;
+}
+},
+MASTER {
+public double rate() {
+return 2.0;
+}
+};
+public abstract double rate();
+}
+Nombres
+N1: Elegir nombres descriptivos
+No sea demasiado rápido a la hora de elegir un nombre. Asegúrese de que sea
+descriptivo. Recuerde que los significados suelen variar cuando el código
+evoluciona, de modo que debe revisar frecuentemente la corrección de los
+nombres elegidos.
+No es una recomendación de sensaciones. En software, los nombres
+constituyen el 90 por 100 de su legibilidad. Dedique tiempo a seleccionarlos
+con atención y mantenga su relevancia. Los nombres son demasiado
+importantes como para tratarlos mal.
+Fíjese en el siguiente código. ¿Para qué sirve? Si le muestro el mismo
+código con nombres bien elegidos, tendrá sentido, pero con este formato no
+es más que una masa de símbolos y números mágicos.
+public int x() {
+int q = 0;
+int z = 0;
+for (int kk = 0; kk < 10; kk++) {
+if (l[z] == 10)
+{
+q += 10 + (l[z + 1] + l[z + 2]);
+z += 1;
+}
+else if (l[z] + l[z + 1] == 10)
+{
+q += 10 + l[z + 2];
+z += 2;
+} else {
+q += l[z] + l[z + 1];
+z += 2;
+}
+}
+return q;
+}
+A continuación, el código como debería haberse escrito. Este fragmento
+es en realidad menos completo que el anterior, pero detectará inmediatamente
+lo que intenta hacer y es probable que pudiera crear las funciones que faltan
+en función de ese significado que intuye. Los números mágicos ya no lo son
+y la estructura del algoritmo es descriptiva y atractiva:
+public int score() {
+int score = 0;
+int frame = 0;
+for (int frameNumber = 0; frameNumber < 10; frameNumber++) {
+if (isStrike(frame)) {
+score += 10 + nextTwoBallsForStrike(frame);
+frame += 1;
+} else if (isSpare(frame)) {
+score += 10 + nextBallForSpare(frame);
+frame += 2;
+} else {
+score += twoBallsInFrame(frame);
+frame += 2;
+}
+}
+return score;
+}
+Los nombres bien elegidos inundan la estructura del código con
+descripciones. Dicha inundación define las expectativas del lector sobre el
+cometido de otras funciones del módulo.
+Puede inferir la implementación de isStrike() si se fija en el código
+anterior. Cuando lea el método isStrike, será prácticamente lo que
+esperaba[116].
+private boolean isStrike(int frame) {
+return rolls[frame] = 10;
+}
+N2: Elegir nombres en el nivel correcto de abstracción
+No elija nombres que comuniquen implementación; seleccione nombres que
+reflejen el nivel de abstracción de la clase o la función con la que trabaje. Es
+complicado. De nuevo, nos cuesta mezclar niveles de abstracción. Siempre
+que realice una pasada por su código, es probable que encuentre una variable
+con nombre en un nivel demasiado bajo. Cambie esos nombres cuando los
+vea. Para que el código sea legible se necesita una mejora continua. Fíjese en
+la siguiente interfaz Modem:
+public interface Modem {
+boolean dial(String phoneNumber);
+boolean disconnect();
+boolean send(char c);
+char recv();
+String getConnectedPhoneNumber();
+}
+Inicialmente parece correcta. Las funciones parecen las adecuadas. De
+hecho lo son para muchas aplicaciones, pero piense ahora en una aplicación
+en la que algunos módems no se conecten mediante marcación telefónica,
+sino mediante cables (como los usados para conexiones domésticas a
+Internet). Puede que algunos se conecten enviando un número de puerto a un
+concentrador a través de una conexión USB. Es evidente que la noción de
+números de teléfono se encuentra en un nivel de abstracción equivocado. Una
+estrategia de nomenclatura más adecuada para este caso sería la siguiente:
+public interface Modem {
+boolean connect(String connectionLocator);
+boolean disconnect();
+boolean send(char c);
+char recv();
+String getConnectedLocator();
+}
+Ahora los nombres no se limitan a números de teléfono. Se pueden usar
+para números de teléfono o para otros tipos de estrategia de conexión.
+N3: Usar nomenclatura estándar siempre que sea
+posible
+Los nombres son más fáciles de entender si se basan en una convención o un
+uso existente. Por ejemplo, si emplea el patrón DECORATOR, debería usar la
+palabra Decorator en los nombres de las clases. Por ejemplo,
+AutoHangupModemDecorator podría ser el nombre de una clase que permite a
+un módem colgar automáticamente al final de una sesión. Los patrones son
+un tipo de estándar. En Java, por ejemplo, las funciones que convierten
+objetos en representaciones de cadena suelen tener el nombre toString. Es
+mejor seguir estas convenciones que inventar otras propias.
+Los equipos suelen inventar su propio sistema estándar de nombres para
+un proyecto concreto. Eric Evans lo denomina lenguaje omnipresente del
+proyecto[117]. Su código debe usar los términos de este lenguaje. En
+definitiva, cuantos más nombres con significado especial y relevante para su
+proyecto utilice, más fácil será para los lectores saber de qué trata el código.
+N4: Nombres inequívocos
+Seleccione nombres que ilustren de forma inequívoca el funcionamiento de
+funciones y variables. Fíjese en este ejemplo de FitNesse:
+private String doRename() throws Exception
+{
+if (refactorReferences)
+renameReferences();
+renamePage();
+pathToRename.removeNameFromEnd();
+pathToRename.addNameToEnd(newName);
+return PathParser.render(pathToRename);
+}
+El nombre de esta función no indica qué hace, al menos en términos
+amplios y sin concretar. Además, se refuerza por la presencia de la función
+renamePage dentro de la función doRename. ¿Qué indican los nombres sobre
+la diferencia entre ambas funciones? Nada. Un nombre más acertado para la
+función sería renamePageAndOptionallyAllReferences. Puede parecerle
+extenso, y lo es, pero sólo se invoca desde un punto del módulo, de modo que
+su valor descriptivo supera su longitud.
+N5: Usar nombres extensos para ámbitos extensos
+La longitud de un nombre debe estar relacionada con la de su ámbito. Puede
+usar nombres de variables breves para ámbitos diminutos pero en ámbitos
+mayores debe emplear nombres extensos.
+Los nombres de variables como i y j son correctos si su ámbito tiene
+cinco líneas de longitud. Fíjese en el siguiente fragmento del conocido juego
+de los bolos:
+private void rollMany(int n, int pins)
+{
+for (int i=0; i<n; i++)
+g.roll(pins);
+}
+Es totalmente claro y se complicaría si la variable i se cambiara por algo
+como rollCount. Por otra parte, las variables y funciones con nombres
+breves pierden su significado en las grandes distancias. Por tanto, cuanto
+mayor sea el ámbito del nombre, más extenso y preciso tendrá que ser el
+nombre.
+N6: Evitar codificaciones
+Los nombres no deben codificarse con información de tipos o ámbitos.
+Prefijos como m_ o f no sirven de nada en los entornos actuales. Además,
+codificaciones de proyecto y/o subsistema como vis_ (para un sistema de
+imágenes visuales) distraen la atención y son redundantes. Los entornos
+actuales proporcionan toda esa información sin tener que modificar los
+nombres. Aleje sus nombres de la contaminación húngara.
+N7: Los nombres deben describir efectos secundarios
+Los nombres deben describir todo lo que haga una función, variable o clase.
+No oculte efectos secundarios con un nombre. No utilice un simple verbo
+para describir una función que realiza algo más que una simple acción. Fíjese
+en este código de TestNG:
+public ObjectOutputStream getOos() throws IOException {
+if (m_oos == null) {
+m_oos = new ObjectOutputStream(m_socket.getOutputStream());
+}
+return m_oos;
+}
+Esta función hace algo más que obtener oos; lo crea si todavía no se ha
+creado. Por lo tanto, un nombre más acertado sería createOrReturnOos.
+Pruebas (Test)
+T1: Pruebas insuficientes
+¿Cuántas pruebas debe incluir una suite de pruebas? Desafortunadamente,
+muchos programadores dirían que las que parezcan suficientes. Una suite de
+pruebas debe probar todo lo que pueda fallar. Las pruebas son insuficientes
+mientras haya condiciones que no se hayan examinado o cálculos que no se
+hayan validado.
+T2: Usar una herramienta de cobertura
+Las herramientas de cobertura indican vacíos en su estrategia de pruebas.
+Facilitan la detección de módulos, clases y funciones insuficientemente
+probadas. Muchos IDE le ofrecen un indicador visual y marcan en verde las
+líneas cubiertas y en rojo las no cubiertas. De este modo es más rápido y
+sencillo detectar instrucciones if o catch cuyos cuerpos no se han
+comprobado.
+T3: No ignorar pruebas triviales
+Son fáciles de redactar y su valor documental es mayor que el coste de
+crearlas.
+T4: Una prueba ignorada es una pregunta sobre una
+ambigüedad
+En ocasiones dudamos de un detalle de comportamiento porque los requisitos
+no son claros. Podemos expresar nuestra duda sobre los requisitos en forma
+de prueba comentada o como prueba anotada con @Ignore. La decisión
+depende de si la ambigüedad es sobre algo que se compila o no.
+T5: Probar condiciones de límite
+Preste especial atención a las pruebas de condiciones de límite. Solemos
+acertar con la parte central de un algoritmo pero malinterpretar los límites.
+T6: Probar de forma exhaustiva junto a los errores
+Los errores suelen congregarse. Si detecta un error en una función, es
+recomendable probarla de forma exhaustiva. Seguramente no sea el único
+error.
+T7: Los patrones de fallo son reveladores
+En ocasiones diagnosticamos un problema detectando patrones de fallo en los
+casos de prueba. Es otro argumento para crear casos de prueba lo más
+completos posibles. Los casos de prueba completos, si se ordenan de forma
+razonable, revelan patrones.
+Como ejemplo, imagine que ha detectado que todas las pruebas con un
+entero mayor de cinco caracteres fallan. O que fallan todas las pruebas que
+pasan un número negativo al segundo argumento de una función. En
+ocasiones, con ver el patrón de rojos y verdes de un informe de pruebas basta
+para hacer saltar la chispa y llegar a una solución. En el capítulo 16
+encontrará un interesante ejemplo en el caso de SerialDate.
+T8: Los patrones de cobertura de pruebas pueden ser
+reveladores
+El análisis del código que se ejecuta o no en las pruebas superadas suele
+indicar porqué fallan las pruebas no superadas.
+T9: Las pruebas deben ser rápidas
+Una prueba lenta no se ejecuta. Cuando las cosas se ponen feas, las pruebas
+lentas se eliminan de la suite. Por lo tanto, intente que sus pruebas sean
+rápidas.
+Conclusión
+Esta lista de heurística y síntomas no se podría considerar completa. De
+hecho, dudo de que alguna vez exista alguna. Pero puede que ese no sea el
+objetivo, ya que lo que implica esta lista es un sistema de valores.
+El sistema de valores ha sido el objetivo y la base de este libro. El código
+limpio no se crea siguiendo una serie de reglas. No se convertirá en un
+maestro del software aprendiendo una lista de heurísticas. La profesionalidad
+y la maestría provienen de los valores que impulsan las disciplinas.
+Bibliografía
+[Refactoring]: Refactoring: Improving the Design of Existing Code,
+Martin Fowler et al., Addison-Wesley, 1999.
+[PRAG]: The Pragmatic Programmer, Andrew Hunt, Dave Thomas,
+Addison-Wesley, 2000.
+[GOF]: Design Patterns: Elements of Reusable Object Oriented
+Software, Gamma et al., Addison-Wesley, 1996.
+[Beck97]: Smalltalk Best Practice Patterns, Kent Beck, Prentice Hall,
+1997.
+[Beck07]: Implementation Patterns, Kent Beck, Addison-Wesley, 2008.
+[PPP]: Agile Software Development: Principles, Patterns, and
+Practices, Robert C. Martin, Prentice Hall, 2002.
+[DDD]: Domain Driven Design, Eric Evans, Addison-Wesley, 2003.
+Apéndice A
+Concurrencia II
+por Brett L. Schuchert
+Este apéndice complementa y amplía el capítulo 13 sobre concurrencia. Se ha
+escrito como una serie de temas independientes que puede leer en el orden
+que desee. Algunas secciones están duplicadas para facilitar dicha lectura.
+Ejemplo cliente/servidor
+Imagine una sencilla aplicación cliente/servidor. Un servidor espera a que un
+cliente se conecte. Un cliente se conecta y envía una solicitud.
+El servidor
+A continuación le mostramos una versión simplificada de una aplicación de
+servidor. El código completo de este ejemplo se recoge en el Listado A-3.
+ServerSocket serverSocket = new ServerSocket(8009);
+while (keepProcessing) {
+try {
+Socket socket = serverSocket.accept();
+process(socket);
+} catch (Exception e) {
+handle(e);
+}
+}
+Esta sencilla aplicación espera una conexión, procesa un mensaje entrante
+y vuelve a esperar a la siguiente solicitud cliente. El código cliente para
+conectarse al servidor es el siguiente:
+private void connectSendReceive(int i) {
+try {
+Socket socket = new Socket (“localhost”, PORT);
+MessageUtils.sendMessage(socket, Integer.toString(i));
+MessageUtils.getMessage(socket);
+socket.close();
+} catch (Exception e) {
+e.printStackTrace();
+}
+}
+¿Cómo se comporta esta combinación de cliente y servidor? ¿Cómo
+podemos describir formalmente ese rendimiento? La siguiente prueba afirma
+que el rendimiento es aceptable:
+@Test(timeout = 10000)
+public void shouldRunInUnder10Seconds() throws Exception {
+Thread[] threads = createThreads();
+startAllThreadsw(threads);
+waitForAllThreadsToFinish(threads);
+}
+Se omite la configuración para que el ejemplo sea sencillo (véase
+“ClientTest.java” más adelante). Esta prueba afirma que debe completarse
+en 10 000 milisegundos.
+Es un ejemplo clásico de validación del rendimiento de un sistema. Este
+sistema debe completar una serie de solicitudes cliente en 10 segundos.
+Mientras el servidor pueda procesar cada solicitud cliente a tiempo, la prueba
+será satisfactoria.
+¿Qué sucede si la prueba falla? Aparte de desarrollar algún tipo de bucle
+de consulta de eventos, no hay mucho que hacer en un único proceso para
+aumentar la velocidad de este código. ¿Se solucionaría el problema con
+varios procesos? Puede, pero necesitamos saber cómo se consume el tiempo.
+Hay dos posibilidades:
+E/S: Con un socket, conectándose a la base de datos, esperando al
+intercambio de memoria virtual, etc.
+Procesador: Cálculos numéricos, procesamiento de expresiones
+regulares, recolección de elementos sin usar, etc.
+Los sistemas suelen tener uno de cada, pero para una operación concreta
+suele haber uno dominante. Si el código se vincula al procesador, mayor
+cantidad de hardware de procesamiento puede mejorar el rendimiento y
+hacer que se supere la prueba, pero no hay tantos ciclos de CPU disponibles,
+de modo que añadir procesos a un problema vinculado al procesador no hará
+que aumente la velocidad.
+Por otra parte, si el proceso está vinculado a E/S, la concurrencia puede
+aumentar la eficacia. Cuando una parte del sistema espera a E/S, otra puede
+usar ese tiempo de espera para procesar algo distinto, maximizando el uso
+eficaz de la CPU disponible.
+Añadir subprocesos
+Imagine que la prueba de rendimiento falla. ¿Cómo podemos mejorar la
+producción para que la prueba de rendimiento sea satisfactoria? Si el método
+process del servidor está vinculado a la E/S, existe una forma de conseguir
+que el servidor use subprocesos (basta con cambiar processMessage):
+void process (final Socket socket) {
+if (socket == null)
+return;
+Runnable clientHandler = new Runnable() {
+public void run() {
+try {
+String message = MessageUtils.getMessage(socket);
+MessageUtils.sendMessage(socket, “Processed: ” + message);
+closeIgnoringException(socket);
+} catch (Exception e) {
+e.printStackTrace();
+}
+}
+};
+Thread clientConnection = new Thread(clientHandler);
+clientConnection.start();
+}
+Asuma que este cambio hace que la prueba se supere[118]; el código es
+completo, ¿correcto?
+Observaciones del servidor
+El servidor actualizado completa satisfactoriamente la prueba en algo más de
+un segundo. Desafortunadamente, la solución genera ciertos problemas.
+¿Cuántos subprocesos podría crear nuestro servidor? El código no define
+límites de modo que podríamos alcanzar el impuesto por la Máquina virtual
+de Java (MVJ), suficiente en muchos sistemas sencillos. ¿Pero y si el sistema
+tiene que asumir multitud de usuarios de una red pública? Si se conectan
+demasiados usuarios al mismo tiempo, el sistema podría colapsarse.
+Pero dejemos temporalmente este problema de comportamiento. La
+solución mostrada tiene problemas de limpieza y estructura. ¿Cuántas
+responsabilidades tiene el código del servidor?
+Administración de conexiones.
+Procesamiento de clientes.
+Política de subprocesos.
+Política de cierre del servidor.
+Desafortunadamente, todas estas responsabilidades se encuentran en la
+función process. Además, el código cruza varios niveles diferentes de
+abstracción. Por tanto, a pesar de la reducida función process, es necesario
+dividirlo.
+Existen varios motivos para cambiar el servidor; por tanto, incumple el
+principio de responsabilidad única. Para mantener la limpieza de un sistema
+concurrente, la administración de subprocesos debe limitarse a una serie de
+puntos controlados. Es más, el código que gestione los subprocesos
+únicamente debe encargarse de la gestión de subprocesos. ¿Por qué? Si no
+existe otro motivo, el control de problemas de concurrencia ya es lo
+suficientemente complicado como para generar simultáneamente otros
+problemas no relacionados con la concurrencia.
+Si creamos una lista independiente para cada una de las responsabilidades
+anteriores, incluyendo la administración de subprocesos, al cambiar la
+estrategia de administración de subprocesos, el cambio tiene un menor
+impacto sobre el código y no contamina a otras responsabilidades. De este
+modo también es más sencillo probar las demás responsabilidades sin
+necesidad de preocuparse de los subprocesos. Veamos la versión actualizada
+que se encarga de ello:
+public void run() {
+while (keepProcessing) {
+try {
+ClientConnection clientConnection = connectionManager.awaitClient();
+ClientRequestProcessor requestProcessor
+= new ClientRequestProcessor(clientConnection);
+clientScheduler.schedule(requestProcessor);
+} catch (Exception e) {
+e.printStackTrace();
+}
+}
+connectionManager.shutdown();
+}
+Ahora centra en el mismo punto todos los aspectos relacionados con los
+subprocesos: clientScheduler. Si hay problemas de concurrencia, bastará
+con examinar un punto concreto:
+public interface ClientScheduler {
+void schedule(ClientRequestProcessor requestProcessor);
+}
+La política actual es fácil de implementar:
+public class ThreadPerRequestScheduler implements ClientScheduler {
+public void schedule(final ClientRequestProcessor requestProcessor) {
+Runnable runnable = new Runnable() {
+public void run() {
+requestProcessor.process();
+}
+};
+Thread thread = new Thread(runnable);
+thread.start();
+}
+}
+Tras aislar la administración de subprocesos, resulta más sencillo cambiar
+el control de los mismos. Por ejemplo, para cambiar a la estructura Executor
+de Java 5 es necesario crear una nueva clase y conectarla (véase el Listado
+A-1).
+Listado A-1
+ExecutorClientScheduler.java.
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
+public class ExecutorClientScheduler implements ClientScheduler {
+Executor executor;
+public ExecutorClientScheduler(int availableThreads) {
+executor = Executors.newFixedThreadPool(availableThreads);
+}
+public void schedule(final ClientRequestProcessor requestProcessor) {
+Runnable runnable = new Runnable() {
+public void run() {
+requestProcessor.process();
+}
+};
+executor.execute(runnable);
+}
+}
+Conclusión
+En este ejemplo concreto, la presencia de la concurrencia ilustra una forma de
+mejorar la producción de un sistema y otra de validar dicha producción a
+través de una estructura de pruebas. Al centrar el código de concurrencia en
+un número reducido de clases, aplicamos el Principio de responsabilidad
+única. En el caso de la programación concurrente, resulta especialmente
+importante debido a su complejidad.
+Posibles rutas de ejecución
+Repase el método incrementValue, un método de Java de una línea sin
+bucles ni ramificaciones:
+public class IdGenerator {
+int lastIdUsed;
+public int incrementValue() {
+return ++lastIdUsed;
+}
+}
+Ignore el desbordamiento de enteros e imagine que solamente un
+subproceso accede a una instancia de IdGenerator. En este caso existe una
+sola ruta de ejecución y un único resultado garantizado:
+El valor devuelto es igual al valor de lastIdUsed, y ambos son una
+unidad mayores que antes de invocar el método.
+¿Qué sucede si usamos dos subprocesos y no cambiamos el método?
+¿Cuáles son los posibles resultados si cada subproceso invoca
+incrementValue una vez? ¿Cuántas rutas de ejecución posibles hay?
+Primero, los resultados (imagine que el valor inicial de lastIdUsed es 93):
+El primer subproceso obtiene el valor 94, el segundo el valor 95 y
+lastIdUsed es 95.
+El primer subproceso obtiene el valor 95, el segundo el valor 94 y
+lastIdUsed es 95.
+El primer subproceso obtiene el valor 94, el segundo el valor 94 y
+lastIdUsed es 94.
+El resultado final, aunque sorprendente, es posible. Para ver los distintos
+resultados, debemos comprender las diferentes rutas de ejecución posibles y
+cómo las ejecuta la MVJ.
+Número de rutas
+Para calcular el número de rutas de ejecución posibles, comenzaremos con el
+código de bytes generado. La única línea de Java (return ++lastIdUsed;) se
+convierte en ocho instrucciones de código de bytes. Los dos subprocesos
+pueden intercambiar la ejecución de estas ocho instrucciones del mismo
+modo que mezclamos las cartas de una baraja[119]. Incluso con sólo ocho
+cartas en cada mano, el número de posibles resultados es sorprendente.
+Para este sencillo caso de N instrucciones en una secuencia, sin bucles ni
+condicionales y T subprocesos, el número total de posibles rutas de ejecución
+es igual a:
+(NT)!
+N!T
+Calcular las órdenes posibles
+Extraído de un correo electrónico de Uncle Bob a Brett:
+Con N pasos y T subprocesos hay T * N pasos totales. Antes de cada paso
+hay un conmutador de contexto que elige entre los subprocesos. Por tanto,
+cada ruta se representa como una cadena de dígitos que denota los cambios
+de contexto. Dados los pasos A y B y los subprocesos 1 y 2, las seis rutas
+posibles son 1122, 1212, 1221, 2112, 2121 y 2211. O, en términos de pasos,
+A1B1A2B2, A1A2B1B2, A1A2B2B1, A2A1B1B2, A2A1B2B1 y A2B2A1B1. Para tres
+subprocesos, la secuencia sería 112233, 112323, 113223, 113232, 112233,
+121233, 121323, 121332, 123132, 123123…
+Una característica de estas cadenas es que siempre debe haber N instancias
+de cada T. Por tanto, la cadena 111111 no es válida ya que tiene seis
+instancias de 1 y ninguna de 2 y 3.
+Por tanto, necesitamos las permutaciones de N 1, N 2… y N T. En realidad
+son las permutaciones de N * T tomando cada vez N * T, que es (N * T)!,
+pero sin los duplicados. Por tanto, el truco consiste en contar los
+duplicados y restarlos de (N * T)!.
+Dados dos pasos y dos subprocesos, ¿cuántos duplicados hay? Cada cadena de
+cuatro dígitos tiene dos 1 y dos 2. Estos pares se pueden intercambiar sin
+modificar el sentido de la cadena. Podríamos intercambiar los 1 o los 2, o
+ninguno. Por tanto hay cuatro isomorfas por cada cadena, lo que significa
+que hay tres duplicados, de modo que tres de las cuatro opciones son
+duplicados; por otra parte, una de las cuatro permutaciones no son
+duplicados. 4! * .25 = 6. Este razonamiento parece funcionar.
+¿Cuántos duplicados hay? Si N = 2 y T = 2, podría intercambiar los 1, los
+2, o ambos. En el caso de N = 2 y T = 3, podría intercambiar los 1, los 2,
+los 3, 1 y 2, 1 y 3, o 2 y 3. El intercambio son las permutaciones de N.
+Imagine que hay P permutaciones de N. El número de formas diferentes de
+organizar dichas permutaciones es P**T.
+Por tanto el número de isomorfas posibles es N!**T. Y el número de rutas
+es (T*N)!/(N!**T). De nuevo, en nuestro caso T = 2, N = 2 obtenemos 6
+(24/4).
+Para N = 2 y T = 3 obtenemos 720/8 = 90.
+Para N = 3 y T = 3 obtenemos 9!/6^3 = 1680.
+En nuestro sencillo caso de una sola línea de código Java, que equivale a
+ocho líneas de código de bytes y a dos subprocesos, el número total de
+posibles rutas de ejecución es 12 870. Si el tipo de lastIdUsed es long, cada
+lectura y escritura se convierte en dos operaciones y no una, y el número de
+posibilidades asciende a 2 704 156.
+¿Qué sucede si realizamos un cambio en este método?
+public synchronized void incrementValue() {
+++lastIdUsed;
+}
+El número de posibles rutas de ejecución es dos para dos subprocesos
+y N! para el caso general.
+Un examen más profundo
+¿Qué piensa del sorprendente resultado de dos subprocesos que invoquen el
+método una vez (antes de añadir synchronized) y obtengan el mismo
+resultado numérico? ¿Cómo es posible? Vayamos por partes.
+¿Qué es una operación atómica? Podemos definir una operación atómica
+como toda operación ininterrumpible. Por ejemplo, en el siguiente código, la
+línea 5, donde se asigna 0 a lastId, es atómica ya que de acuerdo al modelo
+de memoria de Java, la asignación a un valor de 32 bits es ininterrumpible.
+01: public class Example {
+02: int lastId;
+03:
+04: public void resetId() {
+05: value = 0;
+06: }
+07:
+08: public int getNextId() {
+09: ++value;
+10: }
+11: }
+¿Qué sucede si cambiamos el tipo de lastId de int a long? ¿Sigue
+siendo atómica la línea 5? No de acuerdo a la especificación de la MVJ.
+Podría ser atómica en un procesador concreto, pero según la especificación de
+la MVJ, la asignación a un valor de 64 bits requiere dos asignaciones de 32
+bits. Esto significa que entre la primera y la segunda podría irrumpir otro
+subproceso y cambiar uno de los valores.
+¿Y qué sucede con el operador de preincremento, ++, de la línea 9? Este
+operador se puede interrumpir, de modo que no es atómico. Para entenderlo,
+repasemos el código de bytes de ambos métodos.
+Antes de continuar, hay tres definiciones importantes:
+Marco: La invocación de un método requiere un marco, el cual incluye
+la dirección de devolución, los parámetros pasados al método y las
+variables locales definidas en el mismo. Es una técnica estándar
+empleada para definir una pila de invocaciones, que se usa en muchos
+lenguajes modernos para permitir la invocación de funciones y métodos
+básicos, además de invocaciones recursivas.
+Variable local: Las variables definidas en el ámbito del método. Todos
+los métodos no estáticos tienen al menos una variable, this, que
+representa el objeto actual, el objeto que ha recibido el último mensaje
+(en el subproceso actual) que ha propiciado la invocación del método.
+Pila de operandos: Muchas instrucciones de la MVJ aceptan
+parámetros. La pila de operandos es donde se incluyen dichos
+parámetros. La pila es una estructura de datos LIFO (Last-In, First-Out
+o Último en entrar, primero en salir) estándar.
+Veamos el código de bytes generado para resetId().
+Nemónico Descripción Pila de
+operandos
+posterior
+ALOAD 0 Cargar la variable 0a en la pila de operandos. ¿Qué
+es la variable 0a? Es this., el objeto actual. Al
+invocar el método, el receptor del mensaje, una
+instancia de Example, se envía a la matriz de
+variables locales del marco creado para la
+invocación de métodos. Siempre es la primera
+variable que se añade a todos los métodos de
+instancia.
+this
+ICONST_0 Incluir el valor constante 0 en la pila de operandos. this, 0
+PUTFIELD
+lastId Almacenar el valor superior de la pila (0) en el valor
+de campo del objeto denominado por la referencia
+de objeto una posición alejada de la parte superior
+de la pila, this.
+<Vacío>
+Estas tres instrucciones son atómicas ya que a pesar de que el subproceso
+que las ejecuta podría verse interrumpido por cualquiera de ellas, la
+información para la instrucción PUTFIELD (el valor constante 0 de la parte
+superior de la pila y la referencia a éste una posición inferior, junto con el
+valor del campo) no se ve alterada por ningún otro subproceso. Por tanto, al
+producirse la asignación, sabemos que el valor 0 se almacena en el valor del
+campo. La operación es atómica. Todos los operandos procesan información
+local del método, de modo que no hay interferencias entre subprocesos.
+Si estas instrucciones se ejecutan en diez subprocesos, hay
+4.38679733629e+24 ordenaciones posibles. Sin embargo, sólo hay un
+resultado posible, de modo que las distintas ordenaciones son irrelevantes. Y
+además, se garantiza el mismo resultado para valores long en este caso. ¿Por
+qué? Los diez subprocesos asignan un valor constante. Aunque se
+entremezclen, el resultado final será el mismo. Habrá problemas con la
+operación ++ en el método getNextId. Imagine que lastId contiene 42 al
+inicio de este método. Veamos el código de bytes de este nuevo método:
+Nemónico Descripción Pila de
+operandos
+posterior
+ALOAD 0 Cargar this en la pila de operandos. this
+DUP Copiar la parte superior de la pila. Ahora tenemos
+dos copias de this en la pila de operandos.
+this,
+this
+GETFIELD
+lastId Recuperar el valor del campo lastId del objeto al
+que se apunta en la parte superior de la pila (this) y
+volver a almacenar el valor en la pila.
+this, 42
+ICONST_1 Desplazar la constante entera 1 en la pila. this, 42,
+IADD Suma entera de los dos valores superiores de la pila
+de operandos y volver a almacenar el resultado en la
+pila.
+this, 43
+DUP_X1 Duplicar el valor 43 y añadirlo delante de this. 43, this,
+PUTFIELD Almacenar el valor superior de la pila de operandos, 43
+value 43, en el valor de campo del objeto actual,
+representado por el siguiente valor superior de la
+pila de operandos, this.
+IRETURN Devolver el valor superior (y único) de la pila de
+operandos.
+<Vacío>
+Imagine que el primer subproceso completa las tres primeras
+instrucciones, hasta GETFIELD incluida y después se interrumpe. Aparece un
+segundo subproceso y ejecuta el método completo, incrementando lastId en
+uno; devuelve 43. Tras ello, el primer subproceso retoma desde donde se
+detuvo; 42 sigue en la pila de operandos por ser el valor de lastId cuando
+ejecutó GETFIELD. Suma uno para obtener 43 y almacena el resultado.
+El valor 43 también se devuelve al primer subproceso. Como resultado,
+uno de los incrementos se pierde ya que el primer subproceso interfiere con el
+segundo después de que éste haya interrumpido al primero.
+Al convertir el método getNextId() en synchronized se corrige este
+problema.
+Conclusión
+No se necesita un conocimiento extenso del código de bytes para entender
+cómo unos subprocesos interrumpen a otros. Si consigue entender este
+ejemplo, demostrará la posibilidad de varios subprocesos entrelazados, un
+conocimiento suficiente.
+Dicho esto, lo que este sencillo ejemplo revela es la necesidad de
+entender el modelo de memoria para saber qué se permite y qué no.
+Equivocadamente se piensa que el operador ++ (pre o postincremento) es
+atómico, y evidentemente no lo es. Esto significa que tiene que saber:
+Dónde están los objetos y valores compartidos.
+El código que provoca problemas de lectura/actualización concurrente.
+Cómo evitar que se produzcan dichos problemas.
+Conocer su biblioteca
+La estructura Executor
+Como mostramos en ExecutorClientScheduler.java, la estructura
+Executor de Java 5 permite la ejecución sofisticada por medio de
+agrupaciones de subprocesos. Es una clase del paquete
+java.util.concurrent. Si va a crear subprocesos y no usa una agrupación
+de subprocesos o utiliza una creada a mano, considere el uso de Executor.
+Hace que el código sea más limpio, más fácil de entender y de menor tamaño.
+La estructura Executor agrupa subprocesos, los cambia automáticamente
+de tamaño y los vuelve a crear si es necesario. También admite futuros, una
+construcción de programación concurrente habitual. La estructura Executor
+funciona con clases que implementan Runnable y también con clases que
+implementan la interfaz Callable. Callable se parece a Runnable, pero
+puede devolver un resultado, una necesidad habitual en soluciones de
+múltiples subprocesos.
+Un futuro resulta muy útil cuando el código tiene que ejecutar varias
+operaciones independientes y esperar a que terminen:
+public String processRequest(String message) throws Exception {
+Callable<String> makeExternalCall = new Callable<String>() {
+public String call() throws Exception {
+String result = “”;
+// realizar solicitud externa
+return result;
+}
+};
+Future<String> result = executorService.submit(makeExternalCall);
+String partialResult = doSomeLocalProcessing();
+return result.get() + partialResult;
+}
+En este ejemplo, el método comienza a ejecutar el objeto
+makeExternalCall, prosigue con otro procesamiento y la última línea invoca
+result.get(), que se bloquea hasta que el futuro termina.
+Soluciones no bloqueantes
+La MV Java 5 aprovecha el diseño de los procesadores modernos que
+admiten actualizaciones fiables y no bloqueantes. Imagine una clase que usa
+sincronización (y por tanto bloqueo) para proporcionar la actualización
+compatible con subprocesos de un valor:
+public class ObjectWithValue {
+private int value;
+public void synchronized incrementValue() { ++value; }
+public int getValue() { return value; }
+}
+Java 5 dispone de varias clases nuevas para este tipo de situaciones, como
+por ejemplo AtomicBoolean, AtomicInteger y AtomicReference. Podemos
+modificar el código anterior para usar un enfoque no bloqueante:
+public class ObjectWithValue {
+private AtomicInteger value = new AtomicInteger(0);
+public void incrementValue() {
+value.incrementAndGet();
+}
+public int getValue() {
+return value.get();
+}
+}
+Aunque use un objeto en lugar de una primitiva y envíe mensajes como
+incrementAndGet() en lugar de ++, el rendimiento de esta clase supera en la
+mayoría de los casos al de la versión anterior. En algunos casos será
+ligeramente más rápido pero los casos en los que es más lento son
+prácticamente inexistentes.
+¿Cómo es posible? Los procesadores modernos disponen de una
+operación denominada CAS (Compare and Swap, Comparar e intercambiar).
+Es una operación similar al bloqueo optimista de una base de datos, mientras
+que la versión sincronizada es similar al bloqueo pesimista.
+La palabra clave synchronized siempre adquiere un bloqueo, incluso
+cuando un segundo subproceso no intenta actualizar el mismo valor. Aunque
+el rendimiento de los bloqueos intrínsecos ha mejorado con respecto a
+versiones anteriores, sigue siendo muy costoso.
+La versión no bloqueante asume inicialmente que varios subprocesos no
+modifican el mismo valor con la suficiente periodicidad como para generar
+un problema. Por el contrario, detecta de forma eficaz si se produce dicha
+situación y la reintenta hasta que la actualización es satisfactoria. Esta
+detección suele ser menos costosa que la adquisición de un bloqueo, incluso
+en situaciones de contención moderada o alta.
+¿Cómo lo hace la MV? La operación CAS es atómica. Por tanto, la
+operación CAS tiene este aspecto:
+int variableBeingSet;
+void simulateNonBlockingSet (int newValue) {
+int currentValue;
+do {
+currentValue = variableBeingSet
+} while(currentValue != compareAndSwap(currentValue, newValue));
+}
+int synchronized compareAndSwap(int currentValue, int newValue) {
+if(variableBeingSet == currentValue) {
+variableBeingSet = newValue;
+return currentValue;
+}
+return variableBeingSet;
+}
+Cuando un método intenta actualizar una variable compartida, la
+operación CAS comprueba que la variable establecida sigue teniendo el
+último valor conocido. En caso afirmativo, se cambia la variable. En caso
+contrario, la variable no se establece ya que otro subproceso ha conseguido
+acceder.
+El método que realiza el intento (mediante la operación CAS) ve que el
+cambio no se ha realizado y lo intenta de nuevo.
+Clases incompatibles con subprocesos
+Existen clases que no son compatibles con subprocesos, como las siguientes:
+SimpleDateFormat.
+Conexiones de base de datos.
+Contenedores de java.util.
+Servlet.
+Algunas clases de colección tienen métodos concretos compatibles con
+subprocesos. Sin embargo, cualquier operación que invoque más de un
+método no lo es. Por ejemplo, si no quiere reemplazar algo en HashTable
+porque ya existe, podría crear el siguiente código:
+if(!hashTable.containsKey(someKey)) {
+hashTable.put(someKey, new SomeValue());
+}
+Cada uno de los métodos es compatible con subprocesos. Sin embargo,
+otro subproceso podría añadir un valor entre las invocaciones de
+containsKey y put. Existen varias formas de solucionar este problema:
+Bloquear primero HashTable y comprobar que los demás usuarios de
+HashTable hagan lo mismo; bloqueo basado en clientes:
+synchronized(map) {
+if(!map.containsKey(key))
+map.put(key,value);
+}
+Envolver HashTable en su propio objeto y usar dos API distintas;
+bloqueo basado en servidores con un adaptador:
+public class WrappedHashtable<K, V> {
+private Map<K, V> map = new Hashtable<K, V>();
+public synchronized void putIfAbsent(K key, V value) {
+if (map.containsKey(key))
+map.put(key, value);
+}
+}
+Usar colecciones compatibles con subprocesos:
+ConcurrentHashMap<Integer, String> map = new ConcurrentHashMap<Integer,
+String>();
+map.putIfAbsent(key, value);
+Las colecciones de java.util.concurrent incluyen operaciones como
+putIfAbsent() para acomodar este tipo de operaciones.
+Las dependencias entre métodos pueden afectar al
+código concurrente
+El siguiente ejemplo es una forma de añadir dependencias entre métodos:
+public class IntegerIterator implements Iterator<Integer>
+private Integer nextValue = 0;
+public synchronized boolean hasNext() {
+return nextValue < 100000;
+}
+public synchronized Integer next() {
+if (nextValue == 100000)
+throw new IteratorPastEndException();
+return nextValue++;
+}
+public synchronized Integer getNextValue() {
+return nextValue;
+}
+}
+Veamos otro código que usa IntegerIterator:
+IntegerIterator iterator = new IntegerIterator();
+while(iterator.hasNext()) {
+int nextValue = iterator.next();
+// hacer algo con nextValue
+}
+Si un subproceso ejecuta este código no habrá problemas. ¿Qué sucede si
+dos subprocesos intentan compartir una misma instancia de IntegerIterator
+para procesar el valor que reciba cada uno pero cada elemento de la lista sólo
+se procesa una vez? En la mayoría de los casos, no hay consecuencias
+negativas; los subprocesos comparten la lista, procesan los elementos
+devueltos por el iterador y se detienen cuando éste termina. Sin embargo,
+existe la posibilidad de que al final de la iteración los dos subprocesos
+interfieran entre ellos y provoquen que uno supere el final del iterador y se
+genere una excepción.
+El problema es el siguiente: El subproceso 1 pregunta hasNext(), que
+devuelve true. El subproceso 1 se evita y el subproceso 2 realiza la misma
+pregunta, que sigue siendo true. Tras ello, el subproceso 2 invoca next(),
+que devuelve un valor, como era de esperar, pero como efecto secundario
+hace que hasNext() devuelva false.
+Se vuelve a iniciar el subproceso 1, pensando que hasNext() sigue siendo
+true, y después invoca next(). Aunque los métodos concretos están
+sincronizados, el cliente usa dos métodos.
+Es un problema real y un ejemplo que puede surgir en código
+concurrente. En este caso concreto, el problema es especialmente sutil ya que
+la única ocasión en la que produce un fallo es durante la iteración final del
+iterador. Si los subprocesos se dividen de forma correcta, puede que uno
+supere el final del iterador. Es el tipo de error que surge en un sistema que
+lleva tiempo en producción, y es difícil de detectar. Tiene tres opciones:
+Tolerar el fallo.
+Solucionar el problema cambiando el cliente: bloqueo basado en el
+cliente.
+Solucionar el problema cambiando el servidor, lo que también provoca
+que cambie el cliente: bloqueo basado en el servidor.
+Tolerar el fallo
+En ocasiones, los sistemas se configuran para que un fallo no produzca
+daños. Por ejemplo, el cliente anterior podía capturar la excepción y
+limpiarla, aunque sería un tanto torpe. Es como limpiar fugas de memoria
+reiniciando a medianoche.
+Bloqueo basado en el cliente
+Para que IntegerIterator funcione correctamente con varios subprocesos,
+cambie el cliente (y los demás) como se indica a continuación:
+IntegerIterator iterator = new IntegerIterator();
+while (true) {
+int nextValue;
+synchronized (iterator) {
+if (!iterator.hasNext())
+break;
+nextValue = iterator.next();
+}
+doSometingWith(nextValue);
+}
+Cada cliente añade un bloqueo a través de la palabra clave synchronized.
+Esta duplicación incumple el principio DRY, pero puede ser necesaria si el
+código usa agrupaciones de terceros no compatibles con subprocesos.
+La estrategia es arriesgada ya que todos los programadores que usen el
+servidor deben acordarse de bloquearlo antes de usarlo y de desbloquearlo
+cuando terminen. Hace muchos años, trabajé en un sistema que usaba el
+bloqueo basado en el cliente en un recurso compartido. El recurso se usaba en
+cientos de puntos distintos del código. Un pobre programador se olvidó de
+bloquear el recurso en uno de esos puntos.
+Era un sistema de varios terminales con software de contabilidad para el
+sindicato de transportistas. Local 705. El ordenador se encontraba en una sala
+de temperatura controlada de un piso elevado, a unas 50 millas al norte de la
+sede de Local 705. En la sede, decenas de trabajadores introducían datos en
+las terminales, conectadas al ordenador mediante líneas telefónicas dedicadas
+y módem semidúplex de 600bps (esto fue hace mucho, mucho tiempo).
+Una vez al día, una de las terminales se bloqueaba, sin razón aparente. El
+bloqueo no tenía preferencia alguna por una terminal o una hora concreta. Es
+como si alguien echara a suertes la terminal que bloquear y la hora del
+bloqueo. En ocasiones, se bloqueaba más de una terminal. En ocasiones,
+podían pasar varios días sin bloqueos.
+Inicialmente, se optó por reiniciar como solución, pero era complicado
+coordinar los reinicios. Tenemos que avisar a la sede y esperar a que todos
+terminaran lo que estuvieran haciendo en todas las terminales. Tras ello, se
+apagaba el sistema y se reiniciaba. Si alguien estaba haciendo algo importante
+para lo que necesitaba una o dos horas, la terminal bloqueada tenía que seguir
+bloqueada.
+Tras varias semanas de depuración, descubrimos que la causa era un
+contador de búfer circular desincronizado con su puntero. Este búfer
+controlaba la salida a la terminal. El valor del puntero indicaba que el búfer
+estaba vacío pero el contador mostraba que estaba lleno. Como estaba vacío,
+no había nada que mostrar; pero como también estaba lleno, no se podía
+añadir nada al búfer que mostrar en la pantalla.
+Sabíamos qué era lo que bloqueaba las terminales pero no qué provocaba
+la desincronización del búfer circular, por lo que añadimos un truco para
+resolver el problema. Se podían leer los conmutadores del panel frontal en el
+ordenador (esto fue hace mucho, mucho, mucho tiempo). Diseñamos una
+función de trampa que detectaba si uno de los conmutadores se había
+generado y después buscábamos un búfer circular que estuviera tanto lleno
+como vacío. Si lo encontrábamos, lo variábamos. ¡Voilá! La terminal
+bloqueada volvía a funcionar. De este modo no era necesario reiniciar el
+sistema si una terminal se bloqueaba. La sede nos llamaba y nos decía que
+había un bloqueo, nos acercábamos hasta la sala de ordenadores y
+pulsábamos un conmutador.
+En ocasiones ellos trabajan los fines de semana pero nosotros no. Por
+ello, añadimos una función al programador que comprobaba los búfer
+circulares una vez por minuto y restablecía los que estuvieran tanto llenos
+como vacíos. De este modo se descongestionaban las pantallas antes de que
+la dirección llegara al teléfono.
+Necesitamos varias semanas de análisis de código de lenguaje de
+ensamblado antes de localizar al culpable. Habíamos calculado que la
+frecuencia de los bloqueos se debía a un uso desprotegido del búfer circular,
+así que sólo era necesario determinar el uso fallido. Desafortunadamente,
+esto fue hace mucho tiempo y no disponíamos de herramientas de búsqueda,
+referencias cruzadas ni de otras técnicas automáticas de ayuda. Teníamos que
+escudriñar los listados. En aquel frío invierno de 1971 en Chicago aprendí
+que los bloqueos basados en el cliente son verdaderamente terribles.
+Bloqueo basado en el servidor
+La duplicación se puede eliminar si modificamos IntegerIterator de esta
+forma:
+public class IntegerIteratorServerLocked {
+private Integer nextValue = 0;
+public synchronized Integer getNextOrNull() {
+if (nextValue < 100000)
+return nextValue++;
+else
+return null;
+}
+}
+Y también cambia el código cliente:
+while (true) {
+Integer nextValue = iterator.getNextOrNull();
+if (next == null)
+break;
+// hacer algo con nextValue
+}
+En este caso, en realidad cambiamos la API de la clase para que sea
+compatible con el subproceso[120]. El cliente debe realizar una comprobación
+de null en lugar de comprobar hasNext().
+Por lo general, el bloqueo basado en el servidor es preferible por estos
+motivos:
+Reduce el código repetido: El bloqueo basado en el servidor hace que el
+cliente bloquee correctamente el servidor. Al incluir el código de
+bloqueo en el servidor, se libera a los clientes para usar el objeto y no
+tener que preocuparse de crear código de bloqueo adicional.
+Permite un mejor rendimiento: Puede intercambiar un servidor
+compatible con subprocesos por otro incompatible en caso de desarrollo
+de un solo subproceso, lo que evita la sobrecarga.
+Reduce las posibilidades de error: Sólo se necesita un programador que
+se olvide del bloqueo.
+Aplica una única política: La política se aplica solamente al servidor, no
+a todos los clientes.
+Reduce el ámbito de las variables compartidas: El cliente las desconoce
+y tampoco sabe cómo se bloquean. Todo se oculta en el servidor.
+Cuando se produce un fallo, su origen se busca en menos puntos.
+¿Y si no es el propietario del código de servidor?
+Usar un adaptador para cambiar la API y añadir bloqueo
+public class ThreadSafeIntegerIterator {
+private IntegerIterator iterator = new IntegerIterator();
+public synchronized Integer getNextOrNull() {
+if(iterator.hasNext())
+return iterator.next();
+return null;
+}
+}
+Mejor todavía, usar colecciones compatibles con subprocesos con
+interfaces ampliadas.
+Aumentar la producción
+Imagine que desea leer el contenido de una serie de páginas de una lista de
+URL en la red. Al leer cada página, la analizamos para acumular estadísticas.
+Después de leer todas, imprimimos un informe de resumen.
+La siguiente clase devuelve el contenido de una página, dada una URL.
+public class PageReader {
+//…
+public String getPageFor(String url) {
+HttpMethod method = new GetMethod(url);
+try {
+httpClient.executeMethod(method);
+String response = method.getResponseBodyAsString();
+return response;
+} catch (Exception e) {
+handle(e);
+} finally {
+method.releaseConnection();
+}
+}
+}
+La siguiente clase es el iterador que proporciona el contenido de las
+páginas en función de un iterador de URL:
+public class PageIterator {
+private PageReader reader;
+private URLIterator urls;
+public PageIterator(PageReader reader, URLIterator urls) {
+this.urls = urls;
+this.reader = reader;
+}
+public synchronized String getNextPageOrNull() {
+if (urls.hasNext())
+getPageFor(urls.next());
+else
+return null;
+}
+public String getPageFor(String url) {
+return reader.getPageFor(ur1);
+}
+}
+Se puede compartir una instancia de PageIterator entre varios
+subprocesos distintos, cada uno con su propia instancia de PageReader para
+leer las páginas que obtiene del iterador.
+Hemos reducido el tamaño del bloque synchronized. Simplemente
+contiene la sección crítica de PageIterator. Siempre conviene sincronizar lo
+menos posible.
+Cálculo de producción de un solo subproceso
+Vayamos con los cálculos. Imagine lo siguiente, de acuerdo al argumento
+anterior:
+Tiempo de E/S para recuperar una página (de media): 1 segundo.
+Tiempo de procesamiento para analizar la página (de media): .5
+segundos.
+E/S requiere 0 por 100 de la CPU mientras que el procesamiento
+requiere 100 por 100.
+Si se procesan N páginas en un mismo subproceso, el tiempo de ejecución
+total es de 1.5 segundos * N. En la figura A.1 puede ver una instantánea de 13
+páginas, aproximadamente 19.5 segundos.
+Figura A.1. Un único subproceso
+Cálculo de producción con varios subprocesos
+Si se pueden recuperar páginas en cualquier orden y procesarlas de forma
+independiente, entonces es posible usar varios subprocesos para aumentar la
+producción. ¿Qué sucede si usamos tres subprocesos? ¿Cuántas páginas
+podemos obtener en el mismo tiempo?
+Como se aprecia en la figura A.2, la solución con varios procesos permite
+que el análisis de las páginas vinculado al proceso se solape con la lectura de
+las mismas, vinculada a E/S. En un mundo ideal, significaría que el
+procesador se utiliza totalmente. Cada lectura de página por segundo se
+solapa con dos análisis. Por tanto, podemos procesar dos páginas por
+segundo, lo que triplica la producción de la solución con un solo proceso.
+Figura A.2. Tres subprocesos concurrentes.
+Bloqueo mutuo
+Imagine una aplicación Web con dos agrupaciones de recursos compartidos
+de tamaño finito:
+Una agrupación de conexiones de base de datos para tareas locales de
+almacenamiento de procesos.
+Una agrupación de conexiones MQ a un repositorio principal.
+Imagine que hay dos operaciones en la aplicación: crear y actualizar:
+Crear: Adquirir una conexión al repositorio principal y la base de datos.
+Comunicarse con el repositorio principal y después almacenar el trabajo
+local en la base de datos de procesos.
+Actualizar: Adquirir una conexión a la base de datos y después al
+repositorio principal. Leer el trabajo de la base de datos y enviarlo al
+repositorio principal.
+¿Qué sucede con los usuarios que superan el tamaño de la agrupación?
+Imagine que el tamaño de cada agrupación es 10.
+10 usuarios intentan usar crear, de modo que se adquieren diez
+conexiones de base de datos y cada subproceso se interrumpe después de
+esta adquisición pero antes de adquirir una conexión al repositorio
+principal.
+10 usuarios intentan usar actualizar, de modo que se adquieren las diez
+conexiones al repositorio principal y cada subproceso se interrumpe
+después de adquirir el repositorio principal pero antes de adquirir una
+conexión a la base de datos.
+Ahora los 10 subprocesos crear deben esperar a adquirir una conexión al
+repositorio principal pero los 10 subprocesos actualizar deben esperar a
+adquirir una conexión a la base de datos.
+Bloqueo mutuo. El sistema no se recupera nunca.
+Puede parecerle una situación improbable pero ¿quién desea un sistema
+que se colapsa cada semana? ¿Quién quiere depurar un sistema con síntomas
+tan difíciles de reproducir? Es el tipo de problema que tarda semanas en
+resolverse.
+Una solución habitual consiste en añadir instrucciones de depuración para
+determinar qué sucede. Evidentemente, estas instrucciones cambian tanto el
+código que el bloqueo mutuo se genera en otras situaciones y tarda meses en
+volver a producirse[121].
+Para solucionar realmente el problema del bloqueo absoluto, debemos
+entender sus causas. Para que se produzca, deben darse cuatro condiciones:
+Exclusión mutua.
+Bloqueo y espera.
+No expropiación.
+Espera circular.
+Exclusión mutua
+La exclusión mutua se produce cuando varios subprocesos deben usar los
+mismos recursos y dichos recursos
+No se pueden usar en varios subprocesos al mismo tiempo.
+Son de número limitado.
+Un ejemplo típico de este tipo de recurso es una conexión de base de
+datos, un archivo abierto para escritura, un bloqueo de registro o un
+semáforo.
+Bloqueo y espera
+Cuando un subproceso adquiere un recurso, no lo libera hasta adquirir los
+demás recursos que necesita y terminar su trabajo.
+No expropiación
+Un subproceso no puede adueñarse de los recursos de otro. Cuando un
+subproceso obtiene un recurso, la única forma de que otro lo consiga es que
+el primero lo libere.
+Espera circular
+También se denomina abrazo mortal. Imagine dos subprocesos, T1 y T2, y
+dos recursos, R1 y R2. T1 tiene R1, T2 tiene R2. T1 también necesita R2 y
+T2 también necesita R1. Es similar al diagrama de la figura A.3:
+Figura A.3.
+Estas cuatro condiciones deben cumplirse para que se produzca un
+bloqueo mutuo. Si se incumple alguna de ellas, no se producirá.
+Evitar la exclusión mutua
+Una estrategia para evitar el bloqueo mutuo es impedir la condición de
+exclusión mutua, por medio de lo siguiente:
+Usar recursos que permitan un uso simultáneo, como por ejemplo,
+AtomicInteger.
+Incrementar el número de recursos para que sea igual o mayor que el
+número de subprocesos implicados.
+Comprobar que todos los recursos están libres antes de adquirir ninguno.
+Desafortunadamente, la mayoría de recursos son limitados y no permiten
+un uso simultáneo, y es habitual que la identidad del segundo recurso se base
+en los resultados de operar sobre el primero, pero no se desanime, todavía
+quedan tres condiciones.
+Evitar bloqueo y espera
+También puede eliminar el bloqueo mutuo si rechaza la espera. Compruebe
+cada uno de los recursos antes de obtenerlos y libere todos los recursos y
+comience de nuevo si detecta uno que esté ocupado. Este enfoque genera
+algunos problemas:
+Inanición: Un subproceso no consigue adquirir los recursos que necesita
+(puede que tenga una combinación exclusiva de recursos que casi nunca
+esté disponible).
+Bloqueo activo: Varios subprocesos pueden actuar al unísono, adquirir
+un recurso y liberarlo, de forma repetida. Es especialmente probable en
+algoritmos de programación de CPU simples (como dispositivos
+incrustados o algoritmos de equilibrio de subprocesos escritos a mano).
+En ambos casos, se puede reducir la producción. El primero reduce la
+utilización de la CPU, mientras que el segundo genera una elevada utilización
+de la CPU sin sentido.
+Aunque esta estrategia parezca ineficaz, es mejor que nada. Como
+ventaja, siempre se puede implementar si todo lo demás falla.
+Evitar la expropiación
+Otra estrategia para evitar el bloqueo mutuo consiste en permitir que todos
+los subprocesos se apropien de los recursos de otros. Suele realizarse a través
+de un sencillo mecanismo de solicitudes. Cuando un subproceso descubre que
+hay un recurso ocupado, le solicita al propietario que lo libere. Si el
+propietario también espera a otro recurso, lo libera y comienza de nuevo.
+Es similar al enfoque anterior, pero, como ventaja, un subproceso puede
+esperar a un recurso, lo que reduce el número de reinicios. Sin embargo, la
+gestión de todas estas solicitudes puede resultar complicada.
+Evitar la espera circular
+Es el enfoque más habitual para impedir el bloqueo mutuo. En la mayoría de
+sistemas, basta con una sencilla convención acordada entre ambas partes.
+En el ejemplo anterior del subproceso 1 que quiere tanto el recurso 1
+como el 2, y el subproceso 2 que desea tanto el recurso 2 como el 1, al forzar
+a ambos subprocesos a que asignen los recursos en el mismo orden se
+imposibilita la espera circular.
+En general, si todos los subprocesos pueden acordar un orden global de
+los recursos y si todos asignan los recursos en ese orden, el bloqueo mutuo es
+imposible. Pero como todas las estrategias, también se pueden producir
+problemas:
+El orden de adquisición puede no corresponderse al orden de uso; por
+tanto, un recurso adquirido al inicio puede que no se use hasta el final.
+Esto puede bloquear recursos más tiempo de lo estrictamente necesario.
+En ocasiones no se puede imponer un orden de adquisición de recursos.
+Si el ID del segundo recurso proviene de una operación realizada en el
+primero, ese orden no es factible.
+Por tanto, existen varias formas de evitar el bloqueo mutuo. Algunas
+provocan inanición, mientras que otras usan la CPU en exceso y reducen la
+capacidad de respuesta. ¡TANSTAAFL![122]
+El aislamiento de la parte relacionada con subprocesos de su solución
+para permitir ajustes y experimentación es una forma de aprender a
+determinar las estrategias óptimas.
+Probar código con múltiples subprocesos
+¿Cómo se puede crear una prueba que demuestre que el siguiente código no
+es correcto?
+01: public class ClassWithThreadingProblem {
+02: int nextId;
+03:
+04: public int takeNextId() {
+05: return nextId++;
+06: }
+07: }
+Veamos la descripción de una prueba que lo demuestre:
+Recordar el valor actual de nextId.
+Crear dos subprocesos y que cada uno invoque takeNextId() una vez.
+Comprobar que el valor de nextId es dos más que el inicial.
+Ejecutar hasta demostrar que nextId sólo se ha incrementado en uno y
+no en dos.
+En el Listado A-2 se reproduce la prueba:
+Listado A-2
+ClassWithThreadingProblemTest.java.
+01: package example;
+02:
+03: import static org.junit.Assert.fail;
+04:
+05: import org.junit.Test;
+06:
+07: public class ClassWithThreadingProblemTest {
+08: @Test
+09: public void twoThreadsShouldFailEventually() throws Exception {
+10: final ClassWithThreadingProblem classWithThreadingProblem
+= new ClassWithThreadingProblem();
+11:
+12: Runnable runnable = new Runnable() {
+13: public void run() {
+14: ClassWithThreadingProblem.takeNextId();
+15: }
+16: };
+17:
+18: for (int i = 0; i < 50000; ++i) {
+19: int startingId = classWithThreadingProblem.lastId;
+20: int expectedResult = 2 + startingId;
+21:
+22: Thread t1 = new Thread(runnable);
+23: Thread t2 = new Thread(runnable);
+24: t1.start();
+25: t2.start();
+26: t1.join();
+27: t2.join();
+28:
+29: int endingId = classWithThreadingProblem.lastId;
+30:
+31: if (endingId != expectedResult)
+32: return;
+33: }
+34:
+35: fail(“Should have exposed a threading issue but it did not.”);
+36: }
+37: }
+Línea Descripción
+10 Crear una sola instancia de ClassWithThreadingProblem. Debemos
+usar la palabra clave final ya que se usa después en una clase interna
+anónima.
+12-16 Crear una clase interna anónima que use la instancia de
+ClassWithThreadingProblem.
+18 Ejecutar este código hasta demostrar que falla, pero no tanto como
+para que la prueba tarde demasiado. Es un acto de equilibrio; no
+queremos esperar demasiado para demostrar el fallo. Elegir la
+cantidad de ejecuciones es complicado, aunque como veremos
+después, esta cifra se puede reducir considerablemente.
+19 Recordar el valor inicial, la prueba intenta demostrar que el código
+de ClassWithThreadingProblem es incorrecto. Si se supera la
+prueba, lo habrá demostrado. Si la prueba falla, habrá sido incapaz
+de demostrarlo.
+20 Esperamos que el valor final sea dos más que el actual.
+22-23 Crear dos subprocesos que usen el objeto creado en las líneas 12-16.
+De este modo contamos con dos posibles subprocesos que intentan
+usar nuestra instancia de ClassWithThreadingProblem y ambos
+interfieren entre sí.
+24-25 Hacer que los dos subprocesos se puedan ejecutar.
+26-27 Esperar a que terminen los dos subprocesos antes de comprobar los
+resultados.
+29 Registrar el valor final.
+31-32 ¿Es diferente endingId a lo que esperábamos? En caso afirmativo, se
+finaliza la prueba; hemos demostrado que el código es incorrecto. En
+caso negativo, volver a intentarlo.
+35 Si hemos llegado hasta aquí, la prueba no ha podido demostrar que el
+código de producción era incorrecto en una cantidad de tiempo
+razonable; el código ha fallado. O no es incorrecto o no hemos
+realizado suficientes iteraciones para que se produzca la condición de
+fallo.
+Esta prueba establece las condiciones de un problema de actualización
+concurrente. Sin embargo, el problema es tan infrecuente que la mayoría de
+las veces la prueba no lo detecta.
+En realidad, para detectar el problema debemos establecer el número de
+iteraciones en más de un millón. Incluso con esa cantidad, en diez
+ejecuciones de un bucle de 1 000 000, el problema sólo apareció una vez, lo
+que significa que debemos aumentar las iteraciones para obtener fallos
+fiables. ¿Cuánto estamos dispuestos a esperar?
+Aunque ajustáramos la prueba para obtener fallos fiables en un equipo,
+seguramente tendríamos que ajustarla con otros valores para ilustrar el fallo
+en otro equipo, sistema operativo o versión de la MVJ.
+Y es un problema sencillo. Si no podemos demostrarlo, ¿qué pasará
+cuando detectemos problemas realmente complejos?
+¿Qué enfoques debemos adoptar para demostrar este sencillo fallo? Y,
+sobre todo, ¿cómo podemos crear pruebas que demuestren fallos en un
+código más complejo? ¿Cómo podremos saber si el código tiene fallos
+cuando ni siquiera sabemos dónde buscar?
+Veamos algunas sugerencias:
+Pruebas Monte Carlo: Crear pruebas flexibles que se puedan ajustar.
+Después, ejecutarlas repetidamente, por ejemplo, en un servidor de
+prueba, y cambiar los valores de ajuste aleatoriamente. Si las pruebas
+fallan, el código es incorrecto. Diseñe las pruebas en las fases iniciales
+para que un servidor de integración continua las ejecute lo antes posible.
+Registre las condiciones de fallo de las pruebas.
+Ejecutar la prueba en todas las plataformas de desarrollo: De forma
+repetida y continuada. Cuanto más tiempo se ejecuten las pruebas sin
+fallos, más probable es que
+El código de producción sea correcto o
+Las pruebas no sean adecuadas para revelar los problemas.
+Ejecutar las pruebas en un equipo con distintas cargas: Si puede simular
+cargas similares a las del entorno de producción, hágalo.
+Sin embargo, aunque realice todos estos pasos, no es probable que detecte
+problemas de subprocesos en el código. Los problemas más complicados son
+los que sólo se producen una vez cada mil millones de oportunidades. Son el
+azote de los sistemas complejos.
+Herramientas para probar código basado en
+subprocesos
+IBM ha creado la herramienta ConTest[123]. Lo que hace es instrumentar las
+clases para aumentar las probabilidades de que falle el código sin
+subprocesos.
+No tenemos relación directa con IBM ni con el equipo que ha
+desarrollado ConTest. Un colega nos la descubrió. Tras varios minutos de
+usarla, notamos una gran mejoría en la detección de errores.
+A continuación, le indicamos cómo usar ConTest:
+Crear pruebas y código de producción, asegurándonos que haya pruebas
+diseñadas específicamente para simular varios usuarios con diferentes
+cargas, como mencionamos antes.
+Instrumentar el código de pruebas y producción con ConTest.
+Ejecutar las pruebas.
+Al instrumentar el código con ConTest, la tasa de éxito pasó de un fallo
+por cada millón de iteraciones a un fallo en 30 iteraciones. Los valores de
+bucle de las distintas ejecuciones de la prueba tras la instrumentación son los
+siguientes: 13, 23, 0, 54, 16, 14, 6, 69, 107, 49, 2. Evidentemente, las clases
+instrumentadas fallaban antes y con mayor fiabilidad.
+Conclusión
+En este capítulo hemos realizado un breve recorrido por el vasto y complejo
+territorio de la programación concurrente. Apenas hemos mostrado la
+superficie. Nos hemos centrado en disciplinas para mantener la limpieza del
+código concurrente, pero hay mucho más que aprender si tiene pensado
+diseñar sistemas concurrentes. Le recomendamos que empiece por el libro de
+Doug Lea Concurrent Programming in Java: Design Principles and
+Patterns[124].
+En este capítulo hemos presentado la actualización concurrente y las
+disciplinas de sincronización y bloqueo para evitarla. Hemos visto cómo los
+subprocesos pueden mejorar la producción de un sistema vinculado a E/S y
+las técnicas limpias para lograr dichas mejoras. Hemos descrito el bloqueo
+mutuo y las disciplinas para evitarlo de forma limpia.
+Por último, hemos analizado estrategias para mostrar problemas de
+concurrencia mediante la instrumentación del código.
+Ejemplos de código completos
+Cliente/Servidor sin subprocesos
+Listado A-3
+Server.java
+package com.objectmentor.clientserver.nonthreaded;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.SocketException;
+import common.MessageUtils;
+public class Server implements Runnable {
+ServerSocket serverSocket;
+volatile boolean keepProcessing = true;
+public Server(int port, int millisecondsTimeout) throws IOException {
+serverSocket = new ServerSocket(port);
+serverSocket.setSoTimeout(millisecondsTimeout);
+}
+public void run() {
+System.out.printf(“Server Starting\n”);
+while (keepProcessing) {
+try {
+System.out.printf(“accepting client\n”);
+Socket socket = serverSocket.accept();
+System.out.printf(“got client\n”);
+process(socket);
+} catch (Exception e) {
+handle(e);
+}
+}
+}
+private void handle(Exception e) {
+if (!(e instanceof SocketException)) {
+e.printStackTrace();
+}
+}
+public void stopProcessing() {
+keepProcessing = false;
+closeIgnoringException(serverSocket);
+}
+void process(Socket socket) {
+if (socket == null)
+return;
+try {
+System.out.printf(“Server: getting message\n”);
+String message = MessageUtils.getMessage(socket);
+System.out.printf(“Server: got message: %s\n”, message);
+Thread.sleep(1000);
+System.out.printf(“Server: sending reply: %s\n”, message);
+MessageUtils.sendMessage(socket, “Processed: ” + message);
+System.out.printf(“Server: sent\n”);
+closeIgnoringException(socket);
+} catch (Exception e) {
+e.printStackTrace();
+}
+}
+private void closeIgnoringException(Socket socket) {
+if (socket != null)
+try {
+socket.close();
+} catch (IOException ignore) {
+}
+}
+private void closeIgnoringException(ServerSocket serverSocket) {
+if (serverSocket != null)
+try {
+serverSocket.close();
+} catch (IOException ignore) {
+}
+}
+}
+Listado A-4
+ClientTest.java.
+package com.objectmentor.clientserver.nonthreaded;
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.SocketException;
+import common.MessageUtils;
+public class Server implements Runnable {
+ServerSocket serverSocket;
+volatile boolean keepProcessing = true;
+public Server(int port, int millisecondsTimeout) throws IOException {
+serverSocket = new ServerSocket(port);
+serverSocket.setSoTimeout(millisecondsTimeout);
+}
+public void run() {
+System.out.printf(“Server Starting\n”);
+while (keepProcessing) {
+try {
+System.out.printf(“accepting client\n”);
+Socket socket = serverSocket.accept();
+System.out.printf(“got client\n”);
+process(socket);
+} catch (Exception e) {
+handle(e);
+}
+}
+}
+private void handle(Exception e) {
+if (!(e instanceof SocketException)) {
+e.printStackTrace();
+}
+}
+public void stopProcessing() {
+keepProcessing = false;
+closeIgnoringException(serverSocket);
+}
+void process(Socket socket) {
+if (socket == null)
+return;
+try {
+System.out.printf(“Server: getting message\n”);
+String message = MessageUtils.getMessage(socket);
+System.out.printf(“Server: got message: %s\n”, message);
+Thread.sleep(1000);
+System.out.printf(“Server: sending reply: %s\n”, message);
+MessageUtils.sendMessage(socket, “Processed: ” + message);
+System.out.printf(“Server: sent\n”);
+closeIgnoringException(socket);
+} catch (Exception e) {
+e.printStackTrace();
+}
+}
+private void closeIgnoringException(Socket socket) {
+if (socket != null)
+try {
+socket.close();
+} catch (IOException ignore) {
+}
+}
+private void closeIgnoringException(ServerSocket serverSocket) {
+if (serverSocket != null)
+try {
+serverSocket.close();
+} catch (IOException ignore) {
+}
+}
+}
+Listado A-5
+MessageUtils.java.
+package common;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+public class MessageUtils {
+public static void sendMessage(Socket socket, String message)
+throws IOException {
+OutputStream stream = socket.getOutputStream();
+ObjectOutputStream oos = new ObjectOutputStream(stream);
+oos.writeUTF(message);
+oos.flush();
+}
+public static String getMessage(Socket socket) throws IOException {
+InputStream stream = socket.getInputStream();
+ObjectInputStream ois = new ObjectInputStream(stream);
+return ois.readUTF();
+}
+}
+Cliente/Servidor con subprocesos
+Para cambiar el servidor para que use subprocesos basta con cambiar el
+mensaje process (las nuevas líneas se muestran en negrita para destacarlas):
+void process(final Socket socket) {
+if (socket == null)
+return;
+Runnable clientHandler = new Runnable() {
+public void run() {
+try {
+System.out.printf(“Server: getting message\n”);
+String message = MessageUtils.getMessage(socket);
+System.out.printf(“Server: got message: %s\n”, message);
+Thread.sleep(1000);
+System.out.printf(“Server: sending reply: %s\n”, message);
+MessageUtils.sendMessage(socket, “Processed: ” + message);
+System.out.printf(“Server: sent\n”);
+closeIgnoringException(socket);
+} catch (Exception e) {
+e.printStackTrace();
+}
+}
+};
+Thread clientConnection = new Thread(clientHandler);
+clientConnection.start();
+}
+Apéndice B
+org.jfree.date.SerialDate
+Listado B-1
+SerialDate.Java
+1 /*==============================================================
+2 * JCommon: biblioteca gratuita de clases de propósito general para
+Java(tm)
+3 *==============================================================
+4 *
+5 * (C) Copyright 2000-2005, de Object Refinery Limited y colaboradores.
+6 *
+7 * Información del proyecto: http://www.jfree.org/jcommon/index.html
+8 *
+9 * Esta biblioteca es software gratuito; puede distribuirla y/o modificarla
+10 * bajo las condiciones de la Licencia pública general GNU publicada por
+11 * la Free Software Foundation; ya sea la versión 2.1 de la licencia, u
+12 * otra versión posterior (de su elección).
+13 *
+14 * Esta biblioteca se distribuye con la intención de que sea útil, pero
+15 * SIN GARANTÍA ALGUNA, incluida la garantía implícita de COMERCIABILIDAD
+16 * e IDONEIDAD PARA UN DETERMINADO FIN. Consulte la Licencia
+17 * pública general GNU si necesita más información al respecto.
+18 *
+19 * Debería haber recibido una copia de la Licencia pública general GNU
+20 * junto a esta biblioteca; en caso contrario, contacte con la Free
+Software
+21 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-
+1301,
+22 * EE.UU.
+23 *
+24 * [Java es una marca comercial o marca comercial registrada de Sun
+25 * Microsystems, Inc. en Estados Unidos y otros países.]
+26 *
+27 * ------------------
+28 * SerialDate.java
+29 * ------------------
+30 * (C) Copyright 2001-2005, de Object Refinery Limited.
+31 *
+32 * Autor original: David Gilbert (para Object Refinery Limited);
+33 * Colaborador(es): -;
+34 *
+35 * $Id: SerialDate.java,v 1.7 2005/11/03 09:25:17 mungady Exp $
+36 *
+37 * Cambios (11-Oct-2001)
+38 * --------------------------------------
+39 * 11-Oct-2001: Reorganización de la clase y cambio a un nuevo paquete
+40 * com.jrefinery.date (DG);
+41 * 05-Nov-2001: Se añade un método getDescription() y se elimina la clase
+42 * NotableDate (DG);
+43 * 12-Nov-2001: IBD requiere el método setDescription(), una vez eliminada
+la clase
+44 * NotableDate (DG); Se cambian getPreviousDayOfWeek(),
+45 * getFollowingDayOfWeek() y getNearestDayOfWeek() para corregir
+46 * errores (DG);
+47 * 05-Dic-2001: Error corregido en la clase SpreadsheetDate (DG);
+48 * 29-May-2002: Se transfieren las constantes de mes a una interfaz
+independiente
+49 * (MonthConstants) (DG);
+50 * 27-Ago-2002: Error corregido en el método addMonths(), gracias a Nálevka
+Petr (DG);
+51 * 03-Oct-2002: Errores indicados por Checkstyle (DG) corregidos;
+52 * 13-Mar-2003: Implementación de Serializable (DG);
+53 * 29-May-2003: Error corregido en el método addMonths (DG);
+54 * 04-Sep-2003: Implementación de Comparable. Actualización de los javadoc
+isInRange (DG);
+55 * 05-Ene-2005: Error corregido en el método addYears() (1096282) (DG);
+56 *
+57 */
+59 package org.jfree.date;
+61 import java.io.Serializable;
+62 import java.text.DateFormatSymbols;
+63 import java.text.SimpleDateFormat;
+64 import java.util.Calendar;
+65 import java.util.GregorianCalendar;
+66
+67 /**
+68 * Clase abstracta que define nuestros requisitos para manipular fechas,
+68 * sin limitación a una determinada implementación.
+70 * <P>
+71 * Requisito 1: coincidir al menos con el procesamiento de fechas en Excel;
+72 * Requisito 2: la clase es inmutable;
+73 * <P>
+74 * ¿Por qué no usar java.util.Date? Lo haremos, cuando tenga sentido. En
+ocasiones,
+75 * java.util.Date puede ser demasiado precisa; representa un instante en el
+tiempo,
+76 * con una precisión de 1/1000 de segundo (y la fecha depende de la
+77 * zona horaria). En ocasiones sólo querremos representar un día concreto
+(como el 21
+78 * de enero de 2015) sin preocuparnos de la hora del día, la
+79 * zona horaria u otros aspectos. Para eso hemos definido DayDate.
+80 * <P>
+81 * Puede invocar getInstance() para obtener una subclase concreta de
+SerialDate,
+82 * sin preocuparse de su implementación exacta
+83 *
+84 * @author David Gilbert
+85 */
+86 public abstract class SerialDate implements Comparable,
+87 Serializable,
+88 MonthConstants {
+90 /** Para serialización. */
+91 private static final long serialVersionUID = -293716040467423637L;
+93 /** Símbolos de formato de fecha. */
+94 public static final DateFormatSymbols
+95 DATE_FORMAT_SYMBOLS = new
+SimpleDateFormat().getDateFormatSymbols();
+97 /** Número de serie para el 1 de enero de 1900. */
+98 public static final int SERIAL_LOWER_BOUND = 2;
+100 /** Número de serie para el 31 de diciembre de 9999. */
+101 public static final int SERIAL_UPPER_BOUND = 2958465;
+103 /** Valor de año más bajo admitido por este formato de fecha. */
+104 public static final int MINIMUM_YEAR_SUPPORTED = 1900;
+106 /** Valor de año más alto admitido por este formato de fecha. */
+107 public static final int MAXIMUM_YEAR_SUPPORTED = 9999;
+109 /** Constante útil para lunes; equivale a java.util.Calendar.MONDAY.
+*/
+110 public static final int MONDAY = Calendar.MONDAY;
+112 /**
+113 * Constante útil para martes; equivale a java.util.Calendar.TUESDAY.
+114 * /
+115 public static final int TUESDAY = Calendar.TUESDAY;
+117 /**
+118 * Constante útil para miércoles; equivale a
+119 * java.util.Calendar.WEDNESDAY.
+120 */
+121 public static final int WEDNESDAY = Calendar.WEDNESDAY;
+123 /**
+124 * Constante útil para jueves; equivale a java.util.Calendar.THURSDAY.
+125 */
+126 public static final int THURSDAY = Calendar.THURSDAY;
+128 /** Constante útil para viernes; equivale a
+java.util.Calendar.FRIDAY. */
+129 public static final int FRIDAY = Calendar.FRIDAY;
+131 /**
+132 * Constante útil para sábado; equivale a java.util.Calendar.SATURDAY.
+133 */
+134 public static final int SATURDAY = Calendar.SATURDAY;
+136 /** Constante útil para domingo; equivale a
+java.util.Calendar.SUNDAY. */
+137 public static final int SUNDAY = Calendar.SUNDAY;
+139 /** Número de días de cada mes en años no bisiestos. */
+140 static final int[] LAST_DAY_OF_MONTH =
+141 {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+143 /** Número de días en un año (no bisiesto) hasta el final de cada
+mes. */
+144 static final int[] AGGREGATE_DAYS_TO_END_OF_MONTH =
+145 {0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365};
+147 /** Número de días en un año hasta el final del mes anterior. */
+148 static final int[] AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH =
+149 {0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365};
+151 /** Número de días en un año bisiesto hasta el final de cada mes. */
+152 static final int[] LEAP_YEAR_AGGREGATE_DAYS_TO_END_OF_MONTH =
+153 {0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 366};
+155 /**
+156 * Número de días en un año bisiesto hasta el final del mes anterior.
+157 */
+158 static final int[]
+159 LEAP_YEAR_AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH =
+160 {0, 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 366};
+162 /** Una constante útil para hacer referencia a la primera semana del
+mes. */
+163 public static final int FIRST_WEEK_IN_MONTH = 1;
+165 /** Una constante útil para hacer referencia a la segunda semana del
+mes. */
+166 public static final int SECOND_WEEK_IN_MONTH = 2;
+168 /** Una constante útil para hacer referencia a la tercera semana del
+mes. */
+169 public static final int THIRD_WEEK_IN_MONTH = 3;
+171 /** Una constante útil para hacer referencia a la cuarta semana del
+mes. */
+172 public static final int FOURTH_WEEK_IN_MONTH = 4;
+174 /** Una constante útil para hacer referencia a la última semana del
+mes. */
+175 public static final int LAST_WEEK_IN_MONTH = 0;
+177 /** Constante de intervalo. */
+178 public static final int INCLUDE_NONE = 0;
+180 /** Constante de intervalo. */
+181 public static final int INCLUDE_FIRST = 1;
+183 /** Constante de intervalo. */
+184 public static final int INCLUDE_SECOND = 2;
+186 /** Constante de intervalo. */
+187 public static final int INCLUDE_BOTH = 3;
+189 /**
+190 * Constante útil para especificar un día de la semana con respecto a
+una fecha
+191 * fija.
+192 */
+193 public static final int PRECEDING = -1;
+195 /**
+196 * Constante útil para especificar un día de la semana con respecto a
+una fecha
+197 * fija.
+198 */
+199 public static final int NEAREST = 0;
+201 /**
+202 * Constante útil para especificar un día de la semana con respecto a
+una fecha
+203 * fija.
+204 */
+205 public static final int FOLLOWING = 1;
+207 /** Una descripción para la fecha. */
+208 private String description;
+210 /**
+211 * Constructor predeterminado.
+212 */
+213 protected SerialDate() {
+214 }
+216 /**
+217 * Devuelve <code>true</code> si el código entero proporcionado
+representa un
+218 * día de la semana válido y <code>false</code> en caso contrario.
+219 *
+220 * @param code el código del que se comprueba la validez.
+221 *
+222 * @return <code>true</code> si el código entero proporcionado
+representa un
+223 * día de la semana válido y <code>false</code> en caso contrario.
+224 */
+225 public static boolean isValidWeekdayCode(final int code) {
+227 switch(code) {
+228 case SUNDAY:
+229 case MONDAY:
+230 case TUESDAY:
+231 case WEDNESDAY:
+232 case THURSDAY:
+233 case FRIDAY:
+234 case SATURDAY:
+235 return true;
+236 default:
+237 return false;
+238 }
+240 }
+242 /**
+243 * Convierte la cadena proporcionada en un día de la semana.
+244 *
+245 * @param s una cadena que representa el día de la semana.
+246 *
+247 * @return <code>-1</code> si la cadena no se puede convertir o el día
+de
+248 * la semana en caso contrario.
+249 */
+250 public static int stringToWeekdayCode(String s) {
+252 final String[] shortWeekdayNames
+253 = DATE_FORMAT_SYMBOLS.getShortWeekdays();
+254 final String[] weekDayNames = DATE_FORMAT_SYMBOLS.getWeekdays();
+256 int result = -1;
+257 s = s.trim();
+258 for (int i = 0; i < weekDayNames.length; i++) {
+259 if (s.equals(shortWeekdayNames[i])) {
+260 result = i;
+261 break;
+262 }
+263 if (s.equals(weekDayNames[i])) {
+264 result = i;
+265 break;
+266 }
+267 }
+268 return result;
+270 }
+272 /**
+273 * Devuelve una representación en cadena del día de la semana
+proporcionado.
+274 * <P>
+275 * Necesitamos un enfoque mejor.
+276 *
+277 * @param weekday el día de la semana.
+278 *
+279 * @return una cadena que representa el día de la semana
+proporcionado.
+280 */
+281 public static String weekdayCodeToString(final int weekday) {
+283 final String[] weekdays = DATE_FORMAT_SYMBOLS.getWeekdays();
+284 return weekdays[weekday];
+286 }
+288 /**
+289 * Devuelve una matriz de nombres de mes.
+290 *
+291 * @return una matriz de nombres de mes.
+292 */
+293 public static String[] getMonths() {
+295 return getMonths(false);
+297 }
+299 /**
+300 * Devuelve una matriz de nombres de mes.
+301 *
+302 * @param shortened un indicador para indicar que deben devolverse los
+nombres
+303 * de mes en formato reducido.
+304 *
+305 * @return una matriz de nombres de mes.
+306 */
+307 public static String[] getMonths(final boolean shortened) {
+309 if (shortened) {
+310 return DATE_FORMAT_SYMBOLS.getShortMonths();
+311 }
+312 else {
+313 return DATE_FORMAT_SYMBOLS.getMonths();
+314 }
+316 }
+318 /**
+319 * Devuelve true si el código entero proporcionado representa un mes
+válido.
+320 *
+321 * @param code el código del que se comprueba la validez.
+322 *
+323 * return <code>true</code> si el código entero proporcionado
+representa un
+324 * mes válido.
+325 */
+326 public static boolean isValidMonthCode(final int code) {
+328 switch(code) {
+329 case JANUARY:
+330 case FEBRUARY:
+331 case MARCH:
+332 case APRIL:
+333 case MAY:
+334 case JUNE:
+335 case JULY:
+336 case AUGUST:
+337 case SEPTEMBER:
+338 case OCTOBER:
+339 case NOVEMBER:
+340 case DECEMBER:
+341 return true;
+342 default:
+343 return false;
+344 }
+346 }
+348 /**
+349 * Devuelve el trimestre del mes especificado.
+350 *
+351 * @param code el código del mes (1-12).
+352 *
+353 * @return el trimestre al que pertenece el mes.
+354 * @throws java.lang.IllegalArgumentException
+355 */
+356 public static int monthCodeToQuarter(final int code) {
+358 switch(code) {
+359 case JANUARY:
+360 case FEBRUARY:
+361 case MARCH: return 1;
+362 case APRIL:
+363 case MAY:
+364 case JUNE: return 2;
+365 case JULY:
+366 case AUGUST:
+367 case SEPTEMBER: return 3;
+368 case OCTOBER:
+369 case NOVEMBER:
+370 case DECEMBER: return 4;
+371 default: throw new IllegalArgumentException(
+372 “SerialDate.monthCodeToQuarter: invalid month code.”);
+373 }
+375 }
+377 /**
+378 * Devuelve una cadena que representa el mes proporcionado.
+379 * <P>
+380 * La cadena devuelta es la forma extensa del nombre del mes obtenido
+de la
+381 * configuración regional.
+382 *
+383 * @param month el mes.
+384 *
+385 * @return una cadena que representa el mes proporcionado
+386 */
+387 public static String monthCodeToString(final int month) {
+389 return monthCodeToString(month, false);
+391 }
+393 /**
+394 * Devuelve una cadena que representa el mes proporcionado.
+395 * <P>
+396 * La cadena devuelta es la forma extensa o reducida del nombre del
+mes
+397 * obtenido de la configuración regional.
+398 *
+399 * @param month el mes.
+400 * @param shortened si <code>true</code> devuelve la abreviatura del
+401 * mes.
+402 *
+403 * @return una cadena que representa el mes proporcionado.
+404 * @throws java.lang.IllegalArgumentException
+405 */
+406 public static String monthCodeToString(final int month,
+407 final boolean shortened) {
+409 // comprobar argumentos…
+410 if (!isValidMonthCode(month)) {
+411 throw new IllegalArgumentException(
+412 “SerialDate.monthCodeToString: month outside valid range.”);
+413 }
+415 final String[] months;
+417 if (shortened) {
+418 months = DATE_FORMAT_SYMBOLS.getShortMonths();
+419 }
+420 else {
+421 months = DATE_FORMAT_SYMBOLS.getMonths();
+422 }
+424 return months[month - 1];
+426 }
+428 /**
+429 * Convierte una cadena en el código del mes.
+430 * <P>
+431 * Este método devuelve una de las constantes JANUARY, FEBRUARY, …,
+432 * DECEMBER correspondientes a la cadena. Si la cadena no se
+433 * reconoce, este método devuelve -1.
+434 *
+435 * @param s la cadena que analizar.
+436 *
+437 * @return <code>-1</code> si la cadena no se puede analizar, o el mes
+del
+438 * año en caso contrario.
+439 */
+440 public static int stringToMonthCode(String s) {
+442 final String[] shortMonthNames =
+DATE_FORMAT_SYMBOLS.getShortMonths();
+443 final String[] monthNames = DATE_FORMAT_SYMBOLS.getMonths();
+445 int result = -1;
+446 s = s.trim();
+448 // primero intentar analizar la cadena como entero (1-12)…
+449 try {
+450 result = Integer.parseInt(s);
+451 }
+452 catch (NumberFormatException e) {
+453 // suprimir
+454 }
+456 // buscar por los nombres de los meses…
+457 if ((result < 1) || (result > 12)) {
+458 for (int i = 0; i < monthNames.length; i++) {
+459 if (s.equals(shortMonthNames[i])) {
+460 result = i + 1;
+461 break;
+462 }
+463 if (s.equals(monthNames[i])) {
+464 result = i + 1;
+465 break;
+466 }
+467 }
+468 }
+470 return result;
+472 }
+474 /**
+475 * Devuelve true si el código entero proporcionado representa una
+semana
+476 * del mes válida y false en caso contrario
+477 *
+478 * @param code el código del que se comprueba la validez.
+479 * @return <code>true</code> si el código entero proporcionado
+representa una
+480 * semana del mes válida.
+481 */
+482 public static boolean isValidWeekInMonthCode(final int code) {
+484 switch(code) {
+485 case FIRST_WEEK_IN_MONTH:
+486 case SECOND_WEEK_IN_MONTH:
+487 case THIRD_WEEK_IN_MONTH:
+488 case FOURTH_WEEK_IN_MONTH:
+489 case LAST_WEEK_IN_MONTH: return true;
+490 default: return false;
+491 }
+493 }
+494
+495 /**
+496 * Determina si el año especificado es bisiesto o no.
+497 *
+498 * @param yyyy el año (entre 1900 y 9999).
+499 *
+500 * @return <code>true</code> si el año especificado es bisiesto.
+501 */
+502 public static boolean isLeapYear(final int yyyy) {
+504 if ((yyyy % 4) != 0) {
+505 return false;
+506 }
+507 else if ((yyyy % 400) == 0) {
+508 return true;
+509 }
+510 else if ((yyyy % 100) == 0) {
+511 return false;
+512 }
+513 else {
+514 return true;
+515 }
+517 }
+519 /**
+520 * Devuelve el número de años bisiestos desde 1900 hasta el año
+especificado
+521 * INCLUSIVE.
+522 * <P>
+523 * 1900 no es un año bisiesto.
+524 *
+525 * @param yyyy el año (entre 1900 y 9999).
+526 *
+527 * @return el número de años bisiestos desde 1900 hasta el año
+especificado.
+528 */
+529 public static int leapYearCount(final int yyyy) {
+531 final int leap4 = (yyyy - 1896) / 4;
+532 final int leap100 = (yyyy - 1800) / 100;
+533 final int leap400 = (yyyy - 1600) / 400;
+534 return leap4 - leap100 + leap400;
+536 }
+450
+538 /**
+539 * Devuelve el número del último día del mes, teniendo en cuenta los
+540 * años bisiestos.
+541 *
+542 * @param month el mes.
+543 * @param yyyy el año (entre 1900 y 9999).
+544 *
+545 * @return el número del último día del mes.
+546 */
+547 public static int lastDayOfMonth(final int month, final int yyyy) {
+549 final int result = LAST_DAY_OF_MONTH[month];
+550 if (month != FEBRUARY) {
+551 return result;
+552 }
+553 else if (isLeapYear(yyyy)) {
+554 return result + 1;
+555 }
+556 else {
+557 return result;
+558 }
+560 }
+562 /**
+563 * Crea una nueva fecha añadiendo el número especificado de días a la
+fecha
+564 * base.
+565 *
+566 * @param days el número de días que añadir (puede ser negativo).
+567 * @param base la fecha base.
+568 *
+569 * @return una nueva fecha.
+570 */
+571 public static SerialDate addDays(final int days, final SerialDate
+base) {
+573 final int serialDayNumber = base.toSerial() + days;
+574 return SerialDate.createInstance(serialDayNumber);
+576 }
+578 /**
+579 * Crea una nueva fecha añadiendo el número especificado de meses a la
+fecha
+580 * base.
+581 * <P>
+582 * Si la fecha base es próxima al final del mes, el día del resultado
+583 * se puede ajustar ligeramente: 31 Mayo + 1 mes = 30 Junio.
+584 *
+585 * @param months el número de meses que añadir (puede ser negativo).
+586 * @param base la fecha base.
+587 *
+588 * @return una nueva fecha.
+589 */
+590 public static SerialDate addMonths(final int months,
+591 final SerialDate base) {
+593 final int yy = (12 * base.getYYYY() + base.getMonth() + months - 1)
+594 / 12;
+595 final int mm = (12 * base.getYYYY() + base.getMonth() + months – 1)
+596 % 12 + 1;
+597 final int dd = Math.min(
+598 base.getDayOfMonth(), SerialDate.lastDayOfMonth(mm, yy)
+599 );
+600 return SerialDate.createInstance(dd, mm, yy);
+602 }
+604 /**
+605 * Crea una nueva fecha añadiendo el número especificado de años a la
+fecha
+606 * base.
+607 *
+608 * @param years el número de años que añadir (puede ser negativo).
+609 * @param base la fecha base.
+610 *
+611 * @return Una nueva fecha.
+612 */
+613 public static SerialDate addYears(final int years, final SerialDate
+base) {
+615 final int baseY = base.getYYYY();
+616 final int baseM = base.getMonth();
+617 final int baseD = base.getDayOfMonth();
+619 final int targetY = baseY + years;
+620 final int targetD = Math.min(
+621 baseD, SerialDate.lastDayOfMonth(baseM, targetY)
+622 );
+624 return SerialDate.createInstance(targetD, baseM, targetY);
+625
+626 }
+628 /**
+629 * Devuelve la última fecha correspondiente al día de la semana
+especificado y
+630 * ANTERIOR a la fecha base.
+631 *
+632 * @param targetWeekday un código para el día de la semana de destino.
+633 * @param base la fecha base.
+634 *
+635 * @return la última fecha correspondiente al día de la semana
+especificado y
+636 * ANTERIOR a la fecha base.
+637 */
+638 public static SerialDate getPreviousDayOfWeek(final int
+targetWeekday,
+639 final SerialDate base) {
+641 // comprobar argumentos…
+642 if (!SerialDate.isValidWeekdayCode(targetWeekday)) {
+643 throw new IllegalArgumentException(
+644 “Invalid day-of-the-week code.”
+645 );
+646 }
+648 // buscar la fecha…
+649 final int adjust;
+650 final int baseDOW = base.getDayOfWeek();
+651 if (baseDOW > targetWeekday) {
+652 adjust = Math.min(0, targetWeekday - baseDOW);
+653 }
+654 else {
+655 adjust = -7 + Math.max(0, targetWeekday - baseDOW);
+656 }
+658 return SerialDate.addDays(adjust, base);
+660 }
+662 /**
+663 * Devuelve la primera fecha que coincide con el día de la semana
+especificado
+664 * y POSTERIOR a la fecha base.
+665 *
+666 * @param targetWeekday un código para el día de la semana de destino.
+667 * @param base la fecha base.
+668 *
+669 * @return la primera fecha que coincide con el día de la semana
+especificado
+670 * y POSTERIOR a la fecha base.
+671 */
+672 public static SerialDate getFollowingDayOfWeek(final int
+targetWeekday,
+673 final SerialDate base) {
+675 // comprobar argumentos…
+676 if (!SerialDate.isValidWeekdayCode(targetWeekday)) {
+677 throw new IllegalArgumentException(
+678 “Invalid day-of-the-week code.”
+679 );
+680 }
+682 // buscar la fecha…
+683 final int adjust;
+684 final int baseDOW = base.getDayOfWeek();
+685 if (baseDOW > targetWeekday) {
+686 adjust = 7 + Math.min(0, targetWeekday - baseDOW);
+687 }
+688 else {
+689 adjust = Math.max(0, targetWeekday - baseDOW);
+690 }
+692 return SerialDate.addDays(adjust, base);
+693 }
+695 /**
+696 * Devuelve la fecha que coincide con el día de la semana especificado
+y más
+697 * PRÓXIMA a la fecha base.
+698 *
+699 * @param targetDOW un código para el día de la semana de destino.
+700 * @param base la fecha base.
+701 *
+702 * @return la fecha que coincide con el día de la semana especificado
+y más
+703 * PRÓXIMA a la fecha base.
+704 */
+705 public static SerialDate getNearestDayOfWeek(final int targetDOW,
+706 final SerialDate base) {
+708 // comprobar argumentos…
+709 if (!SerialDate.isValidWeekdayCode(targetDOW)) {
+710 throw new IllegalArgumentException(
+711 “Invalid day-of-the-week code.”
+712 );
+713 }
+715 // buscar la fecha…
+716 final int baseDOW = base.getDayOfWeek();
+717 int adjust = -Math.abs(targetDOW - baseDOW);
+718 if (adjust >= 4) {
+719 adjust = 7 - adjust;
+720 }
+721 if (adjust <= -4) {
+722 adjust = 7 + adjust;
+723 }
+724 return SerialDate.addDays(adjust, base);
+726 }
+728 /**
+729 * Avanzar la fecha hasta el último día del mes.
+730 *
+731 * @param base la fecha base.
+732 *
+733 * @return una nueva fecha de serie.
+734 */
+735 public SerialDate getEndOfCurrentMonth(final SerialDate base) {
+736 final int last = SerialDate.lastDayOfMonth(
+737 base.getMonth(), base.getYYYY()
+738 );
+739 return SerialDate.createInstance(last, base.getMonth(),
+base.getYYYY());
+740 }
+742 /**
+743 * Devuelve una cadena correspondiente al código de la semana del mes.
+744 * <P>
+745 * Necesitamos un enfoque mejor.
+746 *
+747 * @param count un código entero que representa la semana del mes.
+748 *
+749 * @return una cadena correspondiente al código de la semana del mes.
+750 */
+751 public static String weekInMonthToString(final int count) {
+455
+753 switch (count) {
+754 case SerialDate.FIRST_WEEK_IN_MONTH : return “First”;
+755 case SerialDate.SECOND_WEEK_IN_MONTH : return “Second”;
+756 case SerialDate.THIRD_WEEK_IN_MONTH : return “Third”;
+757 case SerialDate.FOURTH_WEEK_IN_MONTH : return “Fourth”;
+758 case SerialDate.LAST_WEEK_IN_MONTH : return “Last”;
+759 default :
+760 return “SerialDate.weekInMonthToString(): invalid code.”;
+761 }
+763 }
+765 /**
+766 * Devuelve una cadena que representa el valor ‘relativo’
+proporcionado.
+767 * <P>
+768 * Necesitamos un enfoque mejor.
+769 *
+770 * @param relative una constante que representa el valor ‘relativo’.
+771 *
+772 * @return una cadena que representa el valor ‘relativo’
+proporcionado.
+773 */
+774 public static String relativeToString(final int relative) {
+776 switch (relative) {
+777 case SerialDate.PRECEDING : return “Preceding”;
+778 case SerialDate.NEAREST : return “Nearest”;
+779 case SerialDate.FOLLOWING : return “Following”;
+780 default : return “ERROR : Relative To String”;
+781 }
+783 }
+785 /**
+786 * Método de factoría que devuelve una instancia de una subclase
+concreta de
+787 * {@link SerialDate}.
+788 *
+789 * @param day el día (1-31).
+790 * @param month el mes (1-12).
+791 * @param yyyy el año (entre 1900 y 9999).
+792 *
+793 * @return Una instancia de {@link SerialDate}
+794 */
+795 public static SerialDate createInstance(final int day, final int
+month,
+796 final int yyyy) {
+797 return new SpreadsheetDate(day, month, yyyy);
+798 }
+800 /**
+801 * Método de factoría que devuelve una instancia de una subclase
+concreta de
+802 * {@link SerialDate}.
+803 *
+804 * @param serial numero de serie del día (1 de enero de 1900 = 2).
+805 *
+806 * @return una instancia de SerialDate.
+807 */
+808 public static SerialDate createInstance(final int serial) {
+809 return new SpreadsheetDate(serial);
+810 }
+812 /**
+813 * Método de factoría que devuelve una instancia de una subclase de
+SerialDate.
+814 *
+815 * @param date Un objeto de fecha de Java.
+816 *
+817 * @return una instancia de SerialDate.
+818 */
+818 public static SerialDate createInstance(final java.util.Date date) {
+821 final GregorianCalendar calendar = new GregorianCalendar();
+822 calendar.setTime(date);
+823 return new SpreadsheetDate(calendar.get(Calendar.DATE),
+824 calendar.get(Calendar.MONTH) + 1,
+825 calendar.get(Calendar.YEAR));
+827 }
+829 /**
+830 * Devuelve el número de serie de la fecha, siendo el 1 de enero de
+1900 = 2 (se
+831 * corresponde, casi totalmente, al sistema de numeración empleado en
+Microsoft
+832 * Excel para Windows y Lotus 1-2-3).
+833 *
+834 * @return el número de serie de la fecha.
+835 */
+836 public abstract int toSerial();
+837
+838 /**
+839 * Devuelve java.util.Date. Como java.util.Date tiene mayor precisión
+que
+840 * SerialDate, debemos definir una convención para “la hora del día”.
+841 *
+842 * @return this como <code>java.util.Date</code>.
+843 */
+844 public abstract java.util.Date toDate();
+846 /**
+847 * Devuelve una descripción de la fecha.
+848 *
+849 * @return una descripción de la fecha.
+850 */
+851 public String getDescription() {
+852 return this.description;
+853 }
+855 /**
+856 * Establece la descripción de la fecha.
+857 *
+858 * @param description la nueva descripción de la fecha.
+859 */
+860 public void setDescription(final String description) {
+861 this.description = description;
+862 }
+864 /**
+865 * Convierte la fecha en una cadena.
+866 *
+867 * @return una representación en cadena de la fecha.
+868 */
+869 public String toString() {
+870 return getDayOfMonth() + “-” +
+SerialDate.monthCodeToString(getMonth())
+871 + “-” + getYYYY();
+872 }
+874 /**
+875 * Devuelve el año (con un intervalo válido de 1900 a 9999).
+876 *
+877 * @return el año.
+878 */
+879 public abstract int getYYYY();
+458
+881 /**
+882 * Devuelve el mes (Enero = 1, Febrero = 2, Marzo = 3).
+883 *
+884 * @return el mes del año.
+885 */
+886 public abstract int getMonth();
+888 /**
+889 * Devuelve el día del mes.
+890 *
+891 * @return el día del mes.
+892 */
+893 public abstract int getDayOfMonth();
+895 /**
+896 * Devuelve el día de la semana.
+897 *
+898 * @return el día de la semana.
+899 */
+900 public abstract int getDayOfWeek();
+902 /**
+903 * Devuelve la diferencia (en días) entre esta fecha y la
+904 * ‘otra’ fecha especificada.
+905 * <P>
+906 * El resultado es positivo si esta fecha es posterior a la ‘otra’ y
+907 * negativo si es anterior.
+908 *
+909 * @param other la fecha con la que se compara.
+910 *
+911 * @return la diferencia entre esta fecha y la otra.
+912 */
+913 public abstract int compare(SerialDate other);
+915 /**
+916 * Devuelve true si esta SerialDate representa la misma fecha que la
+917 * SerialDate especificada.
+918 *
+919 * @param other la fecha con la que se compara.
+920 *
+921 * @return <code>true</code> si esta SerialDate representa la misma
+fecha que
+922 * la SerialDate especificada.
+923 */
+924 public abstract boolean isOn(SerialDate other);
+925
+926 /**
+927 * Devuelve true si esta SerialDate representa una fecha anterior en
+928 * comparación a la SerialDate especificada.
+929 *
+930 * @param other la fecha con la que se compara.
+931 *
+932 * @return <code>true</code> si esta SerialDate representa una fecha
+anterior
+933 * en comparación a la SerialDate especificada.
+934 */
+935 public abstract boolean isBefore(SerialDate other);
+937 /**
+938 * Devuelve true si esta SerialDate representa la misma fecha que la
+939 * SerialDate especificada.
+940 *
+941 * @param other la fecha con la que se compara.
+942 *
+943 * @return <code>true</code> si esta SerialDate representa la misma
+fecha
+944 * que la SerialDate especificada.
+945 */
+946 public abstract boolean isOnOrBefore(SerialDate other);
+948 /**
+949 * Devuelve true si esta SerialDate representa la misma fecha que la
+950 * SerialDate especificada.
+951 *
+952 * @param other la fecha con la que se compara.
+953 *
+954 * @return <code>true</code> si esta SerialDate representa la misma
+fecha
+955 * que la SerialDate especificada.
+956 */
+957 public abstract boolean isAfter(SerialDate other);
+959 /**
+960 * Devuelve true si esta SerialDate representa la misma fecha que la
+961 * SerialDate especificada.
+962 *
+963 * @param other la fecha con la que se compara.
+964 *
+965 * @return <code>true</code> si esta SerialDate representa la misma
+fecha
+966 * que la SerialDate especificada.
+967 */
+968 public abstract boolean isOnOrAfter(SerialDate other);
+970 /**
+971 * Devuelve <code>true</code> si {@link SerialDate} se encuentra en el
+972 * rango especificado (INCLUSIVE). El orden de fecha de d1 y d2 no es
+973 * importante.
+974 *
+975 * @param d1 fecha límite del rango.
+976 * @param d2 la otra fecha límite del rango.
+977 *
+978 * @return Un valor booleano.
+979 */
+980 public abstract boolean isInRange(SerialDate d1, SerialDate d2);
+982 /**
+983 * Devuelve <code>true</code> si {@link SerialDate} se encuentra en el
+984 * rango especificado (el invocador especifica si los puntos finales
+se
+985 * incluyen o no). El orden de fecha de d1 y d2 no es importante.
+986 *
+987 * @param d1 fecha límite del rango.
+988 * @param d2 la otra fecha límite del rango.
+989 * @param include un código que controla si las fechas inicial y final
+990 * se incluyen o no en el rango.
+991 *
+992 * @return Un valor booleano.
+993 */
+994 public abstract boolean isInRange(SerialDate d1, SerialDate d2,
+995 int include);
+997 /**
+998 * Devuelve la última fecha que coincide con el día de la semana
+especificado y
+999 * que es ANTERIOR a esta fecha.
+1000 *
+1001 * @param targetDOW un código para el día de la semana de destino.
+1002 *
+1003 * @return la última fecha que coincide con el día de la semana
+especificado y
+1004 * que es ANTERIOR a esta fecha.
+1005 */
+1006 public SerialDate getPreviousDayOfWeek(final int targetDOW) {
+1007 return getPreviousDayOfWeek(targetDOW, this);
+1008 }
+461
+1010 /**
+1011 * Devuelve la primera fecha que coincide con el día de la semana
+especificado
+1012 * y que es POSTERIOR a esta fecha.
+1013 *
+1014 * @param targetDOW un código para el día de la semana de destino.
+1015 *
+1016 * @return la primera fecha que coincide con el día de la semana
+especificado
+1017 * que es POSTERIOR a esta fecha.
+1018 */
+1019 public SerialDate getFollowingDayOfWeek(final int targetDOW) {
+1020 return getFollowingDayOfWeek(targetDOW, this);
+1021 }
+1023 /**
+1024 * Devuelve la fecha más próxima que coincide con el día de la semana
+especificado.
+1025 *
+1026 * @param targetDOW un código para el día de la semana de destino.
+1027 *
+1028 * @return la fecha más próxima que coincide con el día de la semana
+especificado.
+1029 */
+1030 public SerialDate getNearestDayOfWeek(final int targetDOW) {
+1031 return getNearestDayOfWeek(targetDOW, this);
+1032 }
+1034 }
+Listado B-2
+SerialDateTest.java
+1 /* =============================================================
+2 * JCommon : biblioteca gratuita de clases de propósito general para
+Java(tm)
+3 * =============================================================
+4 *
+5 * (C) Copyright 2000-2005, de Object Refinery Limited y colaboradores.
+6 *
+7 * Información del projecto: http://www.jfree.org/jcommon/index.html
+8 *
+9 * Esta biblioteca es software gratuito; puede distribuirla y/o modificarla
+10 * bajo las condiciones de la Licencia pública general GNU publicada por
+11 * la Free Software Foundation; ya sea la versión 2.1 de la licencia, u
+12 * otra versión posterior (de su elección).
+13 *
+14 * Esta biblioteca se distribuye con la intención de que sea útil, pero
+15 * SIN GARANTÍA ALGUNA, incluida la garantía implícita de COMERCIABILIDAD
+16 * e IDONEIDAD PARA UN DETERMINADO FIN. Consulte la Licencia pública general
+GNU
+17 * si necesita más información al respecto.
+18 *
+19 * Debería haber recibido una copia de la Licencia pública general GNU
+20 * junto a esta biblioteca; en caso contrario, contacte con la Free Software
+21 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+22 * EE.UU.
+23 *
+24 * [Java es una marca comercial o marca comercial registrada de Sun
+25 * Microsystems, Inc. en Estados Unidos y otros países.]
+26 *
+27 * -------------------------
+28 * SerialDateTests.java
+29 * -------------------------
+30 * (C) Copyright 2001-2005, por Object Refinery Limited.
+32 * Autor original: David Gilbert (por Object Refinery Limited);
+33 * Colaborador(es): -;
+35 * $Id: SerialDateTests.java,v 1.6 2005/11/16 15:58:40 taqua Exp $
+37 * Cambios
+38 * -----------
+39 * 15-Nov-2001: Version 1 (DG);
+40 * 25-Jun-2002: Se elimina la importación innecesaria (DG);
+41 * 24-Oct-2002: Errores indicados Checkstyle corregidos (DG);
+42 * 13-Mar-2003: Se añade prueba de serialización (DG);
+43 * 05-Jan-2005: Se añade prueba para el informe de errores 1096282 (DG);
+44 *
+45 */
+47 package org.jfree.date.junit;
+49 import java.io.ByteArrayInputStream;
+50 import java.io.ByteArrayOutputStream;
+51 import java.io.ObjectInput;
+52 import java.io.ObjectInputStream;
+53 import java.io.ObjectOutput;
+54 import java.io.ObjectOutputStream;
+463
+56 import junit.framework.Test;
+57 import junit.framework.TestCase;
+58 import junit.framework.TestSuite;
+60 import org.jfree.date.MonthConstants;
+61 import org.jfree.date.SerialDate;
+63 /**
+64 * Pruebas JUnit para la clase {@link SerialDate}.
+65 */
+66 public class SerialDateTests extends TestCase {
+68 /** Fecha que representa 9 de noviembre.
+69 private SerialDate nov9Y2001;
+71 /**
+72 * Crea un nuevo caso de prueba.
+73 *
+74 * @param name el nombre.
+75 */
+76 public SerialDateTests(final String name) {
+77 super(name);
+78 }
+80 /**
+81 * Devuelve una suite de pruebas para el ejecutor de pruebas JUnit.
+82 *
+83 * @return La suite de pruebas.
+84 */
+85 public static Test suite() {
+86 return new TestSuite(SerialDateTests.class);
+87 }
+89 /**
+90 * Problema.
+91 */
+92 protected void setUp() {
+93 this.nov9Y2001 = SerialDate.createInstance(9,
+MonthConstants.NOVEMBER, 2001);
+94 }
+96 /**
+97 * 9 Nov 2001 más dos meses debe ser 9 Ene 2002.
+98 */
+99 public void testAddMonthsTo9Nov2001() {
+100 final SerialDate jan9Y2002 = SerialDate.addMonths(2,
+this.nov9Y2001);
+101 final SerialDate answer = SerialDate.createInstance(9, 1, 2002);
+102 assertEquals(answer, jan9Y2002);
+103 }
+105 /**
+106 * Caso de prueba de un error, ya corregido.
+107 */
+108 public void testAddMonthsTo5Oct2003() {
+109 final SerialDate d1 = SerialDate.createInstance(5,
+MonthConstants.OCTOBER, 2003);
+110 final SerialDate d2 = SerialDate.addMonths(2, d1);
+111 assertEquals(d2, SerialDate.createInstance(5,
+MonthConstants.DECEMBER, 2003));
+112 }
+114 /**
+115 * Caso de prueba de un error, ya corregido.
+116 */
+117 public void testAddMonthsTo1Jan2003() {
+118 final SerialDate d1 = SerialDate.createInstance(1,
+MonthConstants.JANUARY, 2003);
+119 final SerialDate d2 = SerialDate.addMonths(0, d1);
+120 assertEquals(d2, d1);
+121 }
+123 /**
+124 * El lunes anterior al viernes 9 de noviembre de 2001 debe ser el 5 de
+noviembre.
+125 */
+126 public void testMondayPrecedingFriday9Nov2001() {
+127 SerialDate mondayBefore = SerialDate.getPreviousDayOfWeek(
+128 SerialDate.MONDAY, this.nov9Y2001
+129 );
+130 assertEquals(5, mondayBefore.getDayOfMonth());
+131 }
+133 /**
+134 * El lunes posterior al viernes 9 de noviembre de 2001 debe ser el 12
+de noviembre.
+135 */
+136 public void testMondayFollowingFriday9Nov2001() {
+137 SerialDate mondayAfter = SerialDate.getFollowingDayOfWeek(
+138 SerialDate.MONDAY, this.nov9Y2001
+139 );
+140 assertEquals(12, mondayAfter.getDayOfMonth());
+141 }
+143 /**
+144 * El lunes más próximo al viernes 9 de noviembre de 2001 debe ser el
+12 de noviembre.
+145 */
+146 public void testMondayNearestFriday9Nov2001() {
+147 SerialDate mondayNearest = SerialDate.getNearestDayOfWeek(
+148 SerialDate.MONDAY, this.nov9Y2001
+149 );
+150 assertEquals(12, mondayNearest.getDayOfMonth());
+151 }
+153 /**
+154 * El lunes más próximo al 22 de enero de 1970 cae en el 19.
+155 */
+156 public void testMondayNearest22Jan1970() {
+157 SerialDate jan22Y1970 = SerialDate.createInstance(22,
+MonthConstants.JANUARY, 1970);
+158 SerialDate mondayNearest =
+SerialDate.getNearestDayOfWeek(SerialDate.MONDAY, jan22Y1970);
+159 assertEquals(19, mondayNearest.getDayOfMonth());
+160 }
+162 /**
+163 * El problema es que la conversión de días en cadenas devuelva el
+resultado
+164 * correcto. En realidad este resultado depende de la configuración
+regional.
+165 */
+166 public void testWeekdayCodeToString() {
+168 final String test =
+SerialDate.weekdayCodeToString(SerialDate.SATURDAY);
+169 assertEquals(“Saturday”, test);
+171 }
+173 /**
+174 * Probar la conversión de una cadena en día de la semana. Esta prueba
+falla si
+175 * la configuración regional predeterminada no usa nombres de días en
+inglés
+176 */
+177 public void testStringToWeekday() {
+466
+179 int weekday = SerialDate.stringToWeekdayCode(“Wednesday”);
+180 assertEquals(SerialDate.WEDNESDAY, weekday);
+182 weekday = SerialDate.stringToWeekdayCode(“ Wednesday ”);
+183 assertEquals(SerialDate.WEDNESDAY, weekday);
+185 weekday = SerialDate.stringToWeekdayCode(“Wed”);
+186 assertEquals(SerialDate.WEDNESDAY, weekday);
+188 }
+190 /**
+191 * Probar la conversión de una cadena en mes. Esta prueba falla si la
+192 * configuración regional predeterminada no usa nombres de días en
+inglés
+193 */
+194 public void testStringToMonthCode() {
+196 int m = SerialDate.stringToMonthCode(“January”);
+197 assertEquals(MonthConstants.JANUARY, m);
+199 m = SerialDate.stringToMonthCode(“ January ”);
+200 assertEquals(MonthConstants.JANUARY, m);
+202 m = SerialDate.stringToMonthCode(“Jan”);
+203 assertEquals(MonthConstants.JANUARY, m);
+205 }
+207 /**
+208 * Probar la conversión de un código de mes en cadena.
+209 */
+210 public void testMonthCodeToStringCode() {
+212 final String test =
+SerialDate.monthCodeToString(MonthConstants.DECEMBER);
+213 assertEquals(“December”, test);
+215 }
+217 /**
+218 * 1900 no es un año bisiesto.
+219 */
+220 public void testIsNotLeapYear1900() {
+221 assertTrue(!SerialDate.isLeapYear(1900));
+222 }
+223
+224 /**
+225 * 2000 es un año bisiesto.
+226 */
+227 public void testIsLeapYear2000() {
+228 assertTrue(SerialDate.isLeapYear(2000));
+229 }
+231 /**
+232 * El número de años bisiestos desde 1900 y hasta 1899 incluido es 0.
+233 */
+234 public void testLeapYearCount1899() {
+235 assertEquals(SerialDate.leapYearCount(1899), 0);
+236 }
+238 /**
+239 * El número de años bisiestos desde 1900 y hasta 1903 incluido es 0.
+240 */
+241 public void testLeapYearCount1903() {
+242 assertEquals(SerialDate.leapYearCount(1903), 0);
+243 }
+245 /**
+246 * El número de años bisiestos desde 1900 y hasta 1904 incluido es 1.
+247 */
+248 public void testLeapYearCount1904() {
+249 assertEquals(SerialDate.leapYearCount(1904), 1);
+250 }
+252 /**
+253 * El número de años bisiestos desde 1900 y hasta 1999 incluido es 24.
+254 */
+255 public void testLeapYearCount1999() {
+256 assertEquals(SerialDate.leapYearCount(1999), 24);
+257 }
+259 /**
+260 * El número de años bisiestos desde 1900 y hasta 2000 incluido es 25.
+261 */
+262 public void testLeapYearCount2000() {
+263 assertEquals(SerialDate.leapYearCount(2000), 25);
+264 }
+266 /**
+267 * Serializar una instancia, restaurarla y comprobar la igualdad.
+268 */
+269 public void testSerialization() {
+271 SerialDate d1 = SerialDate.createInstance(15, 4, 2000);
+272 SerialDate d2 = null;
+274 try {
+275 ByteArrayOutputStream buffer = new ByteArrayOutputStream();
+276 ObjectOutput out = new ObjectOutputStream(buffer);
+277 out.writeObject(d1);
+278 out.close();
+280 ObjectInput in = new ObjectInputStream(
+new ByteArrayInputStream(buffer.toByteArray()));
+281 d2 = (SerialDate) in.readObject();
+282 in.close();
+283 }
+284 catch (Exception e) {
+285 System.out.println(e.toString());
+286 }
+287 assertEquals(d1, d2);
+289 }
+291 /**
+292 * Prueba para el informe de error 1096282 (ya corregido).
+293 */
+294 public void test1096282() {
+295 SerialDate d = SerialDate.createInstance(29, 2, 2004);
+296 d = SerialDate.addYears(1, d);
+297 SerialDate expected = SerialDate.createInstance(28, 2, 2005);
+298 assertTrue(d.isOn(expected));
+299 }
+301 /**
+302 * Diversas pruebas para el método addMonths().
+303 */
+304 public void testAddMonths() {
+305 SerialDate d1 = SerialDate.createInstance(31, 5, 2004);
+307 SerialDate d2 = SerialDate.addMonths(1, d1);
+308 assertEquals(30, d2.getDayOfMonth());
+309 assertEquals(6, d2.getMonth());
+310 assertEquals(2004, d2.getYYYY());
+312 SerialDate d3 = SerialDate.addMonths(2, d1);
+313 assertEquals(31, d3.getDayOfMonth());
+314 assertEquals(7, d3.getMonth());
+315 assertEquals(2004, d3.getYYYY());
+317 SerialDate d4 = SerialDate.addMonths(1, SerialDate.addMonths(1,
+d1));
+318 assertEquals(30, d4.getDayOfMonth());
+319 assertEquals(7, d4.getMonth());
+320 assertEquals(2004, d4.getYYYY());
+321 }
+322 }
+Listado B-3
+MonthConstants.java
+1 /* =============================================================
+2 * JCommon : biblioteca gratuita de clases de propósito general para Java(tm)
+3 * =============================================================
+4 *
+5 * (C) Copyright 2000-2005, de Object Refinery Limited y colaboradores.
+6 *
+7 * Información del proyecto: http://www.jfree.org/jcommon/index.html
+8 *
+9 * Esta biblioteca es software gratuito; puede distribuirla y/o modificarla
+10 * bajo las condiciones de la Licencia pública general GNU publicada por
+11 * la Free Software Foundation; ya sea la versión 2.1 de la licencia, u
+12 * otra versión posterior (de su elección).
+13 *
+14 * Esta biblioteca se distribuye con la intención de que sea útil, pero
+15 * SIN GARANTÍA ALGUNA, incluida la garantía implícita de COMERCIABILIDAD
+16 * e IDONEIDAD PARA UN DETERMINADO FIN. Consulte la Licencia pública general
+GNU
+17 * si necesita más información al respecto.
+18 *
+19 * Debería haber recibido una copia de la Licencia pública general GNU
+20 * junto a esta biblioteca; en caso contrario, contacte con la Free Software
+21 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+22 * EE.UU.
+23 *
+24 * [Java es una marca comercial o marca comercial registrada de Sun
+25 * Microsystems, Inc. en Estados Unidos y otros países.]
+26 *
+27 * ----------------------
+28 * MonthConstants.java
+29 * ----------------------
+30 * (C) Copyright 2002, 2003, de Object Refinery Limited.
+31 *
+32 * Autor original: David Gilbert (para Object Refinery Limited);
+33 * Colaborador(es): -;
+34 *
+35 * $Id: MonthConstants.java,v 1.4 2005/11/16 15:58:40 taqua Exp $
+36 *
+37 * Cambios
+38 * ----------
+39 * 29-May-2002 : Version 1 (code moved from SerialDate class) (DG);
+40 *
+41 */
+43 package org.jfree.date;
+45 /**
+46 * Constantes útiles para los meses. NO son equivalentes a las
+47 * constantes definidas por java.util.Calendar (donde JANUARY=0 y
+DECEMBER=11).
+48 * <P>
+49 * Se usa en las clases SerialDate y RegularTimePeriod.
+50 *
+51 * @author David Gilbert
+52 */
+53 public interface MonthConstants {
+55 /** Constante para Enero. */
+56 public static final int JANUARY = 1;
+58 /** Constante para Febrero. */
+59 public static final int FEBRUARY = 2;
+61 /** Constante para Marzo. */
+62 public static final int MARCH = 3;
+64 /** Constante para Abril. */
+65 public static final int APRIL = 4;
+67 /** Constante para Mayo. */
+68 public static final int MAY = 5;
+70 /** Constante para Junio. */
+71 public static final int JUNE = 6;
+471
+73 /** Constante para Julio. */
+74 public static final int JULY = 7;
+76 /** Constante para Agosto. */
+77 public static final int AUGUST = 8;
+79 /** Constante para Septiembre. */
+80 public static final int SEPTEMBER = 9;
+82 /** Constante para Octubre. */
+83 public static final int OCTOBER = 10;
+85 /** Constante para Noviembre. */
+86 public static final int NOVEMBER = 11;
+88 /** Constante para Diciembre. */
+89 public static final int DECEMBER = 12;
+91 }
+Listado B-4
+BobsSerialDateTest.java
+1 package org.jfree.date.junit;
+3 import junit.framework.TestCase;
+4 import org.jfree.date.*;
+5 import static org.jfree.date.SerialDate.*;
+7 import java.util.*;
+9 public class BobsSerialDateTest extends TestCase {
+11 public void testIsValidWeekdayCode() throws Exception {
+12 for (int day = 1; day <= 7; day++)
+13 assertTrue(isValidWeekdayCode(day));
+14 assertFalse(isValidWeekdayCode(0));
+15 assertFalse(isValidWeekdayCode(8));
+16 }
+18 public void testStringToWeekdayCode() throws Exception {
+20 assertEquals(-1, stringToWeekdayCode(“Hello”));
+21 assertEquals(MONDAY, stringToWeekdayCode(“Monday”));
+22 assertEquals(MONDAY, stringToWeekdayCode(“Mon”));
+23 //todo assertEquals(MONDAY,stringToWeekdayCode(“monday”));
+24 // assertEquals(MONDAY,stringToWeekdayCode(“MONDAY”));
+25 // assertEquals(MONDAY, stringToWeekdayCode(“mon”));
+27 assertEquals(TUESDAY, stringToWeekdayCode(“Tuesday”));
+28 assertEquals(TUESDAY, stringToWeekdayCode(“Tue”));
+29 // assertEquals(TUESDAY,stringToWeekdayCode(“tuesday”));
+30 // assertEquals(TUESDAY,StringToWeekdayCode(“TUESDAY”));
+31 // assertEquals(TUESDAY, stringToWeekdayCode(“tue”));
+32 // assertEquals(TUESDAY, stringToWeekdayCode(“tues”));
+34 assertEquals(WEDNESDAY, stringToWeekdayCode (“Wednesday”));
+35 assertEquals(WEDNESDAY, stringToWeekdayCode(“Wed”));
+36 // assertEquals(WEDNESDAY,stringToWeekdayCode(“wednesday”));
+37 // assertEquals(WEDNESDAY,stringToWeekdayCode(“WEDNESDAY”));
+38 // assertEquals(WEDNESDAY, StringToWeekdayCode(“wed”));
+40 assertEquals(THURSDAY, stringToWeekdayCode(“Thursday”));
+41 assertEquals(THURSDAY, stringToWeekdayCode(“Thu”));
+42 // assertEquals(THURSDAY,stringToWeekdayCode(“thursday”));
+43 // assertEquals(THURSDAY,stringToWeekdayCode(“THURSDAY”));
+44 // assertEquals(THURSDAY, stringToWeekdayCode(“thu”));
+45 // assertEquals(THURSDAY, stringToWeekdayCode(“thurs”));
+47 assertEquals(FRIDAY, stringToWeekdayCode(“Friday”));
+48 assertEquals(FRIDAY, stringToWeekdayCode(“Fri”));
+49 // assertEquals(FRIDAY,stringToWeekdayCode(“friday”));
+50 // assertEquals(FRIDAY,stringToWeekdayCode(“FRIDAY”));
+51 // assertEquals(FRIDAY, StringToWeekdayCode(“fri”));
+53 assertEquals(SATURDAY, stringToWeekdayCode(“Saturday”));
+54 assertEquals(SATURDAY, stringToWeekdayCode(“Sat”));
+55 // assertEquals(SATURDAY,stringToWeekdayCode(“saturday”));
+56 // assertEquals(SATURDAY,stringToWeekdayCode(“SATURDAY”));
+57 // assertEquals(SATURDAY, stringToWeekdayCode(“sat”));
+59 assertEquals(SUNDAY, stringToWeekdayCode(“Sunday”));
+60 assertEquals(SUNDAY, stringToWeekdayCode(“Sun”));
+61 // assertEquals(SUNDAY,stringToWeekdayCode(“sunday”));
+62 // assertEquals(SUNDAY,stringToWeekdayCode(“SUNDAY”));
+63 // assertEquals(SUNDAY, stringToWeekdayCode(“sun”));
+64 }
+66 public void testWeekdayCodeToString() throws Exception {
+67 assertEquals(“Sunday”, weekdayCodeToString(SUNDAY));
+68 assertEquals(“Monday”, weekdayCodeToString(MONDAY));
+69 assertEquals(“Tuesday”, weekdayCodeToString(TUESDAY));
+70 assertEquals(“Wednesday”, weekdayCodeToString(WEDNESDAY));
+71 assertEquals(“Thursday”, weekdayCodeToString(THURSDAY));
+72 assertEquals(“Friday”, weekdayCodeToString(FRIDAY));
+73 assertEquals(“Saturday”, weekdayCodeToString(SATURDAY));
+74 }
+76 public void testIsValidMonthCode() throws Exception {
+77 for (int i = 1; i <= 12; i++)
+78 assertTrue(isValidMonthCode(i));
+79 assertFalse(isValidMonthCode(0));
+80 assertFalse(isValidMonthCode(13));
+81 }
+83 public void testMonthToQuarter() throws Exception {
+84 assertEquals(1, monthCodeToQuarter(JANUARY));
+85 assertEquals(1, monthCodeToQuarter(FEBRUARY));
+86 assertEquals(1, monthCodeToQuarter(MARCH));
+87 assertEquals(2, monthCodeToQuarter(APRIL));
+88 assertEquals(2, monthCodeToQuarter(MAY));
+89 assertEquals(2, monthCodeToQuarter(JUNE));
+90 assertEquals(3, monthCodeToQuarter(JULY));
+91 assertEquals(3, monthCodeToQuarter(AUGUST));
+92 assertEquals(3, monthCodeToQuarter(SEPTEMBER));
+93 assertEquals(4, monthCodeToQuarter(OCTOBER));
+94 assertEquals(4, monthCodeToQuarter(NOVEMBER));
+95 assertEquals(4, monthCodeToQuarter(DECEMBER));
+97 try {
+98 monthCodeToQuarter(-1);
+99 fail(“Invalid Month Code should throw exception”);
+100 } catch (IllegalArgumentException e) {
+101 }
+102 }
+104 public void testMonthCodeToString() throws Exception {
+105 assertEquals(“January”, monthCodeToString(JANUARY));
+106 assertEquals(“February”, monthCodeToString(FEBRUARY));
+107 assertEquals(“March”, monthCodeToString(MARCH));
+108 assertEquals(“April”, monthCodeToString(APRIL));
+109 assertEquals(“May”, monthCodeToString(MAY));
+110 assertEquals(“June”, monthCodeToString(JUNE));
+111 assertEquals(“July”, monthCodeToString(JULY));
+112 assertEquals(“August”, monthCodeToString(AUGUST));
+113 assertEquals(“September”, monthCodeToString(SEPTEMBER));
+114 assertEquals(“October”, monthCodeToString(OCTOBER));
+115 assertEquals(“November”, monthCodeToString(NOVEMBER));
+116 assertEquals(“December”, monthCodeToString(DECEMBER));
+118 assertEquals(“Jan”, monthCodeToString(JANUARY, true));
+119 assertEquals(“Feb”, monthCodeToString(FEBRUARY, true));
+120 assertEquals(“Mar”, monthCodeToString(MARCH, true));
+121 assertEquals(“Apr”, monthCodeToString(APRIL, true));
+122 assertEquals(“May”, monthCodeToString(MAY, true));
+123 assertEquals(“Jun”, monthCodeToString(JUNE, true));
+124 assertEquals(“Jul”, monthCodeToString(JULY, true));
+125 assertEquals(“Aug”, monthCodeToString(AUGUST, true));
+126 assertEquals(“Sep”, monthCodeToString(SEPTEMBER, true));
+127 assertEquals(“Oct”, monthCodeToString(OCTOBER, true));
+128 assertEquals(“Nov”, monthCodeToString(NOVEMBER, true));
+129 assertEquals(“Dec”, monthCodeToString(DECEMBER, true));
+131 try {
+132 monthCodeToString(-1);
+133 fail(“Invalid month code should throw exception”);
+134 } catch (IllegalArgumentException e) {
+135 }
+137 }
+139 public void testStringToMonthCode() throws Exception {
+140 assertEquals(JANUARY,stringToMonthCode(“1”));
+141 assertEquals(FEBRUARY,stringToMonthCode(“2”));
+142 assertEquals(MARCH,stringToMonthCode(“3”));
+143 assertEquals(APRIL,stringToMonthCode(“4”));
+144 assertEquals(MAY,stringToMonthCode(“5”));
+145 assertEquals(JUNE,stringToMonthCode(“6”));
+146 assertEquals(JULY,stringToMonthCode(“7”));
+147 assertEquals(AUGUST,stringToMonthCode(“8”));
+148 assertEquals(SEPTEMBER,stringToMonthCode(“9”));
+149 assertEquals(OCTOBER,stringToMonthCode(“10”));
+150 assertEquals(NOVEMBER, stringToMonthCode(“11”));
+151 assertEquals(DECEMBER,stringToMonthCode(“12”));
+153 //todo assertEquals(-1, stringToMonthCode(“0”));
+154 // assertEquals(-1, stringToMonthCode(“13”));
+156 assertEquals(-1,stringToMonthCode(“Hello”));
+157
+158 for (int m = 1; m <= 12; m++) {
+159 assertEquals(m, stringToMonthCode(monthCodeToString(m, false)));
+160 assertEquals(m, stringToMonthCode(monthCodeToString(m, true)));
+161 }
+163 // assertEquals(1,stringToMonthCode(“jan”));
+164 // assertEquals(2,stringToMonthCode(“feb”));
+165 // assertEquals(3,stringToMonthCode(“mar”));
+166 // assertEquals(4,stringToMonthCode(“apr”));
+167 // assertEquals(5,stringToMonthCode(“may”));
+168 // assertEquals(6,stringToMonthCode(“jun”));
+169 // assertEquals(7,stringToMonthCode(“jul”));
+170 // assertEquals(8,stringToMonthCode(“aug”));
+171 // assertEquals(9,stringToMonthCode(“sep”));
+172 // assertEquals(10,stringToMonthCode(“oct”));
+173 // assertEquals(11,stringToMonthCode(“nov”));
+174 // assertEquals(12,stringToMonthCode(“dec”));
+176 // assertEquals(1,stringToMonthCode(“JAN”));
+177 // assertEquals(2,stringToMonthCode(“FEB”));
+178 // assertEquals(3,stringToMonthCode(“MAR”));
+179 // assertEquals(4,stringToMonthCode(“APR”));
+180 // assertEquals(5,stringToMonthCode(“MAY”));
+181 // assertEquals(6,stringToMonthCode(“JUN”));
+182 // assertEquals(7,stringToMonthCode(“JUL”));
+183 // assertEquals(8,stringToMonthCode(“AUG”));
+184 // assertEquals(9,stringToMonthCode(“SEP”));
+185 // assertEquals(10,stringToMonthCode(“OCT”));
+186 // assertEquals(11,stringToMonthCode(“NOV”));
+187 // assertEquals(12,stringToMonthCode(“DEC”));
+189 // assertEquals(1,stringToMonthCode(“january”));
+190 // assertEquals(2,stringToMonthCode(“february”));
+191 // assertEquals(3,stringToMonthCode(“march”));
+192 // assertEquals(4,stringToMonthCode(“april”));
+193 // assertEquals(5,stringToMonthCode(“may”));
+194 // assertEquals(6,stringToMonthCode(“june”));
+195 // assertEquals(7,stringToMonthCode(“july”));
+196 // assertEquals(8,stringToMonthCode(“august”));
+197 // assertEquals(9,stringToMonthCode(“september”));
+198 // assertEquals(10,stringToMonthCode(“october”));
+199 // assertEquals(11,stringToMonthCode(“november”));
+200 // assertEquals(12,stringToMonthCode(“december”));
+476
+202 // assertEquals(1,stringToMonthCode(“JANUARY”));
+203 // assertEquals(2,stringToMonthCode(“FEBRUARY”));
+204 // assertEquals(3,stringToMonthCode(“MAR”));
+205 // assertEquals(4,stringToMonthCode(“APRIL”));
+206 // assertEquals(5,stringToMonthCode(“MAY”));
+207 // assertEquals(6,stringToMonthCode(“JUNE”));
+208 // assertEquals(7,stringToMonthCode(“JULY”));
+209 // assertEquals(8,stringToMonthCode(“AUGUST”));
+210 // assertEquals(9,stringToMonthCode(“SEPTEMBER”));
+211 // assertEquals(10,stringToMonthCode(“OCTOBER”));
+212 // assertEquals(11,stringToMonthCode(“NOVEMBER”));
+213 // assertEquals(12,stringToMonthCode(“DECEMBER”));
+214 }
+216 public void testIsValidWeekInMonthCode() throws Exception {
+217 for (int w = 0; w <= 4; w++) {
+218 assertTrue(isValidWeekInMonthCode(w));
+219 }
+220 assertFalse(isValidWeekInMonthCode(5));
+221 }
+223 public void testIsLeapYear() throws Exception {
+224 assertFalse(isLeapYear(1900));
+225 assertFalse(isLeapYear(1901));
+226 assertFalse(isLeapYear(1902));
+227 assertFalse(isLeapYear(1903));
+228 assertTrue(isLeapYear(1904));
+229 assertTrue(isLeapYear(1908));
+230 assertFalse(isLeapYear(1955));
+231 assertTrue(isLeapYear(1964));
+232 assertTrue(isLeapYear(1980));
+233 assertTrue(isLeapYear(2000));
+234 assertFalse(isLeapYear(2001));
+235 assertFalse(isLeapYear(2100));
+236 }
+238 public void testLeapYearCount() throws Exception {
+239 assertEquals(0, leapYearCount(1900));
+240 assertEquals(0, leapYearCount(1901));
+241 assertEquals(0, leapYearCount(1902));
+242 assertEquals(0, leapYearCount(1903));
+243 assertEquals(1, leapYearCount(1904));
+244 assertEquals(1, leapYearCount(1905));
+245 assertEquals(1, leapYearCount(1906));
+246 assertEquals(1, leapYearCount(1907));
+247 assertEquals(2, leapYearCount(1908));
+248 assertEquals(24, leapYearCount(1999));
+249 assertEquals(25, leapYearCount(2001));
+250 assertEquals(49, leapYearCount(2101));
+251 assertEquals(73, leapYearCount(2201));
+252 assertEquals(97, leapYearCount(2301));
+253 assertEquals(122, leapYearCount(2401));
+254 }
+256 public void testLastDayOfMonth() throws Exception {
+257 assertEquals(31, lastDayOfMonth(JANUARY, 1901));
+258 assertEquals(28, lastDayOfMonth(FEBRUARY, 1901));
+259 assertEquals(31, lastDayOfMonth(MARCH, 1901));
+260 assertEquals(30, lastDayOfMonth(APRIL, 1901));
+261 assertEquals(31, lastDayOfMonth(MAY, 1901));
+262 assertEquals(30, lastDayOfMonth(JUNE, 1901));
+263 assertEquals(31, lastDayOfMonth(JULY, 1901));
+264 assertEquals(31, lastDayOfMonth(AUGUST, 1901));
+265 assertEquals(30, lastDayOfMonth(SEPTEMBER, 1901));
+266 assertEquals(31, lastDayOfMonth(OCTOBER, 1901));
+267 assertEquals(30, lastDayOfMonth(NOVEMBER, 1901));
+268 assertEquals(31, lastDayOfMonth(DECEMBER, 1901));
+269 assertEquals(29, lastDayOfMonth(FEBRUARY, 1904));
+270 }
+272 public void testAddDays() throws Exception {
+273 SerialDate newYears = d(1, JANUARY, 1900);
+274 assertEquals(d(2, JANUARY, 1900), addDays(1, newYears));
+275 assertEquals(d(1, FEBRUARY, 1900), addDays(31, newYears));
+276 assertEquals(d(1, JANUARY, 1901), addDays(365, newYears));
+277 assertEquals(d(31, DECEMBER, 1904), addDays(5 * 365, newYears));
+278 }
+280 private static SpreadsheetDate d(int day, int month, int year)
+{ return new SpreadsheetDate(day, month, year); }
+282 public void testAddMonths() throws Exception {
+283 assertEquals(d(1, FEBRUARY, 1900), addMonths(1, d(1, JANUARY,
+1900)));
+284 assertEquals(d(28, FEBRUARY, 1900), addMonths(1, d(31, JANUARY,
+1900)));
+285 assertEquals(d(28, FEBRUARY, 1900), addMonths(1, d(30, JANUARY,
+1900)));
+286 assertEquals(d(28, FEBRUARY, 1900), addMonths(1, d(29, JANUARY,
+1900)));
+287 assertEquals(d(28, FEBRUARY, 1900), addMonths(1, d(28, JANUARY,
+1900)));
+288 assertEquals(d(27, FEBRUARY, 1900), addMonths(1, d(27, JANUARY,
+1900)));
+290 assertEquals(d(30, JUNE, 1900), addMonths(5, d(31, JANUARY, 1900)));
+291 assertEquals(d(30, JUNE, 1901), addMonths(17, d(31, JANUARY,
+1900)));
+293 assertEquals(d(29, FEBRUARY, 1904), addMonths(49, d(31, JANUARY,
+1900)));
+295 }
+297 public void testAddYears() throws Exception {
+298 assertEquals(d(1, JANUARY, 1901), addYears(1, d(1, JANUARY, 1900)));
+299 assertEquals(d(28, FEBRUARY, 1905), addYears(1, d(29, FEBRUARY,
+1904)));
+300 assertEquals(d(28, FEBRUARY, 1905), addYears(1, d(28, FEBRUARY,
+1904)));
+301 assertEquals(d(28, FEBRUARY, 1904), addYears(1, d(28, FEBRUARY,
+1903)));
+302 }
+304 public void testGetPreviousDayOfWeek() throws Exception {
+305 assertEquals(d(24, FEBRUARY, 2006), getPreviousDayOfWeek(FRIDAY,
+d(1, MARCH, 2006)));
+306 assertEquals(d(22, FEBRUARY, 2006), getPreviousDayOfWeek(WEDNESDAY,
+d(1, MARCH, 2006)));
+307 assertEquals(d(29, FEBRUARY, 2004), getPreviousDayOfWeek(SUNDAY,
+d(3, MARCH, 2004)));
+308 assertEquals(d(29, DECEMBER, 2004), getPreviousDayOfWeek(WEDNESDAY,
+d(5, JANUARY, 2005)));
+310 try {
+311 getPreviousDayOfWeek(-1, d(1, JANUARY, 2006));
+312 fail(“Invalid day of week code should throw exception”);
+313 } catch (IllegalArgumentException e) {
+314 }
+315 }
+317 public void testGetFollowingDayOfWeek() throws Exception {
+318 // assertEquals(d(1, JANUARY, 2005),getFollowingDayOfWeek(SATURDAY, d(25,
+DECEMBER, 2004)));
+319 assertEquals(d(1, JANUARY, 2005), getFollowingDayOfWeek(SATURDAY,
+d(26, DECEMBER, 2004)));
+320 assertEquals(d(3, MARCH, 2004), getFollowingDayOfWeek(WEDNESDAY,
+d(28, FEBRUARY, 2004)));
+479
+322 try {
+323 getFollowingDayOfWeek(-1, d(1, JANUARY, 2006));
+324 fail(“Invalid day of week code should throw exception”);
+325 } catch (IllegalArgumentException e) {
+326 }
+327 }
+329 public void testGetNearestDayOfWeek() throws Exception {
+330 assertEquals(d(16, APRIL, 2006), getNearestDayOfWeek(SUNDAY, d(16,
+APRIL, 2006)));
+331 assertEquals(d(16, APRIL, 2006), getNearestDayOfWeek(SUNDAY, d(17,
+APRIL, 2006)));
+332 assertEquals(d(16, APRIL, 2006), getNearestDayOfWeek(SUNDAY, d(18,
+APRIL, 2006)));
+333 assertEquals(d(16, APRIL, 2006), getNearestDayOfWeek(SUNDAY, d(19,
+APRIL, 2006)));
+334 assertEquals(d(23, APRIL, 2006), getNearestDayOfWeek(SUNDAY, d(20,
+APRIL, 2006)));
+335 assertEquals(d(23, APRIL, 2006), getNearestDayOfWeek(SUNDAY, d(21,
+APRIL, 2006)));
+336 assertEquals(d(23, APRIL, 2006), getNearestDayOfWeek(SUNDAY, d(22,
+APRIL, 2006)));
+338 //todo assertEquals(d(17, APRIL, 2006), getNearestDayOfWeek(MONDAY, d(16,
+APRIL, 2006)));
+339 assertEquals(d(17, APRIL, 2006), getNearestDayOfWeek(MONDAY, d(17,
+APRIL, 2006)));
+340 assertEquals(d(17, APRIL, 2006), getNearestDayOfWeek(MONDAY, d(18,
+APRIL, 2006)));
+341 assertEquals(d(17, APRIL, 2006), getNearestDayOfWeek(MONDAY, d(19,
+APRIL, 2006)));
+342 assertEquals(d(17, APRIL, 2006), getNearestDayOfWeek(MONDAY, d(20,
+APRIL, 2006)));
+343 assertEquals(d(24, APRIL, 2006), getNearestDayOfWeek(MONDAY, d(21,
+APRIL, 2006)));
+344 assertEquals(d(24, APRIL, 2006), getNearestDayOfWeek(MONDAY, d(22,
+APRIL, 2006)));
+346 // assertEquals(d(18, APRIL, 2006), getNearestDayOfWeek(TUESDAY, d(16,
+APRIL, 2006)));
+347 // assertEquals(d(18, APRIL, 2006), getNearestDayOfWeek(TUESDAY, d(17,
+APRIL, 2006)));
+348 assertEquals(d(18, APRIL, 2006), getNearestDayOfWeek(TUESDAY, d(18,
+APRIL, 2006)));
+349 assertEquals(d(18, APRIL, 2006), getNearestDayOfWeek(TUESDAY, d(19,
+APRIL, 2006)));
+350 assertEquals(d(18, APRIL, 2006), getNearestDayOfWeek(TUESDAY, d(20,
+APRIL, 2006)));
+351 assertEquals(d(18, APRIL, 2006), getNearestDayOfWeek(TUESDAY, d(21,
+APRIL, 2006)));
+352 assertEquals(d(25, APRIL, 2006), getNearestDayOfWeek(TUESDAY, d(22,
+APRIL, 2006)));
+354 // assertEquals(d(19, APRIL, 2006), getNearestDayOfWeek(WEDNESDAY, d(16,
+APRIL, 2006)));
+355 // assertEquals(d(19, APRIL, 2006), getNearestDayOfWeek(WEDNESDAY, d(17,
+APRIL, 2006)));
+356 // assertEquals(d(19, APRIL, 2006), getNearestDayOfWeek(WEDNESDAY, d(18,
+APRIL, 2006)));
+357 assertEquals(d(19, APRIL, 2006), getNearestDayOfWeek(WEDNESDAY,
+d(19, APRIL, 2006)));
+358 assertEquals(d(19, APRIL, 2006), getNearestDayOfWeek(WEDNESDAY,
+d(20, APRIL, 2006)));
+359 assertEquals(d(19, APRIL, 2006), getNearestDayOfWeek(WEDNESDAY,
+d(21, APRIL, 2006)));
+360 assertEquals(d(19, APRIL, 2006), getNearestDayOfWeek(WEDNESDAY,
+d(22, APRIL, 2006)));
+362 // assertEquals(d(13, APRIL, 2006), getNearestDayOfWeek(THURSDAY, d(16,
+APRIL, 2006)));
+363 // assertEquals(d(20, APRIL, 2006), getNearestDayOfWeek(THURSDAY, d(17,
+APRIL, 2006)));
+364 // assertEquals(d(20, APRIL, 2006), getNearestDayOfWeek(THURSDAY, d(18,
+APRIL, 2006)));
+365 // assertEquals(d(20, APRIL, 2006), getNearestDayOfWeek(THURSDAY, d(19,
+APRIL, 2006)));
+366 assertEquals(d(20, APRIL, 2006), getNearestDayOfWeek(THURSDAY, d(20,
+APRIL, 2006)));
+367 assertEquals(d(20, APRIL, 2006), getNearestDayOfWeek(THURSDAY, d(21,
+APRIL, 2006)));
+368 assertEquals(d(20, APRIL, 2006), getNearestDayOfWeek(THURSDAY, d(22,
+APRIL, 2006)));
+370 // assertEquals(d(14, APRIL, 2006), getNearestDayOfWeek(FRIDAY, d(16,
+APRIL, 2006)));
+371 // assertEquals(d(14, APRIL, 2006), getNearestDayOfWeek(FRIDAY, d(17,
+APRIL, 2006)));
+372 // assertEquals(d(21, APRIL, 2006), getNearestDayOfWeek(FRIDAY, d(18,
+APRIL, 2006)));
+373 // assertEquals(d(21, APRIL, 2006), getNearestDayOfWeek(FRIDAY, d(19,
+APRIL, 2006)));
+374 // assertEquals(d(21, APRIL, 2006), getNearestDayOfWeek(FRIDAY, d(20,
+APRIL, 2006)));
+375 assertEquals(d(21, APRIL, 2006), getNearestDayOfWeek(FRIDAY, d(21,
+APRIL, 2006)));
+376 assertEquals(d(21, APRIL, 2006), getNearestDayOfWeek(FRIDAY, d(22, APRIL,
+2006)));
+378 // assertEquals(d(15, APRIL, 2006), getNearestDayOfWeek(SATURDAY, d(16,
+APRIL, 2006)));
+379 // assertEquals(d(15, APRIL, 2006), getNearestDayOfWeek(SATURDAY, d(17,
+APRIL, 2006)));
+380 // assertEquals(d(15, APRIL, 2006), getNearestDayOfWeek(SATURDAY, d(18,
+APRIL, 2006)));
+381 // assertEquals(d(22, APRIL, 2006), getNearestDayOfWeek(SATURDAY, d(19,
+APRIL, 2006)));
+382 // assertEquals(d(22, APRIL, 2006), getNearestDayOfWeek(SATURDAY, d(20,
+APRIL, 2006)));
+383 // assertEquals(d(22, APRIL, 2006), getNearestDayOfWeek(SATURDAY, d(21,
+APRIL, 2006)));
+384 assertEquals(d(22, APRIL, 2006), getNearestDayOfWeek(SATURDAY, d(22,
+APRIL, 2006)));
+386 try {
+387 getNearestDayOfWeek(-1, d(1, JANUARY, 2006));
+388 fail(“Invalid day of week code should throw exception”);
+389 } catch (IllegalArgumentException e) {
+390 }
+391 }
+393 public void testEndOfCurrentMonth() throws Exception {
+394 SerialDate d = SerialDate.createInstance(2);
+395 assertEquals(d(31, JANUARY, 2006), d.getEndOfCurrentMonth(d(1,
+JANUARY, 2006)));
+396 assertEquals(d(28, FEBRUARY, 2006), d.getEndOfCurrentMonth(d(1,
+FEBRUARY, 2006)));
+397 assertEquals(d(31, MARCH, 2006), d.getEndOfCurrentMonth(d(1, MARCH,
+2006)));
+398 assertEquals(d(30, APRIL, 2006), d.getEndOfCurrentMonth(d(1, APRIL,
+2006)));
+399 assertEquals(d(31, MAY, 2006), d.getEndOfCurrentMonth(d(1, MAY,
+2006)));
+400 assertEquals(d(30, JUNE, 2006), d.getEndOfCurrentMonth(d(1, JUNE,
+2006)));
+401 assertEquals(d(31, JULY, 2006), d.getEndOfCurrentMonth(d(1, JULY,
+2006)));
+402 assertEquals(d(31, AUGUST, 2006), d.getEndOfCurrentMonth(d(1,
+AUGUST, 2006)));
+403 assertEquals(d(30, SEPTEMBER, 2006), d.getEndOfCurrentMonth(d(1,
+SEPTEMBER, 2006)));
+404 assertEquals(d(31, OCTOBER, 2006), d.getEndOfCurrentMonth(d(1,
+OCTOBER, 2006)));
+405 assertEquals(d(30, NOVEMBER, 2006), d.getEndOfCurrentMonth(d(1,
+NOVEMBER, 2006)));
+406 assertEquals(d(31, DECEMBER, 2006), d.getEndOfCurrentMonth(d(1,
+DECEMBER, 2006)));
+407 assertEquals(d(29, FEBRUARY, 2008), d.getEndOfCurrentMonth(d(1,
+FEBRUARY, 2008)));
+408 }
+410 public void testWeekInMonthToString() throws Exception {
+411 assertEquals(“First”,weekInMonthToString(FIRST_WEEK_IN_MONTH));
+412 assertEquals(“Second”,weekInMonthToString(SECOND_WEEK_IN_MONTH));
+413 assertEquals(“Third”,weekInMonthToString(THIRD_WEEK_IN_MONTH));
+414 assertEquals(“Fourth”,weekInMonthToString(FOURTH_WEEK_IN_MONTH));
+415 assertEquals(“Last”,weekInMonthToString(LAST_WEEK_IN_MONTH));
+417 //todo try {
+418 // weekInMonthToString(-1);
+419 // fail(“Invalid week code should throw exception”);
+420 // } catch (IllegalArgumentException e) {
+421 // }
+422 }
+424 public void testRelativeToString() throws Exception {
+425 assertEquals(“Preceding”,relativeToString(PRECEDING));
+426 assertEquals(“Nearest”,relativeToString(NEAREST));
+427 assertEquals(“Following”,relativeToString(FOLLOWING));
+429 //todo try {
+430 // relativeToString(-1000);
+431 // fail(“Invalid relative code should throw exception”);
+432 // } catch (IllegalArgumentException e) {
+433 // }
+434 }
+436 public void testCreateInstanceFromDDMMYYYY() throws Exception {
+437 SerialDate date = createInstance(1, JANUARY, 1900);
+438 assertEquals(1,date.getDayOfMonth());
+439 assertEquals(JANUARY,date.getMonth());
+440 assertEquals(1900,date.getYYYY());
+441 assertEquals(2,date.toSerial());
+442 }
+444 public void testCreateInstanceFromSerial() throws Exception {
+445 assertEquals(d(1, JANUARY, 1900),createInstance(2));
+446 assertEquals(d(1, JANUARY, 1901), createInstance(367));
+447 }
+449 public void testCreateInstanceFromJavaDate() throws Exception {
+450 assertEquals(d(1, JANUARY, 1900),
+createInstance(new GregorianCalendar(1900,0,1).getTime()));
+451 assertEquals(d(1, JANUARY, 2006),
+createInstance(new GregorianCalendar(2006,0,1).getTime()));
+452 }
+454 public static void main(String[] args) {
+455 junit.textui.TestRunner.run(BobsSerialDateTest.class);
+456 }
+457 }
+Listado B-5
+SpreadsheetDate.java.
+1 /* =============================================================
+2 * JCommon: biblioteca gratuita de clases de propósito general para Java(tm)
+3 * =============================================================
+4 *
+5 * (C) Copyright 2000-2005, de Object Refinery Limited y colaboradores.
+6 *
+7 * Información del proyecto: http://www.jfree.org/jcommon/index.html
+8 *
+9 * Esta biblioteca es software gratuito; puede distribuirla y/o modificarla
+10 * bajo las condiciones de la Licencia pública general GNU publicada por
+11 * la Free Software Foundation; ya sea la versión 2.1 de la licencia, u
+12 * otra versión posterior (de su elección).
+13 *
+14 * Esta biblioteca se distribuye con la intención de que sea útil, pero
+15 * SIN GARANTÍA ALGUNA, incluida la garantía implícita de COMERCIABILIDAD
+16 * e IDONEIDAD PARA UN DETERMINADO FIN. Consulte la Licencia pública general
+GNU
+17 * si necesita más información al respecto.
+18 *
+19 * Debería haber recibido una copia de la Licencia pública general GNU
+20 * junto a esta biblioteca; en caso contrario, contacte con la Free Software
+21 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+22 * EE.UU.
+23 *
+24 * [Java es una marca comercial o marca comercial registrada de Sun
+25 * Microsystems, Inc. en Estados Unidos y otros países.]
+26 *
+27 * --------------------------
+28 * SpreadsheetDate.java
+29 * --------------------------
+30 * (C) Copyright 2000-2005, de Object Refinery Limited y colaboradores.
+31 *
+32 * Autor original: David Gilbert (por Object Refinery Limited);
+33 * Colaboradores(s): -;
+34 *
+35 * $Id: SpeadsheetDate.java,v 1.8 2005/11/03 09:25:39 mungady Exp $
+36 *
+37 * Cambios
+38 * ----------
+39 * 11-Oct-2001 : Version 1 (DG);
+40 * 05-Nov-2001 : Se añaden los métodos getDescription() y setDescription()
+(DG);
+41 * 12-Nov-2001 : Se cambia el nombre ExcelDate.java por SpreadsheetDate.java
+(DG);
+42 * Se corrige un error a la hora de calcular el día, mes y año a
+43 * partir del número de serie (DG);
+44 * 24-Jan-2002 : Se corrige un error a la hora de calcular el número de
+serie a
+45 * partir del día, mes y año. Gracias a Trevor Kills por el informe (DG);
+46 * 29-May-2002 : Se añade el método equals(Object) (SourceForge ID 558850)
+(DG);
+47 * 03-Oct-2002 : Se corrigen los errores detectados por Checkstyle (DG);
+48 * 13-Mar-2003 : Implementación de Serializable (DG);
+49 * 04-Sep-2003 : Métodos isInRange() completados (DG);
+50 * 05-Sep-2003 : Implementación de Comparable (DG);
+51 * 21-Oct-2003 : Se añade el método hashCode() (DG);
+52 *
+53 /*
+55 package org.jfree.date;
+57 import java.util.Calendar;
+58 import java.util.Date;
+59 /**
+61 * Representa una con un entero, de forma similar a la
+62 * implementación en Microsoft Excel. El intervalo de fechas admitido es
+63 * 1-Ene-1900 a 31-Dic-9999.
+64 * <P>
+65 * Recuerde que Excel tiene un error que reconoce el año
+66 * 1900 como bisiesto cuando en realidad no lo es. Encontrará más
+67 * información en el sitio Web de Microsoft, en el artículo Q181370:
+68 * <P>
+69 * http://support.microsoft.com/support/kb/articles/Q181/3/70.asp
+70 * <P>
+71 * Excel usa como convención que el 1-Ene-1900 = 1. Esta clase usa la
+72 * convención de que 1-Ene-1900 = 2.
+73 * Como resultado, el número de día de esta clase será diferente al de
+74 * Excel para enero y febrero de 1900… pero Excel añade un día
+75 * más (29-Feb-1900 que en realidad no existe) y a partir de ahí
+76 * los números de los días coinciden.
+77 *
+78 * @author David Gilbert
+79 */
+80 public class SpreadsheetDate extends SerialDate {
+486
+82 /** Para serialización. */
+83 private static final long serialVersionUID = -2039586705374454461L;
+85 /**
+86 * El número de día (1-Ene-1900 = 2, 2-Ene-1900 = 3…, 31-Dic-9999 =
+87 * 2958465).
+88 */
+89 private int serial;
+91 /** El día del mes (de 1 a 28, 29, 30 o 31 en función del mes). */
+92 private int day;
+94 /** El mes del año (de 1 a 12). */
+95 private int month;
+97 /** El año (de 1900 a 9999). */
+98 private int year;
+100 /** Una descripción opcional para la fecha. */
+101 private String description;
+103 /**
+104 * Crear una nueva instancia de la fecha.
+105 *
+106 * @param day el día (entre 1 y 28/29/30/31).
+107 * @param month el mes (entre 1 y 12).
+108 * @param year el año (entre 1900 y 9999).
+109 */
+110 public SpreadsheetDate(final int day, final int month, final int year)
+{
+112 if ((year >= 1900) && (year <= 9999)) {
+113 this.year = year;
+114 }
+115 else {
+116 throw new IllegalArgumentException(
+117 “The ‘year’ argument must be in range 1900 to 9999.”
+118 );
+119 }
+121 if ((month >= MonthConstants.JANUARY)
+122 && (month <= MonthConstants.DECEMBER)) {
+123 this.month = month;
+124 }
+125 else {
+126 throw new IllegalArgumentException(
+127 “The ‘month’ argument must be in the range 1 to 12.”
+128 );
+129 }
+131 if ((day >= 1) && (day <= SerialDate.lastDayOfMonth(month, year))) {
+132 this.day = day;
+133 }
+134 else {
+135 throw new IllegalArgumentException(“Invalid ‘day’ argument.”);
+136 }
+138 // es necesario sincronizar el número de serie con el día-mes-año…
+139 this.serial = calcSerial(day, month, year);
+141 this.description = null;
+143 }
+145 /**
+146 * Constructor estándar: crear un nuevo objeto de fecha que representa
+el
+147 * número de día especificado (que debe estar comprendido entre 2 y
+2958465).
+148 *
+149 * @param serial número de serie para el día (entre 2 y 2958465).
+150 */
+151 public SpreadsheetDate(final int serial) {
+153 if ((serial >= SERIAL_LOWER_BOUND) && (serial <=
+SERIAL_UPPER_BOUND)) {
+154 this.serial = serial;
+155 }
+156 else {
+157 throw new IllegalArgumentException(
+158 “SpreadsheetDate: Serial must be in range 2 to 2958465.”);
+159 }
+161 // el día-mes-año debe estar sincronizado con el número de serie…
+162 calcDayMonthYear();
+164 }
+166 /**
+167 * Devuelve la descripción adjuntada a la fecha. No es
+168 * obligatorio que la fecha tenga una descripción, pero resulta útil
+169 * en algunas aplicaciones.
+170 *
+171 * @return La descripción adjuntada a la fecha.
+172 */
+173 public String getDescription() {
+174 return this.description;
+175 }
+177 /**
+178 * Establece la descripción de la fecha.
+179 *
+180 * @param description la descripción de esta fecha (<code>null</code>
+181 * se permite)
+182 */
+183 public void setDescription(final String description) {
+184 this.description = description;
+185 }
+187 /**
+188 * Devuelve el número de serie de la fecha, siendo el 1 de enero 1900 =
+189 * (se corresponde, casi totalmente, al sistema de numeración empleado
+en
+190 * Microsoft Excel para Windows y Lotus 1-2-3).
+191 *
+192 * @return El número de serie de la fecha.
+193 */
+194 public int toSerial() {
+195 return this.serial;
+196 }
+198 /**
+199 * Devuelve una <code>java.util.Date</code> equivalente a esta fecha.
+200 *
+201 * @return La fecha.
+202 */
+203 public Date toDate() {
+204 final Calendar calendar = Calendar.getInstance();
+205 calendar.set(getYYYY(), getMonth() - 1, getDayOfMonth(), 0, 0, 0);
+206 return calendar.getTime();
+207 }
+209 /**
+210 * Devuelve el año (con un intervalo válido de 1900 a 9999).
+211 *
+212 * @return El año.
+213 */
+214 public int getYYYY() {
+215 return this.year;
+216 }
+218 /**
+219 * Devuelve el mes (Enero = 1, Febrero = 2, Marzo = 3).
+220 *
+221 * @return El mes del año.
+222 */
+223 public int getMonth() {
+224 return this.month;
+225 }
+227 /**
+228 * Devuelve el día del mes.
+229 *
+230 * @return El día del mes.
+231 */
+232 public int getDayOfMonth() {
+233 return this.day;
+234 }
+236 /**
+237 * Devuelve un código que representa el día de la semana.
+238 * <P>
+239 * Los códigos se definen en la clase {@link SerialDate} como:
+240 * <code>SUNDAY</code>, <code>MONDAY</code>, <code>TUESDAY</code>,
+241 * <code>WEDNESDAY</code>, <code>THURSDAY</code>, <code>FRIDAY</code>,
+y
+242 * <code>SATURDAY</code>.
+243 *
+244 * @return Un código que representa el día de la semana.
+245 */
+246 public int getDayOfWeek() {
+247 return (this.serial + 6) % 7 + 1;
+248 }
+250 /**
+251 * Prueba la igualdad de esta fecha con un objeto arbitrario.
+252 * <P>
+253 * Este método SÓLO devuelve true si el objeto es una instancia de la
+254 * clase base {@link SerialDate} y representa el mismo día que
+255 * {@link SpreadsheetDate}.
+256 *
+257 * @param object el objeto que comparar (se permite <code>null</code>).
+258 *
+259 * @return Un valor booleano.
+260 */
+261 public boolean equals(final Object object) {
+263 if (object instanceof SerialDate) {
+264 final SerialDate s = (SerialDate) object;
+265 return (s.toSerial() == this.toSerial());
+266 }
+267 else {
+268 return false;
+269 }
+271 }
+273 /**
+274 * Devuelve un código hash para la instancia de este objeto.
+275 *
+276 * @return Un código hash.
+277 */
+278 public int hashCode() {
+279 return toSerial();
+280 }
+282 /**
+283 * Devuelve la diferencia (en días) entre esta fecha y la
+284 * ‘otra’ fecha especificada.
+285 *
+286 * @param other la fecha con la que se compara.
+287 *
+288 * @return La diferencia (en días) entre esta fecha y la
+289 * otra’ fecha especificada.
+290 */
+291 public int compare(final SerialDate other) {
+292 return this.serial – other.toSerial();
+293 }
+295 /**
+296 * Implementa el método necesario para la interfaz Comparable.
+297 *
+298 * @param other el otro objeto (normalmente otro SerialDate).
+299 *
+300 * @return Un entero negativo, cero o un entero positivo si este objeto
+301 * es menor que, igual o mayor que el objeto especificado.
+302 */
+303 public int compareTo(final Object other) {
+304 return compare((SerialDate) other);
+305 }
+307 /**
+308 * Devuelve true si esta SerialDate representa la misma fecha que la
+309 * SerialDate especificada.
+310 *
+311 * @param other la fecha con la que se compara.
+312 *
+313 * @return <code>true</code> si esta SerialDate representa la misma
+fecha que
+314 * la otra SerialDate especificada.
+315 */
+316 public boolean isOn(final SerialDate other) {
+317 return (this.serial == other.toSerial());
+318 }
+320 /**
+321 * Devuelve true si esta SerialDate representa una fecha anterior a
+322 * la SerialDate especificada.
+323 *
+324 * @param other la fecha con la que se compara.
+325 *
+326 * @return <code>true</code> si esta SerialDate representa una fecha
+anterior a
+327 * la SerialDate especificada.
+328 */
+329 public boolean isBefore(final SerialDate other) {
+330 return (this.serial < other.toSerial());
+331 }
+333 /**
+334 * Devuelve true si esta SerialDate representa la misma fecha que la
+335 * SerialDate especificada.
+336 *
+337 * @param other la fecha con la que se compara.
+338 *
+339 * @return <code>true</code> si esta SerialDate representa la misma
+fecha
+340 * que la SerialDate especificada.
+341 */
+342 public boolean isOnOrBefore(final SerialDate other) {
+343 return (this.serial <= other.toSerial());
+344 }
+345
+346 /**
+347 * Devuelve true si esta SerialDate representa la misma fecha que la
+348 * SerialDate especificada.
+349 *
+350 * @param other la fecha con la que se compara.
+351 *
+352 * @return <code>true</code> si esta SerialDate representa la misma
+fecha
+353 * que la SerialDate especificada.
+354 */
+355 public boolean isAfter(final SerialDate other) {
+356 return (this.serial > other.toSerial());
+357 }
+359 /**
+360 * Devuelve true si esta SerialDate representa la misma fecha que la
+361 * SerialDate especificada.
+362 *
+363 * @param other la fecha con la que se compara.
+364 *
+365 * @return <code>true</code> si esta SerialDate representa la misma
+fecha
+366 * que la SerialDate especificada.
+367 */
+368 public boolean isOnOrAfter(final SerialDate other) {
+369 return (this.serial >= other.toSerial());
+370 }
+372 /**
+373 * Devuelve <code>true</code> si {@link SerialDate} se encuentra en el
+374 * intervalo especificado (INCLUSIVE). El orden de fecha de d1 y d2 no
+es
+375 * importante.
+376 *
+377 * @param d1 una fecha límite para el rango.
+378 * @param d2 la otra fecha límite para el rango.
+379 *
+380 * @return Un valor booleano.
+381 */
+382 public boolean isInRange(final SerialDate d1, final SerialDate d2) {
+383 return isInRange(d1, d2, SerialDate.INCLUDE_BOTH);
+384 }
+386 /**
+387 * Devuelve true si esta SerialDate se encuentra en el intervalo
+especificado
+388 * (el invocador especifica si los puntos finales se incluyen o no). El
+orden
+389 * de d1 y d2 no es importante.
+390 *
+391 * @param d1 una fecha límite para el rango.
+392 * @param d2 la otra fecha límite para el rango.
+393 * @param include un código que controla si la fecha inicial y final
+394 * se incluyen en el intervalo.
+395 *
+396 * @return <code>true</code> si esta SerialDate se encuentra en el
+intervalo
+397 * especificado.
+398 */
+399 public boolean isInRange(final SerialDate d1, final SerialDate d2,
+400 final int include) {
+401 final int s1 = d1.toSerial();
+402 final int s2 = d2.toSerial();
+403 final int start = Math.min(s1, s2);
+404 final int end = Math.max(s1, s2);
+406 final int s = toSerial();
+407 if (include == SerialDate.INCLUDE_BOTH) {
+408 return (s >= start && s <= end);
+409 }
+410 else if (include == SerialDate.INCLUDE_FIRST) {
+411 return (s >= start && s < end);
+412 }
+413 else if (include == SerialDate.INCLUDE_SECOND) {
+414 return (s > start && s <= end);
+415 }
+416 else {
+417 return (s > start && s < end);
+418 }
+419 }
+421 /**
+422 * Calcular el número de serie a partir del día, mes y año.
+423 * <P>
+424 * 1-Ene-1900 = 2.
+425 *
+426 * @param d el día.
+427 * @param m el mes.
+428 * @param y el año.
+429 *
+430 * @return el número de serie a partir del día, mes y año.
+431 */
+432 private int calcSerial(final int d, final int m, final int y) {
+433 final int yy = ((y - 1900) * 365) + SerialDate.leapYearCount(y - 1);
+434 int mm = SerialDate.AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH[m];
+435 if (m > MonthConstants.FEBRUARY) {
+436 if (SerialDate.isLeapYear(y)) {
+437 mm = mm + 1;
+438 }
+439 }
+440 final int dd = d;
+441 return yy + mm + dd + 1;
+442 }
+444 /**
+445 * Calcular el día, mes y año a partir del número de serie.
+446 */
+447 private void calcDayMonthYear() {
+449 // obtener el año a partir del número de serie de la fecha
+450 final int days = this.serial - SERIAL_LOWER_BOUND;
+451 // sobrevalorado ya que ignoramos los días bisiestos
+452 final int overestimatedYYYY = 1900 + (days / 365);
+453 final int leaps = SerialDate.leapYearCount(overestimatedYYYY);
+454 final int nonleapdays = days - leaps;
+455 // subestimado ya que sobrevaloramos los años
+456 int underestimatedYYYY = 1900 + (nonleapdays / 365);
+458 if (underestimatedYYYY == overestimatedYYYY) {
+459 this.year = underestimatedYYYY;
+460 }
+461 else {
+462 int ss1 = calcSerial(1, 1, underestimatedYYYY);
+463 while (ss1 <= this.serial) {
+464 underestimatedYYYY = underestimatedYYYY + 1;
+465 ss1 = calcSerial(1, 1, underestimatedYYYY);
+466 }
+467 this.year = underestimatedYYYY - 1;
+468 }
+470 final int ss2 = calcSerial(1, 1, this.year);
+472 int[] daysToEndOfPrecedingMonth
+473 = AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH;
+475 if (isLeapYear(this.year)) {
+476 daysToEndOfPrecedingMonth
+477 = LEAP_YEAR_AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH;
+478 }
+480 // get the month from the serial date
+481 int mm = 1;
+482 int sss = ss2 + daysToEndOfPrecedingMonth[mm] - 1;
+483 while (sss < this.serial) {
+484 mm = mm + 1;
+485 sss = ss2 + daysToEndOfPrecedingMonth[mm] - 1;
+486 }
+487 this.month = mm - 1;
+489 // el resto es d(+1);
+490 this.day = this.serial - ss2
+491 - daysToEndOfPrecedingMonth[this.month] + 1;
+493 }
+495 }
+Listado B-6
+RelativeDayOfWeekRule.java
+1 /* =============================================================
+2 * JCommon : biblioteca gratuita de clases de propósito general para
+Java(tm)
+3 * =============================================================
+4 *
+5 * (C) Copyright 2000-2005, de Object Refinery Limited y colaboradores.
+6 *
+7 * Información del proyecto: http://www.jfree.org/jcommon/index.html
+8 *
+9 * Esta biblioteca es software gratuito; puede distribuirla y/o modificarla
+10 * bajo las condiciones de la Licencia pública general GNU publicada por
+11 * la Free Software Foundation; ya sea la versión 2.1 de la licencia, u
+12 * otra versión posterior (de su elección).
+13 *
+14 * Esta biblioteca se distribuye con la intención de que sea útil, pero
+15 * SIN GARANTÍA ALGUNA, incluida la garantía implícita de COMERCIABILIDAD
+16 * e IDONEIDAD PARA UN DETERMINADO FIN. Consulte la Licencia pública general
+GNU
+17 * si necesita más información al respecto.
+18 *
+19 * Debería haber recibido una copia de la Licencia pública general GNU
+20 * junto a esta biblioteca; en caso contrario, contacte con la Free Software
+21 * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301,
+22 * EE.UU.
+23 *
+24 * [Java es una marca comercial o marca comercial registrada de Sun
+25 * Microsystems, Inc. en Estados Unidos y otros países.]
+26 *
+27 * --------------------------
+28 * RelativeDayOfWeekRule.java
+29 * --------------------------
+30 * (C) Copyright 2000-2003, de Object Refinery Limited y colaboradores.
+31 *
+32 * Autor original: David Gilbert (por Object Refinery Limited);
+33 * Colaboradores(s): -;
+34 *
+35 * $Id: RelativeDayOfWeekRule.java,v 1.6 2005/11/16 15:58:40 taqua Exp $
+36 *
+37 * Cambios (26-Oct-2001)
+38 * --------------------------
+39 * 26-Oct-2001 : Se cambió el paquete por com.jrefinery.date.*;
+40 * 03-Oct-2002 : Se corrigen los errores detectados por Checkstyle (DG);
+41 *
+42 */
+44 package org.jfree.date;
+46 /**
+47 * Una regla de fechas anuales que devuelve una fecha por cada año en
+función de
+48 * (a) una regla de referencia; (b) un día de la semana y (c) un parámetro
+de
+49 * selección (SerialDate.PRECEDING, SerialDate.NEAREST,
+SerialDate.FOLLOWING).
+50 * <P>
+51 * Por ejemplo, el Viernes Santo se puede especificado ‘el Viernes ANTERIOR
+al
+52 * domingo de Resurrección.
+53 *
+54 * @author David Gilbert
+55 */
+56 public class RelativeDayOfWeekRule extends AnnualDateRule {
+58 /** Una referencia a la regla de fechas anuales sobre la que se basa
+esta regla. */
+59 private AnnualDateRule subrule;
+60
+61 /**
+62 * El día de la semana (SerialDate.MONDAY, SerialDate.TUESDAY, etc).
+63 */
+64 private int dayOfWeek;
+66 /** Indica que día de la semana (PRECEDING, NEAREST o FOLLOWING). */
+67 private int relative;
+69 /**
+70 * Constructor predeterminado: genera una regla para el lunes siguiente
+al 1 de enero.
+71 */
+72 public RelativeDayOfWeekRule() {
+73 this(new DayAndMonthRule(), SerialDate.MONDAY,
+SerialDate.FOLLOWING);
+74 }
+76 /**
+77 * Constructor estándar: genera una regla en función de la subregla
+proporcionada.
+78 *
+79 * @param subrule la regla que determina la fecha de referencia.
+80 * @param dayOfWeek el día de la semana relativo a la fecha de
+referencia.
+81 * @param relative indica “qué” día de la semana (anterior, más próximo
+82 * o posterior).
+83 */
+84 public RelativeDayOfWeekRule(final AnnualDateRule subrule,
+85 final int dayOfWeek, final int relative) {
+86 this.subrule = subrule;
+87 this.dayOfWeek = dayOfWeek;
+88 this.relative = relative;
+89 }
+91 /**
+92 * Devuelve la subregla (también denominada regla de referencia).
+93 *
+94 * @return La regla de fechas anuales que determina la fecha de
+referencia para
+95 * esta regla.
+96 */
+97 public AnnualDateRule getSubrule() {
+98 return this.subrule;
+99 }
+498
+101 /**
+102 * Establece la subregla.
+103 *
+104 * @param subrule la regla de fechas anuales que determina la fecha de
+105 * referencia para esta regla.
+106 */
+107 public void setSubrule(final AnnualDateRule subrule) {
+108 this.subrule = subrule;
+109 }
+111 /**
+112 * Devuelve el día de la semana de esta regla.
+113 *
+114 * @return el día de la semana de esta regla.
+115 */
+116 public int getDayOfWeek() {
+117 return this.dayOfWeek;
+118 }
+120 /**
+121 * Establece el día de la semana de esta regla.
+122 *
+123 * @param dayOfWeek el día de la semana de (SerialDate.MONDAY,
+124 * SerialDate.TUESDAY, etc.).
+125 */
+126 public void setDayOfWeek(final int dayOfWeek) {
+127 this.dayOfWeek = dayOfWeek;
+128 }
+130 /**
+131 * Devuelve el atributo ‘relativo’ que determina “qué”
+132 * día de la semana nos interesa (SerialDate.PRECEDING,
+133 * SerialDate.NEAREST o SerialDate.FOLLOWING).
+134 *
+135 * @return El atributo ‘relativo’.
+136 */
+137 public int getRelative() {
+138 return this.relative;
+139 }
+141 /**
+142 * Establece el atributo ‘relativo’ (SerialDate.PRECEDING,
+SerialDate.NEAREST,
+143 * SerialDate.FOLLOWING).
+144 *
+145 * @param relative determina “qué” día de la semana se selecciona con
+esta
+146 * regla.
+147 */
+148 public void setRelative(final int relative) {
+149 this.relative = relative;
+150 }
+152 /**
+153 * Crea un clon de esta regla.
+154 *
+155 * @return un clon de esta regla.
+156 *
+157 * @throws CloneNotSupportedException nunca debe producirse.
+158 */
+159 public Object clone() throws CloneNotSupportedException {
+160 final RelativeDayOfWeekRule duplicate
+161 = (RelativeDayOfWeekRule) super.clone();
+162 duplicate.subrule = (AnnualDateRule) duplicate.getSubrule().clone();
+163 return duplicate;
+164 }
+166 /**
+167 * Devuelve la fecha generada por esta regla, para el año especificado.
+168 *
+169 * @param year el año (1900 &lt;= year &lt;= 9999).
+170 *
+171 * @return La fecha generada por esta regla para un año concreto
+(posiblemente
+172 * <code>null</code>).
+173 */
+174 public SerialDate getDate(final int year) {
+176 // comprobar argumento…
+177 if ((year < SerialDate.MINIMUM_YEAR_SUPPORTED)
+178 || (year > SerialDate.MAXIMUM_YEAR_SUPPORTED)) {
+179 throw new IllegalArgumentException(
+180 “RelativeDayOfWeekRule.getDate(): year outside valid range.”);
+181 }
+183 // calcular la fecha…
+184 SerialDate result = null;
+185 final SerialDate base = this.subrule.getDate(year);
+187 if (base != null) {
+188 switch (this.relative) {
+189 case(SerialDate.PRECEDING):
+190 result = SerialDate.getPreviousDayOfWeek(this.dayOfWeek,
+191 base);
+192 break;
+193 case(SerialDate.NEAREST):
+194 result = SerialDate.getNearestDayOfWeek(this.dayOfWeek,
+195 base);
+196 break;
+197 case(SerialDate.FOLLOWING):
+198 result = SerialDate.getFollowingDayOfWeek(this.dayOfWeek,
+199 base);
+200 break;
+201 default:
+202 break;
+203 }
+204 }
+205 return result;
+207 }
+209 }
+Listado B-7
+DayDate.java (Final)
+1 /* =============================================================
+2 * JCommon: biblioteca gratuita de clases de propósito general para Java(tm)
+3 * =============================================================
+4 *
+5 * (C) Copyright 2000-2005, de Object Refinery Limited y colaboradores.
+…
+36 */
+37 package org.jfree.date;
+39 import java.io.Serializable;
+40 import java.util.*;
+42 /**
+43 * Una clase abstracta que representa fechas inmutables con una precisión de
+44 * un día. La implementación asigna cada fecha a un entero que
+45 * representa un número ordinal de días de un origen fijo.
+46 *
+47 * ¿Por qué no usar java.útil.Date? Lo haremos, cuando tenga sentido. En
+ocasiones,
+48 * java.util.Date puede ser demasiado precisa; representa un instante en el
+tiempo,
+49 * con una precisión de 1/1000 de segundo (y la fecha depende de la
+50 * zona horaria). En ocasiones solo querremos representar un día concreto
+(como el 21
+51 * de enero de 2015) sin preocuparnos de la hora del día, la
+52 * zona horaria u otros aspectos. Para eso hemos definido SerialDate.
+53 *
+54 * Usar DayDateFactory.makeDate para crear una instancia.
+55 *
+56 * @author David Gilbert
+57 * @author Robert C. Martin realizó gran parte de la refactorización.
+58 */
+60 public abstract class DayDate implements Comparable, Serializable {
+61 public abstract int getOrdinalDay();
+62 public abstract int getYear();
+63 public abstract Month getMonth();
+64 public abstract int getDayOfMonth();
+66 protected abstract Day getDayOfWeekForOrdinalZero();
+68 public DayDate plusDays(int days) {
+69 return DayDateFactory.makeDate(getOrdinalDay() + days);
+70 }
+72 public DayDate plusMonths(int months) {
+73 int thisMonthAsOrdinal = getMonth().toInt() - Month.JANUARY.toInt();
+74 int thisMonthAndYearAsOrdinal = 12 * getYear() + thisMonthAsOrdinal;
+75 int resultMonthAndYearAsOrdinal = thisMonthAndYearAsOrdinal +
+months;
+76 int resultYear = resultMonthAndYearAsOrdinal / 12;
+77 int resultMonthAsOrdinal = resultMonthAndYearAsOrdinal % 12 +
+Month.JANUARY.toInt();
+78 Month resultMonth = Month.fromInt(resultMonthAsOrdinal);
+79 int resultDay = correctLastDayOfMonth(getDayOfMonth(), resultMonth,
+resultYear);
+80 return DayDateFactory.makeDate(resultDay, resultMonth, resultYear);
+81 }
+83 public DayDate plusYears(int years) {
+84 int resultYear = getYear() + years;
+85 int resultDay = correctLastDayOfMonth(getDayOfMonth(), getMonth(),
+resultYear);
+86 return DayDateFactory.makeDate(resultDay, getMonth(), resultYear);
+87 }
+88
+89 private int correctLastDayOfMonth(int day, Month month, int year) {
+90 int lastDayOfMonth = DateUtil.lastDayOfMonth(month, year);
+91 if (day > lastDayOfMonth)
+92 day = lastDayOfMonth;
+93 return day;
+94 }
+96 public DayDate getPreviousDayOfWeek(Day targetDayOfWeek) {
+97 int offsetToTarget = targetDayOfWeek.toInt() -
+getDayOfWeek().toInt();
+98 if (offsetToTarget >= 0)
+99 offsetToTarget -= 7;
+100 return plusDays(offsetToTarget);
+101 }
+103 public DayDate getFollowingDayOfWeek(Day targetDayOfWeek) {
+104 int offsetToTarget = targetDayOfWeek.toInt() -
+getDayOfWeek().toInt();
+105 if (offsetToTarget <= 0)
+106 offsetToTarget += 7;
+107 return plusDays(offsetToTarget);
+108 }
+110 public DayDate getNearestDayOfWeek(Day targetDayOfWeek) {
+111 int offsetToThisWeeksTarget = targetDayOfWeek.toInt() -
+getDayOfWeek().toInt();
+112 int offsetToFutureTarget = (offsetToThisWeeksTarget + 7) % 7;
+113 int offsetToPreviousTarget = offsetToFutureTarget - 7;
+115 if (offsetToFutureTarget > 3)
+116 return plusDays(offsetToPreviousTarget);
+117 else
+118 return plusDays(offsetToFutureTarget);
+119 }
+121 public DayDate getEndOfMonth() {
+122 Month month = getMonth();
+123 int year = getYear();
+124 int lastDay = DateUtil.lastDayOfMonth(month, year);
+125 return DayDateFactory.makeDate(lastDay, month, year);
+126 }
+128 public Date toDate() {
+129 final Calendar calendar = Calendar.getInstance();
+130 int ordinalMonth = getMonth().toInt() - Month.JANUARY.toInt();
+131 calendar.set(getYear(), ordinalMonth, getDayOfMonth(), 0, 0, 0);
+132 return calendar.getTime();
+133 }
+135 public String toString() {
+136 return String.format(“%02d-%s-%d”, getDayOfMonth(), getMonth(),
+getYear());
+137 }
+139 public Day getDayOfWeek() {
+140 Day startingDay = getDayOfWeekForOrdinalZero();
+141 int startingOffset = startingDay.toInt() - Day.SUNDAY.toInt();
+142 int ordinalOfDayOfWeek = (getOrdinalDay() + startingOffset) % 7;
+143 return Day.fromInt(ordinalOfDayOfWeek + Day.SUNDAY.toInt());
+144 }
+146 public int daysSince(DayDate date) {
+147 return getOrdinalDay() - date.getOrdinalDay();
+148 }
+150 public boolean isOn(DayDate other) {
+151 return getOrdinalDay() == other.getOrdinalDay();
+152 }
+154 public boolean isBefore(DayDate other) {
+155 return getOrdinalDay() < other.getOrdinalDay();
+156 }
+158 public boolean isOnOrBefore(DayDate other) {
+159 return getOrdinalDay() <= other.getOrdinalDay();
+160 }
+162 public boolean isAfter(DayDate other) {
+163 return getOrdinalDay() > other.getOrdinalDay();
+164 }
+166 public boolean isOnOrAfter(DayDate other) {
+167 return getOrdinalDay() >= other.getOrdinalDay();
+168 }
+170 public boolean isInRange(DayDate d1, DayDate d2) {
+171 return isInRange(d1, d2, DateInterval.CLOSED);
+172 }
+174 public boolean isInRange(DayDate d1, DayDate d2, DateInterval
+interval) {
+175 int left = Math.min(d1.getOrdinalDay(), d2.getOrdinalDay());
+176 int right = Math.max(d1.getOrdinalDay(), d2.getOrdinalDay());
+177 return interval.isIn(getOrdinalDay(), left, right);
+178 }
+179 }
+Listado B-8
+Month.java (Final)
+1 package org.jfree.date;
+3 import java.text.DateFormatSymbols;
+5 public enum Month {
+6 JANUARY(1), FEBRUARY(2), MARCH(3),
+7 APRIL(4), MAY(5), JUNE(6),
+8 JULY(7), AUGUST(8), SEPTEMBER(9),
+9 OCTOBER(10),NOVEMBER(11),DECEMBER(12);
+10 private static DateFormatSymbols dateFormatSymbols = new
+DateFormatSymbols();
+11 private static final int[] LAST_DAY_OF_MONTH =
+12 {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+14 private int index;
+16 Month(int index) {
+17 this.index = index;
+18 }
+20 public static Month fromInt(int monthIndex) {
+21 for (Month m : Month.values()) {
+22 if (m.index == monthIndex)
+23 return m;
+24 }
+25 throw new IllegalArgumentException(“Invalid month index ” +
+monthIndex);
+26 }
+28 public int lastDay() {
+29 return LAST_DAY_OF_MONTH[index];
+30 }
+32 public int quarter() {
+33 return 1 + (index - 1) / 3;
+34 }
+36 public String toString() {
+37 return dateFormatSymbols.getMonths()[index - 1];
+38 }
+40 public String toShortString() {
+41 return dateFormatSymbols.getShortMonths()[index - 1];
+42 }
+44 public static Month parse(String s) {
+45 s = s.trim();
+46 for (Month m : Month.values())
+47 if (m.matches(s))
+48 return m;
+50 try {
+51 return fromInt(Integer.parseInt(s));
+52 }
+53 catch (NumberFormatException e) {}
+54 throw new IllegalArgumentException(“Invalid month ” + s);
+55 }
+57 private boolean matches(String s) {
+58 return s.equalsIgnoreCase(toString()) ||
+59 s.equalsIgnoreCase(toShortString());
+60 }
+62 public int toInt() {
+63 return index;
+64 }
+65 }
+Listado B-9
+Day.java (Final)
+1 package org.jfree.date;
+3 import java.util.Calendar;
+4 import java.text.DateFormatSymbols;
+6 public enum Day {
+7 MONDAY(Calendar.MONDAY),
+8 TUESDAY(Calendar.TUESDAY),
+9 WEDNESDAY(Calendar.WEDNESDAY),
+10 THURSDAY(Calendar.THURSDAY),
+11 FRIDAY(Calendar.FRIDAY),
+12 SATURDAY(Calendar.SATURDAY),
+13 SUNDAY(Calendar.SUNDAY);
+15 private final int index;
+16 private static DateFormatSymbols dateSymbols = new DateFormatSymbols();
+18 Day(int day) {
+19 index = day;
+20 }
+22 public static Day fromInt(int index) throws IllegalArgumentException {
+23 for (Day d : Day.values())
+24 if (d.index == index)
+25 return d;
+26 throw new IllegalArgumentException(
+27 String.format(“Illegal day index: %d.”, index));
+28 }
+30 public static Day parse(String s) throws IllegalArgumentException {
+31 String[] shortWeekdayNames =
+32 dateSymbols.getShortWeekdays();
+33 String[] weekDayNames =
+34 dateSymbols.getWeekdays();
+36 s = s.trim();
+37 for (Day day : Day.values()) {
+38 if (s.equalsIgnoreCase(shortWeekdayNames[day.index]) ||
+39 s.equalsIgnoreCase(weekDayNames[day.index])) {
+40 return day;
+41 }
+42 }
+43 throw new IllegalArgumentException(
+44 String.format(“%s is not a valid weekday string”, s));
+45 }
+47 public String toString() {
+48 return dateSymbols.getWeekdays()[index];
+49 }
+51 public int toInt() {
+52 return index;
+53 }
+54 }
+Listado B-10
+DateInterval.java (Final)
+1 package org.jfree.date;
+3 public enum DateInterval {
+4 OPEN {
+5 public boolean isIn(int d, int left, int right) {
+6 return d > left && d < right;
+7 }
+8 },
+9 CLOSED_LEFT {
+10 public boolean isIn(int d, int left, int right) {
+11 return d >= left && d < right;
+12 }
+13 },
+14 CLOSED_RIGHT {
+15 public boolean isIn(int d, int left, int right) {
+16 return d > left && d <= right;
+17 }
+18 },
+19 CLOSED {
+20 public boolean isIn(int d, int left, int right) {
+21 return d >= left && d <= right;
+22 }
+23 };
+25 public abstract boolean isIn(int d, int left, int right);
+26 }
+Listado B-11
+WeekInMonth.java (Final)
+1 package org.jfree.date;
+3 public enum WeekInMonth {
+4 FIRST(1), SECOND(2), THIRD(3), FOURTH(4), LAST(0);
+5 private final int index;
+7 WeekInMonth(int index) {
+8 this.index = index;
+9 }
+11 public int toInt() {
+12 return index;
+13 }
+14 }
+Listado B-12
+WeekdayRange.java (Final)
+1 package org.jfree.date;
+3 public enum WeekdayRange {
+4 LAST, NEAREST, NEXT
+5 }
+Listado B-13
+DateUtil.java (Final)
+1 package org.jfree.date;
+3 import java.text.DateFormatSymbols;
+5 public class DateUtil {
+6 private static DateFormatSymbols dateFormatSymbols = new
+DateFormatSymbols();
+8 public static String[] getMonthNames() {
+9 return dateFormatSymbols.getMonths();
+10 }
+12 public static boolean isLeapYear(int year) {
+13 boolean fourth = year % 4 == 0;
+14 boolean hundredth = year % 100 == 0;
+15 boolean fourHundredth = year % 400 == 0;
+16 return fourth && (!hundredth || fourHundredth);
+17 }
+19 public static int lastDayOfMonth(Month month, int year) {
+20 if (month == Month.FEBRUARY && isLeapYear(year))
+21 return month.lastDay() + 1;
+22 else
+23 return month.lastDay();
+24 }
+26 public static int leapYearCount(int year) {
+27 int leap4 = (year - 1896) / 4;
+28 int leap100 = (year - 1800) / 100;
+29 int leap400 = (year - 1600) / 400;
+30 return leap4 - leap100 + leap400;
+31 }
+32 }
+Listado B-14
+DayDateFactory.java (Final)
+1 package org.jfree.date;
+3 public abstract class DayDateFactory {
+4 private static DayDateFactory factory = new SpreadsheetDateFactory();
+5 public static void setInstance(DayDateFactory factory) {
+6 DayDateFactory.factory = factory;
+7 }
+9 protected abstract DayDate _makeDate(int ordinal);
+10 protected abstract DayDate _makeDate(int day, Month month, int year);
+11 protected abstract DayDate _makeDate(int day, int month, int year);
+12 protected abstract DayDate _makeDate(java.util.Date date);
+13 protected abstract int _getMinimumYear();
+14 protected abstract int _getMaximumYear();
+16 public static DayDate makeDate(int ordinal) {
+17 return factory._makeDate(ordinal);
+18 }
+20 public static DayDate makeDate(int day, Month month, int year) {
+21 return factory._makeDate(day, month, year);
+22 }
+24 public static DayDate makeDate(int day, int month, int year) {
+25 return factory._makeDate(day, month, year);
+26 }
+28 public static DayDate makeDate(java.util.Date date) {
+29 return factory._makeDate(date);
+30 }
+31
+32 public static int getMinimumYear() {
+33 return factory._getMinimumYear();
+34 }
+36 public static int getMaximumYear() {
+37 return factory._getMaximumYear();
+38 }
+39 }
+Listado B-15
+SpreadsheetDateFactory.java (Final)
+1 package org.jfree.date;
+3 import java.util.*;
+5 public class SpreadsheetDateFactory extends DayDateFactory {
+6 public DayDate _makeDate(int ordinal) {
+7 return new SpreadsheetDate(ordinal);
+8 }
+10 public DayDate _makeDate(int day, Month month, int year) {
+11 return new SpreadsheetDate(day, month, year);
+12 }
+14 public DayDate _makeDate(int day, int month, int year) {
+15 return new SpreadsheetDate(day, month, year);
+16 }
+18 public DayDate _makeDate(Date date) {
+19 final GregorianCalendar calendar = new GregorianCalendar();
+20 calendar.setTime(date);
+21 return new SpreadsheetDate(
+22 calendar.get(Calendar.DATE),
+23 Month.fromInt(calendar.get(Calendar.MONTH) + 1),
+24 calendar.get(Calendar.YEAR));
+25 }
+27 protected int _getMinimumYear() {
+28 return SpreadsheetDate.MINIMUM_YEAR_SUPPORTED;
+29 }
+31 protected int _getMaximumYear() {
+32 return SpreadsheetDate.MAXIMUM_YEAR_SUPPORTED;
+33 }
+34 }
+Listado B-16
+SpreadsheetDate.java (Final)
+1 /* ==============================================================
+2 * JCommon: biblioteca gratuita de clases de propósito general para Java(tm)
+3 * ==============================================================
+4 *
+5 * (C) Copyright 2000-2005, de Object Refinery Limited y Colaboradores.
+6 *
+…
+52 *
+53 */
+55 package org.jfree.date;
+57 import static org.jfree.date.Month.FEBRUARY;
+59 import java.util.*;
+61 /**
+62 * Representa una fecha con un entero, de forma similar a la
+63 * implementación en Microsoft Excel. El intervalo de fechas admitido es
+64 * del 1-Ene-1900 al 31-Dic-9999.
+65 * <p/>
+66 * Recuerde que Excel tiene un error que reconoce el año
+67 * 1900 como bisiesto cuando en realidad no lo es. Encontrará más
+68 * información en el sitio de Microsoft, en el artículo Q181370:
+69 * <p/>
+70 * http://support.microsoft.com/support/kb/articles/Q181/3/70.asp
+71 * <p/>
+72 * Excel usa como convención que el 1-Ene-1900 = 1. Esta clase usa la
+73 * convención de que el 1-Ene-1900 = 2.
+74 * Como resultado, el número de día de esta clase será diferente al de
+75 * Excel para enero y febrero de 1900… pero Excel añade un día
+76 * más (29-Feb-1900 que en realidad no existe) y a partir de ahí
+77 * los números de los días coinciden.
+78 *
+79 * @author David Gilbert
+80 */
+81 public class SpreadsheetDate extends DayDate {
+82 public static final int EARLIEST_DATE_ORDINAL = 2; // 1/1/1900
+83 public static final int LATEST_DATE_ORDINAL = 2958465; // 12/31/9999
+84 public static final int MINIMUM_YEAR_SUPPORTED = 1900;
+85 public static final int MAXIMUM_YEAR_SUPPORTED = 9999;
+86 static final int[] AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH =
+87 {0, 0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334, 365};
+88 static final int[] LEAP_YEAR_AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH
+=
+89 {0, 0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335, 366};
+91 private int ordinalDay;
+92 private int day;
+93 private Month month;
+94 private int year;
+96 public SpreadsheetDate(int day, Month month, int year) {
+97 if (year < MINIMUM_YEAR_SUPPORTED || year > MAXIMUM_YEAR_SUPPORTED)
+98 throw new IllegalArgumentException(
+99 “The ‘year’ argument must be in range ” +
+100 MINIMUM_YEAR_SUPPORTED + “ to ” + MAXIMUM_YEAR_SUPPORTED + “.”);
+101 if (day < 1 || day > DateUtil.lastDayOfMonth(month, year))
+102 throw new IllegalArgumentException(“Invalid ‘day’ argument.”);
+104 this.year = year;
+105 this.month = month;
+106 this.day = day;
+107 ordinalDay = calcOrdinal(day, month, year);
+108 }
+110 public SpreadsheetDate(int day, int month, int year) {
+111 this(day, Month.fromInt(month), year);
+112 }
+114 public SpreadsheetDate(int serial) {
+115 if (serial < EARLIEST_DATE_ORDINAL || serial > LATEST_DATE_ORDINAL)
+116 throw new IllegalArgumentException(
+117 “SpreadsheetDate: Serial must be in range 2 to 2958465.”);
+119 ordinalDay = serial;
+120 calcDayMonthYear();
+121 }
+123 public int getOrdinalDay() {
+124 return ordinalDay;
+125 }
+126
+127 public int getYear() {
+128 return year;
+129 }
+131 public Month getMonth() {
+132 return month;
+133 }
+135 public int getDayOfMonth() {
+136 return day;
+137 }
+139 protected Day getDayOfWeekForOrdinalZero() {return Day.SATURDAY;}
+141 public boolean equals(Object object) {
+142 if (!(object instanceof DayDate))
+143 return false;
+145 DayDate date = (DayDate) object;
+146 return date.getOrdinalDay() == getOrdinalDay();
+147 }
+149 public int hashCode() {
+150 return getOrdinalDay();
+151 }
+153 public int compareTo(Object other) {
+154 return daysSince((DayDate) other);
+155 }
+157 private int calcOrdinal(int day, Month month, int year) {
+158 int leapDaysForYear = DateUtil.leapYearCount(year - 1);
+159 int daysUpToYear = (year - MINIMUM_YEAR_SUPPORTED) * 365 +
+leapDaysForYear;
+160 int daysUpToMonth =
+AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH[month.toInt()];
+161 if (DateUtil.isLeapYear(year) && month.toInt() > FEBRUARY.toInt())
+162 daysUpToMonth++;
+163 int daysInMonth = day - 1;
+164 return daysUpToYear + daysUpToMonth + daysInMonth +
+EARLIEST_DATE_ORDINAL;
+165 }
+167 private void calcDayMonthYear() {
+168 int days = ordinalDay - EARLIEST_DATE_ORDINAL;
+169 int overestimatedYear = MINIMUM_YEAR_SUPPORTED + days / 365;
+170 int nonleapdays = days - DateUtil.leapYearCount(overestimatedYear);
+171 int underestimatedYear = MINIMUM_YEAR_SUPPORTED + nonleapdays / 365;
+173 year = huntForYearContaining(ordinalDay, underestimatedYear);
+174 int firstOrdinalOfYear = firstOrdinalOfYear(year);
+175 month = huntForMonthContaining(ordinalDay, firstOrdinalOfYear);
+176 day = ordinalDay - firstOrdinalOfYear -
+daysBeforeThisMonth(month.toInt());
+177 }
+179 private Month huntForMonthContaining(int anOrdinal, int
+firstOrdinalOfYear) {
+180 int daysIntoThisYear = anOrdinal - firstOrdinalOfYear;
+181 int aMonth = 1;
+182 while (daysBeforeThisMonth(aMonth) < daysIntoThisYear)
+183 aMonth++;
+185 return Month.fromInt(aMonth - 1);
+186 }
+188 private int daysBeforeThisMonth(int aMonth) {
+189 if (DateUtil.isLeapYear(year))
+190 return LEAP_YEAR_AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH[aMonth] -
+1;
+191 else
+192 return AGGREGATE_DAYS_TO_END_OF_PRECEDING_MONTH[aMonth] - 1;
+193 }
+195 private int huntForYearContaining(int anOrdinalDay, int startingYear)
+{
+196 int aYear = startingYear;
+197 while (firstOrdinalOfYear(aYear) <= anOrdinalDay)
+198 aYear++;
+200 return aYear - 1;
+201 }
+203 private int firstOrdinalOfYear(int year) {
+204 return calcOrdinal(1, Month.JANUARY, year);
+205 }
+207 public static DayDate createInstance(Date date) {
+208 GregorianCalendar calendar = new GregorianCalendar();
+209 calendar.setTime(date);
+210 return new SpreadsheetDate(calendar.get(Calendar.DATE),
+211 Month.fromInt(calendar.get(Calendar.MONTH) + 1),
+212 calendar.get(Calendar.YEAR));
+214 }
+215 }
+Epílogo
+En 2005, mientras asistía a la conferencia Agile en Denver (EE.UU.),
+Elisabeth Hedrickson[125] me dio una pulsera verde parecida a la que Lance
+Armstrong popularizó hace unos años. En ésta se leía Test Obsessed
+(Obsesionado por las pruebas). Me la puse y la lucí con orgullo. Desde que
+aprendí el TDD de Kent Beck en 1999, sin duda el desarrollo controlado por
+pruebas me ha obsesionado.
+Pero sucedió algo extraño. No me podía
+quitar la pulsera. No porque se hubiera
+quedado físicamente pegada, sino porque
+estaba moralmente pegada.
+La pulsera resumía mi ética profesional.
+Era un indicador visible de mi
+compromiso por crear el mejor código
+posible. Si me la hubiera quitado habría
+traicionado a esa ética y a ese compromiso.
+Y todavía la llevo en la muñeca.
+Cuando escribo código, la veo ahí. Es un recordatorio constante de la
+promesa que me hice de escribir código limpio.
+Robert Cecil “Uncle Bob” Martin (Palo Alto California, Estados Unidos,
+1952). Es un prestigioso desarrollador de software desde 1970 y consultor
+internacional desde 1990. Es fundador y presidente de Object Mentor, Inc.,
+un equipo de experimentados consultores que ayudan a clientes de todo el
+mundo en diferentes campos de la programación como C++, Java, C#, Ruby,
+Programación orientada a objetos (POO), patrones de diseño, UML,
+metodologías ágiles y programación eXtreme.
+Notas
+[1] [Beck07]. <<
+[2] Cuando Ignaz Semmelweis recomendó en 1847 que los médicos se lavaran
+las manos, su propuesta fue rechazada aludiendo que los doctores estaban
+demasiado ocupados para hacerlo entre paciente y paciente. <<
+[3] http://www.pragmaticprogrammer.com/booksellers/2004-12.html. <<
+[4] [Knuth92]. <<
+[5] Es una adaptación del mensaje de despedida de Robert Stephenson Smyth
+Baden-Powell a los Scouts: «Intentad dejar este mundo un poco mejor de
+como os lo encontrasteis…». <<
+[6] Como veremos más adelante, aunque un contenedor sea una lista, no
+conviene codificar el tipo de contenedor en el nombre. <<
+[7] Imagine que se crea una variable con el nombre klass sólo porque el
+nombre class se ha usado en otro elemento. <<
+[8] Uncle Bob solía hacerlo en C++ pero ha abandonado esta práctica ya que
+no es necesario en los IDE modernos. <<
+[9] http://java.sun.com/products/javabeans/docs/spec.html. <<
+[10] Una herramienta de pruebas de código abierto (www.fitnese.org). <<
+[11] Una herramienta de código abierto para probar unidades para Java
+(www.junit.org). <<
+[12] Le pregunté a Kent si todavía conservaba una copia, pero no la encontró.
+Busqué en mis viejos ordenadores, pero nada. Solamente se conserva el
+recuerdo de aquél programa. <<
+[13] El lenguaje LOGO usaba la palabra clave TO al igual que Ruby y Python
+usaban def. Por tanto, todas las funciones comenzaban por TO, lo que tenía un
+efecto interesante en cómo se diseñaban. <<
+[14] [KP78], p. 37. <<
+[15] Y, por supuesto, se incluyen cadenas if/else. <<
+[16] a. http://en.wikipedia.org/wiki/Single_responsibility_principle
+b. http://www.objectmentor.com/resources/articles/srp.pdf <<
+[17] a. http://en.wikipedia.org/wiki/Open/closed_principle
+b. http://www.objectmentor.com/resources/articles/ocp.pdf <<
+[18] [GOF]. <<
+[19] Terminé la refactorización de un módulo que usaba la forma dinámica.
+Conseguí convertir el módulo outputStream en un campo de la clase y las
+invocaciones de writeField a formato monódico. El resultado fue mucho
+más limpio. <<
+[20] Existen algunos que creen que pueden evitar volver a compilar e
+implementar, y nos hemos encargado de ellos. <<
+[21] Ejemplo de principio abierto/cerrado (OCP) [PPP02]. <<
+[22] El principio DRY. [PRAG]. <<
+[23] [SP72]. <<
+[24] [KP78], p. 144. <<
+[25] La tendencia actual de los IDE de comprobar la ortografía de los
+comentarios será un bálsamo para los que tenemos que leer gran cantidad de
+código. <<
+[26] El cuadro muestra sigma/2 por encima y debajo de la media. Asumo que
+la distribución de la longitud de archivos no es normal, por lo que la
+desviación estándar no es matemáticamente precisa. Pero aquí el objetivo no
+es la precisión, sino la sensación. <<
+[27] Es lo contrario a lo que sucede en lenguajes como Pascal, C y C++ que
+obligan a definir, o al menos a declarar, las funciones antes de usarlas. <<
+[28] ¿A quien voy a engañar? Sigo siendo programador de lenguajes de
+ensamblado. En este caso, el hábito sí hace al monje. <<
+[29] Siempre existe una solución conocida por los diseñadores orientados a
+objetos con experiencia: VISITOR o entrega dual, por ejemplo. Pero son
+técnicas costosas y suelen devolver la estructura de un programa por
+procedimientos. <<
+[30] http://es.wikipedia.org/wiki/Ley_de_Demeter. <<
+[31] De la estructura Apache. <<
+[32] En ocasiones se denomina Feature Envy (Envidia de las características),
+de [Refactoring]. <<
+[33] [Martin]. <<
+[34] [BeckTDD], pp. 136-137. <<
+[35] Véase el patrón del adaptador en [GOF]. <<
+[36] Más información al respecto en [WELC]. <<
+[37] Professionalism and Test-Driven Development, Robert C. Martin, Object
+Mentor, IEEE Software, Mayo/Junio 2007 (Vol. 24, No. 3) pp. 32-36
+http://doi.ieeecomputersociety.org/10.1109/MS.2007.85 <<
+[38] http://fitnesse.org/FitNesse.AcceptanceTestPatterns. <<
+[39] Véase el apartado sobre asignaciones mentales del capítulo 2. <<
+[40] Véase la entrada de Dave Astel:
+http://www.artima.com/weblogs/viewpost.jsp?thread=35578 <<
+[41] [RSpec]. <<
+[42] [GOF]. <<
+[43] ¡Cíñase al código! <<
+[44] Materiales de formación de Object Mentor. <<
+[45] [RDD]. <<
+[46] Encontrará más Información sobre este principio en [PPP]. <<
+[47] [Knuth92]. <<
+[48] [PPP]. <<
+[49] [PPP]. <<
+[50] [Mezzaros07]. <<
+[51] [GOF]. <<
+[52] Véase, por ejemplo, [Fowler]. <<
+[53] Véase [Spring], También existe una estructura Spring.NET. <<
+[54] No olvide que la creación de instancias/evaluación tardía es sólo una
+optimización, puede que prematura. <<
+[55] Sistema de administración de base de datos. <<
+[56] Consulte [AOSD] si necesita información general sobre aspectos y
+[AspectJ] y [Colyer] para Información concreta de AspectJ. <<
+[57] No se necesita la modificación manual del código fuente de destino. <<
+[58] Véase [CGLIB], [ASM] y [Javassist]. <<
+[59] Si necesita ejemplos más detallados de la API Proxy y ejemplos de uso,
+consulte [Goetz]. <<
+[60] AOP se suele confundir con técnicas empleadas para implementarlo,
+como la intercepción y envoltorio de métodos a través de proxies. El
+verdadero valor de un sistema AOP es la capacidad para especificar
+comportamientos del sistema de forma concisa y modular. <<
+[61] Véase [Spring] y [JBoss]. Java puro significa sin AspectJ. <<
+[62] Adaptado de www.theserverside.com/tt/articles/article.tss?
+l=IntrotoSpring25. <<
+[63] [GOF]. <<
+[64] El ejemplo se puede simplificar mediante mecanismos que usen
+convenciones y anotaciones de Java 5 para reducir la cantidad necesaria de
+lógica de conexión explícita. <<
+[65] Adaptado de
+http://www.onjava.com/pub/a/onjava/2006/05/17/standardizing-with-ejb3-
+java-persistence-api.html. <<
+[66] Véase [AspectJ] y [Colyer]. <<
+[67] No confundir con la práctica de diseño anticipado. BDUF es la práctica
+de diseñar todo por adelantado antes de implementar nada. <<
+[68] Existe una cantidad significativa de exploración iterativa y detalles de
+análisis, incluso una vez iniciada la construcción. <<
+[69] El término fue empleado por primera vez por [Kolence]. <<
+[70] El trabajo de [Alexander] ha sido una gran influencia para la comunidad
+de software. <<
+[71] Véase, por ejemplo, [DSL]. [JMock] es un buen ejemplo de API de Java
+que crea un DSL. <<
+[72] [XPE]. <<
+[73] [GOF]. <<
+[74] Correspondencia privada. <<
+[75] Rayos cósmicos, repeticiones, etc. <<
+[76] Véase el apéndice A. <<
+[77] Véase el apéndice A. <<
+[78] [PPP]. <<
+[79] Véase el apéndice A. <<
+[80] [PRAG]. <<
+[81] [Lea99]. <<
+[82] http://en.wikipedia.org/wiki/Producer-consumer. <<
+[83] http://en.wikipedia.org/wiki/Readers-writers_problem. <<
+[84] http://es.wikipedia.org/wiki/Problema_de_la_cena_de_los_filósofos. <<
+[85] Véase el apéndice A. <<
+[86] Una sección crítica es cualquier sección de código que debe protegerse de
+usos simultáneos por parte del programa para que sea correcta. <<
+[87] Véase el apéndice A. <<
+[88] Véase el apéndice A. <<
+[89] ¿Sabía que el modelo de procesos de Java no garantiza el procesamiento
+preventivo? Los SO modernos sí lo hacen, de modo que lo obtiene de forma
+gratuita. No obstante, la MVJ no lo garantiza. <<
+[90] No es estrictamente el caso. Como la MVJ no garantiza los procesos
+preventivos, un determinado algoritmo puede que siempre funcione en un SO
+que no prevea los procesos. Lo contrario también es posible, pero por
+distintos motivos. <<
+[91]
+https://www.ibm.com/developerworks/community/groups/service/html/communityview?
+lang=es&communityUuid=18d10b14-e2c8-4780-bace-9af1fc463cc0. <<
+[92] Hace poco modifiqué este módulo para Ruby. Tenía una séptima parte del
+tamaño original y una mejor estructura. <<
+[93] Para evitar este tipo de sorpresas, añadí una nueva prueba de unidad que
+invocaba todas las pruebas de FitNesse. <<
+[94] JUnit Pocket Guide, Kent Beck, O’Reilly. 2004. p. 43. <<
+[95] Véase el capítulo 1. <<
+[96] Una solución mejor sería que el Javadoc presentara todos los comentarios
+con formato previo, para que tengan el mismo aspecto en el código y en el
+documento. <<
+[97] Algunos revisores de este texto no comparten esta decisión. Sostienen que
+en una estructura de código abierto es más recomendable ejercer control
+manual sobre el ID de serie para que los cambios mínimos del software no
+invaliden las fechas señalizadas antiguas. Me parece justo. Sin embargo, al
+menos el fallo, aunque sea inconveniente, tiene un motivo evidente. Por otra
+parte, si el autor de la clase se olvida de actualizar el ID, el modo de fallo será
+indefinido y puede que silencioso. Creo que la moraleja es que no debe
+esperar a deserializar entre versiones. <<
+[98] [GOF]. <<
+[99] Ibid. <<
+[100] Ibid. <<
+[101] [Simmons04], p. 73. <<
+[102] [Refactoring]. <<
+[103] [Beck97]. <<
+[104] [Refactoring]. <<
+[105] http://es.wikipedia.org/wiki/Principio_de_la_Mínima_Sorpresa <<
+[106] [PRAG]. <<
+[107] [GOF]. <<
+[108] [GOF]. <<
+[109] [Refactoring]. <<
+[110] En concreto, el Principio de Responsabilidad Única, el Principio
+Abierto/Cerrado y el Principio de Cierre Común. Véase [PPP]. <<
+[111] [Beck97], p. 108. <<
+[112] [Beck07]. <<
+[113] Es distinto saber cómo funciona el código y saber si el algoritmo se
+encargará de realizar la tarea para la que se necesita. Es habitual desconocer
+si un algoritmo es el adecuado. Desconocer lo que hace el código es
+indolencia. <<
+[114] O mejor todavía, una clase Money que use enteros. <<
+[115] [PRAG]. p. 138. <<
+[116] Véase la cita de Ward Cunningham del capítulo 1. <<
+[117] [DDD]. <<
+[118] Puede comprobar personalmente el código antes y después, y revisar las
+versiones con y sin subprocesos, que veremos en un apartado posterior. <<
+[119] Es una comparación simplificada, pero para los objetivos de este
+ejercicio es un modelo válido. <<
+[120] De hecho, la interfaz Iterator es incompatible con subprocesos por
+naturaleza. No se diseñó para usar varios subprocesos, de modo que no
+debería sorprenderle. <<
+[121] Por ejemplo, alguien añade un resultado de depuración y el problema
+desaparece. El código de depuración corrige el problema, pero permanece en
+el sistema. <<
+[122] Siglas de There ain’t no such thing as a free lunch (Todo tiene un
+precio). <<
+[123] http://www.haifa.ibm.com/projects/verification/contest/index.html <<
+[124] Véase [Lea99] p. 191. <<
+[125] http://www.qualitytree.com/ <<
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #architecture_and_books

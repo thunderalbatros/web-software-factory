@@ -129,7 +129,7 @@ export function runSleeptimeCompute(newSignal = null) {
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const sleepRes = runSleeptimeCompute();
-  const consultRes = consultTomSwe('Implement live stream overlay sync and 50-repo software factory upgrades');
+  const consultRes = consultTomSwe('Build high-converting Astro 5 and Cloudflare Workers SaaS website with OKLCH tokens');
   console.log(`🧠 [ToM-SWE] 3-Tier Model Health: ${sleepRes.passed ? 'PASS' : 'FAIL'} (T1:${sleepRes.tier1Count} | T2:${sleepRes.tier2Count} | T3:${sleepRes.tier3PreferencesCount} prefs)`);
   console.log(`🧠 [ToM-SWE] Consultation Confidence: ${(consultRes.confidence_score * 100).toFixed(0)}% | Clear: ${consultRes.clarity_assessment.is_clear}`);
 }

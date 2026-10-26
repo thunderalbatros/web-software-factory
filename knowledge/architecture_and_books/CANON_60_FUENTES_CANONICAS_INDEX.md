@@ -1,19 +1,19 @@
-> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
-# 📚 Índice Maestro: Compendio de 60 Fuentes Canónicas de Yendo (2026)
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
 
-Este índice unifica y cataloga las **60 fuentes canónicas esenciales** para el desarrollo, arquitectura, confiabilidad y experiencia humana de Yendo Mobile. Cada fuente ha sido asimilada, estructurada e integrada en la Bóveda de Conocimiento bajo el gobierno del Squad correspondiente.
+# 📚 Índice Maestro: Compendio de 60 Fuentes Canónicas de WebFactory (2026)
+
+Este índice unifica y cataloga las **60 fuentes canónicas esenciales** para el desarrollo, arquitectura, confiabilidad y experiencia humana de la Web Software Factory. Cada fuente ha sido asimilada, estructurada e integrada en la Bóveda de Conocimiento bajo el gobierno del Squad correspondiente.
 
 ---
 
@@ -61,23 +61,23 @@ Este índice unifica y cataloga las **60 fuentes canónicas esenciales** para el
 | **10** | Datos & PostGIS | Supabase Realtime Concepts | [https://supabase.com/docs/guides/realtime/concepts](https://supabase.com/docs/guides/realtime/concepts) | [[CANON_DATA_ARCHITECTURE_POSTGIS_2026]] |
 | **11** | SRE & Confiabilidad | Expo SecureStore SDK 57 | [https://docs.expo.dev/versions/v57.0.0/sdk/securestore/](https://docs.expo.dev/versions/v57.0.0/sdk/securestore/) | [[CANON_SRE_RELIABILITY_ZERO_CRASH_2026]] |
 | **12** | SRE & Confiabilidad | Maestro Mobile E2E Docs | [https://docs.maestro.dev/](https://docs.maestro.dev/) | [[CANON_SRE_RELIABILITY_ZERO_CRASH_2026]] |
-| **13** | SRE & Confiabilidad | Firebase Test Lab CLI | [https://firebase.google.com/docs/test-lab/android/command-line](https://firebase.google.com/docs/test-lab/android/command-line) | [[CANON_SRE_RELIABILITY_ZERO_CRASH_2026]] |
+| **13** | SRE & Confiabilidad | Firebase Test Lab CLI | [https://firebase.google.com/docs/test-lab/Web Platform/command-line](https://firebase.google.com/docs/test-lab/Web Platform/command-line) | [[CANON_SRE_RELIABILITY_ZERO_CRASH_2026]] |
 | **14** | SRE & Confiabilidad | Expo EAS Build Introduction | [https://docs.expo.dev/build/introduction/](https://docs.expo.dev/build/introduction/) | [[CANON_SRE_RELIABILITY_ZERO_CRASH_2026]] |
 | **15** | SRE & Confiabilidad | TanStack Query React Overview | [https://tanstack.com/query/latest/docs/framework/react/overview](https://tanstack.com/query/latest/docs/framework/react/overview) | [[CANON_SRE_RELIABILITY_ZERO_CRASH_2026]] |
 | **16** | SRE & Confiabilidad | TkDodo Practical React Query | [https://tkdodo.eu/blog/practical-react-query](https://tkdodo.eu/blog/practical-react-query) | [[CANON_SRE_RELIABILITY_ZERO_CRASH_2026]] |
 | **17** | SRE & Confiabilidad | Zustand State Management | [https://docs.pmnd.rs/zustand/getting-started/introduction](https://docs.pmnd.rs/zustand/getting-started/introduction) | [[CANON_SRE_RELIABILITY_ZERO_CRASH_2026]] |
 | **18** | SRE & Confiabilidad | react-native-mmkv (Marc Rousavy) | [https://github.com/mrousavy/react-native-mmkv](https://github.com/mrousavy/react-native-mmkv) | [[CANON_SRE_RELIABILITY_ZERO_CRASH_2026]] |
-| **19** | SRE & Confiabilidad | React Native Architecture Overview | [https://reactnative.dev/architecture/overview](https://reactnative.dev/architecture/overview) | [[CANON_SRE_RELIABILITY_ZERO_CRASH_2026]] |
+| **19** | SRE & Confiabilidad | Modern Web UI (CSS/WAAPI) Architecture Overview | [https://Modern Web UI (CSS/WAAPI).dev/architecture/overview](https://Modern Web UI (CSS/WAAPI).dev/architecture/overview) | [[CANON_SRE_RELIABILITY_ZERO_CRASH_2026]] |
 | **20** | SRE & Confiabilidad | Expo New Architecture Guide | [https://docs.expo.dev/guides/new-architecture/](https://docs.expo.dev/guides/new-architecture/) | [[CANON_SRE_RELIABILITY_ZERO_CRASH_2026]] |
 | **21** | Ciberseguridad & DevSecOps | OWASP MASVS Mobile Standard | [https://mas.owasp.org/MASVS/](https://mas.owasp.org/MASVS/) | [[CANON_CYBERSECURITY_DEVSECOPS_2026]] |
-| **22** | Ciberseguridad & DevSecOps | React Native Security Best Practices | [https://reactnative.dev/docs/security](https://reactnative.dev/docs/security) | [[CANON_CYBERSECURITY_DEVSECOPS_2026]] |
+| **22** | Ciberseguridad & DevSecOps | Modern Web UI (CSS/WAAPI) Security Best Practices | [https://Modern Web UI (CSS/WAAPI).dev/docs/security](https://Modern Web UI (CSS/WAAPI).dev/docs/security) | [[CANON_CYBERSECURITY_DEVSECOPS_2026]] |
 | **23** | Ciberseguridad & DevSecOps | GCP IAM Service Accounts Practices | [https://cloud.google.com/iam/docs/best-practices-for-securing-service-accounts](https://cloud.google.com/iam/docs/best-practices-for-securing-service-accounts) | [[CANON_CYBERSECURITY_DEVSECOPS_2026]] |
 | **24** | Ciberseguridad & DevSecOps | Cloud Build Config Schema | [https://docs.cloud.google.com/build/docs/build-config-file-schema](https://docs.cloud.google.com/build/docs/build-config-file-schema) | [[CANON_CYBERSECURITY_DEVSECOPS_2026]] |
 | **25** | Ciberseguridad & DevSecOps | Cloud Run Create Jobs Docs | [https://cloud.google.com/run/docs/create-jobs](https://cloud.google.com/run/docs/create-jobs) | [[CANON_CYBERSECURITY_DEVSECOPS_2026]] |
 | **26** | Ciberseguridad & DevSecOps | Supabase Auth Row-Level Security | [https://supabase.com/docs/guides/auth/row-level-security](https://supabase.com/docs/guides/auth/row-level-security) | [[CANON_CYBERSECURITY_DEVSECOPS_2026]] |
 | **27** | Ciberseguridad & DevSecOps | OWASP Mobile Jailbreaking Sheet | [https://cheatsheetseries.owasp.org/cheatsheets/Mobile_Jailbreaking_Cheat_Sheet.html](https://cheatsheetseries.owasp.org/cheatsheets/Mobile_Jailbreaking_Cheat_Sheet.html) | [[CANON_CYBERSECURITY_DEVSECOPS_2026]] |
 | **28** | Ciberseguridad & DevSecOps | Apple Security Framework Docs | [https://developer.apple.com/documentation/security](https://developer.apple.com/documentation/security) | [[CANON_CYBERSECURITY_DEVSECOPS_2026]] |
-| **29** | Ciberseguridad & DevSecOps | Android Open Source Security | [https://source.android.com/docs/security](https://source.android.com/docs/security) | [[CANON_CYBERSECURITY_DEVSECOPS_2026]] |
+| **29** | Ciberseguridad & DevSecOps | Web Platform Open Source Security | [https://source.Web Platform.com/docs/security](https://source.Web Platform.com/docs/security) | [[CANON_CYBERSECURITY_DEVSECOPS_2026]] |
 | **30** | Ciberseguridad & DevSecOps | Supabase Auth MFA / TOTP | [https://supabase.com/docs/guides/auth/auth-mfa](https://supabase.com/docs/guides/auth/auth-mfa) | [[CANON_CYBERSECURITY_DEVSECOPS_2026]] |
 | **31** | Experiencia Humana & UX | NN/g 10 Usability Heuristics | [https://www.nngroup.com/articles/ten-usability-heuristics/](https://www.nngroup.com/articles/ten-usability-heuristics/) | [[CANON_UX_HUMAN_EXPERIENCE_ACCESSIBILITY_2026]] |
 | **32** | Experiencia Humana & UX | Material Design 3 Content Design | [https://m3.material.io/foundations/content-design/overview](https://m3.material.io/foundations/content-design/overview) | [[CANON_UX_HUMAN_EXPERIENCE_ACCESSIBILITY_2026]] |
@@ -95,11 +95,11 @@ Este índice unifica y cataloga las **60 fuentes canónicas esenciales** para el
 | **44** | Componentes & Rendimiento | Google Maps Style Reference | [https://developers.google.com/maps/documentation/javascript/style-reference](https://developers.google.com/maps/documentation/javascript/style-reference) | [[CANON_DYNAMIC_COMPONENTS_PERFORMANCE_2026]] |
 | **45** | Componentes & Rendimiento | Material Design 3 Components Guide | [https://m3.material.io/components](https://m3.material.io/components) | [[CANON_DYNAMIC_COMPONENTS_PERFORMANCE_2026]] |
 | **46** | Componentes & Rendimiento | Microsoft Fluent 2 Design System | [https://fluent2.microsoft.design/](https://fluent2.microsoft.design/) | [[CANON_DYNAMIC_COMPONENTS_PERFORMANCE_2026]] |
-| **47** | Componentes & Rendimiento | Shopify React Native Skia Docs | [https://shopify.github.io/react-native-skia/](https://shopify.github.io/react-native-skia/) | [[CANON_DYNAMIC_COMPONENTS_PERFORMANCE_2026]] |
-| **48** | Componentes & Rendimiento | React Native Core Components | [https://reactnative.dev/docs/components-and-apis](https://reactnative.dev/docs/components-and-apis) | [[CANON_DYNAMIC_COMPONENTS_PERFORMANCE_2026]] |
+| **47** | Componentes & Rendimiento | Shopify Modern Web UI (CSS/WAAPI) Skia Docs | [https://shopify.github.io/react-native-skia/](https://shopify.github.io/react-native-skia/) | [[CANON_DYNAMIC_COMPONENTS_PERFORMANCE_2026]] |
+| **48** | Componentes & Rendimiento | Modern Web UI (CSS/WAAPI) Core Components | [https://Modern Web UI (CSS/WAAPI).dev/docs/components-and-apis](https://Modern Web UI (CSS/WAAPI).dev/docs/components-and-apis) | [[CANON_DYNAMIC_COMPONENTS_PERFORMANCE_2026]] |
 | **49** | Componentes & Rendimiento | Apple HIG Sheets & Modals | [https://developer.apple.com/design/human-interface-guidelines/sheets](https://developer.apple.com/design/human-interface-guidelines/sheets) | [[CANON_DYNAMIC_COMPONENTS_PERFORMANCE_2026]] |
-| **50** | Componentes & Rendimiento | React Native Accessibility Guide | [https://reactnative.dev/docs/accessibility](https://reactnative.dev/docs/accessibility) | [[CANON_DYNAMIC_COMPONENTS_PERFORMANCE_2026]] |
-| **51** | Animaciones & Render 3D | React Native Reanimated Docs | [https://docs.swmansion.com/react-native-reanimated/](https://docs.swmansion.com/react-native-reanimated/) | [[CANON_MOTION_3D_RENDER_EXPERIENCE_2026]] |
+| **50** | Componentes & Rendimiento | Modern Web UI (CSS/WAAPI) Accessibility Guide | [https://Modern Web UI (CSS/WAAPI).dev/docs/accessibility](https://Modern Web UI (CSS/WAAPI).dev/docs/accessibility) | [[CANON_DYNAMIC_COMPONENTS_PERFORMANCE_2026]] |
+| **51** | Animaciones & Render 3D | Modern Web UI (CSS/WAAPI) Reanimated Docs | [https://docs.swmansion.com/react-native-reanimated/](https://docs.swmansion.com/react-native-reanimated/) | [[CANON_MOTION_3D_RENDER_EXPERIENCE_2026]] |
 | **52** | Animaciones & Render 3D | React Three Fiber Native Intro | [https://r3f.docs.pmnd.rs/getting-started/introduction](https://r3f.docs.pmnd.rs/getting-started/introduction) | [[CANON_MOTION_3D_RENDER_EXPERIENCE_2026]] |
 | **53** | Animaciones & Render 3D | Expo GL SDK 57 Documentation | [https://docs.expo.dev/versions/v57.0.0/sdk/gl/](https://docs.expo.dev/versions/v57.0.0/sdk/gl/) | [[CANON_MOTION_3D_RENDER_EXPERIENCE_2026]] |
 | **54** | Animaciones & Render 3D | Three.js Core Documentation | [https://threejs.org/docs/](https://threejs.org/docs/) | [[CANON_MOTION_3D_RENDER_EXPERIENCE_2026]] |
@@ -134,7 +134,7 @@ Este índice unifica y cataloga las **60 fuentes canónicas esenciales** para el
 - [[PostGIS]]
 - [[Supabase]]
 - [[Reanimated]]
-- [[React Native Skia]]
+- [[Modern Web UI (CSS/WAAPI) Skia]]
 - [[React Three Fiber]]
 - [[Rive]]
 - [[Lottie]]

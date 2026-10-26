@@ -1,7 +1,7 @@
-﻿# CANON MATT POCOCK TYPESCRIPT AND AGENT SKILLS 2026
+# CANON MATT POCOCK TYPESCRIPT AND AGENT SKILLS 2026
 
 [knowledge/docs/SOTA_MATT_POCOCK_TS_RESET_AND_AGENT_SKILLS_2026.md › 🛡️ SOTA: Disciplina de Tipado, Sandboxing de Agentes y Habilidades de Ingeniería (Matt Pocock, 2026)]
-> **Documento canónico que responde:** ¿Cómo aplicar las herramientas de Matt Pocock (`ts-reset`, `sandcastle`, `skills` y Statecharts) para blindar el tipado y la ejecución del equipo multiagente y el bot Centinela?
+> **Documento canónico que responde:** ¿Cómo aplicar las herramientas de Matt Pocock (`ts-reset`, `sandcastle`, `skills` y Statecharts) para blindar el tipado y la ejecución del equipo multiagente y el bot Web Software Factory?
 > **Alcance:** este documento cubre el estándar de tipado estricto sin `any`, la arquitectura de aislamiento por worktree para agentes autorreparables (*Self-Tooling Sandboxes*), el catálogo de habilidades de ingeniería de software para LLMs y la formalización de máquinas de estados. **NO es fuente de precios ni sizing cloud** (ver `GCP_PRICING_REFERENCE`), **NI de contratos de red de RealtimeHub API** (ver `KICK_API_REFERENCE`), **NI de gestión de credenciales** (ver `secops-secrets`).
 
 ---
@@ -70,7 +70,7 @@ r y pruebas unitarias aisladas (`vitest run`).
 ---
 
 [knowledge/docs/SOTA_MATT_POCOCK_TS_RESET_AND_AGENT_SKILLS_2026.md › 🛡️ SOTA: Disciplina de Tipado, Sandboxing de Agentes y Habilidades de Ingeniería (Matt Pocock, 2026) › 4. 🧰 Catálogo de Habilidades de Ingeniería (`mattpocock/skills`)]
-Las habilidades de ingeniería de Matt Pocock se integran en la constitución del equipo multiagente de Centinela (`AGENTS.md`):
+Las habilidades de ingeniería de Matt Pocock se integran en la constitución del equipo multiagente de Web Software Factory (`AGENTS.md`):
 
 1. **`grill-me` (Entrevista Previa Obligatoria):**  
    Antes de escribir código o proponer arquitecturas complejas, el agente interroga al usuario sobre trade-offs y requerimientos no especificados. Se prohíbe asumir decisiones críticas de diseño sin confirmación del CTO Humano.
@@ -98,9 +98,9 @@ El modelado formal de estados establece transiciones matemáticas mutuamente exc
 
 ---
 
-[knowledge/docs/SOTA_MATT_POCOCK_TS_RESET_AND_AGENT_SKILLS_2026.md › 🛡️ SOTA: Disciplina de Tipado, Sandboxing de Agentes y Habilidades de Ingeniería (Matt Pocock, 2026) › 6. 🎯 Resumen de Integración en Centinela Studio]
+[knowledge/docs/SOTA_MATT_POCOCK_TS_RESET_AND_AGENT_SKILLS_2026.md › 🛡️ SOTA: Disciplina de Tipado, Sandboxing de Agentes y Habilidades de Ingeniería (Matt Pocock, 2026) › 6. 🎯 Resumen de Integración en la Web Software Factory]
 - `@total-typescript/ts-reset` instalado como dependencia de desarrollo e integrado en `src/reset.d.ts`.
-- Tipos de `src/centinela.ts` saneados con interfaces explícitas libres de index signatures inseguras.
+- Tipos de `src/Web Software Factory.ts` saneados con interfaces explícitas libres de index signatures inseguras.
 - Verificación completa superada con `npx tsc --noEmit` limpio (cero errores en rojo).
 
 ---

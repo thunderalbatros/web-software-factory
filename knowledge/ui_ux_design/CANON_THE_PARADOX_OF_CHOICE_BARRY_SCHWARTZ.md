@@ -1,15 +1,15 @@
-﻿> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
 
 # ⚖️ Tratado Canónico: The Paradox of Choice (Barry Schwartz)
 ### Basado en: *The Paradox of Choice: Why More Is Less*
@@ -30,9 +30,9 @@ El dogma de las sociedades de consumo sostiene que cuantas más opciones tenga u
 
 ---
 
-## 2. Invariante Yendo: Curaduría Estricta sobre Catálogos Masivos
+## 2. Invariante WebFactory: Curaduría Estricta sobre Catálogos Masivos
 
-Yendo no es un directorio telefónico infinito de venues. Es un **motor curador de calidad**.
+WebFactory no es un directorio telefónico infinito de venues. Es un **motor curador de calidad**.
 - Filtra y presenta únicamente **las 3 mejores opciones hiperlocales** según afinidad de squad, liberando al usuario de la angustia de elegir y transformándolo en un satisfactor relajado.
 
 ---

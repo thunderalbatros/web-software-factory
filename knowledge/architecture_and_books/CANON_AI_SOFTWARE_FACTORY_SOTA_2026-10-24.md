@@ -1,4 +1,4 @@
-﻿# CANON: AI Software Factory SOTA — Operación, Configuración y Tecnologías (Octubre 2026)
+# CANON: AI Software Factory SOTA — Operación, Configuración y Tecnologías (Octubre 2026)
 
 **Alcance:** Aplicable al diseño y operación de la Software Factory de WebFactory Studio para generar múltiples sitios web (separada del producto example-client.pages.dev). Cubre el flujo spec-driven, ingeniería de contexto, stack recomendado y patrón de separación factory/producto. Basado en investigación web del 2026-10-24 con fuentes verificadas.
 

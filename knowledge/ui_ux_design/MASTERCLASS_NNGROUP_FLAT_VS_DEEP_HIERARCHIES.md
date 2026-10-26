@@ -1,10 +1,10 @@
-﻿**Alcance:** Masterclass de Nielsen Norman Group (NN/g): arquitectura de la información, jerarquías planas vs profundas y descubribilidad en navegación web. (Fuente migrada y curada desde Yendo Mobile Vault para la Software Factory Web y client-portal. NO sustituye las reglas de negocio locales ni los contratos primarios en `CANON_*`).
+**Alcance:** Masterclass de Nielsen Norman Group (NN/g): arquitectura de la información, jerarquías planas vs profundas y descubribilidad en navegación web. .
 
 ---
 version: 1.0.0
 tipo: video_analysis
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - multimedia
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
@@ -19,14 +19,14 @@ ultima_revision: 2026-08-27
 
 ---
 
-## Informe Técnico: Jerarquías de Información en Yendo Mobile
+## Informe Técnico: Jerarquías de Información en la Web Software Factory
 
 ### 1. Concepto Central y Tesis Arquitectónica
 
 El concepto central del análisis de Nielsen Norman Group (NN/g) radica en la dicotomía entre **jerarquías de información planas (flat)** y **profundas (deep)**, y su impacto directo en la usabilidad y descubribilidad del contenido. Una jerarquía plana se caracteriza por tener pocas capas verticales y muchas categorías por nivel, mientras que una profunda posee múltiples niveles con menos categorías por capa.
 
-**Tesis Arquitectónica para Yendo Mobile:**
-Yendo Mobile adoptará una **arquitectura de información predominantemente plana**, priorizando la **descubribilidad directa** y la **fricción cero** para sus pilares "Venue", "Experiencia" y "Grupo". Esta elección se alinea con el ADN de Yendo de "pisa internet", que implica un acceso rápido y sin barreras a la información, similar a la navegación web donde el contenido relevante suele estar a pocos clics. Cuando la profundidad sea inevitable por la complejidad del contenido, se implementarán estrategias robustas de navegación alternativa y señales contextuales claras para mitigar la desorientación y mantener la eficiencia del usuario.
+**Tesis Arquitectónica para la Web Software Factory:**
+la Web Software Factory adoptará una **arquitectura de información predominantemente plana**, priorizando la **descubribilidad directa** y la **fricción cero** para sus pilares "Venue", "Experiencia" y "Grupo". Esta elección se alinea con el ADN de WebFactory de "pisa internet", que implica un acceso rápido y sin barreras a la información, similar a la navegación web donde el contenido relevante suele estar a pocos clics. Cuando la profundidad sea inevitable por la complejidad del contenido, se implementarán estrategias robustas de navegación alternativa y señales contextuales claras para mitigar la desorientación y mantener la eficiencia del usuario.
 
 ### 2. Hallazgos Técnicos Clave
 
@@ -35,7 +35,7 @@ Yendo Mobile adoptará una **arquitectura de información predominantemente plan
 *   **Modelos de Hilos (Thread Models):** La elección de una jerarquía impacta la estrategia de carga de datos. Una jerarquía plana puede requerir la carga inicial de un conjunto de datos más amplio para poblar las múltiples categorías, mientras que una profunda podría implicar cargas más pequeñas y secuenciales a medida que el usuario profundiza. Es fundamental que el hilo principal de la UI permanezca siempre reactivo, independientemente de la estrategia de carga de datos subyacente, para evitar "jank" y frustración del usuario.
 *   **Composición de Componentes y Tokens de Diseño:** La claridad y especificidad de las etiquetas de categoría son vitales. Esto se traduce en la necesidad de un sistema de diseño robusto (Material 3) y tokens de diseño bien definidos para tipografía, espaciado y estados de componentes. Estos tokens deben asegurar que las listas planas, incluso las largas, sean altamente escaneables y que los elementos interactivos (tap targets) cumplan con la Ley de Fitts, siendo suficientemente grandes y accesibles. La capacidad de agrupar visualmente elementos relacionados dentro de una lista plana, sin crear subcategorías jerárquicas, es un hallazgo clave para manejar la complejidad sin añadir profundidad.
 
-### 3. Ideas Accionables para Yendo Mobile
+### 3. Ideas Accionables para la Web Software Factory
 
 #### Web UI / Vanilla & Modern Frontend & Web Platform 57
 *   **Optimización de Listas:** Utilizar `FlatList` y `SectionList` de Web UI / Vanilla & Modern Frontend para renderizar eficientemente grandes volúmenes de "Venues", "Experiencias" o "Grupos" en una estructura plana. Esto asegura un rendimiento fluido incluso con muchas opciones visibles.
@@ -53,7 +53,7 @@ Yendo Mobile adoptará una **arquitectura de información predominantemente plan
 *   **Priorización Visual:** Utilizar el tamaño, el color y la posición para destacar las opciones más relevantes o frecuentemente utilizadas, guiando la mirada del usuario y reduciendo el tiempo de búsqueda.
 
 #### Lenguaje de Producto (Venue / Experiencia / Grupo)
-*   **Navegación Primaria:** "Venue", "Experiencia" y "Grupo" deben ser los pilares de la navegación principal de Yendo, probablemente a través de una barra de navegación inferior o pestañas prominentes, reflejando una jerarquía de nivel superior plana.
+*   **Navegación Primaria:** "Venue", "Experiencia" y "Grupo" deben ser los pilares de la navegación principal de WebFactory, probablemente a través de una barra de navegación inferior o pestañas prominentes, reflejando una jerarquía de nivel superior plana.
 *   **Etiquetas Específicas:** Dentro de cada pilar, las categorías y subcategorías deben usar un lenguaje claro, específico y sin ambigüedades. Por ejemplo, en lugar de "Eventos", usar "Conciertos de Rock", "Talleres de Cerámica", "Partidos de Fútbol". Esto mejora la descubribilidad y la comprensión, alineándose con los beneficios de las jerarquías planas.
 *   **Contexto y Claridad:** Cuando sea necesario introducir un nivel de profundidad, asegurar que el contexto sea siempre claro y que el usuario sepa dónde se encuentra en la jerarquía (ej. mediante títulos de pantalla, breadcrumbs virtuales o indicadores de progreso).
 
@@ -66,22 +66,22 @@ Yendo Mobile adoptará una **arquitectura de información predominantemente plan
 
 1.  **Priorizar la Descubribilidad y la Fricción Cero:**
     *   "Content is more discoverable when it's not buried under multiple intervening layers. All other things being equal, deep hierarchies are more difficult to use."
-    *   *Implicación para Yendo:* Minimizar los clics y la navegación profunda para que los usuarios accedan rápidamente a "Venue", "Experiencia" y "Grupo".
+    *   *Implicación para WebFactory:* Minimizar los clics y la navegación profunda para que los usuarios accedan rápidamente a "Venue", "Experiencia" y "Grupo".
 
 2.  **Buscar el Equilibrio Óptimo entre Amplitud y Profundidad, Guiado por el Usuario:**
     *   "Like most design questions, there's no single right answer, and going too far to either extreme will backfire."
     *   "Observing your users — via usability testing, analytics, and search logs — can help you understand what problems your audience needs to solve and how familiar users are with their content. This background knowledge is essential to achieving the right balance between a breadth and depth in your hierarchy."
-    *   *Implicación para Yendo:* La arquitectura de información no es estática; debe evolucionar basándose en datos de usuario y pruebas de usabilidad, buscando el punto óptimo entre la exposición de opciones y la gestión de la complejidad.
+    *   *Implicación para WebFactory:* La arquitectura de información no es estática; debe evolucionar basándose en datos de usuario y pruebas de usabilidad, buscando el punto óptimo entre la exposición de opciones y la gestión de la complejidad.
 
 3.  **Etiquetas Claras y Específicas para Maximizar la Comprensión:**
     *   "Categories that are specific and do not overlap are the easiest to understand."
     *   "A flatter hierarchy with more categories at each level usually has more-specific labels that are easier to understand."
-    *   *Implicación para Yendo:* Utilizar un lenguaje de producto preciso y descriptivo para todas las categorías y elementos de navegación, evitando términos genéricos que puedan confundir al usuario.
+    *   *Implicación para WebFactory:* Utilizar un lenguaje de producto preciso y descriptivo para todas las categorías y elementos de navegación, evitando términos genéricos que puedan confundir al usuario.
 
 4.  **Mitigar la Desorientación en Jerarquías Profundas Inevitables:**
     *   "For deeper hierarchies it's critical to provide alternative navigation options: shortcuts that lead directly to lower levels."
     *   "For sites that are more than a few levels deep, breadcrumbs... can help users orient themselves and understand the site structure."
-    *   *Implicación para Yendo:* Cuando la complejidad del contenido requiera una profundización, implementar "atajos" (ej. búsqueda global, "más vistos", filtros avanzados) y señales de orientación claras (ej. títulos de pantalla contextuales, indicadores de progreso) para evitar que el usuario se pierda.
+    *   *Implicación para WebFactory:* Cuando la complejidad del contenido requiera una profundización, implementar "atajos" (ej. búsqueda global, "más vistos", filtros avanzados) y señales de orientación claras (ej. títulos de pantalla contextuales, indicadores de progreso) para evitar que el usuario se pierda.
 
 ---
 

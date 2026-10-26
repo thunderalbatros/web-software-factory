@@ -1,9 +1,11 @@
-﻿# CANON: 21st.dev — The npm for Design Engineers & Component Ecosystem (2026)
+# CANON: 21st.dev — The npm for Design Engineers & Component Ecosystem (2026)
+
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Web Software Factory.
 
 > **Autor/Organización:** Serafim Kovalchuk (`serafimcloud`), 21st Labs (`github.com/21st-dev`)  
 > **Área:** UI/UX Design Engineering, Component Registries, AI-Assisted Front-End, Micro-Interactions  
 > **Alcance en Web Software Factory Studio:** Suite Web, Overlays de OBS, Paneles de Control del Streamer  
-> **Estado:** Ingestado y Activo en Centinela RAG y Suite de Skills  
+> **Estado:** Ingestado y Activo en Web Software Factory RAG y Suite de Skills  
 
 ---
 

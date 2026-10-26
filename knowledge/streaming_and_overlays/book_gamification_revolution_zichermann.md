@@ -1,19 +1,17 @@
-﻿# 📚 Libro Completo: The Gamification Revolution
+# 📚 Libro Completo: The Gamification Revolution
 
-**Alcance:** Fuente bibliográfica completa sobre Modelo SAPS (Status, Access, Power, Stuff), Loops de Compromiso y Fidelización de Comunidades (The Gamification Revolution — Gabe Zichermann & Joselin Linder). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre Loyalty Mechanics, SAPS Rewards (Status, Access, Power, Stuff) & Leaderboards (The Gamification Revolution — Gabe Zichermann & Joselin Linder). Aplicable a Web Software Factory y Enterprise Web App. NO sustituye los contratos de negocio ni las reglas inmutables en `CANON_*`.
 
 > **Autor:** Gabe Zichermann & Joselin Linder  
-> **Dominio:** Modelo SAPS (Status, Access, Power, Stuff), Loops de Compromiso y Fidelización de Comunidades  
+> **Dominio:** Loyalty Mechanics, SAPS Rewards (Status, Access, Power, Stuff) & Leaderboards  
 > **Archivo Fuente:** `dokumen.pub_the-gamification-revolution-how-leaders-leverage-game-mechanics-to-crush-the-competition-9780071808323-0071808329-9780071808316-0071808310.pdf`  
-> **Páginas Originales:** 257  
-> **Secciones Extraídas:** 54  
-> **Fecha de Ingesta:** 2026-10-19  
+> **Páginas Originales:** 257 (100% Ingerido, Cero Truncamiento)  
+> **Secciones Técnicas Extraídas:** 14 (Entropía Técnica Media: 0.297)  
+> **Fecha de Ingesta:** 2026-10-26
 
 ---
 
-## Sección 1: Foundations & Introduction
-
--- 1 of 257 --
+## Sección 1: Core Concepts & Foundations [Entropy: 0.25]
 
 More Praise for The Gamification Revolution
 “Zichermann and Linder pull together the most interesting case studies,
@@ -42,9 +40,6 @@ approach to gamification that will provide breakthrough results. Sales is the
 last bastion of corporate innovation, and this spectacular read is a must for
 any sales leader.”
 —H I L EVA , Senior VP of Sales Operations, Clear Channel Outdoor
-
--- 2 of 257 --
-
 “The Gamification Revolution provides actionable insights into the ways
 leaders have created meaningful and authentic loyalty.”
 —S TEVE H ARTMAN , Managing Director of Ecommerce
@@ -71,9 +66,6 @@ Revolution will provide you with strategies and tactics that generate results.
 I know. Gabe’s wisdom has helped the Founder Institute expand to every
 inhabited continent and change thousands of lives.”
 —A DEO R ESSI , CEO, Founder Institute
-
--- 3 of 257 --
-
 THE
 GAMIFICATION
 REVOLUTION
@@ -82,9 +74,6 @@ Game Mechanics
 to Crush the Competition
 GAB E Z I CH E R MAN N
 J OS E LI N LI N D E R
-
--- 4 of 257 --
-
 Copyright © 2013 by Gabriel Z Inc. and Joselin Linder. All rights reserved. Except as permitted
 under the United States Copyright Act of 1976, no part of this publication may be reproduced or
 distributed in any form or by any means, or stored in a database or retrieval system, without the
@@ -126,21 +115,12 @@ any indirect, incidental, special, punitive, consequential or similar damages th
 use of or inability to use the work, even if any of them has been advised of the possibility of such
 damages. This limitation of liability shall apply to any claim or cause whatsoever whether such
 claim or cause arises in contract, tort or otherwise.
-
----
-
-## Sección 2: Foundations & Introduction
-
--- 5 of 257 --
-
 To Zachary, Addison, Billy, Julia, and Gabriel—
 our favorite game-playing millennials
 
--- 6 of 257 --
+---
 
-This page intentionally left blank
-
--- 7 of 257 --
+## Sección 2: Core Concepts & Foundations [Entropy: 0.25]
 
 CONTENTS
 Acknowledgments vii
@@ -150,7 +130,7 @@ Gamify Your Read xviii
 
 ---
 
-## Sección 3: PART I
+## Sección 3: PART I [Entropy: 0.25]
 
 GAMIFICATION AS WINNING STRATEGY
 [ 1. ] The Revolution Will Be Gamified 3
@@ -159,21 +139,18 @@ GAMIFICATION AS WINNING STRATEGY
 
 ---
 
-## Sección 4: PART II
+## Sección 4: PART II [Entropy: 0.25]
 
 ENGAGING YOUR TEAM AND DRIVING RESULTS
 [ 4. ] Supercharging Staff Performance 65
 [ 5. ] Igniting Employee Innovation 83
 v
-
--- 8 of 257 --
-
 [ 6. ] Reimagining Recruitment, Training, and Development 103
 [ 7. ] Propelling Personnel to Health and Wellness 127
 
 ---
 
-## Sección 5: PART III
+## Sección 5: PART III [Entropy: 0.295]
 
 CONNECTING, ENGAGING, AND LEVERAGING
 YOUR CUSTOMER BASE
@@ -184,9 +161,6 @@ YOUR CUSTOMER BASE
 Answer Key to Gamify Your Read 222
 Index 227
 v i ❮❮❮ CO N T E N TS
-
--- 9 of 257 --
-
 ACKNOWLEDGMENTS
 GABE ZICHERMANN I would like to thank my family and friends,
 with special props to Gary Henkle, Ivan Kuo, and Taavi Lindmaa,
@@ -207,9 +181,6 @@ JOSELIN LINDER I would like to thank Neil Moss, Bill Burton,
 Shoshi Derrow, Jamie McDonald, Danny Peter, Dan Ballard, and
 others who read through early drafts of the manuscript and offered
 v i i
-
--- 10 of 257 --
-
 invaluable advice. I also want to thank Jacquie Flynn and Joelle
 Delbourgo for their ongoing support and—as always—excellent
 book title suggestions.
@@ -219,9 +190,6 @@ help, input, and explanation.
 To my family: I couldn’t do anything without you. And to
 Aaron: Thank you for everything all the time. I love you.
 v i i i ❮❮❮ AC K N OW L E D G M E N TS
-
--- 11 of 257 --
-
 GO DEEPER WITH
 THE GAMIFICATION
 REVOLUTION APP
@@ -242,9 +210,6 @@ Social media lists. ➤ These lists include direct Twitter links to
 the key people and companies profiled in the book so you can
 easily engage with the experts.
 i x
-
--- 12 of 257 --
-
 Important links ➤ . Beyond Twitter, we’ve included links to
 enable you to further research the companies profiled in the
 book and more.
@@ -253,9 +218,6 @@ it was fun and a little bit challenging. Visit http://gamrev.com today
 and start accelerating your organization’s engagement strategy
 now.
 x ❮❮❮ G O D E E P E R W I T H T H E GA M I F I CAT I O N R EVO LU T I O N A P P
-
--- 13 of 257 --
-
 INTRODUCTION
 Theodore Roosevelt once said, “When you play, play hard; when
 you work, don’t play at all.”
@@ -277,9 +239,6 @@ They are engaging customers as never before, aligning employees,
 and driving innovation that seemed virtually impossible only a
 decade ago. They’ve realized that their strength is in marshaling
 x i
-
--- 14 of 257 --
-
 the intelligence, motivation, and—most critically—engagement of
 their communities to drive their business objectives.
 This concept is called gamification—that is, implementing
@@ -297,9 +256,6 @@ The runaway success of gamification—as this book will show—
 belies a core concept that is missing from nearly every other business strategy book of the last half-century:
 FIGURE I.1 Gamification is the process of engaging audiences by leveraging the best of loyalty programs, game design, and behavioral economics.
 x i i ❮❮❮ I N T RO D U CT I O N
-
--- 15 of 257 --
-
 Without employee and customer engagement, the best laid
 strategies and tactics are doomed to fail.
 Consider the example of FoxMeyer Drugs. In 1993, the company was the fourth largest drug distributor in the United States.
@@ -328,13 +284,6 @@ transition was handled, there was no mistaking that the lack of
 engagement between management and its employee base was critical to the demise of both the new processes and the company
 itself.
 I N T RO D U CT I O N ❯❯❯ x i i i
-
----
-
-## Sección 6: PART III
-
--- 16 of 257 --
-
 But the truth is, we don’t have to look for so dramatic an
 example to see the peril in a lack of engagement between not
 only management and employees but also between management,
@@ -366,9 +315,6 @@ than those who weren’t. Tracey Marks, MD, a leading psychiatrist
 with a focus on mind-body connection, believes adults may not lose
 executive function in the same way children do, but this is largely
 x i v ❮❮❮ I N T RO D U CT I O N
-
--- 17 of 257 --
-
 due to their ability to filter out much of the noise. In other words,
 all of our filtering of the competing ideas, websites, and projects
 appearing on our computers, televisions, and mobile devices in our
@@ -383,9 +329,6 @@ our connection.
 FIGURE I.2 This Flurry analytics chart, Loyalty by Application, shows the
 numbers of users who return to particular applications regularly.
 I N T RO D U CT I O N ❯❯❯ xv
-
--- 18 of 257 --
-
 In fact, year after year consumers spend an increasing amount
 of time playing games. From 2002 to 2012, the Census Bureau estimated that the total time playing video games doubled in the U.S.
 adult population. Furthermore, this data is likely to vastly underreport actual game usage: it excludes children 12 and younger, and
@@ -415,9 +358,6 @@ Finding the answer requires an acceptance of three deeply interrelated and meani
 1. The world will not return to the calm, focused ways of the
 past. Employee and customer multitasking is here to stay.
 xv i ❮❮❮ I N T RO D U CT I O N
-
--- 19 of 257 --
-
 2. Engagement is the most valuable resource your employees and
 customers have to give. Your success or failure will be based
 on how much of it you get.
@@ -449,13 +389,6 @@ in technology and design to vastly improve the world as we know
 it—and deliver the organizational success you desire.
 Welcome to the Revolution. It will be gamified.
 I N T RO D U CT I O N ❯❯❯ xv i i
-
----
-
-## Sección 7: PART III
-
--- 20 of 257 --
-
 Throughout the book you will see boxes like this one featuring
 this symbol:
 It signals that a challenge awaits you—if you choose to take
@@ -472,21 +405,13 @@ Good luck, and if you are ready to read: On your marks, get
 set—Go!
 GAMIFY YOUR READ
 xv i i i
-
--- 21 of 257 --
-
 GAMIFICATION AS
 WINNING STRATEGY
 
 ---
 
-## Sección 8: PART I
+## Sección 6: PART I [Entropy: 0.355]
 
--- 22 of 257 --
-
-This page intentionally left blank
-
--- 23 of 257 --
 THE REVOLUTION
 WILL BE GAMIFIED
 Napoléon’s Winning Game
@@ -505,8 +430,6 @@ What Napoléon needed was a way to keep food fresh and
 nutritious, but also transportable. France was a major agricultural
 power, after all, and along with its annexed territories, it could
 readily produce the entire nutritional needs of the country’s farflung armies. So if the country’s farmers could produce the food
--- 24 of 257 --
-
 consumed by French soldiers, Napoléon’s power and reach would
 grow exponentially.
 Emperor Bonaparte could have simply asked his fellow countrymen to hand over their ideas for the good of the military. After
@@ -534,9 +457,6 @@ Name one meaningful game mechanic mentioned in this ➤
 chapter.
 GAMIFY YOUR READ
 4 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 25 of 257 --
-
 times of war throughout history and across borders. However,
 the number and quality of good ideas may have been limited if
 motivated by patriotism alone. Similarly, Napoléon might have
@@ -570,9 +490,6 @@ raises the odds of obtaining truly novel approaches.
 Optionality. ➤ A grand challenge delivers dozens of solutions at
 no incremental cost. By comparison, structured research typically requires funding for each possible solution path.
 T H E R EVO LU T I O N W I L L B E GA M I F I E D ❯❯❯ 5
-
--- 26 of 257 --
-
 Cost arbitrage. ➤ Because the winners also usually receive major
 status and attention for having achieved public success, we
 don’t need to pay them as much as we would under other
@@ -602,13 +519,6 @@ politics (rising through the ranks from city council to president).
 Meanwhile, frequent-flier members are regularly engaged in a commercial/negotiation system when they try to earn virtual currency
 in the form of “miles.” And people everywhere—from business
 6 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 9: PART I
-
--- 27 of 257 --
-
 managers to school administrators to organizations that host question-and-answer websites on the Internet—are looking for ways to
 engage others in some kind of expressive game.
 As you can see, these gamification patterns are all around us, and
@@ -640,9 +550,6 @@ example of this modality.
 Expressive These games are designed to facilitate creativity,
 individuality, and emotional satisfaction in users.
 T H E R EVO LU T I O N W I L L B E GA M I F I E D ❯❯❯ 7
-
--- 28 of 257 --
-
 menu items game pieces mirroring those found in the Parker Brothers’ board game of the same name. When it comes to the value meals,
 the larger the size ordered, the more chances to win.
 The game is the company’s largest promotional project each
@@ -670,9 +577,6 @@ key metrics—what those metrics are, how they are collected, and
 what they mean to the organization.
 Whaat Is Engagement?
 8 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 29 of 257 --
-
 necessitated by a game that encourages players to collect whole
 sets, or “monopolies.” This harder-to-accomplish goal awards bigticket prizes like vacations and cars, as well as a million-dollar
 grand prize.
@@ -703,9 +607,6 @@ same-store revenue lift in a single month in the fourth quarter of
 revenue over the 60 days of the promotion.
 From a game.
 T H E R EVO LU T I O N W I L L B E GA M I F I E D ❯❯❯ 9
-
--- 30 of 257 --
-
 From Napoléon’s nineteenth-century Food Preservation Prize
 to McDonald’s twenty-first-century Monopoly game, some of the
 best solutions have been gamified. These two examples, and the
@@ -736,13 +637,6 @@ links; unlock exclusive content; interact with your peers, colleagues,
 and friends; and make notes for yourself.
 Monoopoly: Not Just Any Game
 1 0 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 10: PART I
-
--- 31 of 257 --
-
 If You Can’t Beat ’Em, Learn
 What Works and Use It
 When Premal Shah, CEO of Kiva, a nonprofit that helps facilitate
@@ -774,9 +668,6 @@ What’s more, mobile games, especially social and casual games
 over where console and MMOGs once were king. A recent study
 from MocoSpace found that while 80 percent of social gamers
 T H E R EVO LU T I O N W I L L B E GA M I F I E D ❯❯❯ 1 1
-
--- 32 of 257 --
-
 play while commuting or waiting to begin appointments, a whopping 96 percent admit that they are playing these games at home,
 from their couch, bed, or front porch. In 2009, the research firm
 TNS Global reported that over 60 percent of the population in the
@@ -789,7 +680,8 @@ No matter what you think of games, and regardless of the prognosis for specific 
 engagement, clearly to the detriment of all other activities. And this
 trend is accelerating.
 Your Customer Is Changing
-In 2012 cable provider Optimum (the New York division of CableVision) aired a television commercial that featured three generations of a family using Optimum services to stay in touch. The
+In 2012 cable provider Optimum (the New York division of Cable-
+Vision) aired a television commercial that featured three generations of a family using Optimum services to stay in touch. The
 college-age son lamented being beaten by his grandmother while
 playing a word game with her. His mother, meanwhile, let out an
 exasperated laugh as she talked about how she had been trying to
@@ -805,9 +697,6 @@ study revealed something that many women could have told you:
 the average gamer is no longer a 13- to 34-year-old male. She is
 a 43-year-old woman. And things are no different in the rapidly
 1 2 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 33 of 257 --
-
 growing mobile channel. Flurry, the mobile analytics firm, found
 that women are 53 percent more likely to be playing games than
 men—up to three times per day on average.
@@ -836,13 +725,6 @@ How can a child with no experience do something that adult professionals with ex
 else going on? The answer comes from the owner of the simulator
 facility in an aside to the producers: “They [tweens] pick up on this
 T H E R EVO LU T I O N W I L L B E GA M I F I E D ❯❯❯ 1 3
-
----
-
-## Sección 11: PART I
-
--- 34 of 257 --
-
 quite quickly . . . because they have their computer and video game
 experiences, so this becomes like second nature to them.”
 Today’s kids are being raised on games, a reality that is profoundly changing both their brains and our world. From before
@@ -878,9 +760,6 @@ interactions through entertainment and engagement, with games
 and game mechanics becoming the expectation rather than an
 exception woven through most facets of their lives. It will be up to
 1 4 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 35 of 257 --
-
 each of us to provide them with it, or you can be certain that they
 will find it somewhere else. And with kids as intuitively smart as
 Remy, you certainly won’t be able to hold them back for long.
@@ -909,9 +788,6 @@ Great gamified experiences, like great games, invest heavily in cultivating a se
 Systems like Weight Watchers or Alcoholics Anonymous use this
 concept well by offering points for food in the case of the former
 T H E R EVO LU T I O N W I L L B E GA M I F I E D ❯❯❯ 1 5
-
--- 36 of 257 --
-
 and badges and levels in the case of the latter. Most of the games
 you’ve played, whether you’ve noticed or not, make mastery central
 to their value proposition.
@@ -943,9 +819,6 @@ performance.
 In his seminal book A Theory of Fun, entrepreneur and game
 designer Raph Koster posits that mastery is the main thing that
 1 6 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 37 of 257 --
-
 makes games fun in the first place. Nicole Lazzaro, expert game
 designer, expands on this theory with her “4 Keys 2 Fun.” In her
 groundbreaking research, Lazzaro shows that mastery (or “hard
@@ -963,13 +836,6 @@ important.
 FIGURE 1.1 To move users from a progression to mastery, you need to
 construct a gamified system that moves them through these six steps.
 T H E R EVO LU T I O N W I L L B E GA M I F I E D ❯❯❯ 1 7
-
----
-
-## Sección 12: PART I
-
--- 38 of 257 --
-
 What Gamification Is
 When governments, businesses, and organizations of all sizes and
 types embrace game thinking and mechanics, they are better able
@@ -986,9 +852,6 @@ FIGURE 1.2 In the Bejeweled Blitz game, players have to match multiple gems to r
 mechanics like mastery, challenge, points, and levels are finely tuned to
 maximize engagement.
 1 8 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 39 of 257 --
-
 rewards. Together, these elements are combined to deliver a system
 of mastery to end users—in other words, they serve as guide posts
 toward “winning.” Using concepts that are intrinsically and extrinsically motivating, gamification is about finding—and delivering—
@@ -1018,9 +881,6 @@ helps you track—and provide feedback on—user behavior over
 time. This and other essential functions of point systems are products of our intrinsic desire to keep score (and share feedback), and
 they are critical gamification tools in shaping behavior.
 T H E R EVO LU T I O N W I L L B E GA M I F I E D ❯❯❯ 1 9
-
--- 40 of 257 --
-
 Badges (Achievements)
 Badges are tokens that represent the achievement of a particular
 goal. Within game design, they are part of the generic category
@@ -1050,9 +910,6 @@ Clearly, levels and badges have a great deal of overlap, and many
 systems that leverage badges don’t necessarily incorporate levels,
 and vice versa. However, they are powerful tools that are especially
 20 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 41 of 257 --
-
 useful when designing a system with a great deal of intrinsic structure, like workplace hierarchies.
 Leaderboards
 Also known as scoreboards, leaderboards are designed to show a
@@ -1080,13 +937,6 @@ pressure where appropriate. The clearest model for understanding
 these elements of reward programs is described in the acronym
 SAPS:
 T H E R EVO LU T I O N W I L L B E GA M I F I E D ❯❯❯ 2 1
-
----
-
-## Sección 13: PART I
-
--- 42 of 257 --
-
 Status. Utilizing such tools as titles and color-coded levels
 Access. Providing exclusive opportunities to engage, like lunch
 with the CEO or celebrity autographs
@@ -1118,9 +968,6 @@ and mechanics from games—not the gamey-ness itself—to have the
 desired effect. So rest assured, you don’t need to build a laser tag
 room off of your cafeteria. There are other ways to build fun and
 22 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 43 of 257 --
-
 engagement without taking things to an extreme. (Not that we’re
 discouraging laser tag rooms . . .)
 Think about gamifying your company, system, or process like
@@ -1153,9 +1000,6 @@ vault your organization into the elite tier of best-in-class companies that are 
 dominate the battle for talent, customers, and engagement in the
 attention-starved culture. In the coming chapters, we’ll illustrate
 T H E R EVO LU T I O N W I L L B E GA M I F I E D ❯❯❯ 23
-
--- 44 of 257 --
-
 how winners win with gamification and how they overcame challenges to create world-class organizations and relationships.
 Begin by creating opportunities for your organization to thrive
 in this new environment. The following list of basic agreements
@@ -1174,8 +1018,6 @@ program objectives, increasingly a strategic view of gamification is
 emerging. To prepare your organization for the coming changes in
 the market, and also to more fully leverage the benefits of gamification tactically, developing a workable strategy is critical.
 24 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 45 of 257 --
 GAMIFICATION AS
 WINNING CORPORATE
 STRATEGY
@@ -1190,8 +1032,6 @@ at http://gamrev.com to unlock your achievement and access
 supplemental materials. You may also verify your answers by
 visiting the answer key at the back of the book.
 GAMIFY YOUR READ
--- 46 of 257 --
-
 freedom to play music loudly. But recently, research from major
 automakers has uncovered a shocking revelation: today’s kids don’t
 really care about driving. According to Frontier Group and U.S.
@@ -1223,14 +1063,8 @@ in conflict with them.
 When it comes to public safety, the prohibition on multitasking
 is an important one. According to research from the U.S. Department of Transportation, texting while driving increases the risk
 of an accident by a factor of 23, with younger drivers posing an
-elevated risk due to both inexperience as well as even more oppor26 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 14: PART I
-
--- 47 of 257 --
-
+elevated risk due to both inexperience as well as even more oppor-
+26 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
 tunities for distraction while behind the wheel as compared to
 the rest of the population. And the probability is that driving will
 continue to become less cool over time, with more and more kids
@@ -1263,9 +1097,6 @@ In short, you need a strategy.
 While the auto industry hasn’t solved its yawning motivation gap yet, it is taking concrete steps to address this issue using
 gamification. Honda, Toyota, Nissan, and Ford have developed indash experiences that leverage the power of gamification to engage
 GA M I F I CAT I O N AS W I N N I N G CO R P O RAT E ST RAT EGY ❯❯❯ 27
-
--- 48 of 257 --
-
 audiences in a whole new
 environmentally aware and
 safety-conscious way. For
@@ -1299,9 +1130,6 @@ a dashboard interface that allows
 drivers to compare safe and ecologically sound driving practices to those
 of other drivers, making the experience a social one.
 28 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 49 of 257 --
-
 others have used it to re-energize or turn around a business going
 sideways. In every case, the strategic value of gamification highlights some of the ways that it is so powerful. Some of the more
 inspirational examples are driving some strategic visions forward
@@ -1334,9 +1162,6 @@ While some credit has to go to the company’s PayPal and mobile
 divisions, which were stellar performers in the early years of the
 millennium, another, less public hero also helped to catalyze this
 GA M I F I CAT I O N AS W I N N I N G CO R P O RAT E ST RAT EGY ❯❯❯ 29
-
--- 50 of 257 --
-
 extraordinary achievement: eBay’s reorientation around user-centric design.
 To hear Matt Maclaurin, leader of eBay’s EPIC design lab, tell
 it, the most important thing the company has done is to prioritize
@@ -1362,13 +1187,6 @@ Answer in one word: What does eBay’s feedback score indicate
 about a seller?
 GAMIFY YOUR READ
 30 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 15: PART I
-
--- 51 of 257 --
-
 order to solve the problem of dishonest buyers and sellers who had
 stunted the company’s growth in the early, free-for-all days of the
 Internet.
@@ -1400,9 +1218,6 @@ gamification as a key performance indicator (KPI). In fact, most
 of the companies profiled in this book have achieved their objectives principally through the drive and motivation of an in-house
 champion.
 GA M I F I CAT I O N AS W I N N I N G CO R P O RAT E ST RAT EGY ❯❯❯ 31
-
--- 52 of 257 --
-
 Although many of these CNOs (whose titles may differ from
 company to company) come with game design expertise, this is
 not a strict requirement. What is consistent about the successful
@@ -1437,9 +1252,6 @@ order to remain on message and task from every gamified direction
 toward which her company turns. This doesn’t mean that the CNO
 is responsible for the day-to-day operations of every gamified app
 32 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 53 of 257 --
-
 or service. Rather, it means that she is responsible for the creation
 and ongoing sustenance of engagement strategies throughout the
 organization.
@@ -1467,13 +1279,6 @@ Answer in one word: The focus of the chief engagement officer
 is to drive, what?
 GAMIFY YOUR READ
 GA M I F I CAT I O N AS W I N N I N G CO R P O RAT E ST RAT EGY ❯❯❯ 33
-
----
-
-## Sección 16: PART I
-
--- 54 of 257 --
-
 “Give the customers what they want . . . as long as they do something for me.” That same approach works surprisingly well for all
 customer-centric organizations.
 Chamillitary sets one basic goal: compete to be Chamillionaire’s
@@ -1491,9 +1296,6 @@ fundamentally the rules of engagement have been rewritten
 FIGURE 2.2 Grammy-award winning artist and entrepreneur Chamillionaire uses his fan website to drive engagement with gamification, where top
 fans can exchange points for prizes.
 3 4 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 55 of 257 --
-
 between Chamillionaire’s thousands of fans and the artist they
 love. Through this new approach, he has been able to seed the
 market with new music and push it onto key charts without the
@@ -1524,9 +1326,6 @@ from layperson. Fans are willing to pay (with money and time) to
 connect with their favorite content creators, and the key is to make
 that possible, and obviously fun. But first, you have to see engagement as important before you can define it as a priority.
 GA M I F I CAT I O N AS W I N N I N G CO R P O RAT E ST RAT EGY ❯❯❯ 35
-
--- 56 of 257 --
-
 Answer in one word: Chamillionaire uses his game Chamillitary
 to harness the energy of his, what?
 GAMIFY YOUR READ
@@ -1549,10 +1348,8 @@ project, which replaced dozens of failed attempts to build a military simulation
 to become one of the most popular games of all time.
 The stroke of genius driving America’s Army came from retired
 colonel Casey Wardynski, the economist-turned-gamification
-expert behind the project. Instead of simply trying to educate pro36 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 57 of 257 --
-
+expert behind the project. Instead of simply trying to educate pro-
+36 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
 spective soldiers on the possibilities of a career in the armed forces,
 America’s Army let them experience it. The game allowed people to
 reenact the experience of a soldier, rather than simply filling out a
@@ -1584,13 +1381,6 @@ this lesson clearly. From 2002 to 2006, the domestic airline industry
 collectively lost close to $20 billion on flying customers around.
 Meanwhile, their loyalty programs remained in the black. These
 GA M I F I CAT I O N AS W I N N I N G CO R P O RAT E ST RAT EGY ❯❯❯ 37
-
----
-
-## Sección 17: PART I
-
--- 58 of 257 --
-
 frequent-flier programs are in fact gamified strategies to raise
 engagement and generate incremental revenue. In the case of these
 two airlines, their game overwhelmed the core offering (flying
@@ -1621,9 +1411,6 @@ Every day, thousands of individuals—most of whom charge
 hundreds of dollars per hour for their professional consulting
 services in the real world—help answer each other’s questions on
 38 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 59 of 257 --
-
 StackOverflow. The difference is that on StackOverflow they do it
 for free. They compile code, write subroutines, form ad hoc groups,
 and do intense research, all to solve each other’s problems. Their
@@ -1651,9 +1438,6 @@ can help create centers of excellence that drive employee, product,
 and customer behavior beyond traditional methods. These internal
 groups largely become resources for the entire organization, helping the company reach new heights.
 GA M I F I CAT I O N AS W I N N I N G CO R P O RAT E ST RAT EGY ❯❯❯ 39
-
--- 60 of 257 --
-
 One of the least likely leaders of this movement is SAP—the
 German enterprise software giant. Founded in 1972, this $75 billion company is the leader in enterprise software, driving the
 back end for most of the world’s largest companies. The image the
@@ -1682,13 +1466,6 @@ Answer in one word: The SAP community network is designed
 to connect whom?
 GAMIFY YOUR READ
 4 0 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 18: PART I
-
--- 61 of 257 --
-
 few cycles, these events have focused on gamification. As a result,
 teams have brought gamified design to mundane, core software
 modules—like data entry. The teams’ imagination has yielded
@@ -1717,9 +1494,6 @@ some brilliant insights from SAP’s Mario Herger on how to get the
 organization behind your gamification strategy.
 Sellingg Gamiification as a Strategy
 GA M I F I CAT I O N AS W I N N I N G CO R P O RAT E ST RAT EGY ❯❯❯ 41
-
--- 62 of 257 --
-
 Innov8. ➤ A simulation system designed to spur companywide
 innovation
 CityOne. ➤ A simulation game that addresses real-life urban
@@ -1750,10 +1524,8 @@ and then turn that gamification into a product or experience for
 customers.
 Whether it’s a services and tech behemoth like IBM, an arm of the
 government like the U.S. military, or a fan community built around
-a charismatic artist like Chamillionaire, there are key strategic pat42 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 63 of 257 --
-
+a charismatic artist like Chamillionaire, there are key strategic pat-
+42 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
 terns that recur. Understanding the importance of engagement,
 giving users what they want, orienting around the user, hiring a
 chief engagement officer, and embracing the game as it grows are
@@ -1769,11 +1541,10 @@ reimagining strengths, weaknesses, opportunities, and threats
 (SWOT) analyses in new and much more exciting ways.
 GA M I F I CAT I O N AS W I N N I N G CO R P O RAT E ST RAT EGY ❯❯❯ 4 3
 
--- 64 of 257 --
+---
 
-This page intentionally left blank
+## Sección 7: PART I [Entropy: 0.28]
 
--- 65 of 257 --
 GAMIF YING THE
 STRATEGIC PROCESS
 In 1994 three pioneers in game theory were awarded the Nobel
@@ -1791,8 +1562,6 @@ Revolution app, which can be downloaded at http://gamrev.com!
 You may also verify your answer by visiting the answer key at
 the back of the book.
 GAMIFY YOUR READ
--- 66 of 257 --
-
 checkers, poker, and other games of strategy served as the foundation for their work in this powerful field of game theory—now
 regarded as the most prevalent system for analyzing strategic decision making. Only two other game theorists had ever won before,
 but afterward, the floodgates opened. Game theorists subsequently
@@ -1823,13 +1592,6 @@ better prepared for the future.
 Therein lies the promise of the gamification of strategy—by
 using the key strengths of gamification, the strategic process gets
 4 6 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 19: PART I
-
--- 67 of 257 --
-
 better, which in turn improves outcomes. The gamification of strategy promises such opportunities as these:
 Understanding the end game ➤
 Modeling scenarios ➤
@@ -1859,9 +1621,6 @@ participants to imagine themselves in various roles in the aftermath of a major 
 United States might look like without oil. At its worst, gas hit $7 a
 gallon, 2 million people lost their jobs, cities suffered over $1 billion in damages from rioting and civil disorder, and vast numbers
 GA M I F Y I N G T H E ST RAT EG I C P RO C ESS ❯❯❯ 47
-
--- 68 of 257 --
-
 of people were displaced and living in Federal Emergency Management Agency (FEMA) camps, or migrating across the country
 looking for jobs. (See Figure 3.1.)
 World Without Oil didn’t reach a finite conclusion—identifying
@@ -1884,9 +1643,6 @@ FIGURE 3.1 World Without Oil gave players the chance to imagine the
 United States in the middle of oil crises for which the players were asked to
 seek solutions.
 48 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 69 of 257 --
-
 happen in the future? Just as chess players work backward from
 checkmate to their next move, strategic gamification helps drive
 novel solutions to significant future problems.
@@ -1914,9 +1670,6 @@ We’ve long known that the great chess players are great strategists, so it sho
 our time have also been master chess players. Business Insider compiled a list of executives with chess pedigrees, and the list included
 champions Duncan Suttles, president of Magnetar Games, and Victoria Livschitz, founder and CEO of Grid Dynamics.
 GA M I F Y I N G T H E ST RAT EG I C P RO C ESS ❯❯❯ 49
-
--- 70 of 257 --
-
 threats and opportunities, scenario planning today is being used to
 imagine all aspects of a complex future—and not just in the political sphere. Today’s scenario planning in all its incarnations focuses
 on using stories (scenarios) to drive a reaction from a human or
@@ -1937,7 +1690,8 @@ BIW category. Generally, they are designed as simulations that
 allow executives to play both sides of a scenario and negotiate as
 opposing parties. The newest approaches incorporate competitive
 intelligence and shifting environmental data to ensure that the
-negotiator is prepared for real-world success. As a sign of its popuShell Scenarios and World Without Oil
+negotiator is prepared for real-world success. As a sign of its popu-
+Shell Scenarios and World Without Oil
 Shell uses scenarios both as an internal planning tool and as a part
 of its global communication strategy. You can see and interact with a
 subset of its energy future scenarios, and you can explore the results
@@ -1945,13 +1699,6 @@ of strategy games like World Without Oil at the social app for The
 Gamification Revolution by downloading it at http://gamrev.com.
 Shell S Scenarioos and World Without Oil
 5 0 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 20: PART I
-
--- 71 of 257 --
-
 larity, every U.S. Army officer since 2007 has undergone negotiation game–based training before gaining authorization to interact
 with civilian populations.
 Despite the military’s support, scenario-based strategy (and
@@ -1978,9 +1725,6 @@ all day?—the tangible benefits have not been easy to identify.
 Participants who have used gamified strategic planning methods have expressed that increased information was the main benefit they got out of it, as compared to the older approaches. The
 other observed benefit was that the gamified approaches tended to
 GA M I F Y I N G T H E ST RAT EG I C P RO C ESS ❯❯❯ 51
-
--- 72 of 257 --
-
 more readily challenge players’ underlying assumptions by forcing
 them to hone in on the specifics of a situational narrative from, in
 some cases, an alternative perspective. This is an incredibly important capability when a process relies on internal stakeholders—
@@ -2011,10 +1755,8 @@ WikiStrat create engagement with its analysts.
 Green says the company has found through analysis that its
 contributors report consistently that this “side job” is more fun
 than their day job. It’s the component of fun building additional
-engagement that has helped the fledgling company sign signifi52 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 73 of 257 --
-
+engagement that has helped the fledgling company sign signifi-
+52 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
 cant scenario analysis deals with major governments and Fortune
 100s, snatching contracts from established firms around the world.
 Additionally, the gamification elements have proven particularly
@@ -2047,13 +1789,6 @@ For example, previous battles anticipated Google’s advertising
 dominance as well as Apple’s foray into TV and social networking.
 Of course, they have been wrong as often as they’ve been right—
 GA M I F Y I N G T H E ST RAT EG I C P RO C ESS ❯❯❯ 53
-
----
-
-## Sección 21: PART I
-
--- 74 of 257 --
-
 but between the economic value and the wealth of collected data
 from the challenges, Fuld, the students, and companies involved
 are doing the impossible: they are telling the future.
@@ -2087,9 +1822,6 @@ the program and stayed until the end.
 But keeping people in the room isn’t the only metric for defining
 engagement. Rather, creating and sustaining active participation
 5 4 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 75 of 257 --
-
 is key. Gamestorming does just that. By replacing standard business meetings and brainstorming techniques with more gamified
 approaches, interests are piqued and people are compelled to see
 their ideas through from beginning to end. While gamestorming
@@ -2116,9 +1848,6 @@ gamestorming by visiting The Gamification Revolution app. Access
 it now at http://gamrev.com.
 Nativve Ameerican Talking Sticks
 GA M I F Y I N G T H E ST RAT EG I C P RO C ESS ❯❯❯ 55
-
--- 76 of 257 --
-
 as points and rewards to inspire momentum. The game 3-12-2, for
 example, adapted from the book Gamestorming (Dave Gray, Sunni
 Brown, and James Macanufo) uses constraints, focused tasks,
@@ -2152,9 +1881,6 @@ game is best if the finished experience yields at least 10 good ideas.
 Every top idea should be written out in front of the group after
 which, everyone may vote on a favorite. The total number of votes
 5 6 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 77 of 257 --
-
 per individual is equal to the number of ideas his or her team
 presented plus one. This plus one ensures that even if they decide
 to vote based on partisanship (instead of on merit), they must still
@@ -2187,13 +1913,6 @@ of unaffiliated individuals brought into a room together for this
 one purpose, there is no equivalent for the power of gamification to drive engagement in the context of strategy. The upshot is
 increased productivity, satisfaction, and, ultimately, quality.
 GA M I F Y I N G T H E ST RAT EG I C P RO C ESS ❯❯❯ 57
-
----
-
-## Sección 22: PART I
-
--- 78 of 257 --
-
 Raising Intelligence
 One overlooked way to increase the quality of strategic analysis
 inside an organization might seem farfetched at first. However,
@@ -2224,9 +1943,6 @@ knowledge from which to draw. This is different from general crystallized intell
 skills or knowledge. Crystallized intelligence is the ability that is
 commonly evaluated in standardized tests—including most corporate recruitment tests.
 58 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 79 of 257 --
-
 Clearly, in strategic planning situations, both EI and Gf come
 in handy. EI ensures the team members can challenge each other
 without descending into histrionics. At the core of EI is an ability
@@ -2260,9 +1976,6 @@ life event” (ULE) square that forces you to deal with exceptionally
 challenging situations (like the death of a loved one or the loss of
 a job) based not on your own EI level but on the EI level to which
 GA M I F Y I N G T H E ST RAT EG I C P RO C ESS ❯❯❯ 59
-
--- 80 of 257 --
-
 you’ve been assigned during play. The game’s long arc is to show
 how people with different levels of EI might respond differently to
 various situations—helping them manage others and develop their
@@ -2294,13 +2007,6 @@ they represent the letters given 3 (n) letters ago. Similarly, you
 wouldn’t call out any of the other letters because none of them
 were given 3 letters before. For example, there are 2 instances of
 6 0 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 23: PART I
-
--- 81 of 257 --
-
 the letter Z, but they are separated by only 1 other letter. Therefore, you wouldn’t highlight the Z (as this particular game is
 about intervals of 3).
 You can make the task harder by increasing n (it gets more
@@ -2327,9 +2033,6 @@ is a critical realization: organizations must obtain extraordinary
 results from their employees first and foremost. With gamification’s strategic foundation in place, we can take the next step—
 engaging employees to deliver exceptional results.
 GA M I F Y I N G T H E ST RAT EG I C P RO C ESS ❯❯❯ 61
-
--- 82 of 257 --
-
 Riddle Me This!
 Now that you’ve read the chapter and found the clues, answer
 the following riddle: What atmospheric condition uses thunder,
@@ -2341,21 +2044,13 @@ You may also verify your answer by visiting the answer key at
 the back of the book.
 GAMIFY YOUR READ
 62 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 83 of 257 --
-
 ENGAGING YOUR TEAM
 AND DRIVING RESULTS
 
 ---
 
-## Sección 24: PART II
+## Sección 8: PART II [Entropy: 0.5]
 
--- 84 of 257 --
-
-This page intentionally left blank
-
--- 85 of 257 --
 SUPERCHARGING
 STAFF PERFORMANCE
 Today’s employees are changing—and changing fast.
@@ -2377,8 +2072,6 @@ this risk. After all, if U.S. worker productivity continues to rise
 and unemployment remains stubbornly high, why does worker
 satisfaction matter?
 But it is precisely for those reasons that satisfaction and engagement matter more than ever. Much of the United States’ productivity gain over the last two decades has arisen from outsourcing
--- 86 of 257 --
-
 everything possible, so the jobs that have remained are increasingly the only ones that can’t be sent overseas. And while aggregate
 unemployment remains elevated, skilled workers—particularly in
 high-growth regions—continue to be in extraordinarily short supply. For example, the current unemployment rate for engineers in
@@ -2406,9 +2099,6 @@ So if the fundamental, near-term prognosis for employee disengagement is so dire
 Wrong. The millennial generation, with over 150 million members in the United States and European Union alone, are just beginning to make their entrance. In so doing, they are bringing forward
 a unique worldview, shaped not only by their peers and their cultural milieu but also by the technologies with which they grew up.
 6 6 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 87 of 257 --
-
 As we are increasingly discovering, the specifics of their generational differences are jarring and already giving rise to significant
 management heartburn.
 Managing this generation has become a hot button issue across
@@ -2437,9 +2127,6 @@ of them expect quick advancement. Furthermore, personal development was ranked t
 having their needs met, 25 percent of them said they expected to
 have six or more employers in their lifetime. Optimism (or insouciance) of youth, perhaps—but a telling view nonetheless.
 S U P E RC H A RG I N G STA F F P E R FO R M A N C E ❯❯❯ 67
-
--- 88 of 257 --
-
 Tulgan’s book title itself gives us the clue to the core issue that
 most nonmillennials have with this generation: that they are spoiled
 from having been given too much positive feedback or having won
@@ -2471,13 +2158,6 @@ global economy. Their view does not match that of preceding generations who, by 
 and of itself. In the past, incremental positive reinforcement might
 be looked on as unnecessary at best, or mollycoddling at worst. The
 6 8 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 25: PART II
-
--- 89 of 257 --
-
 core work values in our society said that you were supposed to do
 your best, delaying gratification and reward until the future.
 The root cause of the glaring differences between the millennial generation and the rest of us is their inordinate exposure to
@@ -2510,9 +2190,6 @@ organization will actually drive success throughout your employee
 community, no matter the generation. As you’ll see below, the
 secrets of delivering maximum achievement in your organization
 S U P E RC H A RG I N G STA F F P E R FO R M A N C E ❯❯❯ 69
-
--- 90 of 257 --
-
 are based on three primary drivers called the three Fs: feedback,
 friends, and fun. Organizations that can deliver those in the workplace can and will drive improved performance. What’s more,
 these strategic drivers can be readily applied to every worker at
@@ -2538,9 +2215,6 @@ When working together, these three drivers form the core of a
 viral engagement loop designed to propel users to visit an experience, return, and then also engage others to visit and return.
 The Thrree Fs: F Feedback, Friends, and Fun
 70 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 91 of 257 --
-
 If your organization depends on proprietary bodies of knowledge
 to be successful, you’ll find Chapter 6 on the gamification of recruitment and training to be critical to your future. So much innovation
 has been seen in this category that you might never think of posting
@@ -2571,13 +2245,6 @@ games and attract other people to play them too. Today’s Ekins are
 not only Nike’s loudest advocates but they are also its frontline
 customers! The storytelling camp helps create meaning around
 S U P E RC H A RG I N G STA F F P E R FO R M A N C E ❯❯❯ 7 1
-
----
-
-## Sección 26: PART II
-
--- 92 of 257 --
-
 Up-or-Out Cultures
 In many high-functioning organizations—consulting, for example—
 there seems to be a strong pressure for employees to move rapidly
@@ -2607,9 +2274,6 @@ between technical and business tracks, the same thinking can be
 applied to any discipline. For example, in accounting, there can be
 Up-or-Out Cultures
 72 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 93 of 257 --
-
 what later becomes a major investment in any of Nike’s innovative
 customer-facing games like Nike+ and FuelBand (both discussed
 in Chapter 8).
@@ -2636,9 +2300,6 @@ and give employees consistent feedback about progress. Employee
 satisfaction will improve if progress is well understood and feedback
 is consistent.
 S U P E RC H A RG I N G STA F F P E R FO R M A N C E ❯❯❯ 73
-
--- 94 of 257 --
-
 point during high seasons like Christmas, and turnover and training challenges were leading to staff and managerial burnout.
 So Target did something surprising. The company added a game
 mechanic to the checkout experience. At the time, even those at
@@ -2655,9 +2316,6 @@ FIGURE 4.1 Target used game mechanics to encourage staff to work
 more efficiently at the checkouts. The letter G (for green) increases the
 user’s average, while the letter R (for red) decreases it.
 74 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 95 of 257 --
-
 Target gave the cashiers a suggested score of 82 percent, letting them know that scoring below that number could result in
 additional training, demotion, or even job loss. Scoring above, of
 course, would open advancement opportunities. But what happened next surprised everyone: not only did Target’s checkout lines
@@ -2689,13 +2347,6 @@ Target example, and what the company didn’t do, is more important than ever. T
 the cash register into a “Capital-G” Game. There were no dragons
 to slay, princesses to rescue, pigs to crush, or jewels to match.
 S U P E RC H A RG I N G STA F F P E R FO R M A N C E ❯❯❯ 75
-
----
-
-## Sección 27: PART II
-
--- 96 of 257 --
-
 Choose Your Own Adventure—
 Solve Target’s Checkout Problem Yourself!
 By providing employees with a sense of agency, work feels less
@@ -2722,9 +2373,6 @@ results of this approach, turn to the answer key at the back of
 the book.)
 GAMIFY YOUR READ
 76 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 97 of 257 --
-
 Instead of trying to make the work seem more exciting by making a game out of it, Target focused on giving the user instant feedback. And instead of directly tying compensation to the outcome,
 the company set a threshold and a target. Then they let the cashiers
 self-select the game. By doing so, they also continued to foster a
@@ -2754,9 +2402,6 @@ offered to encourage good behavior as well. Unfortunately, rather
 than motivate a change for the better, a culture clash was born, and
 the incentives were met with major resistance.
 S U P E RC H A RG I N G STA F F P E R FO R M A N C E ❯❯❯ 77
-
--- 98 of 257 --
-
 The problem was simple: in the past if a caller asked the operator a question, providing the answer was a challenge in and of itself.
 While obviously more time-consuming, coming up with clever
 and effective tools, tips, and resources likely proved personally
@@ -2788,9 +2433,6 @@ while the professional staff members found it demeaning and
 counterproductive? Moreover, the Target program carried no
 direct cash incentive, whereas the first version of the OmniCare
 78 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 99 of 257 --
-
 program actually had gift cards and other tangible rewards associated with it. So why did the first version of the OmniCare program
 still underperform?
 The answer is in how the employees fundamentally viewed their
@@ -2819,13 +2461,6 @@ Toronto-based Rypple knows a thing or two about helping to
 reimagine organizational performance through gamification. The
 company, which was acquired by Salesforce.com in 2012 for an estimated $65 million and which is now called Work.com, pioneered
 S U P E RC H A RG I N G STA F F P E R FO R M A N C E ❯❯❯ 79
-
----
-
-## Sección 28: PART II
-
--- 100 of 257 --
-
 the idea of making employee reviews into a mobile, social, and
 360-degree function.
 Realizing that the traditional, linear annual written review had
@@ -2840,7 +2475,8 @@ in ways that have been previously impossible. For the first time,
 users can send a note by writing publicly on a coworker’s wall with
 messages as simple as, “Thanks for the help with that pitch. We
 won!”
-Dynamic companies like Facebook, Gilt, Spotify, and LivingSocial are among the bigger case studies of Salesforce.com’s
+Dynamic companies like Facebook, Gilt, Spotify, and Living-
+Social are among the bigger case studies of Salesforce.com’s
 Work.com solution—and their results are astounding. LivingSocial
 is one such case in point. The daily-deals company delivers offers
 from half-price spa services to all-inclusive vacation packages to
@@ -2856,10 +2492,8 @@ critical elements of performance enhancement systems within
 organizations. After all, if you want employees to do their best,
 they need to know what they are doing well (as well as what they
 are not doing well). Even more important, research shows that
-the sooner you give feedback after a “correctable” event, the bet8 0 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 101 of 257 --
-
+the sooner you give feedback after a “correctable” event, the bet-
+8 0 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
 ter. Work.com and its competitors (like DueProps or PropsToYou)
 shorten the feedback loop to drive better results through continuous reinforcement from within the organization.
 The benefits delivered by systems like Work.com and their
@@ -2889,9 +2523,6 @@ instant feedback (for example, the Like button on Facebook) helps
 motivate people intrinsically to act out such positive behaviors as
 helping others and working hard. Whereas business once demonstrated its appreciation with cash and expensive prizes (like flashy
 S U P E RC H A RG I N G STA F F P E R FO R M A N C E ❯❯❯ 81
-
--- 102 of 257 --
-
 vacations for top salespeople), now there is a widening range of
 rewards, and they come from your peers.
 These socially driven rewards give management the ability to
@@ -2917,12 +2548,6 @@ inside organizations of all sizes. Beyond driving performance,
 gamification can also increase employee satisfaction, recruitment
 efficacy, and—perhaps most important—innovation.
 82 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 29: PART II
-
--- 103 of 257 --
 IGNITING EMPLOYEE
 INNOVATION
 When you think of employee-driven innovation, federal governments are rarely the first thing that comes to mind. But
@@ -2942,8 +2567,6 @@ to every outgoing e-mail” to community improvement plans like
 the spectrum of activities in which the DWP is engaged. The best
 ideas are then curated and turned into assets that can be traded, as
 on a stock market. Employees buy or sell shares in the best ideas,
--- 104 of 257 --
-
 driving the prices up and down as a proxy for their quality—
 as well as contributing additional ideas to each as it progresses.
 Top concepts are then vetted by the organization itself and, when
@@ -2964,9 +2587,6 @@ FIGURE 5.1 The U.K. Department for Work and Pensions (DWP) created
 Idea Street as a way to allow staff members to propose innovative ideas
 and vote for the best ones.
 8 4 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 105 of 257 --
-
 And the genius of the game isn’t even the visible end result
 but rather the classic motivator that is missing: specifically, cash.
 Despite the robust market activity taking place every day, DWP
@@ -2997,9 +2617,6 @@ will extend the life of your game, save you money, and drive better
 results.
 The Probblem with Cash
 I G N I T I N G E M P LOY E E I N N OVAT I O N ❯❯❯ 85
-
--- 106 of 257 --
-
 employees, he architected the game in much the same way—a
 virtual marketplace for ideas—with startlingly different results.
 Instead of focusing on noncash rewards, the Innovation Market’s
@@ -3027,14 +2644,8 @@ The lesson is clear, economic simulation games—like Innovation
 Market and Idea Street—can be powerful tools, delivering innovation from the people with the best view of how to improve your
 company: your employees. Organizations that use gamification to
 motivate employee innovation can inspire a true and meaningful
-alignment between your brand and those who work for it. By stay8 6 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 30: PART II
-
--- 107 of 257 --
-
+alignment between your brand and those who work for it. By stay-
+8 6 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
 ing away from cash incentives, you create a powerful long-term
 program at little cost.
 Today, Dr. Gardner continues his mission as an innovation guru
@@ -3063,9 +2674,6 @@ feedback. On completion of a feedback loop, users can then incorporate this inpu
 forward. Social networking has made feedback loops something
 of an everyday occurrence for anyone interacting with them. In
 I G N I T I N G E M P LOY E E I N N OVAT I O N ❯❯❯ 87
-
--- 108 of 257 --
-
 Mad Libs
 Read the words beneath the blanks to a coworker or friend (or
 ask someone to read them to you!), and then fill in the blanks
@@ -3088,9 +2696,6 @@ business asked its [ P LU R A L N O U N ] to [ V E R B ] and [ V E R B ] as ofte
 GAMIFY YOUR READ
 [S U P E R L AT I V E— M O ST L I K E LY TO . . . ]
 8 8 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 109 of 257 --
-
 the case of a feedback loop on Twitter, users tweet status updates.
 Followers of the user respond to the updates, which then brings
 the user back to Twitter in order to read and respond to those
@@ -3123,9 +2728,6 @@ http://gamrev.com and unlock bonus content, interact with your
 peers, and leverage resources to make gamified innovation a
 core part of your business.
 I G N I T I N G E M P LOY E E I N N OVAT I O N ❯❯❯ 89
-
--- 110 of 257 --
-
 were responsible for the reputation of billions of dollars’ worth of
 applications. The QA function is typically viewed by developers as
 a chore. Unsurprisingly, like any author, they prefer the process of
@@ -3159,13 +2761,6 @@ on over half a million screens within the app—finding nearly 7,000
 defects. The game was designed to leverage players’ free time by
 giving them small challenges they could complete in a few minutes
 9 0 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 31: PART II
-
--- 111 of 257 --
-
 a day. Running the game would present players with a screenshot of Windows 7 in their language of choice. Players could then
 circle items that needed review, submit proposed localizations, and
 vote on proposals submitted by other players. Points were awarded
@@ -3183,9 +2778,6 @@ which works to raise productivity through gamification, understood this dynamic 
 FIGURE 5.2 Windows Language Quality Game was Microsoft’s innovation game used to motivate staff to help find glitches before the launch of
 Windows 7.
 I G N I T I N G E M P LOY E E I N N OVAT I O N ❯❯❯ 9 1
-
--- 112 of 257 --
-
 would respond particularly well to the “tribal challenge” design of
 the experience, whereby each language-speaking population came
 together as a team. Along with seeing their performances on a
@@ -3217,9 +2809,6 @@ teams was a pressing objective at Citibank when it hired Susan
 Andrews from Apple in 2010. Brought on to lead innovation at the
 company, Andrews’s bosses hoped her Apple experience would
 92 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 113 of 257 --
-
 Design Competitions: Gamification at Work
 Can you imagine allocating between $50,000 and $80,000 in staff
 commitments and resources in order to conceive a revolutionary
@@ -3248,9 +2837,6 @@ the future of design. From a gamification standpoint it would seem
 there are no losers.
 Design C Competi titions: Gamification at Work
 I G N I T I N G E M P LOY E E I N N OVAT I O N ❯❯❯ 93
-
--- 114 of 257 --
-
 help inject momentum and innovation into their slow-moving, ailing institution with its $1.4 trillion in assets and heightened government oversight. Her first priority was to establish a 25-person
 innovation team in Palo Alto, California. The team’s first project
 was called the Global Ideas Challenge. The game would leverage the
@@ -3281,13 +2867,6 @@ wake of the banking crisis. Now it is becoming an innovator once
 again by redesigning not just the banking experience but the bank
 itself. Reimagined in what some are comparing to the style of an
 94 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 32: PART II
-
--- 115 of 257 --
-
 Apple store, Citibanks of the future will be almost entirely automated. A new app was launched in 2011 designed to help propel
 Citibank closer to creating a revolutionary banking experience for
 their users—one in which customers become their own bankers
@@ -3317,9 +2896,6 @@ teachers together to raise awareness and team spirit to fix up and
 modernize schools. The competitive, market-oriented reforms, by
 and large, are having their desired effect. For example, California
 I G N I T I N G E M P LOY E E I N N OVAT I O N ❯❯❯ 95
-
--- 116 of 257 --
-
 now allows student performance data to be linked to teacher and
 school performance data, enabling leaderboards and comparisons
 at every level. And Austin, Texas, has developed a point-based compensation system that rewards teachers based on student outcomes
@@ -3351,9 +2927,6 @@ Those situations demand a simulation-oriented design. The
 number of employee simulation games for innovation has been
 wildly proliferating. Nowhere more so than at NTT Data—Japan’s
 96 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 117 of 257 --
-
 largest IT services company and one of the world’s largest business
 process outsourcing consultancies.
 The company’s head of internal innovation, Naureen Meraj,
@@ -3388,13 +2961,6 @@ trained as a guidance counselor, started gamifying interactions at
 NTT. She began with simple icebreaking games and innovation
 catalysts at meetings—such as those described in Chapter 3’s section on Gamestorming. Soon, she added little games meant to drive
 I G N I T I N G E M P LOY E E I N N OVAT I O N ❯❯❯ 97
-
----
-
-## Sección 33: PART II
-
--- 118 of 257 --
-
 enhanced creativity and foster cross-cultural communication. As
 the organization slowly awoke to the power of gamification, the
 Seattle native found herself spearheading a major initiative. Given
@@ -3425,9 +2991,6 @@ case, the right answers and processes can be based on the specific client’s re
 applicable. By making it easy to bring real-world scenarios into the
 game, NTT Data hopes to gain a significant advantage over competitors in terms of quality and consultant flexibility.
 98 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 119 of 257 --
-
 A wide range of companies use gamified simulation to drive
 innovation results, including major brands such as Nike, which
 has developed a supply-chain simulation game to drive meaningful eco-understanding throughout the company. Governments like
@@ -3457,9 +3020,6 @@ at the office.
 The fundamental tension between work, innovation, and play
 extends beyond just definitions. The problem with play is that
 I G N I T I N G E M P LOY E E I N N OVAT I O N ❯❯❯ 9 9
-
--- 120 of 257 --
-
 when it is forced or goal specific, it tends not to serve its purpose—
 relaxation, creativity, connectedness, recharging. So how do leading
 organizations resolve this conflict to get good results from play?
@@ -3491,13 +3051,6 @@ what it takes to spark genius. Go online to expand and share your
 thoughts about innovation with The Gamification Revolution app,
 which can be downloaded at http://gamrev.com.
 1 0 0 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 34: PART II
-
--- 121 of 257 --
-
 for experimenting), Google helps foster a culture that has been
 extraordinarily innovative.
 Google’s campus is filled with games employees can play,
@@ -3530,9 +3083,6 @@ used to teach user-centered design for a wide range of applications.
 More specifically, it has become a rallying cry to redesign hospital
 workflow in a patient-centered way.
 I G N I T I N G E M P LOY E E I N N OVAT I O N ❯❯❯ 1 0 1
-
--- 122 of 257 --
-
 IDEO also uses playful competition—like a holiday gingerbread
 decorating contest—to stimulate lateral thinking and encourage new kinds of employee interactions. Similarly, the company
 believes in giving employees some random time off, to go see a
@@ -3552,8 +3102,6 @@ environments that deliver ideas—and results. Clearly, it also helps
 to build corporate climates that many employees consider appealing, which lends gamification another critical win—as a driver of
 recruitment and retention.
 1 02 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 123 of 257 --
 REIMAGINING
 RECRUITMENT,
 TRAINING,
@@ -3574,9 +3122,6 @@ The Army, in an attempt to rebrand itself as an “adventure”
 as opposed to a “responsibility,” launched a campaign encouraging you to “Be all that you can be.” Still, recruitment remained
 sluggish into the 1990s, at which point it had become practically
 1 03
-
--- 124 of 257 --
-
 mercenary in nature, promising scholarships and otherwise bankrolling expensive recruitment practices.
 As mentioned in Chapter 2, when America’s Army was launched
 in 2002 by retired colonel Casey Wardynski, Army recruitment
@@ -3607,13 +3152,6 @@ ever been able to do.
 Meanwhile, these new recruits benefited the Army itself by arriving with some idea about where they belonged in the system, and in
 some cases, with preliminary training. For example, to become an
 1 0 4 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 35: PART II
-
--- 125 of 257 --
-
 Army medic in the game world, players had to go through specialized training. While the training was specific to a virtual reality,
 one player, Paxton Galvanek, saved lives when he successfully triaged the scene of a car accident after he had served as a medic in the
 game. He had no previous medical training or experience.
@@ -3635,9 +3173,6 @@ Warning: You will have to be able to answer a series of questions at the end of 
 Start your clock now!
 GAMIFY YOUR READ
 R E I M AG I N I N G R EC RU I T M E N T, T RA I N I N G, A N D D EV E LO P M E N T ❯❯❯ 1 0 5
-
--- 126 of 257 --
-
 led users to another blank page containing another mathematical
 puzzle to solve. If users were successful once more, then they were
 taken to a Google Labs page where they read the following: “One
@@ -3652,7 +3187,7 @@ vested interest in the challenge. The average person would not
 bother to solve—much less figure out—a random mathematical equation placed on a billboard, which is exactly what Google
 wanted: an atypical math enthusiast and problem solver!
 By attracting the right applicants through its billboard challenge,
-Google was able to RealtimeHub off its recruitment efforts with a solid base
+Google was able to kick off its recruitment efforts with a solid base
 of uncommonly qualified candidates. Gamification is so effective as
 a recruitment tool principally because it is capable of helping organizations filter candidates in (and out) at an extraordinary scale, and
 moreover, because gamified recruitment allows the best companies
@@ -3668,9 +3203,6 @@ an algorithm bug in under one minute in front of a Skype audience.
 In December 2011, the challenge had 38 winners. From that pool, 5
 serious candidates were considered for open positions. The entire
 1 0 6 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 127 of 257 --
-
 enterprise cost Quixey a mere $3,800 to find top-notch recruits,
 where by comparison, standard recruiting fees would have easily
 exceeded $100,000 using traditional methods.
@@ -3701,13 +3233,6 @@ leading designers sharing their passions and pitfalls—and learn how
 not to make the same mistake twice.
 Rissk aand Reward
 R E I M AG I N I N G R EC RU I T M E N T, T RA I N I N G, A N D D EV E LO P M E N T ❯❯❯ 1 07
-
----
-
-## Sección 36: PART II
-
--- 128 of 257 --
-
 Answer the following questions:
 What company used a puzzle on a billboard to attract new ➤
 recruits?
@@ -3735,9 +3260,6 @@ about where they might fit in after college. Younger potential job
 candidates are interested in flexibility and choice in terms of when
 and how they work. There is less interest in traditional working
 1 0 8 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 129 of 257 --
-
 environments, sitting at a desk, working their way up the corporate
 ladder. Younger recruits expect to achieve as much meaning in their
 working life as they have in their lives outside the office. And for
@@ -3769,9 +3291,6 @@ the way L’Oréal recruited by giving people the opportunity to find
 a deeper understanding about what they want to do—so that when
 they arrive to do it, they are better suited to the job.
 R E I M AG I N I N G R EC RU I T M E N T, T RA I N I N G, A N D D EV E LO P M E N T ❯❯❯ 1 0 9
-
--- 130 of 257 --
-
 Even before the site for the Reveal game launched, more than
 21,000 people had already signed up to take part with hundreds
 more throwing in their hats every day, according to TMP Worldwide. It was no wonder that Reveal was such a success—L’Oréal had
@@ -3780,9 +3299,6 @@ even before creating Reveal. All the way back in 1993 it had launched
 FIGURE 6.1 L’Oréal Reveal is a recruitment game designed for university
 graduates to learn about the cosmetics industry.
 1 1 0 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 131 of 257 --
-
 a real-world competition to assess the skill sets of the company’s
 most serious young recruits and biggest fans. The company called
 the game Brandstorm, and it was designed to not only recruit university students but to recruit them from all over the world.
@@ -3807,9 +3323,6 @@ Recruitment with Real-World Games—see if you can beat your
 own best time!
 GAMIFY YOUR READ
 R E I M AG I N I N G R EC RU I T M E N T, T RA I N I N G, A N D D EV E LO P M E N T ❯❯❯ 1 1 1
-
--- 132 of 257 --
-
 Brandstorm was designed with the intention of creating a forum
 for the best young minds in marketing to rise to the top. But as a
 by-product, it gave the company an opportunity to interact with
@@ -3843,13 +3356,6 @@ who are of particular importance in a global market—something
 that as more and more industries go global is a challenge in and
 of itself.
 1 1 2 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 37: PART II
-
--- 133 of 257 --
-
 Gamifying an Introduction to Your Employee
 Base: Marriott Hotels and Domino’s Pizza
 Using gamification to recruit engineers, technology experts, and
@@ -3875,9 +3381,6 @@ your best score and share your opinions about gamified enterprises by accessing 
 gamrev.com.
 GAMIFY YOUR READ
 R E I M AG I N I N G R EC RU I T M E N T, T RA I N I N G, A N D D EV E LO P M E N T ❯❯❯ 1 1 3
-
--- 134 of 257 --
-
 The hospitality industry is no exception. Food delivery giant
 Domino’s Pizza had long suffered from a famously poor hiring
 system. Tens of thousands of annual applications were generally
@@ -3909,9 +3412,6 @@ what it felt was its branding issue. In some parts of the world,
 especially China and India where the hotel industry had only
 just begun to explode, the culture of western business hospitality
 1 1 4 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 135 of 257 --
-
 remained relatively unknown. Moreover, there were few in the
 potential employee pool who had any previous relevant experience. My Marriott Hotel was designed as a game not only to attract
 a younger generation but also to help bolster the company’s image,
@@ -3944,9 +3444,6 @@ Why did they want it? And how could the servers contextualize
 all of this when a Coke, at least where they came from, frequently
 cost more than a day’s wage?
 R E I M AG I N I N G R EC RU I T M E N T, T RA I N I N G, A N D D EV E LO P M E N T ❯❯❯ 1 1 5
-
--- 136 of 257 --
-
 In an article by Alexandra Guadagno for Human Resources,
 David Kippen, CEO of Evviva, the firm that designed My Marriott
 Hotel, recalled a conversation with a hotel manager in Beijing. The
@@ -3975,14 +3472,8 @@ the city hosting the conference or who are worried about the missed
 work back at the office. The employees from generations X and Y
 as well as the up-and-coming millennials are often disinterested in
 traditional methods of information dissemination, growing easily
-distracted if the contact lacks meaning or, to some degree, enter1 1 6 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 38: PART II
-
--- 137 of 257 --
-
+distracted if the contact lacks meaning or, to some degree, enter-
+1 1 6 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
 tainment value. Plus, how much can people truly take away from
 a training experience when they are bored, tired, or just don’t care?
 Training is central to any business. An underprepared staff is
@@ -4015,9 +3506,6 @@ the issue of hospital efficiency becomes ever more critical.
 In order to help make hospital management more efficient,
 General Electric unveiled a virtual interactive experience called
 R E I M AG I N I N G R EC RU I T M E N T, T RA I N I N G, A N D D EV E LO P M E N T ❯❯❯ 1 1 7
-
--- 138 of 257 --
-
 Patient Shuffle in 2010. Long a front-runner in healthcare technology and process, GE designed the game as a way to demonstrate its
 thought leadership. The game’s concept is built on a simple premise: health professionals—including nurses and doctors—don’t viscerally understand the challenges of running an emergency room
 and admissions process from an efficiency perspective.
@@ -4046,9 +3534,6 @@ documented—they are playing. And it isn’t only hospital staff that
 is playing games that mirror their real-life work. Trends show
 mothers of small children enjoying virtual baby-nursing games
 1 1 8 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 139 of 257 --
-
 and U.S. Marines maintaining a well-publicized love affair with
 war games like Call of Duty and Modern Warfare. Perhaps it’s a
 love of the job or it is simply a comfort zone in which people want
@@ -4081,13 +3566,6 @@ not all games make useful training tools. Video games, with their
 requirement for active participation, are more efficient and better
 performers across the board than alternatives.
 R E I M AG I N I N G R EC RU I T M E N T, T RA I N I N G, A N D D EV E LO P M E N T ❯❯❯ 1 1 9
-
----
-
-## Sección 39: PART II
-
--- 140 of 257 --
-
 In 2007, the technology company Sun Microsystems rolled out
 two active training tools for new hires called Rise of the Shadow
 Specters and Dawn of the Shadow Specters. The tech company set
@@ -4114,12 +3592,10 @@ enough that anyone would want to spend an hour (or more) with
 it—something we did on multiple occasions—you know . . . for
 research.
 Despite fanciful names and descriptions that come right out of
-a Hollywood plot, Rise and Dawn of the Shadow Specters are accomPlay Rise of the Shadow Specters by downloading The Gamification
+a Hollywood plot, Rise and Dawn of the Shadow Specters are accom-
+Play Rise of the Shadow Specters by downloading The Gamification
 Revolution app at http://gamrev.com.
 1 20 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 141 of 257 --
-
 plishing an important and valuable end result. Each has met three
 out of three of its goals. Players feel greater alignment with the
 company. They have reported the retention of “a decent amount of
@@ -4152,9 +3628,6 @@ in this chapter.
 The system offers users four options as users approach a new
 learning experience:
 R E I M AG I N I N G R EC RU I T M E N T, T RA I N I N G, A N D D EV E LO P M E N T ❯❯❯ 1 2 1
-
--- 142 of 257 --
-
 The library. ➤ Here users will find all the information they need
 to master the training. It includes data, videos, documents,
 and any other preexisting collected materials that the users
@@ -4185,9 +3658,6 @@ A young recruit, formerly a classics major at a liberal arts college, takes a jo
 more familiar with Dionysus than Diovan, more familiar with Ajax
 than Avonex. Now suddenly she has to be able to differentiate
 1 22 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 143 of 257 --
-
 between a complicated list of prescription drugs and their active
 ingredients.
 Training employees can sometimes be as difficult as recruiting
@@ -4220,13 +3690,6 @@ reported that their staff found the game to be a useful training
 tool with players deeming it a fun way to learn. The company
 reported that their reps were able to successfully disseminate difficult concepts including the high-science and clinical aspects of
 R E I M AG I N I N G R EC RU I T M E N T, T RA I N I N G, A N D D EV E LO P M E N T ❯❯❯ 1 23
-
----
-
-## Sección 40: PART II
-
--- 144 of 257 --
-
 the medication. Initially the game didn’t promise prizes. But as it
 steadily grew in success, company leaders began offering prizes to
 high scorers, quickly prompting even more interest in the program
@@ -4254,9 +3717,6 @@ like that, the possibilities are endless.
 —Gabe Zichermann
 Trainiing for Peripheral Knowledge
 1 24 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 145 of 257 --
-
 game of hangman at the end of English class or a tag team race to
 solve equations in math. Most of us probably wished those could
 have been more the rule of the day and less the exception to it.
@@ -4273,9 +3733,6 @@ which they can investigate fraudulent behavior, gather evidence,
 FIGURE 6.2 The Procurement Fraud Indicators Game allows players to
 form hypotheses about a crime during an extensive fraud investigation.
 R E I M AG I N I N G R EC RU I T M E N T, T RA I N I N G, A N D D EV E LO P M E N T ❯❯❯ 1 25
-
--- 146 of 257 --
-
 interview suspects, and make conclusions about the committed
 fraud. Winning the game involves gathering the right clues and
 pursuing the correct theory about each suspect.
@@ -4304,8 +3761,6 @@ health and wellness in their human capital strategy. Gamification
 is having an outsized effect in that vertical too—lowering absenteeism and healthcare costs, improving satisfaction, and ultimately
 driving performance.
 1 26 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 147 of 257 --
 PROPELLING
 PERSONNEL TO HEALTH
 AND WELLNESS
@@ -4323,9 +3778,6 @@ You must stand while reading. We know this might be awkward
 if you’re on a plane . . . but it’s good for you. So, get up!
 GAMIFY YOUR READ
 1 27
-
--- 148 of 257 --
-
 that the perks of high status outweigh its disadvantages—statistically adding years to your life.
 The most compelling of this evidence began to take form in
 1985, when a group of British scientists began a long-term study of
@@ -4358,13 +3810,6 @@ What they found was shocking. By accounting for even more external data, researc
 rank and status—were even more significant predictors of health
 and wellness than things like fitness, smoking, and eating habits.
 1 28 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 41: PART II
-
--- 149 of 257 --
-
 In other words, low-status employees despite an otherwise healthy
 lifestyle exhibited an increased risk of symptoms of stress-induced
 wear and tear on their bodies.
@@ -4394,9 +3839,6 @@ Level 2: The Orange Level
 You can lean, but you still can’t sit.
 GAMIFY YOUR READ
 P RO P E L L I N G P E R S O N N E L TO H E A LT H A N D W E L L N ESS ❯❯❯ 1 29
-
--- 150 of 257 --
-
 But while it might be difficult to earn status readily in the real
 world, there is one place where gaining status is within everyone’s
 grasp—and that’s in the world of games. Proof is rapidly coming to
@@ -4430,10 +3872,8 @@ status opportunities for everyone just won’t prove a viable solution
 to this health crisis. But smart organizations have begun leveraging
 the power of gamification to create healthier workforces.
 Whether they focus on stress reduction or positive behavior
-change, this chapter’s examples help contextualize and inspire dif1 30 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 151 of 257 --
-
+change, this chapter’s examples help contextualize and inspire dif-
+1 30 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
 ferent ways of thinking about and affecting change in the health
 and wellness of our employees.
 People are status driven and status oriented. The Whitehall
@@ -4460,9 +3900,6 @@ You may finally sit, but sit up straight, book up in front of your
 eyes!
 GAMIFY YOUR READ
 P RO P E L L I N G P E R S O N N E L TO H E A LT H A N D W E L L N ESS ❯❯❯ 1 31
-
--- 152 of 257 --
-
 associated with what can be accomplished or won in a state of play.
 Unlike bad stress, eustress is actually good for the body. After
 a burst of it, the body settles rapidly back to stasis, much like a
@@ -4495,13 +3932,6 @@ is known to encourage a number of positive behaviors including
 relaxation. Even more, it encourages us to want more of it by activating its five known receptors. While this is arguably true for all
 neurotransmitters, in the case of dopamine, it is particularly true.
 1 32 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 42: PART II
-
--- 153 of 257 --
-
 It is in large part because of this characteristic of dopamine that
 human beings are hardwired evolutionarily to seek challenges and
 overcome them. What’s uniquely interesting about games and the
@@ -4517,9 +3947,6 @@ this for a very long time. The corporate softball tournament is
 FIGURE 7.1 In the dopamine release loop, dopamine is released when
 people challenge themselves to something and then achieve that objective. This causes pleasure and a desire to do the loop again.
 P RO P E L L I N G P E R S O N N E L TO H E A LT H A N D W E L L N ESS ❯❯❯ 1 33
-
--- 154 of 257 --
-
 one example of a great case study of a eustress-promoting activity for team building, camaraderie, stress reduction, and blowing
 off steam. But what if, instead of making that a side event once a
 month, it was part of the whole organization—at every level and
@@ -4545,9 +3972,6 @@ Sit up straight. Read out loud to a friend. If you’re on a plane,
 feel free to skip this one.
 GAMIFY YOUR READ
 1 3 4 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 155 of 257 --
-
 a certain amount of self-satisfaction and self-worth by acquiring
 more gear, raising their experience, and interacting with peers and
 friends. As their satisfaction levels visibly rise, their stress levels
@@ -4575,9 +3999,6 @@ Level 5: The White Level
 Free read; relax and enjoy.
 GAMIFY YOUR READ
 P RO P E L L I N G P E R S O N N E L TO H E A LT H A N D W E L L N ESS ❯❯❯ 1 35
-
--- 156 of 257 --
-
 everyone in the office to see. Or take workaday tasks and gamify
 them—like awarding points and achievements for recycling or
 being on telephone duty—and give employees the opportunity to
@@ -4606,13 +4027,6 @@ employees to work out two times a week. The number was good,
 but not good enough. As management saw users reach a plateau,
 they stepped up the game.
 1 36 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 43: PART II
-
--- 157 of 257 --
-
 The company already had a system in place offering steady
 awards, badges, and prizes to reward employees for any number
 of work-related behaviors. When one of the teams achieved the
@@ -4628,9 +4042,6 @@ Stand up and sit down between every paragraph. Think of it as
 exercise!
 GAMIFY YOUR READ
 P RO P E L L I N G P E R S O N N E L TO H E A LT H A N D W E L L N ESS ❯❯❯ 1 37
-
--- 158 of 257 --
-
 80 percent of Nextjump’s employees were working out regularly.
 Put into perspective, most gyms and clubs whose members pay to
 join expect only 33 percent of them to use their memberships once
@@ -4661,9 +4072,6 @@ are able to accomplish in short periods,” Kim said. “The things we
 have done to motivate our employees to exercise has enabled them
 to do more faster.”
 1 38 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 159 of 257 --
-
 Similarly, in an industry like technology where skilled employees are in demand, Nextjump’s employee turnover is well below
 average, loyalty is extraordinary, and employee satisfaction is high.
 It is the company’s belief that if you can engage and motivate your
@@ -4695,9 +4103,6 @@ don’t feed it to your guests.”
 Charlie Kim is an incredibly inspiring guy—and you can devour
 tons more information about him and his radical management
 P RO P E L L I N G P E R S O N N E L TO H E A LT H A N D W E L L N ESS ❯❯❯ 1 39
-
--- 160 of 257 --
-
 style at Nextjump by downloading The Gamification Revolution app
 at http://gamrev.com to start interacting with colleagues and taking
 notes through the power of games.
@@ -4725,13 +4130,6 @@ object you can find. Once you’re there, touch it, turn around,
 and come back.
 GAMIFY YOUR READ
 1 4 0 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 44: PART II
-
--- 161 of 257 --
-
 points.” It seems that the success of Keas is proof of the power of
 points to drive healthy employee behavior, though the site does
 use a wide range of game mechanics in its design.
@@ -4759,9 +4157,6 @@ Work.com Zamzee (kids) Sports-Tracker
 Earndit Fitbit
 Healthy Apps
 P RO P E L L I N G P E R S O N N E L TO H E A LT H A N D W E L L N ESS ❯❯❯ 1 41
-
--- 162 of 257 --
-
 The Biggest Loser
 In October 2004, NBC premiered a new reality TV show called The
 Biggest Loser that featured a group of obese contestants competing to
@@ -4793,9 +4188,6 @@ in offices around the country. They are a good way to promote
 health and wellness over a period of time. What’s important to note
 is that the short-term results of these games speak for themselves
 1 42 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 163 of 257 --
-
 in terms of the power of game mechanics to motivate not just
 weight loss but dramatic lifestyle changes. Even in Europe, where
 weight loss has historically been less of a concern, companies offer
@@ -4824,9 +4216,6 @@ Visit The Gamification Revolution app at http://gamrev.com to find
 resources and more information for gamifying your employee wellness, including a quick list of URLs and Twitter handles for all the
 companies mentioned here.
 P RO P E L L I N G P E R S O N N E L TO H E A LT H A N D W E L L N ESS ❯❯❯ 1 4 3
-
--- 164 of 257 --
-
 By taking note of the impact your games are having, you can
 control the way your employees respond to them. Focused tactics
 like encouraging people to race toward specific weight loss and
@@ -4854,13 +4243,6 @@ As you read this section, be good to yourself and bask in the
 glow of your accomplishment!
 GAMIFY YOUR READ
 1 4 4 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 45: PART II
-
--- 165 of 257 --
-
 health and wellness provides nearly limitless benefits to your organization’s cohesion, employee satisfaction, and performance.
 But in terms of the employee experience, gamification is having a profound effect on its every aspect. Human capital managers
 are incorporating the perks of games into all aspects of employee
@@ -4882,26 +4264,15 @@ results. Let’s look more closely at the other side of The Gamification Revolut
 patterns that bring all of these strategies together.
 P RO P E L L I N G P E R S O N N E L TO H E A LT H A N D W E L L N ESS ❯❯❯ 1 45
 
--- 166 of 257 --
+---
 
-This page intentionally left blank
-
--- 167 of 257 --
+## Sección 9: PART III [Entropy: 0.445]
 
 CONNECTING,
 ENGAGING,
 AND LEVERAGING YOUR
 CUSTOMER BASE
 
----
-
-## Sección 46: PART III
-
--- 168 of 257 --
-
-This page intentionally left blank
-
--- 169 of 257 --
 CUTTING THROUGH
 THE CONSUMER NOISE
 Around the turn of the millennium, a new app was launched.
@@ -4919,9 +4290,6 @@ more, your business is primed and ready to snag the customers
 of your dreams!
 GAMIFY YOUR READ
 1 49
-
--- 170 of 257 --
-
 era. Using their computers and mobile phones, via SMS technology,
 users “checked in,” indicating their presence at various locations.
 By using the application, users appeared on a list that indicated
@@ -4953,9 +4321,6 @@ but soon marketing as a whole: they added gamification.
 By incentivizing the behavior of the check-in, the app went from
 inspiring serendipity to creating a frenzy. Foursquare, as Dodgeball
 1 5 0 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 171 of 257 --
-
 2 would be known, was launched in 2009 to much fanfare (Figure
 8.1). The new system quantified each check-in, showing the users’
 progress at discovering the world around them. Also, to give the
@@ -4991,9 +4356,6 @@ FIGURE 8.1 Foursquare, a locationbased game, allows users, through
 check-ins, to unlock badges and work
 toward becoming the mayor.
 CU T T I N G T H RO U G H T H E CO N S U M E R N O I S E ❯❯❯ 1 51
-
--- 172 of 257 --
-
 drink or VIP service. A 2010 article in the New York Times, “Who
 Elected Me Mayor? I Did,” suggested the Foursquare mayorship
 had taken on a life of its own. Users were playfully fighting over
@@ -5021,13 +4383,6 @@ If you can answer this question, give yourself 1 point. If not,
 score 0.
 GAMIFY YOUR READ
 1 52 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 47: PART III
-
--- 173 of 257 --
-
 The Lesson from Foursquare’s Experience
 Foursquare’s overall usage continues to grow, but many long-term
 users have become disenchanted with its services. This has led to
@@ -5056,9 +4411,6 @@ engagement it ultimately engendered but even more so for the context in which it
 smartphone ownership in North America was at only 6 million.
 After that, the number of smartphone owners spiked: Morgan Stanley research has shown that, by the time Foursquare was revealed
 CU T T I N G T H RO U G H T H E CO N S U M E R N O I S E ❯❯❯ 1 53
-
--- 174 of 257 --
-
 (and Dodgeball killed) in 2009, handset makers had shipped over
 51 million units. And only two short years later, smartphone shipments were outpacing PC sales, and the majority of phones in use
 were tipping in favor of iPhones and Androids—leaving former
@@ -5086,9 +4438,6 @@ are about your business, what would they say?
 Give yourself 1 point if you can answer this question.
 GAMIFY YOUR READ
 1 5 4 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 175 of 257 --
-
 sold Psych and NBC logo items for cash. Within weeks of the
 launch, online activity around the show increased over 100 percent, with key engagement metrics to match. Sales grew more
 than 50 percent at the online store as well, and the show’s incremental web ad inventory was then used to drive further advertising revenue.
@@ -5098,9 +4447,6 @@ leaving some room for unexpected pleasure, the system becomes
 FIGURE 8.2 NBC/Universal’s USA Network gamified the TV show Psych
 to create engagement with the fans.
 CU T T I N G T H RO U G H T H E CO N S U M E R N O I S E ❯❯❯ 1 55
-
--- 176 of 257 --
-
 exponentially more compelling. Of course, the underlying emotional connection is quite simple: fun sells.
 Luckily, the “breakthrough” lessons of Psych and Foursquare
 can be repeated—and many organizations have consequently
@@ -5125,9 +4471,6 @@ could do better?
 If you can’t answer this question, you don’t get any points.
 GAMIFY YOUR READ
 1 5 6 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 177 of 257 --
-
 Incorporate Surprise and Delight
 While badges are common in most gamified apps and experiences, users don’t know in advance all the badges they might earn
 on Foursquare. Typically, players get badges without forewarning
@@ -5160,13 +4503,6 @@ implemented would succeed in engaging consumers. Without the
 iPhone, many functions (such as badges and simple check-ins)
 wouldn’t have been possible, it’s true. But in the era of the iPhone
 CU T T I N G T H RO U G H T H E CO N S U M E R N O I S E ❯❯❯ 1 57
-
----
-
-## Sección 48: PART III
-
--- 178 of 257 --
-
 and the billions of downloaded games like Angry Birds, the market
 for user attention is more heated than ever. For Foursquare to break
 through in that environment, it couldn’t just be novel or newsworthy. It wasn’t enough that Foursquare founders Crowley and Selvadurai had lots of connected friends who were keen to stay in touch
@@ -5190,9 +4526,6 @@ Give yourself a point for being able to conjure an answer to this
 question.
 GAMIFY YOUR READ
 1 58 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 179 of 257 --
-
 technology that relied heavily on games called Nike+. Suddenly
 when individuals went for a run, they could track the number of
 steps they took, the calories they burned, and the routes they ran.
@@ -5226,9 +4559,6 @@ of rapid feedback gamification system. Driving people to greatness fits well wit
 over 5 million users who had run a collective 450 million miles.
 To put that into perspective, the Sporting Goods Manufacturers
 CU T T I N G T H RO U G H T H E CO N S U M E R N O I S E ❯❯❯ 1 59
-
--- 180 of 257 --
-
 Association (SGMA) has estimated that there are only 9 million
 frequent runners in America, averaging over 110 runs per year. But
 Nike’s major market is composed of the 38 million Americans who
@@ -5254,9 +4584,6 @@ Give yourself a point, as always, if you can answer this
 question.
 GAMIFY YOUR READ
 1 6 0 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 181 of 257 --
-
 level up. In essence, the company has made gamification core to its
 product design and global marketing strategy.
 On a deeper level, the reason why Nike+ and the FuelBand have
@@ -5282,13 +4609,6 @@ Just do it. If you can answer this question, give yourself 1
 point.
 GAMIFY YOUR READ
 CU T T I N G T H RO U G H T H E CO N S U M E R N O I S E ❯❯❯ 1 61
-
----
-
-## Sección 49: PART III
-
--- 182 of 257 --
-
 But in the run-up to each hot-ticket launch event, Apple PR
 began to use subtle gamification to signal (or toy with) the media
 in attendance. Although the company was famously tight-lipped
@@ -5309,16 +4629,14 @@ system as well as the date of the launch.
 Users who received the invitation or who were otherwise lucky
 enough to see one in advance of the launch helped build buzz for the
 product by discussing and attempting to disseminate the clues in
-public forums. Today, now that people know to look, they are looking hard. Before a launch on September 12, 2012, a simple announceQuestion 7
+public forums. Today, now that people know to look, they are looking hard. Before a launch on September 12, 2012, a simple announce-
+Question 7
 What three things are your customers most optimistic or
 excited about in their lives?
 You’ll earn 0 points if you can’t answer this question, 1 point if
 you can.
 GAMIFY YOUR READ
 1 62 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 183 of 257 --
-
 ment went out featuring the words “It’s almost here” above a large
 black number 12 with a shadowy image of the number 5 below
 it. Speculation grew like wildfire around the Internet with people
@@ -5351,9 +4669,6 @@ the game that sunny day, making it the single biggest promotional
 event for the company in its history. Additionally, hundreds of thousands more women followed along remotely (only Londoners could
 play), driven by tremendous buzz and social media support.
 CU T T I N G T H RO U G H T H E CO N S U M E R N O I S E ❯❯❯ 1 6 3
-
--- 184 of 257 --
-
 It’s believed that Jimmy Choo spent well under $100,000 to run
 this promotion, while driving millions in earned media and the
 adoration and enthusiasm of female fans worldwide.
@@ -5386,13 +4701,6 @@ consume daily, upload photos of interesting food combinations,
 and take a series of daily polls. Players are awarded with points,
 badges, Tabasco brand–related prizes, and titles like Ambassador
 1 6 4 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 50: PART III
-
--- 185 of 257 --
-
 and Mayor. But the game is expanding. In one challenge the company is calling the Tabasco National Anthem, users will engage in
 a “never-ending video” of people handing off a bottle of Tabasco
 sauce from person to person.
@@ -5418,9 +4726,6 @@ Give yourself 0 points if this answer just isn’t coming to you,
 1 point if you got it!
 GAMIFY YOUR READ
 CU T T I N G T H RO U G H T H E CO N S U M E R N O I S E ❯❯❯ 1 65
-
--- 186 of 257 --
-
 from the ingredients described and offered by the company. The
 bars are touted as being “all natural” and healthier than other market options because they are made without high amounts of saturated fat or food processing.
 From the outset, the company’s user feedback was tremendous.
@@ -5449,9 +4754,6 @@ For the Element Bars, Miller decided that the best way to strategize was to pull
 Because sites like Facebook and Twitter don’t actually show everything everyone posts in everyone’s feeds every time, Element Bars
 figured out that the company had to generate a lot of traffic in a
 1 6 6 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 187 of 257 --
-
 short amount of time to get the most visibility. It was this visibility
 alone that made the game financially viable, especially considering that the company had a product that could be turned into a
 prize.
@@ -5485,9 +4787,6 @@ restaurant-owning game on Facebook, new models have emerged
 that put social requests directly in the line of game play. In other
 words, getting people to play the game is part of the game. For
 CU T T I N G T H RO U G H T H E CO N S U M E R N O I S E ❯❯❯ 1 67
-
--- 188 of 257 --
-
 example, when players need to progress to the next level in Cafe
 World, they are prompted to recruit friends to play. If their friends
 accept, the players receive virtual currency or other items that are
@@ -5520,13 +4819,6 @@ saw TurboTax messages—also rose from just around 2,500 to over
 The fact that the app promised a charitable donation proved a
 big part of its success, demonstrating that users will make an extra
 1 6 8 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
----
-
-## Sección 51: PART III
-
--- 189 of 257 --
-
 effort to support charitable causes with their time. Designed by
 Vitrue, the TurboTax game also cleverly showed the total number
 of toys being donated by the company by displaying a counter.
@@ -5552,9 +4844,6 @@ customers achieve mastery in their lives with your product?
 Take a point if you answered this question!
 GAMIFY YOUR READ
 CU T T I N G T H RO U G H T H E CO N S U M E R N O I S E ❯❯❯ 1 69
-
--- 190 of 257 --
-
 to the orders of their leader, completing challenges, including donning Joker-like face paint and photographing themselves in front
 of landmarks worldwide.
 Helmed by former Disney imagineer and game design veteran
@@ -5586,10 +4875,8 @@ But most of all, that image changed the conversation, it increased
 engagement, and it left players wondering, “What’s next?”
 The San Diego scavenger hunt intentionally coincided with
 Comic-Con. Using 10,000 marked dollar bills, players were given
-a location from which to begin. Once there, an airplane flew over1 70 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 191 of 257 --
-
+a location from which to begin. Once there, an airplane flew over-
+1 70 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
 head writing a phone number in the sky. Players called the number to find out their next instruction, which included painting
 themselves in the likeness of the Joker. Face paints were handed
 out and players complied. At the end of the hunt, one lucky player
@@ -5623,13 +4910,6 @@ garner attention. Batman, with his cool toys and his skills with his
 bat weapons, was all that was needed. But today we are inundated
 with so much information, so many things to do with our free
 CU T T I N G T H RO U G H T H E CO N S U M E R N O I S E ❯❯❯ 1 7 1
-
----
-
-## Sección 52: PART III
-
--- 192 of 257 --
-
 time, and so little free time to begin with, where do we look? Or
 even more important, how do you get us to look?
 For years people have argued which superhero would win in
@@ -5638,7 +4918,7 @@ powerful tool for cutting through the noise and connecting with
 audiences, gamification can be used with a wide range of design
 approaches and strategies. Critically, you must have a great product
 and story to tell about it. Place an emphasis on fun that leverages
-surprise and delight appropriately, while ensuring integral sociability at every turn, and you can help RealtimeHub-start your customer
+surprise and delight appropriately, while ensuring integral sociability at every turn, and you can help kick-start your customer
 engagement process. Once that’s under way, your focus can—and
 should—turn to building lasting engagement.
 Point Game: Follow Your Dreams!
@@ -5651,8 +4931,6 @@ the book with others, and access key online resources in a single
 step.
 GAMIFY YOUR READ
 1 72 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 193 of 257 --
 SUSTAINING
 LONG -TERM CUSTOMER
 ENGAGEMENT
@@ -5673,9 +4951,6 @@ narrative expansion, especially if players teamed up.
 The early spike in player onboarding made it the biggest launch
 and fastest growing MMOG in history. But after peaking at nearly 2
 1 73
-
--- 194 of 257 --
-
 million subscribers, a scant 60 days later, traffic began to fall. Within
 eight months usage dropped below the game’s opening 1 million
 number, impacting Electronic Arts’ financial situation significantly
@@ -5691,7 +4966,8 @@ of all time, which lost 1 million subscribers in a single month in
 in hundreds of millions, or billions, of players—have seen their
 fortunes swing by huge variants as well.
 The question on every product or marketing executive’s mind
-immediately is, of course, “Why?” Unsurprisingly, game indusSolve the Sentence Anagram
+immediately is, of course, “Why?” Unsurprisingly, game indus-
+Solve the Sentence Anagram
 Collect all the words in boldface type scattered throughout this
 chapter (chapter headings don’t count). Then rearrange those
 words to answer this question:
@@ -5703,9 +4979,6 @@ be downloaded at http://gamrev.com, or verify the answer in the
 answer key at the back of the book.
 GAMIFY YOUR READ
 1 74 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 195 of 257 --
-
 try execs wonder the same thing. There are no easy answers, and
 many different factors play into the equation including changing
 tastes, perceived value for money, and social congregation around
@@ -5737,13 +5010,6 @@ Doing it yields a unit of currency that—when done enough—can
 be used to advance more substantially in a game. Typically, this
 grind might be something like harvesting a plant or mining a
 S U STA I N I N G LO N G -T E R M CU STO M E R E N GAG E M E N T ❯❯❯ 1 75
-
----
-
-## Sección 53: PART III
-
--- 196 of 257 --
-
 metal as seen in many role-playing games. In the workaday world,
 something like punching your time clock, answering customer
 support calls, or holding your weekly standing meeting might
@@ -5774,9 +5040,6 @@ Build an Engagement Loop
 Behind every successful consumer app, there is a thoughtful, welldesigned engagement loop. Although it may seem trivial, the design
 and execution of this core element can determine success or failure
 1 76 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 197 of 257 --
-
 for your organization’s engagement strategy. But what exactly is an
 engagement loop, and why does it matter so much?
 As we’ve established throughout this book, consumers are
@@ -5794,9 +5057,6 @@ Instagram, a highly successful, viral product. The company, which
 FIGURE 9.1 For the photosharing social network Instagram, the viral loop
 driving user engagement and new user acquisition might look like this.
 S U STA I N I N G LO N G -T E R M CU STO M E R E N GAG E M E N T ❯❯❯ 1 77
-
--- 198 of 257 --
-
 was founded by Mike Krieger and Kevin Systrom in 2010, raised
 a total of $57 million in venture capital and was sold to Facebook
 for $1 billion in April 2012. The site allows users to easily take a
@@ -5826,10 +5086,8 @@ tight it is. Certainly, the app would not have had the same level
 of success were it not for an appealing user experience. However,
 because the engagement process was well integrated into the experience, users were brought back to the app in a continuous cycle
 of content consumption and creation that activated their intrinsic
-desire to engage with others. This facilitates both customer acqui1 78 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 199 of 257 --
-
+desire to engage with others. This facilitates both customer acqui-
+1 78 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
 sition and retention and really helps drive their content creation
 engine—a key element in a successful gamification strategy.
 Keep Content Fresh
@@ -5858,21 +5116,11 @@ out all the other engagement programs we discuss in more detail
 while you analyze your favorites.
 Melisssa Chow’s Like-A-Hug
 S U STA I N I N G LO N G -T E R M CU STO M E R E N GAG E M E N T ❯❯❯ 1 79
-
----
-
-## Sección 54: PART III
-
--- 200 of 257 --
-
 you draw an image that represents a phrase or concept. Your partner then has to guess what your drawing means. The app skyrocketed to the top of the world game charts shortly after its release,
 FIGURE 9.2 Draw Something—the collaborative and social blockbuster
 game—asks one player to draw a clue and the other to guess what’s in the
 picture.
 1 8 0 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
-
--- 201 of 257 --
-
 becoming an international sensation. It was the coup de grace for
 the company, which had spent the better part of five years churning through socially networked flash minigames—or short video
 games, often a game within a larger video game—on its site.
@@ -5889,7 +5137,1293 @@ became critical to find a way for users to generate interesting experiences for 
 seemed ideal. The principal ongoing expense of the game was to
 create new clues for users to draw, which was a fairly cheap and
 easy prospect. The same clue could even be replayed with different
-friends since players draw differ
+friends since players draw differently. It was this particular endless
+and expansive interaction that rocketed the company to fame and
+fortune.
+Shortly after the Zynga acquisition, Draw Something saw the
+same fate as the MMOGs Star Wars Old Republic and World of Warcraft mentioned earlier. After doing a great job of generating initial buzz and engagement, usage began to drop off. Though Draw
+Something had delivered many dynamic innovations, there was
+still what might be called a freshness gap—that is, the company
+failed to deliver new kinds of interactions. Though the pictures
+and clues evolved, the core game play stayed the same. Soon, the
+tightly bound social networks that had propelled the game forward
+in the first place began to fray—and as your friends stop playing,
+so do you.
+S U STA I N I N G LO N G -T E R M CU STO M E R E N GAG E M E N T ❯❯❯ 1 8 1
+The key element to remember is that for users to return every
+hour or day or week or month, new, surprising, and interesting
+activities and interactions must be regularly available. Fresh content alone isn’t enough. Consider how most engagement systems—
+like loyalty programs—deal with introducing new mechanics.
+In the decades leading up to the 2010s, most loyalty programs
+made small program tweaks—on average—only once every few
+years. In the past decade, that pace of change has begun to increase
+rapidly. From 2011 to 2012 alone, as many as a third of major travel
+loyalty programs in the United States made significant changes to
+their programs. These included new top-tier status levels (Starwood) and ways to earn points, as well as special recognition for
+ultra-long-term fliers (United Airlines). United Airlines, for example, now officially recognizes 2- and 3-million-mile fliers with
+codified benefits that were previously kept secret—a reflection of
+the program’s longevity.
+Historically, many of these changes were made to improve
+the operating economics of the programs themselves. Companies
+avoided making the changes for fear of alienating their best customers and creating market tension and confusion. Today, the act
+of making changes has become as important as the changes themselves. Tweaks surely give users and the press something to talk
+about. But they also create new and exciting challenges for players
+to engage with, keeping the game fresh well beyond its sell-by date.
+Tied to most of these structural changes, of course, are shifts in
+incentives designed to drive specific behavior.
+Use Meaningful Incentives
+By maintaining or creating incentives and rewards that are meaningful, players are more likely to play and keep playing. Nowhere is
+this truer than when dealing with long-term customer engagement
+and retention. A prime example has been the recent transformation of the waste management industry by some highly successful,
+long-term incentive designs.
+1 82 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+RecycleBank, founded in 2004, has raised over $80 million to
+prove a simple idea: if consumers are given a gamified incentive
+to recycle, their rate of recycling will increase. Since that time, the
+company has helped over 300 communities and 3 million households divert hundreds of millions of pounds of recyclables away
+from landfills.
+The consumer experience is simple: sign up and receive a recycling bin with a special radio frequency identification (RFID) tag.
+The bin is weighed at every collection and, based on the volume of
+recycling, a certain number of “recycling bucks” are deposited in
+the customer’s account. This virtual currency can then be redeemed
+for merchandise, discounts, or charitable contributions through the
+company’s thousands of merchandising partners, which are also,
+cleverly, the sources of funding for the incentives (Figure 9.3).
+What RecycleBank has learned is that ongoing engagement
+requires the right incentives—both tangible and emotional. The
+FIGURE 9.3 RecycleBank gives consumers points and rewards for recycling using innovative RFID technologies and brand partnerships.
+S U STA I N I N G LO N G -T E R M CU STO M E R E N GAG E M E N T ❯❯❯ 1 8 3
+company takes great care to ensure that its partners are closely
+aligned with RecycleBank’s target demographic: mothers in their
+early forties and younger. By maintaining a continuous stream of
+new redemption options, the system remains interesting and helps
+to ensure that the main behavior (recycling) continues to be a user
+priority.
+Beyond discounts and free merchandise, RecycleBank’s research
+discovered that its consumers were seeking an opportunity to connect with others as well as challenge themselves. The company
+has used this knowledge to ensure that rewards are aligned with
+those interests, delivering experiences that allow moms to connect
+with their kids through RecycleBank and also to challenge themselves (and their neighbors) to contests—all for bragging rights. For
+example, RecycleBank ran a Green Your Home game that challenged
+families to reduce their ecofootprints and submit photos to prove
+it. Those photos were shared socially and judged against others
+from the community. Prizes including a valuable home makeover
+helped drive participation, but it was the satisfaction of becoming
+“greener” than your neighbor that kept people playing.
+Both physical and virtual rewards need to activate an emotional
+need for gratification in addition to—and sometimes instead of—
+the need for cash-value prizes.
+Make It Personal and Design It for Mastery
+The most important element of RecycleBank’s success is how well
+it ties into the individual’s desire for mastery and a sense of progress—in other words, the company provides achievable goals with
+opportunities for meaningful advancement. For people who care
+about the environment, RecycleBank offers that critical sense of
+agency—or the sense that you have control over your destiny. It
+helps foster this through instant feedback in the form of statistics
+indicating how much one small behavioral change can impact the
+world. For example, the company shares with its users just how
+many tons of recycling you, your community, and others in the
+1 8 4 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+RecycleBank community at large have diverted from landfills. The
+company does what day-to-day environmentally conscious actions
+cannot otherwise do: deliver tangible evidence of progress. No doubt
+this contributes handily to the 90 percent recycling rates the company has been able to achieve in some jurisdictions.
+That sense of progress and mastery is considered by many
+theorists to be central to what makes gamified experiences—and
+indeed, life—fun. The conceit is that we all have a desire to achieve
+mastery over various areas of our life, and systems that allow us to
+do that will be perceived as fun or particularly meaningful. Additionally, the more the system can show us the progress we’ve made
+along the track to our goal, the more likely we are to stick to it.
+Most gamified fitness systems, such as Nike+ (as discussed in
+detail in Chapter 8), understand this particularly well—and they
+use the concept of progression to mastery effectively to drive longterm engagement with customers by tracking their ongoing fitness
+accomplishments.
+Another fitness solution that has had a particularly outsized
+effect is Zamzee, and its use of feedback and progression to mastery
+has been extraordinary.
+The company, incubated in HopeLab in the San Francisco Bay
+Area, makes a small accelerometer that you clip to or wear on your
+clothes (Figure 9.4). As you move throughout the day, the Zamzee
+tracks your motion, giving you an estimated number of steps taken
+and distances traveled. This information is available on Zamzee’s
+gamified fitness portal, which is accessible once you plug in your
+device to your computer at the end of the day. There, you can
+see your movement over time, earn points for your actions, and
+redeem them for virtual and physical prizes that matter to you.
+You can even socialize your actions with your friends and see how
+your community is doing.
+The effect of Zamzee’s focus on long-term engagement has paid
+off. The company has demonstrated that it’s been able to get users
+to add the equivalent of one whole marathon to their monthly
+movement using the device and its accompanying service. Over the
+S U STA I N I N G LO N G -T E R M CU STO M E R E N GAG E M E N T ❯❯❯ 1 85
+longer term, the company’s research has indicated that Zamzee was
+able to drive an increase of 59 percent in physical activity among
+kids using the service. What makes the story even more exciting
+is that the targeted user population is children in lower socioeconomic environments—those who are statistically at the highest
+risk for diabetes and other health issues related to obesity and poor
+physical fitness.
+Critically, as kids progress through Zamzee’s system, they can
+see their progress—and that of their friends—shown over the arc
+of their usage. This allows them to really experience what they’ve
+accomplished every time, and the system continuously reminds
+them of the progress they’ve made through stats, badges, and other
+game mechanics.
+To maintain a feeling that you’re making progress—or heading
+toward mastery—is especially difficult to achieve in physical fit-
+FIGURE 9.4 Zamzee’s activity meter tracks kids’ movements, letting
+them compete to see their fitness progress.
+1 8 6 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+ness. The problem is compounded by the fact that it typically takes
+weeks for your body to start showing positive signs of the effect of
+increased movement and reduced weight. Therefore, by providing
+immediate feedback in the form of “minutes moved” (Zamzee’s
+principal metric), the system can offer positive feedback before
+Mother Nature can catch up. Similarly, for any strategy you may
+deploy to get customers engaged over a hump or plateau, it’s especially important that you leverage each of the engagement patterns
+described here. Balancing them the way Zamzee does will yield the
+improved engagement you seek.
+Create Continuous Learning Opportunities
+A more specific aspect of the drive toward mastery is user-driven
+learning. As the options for online education and knowledge proliferate, customers are increasingly interested in learning as an
+activity separate from pure utility. For example, they want to both
+be able to bank online easily and increase their financial literacy.
+Similarly, there has been a marked rise in the demand for language
+education (and multilingualism), driven by the growth of globalization as well as migration. As more and more customers engage
+with new technologies, they’ll want—and need—to learn myriad
+new skills.
+These new online education customers aren’t the same as those
+of yore for whom reading the entire 30-page manual before picking
+up the new camera was par for the course. Too impatient to even
+watch a three-minute training video before using a product, the
+new customers want to try out an offer right away. At the same time,
+they want to be taught the underlying concepts, technologies, and
+ideas so that they can make progress toward their life goals. And
+along the way, they expect positive reinforcement. If your business
+has a pedagogical bent, this becomes even more important.
+So how do you speak to these new customers who demand
+education at every turn? You deliver a gamified learning system
+that creates, sustains, and rewards engagement, like Codecademy.
+S U STA I N I N G LO N G -T E R M CU STO M E R E N GAG E M E N T ❯❯❯ 1 87
+This hot NYC-based start-up is on a mission to help people learn
+how to write software.
+The site, which is backed by some of the biggest venture capitalists in the United States, taught over 1 million people to code
+in under a year—making it one of the biggest science, technology, engineering, and math (STEM) teaching programs in history.
+Codecademy uses the principles of gamification to drive learning,
+including awarding badges, points, and levels.
+Though most software development languages can be accessed
+entirely for free online, Codecademy’s founders realized they needed
+to make the learning process more fun and engaging to achieve
+their objective. So they designed a system that allows people to take
+a course in any of dozens of programming languages, learning how
+to code step-by-step. Anyone can author a course for Codecademy,
+but each unit must adhere to certain guidelines—both for content
+and for gamey-ness. Users receive positive reinforcement throughout (mostly through badges), and they are regularly assessed (note:
+we didn’t say tested) to ensure that they are learning the material.
+What makes their design particularly compelling is that both
+the creators of these gamified lessons and the customers learning from them are part of a contiguous game environment that
+rewards participation. Creators, in particular, are scored on how
+well their students do and how many people use the approach.
+Refinement and novelty are both incentivized, giving lesson creators ample incentive to design a thoughtful grind, keep things
+fresh, tune rewards to the users, define progress, and stay engaged
+throughout.
+Imagine if all modes of learning were designed in a tight loop
+between teachers and students. We’ve all been in a school setting where certain teachers were known as tough, and others as
+easy. But what if we could actually see the outcomes? And better
+still, what if teachers’ performance then acted as a filter for deciding which students got to be in their classes? That’s precisely the
+dynamic that Codecademy engages—and one that has delivered
+unprecedented results.
+1 8 8 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+In other cases, the organization is the “teacher.” Customers
+look up to a brand for knowledge, access, and progress. Whether
+you sell audiophile equipment or you offer tax services or public
+education—all of your customers are trying to learn and grow
+from their relationship with you. You can leverage the lessons of
+Codecademy to engage them and also to create bridges between
+employees and customers.
+You can tie the performance of internal stakeholders to customer
+learning, and you can even make that connection transparent to
+your customers. For example, if you run a financial organization,
+make their literacy a key performance indicator for your organization. Measure this variable, and make their progress critical to
+your strategy. Then make it more fun: let your customers know
+who their teachers are—the team members directly responsible for
+their learning material. Let them form teams and compete to see
+who can do best on various measures of literacy or performance.
+As we illustrated in Part II, employees generally love meaningful,
+lighthearted competition—customers are no different. Connecting
+the two may produce exponential benefits.
+Aiding in your customers’ progression to mastery and supporting their educational goals will help engender long-term loyalty and
+engagement. But loyalty need not be a purely “selfless” act. If done
+well, leveraging the power of gamification, it can become a profit
+center in its own right.
+Monetize Loyalty
+If you are one of the 1.7 million people who flew in the United
+States today, you probably thought several things about the experience, none of which very likely included, “Wow, that was fun!”
+Between the long lines, bad food, expensive fees, limited space,
+and cranky overworked employees, really what’s there to enjoy?
+And that’s all before considering that over 25 percent of flights are
+likely to be delayed or canceled. It’s enough to earn airlines some of
+the worst customer satisfaction ratings of any industry. But what if
+S U STA I N I N G LO N G -T E R M CU STO M E R E N GAG E M E N T ❯❯❯ 1 89
+there were some way to even the score? A way to get better service,
+get where you needed on time, and have fun doing it? Maybe you
+could play the game—and win instead of lose. Moreover, what if
+that game benefited both you and the companies involved in nearly
+equal measure?
+If you already know how to play this game, you just might be a
+frequent flier. And if you’re in the top 1 percent of fliers—known as
+“elites”—you drive as much as 25 percent of airline revenues. Your
+loyalty, it turns out, matters a lot. And one of the ways the airlines
+create and sustain engagement with you is by making the game of
+travel fun, complex, and “winnable.”
+In 2008 American Airlines implemented one of the first baggage
+fees by a legacy carrier. At the time, their wildly successful AAdvantage loyalty program was running out of ways to reward its over
+80 million users. Suddenly a new prize was on the table: rack up the
+right amount of miles each year, and you never have to pay extra to
+travel with bags again. By 2010 a regular passenger was paying for
+amenities that were once taken for granted such as snacks, blankets, and pillows—but not the best fliers. They continued getting
+most of that for free, and then some. Every year since, carriers like
+American have tweaked their programs—always earning criticism
+and compliments. The goal: maximize fun and finances.
+For travelers, it’s play or be played. For the airlines, it’s a game
+of life or death. After losing tens of billions of dollars in the decade
+following 2001, by 2012 U.S. airlines were reporting record profits. This was achieved in no small part by balancing the pain and
+pleasure in contemporary loyalty programs. Before 2001, loyalty
+programs were all about pleasure, offering continuous rewards
+for good behavior—for example, miles, upgrades, free flights, and
+great treatment. But they had become stagnant, and set against the
+backdrop of higher fuel prices and a global economic crisis, carriers had to radically rethink their approach. In short, they needed
+to rebalance the game.
+They rose to the challenge, and the results of their efforts have
+been staggering.
+1 9 0 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+In 2011 global airlines collected $22.6 billion in ancillary
+fees—charging ticket price add-ons like baggage charges, priority
+check-in charges, and seating fees. This was nearly double 2009’s
+$13 billion fee haul, and it amounted to a healthy percentage of
+global airline revenues that had been nearly flat at just under $600
+billion during that same time period. While these supplemental
+fees make up only 4 percent of airline sales, they are essentially
+responsible for the industry’s profits. Total net income for airlines in 2011 was only $6.9 billion worldwide—a roughly 1 percent margin. U.S. carriers, originally resistant to this model, have
+become among its most ardent supporters. The country’s largest
+carrier, United Airlines, collected $5 billion in fees—and Delta
+announced an intention to raise its fee haul by $1 billion to $3.5
+billion by 2014.
+Obviously, these fees have helped the airlines claw themselves
+back from the brink—becoming an undeniably lucrative part of
+their core business. At the same time, they’ve used this approach to
+strengthen their loyalty offering by waiving most of these charges
+for their most loyal fliers. Thus in a single stroke, airlines created a
+new point of friction out of thin air, and then they eliminated that
+speed bump for their most worthy consumers.
+This change has recalibrated the loyalty equation, giving the
+game new challenges and impetus. It has also allowed the airlines
+to shift the discussion away from free flights and upgrades for all
+but the most elite fliers. After all, lower-tier customers now get a
+host of benefits (free bags! better seats!) that they didn’t have before,
+so flight redemptions are less important. It has also allowed carriers to swell the ranks of their programs, by tens of millions of
+customers—often giving those tiers away in promotions or with
+credit cards, without devaluing the top tiers. Today, carriers like
+United have over 100 million frequent fliers, and the number continues to grow.
+At the same time, loyalty programs have been increasing their
+focus on using online games to drive loyalty, blending tangible
+and intangible rewards in an effort to increase engagement and
+S U STA I N I N G LO N G -T E R M CU STO M E R E N GAG E M E N T ❯❯❯ 1 9 1
+lower costs. One such game that made waves was United Airlines’
+Optathlon.
+A healthy part of United’s $5 billion in ancillary fees comes
+from selling “upgrades” to consumers. The company’s research has
+shown, however, that unless you’ve experienced first-class travel,
+you’re unlikely to shell out for their $99 to $600 upsell. Similarly,
+other upgrades (expedited handling, club access, and so on) require
+some exposure to get people interested. Needing a way to drive
+users to experience their premium products without simply giving
+them away, United turned to gamification.
+The Optathlon was a series of games that could be played online
+or on your mobile device. Including titles such as Legroom Legend,
+Line Jump Hero, and Mileage Ace, each of the five games showcased
+one premium product. Users could play the games, learn about the
+products, and then take the game to the airport. During the prize
+period, fliers could play Optathlon at the airport to instantly unlock
+an upgrade or be entered into a $20,000 sweepstakes.
+After a few months, the games blew away all expectations. Over
+1 million fliers played them online, and 85,000 instant upgrades
+were given away at the airport. This, along with the immense
+press exposure for the game, delivered significant exposure for the
+United and its Mileage Plus program precisely when the airline
+needed it most. But its most exciting achievement happened after
+the sweepstakes ended. In the 12 months following the close of the
+prize period, over 4 million additional people played the Optathlon
+games, indicating that the fun of the game was not only in the prospect of winning but also in the engagement of the experience.
+As these programs have matured, they have also come under
+increased scrutiny. From government to media, there is endless
+attention to the obvious details of these loyalty programs—redemptions, fees, and so on. But what’s happening under the covers is even
+more interesting. Frequent-flier programs are generally highly profitable, even when the underlying airline is hemorrhaging money.
+The reason is mileage sales. Every time you earn an airline
+mile—from your credit card, hotel stay, car rental, or mortgage
+1 92 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+refinance—the issuing company has paid that airline for those
+miles. Although mile purchase prices are not public, the consensus
+is that they cost approximately $0.01 in very large volumes (plus
+the U.S. government’s 7.5 percent excise tax on miles). Major credit
+card companies, like Chase, Amex, and Citibank, buy and issue
+tens of billions of miles per year, generating at least $1 billion in
+revenue for American Airlines AAdvantage program alone.
+These miles are then used for free flights and other, higher-margin redemptions (like magazine subscriptions or hotel stays). Still
+other miles—billions of them, in fact—expire every year in a process known as “breakage.” By dramatically increasing the volume
+of mileage sales in the past decade and simultaneously increasing
+the margin on redemptions, airlines have been able to arbitrage the
+value of a mile and generate tremendous profits.
+This is classic virtual economy design—much the same concept
+that drives big social games like Farmville. As frequent-flier programs and these games have evolved, they’ve learned from each
+other and improved their respective designs. In the case of largescale loyalty programs, the game exists so that the company can sell
+its virtual currency (miles, points, credit, coins, and so on). This
+delivers a standalone revenue stream that allows loyalty to become
+a profit center and potentially a productized offering in itself.
+Gamification is used throughout the programs to drive more
+usage and raise engagement. But again, for successful loyalty programs, the game is the thing. Over the next decade, there will be
+a significant consolidation and land grab for virtual currencies
+among customers. Much like the global currency markets, where
+almost every country has its own “coin of the realm,” the same is
+true of gamified loyalty program providers. But as more and more
+companies discover the power of the method to drive engagement
+and revenue, there will be more currencies than users can handle.
+While advanced virtual wallet systems will help consumers
+manage the clutter, there will nonetheless be demand for higherquality currencies that are more convertible. Just as the U.S. dollar,
+euro, Japanese yen, British pound sterling, and Swiss franc are the
+S U STA I N I N G LO N G -T E R M CU STO M E R E N GAG E M E N T ❯❯❯ 1 93
+real-world global currencies of record today, so too will a handful
+of virtual currencies be important to the customers of the future.
+And whoever’s digital point system becomes the standard will have
+immense power—just as national governments do—to inflate or
+deflate its value and affect all the players in the ecosystem.
+In this new, gamified race for the customer, where every organization has the potential to be Zimbabwe, the United States, or
+Switzerland, which will yours choose?
+Sustained engagement is complex and fraught with distracting challenges. Once your organization accepts gamification and it
+begins to drive engagement throughout the consumer experience,
+you must choose to stay in it for the long haul in order to maintain
+momentum. By using the strategies laid out in this chapter, your
+company can join the ranks of world-class engagement pioneers to
+shape consumer behavior.
+Once you are on your way sustaining customer engagement,
+you can use gamification to drive innovation and support through
+crowdsourcing techniques. This highly leveraged business strategy
+may enable you to turn gamification into an engine of creativity
+and profitability, based on your newly deepened customer relationships. That’s a powerful opportunity that no company—regardless
+of industry—can afford to miss.
+1 94 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+INNOVATING
+WITH
+CROWDSOURCING
+For scientists working on ridding the world of HIV and AIDS,
+the past 30 years of the disease have been fraught with many
+failures and frustratingly slow discovery. Part of the challenge
+of curing HIV has been unmasking the virus itself, particularly
+understanding how it replicates and spreads within a host. The
+focus of researchers has therefore zeroed in on proteins—the socalled workhorses of our cells. The proteins in HIV—just like those
+in healthy cells—perform essential functions such as delivering
+nutrition, regulating key chemicals, and triggering replication. The
+hope is to develop therapies that can target and attack the virus
+on this level—stopping replication. Scientists also believe similar
+approaches could be used to conquer cancer and Alzheimer’s disease—both of which are believed to be caused by problem proteins
+in our DNA.
+However promising these therapies may be, they face a major
+and almost insurmountable hurdle: protein structures cannot be
+seen under a three-dimensional microscope. Although all proteins
+are composed of amino acids, each one has a distinct shape. And
+because proteins interact with other cellular elements much as a
+1 9 5
+key fits into a lock, we need to clearly understand their structure
+to design therapies.
+The way we do this is by folding—imagining the most efficient
+way to get all the amino acids together, with the correct shape,
+in three dimensions. It’s not unlike assembling a highly complex
+three-dimensional jigsaw puzzle with millions of possible combinations, where the final shape looks nothing like a cube or square.
+Software can be used to do this important work, but it requires
+extraordinary amounts of computing power to be effective. On the
+other hand, humans have an intuitive capacity to look at puzzles
+and figure out quickly how the pieces fit together in a visual space.
+This was an observation that the creators of Rosetta—a software
+solution for protein folding designed at the University of Washington—made while running one of their simulations. They found
+that researchers interacting with the software were frustrated when
+they would solve folding problems before the computer could. It
+seemed as though they easily noticed patterns that the software
+missed.
+So they asked the obvious question: If people do this better than
+software, how can we get people to do the work? Thus was born
+Foldit—a gamified experience that teaches anyone how to fold proteins like a pro, using our innate ability to see three-dimensional
+patterns and find symmetry (Figure 10.1). The game explains the
+basic amino acids, the way they fit together, and the structural
+elements of proteins through a series of hands-on tutorial levels.
+Then, working alone and in teams from around the globe, you can
+apply your newfound skills to model, test, and share your hypotheses about protein structures for scientists. As the complexity of
+various proteins increases, so too does the amount of time required
+to solve the puzzle—in some cases, the effort required is measured
+in millions of workhours.
+That was the case with Foldit’s big headline-grabbing breakthrough. In 2011, 49,000 players began working on the structure
+of a key protein implicated in the fight against HIV. Scientists had
+spent the better part of the 15 years prior trying to decode this
+1 96 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+enzyme—to no avail. However, after only 10 days, from Dakar
+to Moscow, the Internet cheered. Foldit’s players had solved the
+problem—figuring out the structure of the protein and bringing
+science a major step closer to finding the cure for the disease.
+The breakthrough was momentous—both for the HIV research
+community and for the world at large. Foldit demonstrated that
+people are willing to work together for a common cause and use
+their shared human computational power to solve real problems.
+More important, Foldit also demonstrated that you don’t need to
+dumb the problem down to get people to play: nearly 50 percent of
+the game’s solvers had no formal math or science background.
+So what made Foldit so successful at extracting complex labor
+from a group of people without compensation? Notably, players
+were given a chance to work on a problem of significance, with the
+right tools, and they were given a wide range of collaborators. But
+when the gamification elements were optimized, Foldit really took
+FIGURE 10.1 Folding proteins using the human intuition for three-dimensional spatial modeling is clearly shown in this image from the game Foldit.
+I N N OVAT I N G W I T H C ROW DSO U RC I N G ❯❯❯ 1 9 7
+off. For example, the game includes scoring that shows you how
+you, your team, and the whole world are progressing—so you can
+easily see that your work makes a difference. It includes badges that
+give you positive reinforcement as you learn and work through the
+challenges. And to drive performance, it also includes competition
+in the form of leaderboards, enabling individuals to work against
+others on a team or an individual basis.
+Beyond simply discovering the structure of proteins, Foldit also
+has another—potentially even more lucrative—purpose. Using the
+power of the crowd, it may be possible to design new proteins from
+scratch that can be used in the creation of new drugs, gene therapies, or other important medical applications. And while HIV and
+AIDS are obvious opportunities, there are a surprising number of
+similar problems of the same complexity in the world that don’t
+easily lend themselves to algorithmic solutions. Many are even outside the scientific arena.
+Foldit is a champion example of what is known as crowdworking,
+or more broadly, crowdsourcing. This strategy has exploded in popularity in recent years, as companies have taken to the crowd for
+everything from logos to product design, and from complex solutions to shared support and Q&A. Although it’s not an entirely new
+idea, the rapid explosion of social technologies has made crowdsourcing a popular approach—even for major corporations with
+virtually limitless resources. This has propelled crowdsourcing to
+become a multi-billion-dollar industry in itself with far-reaching
+implications.
+The unsung hero of the crowdsourcing movement is gamification. It is, after all, the dynamics of the game—its rewards, points,
+leaderboards, winners, and so on—that make it compelling. And
+structuring a winning crowdsourced experience is often more
+about the gamification design than the projects themselves. This is
+particularly—though by no means exclusively—true when there
+are insufficient resources to pay the full cost of labor.
+In most crowdsourced services, we don’t pay losers for their
+work—only winners. Just as Napoléon did with his Food Preserva-
+1 98 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+tion Prize (as discussed in Chapter 1), we get to see a wide range
+of ideas but we pay as though we had only hired one person. The
+arbitrage between those two things is all about how the game is
+designed. In essence, in lieu of payment for their time, you are
+giving “players” an opportunity for greatness and notoriety, or perhaps just socialization and fun. Even if it does on its surface look
+like a mere “psychological reward,” Foldit has been able to extract
+millions of workhours in free labor by offering players the chance
+to belong, make a significant contribution, socialize, and have fun.
+So, too, do most clever gamified crowdsourcing systems.
+In this chapter we’ll look at a few different approaches to leveraging the power of the crowd through the lens of how gamification
+accomplishes or provides the following:
+Changes in behavior ➤
+Reductions in costs and improvements in quality ➤
+Inspiration for innovation and ideation ➤
+Inspiration for new product development ➤
+Changing Behavior
+Those who contributed to Foldit saw scientific progress as valuable to humanity and ultimately to the individual. This value was
+derived from the success of each contributor’s action and is in fact
+the motivating factor behind why people choose to play in the first
+place—though the gamification elements are what keep them there
+(and coming back).
+One of the most widely embraced examples of crowdsourcing is Wikipedia, the world’s sixth-most-popular website. This
+online encyclopedia features collaborative information gathering
+on a multilingual and international scale, and it is used regularly
+by over 350 million people. It has grown to include more than 23
+million unique articles written and edited by as many as 100,000
+individual volunteers. While the articles are vetted, depending on
+which of the 285 distinct language sites you are visiting, edits are
+I N N OVAT I N G W I T H C ROW DSO U RC I N G ❯❯❯ 1 9 9
+often immediately visible, errors and all. Launched in 2001, Wikipedia has rapidly displaced traditional encyclopedias as the go-to
+resource for research.
+Behind Wikipedia’s success is a looming threat, however: as the site
+has grown and matured, the pace of participation has declined precipitously. Whereas the site used to add as many as 10,000 new editors
+per month, in recent years those numbers have been on the decline by
+nearly double. Over time, this will leave an impossibly small group of
+individuals to curate the world’s largest information resource, likely
+leading to inaccuracies, atrophy, and permanent decline.
+The reason? Wikipedia has failed to gamify. Neil Robertson,
+founder of crowdsourcing platform Trada, identified seven kinds
+of motivation that drive crowdsourced behavior, including cash,
+points, leaderboards, badges, reputation, community, and collaboration. Within this scope, Wikipedia leverages only community
+and collaboration, leaving the other drivers out of the equation. If
+Wikipedia introduces more game mechanics, it could create more
+sustainable user interest and bring in a wider editing audience.
+In an ideal world, everyone would contribute to Wikipedia.
+The founders envisioned a communal resource that served the
+world’s need for knowledge by leveraging everyone’s basic desire
+to share what he or she knows. Today, control of this knowledge is
+concentrated in the hands of a few editors. With its constant fundraising appeals, it’s not hard to imagine Wikipedia transforming
+into a cross between a PBS station and a commercial encyclopedia. However, by leveraging game mechanics, the site could incite
+major behavior change: getting people to impart what they know
+in exchange for an experience that rewards them with fun and the
+recognition of their peers.
+This goal—of making a major change in customers’ entrenched
+behaviors—is not as far-fetched as it sounds. The harder that change
+is to achieve, the better gamification seems to perform. Take, for
+example, speeding.
+Since England hung its first speed limit sign (10 miles per hour)
+in 1861, drivers around the world have been “encouraged” by the
+20 0 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+government to maintain a safe driving speed. And it was probably in 1861 that the first driver exceeded the posted speed limit.
+Since then, commuters and legislators have waged a battle on the
+roadways, ratcheting up enforcement (and revenues to the state)
+through a series of human and technological advancements (for
+example, radar and speed cameras). As cars have gotten faster, so
+too has the pace of speed limit enforcement.
+Interestingly, speed limits appear to have little impact on people’s behavior. In real-world studies, as changes to the speed limit
+in developed nations are leveled, how fast a driver will actually
+go is minimally—if at all—affected. For example, in one U.K. test
+where speed limits were reduced from 60 to 40 miles per hour, the
+average driver’s speed declined only 4 miles per hour. In the United
+States, across 22 states, speed limits were reduced in increments of
+5 to 15 miles per hour, and drivers showed no reduction in speed
+whatsoever. In fact, the National Motorists Association found that
+speed limits and the threat of fines alone had no discernible effect
+on 227 specific locations studied across the United States.
+So it seems that drivers are unmoved by the portent of superior tracking technology and increasingly heavy fines. Speeding has
+therefore become a highly entrenched behavior that is very resistant
+to change. Although people know the potential risks and penalties
+if they get into an accident or are caught, most drivers have the
+delusional belief that they are better behind the wheel or better at
+avoiding detection than everyone around them. In the face of this
+intransigence, and despite spending billions to achieve safer roads,
+authorities have simply resigned themselves to a perpetual game
+of cat and mouse.
+Now a new solution has emerged, based on the principles of
+gamification, that has shaken our thinking about what to do with
+inveterate speeders. It’s called Speed Camera Lottery, and it has
+done something no one thought possible: lowered speeds in a way
+that drivers actually like.
+In 2010 Volkswagen launched a gamified ad campaign called Fun
+Theory designed to encourage players to come up with gamified
+I N N OVAT I N G W I T H C ROW DSO U RC I N G ❯❯❯ 20 1
+solutions to some of the world’s problems. Kevin Richardson, a
+well-respected game designer and producer, proposed Speed Camera Lottery. The concept, which was one of the prize winners, made
+use of the existing antispeed cameras set up throughout Stockholm—Sweden’s largest city. The cameras were modified, and a
+new interaction was introduced that could change how we think
+about speeding.
+The premise was simple: drivers at one of Stockholm’s busiest intersections had their speeds and license plates recorded by
+a marked camera. Those who broke the speed limit were fined,
+and the money from the fines was pooled for a prize pot. Those
+who drove at or below the speed limit were entered into a lottery
+to win that prize pot. They received one lottery ticket every time
+they compliantly passed by the camera (with a maximum number
+of passes allowed per day). Over the test period, Speed Camera
+Lottery showed a 22 percent decrease in the average driving speed.
+By switching the emphasis from punishment-based incentives to
+reward-based incentives—or from legal regulations to the rules of
+a game—the Speed Camera Lottery accomplished in three days what
+150 years of driving regulations could not, and it allowed people to
+have fun while doing it.
+Beyond its broad behavior change importance, drivers’ reactions to the Speed Camera Lottery can serve as an interesting case
+study for motivating customer behavior. In so many aspects of
+their lives, from government to commercial interactions, customers are given little reward for good behavior but lots of punishment
+for bad—even simple, entrenched ideas like credit card payment
+penalties, product refund deadlines, or cable restrictions on certain
+TV programs. In almost every case, the penalties serve important
+business purposes—but they don’t give customers a pathway to a
+positive alternative. The best people can hope for is an avoidance
+of punishment.
+The more ways you can reward customers in positive ways—
+even, say, by congratulating them for making their credit card payments on time for six months in a row—the better they will feel
+202 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+about themselves and your underlying product or service. This will
+also set the stage for engaging them in other activities—from customer service to feedback exchanges—that are increasingly important in today’s competitive economy. Your customers, it turns out,
+are willing to work with and for you, if given the right incentives,
+rewards, and fun.
+Customer Service and Community:
+Reducing Costs and Improving Quality
+Building a great, vibrant, and collaborative community is a challenge—even with plenty of resources at your disposal. But when
+your company is a start-up, and your target audience is made up
+of fiercely independent and misanthropic software developers, the
+challenge is even greater. Moreover, if you set the goal of getting the
+cream of the crop to participate, it can seem insurmountable.
+In Chapter 2’s case study of StackOverflow and StackExchange,
+we began to wade into this territory. To recap: the company was
+founded in 2008 as a community in which developers could answer
+each other’s questions (Figure 10.2). It was the brainchild of Jeff
+Attwood. Having seen other large-scale Q&A websites like Yahoo!
+Answers, however, Attwood understood that a system designed
+to incentivize action—at any cost—would likely produce a lot of
+superfluous and nonuseful content. This was the biggest problem
+for Yahoo! Answers, a Q&A website with over 200 million users
+at its peak. Although easy to dismiss today, Yahoo! Answers once
+counted academics, politicians, authors, and many great thinkers
+among its users.
+Attwood, who had grown up around video games, focused on
+a single truism that would guide the design of his now famous
+platform:
+“Reputation always comes from your peers. It doesn’t come
+from the system.”
+Attwood understood that this dynamic was at the heart of how
+to scale and measure the success of individuals participating in
+I N N OVAT I N G W I T H C ROW DSO U RC I N G ❯❯❯ 203
+a Q&A environment—and in any peer support context, for that
+matter. So he designed StackOverflow around a reputation system
+driven mostly by peer behavior. That is, others vote to determine
+your reputation, which is expressed by rank and score. For example,
+you can’t even vote for something on the site until you have been
+voted on by someone else. The site tracks votes broadly in the form
+of a virtual point system (reputation points, known colloquially as
+“creds”), and it awards users badges for special achievements. Some
+of its badges (which can be acquired both digitally and physically)
+are so rare that user discussion forums are rife with legends and
+stories about how to get one.
+While all of this is exciting in its own right, what really makes
+StackOverflow so impressive is both who is using the system and
+what they are doing with it. The 1 million or so developers on the
+FIGURE 10.2 StackOverflow, a collaborative Q&A environment for
+software developers, makes extensive use of gamified reputation to drive
+performance.
+20 4 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+site are among the top experts in their fields. These are folks who
+sometimes earn hundreds or thousands of dollars for their technical
+expertise, who are online helping each other solve detailed technical problems for free. In this environment they don’t charge, and
+StackOverflow makes no effort to reward them with cash of any
+kind from the inside. The premise is that users help each other, and
+in the process they establish credibility. This gives the participants a
+win in real life, an opportunity to move through (and “win,” if they
+choose) at a new status system, and the chance to give back. In other
+words, there is a lot of emotional value to participating.
+What the game allows the site to do is to aggregate this expertise and arbitrage it by selling advertising and other services against
+that effort. In a sense, the crowd’s work generates the inventory
+for further monetization. And because of its quality emphasis, the
+site has been able to make it successful with a fraction of the traffic
+of Yahoo! or Quora (another Q&A site). The company has raised
+$18 million to help it pursue its vision, and it has taken the actual
+design of StackOverflow’s gamified system and turned that into a
+web service: StackExchange. This new offering can be leveraged for
+vertical communities using the same pattern—over 85 of them at
+last count.
+Although the examples of transforming a company or industry
+through gamification are many, few have had the cultural or business impact of Kickstarter. Started in 2009 with a mission to democratize fund-raising for artistic and business projects, Kickstarter has
+become the king of crowdsourced funding. Today, anyone with a
+great product, movie, game, book, company, or other idea can create
+a description, embed a video, and put it up on Kickstarter to solicit
+funds. There, millions of people from around the world view, comment, share, and invest in projects of all kinds. By the fourth quarter
+of 2012, the site had helped 72,000 projects raise over $370 million,
+of which 13 individual ideas raised $1 million or more.
+At the heart of what makes Kickstarter work is the exposure to
+great ideas and the power of socializing those concepts. But gamification plays a significant role in driving both funders and projects
+I N N OVAT I N G W I T H C ROW DSO U RC I N G ❯❯❯ 20 5
+to the platform. For example, Kickstarter uses an all-or-nothing
+mechanic: if you don’t raise the minimum amount required by your
+deadline, you don’t get any of the funds pledged. This approach
+ensures that investors feel confident the project will at least be
+able to get off the ground. Further, the site prominently displays
+critical stats about each project (dollars raised, timeline, number of
+funders, and so on) along with leaderboards that let everyone see
+how each opportunity is trending against others.
+But it is the rewards system that really makes the site unique.
+Because of U.S. laws restricting equity sales in private companies,
+Kickstarter projects cannot offer stock in exchange for investment.
+Therefore, the site forces its participants to find alternate “rewards”
+to give investors, handily demonstrating the ability of status, access,
+and power—or nonmonetary benefits—to drive behavior. Generally, investors are tiered based on how much they give each project,
+and rewards differ based on the level of investment.
+Let’s take, as an example, Charlie Kaufman’s Anomalisa film
+project on Kickstarter, which raised $406,000 (or double its
+$200,000 goal) and has been one of the most successful projects
+on the site. Kaufman, the creator of popular cult movies such as
+Being John Malkovich, Adaptation, and Eternal Sunshine of the Spotless Mind, took to Kickstarter to fund a stop-motion animation
+project he was particularly passionate about. Of the 5,770 backers,
+contributors of $5 or more received a thank you on the movie’s
+Facebook page, contributors of $20 or more got a digital download
+of the film (2,297 investors), and contributors of $300 or more got
+a signed hoodie. Ante up $2,500 and you had the choice of either
+a Skype chat or drinks on the town with the movie’s producers.
+And for $10,000, you would receive all the goodies and executive
+producer credit in the film itself—a tier in which five individuals
+participated (and was sold out almost immediately).
+Notably, none of the tiers offered “points” or cash stemming
+from any commercial success of the film. Although some of the
+offered rewards could wind up costly in dollars (like buying and
+shipping hundreds of sweatshirts) or time (like potentially having
+20 6 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+to share an evening of drinks with someone painfully boring),
+none even comes close to the typical expense of profit sharing.
+And from the backers’ standpoint, many of the benefits were so
+rare and meaningful (a signed copy of one of the sets!) that they
+were more valuable to true fans than cash from revenue sharing
+would be. Even the opportunity to participate in a Charlie Kaufman film project was sufficient to motivate some of the key investors to action. And from an advertising standpoint, the emotional
+investment of 5,770 people also meant a built-in audience when the
+film is finally released.
+Kickstarter’s success handily illustrates a key point about gamification and the crowd: you can get people to do extraordinary
+things together—often economically irrational things—if you
+provide the right feedback, friends, and fun. You need not offer
+cash rewards, as long as people are getting the right psychological
+benefits (reputation, connection, contribution) from their participation. And nowhere can this irrational action be seen more clearly
+than in innovation and ideation.
+Inspiring Innovation and Ideation
+Beyond scientific discovery and community building, gamification can also be a critical strategy when turning to the crowd for
+innovation and idea generation. Just as with most of the examples
+shared thus far, recognition (or status) plays a critical role in making this model work.
+As a company that knows a thing or two about recognition,
+InnoCentive was founded in 2001 to advance the use of grand
+challenges to solve problems in life sciences, industry, and more.
+Today, over 170,000 experts in a range of industries are part of
+the InnoCentive network, helping organizations of all sizes drive
+innovation through prize-linked challenges ranging in value from
+$10,000 to $1 million.
+The InnoCentive model is based on the same kind of grand challenges that have been used to solve problems in food preservation,
+I N N OVAT I N G W I T H C ROW DSO U RC I N G ❯❯❯ 207
+trans-Atlantic crossings, and commercial space flight. Effectively,
+it is a first-past-the-post contest that rewards one winner with a
+large prize for his or her success. But an interesting dynamic exists
+within most grand challenges, and InnoCentive is no exception:
+frequently the prize doesn’t justify the effort.
+Let’s take an example from a typical InnoCentive challenge to
+understand this behavior. In 2012, the famed Cleveland Clinic asked
+the InnoCentive community of online solvers to help it figure out a
+way to reconnect two pieces of human tissue without using sutures.
+Over 800 people signed on to solve the problem, which would pay
+up to $30,000 for a theoretical solution that would be licensed to
+the clinic in a perpetual and exclusive way—so the solver would
+lose all rights to the idea going forward. Given the huge economic
+potential for such a solution—especially in surgeries involving fluid
+transport tissues—why would someone sign away his or her rights
+for a small fraction of its potential economic value?
+The answer belies the extraordinary power of crowdsourced
+innovation challenges—that the recognition for solving the problem is far more valuable to the solver than the money. Solvers
+may engage to seek the recognition of their peers, to challenge
+themselves to a personal best, or even to look for a job. But no
+matter what, if they have the skills to solve the problem (and
+indications are that at least one solution should suffice for the
+Cleveland Clinic), they are not getting the full value of their work.
+In fact, InnoCentive provides extensive advice to its seeker community on the appropriate pricing, no doubt gleaned from the
+tens of thousands of contests launched. In almost every case the
+solution trades at a significant discount to its value—and there
+can be only one winner.
+There are four factors that drive this arbitrage: the credibility
+of the InnoCentive platform, the perception of the brand seeking
+the solution, the public scale of the problem, and the competition
+among solvers. Although InnoCentive brings new ideas to market
+in a startlingly efficient way, the net effect of this market is to lower
+the price of solutions stemming from novel challenges. Today, solv-
+20 8 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+ers do not compete to offer the lowest price (as they might in other
+marketplaces), but why pay a university or consultancy’s inflated
+costs to do basic research? The lesson: the more “noncash” opportunities you can provide (job, fame, recognition, and so on), the
+more likely people are to trade down in terms of economic value
+to be the winner of your challenge.
+But what about when the challenge is much less defined and
+more about process than outcomes? IBM’s Innov8—an open software platform we introduced in Chapter 2—was designed to let
+players understand, model, and learn about business processes.
+IBM believes that even a slight increase in process improvement
+can result in margin improvement, increased capacity, and a reduction in required employees or capital. Since launching in 2008,
+Innov8 has been a smashing success for IBM, and today over 1,000
+educational institutions and corporations use it to teach the fundamentals of business process management (BPM) to aspiring process engineers and leaders at all levels of the organization.
+In Innov8, users pass through the basics of BPM using either
+a real or completely invented experience. There, they can explore
+and model how the process works and discover how the pieces fit
+together. Then they collaborate on different models and explore
+what-if scenarios. Through emulation of customer service, traffic
+flow, and supply chain models, Innov8 allows users to focus on specific BPM problems and solutions. By making the processes visual,
+interactive, and social, the app lets laypeople and experts reset their
+knowledge and interact in new and unique ways.
+Now, groups of users can collaborate and solve process issues
+using Innov8. For example, IBM’s CityOne—a real-world process
+simulation game based on its SmartPlay Framework—is being used
+to develop real-world solutions to urban planning issues. As tens
+of thousands of people play CityOne, they collaborate to solve
+problems like how to increase the water supply, ensure adequate
+transportation, and expand governmental representation during a
+city’s growth. It’s like the famous simulation game SimCity, but it
+is for actual urban planners who can use the data to optimize an
+I N N OVAT I N G W I T H C ROW DSO U RC I N G ❯❯❯ 20 9
+actual city. Similarly, Innov8’s BPM modules are used by students,
+academics, and experts around the world to tackle real-world
+problems.
+Obviously, the need for business process engineering is something that most industries face at one time or another. The clever
+use of advanced design and gamification constructs has allowed
+IBM to turn this demand into a significant market asset, and one
+with an established track record of powerful innovation behind it.
+It actually works!
+Part of what makes Innov8 so compelling is the simple truism
+that it’s significantly more fun than the alternative (pen and paper
+or flat, custom software modeling options). By bringing fun and
+game mechanics to what otherwise ranged from boring to impenetrable, Innov8 has changed companies and lives.
+But what if fun is an implicit part of the experience, rather than
+explicit? Can gamification be used with crowdsourcing to actually
+replace or supplement the work of staff members who are core to
+the business operation? That’s precisely what some leading organizations have been able to achieve.
+Driving New Product Development
+Most people know CNN as the first channel in the world devoted
+to 24-hour news coverage. Since its launch in 1980, CNN and its
+affiliate networks (HLN, Airport, and CNN International, to name
+a few) have redefined the news gathering and dissemination industry. Despite suffering a substantial ratings decline in recent years,
+the channel still runs a major, traditional news gathering operation—with over 36 bureaus scattered among dozens of countries.
+In these locations, CNN reporters do the traditional—and laborintensive—job of tracking down leads, chasing scoops, driving
+trucks, setting up satellite uplinks, and broadcasting the news as it
+happens. This is augmented by an extensive online news gathering
+and reporting presence at CNN.com that also leverages news channels like the Associated Press (AP) for syndication.
+2 1 0 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+But beyond their traditional news approach, CNN has innovated on the use of the crowd for news. Augmenting their thousands of regular media staffers are 950,000 iReporters—citizen
+journalists empowered by CNN to gather news with the channel
+as their distribution system. Launched in 2008, iReport leveraged
+the advent of widely available video camera phones and the hunger
+for “news streams” that were becoming popular on Twitter and
+Facebook. The company sought to allow anyone who was near a
+story to tell it.
+CNN’s innovation has led to millions of stories being filed,
+with iReporters frequently bringing classified or insider scoops to
+the network. The power of video and Internet connectivity that
+now exists almost everywhere allows stories, however crude, to
+be uploaded from just about anywhere, any time. Since its launch,
+iReport has scooped a number of events, including the Virginia
+Tech shooting, the 2004 tsunami, the 7/7 bombings in London,
+and the collapse of the I-35 bridge in Minnesota. In each case CNN
+was able to get notable video and audio footage hours—and sometimes days—before regular news outlets were able to get traditional
+teams into place.
+No one questions whether or not the iReporters are able to replace
+classic news approaches. Rather, the most powerful dynamic about
+iReport is that CNN effectively outsources some portion of its news
+gathering to individuals whom they do not pay. Instead of offering
+cash compensation, iReporters are able to earn a series of badges,
+awards at an annual awards event, and—most importantly—the
+opportunities to have their iReports used on the news or on the home
+page of CNN.com. Additionally, users get a chance to express themselves and to tell their stories in an open and unvarnished way.
+This exposure opportunity—the chance to be seen, or get fame,
+combined with the expressive power of the video medium—is so
+strong that users need not be compensated at all for their effort. The
+company is able to scale because the game and its reward model are
+designed well enough to drive user engagement over the long term.
+The combination of these ideas is very powerful indeed.
+I N N OVAT I N G W I T H C ROW DSO U RC I N G ❯❯❯ 2 1 1
+But not all gamified, crowdsourced approaches to work and
+product development lack cash compensation. In fact, one of the
+most interesting start-ups in the physical product space embraces
+cash compensation as a core part of its strategy for driving excellence and engagement in its community.
+Quirky, founded in 2009 in New York, is a new kind of product
+manufacturer—a social one. Bringing together the crowd on its
+website, Quirky allows individuals to collaborate on the ideation,
+optimization, marketing, and sales of new products. It starts with
+individuals proposing products they would like to see made—for
+example, the PivotPower, which is a $30 flexible power strip that
+can go around objects. It has sold over 370,000 units to date. The
+crowd then votes on the products, offering refinements and suggestions to improve them. Once products receive a certain number of
+votes and peer support, the products become eligible to get made—
+and then the creator and contributors continue to refine them. If
+the company elects to manufacture the products, then participants
+become part of the marketing and distribution concept as well.
+The core idea is that the crowd can leverage its unique orderfrom-chaos ability to define and then highlight those products that
+most need to get made. By eliciting a large number of participants,
+the company can also identify what the market scope and target
+audience can be, and the refinements are used to optimize the
+products for marketing and production.
+Probably the most interesting twist in Quirky is the way that the
+company divides revenue with the community. Effectively, everyone’s participation is tracked and graded by the system and each
+other. Based on how much you contribute to the process of getting
+the product designed, refined, made, and sold, you are given a
+“share” of its net proceeds. Thus 30 percent of direct sales and 10
+percent of channel sales are shared with the community, of which
+35 percent are reserved for the inventor. The rest is split among
+participants, in increments as low as 0.1 percent.
+Interestingly, all of the participants who meet a certain minimum contribution level—including those who don’t merit a rev-
+2 1 2 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+enue share—are listed in a product’s brochure included with the
+sale. Not dissimilar to the credits that roll at the end of a film
+or TV show, this approach allows for a wide range of associate
+producers to get their names on particular projects for various
+kinds of contributions—making it more likely that more people
+will participate. Additionally, users can earn revenue for social
+selling, giving a project an aspect of multilevel marketing taken to
+a whole new level.
+Fundamentally, Quirky is trying to decrease the risks in new
+product development. By engaging the crowd in a game to get a
+product made, using a scoring system to gauge participation at all
+levels of the life cycle—from design to sales—Quirky is aligning
+incentives from inventor to market. Quirky then gets to benefit
+from this intellectual capital without returning any cash to users
+until well after the first product revenues have been received.
+In fact, Quirky makes inventors pay $10 just to submit an idea.
+This kind of “basic commitment” mechanic ensures that Quirky
+minimizes chaff submissions without merit—weeding out those
+who don’t believe $10 worth in their concept. The whole value chain
+has yet to prove its financial mettle—the company is still private—
+but Quirky has raised $23 million and lots of great social media
+buzz for its products. Using gamified crowdsourcing, Quirky is
+well on its way to fundamentally changing the cost-staffing model
+for product development organizations.
+Overall, the use of crowdsourcing and crowdwork to change
+the economics of intellectual capital is an unstoppable force. As
+companies realize that they can realistically use the crowd to solve
+Innovation can get pretty quirky, pretty quickly. Check out some of
+the best customer innovation concepts at The Gamification Revolution app, downloadable at http://gamrev.com—where you will find
+videos, social links, and innovative ways to read, share, and discuss
+this book with your friends and colleagues.
+I N N OVAT I N G W I T H C ROW DSO U RC I N G ❯❯❯ 2 1 3
+customer service issues, drive innovation, do on-the-ground work,
+and even design and build new products, the possibilities are endless. At the heart of each of these is gamification at work. The power
+of the game designs and mechanics—from points and badges to epic
+quests and fun—enables this transformative approach to take root.
+As you’ve seen in the examples, when a gamified crowdsourced system becomes successful, the game quickly becomes the focus. It is
+critical for your organization to embrace that dynamic sooner rather
+than later. In this way, you can lead the gamification revolution with
+the support of all your troops—even the crowdsourced ones.
+Socialize Your Read
+What’s the biggest problem facing you at work? Collaborate
+with a colleague and together design a gamified solution to that
+problem. In 400 words or less, post your solution on The Gamification Revolution app, and get feedback on your idea from the
+gamification community—and a chance to win direct feedback
+from a gamification expert!
+GAMIFY YOUR READ
+2 1 4 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+IN CONCLUSION
+The kids of today are changing the world of tomorrow. Over the
+last five years major strides have been made in curing cancer
+and solving the world’s environmental crisis, all by teenagers competing in high school science fairs. In 2008 a 16-year-old named
+Daniel Burd from Waterloo, Canada, came up with a proposal for
+a safe, fast, and effective way to biodegrade plastics. In 2012 there
+were two major strides made in the fight against cancer: Angela
+Zhang, a 17-year-old, developed what she calls “a Swiss army knife
+for cancer,” which is being touted as a potential cure, while 15-yearold Jack Andraka found what seems to be a breakthrough in the
+way we detect pancreatic cancer. The simple blood test he proposes
+will easily and effectively offer warning signs during the disease’s
+earliest stages.
+But ask today’s managers and marketers about this millennial
+generation—and you’re likely to hear an entirely different story.
+Words like “oversensitive,” “ambitionless,” “lazy,” “distracted,” and
+“entitled” are thrown around to describe this group. Though it’s
+not the only cause, games have played a big role in driving these
+personalities—creating a group of 150 million people who think
+faster, more technologically, and just differently than the generations that came before them. But if you listened to the complaints
+of managers, teachers, and pundits, you might get the impression
+2 1 5
+that this generation will never amount to anything and they just
+aren’t worth the effort.
+But maybe they are actually teaching us an important lesson.
+Our prevailing methods of chastising, motivating, teaching, and
+engaging them are the wrong way. We are moving rapidly toward a
+future where “fun” is the new “work.” Fun is also the new buying,
+selling, attention grabbing, and health achieving. In an age when
+personal satisfaction trumps monetary wealth, ensuring happiness, fulfillment, and enjoyment in your workplace among your
+employees and your customers is becoming the rule rather than the
+exception. Gamification is leading the charge to radically change
+industries by making it more fun and ultimately more effective at
+building a strong, happy, and better engaged community.
+Gartner Group says that by 2015, 70 percent of the world’s largest companies will be using gamification. And by that same year,
+hundreds of thousands of start-ups, nonprofits, and governmental
+organizations will also be leveraging the best ideas from games,
+loyalty programs, and behavioral economics to drive attention,
+engagement, and results.
+Whether you’re focusing on employees or customers, gamification continues to produce unprecedented results for three principal
+reasons:
+1. Gamification is the language of this new generation.
+2. The benefits of gamification apply equally well to older
+stakeholders.
+3. Gamification delivers affordable, measurable, and scalable
+behavior change.
+And while gamification may seem edgy or complex today, no
+doubt there are already pockets of expertise inside your organization (both internal and customer facing) that are using or thinking
+about using gamification right now. What they need in order to
+drive the company to the next level is a clear strategy that makes
+engagement a priority. By seeing the potential of gamification now,
+your vision will help the organization adapt to a future in which
+2 1 6 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+fun, engagement, and reward aren’t optional—they’re required.
+From automobiles to finance, government to education, the number of examples of industries in which a tectonic shift is under
+way—driven by social, mobile, and gamelike technologies—is
+immense.
+Gamification itself can even be used to develop these future
+strategies. From the earliest days of scenario planning in the postwar era to today’s global, crowdsourced strategy competitions,
+game concepts have played a critical role in predicting the future
+for organizations. While gamification isn’t new in strategic planning, an increasing focus on making the process itself fun and
+rewarding, while raising the abilities of those involved, has made
+the gamification of strategy more important than ever. This trend
+extends even to those employees not involved in the strategic process directly, which makes the need for enhanced training, development, and performance improvement greater than ever.
+But finding and retaining those key players is tough. Despite a
+challenging economy, 31 percent of small businesses report major
+obstacles in finding qualified workers, according to the Wall Street
+Journal and Vistage International. And white-collar skills aren’t the
+only ones being sought—41 percent of the manufacturing industry
+can’t find qualified workers, while 30 percent in the service industry say the same. Meanwhile, 29 percent of retail sector companies
+are facing increased challenges when looking for employees to move
+into jobs without extensive (and expensive) training. Gamification
+changes the game in recruitment by helping to surface the best
+candidates quickly, extending the pre-employment testing regime
+to core skills, and making recruitment more social.
+The challenge in recruitment is rising, in large part due to the
+fact that employee retention isn’t what it used to be. The average
+company can expect to lose anywhere from 20 to 50 percent of its
+employee base each year. CareerBuilder.com reports that 76 percent of all employees would leave their current position if the right
+opportunity came along. Meanwhile, in the spring of 2012, MetLife
+released its tenth annual survey of employee trends and attitudes in
+I N CO N C LU S I O N ❯❯❯ 2 1 7
+which it reported that employee loyalty rates were at a seven-year
+low. In fact, MetLife said that one in three employees reported an
+intention to leave his or her job by the end of the year.
+The reasons for this employee malaise are widely disputed, but
+one thing is sure: people who are happy don’t want to leave, while
+people who are unhappy do. It’s that simple. Further, employees
+who feel purposeful and connected to their work—getting feedback, working with their friends, and having fun—work harder,
+longer, and better.
+According to CareerBliss.com, of the top 10 companies reporting the happiest employees, 8 openly use gamified practices with
+their workforce.
+The list of the “Happiest Companies in the World”:
+10. Chevron: Incentive packages and employees club
+9. Ericsson: Brand ambassador program
+8. Fidelity Investments
+7. The U.S. Air Force: Well-known badges and leveling
+6. Centex
+5. BASF: Cultural and sports activities
+4. Nordstrom: A sense of personal agency
+3. Johnson & Johnson: Maintaining employee health
+2. Fluor: Business simulations
+1. Hilton Worldwide: Unreal Engine 3 Simulation
+At the same time, many thousands more companies have reinvented their performance feedback systems using new gamified
+approaches that deliver instant, social rewards and recognition
+for a job well done. Set against this context, it’s also no wonder
+that many of these top-performing companies have gamified their
+employee health and wellness programs too. By making fitness
+programs part of the workplace, employers have activated collaboration and competition in ways that drive culture, morale, and
+cohesion.
+And it’s not just the employees and internal stakeholders who
+are empowered by gamification. It’s customers as well. As the level
+2 1 8 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+of noise and distraction in the market increases, so too have businesses’ desperate attempts at grabbing customer attention. People
+have an almost limitless set of choices to fill their spare time—all
+available instantly at their fingertips. Whereas they used to give
+a new store, experience, or website three to five minutes to prove
+itself, today’s customer has less than 60 seconds to spare. At the
+same time, activities that used to be considered distractions in
+themselves—like watching television—are now experienced with
+a second or third screen nearly 25 percent of the time. Apparently,
+we need to distract ourselves from all that “great” programming
+on the tube.
+This same need for additional stimulation and engagement—
+once again driven by millennial exposure to games—also creates
+a unique opportunity. If you can use gamification to cut through
+the noise, you can get unprecedented connection and dialogue.
+You can do this by leveraging a wide range of game mechanics,
+including surprise and delight. Most important though, you must
+be where the users are—gamify the second (and third) screens if
+you must, and own the distraction instead of fighting it.
+Once you’ve got your customer’s attention, you can amplify it
+using the power of social connection, progression to mastery, and
+viral loops. These gamified dynamics must be constantly tested,
+measured, and refined to optimize the experience for what the
+consumer needs. And it’s critical to never let it get boring; even the
+best games can lose steam if you don’t keep them fresh. If you are
+successful at maintaining engagement with gamification, you can
+parlay that into a new-style loyalty program that minimizes tangible rewards, instead paying out in status, access, and power. The
+best examples have even managed to monetize this concept, turning loyalty points into a profit center and jousting for dominance
+in a strategic global market for virtual currency.
+Customers who are engaged and aligned with your brand vision
+can do even more. With the right incentives, you can get the crowd
+to design products, solve problems, and create intellectual property
+that you can monetize. This concept, called crowdsourcing, has
+I N CO N C LU S I O N ❯❯❯ 2 1 9
+yielded major solutions to science, economic, and creative problems. This proves that you can even get lower-skilled customers to
+do hard work and solve real problems without having to shy away
+from the tough stuff. If everyone is aligned, properly incentivized,
+and enjoying themselves, the sky’s the limit.
+And it really is.
+Whether you manufacture widgets or deliver services, your
+employees are young, old, or a mix, the power of gamification can
+transform your organization. The key is to seize the moment and
+drive your company’s strategy now while the market is rife with
+opportunity and the future is yet to be written. With a shift this
+big, the last thing you want to do is get left behind.
+As the examples have highlighted in this book, forward-thinking organizations of all sizes are changing the world by capitalizing
+on this intersection of games, loyalty programs, and behavioral
+economics. They all share one source of optimism: a belief that
+human behavior can be changed through good, engaging design. As
+these examples—and the hundreds more that didn’t make it into
+the book—prove, it can be done.
+In 1982 John Seward Johnson II erected an iconic sculpture of
+a bronze businessman sitting on a bench across from the World
+Trade Centers in New York City. After the 2001 destruction of
+those buildings, a restored statue was placed in Zuccotti Park at the
+bottom of Wall Street. On a sunny summer day in 2012, a little girl
+holding onto her mother’s hand stood in front of the statue. As she
+peered over the top of the statue’s open briefcase lid, she turned a
+curious face up to her mother and asked, “What’s that?”
+The mother replied, smiling sheepishly at several passersby,
+“That’s a calculator. It’s how people used to add numbers in the
+olden days.”
+“Well, what’s that?” the child asked.
+“That’s a letter opener.” The little girl blinked blankly so her
+mother continued. “People used to get e-mail in paper envelopes,
+so they had to open a lot of them, and it hurt their fingers.”
+“Oh,” the little girl nodded.
+220 ❮❮❮ T H E GA M I F I CAT I O N R EVO LU T I O N
+They inspected several more items until finally the little girl
+stood quietly looking thoughtfully at the statue. Then she reached
+into her mother’s pocket and pulled out a touch screen mobile
+device and set it down inside the briefcase.
+“He looks like he needs it,” she explained to her surprised
+mother, shrugging her little shoulders.
+As she walked away, the mother picked up the gadget and shook
+her head in wonder as she followed the child onto the crowded
+sidewalk.
+Bronze is pretty good. But as any achiever will tell you, gold is
+the only color that matters.
+—New York, New York
+January 2013
+@gzicherm
+@joselinder
+By now, you’ve probably completed all the challenges at http://gam
+rev.com with The Gamification Revolution social app. Just in case
+you haven’t, it’s not too late to check out the videos, notes, social
+media lists, and cavalcade of website addresses in the app—and to
+share this book with your best friends and colleagues.
+I N CO N C LU S I O N ❯❯❯ 22 1
+GAMIF Y YOUR READ
+ANSWER KEY
 
 ---
-**Conexiones del Grafo (Obsidian):** [[INDEX]] · [[KICK_API_REFERENCE]] · [[CANON_KICK_PUBLIC_API_V2_FULL_REFERENCE]] · [[POPULAR_SLOTS_ONLY_ON_STAKE_TIERS]] · [[CANON_SLOTS_STAKE_RTP_VOLATILITY_DYNAMICS]] · #streaming_and_overlays
+
+## Sección 10: CHAPTER 1 [Entropy: 0.25]
+
+Chapterwide Scavenger Hunt
+Nicolas Appert won Napoléon’s Food Preservation Prize. ➤
+Devotees of the McDonald’s ➤ Monopoly game claim they will:
+Travel to find McDonald’s outside of their neighborhoods. ◆
+Visit McDonald’s more often. ◆
+Increase the size of their orders even if they are not hungry ◆
+for the extra food.
+Social games developer Zynga is everyone’s biggest competitor ➤
+according to this chapter.
+According to a 2009 study, 60 percent of people in the western ➤
+world play computer and/or video games on a regular basis.
+The average gamer is a 43-year-old woman. ➤
+A Common Sense Media (CSM) study showed that 23 per- ➤
+cent of five- to eight-year-olds use more than one technology
+medium at a time.
+In order to bring progression to mastery into your organization ➤
+in a meaningful way, you must first design the key mechanics.
+Meaningful game mechanics are mentioned throughout this ➤
+chapter and include:
+Points ◆
+Badges ◆
+Prizes and other rewards ◆
+Social reinforcement ◆
+Challenges ◆
+Goals ◆
+Markers toward the goals ◆
+For more answers we might have missed, visit The Gamification
+Revolution app!
+
+---
+
+## Sección 11: CHAPTER 2 [Entropy: 0.25]
+
+Questions and Answers
+Q What does eBay’s feedback score indicate about a seller?
+A Trustworthiness
+Q The focus of the chief engagement officer is to drive, what?
+A Engagement
+Q Chamillionaire uses his game Chamillitary to harness the energy
+of his, what?
+A Fans
+Q The SAP community network is designed to connect whom?
+A Clients
+
+---
+
+## Sección 12: CHAPTER 3 [Entropy: 0.25]
+
+Riddle Me This!
+Q What atmospheric condition uses thunder, lightning, and heavy
+rains in formulating fun?
+A Gamestorming
+GA M I F Y YO U R R E A D A N SW E R K EY ❯❯❯ 223
+
+---
+
+## Sección 13: CHAPTER 4 [Entropy: 0.28]
+
+Choose Your Own Adventure—Solve Target’s Check Out
+Problem Yourself!
+Solution 1: Because the work of your checkout team has been sluggish and causing severe backups, you decide to motivate the staff
+by promising a pizza party after work one day in exchange for a
+little pep and faster service.
+Results of Solution 1: Initially the staff members are excited about
+the weekly pizza party, and their work may or may not reflect it.
+However, over time the “reward” becomes an expectation, and the
+staff members return to their old sluggish ways. Because the reward
+isn’t tied to specific behaviors, the power of its efficacy is limited.
+Solution 2: You decide to punish your checkout team members for
+their poor performance by cutting five minutes off of their break
+time. You let all of them know that they are on probation and that
+if things don’t pick up in line, they can expect to be replaced.
+Results of Solution 2: Some team members attempt to make the
+changes you seek; however, the majority become angry. The backlash is swift as some people quit, dissatisfied and frustrated, while
+others refuse to pick up the pace and instead allow their work to
+fall off even further. As you increase punishment in accordance
+with the bad behavior of your staff members, the dissatisfaction on
+all sides continues to grow.
+Solution 3: You want to help your checkout staff members rally
+so you offer a weekly prize in the form of a $20 gift card for the
+individual who consistently gets the most customers through the
+checkout process in three minutes or less. Using the clock on the
+checkout computer, employees track their work by printing out a
+receipt at the end of each transaction
+Results of Solution 3: Your staff members’ behavior quickly shifts
+as they become players in your game. Over time games within the
+224 ❮❮❮ GA M I F Y YO U R R E A D A N SW E R K EY
+game form, with staff members competing against their friends
+and superiors. Employee satisfaction increases as does customer
+satisfaction. By adding surprises and twists over time, your staff
+members stay invested in the game and continue to play it, and
+they maintain the positive behavior it sets up.
+
+---
+
+## Sección 14: CHAPTER 6 [Entropy: 0.25]
+
+Timed Read
+“Like Flies to Honey: Making Recruitment Fun”
+Q What company used a puzzle on a billboard to attract new
+recruits?
+A Google
+True or false Quixey’s challenge had more than 100 winners.
+A False
+Q Winners of the first challenge in this section of the chapter
+were told that they were some of the “ engineers in the
+world.”
+A best
+True or false The biggest lesson from this section of the chapter
+is probably that getting qualified recruits to come to you is better
+than going out and finding them.
+A True
+“Gamifying the Career Path: L’Oréal’s Reveal Game”
+True or false Job fairs are an effective way to cut through the noise
+when looking for job recruits.
+A False
+Q Who was L’Oréal interested in recruiting?
+A Qualified job candidates/people with a skill set that weren’t on
+the radar of a high-end makeup brand
+GA M I F Y YO U R R E A D A N SW E R K EY ❯❯❯ 225
+Q Reveal was a game designed to simulate what kind of experience
+for players?
+A An actual working experience
+Q How many people had already signed up to play when Reveal
+officially launched?
+A More than 21,000
+“Brandstorm: Innovating Recruitment with Real-
+World Games”
+Q In 2012 Brandstorm focused on new products for what
+company?
+A The Body Shop
+True or false Brandstorm recently gave L’Oréal not just the opportunity to find out what kids today will buy but also how they will
+buy it.
+A True
+Q How many countries were represented by teams in the 2012
+Brandstorm competition?
+A 40
+Q Of particular interest to L’Oréal are potential recruits with
+a instinct.
+A competitive
+
+---
+**Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SOTA_RAG_ARCHITECTURES_AND_TOOLS_2026]] · [[CURATED_MASTER_BOOKS_AND_COURSES_2026]] · [[CANON_SOFTWARE_ENGINEERING_AT_GOOGLE]] · [[CANON_HARNESS_ENGINEERING_INTEGRAL_2026]] · #streaming_and_overlays

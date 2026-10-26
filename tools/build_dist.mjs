@@ -1,4 +1,4 @@
-﻿import fs from 'node:fs';
+import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
@@ -67,10 +67,14 @@ if (projectConfig.stack === 'astro-edge' && fs.existsSync(path.join(root, 'astro
       fs.copyFileSync(path.join(root, rootDoc), path.join(dist, rootDoc));
     } else if (fs.existsSync(path.join(root, 'public', rootDoc))) {
       fs.copyFileSync(path.join(root, 'public', rootDoc), path.join(dist, rootDoc));
+    } else if (fs.existsSync(path.join(root, 'templates', 'vanilla-edge', rootDoc))) {
+      fs.copyFileSync(path.join(root, 'templates', 'vanilla-edge', rootDoc), path.join(dist, rootDoc));
     }
   }
   if (fs.existsSync(path.join(root, 'site'))) {
     copyRecursive(path.join(root, 'site'), path.join(dist, 'site'));
+  } else if (fs.existsSync(path.join(root, 'templates', 'vanilla-edge', 'site'))) {
+    copyRecursive(path.join(root, 'templates', 'vanilla-edge', 'site'), path.join(dist, 'site'));
   }
   if (fs.existsSync(path.join(root, 'public'))) {
     copyRecursive(path.join(root, 'public'), dist);
@@ -99,8 +103,14 @@ if (projectConfig.stack === 'astro-edge' && fs.existsSync(path.join(root, 'astro
   }
 }
 
-// 4.5 Minify CSS & JS in dist/ via esbuild (with external .map source maps for Lighthouse Best Practices)
+// 4.5 Minify CSS & JS in dist/ via LightningCSS (Rust) & esbuild
 async function minifyDistAssets() {
+  let lightningTransform = null;
+  try {
+    const lcss = await import('lightningcss');
+    lightningTransform = lcss.transform || (lcss.default && lcss.default.transform) || null;
+  } catch (_) {}
+
   let esbuild = null;
   try {
     const esbuildPath = path.join(FACTORY_ROOT, 'tools', 'audit', 'node_modules', 'esbuild', 'lib', 'main.js');
@@ -110,35 +120,54 @@ async function minifyDistAssets() {
     }
   } catch (_) {}
 
+  let savedBytes = 0;
+
+  if (lightningTransform || esbuild) {
+    console.log(`• Minifying CSS in dist/ via ${lightningTransform ? 'LightningCSS (Rust)' : 'esbuild'}...`);
+    const cssDirs = [path.join(dist, 'site', 'css'), path.join(dist, 'styles')];
+    for (const cssDir of cssDirs) {
+      if (!fs.existsSync(cssDir)) continue;
+      for (const file of fs.readdirSync(cssDir)) {
+        if (!file.endsWith('.css')) continue;
+        const fullPath = path.join(cssDir, file);
+        const raw = fs.readFileSync(fullPath, 'utf8');
+        try {
+          if (lightningTransform) {
+            const res = lightningTransform({
+              filename: file,
+              code: Buffer.from(raw, 'utf8'),
+              minify: true,
+              sourceMap: true
+            });
+            const outCode = res.code.toString('utf8') + `\n/*# sourceMappingURL=${file}.map */\n`;
+            fs.writeFileSync(fullPath, outCode, 'utf8');
+            if (res.map) fs.writeFileSync(fullPath + '.map', res.map.toString('utf8'), 'utf8');
+            savedBytes += Math.max(0, Buffer.byteLength(raw) - Buffer.byteLength(outCode));
+          } else if (esbuild) {
+            const res = await esbuild.transform(raw, {
+              loader: 'css',
+              minify: true,
+              sourcemap: 'external',
+              sourcefile: file
+            });
+            const outCode = res.code + `\n/*# sourceMappingURL=${file}.map */\n`;
+            fs.writeFileSync(fullPath, outCode, 'utf8');
+            if (res.map) fs.writeFileSync(fullPath + '.map', res.map, 'utf8');
+            savedBytes += Math.max(0, Buffer.byteLength(raw) - Buffer.byteLength(outCode));
+          }
+        } catch (_) {}
+      }
+    }
+  }
+
   if (!esbuild) {
-    console.log('• [Minify] esbuild not found in tools/audit/node_modules, keeping raw assets.');
+    if (savedBytes > 0) {
+      console.log(`  ✓ LightningCSS saved ${(savedBytes / 1024).toFixed(2)} KB across production CSS bundles.`);
+    }
     return;
   }
 
-  console.log('• Minifying CSS & JS in dist/ with esbuild + generating source maps...');
-  let savedBytes = 0;
-
-  const cssDirs = [path.join(dist, 'site', 'css'), path.join(dist, 'styles')];
-  for (const cssDir of cssDirs) {
-    if (!fs.existsSync(cssDir)) continue;
-    for (const file of fs.readdirSync(cssDir)) {
-      if (!file.endsWith('.css')) continue;
-      const fullPath = path.join(cssDir, file);
-      const raw = fs.readFileSync(fullPath, 'utf8');
-      try {
-        const res = await esbuild.transform(raw, {
-          loader: 'css',
-          minify: true,
-          sourcemap: 'external',
-          sourcefile: file
-        });
-        const outCode = res.code + `\n/*# sourceMappingURL=${file}.map */\n`;
-        fs.writeFileSync(fullPath, outCode, 'utf8');
-        if (res.map) fs.writeFileSync(fullPath + '.map', res.map, 'utf8');
-        savedBytes += Math.max(0, Buffer.byteLength(raw) - Buffer.byteLength(outCode));
-      } catch (_) {}
-    }
-  }
+  console.log('• Minifying JS in dist/ with esbuild + generating source maps...');
 
   const jsDirs = [path.join(dist, 'site', 'js'), path.join(dist, 'data')];
   for (const dir of jsDirs) {

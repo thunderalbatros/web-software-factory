@@ -1,15 +1,15 @@
-> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
 
 # 🏢 Tratado Canónico: Software Engineering at Google
 ### Basado en: *Software Engineering at Google: Lessons Learned from Programming Over Time*
@@ -33,12 +33,12 @@ Titus Winters formula la distinción seminal:
 ## 2. La Ley de Hyrum (Hyrum's Law)
 > **"Con un número suficiente de usuarios de una API, no importa lo que declares en el contrato formal: todos los comportamientos observables de tu sistema serán dependidos por alguien."**
 
-**Aplicación Yendo:** No confiar en supuestos implícitos en las respuestas JSON de Supabase. Todo contrato debe ser validado con **Valibot** para impedir que cambios silenciosos en la base de datos rompan la interfaz del usuario.
+**Aplicación WebFactory:** No confiar en supuestos implícitos en las respuestas JSON de Supabase. Todo contrato debe ser validado con **Valibot** para impedir que cambios silenciosos en la base de datos rompan la interfaz del usuario.
 
 ---
 
 ## 3. Pruebas Automatizadas y Modificaciones sin Miedo (The Test Diamond)
-En Google, las pruebas unitarias rápidas y herméticas superan a las pruebas lentas de integración. En Yendo:
+En Google, las pruebas unitarias rápidas y herméticas superan a las pruebas lentas de integración. En WebFactory:
 - Unit tests con Jest para los stores de Zustand y algoritmos de quórum.
 - Flujos de humo E2E con **Maestro** para los 3 flujos críticos de usuario (Login biométrico, Unirse a Squad, Check-in en Venue).
 

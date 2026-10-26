@@ -1,15 +1,15 @@
-> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
 
 # 🌐 Tratado Canónico: Sistemas Distribuidos (Andrew S. Tanenbaum)
 ### Basado en: *Distributed Systems: Principles and Paradigms (2nd/3rd Edition)*
@@ -39,7 +39,7 @@ ultima_revision: 2026-08-27
 
 Tanenbaum y Van Steen detallan los modelos de consistencia frente a fallas de red:
 - **En la noche de CABA:** La conectividad 4G/5G en el subsuelo de un club nocturno colapsa con frecuencia (partición de red temporal).
-- **Estrategia Yendo Offline-First:**
+- **Estrategia WebFactory Offline-First:**
   - El ticket de acceso confirmado y su firma criptográfica se persisten en local (**MMKV**).
   - El check-in puede verificarse de forma local y asíncrona mediante validación de firma con clave pública del venue, sincronizando el estado con Supabase en cuanto se recupere la conexión.
 

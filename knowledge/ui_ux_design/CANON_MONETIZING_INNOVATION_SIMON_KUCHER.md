@@ -1,15 +1,15 @@
-﻿> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Software Factory Web y client-portal.
 
 # 💎 Tratado Canónico: Monetizing Innovation (Simon-Kucher & Partners)
 ### Basado en: *Monetizing Innovation: How Smart Companies Design the Product Around the Price*
@@ -33,12 +33,12 @@ El marco canónico de Simon-Kucher establece que antes de escribir una sola lín
 
 Simon-Kucher clasifica el 72% de los fracasos de nuevos productos en cuatro patrones patológicos exactos:
 
-| Patología | Definición y Síntomas | Causa Raíz en Startups | Riesgo para Yendo y Mitigación |
+| Patología | Definición y Síntomas | Causa Raíz en Startups | Riesgo para WebFactory y Mitigación |
 | :--- | :--- | :--- | :--- |
-| **1. Feature Shock (Shock de Funcionalidades)** | El producto intenta hacer de todo para todos. Llena la app de botones, configuraciones y opciones secundarias. El resultado es confusión cognitiva, costos de desarrollo astronómicos y ningún segmento dispuesto a pagar la prima por el exceso de complejidad. | Obsesión de los desarrolladores/fundadores por agregar "una cosita más" sin verificar si el usuario la valora o si destruye la claridad del producto. | **Mitigación Yendo:** No convertir la app de eventos en una red social inflada o ticketero laberíntico. Flujo unificado: Descubrimiento geográfico (<150m) → Quórum con amigos → Check-in biométrico → Salida al venue. Cero bloat. |
-| **2. Minivation (Mini-innovación)** | La empresa crea una innovación genuina pero fija un precio tímido por miedo al rechazo, o se enfoca en mejoras incrementales tan pequeñas que no logran traccionar tracción de red ni justificar cambio de hábito. | Falta de convicción en el valor diferencial entregado o incapacidad para cuantificar el ROI del cliente B2B. | **Mitigación Yendo:** Para los venues de CABA, Yendo no cobra una comisión genérica; monetiza el **RevPASH incremental en horas muertas** (jueves y domingos), donde el venue tiene capacidad ociosa y un margen de contribución del 80%. |
-| **3. Hidden Gem (Gema Oculta)** | Un producto o funcionalidad secundaria tiene un potencial de monetización masivo, pero la empresa lo esconde dentro de un plan general gratuito o no lo promociona adecuadamente porque va en contra del "core business" histórico. | Falta de visión estratégica sobre los subproductos de datos y transacciones colaterales generados por la plataforma. | **Mitigación Yendo:** El valor oculto de Yendo no es solo vender la entrada; es el **Consorcio de Datos de Tráfico Nocturno de CABA** y la **Garantía Anti-No-Show con Quórum Social**. |
-| **4. Undead (Muerto Viviente)** | Un producto que nunca debió haber nacido: resuelve un problema que nadie tiene o que nadie está dispuesto a pagar por resolver, pero sigue vivo consumiendo recursos por inercia o ego del equipo. | No matar a tiempo experimentos que no demuestran elasticidad precio positiva ni tracción orgánica. | **Mitigación Yendo:** Validación rápida con telemetría de embudos. Si una funcionalidad B2B no genera conversión de reservas en 3 semanas, se depreca inmediatamente. |
+| **1. Feature Shock (Shock de Funcionalidades)** | El producto intenta hacer de todo para todos. Llena la app de botones, configuraciones y opciones secundarias. El resultado es confusión cognitiva, costos de desarrollo astronómicos y ningún segmento dispuesto a pagar la prima por el exceso de complejidad. | Obsesión de los desarrolladores/fundadores por agregar "una cosita más" sin verificar si el usuario la valora o si destruye la claridad del producto. | **Mitigación WebFactory:** No convertir la app de eventos en una red social inflada o ticketero laberíntico. Flujo unificado: Descubrimiento geográfico (<150m) → Quórum con amigos → Check-in biométrico → Salida al venue. Cero bloat. |
+| **2. Minivation (Mini-innovación)** | La empresa crea una innovación genuina pero fija un precio tímido por miedo al rechazo, o se enfoca en mejoras incrementales tan pequeñas que no logran traccionar tracción de red ni justificar cambio de hábito. | Falta de convicción en el valor diferencial entregado o incapacidad para cuantificar el ROI del cliente B2B. | **Mitigación WebFactory:** Para los venues de CABA, WebFactory no cobra una comisión genérica; monetiza el **RevPASH incremental en horas muertas** (jueves y domingos), donde el venue tiene capacidad ociosa y un margen de contribución del 80%. |
+| **3. Hidden Gem (Gema Oculta)** | Un producto o funcionalidad secundaria tiene un potencial de monetización masivo, pero la empresa lo esconde dentro de un plan general gratuito o no lo promociona adecuadamente porque va en contra del "core business" histórico. | Falta de visión estratégica sobre los subproductos de datos y transacciones colaterales generados por la plataforma. | **Mitigación WebFactory:** El valor oculto de WebFactory no es solo vender la entrada; es el **Consorcio de Datos de Tráfico Nocturno de CABA** y la **Garantía Anti-No-Show con Quórum Social**. |
+| **4. Undead (Muerto Viviente)** | Un producto que nunca debió haber nacido: resuelve un problema que nadie tiene o que nadie está dispuesto a pagar por resolver, pero sigue vivo consumiendo recursos por inercia o ego del equipo. | No matar a tiempo experimentos que no demuestran elasticidad precio positiva ni tracción orgánica. | **Mitigación WebFactory:** Validación rápida con telemetría de embudos. Si una funcionalidad B2B no genera conversión de reservas en 3 semanas, se depreca inmediatamente. |
 
 ---
 
@@ -54,7 +54,7 @@ La segmentación tradicional (por edad, género o geografía) es estéril para f
 2. **Segmento "Experience Enthusiasts" (Consumidores de Ocio Premium / High LTV):**
    - **WTP:** Muy baja sensibilidad al precio de entrada; alta sensibilidad a la fricción y al estatus ($25.000 - $60.000 ARS o más).
    - **Drivers de Valor:** Fila rápida (Fast Pass biométrico), reservas de mesa VIP sin intermediarios turbios, certeza absoluta de ingreso sin "derecho de admisión" arbitrario en puerta.
-   - **Empaquetamiento:** "Yendo Black Pass" con fee de conveniencia transparentado.
+   - **Empaquetamiento:** "WebFactory Black Pass" con fee de conveniencia transparentado.
 
 3. **Segmento B2B: Bares, Boliches y Centros Culturales de CABA:**
    - **WTP:** Altísima disposición a pagar a cambio de **Garantía de Ocupación** y **Consumo en Barra**.
@@ -76,7 +76,7 @@ Simon-Kucher define la ciencia del bundling en 3 tipos de características:
 
 La elección de la **Métrica de Valor (Price Metric)** es el factor determinante de la rentabilidad:
 - Una mala métrica de valor: Cobrarle al venue un abono mensual fijo plano (SaaS) independiente de si se llena o no. Si una semana no va nadie, el venue cancela la suscripción (churn alto).
-- Una métrica de valor alineada con Simon-Kucher: **Monetizar el Éxito Compartido**. Yendo cobra un porcentaje sobre el ticket efectivamente cortado y un fee por show-up verificado de mesas en horas valle. Si el venue explota de gente, Yendo gana; si la noche es floja, el costo para el venue es mínimo.
+- Una métrica de valor alineada con Simon-Kucher: **Monetizar el Éxito Compartido**. WebFactory cobra un porcentaje sobre el ticket efectivamente cortado y un fee por show-up verificado de mesas en horas valle. Si el venue explota de gente, WebFactory gana; si la noche es floja, el costo para el venue es mínimo.
 
 ---
 

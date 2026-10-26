@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * Web Software Factory Studio — AI Clean Code, AST Anti-Pattern & 60-FPS Motion Architecture Auditor
  * Usage: node tools/audit/code_clean_audit.mjs
@@ -81,15 +81,8 @@ for (const fullPath of jsFiles) {
     }
   });
 
-  // 2c. Check for 3D tilt deformation on .bounty-card-3d (User rule: Pure Levitation + Laser Border only)
-  if (relPath === 'site/js/bounty-system.js') {
-    if (code.includes('--rotate-x') || code.includes('--rotate-y')) {
-      addFinding('MAJOR', 'ui-deformation-guard', relPath, 1, '3D tilt rotation variables (--rotate-x / --rotate-y) detected in bounty-system.js.', 'Use pure vertical levitation without 3D tilt deformation.');
-    }
-  }
-
-  // 2d. Check for duplicate top-level class/prototype method definitions in audio engines
-  if (relPath === 'site/js/audio.js' || relPath === 'site/js/pro-fx-audio.js') {
+  // 2c. Check for duplicate top-level class/prototype method definitions in JS modules
+  if (relPath.endsWith('.js')) {
     const seenMethods = new Map();
     const methodRegex = /^\s{2,4}([a-zA-Z0-9_]+)\s*\([^)]*\)\s*\{/;
     const blockedKeywords = new Set(['if', 'for', 'while', 'switch', 'catch', 'function', 'return', 'constructor']);
@@ -107,7 +100,7 @@ for (const fullPath of jsFiles) {
   }
 }
 
-// 3. Audit CSS Architecture, GPU Compositor Discipline & De-Deformation Rules
+// 3. Audit CSS Architecture & GPU Compositor Discipline
 for (const fullPath of cssFiles) {
   const relPath = path.relative(rootDir, fullPath).replace(/\\/g, '/');
   const css = fs.readFileSync(fullPath, 'utf8');
@@ -115,17 +108,7 @@ for (const fullPath of cssFiles) {
   cssFilesChecked++;
   filesChecked++;
 
-  // 3a. Enforce Zero 3D Tilt Deformation on Bountys (.bounty-card-3d)
-  if (relPath === 'site/css/bounties.css') {
-    if (/rotateX\s*\(|rotateY\s*\(/i.test(css)) {
-      addFinding('BLOCKER', 'bounty-3d-deformation', relPath, 1, 'Found rotateX/rotateY 3D deformation in bounties.css.', 'Keep pure vertical levitation (translateY) + Green/White laser conic-gradient.');
-    }
-    if (!css.includes('bountyCardLevitate') || !css.includes('#53fc18') || !css.includes('#ffffff')) {
-      addFinding('MAJOR', 'bounty-laser-levitation', relPath, 1, 'Missing bountyCardLevitate keyframes or Green (#53fc18) + White (#ffffff) laser perimeter in bounties.css.', 'Ensure both levitation and laser border are active.');
-    }
-  }
-
-  // 3b. Check @keyframes for non-composited layout thrashing properties (top/left/width/height/margin)
+  // 3a. Check @keyframes for non-composited layout thrashing properties (top/left/width/height/margin)
   const keyframeBlocks = css.matchAll(/@keyframes\s+([a-zA-Z0-9_-]+)\s*\{([\s\S]*?\})\s*\}/g);
   for (const match of keyframeBlocks) {
     const kfName = match[1];
@@ -146,8 +129,8 @@ for (const fullPath of cssFiles) {
   }
 }
 
-// 4. Audit index.html Security, Windows 10 Emoji Compatibility & Asset Integrity
-const indexHtmlPath = path.join(rootDir, 'index.html');
+// 4. Audit entry HTML Security, Windows 10 Emoji Compatibility & Asset Integrity
+const indexHtmlPath = path.join(rootDir, projectConfig.paths.entryHtml || 'index.html');
 if (fs.existsSync(indexHtmlPath)) {
   filesChecked++;
   const html = fs.readFileSync(indexHtmlPath, 'utf8');

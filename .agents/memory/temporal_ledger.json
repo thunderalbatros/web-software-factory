@@ -1,93 +1,60 @@
-﻿{
-  "version": "1.0.0",
-  "last_updated": "2026-10-20T06:19:32.663Z",
+{
+  "version": "2.0.0",
+  "last_updated": "2026-10-26T01:17:34.943Z",
   "rules": [
     {
-      "id": "stack-vanilla-web-obs",
+      "id": "stack-astro-and-vanilla-edge",
       "type": "architectural_decision",
-      "title": "Pure Web Platform (Vanilla JS + HTML5 + CSS3 + Web Audio + Cloudflare)",
-      "valid_from": "2026-10-15T00:00:00.000Z",
+      "title": "Dual Product-Line Templates (Astro 5 Edge Islands + Vanilla Edge SPA/MPA on Cloudflare Workers Static Assets)",
+      "valid_from": "2026-10-25T00:00:00.000Z",
       "valid_until": null,
       "status": "ACTIVE",
       "stack": [
-        "HTML5",
-        "Vanilla JS",
-        "Vanilla CSS",
-        "Web Audio API",
-        "Node.js (strip-types)",
-        "Cloudflare Workers D1",
-        "Three.js WebGPU"
+        "Astro 5 Islands",
+        "HTML5 / CSS Baseline 2026",
+        "Vanilla JS ES2025",
+        "W3C DTCG 2025.10 OKLCH Tokens",
+        "Cloudflare Workers Static Assets + D1 SQLite",
+        "Speculation Rules API"
       ],
-      "rationale": "Zero-card $0 permanent hosting, sub-5% CPU OBS Browser Source efficiency, instantaneous loading without hydration overhead.",
-      "evidence": "core/src/index.ts, site/js/chat.js, dist/ build cleanly"
+      "rationale": "Zero-card USD 0 permanent hosting, sub-1.8s LCP (~0ms with Speculation Rules), 60-FPS GPU-composited motion on HP 250 G8 hardware.",
+      "evidence": "templates/astro-edge, templates/vanilla-edge, tools/build_dist.mjs"
     },
     {
-      "id": "RealtimeHub-compliance-zero-custody",
-      "type": "compliance_rule",
-      "title": "Zero Custody & 100% Free Spectator Participation",
-      "valid_from": "2026-10-15T00:00:00.000Z",
+      "id": "oklch-apca-dtcg-design-floor",
+      "type": "design_invariable",
+      "title": "W3C DTCG 2025.10 OKLCH 90/8/2 Chromatic Budget & APCA Lc >= 75/60 Contrast",
+      "valid_from": "2026-10-25T00:00:00.000Z",
       "valid_until": null,
       "status": "ACTIVE",
-      "rationale": "Strict compliance with RealtimeHub ToS and gambling regulations. No buy-ins, no custody of viewer crypto/fiat. Prizes awarded out-of-band.",
-      "evidence": "AGENTS.md Section 2.2, test/phase1-PartnerBrand-auth.test.ts"
+      "rationale": "Guarantees perceptual legibility, de-boxed surface luminance hierarchy, and Utopia clamp() fluid scaling across 1920x1080, 1440x900, 768x1024, and 390x844 with 0px horizontal scroll.",
+      "evidence": "CONSTRAINTS.md, tokens/design.tokens.json, tools/audit/ryux_design_gate.mjs"
     },
     {
-      "id": "obs-cpu-budget-le-5pct",
+      "id": "gpu-compositor-60fps-motion-budget",
       "type": "performance_invariable",
-      "title": "OBS Browser Source CPU Impact <= 5%",
-      "valid_from": "2026-10-15T00:00:00.000Z",
+      "title": "60-FPS Frame Budget (<= 16.6ms) via Composite-Only GPU Properties & CSS Baseline 2026",
+      "valid_from": "2026-10-25T00:00:00.000Z",
       "valid_until": null,
       "status": "ACTIVE",
-      "rationale": "HP 250 G8 notebook constraint. All animations must use composite-only properties (transform, opacity) via WAAPI and procedural audio.",
-      "evidence": "AGENTS.md Section 1, knowledge/motion_and_animation/CANON_BOOK_DESIGNING_FOR_PERFORMANCE_LARA_HOGAN.md"
-    },
-    {
-      "id": "multi-locale-currency-parsing",
-      "type": "bug_fix",
-      "title": "Tolerant Multi-Locale Number and Currency Parsing",
-      "valid_from": "2026-10-17T18:00:00.000Z",
-      "valid_until": null,
-      "status": "ACTIVE",
-      "rationale": "Parse both European and US number formats (1.500,50 vs 1,500.50) and multiplier suffixes (k, m, b) correctly.",
-      "evidence": "core/src/number-parser.ts, test/stage4-tiers.test.ts"
+      "rationale": "HP 250 G8 notebook constraint. Animate exclusively transform, opacity, filter, @starting-style, view-transitions, and animation-timeline: view() with mandatory prefers-reduced-motion: reduce.",
+      "evidence": "CONSTRAINTS.md Section 3, tools/audit/ryux_design_gate.mjs, tools/audit/security_and_motion_audit.mjs"
     },
     {
       "id": "durable-objects-hibernation",
       "type": "architectural_decision",
-      "title": "Cloudflare Durable Objects WebSocket Hibernation API",
+      "title": "Cloudflare Durable Objects WebSocket Hibernation API & D1 Write Coalescing",
       "valid_from": "2026-10-15T00:00:00.000Z",
       "valid_until": null,
       "status": "ACTIVE",
-      "rationale": "Zero-cost real-time message broadcasting without billing active worker CPU during idle websocket connections.",
-      "evidence": "worker/index.js, .agents/memory/instincts/durable-objects-hibernation.md"
-    },
-    {
-      "id": "rainbet-external-sponsor-integration",
-      "type": "deprecated_rule",
-      "title": "Rainbet Casino Scraper & Referral Engine",
-      "valid_from": "2026-08-01T00:00:00.000Z",
-      "valid_until": "2026-10-15T00:00:00.000Z",
-      "status": "INVALIDATED",
-      "superseded_by": "PartnerBrand-vip-and-client-portal-internal-store",
-      "rationale": "Rainbet is no longer the active sponsor. The project operates exclusively with PartnerBrand VIP referral linking and client-portal virtual $DIG economy.",
-      "evidence": "test/phase1-PartnerBrand-auth.test.ts, site/index.html"
-    },
-    {
-      "id": "mobile-react-native-expo-framework",
-      "type": "cross_project_contamination",
-      "title": "Expo SDK & React Native Mobile Frameworks",
-      "valid_from": "2026-08-01T00:00:00.000Z",
-      "valid_until": "2026-10-17T19:00:00.000Z",
-      "status": "INVALIDATED",
-      "superseded_by": "stack-vanilla-web-obs",
-      "rationale": "Belongs exclusively to Yendo Mobile. Web Software Factory Studio is strictly a Web Application and OBS Streaming Suite.",
-      "evidence": "Purge commit 1ba5dc1"
+      "rationale": "Zero-cost real-time state synchronization and sub-10ms edge persistence without billing idle Worker CPU.",
+      "evidence": ".agents/memory/instincts/durable-objects-hibernation.md"
     },
     {
       "id": "linear-ast-scanning-no-redos",
       "type": "performance_invariable",
       "title": "Linear Line-by-Line AST Scanning (Zero ReDoS)",
-      "valid_from": "2026-10-20T06:19:32.657Z",
+      "valid_from": "2026-10-26T01:17:34.933Z",
       "valid_until": null,
       "status": "ACTIVE",
       "rationale": "Nested regular expression quantifiers (e.g. `([^()]*|\\([^()]*\\))*`) cause catastrophic backtracking and terminal freezes on large files (>2,000 lines). Parse class methods linearly with line splitting.",
@@ -97,7 +64,7 @@
       "id": "mock-server-api-catchall",
       "type": "architectural_decision",
       "title": "Catch-All 200 OK JSON Fallback for Local API Testing",
-      "valid_from": "2026-10-20T06:19:32.659Z",
+      "valid_from": "2026-10-26T01:17:34.937Z",
       "valid_until": null,
       "status": "ACTIVE",
       "rationale": "Headless Playwright audits capture all 404 network failures as console errors. Local simulation servers must implement a catch-all 200 OK JSON fallback for `/api/*` to guarantee a clean 0-error report.",
@@ -107,42 +74,42 @@
       "id": "network-fetch-abort-timeout-guard",
       "type": "resilience_pattern",
       "title": "Mandatory AbortSignal.timeout on External API Calls",
-      "valid_from": "2026-10-20T06:19:32.661Z",
+      "valid_from": "2026-10-26T01:17:34.940Z",
       "valid_until": null,
       "status": "ACTIVE",
       "rationale": "External API services (Serper, Qdrant Cloud, Vertex AI) can hang indefinitely when connection pools saturate or sockets drop. Every remote fetch must have an explicit timeout between 2,500ms and 3,500ms.",
       "evidence": "tools/intelligence/serper_researcher.mjs, tools/intelligence/rag_pipeline.mjs"
     },
     {
-      "id": "symbolic-method-aliasing",
-      "type": "bug_fix",
-      "title": "Method Renaming Aliases on Class Prototypes",
-      "valid_from": "2026-10-20T06:19:32.663Z",
-      "valid_until": null,
-      "status": "ACTIVE",
-      "rationale": "When refactoring methods in public client controllers, provide a prototype alias to prevent runtime PAGEERROR exceptions when older modules or event handlers invoke the previous symbol name.",
-      "evidence": "site/js/admin-hub.js renderHuntAdmin -> renderfeature-moduleAdmin"
-    },
-    {
-      "id": "canonical-production-domain",
-      "type": "architectural_invariable",
-      "title": "Canonical Production Domain is strictly https://example-client.pages.dev/",
-      "valid_from": "2026-10-15T00:00:00.000Z",
-      "valid_until": null,
-      "status": "ACTIVE",
-      "domain": "https://example-client.pages.dev/",
-      "rationale": "https://example-client.pages.dev/ is the single source of truth and production URL for the channel. Temporary workers.dev subdomains (*.workers.dev) generated by ephemeral preview builds must never replace or supersede the official domain.",
-      "evidence": "index.html, robots.txt, llms.txt, worker/index.js, site/js/auth-oauth.js"
-    },
-    {
       "id": "pqc-visual-regression-and-textgrad-gate",
       "type": "architectural_decision",
       "title": "PQC Component Visual Regression + TextGrad Surrogate Gate",
-      "valid_from": "2026-10-20T06:19:32.649Z",
+      "valid_from": "2026-10-26T01:17:34.923Z",
       "valid_until": null,
       "status": "ACTIVE",
       "rationale": "Enforces maxDiffPixelRatio <= 0.01 across 3 viewports and SHA-256 Constitution Lock before promoting skill refinements.",
       "evidence": "tools/audit/visual_regression.mjs, tools/intelligence/textgrad_skill_optimizer.mjs"
+    },
+    {
+      "id": "legacy-single-project-monolith",
+      "type": "deprecated_rule",
+      "title": "Hardcoded Single-Project Casino/Streamer Root Coupling",
+      "valid_from": "2026-08-01T00:00:00.000Z",
+      "valid_until": "2026-10-25T00:00:00.000Z",
+      "status": "INVALIDATED",
+      "superseded_by": "stack-astro-and-vanilla-edge",
+      "rationale": "The Web Software Factory Studio is strictly decoupled from any single client repository via factory.project.json and projects/<slug>.",
+      "evidence": "tools/lib/project_loader.mjs, tools/factory.mjs"
+    },
+    {
+      "id": "symbolic-method-aliasing",
+      "type": "bug_fix",
+      "title": "Method Renaming Aliases on Class Prototypes",
+      "valid_from": "2026-10-26T01:17:34.943Z",
+      "valid_until": null,
+      "status": "ACTIVE",
+      "rationale": "When refactoring methods in public client controllers, provide a prototype alias to prevent runtime PAGEERROR exceptions when older modules or event handlers invoke the previous symbol name.",
+      "evidence": "site/js/admin-hub.js renderHuntAdmin -> renderfeature-moduleAdmin"
     }
   ]
 }

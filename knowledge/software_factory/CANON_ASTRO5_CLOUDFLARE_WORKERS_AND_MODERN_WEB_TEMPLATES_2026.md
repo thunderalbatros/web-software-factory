@@ -1,5 +1,7 @@
 # CANON: Astro 5/6 + Cloudflare Workers Static Assets & Modern Web Templates (2026)
 
+> **Alcance:** Estándares ISO/IEC 26550 SPLE, Spec-Driven Development, compilación de tokens W3C DTCG y automatización de la Web Software Factory.
+
 > **Scope:** Official architectural guide for Squad 2, Squad 4, and Squad 7 on building ultra-fast client websites using **Astro 5 + Cloudflare Workers Static Assets** (`templates/astro-edge`) and **Vanilla JS/CSS + Cloudflare Workers** (`templates/vanilla-edge`).
 > **Sources Verified:** Cloudflare Official Acquisition Announcement of The Astro Technology Company (Jan 16, 2026); Astro 5 Official Documentation (Islands, Server Islands, Content Layer API, `<ClientRouter />`); Cloudflare Workers Static Assets (`[assets]` binding) `[VERIFICADO: docs.astro.build & developers.cloudflare.com, 2026-10-25]`.
 

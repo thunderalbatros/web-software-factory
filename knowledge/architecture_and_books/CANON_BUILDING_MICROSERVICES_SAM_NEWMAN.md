@@ -1,15 +1,15 @@
-> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
 
 # 🏛️ Tratado Canónico: Building Microservices (Sam Newman)
 ### Basado en: *Building Microservices (2nd Edition)*
@@ -27,7 +27,7 @@ Sam Newman advierte que un microservicio no se define por la cantidad de líneas
 
 ---
 
-## 2. La Arquitectura Híbrida de Yendo (Modular Monolith en Supabase + Workers Asíncronos)
+## 2. La Arquitectura Híbrida de WebFactory (Modular Monolith en Supabase + Workers Asíncronos)
 
 Siguiendo el principio de Newman:
 1. **El Núcleo Transaccional (Supabase / PostgreSQL):** Gestiona usuarios, squads, reservas y estados de venues en una única base de datos relacional con RLS, evitando transacciones distribuidas complejas (2-Phase Commit).

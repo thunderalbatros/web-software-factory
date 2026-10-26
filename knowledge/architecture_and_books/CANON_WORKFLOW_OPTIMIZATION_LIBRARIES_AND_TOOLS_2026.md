@@ -1,20 +1,20 @@
-> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
-
 ---
 version: 1.0.0
 tipo: guia
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - tech-stack
   - canonico
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
 
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
+
 # 🚀 Reporte Estratégico: Librerías, Herramientas e Integraciones Open Source de Alto Impacto (Ecosistema Global y Gigantes de China)
 
-**Para:** Equipo de Arquitectura, Core y UI de Yendo  
-**Origen:** Búsqueda e Investigación de Estado del Arte (Tencent, Alibaba, ByteDance, Ant Group y Ecosistema React Native 2026)  
+**Para:** Equipo de Arquitectura, Core y UI de WebFactory  
+**Origen:** Búsqueda e Investigación de Estado del Arte (Tencent, Alibaba, ByteDance, Ant Group y Ecosistema Modern Web UI (CSS/WAAPI) 2026)  
 **Objetivo:** Optimizar drásticamente el rendimiento móvil, la persistencia sin latencia, la inferencia de IA local y el flujo de trabajo (DX) en Expo SDK 57.
 
 ---
@@ -25,9 +25,9 @@ Las empresas tecnológicas líderes de China (Tencent/WeChat, Alibaba/Ant Group,
 
 ```
 ┌──────────────────────────────────────────────────────────────────────────────────────────────────┐
-│ CUADRO DE INNOVACIÓN ABIERTA: CHINA TECH GIANTS EN EL STACK DE YENDO                             │
+│ CUADRO DE INNOVACIÓN ABIERTA: CHINA TECH GIANTS EN EL STACK DE webfactory                             │
 ├───────────────────────┬─────────────────────────┬────────────────────────────────────────────────┤
-│ Herramienta / Creador │ Tecnología Base         │ Impacto Crítico para Yendo                     │
+│ Herramienta / Creador │ Tecnología Base         │ Impacto Crítico para WebFactory                     │
 ├───────────────────────┼─────────────────────────┼────────────────────────────────────────────────┤
 │ 1. Tencent MMKV       │ C++ / mmap síncrono     │ Almacenamiento clave-valor 30x más rápido que  │
 │    (WeChat Core)      │ JSI / NitroModules      │ AsyncStorage. Persistencia síncrona en Zustand │
@@ -58,7 +58,7 @@ Las empresas tecnológicas líderes de China (Tencent/WeChat, Alibaba/Ant Group,
 ## ⚡ 2. Análisis Detallado de las Soluciones Clave
 
 ### 🗄️ A. Tencent MMKV (`react-native-mmkv`)
-*   **Problema Actual:** `AsyncStorage` es asíncrono, cruza el puente serializado de React Native y provoca retrasos imperceptibles pero existentes en el arranque de la app, mostrando estados de carga transitorios mientras se recupera el token o perfil.
+*   **Problema Actual:** `AsyncStorage` es asíncrono, cruza el puente serializado de Modern Web UI (CSS/WAAPI) y provoca retrasos imperceptibles pero existentes en el arranque de la app, mostrando estados de carga transitorios mientras se recupera el token o perfil.
 *   **Solución MMKV:** Utiliza archivos mapeados en memoria (`mmap`) compartida a nivel de kernel y C++ directo con JSI/NitroModules.
 *   **Mejora:** Lectura y escritura instantánea en **<0.1ms**. Zustand se conecta mediante `createJSONStorage(() => mmkvStorage)`, cargando el estado de autenticación y la ubicación en memoria antes del primer fotograma dibujado.
 
@@ -80,14 +80,14 @@ Las empresas tecnológicas líderes de China (Tencent/WeChat, Alibaba/Ant Group,
 
 ### 1. Pruebas End-to-End: **Maestro** (Declarative Mobile UI Testing)
 *   **Qué es:** El sustituto moderno de Appium y Detox. Utiliza flujos declarativos en YAML sin selectores frágiles ni configuración compleja de drivers.
-*   **Impacto en Yendo:** Permite automatizar el flujo crítico: *Splash 3D ➔ Onboarding ➔ Ver Evento en Mapa ➔ RSVP Dunbar (Cupo de 6)* en menos de 30 líneas de YAML ejecutadas localmente o en GitHub Actions.
+*   **Impacto en WebFactory:** Permite automatizar el flujo crítico: *Splash 3D ➔ Onboarding ➔ Ver Evento en Mapa ➔ RSVP Dunbar (Cupo de 6)* en menos de 30 líneas de YAML ejecutadas localmente o en GitHub Actions.
 
 ### 2. Sincronización Local-First: **PowerSync** (Supabase Offline-First)
 *   **Qué es:** Motor open-source de replicación SQLite en el cliente acoplado en tiempo real a Supabase PostgreSQL.
-*   **Impacto en Yendo:** Los usuarios tienen acceso garantizado a su tarjeta de ingreso, direcciones y detalles del grupo aún si pierden la conexión móvil camino al punto de encuentro.
+*   **Impacto en WebFactory:** Los usuarios tienen acceso garantizado a su tarjeta de ingreso, direcciones y detalles del grupo aún si pierden la conexión móvil camino al punto de encuentro.
 
-### 3. Monitoreo de Rendimiento en Tiempo Real: **React Native Performance**
-*   **Qué es:** Módulo de telemetría de estándar W3C para React Native (`mark`, `measure`, TTI, First Contentful Paint).
+### 3. Monitoreo de Rendimiento en Tiempo Real: **Modern Web UI (CSS/WAAPI) Performance**
+*   **Qué es:** Módulo de telemetría de estándar W3C para Modern Web UI (CSS/WAAPI) (`mark`, `measure`, TTI, First Contentful Paint).
 *   **Impacto:** Permite auditar en milisegundos exactos el tiempo que tarda la pantalla de Splash 3D en transferir el control al Feed principal.
 
 ---
@@ -114,7 +114,7 @@ Las empresas tecnológicas líderes de China (Tencent/WeChat, Alibaba/Ant Group,
 - [[Número de Dunbar]]
 - [[Terceros Lugares]]
 - [[Supabase]]
-- [[React Native Skia]]
+- [[Modern Web UI (CSS/WAAPI) Skia]]
 - [[React Three Fiber]]
 - [[Lottie]]
 - [[Capybara Mascot]]

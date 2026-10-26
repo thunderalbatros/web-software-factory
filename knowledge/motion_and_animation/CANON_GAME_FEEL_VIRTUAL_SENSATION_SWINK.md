@@ -1,4 +1,4 @@
-﻿---
+---
 version: 1.1.0
 tipo: research
 tags:
@@ -10,6 +10,8 @@ tags:
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-10-17
 ---
+
+> **Alcance:** Literatura canónica y tratados técnicos de animación a 60 FPS, shaders GPU, física de resortes (spring physics), arte técnico 3D y micro-interacciones fluidas para sitios web modernos.
 
 # 🕹️ Tratado Canónico: Game Feel en la Web (Steve Swink)
 ### Basado en: *Game Feel: A Game Designer's Guide to Virtual Sensation*

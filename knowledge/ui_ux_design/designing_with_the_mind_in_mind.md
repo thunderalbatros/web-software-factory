@@ -1,25 +1,22 @@
-﻿# 📚 Libro Completo: Designing with the Mind in Mind
+# 📚 Libro Completo: Designing with the Mind in Mind
+
+> **Alcance:** Literatura canónica de diseño UI/UX, sistemas de diseño, psicología cognitiva, economía conductual, gamificación y conversión (CRO) para la Web Software Factory.
 
 > **Autor:** Jeff Johnson  
 > **Archivo Fuente:** `Designing with the Mind in Mind_ A Simple Guide to Understanding User Interface Design Rules.pdf`  
 > **Páginas Originales:** 188  
 > **Secciones Extraídas:** 62  
 > **Fecha de Ingesta:** 2026-10-06  
-> **Tipo:** Texto Completo Estructurado para RAG Jerárquico  
+> **Tipo:** Texto Completo Estructurado para RAG Jerárquico
 
 ---
 
-## Sección 1: Introducción y Fundamentos
-
--- 1 of 188 --
+## Sección 1: Introducción y Fundamentos [Entropy: 0.295]
 
 Designing with the
 Mind in Mind
 Simple Guide to Understanding
 User Interface Design Rules
-
--- 2 of 188 --
-
 Designing with the
 Mind in Mind
 Simple Guide to Understanding
@@ -29,9 +26,6 @@ AMSTERDAM • BOSTON • HEIDELBERG • LONDON
 NEW YORK • OXFORD • PARIS • SAN DIEGO
 SAN FRANCISCO • SINGAPORE • SYDNEY • TOKYO
 Morgan Kaufmann Publishers is an imprint of Elsevier
-
--- 3 of 188 --
-
 Morgan Kaufmann Publishers is an imprint of Elsevier
 30 Corporate Drive, Suite 400, Burlington, MA 01803, USA
 This book is printed on acid-free paper
@@ -75,9 +69,6 @@ Typeset by MPS Limited, a Macmillan Company, Chennai, India
 www.macmillansolutions.com
 Printed in China
 10 11 12 13 5 4 3 2 1
-
--- 4 of 188 --
-
 vii
 Acknowledgments
 I could not have written this book without a lot of help and support.
@@ -102,9 +93,6 @@ Valuable additional copyediting was provided by Cate de Heer. Most importantly, 
 I was researching and writing this book, all the more remarkable because it coincided with the period when she was completing a book of her own: Face To Face:
 Children of the AIDS Crisis in Africa, a photography book documenting the plight
 of children orphaned by AIDS in sub-Saharan Africa (FaceToFaceAfrica.com).
-
--- 5 of 188 --
-
 ix
 Foreword
 The design of interactive computer systems is not only an art, but, at least aspirationally,
@@ -143,9 +131,7 @@ combined work on both the interface design side and the psychological science
 
 ---
 
-## Sección 2: Introducción y Fundamentos
-
--- 6 of 188 --
+## Sección 2: Introducción y Fundamentos [Entropy: 0.46]
 
 x Foreword
 side. I first met him when he was on the user interface team of the Xerox Star series
@@ -165,9 +151,6 @@ why of the larger human action principles at work—a sort of cognitive science 
 designers in a hurry. Above all, this is a book of profound insight into the human
 mind for practical people who want to get something done.
 —Stuart Card
-
--- 7 of 188 --
-
 xi
 Introduction
 USER-INTERFACE DESIGN RULES: WHERE DO THEY COME
@@ -197,9 +180,6 @@ them to design problems.
 USER EXPERIENCE DESIGN AND EVALUATION REQUIRES
 UNDERSTANDING AND EXPERIENCE
 Following user-interface design guidelines is not as straightforward as following cooking recipes. Design rules often describe goals rather than actions. They are purposefully
-
--- 8 of 188 --
-
 xii Introduction
 very general to make them broadly applicable, but that means that their exact meaning
 and their applicability to specific design situations is open to interpretation.
@@ -238,9 +218,7 @@ this similarity, and it isn’t just that later authors were influenced by earli
 
 ---
 
-## Sección 3: Introducción y Fundamentos
-
--- 9 of 188 --
+## Sección 3: Introducción y Fundamentos [Entropy: 0.355]
 
 xiii Where do design guidelines come from?
 WHERE DO DESIGN GUIDELINES COME FROM?
@@ -290,9 +268,6 @@ l Aesthetic and minimalist design
 l Help users recognize, diagnose, and recover
 from errors
 l Provide online documentation and help
-
--- 10 of 188 --
-
 xiv Introduction
 INTENDED AUDIENCE OF THIS BOOK
 This book is intended mainly for software development professionals who have to
@@ -302,8 +277,6 @@ evaluators, who often refer to design heuristics when reviewing software or anal
 A second audience for this book is software development managers who want
 enough of a background in the psychological basis for user-interface design rules to
 understand and evaluate the work of the people they manage.
-
--- 11 of 188 --
 Designing with the Mind in Mind
 © 2010 Elsevier Inc. All rights reserved. 2010
 CHAPTER
@@ -322,9 +295,6 @@ for the cafeteria and fitness center. If the real estate manager showed you the 
 shown in Figure 1.1, you would see five black shapes representing the buildings.
 FIguRE 1.1
 Building map or word? What you see depends on what you were told to see.
-
--- 12 of 188 --
-
 2 CHAPTER 1 We Perceive What We Expect
 Now imagine that instead of a real estate manager, you are meeting with an
 advertising manager. You are discussing a new billboard ad to be placed in certain
@@ -347,9 +317,7 @@ you’ve “seen” the dog, it is hard to go back to seeing the image as a rand
 
 ---
 
-## Sección 4: Introducción y Fundamentos
-
--- 13 of 188 --
+## Sección 4: Introducción y Fundamentos [Entropy: 0.31]
 
 3 Perception biased by experience
 FIguRE 1.3
@@ -360,9 +328,6 @@ recently heard stories about contaminated vaccines than by people who had
 recently heard stories about successful uses of vaccines to fight diseases.
 Users of computer software and Web sites often click buttons or links without
 looking carefully at them. Their perception of the display is based more on what
-
--- 14 of 188 --
-
 4 CHAPTER 1 We Perceive What We Expect
 FIguRE 1.4
 The same character is perceived as H or A depending on the surrounding letters.
@@ -392,9 +357,6 @@ appears may affect how we identify the character (see Fig. 1.4).
 Similarly, our overall comprehension of a sentence or of a paragraph can even
 influence what words we see in it. For example, the same letter sequence can be
 2 Multi step dialog boxes are called “wizards” in user interface jargon.
-
--- 15 of 188 --
-
 5 Perception biased by goals
 Fold napkins. Polish silverware. Wash dishes.
 French napkins. Polish silverware. German dishes.
@@ -430,9 +392,7 @@ For example, when people navigate through software or a Web site, seeking inform
 
 ---
 
-## Sección 5: Introducción y Fundamentos
-
--- 16 of 188 --
+## Sección 5: Introducción y Fundamentos [Entropy: 0.28]
 
 6 CHAPTER 1 We Perceive What We Expect
 and superficially for items that seem related to their goal. They don’t simply ignore
@@ -474,17 +434,11 @@ that share words with the goal that I gave you: Departments (top left), Departme
 and Colleges (middle left), or Campus Maps (bottom right). If you’re a “search”
 person, you might instead go right to the Search box (middle right), type words
 related to the goal, and click “Go.”
-
--- 17 of 188 --
-
 7 Perception biased by goals
 FIguRE 1.6
 Toolbox: Are there scissors here?
 FIguRE 1.7
 University of Canterbury home page: Navigating Web sites includes perceptual filtering.
-
--- 18 of 188 --
-
 8 CHAPTER 1 We Perceive What We Expect
 Whether you browse or search, it is likely that you would leave the home page
 without noticing that you were randomly chosen to win $100 (bottom left). Why?
@@ -520,9 +474,7 @@ convention only works if the simulated light source is assumed to be on the uppe
 
 ---
 
-## Sección 6: Introducción y Fundamentos
-
--- 19 of 188 --
+## Sección 6: Introducción y Fundamentos [Entropy: 0.31]
 
 9 Design implications
 relies on a convention, familiar to most experienced computer users, that the light
@@ -537,8 +489,6 @@ understand the goals
 Users come to a system with goals they want to achieve. Designers should understand those goals. Realize that users’ goals may vary, and that their goals strongly
 influence what they perceive. Ensure that at every point in an interaction, the information users need is available, prominent, and maps clearly to a possible user goal,
 so users will notice and use the information.
-
--- 20 of 188 --
 Designing with the Mind in Mind
 © 2010 Elsevier Inc. All rights reserved. 2010
 CHAPTER
@@ -563,9 +513,6 @@ graphic design and user interface design.
 GESTALT PRINCIPLE: PROXIMITY
 The principle of Proximity is that the relative distance between objects in a display affects our perception of whether and how the objects are organized into subgroups. Objects that are near each other (relative to other objects) appear grouped,
 while those that are farther apart do not.
-
--- 21 of 188 --
-
 12 CHAPTER 2 Our Vision is Optimized to See Structure
 In Figure 2.1, the stars on the left are closer together horizontally than they
 are vertically, so we see three rows of stars, while the stars on the right are closer
@@ -579,9 +526,6 @@ Proximity: Items that are closer appear grouped. Left: rows, Right: columns.
 FIGuRE 2.2
 In Outlook’s Distribution List Membership dialog box, list buttons are in a group box, separate
 from the window-control buttons.
-
--- 22 of 188 --
-
 13 Gestalt principle: proximity
 FIGuRE 2.3
 In Mozilla Thunderbird’s Subscribe Folders dialog box, controls are grouped using the Proximity
@@ -603,9 +547,7 @@ In Discreet’s Software Installer, poorly spaced radiobuttons look grouped in v
 
 ---
 
-## Sección 7: Introducción y Fundamentos
-
--- 23 of 188 --
+## Sección 7: Introducción y Fundamentos [Entropy: 0.283]
 
 14 CHAPTER 2 Our Vision is Optimized to See Structure
 FIGuRE 2.5
@@ -620,9 +562,6 @@ principles to convey groupings (see Fig. 2.6). The three very similar and tightl
 FIGuRE 2.6
 Mac OS Page Setup dialog box: The Similarity and Proximity principles are used to group the
 Orientation settings.
-
--- 24 of 188 --
-
 15 Gestalt principle: continuity
 FIGuRE 2.7
 Online form at Elsevier.com: Similarity makes the text fields appear grouped.
@@ -641,9 +580,6 @@ objects into groups, several Gestalt principles describe our visual system’s t
 whole objects. The first such principle, the principle of Continuity, states that our
 visual perception is biased to perceive continuous forms rather than disconnected
 segments.
-
--- 25 of 188 --
-
 16 CHAPTER 2 Our Vision is Optimized to See Structure
 For example, on the left side of Figure 2.8, we automatically see two crossing
 lines—one blue and one orange. We don’t see two separate orange segments and
@@ -664,9 +600,6 @@ Continuity: Human vision is biased to see continuous forms, even adding missing 
 necessary.
 FIGuRE 2.9
 The IBM company logo uses the Continuity principle to form letters from disconnected patches.
-
--- 26 of 188 --
-
 17 Gestalt principle: closure
 GESTALT PRINCIPLE: CLOSuRE
 Related to Continuity is the Gestalt principle of Closure, which states that our visual
@@ -684,9 +617,6 @@ Our visual system is so strongly biased to see objects that it can even interpre
 a totally blank area as an object. We see the combination of shapes on the right
 of Figure 2.11 as a white triangle overlapping another triangle and three black circles, even though the figure really only contains three V-shapes and three black
 pac-men.
-
--- 27 of 188 --
-
 18 CHAPTER 2 Our Vision is Optimized to See Structure
 FIGuRE 2.12
 Icons depicting stacks of objects exhibit the Closure principle: partially visible objects are
@@ -713,9 +643,7 @@ book Coherence in Thought and Action (Thagard, 2002; see Fig. 2.14) and in three
 
 ---
 
-## Sección 8: Introducción y Fundamentos
-
--- 28 of 188 --
+## Sección 8: Introducción y Fundamentos [Entropy: 0.265]
 
 19 Gestalt principle: figure/ground
 FIGuRE 2.14
@@ -728,9 +656,6 @@ field into the figure (the foreground) and ground (the background). The foregrou
 FIGuRE 2.15
 Symmetry: The human visual system parses very complex two dimensional images into three
 dimensional scenes.
-
--- 29 of 188 --
-
 20 CHAPTER 2 Our Vision is Optimized to See Structure
 FIGuRE 2.16
 Figure/Ground: When objects overlap, we see the smaller as figure on ground.
@@ -744,9 +669,6 @@ the smaller object as the figure and the larger object as the ground (see Fig. 2
 However, our perception of figure vs. ground is not completely determined by
 scene characteristics. It also depends on the viewer’s focus of attention. Dutch artist M. C. Escher exploited this phenomenon to produce ambiguous images in which
 figure and ground switch roles as our attention shifts (see Fig. 2.17).
-
--- 30 of 188 --
-
 21 Gestalt principle: figure/ground
 In user interface and Web design, the Figure/Ground principle is often used to
 place an impression-inducing background “behind” the primary displayed content
@@ -756,9 +678,6 @@ FIGuRE 2.18
 Figure/Ground is used at AndePhotos.com to display a thematic watermark “behind” content.
 FIGuRE 2.19
 Figure/Ground is used at GRACEUSA.org to pop up a photo “over” the page content.
-
--- 31 of 188 --
-
 22 CHAPTER 2 Our Vision is Optimized to See Structure
 Common motion—implying common fates—is used in some animations to show
 relationships between entities. For example, GapMinder graphs animate dots representing nations to show changes over time in various factors of economic development. Countries that move together share development histories (see Fig. 2.21).
@@ -780,9 +699,6 @@ For example, in a display showing dozens of pentagons, if seven of them wiggled
 back and forth in synchrony, people would see them as a related group, even if the
 wiggling pentagons were separated from each other and looked no different from
 all the other pentagons (see Fig. 2.20).
-
--- 32 of 188 --
-
 23 Gestalt principles: combined
 GESTALT PRINCIPLES: COMBINED
 Of course, in real-world visual scenes, the Gestalt principles work in concert, not
@@ -796,9 +712,6 @@ design suggests any relationships between elements that you do not intend.
 FIGuRE 2.21
 Common fate: GapMinder animates dots to show which nations have similar development
 histories.
-
--- 33 of 188 --
-
 24 CHAPTER 2 Our Vision is Optimized to See Structure
 FIGuRE 2.22
 All of the Gestalt principles except Common Fate play a role in this portion of a Mac OS
@@ -809,9 +722,8 @@ highlighting and motion make the selected folders appear grouped.
 
 ---
 
-## Sección 9: Introducción y Fundamentos
+## Sección 9: Introducción y Fundamentos [Entropy: 0.25]
 
--- 34 of 188 --
 Designing with the Mind in Mind
 © 2010 Elsevier Inc. All rights reserved. 2010
 CHAPTER
@@ -820,7 +732,7 @@ Structure
 
 ---
 
-## Sección 10: Chapter 2 used the Gestalt principles of visual perception to show how our visual
+## Sección 10: Chapter 2 used the Gestalt principles of visual perception to show how our visual [Entropy: 0.355]
 
 system is optimized to perceive structure. Perceiving structure in our environment
 helps us make sense of objects and events quickly. Chapter 2 also mentioned that
@@ -845,9 +757,6 @@ Depart: 14:30 Tue 15 Oct
 Arrive: 11:40 Tue 15 Oct
 Figure 3.1
 Structured presentation of airline reservation information is easier to scan and understand.
-
--- 35 of 188 --
-
 26 CHAPTER 3 We Seek and Use Visual Structure
 Compare that with a terser, more structured hypothetical design that factors out
 needless repetition and marks as links only the words that represent options (see
@@ -874,9 +783,6 @@ Licenses & ID Cards: Renewals, Duplicates, Changes
 • Register as: organ donor
 Figure 3.3
 The California DMV Web site Contents page with repetition eliminated and better visual structure.
-
--- 36 of 188 --
-
 27 We seek and use visual structure
 bottom, but the labels for calculated amounts were below their corresponding values. Second, the labels were just as close to the value below as to their own value,
 so proximity (see Chapter 2) could not be used to perceive that labels were grouped
@@ -896,9 +802,6 @@ Interest Total $ 318,861.22
 Tax Total $ 93,750.00
 PMI Total $
 Pay-off Date Sep 2037
-
--- 37 of 188 --
-
 28 CHAPTER 3 We Seek and Use Visual Structure
 The revised design, in contrast, allows users to perceive the correspondence
 between labels and values without conscious thought (see Fig. 3.5, right).
@@ -925,9 +828,7 @@ making them harder to scan and verify.
 
 ---
 
-## Sección 11: Chapter 2 used the Gestalt principles of visual perception to show how our visual
-
--- 38 of 188 --
+## Sección 11: Chapter 2 used the Gestalt principles of visual perception to show how our visual [Entropy: 0.31]
 
 29 Data-specific controls provide even more structure
 allow users to do it with spaces (see Fig. 3.8b). This limitation makes it harder for
@@ -951,9 +852,6 @@ Figure 3.10
 NWA.com: Dates are displayed and entered using a control that is specifically designed for dates.
 Figure 3.8
 BankOfAmerica.com: Segmented data fields provide useful structure.
-
--- 39 of 188 --
-
 30 CHAPTER 3 We Seek and Use Visual Structure
 ViSuAL HierArCHY LeTS PeOPLe FOCuS ON
 THe reLeVANT iNFOrMATiON
@@ -1011,9 +909,6 @@ Figure 3.11
 Find the advice about prominence in each of these displays. Prose text format (left) makes
 people read everything. Visual hierarchy (right) lets people ignore information irrelevant to
 their goals.
-
--- 40 of 188 --
-
 31 Visual hierarchy lets people focus on the relevant information
 The examples in Figure 3.11 show the value of visual hierarchy in a textual, readonly information display. Visual hierarchy is equally important in interactive control
 panels and forms—perhaps even more so. Compare dialog boxes from two different
@@ -1025,8 +920,6 @@ can quickly find the settings they are interested in.
 Figure 3.12
 Visual hierarchy in interactive control panels and forms lets users find settings quickly. (A) Band
 in a Box (bad), (B) GarageBand (good).
-
--- 41 of 188 --
 Designing with the Mind in Mind
 © 2010 Elsevier Inc. All rights reserved. 2010
 CHAPTER
@@ -1055,9 +948,7 @@ juggling, or reading music (Sousa, 2005).
 
 ---
 
-## Sección 12: Chapter 2 used the Gestalt principles of visual perception to show how our visual
-
--- 42 of 188 --
+## Sección 12: Chapter 2 used the Gestalt principles of visual perception to show how our visual [Entropy: 0.265]
 
 34 CHAPTER 4 Reading is Unnatural
 Because people are not innately “wired” to learn to read, children who either
@@ -1094,9 +985,6 @@ upside down. Turn this book upside down and try reading the next few paragraphs.
 This exercise only approximates the feeling of illiteracy. You will discover that the
 inverted text appears foreign and illegible at first, but after a minute you will be able
 to read it, albeit slowly and laboriously.
-
--- 43 of 188 --
-
 35 Is reading feature-driven or context-driven?
 (A)
 (B)
@@ -1127,9 +1015,7 @@ into neural firing patterns. But there are exceptions, such as idiomatic express
 
 ---
 
-## Sección 13: Chapter 2 used the Gestalt principles of visual perception to show how our visual
-
--- 44 of 188 --
+## Sección 13: Chapter 2 used the Gestalt principles of visual perception to show how our visual [Entropy: 0.295]
 
 36 CHAPTER 4 Reading is Unnatural
 To experience context-driven reading, glance down quickly at Figure 4.2 (below),
@@ -1159,9 +1045,6 @@ FIGURE 4.3
 Top-down reading: Most readers, especially those who know the songs from which these text
 passages are taken, can read these passages even though the words (A) have all but their first
 and last letters scrambled and (B) are mostly obscured.
-
--- 45 of 188 --
-
 37 Skilled and unskilled reading uses different parts of the brain
 However, empirical studies of readers conducted since then have demonstrated
 conclusively that the truth is the opposite of what the earlier theory predicted.
@@ -1195,9 +1078,6 @@ had suffered brain injuries. For example, in the mid-1800s, doctors found that
 1Chapter 10 describes the differences between automatic and controlled cognitive processing. For present
 purposes, we will simply say that controlled processes burden working memory, while automatic processes
 do not.
-
--- 46 of 188 --
-
 38 CHAPTER 4 Reading is Unnatural
 people with brain damage near the left temple—an area now called Broca’s area
 after the doctor who discovered it—can understand speech but have trouble speaking, and that people with brain damage near the left ear—now called Wernicke’s
@@ -1226,9 +1106,7 @@ The human brain, showing Broca’s area and Wernicke’s area.
 
 ---
 
-## Sección 14: Chapter 2 used the Gestalt principles of visual perception to show how our visual
-
--- 47 of 188 --
+## Sección 14: Chapter 2 used the Gestalt principles of visual perception to show how our visual [Entropy: 0.265]
 
 39 Poor information design can disrupt reading
 l Advanced: The word analysis area is skipped. Instead the occipito-temporal
@@ -1259,9 +1137,6 @@ appear mainly in contracts, privacy statements, or other legal documents:
 l Aforementioned: mentioned previously
 l Bailiwick: the region in which a sheriff has legal powers; more generally:
 domain of control
-
--- 48 of 188 --
-
 40 CHAPTER 4 Reading is Unnatural
 l Disclaim: renounce any claim to or connection with; disown; repudiate
 l Heretofore: up to the present time; before now
@@ -1281,9 +1156,6 @@ read Abraham Lincoln’s Gettysburg Address in an outline typeface in ALL cAPS.
 FIGURE 4.5
 Text in ALL CAPS is generally hard to read because letters look more similar to each other.
 Outline typefaces complicate feature recognition. This example demonstrates both.
-
--- 49 of 188 --
-
 41 Poor information design can disrupt reading
 Tiny fonts
 Another way to make text hard to read in software applications, Websites, and
@@ -1312,9 +1184,7 @@ This relies on the fact that most people can read text that Internet ’bots can
 
 ---
 
-## Sección 15: Chapter 2 used the Gestalt principles of visual perception to show how our visual
-
--- 50 of 188 --
+## Sección 15: Chapter 2 used the Gestalt principles of visual perception to show how our visual [Entropy: 0.295]
 
 42 CHAPTER 4 Reading is Unnatural
 FIGURE 4.8
@@ -1335,9 +1205,6 @@ background.
 2 The term originally was coined based on the word “capture,” but it is also said to be an acronym for
 “Completely Automated Public Turing test to tell Computers and Humans Apart”—Wikipedia entry for
 “Captcha.”
-
--- 51 of 188 --
-
 43 Poor information design can disrupt reading
 Information buried in repetition
 Visual noise can also come from the text itself. If successive lines of text contain a
@@ -1349,9 +1216,6 @@ Another example of repetition that creates noise is the computer store on
 Apple.com. The pages for ordering a laptop computer list different keyboard options
 FIGURE 4.10
 A more recent mortgage calculator on the FED Web site displays text on a plain white background.
-
--- 52 of 188 --
-
 44 CHAPTER 4 Reading is Unnatural
 for a computer in a very repetitive way, making it hard to see that the essential difference between the keyboards is the language that they support (see Fig. 4.11).
 Centered text
@@ -1368,17 +1232,11 @@ FargoHomes.com centers text, thwarting automatic eye movement patterns.
 FIGURE 4.11
 Apple.com’s “Buy Computer” page lists options in which the important information (keyboard
 language compatibility) is buried in repetition.
-
--- 53 of 188 --
-
 45 Poor information design can disrupt reading
 FIGURE 4.13
 FargoHomes.com centers numbered items, really thwarting automatic eye movement patterns.
 The same site also centers numbered lists, really messing up readers’ automatic
 eye movement (see Fig. 4.13). Try scanning the list quickly.
-
--- 54 of 188 --
-
 46 CHAPTER 4 Reading is Unnatural
 FIGURE 4.14
 Keller Williams’s Web site makes text hard to read in several different ways.
@@ -1397,9 +1255,6 @@ Designers of interactive systems can support both reading methods by following
 these guidelines:
 l Ensure that text in user interfaces allows the feature-based automatic processes
 to function effectively by avoiding the disruptive flaws described above: difficult or tiny fonts, patterned backgrounds, centering, etc.
-
--- 55 of 188 --
-
 47 Much of the reading required by software is unnecessary
 FIGURE 4.15
 Microsoft Word’s Help home page is easy to scan and read.
@@ -1422,9 +1277,7 @@ shortened with no loss of clarity. Let’s examine how the Jeep company, between
 
 ---
 
-## Sección 16: Chapter 2 used the Gestalt principles of visual perception to show how our visual
-
--- 56 of 188 --
+## Sección 16: Chapter 2 used the Gestalt principles of visual perception to show how our visual [Entropy: 0.355]
 
 48 CHAPTER 4 Reading is Unnatural
 2002 and 2007, shortened its instructions for finding a local Jeep dealer (see
@@ -1440,16 +1293,10 @@ Even when text describes products rather than explaining instructions, it is cou
 description that people have to read from start to end. Most potential customers
 FIGURE 4.16
 SmartDraw’s Text Entry Properties dialog box displays too much text for its simple functionality.
-
--- 57 of 188 --
-
 49 Much of the reading required by software is unnecessary
 2003
 FIGURE 4.17
 Between 2002 and 2007, Jeep.com drastically reduced the reading required by “Find a Dealer.”
-
--- 58 of 188 --
-
 50 CHAPTER 4 Reading is Unnatural
 cannot or will not read it. compare costco.com’s descriptions of laptop computers
 in 2007 with those in 2009 (see Fig. 4.18).
@@ -1465,17 +1312,12 @@ how to eliminate unnecessary text, see Krug (2005) and Redish (2007).
 2009
 FIGURE 4.18
 Between 2007 and 2009, Costco.com drastically reduced the text in product descriptions.
-
--- 59 of 188 --
-
 51 Test on real users
 TEST ON REAL USERS
 Finally, designers should test their designs on the intended user population to be
 confident that the users can read all essential text quickly and effortlessly. Some testing can be done early, using prototypes and partial implementations, but it should
 also be done just before release. Fortunately, last-minute changes to text font sizes
 and formats are usually easy to make.
-
--- 60 of 188 --
 Designing with the Mind in Mind
 © 2010 Elsevier Inc. All rights reserved. 2010
 CHAPTER
@@ -1502,9 +1344,6 @@ What you learned in college is only partly right. We do in fact have rods and
 three types of cones in our retinas. The rods are sensitive to overall brightness while
 the three types of cones are sensitive to different frequencies of light. But that’s
 where the truth departs from what most people learned in college until recently.
-
--- 61 of 188 --
-
 54 CHAPTER 5 Our Color Vision is Limited
 First, those of us who live in industrialized societies hardly use our rods at all.
 They function only at low levels of light. They are for getting around in poorly
@@ -1537,9 +1376,7 @@ Sensitivity of the three types of retinal cones (A) versus artificial red, green
 
 ---
 
-## Sección 17: Chapter 2 used the Gestalt principles of visual perception to show how our visual
-
--- 62 of 188 --
+## Sección 17: Chapter 2 used the Gestalt principles of visual perception to show how our visual [Entropy: 0.25]
 
 55 Vision is optimized for edge contrast, not brightness
 Given the odd relationships between the sensitivities of our three types of retinal
@@ -1571,9 +1408,6 @@ insensitive that their contribution to the total would be negligible, so omittin
 FIguRe 5.2
 The circles appear as different shades because their backgrounds are different, but they are the
 same.
-
--- 63 of 188 --
-
 56 CHAPTER 5 Our Color Vision is Limited
 Brain researcher Edward H. Adelson at the Massachusetts Institute of Technology
 developed an outstanding illustration of our visual system’s insensitivity to absolute
@@ -1601,9 +1435,6 @@ in the legend very small (see Fig. 5.6). Color patches in chart legends should b
 large to help people distinguish the colors (see Fig. 5.7).
 FIguRe 5.3
 The squares marked A and B are the same gray. We see B as white because it is “shaded.”
-
--- 64 of 188 --
-
 57 Ability to discriminate colors depends on how colors are presented
 (A) (B) (C)
 FIguRe 5.4
@@ -1641,9 +1472,6 @@ S11
 0.2 0
 FIguRe 5.6
 Tiny color patches in this chart legend are hard to distinguish.
-
--- 65 of 188 --
-
 58 CHAPTER 5 Our Color Vision is Limited
 On Web sites, a common use of color is to distinguish unfollowed links from
 already followed ones. On some sites, the “followed” and “unfollowed” colors are too
@@ -1670,9 +1498,7 @@ MinneapolisFed.org: The difference in color between visited and unvisited links 
 
 ---
 
-## Sección 18: Chapter 2 used the Gestalt principles of visual perception to show how our visual
-
--- 66 of 188 --
+## Sección 18: Chapter 2 used the Gestalt principles of visual perception to show how our visual [Entropy: 0.28]
 
 59 Color-blindness
 color-blindness. Having color-blindness doesn’t mean an inability to see colors. It just
@@ -1694,9 +1520,6 @@ Red/green color-blind people can’t distinguish: (A) dark red from black, (B) b
 color is extremely rare.
 FIguRe 5.10
 MoneyDance: Graph uses colors some users can’t distinguish.
-
--- 67 of 188 --
-
 60 CHAPTER 5 Our Color Vision is Limited
 tell apart. For example, people with red/green color-blindness cannot distinguish
 the blue from the purple or the green from the khaki. If you are not color-blind, you
@@ -1717,9 +1540,6 @@ l Display angle: Some computer displays, particularly LCD ones, work much
 better when viewed straight on than when viewed from an angle. When LCD
 FIguRe 5.11
 MoneyDance graph rendered in grayscale.
-
--- 68 of 188 --
-
 61 Guidelines for using color
 displays are viewed at an angle, colors—and color differences—often are
 altered.
@@ -1749,9 +1569,6 @@ quickly and easily as it can distinguish those six colors (Ware, 2008).
 FIguRe 5.12
 The most distinctive colors. Each color causes a strong signal on only one color-opponent
 channel.
-
--- 69 of 188 --
-
 62 CHAPTER 5 Our Color Vision is Limited
 3. Avoid color pairs that color-blind people cannot distinguish. Such pairs
 include dark red versus black, dark red versus dark green, blue versus purple, light green versus white. Don’t use dark reds, blues, or violets against
@@ -1780,9 +1597,7 @@ Apple’s iPhoto uses uses color plus a symbol to distinguish two types of album
 
 ---
 
-## Sección 19: Chapter 2 used the Gestalt principles of visual perception to show how our visual
-
--- 70 of 188 --
+## Sección 19: Chapter 2 used the Gestalt principles of visual perception to show how our visual [Entropy: 0.25]
 
 63 Guidelines for using color
 FIguRe 5.15
@@ -1791,8 +1606,6 @@ ITN.net: The current step is highlighted in two ways: with color and shape.
 (A)
 FIguRe 5.16
 MinneapolisFed.org: Graph uses color differences visible to all sighted people, on any display.
-
--- 71 of 188 --
 Designing with the Mind in Mind
 © 2010 Elsevier Inc. All rights reserved. 2010
 CHAPTER
@@ -1820,9 +1633,6 @@ In technical terms, information from the visual periphery is compressed (with da
 loss) before transmission to the brain, while information from the fovea is not. All
 of this causes our vision to have much, much greater resolution in the center of our
 visual field than elsewhere (Lindsay and Norman, 1972; Waloszek, 2005).
-
--- 72 of 188 --
-
 66 CHAPTER 6 Our Peripheral Vision is Poor
 To visualize how small the fovea is compared to your entire visual field, hold
 your arm straight out and look at your thumb. Your thumbnail, viewed at arm’s
@@ -1865,9 +1675,6 @@ Angle (deg)
 FIgURE 6.1
 Distribution of photoreceptor cells (cones and rods) across the retina.
 Lindsay and Norman, 1972.
-
--- 73 of 188 --
-
 67 Resolution of the fovea compared to that of the periphery
 For example, as you read this page, your eyes dart around, scanning and reading.
 No matter where on the page your eyes are focused, you have the impression of
@@ -1899,9 +1706,7 @@ The resolution of our visual field is high in the center but much lower at the e
 
 ---
 
-## Sección 20: Chapter 2 used the Gestalt principles of visual perception to show how our visual
-
--- 74 of 188 --
+## Sección 20: Chapter 2 used the Gestalt principles of visual perception to show how our visual [Entropy: 0.25]
 
 68 CHAPTER 6 Our Peripheral Vision is Poor
 resolution as well. We can discriminate colors better in the center of our visual field
@@ -1936,9 +1741,6 @@ that lands the fovea there to allow us to check it. If we are browsing a produce
 draws our eyes and our attention, even though sometimes it may turn out to be
 radishes instead of strawberries. If we hear an animal growl nearby, a fuzzy animallike shape in the corner of our eye will be enough to zip our eyes in that direction,
 especially if the shape is moving toward us (see Fig. 6.4).
-
--- 75 of 188 --
-
 69 Examples from computer user interfaces
 That brings us to another advantage of peripheral vision: it is good at detecting
 motion. Anything that moves in our visual periphery, even slightly, is likely to draw
@@ -1960,9 +1762,6 @@ not be surprising that the person might not notice it.
 FIgURE 6.4
 A moving shape at the edge of our vision draws our eye: it could be food, or it might consider
 us food.
-
--- 76 of 188 --
-
 70 CHAPTER 6 Our Peripheral Vision is Poor
 For example, at InformaWorld.com, the online publications Web site of Informa
 Healthcare, if a user enters an incorrect username or password and clicks “Sign In”,
@@ -1990,9 +1789,7 @@ This error message for faulty sign-in appears in peripheral vision, where it wil
 
 ---
 
-## Sección 21: Chapter 2 used the Gestalt principles of visual perception to show how our visual
-
--- 77 of 188 --
+## Sección 21: Chapter 2 used the Gestalt principles of visual perception to show how our visual [Entropy: 0.265]
 
 71 Examples from computer user interfaces
 when it first appeared. Why? Can you think of any reasons why people might not
@@ -2009,9 +1806,6 @@ A simulation of a user’s visual field while the fovea is fixed on the “Login
 FIgURE 6.6
 This error message for faulty login is missed by some users even though it is not far from “Login”
 button.
-
--- 78 of 188 --
-
 72 CHAPTER 6 Our Peripheral Vision is Poor
 If the page title were black or any other color besides red, the red error message
 would be more likely to be noticed, even though it appears in the periphery of the
@@ -2045,18 +1839,12 @@ with red error symbols. Error messages are displayed in red and are near the err
 Furthermore, most of the error messages appear as soon as an erroneous entry is made,
 when the user is still focused on that part of the form, rather than only after the user
 submits the form. It is unlikely that AOL users will miss seeing these error messages.
-
--- 79 of 188 --
-
 73 Common methods of making messages visible
 FIgURE 6.8
 This error message for faulty sign-in is displayed more prominently, near where users will be
 looking.
 FIgURE 6.9
 New member registration at AOL.com displays error messages prominently, near each error.
-
--- 80 of 188 --
-
 74 CHAPTER 6 Our Peripheral Vision is Poor
 HEAVY ARTILLERY FOR MAKINg USERS NOTICE
 MESSAgES: USE SPARINgLY
@@ -2095,9 +1883,7 @@ be used only in very special, controlled situations.
 
 ---
 
-## Sección 22: Chapter 2 used the Gestalt principles of visual perception to show how our visual
-
--- 81 of 188 --
+## Sección 22: Chapter 2 used the Gestalt principles of visual perception to show how our visual [Entropy: 0.265]
 
 75 Heavy artillery for making users notice messages: use sparingly
 Flash or wiggle briefly
@@ -2124,9 +1910,6 @@ less and less attention to any stimulus that occurs frequently. It is like the o
 about the boy who cried “Wolf” too often: eventually, the villagers learned to ignore
 FIgURE 6.10
 REI’s pop-up dialog box signals required data that was omitted. It is hard to miss, but perhaps overkill.
-
--- 82 of 188 --
-
 76 CHAPTER 6 Our Peripheral Vision is Poor
 his cries, so when a wolf actually did come, his cries went unheeded. Overuse of
 strong attention-getting methods can cause important messages to be blocked by
@@ -2152,9 +1935,6 @@ FIgURE 6.11
 Appropriate pop-up error dialogs: (A) Microsoft Excel, (B) Adobe InDesign.
 (A)
 (B)
-
--- 83 of 188 --
-
 77 Heavy artillery for making users notice messages: use sparingly
 FIgURE 6.12
 An error message can wiggle briefly after it appears, to attract a user’s fovea toward it.
@@ -2164,8 +1944,6 @@ appeared, wiggled one pixel up, down, left, and right within 0.25 second (see Fi
 6.12), and then stopped to became a simple static image. Without being annoying,
 that would attract the users’ eyeballs, guaranteed. Because, after all, the motion in
 the corner of your eye might be a leopard.
-
--- 84 of 188 --
 Designing with the Mind in Mind
 © 2010 Elsevier Inc. All rights reserved. 2010
 CHAPTER
@@ -2193,9 +1971,7 @@ long-term memory (see Fig. 7.1).
 
 ---
 
-## Sección 23: Chapter 2 used the Gestalt principles of visual perception to show how our visual
-
--- 85 of 188 --
+## Sección 23: Chapter 2 used the Gestalt principles of visual perception to show how our visual [Entropy: 0.265]
 
 80 CHAPTER 7 Our Attention is Limited; Our Memory is Imperfect
 A MODERN VIEW OF MEMORY
@@ -2233,9 +2009,6 @@ duck farm ham
 friend Bill greet smile
 FIGuRE 7.1
 Traditional (antiquated) view of short-term versus long-term memory.
-
--- 86 of 188 --
-
 81 A modern view of memory
 the areas around neurons that change their sensitivity to stimulation for fairly long
 periods of time, until the chemicals dissipate or are neutralized by other chemicals.
@@ -2274,9 +2047,7 @@ the image, rather than removing pieces of it as with an ordinary photograph.
 
 ---
 
-## Sección 24: Chapter 2 used the Gestalt principles of visual perception to show how our visual
-
--- 87 of 188 --
+## Sección 24: Chapter 2 used the Gestalt principles of visual perception to show how our visual [Entropy: 0.25]
 
 82 CHAPTER 7 Our Attention is Limited; Our Memory is Imperfect
 input from our various perceptual systems and focus our awareness on some of that
@@ -2313,9 +2084,6 @@ The low capacity of short-term memory is fairly well known. Many collegeeducated
 proposed by cognitive psychologist George Miller in 1956 as the limit on the
 number of simultaneous unrelated items in human short-term memory (Miller,
 1956).
-
--- 88 of 188 --
-
 83 Characteristics of short-term memory
 Miller’s characterization of the short-term memory limit naturally raises several
 questions.
@@ -2355,9 +2123,7 @@ the view of short-term memory as a temporary storage place for information. The
 
 ---
 
-## Sección 25: Chapter 2 used the Gestalt principles of visual perception to show how our visual
-
--- 89 of 188 --
+## Sección 25: Chapter 2 used the Gestalt principles of visual perception to show how our visual [Entropy: 0.28]
 
 84 CHAPTER 7 Our Attention is Limited; Our Memory is Imperfect
 modern view of short-term memory as the current focus of attention makes it even
@@ -2397,9 +2163,6 @@ people even failed to notice changes in gender. Conclusion: people focus on the
 “tourist” only long enough to determine if they are a threat or worth helping, “record”
 only that the person is a tourist who needs help, and then focus on the map and the
 task of giving directions.
-
--- 90 of 188 --
-
 85 Characteristics of short-term memory
 A SHORT-TERM MEMORY TEST
 To test your short-term memory, get a pen or pencil and two blank
@@ -2434,9 +2197,6 @@ and flip back.
 12. Write down the words from memory. … It was certainly a lot
 easier recall them all because they form a sentence, so they could
 be memorized as one sentence rather than seven words.
-
--- 91 of 188 --
-
 86 CHAPTER 7 Our Attention is Limited; Our Memory is Imperfect
 IMPLICATIONS OF SHORT-TERM MEMORY CHARACTERISTICS
 FOR uSER INTERFACE DESIGN
@@ -2461,9 +2221,7 @@ what is the meaning of life
 
 ---
 
-## Sección 26: Chapter 2 used the Gestalt principles of visual perception to show how our visual
-
--- 92 of 188 --
+## Sección 26: Chapter 2 used the Gestalt principles of visual perception to show how our visual [Entropy: 0.295]
 
 87 Implications of short-term memory characteristics for user interface design
 l In a drawing program, clicking and dragging normally selects one or more
@@ -2506,17 +2264,11 @@ know that you could not reliably keep all of the instructions in your short-term
 memory, so you would write them down or ask your friend to send them to you by
 email. Later, while following the instructions, you would put them where you could
 refer to them until you reached the goal.
-
--- 93 of 188 --
-
 88 CHAPTER 7 Our Attention is Limited; Our Memory is Imperfect
 (B)
 FIGuRE 7.2
 Slate.com search results: (A) in 2007, users’ search terms not shown, (B) in 2009 search terms shown.
 (A)
-
--- 94 of 188 --
-
 89 Characteristics of long-term memory
 Similarly, interactive systems that display instructions for multistep operations
 should allow people to refer to the instructions while executing them until completing all the steps. Most interactive systems do this (see Fig. 7.3), but some do not
@@ -2529,9 +2281,6 @@ FIGuRE 7.3
 Instructions in Windows Help files remain displayed while users follow them.
 FIGuRE 7.4
 Instructions for Windows XP wireless setup start by telling users to close the instructions.
-
--- 95 of 188 --
-
 90 CHAPTER 7 Our Attention is Limited; Our Memory is Imperfect
 of activated neurons. This means that every memory is stored in a distributed fashion, spread among many parts of the brain. In this way, long-term memory in the
 brain is similar to holographic light images.
@@ -2567,16 +2316,7 @@ memory when the user tried to recall how to insert a page number.
 
 ---
 
-## Sección 27: Chapter 2 used the Gestalt principles of visual perception to show how our visual
-
--- 96 of 188 --
-
-91 Characteristics of long-term memory
-Weighted by emotions
-
----
-
-## Sección 28: Chapter 1 described a dog that remembered seeing a cat in his front yard every time
+## Sección 27: Chapter 1 described a dog that remembered seeing a cat in his front yard every time [Entropy: 0.265]
 
 he returned home in the family car. The dog was excited when he first saw the cat,
 so his memory of it was strong and vivid.
@@ -2605,9 +2345,6 @@ terms when it displays search results?
 Regarding question 3: When words are memorized, often what is
 retained is the concept, rather than the exact word that was presented.
 For example, one could hear the word “town” and later recall it as “city.”
-
--- 97 of 188 --
-
 92 CHAPTER 7 Our Attention is Limited; Our Memory is Imperfect
 IMPLICATIONS OF LONG-TERM MEMORY CHARACTERISTICS FOR
 uSER INTERFACE DESIGN
@@ -2645,11 +2382,9 @@ l use passwords that are easy for others to guess
 l setup systems with no login requirements at all, or with one shared login and
 password
 
--- 98 of 188 --
-
 ---
 
-## Sección 29: Chapter 1 described a dog that remembered seeing a cat in his front yard every time
+## Sección 28: Chapter 1 described a dog that remembered seeing a cat in his front yard every time [Entropy: 0.4]
 
 93 Implications of long-term memory characteristics for user interface design
 FIGuRE 7.5
@@ -2663,9 +2398,6 @@ it also allows users to create their own security question—one for which they 
 more easily remember the answer (see Fig. 7.7).
 Another implication of long-term memory characteristics for interactive systems
 is that learning and long-term retention are enhanced by user-interface consistency.
-
--- 99 of 188 --
-
 94 CHAPTER 7 Our Attention is Limited; Our Memory is Imperfect
 The more consistent the operation of different functions, or the more consistent the actions on different types of objects, the less users have to learn.4 User
 interfaces that have many exceptions and little consistency from one function
@@ -2695,9 +2427,6 @@ Video CNTRL-X CNTRL-V CNTRL-Q CNTRL-R CNTRL-E CNTRL-R
 4 See also Chapter 11.
 FIGuRE 7.7
 NetworkSolutions.com lets users create a security question if none on the menu works for them.
-
--- 100 of 188 --
-
 95 Implications of long-term memory characteristics for user interface design
 The first question is: which of these designs is easiest to learn? It is fairly clear
 that Design A is easiest.
@@ -2721,8 +2450,6 @@ greatly reduces the burden on users’ long-term memory. Mark Twain once wrote:
 “If you tell the truth, you never have to remember anything.” One could also say
 “If everything worked the same way, you would not have to remember much.” We
 will return to the issue of consistency in Chapter 11.
-
--- 101 of 188 --
 Designing with the Mind in Mind
 © 2010 Elsevier Inc. All rights reserved. 2010
 CHAPTER
@@ -2753,9 +2480,7 @@ lawn, but the lawn itself shows you.
 
 ---
 
-## Sección 30: Chapter 1 described a dog that remembered seeing a cat in his front yard every time
-
--- 102 of 188 --
+## Sección 29: Chapter 1 described a dog that remembered seeing a cat in his front yard every time [Entropy: 0.355]
 
 98 CHAPTER 8 Limits on Attention, Shape, Thought and Action
 Other tasks—e.g., reading a document, measuring a table, counting goldfish in
@@ -2792,9 +2517,6 @@ versus unvisited links, and many applications do it by marking completed steps o
 multipart task (see Fig. 8.1).
 A second design implication is that interactive systems should allow users to mark
 or move objects to indicate which ones they have worked on versus which ones they
-
--- 103 of 188 --
-
 99 We follow information “scent” toward our goal
 have not worked on. Mac OS lets users assign colors to files. Like moving files between
 folders, this technique can be used to keep track of where one is in a task (see Fig. 8.2).
@@ -2814,9 +2536,6 @@ Mac OS Software Update shows which updates are done (green check) versus which a
 progress (rotating circle).
 FIGURE 8.2
 Mac OS lets users assign colors to files or folders; users can use the colors to track their work.
-
--- 104 of 188 --
-
 100 CHAPTER 8 Limits on Attention, Shape, Thought and Action
 computer has been called “following the scent of information toward the goal” (Chi,
 Pirolli, Chen, & Pitkow, 2001; Nielsen, 2003). Consider the ATM machine display
@@ -2856,9 +2575,7 @@ ATM screen. Our attention is drawn initially toward items that match our goal li
 
 ---
 
-## Sección 31: Chapter 1 described a dog that remembered seeing a cat in his front yard every time
-
--- 105 of 188 --
+## Sección 30: Chapter 1 described a dog that remembered seeing a cat in his front yard every time [Entropy: 0.295]
 
 101 We follow information “scent” toward our goal
 (A)
@@ -2869,9 +2586,6 @@ Marriott’s cancellation confirmation (A) provides clearer scent than Quicken�
 (B)
 FIGURE 8.5
 Microsoft Excel’s warning (A) when users try to open an already open file is clearer than Word’s (B).
-
--- 106 of 188 --
-
 102 CHAPTER 8 Limits on Attention, Shape, Thought and Action
 WE PREFER FAMILIAR PATHS
 People know that their attention is limited, and they act accordingly. While pursuing
@@ -2907,9 +2621,6 @@ paths after they have gained experience. The slower paths for newcomers
 should show users faster paths if there are any. This is why most applications
 show the keyboard accelerators for frequently used functions in the menu bar
 menus.
-
--- 107 of 188 --
-
 103 Our thought cycle: goal, execute, evaluate
 OUR THOUGHT CYCLE: GOAL, EXECUTE, EVALUATE
 Over many decades, scientists studying human behavior have found a cyclical pattern that seems to hold across a wide variety of activities:
@@ -2945,9 +2656,7 @@ l Step 7: Print e-ticket. Goal achieved.
 
 ---
 
-## Sección 32: Chapter 1 described a dog that remembered seeing a cat in his front yard every time
-
--- 108 of 188 --
+## Sección 31: Chapter 1 described a dog that remembered seeing a cat in his front yard every time [Entropy: 0.265]
 
 104 CHAPTER 8 Limits on Attention, Shape, Thought and Action
 In the airline ticket example, to keep the example short, we didn’t get down into
@@ -2987,9 +2696,6 @@ Click browser icon on taskbar, startup menu, or desktop.
 Go to Google Web search page.
 If Google isn’t browser’s starting page, choose Google from favorites list.
 If Google is not on favorites list, type “Google.com” into browser’s address box.
-
--- 109 of 188 --
-
 105 Our thought cycle: goal, execute, evaluate
 Type “flower delivery” into Google.
 Set text-insertion point in search box.
@@ -3023,9 +2729,6 @@ By the way, does the figure seem familiar? If so, it is because you saw it in Ch
 (see Fig. 5.15B, page 63), and your brain recognized it.
 FIGURE 8.6
 ITN’s flight reservation system clearly shows users’ progress toward making a reservation.
-
--- 110 of 188 --
-
 106 CHAPTER 8 Limits on Attention, Shape, Thought and Action
 AFTER WE ACHIEVE A TASK’S PRIMARY GOAL,
 WE OFTEN FORGET CLEANUP STEPS
@@ -3068,9 +2771,7 @@ nothing in them.
 
 ---
 
-## Sección 33: Chapter 1 described a dog that remembered seeing a cat in his front yard every time
-
--- 111 of 188 --
+## Sección 32: Chapter 1 described a dog that remembered seeing a cat in his front yard every time [Entropy: 0.25]
 
 107 After we achieve a task’s primary goal, we often forget cleanup steps
 l Computers should issue warnings if users try to power them down or put them
@@ -3083,8 +2784,6 @@ Software designers should consider whether the tasks supported by a system they
 are designing have cleanup steps that users are likely to forget, and if so, they should
 design the system either to help users remember or to eliminate the need for users to
 remember.
-
--- 112 of 188 --
 Designing with the Mind in Mind
 © 2010 Elsevier Inc. All rights reserved. 2010
 CHAPTER
@@ -3093,7 +2792,7 @@ is Hard
 
 ---
 
-## Sección 34: Chapter 7 described the strengths and limitations of long-term memory and their
+## Sección 33: Chapter 7 described the strengths and limitations of long-term memory and their [Entropy: 0.265]
 
 implications for the design of interactive systems. This chapter extends that discussion by describing important differences between two functions of long-term memory: recognition and recall.
 RECOGNITION IS EASY
@@ -3113,9 +2812,6 @@ brain activity. If a perception comes in that is similar to an earlier one and t
 in a sense of recognition. Recognition is essentially perception and long-term memory working in concert.
 As a result, we assess situations very quickly. Our distant ancestors on the East
 African savannah had only a second or two to decide whether an animal emerging
-
--- 113 of 188 --
-
 110 CHAPTER 9 Recognition is Easy; Recall is Hard
 from the tall grasses was something they would regard as food or something that
 would regard them as food (see Fig. 9.1). Their survival depended on it.
@@ -3127,9 +2823,6 @@ Early hominids had to recognize quickly whether animals they spotted were prey o
 FIGuRE 9.2
 How long did it take you to recognize these faces?1
 1 Barack Obama and Bill Clinton.
-
--- 114 of 188 --
-
 111 Recognition is easy
 and compared with those in long-term memory. Because of the speed with which
 the brain recognizes faces, cognitive scientists assumed that the brain must search
@@ -3155,9 +2848,6 @@ search. A new face stimulates a pattern of neural activity that has not been act
 FIGuRE 9.3
 How long did it take you to realize that you do not recognize these faces?2
 2 George Washington Carver (American scientist, educator, and inventor) and average male face (FaceResearch.org).
-
--- 115 of 188 --
-
 112 CHAPTER 9 Recognition is Easy; Recall is Hard
 before, so no sense of recognition results. Of course, a new face may be so similar to
 a face we have seen that it triggers a misrecognition, or it may be just similar enough
@@ -3186,9 +2876,7 @@ We can recognize complex patterns quickly.
 
 ---
 
-## Sección 35: Chapter 7 described the strengths and limitations of long-term memory and their
-
--- 116 of 188 --
+## Sección 34: Chapter 7 described the strengths and limitations of long-term memory and their [Entropy: 0.451]
 
 113 Recognition versus recall: implications for UI design
 used the “method of loci” to memorize the main points of long speeches. They
@@ -3217,9 +2905,6 @@ Remember and type:
 See and choose
 FIGuRE 9.5
 The main design rule behind today’s GUI: “See and choose is easier than remember and type.”
-
--- 117 of 188 --
-
 114 CHAPTER 9 Recognition is Easy; Recall is Hard
 approach, especially in cases where users can easily recall what to type, such
 as when entering target keywords into a search box.
@@ -3241,9 +2926,6 @@ FIGuRE 9.6
 Desktop icons convey function via recognition—by analogy with physical objects or by experience.
 FIGuRE 9.7
 Wordpress.com uses symbols plus text to label functional pages on the Dashboard.
-
--- 118 of 188 --
-
 115 Recognition versus recall: implications for UI design
 use thumbnail images to depict full-sized images compactly
 Recognition is fairly insensitive to the size in which objects and events are displayed. After all, we have to be able to recognize things independently of their distance from us. What is important are features: as long as most of the same features
@@ -3261,9 +2943,7 @@ Apple Safari can show recently visited pages as thumbnail images, for quick reco
 
 ---
 
-## Sección 36: Chapter 7 described the strengths and limitations of long-term memory and their
-
--- 119 of 188 --
+## Sección 35: Chapter 7 described the strengths and limitations of long-term memory and their [Entropy: 0.31]
 
 116 CHAPTER 9 Recognition is Easy; Recall is Hard
 The larger the number of people who will use a function,
@@ -3304,9 +2984,6 @@ information, like the systems cited in Chapter 7 that impose burdensome password
 restrictions or offer a limited choice of challenge questions.
 Instead, we can give users the freedom to create passwords they can remember
 and challenge questions for which they can remember the correct response. We can
-
--- 120 of 188 --
-
 117 Recognition versus recall: implications for UI design
 also let users supply password hints that the system can present to them, under the
 assumption that users can devise hints that will serve as a recall probe for them but
@@ -3320,8 +2997,6 @@ privacy requirements in order to be widely accepted.
 FIGuRE 9.10
 BankOfAmerica.com shows recognized customers their self-selected account logo (SiteKey), to
 assure them that it is the real bank’s site.
-
--- 121 of 188 --
 Designing with the Mind in Mind
 © 2010 Elsevier Inc. All rights reserved. 2010
 CHAPTER
@@ -3355,9 +3030,7 @@ monkeys. In these birds, other parts of their brains apparently serve functions 
 
 ---
 
-## Sección 37: Chapter 7 described the strengths and limitations of long-term memory and their
-
--- 122 of 188 --
+## Sección 36: Chapter 7 described the strengths and limitations of long-term memory and their [Entropy: 0.25]
 
 120 CHAPTER 10 Problem Solving and Calculation are Hard
 l The new brain: This part of the brain mainly consists of the cerebral cortex.
@@ -3397,9 +3070,6 @@ l Even after interacting with your sister’s boyfriend on several occasions, yo
 may still not be sure he is a good guy.
 Second, experiences from our own lives or those of relatives and friends influence our conclusions more than experiences we read or hear about. For example,
 we may have read and seen reports, consumer reviews, and statistics indicating
-
--- 123 of 188 --
-
 121 Learning from experience is (usually) easy
 that the Toyota Prius is a great car, but if our sister or our uncle had a bad experience with one, we will probably have a negative assessment of the car. We do this
 because our midbrain considers family members to be like us and therefore more
@@ -3431,9 +3101,7 @@ Thomas Schoch). Right: white (nonalbino) crow, Ohio.
 
 ---
 
-## Sección 38: Chapter 7 described the strengths and limitations of long-term memory and their
-
--- 124 of 188 --
+## Sección 37: Chapter 7 described the strengths and limitations of long-term memory and their [Entropy: 0.28]
 
 122 CHAPTER 10 Problem Solving and Calculation are Hard
 from the experiences of others. A cortex is certainly necessary to be aware that one
@@ -3474,9 +3142,6 @@ mean? And what is that light blinking on the dashboard?
 When everything involved in driving a car is still conscious, keeping track of it all
 far exceeds our attention capacity—remember that it is four items, plus or minus two
 (see Chapter 7). People who are still learning to drive often feel overwhelmed. That is
-
--- 125 of 188 --
-
 123 Performing learned actions is easy
 why they often practice driving in parking lots, parks, rural areas, and quiet neighborhoods, where traffic is light: to reduce the number of things they have to attend to.
 After a lot of practice, all the actions involved in driving a car become automatic.
@@ -3519,9 +3184,7 @@ it will require more conscious thought, take more time, and be more prone to err
 
 ---
 
-## Sección 39: Chapter 7 described the strengths and limitations of long-term memory and their
-
--- 126 of 188 --
+## Sección 38: Chapter 7 described the strengths and limitations of long-term memory and their [Entropy: 0.25]
 
 124 CHAPTER 10 Problem Solving and Calculation are Hard
 When people want to get something done—as opposed to challenging themselves mentally—they prefer to use methods that are automatic or at least semiautomatic in order to save time and mental effort, and to reduce the chance of error.
@@ -3555,9 +3218,6 @@ following instructions in a software manual, or figuring out why no sound is com
 out of the computer when we play a video.
 3 For example, salamanders choose a jar containing four fruit flies over one with two or three fruit flies
 (Sohn, 2003).
-
--- 127 of 188 --
-
 125 Problem solving and calculation are hard
 THE NEW BRAIN ALSO ACTS AS A BRAKE ON
 IMPULSIVE BEHAVIOR
@@ -3597,9 +3257,7 @@ not optimized for calculation.
 
 ---
 
-## Sección 40: Chapter 7 described the strengths and limitations of long-term memory and their
-
--- 128 of 188 --
+## Sección 39: Chapter 7 described the strengths and limitations of long-term memory and their [Entropy: 0.25]
 
 126 CHAPTER 10 Problem Solving and Calculation are Hard
 Calculation is done mainly in the brain’s controlled, monitored mode. It is a task
@@ -3637,9 +3295,6 @@ milk. Sam’s cat is not white and doesn’t like milk. Mary’s cat is not yell
 likes milk. Someone found a cat that is yellow and likes milk. Whose cat is it?4
 (The negations create more chunks of information than most people’s shortterm memory can hold at once.)
 4 Answers provided at the end of this chapter.
-
--- 129 of 188 --
-
 127 Problem solving and calculation are hard
 l A man built a four-sided house. All four walls faced south. A bear walked by.
 What color was the bear? (Requires deduction and knowing and retrieving
@@ -3682,9 +3337,7 @@ effective diagnosis in the technical problem domain and are not interested in le
 
 ---
 
-## Sección 41: Chapter 7 described the strengths and limitations of long-term memory and their
-
--- 130 of 188 --
+## Sección 40: Chapter 7 described the strengths and limitations of long-term memory and their [Entropy: 0.28]
 
 128 CHAPTER 10 Problem Solving and Calculation are Hard
 SOLVING TECHNICAL PROBLEMS REQUIRES TECHNICAL
@@ -3720,9 +3373,6 @@ Director concluded that one speaker cable was bad and said
 he would buy a new one. Before he did, the engineer-musician
 swapped the monitor cables where they connect to the
 monitor amplifier, to see if the problem was a faulty monitor
-
--- 131 of 188 --
-
 129 Problem solving and calculation are hard
 amplifier output rather than the cable. The problem turned out
 to be a loose connection in the monitor amplifier output jack.
@@ -3756,9 +3406,6 @@ in the United States. Some are even trained to diagnose problems
 in different domains, such as medicine. They just have no
 training or interest in solving technical problems in computers
 and computer-based devices.
-
--- 132 of 188 --
-
 130 CHAPTER 10 Problem Solving and Calculation are Hard
 People invented calculators and computers mainly as tools for performing calculations and solving problems that humans cannot easily solve on their own.
 Computers and calculators do calculation and problem solving much more easily
@@ -3804,9 +3451,7 @@ We challenge ourselves by creating and solving puzzles that tax our mental abili
 
 ---
 
-## Sección 42: Chapter 7 described the strengths and limitations of long-term memory and their
-
--- 133 of 188 --
+## Sección 41: Chapter 7 described the strengths and limitations of long-term memory and their [Entropy: 0.265]
 
 131 Implications for user interface design
 Interactive systems should minimize the amount of attention users must devote
@@ -3845,9 +3490,6 @@ Microsoft Corporation, 2009). A second way is to make new software applications 
 the design on metaphors, such as the desktop metaphor (Johnson et al., 1989).
 Finally, designers can study users to learn what is and is not familiar to them.
 l Let the computer do the math. Don’t make people calculate things the computer can calculate itself (see Fig. 10.3).
-
--- 134 of 188 --
-
 132 CHAPTER 10 Problem Solving and Calculation are Hard
 ANSWERS TO PUzzLES ON PAGES 124 AND 125
 l The cat is John’s.
@@ -3872,8 +3514,6 @@ figure out what color their dot was, which meant that her own dot was not
 blue; it had to be red.
 FIGURE 10.3
 California online unemployment form asks for data it could calculate itself in both of these questions.
-
--- 135 of 188 --
 Designing with the Mind in Mind
 © 2010 Elsevier Inc. All rights reserved. 2010
 CHAPTER
@@ -3882,7 +3522,7 @@ Learning
 
 ---
 
-## Sección 43: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
+## Sección 42: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.34]
 
 well-learned activities with the conscious, highly monitored, controlled processes
 that we use to solve novel problems and perform calculations. Automatic processes
@@ -3907,9 +3547,6 @@ WE LEARN FASTER WHEN OPERATION IS TASK-FOCUSED,
 SIMPLE, AND CONSISTENT
 When we use a tool—whether it is computer-based or not—to do a task, we have to
 translate what we want to do into the operations provided by the tool. Some examples:
-
--- 136 of 188 --
-
 134 CHAPTER 11 Many Factors Affect Learning
 l Imagine that you are an astronomer. You want to point your telescope at the
 star Alpha Centauri. Most telescopes don’t let you just specify what star you
@@ -3944,9 +3581,6 @@ tool is intended to support. Gaining that understanding requires three steps:
 2. Design a task-focused conceptual model, consisting mainly of an objects/
 actions analysis
 3. Design a user interface based strictly on the task analysis and conceptual model
-
--- 137 of 188 --
-
 135 We learn faster when operation is task-focused, simple, and consistent
 Task analysis
 Describing in detail how to analyze users’ goals and tasks is beyond the scope of
@@ -3989,9 +3623,7 @@ Johnson & Henderson, 2002).
 
 ---
 
-## Sección 44: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
-
--- 138 of 188 --
+## Sección 43: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.355]
 
 136 CHAPTER 11 Many Factors Affect Learning
 The software’s implementation may include objects other than those listed in
@@ -4031,9 +3663,6 @@ presented on a personal computer screen or via voice menus on a telephone.
 As simple as possible
 In addition to being focused on users’ tasks, a conceptual model should be as simple
 as possible. Simpler means fewer concepts. The fewer concepts a model has for
-
--- 139 of 188 --
-
 137 We learn faster when operation is task-focused, simple, and consistent
 users to master, the better, as long as it provides the required functionality. Less is
 more, provided that what is there fits well with users’ goals and tasks.
@@ -4061,9 +3690,6 @@ Complexity
 (amount to learn)
 FIgURE 11.1
 The complexity of an application increases nonlinearly as concepts are added.
-
--- 140 of 188 --
-
 138 CHAPTER 11 Many Factors Affect Learning
 a system’s different functions, the more consistent it is. In a highly consistent system,
 the operation of a particular function is predictable from its type, so people quickly
@@ -4103,9 +3729,7 @@ just differed in how the location was specified.
 
 ---
 
-## Sección 45: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
-
--- 141 of 188 --
+## Sección 44: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.355]
 
 139 We learn faster when operation is task-focused, simple, and consistent
 to execute them. Are all conceptual actions of a certain type initiated and controlled
@@ -4148,9 +3772,6 @@ X X X X X
 X X X X X
 FIgURE 11.2
 Objects/actions matrix shows the actions for each object.
-
--- 142 of 188 --
-
 140 CHAPTER 11 Many Factors Affect Learning
 more functional than, say, a simple drawing program, a personal phone directory,
 or a Web site for looking up postage rates. Consider, for example, the objects and
@@ -4200,9 +3821,7 @@ Objects/actions matrices representing easy-to-learn vs. hard-to-learn conceptual
 
 ---
 
-## Sección 46: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
-
--- 143 of 188 --
+## Sección 45: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.355]
 
 141 We learn faster when operation is task-focused, simple, and consistent
 I regard creating an objects/actions matrix as an optional design step for two reasons:
@@ -4263,9 +3882,6 @@ Common
 Actions
 FIgURE 11.4
 Objects/actions matrix representing a more realistic easy-to-learn conceptual design.
-
--- 144 of 188 --
-
 142 CHAPTER 11 Many Factors Affect Learning
 A common way that developers promote keystroke-level consistency is to follow
 look-and-feel standards. Such standards can be presented in style guides or they can
@@ -4306,9 +3922,7 @@ personnel killed or injured in the Iraq and Afghanistan wars. It starts by askin
 
 ---
 
-## Sección 47: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
-
--- 145 of 188 --
+## Sección 46: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.28]
 
 143 We learn faster when vocabulary is task-focused, familiar, and consistent
 site visitors to select a “database.” However, visitors to this site don’t care or
@@ -4331,9 +3945,6 @@ FIgURE 11.6
 Unfamiliar computer jargon (aka “geek speak”) slows learning and frustrates users.
 FIgURE 11.5
 iCasualties.org uses language that is not task-focused (“database”) in its instructions.
-
--- 146 of 188 --
-
 144 CHAPTER 11 Many Factors Affect Learning
 Some examples of interactive software systems using unfamiliar terminology:
 l A development team was designing a video-on-demand system for schoolteachers to use in classrooms. The purpose of the system was to allow teachers to
@@ -4356,9 +3967,6 @@ FIgURE 11.7
 Error message at Continental.com uses “geek speak” (computer jargon).
 FIgURE 11.8
 Error message in Windows Media Player uses a familiar term (“current state”) in an unfamiliar way.
-
--- 147 of 188 --
-
 145 We learn faster when vocabulary is task-focused, familiar, and consistent
 In contrast to these examples, Southwest Airlines’ Web site tries to prevent
 errors from occurring, but when they do occur, it explains the problem using taskfocused, familiar language (see Fig. 11.9).
@@ -4388,9 +3996,7 @@ Error messages at Southwest Airlines’ Web site are task-focused and clear, fos
 
 ---
 
-## Sección 48: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
-
--- 148 of 188 --
+## Sección 47: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.325]
 
 146 CHAPTER 11 Many Factors Affect Learning
 FIgURE 11.10
@@ -4401,9 +4007,6 @@ FIgURE 11.11
 Photoshop uses different names for the tolerance parameter in two color-replacement functions:
 (A) “Fuzziness” in Replace Color; (B) “Tolerance” in Paint Bucket.
 (A)
-
--- 149 of 188 --
-
 147 We learn faster when vocabulary is task-focused, familiar, and consistent
 An example from Adobe Photoshop shows that inconsistent terminology can
 impede learning. Photoshop has two functions for replacing a target color in an
@@ -4439,9 +4042,6 @@ concept, or a single term to multiple concepts.
 Terms in the lexicon should come from the software’s supported tasks, not its
 implementation. Terms should fit well into the users’ normal task vocabulary, even if
 1 Unless you are designing software development tools.
-
--- 150 of 188 --
-
 148 CHAPTER 11 Many Factors Affect Learning
 they are new. Typically, technical writers, user interface designers, developers, managers, and users all help create the lexicon.
 Certain concepts in GUIs have industry-standard names. These are the GUI equivalents of “reserved words” in programming languages. If you rename such concepts
@@ -4453,9 +4053,6 @@ usability test results, and market feedback.
 FIgURE 11.12
 At WordPress, “Dashboard” means both a blog’s entire administrative area and a certain
 page in it.
-
--- 151 of 188 --
-
 149 We learn faster when risk is low
 WE LEARN FASTER WHEN RISK IS LOW
 Imagine you are visiting a foreign city on business for a week or two. You have
@@ -4492,9 +4089,7 @@ l Allow users to undo, reverse, or correct errors easily
 
 ---
 
-## Sección 49: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
-
--- 152 of 188 --
+## Sección 48: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.25]
 
 150 CHAPTER 11 Many Factors Affect Learning
 SUMMARY
@@ -4507,8 +4102,6 @@ l The vocabulary they employ is familiar to users, is based on that of the task
 domain, and is used consistently in the sense that it maps terms onto concepts 1:1
 l They provide a low-risk environment, in which errors are difficult to make and,
 when users do make errors, they are low in cost and easy to correct.
-
--- 153 of 188 --
 Designing with the Mind in Mind
 © 2010 Elsevier Inc. All rights reserved. 2010
 CHAPTER
@@ -4538,9 +4131,6 @@ time constants of human perception and cognition. It ends with real-time guideli
 for interactive system design, including examples.
 1 Some researchers have suggested that for users’ perception of the loading speed of Web sites, the causality
 may go the other way: the more success people have at a site, the faster they think it is, even when their ratings don’t correlate with the sites’ actual speed (Perfetti & Landesman, 2001).
-
--- 154 of 188 --
-
 152 CHAPTER 12 We Have Time Requirements
 RESPONSIVENESS DEFINED
 Responsiveness is related to performance, but it is different. Performance is measured in terms of computations per unit of time. Responsiveness is measured in
@@ -4571,9 +4161,7 @@ so users are unsure of what they have done or what the system is doing. They
 
 ---
 
-## Sección 50: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
-
--- 155 of 188 --
+## Sección 49: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.265]
 
 153 The many time constants of the human brain
 make users wait at unpredictable times and for unpredictable periods. They limit
@@ -4603,9 +4191,6 @@ the one governing highly monitored, controlled processing, such as composing a
 (A) (B)
 FIguRE 12.2
 MacOS X: No progress bar (just a busy bar) and no cancel. (A) MacOS X, (B) iMovie.
-
--- 156 of 188 --
-
 154 CHAPTER 12 We Have Time Requirements
 HOW LONg DOES OuR BRAIN TAKE TO…?
 Listed below are measured durations for perceptual and
@@ -4660,9 +4245,6 @@ Time required for a skilled reader's brain to
 comprehend a printed word
 150 milliseconds
 (0.15 second)
-
--- 157 of 188 --
-
 155 The many time constants of the human brain
 musical piece. Another example is the flinch reflex: a region of the brain called the
 superior colliculus—part of the evolutionarily ancient old brain—can “see” a rapidly
@@ -4715,9 +4297,7 @@ Time to choose a lifetime career 20 years
 
 ---
 
-## Sección 51: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
-
--- 158 of 188 --
+## Sección 50: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.325]
 
 156 CHAPTER 12 We Have Time Requirements
 neural circuitry. The eardrum transmits vibration to the ossicles (middle-ear bones),
@@ -4751,9 +4331,6 @@ Suppose our conscious awareness of the world lagged behind the real world by a
 tenth of a second. That lag would not be conducive to our survival: a tenth of a
 second is a long time when a rabbit you are hunting darts across a meadow. Our
 brain compensates by extrapolating the position of moving objects by 0.1 second.
-
--- 159 of 188 --
-
 157 The many time constants of the human brain
 Therefore, as a rabbit runs across your visual field, you see it where your brain estimates it is now, not where it was 0.1 second ago (Stafford & Web, 2005).
 Maximum interval between events for perception that one event caused
@@ -4790,9 +4367,7 @@ the new object appears. Answer: We don’t actually perceive motion until the do
 
 ---
 
-## Sección 52: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
-
--- 160 of 188 --
+## Sección 51: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.25]
 
 158 CHAPTER 12 We Have Time Requirements
 appears in the new position. The second dot must appear within 0.2 second of the
@@ -4832,9 +4407,6 @@ conversation going: they interject “uh” or “uh-huh,” or take over as spe
 Listeners respond to such pauses by turning their attention to the speaker to see
 what caused it. The precise length of such gaps varies by culture, but it is always in
 the range of 0.5–2 seconds.
-
--- 161 of 188 --
-
 159 Engineering approximations of time constants: orders of magnitude
 Duration of unbroken attention to a single task (“unit task”):
 10 seconds
@@ -4872,9 +4444,7 @@ shortest noticeable pen-ink lag, auditory fusion
 
 ---
 
-## Sección 53: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
-
--- 162 of 188 --
+## Sección 52: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.56]
 
 160 CHAPTER 12 We Have Time Requirements
 Notice that these deadlines form a convenient series: each successive deadline is
@@ -4910,9 +4480,6 @@ l 1.0 second: Average conversation gap, visual-motor intentional reaction time,
 attentional blink
 l 10 seconds: Unit task, unbroken attention to a task, one step of a complex task
 l 100 seconds (1.6 minutes): Critical decision in emergency situation
-
--- 163 of 188 --
-
 161 Designing to meet real-time human interaction deadlines
 Table 12.1 The Time Deadlines for Human Computer Interaction
 Deadline Perceptual and Cognitive
@@ -4980,9 +4547,6 @@ dialog box)
 emergency situation
 • Assure that all info required for decision is
 provided or can be found within this time
-
--- 164 of 188 --
-
 162 CHAPTER 12 We Have Time Requirements
 audio-generation software should be engineered to avoid network bottlenecks, getting swapped out, deadlocks, and other interruptions. Otherwise, it may produce
 noticeable gaps, clicks, or lack of synchrony between audio tracks. Audio feedback
@@ -5024,9 +4588,7 @@ not require close hand-eye coordination.
 
 ---
 
-## Sección 54: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
-
--- 165 of 188 --
+## Sección 53: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.325]
 
 163 Designing to meet real-time human interaction deadlines
 If an operation will take more than a perceptual “moment” (0.1 second) to complete, it should display a busy indicator. If a busy indicator can be displayed within
@@ -5064,9 +4626,6 @@ Ten seconds is the approximate unit of time into which people usually break down
 their planning and execution of larger tasks. Examples of unit tasks: completing a
 single edit in a text editing application, entering a transaction into a bank account
 program, and executing a maneuver in an airplane dogfight. Software should support segmentation of tasks into these 10-second pieces.
-
--- 166 of 188 --
-
 164 CHAPTER 12 We Have Time Requirements
 Ten seconds is also roughly the amount of time users are willing to spend setting
 up “heavyweight” operations like file transfers or searches—if it takes any longer, users
@@ -5103,9 +4662,7 @@ has a slower computer than the developer, or one that is not optimally configure
 
 ---
 
-## Sección 55: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
-
--- 167 of 188 --
+## Sección 54: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.385]
 
 165 Additional guidelines for achieving responsive interactive systems
 What if the function tries to access data that is temporarily locked? What if the
@@ -5145,9 +4702,6 @@ within unit tasks
 Unit tasks are useful not only as a way of understanding how (and why) users break
 down large tasks. They also provide insight into when system response delays are
 most and least harmful or annoying.
-
--- 168 of 188 --
-
 166 CHAPTER 12 We Have Time Requirements
 During execution of a unit task, users keep their goal and necessary information
 in working memory or within their perceptual field. After they complete one unit
@@ -5185,9 +4739,7 @@ the entire document.
 
 ---
 
-## Sección 56: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
-
--- 169 of 188 --
+## Sección 55: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.31]
 
 167 Additional guidelines for achieving responsive interactive systems
 FIguRE 12.3
@@ -5202,9 +4754,6 @@ the visual system processes images holistically, this appears faster than reveal
 full-resolution image slowly from top to bottom (see Fig. 12.3). Exception: For text,
 rendering a page at low resolution first and then substituting a higher resolution
 version is not recommended: it annoys users (Geelhoed et al., 1995).
-
--- 170 of 188 --
-
 168 CHAPTER 12 We Have Time Requirements
 Fake heavyweight computations during hand-eye coordination tasks
 In interactive systems, some user actions require rapid successive adjustments—
@@ -5242,9 +4791,6 @@ they can pull them out of line and get them checked in. In Web browsers, clickin
 the Back or Stop buttons or on a link immediately aborts the process of loading and
 displaying the current page. Given how long it can take to load and display a Web
 page, the ability to abort a page load is critical to user acceptance.
-
--- 171 of 188 --
-
 169 Additional guidelines for achieving responsive interactive systems
 Monitor time compliance; decrease the quality of work to keep up
 An interactive system can measure how well it is meeting the real-time deadlines. If
@@ -5269,9 +4815,7 @@ Cone-tree (A) renders folder labels as blobs while a user rotates the tree (B).
 
 ---
 
-## Sección 57: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
-
--- 172 of 188 --
+## Sección 56: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.31]
 
 170 CHAPTER 12 We Have Time Requirements
 rotates, the software might not have time to render all details of each frame while
@@ -5303,9 +4847,6 @@ By following the guidelines described in this chapter and additional responsiven
 that meet human real-time deadlines, and that users therefore perceive as responsive.
 However, the software industry must first recognize these facts about responsiveness:
 l It is of great importance to users
-
--- 173 of 188 --
-
 171 Achieving responsiveness is important
 l It is different from performance; responsiveness problems are not solvable
 merely by tuning performance or making hardware faster
@@ -5332,8 +4873,6 @@ that power is eaten up by applications that demand ever more processing power.
 Therefore, despite ever-increasing performance, responsiveness will never disappear
 as an issue.
 For design flaws (bloopers) that hurt responsiveness, principles for designing responsive systems, and more techniques for achieving responsiveness, see Johnson (2007).
-
--- 174 of 188 --
 Designing with the Mind in Mind
 © 2010 Elsevier Inc. All rights reserved. 2010
 SUMMARY
@@ -5363,9 +4902,7 @@ EpiloguE
 
 ---
 
-## Sección 58: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
-
--- 175 of 188 --
+## Sección 57: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.445]
 
 174 EpiloguE
 have remained fairly stable for tens—perhaps even hundreds—of thousands of years.
@@ -5387,8 +4924,6 @@ of knowledge of human cognitive/perceptual psychology will continue to advance,
 possibly rendering some of what the book says obsolete. It is better for designers to
 proceed using mostly correct knowledge of how people perceive and think than to
 design with no knowledge.
-
--- 176 of 188 --
 Designing with the Mind in Mind
 © 2010 Elsevier Inc. All rights reserved. 2010
 Appendix
@@ -5414,9 +4949,6 @@ preventing unintentional performance.
 l Consistency of the system: The system should be consistent in its structure
 and design of command so as to minimize memory problems in retrieving the
 operations.
-
--- 177 of 188 --
-
 176 Appendix Well-known User Interface Design Rules
 ShNeIdermaN (1987); ShNeIdermaN aNd PLaISaNt (2009)
 l Strive for consistency
@@ -5453,9 +4985,6 @@ Principle 1 Focus on the users and their tasks, not on the technology
 l Understand the users
 l Understand the tasks
 l Consider the context in which the software will function
-
--- 178 of 188 --
-
 177 Johnson (2007)
 Principle 2 consider function first, presentation later
 l Develop a conceptual model
@@ -5490,9 +5019,7 @@ l Try to let users set their own work pace
 
 ---
 
-## Sección 59: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
-
--- 179 of 188 --
+## Sección 58: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.4]
 
 178 Appendix Well-known User Interface Design Rules
 Principle 9 try it out on users; then fix it
@@ -5500,8 +5027,6 @@ l Test results can surprise even experienced designers
 l Schedule time to correct problems found by tests
 l Testing has two goals: informational and social
 l There are tests for every time and purpose
-
--- 180 of 188 --
 Bibliography
 Angier, N. (2008). Blind to change, even as it stares us in the face. New York Times. April 1, 2008.
 www.nytimes.com/2008/04/01/science/01angi.html.
@@ -5542,9 +5067,6 @@ MIT Press.
 Cowan, N., Chen, Z., & Rouder, J. (2004). Constant capacity in an immediate serial-recall task:
 A logical sequel to Miller (1956). Psychological Science, 15(9), 634–640.
 Duis, D., & Johnson, J. (1990). Improving user-interface responsiveness despite performance limitations. Proceedings of IEEE CompCon’90, 380–386.
-
--- 181 of 188 --
-
 180 Bibliography
 Geelhoed, E., Toft, P., Roberts, S., & Hyland, P. (1995). To influence time perception. Proceedings
 of ACM CHI’95, 5, 272–273.
@@ -5588,9 +5110,7 @@ processing information. Psychological Review, 63, 81–97.
 
 ---
 
-## Sección 60: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
-
--- 182 of 188 --
+## Sección 59: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.385]
 
 181 Bibliography
 Miller, R. (1968). Response time in man–computer conversational transactions. Proceedings of IBM
@@ -5633,9 +5153,6 @@ Shneiderman, B. (1984). Response time and display rate in human performance with
 ACM Computing Surveys, 16(4), 265–285.
 Shneiderman, B. (1987). Designing the user interface: Strategies for effective human–computer
 interaction (1st ed.). Reading, MA: Addison-Wesley.
-
--- 183 of 188 --
-
 182 Bibliography
 Shneiderman, B., & Plaisant, C. (2009). Designing the user interface: Strategies for effective
 human–computer interaction (5th ed.). Reading, MA: Addison-Wesley.
@@ -5660,8 +5177,6 @@ Ware, C. (2008). Visual thinking for design. San Francisco, CA: Morgan-Kaufmann 
 Weinschenk, S. M. (2009). Neuro web design: What makes them click? Berkeley, CA: New Riders.
 Wolfmaier, T. (1999). Designing for the color-challenged: A challenge. ITG Publication, March
 1999, 2.1. http://www.internettg.org/newsletter/mar99/accessibility_color_challenged.html
-
--- 184 of 188 --
 Index
 A
 Ambiguity, perceptual, 8
@@ -5753,9 +5268,7 @@ tiny fonts, 41, 41f
 
 ---
 
-## Sección 61: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
-
--- 185 of 188 --
+## Sección 60: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.46]
 
 184 Index
 Fovea, spatial resolution, 65–68, 66f, 67f, 68f
@@ -5852,9 +5365,6 @@ use of, 75
 N
 Numbers, structure in presentation, 28–29, 28f,
 29f
-
--- 186 of 188 --
-
 185 Index
 O
 Objects/actions analysis, learning facilitation,
@@ -5961,9 +5471,7 @@ timely feedback, 170
 
 ---
 
-## Sección 62: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out
-
--- 187 of 188 --
+## Sección 61: Chapter 10 contrasted the “automatic” processes that our brain uses to carry out [Entropy: 0.31]
 
 186 Index
 Responsiveness (Continued )
@@ -6063,8 +5571,5 @@ search results and design implications of shortterm memory, 87, 88f
 Wernicke’s area, 38, 38f
 Wiggle, message notification, 75, 76f
 Working memory, see Memory
-
--- 188 of 188 --
-
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[DESIGN_MASTERY_2026]] · [[AGENT_CREATIVE_AND_VISUAL_AWARENESS_2026]] · [[CANON_REFACTORING_UI_WATHAN_SCHOGER]] · [[CANON_PRACTICAL_UI_ADHAM_DANNAWAY]] · #ui_ux_design

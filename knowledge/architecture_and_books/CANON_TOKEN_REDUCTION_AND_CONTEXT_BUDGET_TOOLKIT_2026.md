@@ -1,4 +1,4 @@
-﻿# CANON TOKEN REDUCTION AND CONTEXT BUDGET TOOLKIT 2026
+# CANON TOKEN REDUCTION AND CONTEXT BUDGET TOOLKIT 2026
 
 > **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Software Factory Web.
 
@@ -6,9 +6,9 @@
 > **ANCLA DE ALCANCE (LEC-015):** este documento es la fuente canónica de las herramientas de
 > reducción de tokens del equipo de DESARROLLO (rtk, Graphify, Caveman, Ponytail) y del prompt
 > caching de Anthropic en Cline. NO es fuente de precios de VM GCP (ver `knowledge/GCP_PRICING_REFERENCE.md`),
-> NO describe el runtime de Centinela (que sigue Vertex AI/Groq por DEC-005/011/018), NO trata de
+> NO describe el runtime de Web Software Factory (que sigue Vertex AI/Groq por DEC-005/011/018), NO trata de
 > RealtimeHub API (ver skill `RealtimeHub-api-contracts`) y NO sustituye al RAG Qdrant para documentación
-> (`centinela_knowledge`, ver skill `kb-retrieval`). Instalado y verificado el 2026-10-08.
+> (`canonical_knowledge_vault`, ver skill `kb-retrieval`). Instalado y verificado el 2026-10-08.
 
 [knowledge/tools/TOKEN_REDUCTION_TOOLKIT_2026.md › TOKEN REDUCTION TOOLKIT 2026 — rtk · graphify · caveman · ponytail + prompt caching › Contexto: dos capas de ahorro que NO compiten]
 1. **Prompt caching (Anthropic API)** — reduce el coste de los tokens de ENTRADA repetidos
@@ -79,7 +79,7 @@ grandes (`graphify-out/graph.html`, JSONL) — ya cubierto por `.clineignore`.
 
 [knowledge/tools/TOKEN_REDUCTION_TOOLKIT_2026.md › TOKEN REDUCTION TOOLKIT 2026 — rtk · graphify · caveman · ponytail + prompt caching › Pendientes HITL registrados]
 - `ANTHROPIC_API_KEY` en el entorno → correr `npm run finops:cache-test` (evidencia activa).
-- Key de Anthropic dedicada (`cline-centinela`) + límite mensual + alertas 50/80 % en consola.
+- Key de Anthropic dedicada (`cline-Web Software Factory`) + límite mensual + alertas 50/80 % en consola.
 - Opcional: proxy de Caveman (`caveman setup --install`) y `graphify install` — solo con revisión.
 
 ---

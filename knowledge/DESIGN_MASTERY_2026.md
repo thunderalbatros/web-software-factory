@@ -1,4 +1,6 @@
-﻿# DESIGN MASTERY 2026: 12 Open-Source Libraries for High-End Motion & Graphics
+# DESIGN MASTERY 2026: 12 Open-Source Libraries for High-End Motion & Graphics
+
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
 
 > **Scope:** Canonical architectural and technical manual for the 12 open-source repositories installed in `references/design-mastery/`.  
 > **Target Environment:** 100% Vanilla JS/CSS, Zero heavy runtime, OBS browser overlays (≤5% CPU budget), HP 250 G8 notebook compatibility.

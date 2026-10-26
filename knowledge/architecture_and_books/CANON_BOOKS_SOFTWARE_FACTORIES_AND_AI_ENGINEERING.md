@@ -1,5 +1,7 @@
 # Canon: Fundamental Books on Software Factories & AI Engineering (2026)
 
+> **Alcance:** Literatura canónica de arquitectura de software, código limpio, TypeScript, validación en el Edge, sistemas distribuidos, videocursos técnicos e ingeniería de agentes IA para la Web Software Factory.
+
 ## 1. Software Factories: Assembling Applications with Patterns, Models, Frameworks, and Tools
 - **Autores:** Jack Greenfield, Keith Short, Steve Cook, John Crupi (John Wiley & Sons, 2004).
 - **Enfoque Principal:** Fundamento teórico de la industrialización del desarrollo de software mediante software product lines (SPL), model-driven development y economías de alcance.

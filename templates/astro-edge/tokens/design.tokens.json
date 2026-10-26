@@ -1,17 +1,131 @@
 {
-  "$schema": "https://tr.designtokens.org/format/",
+  "$schema": "https://tr.designtokens.org/format/2025.10/",
+  "meta": {
+    "standard": "W3C DTCG 2025.10",
+    "archetype": "standard-web",
+    "styleSkill": "bento",
+    "chromaticRule": "90% Neutral Surface / 8% Supporting Accent / 2% High-Chroma CTA (OKLCH + APCA)"
+  },
   "color": {
     "surface": {
-      "canvas": { "$value": "oklch(0.14 0.015 260)", "$type": "color" },
-      "elevated": { "$value": "oklch(0.19 0.018 260)", "$type": "color" }
+      "canvas": {
+        "$type": "color",
+        "$value": "oklch(0.13 0.015 258)",
+        "$description": "90% Primary background canvas"
+      },
+      "elevated": {
+        "$type": "color",
+        "$value": "oklch(0.18 0.018 258)",
+        "$description": "Elevated card surface (+5% L)"
+      },
+      "interactive": {
+        "$type": "color",
+        "$value": "oklch(0.22 0.022 258)",
+        "$description": "Interactive hover surface (+9% L)"
+      },
+      "glass": {
+        "$type": "color",
+        "$value": "oklch(0.20 0.02 258 / 0.76)",
+        "$description": "Glassmorphic sticky header surface"
+      }
     },
     "text": {
-      "primary": { "$value": "oklch(0.96 0.008 260)", "$type": "color" },
-      "secondary": { "$value": "oklch(0.76 0.015 260)", "$type": "color" }
+      "primary": {
+        "$type": "color",
+        "$value": "oklch(0.96 0.008 258)",
+        "$description": "Primary headline & body text (APCA Lc >= 90)"
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "oklch(0.76 0.015 258)",
+        "$description": "Supporting copy (APCA Lc >= 65)"
+      },
+      "muted": {
+        "$type": "color",
+        "$value": "oklch(0.62 0.015 258)",
+        "$description": "Metadata & captions (APCA Lc >= 50)"
+      }
     },
     "brand": {
-      "accent": { "$value": "oklch(0.74 0.17 160)", "$type": "color" },
-      "cta": { "$value": "oklch(0.82 0.18 85)", "$type": "color" }
+      "accent": {
+        "$type": "color",
+        "$value": "oklch(0.74 0.17 162)",
+        "$description": "8% Supporting brand accent"
+      },
+      "cta": {
+        "$type": "color",
+        "$value": "oklch(0.82 0.18 85)",
+        "$description": "2% High-conversion focal CTA"
+      },
+      "ctaInk": {
+        "$type": "color",
+        "$value": "oklch(0.14 0.02 258)",
+        "$description": "High-contrast ink on CTA button"
+      }
+    },
+    "border": {
+      "subtle": {
+        "$type": "color",
+        "$value": "oklch(1 0 0 / 0.08)",
+        "$description": "1px subtle hairline border"
+      },
+      "highlight": {
+        "$type": "color",
+        "$value": "oklch(1 0 0 / 0.18)",
+        "$description": "Interactive hover hairline"
+      }
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "sans": {
+        "$type": "fontFamily",
+        "$value": "'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+      },
+      "display": {
+        "$type": "fontFamily",
+        "$value": "'Inter', system-ui, -apple-system, sans-serif"
+      },
+      "mono": {
+        "$type": "fontFamily",
+        "$value": "'JetBrains Mono', ui-monospace, SFMono-Regular, monospace"
+      }
+    },
+    "scale": {
+      "stepMinus1": {
+        "$type": "dimension",
+        "$value": "clamp(0.82rem, 0.78rem + 0.2vw, 0.92rem)"
+      },
+      "step0": {
+        "$type": "dimension",
+        "$value": "clamp(1rem, 0.95rem + 0.25vw, 1.125rem)"
+      },
+      "step1": {
+        "$type": "dimension",
+        "$value": "clamp(1.22rem, 1.12rem + 0.5vw, 1.5rem)"
+      },
+      "step2": {
+        "$type": "dimension",
+        "$value": "clamp(1.5rem, 1.3rem + 1vw, 2.25rem)"
+      },
+      "step3": {
+        "$type": "dimension",
+        "$value": "clamp(1.9rem, 1.55rem + 1.6vw, 3rem)"
+      },
+      "step4": {
+        "$type": "dimension",
+        "$value": "clamp(2.25rem, 1.8rem + 2.2vw, 3.75rem)"
+      }
+    }
+  },
+  "radius": {
+    "card": {
+      "$type": "dimension",
+      "$value": "18px"
+    },
+    "pill": {
+      "$type": "dimension",
+      "$value": "9999px"
     }
   }
 }

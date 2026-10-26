@@ -1,15 +1,15 @@
-> **Alcance:** Literatura canónica y tratados técnicos de animación a 60 FPS, shaders GPU, física de resortes (spring physics), arte técnico 3D y micro-interacciones fluidas para sitios web modernos y overlays OBS.
-
 ---
 version: 1.0.0
 tipo: research
 tags:
-  - yendo-mobile
+  - webfactory-mobile
   - architecture
   - en-progreso
 autores: [RESEARCHER_AGENT, MANAGER_AGENT]
 ultima_revision: 2026-08-27
 ---
+
+> **Alcance:** Literatura canónica y tratados técnicos de animación a 60 FPS, shaders GPU, física de resortes (spring physics), arte técnico 3D y micro-interacciones fluidas para sitios web modernos y overlays OBS.
 
 # 🎬 Tratado Canónico: Los 12 Principios de Animación Aplicados a UI
 ### Basado en: *The Illusion of Life: Disney Animation* (Thomas & Johnston) & *The Animator's Survival Kit* (Richard Williams)
@@ -18,7 +18,7 @@ ultima_revision: 2026-08-27
 
 ---
 
-## 1. De los Estudios Disney a las Interfaces React Native Modernas
+## 1. De los Estudios Disney a las Interfaces Modern Web UI (CSS/WAAPI) Modernas
 
 En 1981, los legendarios animadores de Disney Frank Thomas y Ollie Johnston publicaron *The Illusion of Life*, codificando los **12 Principios Básicos de Animación** desarrollados para dar vida, credibilidad física y empatía emocional a dibujos inanimados.
 
@@ -26,9 +26,9 @@ En la ingeniería de interfaces táctiles móviles modernas, estos 12 principios
 
 ---
 
-## 2. Los 12 Principios Traducidos a React Native Reanimated
+## 2. Los 12 Principios Traducidos a Modern Web UI (CSS/WAAPI) Reanimated
 
-| Principio Tradicional | Definición Clásica | Traducción Técnica a Código Reanimated en Yendo |
+| Principio Tradicional | Definición Clásica | Traducción Técnica a Código Reanimated en WebFactory |
 | :--- | :--- | :--- |
 | **1. Squash and Stretch (Aplastamiento y Estiramiento)** | Da la ilusión de peso y flexibilidad física a un objeto al moverse o colisionar. | **Micro-tap en Cards:** Al tocar un evento, la tarjeta se comprime ligeramente (`scale: 0.96`) y al soltar rebota a `scale: 1.0` con volumen constante. |
 | **2. Anticipation (Anticipación)** | Prepara al ojo del espectador para una acción inminente. | **Pull-to-refresh:** Antes de que la lista salte con nuevos eventos, el indicador del Carpincho se agacha anticipando el salto. |
@@ -50,6 +50,6 @@ En la ingeniería de interfaces táctiles móviles modernas, estos 12 principios
 - [[YENDO_LIBRARY]]
 - [[Biblia_Maestra_Visual_3D_Motion_Yendo]]
 - [[Reanimated]]
-- [[React Native Skia]]
+- [[Modern Web UI (CSS/WAAPI) Skia]]
 - [[CANON_GAME_FEEL_VIRTUAL_SENSATION_SWINK]]
 - [[Capybara Mascot]]

@@ -1,13 +1,13 @@
-﻿# 📚 Libro Completo (Síntesis Maestra): Fogg Behavior Model (B = MAP) & Persuasive Design
+# 📚 Libro Completo (Síntesis Maestra): Fogg Behavior Model (B = MAP) & Persuasive Design
 
 **Alcance:** Tratado técnico sobre el Modelo de Comportamiento de B.J. Fogg ($B = MAP$: Motivation, Ability, Prompt) del Stanford Persuasive Technology Lab. Aplicable a conversión (CRO), gamificación y participación en vivo en la Software Factory Web y client-portal.
 
 > **Autor:** Dr. B.J. Fogg (Stanford University)  
-> **Dominio:** Psicología Persuasiva, Ecuación $B = MAP$, Cadena de Simplicidad y Disparadores de Acción  
+> **Dominio:** Psicología Persuasiva, Ecuación $B = MAP$, Cadena de Simplicidad y Disparadores de Acción
 
 ---
 
-## Sección 1: La Ecuación Fundamental del Comportamiento ($B = MAP$)
+## Sección 1: La Ecuación Fundamental del Comportamiento ($B = MAP$) [Entropy: 0.313]
 
 Para que cualquier comportamiento objetivo ($B$ — ej. registrarse con el código de referido, enviar un reclamo de Bounty, participar en un juego comunitario en vivo) ocurra en una interfaz web, **tres elementos deben converger exactamente en el mismo milisegundo**:
 $$B = M \times A \times P$$
@@ -21,7 +21,7 @@ $$B = M \times A \times P$$
 
 ---
 
-## Sección 2: Los 6 Eslabones de la Cadena de Simplicidad (Ability Chain)
+## Sección 2: Los 6 Eslabones de la Cadena de Simplicidad (Ability Chain) [Entropy: 0.25]
 
 Un flujo web es tan fácil como su eslabón más débil. Para maximizar $A$ en la Software Factory:
 1. **Tiempo (Time)**: El reclamo de un Bounty o la entrada a una partida debe tomar **menos de 8 segundos**.
@@ -33,7 +33,7 @@ Un flujo web es tan fácil como su eslabón más débil. Para maximizar $A$ en l
 
 ---
 
-## Sección 3: Los 3 Tipos de Prompts (Disparadores)
+## Sección 3: Los 3 Tipos de Prompts (Disparadores) [Entropy: 0.295]
 
 1. **Spark Prompts (Chispa — Alta Habilidad, Baja Motivación)**:
    - Cuando la acción es fácil pero el espectador está pasivo: usar micro-animaciones de levitación, insignias de premio en efectivo (`$20 USD`) y barras de progreso dotadas (*Endowed Progress*).

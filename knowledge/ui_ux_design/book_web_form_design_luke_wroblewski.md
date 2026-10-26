@@ -1,4 +1,4 @@
-﻿# 📚 Libro Completo: Web Form Design: Filling in the Blanks
+# 📚 Libro Completo: Web Form Design: Filling in the Blanks
 
 **Alcance:** Fuente bibliográfica completa sobre Ergonomía de Formularios Web, Reducción de Fricción en Reclamos/Inscripciones, Validación en Línea y Conversión (Web Form Design: Filling in the Blanks — Luke Wroblewski). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
@@ -7,18 +7,15 @@
 > **Archivo Fuente:** `Web-Form-Design-Luke-Wroblewski.pdf`  
 > **Páginas Originales:** 374  
 > **Secciones Extraídas:** 351  
-> **Fecha de Ingesta:** 2026-10-19  
+> **Fecha de Ingesta:** 2026-10-19
 
 ---
 
-## Sección 1: Foundations & Introduction
+## Sección 1: Foundations & Introduction [Entropy: 0.25]
 
 W E B F O R M D E S I G N
 Filling in the Blanks
 by LUKE WROBLE W SK I foreword by Jared Spool
-
--- 1 of 374 --
-
 Thank you for purchasing the digital edition of
 Web Form Design: Filling in the Blanks!
 You might note that the book’s images are
@@ -38,9 +35,6 @@ Louis Rosenfeld, Publisher
 Rosenfeld Media
 lou@rosenfeldmedia.com
 Download at Boykma.Com
-
--- 2 of 374 --
-
 Web Form Design
 Filling in the blanks
 by: Luke Wroblewski
@@ -49,9 +43,6 @@ Brooklyn, New York
 Enter code WFDDE for 10% off any Rosenfeld Media product directly
 purchased from our site: http://rosenfeldmedia.com
 Download at Boykma.Com
-
--- 3 of 374 --
-
 table oF contents
 How to Use This Book x
 Who should read this book? xi
@@ -63,7 +54,7 @@ Form structure
 
 ---
 
-## Sección 2: ChaptER 1
+## Sección 2: ChaptER 1 [Entropy: 0.05]
 
 The Design of Forms 1
 Form Design matters 5
@@ -72,7 +63,7 @@ Design considerations 27
 
 ---
 
-## Sección 3: ChaptER 2
+## Sección 3: ChaptER 2 [Entropy: 0.25]
 
 Form Organization 31
 What to include 32
@@ -84,11 +75,9 @@ ii
 table of contents
 Download at Boykma.Com
 
--- 4 of 374 --
-
 ---
 
-## Sección 4: ChaptER 3
+## Sección 4: ChaptER 3 [Entropy: 0.25]
 
 Path to Completion 59
 name that Form 60
@@ -102,7 +91,7 @@ Form elements
 
 ---
 
-## Sección 5: ChaptER 4
+## Sección 5: ChaptER 4 [Entropy: 0.25]
 
 Labels 86
 label alignment 87
@@ -115,7 +104,7 @@ best Practices 104
 
 ---
 
-## Sección 6: ChaptER 5
+## Sección 6: ChaptER 5 [Entropy: 0.25]
 
 Input Fields 106
 types of input Fields 107
@@ -125,16 +114,13 @@ iii
 table of contents
 table oF contents
 Download at Boykma.Com
-
--- 5 of 374 --
-
 input groups 131
 Flexible inputs 132
 best Practices 136
 
 ---
 
-## Sección 7: ChaptER 6
+## Sección 7: ChaptER 6 [Entropy: 0.25]
 
 Actions 138
 Primary and secondary actions 139
@@ -145,7 +131,7 @@ best Practices 158
 
 ---
 
-## Sección 8: ChaptER 7
+## Sección 8: ChaptER 7 [Entropy: 0.25]
 
 Help Text 160
 When to help 161
@@ -157,7 +143,7 @@ best Practices 184
 
 ---
 
-## Sección 9: ChaptER 8
+## Sección 9: ChaptER 8 [Entropy: 0.25]
 
 Errors and Success 186
 errors 187
@@ -168,14 +154,11 @@ iv
 table of contents
 table oF contents
 Download at Boykma.Com
-
--- 6 of 374 --
-
 Form interaction
 
 ---
 
-## Sección 10: ChaptER 9
+## Sección 10: ChaptER 9 [Entropy: 0.05]
 
 Inline Validation 214
 confirmation 215
@@ -185,7 +168,7 @@ best Practices 230
 
 ---
 
-## Sección 11: ChaptER 10
+## Sección 11: ChaptER 10 [Entropy: 0.25]
 
 Unnecessary Inputs 231
 removing Questions 232
@@ -195,7 +178,7 @@ best Practices 248
 
 ---
 
-## Sección 12: ChaptER 11
+## Sección 12: ChaptER 11 [Entropy: 0.25]
 
 Additional Inputs 249
 inline additions 250
@@ -207,11 +190,9 @@ table of contents
 table oF contents
 Download at Boykma.Com
 
--- 7 of 374 --
-
 ---
 
-## Sección 13: ChaptER 12
+## Sección 13: ChaptER 12 [Entropy: 0.25]
 
 Selection-Dependent Inputs 271
 Page-level selection 276
@@ -226,7 +207,7 @@ best Practices 299
 
 ---
 
-## Sección 14: ChaptER 14
+## Sección 14: ChaptER 14 [Entropy: 0.31]
 
 Gradual Engagement 302
 signing Up 303
@@ -240,9 +221,6 @@ vi
 table of contents
 table oF contents
 Download at Boykma.Com
-
--- 8 of 374 --
-
 Index 331
 Acknowledgments 342
 About the Author 344
@@ -250,9 +228,6 @@ vii
 table of contents
 table oF contents
 Download at Boykma.Com
-
--- 9 of 374 --
-
 Web Form Design: Filling in the Blanks
 By Luke Wroblewski
 Rosenfeld Media, LLC
@@ -274,14 +249,8 @@ ISBN-13: 978-1-933820-25-5
 Library of Congress Control Number: 2008923241
 Printed and bound in the United States of America
 Download at Boykma.Com
-
--- 10 of 374 --
-
 For everyone who has had to fill in a form.
 Download at Boykma.Com
-
--- 11 of 374 --
-
 hoW to Use this book
 Web form design. Do we really need an entire
 book on such a mundane topic?
@@ -302,12 +271,9 @@ to community membership—they allow
 people to define their identity within social
 applications. All of MySpace’s 150+ million
 users joined through a Web form.
-
+ 
 how to Use this book
 Download at Boykma.Com
-
--- 12 of 374 --
-
 • Data input forms allow users to contribute
 or share information, and they allow
 companies to grow their content. Most of
@@ -328,12 +294,9 @@ Who Should Read this Book?
 Web Form Design: Filling in the Blanks is truly
 for anyone who needs to design or develop
 hoW to Use this book
-i
+ i
 how to Use this book
 Download at Boykma.Com
-
--- 13 of 374 --
-
 Web forms—and who doesn’t? Whatever type
 of designer you are—usability engineer, Web
 developer, product manager, visual designer,
@@ -354,12 +317,9 @@ and best practices for Web form design I’ve
 accumulated through 12 years of designing
 Web experiences. Wherever possible, I’ve
 hoW to Use this book
-ii
+ ii
 how to Use this book
 Download at Boykma.Com
-
--- 14 of 374 --
-
 conducted or referenced research to better
 understand the impact of Web form design
 decisions. Where no research was available,
@@ -381,15 +341,13 @@ practices for organizing forms and focusing
 people on their primary goal of completing a
 form.
 hoW to Use this book
-iii
+ iii
 how to Use this book
 Download at Boykma.Com
 
--- 15 of 374 --
-
 ---
 
-## Sección 15: Chapter 3: Path to Completion
+## Sección 15: Chapter 3: Path to Completion [Entropy: 0.25]
 
 Section Two, “Form Elements,” dives into a
 series of best practices for the core components
@@ -402,19 +360,16 @@ much more.
 
 ---
 
-## Sección 16: Chapter 8: Errors and Success
+## Sección 16: Chapter 8: Errors and Success [Entropy: 0.25]
 
 Section Three, “Form Interaction,” focuses
 on the process of filling in forms. From inline
 validation solutions that confirm or suggest
 valid answers to gradual engagement solutions
 hoW to Use this book
-iv
+ iv
 how to Use this book
 Download at Boykma.Com
-
--- 16 of 374 --
-
 that immerse people within a Web experience
 without forms, this section is about applying
 dynamic behavior to make forms more useful,
@@ -422,7 +377,7 @@ usable, and enjoyable.
 
 ---
 
-## Sección 17: Chapter 14: What’s Next?
+## Sección 17: Chapter 14: What’s Next? [Entropy: 0.28]
 
 What Comes with the Book?
 This book’s companion Web site ( http://
@@ -435,12 +390,9 @@ in discussion with others interested in Web
 form design. We expect to post information
 on new Web form design-related resources
 hoW to Use this book
-v
+ v
 how to Use this book
 Download at Boykma.Com
-
--- 17 of 374 --
-
 and special discounts for related applications.
 You can keep up with the site by subscribing
 to its RSS feed ( http://feeds.
@@ -462,12 +414,9 @@ version of each of the book’s illustrations,
 which we’ve made available via Flickr) by
 simply clicking. You’ll also find navigation
 hoW to Use this book
-vi
+ vi
 how to Use this book
 Download at Boykma.Com
-
--- 18 of 374 --
-
 easier if you display the Navigation Pane (in
 Apple’s Preview reader, the Drawer).
 We’ve optimized the digital version of this
@@ -477,12 +426,9 @@ phenomenon, we’d love your suggestions for
 how to improve our digital design; please
 contact us at info@rosenfeldmedia.com.
 hoW to Use this book
-vii
+ vii
 how to Use this book
 Download at Boykma.Com
-
--- 19 of 374 --
-
 Why does Web form design matter?
 Forms enable commerce, communities, and
 productivity on the Web to thrive. If you are
@@ -506,12 +452,9 @@ forms as a conversation, natural breaks will
 emerge between topics. When these distinct
 FreQUently
 askeD QUestions
-viii
+ viii
 Frequently asked Questions
 Download at Boykma.Com
-
--- 20 of 374 --
-
 topics are short enough to fit into a few
 sections, a single Web page will probably work
 best to organize them. When each section
@@ -533,12 +476,9 @@ indicators perform different functions. see
 page 70.
 FreQUently
 askeD QUestions
-i
+ i 
 Frequently asked Questions
 Download at Boykma.Com
-
--- 21 of 374 --
-
 Should I top-, right-, or left-align the labels for
 input fields?
 When you are trying to reduce completion
@@ -561,12 +501,9 @@ thereby expedite form completion. see page
 239.
 FreQUently
 askeD QUestions
-
+  
 Frequently asked Questions
 Download at Boykma.Com
-
--- 22 of 374 --
-
 When should I include help text on my forms?
 You should consider adding help text when:
 forms ask for unfamiliar data; people question
@@ -587,12 +524,9 @@ well understood to mean required. see page
 119.
 FreQUently
 askeD QUestions
-i
+  i
 Frequently asked Questions
 Download at Boykma.Com
-
--- 23 of 374 --
-
 What’s the difference between a primary and
 secondary action?
 Actions such as Submit, Save, or Continue
@@ -604,12 +538,9 @@ actions, on the other hand, tend to be less
 utilized. see page 139.
 FreQUently
 askeD QUestions
-ii
+  ii
 Frequently asked Questions
 Download at Boykma.Com
-
--- 24 of 374 --
-
 I’m sorry to break this to you, but your life is
 about to change.
 I know this because of a study we conducted
@@ -630,15 +561,13 @@ This brought us to cabinetmakers. Cabinetry
 is a very old craft, and the people who master
 it are amazing in their talents and skills. They
 ForeWorD
-iii
+  iii
 Foreword
 Download at Boykma.Com
 
 ---
 
-## Sección 18: Chapter 14: What’s Next?
-
--- 25 of 374 --
+## Sección 18: Chapter 14: What’s Next? [Entropy: 0.25]
 
 can create something that is both useful and
 beautiful. The best are aware their products
@@ -661,12 +590,9 @@ pride they took in each individual element.
 Cabinetmakers aren’t the only folks who
 behave this way. So are the master craftsmen of
 ForeWorD
-iv
+  iv
 Foreword
 Download at Boykma.Com
-
--- 26 of 374 --
-
 our own field, like Luke Wroblewski. In this
 book, Luke applies that same loving attention
 to detail to the design of Web forms. Like the
@@ -688,27 +614,22 @@ bottom line). And, once you learn to control
 those subtleties and nuances, you, too, will be
 a master of your craft.
 ForeWorD
-v
+  v
 Foreword
 Download at Boykma.Com
-
--- 27 of 374 --
-
 As I said, your life is about to change. It starts
 right … now!
 Jared M. Spool
 Founding Principal
 User Interface Engineering
 ForeWorD
-vi
+  vi
 Foreword
 Download at Boykma.Com
 
--- 28 of 374 --
-
 ---
 
-## Sección 19: chaPter 1
+## Sección 19: chaPter 1 [Entropy: 0.25]
 
 the Design of
 Forms
@@ -718,15 +639,12 @@ Design considerations 27
 Enter code WFDDE for 10% off any Rosenfeld Media product directly
 purchased from our site: http://rosenfeldmedia.com
 Download at Boykma.Com
-
--- 29 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 20: chapter 1
+## Sección 20: chapter 1 [Entropy: 0.265]
 
 the Design of Forms
 Forms suck. If you don’t believe me, try
@@ -754,9 +672,6 @@ a form.
 companies think about their services in a talk at MIX07: http://www.lukew.com/ff/entry.
 asp?532
 Download at Boykma.Com
-
--- 30 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 For example, a Web site’s database may be
@@ -785,19 +700,16 @@ yet, making them invisible in a way that gets
 
 ---
 
-## Sección 21: chapter 1
+## Sección 21: chapter 1 [Entropy: 0.25]
 
 the Design of Forms
 Download at Boykma.Com
-
--- 31 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 22: chapter 1
+## Sección 22: chapter 1 [Entropy: 0.25]
 
 the Design of Forms
 organizations the information they need and
@@ -808,15 +720,12 @@ The registration form for Facebook, a very popular social
 networking service. Almost half of this form is devoted to a
 security check!
 Download at Boykma.Com
-
--- 32 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 23: chapter 1
+## Sección 23: chapter 1 [Entropy: 0.25]
 
 the Design of Forms
 Form Design Matters
@@ -838,44 +747,35 @@ your items, resolves any issues like missing
 price tags or discrepancies of cost, and bids
 you “good day” (see Figure 1.2).
 Download at Boykma.Com
-
--- 33 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 24: chapter 1
+## Sección 24: chapter 1 [Entropy: 0.25]
 
 the Design of Forms
 Photograph by Andrew Walsh
 http://www.flickr.com/photos/radiofree/150535853
 Download at Boykma.Com
-
--- 34 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 25: chapter 1
+## Sección 25: chapter 1 [Entropy: 0.25]
 
 the Design of Forms
 FIGURE 1.2
 When you’re shopping in a local store, checkout usually
 comes with a smile.
 Download at Boykma.Com
-
--- 35 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 26: chapter 1
+## Sección 26: chapter 1 [Entropy: 0.25]
 
 the Design of Forms
 Contrast this experience with shopping online
@@ -901,15 +801,12 @@ choose to engage with a group of people,
 the same types of interactions make us feel
 welcome or not.
 Download at Boykma.Com
-
--- 36 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 27: chapter 1
+## Sección 27: chapter 1 [Entropy: 0.25]
 
 the Design of Forms
 FIGURE 1.3
@@ -925,15 +822,12 @@ eBay Express, is fun.
 Checking out, on the
 other hand, is a form.
 Download at Boykma.Com
-
--- 37 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 28: chapter 1
+## Sección 28: chapter 1 [Entropy: 0.25]
 
 the Design of Forms
 Even physical product experiences have the
@@ -948,15 +842,12 @@ FIGURE 1.4 http://www.flickr.com/photos/rosenfeldmedia/2366424337
 Unpacking a new Apple MacBook Pro is a tactile, engaging
 experience that reflects the quality of the product inside.
 Download at Boykma.Com
-
--- 38 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 29: chapter 1
+## Sección 29: chapter 1 [Entropy: 0.25]
 
 the Design of Forms
 well thought out. Perhaps the most personal
@@ -976,15 +867,12 @@ activities completed, etc.—is how most social
 applications thrive, the organizations running
 these sites rely on forms for business success.
 Download at Boykma.Com
-
--- 39 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 30: chapter 1
+## Sección 30: chapter 1 [Entropy: 0.25]
 
 the Design of Forms
 FIGURE 1.5
@@ -1001,15 +889,12 @@ need to fill out this new
 account form, which
 isn’t fun at all.
 Download at Boykma.Com
-
--- 40 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 31: chapter 1
+## Sección 31: chapter 1 [Entropy: 0.25]
 
 the Design of Forms
 Productivity
@@ -1033,15 +918,12 @@ optimizing the amount of data or customer
 activity they manage. The barrier for both sides
 is, of course, a form.
 Download at Boykma.Com
-
--- 41 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 32: chapter 1
+## Sección 32: chapter 1 [Entropy: 0.25]
 
 the Design of Forms
 FIGURE 1.6
@@ -1050,15 +932,12 @@ bottom image: http://www.flickr.com/photos/rosenfeldmedia/2366428127
 California voter registration offline and online—it’s all just a
 form.
 Download at Boykma.Com
-
--- 42 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 33: chapter 1
+## Sección 33: chapter 1 [Entropy: 0.295]
 
 the Design of Forms
 All these examples should make it pretty clear
@@ -1082,15 +961,12 @@ collaborate. Businesses want to increase the
 amount of content and time spent on their
 site. Once again, forms are in between.
 Download at Boykma.Com
-
--- 43 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 34: chapter 1
+## Sección 34: chapter 1 [Entropy: 0.25]
 
 the Design of Forms
 So forms enable commerce, communities,
@@ -1109,15 +985,12 @@ it’s easy to see how improvements in form
 design can amount to substantial increases in
 revenue (see Figure 1.7).
 Download at Boykma.Com
-
--- 44 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 35: chapter 1
+## Sección 35: chapter 1 [Entropy: 0.304]
 
 the Design of Forms
 FIGURE 1.7 http://www.flickr.com/photos/rosenfeldmedia/2366428239
@@ -1132,15 +1005,12 @@ case for user experience projects”2 by the
 2 This paper can be found at: http://portal.acm.org/citation.cfm?id=986078&dl=portal&dl=AC
 M
 Download at Boykma.Com
-
--- 45 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 36: chapter 1
+## Sección 36: chapter 1 [Entropy: 0.28]
 
 the Design of Forms
 eBay user experience and design team. Their
@@ -1167,11 +1037,9 @@ information.
 • Severity of errors or problems
 Download at Boykma.Com
 
--- 46 of 374 --
-
 ---
 
-## Sección 37: chapter 1
+## Sección 37: chapter 1 [Entropy: 0.31]
 
 the Design of Forms
 Web Form Design: Filling in the blanks by luke Wroblewski
@@ -1188,15 +1056,12 @@ of the form
 • Satisfaction scores
 • Subjective comments about tasks
 Download at Boykma.Com
-
--- 47 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 38: chapter 1
+## Sección 38: chapter 1 [Entropy: 0.355]
 
 the Design of Forms
 Field Testing: Ethnographic observation of
@@ -1221,15 +1086,12 @@ Site Tracking: Forms can be instrumented
 to track any number of useful quantitative
 metrics.
 Download at Boykma.Com
-
--- 48 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 39: chapter 1
+## Sección 39: chapter 1 [Entropy: 0.34]
 
 the Design of Forms
 • Completion rates
@@ -1249,15 +1111,12 @@ Eye-tracking data from Matteo Penzo’s study of form label
 layouts published in UXmatters, July 2006, showing how
 people’s eyes move through a simple form.
 Download at Boykma.Com
-
--- 49 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 40: chapter 1
+## Sección 40: chapter 1 [Entropy: 0.325]
 
 the Design of Forms
 • What people looked at on a form
@@ -1280,9 +1139,6 @@ Observing how a few people complete your
 forms or monitoring Web server logs with offthe-shelf Web analytics programs can provide
 a lot of useful information.
 Download at Boykma.Com
-
--- 50 of 374 --
-
 FIGURE
  1.10
  
@@ -1297,19 +1153,16 @@ rosenfeld
 
 ---
 
-## Sección 41: chapter 1
+## Sección 41: chapter 1 [Entropy: 0.25]
 
 the Design of Forms
 Download at Boykma.Com
-
--- 51 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 42: chapter 1
+## Sección 42: chapter 1 [Entropy: 0.25]
 
 the Design of Forms
 It’s hard to imagine a form that could be simpler: two fields, two
@@ -1340,15 +1193,12 @@ Perspective: Jared Spool
 Founding Principal, User Interface Engineering
 Changing a Button Increased Annual Revenues for a Web Site by $300 Million
 Download at Boykma.Com
-
--- 52 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 43: chapter 1
+## Sección 43: chapter 1 [Entropy: 0.25]
 
 the Design of Forms
 We were wrong about the first-time shoppers. They did
@@ -1381,15 +1231,12 @@ be a problem if they didn’t remember which email address they
 initially registered with.
 Perspective: Jared Spool (Continued)
 Download at Boykma.Com
-
--- 53 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 44: chapter 1
+## Sección 44: chapter 1 [Entropy: 0.25]
 
 the Design of Forms
 (Later, we did an analysis of the retailer’s database, only to
@@ -1421,15 +1268,12 @@ sales numbers from the redesigned form. It’s a simple message:
 All we did was change a button.
 Perspective: Jared Spool (Continued)
 Download at Boykma.Com
-
--- 54 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 45: chapter 1
+## Sección 45: chapter 1 [Entropy: 0.25]
 
 the Design of Forms
 Design Considerations
@@ -1453,15 +1297,12 @@ considerations are a combination of principles
 and patterns that provide a framework for
 finding appropriate solutions.
 Download at Boykma.Com
-
--- 55 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 46: chapter 1
+## Sección 46: chapter 1 [Entropy: 0.31]
 
 the Design of Forms
 Design Principles
@@ -1488,15 +1329,12 @@ Forms broker conversations between
 customers and companies. Although an
 organization can have many groups taking
 Download at Boykma.Com
-
--- 56 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 47: chapter 1
+## Sección 47: chapter 1 [Entropy: 0.265]
 
 the Design of Forms
 part in these conversations (marketing,
@@ -1520,15 +1358,12 @@ Or similarly, if your constraints are “a,” then a
 worthwhile approach is “b.”
 This type of structure allows you, the reader, to
 Download at Boykma.Com
-
--- 57 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 48: chapter 1
+## Sección 48: chapter 1 [Entropy: 0.265]
 
 the Design of Forms
 understand which pattern is the best practice
@@ -1545,9 +1380,6 @@ doesn’t mean we have all the right answers, but
 there’s some real data behind these tips!
 So without further ado, let’s dig in.
 Download at Boykma.Com
-
--- 58 of 374 --
-
 Form
 organization
 What to include 32
@@ -1558,20 +1390,17 @@ best Practices 56
 
 ---
 
-## Sección 49: chaPter 2
+## Sección 49: chaPter 2 [Entropy: 0.25]
 
 Enter code WFDDE for 10% off any Rosenfeld Media product directly
 purchased from our site: http://rosenfeldmedia.com
 Download at Boykma.Com
-
--- 59 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 50: chapter 2
+## Sección 50: chapter 2 [Entropy: 0.25]
 
 Form organization
 Although many visual and interaction
@@ -1598,15 +1427,12 @@ discover what you can leave off your forms.
 Deciding what stays on a form may mean
 challenging the information collected when
 Download at Boykma.Com
-
--- 60 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 51: chapter 2
+## Sección 51: chapter 2 [Entropy: 0.25]
 
 Form organization
 the form was a paper document. Often, legacy
@@ -1633,15 +1459,12 @@ each form. Take a look at Caroline Jarrett’s
 (outlined in the sidebar) for a way to decide
 what makes the cut.
 Download at Boykma.Com
-
--- 61 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 52: chapter 2
+## Sección 52: chapter 2 [Entropy: 0.25]
 
 Form organization
 WHAT TO THINK ABOUT BEFORE YOU START
@@ -1673,15 +1496,12 @@ Co-author: Forms That Work (Morgan Kaufmann, in press)
 Co-author: User Interface Design and Evaluation (Morgan Kaufmann, 2005)
 People Before Pixels
 Download at Boykma.Com
-
--- 62 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 53: chapter 2
+## Sección 53: chapter 2 [Entropy: 0.25]
 
 Form organization
 START BY THINKING ABOUT PEOPLE AND
@@ -1713,15 +1533,12 @@ Well done—keep those questions and move to thinking about the
 details of design.
 Perspective: Caroline Jarrett (Continued)
 Download at Boykma.Com
-
--- 63 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 54: chapter 2
+## Sección 54: chapter 2 [Entropy: 0.25]
 
 Form organization
 But perhaps you’re asking a question that you don’t really need
@@ -1754,15 +1571,12 @@ on your form design.
 Like I said: People before pixels.
 Perspective: Caroline Jarrett (Continued)
 Download at Boykma.Com
-
--- 64 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 55: chapter 2
+## Sección 55: chapter 2 [Entropy: 0.25]
 
 Form organization
 Have a Conversation
@@ -1789,15 +1603,12 @@ can go a long way toward making new
 customers feel welcome. I still have a vivid
 memory of a woman who was interviewed
 Download at Boykma.Com
-
--- 65 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 56: chapter 2
+## Sección 56: chapter 2 [Entropy: 0.25]
 
 Form organization
 during a field study for a major Web retailer
@@ -1829,15 +1640,12 @@ rosenfeldmedia/2367260500
 http://www.flickr.com/photos/
 rosenfeldmedia/2367260436
 Download at Boykma.Com
-
--- 66 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 57: chapter 2
+## Sección 57: chapter 2 [Entropy: 0.25]
 
 Form organization
 Which version seems more approachable?
@@ -1864,15 +1672,12 @@ banking example, do people understand the
 termed “issuing”? Is that vocabulary they’d
 use, or is it a term used by the bank? Perhaps
 Download at Boykma.Com
-
--- 67 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 58: chapter 2
+## Sección 58: chapter 2 [Entropy: 0.25]
 
 Form organization
 people think instead: “Which bank gave
@@ -1897,15 +1702,12 @@ Web page.
 As an example, the Yahoo! registration form
 in Figure 2.2 groups questions about you,
 Download at Boykma.Com
-
--- 68 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 59: chapter 2
+## Sección 59: chapter 2 [Entropy: 0.25]
 
 Form organization
 the account you are creating, a way for you
@@ -1916,15 +1718,12 @@ FIGURE 2.2 http://www.flickr.com/photos/rosenfeldmedia/2367260580
 The new Yahoo! registration form uses a conversational tone to
 engage new members.
 Download at Boykma.Com
-
--- 69 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 60: chapter 2
+## Sección 60: chapter 2 [Entropy: 0.265]
 
 Form organization
 sections are labeled with headers that stand out
@@ -1951,15 +1750,12 @@ we’ll discuss in later chapters.
 When deciding how to organize forms,
 designers will often wonder if they are better
 Download at Boykma.Com
-
--- 70 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 61: chapter 2
+## Sección 61: chapter 2 [Entropy: 0.25]
 
 Form organization
 FIGURE 2.3 http://www.flickr.com/photos/rosenfeldmedia/2366424765
@@ -1967,15 +1763,12 @@ Redfin groups the myriad of steps required to purchase a home
 into a series of manageable content groups. Each section has a
 title and some also include a bit of descriptive text.
 Download at Boykma.Com
-
--- 71 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 62: chapter 2
+## Sección 62: chapter 2 [Entropy: 0.28]
 
 Form organization
 off grouping all their content areas into a single
@@ -2000,15 +1793,12 @@ begins to run long, multiple Web pages may
 be required to break up the conversation into
 meaningful, understandable topics.
 Download at Boykma.Com
-
--- 72 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 63: chapter 2
+## Sección 63: chapter 2 [Entropy: 0.25]
 
 Form organization
 In certain situations, several sections with lots
@@ -2036,11 +1826,9 @@ another way to decide how to structure your
 conversations with customers is to conduct a
 Download at Boykma.Com
 
--- 73 of 374 --
-
 ---
 
-## Sección 64: chapter 2
+## Sección 64: chapter 2 [Entropy: 0.25]
 
 Form organization
 Web conventions survey to see if any patterns
@@ -2063,9 +1851,6 @@ preferences. And so on.
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 Download at Boykma.Com
-
--- 74 of 374 --
-
 FIGURE
  2.4
  
@@ -2081,20 +1866,17 @@ rosenfeld
 
 ---
 
-## Sección 65: chapter 2
+## Sección 65: chapter 2 [Entropy: 0.25]
 
 Form
  organization
 Download at Boykma.Com
-
--- 75 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 66: chapter 2
+## Sección 66: chapter 2 [Entropy: 0.25]
 
 Form organization
 These conventions can provide a great starting
@@ -2119,15 +1901,12 @@ examples illustrate, communicating meaningful
 distinctions between content groups doesn’t
 require a lot of visual difference. In fact, too
 Download at Boykma.Com
-
--- 76 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 67: chapter 2
+## Sección 67: chapter 2 [Entropy: 0.25]
 
 Form organization
 much contrast between content groupings
@@ -2144,15 +1923,12 @@ the form. Using a minimum amount of visual
 information helps keep the focus on a form’s
 content and not its presentation.
 Download at Boykma.Com
-
--- 77 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 68: chapter 2
+## Sección 68: chapter 2 [Entropy: 0.25]
 
 Form organization
 FIGURE 2.5 http://www.flickr.com/photos/rosenfeldmedia/2367260810
@@ -2162,15 +1938,12 @@ FIGURE 2.6 http://www.flickr.com/photos/rosenfeldmedia/2366425019
 A subtle background color change or thin rule is often all you
 need to effectively group related content in a form.
 Download at Boykma.Com
-
--- 78 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 69: chapter 2
+## Sección 69: chapter 2 [Entropy: 0.25]
 
 Form organization
 But even subtle distinctions between content
@@ -2188,15 +1961,12 @@ actually create a different issue.
 1 Matteo Penzo’s Label Placement in Forms study from UXmatters July 2006: http://tinyurl.
 com/fefbx
 Download at Boykma.Com
-
--- 79 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 70: chapter 2
+## Sección 70: chapter 2 [Entropy: 0.25]
 
 Form organization
 Consider the example in Figure 2.8 where
@@ -2214,15 +1984,12 @@ Although it may be tempting to use alternating background
 colors to group left-aligned labels and their corresponding
 inputs, these elements can add a lot of visual noise to a form.
 Download at Boykma.Com
-
--- 80 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 71: chapter 2
+## Sección 71: chapter 2 [Entropy: 0.25]
 
 Form organization
 layout: the labels and inputs. As information
@@ -2239,15 +2006,12 @@ FIGURE 2.8 http://www.flickr.com/photos/rosenfeldmedia/2366425057
 The addition of excessive visual elements can distract from a
 form’s primary content: and interrupt the scan line of a form.
 Download at Boykma.Com
-
--- 81 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 72: chapter 2
+## Sección 72: chapter 2 [Entropy: 0.25]
 
 Form organization
 box created by each combination of line and
@@ -2262,15 +2026,12 @@ is (see Figure 2.9). Chances are much more
 likely that it will become a distraction instead
 of an aid.
 Download at Boykma.Com
-
--- 82 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 73: chapter 2
+## Sección 73: chapter 2 [Entropy: 0.25]
 
 Form organization
 FIGURE 2.9 http://www.flickr.com/photos/rosenfeldmedia/2367260984
@@ -2278,15 +2039,12 @@ The eBay Express checkout form uses a thin rule to separate
 meaningful content sections. Just the minimum amount is
 needed to make a clear distinction.
 Download at Boykma.Com
-
--- 83 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 74: chapter 2
+## Sección 74: chapter 2 [Entropy: 0.34]
 
 Form organization
 Best Practices
@@ -2308,15 +2066,12 @@ groups to aid scanning and completion.
 conversation. Natural breaks between topics will
 emerge that can help you organize your form.
 Download at Boykma.Com
-
--- 84 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 75: chapter 2
+## Sección 75: chapter 2 [Entropy: 0.325]
 
 Form organization
 Best Practices (continued)
@@ -2339,15 +2094,12 @@ initial form.
 discover patterns in how forms are organized on
 specific kinds of sites.
 Download at Boykma.Com
-
--- 85 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 76: chapter 2
+## Sección 76: chapter 2 [Entropy: 0.28]
 
 Form organization
 Best Practices (continued)
@@ -2357,11 +2109,9 @@ necessary to distinguish content groups.
 content groups easier to scan.
 Download at Boykma.Com
 
--- 86 of 374 --
-
 ---
 
-## Sección 77: chaPter 3
+## Sección 77: chaPter 3 [Entropy: 0.25]
 
 Path to
 completion
@@ -2375,15 +2125,12 @@ best Practices 85
 Enter code WFDDE for 10% off any Rosenfeld Media product directly
 purchased from our site: http://rosenfeldmedia.com
 Download at Boykma.Com
-
--- 87 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 78: chapter 3
+## Sección 78: chapter 3 [Entropy: 0.25]
 
 Path to completion
 Ithink it’s safe to say that people should
@@ -2410,15 +2157,12 @@ burden mostly falls on the form’s title. As a
 result, it’s crucial that form titles match the calls
 to action that people use to access them.
 Download at Boykma.Com
-
--- 88 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 79: chapter 3
+## Sección 79: chapter 3 [Entropy: 0.25]
 
 Path to completion
 In the Fairmont Hotels in Figure 3.1, one of the
@@ -2432,15 +2176,12 @@ Clicking on the Activate Account link from the Fairmont Hotels
 front page leads to a form titled “Manage Your Fairmont
 President’s Club Profile.” Are you in the right place?
 Download at Boykma.Com
-
--- 89 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 80: chapter 3
+## Sección 80: chapter 3 [Entropy: 0.25]
 
 Path to completion
 titled “Manage Your Fairmont President’s
@@ -2465,15 +2206,12 @@ online, the start page in Figure 3.2 lets you
 know that account statements, a driver’s
 license, bank account information, and more
 Download at Boykma.Com
-
--- 90 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 81: chapter 3
+## Sección 81: chapter 3 [Entropy: 0.25]
 
 Path to completion
 are required to successfully complete the form.
@@ -2487,15 +2225,12 @@ FIGURE 3.2 http://www.flickr.com/photos/rosenfeldmedia/2366425401
 A start page on Fidelity lets you know what it takes to complete
 this form.
 Download at Boykma.Com
-
--- 91 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 82: chapter 3
+## Sección 82: chapter 3 [Entropy: 0.25]
 
 Path to completion
 a significant time investment, like online
@@ -2520,15 +2255,12 @@ axis of labels, input fields, and a primary action
 button provides a single path through the
 form. This allows people to respond quickly
 Download at Boykma.Com
-
--- 92 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 83: chapter 3
+## Sección 83: chapter 3 [Entropy: 0.25]
 
 Path to completion
 to questions and complete their task with a
@@ -2540,15 +2272,12 @@ A composite eye-tracking image (heat map) from Etre (www.
 etre.com) showing what people look at when filling in a simple
 Web form.
 Download at Boykma.Com
-
--- 93 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 84: chapter 3
+## Sección 84: chapter 3 [Entropy: 0.25]
 
 Path to completion
 forms in Figure 3.4. One has a clear scan line
@@ -2563,15 +2292,12 @@ rosenfeldmedia/2367261472
 http://www.flickr.com/photos/
 rosenfeldmedia/2367261684
 Download at Boykma.Com
-
--- 94 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 85: chapter 3
+## Sección 85: chapter 3 [Entropy: 0.25]
 
 Path to completion
 at the primary action, and allows people to
@@ -2596,15 +2322,12 @@ FIGURE 3.5 http://www.flickr.com/photos/rosenfeldmedia/2366425847
 A well-paced flow between questions requires adequate
 spacing between questions.
 Download at Boykma.Com
-
--- 95 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 86: chapter 3
+## Sección 86: chapter 3 [Entropy: 0.265]
 
 Path to completion
 the style of your form, but generally about 50
@@ -2630,15 +2353,12 @@ The difference between checkout and
 shopping on Amazon.com shown in Figure
 3.6 is stark. Even the site’s logo, which usually
 Download at Boykma.Com
-
--- 96 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 87: chapter 3
+## Sección 87: chapter 3 [Entropy: 0.25]
 
 Path to completion
 FIGURE 3.6
@@ -2648,15 +2368,12 @@ While Amazon.com may merchandise its categories and
 specials through its Web site, once you are in checkout, there
 are no frills.
 Download at Boykma.Com
-
--- 97 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 88: chapter 3
+## Sección 88: chapter 3 [Entropy: 0.295]
 
 Path to completion
 allows people to return to the Amazon home
@@ -2680,15 +2397,12 @@ to organize the form into meaningful content
 groups. The next step is to illuminate a path to
 completion through these groups.
 Download at Boykma.Com
-
--- 98 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 89: chapter 3
+## Sección 89: chapter 3 [Entropy: 0.265]
 
 Path to completion
 In addition to clearly labeled section headers,
@@ -2707,15 +2421,12 @@ FIGURE 3.7 http://www.flickr.com/photos/rosenfeldmedia/2367262288
 Redfin provides multiple progress indicators that indicate
 scope, position, and status information.
 Download at Boykma.Com
-
--- 99 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 90: chapter 3
+## Sección 90: chapter 3 [Entropy: 0.265]
 
 Path to completion
 current position lets people know where they
@@ -2741,15 +2452,12 @@ detailed progress indicator. However, as soon
 as someone selects “Next,” a page not included
 in the process (Log In) appears.
 Download at Boykma.Com
-
--- 100 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 91: chapter 3
+## Sección 91: chapter 3 [Entropy: 0.25]
 
 Path to completion
 This illustrates an all too common problem
@@ -2764,15 +2472,12 @@ where you are in the process of filling in a long form. However,
 it disappears on step one (login), which is not included in the
 list of steps required.
 Download at Boykma.Com
-
--- 101 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 92: chapter 3
+## Sección 92: chapter 3 [Entropy: 0.25]
 
 Path to completion
 like the one in Figure 3.9 on Half.com. The
@@ -2794,15 +2499,12 @@ FIGURE 3.9 http://www.flickr.com/photos/rosenfeldmedia/2366426533
 The three steps promised by Half.com can easily become many
 more.
 Download at Boykma.Com
-
--- 102 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 93: chapter 3
+## Sección 93: chapter 3 [Entropy: 0.25]
 
 Path to completion
 So we’ve taken six steps to accomplish what
@@ -2829,15 +2531,12 @@ FIGURE 3.10 http://www.flickr.com/photos/rosenfeldmedia/2367261014
 Amazon does not promise any number of pages, just a high-level
 set of tasks.
 Download at Boykma.Com
-
--- 103 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 94: chapter 3
+## Sección 94: chapter 3 [Entropy: 0.31]
 
 Path to completion
 For many disabled users, the virtual world of the computer
@@ -2866,15 +2565,12 @@ Perspective: Peter Wallack
 Accessibility Program Director, Oracle
 Designing Accessible Forms
 Download at Boykma.Com
-
--- 104 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 95: chapter 3
+## Sección 95: chapter 3 [Entropy: 0.34]
 
 Path to completion
 One more reason to care—if you post your Web site in a public
@@ -2902,15 +2598,12 @@ Once you adhere to these principles, the best guidelines for
 accessibility come from the Web Content Accessibility Guidelines
 Perspective: Peter Wallack (Continued)
 Download at Boykma.Com
-
--- 105 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 96: chapter 3
+## Sección 96: chapter 3 [Entropy: 0.31]
 
 Path to completion
 (WCAG) produced by the W3C (www.w3.org/TR/WCAG10/)
@@ -2938,15 +2631,12 @@ error, also provide a column that shows the word “Error.”
 backgrounds. And be aware that color-blind users cannot
 Perspective: Peter Wallack (Continued)
 Download at Boykma.Com
-
--- 106 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 97: chapter 3
+## Sección 97: chapter 3 [Entropy: 0.37]
 
 Path to completion
 distinguish between certain colors. The best solution is to
@@ -2973,15 +2663,12 @@ carefully—don’t refer to “the button on the right” or the
 name or function, not their physical characteristics.
 Perspective: Peter Wallack (Continued)
 Download at Boykma.Com
-
--- 107 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 98: chapter 3
+## Sección 98: chapter 3 [Entropy: 0.325]
 
 Path to completion
 • If there are timing aspects of the product, allow the user to
@@ -3007,15 +2694,12 @@ dwarfs all of these: Test your page with your intended users,
 including those who have disabilities.
 Perspective: Peter Wallack (Continued)
 Download at Boykma.Com
-
--- 108 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 99: chapter 3
+## Sección 99: chapter 3 [Entropy: 0.25]
 
 Path to completion
 Tabbing
@@ -3039,30 +2723,24 @@ browser window when your last input field
 now sits offscreen. It also doesn’t help that the
 first input field at the top of the second column
 Download at Boykma.Com
-
--- 109 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 100: chapter 3
+## Sección 100: chapter 3 [Entropy: 0.25]
 
 Path to completion
 FIGURE 3.11 http://www.flickr.com/photos/rosenfeldmedia/2366425259
 Tabbing through inputs on the Office Depot registration form
 could result in a lot of page jumping when changing columns.
 Download at Boykma.Com
-
--- 110 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 101: chapter 3
+## Sección 101: chapter 3 [Entropy: 0.25]
 
 Path to completion
 is a single checkbox surrounded by text. This
@@ -3083,15 +2761,12 @@ will be like for the large numbers of people
 who move between input fields using the Tab
 key, and they should design accordingly.
 Download at Boykma.Com
-
--- 111 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 102: chapter 3
+## Sección 102: chapter 3 [Entropy: 0.25]
 
 Path to completion
 When I described the experience of filling out
@@ -3110,15 +2785,12 @@ it’s a good idea to talk to a developer about
 specifying the order in which inputs should be
 accessed.
 Download at Boykma.Com
-
--- 112 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 103: chapter 3
+## Sección 103: chapter 3 [Entropy: 0.37]
 
 Path to completion
 Best Practices
@@ -3143,11 +2815,9 @@ making form layout decisions.
 through a form.
 Download at Boykma.Com
 
--- 113 of 374 --
-
 ---
 
-## Sección 104: CHAPTER 4
+## Sección 104: CHAPTER 4 [Entropy: 0.25]
 
 labels
 label alignment 87
@@ -3160,15 +2830,12 @@ best Practices 104
 Enter code WFDDE for 10% off any Rosenfeld Media product directly
 purchased from our site: http://rosenfeldmedia.com
 Download at Boykma.Com
-
--- 114 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 105: chapter 4
+## Sección 105: chapter 4 [Entropy: 0.265]
 
 labels
 Every Web form has at least three basic
@@ -3194,15 +2861,12 @@ about form design is “Should I top-, right-
 (See Figure 4.1.) So let’s answer it up front.
 Everyone together now… “it depends.” Like
 Download at Boykma.Com
-
--- 115 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 106: chapter 4
+## Sección 106: chapter 4 [Entropy: 0.25]
 
 labels
 any design problem, the right solution depends
@@ -3216,15 +2880,12 @@ have screen real estate constraints that require
 FIGURE 4.1 http://www.flickr.com/photos/rosenfeldmedia/2367264644
 Left-, right-, or top-aligned labels?
 Download at Boykma.Com
-
--- 116 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 107: chapter 4
+## Sección 107: chapter 4 [Entropy: 0.25]
 
 labels
 you to minimize the amount of vertical or
@@ -3245,15 +2906,12 @@ clear path to completion.
 FIGURE 4.2 http://www.flickr.com/photos/rosenfeldmedia/2366428797
 Some of the pros and cons of top-aligned labels.
 Download at Boykma.Com
-
--- 117 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 108: chapter 4
+## Sección 108: chapter 4 [Entropy: 0.25]
 
 labels
 Top-aligned labels also have plenty of horizontal
@@ -3274,15 +2932,12 @@ FIGURE 4.3 http://www.flickr.com/photos/rosenfeldmedia/2367264712
 Top-aligned labels on Apple.com provide ample room to group
 related input fields horizontally.
 Download at Boykma.Com
-
--- 118 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 109: chapter 4
+## Sección 109: chapter 4 [Entropy: 0.25]
 
 labels
 Top-aligned labels, however, do take up
@@ -3307,15 +2962,12 @@ That’s 10 times faster than left-aligned labels,
 which required a medium duration of 500ms
 1 Label Placement in Forms published in UXmatters July, 2006: http://tinyurl.com/fefbx
 Download at Boykma.Com
-
--- 119 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 110: chapter 4
+## Sección 110: chapter 4 [Entropy: 0.25]
 
 labels
 and twice as fast as right-aligned labels, which
@@ -3334,15 +2986,12 @@ labels certainly helps.
 FIGURE 4.4 http://www.flickr.com/photos/rosenfeldmedia/2367264762
 Eye-tracking data for top-aligned labels by Matteo Penzo.
 Download at Boykma.Com
-
--- 120 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 111: chapter 4
+## Sección 111: chapter 4 [Entropy: 0.25]
 
 labels
 It should be noted, however, that both the eye
@@ -3358,15 +3007,12 @@ FIGURE 4.5 http://www.flickr.com/photos/rosenfeldmedia/2366428949
 The eBay Express checkout form is an example of a top-aligned
 layout.
 Download at Boykma.Com
-
--- 121 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 112: chapter 4
+## Sección 112: chapter 4 [Entropy: 0.25]
 
 labels
 Right-Aligned Labels
@@ -3388,15 +3034,12 @@ the amount of vertical screen space your form
 FIGURE 4.6 http://www.flickr.com/photos/rosenfeldmedia/2366428975
 Some of the pros and cons of right-aligned labels.
 Download at Boykma.Com
-
--- 122 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 113: chapter 4
+## Sección 113: chapter 4 [Entropy: 0.25]
 
 labels
 uses, right-aligned labels can provide fast
@@ -3411,15 +3054,12 @@ layout.
 FIGURE 4.7 http://www.flickr.com/photos/rosenfeldmedia/2367264946
 Eye-tracking data for right-aligned labels by Matteo Penzo.
 Download at Boykma.Com
-
--- 123 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 114: chapter 4
+## Sección 114: chapter 4 [Entropy: 0.25]
 
 labels
 FIGURE 4.8 http://www.flickr.com/photos/rosenfeldmedia/2366429101
@@ -3434,15 +3074,12 @@ easier (see Figure 4.9). People can simply
 inspect the left column of labels up and down
 without being interrupted by input fields.
 Download at Boykma.Com
-
--- 124 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 115: chapter 4
+## Sección 115: chapter 4 [Entropy: 0.25]
 
 labels
 Unfortunately, a few long labels often extend
@@ -3462,15 +3099,12 @@ of the number of eye fixations they require
 FIGURE 4.9 http://www.flickr.com/photos/rosenfeldmedia/2366429129
 Some of the pros and cons of left-aligned labels.
 Download at Boykma.Com
-
--- 125 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 116: chapter 4
+## Sección 116: chapter 4 [Entropy: 0.25]
 
 labels
 to parse. People generally have no problem
@@ -3491,15 +3125,12 @@ with lots of optional fields or unfamiliar data
 FIGURE 4.10 http://www.flickr.com/photos/rosenfeldmedia/2367264266
 Eye-tracking data for left-aligned labels by Matteo Penzo.
 Download at Boykma.Com
-
--- 126 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 117: chapter 4
+## Sección 117: chapter 4 [Entropy: 0.265]
 
 labels
 like “Preferences” dialogs or advanced settings
@@ -3519,15 +3150,12 @@ FIGURE 4.11 http://www.flickr.com/photos/rosenfeldmedia/2366428457
 This advanced settings dialog from AdConnections is an
 example of where left-aligned labels might make sense.
 Download at Boykma.Com
-
--- 127 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 118: chapter 4
+## Sección 118: chapter 4 [Entropy: 0.25]
 
 labels
 A reliable interaction for labels within forms
@@ -3550,15 +3178,12 @@ FIGURE 4.12 http://www.flickr.com/photos/rosenfeldmedia/2367264348
 In this simple form, labels within input fields are displayed as
 gray text and include an ellipsis to distinguish them from data.
 Download at Boykma.Com
-
--- 128 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 119: chapter 4
+## Sección 119: chapter 4 [Entropy: 0.25]
 
 labels
 So if you suddenly forget what question you’re
@@ -3582,15 +3207,12 @@ Perhaps the most common example seen in
 Figure 4.13 is the use of selection labels in
 drop-down menus. Here, a dash before and
 Download at Boykma.Com
-
--- 129 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 120: chapter 4
+## Sección 120: chapter 4 [Entropy: 0.25]
 
 labels
 after the words “Select Month” is used to
@@ -3614,15 +3236,12 @@ Always ensure there is an obvious difference between labels and
 data. In this example, a set of dashes around a drop-down menu
 label distinguishes it from an actual answer.
 Download at Boykma.Com
-
--- 130 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 121: chapter 4
+## Sección 121: chapter 4 [Entropy: 0.25]
 
 labels
 consistency. But be sure to tread carefully
@@ -3640,15 +3259,12 @@ form, however, should really be avoided since
 it can cloud the clear path to completion people
 seek.
 Download at Boykma.Com
-
--- 131 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 122: chapter 4
+## Sección 122: chapter 4 [Entropy: 0.325]
 
 labels
 Best Practices
@@ -3671,15 +3287,12 @@ for very short forms, labels within inputs may be
 a good solution. Just ensure that you have the
 right interactions and context in place.
 Download at Boykma.Com
-
--- 132 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 123: chapter 4
+## Sección 123: chapter 4 [Entropy: 0.295]
 
 labels
 Best Practices (continued)
@@ -3694,11 +3307,9 @@ disrupt a clear path to completion and may
 confuse people.
 Download at Boykma.Com
 
--- 133 of 374 --
-
 ---
 
-## Sección 124: CHAPTER 5
+## Sección 124: CHAPTER 5 [Entropy: 0.25]
 
 input Fields
 types of input Fields 107
@@ -3710,15 +3321,12 @@ best Practices 136
 Enter code WFDDE for 10% off any Rosenfeld Media product directly
 purchased from our site: http://rosenfeldmedia.com
 Download at Boykma.Com
-
--- 134 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 125: chapter 5
+## Sección 125: chapter 5 [Entropy: 0.25]
 
 input Fields
 Once it’s clear what questions should
@@ -3738,15 +3346,12 @@ Figure 5.1 and Table 5.1).
 1 For an in-depth discussion of when to use input fields, check out Bob Baxley’s book:
 Making the Web Work, 2002, New Riders.
 Download at Boykma.Com
-
--- 135 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 126: chapter 5
+## Sección 126: chapter 5 [Entropy: 0.25]
 
 input Fields
 TABLE 5.1: TYPES OF INPUT FIELDS
@@ -3770,15 +3375,12 @@ button selection.
 FIGURE 5.1 http://www.flickr.com/photos/rosenfeldmedia/2367265752
 The various types of input fields found in Web forms.
 Download at Boykma.Com
-
--- 136 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 127: chapter 5
+## Sección 127: chapter 5 [Entropy: 0.25]
 
 input Fields
 Checkboxes Allow people to select any number of choices
@@ -3815,15 +3417,12 @@ selection) tends to cause problems for many
 people. As a result, list boxes are rarely used in
 Web forms.
 Download at Boykma.Com
-
--- 137 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 128: chapter 5
+## Sección 128: chapter 5 [Entropy: 0.265]
 
 input Fields
 One of the most challenging aspects of
@@ -3848,15 +3447,12 @@ Note that I haven’t included buttons in this
 list. There’s a whole chapter devoted to them
 coming up!
 Download at Boykma.Com
-
--- 138 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 129: chapter 5
+## Sección 129: chapter 5 [Entropy: 0.265]
 
 input Fields
 flexibility against clarity. How these trade-offs
@@ -3882,15 +3478,12 @@ of use, the overall audience should be considered
 recurring novices, meaning that the design should
 Perspective: Bob Baxley (Continued)
 Download at Boykma.Com
-
--- 139 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 130: chapter 5
+## Sección 130: chapter 5 [Entropy: 0.265]
 
 input Fields
 optimize for learn-ability, obviousness, and error
@@ -3911,15 +3504,12 @@ of visitors will have to bounce back and forth
 Perspective: Bob Baxley (Continued)
 http://www.flickr.com/photos/rosenfeldmedia/2405434961
 Download at Boykma.Com
-
--- 140 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 131: chapter 5
+## Sección 131: chapter 5 [Entropy: 0.25]
 
 input Fields
 between their mouse and keyboard in order to
@@ -3940,15 +3530,12 @@ obvious solution but not without issues.
 Perspective: Bob Baxley (Continued)
 http://www.flickr.com/photos/rosenfeldmedia/2406266586
 Download at Boykma.Com
-
--- 141 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 132: chapter 5
+## Sección 132: chapter 5 [Entropy: 0.25]
 
 input Fields
 Although this solution provides a more aggressive
@@ -3969,15 +3556,12 @@ the obviousness of the text box solution, it also
 Perspective: Bob Baxley (Continued)
 http://www.flickr.com/photos/rosenfeldmedia/2405434787
 Download at Boykma.Com
-
--- 142 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 133: chapter 5
+## Sección 133: chapter 5 [Entropy: 0.28]
 
 input Fields
 has the error prevention advantages of the menu
@@ -3998,15 +3582,12 @@ order to arrive at a solution that best satisfies the
 unique needs of the audience and application.
 Perspective: Bob Baxley (Continued)
 Download at Boykma.Com
-
--- 143 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 134: chapter 5
+## Sección 134: chapter 5 [Entropy: 0.25]
 
 input Fields
 Field Lengths
@@ -4031,15 +3612,12 @@ phone number in the United States. The rest
 2 For further information about affordances, check out Donald Norman’s book, The Design
 of Everyday Things, 2002 Basic Books
 Download at Boykma.Com
-
--- 144 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 135: chapter 5
+## Sección 135: chapter 5 [Entropy: 0.265]
 
 input Fields
 of the text boxes are a consistent length that
@@ -4060,15 +3638,12 @@ The different text box lengths on this eBay Express form
 provide an affordance that helps people understand how to
 answer questions.
 Download at Boykma.Com
-
--- 145 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 136: chapter 5
+## Sección 136: chapter 5 [Entropy: 0.25]
 
 input Fields
 Because affordances provide valuable clues
@@ -4089,15 +3664,12 @@ Macy’s opted for a consistent input length for primarily
 aesthetic reasons. However, this approach doesn’t capitalize on
 natural affordances that can help people provide answers.
 Download at Boykma.Com
-
--- 146 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 137: chapter 5
+## Sección 137: chapter 5 [Entropy: 0.25]
 
 input Fields
 FIGURE 5.4 http://www.flickr.com/photos/rosenfeldmedia/2366429989
@@ -4113,15 +3685,12 @@ I’m going to interrupt this chapter for a quick
 pop quiz: What does an asterisk next to an
 input field mean?
 Download at Boykma.Com
-
--- 147 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 138: chapter 5
+## Sección 138: chapter 5 [Entropy: 0.25]
 
 input Fields
 Many people will answer “It means this input
@@ -4136,15 +3705,12 @@ FIGURE 5.5 http://www.flickr.com/photos/rosenfeldmedia/2367266030
 Asterisks on the Hogan sign-up form indicate optional fields! Not
 what most people would expect.
 Download at Boykma.Com
-
--- 148 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 139: chapter 5
+## Sección 139: chapter 5 [Entropy: 0.25]
 
 input Fields
 In both cases, the more important question is
@@ -4169,15 +3735,12 @@ Indicating optional or
 required fields next to input
 field labels.
 Download at Boykma.Com
-
--- 149 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 140: chapter 5
+## Sección 140: chapter 5 [Entropy: 0.25]
 
 input Fields
 Well, unfortunately the complexity of
@@ -4204,15 +3767,12 @@ Similarly, indicating the majority case (most
 input fields are required or optional) versus
 the minority case (just a few input fields are
 Download at Boykma.Com
-
--- 150 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 141: chapter 5
+## Sección 141: chapter 5 [Entropy: 0.25]
 
 input Fields
 required or optional) increases the amount
@@ -4239,15 +3799,12 @@ Some people will argue that a site’s Web
 forms should be consistent throughout, and
 therefore every required input field should be
 Download at Boykma.Com
-
--- 151 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 142: chapter 5
+## Sección 142: chapter 5 [Entropy: 0.25]
 
 input Fields
 FIGURE 5.7 http://www.flickr.com/photos/rosenfeldmedia/2367266224
@@ -4260,15 +3817,12 @@ Instead of marking everything required, the one optional field
 has been clearly marked optional, thereby reducing the amount
 of information on the form.
 Download at Boykma.Com
-
--- 152 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 143: chapter 5
+## Sección 143: chapter 5 [Entropy: 0.25]
 
 input Fields
 FIGURE 5.9 http://www.flickr.com/photos/rosenfeldmedia/2366430463
@@ -4279,15 +3833,12 @@ When Barnes & Noble redesigned its site, the company kept
 the asterisks that indicated every input field was required but
 removed the text that explained what the asterisk indicated.
 Download at Boykma.Com
-
--- 153 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 144: chapter 5
+## Sección 144: chapter 5 [Entropy: 0.25]
 
 input Fields
 indicated as such, regardless of whether or not
@@ -4308,15 +3859,12 @@ aligned with input fields can make this difficult
 because of the variety of shapes and sizes that
 input fields can have (Figure 5.12).
 Download at Boykma.Com
-
--- 154 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 145: chapter 5
+## Sección 145: chapter 5 [Entropy: 0.25]
 
 input Fields
 FIGURES 5.11 & 5.12
@@ -4327,15 +3875,12 @@ required. When indicators are aligned with input fields instead
 of labels, it’s much harder to get a sense of which questions
 must be answered.
 Download at Boykma.Com
-
--- 155 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 146: chapter 5
+## Sección 146: chapter 5 [Entropy: 0.25]
 
 input Fields
 Powerful design comes from the reuse of a small number of simple
@@ -4369,15 +3914,12 @@ Director of Social Search, Yahoo! Inc.
 The Structural Design of Forms
 http://www.flickr.com/photos/rosenfeldmedia/2406455722
 Download at Boykma.Com
-
--- 156 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 147: chapter 5
+## Sección 147: chapter 5 [Entropy: 0.25]
 
 input Fields
 Inputs can take many shapes, but the basic pattern is the same:
@@ -4396,15 +3938,12 @@ of problems, and they handle errors and dependencies differently.
 Perspective: Micah Alpern (Continued)
 http://www.flickr.com/photos/rosenfeldmedia/2406455536
 Download at Boykma.Com
-
--- 157 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 148: chapter 5
+## Sección 148: chapter 5 [Entropy: 0.325]
 
 input Fields
 Three different types of groups include the following:
@@ -4436,15 +3975,12 @@ Perspective: Micah Alpern (Continued)
 http://www.flickr.com/photos/
 rosenfeldmedia/2405624141
 Download at Boykma.Com
-
--- 158 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 149: chapter 5
+## Sección 149: chapter 5 [Entropy: 0.25]
 
 input Fields
 Input Groups
@@ -4466,15 +4002,12 @@ FIGURE 5.13 http://www.flickr.com/photos/rosenfeldmedia/2366429509
 The grouping of inputs on eBay’s Sell Your Item format
 represents a meaningful structure.
 Download at Boykma.Com
-
--- 159 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 150: chapter 5
+## Sección 150: chapter 5 [Entropy: 0.265]
 
 input Fields
 at a specific Cost. Similarly, the grouping of
@@ -4497,15 +4030,12 @@ simple help text next to the input (as you’ll
 see in Chapter 7) to let people know how they
 should answer the question: “Use xxx-xxxxxxx as the format for your answer.” We can
 Download at Boykma.Com
-
--- 160 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 151: chapter 5
+## Sección 151: chapter 5 [Entropy: 0.25]
 
 input Fields
 structure the input fields and their affordances
@@ -4527,15 +4057,12 @@ FIGURE 5.14 http://www.flickr.com/photos/rosenfeldmedia/2367265570
 Input fields can be made flexible enough to accept multiple
 formats of a valid answer.
 Download at Boykma.Com
-
--- 161 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 152: chapter 5
+## Sección 152: chapter 5 [Entropy: 0.265]
 
 input Fields
 Another example of flexible input fields comes
@@ -4553,15 +4080,12 @@ options result in valid answers. How much or
 FIGURE 5.15 http://www.flickr.com/photos/rosenfeldmedia/2366429699
 A flexible input on the Renkoo invitation form.
 Download at Boykma.Com
-
--- 162 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 153: chapter 5
+## Sección 153: chapter 5 [Entropy: 0.28]
 
 input Fields
 how little information is provided is up to the
@@ -4581,15 +4105,12 @@ in your way. Flexibility at the expense of how
 easily people can provide the most common
 answer is likely to do more harm than good.
 Download at Boykma.Com
-
--- 163 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 154: chapter 5
+## Sección 154: chapter 5 [Entropy: 0.415]
 
 input Fields
 Best Practices
@@ -4616,15 +4137,12 @@ people an easy way to see which questions need to be answered.
 valuable clue on how to answer a question, look for ways to group
 these inputs visually to clearly communicate that structure.
 Download at Boykma.Com
-
--- 164 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 155: chapter 5
+## Sección 155: chapter 5 [Entropy: 0.28]
 
 input Fields
 Best Practices (continued)
@@ -4634,11 +4152,9 @@ correctly, consider using a flexible input field.
 more difficult.
 Download at Boykma.Com
 
--- 165 of 374 --
-
 ---
 
-## Sección 156: CHAPTER 6
+## Sección 156: CHAPTER 6 [Entropy: 0.25]
 
 actions
 Primary and secondary actions 139
@@ -4649,15 +4165,12 @@ best Practices 158
 Enter code WFDDE for 10% off any Rosenfeld Media product directly
 purchased from our site: http://rosenfeldmedia.com
 Download at Boykma.Com
-
--- 166 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 157: chapter 6
+## Sección 157: chapter 6 [Entropy: 0.25]
 
 actions
 Labels provide the questions that forms
@@ -4679,15 +4192,12 @@ FIGURE 6.1 http://www.flickr.com/photos/rosenfeldmedia/2367266922
 Primary and secondary actions on a Web form can be
 represented in ways that illuminate their importance.
 Download at Boykma.Com
-
--- 167 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 158: chapter 6
+## Sección 158: chapter 6 [Entropy: 0.25]
 
 actions
 Secondary actions, on the other hand, tend to
@@ -4705,15 +4215,12 @@ Even on very short forms like this one from eBay, secondary
 actions can be problematic. Which button would you have
 pressed? The redesign makes it much clearer.
 Download at Boykma.Com
-
--- 168 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 159: chapter 6
+## Sección 159: chapter 6 [Entropy: 0.25]
 
 actions
 used unintentionally, I’ve often argued they
@@ -4740,15 +4247,12 @@ best way to accomplish this distinction (see
 Figure 6.3)? How different should primary and
 secondary actions be and where should they be
 Download at Boykma.Com
-
--- 169 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 160: chapter 6
+## Sección 160: chapter 6 [Entropy: 0.25]
 
 actions
 placed? To answer these questions, I ran a few
@@ -4766,15 +4270,12 @@ Various ways to distinguish primary and secondary actions
 include different button styles, combinations of buttons and
 links, and different links styles.
 Download at Boykma.Com
-
--- 170 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 161: chapter 6
+## Sección 161: chapter 6 [Entropy: 0.25]
 
 actions
 and asked to “Please complete the form fully
@@ -4786,15 +4287,12 @@ FIGURE 6.4 http://www.flickr.com/photos/rosenfeldmedia/2366430953
 The set of primary and secondary action designs tested for this
 book.
 Download at Boykma.Com
-
--- 171 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 162: chapter 6
+## Sección 162: chapter 6 [Entropy: 0.25]
 
 actions
 People accomplished their task perfectly when
@@ -4813,15 +4311,12 @@ Eye fixations from a single participant when both primary and
 secondary actions were visually identical. Image provided by
 Etre.
 Download at Boykma.Com
-
--- 172 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 163: chapter 6
+## Sección 163: chapter 6 [Entropy: 0.25]
 
 actions
 the task more quickly and efficiently than
@@ -4846,15 +4341,12 @@ recommend visually distinguishing secondary
 actions when they can’t be removed from
 a form.
 Download at Boykma.Com
-
--- 173 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 164: chapter 6
+## Sección 164: chapter 6 [Entropy: 0.25]
 
 actions
 Several people have suggested to me that a
@@ -4872,15 +4364,12 @@ Color and shape distinctions like those on Wufoo.com can be
 used to distinguish primary and secondary actions, but red text
 should be reserved for errors.
 Download at Boykma.Com
-
--- 174 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 165: chapter 6
+## Sección 165: chapter 6 [Entropy: 0.25]
 
 actions
 distinction between successful (green) actions
@@ -4906,15 +4395,12 @@ In the tests I ran with Etre, only Option E
 performed quite poorly. We found that 26
 percent of the people tested mistakenly clicked
 Download at Boykma.Com
-
--- 175 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 166: chapter 6
+## Sección 166: chapter 6 [Entropy: 0.25]
 
 actions
 the Cancel button when attempting the task
@@ -4936,15 +4422,12 @@ FIGURE 6.8 http://www.flickr.com/photos/rosenfeldmedia/2367267446
 Eye fixations from a single participant when primary and
 secondary were separated. Image provided by Etre.
 Download at Boykma.Com
-
--- 176 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 167: chapter 6
+## Sección 167: chapter 6 [Entropy: 0.25]
 
 actions
 case, they had to search around to find them
@@ -4965,15 +4448,12 @@ Eye fixations from a single participant when primary and
 secondary actions were centered on the bottom of a form. Image
 provided by Etre.
 Download at Boykma.Com
-
--- 177 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 168: chapter 6
+## Sección 168: chapter 6 [Entropy: 0.25]
 
 actions
 the less time people have to spend on your
@@ -4998,15 +4478,12 @@ FIGURE 6.10 http://www.flickr.com/photos/rosenfeldmedia/2367266540
 Avoid excessive instructions that tell people not to press Submit
 more than once.
 Download at Boykma.Com
-
--- 178 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 169: chapter 6
+## Sección 169: chapter 6 [Entropy: 0.25]
 
 actions
 A better answer is to replace the active primary
@@ -5031,15 +4508,12 @@ with valid information. This approach
 requires a dynamic system that “knows” what
 constitutes a valid reply for every question on
 Download at Boykma.Com
-
--- 179 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 170: chapter 6
+## Sección 170: chapter 6 [Entropy: 0.25]
 
 actions
 FIGURE 6.11
@@ -5048,15 +4522,12 @@ bottom image: http://www.flickr.com/photos/rosenfeldmedia/2367266640
 Basecamp provides progress indicators for form submission
 and file uploads using animated images.
 Download at Boykma.Com
-
--- 180 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 171: chapter 6
+## Sección 171: chapter 6 [Entropy: 0.25]
 
 actions
 the form and when all the questions have been
@@ -5077,15 +4548,12 @@ FIGURE 6.12 http://www.flickr.com/photos/rosenfeldmedia/2366430625
 Basecamp’s sign-up form disables the Submit button until all
 inputs have valid answers.
 Download at Boykma.Com
-
--- 181 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 172: chapter 6
+## Sección 172: chapter 6 [Entropy: 0.25]
 
 actions
 form. Contrast this approach with the example
@@ -5102,15 +4570,12 @@ form obscure a path to completion by hiding the primary
 action, but it also incorrectly uses radio buttons, which
 should never appear alone (see Chapter 5).
 Download at Boykma.Com
-
--- 182 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 173: chapter 6
+## Sección 173: chapter 6 [Entropy: 0.25]
 
 actions
 Agree and Submit
@@ -5136,15 +4601,12 @@ telling them they must agree to the site’s terms
 of service. This process may cause frustration
 or, even worse, abandonment.
 Download at Boykma.Com
-
--- 183 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 174: chapter 6
+## Sección 174: chapter 6 [Entropy: 0.25]
 
 actions
 It doesn’t help that in many situations, the
@@ -5160,15 +4622,12 @@ FIGURE 6.14 http://www.flickr.com/photos/rosenfeldmedia/2367266830
 Common options for marketing materials and terms of service
 agreements.
 Download at Boykma.Com
-
--- 184 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 175: chapter 6
+## Sección 175: chapter 6 [Entropy: 0.25]
 
 actions
 Luckily, there are opportunities to provide
@@ -5190,15 +4649,12 @@ bottom image: http://www.flickr.com/photos/rosenfeldmedia/2367266892
 Two approaches for combining terms of service agreement and
 form completion into a single action.
 Download at Boykma.Com
-
--- 185 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 176: chapter 6
+## Sección 176: chapter 6 [Entropy: 0.295]
 
 actions
 The advantage of both these options is that they
@@ -5222,15 +4678,12 @@ across multiple Web pages, primary actions move
 people closer to completion and secondary actions
 allow them to go back.
 Download at Boykma.Com
-
--- 186 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 177: chapter 6
+## Sección 177: chapter 6 [Entropy: 0.325]
 
 actions
 Best Practices (continued)
@@ -5249,11 +4702,9 @@ requirements by combining terms of service
 agreements with primary actions.
 Download at Boykma.Com
 
--- 187 of 374 --
-
 ---
 
-## Sección 178: CHAPTER 7
+## Sección 178: CHAPTER 7 [Entropy: 0.25]
 
 help text
 When to help 161
@@ -5265,15 +4716,12 @@ best Practices 184
 Enter code WFDDE for 10% off any Rosenfeld Media product directly
 purchased from our site: http://rosenfeldmedia.com
 Download at Boykma.Com
-
--- 188 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 179: chapter 7
+## Sección 179: chapter 7 [Entropy: 0.25]
 
 help text
 Although the way we phrase labels and
@@ -5299,15 +4747,12 @@ required to explain how to complete your form,
 then chances are the questions you are asking
 are either phrased poorly, too complex, or just
 Download at Boykma.Com
-
--- 189 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 180: chapter 7
+## Sección 180: chapter 7 [Entropy: 0.25]
 
 help text
 plain unnecessary. Excessive help text may
@@ -5323,15 +4768,12 @@ On this eBay form, excessive help text makes a single choice
 seem overly complex. There are over 10 different ways to get
 help picking one of three radio buttons.
 Download at Boykma.Com
-
--- 190 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 181: chapter 7
+## Sección 181: chapter 7 [Entropy: 0.25]
 
 help text
 explain your form will lead to trouble when
@@ -5346,15 +4788,12 @@ FIGURE 7.2 http://www.flickr.com/photos/rosenfeldmedia/2366432069
 The three paragraphs of instructional text on this Fairmont
 Hotels page are likely to get passed over by most people.
 Download at Boykma.Com
-
--- 191 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 182: chapter 7
+## Sección 182: chapter 7 [Entropy: 0.325]
 
 help text
 Yet there are cases when instructional text
@@ -5377,15 +4816,12 @@ required when the bulk of the form is not.
 In these cases, a clear and concise bit of help
 text adjacent to an input field tends to do the
 Download at Boykma.Com
-
--- 192 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 183: chapter 7
+## Sección 183: chapter 7 [Entropy: 0.25]
 
 help text
 trick. In the videoegg sign-up form in Figure
@@ -5404,15 +4840,12 @@ FIGURE 7.3 http://www.flickr.com/photos/rosenfeldmedia/2367268274
 On videoegg’s sign-up form, the minimum amount of help text
 required is used to help people answer questions.
 Download at Boykma.Com
-
--- 193 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 184: chapter 7
+## Sección 184: chapter 7 [Entropy: 0.25]
 
 help text
 and why. In some of these cases, the amount
@@ -5437,15 +4870,12 @@ they contain is most applicable. For example,
 when a person clicks or tabs to an input field,
 the relevant help text appears beside or below
 Download at Boykma.Com
-
--- 194 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 185: chapter 7
+## Sección 185: chapter 7 [Entropy: 0.25]
 
 help text
 the input. The Wufoo example in Figure 7.4
@@ -5463,15 +4893,12 @@ FIGURE 7.4 http://www.flickr.com/photos/rosenfeldmedia/2367268378
 On Wufoo, help text is automatically shown as people engage
 with input fields.
 Download at Boykma.Com
-
--- 195 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 186: chapter 7
+## Sección 186: chapter 7 [Entropy: 0.25]
 
 help text
 The automatic inline help system used by
@@ -5494,15 +4921,12 @@ FIGURE 7.5 http://www.flickr.com/photos/rosenfeldmedia/2366432243
 Here is an alternate presentation style for inline help text on
 Form Assembly.
 Download at Boykma.Com
-
--- 196 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 187: chapter 7
+## Sección 187: chapter 7 [Entropy: 0.25]
 
 help text
 When help text is more applicable to a set of
@@ -5519,15 +4943,12 @@ FIGURE 7.6 http://www.flickr.com/photos/rosenfeldmedia/2367268468
 SnapTax automatically reveals help text for related groups of
 input fields.
 Download at Boykma.Com
-
--- 197 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 188: chapter 7
+## Sección 188: chapter 7 [Entropy: 0.265]
 
 help text
 input fields and their associated help text. In
@@ -5553,15 +4974,12 @@ longer visible after. Because help text is visible
 right away, people know help is available when
 they first encounter the form.
 Download at Boykma.Com
-
--- 198 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 189: chapter 7
+## Sección 189: chapter 7 [Entropy: 0.28]
 
 help text
 However, the only type of help text really
@@ -5585,15 +5003,12 @@ become part of their answers.
 FIGURE 7.7 http://www.flickr.com/photos/rosenfeldmedia/2367268488
 Help text within an input field on LinkedIn.
 Download at Boykma.Com
-
--- 199 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 190: chapter 7
+## Sección 190: chapter 7 [Entropy: 0.295]
 
 help text
 • Be aware that the help text is gone as soon
@@ -5620,15 +5035,12 @@ specific to a group of inputs, consider using a
 method that consistently displays help text in a
 predictable location.
 Download at Boykma.Com
-
--- 200 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 191: chapter 7
+## Sección 191: chapter 7 [Entropy: 0.28]
 
 help text
 User-Activated Inline Help
@@ -5654,15 +5066,12 @@ of content can leave people disoriented as the
 form they are filling out continues to move up
 and down.
 Download at Boykma.Com
-
--- 201 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 192: chapter 7
+## Sección 192: chapter 7 [Entropy: 0.265]
 
 help text
 Another drawback to the Juicy Studios
@@ -5678,15 +5087,12 @@ help text within a form pushing everything down the page.
 This type of page “jumping” may disorient people as they
 complete a form.
 Download at Boykma.Com
-
--- 202 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 193: chapter 7
+## Sección 193: chapter 7 [Entropy: 0.25]
 
 help text
 associating symbols with labels allows people
@@ -5704,15 +5110,12 @@ FIGURE 7.9 http://www.flickr.com/photos/rosenfeldmedia/2367268622
 Wells Fargo uses a small window to reveal help text when
 people click on each input label.
 Download at Boykma.Com
-
--- 203 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 194: chapter 7
+## Sección 194: chapter 7 [Entropy: 0.25]
 
 help text
 However, the same caveats for automatic inline
@@ -5734,15 +5137,12 @@ FIGURE 7.10 http://www.flickr.com/photos/rosenfeldmedia/2366431361
 Help text accessed with a mouse rollover can obscure input
 fields as seen in this sample form QLC.
 Download at Boykma.Com
-
--- 204 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 195: chapter 7
+## Sección 195: chapter 7 [Entropy: 0.25]
 
 help text
 Extending the size of the rollover’s activation
@@ -5769,15 +5169,12 @@ than input fields for reasons mentioned earlier.
 Forms that ask complex questions and tend
 to get reused by the same people are good
 Download at Boykma.Com
-
--- 205 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 196: chapter 7
+## Sección 196: chapter 7 [Entropy: 0.25]
 
 help text
 candidates for user-activated inline help.
@@ -5801,15 +5198,12 @@ FIGURE 7.11 http://www.flickr.com/photos/rosenfeldmedia/2366431391
 Though many symbols have been used to represent help, the
 question mark icon continues to be the most recognizable.
 Download at Boykma.Com
-
--- 206 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 197: chapter 7
+## Sección 197: chapter 7 [Entropy: 0.25]
 
 help text
 provide people with a permanent location
@@ -5824,15 +5218,12 @@ FIGURE 7.12 http://www.flickr.com/photos/rosenfeldmedia/2366431549
 Charles Schwab uses a new Web browser window to show large
 amounts of help text, including this chart.
 Download at Boykma.Com
-
--- 207 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 198: chapter 7
+## Sección 198: chapter 7 [Entropy: 0.25]
 
 help text
 form for contextual Help. Vizu’s help section
@@ -5849,15 +5240,12 @@ bottom image: http://www.flickr.com/photos/rosenfeldmedia/2367267888
 Vizu’s help section displays help text relevant to the active
 input fields within a consistent location on the form.
 Download at Boykma.Com
-
--- 208 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 199: chapter 7
+## Sección 199: chapter 7 [Entropy: 0.265]
 
 help text
 Like user-activated inline help, user-activated
@@ -5873,15 +5261,12 @@ FIGURE 7.14 http://www.flickr.com/photos/rosenfeldmedia/2367267948
 eBay’s Sell Your Item Help panel can be turned on and off at any
 time.
 Download at Boykma.Com
-
--- 209 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 200: chapter 7
+## Sección 200: chapter 7 [Entropy: 0.25]
 
 help text
 with contextually relevant help text when a
@@ -5907,15 +5292,12 @@ be appropriate. It’s important that this help text
 has some “meat” behind it. In other words, it
 should be actionable, allowing people to verify
 Download at Boykma.Com
-
--- 210 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 201: chapter 7
+## Sección 201: chapter 7 [Entropy: 0.25]
 
 help text
 the security you promise. Many online services
@@ -5932,15 +5314,12 @@ top image: http://www.flickr.com/photos/rosenfeldmedia/2366431843
 bottom image: http://www.flickr.com/photos/rosenfeldmedia/2367268014
 Various ways of verifying a secure transaction.
 Download at Boykma.Com
-
--- 211 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 202: chapter 7
+## Sección 202: chapter 7 [Entropy: 0.34]
 
 help text
 Best Practices
@@ -5965,15 +5344,12 @@ help system.
 questions, and is likely to be reused by the same
 people multiple times, consider using a useractivated help system.
 Download at Boykma.Com
-
--- 212 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 203: chapter 7
+## Sección 203: chapter 7 [Entropy: 0.325]
 
 help text
 Best Practices (continued)
@@ -5997,11 +5373,9 @@ including actionable help text that allows people to
 confirm that their information is safe.
 Download at Boykma.Com
 
--- 213 of 374 --
-
 ---
 
-## Sección 204: chaPter 8
+## Sección 204: chaPter 8 [Entropy: 0.25]
 
 errors and
 success
@@ -6012,15 +5386,12 @@ best Practices 212
 Enter code WFDDE for 10% off any Rosenfeld Media product directly
 purchased from our site: http://rosenfeldmedia.com
 Download at Boykma.Com
-
--- 214 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 205: chapter 8
+## Sección 205: chapter 8 [Entropy: 0.265]
 
 errors and success
 While help text can be used to
@@ -6040,7 +5411,7 @@ practices and dynamic systems we looked at in
 
 ---
 
-## Sección 206: Chapter 7 for help text also apply to the error
+## Sección 206: Chapter 7 for help text also apply to the error [Entropy: 0.25]
 
 and success messages discussed here.
 Errors
@@ -6051,15 +5422,12 @@ forms and mistakes may happen. Of course, we
 want to minimize the potential for these types
 of errors as much as we can—that’s what most
 Download at Boykma.Com
-
--- 215 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 207: chapter 8
+## Sección 207: chapter 8 [Entropy: 0.265]
 
 errors and success
 of this book is about! But when mistakes do
@@ -6086,15 +5454,12 @@ three paragraphs of instructions, it is also
 displayed in the same font face and color as the
 rest of the text on the page. The only difference
 Download at Boykma.Com
-
--- 216 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 208: chapter 8
+## Sección 208: chapter 8 [Entropy: 0.25]
 
 errors and success
 is that the error text is bold. No wonder you
@@ -6114,15 +5479,12 @@ resolve this error. In the redesigned Fairmont
 FIGURE 8.1 http://www.flickr.com/photos/rosenfeldmedia/2367269100
 Where’s the error on this Fairmont Hotels form?
 Download at Boykma.Com
-
--- 217 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 209: chapter 8
+## Sección 209: chapter 8 [Entropy: 0.25]
 
 errors and success
 Hotels form page in Figure 8.2, you’ll notice a
@@ -6136,15 +5498,12 @@ A redesigned version of the Fairmont Hotels error page makes
 it much clearer that there is an error preventing people from
 continuing.
 Download at Boykma.Com
-
--- 218 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 210: chapter 8
+## Sección 210: chapter 8 [Entropy: 0.25]
 
 errors and success
 visual element (warning icon), and a prominent
@@ -6168,15 +5527,12 @@ this input field have clear instructions that
 encourage people to either try another answer
 or seek help if they can’t.
 Download at Boykma.Com
-
--- 219 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 211: chapter 8
+## Sección 211: chapter 8 [Entropy: 0.25]
 
 errors and success
 The inclusion of instructions next to the input
@@ -6198,15 +5554,12 @@ field, is difficult to read because of the centered, bold font, and
 has to be remembered when dismissed. Not a very effective
 way to remedy errors.
 Download at Boykma.Com
-
--- 220 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 212: chapter 8
+## Sección 212: chapter 8 [Entropy: 0.25]
 
 errors and success
 In this case, the label is red, and we’ve added
@@ -6228,15 +5581,12 @@ messages on the form. Clear visual similarities
 between errors and error messages help people
 connect the dots.
 Download at Boykma.Com
-
--- 221 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 213: chapter 8
+## Sección 213: chapter 8 [Entropy: 0.25]
 
 errors and success
 FIGURE 8.4 http://www.flickr.com/photos/rosenfeldmedia/2367269446
@@ -6255,15 +5605,12 @@ Perspective: James Reffell
 Director, Search User Experience, Yahoo! Inc.
 Fun with Messages
 Download at Boykma.Com
-
--- 222 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 214: chapter 8
+## Sección 214: chapter 8 [Entropy: 0.25]
 
 errors and success
 a form that’s so simple it doesn’t have any messages, then you’re a
@@ -6293,15 +5640,12 @@ something that looks like an error message in order to market
 something to the customer, you are a bad person.
 Perspective: James Reffell (Continued)
 Download at Boykma.Com
-
--- 223 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 215: chapter 8
+## Sección 215: chapter 8 [Entropy: 0.34]
 
 errors and success
 SUCCESS MESSAGES
@@ -6330,15 +5674,12 @@ Once you’ve figured out how many types of message you have,
 you need to build a visual and textual framework for them. The
 Perspective: James Reffell (Continued)
 Download at Boykma.Com
-
--- 224 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 216: chapter 8
+## Sección 216: chapter 8 [Entropy: 0.25]
 
 errors and success
 way that messages look and sound should match your overall look
@@ -6364,15 +5705,12 @@ left image: http://www.flickr.com/photos/rosenfeldmedia/2405623883
 center image: http://www.flickr.com/photos/rosenfeldmedia/2405623863
 right image: http://www.flickr.com/photos/rosenfeldmedia/2405623849
 Download at Boykma.Com
-
--- 225 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 217: chapter 8
+## Sección 217: chapter 8 [Entropy: 0.25]
 
 errors and success
 Now, what happens when there is more than
@@ -6402,15 +5740,12 @@ Perspective: James Reffell (Continued)
 http://www.flickr.com/photos/
 rosenfeldmedia/2405623841
 Download at Boykma.Com
-
--- 226 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 218: chapter 8
+## Sección 218: chapter 8 [Entropy: 0.25]
 
 errors and success
 2. Double visual emphasis for any input fields
@@ -6425,15 +5760,12 @@ FIGURE 8.5 http://www.flickr.com/photos/rosenfeldmedia/2366433263
 A clear message and ways to resolve multiple input errors on
 eBay.
 Download at Boykma.Com
-
--- 227 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 219: chapter 8
+## Sección 219: chapter 8 [Entropy: 0.25]
 
 errors and success
 both places could be presented when a form
@@ -6457,15 +5789,12 @@ similarity (color, border, font) between the
 error message and responsible input fields
 creates a clear connection between the two.
 Download at Boykma.Com
-
--- 228 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 220: chapter 8
+## Sección 220: chapter 8 [Entropy: 0.25]
 
 errors and success
 However, there may be situations where “less
@@ -6479,15 +5808,12 @@ On long forms, such as this one from QLC, a prominent error
 message and double visual emphasis on invalid input fields
 helps people quickly notice and remedy errors.
 Download at Boykma.Com
-
--- 229 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 221: chapter 8
+## Sección 221: chapter 8 [Entropy: 0.25]
 
 errors and success
 resolve it. Personally, I feel the form could be
@@ -6505,15 +5831,12 @@ FIGURE 8.7 http://www.flickr.com/photos/rosenfeldmedia/2367269736
 A single prominent message lets people know an error happened
 on Jotspot Live. Though how to resolve it isn’t as clear.
 Download at Boykma.Com
-
--- 230 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 222: chapter 8
+## Sección 222: chapter 8 [Entropy: 0.25]
 
 errors and success
 of the form. This sign-up form from Boingo
@@ -6530,15 +5853,12 @@ FIGURE 8.8 http://www.flickr.com/photos/rosenfeldmedia/2366433543
 Boingo’s error message blends in with its surroundings and, as a
 result, can be hard to notice.
 Download at Boykma.Com
-
--- 231 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 223: chapter 8
+## Sección 223: chapter 8 [Entropy: 0.25]
 
 errors and success
 clearest association with errors for most people,
@@ -6556,15 +5876,12 @@ with each input field. Distinguishing the label from remedy
 instructions (right now both are bold) could help make these
 errors easier to scan.
 Download at Boykma.Com
-
--- 232 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 224: chapter 8
+## Sección 224: chapter 8 [Entropy: 0.25]
 
 errors and success
 longer forms when the responsible input fields
@@ -6589,15 +5906,12 @@ Someone completes our form with no errors.
 Success!
 But now what?
 Download at Boykma.Com
-
--- 233 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 225: chapter 8
+## Sección 225: chapter 8 [Entropy: 0.28]
 
 errors and success
 Before we get ahead of ourselves, let’s make
@@ -6623,15 +5937,12 @@ they must be addressed. Success messages, on
 the other hand, should never block people’s
 progress—they should encourage more of it.
 Download at Boykma.Com
-
--- 234 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 226: chapter 8
+## Sección 226: chapter 8 [Entropy: 0.25]
 
 errors and success
 The success message on Pownce’s Invite
@@ -6649,15 +5960,12 @@ Pownce uses a short success message that does not get in the
 way of further action and clearly explains the result of people’s
 actions.
 Download at Boykma.Com
-
--- 235 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 227: chapter 8
+## Sección 227: chapter 8 [Entropy: 0.265]
 
 errors and success
 way to get out of the way by including a link to
@@ -6683,15 +5991,12 @@ their actions have been successful. The most
 common transitions utilized for this are fades,
 dissolves, or roll-ups.
 Download at Boykma.Com
-
--- 236 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 228: chapter 8
+## Sección 228: chapter 8 [Entropy: 0.25]
 
 errors and success
 In 37signal’s project management application,
@@ -6712,15 +6017,12 @@ that person an opportunity to review changes,
 make other changes, or locate other records to
 update.
 Download at Boykma.Com
-
--- 237 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 229: chapter 8
+## Sección 229: chapter 8 [Entropy: 0.25]
 
 errors and success
 FIGURE 8.11
@@ -6732,15 +6034,12 @@ When you are adding a new message to Basecamp, a fading
 background color around your addition lets you know you
 have been successful.
 Download at Boykma.Com
-
--- 238 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 230: chapter 8
+## Sección 230: chapter 8 [Entropy: 0.25]
 
 errors and success
 No Dead Ends
@@ -6757,15 +6056,12 @@ After you have connected with someone on the professional
 networking site LinkedIn, the success page provides several
 relevant next steps.
 Download at Boykma.Com
-
--- 239 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 231: chapter 8
+## Sección 231: chapter 8 [Entropy: 0.34]
 
 errors and success
 Best Practices
@@ -6790,15 +6086,12 @@ with a top-level error message to clearly
 communicate they need to be resolved in order to
 continue.
 Download at Boykma.Com
-
--- 240 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 232: chapter 8
+## Sección 232: chapter 8 [Entropy: 0.34]
 
 errors and success
 Best Practices (continued)
@@ -6818,11 +6111,9 @@ the results of a successful form submission.
 • Avoid success message page dead ends.
 Download at Boykma.Com
 
--- 241 of 374 --
-
 ---
 
-## Sección 233: chaPter 9
+## Sección 233: chaPter 9 [Entropy: 0.25]
 
 inline Validation
 confirmation 215
@@ -6832,15 +6123,12 @@ best Practices 230
 Enter code WFDDE for 10% off any Rosenfeld Media product directly
 purchased from our site: http://rosenfeldmedia.com
 Download at Boykma.Com
-
--- 242 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 234: chapter 9
+## Sección 234: chapter 9 [Entropy: 0.265]
 
 inline Validation
 Despite our best efforts to format
@@ -6867,15 +6155,12 @@ won’t get the answer “right.” A common
 example is the selection of a unique username.
 Chances are good that the first username to
 Download at Boykma.Com
-
--- 243 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 235: chapter 9
+## Sección 235: chapter 9 [Entropy: 0.25]
 
 inline Validation
 pop into people’s heads is one that someone
@@ -6897,15 +6182,12 @@ hard to even notice as it uses the same font face
 and color as the form’s labels (see Chapter 8 for
 more on error messages).
 Download at Boykma.Com
-
--- 244 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 236: chapter 9
+## Sección 236: chapter 9 [Entropy: 0.25]
 
 inline Validation
 FIGURE 9.1
@@ -6914,15 +6196,12 @@ bottom image: http://www.flickr.com/photos/rosenfeldmedia/2366433731
 In the Boingo sign-up form, people bounce back and forth trying
 to guess a valid username.
 Download at Boykma.Com
-
--- 245 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 237: chapter 9
+## Sección 237: chapter 9 [Entropy: 0.25]
 
 inline Validation
 An alternate approach can be seen on the
@@ -6944,15 +6223,12 @@ The Newsvine sign-up form uses inline validation to get people to
 an appropriate display name quickly and without pogo-sticking
 between error states.
 Download at Boykma.Com
-
--- 246 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 238: chapter 9
+## Sección 238: chapter 9 [Entropy: 0.25]
 
 inline Validation
 Another question commonly fraught with
@@ -6978,15 +6254,12 @@ is more “right.” So how can you steer people
 toward the more secure—and therefore right
 answers?
 Download at Boykma.Com
-
--- 247 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 239: chapter 9
+## Sección 239: chapter 9 [Entropy: 0.25]
 
 inline Validation
 As the eBay Express example in Figure 9.3
@@ -7002,15 +6275,12 @@ bottom image: http://www.flickr.com/photos/rosenfeldmedia/2366433919
 On eBay Express, a progress bar indicates how secure your
 password is in real time.
 Download at Boykma.Com
-
--- 248 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 240: chapter 9
+## Sección 240: chapter 9 [Entropy: 0.28]
 
 inline Validation
 people a highly visual way to gauge the quality
@@ -7037,15 +6307,12 @@ hand, validating all input fields in real time
 ensures that a form is completed correctly
 the first time through. On the other hand,
 Download at Boykma.Com
-
--- 249 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 241: chapter 9
+## Sección 241: chapter 9 [Entropy: 0.25]
 
 inline Validation
 validating everything could not only become a
@@ -7058,15 +6325,12 @@ bottom image: http://www.flickr.com/photos/rosenfeldmedia/2366433951
 Lastfm.com uses inline validation on almost every input field in
 its sign-up form.
 Download at Boykma.Com
-
--- 250 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 242: chapter 9
+## Sección 242: chapter 9 [Entropy: 0.25]
 
 inline Validation
 formatting), or that it is my email address
@@ -7093,15 +6357,12 @@ Figure 9.6 illustrates this sequence when
 someone completes his or her answer on the
 Yahoo! registration form.
 Download at Boykma.Com
-
--- 251 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 243: chapter 9
+## Sección 243: chapter 9 [Entropy: 0.25]
 
 inline Validation
 FIGURE 9.5
@@ -7114,15 +6375,12 @@ Yahoo!’s registration form only validates an answer once
 someone has indicated he or she is done by moving to the next
 input field.
 Download at Boykma.Com
-
--- 252 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 244: chapter 9
+## Sección 244: chapter 9 [Entropy: 0.265]
 
 inline Validation
 Suggestions
@@ -7147,15 +6405,12 @@ different way to ensure that people provide
 valid answers. Instead of real-time answers
 that say “yes, this is valid” or “no, it is not,”
 Download at Boykma.Com
-
--- 253 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 245: chapter 9
+## Sección 245: chapter 9 [Entropy: 0.265]
 
 inline Validation
 inline suggestions state “here are some valid
@@ -7170,15 +6425,12 @@ bottom image: http://www.flickr.com/photos/rosenfeldmedia/2366434187
 Kayak.com uses inline suggestions to help people provide
 valid answers for travel destinations.
 Download at Boykma.Com
-
--- 254 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 246: chapter 9
+## Sección 246: chapter 9 [Entropy: 0.28]
 
 inline Validation
 (Figure 9.2), Yahoo! provides a list of valid
@@ -7200,15 +6452,12 @@ FIGURE 9.8 http://www.flickr.com/photos/rosenfeldmedia/2366434297
 Yahoo!’s registration form provides a series of valid usernames
 based on your name.
 Download at Boykma.Com
-
--- 255 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 247: chapter 9
+## Sección 247: chapter 9 [Entropy: 0.25]
 
 inline Validation
 If people enter a valid phone number in a
@@ -7229,15 +6478,12 @@ Inline validation can be used to communicate limits, such as
 the number of characters that can be included in this message
 on Yahoo! Local.
 Download at Boykma.Com
-
--- 256 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 248: chapter 9
+## Sección 248: chapter 9 [Entropy: 0.295]
 
 inline Validation
 friends or family. To avoid spam or excessively
@@ -7253,15 +6499,12 @@ note that the Yahoo! character count updates
 immediately as you type. Any significant delay
 would limit the usefulness of this feature.
 Download at Boykma.Com
-
--- 257 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 249: chapter 9
+## Sección 249: chapter 9 [Entropy: 0.355]
 
 inline Validation
 Best Practices
@@ -7286,11 +6529,9 @@ the process.
 boundaries using real-time, dynamic updates.
 Download at Boykma.Com
 
--- 258 of 374 --
-
 ---
 
-## Sección 250: chaPter 10
+## Sección 250: chaPter 10 [Entropy: 0.25]
 
 Unnecessary
 inputs
@@ -7301,15 +6542,12 @@ best Practices 248
 Enter code WFDDE for 10% off any Rosenfeld Media product directly
 purchased from our site: http://rosenfeldmedia.com
 Download at Boykma.Com
-
--- 259 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 251: chapter 10
+## Sección 251: chapter 10 [Entropy: 0.25]
 
 Unnecessary inputs
 Any question you ask people requires
@@ -7334,15 +6572,12 @@ customers: annual household income, gender,
 promotional codes, and date of birth
 (Figure 10.1).
 Download at Boykma.Com
-
--- 260 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 252: chapter 10
+## Sección 252: chapter 10 [Entropy: 0.25]
 
 Unnecessary inputs
 Moving several optional questions out of the
@@ -7359,15 +6594,12 @@ FIGURE 10.1 http://www.flickr.com/photos/rosenfeldmedia/2367270680
 eBay’s old registration form asked a number of questions that
 tripped up potential customers.
 Download at Boykma.Com
-
--- 261 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 253: chapter 10
+## Sección 253: chapter 10 [Entropy: 0.28]
 
 Unnecessary inputs
 Of course, not all questions on a form are
@@ -7386,15 +6618,12 @@ FIGURE 10.2 http://www.flickr.com/photos/rosenfeldmedia/2367270722
 This PayPal form asks people to select the type of credit card
 they are using to make a purchase. Is that necessary?
 Download at Boykma.Com
-
--- 262 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 254: chapter 10
+## Sección 254: chapter 10 [Entropy: 0.295]
 
 Unnecessary inputs
 However, it turns out one of these questions
@@ -7412,15 +6641,12 @@ FIGURE 10.3 http://www.flickr.com/photos/rosenfeldmedia/2367270740
 The redesigned PayPal form eliminates an unnecessary question
 by highlighting the type of credit card being used.
 Download at Boykma.Com
-
--- 263 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 255: chapter 10
+## Sección 255: chapter 10 [Entropy: 0.265]
 
 Unnecessary inputs
 is highlighted directly below. This eliminates
@@ -7446,15 +6672,12 @@ complicated. When faced with a set of input
 fields that match the structure of a mailing
 address, people often skip over labels as they
 Download at Boykma.Com
-
--- 264 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 256: chapter 10
+## Sección 256: chapter 10 [Entropy: 0.25]
 
 Unnecessary inputs
 FIGURE 10.4
@@ -7463,15 +6686,12 @@ bottom image: http://www.flickr.com/photos/rosenfeldmedia/2367270962
 Weber’s checkout form tries to eliminate questions, but
 potentially ends up complicating the form more.
 Download at Boykma.Com
-
--- 265 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 257: chapter 10
+## Sección 257: chapter 10 [Entropy: 0.25]
 
 Unnecessary inputs
 fill in the pieces. The components and layout of
@@ -7499,15 +6719,12 @@ draw attention to help text in this way is not
 advised, as red text for anything but errors
 should be avoided.
 Download at Boykma.Com
-
--- 266 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 258: chapter 10
+## Sección 258: chapter 10 [Entropy: 0.25]
 
 Unnecessary inputs
 International customers are also out of luck
@@ -7533,15 +6750,12 @@ Schwartz references organ donor programs as
 an example. In the United States, 90 percent
 1 Barry Schwartz, Paradox of Choice, 2004. Harper Perennial
 Download at Boykma.Com
-
--- 267 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 259: chapter 10
+## Sección 259: chapter 10 [Entropy: 0.25]
 
 Unnecessary inputs
 of Americans approve of organ donation but
@@ -7568,15 +6782,12 @@ know if you need to charge sales tax? Looks
 like you don’t have to. Smart defaults provide
 answers to questions for you.
 Download at Boykma.Com
-
--- 268 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 260: chapter 10
+## Sección 260: chapter 10 [Entropy: 0.25]
 
 Unnecessary inputs
 Because of the power of smart defaults, it
@@ -7593,15 +6804,12 @@ FIGURE 10.6 http://www.flickr.com/photos/rosenfeldmedia/2367271034
 This form defaults people into showing their real name and
 getting marketing materials from the site and third parties.
 Download at Boykma.Com
-
--- 269 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 261: chapter 10
+## Sección 261: chapter 10 [Entropy: 0.25]
 
 Unnecessary inputs
 If possible, try to ensure that the defaults you
@@ -7626,15 +6834,12 @@ inputs don’t include an initial selection (see
 Figure 10.7). Either the form designers aren’t
 sure what the right default should be, or they
 Download at Boykma.Com
-
--- 270 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 262: chapter 10
+## Sección 262: chapter 10 [Entropy: 0.25]
 
 Unnecessary inputs
 FIGURE 10.7 http://www.flickr.com/photos/rosenfeldmedia/2366434835
@@ -7651,15 +6856,12 @@ choice all the time. And mutually exclusive
 choices exist where no default option makes
 sense.
 Download at Boykma.Com
-
--- 271 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 263: chapter 10
+## Sección 263: chapter 10 [Entropy: 0.265]
 
 Unnecessary inputs
 Consider the question of gender: male or
@@ -7680,15 +6882,12 @@ top image: http://www.flickr.com/photos/rosenfeldmedia/2366434865
 bottom image: http://www.flickr.com/photos/rosenfeldmedia/2367271104
 What’s the right default state for gender?
 Download at Boykma.Com
-
--- 272 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 264: chapter 10
+## Sección 264: chapter 10 [Entropy: 0.265]
 
 Unnecessary inputs
 Smart defaults don’t work very well when there
@@ -7712,15 +6911,12 @@ top image: http://www.flickr.com/photos/rosenfeldmedia/2366434913
 bottom image: http://www.flickr.com/photos/rosenfeldmedia/2366434933
 Let’s not assume we can guess everyone’s birth date.
 Download at Boykma.Com
-
--- 273 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 265: chapter 10
+## Sección 265: chapter 10 [Entropy: 0.25]
 
 Unnecessary inputs
 “Country” input field to “United States.” If you
@@ -7745,15 +6941,12 @@ Expedia, for example, sets my default travel
 options to the last set of tickets I looked for (see
 Figure 10.10). The form could be even smarter
 Download at Boykma.Com
-
--- 274 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 266: chapter 10
+## Sección 266: chapter 10 [Entropy: 0.25]
 
 Unnecessary inputs
 if it defaulted to my last set of travel options
@@ -7766,15 +6959,12 @@ right image: http://www.flickr.com/photos/rosenfeldmedia/2366434375
 Smart defaults for travel options on the Expedia site, based on
 previous usage.
 Download at Boykma.Com
-
--- 275 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 267: chapter 10
+## Sección 267: chapter 10 [Entropy: 0.385]
 
 Unnecessary inputs
 Best Practices
@@ -7802,11 +6992,9 @@ because their answers are “sticky.”
 sense. It won’t be every input on every form.
 Download at Boykma.Com
 
--- 276 of 374 --
-
 ---
 
-## Sección 268: chaPter 11
+## Sección 268: chaPter 11 [Entropy: 0.25]
 
 additional inputs
 inline additions 250
@@ -7816,15 +7004,12 @@ best Practices 269
 Enter code WFDDE for 10% off any Rosenfeld Media product directly
 purchased from our site: http://rosenfeldmedia.com
 Download at Boykma.Com
-
--- 277 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 269: chapter 11
+## Sección 269: chapter 11 [Entropy: 0.25]
 
 additional inputs
 Not all people require all the input
@@ -7851,15 +7036,12 @@ people, most likely fewer than 10 percent, will
 have more than one manager. These folks can
 select “Add another manager” to expose input
 Download at Boykma.Com
-
--- 278 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 270: chapter 11
+## Sección 270: chapter 11 [Entropy: 0.25]
 
 additional inputs
 fields for multiple managers. Once they do so,
@@ -7873,15 +7055,12 @@ FIGURE 11.1 http://www.flickr.com/photos/rosenfeldmedia/2366435241
 Adding a varying number of managers to a form doesn’t have
 to trip up people with only one manager.
 Download at Boykma.Com
-
--- 279 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 271: chapter 11
+## Sección 271: chapter 11 [Entropy: 0.25]
 
 additional inputs
 Another example can be found in the project
@@ -7906,15 +7085,12 @@ them, and a clear way to remove the options
 is provided: a visible link labeled “Cancel.”
 Other forms of inline additions may expose
 Download at Boykma.Com
-
--- 280 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 272: chapter 11
+## Sección 272: chapter 11 [Entropy: 0.25]
 
 additional inputs
 FIGURES 11.2 & 11.3
@@ -7923,15 +7099,12 @@ Figure 11.3 http://www.flickr.com/photos/rosenfeldmedia/2366435381
 Exposing additional inline options in Basecamp is triggered
 by well-labeled links.
 Download at Boykma.Com
-
--- 281 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 273: chapter 11
+## Sección 273: chapter 11 [Entropy: 0.25]
 
 additional inputs
 input fields to the right or above the actions
@@ -7957,15 +7130,12 @@ that sits on top of a form like a dialog window
 on your computer’s desktop. Perhaps the most
 common example of these is the calendar
 Download at Boykma.Com
-
--- 282 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 274: chapter 11
+## Sección 274: chapter 11 [Entropy: 0.25]
 
 additional inputs
 widget that allows people to select specific
@@ -7981,15 +7151,12 @@ FIGURE 11.4 http://www.flickr.com/photos/rosenfeldmedia/2366435399
 The date picker on Kayak is an example of an overlay that
 provides quick access to a lot of options.
 Download at Boykma.Com
-
--- 283 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 275: chapter 11
+## Sección 275: chapter 11 [Entropy: 0.25]
 
 additional inputs
 Because many trips are likely to span a week
@@ -8008,15 +7175,12 @@ FIGURE 11.5 http://www.flickr.com/photos/rosenfeldmedia/2366435435
 Only one month’s worth of dates shows up in the Orbitz date
 selector.
 Download at Boykma.Com
-
--- 284 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 276: chapter 11
+## Sección 276: chapter 11 [Entropy: 0.25]
 
 additional inputs
 In both the Orbitz and Kayak examples,
@@ -8039,15 +7203,12 @@ at—automatically displaying the additional
 options in an overlay may be beneficial. In
 many other situations, a form designer’s
 Download at Boykma.Com
-
--- 285 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 277: chapter 11
+## Sección 277: chapter 11 [Entropy: 0.25]
 
 additional inputs
 attempt to cleverly surface additional options
@@ -8071,15 +7232,12 @@ FIGURE 11.6 http://www.flickr.com/photos/rosenfeldmedia/2366435537
 Older iterations of the Expedia date picker featured an explicit action
 to bring up a calendar overlay.
 Download at Boykma.Com
-
--- 286 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 278: chapter 11
+## Sección 278: chapter 11 [Entropy: 0.265]
 
 additional inputs
 in isolation, a modal overlay window might be
@@ -8103,15 +7261,12 @@ overlay are visible on the original form once the
 overlay is closed. In the case of the calendar
 widget, we placed a date into the appropriate
 Download at Boykma.Com
-
--- 287 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 279: chapter 11
+## Sección 279: chapter 11 [Entropy: 0.25]
 
 additional inputs
 input field. In the Renkoo example in Figure
@@ -8124,15 +7279,12 @@ bottom image: http://www.flickr.com/photos/rosenfeldmedia/2367271858
 The advanced notification preferences on the Renkoo profile
 form are displayed in a modal dialog window.
 Download at Boykma.Com
-
--- 288 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 280: chapter 11
+## Sección 280: chapter 11 [Entropy: 0.265]
 
 additional inputs
 If, upon seeing the additional input fields in a
@@ -8153,15 +7305,12 @@ FIGURE 11.8 http://www.flickr.com/photos/rosenfeldmedia/2366435721
 A modal overlay in eBay’s “Sell your Item” form lets people add
 or remove questions on the form.
 Download at Boykma.Com
-
--- 289 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 281: chapter 11
+## Sección 281: chapter 11 [Entropy: 0.25]
 
 additional inputs
 It’s not every day that you design a form used as the precursor to
@@ -8192,15 +7341,12 @@ Interaction Designer, Inmedius Inc.
 Adjunct Professor, West Virginia University
 A Case Study of Explosive Ordnance Disposal
 Download at Boykma.Com
-
--- 290 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 282: chapter 11
+## Sección 282: chapter 11 [Entropy: 0.25]
 
 additional inputs
 System (MGRS) format. Warfighters are accustomed to working
@@ -8235,15 +7381,12 @@ Perspective: Jack Moffett (Continued)
 http://www.flickr.com/photos/
 rosenfeldmedia/2405623743
 Download at Boykma.Com
-
--- 291 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 283: chapter 11
+## Sección 283: chapter 11 [Entropy: 0.25]
 
 additional inputs
 information may be entered in any tab, as it may be desirable
@@ -8277,15 +7420,12 @@ options. In the case of this form, eliminating errors and saving
 time can save lives.
 Perspective: Jack Moffett (Continued)
 Download at Boykma.Com
-
--- 292 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 284: chapter 11
+## Sección 284: chapter 11 [Entropy: 0.25]
 
 additional inputs
 Progressive Engagement
@@ -8306,15 +7446,12 @@ top image: http://www.flickr.com/photos/rosenfeldmedia/2366435751
 bottom image: http://www.flickr.com/photos/rosenfeldmedia/2367271976
 Two ways of selecting a category for your video on YouTube.
 Download at Boykma.Com
-
--- 293 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 285: chapter 11
+## Sección 285: chapter 11 [Entropy: 0.25]
 
 additional inputs
 Contrast both of these solutions to the process
@@ -8329,15 +7466,12 @@ innocuous clicks, people have navigated
 through over 30 category options, yet the
 process seemed kind of fun.
 Download at Boykma.Com
-
--- 294 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 286: chapter 11
+## Sección 286: chapter 11 [Entropy: 0.25]
 
 additional inputs
 FIGURE 11.10
@@ -8346,15 +7480,12 @@ middle image: http://www.flickr.com/photos/rosenfeldmedia/2366435115
 bottom image: http://www.flickr.com/photos/rosenfeldmedia/2367271374
 A fun category selector on Renkoo.
 Download at Boykma.Com
-
--- 295 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 287: chapter 11
+## Sección 287: chapter 11 [Entropy: 0.25]
 
 additional inputs
 One of the drawbacks of this solution,
@@ -8371,15 +7502,12 @@ unique engagement style is more important
 than pure efficiency, a solution like Renkoo’s
 might be a good fit.
 Download at Boykma.Com
-
--- 296 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 288: chapter 11
+## Sección 288: chapter 11 [Entropy: 0.325]
 
 additional inputs
 Best Practices
@@ -8401,15 +7529,12 @@ are triggered automatically, try to provide a clue
 • Within a single form, try to maintain a consistent
 approach to additional inputs.
 Download at Boykma.Com
-
--- 297 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 289: chapter 11
+## Sección 289: chapter 11 [Entropy: 0.37]
 
 additional inputs
 Best Practices (continued)
@@ -8431,34 +7556,9 @@ additional inputs can be a captivating way to step
 people through choices.
 Download at Boykma.Com
 
--- 298 of 374 --
-
 ---
 
-## Sección 290: chaPter 12
-
-selectionDependent inputs
-Page-level selection 276
-horizontal tabs 279
-Vertical tabs 282
-Drop-Down list 285
-expose below radio buttons 287
-expose Within radio buttons 290
-exposed inactive 292
-exposed groups 295
-best Practices 299
-Enter code WFDDE for 10% off any Rosenfeld Media product directly
-purchased from our site: http://rosenfeldmedia.com
-Download at Boykma.Com
-
--- 299 of 374 --
-
-Web Form Design: Filling in the blanks by luke Wroblewski
-rosenfeld media, 2008; version 1.0
-
----
-
-## Sección 291: chapter 12
+## Sección 290: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 Whereas flexible inputs allow people
@@ -8480,15 +7580,12 @@ answered. Which input fields are shown
 depends on the initial selection they make—
 hence the name, selection dependent inputs.
 Download at Boykma.Com
-
--- 300 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 292: chapter 12
+## Sección 291: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 The number of inputs that are required after an
@@ -8506,15 +7603,12 @@ bottom image: http://www.flickr.com/photos/rosenfeldmedia/2367272584
 A simple selection-dependent input on Found Bin displays
 follow-up questions based on someone’s initial selection.
 Download at Boykma.Com
-
--- 301 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 293: chapter 12
+## Sección 292: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 FIGURE 12.2
@@ -8524,15 +7618,12 @@ Selection-dependent inputs on eBay’s download request page
 bring up a series of follow-up questions based on an initial
 response.
 Download at Boykma.Com
-
--- 302 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 294: chapter 12
+## Sección 293: chapter 12 [Entropy: 0.265]
 
 selection-Dependent inputs
 selecting a date range. Were the seller to select
@@ -8557,15 +7648,12 @@ While selection-dependent inputs may seem
 like a basic user interface design problem, there
 are myriad solutions to be found addressing
 Download at Boykma.Com
-
--- 303 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 295: chapter 12
+## Sección 294: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 this problem online, indicating there’s more
@@ -8590,15 +7678,12 @@ missed your favorite!
 Page-Level Selection
 Perhaps the simplest way to address selectiondependent inputs within a form is to divide
 Download at Boykma.Com
-
--- 304 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 296: chapter 12
+## Sección 295: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 the process into two clearly defined steps.
@@ -8613,15 +7698,12 @@ bottom image: http://www.flickr.com/photos/rosenfeldmedia/2367272932
 Page level selection-dependent inputs place follow-up
 questions on a separate Web page from the initial choice.
 Download at Boykma.Com
-
--- 305 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 297: chapter 12
+## Sección 296: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 of selection-dependent inputs replaces their
@@ -8647,15 +7729,12 @@ So if you are looking for a safe solution with
 average performance, and quick completion
 times are not a concern, page-level selectiondependent inputs might be a good match.
 Download at Boykma.Com
-
--- 306 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 298: chapter 12
+## Sección 297: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 Horizontal Tabs
@@ -8671,15 +7750,12 @@ bottom image: http://www.flickr.com/photos/rosenfeldmedia/2367272994
 Horizontal tab selection-dependent inputs reveal follow-up
 questions when people click on each tab.
 Download at Boykma.Com
-
--- 307 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 299: chapter 12
+## Sección 298: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 section of the form that contains appropriate
@@ -8705,15 +7781,12 @@ made any errors, they were able to complete
 the task quite quickly, and they provided high
 satisfaction scores for this design.
 Download at Boykma.Com
-
--- 308 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 300: chapter 12
+## Sección 299: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 However, our eye-tracking data indicated that
@@ -8729,15 +7802,12 @@ FIGURE 12.5 http://www.flickr.com/photos/rosenfeldmedia/2367274164
 A heat map of people’s eye fixations on horizontal tab selectiondependent inputs reveals how this form is parsed visually. Image
 provided by Etre.
 Download at Boykma.Com
-
--- 309 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 301: chapter 12
+## Sección 300: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 One issue that did not come up in our testing
@@ -8762,15 +7832,12 @@ had the lowest total length of eye fixations, the
 lowest average fixation length, and one of the
 lowest average number of fixations.
 Download at Boykma.Com
-
--- 310 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 302: chapter 12
+## Sección 301: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 Like two other solutions we tested, vertical
@@ -8785,15 +7852,12 @@ bottom image: http://www.flickr.com/photos/rosenfeldmedia/2366438077
 Vertical tab selection-dependent inputs reveal follow-up
 questions to the right of an initial selection.
 Download at Boykma.Com
-
--- 311 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 303: chapter 12
+## Sección 302: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 solutions also had the three lowest average
@@ -8812,15 +7876,12 @@ People’s eyes don’t have to travel far between initial options
 and additional inputs in vertical tab selection-dependent inputs.
 Image provided by Etre.
 Download at Boykma.Com
-
--- 312 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 304: chapter 12
+## Sección 303: chapter 12 [Entropy: 0.265]
 
 selection-Dependent inputs
 Despite all this good news, a couple people
@@ -8847,15 +7908,12 @@ maintain a unique interface element—in this
 case, a tab—for each initial option. This keeps
 all the initial options visible, but also requires
 Download at Boykma.Com
-
--- 313 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 305: chapter 12
+## Sección 304: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 considerable screen real estate to do so. When
@@ -8875,15 +7933,12 @@ Drop-down list selection-dependent inputs allow people to select
 follow-up questions from a potentially long list of initial options
 without requiring a lot of screen real estate.
 Download at Boykma.Com
-
--- 314 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 306: chapter 12
+## Sección 305: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 Like vertical tabs, the drop-down list solution
@@ -8907,15 +7962,12 @@ in Figure 12.9, has the advantage of always
 keeping all the initial options—and a person’s
 selection among those options—visible.
 Download at Boykma.Com
-
--- 315 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 307: chapter 12
+## Sección 306: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 A strong visual indication of the dependency
@@ -8931,15 +7983,12 @@ bottom image: http://www.flickr.com/photos/rosenfeldmedia/2366438361
 Exposed below selection-dependent inputs surface followup questions in a consistent location below an initial set of
 questions.
 Download at Boykma.Com
-
--- 316 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 308: chapter 12
+## Sección 307: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 inputs can potentially disorientate people
@@ -8966,15 +8015,12 @@ the case. After trying a few different options in
 the initial set of radio buttons, people lose sight
 of which option is active and its relationship
 Download at Boykma.Com
-
--- 317 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 309: chapter 12
+## Sección 308: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 to the selection-dependent inputs. This
@@ -9000,15 +8046,12 @@ achieved near-perfect satisfaction ratings. The
 “expose within radio buttons” method also hid
 irrelevant form inputs from people until they
 Download at Boykma.Com
-
--- 318 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 310: chapter 12
+## Sección 309: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 needed them. This meant it was easy on the
@@ -9024,15 +8067,12 @@ bottom image: http://www.flickr.com/photos/rosenfeldmedia/2367272050
 Exposed within selection-dependent inputs surface follow-up
 questions directly below each initial choice.
 Download at Boykma.Com
-
--- 319 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 311: chapter 12
+## Sección 310: chapter 12 [Entropy: 0.265]
 
 selection-Dependent inputs
 solution. If the number of selection-dependent
@@ -9057,15 +8097,12 @@ To address the disorientation caused by the
 movement of initial selection options when a
 person jumps between them, the exposed, but
 Download at Boykma.Com
-
--- 320 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 312: chapter 12
+## Sección 311: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 inactive solution shown in Figure 12.11 keeps
@@ -9080,15 +8117,12 @@ FIGURE 12.11 http://www.flickr.com/photos/rosenfeldmedia/2367272100
 Exposed inactive selection-dependent inputs show all follow-up
 questions in an inactive state when not selected.
 Download at Boykma.Com
-
--- 321 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 313: chapter 12
+## Sección 312: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 initial selection, the sheer volume of inputs
@@ -9113,15 +8147,12 @@ it was superior in every metric we measured to
 the exposed groups solution outlined next. The
 only difference between these two solutions
 Download at Boykma.Com
-
--- 322 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 314: chapter 12
+## Sección 313: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 was the graying out of unused inputs, so we
@@ -9140,30 +8171,24 @@ In this method, however, the visual weight of
 the many additional inputs quickly reduces the
 visibility of the initial set of options.
 Download at Boykma.Com
-
--- 323 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 315: chapter 12
+## Sección 314: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 FIGURE 12.12 http://www.flickr.com/photos/rosenfeldmedia/2367272206
 Exposed groups of selection-dependent inputs show all follow-up
 questions in addition to an initial set of choices.
 Download at Boykma.Com
-
--- 324 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 316: chapter 12
+## Sección 315: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 This option had the lowest success rate,
@@ -9177,30 +8202,24 @@ Figure 12.13).
 Due to the excessive problems found with this
 solution, I think it is a safe bet to avoid it.
 Download at Boykma.Com
-
--- 325 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 317: chapter 12
+## Sección 316: chapter 12 [Entropy: 0.25]
 
 selection-Dependent inputs
 FIGURE 12.13 http://www.flickr.com/photos/rosenfeldmedia/2367272560
 Exposed groups of selection-dependent inputs resulted in a lot of
 eye fixations. Image provided by Etre.
 Download at Boykma.Com
-
--- 326 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 318: chapter 12
+## Sección 317: chapter 12 [Entropy: 0.28]
 
 selection-Dependent inputs
 Best Practices
@@ -9226,15 +8245,12 @@ through clever interaction or visual design,
 good performance is yours to be had with these
 solutions.
 Download at Boykma.Com
-
--- 327 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 319: chapter 12
+## Sección 318: chapter 12 [Entropy: 0.31]
 
 selection-Dependent inputs
 Best Practices (Continued)
@@ -9261,15 +8277,12 @@ that don’t map to their goals.
 people until they need them results in forms that
 are easy on the eyes and completed quite quickly.
 Download at Boykma.Com
-
--- 328 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 320: chapter 12
+## Sección 319: chapter 12 [Entropy: 0.325]
 
 selection-Dependent inputs
 Best Practices (Continued)
@@ -9289,11 +8302,9 @@ disassociates selection-dependent inputs from
 the initial set of options.
 Download at Boykma.Com
 
--- 329 of 374 --
-
 ---
 
-## Sección 321: chaPter 13
+## Sección 320: chaPter 13 [Entropy: 0.25]
 
 gradual
 engagement
@@ -9303,15 +8314,12 @@ best Practices 316
 Enter code WFDDE for 10% off any Rosenfeld Media product directly
 purchased from our site: http://rosenfeldmedia.com
 Download at Boykma.Com
-
--- 330 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 322: chapter 13
+## Sección 321: chapter 13 [Entropy: 0.265]
 
 gradual engagement
 I’ll just come out and say this: sign-up
@@ -9335,15 +8343,12 @@ works. Since 2007 was a breakout year for
 1 For more about encouraging people to try Web applications through the sign-up process,
 check out Joshua Porter’s book: Designing for the Social Web, New Riders, 2008.
 Download at Boykma.Com
-
--- 331 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 323: chapter 13
+## Sección 322: chapter 13 [Entropy: 0.25]
 
 gradual engagement
 online video, it’s safe to assume a lot of people
@@ -9359,29 +8364,23 @@ location, verify this strange word, agree to our
 terms of service, and finally, you will get what’s
 behind the form.
 Download at Boykma.Com
-
--- 332 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 324: chapter 13
+## Sección 323: chapter 13 [Entropy: 0.25]
 
 gradual engagement
 FIGURE 13.1 http://www.flickr.com/photos/rosenfeldmedia/2366438491
 A sign-up form greets new customers at Google Video.
 Download at Boykma.Com
-
--- 333 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 325: chapter 13
+## Sección 324: chapter 13 [Entropy: 0.265]
 
 gradual engagement
 Getting Engaged
@@ -9394,15 +8393,12 @@ Jumpcut is interested in telling you how its
 service works and why it’s great for you. So
 let’s dive in.
 Download at Boykma.Com
-
--- 334 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 326: chapter 13
+## Sección 325: chapter 13 [Entropy: 0.25]
 
 gradual engagement
 FIGURE 13.2
@@ -9413,15 +8409,12 @@ bottom right image: http://www.flickr.com/photos/rosenfeldmedia/2367275452
 The process of adding a video to Jumpcut introduces you to the
 services the site provides, namely online video editing.
 Download at Boykma.Com
-
--- 335 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 327: chapter 13
+## Sección 326: chapter 13 [Entropy: 0.25]
 
 gradual engagement
 Selecting Make a Movie brings up a single
@@ -9448,15 +8441,12 @@ and share it with family and friends. What’s the
 first thing potential customers need to do when
 they arrive at Geni? Fill out a registration form?
 Download at Boykma.Com
-
--- 336 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 328: chapter 13
+## Sección 327: chapter 13 [Entropy: 0.25]
 
 gradual engagement
 Nope, they make a family tree. After all, that’s
@@ -9482,15 +8472,12 @@ It’s worth noting that any Web service that
 automatically sets up an account for its
 customers may leave some people confused
 Download at Boykma.Com
-
--- 337 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 329: chapter 13
+## Sección 328: chapter 13 [Entropy: 0.25]
 
 gradual engagement
 FIGURE 13.3
@@ -9508,15 +8495,12 @@ registration forms and gets
 people acquainted with Geni’s
 service right away.
 Download at Boykma.Com
-
--- 338 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 330: chapter 13
+## Sección 329: chapter 13 [Entropy: 0.25]
 
 gradual engagement
 about whether they actually have an account
@@ -9537,15 +8521,12 @@ TripIt will send you back a note that provides
 access to an automatically created personal travel
 itinerary (see Figure 13.4).
 Download at Boykma.Com
-
--- 339 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 331: chapter 13
+## Sección 330: chapter 13 [Entropy: 0.25]
 
 gradual engagement
 FIGURE 13.4
@@ -9556,15 +8537,12 @@ bottom right image: http://www.flickr.com/photos/rosenfeldmedia/2367276000
 Using TripIt starts by forwarding a travel confirmation email—not
 with a sign-up form.
 Download at Boykma.Com
-
--- 340 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 332: chapter 13
+## Sección 331: chapter 13 [Entropy: 0.25]
 
 gradual engagement
 Once again, your first step in using TripIt is
@@ -9587,15 +8565,12 @@ served by simply distributing each of your
 sign-up form input fields onto separate Web
 pages.
 Download at Boykma.Com
-
--- 341 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 333: chapter 13
+## Sección 332: chapter 13 [Entropy: 0.25]
 
 gradual engagement
 While I applaud Fidelity’s myplan form
@@ -9607,15 +8582,12 @@ inputs is the best way to achieve the goal of
 getting people to understand what Fidelity can
 do for them.
 Download at Boykma.Com
-
--- 342 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 334: chapter 13
+## Sección 333: chapter 13 [Entropy: 0.25]
 
 gradual engagement
 FIGURE 13.5
@@ -9633,15 +8605,12 @@ divides a series of input
 into stand-alone slider
 interactions.
 Download at Boykma.Com
-
--- 343 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 335: chapter 13
+## Sección 334: chapter 13 [Entropy: 0.31]
 
 gradual engagement
 Best Practices
@@ -9666,11 +8635,9 @@ that this will reduce efficiency and not delight
 anyone.
 Download at Boykma.Com
 
--- 344 of 374 --
-
 ---
 
-## Sección 336: chaPter 14
+## Sección 335: chaPter 14 [Entropy: 0.25]
 
 What’s next?
 the Disappearing Form 318
@@ -9679,15 +8646,12 @@ getting it built 329
 Enter code WFDDE for 10% off any Rosenfeld Media product directly
 purchased from our site: http://rosenfeldmedia.com
 Download at Boykma.Com
-
--- 345 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 337: chapter 14
+## Sección 336: chapter 14 [Entropy: 0.25]
 
 What’s next?
 As crucial components of ecommerce,
@@ -9711,15 +8675,12 @@ disappear by focusing on the things people
 want to achieve instead of the data fields
 required by a back-end database. That’s our
 Download at Boykma.Com
-
--- 346 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 338: chapter 14
+## Sección 337: chapter 14 [Entropy: 0.25]
 
 What’s next?
 friend the “outside in” instead of “inside out”
@@ -9733,15 +8694,12 @@ elicitation methods (GEMs) to make the data
 FIGURE 14.1 http://www.flickr.com/photos/rosenfeldmedia/2367276242
 Game-like elicitation methods in the Mind Canvas research tool.
 Download at Boykma.Com
-
--- 347 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 339: chapter 14
+## Sección 338: chapter 14 [Entropy: 0.25]
 
 What’s next?
 collection process a more fun and engaging
@@ -9763,15 +8721,12 @@ become a clear standard just yet.
 2 http://en.wikipedia.org/wiki/Windows_Live_ID
 3 http://www.openid.net
 Download at Boykma.Com
-
--- 348 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 340: chapter 14
+## Sección 339: chapter 14 [Entropy: 0.265]
 
 What’s next?
 The Changing Form
@@ -9795,15 +8750,12 @@ menu (Figure 14.2) and wondered where
 an option you saw before has gone, you’ve
 encountered the negative side of “adaptive
 Download at Boykma.Com
-
--- 349 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 341: chapter 14
+## Sección 340: chapter 14 [Entropy: 0.25]
 
 What’s next?
 interfaces.” In a nutshell, when adaptive
@@ -9818,11 +8770,9 @@ Microsoft’s Office menu hides options when you don’t use them
 frequently.
 Download at Boykma.Com
 
--- 350 of 374 --
-
 ---
 
-## Sección 342: chapter 14
+## Sección 341: chapter 14 [Entropy: 0.25]
 
 What’s next?
 The only thing that could possibly be more
@@ -9851,15 +8801,12 @@ Zen and the Art of HTML Forms
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 Download at Boykma.Com
-
--- 351 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 343: chapter 14
+## Sección 342: chapter 14 [Entropy: 0.25]
 
 What’s next?
 maybe even be a little Zen-like about the strange
@@ -9884,15 +8831,12 @@ HTML form alchemy is breaking down complex
 tasks and structures into simpler ones.
 Perspective: Aaron Gustafson (Continued)
 Download at Boykma.Com
-
--- 352 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 344: chapter 14
+## Sección 343: chapter 14 [Entropy: 0.466]
 
 What’s next?
 PUTTING IT ALL TOGETHER
@@ -9918,15 +8862,12 @@ a FIELDSET), as it is used to provide context for
 a group of fields:
 Perspective: Aaron Gustafson (Continued)
 Download at Boykma.Com
-
--- 353 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 345: chapter 14
+## Sección 344: chapter 14 [Entropy: 0.515]
 
 What’s next?
 ...
@@ -9953,15 +8894,12 @@ value=“strawberries” /> strawberries</label></li>
 ...
 Perspective: Aaron Gustafson (Continued)
 Download at Boykma.Com
-
--- 354 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 346: chapter 14
+## Sección 345: chapter 14 [Entropy: 0.265]
 
 What’s next?
 BUT WHAT ABOUT DESIGN?
@@ -9987,15 +8925,12 @@ But let’s say you want to change the form to
 display labels and form controls side-by-side.
 Perspective: Aaron Gustafson (Continued)
 Download at Boykma.Com
-
--- 355 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 347: chapter 14
+## Sección 346: chapter 14 [Entropy: 0.25]
 
 What’s next?
 That’s equally easy:
@@ -10020,15 +8955,12 @@ patterns that will make working with forms much
 more satisfying and pleasant.
 Perspective: Aaron Gustafson (Continued)
 Download at Boykma.Com
-
--- 356 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 348: chapter 14
+## Sección 347: chapter 14 [Entropy: 0.25]
 
 What’s next?
 Getting It Built
@@ -10054,702 +8986,12 @@ the next generation of forms technology for
 6 http://www.formassembly.com/
 7 http://www.w3.org/MarkUp/Forms/
 Download at Boykma.Com
-
--- 357 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 
 ---
 
-## Sección 349: chapter 14
-
-What’s next?
-the Web. In particular, the W3C’s XForms
-standard separates what a form does and how a
-form looks into distinct markup.
-However you decide to develop your forms,
-just remember to think from the viewpoint of
-the people who will be using them (the outside
-in perspective). After all, we don’t want forms
-to suck forever, do we?
-Download at Boykma.Com
-
--- 358 of 374 --
-
-index
-Enter code WFDDE for 10% off any Rosenfeld Media product directly
-purchased from our site: http://rosenfeldmedia.com
-Download at Boykma.Com
-
--- 359 of 374 --
-
-Web Form Design: Filling in the blanks by luke Wroblewski
-rosenfeld media, 2008; version 1.0
-index
-A
-“adaptive interfaces”
-negative side 321
-“assistive technology” (AT)
-accessible forms 76
-accounts
-automatic setup 309
-single, for multiple sites
-actions 87
-best practices 158
-options on success messages 211
-placement 147
-primary and secondary
-in progress 150
-affinity clustering. See clustering
-affordances 116
-agreeing to conditions 155
-aligned labels 87
-mixed 102
-Alpern, Micah 128
-alternating background colors
-Amazon.com 68
-checkout process 75
-animation 79
-of messages 208
-asterisk, at input field 119
-automatic inline help 166
-B
-background color 50, 52
-Barnes & Noble’s 123
-Basecamp 209
-inline additions 252
-progress indicators 152
-sign-up form 153
-Baxley, Bob 110
-Making the Web Work
-best practices 29
-for additional inputs 269
-for form completion 85
-for labels 104
-gradual engagement 316
-for help 184
-inline validation 230
-for input fields 136
-for messages 212
-for organization 56
-questions and answers
-selection-dependent
-inputs 299
-Boingo, sign-up form 203,
-browsers, variations in form
-rendering 328
-business goals 15
-C
-calendar overlay 254
-Cancel action 140
-capital letters 58
-Download at Boykma.Com
-
--- 360 of 374 --
-
-Web Form Design: Filling in the blanks by luke Wroblewski
-rosenfeld media, 2008; version 1.0
-index
-Charles Schwab, help text in
-browser window 179
-checkboxes 109
-CHI (Computer Human
-Interaction) conference 17
-closed captioning 76
-color
-for actions 147
-background 50, 52
-for conveying information 78
-color-blind users 78
-error display for 193
-communication, consistency
-in 77
-completion rates, top-aligned
-labels and 92
-completion times, benefits of
-slower 98
-Compound inputs 129
-conditions, agreeing to 155
-confirmation of input 215
-consistency in communication 77
-content, organizing 40
-content group, differentiating
-context for forms 28
-Continue action 139
-contrast, as visual noise 49
-conversation, forms for 37
-credit card numbers 235
-CSS layout 328
-customers. See also users
-first-time, registration
-form 25
-customer support 20
-D
-“double visual emphasis”
-192, 204
-data, differentiating labels
-from 101
-default values for input fields
-195, 239
-personalized 246, 321
-delay for rollover help display
-Designing for the Social Web
-(Porter) 303
-design patterns 29
-design principles 28
-disabled users, form design
-for 76
-distraction
-minimizing 68
-visual elements as 52
-drop-down list 285, 300
-drop-down menus 109, 114,
-dynamic help systems 166
-E
-eBay
-default choices for shipping costs 240
-registration form redesign
-18, 19, 232
-Download at Boykma.Com
-
--- 361 of 374 --
-
-Web Form Design: Filling in the blanks by luke Wroblewski
-rosenfeld media, 2008; version 1.0
-index
-selection-dependent
-inputs on request form
-selling form 261
-Sell Your Item Help
-panel 181
-shipping selection inputs
-Want It Now form 199
-eBay Express 9
-checkout form 55, 93
-input field length 116
-progress bar for password
-quality 220
-ecommerce 5, 15
-shopping cart forms,
-mapping requests 46
-educational messages 196
-email addresses, customer
-response to request for 25
-engagement of users 303
-best practices 316
-epilepsy, flashes and 79
-error messages 187, 194
-best practices 212
-display 188
-modal dialog window for
-reasons to display 195
-errors 187
-multiple 198
-Etre 65, 276
-Expedia 246
-smart defaults 247
-Explosive Ordnance Disposal
-(EOD) units 262
-expose below radio buttons
-exposed groups 295
-exposed inactive selection
-option 292
-expose within radio buttons
-eye fixation
-on horizontal tab selection-dependent inputs
-primary and secondary
-actions and 144, 146,
-eye movements 67
-eye tracking 21
-for exposed groups solution 297
-Penzo study of label
-alignment 91, 95, 98
-scan line and 64
-for vertical tab selectiondependent inputs 284
-F
-Facebook, registration form 4
-Fairmont Hotels, error page
-redesign 190
-Fandango.com 112
-feedback from inline validation 215
-Fidelity 73
-myplan form 314
-FIELDSET element 325
-Download at Boykma.Com
-
--- 362 of 374 --
-
-Web Form Design: Filling in the blanks by luke Wroblewski
-rosenfeld media, 2008; version 1.0
-index
-field testing 20
-first-time shoppers, registration form 25
-flashes, and epilepsy 79
-font sizes 79
-Form Assembly 329
-form design
-considerations 27
-impact 16
-importance 5
-form elements, selecting 110
-forms
-accessible 76
-disappearing 318
-HTML construction
-input 128
-minimal distractions 68
-multiple pages for complex 42
-names for 60
-opinions about 2
-optimizing 32
-personalizing defaults
-save option for partially
-completed 72
-spacing on 67
-structural design 128
-Found Bin 272, 275
-G
-game-like elicitation methods
-(GEMs) 319
-game-like interactions 319
-Geni 308
-Go Back action 140
-Google Video 304
-gradual engagement 303,
-308, 318
-green, for actions 147
-groups
-exposed 295
-for inputs 129, 131
-Gustafson, Aaron 323
-H
-help
-automatic inline 166
-best practices 184
-dynamic systems 166
-excessive text 162
-need for 238
-question mark for icon
-rollover trigger 176
-text within input field
-user-activated inline 173
-user-activated section
-user awareness of availability 170
-when to provide 161
-help icon, placement 174
-hiding options on forms 295
-horizontal tabs 279, 299
-vs. vertical tabs 285
-hot spot, of help trigger 176
-HTML forms 323
-Download at Boykma.Com
-
--- 363 of 374 --
-
-Web Form Design: Filling in the blanks by luke Wroblewski
-rosenfeld media, 2008; version 1.0
-index
-I
-“insideout” design 2, 150,
-ibahn, activation form 154
-icons
-for date selector 257
-global, for messages 197
-for help 177
-images, disabling over slow
-networks 76
-inactive selection option,
-exposed 292
-indentation, information conveyed by 80
-indicators for required field,
-placement 126
-Initial Incident Questionnaire
-(IIQ) 262
-inline additions 250
-inline help
-automatic 166
-user-activated 173
-inline validation
-best practices 230
-feedback from 215
-of password 219
-to set character count
-limits 228
-input. See also selection-dependent inputs
-best practices 269
-confirming 215
-defaults 239
-for form 128
-limits 228
-progressive engagement
-suggestions for valid 225
-input errors, failure to prevent
-input fields 87
-best practices 136
-in conversation 38
-default values 195
-determining appropriate
-type 110
-flexibility 132
-grouping 129, 131
-help text within 170
-labels within 99
-lengths 116
-optional 122
-required 119
-Tab key for moving between 81
-types 107
-J
-Jarrett, Caroline 33, 34
-Jotspot Live 201
-Juicy Studios 173
-inline help system 174
-Jumpcut 306
-K
-Kayak
-calendar overlay 255
-inline suggestions 225
-Download at Boykma.Com
-
----
-
-## Sección 350: chapter 14
-
--- 364 of 374 --
-
-Web Form Design: Filling in the blanks by luke Wroblewski
-rosenfeld media, 2008; version 1.0
-index
-keyboard
-as only access 76
-vs. mouse 79
-L
-LABEL element 325
-display block for 327
-labels 87
-alignment 87
-best practices 56, 104
-in conversation 38
-within inputs 99
-left-aligned 51
-for links 78
-mixed alignment 102
-language, and label length
-Lastfm.com, inline validation
-layout, information conveyed
-by 80
-left-aligned labels 51, 88, 96
-legend, for symbol 123
-LEGEND element 325
-length of input fields 116
-LinkedIn
-help text 171, 172
-success page 211
-links, labels for 78
-list boxes 109
-lists, HTML for 325
-Live ID (Microsoft) 320
-Location dialog 263
-login forms 24
-M
-Macy’s
-Billing Information form
-required input 124
-marketing
-messages 196
-opt-in for materials 155
-questions for 45
-messages
-animated 208
-visual and textual framework for 196
-Microsoft
-Live ID 320
-Office menu 322
-Passport 320
-Military Grid Reference System (MGRS) format 262
-Mind Canvas (Uzanto) 319
-Mint, sign-up form 223
-modal dialog window 259,
-for error message 192
-Moffett, Jack 262
-mouse, vs. keyboard 79
-MovieTickets.com, dropdown menus 113
-N
-names for forms 60
-networks, disabling images
-over slow 76
-Newsvine 218
-Download at Boykma.Com
-
--- 365 of 374 --
-
-Web Form Design: Filling in the blanks by luke Wroblewski
-rosenfeld media, 2008; version 1.0
-index
-Norman, Donald, The Design of Everyday Things
-O
-“outsidein” design 2, 319
-Office Depot, registration
-form 82
-OpenID 320
-opt-in for marketing materials 155
-optimizing forms 32
-optional input fields 122
-optional questions 233
-Orbitz, calendar overlay 256
-overlays 254
-P
-page-level selection 276, 299
-page jumping 254, 301
-pages, multiple for complex
-forms 42
-The Paradox of Choice
-(Schwartz) 239
-Parent/Child inputs 129
-passwords
-customer response to
-request for 25
-inline validation 219
-PayPal
-checkout forms 65
-payment form 234
-Penzo, Matteo, eye tracking
-study of label alignment 91,
-95, 98
-personalized defaults 246
-phone numbers, flexible input
-field for 133
-placement of actions 147
-Porter, Joshua, Designing for
-the Social Web 303
-position, progress indicator
-for 71
-Pownce, success message
-207, 208
-primary action 139
-disabling until answers
-are valid 151
-hiding 154
-response to clicking 150
-variations in presenting
-productivity 13
-productivity tools, Webbased 15
-progress indicators 70
-animated 151
-in Basecamp 152
-problems 73
-progressive engagement 265
-Q
-QLC, error message 201
-question mark, for help icon
-questions
-best practices 248
-evaluating need for 32
-Download at Boykma.Com
-
--- 366 of 374 --
-
-Web Form Design: Filling in the blanks by luke Wroblewski
-rosenfeld media, 2008; version 1.0
-index
-removing 232
-R
-radio buttons 108, 114
-default selection of 242
-expose below 287
-expose within 290
-red
-for actions 147
-for help or errors 238
-Redfin
-form 71
-multipage form 42
-radio buttons 243
-Reffell, James 194
-registration form 25
-Related inputs 129
-relationships 35
-Renkoo
-category selection 266
-invitation form 134
-profile form 259
-repeat customers
-login problems 25
-required input fields, locator
-placement 126
-Reset action 140
-response rates 45
-right-aligned labels 88, 94
-rollover trigger, for help 176
-S
-Save action 139
-for partially completed
-form 72
-scan lines, clarity in 64
-Schwartz, Barry, The Paradox
-of Choice 239
-scope, progress indicator for
-secondary actions 139
-variations in presenting
-visual prominence 141
-secure transactions 182
-selection-dependent inputs
-best practices 299
-drop-down list 285
-expose below radio buttons 287
-exposed groups 295
-exposed inactive option
-expose within radio buttons 290
-horizontal tabs 279
-page-level selection 276
-vertical tabs 282
-sign-up forms 303
-site tracking 20
-SnapTax 169
-social applications 15
-social interactions 8
-spacing on forms 67
-Spool, Jared 24
-start pages 62
-status, progress indicator for
-71, 72
-sticky selections 246
-Download at Boykma.Com
-
--- 367 of 374 --
-
-Web Form Design: Filling in the blanks by luke Wroblewski
-rosenfeld media, 2008; version 1.0
-index
-street address, need for 34
-Submit action 139
-success messages 187, 196,
-best practices 213
-follow-up actions on 211
-suggestions for valid input
-T
-“tabindex” HTML attribute
-“terms of service” 155
-Tab key, for moving between
-input fields 81, 112
-tabs
-comparison 285
-horizontal 279, 299
-vertical 282, 299
-text 78
-text boxes 108, 113
-timeout, accessibility considerations 80
-titles
-of forms 60
-of frames and pages 78
-top-aligned labels 88, 89
-transactions, secure 182
-TripIt 311
-Trust-e 183
-Tufte, Edward 53
-U
-“user-activated” options 258
-U.S. Section 508 Federal Procurement laws, accessibility
-requirements 78
-usability testing 18
-user-activated help
-inline 173
-section 178
-username, confirmation of
-selection 215
-users
-awareness of help 170
-disabled, design for 76
-engagement practices
-game-like interactions
-with 319
-needs 15
-single account for multiple sites 320
-Uzanto’s Mind Canvas 319
-V
-validation, inline 215
-best practices 230
-of password 219
-to set character count
-limits 228
-Versign 183
-vertical tabs 282, 299
-vs. horizontal tabs 285
-videoegg, sign-up form 165
-visual elements, as distraction
-visual noise, contrast as 49
-Vizu, help section 180
-Vox 12
-registration form defaults
-Download at Boykma.Com
-
--- 368 of 374 --
-
-Web Form Design: Filling in the blanks by luke Wroblewski
-rosenfeld media, 2008; version 1.0
-index
-W
-Wal-Mart 124
-Wallack, Peter 76
-Web applications 13
-Web Content Accessibility
-Guidelines (WCAG) 77
-Web conventions survey 22,
-23, 46, 57
-Weber, checkout form 236
-Web sites, login form 24
-Wells Fargo 175
-World Wide Web, form construction for 323
-World Wide Web Consortium (W3C)
-Forms Working Group
-XForms standard 330
-Wufoo 170, 329
-help text 167
-X
-XForms standard 330
-Y
-Yahoo!
-Local form 228
-registration form 41,
-224, 227
-YouTube 17
-category selection 265
-Z
-zip code 236
-Download at Boykma.Com
-
--- 369 of 374 --
-
-acknoWleDgments
-Though countless Web designers, developers,
-and their forms inspired and influenced the content in this book, there was a particular sequence
-of events that made the book itself possible.
-Step one was the eBay Platform design team—
-Jamie Hoover, Micah Alpern, James Reffell, and
-Larry Cornett—who showed me the power of
-subtle design choices in Web forms. Their work
-and insights built the groundwork for how and
-why I think about form design. And three of
-them took their time to review this book in its
-early stages—thanks guys.
-Step two came from Joshua Porter, Jared Spool,
-and Christine Perfetti at User Interface Engineering (UIE) who believed I could present
-a session about form design at their Web App
-Summit in January of 2007. This was the spark
-that led me to take what I knew about Web form
-design and turn it into something that could be
-shared with others.
-acknowledgments
-Web Form Design: Filling in the blanks by luke Wroblewski
-rosenfeld media, 2008; version 1.0
-Download at Boykma.Com
-
----
-
-## Sección 351: chapter 14
-
--- 370 of 374 --
+## Sección 348: chapter 14 [Entropy: 0.31]
 
 Step three was Liz Danzico and Lou Rosenfeld
 at Rosenfeld Media believing that we had the
@@ -10777,9 +9019,6 @@ acknowledgments
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 Download at Boykma.Com
-
--- 371 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 aboUt the aUthor
@@ -10803,9 +9042,6 @@ Web Usability (John Wiley, 2002). While some
 Web pundits argued for a more visual Web and
 about the author
 Download at Boykma.Com
-
--- 372 of 374 --
-
 Web Form Design: Filling in the blanks by luke Wroblewski
 rosenfeld media, 2008; version 1.0
 others stressed pure usability, I again focused
@@ -10829,9 +9065,6 @@ underlying every page in this book, and I still
 believe it’s what ultimately makes the Web useful, usable, and enjoyable.
 about the author
 Download at Boykma.Com
-
--- 373 of 374 --
-
 Forms make or break the most crucial online interactions: checkout,
 registration, and any task requiring information entry. In Web Form
 Design, Luke Wroblewski draws on original research, his considerable
@@ -10857,8 +9090,5 @@ Google
 www.rosenfeldmedia.com
 MORE ON WEB FORM DESIGN
 www.rosenfeldmedia.com/books/webforms/Download at Boykma.Com
-
--- 374 of 374 --
-
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[DESIGN_MASTERY_2026]] · [[AGENT_CREATIVE_AND_VISUAL_AWARENESS_2026]] · [[CANON_REFACTORING_UI_WATHAN_SCHOGER]] · [[CANON_PRACTICAL_UI_ADHAM_DANNAWAY]] · #ui_ux_design

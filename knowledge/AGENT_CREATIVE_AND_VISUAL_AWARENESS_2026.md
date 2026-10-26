@@ -1,4 +1,4 @@
-﻿# AGENT CREATIVE & VISUAL AWARENESS 2026: SOTA Design Intelligence, Creative Technologies & Multimodal Visual Feedback
+# AGENT CREATIVE & VISUAL AWARENESS 2026: SOTA Design Intelligence, Creative Technologies & Multimodal Visual Feedback
 
 > **Alcance:** Manual canónico de arquitectura para dotar al equipo de agentes de Web Software Factory Studio (`site/`, `overlay-*`, `tools/`) de máxima creatividad compositiva, eliminación del "AI-Slop", y conciencia visual multimodal automatizada.  
 > **Protocolo LEC-015:** Documento de Referencia Técnica y Explicación Canónica.  

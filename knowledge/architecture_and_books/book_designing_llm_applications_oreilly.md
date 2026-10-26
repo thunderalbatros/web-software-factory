@@ -1,4 +1,4 @@
-﻿# 📚 Libro Completo: Designing Large Language Model Applications
+# 📚 Libro Completo: Designing Large Language Model Applications
 
 **Alcance:** Fuente bibliográfica completa sobre Arquitectura de Aplicaciones LLM, RAG, Agentes y Evaluación (Designing Large Language Model Applications — Suhas Pai (O'Reilly)). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
 
@@ -7,19 +7,13 @@
 > **Archivo Fuente:** `Designing-Large-Language-Model-Applications.epub`  
 > **Páginas Originales:** 21  
 > **Secciones Extraídas:** 116  
-> **Fecha de Ingesta:** 2026-10-19  
+> **Fecha de Ingesta:** 2026-10-19
 
 ---
 
-## Sección 1: Chapter 1. Introduction
+## Sección 1: Chapter 1. Introduction [Entropy: 0.28]
 
-Designing Large Language Model Applications 
-
- 
- 
-
- 
-
+Designing Large Language Model Applications
 
 AI is no longer the realm of science fiction novels and dystopian Hollywood movies. It is fast becoming an integral part of people’s lives. Most of us interact with AI on a daily basis, often without even realizing it.
 
@@ -29,8 +23,6 @@ LLMs belong to a class of models referred to as generative AI . The distinguishi
 
 In this chapter, we will introduce language models and define what makes a language model large . We will provide a brief history of LLMs, contextualizing their place within the field of natural language processing (NLP) and their evolution. We will highlight the impact LLMs are already having in the world and showcase key use cases, while discussing their strengths and limitations. We will also introduce LLM prompting and show how to interact with an LLM effectively, either through a user interface or through an API. Finally, we will end this chapter with a quick tutorial on building a Chat with my PDF chatbot prototype . We will then discuss the limitations of the prototype and the factors limiting its suitability for production use cases, thus setting the stage for the rest of the book.
 
- 
-
 Defining LLMs
 
 A model is an approximation of a real-world concept or phenomenon. A faithful model will be able to make predictions about the concept it is approximating. A language model approximates human language and is built by training over a large body of text, thus imbuing it with various properties of language, including aspects of grammar (syntax) and meaning (semantics).
@@ -39,27 +31,22 @@ One way to train a language model is to teach it to predict the next token (this
 
 For example, consider the following text sequence appearing in a training dataset:
 
- After a physical altercation with the patrons of a restaurant , Alex was feeling 
+After a physical altercation with the patrons of a restaurant , Alex was feeling 
  extremely pleased with himself . He walked out with a swagger and confidence 
  that betrayed his insecurities . Smiling from ear to ear , he noticed rain drops 
- grazing his face and proceeded to walk toward the hostel . 
+ grazing his face and proceeded to walk toward the hostel .
 
 and the language model predicts the next word that comes after “…​ and proceeded to walk toward the _ ”
 
 There are a large number of valid continuations to this text sequence. It could be “building” or “shelter,” but it could also be “embankment” or “catacomb.” However, it is definitely not “the” or “is,” because that would break the rules of the English language. After training on a sufficiently large body of text, the model learns that neither “the” nor “is” are valid continuations. Thus, you can see how a simple task like learning to predict the next word in a text sequence can lead the model to learning the grammar of the language in its parameters, as well as even more complex skills.
 
- Note 
+Note
 
 In practice, language models don’t exactly output a single word or subword as the next token in a text sequence. They output a probability distribution over the entire vocabulary. (We will explore how this vocabulary is defined and constructed in Chapter 3 ). A well-trained model will have high probabilities for valid continuations and very low probabilities for invalid continuations.
 
- Figure 1-1 describes the model training process in a nutshell. The output of the model prediction is a probability distribution over the entire vocabulary of the language. This is compared to the original sequence, and the parameters of the model are updated according to an algorithm so that it makes better predictions in the future. This is repeated over a very large dataset. We will describe the model training process in detail in the next three chapters.
+Figure 1-1 describes the model training process in a nutshell. The output of the model prediction is a probability distribution over the entire vocabulary of the language. This is compared to the original sequence, and the parameters of the model are updated according to an algorithm so that it makes better predictions in the future. This is repeated over a very large dataset. We will describe the model training process in detail in the next three chapters.
 
- 
-
- 
- Figure 1-1. Model training using next token prediction 
-
- 
+Figure 1-1. Model training using next token prediction
 
 Is there a limit to what a model can learn from next-token prediction alone? This is a very important question that determines how powerful LLMs can eventually be. There is plenty of disagreement in the research community, with some researchers arguing next-token prediction is enough to achieve human-level intelligence in models, and others pointing out the shortfalls of this paradigm. We will come back to this question throughout the book, and especially in Chapter 8 , where we will discuss skills like reasoning.
 
@@ -69,7 +56,7 @@ Language models can be trained to model not just human languages but also progra
 
 ---
 
-## Sección 2: Chapter 1. Introduction
+## Sección 2: Chapter 1. Introduction [Entropy: 0.25]
 
 For example, Adam Karvonen trained Chess-GPT , a model trained only on chess games represented in portable game notation (PGN) strings. PGN strings for chess look like “1. e4 d5 2. exd5 Qxd5…” and so on. Even without providing the rules of the game explicitly, and just training the model to predict the next character in the PGN sequence, the model was able to learn the rules of the game including moves like castling, check, and checkmate; and it could even win chess games against experts.
 This shows the power of the next-token prediction objective and the Transformer architecture that forms the basis of the model. In Chapter 4 , we will learn how to train our own Chess-GPT from scratch.
@@ -78,13 +65,11 @@ Another such example is the Geneformer , a model trained on millions of single-c
 
 Therefore, I encourage you to think beyond the realm of human language when brainstorming novel use cases for language models. If you have a concept or phenomenon that can be encoded in a discrete sequence using a finite vocabulary (we will more formally define vocabulary in Chapter 3 ), then we can potentially train a useful model on it.
 
- Note 
+Note
 
 Is there something special about the structure of language that makes it amenable to be modeled using the next-token prediction objective? Or is the word “language” in language models just a historical accident and any stream of tokens can be modeled using this paradigm? While this is still a topic of debate in the research community, directly modeling speech, video, etc. using this paradigm hasn’t been as effective, perhaps showing that the discrete nature of text and the structure provided by language, be it a human language like English, a programming language like Python, or a domain-specific code like DNA sequences, is crucial to modeling success.
 
 Around 2019, researchers realized that increasing the size of the language model (typically measured by the number of parameters) predictably improved performance, with no saturation point in sight. This led to Kaplan et al.’s work on LLM scaling laws (see the following sidebar), which derives a mathematical formula describing the relationship between the amount of computation (henceforth referred to as “compute”) for training the model, the training dataset size, and the model size. Ever since then, companies and organizations have been training increasingly larger models .
-
- 
 
 Scaling Laws for Language Models
 
@@ -97,8 +82,6 @@ However, in 2022, Hoffmann et al. from DeepMind pointed out that Kaplan et al. u
 
 Note that both these scaling laws apply to compute-optimal LLMs , where you start with a fixed compute budget and ask, “What is the best LLM I can train with this budget?” But sometimes you are bottlenecked by other criteria, like the size of the model. Smaller models are faster to run and more energy efficient. In this case, one can significantly increase the training data size and continue seeing (albeit relatively smaller) performance gains, at the same model size. This is the trend driving more recent LLMs, especially in the open-source space.
 
- 
-
 There is no accepted convention about when a language model is considered “large.”
 In fact, as the largest models get even larger, some models that would have been designated as LLMs only a couple of years ago are now termed small language models (SLMs) . In this book, we will remain generous and continue to refer to all language models over a billion parameters as “large.”
 
@@ -108,31 +91,25 @@ According to this theory, for tasks that require these capabilities, the perform
 
 These thresholds are not absolute, and as we see more advances in language modeling, data quality improvements, etc., we can expect the thresholds to come down.
 
- Note 
+Note
 
- Schaeffer et al. claim that the sudden jump in performance for certain tasks at a particular model size threshold is just an artifact of the evaluation metrics used to judge performance. This happens because many metrics do not assign partial credit and only reward fully solving the task, so model improvements might not be tracked. On the other hand, one could argue that for tasks like multi-step arithmetic, getting the answer partially right is just as useless as getting it completely wrong.
+Schaeffer et al. claim that the sudden jump in performance for certain tasks at a particular model size threshold is just an artifact of the evaluation metrics used to judge performance. This happens because many metrics do not assign partial credit and only reward fully solving the task, so model improvements might not be tracked. On the other hand, one could argue that for tasks like multi-step arithmetic, getting the answer partially right is just as useless as getting it completely wrong.
 
 ---
 
-## Sección 3: Chapter 1. Introduction
+## Sección 3: Chapter 1. Introduction [Entropy: 0.265]
 
 The question of what abilities are emergent is still being explored in the research community. In Chapter 5 , we will discuss its implications for selecting the right model for our desired use case.
 
- Warning 
+Warning
 
 Unfortunately the phrase “emergent properties” has multiple meanings in the literature. In some papers, the phrase is used to describe those capabilities that the model is not explicitly trained for. In this book, we will stick to Wei et al.’s definition .
 
 To understand how current LLMs came to be, it is instructive to walk through a brief history of them. As more historical details are out of scope for the book, we will provide links to external resources for further reading throughout the section.
 
- 
-
- 
-
 A Brief History of LLMs
 
 To present the history of LLMs , we need to start from the history of NLP , the field that LLMs originated from. For a more detailed history of NLP, refer to Daniel Jurafsky’s seminal book, Speech and Language Processing , 2nd edition .
-
- 
 
 Early Years
 
@@ -142,21 +119,17 @@ In the mid-1960s, Joseph Weizenbaum released ELIZA, a chatbot program that appli
 
 As an example:
 
- User : 'I am not feeling well' 
+User : 'I am not feeling well'
 
- ELIZA : 'Do you believe it is normal to be not feeling well?' 
+ELIZA : 'Do you believe it is normal to be not feeling well?'
 
 You can try chatting with ELIZA online . Even in the era of ChatGPT , ELIZA can hold a somewhat convincing conversation, despite the fact that it is just rules-based.
-
- 
 
 Exercise
 
 Read through the classic paper by Weizenbaum introducing ELIZA. In general, I recommend developing a habit of reading papers from yesteryears, as they are a good source of inspiration. Ideas get recycled all the time, and infeasible ideas from the past become feasible today due to advances in technology.
 
 Additionally, go through the code for the Python implementation of ELIZA by Wade Brainerd to understand how powerful carefully constructed rule-based systems can be. Even in the era of LLMs, you should not shy away from using rule-based approaches for your language tasks where it makes sense!
-
- 
 
 Rule-based systems are brittle, hard to construct, and a maintenance nightmare. As the decades rolled by, the limitations of symbolic approaches became more and more evident, and the relative effectiveness of statistical approaches ensured that they became more commonplace. NLP researcher Frederick Jelinek famously quipped, “Every time I fire a linguist, the performance of the speech recognizer goes up.”
 
@@ -169,10 +142,6 @@ The 2010s saw the advent of deep learning and its widespread impact on NLP. Deep
 During the early years of deep learning, it was customary to construct a task-specific architecture to solve each task. Some of the types of neural network architectures used include multi-layer perceptrons, convolutional neural networks, recurrent 
  neural networks, and recursive neural networks . To learn more about this era of NLP, I recommend Neural Network Methods for Natural Language Processing by Yoav Goldberg (Springer Cham).
 
- 
-
- 
-
 The Modern LLM Era
 
 In 2017, the Transformer architecture was invented, quickly followed by the invention of efficient transfer learning techniques pioneered by Howard et al. among others and Transformer-based language models like BERT . These advances removed the need for constructing complex task-specific architectures. Instead, one could use the same Transformer model to train a variety of tasks. This new paradigm divided the training step into two stages: pre-training and fine-tuning . An initial large-scale pre-training step initialized the Transformer model with general language capabilities. Subsequently, the pre-trained model could be trained on more concrete tasks, like information extraction or sentiment detection, using a process called fine-tuning. We will cover fine-tuning extensively throughout the book.
@@ -181,7 +150,7 @@ While academia and open-source collectives have made crucial and critical contri
 
 ---
 
-## Sección 4: Chapter 1. Introduction
+## Sección 4: Chapter 1. Introduction [Entropy: 0.295]
 
 GPT-1 
  
@@ -300,7 +269,7 @@ LLM-driven chatbots increasingly are being deployed as customer service agents. 
 
 ---
 
-## Sección 5: Chapter 1. Introduction
+## Sección 5: Chapter 1. Introduction [Entropy: 0.28]
 
 Information extraction and sequence tagging 
  
@@ -369,7 +338,7 @@ If you have programming experience, I suggest viewing prompting through the lens
 
 ---
 
-## Sección 6: Chapter 1. Introduction
+## Sección 6: Chapter 1. Introduction [Entropy: 0.403]
 
 A fun fact: language models are insensitive to word order . This property has been observed even in earlier models like BERT. For example, ask ChatGPT or your favorite LLM provider the question “How do I tie my shoelaces?” in jumbled form, say “shoe tie my I how do laces?” ChatGPT responds with “Certainly! Here are step-by-step instructions on how to tie your shoelaces:…​” as if you asked a straightforward question.
 
@@ -505,7 +474,7 @@ Often, your tasks need multiple steps and a large number of instructions. One wa
 
 ---
 
-## Sección 7: Chapter 1. Introduction
+## Sección 7: Chapter 1. Introduction [Entropy: 0.454]
 
 As an example, consider the task of extracting information from the text provided in a form and formatting the output in a structured manner. If there are missing or outlier values, then some special postprocessing rules are to be applied. In this case, it is good practice to split the task into two prompts, with the initial prompt performing the information extraction and the second prompt handling the postprocessing of the extracted information.
 
@@ -604,7 +573,7 @@ Used to limit the length of the generated output. stop allows you to specify end
 
 ---
 
-## Sección 8: Chapter 1. Introduction
+## Sección 8: Chapter 1. Introduction [Entropy: 0.25]
 
 presence_penalty and frequency_penalty 
  
@@ -682,7 +651,7 @@ Thus, plagiarism detection has become even more challenging, including cases of 
 
 ---
 
-## Sección 9: Chapter 1. Introduction
+## Sección 9: Chapter 1. Introduction [Entropy: 0.604]
 
 While words like “delve” are known to be overused by LLMs, single-token frequencies should not be relied upon as a means of detecting LLM-generated text. Having grown up in India learning Indian English, the word “delve” appears in my vocabulary a lot more frequently than the average Westerner, and this can be found in my writing and publications well before the launch of ChatGPT. These nuances show that more robust techniques need to be developed to discover LLM-generated text.
 
@@ -840,7 +809,7 @@ Note that it is not guaranteed that the paragraph contains the answer to the que
 
 ---
 
-## Sección 10: Chapter 1. Introduction
+## Sección 10: Chapter 1. Introduction [Entropy: 0.56]
 
 We will depend on the LLM to distinguish between irrelevant and relevant context. We provide the LLM with the query and the retrieved text and ask it to answer the query given the provided information. This workflow can be implemented using a chain in LangChain:
 
@@ -930,7 +899,7 @@ In the tutorial, we demonstrated a rudimentary method to parse, chunk, and embed
 
 ---
 
-## Sección 11: Chapter 1. Introduction
+## Sección 11: Chapter 1. Introduction [Entropy: 0.25]
 
 The PDF chatbot follows a paradigm called retrieval-augmented generation (RAG). RAG refers to systems where LLMs are connected to external data sources, like the PDFs uploaded by users in our chatbot use case. In Chapter 12 , we will define a comprehensive RAG pipeline and learn how to architect robust RAG systems.
 
@@ -969,7 +938,7 @@ In this chapter, we introduced language models, provided a brief history, and di
 
 ---
 
-## Sección 12: Chapter 2. Pre-Training Data
+## Sección 12: Chapter 2. Pre-Training Data [Entropy: 0.265]
 
 In Chapter 1 , we introduced language models, noted their strengths and limitations , explored current and potential use cases, and presented the scaling laws that seemingly govern progress in this field. To set the stage for the rest of this book, in the next three chapters we will discuss in detail the recipe for pre-training LLMs and the ingredients that go into them. But wait, this book is about utilizing pre-trained LLMs to design and build user applications. Why do we need to discuss the nuances of pre-training these gargantuan models from scratch, something most machine learning practitioners are never going to do in their lives?
 
@@ -1059,7 +1028,7 @@ However, if you are curious to read more about the challenges involved in pre-tr
 
 ---
 
-## Sección 13: Chapter 2. Pre-Training Data
+## Sección 13: Chapter 2. Pre-Training Data [Entropy: 0.265]
 
 Training chronicles (log book) from BLOOM and OPT , which is a 175B parameter LLM released by Meta, documenting the trials and tribulations faced during training, including hardware failures and how to recover from them, training instabilities, loss spikes, and the like.
 
@@ -1121,7 +1090,7 @@ If our only option to resolve all these shortcomings is to scale up dataset size
 
 ---
 
-## Sección 14: Chapter 2. Pre-Training Data
+## Sección 14: Chapter 2. Pre-Training Data [Entropy: 0.25]
 
 Thus, there are efforts to use text generated by language models , termed synthetic data , to train models, albeit with the risk that training on LLM-generated data can potentially be detrimental, as the model deviates from the true distribution of the data. Later in this chapter, we will learn the process behind creating synthetic data for pre-training.
 
@@ -1177,7 +1146,7 @@ These refer to a subset of web tex t and are limited to web pages representing o
 
 ---
 
-## Sección 15: Chapter 2. Pre-Training Data
+## Sección 15: Chapter 2. Pre-Training Data [Entropy: 0.28]
 
 Wikipedia 
  
@@ -1360,7 +1329,7 @@ Let’s explore the content of these pre-training datasets. Using a Google Colab
 
 ---
 
-## Sección 16: Chapter 2. Pre-Training Data
+## Sección 16: Chapter 2. Pre-Training Data [Entropy: 0.436]
 
 ! pip install datasets 
  from datasets import dataset 
@@ -1476,7 +1445,7 @@ jusText just so happens to be more aggressive in removing content, but this is g
 
 ---
 
-## Sección 17: Chapter 2. Pre-Training Data
+## Sección 17: Chapter 2. Pre-Training Data [Entropy: 0.43]
 
 Pre-Training on Raw HTML Documents
 
@@ -1579,7 +1548,7 @@ The second paragraph would get included in the C4 dataset, as per its filtering 
 
 ---
 
-## Sección 18: Chapter 2. Pre-Training Data
+## Sección 18: Chapter 2. Pre-Training Data [Entropy: 0.343]
 
 The way langdetect is implemented makes it poor at identifying language when short sequences are provided . For example:
 
@@ -1699,7 +1668,7 @@ Propelled by LLMs, the internet is slated to see widespread prevalence of AI-gen
 
 ---
 
-## Sección 19: Chapter 2. Pre-Training Data
+## Sección 19: Chapter 2. Pre-Training Data [Entropy: 0.25]
 
 Despite all the data cleaning steps, the resulting dataset is still not going to be perfect at this level of scale. For example, Eleuther AI reported that the boilerplate sentence “select the forum that you want to visit from the selection below” occurs 180K times in The Pile .
 
@@ -1835,7 +1804,7 @@ Protection should be extended to anything used to directly or indirectly identif
 
 ---
 
-## Sección 20: Chapter 2. Pre-Training Data
+## Sección 20: Chapter 2. Pre-Training Data [Entropy: 0.46]
 
 Most open source models are trained on publicly available datasets. These datasets might contain PII, but one might be tempted to say, “Well it is already out in the open, so there is no need for privacy protection.” This argument overlooks the importance of consent and discoverability controls. For instance, I might have shared my PII on my blog, which resides in an obscure corner of the internet and is not easily discoverable through search engines, but if it ends up being added to a pre-training dataset, it suddenly brings this data into the spotlight, without my consent. This concept is called contextual integrity : data should only be shared in the original context in which it was shared.
 
@@ -1910,7 +1879,7 @@ The is_valid() function uses the Luhn checksum algorithm to validate if the sequ
 
 ---
 
-## Sección 21: Chapter 2. Pre-Training Data
+## Sección 21: Chapter 2. Pre-Training Data [Entropy: 0.385]
 
 The regular expression for detecting email address is as follows:
 
@@ -2039,7 +2008,7 @@ Many pre-training datasets these days include code, even if the model is not int
 
 ---
 
-## Sección 22: Chapter 2. Pre-Training Data
+## Sección 22: Chapter 2. Pre-Training Data [Entropy: 0.37]
 
 Dataset Ordering
 
@@ -2247,7 +2216,7 @@ The phenomenon of bias amplification makes these problems all the more critical.
 
 ---
 
-## Sección 23: Chapter 2. Pre-Training Data
+## Sección 23: Chapter 2. Pre-Training Data [Entropy: 0.265]
 
 So, can we “fix” our training data such that we can model a world that encodes our values and principles that downstream applications will inherit? There is substantial debate in the research community about this. Opponents argue it is hard to identify and fix all societal biases encoded in the data since there are so many dimensions of bias that intersect in complex ways. Values are not universal, and model providers would like to be value-neutral to cater to all sections of society.
 
@@ -2264,7 +2233,7 @@ Overall, whether a word is hateful, abusive, or toxic depends on the social cont
 
 ---
 
-## Sección 24: Chapter 10 .
+## Sección 24: Chapter 10 . [Entropy: 0.25]
 
 Note 
 
@@ -2295,7 +2264,7 @@ In this chapter, we outlined the key ingredients of a language model: the pre-tr
 
 ---
 
-## Sección 25: Chapter 3. Vocabulary and Tokenization
+## Sección 25: Chapter 3. Vocabulary and Tokenization [Entropy: 0.295]
 
 In Chapter 2 , we dug deep into the datasets that are used to train the language models of today, including the process of creating them. Hopefully this foray has underscored how influential pre-training data is to the resulting model. In this chapter, we will discuss another fundamental ingredient of a language model: its vocabulary.
 
@@ -2398,7 +2367,7 @@ What exactly is a word , anyway? It is surprisingly very hard to answer this. Co
 
 ---
 
-## Sección 26: Chapter 3. Vocabulary and Tokenization
+## Sección 26: Chapter 3. Vocabulary and Tokenization [Entropy: 0.59]
 
 Note 
 
@@ -2499,7 +2468,7 @@ The output is:
 
 ---
 
-## Sección 27: Chapter 3. Vocabulary and Tokenization
+## Sección 27: Chapter 3. Vocabulary and Tokenization [Entropy: 0.352]
 
 I made a deliberate typo with the word “Insufficient.” Note that subword tokenization is rather brittle with typos. But at least the OOV problem has been dealt with by breaking the words into subwords. The vocabulary also doesn’t seem to have an entry for the word “corduroy,” thus confirming its poor sense of fashion. Meanwhile, note that there is a distinct token for three contiguous exclamation points, which is different from the token that represents a single exclamation point. Semantically, they do convey slightly different meanings.
 
@@ -2644,7 +2613,7 @@ Pre-tokenization is a relatively easy step in English compared to many other lan
 
 ---
 
-## Sección 28: Chapter 3. Vocabulary and Tokenization
+## Sección 28: Chapter 3. Vocabulary and Tokenization [Entropy: 0.373]
 
 \ w +| [ ^ \ w \ s ] + 
 
@@ -2776,7 +2745,7 @@ During inference, merge rules are not used. Instead, for each pre-tokenized toke
 
 ---
 
-## Sección 29: Chapter 3. Vocabulary and Tokenization
+## Sección 29: Chapter 3. Vocabulary and Tokenization [Entropy: 0.515]
 
 Postprocessing
 
@@ -2868,7 +2837,7 @@ To this end, we can add new tokens to existing tokenizers and continue pre-train
 
 ---
 
-## Sección 30: Chapter 7 .
+## Sección 30: Chapter 7 . [Entropy: 0.406]
 
 For now, let’s see how we can add new tokens to a vocabulary using Hugging Face.
 
@@ -2932,7 +2901,7 @@ In the next chapter, we will continue exploring the remaining ingredients of a l
 
 ---
 
-## Sección 31: Chapter 4. Architectures and Learning Objectives
+## Sección 31: Chapter 4. Architectures and Learning Objectives [Entropy: 0.295]
 
 In Chapters 2 and
  3 , we discussed some of the key ingredients that go into making a language model: the training datasets, and the vocabulary and tokenizer. Next, let’s complete the puzzle by learning about the models themselves, the architectures underpinning them, and their learning objectives.
@@ -3005,7 +2974,7 @@ Let’s investigate how the distributional hypothesis works in practice. The Nat
 
 ---
 
-## Sección 32: Chapter 4. Architectures and Learning Objectives
+## Sección 32: Chapter 4. Architectures and Learning Objectives [Entropy: 0.565]
 
 For example, let’s see the contexts in which the word “nervous” occurs in the Jane Austen classic Emma :
 
@@ -3143,7 +3112,7 @@ For each token, the dot products of its query vector with the key vectors of all
 
 ---
 
-## Sección 33: Chapter 4. Architectures and Learning Objectives
+## Sección 33: Chapter 4. Architectures and Learning Objectives [Entropy: 0.725]
 
 The scores are scaled down by dividing them by the square root of the dimension of the key vectors.
 
@@ -3291,7 +3260,7 @@ This is how it is represented in code:
 
 ---
 
-## Sección 34: Chapter 4. Architectures and Learning Objectives
+## Sección 34: Chapter 4. Architectures and Learning Objectives [Entropy: 0.406]
 
 layer_norm = LayerNorm ( embedding_dim ) 
  outputs = layer_norm ( inputs ) 
@@ -3430,7 +3399,7 @@ A majority of LLMs trained today use decoder-only models. Decoder-only models ca
 
 ---
 
-## Sección 35: Chapter 4. Architectures and Learning Objectives
+## Sección 35: Chapter 4. Architectures and Learning Objectives [Entropy: 0.355]
 
 Decoder models can be causal and noncausal . Noncausal models have bidirectionality over the input sequence, while the output is still autoregressive (you cannot look ahead).
 
@@ -3520,7 +3489,7 @@ and the language model is asked to predict the next token . The total number of 
 
 ---
 
-## Sección 36: Chapter 4. Architectures and Learning Objectives
+## Sección 36: Chapter 4. Architectures and Learning Objectives [Entropy: 0.575]
 
 Self-supervised learning objectives used for pre-training LLMs can be broadly classified (nonexhaustively) into three types:
 
@@ -3673,7 +3642,7 @@ During inference, we don’t necessarily need to generate the token with the hig
 
 ---
 
-## Sección 37: Chapter 5 .
+## Sección 37: Chapter 5 . [Entropy: 0.53]
 
 Exercise
 
@@ -3862,7 +3831,7 @@ Similar to prefix LM, the text is divided into a prefix and a suffix. The suffix
 
 ---
 
-## Sección 38: Chapter 5 .
+## Sección 38: Chapter 5 . [Entropy: 0.34]
 
 Figure 4-15. UL2’s S-Denoiser 
 
@@ -3986,7 +3955,7 @@ This shows that natural language is not necessarily the most efficient vehicle f
 
 ---
 
-## Sección 39: Chapter 5 .
+## Sección 39: Chapter 5 . [Entropy: 0.25]
 
 Thus, language design is an important skill to acquire, enabling you to create domain-specific languages for learning concepts and skills. For your application areas, you could use existing domain-specific languages or create a new one yourself .
 
@@ -4013,7 +3982,7 @@ In this chapter, we discussed the various components of the Transformer architec
 
 ---
 
-## Sección 40: Chapter 5. Adapting LLMs to Your Use Case
+## Sección 40: Chapter 5. Adapting LLMs to Your Use Case [Entropy: 0.265]
 
 In this chapter, we will continue with our journey through the LLM landscape, exploring the various LLMs available for commercial use and providing pointers on how to choose the right LLM for your task. We will also examine how to load LLMs of various sizes and run inference on them. We will then decipher various decoding strategies for text generation. We will also investigate how to interpret the outputs and intermediate results from language models, surveying interpretability tools like LIT-NLP.
 
@@ -4327,7 +4296,7 @@ A typical instruction-tuning dataset consists of a diverse set of tasks expresse
 
 ---
 
-## Sección 41: Chapter 5. Adapting LLMs to Your Use Case
+## Sección 41: Chapter 5. Adapting LLMs to Your Use Case [Entropy: 0.25]
 
 Here is an example from a popular instruction-tuning dataset called FLAN .
 
@@ -4415,7 +4384,7 @@ Various tests have been devised for measuring long-context performance, includin
 
 ---
 
-## Sección 42: Chapter 12 .
+## Sección 42: Chapter 12 . [Entropy: 0.295]
 
 Domain-adapted or task-adapted models
 
@@ -4523,7 +4492,7 @@ ND stands for no derivatives. If the license contains this term, then distributi
 
 ---
 
-## Sección 43: Chapter 12 .
+## Sección 43: Chapter 12 . [Entropy: 0.355]
 
 Note 
 
@@ -4815,7 +4784,7 @@ Not all open source models are fully transparent. As mentioned earlier, most for
 
 ---
 
-## Sección 44: Chapter 12 .
+## Sección 44: Chapter 12 . [Entropy: 0.355]
 
 As of this book’s writing, open source models like Llama 3.2 and DeepSeek v3 have more or less caught up to state-of-the-art proprietary models from OpenAI or Anthropic. However, there is a new gap developing between proprietary and open source models in the realm of reasoning models like OpenAI’s o3, that use inference-time compute techniques (discussed in Chapter 8 ). Throughout this book, we will showcase scenarios where open source models have an advantage.
 
@@ -4923,7 +4892,7 @@ This test evaluates the LLM on multiple-choice grade school science questions th
 
 ---
 
-## Sección 45: Chapter 12 .
+## Sección 45: Chapter 12 . [Entropy: 0.28]
 
 This test evaluates commonsense reasoning by providing the LLM with a situation and asking it to predict what might happen next out of the given choices, based on common sense.
 
@@ -5080,7 +5049,7 @@ Can there be a bias in the evaluation due to models being evaluated on the basis
 
 ---
 
-## Sección 46: Chapter 12 .
+## Sección 46: Chapter 12 . [Entropy: 0.403]
 
 Rigorously interrogating the results this way helps you develop a deeper understanding of what is being evaluated, and whether it aligns with the capabilities you need from the language model for your own tasks. For more rigorous LLM evaluation, I strongly recommend developing your own internal benchmarks.
 
@@ -5208,7 +5177,7 @@ Now that we have learned how to load a model, let’s understand how to effectiv
 
 ---
 
-## Sección 47: Chapter 12 .
+## Sección 47: Chapter 12 . [Entropy: 0.545]
 
 Greedy Decoding
 
@@ -5335,7 +5304,7 @@ Reducing the temperature to zero or close to zero impacts the LLM’s creativity
 
 ---
 
-## Sección 48: Chapter 12 .
+## Sección 48: Chapter 12 . [Entropy: 0.265]
 
 In production settings where reliability is important, you should run multiple generations for the same input and use a technique like majority voting or heuristics to select the right output. This is very important due to the nature of the decoding process; sometimes the wrong tokens can be generated, and since every token generated is a function of the tokens generated before it, the error can be propagated far ahead.
 
@@ -5473,7 +5442,7 @@ As seen in Chapter 2 , the smallest unit of a Transformer-based LLM is a neuron
 
 ---
 
-## Sección 49: Chapter 12 .
+## Sección 49: Chapter 12 . [Entropy: 0.28]
 
 However, in their experiments , researchers from Anthropic observed that a single neuron can be activated for many different types of input. Thus, any given neuron’s exact contribution is not entirely clear. The researchers introduced the notion of features , linear combinations of multiple neuron activations. They show that these features are more interpretable than a single neuron, as each feature is activated only on a single type of input. Some features are activated only on a single token, while others are activated on a broader type of input, like code.
 
@@ -5508,7 +5477,7 @@ In the next chapter, we will learn how to update a model to improve its performa
 
 ---
 
-## Sección 50: Chapter 6. Fine-Tuning
+## Sección 50: Chapter 6. Fine-Tuning [Entropy: 0.346]
 
 In the previous chapter, we discussed the various factors that need to be taken into account while choosing the right LLM for your specific needs, including pointers on how to evaluate LLMs to be able to make an informed choice. Next, let us utilize these LLMs to solve our tasks.
 
@@ -5589,7 +5558,7 @@ Next, let us set some relevant hyperparameters in the Transformers library throu
 
 ---
 
-## Sección 51: Chapter 6. Fine-Tuning
+## Sección 51: Chapter 6. Fine-Tuning [Entropy: 0.412]
 
 # Make sure you have installed the correct version 
  ! pip install transformers == 4.35.0 
@@ -5722,7 +5691,7 @@ This is very similar to the cosine setting, except that the learning rate decrea
 
 ---
 
-## Sección 52: Chapter 6. Fine-Tuning
+## Sección 52: Chapter 6. Fine-Tuning [Entropy: 0.472]
 
 Figure 6-4 shows how the learning rate changes over time while using the linear scheduler.
 
@@ -5835,7 +5804,7 @@ Hugging Face supports Noisy Embedding Instruction Fine-Tuning (NEFTune) , a nois
 
 ---
 
-## Sección 53: Chapter 6. Fine-Tuning
+## Sección 53: Chapter 6. Fine-Tuning [Entropy: 0.571]
 
 Noise embeddings have been empirically found to be very effective in reducing overfitting. Therefore, we will use it for our political promises detector fine-tuning. Note that the noise embeddings are added only during training and not during inference.
 
@@ -6002,7 +5971,7 @@ This sets the computational type, regardless of the input type.
 
 ---
 
-## Sección 54: Chapter 6. Fine-Tuning
+## Sección 54: Chapter 6. Fine-Tuning [Entropy: 0.68]
 
 bnb_4bit_quant_type 
  
@@ -6168,7 +6137,7 @@ Fine-tuning datasets can be either multi-task or single-task. Multi-task dataset
 
 ---
 
-## Sección 55: Chapter 6. Fine-Tuning
+## Sección 55: Chapter 6. Fine-Tuning [Entropy: 0.295]
 
 Later in this chapter, we will learn how to create task-specific datasets . First, let’s look at how we can create instruction-tuning datasets.
 
@@ -6446,7 +6415,7 @@ Rather than painstakingly constructing these templates by hand, can we automate 
 
 ---
 
-## Sección 56: Chapter 6. Fine-Tuning
+## Sección 56: Chapter 6. Fine-Tuning [Entropy: 0.265]
 
 As you can see, the generated templates reflect various ways of expressing the summarization task.
 
@@ -6549,7 +6518,7 @@ In-breadth evolution increases topic coverage by generating a completely new ins
 
 ---
 
-## Sección 57: Chapter 6. Fine-Tuning
+## Sección 57: Chapter 6. Fine-Tuning [Entropy: 0.25]
 
 Response generation: The response for the evolved instruction is generated, either using humans or LLMs.
 
@@ -6600,7 +6569,7 @@ In the next chapter, we will discuss more advanced techniques for updating an LL
 
 ---
 
-## Sección 58: Chapter 7. Advanced Fine-Tuning Techniques
+## Sección 58: Chapter 7. Advanced Fine-Tuning Techniques [Entropy: 0.265]
 
 In the previous chapter, we presented the canonical way to fine-tune a typical LLM. In the real world, there are a wide variety of motivations for updating an LLM, and similarly there are multiple ways to update it. In this chapter, we will describe several advanced fine-tuning techniques and highlight the scenarios in which each technique would be suitable.
 
@@ -6695,7 +6664,7 @@ Once you have identified a domain, you would also like to select text that is mo
 
 ---
 
-## Sección 59: Chapter 7. Advanced Fine-Tuning Techniques
+## Sección 59: Chapter 7. Advanced Fine-Tuning Techniques [Entropy: 0.28]
 
 Figure 7-1 depicts the general continual pre-training process.
 
@@ -6799,7 +6768,7 @@ As mentioned earlier, continual pre-training can also be used to facilitate life
 
 ---
 
-## Sección 60: Chapter 7. Advanced Fine-Tuning Techniques
+## Sección 60: Chapter 7. Advanced Fine-Tuning Techniques [Entropy: 0.436]
 
 In summary, continual pre-training can be very effective in cases where you have a large body of domain-specific text and the domain is very distinctly characterized by a specialized linguistic structure or vocabulary. Continual pre-training can also be used to help adapt the LLM to a new language.
 
@@ -6959,7 +6928,7 @@ One drawback of using adapter-based fine-tuning techniques is that during infere
 
 ---
 
-## Sección 61: Chapter 7. Advanced Fine-Tuning Techniques
+## Sección 61: Chapter 7. Advanced Fine-Tuning Techniques [Entropy: 0.367]
 
 In prefix-tuning , we add and train task-specific vectors to the prefix of the input. This vastly reduces the number of parameters we need to fine-tune. Recall that the prompt contains the instruction, the input, and optionally some few-shot examples. The text generated by the LLM is conditioned on the output generated so far, and the prompt. To this, we add additional context that the LLM can attend to, in the form of these prefix vectors. The new tokens prefixed to the input are called virtual tokens or soft prompts .
 
@@ -7080,7 +7049,7 @@ In Chapter 5 , we discussed how, for generative tasks, it is useful to generate
 
 ---
 
-## Sección 62: Chapter 7. Advanced Fine-Tuning Techniques
+## Sección 62: Chapter 7. Advanced Fine-Tuning Techniques [Entropy: 0.403]
 
 Jiang et al. present a framework called LLM-Blender for enabling LLM ensembling. The framework consists of two components:
 
@@ -7205,7 +7174,7 @@ Model merging is a fascinating subarea of LLMs. Even if you are not using it in 
 
 ---
 
-## Sección 63: Chapter 7. Advanced Fine-Tuning Techniques
+## Sección 63: Chapter 7. Advanced Fine-Tuning Techniques [Entropy: 0.25]
 
 Summary
 
@@ -7228,7 +7197,7 @@ As discussed in the previous and current chapter, fine-tuning is not a panacea a
 
 ---
 
-## Sección 64: Chapter 8. Alignment Training and Reasoning
+## Sección 64: Chapter 8. Alignment Training and Reasoning [Entropy: 0.295]
 
 Some common reasons for hesitancy in adopting LLMs is the presence of hallucinations, the limitations in reasoning skills, and bias and safety issues. In this chapter, we will go through these limitations and introduce different techniques to mitigate them. First, we will introduce the concept of alignment training, which helps us steer our models toward desirable outcomes.
 
@@ -7363,7 +7332,7 @@ Let’s use the Hugging Face TRL library to perform RLHF. First, we need to trai
 
 ---
 
-## Sección 65: Chapter 8. Alignment Training and Reasoning
+## Sección 65: Chapter 8. Alignment Training and Reasoning [Entropy: 0.505]
 
 Very few high-quality datasets are publicly available, one of them being Anthropic ’s hh-rlhf dataset . We will use this dataset in our example.
 
@@ -7503,7 +7472,7 @@ An important way to assess a model’s self-knowledge is through its output unce
 
 ---
 
-## Sección 66: Chapter 8. Alignment Training and Reasoning
+## Sección 66: Chapter 8. Alignment Training and Reasoning [Entropy: 0.496]
 
 Warning 
 
@@ -7639,7 +7608,7 @@ where t refers to the generation step.
 
 ---
 
-## Sección 67: Chapter 8. Alignment Training and Reasoning
+## Sección 67: Chapter 8. Alignment Training and Reasoning [Entropy: 0.511]
 
 There are three tunable parameters:
 
@@ -7763,7 +7732,7 @@ The classifier model can also be employed to reduce hallucinations during genera
 
 ---
 
-## Sección 68: Chapter 8. Alignment Training and Reasoning
+## Sección 68: Chapter 8. Alignment Training and Reasoning [Entropy: 0.295]
 
 Using a classifier-based decoding strategy can be a massive drag on system latency, however. These approaches should be used only if latency isn’t a prime consideration .
 
@@ -7900,7 +7869,7 @@ Other forms of reasoning include mathematical (usually based on deductions), cau
 
 ---
 
-## Sección 69: Chapter 8. Alignment Training and Reasoning
+## Sección 69: Chapter 8. Alignment Training and Reasoning [Entropy: 0.301]
 
 Reasoning as Subgraph Pattern Matching
 
@@ -7994,7 +7963,7 @@ In essence, a language model generates a probability distribution P(Y | X) where
 
 ---
 
-## Sección 70: Chapter 8. Alignment Training and Reasoning
+## Sección 70: Chapter 8. Alignment Training and Reasoning [Entropy: 0.286]
 
 Jin et al. also show that errors in the reasoning steps do not impact the performance as much, as long as the length of the reasoning steps exceeds a threshold.
 
@@ -8069,7 +8038,7 @@ In the next chapter, we’ll discuss techniques for speeding up LLM inference. H
 
 ---
 
-## Sección 71: Chapter 9. Inference Optimization
+## Sección 71: Chapter 9. Inference Optimization [Entropy: 0.265]
 
 In the past few chapters, we learned several techniques for adapting and utilizing LLMs to solve specific tasks. In this chapter, we will learn how to efficiently perform inference on them for real-world usage. LLMs’ large size make deployment and inference particularly challenging, as they exert significant pressure on compute, memory, and energy requirements. This proves to be especially challenging on edge devices like mobile phones.
 
@@ -8173,7 +8142,7 @@ To keep costs under control, LLM providers typically limit the age of the cache 
 
 ---
 
-## Sección 72: Chapter 9. Inference Optimization
+## Sección 72: Chapter 9. Inference Optimization [Entropy: 0.442]
 
 As an example, let’s look at a request to Anthropic’s Claude suite of models that utilizes context caching:
 
@@ -8297,7 +8266,7 @@ The process of knowledge distillation can be divided into two steps: distillatio
 
 ---
 
-## Sección 73: Chapter 9. Inference Optimization
+## Sección 73: Chapter 9. Inference Optimization [Entropy: 0.325]
 
 Figure 9-2 depicts the process of distilling a model.
 
@@ -8413,7 +8382,7 @@ Take the Gemma 2B open source model and distill it into a smaller model that can
 
 ---
 
-## Sección 74: Chapter 9. Inference Optimization
+## Sección 74: Chapter 9. Inference Optimization [Entropy: 0.31]
 
 In this section, we discussed three distinct techniques for reducing compute during inference: caching, early exit, and knowledge distillation. Next, let’s discuss techniques that can accelerate the decoding process .
 
@@ -8548,7 +8517,7 @@ This keeps the range of numbers represented the same as that of float32 at the c
 
 ---
 
-## Sección 75: Chapter 9. Inference Optimization
+## Sección 75: Chapter 9. Inference Optimization [Entropy: 0.25]
 
 Older GPUs like the NVIDIA T4 do not support BF16.
 
@@ -8651,7 +8620,7 @@ In this chapter, we discussed the causes of bottlenecks in LLM inference . We di
 
 ---
 
-## Sección 76: Chapter 10. Interfacing LLMs with External Tools
+## Sección 76: Chapter 10. Interfacing LLMs with External Tools [Entropy: 0.265]
 
 In the first two parts of the book , we have seen how impactful standalone LLMs can be in solving a wide variety of tasks. To effectively harness their full range of capabilities in an organization, they have to be integrated into the existing data and software ecosystem. Unlike traditional software systems, LLMs can generate autonomous actions to interact with other ecosystem components, bringing a degree of flexibility never seen before in the software world. This flexibility unlocks a whole host of use cases that were previously considered impossible.
 
@@ -8720,7 +8689,7 @@ Note that the distinguishing feature of this paradigm is the passive nature of t
 
 ---
 
-## Sección 77: Chapter 10. Interfacing LLMs with External Tools
+## Sección 77: Chapter 10. Interfacing LLMs with External Tools [Entropy: 0.28]
 
 Note 
 
@@ -8847,7 +8816,7 @@ Given these enviable abilities, are machines going to take over the world? In pr
 
 ---
 
-## Sección 78: Chapter 10. Interfacing LLMs with External Tools
+## Sección 78: Chapter 10. Interfacing LLMs with External Tools [Entropy: 0.349]
 
 Agentic Workflow
 
@@ -8991,7 +8960,7 @@ To illustrate calling APIs , we will showcase LangChain’s Wikipedia API wrappe
 
 ---
 
-## Sección 79: Chapter 10. Interfacing LLMs with External Tools
+## Sección 79: Chapter 10. Interfacing LLMs with External Tools [Entropy: 0.855]
 
 from langchain.tools import WikipediaQueryRun 
  from langchain_community.utilities import WikipediaAPIWrapper 
@@ -9149,7 +9118,7 @@ Here is an example of a tool definition in JSON describing a local function that
 
 ---
 
-## Sección 80: Chapter 10. Interfacing LLMs with External Tools
+## Sección 80: Chapter 10. Interfacing LLMs with External Tools [Entropy: 0.28]
 
 The tool call is generated by the model in JSON with the prescribed format.
 
@@ -9233,7 +9202,7 @@ Prompts can also include input-output examples, known as few-shot learning , as 
 
 ---
 
-## Sección 81: Chapter 12 .
+## Sección 81: Chapter 12 . [Entropy: 0.49]
 
 Next, let’s explore how agents use session memory to advance their goals.
 
@@ -9375,7 +9344,7 @@ Final Answer: If you have an answer, provide a final response. Else continue the
 
 ---
 
-## Sección 82: Chapter 12 .
+## Sección 82: Chapter 12 . [Entropy: 0.523]
 
 Despite its popularity, ReAct prompting has been shown to be brittle .
 
@@ -9527,7 +9496,7 @@ Let’s look at the PII guardrail as an example:
 
 ---
 
-## Sección 83: Chapter 12 .
+## Sección 83: Chapter 12 . [Entropy: 0.265]
 
 Exercise
 
@@ -9645,7 +9614,7 @@ For numbers and named entities, factuality verification can be performed by usin
 
 ---
 
-## Sección 84: Chapter 12 .
+## Sección 84: Chapter 12 . [Entropy: 0.28]
 
 Specificity 
  
@@ -9716,7 +9685,7 @@ Once verification modules are part of our system architecture, we will also need
 
 ---
 
-## Sección 85: Chapter 13 .
+## Sección 85: Chapter 13 . [Entropy: 0.325]
 
 Warning 
 
@@ -9786,7 +9755,7 @@ In the next chapter, we will explore data representation and retrieval, crucial 
 
 ---
 
-## Sección 86: Chapter 11. Representation Learning and Embeddings
+## Sección 86: Chapter 11. Representation Learning and Embeddings [Entropy: 0.575]
 
 In the previous chapter, we learned how we can interface language models with external tools, including data stores. External data can be present in the form of text files, database tables, and knowledge graphs. Data can span a wide variety of content types, from proprietary domain-specific knowledge bases to intermediate results and outputs generated by LLMs.
 
@@ -9872,7 +9841,7 @@ Recently, decoder-based embedding models have started gaining prominence, like t
 
 ---
 
-## Sección 87: Chapter 11. Representation Learning and Embeddings
+## Sección 87: Chapter 11. Representation Learning and Embeddings [Entropy: 0.544]
 
 Choosing the right model for your task depends on cost, latency, storage limitations, performance, and the data domain of your use case. I suggest starting off with the small but effective all-mpnet-base-v2 model available through the Sentence Transformers library , which I consider the workhorse of the field of NLP. As always, experimenting with different models never hurts. More tips on selecting the right models will be provided throughout the rest of the chapter. Later in the chapter, we will also show how to evaluate embedding models and introduce popular benchmarks.
 
@@ -9968,7 +9937,7 @@ Now let’s use the Sentence Transformers all-mpnet-base-v2 embedding model to e
 
 ---
 
-## Sección 88: Chapter 11. Representation Learning and Embeddings
+## Sección 88: Chapter 11. Representation Learning and Embeddings [Entropy: 0.367]
 
 from sentence_transformers import SentenceTransformer , util 
  model = SentenceTransformer ( 'all-mpnet-base-v2' ) 
@@ -10060,7 +10029,7 @@ Datasets can also be composed of sentence pairs, where the sentences could repre
 
 ---
 
-## Sección 89: Chapter 11. Representation Learning and Embeddings
+## Sección 89: Chapter 11. Representation Learning and Embeddings [Entropy: 0.568]
 
 Training datasets can be as small as a few thousand examples, to billions of tokens when used for domain adaptation .
 
@@ -10182,7 +10151,7 @@ A dizzying number of embedding models are available these days. Which one should
 
 ---
 
-## Sección 90: Chapter 11. Representation Learning and Embeddings
+## Sección 90: Chapter 11. Representation Learning and Embeddings [Entropy: 0.508]
 
 Check out the current leaderboard , which is updated regularly. While there is no clear winner across all tasks, you can see that larger models generally perform better, and not much separates the first 50 or even 100 models. Recall our discussion in Chapter 5 on the limitations of public benchmarks, so do not rely too much on MTEB rankings. Your final decision on embedding model choice should balance your application-specific needs, pricing, latency, and performance tradeoffs.
 
@@ -10265,7 +10234,7 @@ A simple way to convert a four-byte vector to a one-bit vector is to assign a va
 
 ---
 
-## Sección 91: Chapter 11. Representation Learning and Embeddings
+## Sección 91: Chapter 11. Representation Learning and Embeddings [Entropy: 0.367]
 
 Another advantage with using binary embeddings is that computing similarity only needs simple bitwise operations, thus vastly speeding up retrieval. However, quantization negatively affects performance.
 
@@ -10340,7 +10309,7 @@ Overall, effective document parsing (extracting section and subsection boundarie
 
 ---
 
-## Sección 92: Chapter 11. Representation Learning and Embeddings
+## Sección 92: Chapter 11. Representation Learning and Embeddings [Entropy: 0.28]
 
 Consider a scenario where a document corpus has been broken down into units represented by embeddings. For a given user query, we can calculate the cosine similarity between the user query vector and each of the document vectors. The chunks 
  corresponding to the most similar vectors are then retrieved. This ensures that the embedding matching happens at a lower granularity, like a sentence, but the model receives the entirety of the chunk the sentence belongs to, thus providing sufficient background context to the model.
@@ -10418,7 +10387,7 @@ These are unsolved problems and are the cause of a sizable proportion of RAG fai
 
 ---
 
-## Sección 93: Chapter 11. Representation Learning and Embeddings
+## Sección 93: Chapter 11. Representation Learning and Embeddings [Entropy: 0.515]
 
 Late Chunking
 
@@ -10519,7 +10488,7 @@ In his Prism project , Linus Lee uses SAEs to explore the features of a T5-based
 
 ---
 
-## Sección 94: Chapter 11. Representation Learning and Embeddings
+## Sección 94: Chapter 11. Representation Learning and Embeddings [Entropy: 0.25]
 
 Some of the identified features include:
 
@@ -10562,7 +10531,7 @@ In the next chapter, we will explore RAG, an application paradigm that is by far
 
 ---
 
-## Sección 95: Chapter 12. Retrieval-Augmented Generation
+## Sección 95: Chapter 12. Retrieval-Augmented Generation [Entropy: 0.28]
 
 In Chapter 10 , we demonstrated how to vastly expand the capabilities of LLMs by interfacing them with external data and software. In Chapter 11 , we introduced the concept of embedding-based retrieval, a foundational technique for retrieving relevant data from data stores in response to queries. Armed with this knowledge, let’s explore the application paradigm of augmenting LLMs with external data, called retrieval-augmented generation (RAG), in a holistic fashion.
 
@@ -10642,7 +10611,7 @@ As described in Chapter 10 , LLMs can invoke software tools as part of their wo
 
 ---
 
-## Sección 96: Chapter 12. Retrieval-Augmented Generation
+## Sección 96: Chapter 12. Retrieval-Augmented Generation [Entropy: 0.25]
 
 Deciding When to Retrieve
 
@@ -10707,7 +10676,7 @@ Let’s illustrate with an example. Consider a RAG application that answers ques
 
 ---
 
-## Sección 97: Chapter 11 .
+## Sección 97: Chapter 11 . [Entropy: 0.283]
 
 When a user issues a query , we might want to rephrase it before sending it to the retriever. Traditionally in the field of information retrieval (IR), this is referred to as query expansion . Query expansion is especially useful because of the vocabulary mismatch between the query space and the document space. The user might use different terminology in the query than that used in the documents. Rephrasing a query can help bridge the vocabulary gap. In general, we would like to rephrase the query in such a way that it improves the chances of the retriever fetching the most relevant documents. This stage is called the rewrite stage.
 
@@ -10757,7 +10726,7 @@ Let’s see how PRF would help with our query, ‘‘Which politicians have comp
 
 ---
 
-## Sección 98: Chapter 11 .
+## Sección 98: Chapter 11 . [Entropy: 0.295]
 
 “Senator Paxton: ‘I just can’t stand the sight of our enormous deficit!’” being retrieved successfully.
  
@@ -10842,7 +10811,7 @@ The retrieve step is the most crucial stage of the RAG pipeline. It is easy to s
 
 ---
 
-## Sección 99: Chapter 11 .
+## Sección 99: Chapter 11 . [Entropy: 0.316]
 
 Embedding-based retrieval, which we discussed in detail in Chapter 11 , is highly popular. However, traditional information-retrieval techniques should not be dismissed. The right technique to use depends on the expected nature of queries (can a significant proportion of them be answered by just keyword or regex match?), the expected degree of query-document vocabulary mismatch, latency and compute limitations, and performance requirements.
 
@@ -10942,7 +10911,7 @@ As seen in Chapter 11 , in embedding-based retrieval , the embedding model is t
 
 ---
 
-## Sección 100: Chapter 11 .
+## Sección 100: Chapter 11 . [Entropy: 0.433]
 
 In contrast, a tightly-coupled retriever is trained such that it learns from LLM feedback; the model learns to retrieve text that best positions the LLM to generate the correct output for a given query. Tightly-coupled retrievers can be trained together with the generator LLM as part of a single architecture, or they can be trained separately using feedback from the trained LLM.
 
@@ -11034,7 +11003,7 @@ In ColBERT, the query and documents are encoded separately using BERT, generatin
 
 ---
 
-## Sección 101: Chapter 11 .
+## Sección 101: Chapter 11 . [Entropy: 0.349]
 
 Exercise
 
@@ -11161,7 +11130,7 @@ Summarization is useful if the retrieval chunks are relatively large. It can be 
 
 ---
 
-## Sección 102: Chapter 11 .
+## Sección 102: Chapter 11 . [Entropy: 0.25]
 
 Note 
 
@@ -11245,7 +11214,7 @@ While the first text says Kim Campbell became the prime minister in 1993, it is 
 
 ---
 
-## Sección 103: Chapter 11 .
+## Sección 103: Chapter 11 . [Entropy: 0.28]
 
 The corresponding note generated by the model is the following:
 
@@ -11365,7 +11334,7 @@ How do we decide when to stop generating and start a new retrieval step? We coul
 
 ---
 
-## Sección 104: Chapter 11 .
+## Sección 104: Chapter 11 . [Entropy: 0.25]
 
 Retrieve after every N tokens are generated.
 
@@ -11485,7 +11454,7 @@ being directly accessible to a processor, and higher levels of the hierarchy con
 
 ---
 
-## Sección 105: Chapter 11 .
+## Sección 105: Chapter 11 . [Entropy: 0.283]
 
 This is a very simplified explanation of OS memory management. For a more detailed explanation, check out Tony’s “Operating System — Hierarchy of Memory” .
 
@@ -11595,7 +11564,7 @@ Sometimes the knowledge captured in the LLM’s internal representations can be 
 
 ---
 
-## Sección 106: Chapter 11 .
+## Sección 106: Chapter 11 . [Entropy: 0.25]
 
 Liu et al. introduced a benchmark called Robustness against External CounterfactuAL knowLedge (RECALL) . This benchmark tests the robustness of LLMs in the presence of counterfactual information in the prompt. Liu et al. note there is some evidence that when LLMs are fed information that is logically inconsistent, they tend to rely on their internal representations more. However, if the inconsistency is more factual, then the models tend to prefer the information in the prompts.
 
@@ -11653,7 +11622,7 @@ Take the Canadian parliamentary discussions dataset and fine-tune any open sourc
 
 ---
 
-## Sección 107: Chapter 11 .
+## Sección 107: Chapter 11 . [Entropy: 0.25]
 
 Performing this exercise will underscore the advantages of RAG over fine-tuning for knowledge-intensive tasks.
 
@@ -11686,7 +11655,7 @@ In the final chapter, we will explore how we can utilize all the concepts we lea
 
 ---
 
-## Sección 108: Chapter 13. Design Patterns and System Architecture
+## Sección 108: Chapter 13. Design Patterns and System Architecture [Entropy: 0.265]
 
 Throughout this book, we have explored a variety of techniques to adapt LLMs to solve our tasks, including in-context learning, fine-tuning, RAG, and tool use. While these techniques can potentially be successful in satisfying the performance requirements of your use case, deploying an LLM-based application in production requires adherence to a variety of other criteria like cost, latency, and reliability. To achieve these goals, an LLM application needs a lot of software scaffolding and specialized components.
 
@@ -11787,7 +11756,7 @@ Compare the different confidence assessment strategies for decoder models. Test 
 
 ---
 
-## Sección 109: Chapter 13. Design Patterns and System Architecture
+## Sección 109: Chapter 13. Design Patterns and System Architecture [Entropy: 0.541]
 
 An alternative to using cascades is using a router scheme .
 
@@ -11899,7 +11868,7 @@ The docstring, with a more detailed description of the task
 
 ---
 
-## Sección 110: Chapter 13. Design Patterns and System Architecture
+## Sección 110: Chapter 13. Design Patterns and System Architecture [Entropy: 0.349]
 
 The input field, with details on any input constraints
 
@@ -12067,7 +12036,7 @@ The views expressed in this work are those of the author and do not represent th
 
 ---
 
-## Sección 111: Chapter 13. Design Patterns and System Architecture
+## Sección 111: Chapter 13. Design Patterns and System Architecture [Entropy: 0.25]
 
 This work is part of a collaboration between O’Reilly and Mission Cloud. See our statement of editorial independence .
 
@@ -12174,7 +12143,7 @@ To The Legend, Kusuma Pai, for showing me how to dream
 
 ---
 
-## Sección 112: Part I. LLM Ingredients
+## Sección 112: Part I. LLM Ingredients [Entropy: 0.25]
 
 We begin this book by introducing large language models (LLMs) and the key ingredients that go into making them. This includes understanding how training data is collected and prepared, examining the model’s vocabulary, and exploring the architectures underpinning them.
 
@@ -12189,7 +12158,7 @@ We begin this book by introducing large language models (LLMs) and the key ingre
 
 ---
 
-## Sección 113: Part II. Utilizing LLMs
+## Sección 113: Part II. Utilizing LLMs [Entropy: 0.25]
 
 In this part of the book, we will explore how to harness and adapt pre-trained LLMs to solve various kinds of language tasks that we introduced in Chapter 1 . To make the best use of these chapters, I strongly suggest that you experiment hands-on with all the techniques introduced, as well as run the corresponding tutorials from the accompanying GitHub repo for this book.
 
@@ -12204,7 +12173,7 @@ In this part of the book, we will explore how to harness and adapt pre-trained L
 
 ---
 
-## Sección 114: Part III. LLM Application Paradigms
+## Sección 114: Part III. LLM Application Paradigms [Entropy: 0.25]
 
 In this part of the book, we shift our focus to the application layer. Until now, we have explored LLMs as standalone concepts, but we will now examine how they integrate into larger software systems. To this end, we will delve into popular application paradigms such as retrieval-augmented generation (RAG) and agents.
 
@@ -12277,7 +12246,7 @@ How to Read the Book
 
 ---
 
-## Sección 115: Part III. LLM Application Paradigms
+## Sección 115: Part III. LLM Application Paradigms [Entropy: 0.265]
 
 The best way to consume this book is to read it sequentially, while working on the exercises and exploring the reference links. That said, there are a few alternative paths, depending on your interests:
 
@@ -12434,7 +12403,7 @@ I am thankful to the Toronto AI ecosystem, especially the Aggregate Intellect, T
 
 ---
 
-## Sección 116: Part III. LLM Application Paradigms
+## Sección 116: Part III. LLM Application Paradigms [Entropy: 0.25]
 
 Writing a book while also being the cofounder of an AI startup was possible only due to the unwavering support of my partner in business and crime, Kris Bennatti (who also convinced me to remove the word “orifice” from the book). I will forever be in gratitude to the entire Hudson Labs team for their steadfast and consistent backing throughout, with a special shout out to Xiao Quan, whose steady hands ensured that I found the time to focus on the book. Additionally, I would like to thank my friends Kaaveh Shoamanesh, Abdullah Al-hayali, Zach Nguyen, Samarth Bhasin, Sadegh Raeisi, and Ian Yu for their moral support throughout and regularly checking that I was getting the right amount of sleep.
 

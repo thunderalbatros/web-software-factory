@@ -1,90 +1,17 @@
-﻿# 📚 Libro Completo: Game Feel: A Game Designer's Guide to Virtual Sensation
+# 📚 Libro Completo: Game Feel: A Game Designer’s Guide to Virtual Sensation
 
-**Alcance:** Fuente bibliográfica completa sobre Interactividad en Tiempo Real, Respuesta Táctil/Visual, Física de Control y Pulido ("Juice") (Game Feel: A Game Designer's Guide to Virtual Sensation — Steve Swink). Aplicable a la Software Factory Web y client-portal. NO sustituye los contratos de API de RealtimeHub ni las reglas específicas de negocio en `CANON_*`.
+**Alcance:** Fuente bibliográfica completa sobre 60-FPS Interactive Polish, Input Response, Juice & Physical Simulation (Game Feel: A Game Designer’s Guide to Virtual Sensation — Steve Swink). Aplicable a Web Software Factory y Enterprise Web App. NO sustituye los contratos de negocio ni las reglas inmutables en `CANON_*`.
 
 > **Autor:** Steve Swink  
-> **Dominio:** Interactividad en Tiempo Real, Respuesta Táctil/Visual, Física de Control y Pulido ("Juice")  
-> **Archivo Fuente:** `2-game-feel.pdf`  
-> **Páginas Originales:** 377  
-> **Secciones Extraídas:** 49  
-> **Fecha de Ingesta:** 2026-10-19  
+> **Dominio:** 60-FPS Interactive Polish, Input Response, Juice & Physical Simulation  
+> **Archivo Fuente:** `Game Feel A Game Designers Guide to Virtual Sensation - Steve Swink.pdf`  
+> **Páginas Originales:** 377 (100% Ingerido, Cero Truncamiento)  
+> **Secciones Técnicas Extraídas:** 9 (Entropía Técnica Media: 0.372)  
+> **Fecha de Ingesta:** 2026-10-26
 
 ---
 
-## Sección 1: Foundations & Introduction
-
--- 1 of 377 --
-
-Game Feel
-
--- 2 of 377 --
-
-Morgan Kaufmann Game Design Books
-Better Game Characters by Design (9781558609211)
-Katherine Isbister
-Game Design Workshop, Second Edition (9780240809748)
-Tracy Fullerton
-The Art of Game Design (9780123694966)
-Jesse Schell
-Game Usability (9780123744470)
-Katherine Isbister & Noah Schaffer (Eds.)
-Game Feel (9780123743282)
-Steve Swink
-
--- 3 of 377 --
-
-Game Feel
-A Game Designer’s Guide to
-Virtual Sensation
-Steve Swink
-AMSTERDAM • BOSTON • HEIDELBERG • LONDON
-NEW YORK • OXFORD • PARIS • SAN DIEGO
-SAN FRANCISCO • SINGAPORE • SYDNEY • TOKYO
-Morgan Kaufmann Publishers is an imprint of Elsevier
-
--- 4 of 377 --
-
-Morgan Kaufmann Publishers is an imprint of Elsevier.
-30 Corporate Drive, Suite 400, Burlington, MA 01803, USA
-This book is printed on acid-free paper.
-© 2009 Elsevier, Inc. All rights reserved.
-Designations used by companies to distinguish their products are often claimed as trademarks or
-registered trademarks. In all instances in which Morgan Kaufmann Publishers is aware of a claim, the
-product names appear in initial capital or all capital letters. Readers, however, should contact the
-appropriate companies for more complete information regarding trademarks and registration.
-No part of this publication may be reproduced, stored in a retrieval system, or transmitted in any form or
-by any means—electronic, mechanical, photocopying, scanning, or otherwise—without prior written
-permission of the publisher.
-Permissions may be sought directly from Elsevier’s Science & Technology Rights Department in Oxford,
-UK: phone: (44) 1865 843830, fax: (44) 1865 853333, E-mail: permissions@elsevier.com.
-You may also complete your request online via the Elsevier homepage (http://elsevier.com), by selecting
-“Support & Contact” then “Copyright and Permission” and then “Obtaining Permissions.”
-Library of Congress Cataloging-in-Publication Data
-Swink, Steve.
-Game feel: a game designer’s guide to virtual sensation/Steve Swink.
-p. cm.
-Includes index.
-ISBN 978-0-12-374328-2 (pbk. : alk. paper) 1. Computer games—Programming. 2. Computer
-games—Design. 3. Human-computer interaction.
-I. Title.
-QA76.9.H85S935 2009
-794.8’1526—dc22 2008035742
-ISBN: 978-0-12-374328-2
-For information on all Morgan Kaufmann publications,
-visit our Web site at www.mkp.com or www.books.elsevier.com
-Printed in the United States of America
-08 09 10 11 12 13 10 9 8 7 6 5 4 3 2 1
-
--- 5 of 377 --
-
-Dedication
-For people who struggle and make beautiful things
-
--- 6 of 377 --
-
-This page intentionally left blank
-
--- 7 of 377 --
+## Sección 1: Core Concepts & Foundations [Entropy: 0.25]
 
 vii
 TABLE OF CONTENTS
@@ -103,9 +30,6 @@ Introduction....................................................................
 10. Metaphor Metrics.................................................................................................................................171
 11. Rules Metrics ..........................................................................................................................................179
 12. Asteroids..................................................................................................................................................187
-
--- 8 of 377 --
-
 viii
 13. Super Mario Brothers..........................................................................................................................201
 14. Bionic Commando...............................................................................................................................229
@@ -116,13 +40,6 @@ viii
 19. The Future of Game Feel ..................................................................................................................321
 Index ............................................................................................................................................................345
 TABLE OF CONTENTS
-
----
-
-## Sección 2: Foundations & Introduction
-
--- 9 of 377 --
-
 ixix
 ACKNOWLEDGMENTS
 I would like to thank the following people.
@@ -159,9 +76,6 @@ importance of sound and its role in game feel. I hope I can someday be half as g
 a game designer as you are.
 Ben Ruiz, for making me laugh and smile always. You provide a constant
 reminder why we do what we do.
-
--- 10 of 377 --
-
 ACKNOWLEDGMENTS
 x
 Jon Blow, for inspiring everyone to make better games and for teaching me about
@@ -171,9 +85,6 @@ time to talk to me about how.
 Chaim Gingold, for making brilliant things and for taking the time to talk to me
 about how.
 Katherine Isbister, for the encouragement and opportunity to write a book.
-
--- 11 of 377 --
-
 xixi
 ABOUT THE AUTHOR
 Steve Swink is an independent game developer, author and lecturer currently
@@ -184,11 +95,9 @@ retail game mines at Neversoft and the now-defunct Tremor Entertainment. He also
 co-chairs the Independent Games Festival, is an IGDA Phoenix chapter coordinator, and teaches the game and level design classes at the Art Institute of Phoenix.
 He sometimes forgets the importance of sleeping every night, not just some.
 
--- 12 of 377 --
+---
 
-This page intentionally left blank
-
--- 13 of 377 --
+## Sección 2: Core Concepts & Foundations [Entropy: 0.265]
 
 xiii xiii
 William Higinbotham’s Tennis (1958) is also a contender, but Spacewar! was the first to have something approximating modern game structure—rounds, scoring and so on.
@@ -220,13 +129,6 @@ exhausting hours of valuable computing time on endless rounds of Steve Russell�
 creation. Even today, as a product of a video game culture, having played hundreds
 of games, it feels great to me to steer the little rockets, fire off missiles and avoid
 black holes. Game feel has been with us since the beginning.
-
----
-
-## Sección 3: Foundations & Introduction
-
--- 14 of 377 --
-
 INTRODUCTION
 xiv
 It may be easy to bring to mind, but game feel is difficult to understand. Games
@@ -265,9 +167,6 @@ controls that feel good. We shouldn’t have to start from scratch every time.
 This book constructs a foundation of understanding and then builds on it,
 addressing at each step a particular gap in the knowledge base about game design.
 Figure I.1 shows the structure and flow of the book’s topics.
-
--- 15 of 377 --
-
 xv
 www.game-feel.com
 To get the most out of reading Game Feel, I recommend going to www.game-feel.com,
@@ -290,9 +189,6 @@ great way to illustrate the complexities of making good-feeling games without fo
 INTRODUCTION
 Which, by the way, I’d love to hear about. Email me at sswink@flashbangstudios.com.
 F I G U R E I.1 The structure and flow of the book.
-
--- 16 of 377 --
-
 INTRODUCTION
 xvi
 however, will probably be the principles of game feel chapter, which lays out some
@@ -329,13 +225,6 @@ designer can change. By measuring each piece—input, response, context, polish,
 metaphor and rules—we can make generalizations about what terms like floaty,
 tight, smooth, responsive and loose mean. Not only in a particular game, but across
 different games. Once we can measure game feel, we can master it.
-
----
-
-## Sección 4: Foundations & Introduction
-
--- 17 of 377 --
-
 xvii
 Practical Examples
 The metrics we developed in Section II are applied to specific games, providing
@@ -355,11 +244,10 @@ game feel will be used in the future. With deep, expressive interactivity, can w
 deeply personal expression like dance or martial arts?
 INTRODUCTION
 
--- 18 of 377 --
+---
 
-This page intentionally left blank
+## Sección 3: Core Concepts & Foundations [Entropy: 0.34]
 
--- 19 of 377 --
 CHAPTER
 Defining Game Feel
 There is no standard definition of game feel. As players and game designers, we
@@ -394,9 +282,6 @@ Game feel is the same way. Without close examination, we know what it is. Try
 to define it and the explanation quickly unravels into best practices and personal
 experiences.
 ONE
-
--- 20 of 377 --
-
 CHAPTER ONE • DEFINING GAME FEEL
 This book is about how to make good-feeling games. But first we need to be
 clear about what game feel is. We need to separate medium from content. We need
@@ -420,8 +305,6 @@ compare to the original intent, and formulates a new action, which is expressed 
 the computer through another input.
 F I G U R E 1.1 Interactivity involves the exchange of information and action between at least
 two participants.
-
--- 21 of 377 --
 In his book, Chris Crawford on Game Design, game designer Chris Crawford
 likens this process to a conversation, a “cyclic process in which two active agents
 alternately (and metaphorically) listen, think and speak.”
@@ -438,13 +321,6 @@ fit all situations. Real-time control is not like a conversation. It’s more li
 wheel in the corresponding direction, using what he sees, hears and feels to make
 small corrections until the turn is complete. The process is nearly instantaneous.
 The “conversation” takes place in minute increments, below the level of consciousness, in an uninterrupted flow of command. The result of input feels as though it is
-
----
-
-## Sección 5: Foundations & Introduction
-
--- 22 of 377 --
-
 CHAPTER ONE • DEFINING GAME FEEL
 perceived in the same moment it’s expressed. This is the basis of game feel: precise,
 continuous control over a moving avatar.
@@ -466,9 +342,6 @@ Simulated space refers to simulated physical interactions in virtual space, perc
 actively by the player. This means collision detection and response between a realtime controlled avatar and objects in a game world. It also means level design—the
 construction and spacing of objects relative to the speed of the avatar’s movements.
 These interactions give meaning to the motion of an avatar by providing objects
-
--- 23 of 377 --
-
 THE THREE BUILDING BLOCKS OF GAME FEEL
 to move around and between, to bump into, and to use as a frame of reference for
 the impression of speed. This gives us the tactile, physical sense of interacting with
@@ -504,9 +377,6 @@ weighty impact, or a keyframed animation that makes a character seem to squash
 and stretch as it moves. Polish effects add appeal and emphasize the physical nature
 of interactions, helping designers sell those objects to the player as real. This is
 separate from interactions such as collisions, which feed back into the underlying
-
--- 24 of 377 --
-
 CHAPTER ONE • DEFINING GAME FEEL
 simulation. For example, if you take away the animations from Street Fighter II, you
 end up with something like Figure 1.4.
@@ -534,15 +404,8 @@ The question that naturally follows is “Does game X have game feel?” With ou
 basic definition, we can classify most games this way. For example, Sonic the
 Hedgehog has game feel while Civilization 4 does not. Sonic has real-time control
 while Civ 4 is turn based, placing it outside our definition. But to say that Civ 4 has
-http://www.gamedev.net/community/forums/topic.asp?topic_id401276
+http://www.gamedev.net/community/forums/topic.asp?topic_id 401276
 F I G U R E 1.4 Street Fighter II without animation: just weird fighting boxes.
-
----
-
-## Sección 6: Foundations & Introduction
-
--- 25 of 377 --
-
 THE THREE BUILDING BLOCKS OF GAME FEEL
 no feel whatsoever seems wrong. It has polish effects—animations, sounds and particles—and these alter the feel of interacting with the game, especially when things
 are clicked and when armies clash.
@@ -559,9 +422,6 @@ without polish effects, but you can play example CH01-3 to get a sense of what
 this feels like (press the “2” key once you’ve opened the game).
 3. This is pure aesthetic sensation of control. There is polished real-time control,
 but no substance to the interactions. This feels weird. With sounds and particles
-
--- 26 of 377 --
-
 CHAPTER ONE • DEFINING GAME FEEL
 but no simulated interaction, it’s like seeing behind the curtain. There’s a dissonance for the player. The particle effects and sounds convey some impression of
 a physical reality, but there’s a mismatch between the motion of the object and
@@ -584,9 +444,6 @@ a lot of meaning or appeal without simulation and polish.)
 freeware game Bridge Builder. There is a physical simulation driving the motion
 of the objects, but is perceived passively.
 F I G U R E 1.6 The intersection of the building blocks creates a wide range of levels of game feel.
-
--- 27 of 377 --
-
 THE THREE BUILDING BLOCKS OF GAME FEEL
 7. Finally, there is naked polish. Games like Civilization 4 and Bejeweled use polish
 effects this way, without real-time control or spatial simulation.2 In these games,
@@ -625,19 +482,12 @@ is this actively perceived by the player? Does it feel like navigating an everyd
 Actually, both of these games make use of a mouse cursor, which is a form of real-time control. In
 these cases, though, the cursor is intended to be a transparent interface to the interesting choices in the
 game. The usage is more like using Web page than playing Cursor Attack.
-
----
-
-## Sección 7: Foundations & Introduction
-
--- 28 of 377 --
-
 CHAPTER ONE • DEFINING GAME FEEL
 physical space? We’ll delve deeper into real-time control and simulated space in
 
 ---
 
-## Sección 8: Chapter 2 to answer these questions.
+## Sección 4: Chapter 2 to answer these questions. [Entropy: 0.34]
 
 So what can we do with this definition and the three building blocks of game
 feel? To answer that question, let’s now shift focus back to content, to expression
@@ -671,8 +521,6 @@ The Pleasure of Learning, Practicing and Mastering a Skill
 A few years later, when I played Super Mario Brothers for the first time, I was super-inept.
 I was playing with friends from down the block who were older and more coordinated
 and could afford their own Nintendo. My turn was short, blustering and red-faced.
-
--- 29 of 377 --
 However, before I had to hand off the controller, I had the sense that even the smallest
 motion could produce a long chain of interesting events and feel intensely rewarding.
 Smash a block with your head and it jiggles and makes a silly little noise. Hit an
@@ -710,9 +558,6 @@ swore viciously. I pulled my hands off the steering wheel as though it were scal
 A now defunct but once totally sweet arcade in Cupertino, Calif. You got eight tokens on the dollar, all
 the games were two tokens or less to play, and they had four-player air hockey.
 EXPERIENCES OF GAME FEEL
-
--- 30 of 377 --
-
 CHAPTER ONE • DEFINING GAME FEEL
 the feeling as the car ground to a halt. It was as though I’d stubbed my toe in a
 big, expensive, metal-rending way. Interestingly, I didn’t think “Oh, darn, the car
@@ -751,12 +596,6 @@ includes the clumsiness of unfamiliar controls, the triumph of overcoming challe
 and the joy of mastery. Viewing game feel as a skill explains how and why players
 experience the controls of a game differently as their skill level increases, what “intuitive controls” means, and why some control schemes are easier to learn than others.
 When temporarily immobilized and grabbed by the tail, of course.
-
----
-
-## Sección 9: Chapter 2 to answer these questions.
-
--- 31 of 377 --
 The everyday analogy is learning a new skill, whether it’s driving a car, juggling or
 slicing carrots.
 Skillful control can also lead to the feeling of being in the zone, being one with
@@ -786,9 +625,6 @@ experience of game feel as a unique physical reality, as a game world with its o
 designer-created laws of physics. Figure 1.7 shows the whole thing put together.
 F I G U R E 1.7 How building blocks of game feel translate into experiences.
 EXPERIENCES OF GAME FEEL
-
--- 32 of 377 --
-
 CHAPTER ONE • DEFINING GAME FEEL
 Creating Game Feel
 For the remainder of the chapter, let’s explore each of these different experiences in
@@ -808,8 +644,6 @@ When a game designer sits down to create a game and has an idea for a particular
 potential is in the relationships. When a button gets pressed, is the response gradual
 or immediate? Does the avatar move forward relative to the screen or relative to
 F I G U R E 1.8 The aesthetic sensation of control.
-
--- 33 of 377 --
 itself? Or does it rotate rather than move? How fast does it move forward relative to
 its rotation? With the right relationships between input and response, controlling
 something in a game can achieve a kind of lyric beauty. The flip side is jarring, nauseating or otherwise aesthetically unappealing motion resulting from player input.
@@ -840,15 +674,8 @@ challenge can be mastered. If your goal is to dribble past one defender and make
 a deft pass to an open teammate, your odds of achieving that are relatively good.
 While this may not be the glowing level of pleasure you’d get from scoring the goal
 yourself, there are great feelings to be had from small, incremental victories. Even a
-particularly skillful RealtimeHub or dribble while practicing in the backyard can feel wonderful because you know it can be later applied in the context of a soccer game. Soccer
+particularly skillful kick or dribble while practicing in the backyard can feel wonderful because you know it can be later applied in the context of a soccer game. Soccer
 CREATING GAME FEEL
-
----
-
-## Sección 10: Chapter 2 to answer these questions.
-
--- 34 of 377 --
-
 CHAPTER ONE • DEFINING GAME FEEL
 is a set of challenges so compelling that isolating and practicing the skills seems
 worthwhile even outside the context of the game.
@@ -886,8 +713,6 @@ best sensations of control. Controlled motion is pleasurable, but that pleasure 
 fleeting. Even if the game feels great, aimlessly controlling something gets boring
 quickly (Figure 1.9).
 Part of the problem is that if the aesthetic pleasure of control is the only encouragement, the player will experience just a small subset of the possible motions. If we
-
--- 35 of 377 --
 again imagine every possible motion of a mapping as a possibility space, the area
 explored by a player will be limited, as in Figure 1.10.
 However, with a specific goal to pursue, control takes on new meaning. Aimless,
@@ -905,9 +730,6 @@ F I G U R E 1.9 Without focus, the joy of control can become boring.
 F I G U R E 1.10 Players only experience as much of a game’s feel as the area of this space they
 feel inclined to explore.
 CREATING GAME FEEL
-
--- 36 of 377 --
-
 CHAPTER ONE • DEFINING GAME FEEL
 Challenges not only encourage exploration of all possible motions, but assign
 new meaning to them. This changes the feel of control. For example, think of a
@@ -939,12 +761,6 @@ player to make extremely precise, specific motions like Cursor Attack, or is it 
 wide open like Banjo Kazooie? How fast do the characters move, how far apart are
 F I G U R E 1.11 With challenges, there is a reason to explore more of the possible sensations
 of a particular mapping.
-
----
-
-## Sección 11: Chapter 2 to answer these questions.
-
--- 37 of 377 --
 the objects they’re being asked to move in reference to, and are they meant to avoid
 them, collect them or touch them lightly? This is much of the art of game design as
 it pertains to game feel: what the players are supposed to do is as important as the
@@ -964,9 +780,6 @@ particular motions, which changes the feel of control.
 F I G U R E 1.12 Challenges give meaning to motion, enabling sensations of control to sustain
 engagement across a whole game.
 CREATING GAME FEEL
-
--- 38 of 377 --
-
 CHAPTER ONE • DEFINING GAME FEEL
 These two tools, constraints and goals, enable game designers to shape real-time
 control into a specific feel. Goals emphasize certain parts of the possible motion
@@ -990,8 +803,6 @@ into game reality. Each player will start at a slightly different skill level de
 on past experience and natural aptitude, will learn at a different rate and will attain
 different heights of skill depending on how much her or she practices. This means
 F I G U R E 1.13 A goal trickles down to become different layers of intent.
-
--- 39 of 377 --
 that even for a single player, the feel of a game will change over time. This variability makes the feel of even a single game controversial. The argument goes like this:
 Internet Denizen 1: “Whenever I think of what the perfect ‘feel’ for a game is,
 I think of Super Mario 64. Other than the camera, the controls were perfect.”
@@ -1032,13 +843,6 @@ and breaks through, completing the current goal. Without the oppressive feeling
 of clumsiness, the aesthetic sensations of control come to the forefront, combining
 with the satisfaction of a challenge overcome to provide a reward for reaching this
 CREATING GAME FEEL
-
----
-
-## Sección 12: Chapter 2 to answer these questions.
-
--- 40 of 377 --
-
 CHAPTER ONE • DEFINING GAME FEEL
 level of skill. Then the next challenge is introduced and the cycle starts again. The
 clumsy feel of being unskilled relative to the challenges provided once again overwhelms the aesthetic pleasure of control.
@@ -1060,8 +864,6 @@ best possible sensations of control while maintaining a balance of skill and cha
 have fulfilled the designer’s goal for the best possible game feel.
 F I G U R E 1.14 The cycle of skill and game feel. As the player’s perceieved level of skill
 changes, so does the feel of control.
-
--- 41 of 377 --
 For this to work, however, players must never get so bored or frustrated that they
 stop playing. If this delicate balance between player skill and game challenge is perfectly maintained, players will enter the flow state.
 Flow theory says that when a challenge you undertake is very close in difficulty
@@ -1088,14 +890,11 @@ work on flow, Beyond Boredom and Anxiety.
 F I G U R E 1.15 The flow state: when challenge and skill are balanced for maximum player
 engagement.
 CREATING GAME FEEL
-
--- 42 of 377 --
-
 CHAPTER ONE • DEFINING GAME FEEL
 sensations of control change. A professional Counter-Strike player, like a professional soccer player, feels the game differently.
 Intuitive Controls
 Unlike real life, players may begin to feel that the controls are not accurately translating their intentions into the game. This is another place where game skills are slightly
-different from real-world skills. In real life, if you try to RealtimeHub a ball and completely
+different from real-world skills. In real life, if you try to kick a ball and completely
 whiff it, you’ve no one to blame but yourself. In a game, the blame can actually lie
 with the game designer.
 What’s important is the player’s perception: is the inability to translate intent into
@@ -1126,12 +925,6 @@ all else. While this may cause consternation among parents, educators and career
 The screen becomes the player’s surrogate visual sense. Instead of looking around
 and seeing a TV, a couch and their hands on a controller, players look through the
 screen into the game world. When players sit and stare, they are not catatonic.
-
----
-
-## Sección 13: Chapter 2 to answer these questions.
-
--- 43 of 377 --
 Rather, they’ve substituted their visual sense for one in the game world, extending it
 outward to a new place. They’re looking around, keenly aware of their surroundings
 in the game. This is because an avatar in a video game is a kind of tool; it provides
@@ -1171,9 +964,6 @@ eyes, hear through different ears and touch with a different body.
 From the perspective of the game designer, the most important part is defining camera behavior. The camera is the player’s point of view, the point in the game’s world
 that represents his or her eyes, determining what view of the game world will be displayed on the screen. If the first task of a game designer creating a particular feel is
 CREATING GAME FEEL
-
--- 44 of 377 --
-
 CHAPTER ONE • DEFINING GAME FEEL
 mapping input signals to motion, and the second task is to create a space and
 objects to give that motion a frame of reference, the third task is defining the
@@ -1212,12 +1002,6 @@ the sense that detects body position; weight; or movement of the muscles, tendon
 and joints. To get fancier, we can talk about “proprioception,” which is often used
 interchangeably with kinesthesia. Proprioception has the slightly more precise connotation of being a person’s subconscious awareness of the position of his or her
 own body in space. To understand what proprioception is, close your eyes, extend
-
----
-
-## Sección 14: Chapter 2 to answer these questions.
-
--- 45 of 377 --
 your arm directly out in front of you and touch the ring finger of your right hand
 with your left hand. The sense that enables you to figure out where your finger is in
 space is without using visual or aural feedback is the proprioceptive sense. When a
@@ -1255,9 +1039,6 @@ invented, digital space, we have a significant advantage: we still use our sense
 the position of our bodies to guide us. What a bunch of cheaters!
 For more information, see http://www.apa.org/monitor/jun98/touch.html
 CREATING GAME FEEL
-
--- 46 of 377 --
-
 CHAPTER ONE • DEFINING GAME FEEL
 When you move a mouse, thumbstick or Wiimote, your proprioceptive sense
 is still active. Your thumbs, though their movements are small, are still giving you
@@ -1295,12 +1076,6 @@ avatar is always preferable to the player becoming bored or frustrated and putti
 the game down. It provides a nice release for the player, who avoids blame and
 maintains engagement, getting back to the pleasurable sensations of control more
 quickly.
-
----
-
-## Sección 15: Chapter 2 to answer these questions.
-
--- 47 of 377 --
 The extending of identity also gives a player the sensation of direct physical contact. It’s a muted sensation—getting hit with a rocket in Quake is, one assumes, not
 the sensation of being hit with one in real life—but intimate nonetheless. When I’m
 bumped, jostled, flung or impaled, it feels bad because it’s as though it’s happening
@@ -1334,9 +1109,6 @@ the actual outcome of the book being thrown? Now noodle the book around in your
 hands, feel its weight and heft and thumb quickly through the pages, listening to
 the pleasing sound it makes. What do you notice? A paperback book, like this one,
 CREATING GAME FEEL
-
--- 48 of 377 --
-
 CHAPTER ONE • DEFINING GAME FEEL
 is heavy, floppy and will generally go where you throw it, landing in a heap as the
 pages fan out in the air. Based on your previous experiences with paperback books,
@@ -1379,12 +1151,6 @@ the other hand, one ball deforms, makes a dull thud like a beach ball being kick
 and is flung violently in the other direction at the moment of impact, what can
 you surmise about the ball that was punted? At this point, you must assume that
 one ball is a clever visual forgery of a bowling ball, a beach ball in a bowling ball’s
-
----
-
-## Sección 16: Chapter 2 to answer these questions.
-
--- 49 of 377 --
 clothing. Even though it looks like a bowling ball, the evidence offered by at least
 two other types of feedback, aural and motion, indicate overwhelmingly that it is
 not a true bowling ball.
@@ -1398,9 +1164,6 @@ though it looks like a lightweight Ping-Pong ball, if it can destroy a bowling b
 F I G U R E 1.16 Bowling balls collide and behave normally.
 F I G U R E 1.17 Bowling ball and Ping-Pong ball: who will win?
 CREATING GAME FEEL
-
--- 50 of 377 --
-
 CHAPTER ONE • DEFINING GAME FEEL
 it must be made of something solid and heavy. We strive to resolve the dissonance
 by abandoning the visual cue because motion and sound outweigh it, evidencewise. Likewise, a bowling ball, even if we can’t hear the sound of it, still conveys
@@ -1433,8 +1196,6 @@ virtual objects, simulated space and polish effects—it’s possible to create 
 We further defined great-feeling games as games that convey five different types
 of experience to the player:
 “Andrew Rollings and Ernest Adams on Game Design” (page 59).
-
--- 51 of 377 --
 ● The aesthetic sensation of control
 ● The pleasure of learning, practicing and mastering a skill
 ● Extension of the senses
@@ -1453,11 +1214,10 @@ is at these levels, let us now take a slight detour away from human experience a
 into human perception.
 SUMMARY
 
--- 52 of 377 --
+---
 
-This page intentionally left blank
+## Sección 5: Chapter 2 to answer these questions. [Entropy: 0.515]
 
--- 53 of 377 --
 CHAPTER
 Game Feel and
 Human Perception
@@ -1488,13 +1248,6 @@ On the computer’s side, this creates boundaries. To sustain real-time control,
 the computer must display images at a rate greater than 10 per second, the lower
 boundary for the illusion of motion. The computer must also respond to input
 TWO
-
----
-
-## Sección 17: Chapter 2 to answer these questions.
-
--- 54 of 377 --
-
 CHAPTER TWO • GAME FEEL AND HUMAN PERCEPTION
 within 240 milliseconds (ms), the upper boundary for response time. There’s also
 a threshold for continuity; the game must be ready to accept input and provide
@@ -1511,12 +1264,10 @@ Human Processor,” the collected result of many different studies about human
 reaction and response time. The figure of 240 ms is an amalgam of three different
 measurements, one for perceiving, one for thinking and one for acting. They break
 down as ranges, like so:
-● Perceptual Processor: 100 ms [50–200 ms]
-● Cognitive Processor: 70 ms [30–100 ms]
-● Motor Processor: 70 ms [25–170 ms]
+● Perceptual Processor: 100 ms [50–200 ms]
+● Cognitive Processor: 70 ms [30–100 ms]
+● Motor Processor: 70 ms [25–170 ms]
 F I G U R E 2.1 Interactivity in detail.
-
--- 55 of 377 --
 What’s being measured here is the cycle time of each processor, the time it takes to
 accept one input and produce one output. The variation comes from physiology and
 circumstance. Some people have the capacity to process things more quickly than
@@ -1548,9 +1299,6 @@ The cognitive processor does the thinking. It compares intended result to the cu
 The motor processor receives the intended action and instructs the muscles to
 execute it. After the impulses leave the body as muscle movements, they’re out into
 wild, wooly reality, and the process starts again with sensory perception.
-
--- 56 of 377 --
-
 CHAPTER TWO • GAME FEEL AND HUMAN PERCEPTION
 All of this is happening at step 2 on our chart of interactivity, in the player’s
 mind (Figure 2.3).
@@ -1572,25 +1320,16 @@ space, passing that information on to the cognitive processor. The cognitive pro
 1 http://ocw.mit.edu/NR/rdonlyres/Electrical-Engineering-and-Computer-Science/6-170Fall
 -2005/8B87E671-1B67-4FEF-A655-0ABDF89F4F5A/0/lec16.pdf
 F I G U R E 2.3 The three human processors in the interactivity diagram.
-
--- 57 of 377 --
 thinks about where the hand is relative to where it should be and formulates a new
 plan to correct that motion. The motor processor then takes the new plan and translates it into action. From the moment movement starts to when you have the muffin
 in hand, you run this continuous process of action, perception and thought, increasing precision each time as a factor of distance and size of target (Figure 2.5).
 WHEN AND HOW DOES REAL-TIME CONTROL EXIST?
 F I G U R E 2.4 Intent: grab the delicious muffin.
 F I G U R E 2.5 Grabbing a muffin: an ongoing correction cycle.
-
----
-
-## Sección 18: Chapter 2 to answer these questions.
-
--- 58 of 377 --
-
 CHAPTER TWO • GAME FEEL AND HUMAN PERCEPTION
 F I G U R E 2.6 Correction cycle time: 240 ms.
-Because we know the cycle time of each processor (perceptual  100 ms,
-cognitive  70 ms, motor  70 ms) we know the time for each one of these correction cycles, 240 ms (Figure 2.6).
+Because we know the cycle time of each processor (perceptual 100 ms,
+cognitive 70 ms, motor 70 ms) we know the time for each one of these correction cycles, 240 ms (Figure 2.6).
 Correction cycles are how people are able to track and hit targets with precision,
 steer things, point at things and navigate the physical world successfully. To experience this first hand, check out example CH02-1. Try putting your cursor directly
 over the dots as quickly as possible. You can see the correction cycle in action as
@@ -1605,8 +1344,6 @@ you need to make to the current motion and make the adjustments happen once
 every 240 ms (Figure 2.7).
 The process is the same as when you were reaching across the desk except that this
 correction cycle goes on longer. The muffin on the desk was static and represented
-
--- 59 of 377 --
 WHEN AND HOW DOES REAL-TIME CONTROL EXIST?
 a single target, a single intent. Driving to the store might take 20 minutes, fulfilling
 20 different sub-goals.
@@ -1616,16 +1353,13 @@ trickle down and become individual, moment-to-moment actions. These actions are
 a part of an ongoing correction cycle, where the player perceives the state of the
 game world, contemplates it in some way, and formulates an action intended to
 bring the game state closer to an internalized ideal (Figure 2.8). This happens at the
-same cycle time of 240 ms.
+same cycle time of 240 ms.
 The difference is, at the point where action normally goes out to physical reality, a
 video game substitutes a game world for the real world. It hooks right in there. The
 inputs to the perceptual processor come from the screen, the speakers and the feel
 of the controller. The output, instead of acting on objects in the real world directly,
 acts on the controller, which translates to movements of objects in the game world.
 F I G U R E 2.7 The correction cycle of driving.
-
--- 60 of 377 --
-
 CHAPTER TWO • GAME FEEL AND HUMAN PERCEPTION
 Fitt’s Law
 There is a well-known formula, Fitt’s Law, which can accurately predict how
@@ -1634,14 +1368,12 @@ distance. Fitt’s Law is an unusually successful and well-studied HCI model tha
 has been reproduced and verified across numerous studies. For reference, the
 formula is this:
 F I G U R E 2.8 The correction cycle of real-time control in a video game.
-
--- 61 of 377 --
 where:
-MT  movement time
-a  start/stop time of the device
-b  speed of the device
-D  distance from starting point to target
-W  width of target measured along the axis of motion
+MT movement time
+a start/stop time of the device
+b speed of the device
+D distance from starting point to target
+W width of target measured along the axis of motion
 The original formula predicted how long it would take to reach out and touch
 something of a certain size a certain distance away, as long as it was within
 arm’s length. It was later discovered to be equally applicable to the time it
@@ -1668,13 +1400,10 @@ all these stimuli. If two events happen in the same frame—Mario in one positio
 then Mario slightly to the left—they will appear fused, as a single object in motion
 rather than a series of static images (Figure 2.9). This is perceptual fusion.
 THE COMPUTER SIDE OF THINGS
-
--- 62 of 377 --
-
 CHAPTER TWO • GAME FEEL AND HUMAN PERCEPTION
 From the computer’s side of things, perceptual fusion explains how objects in a
 game appear to move. If the display is updated 10 times per second (100 ms cycle
-time  10 frames per second) this is sufficient for the illusion of motion. This is
+time 10 frames per second) this is sufficient for the illusion of motion. This is
 right at the border, though, and won’t feel very good—20 frames per second (fps) is
 better, and 30 fps is where motion begins to be pleasingly smooth. Most games run
 at 30 fps or higher for this reason. As game developers know, with frame rates that
@@ -1688,24 +1417,18 @@ is true for computer response: if I move a mouse and the cursor seems to react
 immediately, I tend to assume that effect was caused by my action. An extension
 of this is the impression of responsiveness. Professor Miller describes the process:
 “Perceptual fusion also gives an upper bound on good computer response time. If
-a computer responds to a user’s action within [100 ms], its response feels instantaneous with the action itself. Systems with that kind of response time tend to feel
+a computer responds to a user’s action within [ 100 ms], its response feels instantaneous with the action itself. Systems with that kind of response time tend to feel
 like extensions of the user’s body.”
 With reality, there’s never a problem of lag. Response will always be instantaneous. In a game, response will never be instantaneous. Even a game running at
 60 frames per second, a three-frame delay is all but inevitable. Three frames at 60
 frames per second means 50 ms. (You can convert frames per second (fps) to milliseconds if you divide by 60 and multiply by 1000. So 3 frames at 60 fps is 3/6 *
-1000  50 ms.)
+1000 50 ms.)
 Mick West, programmer-designer of the original Tony Hawk mechanic, defines
 this as response lag. “Response lag is the delay between the player triggering an
 event and the player getting feedback (usually visual) that the event has occurred.
 If the delay is too long, then the game will feel unresponsive.”2
 http://cowboyprogramming.com/2008/05/27/programming-responsiveness/
 F I G U R E 2.9 Ten frames per second is the threshold for the illusion of motion.
-
----
-
-## Sección 19: Chapter 2 to answer these questions.
-
--- 63 of 377 --
 Mick notes that games with a response time of 50 to 100 ms typically feel “tight”
 and “responsive” to players. This is because 50 to 100 ms is within one cycle of the
 human perceptual processor. Above this level, a game’s controls begin to feel sluggish. The progression, from responsive to unresponsive, is gradual (Figure 2.10).
@@ -1729,9 +1452,6 @@ The perceptual processor passes information along to the cognitive processor, th
 have been sent out into the world as movements of the muscles, three perceptual
 frames have passed. In real life, this never matters because the response is always
 THE COMPUTER SIDE OF THINGS
-
--- 64 of 377 --
-
 CHAPTER TWO • GAME FEEL AND HUMAN PERCEPTION
 instantaneous. When the motor impulse passes to a game, though, there will always
 be some lag (Figure 2.12).
@@ -1741,8 +1461,6 @@ F I G U R E 2.11 The three processors running concurrently, passing into reality
 zero lag.
 F I G U R E 2.12 The three processors running concurrently, passing into a game and back.
 This time, there is some delay.
-
--- 65 of 377 --
 the player to modulate an input over time, adjusting it incrementally. The steering
 wheel will remain pulled to the left and the car will continue steering to the left
 even though the player adjusts how much it’s turning at 240ms intervals. This is the
@@ -1783,9 +1501,6 @@ building and relates to skills like driving and playing tennis because it requir
 same kind of repetitive practice to master. From n00b to l33t, as it were. Lastly, a
 model for perception for game feel needs to encompass the physical nature of game
 SOME IMPLICATIONS OF PERCEPTION FOR GAME FEEL
-
--- 66 of 377 --
-
 CHAPTER TWO • GAME FEEL AND HUMAN PERCEPTION
 feel. Experiencing game feel is like interacting with a surrogate reality which obeys
 its own rules and which must be understood through interaction and observation.
@@ -1821,12 +1536,6 @@ learn to “see” in a limited way. If they were not allowed to control what th
 The concept that perception requires action has relevance to game feel because it
 accurately describes the sensation of exploring and learning your way around an unfamiliar game space. And it correlates physical reality with virtual reality in a meaningful way: the thing you’re controlling in the game becomes your surrogate body, your
 hands. Humans are adept at learning the physical properties of a new and unfamiliar
-
----
-
-## Sección 20: Chapter 2 to answer these questions.
-
--- 67 of 377 --
 object and do it very quickly. Noodle it around in your hands and you soak up a
 wealth of detail: weight, density, material, texture, color and so on. This same ability
 extends to virtual objects and, interestingly, to virtual worlds governed by different
@@ -1849,9 +1558,6 @@ SOME IMPLICATIONS OF PERCEPTION FOR GAME FEEL
 F I G U R E 2.13 A blind subject with a tactile visual substitution system.
 Near as I can tell, the idea started with Snygg and Combs in 1951 as the “phenomenal field.” Combs
 changed phenomenal field to perceptual field in a later work, so we’ll stick with that. I prefer that anyway, as it’s more descriptive of the concept as it applies to game feel.
-
--- 68 of 377 --
-
 CHAPTER TWO • GAME FEEL AND HUMAN PERCEPTION
 of practice navigating the space around them and developing relationships with the
 things in that space. Snygg and Combs capture the phenomenon of memory, perception and skill building with their concept of the perceptual field.
@@ -1891,8 +1597,6 @@ similar to the way we interact with the real world, we expect the same consisten
 The tiniest thing can break this perceptual immersion.
 http://phenomenalfield.blogspot.com/
 Dr. C. George Boeree, http://webspace.ship.edu/cgboer/snygg& combs.html
-
--- 69 of 377 --
 Unlike a film, which presents one framed perspective on a world and has only to
 maintain visual and aural consistency within that frame, a game has to stand up to
 active perception. The player can freely explore every possible permutation of every
@@ -1938,13 +1642,6 @@ process is almost always much quicker when learning a game skill.
 However we conceptualize it, it is obvious that humans get better at skills they
 practice. And if we consider all perception to be a skill, this handily explains why
 SOME IMPLICATIONS OF PERCEPTION FOR GAME FEEL
-
----
-
-## Sección 21: Chapter 2 to answer these questions.
-
--- 70 of 377 --
-
 CHAPTER TWO • GAME FEEL AND HUMAN PERCEPTION
 game feel seems like such a skill-driven activity, why skill learning is the price of
 admission to experience it. Perception in a game world is just a simplified, modified
@@ -1983,8 +1680,6 @@ isn’t particularly cold, but applied across a long enough time scale, they get
 done. In addition, the timer that governs how long each on state should last functions independent of the controls. That is, it’s always counting down five minutes
 at a time. If you switch the heat on with 30 seconds remaining on its five minute
 cycle, you get 30 seconds of cold air because it takes a while for the heater to warm
-
--- 71 of 377 --
 up and there are only 30 seconds of “on” remaining before the system goes back to
 the off state. (Oh, and the thermostat, evidently, is in the office.)
 Donald Norman would say that my mental model is out of sync with the “system
@@ -1999,9 +1694,6 @@ is far easier to operate because there is a clear, spatial correlation between t
 SOME IMPLICATIONS OF PERCEPTION FOR GAME FEEL
 F I G U R E 2.14 Three configurations offer three different correlations between stove burners
 and controls.
-
--- 72 of 377 --
-
 CHAPTER TWO • GAME FEEL AND HUMAN PERCEPTION
 example of the game Geometry Wars, which tends to be easy for people to pick up
 and play effectively—the movement of the thumbstick corresponds very obviously
@@ -2017,8 +1709,6 @@ For example, it’s extremely important to the success of the game that I feel a
 sense of freedom and adventure while sailing the open seas in the game. I could
 F I G U R E 2.15 The motion of the thumbstick in Geometry Wars offers a simple and clear
 connection to the action taken by the ship.
-
--- 73 of 377 --
 distill that to a system image of my possible actions while sailing, but that would
 miss much of the point; it’s not as important to track exactly how far objects are
 spaced apart or how far I can sail in one direction before hitting something or how
@@ -2059,13 +1749,6 @@ game. Across all my experiences with playing DS games—which are numerous—I
 had never come across a game that used the functional closing and opening of the
 DS’ lid as a button. New Super Mario Brothers says “Goodbye!” in Mario’s voice if
 SOME IMPLICATIONS OF PERCEPTION FOR GAME FEEL
-
----
-
-## Sección 22: Chapter 2 to answer these questions.
-
--- 74 of 377 --
-
 CHAPTER TWO • GAME FEEL AND HUMAN PERCEPTION
 you close the lid of the DS while the game is still on, but that was my only point
 of reference, my only hint in the entirety of my perceptual field. I solved the puzzle
@@ -2084,9 +1767,7 @@ that game world. The dry details are important—they represent the player’s u
 Perception Is a Whole-Body Experience
 Eyes, ears, tactile sense, proprioception—there is no separation when a person
 perceives something.
-F I G U R E 2.16 Closing the DS as an input  unexpected.
-
--- 75 of 377 --
+F I G U R E 2.16 Closing the DS as an input unexpected.
 For example, a fork. It’s shiny and it has a pointy end. It’s cold, hard and solid,
 but easy to pick up. I can eat food with it. It sinks in water. My ideas and perceptions about what that object is, how it behaves and what it means, combine into the
 concept of “fork.” This is my attitude toward forks and generalizations I can apply
@@ -2113,15 +1794,12 @@ The cane now acts just as his hand would; it probes around, touching things, int
 helps him establish a much larger personal space (also sometimes called the “perceptual self”). Quite literally, his perceptual field has been extended to a much larger
 physical area around him. Effectively, he’s made his arm’s reach much greater. We
 might say that by integrating the tool of the cane, he’s changed his world.
-So what does the blind man and his Cane of Reaching 3 teach us about game
+So what does the blind man and his Cane of Reaching 3 teach us about game
 feel? One interesting distinction is between body space and external space. When
 we interact with the world, we perceive our bodies in two ways, as part of our
 self and as one object among the many objects of the external, objective world. As
 Dag Svanaes puts it: “The bodily space is different from the external space in that
 SOME IMPLICATIONS OF PERCEPTION FOR GAME FEEL
-
--- 76 of 377 --
-
 CHAPTER TWO • GAME FEEL AND HUMAN PERCEPTION
 it exists only as long as there are degrees of freedom and a skillful use of this freedom. The bodily space is mainly given by the subject’s specific potentials for action.
 For a totally paralyzed body with no kinesthetic experiences, there is no bodily
@@ -2165,12 +1843,6 @@ available actions of the avatar. The feedback loop of perception and action that
 perceiving primarily through interaction of your own body with the external world,
 you’re perceiving the game world through interaction of the avatar. The entire
 perceptual apparatus has been extended into the game world.
-
----
-
-## Sección 23: Chapter 2 to answer these questions.
-
--- 77 of 377 --
 To wrap back to our earlier discussions of identity and game feel, how does this
 concept of avatar as perceptual substitute, rather than extending tool, relate to proxied embodiment? Because a game world represents its own reality external to its avatar’s bodily space in the same way that the physical world is external to our own
 bodily space, it seems much more like a substitution than an extension. The same
@@ -2208,9 +1880,6 @@ Finally, we looked at some of the other implications of human perception:
 1. Perception requires action.
 2. Perception is a whole-body phenomenon.
 SUMMARY
-
--- 78 of 377 --
-
 CHAPTER TWO • GAME FEEL AND HUMAN PERCEPTION
 3. Perception is an effortless fusion of visual, aural, tactile and proprioceptive
 stimulus.
@@ -2223,8 +1892,6 @@ to develop a palette of game feel that’s separate from the emulation of realit
 doesn’t borrow from film or animation except where applicable. If we understand
 how perception works, we can build games that feel good instead of trying to build
 games that feel like things that feel good.
-
--- 79 of 377 --
 CHAPTER
 The Game Feel Model
 of Interactivity
@@ -2251,16 +1918,7 @@ the higher-level implications of those experiences. For example, if my character
 gravity. If my character runs into things instead of passing through them, I assume
 those things are solid. As in the real world, simple interactions yield a wealth of
 THREE
-
----
-
-## Sección 24: Chapter 2 to answer these questions.
-
--- 80 of 377 --
-
 F I G U R E 3.1 The model of interactivity brings together all the elements of the the gamer, the game and the world around him or her.
-
--- 81 of 377 --
 knowledge: generalizations, ideas, concepts and misconceptions about the nature
 of the world. All of these things are integrated into the perceptual field as they are
 experienced.
@@ -2297,9 +1955,6 @@ Marked at “2” in Figure 3.1, the impulses from the human processor flow out
 into the real world. The muscles of the hand execute the orders handed down by
 the motor process, which has in turn been directed by the cognitive process. In
 THE HUMAN PROCESSOR
-
--- 82 of 377 --
-
 CHAPTER THREE • THE GAME FEEL MODEL OF INTERACTIVITY
 addition, the hand provides tactile and proprioceptive feedback to the perceptual
 processor, the “megaphone for your thumbs” mentioned in the Chapter 1 section on
@@ -2334,8 +1989,6 @@ The Game World
 The game world is marked “5” Figure 3.1. For our purposes, the game world exists
 primarily in the player’s mind. There is also an internal representation of the game
 world that exists in the computer, one which is more precise and mathematical than
-
--- 83 of 377 --
 the rich, expressive world experienced by the player. But a game system is designed
 to output to an experience in the mind of the player. For the player, the output
 devices are a window into the game world, and the avatar acts as a proxy within
@@ -2372,13 +2025,6 @@ which to slot it, and an ever-expanding reference library which contains not onl
 information about the meaning to assign each new stimulus but your schematic
 diagrams of your world and everything in it.
 THE SENSES
-
----
-
-## Sección 25: Chapter 2 to answer these questions.
-
--- 84 of 377 --
-
 CHAPTER THREE • THE GAME FEEL MODEL OF INTERACTIVITY
 The Player’s Intent
 To complete our model, we need to account for intent. On one level, it’s an interesting question: where does intent come from? What motivates us to do what we
@@ -2405,8 +2051,6 @@ his or her body very well—lighting oneself on fire being one possible example�
 but which enhance the perceptual self. You see yourself as a martyr, dying for a
 F I G U R E 3.2 Maslow’s hierarchy of needs starts with the basic physiological needs and
 moves upward to self-actualization.
-
--- 85 of 377 --
 cause greater than yourself. Thus your own self-image, the embodied qualities of
 yourself as you perceive you, is enhanced. And made more crispy.
 Whatever the origin of human motivation is in reality, though, it is true that
@@ -2443,9 +2087,6 @@ understand.
 7. Senses—The player perceives the updated state through sights, sounds, touch,
 and proprioception.
 SUMMARY
-
--- 86 of 377 --
-
 CHAPTER THREE • THE GAME FEEL MODEL OF INTERACTIVITY
 The player’s side of things does not change because of the fixed properties of
 human perception, which limits the game designer’s area of influence. On the computer side of things, a designer is unlikely to have a role in creating the input device,
@@ -2454,8 +2095,6 @@ within steps 4 through 6.
 Examining all the pieces in a cohesive model, we can finally make a firm delineation between games that have game feel and those that don’t. The model provides
 a framework for understanding where things might be improved in a particular
 design, and a foundation for creating game feel from scratch.
-
--- 87 of 377 --
 CHAPTER
 Mechanics of
 Game Feel
@@ -2467,9 +2106,6 @@ This breaks down, once again, into three questions:
 3. Does it have polish?
 FOUR
 F I G U R E 4.1 Types of game feel: we want to put every game somewhere on the diagram.
-
--- 88 of 377 --
-
 CHAPTER FOUR • MECHANICS OF GAME FEEL
 From our model, we have measurable thresholds for real-time control to test
 against:
@@ -2507,12 +2143,6 @@ Dragon’s Lair
 ● Clicking on a button to select the next technology to research in Civilization 4
 In a typical game, many different mechanics are active at the same time and often
 overlap and combine. Running and jumping in Super Mario Brothers are separate
-
----
-
-## Sección 26: Chapter 2 to answer these questions.
-
--- 89 of 377 --
 mechanics by our definition. But they combine to become a whole greater than the
 sum of their parts.
 Mechanics can also change over the course of a game. For example, gaining a
@@ -2551,9 +2181,6 @@ up. Once the jump has started, the player cannot alter the trajectory of the jum
 This temporarily takes control away from the player, breaking the correction cycle of
 the movement mechanic. After leaving the ground, however, the player can still trigger attacks. This mitigates the fact that the player’s correction cycle is temporarily
 APPLYING THE CRITERIA
-
--- 90 of 377 --
-
 CHAPTER FOUR • MECHANICS OF GAME FEEL
 broken, as does the fact that the player gets to choose when to start the jump. The
 player feels they have real-time control over everything. The whole system, combining the movement, jumping and attack mechanics, has real-time control.
@@ -2573,8 +2200,6 @@ The individual mechanics in Prince of Persia are:
 ● Jump vertically
 ● Jump horizontally
 F I G U R E 4.2 Street Fighter II has game feel.
-
--- 91 of 377 --
 ● Change direction
 ● Lower (down a ledge)
 ● Draw sword
@@ -2599,9 +2224,6 @@ In between, new input from the player is meaningless. There is a branch point of
 sorts; having reached the end of the “standing to run” animation, if the directional
 F I G U R E 4.3 In Prince of Persia, animation reigns supreme.
 APPLYING THE CRITERIA
-
--- 92 of 377 --
-
 CHAPTER FOUR • MECHANICS OF GAME FEEL
 button is still held down, the prince goes into his full speed run cycle. If the button
 is not held down, the “run to standing” animation is played back, taking another
@@ -2621,14 +2243,8 @@ points in the animations helps to some degree. In this case, unpredictability ac
 place, so I instinctively just hold the up button when I’m close to where I want to
 jump. This makes me feel as though the system is listening to my input more often
 than it is.
-F I G U R E 4.4 Sixteen frames at 30 fps  0.53 seconds to complete the animation.
+F I G U R E 4.4 Sixteen frames at 30 fps 0.53 seconds to complete the animation.
 F I G U R E 4.5 The hopping animation takes only 150ms to complete, so it feels almost real time.
-
----
-
-## Sección 27: Chapter 2 to answer these questions.
-
--- 93 of 377 --
 There is simulated space in Prince of Persia; animations can be interrupted when
 the character walks far enough off a ledge, and he can bump into walls. The player
 experiences these directly and actively, by pushing the character into them. The
@@ -2647,9 +2263,6 @@ we’ve defined it? Again, let’s examine the individual mechanics and the syst
 whole.
 F I G U R E 4.6 Prince of Persia has game feel, but it’s pretty stilted.
 APPLYING THE CRITERIA
-
--- 94 of 377 --
-
 CHAPTER FOUR • MECHANICS OF GAME FEEL
 In Guitar Hero, there are five things you can do (mechanics):
 ● Strum
@@ -2674,8 +2287,6 @@ The whammy bar mechanic, however, allows a constant stream of both input
 and response. The response feels instantaneous and continuity is maintained. The
 whammy mechanic has the potential to be an ongoing correction cycle. But there
 F I G U R E 4.7 The “strum” mechanic in Guitar Hero.
-
--- 95 of 377 --
 is no simulated space. The waveform ripples and notes bend as the whammy bar
 is manipulated, but the size of the ripples has no meaning. Bending notes with
 the whammy mechanic does not enable the player to actively perceive a simulated
@@ -2684,9 +2295,6 @@ F I G U R E 4.8 Bending the waveforms with the whammy mechanic is real-time cont
 lacks spatial simulation.
 APPLYING THE CRITERIA
 F I G U R E 4.9 Guitar Hero has polish and (occasional) real-time control, but no simulated space.
-
--- 96 of 377 --
-
 CHAPTER FOUR • MECHANICS OF GAME FEEL
 Guitar Hero is a relatively simple game. Strumming to hit notes in increasingly difficult patterns that are synched to songs is the vast majority of the game. Even considered as a whole system, however, it does not have the property we’ve defined as
 game feel. The notes may fly fast and furious, and you can wail on the whammy
@@ -2708,8 +2316,6 @@ cycle to get the line drawn in the shape and direction they want. The response i
 instantaneous, but this is not real-time control per our definition. In this case, the
 DS stylus and screen are functioning the same way a piece of paper and pencil do.
 F I G U R E 4.10 The layout of Canvas Curse.
-
--- 97 of 377 --
 The player is correcting the movement of his or her own hand in space rather than a
 virtual object in virtual space.
 The other main mechanic is tapping. The player can tap Kirby directly with
@@ -2719,9 +2325,6 @@ F I G U R E 4.11 As you draw the rainbow trail, Kirby will follow its path if he
 with any part of the trail.
 F I G U R E 4.12 Canvas Curse has polish and simulated space, but no sustained real-time control.
 APPLYING THE CRITERIA
-
--- 98 of 377 --
-
 CHAPTER FOUR • MECHANICS OF GAME FEEL
 One tap equals one input. To express a new input, the player has to lift the stylus
 off the screen and tap again. This is not an ongoing correction cycle.
@@ -2739,12 +2342,6 @@ enables us to better understand which games have game feel and which don’t, an
 why. Our definition is now complete: even games that are on the edge can be classified according to real-time control, simulated space and polish. Games that have
 these three properties have game feel. Games that don’t fall outside the scope of
 this book.
-
----
-
-## Sección 28: Chapter 2 to answer these questions.
-
--- 99 of 377 --
 CHAPTER
 Beyond Intuition:
 Metrics for Game
@@ -2771,9 +2368,6 @@ This is frustrating because each new game we design feels just as complex as
 the last. If we don’t directly copy what we did before, we’re starting from scratch.
 FIVE
 http://lowfierce.blogspot.com/2006/05/why-some-games-feel-better-than-others.html
-
--- 100 of 377 --
-
 CHAPTER FIVE • BEYOND INTUITION: METRICS FOR GAME FEEL
 This leads to timid, incremental improvements over previous designs in an effort
 to keep things safe and comfy. We copy Mario’s mechanics, or Banjo Kazooie’s, or
@@ -2812,8 +2406,6 @@ they walk away in disgust. They ignore all instructions, mash their way around, 
 display all the insight and cognitive capacity of an indignant end table. They always
 tell you, “Oh, it’s fun, but …” and list a litany of bizarre sounding changes they’d
 like to see. Brutal!
-
--- 101 of 377 --
 And it gets worse: this is not the player’s natural environment. If you weren’t
 standing there, if you hadn’t invited or cajoled, or if the playtester weren’t your
 friend or sibling or spouse, would they still be playing the game? The answer is
@@ -2839,13 +2431,6 @@ graph I added an event recorder which recorded events (jump, land, fall, super
 jump, late jump and crouch) and displayed them on the graph as a vertical line,
 SOFT METRICS VS. HARD METRICS
 F I G U R E 5.1 Measuring inputs over time: an excellent “hard” metric.
-
----
-
-## Sección 29: Chapter 2 to answer these questions.
-
--- 102 of 377 --
-
 CHAPTER FIVE • BEYOND INTUITION: METRICS FOR GAME FEEL
 labeled with the event. Finally I made the graph able to be scrolled and zoomed in
 and out by the joypad when the game is paused. So, whenever some control problem occurs, it’s very easy to pause the game and then scroll over and zoom into the
@@ -2879,8 +2464,6 @@ employ both soft and hard metrics.
 What’s Important to Measure
 In the Game Feel Model of Interactivity, it is the pieces on the computer’s side of
 the system that can be changed by the game designer. Out of these, certain aspects
-
--- 103 of 377 --
 are obvious candidates for metrics. The six most useful aspects in this respect—the
 most important to measure, in terms of framing principles for designing game feel
 and for comparing games—are as follows.
@@ -2916,9 +2499,6 @@ buttons on the keyboard. At the highest level, this is because the Xbox controll
 is a well-designed consumer product made of sturdy materials and smooth, porous
 plastic.
 WHAT’S IMPORTANT TO MEASURE
-
--- 104 of 377 --
-
 CHAPTER FIVE • BEYOND INTUITION: METRICS FOR GAME FEEL
 F I G U R E 5.2 The six most important elements of game feel to measure are input, response,
 context, rules, polish and metaphor.
@@ -2934,12 +2514,6 @@ which inputs on the device will be valid and useful for controlling things in th
 specific game. If the input device is a Playstation 3 controller, does the player use
 the thumbsticks, the buttons or both? These decisions define what sensations of
 control are possible in the game.
-
----
-
-## Sección 30: Chapter 2 to answer these questions.
-
--- 105 of 377 --
 By choosing which inputs will be used, the designer also makes a choice about
 the sensitivity of their input space. Input devices have an inherent sensitivity. The
 feel of using an NES controller to control something in a game is different from
@@ -2954,7 +2528,7 @@ much more complex than the simple ON or OFF of a button.
 From the designer’s perspective, an input device translates the complex goals
 and intentions of the player into a simple language a computer can understand and
 interpret. This language is a stream of values that change over time. The movement of a thumbstick to the left, for example, can be interpreted by the computer
-as a change in a single “float” value—a number between 1.00 and 1.00. As the
+as a change in a single “float” value—a number between 1.00 and 1.00. As the
 player moves the thumbstick, the numbers change. A button is much simpler in
 terms of physical activation and in terms of the signals it sends. Having selected a
 specific input device, the game designer then chooses which inputs on the device
@@ -2981,15 +2555,10 @@ moves along only one axis but has hundreds of discrete states between its bounda
 complete freedom of movement along two axes, X and Y, and are bounded by the
 circular plastic casing of the controller, giving them almost unlimited possible states.
 WHAT’S IMPORTANT TO MEASURE
-
--- 106 of 377 --
-
 CHAPTER FIVE • BEYOND INTUITION: METRICS FOR GAME FEEL
 F I G U R E 5.3 On a keyboard, it is possible—and likely—for a player to press left and right at
 the same time.
 F I G U R E 5.4 Differences in sensitivity between input devices.
-
--- 107 of 377 --
 We can say then that a thumbstick is overall a more sensitive and expressive input
 than a trigger button, which is in turn more sensitive than a standard button.
 Another metric, though a soft one, is how the input provides proprioceptive feedback (spring strength, layout of buttons relative to one another). Joysticks, thumbsticks, triggers and buttons can feel very different depending on the strength and
@@ -3025,13 +2594,6 @@ movement of the mouse—rotate the avatar left, right, up and down (Figure 5.5).
 There is very little processing of input. The movement of the mouse adds a value to
 http://cowboyprogramming.com/2007/01/02/pushhing-buttons/
 WHAT’S IMPORTANT TO MEASURE
-
----
-
-## Sección 31: Chapter 2 to answer these questions.
-
--- 108 of 377 --
-
 CHAPTER FIVE • BEYOND INTUITION: METRICS FOR GAME FEEL
 the current rotation value of the avatar. Move the mouse an inch to the left and you
 turn 90 degrees to the left, a fixed steering ratio.
@@ -3047,8 +2609,6 @@ movement to a rotation as Quake does, Arkanoid does the opposite, mapping the
 F I G U R E 5.5 Moving the mouse in Quake rotates the avatar—input becomes response.
 F I G U R E 5.6 In Arkanoid, rotating the input knob maps to the left-right movement of the
 spaceship.
-
--- 109 of 377 --
 rotation of the knob to a linear movement of the ship. One degree of rotation of
 the wheel input is translated into a certain distance of movement for the Arkanoid
 paddle.
@@ -3071,9 +2631,6 @@ changes it over time, the final thing to examine is the relationships between th
 F I G U R E 5.7 In Halo, the degree of change of the thumbstick moves the reticule at varying
 degrees of speed.
 WHAT’S IMPORTANT TO MEASURE
-
--- 110 of 377 --
-
 CHAPTER FIVE • BEYOND INTUITION: METRICS FOR GAME FEEL
 various parameters. No mechanic is an island. Just as important as how each individual mechanic is defined—how each specific input is mapped to a response—is
 the relationship between them. For example, the feel of Super Mario Brothers relies
@@ -3091,16 +2648,14 @@ Context includes simulated space and level design. Envision yourself playing
 Super Mario 64. Now imagine that instead of being in the middle of Bomb-Omb
 Battlefield, Mario is standing in a field of blank whiteness, with no objects around
 him. With nothing but a field of blankness, does it matter that Mario can do a long
-jump, a triple jump or wall RealtimeHub?
+jump, a triple jump or wall kick?
 If Mario has nothing to interact with, his acrobatic abilities are meaningless.
-Without a wall, there can be no wall RealtimeHub. In this way, the placement of objects in
+Without a wall, there can be no wall kick. In this way, the placement of objects in
 the world is just another set of variables against which to balance movement speed,
 jump height and all the other parameters that define motion. In game feel terms,
 constraints define sensation. If objects are packed in, spaced tightly relative to the
 avatar’s motion, the game will feel clumsy and oppressive, causing anxiety and
 F I G U R E 5.8 Mario is sad because he has no context for all his fancy moves.
-
--- 111 of 377 --
 frustration. As objects get spaced further apart, the mapping of input to response
 becomes increasingly unimportant. It doesn’t matter how fast a car moves relative
 to its turning speed when it’s driving across a featureless landscape. Of course, the
@@ -3124,13 +2679,6 @@ isn’t as important in Tetris as it is in, say, a Tony Hawk game, but Alexei Pa
 F I G U R E 5.9 Normal versus Skinny Tetris: if the level design was different, it wouldn’t be the
 same game.
 WHAT’S IMPORTANT TO MEASURE
-
----
-
-## Sección 32: Chapter 2 to answer these questions.
-
--- 112 of 377 --
-
 CHAPTER FIVE • BEYOND INTUITION: METRICS FOR GAME FEEL
 had to decide that the Tetris field would be 10 blocks wide by 24 blocks tall. If it
 were three blocks wide, Tetris would be a very different game. Change the context,
@@ -3168,8 +2716,6 @@ impression of physicality. Specifically, what the polish effects seem to tell us
 the properties of the objects we’re observing. The blob squashing and stretching
 is what makes it seem a blob. As Joost says, without the squash-shader, the game
 feels like playing with a ball made of stone.
-
--- 113 of 377 --
 This principle applies to all polish effects. All effects, even if they’re applied
 only with the nebulous goal of making interaction more appealing, send signals
 about the physical properties of the objects involved in the interaction. When it’s
@@ -3192,9 +2738,6 @@ been completely obliterated (Figure 5.10).
 WHAT’S IMPORTANT TO MEASURE
 F I G U R E 5.10 The cars in Burnout can be damaged to an amazing degree. This is some
 serious polish.
-
--- 114 of 377 --
-
 CHAPTER FIVE • BEYOND INTUITION: METRICS FOR GAME FEEL
 But how do you know this? What tells your senses that this is the case? How
 can you know the physical nature of this digital object? What clues are you using to
@@ -3229,12 +2772,6 @@ but as applied to game feel its impact in terms of conveying a convincing, selfc
 Metaphor
 Metaphor is where a player’s past experiences, ideas, feelings and generalizations
 come into play. Not only from playing games, but from their total life experience.
-
----
-
-## Sección 33: Chapter 2 to answer these questions.
-
--- 115 of 377 --
 What does the thing you’re controlling look like, and how do you expect it to
 behave based on your experience with similar things? If it looks like you’re controlling a real car, the expectation is that it will handle like a car, sound like a car and
 crash like a car. But the expectations come from the idea of what a car is, not from
@@ -3259,9 +2796,6 @@ you have preconceived notions about the way a car should handle.
 F I G U R E 5.11 Run, Fatty, Ruuuuuuun! This avatar sets up different expectations than a car
 does, which changes the feel of the game even if the underlying functionality is identical.
 WHAT’S IMPORTANT TO MEASURE
-
--- 116 of 377 --
-
 CHAPTER FIVE • BEYOND INTUITION: METRICS FOR GAME FEEL
 You know how a car should feel and move and turn based on your experience
 driving a car and looking at cars. When thinking about a game feel system, it’s
@@ -3289,8 +2823,6 @@ In the context of game feel, rules as we’ve defined them provide motivation,
 challenge and meaning for motion. Context provides the immediate, spatial meaning
 while rules provide the long-term, sustainable meaning that games are built out of.
 F I G U R E 5.12 Csikzentmihayli’s Flow.
-
--- 117 of 377 --
 As in our earlier example, rules provide some, if not all, of the intent in a game system, as shown in Figure 5.13.
 Race from point A to point B, scale this tall mountain, rescue five wayward puppies, escape the compound. These kinds of higher-order goals define game feel at
 the level of sustainability. They operate at multiple levels, with multiple goals and
@@ -3311,13 +2843,6 @@ Separate from but hooked into the high-level rules and goals, mid-level rules ca
 give meaning to objects in the game world, changing the feel of moving through it.
 F I G U R E 5.13 High-level goals trickle down.
 WHAT’S IMPORTANT TO MEASURE
-
----
-
-## Sección 34: Chapter 2 to answer these questions.
-
--- 118 of 377 --
-
 CHAPTER FIVE • BEYOND INTUITION: METRICS FOR GAME FEEL
 The flag in a capture the flag multi-player game is one example; for the player currently holding the flag, the game feels different.
 At the lowest level, rules can further define the physical properties of objects.
@@ -3351,8 +2876,6 @@ to shoehorn someone else’s tuning into your system, you want to be able to und
 or Burnout: Revenge, you’ll be able to do it with a deeper understanding. You might
 not have the exact recipe—it’s probably secret—but at least you won’t be staring at
 a finished cake wondering what kind of sugar was used.
-
--- 119 of 377 --
 CHAPTER
 Input Metrics
 The pianos (think input devices) of Ludwig Van Beethoven’s day were flimsy, cheap
@@ -3381,9 +2904,6 @@ to control it?
 To answer this question, we need to be able to measure the input space represented by a particular input device. Next, we need to be able to compare the input
 space of one input device to another in a meaningful way. Finally, we need to examine
 SIX
-
--- 120 of 377 --
-
 CHAPTER SIX • INPUT METRICS
 how the feel of a particular game is affected by the physical construction of the
 input used to control it. To do this, we’ll examine input at three levels:
@@ -3400,12 +2920,6 @@ inputs on it (Figure 6.1). This includes a couple thumbsticks; a directional pad
 seldom-used buttons for select, start, wireless resync and other miscellany. Culling
 out the inputs that are rarely used for game control, this leaves 4 usable inputs.
 F I G U R E 6.1 The Xbox 360 controller has 15 input options.
-
----
-
-## Sección 35: Chapter 2 to answer these questions.
-
--- 121 of 377 --
 ● X-, Y-, A- and B-buttons (standard buttons)
 ● Right and left “shoulder” buttons
 ● Right and left “trigger” buttons
@@ -3437,10 +2951,7 @@ it. For example, the slotted casing around the Nintendo 64’s thumbstick feels 
 ● Sensitivity: Roughly, how many different states can the input exist in. A standard button is very low sensitivity; it has only two states (ON or OFF). A mouse
 MICRO LEVEL: INDIVIDUAL INPUTS
 1 This is adapted from Robert J.K. Jacob’s excellent 1996 paper “The Future of Input Devices.” Available
-online at: http://www.cs.tufts.edu/jacob/papers/sdcr.pdf
-
--- 122 of 377 --
-
+online at: http://www.cs.tufts.edu/ jacob/papers/sdcr.pdf
 CHAPTER SIX • INPUT METRICS
 is highly sensitive by comparison; it has no physical boundaries making each
 tiny motion another possible state. Though inputs can be mapped to in-game
@@ -3462,9 +2973,6 @@ A Playstation 2 thumbstick has the same kind of motion, but it has a
 boundary, so we can think about being able to move in that plane, but only so far
 in a particular direction (Figure 6.4).
 F I G U R E 6.2 Use three fingers to visualize axes of movement for input devices.
-
--- 123 of 377 --
-
 MICRO LEVEL: INDIVIDUAL INPUTS
 Every button has two boundaries—fully pressed and fully released—between
 which it moves. Whether it’s a trigger button with a handful of states between the
@@ -3478,9 +2986,6 @@ play an important role in defining the types of controlled in-game motions that 
 best suited to the input (Figure 6.5).
 F I G U R E 6.3 The “axis hand” moving like a mouse.
 F I G U R E 6.4 The “axis hand” moving like a thumbstick.
-
--- 124 of 377 --
-
 CHAPTER SIX • INPUT METRICS
 Now think about how many possible states there are between the boundaries as
 you move your hand around. For a thumbstick, it’s a lot. For a mouse, even more.
@@ -3488,7 +2993,7 @@ For a “trigger” button, it’s more than 1, but less than with a thumbstick 
 This is a rough measure of the sensitivity of the input device.
 The amount of sensitivity an input possesses is a soft metric. It is possible to
 calculate the actual, physical number of states an input can reside in—two for a
-standard button, something like 1,920,000 for a mouse on a 1,600  1,200 desktop—but that comparison doesn’t accurately portray the sensation of using these
+standard button, something like 1,920,000 for a mouse on a 1,600 1,200 desktop—but that comparison doesn’t accurately portray the sensation of using these
 inputs. It’s more like the difference between an Etch A Sketch™ and a paintbrush.
 You can paint a picture with either, but the paintbrush offers a lot more versatility.
 The idea is that different inputs have different amounts of sensitivity inherent in
@@ -3498,13 +3003,6 @@ its one-axis rotation has a great deal of sensitivity in a limited way. More sen
 than either of those is an arcade joystick, which moves freely in X and Z, but which
 F I G U R E 6.5 The boundary of the Xbox thumbstick is important for the feel of Geometry
 Wars: Retro Evolved.
-
----
-
-## Sección 36: Chapter 2 to answer these questions.
-
--- 125 of 377 --
-
 MICRO LEVEL: INDIVIDUAL INPUTS
 is bounded on all sides by a circular plastic housing. Figure 6.6 shows a (rough)
 scale for input sensitivity.
@@ -3529,9 +3027,6 @@ Frame Signal Sent
 4 (0.31, 0.42)
 5 (-0.1, 0.61)
 F I G U R E 6.6 Sensitivity of input devices.
-
--- 126 of 377 --
-
 CHAPTER SIX • INPUT METRICS
 Input Measurement Examples
 Measuring all these properties for each input is useful for understanding game feel
@@ -3543,8 +3038,6 @@ number, type and sensitivity of inputs used to create a mechanic, we can begin t
 get much closer to a meaningful comparison between the feel of games created with
 different input devices. Comparing the feel of Halo to the feel of Contra becomes a
 F I G U R E 6.7 Signals sent by various inputs.
-
--- 127 of 377 --
 lot more viable if you understand that Xbox thumbsticks are inherently much more
 sensitive than the directional pad and two buttons of the NES controller.
 Standard Button
@@ -3573,9 +3066,6 @@ the fully pressed state (where the player’s pressing force is stopped by a pla
 F I G U R E 6.8 A standard two-state button. It has two states, moves only in the Y-axis and is
 by itself a very low-sensitivity input.
 INPUT MEASUREMENT EXAMPLES
-
--- 128 of 377 --
-
 CHAPTER SIX • INPUT METRICS
 Trigger Button
 Like the standard button, the “trigger” button (Figure 6.9) typically found on modern controllers moves in only one axis. In this case, I’d call it the X-axis, as it’s usually on the front of the controller and is usually operated by the index finger. Again,
@@ -3598,20 +3088,14 @@ from off to on.
 Paddle
 Though they’re not in common use anymore, it’s interesting to note that the paddle controllers sold with many of the first home consoles used a hard-boundary,
 F I G U R E 6.9 The motion of a trigger button.
-
----
-
-## Sección 37: Chapter 2 to answer these questions.
-
--- 129 of 377 --
 one-axis rotation. There was one spinner input on the front of the controller (Figure
 6.10). It was gripped between the thumb and forefinger and could be rotated left
 or right a certain amount before it reached a defined hard boundary point and the
 plastic would catch and stop it. Through a combination of factors, this input type
 fell out of vogue, but it was quite a sensitive input, with hundreds of possible states
 between fully left rotation and fully right.
-A paddle controller returns a float value, in a range from 1.00 to 1.00. When
-the paddle knob is centered, it’s at 0.00. As it is rotated left of center, it goes negative (something like 0.26) and as it is rotated right it goes positive (something
+A paddle controller returns a float value, in a range from 1.00 to 1.00. When
+the paddle knob is centered, it’s at 0.00. As it is rotated left of center, it goes negative (something like 0.26) and as it is rotated right it goes positive (something
 like 0.41).
 Thumbstick
 A typical thumbstick is movable in two axes simultaneously, left-right and up-down
@@ -3627,9 +3111,6 @@ carving turn for a ship in Geometry Wars, a quick heel-turn for Mario or a quick
 Jab in Fight Night. With a thumbstick, one can be said to “feather” or “flick” a
 F I G U R E 6.10 An old school paddle controller: bounded rotational control in one dimension.
 INPUT MEASUREMENT EXAMPLES
-
--- 130 of 377 --
-
 CHAPTER SIX • INPUT METRICS
 control; these are properties of highly sensitive input, one which vastly more sensitive than a standard or trigger button. From its centered position, the thumbstick
 can only be displaced until it comes into contact with the circular housing, which
@@ -3638,8 +3119,8 @@ The thumbstick can be displaced from its centered position left to right and up 
 down, which creates a perceptually infinite number of possible states for the player.
 The thumbstick returns two constantly changing float values at the same time,
 one for each axis of motion. Left to right motion (in the X-axis) returns one float
-value between 1.00 and 1.00, while up and down motion (in the Z-axis) returns
-another. The format of the signal could be: (0.16, 0.93).
+value between 1.00 and 1.00, while up and down motion (in the Z-axis) returns
+another. The format of the signal could be: ( 0.16, 0.93).
 Mouse
 A mouse—and here I’m talking about the input which detects positional movement,
 not the clickable buttons—is similar to thumbstick in that it enables movement
@@ -3652,19 +3133,17 @@ Because there is no explicit boundary, the potential for different states is eve
 higher than with a thumbstick. All position is relative, and there is no spring pushing the mouse back into a neutral position. These factors combine to make the
 mouse the most sensitive input device in common use today.
 F I G U R E 6.11 A thumbstick controller offers fluid, accurate means of controlling game action.
-
--- 131 of 377 --
 The boundaries for a mouse’s movement are in software, stopping the cursor
 (the meaning of further mouse movement) at the four edges of the screen (top, bottom, left and right). Technically, there’s also a boundary at the edge of whatever
 surface you’re mousing on, but this boundary is almost never reached due to the
 typical ratio of physical mouse movement to computer space movement. You get a
 lot of screen movement for a little mouse movement, so you don’t run your mouse
 off the table very often.
-The mouse is a highly sensitive input device. On my 1,200  1,600 pixel desktop, the mouse cursor can potentially rest on any one of 1.9-something million
+The mouse is a highly sensitive input device. On my 1,200 1,600 pixel desktop, the mouse cursor can potentially rest on any one of 1.9-something million
 pixels. In practice, a user can’t be expected to accurately hit targets smaller than a
 certain size (checkbox on a dialog), but the sensitivity is there.
 Like the thumbstick, the mouse returns two separate float values in the form
-(0.18, 0.28). But in the mouse’s case, what’s being returned is a displacement.
+(0.18, 0.28). But in the mouse’s case, what’s being returned is a displacement.
 How far the mouse has moved in both the X and Z directions since the last frame,
 in other words. This is often mapped directly into screen space movement (as in the
 movement of a cursor) but the movement is not absolute. If it were, you would not
@@ -3673,9 +3152,6 @@ the cursor in one direction.
 Table 6.2 compares all these input devices.
 F I G U R E 6.12 A mouse has tens of thousands of states and almost no boundaries.
 INPUT MEASUREMENT EXAMPLES
-
--- 132 of 377 --
-
 CHAPTER SIX • INPUT METRICS
 TA B L E 6.2 Input Metrics
 Standard
@@ -3811,12 +3287,6 @@ pressed against
 the housing.
 Millions.
 (Continued )
-
----
-
-## Sección 38: Chapter 2 to answer these questions.
-
--- 133 of 377 --
 Macro Level: The Input Device as a Whole
 That takes care of the micro level of individual inputs. Now let’s recompose the
 inputs into a complete input device and look at how inputs combine to create an
@@ -3895,28 +3365,23 @@ between 0.00
 and 1.00.
 Float value
 between
- 1.00 and
+ 1.00 and
 1.00.
 Two float values,
 each between
- 1.00 and 1.00.
+ 1.00 and 1.00.
 One for the left/
 right axis, one for
 the up/down axis.
 Float value
 between
- 1.00 and
+ 1.00 and
 1.00
 MACRO LEVEL: THE INPUT DEVICE AS A WHOLE
-
--- 134 of 377 --
-
 CHAPTER SIX • INPUT METRICS
 F I G U R E 6.13 The whole input device is greater than the sum of the parts because inputs
 can be combined and overlap.
 F I G U R E 6.14 Simple buttons combine to form a larger, more sensitive input space.
-
--- 135 of 377 --
 Again, this isn’t a hard metric. We can measure the total number of inputs and
 all the permutations of combining them as specific numbers, but that’s not especially useful. We’re interested in getting a rough idea of how the inherent sensitivity
 of an input device compares to the sensitivity of another device. It suffices to know
@@ -3949,9 +3414,6 @@ My Wiimote and Playstation controllers feel like plastic. It’s a subtle differ
 and measuring its impact on game feel is extremely difficult. All I can say is that
 By “ Zeus” from http://forums.maxconsole.net/archive/index.php/t-19989.html
 TACTILE LEVEL: THE IMPORTANCE OF PHYSICAL DESIGN
-
--- 136 of 377 --
-
 CHAPTER SIX • INPUT METRICS
 I prefer holding my Xbox controller. The Dell mouse I’m using currently has a similar porousness but is much coarser, making it less pleasurable to handle than my
 Xbox controller. This has a mostly subconscious effect on my interaction with these
@@ -3987,12 +3449,6 @@ combined (hard metrics).
 The tactile feel of the device can be measured by the feel of each input (the resistance to movement, springiness, etc.) and the feel of the input device as a whole
 (heavy and solid versus light and flimsy, physical properties of the materials). Both
 of these are soft metrics, affecting the feel of games in a mostly subconscious way.
-
----
-
-## Sección 39: Chapter 2 to answer these questions.
-
--- 137 of 377 --
 CHAPTER
 Response Metrics
 When I say response, I mean the game’s response to player input. The output, in
@@ -4025,9 +3481,6 @@ professional animator, and some game-relevant spatial movement. It occurs at the
 position in space and time of your choosing, but once triggered, the animation plays
 back as a linear sequence of frames, as it would if it were an animation playing
 SEVEN
-
--- 138 of 377 --
-
 CHAPTER SEVEN • RESPONSE METRICS
 back on a television. The duration of the animation may be short, but it’s interesting to note that what’s been mapped is still the linear playback of an animation to
 a particular input. This can be taken to ridiculous extreme, as it is in the original
@@ -4065,8 +3518,6 @@ rotate?
 ● Absolute or relative motion: What frame of reference does the motion use? Is
 the motion relative to the avatar, as in Asteroids or the camera as in Mario 64, or
 some other point in the world?
-
--- 139 of 377 --
 ● Position versus rate/magnitude: Does the input modify a position, a rate or a
 magnitude? A mouse cursor is usually mapped to changes in position. Pushing
 the thumbstick to the left in Halo changes the rate at which the avatar turns
@@ -4094,13 +3545,6 @@ Regardless what parameter an input is mapped to—position, rotation, animation
 playback and so on—the modulation of a parameter over time will have some kind
 ATTACK, DECAY, SUSTAIN AND RELEASE
 F I G U R E 7.1 The Mario Avatar moves in two dimensions, X and Y.
-
----
-
-## Sección 40: Chapter 2 to answer these questions.
-
--- 140 of 377 --
-
 CHAPTER SEVEN • RESPONSE METRICS
 of curve. One way to describe this curve is as an ADSR envelope. ADSR stands for
 attack, decay, sustain and release. An ADSR envelope describes the modulation of a
@@ -4122,8 +3566,6 @@ good way to think about the modulation of parameters in a game relative to speci
 input. For example, look at the “left” input in Super Mario Brothers (Figure 7.5).
 F I G U R E 7.2 An ADSR envelope; modulating a parameter over time in four phases.
 F I G U R E 7.3 The ADSR envelope for a guitar’s volume when a string is plucked.
-
--- 141 of 377 --
 In this case the vertical axis of the envelope is movement. There is an attack phase
 as Mario ramps up to his maximum speed, no decay, a sustain as long as the button is held and a long release when the button is released. The result is that Mario
 speeds up gradually over time (Figure 7.6).
@@ -4139,9 +3581,6 @@ how players are likely to experience the sensation of control based on this enve
 F I G U R E 7.4 The envelope for a pipe organ is much more rigid.
 F I G U R E 7.5 The ADSR envelope representing Mario’s horizontal movement.
 ATTACK, DECAY, SUSTAIN AND RELEASE
-
--- 142 of 377 --
-
 CHAPTER SEVEN • RESPONSE METRICS
 A longer attack phase results in a floaty or loose feel. This is not necessarily a
 bad thing; the thruster mechanic in Asteroids has a long attack, and players generally seem to enjoy that feel. When a long attack phase begins to cause trouble, however, is when there seems to be no immediate response to input (Figure 7.9).
@@ -4155,17 +3594,12 @@ F I G U R E 7.6 Mario speeds up gradually from a standstill.
 F I G U R E 7.7 The ADSR envelope representing Jumpman’s horizontal movement.
 F I G U R E 7.8 Jumpman moves at a constant speed in the direction indicated by the input
 device.
-
--- 143 of 377 --
 F I G U R E 7.9 This feels unresponsive if the thing being controlled takes more than 100 ms to
 move (or if the player perceives it this way).
 F I G U R E 7.10 Even though the attack phase is very long (more than a second) there is an
 obvious initial response.
 F I G U R E 7.11 A short attack phase feels tight and responsive.
 ATTACK, DECAY, SUSTAIN AND RELEASE
-
--- 144 of 377 --
-
 CHAPTER SEVEN • RESPONSE METRICS
 Even with tight, responsive controls, the attack phase usually has some
 nonlinear curving to it. In other words, the attack phase is a curve, not a straight
@@ -4190,12 +3624,6 @@ Playable Example
 You can experience the difference in example CH07-1. Press the “ 1 ” key for an
 unresponsive, the “ 2 ” key for a responsive but loose feel.
 F I G U R E 7.12 A short attack phase with a flat progression from on to off creates a twitchy feel.
-
----
-
-## Sección 41: Chapter 2 to answer these questions.
-
--- 145 of 377 --
 For example, in some of the earlier beta versions of Counter-Strike, it was possible
 for those in the know to “skate” by angling slightly sideways and pressing forward
 and sideways rapidly. When moving at a particular angle and switching between
@@ -4220,9 +3648,6 @@ the A and D keys. Enter new values by clicking on a parameter (such as
 “ Max Speed”), typing in numbers and pressing enter to see how the envelope
 changes.
 ATTACK, DECAY, SUSTAIN AND RELEASE
-
--- 146 of 377 --
-
 CHAPTER SEVEN • RESPONSE METRICS
 Currently, an acceleration value is added to the cube’s velocity each frame, creating a smooth quarter-second attack phase. This speeds the cube up gradually, giving it a loose, organic feel. Mirroring this, a drag value is also applied in each frame,
 causing the cube to slow back to rest again when the button is released. Without
@@ -4245,8 +3670,6 @@ button is released. The result is a system that feels stiff but responsive. It f
 and is good for dealing with challenges that require precise positioning and accurate
 jumping. This same kind of feel applies to other mechanics with little or no attack
 F I G U R E 7.14 The cube has smooth, organic movement.
-
--- 147 of 377 --
 and release, such as the movement of a mouse cursor in response to mouse movement. Sometimes players categorize this feel as twitchy.
 Compare this to the “thruster” mechanic in Asteroids. Pressing the thruster button has a long attack (Figure 7.16). In this case, it’s because Asteroids keeps track
 of a separate velocity value for the ship. Instead of the position of the ship being set
@@ -4262,9 +3685,6 @@ amount each frame. There’s a slight attack value, which is achieved by changin
 F I G U R E 7.15 A responsive, but stiff, feel.
 F I G U R E 7.16 A loose, fluid feel.
 ATTACK, DECAY, SUSTAIN AND RELEASE
-
--- 148 of 377 --
-
 CHAPTER SEVEN • RESPONSE METRICS
 the input slightly as it comes in. At the first millisecond the button is pressed, the
 amount by which the ship’s orientation changes is less than it is a few milliseconds later. The value gets increased over time. In this way, the feel is responsive
@@ -4287,12 +3707,6 @@ are mapped to different responses across states which are altered and maintained
 by the simulation itself. You’re getting two sets of responses mapped to one input,
 essentially.
 F I G U R E 7.17 A slight softness in the attack.
-
----
-
-## Sección 42: Chapter 2 to answer these questions.
-
--- 149 of 377 --
 This is used to great effect in the Tony Hawk games where there are as many as
 six separate states, each of which assigns a different value to each button on the
 controller. Every button means something different in each state. A relatively small
@@ -4314,9 +3728,6 @@ to directly map raw signals is to forego the opportunity to tweak game feel. Mos
 often, an input signal is received raw and passes through a layer of code where it
 F I G U R E 7.18 Overlapping states provide additional expressivity.
 ATTACK, DECAY, SUSTAIN AND RELEASE
-
--- 150 of 377 --
-
 CHAPTER SEVEN • RESPONSE METRICS
 is filtered in some way, into a different value range. Even if it’s just multiplied by
 2 or 3 in order to create a greater force value to pass along to a simulation, most
@@ -4333,9 +3744,9 @@ divided, added to, multiplied by themselves and so on.
 It is also possible to have complex, non linear transformations applied to input
 signals as they come in. This is especially true when the signals represent a range,
 as with a thumbstick on a controller (which returns two float values, each in a
-range from 1.00 to 1.00). This is employed in the driving mechanics Grand Theft
+range from 1.00 to 1.00). This is employed in the driving mechanics Grand Theft
 Auto 4 and other games featuring a driving metaphor. Instead of a constant car
-steering ratio (1 degree of steering wheel turn  2 degrees of car turn) the amount
+steering ratio (1 degree of steering wheel turn 2 degrees of car turn) the amount
 of turning changes across the input space. The steering ratio increases the farther
 the thumbstick is pulled in a direction (Figure 7.19).
 Pulling the stick about halfway to the right of center still yields a fairly small
@@ -4347,8 +3758,6 @@ At this layer, there is the possibility not only for modifying input signals bef
 passing them on, but for creating entirely new signals by further interpretation of
 the incoming signals. Think of the famous Konami code, which looks for a particular sequence of button presses over time. The game’s code examines the input
 F I G U R E 7.19 Turning changes as the thumbstick is pulled farther from center.
-
--- 151 of 377 --
 signals it receives for specific, predetermined patterns and responds differently when
 it sees them. When a game is sensitive to patterns of inputs over time like this, the
 input space becomes larger. Moves in fighting games are fundamentally the same
@@ -4387,13 +3796,6 @@ one-for-one kind of way. It’s not necessary for context sensitivity to be this
 however, as proved by the game Strange Attractors. Strange Attractors has only one
 input, which activates a series of gravity wells placed around the level. The gravity from a well will affect the ship relative to its distance from that well (following
 ATTACK, DECAY, SUSTAIN AND RELEASE
-
----
-
-## Sección 43: Chapter 2 to answer these questions.
-
--- 152 of 377 --
-
 CHAPTER SEVEN • RESPONSE METRICS
 the inverse square law, I assume) meaning that Strange Attractors features a fluid,
 ever-changing sort of context sensitivity. The meaning of pressing the button is constantly changing as the ship moves around the game space, closer to some wells,
@@ -4430,14 +3832,12 @@ each avatar in the game relative to its type and dimensions of motion, the frame
 of reference for that motion, and whether the motion is direct or indirect. Knowing
 this, we can identify how each input stream modulates the parameter over time and
 can quantify this as an ADSR envelope. From this point, we can attempt to extrapolate the system that gave rise to this particular envelope. This could be a filtering
-
--- 153 of 377 --
 of input signals directly, a change in a simulation or both. Ultimately, we want to
 understand what variables are being tweaked, the relationships between those variables and how they become the envelopes we’ve identified.
 Input and Response Sensitivity
 Out of the games discussed earlier, Donkey Kong is particularly interesting because
 it maps a relatively high-sensitivity input device (the joystick, which can return
-float values from 1.00 to 1.00 along its horizontal axis) to a very low-sensitivity
+float values from 1.00 to 1.00 along its horizontal axis) to a very low-sensitivity
 response. Compare this to Super Mario Brothers, which has a very low-sensitivity
 input device but has a very sensitive response.
 If we record the positions of these characters over time and include jumping
@@ -4449,9 +3849,6 @@ produces a fairly accurate picture of the overall “virtual sensitivity” of t
 (Figure 7.22). This is a soft metric, of course, but useful for comparing the expressivity of two different games.
 F I G U R E 7.20 From input to response.
 INPUT AND RESPONSE SENSITIVITY
-
--- 154 of 377 --
-
 CHAPTER SEVEN • RESPONSE METRICS
 F I G U R E 7.21 The position of Mario and Jumpman over time: Mario is much more expressive.
 F I G U R E 7.22 Different games on a rough scale of input and response sensitivity.
@@ -4465,8 +3862,6 @@ the game’s reaction for each button has only two states, moving at full speed
 or not moving at all. This is not a very good virtual sensation, very stiff with
 very little fluidity or appeal. In some instances—the original Legend of Zelda,
 for example—this grid-like rigidity is desirable because it creates a more
-
--- 155 of 377 --
 contemplative, less visceral feel. As in Pacman, all rotation and superfluous
 directions of movement have been stripped away for simplicity. The result,
 however, is not a very compelling virtual sensation when removed from its
@@ -4505,21 +3900,12 @@ input over time
 ● The overall sensitivity of the system as a function of its input and response
 sensitivity
 SUMMARY
-
----
-
-## Sección 44: Chapter 2 to answer these questions.
-
--- 156 of 377 --
-
 CHAPTER SEVEN • RESPONSE METRICS
 Understanding the simulation and input filtering that give rise to particular sensations of control is craft knowledge. If you want to build real-time control that feels
 a certain way, it’s useful to know how simulations give rise to what sensations. For
 measuring the sensation of control across games, however, measuring the output,
 the envelope, is sufficient. For measurement, as for the player, the underlying simulation is mostly irrelevant. What is relevant is the output, the sensation of control
 and the overall sensitivity of the controls.
-
--- 157 of 377 --
 CHAPTER
 Context Metrics
 Context is a catchall term for the effect of simulated space on game feel. Simulated
@@ -4546,9 +3932,6 @@ and specifics. Before that, however, there is a period where your whole idea of 
 new place, your whole mental model, is based on a generalization. A general, but
 inchoate, spatial awareness. A feel.
 EIGHT
-
--- 158 of 377 --
-
 CHAPTER EIGHT • CONTEXT METRICS
 This process of spatial learning, from macro to micro, is analogous to what
 happens when a player begins exploring a game space with an avatar. This is the
@@ -4576,8 +3959,6 @@ games, it felt like a realm of great possibility. If I saw something far away, I
 travel there. Neat. By contrast, the worlds of Counterstrike seem always hemmed
 in, claustrophobic, and full of endlessly looping, twisting tunnels. Some levels
 F I G U R E 8.1 Wide open space.
-
--- 159 of 377 --
 have open areas, to be sure, but there’s never a sense that anything exists outside a
 Counterstrike level. As a player, you intuit within the first round of play that those
 far off buildings and skyboxes are just there for decoration.
@@ -4615,13 +3996,6 @@ is no standard unit of measure for the movement of objects in a game. There can�
 be. Unlike our reality, where miles per hour means the same thing to a swallow in
 IMPRESSIONS OF SPEED AND MOTION
 http://www.scribd.com/doc/268586/Architecture-Space-and-Gameplay
-
----
-
-## Sección 45: Chapter 2 to answer these questions.
-
--- 160 of 377 --
-
 CHAPTER EIGHT • CONTEXT METRICS
 Saskatchewan, a bus in Burma or a Maserati in Munich, every game uses fundamentally different units to measure (and tune) the speed of objects. Even in games
 such as Project Gotham Racing and Gran Turismo, where speed is measured ostensibly in miles per hour, the metric does not correlate across games. The problem lies
@@ -4631,7 +4005,7 @@ Playable Example
 To illustrate just how powerful this effect is, I created an interactive test of
 a car, example CH08-1. According to the game, the car moves at 100 miles
 per hour. The game’s code says simply “when the space bar is pressed,
-speed  100 mph.” As long as a camera follows that car at the same speed,
+speed 100 mph.” As long as a camera follows that car at the same speed,
 the number 100 is meaningless. The speed at which the car moves according
 to the game’s code has no effect on the impression of speed for the player.
 However, add an asphalt road texture beneath the car, and the impression of
@@ -4657,8 +4031,6 @@ the rate at which it’s advancing past them gives you still more data about how
 it’s coming. Other cars driving nearby also give me a frame of reference for speed;
 if the bus is passing cars left and right, it’s probably going quite fast. All in all, there
 are dozens of clues that enable me, in an instant, to judge, check and recheck my
-
--- 161 of 377 --
 concept of the bus’ speed of approach. With that data I can decide whether a delicious muffin is worth the risk or whether it would be best to defer deliciousness for
 another few minutes.
 The impression of speed conveyed by a video game offers these same kinds
@@ -4694,13 +4066,6 @@ to one another. In addition, we can change the angle view of the camera. Wikiped
 defines angle of view (perspective) as “As an effect, some first person games, especially racing games, widen the angle of view beyond 90º to exaggerate the distance
 the player is travelling, thus exaggerating the player’s perceived speed. This effect
 IMPRESSIONS OF SPEED AND MOTION
-
----
-
-## Sección 46: Chapter 2 to answer these questions.
-
--- 162 of 377 --
-
 CHAPTER EIGHT • CONTEXT METRICS
 can be done progressively or upon the activation of some sort of ‘turbo boost.’
 An interesting visual effect in itself, it also provides a way for game developers
@@ -4742,8 +4107,6 @@ enlarged, but had retained all of its physical properties. That is, physics were
 same for it at the size of a skyscraper as they were at the size of a dachshund. The
 speed of the animation playback was paramount. The colossi moved very slowly
 when you were far away from them but appeared to move appropriately quickly
-
--- 163 of 377 --
 when your frame of reference was changed to a closer aspect. The bosses in Serious
 Sam and Painkiller appeared to move quite quickly, even from a distance, thus
 destroying the intended effect of the impression of size.
@@ -4779,13 +4142,6 @@ examine is:
 ● The size of the objects
 ● The nature of the objects
 MEDIUM-LEVEL CONTEXT
-
----
-
-## Sección 47: Chapter 2 to answer these questions.
-
--- 164 of 377 --
-
 CHAPTER EIGHT • CONTEXT METRICS
 ● The layout of objects
 ● The distance between objects
@@ -4804,8 +4160,6 @@ time period were caused by this. For me, it tends to happen when I’m driving c
 country. Traversing the landscape of WoW felt for all intents and purposes like driving the long stretch of straight, level freeway between Los Angeles and San Jose.
 F I G U R E 8.2 Different configurations and types of space yield a different feel relative to the
 controlled movement of the avatar.
-
--- 165 of 377 --
 Because the objects in World of Warcraft are spaced so far apart relative to the speed
 of movement of the avatar, and because the movement of the avatar across that terrain often has no gameplay function, running across this environment started to lull
 me into the same zoned out state (Figure 8.3).
@@ -4827,9 +4181,6 @@ Finally, context affects game feel at the low level of intimate, personal space,
 at the level of tactile interaction between objects. At this level, what we’re interested in examining is collision. Now, the maths involved in collision detection and response is a little bit scary. At least, it is me (being a lowly brain-dead
 F I G U R E 8.3 WoW-highway-hypnosis.
 LOW-LEVEL CONTEXT
-
--- 166 of 377 --
-
 CHAPTER EIGHT • CONTEXT METRICS
 game designer). Regardless, there are several excellent books and online resources
 dealing with different kinds of collision and how to implement them. For our purposes, we want to compare different ways it is possible to model collision and the
@@ -4870,12 +4221,6 @@ coming back out of them. You can’t smack into something and rebound or indeed
 see any interesting interaction. It’s a bit like playing only with Nerf toys. Everything
 is soft and mushy and safe to play with indoors. You’re never going to put your eye
 out with them.
-
----
-
-## Sección 48: Chapter 2 to answer these questions.
-
--- 167 of 377 --
 Summary
 Context metrics can be categorized into three different levels:
 ● High-level context—The impression of space, speed and motion inherent in the
@@ -4892,11 +4237,10 @@ of objects. And at the low-level, our metric is how objects collide, and how the
 collisions feel compared to everyday objects in the real world.
 SUMMARY
 
--- 168 of 377 --
+---
 
-This page intentionally left blank
+## Sección 6: Chapter 2 to answer these questions. [Entropy: 0.385]
 
--- 169 of 377 --
 CHAPTER
 Polish Metrics
 Polish is any effect that creates artificial cues about the physical properties of objects
@@ -4929,9 +4273,6 @@ one a sound effect. To create each requires entirely different skill sets. What�
 player. By an individual effect, then, we mean either the smoke or the squeal. Both
 support the same perception of interaction—the friction of tires spinning against a
 NINE
-
--- 170 of 377 --
-
 CHAPTER NINE • POLISH METRICS
 road under various powerful forces—but each is distinct and is constructed differently. At the higher level, we’re interested in the interactions that are supported by
 these various effects. Many different effects, even across senses, can support and
@@ -4968,12 +4309,6 @@ each object simply, with respect to individual physical properties. But the prop
 properties,” Wikipedia offers the following list: absorption, acceleration, angle, areas,
 capacitance, concentration, conductance, density, dielectric, displacement, distribution, efficacy, electric charge, electric current, electric field, electric potential, emission,
 energy, expansion, exposure, flow rate, fluidity, frequency, force, gravitation, impedance,
-
----
-
-## Sección 49: Chapter 2 to answer these questions.
-
--- 171 of 377 --
 inductance, intensity, irradiance, length, location, luminance, magnetic field, magnetic flux, mass, molality, moment, momentum, permeability, permittivity, power,
 pressure, radiance, solubility, shininess, resistance,spin, strength, temperature, tension, thermal transfer, time, velocity, viscosity, volume, scattering light.
 Apart from being a rather exhaustive list, this isn’t quite what we want. Most of
@@ -4985,9 +4320,6 @@ We need unscientific terms like “pointy” or “springy” because the feel a
 from polish effects is based on the individual player’s perception, which is subjective,
 THE FEEL OF EVERYDAY THINGS
 F I G U R E 9.1 The feel of some everyday things.
-
--- 172 of 377 --
-
 CHAPTER NINE • POLISH METRICS
 relative and general. This is in some ways the opposite of measuring something
 in the real world, which is typically thought of as objective, absolute and specific.
@@ -5010,7 +4342,4669 @@ of the various objects they control and interact with in a game. With that, we c
 examine the corresponding physical properties that the players are inferring in their
 minds from the nebulous, general sensation and trace that down to the level of individual effects.
 This means that what we’re actually interested in tracking are not the physical
-properties of objects in a
+properties of objects in a game but the players’ perception and the clues that cause
+players to perceive the properties of objects in a certain way. The nature of things
+in a game cannot be decoupled from their observable properties, in other words.
+To be a bowling ball, something only has to look like a bowling ball, act like a
+bowling ball and sound like a bowling ball. There is no ultimate nature of matter to be measured by complex instruments. What the player perceives to be real
+is real.
+From a player’s perspective, things can be light or heavy, rough or smooth. An
+action can be weak or powerful, an impact gentle or jarring. These are perceptions. They have a relationship to measurable quantities such as mass, velocity and
+weight, but are more about a gestalt, the general sense of physical nature that something conveys.
+Take the property of mass, for example. When we describe objects in a game
+with respect to their mass, what we really mean is perceived mass, which is derived
+from a bunch of small clues, each of which must be designed, often as a polish
+effect. Every tiny change, every little spray of particles or sound effect, can make a
+huge difference. The mass of an object will seem completely different depending on
+when a spray of particles is triggered as it collides with another object, and if that
+spray of particles is gentle or violent. The simulation of the collision between the
+objects is unchanged but changes in polish have completely altered the perception
+of their masses.
+In the end, then, it’s useful as designers for us to examine polish effects from
+three different angles:
+● As individual, free-standing effects whose motion, size, shape and nature can be
+measured separately from the simulated objects in the game
+● As groups of effects which convey nebulous, general perceptions to the player
+● As observable physical properties that are inferred from groups of perceptions
+(such as mass, material and texture)
+Individual effects enhance and support specific perceptions. These perceptions—
+when taken as a whole—imply certain things about the physical objects in a game.
+These physical properties, things such as weight, material, friction and so on, are
+assembled by players into a cohesive concept of game world physics. As they interact with the game, this conception, this model, is updated constantly to incorporate
+any new interactions. If an interaction seems to contradict the player’s model, it will
+stand out and will be incorporated with the model as part of the backdrop against
+which future decisions are made (the perceptual field from Chapter 3). In this way,
+learning to navigate a game space is the same process as learning to cope with our
+everyday physical space, which is why polish is so crucial. Polish gives players the
+grounding they need to cope with the new, unfamiliar topologies of game spaces
+and the unfamiliar physics which govern them.
+Types of Polish
+The end goal for a polish effect is the same in every case—to convey some sense of
+the physical properties of an object (weight or mass or whatever) by offering clues
+when objects interact and move. A car skidding across the road leaving skid marks,
+kicking up dust and smoke, and making a squealing noise are all clues inserted by
+the game designer to indicate that yes, in fact, this is rubber and this is a road, and
+the weight of the car is pushing the rubber tire into the road. All the subtleties of
+that interaction sell the perception that these objects are real.
+Having identified the player’s perception as what we’re wanting to and are able
+to affect with different polish effects, let’s dive down to the most basic level of individual effects. That is, let’s look at the different ways in which it’s possible to alter
+a player’s perception of the physical reality of the game world without changing the
+simulation itself. These methods include animation, visual effects, sound effects,
+cinematic effects and tactile effects.
+Animation
+Animation is a well-established medium with a rich history spanning from early
+Disney masterpieces like “Snow White” to “Beauty and the Beast” and modern
+masterworks like “The Incredibles” and “Ratatouille.” Along the way, a detailed
+set of best practices has emerged for animation, in the form of the principles of
+TYPES OF POLISH
+CHAPTER NINE • POLISH METRICS
+animation.1 Every new animator has to learn these principles. They comprise a
+universally applicable set of non-negotiable aesthetic guidelines. With respect to
+aesthetics, the conventional wisdom is that there’s no accounting for taste. Different
+people will interpret aesthetic choices differently, regardless of the intent of the artist and independent of any sort of external, objective standard. The principles of
+animation represent just such a standard. If your animation has squash and stretch,
+it will be a better animation than one that doesn’t. Remarkably, this appears to be
+true for all animations everywhere. This is why all new animators must learn and
+master the principles of animation. Another fascinating aspect of the principles of
+animation is that they apply to animation in a way that is analogous to the use of
+polish effects in a video game. That is to say, almost universally, the principles apply
+to selling the physical interaction between objects in an animation. This selling is
+directed squarely at the player’s perception. What they’ve essentially got is a set of
+standards which enable the animator to directly change the viewer’s perception of
+the physical nature of the objects in the animation. They’ve cracked the code of perception, essentially. They can modify perception directly by applying principles such
+as squash and stretch, overlapping action and so on, to the movement of objects in
+their animations.
+Squash and stretch specifically illustrates something fascinating about animation,
+something which animators have known for many years. Emulating reality is not the
+most efficient path to manipulating someone’s perception such that a world you’re
+constructing seems believable and will engage the viewer. You can take shortcuts to
+perception, so to speak, ignoring the constraints of reality to create more convincing
+animation. Take the classic example of the bouncing ball animation (Figure 9.2), the
+first assignment given to every student of animation.
+At the bottom, when the ball is in contact with the ground, it squashes way
+down, deforming and flattening out. When it rebounds upward, it stretches along
+the momentum line of the animation. In motion, this ball will appear much more
+satisfyingly squishy and ball-like. If you animate a static sphere falling, touching the
+ground and rising up again, it looks stiff and unnatural, lacking the sense of weight,
+presence and personality. What this illustrates is that you can change a person’s
+perception of something without resorting to a direct emulation of the reality you’re
+trying to portray.
+As animation is applied to objects in a video game, an animated object typically replaces the visualization of a simulated object. It sits on top of the simulated
+object and changes the player’s perception of its nature and character. It changes
+the player’s perception of what it appears to be—a car, a jet or a ninja, whatever—
+but also by animating differently. The principles of animation apply to the looping
+animation of the character running, which is played back in sync with the motions of
+the underlying simulated object, which is driving its motion in space. That animation
+Frank Thomas and Ollie Johnston’s “Principles of Physical Animation” are online at http://www
+.frankandollie.com/PhysicalAnimation.html
+itself, which starts life as a linear animation created by an animator, will have
+squash and stretch, overlapping action and all the things a good animation should
+have. Ipso facto, it is the animation itself, sitting on top of the simulated object,
+which conveys the sense of weight and presence, the physical properties of the
+object. The animated visualization becomes the object in the mind of the player,
+and so any physical properties it displays as it animates are perceived by the player
+as part of the motion of the object, even though they have nothing to do with the
+simulation. When animated effects become indistinguishable from programmed
+response, animation does just as good a job of creating the sense of weight, mass,
+presence and physicality.
+For example, the run and jump animations of Jak from Jak and Daxter convey a
+sense of weight and presence that simply don’t exist at the level of simulation. As
+Jak runs, he squashes and stretches with each footfall, has awesome overlapping
+action, and generally looks to be a real, breathing physical being made of flesh and
+bone and who is running across varied terrain. If you were to replace all the objects
+in Jak and Daxter with grey capsules representing the way in which the simulation
+sees them, the sense of weight, presence and personality would be lost.
+So the principles of animation apply almost directly to the motion of objects in
+a game. With the exception of principles like staging, which rely on a controlled
+frame of reference and predictable camera behavior, it’s safe to say that squash and
+stretch and all the other principles can be and are directly applied to characters
+in games like Guilty Gear, Viewtiful Joe and Ico, each of which features excellent
+linear animation layered atop simulated objects.
+Another interesting thing to look at is hybrid solutions, where simulated objects
+have an animated visualization layered on top of them but where some parameter
+F I G U R E 9.2 The changing shape of the ball as it bounces creates a realistic perception of a
+bouncing ball, even though the animation doesn’t directly emulate a bouncing ball.
+TYPES OF POLISH
+CHAPTER NINE • POLISH METRICS
+of the simulation drives an aspect of the animation. For example, in the original
+Super Mario Brothers, when the simulated cube object that drives Mario’s motion in
+space speeds up, so too does the speed at which Mario’s run animation plays back
+increases. It’s a nice way to link animation into the simulation underlying it. Note,
+though, that this change in animation playback speed does not have any effect on
+the simulation. The animation plays back faster because the cube is moving faster,
+not vice versa. As we’ve said, it’s an artificial effect, not part of the simulation itself.
+The line between animation and simulation gets a little blurry when procedural
+animation or active ragdoll solutions enter the equation. The keyframe animation
+dictates the perception of that object until such a time as the simulation takes over.
+For example, a football player running along and being tackled. The animation
+drives the impression of motion until such a time as the character is affected by
+another force, at which point the simulation takes over. The applicability to polish is
+essentially the same, however. In traditional animation, as in game feel, the goal is
+to convey the impression that something is physical and consistent and that it
+is interacting with other objects around it.
+Visual Effects
+Visual effects differ from animations in two fundamental ways.
+One, visual effects typically wink in and out of existence to serve a short-term
+need for indication of interaction between two objects. A visual effect appears only
+momentarily at the intersection of two interacting objects: sparks shooting out when
+a car is scraping along a barrier, or a spray of splinters when a crate is destroyed,
+for example.
+Two, visual effects appear to be caused by another object, but are not the object
+itself. With an animation, you have a visualization of character or an object and
+it plays back a linear series of frames. Through deft manipulation in the hands of
+an animator, that sequence of frames played back will cause the object to appear
+to have weight and presence and volume and all that good stuff. A visual effect
+appears to be caused by an object and emphasizes the interaction of that object
+with other objects. The effects in Soul Calibur are a great example of this. A sword
+swipe has a polygon trail following behind it, tracing its arc through the air. The
+trail effect is caused by the motion of the sword. When two swords clash, a jet of
+sparks flies off of them. The sparks themselves are not the object, nor is the trail,
+but each emphasizes the motion and physical nature of the object it supports.
+Visual effects include particles, trails, sparks and other temporary indicators of
+interaction and movement. These effects are accomplished in a variety of ways,
+though most visual effects in modern games are made up of particles. A particle
+in a 3D game is a 2D plane which has a position in 3D space. It will “billboard”—
+always face the camera—and will typically not be affected by lighting or other forces
+in the simulation, though hooking a simulation into particles can be used to great
+effect, as it was in Kyle Gabler’s excellent gamelet The Swarm (in which the avatar
+is a swarm of hazy black particles which cluster and pull toward the cursor and are
+capable of picking up and throwing unsuspecting stick figures in the most charming
+manner imaginable). So a particle effect is a series of textured planes that always
+face the camera. The benefit of having a bunch of planes that always face the camera is that you can create an artificial sense of depth by painting it into a texture,
+which is then applied to each particle. Smoke particle system that has the appearance of a billowing 3D smoke is comprised of a bunch of planes, each showing a
+single painted image of smoke, which has the faked impression of depth painted
+into it. Because you never see the image from an angle, the impression is consistent
+and enables the series of planes to blend visually into a single plane, which reads as
+a cohesive pillar of billowing smoke.
+One thing that’s interesting to note is that the texture—the image itself that
+is on the particle—is not nearly as important as the motion of that particle. In
+many games (Nintendo games especially), when things collide with one another,
+the resulting visual effect might be comprised of an explosion of spinning, multicolored stars. Every single object in Super Mario Galaxy has little stars that shoot
+everywhere when Mario interacts with them. They make absolutely no sense when
+approached from a realistic, simulations point of view. But, like squash and stretch,
+they are a manipulation of the player’s perception of the object without being an
+emulation of reality. In the same way that a real object would never squash rudely
+and stretch back again when it hit the ground, smashing a brick would never yield
+a geyser of multicolored stars. But as long as the motion of those stars is to blast
+out in a satisfying way and then fade out, the impression of physicality is effective without the constraint of realism. As in animation, realism is not necessarily a
+worthwhile goal. You can show interactions between objects and emphasize their
+physical nature without having to resort to emulating reality. No one would say that
+the sparks in Soul Calibur look real. However, real is not the goal. The perception
+that the impact is powerful is what we’re after.
+Sound Effects
+Like animation, the discipline of creating sound effects is well understood. It is the
+same process as Foley for a film, with the caveat that sounds in a game must be
+repeatable. Often times, a whole range of sounds is created to represent a particular interaction, with one chosen at random at any given instance of the impact (or
+whatever event triggers the sound) in order to keep a sound effect from becoming stale. This prevents players from hearing the same sound over and over again,
+annoying or distracting them.
+Playable Example
+A sound effect can completely change the perception of an object in a game. To
+experience this, check out example CH09-1. This a recreation of a Java applet
+originally linked to me by the inimitable Kyle Gabler, of indie studio 2dBoy.
+TYPES OF POLISH
+CHAPTER NINE • POLISH METRICS
+The two red rubber balls come together. One starts at one side of the screen,
+the other at the opposite side. When the simulation starts, they fly toward each
+other and their paths cross at the center of the screen. Based on purely visual feedback, you’d assume that these objects were some kind of ghost ball.
+They appear to pass right through one another unimpeded and go on their
+merry way. Playing the simulation with sound yields a totally different perception. With sound, the two balls behave exactly the same way in terms of their
+appearance and motion, but when they cross at the center the ptoing! sound
+of a tennis ball is played. The effect is startling: instead of appearing to go
+through one another, the two balls seem to bounce off and rebound in opposite
+directions. What a difference a sound makes!
+This is equally applicable to characters in a game. Derek Daniels, one of the
+designers of the feel of God of War, gave a great example of sound completely
+changing feel. For a particular attack of Kratos, an animator had created a detailed
+animation. Derek had implemented that animation and had tuned the move up,
+but the result somehow felt lacking. The animator was about to go back and redo
+the animation to improve the timing, but Derek said, no, hold on, let’s get a sound
+in there. Sure enough, the sound was the missing piece of the puzzle; it made the
+move feel weighty, satisfying and appropriately violent.
+In terms of sound effects, you can have impacts, grinds or loops. An impact happens when two objects run into one another at some speed that is, when a cannonball hits a stone wall, a racket hits a tennis ball or a giant hammer smashes
+the ground. At that moment, a sound effect will play to indicate the impact of one
+object and another. What’s interesting about impact-mapped sound effects is that
+they can affect not only the perception of the objects interacting, but the surrounding environment as well. If that massive hammer hits the ground and the sound
+echoes and reverberates, the sense conveyed to the player is that this impact happened inside a giant warehouse or other massive, empty, interior space. If the
+impact is muffled, it will sound more like striking the ground outside. If you hear no
+reverberation, you can assume that sound waves just kept traveling outward instead
+of bouncing off of something and coming back.
+A grind implies a prolonged interaction between two surfaces. One of my favorite
+grinding noises, which actually accompanies a move called grinding, is in Tony
+Hawk’s Underground. In the game, it is possible to jump your skateboard up and
+grind it against a rail for a long period of time. It makes a very satisfying grinding, woody, metal noise. Essentially what you have is a short loop of sound that
+plays back over and over again but is modulated slightly so that it always sounds as
+though the objects are grinding together in slightly different ways as the weight on
+the board shifts around.
+There are also looped sounds, which are essentially just sounds that repeat
+regardless of the interactions between objects and which convey the ongoing sound
+of something like an engine or a turbine.
+The final thing that’s interesting to note about sound effects is that they’re less
+bound than visual effects in some way.
+Sound effects, in the same manner as squash and stretch or a star-shaped particle effect, are not necessarily bound to realism. The record scratch for the King of
+All Cosmos speaks in Katamari Damacy or the orchestral hit when a special move is
+completed in Tony Hawk 3 prove that mapping an unexpected sound effect to a particular event can have delightful results. These have nothing to do with the reality
+of the things they are attempting to portray, but they feel satisfying. As in a cartoon,
+it’s not necessary to limit your thinking about how to apply a sound effect to the
+emulation of reality. You can convey an impression of physicality with a noise much
+different from the apparent reality of the object.
+Cinematic Effects
+Cinematic effects are things like screen shake, changes in view angle, motion
+blur and Matrix-style slowdown. These are effects which are applied to the camera
+rather than an in-game object. As we’ve said, the camera in a game provides the players their eyes in the world, their organ of perception. It is the players’ point of view
+and has a finite position in the world, a position which can be moved or changed
+just as with any other avatar. This is a vocabulary we’ve been taught over the
+years by constant exposure to big-budget filmmaking. When a giant explosion goes
+off on the screen, there is a slight delay, after which the screen appears to shake,
+as though the camera were responding to the jarring force of a shockwave caused
+by the explosion. The end result is the perception that a hugely weighty impact
+has occurred.
+The point here is that these effects are applied to the in-game camera rather
+than to particular objects, but in so doing, the effects can change the perception of the physical properties of objects in the game. In a fighting game, if one
+player punches another and the result is a jarring screen shake, the perception for
+the player is that an impact of almost ludicrous force has taken place. Another
+effect often used by fighting games is the slow down or frame pause. When
+one character hits another with a particularly devastating move, the game may
+pause momentarily—20 milliseconds, perhaps—to emphasize the impact. The same
+effect was used in Nintendo’s The Legend of Zelda: Twilight Princess and our own
+Off-Road Velociraptor Safari (Figure 9.3).
+It’s interesting to note that these kinds of effects have no analogy in everyday
+perception, but are nonetheless ingrained in our consciousness. As with comparing
+the temperature of the mug of tea and the glass of ice water, everyone will recognize screen shake as an indication of massive, concussive force. Likewise, a change
+in view angle gives the perception that an object is moving faster and faster. Motion
+blur has a similar effect on the perception of speed, blurring the movement of
+fast-moving objects as a camera would.
+TYPES OF POLISH
+CHAPTER NINE • POLISH METRICS
+Tactile Effects
+Finally, there are tactile effects. In the current generation of input devices, this is
+limited mostly to controller shake or rumble, which is caused by the actuation of
+weight-loaded motors inside the input device, such as in the Xbox 360, PS2 and Wii
+controllers. Controller shake can be a bit of a blunt instrument because the motion
+is always rotational, but it can be used to great effect in games where it is cleverly
+fit to the metaphor presented. A gun has recoil, for example, and that motion is
+something rumble motors can simulate well. Most modern console shooters use a
+constant rumble effect to enhance the sensation of firing of a machine gun. For a
+single shot weapon such as a sniper rifle, it will be a single rumble. When shooting is the only control that triggers the motors, the effect can be quite powerful.
+Employing a totally different metaphor, games like Tony Hawk’s Project 8 offer a
+constant low-level rumbling to simulate the grinding of a skateboard against various
+surfaces. In this case, too, the effect is quite powerful if used judiciously, allowing
+the feel of a particular interaction to be correlated across a third sense.
+Other types of tactile effects include so-called “force feedback” devices. This is
+also known as haptic feedback. The notion is that the controller provides actual,
+physical resistance to displacement, forcing the user to work at pulling, pushing or
+rotating it. This is an active application of force administered in certain amounts and
+at certain times by the game’s code, above and in addition to that caused by the
+springs that keep it in neutral position. These kinds of devices have been around for
+years in the form of flight sticks and steering wheels, though they have never entirely
+caught on. This is perhaps because haptic feedback can serve to enhance the perception that the thing being controlled in the game has a real, physical character, but
+more often it serves to enhance the fatigue of players’ arms, wrists and hands.
+F I G U R E 9.3 Off-Road Velociraptor Safari: when you hit a raptor, the game zooms in and
+goes into slow motion.
+TYPES OF POLISH
+Case Studies: Gears of War and Dawn of Sorrow
+As I dug into an examination of all the various polish effects featured in Gears
+of War and Dawn of Sorrow, I began immediately to regret the decision to investigate these particular games. The sheer number of polish effects in these two
+is frankly staggering to catalog, let alone to contemplate creating from scratch.
+This is the nature of the polish beast, I fear. It’s quite the rabbit hole in terms
+of development time. Polish has the reputation of being a dangerous phase to
+become stuck in or to enter in too early. Looking at games like these two, you
+can see why. There are just so many effects! You can always find some other
+polish effect to create, some better way to sell the interaction between objects.
+The trick, I think, is to focus on the overall perception you’re creating and
+enhancing. This is why Dawn of Sorrow and Gears of War make for an interesting comparison; with Gears of War the vision seems to have been very clear
+and the result almost entirely cohesive. With Dawn of Sorrow, there are some
+clashes. Here’s an in-depth examination of the polish of each going from individual effect, to general perception, to inferred physical properties.
+Play the game and simply make a note of the effects that you observe as
+you play. I find it useful to frame this in terms of the four categories: animation, visual effects, sound effects and cinematic effects, working though each
+and listing out each individual effect.
+Gears of War
+Animations Visual Effects Sound Effects Cinematic
+Effects
+Tactile
+Effects
+Run cycle—
+big, looping,
+heavy, lots of
+overlapping
+action
+Foot steps—
+crunch and thud
+satisfyingly
+Clattering of armor
+and gear—sounds
+suitably heavy and
+complex, like metal
+against thick armor
+plating and leather
+Slight
+bobbing in
+time with the
+run cycle
+Dive roll—
+quick and
+nimble
+Roll dust—
+happens (oddly)
+just as the roll
+starts. Character’s
+feet are suddenly
+obscured by a
+puff of dust as if
+by magic
+Clattering of armor
+and gear—sounds
+a bit light for such a
+broad motion
+Camera dips
+gently to
+follow rolling
+motion
+(Continued )
+CHAPTER NINE • POLISH METRICS
+(Continued )
+Animations Visual Effects Sound Effects Cinematic
+Effects
+Tactile
+Effects
+Roadie Run—
+a hunkered
+down,
+awkward,
+heavy-looking
+run. Saving
+Private Starcraft
+Gentle puffs
+of dust at each
+footfall
+Clattering of armor
+and gear—sounds
+suitably heavy and
+complex, like metal
+against thick armor
+plating and leather
+Camera bobs
+and sways as
+though held
+by a running
+cameraman
+Door kick—
+heavy impact
+with nice
+anticipation
+and a great
+sense of power
+Dust particles
+explode from the
+door
+Satisfying metallic
+crack as the impact
+causes the door to
+shatter and give way
+Camera rears
+back and tilts
+in anticipation
+and shakes
+forward quickly
+as the kick is
+delivered
+Enter cover—
+heavy
+impact, like
+a linebacker
+tackle
+Dust particles
+shake loose from
+the wall and
+ceiling and fall
+gently
+Crunch and thud—
+sounds like a huge,
+complex object
+smushing up
+against a textured,
+mottled wall
+Camera
+changes focus
+depending
+on direction
+character is
+facing, placing
+the character in
+the left or right
+of frame
+Barrier hop—
+quick and
+nimble in the
+hop but with
+nice followthrough and
+overlapping
+action on
+landing
+Crunchy grinding
+noise as the
+character slides over
+the barrier, impact
+hit when he lands
+Camera dips
+down to show
+character’s
+feet as he
+lands before
+returning to
+standard over
+the shoulder
+Fire “ Lancer “
+machine
+gun—
+powerful
+sense of
+the recoil of
+the gun,
+character
+Muzzle flash
+particles at barrel
+of gun
+Smoke particles
+at barrel of gun
+Chunky gravel
+particles when
+Deep, powerful
+machine gun sound
+Pinging of bullets off
+surfaces
+Sounds of shell
+casings hitting the
+ground
+Screen shakes
+in time with
+bullets
+Constant
+rumble to
+indicate
+recoil from
+machine
+gun fire
+(Continued )
+TYPES OF POLISH
+(Continued )
+Animations Visual Effects Sound Effects Cinematic
+Effects
+Tactile
+Effects
+stands in a
+wide stance
+and braces
+against the
+forces
+bullets hit a wall or
+other surface
+Bullet holes
+created in walls,
+start glowing
+white then go to
+yellow, red
+Swing
+grenade—
+grenade
+seems heavy
+and massive.
+Character rears
+back and looks
+at grenade
+initially
+Deep, satisfying
+swooping noise as
+grenade is swung,
+slight Doppler effect
+Sound of chain
+clanking
+Camera view
+angle changes
+slightly to
+frame swinging
+grenade and
+improve sense
+of speed
+Throw
+grenade—
+great followthrough,
+grenade seems
+like a massive,
+heavy object
+Chunky, metallic
+impact noise each
+time grenade hits
+the ground
+I’ve omitted a few of the effects—there are dozen and dozens—but this is a
+reasonable cross section, representing effects from each of the five types.
+Castlevania: Dawn of Sorrow
+The effects in Dawn of Sorrow are somewhat mind-boggling. For each creature
+(there are well more than 100), there are different sounds, visual effects and
+animations. Some, such as the bosses and larger enemies like the iron golem,
+even have their own specific cinematic effects. For every weapon the character wields, there are different animations and effects. What follows is a small
+subset of these effects, enough to draw conclusions and comparisons. Even
+without tactile effects (the Nintendo DS has no rumble motors) the amount of
+polish work on display here is truly staggering.
+CHAPTER NINE • POLISH METRICS
+Animations Visual Effects Sound Effects Cinematic
+Effects
+A purple trail follows
+Soma’s every
+movement, enhancing
+the impression of
+speed and the feeling
+that he’s some kind of
+ethereal being
+Run cycle—Very
+stylized, but with a
+nice sense of weight
+at each footfall. It’s the
+transition animation
+going from one
+direction to another
+that really causes the
+impression of a floating,
+weightless character
+Attack with Axe
+“Golden Axe”—Huge,
+fully body motion as
+the character seems
+to heft the axe in a
+ponderous arc
+Subtle swiping
+noise. Character
+grunts with effort
+Attack with Spear
+“Gungner”—Great
+anticipation as the spear
+is held up and powerful
+follow-through with
+overlapping action as
+the spear is swung. Nice
+delay holding the spear
+out for emphasis of
+weight
+Air swipe Doppler
+noise
+Attack with Sword
+“Muramasa”—quick,
+snappy motion with
+nice overlapping
+action of the hair and
+blurred arm motion
+For some reason,
+swords appear to
+shoot out at various
+angles from the
+sheath as the sword
+is swung
+Sword arc is traced in
+the air
+Air swipe Doppler
+noise
+(Continued )
+TYPES OF POLISH
+(Continued )
+Animations Visual Effects Sound Effects Cinematic
+Effects
+Jump—weird hover/
+delay just before
+contacting the ground
+Light rising scrape
+as Soma leaves the
+ground
+Light, clicking
+thud as feet hit the
+ground
+Double Jump—
+quick and nimble
+flipping motion,
+satisfying swishing of
+coat
+Same light scraping
+noise as first jump
+Witch Soul shot—
+flings arm out
+satisfyingly
+Ball of blue energy
+pulsating, flies
+quickly out
+Abstract,
+reverberating
+magical noise
+Trail of smaller
+particles gives the
+blue ball an almost
+comet-like aspect
+Hippogryph Jump—
+character stretches
+vertically and looks
+upward, flyings in that
+direction with great
+speed. On impact,
+flips upside down
+and compresses
+against the ceiling
+in a preternaturally
+nimble way, though
+there is nice recoil and
+overlapping action
+with the coat (as usual)
+Sound like rushing
+air as the character
+flies upward
+Dry, plastic thud
+as the character
+impacts the ceiling
+Screen shakes
+on ceiling
+impact
+Destroy skeleton—as
+the skeleton is hit, it
+falls to pieces
+Puff of dust as the
+skeleton pieces hit
+the ground
+Slapping noise as
+the skeleton is hit
+Hollow woodblock
+sound as each piece
+hits the ground
+CHAPTER NINE • POLISH METRICS
+If you think listing things out this way make it seem as though there are
+a hell of a lot of effects, you’re spot on. It boggles the mind that games like
+Guilty Gear and Soul Calibur manage to do such an amazing job of harmonizing animation, visuals, sounds and cinematic effects to clearly convey a
+unique feel for so many different characters. It’s no wonder there are so many
+people on those teams, or that many different people may work on the same
+character exclusively for the entirety of production.
+Though it’s a little tedious with games as intricate as Dawn of Sorrow
+and Gears of War, it is useful to look at each animation as a separate effect.
+Sometimes one animation will support a particular perception while another
+one contradicts it. For example, the jumping, spinning and sliding animations
+in Dawn of War give the appearance that Soma is exceedingly quick, like some
+sort of preternatural gymnast. He’s more squirrel than man, it appears. When
+running on flat ground, though, he appears to chug along rather lackadaisically, his feet sliding across the ground. This is particularly true if you change
+directions over and over again; he slides back and forth as though swimming
+gently through water, which is about as far from the tight, whipping, circular
+motions of his flips as it is possible to get.
+The dive roll animation in Gears of War is more neutral; in my perception
+it neither supports nor detracts from the impression that the character is a
+human-shaped wrecking ball. I notice, however, that much of the action takes
+place off screen. Without confirming this with a designer at Epic, I would
+guess that this is because it’s very difficult to create a rolling animation that
+is fast enough to feel responsive but which conveys the appropriate sense of
+weight.
+Note that a single effect can support more than one perception, as when
+an animation shows both weight (Marcus Fenix is like an NFL linebacker,
+stretched horizontally and covered in a suit made of cinderblocks) and material (the overlapping action of the armor he wears makes it appear to be a
+heavy, composite metal of some kind).
+There seem to be two currents of feel at odds here. Except for the quick and
+nimble flipping of double jump animation and the “hippogryph jump,” Soma
+moves fluidly and lightly. He’s nearly weightless, as though he’d be right at
+home in “Crouching Tiger, Hidden Dragon.” His animation for switching
+directions and the constant purple trail of self copies that follow him around
+all support this perception, almost as though he’s moving through something
+other than water. At certain points, however, his actions seem to have great
+impact, as when he collides with the ceiling during a “hippogryph jump” and
+causes the screen shake effect. During his run cycle, there is one moment of
+overlapping action where his head snaps downward that really lends a sense
+of weight and presence to his step, but the effect is diffused somewhat by
+the fact that his movement speed doesn’t map perfectly to the movement of
+his feet. This is often referred to as “skating” by animators and is a common
+TYPES OF POLISH
+problem in games, where the speed of animation playback is often matched
+dynamically to the speed of the object underlying the motion.
+Hitting things with weapons also has a great sense of impact and weight,
+especially in the contrast between the heavy and light weapons and because
+of the spraying, exploding particles that most enemies spew when defeated.
+Again this mirrors the general perceptions of movement and interaction I get
+from Crouching Tiger. The characters move and float around like tissue paper
+on the wind until the moment their weapons clash, at which point there is a
+powerful sense of impact. None of the impacts in Dawn of Sorrow have the
+impression of weight, presence and impact of those in Gears of War, however.
+Gears of War is like controlling a human-shaped wrecking ball. From the
+thumping run cycle to the camera-jarring kicking down of doors, each animation and accompanying effect enhances the perception that the thing you’re
+controlling is huge and weighty. Every time the character interacts with the
+environment, such as when he presses against a wall to take cover, the effects
+combine to sell a sense that a large, meaty, complex object is mashing against
+a grimy, textured surface. Sprays of dust particles come off the walls and ceiling, and the sounds are deep and crunchy. The impression that the environment is malleable and reactive is further enhanced by the myriad effects that
+happen when bullets hit it. The interactions seem suitably sloppy, though, as
+bullet holes spray in a wide grouping and chunks of material come flying off
+each hole. Firing a gun seems like an appropriately jarring affair, emphasized
+by judicious use of controller shake and the deep, resonant gunshot sounds
+and accompanying impact effects. The fact that the characters react relatively
+little to both firing guns and being hit by them seems to further emphasize
+just how massive and burly these folks are.
+Grouping the perceptions (such as mass, material and texture) into specific,
+observed physical properties and comparing them to one another we get:
+Gears of War Dawn of Sorrow
+Masses Heavy and over-the-top massive Light and ethereal but with
+surprising forces on impact
+Velocity Relatively slow moving; changes
+direction in an instant, however,
+and can make short, quick motions
+Medium to fast. Changes direction
+in an instant, can attain great
+speeds with certain souls equipped
+Momentum No real momentum except in
+animations
+No real momentum except in
+animations
+Materials Flesh, composites, metal Some evidence of metals versus
+woods versus bone, but mostly
+(Continued)
+CHAPTER NINE • POLISH METRICS
+(Continued)
+Gears of War Dawn of Sorrow
+in enemies. Character has a very
+slippery, lightweight character,
+almost like a bar of soap
+Friction Very high-friction, textured world Sense of friction when character
+slides but otherwise everything
+seems to have enough friction
+to walk or else simply flies in an
+arbitrary manner
+Gravity Very high gravity; no vertical
+jumping
+Very low gravity, some things (such
+as the character) seem to fly and
+float with little logic or prompting
+Shape Stout and thick, seems to be
+shaped like a human (pressing
+against things)
+Shaped like a rectangle
+Elasticity None in evidence None in evidence
+Plasticity None in evidence None in evidence
+Summary
+In this chapter, we’ve examined the many different ways polish can be used to alter
+a player’s perception of the physical reality of the game world without changing the
+simulation itself. Specifically, we looked at polish effects from three different angles:
+● As individual, free-standing effects whose motion, size, shape and nature can be
+measured separately from the simulated objects in the game
+● As groups of effects which convey nebulous, general perceptions to the player
+● As observable physical properties that are inferred from groups of perceptions
+(such as msass, material and texture)
+We also examined how animation, visual effects, sound effects, cinematic effects
+and tactile effects are used to affect player perception. Polish gives players the
+grounding they need to cope with the new, unfamiliar topologies of game spaces
+and the unfamiliar physics which govern them.
+CHAPTER
+Metaphor Metrics
+As a component of a game feel system, metaphor has two aspects, representation
+and treatment.
+Representation is the idea of the thing, or what it appears to be. Is it a car, a
+gelatinous cube of meat or a plucky spike-haired hero in a neo-steampunk tropical
+wasteland? Is it a MacLaren F1 or is it Fatty from Run Fatty Run? Metaphor unifies
+the idea of the avatar, the idea of the world, and the idea of all the objects in the
+world. If you replace all the art, music and sound in a game with purely abstract
+shapes and colors, what you have removed is the representation. Imagine the game
+Diablo with graphics by Jackson Pollack and sound by Steve Reich. The fundamental functionality of the game is still intact, but the metaphorical representation is
+gone. While dribbles of paint and electronic pulses do not really represent anything,
+barbarians, buildings and cows give each object in the game some hook on which
+players can hang their conceptual hats.
+Treatment is the cohesive whole formed by visual art, visual effects, sound
+effects, tactile effects and music. If you take away all the art, music and sound from
+a game but leave the core systems untouched, what you have removed is the treatment. Imagine the game Diablo with every object—avatars, townsfolk, creatures,
+environment—replaced by flat gray boxes. The fundamental functionality of the
+game is still intact, but both treatment and representation are gone. One could argue
+that flat gray boxes are a treatment of sorts, but you get the point.
+We can measure the impact of metaphor on game feel in two ways. First, we
+want to identify the what. What does this thing appear to be? What is each object
+representing to the player at the conceptual level? Again, this will be something like
+a car, a train or a tall humanoid cat. Next, how will the player expect the thing
+to act? In other words, based on the metaphorical representation, what are the
+expected behaviors, effects, animations, motions, interactions and sounds?
+We’re also going to examine the role of treatment. Treatment dictates to a powerful degree how accurate a player will expect the nature and motion of an object to
+be relative to its representation. A player can rightly expect something that appears
+visually to be a photorealistic human to move and act as a person would. If that
+person is a stick figure, however, the expectations set are much different (and much
+easier to fulfill).
+TEN
+CHAPTER TEN • METAPHOR METRICS
+To generalize, the primary effect of metaphor on game feel is to prime a
+player with preconceptions about how given object should behave. The representation conveys an idea about what the thing is, and the treatment indicates its
+level of sophistication. The more response, context and polish seem to match the
+metaphor presented, the more cohesive, self-consistent and good-feeling the game
+will be.
+Note that we’re not making any judgments about what “matching” the metaphor
+means. It certainly doesn’t mean that emulating reality is the way to go. There is
+a phenomenon similar to Masahiro Mori’s Uncanny Valley at work with respect to
+how well the metaphorical representation of an object in a game matches the feel of
+that game. If a sound, animation or effect is close to matching the expectations set
+by the representation and treatment, but falls just short, it can be much more distracting than if it were completely abstract.
+For example, in Doom 3, the treatment was intended to be realistic. But many
+objects in the world, when touched or shot, would spin and fly around in a wild,
+unrealistic way. If the treatment was more iconic, like a graphic novel, or if the
+metaphor was more abstract, with floating shapes instead of zombies, this would
+not have created dissonance for the player. As it is, because the treatment and metaphor in Doom 3 were intended to be realistic and serious, the fact that every zombie had the exact same pattern of dangling became distracting. Even the gunshot
+sound effects in the game Doom 3 did not seem to live up to the standard set by the
+realistic visual representation. The shots sounded like cap guns. If instead the shots
+were an abstract pulse or laser sound, they might have been easier to accept. Even
+something completely absurd like kittens meowing could have fit better, if the goal
+was to be absurd. There is a sweet spot where a game’s metaphor can correspond
+perfectly to response, polish and context.
+Case Studies: Mario Kart Wii and Project Gotham 3
+To set the stage for understanding how this all comes together as a practical
+metric, it’s useful to compare and contrast, in some detail, how metaphor is
+used in two very different games of the same genre. Let’s dive in and look at
+Mario Kart Wii and Project Gotham 3.
+Visually, both games start with cars in a racetrack environment lined up for
+the beginning of a race. Mario Kart is 3D and cartoony, and all the visuals are
+iconic and round. The environment is stylized, smooth, colorful and inviting.
+The graphics have some link to the real world, but they’re highly symbolic. A
+tree is identified as a tree, but it’s not a very specific tree, just a generalized
+idea of a tree. In contrast, the treatment in Project Gotham 3 is about as far
+from Mario Kart as it is possible to get while still representing the idea of cars
+at a racetrack. Project Gotham 3 strives for total photorealism. If the designers
+could achieve their ideal representation of forms in Project Gotham 3, it would
+METAPHOR METRICS
+be like playing a movie. You could drive cars around a track, and you would
+drive past stuff that looked just like the stuff you would drive past in real life.
+The car you were driving and all the cars around you would look like moving
+photographs.
+In terms of sound, there is much less environmental background in Mario
+Kart. Project Gotham has the revving of many, many engines, probably
+recorded from the real-life cars they are meant to represent. Project Gotham
+also has cheering spectators and all sorts of authentic noises. Depending on the
+starting point on the track, city or country, you also hear the appropriate background sounds. So Project Gotham strives for great realism in its soundscape
+as well. Mario Kart Wii represents many of the same things, but the sounds are
+similar to the visuals in that they are symbolic representations. The karts make
+these little rumbling noises in place of strictly realistic engine sounds. Even so,
+the sounds in Mario Kart are not quite in line with the stylized appearance of
+the karts. It’s entirely possible that the sounds could be made much more fantastic and still achieve unity with the visual metaphor.
+In both games, when the starting countdown happens, you hear dink-dinkdink DING. The series of noises are actually quite similar. In Project Gotham,
+it’s most likely an actual recording whereas Mario Kart has more of a lo-fi feel.
+The countdown proceeds, and they’re off!
+As they start moving around the track, the environments are very different. In Mario Kart, the player encounters bizarre things like being fired out
+of a cannon or sucked down a warp pipe. In Project Gotham, cars are speeding around a realistic track that twists and turns in very real-world ways.
+And the motion mapping in Project Gotham is also more realistic than Mario
+Kart, which is more cartoony. In Project Gotham, driving the car is intentionally similar to driving a real car at high speeds. You shift and brake and drift
+the back end to bring the car around curves at the highest speed possible
+while not losing control and crashing. In Mario Kart Wii, if you don’t press
+the Power Slide button as you come round a corner, you won’t be able to
+carve the turn without running into something. Pressing the Power Slide button changes the friction properties of the car, increasing the floatiness of the
+car and enabling it to slide sideways. You can also improve the slide by wiggling the thumbstick and changing the color of the sparks. If you build up the
+sparks to the gold spark level by holding down your thumb, when you release
+you get a speed boost coming out of the turn. Clearly, the driving feels nothing like driving a real car. Driving Mario Kart Wii is a simulation of cartoon
+physics where Project Gotham takes a much more literal approach to driving
+physics.
+In both games, the visuals and sound effects that happen in response to
+the motion are consistent with the style of each game. Smoke particle effects
+coming from the tires in Project Gotham are restrained and light, much like
+they would be in real life. Tire screeching noises are recordings of real cars.
+CHAPTER TEN • METAPHOR METRICS
+In Mario Kart, there are a huge number of particles flying everywhere, and the
+puffs of smoke and sounds they make are all very exaggerated.
+Now let’s look at how well the metaphors in each game are executed to
+create good game feel. In terms of the interaction of objects and the game, this
+starts to get into context, in the sense that when objects interact, the way they
+behave has a huge impact on the way the game feels.
+In Project Gotham, when the cars collide they just bounce off each other,
+which is not what you would expect based on the realistic visuals and sound.
+You would expect that if two cars that looked real, moved real and sounded
+real ran into each other, there would be a massive crash like you see on the
+NASCAR replays. Bits of car would go flying everywhere, things would catch
+on fire, one of the cars would spin out and all the others would swerve to
+avoid it or not—mayhem would ensue, and all the drivers would be under the
+yellow flag until the emergency vehicles cleaned things up. Oh, the humanity. In Project Gotham, the interactions are coded almost like a waterslide. It’s
+like a bunch of big, round, smooth plastic objects falling down a waterslide
+and bumping off one another. Similarly, if a car runs into something in the
+environment, it comes to a gentle halt or else glances off and keeps going as
+though the walls were peanut oil. The cars just keep slip-sliding along, which
+is not at all what happens if a real car runs into a real wall, lamppost or chainlink fence. This is an unfortunate mismatch between metaphor and the feel
+conveyed by the response, context and the various polish elements.
+Tellingly, the interaction between the cars in Mario Kart Wii is similar to
+that in Project Gotham. One car runs into another, you get a little sound, and
+the cars glance off one another with the same sort of waterslide feel. Objects
+never get hung up on each other. In the case of Mario Kart Wii, however,
+there’s no dissonance. The karts’ treatment is cartooned, which means the
+player’s expectations are different. No one expects them to behave like real
+cars. The main difference between the relative feel of cars in Mario Kart Wii
+and Project Gotham is that in Mario Kart, some karts read as larger, heavier
+objects which can knock smaller karts around when they run into them. In
+this respect, the interaction between objects in Mario Kart Wii is actually more
+sophisticated than Project Gotham 3, in which the cars seem to have a uniform mass.
+Overall, the two games are similar in just about every aspect except for
+their representation. But there is a huge difference in the dissonance or harmony of the various aspects of the games. In Mario Kart Wii, all the different aspects, from the cartoony representation to the abstract sounds to the
+motion that’s produced to the way the karts interact, all those things seem to
+harmonize very well. Whereas Project Gotham 3 has harmony across visuals
+and sound, the glaring omission of commensurately detailed car interaction
+disrupts the unity of the game’s feel significantly. This was actually due to
+an unfortunate legal hang rather than a bad design choice, but the result is
+F I G U R E 10.1 Realistic, iconic and abstract: three types of representation.
+REAL, ICONIC AND ABSTRACT
+illustrative nonetheless. The result is that the cars in Project Gotham 3 simply
+do not meet expectations for how they should interact, creating significant dissonance in the photorealistic metaphor of the game. Mario Kart Wii does a
+much better job of harmonizing with its metaphor.
+And this is what we are interested in measuring: the overall effect that metaphor has on the feel of an object with respect to the way it sets up expectations in the player about how objects should sound, how they should look,
+how they should behave, and how they should interact with one another. In
+this way, all pieces of a game’s feel are affected by the metaphor that you
+choose and apply.
+Real, Iconic and Abstract
+Up to this point, we’ve made oblique references to the term realism. Let’s nail that
+sucker down so we can get a better grip on how treatment modifies game feel. The
+way we’ve used realism thus far is as a measure of how similar something looks to
+a photograph or film. On the other end of that spectrum is cartoony. This is, I think,
+how most people apply the term realism, especially to graphics in games.
+A slightly different approach is that used by Scott McCloud in Understanding
+Comics. He adds a third axis and changes “cartoony” to the much more descriptive
+“iconic” (see Figure 10.1). Although Scott’s concept is summarized below, please
+consider reading his original explanation in “Understanding Comics,” which is very
+well done.
+On Scott’s diagram, all visual representation exists somewhere in a triangle. At
+the far left point of the triangle is reality. At the far right is iconic. He defines the
+CHAPTER TEN • METAPHOR METRICS
+written word as the ultimate abstraction, the point of visual representation that
+is furthest from reality while still effectively conveying meaning. Between reality
+and pure meaning, there are various shades of iconic. That is, visuals which are
+abstracted from reality, but which still convey meaning. With the third axis, he
+separates iconic abstraction from what he calls “non-iconic” abstraction, which is
+probably what most of us think of as abstraction. Shapes, colors and lines; things
+which exist for their own sake and have no inherent meaning, which don’t represent anything. This scale, while originally designed to apply to comics and other
+visual art can, with a little fudging, be applied to the representation of objects in a
+video game (Figure 10.2).
+Gears of War fits somewhere between Project Gotham and Mario Kart Wii. There
+are some iconic elements, in the sense that the characters are large and bulky (not
+something you’d see in the real world of everyday experience), but the texture and
+lighting attempts to be hyper-realistic, in the way that the movie Alien attempts to
+visualize a world in which things are more sticky, more wet and more rim lit.
+Call of Duty IV is even more realistic, trying to emulate photo-like visuals in a
+more staid way than Gears of War. There’s not much stylization in the proportion
+of the characters, though there is a grainy, filmed look to the game that could be
+considered stylization. On the iconic side, Legend of Zelda: Wind Waker is highly
+iconic but represents a complete game experience in a world with its own selfreferent, entirely consistent rules. If we move to the top of the triangle, toward the
+purely visually abstract, we have games like Everyday Shooter, in which the objects
+are geometric and musical abstractions with no apparent metaphor.
+From a metrics point of view, what we’re interested in are the implications for
+how elements of game should behave if the game is more or less realistic, iconic or
+F I G U R E 10.2 Some well-known games placed on the triangular diagram.
+abstract, with respect to game’s overarching metaphor. For example, returning to
+Project Gotham 3, we located that game far over to the left of the diagram toward
+realism, and we can infer that everything in the game should behave as closely as
+possible to how things behave in the physical world as we perceive it. Everyday
+Shooter is very abstract, presenting us with a bizarre world where we’re not really
+sure how things are going to react, which has the effect of setting expectations wide
+open. It would be hard to make objects in Everyday Shooter behave in a way that
+seemed wrong, but it leverages no expectations either. In an iconic game like Sly
+Cooper, which is far over to the right, we expect cartoon physics and are not disturbed if two things jiggle like Jello-o when they collide, as long as volume is maintained per the principles of animation.
+Metaphor sets up expectations about the way things should look, move, sound,
+behave and interact. This is how metaphor affects game feel. When everything is
+in harmony, and all the player’s expectations are met, it’s a win for the designer
+and the player. When things aren’t in harmony, it causes dissonance and frustration, and the player disengages from the game. If the visuals write a check that the
+game’s physics can’t cash, the player loses his or her belief in the self-consistent
+fidelity of the world.
+Summary
+We can measure the impact of metaphor on game feel by looking at response, context and polish, and by comparing them to the expectations set up by the metaphor
+applied to all the objects. This is a soft metric. Players will perceive things as they
+expect to perceive them, not necessarily as they really are. We want to know what
+perceptual expectations are being set up by metaphor and treatment.
+If you’ve ever been to a wine tasting, it’s easy to experience this phenomena in
+real life. If you put out eight bottles of wine and hide the labels, you’ll get a very
+different result than if the tasters can see the labels. People expect famous, pricey
+wines to taste better—and results of a tasting will reveal that they do! The Chateau
+Mouton Rothschild will always rank higher than the Stags Leap Cabernet. But taste
+the wines blind, and you can get some very different results, as in the famous 1976
+wine tasting in Paris, where California wines soundly whupped some of the top
+French chateaux in a blind tasting by famous French judges.
+So be careful what expectations you set up and how. Ask the following
+questions:
+● What do the objects in the game represent?
+● Where does the treatment rest on the triangle diagram? How realistic, iconic or
+purely abstract is it?
+SUMMARY
+CHAPTER TEN • METAPHOR METRICS
+● How well does the representation and treatment of objects in a game coincide
+with the way those objects behave? Based on the metaphorical representation,
+what are the expected behaviors, effects, animations, motions, interactions and
+sounds of the game?
+● Does the metaphor set expectations that are in line with game feel for each element of the game? If not, either the metaphor or the game elements probably
+need to be adjusted.
+CHAPTER
+Rules Metrics
+For our purposes here, a “rule” is an arbitrary, designed relationship between
+parameters or objects in a game. Arbitrary because there is no higher order guiding
+the creation of such relationships and designed because it is a relationship intentionally created by a designer. A few examples of rules by this definition:
+● Collect 100 coins to get a star.
+● Collect 5 stars to open a door.
+● Orange triangles upgrade weapons.
+● Defeating Woodman gets you the Leaf Shield.
+● You can only hold two weapons at once.
+● It costs 5 hearts to throw Holy Water.
+● To score a capture, your team’s flag must be in your base.
+● It takes 3 hits to kill a Skelerang.
+● Experience points required to level up increase exponentially.
+It’s fascinating to pull individual rules out like this and hold them, naked and
+shivering, up to the lightbulb of logic. Notice that they make no sense outside of the
+context of the systems into which they were so carefully crafted. Inside their proper
+context, though, they lend a sense of purpose and intent to actions in a game.
+Collecting coins has meaning precisely because it restores health, increases score
+and earns stars.
+So what do rules like this have to do with game feel?
+Changes in rules can alter the feel of a game in subtle but measurable ways.
+Having an incentive to collect coins changes the nature of your interaction with
+them and therefore can change the way it feels to collect them, or even how it feels
+to steer around an environment. To see how this works, we’ll compare the way
+rules affect the feel of various games by dividing them up into high-, medium- and
+low-level rules, as set forth in Chapter 5:
+● High-level rules consist of broad sets of goals that focus the player on a particular subset of motions, such as collecting coins. High-level rules can also take the
+form of health and damage systems.
+ELEVEN
+CHAPTER ELEVEN • RULES METRICS
+● Mid-level rules are rules for specific objects in the game world that give immediate meaning to an action, such as capturing the flag in a capture-the-flag multiplayer game.
+● Low-level rules further define the physical properties of individual objects, such
+as how much damage it takes an avatar to destroy an enemy.
+The goal, as always, is to arrive at generalized intra-game measurements which
+enable us to compare the rules of one game to another with respect to how they
+change feel.
+High-Level Rules
+At the highest level, rules can serve to focus players on a certain subset of mechanics
+and, in so doing, change their perception of the game’s feel. The designer is directing the player to perform certain actions. From all the available action choices in a
+game, the designer wants the player to make certain choices and institutes a reward
+system to reinforce that behavior. Through rewards, the game designer is communicating with the player, pointing out that certain actions are more fun, more satisfying, than others. Developing this certain set of skills, the designer is saying, is most
+worth your time.
+This is similar to the effect the high-level construction of space has on a mechanic’s
+feel because it’s not overt; it’s a general feeling. A high-level relationship like this
+doesn’t slap you in the face and tell you to do something. Instead, it encourages
+you to play a certain way by leaving you a trail of breadcrumbs to follow. For example, collecting 100 coins in Super Mario 64 gives you a star, which in turn unlocks
+various star doors in the castle. Open enough star doors and you reach the boss
+level. Beat the boss level and you get access to more areas of the castle, the highest reward possible. There is a hierarchical reward structure involving coins, stars
+and areas of the castle. Essentially, the player is being rewarded for completing a
+challenge with access to new challenges, but the feeling is one of excitement and
+triumph. It’s a classic—if somewhat sneaky—convention. The point, though, is that
+the meaning of collecting a coin goes all the way up to getting access to a new area,
+the highest reward in the game. As a result, coins seem quite valuable.
+This sense that coins are valuable has a measurable effect in terms of game feel.
+Skills like precise turning, movement and jumping are emphasized, as are highly
+difficult skills like flying and swimming. Everywhere in the game, there are coins.
+To collect them requires a great deal of precision, especially when moving at top
+speeds. The coin gives the player a point of reference against which to measure
+skill, and a driving purpose for running, jumping, swimming and flying. It’s like
+dribbling a soccer ball. Dribbling across an empty field may have some lowly kinesthetic appeal, but it’s not going to keep you practicing for hours. What keeps you
+practicing for hours is the sensation of dribbling a soccer ball around two defenders
+and kicking in the winning goal. (Or the potential for that sensation, at any rate.)
+The skills that the rules of a game successfully make important become important,
+worthwhile skills. The feel of the motion changes in proportion to the value created
+for it by high-level rules.
+To get a clearer sense of just how powerful this effect can be, think about a
+time you played a game in which there were a great number of possible actions,
+but in which none of the actions seemed worthwhile. For me, a great example of
+this is Ratchet and Clank. In Ratchet and Clank, everything spews cogs, nuts and
+bolts. Everything. Lots of them. For me—and this is not true for everyone—playing
+Ratchet and Clank felt a little like vacuuming. There were so many of these little things that each individual one ceased to have meaning, making the action
+of having to chase down each individual cog and bolt feel like a tedious chore.
+Compounding matters was the unsophisticated relationship between collecting and
+buying. You collect a bunch of stuff and then take it to the gun vending machine.
+The tradeoff was too transparent. If you want a new weapon, spend a lot of time
+killing the same guys over and over again and vacuuming up detritus. Boo-urns.
+Now think about a very important object in a game, an object you greatly desired.
+Why did you want it? It clearly has no importance outside the game, but somehow,
+some way, it was given some amount of relative importance by the cunning construction of rules.
+Another interesting aspect of high-level rules is that they can make even a tedious action very fun or “addictive.” For example, in the various Zelda games, there
+is grass everywhere. Using a sword, you hack your way through the grass. Of itself,
+this action isn’t very satisfying, because the grass offers no resistance. But you
+keep doing it because there’s a rule, an arbitrary relationship between unrelated
+things, that says when you cut down grass, a certain percentage of the time certain items will spawn out of that grass. Those items in turn have their own meaning. For example, sometimes you get rupees, and if you collect enough rupees, you
+can go buy special armor, bombs or other things that, in their own particular way,
+have their own relationship to the world and enable you to interact with objects
+you couldn’t before, access new areas of the game and generally feel very rewarded.
+Cutting down grass might also give you arrows to refill your bow, because there is
+an arbitrary rule that you can run out of arrows. The rule could just as easily have
+been that you have infinite arrows, but then you would tend to use the bow all the
+time. Also, there are places where you need to fire an arrow in order to solve a puzzle, and cutting grass nearby will replenish your arrow supply if you are out. So in
+a certain sense, the feel of cutting down the grass is altered because the meaning of
+the reward for cutting down the grass changes. The meaning assigned to an action
+by a rule alters the feel.
+The same principle applies to even simpler mechanics. For example, in Diablo,
+there’s a rule that governs the drop rate of different items, from enemies to treasure chests. For every 100 or so enemies a player kills, one will drop an item that
+will upgrade the player’s ability to kill enemies. So the player continuously has
+HIGH-LEVEL RULES
+CHAPTER ELEVEN • RULES METRICS
+an incentive to kill as many enemies as possible or click on treasure chests, even
+though the action itself is very tedious. The reward system compensates and changes
+the experience so that the player keeps coming back again and again.
+Medium-Level Rules
+Medium-level rules can give immediate meaning to action. In a game that emphasizes game feel—steering around objects and navigating space—a great deal of
+stock is put into the spacing (the context) of objects. Not only do you have to tune
+the speed and movement of avatars, but also their speed and movement against
+spatial context. The number, nature and spacing of objects in the world is the other
+half of game tuning. The same fundamental thing applies when objects in the world
+are given immediate, temporary importance by virtue of a rule system.
+Think of Quake. If you’re playing a game of Quake and your health is very low,
+when you see a health pack in the immediate vicinity, getting that becomes a very high
+priority. To avoid giving another player a point, you have to get that pack; therefore
+everything else has little meaning until you do. Given this rule, the objective of the
+game becomes getting your health back at the expense of everyone else. It’s a simple,
+arbitrary rule that changes the way the player approaches the space of a level.
+Now think about what happens when you’re playing a game and you suddenly become aware that you’re low on health. It could be a fighting game, such as
+Samurai Showdown 4, or a more staid affair such as The Legend of Zelda. Suddenly,
+every tiny motion seems a lot more important. You have a heightened awareness of
+every motion and are keenly attuned to the control, the feel, of the avatar. In this
+way, rules defining health and its meaning in a game can lend a sense of importance to an object in a spatial environment. This, in turn, can heavily affect the feel
+of that space.
+The same thing applies to capturing a flag in Soldat. When you’re holding
+the flag, you are the focus of all action in the game and the meaning of all your
+actions changes. You suddenly feel the situation is much more urgent, and you are
+no longer interested in engaging enemy players and fighting them. You want to get
+away from them as quickly as possible and return to your base. Instead of feeling
+like you are swooping in and out of terrain, in control, you are looking for the nearest exit. The movement of the avatar feels slower than it did just moments before.
+Even before it’s grabbed, the flag object itself completely changes the way the players interpret the space and their movement through it. The locus of all action in
+the capture-the-flag level is the two flag areas. That’s where everyone wants—and
+has—to go in order to score. So the entire meaning of the level is changed by the
+placement of the flags. When they are placed in different areas, the feel of the level
+and the feel of moving around it changes.
+At the medium level of rules, immediate meaning can be conveyed to objects
+in the game world by arbitrary rules. This changes the feel of the mechanic in a
+manner similar to the placement of static, non-rules-affected objects in the world
+by providing a meaningful context against which to balance the avatar’s response
+to input. The added benefit is that collecting something that is valuable by virtue of
+the system’s rules feels better and more satisfying than, say, deftly avoiding a pillar
+in Star Fox. These kinds of rules provide positive reinforcement for spatial mastery.
+Low-Level Rules
+At the lowest level, the level of kinesthetic interaction, rules can affect the feel of
+the game by changing the perceived properties of objects, especially as they interact
+with the avatar over time. For example, in Halo, there are little tiny guys with fins
+on their heads and the gigantic brutes. In general, you have to shoot an enemy a lot
+of times in Halo to reduce its health to zero (death). Again, this is just an arbitrary
+relationship. The amount of health something has relative to the amount of damage
+a weapon does can be defined in any way. When you shoot the little guys, you riddle
+them with bullets for a while, and they plop over and make a sad little noise. It
+takes a lot more hits to gun down a gigantic brute, which makes them feel larger
+and more massive, more imposing. Yet the mechanic is basically the same. The large
+number of shots it takes to penetrate their shields and finally kill them reinforces
+the perception of massive strength.
+How much damage an object can sustain before being destroyed has a great
+effect on how the physical object is perceived. Shooting anything in Halo requires
+many shots, which make the game feel fairly massive, especially compared with a
+game like Dawn of Sorrow, where you can whack a skeleton once and bones go flying everywhere. It’s very satisfying, but has a completely different feel than Halo.
+Small enemies die easily; medium-sized enemies take more hits, and game bosses
+require dozens of hits. The amount of damage something can take provides feedback on the assumed physical properties of the object. Like a blind man’s cane,
+shooting things in the game world accomplishes a specific task—figuring out what
+things are most dangerous to you and which are impervious to your weapons so
+you don’t waste time and resources on them. At the lowest level, you can convey
+a sense of physicality at a very kinesthetic level with an arbitrary rule about health
+and damage.
+The same essential principle applies in fighting games with heavier or lighter
+moves. Compare a fierce kick with a light punch in Street Fighter II. Through the
+arbitrary rule that’s applied, the fierce kick, which is a heavier, slow-moving attack,
+is made to do more damage. The sense that the fierce kick is heavy and weighty
+and really plows into enemies is emphasized by the rules. But it’s entirely arbitrary.
+From the point of view of the system and how it’s set up, there’s no reason why
+a light punch couldn’t do more damage than a fierce roundhouse kick. It feels
+right because it’s in line with the physical nature of those objects as perceived by
+the player.
+LOW-LEVEL RULES
+CHAPTER ELEVEN • RULES METRICS
+Case Studies: Street Fighter II and Cave Story
+Now let’s take a look at how all three levels of rules combine to enhance game
+feel. Consider the difference between rules in Street Fighter II and the indie
+classic Cave Story.
+In Street Fighter II, the high-level rules affect the feel of interaction through
+the round structure (Figure 11.1). In Street Fighter, the gameplay is organized
+around “best of three”—if you win two rounds, you win the entire match.
+And in order to win the match, you must win two rounds. This has the effect
+of placing higher stakes on a round in which you face elimination. In each
+match, there’s only one round—the first one—where this is not the case.
+After the first round has been played, one character will be facing elimination,
+which is a great way to raise the stakes and focus the player very intently on
+the individual motions and controls.
+At the medium level, the amount of damage it takes to kill someone is
+important. This has a huge effect on the feel. The characters in Street Fighter
+II take a relatively large amount of damage to destroy. Accordingly, the perception that the characters are solid and massive is increased, reinforcing the
+visual and aural effects. These are large, detailed, well-animated characters. If
+they were to be defeated in one hit, it would belie the perception conveyed by
+their animations, sounds and metaphorical representation.
+At the lowest level, there is different damage for different moves. Heavier
+moves do more damage and lighter rules do less damage.
+In Cave Story, the high-level rules do a fantastic job of providing impetus
+for every action. Access to new areas and the surprisingly engaging periodic
+F I G U R E 11.1 The basic relationships in the system of Street Fighter II.
+LOW-LEVEL RULES
+story snippets provide a delightful carrot, egging the player ever onward. In
+addition, the arbitrary relationship between what guns you choose and how
+you choose to upgrade profoundly affects the skills that you end up using and
+learning later in the game (Figure 11.2). Here’s how the rules work: at the
+start of Cave Story, you can only run and jump. As you progress, you can get a
+variety of weapons. Weapons include various beam weapons, a machine gun
+and a bubble gun, and they can be obtained from treasure chests or traded for
+at various locations in the game. There are nine different weapons, but the
+player is limited by the trading system to having only five at any time. Most
+weapons can be upgraded by collecting weapon energy dropped by enemies
+and will lose weapon energy if the player is hit. Non-weapon items in the
+game are plot-oriented, having no impact upon normal gameplay, although a
+few, such as the Booster (a type of jet pack) and the Life Pot, are useful.
+Medium-level rules in Cave Story change the meaning of movement relative
+to various enemies, depending on health and weapon upgrade level. Being hit
+reduces both health and weapon energy. Health functions the same way it
+does in most games, increasing focus and attentiveness as it is lowered, and
+altering feel by altering behavior and meaning.
+But the real genius of Cave Story’s rules lies in the weapon upgrade system
+and how it’s hooked into interaction with enemies. As weapon energy drops,
+it may become necessary to switch weapons quickly in order to finish off a
+particular creature, changing on the fly the relationships between weapon,
+damage, enemy health and weapon upgrade level. When fighting high health
+bosses, it becomes necessary to plan out which weapons to use in which
+order, assuming that the upgrade levels will be dropped. In preparation for a
+F I G U R E 11.2 The basic relationships in the system of Cave Story.
+CHAPTER ELEVEN • RULES METRICS
+boss fight, players may find themselves doubling back to fight enemies over
+and over again, in an effort to power-up a seldom-used weapon. Just in case.
+At the low level, the amount of damage it takes to destroy something in
+Cave Story is extraordinarily well balanced. The health of a given creature
+relative to the amount of damage dealt by which weapons at which level of
+upgrade is meticulously well balanced. The result is that every object in the
+world seems to be truly made of the same stuff. The more hits something
+takes before it pops into puffs of dust and a shower of bouncing orange triangles, the more substantive it is. Rarely do the physics of a single game feel so
+cohesive based solely on the balance and implementation of rules.
+Summary
+The arbitrary, designed relationship between parameters or objects in a game are
+the game’s rules. They are arbitrary because there is no higher order guiding the
+creation of such relationships. They are designed because it is a relationship intentionally created by a designer. We characterized three types of rules: high, medium
+and low level, and examined how they affect game feel at each level, and how the
+work together at different levels of the game to convey an overall impression of
+game feel independent of, but reinforced by, the other metrics of game feel:
+● Input—The physical construction of the device through which player intent is
+expressed to the system and how this changes game feel
+● Response—How the system processes, modulates and responds to player input in
+real time
+● Context—The effect of simulated space on game feel. How collision code and
+level design give meaning to real-time control
+● Polish—Effects that artificially enhance impression of a unique physical reality in
+the game
+● Metaphor—How the game’s representation and treatment change player expectations about the behavior, movement and interactions of game objects
+● Rules—How arbitrary relationships between abstracted variables in the game
+change player perception of game objects, define challenges and modify sensations of control
+CHAPTER
+Asteroids
+Chapters 12 through 16 feature in-depth examples that will provide recipes for
+the game feel of the games they describe. To develop these examples, we’ll apply
+the classifications we built in Chapters 6 through 11, breaking down well-known
+existing games into input, response, context, polish, metaphor and rules. The idea
+underlying these breakdowns is not simply to clone these games, though that’s certainly possible using this information. The idea is to better understand the hundreds of tiny implementation decisions that gave these games the feel they have. In
+many cases, these decisions seem counterintuitive—artificially changing gravity at
+the highest point of a jump, for example. All these little decisions and relationships
+together, though, are what make these games feel good.
+The creators of these games did not follow a particular methodology. They
+noticed something that bothered them about the feel and tried different implementations until it felt better. Coming at it from a more structured place, we can look
+not only at the decisions they made inside their specific games, but make generalizations about why this worked the way it did and how it can be applied to all
+games. That’s the idea, anyway. We want to understand the principles underlying
+these decisions outside of the context of specific games.
+With that in mind, we’re not interested in specific implementations in specific
+languages; you could achieve the same feel coding in Actionscript, C or Python.
+It really doesn’t matter. Also, throughout these chapters I will reference specific
+examples. I highly recommend you go to http://www.game-feel.com and download
+the examples, experiencing the difference in feel at various points throughout the
+example. These things are better felt than described. For each demo, the idea was
+to expose the important parameters, enabling you to feel differences in game tuning
+without having to program anything. I recommend going to http://www.game-feel
+.com/examples/ and downloading each applet so you can follow along. These
+things are best felt.
+At the start of every example section, I’ve provided a URL to a naked version of
+the system, with every parameter tuned to zero. Consider these an exercise in tuning. The pieces are all there; if you want a challenge, I suggest trying to recreate the
+feel of each game from this all-zero tuning.
+TWELVE
+CHAPTER TWELVE • ASTEROIDS
+The Feel of Asteroids
+Asteroids redefined the meaning of “video game.” It was the iPod of its time, as
+synonymous with video games as Apple’s ubiquitous product is with digital music
+now. When the game was released in 1979, it sold more than 70,000 units, obliterating all previous sales records, including those set by Space Invaders the previous
+year. Space Invaders, itself a game so popular that it caused a national coin shortage in Japan, was left in the dust. Why was this? Why did Asteroids dominate? How
+could it handily overtake a game so overwhelmingly popular? The answer hinges on
+the game’s unique feel.
+Asteroids was, in essence, a rebalancing of the formula set down by the progenitor of all good-feeling games, Steve Russell’s Spacewar!. As such, it featured
+programmatically simulated inertia and discrete tracking of velocity, acceleration
+and position of the ship. Pressing the thrust button added force into the simulation,
+accelerating the ship forward in whatever direction it was currently facing. Turning
+the ship was a much simpler affair, overwriting the ship’s orientation to rotate it left
+or right.
+The combination of this detailed simulation for position and the simple, direct
+rotation gave Asteroids both crisp precision and a flowing expressivity. It was as
+though the ship was always on the verge of being out of control, but it never actually was. The player’s job was to steer and tame it. This feel was not novel. There
+had been numerous attempts to bring the Spacewar! feel to arcades, including
+Cinematronic’s Space Wars and Atari’s own Computer Space. The insight of Lyle
+Rains and Ed Logg in designing Asteroids was to find just the right combination of
+rules and spatial context for the tuning of the ship’s movement. The spinning asteroids provided just the right context, dominating the screen space in a difficult but
+not oppressive way. They were just the right shape, size and speed for the motion
+of the ship, providing close shave after close shave and round after round of fluid,
+expressive excitement. The rules were simple, encouraged a very clear and particular set of skills and rewarded continued play.
+By comparison, the feel of Space Invaders (Figure 12.1) was stiff and rigid. Its
+motion was limited to a small region at the bottom of the screen. Its left-right steering changed only the ship’s position, and did so rather slowly. It is an enjoyable
+game but in terms of feel, it does not compare to the rich flowing motion of the
+ship in Asteroids.
+William Hunter, curator of the excellent video game history Web site thedoteaters
+.com writes, “I was never much of a Space Invaders fan. … But Asteroids, with its cool
+ship inertia and frighteningly close shaves between the rocks, is simply a masterpiece of design and programming. While the games that had inspired Asteroids,
+such as Spacewar! and Computer Space, had pioneered the concept of inertia in
+video games, the feeling of actual physics being played out in Logg’s creation is
+another big draw of the game.”1
+http://www.thedoteaters.com/p2_stage2.php
+There are still games being made today that emulate the feel of Asteroids, such
+as Shred Nebula and Geometry Wars. The feel of Space Invaders, however, is all but
+gone from modern mechanic design.
+Input
+Asteroids’ input space consists of five standard buttons (Figure 12.2). The buttons
+are far apart, making control a two-handed affair, though all five buttons can be
+pressed simultaneously. Though the possibility exists, there are no chorded moves
+in Asteroids.
+Physically, the Asteroids cabinet is big and bulky, made out of wood. The surface
+in which the buttons are embedded is nice and smooth, made out of molded plastic; it feels good. The buttons themselves are big and springy and make a satisfying
+noise as they click down. When pressed, they become almost completely flush with
+the surface of the cabinet.
+Each button has two states and sends the usual Boolean signals of ON, OFF
+and HELD.
+Response
+The incoming Boolean signals modulate parameters in the game in the following
+ways:
+The Rotate Left/Right buttons rotate the ship along its axis clockwise and
+counterclockwise (Figure 12.3).
+RESPONSE
+F I G U R E 12.1 Compare the movement of the ships in Asteroids and Space Invaders.
+CHAPTER TWELVE • ASTEROIDS
+The Thrust button adds force along the local forward direction of the ship, limited by a maximum value. This progression is highly floaty, taking around three seconds to reach sustain and even longer to release (Figure 12.4).
+The Fire button launches a bullet along the local forward direction of the ship,
+limited by a timed delay. The bullet inherits the velocity of the ship. Only four bullets can be on screen at one time.
+The Hyper Space button sets the ship’s position to a new, random value.
+F I G U R E 12.2 Five two-state buttons are the inputs for Asteroids.
+F I G U R E 12.3 Attack, delay, sustain and release for the rotation in Asteroids. There is a very
+slight attack value.
+Simulation
+To create the feel of Asteroids, the ingredients are one ship avatar, two varieties of
+flying saucers, screen wrap and a healthy sprinkling of asteroids. Since the asteroids
+and alien spacecraft exist mostly to provide spatial context for the motion of the
+ship, we’ll hold off discussing their behaviors and motion for now and instead focus
+on the ship.
+F I G U R E 12.4 The ADSR envelope for thrust in Asteroids.
+Playable Example
+Open example CH12-1 and try to recreate the feel of Asteroids. The necessary
+parameters are there, just zeroed out.
+The ship avatar in Asteroids has two basic motions, accelerate and rotate (Figure
+12.5). The rotational motion is crisp and precise while the acceleration is loose and
+sloppy. In both cases, the motion’s frame of reference is the ship itself, a “local”
+motion.
+The most important relationship to the specific feel of Asteroids is the decoupling
+of rotation from thrust. This is achieved by storing separate velocity values for the
+ship and for the thrust that gets added to it. If these values are not separated and
+the thrust velocity overwrites the ship velocity directly, the feel is more like a squirrely remote-controlled car than a smooth, flowing spacecraft.
+Let’s build the feel up from the beginning. First, we need a ship that rotates.
+The rotation of the ship in Asteroids is simple. If one of the two rotate buttons is
+held down, the game adds a small value to the ship’s orientation in the corresponding direction, clockwise or counterclockwise. There’s no simulation in the code, no
+acceleration to speed up or dampening to slow down. If the button is held down,
+the ship rotates. If not, it doesn’t. However, there is a very slight Attack value
+applied to the input signals as they come in (Figure 12.6).
+The ship does not go directly to full speed rotation from a standstill. There’s a
+short ramp-up in speed, an Attack, over about a third of a second. It’s subtle, but
+SIMULATION
+CHAPTER TWELVE • ASTEROIDS
+without it, the rotation feels stiff and robotic. An interesting thing to note is that,
+perceptually, it’s just as though the ship had a very slight inertia that had to be
+overcome. From the player’s point of view, it seems as though the ship took that
+third of a second to ramp up to full rotation speed.
+F I G U R E 12.5 Dimensions of movement for the ship in Asteroids.
+F I G U R E 12.6 The attack takes only a quarter of a second, but its absence is noticeable.
+Playable Example
+To experience this subtle difference, open example CH12-2 and click on the
+“ Raw Input” checkbox.
+Next we want the ship to move forward in response to the Thrust button. This
+motion will be relative to the current heading of the ship, which causes the left and
+right rotation to control the direction of the ship. If the forward acceleration were
+relative to the camera or to some other object in the world, the ship would be stuck
+moving in one direction, which would not be much like Asteroids at all. Now, if we
+set the position of the ship the same way we’re setting the rotation, by overwriting it directly depending on whether or not the button is held down, the feel is stiff
+and inorganic. It’s crisp, precise and responsive, but moves so differently from any
+object encountered in everyday life that the motion feels jarring and unsatisfying.
+Playable Example
+To experience this, click on the “Mode: Set Position” checkbox in example
+CH12-2.
+This is clearly not what we want. The first big thing that’s missing is static
+inertia. In Asteroids, the ship speeds up gradually to its maximum and continues
+moving at that speed indefinitely until another force acts on it. To get this sense of
+inertia, we’ll separate position from velocity and have the Thrust button modulate
+acceleration instead of modifying position directly. In each frame, the acceleration
+value is added to the velocity value, which then updates the position value based
+on how far the ship has moved (Figure 12.7).
+Playable Example
+To experience this, click on the “Mode: Translate” checkbox in example
+CH12-1.
+This is the feel of a frenetic racecar gripping the road with perfect sideways
+friction. It carves circles, without any hint of the desired Asteroids floatiness. The
+motion is interesting, even aesthetically pleasing, but it feels totally different from
+Asteroids because the rotation and thrust are now inextricably interconnected.
+F I G U R E 12.7 The different values that drive the thruster movement of Asteroids changing
+over time.
+SIMULATION
+CHAPTER TWELVE • ASTEROIDS
+Turning changes heading instantly, every frame, while the lack of dampening causes
+the ship to go on forever without hope of slowing down. To arrive at the feel of
+Asteroids, the thrust vector must be separate from the ship’s velocity. When the
+thrust button is pressed, instead of setting the modified ship velocity directly, a new
+vector is created using the ship’s heading as its direction and the thrust speed as its
+magnitude. This is the thrust vector and when the thrust button is held, this vector
+is added to the ship’s current velocity (Figure 12.8).
+Great success! This change, between adding and overwriting velocity vectors,
+makes all the difference. We now have a simulation that can be tuned to the precise
+feel of Asteroids.
+F I G U R E 12.8 The most important relationship to the feel of Asteroids is the ship velocity to
+the thrust velocity.
+Playable Example
+To experience this, click on the “Mode: Asteroids” checkbox in example
+CH12-2.
+The final things to note are the limit on velocity, the screen wrapping effect and
+the very low dampening force.
+An arbitrary maximum is applied to the ship’s velocity vector. This value may
+change the feel slightly if it is set very high or very low, but primarily it serves as
+a catchall to prevent the ship from having runaway speed. If you’re interested in
+changing this limit to see the difference, it’s the “Max Velocity” parameter.
+The screen wrap effect is achieved by detecting whenever the ship’s position is
+greater than the size of the screen, then setting its position to the opposite side of
+the screen. For simplicity, this is done for the X and Y edges of the screen separately. The screen wrapping, like the Max Velocity parameter, is mostly a pragmatic
+measure. Without screen wrap in place, the motion of the ship avatar carries it off
+screen in a matter of seconds.
+Finally, there’s very little dampening on the motion of the ship. Once accelerated, it will keep going at speed for more than four seconds before coming to rest.
+This low friction produces a “spacey” feel. Though we Earthbound schlubs have
+never experienced frictionless motion, when we see it in a game it reads as spacelike because of our exposure to news footage of astronauts and science fiction films
+such as “Apollo 13” and “2001: A Space Odyssey.”
+The final set of variables we’re tweaking are these (their relationships are shown
+in Figure 12.9):
+● Ship Rotation—How quickly the Y-axis orientation is changed clockwise or counterclockwise per frame
+● Ship Position—The position of the ship in absolute space, expressed as an X position and a Y position
+● Ship Velocity—The current direction and speed of the ship in absolute space
+● Thrust Speed—The current thrust value
+● Thrust Acceleration—The amount the thrust value will increase over time as the
+thrust button is held
+● Thrust Velocity—A vector representing the force that gets added to the ship
+velocity when the thrust button is held. It gets its direction from the ship’s current heading (which can be different from Ship Velocity) and its speed from the
+current Thrust Speed value
+● Max Thrust Speed—Limits Thrust Speed to a hardcoded maximum value. Speed
+can not be greater than this amount
+To summarize the simulation of Asteroids, when the game receives the signal for
+“thrust button held down,” a force is applied along the ship’s forward-facing axis.
+As the button is held, that force is increased according to the acceleration value,
+F I G U R E 12.9 The relationships that create the feel of Asteroids.
+SIMULATION
+CHAPTER TWELVE • ASTEROIDS
+to a predetermined maximum. Whatever direction the ship happens to be facing,
+the thrust is applied in that direction as an additive vector.2 It doesn’t simply overwrite the previous velocity vector of the ship, but rather gets added to it. This is
+crucial because it decouples the rotation of the ship from its thrust. This separation
+of thrust from rotation is the most important part of the feel of Asteroids. It enables
+the ship to rotate freely regardless of its current velocity. It gives the impression of
+frictionless motion as well as creates a slightly manic feeling of being constantly out
+of control. It’s only when the thrust button is held that the orientation of the ship
+affects its velocity, and even then it’s additive. The end result is highly floaty: when
+the player changes direction by rotating, it will take almost three seconds before the
+velocity of the ship is in line with its heading. In the case of the context and rules of
+Asteroids, this floatiness is both desirable and awesome.
+Context
+The only thing that really needs to be said about the asteroids in Asteroids is that
+they provide just the right spatial context for the ship’s movement. The larger asteroids dominate a large amount of the screen, but they move very slowly and are
+easy to predict. Smaller asteroids take up less screen space but are much more difficult to dodge because they move much more quickly. In all cases, the ship moves
+faster than the asteroids themselves but because its motion is so wild and squirrely
+and because the constraint of screen wrapping applies equally to both the asteroids
+and the ship, every asteroid on the playfield feels unsettling. For me, it feels like
+being an experienced ice skater at a crowded public rink. When I go to a public
+skate, I can skate much more quickly than just about everyone on the ice because I
+played hockey as a kid. But I can’t predict when people are going to fall or turn or if
+they’re suddenly going to cut across me to head to the cocoa machine. As a result,
+I limit my speed and try to give everybody a wide berth. Even though I can stop
+and turn quickly, I don’t have enough control to stop myself from running over or
+into someone’s mom if she biffs it in front of me. Playing Asteroids feels a bit like
+an extremely crowded kids’ night at the local rink. Except for the shooting and the
+subdividing asteroids, of course.
+In terms of functionality, the asteroids are imparted with a random velocity at the
+beginning of the game. When shot, they break down into medium-sized asteroids
+and have an additional force applied to them in a random direction. They inherit
+the velocity of the larger asteroid that spawned them, though, so the likelihood of
+their speed going up rather than down is very high. The same thing happens when
+they split into the smallest asteroids. There’s no particular insight here; the asteroids, as they get broken down, further clutter the field and become more difficult
+A vector is a combination of speed and direction. For example, driving 40 mph to the west would be a
+vector, where 40 mph is just a speed and west is just a direction.
+to maneuver around. The ship moves very quickly and turns rapidly, but the turning never seems quick enough to truly react and get out of the way of an asteroid
+unless you’ve planned ahead.
+The flying saucers are much more difficult to deal with than the asteroids, but
+they provide fundamentally the same function. They move in unpredictable patterns, going mostly horizontally but randomly moving up and down. And, of
+course, they shoot back. The closer you are to them, the more likely you are to be
+shot, so dealing with them feels a bit like poking a hornet’s nest with a long stick.
+Generally speaking, the feel of Asteroids is as much defined by the things to be
+avoided as it is by the motion of the ship itself. The constant, inescapable danger
+of the asteroids is compounded by the wily flying saucers, and the screen wrap
+means that you can never escape. These dangers give meaning to the quick, slippery motions of the ship, defining every subtle twist and turn and making it feel
+almost more out of control than in control.
+Polish
+Without a lot of processing power to spend, it would be perfectly reasonable for
+Asteroids to lack for polish effects of any kind. Instead, the Atari engineers rose
+to the challenge magnificently, with a masterful cohesion across visual and sound
+effects. Specifically, there is an excellent, consistent relationship between the visual size of objects and the sounds they make. For example, when a large asteroid
+is shot, it makes a deep, booming sound. A medium asteroid’s explosion sound is
+higher pitched, and smaller asteroids are higher still. Similarly, the large flying saucer makes a lower pitched noise than the small one. Being the smallest objects in
+play, bullets make the highest pitched sound of all. Of all the sound effects, the
+thruster firing is the lowest and most rumbling, conveying the sense that it is a
+comparatively powerful device.
+Other subtle but effective polish effects include a spray of particles when
+an asteroid is destroyed, the ship disintegrating into its component parts when
+destroyed, and the subtle but effective flashing of the vector line to indicate rocket
+flame. Because of the limited processing power, each individual effect is drop-dead
+simple. They harmonize so well, though, that the net effect is a powerful sense
+of the physical properties of the ship, flying saucers and asteroids. This is a great
+example of how cohesive, self-consistent effects can be more effective than gaudy,
+splashy ones that are applied willy-nilly.
+Metaphor
+As a metaphorical representation, Asteroids is very simple. There appears to be a
+space ship, but it’s more Flash Gordon than NASA. The asteroids and flying saucers reinforce this science fiction theme. The treatment is highly iconic. It’s not
+METAPHOR
+CHAPTER TWELVE • ASTEROIDS
+approaching any sort of realism but it’s also not venturing into the realm of the
+abstract. Each item—the ship, the rocket flames, the bullets, the asteroids—is
+iconic. They clearly are meant to represent a particular idea. Because the treatment
+applied to these objects is simple and consistent, there are few expectations being
+set up for the player. The theme is outer space, so the frictionless feel of the ship is
+certainly not clashing with the metaphorical representation, but neither is it inextricably linked with it. A car-like physics such as the one we experienced earlier might
+not seem so jarring because the visualization is so simple.
+Rules
+The main rules affecting the feel of Asteroids are those related to collision and
+destruction of the ship. At the start of the game, the player is arbitrarily given
+three lives. Running into anything—bullet, asteroid or saucer—destroys the player
+instantly and removes one of those lives. This serves to make the ship seem exceedingly fragile and to make extra lives seem like the most valuable commodity in the
+game. This sense of value also hooks into the points system: because you gain an
+extra life for every 10,000 points you score, destroying asteroids feels gratifying and
+worthwhile. A large asteroid is worth 20 points, a medium is worth 50 and a small
+is 100 points. This creates a nice value scale for the destruction of asteroids and provides constant incentive to destroy them.
+What’s really set up, though, is an awesome risk-reward relationship with the
+tiny flying saucers. Flying saucers are simultaneously the most dangerous and difficult to kill objects and the most valuable. For a large saucer, you get 200 points. For
+the small, extremely difficult to hit saucer, you get 1,000. So there’s a lovely risk/
+reward tradeoff that happens, because you get so many more points for destroying
+this tiny flying saucer than for blasting another set of mundane asteroids. When you
+see one come across, even though it is shooting back at you and is an unpredictable, tiny target, you focus on it and steer toward it because there’s the promise of a
+huge number of points, which moves you that much closer to getting an extra life.
+Of course if you lose a life in the process of trying to shoot this damn thing,
+the point is moot. So there’s this circumspect little calculation that happens in your
+brain about risk and reward. Is it worth it, is it not? How many lives do I have? Do
+I have a lot? Do I need the points? How close am I to getting extra life? And so on.
+This sense of value, risk and reward affects feel by driving the player closer to the
+tiny saucer. In so doing, they learn a whole new set of skills and experience just how
+out of control the ship is relative to the saucer’s quick, precise motions and shots.
+Summary
+Asteroids was groundbreaking and hugely popular, in large measure because of its
+unique feel. Applying our taxonomy of game feel, it’s easy to see why.
+The input device was satisfying, though it only used Boolean on-off buttons,
+and it mapped well to how things moved in the game action. It also required both
+hands and five fingers, ensuring the player was challenged (but not too much) and
+engaged.
+The response mapping was clear, simple and easy to follow.
+But a lot of the “secret sauce” of Asteroids was in the simulation. Thrust is separated from rotation, creating the most important part of the feel of Asteroids. It creates the loose feel that is so crucial to the feel of the game.
+In terms of context, the asteroids in Asteroids provide just the right spatial background for the ship’s movement. The constant, inescapable danger of the asteroids
+is compounded by the wily flying saucers, and the screen wrap means that you can
+never escape. These dangers give meaning to the quick, slippery motions of the
+ship, defining every subtle twist and turn and making it feel almost more out of
+control than in control.
+Adding to the overall feel, just the right amount of polish was used in Asteroids—
+not overdone, not underdone. Visual and sound effects are simple, but cohesive and
+self-consistent, making the most of the processing power available at the time.
+The metaphor—outer space—is simple and iconic, setting up easy to exceed
+expectations of how “real” spaceships ought to behave in the mind of the player.
+Finally, the rules in Asteroids are exceptionally well done, challenging the player
+to increase his or her skills in anticipation of greater rewards.
+Overall, all of these elements were balanced beautifully to create a simple but
+wildly popular game. The man who conceived Asteroids, Lyle Rains, and the creative visionary who programmed and designed the game, Ed Logg, did everything
+right. It’s no wonder Asteroids was such a hit in the United States and became
+Atari’s best selling game of all time.
+SUMMARY
+
+---
+
+## Sección 7: Chapter 2 to answer these questions. [Entropy: 0.5]
+
+CHAPTER
+Super Mario Brothers
+Super Mario Brothers was a breakout hit for video games as a medium.
+In 1983, things looked a littles bleak for the future of digital games. “Video
+game” was a dirty word to retailers, and arcades were shutting their doors with
+frightening speed. Atari had flooded the market with inferior product, culminating
+with the much-lampooned E.T. The Extra-Terrestrial cartridge. Consumers lost interest, retailers lost money and doomsayers decried the fiery end of the video game
+fad. Enter Nintendo and its “Entertainment System.” Improbably, a young industrial
+design graduate was about to change video games forever.
+A quiet, unassuming man who is “very content” with his modest salary and
+seems genuinely bemused by his worldwide celebrity, Shigeru Miyamoto was an
+unlikely candidate for “world’s most acclaimed game designer.” As he flashes
+his trademark smile and casually explains his original sketches for Donkey Kong,
+you get the sense that he is as excited today about the idea as he was more than
+20 years ago. Because there was simply no one else in the company available,
+Miyamoto was tapped by Nintendo president Hiroshi Yamauchi to create the game,
+Miyamoto’s first. In the most emphatic and real sense, the future of Nintendo hung
+on the unproven industrial design graduate and his “Stubborn Gorilla.” Against all
+odds, the game became a smash hit, in a stroke saving the ailing Nintendo and
+establishing Miyamoto’s reputation.
+While it was the first major hit of the burgeoning “platformer” game type,
+Donkey Kong still felt very stiff. The character in Donkey Kong, Jumpman,1 could
+run left and right, climb ladders, and, of course, jump. His jump followed a specific,
+predetermined arc and he only ran at one speed. On or off, full speed or complete
+standstill. There was no gradual acceleration or deceleration and no control over
+the jump once you were in the air. It was a step forward—a charming, playful game
+with appealing characters, bright colors and detailed animations—but it still felt
+very stiff. Miyamoto knew that his games could feel much better. After a successful
+Donkey Kong sequel, he turned his attention to refining the movements of his now-
+Italian, now-plumber character in Mario Brothers.
+THIRTEEN
+The naming of Mario was, apparently, a conciliatory gesture to the irate landlord of Nintendo of
+America’s warehouse, Mario Segale.
+CHAPTER THIRTEEN • SUPER MARIO BROTHERS
+Mario Brothers was different. This time, Mario jumped much higher, though his
+trajectory was still unalterable once he’d left the ground. The first hint of the powerful feel that was to come was in Mario’s left and right movement. Instead of movement being binary-state (full speed or stopped), when the joystick was pressed,
+Mario now had three states: stopped, walking and running. As a result, he now
+sped up gradually, and the player could make quick tapping motions on the joystick to make small adjustments to his position. Likewise, once the joystick input
+stopped, there was a slight slide as Mario came to a halt. Mario now had inertia.
+This smooth feel was used in games like Asteroids and the venerable Spacewar! but
+had not yet found its way into a character-based game about jumping over obstacles and gaps. Mario Brothers was a modest hit, coming as it did at the end of the
+arcade era.
+In 1986, all the elements came together. Super Mario Brothers combined a loose,
+fluid feel with a powerful character-driven metaphor and a charming, surreal treatment. Instead of one extra state inserted between standing and running, there were
+hundreds. Mario now accelerated gradually, without perceptible switches, up to his
+full speed. When the input stopped, he slid gradually to a halt. The game felt intuitive but deep: sloppier and more imprecise than Donkey Kong, but better for it.
+Somehow it felt more “real.” It took the world by storm. The first truly universal hit
+video game, Super Mario Brothers sold more than 25 million copies worldwide, far
+and away the greatest selling game of all time. In a 1987 survey, Mario was more
+recognizable to American children than Mickey Mouse.
+Miyamoto understood game feel not in terms of simulation but of simplification.
+First, he regarded the feel of a game artistically, as a composite aesthetic experience. At a time when the field was dominated by engineers who, in the tradition of
+Steve Russell, drew on complex, literalistic metaphors like the gravitational pull of
+black holes or landing a spacecraft on the moon, Miyamoto brought a refreshing,
+naïve perspective. He simply wanted to make fun, colorful games about whimsical
+characters that felt good to play. Second, he designed games holistically, taking into
+consideration both software and input device. (To this day, Miyamoto designs controllers as well as games, a rarity among designers, especially now, with the death
+of the arcade.) Finally, Miyamoto understood the power of metaphor and how it
+affected players’ willingness to learn and master a complex system and their emotional attachment to it.
+Miyamoto had intuited just how powerful the tactile, aesthetic feel afforded by
+instantaneous reaction to user input could be. Super Mario Brothers felt great, a
+shining example of possibility for virtual sensation.
+Now the big question: just how was this feel created? How does one build a
+game that feels exactly like Super Mario? Like many questions surrounding game
+feel, this is a surprisingly difficult question to answer. Just thumb through this chapter and you’ll see; even for a game as simple as Mario, there are a huge number
+of tiny but ultimately important decisions that must be accounted for. Individually,
+they often seem trifling and bizarre. Taken as a whole, they lead to the feel that sold
+more than 25 million copies.
+Input
+As an input device, we have the NES controller. The signals it sends are very simple,
+as we have said, and overall it has very little sensitivity as an input device. It feels
+pretty good to hold and use and is composed of a series of standard two-state buttons. One of its great strengths is its simplicity. When you hold it, it’s almost impossible to press the wrong button since there are so few for each thumb to deal with
+(Figure 13.1).
+INPUT
+F I G U R E 13.1 The simple, but classic, NES controller.
+CHAPTER THIRTEEN • SUPER MARIO BROTHERS
+Button States Signals Combination
+A 2 Boolean B, any direction
+B 2 Boolean A, any direction
+Up 2 Boolean A, B
+One other direction at a time, except down
+Down 2 Boolean A, B
+One other direction at a time, except up
+Left 2 Boolean A, B
+One other direction at a time, except right
+Right 2 Boolean A, B
+One other direction at a time, except left
+Each button sends a binary signal. Taken alone, this input data can be interpreted as “up” or “down.” When measured over time, the signal can be interpreted
+as “up,” “pressed,” “down” or “released.”
+That’s it. Not much more to say about the NES controller; as an input device it is
+among the simplest, most effective ever created. The plastic on the front is smooth
+and porous, the buttons springy and robust, and the overall package feels solid.
+Note that we’re using the keyboard to control the examples presented here,
+which will change the feel of control by allowing left and right to be pressed simultaneously and because this input uses multiple fingers instead of a single thumb.
+Response
+There are two avatars in Super Mario Brothers, Mario himself and the camera. Mario
+has freedom of movement along a 2D plane, X and Y, as shown in Figure 13.2.
+Since the Mario avatar doesn’t rotate at all, there’s no distinction between local
+and global movement.
+The camera (Figure 13.3) is indirectly controlled by the player via the position of
+the Mario avatar and moves in only one axis, X. Interestingly, it can never move to
+the left.
+A Recipe for Mario
+The feel of Super Mario Brothers lives primarily in the main Mario avatar.
+If you want to create a game that feels exactly like Super Mario Brothers, the first
+thing you need is a rectangle. This is how the game views the object that millions of
+us know and love as Mario. He’s simply a rectangle. More specifically, he’s a series
+of points that form a rectangular shape, but for our purposes it’s reasonable to call
+him a rectangle. So let’s start with our rectangle, sitting motionless in the center of
+the screen (Figure 13.4).
+F I G U R E 13.2 Mario moves in two dimensions, X and Y.
+F I G U R E 13.3 The camera in Super Mario Brothers moves in one dimension: the X-axis.
+Playable Example
+Open example CH13-1 to follow along. To begin, there is no motion, all the
+parameters are set to zero and the avatar is a blank rectangle in the middle of
+the screen.
+The next obvious step is to have the rectangle move. The way Mario’s simulation
+functions, there are two distinct subsystems at work, the horizontal (X-axis) movement and the more complex vertical (Y-axis) movement. To start, let’s focus on the
+RESPONSE
+CHAPTER THIRTEEN • SUPER MARIO BROTHERS
+horizontal movement. It’s the interplay of these two systems that gives rise to the
+expressive, fluid feel of Mario, but they are kept mostly separate as far as the simulation is concerned.
+Horizontal Movement
+All horizontal movement in Mario is mapped to presses of the left or right directional pad buttons. The signals coming in are simple Booleans and they can’t be
+pressed simultaneously because of a physical constraint imposed by the input
+device itself. As a result, at any given time there will be only one relevant signal
+coming in from the input device: left or right. The simplest way to map this input
+to a response in the game would be to store only a position for the rectangle. When
+either the left or right signal was detected, the rectangle’s position would change
+by a certain amount in the corresponding direction. As long as the left button was
+held, the rectangle would move some distance per frame in the corresponding direction. This is the way that Donkey Kong works, changing position when the joystick
+is held in a direction. This is not, however, how the horizontal movement in Mario
+works. Figure 13.5 shows graphing of Mario’s movement over time versus Donkey
+Kong (from Chapter 7).
+Now, I like the feel of Donkey Kong. I think it’s rather charming. It’s hard to
+argue, however, that it’s more expressive than Mario. Mario feels fluid and responsive while Donkey Kong feels stiff and robotic. Look again at the movement of
+each over time; you can see just how many more places it’s possible for Mario be,
+how much more expressive potential there is for the player. The primary reason
+for this lies in the simulation. Super Mario Brothers has something resembling a
+F I G U R E 13.4 The shape of Mario: a series of points forming a rectangle.
+simulation of physical forces. It’s a sort of first-year college physics level of simulation, but there are in fact stored values for acceleration, velocity and position.
+So while it’s simple by the standards of modern physics simulations, it is a model
+of Newtonian physics. It may not be very accurate—the programmers only had
+8-bit numbers to work with—but it is modeling things in a certain sense. It’s not
+totally fake.
+Donkey Kong has no such simulation. The character has a position and two
+states, and that’s it. When you press the right button, the code simply takes the current position and adds a value to it. This new position gets drawn to the screen and
+becomes the current position and so the motion continues. The player moves at a
+constant rate if the joystick is held in one direction or another. There is no period
+of acceleration between standing still and running full speed. Likewise, when the
+input stops, there is no deceleration. Put another way, Jumpman’s speed can only
+ever be equal to, say, five units per second or zero units per second. There is no in
+between. Donkey Kong takes the sensitive, expressive input of the joystick with all
+its states between center and fully expressed and clamps it down to a simple on or
+off response. Figure 13.6 shows the short attack phase of the movement in Donkey
+Kong. The movement starts the frame after the input is received, but there is a
+sensation of a slight attack because it takes some time to push the joystick from
+off to on.
+Mario’s horizontal movement incorporates separate values for acceleration,
+speed and position. When the signal for “left” is received, it applies an acceleration in each frame rather than feeding directly into position. For each frame when a
+directional button is held down, the acceleration value adds a certain amount to the
+velocity value. The velocity value in turn tells the rectangle how it should change its
+position. Instead of the boxy non-curve shown in Figure 13.6, the change in Mario’s
+position looks like Figure 13.7.
+F I G U R E 13.5 The movement of Donkey Kong and Mario.
+RESPONSE
+CHAPTER THIRTEEN • SUPER MARIO BROTHERS
+F I G U R E 13.6 Donkey Kong’s movement is very stiff.
+F I G U R E 13.7 Mario’s movement has a gradual ramp up to maximum speed, making it much
+more expressive.
+Playable Example
+If you’re following along in example CH13-1, you can experience what we’ve
+constructed up to this point by setting a high max speed value (try 2,000) and
+turning all the jump values and the deceleration value to zero. If you want, you
+can also switch the metaphor to rectangles.
+Now steer back and forth by pressing the A and D keys. Notice anything?
+The speed value quickly runs away and becomes way too large. We need to
+clamp that down, put a limit on it. This limit is the max speed value, and it
+applies unilaterally to both left and right movement.
+The other thing you’ll notice at this point is that once set in motion, the rectangle
+will not slow down or stop. You can reverse direction, counteracting speed in one
+direction with acceleration until such time that the movement switches from right to
+left, but you can never come perfectly to a halt again. For this, we need a separate
+value to decelerate Mario back to a standstill. This is the deceleration or slowdown
+value. If Mario’s running forward and suddenly I stop touching the controller, Mario
+will slide gently to a halt. The rate at which he comes to a stop is its own variable, unrelated to how fast you sped up. Now, with the deceleration value included,
+we’re getting warmer, close to the horizontal movement feel of Mario.
+The last piece of the puzzle involves the B-button. When the B-button is held,
+Mario “runs.” The change is caused by a mapping of the B-button to changes in
+the simulation. Under the hood, when the game detects that the B-button is held, it
+changes the values for acceleration and it changes the max speed. When the B-button
+is held, the rate at which the character will accelerate is increased and his max
+speed is increased. In this way, the B-button is sort of a state modifier, mapped only
+to a change in the parameters of the simulation, not to a particular force.
+This feel was different from games of the time featuring as it did two different
+accelerations and two different max velocities for running. The expressive power of
+such a seemingly simple change is in the interplay between the speeds. The perception of increased speed is created by the contrast. The run seems fast only when
+compared to the walk. Change both values up or down, and the run still seems like
+a run. What’s important is the relationship between the two values. As long as that
+relationship is maintained, the impression of speed that comes from the contrast
+between walking and running will remain. This is very interesting; it is the relative
+relationships between speeds—rather than the speed values themselves—that seem
+to be most crucial to the feel.
+Another interesting result of this change is just how much expressive power it
+lends to the horizontal movement. If you’re at a standstill and you hold down B
+and start running, the curve describing the acceleration will be different—it’s using
+higher values. Likewise, because you can press the B-button at any time, it’s possible to feather the button and adjust speed very precisely. Try it now in the applet;
+start running and then try tapping B or holding it at various points in the acceleration to see how many different speeds there are between going from standing
+to walking, from walking to running and from standing to running. The number of
+different possible speeds is huge, adding surprising expressivity just with this one
+small change in response.
+Finally, horizontal acceleration in the air is different than on the ground. This
+brings out a further contrast, one between acceleration speed on the ground, in the
+air and when running. When you’re on the ground, you accelerate at a certain rate,
+which is different from the acceleration in the air. It’s simply a different number
+that gets applied as a force each frame. As soon as you enter the air state, the horizontal acceleration number changes. Note that pressing and holding B has no effect
+in this instance—in the air state, all horizontal movement happens at the same rate.
+Also, this is acceleration, not speed, so you can be running as you jump and still
+RESPONSE
+CHAPTER THIRTEEN • SUPER MARIO BROTHERS
+retain that speedy horizontal movement. What’s reduced is your ability to modify
+that velocity by accelerating one way or another.
+To sum up, the important values to the feel of Mario’s horizontal movement are:
+● Acceleration left
+● Acceleration right
+● Max speed
+● Deceleration
+● Running acceleration left
+● Running acceleration right
+● Running max speed—deceleration always remains the same
+● Air acceleration left
+● Air acceleration right
+Note that deceleration remains the same regardless whether the run button is
+held or not. At this point, we have a rectangle which will accelerate gradually left
+and right to a maximum speed, slow down again gradually to a standstill, and accelerate faster to a higher top speed if the B-button is held (Figure 13.8).
+Vertical Movement
+The rectangle’s vertical motion, the jumping of Mario, is a more complex series of
+relationships than those governing his movement on the ground. To start, there is a
+constant application of gravity. When you’re moving left and right, gravity is always
+pulling the character down. That’s simple enough: a constant downward force
+applied to the character. But this gravity force is variable. At the moment the jump
+F I G U R E 13.8 Horizontal movement in Mario.
+button gets pressed, Mario is instantaneously imparted with a certain upward velocity, which counteracts the constant downward pull of gravity, launching him into
+a soaring, graceful arc. This upward velocity is gradually reduced as gravity takes
+hold again. At the apex of the jump, when velocity reaches 0, gravity is raised artificially by a factor of three, pulling Mario back to the ground with a much greater
+force than the one he overcame to get airborne in the first place. This artificially
+inflated gravity has a cap, however, as do all forces in Mario—there is a terminal
+velocity that will limit its downward motion. In addition to all of that, there is an
+artificial sensitivity created in the amount of time the jump button is held down.
+A tiny tap on the button will yield a small hop, while holding the button down
+extends the jump. This time sensitivity also has a range; there are minimum and
+maximum jump heights, enforced by limits on the minimum and maximum amount
+of time the jump will accept inputs.
+If this sounds surprisingly complex, it definitely is. Let’s step through each of the
+individual rules and interactions one at a time.
+First, the rectangle needs a constant downward force. This is the force of gravity, constantly pulling the rectangle back to the ground. This force is applied all the
+time, even when the rectangle is pressed against the ground tiles. In each frame, the
+collision code looks at the position of the rectangle and the forces applied to it. From
+that, it infers what the rectangle’s position would be in the next frame. If it would be
+inside a tile that’s supposed to be solid, it snaps the rectangle’s position to be flush
+against that tile. Though there is a gravity force applied to the rectangle in all places
+and at all times, the collision code keeps Mario from falling through the world.
+F I G U R E 13.9 The collision code snaps Mario back outside of (but up against) any solid
+object, gravity must otherwise push him through. This happens every frame.
+RESPONSE
+CHAPTER THIRTEEN • SUPER MARIO BROTHERS
+Next, the upward force. At the moment the jump button gets pressed, the Y component of Mario’s velocity gets instantaneously set to a high value, which counteracts gravity, launching him into the sky. If this force were applied constantly as long
+as the button was held, the rectangle would fly forever into the sky.
+Playable Example
+To experience this, try changing the “max jump force duration” value to
+10 seconds or so in example CH13-1.
+To mimic Mario, the rectangle needs to gradually slow down, losing upward
+force as gravity takes hold. This is not a hard-coded set of values but is instead the
+result of two relationships.
+The first relationship is between the initial upward velocity and gravity, which
+reduces that value by a small amount every frame. The initial upward velocity has a
+limited duration because gravity is always reducing it. After the initial burst of force,
+there’s nothing to keep the rectangle moving up. As a result, gravity will take hold
+and gradually slow the upward momentum until the rectangle is no longer moving
+upward. The result, assuming the character is moving horizontally at the time of the
+jump, is a graceful arc. This also has the effect of making the jump feel immediate,
+responsive and quick because the moment the input is received there is big, visible
+response.
+The second relationship is between the time the jump button is held and the
+upward velocity. The jump is time-sensitive. A slight tap on the button will yield a
+small hop, while holding the button down longer will extend the jump. This time
+sensitivity also has a range constraining it; there are minimum and maximum jump
+heights, enforced by limits on the amount of time the jump will accept inputs. In
+terms of actual measurable response, if you hold the A-button for the full duration
+of the jump, you’ll get a jump that’s about five tiles high. If you tap the A-button as
+quickly as possible, the jump will be shallower, with a height of as little as one and
+a half tiles. The result is an expressive range of jump height, anywhere between one
+and a half tiles and about five tiles in height, which corresponds to releasing the
+button somewhere between one frame and about half a second (Figure 13.10).
+The effect is a sort of early out for the jump. The player can choose to release the
+button early and in so doing accomplish a shallower jump.
+At this point, with a time sensitive jump in place that applies the maximum
+jumping force as long as the jump button is held, the rectangle will jump satisfactorily. The only problem is in the height of the minimum jump: with this implementation, it is still very high. After all, the maximum jump power is still being applied to
+it for a certain amount of time. So the expressive range between the shortest jump
+and the tallest is very narrow.
+To make this jump feel right, we’ll need to artificially clamp the jump force in
+a way that may seem like something of a hack. Rest assured, though, this is the
+keystone to getting the good-feeling Mario jump. The hack is this: if the game is in
+the jump state and it detects that the jump button is no longer being held, the game
+then checks to see if the Y velocity, the jump force, is above a certain threshold. If
+it is, it will artificially set the Y velocity to a specific, unchanging, lower value. The
+value is close to zero but is not actually zero. Weird, eh? Even if you only tap the
+jump button for one frame or two frames, it still receives the full upward velocity.
+It’s just that when the button is released earlier, it artificially sets the jump force to
+a lower number before it allows the jump to take its course. The effect is that you
+float just a little bit more upward from the point of release and always fall with that
+nice, flowing arc (Figure 13.11). It feels a lot better than the wide variation of arcs
+you would get otherwise.
+An example with actual numbers will help visualize this more clearly. When the
+button is held down for the maximum time allowed (giving the maximum jump
+height), the progression of upward velocity might go something like the jump
+shown in Figure 13.12.
+F I G U R E 13.10 Jump height in Mario depends on how long the button is held, but only to a
+certain point.
+F I G U R E 13.11 Upward velocity is artificially set lower when the player opts out by
+releasing the button early (thus getting a much smaller jump).
+RESPONSE
+CHAPTER THIRTEEN • SUPER MARIO BROTHERS
+So on the first frame after the button is pressed, the jump force is 100 in the
+Y direction. This large force will propel the rectangle upward quickly. In the next
+frame, the force will have been reduced only slightly by gravity, to something like
+90. In each subsequent frame, the force in the Y direction is lowered only slightly
+until eventually the maximum jump time is hit. At this point, the input is no longer
+important, and the jump force falls off gradually to zero, at which point the rectangle begins to fall back to the ground (Figure 13.13).
+Contrast this with the shortest possible hop, where you’re effectively getting a
+jump at the minimum power, which is much lower than the velocity of the full jump.
+It will give you the full power jump (100) at the first frame, but by the second or
+third frame, the jump force has already been set to the lower hard-coded value (20).
+F I G U R E 13.13 Falloff in upward velocity when the player opts out early.
+F I G U R E 13.12 Falloff in upward velocity over time.
+Instead of setting the value to 90, 80, 70 and so on until the full height jump arc has
+been completed, it sets it right to 20, the velocity at which the jump stops listening
+to button input regardless. Similarly, if you hold the button for half of the range of
+the jump, it might go 90, 80, 70, 60, 50 then to the preset 20. The result is that jump
+will always have the same arc, especially at the end. The duration of the button just
+changes how high (and consequently how far) it will go.
+Now back to the jump in progress. If you’ll recall, the rectangle has only reached
+the apex of the jump, the point at which vertical component of velocity is reduced
+to zero (by gravity acting on it over time). Now it has to fall back to the ground.
+Interestingly, after the tipping point, gravity changes. If you’re running along and
+you press jump, gravity is the same normal value it always was. You’re imparted
+with a negative Y velocity and it sends you upward, temporarily overcoming the
+weaker pull of gravity. The upward force will only be added for a certain amount
+of time, though, as gravity gradually takes hold and slows you down until you have
+no upward force. Once you reach the peak of your jump, instead of just allowing
+the natural pull of gravity to bring you back to the ground, the gravity is artificially
+increased, sucking you back down to the ground. It applies this stronger gravity
+whenever you’re falling, whether you’ve just reached the peak of a jump, walked
+off the edge of a platform or bumped into an overhead block (which sets your
+vertical velocity to zero).
+Try setting the fall gravity to the same level as the negative gravity and see what
+happens. The jump seems to take far too long and you begin to feel as though
+you’ve been out of control of the character for far too long. The impression of
+weight is also affected, making the rectangle seem far lighter than it ought to. In a
+word, it feels weird.
+The final piece of the fall is a clamp on the possible falling speed. Just as the horizontal speed has a maximum, so too does the vertical. When you’re falling, there’s
+a terminal velocity that is definable by code. It’s hard-coded. If you don’t limit it,
+you can really feel the difference. When you jump from somewhere high, you’ll get
+going really quickly before you hit the ground and it’ll feel weird. If instead you set
+this number very low, it will feel like opening an umbrella in a cartoon or something, where you can actually feel the artificial clamp take hold. You can tell it’s not
+the natural arc of the fall. Try both—setting the terminal velocity to something very
+high or very low—to get a sense of it.
+At this point, we have a rectangle that has gravity applied to it and will jump to
+different heights when the jump button is held down for shorter or longer periods.
+These periods are limited by maximum and minimum time values, however, which
+define a certain expressive range of possible jump heights. The arc of the jump will
+always feel the same, however, because if the game detects that the jump button is
+no longer held while the jump force is being applied, it will artificially set the value
+to a lower value. This value never changes, so the end of every jump will have
+approximately the same arc. When the arc has completed, an artificially high gravity
+value pulls the rectangle back to the ground quickly and efficiently, decreasing the
+time during which the player has reduced control of the character and enhancing
+RESPONSE
+CHAPTER THIRTEEN • SUPER MARIO BROTHERS
+the perception of weighty, close to real-world gravity (even if the character is leaping around like a flea). Finally, the speed at which it is possible for the rectangle to
+fall is clamped to prevent it from getting too high and feeling unnatural.
+To sum up, the important values to the feel of Mario’s vertical movement are:
+● Gravity
+● Initial jump force
+● Minimum jump button hold time
+● Maximum jump button hold time
+● Reduced jump velocity
+● Falling gravity (about three times normal gravity)
+● Terminal velocity (maximum falling speed)
+Finally, there is one small crossover between vertical and horizontal movement.
+In Super Mario Brothers, if you press jump while you’re moving faster than the
+normal walk speed, you’ll get a small extra jump boost. The initial jump force will
+be slightly higher, so the height of the overall jump will go up slightly. If you’re
+anywhere between the full, running maximum speed and the normal walking maximum speed, you get a little bit of extra jump velocity. Jumping from a standstill,
+you can reach a height just under five tiles. If you get a running start (holding B)
+you can just about get over and land on a five-tile-high surface. This height boost
+is not commensurate to the speed at which you’re moving at the time of takeoff;
+you get the height boost or not, depending on whether you’re over the normal max
+speed when the jump button is pressed.
+Collision and Interaction
+Next comes collision, where Mario’s world becomes solid.
+Mario is a rectangle, one tile high. A tile is a nice way to simplify the layout,
+position and properties of things in a 2D game. Instead of having to store detailed
+positions for each object, we can create a grid of tiles and reference their position
+with simple two-number combinations. Typically, tile (0,0) is in the upper left hand
+corner of the screen. The tile below it is (0,1), the tile to the right of it is (1,0) and
+so on. If we store a list of all these tiles, we can easily find out where a tile is in
+relation to any other tile (Figure 13.14). If, when you make your list, you specify
+the type of tile it is—sky or brick or pipe or whatever—you can then check to see
+whether or not Mario can pass through that tile.
+So, to make Mario collide with things, we look at his velocity. By knowing his
+direction and speed, we can tell which tile he will be in the next frame. If the tile
+is, say, a brick tile which Mario is unable to pass through, we place him on top of it
+instead of allowing him to go through (Figure 13.15).
+This is pertinent when you have, say, an air tile below Mario in one frame and a
+ground tile the next. If you know this, you know that Mario should be falling, but
+that he’s just about to land back on the ground again. This is how simple collisions
+are done. Without getting into unnecessary detail, the feel of a simple tile-based
+collision system like this is very slippery. Because there is no simulation of friction—the dampening that slows Mario back down again —applied based on what
+material he’s sliding across, the feels is that of a bar of soap sliding across wet tile.
+He won’t get caught or hung up on anything, and the overall sensation is very loose
+and sloppy. In the case of Mario, this is a huge part of the appeal. This is, of course,
+not always the case. To create the satisfying carving motion of a car or bike turning
+is to simulate the friction between tire and ground. But Mario essentially has no
+friction. Being pressed against a wall of blocks does not slow his jump force; he’s
+free to slip slide across everything.
+F I G U R E 13.14 Tiles in Mario.
+F I G U R E 13.15 Instead of going through the tile Mario is placed on top of it.
+RESPONSE
+CHAPTER THIRTEEN • SUPER MARIO BROTHERS
+So now we have a rectangle that slips and slides across the environment, never
+getting stuck and always feeling perfectly solid. Only the rare spring platforms feel
+as though they have a bit of give. The rest of the objects in the world are like polished marble, and Mario himself is equally unyielding and smooth.
+The next little particular that the rectangle needs is to have its Y velocity set to
+zero in every frame. As noted earlier, gravity gets applied to every frame, even when
+Mario is colliding with the ground. In each frame, his collision places him up a little bit, back on top of the block, and in each frame his Y velocity gets set back to
+zero. When falling, the gravity force will set the Y velocity to something very high
+(the fall gravity) to pull the rectangle downward. If you don’t set that Y velocity to
+zero when he’s in contact with a tile, a great deal of force gets built up and “stored”
+in a weird way. The collision still keeps you out of the ground but if you walk off
+the cliff, you plummet down because you have this huge negative velocity built up.
+It feels really weird. Instead, you want your Y velocity to be guaranteed to be zero
+when a fall starts so gravity will pull the rectangle gradually and appropriately to
+the ground.
+The opposite case (when the character jumps and hits a tile above) also needs
+the Y velocity set to zero. If you hit the ceiling and the Y velocity is not zero, you’ll
+stick to the ceiling (as you do in Super Contra). Mario still wants to move up every
+frame. The collision will stop him from moving through the tile, but it will have no
+effect on his upward velocity. To get the right feel, you have to set Y velocity to zero
+whenever a collision is detected, whether it’s from above or below.
+Another little behavior particular to the original Mario is the lack of height
+boosts for bouncing off an enemy’s back. When you hit a turtle’s back, it sets you
+to the same state as if you’d released the jump button after the minimum amount of
+time. The rebound off a turtle or Goomba is a tiny little hop, as with the minimum
+strength jump. This changed in later games such as Super Mario World, where holding down the jump button while bouncing off the back of an enemy would give you
+a massive height boost, much higher than that afforded by a regular jump.
+The only objects in the game that give Mario a height boost are the springy platforms. But you must jump just at the right time. It’s wicked hard, though, because
+the window for doing it properly is extremely small. In the later games, simply holding down jump while bouncing off an enemy or jump platform will give you the
+extra boost, which to me feels better as an implementation.
+To wrap up the movement of the primary Mario avatar, there is one particularly
+rare special case that’s worth mentioning. If you get a mushroom and you’re too tall
+to walk under a one-tile-high brick, you can slide under it. If you’re small, you can
+just run through. But if you’re big Mario, you have to build up a head of steam and
+slide in there. The case the game has to deal with is: what do you do when you stop
+ducking? In some games, you just can’t stop ducking—you’re forced to remain in
+the duck state. Mario enables you to stand up, which puts you in a weird, unique,
+single case game state where you can’t move or do anything (even duck). It pushes
+you right, locked out of input, until you’re free of any collisions. It’s a bit stopgap,
+but I guess it covers a weird case that Mario can get into.
+Finally, we come to the movement of the camera, which functions as a second,
+if indirectly controlled, avatar. Clearly, the feel of Mario includes the motion of the
+camera and the game would not feel quite correct unless the camera moves properly with the avatar. First, the camera moves only to the right. Once it has moved
+right, it cannot be moved back to the left. To me, this feels a bit oppressive and it’s
+unclear whether this was a technically motivated decision or a design one. Either
+way, it has the effect of cramping up the screen and encouraging constant forward
+motion. If the player goes to the left, the fact that the camera does not move feels
+abrupt, halting and unyielding. When moving to the right, the screen scrolls at the
+same speed as the character. The only small, important thing for feel is the small
+zone extending from about 25 per cent of the screen width from the left edge to
+the center. Inside this zone, the scrolling speed is reduced. The effect is a gradual,
+though rough, speeding up of the camera as the character accelerates from a standstill (Figure 13.16).
+And there you have it! This is the simulation that creates the feel of Mario in all
+its dirty, exhaustive details. What strikes me about it is just how seat-of-the-pants
+many of the decisions and particulars are. Stuff like manually setting the Y velocity to a lower, artificial value when the jump button is released early and swapping
+out the normal gravity value for one three times higher seems like it would have
+the opposite of the intended outcome. Why do those particular changes make the
+game feel better? I’ll attempt to address such questions at a more general level in the
+Principles of Game Feel section. For now, though, I recommend fiddling around with
+the final, composed applet a bit. Really dig in and change some of the parameters.
+F I G U R E 13.16 Camera scrolling zones in Mario.
+RESPONSE
+CHAPTER THIRTEEN • SUPER MARIO BROTHERS
+At the end of this chapter, I’ve listed the tunings for Super Mario World and Mario 2.
+See if you can arrive at them on your own, just by tweaking the numbers.
+States
+States are the final piece of the Mario feel puzzle from the standpoint of someone
+trying to construct a perfect-feeling Mario stand-in. By state I mean a specific set
+of instructions about how the game will respond to input. When a game has more
+than one state it means that the same input might result in a different response from
+the game, depending on what the character is doing at the time of the input. A simple example from Mario is illustrated by different horizontal acceleration in jumping
+state versus the running state. In the running state, the acceleration is a very high
+value, speeding Mario up very quickly from a standstill. In the air state, that value is
+drastically reduced. Effectively, the change in state maps the same input to multiple
+responses in the game. As long as the player has a way to conceptualize a change
+in state, such as when Mario leaps into the air, the fact that the result for a particular input has changed is not jarring or distracting. In fact, it offers more expressive
+potential.
+The states in Super Mario Brothers are idle, walking, running, jumping, stuck
+and dead (Figure 13.17).
+For the record, this is how things are organized under the hood in Mario. More
+or less. As long as the relationships are maintained, the implementation is more or
+less irrelevant, but structuring things this way certainly makes it easier to get the
+desired feel.
+Context
+Our rectangle is now happily sliding around. It feels great to leap around and run
+and change directions. Right? Well, perhaps. Returning to example CH13-1, run
+F I G U R E 13.17 States in Mario—stuck and dead are special cases.
+around a bit. Notice anything weird? Right, there’s nothing in the level. It’s an endless field of blankness. Time to add context.
+A level design trick that originated with Super Mario Brothers or was at least
+used heavily in it is the “Fortune Favors the Bold” approach. Running full speed
+to the right and attempting to quickly adjust to changes in the environment makes
+the game much easier by virtue of the level design itself. The levels are set up to
+encourage (and in many later levels, necessitate) this kind of bullish charge-ahead
+play. It’s simply how the level is laid out: the jumps and obstacles are easier when
+the player is moving at the maximum speed possible. Since that speed was predictable once the mechanic was complete, it was possible to design the levels to match.
+It seems to me that this was the intended experience of the game, as a whole.
+Even the camera avatar’s behavior seems to encourage this behavior, by constantly
+blocking the path behind the player. You can’t go back, the game seems to say, so
+you might as well go forward as quick as possible.
+As a general rule, the spacing of the objects in Super Mario Brothers is about
+four tiles high. To accurately recreate the feel of Mario, you need a level that’s built
+this way. This is because while the character can actually jump close to five tiles
+in height, jumping to an object four tiles high is much easier and drops the character onto the platform just at the shallow part of the jumping arc. Jumping to a
+platform that’s just below the maximum height of the character’s highest jump just
+feels better.
+Playable Example
+To experiment, try placing platforms at various heights in example CH13-1.
+There are platforms of various heights to jump up to. Notice how the four-high
+platform matches the jump best. Like Goldilocks ’ porridge. Best reference ever.
+The relative imprecision of the Mario mechanic makes it necessary to give the
+player plenty of room for overshoot, in both the horizontal and vertical directions.
+Part of that is making most platforms’ height about four tiles apart. The other part
+is stretching all platforms in the game horizontally. Now try removing some sections of ground in example CH13-1 to see what happens if you construct a level that
+has mostly single-tile wide platforms to land on. Again, this hooks into the overall
+design goal that the player should be running full speed to the right at all times.
+Tiny, single-tile platforms encourage a more plodding approach, where each jump is
+considered carefully before it’s executed.
+Another aspect of the context that plays heavily into the tuning of the rectangle’s motion is the movement of enemies in the game. This is something we don’t
+normally think of with respect to level design, but the motion of the AI characters
+actually has a huge bearing on the way the mechanic will feel. Their motion dominates certain areas of the screen space, changing the player’s ideas about the spatial
+topology. An area enclosed by two tiles suddenly becomes a bit of a death trap
+RESPONSE
+CHAPTER THIRTEEN • SUPER MARIO BROTHERS
+if there are two turtles wandering around in there. Similarly, jumping up a set of
+stairs becomes an entirely different interaction when there’s a hammer brother at
+the top. For a striking example, look at the first level in which 10 (the floating cloud
+guy who tosses those red spiny bug-turtles) appears. Most of the level is flat with
+almost no skillful jumping required, but the entire thing feels hurried and oppressive because of the ceaseless shower of enemies raining down from on high.
+Enemies, and this is no accident, move along the ground at approximately the
+same rate as Mario’s maximum walking speed. You can sync up with the speed of
+the enemies’ movement if you drop out of running. The result is that you can jump
+into the midst of a group of enemies, walk temporarily for a precise amount of time
+and then jump out again without feeling too out of control and without plowing
+into the enemies themselves.
+Challenge is also defined by context, as it is in most heavily spatially oriented
+games. In the later levels, the jumps become a bit wider, requiring more specific,
+precise landings. To further ratchet up the difficulty, you must do a large number of
+these precise jumps in rapid succession. At the same time, there are far more enemies. Where once there was one Goomba, there will be three in a row followed by
+two turtles. Then things like bullet bills and hammer brothers begin to appear, and
+the meaning of even the simplest jump and motion changes. It may seem an obvious point, but it’s interesting to examine the ways in which challenge is constructed
+via the addition of enemies. There’s almost always an optimal path that, if the player’s running full speed, will take him or her through unscathed without too much
+hassle. The game feels like a course to be run and perfected rather than like a space
+to explore slowly and methodically.
+To get the feel of Mario, you need blocks that are four tiles high and are spaced
+far apart horizontally. Pits in the ground are in a range from two blocks wide to six,
+with six feeling quite risky to jump across. The difficultly ramp up happens based
+on adding more of these wide, difficult jumps. They require a great deal of precision and force the player to do them in rapid succession. In addition, the later levels
+become littered with increasing numbers and increasingly fast and unpredictably
+moving enemies. These enemies serve, by their motion, to dominate areas of the
+screen space and make it feel more unsafe and oppressive. In the game’s later levels, no place feels safe, and it seems a mad dash of survival to reach the end.
+Indeed, there are lots of one-tile-wide blocks on 8-1 and 8-2, as well as lots of
+single-tile pits you can run across. In addition, many pits get as wide as five or
+six tiles, which leaves very little margin for error. Technically, Mario can jump 10
+horizontal tiles at a full run, but it’s almost never used in the game because it’s so
+difficult to do.
+Polish
+Up to this point, what we have is a bunch of rectangles moving and sliding around.
+To examine the various polish effects, let’s turn on the character-based treatment.
+So as not to infringe, I’ve created “Scarfman” as a Mario stand-in.
+Playable Example
+Open CH13-2 to see the rectangle replaced with a character and the various
+tiles and enemies given some kind of representation.
+RESPONSE
+First, animation effects. The character has a run cycle. When the motion of the
+rectangle is activated, the visual representation now sitting on top of it plays back a
+series of frames. It’s a very short and simple series of frames, but it’s an animation
+nonetheless, and it conveys some new and different things to the players about the
+nature of the object they’re controlling.
+One of the crucial parts of the feel of Mario is that the playback of the frames of
+this running animation are synced up perfectly with the simulated motion underneath it. This was and is a big deal where feel is concerned; even today many games
+don’t successfully accomplish the sense that the avatar is truly and accurately representative of the simulated object underneath it. This is typically called “foot slip” by
+animators and is a particular problem in video games because of the unpredictable,
+participatory nature of avatar movement.
+The fact that Mario really nailed this relationship between animation and avatar
+movement was a big deal, even in this primitive, 8-bit context. The perception conveyed is that this is a little guy running along the ground and his feet are planting
+at each step because the speed of animation is perfectly matched to the speed of
+movement of the object.
+If the underlying simulated object is moving faster or slower than the animated object, it’s very easy to pick up on that discrepancy. It’s a very subtle clue
+but it’s something that humans are very good at observing. We have a lot of practice observing and coping with our immediate physical surroundings at this tactile,
+interactive level, so as soon as something doesn’t match up, it becomes immediately
+obvious. The net result is that, in the player’s mind, the animated character and the
+moving object beneath become separate entities, which makes it more difficult for
+the player to engage in and believe in the reality of the game world. Something is
+lost because you can see behind the curtain, see the simulation.
+Another important animated effect is the little slide that Mario does when he’s in
+the process of reversing direction. If you reverse direction while Mario’s running, he
+puts his hand up and assumes a little sliding pose. In the case of the Super Mario
+Brothers, this is not a separate animation that gets played back. Rather, when you
+apply the acceleration in the opposite direction, the character slows down. This is
+another consequence of Mario’s simulated approach; instead of having a canned set
+of frames played back for, say, a foot plant and direction change, the natural force
+of the acceleration gradually counteracts the current velocity and Mario slows to a
+halt, reverses direction and slowly speeds up going the other way. The animated
+effect occurs if and only if the player is holding down a direction which is opposite
+from the current direction of the character. So the underlying simulation has not
+changed, but the animated effect on top of it is emphasizing and enhancing the
+CHAPTER THIRTEEN • SUPER MARIO BROTHERS
+perception of what’s going on physically with the simulated objects. The character
+is running in one direction, the player presses the other direction, the character goes
+into a slide until the direction change is complete, and then the character resumes
+the run animation (albeit at the lowest speed, speeding up gradually to match the
+speed increase of the simulated rectangle). To put it another way, the animation
+effects are there to enhance and emphasize what’s happening with the underlying
+simulation, rather than wagging the dog the way the animations in, say, Prince of
+Persia did.
+Another animated effect that’s crucial to the feel of Mario is the jiggle of bricks.
+It seems like such a silly thing, but when you’re small Mario and you hit a brick
+from underneath, it sort of jiggles. It jiggles in a very satisfying, very cartoony sort
+of way, but it adds a lot to the sensation of interaction. It doesn’t actually affect
+the simulation—it doesn’t move the brick, changing its permanent position—it’s
+just a layered on animated effect that gives an impression of mass to the character.
+This is especially true in the contrast between hitting a brick when you’re small as
+opposed to when you’re large Mario. Small Mario causes the brick to seem loose
+and jiggly when it’s hit, but that interaction also tells you that small Mario has a
+certain amount of mass. If he can jiggle a brick loose, he’s striking with some force,
+clearly. When you’re large and you can smash the bricks, it shows you that the
+larger Mario is quite a bit more massive. It shows you that where diminutive Mario
+simply loosened the brick, big Mario has the force to smash it spectacularly, causing
+brick detritus to rain down.
+Playable Example
+Check out how the feel changes if you turn off both of these effects in example
+CH13-2 to see just how much they sell the notion that this is a physical, malleable world.
+Visual Effects
+As we have defined them, there are very few visual effects in Mario. There was very
+little processing power to work with on the NES, so there couldn’t be sprays of particles everywhere to emphasize every interaction. The trend over the years has been
+toward more and more visual effects in the Mario game—the recent New Super
+Mario Brothers and Mario Galaxy have almost ludicrous amounts of particles flying
+everywhere all the time. In the original Mario, everything seems clean and smooth.
+There aren’t even modest little puffs of dust or smoke when Mario enters the slide
+pose to change directions. It seems as though every surface is pristine and smooth,
+without a hint of dust or gravel. The only visual effect of note is the broken brick
+particles that spawn and fly down when a tile is smashed. Again, though, look at just
+how much is lost if this effect is removed. It just doesn’t feel satisfying to smash
+bricks when they simply disappear. Removing this effect removes one of the few,
+highly important clues the player has to derive notions about the physical nature of
+this world.
+Sound Effects
+The sound effects in Mario are paramount. I’ve replaced them in my demos to
+avoid infringing on Nintendo’s intellectual property, but note their nature. The rising, slide-whistle noise for jumping roughly matches the height change of Mario as
+he flies upward, further harmonizing with the motion and the sensation of holding
+down the button in emphasis to get a higher jump.
+There’s one collision noise—when Mario’s head hits a block or when a fireball
+hits a wall—that sounds like a large rubber band being tweaked. It varies slightly in
+pitch to stay fresh-sounding, but the impression it conveys is one of a silly, rubbery
+world. It fits very well with the jiggle of the blocks when they’re hit by small Mario
+and in general convey a sense of jiggly, bouncy movement. This would seem to be
+selling a different impression than the smooth, frictionless collision simulation, but
+because of the jiggle of the bricks, it matches well and makes the world seem more
+alive and the physics more exaggerated than the more staid collision interactions
+would suggest.
+The brick breaking sound is particularly satisfying—it truly does convey the sense
+of a crumbling stone object, even with the limitations of the NES sound board.
+Metaphor
+Being as iconic as it is, it’s a little weird to look at Super Mario Brothers with an eye
+to examining how the metaphorical representation it presents affects our expectations about how things will behave and act in its world. But humor me here, let’s
+take a poke and see what we can see.
+First, let’s give Mario’s treatment a place on the three-axis scale between realistic, iconic and abstract. Obviously, Mario’s not realistic. The treatment, such as
+it is, is far toward the iconic side of the diagram and indeed begins to creep up
+toward pure abstraction. It’s very surreal. What, for example, is a Goomba? What
+does it represent? A turtle in Mario looks something like a turtle, but it’s clearly
+not attempting to meaningfully convey turtleness, if that makes sense. These turtles
+are fast-moving, dangerous creatures. In general, the creatures and objects represented have very little grounding in meaning or reality. Their meaning is conveyed
+by their functionality in the game, which is to present danger and to dominate areas
+of space. They’re not abstract shapes and lines either, though. They’re definitely
+meant to be creatures of some kind who obey their own bizarre rules of physics and
+behavior. They simply tend toward the surreal. There’s very little meaning imbued
+in these objects other than the function they serve in the game.
+What does that imply for the way that we expect things in this world to behave?
+Well, we’re not grounded in expectations about how these things should behave.
+RESPONSE
+CHAPTER THIRTEEN • SUPER MARIO BROTHERS
+We don’t expect that because Mario is slightly portly that when he comes up to a
+pipe or some wall that’s taller than he is that he’ll have to heft and sweat his way
+laboriously over the top. Because the treatment is so surreal, we aren’t bound by
+that expectation. He’s not a photorealistic representation of a plumber. He doesn’t
+look like the plumber who came and cleared that hair clog from your shower. We
+can accept that he leaps like a flea.
+In its abstractness and surrealness, Mario plays very well into the type of physical interactions and movements that it sets up. Mario flies through the air like a
+flea getting this gigantic, spontaneous upward force and yet needs no wind up, no
+anticipation, no pole to vault with. It’s very organic and expressive but it has very
+little to do with the way that things behave in our own physical reality.
+But that’s okay because both the metaphor and treatment are surreal. The
+abstract and surreal motions of the objects and the way things feel and function
+don’t seem odd. Even the interactions between objects, which so often seem like a
+block of ice sliding across a gymnasium floor, fit in just fine because of the dreamlike metaphor and lo-fi treatment. The metaphor is setting up very few expectations,
+so all bets are off.
+The one place that Mario does actually lean into expectations is in the use of an
+iconic human to represent states. Because Mario appears identifiably human, we
+can look at him and say ah, yes, he’s on the ground running now, or hey, he’s in
+the air jumping now. When he’s on the ground and running along, it’s apparent to
+the player that he’s in a different state than when he’s in the air or when he’s swimming. It’s easy to accept that when he’s in the air, he has less control, because it’s
+obvious to the player that a different state has been entered. It’s odd that there’s any
+control in the air, as this is not the way that things work in the real world, but the
+visual cue effectively conveys the change and maintains a sort of logical cohesion,
+even if it is rather surreal. You can definitely tell that Mario, as an iconic human, is
+in a different state of being when he’s in the air than when he’s on the ground. It’s
+a nice visual metaphor for changes in state. It uses the fact that he appears human
+to tie in the logic of the states and how they function.
+Rules
+At the lowest level, there are a lot of really interesting rules about enemy interactions that give the player clues about the physical nature of Mario and the world in
+which he exists, which ultimately change the feel of interacting with that world. For
+example, Goombas are weaker and less substantial than turtles. A Goomba is killed
+in one stomp and gets wiped out of existence. A turtle can be stomped and killed in
+one hit but leaves behind a shell. The fact that the shell remains seems to indicate
+that it is more massive than the body of a Goomba. A shell can’t be destroyed as
+easily as a Goomba can be stomped. By the same token, winged turtles seem more
+powerful and massive than those without. You have to stomp them twice: once to
+knock their wings off—the wings are not very well attached, apparently—and once
+to knock them out of their shells. There’s this sort of hierarchy of powerfulness
+amongst the creatures, from Goomba to turtle to winged turtle. Bowser is the most
+powerful creature of all; he can’t be stomped. You have to drop him into lava.
+The other thing all these interactions tell us is that Mario himself is quite massive. These creatures are all about the same size as him, but he can stomp anything
+in the game to death with relative ease. One assumes that his apartment is free of
+cockroaches.
+At the medium level, there are three power-ups that have an immediate effect on
+the spatial topology. You see them and you want them for the immediate benefits
+they convey. So you focus in on grabbing that star, mushroom or fire flower. You’re
+going to go out of your way to get it. Unless, of course, you already have the fully
+powered up fire flower, in which case the flower and mushroom become meaningless and can be ignored. These are temporary effects but each changes the feel of
+the game significantly. Going from small to big, you can smash bricks and you can
+be less afraid of enemies because if they hit you, you simply turn small again. Fire
+flowers enable you to run forward with impunity, dispatching enemies left and right
+without having to stomp them. The whole feel and flow of the game are altered
+because you no longer have to fear most standard enemies. They no longer dominate certain areas of space, so the game suddenly feels more open. The star is the
+ultimate temporary power-up, enabling you to run through enemies at leisure. With
+the star, the challenge is temporarily reduced to jumping exclusively. This feels more
+open, more free.
+Finally, at the highest level of long-period rules, there are 1-ups and coins. Score
+in the game is mostly irrelevant, a throwback to an earlier age of arcade gaming. I
+never pay attention to or try to beat my score in Super Mario Brothers. Extra lives,
+however, I’m very interested in. Super Mario Brothers is a difficult game and you
+are given only three lives at the outset, leaving very little margin of error. When I
+see a 1-up mushroom, then, I get very excited and immediately focus all my attention toward attaining it. But the desire is tempered by the knowledge that if I die in
+the attempt, the effort will have been wasted. The reward is almost directly proportional to the risk. It feels like walking on eggshells. By virtue of the rules—lives are
+the rarest commodity and there are very few of them—it seems like the highest possible reward, so I’m willing to undertake a huge risk to get it.
+Coins give a low-level sense of constant reward. Because collecting 100 coins
+gives you a huge reward, an extra life, it always feels like you’re doing something
+useful as you collect them. Useful, but mundane. It’s not like the excitement of the
+fast-moving extra life mushroom. You might go a little out of your way to collect a
+coin, but you wouldn’t risk dying over it.
+So in order for a game to feel like Mario, the metaphor should be surreal. It
+doesn’t have to be an Italian plumber running around huge pipes and dealing with
+abstract, surreal monsters that vaguely resemble turtles and bullets, but putting
+Mario with the movement he has on a street corner in downtown New York will
+seem a bit off. Similarly, a photorealistic treatment will clash with the surrealism
+of the movement and interactions. To have that Mario feel, the treatment should be
+RESPONSE
+CHAPTER THIRTEEN • SUPER MARIO BROTHERS
+iconic, bordering on the purely abstract. Again, it doesn’t have to be Mario specifically. As Scarfman shows, though, it ought to be a little guy.
+Summary
+Bet you’ll never look at Mario the same way, eh? I know that I certainly don’t after
+such an in-depth examination. The other major takeaway here is that game feel,
+even in a seemingly simple game like Super Mario Brothers, is really freaking complex. All the tiny little decisions that meld together to comprise the feel of Mario
+boggle the mind. Especially in the area of simulation and response to input, there
+are a surprising number of small but important decisions. This examination gives us
+a nice vocabulary for addressing things like whether the game keeps track of acceleration and velocity or whether it’s simply tracking and updating position and how
+that will change feel.
+At this point, then, you should have a very clear idea of the depth of detail that
+goes into creating a good-feeling game. If you’re creating a game from scratch, you
+must be prepared. Keep your mind open to the possibility of changing any part of
+the system with the goal of improving the feel, the perception. As Mario proves,
+even things that seem hacky, such as artificially setting a jump velocity in the
+middle of a jump, may turn out to feel better than a more pedantic approach to
+simulation.
+CHAPTER
+Bionic Commando
+Bionic Commando was released in December 1988 for the Nintendo Entertainment
+System. At the time, the notion of the “platformer” game had been so well established
+by Super Mario Brothers, it was difficult to imagine a similar game that was not, at
+some level, a Mario clone.
+Many companies scrambled to capitalize on the apparent gold rush by differentiating without deviating; they created their own characters and worlds in an attempt
+to separate them from the hoards of similar product, but always emulated the feel
+and functionality of Mario. The recipe for a platformer, as set down by Mario,
+seemed clear and immutable and woe to those who tried to stray too far from it.
+The one staple, the one ingredient that seemed non-negotiable, was jumping.
+Then came Bionic Commando. Not only is it one of the best-feeling games ever
+created for the Nintendo Entertainment System, but it asks a fascinating “what if”
+question: What if we made a platformer where the avatar couldn’t jump? What
+would that be like?
+Bionic Commando answers this question with the eponymous bionic arm.
+Instead of jumping, the character can make a fulcrum of anything, connecting to
+and swinging from most objects in the game. The construction of the bionic grappling claw and exactly how it’s meant to integrate with Ladd, the commando in
+question, is unclear. But as a means of transportation it enables the character to
+swing around with a loping, easy grace. This is especially apparent when contrasted
+with the rigid movement of the character on the ground. On the ground, he feels
+like a lump, an unappealing blocky chunk of matter that ambles along without
+inertia or appeal. As soon as he starts swinging, he comes to life. In swinging, the
+control feels expressive, improvisational and liberating. It feels like a continuous
+process of cheating gravity, saving yourself from falling at the last possible moment
+over and over again. In that respect, it’s similar to juggling, unicycling or riding
+a bike.
+It’s almost as though the character is a performer in Cirque de Soleil. While
+everything else in the world seems bound by the simple, boring rules of reality,
+Ladd is free to break through with unexpected skill, soaring around the world in a
+way that seems improbable but not impossible. That sense translates to the player’s
+impression of control. Personally, as I play the game, I feel as though I’m learning a
+FOURTEEN
+CHAPTER FOURTEEN • BIONIC COMMANDO
+complex skill, but one that is grounded in a mundane reality. The feeling is analogous to learning a new skill, like juggling, in the real world.
+Now let’s see how this effect was achieved, applying our taxonomy of game feel.
+Input
+In Bionic Commando, the NES controller is used in a way very similar to that of
+Super Mario Brothers. There is a lot less chording of inputs and a lot more emphasis on states, but the usage is similar enough to gloss over. Just recall that the NES
+controller has the directional pad and two buttons, A and B, and is a simple input
+device (Figure 14.1). There are six buttons used for active gameplay, and each of
+those buttons is very low sensitivity. Taken as a whole, it’s a very low-sensitivity
+input device.
+The shape feels good to hold, it has a satisfying weight, and the smooth texture
+is pleasing to the touch.
+Response
+As with Mario, if you want to create a game that feels the same as Bionic
+Commando, you’re going to be dealing primarily with response. Unlike Mario, however, Bionic Commando relies on animation more than simulation for its expressive feel. This illustrates once again our principle that game feel exists in the player
+rather than in the computer. It’s all about how the player perceives the motion and
+control rather than the accuracy or robustness of the simulation. This is particularly
+evident in Bionic Commando, where there is almost no simulation of the sort found
+in Super Mario Brothers.
+F I G U R E 14.1 Each input on the NES controller is a simple button with two states,“on” or“off.”
+As always, the first things to examine are the objects that move in response to
+a player’s input. What are the avatars and how do they move? Like Mario, Bionic
+Commando has two avatars: the main character, which is directly controlled, and
+the camera, which is indirectly controlled.
+The character, Ladd, has freedom of movement in the same XY plane as Mario
+(Figure 14.2). He moves horizontally, left and right, and he’s able to swing up and
+drop down. The motion is relative to the view; pressing left on the directional pad
+moves the character to the left of the screen and vice versa, and there is no rotation.
+Horizontal Movement
+With respect to horizontal X-axis movement, the game is only tracking the position
+of the avatar. Unlike the rudimentary simulation of Newtonian physics that Mario
+uses, there’s no acceleration or velocity. When you press left on the directional pad
+button, the character goes immediately from standstill to his maximum speed run,
+with zero acceleration. On or off, full speed or standstill, just like Donkey Kong. So
+there’s very little simulation here. The input passes directly into the motion of the
+character. Hold down the button, he’ll move at his maximum speed in one direction. Press the other direction, he doesn’t decelerate or accelerate, he just moves full
+speed in the other direction. That’s where the sort of stiff, robotic feel comes from.
+You release the button and he stops immediately with no semblance of an organic,
+fluid motion (Figure 14.3). Nothing in our world moves like this, so the impression
+can only seem robotic. There’s a certain tradeoff in the precise, per-pixel positioning of the character that’s possible, but there’s certainly no intrinsic appeal to this
+motion. By itself, this motion could not carry a game.
+RESPONSE
+F I G U R E 14.2 Ladd moves in two dimensions, X and Y.
+CHAPTER FOURTEEN • BIONIC COMMANDO
+In terms of vertical movement, the character can move in Y direction by falling
+and by using the grappling claw. There is no jump. All vertical movement happens
+via the grapple, which shoots out in one of three possible directions relative to the
+character: vertically, horizontally or diagonally (Figure 14.4).
+Vertically, the motion is fairly staid. If the claw latches onto something, you can
+pull yourself directly up. If the thing you’re latched onto is a particular type of tile,
+the character will pull through the platform and end up standing on top of it. It’s a
+predetermined, animated motion, with no player control other than initializing it at
+F I G U R E 14.3 There is almost no attack phase in the horizontal movement of Bionic
+Commando.
+F I G U R E 14.4 The grappling claw can shoot out in three directions relative to Ladd.
+the start. Horizontally, you can attach the grapple to barrels and certain walls and
+pull yourself toward them. In the case of both of these grapple directions, when you
+hook onto something, the result is not very dynamic. There are interesting-feeling
+interactions between the claw and enemies, which we’ll get to when talking about
+polish and collision, but the default, connect-to-something interaction feels plain,
+rigid, dull. The real expressivity of Bionic Commando comes from the diagonal
+firing of the grappling hook.
+When the grappling hook is fired diagonally and connects to something, the
+character enters the swinging state. The swing state is what the feel of Bionic
+Commando is all about. Interestingly, the swing is not at all simulated. There are no
+parameters being tracked for acceleration or velocity. It’s just a predetermined set of
+frames, played back linearly, which show the Bionic Commando character swings
+back and forth like a pendulum.
+At the apex of the swing, the frames are closer together, indicating a change in
+speed as he reaches the end of the arc, reverses direction and swings the other way.
+F I G U R E 14.5 The feel of swinging comes from the playback of animation rather than
+simulated parameters.
+RESPONSE
+CHAPTER FOURTEEN • BIONIC COMMANDO
+Likewise, he accelerates through the swipe of the arc. This is nothing particularly
+revolutionary; the same effect is used to convey the acceleration and slowdown of
+an animated ball bouncing (Figure 14.6).
+This is how animation works. An animator makes things appear to speed up or
+slow down by grouping drawings closer together or pushing them further apart. If
+the drawings are grouped closer together, the impression is that the object is slowing down. As they separate, the object seems to speed up. This is a great-looking
+motion because it’s well animated. The perception is of a fluid, arcing motion. What
+differentiates the swinging in Bionic Commando is the fact that the predetermined
+frames contain information about position. As the swinging frames are shown, the
+game maintains information about the position of the character at each frame of the
+swing, which is used for things like damage and collision. The feel, though, is of a
+smooth, hypnotic pendulum.
+The character will exit the swinging state if the corresponding directional pad button is held during the apex frame. That is, if you’re swinging from left to right and
+you hold down the right directional pad button, the character will release and fly off
+to the right. The horizontal velocity is not variable, mind you. You don’t get more
+or less velocity for swinging more or less, but you do get launched in the direction
+you were moving which, because the release always happens on the same frame of
+the swing animation, is a slightly upward horizontal trajectory. From the player’s
+perspective, you hold the button for the direction you want to release for some time
+before the actual release happens. The result of this pre-holding is a sense of pushing the character in the direction you want him to go, anticipating the release. This
+is very interesting, as holding the button has no ramification for the playback of the
+swinging state frames unless it happens on one of the two apex frames and is in
+F I G U R E 14.6 The appearance of a ball bouncing as conveyed by frames of animation
+played back in sequence.
+the proper direction. But the sense is that you’re pushing the character the way you
+want to go, nudging the pendulum in the right direction. It’s sort of a placebo sensation, something akin to waving your hands at a bowling ball after you’ve thrown
+it down the lane. Again, it’s all about the player’s perception. It feels as though
+pushing on the directional pad affects the momentum of the character, so the
+reality—that the game could care less about input unless it’s at the apex frames—
+is irrelevant. It is at this point, at the moment the character releases from the swing,
+that gravity takes hold.
+What’s interesting about the application of gravity in Bionic Commando is that it
+is the only truly simulated parameter in the entire game. Unlike when the character
+is running on the ground (having only his position set each frame or swinging back
+and forth with predetermined frames of animation), when the character is affected
+by gravity, he has velocity, downward acceleration and position. This is the only
+motion that uses any sort of simulated Newtonian physics. Even when he walks
+off a platform, the fall is slightly artificial. The character accelerates downward
+when he walks off the edge of a platform, eventually reaching the terminal velocity,
+but the game is setting that value artificially high as soon as you step off the platform. So when you step off the platform, immediately you are sort of flying at this
+artificially high speed. As soon as you step off the edge, it gets set higher than
+it normally would be. It doesn’t start at zero and ramp up slowly. And that feels
+pretty weird.
+When you release from the grappling hook and you’re flying through the air,
+though, the gravity takes hold very gradually, very naturally, and feels organic.
+Eventually, as with Mario, the fall caps out at a terminal velocity to prevent weird,
+uneven-feeling falls from various heights. In a sort of inversion of the way gravity
+in Mario functions, you’re soaring through the air in a beautiful arc, flowing up and
+down with different wavelengths. And once you’ve released, you’re immediately
+free to attach to the next point. Any other valid object, any other pixel on the entire
+screen can be connected to as long as it’s flagged as such. So there’s this wonderful expressivity in swinging, releasing, swinging, releasing, as you fly around, and
+you can connect to almost anything. The sense is one of masterful improvisation, of
+freedom to use the environment as you see fit. If you were to play the first level 100
+times and trace the paths of motion each time, the results would be different curves,
+different motions each time. As they would be with Super Mario Brothers.
+Again, this all comes from the simulation of vertical motion. The simulation of
+this one parameter—gravity—serves to create a graceful, flowing feeling. The speed
+of horizontal motion is hard coded, as it is in all other instances.
+Another thing that adds to this feeling of expressivity is that the swing, the arc
+of the pendulum, is based on the length of the chain. The grapple fires outward
+at a certain rate, and as soon as it contacts a surface, it either attaches or retracts.
+So as you are flying through the air or if you are sitting on the ground and you fire
+the grappling hook out, it can connect at a shorter or longer length, depending on
+how far away the object is that you’ve connected to. If it’s far away you get the
+full swing, and it will be a large sweeping arc. When it’s a shorter chain, you get
+RESPONSE
+CHAPTER FOURTEEN • BIONIC COMMANDO
+a much smaller arc. It still plays back the exact same frames of animation but it
+reduces the horizontal distance between the frames proportional to the length of the
+cable. The result is that a short swing back and forth takes the same amount of time
+and it plays back the same frames as the maximum length swing. It simply travels
+less distance horizontally. You even get the same amount of vertical and horizontal
+movement upon release. The reason this is more expressive is because as you are
+swinging around, the arc that you are flowing through can be less or more, greater
+or smaller depending on the length of the grapple. You have a lot of choice about
+when you fire the grappling hook, and you can really use that ability to choose the
+length of the swing as you move from one connection to the next.
+Collision
+The collision model in Bionic Commando is fundamentally the same as the collision
+model in Mario. The implementation is more or less identical, but the feel is totally
+different. While Mario feels like a block of ice gliding along smooth wood flooring,
+the character-to-ground interaction in Bionic Commando feels sticky and somewhat
+unnatural. The collision code still checks to see where the character is going to be
+in the next frame and places him on top of tiles he’s not supposed to be able to go
+through, but because the basic horizontal movement is not loose at all, the sensation
+is difficult to reconcile with an everyday experience. Instead of a block of ice sliding
+loosely across a smooth surface, it’s like trying to slide a box of Arm and Hammer
+across a patch of carpet. But even less physical-feeling than that: there’s no sense of
+friction, no matter how small. Nothing in our experience of everyday life behaves
+the way Ladd does when he runs horizontally across his environment.
+The main difference between the collision of Mario and that of Bionic Commando
+is that there are tiles which Ladd can pass through under certain circumstances. This
+happens because there are two types of tiles that can be collided with: connectable
+and impassable. A tile can be “flagged” as one, the other or both simultaneously.
+A connectible tile is one the grappling hook can attach to. You can’t walk through
+it—it’s considered solid when you’re running on the ground—but any pixel on a
+connectible tile is a valid connection point for the grapple claw. In this sense, all
+tiles are considered solid when you’re on the ground. In the air, on the other hand,
+all bets are off. If you are running around left and right on the ground and you bonk
+into a barrel or a wall, the collision code will stop you. If you connect to that same
+connectable-flagged tile, start swinging and then release such that your trajectory
+takes you up into the tile, you can swing partially through it. If the platform’s thick,
+you can swing, release to boost up into it, and then connect again to a higher point
+even as the character is overlapping it, inside it. Once you reach a certain height
+within the object, if you detach from your swing again, the collision will think your
+feet are colliding with the platform you’re currently in and you’ll snap to the nearest
+valid ground tile above it, landing on it as though you’d fallen from above. You can
+use this to climb through platforms.
+Impassable tiles can’t be connected to or penetrated under any circumstances.
+Even the swinging trick will not allow Ladd to pass. This makes for cave and tunnel
+ceilings that feel extraordinarily thick and solid. Assuming that the tiles are flagged
+as both connectable and impassible, of course. If tiles are flagged just as impassable,
+the grappling hook will ricochet off of them without connecting. If you flag a tile as
+both connectible and impassable, the result will be that the character can connect
+to it, can swing off of it, but if he tries to swing up into it, his head will just bang
+against it and he’ll fall off.
+Another factor, which is an aspect of the collision system, is that because the
+collisions are turned off while you’re swinging, if you are swinging in a horizontal
+arc and your arc takes you to the point where you would be inside an impassably
+flagged tile, the character will bounce off and go into a special state where you
+cannot fire the grappling hook at all. You can’t control him again until he touches
+solid ground.
+Camera
+In Bionic Commando, as in Mario, the camera is indirectly controlled. The camera follows the position of the character avatar, which is controlled by the player.
+The levels scroll much farther vertically and horizontally than in Mario, however,
+so there’s a high-level sense of freedom, of unbounded motion. This is crucial to the
+feel of Bionic Commando. Without this freedom, the swinging mechanic becomes
+cramped and claustrophobic; the context is wrong for the tuning of the avatar. This
+was a problem for the feel of the 2004 swinging/grappling game Wik and the Fable
+of Souls by Reflexive Entertainment. The treatment, metaphor, highly polished animations and visuals and mouse-driven control are all much more expressive and
+beautiful than those of Bionic Commando. But the screen in Wik and the Fable of
+Souls does not scroll, constraining all motion to a single unmoving frame.
+A swinging mechanic of this type needs room to breathe, room to roam. This
+is a context concern, as it’s all about how the spatial layout affects the feel of the
+mechanic, but I mention it here because the camera in Bionic Commando moves
+freely most of the time so the contrast is difficult to imagine. The camera will pan
+happily up, down, left and right unless it reaches what is defined as a screen edge
+zone, at which point it will stop scrolling and the character can run all the way to
+the edge of the screen and push against it as though it were a solid bank of tiles,
+which it effectively is.
+The only special behavior of the camera, apart from stopping at the various
+screen edges (vertical or horizontal), is a dead zone at the center of the screen.
+When Ladd is within this zone, the camera does not track his motion at all. As soon
+as he crosses the threshold and moves out of the zone, the camera begins tracking
+on his position again. In the running state, this dead zone of non-movement for
+the camera extends to take up about a third of the screen, centered horizontally
+(Figure 14.7).
+RESPONSE
+CHAPTER FOURTEEN • BIONIC COMMANDO
+If you stand in the dead center of the screen, you can run about one-sixth of
+the total screen distance to the left or right before the camera starts panning with
+Ladd and tracking on him. So from the center of the screen, there’s a rather large
+area where the camera simply won’t track on the character at all, but as soon as he
+crosses that threshold, the camera will track on him at exactly his movement speed,
+keeping him in exactly the same relative position on the screen.
+This horizontal dead zone affects the horizontal motion of the camera only.
+There is a separate dead zone affecting the vertical motion of the camera. The vertical dead zone does not affect the horizontal-only motion of running left and right.
+Instead it comes into play when the character is falling or swinging (the only times
+when the character can move vertically, either up or down). When the character
+swings upward, he can fly upward a ways before the camera starts tracking on him,
+and the same when he falls. If you walk off a platform, or if you are dropping from
+a swinging state, it will take a little while for the camera to track on the character
+as he falls first through the dead zone, which doesn’t move the camera, and then
+when he hits the edge of the dead zone, at which point the camera will start tracking on him at the speed he’s moving. Compared to the horizontal dead zone, however, the vertical one is narrow (Figure 14.8).
+The last small detail that affects camera behavior is the changing size of the dead
+zones. As soon as you connect the grappling hook to a point and start swinging, the
+horizontal dead zone gets a lot larger, so you can swing almost all the way out to
+the edge of the screen. It’s a much larger dead zone than simply the one-third of the
+screen. The resulting feel of these dead zones and their changes relative to states
+F I G U R E 14.7 There is a “dead zone” for camera movement in the center of the screen. When
+the avatar is inside it, the camera does not move.
+is twofold. First, because the dead zone when swinging is much larger, the camera
+often goes from moving to stopped at the moment the grapple attaches. This serves
+to improve the feeling that the grapple is anchoring the character to a particular
+spot. Second, the potential for nausea with such a lively character is surprisingly
+high. If the camera were to track on the character at all times—during the pendulum swinging motion, especially—the game would be nearly unplayable.
+F I G U R E 14.8 The dead zone for vertical movement is much narrower in the vertical (Y)
+dimension.
+Playable Example
+To experience this, try changing the horizontal and vertical dead zones in
+example CH14-1 to zero.
+Context
+The high-level layout of levels in Bionic Commando conveys a sense of openness
+and freedom. The camera is fixed from a side perspective, meaning the player can’t
+see what’s past the edge of the screen, but because the motion of the camera is freescrolling, the feel is open, unbounded. The camera keeps scrolling and scrolling, up
+and down, left and right, as Ladd moves, giving the impression that the world goes
+on forever. Or for some distance, at least.
+This gives a sense of exploration and discovery, of freedom. Knytt, a sidescrolling game by indie auteur Nifflas, takes this type of freedom to its beautiful
+CONTEXT
+CHAPTER FOURTEEN • BIONIC COMMANDO
+extreme by creating a world that seems to go on forever, screen after screen, world
+after world. However, this is different from the sense conveyed by games such as
+Shadow of the Colossus or Oblivion, which enable you to stare at a point in the distance and then ride off to find that point. The view in Bionic Commando is narrow,
+focused. The impression of a large, sprawling area is there, but you must view it
+with blinders, one screen at a time.
+As noted earlier, this sense is bounded by the edge of the screen, but only in certain places. Within the game itself, it’s possible to get a sense of how a constrained,
+claustrophobic arrangement of space affects the overall feel—in each Neutral Zone,
+there is a single-screen room. Try swinging freely around this room. It just isn’t happening. Even when you get connected to a surface, anywhere you swing will take
+you right into a wall. Now imagine if every level were constrained to one screen like
+this. Yowch. Thankfully, most of the levels are laid out in a long, stretched horizontal pattern without much to constrain the character’s motion or to limit his or her
+space. The overall feel is one of openness and freedom. The levels that embrace this
+type of layout, like the first level, are the best feeling levels. Those that stray, hemming the player in and taking away the freedom to improvise and swing around,
+take away much of what makes the game feel good.
+At the level of immediate object avoidance and path plotting, Bionic Commando
+generally feels more like a sparsely attended mall than a crowded sidewalk. There
+are the occasional things to be avoided, but there’s no real need for constant
+worry about what’s moving toward you and how to avoid it. Because the swinging
+mechanic in itself requires so much focus, adding other objects to avoid and deal
+with is not strictly necessary. Accordingly, though they often appear cluttered with
+obstacles, most of the levels are deceptively open due to the fact that, when swinging, the character can move through many vertical platforms. Unless something is
+flagged as impassable, it’s more of a resource to be utilized than an obstacle to be
+avoided. This means that the only things that really provide mid-level spatial context, changing the feel at the level of immediate spatial avoidance and path-plotting,
+are impassable tiles, enemies and enemy projectiles.
+As the levels progress, the trend is toward providing fewer and fewer connect
+points and toward enemies that dominate larger and larger areas of space. For example, one later level features a purely upward climb, ascending a tall tower. The higher
+you get, the fewer places to connect are provided. Fewer connection points mean a
+greater chance that you’ll fall and have to start climbing all over again. At the same
+time, there are flying enemies whose attack is a lightning beam of sorts that swipes
+across the top of the screen, taking away most available possible connection points
+in the places the player most wants to go. This may be a bit of a mistake on the
+part of the designers; the best levels are those which provide a lot of texture, a lot
+of places to connect the grapple. On the earlier levels, especially the very first level,
+there are a huge number of possible connection points relative to where you’re trying to get. What this does is give you a huge amount of expressivity and improvisation. Functionally, if you have an entire area where all the platforms are flagged just
+as “connect” and not as “impassable,” you can go and swing anywhere and it feels
+great, it’s awesome. It’s by far the best-feeling part of the entire game when you
+can approach an enemy who’s shooting at you from behind a barrel in any number
+of different ways. You could do it 100 times and each time it would be something
+slightly different.
+In the later levels, you end up in situations where you have to do a whole series
+of swings connecting to nothing but loud speakers or lights or whatever those tall
+things are at the top of poles, meaning that your potential connection area is very
+small relative to the total area of the screen. These things detract from the pure,
+improvisational feel on display in the earlier levels. You have to think about what
+you’re doing so you time things correctly, but they dominate such a huge area of
+the screen that you lose that expressive feel. As soon as you start taking away connection points and screen space, you lose the ability to improvise and do all these
+other interesting, expressive things.
+The impression of speed in the game comes from the motion of the static background objects, which have a great deal of texture and variety. Things in the environment move quickly, relative to the character, creating the illusion of motion.
+There’s not much to tell besides that, apart from the difference between the horizontal and vertical motions. When swinging, grapple after grapple, at the longest
+length of the grapple, the player moves much more quickly horizontally than vertically. You can pull quickly upward with a purely vertical grapple, but in general, the
+perception is that the horizontal speed of the character is much faster than the vertical. Except for falling, of course, which seems quicker than any motion in the game.
+We discussed the lowest level of context, the physical collisions and interactions
+between objects, earlier. Again, on the ground it’s like a box of Arm and Hammer
+on rough carpet or something. In the air, the character only collides with impassible
+tiles, so the impression is one of being above or apart from the world, soaring past
+it. When you do collide with an impassable tile in the air, it’s like having your wings
+torn off. I always feel a bit like Icarus as I come crashing down. Mythological, this
+is, not Kid.
+Polish
+In terms of polish effects, the real selling point for the impression of physicality of
+Bionic Commando lies in the character’s animations and the sound effects triggered
+by the grapple claw. The animations of the character include subtle clues like standing on tiptoe and reacting in an appropriate and satisfying way when the grappling
+hook gets fired upward. These animations alone sell the sense that this character is
+solid and real, made of flesh and metal. You can really feel him shift his weight on
+his feet, even though all that’s happening visually is a three-pixel change. The subtle weight shift enables us to see the results of launching the grapple and it seems a
+hefty, solid, metal object.
+Another great animation is in the firing of the grapple. As the grapple is
+launched, the character counterbalances by raising his back foot up as he fires.
+POLISH
+CHAPTER FOURTEEN • BIONIC COMMANDO
+As soon as the grappling hook gets attached to something, he immediately plants
+his foot down and seems to shift his weight back again. It’s a very subtle visual cue,
+but it’s masterfully executed and it conveys perfectly the sense of physicality of the
+character. (I had always assumed—based on the animations, really—that the reason
+Ladd couldn’t jump was because of the weight of his giant metal arm. Ten frames
+of animation, and I’m inferring that his body has so much metal in it that he can’t
+jump. Talk about bang for buck!)
+Another animation that goes a long way toward selling this world and the objects
+in it as real and physical is the pendulum animation. Ladd swings back and forth,
+easing out at each apex before doing a snappy about-face and swinging back the
+other direction. Tremendous. It’s just a series of positions defining space, but also
+the shape of the character as he moves through there really conveys the sense of
+swing and motion, and it’s all being done through this series of frames. Kudos go
+to the animator for getting the most out of very few pixels, conveying the sense
+that the character is swinging back and forth, slowing down at the apex of the arc,
+reversing direction, and swinging back.
+Another great animation effect is the satisfying bounce of the green and white
+collectibles that are spawned when you destroy certain enemies. They bounce satisfyingly with a parabolic arc that’s similar to the bouncing-ball animation that we
+looked at earlier. They slow at the top of the arc and gradually bounce to the floor
+as they lose momentum. The fact that you can grab these out of the air with the
+grappling hook feels wonderful even though it is essentially just a proximity check
+that snaps the object to the grappling hook. The impression that you get is this
+wonderfully tactile sense that you’ve reached out and grabbed this thing and you’re
+pulling it back to yourself, making the little grappling hook a surrogate for your own
+hand. It feels like reaching out to grab a bouncy ball you’ve dropped onto concrete.
+Sound effects also sell the physical nature of this world. There are no visual
+effects to speak of—most likely because of a processing power deficit—so it’s up to
+the animations and sounds to convey everything.
+The most important sounds are those caused by the grapple itself. The sequence
+starts with the grapple extend sound which, like the jump noise in Mario, is a rising
+tone. It matches the animation of the grapple cable extending outward in the same
+way that the rising slide whistle tone in Super Mario Brothers matches his upward
+movement as he jumps. If the grapple does not connect to anything, there are no
+further sounds. If it does connect to something, the result is an extremely satisfying
+“ka-chink!” As simple as it is, it still manages to convey a sort of reverberation, a
+series of two quick sounds. Most players interpret it as an impact followed by the
+claw closing and digging into the surface. It’s awesomely effective for what it is. It
+makes the claw feel like metal and the surfaces feel like crumbly stone. Finally, if
+the grapple hits a surface it cannot connect to, the result is a dull, rubbery thud.
+These three sounds will be heard hundreds of times over the course of the game.
+Every time the character moves, the noises indicating that the grapple is extending and connecting or rebounding play. In the case of Bionic Commando, these
+sounds sell a heavy, metallic set of interactions very effectively. There isn’t a whole
+wonderful palate of sound effects to work with on the Nintendo soundboard, but
+they really nailed it with these three sounds.
+Overall, the few polish elements in Bionic Commando convey what they have
+to: a sense that the character has some weight and heft, that he’s made of flesh and
+steel, and that his bionic claw interacts with the environment at a powerful tactile
+level. Things that seem to me conspicuously absent are a reasonable grunting noise
+for when the character is hit (he squeaks like a kitten), a noise for destroying large
+objects such as walls and cranes (there is no sound whatsoever) as well as footsteps
+for the character and enemies.
+Metaphor
+Conceptually, the character in the game appears to be a little army man. He happens to have a metallic, bionic arm, though, so one assumes that the character is
+not intended to be realistic. Later in the game, this impression is reinforced by the
+fact that you encounter crane-riding midget soldiers, bizarre insects and animals,
+and flying jetpack soldiers with what appear to be Ghostbusters-style proton backpacks. Everything’s a bit absurd.
+Harmonizing with what’s conveyed conceptually, the treatment matches this surreal-but-real metaphor with a colorful, blocky, iconic aesthetic. The characters and
+enemies are distorted icons of themselves with no particular attempt toward realism. Most things are identifiable—a moth monster, a soldier dressed in red, a soldier
+throwing grenades—but they’re far toward the “meaning” side of the scale. That
+said, the representation is less surreal than that of Mario, and so there are a few
+more expectations set up for the player about the way that they’re going to behave.
+In terms of expectations, one expects that a cartoony army guy will run around
+with some weight and presence, but that his physics may be commensurately cartooned. In other words, because the treatment is so colorful, there’s not much set
+up about expectations beyond the basics of moving and running around, and the
+effects of gravity and so on. It’s a little bit inexplicable that he wouldn’t be able to
+make a little tiny hop over a small barrel, but the way they’re selling it, it almost
+looks as though he’s huge and heavy and is not only imbued with a large, heavy
+grappling hook arm thing but also might have a body made of metal or some part
+of him is bionic and made out of metal. Perhaps he needs to use the grappling hook
+to move himself around because he’s so heavy and ponderous. The air seems to
+be his natural environment. This is the element of metaphor which makes Bionic
+Commando so satisfying—Ladd swings through the air like a monkey, Tarzan or
+Spiderman, tapping into a common childhood fantasy about cheating gravity.
+Rules
+Bionic Commando, like Mario, features a hierarchy of power, based on the relative
+health of the various enemies. Like Goombas, the army guys that run left and right
+RULES
+CHAPTER FOURTEEN • BIONIC COMMANDO
+or parachute in are very weak. You blast through them in one shot of any weapon.
+The enemies who crouch behind barrels take three hits to kill with your most basic
+weapon, so they seem immediately more powerful through the low-level rule of
+having more health. And so it goes, up to the larger bosses who take many shots
+to kill with the most basic weapon. As you move through the game, you find that
+there are these different classes of guys. You’ve got your guys who take one hit to
+kill (the most basic and simple guys), and then you have stuff that takes a couple of
+hits to kill and it makes sort of a different noise when it gets hit before you are able
+to destroy it, so those guys seem a lot more powerful. Through the low-level rule of
+health, you have a lot of interesting indications about the sort of mass and solidity
+and physical nature of the objects that you’re shooting at and eventually destroying.
+Certain enemies appear throughout the game, and each enemy type will always take
+the same number of shots to destroy, so they provide a benchmark for how powerful your weapon is. If your weapon is more powerful, they take fewer hits to kill.
+At this same low level of interaction, the player has health. This is an arbitrary
+rule that lends a sense of toughness—or fragility—to the player. It’s very interesting
+that at the start of the game, the character can be killed in one hit. He is “green”
+both literally and figuratively. As you destroy enemies, they drop small packets.
+Collecting enough of these will add a health box, a small green icon, at the top
+left. From the point at which you’re awarded your first health box, when you’re hit
+by an enemy or enemy bullet, you lose a health box rather than an all important
+continue (or life, if you like), which will be lost if damage is received and there are
+no remaining health boxes. You can have as many as 10 of these health boxes, so
+they can be a powerful bulwark against damage. Interestingly, the amount of damage an enemy inflicts on the character with a particular interaction gives a sense
+of the power of that interaction. Running into an enemy or being hit by an enemy
+bullet subtracts only one health box, where hitting spikes will cost you three. It’s
+odd, but bullets hurt as much as running into an enemy’s foot. Pits make you lose
+a lot of health. They are a lot more dangerous than being shot by or colliding with
+an enemy.
+This health system extends upward to a higher-level rule about continues. If you
+run out of lives, it’s game over. This makes you think very carefully about your
+immediate environment when your health has dropped to zero, because lives
+are the rarest commodity in the game. You can find them, but they’re quite rare.
+They’re important because if you lose all of your lives, you lose and have to start
+over. There’s no such thing as a save game in Bionic Commando. To defeat the
+game, you must play through the whole thing, beginning to end, in one session. So
+when you start to get low on health, it really heightens your senses and makes you
+think a little more closely about what you’re doing.
+Hooked into the health of enemies are the rules related to weapons and their
+relative strengths. Certain weapons of yours do more damage and so seem more
+powerful. For example, the rocket launcher destroys things that the normal rifle
+takes two or three hits to destroy. In the contrast between the two results, the rocket
+launcher is given a sense of being more powerful.
+The final thing to look at with respect to rules is the feel of shooting. The
+B-button is mapped to a basic shooting mechanic, which creates a new object each
+time the button is pressed. The new object is a bullet, which launches in the direction the character is facing and fires off in the direction of that velocity at a constant, predetermined speed. The “rule” that changes the feel is the same one in
+Megaman: only an arbitrary, finite number of shots can be on the screen at a given
+time. For example, if you fire two shots and they have to travel the full width of the
+screen before disappearing, you’re not going to be able to fire another shot until
+the first of those shots has traveled off the screen, which can take a substantial
+amount of time. Whereas if you are standing one or two tiles away from the thing
+that you’re shooting at, both of those shots will be destroyed and cleared from the
+imposed constraint on the total number of shots very quickly, and you’ll be able
+to shoot again immediately. The practical upshot of this is that when you’re much
+closer to the object that you’re shooting at, you can fire much more rapidly. The
+interesting feel here is that the farther away your target is, the more precise you
+have to be with the shots, while when you get really close, you can just really mash
+on the shot button and get a quick reaction, about as quickly as you can press
+the button.
+Summary
+Bionic Commando broke new ground and showed that a “platformer” game didn’t
+have to be a Mario clone to have great game feel. It achieved this with a character,
+Ladd, who couldn’t jump, and who seemed bulky and clumsy on the ground, but
+who could move effortlessly through the air by swinging on his bionic grappling
+claw. In swinging, Ladd comes to life. The control feels expressive, improvisational
+and liberating, a continuous process of cheating gravity, saving yourself from falling
+at the last possible moment over and over again. Like an albatross, on the ground
+he was clumsy and outside of his “natural” environment—but in the air, he was an
+absolute joy to experience.
+The designer of Bionic Commando, Tokuro Fujiwara, achieved an optimal
+mix of game feel elements. In particular, the expressive feel of Bionic Commando
+comes from the diagonal firing of the grappling hook and the vertical movement of
+the character. The perception of a fluid, arcing motion is very powerful. Fujiwara
+achieved a wonderful sense of freedom in swinging and releasing as you fly around.
+And the fact that you can connect to almost anything gives the game a sense of
+masterful improvisation, of being able to use the environment as you see fit.
+Bionic Commando proved that it was possible to have flowing, organic sensations of control using the low-sensitive inputs of the NES controller and without
+directly cloning Mario. That the feel is so good is a remarkable testament to the fact
+that game feel ultimately lives in the mind of the player. The playback of a series of
+10 animated frames combined with the ability to attach to any point on the screen
+gave the game its great feel.
+SUMMARY
+
+---
+
+## Sección 8: Chapter 2 to answer these questions. [Entropy: 0.4]
+
+CHAPTER
+Super Mario 64
+My first act as a newly licensed driver was to drive around town tracking down a
+Nintendo 64. The North American release of the Nintendo 64 system happened just
+after my sixteenth birthday, and the only thing I wanted more than a driver’s license
+was a copy of Super Mario 64. In my mind, the car was simply a way to quickly get
+from store to store, an expedient for tracking down the elusive console. I told my
+girlfriend at the time that, so sorry, we’ll have to do the movie thing another time.
+I have a date with an Italian plumber.
+When I sat down with the game, I was transported back in time. I was sitting
+cross-legged and red-faced at my friend’s house down the block, playing Super
+Mario Brothers for the first time. Even as I struggled to come to terms with the
+skills needed to traverse this new and vibrant world, I felt that it was OK to suck
+because it was fun just to noodle around and bump into things. It was difficult and
+disorienting, as Super Mario Brothers had been when I was 9, but it was beyond
+doubt that the time spent learning would pay huge dividends. The world was physical, tactile and self-consistent. Learning to control Mario felt like learning to drive,
+something I’d just experienced. It was overwhelming and complex but also engendered with new, liberating possibility. Any amount of frustration seemed worth the
+effort. I couldn’t stop playing. Around every corner there were new kinds of tactile
+interactions and each one seemed to jibe with the others, building and reinforcing
+my impression that this world has its own physics. Here was a reality, whole and
+consistent, but with different laws governing it. Through the highly sensitive Mario
+tool, it was possible to interact with this world tactilely and physically, the way
+I interacted with my world. But it was so much more interesting because in this
+world I could jump and side somersault, spin and kick. I could fly. Every bit of skill
+I gained made the world seem that much larger, that much more robust.
+Even today, the game still has the ability to capture me. I check the timing of a
+jump or look at how the character speeds up over time and find myself, five minutes later, trying to get just one more star so I can unlock the flying cap.
+Picking apart the mechanics makes the cohesive nature of Mario 64’s world seem
+all the more remarkable. The physics are an illusion. Bizarre, improbable relationships are set up between variables, forces and the behaviors of objects. Gravity doubles when the character reaches the apex of his jump, for example, and if you duck
+FIFTEEN
+CHAPTER FIFTEEN • SUPER MARIO 64
+while running above a certain speed, the character begins to slide. Yet these relationships are what define the feel of Mario 64; a litany of odd, seemingly arbitrary,
+interdependent relationships that improbably improve the feel of control and interaction. Giles Goddard wrote, “Mario’s movement is based on good physics, but you
+have bits on top that you plug in so you can do things you shouldn’t be able to do.”1
+What’s Important?
+What’s going on here? Why does Mario 64 feel the way it does? What are the clues,
+effects and relationships that define the feel of Mario 64?
+The most important relationship is between the camera and the character. In
+Mario 64, the basic movement is camera-relative. The forces added by thumbstick
+input to drive the running and steering movements are applied with respect to the
+position and orientation of the camera. Unlike Tomb Raider, Resident Evil and other
+early forays into 3D freedom of movement, Mario’s movement always depends on
+the position and orientation of the camera. You can see this in action by simply
+holding down the N64 controller. When Mario reaches a point just under the camera, he begins freaking out, running in an endless circle. This is because downward movement always moves Mario toward the camera. When he reaches a point
+directly beneath it, he ends up running in circles.
+Another relationship is between the displacement of the analog stick and the
+speed of Mario’s movement. Mario 64 was the first game to nail rate-based 3D control with an analog stick. Displacing the thumbstick farther from center changes the
+speed at which Mario moves. It’s not acceleration, but a mapping directly to the
+rate at which he’ll move. Interestingly, because it will always take a certain amount
+of time to displace the thumbstick from center, there is a slight speeding up effect as
+the thumbstick goes from center to a direction.
+Animation is another huge part of the feel of Mario 64. When Mario runs, his
+feet never slip. The animation seems to match perfectly to the speed at which he’s
+moving, grounding him, making him and every piece of ground beneath him seem
+more real, more vivid. In changing direction, Mario arcs slightly. When the thumbstick rapidly changes position, the character will not follow it one to one but will
+rather arc around to follow at a slight distance. As this happens, the Mario character
+leans slightly into the turn, as if shifting his weight to compensate. If the thumbstick goes from one direction to the direction roughly opposite it—left to right, for
+example—the character appears to plant his foot, slide slightly and reverse direction. The simulation is just doing its thing, unchanged, but this foot-plant animation sells the impression that Mario is a physical being, albeit a cartoony one,
+walking across a real environment. These animations are applied across every
+possible interaction, enhancing the feel of control and interaction between Mario
+and his environment.
+http://www.miyamotoshrine.com/kong/features/mario64/
+Another important relationship to the feel of Mario 64 is the one between the
+movement of the avatar and the spacing of objects in the world. The spacing of objects
+relative to jump distances and heights in Mario 64 is immaculately tuned. It’s clear
+that a set of guidelines for the basic spatial relationships between objects was set down
+and rigorously followed throughout the game. Objects are spaced and sized to match
+perfectly the height and distance of Mario’s jump. This is especially apparent using
+the wall kick mechanic, which requires the player to jump back and forth between
+two walls repeatedly. These relationships are perfectly tuned throughout the game.
+The levels in Mario 64 also tend to avoid places that will cause camera trouble by
+creating large, self-contained worlds that primarily feature tall, round structures. The
+camera can always look inward and is generally free of obstructions. This has the
+added benefits of focusing players on the important objects and areas, showing
+them their objectives ahead of time, and of providing a powerful sense of high-level
+space by enabling players to climb to the top of massive structures and look down,
+as if from the top of a mountain or tall building. The layouts of the levels play into
+the strengths of the mechanics, camera and free-roaming 3D perspective in the best
+possible way. When the environments become tight, closed-in caves, the camera is
+often switched to a fixed position “security cam” to compensate. These levels, while
+nice for contrast, often seem weak by comparison.
+Also related to the spacing of objects and how it feels to move between them, the
+design of challenges in the game emphasizes the best parts of the feel. I notice that
+there aren’t many goals that require precise stomping of things, especially moving
+things. Stomping a Goomba was a casualty of the transition to 3D for this reason;
+relative to how the character moves, it’s very difficult to precisely place a butt-stomp.
+Stuff like pounding the pole to release the Chain Whomp on Bomb-Omb Battlefield
+feels awkward and isn’t used much as a result. This effect is mitigated to some
+degree by placing a shadow beneath Mario wherever he goes, but it’s rare that the
+player is challenged to land on anything smaller than about five Marios in width. If
+it’s smaller than that, it’s just too difficult to ever be enjoyable.
+The feel of Mario 64 is a conceptual, if not literal, translation of Super Mario
+Brothers into a new, 3D context. It still offers a relatively simple interface to a highly
+complex system of physical, tactile interactions. The input space is much more complex than the one that controlled the earlier 2D Mario games, but it accesses a set of
+loose-feeling, physically satisfying maneuvers of great depth and complexity.
+Once again we’ll examine the input device, the N64 controller, and the individual
+inputs on that device, as well as the types of signals those inputs send to the game.
+From there, we’ll look at what each modulates in the game and how this happens
+over time and space. Next, we’ll examine the relationships and interdependencies
+between those modulations and examine the simulation that gives rise to them in
+detail. The relationships between this simulated motion and the spatial context that
+gives it meaning are next, followed by a look at how polish effects sell the feel of
+physical, tactile interaction. We’ll also look at Mario 64 as a metaphorical representation and what expectations it sets up for the player about the interactions between
+Mario and his environment. To close, we’ll look at the ways in which rules profoundly
+WHAT’ S IMPORTANT?
+CHAPTER FIFTEEN • SUPER MARIO 64
+affect the player’s perception of the value and physical properties of the various
+objects and enemies in the world, and how this changes feel by emphasizing certain interactions and mechanics.
+Input
+The input for Super Mario 64 is the Nintendo 64 controller, which has 10 standard
+buttons, one directional pad and one thumbstick (Figure 15.1).
+Despite its odd shape, the controller fits comfortably in the hands and feels good
+to hold. The plastic is smooth, and the standard buttons have a nice, spongy quality.
+They are functional, if not as crisp and lively as those used in modern controllers. The
+shoulder buttons and Z-button on the bottom of the controller are slightly poppier
+than those on the front of the controller, reaching their depressed state more quickly.
+The analog thumbstick, the first of its kind to be included in a mass produced
+highly successful controller, feels a little crusty by today’s standards, almost like there’s
+fine sandpaper in the base of it. It’s also longer and includes a much more powerful
+F I G U R E 15.1 The various inputs on the N64 controller.
+spring than modern controllers’ thumbsticks. Compared to the thumbsticks in my
+Xbox 360 and Playstation 2 controllers, the spring seems to take roughly twice as much
+force to displace. Movements feel much more emphatic and the pushback of the
+stick against my thumb is much more noticeable. As a result, players receive more
+proprioceptive feedback (see Chapter 1) and can more accurately gauge movements
+between full on and full off. This is used to great effect in Mario 64, especially in the
+sections where Mario needs to tiptoe past sleeping enemies. It doesn’t feel as
+smooth as a modern thumbstick and it’s weirdly loose in its socket when at rest, but
+there is a stronger sense of its position in space. Finally, the housing of the thumbstick is not smooth. Instead, it has eight points or grooves, as seen in Figure 15.2.
+This is something Nintendo has done consistently with each of their thumbsticks, right up to the modern Wii nunchuck controller. This causes the thumbstick
+to come to rest in one of these eight cardinal directions when it’s pulled or pushed
+against the housing. There is some benefit in guiding the player to one of eight
+directions, but the cost is in feel. It feels weirdly jarring to roll the thumbstick in
+circles, and some sensitivity is lost in the space between the grooves. The clicking
+noise the thumbstick makes as the thumbstick is rolled across the grooves is pleasurable, but I prefer the tactile feel of a smooth circular housing.
+Applying our taxonomy for input devices, we see that there are 14 discrete buttons:
+● A
+● B
+● C-buttons
+1. up, down, left, right
+● Directional Pad
+1. up, left, down, right
+● Z
+● Shoulder L
+● Shoulder R
+● Start
+F I G U R E 15.2 The grooved thumbstick housing on the N64 controller provides a different
+sensation than a smooth housing (such as on a Playstation 2 controller).
+INPUT
+CHAPTER FIFTEEN • SUPER MARIO 64
+The one continuous input is the thumbstick. The motion of the thumbstick is
+linear rather than rotational, and it moves along the X- and Z-axes. The X- and
+Z-motion of the thumbstick is integrated; it moves in both axes at the same
+time. Being spring-loaded, the device measures force rather than position, and it
+is an indirect control input. You don’t touch where you want to indicate, like a
+touchscreen.
+In terms of signals, the buttons send the usual binary signals of “up,” “pressed,”
+“down” or “released.” The thumbstick sends a continuous stream of input based on
+its displacement from center in the form of two axis values, one for X and one for Z.
+These values will be a float between 1 and 1 (Figure 15.3).
+Response
+Super Mario 64 has two avatars, Mario and Lakitu (the cameraman). Both can be
+directly controlled, though Lakitu defaults to being indirectly controlled when his
+movement is not being overridden by player input.
+The Mario avatar maps input signals to modulation in many of the same ways as
+its predecessors did, using basic button presses, multi-button chorded inputs, timesensitive inputs and state-sensitive inputs to add forces to a simple simulation. It
+doesn’t have any mapping of button presses to modulation of simulation parameters, though. You can’t hold down B to run faster than you did in Super Mario
+Brothers. Basic jumping is almost identical, however, with an upward force being
+added over time to a maximum depending on how long the button is held. Like
+the original Super Mario Brothers, being in the air is a separate state in which the
+steering force is present but reduced. In Mario 64, this jump also “locks” Mario
+into facing a particular direction once he’s left the ground, and the steering changes
+slightly. Rather than arcing and turning when left and right are pressed, the steering
+forces are applied laterally (Figure 15.4).
+F I G U R E 15.3 The signals sent by the N64 thumbstick.
+Recipe and Simulation
+In addition to the basic jump, there are various jumps of different trajectories triggered by different button combinations, by pressing buttons in sequence over time,
+or under particular circumstances such as being in contact with a wall (for a Wall
+Kick) or moving at a certain speed and having just landed (for a Triple Jump). In
+each case, the jumps can be steered in the air at the same reduced rate in directions
+relative to the way the player was facing when the initial jump happened. Let’s look
+under the hood, at the simulation driving these motions and at the ways in which
+input signals modulate the parameters of this simulation.
+The simulation of driving the controllable motion in Mario 64 is constructed
+using a top-down approach. Each parameter that’s modulated by input is simulated
+very simply, with clearly defined, hard-coded relationships. Apart from the collision, there’s no general-purpose, applicable-everywhere code. It’s all about specific
+esoteric relationships between inputs, motion and time. Because these relationships
+are defined specifically and only in as much as they need to be, it’s possible to talk
+about motions and the simulation that drive them as one.
+To build the feel of Mario 64, the first ingredients are a capsule and a flat plane
+(Figure 15.5).
+Playable Example
+To follow along, open example CH15-1.
+F I G U R E 15.4 The in-air steering force of Mario 64 becomes side to side rather than
+rotational (as it is on the ground).
+RESPONSE
+CHAPTER FIFTEEN • SUPER MARIO 64
+F I G U R E 15.5 The starting point for Mario 64—a capsule and a plane.
+The basis of the simulation is gravity and collision. The capsule should be pulled
+down each frame and, upon coming into contact with the ground, sit on top of it.
+Once in contact with the ground, the capsule behaves as though it has a great deal
+of friction. Standing still, it will not slip or slide around, and it will remain rooted
+to the spot. In motion, the result is the same, except when the incline of the ground
+underneath the capsule is greater than about 45 degrees. Running uphill when the
+incline is greater than a 45-degree angle relative to the horizontal will slow the capsule down, applying a force against the forward running force corresponding to the
+angle of the incline. As long as the resulting velocity keeps going forward, the capsule can still run up the hill, albeit slowly. At about a 60-degree angle, for example,
+the capsule still makes it up the hill. At some point—around 75 degrees of incline—
+the forward force will be insufficient to overcome the incline-added opposite force.
+When this happens, the capsule enters a new state, the slide. In the slide state,
+there is much less friction, and the capsule slides down the hill at a rate and direction corresponding to the angle of the incline. The steeper the incline, the faster the
+slide, and if the incline leans to one direction or another, the capsule will slide
+that way. It is possible to steer slightly left or right while in this sliding mode,
+a reduced-force version of the normal steering, which we will address presently.
+This sliding state will also be triggered if Mario steps onto a steep incline from the
+top and is moving in a downhill direction.
+The result of all this is that there is a constantly reinforced impression of texture.
+The interactions between capsule and ground are subtle, and they sell the impression that there is a slip threshold for the bottom of Mario’s shoes, where he will
+lose his footing, break loose and slide and that despite his highly cartoony motions,
+there is a nuanced reality to the way his feet interact with the ground. He can slide
+down a hill he was able to climb up, just as may happen if you scale the steep side
+of a gravel-covered mountain while hiking. In addition, the relative incline of terrain
+becomes very important in terms of spatial context, creating a soft boundary for the
+edges of levels, and giving a more satisfying aspect to the climbing of high mountaintops and structures. You can’t just run up a steep incline, so being at the top of
+a treacherous mountain feels more like an accomplishment. There are also whole
+sections of the game devoted to the sliding and steering mechanics, such as the
+penguin race segments on the Cool, Cool Mountain level.
+The sides of the capsule slide across objects with almost no friction whatsoever.
+As with most racing games and other games we’ve discussed, collisions with the
+side of the capsule are waterslide-like. Instead of being hung up or caught, the capsule flows over objects with grace and ease. As in other games, this has nothing
+to do with accurately modeling our physical reality and everything to do with
+how annoying it would be to constantly get hung up on every object you came into
+contact with.
+The final result of the basic collision interactions is an object with a constantly
+changing feel of momentum and friction. The incline and sliding stuff is a delightfully cheap trick in this respect, reinforcing the tactile, physical relationship between
+Mario and the ground every time there is a variation in the incline of the terrain
+beneath him. This lends a subtlety and nuance to these interactions, and the level
+design exploits this feel masterfully by providing much variation in types and layouts of terrain.
+As the capsule moves across the landscape, it is mostly unimpeded by objects
+it runs into. Unless it’s a head-on collision, the lack of side friction will enable it to
+slide past. This enables players to very often be “close enough,” without having to
+be exact in their steering. The impression is simply that the character goes where
+you want. The reality, as far as the simulation is concerned, is a lot of weird collisions with objects that are resolved by simply redirecting the player to flow along
+the edge of the object that was collided with. Again, the level design does a great
+job of playing into this by providing more flowing, angular, waterside-like passages
+than blocky, hard edged things that might stop the capsule in its tracks.
+As a final note on collision, it’s worth saying that there are many different
+ways to achieve this same result, none of which will be addressed here. There are
+many excellent books that address the technical details of implementing a collision
+system, such as Real Time Collision Detection by Christer Ericson (Morgan
+Kaufmann, ISBN 1558607323).
+Running Speed and Direction
+The thumbstick creates a velocity, relative to the camera, from a combination of
+the X- and Y-axis data. This gives Mario a direction in which to run. Once he has
+this direction, he will run in this direction at a rate of speed corresponding to how a
+thumbstick is displaced (Figure 15.6).
+RUNNING SPEED AND DIRECTION
+CHAPTER FIFTEEN • SUPER MARIO 64
+When the direction he’s headed in changes and he has a forward speed of zero,
+he simply snaps to that new direction with zero frames in between. If his speed
+is greater than zero, though, it will take him a short time to go from his current
+direction to a new direction (Figure 15.7). This is not a time-based relationship; the
+desired direction gets blended with the current direction every frame until they’re
+identical. This is what gives Mario a slightly smooth, carving motion when he
+changes direction. Without this, Mario’s movement feels stiff and robotic.
+If a rapid change in his direction is greater than a certain angle, however, he will
+enter a different state, stop for a few frames, plant his foot, then take off in the new
+direction, as shown in Figure 15.8.
+If you press the A-button during this time, the result is a special jump, the side
+somersault, which always produces the same upward force (it is not time sensitive).
+Figure 15.9 shows the arc of this side somersault.
+Units of Measurement
+As we’ve said, there’s no standard unit for measurement in a video game. For
+vertical measurements of height, I’m using Mario as a ruler. He’s a good point
+of reference because he’s always on screen, and his height is consistent to the
+distance we’re trying to measure regardless of camera position. We could also
+measure jump heights in castle bricks, trees, standard blocks or anything else,
+but using Mario makes the most sense.
+F I G U R E 15.6 Spatial displacement of the thumbstick versus forward speed of Mario.
+F I G U R E 15.7 The result of blending between current and desired direction each frame;
+Mario takes a short time to reach his new direction, causing a carving motion.
+F I G U R E 15.8 If the direction change in a single frame is greater than about 90 degrees, the
+result is a foot plant, slide and direction reversal. Otherwise, Mario turns gradually.
+F I G U R E 15.9 The Side Somersault jump. Note that force is only applied once (it doesn’t
+matter if the button is held down) and that velocity is set to zero at the jump’s apex.
+RUNNING SPEED AND DIRECTION
+CHAPTER FIFTEEN • SUPER MARIO 64
+The Side Somersault jump is one of the four special jumps in the game, along
+with the Long Jump Triple Jump and Back Somersault. In these jumps, the modulation of the upward and horizontal forces is different from the basic jump. Instead of
+adding an initial upward force and then enabling the player to opt out by releasing
+the button before the maximum jump height is reached, the special jumps give a
+specific, consistent upward trajectory each time. This is crucial to the feel of Mario
+64 because it gives a predictable result when attempting long, precise jumps. A special jump will always be the same in terms of height, so all the player has to worry
+about is whether the platform he or she is trying to reach is low enough or close
+enough. This, coupled with the fastidious spacing of objects in the level (to be just
+the right distance apart for the special jump trajectories), enables the player to accurately navigate this otherwise overly complex space, made so by the addition of the
+third dimension. In the case of the Side Somersault jump, the arc is much higher
+than the basic jump (Figure 15.9) enabling the player to stay airborne for more than
+a second while reaching a height five times as tall as the character.
+Modulating Upward Velocity
+The basic jump in Mario 64, triggered by the A-button, functions almost exactly the
+way it did in earlier incarnations of Mario, adjusting the velocity based on how long
+the button is held. The binary signal from the A-button modulates upward velocity,
+causing the avatar to accelerate upward, countering the constant pull of gravity.
+The attack part of the envelope is affected by holding the button down for more
+or less time, up to a maximum. The initial upward force is always the same; releasing the button sets the upward velocity immediately to an artificially low level. This
+continues the upward trajectory (which continues to be affected by gravity) for a
+certain time, the delay. At the apex of the jump, when the code sees that the upward
+Y-speed is zero or less, a much higher gravity force is applied to pull the character
+quickly back down to the ground.
+The end result of all these subtle modifications is that, as with the earlier Mario
+games, Mario’s jump is variable in height based on how long the “A-button held down”
+F I G U R E 15.10 Mario’s basic jump.
+input signal is received. In addition, the jump always has the same shallow arc for
+its delay, has little if any sustain, and has a much higher gravity force pulling it
+downward during its release. The feel is an illusion of satisfying emphasis. Hold the
+button down longer and you get a higher jump. Tap or feather it to get a shallower,
+more sensitive hop. Even though the maximum jump will terminate its upward
+force at a certain point no matter what (the limit point at which the max jump
+height is defined), when you want the maximum you will find yourself holding the
+button down for almost the entire duration of the jump. Also, you press the button more emphatically when you want a higher jump. In terms of what happens
+in the game, how hard you press the button makes no difference, but because of
+the setup of upward thrust with a small window for opt out, you feel as though
+you’re emphasizing the desire for a higher jump and that the game is responding
+appropriately.
+When the character hits the ground after a jump, there is a short window in
+which pressing the button again will cause another, different jump. In the game’s
+manual, this is called the continuous jump. This jump is accompanied by a different, more vertically stretched character animation but functions identically to the
+normal jump, with the exception of the initial upward velocity. The initial jump
+force is much higher, causing the character to move more quickly upward and to
+have a higher potential height. This jump is still time sensitive, enabling the user
+to opt out by releasing the button, and also requiring that the button be held to
+achieve the maximum height (Figure 15.11).
+The Continuous Jump has the same modified gravity applied to it at its apex and
+opt out points, but because the initial force is higher, it takes longer to complete and
+affords both higher and longer jump trajectories.
+The Continuous Jump can be triggered regardless of how fast the character is
+moving in a direction. From the Continuous Jump, it’s possible to do the Triple
+Jump. To do the Triple Jump, the character must be moving greater than about half
+speed, just at the transition point where the walking and running animations switch.
+F I G U R E 15.11 The ADSR envelope of the Continuous Jump.
+MODULATING UPWARD VELOCITY
+CHAPTER FIFTEEN • SUPER MARIO 64
+The principle is the same as with the Continuous Jump—press the button in a short
+window after landing—but it requires that the character be moving more than a
+certain speed. Slower than that and the third jump in the sequence will be another
+basic jump.
+Unlike the Continuous Jump, the Triple Jump (Figure 15.12) is not time sensitive, eschewing the opt-out control for a predictable trajectory, like the Long Jump
+or Side Somersault. It is the second highest jump after the Back Somersault and the
+second farthest horizontally after the Long Jump.
+Once in the air state, the modulations mapped to each buttons’ signal change.
+Pressing B and Z take on different meanings. In each case, the response is another
+“move” consisting of a specific animation and a predetermined motion. The benefits of these special moves are very similar to those conveyed by the special jumps;
+because their result is a very predictable movement in space, they prune complexity
+and enable the player to get a more predictable result for their input.
+When in the air state, the Z-button on input triggers the “ground pound” move,
+where the capsule loses all horizontal momentum, freezes in mid-air for a short
+time while playing an animation, then drops to the ground with greater gravity than
+even the normal increased gravity. This move feels particularly emphatic, including a screen shake, spray of yellow stars and concussion wave of dust particles on
+impact. The really interesting thing about it, from a control standpoint, is that it
+brings precision to the otherwise imprecise act of jumping. It halts all horizontal
+momentum, enabling the player to land on a very specific spot beneath him or her.
+The result is still somewhat sloppy—hitting small targets like the post that releases
+the Chain Whomp is difficult and fiddly—but it provides much more precision in
+landing than steering in the air offers.
+If the jump was triggered while the character was running at any speed less than
+his or her maximum, pressing B while in the air state triggers the Jump Kick move.
+It’s a move with limited utility. It’s useful for hitting enemies that are elevated
+slightly off the ground, such as the “Boo” enemies in the Big Boo’s Haunt level, and
+F I G U R E 15.12 The ADSR envelope of the Triple Jump.
+not much else. It’s remarkable for its animation effect—Mario’s foot gets disproportionately large to emphasize the impact of the kick.
+If the jump was triggered while the character was running at maximum speed,
+the resulting move is a Dive Attack. The Dive Attack has a long horizontal trajectory,
+similar to the Long Jump, but it is instead triggered in the air. It also counts as an
+attack, meaning that hitting an enemy in the resulting slide state will damage them
+instead of you. At the end of it, after landing on the ground, Mario enters the same
+slide state as is caused by the basic slide attack. The Dive Attack can be triggered
+from any jump except the Triple Jump and Long Jump, presumably to prevent the
+player from getting too far in one jump and circumventing too much of the challenge. From the simulation’s point of view, the Dive Attack halts all vertical Y-axis
+motion the moment the input is received, setting it immediately to zero. A horizontal
+force is then added in the direction the character is facing. Once the character comes
+back into contact with the ground, the state is set to slide instead of the default running state. This gives the controls an “aftertouch.” Using the Dive Attack can get
+you that last little bit of horizontal momentum you need, or it can convert to attack
+mode on the fly if you’re about to land dangerously close to an enemy. Because
+it goes back to the slide state, it feels a bit like a crash landing. It can take quite
+a while for the stand back up animation to play and return control to the player,
+furthering the impression that this is a bit of haphazard maneuver. It is possible to
+jump back out of this slide with a small hop, however, which can be triggered from
+this attack slide state by input from either the A- or B-button. This little hop seems a
+compromise, meant to mitigate the problem of seeming unresponsiveness caused by
+locking the player out of control for so long after the slide state.
+There is one other type of jump possible in Mario, the Wall Kick. The Wall Kick
+is by far the most complex move to pull off in Super Mario 64, requiring the following conditions be met:
+● Character moving at a certain speed horizontally
+● Character in the Air State
+● Character in contact with a wall within the last 20 ms
+● Thumbstick quickly pulled in the direction from the momentum that carried it
+into the wall (similar to the trigger for the Side Somersault)
+● A-button pressed
+This requires that the player run the character quickly toward a wall, jump into
+that wall with sufficient force and within about a fifth of a second, press the opposite direction on the thumbstick and tap the A-button quickly. Talk about your handcramping maneuvers! The mapping, however, is very natural. The player pulls the
+thumbstick immediately away from the wall in the direction he or she wants to go
+and press A to jump, the same function that is always mapped to the A-button. The
+window for completion is fairly wide, enabling the player a degree of leeway. For
+example, if the player hits the wall with great force, pressing the thumbstick in
+MODULATING UPWARD VELOCITY
+CHAPTER FIFTEEN • SUPER MARIO 64
+a direction roughly away from the wall and pressing A somewhere close to that
+motion will still cause the Wall Kick to occur. Even if the star particles and fall animation for a strong collision have started, the Wall Kick will take priority.
+Switches to Ducking or Sliding States
+When the signal for “Z-button held” is received, it always corresponds to a state
+change. The switch happens as soon as the input for “button on” is received,
+though the animation of the character going from standing to ducking takes about a
+tenth of a second to complete.
+If the capsule has zero velocity, the character enters the normal ducking state.
+From here, the thumbstick motion enables crawling. Crawling functions similar to
+running, with extremely slow forward motion, more looseness between desired
+and actual direction, and no concept of foot plant or direction change. The feel is
+very plodding but it is precise, providing a great amount of spatial accuracy. This
+is emphasized by the level construction in areas with long, thin planks across large
+precipitous drops. The crawl enables slow but steady progress that is all but guaranteed to take the player safely across. To me, this always represented a risk/reward
+tradeoff. Impatient, I always opt for the risk of running full speed across the planks
+rather than having to crawl laboriously.
+Also noteworthy is the progression of behaviors when the player presses the
+jump button while in the crawling state. First, the character transitions directly from
+crawling to jumping. After landing, the character goes back into the running state
+and will continue running around as normal—Z-button still held—until the thumbstick input stops entirely, at which point the standing to ducking animation will
+play again, and the character will return to the ducking state. This is a nod to the
+fact that crawling is rarely used. The designer assumes that if the player jumps, he
+or she would always rather go back to running first. Crawling takes a back seat to
+all other motions, so doing so must be very deliberate on the part of the player.
+Pressing the B-button in the normal ducking state triggers the Trip Attack, a
+rarely used stationary attack that will destroy some enemies within a very short
+radius. It’s almost never used.
+Finally, pressing the A-button in the normal ducking state triggers the Back
+Somersault special jump. The Back Somersault is the highest jump in Mario’s acrobatic repertoire, enabling him to accomplish very high jumps with very little horizontal motion. It’s useful when you want to move mostly vertically, onto a small
+shelf, outcropping or platform high above. The drawback of this jump is that its
+horizontal movement is backward relative to the direction Mario is facing. The
+player cannot use this jump to leap up and grab onto a ledge; to do this, the character must face toward the ledge.
+If the Z-button is pressed while the character is moving, the slide state is entered.
+We discussed the slide state earlier with respect to collision; now let’s examine
+the steering possible in the slide state, the various forms it can take and the feel
+of each.
+There are three way to enter the slide state: by intentionally pressing duck while
+moving at speed, by running up a hill that is too steep and sliding back down, and
+by running forward onto a steep incline.
+When the slide state is entered into intentionally, the result is the character animating into a crouching position, like Figure 15.13.
+This happens when the character’s speed is greater than zero when the
+Z-button input is received. In the slide state, there is a high friction value applied
+to each frame, which will quickly slow the character to stop on flat ground. At very
+low speeds, the character will enter the slide state very briefly before quickly slowing to a halt and transitioning back into the crawling state. Running at full speed,
+the slide will last just longer than one second.
+From this sliding state, the A-button input triggers the Long Jump, a jump which
+emphasizes horizontal speed rather than vertical height. It’s the opposite from the
+Back Somersault in that it’s all about traversing long distances horizontally, making
+huge flying leaps from platform to platform. Like the Back Somersault, the Long
+Jump is not time sensitive. It’s still steerable in the air, but initial jump force added
+is unaffected by how long the button is held. One height, one distance, and again,
+much of the level geometry plays into this predictability, giving the player a better
+chance of accurately judging and correctly completing particular jumps. The main
+difference between this jump and the other jumps is that it receives not only a vertical but a horizontal force at the time it’s triggered.
+Pressing B from the sliding state triggers the Slide Tackle maneuver, which is
+rarely used. It adds a certain amount of horizontal force and sees the character
+bounce up and down twice before coming to rest. It is an attack move, though,
+so any enemies hit while the character is in this state will be damaged. This is
+the same attack slide state caused by the Dive Attack, so it’s also possible to cancel out of this slide with a small hop that can be triggered by either A- or B-button
+presses.
+F I G U R E 15.13 Running to duck-sliding.
+SWITCHES TO DUCKING OR SLIDING STATES
+CHAPTER FIFTEEN • SUPER MARIO 64
+Triggering Attack Moves
+Pressing the B-button triggers a simple punch attack. Accompanying this is a very
+small amount of forward movement, mostly for emphasis. Like the Jump Kick,
+Mario’s fist expands at the completion of his punch to emphasize the power of
+the move. Also like the kick, this move looks a bit odd under close examination;
+it seems as though Mario’s gaining volume in his fist rather than squashing and
+stretching properly.
+Though it has limited utility in fighting enemies or getting around, this move is
+used more frequently than things like the Trip and Jump Kick because it is often
+required in boss fights. Pressing B when near something will make the character
+grab it or pick it up. While holding something, Mario moves much more slowly
+and has a weighed-down animation, giving the thing he’s holding a terrific sense of
+weight and presence.
+Pressing the B-button three times in rapid succession causes first an additional
+punch and then a Jump Kick. Again, these are rarely used and so do not contribute
+significantly to the game’s feel.
+If the B-button is pressed when the character is moving at full speed in a particular direction, a Slide Attack is the result. The Slide Attack is the most basic
+form of the slide attack state that happens after a Dive Attack. The character gets a
+small amount of additional horizontal force but enters the slide state, quickly being
+slowed down by friction. This is an attack, so it will damage enemies that are hit
+while in this state. It is possible to cancel out of this state with the small hop, as
+with the Dive Attack and Slide Tackle.
+The big picture is very much a top-down simulation in which each parameter
+is simulated only with the detail it needs to be. A bunch of special cases strung
+together with specially defined relationships. You can almost feel the designers plugging holes, saying things like “hmmm, well, it feels too cheap to climb up
+hills without resistance, so let’s make him slide back down. Oh, this sliding is kind
+of cool, what happens if we enable the player to steer it? Ah, okay, just grab the
+steering from the running state and plug it in with reduced values. Cool, okay, that
+feels good …”
+Many times, it seems like the designers were simply asking “what if” questions
+and then answering them with mechanics. What if Mario could grab Bowser by the
+tail and swing him? What if you could ride a turtle shell around like a skateboard?
+I’ve glossed over many of these supporting mechanics, including flying, swimming
+and walking underwater with the Metal Cap. This is because I have limited space;
+I wanted to cover the basics. However, the impact of these supporting mechanics
+should not be underestimated. They add a great deal of texture and variety to the
+feel of Mario 64, which would lose much if they were removed. Especially important
+is the crossover sensations caused by the contrast between mechanics. Swimming
+seems floaty because it’s different from running. One of the most important parts of
+the feel of Mario 64, however, is the fact that each mechanic seems to maintain the
+same laws of physics. The controls for flying may have nothing to do with running
+around on the ground or swimming, but they feel as though they do. Flying feels as
+though it’s defying the same gravity that pulls you downward when completing a
+Long Jump. This is perhaps one of the most overlooked aspects of game feel: the
+crossover sensation. If there are multiple separate mechanics in play, do they seem
+beholden to the same laws of physics. Do they seem to be part of the same world?
+To summarize, the thumbstick provides the bulk of the moment to moment
+input, mapping as it does physical displacement to both direction and rate of the
+character. This relationship is camera-relative and therefore is an intuitive, natural mapping, though it also includes a slight looseness that gives Mario a certain
+amount of carving motion. Also, the relationship between terrain incline, friction
+and thumbstick-driven motion creates a great sense of interaction between character and ground, and is constantly updating the impression in the player’s mind
+via changes in incline and terrain. The rest of the inputs serve to put Mario in
+different states, such as ducking or jumping, but the relationships of importance
+are between how fast he moves forward, how much thrust gets applied in his
+Y-direction, and the resulting trajectories, which are precise but highly malleable,
+enabling in-air steering. The end result provides a huge number of moves which
+feed in predictable ways into a simple physics system. Each of these moves can be
+steered by thumbstick input after having been triggered, and many moves can be
+chained and combined, giving the user a great expressivity both in the choice of
+moves and in the way those moves play out. Combined with the layout of levels,
+this enables just the right amount of freedom for the player.
+Lakitu the Cameraman
+The second avatar is “Lakitu,” also known as the camera. The camera is indirectly
+controlled most of the time. Even when directly controlled, the camera has two crucial relationships: between Mario’s position and its own and between Mario’s orientation and its own (Figure 15.14).
+There is a circular area of influence between Mario and camera. From the camera’s position, a circular zone spreads outward for a certain distance. When Mario
+reaches the outside of this radius, the default behavior of the camera avatar is to follow Mario’s position at a slight remove.
+If he’s running straight away from the camera, the camera will follow at the
+same speed, maintaining the distance relationship.
+If he runs directly at the camera by holding down on the thumbstick, the camera
+will pull backward, away from the onrushing Mario (Figure 15.15). This pull back
+is limited to a very slow rate, however, and if the character is running at full speed
+toward the camera, he’ll quickly close the distance. When this happens, when the
+Mario avatar gets within a certain, short radius of the camera, the camera will freeze
+in place, tracking on the avatar from a stationary position. Because all character
+motion is camera-relative, however, once he gets beneath the camera, he runs in an
+odd looping pattern around the camera as though it were an invisible maypole.
+TRIGGERING ATTACK MOVES
+CHAPTER FIFTEEN • SUPER MARIO 64
+If the movement of the Mario avatar is purely side to side, neither running
+toward nor away from the camera but parallel to it, the motion of the camera is rotational only. Again like a security camera, it will rotate to look at the Mario avatar,
+but never change its position in space. This rotation starts by tracking on Mario’s
+exact position, but gradually interpolates into tracking a position ahead of him,
+shifting him to the right or left of the frame and showing more of what’s coming up
+in front of him as he runs.
+These two effects, positional changes based on character-camera distance and
+rotational changes based on left-to-right movement, blend together. The result is
+that running at a diagonal will slowly turn the camera in the direction that Mario is
+running and it will do a reasonably good job of showing objects in that direction. In
+addition, if the player presses the left or right C-button, the camera will be pushed
+about 20 degrees in the direction indicated. It will slowly drift back to its original
+orientation, but it momentarily provides additional angles of view.
+When Mario jumps, the camera attempts to stay still as long as possible. Mario
+64 lead designer Yoshiaki Koizumi addressed this problem in his talk at the Montreal
+F I G U R E 15.14 There are two camera zones in Mario 64, stationary and following.
+International Games Summit in 2008, as reported in Gamasutra: “In Mario games,
+players press a button to jump and camera follows. Koizumi noted that this camera
+pitch can make some people ill. There are various theories, he explained, about
+why this occurs—for example, a disconnect between the sense of motion and the
+lack of motion sensed by the inner ear. In the case of Mario, Koizumi continued,
+rapid and repeated screen scrolling was most likely to cause this discomfort, so he
+thought of ways to minimize this. Nintendo’s solution was to implement a ‘vertical
+shake cushion’—when Mario’s in the center of the screen, the camera won’t pan,
+but if he’s about to go off, it will.”2
+When at rest, the camera, using the Mario avatar as its pivot point, slowly orients itself to face the direction the avatar is currently facing.
+http://www.gamasutra.com/php-bin/news_index.php?story 16386
+F I G U R E 15.15 The camera’s small “pull back” zone.
+TRIGGERING ATTACK MOVES
+CHAPTER FIFTEEN • SUPER MARIO 64
+Apart from the default behavior described above, the camera avatar has many
+special case solutions that change its motions. First, it collides with walls and
+other surfaces. When it does so, its motion in that direction stops, the same essential effect as when the character is moving only side to side under normal circumstances. In some areas, such as the main castle foyer, the camera switches to a fixed
+perspective from a specific, preset vantage point.
+This blending of direct and indirect control over the camera is admittedly clumsy
+and would probably be labeled as irretrievably broken by modern standards. The
+problems with the system, though, are mostly mitigated by specific case hole-plugging
+(as with predefined security camera vantage points) and through judicious level design,
+which emphasized mostly large, open areas with towering central landmarks.
+In general, the approach of camera motion in Super Mario 64 attempts to avoid
+superfluous motion and to show players what’s ahead in the direction they’re
+traveling as much as possible. Though quite sophisticated for the time, experienced
+today it can seem jarring, frenetic and inadequate.
+Control Ambiguities
+Up to this point, the feel of Mario 64 has been characterized as unambiguously
+wonderful. But it is not all sunshine and mushrooms. Here’s the rub: there are
+some rather glaring control ambiguities in Mario 64’s setup that should have been
+resolved. As Mick West points out in his most excellent “Pushing Buttons” article,3
+there is a troubling crossover between the Ground Pound, Back Somersault (here
+called backflip) and Long Jump moves in Super Mario 64:
+In Nintendo’s Super Mario 64, when playing as Mario, pressing A to jump
+then R1will trigger a ground pound. Pressing R1 then A will trigger a backflip.
+Pressing them both at the same time will cause one of: a ground pound, a
+backflip or a normal jump, seemingly at random. This is bad because the user
+has no control; they are doing the same thing over and over, yet getting different results.
+This problem also shows up in Mario when you try to do a long jump,
+which is done by running, then jumping by pressing A R1. Sometimes while
+attempting this you will do a Ground Pound by accident. This is not the fault
+of the player. To the player it appeared they did everything right, but the results
+were not what they expected.
+Context
+As has been alluded to, the spacing of the objects in the levels of Super Mario 64
+has a hugely positive effect on the overall feel of the game. Relative to the avatar’s
+http://cowboyprogramming.com/2007/01/02/pushhing-buttons/
+movement, levels were constructed with three specific spatial relationships in mind:
+vertical height, horizontal distance and the size of platforms.
+It’s fine and well to say that the spatial context of Mario 64 matches perfectly
+with the tuning of its mechanic, but what does this actually mean? From the standpoint of the pragmatic level designer, what did this mean in terms of actually placing polygons? And how was the mechanic tuned, relative to the movement of the
+character? What was the mechanic designer’s role in this process? First, I believe
+that in the case of Mario 64, as in most high profile Nintendo games, these two
+were one and the same. At least, initially. Anecdotally, the prototype form of Mario
+64 was a “gameplay garden,” a test level which included a near-final version of
+Mario, complete with animations and moves, and a wealth of different things for
+him to interact with. As the jump heights and trajectories were tuned, so were the
+distances between objects. The Wall Kick and walls spaced the right amount apart
+were created simultaneously. This meant that as the mechanics were evolving, so
+too were the general rules about how far apart objects should be spaced, how big or
+small they should be, and what kinds of environments would be built around them
+and out of them. Simply put, the size, nature and spacing of objects were part of the
+same system as the height of Mario’s jumps and the speed of his running and turning. These guidelines seem to consist of four primary spatial relationships: vertical
+height, horizontal distance, the X/Z dimensions of each walkable platform and the
+angle of incline of each piece of terrain.
+By vertical height I mean the distance between a given current position of the
+character and some other, higher position. The vertical height of objects relative
+to one another comes in three distinct and premeditated flavors. First there are
+objects which can be scaled by a basic jump. Many blocks are spaced at just the
+right height for the basic jump. They’re lower than the apex of the jump to enable a
+wide range of jumps to land on them, as were the blocks in Super Mario Brothers.
+Other jumps are clearly just right for the Back Somersault, Side Somersault or Triple
+Jump. For example, at the beginning of Whomp’s Fortress, there’s a wall that is
+the perfect height for a Side Somersault. On the Shifting Sand Land level, there’s a
+platform with a Flying Cap block on top of it that is perfectly spaced for the Triple
+Jump. Throughout the levels in Mario 64, these relationships are maintained. As
+you play, you quickly become accustomed to not only the predictable height of the
+various jumps at your disposal, but the fact that the environment seems tailor-made
+for the heights of these jumps. It becomes easy to walk around a level to see which
+ledges are basic jump height, which are Triple Jump or Back Somersault height, and
+which are too high to reach by jumping. I also note that there are many unforced
+opportunities to use higher jumps. Especially in the earlier levels such as Whomp’s
+Fortress; Cool, Cool Mountain; and Bomb-Omb Battlefield, there always seems to
+be a way to circumvent the normal path—which emphasizes jumps at the basic
+height—by using a Side Somersault or Back Somersault to get higher earlier.
+When I say horizontal distance, I mean the distance from one point to another
+along the same plane. Rather than trying to ascend to a higher platform, the horizontal distance of a jump dictates how wide a chasm Mario can cross. Can I make
+CONTEXT
+CHAPTER FIFTEEN • SUPER MARIO 64
+it across this gorge or patch of lava in one Long Jump or Triple Jump? Or do I need
+to use a basic jump and pull back slightly on the stick because I need to land on the
+small portion of a moving platform that isn’t currently covered with scalding lava?
+As with the relationships between vertical objects, there are various specific relationships between the position of horizontal objects in space that are maintained
+throughout the levels in Mario 64. Some platforms are clearly spaced to be just the
+right distance relative to the basic jump, where others can only be accomplished
+with the Long Jump. In each case, it becomes easier and easier for players to eyeball these relationships as they play through the game. If a jump looks to be just the
+right distance to clear with a Long Jump, it almost always is. And, as was the case
+with earlier Mario games, increasing challenge usually means longer, more precise
+horizontal jumps.
+Of course, each jump represents a trajectory, including both horizontal and vertical movement. To land on a platform, whether it’s a tiny shelf of rock far above and
+behind the character or whether it’s a wide platform over a gorge directly ahead,
+requires movement in both the vertical and horizontal. What Mario 64 does wonderfully is to present the player with consistent vertical and horizontal relationships
+throughout the game, regardless of what else is going on in the level. As a result,
+the complex, imprecise motions of Mario through 3D space become manageable,
+predictable skills that can be learned and mastered. This feels great; the player
+almost always gets the result he or she was after. The onus, then, is on the player to
+plan and execute maneuvers more accurately and skillfully.
+A platform’s dimension refers to how much landing or maneuvering space it
+provides.
+Relative to the speed at which the character runs when on the ground, the levels
+are very open, without much obstruction. The running is a very precise, responsive motion with no floatiness or looseness, so there is little emphasis in the design
+of most levels on running very precise patterns. Releasing the thumbstick brings
+the character to a halt immediately, so there’s no real risk of unintentionally running into or falling off of something. The game says: wait until you’re ready. It’s
+supposed to feel easy and safe just to move around the world by running, and it
+does. The levels in which it is not so safe—Lethal Lava Land and the three Bowser
+stages—are genuinely unnerving by comparison, requiring an unaccustomed
+amount of focus on the character’s exact position on the ground. Keeping the player
+scrambling forward for extended periods of time and taking away the safety net
+makes the game feel very different. That both feels exist in the same game speaks
+to the fact that the designers had a deep understanding of what they were doing in
+constructing each type of level. More than that, the different sensations create an
+excellent and rich contrast which enhances each.
+As we noted when talking about collision and response, Mario 64 models friction, especially with respect to the angle of incline of the terrain beneath him. The
+character has a certain coefficient of friction, which can be overcome and send him
+slipping and sliding. In this way, incline is used throughout the levels as soft boundary and soft punishment. If you’re not supposed to go somewhere, there will be a
+steep incline to turn you back. It’s a gentle, negative reinforcement with a clear,
+logical physical relationship. You can’t climb up and over the wall in Bomb-Omb
+Battlefield because you start to slip and slide back down if you try. It feels futile,
+quickly getting the message across without painfully overt constraints such as an
+invisible wall or other contrived boundary. In this way, what’s been accomplished is
+a victimless blame shift, a hallmark of good level design. Player don’t feel the direct
+intervention of the designer like some deus ex machina dipping in to wag a disapproving finger and tell them where they can and can’t go. The physical relationship
+between incline and slide is consistent throughout the game, so the limit feels like a
+logical consequence rather than an overt constraint.
+Finally, it’s worth noting the overall spatial layouts of most Mario 64 levels and
+the effect that has on the high-level spatial feel of traversing them. For the most
+part, the spatial layouts of Mario 64 levels are like zones of a theme park, with the
+important features poking prominently above the landscape, visible from any vantage
+point. The tower in Whomp’s Fortress, the central spire in Bomb-Omb Battlefield, and
+the giant snowman central to Snowman’s land are all designed to provide an instant
+point of reference and include many of the level’s important star-giving interactions.
+Two benefits of this landmark-focused approach are improved camera behavior and
+a delightful sense of vastness and exploration. The camera motion in Mario 64 was
+a sore point for many players and critics, but one of the instances in which it always
+works well is in following the Mario avatar around a spire or pillar. Once at the
+top of a huge structure, the camera is free to look around and down, surveying the
+ant-like surroundings far below. This feels great, like hiking Superstition Mountain,
+El Capitan in Yosemite or the Space Needle and peering down on all the places
+you’ve just been. This doesn’t affect the moment-to-moment feel of interaction, but it
+certainly lends a highly positive high-level sense of space to the proceedings.
+Polish
+The primary area of emphasis for all polish effects in Mario 64 is the interaction
+between Mario’s body and the ground beneath him. Generally speaking, the pertinent polish effects are the animations, which are mostly in sync with the speed
+at which the avatar moves, jumps and otherwise interacts with the environment
+and which show the character leaning into turns, planting his feet and otherwise being a believable physical being. In harmony with these detailed and excellent animations, the sounds and visual effects adhere to a three-tiered structure,
+corresponding across senses. Impacts come in three varieties: light, medium and
+hard, and each type of interaction has a special animation, visual effect and sound
+effect. Combined with the ubiquitous footstep sounds and sliding noise, these
+effects serve to convince us of a Mario who exists in a believable, physical world of
+his own and who interacts with it in a logical, law-driven way.
+Because it made the most sense for this particular game, I have pointed out many
+of the important polish effects as they occurred, while discussing the simulation.
+POLISH
+CHAPTER FIFTEEN • SUPER MARIO 64
+Animation
+To begin, uncheck the animated character in the Mario 64 example, and examine
+the change in feel. Without the animation, much of the sense of weight and presence is lost. The grey capsule doesn’t seem to arc, turn or carve when moving, nor
+does it feel as satisfying to launch it into the air. In addition, moves like the Ground
+Pound and foot plant seem downright odd without a character animation on top of
+them to give them meaning.
+Visual Effects
+The primary visual effects are puffs of dust and sprays of yellow stars. The white
+dust particles happen when Mario slides or plants a foot to reverse direction, and in
+a concussive wave spreading out from the point of impact after a Ground Pound. In
+the case of the sliding over terrain, the dust kicking up sells the impression that friction has been overcome briefly and that the surface of Mario’s feet is sliding loosely
+across gravel or dirt, kicking up dust. After the Ground Pound move, the particles
+spread outward quickly, further emphasizing the power of the impact.
+The yellow stars happen wherever Mario collides with a solid object at a high
+velocity. This is the highest tier of impact, and the stars spray out with corresponding force. The effect has very little basis in reality, but because the motion of the
+particles is so violent, the impression is sufficiently emphatic. Regardless what the
+things flying out are, they move quickly so the feel is of a powerful impact.
+Sound Effects
+Try unchecking sound effects in the Super Mario 64 example, and observe how
+much of the impression of physicality is lost. I find it difficult, even with the sounds
+disabled, not to fill them in with my mind. The most important sound effects to the
+feel of Mario 64 are the three-tiered impact sounds, Mario’s footsteps and the satisfying whissssshing sound of sliding.
+Like the visual effects, the sounds accompanying impacts come in three varieties: low, medium and hard. The low sound is high pitched and click-like, while the
+medium sound has much more bass, sounding almost like a drum. The hard impact
+is over the top, a cartoony, rubbery twang. The relationship between these sounds,
+though they are not especially realistic, is one of increasing power and emphasis.
+This correlates well to the corresponding animations and visual effects, selling an
+impression of subtlety and nuance in interaction. When he punches, you hear this
+sort of Doppler effect, the swinging of his fists going through the air. When he does
+the butt stomp, when he hits the ground, it has a sort of reverberating crash noise.
+So in general, the sound effects of Mario are huge and they’re trending a lot more
+realistic and this is probably a factor of the capacity of the hardware as much as it
+is the artistic intent. But the sound effects are really selling this as a physical world
+that you can really interact with.
+Mario’s footsteps happen in time with the playback of his animation, emphasizing his interaction with the ground at every step. The sounds change based on
+the material he’s currently standing on, offering additional clues as to what that
+material might be (it looks like metal and, thanks to clanking footsteps, sounds like
+it as well).
+Finally, Mario’s bizarre ululations, grunts and exclamations. Mario’s rising
+pitched yells correspond to his jumps the same way that the rising slide whistle-like
+tone accompanied the jumping in earlier Mario games. As the pitch rises, so does
+Mario. The feel is subconsciously satisfying, a further harmonizing between motion
+and sound.
+So, in lieu of a lot of detailed visual polish effects which started to happen in the
+later three Mario games, especially Mario Galaxy, the sound effects, combining as
+they do with the animations, are what’s really selling the physical nature of interaction in this world.
+Cinematic Effects
+The only noteworthy cinematic effect used is screen shake, which is applied extensively to many objects throughout the world. It’s a very gentle shake to avoid jarring the player overmuch, but it does a nice job of selling the weight of such objects
+as Bowser, large metal cannonballs and King Thwomp.
+Metaphor
+The metaphorical representation is essentially the same as in previous Mario games.
+We’ve got a sort of tubby Italian plumber running around a cartoony, oddly surreal,
+but richly physical world. In the case of Mario 64, everything feels a lot more realistic than it did in the original Super Mario Brothers. There are walls; there are bricks
+that are definable as bricks. In some areas, there really appears to be marble floors
+or wooden doors. Everything has been rendered at a much higher level of fidelity
+and in that rendering has lost some of the surrealism it had in two dimensions.
+In terms of treatment, the transition to three dimensions has brought more realism. The pipes, hillsides, castles and other structures with real-world analogies are
+now much more representational than abstract. This is a necessary concession for
+moving into 3D, but it is interesting to note that in order to match this new treatment, the sounds really did need to be changed to sound more “realistic.” They
+couldn’t just be the bizarre, chirp-type noises of the original Super Mario Brothers.
+Mario’s physical interactions need to seem a little more sensible and logical. That
+said, the treatment is still very bright, very smooth and very clearly more iconic
+than realistic. Mario’s proportions are more iconic than ever, and most of the
+METAPHOR
+CHAPTER FIFTEEN • SUPER MARIO 64
+textures on most of the objects are highly iconic. Trees are trees and water is water,
+but only in the most generic, notional sense.
+The metaphorical representation is not setting a huge number of expectations
+about behavior in the mind of the player because it’s obviously sort of absurdist
+and surreal. The juxtaposition of the plumber and all the bizarre creatures that
+really have no sense or meaning outside of the context of the game again works in
+Mario’s favor, enabling his rich, detailed physical interactions to seem all the more
+compelling because they exceed their treatment. But that treatment is turning a lot
+more realistic and therefore to match with that, the game needed to have a feel of
+control, a simulation and corresponding effects that were much more detailed than
+in any previous Mario game.
+Rules
+The rules of Mario 64 are excellent and three stand out as affecting feel most profoundly: the relationship between coins and health; the relationship between coins,
+stars, star doors and boss levels; and the rule of threes as it is applied to boss
+damage.
+Coins and slices of health correspond directly. Picking up one coin will restore
+one empty slice of health. This makes coins desirable as a way to prolong life and
+causes players to seek them out if their health is less than full. The danger of dying
+due to health loss is remote—coins are so ubiquitous that it’s difficult to actually
+end up with 0/8 health slices—but the affect on feel is to emphasize coin collection
+whenever health is low. This puts more importance on specific navigation while
+running and on precision jumping to claim coins floating in the air. In addition,
+the fact that various objects cause Mario to lose more or less health creates a scale
+of danger that feels quite physical. Lava, in addition to launching Mario screaming
+upward while holding his backside, takes off two healths. Being hit by a Goomba
+takes only one. Ipso facto, the lava is more dangerous, more physically damaging. It
+feels more harmful.
+One hundred coins are worth one star. One star opens the first star door, granting
+access to a new level. Three stars open two more levels. Eight stars enable you to
+attack Bowser’s first stronghold and get access to an entirely new area of the castle,
+complete with additional star doors. This cascade effect hooks coins into the highest
+level of reward and achievement in the game, the unlocking of new areas of the castle. This, again, puts a premium on the low-level skills of precise steering and jumping that will enable the player to effectively sour the level, collecting every coin.
+The system for enemy damage primarily sells the difference between bosses and
+basic enemies. Bosses take three powerful hits, whether it’s Big Bomb-Omb being
+tossed onto his big round butt, or Bowser being hurled into explosive landmines.
+Small, simple enemies are destroyed in one or two hits. For this reason, regular
+enemies such as Goombas feel fragile and insubstantial when compared to the
+massive boss creatures.
+Finally, the high-level rules of Mario 64. The big one is the lack of time limit.
+You’re free, essentially, to explore. Even the ordering of the goals and levels is
+loosely enforced. You can choose to max out each world as you go, or to pick and
+choose goals as you go. Even the linear progression of goals in the levels can be
+circumventing in many cases. The overall sense is that around every corner, another
+joyful discovery awaits, if only you’re skilled enough to get there.
+Summary
+In Super Mario 64, if you examine these relationships individually from a design
+perspective, they seem to make no sense. Like squash and stretch in an animation,
+“realism” is ignored in favor of player perception. But Mario 64 nevertheless manages to feel powerfully tactile and cohesive. How? The secret is this: everything—
+the effects, the relationships, the control—is tuned based on its impact on the player’s perception. From tiny, subtle clues, the player infers broad generalizations
+about the physics of this world. When these conceptions are ultimately confirmed
+by additional interactions, the world begins to seem “real.” The polish is exactly
+what it needs to be, selling a robust, nuanced sense of physical interaction with the
+smallest possible clues. The size, spacing and nature of objects in Mario’s world are
+almost perfectly balanced against his motion. In fact, nearly everything about Super
+Mario 64 is in harmony with a single, cohesive vision of a unique physical reality.
+The world is fantastic, but it’s self-consistent, and stands up to scrutiny, even when
+perceived actively.
+SUMMARY
+
+---
+
+## Sección 9: Chapter 2 to answer these questions. [Entropy: 0.355]
+
+CHAPTER
+Raptor Safari
+More than any other type of game, players go pants-on-head crazy over the feel of
+driving games. This is, perhaps, unsurprising. People love cars, drive cars all day and
+in some cases, fetishize them in rather dubious ways. Everyone in our society has a
+huge amount of experiential background against which they compare the feel of driving a virtual car against. People, in short, have a lot of perceptual data about the feel of
+driving and riding in cars, and this heavily influences their perception of driving
+mechanics in games. More than any other type of game, people are critical of and sensitive to the feel of controlling something that looks like a car. For this reason, there
+has been a huge amount of energy spent perfecting various flavors of driving
+mechanics over the years. To the layperson, games like Gran Turismo, Project Gotham
+and Ridge Racer may not seem appreciably different. But to the enthusiast, there are
+subtle differences in flavor, texture and feel that make all the difference in the world.
+There are indeed people in this world who treat driving simulations like fine wine.
+Raptor Safari, a game by Flashbang Studios (Figure 16.1), provides a window into
+just how difficult, intricate and time-consuming it can be to create and to give a leg
+up toward creating your own good-feeling driving mechanic. But it should be noted
+that of the popular retail games that feature a driving mechanic, Raptor Safari probably has the most in common with the tuning of cars in Grand Theft Auto 3. Many
+of the ideas and structures, if not the specific implementations, can be generalized
+and applied to all driving mechanics. Just bear in mind how deep the rabbit hole
+goes in terms of the feel of driving games and players’ sensitivity to subtle changes
+in it. Whether the treatment is photorealistic or iconic, if you’re going to create a
+game where the avatar is represented as a car, be prepared for an obscene amount
+of tweaking and tuning to get it to a place where it feels right to players.
+Game Overview
+Off-Road Velociraptor Safari is a 3D browser-based game, created in about two
+months by a team of six people. At the time this was written, three and a half million raptors have been slaughtered by 90,000 users who’ve played the game 550,000
+times. Many players commented on the especially enjoyable feel of the game and
+SIXTEEN
+CHAPTER SIXTEEN • RAPTOR SAFARI
+cited it as a reason for the game’s addictive quality. It uses a very simple interface
+of six keyboard keys to control an advanced physical simulation including, among
+other things, separate values for shock compression, per-tire forward and side friction, motor speed, velocity, mass, drag and angular dampening. Compare this to
+the simplicity of simulation in a Bionic Commando or an Asteroids and you see
+how quickly complexity can increase with just a few additional variables. You can
+quickly find yourself in the realm of Excel spreadsheets, needing some visualization
+to track all the relationships and interdependencies.
+Luckily, the design document for Raptor Safari was not complex and provided
+a consistent vision to guide us through development. It consisted of the following,
+scrawled on a whiteboard:
+Physics-based Jeep ragdoll raptors awesome
+The final game matched the design document almost exactly. Driving the Jeep
+around feels great; there’s a powerful sense of weight and mass as the large blocky
+body of the Jeep compresses the shocks of each individual tire and as they squish
+and push back. The Jeep does not flip over too easily, but it’s clear that rolling and
+crashing the Jeep is not only possible but encouraged via the damage and stunt
+systems. It has a sense of weight and presence and feels to players as though it is
+a large and heavy vehicle with responsive steering with which they can navigate
+the environment easily. Crunching tire sounds, engine revving and crashing noises
+of various kinds further lend credibility to the impression of physicality, especially
+supporting the sense of friction with pitch-modulated sounds of tires digging into
+dirt. Slow-motion camerawork at moments of impact or during long jumps further
+emphasizes the physical nature of the interactions. Crashing into trees and rocks
+creates loud, metallic crunching noises and can cause pieces of the jeep to smash
+F I G U R E 16.1 Off-Road Velociraptor Safari by Flashbang Studios.
+and break off or be dislodged and left hanging. Hitting something at higher velocities causes louder sounds with more crashing and breaking of glass.
+At some point, the player will hit a raptor. The silly puff of feathers, the squealing noise, the satisfying thud and the fact the raptor then goes into “ragdoll” mode
+all give the player positive feedback. The interaction has a sort of extreme sports
+bloopers appeal, but with virtual ragdoll raptors instead of some poor motorcyclist
+flying over hay bales, or a cowboy being gored by a bull. It’s a victimless pleasure.
+The experience of hitting a raptor feels gratifying, interesting and worthwhile in and
+of itself. The ragdoll raptors have “over the shoulder” appeal. People walking by
+someone playing the game often stop and want to know more about this irreverent
+game in which you run over feathery ragdoll raptors that look like parrots in an offroad Jeep. These interactions—flipping the jeep, destroying it, hitting raptors, capturing them with tow cables—are all supported by the system’s rules. Our goal was
+to have the game recognize, and reward, every possible permutation of interaction
+the player could have with the world. A sampling of some of the special interactions
+that the system recognizes:
+● Raptor on raptor: hitting one raptor with another
+● Live specimen: chasing a raptor into a capture point without knocking it out
+● Clothesline: hitting a raptor with the chain only
+GAME OVERVIEW
+F I G U R E 16.2 The online popularity of Raptor Safari—the inimitable Derek Yu models an
+oh-so-sexy Raptor Safari shirt.
+CHAPTER SIXTEEN • RAPTOR SAFARI
+● Pickup: snagging an unconscious raptor with the tow cable
+● Barrel roll: flip the Jeep along its forward-facing axis
+In addition, there are high-level goals driven by an Xbox-Live-like achievement
+system that gives the players specific goals to chase to encourage subsequent playthroughs. For example, there are achievements for destroying the Jeep entirely, for
+balancing on two wheels for 10 seconds and for throwing a raptor more than 50
+meters into a capture point. Between this good-feeling, low-level interaction, the joy
+of pummeling ragdoll raptors, and the varied and interesting high-level rules, we
+built something that a lot of people enjoyed.
+Let’s take a look under the hood—if you’ll pardon the phrase—and see how the
+feel of Raptor Safari was created.
+Input
+As a casual, downloadable game, we chose to use the standard computer keyboard.
+Specifically, the W, A, S, D, B and space keys.
+The game uses only discrete inputs; there is no mouse or thumbstick providing
+a continuous stream of input. Again, each of the six buttons sends a binary
+signal. Taken alone, this input data can be interpreted as “up” or “down.” When
+measured over time, the signal can be interpreted as “up,” “pressed,” “down” and
+“released.”
+F I G U R E 16.3 The input space for Raptor Safari.
+Response
+The simple binary signals for each button are fed into Unity’s input manager, where
+they are parsed and processed before being mapped to specific parameters in the
+game. The input manager interprets everything as an axis, even keyboard presses.
+In so doing, it assigns the following properties:
+● Gravity: Speed in units per second; the axis falls toward neutral when no buttons
+are pressed.
+● Sensitivity: Speed in units per second that the axis will move toward the target
+value.
+● Snap: If enabled, the axis value will reset to zero when pressing a button of the
+opposite direction.
+What this means is that there’s already a softness applied to each input, filtering
+it before it is fed into the simulation. The result of this filtering is envelopes for each
+button that look like Figures 16.4 through 16.7.
+Applying our taxonomy for response, we can see that the jeep moves linearly
+in the Z-direction, while rotating around the Y-axis to turn left and right. It has
+freedom of movement and rotation in all three axes, though, and can tumble, roll or
+fly in any direction, X, Y or Z (Figure 16.8).
+F I G U R E 16.4 Left/Right Turning (Gravity 3, Dead 0.001, Sensitivity 2).
+F I G U R E 16.5 Forward (Gravity 3, Dead 0.001, Sensitivity 3).
+RESPONSE
+CHAPTER SIXTEEN • RAPTOR SAFARI
+F I G U R E 16.6 Backward (Gravity 3, Dead 0.001, Sensitivity 3).
+F I G U R E 16.7 Backward (Gravity 3, Dead 0.001, Sensitivity 3).
+F I G U R E 16.8 Dimensions of movement in Raptor Safari.
+The Jeep’s motion is relative to itself; forces get applied in the direction it’s facing and using its own coordinate space as a reference. In addition, the rotational
+and linear movements are controlled by separate buttons rather than one integrated
+control for each.
+Simulation
+The body of the Jeep is a large box which has been defined as a “rigidbody,” meaning that it has been registered as a physical object by the built-in Ageia PhysX™
+physics engine. What this means is that its motions and interactions are already
+being simulated in a very detailed, robust way. For example, the engine already
+keeps track of the following parameters:
+● Mass
+● Drag
+● Velocity
+● Angular velocity
+● Position
+● Rotation
+So far, so simple. The system is still comprehensible and can be kept in one’s
+mind with relative ease. If you’ll recall the simulation that drove Mario’s movement,
+however, we’ve already eclipsed it in terms of the number of different things that
+are being tracked.
+Each tire is tracked individually. Interestingly, there is no physical simulation of
+the tires. At least, they’re not physically simulated objects the way that the body
+of the Jeep is. They don’t have mass, nor do they collide with other objects in the
+world. Instead, the position of the tires and their functionality are determined by
+four raycasts, which start at each of the four wheel wells of the Jeep and extend
+downward. A raycast is basically an arrow, starting at a certain point and going for
+a certain distance in a particular direction. Visualize it like Figure 16.9.
+The visualization of the tires (the 3D model representing each of them) has its
+position set at the point where the raycast intersects the ground below it. That is,
+the raycast will shoot down a certain amount from its starting point up in the wheel
+well. If the raycast doesn’t hit anything, it doesn’t do anything and the wheel gets
+set to the maximum distance beneath the Jeep, which is a predefined number.
+In this case, it’s enough effect to make the Jeep look normal, with its tires situated properly in the wheel wells. If the raycast does hit something before reaching
+its defined maximum distance—the ground, say—it has a programmed response.
+Depending on how close the place that was hit is to the starting point of the ray up
+in the wheel well, a force gets applied to the body of the Jeep, pushing it. The further “compressed” the suspension is, the larger the force.
+RESPONSE
+CHAPTER SIXTEEN • RAPTOR SAFARI
+The result is that forces are constantly acting on each of the four corners of the
+Jeep, under the wheel wells, where the tires would be, pushing upward like a set
+of shocks attached to tires. The only weirdness that’s caused by this is the fact that
+when the Jeep passes over a rapid shift in terrain height, like a curb, you can actually see the tires snap up or down. If you watch closely, you can see this happen
+even in Grand Theft Auto 4. To combat this small but potentially annoying movement, Raptor Safari always interpolates between the current position of the tire and
+its next desired position, guaranteeing that the motion will be relatively smooth.
+There are still some cases where the tires seem to behave a bit weirdly, but overall
+the effect is solid.
+Now, if you set up a system like this and just drop the Jeep onto some terrain, it
+would start rocking back and forth with increasing force, eventually with such force
+that it might get launched up into the air (Figure 16.10).
+To combat this effect, a dampening value must be applied to each upward suspension force such that as it pushes upward from fully compressed, it quickly
+decreases in force. As it approaches equilibrium, in other words, it applies less and
+less force, like Figure 16.11.
+F I G U R E 16.9 The four raycasts going downward out of the Jeep’s wheel wells.
+So up to this point we have a big block representing a Jeep that, if dropped on
+to some terrain, will float above it because of the counteracting forces of four tires
+simulated by short raycasts. In terms of tweakable parameters we have:
+● Global
+1. Gravity
+● Jeep
+1. Mass
+2. Special Jeep gravity (some extra gravity applied only to the Jeep to make it
+seem less like a hovercraft)
+F I G U R E 16.10 Without dampening, the forces quickly send the Jeep spinning into oblivion.
+F I G U R E 16.11 The force is reduced as the raycast returns to its normal length.
+RESPONSE
+CHAPTER SIXTEEN • RAPTOR SAFARI
+● Tire
+1. Raycast max distance
+2. Raycast min distance
+3. Suspension force
+4. Suspension dampening.
+Yipe! Well, you can see how these things start to get mind-bendingly complex in a
+big hurry. We don’t even have the Jeep moving yet and we’ve already got a much
+more complicated simulation than anything we’ve talked about up to this point.
+Now, the movement of the Jeep. The Jeep actually tracks two values for its velocity: the actual current velocity of the physics object according to the physics engine
+and a separate “desired” value, which could be thought of as motor speed. For
+example, say the Jeep goes off a jump and gets launched into the air. Say its actual
+horizontal velocity according to the physics engine in the air is 30 km/hr. Since it’s
+flying through the air, it will have this same horizontal velocity until acted upon by
+some other force. It’s still possible to hit the gas while in the air like this. The tires
+will spin quickly and the engine will rev. The desired speed, the motor speed, of the
+Jeep goes up to some amount above the actual horizontal speed. Let’s say it goes
+as high as 50 km/hr. The Jeep is still flying through the air so the actual horizontal
+speed remains the same, but the desired speed is now much higher. What happens
+when the Jeep lands back on the ground?
+When the Jeep hits the ground, you don’t want to immediately set its velocity to
+50. That would feel weird and artificial. You want it to have some kind of friction
+simulation that causes it to “catch” as it comes back in to contact with the ground.
+But if the engine’s been revved up too much and the tires are spinning much more
+quickly than the actual speed of the car, the tires “slip” if they’re above a certain
+threshold, the way that real car tires on a real road will slip and peel out if they’re
+accelerated too quickly. So this separation between actual and desired velocity gets
+us two things. First, our Jeep can have a different desired heading and desired speed
+when it’s in the air. You can go soaring through the air, gas it and turn, and have
+those changes manifested as soon as the Jeep comes back into contact with the
+ground. This is in line with players’ expectations. If it doesn’t happen this way, it
+seems weird and artificial. Second, we can simulate the type of slipping that happens when friction is overcome by a tire that’s broken free.
+The way this is implemented in Raptor Safari is shown in Figure 16.12. As you
+can see, there are indeed two separate parameters for actual velocity and desired
+velocity. Interestingly, the actual velocity is never reached, because of the friction
+forces applied to each tire in both the front and side directions. In fact, all motion of
+the Jeep is driven by the tires. Each tire maintains its own individual velocity and
+two friction values that counteract it: side friction and forward friction.
+As the tires turn, the direction of their velocity may change. The friction forces
+apply in amounts commensurate to the direction of each tire’s velocity, though
+always more to the side than to the front. This is what creates the carving effect
+when the Jeep begins to turn. Because the forward friction is much less than
+the side friction, instead of spinning on its axis even as it turns like the ship in
+Asteroids, the jeep seems to dig into the ground, creating an arcing, curving motion
+rather than a floaty, sliding turn (Figure 16.13).
+F I G U R E 16.12 The force is reduced as the raycast returns to its normal length.
+F I G U R E 16.13 The feel of a car “carving” as it turns comes from a special, high friction value
+applied sideways on the tires.
+RESPONSE
+CHAPTER SIXTEEN • RAPTOR SAFARI
+Finally, each friction value for each tire has a particular slip threshold. This simulates the effect we mentioned earlier, where the tires will get spinning so quickly
+that they will break loose and slip, overcoming the friction that holds them to the
+ground. Figure 16.14 shows the way it works.
+As with the Jeep body proper, each tire has both an actual and desired velocity.
+In each frame, the game examines the difference between the desired velocity
+and the actual velocity. If this number, the difference between motor speed
+and actual speed, is above a certain threshold, the friction values, both side and
+front, are adjusted according to the graph in Figure 16.14. It’s a gradual application
+but it produces the intended effect. If the motor speed is much, much higher than
+the actual speed, the tires break loose and slide. Note that this effect also works
+if the car is sliding sideways with great force, as when the jeep gets launched and
+spun simultaneously, landing at an awkward angle. The overall effect is a sensation
+of friction approximating what a player expects from a real car.
+The Tow Chain
+Deploying the chain is actually a physical process. It probably doesn’t have to be,
+but it worked out so well that we stuck with it. The chain goes from being nonsimulated to being simulated, unfurling as the back door (also physically simulated) pops out backward. The result is a sort of jiggling in of the whole jeep rig
+in response to this change in mass and balance, one that looks appropriate and
+satisfying.
+The center of gravity of the Jeep changes depending on whether the chain’s out
+and depending on whether there’s a raptor attached to it. If you think the Jeep is
+squirrely and difficult to control with a raptor attached now, you should see it when
+the center of gravity isn’t shifted backward and down. Through this artificial center
+of gravity shift, though, we were able to get the Jeep to a reasonably controllable
+state with chain in or out and with or without raptors attached. The result is reasonably unwieldy without being overly so and promotes the development of high-level
+skills involving prediction and intuition. You can, through lots of play, get a feel for
+F I G U R E 16.14 The slip threshold—past a certain speed, the tires will break loose.
+how to effectively swing raptors around and get them and the Jeep to do what you
+want. There was one consequence, though: sometimes when the Jeep is flying and
+spinning through the air, its behavior is a bit odd-looking. It’s clear that the center
+of gravity is outside the Jeep. We decided that it was worth it to have stable driving.
+Finally, the chain will break under a large amount of stress. There’s a fine balance between having it break too easily and not easily enough. The tests we used
+were accelerating from a standstill with a raptor attached and wrapping the chain
+around a tree. The player had to be able to accelerate from a stop with the tow
+cable unfurled and a heavy raptor attached without breaking the chain, but the
+chain should almost always break if you swing it and wrap it around a tree.
+Context
+At the highest level of spatial context, we created a world that was very open. There
+are lots of places to go, higher levels and lower levels, but in general, there’s a
+sense that you’re in a vast, open area with lots of tall mountains surrounding it, but
+there’s also an ocean and it sort of goes on forever. And the free-roaming, exploring
+nature of the game with very little constraint further emphasizes this sensation.
+So in general, it feels much more like a large, open valley than any sort of
+cloistered-in city (Figure 16.15). And there are a couple places where that impression is sort of part of the contrast, by having closed-in canyons or areas that are
+under outcroppings of rocks or have lots and lots of trees in them. But in general,
+the impression of space at the highest level is very open and wide.
+And if you see a place on the map, odds are you can find a way to travel there.
+So it has that sort of high-level, exploratory appeal, like World of Warcraft or
+F I G U R E 16.15 The wide open space of Raptor Safari.
+CONTEXT
+CHAPTER SIXTEEN • RAPTOR SAFARI
+Oblivion, in microcosm. The entire gameplay field is about two kilometers square in
+the measurement we use in the game itself for speed.
+At the medium level, we have a really nice impression of speed going on because
+of all the textures on the ground and because of all the small plants and trees and
+environmental object as the Jeep travels around. There’s a nice impression that it’s
+moving fairly quickly as it’s rolling around the level and zipping between objects
+(Figure 16.16).
+In terms of the number of objects, nature of the objects and the spacing of
+objects, we’ve provided what I feel is a nice contrast between big, wide-open areas
+and penned in, small areas, where you have to do a lot of obstacle avoidance.
+But again, since we’re not punishing players for running into stuff—in fact,
+we’re rewarding them with points for damaging the Jeep. The sensation is positive,
+regardless of whether you’re running into something or not. And of course, we created the raptors as a reward for crashing into things. So you chase them down and
+run into them.
+We’re giving a lot of meaning to the amount of turn that the car has relative to
+its forward velocity because you have to chase down with a fairly high degree of
+accuracy a moving target and the raptor who will always be fleeing away from you,
+albeit at a slower speed than you.
+The game provides a variety of goals and well-spaced environment objects that
+emphasize precise movement andluming. In addition, the goals provide incentive to
+attempt huge jumps and to seek out areas that accommodate such launches. So in
+that sense, it’s much more like an open street with sort of some very specific goals
+in it that we’ve provided in terms of running into the raptor and steering around
+things.
+F I G U R E 16.16 Objects and textures in Raptor Safari create the impression of speed and
+provide mid-level context.
+So in general, this affects the field by tuning your sensitivity to the medium level
+of interaction primarily. You’re steering around things and you’re steering toward
+raptors. And at the most basic level, this is primarily what we’re doing—object
+avoidance or trying to accurately track down moving objects. So in that sense, the
+focus of the mechanic through the context is put on the spacing of objects and how
+to steer in and around the trees.
+We hit a fairly good balance here. Maybe we could have removed a couple of
+trees to make it a bit easier just to drive across the environment, but the speed of
+the forward motion of the Jeep and the amount that it turns are balanced relative to
+the spacing of objects, which is fairly wide in general.
+At the lowest level of tactile interaction, the game does not do the typical
+waterslide collision methodology of most racing games. Because we have a wideopen world that flows and you can drive to any area, we didn’t feel it was necessary
+to put so much emphasis on slip sliding away from objects.
+In fact, because you want to ram into raptors, we made the collisions a little bit
+stickier than you typically find in a racing game, meaning that when you’ve collided
+with a raptor, it really feels as though it’s interacting with the hood of the car and
+sort of flying sideways and getting crunched around and mashed up against things.
+And this extends, perhaps, a little bit negatively to your interactions with trees
+and other objects in the environment. It is possible to be going at the maximum
+speed with a boost, crash into a tree and completely lose all momentum. We tried
+to mitigate this with polish effects such as loud crashing sounds that get more
+emphatic and sound more destructive depending on the velocity of the collision.
+But there’s only so much you can do without actually simulating deformation of the
+car or doing some more advanced particle effects than we did.
+So in general, the simulation, the tactile level of collision—the tactile context—
+feels much like a real car with the caveat that it doesn’t get deformed or destroyed
+past the superficial destruction of the doors and hood.
+Polish
+In terms of polish effects, most of the interactions are conveyed by the simulation
+itself, so there’s not a huge amount being done. The primary work affecting the
+feel of the game is in the sound effects, where a lot of attention was paid to what
+the sound effects were conveying about the physical interactions of the car with its
+environment, especially the tires with the ground.
+There are two layers of sound effects, the engine-revving noise and the crusty,
+dirt-crumbling noise, and their pitch is modulated based on the angle of the
+car turning, the amount of force that’s being applied, friction-wise, to the car’s
+tires. Further, based on the overall speed of the car, the engine noise is modulated
+as well.
+As a result, you really get a sense that the car is speeding up and revving up,
+and this further enhances the impression of speed, but with respect to the pitch
+POLISH
+CHAPTER SIXTEEN • RAPTOR SAFARI
+modulation of the turning, it really gives the sense that you’re carving into the dirt.
+The pitch goes up and you can almost hear the tires spinning and squealing as they
+crunch through the gravel dirt on the ground.
+In terms of collision, we did three levels of different sounds, and we’re pulling
+randomly from a list of different sounds in order to avoid hearing the same sound
+over and over again and fatiguing the player’s ear. But there are three levels of
+sounds.
+At the lowest level of collision, there’s a threshold, and at the lowest level of collision threshold, it’s a very low-velocity collision. It’s just sort of a plastic-sounding
+thud, like if you bump your friend’s car in bumper-to-bumper while you’re waiting
+at a light. If you give the car a love tap, that’s the kind of sound we got there.
+At the medium level, there’s a satisfying crash or crumpling sound with
+some metal and maybe a little bit of glass breaking. It’s obviously a much more
+powerful collision than the love tap, but it’s not over the top. And then we reserve
+for the most destructive collisions—the highest velocity of collisions—a class of
+sounds that includes metal rending and have a long after-effect sound of crunching
+glass and breaking and smashing that goes on for quite some time.
+And even higher than that, we have a separate class of sounds that we trigger
+when only a piece of the Jeep gets broken off, and that’s the most destructive and
+violent-sounding noise. In addition, when the Jeep hits a raptor, we’re making a
+special organic thudding noise. It sounds a little like hitting a side of beef with a
+baseball bat; and that, as well, comes in different levels.
+It will be louder and more emphatic if the speed of the collision is much higher.
+So in that respect, we’re giving additional sensitivity and conveying another power
+sense of physicality through modulating the sound depending on the strength of
+collision.
+In terms of visual effects, there are very few. And as the Jeep is driving around,
+dust particles get kicked up under the tires. If the Jeep is carving with a certain
+amount of force—if the amount of friction being applied to the wheels is above a
+certain amount, then a tire mark graphic will be placed on the environment where
+the tire was touching.
+In addition to these effects, we are also doing some cinematic trickery. Whenever
+there’s a stunt—that is, whenever the Jeep flies a certain height above the environment—a slow-motion cam occurs to emphasize that stunt, and the same thing
+happens if you run into a raptor. The game goes into slow motion and the camera
+zooms in on the point of interaction to further emphasize the weight and impact of
+the collision.
+And that’s pretty much it. We’re doing some parametric animation stuff with a
+main character in terms of animation effects, such as the visualization of the tire
+spin according to the code, which technically could be considered an animated or
+polish effect. And when the Jeep turns left or right, the monocled, pith-helmeted raptor driver turns his head to the left and right, which is an animated effect driven by a
+parameter, but not directly affecting it. And then when you start backing up, he sort
+of puts one arm back and looks over his shoulder the way a normal driver would.
+And really, that’s all the polish effects there are in Raptor Safari. It’s fairly barren in terms of extraneous polish effects applied to improve the impression of
+physicality and the interaction between objects. Pretty much everything is done in
+simulation.
+So overall, the effects, or the limited number of effects—especially the sound
+effects—serve just to improve the impression that this is a real car. In fact, the
+sound effects were taken from actual car collisions. And that the raptors are big,
+mushy pieces of flesh made out of meat, bone and feathers, and when they come
+into contact with the much weightier, more massive car, they get owned, basically.
+Metaphor
+In terms of metaphorical representation, the metaphor is a nearly photorealistic
+Jeep, or at least a Jeep that is properly proportioned and is clearly attempting to
+be a somewhat realistic representation of a Jeep. It is not a cartooned Jeep and the
+treatment is not intended to be iconic, particularly (Figure 16.17).
+The environment is much lower resolution and looks less like an attempt to be
+realistic. There’s a bit of a disconnect between the Jeep and the environment, as
+well as a slight disconnect between the Jeep and the raptors. The raptors look very
+painterly and colorful, whereas the Jeep looks like it’s turning a little bit toward
+realism, and the environment seems to be more fantastical.
+But overall, the expectation is that this car will behave like a real car. We’re mitigating this expectation in some degree by the silliness of what’s going on and the
+absurdness of a monocled, pith-helmeted raptor driving a Jeep around and running
+over other raptors, and especially by the silly sound effects and the puffs of feathers
+and things that fly up.
+F I G U R E 16.17 The Jeep in Raptor Safari is close to photorealistic.
+METAPHOR
+CHAPTER SIXTEEN • RAPTOR SAFARI
+We’re setting up the expectation that, though it kind of looks like a real Jeep,
+don’t expect it to handle the same way with the same degree of accuracy as a Gran
+Turismo. Don’t apply the highest level of simulation standard.
+So again, in terms of representation, we’ve got a Jeep driving around a somewhat fantastical world with some surreal elements in terms of big, feathery,
+parrot-looking raptors being run over by another raptor in the Jeep (Figure 16.18).
+The treatment on the Jeep is realistic, the treatment on the environment is more
+fantastical and the treatment on the raptors is more painterly and iconic. So there’s
+a little bit of a disconnect there, but it holds water reasonably well. This silliness
+also makes the whole thing feel more abstract and surreal.
+Rules
+The high-level rules we created have a huge effect on the feel of Raptor Safari. You
+can do no wrong. You get points for everything. Humorously, it is literally impossible to score zero points. If you end a five minute round with zero points, you earn
+an “A for Effort” bonus, which gives you 50 points. That was our philosophy; to
+recognize and reward every possible action. As a result, every possible action feels
+rewarding to some degree.
+So hitting a raptor, you get a bonus; trashing the Jeep—destroying part of the
+Jeep—you get bonus points for that. Doing stunts—launching yourself off of high
+objects and doing flips and barrel rolls—you get rewarded for that.
+Every single possible combination of interaction, such as grabbing one raptor
+with the tow cable and hitting another raptor with that, we emphasized with a
+special bonus. And the reason we did this was to make the entire experience feels
+F I G U R E 16.18 The protagonist of Raptor Safari: a raptor with a monocle and pith helmet.
+always positively rewarding. The challenge is the timer. You have to score as many
+points as possible within the allotted time, and the allotted time is very low—five
+minutes.
+So you can never fail at Raptor Safari. The lowest possible score is 50 points (the
+“A for Effort” bonus). But we wanted to enable players to always compare their
+score with their previous score and with everyone else’s score in the world through
+the achievement system and high-score list.
+Every individual action feels rewarding to some degree, but the actions that you
+take start to feel more and less rewarding. So for example, if you spend an entire
+round focusing on running over raptors and your score is 200,000, that will feel like
+a reasonable score because you’ve run over a lot of raptors and perhaps thrown
+them into the raptor catchers and gotten points for it, and there’s a satisfaction
+there.
+But if you do another play through the game of another five-minute round, and
+you do a bunch of stunts and get these crazy high-flying jumps and spins (that
+gives you a much higher score) then doing stunts is going to feel more rewarding
+than capturing raptors. So it’s all about developing a scale of relative reward for the
+player to model internally and experiment with.
+With the medium-level rules affecting feel, we’re steering the player toward
+raptors and orbs and jumps that cause the Jeep to go flying huge distances and
+do spins and so on. That’s essentially the behavior that we’re encouraging, and
+because of that, the feel changes slightly.
+You always steer toward raptors and, because of the way the combo system is
+structured, you always want to steer toward the next thing, whatever it is, as quickly
+as possible to keep your current combo going because getting an orb continues your
+raptor-hit combo, which would continue your stunt combo. All the different combo
+systems are linked into one.
+The net result is that you feel that you’re trying to chain together these different
+combo elements as you move throughout the level, and you’re always looking for
+the next thing to hit and gravitating toward it, which makes you feel as though you
+always want the Jeep to go faster and you don’t really care too much about running
+into things. You’re always just focused on what the next thing is that you’re going
+to try and steer toward and how you’re going to get there.
+And finally, at the lowest level, there isn’t really a concept of health of objects
+in Raptor Safari past the fact that hitting the raptor once with your massive Jeep or
+with the tow cable will stun it or kill it, depending on your perspective, and knock
+it out. So the impression that’s conveyed there is that the Jeep is much more massive than the raptors.
+Summary
+Most of the feel of Raptor Safari resides in the complex physical simulation. The
+high-level rules reward every behavior and guide the player toward ever higher
+SUMMARY
+CHAPTER SIXTEEN • RAPTOR SAFARI
+levels of skill in a variety of different areas. We built the game very much with
+a bottom-up mindset; first was the simulation of the Jeep and the ragdoll raptors.
+That was tuned fastidiously. Then we built out a larger world, and populated
+it with lots of ramps and raptors. When we were comfortable that the feel of
+just driving around and smacking raptors felt satisfying, we emphasized every
+possible physical interaction with bonuses and scoring events, including a damage system, a stunt-reward system, a raptor reward system, and rewards for collecting the random orbs scattered throughout the environment. On top of this, we
+layered a combo system that provided rewards not only for doing many of the same
+types of events in a row but rewarded across systems, giving extra bonus time to
+all open combs whenever a new event was completed, regardless of its type. The
+five-minute round timer combined with the all-skills-rewarded approach plus the
+high-level achievement goals created a game that feels good and keeps players
+coming back.
+CHAPTER
+Principles of
+Game Feel
+After exploring what game feel is and how to measure it, and stepping through a
+number of examples using our taxonomy of game feel—input, response, context,
+polish, metaphor and rules—it’s time to set forth some general principles for
+creating games with good game feel. They are:
+● Predictable results—When players take action, they get the response they expect.
+● Instantaneous response—The player feels the response to their input is
+immediate.
+● Easy but deep—The game takes minutes to learn but a lifetime to master.
+● Novelty—Though the result of an input is predictable, there is enough subtlety
+and expressiveness to keep the controls feeling fresh and interesting through
+hours and hours of play.
+● Appealing response—The sensation of control is aesthetically appealing and compelling, separate from context.
+● Organic motion—Controlling the avatar creates appealing arcs of motion.
+● Harmony—Each element of a game’s feel supports a single, cohesive perception
+of a unique physical reality for the player.
+In many ways, these principles are similar to the principles of animation, which are
+well known and well-proven.1 The seven principles of game feel described here may
+not be complete, but they are a good starting point.
+SEVENTEEN
+Once again, refer to Frank and Ollie: http://www.frankandollie.com/PhysicalAnimation.html
+CHAPTER SEVENTEEN • PRINCIPLES OF GAME FEEL
+Predictable Results
+When players take action, they should get the response they expect. This doesn’t
+mean that the game is easy or that the controls must be simple. What it means is
+that there’s no interference between intent and outcome for the player. The result
+of pressing a button or moving a Wiimote might be complex and difficult to manage, but this is different from feeling that the game is giving a different result for
+the same input. When the result is predictable for the player, the controls can be
+learned and mastered. Even if it seems exceedingly difficult, the player can engage
+with the challenge of the game. When the controls seem random, continuing to
+play seems pointless. There’s no point in practicing if the game just gives a random
+result.
+Creating predictable results seems like an easy task from a game designer’s
+point of view. But, as Mick West has said, “On the face of it, this appears a simple problem: you just map buttons to events. However, due to the non-precise
+way that different players press buttons and perceive events, problems of ambiguity arise, which lead to frustration and a feeling of unresponsiveness. The player
+thinks he has hit the correct button at the correct time, but, as he’s not a robot, the
+intent of his input is ambiguous and cannot be resolved satisfactorily with a simple
+mapping.”
+To paraphrase Will Wright, designing a game is half computer programming and
+half people programming. Creating real-time controls that always give the player the
+result he or she expects is difficult because expectations live in the player’s mind.
+The problem is the difference between the hard precision of a computer and the
+soft nature of human perception. To a computer everything is precise. The A-button
+was pressed 14 ms after the Z-button or the player pressed jump 9 ms after the character walked off the cliff. The game can’t know what the player expects. So when
+creating a system of real-time control, we as game designers must attempt to mold
+player expectations indirectly through mapping, metaphorical representation and art
+treatment. The player’s perception of what happened trumps the computer’s. We
+have to program the player’s perception via the computer.
+Three pitfalls will cause players to feel that the results of their input are more
+random than predictable: control ambiguity, state overwhelm and staging.
+Control Ambiguity
+When mapping input to response, game designers sometimes create unintentional
+control ambiguities. In Mario 64, pressing the A- and Z-buttons at the same time
+will give a random result, either a ground pound or a long jump. The game will see
+inputs in terms of milliseconds, knowing which one came first. To the player, however, the result seems inconsistent. Mick West explains, “In [Super Mario 64] pressing [the A-button] to jump then R1 … triggers a ground pound. Pressing R1 before
+A triggers a backflip. Pressing them at the same time causes either a ground pound,
+a backflip or a normal jump, seemingly at random—the player has no control. The
+player can press these two buttons simultaneously over and over, and never figure
+out how to control each of these three actions properly.”
+For a game to provide consistent, predictable results for input, these control
+ambiguities must be resolved. Mick has some great strategies for identifying and
+resolving these problems in his series of articles on responsiveness.2
+State Overwhelm
+One way game designers make low-sensitivity inputs more expressive is by changing mappings depending on what’s happening in the game. For example, in Super
+Mario Brothers, when Mario jumps, it’s easy for the player to perceive that he’s
+in the air as opposed to the ground. Though the result of pressing left or right has
+changed—the response is much less—it does not seem surprising or jarring because
+Mario’s clearly in a different state. It doesn’t seem random.
+If I hand my mom the Playstation 2 controller and turn her loose on Tony Hawk’s
+Underground, however, she’s totally overwhelmed. This is because in Tony Hawk
+there are many different states and it’s not clear to inexperienced players when the
+state switches happen. When the player does not perceive the state change, inputs
+begin to feel random. The skater in Tony Hawk’s Underground can be in the air
+state, the ground state, the manual state, the runout state, the grinding state or the
+lip trick state. In each of these states, each of the 12 buttons on the Playstation
+2 controller does something different. On top of that, there are many “chorded”
+inputs; pressing two buttons at the same time gives a different result than each individually. Pressing left and the X-button at the same time is different from pressing left or X individually, for example. This means that there are literally dozens
+of moves mapped to each button. It’s easy to understand why my mom feels overwhelmed. There are so many results for input, her input might as well be random.
+If inputs seem to yield random results, the rational response is to mash buttons
+randomly. This is what many first-time players of fighting games do, pressing random buttons without a clear intent other than simply to do something. Eventually,
+patterns emerge and you learn what input gives what response. But when you first
+start playing, there are so many states, so many possible moves, that it might as
+well be a random result for input.
+Staging
+If the result of an input is difficult for the player to perceive, it becomes unpredictable and uncontrollable. When the player cannot process what the result of an
+input was—if it happens too fast or gets lost in other motions—the player will not
+PREDICTABLE RESULTS
+http://cowboyprogramming.com/2008/05/30/measuring-responsiveness-in-video-games/
+CHAPTER SEVENTEEN • PRINCIPLES OF GAME FEEL
+have a clear sense of what the result was and it will seem random. This is related to
+the Staging principle of animation, explained by John Lasseter: “An action is staged
+so that it is understood. To stage an idea clearly, the audience’s eye must be led to
+exactly where it needs to be at the right moment. It is important that when staging
+an action, that only one idea be seen by the audience at a time.”3
+In real-time control, this means providing clear, immediate feedback. This
+often means exaggerating the result of an input with particle effects. The goal is to
+make it clear to the player what the result of an input was so it can be reproduced
+at-will.
+As game designers, we need to remember that we have very little time to hook
+the players. If they don’t feel successful and oriented within the first couple minutes, we’ve lost them. The lowest-order feedback loop, the first thing they’ll
+encounter, is game feel, the moment-to-moment control. If it doesn’t feel good at an
+intuitive level, giving them predictable results they can sink their teeth into, they’ll
+stop playing.
+Predictability also means inference. From the first few minutes of a game, the
+player can extrapolate a clear picture of the structure of the entire game. This is a
+good thing; it gives the player traction, mitigating the clumsy disorienting feeling of
+learning a new mechanic. In Super Mario Brothers, I know that if I fall into a hole,
+I will lose a life. It only takes one hole to figure that out; I’ll avoid holes for the rest
+of the game. But just because something is reproducible doesn’t mean it’s predictable. A predictable result should reveal as much about the possibilities you haven’t
+tried as about the ones you have.
+Instantaneous Response
+Games that feel good respond immediately to input. This doesn’t necessarily mean
+a short attack phase. For example, the Warthog controls in Halo are loose and flowing, but still feel responsive. When the player moves the reticule, the Warthog
+immediately starts seeking on the new direction indicated (Figure 17.1).
+The farther the new direction is from the current direction the Warthog is facing, the faster it will move to try to get there. As a result, the largest, most obvious
+response happens moments after the change in input. The response feels instantaneous, even if the release phase is long and drawn out (Figure 17.2).
+This closely relates to the Slow-In, Slow-Out principle of animation: “As action
+starts, we have more drawings near the starting pose, one or two in the middle, and
+more drawings near the next pose. Fewer drawings make the action faster and more
+drawings make the action slower. Slow-ins and slow-outs soften the action, making
+it more life-like. For a gag action, we may omit some slow-out or slow-ins for shock
+appeal or the surprise element. This will give more snap to the scene.”4
+http://www.anticipation.info/texte/lasseter/principles2-4.html
+http://www.frankandollie.com/PhysicalAnimation.html
+F I G U R E 17.1 The loose but responsive feel of the Warthog in Halo.
+F I G U R E 17.2 The ADSR envelope of Warthog turning in Halo.
+The difference is that in a video game, response time is important. If easing in
+takes too long, the player will perceive the game as sluggish and unresponsive.
+What feels bad is when there is a delay longer than about 100 ms between when the
+player tries to do something and when he or she perceives the result of that action.
+To maintain the impression of responsiveness, the result of input must be perceived
+by the player as immediate. The attack phase can take 10 seconds but will still feel
+responsive as long as there is some obvious result within 70 to 100ms of the input.
+INSTANTANEOUS RESPONSE
+CHAPTER SEVENTEEN • PRINCIPLES OF GAME FEEL
+Easy but Deep
+There’s an old game design maxim: good games take minutes to learn but a lifetime to master. Another way to say this is “low skill floor, high skill ceiling.” The
+basic skills are easy to learn, but there are always new levels of mastery to aspire to.
+There’s always something new to learn. Good-feeling games often have this property.
+The most elegant way to make a game easy to learn is to exploit natural mappings. For example, the motion of the ship in Geometry Wars closely matches the
+physical movement of the thumbstick input that drives it (Figure 17.3).
+The relationship between the input and the thing being controlled in the
+game is obvious and intuitive. Similarly, exploiting standard mappings of input
+to response leverages assumable common knowledge to avoid making the player
+learn something new. A steering wheel turning a car; a mouse moving a cursor;
+F I G U R E 17.3 The movement of the avatar in Geometry Wars: Retro Evolved is a natural
+mapping.
+and the W, A, S, D keys moving an avatar are examples of established cultural
+standards for control.
+Other ways to make a game easy to learn are tutorials and “helpers”—auto aim,
+dynamic difficulty adjustment, so-called “rubber banding” rules (like the blue shell
+in Mario Kart) and so on. Making a game easier to learn is a straightforward process
+of iteration. The really difficult problem is how to make a game deep.
+Creating a game with depth is a difficult, unpredictable process. This is why
+games that have this property are so valued; a game designer cannot predict which
+combination of elements will give rise to a system that people spend endless hours
+obsessively practicing. Fortunately, video game designers have control over not only
+mapping of input to response, but challenges as well. We get to design the challenges that define the skills as well as the basic movements themselves.
+If the game seems to lack depth, it’s possible to change the relationship between
+input and response sensitivity. Adding additional sensitivity to the controls enables
+more subtlety and nuance to the interactions. Supporting these new, more expressive interactions with rules (goals and challenges) and context (spatial layout) enables the designer to craft the feel of the game at various levels, making it deeper.
+For example, tracking how long it takes to complete a specific action—racing from
+point A to point B, for example—is one way to add depth. Even with a simple set
+of controls, getting a better time is almost always possible. The first time the player
+completes the race sets the benchmark. The next time he or she plays the race,
+the knowledge gained from the first play through will probably make it easier to
+get a better time. Each play through, though, it will become harder and harder to
+improve. Eventually, the player will have to start changing and experimenting with
+different strategies in order to improve his or her time. Figuring out new ways to
+optimize his or her time, the player is reaching new levels of skill and unlocking
+new sensations of control. In a deep game, this process can go on much longer than
+in a shallow one. This simple rule—recording the time it took to complete an action
+and showing the result to the player—unlocks whole layers of skill learning and
+optimization the player would never have experienced otherwise.
+Another strategy is to enable multiple players to compete, directly or indirectly.
+Examples of direct competition are games like Quake and Street Fighter II, where
+players directly attack one another. Indirect competition happens when a game
+has a leader board. Players are alone while playing the game but their scores get
+recorded and posted for comparison.
+Enabling competition between players effectively makes the skill ceiling infinite.
+You can never be complete—as when you get 120 stars in Mario 64—you can only
+be better than someone else.
+Novelty
+Though the result of an input is predictable, there should be enough small, subtle
+differences in response to keep controls feeling fresh and interesting.
+NOVELTY
+CHAPTER SEVENTEEN • PRINCIPLES OF GAME FEEL
+One enemy of novelty is linear animation. Even in a game like Jak and Daxter,
+where the linear animation is of uncommonly high quality, it’s very easy to tell
+that Jak is doing the same punch every time. The problem is that, once exhausted,
+even quality content gets boring. Watching Jak punch for the ten thousandth time
+is significantly less compelling than it was the first time. For a sensation of
+control to hold the player’s interest, it needs to feel novel and interesting even
+after hours of play. Even repetitive actions should feel fresh each time you trigger
+them.
+Many games attempt to solve this problem with mountains of additional content,
+running the player through a series of increasingly challenging and varied levels
+that give new and interesting context to the virtual sensation to keep it from feeling
+stale. Another approach is to introduce more mechanics—additions and modifications to virtual sensation—over the course of the game. For example, Castlevania:
+Dawn of Sorrow does a great job of constantly adding new virtual sensations
+through different “souls” and weapons, each of which adds a different feel to the
+underlying movement or augments it with new states (such as the ability to jump
+twice without landing).
+Another approach is to increase the sophistication of the global physics
+simulation. Physics games make control feel novel because the player will never
+be able to offer the same input twice. While the player may be able to consistently achieve the same result in Ski Stunt Simulator—jumping a ravine then doing
+a backflip over a wooden hut, for example—no two runs will ever be the same.
+The parameters that govern the simulation will react identically each time, players can’t perceive the subtle differences in their own input. The system is more
+sensitive than the player’s perception, much like the real world. Because our
+perception is keenly tuned to physical reality, we subconsciously expect certain
+things to happen when objects interact and move. One thing we expect is that
+no motion will ever be exactly the same twice. This is the nature of reality:
+messy and imprecise. No one person can punch exactly the same way twice or
+throw a discus or javelin the same way twice. If we see the same action happening in the same way over and over again without subtle variation, it starts to look
+wrong.
+Appealing Response
+When completely removed from its context, real-time control should still be engaging and aesthetically appealing. What’s important here is to separate meaning from
+appeal. Context is very important to create meaning in a virtual sensation, as well
+as to provide a point of reference for scale, speed and weight, but is separate from
+naked appeal. A virtual sensation has appeal when it’s fun to play and tinker with
+in a completely empty space.
+Playable Example
+Try each of the sensations of control in example CH17-2 to experience how
+appealing they are without the benefit of spatial context. The “High Input, High
+Reaction” test has much more appeal because its motion is more complicated,
+fluid and organic-looking than the other three. Indie game designer Kyle Gabler
+does a fantastic job of making games with this kind of basic appeal; Attack of
+the Killer Swarm and Gravity Head in particular are super appealing.
+ORGANIC MOTION
+Additional effects and baked-on animation can also add to appeal. The animations
+in Jak and Daxter add a lot of appeal to an otherwise bland sensation of control.
+Most of the techniques used to animate Jak come from traditional animation—
+squash and stretch and so on. But Jak’s movement, which is simple when separated
+from the layer of animation on top of it, seems organic, complex and appealing. In
+New Super Mario Brothers there is a similar effect: if Mario were just a cube, the
+virtual sensation would not be as appealing. As it is, Mario’s run cycle speeds up
+gradually and slows down again as he starts and stops, throwing up dust particles
+both as he runs and if he quickly changes directions.
+The other part of appeal is making sure that no matter what input the player
+gives the system, the result is compelling. This is especially important for things
+like crashes and failure states. An enlightened approach is to spend more time on
+the failure states, making them varied and interesting, since this is where the player
+will spend most of the time. For example, in the game Ski Stunt Simulator, it’s fun
+to crash and mangle the skier. Because the skier is a “ragdoll” physics rig, complete
+with constraints to simulate joints and different, individual masses for each limb,
+crashing him produces a satisfying, organic-looking result. It’s not just one canned
+animation playing back every time. He’ll smack his head, tumble down a ravine or
+impale himself on a cliff side. In a sort of extreme sports mishap kind of way, it’s
+very appealing to watch him crash and go limp as his body contorts and tumbles.
+There’s a very visceral “oooh daaaamn!” kind of reaction, one that has a hugely
+positive effect both on learning and capture. Because the failure state is so much
+fun, learning is much easier and frustration mitigated. If you try a run numerous
+times and still aren’t successful, you can always crash the skier intentionally a few
+times to put a smile on your face. Likewise, observers will often be “captured” by
+Ski Stunt Simulator’s organic look, especially when the skier crashes, enticing them
+to play.
+Organic Motion
+Good-feeling games produce flowing, organic motion (see Figure 17.4). This is true
+of Asteroids, Super Mario Brothers, Half Life and Gran Turismo.
+CHAPTER SEVENTEEN • PRINCIPLES OF GAME FEEL
+Whether it’s the motion of the avatar itself, animation that’s layered on top of
+it or both, curved, arcing motions are more appealing. In fact, this is one of the
+principles of animation, i.e., arcs. “All actions, with few exceptions (such as the
+animation of a mechanical device), follow an arc or slightly circular path. This is
+especially true of the human figure and the action of animals. Arcs give animation
+a more natural action and better flow. Think of natural movements in the terms of
+a pendulum swinging. All arm movement, head turns and even eye movements are
+executed on an arc.”5
+In animation, this means arranging frames along a curved path. In a video game
+it comes down to mapping and simulation.
+Setting the position of an avatar every frame, as with the horizontal movement
+in Donkey Kong, Contra, and Ghosts and Goblins, produces a linear motion, which
+will feel rigid and stilted. Changing an internally simulated velocity with forces,
+such as using the thruster in Asteroids, creates a more flowing, organic motion.
+Harmony
+Each element of a game’s feel should support a single, cohesive perception of a
+unique physical reality.
+Video game worlds are perceived actively, as we have said. Unfortunately for
+game designers, active perception is more acute than passive. People are extremely
+sensitive to perception at the level of everyday physical interactions. If something’s
+even slightly off—a ball doesn’t bounce right, a book doesn’t tip over correctly, a
+car doesn’t steer as expected—people will notice. We can’t help it. We spend all day
+every day honing the skills of perception so that we can successfully navigate and
+cope with the world around us. This makes designing game worlds very difficult
+because any tiny inconsistency becomes glaringly obvious.
+http://www.frankandollie.com/PhysicalAnimation.html
+F I G U R E 17.4 Flowing curves of motion in Asteroids and Super Mario Brothers.
+The best-feeling games maintain harmony across the six elements of game feel.
+If an object in the game looks like a car, controlling it has to feel like steering a car.
+It should grip the road properly, carving and tilting and bouncing over bumps. It
+also has to sound like a car, from the revving of the engine to the crumbling noise
+of tires on dirt to the screech of rubber against road. If the car runs into something,
+that interaction most also be perfect. If it hits a building, it should crumble and
+break, and the car should be twisted and mangled.
+If we attempt to make a game world appear photorealistic, we’re setting ourselves up for failure. To be in harmony, the visuals must all behave just the way
+they do in real life, and stand up to the deep, multi-sensory scrutiny of active perception. Sounds must correspond to visuals that correspond to motion. And not just
+passively perceived animated motion, as in a Pixar film. The object has to look,
+sound, feel and move properly even as the player noodles it around and manipulates it in unpredictable ways.
+Expectations about how things behave, however, are malleable. Even if we have
+a very common object like a car, the expectations about how it will behave can be
+toned down by the treatment. If it’s a cartoony, iconic car, the player will not expect
+it to behave realistically. A good way to think of this is consistency of abstraction. If
+the level of abstraction is the same across visuals; sounds; and motion, simulation
+and rules, the game is in harmony. Making a game more iconic than realistic makes
+it much easier to meet or exceed player expectations for harmony across all the elements of a game.
+The most difficult piece of harmony is motion. It’s very difficult for player-controlled simulated motions to always produce perfectly cohesive motion. For example, in most games that feature a running character, it’s possible to run the character
+into a wall. Not only is it not hurt by this, but it continues to run while pressed
+up against the wall in a silly way. The impression that it’s a badass space marine
+or whatever is lost. The game Gears of War surmounts this problem by turning
+F I G U R E 17.5 Treatment changes expectations about sound, motion and behavior.
+HARMONY
+CHAPTER SEVENTEEN • PRINCIPLES OF GAME FEEL
+pressing against surfaces into a mechanic, in a single stroke creating an interesting game dynamic and an uncommonly cohesive physical reality. The sounds and
+particles and animations all work together with the programmed rules about taking
+cover and pressing against objects. Because of this, Gears of War’s unique physical
+reality stands up well under the scrutiny of active perception.
+The pragmatic reality of game production means that some small inconsistencies
+will creep into every game. Being aware of each element of the game’s feel and the
+way it will change the player’s perception of the game’s unique physical reality can
+help to avoid and mitigate these little annoyances. This is more important than most
+game designers realize. Every time a character’s arm clips through a building or a
+plank of wood goes sailing off into the distance at the slightest touch, the players’
+impression of the game world as cohesive is further eroded. If this happens too
+often, they may stop playing entirely.
+Ownership
+The best virtual sensations contribute significantly to the feeling of ownership.
+This happens after the player has fully learned the mechanic and mastered most
+of the challenges presented by the game, at the point most games get put down. In
+the game industry, this is often termed “replayability” and is spoken of in hushed
+tones because of the obvious correlation between games that have this quality and
+games that do very well financially. Really, this phenomenon is all about ownership: if players feels a personal investment in a game, they’ll keep playing it. If they
+keep playing it, they will start to evangelize it. Once mastered, a virtual sensation
+that has enough sensitivity enables improvisation, which often gives rise to unique
+forms of self-expression.
+Improvisation in a game is the ability to create new and interesting combinations
+of motion in real time, adapting and reacting to the game’s environment in a fluid,
+organic way, without forethought. This is an intensely pleasurable experience, a
+flow experience. When your skill is matching up well to the challenge you’ve undertaken, you get into the flow state, which is universally described as being a wonderful, life-enriching experience. To enable such improvisation, a mechanic needs to
+have not only a lot of sensitivity (between its input and reaction) but to be very
+flexible in how it interacts with objects in its environment.
+Some games, like Tony Hawk’s Underground, achieve a sense of ownership
+through a huge number of states and a context that’s well spaced with a lot of
+utility in a ton of different instances. The player can use any number of states to
+traverse the environment, using each object in many different ways. All the objects
+are well spaced relative to one another, which again fosters improvisation by making it easy to transfer successfully between any two objects from any direction of
+approach. Invariably, no two combinations will be the same because you’ll use different objects in different ways, and choose different paths to take depending on the
+situation. You improvise, making snap judgments about which objects to traverse.
+At the highest level of play, this becomes even more expressive, with players finding and practicing long “lines” of chained moves used on certain objects. They seek
+out aesthetically appealing states rather than high-scoring ones, recording videos of
+their most appealing lines and uploading them to the Web to share. To these players,
+Tony Hawk is a form of interpretive dance, enabled by the fact that all the objects
+have a very high degree of utility from just about any state or relative position.
+Other games, like Ski Stunt Simulator, are more fluid and achieve ownership
+through extremely high input sensitivity and subtlety. Minute differences in the
+angle of skis to ground, for example, produce a totally different kind of landing.
+Because there are global rules about object interaction in Ski Stunt—a crash occurs
+if the skis hit at a certain angle or when the skier’s head hits the ground—there’s
+a lot of space for interesting improvisation and expression. For example, when the
+skier is extended, standing his full height, he raises his arms in the air. If you’re in
+the air, about to hit your head and trigger a crash state, you can extend the skier’s
+arms to prevent his head from hitting. This ability isn’t explicitly defined but,
+instead, is a product of the recombination of a few simple rules (e.g., you can move
+the skier’s arms up, crash is only triggered when his head hits).
+When multiple players are involved, expression becomes communication, which
+opens a whole new realm of powerful social experiences. In Battlefield 2, for example¸ if you sneak up on someone and stab him with a knife, his state goes from
+alive to dead. In that context, knifing an enemy player is just playing the game, and
+slightly embarrassing the enemy player who allowed himself to be snuck up on. If
+once the player is dead, however, you continue to knife the corpse, this action has
+a totally different meaning. It’s directly insulting and belittling to the player, who
+has to watch from his corpse’s perspective as he’s stabbed over and over again until
+respawn.
+Summary
+The underlying goal of all the principles discussed in this chapter—predictable
+results, instantaneous response, easy but deep, novelty, appealing response, organic
+motion and harmony—is to create a feeling of control and mastery so strong that it
+becomes a tool for self-expression. This feeling creates a strong sense of ownership,
+which is what happens when players can express themselves in a meaningful way
+through a game. Any artifacts the game creates based on their inputs (replays and
+so forth) become an important commodity, and players begin to identify with the
+game and their achievements in it in a very powerful, transparent way. Players start
+to feel pride in their accomplishments, and develop a desire to share them with
+others.
+SUMMARY
 
 ---
 **Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_EMIL_KOWALSKI_ANIMATIONS_ON_THE_WEB]] · [[CANON_2D_3D_GRAPHICS_SHADERS_AND_AESTHETICS_2026]] · [[CANON_HOLO_SHADERS_3D_PACK_CHOREOGRAPHY_AND_WEBAUDIO_SFX_2026]] · [[CANON_ANIMATION_PRINCIPLES_ILLUSION_OF_LIFE_DISNEY]] · #motion_and_animation

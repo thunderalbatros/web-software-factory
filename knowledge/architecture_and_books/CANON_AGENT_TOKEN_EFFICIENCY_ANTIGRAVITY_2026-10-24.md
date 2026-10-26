@@ -1,4 +1,4 @@
-﻿# CANON: Eficiencia de Tokens en Antigravity y Operación del Equipo de Agentes (Octubre 2026)
+# CANON: Eficiencia de Tokens en Antigravity y Operación del Equipo de Agentes (Octubre 2026)
 
 **Alcance:** Aplicable a toda operación de agentes en Antigravity IDE sobre Web Software Factory Studio: planificación, ejecución, QA e ingesta de conocimiento. Prohibido gastar cuota "high" en tareas que "low" resuelve.
 
@@ -68,7 +68,7 @@ Comandos complejos, manejo de datos y debugging simple van a terminal local fuer
 | `context7` | ACTIVO | Docs oficiales actualizadas de librerías (evita adivinar APIs — ahorra reintentos). |
 | `21st` (21st.dev) | ACTIVO (requiere `API_KEY_21ST`) | Componentes de UI de referencia. |
 | `rea` | ACTIVO | Reverse-engineering universal (CLI/MCP). |
-| `centinela-kb`, `centinela-RealtimeHub`, `yendo-rag` | DESACTIVADOS | Proyectos hermanos fuera de este workspace. |
+| `Web Software Factory-kb`, `Web Software Factory-RealtimeHub`, `webfactory-rag` | DESACTIVADOS | Proyectos hermanos fuera de este workspace. |
 
 ### 4.2 Claves API / servicios (nombres, no valores — `.env` / `.dev.vars` / wrangler secrets)
 - **IA:** GROQ_API_KEY, API_ANTHROPIC_KEY, DEEPSEEK_API_KEY, OPENROUTER_API_KEY, GEMINI_MODEL/GEMINI_AUDIT_MODEL (vía Vertex: GOOGLE_APPLICATION_CREDENTIALS, GCP_PROJECT_ID, USE_VERTEX_AI, VISION_PROVIDER, TEXT_PROVIDER).

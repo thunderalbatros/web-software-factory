@@ -1,4 +1,4 @@
-﻿# CANON: Visual SOTA Hunt — Repositorios Nuevos y Estrategias Visuales (Octubre 2026)
+# CANON: Visual SOTA Hunt — Repositorios Nuevos y Estrategias Visuales (Octubre 2026)
 
 **Alcance:** Aplicable al desarrollo visual de Web Software Factory Studio (site vanilla JS en `site/`, overlays OBS en `overlay-*`/`wheel-*`, QA visual en `tools/audit/`, skills de agentes en `.agents/skills/`). Prohibido adoptar dependencias con licencia no permisiva o con costo.
 
