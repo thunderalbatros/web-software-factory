@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * Web Software Factory Studio — Local Static & Edge API Development Server
  */

@@ -104,16 +104,20 @@ export function generateSoftwareSpec(featureTitle, description, options = {}) {
     );
   }
 
-  fs.writeFileSync(
-    path.join(SPEC_KIT_DIR, 'spec.md'),
+  const specMarkdownBody =
     `# Feature Specification: ${featureTitle}\n\n` +
-    `> **Project:** \`${projectConfig.id}\` | **Slug:** \`${slug}\` | **Created:** ${timestamp}\n\n` +
+    `> **Project:** \`${projectConfig.id}\` | **Slug:** \`${slug}\` | **Stack:** \`${projectConfig.stack}\` | **Archetype:** \`${projectConfig.archetype}\` | **Created:** ${timestamp}\n\n` +
     `## 1. Problem Statement\n${description}\n\n` +
     `## 2. Target Personas\n${productSpec.target_users.map(u => `- ${u}`).join('\n')}\n\n` +
     `## 3. User Experience & Primary Flow\n- **Flow:** ${productSpec.user_experience.primary_flow}\n- **Visual Theme:** ${productSpec.user_experience.visual_theme}\n- **Error States:** ${productSpec.user_experience.error_states.join(', ')}\n\n` +
-    `## 4. Acceptance Criteria\n${productSpec.acceptance_criteria.map(c => `- [ ] ${c}`).join('\n')}\n`,
-    'utf8'
-  );
+    `## 4. Acceptance Criteria\n${productSpec.acceptance_criteria.map(c => `- [ ] ${c}`).join('\n')}\n`;
+
+  fs.writeFileSync(path.join(SPEC_KIT_DIR, 'spec.md'), specMarkdownBody, 'utf8');
+
+  // Ensure every isolated project in projects/<slug>/ has its own root SPEC.md
+  if (path.resolve(ROOT) !== path.resolve(projectConfig.factoryRoot)) {
+    fs.writeFileSync(path.join(ROOT, 'SPEC.md'), specMarkdownBody, 'utf8');
+  }
 
   fs.writeFileSync(
     path.join(SPEC_KIT_DIR, 'plan.md'),

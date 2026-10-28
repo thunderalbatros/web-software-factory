@@ -1,6 +1,6 @@
 {
   "schema_version": "1.5.0-stagehand-self-healing",
-  "last_verified": "2026-10-25T19:50:00.000Z",
+  "last_verified": "2026-10-26T22:23:29.683Z",
   "targets": {
     "main_site": {
       "file": "index.html",
@@ -9,29 +9,50 @@
           "id": "header-navigation-landmark",
           "operation": "observe",
           "primary_selector": "header",
-          "fallback_selectors": ["nav[aria-label]", "[role='banner']"],
-          "required": true
+          "fallback_selectors": [
+            "nav[aria-label]",
+            "[role='banner']"
+          ],
+          "required": true,
+          "verified_selector": "header",
+          "status": "VERIFIED"
         },
         {
           "id": "main-content-landmark",
-          "operation": "observe",
+          "operation": "extract",
           "primary_selector": "main",
-          "fallback_selectors": ["#main-content", "[role='main']"],
-          "required": true
+          "fallback_selectors": [
+            "#main-content",
+            "[role='main']"
+          ],
+          "required": true,
+          "verified_selector": "main",
+          "status": "VERIFIED"
         },
         {
           "id": "primary-focal-cta",
-          "operation": "observe",
+          "operation": "act",
           "primary_selector": "[data-cta='primary']",
-          "fallback_selectors": [".btn-primary", "main a[href]", "main button"],
-          "required": true
+          "fallback_selectors": [
+            ".btn-primary",
+            "main a[href]",
+            "main button"
+          ],
+          "required": true,
+          "verified_selector": "[data-cta='primary']",
+          "status": "VERIFIED"
         },
         {
           "id": "footer-landmark",
           "operation": "observe",
           "primary_selector": "footer",
-          "fallback_selectors": [".site-footer", "[role='contentinfo']"],
-          "required": true
+          "fallback_selectors": [
+            ".site-footer",
+            "[role='contentinfo']"
+          ],
+          "required": true,
+          "verified_selector": "footer",
+          "status": "VERIFIED"
         }
       ]
     },

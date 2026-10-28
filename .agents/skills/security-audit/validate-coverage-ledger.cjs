@@ -805,9 +805,25 @@ function validateDocument(ledger) {
   return errors;
 }
 
+const MANDATORY_COVERAGE_CATEGORIES = Object.freeze(["AGENTIC_AND_WEBMCP_SECURITY"]);
+
 function run(file) {
+  if (file === "--agentic-audit") {
+    const { validateAgenticAndWebMcpSecurity } = require("./validate-findings.cjs");
+    const targetRoot = process.argv[3] ? path.resolve(process.argv[3]) : path.resolve(__dirname, "../../..");
+    const report = validateAgenticAndWebMcpSecurity(targetRoot);
+    if (!report.passed) {
+      for (const issue of report.issues) {
+        console.error(`ERROR: [${issue.category}:${issue.rule}] ${issue.file} -> ${issue.message}`);
+      }
+      return 1;
+    }
+    console.log(`PASS: Coverage category AGENTIC_AND_WEBMCP_SECURITY verified across ${report.scannedFiles} file(s)`);
+    return 0;
+  }
+
   if (!file) {
-    console.error("Usage: node validate-coverage-ledger.cjs <path-to-coverage-ledger.json>");
+    console.error("Usage: node validate-coverage-ledger.cjs <path-to-coverage-ledger.json | --agentic-audit>");
     return 1;
   }
 
@@ -854,6 +870,7 @@ function run(file) {
 
 module.exports = {
   LIMITS,
+  MANDATORY_COVERAGE_CATEGORIES,
   PATH_FORBIDDEN_CHARACTER,
   UNSAFE_DIAGNOSTIC_CHARACTER,
   VISIBLE_CONTENT,

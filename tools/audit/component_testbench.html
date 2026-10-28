@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es" class="js-ready" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catálogo Interactivo del CTO — Primitivas Visuales, Geometría Óptica y Motor 60FPS (SOTA 2026)</title>
+  <link rel="stylesheet" href="../../templates/vanilla-edge/site/css/design-tokens.css" />
+  <link rel="stylesheet" href="../../templates/vanilla-edge/site/css/motion-engine.css" />
+  <style>
+    :root {
+      interpolate-size: allow-keywords;
+      --surface-canvas: oklch(0.13 0.015 258);
+      --surface-elevated: oklch(0.18 0.018 258);
+      --surface-interactive: oklch(0.22 0.022 258);
+      --surface-glass: oklch(0.20 0.02 258 / 0.78);
+      --text-primary: oklch(0.96 0.008 258);
+      --text-secondary: oklch(0.76 0.015 258);
+      --text-muted: oklch(0.62 0.015 258);
+      --brand-accent: oklch(0.74 0.17 162);
+      --brand-cta: oklch(0.82 0.18 85);
+      --brand-cta-ink: oklch(0.14 0.02 258);
+      --border-subtle: oklch(1 0 0 / 0.08);
+      --border-highlight: oklch(1 0 0 / 0.18);
+      --ease-spring-snappy: linear(0, 0.3566 9.6%, 0.7852 21.1%, 1.0156 32.2%, 1.0738 41.3%, 1.0468 53.6%, 1.0062 69.8%, 1);
+      --ease-cinematic-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --step--1: clamp(0.82rem, 0.78rem + 0.2vw, 0.92rem);
+      --step-0: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --step-1: clamp(1.22rem, 1.12rem + 0.5vw, 1.5rem);
+      --step-2: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);
+      --step-3: clamp(1.9rem, 1.55rem + 1.6vw, 3rem);
+      --step-4: clamp(2.25rem, 1.8rem + 2.2vw, 3.75rem);
+      --editorial-grain-svg: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0 0 4rem;
+      background: var(--surface-canvas);
+      color: var(--text-primary);
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .scroll-progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--brand-accent), var(--brand-cta));
+      transform-origin: 0% 50%;
+      z-index: 100;
+    }
+
+    .catalog-shell {
+      width: min(100% - 2rem, 1280px);
+      margin-inline: auto;
+    }
+
+    .catalog-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--surface-glass);
+      backdrop-filter: blur(14px) saturate(140%);
+      -webkit-backdrop-filter: blur(14px) saturate(140%);
+      border-bottom: 1px solid var(--border-highlight);
+      box-shadow: inset 0 1px 0 0 oklch(1 0 0 / 0.12);
+      padding: 0.85rem 0;
+      margin-bottom: 2rem;
+    }
+
+    .catalog-header-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      background: oklch(0.74 0.17 162 / 0.14);
+      border: 1px solid oklch(0.74 0.17 162 / 0.35);
+      color: var(--brand-accent);
+      font-size: var(--step--1);
+      font-weight: 700;
+    }
+
+    .section-title {
+      font-size: var(--step-2);
+      letter-spacing: -0.02em;
+      margin: 2.5rem 0 0.5rem;
+      text-wrap: balance;
+    }
+
+    .section-desc {
+      color: var(--text-secondary);
+      margin: 0 0 1.25rem;
+      text-wrap: pretty;
+    }
+
+    /* Bento Asymmetric Container Query Stage */
+    .bento-stage {
+      container-type: inline-size;
+      container-name: bento-stage;
+    }
+
+    .bento-catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 1.25rem;
+    }
+
+    .bento-surface-card {
+      grid-column: span 4;
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      padding: 1.5rem;
+      border: 1px solid var(--border-subtle);
+      background:
+        radial-gradient(
+          380px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+          oklch(0.78 0.16 162 / 0.14),
+          transparent 65%
+        ),
+        var(--surface-elevated);
+      box-shadow: inset 0 1px 0 0 oklch(1 0 0 / 0.09);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.85rem;
+      transition: transform 280ms var(--ease-spring-snappy), border-color 180ms ease;
+    }
+
+    .bento-surface-card[data-span="8"] {
+      grid-column: span 8;
+    }
+
+    .bento-surface-card[data-span="6"] {
+      grid-column: span 6;
+    }
+
+    .bento-surface-card:hover {
+      border-color: var(--border-highlight);
+      transform: translate3d(0, -2px, 0);
+    }
+
+    .editorial-grain::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image: var(--editorial-grain-svg);
+      pointer-events: none;
+      mix-blend-mode: overlay;
+    }
+
+    @container bento-stage (max-width: 900px) {
+      .bento-surface-card,
+      .bento-surface-card[data-span="8"] {
+        grid-column: span 6;
+      }
+    }
+
+    @container bento-stage (max-width: 600px) {
+      .bento-surface-card,
+      .bento-surface-card[data-span="8"],
+      .bento-surface-card[data-span="6"] {
+        grid-column: 1 / -1;
+      }
+    }
+
+    /* Interactive Buttons (44x44px Fitts's Law Guaranteed) */
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      align-items: center;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 44px;
+      min-width: 44px;
+      padding: 0.7rem 1.35rem;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: var(--step-0);
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 280ms var(--ease-spring-snappy), box-shadow 220ms var(--ease-cinematic-out);
+      transform: translate3d(var(--mag-x, 0px), var(--mag-y, 0px), 0);
+    }
+
+    .cta-btn-primary {
+      background: var(--brand-cta);
+      color: var(--brand-cta-ink);
+    }
+
+    .cta-btn-secondary {
+      background: var(--surface-interactive);
+      color: var(--text-primary);
+      border-color: var(--border-highlight);
+    }
+
+    .cta-btn:hover {
+      transform: translate3d(var(--mag-x, 0px), calc(var(--mag-y, 0px) - 2px), 0) scale(1.02);
+    }
+
+    .cta-btn:active {
+      transform: scale(0.97);
+    }
+
+    .cta-btn:focus-visible {
+      outline: 2px solid var(--brand-accent);
+      outline-offset: 3px;
+    }
+
+    .type-scale-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface-elevated);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border-subtle);
+    }
+
+    .type-scale-table th,
+    .type-scale-table td {
+      padding: 0.85rem 1.1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum" 1;
+    }
+
+    dialog.cto-preview-dialog {
+      margin: auto;
+      max-width: 500px;
+      width: calc(100% - 2rem);
+      background: var(--surface-elevated);
+      color: var(--text-primary);
+      border: 1px solid var(--border-highlight);
+      border-radius: 18px;
+      padding: 1.75rem;
+      transition:
+        opacity 260ms var(--ease-cinematic-out),
+        transform 260ms var(--ease-spring-snappy),
+        overlay 260ms allow-discrete,
+        display 260ms allow-discrete;
+    }
+
+    dialog.cto-preview-dialog::backdrop {
+      background: oklch(0 0 0 / 0.68);
+      backdrop-filter: blur(6px);
+    }
+
+    @starting-style {
+      dialog.cto-preview-dialog[open] {
+        opacity: 0;
+        transform: translate3d(0, 10px, 0) scale(0.96);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress-bar" aria-hidden="true"></div>
+
+  <header class="catalog-header" data-testbench="site-header" aria-label="Encabezado del Catálogo">
+    <div class="catalog-shell catalog-header-inner">
+      <div>
+        <strong style="font-size:var(--step-1);letter-spacing:-0.02em;">🎛️ Catálogo Vivo de Componentes y Movimiento 60FPS</strong>
+        <div style="font-size:var(--step--1);color:var(--text-secondary);">W3C DTCG 1.0 • OKLCH 90/8/2 • Utopia Fluid • CSS Scroll-Driven &amp; Springs</div>
+      </div>
+      <div style="display:flex;gap:0.6rem;align-items:center;">
+        <span class="status-pill tabular-nums">60 FPS GPU • CLS 0.00</span>
+        <span class="status-pill">APCA Contraste Verificado</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="catalog-shell" aria-label="Catálogo Interactivo para el CTO">
+    <!-- 1. Hero & Micro-interactions Stage -->
+    <section class="bento-surface-card editorial-grain" data-testbench="hero-section" aria-label="Demostración de Portada y Botones Físicos" style="margin-bottom:2rem;">
+      <span class="status-pill" style="width:fit-content;">Curvas Físicas CSS linear() + Magnetic Surface</span>
+      <h1 style="font-size:var(--step-4);line-height:1.08;letter-spacing:-0.03em;margin:0;text-wrap:balance;">
+        Diseño Óptico y Animaciones Nativas a 60 Cuadros por Segundo
+      </h1>
+      <p style="color:var(--text-secondary);font-size:var(--step-1);max-width:65ch;margin:0;">
+        Pasá el cursor sobre las tarjetas y botones para sentir la iluminación radial reactiva (Spotlight), la atracción magnética suave y elástica (`linear()`), y probá el modal nativo con `@starting-style`.
+      </p>
+      <div class="btn-row">
+        <button type="button" class="cta-btn cta-btn-primary magnetic-surface" data-cta="primary" id="btn-open-dialog">
+          Probar Modal con @starting-style
+        </button>
+        <a href="#bento-showcase" class="cta-btn cta-btn-secondary magnetic-surface">
+          Explorar Grilla Bento Asimétrica
+        </a>
+        <button type="button" class="cta-btn cta-btn-secondary magnetic-surface" id="btn-pulse-counter">
+          Simular Contador Tabular: <span class="tabular-nums" id="live-counter-val">99.9%</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 2. Bento Asymmetric Subgrid & Surface Effects -->
+    <h2 class="section-title" id="bento-showcase">1. Grilla Bento Asimétrica (`@container` + Spotlight + Grano Editorial SVG)</h2>
+    <p class="section-desc">Cada tarjeta calcula su propio espacio con Container Queries, proyecta luz radial siguiendo el puntero en GPU y mantiene bordes especulares de 1px.</p>
+
+    <div class="bento-stage">
+      <div class="bento-catalog-grid">
+        <article class="bento-surface-card editorial-grain" data-span="8" data-testbench="bento-card" aria-label="Tarjeta Bento Principal">
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:0.5rem;">
+            <span class="status-pill">Spotlight Radial + OKLCH</span>
+            <span class="tabular-nums" style="color:var(--text-muted);font-size:var(--step--1);">1440px / 768px / 375px</span>
+          </div>
+          <h3 style="font-size:var(--step-2);margin:0;">Iluminación Reactiva en el Hilo Compositor (GPU)</h3>
+          <p style="color:var(--text-secondary);margin:0;">
+            Las coordenadas <code>--mouse-x</code> y <code>--mouse-y</code> se actualizan mediante <code>requestAnimationFrame</code> pasivo sin disparar recálculos de geometría (Zero Layout Thrashing).
+          </p>
+          <div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:0.5rem;">
+            <div>
+              <div class="tabular-nums" style="font-size:var(--step-3);font-weight:800;color:var(--brand-accent);">60 FPS</div>
+              <small style="color:var(--text-muted);">Fluidez garantizada</small>
+            </div>
+            <div>
+              <div class="tabular-nums" style="font-size:var(--step-3);font-weight:800;color:var(--brand-cta);">0.00</div>
+              <small style="color:var(--text-muted);">Saltos visuales (CLS)</small>
+            </div>
+            <div>
+              <div class="tabular-nums" style="font-size:var(--step-3);font-weight:800;color:var(--text-primary);">44×44px</div>
+              <small style="color:var(--text-muted);">Área táctil mínima (Fitts)</small>
+            </div>
+          </div>
+        </article>
+
+        <article class="bento-surface-card" data-span="4" data-testbench="pricing-card" aria-label="Tarjeta de Conversión">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-weight:700;color:var(--brand-accent);font-size:var(--step--1);">PLAN EMPRESARIAL EDGE</span>
+            <span class="tabular-nums" style="font-weight:800;font-size:var(--step-2);">$49/mes</span>
+          </div>
+          <h3 style="font-size:var(--step-1);margin:0;">Despliegue Zero-Trust Instantáneo</h3>
+          <p style="color:var(--text-secondary);font-size:var(--step--1);margin:0;">
+            Incluye cabeceras CSP nivel bancario, protección Anti-Slopsquatting y Speculation Rules API.
+          </p>
+          <button type="button" class="cta-btn cta-btn-primary magnetic-surface" id="btn-activate-plan" data-action="activate-plan" style="width:100%;">
+            Activar Plan Ahora
+          </button>
+        </article>
+      </div>
+    </div>
+
+    <!-- 3. Utopia Fluid Typography Scale -->
+    <h2 class="section-title">2. Escala Tipográfica Fluida Utopia (`clamp()`) y Balance Óptico</h2>
+    <p class="section-desc">Todos los textos escalan matemáticamente entre celulares (`375px`) y monitores de escritorio (`1440px`) con <code>text-wrap: balance</code> en títulos y <code>tabular-nums</code> en cifras.</p>
+
+    <table class="type-scale-table" aria-label="Escala Tipográfica Utopia">
+      <thead>
+        <tr>
+          <th>Token DTCG</th>
+          <th>Fórmula Fluida</th>
+          <th>Muestra en Vivo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>--step-3</code></td>
+          <td class="tabular-nums"><code>clamp(1.9rem, 1.55rem + 1.6vw, 3rem)</code></td>
+          <td style="font-size:var(--step-3);font-weight:800;line-height:1.1;">Titular Ejecutivo de Impacto</td>
+        </tr>
+        <tr>
+          <td><code>--step-1</code></td>
+          <td class="tabular-nums"><code>clamp(1.22rem, 1.12rem + 0.5vw, 1.5rem)</code></td>
+          <td style="font-size:var(--step-1);color:var(--text-secondary);">Subtítulo editorial con lectura cómoda y contraste APCA verificado.</td>
+        </tr>
+        <tr>
+          <td><code>--step-0</code></td>
+          <td class="tabular-nums"><code>clamp(1rem, 0.95rem + 0.25vw, 1.125rem)</code></td>
+          <td style="font-size:var(--step-0);">Cuerpo de texto principal optimizado para cero fatiga visual (<span class="tabular-nums">$12,450.00 USD</span>).</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <dialog class="cto-preview-dialog" id="cto-demo-dialog" aria-labelledby="dialog-title">
+    <h2 id="dialog-title" style="margin-top:0;font-size:var(--step-1);">✨ Transición Discreta con <code>@starting-style</code></h2>
+    <p style="color:var(--text-secondary);">
+      Este diálogo nativo <code>&lt;dialog&gt;</code> se anima usando exclusivamente CSS moderno (<code>@starting-style</code> + <code>transition-behavior: allow-discrete</code>) sin librerías JavaScript externas y con cierre accesible por teclado (<code>Esc</code>).
+    </p>
+    <div class="btn-row" style="justify-content:flex-end;margin-top:1.25rem;">
+      <button type="button" class="cta-btn cta-btn-primary" id="btn-close-dialog">Cerrar Vista Previa</button>
+    </div>
+  </dialog>
+
+  <script>
+    (function () {
+      let rafPending = false;
+      let lastEvt = null;
+      document.addEventListener('pointermove', function (e) {
+        lastEvt = e;
+        if (rafPending) return;
+        rafPending = true;
+        requestAnimationFrame(function () {
+          rafPending = false;
+          if (!lastEvt) return;
+          const el = lastEvt.target && lastEvt.target.closest
+            ? lastEvt.target.closest('.bento-surface-card, .magnetic-surface')
+            : null;
+          if (!el) return;
+          const r = el.getBoundingClientRect();
+          const x = lastEvt.clientX - r.left;
+          const y = lastEvt.clientY - r.top;
+          el.style.setProperty('--mouse-x', x.toFixed(0) + 'px');
+          el.style.setProperty('--mouse-y', y.toFixed(0) + 'px');
+          if (el.classList.contains('magnetic-surface')) {
+            const dx = ((x - r.width / 2) / Math.max(1, r.width / 2)) * 3.5;
+            const dy = ((y - r.height / 2) / Math.max(1, r.height / 2)) * 2.5;
+            el.style.setProperty('--mag-x', dx.toFixed(1) + 'px');
+            el.style.setProperty('--mag-y', dy.toFixed(1) + 'px');
+          }
+        });
+      }, { passive: true });
+
+      const dlg = document.getElementById('cto-demo-dialog');
+      const openBtn = document.getElementById('btn-open-dialog');
+      const closeBtn = document.getElementById('btn-close-dialog');
+      const activateBtn = document.getElementById('btn-activate-plan');
+      if (openBtn && dlg) openBtn.addEventListener('click', function () { if (!dlg.open) dlg.showModal(); });
+      if (closeBtn && dlg) closeBtn.addEventListener('click', function () { if (dlg.open) dlg.close(); });
+      if (activateBtn && dlg) activateBtn.addEventListener('click', function () { if (!dlg.open) dlg.showModal(); });
+
+      const pulseBtn = document.getElementById('btn-pulse-counter');
+      const counterVal = document.getElementById('live-counter-val');
+      if (pulseBtn && counterVal) {
+        pulseBtn.addEventListener('click', function () {
+          const start = performance.now();
+          function frame(now) {
+            const p = Math.min(1, (now - start) / 600);
+            counterVal.textContent = (90 + p * 9.9).toFixed(1) + '%';
+            if (p < 1) requestAnimationFrame(frame);
+          }
+          requestAnimationFrame(frame);
+        });
+      }
+    })();
+  </script>
+
+  <!-- SOTA 2026 3D/WebGPU Forge Showcase: diorama-hero-3d -->
+  <style>.wf-diorama-hero-3d { position: relative; border-radius: 20px; overflow: hidden; background: oklch(0.14 0.02 260); border: 1px solid oklch(0.95 0.01 260 / 0.10); }
+.wf-diorama-viewport { position: relative; min-height: 420px; display: grid; place-items: center; }
+.wf-3d-canvas { width: 100%; height: 100%; position: absolute; inset: 0; display: block; pointer-events: auto; }
+.wf-diorama-overlay { position: relative; z-index: 2; max-width: 65ch; padding: clamp(1.5rem, 3vw, 3rem); text-align: center; pointer-events: none; }
+.wf-diorama-headline { font-size: clamp(1.75rem, 1.2rem + 2.2vw, 3rem); color: oklch(0.97 0.005 260); margin: 0.75rem 0; }
+.wf-diorama-sub { color: oklch(0.82 0.015 260); font-size: clamp(1rem, 0.92rem + 0.35vw, 1.15rem); }</style>
+  <section class="wf-diorama-hero-3d surface-elevated" data-primitive="diorama-hero-3d" aria-label="Interactive 3D Product Diorama">
+  <div class="wf-diorama-viewport">
+    <canvas id="wf-diorama-canvas" class="wf-3d-canvas" width="960" height="540" data-gpu-watchdog="active"></canvas>
+    <div class="wf-diorama-overlay">
+      <span class="wf-badge-oklch">WEBGPU R186 • AGX HDR • N8AO</span>
+      <h2 class="wf-diorama-headline" data-gsap-split="lines">Iluminación Cinematográfica HDR a 60 FPS</h2>
+      <p class="wf-diorama-sub">Renderizado con <code>WebGPURenderer</code>, <code>THREE.Timer</code>, <code>RenderPipeline</code> y compresión <code>meshopt</code>.</p>
+    </div>
+  </div>
+</section>
+</body>
+</html>

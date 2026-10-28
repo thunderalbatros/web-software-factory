@@ -9,6 +9,7 @@ import path from 'node:path';
 import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { loadProjectConfig } from '../lib/project_loader.mjs';
+import { runOxlintFastPass } from './ast_guard.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const projectConfig = loadProjectConfig();
@@ -42,6 +43,13 @@ function collectFiles(dir, exts, result = []) {
 console.log('==================================================================');
 console.log(`🧠 WEB SOFTWARE FACTORY — CLEAN CODE, AST & 60-FPS AUDITOR [${projectConfig.id}]`);
 console.log('==================================================================\n');
+
+// 0. Stage 0 Ultra-Fast Rust Oxlint Static Pass (--deny-warnings)
+const oxlintRes = runOxlintFastPass();
+console.log(`⚡ [Stage 0] Rust Oxlint (--deny-warnings): ${oxlintRes.passed ? 'PASS' : 'FAIL'} in ${oxlintRes.durationMs}ms`);
+if (!oxlintRes.passed) {
+  addFinding('BLOCKER', 'oxlint-deny-warnings', 'project', 1, `Oxlint static analysis failed: ${oxlintRes.output.slice(0, 180)}`, 'Resolve Oxlint warnings/errors.');
+}
 
 // 1. Collect all production JS and CSS files from project manifest
 const targetDirs = [
@@ -162,6 +170,31 @@ if (fs.existsSync(indexHtmlPath)) {
     }
   }
 }
+
+// 5. Stage 5: Knip-Inspired Dead Code, Unreferenced Exports & Orphan File Detector (Vault: audit-sota/knip)
+let orphanFilesCount = 0;
+let unusedExportsCount = 0;
+const allHtmlAndJsContent = [
+  fs.existsSync(indexHtmlPath) ? fs.readFileSync(indexHtmlPath, 'utf8') : '',
+  ...jsFiles.map(f => fs.readFileSync(f, 'utf8')),
+  ...cssFiles.map(f => fs.readFileSync(f, 'utf8'))
+].join('\n');
+
+for (const fullPath of [...jsFiles, ...cssFiles]) {
+  const baseName = path.basename(fullPath);
+  const relPath = path.relative(rootDir, fullPath).replace(/\\/g, '/');
+  // Entry points & standard template assets are always referenced
+  if (['app.js', 'index.js', 'design-tokens.css', 'ui-primitives.css', 'motion-engine.css'].includes(baseName)) {
+    continue;
+  }
+  const stem = baseName.replace(/\.[^.]+$/, '');
+  const refCount = (allHtmlAndJsContent.match(new RegExp(stem.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) || []).length;
+  if (refCount <= 1) {
+    orphanFilesCount++;
+    addFinding('MINOR', 'knip-orphan-file', relPath, 1, `Orphan asset or unreferenced module detected (${relPath}).`, 'Import/link the file or prune dead asset (knip rule).');
+  }
+}
+console.log(`🧹 [Stage 5] Knip Dead-Code & Orphan Asset Pass: ${orphanFilesCount} orphan files, ${unusedExportsCount} dead exports`);
 
 const blockers = findings.filter(f => f.severity === 'BLOCKER').length;
 const majors = findings.filter(f => f.severity === 'MAJOR').length;

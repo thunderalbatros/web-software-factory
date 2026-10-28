@@ -15,7 +15,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execSync } from 'node:child_process';
-import { loadProjectConfig, FACTORY_ROOT } from './lib/project_loader.mjs';
+import { loadProjectConfig, setActiveProject, recordProjectAuditScore, FACTORY_ROOT } from './lib/project_loader.mjs';
 import { generateSoftwareSpec } from './intelligence/spec_generator.mjs';
 import { runDiffUiAdversarialGate } from './audit/diff_ui_adversarial.mjs';
 import { verifyConstitutionLock } from './intelligence/constitution_guard.mjs';
@@ -65,6 +65,23 @@ async function main() {
   const argv = process.argv.slice(2);
   const subcommand = (argv[0] || 'status').toLowerCase();
   const projectFlag = parseFlag(argv, '--project', '');
+
+  if (subcommand === '--help' || subcommand === '-h' || subcommand === 'help') {
+    console.log('\n====================================================================');
+    console.log('🏭 WEB SOFTWARE FACTORY — MASTER CLI HELP');
+    console.log('====================================================================');
+    console.log('  node tools/factory.mjs status                     — Studio & active project status');
+    console.log('  node tools/factory.mjs styles                     — List 67 MIT design style skills');
+    console.log('  node tools/factory.mjs new <slug> [options]       — Scaffold a new project in projects/<slug>');
+    console.log('  node tools/factory.mjs spec "<Title>" "<Desc>"    — Generate Spec-Kit artifacts (.specify/)');
+    console.log('  node tools/factory.mjs snapshot [--project <id>]  — Compact Playwright AX-Tree snapshot (-83.3% tokens)');
+    console.log('  node tools/factory.mjs build [--project <id>]     — Build and minify production dist/');
+    console.log('  node tools/factory.mjs gate [--project <id>]      — Run 5-Gate QA + Chaos Monkey + Security');
+    console.log('  node tools/factory.mjs visual-gate [--project]    — Run 4-Stage Visual & RYUX Gate');
+    console.log('  node tools/factory.mjs --self-test                — Run Hard-Gated 4x25pt Evaluation Suite');
+    console.log('====================================================================\n');
+    return;
+  }
 
   if (subcommand === 'status' || subcommand === 'list') {
     const cfg = loadProjectConfig(projectFlag);
@@ -191,6 +208,15 @@ async function main() {
       style: styleName || 'bento'
     });
 
+    // Save active project state in .agents/memory/active_project.json and initialize audit score
+    setActiveProject(slug, {
+      name: displayName,
+      stack: templateName,
+      archetype,
+      style: styleName || 'bento'
+    });
+    recordProjectAuditScore(targetDir, 100, 'APROBADO');
+
     console.log('\n====================================================================');
     console.log(`🚀 NEW WEBSITE SCAFFOLDED FROM TEMPLATE [${templateName}]`);
     console.log('====================================================================');
@@ -245,6 +271,11 @@ async function main() {
     });
 
     execSync(`node "${path.join(FACTORY_ROOT, 'tools', 'audit', 'ryux_design_gate.mjs')}" --project "${cfg.projectRoot}"`, {
+      cwd: FACTORY_ROOT,
+      stdio: 'inherit'
+    });
+
+    execSync(`node "${path.join(FACTORY_ROOT, 'tools', 'audit', 'chaos_monkey_test.mjs')}" --project "${cfg.projectRoot}"`, {
       cwd: FACTORY_ROOT,
       stdio: 'inherit'
     });
@@ -314,6 +345,16 @@ async function main() {
     return;
   }
 
+  if (subcommand === 'chaos') {
+    const cfg = loadProjectConfig(projectFlag);
+    const selfTestFlag = argv.includes('--self-test') ? ' --self-test' : '';
+    execSync(`node "${path.join(FACTORY_ROOT, 'tools', 'audit', 'chaos_monkey_test.mjs')}" --project "${cfg.projectRoot}"${selfTestFlag}`, {
+      cwd: FACTORY_ROOT,
+      stdio: 'inherit'
+    });
+    return;
+  }
+
   if (subcommand === 'tokens') {
     const cfg = loadProjectConfig(projectFlag);
     const styleArg = parseFlag(argv, '--style', cfg.design?.styleSkill || 'bento');
@@ -342,6 +383,25 @@ async function main() {
       stdio: 'inherit'
     });
     console.log(`✅ Harvested Studio primitives and refreshed CodeGraph + WikiGraph PageRank.\n`);
+    return;
+  }
+
+  if (subcommand === 'bolt' || subcommand === '--self-test' || subcommand === 'self-test' || argv.includes('--self-test')) {
+    const resumeFlag = argv.includes('--resume');
+    const sandboxFlag = argv.includes('--sandbox');
+    const { runSquadMission } = await import('./intelligence/agent_squad.mjs');
+    const res = await runSquadMission('Factory SOTA Bolt & Self-Test Pipeline', {
+      useSandbox: sandboxFlag,
+      resume: resumeFlag,
+      project: projectFlag
+    });
+    if (!res.passed) process.exit(1);
+    if (subcommand === '--self-test' || subcommand === 'self-test' || argv.includes('--self-test')) {
+      execSync(`node "${path.join(FACTORY_ROOT, 'tools', 'intelligence', 'eval_matrix.mjs')}"`, {
+        cwd: FACTORY_ROOT,
+        stdio: 'inherit'
+      });
+    }
     return;
   }
 

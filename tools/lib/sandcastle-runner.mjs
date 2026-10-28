@@ -1,184 +1,167 @@
+#!/usr/bin/env node
 /**
- * tools/lib/sandcastle-runner.mjs — Sandcastle Engine (Matt Pocock Pattern)
- * =============================================================================
- * Lightweight, zero-daemon git-worktree isolation engine for AI agents.
- * Provides ephemeral sandboxes for running spikes, tests, and refactors
- * without polluting the main working branch or requiring local Docker daemons.
- * =============================================================================
+ * Sandcastle Runner — Git Worktree & Hybrid Local/Cloud Sandbox Isolation
+ * Inspired by Matt Pocock's @ai-hero/sandcastle + WebFactory Hybrid Sandbox
+ *
+ * Provides deterministic, zero-Docker workspace isolation for parallel subagents:
+ *   - Uses `LocalWorktreeSandbox` (`.cache/sandboxes/run-<timestamp>/`) with
+ *     30s Hard Timeout, 2048MB Memory Limit, Filesystem Containment Guard, and
+ *     Sanitized Environment variables on Windows PowerShell / Node.js.
+ *   - Supports automatic Cloud E2B microVM execution when `E2B_API_KEY` is present.
  */
 
-import fs from 'fs';
-import path from 'path';
-import { execSync, spawnSync } from 'child_process';
-import { fileURLToPath } from 'url';
+import { execSync } from 'node:child_process';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import {
+  FACTORY_ROOT,
+  SANDBOXES_BASE_DIR,
+  LocalWorktreeSandbox,
+  runInHybridSandbox,
+  runSandboxSelfTest,
+  assertFilesystemContainment,
+  sanitizeEnvironment
+} from '../sandbox.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const ROOT = path.resolve(__dirname, '..', '..');
+const ROOT = FACTORY_ROOT;
+const WORKTREES_DIR = SANDBOXES_BASE_DIR;
 
-export function getSandboxPath(name) {
-  const cleanName = String(name).replace(/[^a-zA-Z0-9_\-]/g, '');
-  return path.join(ROOT, '.sandboxes', cleanName);
+function sanitizeName(name) {
+  return String(name || '')
+    .toLowerCase()
+    .replace(/[^a-z0-9-_]/g, '-')
+    .replace(/-+/g, '-')
+    .replace(/^-|-$/g, '');
 }
 
 export function listSandboxes() {
-  try {
-    const stdout = execSync('git worktree list --porcelain', { cwd: ROOT, encoding: 'utf8' });
-    const lines = stdout.split(/\r?\n/);
-    const worktrees = [];
-    let current = {};
-
-    for (const line of lines) {
-      if (line.startsWith('worktree ')) {
-        if (current.worktree) worktrees.push(current);
-        current = { worktree: line.replace('worktree ', '').trim() };
-      } else if (line.startsWith('HEAD ')) {
-        current.head = line.replace('HEAD ', '').trim().slice(0, 8);
-      } else if (line.startsWith('branch ')) {
-        current.branch = line.replace('branch refs/heads/', '').trim();
-      }
+  const raw = execSync('git worktree list --porcelain', {
+    cwd: ROOT,
+    encoding: 'utf8'
+  });
+  const entries = [];
+  let current = {};
+  for (const line of raw.split(/\r?\n/)) {
+    if (!line.trim()) {
+      if (current.worktree) entries.push(current);
+      current = {};
+      continue;
     }
-    if (current.worktree) worktrees.push(current);
-
-    // Filter only those in .sandboxes
-    return worktrees.filter(w => {
-      const norm = path.normalize(w.worktree).toLowerCase();
-      return norm.includes(path.normalize(path.join(ROOT, '.sandboxes')).toLowerCase());
-    });
-  } catch (_) {
-    return [];
+    const [k, ...rest] = line.split(' ');
+    current[k] = rest.join(' ');
   }
+  if (current.worktree) entries.push(current);
+  return entries.filter((e) => e.worktree.includes('.cache/sandboxes') || e.worktree.includes('.cache\\sandboxes') || e.worktree.includes('.worktrees'));
 }
 
-export function createSandbox(name, baseRef = 'HEAD') {
-  const cleanName = String(name).trim().replace(/[^a-zA-Z0-9_\-]/g, '');
-  if (!cleanName) {
-    throw new Error('Invalid sandbox name');
-  }
+export function createSandbox(rawName, baseRef = 'HEAD') {
+  const name = sanitizeName(rawName || `run-${Date.now()}`);
+  if (!name) throw new Error('Sandbox name is required.');
 
-  const targetDir = getSandboxPath(cleanName);
-  const branchName = `sandbox/${cleanName}`;
+  fs.mkdirSync(WORKTREES_DIR, { recursive: true });
+  const targetDir = path.join(WORKTREES_DIR, name);
+  const branchName = `sandbox/${name}`;
 
   if (fs.existsSync(targetDir)) {
-    throw new Error(`Sandbox directory already exists at ${targetDir}`);
+    return { name, branchName, targetDir, status: 'EXISTING' };
   }
-
-  // Ensure .sandboxes directory exists and is ignored by git
-  const sandboxesRoot = path.join(ROOT, '.sandboxes');
-  if (!fs.existsSync(sandboxesRoot)) {
-    fs.mkdirSync(sandboxesRoot, { recursive: true });
-  }
-
-  // Ensure .gitignore has .sandboxes
-  const gitignorePath = path.join(ROOT, '.gitignore');
-  if (fs.existsSync(gitignorePath)) {
-    const gitignoreContent = fs.readFileSync(gitignorePath, 'utf8');
-    if (!gitignoreContent.includes('.sandboxes')) {
-      fs.appendFileSync(gitignorePath, '\n# Sandcastle Ephemeral Worktrees\n.sandboxes/\n');
-    }
-  }
-
-  // Create git worktree
-  execSync(`git worktree add -b "${branchName}" "${targetDir}" ${baseRef}`, {
-    cwd: ROOT,
-    stdio: 'pipe'
-  });
-
-  return {
-    name: cleanName,
-    path: targetDir,
-    branch: branchName
-  };
-}
-
-export function runInSandbox(name, command) {
-  const targetDir = getSandboxPath(name);
-  if (!fs.existsSync(targetDir)) {
-    throw new Error(`Sandbox '${name}' does not exist at ${targetDir}`);
-  }
-
-  const res = spawnSync(command, {
-    cwd: targetDir,
-    shell: true,
-    stdio: 'inherit'
-  });
-
-  return {
-    status: res.status ?? 0
-  };
-}
-
-export function verifySandbox(name) {
-  const targetDir = getSandboxPath(name);
-  if (!fs.existsSync(targetDir)) {
-    throw new Error(`Sandbox '${name}' does not exist`);
-  }
-
-  console.log(`🔍 [Sandcastle] Running Verification Gates on sandbox '${name}'...`);
-
-  // 1. Run core test suite if core exists
-  const corePackage = path.join(targetDir, 'core', 'package.json');
-  if (fs.existsSync(corePackage)) {
-    const res = spawnSync('npm test', {
-      cwd: path.join(targetDir, 'core'),
-      shell: true,
-      stdio: 'inherit'
-    });
-    if (res.status !== 0) return false;
-  }
-
-  // 2. Run site test if tools/test_site.mjs exists
-  const siteTest = path.join(targetDir, 'tools', 'test_site.mjs');
-  if (fs.existsSync(siteTest)) {
-    const res = spawnSync(`node "${siteTest}"`, {
-      cwd: targetDir,
-      shell: true,
-      stdio: 'inherit'
-    });
-    if (res.status !== 0) return false;
-  }
-
-  return true;
-}
-
-export function mergeSandbox(name) {
-  const targetDir = getSandboxPath(name);
-  const cleanName = String(name).trim().replace(/[^a-zA-Z0-9_\-]/g, '');
-  const branchName = `sandbox/${cleanName}`;
-
-  if (!fs.existsSync(targetDir)) {
-    throw new Error(`Sandbox '${name}' does not exist`);
-  }
-
-  console.log(`🛡️ [Sandcastle] Verifying sandbox before merge...`);
-  const isVerified = verifySandbox(cleanName);
-  if (!isVerified) {
-    throw new Error(`Verification tests failed in sandbox '${cleanName}'. Merge aborted.`);
-  }
-
-  console.log(`🔀 [Sandcastle] Merging '${branchName}' into active branch...`);
-  execSync(`git merge "${branchName}" --no-edit`, { cwd: ROOT, stdio: 'inherit' });
-
-  console.log(`🧹 [Sandcastle] Cleaning up sandbox '${cleanName}'...`);
-  destroySandbox(cleanName);
-}
-
-export function destroySandbox(name) {
-  const cleanName = String(name).trim().replace(/[^a-zA-Z0-9_\-]/g, '');
-  const targetDir = getSandboxPath(cleanName);
-  const branchName = `sandbox/${cleanName}`;
 
   try {
-    execSync(`git worktree remove --force "${targetDir}"`, { cwd: ROOT, stdio: 'pipe' });
-  } catch (_) {}
+    execSync(`git worktree add -B "${branchName}" "${targetDir}" "${baseRef}"`, {
+      cwd: ROOT,
+      stdio: 'pipe'
+    });
+    return { name, branchName, targetDir, status: 'CREATED' };
+  } catch {
+    const jail = new LocalWorktreeSandbox({ runId: name, preferWorktree: false });
+    jail.init();
+    return { name, branchName: 'detached-local-jail', targetDir: jail.sandboxDir, status: 'CREATED_LOCAL_JAIL' };
+  }
+}
 
+export async function runInSandbox(rawName, commandStr, options = {}) {
+  if (!commandStr && rawName) {
+    // Single-argument invocation: run ephemeral hybrid sandbox task
+    return runInHybridSandbox(rawName, { mode: 'command', isCommand: true, ...options });
+  }
+  const name = sanitizeName(rawName);
+  const targetDir = path.join(WORKTREES_DIR, name);
+
+  if (fs.existsSync(targetDir)) {
+    assertFilesystemContainment( WORKTREES_DIR, targetDir );
+    const jail = new LocalWorktreeSandbox({ runId: name });
+    jail.sandboxDir = targetDir;
+    jail.initialized = true;
+    const res = await jail.execCommand(commandStr, options);
+    if (!res.ok) {
+      throw new Error(res.stderr || `Sandbox command exited with code ${res.exitCode}`);
+    }
+    return res.stdout;
+  }
+
+  const res = await runInHybridSandbox(commandStr, {
+    mode: 'command',
+    isCommand: true,
+    ...options
+  });
+  if (!res.ok) {
+    throw new Error(res.stderr || `Sandbox command exited with code ${res.exitCode}`);
+  }
+  return res.stdout;
+}
+
+export function destroySandbox(rawName) {
+  const name = sanitizeName(rawName);
+  const targetDir = path.join(WORKTREES_DIR, name);
+  const branchName = `sandbox/${name}`;
+
+  if (fs.existsSync(targetDir)) {
+    const jailNodeModules = path.join(targetDir, 'node_modules');
+    if (fs.existsSync(jailNodeModules)) {
+      try {
+        fs.unlinkSync(jailNodeModules);
+      } catch {}
+    }
+    try {
+      execSync(`git worktree remove --force "${targetDir}"`, { cwd: ROOT, stdio: 'pipe' });
+    } catch {
+      fs.rmSync(targetDir, { recursive: true, force: true });
+    }
+  }
   try {
     execSync(`git branch -D "${branchName}"`, { cwd: ROOT, stdio: 'pipe' });
-  } catch (_) {}
+  } catch {}
+  try {
+    execSync('git worktree prune', { cwd: ROOT, stdio: 'pipe' });
+  } catch {}
+  return { name, destroyed: true };
+}
 
-  if (fs.existsSync(targetDir)) {
+export { LocalWorktreeSandbox, runInHybridSandbox, sanitizeEnvironment, assertFilesystemContainment };
+
+const isMain = process.argv[1] && path.resolve(process.argv[1]) === path.resolve(__filename);
+if (isMain) {
+  const [, , cmd, arg1, ...rest] = process.argv;
+  if (cmd === '--self-test' || arg1 === '--self-test') {
+    runSandboxSelfTest().then((r) => process.exit(r.passed ? 0 : 1));
+  } else {
     try {
-      fs.rmSync(targetDir, { recursive: true, force: true });
-    } catch (_) {}
+      if (cmd === 'list') {
+        console.log(JSON.stringify(listSandboxes(), null, 2));
+      } else if (cmd === 'create') {
+        console.log(JSON.stringify(createSandbox(arg1, rest[0] || 'HEAD'), null, 2));
+      } else if (cmd === 'run') {
+        runInSandbox(arg1, rest.join(' ')).then((out) => console.log(out));
+      } else if (cmd === 'destroy') {
+        console.log(JSON.stringify(destroySandbox(arg1), null, 2));
+      } else {
+        console.log('Usage: node tools/lib/sandcastle-runner.mjs [list | create <name> | run <name> <cmd> | destroy <name> | --self-test]');
+      }
+    } catch (err) {
+      console.error(`[Sandcastle Error]: ${err.message}`);
+      process.exit(1);
+    }
   }
 }

@@ -27,7 +27,12 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { sanitizeRagPayload } from './qdrant_rag.mjs';
+import { sanitizeRagPayload, ensureLocalKnowledgeIndex } from './qdrant_rag.mjs';
+import {
+  classifyEpistemicTier,
+  inspectAndGuardLegacyFragment,
+  TRANSLATION_RULE_WARNING
+} from './rag_library_sanitizer.mjs';
 import { applyCragAndGraphRefinement, routeQueryToSquads } from './squad_semantic_router.mjs';
 import { buildAndPersistAllGraphs } from './code_and_wiki_graph.mjs';
 
@@ -302,6 +307,8 @@ function createDocumentChunks(filePath) {
     ? 'canon-treatise'
     : (isVaultOrMasterclass || isSkill ? 'canon-vault' : (isCanon ? 'canon-book' : 'general'));
 
+  const tierMeta = classifyEpistemicTier(rel, cleanText);
+
   // Extract optional LEC-015 Scope Anchor
   const scopeMatch = cleanText.match(/\*\*Alcance:\*\*\s*([^\n]+)/i);
   const scopeHeader = scopeMatch ? ` [Scope: ${scopeMatch[1].trim().slice(0, 220)}]` : '';
@@ -309,12 +316,19 @@ function createDocumentChunks(filePath) {
   const maxChunkChars = category === 'canon-book' ? 3800 : 1900;
   const sections = cleanText.split(/\n(?=#{1,3}\s+)/);
   if (cleanText.length <= maxChunkChars && sections.length <= 1) {
+    const guardMeta = inspectAndGuardLegacyFragment(cleanText, tierMeta.epistemicTier, rel);
     return [{
       id: rel,
       source: `local://${rel}`,
       title: fileName,
       section: 'Main',
       category,
+      epistemicTier: tierMeta.epistemicTier,
+      authorityBoost: tierMeta.authorityBoost,
+      epistemicRole: tierMeta.epistemicRole,
+      legacySyntaxGuard: guardMeta.legacySyntaxGuard,
+      translationRule: guardMeta.translationRule,
+      supersededReplacements: guardMeta.supersededReplacements,
       text: `[Doc: ${fileName} > Main]${scopeHeader}\n${cleanText}`,
       snippet: cleanText.slice(0, 450)
     }];
@@ -336,23 +350,37 @@ function createDocumentChunks(filePath) {
       const subBlocks = splitLongBlock(trimmedSec, maxChunkChars, 180);
       subBlocks.forEach((sub, subIdx) => {
         const partNum = subIdx + 1;
+        const guardMeta = inspectAndGuardLegacyFragment(sub, tierMeta.epistemicTier, rel);
         chunks.push({
           id: `${rel}#chunk-${idx}-${partNum}`,
           source: `local://${rel}`,
           title: `${fileName} › ${heading} (Part ${partNum})`,
           section: heading,
           category,
+          epistemicTier: tierMeta.epistemicTier,
+          authorityBoost: tierMeta.authorityBoost,
+          epistemicRole: tierMeta.epistemicRole,
+          legacySyntaxGuard: guardMeta.legacySyntaxGuard,
+          translationRule: guardMeta.translationRule,
+          supersededReplacements: guardMeta.supersededReplacements,
           text: `[Doc: ${fileName} > ${heading} (Part ${partNum})]${scopeHeader}\n${sub}`,
           snippet: sub.slice(0, 450)
         });
       });
     } else {
+      const guardMeta = inspectAndGuardLegacyFragment(trimmedSec, tierMeta.epistemicTier, rel);
       chunks.push({
         id: `${rel}#chunk-${idx}`,
         source: `local://${rel}`,
         title: `${fileName} › ${heading}`,
         section: heading,
         category,
+        epistemicTier: tierMeta.epistemicTier,
+        authorityBoost: tierMeta.authorityBoost,
+        epistemicRole: tierMeta.epistemicRole,
+        legacySyntaxGuard: guardMeta.legacySyntaxGuard,
+        translationRule: guardMeta.translationRule,
+        supersededReplacements: guardMeta.supersededReplacements,
         text: `[Doc: ${fileName} > ${heading}]${scopeHeader}\n${trimmedSec}`,
         snippet: trimmedSec.slice(0, 450)
       });
@@ -418,6 +446,12 @@ function prepareChunksForFastSearch(chunks) {
   for (let i = 0; i < chunks.length; i++) {
     const c = chunks[i];
     const idStr = String(c.id || '');
+    if (!c.epistemicTier) {
+      const tierMeta = classifyEpistemicTier(idStr.split('#')[0], c.text || c.snippet || '');
+      c.epistemicTier = tierMeta.epistemicTier;
+      c.authorityBoost = tierMeta.authorityBoost;
+      c.epistemicRole = tierMeta.epistemicRole;
+    }
     if (/(book_elements_of_typographic_style_bringhurst|CANON_CLEAN_ROOM_SWISS_TYPOGRAPHY|CANON_OPEN_BOOKS_TYPOGRAPHY_COLOR_GRIDS_AND_WEB_PERF_2026|CANON_TYPESCRIPT_RAUSCHMAYER|CANON_50_REPOS_AGENTIC)/i.test(idStr)) {
       c.category = 'canon-treatise';
     } else if (c.category === 'canon-book' && idStr.startsWith('knowledge/') &&
@@ -1069,7 +1103,32 @@ export async function queryKnowledge(query, limit = 8, options = {}) {
     } catch (_) {}
   }
 
-  const finalOut = fused.slice(0, limit);
+  const finalOut = fused.slice(0, limit).map(item => {
+    const cleanSource = String(item.source || item.id || '').replace(/^local:\/\//, '').split('#')[0];
+    const tierMeta = item.epistemicTier
+      ? {
+          epistemicTier: item.epistemicTier,
+          authorityBoost: item.authorityBoost || (item.epistemicTier === 'TIER_1_SOTA_2026' ? 1.35 : 1.15),
+          epistemicRole: item.epistemicRole
+        }
+      : classifyEpistemicTier(cleanSource, item.text || item.snippet || '');
+    const guardMeta = inspectAndGuardLegacyFragment(item.text || item.snippet || '', tierMeta.epistemicTier, cleanSource);
+    const isClassicBook = tierMeta.epistemicTier === 'TIER_2_TIMELESS_PRINCIPLES';
+    const guardedText =
+      isClassicBook && !guardMeta.guardedText.includes('[TRANSLATION_RULE:')
+        ? `${TRANSLATION_RULE_WARNING}\n${guardMeta.guardedText}`
+        : guardMeta.guardedText;
+    return {
+      ...item,
+      epistemicTier: tierMeta.epistemicTier,
+      authorityBoost: tierMeta.authorityBoost,
+      epistemicRole: tierMeta.epistemicRole,
+      legacySyntaxGuard: guardMeta.legacySyntaxGuard || (isClassicBook ? 'TIER_3_LEGACY_SYNTAX_GUARD' : null),
+      translationRule: guardMeta.translationRule || (isClassicBook ? TRANSLATION_RULE_WARNING : null),
+      supersededReplacements: guardMeta.supersededReplacements,
+      text: guardedText
+    };
+  });
   if (queryLruCache.size >= MAX_QUERY_CACHE) {
     const oldestKey = queryLruCache.keys().next().value;
     queryLruCache.delete(oldestKey);
@@ -1214,11 +1273,14 @@ export async function getClusterStats() {
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   const useRerank = process.argv.includes('--rerank');
   if (process.argv.includes('--rebuild')) {
-    console.log('🔄 Rebuilding Omni-RAG v5 Hybrid Index (SQLite FTS5 + MiniSearch + AST CodeGraph + Obsidian WikiGraph)...');
+    console.log('🔄 Rebuilding Omni-RAG v5 Hybrid Index (SQLite FTS5 + MiniSearch + AST CodeGraph + Obsidian WikiGraph + Epistemic Governance)...');
     const t0 = Date.now();
     const g = getLoadedGraphData(true);
     const idx = getOrBuildMiniSearchIndex(true);
+    const localIdx = ensureLocalKnowledgeIndex(true);
+    const sum = localIdx.epistemicSummary || {};
     console.log(`✅ Built ${idx.chunks.length} contextual chunks | CodeGraph: ${g?.codeGraph?.nodes?.length || 0} files | WikiGraph: ${g?.wikiGraph?.edges?.length || 0} [[wikilinks]] in ${Date.now() - t0}ms.`);
+    console.log(`🏛️  Epistemic Governance (.agents/memory/knowledge_index.json): TIER_1_SOTA_2026=${sum.TIER_1_SOTA_2026 || 0} docs (x1.35) | TIER_2_TIMELESS_PRINCIPLES=${sum.TIER_2_TIMELESS_PRINCIPLES || 0} docs (x1.15) | TIER_3_LEGACY_SYNTAX_GUARD=${sum.TIER_3_LEGACY_SYNTAX_GUARD_CHUNKS || 0} guarded chunks.`);
   } else if (process.argv.includes('--stats')) {
     console.log('📊 Checking Omni-RAG v5 & Qdrant Stats...');
     getClusterStats().then(s => console.log(JSON.stringify(s, null, 2)));
@@ -1246,8 +1308,11 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
       console.log(`\nFound ${res.length} matches:`);
       res.forEach((r, i) => {
         const extra = r.onnxRerankScore !== undefined ? ` | ONNX: ${r.onnxRerankScore.toFixed(4)}` : '';
-        console.log(`\n[${i + 1}] (RRF: ${(r.fusedScore || r.rrfScore || 0).toFixed(4)}${extra}) ${r.title}`);
+        console.log(`\n[${i + 1}] (RRF: ${(r.fusedScore || r.rrfScore || 0).toFixed(4)} | ${r.epistemicTier} x${r.authorityBoost}${extra}) ${r.title}`);
         console.log(`    Source: ${r.source}`);
+        if (r.translationRule) {
+          console.log(`    Guard: ${r.translationRule}`);
+        }
         console.log(`    Snippet: "${r.snippet ? r.snippet.trim().slice(0, 160) : ''}..."`);
       });
     });

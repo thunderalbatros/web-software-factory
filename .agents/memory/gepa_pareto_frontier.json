@@ -1,0 +1,29 @@
+{
+  "schemaVersion": "1.0.0-gepa-pareto",
+  "updatedAt": "2026-10-28T01:10:40.980Z",
+  "objectives": [
+    "visualQuality (MAX)",
+    "executionSpeedMs (MIN)",
+    "tokenEfficiency (MAX)",
+    "securityResilience (MAX)"
+  ],
+  "crossoverProposerActive": true,
+  "paretoFront": [
+    {
+      "candidateId": "gepa_mvrf2dbk",
+      "timestamp": "2026-10-28T01:09:14.096Z",
+      "version": "v3.0-gepa-harness2",
+      "dimensions": {
+        "visualQuality": 100,
+        "executionSpeedMs": 229.6,
+        "tokenEfficiency": 54.8,
+        "securityResilience": 100
+      },
+      "crossoverSources": [
+        ".agents/skills/continuous-learning-instincts/SKILL.md",
+        ".agents/skills/cto-hitl-visual-gate/SKILL.md"
+      ],
+      "paretoOptimal": true
+    }
+  ]
+}

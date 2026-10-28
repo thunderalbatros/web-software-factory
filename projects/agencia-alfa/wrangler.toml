@@ -1,0 +1,11 @@
+name = "agencia-alfa"
+main = "worker/index.js"
+compatibility_date = "2025-02-01"
+
+[placement]
+mode = "smart"
+
+[assets]
+directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "single-page-application"

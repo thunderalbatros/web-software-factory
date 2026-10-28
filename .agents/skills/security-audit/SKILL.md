@@ -1,4 +1,4 @@
-﻿---
+---
 name: security-audit
 description: "Security guidance and vulnerability review for codebases, APIs, services, CLI tools, libraries, and daemons."
 ---
@@ -62,6 +62,17 @@ The parent creates and is the only writer of shared run files:
 - `REPORT.md`
 - `FINDINGS-DETAIL.md`
 - `NEEDS-VALIDATION.md`
+
+### Mandatory Category: `AGENTIC_AND_WEBMCP_SECURITY` (SOTA 2026)
+
+Every audit and coverage ledger must include the mandatory category `AGENTIC_AND_WEBMCP_SECURITY`:
+1. **WebMCP Tool Governance (`application/webmcp+json` & `navigator.modelContext`):**
+   - Every declared tool must explicitly specify `"readOnly": true` or require explicit human confirmation (`"requiresUserConfirmation": true`) before mutating state or triggering external actions.
+2. **Indirect Prompt Injection Defense (`llms.txt`, `llms-full.txt`, HTML/Astro DOM):**
+   - Block invisible prompt-injection vectors targeting AI browsers (`opacity: 0`, `font-size: 0`, hidden Unicode bidi/zero-width control characters `U+200B..U+200F`, `U+202A..U+202E`, `U+2066..U+2069`).
+   - Block adversarial instructions inside HTML comments or `llms.txt` (`ignore previous instructions`, `disregard prior rules`, `system prompt override`, `exfiltrate`).
+3. **CLI Verification:**
+   - Run `node .agents/skills/security-audit/scripts/validate-findings.cjs --agentic-audit` and `node .agents/skills/security-audit/scripts/validate-coverage-ledger.cjs --agentic-audit`.
 
 
 ---

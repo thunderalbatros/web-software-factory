@@ -23,11 +23,24 @@ import { PNG } from 'pngjs';
 import { loadProjectConfig } from '../lib/project_loader.mjs';
 
 let odiffCompare = null;
+let odiffSource = 'none';
 try {
   const odiffMod = await import('odiff-bin');
   odiffCompare = odiffMod.compare || (odiffMod.default && odiffMod.default.compare) || null;
+  if (odiffCompare) odiffSource = 'odiff-bin';
 } catch (_) {
   odiffCompare = null;
+}
+
+if (!odiffCompare) {
+  try {
+    const vaultOdiff = 'C:/Users/tomas/Desktop/streamerbot/references/hunt-2026-10/odiff/bin/odiff.js';
+    if (fs.existsSync(vaultOdiff)) {
+      const vaultMod = await import('file:///' + vaultOdiff);
+      odiffCompare = vaultMod.compare || (vaultMod.default && vaultMod.default.compare) || null;
+      if (odiffCompare) odiffSource = 'vault:hunt-2026-10/odiff';
+    }
+  } catch (_) {}
 }
 
 const __filename = fileURLToPath(import.meta.url);

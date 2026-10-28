@@ -1,0 +1,9 @@
+{
+  "activeSlug": "agencia-alfa",
+  "name": "Agencia Alfa",
+  "projectRoot": "projects/agencia-alfa",
+  "stack": "vanilla-edge",
+  "archetype": "saas-b2b",
+  "style": "bento",
+  "updatedAt": "2026-10-27T22:10:00.652Z"
+}

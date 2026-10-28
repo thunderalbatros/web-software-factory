@@ -1,4 +1,4 @@
-﻿# Secrets & Private Environment Variables (MANDATORY: zero secrets in git)
+# Secrets & Private Environment Variables (MANDATORY: zero secrets in git)
 .dev.vars
 .env
 *.pem
@@ -6,6 +6,13 @@
 *.secret
 ADMIN_API_SECRET.txt
 .wrangler/
+.agents/memory/agentvcs_ed25519_keys.json
+.agents/memory/backups/
+deliverables/
+knowledge/_inbox_pdfs/*.pdf
+knowledge/_inbox_pdfs/*.epub
+knowledge/_inbox_pdfs/procesados/*.pdf
+knowledge/_inbox_pdfs/procesados/*.epub
 
 # Build Output (Cloudflare builds this dynamically via 'node tools/build_dist.mjs')
 dist/

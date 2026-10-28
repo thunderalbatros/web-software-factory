@@ -17,6 +17,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { execSync } from 'node:child_process';
+import { recordFailureEventAndDeriveHeldIn } from './skill_quality_ledger.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,6 +25,7 @@ const ROOT = path.resolve(__dirname, '..', '..');
 
 const MEMORY_DIR = path.join(ROOT, '.agents', 'memory');
 const LEDGER_FILE = path.join(MEMORY_DIR, 'temporal_ledger.json');
+export const REGRESSION_ASSERTIONS_FILE = path.join(MEMORY_DIR, 'regression_assertions.json');
 const SKILLS_DIR = path.join(ROOT, '.agents', 'skills');
 
 if (!fs.existsSync(MEMORY_DIR)) {
@@ -125,12 +127,16 @@ export function recordTemporalRule(rule) {
 
   const entry = {
     id: rule.id,
-    type: rule.type || 'architectural_decision',
+    fact: rule.fact || rule.rationale || rule.title || rule.id,
+    category: rule.category || rule.type || 'architectural_decision',
+    type: rule.type || rule.category || 'architectural_decision',
     title: rule.title || rule.id,
     valid_from: rule.valid_from || now,
-    valid_until: rule.valid_until || null,
+    valid_until: rule.valid_until ?? null,
+    superseded_by: rule.superseded_by ?? null,
+    confidence: Number(rule.confidence ?? 0.98),
     status: rule.status || 'ACTIVE',
-    rationale: rule.rationale || '',
+    rationale: rule.rationale || rule.fact || '',
     evidence: rule.evidence || '',
     ...rule
   };
@@ -173,6 +179,153 @@ export function getActiveRules() {
   const ledger = getTemporalLedger();
   const now = new Date().toISOString();
   return ledger.rules.filter(r => r.status === 'ACTIVE' && (!r.valid_until || r.valid_until > now));
+}
+
+/**
+ * 3. Post-Mortem Perpetual Anti-Regression Assertions (`.agents/memory/regression_assertions.json`)
+ * Whenever `chaos_monkey_test.mjs`, `visual_audit.mjs` or `npm run cto:feedback` detects a defect
+ * or CTO correction, generates a deterministic regression assertion verified on every future run.
+ */
+const DEFAULT_REGRESSION_ASSERTIONS = {
+  schema: 'web-factory-post-mortem-regression-assertions-v1',
+  lastUpdated: new Date().toISOString(),
+  assertions: [
+    {
+      id: 'reg-assert-oklch-apca-floor',
+      source: 'visual_audit.mjs / ryux_design_gate.mjs',
+      targetRole: 'ux-designer',
+      category: 'aesthetic_and_ui_preference',
+      description: 'Verify W3C DTCG 2025.10 OKLCH tokens exist and APCA contrast Lc >= 75 / 60 holds with 0 geometric collisions.',
+      checkType: 'RYUX_SCORE_MIN_92',
+      status: 'ACTIVE',
+      createdAt: '2026-10-25T00:00:00.000Z'
+    },
+    {
+      id: 'reg-assert-60fps-cls-zero',
+      source: 'visual_audit.mjs / shader_and_3d_forge.mjs',
+      targetRole: 'motion-engineer',
+      category: 'motion_and_performance_preference',
+      description: 'Verify CLS === 0.00, FPS >= 58, and Three.js r186 anti-deprecation (THREE.Timer, AgXToneMapping, RenderPipeline).',
+      checkType: 'MOTION_FPS_MIN_58_ZERO_CLS',
+      status: 'ACTIVE',
+      createdAt: '2026-10-27T00:00:00.000Z'
+    },
+    {
+      id: 'reg-assert-chaos-zero-console-errors',
+      source: 'chaos_monkey_test.mjs',
+      targetRole: 'security-engineer',
+      category: 'security_and_compliance_preference',
+      description: 'Verify 0 console errors, 0 dead links, and 100% XSS/fuzzing sanitization resilience under Chaos Monkey.',
+      checkType: 'CHAOS_ZERO_ERRORS',
+      status: 'ACTIVE',
+      createdAt: '2026-10-26T00:00:00.000Z'
+    },
+    {
+      id: 'reg-assert-ast-symbolic-under-500ms',
+      source: 'ast_guard.mjs / code_clean_audit.mjs',
+      targetRole: 'senior-coder',
+      category: 'performance_invariable',
+      description: 'Verify 0 unresolved controller methods, 0 security blockers, and AST scan latency < 500ms.',
+      checkType: 'AST_CLEAN_UNDER_500MS',
+      status: 'ACTIVE',
+      createdAt: '2026-10-26T00:00:00.000Z'
+    }
+  ]
+};
+
+export function getRegressionAssertions() {
+  if (!fs.existsSync(REGRESSION_ASSERTIONS_FILE)) {
+    fs.mkdirSync(path.dirname(REGRESSION_ASSERTIONS_FILE), { recursive: true });
+    fs.writeFileSync(REGRESSION_ASSERTIONS_FILE, JSON.stringify(DEFAULT_REGRESSION_ASSERTIONS, null, 2), 'utf8');
+    return DEFAULT_REGRESSION_ASSERTIONS;
+  }
+  try {
+    const parsed = JSON.parse(fs.readFileSync(REGRESSION_ASSERTIONS_FILE, 'utf8'));
+    if (!Array.isArray(parsed.assertions)) parsed.assertions = DEFAULT_REGRESSION_ASSERTIONS.assertions;
+    return parsed;
+  } catch (_) {
+    return DEFAULT_REGRESSION_ASSERTIONS;
+  }
+}
+
+export function recordRegressionAssertion(item = {}) {
+  const store = getRegressionAssertions();
+  const id = item.id || `reg-assert-${Date.now().toString(36)}`;
+  const existingIdx = store.assertions.findIndex((a) => a.id === id);
+
+  const entry = {
+    id,
+    source: item.source || 'cto:feedback / post-mortem',
+    targetRole: item.targetRole || 'ux-designer',
+    category: item.category || 'architectural_decision',
+    description: item.description || item.fact || item.title || id,
+    checkType: item.checkType || 'TEMPORAL_RULE_ACTIVE',
+    linkedRuleId: item.linkedRuleId || null,
+    status: item.status || 'ACTIVE',
+    createdAt: item.createdAt || new Date().toISOString()
+  };
+
+  if (existingIdx >= 0) {
+    store.assertions[existingIdx] = { ...store.assertions[existingIdx], ...entry };
+  } else {
+    store.assertions.push(entry);
+  }
+
+  store.lastUpdated = new Date().toISOString();
+  fs.mkdirSync(path.dirname(REGRESSION_ASSERTIONS_FILE), { recursive: true });
+  fs.writeFileSync(REGRESSION_ASSERTIONS_FILE, JSON.stringify(store, null, 2), 'utf8');
+
+  try {
+    recordFailureEventAndDeriveHeldIn({
+      guardName: entry.source,
+      errorType: entry.category,
+      component: entry.id,
+      targetRole: entry.targetRole,
+      checkType: entry.checkType,
+      linkedRuleId: entry.linkedRuleId,
+      description: entry.description
+    });
+  } catch (_) {}
+
+  return entry;
+}
+
+/**
+ * Synchronizes active CTO feedback rules, Chaos Monkey findings, and Visual Audit findings
+ * into `.agents/memory/regression_assertions.json` so every past correction becomes a perpetual test.
+ */
+export function syncPostMortemRegressionAssertions() {
+  const activeRules = getActiveRules();
+  const store = getRegressionAssertions();
+  const existingRuleLinks = new Set(store.assertions.map((a) => a.linkedRuleId).filter(Boolean));
+  let added = 0;
+
+  for (const r of activeRules) {
+    if (String(r.id || '').startsWith('cto-pref-') && !existingRuleLinks.has(r.id)) {
+      recordRegressionAssertion({
+        id: `reg-assert-${r.id}`,
+        source: 'npm run cto:feedback (CTO HITL Post-Mortem)',
+        targetRole: r.category?.includes('motion')
+          ? 'motion-engineer'
+          : r.category?.includes('security')
+          ? 'security-engineer'
+          : r.category?.includes('copy')
+          ? 'copywriting-cro-strategist'
+          : 'ux-designer',
+        category: r.category || 'aesthetic_and_ui_preference',
+        description: `CTO Regression Guard: "${r.fact || r.title}" must remain active and uncontradicted.`,
+        checkType: 'CTO_FEEDBACK_ENFORCED',
+        linkedRuleId: r.id,
+        status: 'ACTIVE'
+      });
+      added++;
+    }
+  }
+
+  return {
+    totalAssertions: getRegressionAssertions().assertions.length,
+    newlyAdded: added
+  };
 }
 
 /**
@@ -311,4 +464,15 @@ if (process.argv.includes('--preflight')) {
 } else if (process.argv.includes('--seed')) {
   saveTemporalLedger(DEFAULT_TEMPORAL_GRAPH);
   console.log('✓ Seeded DEFAULT_TEMPORAL_GRAPH into .agents/memory/temporal_ledger.json');
+} else if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
+  const ledger = getTemporalLedger();
+  const active = getActiveRules();
+  const invalidated = (ledger.rules || []).filter((r) => r.status !== 'ACTIVE');
+  console.log('======================================================');
+  console.log('🧬 TEMPORAL INSTINCTS & GRAPHITI ENGINE STATUS');
+  console.log('======================================================');
+  console.log(`  ✓ Active Temporal Rules      : ${active.length}`);
+  console.log(`  ✓ Superseded/Archived Rules  : ${invalidated.length}`);
+  console.log(`  ✓ Ledger Path                : .agents/memory/temporal_ledger.json`);
+  console.log('======================================================');
 }

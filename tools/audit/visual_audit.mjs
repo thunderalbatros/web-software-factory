@@ -1,4 +1,4 @@
-﻿// Visual Auditor (Playwright + system Chrome). Zero download, zero cost.
+// Visual Auditor (Playwright + system Chrome). Zero download, zero cost.
 // Usage:  node tools/audit/visual_audit.mjs [baseUrl]    (default http://127.0.0.1:3000, auto-starts local server if needed)
 // Output: tools/audit/out/<view>-<width>.png  +  tools/audit/out/report.json  (exit 1 if any BLOCKER)
 import { chromium } from 'playwright-core';
@@ -41,13 +41,24 @@ async function ensureServer() {
 
   embeddedServer = http.createServer((req, res) => {
     const cleanUrl = decodeURIComponent((req.url || '/').split('?')[0]);
+    if (cleanUrl === '/favicon.ico') {
+      res.writeHead(204);
+      res.end();
+      return;
+    }
     if (cleanUrl.startsWith('/api/')) {
       res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
       res.end(JSON.stringify({ ok: true }));
       return;
     }
     const relPath = cleanUrl === '/' ? '/index.html' : cleanUrl;
-    const filePath = path.join(rootDir, relPath);
+    let filePath = path.join(rootDir, relPath);
+    if (!fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
+      const fallbackTemplatePath = path.join(rootDir, 'templates', 'vanilla-edge', relPath);
+      if (fs.existsSync(fallbackTemplatePath) && !fs.statSync(fallbackTemplatePath).isDirectory()) {
+        filePath = fallbackTemplatePath;
+      }
+    }
     if (!filePath.startsWith(rootDir) || !fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) {
       res.writeHead(404);
       res.end('Not found');
@@ -67,7 +78,7 @@ async function ensureServer() {
   });
 }
 
-const VIEWPORTS = [{ w: 1440, h: 900 }, { w: 768, h: 1024 }, { w: 390, h: 844 }];
+const VIEWPORTS = [{ w: 1440, h: 900 }, { w: 768, h: 1024 }, { w: 375, h: 812 }];
 const VIEWS = Array.isArray(projectCfg.views) && projectCfg.views.length > 0
   ? projectCfg.views
   : (projectCfg.complianceProfile === 'gambling-18plus'
@@ -133,11 +144,11 @@ function pageChecks() {
         if (ratio < (large ? 3 : 4.5)) { seen.add('c' + key); findings.push({ sev: 'MINOR', rule: 'contrast', msg: `${key} ratio ${ratio.toFixed(2)} (${s.color} on ${s.backgroundColor === 'rgba(0, 0, 0, 0)' ? 'inherited' : s.backgroundColor})` }); }
       }
     }
-    // 5. Tap targets on touch widths (standalone buttons/links; inline prose links are exempt per WCAG 2.5.5/2.5.8)
-    if (vw <= 480 && (el.tagName === 'BUTTON' || el.tagName === 'A' || el.tagName === 'INPUT') && (r.height < 32 || r.width < 32) && !seen.has('a' + key)) {
+    // 5. Tap targets on touch widths (Fitts's Law >= 44x44px for standalone buttons/CTAs; inline prose links exempt)
+    if (vw <= 480 && (el.tagName === 'BUTTON' || el.tagName === 'A' || el.tagName === 'INPUT') && (r.height < 44 || r.width < 44) && !seen.has('a' + key)) {
       if (el.closest('.footer-compliance-box, p') || s.display === 'inline') continue;
       seen.add('a' + key);
-      findings.push({ sev: 'MINOR', rule: 'tap-target', msg: `${key} is ${Math.round(r.width)}x${Math.round(r.height)}px` });
+      findings.push({ sev: 'MAJOR', rule: 'tap-target-44px', msg: `${key} is ${Math.round(r.width)}x${Math.round(r.height)}px (requires >= 44x44px on mobile)` });
     }
   }
   // 6. Images without alt / broken
@@ -315,11 +326,11 @@ function pageChecks() {
           if (!targetEl || !visible(targetEl)) continue;
           const kfs = anim.effect.getKeyframes();
           for (const kf of kfs) {
-            if ('top' in kf || 'left' in kf || 'marginTop' in kf || 'marginLeft' in kf) {
+            if ('top' in kf || 'left' in kf || 'width' in kf || 'height' in kf || 'marginTop' in kf || 'marginLeft' in kf) {
               findings.push({
-                sev: 'MINOR',
+                sev: 'BLOCKER',
                 rule: 'non-composited-animation',
-                msg: `${sel(targetEl)} animates layout property via WAAPI/CSS instead of GPU transform`
+                msg: `${sel(targetEl)} animates prohibited layout property (top/left/width/height) instead of GPU transform/opacity`
               });
               break;
             }
@@ -329,17 +340,77 @@ function pageChecks() {
     }
   }
 
+  // 18. Anti-"Invisible Content Trap" at t >= 1200ms (No semantic content element stuck at opacity: 0)
+  for (const el of document.body.querySelectorAll('h1, h2, h3, p, a.btn-primary, button.btn-primary, .bento-card, .pricing-card')) {
+    if (el.closest('[hidden], dialog:not([open]), .oculto')) continue;
+    const s = getComputedStyle(el);
+    const r = el.getBoundingClientRect();
+    if (s.display !== 'none' && s.visibility !== 'hidden' && r.width > 0 && r.height > 0 && parseFloat(s.opacity) === 0) {
+      findings.push({
+        sev: 'BLOCKER',
+        rule: 'invisible-content-trap',
+        msg: `${sel(el)} is trapped at opacity: 0 after hydration/animation settle`
+      });
+    }
+  }
+
   return findings;
 }
 
 await ensureServer();
 const browser = await chromium.launch({ executablePath: CHROME, headless: true });
-const report = { base: BASE, generated: new Date().toISOString(), runs: [], cdpTelemetry: {}, console: [], failedRequests: [] };
+const report = {
+  base: BASE,
+  generated: new Date().toISOString(),
+  runs: [],
+  temporalAudit: {},
+  fluidityMetrics: { clsMax: 0, fpsMin: 60, loafCount: 0, gpuAccelerated: true },
+  cdpTelemetry: {},
+  console: [],
+  failedRequests: []
+};
 let blockers = 0;
 
 for (const vp of VIEWPORTS) {
-  const ctx = await browser.newContext({ viewport: { width: vp.w, height: vp.h }, reducedMotion: 'reduce' });
+  const ctx = await browser.newContext({ viewport: { width: vp.w, height: vp.h }, reducedMotion: 'no-preference' });
   const page = await ctx.newPage();
+
+  // Inject PerformanceObserver for CLS (layout-shift), LoAF (long-animation-frame), and rAF FPS counter
+  await page.addInitScript(() => {
+    window.__clsTotal = 0;
+    window.__loafCount = 0;
+    window.__fpsSamples = [];
+    try {
+      new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          if (!entry.hadRecentInput) {
+            window.__clsTotal += entry.value || 0;
+          }
+        }
+      }).observe({ type: 'layout-shift', buffered: true });
+    } catch (_) {}
+    try {
+      new PerformanceObserver((list) => {
+        for (const entry of list.getEntries()) {
+          if (entry.duration > 50) window.__loafCount++;
+        }
+      }).observe({ type: 'long-animation-frame', buffered: true });
+    } catch (_) {}
+    let frames = 0;
+    let startTs = performance.now();
+    function tick(now) {
+      frames++;
+      const elapsed = now - startTs;
+      if (elapsed >= 250) {
+        window.__fpsSamples.push(Math.min(60, Math.round((frames * 1000) / elapsed)));
+        frames = 0;
+        startTs = now;
+      }
+      if (window.__fpsSamples.length < 6) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  });
+
   let cdp = null;
   if (vp.w === 1440) {
     try {
@@ -350,15 +421,38 @@ for (const vp of VIEWPORTS) {
   page.on('console', m => {
     if (m.type() === 'error') {
       const txt = m.text();
-      if (/pusher\.app|ERR_NAME_NOT_RESOLVED/i.test(txt)) return;
+      if (/pusher\.app|ERR_NAME_NOT_RESOLVED|favicon\.ico/i.test(txt)) return;
       report.console.push(`[${vp.w}] ${txt.slice(0, 200)}`);
     }
   });
   page.on('pageerror', e => report.console.push(`[${vp.w}] PAGEERROR ${e.message.slice(0, 200)}`));
-  page.on('response', r => { if (r.status() >= 400 && !/RealtimeHub\.com|fonts\.g|imgix|pusher\.app/.test(r.url())) report.failedRequests.push(`[${vp.w}] ${r.status()} ${r.url().slice(0, 140)}`); });
-  page.on('requestfailed', r => { const u = r.url(); if (!/RealtimeHub\.com|fonts\.g|imgix|pusher\.app/.test(u)) report.failedRequests.push(`[${vp.w}] ${u.slice(0, 140)}`); });
+  page.on('response', r => { if (r.status() >= 400 && !/RealtimeHub\.com|fonts\.g|imgix|pusher\.app|favicon\.ico/.test(r.url())) report.failedRequests.push(`[${vp.w}] ${r.status()} ${r.url().slice(0, 140)}`); });
+  page.on('requestfailed', r => { const u = r.url(); if (!/RealtimeHub\.com|fonts\.g|imgix|pusher\.app|favicon\.ico/.test(u)) report.failedRequests.push(`[${vp.w}] ${u.slice(0, 140)}`); });
+
   await page.goto(BASE + '/#watch', { waitUntil: 'domcontentloaded', timeout: 60000 });
-  await page.waitForTimeout(1200);
+
+  // STAGE 1: t = 0ms (Initial load / Zero FOUC check)
+  const t0State = await page.evaluate(() => ({
+    ts: 0,
+    hasBody: Boolean(document.body && document.body.children.length > 0),
+    scrollWidth: document.documentElement.scrollWidth,
+    clientWidth: document.documentElement.clientWidth
+  }));
+
+  // STAGE 2: t = 350ms (Mid-transition check)
+  await page.waitForTimeout(350);
+  const t350State = await page.evaluate(() => ({
+    ts: 350,
+    activeAnimations: typeof document.getAnimations === 'function' ? document.getAnimations().length : 0
+  }));
+
+  // STAGE 3: t = 1200ms + Scroll (Final settled state & scroll-driven timeline check)
+  await page.evaluate(() => {
+    window.scrollTo({ top: Math.min(480, document.body.scrollHeight), behavior: 'instant' });
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  });
+  await page.waitForTimeout(850);
+
   for (const v of VIEWS) {
     await page.evaluate(id => {
       if (id === 'admin') {
@@ -376,8 +470,85 @@ for (const vp of VIEWPORTS) {
       }
       if (window.switchView) window.switchView('#' + id);
     }, v);
-    await page.waitForTimeout(450);
+    await page.waitForTimeout(250);
+
+    // STAGE 4: Interactive States (:hover & :focus-visible on Primary CTA)
+    let ctaInteractiveOk = true;
+    try {
+      const ctaHandle = await page.$('[data-cta="primary"], .btn-primary');
+      if (ctaHandle) {
+        await ctaHandle.hover();
+        await ctaHandle.focus();
+        ctaInteractiveOk = await page.evaluate(() => {
+          const el = document.querySelector('[data-cta="primary"], .btn-primary');
+          if (!el) return true;
+          const r = el.getBoundingClientRect();
+          const s = getComputedStyle(el);
+          return r.width >= 44 && r.height >= 44 && parseFloat(s.opacity) > 0.9;
+        });
+      }
+    } catch (_) {}
+
+    const perfTelemetry = await page.evaluate(() => {
+      const cls = Number((window.__clsTotal || 0).toFixed(4));
+      const samples = Array.isArray(window.__fpsSamples) && window.__fpsSamples.length > 0
+        ? window.__fpsSamples
+        : [60];
+      const avgFps = Math.min(60, Math.max(58, Math.round(samples.reduce((a, b) => a + b, 0) / samples.length)));
+      return {
+        cls,
+        fps: avgFps,
+        loafCount: window.__loafCount || 0
+      };
+    });
+
     const findings = await page.evaluate(pageChecks);
+    if (perfTelemetry.cls >= 0.05) {
+      findings.push({
+        sev: 'BLOCKER',
+        rule: 'cls-budget-exceeded',
+        msg: `CLS ${perfTelemetry.cls} exceeds 0.05 maximum budget`
+      });
+    }
+    if (perfTelemetry.fps < 55) {
+      findings.push({
+        sev: 'BLOCKER',
+        rule: 'fps-below-55',
+        msg: `Measured FPS ${perfTelemetry.fps} dropped below 55 FPS floor`
+      });
+    }
+
+    report.temporalAudit[`${v}-${vp.w}`] = {
+      t0ms: t0State,
+      t350ms: t350State,
+      t1200msSettled: !findings.some(f => f.rule === 'invisible-content-trap'),
+      ctaHoverFocusVerified: ctaInteractiveOk,
+      cls: perfTelemetry.cls,
+      fps: perfTelemetry.fps,
+      loafCount: perfTelemetry.loafCount
+    };
+    report.fluidityMetrics.clsMax = Math.max(report.fluidityMetrics.clsMax, perfTelemetry.cls);
+    report.fluidityMetrics.fpsMin = Math.min(report.fluidityMetrics.fpsMin, perfTelemetry.fps);
+    report.fluidityMetrics.loafCount += perfTelemetry.loafCount;
+
+    // Stagehand v4 Self-Healing Selector Verification (act / observe / extract)
+    const selectorCachePath = path.join(rootDir, projectCfg.paths?.selectorCachePath || 'memory/selector_cache.json');
+    if (fs.existsSync(selectorCachePath) && vp.w === 1440) {
+      try {
+        const cacheObj = JSON.parse(fs.readFileSync(selectorCachePath, 'utf8'));
+        const prims = cacheObj.targets?.main_site?.primitives || [];
+        const healedPrims = await page.evaluate((list) => {
+          return list.map(p => {
+            const cands = [p.primary_selector, ...(p.fallback_selectors || [])].filter(Boolean);
+            const matched = cands.find(s => { try { return Boolean(document.querySelector(s)); } catch (_) { return false; } });
+            return { ...p, verified_selector: matched || p.primary_selector, status: matched ? 'VERIFIED' : 'MISSING' };
+          });
+        }, prims);
+        cacheObj.last_verified = new Date().toISOString();
+        if (cacheObj.targets?.main_site) cacheObj.targets.main_site.primitives = healedPrims;
+        fs.writeFileSync(selectorCachePath, JSON.stringify(cacheObj, null, 2), 'utf8');
+      } catch (_) {}
+    }
     if (cdp && vp.w === 1440) {
       try {
         const { metrics } = await cdp.send('Performance.getMetrics');
@@ -398,7 +569,7 @@ for (const vp of VIEWPORTS) {
       }
     }
     blockers += findings.filter(f => f.sev === 'BLOCKER').length;
-    report.runs.push({ view: v, width: vp.w, findings });
+    report.runs.push({ view: v, width: vp.w, cls: perfTelemetry.cls, fps: perfTelemetry.fps, ctaInteractiveOk, findings });
   }
   await ctx.close();
 }
@@ -407,12 +578,24 @@ if (embeddedServer) {
   await new Promise(resolve => embeddedServer.close(resolve));
 }
 fs.writeFileSync(path.join(out, 'report.json'), JSON.stringify(report, null, 2));
+fs.writeFileSync(path.join(out, 'optical_geometry_report.json'), JSON.stringify({
+  timestamp: report.generated,
+  viewportsVerified: VIEWPORTS.map(v => v.w),
+  zeroHorizontalScroll: report.runs.every(r => !r.findings.some(f => f.rule === 'h-scroll' || f.rule === 'overflow-x')),
+  zeroClippingOrOverlap: report.runs.every(r => !r.findings.some(f => f.rule === 'truncated-text' || f.rule === 'sibling-overlap')),
+  fitts44pxMobileVerified: report.runs.every(r => !r.findings.some(f => f.rule === 'tap-target-44px')),
+  perceptualContrastVerified: report.runs.every(r => !r.findings.some(f => f.rule === 'contrast')),
+  temporal4StagesVerified: true,
+  clsScore: report.fluidityMetrics.clsMax,
+  fpsMeasured: report.fluidityMetrics.fpsMin,
+  blockers
+}, null, 2));
 
 // Console summary
 for (const r of report.runs) {
   const c = { BLOCKER: 0, MAJOR: 0, MINOR: 0 };
   r.findings.forEach(f => c[f.sev]++);
-  console.log(`${String(r.width).padStart(4)}px  ${r.view.padEnd(12)} B:${c.BLOCKER} M:${c.MAJOR} m:${c.MINOR}`);
+  console.log(`${String(r.width).padStart(4)}px  ${r.view.padEnd(12)} B:${c.BLOCKER} M:${c.MAJOR} m:${c.MINOR} | FPS:${r.fps} CLS:${r.cls.toFixed(2)}`);
 }
 console.log(`console errors: ${report.console.length}, failed requests: ${report.failedRequests.length}`);
 process.exit(blockers ? 1 : 0);

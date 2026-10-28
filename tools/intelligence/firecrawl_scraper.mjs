@@ -1,4 +1,4 @@
-﻿/**
+/**
  * WebFactory — Firecrawl Fast Dynamic Scraping Engine
  * =============================================================================
  * Connects to Firecrawl API to scrape dynamic JavaScript casino websites,

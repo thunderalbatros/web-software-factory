@@ -1,25 +1,26 @@
 ---
 id: "symbolic-method-aliasing"
-type: "bug_fix"
+category: "bug_fix"
 confidence: 0.95
+valid_from: "2026-10-25T00:00:00.000Z"
+valid_until: null
+superseded_by: null
 status: "ACTIVE"
-created_at: "2026-10-26T01:17:34.944Z"
 ---
 
 # Instinct: Method Renaming Aliases on Class Prototypes
 
+> **Fact:** Provide prototype aliases when refactoring controller methods to prevent runtime exceptions.  
 > **Confidence:** 95%  
-> **Source / Evidence:** site/js/admin-hub.js renderHuntAdmin -> renderfeature-moduleAdmin
+> **Source / Evidence:** templates/vanilla-edge/site/js/app.js
 
 ## Rule & Heuristic
-When refactoring methods in public client controllers, provide a prototype alias to prevent runtime PAGEERROR exceptions when older modules or event handlers invoke the previous symbol name.
+When refactoring methods in public client controllers, provide a prototype alias to prevent runtime PAGEERROR exceptions.
 
 ## Operational Pattern
 ```javascript
-renderHuntAdmin() {
-  this.renderfeature-moduleAdmin();
-}
+legacyMethod() { return this.newMethod(); }
 ```
 
 ## Anti-Pattern
-Renaming methods without aliases in large multi-view web applications.
+Renaming methods without aliases in multi-view web applications.

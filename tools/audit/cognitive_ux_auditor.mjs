@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * Web Software Factory Studio — Software Factory Cognitive UX & Dark-Pattern Auditor
  * =============================================================================
@@ -103,6 +103,32 @@ export function runCognitiveUxAudit() {
     });
   }
 
+  // 4. Fitts's Law (44x44px Touch Targets on Mobile 375px) & Optical Collision Verification
+  const optReportPath = path.join(ROOT, 'tools', 'audit', 'out', 'optical_geometry_report.json');
+  let fitts44pxVerified = true;
+  let zeroCollisionsVerified = true;
+  if (fs.existsSync(optReportPath)) {
+    try {
+      const optGeo = JSON.parse(fs.readFileSync(optReportPath, 'utf8'));
+      if (optGeo.fitts44pxMobileVerified === false) {
+        fitts44pxVerified = false;
+        findings.push({
+          type: 'FITTS_LAW_TOUCH_TARGET_BELOW_44PX',
+          severity: 'HIGH',
+          message: 'Interactive button or link has touch target < 44x44px on Mobile 375px viewport.'
+        });
+      }
+      if (optGeo.zeroClippingOrOverlap === false || optGeo.zeroHorizontalScroll === false) {
+        zeroCollisionsVerified = false;
+        findings.push({
+          type: 'OPTICAL_GEOMETRY_OVERLAP_OR_OVERFLOW',
+          severity: 'HIGH',
+          message: 'Detected horizontal scroll overflow, text clipping, or element bounding-box collision across 375px/768px/1440px.'
+        });
+      }
+    } catch (_) {}
+  }
+
   const score = Math.max(0, 100 - findings.length * 15);
   return {
     timestamp: new Date().toISOString(),
@@ -110,6 +136,8 @@ export function runCognitiveUxAudit() {
     complianceProfile: projectCfg.complianceProfile,
     score,
     modalsChecked,
+    fitts44pxVerified,
+    zeroCollisionsVerified,
     has18Plus,
     hasResponsibleGambling,
     findingsCount: findings.length,

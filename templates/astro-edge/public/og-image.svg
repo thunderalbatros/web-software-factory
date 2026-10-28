@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="web-software-factory">
+  <defs>
+    <radialGradient id="og-spotlight" cx="80%" cy="20%" r="75%">
+      <stop offset="0%" stop-color="oklch(0.68 0.19 265)" stop-opacity="0.32"/>
+      <stop offset="60%" stop-color="oklch(0.13 0.015 258)" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#05070b" stop-opacity="1"/>
+    </radialGradient>
+    <linearGradient id="og-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="oklch(0.68 0.19 265)" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#07090e"/>
+  <rect width="1200" height="630" fill="url(#og-spotlight)"/>
+  <rect x="48" y="48" width="1104" height="534" rx="28" fill="none" stroke="url(#og-border)" stroke-width="2"/>
+  <rect x="96" y="108" width="420" height="42" rx="21" fill="#111622" stroke="url(#og-border)" stroke-width="1"/>
+  <text x="122" y="135" fill="oklch(0.96 0.008 258)" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="16" font-weight="600" letter-spacing="1.5">SOTA 2026 · VERIFIED EDGE ARCHITECTURE</text>
+  <text x="96" y="275" fill="oklch(0.96 0.008 258)" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="64" font-weight="800" letter-spacing="-1.5">web-software-factory</text>
+  <text x="96" y="355" fill="#94a3b8" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="28" font-weight="500">Arquitectura standard-web · W3C DTCG OKLCH · 60-FPS GPU Motion · Zer</text>
+  <line x1="96" y1="455" x2="1104" y2="455" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1"/>
+  <text x="96" y="512" fill="#cbd5e1" font-family="monospace" font-size="20">W3C DTCG 2025.10 OKLCH  •  APCA Lc &gt;= 75  •  Cloudflare Edge</text>
+</svg>

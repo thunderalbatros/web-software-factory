@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * WebFactory FinOps — Antigravity Global MCP Profile Switcher
  * Switches C:\Users\tomas\.gemini\config\mcp_config.json between:

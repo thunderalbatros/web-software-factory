@@ -1,4 +1,4 @@
-﻿/**
+/**
  * tools/audit/diff_ui_adversarial.mjs — Diff-Driven Adversarial UI, Stagehand Selector Cache & Oxc Rust Linter Gate
  * =================================================================================================================
  * Synthesizes 4 SOTA Software Factory Technologies from the 50-Repository Architecture:
@@ -88,7 +88,7 @@ export function runDiffUiAdversarialGate(projectInput = '') {
   const existingEntryPath = entryHtmlCandidates.find(p => fs.existsSync(p));
   const indexHtml = existingEntryPath ? fs.readFileSync(existingEntryPath, 'utf8') : '';
 
-  const inlineExecScripts = indexHtml.match(/<script(?![^>]*src=)(?![^>]*application\/ld\+json)(?![^>]*speculationrules)[^>]*>/gi) || [];
+  const inlineExecScripts = indexHtml.match(/<script(?![^>]*src=)(?![^>]*application\/ld\+json)(?![^>]*application\/webmcp\+json)(?![^>]*speculationrules)[^>]*>/gi) || [];
   const inlineOnClicks = indexHtml.match(/\bonclick\s*=\s*["']/gi) || [];
   if (existingEntryPath && inlineExecScripts.length === 0 && inlineOnClicks.length === 0) {
     emitPass('csp-zero-inline-scripts', `${path.basename(existingEntryPath)} contains 0 inline executable <script> blocks and 0 inline onclick attributes`);

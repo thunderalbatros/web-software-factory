@@ -1,0 +1,69 @@
+name: Weekly Factory Autonomous Evolution (Monday 08:00 AM Argentina)
+
+on:
+  schedule:
+    # 11:00 UTC every Monday = 08:00 AM UTC-3 (America/Argentina/Buenos_Aires)
+    - cron: '0 11 * * 1'
+  workflow_dispatch:
+    inputs:
+      full_rag_rebuild:
+        description: 'Execute full SQLite FTS5 RAG rebuild (npm run rag:rebuild)'
+        required: false
+        default: 'true'
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  weekly-evolution-and-cto-briefing:
+    name: SOTA Evolution, Hard-Gated 100/100 QA & CTO Email Dispatch
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+
+    steps:
+      - name: 1. Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 2. Setup Node.js 24 (ESM + Built-in SQLite)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: 3. Install Dependencies & Headless Chromium
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: 4. Run Weekly Cron Evolution & Hard-Gated 100/100 Verification
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CTO_EMAIL_TO: ${{ secrets.CTO_EMAIL_TO || 'tomasbermudez777@gmail.com' }}
+        run: |
+          node tools/intelligence/weekly_cron_evolver.mjs --no-email
+
+      - name: 5. Dispatch Weekly Executive Report to tomasbermudez777@gmail.com
+        env:
+          CTO_EMAIL_TO: ${{ secrets.CTO_EMAIL_TO || 'tomasbermudez777@gmail.com' }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          N8N_EMAIL_WEBHOOK_URL: ${{ secrets.N8N_EMAIL_WEBHOOK_URL }}
+          EMAIL_WEBHOOK_URL: ${{ secrets.EMAIL_WEBHOOK_URL }}
+        run: |
+          node tools/intelligence/weekly_email_notifier.mjs
+
+      - name: 6. Commit & Push Verified Knowledge, Memory & Weekly Report
+        if: success()
+        run: |
+          git config user.name "WebFactory Autonomous Evolver"
+          git config user.email "tomasbermudez777@gmail.com"
+          git add knowledge/ weekly_update/ .agents/memory/
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore(weekly-evolution): actualización automática SOTA y reporte CTO [skip ci]"
+            git push
+          fi

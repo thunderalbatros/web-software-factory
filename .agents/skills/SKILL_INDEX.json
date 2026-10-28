@@ -9,42 +9,55 @@
       "verify-before-claim",
       "finops-context-budget",
       "strategic-compact",
-      "anti-shortcut-discipline"
+      "anti-shortcut-discipline",
+      "claude-council",
+      "arena-skill",
+      "caveman"
     ],
     "product-spec-architect": [
       "modularity",
       "constraint-driven-development",
       "code-structure",
-      "grill-me"
+      "grill-me",
+      "claude-council"
     ],
     "ux-designer": [
       "ryux",
       "design-system",
       "modern-frontend-design",
       "baseline-ui",
+      "css-scroll-driven",
       "minimal-surface-hierarchy",
       "utopia-fluid-ergonomics",
       "optical-symmetry-and-focus",
       "21st-ui",
+      "ui-component-harvester",
       "extract-design",
-      "wireframe"
+      "wireframe",
+      "threejs-r186-tsl-and-gsap-free"
     ],
     "copywriting-cro-strategist": [
       "copywriting",
       "cro",
       "pricing-and-onboarding-cro",
       "marketing-psychology",
+      "marketingskills",
       "stop-slop",
       "hallmark"
     ],
     "senior-coder": [
+      "ponytail",
+      "caveman",
       "baseline-ui",
+      "css-scroll-driven",
       "motion-engineer",
       "animation-performance",
       "emil-design-eng",
       "vanilla-motion-choreography",
+      "ui-component-harvester",
       "animate",
-      "layout-primitives-architect"
+      "layout-primitives-architect",
+      "threejs-r186-tsl-and-gsap-free"
     ],
     "edge-fullstack-architect": [
       "workers-best-practices",
@@ -52,10 +65,12 @@
       "error-handling",
       "security-and-hardening",
       "provider-fallback",
-      "number-parsing"
+      "number-parsing",
+      "ponytail"
     ],
     "seo-aeo-geo-architect": [
       "ai-seo-and-geo",
+      "marketingskills",
       "web-quality-skills",
       "web-perf"
     ],

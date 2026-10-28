@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Web Software Factory Studio — Automated Playwright Design Harvester
  * =============================================================================
  * Connects references/DEVTOOLS_HARVESTER_SNIPPET.js to Playwright-core.

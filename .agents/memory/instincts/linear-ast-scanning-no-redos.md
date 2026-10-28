@@ -1,27 +1,25 @@
 ---
 id: "linear-ast-scanning-no-redos"
-type: "performance_invariable"
+category: "performance_invariable"
 confidence: 0.98
+valid_from: "2026-10-25T00:00:00.000Z"
+valid_until: null
+superseded_by: null
 status: "ACTIVE"
-created_at: "2026-10-26T01:17:34.934Z"
 ---
 
 # Instinct: Linear Line-by-Line AST Scanning (Zero ReDoS)
 
+> **Fact:** Parse class methods linearly with line splitting to guarantee <500ms AST scans without catastrophic regex backtracking.  
 > **Confidence:** 98%  
 > **Source / Evidence:** tools/intelligence/ast_guard.mjs scanClassMethods
 
 ## Rule & Heuristic
-Nested regular expression quantifiers (e.g. `([^()]*|\([^()]*\))*`) cause catastrophic backtracking and terminal freezes on large files (>2,000 lines). Parse class methods linearly with line splitting.
+Nested regular expression quantifiers cause catastrophic backtracking. Parse class methods linearly with line splitting.
 
 ## Operational Pattern
 ```javascript
-// Linear method extraction
 const lines = classBody.split('\n');
-for (const line of lines) {
-  const m = line.trim().match(/^(?:(?:async|static|get|set|\*)\s+)*([a-zA-Z0-9_$]+)\s*\(/);
-  if (m && line.includes('{')) definedMethods.add(m[1]);
-}
 ```
 
 ## Anti-Pattern

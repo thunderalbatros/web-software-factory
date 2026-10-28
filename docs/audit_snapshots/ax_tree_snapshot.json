@@ -1,9 +1,69 @@
 {
-  "timestamp": "2026-10-26T00:38:46.805Z",
+  "timestamp": "2026-10-26T22:22:34.511Z",
   "projectId": "web-software-factory",
+  "compressionMetrics": {
+    "rawHtmlDomBytes": 17598,
+    "prunedAxTreeBytes": 2933,
+    "tokenReductionPercent": 83.3
+  },
+  "stagehandSelectorCache": {
+    "totalPrimitives": 4,
+    "intactOrHealed": 4,
+    "primitives": [
+      {
+        "id": "header-navigation-landmark",
+        "operation": "observe",
+        "primary_selector": "header",
+        "fallback_selectors": [
+          "nav[aria-label]",
+          "[role='banner']"
+        ],
+        "required": true,
+        "verified_selector": "header",
+        "status": "INTACT"
+      },
+      {
+        "id": "main-content-landmark",
+        "operation": "extract",
+        "primary_selector": "main",
+        "fallback_selectors": [
+          "#main-content",
+          "[role='main']"
+        ],
+        "required": true,
+        "verified_selector": "main",
+        "status": "INTACT"
+      },
+      {
+        "id": "primary-focal-cta",
+        "operation": "act",
+        "primary_selector": "[data-cta='primary']",
+        "fallback_selectors": [
+          ".btn-primary",
+          "main a[href]",
+          "main button"
+        ],
+        "required": true,
+        "verified_selector": "[data-cta='primary']",
+        "status": "INTACT"
+      },
+      {
+        "id": "footer-landmark",
+        "operation": "observe",
+        "primary_selector": "footer",
+        "fallback_selectors": [
+          ".site-footer",
+          "[role='contentinfo']"
+        ],
+        "required": true,
+        "verified_selector": "footer",
+        "status": "INTACT"
+      }
+    ]
+  },
   "landmarksCount": 8,
   "headingsCount": 9,
-  "controlsCount": 8,
+  "controlsCount": 11,
   "landmarks": [
     {
       "ref": "L1",
@@ -105,43 +165,69 @@
     {
       "ref": "E1",
       "role": "a",
-      "name": "Capacidades"
+      "name": "Capacidades",
+      "selector": "a"
     },
     {
       "ref": "E2",
       "role": "a",
-      "name": "Planes"
+      "name": "Planes",
+      "selector": "a"
     },
     {
       "ref": "E3",
       "role": "a",
-      "name": "Preguntas"
+      "name": "Preguntas",
+      "selector": "a"
     },
     {
       "ref": "E4",
       "role": "a",
-      "name": "Comenzar ahora con {{PROJECT_NAME}}"
+      "name": "Comenzar ahora con {{PROJECT_NAME}}",
+      "selector": "[data-cta='primary']"
     },
     {
       "ref": "E5",
       "role": "button",
-      "name": "Abrir demostración interactiva"
+      "name": "Abrir demostración interactiva",
+      "selector": "button"
     },
     {
       "ref": "E6",
       "role": "a",
-      "name": "Seleccionar Plan Esencial"
+      "name": "Seleccionar Plan Esencial",
+      "selector": "a"
     },
     {
       "ref": "E7",
       "role": "a",
-      "name": "Seleccionar Plan Profesional"
+      "name": "Seleccionar Plan Profesional",
+      "selector": "a"
     },
     {
       "ref": "E8",
+      "role": "input",
+      "name": "Tu nombre o empresa",
+      "selector": "#lead-name"
+    },
+    {
+      "ref": "E9",
+      "role": "input",
+      "name": "cto@empresa.com",
+      "selector": "#lead-email"
+    },
+    {
+      "ref": "E10",
       "role": "button",
-      "name": "Cerrar ventana de demostración"
+      "name": "Enviar solicitud de demostración",
+      "selector": "button"
+    },
+    {
+      "ref": "E11",
+      "role": "button",
+      "name": "Cerrar ventana de demostración",
+      "selector": "button"
     }
   ],
-  "ariaSnapshotPreview": "- banner \"Navegación principal\":\n  - navigation \"Menú principal\":\n    - strong: \"{{PROJECT_NAME}}\"\n    - list:\n      - listitem:\n        - link \"Capacidades\":\n          - /url: \"#features\"\n      - listitem:\n        - link \"Planes\":\n          - /url: \"#pricing\"\n      - listitem:\n        - link \"Preguntas\":\n          - /url: \"#faq\"\n- main \"Contenido principal\":\n  - region \"Propuesta de valor principal\":\n    - text: W3C DTCG 2025.10 • OKLCH • Cloudflare Edge\n    - 'heading \"{{PROJECT_NAME}}\" [level=1]'\n    - paragraph: Arquitectura web de alta conversión diseñada con tokens perceptuales OKLCH 90/8/2, escalas fluidas Utopia, animaciones nativas a 60 FPS y despliegue global en Cloudflare Workers Static Assets.\n    - 'link \"Comenzar ahora con {{PROJECT_NAME}}\"':\n      - /url: \"#pricing\"\n      - text: Comenzar ahora\n    - button \"Abrir demostración interactiva\": Ver demostración\n  - region \"Métricas y capacidades clave\":\n    - heading \"Ingeniería Visual y Rendimiento Determinista\" [level=2]\n    - paragraph: Primitivas CSS Baseline 2026 sin sobrecarga de frameworks pesados en el hilo principal.\n    - article \"Rendimiento Core Web Vitals\":\n      - heading \"Velocidad Instantánea en el Borde\" [level=3]\n      - paragraph: Pre-renderizado especulativo, View Transitions API y activos inmutables distribuidos en más de 300 nodos de Cloudflare.\n      - paragraph: \"100\"\n    - article \"Contraste Perceptual APCA\":\n      - heading \"Precisión Cromática OKLCH\" [level=3]\n      - paragraph: Jerarquía de superficie 90/8/2 con contraste APCA verificado y tipografía fluida sin saltos de layout.\n      - paragraph: \"60\"\n  - region \"Planes y precios transparentes\":\n    - heading \"Planes diseñados para escalar con tu operación\" [level=2]\n    - paragraph: Activación inmediata, sin costos ocultos y con garantía de rendimiento en producción.\n    - article \"Plan Inicial\":\n      - heading \"Esencial\" [level=3]\n      - paragraph: $0\n      - paragraph: Ideal para validar producto y lanzar con velocidad instantánea en el borde.\n      - link \"Seleccionar Plan Esencial\":\n        - /url: \"#features\"\n        - text: Empezar gratis\n    - article \"Plan Profesional Recomendado\":\n      - heading \"Profesional\" [level=3]\n      - paragraph: $49\n      - paragraph: Arquitectura completa con analítica en el borde, SEO/GEO automatizado y soporte prioritario.\n      - link \"Seleccionar Plan Profesional\":\n        - /url: \"#features\"\n        - text: Activar Plan Profesional\n  - region \"Preguntas frecuentes\":\n    - "
+  "ariaSnapshotPreview": "- banner \"Navegación principal\":\n  - navigation \"Menú principal\":\n    - strong: \"{{PROJECT_NAME}}\"\n    - list:\n      - listitem:\n        - link \"Capacidades\":\n          - /url: \"#features\"\n      - listitem:\n        - link \"Planes\":\n          - /url: \"#pricing\"\n      - listitem:\n        - link \"Preguntas\":\n          - /url: \"#faq\"\n- main \"Contenido principal\":\n  - region \"Propuesta de valor principal\":\n    - text: W3C DTCG 2025.10 • OKLCH • Cloudflare Edge\n    - 'heading \"{{PROJECT_NAME}}\" [level=1]'\n    - paragraph: Arquitectura web de alta conversión diseñada con tokens perceptuales OKLCH 90/8/2, escalas fluidas Utopia, animaciones nativas a 60 FPS y despliegue global en Cloudflare Workers Static Assets.\n    - 'link \"Comenzar ahora con {{PROJECT_NAME}}\"':\n      - /url: \"#pricing\"\n      - text: Comenzar ahora\n    - button \"Abrir demostración interactiva\": Ver demostración\n  - region \"Métricas y capacidades clave\":\n    - heading \"Ingeniería Visual y Rendimiento Determinista\" [level=2]\n    - paragraph: Primitivas CSS Baseline 2026 sin sobrecarga de frameworks pesados en el hilo principal.\n    - article \"Rendimiento Core Web Vitals\":\n      - heading \"Velocidad Instantánea en el Borde\""
 }

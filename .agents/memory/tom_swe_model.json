@@ -1,0 +1,171 @@
+{
+  "schema_version": "1.0.0-tom-swe-iclr2026",
+  "user_id": "tomas_cto_web_software_factory",
+  "last_updated": "2026-10-26T22:22:47.633Z",
+  "tier3_overall_user_model": {
+    "user_profile": {
+      "user_id": "tomas_cto_web_software_factory",
+      "overall_description": [
+        "Sole entrepreneur, agency founder, and CTO (Human-In-The-Loop) of the Multi-Project Web Software Factory Studio.",
+        "High strategic ambition: demands top-1% SOTA industrial Software Factory engineering (ISO/IEC 26550 SPLE, Spec-Kit SDD, 9-Role Agent Topology), exhaustive primary-source research, and zero shortcuts.",
+        "Values autonomous multi-role coordination, proactive verification before completion, and crystal-clear executive summaries in Argentine Spanish."
+      ],
+      "interactional_preferences": [
+        "[IMPORTANT] Always communicate with the user in Argentine Spanish; keep all code, identifiers, commits, and tests in English.",
+        "[IMPORTANT] Explain technical architectures clearly with structured executive reports and implementation plans; limit gate questions to max 5 with recommended defaults.",
+        "Prefer exhaustive, evidence-backed execution over partial prototypes; verify every change with CLI checks before claiming completion.",
+        "Fact-tag verified statements with [VERIFICADO: source, date] and unverified hypotheses with [ASUNCIÓN]."
+      ],
+      "coding_and_architectural_preferences": [
+        "[IMPORTANT] Hardware budget: HP 250 G8 Windows notebook — strictly zero heavy background daemons, NO Docker, NO local LLM servers (Ollama/vLLM), 60 FPS GPU-composited animations.",
+        "[IMPORTANT] Financial budget: Strict USD 0 / ARS 0 permanently free tier, zero credit card requirements, permissive open-source licenses only (MIT, Apache-2.0, BSD, CC0, ISC, OFL).",
+        "[IMPORTANT] Design & Craft Floor: W3C DTCG 2025.10 OKLCH tokens, APCA contrast (Lc >= 75/60), Utopia clamp() fluid scaling across 4 viewports with 0px horizontal scroll, RYUX v2.14.2 7-Pillar Gate, and 67 on-demand MIT design styles.",
+        "[IMPORTANT] 2026 Web Stack: Astro 5 / Vanilla-Edge on Cloudflare Workers Static Assets + D1 SQLite, Speculation Rules API, View Transitions API, CSS Scroll-Driven Animations, CSS Baseline 2026, and Agentic SEO/GEO (llms.txt + llms-full.txt + Schema.org JSON-LD).",
+        "Prefer Rust/SIMD zero-daemon CLI tools (oxlint, esbuild, odiff-bin) and SQLite FTS5 + MiniSearch + AST CodeGraph + Obsidian WikiGraph (Omni-RAG v5)."
+      ]
+    },
+    "session_summaries": [
+      {
+        "session_id": "session-2026-10-25-web-software-factory-extraction-and-audit",
+        "session_tldr": "Extracted standalone Web Software Factory Studio, upgraded Agent Team to 9 specialized roles covering universal skills, integrated Speculation Rules API, CSS Baseline 2026, Playwright A11y Tree Snapshots, odiff-bin SIMD, RYUX v2.14.2, and curated the dedicated Web Software Factory Omni-RAG v5 index."
+      },
+      {
+        "session_id": "session-2026-10-25-sota-100-optimization",
+        "session_tldr": "Audited 14 open-source reference collections (~130 repos), distilled universal 2026 UI & Motion Primitives, optimized Omni-RAG v5 FTS5/IDF hybrid latency to <25ms/query with 100% Hit@5, and elevated the deterministic Eval Matrix to 100/100 (S+ Elite)."
+      }
+    ]
+  },
+  "tier2_session_analyses": [
+    {
+      "session_id": "session-2026-10-25-web-software-factory-extraction-and-audit",
+      "intent": "architecture_and_factory_optimization",
+      "user_modeling_summary": "User separated the Web Software Factory Studio from the initial product repository to build modern, aesthetic, secure, elegant, fluid, and high-converting websites for multiple projects and clients, with a dedicated web-engineering RAG.",
+      "emotions": "strategic, quality-driven, systematic",
+      "extracted_preferences": [
+        "Keep Studio and Client Projects strictly decoupled via factory.project.json.",
+        "Maintain independent, domain-pure Omni-RAG v5 databases per workspace."
+      ],
+      "last_updated": "2026-10-25T19:50:00.000Z"
+    },
+    {
+      "session_id": "session-2026-10-25-design-systems-and-templates",
+      "intent": "visual_craft_and_template_engineering",
+      "user_modeling_summary": "User requires turnkey astro-edge and vanilla-edge templates pre-wired with W3C DTCG 2025.10 OKLCH tokens, APCA contrast, Speculation Rules API, CSS Baseline 2026, and 67 on-demand MIT design styles.",
+      "emotions": "ambitious, detail-oriented",
+      "extracted_preferences": [
+        "Use Progressive Disclosure to load only the selected design style into .specify/memory/style-guide.md.",
+        "Enforce RYUX v2.14.2 and odiff-bin SIMD visual regression gates before HITL review."
+      ],
+      "last_updated": "2026-10-25T20:10:00.000Z"
+    },
+    {
+      "session_id": "session-2026-10-25-sota-100-optimization",
+      "intent": "self_evolving_factory_and_eval_harness",
+      "user_modeling_summary": "User commissioned a 5-dimension audit across ./references/, .agents/agency/, Omni-RAG v5, Self-Evolving Factory, and eval_matrix.mjs to certify 100/100 S+ Elite readiness before launching client projects.",
+      "emotions": "analytical, exacting, forward-looking",
+      "extracted_preferences": [
+        "Ensure eval_matrix.mjs, ast_guard.mjs, and diff_ui_adversarial.mjs evaluate Studio templates and projects with 100/100 deterministic accuracy.",
+        "Keep SHA-256 Constitutional Lock and Anti-Reward-Hacking floors strictly enforced."
+      ],
+      "last_updated": "2026-10-25T20:38:00.000Z"
+    }
+  ],
+  "tier1_cleaned_signals": [
+    {
+      "id": "sig-wsf-001",
+      "signal_id": "sig-wsf-001",
+      "fact": "5-Layer ISO/IEC 26550 Web Software Factory with 9-Role Agent Topology and Spec-Kit SDD",
+      "rule": "5-Layer ISO/IEC 26550 Web Software Factory with 9-Role Agent Topology and Spec-Kit SDD",
+      "category": "architectural_and_product_preference",
+      "valid_from": "2026-10-25T00:00:00.000Z",
+      "valid_until": null,
+      "superseded_by": null,
+      "confidence": 1,
+      "enforced_by": "tools/factory.mjs + .agents/agency/ORGANIZATION.md"
+    },
+    {
+      "id": "sig-wsf-002",
+      "signal_id": "sig-wsf-002",
+      "fact": "Mandatory 5-Gate Visual & Security Verification (RYUX + Oxc + Playwright 4-Viewport + odiff SIMD + A11y Snapshot) before HITL",
+      "rule": "Mandatory 5-Gate Visual & Security Verification (RYUX + Oxc + Playwright 4-Viewport + odiff SIMD + A11y Snapshot) before HITL",
+      "category": "aesthetic_and_ui_preference",
+      "valid_from": "2026-10-25T00:00:00.000Z",
+      "valid_until": null,
+      "superseded_by": null,
+      "confidence": 1,
+      "enforced_by": "tools/factory.mjs visual-gate"
+    },
+    {
+      "id": "sig-wsf-003",
+      "signal_id": "sig-wsf-003",
+      "fact": "W3C DTCG 2025.10 OKLCH 90/8/2 Chromatic Budget + APCA Contrast (Lc >= 75/60) + Utopia clamp() Fluid Scales",
+      "rule": "W3C DTCG 2025.10 OKLCH 90/8/2 Chromatic Budget + APCA Contrast (Lc >= 75/60) + Utopia clamp() Fluid Scales",
+      "category": "aesthetic_and_ui_preference",
+      "valid_from": "2026-10-25T00:00:00.000Z",
+      "valid_until": null,
+      "superseded_by": null,
+      "confidence": 1,
+      "enforced_by": "CONSTRAINTS.md + tools/audit/ryux_design_gate.mjs"
+    },
+    {
+      "id": "sig-wsf-004",
+      "signal_id": "sig-wsf-004",
+      "fact": "Zero-Cost Permament Architecture (USD 0.00, Zero Credit Card, MIT/Apache-2.0/BSD Licenses, Zero Docker on HP 250 G8)",
+      "rule": "Zero-Cost Permament Architecture (USD 0.00, Zero Credit Card, MIT/Apache-2.0/BSD Licenses, Zero Docker on HP 250 G8)",
+      "category": "architectural_and_product_preference",
+      "valid_from": "2026-10-25T00:00:00.000Z",
+      "valid_until": null,
+      "superseded_by": null,
+      "confidence": 1,
+      "enforced_by": "CONSTRAINTS.md + docs/COST_AUDIT.md"
+    },
+    {
+      "id": "sig-wsf-005",
+      "signal_id": "sig-wsf-005",
+      "fact": "Supercharged Omni-RAG v5 Domain-Pure Web Engineering Brain (>=95% Hit@5 Recall in <350ms)",
+      "rule": "Supercharged Omni-RAG v5 Domain-Pure Web Engineering Brain (>=95% Hit@5 Recall in <350ms)",
+      "category": "architectural_and_product_preference",
+      "valid_from": "2026-10-25T00:00:00.000Z",
+      "valid_until": null,
+      "superseded_by": null,
+      "confidence": 1,
+      "enforced_by": "tools/intelligence/rag_pipeline.mjs + tools/intelligence/eval_matrix.mjs"
+    },
+    {
+      "id": "cto-pref-button-radius-v1",
+      "signal_id": "cto-pref-button-radius-v1",
+      "fact": "Usar botones primarios con bordes redondeados suaves de 12px",
+      "rule": "Usar botones primarios con bordes redondeados suaves de 12px",
+      "category": "aesthetic_and_ui_preference",
+      "valid_from": "2026-10-26T18:55:17.866Z",
+      "valid_until": "2026-10-26T18:55:17.890Z",
+      "superseded_by": "cto-pref-button-radius-v2",
+      "confidence": 0.99,
+      "enforced_by": "CTO HITL Feedback Loop"
+    },
+    {
+      "id": "cto-pref-button-radius-v2",
+      "signal_id": "cto-pref-button-radius-v2",
+      "fact": "Usar botones primarios tipo píldora (9999px) con alto contraste OKLCH",
+      "rule": "Usar botones primarios tipo píldora (9999px) con alto contraste OKLCH",
+      "category": "aesthetic_and_ui_preference",
+      "valid_from": "2026-10-26T18:55:17.890Z",
+      "valid_until": "2026-10-26T19:00:22.425Z",
+      "superseded_by": "cto-pref-prefiero-botones-principales-tipo-pí-g5qy",
+      "confidence": 0.99,
+      "enforced_by": "CTO HITL Feedback Loop"
+    },
+    {
+      "id": "cto-pref-prefiero-botones-principales-tipo-pí-g5qy",
+      "signal_id": "cto-pref-prefiero-botones-principales-tipo-pí-g5qy",
+      "fact": "Prefiero botones principales tipo píldora con alto contraste OKLCH y animaciones suaves de 60 FPS",
+      "rule": "Prefiero botones principales tipo píldora con alto contraste OKLCH y animaciones suaves de 60 FPS",
+      "category": "aesthetic_and_ui_preference",
+      "valid_from": "2026-10-26T19:00:22.425Z",
+      "valid_until": null,
+      "superseded_by": null,
+      "confidence": 0.99,
+      "enforced_by": "CTO HITL Feedback Loop"
+    }
+  ]
+}

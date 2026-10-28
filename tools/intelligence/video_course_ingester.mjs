@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Web Software Factory Studio — Video Course & Tutorial Ingester
  * =============================================================================
  * Ingests online video courses, masterclasses, and technical talks (e.g. YouTube)

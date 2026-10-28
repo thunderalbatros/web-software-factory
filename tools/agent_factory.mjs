@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * tools/agent_factory.mjs — Autonomous Agent Factory Command Center
  * =============================================================================

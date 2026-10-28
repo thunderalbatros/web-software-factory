@@ -1,0 +1,153 @@
+{
+  "timestamp": "2026-10-28T01:10:06.035Z",
+  "dimensions": {
+    "rag": {
+      "score": 100,
+      "queriesTested": 30,
+      "queriesPassed": 30,
+      "hitAt5Rate": "100.0%",
+      "mrr": 0.708,
+      "contextPrecisionAt3": 0.956,
+      "faithfulness": 0.981,
+      "totalLatencyMs": 276
+    },
+    "ast": {
+      "score": 100,
+      "passed": true,
+      "missingMethods": 0,
+      "securityBlockers": 0
+    },
+    "performance": {
+      "score": 100,
+      "distMb": "0.08",
+      "passed": true
+    },
+    "compliance": {
+      "score": 100,
+      "passed": true
+    },
+    "pqc": {
+      "score": 100,
+      "ryuxScore": 100,
+      "fpsMeasured": 60,
+      "clsScore": 0,
+      "tomSwePassed": true,
+      "diffUiAdversarialPassed": true,
+      "passed": true
+    }
+  },
+  "hardGatedBlocks": {
+    "buildAndStatic": {
+      "name": "Build Limpio + Oxlint + AST Guard",
+      "points": 25,
+      "maxPoints": 25,
+      "criticalPassed": true,
+      "reason": null
+    },
+    "securityZeroTrust": {
+      "name": "Ciberseguridad Zero-Trust (security_gate)",
+      "points": 25,
+      "maxPoints": 25,
+      "criticalPassed": true,
+      "reason": null
+    },
+    "chaosDestructive": {
+      "name": "Test Destructivo Anti-Fallos (chaos_monkey_test)",
+      "points": 25,
+      "maxPoints": 25,
+      "criticalPassed": true,
+      "reason": null
+    },
+    "visualAndMotion": {
+      "name": "Calidad Visual, Geometría Óptica y 60FPS",
+      "points": 25,
+      "maxPoints": 25,
+      "criticalPassed": true,
+      "reason": null
+    }
+  },
+  "passed": true,
+  "vetoTriggered": false,
+  "vetoReasons": [],
+  "vetoInvariantVerified": true,
+  "compositeScore": 100,
+  "chaosSummary": {
+    "zeroConsoleAndRuntimeErrors": true,
+    "deadLinkAndFakeButtonHunter": true,
+    "rageClickResilience": true,
+    "formFuzzingResilience": true,
+    "extremeViewportResilience": true
+  },
+  "chaosDetails": {
+    "runtimeErrors": [],
+    "consoleErrors": [],
+    "unexpectedAlerts": 0,
+    "deadLinks": [],
+    "brokenAnchors": [],
+    "fakeButtons": [],
+    "brokenHttpRoutes": [],
+    "rageClick": {
+      "testedButtons": 3,
+      "clicksPerButton": 5,
+      "burstElapsedMs": 30,
+      "within200ms": true,
+      "mainIntact": true
+    },
+    "formFuzzing": {
+      "payloadsTested": 7,
+      "referenceSanitizerOk": true,
+      "anyOverflow": false,
+      "anyXssExecuted": false,
+      "outcomes": [
+        {
+          "payload": "empty_fields",
+          "overflowX": false,
+          "xssExecuted": false
+        },
+        {
+          "payload": "long_5000_chars",
+          "overflowX": false,
+          "xssExecuted": false
+        },
+        {
+          "payload": "unicode_emojis",
+          "overflowX": false,
+          "xssExecuted": false
+        },
+        {
+          "payload": "invalid_email",
+          "overflowX": false,
+          "xssExecuted": false
+        },
+        {
+          "payload": "xss_script_payload",
+          "overflowX": false,
+          "xssExecuted": false
+        },
+        {
+          "payload": "fc_svg_onload_xss",
+          "overflowX": false,
+          "xssExecuted": false
+        },
+        {
+          "payload": "fc_proto_and_numeric_edge",
+          "overflowX": false,
+          "xssExecuted": false
+        }
+      ]
+    },
+    "viewportSweep": {
+      "testedWidths": [
+        320,
+        375,
+        480,
+        768,
+        1024,
+        1440,
+        1920
+      ],
+      "failures": []
+    }
+  },
+  "tier": "S+ (Elite)"
+}

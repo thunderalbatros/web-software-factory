@@ -1,0 +1,26 @@
+{
+  "$schema": "https://webfactory.local/schemas/gcp-finops-budget-v1.json",
+  "version": "2026.10.27",
+  "policy": "SERVERLESS_ZERO_IDLE_FINOPS_SHIELD",
+  "totalPromotionalCreditUsd": 90.00,
+  "maxDailySpendUsd": 1.50,
+  "allow24x7Instances": false,
+  "enforceImplicitContextCache": true,
+  "forbidExplicitPaidCacheStorage": true,
+  "pricingTableUsd": {
+    "imagen-3.0-generate-002": {
+      "perImageUsd": 0.03,
+      "description": "Vertex AI Imagen 3 — Placas base Image-to-3D, texturas PBR tileables y fondos Hero AVIF"
+    },
+    "gemini-2.5-pro": {
+      "inputPer1MUsd": 1.25,
+      "outputPer1MUsd": 5.00,
+      "description": "Vertex AI Gemini 2.5 Pro Vision — Auditoría profunda de escenas 3D, iluminación HDR y contraste APCA"
+    },
+    "gemini-2.5-flash": {
+      "inputPer1MUsd": 0.15,
+      "outputPer1MUsd": 0.60,
+      "description": "Vertex AI Gemini 2.5 Flash — Auditoría visual rápida, HyDE y síntesis Speculative RAG"
+    }
+  }
+}

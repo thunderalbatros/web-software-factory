@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * Web Software Factory Studio — Google Lighthouse (0-100) & Pa11y (WCAG2AA) Automated Super-Auditor
  * Integrates:

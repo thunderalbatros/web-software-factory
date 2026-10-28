@@ -1,4 +1,4 @@
-﻿---
+---
 name: 21st-ui
 description: "Find, inspect, adapt and integrate high-end modern UI components, design tokens, micro-interactions, shaders, bento blocks, and."
 ---
@@ -14,15 +14,15 @@ When 21st MCP or CLI is active, the agent has access to:
 - `get_inspiration(category)`: Retrieve curated design patterns and visual references.
 - `search_logo(brand)`: Get pixel-perfect SVG brand logos as ready-to-paste components.
 
-## 2. Adaptation Workflow for client-portal (Vanilla CSS / $0 Budget)
-WebFactory runs with high performance inside OBS and web browsers without heavy runtime overhead:
-1. **Search & Retrieve**: Find the component on 21st.dev (via MCP, web search, or `references/ui-kb/`).
-2. **Translate to Vanilla CSS / WAAPI**:
-   - Convert Tailwind utility classes to semantic CSS classes with client-portal design tokens (`--bg-card`, `--border-subtle`, `--gold`, `--RealtimeHub-green`, `--cyan`).
-   - Replace heavy runtime animation libraries with CSS `@keyframes` or Web Animations API (WAAPI) for 0% CPU footprint.
-3. **Embed in Overlays & Dashboards**:
-   - Ensure WCAG AA contrast against dark glassmorphism backgrounds.
-   - Test in 1440px, 768px, and 390px viewports.
+## 2. Zero-Bloat Adaptation Workflow (`ui-component-harvester` Law)
+Web Software Factory runs with ultra-fast Edge performance (`<50MB` dist, `60 FPS` compositor budget) without heavy client-side React runtime overhead:
+1. **Search & Retrieve**: Find the component on `21st.dev` or in the Local Vault (`magicui`, `motion-primitives`, `react-bits`, `kokonutui`).
+2. **Translate via `ui-component-harvester` (Zero React Bloat)**:
+   - Strip `framer-motion`, `@radix-ui/*`, and Tailwind utility chains.
+   - Convert to semantic HTML5 (`<dialog>`, `<details>`, `<section>`) + W3C DTCG OKLCH tokens (`var(--surface-canvas)`, `var(--surface-elevated)`, `var(--text-primary)`, `var(--accent-primary)`) + Utopia fluid `clamp()` scales (`var(--step-0)` to `var(--step-5)`).
+   - Replace JS scroll/spring loops with `motion-engine.css` (`animation-timeline: view()`, `linear()` springs, `@starting-style`) for 0% main-thread blocking.
+3. **Verify across 3 Viewports**:
+   - Ensure APCA contrast floor (`Lc >= 75` body, `Lc >= 60` headings) and test in `1440px`, `768px`, and `375px` viewports via `node tools/audit/visual_audit.mjs`.
 
 ## 3. High-Value 21st.dev Components for Casino Streaming Suites
 - **Border Beam / Electric Border**: Glowing animated border traveling around cards (used in Battle Corner & King of the Hill).

@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * Antigravity Native Token Guard Hook (.agents/hooks.json)
  * Implements Antigravity's official camelCase stdin/stdout Hook Contract:

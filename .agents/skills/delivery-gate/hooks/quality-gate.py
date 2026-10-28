@@ -15,6 +15,7 @@ import re
 import json
 import datetime
 import shutil
+import subprocess
 import logging
 from typing import Optional
 
@@ -145,6 +146,50 @@ def main() -> None:
                 log.warning('transcript_path %s not found, falling back to raw stdin', tp)
     except (json.JSONDecodeError, TypeError, OSError):
         pass
+
+    # 0. Ultra-fast Oxlint + AST Guard + Supply Chain Guard Pre-Filter
+    cwd = os.environ.get('CLAUDE_PROJECT_DIR', os.getcwd())
+    ast_script = os.path.join(cwd, 'tools', 'audit', 'ast_guard.mjs')
+    supply_script = os.path.join(cwd, 'tools', 'audit', 'supply_chain_guard.mjs')
+    if os.path.exists(ast_script):
+        try:
+            ox_res = subprocess.run(
+                ['npx', 'oxlint', '--deny-warnings', 'templates/vanilla-edge/site/js'],
+                cwd=cwd,
+                capture_output=True,
+                text=True,
+                timeout=8,
+                shell=(os.name == 'nt')
+            )
+            if ox_res.returncode != 0:
+                log.warning('Blocked by Oxlint (--deny-warnings): %s', (ox_res.stdout + ox_res.stderr)[:300])
+                sys.exit(2)
+
+            ast_res = subprocess.run(
+                ['node', ast_script],
+                cwd=cwd,
+                capture_output=True,
+                text=True,
+                timeout=8
+            )
+            if ast_res.returncode != 0:
+                log.warning('Blocked by AST Guard (<500ms): %s', (ast_res.stdout + ast_res.stderr)[:300])
+                sys.exit(2)
+
+            if os.path.exists(supply_script):
+                supply_res = subprocess.run(
+                    ['node', supply_script],
+                    cwd=cwd,
+                    capture_output=True,
+                    text=True,
+                    timeout=18
+                )
+                if supply_res.returncode != 0:
+                    log.warning('Blocked by Supply Chain Guard (Anti-Slopsquatting / SRI / Audit): %s',
+                                (supply_res.stdout + supply_res.stderr)[:300])
+                    sys.exit(2)
+        except Exception as exc:
+            log.warning('Pre-filter execution warning: %s', exc)
 
     # 1. Disk check — three-level: remind / warn / block
     disk_free = check_disk()

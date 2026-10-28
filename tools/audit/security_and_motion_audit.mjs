@@ -1,4 +1,4 @@
-﻿// Security & Motion Performance Automated Auditor
+// Security & Motion Performance Automated Auditor
 // Enforces Cloudflare Security Audit rules & Emil Kowalski 60 FPS animation constraints
 // Usage: node tools/audit/security_and_motion_audit.mjs [--project <slug>]
 

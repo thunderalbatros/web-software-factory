@@ -1,0 +1,8 @@
+# Agencia Alfa
+
+> Official AI & LLM Context Manifest (Agentic SEO / AEO Standard 2026)
+
+- **Project ID:** `agencia-alfa`
+- **Archetype:** `saas-b2b`
+- **Primary URL:** https://agencia-alfa.com
+- **Health Endpoint:** `/api/health`

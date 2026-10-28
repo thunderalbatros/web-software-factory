@@ -1,0 +1,317 @@
+/**
+ * Web Software Factory — Native 60/120FPS GPU Motion Engine & Visual Primitives (SOTA 2026)
+ * =========================================================================================
+ * 1. CSS Scroll-Driven Animations (animation-timeline: view() & scroll())
+ * 2. View Transitions API (Same-Document & Cross-Document Morphing)
+ * 3. Physical Springs via linear() & Discrete @starting-style / allow-discrete
+ * 4. Anti-"Invisible Content Trap" Progressive Enhancement (.js-ready + CSS failsafe)
+ * 5. Bento Subgrid + @container Queries + Spotlight / Magnetic / OKLCH Grain / Glassmorphism
+ * =========================================================================================
+ */
+
+:root {
+  /* Physical Spring & Cinematic Easing Tokens */
+  --ease-spring-snappy: linear(
+    0, 0.3566 9.6%, 0.7852 21.1%, 1.0156 32.2%, 1.0738 41.3%, 1.0468 53.6%, 1.0062 69.8%, 1
+  );
+  --ease-spring-gentle: linear(
+    0, 0.245 8.5%, 0.642 19.8%, 0.916 31.4%, 1.021 43.2%, 1.018 59.1%, 1
+  );
+  --ease-cinematic-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-cinematic-inout: cubic-bezier(0.65, 0, 0.35, 1);
+
+  --duration-fast: 160ms;
+  --duration-normal: 280ms;
+  --duration-slow: 520ms;
+
+  /* Reactive Pointer & Magnetic Defaults */
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --mag-x: 0px;
+  --mag-y: 0px;
+
+  /* Inline SVG feTurbulence Subtle Editorial Grain (Zero Network Requests) */
+  --editorial-grain-svg: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.038'/%3E%3C/svg%3E");
+}
+
+/* ==========================================================================
+   1. VIEW TRANSITIONS API (SAME-DOCUMENT & CROSS-DOCUMENT)
+   ========================================================================== */
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: var(--duration-normal);
+  animation-timing-function: var(--ease-cinematic-out);
+}
+
+.hero-badge {
+  view-transition-name: vt-hero-badge;
+}
+
+.hero-section h1 {
+  view-transition-name: vt-hero-title;
+}
+
+.btn-primary[data-cta="primary"] {
+  view-transition-name: vt-primary-cta;
+}
+
+/* ==========================================================================
+   2. ANTI-"INVISIBLE CONTENT TRAP" & PROGRESSIVE ENHANCEMENT GUARD
+   ========================================================================== */
+@keyframes safeVisibilityFallback {
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+/* Never allow elements to stay at opacity: 0 if JS fails or before hydration */
+[data-scroll-reveal],
+.scroll-reveal,
+.animate-enter {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  will-change: transform, opacity;
+}
+
+/* ==========================================================================
+   3. CSS SCROLL-DRIVEN ANIMATIONS (animation-timeline: view() & scroll())
+   ========================================================================== */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand-accent), var(--brand-cta));
+  transform-origin: 0% 50%;
+  transform: scaleX(0);
+  z-index: 100;
+  pointer-events: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes scrollProgressScale {
+      from { transform: scaleX(0); }
+      to { transform: scaleX(1); }
+    }
+    .scroll-progress-bar {
+      animation: scrollProgressScale linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    @keyframes gpuViewReveal {
+      0% {
+        opacity: 0.78;
+        transform: translate3d(0, 14px, 0) scale(0.985);
+      }
+      100% {
+        opacity: 1;
+        transform: translate3d(0, 0, 0) scale(1);
+      }
+    }
+
+    @keyframes gpuOpticParallax {
+      from { transform: translate3d(0, 10px, 0); }
+      to { transform: translate3d(0, -10px, 0); }
+    }
+
+    [data-scroll-reveal],
+    .scroll-reveal {
+      animation: gpuViewReveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 24%;
+    }
+
+    .scroll-parallax-optic,
+    [data-parallax-optic] {
+      animation: gpuOpticParallax linear both;
+      animation-timeline: view();
+      animation-range: entry 0% exit 100%;
+    }
+  }
+}
+
+/* ==========================================================================
+   4. SPRING PHYSICS & DISCRETE TRANSITIONS (@starting-style + allow-discrete)
+   ========================================================================== */
+.btn-spring,
+.btn-primary,
+.btn-secondary,
+.magnetic-surface {
+  transition:
+    transform var(--duration-normal) var(--ease-spring-snappy),
+    opacity var(--duration-fast) ease,
+    border-color var(--duration-fast) ease,
+    box-shadow var(--duration-normal) var(--ease-cinematic-out);
+  transform: translate3d(var(--mag-x, 0px), var(--mag-y, 0px), 0);
+}
+
+.btn-spring:hover,
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform: translate3d(var(--mag-x, 0px), calc(var(--mag-y, 0px) - 2px), 0) scale(1.015);
+}
+
+.btn-spring:active,
+.btn-primary:active,
+.btn-secondary:active {
+  transform: translate3d(0, 0, 0) scale(0.975);
+}
+
+.dialog-modal,
+[popover],
+.discrete-menu,
+.tooltip-surface {
+  transition:
+    opacity var(--duration-normal) var(--ease-cinematic-out),
+    transform var(--duration-normal) var(--ease-spring-snappy),
+    overlay var(--duration-normal) allow-discrete,
+    display var(--duration-normal) allow-discrete;
+}
+
+@starting-style {
+  .dialog-modal[open],
+  [popover]:popover-open,
+  .discrete-menu[data-open="true"],
+  .tooltip-surface[data-open="true"] {
+    opacity: 0;
+    transform: translate3d(0, 8px, 0) scale(0.96);
+  }
+}
+
+/* ==========================================================================
+   5. BENTO ASYMMETRIC SUBGRID, CONTAINER QUERIES & SURFACE EFFECTS
+   ========================================================================== */
+.bento-grid-container {
+  container-type: inline-size;
+  container-name: bento-stage;
+}
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: var(--space-m);
+}
+
+.bento-card {
+  grid-column: span 4;
+  container-type: inline-size;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.bento-card[data-span="8"] {
+  grid-column: span 8;
+}
+
+.bento-card[data-span="6"] {
+  grid-column: span 6;
+}
+
+@supports (grid-template-rows: subgrid) {
+  .bento-subgrid-card {
+    display: grid;
+    grid-row: span 3;
+    grid-template-rows: subgrid;
+  }
+}
+
+@container bento-stage (max-width: 900px) {
+  .bento-card,
+  .bento-card[data-span="8"],
+  .bento-card[data-span="6"] {
+    grid-column: span 6;
+  }
+}
+
+@container bento-stage (max-width: 600px) {
+  .bento-card,
+  .bento-card[data-span="8"],
+  .bento-card[data-span="6"] {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-card,
+  .bento-card[data-span="8"],
+  .bento-card[data-span="6"] {
+    grid-column: 1 / -1;
+  }
+}
+
+/* Spotlight & Specular 1px Glassmorphism */
+.spotlight-card,
+.bento-card {
+  background:
+    radial-gradient(
+      420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      oklch(0.78 0.14 162 / 0.11),
+      transparent 65%
+    ),
+    var(--surface-elevated);
+}
+
+.glass-surface {
+  background: var(--surface-glass);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid var(--border-highlight);
+  box-shadow: inset 0 1px 0 0 oklch(1 0 0 / 0.12);
+}
+
+.oklch-gradient-surface {
+  background: linear-gradient(
+    135deg in oklch,
+    var(--surface-elevated) 0%,
+    oklch(0.22 0.04 258) 55%,
+    oklch(0.24 0.06 162 / 0.85) 100%
+  );
+}
+
+.editorial-grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--editorial-grain-svg);
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: overlay;
+}
+
+/* ==========================================================================
+   6. ACCESSIBLE REDUCED MOTION FALLBACK (SMOOTH OPACITY, ZERO JOLT)
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 120ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .btn-spring:hover,
+  .btn-primary:hover,
+  .btn-secondary:hover,
+  [data-scroll-reveal],
+  .scroll-reveal {
+    transform: none !important;
+    opacity: 1 !important;
+  }
+}

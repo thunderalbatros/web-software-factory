@@ -1,8 +1,30 @@
 {
-  "753687086f0b92aba6de76763bc6fc336470d5bc2d56d0cb0c58c8816f2c8e81": {
-    "text": "Como Analista Cuantitativo Jefe del \"50-Spin Sniper & Risk Engine\", confirmo la clasificación \"S-TIER SNIPER (Cadencia Alta)\" para \"Tome of Life\" en una ventana estricta de 50 giros, basándonos en los siguientes puntos clave:\n\n*   **Alta Probabilidad de Retorno Positivo y Activación de Bono:** Con un 45.54% de probabilidad de cerrar la sesión en profit y un 35.38% de chance de activar el bono en 50 giros, este slot ofrece oportunidades concretas de capitalización en un corto período de tiempo, fundamentales para nuestra estrategia \"Sniper\".\n*   **Frecuencia de Premios Sostenida (Cadencia Alta):** La \"Hit Frequency Base\" del 33.5% se traduce en un promedio de 16.8 giros con premio cada 50 intentos. Esta alta cadencia minimiza las rachas de \"dead spins\", extendiendo la jugabilidad y manteniendo el bankroll activo dentro de la ventana de ataque.\n*   **Gestión de Riesgo Rigurosa para Ataque Controlado:** La apuesta segura recomendada de $0.32 USD por giro limita el riesgo de la sesión completa a $16 USD (16% del bankroll total). Esta disciplina de capital es indispensable para un enfoque \"Sniper\" que maximiza las oportunidades sin exponer el capital a la varianza inherente en períodos cortos.",
-    "createdAt": 1792700123370,
-    "expiresAt": 1792743323370,
-    "operation": "sniper_tactical_briefing"
-  }
+  "schema": "vertex-prompt-cache-v2-hot-prefix",
+  "cacheKey": "cc4c66140c6471fb2b12d524786a9184d886f74807dfaa10fcde2de340ca865a",
+  "updatedAt": "2026-10-26T22:22:46.559Z",
+  "ttlSeconds": 86400,
+  "hotContextFiles": [
+    {
+      "path": "AGENTS.md",
+      "tokens": 461,
+      "sha256": "4fbedbe124839a0a"
+    },
+    {
+      "path": "CONSTRAINTS.md",
+      "tokens": 600,
+      "sha256": "ebb2d873c455fb62"
+    },
+    {
+      "path": "tokens/design.tokens.json",
+      "tokens": 1553,
+      "sha256": "0862af92fde40d51"
+    },
+    {
+      "path": ".agents/memory/tom_swe_model.json",
+      "tokens": 2554,
+      "sha256": "e02e5110e8832103"
+    }
+  ],
+  "totalHotTokens": 5168,
+  "policy": "100% static cacheable prefix; zero bulk knowledge/ injection allowed."
 }

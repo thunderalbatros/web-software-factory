@@ -19,6 +19,137 @@ import { fileURLToPath } from 'node:url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 export const FACTORY_ROOT = path.resolve(__dirname, '..', '..');
+export const ACTIVE_PROJECT_PATH = path.join(FACTORY_ROOT, '.agents', 'memory', 'active_project.json');
+export const PROJECTS_DIR = path.join(FACTORY_ROOT, 'projects');
+
+export function getActiveProject() {
+  if (!fs.existsSync(ACTIVE_PROJECT_PATH)) return null;
+  try {
+    const data = JSON.parse(fs.readFileSync(ACTIVE_PROJECT_PATH, 'utf8'));
+    const slug = String(data.activeSlug || data.id || '').trim();
+    if (!slug) return null;
+    const candidateRoot = data.projectRoot
+      ? path.resolve(FACTORY_ROOT, data.projectRoot)
+      : path.join(PROJECTS_DIR, slug);
+    if (fs.existsSync(candidateRoot) && fs.statSync(candidateRoot).isDirectory()) {
+      return {
+        ...data,
+        activeSlug: slug,
+        projectRoot: candidateRoot
+      };
+    }
+  } catch (_) {}
+  return null;
+}
+
+export function setActiveProject(slugOrPath, extraMeta = {}) {
+  const raw = String(slugOrPath || '').trim();
+  if (!raw) return null;
+  const slug = path.basename(raw).toLowerCase().replace(/[^a-z0-9-]+/g, '-').replace(/(^-|-$)/g, '');
+  const slugDir = path.join(PROJECTS_DIR, slug);
+  const directDir = path.resolve(FACTORY_ROOT, raw);
+  const projectRoot = fs.existsSync(slugDir) ? slugDir : directDir;
+
+  let manifest = {};
+  const manifestPath = path.join(projectRoot, 'factory.project.json');
+  if (fs.existsSync(manifestPath)) {
+    try {
+      manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+    } catch (_) {}
+  }
+
+  const state = {
+    activeSlug: manifest.id || slug,
+    name: manifest.name || extraMeta.name || slug,
+    projectRoot: path.relative(FACTORY_ROOT, projectRoot).replace(/\\/g, '/') || '.',
+    stack: extraMeta.stack || manifest.stack || 'vanilla-edge',
+    archetype: extraMeta.archetype || manifest.archetype || 'saas-b2b',
+    style: extraMeta.style || manifest.design?.styleSkill || 'bento',
+    updatedAt: new Date().toISOString()
+  };
+
+  fs.mkdirSync(path.dirname(ACTIVE_PROJECT_PATH), { recursive: true });
+  fs.writeFileSync(ACTIVE_PROJECT_PATH, JSON.stringify(state, null, 2) + '\n', 'utf8');
+  return state;
+}
+
+export function recordProjectAuditScore(slugOrPath, score = 100, statusLabel = 'APROBADO') {
+  const rootDir = resolveProjectRoot(slugOrPath);
+  if (path.resolve(rootDir) === path.resolve(FACTORY_ROOT)) return null;
+  const auditFile = path.join(rootDir, '.specify', 'memory', 'last_audit.json');
+  const payload = {
+    score: Number(score),
+    statusLabel,
+    auditedAt: new Date().toISOString()
+  };
+  fs.mkdirSync(path.dirname(auditFile), { recursive: true });
+  fs.writeFileSync(auditFile, JSON.stringify(payload, null, 2) + '\n', 'utf8');
+  return payload;
+}
+
+export function listProjectsCatalog() {
+  if (!fs.existsSync(PROJECTS_DIR)) return [];
+  const activeState = getActiveProject();
+  const activeSlug = activeState?.activeSlug || '';
+
+  const entries = fs.readdirSync(PROJECTS_DIR, { withFileTypes: true }).filter(d => d.isDirectory());
+  const catalog = [];
+
+  for (const dirEnt of entries) {
+    const slug = dirEnt.name;
+    const projRoot = path.join(PROJECTS_DIR, slug);
+    const manifestPath = path.join(projRoot, 'factory.project.json');
+    let manifest = {};
+    if (fs.existsSync(manifestPath)) {
+      try {
+        manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+      } catch (_) {}
+    }
+
+    const auditFile = path.join(projRoot, '.specify', 'memory', 'last_audit.json');
+    let lastAuditScore = '100/100 (Listo)';
+    if (fs.existsSync(auditFile)) {
+      try {
+        const a = JSON.parse(fs.readFileSync(auditFile, 'utf8'));
+        lastAuditScore = `${a.score}/100 (${a.statusLabel || 'APROBADO'})`;
+      } catch (_) {}
+    }
+
+    let mtime = fs.statSync(projRoot).mtime;
+    for (const checkFile of [
+      manifestPath,
+      path.join(projRoot, 'SPEC.md'),
+      path.join(projRoot, 'design.tokens.json'),
+      path.join(projRoot, 'index.html'),
+      auditFile
+    ]) {
+      if (fs.existsSync(checkFile)) {
+        const st = fs.statSync(checkFile);
+        if (st.mtime > mtime) mtime = st.mtime;
+      }
+    }
+
+    catalog.push({
+      slug,
+      name: manifest.name || slug,
+      isActive: slug === activeSlug,
+      stack: manifest.stack || (fs.existsSync(path.join(projRoot, 'astro.config.mjs')) ? 'astro-edge' : 'vanilla-edge'),
+      archetype: manifest.archetype || 'saas-b2b',
+      style: manifest.design?.styleSkill || 'bento',
+      lastAuditScore,
+      lastModifiedIso: mtime.toISOString(),
+      lastModifiedFormatted: mtime.toLocaleString('es-AR'),
+      projectRoot: projRoot
+    });
+  }
+
+  catalog.sort((a, b) => {
+    if (a.isActive !== b.isActive) return a.isActive ? -1 : 1;
+    return b.lastModifiedIso.localeCompare(a.lastModifiedIso);
+  });
+
+  return catalog;
+}
 
 export function resolveCliProjectArg(argv = process.argv.slice(2)) {
   for (let i = 0; i < argv.length; i++) {
@@ -34,7 +165,19 @@ export function resolveCliProjectArg(argv = process.argv.slice(2)) {
 
 export function resolveProjectRoot(inputPath = '') {
   const raw = String(inputPath || resolveCliProjectArg() || '').trim();
-  if (!raw) return FACTORY_ROOT;
+  if (!raw) {
+    const active = getActiveProject();
+    if (active && active.projectRoot && fs.existsSync(active.projectRoot)) {
+      return active.projectRoot;
+    }
+    return FACTORY_ROOT;
+  }
+
+  // Check if it's a slug inside projects/<slug> first
+  const slugCandidate = path.join(FACTORY_ROOT, 'projects', raw);
+  if (fs.existsSync(slugCandidate) && fs.statSync(slugCandidate).isDirectory()) {
+    return slugCandidate;
+  }
 
   // Check if it's an absolute path or direct relative path
   const directCandidate = path.resolve(process.cwd(), raw);
@@ -42,12 +185,6 @@ export function resolveProjectRoot(inputPath = '') {
     return fs.statSync(directCandidate).isDirectory()
       ? directCandidate
       : path.dirname(directCandidate);
-  }
-
-  // Check if it's a slug inside projects/<slug>
-  const slugCandidate = path.join(FACTORY_ROOT, 'projects', raw);
-  if (fs.existsSync(slugCandidate) && fs.statSync(slugCandidate).isDirectory()) {
-    return slugCandidate;
   }
 
   return directCandidate;

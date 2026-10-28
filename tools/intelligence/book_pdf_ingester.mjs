@@ -252,6 +252,44 @@ async function loadPdfParse() {
 }
 
 export async function parsePdfFile(filePath) {
+  const tmpTxt = path.join(os.tmpdir(), `pymupdf_${Date.now()}_${Math.random().toString(36).slice(2)}.json`);
+  try {
+    const pyScript = [
+      'import sys, json, asyncio, pymupdf',
+      'doc = pymupdf.open(sys.argv[1])',
+      'n = len(doc)',
+      'pages_txt = [p.get_text() for p in doc]',
+      'full_txt = "\\n\\n".join(pages_txt)',
+      'if n > 0 and (len(full_txt.strip()) / max(1, n)) < 120:',
+      '    import winocr',
+      '    from PIL import Image',
+      '    ocr_pages = []',
+      '    for i in range(n):',
+      '        pix = doc[i].get_pixmap(dpi=115)',
+      '        img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)',
+      '        res = winocr.recognize_pil_sync(img, "es")',
+      '        ocr_pages.append(res.get("text", ""))',
+      '    full_txt = "\\n\\n".join(ocr_pages)',
+      'out = {"numPages": n, "text": full_txt}',
+      'open(sys.argv[2], "w", encoding="utf-8").write(json.dumps(out))',
+      'doc.close()'
+    ].join('\n');
+    execFileSync('python', ['-c', pyScript, filePath, tmpTxt], { stdio: 'ignore' });
+    if (fs.existsSync(tmpTxt)) {
+      const parsed = JSON.parse(fs.readFileSync(tmpTxt, 'utf8'));
+      try { fs.unlinkSync(tmpTxt); } catch (_) {}
+      if (parsed && typeof parsed.text === 'string' && parsed.text.length > 0) {
+        return {
+          text: parsed.text,
+          numPages: parsed.numPages || 1,
+          info: {}
+        };
+      }
+    }
+  } catch (_) {
+    try { if (fs.existsSync(tmpTxt)) fs.unlinkSync(tmpTxt); } catch (_) {}
+  }
+
   const pdfParseModule = await loadPdfParse();
   const dataBuffer = fs.readFileSync(filePath);
 
@@ -315,7 +353,7 @@ export async function ingestBookToMarkdown({
   let clean = cleanRawPdfText(rawText);
   const charsPerPage = clean.length / Math.max(1, numPages);
 
-  if (clean.length < 400 || (isPdf && numPages >= 5 && charsPerPage < 120)) {
+  if (clean.length < 400 || (isPdf && numPages >= 5 && charsPerPage < 45)) {
     throw new Error(
       `SCANNED_PDF_REQUIRES_VISUAL_OCR: Insufficient extractable text (${clean.length} chars across ${numPages} pages = ${charsPerPage.toFixed(1)} chars/page) in ${path.basename(filePath)}`
     );
@@ -326,7 +364,8 @@ export async function ingestBookToMarkdown({
   }
 
   const bookTitle = title || path.basename(filePath, path.extname(filePath));
-  const finalSlug = slug || `book_${bookTitle.toLowerCase().replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '').slice(0, 55)}`;
+  const rawSlugBase = bookTitle.toLowerCase().replace(/^book[_-\s]+/i, '').replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '').slice(0, 60);
+  const finalSlug = slug || `book_${rawSlugBase}`;
   const sections = partitionBookIntoSections(clean, 6000);
   const avgEntropy = sections.length > 0
     ? Number((sections.reduce((acc, s) => acc + (s.entropy || 0.5), 0) / sections.length).toFixed(3))
@@ -352,7 +391,15 @@ export async function ingestBookToMarkdown({
     return `## Sección ${idx + 1}: ${sec.heading} [Entropy: ${sec.entropy}]\n\n${sec.content}\n`;
   });
 
-  const fullMarkdown = `${header}\n${bodyParts.join('\n---\n\n')}`;
+  let fullMarkdown = `${header}\n${bodyParts.join('\n---\n\n')}`;
+  try {
+    const { sanitizeMarkdownContent } = await import('./rag_library_sanitizer.mjs');
+    const sanitized = sanitizeMarkdownContent(fullMarkdown);
+    if (sanitized && typeof sanitized.content === 'string') {
+      fullMarkdown = sanitized.content;
+    }
+  } catch (_) {}
+
   const outputFile = path.join(outDir, `${finalSlug}.md`);
   fs.writeFileSync(outputFile, fullMarkdown, 'utf8');
 
@@ -364,4 +411,110 @@ export async function ingestBookToMarkdown({
     avgEntropy,
     sizeKb: Number((Buffer.byteLength(fullMarkdown) / 1024).toFixed(1))
   };
+}
+
+export function classifyBookCategory(fileName, sampleText = '') {
+  const combined = `${fileName} ${sampleText.slice(0, 4000)}`.toLowerCase();
+  if (/(owasp|security|secure_and_reliable|secure-apis|secure_apis|seguridad|pentest|penetration|hacker|hacking|tangled_web|attacking_network|exploit|xss|csrf|oauth|cryptography|vulnerabilit|cyber|api_stronghold|bug_bounty|bug-bounty|bug bounty|thecodebook|zseano)/.test(combined)) {
+    return 'cybersecurity';
+  }
+  if (/(gsap|three\.js|webgl|shader|lenis|canvas|animation|\bmotion\b|spring|scroll-driven|lottie)/.test(combined)) {
+    return 'motion_and_animation';
+  }
+  if (/(\bui\b|\bux\b|ui_design|ui_pedia|lean_ux|refactoring ui|practical ui|design system|design_system|kholmatova|kahneman|hormozi|schwartz|copywriting|\bcro\b|typography|color|oklch|figma|css|html|grid|stylin|software_pricing|landing_pages|art_of_game_design|never_split_the_difference|weinschenk|web-design|web_design|atomic design|atomic_design|designing interfaces|user interfaces|malewicz|dont make me think|usability|steve krug|emotional design|everyday things|don norman|principles of design|lidwell)/.test(combined)) {
+    return 'ui_ux_design';
+  }
+  if (/(seo|json-ld|analytics|posthog|plausible|n8n|webhook|playwright|testing|ui_testing|test_driven|unit_testing|k6_guideline|accelerate|modern_software_engineering|crime_scene|effective_engineer|pro_git|devops_handbook|github_actions|site reliability|\bsre\b|astro|cloudflare|factory|plain_javascript|optimization_web_performance|root_cause_analysis|edge_caching|getting_real|information_retrieval)/.test(combined)) {
+    return 'software_factory';
+  }
+  return 'architecture_and_books';
+}
+
+export async function ingestInboxDirectory({
+  inboxDir = path.join(ROOT, 'knowledge', '_inbox_pdfs'),
+  processedDir = path.join(ROOT, 'knowledge', '_inbox_pdfs', 'procesados'),
+  rebuildRag = true
+} = {}) {
+  fs.mkdirSync(inboxDir, { recursive: true });
+  fs.mkdirSync(processedDir, { recursive: true });
+
+  const entries = fs.readdirSync(inboxDir, { withFileTypes: true });
+  const bookFiles = entries
+    .filter((e) => e.isFile() && /\.(pdf|epub|md)$/i.test(e.name) && !/^leeme/i.test(e.name))
+    .map((e) => path.join(inboxDir, e.name));
+
+  if (bookFiles.length === 0) {
+    return {
+      processedCount: 0,
+      results: [],
+      inboxDir,
+      message: 'El buzón knowledge/_inbox_pdfs/ está vacío y listo para recibir archivos .pdf, .epub o .md.'
+    };
+  }
+
+  const results = [];
+  const errors = [];
+  for (const filePath of bookFiles) {
+    const baseName = path.basename(filePath);
+    const title = path.basename(filePath, path.extname(filePath)).replace(/^book[_-\s]+/i, '').replace(/[_-]+/g, ' ');
+    const category = classifyBookCategory(baseName);
+    const outDir = path.join(ROOT, 'knowledge', category);
+
+    try {
+      const res = await ingestBookToMarkdown({
+        filePath,
+        title,
+        outDir
+      });
+
+      const destProcessed = path.join(processedDir, baseName);
+      fs.renameSync(filePath, destProcessed);
+      results.push({ ...res, category, sourceFile: baseName, archivedTo: destProcessed });
+    } catch (err) {
+      console.warn(`⚠️  [${baseName}] Skipped: ${err.message}`);
+      errors.push({ sourceFile: baseName, error: err.message });
+    }
+  }
+
+  if (rebuildRag && results.length > 0) {
+    const { spawnSync } = await import('node:child_process');
+    spawnSync(process.execPath, [path.join(ROOT, 'tools', 'intelligence', 'rag_pipeline.mjs'), '--rebuild'], {
+      cwd: ROOT,
+      stdio: 'inherit'
+    });
+  }
+
+  return {
+    processedCount: results.length,
+    results,
+    inboxDir
+  };
+}
+
+if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(__filename)) {
+  const args = process.argv.slice(2);
+  const fileIdx = args.indexOf('--file');
+  const titleIdx = args.indexOf('--title');
+  const authorIdx = args.indexOf('--author');
+  const catIdx = args.indexOf('--category');
+
+  (async () => {
+    try {
+      if (fileIdx !== -1 && args[fileIdx + 1]) {
+        const filePath = path.resolve(args[fileIdx + 1]);
+        const title = titleIdx !== -1 ? args[titleIdx + 1] : undefined;
+        const author = authorIdx !== -1 ? args[authorIdx + 1] : undefined;
+        const category = catIdx !== -1 ? args[catIdx + 1] : classifyBookCategory(path.basename(filePath));
+        const outDir = path.join(ROOT, 'knowledge', category);
+        const res = await ingestBookToMarkdown({ filePath, title, author, outDir });
+        console.log(JSON.stringify({ status: 'OK', mode: 'single_file', ...res }, null, 2));
+      } else {
+        const summary = await ingestInboxDirectory({ rebuildRag: !args.includes('--no-rebuild') });
+        console.log(JSON.stringify({ status: 'OK', mode: 'inbox', ...summary }, null, 2));
+      }
+    } catch (err) {
+      console.error(`[book_pdf_ingester] Error: ${err.message}`);
+      process.exit(1);
+    }
+  })();
 }

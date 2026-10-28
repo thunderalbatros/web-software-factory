@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import zlib from 'node:zlib';
 import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { loadProjectConfig, FACTORY_ROOT } from './lib/project_loader.mjs';
@@ -250,13 +251,13 @@ injectHtmlCacheBusters(dist);
 // 5. Generate Cloudflare _headers (Security, Hardened CSP, HSTS, COOP, Brotli, Caching)
 console.log('• Generating Cloudflare _headers...');
 const headersContent = `/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'inline-speculation-rules' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https:; frame-src https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   X-Content-Type-Options: nosniff
-  X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
-  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  Cross-Origin-Opener-Policy: same-origin-allow-popups
-  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
-  Content-Security-Policy: default-src 'self' https: data: blob:; script-src 'self' 'inline-speculation-rules' https://challenges.cloudflare.com https://static.cloudflareinsights.com; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https: data: blob:; connect-src 'self' https: wss: ws://127.0.0.1:8080 ws://localhost:8080 ws://127.0.0.1:3001 http://127.0.0.1:3001; frame-src 'self' https://challenges.cloudflare.com; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; upgrade-insecure-requests;
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+  X-Frame-Options: DENY
 
 /site/css/*
   Cache-Control: public, max-age=0, must-revalidate
@@ -301,3 +302,252 @@ function dirMetrics(dirPath) {
 const { count, totalBytes } = dirMetrics(dist);
 console.log(`\n[SUCCESS] dist/ built cleanly: ${count} files, ${(totalBytes / (1024 * 1024)).toFixed(2)} MB`);
 console.log('Ready for instant zero-card deployment via Cloudflare Pages or Cloudflare Workers Static Assets!\n');
+
+/**
+ * Pure Node.js Zero-Dependency PKZIP Archive Builder (node:zlib deflateRawSync + crc32)
+ * Generates standard .zip archives in <15ms without spawning external OS processes.
+ */
+export function createZipArchiveFromDir(sourceDir, outZipPath, skipFileNames = new Set()) {
+  const files = [];
+  function collect(currentDir) {
+    for (const entry of fs.readdirSync(currentDir, { withFileTypes: true })) {
+      if (skipFileNames.has(entry.name)) continue;
+      const fullPath = path.join(currentDir, entry.name);
+      if (entry.isDirectory()) {
+        collect(fullPath);
+      } else {
+        const relPath = path.relative(sourceDir, fullPath).replace(/\\/g, '/');
+        files.push({ fullPath, relPath });
+      }
+    }
+  }
+  collect(sourceDir);
+
+  const localParts = [];
+  const centralParts = [];
+  let offset = 0;
+
+  for (const file of files) {
+    const rawData = fs.readFileSync(file.fullPath);
+    const compressedData = zlib.deflateRawSync(rawData);
+    const crc = zlib.crc32(rawData) >>> 0;
+    const nameBuf = Buffer.from(file.relPath, 'utf8');
+
+    const localHeader = Buffer.alloc(30 + nameBuf.length);
+    localHeader.writeUInt32LE(0x04034b50, 0); // Local file header signature
+    localHeader.writeUInt16LE(20, 4);         // Version needed to extract (2.0)
+    localHeader.writeUInt16LE(0x0800, 6);     // UTF-8 filename flag
+    localHeader.writeUInt16LE(8, 8);          // Compression method: Deflate (8)
+    localHeader.writeUInt16LE(0, 10);         // File last mod time
+    localHeader.writeUInt16LE(0x595b, 12);    // File last mod date
+    localHeader.writeUInt32LE(crc, 14);
+    localHeader.writeUInt32LE(compressedData.length, 18);
+    localHeader.writeUInt32LE(rawData.length, 22);
+    localHeader.writeUInt16LE(nameBuf.length, 26);
+    localHeader.writeUInt16LE(0, 28);         // Extra field length
+    nameBuf.copy(localHeader, 30);
+
+    localParts.push(localHeader, compressedData);
+
+    const centralHeader = Buffer.alloc(46 + nameBuf.length);
+    centralHeader.writeUInt32LE(0x02014b50, 0); // Central directory signature
+    centralHeader.writeUInt16LE(20, 4);         // Version made by
+    centralHeader.writeUInt16LE(20, 6);         // Version needed
+    centralHeader.writeUInt16LE(0x0800, 8);     // UTF-8 flag
+    centralHeader.writeUInt16LE(8, 10);         // Deflate
+    centralHeader.writeUInt16LE(0, 12);
+    centralHeader.writeUInt16LE(0x595b, 14);
+    centralHeader.writeUInt32LE(crc, 16);
+    centralHeader.writeUInt32LE(compressedData.length, 20);
+    centralHeader.writeUInt32LE(rawData.length, 24);
+    centralHeader.writeUInt16LE(nameBuf.length, 28);
+    centralHeader.writeUInt16LE(0, 30);
+    centralHeader.writeUInt16LE(0, 32);
+    centralHeader.writeUInt16LE(0, 34);
+    centralHeader.writeUInt16LE(0, 36);
+    centralHeader.writeUInt32LE(0, 38);
+    centralHeader.writeUInt32LE(offset, 42);
+    nameBuf.copy(centralHeader, 46);
+
+    centralParts.push(centralHeader);
+    offset += localHeader.length + compressedData.length;
+  }
+
+  const centralSize = centralParts.reduce((acc, b) => acc + b.length, 0);
+  const eocd = Buffer.alloc(22);
+  eocd.writeUInt32LE(0x06054b50, 0);
+  eocd.writeUInt16LE(0, 4);
+  eocd.writeUInt16LE(0, 6);
+  eocd.writeUInt16LE(files.length, 8);
+  eocd.writeUInt16LE(files.length, 10);
+  eocd.writeUInt32LE(centralSize, 12);
+  eocd.writeUInt32LE(offset, 16);
+  eocd.writeUInt16LE(0, 20);
+
+  const zipBuffer = Buffer.concat([...localParts, ...centralParts, eocd]);
+  fs.mkdirSync(path.dirname(outZipPath), { recursive: true });
+  fs.writeFileSync(outZipPath, zipBuffer);
+  return { fileCount: files.length, sizeBytes: zipBuffer.length };
+}
+
+/**
+ * Exports a 100% Standalone Production Package (Zero-Factory-Dependencies) + <slug>-produccion.zip
+ * to both `deliverables/<slug>/` and `C:\Users\tomas\Desktop\Sitios_Entregables\<slug>\`.
+ */
+export function exportStandaloneDeliverable(cfg = projectConfig) {
+  const slug = cfg.id || 'sitio-web';
+  const displayName = cfg.name || slug;
+  const projRoot = cfg.projectRoot;
+  const projDist = path.join(projRoot, cfg.paths.distDir || 'dist');
+
+  const localDeliverableDir = path.join(FACTORY_ROOT, 'deliverables', slug);
+  const desktopDeliverableDir = path.join('C:\\Users\\tomas\\Desktop\\Sitios_Entregables', slug);
+  const zipFileName = `${slug}-produccion.zip`;
+
+  // Clean and prepare local deliverable staging directory
+  if (fs.existsSync(localDeliverableDir)) {
+    fs.rmSync(localDeliverableDir, { recursive: true, force: true });
+  }
+  fs.mkdirSync(localDeliverableDir, { recursive: true });
+
+  // 1. Copy minified production dist/
+  copyRecursive(projDist, path.join(localDeliverableDir, 'dist'));
+
+  // 2. Copy Zero-Trust _headers and llms.txt to package root (as well as inside dist/)
+  const distHeaders = path.join(projDist, '_headers');
+  if (fs.existsSync(distHeaders)) {
+    fs.copyFileSync(distHeaders, path.join(localDeliverableDir, '_headers'));
+  }
+  const distLlms = path.join(projDist, 'llms.txt');
+  const rootLlms = path.join(projRoot, 'llms.txt');
+  if (fs.existsSync(distLlms)) {
+    fs.copyFileSync(distLlms, path.join(localDeliverableDir, 'llms.txt'));
+  } else if (fs.existsSync(rootLlms)) {
+    fs.copyFileSync(rootLlms, path.join(localDeliverableDir, 'llms.txt'));
+    fs.copyFileSync(rootLlms, path.join(localDeliverableDir, 'dist', 'llms.txt'));
+  } else {
+    const defaultLlms = `# ${displayName}\n\n> Agentic AI & WebMCP Discovery Manifest (${cfg.archetype} | ${cfg.stack})\n`;
+    fs.writeFileSync(path.join(localDeliverableDir, 'llms.txt'), defaultLlms, 'utf8');
+    fs.writeFileSync(path.join(localDeliverableDir, 'dist', 'llms.txt'), defaultLlms, 'utf8');
+  }
+
+  // 3. Copy standalone worker/index.js
+  const workerCandidates = [
+    path.join(projRoot, cfg.paths.workerEntry || 'worker/index.js'),
+    path.join(FACTORY_ROOT, 'templates', cfg.stack === 'astro-edge' ? 'astro-edge' : 'vanilla-edge', 'worker', 'index.js')
+  ];
+  const workerDest = path.join(localDeliverableDir, 'worker', 'index.js');
+  fs.mkdirSync(path.dirname(workerDest), { recursive: true });
+  const foundWorker = workerCandidates.find(p => fs.existsSync(p));
+  if (foundWorker) {
+    fs.copyFileSync(foundWorker, workerDest);
+  }
+
+  // 4. Write preconfigured standalone wrangler.toml
+  const wranglerToml = `name = "${slug}"
+main = "worker/index.js"
+compatibility_date = "2026-10-01"
+
+[assets]
+directory = "./dist"
+not_found_handling = "single-page-application"
+
+[vars]
+PROJECT_ID = "${slug}"
+PROJECT_ARCHETYPE = "${cfg.archetype || 'saas-b2b'}"
+`;
+  fs.writeFileSync(path.join(localDeliverableDir, 'wrangler.toml'), wranglerToml, 'utf8');
+
+  // 5. Write minimalist Zero-Factory-Dependencies package.json
+  const standalonePkg = {
+    name: `${slug}-production`,
+    version: cfg.version || '1.0.0',
+    private: true,
+    type: 'module',
+    description: `Paquete de producción autónomo (Zero-Factory-Dependencies) para ${displayName}`,
+    scripts: {
+      preview: 'npx wrangler dev',
+      deploy: 'npx wrangler deploy',
+      'deploy:pages': `npx wrangler pages deploy ./dist --project-name ${slug}`
+    }
+  };
+  fs.writeFileSync(
+    path.join(localDeliverableDir, 'package.json'),
+    JSON.stringify(standalonePkg, null, 2) + '\n',
+    'utf8'
+  );
+
+  // 6. Write COMO_PUBLICAR_ESTE_SITIO.md in plain Argentine Spanish
+  const guiaPublicacion = `# 🚀 Cómo Publicar tu Sitio Web (${displayName})
+
+Este paquete es **100% autónomo** y ya tiene todo tu sitio web optimizado, minificado y blindado con seguridad Zero-Trust para publicarse gratis en **Cloudflare**.
+
+---
+
+## Opción 1: Subir arrastrando y soltando (Sin usar código — 1 minuto)
+
+1. Entrá a tu cuenta gratuita de Cloudflare en [https://dash.cloudflare.com](https://dash.cloudflare.com).
+2. En el menú izquierdo, hacé clic en **Workers & Pages** y luego en el botón azul **Create**.
+3. Elegí la pestaña **Pages** y hacé clic en **Upload assets** (*Subir archivos*).
+4. Escribí el nombre de tu proyecto: \`${slug}\`.
+5. **Arrastrá y soltá** directamente la carpeta \`dist\` (o el archivo comprimido \`${zipFileName}\`) dentro del recuadro de Cloudflare.
+6. Hacé clic en **Deploy site**. ¡En 10 segundos tu sitio estará online en \`https://${slug}.pages.dev\` con certificado HTTPS automático!
+
+---
+
+## Opción 2: Publicar con 1 solo comando (Si tenés Node.js abierto)
+
+Abrí una consola dentro de esta carpeta y ejecutá cualquiera de estos dos comandos:
+
+- **Para Cloudflare Pages:**
+  \`\`\`powershell
+  npm run deploy:pages
+  \`\`\`
+- **Para Cloudflare Workers + Static Assets (con API en \`worker/index.js\`):**
+  \`\`\`powershell
+  npm run deploy
+  \`\`\`
+
+---
+
+## 📦 ¿Qué contiene esta carpeta entregable?
+
+- \`dist/\`: Tu sitio web completo minificado y listo para internet.
+- \`_headers\`: Escudo de seguridad bancaria (CSP estricto, HSTS, anti-clonación).
+- \`llms.txt\`: Manifiesto optimizado para buscadores de IA (ChatGPT, Perplexity, Gemini, Claude).
+- \`worker/index.js\`: Servidor ultraligero en el borde (Cloudflare Edge Worker).
+- \`wrangler.toml\` y \`package.json\`: Configuración lista para publicar en 1 clic sin depender de la fábrica.
+- \`${zipFileName}\`: Archivo comprimido listo para enviar por correo o subir manualmente.
+`;
+  fs.writeFileSync(path.join(localDeliverableDir, 'COMO_PUBLICAR_ESTE_SITIO.md'), guiaPublicacion, 'utf8');
+
+  // 7. Create <slug>-produccion.zip inside deliverables/<slug>/
+  const localZipPath = path.join(localDeliverableDir, zipFileName);
+  const zipStats = createZipArchiveFromDir(localDeliverableDir, localZipPath, new Set([zipFileName]));
+
+  // 8. Mirror complete standalone package to Desktop: C:\Users\tomas\Desktop\Sitios_Entregables\<slug>\
+  if (fs.existsSync(desktopDeliverableDir)) {
+    fs.rmSync(desktopDeliverableDir, { recursive: true, force: true });
+  }
+  copyRecursive(localDeliverableDir, desktopDeliverableDir);
+
+  return {
+    slug,
+    displayName,
+    localDeliverableDir,
+    desktopDeliverableDir,
+    zipFileName,
+    localZipPath,
+    desktopZipPath: path.join(desktopDeliverableDir, zipFileName),
+    zipFileCount: zipStats.fileCount,
+    zipSizeKb: Number((zipStats.sizeBytes / 1024).toFixed(1))
+  };
+}
+
+if (process.argv.includes('--package')) {
+  const pkgRes = exportStandaloneDeliverable(projectConfig);
+  console.log(`📦 [STANDALONE DELIVERABLE EXPORTED]`);
+  console.log(`  • Local Path   : ${pkgRes.localDeliverableDir}`);
+  console.log(`  • Desktop Path : ${pkgRes.desktopDeliverableDir}`);
+  console.log(`  • ZIP Archive  : ${pkgRes.zipFileName} (${pkgRes.zipSizeKb} KB, ${pkgRes.zipFileCount} files)\n`);
+}

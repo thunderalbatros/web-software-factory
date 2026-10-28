@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0.0-tom-swe-iclr2026",
   "user_id": "tomas_cto_web_software_factory",
-  "last_updated": "2026-10-25T20:38:00.000Z",
+  "last_updated": "2026-10-26T22:22:47.633Z",
   "tier3_overall_user_model": {
     "user_profile": {
       "user_id": "tomas_cto_web_software_factory",
@@ -72,34 +72,100 @@
   ],
   "tier1_cleaned_signals": [
     {
+      "id": "sig-wsf-001",
       "signal_id": "sig-wsf-001",
+      "fact": "5-Layer ISO/IEC 26550 Web Software Factory with 9-Role Agent Topology and Spec-Kit SDD",
       "rule": "5-Layer ISO/IEC 26550 Web Software Factory with 9-Role Agent Topology and Spec-Kit SDD",
-      "confidence": 1.0,
+      "category": "architectural_and_product_preference",
+      "valid_from": "2026-10-25T00:00:00.000Z",
+      "valid_until": null,
+      "superseded_by": null,
+      "confidence": 1,
       "enforced_by": "tools/factory.mjs + .agents/agency/ORGANIZATION.md"
     },
     {
+      "id": "sig-wsf-002",
       "signal_id": "sig-wsf-002",
+      "fact": "Mandatory 5-Gate Visual & Security Verification (RYUX + Oxc + Playwright 4-Viewport + odiff SIMD + A11y Snapshot) before HITL",
       "rule": "Mandatory 5-Gate Visual & Security Verification (RYUX + Oxc + Playwright 4-Viewport + odiff SIMD + A11y Snapshot) before HITL",
-      "confidence": 1.0,
+      "category": "aesthetic_and_ui_preference",
+      "valid_from": "2026-10-25T00:00:00.000Z",
+      "valid_until": null,
+      "superseded_by": null,
+      "confidence": 1,
       "enforced_by": "tools/factory.mjs visual-gate"
     },
     {
+      "id": "sig-wsf-003",
       "signal_id": "sig-wsf-003",
+      "fact": "W3C DTCG 2025.10 OKLCH 90/8/2 Chromatic Budget + APCA Contrast (Lc >= 75/60) + Utopia clamp() Fluid Scales",
       "rule": "W3C DTCG 2025.10 OKLCH 90/8/2 Chromatic Budget + APCA Contrast (Lc >= 75/60) + Utopia clamp() Fluid Scales",
-      "confidence": 1.0,
+      "category": "aesthetic_and_ui_preference",
+      "valid_from": "2026-10-25T00:00:00.000Z",
+      "valid_until": null,
+      "superseded_by": null,
+      "confidence": 1,
       "enforced_by": "CONSTRAINTS.md + tools/audit/ryux_design_gate.mjs"
     },
     {
+      "id": "sig-wsf-004",
       "signal_id": "sig-wsf-004",
+      "fact": "Zero-Cost Permament Architecture (USD 0.00, Zero Credit Card, MIT/Apache-2.0/BSD Licenses, Zero Docker on HP 250 G8)",
       "rule": "Zero-Cost Permament Architecture (USD 0.00, Zero Credit Card, MIT/Apache-2.0/BSD Licenses, Zero Docker on HP 250 G8)",
-      "confidence": 1.0,
+      "category": "architectural_and_product_preference",
+      "valid_from": "2026-10-25T00:00:00.000Z",
+      "valid_until": null,
+      "superseded_by": null,
+      "confidence": 1,
       "enforced_by": "CONSTRAINTS.md + docs/COST_AUDIT.md"
     },
     {
+      "id": "sig-wsf-005",
       "signal_id": "sig-wsf-005",
+      "fact": "Supercharged Omni-RAG v5 Domain-Pure Web Engineering Brain (>=95% Hit@5 Recall in <350ms)",
       "rule": "Supercharged Omni-RAG v5 Domain-Pure Web Engineering Brain (>=95% Hit@5 Recall in <350ms)",
-      "confidence": 1.0,
+      "category": "architectural_and_product_preference",
+      "valid_from": "2026-10-25T00:00:00.000Z",
+      "valid_until": null,
+      "superseded_by": null,
+      "confidence": 1,
       "enforced_by": "tools/intelligence/rag_pipeline.mjs + tools/intelligence/eval_matrix.mjs"
+    },
+    {
+      "id": "cto-pref-button-radius-v1",
+      "signal_id": "cto-pref-button-radius-v1",
+      "fact": "Usar botones primarios con bordes redondeados suaves de 12px",
+      "rule": "Usar botones primarios con bordes redondeados suaves de 12px",
+      "category": "aesthetic_and_ui_preference",
+      "valid_from": "2026-10-26T18:55:17.866Z",
+      "valid_until": "2026-10-26T18:55:17.890Z",
+      "superseded_by": "cto-pref-button-radius-v2",
+      "confidence": 0.99,
+      "enforced_by": "CTO HITL Feedback Loop"
+    },
+    {
+      "id": "cto-pref-button-radius-v2",
+      "signal_id": "cto-pref-button-radius-v2",
+      "fact": "Usar botones primarios tipo píldora (9999px) con alto contraste OKLCH",
+      "rule": "Usar botones primarios tipo píldora (9999px) con alto contraste OKLCH",
+      "category": "aesthetic_and_ui_preference",
+      "valid_from": "2026-10-26T18:55:17.890Z",
+      "valid_until": "2026-10-26T19:00:22.425Z",
+      "superseded_by": "cto-pref-prefiero-botones-principales-tipo-pí-g5qy",
+      "confidence": 0.99,
+      "enforced_by": "CTO HITL Feedback Loop"
+    },
+    {
+      "id": "cto-pref-prefiero-botones-principales-tipo-pí-g5qy",
+      "signal_id": "cto-pref-prefiero-botones-principales-tipo-pí-g5qy",
+      "fact": "Prefiero botones principales tipo píldora con alto contraste OKLCH y animaciones suaves de 60 FPS",
+      "rule": "Prefiero botones principales tipo píldora con alto contraste OKLCH y animaciones suaves de 60 FPS",
+      "category": "aesthetic_and_ui_preference",
+      "valid_from": "2026-10-26T19:00:22.425Z",
+      "valid_until": null,
+      "superseded_by": null,
+      "confidence": 0.99,
+      "enforced_by": "CTO HITL Feedback Loop"
     }
   ]
 }

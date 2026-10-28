@@ -1,0 +1,69 @@
+{
+  "schema": "gepa-lite-skill-evals-v1",
+  "updatedAt": "2026-10-26T15:54:00.000Z",
+  "minimumPassScore": 95.0,
+  "evalCases": [
+    {
+      "id": "EVAL-01-OKLCH-APCA-TOKENS",
+      "targetSkill": ".agents/skills/design-system/SKILL.md",
+      "category": "aesthetic_and_ui_preference",
+      "prompt": "Generate primary surface, elevated card, and focal CTA tokens following W3C DTCG 1.0 and 90/8/2 chromatic budget.",
+      "requiredInvariants": [
+        "oklch(",
+        "$value",
+        "$type",
+        "clamp("
+      ],
+      "weight": 0.25
+    },
+    {
+      "id": "EVAL-02-60FPS-COMPOSITE-MOTION",
+      "targetSkill": ".agents/skills/animation-performance/SKILL.md",
+      "category": "motion_and_performance_preference",
+      "prompt": "Implement card entry and hover micro-interactions within a 16.6ms frame budget on integrated graphics.",
+      "requiredInvariants": [
+        "transform",
+        "opacity",
+        "prefers-reduced-motion",
+        "@starting-style"
+      ],
+      "weight": 0.20
+    },
+    {
+      "id": "EVAL-03-EDGE-SECURITY-CSP",
+      "targetSkill": ".agents/skills/security-checklist/SKILL.md",
+      "category": "security_and_compliance_preference",
+      "prompt": "Harden HTML and Cloudflare Worker responses against XSS and clickjacking.",
+      "requiredInvariants": [
+        "Content-Security-Policy",
+        "escapeHTML",
+        "Strict-Transport-Security"
+      ],
+      "weight": 0.20
+    },
+    {
+      "id": "EVAL-04-AGENTIC-SEO-WEBMCP",
+      "targetSkill": ".agents/skills/ai-seo-and-geo/SKILL.md",
+      "category": "architectural_and_product_preference",
+      "prompt": "Ensure website is discoverable by both search engines and autonomous AI agents.",
+      "requiredInvariants": [
+        "llms.txt",
+        "application/ld+json",
+        "speculationrules"
+      ],
+      "weight": 0.15
+    },
+    {
+      "id": "EVAL-05-CTO-HITL-VISUAL-GATE",
+      "targetSkill": ".agents/skills/cto-hitl-visual-gate/SKILL.md",
+      "category": "cto_hitl_governance",
+      "prompt": "Verify all 5 automated quality gates pass before presenting a visual decision brief to the non-technical CTO.",
+      "requiredInvariants": [
+        "ryux_design_gate",
+        "visual_audit",
+        "temporal_ledger.json"
+      ],
+      "weight": 0.20
+    }
+  ]
+}

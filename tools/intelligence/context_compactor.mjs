@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Web Software Factory Studio — Agent Context Compactor
  * Context optimization pipeline for web development agents.
  * Compresses chat logs, agent reasoning traces, and diffs by 60%–75%

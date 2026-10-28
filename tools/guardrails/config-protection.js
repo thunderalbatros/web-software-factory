@@ -1,4 +1,4 @@
-﻿#!/usr/bin/env node
+#!/usr/bin/env node
 /**
  * ECC Guardrail: config-protection.js
  * Verifies that critical environment and configuration files are present and valid.

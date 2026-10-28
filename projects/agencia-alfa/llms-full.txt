@@ -1,0 +1,13 @@
+# Agencia Alfa — Full Agentic Context & Technical Corpus (llms-full.txt)
+
+> **Domain:** https://agencia-alfa.com
+> **Archetype:** saas-b2b
+> **Standard:** Agentic SEO & Generative Engine Optimization (GEO 2026)
+
+## 1. Executive Summary
+Agencia Alfa is a high-performance web platform engineered with OKLCH perceptual color tokens (`W3C DTCG 2025.10`), Utopia fluid typography, View Transitions API, Speculation Rules (`0ms` prerender), and Cloudflare Workers Static Assets.
+
+## 2. Canonical Pages & Endpoints
+- `https://agencia-alfa.com/` — Primary Hero, Value Proposition, and Interactive Modules
+- `https://agencia-alfa.com/llms.txt` — Concise AI & LLM Index
+- `https://agencia-alfa.com/sitemap.xml` — XML Search Engine Sitemap

@@ -121,11 +121,93 @@
   "radius": {
     "card": {
       "$type": "dimension",
-      "$value": "18px"
+      "$value": "18px",
+      "$description": "Primary card border radius"
     },
     "pill": {
       "$type": "dimension",
-      "$value": "9999px"
+      "$value": "9999px",
+      "$description": "Full pill button border radius"
+    }
+  },
+  "motion": {
+    "easing": {
+      "springSnappy": {
+        "$type": "cubicBezier",
+        "$value": "linear(0, 0.3566 9.6%, 0.7852 21.1%, 1.0156 32.2%, 1.0738 41.3%, 1.0468 53.6%, 1.0062 69.8%, 1)",
+        "$description": "Real spring physics curve via CSS linear() for buttons & micro-interactions"
+      },
+      "springGentle": {
+        "$type": "cubicBezier",
+        "$value": "linear(0, 0.245 8.5%, 0.642 19.8%, 0.916 31.4%, 1.021 43.2%, 1.018 59.1%, 1)",
+        "$description": "Gentle spring physics curve for cards & dialogs"
+      },
+      "cinematicOut": {
+        "$type": "cubicBezier",
+        "$value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "$description": "Cinematic deceleration curve"
+      },
+      "cinematicInOut": {
+        "$type": "cubicBezier",
+        "$value": "cubic-bezier(0.65, 0, 0.35, 1)",
+        "$description": "Symmetric cinematic curve for morphs"
+      }
+    },
+    "duration": {
+      "fast": {
+        "$type": "duration",
+        "$value": "160ms",
+        "$description": "Micro-interaction duration"
+      },
+      "normal": {
+        "$type": "duration",
+        "$value": "280ms",
+        "$description": "Standard surface & modal transition"
+      },
+      "slow": {
+        "$type": "duration",
+        "$value": "520ms",
+        "$description": "Hero & view-transition morph duration"
+      }
+    }
+  },
+  "audio": {
+    "feedback": {
+      "$type": "boolean",
+      "$value": false,
+      "$description": "Procedural ZzFX 1KB UI micro-audio feedback (disabled by default; set true to enable)"
+    }
+  },
+  "semantic": {
+    "pageBackground": {
+      "$type": "color",
+      "$value": "{color.surface.canvas}",
+      "$description": "Alias to primary 90% neutral surface canvas"
+    },
+    "cardBackground": {
+      "$type": "color",
+      "$value": "{color.surface.elevated}",
+      "$description": "Alias to elevated surface"
+    },
+    "primaryActionBg": {
+      "$type": "color",
+      "$value": "{color.brand.cta}",
+      "$description": "Alias to 2% focal CTA color"
+    },
+    "primaryActionInk": {
+      "$type": "color",
+      "$value": "{color.brand.ctaInk}",
+      "$description": "Alias to high-contrast CTA text"
+    },
+    "headingFont": {
+      "$type": "fontFamily",
+      "$value": "{typography.fontFamily.display}",
+      "$description": "Alias to display typography"
+    },
+    "defaultSpringEasing": {
+      "$type": "cubicBezier",
+      "$value": "{motion.easing.springSnappy}",
+      "$description": "Alias to primary linear() spring"
     }
   }
 }

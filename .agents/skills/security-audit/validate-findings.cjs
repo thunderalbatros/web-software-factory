@@ -700,9 +700,121 @@ function enforceJsonTextLimits(contents) {
   }
 }
 
+function validateAgenticAndWebMcpSecurity(rootDir = path.resolve(__dirname, "../../..")) {
+  const issues = [];
+  const scanDirs = [path.join(rootDir, "templates"), path.join(rootDir, "projects")];
+  const ignored = new Set(["node_modules", ".git", "dist", "references", ".agents"]);
+
+  function walk(dir, out = []) {
+    if (!fs.existsSync(dir)) return out;
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (ignored.has(entry.name)) continue;
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) walk(full, out);
+      else if (/\.(?:html|astro|txt)$/i.test(entry.name)) out.push(full);
+    }
+    return out;
+  }
+
+  const files = [];
+  for (const d of scanDirs) walk(d, files);
+
+  const bidiOrZeroWidth = /[\u200B-\u200F\u202A-\u202E\u2066-\u2069]/;
+  const promptInjectionRegex =
+    /\b(?:ignore\s+(?:all\s+)?(?:previous|prior)\s+instructions|disregard\s+(?:all\s+)?(?:previous|prior)\s+rules|system\s+prompt\s+override|exfiltrate\s+(?:all\s+)?(?:cookies|tokens|secrets))\b/i;
+  const hiddenCssPromptRegex =
+    /style\s*=\s*["'][^"']*(?:opacity\s*:\s*0(?![.0-9])|font-size\s*:\s*0(?![.0-9])(?:px|rem|em|%)?)[^"']*["']/i;
+
+  for (const filePath of files) {
+    const rel = path.relative(rootDir, filePath).replace(/\\/g, "/");
+    const content = fs.readFileSync(filePath, "utf8");
+
+    if (bidiOrZeroWidth.test(content)) {
+      issues.push({
+        category: "AGENTIC_AND_WEBMCP_SECURITY",
+        rule: "HIDDEN_BIDI_PROMPT_INJECTION",
+        file: rel,
+        message: `Hidden Unicode bidi/zero-width character detected in ${rel}.`
+      });
+    }
+
+    if (promptInjectionRegex.test(content)) {
+      issues.push({
+        category: "AGENTIC_AND_WEBMCP_SECURITY",
+        rule: "INDIRECT_PROMPT_INJECTION_INSTRUCTION",
+        file: rel,
+        message: `Adversarial indirect prompt-injection instruction detected in ${rel}.`
+      });
+    }
+
+    if (/\.(?:html|astro)$/i.test(filePath)) {
+      if (hiddenCssPromptRegex.test(content)) {
+        issues.push({
+          category: "AGENTIC_AND_WEBMCP_SECURITY",
+          rule: "INVISIBLE_DOM_PROMPT_INJECTION",
+          file: rel,
+          message: `Invisible inline DOM text (opacity:0 or font-size:0) detected in ${rel}.`
+        });
+      }
+
+      const webmcpRegex =
+        /<script[^>]*type\s*=\s*["']application\/webmcp\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
+      let match;
+      while ((match = webmcpRegex.exec(content)) !== null) {
+        let parsed;
+        try {
+          parsed = JSON.parse(match[1].trim());
+        } catch (err) {
+          issues.push({
+            category: "AGENTIC_AND_WEBMCP_SECURITY",
+            rule: "INVALID_WEBMCP_JSON",
+            file: rel,
+            message: `Invalid application/webmcp+json block in ${rel}: ${err.message}`
+          });
+          continue;
+        }
+        const tools = Array.isArray(parsed.tools) ? parsed.tools : [];
+        for (const tool of tools) {
+          const isReadOnly = tool && tool.readOnly === true;
+          const hasHumanConfirm = tool && tool.requiresUserConfirmation === true;
+          if (!isReadOnly && !hasHumanConfirm) {
+            issues.push({
+              category: "AGENTIC_AND_WEBMCP_SECURITY",
+              rule: "UNPROTECTED_WEBMCP_MUTATION_TOOL",
+              file: rel,
+              message: `WebMCP tool "${tool?.name || "unnamed"}" in ${rel} must be readOnly:true or requiresUserConfirmation:true.`
+            });
+          }
+        }
+      }
+    }
+  }
+
+  return {
+    category: "AGENTIC_AND_WEBMCP_SECURITY",
+    passed: issues.length === 0,
+    scannedFiles: files.length,
+    issues
+  };
+}
+
 function run(file) {
+  if (file === "--agentic-audit") {
+    const targetRoot = process.argv[3] ? path.resolve(process.argv[3]) : path.resolve(__dirname, "../../..");
+    const report = validateAgenticAndWebMcpSecurity(targetRoot);
+    if (!report.passed) {
+      for (const issue of report.issues) {
+        console.error(`ERROR: [${issue.category}:${issue.rule}] ${issue.file} -> ${issue.message}`);
+      }
+      console.error(`FAIL: ${report.issues.length} agentic/WebMCP security violation(s)`);
+      return 1;
+    }
+    console.log(`PASS: AGENTIC_AND_WEBMCP_SECURITY verified across ${report.scannedFiles} file(s)`);
+    return 0;
+  }
+
   if (!file) {
-    console.error("Usage: node validate-findings.cjs <path-to-findings.json>");
+    console.error("Usage: node validate-findings.cjs <path-to-findings.json | --agentic-audit>");
     return 1;
   }
 
@@ -756,8 +868,11 @@ function run(file) {
   return 0;
 }
 
+const MANDATORY_SECURITY_CATEGORIES = Object.freeze(["AGENTIC_AND_WEBMCP_SECURITY"]);
+
 module.exports = {
   LIMITS,
+  MANDATORY_SECURITY_CATEGORIES,
   PATH_FORBIDDEN_CHARACTER,
   UNSAFE_DIAGNOSTIC_CHARACTER,
   VISIBLE_CONTENT,
@@ -767,6 +882,7 @@ module.exports = {
   collectSchemaErrors,
   hasVisibleProse,
   isSafeRelativeSourcePath,
+  validateAgenticAndWebMcpSecurity,
   validateDocument,
 };
 

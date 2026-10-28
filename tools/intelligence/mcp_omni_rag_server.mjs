@@ -13,10 +13,18 @@
 import readline from 'node:readline';
 import { queryKnowledge, queryCodeGraph, getClusterStats } from './rag_pipeline.mjs';
 import { routeQueryToSquads } from './squad_semantic_router.mjs';
+import { hybridRrfSearch } from './qdrant_rag.mjs';
+import {
+  classifyEpistemicTier,
+  inspectAndGuardLegacyFragment,
+  TRANSLATION_RULE_WARNING
+} from './rag_library_sanitizer.mjs';
+import { assembleThreeTierContext } from './context_budget.mjs';
 import { compileDesignTokens, getStyleCatalog, buildDtcgTokensObject } from '../design/token_compiler.mjs';
 import { runRyuxDesignGate } from '../audit/ryux_design_gate.mjs';
 import { runCognitiveUxAudit } from '../audit/cognitive_ux_auditor.mjs';
 import { runDiffUiAdversarialGate } from '../audit/diff_ui_adversarial.mjs';
+import { lookupInLocalVault } from './vault_indexer.mjs';
 
 const SERVER_INFO = {
   name: 'web-factory-omni-rag-v5.2',
@@ -139,9 +147,59 @@ rl.on('line', async (line) => {
         const lim = Number(args.limit || 5);
         const useRerank = Boolean(args.rerank);
         const route = routeQueryToSquads(q);
+        const contextBudget = assembleThreeTierContext(q);
+        const localVaultMatches = lookupInLocalVault(q);
         const hits = await queryKnowledge(q, lim, { fastLocalOnly: true, useOnnxRerank: useRerank });
+        const rrfFallback = await hybridRrfSearch(q, lim);
+        const cappedResults = hits.map((h, idx) => {
+          const rrfMatch = rrfFallback.results[idx];
+          const cleanPath = String(h.source || h.id || '').replace(/^local:\/\//, '').split('#')[0];
+          const tierMeta = h.epistemicTier
+            ? {
+                epistemicTier: h.epistemicTier,
+                authorityBoost: h.authorityBoost || (h.epistemicTier === 'TIER_1_SOTA_2026' ? 1.35 : 1.15),
+                epistemicRole: h.epistemicRole
+              }
+            : classifyEpistemicTier(cleanPath, h.text || h.snippet || '');
+          const guardMeta = inspectAndGuardLegacyFragment(h.text || h.snippet || '', tierMeta.epistemicTier, cleanPath);
+          const isClassicBook = tierMeta.epistemicTier === 'TIER_2_TIMELESS_PRINCIPLES';
+          let rawText = guardMeta.guardedText;
+          if (isClassicBook && !rawText.includes('[TRANSLATION_RULE:')) {
+            rawText = `${TRANSLATION_RULE_WARNING}\n${rawText}`;
+          }
+          const text = rawText.slice(0, 2200);
+          return {
+            ...h,
+            epistemicTier: tierMeta.epistemicTier,
+            authorityBoost: tierMeta.authorityBoost,
+            epistemicRole: tierMeta.epistemicRole,
+            legacySyntaxGuard: guardMeta.legacySyntaxGuard || (isClassicBook ? 'TIER_3_LEGACY_SYNTAX_GUARD' : null),
+            translationRule: guardMeta.translationRule || (isClassicBook ? TRANSLATION_RULE_WARNING : null),
+            supersededReplacements: guardMeta.supersededReplacements,
+            citation: rrfMatch?.citation || String(h.source || h.id || '').replace(/^local:\/\//, ''),
+            tokens: Math.min(600, Math.ceil(text.length / 4)),
+            text
+          };
+        });
         sendResponse(id, {
-          content: [{ type: 'text', text: JSON.stringify({ squadRoute: route.primarySquad, results: hits }, null, 2) }]
+          content: [{
+            type: 'text',
+            text: JSON.stringify({
+              squadRoute: route.primarySquad,
+              epistemicIntent: rrfFallback.epistemicIntent,
+              activeTranslationRule: TRANSLATION_RULE_WARNING,
+              complementaryPairs: rrfFallback.complementaryPairs || [],
+              localVaultMatches,
+              contextBudget: {
+                hotCacheKey: contextBudget.hot.cacheKey,
+                warmRole: contextBudget.warm.activeRole.path,
+                warmSkills: contextBudget.warm.selectedSkills.map(s => s.name),
+                maxFragmentTokens: 600
+              },
+              results: cappedResults,
+              rrfCitations: rrfFallback.results
+            }, null, 2)
+          }]
         });
       } else if (toolName === 'code_graph_query') {
         const res = queryCodeGraph(args.symbol_or_file || '', Number(args.limit || 8));

@@ -11,7 +11,33 @@ const description = "{{PROJECT_NAME}} — Construido con Astro 5 + Cloudflare Wo
   <meta name="description" content={description}>
   <link rel="stylesheet" href="/styles/design-tokens.css">
   <link rel="stylesheet" href="/styles/ui-primitives.css">
+  <link rel="stylesheet" href="/styles/motion-engine.css">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <link rel="alternate" type="text/markdown" href="/llms.txt" title="Agentic AI Documentation (llms.txt)">
+  <script type="application/webmcp+json" id="webmcp-manifest">
+  {
+    "schemaVersion": "2026.1-webmcp",
+    "site": "{{PROJECT_NAME}}",
+    "llmsTxt": "/llms.txt",
+    "securityPolicy": "zero-trust-agentic-2026",
+    "tools": [
+      {
+        "name": "get_site_capabilities",
+        "description": "Retrieve core capabilities, pricing tiers, and W3C DTCG design metadata for {{PROJECT_NAME}}.",
+        "endpoint": "/llms.txt",
+        "readOnly": true,
+        "requiresUserConfirmation": false
+      },
+      {
+        "name": "trigger_primary_cta",
+        "description": "Navigate to the primary conversion flow (#pricing).",
+        "selector": "[data-cta='primary']",
+        "readOnly": false,
+        "requiresUserConfirmation": true
+      }
+    ]
+  }
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -47,7 +73,8 @@ const description = "{{PROJECT_NAME}} — Construido con Astro 5 + Cloudflare Wo
   </script>
 </head>
 <body>
-  <header class="site-header" aria-label="Navegación principal">
+  <div class="scroll-progress-bar" aria-hidden="true"></div>
+  <header class="site-header glass-surface" aria-label="Navegación principal">
     <nav class="container site-nav" aria-label="Menú principal">
       <strong>{{PROJECT_NAME}}</strong>
       <ul class="site-nav-links">
@@ -63,5 +90,75 @@ const description = "{{PROJECT_NAME}} — Construido con Astro 5 + Cloudflare Wo
       <small>&copy; 2026 {{PROJECT_NAME}}. Todos los derechos reservados.</small>
     </div>
   </footer>
+  <script is:inline>
+    (() => {
+      document.documentElement.classList.add('js-ready');
+      const prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function initThumbHashAndQuicklink() {
+        document.querySelectorAll('img[data-thumbhash]').forEach((img) => {
+          if (!img.style.aspectRatio && img.width && img.height) {
+            img.style.aspectRatio = `${img.width} / ${img.height}`;
+          }
+        });
+
+        if ('IntersectionObserver' in window) {
+          const prefetched = new Set();
+          const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const a = entry.target;
+              const href = a.getAttribute('href') || '';
+              if (href.startsWith('/') && !href.startsWith('//') && !prefetched.has(href)) {
+                prefetched.add(href);
+                const link = document.createElement('link');
+                link.rel = 'prefetch';
+                link.href = href;
+                document.head.appendChild(link);
+              }
+            });
+          });
+          document.querySelectorAll('a[href^="/"]').forEach((a) => observer.observe(a));
+        }
+      }
+
+      function initZzfxMicroAudio() {
+        if (prefersReducedMotion) return;
+        let audioCtx = null;
+        const playUiTick = () => {
+          const root = document.documentElement;
+          const tokenVal = getComputedStyle(root).getPropertyValue('--audio-feedback').trim();
+          const enabled = root.getAttribute('data-audio-feedback') === 'true' || tokenVal === 'true';
+          if (!enabled) return;
+          const AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (!AudioCtx) return;
+          audioCtx = audioCtx || new AudioCtx();
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(520, audioCtx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(180, audioCtx.currentTime + 0.035);
+          gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.035);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.04);
+        };
+
+        document.querySelectorAll('.btn-primary, .btn-secondary, [data-cta]').forEach((btn) => {
+          btn.addEventListener('click', playUiTick, { passive: true });
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        initThumbHashAndQuicklink();
+        initZzfxMicroAudio();
+        document.querySelectorAll('form[data-n8n-endpoint], form#lead-capture-form').forEach((form) => {
+          form.setAttribute('data-n8n-connector', 'ready');
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

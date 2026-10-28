@@ -1,0 +1,16 @@
+[
+  {
+    "id": "FEAT-001",
+    "slug": "agencia-alfa-core-web-experience",
+    "title": "Agencia Alfa Core Web Experience",
+    "description": "Initial architecture and high-conversion web experience for Agencia Alfa (saas-b2b).",
+    "passes": false,
+    "verification_command": "node tools/factory.mjs gate --project agencia-alfa",
+    "acceptance_criteria": [
+      "Zero UI layout thrashing or horizontal overflow across 1440px, 768px, and 390px viewports.",
+      "100% WCAG 2.2 AA accessibility compliance (semantic landmarks <main>, <nav>, ARIA labels, APCA contrast).",
+      "Zero inline executable <script> blocks or inline onclick handlers (strict CSP compliance)."
+    ],
+    "updated_at": "2026-10-27T22:09:16.113Z"
+  }
+]

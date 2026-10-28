@@ -24,8 +24,158 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
 const KNOWLEDGE_DIR = path.join(ROOT, 'knowledge');
 
-export function sanitizeMarkdownContent(rawText, filePath) {
-  const fileName = path.basename(filePath);
+/**
+ * Mandatory translation warning injected by TIER_3_LEGACY_SYNTAX_GUARD whenever a fragment
+ * from a classic book contains superseded code or technologies.
+ */
+export const TRANSLATION_RULE_WARNING =
+  '[TRANSLATION_RULE: Extrae únicamente el principio conceptual/matemático de este libro. Traduce toda implementación técnica al stack SOTA 2026: OKLCH + Utopia clamp() + CSS Subgrid/Scroll-Driven + ESM + Valibot + Cloudflare Zero-Trust]';
+
+/**
+ * Deterministic Technology Replacement Dictionary (synchronized with .agents/memory/temporal_ledger.json)
+ */
+export const LEGACY_TECH_REPLACEMENT_TABLE = [
+  {
+    id: 'legacy-color-hex-rgb-hsl',
+    legacy_technology: 'HEX / RGB / HSL',
+    superseded_by: 'OKLCH perceptual color space (W3C DTCG 2025.10)',
+    pattern: /(?:color|background|border|fill|stroke)\s*:\s*#[0-9a-fA-F]{3,8}\b|#[0-9a-fA-F]{6}\b|\b(?:rgb|rgba|hsl|hsla)\s*\(\s*\d+/i
+  },
+  {
+    id: 'legacy-typography-px-media-queries',
+    legacy_technology: 'px fijos en tipografía / media queries escalonadas',
+    superseded_by: 'Utopia fluid clamp() + @container queries',
+    pattern: /\bfont-size\s*:\s*\d+(?:\.\d+)?px\b|@media\s*\(\s*(?:min|max)-width\s*:\s*\d+px\s*\)/i
+  },
+  {
+    id: 'legacy-scroll-listeners-heavy-gsap',
+    legacy_technology: 'JS scroll listeners / GSAP pesado para reveals',
+    superseded_by: 'CSS animation-timeline: view()/scroll() + @starting-style (60FPS GPU)',
+    pattern: /addEventListener\s*\(\s*['"]scroll['"]|\bonscroll\s*=|\b(?:gsap\.(?:to|from|fromTo|timeline)|ScrollTrigger|TweenMax|TimelineMax)\b/i
+  },
+  {
+    id: 'legacy-jquery-unsafe-innerhtml',
+    legacy_technology: 'jQuery / DOM manual inseguro (.innerHTML)',
+    superseded_by: 'Vanilla ESM + DOMPurify / window.escapeHTML + Preact Signals / Astro Islands',
+    pattern: /\bjQuery\b|\$\(\s*['"#.a-zA-Z]|\.innerHTML\s*=|\brequire\s*\(\s*['"][^'"]+['"]\s*\)|\bReact\.Component\b|\bfloat\s*:\s*(?:left|right)\b|(?:^|[\s;({])var\s+[a-zA-Z_$][a-zA-Z0-9_$]*\s*=/m
+  },
+  {
+    id: 'legacy-heavy-or-schemaless-validation',
+    legacy_technology: 'Validación pesada o sin esquema',
+    superseded_by: 'Valibot (<1KB) + HTML5 Constraint Validation',
+    pattern: /\bz\.object\s*\(|\bfrom\s+['"]zod['"]|\brequire\s*\(\s*['"]zod['"]\s*\)|\b(?:yup|joi)\.object\b/i
+  },
+  {
+    id: 'legacy-http-security-headers',
+    legacy_technology: 'Cabeceras X-Frame-Options / X-XSS-Protection',
+    superseded_by: "Strict CSP frame-ancestors 'none' + HSTS Preload + COOP",
+    pattern: /\b(?:X-XSS-Protection|X-Frame-Options)\b/i
+  }
+];
+
+/**
+ * Classifies any knowledge document into the 3-Tier Epistemic Governance Hierarchy:
+ *   - TIER_1_SOTA_2026 (authorityBoost: 1.35):
+ *       CANON_*_2026.md, SOTA_*_2026.md, and 2026 technical specifications of Astro 5,
+ *       Cloudflare Workers, W3C DTCG 2025.10, OKLCH, Valibot, Oxc, and OWASP ASVS v5.0.
+ *   - TIER_2_TIMELESS_PRINCIPLES (authorityBoost: 1.15):
+ *       Complete books (book_*.md, LIBRARY_INGEST_*, CANON_BOOK_*, and foundational
+ *       treatises/books on UX/UI, Psychology, Typography, Grids, Copywriting,
+ *       Clean Architecture, and Conceptual Cryptography/Security).
+ */
+export function classifyEpistemicTier(filePath = '', rawText = '') {
+  const normPath = String(filePath || '').replace(/\\/g, '/');
+  const baseName = path.basename(normPath, path.extname(normPath));
+  const lowerBase = baseName.toLowerCase();
+
+  const isExplicitBookOrLibraryIngest =
+    lowerBase.startsWith('book_') ||
+    lowerBase.startsWith('library_ingest_') ||
+    lowerBase.startsWith('canon_book_') ||
+    /^(?:creating_web_animations|designing_data_intensive_applications|clean_architecture|laws_of_ux|nudge_thaler|refactoring_ui|database_internals|release_it|dont_make_me_think|hooked_|predictably_irrational)/i.test(lowerBase);
+
+  if (isExplicitBookOrLibraryIngest) {
+    return {
+      epistemicTier: 'TIER_2_TIMELESS_PRINCIPLES',
+      authorityBoost: 1.15,
+      epistemicRole: 'EL QUÉ Y EL POR QUÉ (Principios eternos visuales, ergonomía, psicología, modelos de amenaza y patrones de diseño)'
+    };
+  }
+
+  const isExplicitSota2026File =
+    /^(?:CANON_.*_2026|SOTA_.*_2026|DESIGN_MASTERY_2026|AGENT_CREATIVE_AND_VISUAL_AWARENESS_2026|CURATED_MASTER_BOOKS.*_2026|BENCHMARK_.*_2026|SCORING_.*_2026|TREATISE_.*_2026|COMPENDIO_.*_2026|TRATADO_.*_2026)/i.test(baseName) ||
+    normPath.startsWith('.agents/skills/') ||
+    /^(?:CANON_ASTRO5_|CANON_MULTI_BRAND_DESIGN_SYSTEMS_DTCG_|CANON_CLOUDFLARE_D1_WORKERS_|CANON_CYBERSECURITY_DEVSECOPS_2026|CANON_WEB_SOFTWARE_FACTORY_MCP_DTCG_|CANON_TYPESCRIPT_RAUSCHMAYER_ZOD_VALIBOT_|CANON_50_REPOS_AGENTIC_|CANON_SOTA_AGENT_TEAM_TOPOLOGY_|CANON_EVERY_LAYOUT_CSS_ALGORITHMS|CANON_EMIL_KOWALSKI_ANIMATIONS_ON_THE_WEB|CYBERSECURITY_MASTER_PROTOCOL|ANTI_BOT_STEALTH_GUIDE)/i.test(baseName);
+
+  const sample = String(rawText || '').slice(0, 3000);
+  const hasSota2026SpecMarkers =
+    /\b(?:Astro\s*5|W3C\s+DTCG\s+2025\.10|OKLCH|Valibot|oxlint|Oxc|OWASP\s+ASVS\s+v5\.0|Cloudflare\s+Workers\s+Static\s+Assets|animation-timeline:\s*view\(\))\b/i.test(sample);
+
+  if (isExplicitSota2026File || (hasSota2026SpecMarkers && baseName.startsWith('CANON_'))) {
+    return {
+      epistemicTier: 'TIER_1_SOTA_2026',
+      authorityBoost: 1.35,
+      epistemicRole: 'EL CÓMO TÉCNICO (Autoridad absoluta en sintaxis, APIs, configuración, librerías y código SOTA 2026)'
+    };
+  }
+
+  return {
+    epistemicTier: 'TIER_2_TIMELESS_PRINCIPLES',
+    authorityBoost: 1.15,
+    epistemicRole: 'EL QUÉ Y EL POR QUÉ (Principios eternos visuales, ergonomía, psicología, modelos de amenaza y patrones de diseño)'
+  };
+}
+
+/**
+ * TIER_3_LEGACY_SYNTAX_GUARD:
+ * Inspects a retrieved fragment and detects superseded legacy syntax or technologies
+ * (#hex/rgb(), float, var, CommonJS require(), jQuery, React.Component, heavy zod in Edge,
+ * fixed px typography, scroll listeners, or X-XSS-Protection / X-Frame-Options).
+ * When triggered on a classic book or legacy snippet, injects TRANSLATION_RULE_WARNING.
+ */
+export function inspectAndGuardLegacyFragment(text = '', epistemicTier = 'TIER_2_TIMELESS_PRINCIPLES', filePath = '') {
+  const raw = String(text || '');
+  const matchedReplacements = [];
+
+  for (const rule of LEGACY_TECH_REPLACEMENT_TABLE) {
+    if (rule.pattern.test(raw)) {
+      matchedReplacements.push({
+        id: rule.id,
+        legacy_technology: rule.legacy_technology,
+        superseded_by: rule.superseded_by
+      });
+    }
+  }
+
+  const hasExtraLegacyTokens =
+    /\b(?:float\s*:\s*(?:left|right)|React\.Component|componentDidMount|require\s*\(\s*['"]|jQuery|\.innerHTML\b|X-XSS-Protection|X-Frame-Options)\b/.test(raw) ||
+    /(?:^|[\s;({])var\s+[a-zA-Z_$][a-zA-Z0-9_$]*\s*=/.test(raw);
+
+  const isLegacyTriggered =
+    matchedReplacements.length > 0 || hasExtraLegacyTokens;
+
+  // Trigger TIER_3_LEGACY_SYNTAX_GUARD on TIER_2 classic books whenever legacy syntax appears,
+  // or on any chunk that contains legacy syntax patterns.
+  const guardActive =
+    isLegacyTriggered &&
+    (epistemicTier === 'TIER_2_TIMELESS_PRINCIPLES' || matchedReplacements.length > 0);
+
+  let guardedText = raw;
+  if (guardActive && !guardedText.includes('[TRANSLATION_RULE:')) {
+    guardedText = `${TRANSLATION_RULE_WARNING}\n${guardedText}`;
+  }
+
+  return {
+    legacySyntaxGuard: guardActive ? 'TIER_3_LEGACY_SYNTAX_GUARD' : null,
+    translationRuleActive: guardActive,
+    translationRule: guardActive ? TRANSLATION_RULE_WARNING : null,
+    supersededReplacements: matchedReplacements,
+    guardedText
+  };
+}
+
+export function sanitizeMarkdownContent(rawText = '', filePath = 'document.md') {
+  const fileName = path.basename(String(filePath || 'document.md'));
   const isBook = fileName.startsWith('book_') || /^[a-z0-9_]+\.md$/.test(fileName);
 
   let text = rawText

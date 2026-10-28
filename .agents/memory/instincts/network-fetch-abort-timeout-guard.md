@@ -1,27 +1,26 @@
 ---
 id: "network-fetch-abort-timeout-guard"
-type: "resilience_pattern"
+category: "resilience_pattern"
 confidence: 0.99
+valid_from: "2026-10-25T00:00:00.000Z"
+valid_until: null
+superseded_by: null
 status: "ACTIVE"
-created_at: "2026-10-26T01:17:34.941Z"
 ---
 
 # Instinct: Mandatory AbortSignal.timeout on External API Calls
 
+> **Fact:** Every remote fetch must include AbortSignal.timeout(3500) to prevent hung sockets.  
 > **Confidence:** 99%  
-> **Source / Evidence:** tools/intelligence/serper_researcher.mjs, tools/intelligence/rag_pipeline.mjs
+> **Source / Evidence:** tools/intelligence/serper_researcher.mjs, tools/intelligence/qdrant_rag.mjs
 
 ## Rule & Heuristic
-External API services (Serper, Qdrant Cloud, Vertex AI) can hang indefinitely when connection pools saturate or sockets drop. Every remote fetch must have an explicit timeout between 2,500ms and 3,500ms.
+External API services can hang indefinitely. Every remote fetch must have an explicit timeout between 2,500ms and 3,500ms.
 
 ## Operational Pattern
 ```javascript
-const res = await fetch(url, {
-  method: 'POST',
-  signal: AbortSignal.timeout(3500),
-  headers: { ... }
-});
+const res = await fetch(url, { signal: AbortSignal.timeout(3500) });
 ```
 
 ## Anti-Pattern
-Calling fetch() on external services without an AbortSignal or Promise.race timeout.
+Calling fetch() on external services without an AbortSignal timeout.

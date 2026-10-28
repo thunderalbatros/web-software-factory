@@ -1,0 +1,145 @@
+{
+  "mission": "SOTA Parallel Bolt Verification",
+  "startedAt": "2026-10-26T22:22:45.560Z",
+  "status": "COMPLETED",
+  "sandbox": null,
+  "waves": [
+    {
+      "waveId": "WAVE_1_CONSTITUTION_AND_PREFLIGHT",
+      "durationMs": 144,
+      "passed": true,
+      "nodes": [
+        {
+          "id": "constitution_lock",
+          "passed": true,
+          "durationMs": 6
+        },
+        {
+          "id": "squad_alignment",
+          "passed": true,
+          "durationMs": 3
+        },
+        {
+          "id": "temporal_preflight",
+          "passed": true,
+          "durationMs": 134
+        }
+      ]
+    },
+    {
+      "waveId": "WAVE_2_PARALLEL_STATIC_AND_TOKEN_BOLT",
+      "durationMs": 284,
+      "passed": true,
+      "nodes": [
+        {
+          "id": "oxlint_fast_pass",
+          "passed": true,
+          "durationMs": 136
+        },
+        {
+          "id": "ast_symbolic_guard",
+          "passed": true,
+          "durationMs": 31,
+          "score": 100
+        },
+        {
+          "id": "dtcg_token_compiler",
+          "passed": true,
+          "durationMs": 115
+        }
+      ]
+    },
+    {
+      "waveId": "WAVE_3_PARALLEL_VISUAL_AND_SECURITY_SENSORS",
+      "durationMs": 173,
+      "passed": true,
+      "nodes": [
+        {
+          "id": "ryux_design_gate",
+          "passed": true,
+          "durationMs": 162
+        },
+        {
+          "id": "cognitive_ux_auditor",
+          "passed": true,
+          "durationMs": 143
+        },
+        {
+          "id": "security_and_motion_audit",
+          "passed": true,
+          "durationMs": 142
+        },
+        {
+          "id": "floor_and_aeo_guard",
+          "passed": true,
+          "durationMs": 140
+        }
+      ]
+    }
+  ],
+  "tasks": {
+    "constitution_lock": {
+      "passed": true,
+      "durationMs": 6,
+      "cached": false,
+      "completedAt": "2026-10-26T22:22:45.704Z"
+    },
+    "squad_alignment": {
+      "passed": true,
+      "durationMs": 3,
+      "cached": false,
+      "completedAt": "2026-10-26T22:22:45.704Z"
+    },
+    "temporal_preflight": {
+      "passed": true,
+      "durationMs": 134,
+      "cached": false,
+      "completedAt": "2026-10-26T22:22:45.704Z"
+    },
+    "oxlint_fast_pass": {
+      "passed": true,
+      "durationMs": 136,
+      "cached": false,
+      "completedAt": "2026-10-26T22:22:45.990Z"
+    },
+    "ast_symbolic_guard": {
+      "passed": true,
+      "durationMs": 31,
+      "cached": false,
+      "completedAt": "2026-10-26T22:22:45.990Z"
+    },
+    "dtcg_token_compiler": {
+      "passed": true,
+      "durationMs": 115,
+      "cached": false,
+      "completedAt": "2026-10-26T22:22:45.990Z"
+    },
+    "ryux_design_gate": {
+      "passed": true,
+      "durationMs": 162,
+      "cached": false,
+      "completedAt": "2026-10-26T22:22:46.165Z"
+    },
+    "cognitive_ux_auditor": {
+      "passed": true,
+      "durationMs": 143,
+      "cached": false,
+      "completedAt": "2026-10-26T22:22:46.165Z"
+    },
+    "security_and_motion_audit": {
+      "passed": true,
+      "durationMs": 142,
+      "cached": false,
+      "completedAt": "2026-10-26T22:22:46.165Z"
+    },
+    "floor_and_aeo_guard": {
+      "passed": true,
+      "durationMs": 140,
+      "cached": false,
+      "completedAt": "2026-10-26T22:22:46.165Z"
+    }
+  },
+  "totalDurationMs": 607,
+  "activeWorktrees": 0,
+  "updatedAt": "2026-10-26T22:22:46.245Z"
+}

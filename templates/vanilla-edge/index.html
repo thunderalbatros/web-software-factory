@@ -7,7 +7,33 @@
   <meta name="description" content="{{PROJECT_NAME}} — Plataforma web construida con la Web Software Factory (OKLCH, W3C DTCG 2025.10, WCAG 2.2 AA, Cloudflare Edge).">
   <link rel="stylesheet" href="/site/css/design-tokens.css">
   <link rel="stylesheet" href="/site/css/ui-primitives.css">
+  <link rel="stylesheet" href="/site/css/motion-engine.css">
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
+  <link rel="alternate" type="text/markdown" href="/llms.txt" title="Agentic AI Documentation (llms.txt)">
+  <script type="application/webmcp+json" id="webmcp-manifest">
+  {
+    "schemaVersion": "2026.1-webmcp",
+    "site": "{{PROJECT_NAME}}",
+    "llmsTxt": "/llms.txt",
+    "securityPolicy": "zero-trust-agentic-2026",
+    "tools": [
+      {
+        "name": "get_site_capabilities",
+        "description": "Retrieve core capabilities, pricing tiers, and W3C DTCG design metadata for {{PROJECT_NAME}}.",
+        "endpoint": "/llms.txt",
+        "readOnly": true,
+        "requiresUserConfirmation": false
+      },
+      {
+        "name": "trigger_primary_cta",
+        "description": "Navigate to the primary conversion flow (#pricing).",
+        "selector": "[data-cta='primary']",
+        "readOnly": false,
+        "requiresUserConfirmation": true
+      }
+    ]
+  }
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -43,7 +69,8 @@
   </script>
 </head>
 <body>
-  <header class="site-header" aria-label="Navegación principal">
+  <div class="scroll-progress-bar" aria-hidden="true"></div>
+  <header class="site-header glass-surface" aria-label="Navegación principal">
     <nav class="container site-nav" aria-label="Menú principal">
       <strong>{{PROJECT_NAME}}</strong>
       <ul class="site-nav-links">
@@ -130,9 +157,17 @@
   <dialog id="demo-modal" class="dialog-modal" aria-label="Demostración del sistema">
     <h2>Arquitectura Verificada</h2>
     <p>Este modal utiliza el elemento nativo HTML5 <code>&lt;dialog&gt;</code> con transiciones discretas <code>@starting-style</code> sin dependencias externas.</p>
-    <div class="hero-actions">
-      <button type="button" class="btn-secondary" data-close-modal="demo-modal" aria-label="Cerrar ventana de demostración">Cerrar</button>
-    </div>
+    <form id="lead-capture-form" novalidate aria-label="Formulario de contacto rápido" style="display:grid;gap:0.75rem;margin:1rem 0;max-width:100%;">
+      <label for="lead-name" style="font-weight:600;">Nombre o Empresa</label>
+      <input id="lead-name" name="fullName" type="text" maxlength="5000" required placeholder="Tu nombre o empresa" style="width:100%;max-width:100%;padding:0.65rem;border-radius:0.5rem;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.3);color:inherit;box-sizing:border-box;">
+      <label for="lead-email" style="font-weight:600;">Correo corporativo</label>
+      <input id="lead-email" name="email" type="email" maxlength="5000" required placeholder="cto@empresa.com" style="width:100%;max-width:100%;padding:0.65rem;border-radius:0.5rem;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.3);color:inherit;box-sizing:border-box;">
+      <p id="lead-form-status" role="status" aria-live="polite" style="margin:0;font-size:var(--step--1);overflow-wrap:anywhere;word-break:break-word;max-width:100%;"></p>
+      <div class="hero-actions">
+        <button type="submit" class="btn-primary btn-spring" data-action="submit-lead" aria-label="Enviar solicitud de demostración">Solicitar acceso</button>
+        <button type="button" class="btn-secondary" data-close-modal="demo-modal" aria-label="Cerrar ventana de demostración">Cerrar</button>
+      </div>
+    </form>
   </dialog>
 
   <footer class="site-footer" aria-label="Pie de página legal">

@@ -189,3 +189,33 @@ export function applyCragAndGraphRefinement(candidates, queryString, wikiGraph =
     route
   };
 }
+
+export async function routeWithThreeTierContext(queryString, roleHint = 'auto') {
+  const { assembleThreeTierContext } = await import('./context_budget.mjs');
+  const route = routeQueryToSquads(queryString);
+  const contextTiers = assembleThreeTierContext(queryString, { role: roleHint });
+  return {
+    route,
+    contextTiers
+  };
+}
+
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __filename = fileURLToPath(import.meta.url);
+if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
+  const queryArg = process.argv.slice(2).filter((a) => !a.startsWith('--')).join(' ') || 'OKLCH design tokens 60fps motion CSP security';
+  const route = routeQueryToSquads(queryArg);
+  const domainCount = Object.keys(SQUAD_DOMAINS).length;
+  console.log('======================================================');
+  console.log('🧭 SQUAD SEMANTIC ROUTER + CRAG DIAGNOSTIC STATUS');
+  console.log('======================================================');
+  console.log(`  ✓ Registered Domains : ${domainCount} specialized squad domains`);
+  console.log(`  ✓ Sample Query       : "${queryArg}"`);
+  console.log(`  ✓ Primary Squad      : ${route.primarySquad.squad} (${route.primarySquad.domain})`);
+  console.log(`  ✓ Active Domains     : ${route.activeDomains.map((d) => d.domain).join(', ')}`);
+  console.log('======================================================');
+}
+
+

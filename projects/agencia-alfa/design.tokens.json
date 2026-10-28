@@ -1,0 +1,213 @@
+{
+  "$schema": "https://tr.designtokens.org/format/2025.10/",
+  "meta": {
+    "standard": "W3C DTCG 2025.10",
+    "archetype": "saas-b2b",
+    "styleSkill": "bento",
+    "chromaticRule": "90% Neutral Surface / 8% Supporting Accent / 2% High-Chroma CTA (OKLCH + APCA)"
+  },
+  "color": {
+    "surface": {
+      "canvas": {
+        "$type": "color",
+        "$value": "oklch(0.13 0.015 258)",
+        "$description": "90% Primary background canvas"
+      },
+      "elevated": {
+        "$type": "color",
+        "$value": "oklch(0.18 0.018 258)",
+        "$description": "Elevated card surface (+5% L)"
+      },
+      "interactive": {
+        "$type": "color",
+        "$value": "oklch(0.22 0.022 258)",
+        "$description": "Interactive hover surface (+9% L)"
+      },
+      "glass": {
+        "$type": "color",
+        "$value": "oklch(0.20 0.02 258 / 0.76)",
+        "$description": "Glassmorphic sticky header surface"
+      }
+    },
+    "text": {
+      "primary": {
+        "$type": "color",
+        "$value": "oklch(0.96 0.008 258)",
+        "$description": "Primary headline & body text (APCA Lc >= 90)"
+      },
+      "secondary": {
+        "$type": "color",
+        "$value": "oklch(0.76 0.015 258)",
+        "$description": "Supporting copy (APCA Lc >= 65)"
+      },
+      "muted": {
+        "$type": "color",
+        "$value": "oklch(0.62 0.015 258)",
+        "$description": "Metadata & captions (APCA Lc >= 50)"
+      }
+    },
+    "brand": {
+      "accent": {
+        "$type": "color",
+        "$value": "oklch(0.74 0.17 162)",
+        "$description": "8% Supporting brand accent"
+      },
+      "cta": {
+        "$type": "color",
+        "$value": "oklch(0.82 0.18 85)",
+        "$description": "2% High-conversion focal CTA"
+      },
+      "ctaInk": {
+        "$type": "color",
+        "$value": "oklch(0.14 0.02 258)",
+        "$description": "High-contrast ink on CTA button"
+      }
+    },
+    "border": {
+      "subtle": {
+        "$type": "color",
+        "$value": "oklch(1 0 0 / 0.08)",
+        "$description": "1px subtle hairline border"
+      },
+      "highlight": {
+        "$type": "color",
+        "$value": "oklch(1 0 0 / 0.18)",
+        "$description": "Interactive hover hairline"
+      }
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "sans": {
+        "$type": "fontFamily",
+        "$value": "'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+      },
+      "display": {
+        "$type": "fontFamily",
+        "$value": "'Inter', system-ui, -apple-system, sans-serif"
+      },
+      "mono": {
+        "$type": "fontFamily",
+        "$value": "'JetBrains Mono', ui-monospace, SFMono-Regular, monospace"
+      }
+    },
+    "scale": {
+      "stepMinus1": {
+        "$type": "dimension",
+        "$value": "clamp(0.82rem, 0.78rem + 0.2vw, 0.92rem)"
+      },
+      "step0": {
+        "$type": "dimension",
+        "$value": "clamp(1rem, 0.95rem + 0.25vw, 1.125rem)"
+      },
+      "step1": {
+        "$type": "dimension",
+        "$value": "clamp(1.22rem, 1.12rem + 0.5vw, 1.5rem)"
+      },
+      "step2": {
+        "$type": "dimension",
+        "$value": "clamp(1.5rem, 1.3rem + 1vw, 2.25rem)"
+      },
+      "step3": {
+        "$type": "dimension",
+        "$value": "clamp(1.9rem, 1.55rem + 1.6vw, 3rem)"
+      },
+      "step4": {
+        "$type": "dimension",
+        "$value": "clamp(2.25rem, 1.8rem + 2.2vw, 3.75rem)"
+      }
+    }
+  },
+  "radius": {
+    "card": {
+      "$type": "dimension",
+      "$value": "18px",
+      "$description": "Primary card border radius"
+    },
+    "pill": {
+      "$type": "dimension",
+      "$value": "9999px",
+      "$description": "Full pill button border radius"
+    }
+  },
+  "motion": {
+    "easing": {
+      "springSnappy": {
+        "$type": "cubicBezier",
+        "$value": "linear(0, 0.3566 9.6%, 0.7852 21.1%, 1.0156 32.2%, 1.0738 41.3%, 1.0468 53.6%, 1.0062 69.8%, 1)",
+        "$description": "Real spring physics curve via CSS linear() for buttons & micro-interactions"
+      },
+      "springGentle": {
+        "$type": "cubicBezier",
+        "$value": "linear(0, 0.245 8.5%, 0.642 19.8%, 0.916 31.4%, 1.021 43.2%, 1.018 59.1%, 1)",
+        "$description": "Gentle spring physics curve for cards & dialogs"
+      },
+      "cinematicOut": {
+        "$type": "cubicBezier",
+        "$value": "cubic-bezier(0.22, 1, 0.36, 1)",
+        "$description": "Cinematic deceleration curve"
+      },
+      "cinematicInOut": {
+        "$type": "cubicBezier",
+        "$value": "cubic-bezier(0.65, 0, 0.35, 1)",
+        "$description": "Symmetric cinematic curve for morphs"
+      }
+    },
+    "duration": {
+      "fast": {
+        "$type": "duration",
+        "$value": "160ms",
+        "$description": "Micro-interaction duration"
+      },
+      "normal": {
+        "$type": "duration",
+        "$value": "280ms",
+        "$description": "Standard surface & modal transition"
+      },
+      "slow": {
+        "$type": "duration",
+        "$value": "520ms",
+        "$description": "Hero & view-transition morph duration"
+      }
+    }
+  },
+  "audio": {
+    "feedback": {
+      "$type": "boolean",
+      "$value": false,
+      "$description": "Procedural ZzFX 1KB UI micro-audio feedback (disabled by default; set true to enable)"
+    }
+  },
+  "semantic": {
+    "pageBackground": {
+      "$type": "color",
+      "$value": "{color.surface.canvas}",
+      "$description": "Alias to primary 90% neutral surface canvas"
+    },
+    "cardBackground": {
+      "$type": "color",
+      "$value": "{color.surface.elevated}",
+      "$description": "Alias to elevated surface"
+    },
+    "primaryActionBg": {
+      "$type": "color",
+      "$value": "{color.brand.cta}",
+      "$description": "Alias to 2% focal CTA color"
+    },
+    "primaryActionInk": {
+      "$type": "color",
+      "$value": "{color.brand.ctaInk}",
+      "$description": "Alias to high-contrast CTA text"
+    },
+    "headingFont": {
+      "$type": "fontFamily",
+      "$value": "{typography.fontFamily.display}",
+      "$description": "Alias to display typography"
+    },
+    "defaultSpringEasing": {
+      "$type": "cubicBezier",
+      "$value": "{motion.easing.springSnappy}",
+      "$description": "Alias to primary linear() spring"
+    }
+  }
+}
