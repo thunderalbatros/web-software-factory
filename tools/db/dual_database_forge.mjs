@@ -40,6 +40,21 @@ const ROOT = path.resolve(__dirname, '..', '..');
 export const VALID_DB_TIERS = ['edge-d1', 'enterprise-postgres'];
 
 /**
+ * CMU 15-445 (Prof. Andy Pavlo) Database Systems & Atomic Transactions Invariants:
+ *   - MVCC Snapshot Isolation (`REPEATABLE READ` / `SERIALIZABLE`)
+ *   - Pessimistic Row-Level Locking (`SELECT ... FOR UPDATE NOWAIT`) for stock/ledger mutations
+ *   - Leftmost-Prefix Composite B+Tree Indexing (`(tenant_id, created_at DESC)`)
+ *   - Write-Ahead Logging (WAL) with `PRAGMA wal_checkpoint(TRUNCATE);`
+ */
+export const CMU_15445_ATOMIC_TRANSACTION_INVARIANTS = Object.freeze({
+  courseRef: 'CMU 15-445/645 (Prof. Andy Pavlo — https://15445.courses.cs.cmu.edu/)',
+  isolationLevel: 'REPEATABLE READ (MVCC Snapshot Isolation)',
+  rowLockingClause: 'SELECT ... FOR UPDATE NOWAIT',
+  indexStructure: 'Composite B+Tree (Equality-Before-Range Leftmost Prefix)',
+  walPragmas: 'PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000;'
+});
+
+/**
  * Resolves `dbTier` ("edge-d1" | "enterprise-postgres") from `SPEC.md` or `factory.project.json`.
  */
 export function resolveDatabaseTier(projectRoot = ROOT) {
@@ -84,8 +99,12 @@ export function generateEdgeD1SqlSchema(projectSlug = 'agencia-alfa') {
   return `-- =============================================================================
 -- Tier-1 Cloudflare D1 (SQLite) Edge Schema — Project: ${projectSlug}
 -- Cost: $0.00 | Primary Keys: Opaque UUIDv4 / ULID (Anti-IDOR A01:2025)
+-- CMU 15-445 (Andy Pavlo): WAL Durability + Composite B+Tree Indexing
 -- =============================================================================
 PRAGMA foreign_keys = ON;
+PRAGMA journal_mode = WAL;
+PRAGMA synchronous = NORMAL;
+PRAGMA busy_timeout = 5000;
 
 CREATE TABLE IF NOT EXISTS leads_submissions (
   id TEXT PRIMARY KEY CHECK (length(id) >= 26),

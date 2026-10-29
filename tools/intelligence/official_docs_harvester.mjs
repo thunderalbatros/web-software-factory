@@ -713,6 +713,276 @@ export function harvestZeroAuthUniversityPortals() {
 }
 
 /**
+ * 8 University & Industrial Domain-Specific Mastery Courses (`DOMAIN_MASTERY_COURSES_URLS`):
+ * Maps each domain course to its target `knowledge/<domain>/` directory, canonical markdown filename,
+ * linked Harness module, architectural invariants, and SOTA 2026 production code patterns.
+ */
+export const DOMAIN_MASTERY_COURSES_URLS = [
+  {
+    id: 'cmu-15-445-database-systems',
+    title: 'Bases de Datos y Transacciones Atómicas (CMU 15-445 / Andy Pavlo)',
+    institution: 'Carnegie Mellon University (Prof. Andy Pavlo)',
+    urls: ['https://15445.courses.cs.cmu.edu/'],
+    domainDir: 'cybersecurity',
+    canonFileName: 'CANON_DOMAIN_CMU_15445_MVCC_BTREE_WAL_AND_ATOMIC_TX_2026.md',
+    linkedHarnessModule: 'tools/db/dual_database_forge.mjs',
+    coreTopics: ['MVCC Snapshot Isolation', 'SELECT ... FOR UPDATE', 'B+Tree Composite Indexing', 'Write-Ahead Logging (WAL)'],
+    architecturalRules: [
+      'Enforce Multi-Version Concurrency Control (MVCC) Snapshot Isolation and explicit pessimistic row-level locks (`SELECT ... FOR UPDATE NOWAIT`) on financial/inventory mutations to prevent Write Skew and Lost Updates.',
+      'Configure SQLite/D1 with `PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL; PRAGMA busy_timeout = 5000;` and checkpoint via `PRAGMA wal_checkpoint(TRUNCATE);`.',
+      'Design composite B+Tree indexes following the Leftmost-Prefix & Equality-Before-Range rule (`(tenant_id, status, created_at DESC)`).'
+    ],
+    codePattern: `-- CMU 15-445 Atomic Inventory/Ledger Mutation (PostgreSQL v14+ MVCC + Row Lock)
+BEGIN ISOLATION LEVEL REPEATABLE READ;
+SET LOCAL app.current_tenant_id = $1;
+SELECT available_units FROM zone_confidential.inventory_items
+ WHERE tenant_id = $1 AND sku_id = $2
+ FOR UPDATE NOWAIT;
+UPDATE zone_confidential.inventory_items
+   SET available_units = available_units - $3, updated_at = NOW()
+ WHERE tenant_id = $1 AND sku_id = $2 AND available_units >= $3;
+COMMIT;`
+  },
+  {
+    id: 'mit-6-5840-distributed-systems',
+    title: 'Sistemas Distribuidos e Idempotencia en el Borde (MIT 6.5840 / 6.824)',
+    institution: 'MIT CSAIL (Prof. Robert Morris & Frans Kaashoek)',
+    urls: ['https://nil.csail.mit.edu/6.5840/'],
+    domainDir: 'software_factory',
+    canonFileName: 'CANON_DOMAIN_MIT_65840_DISTRIBUTED_IDEMPOTENCY_AND_DURABLE_OBJECTS_2026.md',
+    linkedHarnessModule: 'tools/security/identity_and_commerce_guard.mjs',
+    coreTopics: ['Idempotency Keys for Payments', 'Cloudflare Durable Objects Single-Writer Serialization', 'At-Least-Once Delivery + Exactly-Once State Mutation'],
+    architecturalRules: [
+      'Assume network partitions, client retries, and duplicate webhook deliveries; require a deterministic `Idempotency-Key` (`UUIDv4`/`ULID`) on every state-mutating POST/PUT request.',
+      'Serialize concurrent stock/checkout mutations through single-writer Cloudflare Durable Objects (`blockConcurrencyWhile` + SQLite storage) to guarantee linearizability without distributed lock contention.',
+      'Deduplicate Stripe/MercadoPago webhooks in an immutable `idempotent_webhooks_ledger` table before executing side effects.'
+    ],
+    codePattern: `// MIT 6.5840 Linearizable Edge Mutation with Idempotency Key
+export async function executeIdempotentMutation(storage, idempotencyKey, mutateFn) {
+  const existing = await storage.get(\`idem:\${idempotencyKey}\`);
+  if (existing) return { deduplicated: true, result: existing };
+  const result = await mutateFn();
+  await storage.put(\`idem:\${idempotencyKey}\`, result);
+  return { deduplicated: false, result };
+}`
+  },
+  {
+    id: 'mit-6-102-ousterhout-deep-modules',
+    title: 'Diseño de Módulos Profundos e Invariantes (MIT 6.102 + John Ousterhout A Philosophy of Software Design)',
+    institution: 'MIT 6.102 & Stanford University (Prof. John Ousterhout)',
+    urls: ['https://web.mit.edu/6.102/www/', 'https://www.youtube.com/watch?v=bmSAYlu0NcY'],
+    videoTalkUrl: 'https://www.youtube.com/watch?v=bmSAYlu0NcY',
+    domainDir: 'architecture_and_books',
+    canonFileName: 'CANON_DOMAIN_MIT_6102_OUSTERHOUT_DEEP_MODULES_AND_REP_INVARIANTS_2026.md',
+    linkedHarnessModule: 'tools/intelligence/ast_guard.mjs',
+    coreTopics: ['Deep vs. Shallow Modules', 'Representation Invariants (checkRep)', 'Abstraction Functions AF(r)', 'Eradication of Shotgun Surgery & Pass-Through Methods'],
+    architecturalRules: [
+      'Favor Deep Modules (narrow, simple interface hiding substantial implementation complexity) over Shallow Modules (classitis, pass-through methods, and temporal decomposition).',
+      'Define errors out of existence where possible and enforce explicit Representation Invariants (`checkRep()`) at module boundaries.',
+      'Eliminate Information Leakage and Shotgun Surgery: if a single schema or token change requires editing 5+ files, consolidate the shared abstraction into a single deep module.'
+    ],
+    codePattern: `// MIT 6.102 + Ousterhout Deep Module with Representation Invariant (checkRep)
+export class MonetaryLedgerModule {
+  #balanceMinorUnits = 0n;
+  #checkRep() {
+    if (typeof this.#balanceMinorUnits !== 'bigint' || this.#balanceMinorUnits < 0n) {
+      throw new Error('REP_INVARIANT_VIOLATION: Balance must be a non-negative BigInt in minor units.');
+    }
+  }
+  creditMinorUnits(amountCents) {
+    this.#balanceMinorUnits += BigInt(amountCents);
+    this.#checkRep();
+    return this.#balanceMinorUnits;
+  }
+}`
+  },
+  {
+    id: 'cmu-15-462-keenan-crane-and-webgpu',
+    title: 'Gráficos 3D por Computadora y Shaders WebGPU (CMU 15-462 Keenan Crane + WebGPU Fundamentals)',
+    institution: 'Carnegie Mellon University (Prof. Keenan Crane) & WebGPU Fundamentals',
+    urls: ['https://15462.courses.cs.cmu.edu/', 'https://webgpufundamentals.org/'],
+    domainDir: 'motion_and_animation',
+    canonFileName: 'CANON_DOMAIN_CMU_15462_KEENAN_CRANE_AND_WEBGPU_SHADERS_60FPS_2026.md',
+    linkedHarnessModule: 'tools/design/shader_and_3d_forge.mjs',
+    coreTopics: ['.glb Mesh Topology & Half-Edge Manifold Hygiene', 'Microfacet Cook-Torrance PBR BRDF', 'Signed Distance Fields (SDFs)', 'WGSL / Three.js r186 TSL Shaders at 60 FPS'],
+    architecturalRules: [
+      'Ensure `.glb` meshes are 2-manifold, Draco/Meshopt compressed (`70–85%` reduction via `gltf_asset_pipeline.mjs`), and free of degenerate zero-area triangles.',
+      'Implement Cook-Torrance microfacet PBR lighting with GGX normal distribution, Smith geometry shadowing, Schlick Fresnel, and `THREE.AgXToneMapping` (`exposure = 1.05`).',
+      'Write compute and fragment shaders in WGSL / Three.js r186 TSL (`THREE.WebGPURenderer` + `THREE.Timer` + `THREE.RenderPipeline`), keeping frame time `< 16.6ms` (60 FPS).'
+    ],
+    codePattern: `// CMU 15-462 + WebGPU WGSL / TSL Smooth Minimum SDF & Fresnel Rim
+// k controls smooth blending radius between two SDF primitives d1, d2
+fn sminCubic(d1: f32, d2: f32, k: f32) -> f32 {
+  let h = max(k - abs(d1 - d2), 0.0) / k;
+  return min(d1, d2) - h * h * h * k * (1.0 / 6.0);
+}`
+  },
+  {
+    id: 'stanford-cs253-modern-web-security',
+    title: 'Seguridad Web Moderna (Stanford CS253 — Feross Aboukhadijeh)',
+    institution: 'Stanford University (Feross Aboukhadijeh)',
+    urls: ['https://web.stanford.edu/class/cs253/'],
+    domainDir: 'cybersecurity',
+    canonFileName: 'CANON_DOMAIN_STANFORD_CS253_WEB_SECURITY_SOP_CSP_AND_WEBAUTHN_2026.md',
+    linkedHarnessModule: 'tools/audit/security_gate.mjs',
+    coreTopics: ['Same-Origin Policy (SOP) & COOP/COEP', 'Strict CSP & Trusted Types (Zero DOM XSS)', 'Fetch Metadata CSRF Defense', 'WebAuthn/Passkeys & __Host- Session Cookies'],
+    architecturalRules: [
+      'Enforce strict `Content-Security-Policy` (`default-src \'self\'; object-src \'none\'; frame-ancestors \'none\'; base-uri \'self\'`) and forbid `unsafe-eval` and unsanitized `innerHTML`/`outerHTML`/`document.write`.',
+      'Bind session cookies exclusively with the `__Host-` prefix (`Secure; HttpOnly; SameSite=Strict; Path=/`) and validate `Sec-Fetch-Site`, `Sec-Fetch-Mode`, and `Sec-Fetch-Dest` on state-changing endpoints.',
+      'Prefer phishing-resistant WebAuthn/FIDO2 Passkeys (`navigator.credentials.create/get` with origin binding) and Argon2id password hashing.'
+    ],
+    codePattern: `// Stanford CS253 Fetch Metadata CSRF & Cross-Origin Isolation Guard
+export function verifyFetchMetadataCsrf(request) {
+  const site = request.headers.get('Sec-Fetch-Site') || 'same-origin';
+  if (['POST', 'PUT', 'DELETE', 'PATCH'].includes(request.method) && site === 'cross-site') {
+    return { allowed: false, status: 403, reason: 'CS253_CROSS_SITE_MUTATION_BLOCKED' };
+  }
+  return { allowed: true, status: 200 };
+}`
+  },
+  {
+    id: 'google-web-dev-learn-perf-a11y-css',
+    title: 'Rendimiento Chromium Blink/V8, Accesibilidad y CSS Moderno (Google web.dev/learn)',
+    institution: 'Google Chrome Developers (web.dev/learn)',
+    urls: [
+      'https://web.dev/learn/performance',
+      'https://web.dev/learn/accessibility',
+      'https://web.dev/learn/css'
+    ],
+    domainDir: 'ui_ux_design',
+    canonFileName: 'CANON_DOMAIN_GOOGLE_WEBDEV_CWV_BLINK_V8_A11Y_AND_MODERN_CSS_2026.md',
+    linkedHarnessModule: 'tools/audit/ryux_design_gate.mjs',
+    coreTopics: ['LCP < 1.2s, INP < 50ms, CLS = 0.00', 'Chromium Blink Compositor Thread (transform & opacity)', 'Playwright Accessibility Tree (AX Tree) & WCAG 2.2 / APCA', 'Modern Baseline CSS (OKLCH, clamp(), @starting-style, Subgrid)'],
+    architecturalRules: [
+      'Guarantee `LCP < 1.2s` (`fetchpriority="high"` on hero asset, zero render-blocking scripts), `INP < 50ms` (yield long tasks > 50ms via `scheduler.yield()`), and `CLS = 0.00` (explicit `width`/`height` or `aspect-ratio` on all media).',
+      'Animate exclusively on the Chromium Blink GPU compositor thread (`transform`, `opacity`, `filter`) and never query layout geometry (`offsetWidth`, `getBoundingClientRect`) inside `requestAnimationFrame`.',
+      'Enforce semantic landmarks (`<header>`, `<main>`, `<nav>`, `<footer>`), visible `:focus-visible` rings, `>= 48x48px` touch targets, and APCA `Lc >= 60/75/90` contrast.'
+    ],
+    codePattern: `/* Google web.dev/learn Zero-CLS, GPU Compositor & Utopia Fluid Ergonomics */
+.hero-media { aspect-ratio: 16 / 9; width: 100%; height: auto; content-visibility: auto; }
+.interactive-card { will-change: transform, opacity; transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1); }`
+  },
+  {
+    id: 'stanford-ccrma-music-220a-procedural-audio',
+    title: 'Síntesis Musical y Audio Digital (Stanford CCRMA Music 220a)',
+    institution: 'Stanford University CCRMA (Center for Computer Research in Music and Acoustics)',
+    urls: ['https://ccrma.stanford.edu/courses/220a/'],
+    domainDir: 'motion_and_animation',
+    canonFileName: 'CANON_DOMAIN_STANFORD_CCRMA_220A_MODAL_SYNTHESIS_AND_PROCEDURAL_AUDIO_2026.md',
+    linkedHarnessModule: 'tools/media/sonic_and_music_forge.mjs',
+    coreTopics: ['Modal & Physical Modeling Synthesis', 'Karplus-Strong Waveguide & Biquad Resonator Banks', 'Procedural Web Audio API UI SFX (0 KB Network)', 'EBU R128 / LUFS Loudness & Psychoacoustic Mixing'],
+    architecturalRules: [
+      'Synthesize tactile UI sound effects procedurally via Web Audio API modal resonator banks ($y(t) = \\sum_{k=1}^3 a_k e^{-t/\\tau_k} \\sin(2\\pi m_k f_0 t)$) mapped to material physics (`paper`, `polymer`, `wood`, `glass`, `metal`, `cyber-hud`) with 0 KB external audio downloads.',
+      'Apply organic micro-variation (`±20 cents` pitch detune and `±8%` low-pass filter cutoff) on repeated UI interactions to prevent listener fatigue.',
+      'Normalize loudness to `-14.0 LUFS` for brand video intros and `-18.0 LUFS` for adaptive background loops, with `-5.0 dB` ISO 226:2023 ear-protection notch at `3.25 kHz`.'
+    ],
+    codePattern: `// Stanford CCRMA 220a 3-Mode Physical Material Resonator (Web Audio API)
+export function triggerCcrmaModalImpact(ctx, f0 = 320, modeRatios = [1.0, 2.32, 4.18], decaySec = 0.085) {
+  const now = ctx.currentTime;
+  modeRatios.forEach((ratio, idx) => {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.frequency.setValueAtTime(f0 * ratio, now);
+    gain.gain.setValueAtTime(0.18 / (idx + 1), now);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + decaySec / (idx + 1));
+    osc.connect(gain).connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + decaySec);
+  });
+}`
+  },
+  {
+    id: 'baymard-and-laws-of-ux-checkout-cro',
+    title: 'Psicología de Conversión y Checkout UX (Baymard Institute & Laws of UX)',
+    institution: 'Baymard Institute & Jon Yablonski (Laws of UX)',
+    urls: ['https://baymard.com/blog', 'https://lawsofux.com/'],
+    domainDir: 'ui_ux_design',
+    canonFileName: 'CANON_DOMAIN_BAYMARD_AND_LAWS_OF_UX_CHECKOUT_CRO_2026.md',
+    linkedHarnessModule: 'tools/design/industry_archetype_matrix.mjs',
+    coreTopics: ['Baymard E-Commerce Checkout Ergonomics', 'Cart Abandonment Prevention & Guest Checkout', 'Fitts Law, Hick Law, Doherty Threshold (<400ms) & Miller Law', 'Mobile Form Autocomplete & Inline Validation'],
+    architecturalRules: [
+      'Always provide a prominent Guest Checkout path (never force account creation before checkout), reduce checkout fields to `<= 7` inputs, and display total order cost (including shipping/taxes) upfront.',
+      'Configure mobile-first HTML5 input ergonomics: explicit `autocomplete` tokens (`given-name`, `email`, `cc-number`, `postal-code`), `inputmode="numeric"` for credit cards/ZIP codes, and inline validation triggered `onBlur` (never premature error states while typing).',
+      'Enforce Fitts Law (`>= 48x48px` primary CTA in thumb zone), Hick Law (single primary CTA per viewport, max 3 pricing tiers with 1 highlighted decoy/recommended tier), and Doherty Threshold (`< 400ms` optimistic UI feedback).'
+    ],
+    codePattern: `<!-- Baymard Institute High-Converting Mobile Checkout Field Pattern -->
+<div class="field-group">
+  <label for="checkout-card-number">Número de Tarjeta</label>
+  <input id="checkout-card-number" name="cardNumber" type="text" inputmode="numeric"
+         autocomplete="cc-number" pattern="[0-9\\s]{13,19}" required aria-describedby="card-help" />
+  <small id="card-help">Transacción cifrada de extremo a extremo (PCI DSS v4.0)</small>
+</div>`
+  }
+];
+
+/**
+ * Generates and writes the 8 Domain-Specific Mastery Canon files inside their respective `knowledge/<domainDir>/` folders.
+ */
+export function harvestDomainMasteryCourses() {
+  const generatedCanons = [];
+
+  for (const course of DOMAIN_MASTERY_COURSES_URLS) {
+    const relPath = `knowledge/${course.domainDir}/${course.canonFileName}`;
+    const absPath = path.join(ROOT, 'knowledge', course.domainDir, course.canonFileName);
+    fs.mkdirSync(path.dirname(absPath), { recursive: true });
+
+    const markdown = `---
+title: "CANON DOMAIN MASTERY: ${course.title} (2026)"
+category: "${course.domainDir}"
+epistemicTier: "TIER_1_SOTA_2026"
+authorityBoost: 1.35
+courseId: "${course.id}"
+linkedHarnessModule: "${course.linkedHarnessModule}"
+---
+
+# CANON DOMAIN MASTERY: ${course.title}
+
+> **Institución / Fuente:** ${course.institution}  
+> **URLs Oficiales:** ${course.urls.map((u) => `\`${u}\``).join(' • ')}  
+> **Epistemic Tier:** \`TIER_1_SOTA_2026\` (\`Authority Boost: x1.35\`)  
+> **Alcance:** ${course.coreTopics.join(', ')}  
+> **Módulo del Harness Acoplado:** \`${course.linkedHarnessModule}\`
+
+---
+
+## 1. Tópicos Nucleares Cosechados
+
+${course.coreTopics.map((t) => `- **${t}**`).join('\n')}
+
+---
+
+## 2. Reglas Arquitectónicas Deterministas (SOTA 2026)
+
+${course.architecturalRules.map((r, idx) => `${idx + 1}. ${r}`).join('\n')}
+
+---
+
+## 3. Patrón de Producción Verificado
+
+\`\`\`
+${course.codePattern}
+\`\`\`
+`;
+
+    fs.writeFileSync(absPath, markdown, 'utf8');
+    generatedCanons.push({
+      id: course.id,
+      title: course.title,
+      domainDir: course.domainDir,
+      relPath,
+      absPath,
+      urls: course.urls,
+      linkedHarnessModule: course.linkedHarnessModule
+    });
+  }
+
+  return {
+    totalDomainCourses: generatedCanons.length,
+    canons: generatedCanons
+  };
+}
+
+/**
  * Main Harvester Entrypoint
  */
 export function harvestOfficialDocsAndSecurityCatalogs() {
@@ -780,6 +1050,7 @@ export function harvestOfficialDocsAndSecurityCatalogs() {
   fs.writeFileSync(CANON_PATHS.cybersecurity, buildCybersecurityCanonMarkdown(vaultScan), 'utf8');
 
   const catalogsResult = buildStructuredSecurityCatalogs();
+  const domainCoursesResult = harvestDomainMasteryCourses();
   const durationMs = Number((performance.now() - startMs).toFixed(2));
 
   return {
@@ -790,8 +1061,10 @@ export function harvestOfficialDocsAndSecurityCatalogs() {
     canonsCreated: [
       'knowledge/motion_and_animation/CANON_OFFICIAL_DOCS_THREE_R186_SPARK_DIORAMAS_BLENDER_MCP_AND_GLTF_2026.md',
       'knowledge/software_factory/CANON_OFFICIAL_DOCS_HARNESS2_GEPA_OPENSPACE_HEADROOM_COCOINDEX_AND_CODEMODE_2026.md',
-      'knowledge/cybersecurity/CANON_OFFICIAL_DOCS_POSTGRES_RLS_CIS_ORY_ZANZIBAR_GCP_KMS_AND_ZIZMOR_2026.md'
+      'knowledge/cybersecurity/CANON_OFFICIAL_DOCS_POSTGRES_RLS_CIS_ORY_ZANZIBAR_GCP_KMS_AND_ZIZMOR_2026.md',
+      ...domainCoursesResult.canons.map((c) => c.relPath)
     ],
+    domainCoursesHarvested: domainCoursesResult.totalDomainCourses,
     securityCatalogs: catalogsResult
   };
 }

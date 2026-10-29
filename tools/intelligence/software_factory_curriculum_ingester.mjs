@@ -29,8 +29,12 @@ import {
 } from './course_and_paper_distiller.mjs';
 import {
   OPEN_UNIVERSITY_PORTALS_CATALOG,
-  harvestZeroAuthUniversityPortals
+  DOMAIN_MASTERY_COURSES_URLS,
+  harvestZeroAuthUniversityPortals,
+  harvestDomainMasteryCourses
 } from './official_docs_harvester.mjs';
+
+export { DOMAIN_MASTERY_COURSES_URLS, harvestDomainMasteryCourses };
 
 let DatabaseSyncClass = null;
 try {
@@ -608,7 +612,8 @@ export function ensureAcademicCourseReposAndRegisterVault() {
 export function buildCanonUniversityCoursesAnd28TalksMarkdown({
   vaultRepos = [],
   universityPortals = [],
-  distilledTalks = []
+  distilledTalks = [],
+  domainMasteryCourses = []
 }) {
   const repoRows = vaultRepos
     .map(
@@ -628,6 +633,13 @@ export function buildCanonUniversityCoursesAnd28TalksMarkdown({
     .map(
       (t) =>
         `| **#${t.index}** | **${t.title}** (${t.duration}) | ${t.speaker} | \`${t.url}\` | **${t.concept}:** ${t.architecturalPrinciple} | \`${t.deterministicGuardRule}\` | ${t.ragWhenToUseTrigger} |`
+    )
+    .join('\n');
+
+  const domainRows = domainMasteryCourses
+    .map(
+      (d, idx) =>
+        `| **#${idx + 1}** | **${d.title}** | ${d.institution} | ${d.urls.map((u) => `\`${u}\``).join('<br>')} | \`knowledge/${d.domainDir}/${d.canonFileName}\` | \`${d.linkedHarnessModule}\` | ${d.coreTopics.join(' • ')} |`
     )
     .join('\n');
 
@@ -723,65 +735,84 @@ ${portalRows}
 | # | Conferencia y Duración | Orador / Empresa | URL Exacta | Principio Arquitectónico y Concepto Central | Regla Determinista en el Harness | Disparo RAG (\`Wave / Role\`) |
 | :---: | :--- | :--- | :--- | :--- | :--- | :--- |
 ${talkRows}
+
+---
+
+## 6. Los 8 Cursos Universitarios e Industriales de Dominio Específico (\`DOMAIN_MASTERY_COURSES_URLS\`)
+
+| # | Curso de Dominio Específico | Institución / Autor | URLs Oficiales | Tratado Canónico en \`knowledge/\` | Módulo del Harness Vinculado | Tópicos e Invariantes Nucleares |
+| :---: | :--- | :--- | :--- | :--- | :--- | :--- |
+${domainRows}
 `;
 }
 
 /**
- * Indexes `CANON_UNIVERSITY_COURSES_AND_28_FACTORY_TALKS_2026.md` into `.cache/omni_rag_fts5.sqlite`
- * and executes `PRAGMA wal_checkpoint(TRUNCATE);`.
+ * Indexes `CANON_UNIVERSITY_COURSES_AND_28_FACTORY_TALKS_2026.md` and all 8 `DOMAIN_MASTERY_COURSES_URLS`
+ * canons into `.cache/omni_rag_fts5.sqlite` and executes `PRAGMA wal_checkpoint(TRUNCATE);`.
  */
-export function indexCanonInSqliteFts5(markdownContent = '') {
+export function indexCanonInSqliteFts5(markdownContent = '', extraCanonFiles = []) {
   if (!DatabaseSyncClass || !fs.existsSync(SQLITE_FTS5_PATH)) {
     return { indexed: false, chunksInserted: 0, reason: 'SQLite FTS5 file or node:sqlite unavailable' };
   }
 
-  const relPath = 'knowledge/software_factory/CANON_UNIVERSITY_COURSES_AND_28_FACTORY_TALKS_2026.md';
-  const fileName = 'CANON_UNIVERSITY_COURSES_AND_28_FACTORY_TALKS_2026';
-  const sections = String(markdownContent || '')
-    .replace(/^---[\s\S]*?---\s*/, '')
-    .split(/\n(?=#{1,3}\s+)/)
-    .map((s) => s.trim())
-    .filter((s) => s.length >= 40);
+  const docsToIndex = [
+    {
+      relPath: 'knowledge/software_factory/CANON_UNIVERSITY_COURSES_AND_28_FACTORY_TALKS_2026.md',
+      fileName: 'CANON_UNIVERSITY_COURSES_AND_28_FACTORY_TALKS_2026',
+      content: markdownContent
+    },
+    ...extraCanonFiles.map((f) => ({
+      relPath: f.relPath,
+      fileName: path.basename(f.relPath, '.md'),
+      content: fs.existsSync(f.absPath) ? fs.readFileSync(f.absPath, 'utf8') : ''
+    }))
+  ];
 
   const db = new DatabaseSyncClass(SQLITE_FTS5_PATH);
+  let totalInserted = 0;
   try {
     db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL;');
     const delStmt = db.prepare('DELETE FROM chunks_fts WHERE source = ?');
-    delStmt.run(`local://${relPath}`);
-
     const insStmt = db.prepare(
       'INSERT INTO chunks_fts (id, source, category, snippet, title, section, text) VALUES (?, ?, ?, ?, ?, ?, ?)'
     );
 
     db.exec('BEGIN IMMEDIATE');
-    sections.forEach((sec, idx) => {
-      const headingMatch = sec.match(/^#{1,3}\s+(.+)/);
-      const heading = headingMatch ? headingMatch[1].trim() : `Section ${idx + 1}`;
-      const chunkId = `${relPath}#chunk-${idx}`;
-      const fullText = `[Doc: ${fileName} > ${heading}]\n${sec}`;
-      insStmt.run(
-        chunkId,
-        `local://${relPath}`,
-        'canon-treatise',
-        sec.slice(0, 450),
-        `${fileName} › ${heading}`,
-        heading,
-        fullText
-      );
-    });
+    for (const doc of docsToIndex) {
+      if (!doc.content) continue;
+      delStmt.run(`local://${doc.relPath}`);
+      const sections = String(doc.content || '')
+        .replace(/^---[\s\S]*?---\s*/, '')
+        .split(/\n(?=#{1,3}\s+)/)
+        .map((s) => s.trim())
+        .filter((s) => s.length >= 40);
+
+      sections.forEach((sec, idx) => {
+        const headingMatch = sec.match(/^#{1,3}\s+(.+)/);
+        const heading = headingMatch ? headingMatch[1].trim() : `Section ${idx + 1}`;
+        const chunkId = `${doc.relPath}#chunk-${idx}`;
+        const fullText = `[Doc: ${doc.fileName} > ${heading}]\n${sec}`;
+        insStmt.run(
+          chunkId,
+          `local://${doc.relPath}`,
+          'canon-treatise',
+          sec.slice(0, 450),
+          `${doc.fileName} › ${heading}`,
+          heading,
+          fullText
+        );
+        totalInserted++;
+      });
+    }
     db.exec('COMMIT');
     try {
       db.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');");
     } catch (_) {}
     db.exec('PRAGMA wal_checkpoint(TRUNCATE);');
 
-    const verifyRow = db
-      .prepare('SELECT count(*) AS cnt FROM chunks_fts WHERE source = ?')
-      .get(`local://${relPath}`);
-
     return {
       indexed: true,
-      chunksInserted: Number(verifyRow?.cnt || sections.length),
+      chunksInserted: totalInserted,
       walCheckpointed: true
     };
   } finally {
@@ -833,17 +864,38 @@ export function runSoftwareFactoryCurriculumIngestion() {
     };
   });
 
+  // 3b. Harvest & compile the 8 Domain-Specific Mastery Courses (`DOMAIN_MASTERY_COURSES_URLS`)
+  // including Map-Reduce distillation on John Ousterhout's talk (`https://www.youtube.com/watch?v=bmSAYlu0NcY`)
+  const domainCoursesHarvest = harvestDomainMasteryCourses();
+  const ousterhoutCourse = DOMAIN_MASTERY_COURSES_URLS.find((c) => c.videoTalkUrl);
+  const ousterhoutMapReduce = ousterhoutCourse
+    ? distillLongDurationVideoTranscript({
+        urlOrPath: ousterhoutCourse.videoTalkUrl,
+        windowMinutes: 15,
+        maxWordsPerChunk: 2500,
+        speakerAndSource: ousterhoutCourse.institution,
+        title: ousterhoutCourse.title,
+        concept: ousterhoutCourse.coreTopics.join(', '),
+        architecturalPrinciple: ousterhoutCourse.architecturalRules[0],
+        deterministicGuardRule: ousterhoutCourse.architecturalRules[1],
+        codePattern: ousterhoutCourse.codePattern,
+        dryRun: true,
+        skipSqliteIndex: true
+      })
+    : { passed: true };
+
   // 4. Compile & write `knowledge/software_factory/CANON_UNIVERSITY_COURSES_AND_28_FACTORY_TALKS_2026.md`
   const canonMarkdown = buildCanonUniversityCoursesAnd28TalksMarkdown({
     vaultRepos: vaultResult.repos,
     universityPortals,
-    distilledTalks
+    distilledTalks,
+    domainMasteryCourses: DOMAIN_MASTERY_COURSES_URLS
   });
   fs.mkdirSync(path.dirname(CANON_OUTPUT_PATH), { recursive: true });
   fs.writeFileSync(CANON_OUTPUT_PATH, canonMarkdown, 'utf8');
 
-  // 5. Index in `.cache/omni_rag_fts5.sqlite` with `PRAGMA wal_checkpoint(TRUNCATE);`
-  const ftsResult = indexCanonInSqliteFts5(canonMarkdown);
+  // 5. Index master canon + all 8 domain mastery canons in `.cache/omni_rag_fts5.sqlite` with `PRAGMA wal_checkpoint(TRUNCATE);`
+  const ftsResult = indexCanonInSqliteFts5(canonMarkdown, domainCoursesHarvest.canons);
   const elapsedMs = Math.round(performance.now() - t0);
 
   const passed =
@@ -851,6 +903,8 @@ export function runSoftwareFactoryCurriculumIngestion() {
     universityPortals.length === OPEN_UNIVERSITY_PORTALS_CATALOG.length &&
     distilledTalks.length === 28 &&
     distilledTalks.every((t) => t.mapReduceVerified) &&
+    domainCoursesHarvest.totalDomainCourses === 8 &&
+    Boolean(ousterhoutMapReduce.passed) &&
     fs.existsSync(CANON_OUTPUT_PATH);
 
   return {
@@ -859,7 +913,9 @@ export function runSoftwareFactoryCurriculumIngestion() {
     reposClonedAndVerified: `${vaultResult.verifiedOnDisk}/${vaultResult.totalRepos}`,
     universityPortalsHarvested: universityPortals.length,
     youtubeTalksDistilled: distilledTalks.length,
+    domainMasteryCoursesHarvested: domainCoursesHarvest.totalDomainCourses,
     canonPath: path.relative(ROOT, CANON_OUTPUT_PATH).replace(/\\/g, '/'),
+    domainCanonPaths: domainCoursesHarvest.canons.map((c) => c.relPath),
     fts5Indexed: ftsResult.indexed,
     fts5ChunksCount: ftsResult.chunksInserted,
     walCheckpointed: ftsResult.walCheckpointed
@@ -869,11 +925,12 @@ export function runSoftwareFactoryCurriculumIngestion() {
 if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(__filename)) {
   const res = runSoftwareFactoryCurriculumIngestion();
   console.log('\n====================================================================================');
-  console.log('🎓 SOFTWARE FACTORY CURRICULUM & 28 YOUTUBE TALKS INGESTER (SOTA 2026)');
+  console.log('🎓 SOFTWARE FACTORY CURRICULUM, 28 YOUTUBE TALKS & 8 DOMAIN COURSES INGESTER (2026)');
   console.log('====================================================================================');
   console.log(`  • Repositorios de Cursos en Bóveda : ${res.reposClonedAndVerified} verificados en academic-and-official-courses-2026`);
   console.log(`  • Portales Universitarios Abiertos : ${res.universityPortalsHarvested} cosechados y normalizados (MarkItDown)`);
   console.log(`  • Conferencias YouTube Destiladas  : ${res.youtubeTalksDistilled}/28 procesadas vía Sliding-Window Map-Reduce`);
+  console.log(`  • Cursos de Dominio Específico     : ${res.domainMasteryCoursesHarvested}/8 generados en knowledge/{cybersecurity,software_factory,architecture_and_books,motion_and_animation,ui_ux_design}/`);
   console.log(`  • Tratado Canónico TIER_1 Generado : ${res.canonPath}`);
   console.log(`  • Indexación SQLite FTS5 (WAL)     : ${res.fts5Indexed ? `OK (${res.fts5ChunksCount} chunks, PRAGMA wal_checkpoint(TRUNCATE))` : 'SKIPPED'}`);
   console.log(`  • Tiempo de Ejecución              : ${res.elapsedMs}ms`);

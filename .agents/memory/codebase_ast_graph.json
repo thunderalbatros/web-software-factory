@@ -1,14 +1,14 @@
 {
   "schema": "cocoindex-code-ast-graph-v1",
-  "updatedAt": "2026-10-29T02:58:20.631Z",
+  "updatedAt": "2026-10-29T03:12:09.972Z",
   "activeProject": "agencia-alfa",
-  "combinedSha256": "db3085617e14d910",
+  "combinedSha256": "3b34fd6be08c8f82",
   "stats": {
     "totalFilesIndexed": 137,
-    "reindexedFilesCount": 10,
-    "cachedFilesCount": 127,
-    "totalSymbols": 1087,
-    "totalExports": 611,
+    "reindexedFilesCount": 4,
+    "cachedFilesCount": 133,
+    "totalSymbols": 1094,
+    "totalExports": 620,
     "estimatedTokenSavingsPct": 72.5
   },
   "files": [
@@ -7482,10 +7482,11 @@
     {
       "path": "tools/db/dual_database_forge.mjs",
       "ext": ".mjs",
-      "sha256": "01c94af280c51b8f",
-      "lineCount": 543,
+      "sha256": "82caaf1c33816c29",
+      "lineCount": 562,
       "exports": [
         "VALID_DB_TIERS",
+        "CMU_15445_ATOMIC_TRANSACTION_INVARIANTS",
         "resolveDatabaseTier",
         "generateEdgeD1SqlSchema",
         "generateEnterprisePostgresRlsSchema",
@@ -7510,6 +7511,8 @@
         "fileURLToPath",
         "dirname",
         "resolve",
+        "READ",
+        "Tree",
         "join",
         "existsSync",
         "parse",
@@ -7549,9 +7552,7 @@
         "immutable_security_events",
         "prevent_worm_mutation_trigger",
         "connect",
-        "query",
-        "callbackFn",
-        "release"
+        "query"
       ],
       "symbols": [
         {
@@ -7563,72 +7564,80 @@
           "endLine": 40
         },
         {
+          "name": "CMU_15445_ATOMIC_TRANSACTION_INVARIANTS",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const CMU_15445_ATOMIC_TRANSACTION_INVARIANTS",
+          "startLine": 49,
+          "endLine": 55
+        },
+        {
           "name": "resolveDatabaseTier",
           "kind": "function",
           "exported": true,
           "signature": "export function resolveDatabaseTier(projectRoot = ROOT)",
-          "startLine": 45,
-          "endLine": 77
+          "startLine": 60,
+          "endLine": 92
         },
         {
           "name": "generateEdgeD1SqlSchema",
           "kind": "function",
           "exported": true,
           "signature": "export function generateEdgeD1SqlSchema(projectSlug = 'agencia-alfa')",
-          "startLine": 83,
-          "endLine": 102
+          "startLine": 98,
+          "endLine": 121
         },
         {
           "name": "generateEnterprisePostgresRlsSchema",
           "kind": "function",
           "exported": true,
           "signature": "export function generateEnterprisePostgresRlsSchema(projectSlug = 'agencia-alfa')",
-          "startLine": 112,
-          "endLine": 275
+          "startLine": 131,
+          "endLine": 294
         },
         {
           "name": "generateDrizzleHyperdriveConnectorCode",
           "kind": "function",
           "exported": true,
           "signature": "export function generateDrizzleHyperdriveConnectorCode(projectSlug = 'agencia-alfa')",
-          "startLine": 280,
-          "endLine": 304
+          "startLine": 299,
+          "endLine": 323
         },
         {
           "name": "withTenantRlsTransaction",
           "kind": "function",
           "exported": true,
           "signature": "export async function withTenantRlsTransaction(hyperdrivePool, tenantUuid, callbackFn)",
-          "startLine": 285,
-          "endLine": 302
+          "startLine": 304,
+          "endLine": 321
         },
         {
           "name": "EnvelopeEncryptionEngine",
           "kind": "class",
           "exported": true,
           "signature": "export class EnvelopeEncryptionEngine",
-          "startLine": 310,
-          "endLine": 395
+          "startLine": 329,
+          "endLine": 414
         },
         {
           "name": "forgeDatabaseArchitecture",
           "kind": "function",
           "exported": true,
           "signature": "export function forgeDatabaseArchitecture(projectRoot = ROOT, requestedTier = '')",
-          "startLine": 401,
-          "endLine": 446
+          "startLine": 420,
+          "endLine": 465
         },
         {
           "name": "runDualDatabaseForgeSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export async function runDualDatabaseForgeSelfTest()",
-          "startLine": 451,
-          "endLine": 533
+          "startLine": 470,
+          "endLine": 552
         }
       ],
-      "mtimeMs": 1793203371382.9805,
-      "size": 23634
+      "mtimeMs": 1793243287705.1174,
+      "size": 24658
     },
     {
       "path": "tools/design/build_vanilla_primitives.mjs",
@@ -11368,8 +11377,8 @@
     {
       "path": "tools/intelligence/official_docs_harvester.mjs",
       "ext": ".mjs",
-      "sha256": "fb28a5d7ba051bff",
-      "lineCount": 817,
+      "sha256": "de88c0584ed605f1",
+      "lineCount": 1090,
       "exports": [
         "CANON_PATHS",
         "SECURITY_CATALOGS_DIR",
@@ -11383,6 +11392,12 @@
         "buildStructuredSecurityCatalogs",
         "OPEN_UNIVERSITY_PORTALS_CATALOG",
         "harvestZeroAuthUniversityPortals",
+        "DOMAIN_MASTERY_COURSES_URLS",
+        "executeIdempotentMutation",
+        "MonetaryLedgerModule",
+        "verifyFetchMetadataCsrf",
+        "triggerCcrmaModalImpact",
+        "harvestDomainMasteryCourses",
         "harvestOfficialDocsAndSecurityCatalogs"
       ],
       "imports": [
@@ -11541,16 +11556,64 @@
           "endLine": 713
         },
         {
+          "name": "DOMAIN_MASTERY_COURSES_URLS",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const DOMAIN_MASTERY_COURSES_URLS",
+          "startLine": 720,
+          "endLine": 720
+        },
+        {
+          "name": "executeIdempotentMutation",
+          "kind": "function",
+          "exported": true,
+          "signature": "export async function executeIdempotentMutation(storage, idempotencyKey, mutateFn)",
+          "startLine": 761,
+          "endLine": 767
+        },
+        {
+          "name": "MonetaryLedgerModule",
+          "kind": "class",
+          "exported": true,
+          "signature": "export class MonetaryLedgerModule",
+          "startLine": 785,
+          "endLine": 797
+        },
+        {
+          "name": "verifyFetchMetadataCsrf",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function verifyFetchMetadataCsrf(request)",
+          "startLine": 835,
+          "endLine": 841
+        },
+        {
+          "name": "triggerCcrmaModalImpact",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function triggerCcrmaModalImpact(ctx, f0 = 320, modeRatios = [1.0, 2.32, 4.18], decaySec = 0.085)",
+          "startLine": 880,
+          "endLine": 892
+        },
+        {
+          "name": "harvestDomainMasteryCourses",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function harvestDomainMasteryCourses()",
+          "startLine": 921,
+          "endLine": 983
+        },
+        {
           "name": "harvestOfficialDocsAndSecurityCatalogs",
           "kind": "function",
           "exported": true,
           "signature": "export function harvestOfficialDocsAndSecurityCatalogs()",
-          "startLine": 718,
-          "endLine": 797
+          "startLine": 988,
+          "endLine": 1070
         }
       ],
-      "mtimeMs": 1793242156464.2312,
-      "size": 45177
+      "mtimeMs": 1793243247298.5867,
+      "size": 61470
     },
     {
       "path": "tools/intelligence/qdrant_rag.mjs",
@@ -11860,8 +11923,8 @@
     {
       "path": "tools/intelligence/rag_pipeline.mjs",
       "ext": ".mjs",
-      "sha256": "a0ef2a8963a652af",
-      "lineCount": 1325,
+      "sha256": "856fa75e3b22b401",
+      "lineCount": 1333,
       "exports": [
         "expandQueryBilingual",
         "invalidateIndexCache",
@@ -11984,139 +12047,139 @@
           "exported": false,
           "signature": "function createDocumentChunks(filePath)",
           "startLine": 239,
-          "endLine": 396
+          "endLine": 404
         },
         {
           "name": "invalidateIndexCache",
           "kind": "function",
           "exported": true,
           "signature": "export function invalidateIndexCache()",
-          "startLine": 398,
-          "endLine": 405
+          "startLine": 406,
+          "endLine": 413
         },
         {
           "name": "addTokensToInvertedMap",
           "kind": "function",
           "exported": false,
           "signature": "function addTokensToInvertedMap(invMap, str, chunkIdx)",
-          "startLine": 415,
-          "endLine": 445
+          "startLine": 423,
+          "endLine": 453
         },
         {
           "name": "prepareChunksForFastSearch",
           "kind": "function",
           "exported": false,
           "signature": "function prepareChunksForFastSearch(chunks)",
-          "startLine": 447,
-          "endLine": 474
+          "startLine": 455,
+          "endLine": 482
         },
         {
           "name": "buildOrOpenSqliteFts5Index",
           "kind": "function",
           "exported": false,
           "signature": "function buildOrOpenSqliteFts5Index(chunks, forceRebuild = false)",
-          "startLine": 479,
-          "endLine": 545
+          "startLine": 487,
+          "endLine": 553
         },
         {
           "name": "querySqliteFts5",
           "kind": "function",
           "exported": false,
           "signature": "function querySqliteFts5(sqliteDb, chunkMap, terms, limit = 20)",
-          "startLine": 555,
-          "endLine": 604
+          "startLine": 563,
+          "endLine": 612
         },
         {
           "name": "buildMiniSearchInstance",
           "kind": "function",
           "exported": false,
           "signature": "function buildMiniSearchInstance(chunks)",
-          "startLine": 606,
-          "endLine": 624
+          "startLine": 614,
+          "endLine": 632
         },
         {
           "name": "buildChunkMap",
           "kind": "function",
           "exported": false,
           "signature": "function buildChunkMap(chunks)",
-          "startLine": 626,
-          "endLine": 632
+          "startLine": 634,
+          "endLine": 640
         },
         {
           "name": "getOrBuildMiniSearchIndex",
           "kind": "function",
           "exported": true,
           "signature": "export function getOrBuildMiniSearchIndex(force = false)",
-          "startLine": 637,
-          "endLine": 696
+          "startLine": 645,
+          "endLine": 704
         },
         {
           "name": "capResultsPerFile",
           "kind": "function",
           "exported": false,
           "signature": "function capResultsPerFile(items, maxPerFile = 2, limit = 20)",
-          "startLine": 701,
-          "endLine": 715
+          "startLine": 709,
+          "endLine": 723
         },
         {
           "name": "runLocalSemanticVectorRanker",
           "kind": "function",
           "exported": false,
           "signature": "function runLocalSemanticVectorRanker(chunks, queryString, limit = 20)",
-          "startLine": 721,
-          "endLine": 848
+          "startLine": 729,
+          "endLine": 856
         },
         {
           "name": "runLocalOnnxCrossEncoderRerank",
           "kind": "function",
           "exported": false,
           "signature": "async function runLocalOnnxCrossEncoderRerank(query, candidates, limit = 8)",
-          "startLine": 855,
-          "endLine": 902
+          "startLine": 863,
+          "endLine": 910
         },
         {
           "name": "reciprocalRankFusion",
           "kind": "function",
           "exported": true,
           "signature": "export function reciprocalRankFusion(rankedLists, k = 60, maxPerFile = 2)",
-          "startLine": 908,
-          "endLine": 943
+          "startLine": 916,
+          "endLine": 951
         },
         {
           "name": "queryKnowledge",
           "kind": "function",
           "exported": true,
           "signature": "export async function queryKnowledge(query, limit = 8, options = {})",
-          "startLine": 954,
-          "endLine": 954
+          "startLine": 962,
+          "endLine": 962
         },
         {
           "name": "queryCodeGraph",
           "kind": "function",
           "exported": true,
           "signature": "export function queryCodeGraph(symbolOrFileQuery, limit = 8)",
-          "startLine": 1147,
-          "endLine": 1172
+          "startLine": 1155,
+          "endLine": 1180
         },
         {
           "name": "synthesizeAnswer",
           "kind": "function",
           "exported": true,
           "signature": "export async function synthesizeAnswer(question, knowledgeList = [])",
-          "startLine": 1177,
-          "endLine": 1239
+          "startLine": 1185,
+          "endLine": 1247
         },
         {
           "name": "getClusterStats",
           "kind": "function",
           "exported": true,
           "signature": "export async function getClusterStats()",
-          "startLine": 1241,
-          "endLine": 1274
+          "startLine": 1249,
+          "endLine": 1282
         }
       ],
-      "mtimeMs": 1793242182482.8057,
-      "size": 55202
+      "mtimeMs": 1793243322810.7007,
+      "size": 56297
     },
     {
       "path": "tools/intelligence/rea_reverse_engineering_bridge.mjs",
@@ -12614,9 +12677,11 @@
     {
       "path": "tools/intelligence/software_factory_curriculum_ingester.mjs",
       "ext": ".mjs",
-      "sha256": "e81ee40b49e94386",
-      "lineCount": 883,
+      "sha256": "b19c47abbb6580f6",
+      "lineCount": 940,
       "exports": [
+        "DOMAIN_MASTERY_COURSES_URLS",
+        "harvestDomainMasteryCourses",
         "ROOT",
         "LOCAL_VAULT_REGISTRY_PATH",
         "CANON_OUTPUT_PATH",
@@ -12688,76 +12753,76 @@
           "kind": "constant",
           "exported": true,
           "signature": "export const ROOT",
-          "startLine": 45,
-          "endLine": 45
+          "startLine": 49,
+          "endLine": 49
         },
         {
           "name": "LOCAL_VAULT_REGISTRY_PATH",
           "kind": "constant",
           "exported": true,
           "signature": "export const LOCAL_VAULT_REGISTRY_PATH",
-          "startLine": 49,
-          "endLine": 49
+          "startLine": 53,
+          "endLine": 53
         },
         {
           "name": "CANON_OUTPUT_PATH",
           "kind": "constant",
           "exported": true,
           "signature": "export const CANON_OUTPUT_PATH",
-          "startLine": 50,
-          "endLine": 50
+          "startLine": 54,
+          "endLine": 54
         },
         {
           "name": "SQLITE_FTS5_PATH",
           "kind": "constant",
           "exported": true,
           "signature": "export const SQLITE_FTS5_PATH",
-          "startLine": 56,
-          "endLine": 56
+          "startLine": 60,
+          "endLine": 60
         },
         {
           "name": "OFFICIAL_ACADEMIC_COURSE_REPOS",
           "kind": "constant",
           "exported": true,
           "signature": "export const OFFICIAL_ACADEMIC_COURSE_REPOS",
-          "startLine": 58,
-          "endLine": 58
+          "startLine": 62,
+          "endLine": 62
         },
         {
           "name": "OFFICIAL_YOUTUBE_FACTORY_TALKS_URLS",
           "kind": "constant",
           "exported": true,
           "signature": "export const OFFICIAL_YOUTUBE_FACTORY_TALKS_URLS",
-          "startLine": 109,
-          "endLine": 109
+          "startLine": 113,
+          "endLine": 113
         },
         {
           "name": "ensureAcademicCourseReposAndRegisterVault",
           "kind": "function",
           "exported": true,
           "signature": "export function ensureAcademicCourseReposAndRegisterVault()",
-          "startLine": 516,
-          "endLine": 602
+          "startLine": 520,
+          "endLine": 606
         },
         {
           "name": "indexCanonInSqliteFts5",
           "kind": "function",
           "exported": true,
-          "signature": "export function indexCanonInSqliteFts5(markdownContent = '')",
-          "startLine": 733,
-          "endLine": 792
+          "signature": "export function indexCanonInSqliteFts5(markdownContent = '', extraCanonFiles = [])",
+          "startLine": 753,
+          "endLine": 823
         },
         {
           "name": "runSoftwareFactoryCurriculumIngestion",
           "kind": "function",
           "exported": true,
           "signature": "export function runSoftwareFactoryCurriculumIngestion()",
-          "startLine": 797,
-          "endLine": 867
+          "startLine": 828,
+          "endLine": 923
         }
       ],
-      "mtimeMs": 1793242343846.0479,
-      "size": 50282
+      "mtimeMs": 1793243412205.2634,
+      "size": 53082
     },
     {
       "path": "tools/intelligence/spec_generator.mjs",
@@ -16063,8 +16128,8 @@
           "file": "tools/db/dual_database_forge.mjs",
           "kind": "function",
           "signature": "export async function withTenantRlsTransaction(hyperdrivePool, tenantUuid, callbackFn)",
-          "startLine": 285,
-          "endLine": 302
+          "startLine": 304,
+          "endLine": 321
         }
       ],
       "calledByFiles": []
@@ -21771,14 +21836,26 @@
       ],
       "calledByFiles": []
     },
+    "CMU_15445_ATOMIC_TRANSACTION_INVARIANTS": {
+      "definitions": [
+        {
+          "file": "tools/db/dual_database_forge.mjs",
+          "kind": "constant",
+          "signature": "export const CMU_15445_ATOMIC_TRANSACTION_INVARIANTS",
+          "startLine": 49,
+          "endLine": 55
+        }
+      ],
+      "calledByFiles": []
+    },
     "resolveDatabaseTier": {
       "definitions": [
         {
           "file": "tools/db/dual_database_forge.mjs",
           "kind": "function",
           "signature": "export function resolveDatabaseTier(projectRoot = ROOT)",
-          "startLine": 45,
-          "endLine": 77
+          "startLine": 60,
+          "endLine": 92
         }
       ],
       "calledByFiles": []
@@ -21789,8 +21866,8 @@
           "file": "tools/db/dual_database_forge.mjs",
           "kind": "function",
           "signature": "export function generateEdgeD1SqlSchema(projectSlug = 'agencia-alfa')",
-          "startLine": 83,
-          "endLine": 102
+          "startLine": 98,
+          "endLine": 121
         }
       ],
       "calledByFiles": [
@@ -21803,8 +21880,8 @@
           "file": "tools/db/dual_database_forge.mjs",
           "kind": "function",
           "signature": "export function generateEnterprisePostgresRlsSchema(projectSlug = 'agencia-alfa')",
-          "startLine": 112,
-          "endLine": 275
+          "startLine": 131,
+          "endLine": 294
         }
       ],
       "calledByFiles": [
@@ -21817,8 +21894,8 @@
           "file": "tools/db/dual_database_forge.mjs",
           "kind": "function",
           "signature": "export function generateDrizzleHyperdriveConnectorCode(projectSlug = 'agencia-alfa')",
-          "startLine": 280,
-          "endLine": 304
+          "startLine": 299,
+          "endLine": 323
         }
       ],
       "calledByFiles": []
@@ -21829,8 +21906,8 @@
           "file": "tools/db/dual_database_forge.mjs",
           "kind": "class",
           "signature": "export class EnvelopeEncryptionEngine",
-          "startLine": 310,
-          "endLine": 395
+          "startLine": 329,
+          "endLine": 414
         }
       ],
       "calledByFiles": [
@@ -21843,8 +21920,8 @@
           "file": "tools/db/dual_database_forge.mjs",
           "kind": "function",
           "signature": "export function forgeDatabaseArchitecture(projectRoot = ROOT, requestedTier = '')",
-          "startLine": 401,
-          "endLine": 446
+          "startLine": 420,
+          "endLine": 465
         }
       ],
       "calledByFiles": [
@@ -21857,8 +21934,8 @@
           "file": "tools/db/dual_database_forge.mjs",
           "kind": "function",
           "signature": "export async function runDualDatabaseForgeSelfTest()",
-          "startLine": 451,
-          "endLine": 533
+          "startLine": 470,
+          "endLine": 552
         }
       ],
       "calledByFiles": []
@@ -24757,14 +24834,86 @@
       ],
       "calledByFiles": []
     },
+    "DOMAIN_MASTERY_COURSES_URLS": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/official_docs_harvester.mjs",
+          "kind": "constant",
+          "signature": "export const DOMAIN_MASTERY_COURSES_URLS",
+          "startLine": 720,
+          "endLine": 720
+        }
+      ],
+      "calledByFiles": []
+    },
+    "executeIdempotentMutation": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/official_docs_harvester.mjs",
+          "kind": "function",
+          "signature": "export async function executeIdempotentMutation(storage, idempotencyKey, mutateFn)",
+          "startLine": 761,
+          "endLine": 767
+        }
+      ],
+      "calledByFiles": []
+    },
+    "MonetaryLedgerModule": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/official_docs_harvester.mjs",
+          "kind": "class",
+          "signature": "export class MonetaryLedgerModule",
+          "startLine": 785,
+          "endLine": 797
+        }
+      ],
+      "calledByFiles": []
+    },
+    "verifyFetchMetadataCsrf": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/official_docs_harvester.mjs",
+          "kind": "function",
+          "signature": "export function verifyFetchMetadataCsrf(request)",
+          "startLine": 835,
+          "endLine": 841
+        }
+      ],
+      "calledByFiles": []
+    },
+    "triggerCcrmaModalImpact": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/official_docs_harvester.mjs",
+          "kind": "function",
+          "signature": "export function triggerCcrmaModalImpact(ctx, f0 = 320, modeRatios = [1.0, 2.32, 4.18], decaySec = 0.085)",
+          "startLine": 880,
+          "endLine": 892
+        }
+      ],
+      "calledByFiles": []
+    },
+    "harvestDomainMasteryCourses": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/official_docs_harvester.mjs",
+          "kind": "function",
+          "signature": "export function harvestDomainMasteryCourses()",
+          "startLine": 921,
+          "endLine": 983
+        }
+      ],
+      "calledByFiles": []
+    },
     "harvestOfficialDocsAndSecurityCatalogs": {
       "definitions": [
         {
           "file": "tools/intelligence/official_docs_harvester.mjs",
           "kind": "function",
           "signature": "export function harvestOfficialDocsAndSecurityCatalogs()",
-          "startLine": 718,
-          "endLine": 797
+          "startLine": 988,
+          "endLine": 1070
         }
       ],
       "calledByFiles": [
@@ -25094,7 +25243,7 @@
           "kind": "function",
           "signature": "function createDocumentChunks(filePath)",
           "startLine": 239,
-          "endLine": 396
+          "endLine": 404
         }
       ],
       "calledByFiles": []
@@ -25105,8 +25254,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function invalidateIndexCache()",
-          "startLine": 398,
-          "endLine": 405
+          "startLine": 406,
+          "endLine": 413
         }
       ],
       "calledByFiles": []
@@ -25117,8 +25266,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function addTokensToInvertedMap(invMap, str, chunkIdx)",
-          "startLine": 415,
-          "endLine": 445
+          "startLine": 423,
+          "endLine": 453
         }
       ],
       "calledByFiles": [
@@ -25131,8 +25280,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function prepareChunksForFastSearch(chunks)",
-          "startLine": 447,
-          "endLine": 474
+          "startLine": 455,
+          "endLine": 482
         }
       ],
       "calledByFiles": []
@@ -25143,8 +25292,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function buildOrOpenSqliteFts5Index(chunks, forceRebuild = false)",
-          "startLine": 479,
-          "endLine": 545
+          "startLine": 487,
+          "endLine": 553
         }
       ],
       "calledByFiles": []
@@ -25155,8 +25304,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function querySqliteFts5(sqliteDb, chunkMap, terms, limit = 20)",
-          "startLine": 555,
-          "endLine": 604
+          "startLine": 563,
+          "endLine": 612
         }
       ],
       "calledByFiles": []
@@ -25167,8 +25316,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function buildMiniSearchInstance(chunks)",
-          "startLine": 606,
-          "endLine": 624
+          "startLine": 614,
+          "endLine": 632
         }
       ],
       "calledByFiles": []
@@ -25179,8 +25328,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function buildChunkMap(chunks)",
-          "startLine": 626,
-          "endLine": 632
+          "startLine": 634,
+          "endLine": 640
         }
       ],
       "calledByFiles": []
@@ -25191,8 +25340,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function getOrBuildMiniSearchIndex(force = false)",
-          "startLine": 637,
-          "endLine": 696
+          "startLine": 645,
+          "endLine": 704
         }
       ],
       "calledByFiles": [
@@ -25206,8 +25355,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function capResultsPerFile(items, maxPerFile = 2, limit = 20)",
-          "startLine": 701,
-          "endLine": 715
+          "startLine": 709,
+          "endLine": 723
         }
       ],
       "calledByFiles": []
@@ -25218,8 +25367,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function runLocalSemanticVectorRanker(chunks, queryString, limit = 20)",
-          "startLine": 721,
-          "endLine": 848
+          "startLine": 729,
+          "endLine": 856
         }
       ],
       "calledByFiles": []
@@ -25230,8 +25379,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "async function runLocalOnnxCrossEncoderRerank(query, candidates, limit = 8)",
-          "startLine": 855,
-          "endLine": 902
+          "startLine": 863,
+          "endLine": 910
         }
       ],
       "calledByFiles": []
@@ -25242,8 +25391,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function reciprocalRankFusion(rankedLists, k = 60, maxPerFile = 2)",
-          "startLine": 908,
-          "endLine": 943
+          "startLine": 916,
+          "endLine": 951
         }
       ],
       "calledByFiles": []
@@ -25254,8 +25403,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export async function queryKnowledge(query, limit = 8, options = {})",
-          "startLine": 954,
-          "endLine": 954
+          "startLine": 962,
+          "endLine": 962
         }
       ],
       "calledByFiles": [
@@ -25269,8 +25418,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function queryCodeGraph(symbolOrFileQuery, limit = 8)",
-          "startLine": 1147,
-          "endLine": 1172
+          "startLine": 1155,
+          "endLine": 1180
         }
       ],
       "calledByFiles": []
@@ -25281,8 +25430,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export async function synthesizeAnswer(question, knowledgeList = [])",
-          "startLine": 1177,
-          "endLine": 1239
+          "startLine": 1185,
+          "endLine": 1247
         }
       ],
       "calledByFiles": []
@@ -25293,8 +25442,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export async function getClusterStats()",
-          "startLine": 1241,
-          "endLine": 1274
+          "startLine": 1249,
+          "endLine": 1282
         }
       ],
       "calledByFiles": []
@@ -25324,8 +25473,8 @@
           "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
           "kind": "constant",
           "signature": "export const LOCAL_VAULT_REGISTRY_PATH",
-          "startLine": 49,
-          "endLine": 49
+          "startLine": 53,
+          "endLine": 53
         }
       ],
       "calledByFiles": []
@@ -25481,8 +25630,8 @@
           "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
           "kind": "constant",
           "signature": "export const ROOT",
-          "startLine": 45,
-          "endLine": 45
+          "startLine": 49,
+          "endLine": 49
         },
         {
           "file": "tools/intelligence/visual_science_corpus_builder.mjs",
@@ -25640,8 +25789,8 @@
           "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
           "kind": "constant",
           "signature": "export const CANON_OUTPUT_PATH",
-          "startLine": 50,
-          "endLine": 50
+          "startLine": 54,
+          "endLine": 54
         }
       ],
       "calledByFiles": []
@@ -25652,8 +25801,8 @@
           "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
           "kind": "constant",
           "signature": "export const SQLITE_FTS5_PATH",
-          "startLine": 56,
-          "endLine": 56
+          "startLine": 60,
+          "endLine": 60
         }
       ],
       "calledByFiles": []
@@ -25664,8 +25813,8 @@
           "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
           "kind": "constant",
           "signature": "export const OFFICIAL_ACADEMIC_COURSE_REPOS",
-          "startLine": 58,
-          "endLine": 58
+          "startLine": 62,
+          "endLine": 62
         }
       ],
       "calledByFiles": []
@@ -25676,8 +25825,8 @@
           "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
           "kind": "constant",
           "signature": "export const OFFICIAL_YOUTUBE_FACTORY_TALKS_URLS",
-          "startLine": 109,
-          "endLine": 109
+          "startLine": 113,
+          "endLine": 113
         }
       ],
       "calledByFiles": []
@@ -25688,8 +25837,8 @@
           "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
           "kind": "function",
           "signature": "export function ensureAcademicCourseReposAndRegisterVault()",
-          "startLine": 516,
-          "endLine": 602
+          "startLine": 520,
+          "endLine": 606
         }
       ],
       "calledByFiles": []
@@ -25699,9 +25848,9 @@
         {
           "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
           "kind": "function",
-          "signature": "export function indexCanonInSqliteFts5(markdownContent = '')",
-          "startLine": 733,
-          "endLine": 792
+          "signature": "export function indexCanonInSqliteFts5(markdownContent = '', extraCanonFiles = [])",
+          "startLine": 753,
+          "endLine": 823
         }
       ],
       "calledByFiles": []
@@ -25712,8 +25861,8 @@
           "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
           "kind": "function",
           "signature": "export function runSoftwareFactoryCurriculumIngestion()",
-          "startLine": 797,
-          "endLine": 867
+          "startLine": 828,
+          "endLine": 923
         }
       ],
       "calledByFiles": []
