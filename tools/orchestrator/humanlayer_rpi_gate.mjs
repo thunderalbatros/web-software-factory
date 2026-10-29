@@ -128,6 +128,11 @@ export const PATH_KNOWLEDGE_TRIGGERS = {
   }
 };
 
+export const INSPECT_AI_CIRCUIT_BREAKERS = Object.freeze({
+  maxTurnsPerSubagent: 6,
+  maxTokensPerToolCall: 4000
+});
+
 /**
  * Loads and parses `factory.yaml` control plane configuration.
  */
@@ -147,12 +152,65 @@ export function loadFactoryControlPlane(yamlPath = FACTORY_YAML_PATH) {
     version: extractScalar('version', '2.6.0-warp-humanlayer-rea'),
     primaryAgent: extractScalar('primaryAgent', 'cto_command_center'),
     maxTokensPerRun: Number(extractScalar('maxTokensPerRun', '48000')),
+    maxTurnsPerSubagent: Number(extractScalar('maxTurnsPerSubagent', '6')),
+    maxTokensPerToolCall: Number(extractScalar('maxTokensPerToolCall', '4000')),
     maxVertexUsdPerRun: Number(extractScalar('maxVertexUsdPerRun', '0.50')),
     maxAutonomousRetries: Number(extractScalar('maxAutonomousRetries', '2')),
     maxDuplicationPercent: Number(extractScalar('maxDuplicationPercent', '4.0')),
     twelveFactorComplete: (raw.match(/factor_\d+_[a-z0-9_]+:\s*true/g) || []).length === 12,
     stagesCount: HUMANLAYER_RPI_STAGES.length,
     raw
+  };
+}
+
+/**
+ * Enforces UK AI Safety Institute (`UKGovernmentBEIS/inspect_ai`) Hard Circuit Breakers:
+ *   - `maxTurnsPerSubagent: 6`
+ *   - `maxTokensPerToolCall: 4000`
+ */
+export function enforceInspectAiCircuitBreakers({
+  subagentTurns = 1,
+  toolCallTokens = 0,
+  subagentRole = 'subagent',
+  toolName = 'tool_call'
+} = {}) {
+  const maxTurns = INSPECT_AI_CIRCUIT_BREAKERS.maxTurnsPerSubagent;
+  const maxTokens = INSPECT_AI_CIRCUIT_BREAKERS.maxTokensPerToolCall;
+  const turns = Number(subagentTurns || 0);
+  const tokens = Number(toolCallTokens || 0);
+
+  if (turns > maxTurns) {
+    return {
+      allowed: false,
+      tripped: true,
+      breakerCode: 'CIRCUIT_BREAKER_MAX_TURNS_EXCEEDED',
+      subagentRole,
+      subagentTurns: turns,
+      maxTurnsPerSubagent: maxTurns,
+      reason: `Subagent [${subagentRole}] exceeded inspect_ai hard ceiling of ${maxTurns} turns (${turns}/${maxTurns}).`
+    };
+  }
+
+  if (tokens > maxTokens) {
+    return {
+      allowed: false,
+      tripped: true,
+      breakerCode: 'CIRCUIT_BREAKER_MAX_TOOL_TOKENS_EXCEEDED',
+      toolName,
+      toolCallTokens: tokens,
+      maxTokensPerToolCall: maxTokens,
+      reason: `Tool call [${toolName}] exceeded inspect_ai hard ceiling of ${maxTokens} tokens (${tokens}/${maxTokens}). Use surgical read or Headroom CCR.`
+    };
+  }
+
+  return {
+    allowed: true,
+    tripped: false,
+    breakerCode: 'OK',
+    subagentTurns: turns,
+    toolCallTokens: tokens,
+    maxTurnsPerSubagent: maxTurns,
+    maxTokensPerToolCall: maxTokens
   };
 }
 

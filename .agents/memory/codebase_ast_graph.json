@@ -1,14 +1,14 @@
 {
   "schema": "cocoindex-code-ast-graph-v1",
-  "updatedAt": "2026-10-29T02:13:00.020Z",
+  "updatedAt": "2026-10-29T02:30:31.197Z",
   "activeProject": "agencia-alfa",
-  "combinedSha256": "7598cc39f94060b4",
+  "combinedSha256": "c754eccd11c2dde5",
   "stats": {
     "totalFilesIndexed": 136,
-    "reindexedFilesCount": 7,
-    "cachedFilesCount": 129,
-    "totalSymbols": 1063,
-    "totalExports": 589,
+    "reindexedFilesCount": 3,
+    "cachedFilesCount": 133,
+    "totalSymbols": 1064,
+    "totalExports": 590,
     "estimatedTokenSavingsPct": 72.5
   },
   "files": [
@@ -5072,7 +5072,8 @@
         "tools/audit/security_gate.mjs",
         "tools/cto_command_center.mjs",
         "tools/feedback/client_feedback_triage_agent.mjs",
-        "tools/intelligence/agent_benchmark_harness.mjs"
+        "tools/intelligence/agent_benchmark_harness.mjs",
+        "tools/orchestrator/adaptive_depth_router.mjs"
       ],
       "calls": [
         "fileURLToPath",
@@ -12669,8 +12670,8 @@
     {
       "path": "tools/intelligence/tech_scout.mjs",
       "ext": ".mjs",
-      "sha256": "fdde45049fb917b1",
-      "lineCount": 1212,
+      "sha256": "cdf91aa909858b90",
+      "lineCount": 1228,
       "exports": [
         "ALLOWED_LICENSES",
         "CURATED_AWESOME_RADARS",
@@ -12711,6 +12712,7 @@
         "Tree",
         "Optimization",
         "Integrity",
+        "Factories",
         "Transformer",
         "Splatting",
         "Lighting",
@@ -12721,6 +12723,7 @@
         "SDK",
         "Spec",
         "Direction",
+        "Breakers",
         "Stars",
         "Drafts",
         "Animations",
@@ -12741,9 +12744,7 @@
         "digo",
         "Vivo",
         "keys",
-        "toLowerCase",
-        "find",
-        "includes"
+        "toLowerCase"
       ],
       "symbols": [
         {
@@ -12767,124 +12768,124 @@
           "kind": "constant",
           "exported": true,
           "signature": "export const TIER1_ORG_AND_VELOCITY_FEEDS",
-          "startLine": 134,
-          "endLine": 174
+          "startLine": 147,
+          "endLine": 190
         },
         {
           "name": "WEB_PLATFORM_BASELINE_AND_W3C",
           "kind": "constant",
           "exported": true,
           "signature": "export const WEB_PLATFORM_BASELINE_AND_W3C",
-          "startLine": 183,
-          "endLine": 247
+          "startLine": 199,
+          "endLine": 263
         },
         {
           "name": "LLMS_TXT_AND_MCP_REGISTRY",
           "kind": "constant",
           "exported": true,
           "signature": "export const LLMS_TXT_AND_MCP_REGISTRY",
-          "startLine": 254,
-          "endLine": 261
+          "startLine": 270,
+          "endLine": 277
         },
         {
           "name": "ARXIV_AND_HF_PAPERS_FEED",
           "kind": "constant",
           "exported": true,
           "signature": "export const ARXIV_AND_HF_PAPERS_FEED",
-          "startLine": 268,
-          "endLine": 290
+          "startLine": 284,
+          "endLine": 306
         },
         {
           "name": "LIVE_APPSEC_AND_PACKAGE_HEALTH",
           "kind": "constant",
           "exported": true,
           "signature": "export const LIVE_APPSEC_AND_PACKAGE_HEALTH",
-          "startLine": 297,
-          "endLine": 308
+          "startLine": 313,
+          "endLine": 324
         },
         {
           "name": "MULTI_TIER_INTELLIGENCE_SOURCES",
           "kind": "constant",
           "exported": true,
           "signature": "export const MULTI_TIER_INTELLIGENCE_SOURCES",
-          "startLine": 313,
-          "endLine": 363
+          "startLine": 329,
+          "endLine": 379
         },
         {
           "name": "resolveNativeWebPlatformAlternative",
           "kind": "function",
           "exported": true,
           "signature": "export function resolveNativeWebPlatformAlternative(query = '')",
-          "startLine": 369,
-          "endLine": 387
+          "startLine": 385,
+          "endLine": 403
         },
         {
           "name": "calculateSotaViabilityScore",
           "kind": "function",
           "exported": true,
           "signature": "export function calculateSotaViabilityScore(candidate = {})",
-          "startLine": 398,
-          "endLine": 398
+          "startLine": 414,
+          "endLine": 414
         },
         {
           "name": "loadApprovedPackagesSet",
           "kind": "function",
           "exported": true,
           "signature": "export function loadApprovedPackagesSet()",
-          "startLine": 841,
-          "endLine": 851
+          "startLine": 857,
+          "endLine": 867
         },
         {
           "name": "resolveCuratedAwesomeRadar",
           "kind": "function",
           "exported": true,
           "signature": "export function resolveCuratedAwesomeRadar(query = '')",
-          "startLine": 857,
-          "endLine": 913
+          "startLine": 873,
+          "endLine": 929
         },
         {
           "name": "passesTripleFilter",
           "kind": "function",
           "exported": true,
           "signature": "export function passesTripleFilter(item)",
-          "startLine": 918,
-          "endLine": 931
+          "startLine": 934,
+          "endLine": 947
         },
         {
           "name": "runAuditSourcesCli",
           "kind": "function",
           "exported": true,
           "signature": "export function runAuditSourcesCli()",
-          "startLine": 937,
-          "endLine": 1017
+          "startLine": 953,
+          "endLine": 1033
         },
         {
           "name": "runTechScout",
           "kind": "function",
           "exported": true,
           "signature": "export async function runTechScout()",
-          "startLine": 1019,
-          "endLine": 1162
+          "startLine": 1035,
+          "endLine": 1178
         },
         {
           "name": "OSS_INSIGHT_AND_SKILL_DIRECTORIES",
           "kind": "constant",
           "exported": true,
           "signature": "export const OSS_INSIGHT_AND_SKILL_DIRECTORIES",
-          "startLine": 1169,
-          "endLine": 1180
+          "startLine": 1185,
+          "endLine": 1196
         },
         {
           "name": "evaluateOssInsightCommunityHealth",
           "kind": "function",
           "exported": true,
           "signature": "export function evaluateOssInsightCommunityHealth(candidate = {})",
-          "startLine": 1182,
-          "endLine": 1182
+          "startLine": 1198,
+          "endLine": 1198
         }
       ],
-      "mtimeMs": 1793221002229.881,
-      "size": 60365
+      "mtimeMs": 1793240706554.6167,
+      "size": 62084
     },
     {
       "path": "tools/intelligence/textgrad_skill_optimizer.mjs",
@@ -14841,8 +14842,8 @@
     {
       "path": "tools/orchestrator/adaptive_depth_router.mjs",
       "ext": ".mjs",
-      "sha256": "63221e2932c6b562",
-      "lineCount": 352,
+      "sha256": "f2636b75397b48bf",
+      "lineCount": 451,
       "exports": [
         "FACTORY_ROOT",
         "BEADS_GRAPH_PATH",
@@ -14859,6 +14860,8 @@
         "node:crypto",
         "node:url",
         "../cockpit/live_telemetry_bus.mjs",
+        "./humanlayer_rpi_gate.mjs",
+        "../audit/ast_guard.mjs",
         "../lib/project_loader.mjs"
       ],
       "importedBy": [
@@ -14896,6 +14899,13 @@
         "readFileSync",
         "split",
         "parse",
+        "runMiniSweFastPathLoop",
+        "now",
+        "enforceInspectAiCircuitBreakers",
+        "isAbsolute",
+        "applyEditFn",
+        "runOxlintFastPass",
+        "scanSecurityAndPerformance",
         "log",
         "classifyAdaptiveDepthLane",
         "Routing",
@@ -14903,12 +14913,7 @@
         "JSONL",
         "createOpenSpecDeltaFile",
         "verifySpecKittyTraceabilityMatrix",
-        "Traceability",
-        "PASSED",
-        "resolve",
-        "runAdaptiveDepthRouterSelfTest",
-        "then",
-        "exit"
+        "Traceability"
       ],
       "symbols": [
         {
@@ -14933,51 +14938,51 @@
           "exported": true,
           "signature": "export const ADAPTIVE_LANES",
           "startLine": 30,
-          "endLine": 63
+          "endLine": 67
         },
         {
           "name": "classifyAdaptiveDepthLane",
           "kind": "function",
           "exported": true,
           "signature": "export function classifyAdaptiveDepthLane(taskPromptOrInput = '', options = {})",
-          "startLine": 69,
-          "endLine": 69
+          "startLine": 73,
+          "endLine": 73
         },
         {
           "name": "buildAndPersistBeadsTaskGraph",
           "kind": "function",
           "exported": true,
           "signature": "export function buildAndPersistBeadsTaskGraph(rawTasks = [], options = {})",
-          "startLine": 154,
-          "endLine": 154
+          "startLine": 158,
+          "endLine": 158
         },
         {
           "name": "verifyZeroParallelFileCollisions",
           "kind": "function",
           "exported": true,
           "signature": "export function verifyZeroParallelFileCollisions(nodes = [])",
-          "startLine": 215,
-          "endLine": 244
+          "startLine": 219,
+          "endLine": 248
         },
         {
           "name": "loadBeadsTaskGraph",
           "kind": "function",
           "exported": true,
           "signature": "export function loadBeadsTaskGraph(graphPath = BEADS_GRAPH_PATH)",
-          "startLine": 249,
-          "endLine": 257
+          "startLine": 253,
+          "endLine": 261
         },
         {
           "name": "runAdaptiveDepthRouterSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export async function runAdaptiveDepthRouterSelfTest()",
-          "startLine": 262,
-          "endLine": 346
+          "startLine": 332,
+          "endLine": 445
         }
       ],
-      "mtimeMs": 1793223152447.5925,
-      "size": 14613
+      "mtimeMs": 1793240938721.7102,
+      "size": 18593
     },
     {
       "path": "tools/orchestrator/agent_squad.mjs",
@@ -15138,13 +15143,14 @@
     {
       "path": "tools/orchestrator/humanlayer_rpi_gate.mjs",
       "ext": ".mjs",
-      "sha256": "e2a4c7a49f485915",
-      "lineCount": 655,
+      "sha256": "9b29457a5679ca6c",
+      "lineCount": 713,
       "exports": [
         "FACTORY_ROOT",
         "FACTORY_YAML_PATH",
         "HUMANLAYER_RPI_STAGES",
         "PATH_KNOWLEDGE_TRIGGERS",
+        "INSPECT_AI_CIRCUIT_BREAKERS",
         "loadFactoryControlPlane",
         "resolveKnowledgeTriggersForPaths",
         "getRpiCheckpointPath",
@@ -15165,7 +15171,8 @@
       "importedBy": [
         "tools/cto_command_center.mjs",
         "tools/feedback/client_feedback_triage_agent.mjs",
-        "tools/intelligence/agent_benchmark_harness.mjs"
+        "tools/intelligence/agent_benchmark_harness.mjs",
+        "tools/orchestrator/adaptive_depth_router.mjs"
       ],
       "calls": [
         "fileURLToPath",
@@ -15185,6 +15192,9 @@
         "match",
         "trim",
         "extractScalar",
+        "enforceInspectAiCircuitBreakers",
+        "turns",
+        "tokens",
         "isArray",
         "replace",
         "toLowerCase",
@@ -15209,10 +15219,7 @@
         "emitFactoryTelemetryEvent",
         "completada",
         "unlinkSync",
-        "json",
-        "advanceRpiStage",
-        "basename",
-        "some"
+        "json"
       ],
       "symbols": [
         {
@@ -15248,80 +15255,88 @@
           "endLine": 129
         },
         {
+          "name": "INSPECT_AI_CIRCUIT_BREAKERS",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const INSPECT_AI_CIRCUIT_BREAKERS",
+          "startLine": 131,
+          "endLine": 134
+        },
+        {
           "name": "loadFactoryControlPlane",
           "kind": "function",
           "exported": true,
           "signature": "export function loadFactoryControlPlane(yamlPath = FACTORY_YAML_PATH)",
-          "startLine": 134,
-          "endLine": 157
+          "startLine": 139,
+          "endLine": 164
         },
         {
           "name": "resolveKnowledgeTriggersForPaths",
           "kind": "function",
           "exported": true,
           "signature": "export function resolveKnowledgeTriggersForPaths(filePaths = [])",
-          "startLine": 162,
-          "endLine": 188
+          "startLine": 220,
+          "endLine": 246
         },
         {
           "name": "getRpiCheckpointPath",
           "kind": "function",
           "exported": true,
           "signature": "export function getRpiCheckpointPath(slug = 'agencia-alfa')",
-          "startLine": 193,
-          "endLine": 200
+          "startLine": 251,
+          "endLine": 258
         },
         {
           "name": "loadRpiCheckpoint",
           "kind": "function",
           "exported": true,
           "signature": "export function loadRpiCheckpoint(slug = 'agencia-alfa')",
-          "startLine": 205,
-          "endLine": 223
+          "startLine": 263,
+          "endLine": 281
         },
         {
           "name": "saveRpiCheckpoint",
           "kind": "function",
           "exported": true,
           "signature": "export function saveRpiCheckpoint(slug, checkpointData)",
-          "startLine": 228,
-          "endLine": 238
+          "startLine": 286,
+          "endLine": 296
         },
         {
           "name": "advanceRpiStage",
           "kind": "function",
           "exported": true,
           "signature": "export function advanceRpiStage(slug, stageId, artifactPayload = {}, touchedPaths = [])",
-          "startLine": 244,
-          "endLine": 244
+          "startLine": 302,
+          "endLine": 302
         },
         {
           "name": "runHumanLayerRpiPipeline",
           "kind": "function",
           "exported": true,
           "signature": "export function runHumanLayerRpiPipeline(slug = 'agencia-alfa', options = {})",
-          "startLine": 313,
-          "endLine": 313
+          "startLine": 371,
+          "endLine": 371
         },
         {
           "name": "runOpenHandsStuckDetector",
           "kind": "function",
           "exported": true,
           "signature": "export function runOpenHandsStuckDetector(actionHistory = [], options = {})",
-          "startLine": 376,
-          "endLine": 376
+          "startLine": 434,
+          "endLine": 434
         },
         {
           "name": "runHumanLayerRpiSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export function runHumanLayerRpiSelfTest()",
-          "startLine": 557,
-          "endLine": 648
+          "startLine": 615,
+          "endLine": 706
         }
       ],
-      "mtimeMs": 1793234655905.5403,
-      "size": 26318
+      "mtimeMs": 1793240773182.3867,
+      "size": 28110
     },
     {
       "path": "tools/project_loader.mjs",
@@ -22842,7 +22857,8 @@
         }
       ],
       "calledByFiles": [
-        "tools/audit/code_clean_audit.mjs"
+        "tools/audit/code_clean_audit.mjs",
+        "tools/orchestrator/adaptive_depth_router.mjs"
       ]
     },
     "scanClassMethods": {
@@ -22871,7 +22887,8 @@
       ],
       "calledByFiles": [
         "tools/cto_command_center.mjs",
-        "tools/intelligence/ast_guard.mjs"
+        "tools/intelligence/ast_guard.mjs",
+        "tools/orchestrator/adaptive_depth_router.mjs"
       ]
     },
     "runNegativeSelfTest": {
@@ -25283,8 +25300,8 @@
           "file": "tools/intelligence/tech_scout.mjs",
           "kind": "constant",
           "signature": "export const TIER1_ORG_AND_VELOCITY_FEEDS",
-          "startLine": 134,
-          "endLine": 174
+          "startLine": 147,
+          "endLine": 190
         }
       ],
       "calledByFiles": []
@@ -25295,8 +25312,8 @@
           "file": "tools/intelligence/tech_scout.mjs",
           "kind": "constant",
           "signature": "export const WEB_PLATFORM_BASELINE_AND_W3C",
-          "startLine": 183,
-          "endLine": 247
+          "startLine": 199,
+          "endLine": 263
         }
       ],
       "calledByFiles": []
@@ -25307,8 +25324,8 @@
           "file": "tools/intelligence/tech_scout.mjs",
           "kind": "constant",
           "signature": "export const LLMS_TXT_AND_MCP_REGISTRY",
-          "startLine": 254,
-          "endLine": 261
+          "startLine": 270,
+          "endLine": 277
         }
       ],
       "calledByFiles": []
@@ -25319,8 +25336,8 @@
           "file": "tools/intelligence/tech_scout.mjs",
           "kind": "constant",
           "signature": "export const ARXIV_AND_HF_PAPERS_FEED",
-          "startLine": 268,
-          "endLine": 290
+          "startLine": 284,
+          "endLine": 306
         }
       ],
       "calledByFiles": []
@@ -25331,8 +25348,8 @@
           "file": "tools/intelligence/tech_scout.mjs",
           "kind": "constant",
           "signature": "export const LIVE_APPSEC_AND_PACKAGE_HEALTH",
-          "startLine": 297,
-          "endLine": 308
+          "startLine": 313,
+          "endLine": 324
         }
       ],
       "calledByFiles": []
@@ -25343,8 +25360,8 @@
           "file": "tools/intelligence/tech_scout.mjs",
           "kind": "constant",
           "signature": "export const MULTI_TIER_INTELLIGENCE_SOURCES",
-          "startLine": 313,
-          "endLine": 363
+          "startLine": 329,
+          "endLine": 379
         }
       ],
       "calledByFiles": []
@@ -25355,8 +25372,8 @@
           "file": "tools/intelligence/tech_scout.mjs",
           "kind": "function",
           "signature": "export function resolveNativeWebPlatformAlternative(query = '')",
-          "startLine": 369,
-          "endLine": 387
+          "startLine": 385,
+          "endLine": 403
         }
       ],
       "calledByFiles": [
@@ -25369,8 +25386,8 @@
           "file": "tools/intelligence/tech_scout.mjs",
           "kind": "function",
           "signature": "export function calculateSotaViabilityScore(candidate = {})",
-          "startLine": 398,
-          "endLine": 398
+          "startLine": 414,
+          "endLine": 414
         }
       ],
       "calledByFiles": [
@@ -25384,8 +25401,8 @@
           "file": "tools/intelligence/tech_scout.mjs",
           "kind": "function",
           "signature": "export function loadApprovedPackagesSet()",
-          "startLine": 841,
-          "endLine": 851
+          "startLine": 857,
+          "endLine": 867
         }
       ],
       "calledByFiles": []
@@ -25396,8 +25413,8 @@
           "file": "tools/intelligence/tech_scout.mjs",
           "kind": "function",
           "signature": "export function resolveCuratedAwesomeRadar(query = '')",
-          "startLine": 857,
-          "endLine": 913
+          "startLine": 873,
+          "endLine": 929
         }
       ],
       "calledByFiles": [
@@ -25410,8 +25427,8 @@
           "file": "tools/intelligence/tech_scout.mjs",
           "kind": "function",
           "signature": "export function passesTripleFilter(item)",
-          "startLine": 918,
-          "endLine": 931
+          "startLine": 934,
+          "endLine": 947
         }
       ],
       "calledByFiles": []
@@ -25422,8 +25439,8 @@
           "file": "tools/intelligence/tech_scout.mjs",
           "kind": "function",
           "signature": "export function runAuditSourcesCli()",
-          "startLine": 937,
-          "endLine": 1017
+          "startLine": 953,
+          "endLine": 1033
         }
       ],
       "calledByFiles": []
@@ -25434,8 +25451,8 @@
           "file": "tools/intelligence/tech_scout.mjs",
           "kind": "function",
           "signature": "export async function runTechScout()",
-          "startLine": 1019,
-          "endLine": 1162
+          "startLine": 1035,
+          "endLine": 1178
         }
       ],
       "calledByFiles": [
@@ -25449,8 +25466,8 @@
           "file": "tools/intelligence/tech_scout.mjs",
           "kind": "constant",
           "signature": "export const OSS_INSIGHT_AND_SKILL_DIRECTORIES",
-          "startLine": 1169,
-          "endLine": 1180
+          "startLine": 1185,
+          "endLine": 1196
         }
       ],
       "calledByFiles": []
@@ -25461,8 +25478,8 @@
           "file": "tools/intelligence/tech_scout.mjs",
           "kind": "function",
           "signature": "export function evaluateOssInsightCommunityHealth(candidate = {})",
-          "startLine": 1182,
-          "endLine": 1182
+          "startLine": 1198,
+          "endLine": 1198
         }
       ],
       "calledByFiles": []
@@ -26886,7 +26903,7 @@
           "kind": "constant",
           "signature": "export const ADAPTIVE_LANES",
           "startLine": 30,
-          "endLine": 63
+          "endLine": 67
         }
       ],
       "calledByFiles": []
@@ -26897,8 +26914,8 @@
           "file": "tools/orchestrator/adaptive_depth_router.mjs",
           "kind": "function",
           "signature": "export function classifyAdaptiveDepthLane(taskPromptOrInput = '', options = {})",
-          "startLine": 69,
-          "endLine": 69
+          "startLine": 73,
+          "endLine": 73
         }
       ],
       "calledByFiles": [
@@ -26912,8 +26929,8 @@
           "file": "tools/orchestrator/adaptive_depth_router.mjs",
           "kind": "function",
           "signature": "export function buildAndPersistBeadsTaskGraph(rawTasks = [], options = {})",
-          "startLine": 154,
-          "endLine": 154
+          "startLine": 158,
+          "endLine": 158
         }
       ],
       "calledByFiles": [
@@ -26927,8 +26944,8 @@
           "file": "tools/orchestrator/adaptive_depth_router.mjs",
           "kind": "function",
           "signature": "export function verifyZeroParallelFileCollisions(nodes = [])",
-          "startLine": 215,
-          "endLine": 244
+          "startLine": 219,
+          "endLine": 248
         }
       ],
       "calledByFiles": [
@@ -26941,8 +26958,8 @@
           "file": "tools/orchestrator/adaptive_depth_router.mjs",
           "kind": "function",
           "signature": "export function loadBeadsTaskGraph(graphPath = BEADS_GRAPH_PATH)",
-          "startLine": 249,
-          "endLine": 257
+          "startLine": 253,
+          "endLine": 261
         }
       ],
       "calledByFiles": []
@@ -26953,13 +26970,11 @@
           "file": "tools/orchestrator/adaptive_depth_router.mjs",
           "kind": "function",
           "signature": "export async function runAdaptiveDepthRouterSelfTest()",
-          "startLine": 262,
-          "endLine": 346
+          "startLine": 332,
+          "endLine": 445
         }
       ],
-      "calledByFiles": [
-        "tools/orchestrator/adaptive_depth_router.mjs"
-      ]
+      "calledByFiles": []
     },
     "buildDefaultInterviewPayload": {
       "definitions": [
@@ -27076,14 +27091,26 @@
       ],
       "calledByFiles": []
     },
+    "INSPECT_AI_CIRCUIT_BREAKERS": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/humanlayer_rpi_gate.mjs",
+          "kind": "constant",
+          "signature": "export const INSPECT_AI_CIRCUIT_BREAKERS",
+          "startLine": 131,
+          "endLine": 134
+        }
+      ],
+      "calledByFiles": []
+    },
     "loadFactoryControlPlane": {
       "definitions": [
         {
           "file": "tools/orchestrator/humanlayer_rpi_gate.mjs",
           "kind": "function",
           "signature": "export function loadFactoryControlPlane(yamlPath = FACTORY_YAML_PATH)",
-          "startLine": 134,
-          "endLine": 157
+          "startLine": 139,
+          "endLine": 164
         }
       ],
       "calledByFiles": []
@@ -27094,8 +27121,8 @@
           "file": "tools/orchestrator/humanlayer_rpi_gate.mjs",
           "kind": "function",
           "signature": "export function resolveKnowledgeTriggersForPaths(filePaths = [])",
-          "startLine": 162,
-          "endLine": 188
+          "startLine": 220,
+          "endLine": 246
         }
       ],
       "calledByFiles": [
@@ -27108,8 +27135,8 @@
           "file": "tools/orchestrator/humanlayer_rpi_gate.mjs",
           "kind": "function",
           "signature": "export function getRpiCheckpointPath(slug = 'agencia-alfa')",
-          "startLine": 193,
-          "endLine": 200
+          "startLine": 251,
+          "endLine": 258
         }
       ],
       "calledByFiles": [
@@ -27122,8 +27149,8 @@
           "file": "tools/orchestrator/humanlayer_rpi_gate.mjs",
           "kind": "function",
           "signature": "export function loadRpiCheckpoint(slug = 'agencia-alfa')",
-          "startLine": 205,
-          "endLine": 223
+          "startLine": 263,
+          "endLine": 281
         }
       ],
       "calledByFiles": [
@@ -27136,8 +27163,8 @@
           "file": "tools/orchestrator/humanlayer_rpi_gate.mjs",
           "kind": "function",
           "signature": "export function saveRpiCheckpoint(slug, checkpointData)",
-          "startLine": 228,
-          "endLine": 238
+          "startLine": 286,
+          "endLine": 296
         }
       ],
       "calledByFiles": [
@@ -27150,13 +27177,11 @@
           "file": "tools/orchestrator/humanlayer_rpi_gate.mjs",
           "kind": "function",
           "signature": "export function advanceRpiStage(slug, stageId, artifactPayload = {}, touchedPaths = [])",
-          "startLine": 244,
-          "endLine": 244
+          "startLine": 302,
+          "endLine": 302
         }
       ],
-      "calledByFiles": [
-        "tools/orchestrator/humanlayer_rpi_gate.mjs"
-      ]
+      "calledByFiles": []
     },
     "runHumanLayerRpiPipeline": {
       "definitions": [
@@ -27164,8 +27189,8 @@
           "file": "tools/orchestrator/humanlayer_rpi_gate.mjs",
           "kind": "function",
           "signature": "export function runHumanLayerRpiPipeline(slug = 'agencia-alfa', options = {})",
-          "startLine": 313,
-          "endLine": 313
+          "startLine": 371,
+          "endLine": 371
         }
       ],
       "calledByFiles": [
@@ -27178,8 +27203,8 @@
           "file": "tools/orchestrator/humanlayer_rpi_gate.mjs",
           "kind": "function",
           "signature": "export function runOpenHandsStuckDetector(actionHistory = [], options = {})",
-          "startLine": 376,
-          "endLine": 376
+          "startLine": 434,
+          "endLine": 434
         }
       ],
       "calledByFiles": [
@@ -27192,8 +27217,8 @@
           "file": "tools/orchestrator/humanlayer_rpi_gate.mjs",
           "kind": "function",
           "signature": "export function runHumanLayerRpiSelfTest()",
-          "startLine": 557,
-          "endLine": 648
+          "startLine": 615,
+          "endLine": 706
         }
       ],
       "calledByFiles": []

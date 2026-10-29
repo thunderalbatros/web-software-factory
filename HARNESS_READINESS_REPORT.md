@@ -1,6 +1,6 @@
 # 🩺 HARNESS READINESS REPORT — Certificación Pre-Vuelo de la Software Factory (Fases 1 a 31)
 
-> **Fecha de Certificación:** 2026-10-29T02:13:31.223Z  
+> **Fecha de Certificación:** 2026-10-29T02:30:37.471Z  
 > **Puntaje Global del Harness:** **`100.0 / 100.0`** (`8/8 Capas Operativas en Verde`)  
 > **Simulacro End-to-End (5 Pasos):** **`5/5 PASOS APROBADOS`**  
 > **Firma Criptográfica `Ed25519` (`agentvcs`):** **`VERIFICADA (100% ÍNTEGRA)`** (`avcs_mvsnb3uo`)  
@@ -39,17 +39,17 @@ Se ejecutó un simulacro completo en una cápsula temporal aislada (eliminada au
 
 | Paso | Etapa del Flujo Real del CTO | Duración | Estado | Detalle |
 |:---:|:---|:---:|:---:|:---|
-| **Paso 1** | Creación de Cápsula de Proyecto Aislada (project_loader + template) | `10ms` | `PASS` | Verificado |
-| **Paso 2** | Dirección de Arte por Industria (PRODUCT.md + DESIGN.md + 62 reglas Impeccable) | `22ms` | `PASS` | fintech-and-banking (62/62 reglas) |
-| **Paso 3** | Enrutamiento Adaptativo SWE-AF + Compuerta HumanLayer 6-Stage RPI | `80ms` | `PASS` | LANE_2_STANDARD_BUILD | RPI 6/6 etapas |
-| **Paso 4** | Compilación W3C DTCG OKLCH + Guardias AST / Security / F2P-P2P / Traceability | `518ms` | `PASS` | Tokens OK | AST 100/100 | F2P/P2P=true | Traceability 1:1 |
-| **Paso 5** | Empaquetado Limpio de Producción (build_dist.mjs -> dist/) | `10503ms` | `PASS` | dist/index.html generado (Exit Code 0) |
+| **Paso 1** | Creación de Cápsula de Proyecto Aislada (project_loader + template) | `8ms` | `PASS` | Verificado |
+| **Paso 2** | Dirección de Arte por Industria (PRODUCT.md + DESIGN.md + 62 reglas Impeccable) | `24ms` | `PASS` | fintech-and-banking (62/62 reglas) |
+| **Paso 3** | Enrutamiento Adaptativo SWE-AF + Compuerta HumanLayer 6-Stage RPI | `85ms` | `PASS` | LANE_2_STANDARD_BUILD | RPI 6/6 etapas |
+| **Paso 4** | Compilación W3C DTCG OKLCH + Guardias AST / Security / F2P-P2P / Traceability | `205ms` | `PASS` | Tokens OK | AST 100/100 | F2P/P2P=true | Traceability 1:1 |
+| **Paso 5** | Empaquetado Limpio de Producción (build_dist.mjs -> dist/) | `1360ms` | `PASS` | dist/index.html generado (Exit Code 0) |
 
 ---
 
 ## 4. Sanitización de Residuos de Pruebas (`--reset-test-artifacts`)
 
-- **Rutas Temporales Limpiadas:** `.cache/sandboxes`, `.agents/beads/task_graph.jsonl (production baseline reset)`.
+- **Rutas Temporales Limpiadas:** `.agents/beads/task_graph.jsonl (production baseline reset)`.
 - **Artefactos Constitucionales y de Memoria Preservados:**
   - `.agents/memory/EXPERIENCE.md`: **ÍNTEGRO**
   - `.agents/skills/SKILL_INDEX.json`: **ÍNTEGRO**

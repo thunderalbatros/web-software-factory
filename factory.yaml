@@ -25,6 +25,8 @@ adaptiveDepthLanes:
     targetLatencySeconds: 15
     maxTokensBudget: 6000
     maxTurns: 4
+    directTurnLimit: 1
+    executionEngine: "mini-swe-agent-1-turn"
     skipMultiAgentDebate: true
   LANE_2_STANDARD_BUILD:
     targetLatencySeconds: 45
@@ -57,6 +59,8 @@ intakeSources:
 budgets:
   maxTokensPerRun: 48000
   maxInlineMcpTokens: 1200
+  maxTurnsPerSubagent: 6
+  maxTokensPerToolCall: 4000
   maxVertexUsdPerRun: 0.50
   maxAutonomousRetries: 2
   astLatencyCeilingMs: 500

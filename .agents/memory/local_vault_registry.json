@@ -291,6 +291,68 @@
         "existsOnDisk": true,
         "origin": "https://github.com/pbakaus/impeccable.git",
         "description": "Framework de dirección de diseño con separación PRODUCT.md / DESIGN.md, los 4 Modos de Superficie (Persuade, Operate, Read, Experience), 24 comandos de refinamiento y 62 reglas deterministas detectoras de AI Slop."
+      },
+      {
+        "id": "claude-code-ultimate-guide",
+        "category": "skills_and_directives",
+        "aliases": [
+          "florianbruniaux/claude-code-ultimate-guide",
+          "6-scaling-levels",
+          "post-merge-gates"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\factory-optimization-2026\\claude-code-ultimate-guide",
+        "existsOnDisk": true,
+        "origin": "https://github.com/FlorianBruniaux/claude-code-ultimate-guide.git",
+        "description": "Guía maestra de FlorianBruniaux con los 6 Niveles de Escalado de Software Factories y Compuertas Post-Merge."
+      },
+      {
+        "id": "varun1505-awesome-software-factories",
+        "category": "skills_and_directives",
+        "aliases": [
+          "varun1505/awesome-software-factories",
+          "awesome-software-factories"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\factory-optimization-2026\\varun1505-awesome-software-factories",
+        "existsOnDisk": true,
+        "origin": "https://github.com/varun1505/awesome-software-factories.git",
+        "description": "Directorio curado de arquitecturas de Software Factories, pipelines Spec-First y gobernanza SDLC."
+      },
+      {
+        "id": "camplight-awesome-software-factories",
+        "category": "skills_and_directives",
+        "aliases": [
+          "camplight/awesome-software-factories",
+          "sdlc-dark-factories"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\factory-optimization-2026\\camplight-awesome-software-factories",
+        "existsOnDisk": true,
+        "origin": "https://github.com/camplight/awesome-software-factories.git",
+        "description": "Directorio industrial de Camplight sobre Software Factories autónomas, evidencia SDLC y separación Creador-Verificador."
+      },
+      {
+        "id": "awesome-agent-factories",
+        "category": "skills_and_directives",
+        "aliases": [
+          "jerelvelarde/awesome-agent-factories",
+          "agent-factories"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\factory-optimization-2026\\awesome-agent-factories",
+        "existsOnDisk": true,
+        "origin": "https://github.com/jerelvelarde/awesome-agent-factories.git",
+        "description": "Catálogo de Agent Factories multi-agente, sandboxes híbridos y flujos de trabajo gobernados por compuertas."
+      },
+      {
+        "id": "mini-swe-agent",
+        "category": "skills_and_directives",
+        "aliases": [
+          "swe-agent/mini-swe-agent",
+          "mini-swe-agent-fast-path",
+          "100-line-agent"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\factory-optimization-2026\\mini-swe-agent",
+        "existsOnDisk": true,
+        "origin": "https://github.com/SWE-agent/mini-swe-agent.git",
+        "description": "Agente minimalista de ~100 líneas de Princeton/SWE-agent para ejecución ultraligera de 1 turno directo en LANE_1_FAST_PATH."
       }
     ],
     "audit_security_testing": [
@@ -446,6 +508,19 @@
         "existsOnDisk": true,
         "origin": "https://github.com/ahujasid/blender-mcp.git",
         "description": "Blender Model Context Protocol (MCP) integration for autonomous 3D parametric geometry, PBR materials, studio lighting, and .glb export via Python bpy."
+      },
+      {
+        "id": "inspect_ai",
+        "category": "audit_security_testing",
+        "aliases": [
+          "ukgovernmentbeis/inspect_ai",
+          "aisi-inspect-ai",
+          "inspect-circuit-breakers"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\factory-optimization-2026\\inspect_ai",
+        "existsOnDisk": true,
+        "origin": "https://github.com/UKGovernmentBEIS/inspect_ai.git",
+        "description": "Framework oficial de UK AI Safety Institute (inspect_ai) para evaluaciones deterministas y cortacircuitos duros de turnos/tokens."
       }
     ],
     "rag_and_search": [

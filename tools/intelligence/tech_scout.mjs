@@ -123,6 +123,19 @@ export const CURATED_AWESOME_RADARS = [
     selectionPolicy: 'Prioritize audited zero-trust sanitizers, strict CSP generators, and lightweight schema validators approved in approved_packages.json.',
     prioritizedPackages: ['dompurify', 'valibot', 'oxlint'],
     keywords: ['security', 'seguridad', 'appsec', 'csp', 'xss', 'owasp', 'asvs', 'sanitize', 'dompurify', 'headers', 'sri', 'pkce', 'auth', 'vulnerability']
+  },
+  {
+    id: 'software-and-agent-factories',
+    domain: 'Software & Agent Factories (Monday 08:00 AM Seed Radar)',
+    upstreamSource: 'https://github.com/camplight/awesome-software-factories',
+    lists: [
+      { name: 'awesome-software-factories-varun1505', url: 'https://github.com/varun1505/awesome-software-factories', focus: 'Spec-First Software Factory blueprints, deterministic SDLC gates & zero-bloat harnesses' },
+      { name: 'awesome-software-factories-camplight', url: 'https://github.com/camplight/awesome-software-factories', focus: 'Industrial Dark Factories, Creator-Verifier split, Beads task graphs & post-merge smoke gates' },
+      { name: 'awesome-agent-factories', url: 'https://github.com/jerelvelarde/awesome-agent-factories', focus: 'Multi-agent factories, hybrid sandboxes, inspect_ai circuit breakers & mini-swe-agent fast-paths' }
+    ],
+    selectionPolicy: 'Prioritize zero-bloat orchestration patterns, deterministic post-merge gates, and subagent circuit breakers.',
+    prioritizedPackages: ['oxlint', 'playwright', 'vitest', 'valibot'],
+    keywords: ['software-factory', 'agent-factory', 'dark-factory', 'sdlc', 'post-merge', 'inspect-ai', 'mini-swe-agent', 'harness', 'orchestrator', 'beads']
   }
 ];
 
@@ -165,7 +178,10 @@ export const TIER1_ORG_AND_VELOCITY_FEEDS = {
     { org: 'cloudflare', repo: 'cloudflare/agents', focus: 'Cloudflare Stateful Agents SDK (Durable Objects SQLite) & @cloudflare/codemode' },
     { org: 'zizmorcore', repo: 'zizmorcore/zizmor', focus: 'Zizmor v1.30 Rust Static Security Analyzer for GitHub Actions Workflows' },
     { org: 'google-labs-code', repo: 'google-labs-code/design.md', focus: 'Google Labs DESIGN.md Agent-Readable Design System Spec (YAML Tokens + 8 Sections)' },
-    { org: 'pbakaus', repo: 'pbakaus/impeccable', focus: 'Impeccable v4.6/v4.8 Design Direction (PRODUCT.md / DESIGN.md, 4 Surface Modes & 62 Anti-Slop Rules)' }
+    { org: 'pbakaus', repo: 'pbakaus/impeccable', focus: 'Impeccable v4.6/v4.8 Design Direction (PRODUCT.md / DESIGN.md, 4 Surface Modes & 62 Anti-Slop Rules)' },
+    { org: 'FlorianBruniaux', repo: 'FlorianBruniaux/claude-code-ultimate-guide', focus: '6 Levels of Software Factory Scaling & Post-Merge Smoke Gates' },
+    { org: 'SWE-agent', repo: 'SWE-agent/mini-swe-agent', focus: 'Minimalist 100-line 1-Turn Fast-Path Execution Loop for LANE_1_FAST_PATH' },
+    { org: 'UKGovernmentBEIS', repo: 'UKGovernmentBEIS/inspect_ai', focus: 'UK AISI inspect_ai Deterministic Evals & Subagent/Tool Circuit Breakers (maxTurns: 6, maxTokens: 4000)' }
   ],
   velocityRadars: [
     { id: 'bestofjs-hot', name: 'Best of JS Weekly Velocity Feed', url: 'https://bestofjs.org/', criterion: 'Weekly star velocity & zero-bloat ESM bundle size' },

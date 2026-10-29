@@ -168,3 +168,6 @@ $$t_{\text{peak-velocity}} = \frac{\arctan\!\left(\frac{\sqrt{1 - \zeta^2}}{\zet
 | **Síntesis Modal de Cristal (`glass`)** | Modos $[1.0, 2.32, 4.18]$, $Q = 16$, $\tau = 65\text{ ms}$ | Banco de 3 `BiquadFilterNode` (`bandpass`, `Q = 16`) |
 | **Seguridad Auditiva ISO 226:2023** | Notch de $-5.0\text{ dB}$ en $2.5\text{ kHz} - 4.2\text{ kHz}$, pico $\le -18\text{ dBFS}$ | `notch.type = 'peaking'; notch.frequency.value = 3250; notch.gain.value = -5` |
 | **Sincresis 60 FPS (Chion / Murch)** | $|t_{\text{audio}} - t_{\text{visual-peak}}| \le 16.6\text{ ms}$ | `scheduleAt(ctx.currentTime + springPeakVelocitySec)` |
+
+---
+**Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_EMIL_KOWALSKI_ANIMATIONS_ON_THE_WEB]] · [[CANON_2D_3D_GRAPHICS_SHADERS_AND_AESTHETICS_2026]] · [[CANON_HOLO_SHADERS_3D_PACK_CHOREOGRAPHY_AND_WEBAUDIO_SFX_2026]] · [[CANON_ANIMATION_PRINCIPLES_ILLUSION_OF_LIFE_DISNEY]] · #motion_and_animation

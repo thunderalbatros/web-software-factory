@@ -124,3 +124,38 @@ jobs:
             console.log(lines.join("\n"));
             process.exit(0);
           '
+
+      - name: 7. Post-Merge Smoke & Integrity Gate (FlorianBruniaux Pattern)
+        env:
+          PROJECT_SLUG: ${{ inputs.project_slug || 'agencia-alfa' }}
+        run: |
+          node -e '
+            const fs = require("node:fs");
+            const path = require("node:path");
+            const slug = String(process.env.PROJECT_SLUG || "agencia-alfa").replace(/[^a-z0-9-]/gi, "");
+            const zipPath = path.join("deliverables", slug, `${slug}-produccion.zip`);
+            const distHtmlPath = path.join("projects", slug, "dist", "index.html");
+            const headersPath = path.join("projects", slug, "public", "_headers");
+
+            if (!fs.existsSync(zipPath) || fs.statSync(zipPath).size < 512) {
+              console.error("[POST-MERGE-SMOKE-GATE] FAIL: Missing or empty standalone production ZIP:", zipPath);
+              process.exit(1);
+            }
+            if (!fs.existsSync(distHtmlPath)) {
+              console.error("[POST-MERGE-SMOKE-GATE] FAIL: Missing dist/index.html:", distHtmlPath);
+              process.exit(1);
+            }
+            const html = fs.readFileSync(distHtmlPath, "utf8");
+            if (!/<title>/i.test(html) || !/<main\b/i.test(html) || /<{7}/.test(html)) {
+              console.error("[POST-MERGE-SMOKE-GATE] FAIL: Structural landmark or merge-conflict violation in dist/index.html");
+              process.exit(1);
+            }
+            if (fs.existsSync(headersPath)) {
+              const hdrs = fs.readFileSync(headersPath, "utf8");
+              if (!/Content-Security-Policy/i.test(hdrs) || !/Strict-Transport-Security/i.test(hdrs)) {
+                console.error("[POST-MERGE-SMOKE-GATE] FAIL: Missing CSP or HSTS in _headers");
+                process.exit(1);
+              }
+            }
+            console.log(`[POST-MERGE-SMOKE-GATE] PASS: Verified ${zipPath} (${fs.statSync(zipPath).size} bytes), semantic landmarks & Zero-Trust headers.`);
+          '
