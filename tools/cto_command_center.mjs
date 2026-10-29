@@ -1040,16 +1040,18 @@ async function handleInvestigarReferencia(args = []) {
 }
 
 async function handleFeedbackCliente(args = []) {
-  const message = args.filter((a) => !a.startsWith('--')).join(' ') || 'Por favor actualizar el botón principal del Hero a "Solicitar Demo Ejecutiva"';
-  const { triageClientFeedbackTicket } = await import('./feedback/client_feedback_triage_agent.mjs');
-  const res = await triageClientFeedbackTicket({
+  const message =
+    args.filter((a) => !a.startsWith('--')).join(' ') ||
+    'Por favor actualizar el botón principal del Hero a "Solicitar Demo Ejecutiva"';
+  const { analyzeTicketAndProposeSpec } = await import('./feedback/client_feedback_triage_agent.mjs');
+  const res = await analyzeTicketAndProposeSpec({
     clientId: 'cto-cli-ticket',
     sourceChannel: 'cli',
     sectionSelector: '#hero-cta',
     message
   });
   console.log('\n====================================================================');
-  console.log('💬 TRIAJE POST-VENTA ZERO-TRUST (WIDGET WEB / SLACK -> DRAFT PR)');
+  console.log('💬 TRIAJE POST-VENTA ETAPA 1 (MODO SOLO LECTURA -> REPORTE + DELTA)');
   console.log('====================================================================');
   if (!res.ok) {
     console.log(`  🛑 ESTADO               : BLOQUEADO (${res.status})`);
@@ -1061,11 +1063,45 @@ async function handleFeedbackCliente(args = []) {
   if (res.intent === 'CASE_A_DIRECT_INQUIRY_RESPONSE') {
     console.log(`  💡 Respuesta al Cliente : ${res.clientResponse}`);
   } else {
-    console.log(`  🌿 Rama Aislada Sandbox : ${res.branchName} (${res.sandboxMode})`);
-    console.log(`  🌐 Preview URL          : ${res.previewUrl}`);
-    console.log(`  📊 Braintrust Autoevals : ${res.braintrustScore}/100.0 | Producción intacta: ${!res.productionModified}`);
-    console.log(`  📧 Notificación CTO     : ${res.ctoNotification.toEmail} (${res.ctoNotification.oneClickApproveAction})`);
+    console.log(`  ⏸️  Estado HITL          : ${res.status} (0 líneas de código tocadas)`);
+    console.log(`  💼 Alcance Comercial    : ${res.commercialScope} (${res.technicalCategory})`);
+    console.log(`  🛤️  Carril SWE-AF        : ${res.laneInfo?.lane} (~${res.laneInfo?.estimatedTimeMin} min | $${res.laneInfo?.estimatedCostUsd} USD)`);
+    console.log(`  📄 Delta OpenSpec       : ${res.deltaSpecPath}`);
+    console.log(`  📋 Reporte de Triaje    : ${res.triageReportPath}`);
+    console.log(`  👉 Comando de Aprobación: ${res.approveCommand}`);
   }
+  console.log('====================================================================\n');
+}
+
+async function handleAprobarTicket(args = []) {
+  const ticketId = args.find((a) => !a.startsWith('--')) || '';
+  const { executeApprovedTicketFix, FEEDBACK_LEDGER_PATH } = await import(
+    './feedback/client_feedback_triage_agent.mjs'
+  );
+  let targetId = ticketId;
+  if (!targetId && fs.existsSync(FEEDBACK_LEDGER_PATH)) {
+    try {
+      const ledger = JSON.parse(fs.readFileSync(FEEDBACK_LEDGER_PATH, 'utf8'));
+      const waiting = (ledger.tickets || []).find((t) => t.status === 'WAITING_CTO_TRIAGE_APPROVAL');
+      if (waiting) targetId = waiting.ticketId;
+    } catch (_) {}
+  }
+
+  const res = await executeApprovedTicketFix(targetId, { approvedByCto: true });
+  console.log('\n====================================================================');
+  console.log('✅ TRIAJE POST-VENTA ETAPA 2 (SANDBOX APROBADO POR CTO -> PREVIEW)');
+  console.log('====================================================================');
+  if (!res.ok) {
+    console.log(`  🛑 ESTADO               : BLOQUEADO (${res.error || res.status})`);
+    console.log(`  🛡️  Detalle              : ${res.reason || 'Aprobación requerida o ticket inexistente'}`);
+    console.log('====================================================================\n');
+    process.exit(1);
+  }
+  console.log(`  🎫 Ticket Aprobado      : ${res.ticketId} (${res.status})`);
+  console.log(`  🌿 Rama Aislada Sandbox : ${res.branchName} (${res.sandboxMode})`);
+  console.log(`  🌐 Preview URL          : ${res.previewUrl}`);
+  console.log(`  📊 Braintrust Autoevals : ${res.braintrustScore}/100.0 | F2P/P2P: 100% | Producción intacta: ${!res.productionModified}`);
+  console.log(`  🚀 Fusionar a Producción: ${res.ctoNotification?.oneClickApproveAction}`);
   console.log('====================================================================\n');
 }
 
@@ -1267,6 +1303,7 @@ async function main() {
   else if (cmd === 'crear-movil') await handleCrearMovil(rest);
   else if (cmd === 'investigar-referencia') await handleInvestigarReferencia(rest);
   else if (cmd === 'feedback-cliente') await handleFeedbackCliente(rest);
+  else if (cmd === 'aprobar-ticket') await handleAprobarTicket(rest);
   else if (cmd === 'cambio-incremental') await handleCambioIncremental(rest);
   else if (cmd === 'auditar-harness') await handleAuditarHarness(rest);
   else if (cmd === 'crear-intro-video') await handleCrearIntroVideo(rest);

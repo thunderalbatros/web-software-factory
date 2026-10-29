@@ -30,6 +30,7 @@
     "cto:crear-movil": "node tools/cto_command_center.mjs crear-movil",
     "cto:investigar-referencia": "node tools/cto_command_center.mjs investigar-referencia",
     "cto:feedback-cliente": "node tools/cto_command_center.mjs feedback-cliente",
+    "cto:aprobar-ticket": "node tools/cto_command_center.mjs aprobar-ticket",
     "cto:cambio-incremental": "node tools/cto_command_center.mjs cambio-incremental",
     "cto:auditar-harness": "node tools/audit/harness_doctor_audit.mjs",
     "cto:cockpit": "node tools/cockpit/factory_twin_server.mjs",

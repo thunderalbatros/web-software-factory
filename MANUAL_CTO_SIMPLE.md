@@ -171,11 +171,17 @@ npm run cto:investigar-referencia -- "<ruta-o-url>"
 ```
 Usa el puente de ingeniería inversa ética basada en evidencia (`rea_reverse_engineering_bridge.mjs`) para analizar la estructura DOM, contratos de red (`.har`), módulos JS/TS (*Wakaru*) y artefactos `.wasm` de una aplicación de referencia y generar una especificación funcional y matemática limpia (`RECONSTRUCTED_SPEC.md`) sin copiar código propietario ni marcas registradas.
 
-### 24. Simular o Procesar Feedback Post-Venta de Cliente (`Web Widget / Slack -> Draft PR`)
-```bash
+### 24. Procesar Feedback Post-Venta de Cliente con Doble Compuerta HITL (`Slack / Widget Web -> Cloudflare Worker -> GitHub Actions`)
+```powershell
+# Etapa 1 (Modo Solo Lectura — Genera Reporte de Triaje + Delta OpenSpec y se detiene esperando al CTO):
 npm run cto:feedback-cliente -- "<mensaje-del-ticket>"
+
+# Etapa 2 (Solo tras Aprobación del CTO — Abre el Sandbox, implementa el fix, verifica 100/100 y genera Preview URL):
+npm run cto:aprobar-ticket -- "<ticket-id>"
 ```
-Procesa un ticket entrante del panel interactivo de cliente o de Slack a través del circuito seguro Zero-Trust (`Filtro Anti-Prompt-Injection + Redacción PII -> HybridAgentSandbox -> Braintrust Autoevals -> Rama feedback/<ticket-id> + Preview URL + Notificación de 1 clic al CTO`).
+Procesa cualquier ticket entrante desde **Slack** o desde el **Widget Web del Cliente** con costo de infraestructura `$0.00/mes` (Cloudflare Worker `/api/slack-webhook` y `/api/client-feedback` con verificación criptográfica `X-Slack-Signature` `v0=<hmac-sha256>` en `< 50 ms` -> `repository_dispatch` hacia GitHub Actions):
+1. **Etapa 1 (Modo 100% Solo Lectura):** Aplica la barrera Zero-Trust Anti-Prompt-Injection y Redacción de PII, clasifica el alcance comercial (`BUG_GARANTIA` sin cargo vs. `AJUSTE_MENOR` vs. `NUEVA_FEATURE_COBRABLE` para cotizar aparte), genera `projects/<slug>/deltas/ticket-<id>.delta.md` + `projects/<slug>/triage_reports/TRIAGE_REPORT_<id>.md` + tarjeta interactiva de Slack Block Kit y **se detiene en estado `WAITING_CTO_TRIAGE_APPROVAL`** sin tocar ni una línea de código.
+2. **Etapa 2 (Con Aprobación Obligatoria del CTO):** Cuando aprobás el ticket (con `npm run cto:aprobar-ticket -- "<ticket-id>"`, desde el botón de Slack o desde **"✅ Aprobar Paso HITL"** en el Cockpit), abre la rama aislada `feedback/<ticket-id>` en `HybridAgentSandbox`, aplica el cambio, verifica `100.0 / 100.0` en `ast_guard`, `security_gate`, `Braintrust Autoevals` y `F2P/P2P`, y te entrega la `Preview URL` lista para revisión.
 
 ### 25. Aplicar un Cambio Incremental con Especificación Delta y Enrutamiento Adaptativo (`npm run cto:cambio-incremental`)
 ```powershell

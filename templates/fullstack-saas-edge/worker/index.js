@@ -105,6 +105,71 @@ function timingSafeEqualHex(a, b) {
   return diff === 0;
 }
 
+const PROMPT_INJECTION_PATTERNS = [
+  /ignore\s+(?:all\s+)?(?:previous|prior)\s+instructions/i,
+  /system\s*prompt/i,
+  /<script\b[^>]*>/i,
+  /\b(?:rm\s+-rf|curl\s+http|wget\s+http|child_process|execSync)\b/i,
+  /override\s+security\s+gate/i
+];
+
+export async function verifySlackSignatureWebCrypto(
+  rawBody,
+  timestampHeader,
+  signatureHeader,
+  signingSecret,
+  nowSec = Math.floor(Date.now() / 1000)
+) {
+  if (!signingSecret || !timestampHeader || !signatureHeader || typeof rawBody !== "string") {
+    return { valid: false, reason: "MISSING_SLACK_AUTH_HEADERS_OR_SECRET" };
+  }
+  const ts = Number(timestampHeader);
+  if (!Number.isFinite(ts) || Math.abs(nowSec - ts) > 300) {
+    return { valid: false, reason: "SLACK_TIMESTAMP_EXPIRED_REPLAY_GUARD" };
+  }
+  const sigBaseString = `v0:${ts}:${rawBody}`;
+  const hex = await computeHmacSha256Hex(signingSecret, sigBaseString);
+  const expectedSignature = `v0=${hex}`;
+  if (!timingSafeEqualHex(expectedSignature, String(signatureHeader).trim())) {
+    return { valid: false, reason: "INVALID_SLACK_HMAC_SIGNATURE" };
+  }
+  return { valid: true, reason: "VERIFIED_SLACK_HMAC_SHA256" };
+}
+
+export function sanitizeAndRedactEdgeTicket(rawText) {
+  const text = String(rawText || "").trim().slice(0, 2000);
+  if (!text) return { safe: false, reason: "EMPTY_TICKET_MESSAGE", sanitizedText: "" };
+  for (const rx of PROMPT_INJECTION_PATTERNS) {
+    if (rx.test(text)) {
+      return { safe: false, reason: `PROMPT_INJECTION_BLOCKED:${rx.source}`, sanitizedText: "" };
+    }
+  }
+  const redacted = text
+    .replace(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/g, "[REDACTED_EMAIL]")
+    .replace(/\b(?:\d[ -]*?){13,19}\b/g, "[REDACTED_CARD]")
+    .replace(/[<>]/g, "");
+  return { safe: true, reason: "OK", sanitizedText: redacted };
+}
+
+export async function dispatchGitHubRepositoryEvent(env, eventType, clientPayload) {
+  const token = env && env.GITHUB_PAT_DISPATCH ? String(env.GITHUB_PAT_DISPATCH).trim() : "";
+  const repo = env && env.GITHUB_REPO ? String(env.GITHUB_REPO).trim() : "tomas/web-software-factory";
+  if (!token) {
+    return { dispatched: false, mode: "LOCAL_QUEUE_FALLBACK", eventType, clientPayload };
+  }
+  const res = await fetch(`https://api.github.com/repos/${repo}/dispatches`, {
+    method: "POST",
+    headers: {
+      Accept: "application/vnd.github+json",
+      Authorization: `Bearer ${token}`,
+      "User-Agent": "WebSoftwareFactory-Edge-Receptionist/2.0",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ event_type: eventType, client_payload: clientPayload })
+  });
+  return { dispatched: res.ok, status: res.status, eventType };
+}
+
 export async function dispatchN8nWebhook(env, eventName, data) {
   const webhookUrl = env && typeof env.N8N_WEBHOOK_URL === "string" ? env.N8N_WEBHOOK_URL.trim() : "";
   if (!webhookUrl || !webhookUrl.startsWith("https://")) {
@@ -218,7 +283,7 @@ export class SaasOnboardingWorkflow {
 }
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     try {
       const url = new URL(request.url);
       const method = request.method.toUpperCase();
@@ -244,7 +309,7 @@ export default {
               ok: true,
               project: "{{PROJECT_ID}}",
               stack: "fullstack-saas-edge",
-              capabilities: ["hono-rpc", "better-auth", "drizzle-d1", "polar-stripe-mercadopago", "partyserver-do", "cloudflare-workflows", "n8n-hmac"],
+              capabilities: ["hono-rpc", "better-auth", "drizzle-d1", "polar-stripe-mercadopago", "partyserver-do", "cloudflare-workflows", "n8n-hmac", "slack-hitl-receptionist"],
               ts: Date.now()
             }),
             { headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" } }
@@ -264,7 +329,7 @@ export default {
 
       // 3. State-Mutating Endpoints (Rate-Limited + Fetch Metadata Guard)
       if (["POST", "PUT", "DELETE"].includes(method)) {
-        if (url.pathname !== "/api/webhooks/payment") {
+        if (url.pathname !== "/api/webhooks/payment" && url.pathname !== "/api/slack-webhook") {
           const fetchMeta = validateFetchMetadata(request);
           if (!fetchMeta.allowed) {
             return withSecurityHeaders(
@@ -456,6 +521,114 @@ export default {
           return withSecurityHeaders(
             new Response(JSON.stringify({ ok: true, status: "accepted", n8n: n8nStatus.dispatched }), {
               status: 201,
+              headers: { "Content-Type": "application/json; charset=utf-8" }
+            }),
+            rateHeaders
+          );
+        }
+
+        // 3C. Serverless 24/7 Receptionist (/api/slack-webhook & /api/client-feedback)
+        if (url.pathname === "/api/slack-webhook" && method === "POST") {
+          const rawBody = await request.text();
+          const sigHeader = request.headers.get("X-Slack-Signature") || "";
+          const tsHeader = request.headers.get("X-Slack-Request-Timestamp") || "";
+          const secret = env && env.SLACK_SIGNING_SECRET ? String(env.SLACK_SIGNING_SECRET) : "";
+          const sigCheck = await verifySlackSignatureWebCrypto(rawBody, tsHeader, sigHeader, secret);
+          if (!sigCheck.valid) {
+            return withSecurityHeaders(
+              new Response(JSON.stringify({ ok: false, error: sigCheck.reason }), {
+                status: 401,
+                headers: { "Content-Type": "application/json; charset=utf-8" }
+              }),
+              rateHeaders
+            );
+          }
+          let parsed = {};
+          if (rawBody.trim().startsWith("{")) {
+            parsed = JSON.parse(rawBody);
+          } else {
+            const params = new URLSearchParams(rawBody);
+            parsed = params.has("payload") ? JSON.parse(params.get("payload")) : Object.fromEntries(params.entries());
+          }
+          if (parsed.type === "url_verification" && parsed.challenge) {
+            return withSecurityHeaders(
+              new Response(JSON.stringify({ challenge: parsed.challenge }), {
+                status: 200,
+                headers: { "Content-Type": "application/json; charset=utf-8" }
+              }),
+              rateHeaders
+            );
+          }
+          if (parsed.type === "block_actions" && Array.isArray(parsed.actions)) {
+            const action = parsed.actions[0] || {};
+            const ticketId = String(action.value || "").trim();
+            const actionId = String(action.action_id || "approve_fix");
+            const payload = { ticketId, actionId, approvedByCto: actionId === "cto_approve_ticket_fix", source: "slack_block_actions" };
+            if (ctx && typeof ctx.waitUntil === "function") {
+              ctx.waitUntil(dispatchGitHubRepositoryEvent(env, "cto_slack_ticket_approved", payload));
+            }
+            return withSecurityHeaders(
+              new Response(JSON.stringify({ ok: true, status: "cto_decision_dispatched", ticketId, actionId }), {
+                status: 200,
+                headers: { "Content-Type": "application/json; charset=utf-8" }
+              }),
+              rateHeaders
+            );
+          }
+          const rawText = parsed.text || (parsed.event && parsed.event.text) || "";
+          const sanitized = sanitizeAndRedactEdgeTicket(rawText);
+          if (!sanitized.safe) {
+            return withSecurityHeaders(
+              new Response(JSON.stringify({ ok: false, error: sanitized.reason }), {
+                status: 422,
+                headers: { "Content-Type": "application/json; charset=utf-8" }
+              }),
+              rateHeaders
+            );
+          }
+          const ticketPayload = {
+            ticketId: `tkt-${Date.now().toString(36)}`,
+            message: sanitized.sanitizedText,
+            source: "slack_webhook",
+            channel: parsed.channel_id || (parsed.event && parsed.event.channel) || "slack"
+          };
+          if (ctx && typeof ctx.waitUntil === "function") {
+            ctx.waitUntil(dispatchGitHubRepositoryEvent(env, "slack_client_ticket_triage", ticketPayload));
+          }
+          return withSecurityHeaders(
+            new Response(JSON.stringify({ ok: true, status: "ticket_queued_for_readonly_triage", ticketId: ticketPayload.ticketId }), {
+              status: 200,
+              headers: { "Content-Type": "application/json; charset=utf-8" }
+            }),
+            rateHeaders
+          );
+        }
+
+        if (url.pathname === "/api/client-feedback" && method === "POST") {
+          const body = await request.json();
+          const sanitized = sanitizeAndRedactEdgeTicket(body && (body.message || body.text));
+          if (!sanitized.safe) {
+            return withSecurityHeaders(
+              new Response(JSON.stringify({ ok: false, error: sanitized.reason }), {
+                status: 422,
+                headers: { "Content-Type": "application/json; charset=utf-8" }
+              }),
+              rateHeaders
+            );
+          }
+          const ticketPayload = {
+            ticketId: `tkt-${Date.now().toString(36)}`,
+            message: sanitized.sanitizedText,
+            source: "client_web_widget",
+            pageUrl: String((body && body.pageUrl) || "/").slice(0, 240),
+            viewport: String((body && body.viewport) || "1440x900").slice(0, 40)
+          };
+          if (ctx && typeof ctx.waitUntil === "function") {
+            ctx.waitUntil(dispatchGitHubRepositoryEvent(env, "slack_client_ticket_triage", ticketPayload));
+          }
+          return withSecurityHeaders(
+            new Response(JSON.stringify({ ok: true, status: "ticket_queued_for_readonly_triage", ticketId: ticketPayload.ticketId }), {
+              status: 200,
               headers: { "Content-Type": "application/json; charset=utf-8" }
             }),
             rateHeaders

@@ -2,7 +2,7 @@
   "schema": "vertex-prompt-cache-v3-headroom-aligned",
   "cacheKey": "2e020111653e5b3152e50f137a411da4d70e43e993fd06a45f55d4daef88d256",
   "alignedPrefixHash": "2bf519c5ca90578e",
-  "updatedAt": "2026-10-29T00:48:49.547Z",
+  "updatedAt": "2026-10-29T02:13:14.670Z",
   "ttlSeconds": 86400,
   "hotContextFiles": [
     {

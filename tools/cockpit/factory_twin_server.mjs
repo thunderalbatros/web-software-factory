@@ -17,6 +17,7 @@
  * ========================================================================================================
  */
 
+import fs from 'node:fs';
 import http from 'node:http';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -33,6 +34,10 @@ import {
   verifyClientInterviewGate,
   compileSpecFromInterview
 } from '../orchestrator/client_interview_gate.mjs';
+import {
+  executeApprovedTicketFix,
+  FEEDBACK_LEDGER_PATH
+} from '../feedback/client_feedback_triage_agent.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -1205,7 +1210,7 @@ export function createFactoryTwinServer() {
       req.on('data', (chunk) => {
         rawBody += chunk.toString();
       });
-      req.on('end', () => {
+      req.on('end', async () => {
         let body = {};
         try {
           body = JSON.parse(rawBody || '{}');
@@ -1216,9 +1221,21 @@ export function createFactoryTwinServer() {
         const current = loadCurrentFactoryState();
 
         let updatedState;
-        if (action === 'approve_hitl' || action === 'approve_interview') {
+        let approvedTicketResult = null;
+        if (action === 'approve_hitl' || action === 'approve_interview' || action === 'approve_ticket') {
           try {
             compileSpecFromInterview(current.projectSlug || 'agencia-alfa', { approve: true });
+          } catch (_) {}
+          try {
+            let pendingTicketId = body.ticketId || '';
+            if (!pendingTicketId && fs.existsSync(FEEDBACK_LEDGER_PATH)) {
+              const ledger = JSON.parse(fs.readFileSync(FEEDBACK_LEDGER_PATH, 'utf8'));
+              const waitingTicket = (ledger.tickets || []).find((t) => t.status === 'WAITING_CTO_TRIAGE_APPROVAL');
+              if (waitingTicket) pendingTicketId = waitingTicket.ticketId;
+            }
+            if (pendingTicketId) {
+              approvedTicketResult = await executeApprovedTicketFix(pendingTicketId, { approvedByCto: true });
+            }
           } catch (_) {}
           updatedState = emitFactoryTelemetryEvent({
             eventType: 'CTO_HITL_APPROVED',
@@ -1230,7 +1247,7 @@ export function createFactoryTwinServer() {
                 id: 'product-spec-architect',
                 currentStation: 'SALA_2_LABORATORIO_PLANOS_RAG',
                 status: 'passed',
-                lastAction: 'Plano aprobado por el CTO HITL desde el Cockpit Web'
+                lastAction: 'Plano / Delta Spec aprobado por el CTO HITL desde el Cockpit Web'
               },
               {
                 id: 'senior-coder',
@@ -1243,7 +1260,7 @@ export function createFactoryTwinServer() {
               id: current.kanbanCards?.[0]?.id || 'bead-hitl-card',
               columnId: 'col_3_in_construction'
             },
-            forensicWhy: 'CTO HITL aprobó el paso desde el Tablero Kanban del Cockpit.'
+            forensicWhy: 'CTO HITL aprobó el paso (Entrevista / Ticket Triage) desde el Tablero Kanban del Cockpit.'
           });
         } else if (action === 'send_feedback') {
           updatedState = emitFactoryTelemetryEvent({
@@ -1292,7 +1309,14 @@ export function createFactoryTwinServer() {
         }
 
         res.writeHead(200, { 'Content-Type': 'application/json; charset=utf-8' });
-        res.end(JSON.stringify({ ok: true, action, state: updatedState }));
+        res.end(
+          JSON.stringify({
+            ok: true,
+            action,
+            approvedTicket: approvedTicketResult ? approvedTicketResult.ticketId : null,
+            state: updatedState
+          })
+        );
       });
       return;
     }

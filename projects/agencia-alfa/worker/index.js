@@ -136,6 +136,103 @@ async function signN8nPayloadHmac(secret, rawBody) {
     .join("");
 }
 
+function timingSafeEqualStr(a, b) {
+  if (typeof a !== "string" || typeof b !== "string" || a.length !== b.length || a.length === 0) {
+    return false;
+  }
+  let diff = 0;
+  for (let i = 0; i < a.length; i++) {
+    diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  }
+  return diff === 0;
+}
+
+/**
+ * Official Slack Webhook Cryptographic Verifier (`v0=<hmac-sha256>` via WebCrypto `crypto.subtle`).
+ * Rejects any request older than 300 seconds to prevent Replay Attacks.
+ */
+export async function verifySlackSignatureWebCrypto(
+  rawBody,
+  timestampHeader,
+  signatureHeader,
+  signingSecret,
+  nowSec = Math.floor(Date.now() / 1000)
+) {
+  if (!signingSecret || !timestampHeader || !signatureHeader) {
+    return { valid: false, reason: "MISSING_SLACK_SIGNATURE_HEADERS_OR_SECRET" };
+  }
+  const ts = Number(timestampHeader);
+  if (!Number.isFinite(ts) || Math.abs(nowSec - ts) > 300) {
+    return { valid: false, reason: "SLACK_TIMESTAMP_EXPIRED_REPLAY_GUARD" };
+  }
+  const baseString = `v0:${ts}:${String(rawBody || "")}`;
+  const hmacHex = await signN8nPayloadHmac(signingSecret, baseString);
+  const expectedSig = `v0=${hmacHex}`;
+  const valid = timingSafeEqualStr(expectedSig, String(signatureHeader).trim());
+  return {
+    valid,
+    reason: valid ? "SLACK_SIGNATURE_VERIFIED" : "SLACK_SIGNATURE_MISMATCH",
+    expectedSig
+  };
+}
+
+export function sanitizeAndRedactEdgeTicket(rawText = "") {
+  const msg = String(rawText || "").trim();
+  if (!msg) return { allowed: false, reason: "EMPTY_TICKET_MESSAGE" };
+  if (
+    /ignore\s+(?:all\s+)?(?:previous|prior|above)\s+(?:instructions|prompts|rules)|disregard\s+(?:all\s+)?(?:previous|system)|reveal\s+(?:your\s+)?(?:system\s+prompt|api\s+keys|secrets)|DROP\s+TABLE|UNION\s+SELECT|<script|\b(?:CONSTRAINTS\.md|AGENTS\.md)\b.*(?:delete|overwrite|disable|bypass)/i.test(
+      msg
+    )
+  ) {
+    return { allowed: false, reason: "BLOCKED_PROMPT_INJECTION" };
+  }
+  const sanitizedMessage = msg
+    .replace(/\b(?:\d[ -]*?){13,16}\b/g, "[REDACTED_CARD_PAN]")
+    .replace(/\b\d{2}-\d{7,8}-\d{1}\b/g, "[REDACTED_TAX_ID]")
+    .replace(
+      /\b(?:sk-[a-zA-Z0-9_-]{16,}|ghp_[a-zA-Z0-9]{20,}|eyJ[a-zA-Z0-9_-]{15,}\.[a-zA-Z0-9_-]{15,})\b/g,
+      "[REDACTED_SECRET_TOKEN]"
+    )
+    .replace(/[<>]/g, "")
+    .slice(0, 1500);
+  return { allowed: true, sanitizedMessage };
+}
+
+export async function dispatchGitHubRepositoryEvent(env, eventType, clientPayload) {
+  const ghToken =
+    env && typeof env.GITHUB_DISPATCH_TOKEN === "string"
+      ? env.GITHUB_DISPATCH_TOKEN.trim()
+      : env && typeof env.GITHUB_TOKEN === "string"
+        ? env.GITHUB_TOKEN.trim()
+        : "";
+  const repo =
+    env && typeof env.GITHUB_REPOSITORY === "string" && env.GITHUB_REPOSITORY.includes("/")
+      ? env.GITHUB_REPOSITORY.trim()
+      : "thunderalbatros/web-software-factory";
+  if (!ghToken) {
+    return { dispatched: false, reason: "GITHUB_DISPATCH_TOKEN_NOT_CONFIGURED", eventType };
+  }
+  try {
+    const res = await fetch(`https://api.github.com/repos/${repo}/dispatches`, {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${ghToken}`,
+        Accept: "application/vnd.github+json",
+        "Content-Type": "application/json; charset=utf-8",
+        "User-Agent": "WebSoftwareFactory-EdgeWorker/2026.34"
+      },
+      body: JSON.stringify({
+        event_type: eventType,
+        client_payload: clientPayload
+      }),
+      signal: AbortSignal.timeout(4500)
+    });
+    return { dispatched: res.ok || res.status === 204, status: res.status, eventType };
+  } catch {
+    return { dispatched: false, reason: "GITHUB_API_NETWORK_ERROR", eventType };
+  }
+}
+
 export async function dispatchN8nWebhook(env, leadData) {
   const webhookUrl = env && typeof env.N8N_WEBHOOK_URL === "string" ? env.N8N_WEBHOOK_URL.trim() : "";
   if (!webhookUrl || !webhookUrl.startsWith("https://")) {
@@ -171,7 +268,7 @@ export async function dispatchN8nWebhook(env, leadData) {
 }
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     try {
       const url = new URL(request.url);
       const method = request.method.toUpperCase();
@@ -206,14 +303,16 @@ export default {
       }
 
       if (["POST", "PUT", "DELETE"].includes(method)) {
-        const fetchMeta = validateFetchMetadata(request);
-        if (!fetchMeta.allowed) {
-          return withSecurityHeaders(
-            new Response(JSON.stringify({ ok: false, error: fetchMeta.reason }), {
-              status: 403,
-              headers: { "Content-Type": "application/json; charset=utf-8" }
-            })
-          );
+        if (url.pathname !== "/api/slack-webhook") {
+          const fetchMeta = validateFetchMetadata(request);
+          if (!fetchMeta.allowed) {
+            return withSecurityHeaders(
+              new Response(JSON.stringify({ ok: false, error: fetchMeta.reason }), {
+                status: 403,
+                headers: { "Content-Type": "application/json; charset=utf-8" }
+              })
+            );
+          }
         }
 
         const declaredLength = Number(request.headers.get("Content-Length") || 0);
@@ -311,11 +410,47 @@ export default {
           );
         }
 
-        if (url.pathname === "/api/client-feedback" && method === "POST") {
+        if ((url.pathname === "/api/client-feedback" || url.pathname === "/api/slack-webhook") && method === "POST") {
           const rawBodyText = await request.text();
+          const isSlackRoute =
+            url.pathname === "/api/slack-webhook" || Boolean(request.headers.get("X-Slack-Signature"));
+
+          if (isSlackRoute && env && env.SLACK_SIGNING_SECRET) {
+            const sigCheck = await verifySlackSignatureWebCrypto(
+              rawBodyText,
+              request.headers.get("X-Slack-Request-Timestamp") || "",
+              request.headers.get("X-Slack-Signature") || "",
+              String(env.SLACK_SIGNING_SECRET)
+            );
+            if (!sigCheck.valid) {
+              return withSecurityHeaders(
+                new Response(JSON.stringify({ ok: false, error: sigCheck.reason }), {
+                  status: 401,
+                  headers: { "Content-Type": "application/json; charset=utf-8" }
+                }),
+                rateHeaders
+              );
+            }
+          }
+
           let body = null;
+          const contentType = (request.headers.get("Content-Type") || "").toLowerCase();
           try {
-            body = JSON.parse(rawBodyText);
+            if (contentType.includes("application/x-www-form-urlencoded")) {
+              const params = new URLSearchParams(rawBodyText);
+              if (params.has("payload")) {
+                body = JSON.parse(params.get("payload") || "{}");
+              } else {
+                body = {
+                  type: "slash_command",
+                  command: params.get("command") || "/feedback",
+                  text: params.get("text") || "",
+                  user_name: params.get("user_name") || "slack-user"
+                };
+              }
+            } else {
+              body = JSON.parse(rawBodyText);
+            }
           } catch {
             return withSecurityHeaders(
               new Response(JSON.stringify({ ok: false, error: "INVALID_JSON" }), {
@@ -325,26 +460,100 @@ export default {
               rateHeaders
             );
           }
-          const msg = typeof body?.message === "string" ? body.message.trim() : "";
-          if (!msg || /ignore\s+(?:all\s+)?(?:previous|prior)\s+instructions|DROP\s+TABLE|<script/i.test(msg)) {
+
+          // 1. Slack Initial URL Verification Challenge (<50ms)
+          if (body && body.type === "url_verification" && typeof body.challenge === "string") {
             return withSecurityHeaders(
-              new Response(JSON.stringify({ ok: false, error: "BLOCKED_BY_ZERO_TRUST_TRIAGE" }), {
-                status: 422,
+              new Response(JSON.stringify({ challenge: body.challenge }), {
+                status: 200,
                 headers: { "Content-Type": "application/json; charset=utf-8" }
               }),
               rateHeaders
             );
           }
+
+          // 2. Slack Interactive Button Actions from CTO (`block_actions`)
+          if (body && body.type === "block_actions" && Array.isArray(body.actions) && body.actions.length > 0) {
+            const actionObj = body.actions[0] || {};
+            const actionId = String(actionObj.action_id || "approve_ticket_fix");
+            const ticketId = String(actionObj.value || "tkt-pending").replace(/[^a-zA-Z0-9_-]/g, "");
+            if (actionId === "approve_ticket_fix") {
+              const dispatchPromise = dispatchGitHubRepositoryEvent(env, "cto_slack_ticket_approved", {
+                ticketId,
+                actionId,
+                approvedByCto: true,
+                approver: body.user?.username || "cto-slack"
+              });
+              if (ctx && typeof ctx.waitUntil === "function") {
+                ctx.waitUntil(dispatchPromise);
+              }
+            }
+            return withSecurityHeaders(
+              new Response(
+                JSON.stringify({
+                  ok: true,
+                  status: actionId === "approve_ticket_fix" ? "cto_approval_dispatched" : "cto_action_recorded",
+                  actionId,
+                  ticketId
+                }),
+                { status: 200, headers: { "Content-Type": "application/json; charset=utf-8" } }
+              ),
+              rateHeaders
+            );
+          }
+
+          // 3. Extract message from Slack `event_callback`, `/feedback` slash command, or Web Widget
+          const rawMsg =
+            typeof body?.message === "string"
+              ? body.message
+              : typeof body?.event?.text === "string"
+                ? body.event.text
+                : typeof body?.text === "string"
+                  ? body.text
+                  : "";
+          const edgeSanitized = sanitizeAndRedactEdgeTicket(rawMsg);
+          if (!edgeSanitized.allowed) {
+            return withSecurityHeaders(
+              new Response(
+                JSON.stringify({
+                  ok: false,
+                  error: "BLOCKED_BY_ZERO_TRUST_TRIAGE",
+                  reason: edgeSanitized.reason
+                }),
+                {
+                  status: 422,
+                  headers: { "Content-Type": "application/json; charset=utf-8" }
+                }
+              ),
+              rateHeaders
+            );
+          }
+
+          const ticketId = `tkt-${crypto.randomUUID().slice(0, 8)}`;
+          const dispatchTask = dispatchGitHubRepositoryEvent(env, "slack_client_ticket_triage", {
+            ticketId,
+            projectSlug: "agencia-alfa",
+            sourceChannel: isSlackRoute ? "slack_webhook" : "client_feedback_widget",
+            sectionSelector: String(body?.sectionSelector || "#main").slice(0, 80),
+            pageUrl: String(body?.pageUrl || "https://agencia-alfa.pages.dev").slice(0, 200),
+            viewport: String(body?.viewport || "1440x900").slice(0, 24),
+            message: edgeSanitized.sanitizedMessage
+          });
+          if (ctx && typeof ctx.waitUntil === "function") {
+            ctx.waitUntil(dispatchTask);
+          }
+
           return withSecurityHeaders(
             new Response(
               JSON.stringify({
                 ok: true,
                 status: "queued_for_sandbox_triage",
-                ticketId: `tkt-${crypto.randomUUID().slice(0, 8)}`,
+                triageStage: "WAITING_CTO_TRIAGE_APPROVAL",
+                ticketId,
                 productionModified: false
               }),
               {
-                status: 202,
+                status: isSlackRoute ? 200 : 202,
                 headers: { "Content-Type": "application/json; charset=utf-8" }
               }
             ),

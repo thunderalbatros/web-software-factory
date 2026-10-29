@@ -11,6 +11,10 @@ on:
   issues:
     types:
       - labeled
+  repository_dispatch:
+    types:
+      - slack_client_ticket_triage
+      - cto_slack_ticket_approved
   workflow_dispatch:
     inputs:
       action_mode:
@@ -314,3 +318,69 @@ jobs:
               }
             }
           '
+
+  slack-ticket-triage-stage1:
+    name: Serverless Ticket Triage Stage 1 (Read-Only Triage Report & OpenSpec Delta)
+    if: github.event_name == 'repository_dispatch' && github.event.action == 'slack_client_ticket_triage'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+
+    steps:
+      - name: 1. Checkout Repository (Zero Credential Persistence)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: 2. Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: 3. Install Dependencies
+        run: |
+          npm ci
+
+      - name: 4. Execute Read-Only Triage & Generate TRIAGE_REPORT + OpenSpec Delta
+        env:
+          TICKET_ID: ${{ github.event.client_payload.ticketId || '' }}
+          TICKET_MESSAGE: ${{ github.event.client_payload.message || '' }}
+          TICKET_SOURCE: ${{ github.event.client_payload.source || 'slack_webhook' }}
+          SLACK_CTO_WEBHOOK_URL: ${{ secrets.SLACK_CTO_WEBHOOK_URL }}
+        run: |
+          node tools/feedback/client_feedback_triage_agent.mjs --stage triage
+
+  slack-ticket-approved-stage2:
+    name: Serverless Ticket Stage 2 (CTO Approved Sandbox Implementation & Preview URL)
+    if: github.event_name == 'repository_dispatch' && github.event.action == 'cto_slack_ticket_approved'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: 1. Checkout Repository (Zero Credential Persistence)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: 2. Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: 3. Install Dependencies
+        run: |
+          npm ci
+
+      - name: 4. Execute Approved Sandbox Fix & Verify 100/100 Gates
+        env:
+          TICKET_ID: ${{ github.event.client_payload.ticketId || '' }}
+        run: |
+          node tools/feedback/client_feedback_triage_agent.mjs --stage implement

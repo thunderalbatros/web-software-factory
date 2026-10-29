@@ -1,6 +1,156 @@
 {
   "tickets": [
     {
+      "ticketId": "tkt-selftest01",
+      "projectSlug": "agencia-alfa",
+      "createdAt": "2026-10-29T02:12:51.708Z",
+      "updatedAt": "2026-10-29T02:12:52.361Z",
+      "stage": "STAGE_2_APPROVED_SANDBOX_IMPLEMENTATION",
+      "status": "READY_FOR_MERGE_PREVIEW",
+      "approvedByCto": true,
+      "clientId": "client-alfa-001",
+      "sourceChannel": "client_feedback_widget",
+      "sectionSelector": "#hero-cta",
+      "pageUrl": "https://agencia-alfa.pages.dev/",
+      "viewport": "1440x900",
+      "sanitizedMessage": "Por favor cambiar el texto del botón principal del hero a \"Agendar Auditoría Ejecutiva\" con mi tarjeta [REDACTED_CARD_PAN].",
+      "intent": "CASE_B_DRAFT_PR_AND_PREVIEW",
+      "commercialScope": "AJUSTE_MENOR",
+      "technicalCategory": "VISUAL_OR_COPY_TWEAK",
+      "billingPolicy": "Ajuste rápido de Copywriting / Token Visual OKLCH dentro de soporte post-entrega",
+      "astDiagnosis": {
+        "projectSlug": "agencia-alfa",
+        "sectionSelector": "#hero-cta",
+        "fileLocks": [
+          "projects/agencia-alfa/index.html",
+          "projects/agencia-alfa/site/js/main.js"
+        ],
+        "targetFunctions": [
+          "renderHeroSection",
+          "applyDesignTokens",
+          "initInteractiveMicroHandlers"
+        ],
+        "astNodesIndexed": 136,
+        "specVerifiedReadOnly": true,
+        "designVerifiedReadOnly": true
+      },
+      "laneInfo": {
+        "lane": "LANE_2_STANDARD_BUILD",
+        "estimatedTimeMin": 6,
+        "estimatedTokens": 4200,
+        "estimatedCostUsd": "0.012"
+      },
+      "deltaSpecPath": "projects/agencia-alfa/deltas/ticket-tkt-selftest01.delta.md",
+      "triageReportPath": "projects/agencia-alfa/triage_reports/TRIAGE_REPORT_tkt-selftest01.md",
+      "approveCommand": "npm run cto:aprobar-ticket -- \"tkt-selftest01\"",
+      "slackBlockKitCard": {
+        "text": "🔔 [Triaje HITL Etapa 1] Nuevo Ticket tkt-selftest01 (AJUSTE_MENOR) en agencia-alfa",
+        "blocks": [
+          {
+            "type": "header",
+            "text": {
+              "type": "plain_text",
+              "text": "🛡️ Reporte de Triaje Pre-Implementación — tkt-selftest01",
+              "emoji": true
+            }
+          },
+          {
+            "type": "section",
+            "fields": [
+              {
+                "type": "mrkdwn",
+                "text": "*Proyecto:*\n`agencia-alfa`"
+              },
+              {
+                "type": "mrkdwn",
+                "text": "*Origen:*\n`client_feedback_widget` (1440x900)"
+              },
+              {
+                "type": "mrkdwn",
+                "text": "*Clasificación Comercial:*\n*AJUSTE_MENOR* (VISUAL_OR_COPY_TWEAK)"
+              },
+              {
+                "type": "mrkdwn",
+                "text": "*Carril SWE-AF:*\n`LANE_2_STANDARD_BUILD` (~6 min | $0.012 USD)"
+              }
+            ]
+          },
+          {
+            "type": "section",
+            "text": {
+              "type": "mrkdwn",
+              "text": "*Mensaje Sanitizado (PII Redactado):*\n> Por favor cambiar el texto del botón principal del hero a \"Agendar Auditoría Ejecutiva\" con mi tarjeta [REDACTED_CARD_PAN].\n\n*Archivos Objetivo (fileLocks):*\n`projects/agencia-alfa/index.html`, `projects/agencia-alfa/site/js/main.js`\n*Delta OpenSpec:* `projects/agencia-alfa/deltas/ticket-tkt-selftest01.delta.md`\n*Reporte Ejecutivo:* `projects/agencia-alfa/triage_reports/TRIAGE_REPORT_tkt-selftest01.md`"
+            }
+          },
+          {
+            "type": "actions",
+            "block_id": "cto_triage_decision_tkt-selftest01",
+            "elements": [
+              {
+                "type": "button",
+                "style": "primary",
+                "text": {
+                  "type": "plain_text",
+                  "text": "✅ Aprobar e Implementar Fix",
+                  "emoji": true
+                },
+                "action_id": "cto_approve_ticket_fix",
+                "value": "tkt-selftest01"
+              },
+              {
+                "type": "button",
+                "text": {
+                  "type": "plain_text",
+                  "text": "💰 Cotizar como Feature Nueva",
+                  "emoji": true
+                },
+                "action_id": "cto_quote_new_feature",
+                "value": "tkt-selftest01"
+              },
+              {
+                "type": "button",
+                "style": "danger",
+                "text": {
+                  "type": "plain_text",
+                  "text": "❌ Rechazar",
+                  "emoji": true
+                },
+                "action_id": "cto_reject_ticket",
+                "value": "tkt-selftest01"
+              }
+            ]
+          }
+        ]
+      },
+      "slackWebhookDispatched": false,
+      "branchName": "feedback/tkt-selftest01",
+      "previewUrl": "https://preview-tkt-selftest01.agencia-alfa.pages.dev",
+      "sandboxOpened": true,
+      "productionModified": false,
+      "ctoNotification": {
+        "toEmail": "tomasbermudez777@gmail.com",
+        "slackChannel": "#factory-client-triage",
+        "subject": "[Preview Lista 100/100] Ticket tkt-selftest01 implementado en rama feedback/tkt-selftest01",
+        "approveCommand": "npm run cto:aprobar-ticket -- \"tkt-selftest01\"",
+        "oneClickApproveAction": "npm run cto:aprobar -- --branch feedback/tkt-selftest01",
+        "deltaSpecPath": "projects/agencia-alfa/deltas/ticket-tkt-selftest01.delta.md",
+        "triageReportPath": "projects/agencia-alfa/triage_reports/TRIAGE_REPORT_tkt-selftest01.md",
+        "previewUrl": "https://preview-tkt-selftest01.agencia-alfa.pages.dev",
+        "branchName": "feedback/tkt-selftest01",
+        "evalScore": 100,
+        "braintrustScore": 100
+      },
+      "approvedAt": "2026-10-29T02:12:52.361Z",
+      "snapshotId": "snap-tkt-selftest01-1793239971755",
+      "sandboxMode": "local-worktree",
+      "astGuardPassed": true,
+      "evalMatrixScore": 100,
+      "braintrustScore": 100,
+      "f2pVerified": true,
+      "p2pVerified": true,
+      "draftPrUrl": "https://github.com/tomas/web-software-factory/pull/new/feedback/tkt-selftest01"
+    },
+    {
       "ticketId": "tkt-da435d66",
       "createdAt": "2026-10-28T20:32:44.540Z",
       "clientId": "client-alfa-001",

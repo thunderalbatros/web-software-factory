@@ -1,14 +1,14 @@
 {
   "schema": "cocoindex-code-ast-graph-v1",
-  "updatedAt": "2026-10-29T00:48:51.274Z",
+  "updatedAt": "2026-10-29T02:13:00.020Z",
   "activeProject": "agencia-alfa",
-  "combinedSha256": "cd1228f90eab4f99",
+  "combinedSha256": "7598cc39f94060b4",
   "stats": {
     "totalFilesIndexed": 136,
-    "reindexedFilesCount": 24,
-    "cachedFilesCount": 112,
-    "totalSymbols": 1044,
-    "totalExports": 576,
+    "reindexedFilesCount": 7,
+    "cachedFilesCount": 129,
+    "totalSymbols": 1063,
+    "totalExports": 589,
     "estimatedTokenSavingsPct": 72.5
   },
   "files": [
@@ -1555,12 +1555,14 @@
     {
       "path": "projects/agencia-alfa/worker/index.js",
       "ext": ".js",
-      "sha256": "80a1e8ab9b7be9c0",
-      "lineCount": 380,
+      "sha256": "691c76d89eb89983",
+      "lineCount": 589,
       "exports": [
         "withSecurityHeaders",
         "validateFetchMetadata",
         "hasSequentialNumericIdInPath",
+        "sanitizeAndRedactEdgeTicket",
+        "dispatchGitHubRepositoryEvent",
         "dispatchN8nWebhook"
       ],
       "imports": [],
@@ -1594,23 +1596,23 @@
         "toString",
         "padStart",
         "join",
-        "startsWith",
-        "stringify",
-        "toISOString",
+        "charCodeAt",
+        "verifySlackSignatureWebCrypto",
+        "floor",
+        "isFinite",
+        "abs",
         "signN8nPayloadHmac",
+        "timingSafeEqualStr",
         "fetch",
+        "stringify",
         "timeout",
+        "startsWith",
+        "toISOString",
         "URL",
         "hasSequentialNumericIdInPath",
         "withSecurityHeaders",
         "validateFetchMetadata",
-        "checkRateLimit",
-        "text",
-        "parse",
-        "validateLeadSchema",
-        "randomUUID",
-        "prepare",
-        "leads"
+        "checkRateLimit"
       ],
       "symbols": [
         {
@@ -1662,16 +1664,40 @@
           "endLine": 137
         },
         {
+          "name": "timingSafeEqualStr",
+          "kind": "function",
+          "exported": false,
+          "signature": "function timingSafeEqualStr(a, b)",
+          "startLine": 139,
+          "endLine": 148
+        },
+        {
+          "name": "sanitizeAndRedactEdgeTicket",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function sanitizeAndRedactEdgeTicket(rawText = \"\")",
+          "startLine": 179,
+          "endLine": 199
+        },
+        {
+          "name": "dispatchGitHubRepositoryEvent",
+          "kind": "function",
+          "exported": true,
+          "signature": "export async function dispatchGitHubRepositoryEvent(env, eventType, clientPayload)",
+          "startLine": 201,
+          "endLine": 234
+        },
+        {
           "name": "dispatchN8nWebhook",
           "kind": "function",
           "exported": true,
           "signature": "export async function dispatchN8nWebhook(env, leadData)",
-          "startLine": 139,
-          "endLine": 171
+          "startLine": 236,
+          "endLine": 268
         }
       ],
-      "mtimeMs": 1793219282570.4507,
-      "size": 14079
+      "mtimeMs": 1793239286193.177,
+      "size": 22448
     },
     {
       "path": "templates/astro-edge/astro.config.mjs",
@@ -2723,12 +2749,14 @@
     {
       "path": "templates/astro-edge/worker/index.js",
       "ext": ".js",
-      "sha256": "a0b9c178508acdc9",
-      "lineCount": 339,
+      "sha256": "017c50dc52f351aa",
+      "lineCount": 582,
       "exports": [
         "withSecurityHeaders",
         "validateFetchMetadata",
         "hasSequentialNumericIdInPath",
+        "sanitizeAndRedactEdgeTicket",
+        "dispatchGitHubRepositoryEvent",
         "dispatchN8nWebhook"
       ],
       "imports": [],
@@ -2762,23 +2790,23 @@
         "toString",
         "padStart",
         "join",
-        "startsWith",
-        "stringify",
-        "toISOString",
+        "charCodeAt",
+        "verifySlackSignatureWebCrypto",
+        "floor",
+        "isFinite",
+        "abs",
         "signN8nPayloadHmac",
+        "timingSafeEqualStr",
         "fetch",
+        "stringify",
         "timeout",
+        "startsWith",
+        "toISOString",
         "URL",
         "hasSequentialNumericIdInPath",
         "withSecurityHeaders",
         "validateFetchMetadata",
-        "checkRateLimit",
-        "text",
-        "parse",
-        "validateLeadSchema",
-        "randomUUID",
-        "prepare",
-        "leads"
+        "checkRateLimit"
       ],
       "symbols": [
         {
@@ -2830,16 +2858,40 @@
           "endLine": 137
         },
         {
+          "name": "timingSafeEqualStr",
+          "kind": "function",
+          "exported": false,
+          "signature": "function timingSafeEqualStr(a, b)",
+          "startLine": 139,
+          "endLine": 148
+        },
+        {
+          "name": "sanitizeAndRedactEdgeTicket",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function sanitizeAndRedactEdgeTicket(rawText = \"\")",
+          "startLine": 175,
+          "endLine": 195
+        },
+        {
+          "name": "dispatchGitHubRepositoryEvent",
+          "kind": "function",
+          "exported": true,
+          "signature": "export async function dispatchGitHubRepositoryEvent(env, eventType, clientPayload)",
+          "startLine": 197,
+          "endLine": 230
+        },
+        {
           "name": "dispatchN8nWebhook",
           "kind": "function",
           "exported": true,
           "signature": "export async function dispatchN8nWebhook(env, leadData)",
-          "startLine": 139,
-          "endLine": 171
+          "startLine": 232,
+          "endLine": 264
         }
       ],
-      "mtimeMs": 1793157118417.1528,
-      "size": 12533
+      "mtimeMs": 1793239382756.896,
+      "size": 22031
     },
     {
       "path": "templates/components/client-feedback-widget.js",
@@ -3758,12 +3810,14 @@
     {
       "path": "templates/fullstack-saas-edge/worker/index.js",
       "ext": ".js",
-      "sha256": "a071f541bc9b033d",
-      "lineCount": 482,
+      "sha256": "4e67938f1f1cd5f5",
+      "lineCount": 655,
       "exports": [
         "withSecurityHeaders",
         "validateFetchMetadata",
         "hasSequentialNumericIdInPath",
+        "sanitizeAndRedactEdgeTicket",
+        "dispatchGitHubRepositoryEvent",
         "dispatchN8nWebhook",
         "SaasRealtimeRoom",
         "SaasOnboardingWorkflow"
@@ -3796,14 +3850,20 @@
         "padStart",
         "join",
         "charCodeAt",
-        "trim",
-        "startsWith",
-        "stringify",
-        "toISOString",
+        "verifySlackSignatureWebCrypto",
+        "floor",
+        "isFinite",
+        "abs",
         "computeHmacSha256Hex",
-        "fetch",
-        "timeout",
+        "timingSafeEqualHex",
+        "trim",
         "slice",
+        "replace",
+        "fetch",
+        "stringify",
+        "startsWith",
+        "toISOString",
+        "timeout",
         "match",
         "prepare",
         "bind",
@@ -3811,13 +3871,7 @@
         "constructor",
         "WebSocketPair",
         "values",
-        "acceptWebSocket",
-        "webSocketMessage",
-        "getWebSockets",
-        "send",
-        "run",
-        "async",
-        "dispatchN8nWebhook"
+        "acceptWebSocket"
       ],
       "symbols": [
         {
@@ -3869,40 +3923,56 @@
           "endLine": 106
         },
         {
+          "name": "sanitizeAndRedactEdgeTicket",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function sanitizeAndRedactEdgeTicket(rawText)",
+          "startLine": 139,
+          "endLine": 152
+        },
+        {
+          "name": "dispatchGitHubRepositoryEvent",
+          "kind": "function",
+          "exported": true,
+          "signature": "export async function dispatchGitHubRepositoryEvent(env, eventType, clientPayload)",
+          "startLine": 154,
+          "endLine": 171
+        },
+        {
           "name": "dispatchN8nWebhook",
           "kind": "function",
           "exported": true,
           "signature": "export async function dispatchN8nWebhook(env, eventName, data)",
-          "startLine": 108,
-          "endLine": 135
+          "startLine": 173,
+          "endLine": 200
         },
         {
           "name": "verifyAuthSession",
           "kind": "function",
           "exported": false,
           "signature": "async function verifyAuthSession(request, env)",
-          "startLine": 140,
-          "endLine": 169
+          "startLine": 205,
+          "endLine": 234
         },
         {
           "name": "SaasRealtimeRoom",
           "kind": "class",
           "exported": true,
           "signature": "export class SaasRealtimeRoom",
-          "startLine": 175,
-          "endLine": 202
+          "startLine": 240,
+          "endLine": 267
         },
         {
           "name": "SaasOnboardingWorkflow",
           "kind": "class",
           "exported": true,
           "signature": "export class SaasOnboardingWorkflow",
-          "startLine": 207,
-          "endLine": 218
+          "startLine": 272,
+          "endLine": 283
         }
       ],
-      "mtimeMs": 1793157178403.0144,
-      "size": 19160
+      "mtimeMs": 1793239525537.753,
+      "size": 27107
     },
     {
       "path": "templates/vanilla-edge/site/css/design-tokens.css",
@@ -4726,12 +4796,14 @@
     {
       "path": "templates/vanilla-edge/worker/index.js",
       "ext": ".js",
-      "sha256": "254880095fb50b90",
-      "lineCount": 380,
+      "sha256": "db0a7ad70d2446b2",
+      "lineCount": 582,
       "exports": [
         "withSecurityHeaders",
         "validateFetchMetadata",
         "hasSequentialNumericIdInPath",
+        "sanitizeAndRedactEdgeTicket",
+        "dispatchGitHubRepositoryEvent",
         "dispatchN8nWebhook"
       ],
       "imports": [],
@@ -4765,23 +4837,23 @@
         "toString",
         "padStart",
         "join",
-        "startsWith",
-        "stringify",
-        "toISOString",
+        "charCodeAt",
+        "verifySlackSignatureWebCrypto",
+        "floor",
+        "isFinite",
+        "abs",
         "signN8nPayloadHmac",
+        "timingSafeEqualStr",
         "fetch",
+        "stringify",
         "timeout",
+        "startsWith",
+        "toISOString",
         "URL",
         "hasSequentialNumericIdInPath",
         "withSecurityHeaders",
         "validateFetchMetadata",
-        "checkRateLimit",
-        "text",
-        "parse",
-        "validateLeadSchema",
-        "randomUUID",
-        "prepare",
-        "leads"
+        "checkRateLimit"
       ],
       "symbols": [
         {
@@ -4833,16 +4905,40 @@
           "endLine": 137
         },
         {
+          "name": "timingSafeEqualStr",
+          "kind": "function",
+          "exported": false,
+          "signature": "function timingSafeEqualStr(a, b)",
+          "startLine": 139,
+          "endLine": 148
+        },
+        {
+          "name": "sanitizeAndRedactEdgeTicket",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function sanitizeAndRedactEdgeTicket(rawText = \"\")",
+          "startLine": 175,
+          "endLine": 195
+        },
+        {
+          "name": "dispatchGitHubRepositoryEvent",
+          "kind": "function",
+          "exported": true,
+          "signature": "export async function dispatchGitHubRepositoryEvent(env, eventType, clientPayload)",
+          "startLine": 197,
+          "endLine": 230
+        },
+        {
           "name": "dispatchN8nWebhook",
           "kind": "function",
           "exported": true,
           "signature": "export async function dispatchN8nWebhook(env, leadData)",
-          "startLine": 139,
-          "endLine": 171
+          "startLine": 232,
+          "endLine": 264
         }
       ],
-      "mtimeMs": 1793219284754.108,
-      "size": 14087
+      "mtimeMs": 1793239336301.9866,
+      "size": 22028
     },
     {
       "path": "tools/ast_guard.mjs",
@@ -4975,6 +5071,7 @@
         "tools/audit/harness_doctor_audit.mjs",
         "tools/audit/security_gate.mjs",
         "tools/cto_command_center.mjs",
+        "tools/feedback/client_feedback_triage_agent.mjs",
         "tools/intelligence/agent_benchmark_harness.mjs"
       ],
       "calls": [
@@ -6589,8 +6686,8 @@
     {
       "path": "tools/cockpit/factory_twin_server.mjs",
       "ext": ".mjs",
-      "sha256": "ae780afbdfcac32e",
-      "lineCount": 1436,
+      "sha256": "bea59cc1bb47321c",
+      "lineCount": 1460,
       "exports": [
         "DEFAULT_COCKPIT_PORT",
         "renderCockpitHtml",
@@ -6598,6 +6695,7 @@
         "runCockpitSelfTest"
       ],
       "imports": [
+        "node:fs",
         "node:http",
         "node:path",
         "node:url"
@@ -6656,68 +6754,68 @@
           "kind": "constant",
           "exported": true,
           "signature": "export const DEFAULT_COCKPIT_PORT",
-          "startLine": 39,
-          "endLine": 39
+          "startLine": 44,
+          "endLine": 44
         },
         {
           "name": "renderCockpitHtml",
           "kind": "function",
           "exported": true,
           "signature": "export function renderCockpitHtml()",
-          "startLine": 44,
-          "endLine": 58
+          "startLine": 49,
+          "endLine": 63
         },
         {
           "name": "computeStationRect",
           "kind": "function",
           "exported": false,
           "signature": "function computeStationRect(station, canvasW, canvasH)",
-          "startLine": 764,
-          "endLine": 774
+          "startLine": 769,
+          "endLine": 779
         },
         {
           "name": "syncAgentTargets",
           "kind": "function",
           "exported": false,
           "signature": "function syncAgentTargets(state)",
-          "startLine": 776,
-          "endLine": 809
+          "startLine": 781,
+          "endLine": 814
         },
         {
           "name": "updateDomFromState",
           "kind": "function",
           "exported": false,
           "signature": "function updateDomFromState(state)",
-          "startLine": 811,
-          "endLine": 916
+          "startLine": 816,
+          "endLine": 921
         },
         {
           "name": "renderFloor60Fps",
           "kind": "function",
           "exported": false,
           "signature": "function renderFloor60Fps()",
-          "startLine": 942,
-          "endLine": 1096
+          "startLine": 947,
+          "endLine": 1101
         },
         {
           "name": "createFactoryTwinServer",
           "kind": "function",
           "exported": true,
           "signature": "export function createFactoryTwinServer()",
-          "startLine": 1123,
-          "endLine": 1315
+          "startLine": 1128,
+          "endLine": 1339
         },
         {
           "name": "runCockpitSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export async function runCockpitSelfTest()",
-          "startLine": 1326,
-          "endLine": 1402
+          "startLine": 1350,
+          "endLine": 1426
         }
       ],
-      "mtimeMs": 1793234678401.1965,
-      "size": 51193
+      "mtimeMs": 1793239902293.8752,
+      "size": 52233
     },
     {
       "path": "tools/cockpit/live_telemetry_bus.mjs",
@@ -6750,6 +6848,7 @@
         "node:url"
       ],
       "importedBy": [
+        "tools/feedback/client_feedback_triage_agent.mjs",
         "tools/intelligence/agent_squad.mjs",
         "tools/intelligence/eval_matrix.mjs",
         "tools/orchestrator/adaptive_depth_router.mjs",
@@ -6981,8 +7080,8 @@
     {
       "path": "tools/cto_command_center.mjs",
       "ext": ".mjs",
-      "sha256": "545bee510c4e9e26",
-      "lineCount": 1340,
+      "sha256": "8a9035b0a8785121",
+      "lineCount": 1377,
       "exports": [
         "evaluateCybersecurityTrafficLight"
       ],
@@ -7316,51 +7415,59 @@
           "exported": false,
           "signature": "async function handleFeedbackCliente(args = [])",
           "startLine": 1042,
-          "endLine": 1070
+          "endLine": 1074
+        },
+        {
+          "name": "handleAprobarTicket",
+          "kind": "function",
+          "exported": false,
+          "signature": "async function handleAprobarTicket(args = [])",
+          "startLine": 1076,
+          "endLine": 1106
         },
         {
           "name": "handleCambioIncremental",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCambioIncremental(args = [])",
-          "startLine": 1072,
-          "endLine": 1138
+          "startLine": 1108,
+          "endLine": 1174
         },
         {
           "name": "handleAuditarHarness",
           "kind": "function",
           "exported": false,
           "signature": "async function handleAuditarHarness(args = [])",
-          "startLine": 1140,
-          "endLine": 1148
+          "startLine": 1176,
+          "endLine": 1184
         },
         {
           "name": "handleCrearIntroVideo",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCrearIntroVideo(args = [])",
-          "startLine": 1150,
-          "endLine": 1177
+          "startLine": 1186,
+          "endLine": 1213
         },
         {
           "name": "handleCrearAudio",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCrearAudio(args = [])",
-          "startLine": 1179,
-          "endLine": 1238
+          "startLine": 1215,
+          "endLine": 1274
         },
         {
           "name": "main",
           "kind": "function",
           "exported": false,
           "signature": "async function main()",
-          "startLine": 1240,
-          "endLine": 1334
+          "startLine": 1276,
+          "endLine": 1371
         }
       ],
-      "mtimeMs": 1793234610229.5515,
-      "size": 73307
+      "mtimeMs": 1793239837111.392,
+      "size": 75384
     },
     {
       "path": "tools/db/dual_database_forge.mjs",
@@ -8389,11 +8496,12 @@
     {
       "path": "tools/feedback/client_feedback_triage_agent.mjs",
       "ext": ".mjs",
-      "sha256": "00bf8037d6bf02ea",
-      "lineCount": 368,
+      "sha256": "a8b0501128728ef1",
+      "lineCount": 987,
       "exports": [
         "FACTORY_ROOT",
         "FEEDBACK_LEDGER_PATH",
+        "AST_GRAPH_PATH",
         "CTO_OWNER_EMAIL",
         "MAX_TICKETS_PER_HOUR",
         "redactTicketPii",
@@ -8401,6 +8509,10 @@
         "resetClientRateLimitBuckets",
         "sanitizeAndValidateClientTicket",
         "classifyClientTicketIntent",
+        "classifyCommercialAndTechnicalScope",
+        "diagnoseAstRootCauseReadOnly",
+        "analyzeTicketAndProposeSpec",
+        "executeApprovedTicketFix",
         "triageClientFeedbackTicket",
         "runClientFeedbackTriageSelfTest"
       ],
@@ -8410,7 +8522,10 @@
         "node:crypto",
         "node:url",
         "../sandbox.mjs",
-        "../orchestrator/humanlayer_rpi_gate.mjs"
+        "../orchestrator/humanlayer_rpi_gate.mjs",
+        "../orchestrator/adaptive_depth_router.mjs",
+        "../audit/ast_guard.mjs",
+        "../cockpit/live_telemetry_bus.mjs"
       ],
       "importedBy": [
         "tools/cto_command_center.mjs",
@@ -8419,13 +8534,29 @@
       "calls": [
         "fileURLToPath",
         "dirname",
+        "verifySlackSignatureWebCrypto",
+        "floor",
+        "now",
+        "isFinite",
+        "abs",
+        "TextEncoder",
+        "importKey",
+        "encode",
+        "sign",
+        "from",
+        "Uint8Array",
+        "map",
+        "toString",
+        "padStart",
+        "join",
+        "trim",
+        "timingSafeEqual",
         "replace",
         "get",
         "filter",
         "set",
         "push",
         "clear",
-        "trim",
         "slice",
         "checkClientTicketRateLimit",
         "test",
@@ -8433,35 +8564,19 @@
         "redactTicketPii",
         "isArray",
         "toLowerCase",
-        "sanitizeAndValidateClientTicket",
-        "randomUUID",
-        "classifyClientTicketIntent",
-        "consulta",
-        "HybridAgentSandbox",
-        "init",
-        "createSnapshot",
-        "run",
-        "stringify",
-        "writeFileSync",
-        "log",
-        "destroy",
-        "runBraintrustAutoevals",
-        "toISOString",
-        "mkdirSync",
         "existsSync",
         "parse",
         "readFileSync",
-        "unshift",
-        "AGENT",
-        "resetClientRateLimitBuckets",
-        "triageClientFeedbackTicket",
-        "startsWith",
-        "includes",
-        "Branch",
-        "Receptionist",
-        "Routing",
-        "Limiter",
-        "PASSED"
+        "keys",
+        "buildSlackBlockKitTriageCard",
+        "Sanitizado",
+        "Objetivo",
+        "mkdirSync",
+        "writeFileSync",
+        "stringify",
+        "sanitizeAndValidateClientTicket",
+        "getActiveProjectSnapshot",
+        "randomUUID"
       ],
       "symbols": [
         {
@@ -8469,92 +8584,148 @@
           "kind": "constant",
           "exported": true,
           "signature": "export const FACTORY_ROOT",
-          "startLine": 29,
-          "endLine": 29
+          "startLine": 42,
+          "endLine": 42
         },
         {
           "name": "FEEDBACK_LEDGER_PATH",
           "kind": "constant",
           "exported": true,
           "signature": "export const FEEDBACK_LEDGER_PATH",
-          "startLine": 30,
-          "endLine": 30
+          "startLine": 43,
+          "endLine": 43
+        },
+        {
+          "name": "AST_GRAPH_PATH",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const AST_GRAPH_PATH",
+          "startLine": 44,
+          "endLine": 44
         },
         {
           "name": "CTO_OWNER_EMAIL",
           "kind": "constant",
           "exported": true,
           "signature": "export const CTO_OWNER_EMAIL",
-          "startLine": 31,
-          "endLine": 31
+          "startLine": 45,
+          "endLine": 45
         },
         {
           "name": "MAX_TICKETS_PER_HOUR",
           "kind": "constant",
           "exported": true,
           "signature": "export const MAX_TICKETS_PER_HOUR",
-          "startLine": 32,
-          "endLine": 32
+          "startLine": 46,
+          "endLine": 46
         },
         {
           "name": "redactTicketPii",
           "kind": "function",
           "exported": true,
           "signature": "export function redactTicketPii(rawText = '')",
-          "startLine": 49,
-          "endLine": 54
+          "startLine": 105,
+          "endLine": 113
         },
         {
           "name": "checkClientTicketRateLimit",
           "kind": "function",
           "exported": true,
           "signature": "export function checkClientTicketRateLimit(clientId = 'anonymous-client', nowMs = Date.now()",
-          "startLine": 59,
-          "endLine": 79
+          "startLine": 118,
+          "endLine": 138
         },
         {
           "name": "resetClientRateLimitBuckets",
           "kind": "function",
           "exported": true,
           "signature": "export function resetClientRateLimitBuckets()",
-          "startLine": 81,
-          "endLine": 83
+          "startLine": 140,
+          "endLine": 142
         },
         {
           "name": "sanitizeAndValidateClientTicket",
           "kind": "function",
           "exported": true,
           "signature": "export function sanitizeAndValidateClientTicket(ticketInput = {})",
-          "startLine": 88,
-          "endLine": 88
+          "startLine": 147,
+          "endLine": 147
         },
         {
           "name": "classifyClientTicketIntent",
           "kind": "function",
           "exported": true,
           "signature": "export function classifyClientTicketIntent(sanitizedMessage = '', consoleErrors = [])",
-          "startLine": 145,
-          "endLine": 156
+          "startLine": 204,
+          "endLine": 215
+        },
+        {
+          "name": "classifyCommercialAndTechnicalScope",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function classifyCommercialAndTechnicalScope(sanitizedMessage = '', consoleErrors = [])",
+          "startLine": 223,
+          "endLine": 251
+        },
+        {
+          "name": "diagnoseAstRootCauseReadOnly",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function diagnoseAstRootCauseReadOnly(projectSlug = 'agencia-alfa', sectionSelector = '#hero', message = '')",
+          "startLine": 257,
+          "endLine": 293
+        },
+        {
+          "name": "readFeedbackLedger",
+          "kind": "function",
+          "exported": false,
+          "signature": "function readFeedbackLedger()",
+          "startLine": 368,
+          "endLine": 376
+        },
+        {
+          "name": "writeFeedbackLedger",
+          "kind": "function",
+          "exported": false,
+          "signature": "function writeFeedbackLedger(ledger)",
+          "startLine": 378,
+          "endLine": 382
+        },
+        {
+          "name": "analyzeTicketAndProposeSpec",
+          "kind": "function",
+          "exported": true,
+          "signature": "export async function analyzeTicketAndProposeSpec(ticketInput = {}, options = {})",
+          "startLine": 390,
+          "endLine": 390
+        },
+        {
+          "name": "executeApprovedTicketFix",
+          "kind": "function",
+          "exported": true,
+          "signature": "export async function executeApprovedTicketFix(ticketId, options = {})",
+          "startLine": 637,
+          "endLine": 637
         },
         {
           "name": "triageClientFeedbackTicket",
           "kind": "function",
           "exported": true,
           "signature": "export async function triageClientFeedbackTicket(ticketInput = {}, options = {})",
-          "startLine": 161,
-          "endLine": 161
+          "startLine": 795,
+          "endLine": 795
         },
         {
           "name": "runClientFeedbackTriageSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export async function runClientFeedbackTriageSelfTest()",
-          "startLine": 277,
-          "endLine": 348
+          "startLine": 809,
+          "endLine": 942
         }
       ],
-      "mtimeMs": 1793220754225.9214,
-      "size": 14871
+      "mtimeMs": 1793239688353.1765,
+      "size": 41326
     },
     {
       "path": "tools/guardrails/check-console-log.js",
@@ -14691,7 +14862,8 @@
         "../lib/project_loader.mjs"
       ],
       "importedBy": [
-        "tools/cto_command_center.mjs"
+        "tools/cto_command_center.mjs",
+        "tools/feedback/client_feedback_triage_agent.mjs"
       ],
       "calls": [
         "fileURLToPath",
@@ -19088,11 +19260,7 @@
           "endLine": 121
         }
       ],
-      "calledByFiles": [
-        "projects/agencia-alfa/worker/index.js",
-        "templates/astro-edge/worker/index.js",
-        "templates/vanilla-edge/worker/index.js"
-      ]
+      "calledByFiles": []
     },
     "signN8nPayloadHmac": {
       "definitions": [
@@ -19124,40 +19292,134 @@
         "templates/vanilla-edge/worker/index.js"
       ]
     },
+    "timingSafeEqualStr": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/worker/index.js",
+          "kind": "function",
+          "signature": "function timingSafeEqualStr(a, b)",
+          "startLine": 139,
+          "endLine": 148
+        },
+        {
+          "file": "templates/astro-edge/worker/index.js",
+          "kind": "function",
+          "signature": "function timingSafeEqualStr(a, b)",
+          "startLine": 139,
+          "endLine": 148
+        },
+        {
+          "file": "templates/vanilla-edge/worker/index.js",
+          "kind": "function",
+          "signature": "function timingSafeEqualStr(a, b)",
+          "startLine": 139,
+          "endLine": 148
+        }
+      ],
+      "calledByFiles": [
+        "projects/agencia-alfa/worker/index.js",
+        "templates/astro-edge/worker/index.js",
+        "templates/vanilla-edge/worker/index.js"
+      ]
+    },
+    "sanitizeAndRedactEdgeTicket": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/worker/index.js",
+          "kind": "function",
+          "signature": "export function sanitizeAndRedactEdgeTicket(rawText = \"\")",
+          "startLine": 179,
+          "endLine": 199
+        },
+        {
+          "file": "templates/astro-edge/worker/index.js",
+          "kind": "function",
+          "signature": "export function sanitizeAndRedactEdgeTicket(rawText = \"\")",
+          "startLine": 175,
+          "endLine": 195
+        },
+        {
+          "file": "templates/fullstack-saas-edge/worker/index.js",
+          "kind": "function",
+          "signature": "export function sanitizeAndRedactEdgeTicket(rawText)",
+          "startLine": 139,
+          "endLine": 152
+        },
+        {
+          "file": "templates/vanilla-edge/worker/index.js",
+          "kind": "function",
+          "signature": "export function sanitizeAndRedactEdgeTicket(rawText = \"\")",
+          "startLine": 175,
+          "endLine": 195
+        }
+      ],
+      "calledByFiles": []
+    },
+    "dispatchGitHubRepositoryEvent": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/worker/index.js",
+          "kind": "function",
+          "signature": "export async function dispatchGitHubRepositoryEvent(env, eventType, clientPayload)",
+          "startLine": 201,
+          "endLine": 234
+        },
+        {
+          "file": "templates/astro-edge/worker/index.js",
+          "kind": "function",
+          "signature": "export async function dispatchGitHubRepositoryEvent(env, eventType, clientPayload)",
+          "startLine": 197,
+          "endLine": 230
+        },
+        {
+          "file": "templates/fullstack-saas-edge/worker/index.js",
+          "kind": "function",
+          "signature": "export async function dispatchGitHubRepositoryEvent(env, eventType, clientPayload)",
+          "startLine": 154,
+          "endLine": 171
+        },
+        {
+          "file": "templates/vanilla-edge/worker/index.js",
+          "kind": "function",
+          "signature": "export async function dispatchGitHubRepositoryEvent(env, eventType, clientPayload)",
+          "startLine": 197,
+          "endLine": 230
+        }
+      ],
+      "calledByFiles": []
+    },
     "dispatchN8nWebhook": {
       "definitions": [
         {
           "file": "projects/agencia-alfa/worker/index.js",
           "kind": "function",
           "signature": "export async function dispatchN8nWebhook(env, leadData)",
-          "startLine": 139,
-          "endLine": 171
+          "startLine": 236,
+          "endLine": 268
         },
         {
           "file": "templates/astro-edge/worker/index.js",
           "kind": "function",
           "signature": "export async function dispatchN8nWebhook(env, leadData)",
-          "startLine": 139,
-          "endLine": 171
+          "startLine": 232,
+          "endLine": 264
         },
         {
           "file": "templates/fullstack-saas-edge/worker/index.js",
           "kind": "function",
           "signature": "export async function dispatchN8nWebhook(env, eventName, data)",
-          "startLine": 108,
-          "endLine": 135
+          "startLine": 173,
+          "endLine": 200
         },
         {
           "file": "templates/vanilla-edge/worker/index.js",
           "kind": "function",
           "signature": "export async function dispatchN8nWebhook(env, leadData)",
-          "startLine": 139,
-          "endLine": 171
+          "startLine": 232,
+          "endLine": 264
         }
       ],
-      "calledByFiles": [
-        "templates/fullstack-saas-edge/worker/index.js"
-      ]
+      "calledByFiles": []
     },
     "initThumbHashAndQuicklink": {
       "definitions": [
@@ -19370,7 +19632,9 @@
           "endLine": 106
         }
       ],
-      "calledByFiles": []
+      "calledByFiles": [
+        "templates/fullstack-saas-edge/worker/index.js"
+      ]
     },
     "verifyAuthSession": {
       "definitions": [
@@ -19378,8 +19642,8 @@
           "file": "templates/fullstack-saas-edge/worker/index.js",
           "kind": "function",
           "signature": "async function verifyAuthSession(request, env)",
-          "startLine": 140,
-          "endLine": 169
+          "startLine": 205,
+          "endLine": 234
         }
       ],
       "calledByFiles": []
@@ -19390,8 +19654,8 @@
           "file": "templates/fullstack-saas-edge/worker/index.js",
           "kind": "class",
           "signature": "export class SaasRealtimeRoom",
-          "startLine": 175,
-          "endLine": 202
+          "startLine": 240,
+          "endLine": 267
         }
       ],
       "calledByFiles": []
@@ -19402,8 +19666,8 @@
           "file": "templates/fullstack-saas-edge/worker/index.js",
           "kind": "class",
           "signature": "export class SaasOnboardingWorkflow",
-          "startLine": 207,
-          "endLine": 218
+          "startLine": 272,
+          "endLine": 283
         }
       ],
       "calledByFiles": []
@@ -19683,8 +19947,8 @@
           "file": "tools/feedback/client_feedback_triage_agent.mjs",
           "kind": "constant",
           "signature": "export const FACTORY_ROOT",
-          "startLine": 29,
-          "endLine": 29
+          "startLine": 42,
+          "endLine": 42
         },
         {
           "file": "tools/intelligence/rea_reverse_engineering_bridge.mjs",
@@ -20402,8 +20666,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "constant",
           "signature": "export const DEFAULT_COCKPIT_PORT",
-          "startLine": 39,
-          "endLine": 39
+          "startLine": 44,
+          "endLine": 44
         }
       ],
       "calledByFiles": []
@@ -20414,8 +20678,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "export function renderCockpitHtml()",
-          "startLine": 44,
-          "endLine": 58
+          "startLine": 49,
+          "endLine": 63
         }
       ],
       "calledByFiles": []
@@ -20426,8 +20690,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "function computeStationRect(station, canvasW, canvasH)",
-          "startLine": 764,
-          "endLine": 774
+          "startLine": 769,
+          "endLine": 779
         }
       ],
       "calledByFiles": [
@@ -20440,8 +20704,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "function syncAgentTargets(state)",
-          "startLine": 776,
-          "endLine": 809
+          "startLine": 781,
+          "endLine": 814
         }
       ],
       "calledByFiles": []
@@ -20452,8 +20716,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "function updateDomFromState(state)",
-          "startLine": 811,
-          "endLine": 916
+          "startLine": 816,
+          "endLine": 921
         }
       ],
       "calledByFiles": []
@@ -20464,8 +20728,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "function renderFloor60Fps()",
-          "startLine": 942,
-          "endLine": 1096
+          "startLine": 947,
+          "endLine": 1101
         }
       ],
       "calledByFiles": []
@@ -20476,8 +20740,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "export function createFactoryTwinServer()",
-          "startLine": 1123,
-          "endLine": 1315
+          "startLine": 1128,
+          "endLine": 1339
         }
       ],
       "calledByFiles": []
@@ -20488,8 +20752,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "export async function runCockpitSelfTest()",
-          "startLine": 1326,
-          "endLine": 1402
+          "startLine": 1350,
+          "endLine": 1426
         }
       ],
       "calledByFiles": []
@@ -20686,7 +20950,8 @@
         }
       ],
       "calledByFiles": [
-        "tools/cockpit/live_telemetry_bus.mjs"
+        "tools/cockpit/live_telemetry_bus.mjs",
+        "tools/feedback/client_feedback_triage_agent.mjs"
       ]
     },
     "buildDefaultFactoryState": {
@@ -21104,7 +21369,19 @@
           "kind": "function",
           "signature": "async function handleFeedbackCliente(args = [])",
           "startLine": 1042,
-          "endLine": 1070
+          "endLine": 1074
+        }
+      ],
+      "calledByFiles": []
+    },
+    "handleAprobarTicket": {
+      "definitions": [
+        {
+          "file": "tools/cto_command_center.mjs",
+          "kind": "function",
+          "signature": "async function handleAprobarTicket(args = [])",
+          "startLine": 1076,
+          "endLine": 1106
         }
       ],
       "calledByFiles": []
@@ -21115,8 +21392,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCambioIncremental(args = [])",
-          "startLine": 1072,
-          "endLine": 1138
+          "startLine": 1108,
+          "endLine": 1174
         }
       ],
       "calledByFiles": []
@@ -21127,8 +21404,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleAuditarHarness(args = [])",
-          "startLine": 1140,
-          "endLine": 1148
+          "startLine": 1176,
+          "endLine": 1184
         }
       ],
       "calledByFiles": []
@@ -21139,8 +21416,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCrearIntroVideo(args = [])",
-          "startLine": 1150,
-          "endLine": 1177
+          "startLine": 1186,
+          "endLine": 1213
         }
       ],
       "calledByFiles": []
@@ -21151,8 +21428,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCrearAudio(args = [])",
-          "startLine": 1179,
-          "endLine": 1238
+          "startLine": 1215,
+          "endLine": 1274
         }
       ],
       "calledByFiles": []
@@ -21163,8 +21440,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function main()",
-          "startLine": 1240,
-          "endLine": 1334
+          "startLine": 1276,
+          "endLine": 1371
         },
         {
           "file": "tools/factory.mjs",
@@ -21859,8 +22136,27 @@
           "file": "tools/feedback/client_feedback_triage_agent.mjs",
           "kind": "constant",
           "signature": "export const FEEDBACK_LEDGER_PATH",
-          "startLine": 30,
-          "endLine": 30
+          "startLine": 43,
+          "endLine": 43
+        }
+      ],
+      "calledByFiles": []
+    },
+    "AST_GRAPH_PATH": {
+      "definitions": [
+        {
+          "file": "tools/feedback/client_feedback_triage_agent.mjs",
+          "kind": "constant",
+          "signature": "export const AST_GRAPH_PATH",
+          "startLine": 44,
+          "endLine": 44
+        },
+        {
+          "file": "tools/intelligence/codebase_ast_indexer.mjs",
+          "kind": "constant",
+          "signature": "export const AST_GRAPH_PATH",
+          "startLine": 28,
+          "endLine": 28
         }
       ],
       "calledByFiles": []
@@ -21871,8 +22167,8 @@
           "file": "tools/feedback/client_feedback_triage_agent.mjs",
           "kind": "constant",
           "signature": "export const CTO_OWNER_EMAIL",
-          "startLine": 31,
-          "endLine": 31
+          "startLine": 45,
+          "endLine": 45
         }
       ],
       "calledByFiles": []
@@ -21883,8 +22179,8 @@
           "file": "tools/feedback/client_feedback_triage_agent.mjs",
           "kind": "constant",
           "signature": "export const MAX_TICKETS_PER_HOUR",
-          "startLine": 32,
-          "endLine": 32
+          "startLine": 46,
+          "endLine": 46
         }
       ],
       "calledByFiles": []
@@ -21895,8 +22191,8 @@
           "file": "tools/feedback/client_feedback_triage_agent.mjs",
           "kind": "function",
           "signature": "export function redactTicketPii(rawText = '')",
-          "startLine": 49,
-          "endLine": 54
+          "startLine": 105,
+          "endLine": 113
         }
       ],
       "calledByFiles": [
@@ -21909,8 +22205,8 @@
           "file": "tools/feedback/client_feedback_triage_agent.mjs",
           "kind": "function",
           "signature": "export function checkClientTicketRateLimit(clientId = 'anonymous-client', nowMs = Date.now()",
-          "startLine": 59,
-          "endLine": 79
+          "startLine": 118,
+          "endLine": 138
         }
       ],
       "calledByFiles": [
@@ -21923,13 +22219,11 @@
           "file": "tools/feedback/client_feedback_triage_agent.mjs",
           "kind": "function",
           "signature": "export function resetClientRateLimitBuckets()",
-          "startLine": 81,
-          "endLine": 83
+          "startLine": 140,
+          "endLine": 142
         }
       ],
-      "calledByFiles": [
-        "tools/feedback/client_feedback_triage_agent.mjs"
-      ]
+      "calledByFiles": []
     },
     "sanitizeAndValidateClientTicket": {
       "definitions": [
@@ -21937,8 +22231,8 @@
           "file": "tools/feedback/client_feedback_triage_agent.mjs",
           "kind": "function",
           "signature": "export function sanitizeAndValidateClientTicket(ticketInput = {})",
-          "startLine": 88,
-          "endLine": 88
+          "startLine": 147,
+          "endLine": 147
         }
       ],
       "calledByFiles": [
@@ -21951,13 +22245,83 @@
           "file": "tools/feedback/client_feedback_triage_agent.mjs",
           "kind": "function",
           "signature": "export function classifyClientTicketIntent(sanitizedMessage = '', consoleErrors = [])",
-          "startLine": 145,
-          "endLine": 156
+          "startLine": 204,
+          "endLine": 215
         }
       ],
-      "calledByFiles": [
-        "tools/feedback/client_feedback_triage_agent.mjs"
-      ]
+      "calledByFiles": []
+    },
+    "classifyCommercialAndTechnicalScope": {
+      "definitions": [
+        {
+          "file": "tools/feedback/client_feedback_triage_agent.mjs",
+          "kind": "function",
+          "signature": "export function classifyCommercialAndTechnicalScope(sanitizedMessage = '', consoleErrors = [])",
+          "startLine": 223,
+          "endLine": 251
+        }
+      ],
+      "calledByFiles": []
+    },
+    "diagnoseAstRootCauseReadOnly": {
+      "definitions": [
+        {
+          "file": "tools/feedback/client_feedback_triage_agent.mjs",
+          "kind": "function",
+          "signature": "export function diagnoseAstRootCauseReadOnly(projectSlug = 'agencia-alfa', sectionSelector = '#hero', message = '')",
+          "startLine": 257,
+          "endLine": 293
+        }
+      ],
+      "calledByFiles": []
+    },
+    "readFeedbackLedger": {
+      "definitions": [
+        {
+          "file": "tools/feedback/client_feedback_triage_agent.mjs",
+          "kind": "function",
+          "signature": "function readFeedbackLedger()",
+          "startLine": 368,
+          "endLine": 376
+        }
+      ],
+      "calledByFiles": []
+    },
+    "writeFeedbackLedger": {
+      "definitions": [
+        {
+          "file": "tools/feedback/client_feedback_triage_agent.mjs",
+          "kind": "function",
+          "signature": "function writeFeedbackLedger(ledger)",
+          "startLine": 378,
+          "endLine": 382
+        }
+      ],
+      "calledByFiles": []
+    },
+    "analyzeTicketAndProposeSpec": {
+      "definitions": [
+        {
+          "file": "tools/feedback/client_feedback_triage_agent.mjs",
+          "kind": "function",
+          "signature": "export async function analyzeTicketAndProposeSpec(ticketInput = {}, options = {})",
+          "startLine": 390,
+          "endLine": 390
+        }
+      ],
+      "calledByFiles": []
+    },
+    "executeApprovedTicketFix": {
+      "definitions": [
+        {
+          "file": "tools/feedback/client_feedback_triage_agent.mjs",
+          "kind": "function",
+          "signature": "export async function executeApprovedTicketFix(ticketId, options = {})",
+          "startLine": 637,
+          "endLine": 637
+        }
+      ],
+      "calledByFiles": []
     },
     "triageClientFeedbackTicket": {
       "definitions": [
@@ -21965,13 +22329,11 @@
           "file": "tools/feedback/client_feedback_triage_agent.mjs",
           "kind": "function",
           "signature": "export async function triageClientFeedbackTicket(ticketInput = {}, options = {})",
-          "startLine": 161,
-          "endLine": 161
+          "startLine": 795,
+          "endLine": 795
         }
       ],
-      "calledByFiles": [
-        "tools/feedback/client_feedback_triage_agent.mjs"
-      ]
+      "calledByFiles": []
     },
     "runClientFeedbackTriageSelfTest": {
       "definitions": [
@@ -21979,8 +22341,8 @@
           "file": "tools/feedback/client_feedback_triage_agent.mjs",
           "kind": "function",
           "signature": "export async function runClientFeedbackTriageSelfTest()",
-          "startLine": 277,
-          "endLine": 348
+          "startLine": 809,
+          "endLine": 942
         }
       ],
       "calledByFiles": []
@@ -22796,18 +23158,6 @@
       "calledByFiles": [
         "tools/intelligence/rag_pipeline.mjs"
       ]
-    },
-    "AST_GRAPH_PATH": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/codebase_ast_indexer.mjs",
-          "kind": "constant",
-          "signature": "export const AST_GRAPH_PATH",
-          "startLine": 28,
-          "endLine": 28
-        }
-      ],
-      "calledByFiles": []
     },
     "findBlockEndLine": {
       "definitions": [
@@ -26942,8 +27292,7 @@
         }
       ],
       "calledByFiles": [
-        "tools/audit/harness_doctor_audit.mjs",
-        "tools/feedback/client_feedback_triage_agent.mjs"
+        "tools/audit/harness_doctor_audit.mjs"
       ]
     },
     "runInHybridSandbox": {
