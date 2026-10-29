@@ -12,14 +12,16 @@
       "anti-shortcut-discipline",
       "claude-council",
       "arena-skill",
-      "caveman"
+      "caveman",
+      "jev-context-and-harness-engineering"
     ],
     "product-spec-architect": [
       "modularity",
       "constraint-driven-development",
       "code-structure",
       "grill-me",
-      "claude-council"
+      "claude-council",
+      "jev-context-and-harness-engineering"
     ],
     "ux-designer": [
       "impeccable-and-design-md-director",
@@ -58,7 +60,8 @@
       "ui-component-harvester",
       "animate",
       "layout-primitives-architect",
-      "threejs-r186-tsl-and-gsap-free"
+      "threejs-r186-tsl-and-gsap-free",
+      "jev-context-and-harness-engineering"
     ],
     "edge-fullstack-architect": [
       "workers-best-practices",
@@ -67,7 +70,8 @@
       "security-and-hardening",
       "provider-fallback",
       "number-parsing",
-      "ponytail"
+      "ponytail",
+      "jev-context-and-harness-engineering"
     ],
     "seo-aeo-geo-architect": [
       "ai-seo-and-geo",
@@ -84,14 +88,16 @@
       "code-reviewer",
       "adverse-review",
       "silent-failure-hunter",
-      "delivery-gate"
+      "delivery-gate",
+      "jev-context-and-harness-engineering"
     ],
     "security-engineer": [
       "security-checklist",
       "security-audit",
       "security-and-hardening",
       "anti-fraud-fingerprinting",
-      "agent-security-hardening"
+      "agent-security-hardening",
+      "jev-context-and-harness-engineering"
     ],
     "tech-scout": [
       "research-mode",

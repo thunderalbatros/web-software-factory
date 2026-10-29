@@ -1,0 +1,137 @@
+{
+  "schema": "jev-independent-finops-ledger-v2026.10",
+  "isolatedFromGcpVertexBudget": true,
+  "dailyJevBudgetUsd": 0.5,
+  "currentDate": "2026-10-29",
+  "dailySpendUsd": 0,
+  "totalHistoricalSpendUsd": 0,
+  "totalApiCalls": 10,
+  "totalCacheHits": 2,
+  "totalCacheSavedUsd": 0.003,
+  "lastProviderMode": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+  "jevApiBaseUrl": "https://api.boundaryml.com/v1/jev/evaluate",
+  "jevModel": "jev-judge-2026-v1",
+  "updatedAt": "2026-10-29T13:51:57.557Z",
+  "recentEvents": [
+    {
+      "timestamp": "2026-10-29T13:51:57.557Z",
+      "predicateId": "jev-cross-trace-friction-miner",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 2.673,
+      "tokensUsed": 139,
+      "costUsd": 0,
+      "choice": "FRICTION_CLUSTER_IDENTIFIED"
+    },
+    {
+      "timestamp": "2026-10-29T13:51:57.551Z",
+      "predicateId": "jev-redundant-test-detector",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 2.153,
+      "tokensUsed": 117,
+      "costUsd": 0,
+      "choice": "REDUNDANT_TAUTOLOGICAL_TEST"
+    },
+    {
+      "timestamp": "2026-10-29T13:51:57.546Z",
+      "predicateId": "jev-spec-business-invariant-alignment",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 2.58,
+      "tokensUsed": 138,
+      "costUsd": 0,
+      "choice": "ALIGNED_WITH_SPEC"
+    },
+    {
+      "timestamp": "2026-10-29T13:51:57.540Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 1.84,
+      "tokensUsed": 98,
+      "costUsd": 0,
+      "choice": "NOUL"
+    },
+    {
+      "timestamp": "2026-10-29T13:51:57.535Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": true,
+      "latencyMs": 0.075,
+      "tokensUsed": 0,
+      "costUsd": 0,
+      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
+    },
+    {
+      "timestamp": "2026-10-29T13:51:57.533Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 6.107,
+      "tokensUsed": 134,
+      "costUsd": 0,
+      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
+    },
+    {
+      "timestamp": "2026-10-29T13:50:34.704Z",
+      "predicateId": "jev-cross-trace-friction-miner",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 2.658,
+      "tokensUsed": 139,
+      "costUsd": 0,
+      "choice": "FRICTION_CLUSTER_IDENTIFIED"
+    },
+    {
+      "timestamp": "2026-10-29T13:50:34.698Z",
+      "predicateId": "jev-redundant-test-detector",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 2.333,
+      "tokensUsed": 117,
+      "costUsd": 0,
+      "choice": "REDUNDANT_TAUTOLOGICAL_TEST"
+    },
+    {
+      "timestamp": "2026-10-29T13:50:34.693Z",
+      "predicateId": "jev-spec-business-invariant-alignment",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 2.437,
+      "tokensUsed": 138,
+      "costUsd": 0,
+      "choice": "ALIGNED_WITH_SPEC"
+    },
+    {
+      "timestamp": "2026-10-29T13:50:34.687Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 2.067,
+      "tokensUsed": 98,
+      "costUsd": 0,
+      "choice": "NOUL"
+    },
+    {
+      "timestamp": "2026-10-29T13:50:34.681Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": true,
+      "latencyMs": 0.089,
+      "tokensUsed": 0,
+      "costUsd": 0,
+      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
+    },
+    {
+      "timestamp": "2026-10-29T13:50:34.678Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 5.296,
+      "tokensUsed": 134,
+      "costUsd": 0,
+      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
+    }
+  ]
+}

@@ -254,4 +254,18 @@ Ejecuta el protocolo de cierre determinista de sesión inspirado en **Steve Yegg
 3. Limpia worktrees y sandboxes temporales huérfanos (`git worktree prune`).
 4. Verifica el estado de Git (`git status --short`) y genera en **`.agents/runs/NEXT_SESSION_HANDOFF.md`** el prompt exacto listo para copiar y pegar al comenzar la próxima sesión con **0% pérdida de memoria**.
 
+### 32. Auditar el Cliente Nativo `JEV`, Libro Mayor FinOps Independiente y Predicados Acotados (`npm run cto:auditar-jev`)
+```powershell
+# Ver estado del conector oficial JEV, presupuesto diario ($0.50 USD independiente de GCP) y caché SHA-256:
+npm run cto:auditar-jev -- --status
+
+# Ejecutar self-test de BAML Schema-Aligned Parsing (SAP < 1ms) y los 4 predicados Choice/Score/Noul:
+npm run cto:auditar-jev -- --self-test
+```
+Ejecuta el cliente nativo dedicado para la API Oficial de **`JEV`** (`tools/intelligence/jev_semantic_gate.mjs`, configurado con `JEV_API_KEY`, `JEV_API_BASE_URL` y `JEV_MODEL` en `.env`, totalmente separado de los `$90.00 USD` de Google Cloud):
+1. **Caché Determinista `SHA-256` (`< 0.5 ms` a costo `$0.00`)**: Si el mismo `git diff` o fragmento de traza ya fue evaluado antes, responde al instante desde `.agents/memory/jev_decision_cache.json` sin gastar saldo.
+2. **Motor `BAML Schema-Aligned Parsing (SAP)` (`< 1 ms` a costo `$0.00`)**: Comprime los esquemas en un **60%–75%** y repara automáticamente JSON con claves sin comillas, comas finales o bloques Markdown antes de validar con `Valibot`.
+3. **Los 4 Predicados Acotados (`Choice | Score | Noul`) en *Outer Loop* y *Meta Loop***: Evalúa `jev-persisted-state-and-env-owner-gate`, `jev-spec-business-invariant-alignment`, `jev-redundant-test-detector` y `jev-cross-trace-friction-miner` exigiendo siempre la opción de abstención explícita (`NOUL`) cuando la evidencia es insuficiente.
+
+
 

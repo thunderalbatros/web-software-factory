@@ -120,6 +120,7 @@ const BILINGUAL_THESAURUS = [
   { match: /\b(shader|shaders|glsl|holografico|holográfico|3d|tilt|audio|webaudio|zzfx|webgl|webgpu|psicoacustica|psicoacústica|modal|biquad|lufs|ebu|r128|synchresis|sincresis|tonejs|strudel|bouba|kiki)\b/i, expand: 'CANON_ATOMIC_PSYCHOACOUSTICS_PROCEDURAL_DSP_AND_AUDIOVISUAL_SYNCHRESIS_2026 CANON_2D_3D_GRAPHICS_SHADERS_AND_AESTHETICS_2026 CANON_OPEN_BOOKS_SHADERS_SDF_AND_WEB_ANIMATION_MASTERY_2026 glsl sdf dynamicscompressor zzfx biquadfilternode lufs iso 226 CANON_3D_PBR_AND_CINEMATOGRAPHY_GUIDE' },
   { match: /\b(ciberseguridad|seguridad|vulnerabilidad|vulnerabilidades|xss|csp|dompurify|trustedtypes|oauth|pkce|fraude|bot|criptografia|criptografía|owasp)\b/i, expand: 'CANON_CYBERSECURITY_DEVSECOPS_2026 CYBERSECURITY_MASTER_PROTOCOL ANTI_BOT_STEALTH_GUIDE owasp asvs xss dompurify trustedtypes csp oauth 2.1 pkce thumbmarkjs turnstile CANON_REAL_WORLD_CRYPTOGRAPHY_DAVID_WONG' },
   { match: /\b(libro|libros|curso|cursos|documentacion|documentación|catalogo|catálogo|fuentes|universidad|cmu|stanford|berkeley|crisp|untainted|trifecta|beads|land\s*the\s*plane|15-445|pavlo|mvcc|6\.5840|6\.102|ousterhout|15-462|keenan\s*crane|cs253|feross|ccrma|220a|baymard|web\.dev)\b/i, expand: 'CANON_UNIVERSITY_COURSES_AND_28_FACTORY_TALKS_2026 CANON_DOMAIN_CMU_15445_MVCC_BTREE_WAL_AND_ATOMIC_TX_2026 CANON_DOMAIN_MIT_65840_DISTRIBUTED_IDEMPOTENCY_AND_DURABLE_OBJECTS_2026 CANON_DOMAIN_MIT_6102_OUSTERHOUT_DEEP_MODULES_AND_REP_INVARIANTS_2026 CANON_DOMAIN_CMU_15462_KEENAN_CRANE_AND_WEBGPU_SHADERS_60FPS_2026 CANON_DOMAIN_STANFORD_CS253_WEB_SECURITY_SOP_CSP_AND_WEBAUTHN_2026 CANON_DOMAIN_GOOGLE_WEBDEV_CWV_BLINK_V8_A11Y_AND_MODERN_CSS_2026 CANON_DOMAIN_STANFORD_CCRMA_220A_MODAL_SYNTHESIS_AND_PROCEDURAL_AUDIO_2026 CANON_DOMAIN_BAYMARD_AND_LAWS_OF_UX_CHECKOUT_CRO_2026 CURATED_MASTER_BOOKS_COURSES_AND_DOCS_CATALOG_2026' },
+  { match: /\b(jev|baml|sap|repomap|pagerank|fast-check|harness\s*engineering|context\s*engineering|noul|schema-aligned|pure\s*component|slicer)\b/i, expand: 'CANON_JEV_BAML_SAP_CONTEXT_REPOMAP_AND_HARNESS_ENGINEERING_2026 skill_jev-context-and-harness-engineering JEV_API_KEY JEV_API_BASE_URL parseWithSchemaAlignedRecovery buildPageRankRepoMap sliceTargetFunctionAndCallSites runStatelessComponentStressHarness runLocalEnterpriseAndCommerceSimulator' },
   { match: /\b(suiza|proporcion|proporción|aurea|áurea|bringhurst|tipografia|tipografía)\b/i, expand: 'book_elements_of_typographic_style_bringhurst CANON_CLEAN_ROOM_SWISS_TYPOGRAPHY_COLOR_LIGHT_AND_CSS_SECRETS_2026 CANON_OPEN_BOOKS_TYPOGRAPHY_COLOR_GRIDS_AND_WEB_PERF_2026' },
   { match: /\b(chromium|grigorik|hpbn|butterick|renderingng)\b/i, expand: 'CANON_OPEN_BOOKS_TYPOGRAPHY_COLOR_GRIDS_AND_WEB_PERF_2026 renderingng' },
   { match: /\b(validacion|validación|esquemas|valibot|zod)\b/i, expand: 'CANON_50_REPOS_AGENTIC_SOFTWARE_FACTORY_TOM_SWE_STAGEHAND_AND_OXC_2026 CANON_TYPESCRIPT_RAUSCHMAYER_ZOD_VALIBOT_AND_DATA_ORIENTED_2026 CANON_WEB_SOFTWARE_FACTORY_MCP_DTCG_AND_LIGHTNINGCSS_2026' },
@@ -579,7 +580,7 @@ function querySqliteFts5(sqliteDb, chunkMap, terms, limit = 20) {
 
     if (!sqliteDb._ftsStmt) {
       sqliteDb._ftsStmt = sqliteDb.prepare(`
-        SELECT id, source, category, title, snippet,
+        SELECT id, source, category, title, snippet, text,
                bm25(chunks_fts, 6.0, 3.5, 1.0) AS raw_bm25
         FROM chunks_fts
         WHERE chunks_fts MATCH ?
@@ -600,7 +601,7 @@ function querySqliteFts5(sqliteDb, chunkMap, terms, limit = 20) {
         source: r.source,
         title: r.title,
         snippet: r.snippet,
-        text: fullChunk ? fullChunk.text : r.snippet,
+        text: r.text || (fullChunk ? fullChunk.text : r.snippet),
         score: baseBm25 * catMult
       };
     });
@@ -658,8 +659,12 @@ export function getOrBuildMiniSearchIndex(force = false) {
       const stats = fs.statSync(SQLITE_FTS_FILE);
       if (now - stats.mtimeMs < 30 * 24 * 3_600_000) {
         const sqliteDb = cachedSqliteDb || new DatabaseSyncClass(SQLITE_FTS_FILE);
-        const rows = sqliteDb.prepare('SELECT id, source, category, snippet, title, section, text FROM chunks_fts').all();
-        if (Array.isArray(rows) && rows.length > 0 && rows.length < 150000) {
+        const rows = sqliteDb
+          .prepare(
+            "SELECT id, source, category, snippet, title, section, text FROM chunks_fts WHERE category != 'canon-book' LIMIT 100000"
+          )
+          .all();
+        if (Array.isArray(rows) && rows.length > 0) {
           cachedSqliteDb = sqliteDb;
           const mini = buildMiniSearchInstance(rows);
           const chunkMap = buildChunkMap(rows);

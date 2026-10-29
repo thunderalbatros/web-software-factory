@@ -42,8 +42,12 @@ import {
 import {
   searchCodebaseAst,
   buildOrUpdateAstIndex,
-  extractFileAstMetadata
+  extractFileAstMetadata,
+  buildPageRankRepoMap,
+  sliceTargetFunctionAndCallSites
 } from './codebase_ast_indexer.mjs';
+import { evaluateFullJevOuterAndMetaGate } from './jev_semantic_gate.mjs';
+import { runFullLocalHarnessSuite } from '../audit/local_fullstack_and_component_harness.mjs';
 import {
   evaluateGovernancePolicy,
   verifyRoleMcpPermission,
@@ -253,6 +257,78 @@ export const TOOLS = [
       type: 'object',
       properties: {
         project: { type: 'string', description: 'Optional project slug or directory path.' }
+      },
+      additionalProperties: false
+    }
+  },
+  {
+    name: 'factory_repomap_pagerank',
+    domain: 'ast',
+    mcpServer: 'omni-rag-ast',
+    readOnly: true,
+    description:
+      'Personalized PageRank RepoMap (Aider/Tree-sitter pattern): returns the top 15 central AST signatures in < 600 tokens weighted by active ticket seed files with exact file:Lstart-Lend pointers (Waves 1 & 2).',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        seedFiles: {
+          type: 'array',
+          items: { type: 'string' },
+          description: 'Optional list of seed file paths for Personalized PageRank weighting.'
+        },
+        ticketQuery: { type: 'string', description: 'Ticket keywords or symbol query.' },
+        topK: { type: 'number', description: 'Max central signatures to return (default 15).' },
+        maxTokens: { type: 'number', description: 'Token ceiling for the compact RepoMap (default 600).' }
+      },
+      additionalProperties: false
+    }
+  },
+  {
+    name: 'factory_ast_slice_function',
+    domain: 'ast',
+    mcpServer: 'omni-rag-ast',
+    readOnly: true,
+    description:
+      'Surgical AST Program Slicer (Wave 2 Builders): extracts ONLY the target function body + dependent types/imports + call sites, saving ~70% tokens over full-file reads.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        filePath: { type: 'string', description: 'Relative path to the source file.' },
+        symbolName: { type: 'string', description: 'Exact function or class name to slice.' },
+        maxCallSites: { type: 'number', description: 'Maximum call sites to include (default 5).' }
+      },
+      required: ['symbolName'],
+      additionalProperties: false
+    }
+  },
+  {
+    name: 'factory_jev_evaluate_diff',
+    domain: 'audit',
+    mcpServer: 'omni-rag-ast',
+    readOnly: true,
+    description:
+      'Official JEV Bounded Predicate Evaluator (Outer Loop & Meta Loop, Wave 3 & Triage): evaluates git diff, SPEC.md, and forensic traces across the 4 Choice|Score|Noul predicates with BAML SAP recovery and SHA-256 cache.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        diffText: { type: 'string', description: 'Optional git diff text to evaluate.' },
+        specPath: { type: 'string', description: 'Optional path to SPEC.md.' },
+        tracesText: { type: 'string', description: 'Optional JSONL trace lines for cross-trace friction mining.' }
+      },
+      additionalProperties: false
+    }
+  },
+  {
+    name: 'factory_run_local_commerce_rls_harness',
+    domain: 'audit',
+    mcpServer: 'omni-rag-ast',
+    readOnly: true,
+    description:
+      'Fullstack Local Harness (Wave 3): runs the 5-State Stateless Pure Component Stress Harness, Stripe/MercadoPago Double-Webhook Idempotency Simulator, Multi-Tenant RLS & Kratos ES256 Simulator, 50-Vector fast-check Property Fuzzing, and 3D Canvas Histogram Watchdog.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        project: { type: 'string', description: 'Optional target project slug.' }
       },
       additionalProperties: false
     }
@@ -498,9 +574,38 @@ export function discoverToolsByIntent({ intent = '', domain = '', role = 'orches
       name: t.name,
       mcpServer: t.mcpServer,
       domain: t.domain,
+      oneLineSummary: String(t.description || '').slice(0, 140),
       description: t.description,
       requiredArgs: t.inputSchema?.required || []
     }))
+  };
+}
+
+/**
+ * Deferred MCP Tool Schemas (`listToolsDeferredCompact` & `hydrateDeferredToolSchema`):
+ * Lists MCP tools in ultra-compact mode (`name + 1-line summary`) and hydrates the full JSON Schema
+ * only when the agent invokes or explicitly requests schema hydration for a specific tool.
+ */
+export function listToolsDeferredCompact() {
+  return TOOLS.map((t) => ({
+    name: t.name,
+    domain: t.domain,
+    mcpServer: t.mcpServer,
+    readOnly: t.readOnly,
+    oneLineSummary: String(t.description || '').split('.')[0] + '.'
+  }));
+}
+
+export function hydrateDeferredToolSchema(toolName = '') {
+  const found = TOOLS.find((t) => t.name === toolName);
+  if (!found) {
+    return { hydrated: false, toolName, inputSchema: null };
+  }
+  return {
+    hydrated: true,
+    toolName: found.name,
+    mcpServer: found.mcpServer,
+    inputSchema: found.inputSchema
   };
 }
 
@@ -851,6 +956,35 @@ async function executeSingleMcpTool(toolName, args = {}, traceId = generateCsprn
     const diff = runDiffUiAdversarialGate(args.project || '');
     return { traceId, ryux, cognitiveUx: cog, diffUi: diff };
   }
+  if (toolName === 'factory_repomap_pagerank') {
+    const res = buildPageRankRepoMap({
+      seedFiles: Array.isArray(args.seedFiles) ? args.seedFiles : [],
+      ticketQuery: args.ticketQuery || '',
+      topK: Number(args.topK || 15),
+      maxTokens: Number(args.maxTokens || 600)
+    });
+    return { traceId, ...res };
+  }
+  if (toolName === 'factory_ast_slice_function') {
+    const res = sliceTargetFunctionAndCallSites({
+      filePath: args.filePath || '',
+      symbolName: args.symbolName || '',
+      maxCallSites: Number(args.maxCallSites || 5)
+    });
+    return { traceId, ...res };
+  }
+  if (toolName === 'factory_jev_evaluate_diff') {
+    const res = await evaluateFullJevOuterAndMetaGate({
+      diffText: args.diffText || '',
+      specPath: args.specPath || '',
+      tracesText: args.tracesText || ''
+    });
+    return { traceId, ...res };
+  }
+  if (toolName === 'factory_run_local_commerce_rls_harness') {
+    const res = await runFullLocalHarnessSuite();
+    return { traceId, ...res };
+  }
   throw new Error(`Unknown tool: ${toolName}`);
 }
 
@@ -898,7 +1032,11 @@ export function startMcpServer() {
       } else if (method === 'notifications/initialized') {
         // No response required for notifications
       } else if (method === 'tools/list') {
-        sendResponse(id, { tools: TOOLS });
+        const useCompact = Boolean(params?.compact || params?.deferred);
+        sendResponse(id, {
+          tools: useCompact ? listToolsDeferredCompact() : TOOLS,
+          deferredSchemaHydrationSupported: true
+        });
       } else if (method === 'tools/call') {
         const toolName = params?.name;
         const args = params?.arguments || {};

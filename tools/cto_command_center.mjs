@@ -1460,6 +1460,12 @@ async function main() {
   else if (cmd === 'crear-audio') await handleCrearAudio(rest);
   else if (cmd === 'entrevista') await handleEntrevista(rest);
   else if (cmd === 'aterrizar') await handleAterrizar(rest);
+  else if (cmd === 'auditar-jev') {
+    execSync(
+      `node "${path.join(ROOT, 'tools', 'intelligence', 'jev_semantic_gate.mjs')}" ${rest.join(' ')}`,
+      { cwd: ROOT, stdio: 'inherit' }
+    );
+  }
   else if (cmd === 'cockpit') {
     execSync(`node "${path.join(ROOT, 'tools', 'cockpit', 'factory_twin_server.mjs')}" ${rest.join(' ')}`, {
       cwd: ROOT,

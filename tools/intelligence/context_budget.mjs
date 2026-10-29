@@ -514,7 +514,11 @@ export function assembleThreeTierContext(query = '', options = {}) {
       'omni_rag_stats',
       'factory_style_catalog',
       'factory_compile_tokens',
-      'factory_run_audit'
+      'factory_run_audit',
+      'factory_repomap_pagerank',
+      'factory_ast_slice_function',
+      'factory_jev_evaluate_diff',
+      'factory_run_local_commerce_rls_harness'
     ]
   };
 
@@ -589,6 +593,73 @@ export function repairAndValidateJsonPayload(rawJsonInput, valibotSchemaOrValida
   };
 }
 
+/**
+ * Semantic Stack-Trace & `node_modules` Noise Folder (`foldStackTraceAndNodeModulesNoise`):
+ * Automatically prunes all internal `node_modules/` and `node:internal/` frames from stack traces,
+ * leaving ONLY own-code frames while persisting the full lossless stack trace in `.cache/headroom_ccr/<hash>.json`.
+ */
+export function foldStackTraceAndNodeModulesNoise(rawErrorOrTrace = '') {
+  const fullTraceText =
+    rawErrorOrTrace instanceof Error
+      ? String(rawErrorOrTrace.stack || rawErrorOrTrace.message || '')
+      : String(rawErrorOrTrace || '');
+
+  const ccr = compressReversibleCcr(
+    {
+      type: 'RAW_STACK_TRACE_SNAPSHOT',
+      capturedAt: new Date().toISOString(),
+      rawTrace: fullTraceText
+    },
+    { mode: 'text' }
+  );
+
+  const lines = fullTraceText.split(/\r?\n/);
+  const keptLines = [];
+  let foldedFramesCount = 0;
+
+  for (const line of lines) {
+    const isInternalOrNodeModules =
+      /(?:[\\/]node_modules[\\/]|node:internal[\\/]|internal\/modules\/|at\s+Module\._compile|at\s+Module\._extensions)/i.test(
+        line
+      );
+
+    if (isInternalOrNodeModules) {
+      foldedFramesCount++;
+    } else {
+      if (foldedFramesCount > 0) {
+        keptLines.push(
+          `    ... [Folded ${foldedFramesCount} node_modules/internal frames -> ${ccr.retrieveToolCall}]`
+        );
+        foldedFramesCount = 0;
+      }
+      keptLines.push(line);
+    }
+  }
+
+  if (foldedFramesCount > 0) {
+    keptLines.push(
+      `    ... [Folded ${foldedFramesCount} node_modules/internal frames -> ${ccr.retrieveToolCall}]`
+    );
+  }
+
+  const foldedTrace = keptLines.join('\n').trim();
+  const beforeTokens = estimateTokens(fullTraceText);
+  const afterTokens = estimateTokens(foldedTrace);
+  const tokenSavingsPct =
+    beforeTokens > 0
+      ? Number((((beforeTokens - afterTokens) / beforeTokens) * 100).toFixed(1))
+      : 0;
+
+  return {
+    foldedTrace,
+    beforeTokens,
+    afterTokens,
+    tokenSavingsPct,
+    headroomCcrHash: ccr.hash,
+    retrieveToolCall: ccr.retrieveToolCall
+  };
+}
+
 if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
   const sampleQuery =
     process.argv
@@ -604,6 +675,16 @@ if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
     }))
   });
   const retrieved = headroom_retrieve(sampleCcr.hash);
+  const sampleTraceFold = foldStackTraceAndNodeModulesNoise(
+    [
+      'TypeError: Cannot read properties of undefined (reading "priceCents")',
+      '    at calculateOrderTotal (tools/audit/local_fullstack_and_component_harness.mjs:42:15)',
+      '    at Object.run (node_modules/vitest/dist/chunk-runtime.js:1842:11)',
+      '    at processTicksAndRejections (node:internal/process/task_queues:105:5)',
+      '    at async Runner.execute (node_modules/playwright-core/lib/server/runner.js:912:9)',
+      '    at async verifyCheckoutHandler (templates/vanilla-edge/worker/index.js:88:7)'
+    ].join('\n')
+  );
 
   console.log('==================================================================');
   console.log('🧊🔥 3-TIER CONTEXT + HEADROOM CCR + CACHEALIGNER VERIFICATION');
@@ -612,5 +693,6 @@ if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
   console.log(`  🌤️  [WARM CONTEXT]  Active Role: ${ctx.warm.activeRole.path} | Skills: ${ctx.warm.selectedSkills.map((s) => s.name).join(', ')} (${ctx.warm.skillsCount}/${ctx.warm.maxSkillsAllowed})`);
   console.log(`  🧊 [COLD CONTEXT]  Mode: ${ctx.cold.mode} | Discovery: ${ctx.cold.activeToolDiscovery}`);
   console.log(`  🗜️  [HEADROOM CCR]  Hash: ${sampleCcr.hash} | Reduction: -${sampleCcr.reductionPct}% | Lossless Retrieve: ${retrieved.found ? 'OK' : 'FAIL'}`);
+  console.log(`  🧹 [TRACE FOLDING] Reduction: -${sampleTraceFold.tokenSavingsPct}% | CCR Hash: ${sampleTraceFold.headroomCcrHash}`);
   console.log('==================================================================\n');
 }

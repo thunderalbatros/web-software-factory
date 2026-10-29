@@ -38,6 +38,7 @@
     "cto:crear-audio": "node tools/cto_command_center.mjs crear-audio",
     "cto:entrevista": "node tools/orchestrator/client_interview_gate.mjs",
     "cto:aterrizar": "node tools/cto_command_center.mjs aterrizar",
+    "cto:auditar-jev": "node tools/intelligence/jev_semantic_gate.mjs",
     "factory": "node tools/factory.mjs",
     "factory:status": "node tools/factory.mjs status",
     "factory:styles": "node tools/factory.mjs styles",

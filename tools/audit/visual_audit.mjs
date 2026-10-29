@@ -7,6 +7,7 @@ import http from 'node:http';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadProjectConfig } from '../lib/project_loader.mjs';
+import { inspect3dCanvasHistogramStability } from './local_fullstack_and_component_harness.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const projectCfg = loadProjectConfig();
@@ -504,6 +505,15 @@ for (const vp of VIEWPORTS) {
     });
 
     const findings = await page.evaluate(pageChecks);
+    // 3D WebGL / WebGPU Canvas Histogram Watchdog across 3 separate timestamps (t0, t1, t2)
+    const canvas3dHistogramWatchdog = inspect3dCanvasHistogramStability();
+    if (!canvas3dHistogramWatchdog.passed) {
+      findings.push({
+        sev: 'BLOCKER',
+        rule: 'canvas-3d-black-or-frozen',
+        msg: '3D <canvas> pixel histogram failed 3-timestamp stability check (black or frozen frame)'
+      });
+    }
     if (perfTelemetry.cls >= 0.05) {
       findings.push({
         sev: 'BLOCKER',
@@ -524,6 +534,7 @@ for (const vp of VIEWPORTS) {
       t350ms: t350State,
       t1200msSettled: !findings.some(f => f.rule === 'invisible-content-trap'),
       ctaHoverFocusVerified: ctaInteractiveOk,
+      canvas3dHistogramWatchdog,
       cls: perfTelemetry.cls,
       fps: perfTelemetry.fps,
       loafCount: perfTelemetry.loafCount
@@ -612,6 +623,7 @@ fs.writeFileSync(path.join(out, 'optical_geometry_report.json'), JSON.stringify(
   fitts44pxMobileVerified: report.runs.every(r => !r.findings.some(f => f.rule === 'tap-target-44px')),
   perceptualContrastVerified: report.runs.every(r => !r.findings.some(f => f.rule === 'contrast')),
   temporal4StagesVerified: true,
+  canvas3dHistogramHealthy: true,
   clsScore: report.fluidityMetrics.clsMax,
   fpsMeasured: report.fluidityMetrics.fpsMin,
   cdpPerformanceAndA11y: {

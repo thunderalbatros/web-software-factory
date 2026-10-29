@@ -1038,6 +1038,36 @@
         "origin": "https://github.com/microsoft/mcp-for-beginners.git",
         "description": "13 modules on Model Context Protocol architecture, OAuth 2.1 PKCE authorization, zero-trust tool schemas, prompt-injection containment, and enterprise MCP deployment."
       }
+    ],
+    "context_and_harness_engineering_2026": [
+      {
+        "id": "boundaryml-baml",
+        "category": "context_and_harness_engineering_2026",
+        "aliases": [
+          "boundaryml-baml",
+          "BoundaryML/baml",
+          "baml"
+        ],
+        "license": "Apache-2.0",
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\context-and-harness-engineering-2026\\baml",
+        "existsOnDisk": true,
+        "origin": "https://github.com/BoundaryML/baml.git",
+        "description": "Motor de Schema-Aligned Parsing (SAP), prompts tipados y arquitectura de predicados booleanos/acotados JEV (Choice | Score | Noul) con ahorro del 60%–75% de tokens de esquema."
+      },
+      {
+        "id": "dubzzz-fast-check",
+        "category": "context_and_harness_engineering_2026",
+        "aliases": [
+          "dubzzz-fast-check",
+          "dubzzz/fast-check",
+          "fast-check"
+        ],
+        "license": "MIT",
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\context-and-harness-engineering-2026\\fast-check",
+        "existsOnDisk": true,
+        "origin": "https://github.com/dubzzz/fast-check.git",
+        "description": "Framework de Property-Based Testing en JavaScript/TypeScript (Arbitraries, Shrinking e invariantes deterministas) para descubrir fallos de borde en precios, stock y seguridad."
+      }
     ]
   },
   "engines": {

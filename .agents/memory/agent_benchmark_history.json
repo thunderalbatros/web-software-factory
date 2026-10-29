@@ -1,9 +1,258 @@
 {
   "schema": "openlit-openrig-agent-benchmark-history-v1",
-  "lastUpdated": "2026-10-28T21:47:44.841Z",
+  "lastUpdated": "2026-10-29T13:55:40.062Z",
   "latestCompositeScore": 100,
-  "totalRunsRecorded": 22,
+  "totalRunsRecorded": 23,
   "runs": [
+    {
+      "runId": "bench-1793282140062",
+      "timestamp": "2026-10-29T13:55:40.062Z",
+      "projectId": "agencia-alfa",
+      "version": "v2026.10.27",
+      "passed": true,
+      "compositeScore": 100,
+      "previousCompositeScore": 100,
+      "latencyMs": 9235.6,
+      "totalLatencyMs": 9235.6,
+      "visualFps": 60,
+      "chaosResilience": "100% (0 console errors / 0 XSS)",
+      "postMortemAssertions": {
+        "total": 5,
+        "passed": 5
+      },
+      "masevalTrace": {
+        "traceFirstPassed": true,
+        "wavesTrace": [
+          {
+            "waveId": "wave_1_discovery_and_spec",
+            "squads": [
+              "squad_0",
+              "squad_1"
+            ],
+            "traceStatus": "VERIFIED",
+            "passed": true
+          },
+          {
+            "waveId": "wave_2_design_copy_and_code",
+            "squads": [
+              "squad_2",
+              "squad_3",
+              "squad_4",
+              "squad_5"
+            ],
+            "traceStatus": "VERIFIED",
+            "passed": true
+          },
+          {
+            "waveId": "wave_3_qa_security_and_seo_gate",
+            "squads": [
+              "squad_6",
+              "squad_7"
+            ],
+            "traceStatus": "VERIFIED",
+            "passed": true
+          }
+        ],
+        "mcpBenchmark": {
+          "server": "mcp_omni_rag_server.mjs",
+          "hitsCount": 5,
+          "latencyMs": 24.6,
+          "passed": true
+        },
+        "heldInSplit": {
+          "split": "held-in",
+          "totalTasks": 10,
+          "passedTasks": 10,
+          "passed": true
+        },
+        "heldOutSplit": {
+          "split": "held-out",
+          "blocks": {
+            "buildAndAst": 25,
+            "securityZeroTrust": 25,
+            "chaosMonkey": 25,
+            "visualAnd60Fps": 25
+          },
+          "totalScore": 100,
+          "passed": true
+        },
+        "passed": true
+      },
+      "agentVcsFreeze": {
+        "passed": true,
+        "avcsCommitId": "avcs_mvtlvuz8",
+        "freezeStatus": "FROZEN_VERIFIED",
+        "signatureVerified": true,
+        "publicKeyFingerprint": "f80c006e4ada886b",
+        "ed25519SignatureShort": "12bc5f816b8866c5...6bf0d3e77e657007"
+      },
+      "tasks": [
+        {
+          "id": "task-1-ux-tokens",
+          "name": "UX & OKLCH/APCA Tokens",
+          "score": 100,
+          "latencyMs": 12.7,
+          "passed": true
+        },
+        {
+          "id": "task-2-motion-60fps-3d",
+          "name": "Motion 60FPS & 3D WebGPU",
+          "score": 100,
+          "latencyMs": 0,
+          "passed": true
+        },
+        {
+          "id": "task-3-clean-code-ast",
+          "name": "Clean Code, Knip & AST <500ms",
+          "score": 100,
+          "latencyMs": 92.4,
+          "passed": true
+        },
+        {
+          "id": "task-4-zerotrust-appsec",
+          "name": "Zero-Trust AppSec & Chaos",
+          "score": 100,
+          "latencyMs": 307.7,
+          "passed": true
+        },
+        {
+          "id": "task-5-token-efficiency",
+          "name": "3-Tier Token Budget & Caveman",
+          "score": 100,
+          "latencyMs": 15,
+          "savedPercent": 54.8,
+          "passed": true
+        }
+      ],
+      "roles": [
+        {
+          "roleId": "orchestrator",
+          "version": "v2026.10.27",
+          "assignedSkillsCount": 10,
+          "warmSkillsLoaded": 2,
+          "compositeScore": 100,
+          "previousScore": 100,
+          "scoreDelta": 0,
+          "latencyMs": 85.6,
+          "tokenFootprint": 1452,
+          "tokenDelta": 0,
+          "chaosResilience": "100% RESILIENT",
+          "visualFps": 60
+        },
+        {
+          "roleId": "product-spec-architect",
+          "version": "v2026.10.27",
+          "assignedSkillsCount": 6,
+          "warmSkillsLoaded": 2,
+          "compositeScore": 100,
+          "previousScore": 100,
+          "scoreDelta": 0,
+          "latencyMs": 85.6,
+          "tokenFootprint": 1773,
+          "tokenDelta": 0,
+          "chaosResilience": "100% RESILIENT",
+          "visualFps": 60
+        },
+        {
+          "roleId": "ux-designer",
+          "version": "v2026.10.27",
+          "assignedSkillsCount": 14,
+          "warmSkillsLoaded": 2,
+          "compositeScore": 100,
+          "previousScore": 100,
+          "scoreDelta": 0,
+          "latencyMs": 85.6,
+          "tokenFootprint": 2391,
+          "tokenDelta": 0,
+          "chaosResilience": "100% RESILIENT",
+          "visualFps": 60
+        },
+        {
+          "roleId": "copywriting-cro-strategist",
+          "version": "v2026.10.27",
+          "assignedSkillsCount": 7,
+          "warmSkillsLoaded": 2,
+          "compositeScore": 100,
+          "previousScore": 100,
+          "scoreDelta": 0,
+          "latencyMs": 85.6,
+          "tokenFootprint": 2723,
+          "tokenDelta": 0,
+          "chaosResilience": "100% RESILIENT",
+          "visualFps": 60
+        },
+        {
+          "roleId": "senior-coder",
+          "version": "v2026.10.27",
+          "assignedSkillsCount": 13,
+          "warmSkillsLoaded": 2,
+          "compositeScore": 100,
+          "previousScore": 100,
+          "scoreDelta": 0,
+          "latencyMs": 85.6,
+          "tokenFootprint": 605,
+          "tokenDelta": 0,
+          "chaosResilience": "100% RESILIENT",
+          "visualFps": 60
+        },
+        {
+          "roleId": "edge-fullstack-architect",
+          "version": "v2026.10.27",
+          "assignedSkillsCount": 8,
+          "warmSkillsLoaded": 2,
+          "compositeScore": 100,
+          "previousScore": 100,
+          "scoreDelta": 0,
+          "latencyMs": 85.6,
+          "tokenFootprint": 1676,
+          "tokenDelta": 0,
+          "chaosResilience": "100% RESILIENT",
+          "visualFps": 60
+        },
+        {
+          "roleId": "seo-aeo-geo-architect",
+          "version": "v2026.10.27",
+          "assignedSkillsCount": 4,
+          "warmSkillsLoaded": 2,
+          "compositeScore": 100,
+          "previousScore": 100,
+          "scoreDelta": 0,
+          "latencyMs": 85.6,
+          "tokenFootprint": 700,
+          "tokenDelta": 0,
+          "chaosResilience": "100% RESILIENT",
+          "visualFps": 60
+        },
+        {
+          "roleId": "qa-auditor",
+          "version": "v2026.10.27",
+          "assignedSkillsCount": 10,
+          "warmSkillsLoaded": 2,
+          "compositeScore": 100,
+          "previousScore": 100,
+          "scoreDelta": 0,
+          "latencyMs": 85.6,
+          "tokenFootprint": 1670,
+          "tokenDelta": 0,
+          "chaosResilience": "100% RESILIENT",
+          "visualFps": 60
+        },
+        {
+          "roleId": "security-engineer",
+          "version": "v2026.10.27",
+          "assignedSkillsCount": 6,
+          "warmSkillsLoaded": 2,
+          "compositeScore": 100,
+          "previousScore": 100,
+          "scoreDelta": 0,
+          "latencyMs": 85.6,
+          "tokenFootprint": 1929,
+          "tokenDelta": 0,
+          "chaosResilience": "100% RESILIENT",
+          "visualFps": 60
+        }
+      ]
+    },
     {
       "runId": "bench-1793224064841",
       "timestamp": "2026-10-28T21:47:44.841Z",

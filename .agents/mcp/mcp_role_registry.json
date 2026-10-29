@@ -47,7 +47,11 @@
         "omni_rag_stats",
         "factory_style_catalog",
         "factory_compile_tokens",
-        "factory_run_audit"
+        "factory_run_audit",
+        "factory_repomap_pagerank",
+        "factory_ast_slice_function",
+        "factory_jev_evaluate_diff",
+        "factory_run_local_commerce_rls_harness"
       ]
     },
     "context7": {
@@ -148,7 +152,7 @@
       "hitlGate": false,
       "allowedTargetHosts": ["127.0.0.1", "localhost"],
       "description": "Validación dinámica DAST de endpoints HTTP, cabeceras Sec-Fetch-*, CORS, CSRF y contratos API en staging local aislado.",
-      "tools": ["dast_endpoint_probe"]
+      "tools": ["dast_endpoint_probe", "factory_run_local_commerce_rls_harness"]
     },
     "filesystem-scoped": {
       "id": "filesystem-scoped",
@@ -177,7 +181,7 @@
       "hitlGate": false,
       "blockedGitSubcommands": ["commit", "push", "reset", "rebase", "merge", "checkout -B", "branch -D"],
       "description": "Conector Git estrictamente Read-Only (status, diff, log) para el Agente Verificador de Cobertura (qa-auditor).",
-      "tools": ["git_readonly_inspect"]
+      "tools": ["git_readonly_inspect", "factory_jev_evaluate_diff", "factory_run_local_commerce_rls_harness"]
     },
     "d1-sqlite-readonly-mcp": {
       "id": "d1-sqlite-readonly-mcp",

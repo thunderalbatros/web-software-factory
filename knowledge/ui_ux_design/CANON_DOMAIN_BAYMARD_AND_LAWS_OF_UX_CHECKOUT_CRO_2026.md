@@ -45,6 +45,3 @@ linkedHarnessModule: "tools/design/industry_archetype_matrix.mjs"
   <small id="card-help">Transacción cifrada de extremo a extremo (PCI DSS v4.0)</small>
 </div>
 ```
-
----
-**Conexiones del Grafo (Obsidian):** [[INDEX]] · [[DESIGN_MASTERY_2026]] · [[AGENT_CREATIVE_AND_VISUAL_AWARENESS_2026]] · [[CANON_REFACTORING_UI_WATHAN_SCHOGER]] · [[CANON_PRACTICAL_UI_ADHAM_DANNAWAY]] · #ui_ux_design

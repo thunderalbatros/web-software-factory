@@ -52,8 +52,25 @@ import {
   compileSpecFromInterview,
   initClientInterviewFiles
 } from '../orchestrator/client_interview_gate.mjs';
+import { checkAstDiffOscillationBreaker } from '../audit/local_fullstack_and_component_harness.mjs';
+import { evaluateFullJevOuterAndMetaGate } from './jev_semantic_gate.mjs';
+
+const selfHealingAstHashHistory = new Map();
+
+/**
+ * Registers the structural AST hash of a Self-Healing round (`runId`) and immediately trips
+ * the `AST Diff-Oscillation Breaker` if `State A -> State B -> State A` is detected.
+ */
+export function recordAndCheckAstDiffOscillation(runId = 'default-run', astStructuralHash = '') {
+  const history = selfHealingAstHashHistory.get(runId) || [];
+  history.push(String(astStructuralHash));
+  selfHealingAstHashHistory.set(runId, history);
+  return checkAstDiffOscillationBreaker(history);
+}
 
 export {
+  checkAstDiffOscillationBreaker,
+  evaluateFullJevOuterAndMetaGate,
   runBlindIndependentReview,
   verifyRoleMcpPermission,
   ADAPTIVE_LANES,

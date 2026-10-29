@@ -21,6 +21,17 @@ import http from 'node:http';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadProjectConfig, FACTORY_ROOT } from '../lib/project_loader.mjs';
+import {
+  runPropertyBasedInvariantsCheck,
+  runStatelessComponentStressHarness,
+  runLocalEnterpriseAndCommerceSimulator
+} from './local_fullstack_and_component_harness.mjs';
+
+export {
+  runPropertyBasedInvariantsCheck,
+  runStatelessComponentStressHarness,
+  runLocalEnterpriseAndCommerceSimulator
+};
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

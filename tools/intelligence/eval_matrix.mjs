@@ -27,6 +27,8 @@ import { runChaosMonkeyAudit, CHAOS_REPORT_PATH } from '../audit/chaos_monkey_te
 import { runRyuxDesignGate } from '../audit/ryux_design_gate.mjs';
 import { loadProjectConfig, FACTORY_ROOT } from '../lib/project_loader.mjs';
 import { emitFactoryTelemetryEvent } from '../cockpit/live_telemetry_bus.mjs';
+import { evaluateFullJevOuterAndMetaGate } from './jev_semantic_gate.mjs';
+import { runPropertyBasedInvariantsCheck } from '../audit/local_fullstack_and_component_harness.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -568,6 +570,11 @@ export async function runEvalMatrix(projectInput = '', options = {}) {
     }
   });
 
+  const jevGateResult = await evaluateFullJevOuterAndMetaGate({
+    specPath: specCandidatePath
+  });
+  const propertyFuzzing50 = runPropertyBasedInvariantsCheck();
+
   const compositeScore = hardGateCalc.finalScore;
   const f2pAndP2p = verifyF2pAndP2pGate({
     f2pVerified: !hardGateCalc.vetoTriggered && compositeScore >= 95,
@@ -595,6 +602,8 @@ export async function runEvalMatrix(projectInput = '', options = {}) {
   results.hardGatedBlocks = hardGatedBlocks;
   results.sealedEnvelopeEvals = sealedEnvelopeEvals;
   results.blindReview = blindReview;
+  results.jevOuterAndMetaGate = jevGateResult;
+  results.propertyBasedFuzzing50Vectors = propertyFuzzing50;
   results.vetoTriggered = hardGateCalc.vetoTriggered;
   results.vetoReasons = hardGateCalc.vetoReasons;
   results.vetoInvariantVerified = vetoInvariantVerified;

@@ -21,6 +21,9 @@ import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { buildOrUpdateAstIndex } from './codebase_ast_indexer.mjs';
+import { evaluatePersistedStateAndEnvOwnerGate } from './jev_semantic_gate.mjs';
+
+export { evaluatePersistedStateAndEnvOwnerGate };
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
