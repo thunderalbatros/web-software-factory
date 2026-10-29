@@ -429,6 +429,72 @@ export function runNegativeSelfTest() {
   }
 }
 
+/**
+ * Knip-Style Module, Script Entrypoint & Dependency Graph Hygiene Auditor (`auditModuleAndDependencyHygiene` — `[VULN-05]`):
+ * Verifies that:
+ *   1. Every `node tools/...` script in `package.json#scripts` resolves to an existing file on disk.
+ *   2. Every package in `package.json#dependencies` is actively referenced in `tools/`, `templates/`, or `.mcp.json`.
+ */
+export function auditModuleAndDependencyHygiene() {
+  const pkgPath = path.join(ROOT, 'package.json');
+  const mcpPath = path.join(ROOT, '.mcp.json');
+  if (!fs.existsSync(pkgPath)) {
+    return { passed: true, brokenScripts: [], unusedDependencies: [], totalDependenciesChecked: 0 };
+  }
+
+  const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf8'));
+  const scripts = pkg.scripts || {};
+  const deps = Object.keys(pkg.dependencies || {});
+
+  const brokenScripts = [];
+  for (const [scriptName, cmd] of Object.entries(scripts)) {
+    const m = String(cmd).match(/node\s+([^\s]+)/);
+    if (m) {
+      const targetRel = m[1];
+      const absTarget = path.join(ROOT, targetRel);
+      if (!fs.existsSync(absTarget)) {
+        brokenScripts.push({ scriptName, missingFile: targetRel });
+      }
+    }
+  }
+
+  // Collect source corpus across tools/ and .mcp.json
+  const corpusChunks = [];
+  if (fs.existsSync(mcpPath)) {
+    try { corpusChunks.push(fs.readFileSync(mcpPath, 'utf8')); } catch (_) {}
+  }
+
+  const walkTools = (dir) => {
+    if (!fs.existsSync(dir)) return;
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        if (entry.name !== 'out' && entry.name !== 'node_modules') walkTools(full);
+      } else if (/\.(?:mjs|js|json)$/i.test(entry.name)) {
+        try { corpusChunks.push(fs.readFileSync(full, 'utf8')); } catch (_) {}
+      }
+    }
+  };
+  walkTools(path.join(ROOT, 'tools'));
+  const fullCorpus = corpusChunks.join('\n');
+
+  const unusedDependencies = [];
+  for (const dep of deps) {
+    if (!fullCorpus.includes(dep)) {
+      unusedDependencies.push(dep);
+    }
+  }
+
+  return {
+    passed: brokenScripts.length === 0 && unusedDependencies.length === 0,
+    engine: 'knip-style-dependency-and-entrypoint-guard',
+    totalScriptsChecked: Object.keys(scripts).length,
+    brokenScripts,
+    totalDependenciesChecked: deps.length,
+    unusedDependencies
+  };
+}
+
 export function runAstAudit(targetDirs = [
   'site/js',
   'core/src',
@@ -497,6 +563,7 @@ export function runAstAudit(targetDirs = [
   }
 
   const astGraphSync = buildOrUpdateAstIndex({ forceRebuild: false });
+  const moduleHygiene = auditModuleAndDependencyHygiene();
   const elapsedMs = Math.round(performance.now() - startAstMs);
   const score = Math.max(0, 100 - (missingMethodErrors * 25) - (securityBlockers * 50) - (warnings * 2));
 
@@ -504,6 +571,7 @@ export function runAstAudit(targetDirs = [
   console.log(`Files Scanned:          ${totalFiles}`);
   console.log(`Classes Inspected:      ${totalClasses}`);
   console.log(`CocoIndex AST Graph:    ${astGraphSync.totalFilesIndexed} files / ${astGraphSync.totalSymbols} symbols (${astGraphSync.elapsedMs}ms)`);
+  console.log(`Knip Module Hygiene:    ${moduleHygiene.passed ? 'PASS' : 'WARN'} (${moduleHygiene.totalDependenciesChecked} deps, ${moduleHygiene.brokenScripts.length} broken scripts, ${moduleHygiene.unusedDependencies.length} unused deps)`);
   console.log(`Missing Method Errors:  ${missingMethodErrors}`);
   console.log(`Security Blockers:      ${securityBlockers}`);
   console.log(`Minor Warnings:         ${warnings}`);
@@ -511,7 +579,7 @@ export function runAstAudit(targetDirs = [
   console.log(`AST Health Score:       ${score.toFixed(1)} / 100.0`);
   console.log(`------------------------------------------------------\n`);
 
-  const passed = missingMethodErrors === 0 && securityBlockers === 0;
+  const passed = missingMethodErrors === 0 && securityBlockers === 0 && moduleHygiene.brokenScripts.length === 0;
   if (passed) {
     console.log(`✅ [AST GUARD PASSED] Zero symbolic errors or security blockers in ${elapsedMs}ms.\n`);
   } else {
@@ -527,7 +595,8 @@ export function runAstAudit(targetDirs = [
     missingMethodErrors,
     securityBlockers,
     warnings,
-    astGraphStats: astGraphSync
+    astGraphStats: astGraphSync,
+    moduleAndDependencyHygiene: moduleHygiene
   };
 }
 

@@ -1,0 +1,9 @@
+- document:
+  - banner: "header"
+    - link: "Inicio"
+  - navigation: "Navegación Principal"
+    - link: "Inicio"
+  - main: "main"
+    - heading [level=1]: "Plataforma Enterprise Verificada"
+    - button: "Comenzar Ahora"
+  - contentinfo: "footer"

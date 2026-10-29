@@ -1,8 +1,134 @@
 {
   "schemaVersion": "2026.10-xstate-v5-actor-snapshot",
   "projectSlug": "agencia-alfa",
-  "updatedAt": "2026-10-29T21:00:48.774Z",
+  "updatedAt": "2026-10-29T22:57:09.757Z",
+  "currentState": "packaged_and_landed",
   "activeState": "packaged_and_landed",
+  "chainHash": "burr_8cea06032a8d",
+  "burrActionLog": [
+    {
+      "event": "INIT_PROJECT",
+      "to": "gate1_prd_pending",
+      "ts": "2026-10-29T22:57:09.755Z",
+      "reads": [],
+      "writes": [
+        "gate1Status",
+        "gate2Status"
+      ]
+    },
+    {
+      "event": "APPROVE_GATE1_PRD",
+      "to": "gate1_prd_approved",
+      "actor": "human",
+      "ts": "2026-10-29T22:57:09.755Z",
+      "reads": [
+        "gate1Status"
+      ],
+      "writes": [
+        "gate1Status",
+        "hasBrandIdentityLock"
+      ]
+    },
+    {
+      "event": "OPEN_GATE2_INTERVIEW",
+      "to": "gate2_spec_pending",
+      "ts": "2026-10-29T22:57:09.755Z",
+      "reads": [
+        "gate1Status"
+      ],
+      "writes": [
+        "gate2Status"
+      ]
+    },
+    {
+      "event": "APPROVE_GATE2_SPEC",
+      "to": "gate2_spec_approved",
+      "actor": "human",
+      "ts": "2026-10-29T22:57:09.755Z",
+      "reads": [
+        "gate1Status",
+        "gate2Status"
+      ],
+      "writes": [
+        "gate2Status",
+        "hasSpecAndDesign"
+      ]
+    },
+    {
+      "event": "COMPLETE_RPI_UNTAINTED_RESEARCH",
+      "to": "rpi_research_untainted",
+      "ts": "2026-10-29T22:57:09.755Z",
+      "reads": [
+        "gate2Status"
+      ],
+      "writes": [
+        "untaintedResearchVerified",
+        "maxStageInstructions"
+      ]
+    },
+    {
+      "event": "START_WAVE1_FOUNDATION",
+      "to": "wave1_foundation",
+      "ts": "2026-10-29T22:57:09.755Z",
+      "reads": [
+        "untaintedResearchVerified"
+      ],
+      "writes": [
+        "tokensCompiled",
+        "morphologyApplied"
+      ]
+    },
+    {
+      "event": "COMPLETE_WAVE1_FOUNDATION",
+      "to": "wave2_specialist_forge",
+      "ts": "2026-10-29T22:57:09.755Z",
+      "reads": [
+        "tokensCompiled"
+      ],
+      "writes": [
+        "wave2Complete"
+      ]
+    },
+    {
+      "event": "COMPLETE_WAVE2_SPECIALIST_FORGE",
+      "to": "wave3_qa_and_jev_verification",
+      "ts": "2026-10-29T22:57:09.755Z",
+      "reads": [
+        "wave2Complete"
+      ],
+      "writes": [
+        "ryuxScore",
+        "securityScore",
+        "visualBlockers"
+      ]
+    },
+    {
+      "event": "PASS_WAVE3_QA_AND_JEV",
+      "to": "hitl_review_ready",
+      "ts": "2026-10-29T22:57:09.755Z",
+      "reads": [
+        "ryuxScore",
+        "securityScore",
+        "visualBlockers"
+      ],
+      "writes": [
+        "hitlReady"
+      ]
+    },
+    {
+      "event": "APPROVE_HITL_DELIVERY",
+      "to": "packaged_and_landed",
+      "actor": "human",
+      "ts": "2026-10-29T22:57:09.755Z",
+      "reads": [
+        "ryuxScore",
+        "securityScore"
+      ],
+      "writes": [
+        "hitlApprovedByCto"
+      ]
+    }
+  ],
   "status": "done",
   "context": {
     "projectSlug": "agencia-alfa",
@@ -25,7 +151,7 @@
       {
         "event": "INIT_PROJECT",
         "to": "gate1_prd_pending",
-        "ts": "2026-10-29T21:00:48.773Z",
+        "ts": "2026-10-29T22:57:09.755Z",
         "reads": [],
         "writes": [
           "gate1Status",
@@ -36,7 +162,7 @@
         "event": "APPROVE_GATE1_PRD",
         "to": "gate1_prd_approved",
         "actor": "human",
-        "ts": "2026-10-29T21:00:48.773Z",
+        "ts": "2026-10-29T22:57:09.755Z",
         "reads": [
           "gate1Status"
         ],
@@ -48,7 +174,7 @@
       {
         "event": "OPEN_GATE2_INTERVIEW",
         "to": "gate2_spec_pending",
-        "ts": "2026-10-29T21:00:48.773Z",
+        "ts": "2026-10-29T22:57:09.755Z",
         "reads": [
           "gate1Status"
         ],
@@ -60,7 +186,7 @@
         "event": "APPROVE_GATE2_SPEC",
         "to": "gate2_spec_approved",
         "actor": "human",
-        "ts": "2026-10-29T21:00:48.774Z",
+        "ts": "2026-10-29T22:57:09.755Z",
         "reads": [
           "gate1Status",
           "gate2Status"
@@ -73,7 +199,7 @@
       {
         "event": "COMPLETE_RPI_UNTAINTED_RESEARCH",
         "to": "rpi_research_untainted",
-        "ts": "2026-10-29T21:00:48.774Z",
+        "ts": "2026-10-29T22:57:09.755Z",
         "reads": [
           "gate2Status"
         ],
@@ -85,7 +211,7 @@
       {
         "event": "START_WAVE1_FOUNDATION",
         "to": "wave1_foundation",
-        "ts": "2026-10-29T21:00:48.774Z",
+        "ts": "2026-10-29T22:57:09.755Z",
         "reads": [
           "untaintedResearchVerified"
         ],
@@ -97,7 +223,7 @@
       {
         "event": "COMPLETE_WAVE1_FOUNDATION",
         "to": "wave2_specialist_forge",
-        "ts": "2026-10-29T21:00:48.774Z",
+        "ts": "2026-10-29T22:57:09.755Z",
         "reads": [
           "tokensCompiled"
         ],
@@ -108,7 +234,7 @@
       {
         "event": "COMPLETE_WAVE2_SPECIALIST_FORGE",
         "to": "wave3_qa_and_jev_verification",
-        "ts": "2026-10-29T21:00:48.774Z",
+        "ts": "2026-10-29T22:57:09.755Z",
         "reads": [
           "wave2Complete"
         ],
@@ -121,7 +247,7 @@
       {
         "event": "PASS_WAVE3_QA_AND_JEV",
         "to": "hitl_review_ready",
-        "ts": "2026-10-29T21:00:48.774Z",
+        "ts": "2026-10-29T22:57:09.755Z",
         "reads": [
           "ryuxScore",
           "securityScore",
@@ -135,7 +261,7 @@
         "event": "APPROVE_HITL_DELIVERY",
         "to": "packaged_and_landed",
         "actor": "human",
-        "ts": "2026-10-29T21:00:48.774Z",
+        "ts": "2026-10-29T22:57:09.755Z",
         "reads": [
           "ryuxScore",
           "securityScore"
@@ -172,7 +298,7 @@
         {
           "event": "INIT_PROJECT",
           "to": "gate1_prd_pending",
-          "ts": "2026-10-29T21:00:48.773Z",
+          "ts": "2026-10-29T22:57:09.755Z",
           "reads": [],
           "writes": [
             "gate1Status",
@@ -183,7 +309,7 @@
           "event": "APPROVE_GATE1_PRD",
           "to": "gate1_prd_approved",
           "actor": "human",
-          "ts": "2026-10-29T21:00:48.773Z",
+          "ts": "2026-10-29T22:57:09.755Z",
           "reads": [
             "gate1Status"
           ],
@@ -195,7 +321,7 @@
         {
           "event": "OPEN_GATE2_INTERVIEW",
           "to": "gate2_spec_pending",
-          "ts": "2026-10-29T21:00:48.773Z",
+          "ts": "2026-10-29T22:57:09.755Z",
           "reads": [
             "gate1Status"
           ],
@@ -207,7 +333,7 @@
           "event": "APPROVE_GATE2_SPEC",
           "to": "gate2_spec_approved",
           "actor": "human",
-          "ts": "2026-10-29T21:00:48.774Z",
+          "ts": "2026-10-29T22:57:09.755Z",
           "reads": [
             "gate1Status",
             "gate2Status"
@@ -220,7 +346,7 @@
         {
           "event": "COMPLETE_RPI_UNTAINTED_RESEARCH",
           "to": "rpi_research_untainted",
-          "ts": "2026-10-29T21:00:48.774Z",
+          "ts": "2026-10-29T22:57:09.755Z",
           "reads": [
             "gate2Status"
           ],
@@ -232,7 +358,7 @@
         {
           "event": "START_WAVE1_FOUNDATION",
           "to": "wave1_foundation",
-          "ts": "2026-10-29T21:00:48.774Z",
+          "ts": "2026-10-29T22:57:09.755Z",
           "reads": [
             "untaintedResearchVerified"
           ],
@@ -244,7 +370,7 @@
         {
           "event": "COMPLETE_WAVE1_FOUNDATION",
           "to": "wave2_specialist_forge",
-          "ts": "2026-10-29T21:00:48.774Z",
+          "ts": "2026-10-29T22:57:09.755Z",
           "reads": [
             "tokensCompiled"
           ],
@@ -255,7 +381,7 @@
         {
           "event": "COMPLETE_WAVE2_SPECIALIST_FORGE",
           "to": "wave3_qa_and_jev_verification",
-          "ts": "2026-10-29T21:00:48.774Z",
+          "ts": "2026-10-29T22:57:09.755Z",
           "reads": [
             "wave2Complete"
           ],
@@ -268,7 +394,7 @@
         {
           "event": "PASS_WAVE3_QA_AND_JEV",
           "to": "hitl_review_ready",
-          "ts": "2026-10-29T21:00:48.774Z",
+          "ts": "2026-10-29T22:57:09.755Z",
           "reads": [
             "ryuxScore",
             "securityScore",
@@ -282,7 +408,7 @@
           "event": "APPROVE_HITL_DELIVERY",
           "to": "packaged_and_landed",
           "actor": "human",
-          "ts": "2026-10-29T21:00:48.774Z",
+          "ts": "2026-10-29T22:57:09.755Z",
           "reads": [
             "ryuxScore",
             "securityScore"

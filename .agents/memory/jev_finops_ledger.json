@@ -3,16 +3,176 @@
   "isolatedFromGcpVertexBudget": true,
   "dailyJevBudgetUsd": 0.5,
   "currentDate": "2026-10-29",
-  "dailySpendUsd": 0,
-  "totalHistoricalSpendUsd": 0,
-  "totalApiCalls": 38,
-  "totalCacheHits": 13,
-  "totalCacheSavedUsd": 0.0195,
+  "dailySpendUsd": 0.000119,
+  "totalHistoricalSpendUsd": 0.000119,
+  "totalApiCalls": 50,
+  "totalCacheHits": 17,
+  "totalCacheSavedUsd": 0.0255,
   "lastProviderMode": "OFFICIAL_JEV_API_HTTP_FALLBACK",
-  "jevApiBaseUrl": "https://api.boundaryml.com/v1/jev/evaluate",
-  "jevModel": "jev-judge-2026-v1",
-  "updatedAt": "2026-10-29T21:00:48.757Z",
+  "jevApiBaseUrl": "https://api.typesafe.ai/v1/systemone",
+  "jevModel": "jev-latest",
+  "updatedAt": "2026-10-29T22:57:09.733Z",
   "recentEvents": [
+    {
+      "timestamp": "2026-10-29T22:57:09.733Z",
+      "predicateId": "jev-memory-write-admission-gate",
+      "provider": "OFFICIAL_JEV_API_HTTP_FALLBACK",
+      "cacheHit": true,
+      "latencyMs": 4.96,
+      "tokensUsed": 0,
+      "costUsd": 0,
+      "choice": "COMMIT_GLOBAL_INVARIANT"
+    },
+    {
+      "timestamp": "2026-10-29T22:54:49.677Z",
+      "predicateId": "jev-memory-write-admission-gate",
+      "provider": "OFFICIAL_JEV_API_HTTP_FALLBACK",
+      "cacheHit": true,
+      "latencyMs": 8.33,
+      "tokensUsed": 0,
+      "costUsd": 0,
+      "choice": "COMMIT_GLOBAL_INVARIANT"
+    },
+    {
+      "timestamp": "2026-10-29T22:42:15.396Z",
+      "predicateId": "jev-cross-trace-friction-miner",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 4.902,
+      "tokensUsed": 58,
+      "costUsd": 0,
+      "choice": "FRICTION_CLUSTER_IDENTIFIED"
+    },
+    {
+      "timestamp": "2026-10-29T22:42:15.384Z",
+      "predicateId": "jev-redundant-test-detector",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 2.92,
+      "tokensUsed": 35,
+      "costUsd": 0,
+      "choice": "REDUNDANT_TAUTOLOGICAL_TEST"
+    },
+    {
+      "timestamp": "2026-10-29T22:42:15.373Z",
+      "predicateId": "jev-spec-business-invariant-alignment",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 5.791,
+      "tokensUsed": 60,
+      "costUsd": 0,
+      "choice": "ALIGNED_WITH_SPEC"
+    },
+    {
+      "timestamp": "2026-10-29T22:42:15.361Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 2.595,
+      "tokensUsed": 15,
+      "costUsd": 0,
+      "choice": "NOUL"
+    },
+    {
+      "timestamp": "2026-10-29T22:42:15.354Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": true,
+      "latencyMs": 0.125,
+      "tokensUsed": 0,
+      "costUsd": 0,
+      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
+    },
+    {
+      "timestamp": "2026-10-29T22:42:15.350Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 5.653,
+      "tokensUsed": 52,
+      "costUsd": 0,
+      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
+    },
+    {
+      "timestamp": "2026-10-29T22:42:15.146Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "OFFICIAL_TYPESAFE_SYSTEMONE_JEV_API",
+      "cacheHit": false,
+      "latencyMs": 497.927,
+      "tokensUsed": 476,
+      "costUsd": 0.000119,
+      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
+    },
+    {
+      "timestamp": "2026-10-29T22:39:12.129Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "OFFICIAL_JEV_API_HTTP_422_FALLBACK",
+      "cacheHit": false,
+      "latencyMs": 359.394,
+      "tokensUsed": 35,
+      "costUsd": 0,
+      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
+    },
+    {
+      "timestamp": "2026-10-29T22:39:02.294Z",
+      "predicateId": "jev-cross-trace-friction-miner",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 2.224,
+      "tokensUsed": 58,
+      "costUsd": 0,
+      "choice": "FRICTION_CLUSTER_IDENTIFIED"
+    },
+    {
+      "timestamp": "2026-10-29T22:39:02.289Z",
+      "predicateId": "jev-redundant-test-detector",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 1.99,
+      "tokensUsed": 35,
+      "costUsd": 0,
+      "choice": "REDUNDANT_TAUTOLOGICAL_TEST"
+    },
+    {
+      "timestamp": "2026-10-29T22:39:02.284Z",
+      "predicateId": "jev-spec-business-invariant-alignment",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 2.085,
+      "tokensUsed": 60,
+      "costUsd": 0,
+      "choice": "ALIGNED_WITH_SPEC"
+    },
+    {
+      "timestamp": "2026-10-29T22:39:02.279Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 2.07,
+      "tokensUsed": 15,
+      "costUsd": 0,
+      "choice": "NOUL"
+    },
+    {
+      "timestamp": "2026-10-29T22:39:02.274Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": true,
+      "latencyMs": 0.078,
+      "tokensUsed": 0,
+      "costUsd": 0,
+      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
+    },
+    {
+      "timestamp": "2026-10-29T22:39:02.271Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 4.667,
+      "tokensUsed": 52,
+      "costUsd": 0,
+      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
+    },
     {
       "timestamp": "2026-10-29T21:00:48.757Z",
       "predicateId": "jev-memory-write-admission-gate",
@@ -152,166 +312,6 @@
       "tokensUsed": 139,
       "costUsd": 0,
       "choice": "FRICTION_CLUSTER_IDENTIFIED"
-    },
-    {
-      "timestamp": "2026-10-29T19:02:06.617Z",
-      "predicateId": "jev-redundant-test-detector",
-      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
-      "cacheHit": false,
-      "latencyMs": 7.385,
-      "tokensUsed": 117,
-      "costUsd": 0,
-      "choice": "REDUNDANT_TAUTOLOGICAL_TEST"
-    },
-    {
-      "timestamp": "2026-10-29T19:02:06.603Z",
-      "predicateId": "jev-spec-business-invariant-alignment",
-      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
-      "cacheHit": false,
-      "latencyMs": 5.04,
-      "tokensUsed": 138,
-      "costUsd": 0,
-      "choice": "ALIGNED_WITH_SPEC"
-    },
-    {
-      "timestamp": "2026-10-29T19:02:06.590Z",
-      "predicateId": "jev-persisted-state-and-env-owner-gate",
-      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
-      "cacheHit": false,
-      "latencyMs": 6.805,
-      "tokensUsed": 98,
-      "costUsd": 0,
-      "choice": "NOUL"
-    },
-    {
-      "timestamp": "2026-10-29T19:02:06.575Z",
-      "predicateId": "jev-persisted-state-and-env-owner-gate",
-      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
-      "cacheHit": true,
-      "latencyMs": 0.184,
-      "tokensUsed": 0,
-      "costUsd": 0,
-      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
-    },
-    {
-      "timestamp": "2026-10-29T19:02:06.562Z",
-      "predicateId": "jev-persisted-state-and-env-owner-gate",
-      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
-      "cacheHit": false,
-      "latencyMs": 18.474,
-      "tokensUsed": 134,
-      "costUsd": 0,
-      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
-    },
-    {
-      "timestamp": "2026-10-29T19:02:06.200Z",
-      "predicateId": "jev-memory-write-admission-gate",
-      "provider": "OFFICIAL_JEV_API_HTTP_FALLBACK",
-      "cacheHit": false,
-      "latencyMs": 723.199,
-      "tokensUsed": 95,
-      "costUsd": 0,
-      "choice": "COMMIT_GLOBAL_INVARIANT"
-    },
-    {
-      "timestamp": "2026-10-29T19:00:42.122Z",
-      "predicateId": "jev-memory-write-admission-gate",
-      "provider": "OFFICIAL_JEV_API_HTTP_FALLBACK",
-      "cacheHit": false,
-      "latencyMs": 770.384,
-      "tokensUsed": 95,
-      "costUsd": 0,
-      "choice": "NOUL"
-    },
-    {
-      "timestamp": "2026-10-29T17:45:59.660Z",
-      "predicateId": "jev-cross-trace-friction-miner",
-      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
-      "cacheHit": false,
-      "latencyMs": 4.324,
-      "tokensUsed": 139,
-      "costUsd": 0,
-      "choice": "FRICTION_CLUSTER_IDENTIFIED"
-    },
-    {
-      "timestamp": "2026-10-29T17:45:59.652Z",
-      "predicateId": "jev-redundant-test-detector",
-      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
-      "cacheHit": false,
-      "latencyMs": 2.357,
-      "tokensUsed": 117,
-      "costUsd": 0,
-      "choice": "REDUNDANT_TAUTOLOGICAL_TEST"
-    },
-    {
-      "timestamp": "2026-10-29T17:45:59.647Z",
-      "predicateId": "jev-spec-business-invariant-alignment",
-      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
-      "cacheHit": false,
-      "latencyMs": 2.464,
-      "tokensUsed": 138,
-      "costUsd": 0,
-      "choice": "ALIGNED_WITH_SPEC"
-    },
-    {
-      "timestamp": "2026-10-29T17:45:59.641Z",
-      "predicateId": "jev-persisted-state-and-env-owner-gate",
-      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
-      "cacheHit": false,
-      "latencyMs": 3.034,
-      "tokensUsed": 98,
-      "costUsd": 0,
-      "choice": "NOUL"
-    },
-    {
-      "timestamp": "2026-10-29T17:45:59.632Z",
-      "predicateId": "jev-persisted-state-and-env-owner-gate",
-      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
-      "cacheHit": true,
-      "latencyMs": 0.142,
-      "tokensUsed": 0,
-      "costUsd": 0,
-      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
-    },
-    {
-      "timestamp": "2026-10-29T17:45:59.628Z",
-      "predicateId": "jev-persisted-state-and-env-owner-gate",
-      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
-      "cacheHit": false,
-      "latencyMs": 8.008,
-      "tokensUsed": 134,
-      "costUsd": 0,
-      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
-    },
-    {
-      "timestamp": "2026-10-29T17:38:16.811Z",
-      "predicateId": "jev-cross-trace-friction-miner",
-      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
-      "cacheHit": false,
-      "latencyMs": 4.316,
-      "tokensUsed": 139,
-      "costUsd": 0,
-      "choice": "FRICTION_CLUSTER_IDENTIFIED"
-    },
-    {
-      "timestamp": "2026-10-29T17:38:16.801Z",
-      "predicateId": "jev-redundant-test-detector",
-      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
-      "cacheHit": false,
-      "latencyMs": 4.437,
-      "tokensUsed": 117,
-      "costUsd": 0,
-      "choice": "REDUNDANT_TAUTOLOGICAL_TEST"
-    },
-    {
-      "timestamp": "2026-10-29T17:38:16.790Z",
-      "predicateId": "jev-spec-business-invariant-alignment",
-      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
-      "cacheHit": false,
-      "latencyMs": 3.121,
-      "tokensUsed": 138,
-      "costUsd": 0,
-      "choice": "ALIGNED_WITH_SPEC"
     }
   ]
 }

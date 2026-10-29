@@ -1,14 +1,14 @@
 {
   "schema": "cocoindex-code-ast-graph-v1",
-  "updatedAt": "2026-10-29T21:00:45.341Z",
+  "updatedAt": "2026-10-29T22:54:32.245Z",
   "activeProject": "agencia-alfa",
-  "combinedSha256": "d2f6d69d565d05ee",
+  "combinedSha256": "5e35ce34f52d5a48",
   "stats": {
-    "totalFilesIndexed": 143,
-    "reindexedFilesCount": 1,
-    "cachedFilesCount": 142,
-    "totalSymbols": 1215,
-    "totalExports": 719,
+    "totalFilesIndexed": 144,
+    "reindexedFilesCount": 4,
+    "cachedFilesCount": 140,
+    "totalSymbols": 1231,
+    "totalExports": 735,
     "estimatedTokenSavingsPct": 72.5
   },
   "files": [
@@ -598,7 +598,7 @@
           "endLine": 359
         }
       ],
-      "mtimeMs": 1793307629169.4878,
+      "mtimeMs": 1793309219380.4382,
       "size": 9362
     },
     {
@@ -880,7 +880,7 @@
           "endLine": 382
         }
       ],
-      "mtimeMs": 1793300542538.4846,
+      "mtimeMs": 1793314075703.2888,
       "size": 13091
     },
     {
@@ -1043,13 +1043,13 @@
       "importedBy": [],
       "calls": [],
       "symbols": [],
-      "mtimeMs": 1793307630477.6738,
+      "mtimeMs": 1793309220074.7515,
       "size": 751
     },
     {
       "path": "projects/agencia-alfa/site/js/fx3d/diorama-hero-3d.mjs",
       "ext": ".mjs",
-      "sha256": "6ca892547fb166a1",
+      "sha256": "7f2be9863559fd8d",
       "lineCount": 72,
       "exports": [
         "attachGpuFpsWatchdog",
@@ -1095,14 +1095,14 @@
           "endLine": 71
         }
       ],
-      "mtimeMs": 1793307630476.6692,
-      "size": 2359
+      "mtimeMs": 1793309425176.8374,
+      "size": 2430
     },
     {
       "path": "projects/agencia-alfa/site/js/industry-interactive.js",
       "ext": ".js",
-      "sha256": "9593d729f0675974",
-      "lineCount": 121,
+      "sha256": "14b0539e5fec9fc0",
+      "lineCount": 137,
       "exports": [],
       "imports": [],
       "importedBy": [],
@@ -1122,7 +1122,10 @@
         "iniciado",
         "BigInt",
         "querySelectorAll",
-        "forEach"
+        "forEach",
+        "initPrdCustomSynthesizedModules",
+        "querySelector",
+        "toUpperCase"
       ],
       "symbols": [
         {
@@ -1134,8 +1137,8 @@
           "endLine": 29
         }
       ],
-      "mtimeMs": 1793300542543.4612,
-      "size": 5083
+      "mtimeMs": 1793314075709.2722,
+      "size": 5850
     },
     {
       "path": "projects/agencia-alfa/site/js/mobile-native-bridge.ts",
@@ -1487,7 +1490,7 @@
           "endLine": 244
         }
       ],
-      "mtimeMs": 1793307629174.5442,
+      "mtimeMs": 1793309219382.4382,
       "size": 8546
     },
     {
@@ -1859,8 +1862,8 @@
     {
       "path": "projects/agencia-alfa/worker/index.js",
       "ext": ".js",
-      "sha256": "691c76d89eb89983",
-      "lineCount": 589,
+      "sha256": "7c33bbee47dd5e62",
+      "lineCount": 599,
       "exports": [
         "withSecurityHeaders",
         "validateFetchMetadata",
@@ -2000,8 +2003,8 @@
           "endLine": 268
         }
       ],
-      "mtimeMs": 1793239286193.177,
-      "size": 22448
+      "mtimeMs": 1793314313507.671,
+      "size": 22848
     },
     {
       "path": "templates/astro-edge/astro.config.mjs",
@@ -3047,7 +3050,7 @@
           "endLine": 19
         }
       ],
-      "mtimeMs": 1793300542540.4602,
+      "mtimeMs": 1793314075706.2734,
       "size": 12275
     },
     {
@@ -4769,7 +4772,7 @@
           "endLine": 19
         }
       ],
-      "mtimeMs": 1793300542539.46,
+      "mtimeMs": 1793314075705.2764,
       "size": 12275
     },
     {
@@ -5102,8 +5105,8 @@
     {
       "path": "templates/vanilla-edge/worker/index.js",
       "ext": ".js",
-      "sha256": "db0a7ad70d2446b2",
-      "lineCount": 582,
+      "sha256": "aa6c5d334c85fb87",
+      "lineCount": 592,
       "exports": [
         "withSecurityHeaders",
         "validateFetchMetadata",
@@ -5243,8 +5246,8 @@
           "endLine": 264
         }
       ],
-      "mtimeMs": 1793239336301.9866,
-      "size": 22028
+      "mtimeMs": 1793314294083.3972,
+      "size": 22428
     },
     {
       "path": "tools/ast_guard.mjs",
@@ -5359,6 +5362,114 @@
       ],
       "mtimeMs": 1793306887334.823,
       "size": 10170
+    },
+    {
+      "path": "tools/audit/api_contract_verifier.mjs",
+      "ext": ".mjs",
+      "sha256": "91399f0bd0d4a2be",
+      "lineCount": 272,
+      "exports": [
+        "LeadRequestValibotSchema",
+        "HealthResponseValibotSchema",
+        "extractApiRoutesFromSource",
+        "buildOpenApi31Spec",
+        "verifyAndEmitOpenApiContract"
+      ],
+      "imports": [
+        "node:fs",
+        "node:path",
+        "node:url",
+        "valibot",
+        "../lib/project_loader.mjs"
+      ],
+      "importedBy": [
+        "tools/build_dist.mjs"
+      ],
+      "calls": [
+        "fileURLToPath",
+        "pipe",
+        "string",
+        "minLength",
+        "maxLength",
+        "email",
+        "optional",
+        "picklist",
+        "exec",
+        "add",
+        "from",
+        "sort",
+        "replace",
+        "endpoint",
+        "Contract",
+        "loadProjectConfig",
+        "join",
+        "existsSync",
+        "readdirSync",
+        "endsWith",
+        "readFileSync",
+        "extractApiRoutesFromSource",
+        "has",
+        "some",
+        "startsWith",
+        "push",
+        "safeParse",
+        "toISOString",
+        "buildOpenApi31Spec",
+        "mkdirSync",
+        "writeFileSync",
+        "stringify",
+        "keys",
+        "resolve",
+        "slice",
+        "indexOf",
+        "verifyAndEmitOpenApiContract",
+        "log",
+        "exit"
+      ],
+      "symbols": [
+        {
+          "name": "LeadRequestValibotSchema",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const LeadRequestValibotSchema",
+          "startLine": 20,
+          "endLine": 26
+        },
+        {
+          "name": "HealthResponseValibotSchema",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const HealthResponseValibotSchema",
+          "startLine": 28,
+          "endLine": 32
+        },
+        {
+          "name": "extractApiRoutesFromSource",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function extractApiRoutesFromSource(sourceCode = '')",
+          "startLine": 37,
+          "endLine": 51
+        },
+        {
+          "name": "buildOpenApi31Spec",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function buildOpenApi31Spec({ projectSlug = 'agencia-alfa', brandName = 'Agencia Alfa', routes = [] } = {})",
+          "startLine": 56,
+          "endLine": 56
+        },
+        {
+          "name": "verifyAndEmitOpenApiContract",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function verifyAndEmitOpenApiContract(projectInput = '')",
+          "startLine": 161,
+          "endLine": 262
+        }
+      ],
+      "mtimeMs": 1793314223061.3164,
+      "size": 9457
     },
     {
       "path": "tools/audit/ast_guard.mjs",
@@ -6030,8 +6141,8 @@
     {
       "path": "tools/audit/local_fullstack_and_component_harness.mjs",
       "ext": ".mjs",
-      "sha256": "ffc01d0253ccede0",
-      "lineCount": 738,
+      "sha256": "8be5747c0ab88a28",
+      "lineCount": 995,
       "exports": [
         "ROOT",
         "FIVE_EXTREME_COMPONENT_STATES",
@@ -6041,6 +6152,8 @@
         "runPropertyBasedInvariantsCheck",
         "checkAstDiffOscillationBreaker",
         "inspect3dCanvasHistogramStability",
+        "runPgliteRealPostgresRlsVerification",
+        "runDeterministicMutationTestingSuite",
         "runFullLocalHarnessSuite"
       ],
       "imports": [
@@ -6049,7 +6162,8 @@
         "node:path",
         "node:crypto",
         "node:url",
-        "playwright-core"
+        "playwright-core",
+        "@electric-sql/pglite"
       ],
       "importedBy": [
         "tools/audit/visual_audit.mjs",
@@ -6110,84 +6224,100 @@
           "kind": "constant",
           "exported": true,
           "signature": "export const ROOT",
-          "startLine": 39,
-          "endLine": 39
+          "startLine": 40,
+          "endLine": 40
         },
         {
           "name": "findSystemBrowser",
           "kind": "function",
           "exported": false,
           "signature": "function findSystemBrowser()",
-          "startLine": 48,
-          "endLine": 50
+          "startLine": 49,
+          "endLine": 51
         },
         {
           "name": "FIVE_EXTREME_COMPONENT_STATES",
           "kind": "constant",
           "exported": true,
           "signature": "export const FIVE_EXTREME_COMPONENT_STATES",
-          "startLine": 52,
-          "endLine": 52
+          "startLine": 53,
+          "endLine": 53
         },
         {
           "name": "buildMicroStorybookHtml",
           "kind": "function",
           "exported": true,
           "signature": "export function buildMicroStorybookHtml(states = FIVE_EXTREME_COMPONENT_STATES)",
-          "startLine": 106,
-          "endLine": 155
+          "startLine": 107,
+          "endLine": 156
         },
         {
           "name": "runStatelessComponentStressHarness",
           "kind": "function",
           "exported": true,
           "signature": "export async function runStatelessComponentStressHarness()",
-          "startLine": 165,
-          "endLine": 268
+          "startLine": 166,
+          "endLine": 269
         },
         {
           "name": "runLocalEnterpriseAndCommerceSimulator",
           "kind": "function",
           "exported": true,
           "signature": "export async function runLocalEnterpriseAndCommerceSimulator()",
-          "startLine": 278,
-          "endLine": 555
+          "startLine": 279,
+          "endLine": 556
         },
         {
           "name": "runPropertyBasedInvariantsCheck",
           "kind": "function",
           "exported": true,
           "signature": "export function runPropertyBasedInvariantsCheck()",
-          "startLine": 562,
-          "endLine": 631
+          "startLine": 563,
+          "endLine": 632
         },
         {
           "name": "checkAstDiffOscillationBreaker",
           "kind": "function",
           "exported": true,
           "signature": "export function checkAstDiffOscillationBreaker(astHistoryHashes = [])",
-          "startLine": 638,
-          "endLine": 659
+          "startLine": 639,
+          "endLine": 660
         },
         {
           "name": "inspect3dCanvasHistogramStability",
           "kind": "function",
           "exported": true,
           "signature": "export function inspect3dCanvasHistogramStability(samples = [])",
-          "startLine": 666,
-          "endLine": 687
+          "startLine": 667,
+          "endLine": 688
+        },
+        {
+          "name": "runPgliteRealPostgresRlsVerification",
+          "kind": "function",
+          "exported": true,
+          "signature": "export async function runPgliteRealPostgresRlsVerification()",
+          "startLine": 699,
+          "endLine": 761
+        },
+        {
+          "name": "runDeterministicMutationTestingSuite",
+          "kind": "function",
+          "exported": true,
+          "signature": "export async function runDeterministicMutationTestingSuite()",
+          "startLine": 769,
+          "endLine": 936
         },
         {
           "name": "runFullLocalHarnessSuite",
           "kind": "function",
           "exported": true,
           "signature": "export async function runFullLocalHarnessSuite()",
-          "startLine": 692,
-          "endLine": 720
+          "startLine": 941,
+          "endLine": 975
         }
       ],
-      "mtimeMs": 1793281684444.7307,
-      "size": 31286
+      "mtimeMs": 1793313840365.944,
+      "size": 41652
     },
     {
       "path": "tools/audit/mcp_security_auditor.mjs",
@@ -6743,13 +6873,16 @@
     {
       "path": "tools/audit/visual_audit.mjs",
       "ext": ".mjs",
-      "sha256": "216f4345e4ec980a",
-      "lineCount": 962,
+      "sha256": "c9a9a103c1af3201",
+      "lineCount": 1105,
       "exports": [
-        "inspectVisualHarmonyAndMotionKeyframes"
+        "inspectVisualHarmonyAndMotionKeyframes",
+        "runAxeCoreAndAriaSnapshotAudit"
       ],
       "imports": [
         "playwright-core",
+        "pixelmatch",
+        "pngjs",
         "node:fs",
         "node:http",
         "node:path",
@@ -6811,36 +6944,44 @@
           "kind": "function",
           "exported": false,
           "signature": "async function ensureServer()",
-          "startLine": 22,
-          "endLine": 80
+          "startLine": 24,
+          "endLine": 82
         },
         {
           "name": "pageChecks",
           "kind": "function",
           "exported": false,
           "signature": "function pageChecks()",
-          "startLine": 94,
-          "endLine": 359
+          "startLine": 96,
+          "endLine": 361
         },
         {
           "name": "inspectVisualHarmonyAndMotionKeyframes",
           "kind": "function",
           "exported": true,
           "signature": "export async function inspectVisualHarmonyAndMotionKeyframes(options = {})",
-          "startLine": 372,
-          "endLine": 372
+          "startLine": 374,
+          "endLine": 374
+        },
+        {
+          "name": "runAxeCoreAndAriaSnapshotAudit",
+          "kind": "function",
+          "exported": true,
+          "signature": "export async function runAxeCoreAndAriaSnapshotAudit(page = null)",
+          "startLine": 610,
+          "endLine": 729
         },
         {
           "name": "samplePostLoadFps",
           "kind": "function",
           "exported": false,
           "signature": "function samplePostLoadFps(now)",
-          "startLine": 674,
-          "endLine": 688
+          "startLine": 812,
+          "endLine": 826
         }
       ],
-      "mtimeMs": 1793295842762.1094,
-      "size": 43341
+      "mtimeMs": 1793313970976.447,
+      "size": 49615
     },
     {
       "path": "tools/audit/visual_regression.mjs",
@@ -7012,8 +7153,8 @@
     {
       "path": "tools/build_dist.mjs",
       "ext": ".mjs",
-      "sha256": "37c65389f21c2cec",
-      "lineCount": 794,
+      "sha256": "a99e455449fcd91a",
+      "lineCount": 804,
       "exports": [
         "createZipArchiveFromDir",
         "exportStandaloneDeliverable"
@@ -7030,6 +7171,7 @@
         "./media/sonic_and_music_forge.mjs",
         "./design/shader_and_3d_forge.mjs",
         "./media/programmatic_video_forge.mjs",
+        "./audit/api_contract_verifier.mjs",
         "oxc-minify",
         "lightningcss",
         "file:///",
@@ -7053,6 +7195,8 @@
         "dirname",
         "copyFileSync",
         "rmSync",
+        "verifyAndEmitOpenApiContract",
+        "Contract",
         "execSync",
         "readFileSync",
         "replace",
@@ -7079,9 +7223,7 @@
         "stringify",
         "includes",
         "forge3dSceneOrEffect",
-        "Loader",
-        "nif",
-        "generateBrandIntroVideo"
+        "Loader"
       ],
       "symbols": [
         {
@@ -7089,68 +7231,68 @@
           "kind": "function",
           "exported": false,
           "signature": "function copyRecursive(src, dest)",
-          "startLine": 29,
-          "endLine": 41
+          "startLine": 30,
+          "endLine": 42
         },
         {
           "name": "minifyDistAssets",
           "kind": "function",
           "exported": false,
           "signature": "async function minifyDistAssets()",
-          "startLine": 123,
-          "endLine": 253
+          "startLine": 133,
+          "endLine": 263
         },
         {
           "name": "injectHtmlCacheBusters",
           "kind": "function",
           "exported": false,
           "signature": "function injectHtmlCacheBusters(dirPath)",
-          "startLine": 447,
-          "endLine": 462
+          "startLine": 457,
+          "endLine": 472
         },
         {
           "name": "dirMetrics",
           "kind": "function",
           "exported": false,
           "signature": "function dirMetrics(dirPath)",
-          "startLine": 511,
-          "endLine": 524
+          "startLine": 521,
+          "endLine": 534
         },
         {
           "name": "walk",
           "kind": "function",
           "exported": false,
           "signature": "function walk(p)",
-          "startLine": 514,
-          "endLine": 521
+          "startLine": 524,
+          "endLine": 531
         },
         {
           "name": "createZipArchiveFromDir",
           "kind": "function",
           "exported": true,
           "signature": "export function createZipArchiveFromDir(sourceDir, outZipPath, skipFileNames = new Set()",
-          "startLine": 534,
-          "endLine": 615
+          "startLine": 544,
+          "endLine": 625
         },
         {
           "name": "collect",
           "kind": "function",
           "exported": false,
           "signature": "function collect(currentDir)",
-          "startLine": 536,
-          "endLine": 547
+          "startLine": 546,
+          "endLine": 557
         },
         {
           "name": "exportStandaloneDeliverable",
           "kind": "function",
           "exported": true,
           "signature": "export function exportStandaloneDeliverable(cfg = projectConfig)",
-          "startLine": 621,
-          "endLine": 785
+          "startLine": 631,
+          "endLine": 795
         }
       ],
-      "mtimeMs": 1793295420364.7415,
-      "size": 34370
+      "mtimeMs": 1793314257094.2048,
+      "size": 34800
     },
     {
       "path": "tools/chaos_monkey_test.mjs",
@@ -7182,8 +7324,8 @@
     {
       "path": "tools/cockpit/factory_twin_server.mjs",
       "ext": ".mjs",
-      "sha256": "98ba8ee988dde6b9",
-      "lineCount": 1466,
+      "sha256": "a7d91d099d5fc8b2",
+      "lineCount": 1493,
       "exports": [
         "DEFAULT_COCKPIT_PORT",
         "renderCockpitHtml",
@@ -7220,10 +7362,15 @@
         "CTO",
         "Beads",
         "Visual",
+        "Burr",
         "Adaptativo",
         "RPI",
         "Gated",
         "Estricto",
+        "Memory",
+        "activas",
+        "Ledger",
+        "evals",
         "F2P",
         "VERIFICADO",
         "P2P",
@@ -7237,12 +7384,7 @@
         "async",
         "fetch",
         "setTimeout",
-        "stringify",
-        "has",
-        "set",
-        "get",
-        "push",
-        "computeStationRect"
+        "stringify"
       ],
       "symbols": [
         {
@@ -7266,58 +7408,58 @@
           "kind": "function",
           "exported": false,
           "signature": "function computeStationRect(station, canvasW, canvasH)",
-          "startLine": 774,
-          "endLine": 784
+          "startLine": 783,
+          "endLine": 793
         },
         {
           "name": "syncAgentTargets",
           "kind": "function",
           "exported": false,
           "signature": "function syncAgentTargets(state)",
-          "startLine": 786,
-          "endLine": 819
+          "startLine": 795,
+          "endLine": 828
         },
         {
           "name": "updateDomFromState",
           "kind": "function",
           "exported": false,
           "signature": "function updateDomFromState(state)",
-          "startLine": 821,
-          "endLine": 926
+          "startLine": 830,
+          "endLine": 953
         },
         {
           "name": "renderFloor60Fps",
           "kind": "function",
           "exported": false,
           "signature": "function renderFloor60Fps()",
-          "startLine": 952,
-          "endLine": 1106
+          "startLine": 979,
+          "endLine": 1133
         },
         {
           "name": "createFactoryTwinServer",
           "kind": "function",
           "exported": true,
           "signature": "export function createFactoryTwinServer()",
-          "startLine": 1133,
-          "endLine": 1345
+          "startLine": 1160,
+          "endLine": 1372
         },
         {
           "name": "runCockpitSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export async function runCockpitSelfTest()",
-          "startLine": 1356,
-          "endLine": 1432
+          "startLine": 1383,
+          "endLine": 1459
         }
       ],
-      "mtimeMs": 1793285452242.8699,
-      "size": 52532
+      "mtimeMs": 1793310556011.9087,
+      "size": 55935
     },
     {
       "path": "tools/cockpit/live_telemetry_bus.mjs",
       "ext": ".mjs",
-      "sha256": "9149d797719514a1",
-      "lineCount": 719,
+      "sha256": "0542361c04f3dad3",
+      "lineCount": 828,
       "exports": [
         "FACTORY_ROOT",
         "LIVE_STREAM_JSONL_PATH",
@@ -7327,11 +7469,16 @@
         "ACTIVE_PROJECT_PATH",
         "MCP_ROLE_REGISTRY_PATH",
         "SKILL_QUALITY_PATH",
+        "GCP_FINOPS_BUDGET_PATH",
+        "JEV_MEMORY_REPORT_PATH",
+        "JEV_FINOPS_LEDGER_PATH",
         "telemetryEmitter",
         "FACTORY_STATIONS",
         "FACTORY_AGENTS_ROSTER",
         "KANBAN_COLUMNS",
         "getActiveProjectSnapshot",
+        "getXStateSnapshotForProject",
+        "getFinOpsSnapshot",
         "buildDefaultFactoryState",
         "loadCurrentFactoryState",
         "emitFactoryTelemetryEvent",
@@ -7347,7 +7494,9 @@
         "tools/feedback/client_feedback_triage_agent.mjs",
         "tools/intelligence/agent_squad.mjs",
         "tools/intelligence/eval_matrix.mjs",
+        "tools/intelligence/jev_memory_pipeline.mjs",
         "tools/orchestrator/adaptive_depth_router.mjs",
+        "tools/orchestrator/deterministic_agent_statechart.mjs",
         "tools/orchestrator/humanlayer_rpi_gate.mjs"
       ],
       "calls": [
@@ -7382,20 +7531,20 @@
         "readJsonSafe",
         "join",
         "getActiveProjectSnapshot",
+        "isArray",
+        "getXStateSnapshotForProject",
+        "getFinOpsSnapshot",
         "split",
         "filter",
         "map",
         "toISOString",
         "Valor",
-        "isArray",
         "buildDefaultFactoryState",
         "mkdirSync",
         "writeFileSync",
         "stringify",
         "loadCurrentFactoryState",
-        "find",
-        "unshift",
-        "now"
+        "find"
       ],
       "symbols": [
         {
@@ -7463,88 +7612,128 @@
           "endLine": 29
         },
         {
+          "name": "GCP_FINOPS_BUDGET_PATH",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const GCP_FINOPS_BUDGET_PATH",
+          "startLine": 30,
+          "endLine": 30
+        },
+        {
+          "name": "JEV_MEMORY_REPORT_PATH",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const JEV_MEMORY_REPORT_PATH",
+          "startLine": 31,
+          "endLine": 31
+        },
+        {
+          "name": "JEV_FINOPS_LEDGER_PATH",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const JEV_FINOPS_LEDGER_PATH",
+          "startLine": 32,
+          "endLine": 32
+        },
+        {
           "name": "telemetryEmitter",
           "kind": "constant",
           "exported": true,
           "signature": "export const telemetryEmitter",
-          "startLine": 31,
-          "endLine": 31
+          "startLine": 34,
+          "endLine": 34
         },
         {
           "name": "FACTORY_STATIONS",
           "kind": "constant",
           "exported": true,
           "signature": "export const FACTORY_STATIONS",
-          "startLine": 37,
-          "endLine": 37
+          "startLine": 40,
+          "endLine": 40
         },
         {
           "name": "FACTORY_AGENTS_ROSTER",
           "kind": "constant",
           "exported": true,
           "signature": "export const FACTORY_AGENTS_ROSTER",
-          "startLine": 103,
-          "endLine": 103
+          "startLine": 106,
+          "endLine": 106
         },
         {
           "name": "KANBAN_COLUMNS",
           "kind": "constant",
           "exported": true,
           "signature": "export const KANBAN_COLUMNS",
-          "startLine": 249,
-          "endLine": 249
+          "startLine": 252,
+          "endLine": 252
         },
         {
           "name": "readJsonSafe",
           "kind": "function",
           "exported": false,
           "signature": "function readJsonSafe(filePath, fallback)",
-          "startLine": 277,
-          "endLine": 284
+          "startLine": 280,
+          "endLine": 287
         },
         {
           "name": "getActiveProjectSnapshot",
           "kind": "function",
           "exported": true,
           "signature": "export function getActiveProjectSnapshot()",
-          "startLine": 289,
-          "endLine": 308
+          "startLine": 292,
+          "endLine": 327
+        },
+        {
+          "name": "getXStateSnapshotForProject",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function getXStateSnapshotForProject(slugInput)",
+          "startLine": 332,
+          "endLine": 366
+        },
+        {
+          "name": "getFinOpsSnapshot",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function getFinOpsSnapshot()",
+          "startLine": 371,
+          "endLine": 399
         },
         {
           "name": "buildDefaultFactoryState",
           "kind": "function",
           "exported": true,
           "signature": "export function buildDefaultFactoryState()",
-          "startLine": 313,
-          "endLine": 404
+          "startLine": 404,
+          "endLine": 501
         },
         {
           "name": "loadCurrentFactoryState",
           "kind": "function",
           "exported": true,
           "signature": "export function loadCurrentFactoryState()",
-          "startLine": 409,
-          "endLine": 421
+          "startLine": 506,
+          "endLine": 524
         },
         {
           "name": "emitFactoryTelemetryEvent",
           "kind": "function",
           "exported": true,
           "signature": "export function emitFactoryTelemetryEvent(event = {})",
-          "startLine": 427,
-          "endLine": 427
+          "startLine": 530,
+          "endLine": 530
         },
         {
           "name": "runLiveDemoWalkthroughSequence",
           "kind": "function",
           "exported": true,
           "signature": "export async function runLiveDemoWalkthroughSequence({ stepDelayMs = 60 } = {})",
-          "startLine": 549,
-          "endLine": 549
+          "startLine": 658,
+          "endLine": 658
         }
       ],
-      "mtimeMs": 1793224446809.773,
-      "size": 27278
+      "mtimeMs": 1793310554634.6956,
+      "size": 31633
     },
     {
       "path": "tools/context_budget.mjs",
@@ -8355,8 +8544,8 @@
     {
       "path": "tools/design/build_vanilla_primitives.mjs",
       "ext": ".mjs",
-      "sha256": "46d1d962f7038e17",
-      "lineCount": 1207,
+      "sha256": "413d4b70e7a3636c",
+      "lineCount": 1304,
       "exports": [
         "NAVIGATION_MORPHOLOGY_VARIANTS",
         "CORNER_GEOMETRY_VARIANTS",
@@ -8365,7 +8554,8 @@
         "HERO_ARCHITECTURE_DESCRIPTORS",
         "buildInteractiveIndustryModule",
         "buildVanillaPrimitives",
-        "applyBespokeMorphologyToProjectDom"
+        "applyBespokeMorphologyToProjectDom",
+        "synthesizeCustomPrdSectionsWithBaml"
       ],
       "imports": [
         "node:fs",
@@ -8497,10 +8687,18 @@
           "signature": "export function applyBespokeMorphologyToProjectDom(projectInput = '', customOptions = {})",
           "startLine": 1047,
           "endLine": 1047
+        },
+        {
+          "name": "synthesizeCustomPrdSectionsWithBaml",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function synthesizeCustomPrdSectionsWithBaml(prdState = null, interview = null, brandName = 'Agencia Alfa')",
+          "startLine": 1215,
+          "endLine": 1295
         }
       ],
-      "mtimeMs": 1793299953696.2004,
-      "size": 49458
+      "mtimeMs": 1793314048876.7131,
+      "size": 54106
     },
     {
       "path": "tools/design/design_extractor.mjs",
@@ -10236,15 +10434,16 @@
     {
       "path": "tools/intelligence/ast_guard.mjs",
       "ext": ".mjs",
-      "sha256": "d5970d8699db66a1",
-      "lineCount": 538,
+      "sha256": "8b0cd2c0a34e36fd",
+      "lineCount": 607,
       "exports": [
         "evaluatePersistedStateAndEnvOwnerGate",
         "runOxlintFastPass",
         "scanClassMethods",
         "scanSecurityAndPerformance",
         "evaluateHighRiskFileOwnerTrigger",
-        "runNegativeSelfTest"
+        "runNegativeSelfTest",
+        "auditModuleAndDependencyHygiene"
       ],
       "imports": [
         "node:fs",
@@ -10348,10 +10547,18 @@
           "signature": "export function runNegativeSelfTest()",
           "startLine": 376,
           "endLine": 430
+        },
+        {
+          "name": "auditModuleAndDependencyHygiene",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function auditModuleAndDependencyHygiene()",
+          "startLine": 438,
+          "endLine": 496
         }
       ],
-      "mtimeMs": 1793281283604.63,
-      "size": 20288
+      "mtimeMs": 1793314163666.5923,
+      "size": 23038
     },
     {
       "path": "tools/intelligence/book_pdf_ingester.mjs",
@@ -11842,8 +12049,8 @@
     {
       "path": "tools/intelligence/jev_memory_pipeline.mjs",
       "ext": ".mjs",
-      "sha256": "b258771e92eb3747",
-      "lineCount": 647,
+      "sha256": "d927a802cb44c86b",
+      "lineCount": 670,
       "exports": [
         "ROOT",
         "MEMORY_PIPELINE_REPORT_PATH",
@@ -11858,7 +12065,8 @@
         "node:fs",
         "node:path",
         "node:crypto",
-        "node:url"
+        "node:url",
+        "../cockpit/live_telemetry_bus.mjs"
       ],
       "importedBy": [],
       "calls": [
@@ -11901,12 +12109,12 @@
         "saveTemporalLedger",
         "json",
         "callOfficialJevApi",
+        "emitFactoryTelemetryEvent",
         "readFileSync",
         "parse",
         "set",
         "get",
-        "values",
-        "saveInstinctCard"
+        "values"
       ],
       "symbols": [
         {
@@ -11914,82 +12122,82 @@
           "kind": "constant",
           "exported": true,
           "signature": "export const ROOT",
-          "startLine": 55,
-          "endLine": 55
+          "startLine": 56,
+          "endLine": 56
         },
         {
           "name": "MEMORY_PIPELINE_REPORT_PATH",
           "kind": "constant",
           "exported": true,
           "signature": "export const MEMORY_PIPELINE_REPORT_PATH",
-          "startLine": 57,
-          "endLine": 57
+          "startLine": 58,
+          "endLine": 58
         },
         {
           "name": "COLD_ARCHIVE_LEDGER_PATH",
           "kind": "constant",
           "exported": true,
           "signature": "export const COLD_ARCHIVE_LEDGER_PATH",
-          "startLine": 58,
-          "endLine": 58
+          "startLine": 59,
+          "endLine": 59
         },
         {
           "name": "MEMORY_WRITE_CHOICES",
           "kind": "constant",
           "exported": true,
           "signature": "export const MEMORY_WRITE_CHOICES",
-          "startLine": 63,
-          "endLine": 63
+          "startLine": 64,
+          "endLine": 64
         },
         {
           "name": "tokenizeFact",
           "kind": "function",
           "exported": false,
           "signature": "function tokenizeFact(text = '')",
-          "startLine": 75,
-          "endLine": 81
+          "startLine": 76,
+          "endLine": 82
         },
         {
           "name": "computeFactSimilarity",
           "kind": "function",
           "exported": true,
           "signature": "export function computeFactSimilarity(factA = '', factB = '')",
-          "startLine": 86,
-          "endLine": 96
+          "startLine": 87,
+          "endLine": 97
         },
         {
           "name": "evaluateMemoryWriteAdmissionWithJev",
           "kind": "function",
           "exported": true,
           "signature": "export async function evaluateMemoryWriteAdmissionWithJev(candidateInput = {}, options = {})",
-          "startLine": 117,
-          "endLine": 117
+          "startLine": 118,
+          "endLine": 118
         },
         {
           "name": "runJevSleepTimeConsolidationCycle",
           "kind": "function",
           "exported": true,
           "signature": "export async function runJevSleepTimeConsolidationCycle(options = {})",
-          "startLine": 402,
-          "endLine": 402
+          "startLine": 414,
+          "endLine": 414
         },
         {
           "name": "runJevMemoryPipelineSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export async function runJevMemoryPipelineSelfTest()",
-          "startLine": 545,
-          "endLine": 613
+          "startLine": 568,
+          "endLine": 636
         }
       ],
-      "mtimeMs": 1793299834189.5537,
-      "size": 27435
+      "mtimeMs": 1793310345317.948,
+      "size": 28561
     },
     {
       "path": "tools/intelligence/jev_semantic_gate.mjs",
       "ext": ".mjs",
-      "sha256": "deda8bcd92d75edc",
-      "lineCount": 1540,
+      "sha256": "444c8053f2282037",
+      "lineCount": 1796,
       "exports": [
         "ROOT",
         "JEV_DECISION_CACHE_PATH",
@@ -12009,6 +12217,7 @@
         "saveJevDecisionCache",
         "computeJevPayloadHash",
         "loadJevFinOpsLedger",
+        "buildSystemOneQuestionsPayload",
         "evaluatePersistedStateAndEnvOwnerGate",
         "evaluateSpecBusinessInvariantAlignment",
         "evaluateRedundantTestDetector",
@@ -12053,6 +12262,8 @@
         "boolean",
         "nullable",
         "array",
+        "optional",
+        "any",
         "constructor",
         "addEnumValue",
         "has",
@@ -12075,9 +12286,7 @@
         "map",
         "forEach",
         "find",
-        "stringify",
-        "int",
-        "assert"
+        "stringify"
       ],
       "symbols": [
         {
@@ -12126,163 +12335,171 @@
           "exported": true,
           "signature": "export function loadJevEnvConfig(customEnv = null)",
           "startLine": 51,
-          "endLine": 82
+          "endLine": 88
         },
         {
           "name": "JevVerdictValibotSchema",
           "kind": "constant",
           "exported": true,
           "signature": "export const JevVerdictValibotSchema",
-          "startLine": 87,
-          "endLine": 112
+          "startLine": 93,
+          "endLine": 119
         },
         {
           "name": "BAML_JSONISH_FLAG_SCORES",
           "kind": "constant",
           "exported": true,
           "signature": "export const BAML_JSONISH_FLAG_SCORES",
-          "startLine": 118,
-          "endLine": 145
+          "startLine": 125,
+          "endLine": 152
         },
         {
           "name": "BamlTypeBuilder",
           "kind": "class",
           "exported": true,
           "signature": "export class BamlTypeBuilder",
-          "startLine": 151,
-          "endLine": 188
+          "startLine": 158,
+          "endLine": 195
         },
         {
           "name": "createBamlTypeBuilder",
           "kind": "function",
           "exported": true,
           "signature": "export function createBamlTypeBuilder()",
-          "startLine": 190,
-          "endLine": 192
+          "startLine": 197,
+          "endLine": 199
         },
         {
           "name": "BamlCollector",
           "kind": "class",
           "exported": true,
           "signature": "export class BamlCollector",
-          "startLine": 198,
-          "endLine": 239
+          "startLine": 205,
+          "endLine": 246
         },
         {
           "name": "extractJsonishCandidates",
           "kind": "function",
           "exported": true,
           "signature": "export function extractJsonishCandidates(rawText = '')",
-          "startLine": 344,
-          "endLine": 391
+          "startLine": 351,
+          "endLine": 398
         },
         {
           "name": "evaluateBamlChecksAndAsserts",
           "kind": "function",
           "exported": true,
           "signature": "export function evaluateBamlChecksAndAsserts(verdict)",
-          "startLine": 397,
-          "endLine": 419
+          "startLine": 404,
+          "endLine": 426
         },
         {
           "name": "repairSingleJsonishBlock",
           "kind": "function",
           "exported": false,
           "signature": "function repairSingleJsonishBlock(rawBlock = '')",
-          "startLine": 424,
-          "endLine": 475
+          "startLine": 431,
+          "endLine": 482
         },
         {
           "name": "bamlModularApi",
           "kind": "constant",
           "exported": true,
           "signature": "export const bamlModularApi",
-          "startLine": 688,
-          "endLine": 715
+          "startLine": 695,
+          "endLine": 722
         },
         {
           "name": "loadJevDecisionCache",
           "kind": "function",
           "exported": true,
           "signature": "export function loadJevDecisionCache()",
-          "startLine": 720,
-          "endLine": 739
+          "startLine": 727,
+          "endLine": 746
         },
         {
           "name": "saveJevDecisionCache",
           "kind": "function",
           "exported": true,
           "signature": "export function saveJevDecisionCache(store)",
-          "startLine": 744,
-          "endLine": 750
+          "startLine": 751,
+          "endLine": 757
         },
         {
           "name": "computeJevPayloadHash",
           "kind": "function",
           "exported": true,
           "signature": "export function computeJevPayloadHash(predicateId = '', payloadText = '', specContext = '')",
-          "startLine": 755,
-          "endLine": 758
+          "startLine": 762,
+          "endLine": 765
         },
         {
           "name": "loadJevFinOpsLedger",
           "kind": "function",
           "exported": true,
           "signature": "export function loadJevFinOpsLedger()",
-          "startLine": 763,
-          "endLine": 801
+          "startLine": 770,
+          "endLine": 808
+        },
+        {
+          "name": "buildSystemOneQuestionsPayload",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function buildSystemOneQuestionsPayload(predicateId = 'jev-persisted-state-and-env-owner-gate', allowedChoices = [])",
+          "startLine": 1028,
+          "endLine": 1076
         },
         {
           "name": "evaluatePersistedStateAndEnvOwnerGate",
           "kind": "function",
           "exported": true,
           "signature": "export async function evaluatePersistedStateAndEnvOwnerGate(diffText = '', options = {})",
-          "startLine": 1209,
-          "endLine": 1209
+          "startLine": 1352,
+          "endLine": 1352
         },
         {
           "name": "evaluateSpecBusinessInvariantAlignment",
           "kind": "function",
           "exported": true,
           "signature": "export async function evaluateSpecBusinessInvariantAlignment(diffText = '', specText = '', options = {})",
-          "startLine": 1221,
-          "endLine": 1221
+          "startLine": 1364,
+          "endLine": 1364
         },
         {
           "name": "evaluateRedundantTestDetector",
           "kind": "function",
           "exported": true,
           "signature": "export async function evaluateRedundantTestDetector(diffText = '', options = {})",
-          "startLine": 1234,
-          "endLine": 1234
+          "startLine": 1377,
+          "endLine": 1377
         },
         {
           "name": "evaluateCrossTraceFrictionMiner",
           "kind": "function",
           "exported": true,
           "signature": "export async function evaluateCrossTraceFrictionMiner(customTracesText = '', options = {})",
-          "startLine": 1248,
-          "endLine": 1248
+          "startLine": 1391,
+          "endLine": 1391
         },
         {
           "name": "getJevFinOpsStatus",
           "kind": "function",
           "exported": true,
           "signature": "export function getJevFinOpsStatus()",
-          "startLine": 1371,
-          "endLine": 1391
+          "startLine": 1568,
+          "endLine": 1590
         },
         {
           "name": "runJevSemanticGateSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export async function runJevSemanticGateSelfTest()",
-          "startLine": 1396,
-          "endLine": 1410
+          "startLine": 1595,
+          "endLine": 1609
         }
       ],
-      "mtimeMs": 1793304646261.448,
-      "size": 58878
+      "mtimeMs": 1793313715877.916,
+      "size": 70934
     },
     {
       "path": "tools/intelligence/mcp_omni_rag_server.mjs",
@@ -15390,6 +15607,7 @@
       ],
       "importedBy": [
         "tools/audit/a11y_tree_snapshot.mjs",
+        "tools/audit/api_contract_verifier.mjs",
         "tools/audit/chaos_monkey_test.mjs",
         "tools/audit/code_clean_audit.mjs",
         "tools/audit/cognitive_ux_auditor.mjs",
@@ -16532,8 +16750,8 @@
     {
       "path": "tools/orchestrator/deterministic_agent_statechart.mjs",
       "ext": ".mjs",
-      "sha256": "64f3dff9e1a48bc1",
-      "lineCount": 705,
+      "sha256": "08606315b9ea1e8f",
+      "lineCount": 754,
       "exports": [
         "ROOT",
         "MAX_SELF_HEALING_ATTEMPTS",
@@ -16550,9 +16768,11 @@
       "imports": [
         "node:fs",
         "node:path",
+        "node:crypto",
         "node:url",
         "xstate",
-        "../lib/project_loader.mjs"
+        "../lib/project_loader.mjs",
+        "../cockpit/live_telemetry_bus.mjs"
       ],
       "importedBy": [
         "tools/audit/harness_doctor_audit.mjs",
@@ -16584,8 +16804,14 @@
         "getPersistedSnapshot",
         "stop",
         "mkdirSync",
-        "writeFileSync",
+        "createHash",
+        "update",
         "stringify",
+        "map",
+        "digest",
+        "slice",
+        "writeFileSync",
+        "emitFactoryTelemetryEvent",
         "setAttribute",
         "onTransition",
         "APPROVE_HITL_DELIVERY",
@@ -16596,12 +16822,10 @@
         "values",
         "every",
         "resolve",
-        "slice",
         "runDeterministicStatechartSelfTest",
         "log",
         "entries",
-        "Project",
-        "exit"
+        "Project"
       ],
       "symbols": [
         {
@@ -16609,100 +16833,100 @@
           "kind": "constant",
           "exported": true,
           "signature": "export const ROOT",
-          "startLine": 31,
-          "endLine": 31
+          "startLine": 33,
+          "endLine": 33
         },
         {
           "name": "MAX_SELF_HEALING_ATTEMPTS",
           "kind": "constant",
           "exported": true,
           "signature": "export const MAX_SELF_HEALING_ATTEMPTS",
-          "startLine": 33,
-          "endLine": 33
+          "startLine": 35,
+          "endLine": 35
         },
         {
           "name": "FACTORY_EVENT_VOCABULARY",
           "kind": "constant",
           "exported": true,
           "signature": "export const FACTORY_EVENT_VOCABULARY",
-          "startLine": 39,
-          "endLine": 39
+          "startLine": 41,
+          "endLine": 41
         },
         {
           "name": "HUMAN_ONLY_EVENTS",
           "kind": "constant",
           "exported": true,
           "signature": "export const HUMAN_ONLY_EVENTS",
-          "startLine": 56,
-          "endLine": 56
+          "startLine": 58,
+          "endLine": 58
         },
         {
           "name": "factoryEnvironmentGuards",
           "kind": "constant",
           "exported": true,
           "signature": "export const factoryEnvironmentGuards",
-          "startLine": 65,
-          "endLine": 99
+          "startLine": 67,
+          "endLine": 101
         },
         {
           "name": "factoryLifecycleMachine",
           "kind": "constant",
           "exported": true,
           "signature": "export const factoryLifecycleMachine",
-          "startLine": 104,
-          "endLine": 192
+          "startLine": 106,
+          "endLine": 194
         },
         {
           "name": "validateAgentPolicyProposal",
           "kind": "function",
           "exported": true,
           "signature": "export function validateAgentPolicyProposal(snapshot, proposedEvent, options = {})",
-          "startLine": 396,
-          "endLine": 396
+          "startLine": 398,
+          "endLine": 398
         },
         {
           "name": "syncProjectStatechartSnapshot",
           "kind": "function",
           "exported": true,
           "signature": "export function syncProjectStatechartSnapshot(projectInput = '', eventSequence = [])",
-          "startLine": 444,
-          "endLine": 521
+          "startLine": 446,
+          "endLine": 570
         },
         {
           "name": "generateDeterministicClientUiFsmRuntime",
           "kind": "function",
           "exported": true,
           "signature": "export function generateDeterministicClientUiFsmRuntime()",
-          "startLine": 528,
-          "endLine": 554
+          "startLine": 577,
+          "endLine": 603
         },
         {
           "name": "createUiStateMachine",
           "kind": "function",
           "exported": false,
           "signature": "function createUiStateMachine(config)",
-          "startLine": 531,
-          "endLine": 553
+          "startLine": 580,
+          "endLine": 602
         },
         {
           "name": "renderFactoryStatechartMermaid",
           "kind": "function",
           "exported": true,
           "signature": "export function renderFactoryStatechartMermaid()",
-          "startLine": 559,
-          "endLine": 577
+          "startLine": 608,
+          "endLine": 626
         },
         {
           "name": "runDeterministicStatechartSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export function runDeterministicStatechartSelfTest()",
-          "startLine": 582,
-          "endLine": 677
+          "startLine": 631,
+          "endLine": 726
         }
       ],
-      "mtimeMs": 1793299917049.84,
-      "size": 29858
+      "mtimeMs": 1793310534323.852,
+      "size": 31371
     },
     {
       "path": "tools/orchestrator/humanlayer_rpi_gate.mjs",
@@ -20471,8 +20695,8 @@
           "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
           "kind": "function",
           "signature": "function createUiStateMachine(config)",
-          "startLine": 531,
-          "endLine": 553
+          "startLine": 580,
+          "endLine": 602
         }
       ],
       "calledByFiles": [
@@ -21789,6 +22013,73 @@
       ],
       "calledByFiles": []
     },
+    "LeadRequestValibotSchema": {
+      "definitions": [
+        {
+          "file": "tools/audit/api_contract_verifier.mjs",
+          "kind": "constant",
+          "signature": "export const LeadRequestValibotSchema",
+          "startLine": 20,
+          "endLine": 26
+        }
+      ],
+      "calledByFiles": []
+    },
+    "HealthResponseValibotSchema": {
+      "definitions": [
+        {
+          "file": "tools/audit/api_contract_verifier.mjs",
+          "kind": "constant",
+          "signature": "export const HealthResponseValibotSchema",
+          "startLine": 28,
+          "endLine": 32
+        }
+      ],
+      "calledByFiles": []
+    },
+    "extractApiRoutesFromSource": {
+      "definitions": [
+        {
+          "file": "tools/audit/api_contract_verifier.mjs",
+          "kind": "function",
+          "signature": "export function extractApiRoutesFromSource(sourceCode = '')",
+          "startLine": 37,
+          "endLine": 51
+        }
+      ],
+      "calledByFiles": [
+        "tools/audit/api_contract_verifier.mjs"
+      ]
+    },
+    "buildOpenApi31Spec": {
+      "definitions": [
+        {
+          "file": "tools/audit/api_contract_verifier.mjs",
+          "kind": "function",
+          "signature": "export function buildOpenApi31Spec({ projectSlug = 'agencia-alfa', brandName = 'Agencia Alfa', routes = [] } = {})",
+          "startLine": 56,
+          "endLine": 56
+        }
+      ],
+      "calledByFiles": [
+        "tools/audit/api_contract_verifier.mjs"
+      ]
+    },
+    "verifyAndEmitOpenApiContract": {
+      "definitions": [
+        {
+          "file": "tools/audit/api_contract_verifier.mjs",
+          "kind": "function",
+          "signature": "export function verifyAndEmitOpenApiContract(projectInput = '')",
+          "startLine": 161,
+          "endLine": 262
+        }
+      ],
+      "calledByFiles": [
+        "tools/audit/api_contract_verifier.mjs",
+        "tools/build_dist.mjs"
+      ]
+    },
     "CHAOS_REPORT_PATH": {
       "definitions": [
         {
@@ -21814,8 +22105,8 @@
           "file": "tools/audit/local_fullstack_and_component_harness.mjs",
           "kind": "function",
           "signature": "function findSystemBrowser()",
-          "startLine": 48,
-          "endLine": 50
+          "startLine": 49,
+          "endLine": 51
         }
       ],
       "calledByFiles": [
@@ -22206,15 +22497,15 @@
           "file": "tools/audit/local_fullstack_and_component_harness.mjs",
           "kind": "constant",
           "signature": "export const ROOT",
-          "startLine": 39,
-          "endLine": 39
+          "startLine": 40,
+          "endLine": 40
         },
         {
           "file": "tools/intelligence/jev_memory_pipeline.mjs",
           "kind": "constant",
           "signature": "export const ROOT",
-          "startLine": 55,
-          "endLine": 55
+          "startLine": 56,
+          "endLine": 56
         },
         {
           "file": "tools/intelligence/jev_semantic_gate.mjs",
@@ -22255,8 +22546,8 @@
           "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
           "kind": "constant",
           "signature": "export const ROOT",
-          "startLine": 31,
-          "endLine": 31
+          "startLine": 33,
+          "endLine": 33
         },
         {
           "file": "tools/orchestrator/lean_prd_architect.mjs",
@@ -22274,8 +22565,8 @@
           "file": "tools/audit/local_fullstack_and_component_harness.mjs",
           "kind": "constant",
           "signature": "export const FIVE_EXTREME_COMPONENT_STATES",
-          "startLine": 52,
-          "endLine": 52
+          "startLine": 53,
+          "endLine": 53
         }
       ],
       "calledByFiles": []
@@ -22286,8 +22577,8 @@
           "file": "tools/audit/local_fullstack_and_component_harness.mjs",
           "kind": "function",
           "signature": "export function buildMicroStorybookHtml(states = FIVE_EXTREME_COMPONENT_STATES)",
-          "startLine": 106,
-          "endLine": 155
+          "startLine": 107,
+          "endLine": 156
         }
       ],
       "calledByFiles": [
@@ -22300,8 +22591,8 @@
           "file": "tools/audit/local_fullstack_and_component_harness.mjs",
           "kind": "function",
           "signature": "export async function runStatelessComponentStressHarness()",
-          "startLine": 165,
-          "endLine": 268
+          "startLine": 166,
+          "endLine": 269
         }
       ],
       "calledByFiles": []
@@ -22312,8 +22603,8 @@
           "file": "tools/audit/local_fullstack_and_component_harness.mjs",
           "kind": "function",
           "signature": "export async function runLocalEnterpriseAndCommerceSimulator()",
-          "startLine": 278,
-          "endLine": 555
+          "startLine": 279,
+          "endLine": 556
         }
       ],
       "calledByFiles": []
@@ -22324,8 +22615,8 @@
           "file": "tools/audit/local_fullstack_and_component_harness.mjs",
           "kind": "function",
           "signature": "export function runPropertyBasedInvariantsCheck()",
-          "startLine": 562,
-          "endLine": 631
+          "startLine": 563,
+          "endLine": 632
         }
       ],
       "calledByFiles": []
@@ -22336,8 +22627,8 @@
           "file": "tools/audit/local_fullstack_and_component_harness.mjs",
           "kind": "function",
           "signature": "export function checkAstDiffOscillationBreaker(astHistoryHashes = [])",
-          "startLine": 638,
-          "endLine": 659
+          "startLine": 639,
+          "endLine": 660
         }
       ],
       "calledByFiles": [
@@ -22350,8 +22641,32 @@
           "file": "tools/audit/local_fullstack_and_component_harness.mjs",
           "kind": "function",
           "signature": "export function inspect3dCanvasHistogramStability(samples = [])",
-          "startLine": 666,
-          "endLine": 687
+          "startLine": 667,
+          "endLine": 688
+        }
+      ],
+      "calledByFiles": []
+    },
+    "runPgliteRealPostgresRlsVerification": {
+      "definitions": [
+        {
+          "file": "tools/audit/local_fullstack_and_component_harness.mjs",
+          "kind": "function",
+          "signature": "export async function runPgliteRealPostgresRlsVerification()",
+          "startLine": 699,
+          "endLine": 761
+        }
+      ],
+      "calledByFiles": []
+    },
+    "runDeterministicMutationTestingSuite": {
+      "definitions": [
+        {
+          "file": "tools/audit/local_fullstack_and_component_harness.mjs",
+          "kind": "function",
+          "signature": "export async function runDeterministicMutationTestingSuite()",
+          "startLine": 769,
+          "endLine": 936
         }
       ],
       "calledByFiles": []
@@ -22362,8 +22677,8 @@
           "file": "tools/audit/local_fullstack_and_component_harness.mjs",
           "kind": "function",
           "signature": "export async function runFullLocalHarnessSuite()",
-          "startLine": 692,
-          "endLine": 720
+          "startLine": 941,
+          "endLine": 975
         }
       ],
       "calledByFiles": []
@@ -22710,8 +23025,8 @@
           "file": "tools/audit/visual_audit.mjs",
           "kind": "function",
           "signature": "async function ensureServer()",
-          "startLine": 22,
-          "endLine": 80
+          "startLine": 24,
+          "endLine": 82
         }
       ],
       "calledByFiles": []
@@ -22722,8 +23037,8 @@
           "file": "tools/audit/visual_audit.mjs",
           "kind": "function",
           "signature": "function pageChecks()",
-          "startLine": 94,
-          "endLine": 359
+          "startLine": 96,
+          "endLine": 361
         }
       ],
       "calledByFiles": []
@@ -22734,8 +23049,20 @@
           "file": "tools/audit/visual_audit.mjs",
           "kind": "function",
           "signature": "export async function inspectVisualHarmonyAndMotionKeyframes(options = {})",
-          "startLine": 372,
-          "endLine": 372
+          "startLine": 374,
+          "endLine": 374
+        }
+      ],
+      "calledByFiles": []
+    },
+    "runAxeCoreAndAriaSnapshotAudit": {
+      "definitions": [
+        {
+          "file": "tools/audit/visual_audit.mjs",
+          "kind": "function",
+          "signature": "export async function runAxeCoreAndAriaSnapshotAudit(page = null)",
+          "startLine": 610,
+          "endLine": 729
         }
       ],
       "calledByFiles": []
@@ -22746,8 +23073,8 @@
           "file": "tools/audit/visual_audit.mjs",
           "kind": "function",
           "signature": "function samplePostLoadFps(now)",
-          "startLine": 674,
-          "endLine": 688
+          "startLine": 812,
+          "endLine": 826
         }
       ],
       "calledByFiles": []
@@ -22827,8 +23154,8 @@
           "file": "tools/build_dist.mjs",
           "kind": "function",
           "signature": "function copyRecursive(src, dest)",
-          "startLine": 29,
-          "endLine": 41
+          "startLine": 30,
+          "endLine": 42
         }
       ],
       "calledByFiles": [
@@ -22841,8 +23168,8 @@
           "file": "tools/build_dist.mjs",
           "kind": "function",
           "signature": "async function minifyDistAssets()",
-          "startLine": 123,
-          "endLine": 253
+          "startLine": 133,
+          "endLine": 263
         }
       ],
       "calledByFiles": []
@@ -22853,8 +23180,8 @@
           "file": "tools/build_dist.mjs",
           "kind": "function",
           "signature": "function injectHtmlCacheBusters(dirPath)",
-          "startLine": 447,
-          "endLine": 462
+          "startLine": 457,
+          "endLine": 472
         }
       ],
       "calledByFiles": []
@@ -22865,8 +23192,8 @@
           "file": "tools/build_dist.mjs",
           "kind": "function",
           "signature": "function dirMetrics(dirPath)",
-          "startLine": 511,
-          "endLine": 524
+          "startLine": 521,
+          "endLine": 534
         }
       ],
       "calledByFiles": []
@@ -22877,8 +23204,8 @@
           "file": "tools/build_dist.mjs",
           "kind": "function",
           "signature": "function walk(p)",
-          "startLine": 514,
-          "endLine": 521
+          "startLine": 524,
+          "endLine": 531
         },
         {
           "file": "tools/design/token_compiler.mjs",
@@ -22917,8 +23244,8 @@
           "file": "tools/build_dist.mjs",
           "kind": "function",
           "signature": "export function createZipArchiveFromDir(sourceDir, outZipPath, skipFileNames = new Set()",
-          "startLine": 534,
-          "endLine": 615
+          "startLine": 544,
+          "endLine": 625
         }
       ],
       "calledByFiles": []
@@ -22929,8 +23256,8 @@
           "file": "tools/build_dist.mjs",
           "kind": "function",
           "signature": "function collect(currentDir)",
-          "startLine": 536,
-          "endLine": 547
+          "startLine": 546,
+          "endLine": 557
         }
       ],
       "calledByFiles": []
@@ -22941,8 +23268,8 @@
           "file": "tools/build_dist.mjs",
           "kind": "function",
           "signature": "export function exportStandaloneDeliverable(cfg = projectConfig)",
-          "startLine": 621,
-          "endLine": 785
+          "startLine": 631,
+          "endLine": 795
         }
       ],
       "calledByFiles": []
@@ -22977,13 +23304,11 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "function computeStationRect(station, canvasW, canvasH)",
-          "startLine": 774,
-          "endLine": 784
+          "startLine": 783,
+          "endLine": 793
         }
       ],
-      "calledByFiles": [
-        "tools/cockpit/factory_twin_server.mjs"
-      ]
+      "calledByFiles": []
     },
     "syncAgentTargets": {
       "definitions": [
@@ -22991,8 +23316,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "function syncAgentTargets(state)",
-          "startLine": 786,
-          "endLine": 819
+          "startLine": 795,
+          "endLine": 828
         }
       ],
       "calledByFiles": []
@@ -23003,8 +23328,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "function updateDomFromState(state)",
-          "startLine": 821,
-          "endLine": 926
+          "startLine": 830,
+          "endLine": 953
         }
       ],
       "calledByFiles": []
@@ -23015,8 +23340,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "function renderFloor60Fps()",
-          "startLine": 952,
-          "endLine": 1106
+          "startLine": 979,
+          "endLine": 1133
         }
       ],
       "calledByFiles": []
@@ -23027,8 +23352,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "export function createFactoryTwinServer()",
-          "startLine": 1133,
-          "endLine": 1345
+          "startLine": 1160,
+          "endLine": 1372
         }
       ],
       "calledByFiles": []
@@ -23039,8 +23364,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "export async function runCockpitSelfTest()",
-          "startLine": 1356,
-          "endLine": 1432
+          "startLine": 1383,
+          "endLine": 1459
         }
       ],
       "calledByFiles": []
@@ -23164,14 +23489,64 @@
       ],
       "calledByFiles": []
     },
+    "GCP_FINOPS_BUDGET_PATH": {
+      "definitions": [
+        {
+          "file": "tools/cockpit/live_telemetry_bus.mjs",
+          "kind": "constant",
+          "signature": "export const GCP_FINOPS_BUDGET_PATH",
+          "startLine": 30,
+          "endLine": 30
+        },
+        {
+          "file": "tools/intelligence/vertex_ai_bridge.mjs",
+          "kind": "constant",
+          "signature": "export const GCP_FINOPS_BUDGET_PATH",
+          "startLine": 1019,
+          "endLine": 1019
+        }
+      ],
+      "calledByFiles": []
+    },
+    "JEV_MEMORY_REPORT_PATH": {
+      "definitions": [
+        {
+          "file": "tools/cockpit/live_telemetry_bus.mjs",
+          "kind": "constant",
+          "signature": "export const JEV_MEMORY_REPORT_PATH",
+          "startLine": 31,
+          "endLine": 31
+        }
+      ],
+      "calledByFiles": []
+    },
+    "JEV_FINOPS_LEDGER_PATH": {
+      "definitions": [
+        {
+          "file": "tools/cockpit/live_telemetry_bus.mjs",
+          "kind": "constant",
+          "signature": "export const JEV_FINOPS_LEDGER_PATH",
+          "startLine": 32,
+          "endLine": 32
+        },
+        {
+          "file": "tools/intelligence/jev_semantic_gate.mjs",
+          "kind": "constant",
+          "signature": "export const JEV_FINOPS_LEDGER_PATH",
+          "startLine": 41,
+          "endLine": 41
+        }
+      ],
+      "calledByFiles": []
+    },
     "telemetryEmitter": {
       "definitions": [
         {
           "file": "tools/cockpit/live_telemetry_bus.mjs",
           "kind": "constant",
           "signature": "export const telemetryEmitter",
-          "startLine": 31,
-          "endLine": 31
+          "startLine": 34,
+          "endLine": 34
         }
       ],
       "calledByFiles": []
@@ -23182,8 +23557,8 @@
           "file": "tools/cockpit/live_telemetry_bus.mjs",
           "kind": "constant",
           "signature": "export const FACTORY_STATIONS",
-          "startLine": 37,
-          "endLine": 37
+          "startLine": 40,
+          "endLine": 40
         }
       ],
       "calledByFiles": []
@@ -23194,8 +23569,8 @@
           "file": "tools/cockpit/live_telemetry_bus.mjs",
           "kind": "constant",
           "signature": "export const FACTORY_AGENTS_ROSTER",
-          "startLine": 103,
-          "endLine": 103
+          "startLine": 106,
+          "endLine": 106
         }
       ],
       "calledByFiles": []
@@ -23206,8 +23581,8 @@
           "file": "tools/cockpit/live_telemetry_bus.mjs",
           "kind": "constant",
           "signature": "export const KANBAN_COLUMNS",
-          "startLine": 249,
-          "endLine": 249
+          "startLine": 252,
+          "endLine": 252
         }
       ],
       "calledByFiles": []
@@ -23218,8 +23593,8 @@
           "file": "tools/cockpit/live_telemetry_bus.mjs",
           "kind": "function",
           "signature": "function readJsonSafe(filePath, fallback)",
-          "startLine": 277,
-          "endLine": 284
+          "startLine": 280,
+          "endLine": 287
         }
       ],
       "calledByFiles": [
@@ -23232,13 +23607,41 @@
           "file": "tools/cockpit/live_telemetry_bus.mjs",
           "kind": "function",
           "signature": "export function getActiveProjectSnapshot()",
-          "startLine": 289,
-          "endLine": 308
+          "startLine": 292,
+          "endLine": 327
         }
       ],
       "calledByFiles": [
         "tools/cockpit/live_telemetry_bus.mjs",
         "tools/feedback/client_feedback_triage_agent.mjs"
+      ]
+    },
+    "getXStateSnapshotForProject": {
+      "definitions": [
+        {
+          "file": "tools/cockpit/live_telemetry_bus.mjs",
+          "kind": "function",
+          "signature": "export function getXStateSnapshotForProject(slugInput)",
+          "startLine": 332,
+          "endLine": 366
+        }
+      ],
+      "calledByFiles": [
+        "tools/cockpit/live_telemetry_bus.mjs"
+      ]
+    },
+    "getFinOpsSnapshot": {
+      "definitions": [
+        {
+          "file": "tools/cockpit/live_telemetry_bus.mjs",
+          "kind": "function",
+          "signature": "export function getFinOpsSnapshot()",
+          "startLine": 371,
+          "endLine": 399
+        }
+      ],
+      "calledByFiles": [
+        "tools/cockpit/live_telemetry_bus.mjs"
       ]
     },
     "buildDefaultFactoryState": {
@@ -23247,8 +23650,8 @@
           "file": "tools/cockpit/live_telemetry_bus.mjs",
           "kind": "function",
           "signature": "export function buildDefaultFactoryState()",
-          "startLine": 313,
-          "endLine": 404
+          "startLine": 404,
+          "endLine": 501
         }
       ],
       "calledByFiles": [
@@ -23261,8 +23664,8 @@
           "file": "tools/cockpit/live_telemetry_bus.mjs",
           "kind": "function",
           "signature": "export function loadCurrentFactoryState()",
-          "startLine": 409,
-          "endLine": 421
+          "startLine": 506,
+          "endLine": 524
         }
       ],
       "calledByFiles": [
@@ -23275,13 +23678,15 @@
           "file": "tools/cockpit/live_telemetry_bus.mjs",
           "kind": "function",
           "signature": "export function emitFactoryTelemetryEvent(event = {})",
-          "startLine": 427,
-          "endLine": 427
+          "startLine": 530,
+          "endLine": 530
         }
       ],
       "calledByFiles": [
         "tools/intelligence/agent_squad.mjs",
-        "tools/orchestrator/adaptive_depth_router.mjs"
+        "tools/intelligence/jev_memory_pipeline.mjs",
+        "tools/orchestrator/adaptive_depth_router.mjs",
+        "tools/orchestrator/deterministic_agent_statechart.mjs"
       ]
     },
     "runLiveDemoWalkthroughSequence": {
@@ -23290,8 +23695,8 @@
           "file": "tools/cockpit/live_telemetry_bus.mjs",
           "kind": "function",
           "signature": "export async function runLiveDemoWalkthroughSequence({ stepDelayMs = 60 } = {})",
-          "startLine": 549,
-          "endLine": 549
+          "startLine": 658,
+          "endLine": 658
         }
       ],
       "calledByFiles": []
@@ -24166,6 +24571,18 @@
       "calledByFiles": [
         "tools/build_dist.mjs"
       ]
+    },
+    "synthesizeCustomPrdSectionsWithBaml": {
+      "definitions": [
+        {
+          "file": "tools/design/build_vanilla_primitives.mjs",
+          "kind": "function",
+          "signature": "export function synthesizeCustomPrdSectionsWithBaml(prdState = null, interview = null, brandName = 'Agencia Alfa')",
+          "startLine": 1215,
+          "endLine": 1295
+        }
+      ],
+      "calledByFiles": []
     },
     "extractDesignFromUrl": {
       "definitions": [
@@ -25590,6 +26007,18 @@
       ],
       "calledByFiles": []
     },
+    "auditModuleAndDependencyHygiene": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/ast_guard.mjs",
+          "kind": "function",
+          "signature": "export function auditModuleAndDependencyHygiene()",
+          "startLine": 438,
+          "endLine": 496
+        }
+      ],
+      "calledByFiles": []
+    },
     "parseEpubFile": {
       "definitions": [
         {
@@ -26774,8 +27203,8 @@
           "file": "tools/intelligence/jev_memory_pipeline.mjs",
           "kind": "constant",
           "signature": "export const MEMORY_PIPELINE_REPORT_PATH",
-          "startLine": 57,
-          "endLine": 57
+          "startLine": 58,
+          "endLine": 58
         }
       ],
       "calledByFiles": []
@@ -26786,8 +27215,8 @@
           "file": "tools/intelligence/jev_memory_pipeline.mjs",
           "kind": "constant",
           "signature": "export const COLD_ARCHIVE_LEDGER_PATH",
-          "startLine": 58,
-          "endLine": 58
+          "startLine": 59,
+          "endLine": 59
         }
       ],
       "calledByFiles": []
@@ -26798,8 +27227,8 @@
           "file": "tools/intelligence/jev_memory_pipeline.mjs",
           "kind": "constant",
           "signature": "export const MEMORY_WRITE_CHOICES",
-          "startLine": 63,
-          "endLine": 63
+          "startLine": 64,
+          "endLine": 64
         }
       ],
       "calledByFiles": []
@@ -26810,8 +27239,8 @@
           "file": "tools/intelligence/jev_memory_pipeline.mjs",
           "kind": "function",
           "signature": "function tokenizeFact(text = '')",
-          "startLine": 75,
-          "endLine": 81
+          "startLine": 76,
+          "endLine": 82
         }
       ],
       "calledByFiles": [
@@ -26824,8 +27253,8 @@
           "file": "tools/intelligence/jev_memory_pipeline.mjs",
           "kind": "function",
           "signature": "export function computeFactSimilarity(factA = '', factB = '')",
-          "startLine": 86,
-          "endLine": 96
+          "startLine": 87,
+          "endLine": 97
         }
       ],
       "calledByFiles": [
@@ -26838,8 +27267,8 @@
           "file": "tools/intelligence/jev_memory_pipeline.mjs",
           "kind": "function",
           "signature": "export async function evaluateMemoryWriteAdmissionWithJev(candidateInput = {}, options = {})",
-          "startLine": 117,
-          "endLine": 117
+          "startLine": 118,
+          "endLine": 118
         }
       ],
       "calledByFiles": []
@@ -26850,8 +27279,8 @@
           "file": "tools/intelligence/jev_memory_pipeline.mjs",
           "kind": "function",
           "signature": "export async function runJevSleepTimeConsolidationCycle(options = {})",
-          "startLine": 402,
-          "endLine": 402
+          "startLine": 414,
+          "endLine": 414
         }
       ],
       "calledByFiles": []
@@ -26862,8 +27291,8 @@
           "file": "tools/intelligence/jev_memory_pipeline.mjs",
           "kind": "function",
           "signature": "export async function runJevMemoryPipelineSelfTest()",
-          "startLine": 545,
-          "endLine": 613
+          "startLine": 568,
+          "endLine": 636
         }
       ],
       "calledByFiles": []
@@ -26876,18 +27305,6 @@
           "signature": "export const JEV_DECISION_CACHE_PATH",
           "startLine": 40,
           "endLine": 40
-        }
-      ],
-      "calledByFiles": []
-    },
-    "JEV_FINOPS_LEDGER_PATH": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/jev_semantic_gate.mjs",
-          "kind": "constant",
-          "signature": "export const JEV_FINOPS_LEDGER_PATH",
-          "startLine": 41,
-          "endLine": 41
         }
       ],
       "calledByFiles": []
@@ -26923,7 +27340,7 @@
           "kind": "function",
           "signature": "export function loadJevEnvConfig(customEnv = null)",
           "startLine": 51,
-          "endLine": 82
+          "endLine": 88
         }
       ],
       "calledByFiles": []
@@ -26934,8 +27351,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "constant",
           "signature": "export const JevVerdictValibotSchema",
-          "startLine": 87,
-          "endLine": 112
+          "startLine": 93,
+          "endLine": 119
         }
       ],
       "calledByFiles": []
@@ -26946,8 +27363,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "constant",
           "signature": "export const BAML_JSONISH_FLAG_SCORES",
-          "startLine": 118,
-          "endLine": 145
+          "startLine": 125,
+          "endLine": 152
         }
       ],
       "calledByFiles": []
@@ -26958,8 +27375,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "class",
           "signature": "export class BamlTypeBuilder",
-          "startLine": 151,
-          "endLine": 188
+          "startLine": 158,
+          "endLine": 195
         }
       ],
       "calledByFiles": [
@@ -26972,8 +27389,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function createBamlTypeBuilder()",
-          "startLine": 190,
-          "endLine": 192
+          "startLine": 197,
+          "endLine": 199
         }
       ],
       "calledByFiles": []
@@ -26984,8 +27401,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "class",
           "signature": "export class BamlCollector",
-          "startLine": 198,
-          "endLine": 239
+          "startLine": 205,
+          "endLine": 246
         }
       ],
       "calledByFiles": []
@@ -26996,8 +27413,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function extractJsonishCandidates(rawText = '')",
-          "startLine": 344,
-          "endLine": 391
+          "startLine": 351,
+          "endLine": 398
         }
       ],
       "calledByFiles": []
@@ -27008,8 +27425,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function evaluateBamlChecksAndAsserts(verdict)",
-          "startLine": 397,
-          "endLine": 419
+          "startLine": 404,
+          "endLine": 426
         }
       ],
       "calledByFiles": []
@@ -27020,8 +27437,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "function repairSingleJsonishBlock(rawBlock = '')",
-          "startLine": 424,
-          "endLine": 475
+          "startLine": 431,
+          "endLine": 482
         }
       ],
       "calledByFiles": []
@@ -27032,8 +27449,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "constant",
           "signature": "export const bamlModularApi",
-          "startLine": 688,
-          "endLine": 715
+          "startLine": 695,
+          "endLine": 722
         }
       ],
       "calledByFiles": []
@@ -27044,8 +27461,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function loadJevDecisionCache()",
-          "startLine": 720,
-          "endLine": 739
+          "startLine": 727,
+          "endLine": 746
         }
       ],
       "calledByFiles": []
@@ -27056,8 +27473,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function saveJevDecisionCache(store)",
-          "startLine": 744,
-          "endLine": 750
+          "startLine": 751,
+          "endLine": 757
         }
       ],
       "calledByFiles": []
@@ -27068,8 +27485,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function computeJevPayloadHash(predicateId = '', payloadText = '', specContext = '')",
-          "startLine": 755,
-          "endLine": 758
+          "startLine": 762,
+          "endLine": 765
         }
       ],
       "calledByFiles": []
@@ -27080,8 +27497,20 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function loadJevFinOpsLedger()",
-          "startLine": 763,
-          "endLine": 801
+          "startLine": 770,
+          "endLine": 808
+        }
+      ],
+      "calledByFiles": []
+    },
+    "buildSystemOneQuestionsPayload": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/jev_semantic_gate.mjs",
+          "kind": "function",
+          "signature": "export function buildSystemOneQuestionsPayload(predicateId = 'jev-persisted-state-and-env-owner-gate', allowedChoices = [])",
+          "startLine": 1028,
+          "endLine": 1076
         }
       ],
       "calledByFiles": []
@@ -27092,8 +27521,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export async function evaluatePersistedStateAndEnvOwnerGate(diffText = '', options = {})",
-          "startLine": 1209,
-          "endLine": 1209
+          "startLine": 1352,
+          "endLine": 1352
         }
       ],
       "calledByFiles": []
@@ -27104,8 +27533,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export async function evaluateSpecBusinessInvariantAlignment(diffText = '', specText = '', options = {})",
-          "startLine": 1221,
-          "endLine": 1221
+          "startLine": 1364,
+          "endLine": 1364
         }
       ],
       "calledByFiles": []
@@ -27116,8 +27545,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export async function evaluateRedundantTestDetector(diffText = '', options = {})",
-          "startLine": 1234,
-          "endLine": 1234
+          "startLine": 1377,
+          "endLine": 1377
         }
       ],
       "calledByFiles": []
@@ -27128,8 +27557,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export async function evaluateCrossTraceFrictionMiner(customTracesText = '', options = {})",
-          "startLine": 1248,
-          "endLine": 1248
+          "startLine": 1391,
+          "endLine": 1391
         }
       ],
       "calledByFiles": []
@@ -27140,8 +27569,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function getJevFinOpsStatus()",
-          "startLine": 1371,
-          "endLine": 1391
+          "startLine": 1568,
+          "endLine": 1590
         }
       ],
       "calledByFiles": []
@@ -27152,8 +27581,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export async function runJevSemanticGateSelfTest()",
-          "startLine": 1396,
-          "endLine": 1410
+          "startLine": 1595,
+          "endLine": 1609
         }
       ],
       "calledByFiles": []
@@ -27356,7 +27785,6 @@
         }
       ],
       "calledByFiles": [
-        "tools/intelligence/jev_memory_pipeline.mjs",
         "tools/intelligence/memory_reflector.mjs"
       ]
     },
@@ -29303,18 +29731,6 @@
       ],
       "calledByFiles": []
     },
-    "GCP_FINOPS_BUDGET_PATH": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/vertex_ai_bridge.mjs",
-          "kind": "constant",
-          "signature": "export const GCP_FINOPS_BUDGET_PATH",
-          "startLine": 1019,
-          "endLine": 1019
-        }
-      ],
-      "calledByFiles": []
-    },
     "getGcpFinOpsStatus": {
       "definitions": [
         {
@@ -29747,6 +30163,7 @@
       ],
       "calledByFiles": [
         "tools/audit/a11y_tree_snapshot.mjs",
+        "tools/audit/api_contract_verifier.mjs",
         "tools/audit/code_clean_audit.mjs",
         "tools/audit/cognitive_ux_auditor.mjs",
         "tools/audit/diff_ui_adversarial.mjs",
@@ -29764,8 +30181,7 @@
         "tools/intelligence/eval_matrix.mjs",
         "tools/intelligence/spec_generator.mjs",
         "tools/orchestrator/deterministic_agent_statechart.mjs",
-        "tools/project_loader.mjs",
-        "tools/seo_smoke.mjs"
+        "tools/project_loader.mjs"
       ]
     },
     "mergeApprovedDeltaIntoCanonicalSpec": {
@@ -30316,8 +30732,8 @@
           "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
           "kind": "constant",
           "signature": "export const MAX_SELF_HEALING_ATTEMPTS",
-          "startLine": 33,
-          "endLine": 33
+          "startLine": 35,
+          "endLine": 35
         }
       ],
       "calledByFiles": []
@@ -30328,8 +30744,8 @@
           "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
           "kind": "constant",
           "signature": "export const FACTORY_EVENT_VOCABULARY",
-          "startLine": 39,
-          "endLine": 39
+          "startLine": 41,
+          "endLine": 41
         }
       ],
       "calledByFiles": []
@@ -30340,8 +30756,8 @@
           "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
           "kind": "constant",
           "signature": "export const HUMAN_ONLY_EVENTS",
-          "startLine": 56,
-          "endLine": 56
+          "startLine": 58,
+          "endLine": 58
         }
       ],
       "calledByFiles": []
@@ -30352,8 +30768,8 @@
           "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
           "kind": "constant",
           "signature": "export const factoryEnvironmentGuards",
-          "startLine": 65,
-          "endLine": 99
+          "startLine": 67,
+          "endLine": 101
         }
       ],
       "calledByFiles": []
@@ -30364,8 +30780,8 @@
           "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
           "kind": "constant",
           "signature": "export const factoryLifecycleMachine",
-          "startLine": 104,
-          "endLine": 192
+          "startLine": 106,
+          "endLine": 194
         }
       ],
       "calledByFiles": []
@@ -30376,8 +30792,8 @@
           "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
           "kind": "function",
           "signature": "export function validateAgentPolicyProposal(snapshot, proposedEvent, options = {})",
-          "startLine": 396,
-          "endLine": 396
+          "startLine": 398,
+          "endLine": 398
         }
       ],
       "calledByFiles": [
@@ -30390,8 +30806,8 @@
           "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
           "kind": "function",
           "signature": "export function syncProjectStatechartSnapshot(projectInput = '', eventSequence = [])",
-          "startLine": 444,
-          "endLine": 521
+          "startLine": 446,
+          "endLine": 570
         }
       ],
       "calledByFiles": [
@@ -30404,8 +30820,8 @@
           "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
           "kind": "function",
           "signature": "export function generateDeterministicClientUiFsmRuntime()",
-          "startLine": 528,
-          "endLine": 554
+          "startLine": 577,
+          "endLine": 603
         }
       ],
       "calledByFiles": [
@@ -30418,8 +30834,8 @@
           "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
           "kind": "function",
           "signature": "export function renderFactoryStatechartMermaid()",
-          "startLine": 559,
-          "endLine": 577
+          "startLine": 608,
+          "endLine": 626
         }
       ],
       "calledByFiles": []
@@ -30430,8 +30846,8 @@
           "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
           "kind": "function",
           "signature": "export function runDeterministicStatechartSelfTest()",
-          "startLine": 582,
-          "endLine": 677
+          "startLine": 631,
+          "endLine": 726
         }
       ],
       "calledByFiles": [

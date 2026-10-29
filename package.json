@@ -67,7 +67,9 @@
     "audit:eval": "node tools/intelligence/eval_matrix.mjs"
   },
   "dependencies": {
+    "@electric-sql/pglite": "^0.5.13",
     "@playwright/mcp": "^0.0.83",
+    "axe-core": "^4.14.0",
     "dnum": "^2.18.0",
     "fzstd": "^0.1.1",
     "lightningcss": "^1.33.0",

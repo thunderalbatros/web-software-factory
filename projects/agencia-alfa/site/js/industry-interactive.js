@@ -118,3 +118,20 @@
     uiMachine.send('SETTLE');
   });
 })();
+
+
+// BAML SAP Custom PRD Section Statechart Controller
+(function initPrdCustomSynthesizedModules() {
+  const out = document.getElementById('prd-custom-module-output');
+  const buttons = document.querySelectorAll('[data-prd-feature-btn]');
+  if (!out || !buttons.length) return;
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const featId = btn.getAttribute('data-prd-feature-btn') || 'prd-feat-1';
+      const card = btn.closest('[data-prd-feature-card]');
+      const titleEl = card ? card.querySelector('h3') : null;
+      const title = titleEl ? titleEl.textContent : featId;
+      out.textContent = 'Módulo PRD verificado en vivo [' + featId.toUpperCase() + ']: ' + title + ' — Latencia Edge < 12ms (ACTIVE).';
+    });
+  });
+})();

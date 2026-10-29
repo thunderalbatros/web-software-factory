@@ -9,6 +9,7 @@ import { applyBespokeMorphologyToProjectDom } from './design/build_vanilla_primi
 import { synthesizeProceduralSoundFromDesignCriteria } from './media/sonic_and_music_forge.mjs';
 import { forge3dSceneOrEffect } from './design/shader_and_3d_forge.mjs';
 import { generateBrandIntroVideo } from './media/programmatic_video_forge.mjs';
+import { verifyAndEmitOpenApiContract } from './audit/api_contract_verifier.mjs';
 
 const projectConfig = loadProjectConfig();
 const root = projectConfig.projectRoot;
@@ -45,6 +46,15 @@ if (fs.existsSync(dist)) {
   fs.rmSync(dist, { recursive: true, force: true });
 }
 fs.mkdirSync(dist, { recursive: true });
+
+try {
+  const openApiRes = verifyAndEmitOpenApiContract(projectConfig.id);
+  console.log(
+    `• Verified OpenAPI 3.1.0 + Valibot Edge Contract (${openApiRes.documentedPathsCount} routes -> dist/openapi.json, parity=${openApiRes.passed ? 'PASS' : 'WARN'})`
+  );
+} catch (err) {
+  console.warn(`• [OpenAPIContract] Warning: ${err.message}`);
+}
 
 if (projectConfig.stack === 'astro-edge' && fs.existsSync(path.join(root, 'astro.config.mjs'))) {
   const astroNodeModules = path.join(root, 'node_modules', 'astro');

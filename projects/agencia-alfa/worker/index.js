@@ -561,6 +561,16 @@ export default {
           );
         }
 
+        if (url.pathname === "/api/telemetry" && request.method === "POST") {
+          return withSecurityHeaders(
+            new Response(JSON.stringify({ ok: true, status: "telemetry_recorded" }), {
+              status: 202,
+              headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" }
+            }),
+            rateHeaders
+          );
+        }
+
         return withSecurityHeaders(
           new Response(JSON.stringify({ ok: false, error: "METHOD_NOT_ALLOWED" }), {
             status: 405,

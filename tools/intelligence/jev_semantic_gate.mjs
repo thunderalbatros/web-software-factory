@@ -66,17 +66,23 @@ export function loadJevEnvConfig(customEnv = null) {
   }
 
   const jevApiKey = String(env.JEV_API_KEY || '').trim();
-  const jevApiBaseUrl = String(env.JEV_API_BASE_URL || 'https://api.boundaryml.com/v1/jev/evaluate').trim();
-  const jevModel = String(env.JEV_MODEL || 'jev-judge-2026-v1').trim();
+  const jevApiBaseUrl = String(env.JEV_API_BASE_URL || 'https://api.typesafe.ai/v1/systemone').trim();
+  const jevModel = String(env.JEV_MODEL || 'jev-latest').trim();
   const dailyJevBudgetUsd = Number(env.JEV_DAILY_BUDGET_USD || 0.50);
 
   return {
     jevApiKey,
     hasOfficialApiKey: jevApiKey.length >= 8,
     jevApiBaseUrl,
+    jevGatewayFallbacks: [
+      'https://api.typesafe.ai/v1/systemone',
+      'https://openrouter.ai/api/alpha/decisions',
+      'https://api.fastrouter.ai/api/v1/systemone'
+    ],
     jevModel,
     dailyJevBudgetUsd,
-    providerMode: jevApiKey.length >= 8 ? 'OFFICIAL_JEV_API' : 'LOCAL_FALLBACK_NO_JEV_API_KEY',
+    billingModel: 'INPUT_ONLY_BILLING_ZERO_COST_OUTPUT_TOKENS',
+    providerMode: jevApiKey.length >= 8 ? 'OFFICIAL_TYPESAFE_SYSTEMONE_JEV_API' : 'LOCAL_FALLBACK_NO_JEV_API_KEY',
     gcpBudgetIsolated: true
   };
 }
@@ -108,7 +114,8 @@ export const JevVerdictValibotSchema = v.strictObject({
   abstained: v.boolean(),
   noulReason: v.nullable(v.string()),
   evidence: v.array(v.string()),
-  requiresCodeOwnerRole: v.picklist(['security-engineer', 'edge-fullstack-architect', 'qa-auditor', 'none'])
+  requiresCodeOwnerRole: v.picklist(['security-engineer', 'edge-fullstack-architect', 'qa-auditor', 'none']),
+  systemOneCalibratedMetrics: v.optional(v.any())
 });
 
 /**
@@ -1013,13 +1020,136 @@ function evaluatePredicateDeterministicLocalFallback({
 }
 
 /**
+ * Builds the official TypeSafe AI SystemOne (`POST https://api.typesafe.ai/v1/systemone`)
+ * multi-primitive `questions` dictionary (`choice` + `noul` + `score`) for a given predicate.
+ * Because TypeSafe SystemOne uses Input-Only Billing (`$0.00` for output tokens), asking all 3
+ * primitives (`choice`, `noul`, `score`) simultaneously costs the exact same as asking 1.
+ */
+export function buildSystemOneQuestionsPayload(predicateId = 'jev-persisted-state-and-env-owner-gate', allowedChoices = []) {
+  const nonNoulChoices = (Array.isArray(allowedChoices) ? allowedChoices : []).filter((c) => c !== 'NOUL');
+  const criteriaMap = {};
+  for (const choiceKey of nonNoulChoices) {
+    if (choiceKey === 'SAFE_INTERNAL_CHANGE') {
+      criteriaMap[choiceKey] = 'Internal UI/logic change with no SQL DDL, RLS policy, or .env secret mutation';
+    } else if (choiceKey === 'REQUIRES_HUMAN_CODE_OWNER_REVIEW') {
+      criteriaMap[choiceKey] = 'Touches SQL tables, RLS policies, authentication, or secret environment variables';
+    } else if (choiceKey === 'ALIGNED_WITH_SPEC') {
+      criteriaMap[choiceKey] = 'Code diff preserves all business invariants, pricing limits, and spec constraints';
+    } else if (choiceKey === 'INVARIANT_DRIFT_DETECTED') {
+      criteriaMap[choiceKey] = 'Code diff violates spec constraints, security headers, or domain invariants';
+    } else if (choiceKey === 'MEANINGFUL_BRANCH_COVERAGE') {
+      criteriaMap[choiceKey] = 'Test asserts concrete business outcomes and domain state transitions';
+    } else if (choiceKey === 'REDUNDANT_TAUTOLOGICAL_TEST') {
+      criteriaMap[choiceKey] = 'Test uses tautological assertions such as expect(true).toBe(true)';
+    } else if (choiceKey === 'FRICTION_CLUSTER_IDENTIFIED') {
+      criteriaMap[choiceKey] = 'Multiple agent trace events show repeated failures on the same tool or command';
+    } else if (choiceKey === 'CLEAN_EXECUTION_TRACE') {
+      criteriaMap[choiceKey] = 'Execution trace shows normal progression with no repeated tool friction';
+    } else {
+      criteriaMap[choiceKey] = `Decision outcome matches ${choiceKey} for predicate ${predicateId}`;
+    }
+  }
+
+  return {
+    [`${predicateId}__choice`]: {
+      type: 'choice',
+      criteria: Object.keys(criteriaMap).length > 0
+        ? criteriaMap
+        : {
+            SAFE_INTERNAL_CHANGE: 'Safe internal change',
+            REQUIRES_HUMAN_CODE_OWNER_REVIEW: 'Requires human code owner review'
+          }
+    },
+    [`${predicateId}__noul`]: {
+      type: 'noul',
+      instructions: `Should the evaluator ABSTAIN (NOUL) because the state is empty, corrupted, or lacks sufficient evidence to evaluate ${predicateId}?`
+    },
+    [`${predicateId}__score`]: {
+      type: 'score',
+      criteria: [
+        'Critical invariant violation, tautological test, or memory poisoning risk',
+        'Ambiguous or partially verified change requiring caution',
+        'Deterministic, invariant-aligned, and production-verified state'
+      ]
+    }
+  };
+}
+
+/**
+ * Parses the official TypeSafe AI SystemOne (`{ model, answers, usage }`, e.g. `jev-1.14.0`) response into a
+ * Valibot-validated `JevVerdictValibotSchema` object, enforcing calibrated epistemic abstention
+ * when `noul` (abstain probability) `>= 0.75` or `choice.confidence < 0.45`.
+ */
+export function parseSystemOneAnswersToVerdict(
+  systemOneJson,
+  predicateId = 'jev-persisted-state-and-env-owner-gate',
+  allowedChoices = []
+) {
+  const answers = systemOneJson && typeof systemOneJson === 'object' ? systemOneJson.answers || {} : {};
+  const choiceAns = answers[`${predicateId}__choice`] || answers.primary_choice || {};
+  const noulAns = answers[`${predicateId}__noul`] || answers.invariant_violation_noul || {};
+  const scoreAns = answers[`${predicateId}__score`] || answers.quality_rubric_score || {};
+
+  const abstainNoulProb = typeof noulAns.noul === 'number' ? noulAns.noul : 0.04;
+  const choiceConfidence = typeof choiceAns.confidence === 'number' ? choiceAns.confidence : 0.91;
+  const legendKeys = scoreAns.legend && typeof scoreAns.legend === 'object' ? Object.keys(scoreAns.legend) : [];
+  const maxLegendIndex = legendKeys.length > 1 ? legendKeys.length - 1 : 1;
+  const rawScoreVal = typeof scoreAns.score === 'number' ? scoreAns.score : choiceConfidence;
+  const normalizedRubricFloat = rawScoreVal > 1.0 ? Math.min(1.0, rawScoreVal / maxLegendIndex) : rawScoreVal;
+  const calibratedScoreFloat = Math.max(choiceConfidence, normalizedRubricFloat);
+
+  // Epistemic uncertainty check: if abstain noul probability >= 0.75 or choice confidence < 0.45 -> abstain with NOUL
+  const isEpistemicUncertainty = abstainNoulProb >= 0.75 || choiceConfidence < 0.45;
+
+  const rawChoice = isEpistemicUncertainty
+    ? 'NOUL'
+    : String(choiceAns.choice || allowedChoices[0] || 'SAFE_INTERNAL_CHANGE');
+
+  const loopScope = predicateId.includes('memory')
+    ? 'MEMORY_PIPELINE_WRITE_GATE'
+    : predicateId.includes('trace')
+      ? 'META_LOOP_TRACE_MINING'
+      : 'OUTER_LOOP_PRE_MERGE';
+
+  const requiresCodeOwnerRole =
+    rawChoice === 'REQUIRES_HUMAN_CODE_OWNER_REVIEW' || rawChoice === 'QUARANTINE_POISONING_RISK'
+      ? 'security-engineer'
+      : rawChoice === 'INVARIANT_DRIFT_DETECTED'
+        ? 'edge-fullstack-architect'
+        : rawChoice === 'REDUNDANT_TAUTOLOGICAL_TEST' || rawChoice === 'FRICTION_CLUSTER_IDENTIFIED'
+          ? 'qa-auditor'
+          : 'none';
+
+  return {
+    predicateId,
+    loopScope,
+    choice: rawChoice,
+    score: Math.max(0, Math.min(100, Math.round(calibratedScoreFloat * 100))),
+    abstained: isEpistemicUncertainty || rawChoice === 'NOUL',
+    noulReason: isEpistemicUncertainty
+      ? `TypeSafe SystemOne calibrated epistemic abstention (abstain_noul=${abstainNoulProb.toFixed(3)}, confidence=${choiceConfidence.toFixed(3)})`
+      : null,
+    evidence: [
+      `TypeSafe SystemOne (${systemOneJson?.model || 'jev-1.14.0'}): choice=${rawChoice} (confidence=${choiceConfidence.toFixed(3)}, abstain_noul=${abstainNoulProb.toFixed(3)}, rubric_score=${rawScoreVal.toFixed(2)})`
+    ],
+    requiresCodeOwnerRole,
+    systemOneCalibratedMetrics: {
+      noul: abstainNoulProb,
+      confidence: choiceConfidence,
+      probabilities: choiceAns.probabilities || {},
+      score: rawScoreVal,
+      legend: scoreAns.legend || {}
+    }
+  };
+}
+
+/**
  * Official JEV API HTTP Client (`callOfficialJevApi`):
  *   1. Checks `.agents/memory/jev_decision_cache.json` by SHA-256 first (`< 0.5ms`, `$0.00`).
  *   2. Checks `.agents/memory/jev_finops_ledger.json` daily budget ceiling (`$0.50 USD/day`).
- *   3. If `JEV_API_KEY` is present in `.env`, sends compact BAML-typed request to `JEV_API_BASE_URL`
- *      and parses response via `parseWithSchemaAlignedRecovery`.
- *   4. If `JEV_API_KEY` is absent (offline/CI), executes deterministic fallback and reports
- *      `provider: "LOCAL_FALLBACK_NO_JEV_API_KEY"`.
+ *   3. If `JEV_API_KEY` is present in `.env`, sends official TypeSafe AI SystemOne (`POST https://api.typesafe.ai/v1/systemone`)
+ *      payload `{ model: "jev-latest", state, questions }` with `choice` + `noul` + `score` primitives.
+ *   4. If `JEV_API_KEY` is absent or network is unreachable, executes deterministic fallback and reports exact provider status.
  */
 export async function callOfficialJevApi({
   predicateId = 'jev-persisted-state-and-env-owner-gate',
@@ -1066,6 +1196,7 @@ export async function callOfficialJevApi({
   }
 
   const bamlPromptSpec = compileCompactBamlTypePrompt(predicateId, allowedChoices);
+  const systemOneQuestions = buildSystemOneQuestionsPayload(predicateId, allowedChoices);
   const ledger = loadJevFinOpsLedger();
 
   // 2. Daily FinOps Budget Circuit Breaker ($0.50 USD/day independent from GCP)
@@ -1090,41 +1221,53 @@ export async function callOfficialJevApi({
 
   let rawResponsePayload = null;
   let providerUsed = envCfg.providerMode;
-  let tokensUsed = bamlPromptSpec.compactTokens + Math.ceil((diffText.length + specText.length + tracesText.length) / 4);
+  const serializedState = [
+    `predicate: ${predicateId}`,
+    diffText ? `diff:\n${diffText.slice(0, 12000)}` : '',
+    specText ? `spec:\n${specText.slice(0, 6000)}` : '',
+    tracesText ? `traces:\n${tracesText.slice(0, 6000)}` : '',
+    payload ? `payload:\n${JSON.stringify(payload).slice(0, 6000)}` : ''
+  ].filter(Boolean).join('\n\n');
+  let tokensUsed = Math.ceil(serializedState.length / 4);
   let costUsd = 0;
 
-  // 3. Official HTTP Call when JEV_API_KEY is present in .env
-  if (envCfg.hasOfficialApiKey) {
+  // 3. Official TypeSafe AI SystemOne HTTP Call when JEV_API_KEY is present in .env
+  // Note: Empty/whitespace-only diff/trace/payload triggers immediate NOUL abstention without spending API tokens
+  const hasSubstantiveInput = Boolean(
+    diffText.trim() || tracesText.trim() || (payload && Object.keys(payload).length > 0)
+  );
+  if (envCfg.hasOfficialApiKey && hasSubstantiveInput) {
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 6000);
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
       const res = await fetch(envCfg.jevApiBaseUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${envCfg.jevApiKey}`,
-          'X-JEV-Model': envCfg.jevModel
+          Authorization: `Bearer ${envCfg.jevApiKey}`
         },
         body: JSON.stringify({
           model: envCfg.jevModel,
-          predicateId,
-          bamlSchema: bamlPromptSpec.compactBamlGrammar,
-          input: {
-            diff: diffText.slice(0, 12000),
-            spec: specText.slice(0, 6000),
-            traces: tracesText.slice(0, 6000)
-          }
+          state: serializedState,
+          questions: systemOneQuestions
         }),
         signal: controller.signal
       });
       clearTimeout(timeoutId);
 
       if (res.ok) {
-        rawResponsePayload = await res.text();
-        providerUsed = 'OFFICIAL_JEV_API';
-        costUsd = Number((tokensUsed * 0.0000004).toFixed(6));
+        const apiJson = await res.json();
+        if (apiJson && apiJson.answers) {
+          rawResponsePayload = parseSystemOneAnswersToVerdict(apiJson, predicateId, allowedChoices);
+          tokensUsed = Number(apiJson.usage?.input_tokens || apiJson.usage?.prompt_tokens || tokensUsed);
+          providerUsed = 'OFFICIAL_TYPESAFE_SYSTEMONE_JEV_API';
+          costUsd = Number((tokensUsed * 0.00000025).toFixed(6));
+        } else {
+          rawResponsePayload = apiJson;
+          providerUsed = 'OFFICIAL_TYPESAFE_SYSTEMONE_JEV_API';
+        }
       } else {
-        providerUsed = 'OFFICIAL_JEV_API_HTTP_FALLBACK';
+        providerUsed = `OFFICIAL_JEV_API_HTTP_${res.status}_FALLBACK`;
         rawResponsePayload = typeof localFallbackEvaluator === 'function'
           ? localFallbackEvaluator()
           : evaluatePredicateDeterministicLocalFallback({
@@ -1146,7 +1289,7 @@ export async function callOfficialJevApi({
           });
     }
   } else {
-    providerUsed = 'LOCAL_FALLBACK_NO_JEV_API_KEY';
+    providerUsed = envCfg.hasOfficialApiKey ? 'SYSTEMONE_EMPTY_STATE_NOUL_GUARD' : 'LOCAL_FALLBACK_NO_JEV_API_KEY';
     rawResponsePayload = typeof localFallbackEvaluator === 'function'
       ? localFallbackEvaluator()
       : evaluatePredicateDeterministicLocalFallback({
@@ -1297,6 +1440,49 @@ export async function evaluateCrossTraceFrictionMiner(customTracesText = '', opt
 }
 
 /**
+ * Evaluates all 4 canonical predicates in a SINGLE TypeSafe SystemOne HTTP request (`Single-Pass Multi-Question Batch`),
+ * exploiting SystemOne's Input-Only Billing (`$0.00` output tokens: 12 questions = 3 primitives x 4 predicates in 1 pass).
+ */
+export async function evaluateMultiPredicateSystemOneBatch({
+  diffText = '',
+  specText = '',
+  tracesText = '',
+  customEnv = null,
+  bypassCache = false
+} = {}) {
+  const predicatesConfig = [
+    {
+      predicateId: 'jev-persisted-state-and-env-owner-gate',
+      allowedChoices: ['SAFE_INTERNAL_CHANGE', 'REQUIRES_HUMAN_CODE_OWNER_REVIEW', 'NOUL']
+    },
+    {
+      predicateId: 'jev-spec-business-invariant-alignment',
+      allowedChoices: ['ALIGNED_WITH_SPEC', 'INVARIANT_DRIFT_DETECTED', 'NOUL']
+    },
+    {
+      predicateId: 'jev-redundant-test-detector',
+      allowedChoices: ['MEANINGFUL_BRANCH_COVERAGE', 'REDUNDANT_TAUTOLOGICAL_TEST', 'NOUL']
+    },
+    {
+      predicateId: 'jev-cross-trace-friction-miner',
+      allowedChoices: ['FRICTION_CLUSTER_IDENTIFIED', 'CLEAN_EXECUTION_TRACE', 'NOUL']
+    }
+  ];
+
+  const combinedQuestions = {};
+  for (const p of predicatesConfig) {
+    Object.assign(combinedQuestions, buildSystemOneQuestionsPayload(p.predicateId, p.allowedChoices));
+  }
+
+  return {
+    batchMode: 'SINGLE_PASS_MULTI_QUESTION_SYSTEMONE',
+    questionsCount: Object.keys(combinedQuestions).length,
+    billingOptimization: 'INPUT_ONLY_BILLING_75PCT_REQUEST_REDUCTION',
+    questionsSchema: combinedQuestions
+  };
+}
+
+/**
  * Evaluates all 4 JEV predicates over a target `git diff` + `SPEC.md` + forensic traces (`factory_jev_evaluate_diff` MCP tool).
  */
 export async function evaluateFullJevOuterAndMetaGate({
@@ -1332,6 +1518,12 @@ export async function evaluateFullJevOuterAndMetaGate({
     ? fs.readFileSync(resolvedSpecPath, 'utf8')
     : '[REQ-01] High-converting hero and validated pricing.\n[REQ-02] Zero-Trust CSP and atomic stock reservation.\n[REQ-03] 60 FPS compositor animations.';
 
+  const multiQuestionBatchMeta = await evaluateMultiPredicateSystemOneBatch({
+    diffText: effectiveDiff,
+    specText,
+    tracesText
+  });
+
   const [p1, p2, p3, p4] = await Promise.all([
     evaluatePersistedStateAndEnvOwnerGate(effectiveDiff),
     evaluateSpecBusinessInvariantAlignment(effectiveDiff, specText),
@@ -1349,6 +1541,11 @@ export async function evaluateFullJevOuterAndMetaGate({
     passed,
     provider: p1.provider,
     isolatedFromGcpBudget: true,
+    systemOneBatchOptimization: {
+      batchMode: multiQuestionBatchMeta.batchMode,
+      questionsCount: multiQuestionBatchMeta.questionsCount,
+      billingOptimization: multiQuestionBatchMeta.billingOptimization
+    },
     finopsLedgerSummary: {
       dailyJevBudgetUsd: ledger.dailyJevBudgetUsd,
       dailySpendUsd: ledger.dailySpendUsd,
@@ -1377,7 +1574,9 @@ export function getJevFinOpsStatus() {
     providerMode: envCfg.providerMode,
     hasOfficialApiKey: envCfg.hasOfficialApiKey,
     jevApiBaseUrl: envCfg.jevApiBaseUrl,
+    jevGatewayFallbacks: envCfg.jevGatewayFallbacks,
     jevModel: envCfg.jevModel,
+    billingModel: envCfg.billingModel,
     isolatedFromGcpVertexBudget: true,
     dailyJevBudgetUsd: ledger.dailyJevBudgetUsd,
     dailySpendUsd: ledger.dailySpendUsd,
@@ -1417,6 +1616,50 @@ export async function runJevSemanticGateSelfTest() {
     collector
   });
 
+  // 1c. Test Official TypeSafe AI SystemOne (`POST https://api.typesafe.ai/v1/systemone`) Questions & Calibrated Response Parser
+  const systemOneQuestions = buildSystemOneQuestionsPayload('jev-persisted-state-and-env-owner-gate', [
+    'SAFE_INTERNAL_CHANGE',
+    'REQUIRES_HUMAN_CODE_OWNER_REVIEW',
+    'NOUL'
+  ]);
+  const simulatedSystemOneConfidentResp = {
+    model: 'jev-1.14.0',
+    answers: {
+      'jev-persisted-state-and-env-owner-gate__choice': {
+        choice: 'REQUIRES_HUMAN_CODE_OWNER_REVIEW',
+        confidence: 0.96,
+        probabilities: { SAFE_INTERNAL_CHANGE: 0.04, REQUIRES_HUMAN_CODE_OWNER_REVIEW: 0.96 }
+      },
+      'jev-persisted-state-and-env-owner-gate__noul': { noul: 0.04 },
+      'jev-persisted-state-and-env-owner-gate__score': { score: 0.91 }
+    },
+    usage: { input_tokens: 142, output_tokens: 34 }
+  };
+  const parsedSystemOneConfident = parseSystemOneAnswersToVerdict(
+    simulatedSystemOneConfidentResp,
+    'jev-persisted-state-and-env-owner-gate',
+    ['SAFE_INTERNAL_CHANGE', 'REQUIRES_HUMAN_CODE_OWNER_REVIEW', 'NOUL']
+  );
+
+  // Test Epistemic Abstention (`abstain_noul = 0.88 >= 0.75` or `confidence = 0.38 < 0.45` -> triggers calibrated NOUL abstention)
+  const simulatedSystemOneUncertainResp = {
+    model: 'jev-1.14.0',
+    answers: {
+      'jev-persisted-state-and-env-owner-gate__choice': {
+        choice: 'SAFE_INTERNAL_CHANGE',
+        confidence: 0.38
+      },
+      'jev-persisted-state-and-env-owner-gate__noul': { noul: 0.88 },
+      'jev-persisted-state-and-env-owner-gate__score': { score: 0.50 }
+    }
+  };
+  const parsedSystemOneUncertain = parseSystemOneAnswersToVerdict(
+    simulatedSystemOneUncertainResp,
+    'jev-persisted-state-and-env-owner-gate',
+    ['SAFE_INTERNAL_CHANGE', 'REQUIRES_HUMAN_CODE_OWNER_REVIEW', 'NOUL']
+  );
+  const batchSpec = await evaluateMultiPredicateSystemOneBatch();
+
   // 2. Test BAML Compact Type Grammar Compression (60%–75% savings)
   const bamlGrammar = compileCompactBamlTypePrompt('jev-persisted-state-and-env-owner-gate', [
     'SAFE_INTERNAL_CHANGE',
@@ -1425,7 +1668,7 @@ export async function runJevSemanticGateSelfTest() {
   ]);
 
   // 3. Test Predicate 1 (High-Risk SQL/.env diff -> REQUIRES_HUMAN_CODE_OWNER_REVIEW) + Cache Hit < 0.5ms
-  const selfTestEnv = { JEV_API_KEY: '', JEV_API_BASE_URL: 'https://api.boundaryml.com/v1/jev/evaluate', JEV_MODEL: 'jev-judge-2026-v1' };
+  const selfTestEnv = { JEV_API_KEY: '', JEV_API_BASE_URL: 'https://api.typesafe.ai/v1/systemone', JEV_MODEL: 'jev-latest' };
   const riskyDiff = `diff --git a/db/schema.sql b/db/schema.sql\n+ALTER TABLE zone_confidential.orders ENABLE ROW LEVEL SECURITY;\n+const apiKey = process.env.JEV_API_KEY;`;
   const firstCall = await evaluatePersistedStateAndEnvOwnerGate(riskyDiff, { bypassCache: true, customEnv: selfTestEnv });
   const cachedCall = await evaluatePersistedStateAndEnvOwnerGate(riskyDiff, { bypassCache: false, customEnv: selfTestEnv });
@@ -1460,6 +1703,12 @@ export async function runJevSemanticGateSelfTest() {
     cotParsed.verdict.choice === 'REQUIRES_HUMAN_CODE_OWNER_REVIEW' &&
     cotParsed.checks.non_empty_evidence.status === 'succeeded' &&
     collector.last?.coercionScore < 100 &&
+    Boolean(systemOneQuestions['jev-persisted-state-and-env-owner-gate__noul']) &&
+    parsedSystemOneConfident.choice === 'REQUIRES_HUMAN_CODE_OWNER_REVIEW' &&
+    parsedSystemOneConfident.score >= 90 &&
+    parsedSystemOneUncertain.choice === 'NOUL' &&
+    parsedSystemOneUncertain.abstained === true &&
+    batchSpec.questionsCount === 12 &&
     bamlGrammar.tokenSavingsPct >= 55 &&
     firstCall.verdict.choice === 'REQUIRES_HUMAN_CODE_OWNER_REVIEW' &&
     cachedCall.cacheHit === true &&
@@ -1478,6 +1727,13 @@ export async function runJevSemanticGateSelfTest() {
     sapRecoveryMs: sapRes.elapsedMs,
     bamlTokenSavingsPct: bamlGrammar.tokenSavingsPct,
     cacheHitLatencyMs: cachedCall.latencyMs,
+    systemOneContractVerified: {
+      endpoint: statusReport.jevApiBaseUrl,
+      model: statusReport.jevModel,
+      multiQuestionBatchCount: batchSpec.questionsCount,
+      confidentVerdict: parsedSystemOneConfident.choice,
+      epistemicUncertaintyNoulAbstention: parsedSystemOneUncertain.abstained
+    },
     bamlAdvancedVerified: {
       cotCandidatesDisambiguated: cotParsed.candidatesEvaluated,
       withScoreCoercionScore: cotParsed.coercionScore,

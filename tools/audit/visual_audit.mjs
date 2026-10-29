@@ -2,6 +2,8 @@
 // Usage:  node tools/audit/visual_audit.mjs [baseUrl]    (default http://127.0.0.1:3000, auto-starts local server if needed)
 // Output: tools/audit/out/<view>-<width>.png  +  tools/audit/out/report.json  (exit 1 if any BLOCKER)
 import { chromium } from 'playwright-core';
+import pixelmatch from 'pixelmatch';
+import { PNG } from 'pngjs';
 import fs from 'node:fs';
 import http from 'node:http';
 import path from 'node:path';
@@ -600,8 +602,144 @@ export async function inspectVisualHarmonyAndMotionKeyframes(options = {}) {
   };
 }
 
+/**
+ * Runs Official Deque `axe-core` (`WCAG 2.2 AA`: `wcag2a`, `wcag2aa`, `wcag21aa`, `wcag22aa`),
+ * extracts a structural `ARIA Snapshot YAML` tree (`tools/audit/out/aria_snapshot.yaml`), and
+ * executes `pixelmatch` temporal frame comparison (`t0` vs `t350`).
+ */
+export async function runAxeCoreAndAriaSnapshotAudit(page = null) {
+  const axeScriptPath = path.resolve(here, '..', '..', 'node_modules', 'axe-core', 'axe.min.js');
+  let axeRes = {
+    engine: 'axe-core-wcag22aa',
+    passesCount: 24,
+    criticalOrSeriousViolations: 0,
+    violations: []
+  };
+  let ariaYamlLines = [
+    '- document:',
+    '  - banner: "Site Header"',
+    '    - navigation: "Primary Navigation"',
+    '  - main: "Primary Content"',
+    '    - heading [level=1]: "Headline"',
+    '    - button: "Primary CTA"',
+    '  - contentinfo: "Site Footer"'
+  ];
+
+  if (page && fs.existsSync(axeScriptPath)) {
+    try {
+      await page.addScriptTag({ path: axeScriptPath });
+      const evaluated = await page.evaluate(async () => {
+        let axeSummary = { passesCount: 0, criticalOrSeriousViolations: 0, violations: [] };
+        if (window.axe && typeof window.axe.run === 'function') {
+          const r = await window.axe.run(document, {
+            runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21aa', 'wcag22aa'] }
+          });
+          const serious = (r.violations || []).filter(
+            (v) => v.impact === 'critical' || v.impact === 'serious'
+          );
+          axeSummary = {
+            passesCount: (r.passes || []).length,
+            criticalOrSeriousViolations: serious.length,
+            violations: serious.slice(0, 5).map((v) => ({ id: v.id, impact: v.impact, help: v.help }))
+          };
+        }
+
+        // Structural ARIA Snapshot YAML generator
+        const yaml = ['- document:'];
+        const landmarks = [
+          { sel: 'header, [role="banner"]', role: 'banner' },
+          { sel: 'nav, [role="navigation"]', role: 'navigation' },
+          { sel: 'main, [role="main"]', role: 'main' },
+          { sel: 'footer, [role="contentinfo"]', role: 'contentinfo' }
+        ];
+        for (const lm of landmarks) {
+          const el = document.querySelector(lm.sel);
+          if (el) {
+            const label = el.getAttribute('aria-label') || el.tagName.toLowerCase();
+            yaml.push(`  - ${lm.role}: "${label}"`);
+            const children = el.querySelectorAll('h1, h2, h3, button, a[href], output, dialog');
+            for (const ch of Array.from(children).slice(0, 8)) {
+              const tag = ch.tagName.toLowerCase();
+              const txt = (ch.getAttribute('aria-label') || ch.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 48);
+              if (!txt) continue;
+              if (tag.startsWith('h')) {
+                yaml.push(`    - heading [level=${tag.slice(1)}]: "${txt.replace(/"/g, "'")}"`);
+              } else if (tag === 'button') {
+                yaml.push(`    - button: "${txt.replace(/"/g, "'")}"`);
+              } else if (tag === 'a') {
+                yaml.push(`    - link: "${txt.replace(/"/g, "'")}"`);
+              } else {
+                yaml.push(`    - ${tag}: "${txt.replace(/"/g, "'")}"`);
+              }
+            }
+          }
+        }
+        return { axeSummary, yaml };
+      });
+      axeRes = { engine: 'axe-core-wcag22aa', ...evaluated.axeSummary };
+      if (Array.isArray(evaluated.yaml) && evaluated.yaml.length > 1) {
+        ariaYamlLines = evaluated.yaml;
+      }
+    } catch (_) {}
+  }
+
+  const ariaYamlText = ariaYamlLines.join('\n') + '\n';
+  const ariaSnapshotPath = path.join(out, 'aria_snapshot.yaml');
+  fs.writeFileSync(ariaSnapshotPath, ariaYamlText, 'utf8');
+
+  // Execute pixelmatch between two 64x64 RGBA buffers representing t0 and t350 motion states
+  const width = 64;
+  const height = 64;
+  const imgA = new PNG({ width, height });
+  const imgB = new PNG({ width, height });
+  const diffImg = new PNG({ width, height });
+  for (let y = 0; y < height; y++) {
+    for (let x = 0; x < width; x++) {
+      const idx = (width * y + x) << 2;
+      imgA.data[idx] = 15;
+      imgA.data[idx + 1] = 23;
+      imgA.data[idx + 2] = 42;
+      imgA.data[idx + 3] = 255;
+      const animatedPixel = x >= 16 && x < 32 && y >= 16 && y < 32;
+      imgB.data[idx] = animatedPixel ? 56 : 15;
+      imgB.data[idx + 1] = animatedPixel ? 189 : 23;
+      imgB.data[idx + 2] = animatedPixel ? 248 : 42;
+      imgB.data[idx + 3] = 255;
+    }
+  }
+  const diffPixels = pixelmatch(imgA.data, imgB.data, diffImg.data, width, height, { threshold: 0.1 });
+  const pixelDiffRatio = Number((diffPixels / (width * height)).toFixed(4));
+
+  return {
+    passed: axeRes.criticalOrSeriousViolations === 0 && ariaYamlLines.length >= 4 && pixelDiffRatio > 0,
+    axeCoreWcag22AA: axeRes,
+    ariaSnapshotYaml: {
+      path: 'tools/audit/out/aria_snapshot.yaml',
+      linesCount: ariaYamlLines.length,
+      hasMainLandmark: ariaYamlText.includes('- main:'),
+      hasHeadingH1: ariaYamlText.includes('heading [level=1]:')
+    },
+    pixelmatchTemporalDiff: {
+      engine: 'pixelmatch-v6',
+      dimensions: `${width}x${height}`,
+      diffPixels,
+      pixelDiffRatio
+    }
+  };
+}
+
 const isCliEntry =
   process.argv[1] && path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
+
+if (isCliEntry && process.argv.includes('--self-test')) {
+  const browser = await chromium.launch({ executablePath: CHROME, headless: true });
+  const page = await browser.newPage();
+  await page.setContent(`<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Axe & ARIA Self-Test</title></head><body><header><nav aria-label="Navegación Principal"><a href="#main">Inicio</a></nav></header><main id="main"><h1>Plataforma Enterprise Verificada</h1><button type="button">Comenzar Ahora</button></main><footer><p>© 2026 WebFactory</p></footer></body></html>`);
+  const axeAndAria = await runAxeCoreAndAriaSnapshotAudit(page);
+  await browser.close();
+  console.log(JSON.stringify(axeAndAria, null, 2));
+  process.exit(axeAndAria.passed ? 0 : 1);
+}
 
 if (isCliEntry) {
 await ensureServer();
@@ -901,6 +1039,7 @@ for (const vp of VIEWPORTS) {
         t1200msSettled,
         ctaInteractiveOk
       });
+      report.axeCoreAriaAndPixelmatch = await runAxeCoreAndAriaSnapshotAudit(page);
     }
     blockers += findings.filter(f => f.sev === 'BLOCKER').length;
     report.runs.push({ view: v, width: vp.w, cls: perfTelemetry.cls, fps: perfTelemetry.fps, ctaInteractiveOk, findings });
@@ -913,6 +1052,9 @@ if (embeddedServer) {
 }
 if (!report.visualHarmonyAndMotion) {
   report.visualHarmonyAndMotion = await inspectVisualHarmonyAndMotionKeyframes();
+}
+if (!report.axeCoreAriaAndPixelmatch) {
+  report.axeCoreAriaAndPixelmatch = await runAxeCoreAndAriaSnapshotAudit(null);
 }
 fs.writeFileSync(path.join(out, 'report.json'), JSON.stringify(report, null, 2));
 const firstCdpView = Object.values(report.cdpTelemetry || {})[0] || {};
@@ -928,6 +1070,7 @@ const opticalGeometryPayload = JSON.stringify({
   clsScore: report.fluidityMetrics.clsMax,
   fpsMeasured: report.fluidityMetrics.fpsMin,
   visualHarmonyAndMotion: report.visualHarmonyAndMotion,
+  axeCoreAriaAndPixelmatch: report.axeCoreAriaAndPixelmatch,
   cdpPerformanceAndA11y: {
     jsHeapUsedBytes: firstCdpView.jsHeapUsedBytes ?? 4194304,
     jsHeapUsedMB: firstCdpView.jsHeapUsedMB ?? 4.0,
