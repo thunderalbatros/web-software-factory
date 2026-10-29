@@ -1,14 +1,14 @@
 {
   "schema": "cocoindex-code-ast-graph-v1",
-  "updatedAt": "2026-10-29T15:22:40.718Z",
+  "updatedAt": "2026-10-29T17:45:39.830Z",
   "activeProject": "agencia-alfa",
-  "combinedSha256": "11db9bb7c9b32b1c",
+  "combinedSha256": "552b93ac5e637321",
   "stats": {
-    "totalFilesIndexed": 142,
-    "reindexedFilesCount": 12,
-    "cachedFilesCount": 130,
-    "totalSymbols": 1173,
-    "totalExports": 695,
+    "totalFilesIndexed": 141,
+    "reindexedFilesCount": 5,
+    "cachedFilesCount": 136,
+    "totalSymbols": 1182,
+    "totalExports": 691,
     "estimatedTokenSavingsPct": 72.5
   },
   "files": [
@@ -58,8 +58,8 @@
     {
       "path": "projects/agencia-alfa/public/assets/video/agencia-alfa-intro-3d-pbr.motion-canvas.ts",
       "ext": ".ts",
-      "sha256": "597b88d9adb51c71",
-      "lineCount": 27,
+      "sha256": "6301d726848f356e",
+      "lineCount": 28,
       "exports": [
         "BRAND_INTRO_SCENE_CONFIG"
       ],
@@ -75,17 +75,17 @@
           "exported": true,
           "signature": "export const BRAND_INTRO_SCENE_CONFIG",
           "startLine": 7,
-          "endLine": 26
+          "endLine": 27
         }
       ],
-      "mtimeMs": 1793226291942.1284,
-      "size": 874
+      "mtimeMs": 1793295431262.007,
+      "size": 928
     },
     {
       "path": "projects/agencia-alfa/public/assets/video/agencia-alfa-intro-minimal.motion-canvas.ts",
       "ext": ".ts",
-      "sha256": "fc8abe1662453ee6",
-      "lineCount": 27,
+      "sha256": "761983fad8ef170e",
+      "lineCount": 28,
       "exports": [
         "BRAND_INTRO_SCENE_CONFIG"
       ],
@@ -101,17 +101,17 @@
           "exported": true,
           "signature": "export const BRAND_INTRO_SCENE_CONFIG",
           "startLine": 7,
-          "endLine": 26
+          "endLine": 27
         }
       ],
-      "mtimeMs": 1793226291923.4468,
-      "size": 876
+      "mtimeMs": 1793295896793.1426,
+      "size": 922
     },
     {
       "path": "projects/agencia-alfa/public/assets/video/agencia-alfa-intro-shader-hud.motion-canvas.ts",
       "ext": ".ts",
-      "sha256": "4256dadc5d22be56",
-      "lineCount": 27,
+      "sha256": "ea44409c1e33421a",
+      "lineCount": 28,
       "exports": [
         "BRAND_INTRO_SCENE_CONFIG"
       ],
@@ -127,17 +127,17 @@
           "exported": true,
           "signature": "export const BRAND_INTRO_SCENE_CONFIG",
           "startLine": 7,
-          "endLine": 26
+          "endLine": 27
         }
       ],
-      "mtimeMs": 1793226291986.9446,
-      "size": 892
+      "mtimeMs": 1793295431386.3735,
+      "size": 939
     },
     {
       "path": "projects/agencia-alfa/public/assets/video/agencia-alfa-intro-vertex-veo-hybrid.motion-canvas.ts",
       "ext": ".ts",
-      "sha256": "ce3a9afd4fa36263",
-      "lineCount": 27,
+      "sha256": "84fe44be00bb0c4d",
+      "lineCount": 28,
       "exports": [
         "BRAND_INTRO_SCENE_CONFIG"
       ],
@@ -153,17 +153,99 @@
           "exported": true,
           "signature": "export const BRAND_INTRO_SCENE_CONFIG",
           "startLine": 7,
-          "endLine": 26
+          "endLine": 27
         }
       ],
-      "mtimeMs": 1793226319918.6013,
-      "size": 873
+      "mtimeMs": 1793295431330.7124,
+      "size": 920
+    },
+    {
+      "path": "projects/agencia-alfa/public/assets/video/brand-intro-player.js",
+      "ext": ".js",
+      "sha256": "7d7cd6d3721e7e80",
+      "lineCount": 142,
+      "exports": [
+        "BRAND_INTRO_PLAYER_CONFIG",
+        "mountBrandIntroPlayer"
+      ],
+      "imports": [],
+      "importedBy": [],
+      "calls": [
+        "oklch",
+        "querySelector",
+        "matchMedia",
+        "createElement",
+        "setAttribute",
+        "prepend",
+        "now",
+        "getContext",
+        "clearRect",
+        "fillRect",
+        "createRadialGradient",
+        "addColorStop",
+        "rgba",
+        "sin",
+        "toFixed",
+        "save",
+        "translate",
+        "min",
+        "scale",
+        "setLineDash",
+        "beginPath",
+        "moveTo",
+        "lineTo",
+        "stroke",
+        "restore",
+        "renderFrame",
+        "max",
+        "requestAnimationFrame",
+        "addEventListener",
+        "cancelAnimationFrame",
+        "skip",
+        "mountBrandIntroPlayer"
+      ],
+      "symbols": [
+        {
+          "name": "BRAND_INTRO_PLAYER_CONFIG",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const BRAND_INTRO_PLAYER_CONFIG",
+          "startLine": 6,
+          "endLine": 24
+        },
+        {
+          "name": "mountBrandIntroPlayer",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function mountBrandIntroPlayer(stageSelector = '.wf-brand-intro-stage')",
+          "startLine": 26,
+          "endLine": 133
+        },
+        {
+          "name": "renderFrame",
+          "kind": "function",
+          "exported": false,
+          "signature": "function renderFrame(progress)",
+          "startLine": 52,
+          "endLine": 94
+        },
+        {
+          "name": "step",
+          "kind": "function",
+          "exported": false,
+          "signature": "function step(now)",
+          "startLine": 102,
+          "endLine": 112
+        }
+      ],
+      "mtimeMs": 1793295896789.1455,
+      "size": 4414
     },
     {
       "path": "projects/agencia-alfa/site/css/design-tokens.css",
       "ext": ".css",
-      "sha256": "e03cc852d0e9c509",
-      "lineCount": 380,
+      "sha256": "005c228e9ae8da05",
+      "lineCount": 387,
       "exports": [
         "scrollRevealCard"
       ],
@@ -172,304 +254,352 @@
       "calls": [],
       "symbols": [
         {
+          "name": "--color-primary",
+          "kind": "css-token",
+          "exported": true,
+          "signature": "--color-primary: oklch(0.78 0.187 234);",
+          "startLine": 10,
+          "endLine": 10
+        },
+        {
+          "name": "--color-secondary",
+          "kind": "css-token",
+          "exported": true,
+          "signature": "--color-secondary: oklch(0.42 0.094 258);",
+          "startLine": 11,
+          "endLine": 11
+        },
+        {
+          "name": "--color-accent",
+          "kind": "css-token",
+          "exported": true,
+          "signature": "--color-accent: oklch(0.74 0.156 286);",
+          "startLine": 12,
+          "endLine": 12
+        },
+        {
+          "name": "--color-surface",
+          "kind": "css-token",
+          "exported": true,
+          "signature": "--color-surface: oklch(0.13 0.0127 258);",
+          "startLine": 13,
+          "endLine": 13
+        },
+        {
+          "name": "--brand-logo-primary",
+          "kind": "css-token",
+          "exported": true,
+          "signature": "--brand-logo-primary: \"public/assets/brand/logo-primary.svg\";",
+          "startLine": 14,
+          "endLine": 14
+        },
+        {
+          "name": "--brand-logo-isotipo",
+          "kind": "css-token",
+          "exported": true,
+          "signature": "--brand-logo-isotipo: \"public/assets/brand/isotipo.svg\";",
+          "startLine": 15,
+          "endLine": 15
+        },
+        {
           "name": "--surface-canvas",
           "kind": "css-token",
           "exported": true,
-          "signature": "--surface-canvas: oklch(0.13 0.015 258);",
-          "startLine": 9,
-          "endLine": 9
+          "signature": "--surface-canvas: oklch(0.13 0.0127 258);",
+          "startLine": 16,
+          "endLine": 16
         },
         {
           "name": "--surface-elevated",
           "kind": "css-token",
           "exported": true,
-          "signature": "--surface-elevated: oklch(0.18 0.018 258);",
-          "startLine": 10,
-          "endLine": 10
+          "signature": "--surface-elevated: oklch(0.18 0.0146 258);",
+          "startLine": 17,
+          "endLine": 17
         },
         {
           "name": "--surface-interactive",
           "kind": "css-token",
           "exported": true,
           "signature": "--surface-interactive: oklch(0.22 0.022 258);",
-          "startLine": 11,
-          "endLine": 11
+          "startLine": 18,
+          "endLine": 18
         },
         {
           "name": "--surface-glass",
           "kind": "css-token",
           "exported": true,
           "signature": "--surface-glass: oklch(0.20 0.02 258 / 0.76);",
-          "startLine": 12,
-          "endLine": 12
+          "startLine": 19,
+          "endLine": 19
         },
         {
           "name": "--text-primary",
           "kind": "css-token",
           "exported": true,
           "signature": "--text-primary: oklch(0.96 0.008 258);",
-          "startLine": 13,
-          "endLine": 13
+          "startLine": 20,
+          "endLine": 20
         },
         {
           "name": "--text-secondary",
           "kind": "css-token",
           "exported": true,
           "signature": "--text-secondary: oklch(0.76 0.015 258);",
-          "startLine": 14,
-          "endLine": 14
+          "startLine": 21,
+          "endLine": 21
         },
         {
           "name": "--text-muted",
           "kind": "css-token",
           "exported": true,
           "signature": "--text-muted: oklch(0.62 0.015 258);",
-          "startLine": 15,
-          "endLine": 15
+          "startLine": 22,
+          "endLine": 22
         },
         {
           "name": "--brand-accent",
           "kind": "css-token",
           "exported": true,
-          "signature": "--brand-accent: oklch(0.74 0.17 162);",
-          "startLine": 16,
-          "endLine": 16
+          "signature": "--brand-accent: oklch(0.74 0.156 286);",
+          "startLine": 23,
+          "endLine": 23
         },
         {
           "name": "--brand-cta",
           "kind": "css-token",
           "exported": true,
-          "signature": "--brand-cta: oklch(0.82 0.18 85);",
-          "startLine": 17,
-          "endLine": 17
+          "signature": "--brand-cta: oklch(0.78 0.187 234);",
+          "startLine": 24,
+          "endLine": 24
         },
         {
           "name": "--brand-cta-ink",
           "kind": "css-token",
           "exported": true,
           "signature": "--brand-cta-ink: oklch(0.14 0.02 258);",
-          "startLine": 18,
-          "endLine": 18
+          "startLine": 25,
+          "endLine": 25
         },
         {
           "name": "--border-subtle",
           "kind": "css-token",
           "exported": true,
           "signature": "--border-subtle: oklch(1 0 0 / 0.08);",
-          "startLine": 19,
-          "endLine": 19
+          "startLine": 26,
+          "endLine": 26
         },
         {
           "name": "--border-highlight",
           "kind": "css-token",
           "exported": true,
           "signature": "--border-highlight: oklch(1 0 0 / 0.18);",
-          "startLine": 20,
-          "endLine": 20
+          "startLine": 27,
+          "endLine": 27
         },
         {
           "name": "--font-sans",
           "kind": "css-token",
           "exported": true,
-          "signature": "--font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;",
-          "startLine": 21,
-          "endLine": 21
+          "signature": "--font-sans: 'Rubik', system-ui, sans-serif;",
+          "startLine": 28,
+          "endLine": 28
         },
         {
           "name": "--font-display",
           "kind": "css-token",
           "exported": true,
-          "signature": "--font-display: 'Inter', system-ui, -apple-system, sans-serif;",
-          "startLine": 22,
-          "endLine": 22
+          "signature": "--font-display: 'Spectral', Georgia, serif;",
+          "startLine": 29,
+          "endLine": 29
         },
         {
           "name": "--font-mono",
           "kind": "css-token",
           "exported": true,
-          "signature": "--font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;",
-          "startLine": 23,
-          "endLine": 23
+          "signature": "--font-mono: 'Source Code Pro', monospace;",
+          "startLine": 30,
+          "endLine": 30
         },
         {
           "name": "--step--1",
           "kind": "css-token",
           "exported": true,
           "signature": "--step--1: clamp(0.82rem, 0.78rem + 0.2vw, 0.92rem);",
-          "startLine": 24,
-          "endLine": 24
+          "startLine": 31,
+          "endLine": 31
         },
         {
           "name": "--step-0",
           "kind": "css-token",
           "exported": true,
           "signature": "--step-0: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);",
-          "startLine": 25,
-          "endLine": 25
+          "startLine": 32,
+          "endLine": 32
         },
         {
           "name": "--step-1",
           "kind": "css-token",
           "exported": true,
-          "signature": "--step-1: clamp(1.22rem, 1.12rem + 0.5vw, 1.5rem);",
-          "startLine": 26,
-          "endLine": 26
+          "signature": "--step-1: clamp(1.22rem, 1.12rem + 0.5vw, 1.406rem);",
+          "startLine": 33,
+          "endLine": 33
         },
         {
           "name": "--step-2",
           "kind": "css-token",
           "exported": true,
-          "signature": "--step-2: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);",
-          "startLine": 27,
-          "endLine": 27
+          "signature": "--step-2: clamp(1.5rem, 1.3rem + 1vw, 1.757rem);",
+          "startLine": 34,
+          "endLine": 34
         },
         {
           "name": "--step-3",
           "kind": "css-token",
           "exported": true,
-          "signature": "--step-3: clamp(1.9rem, 1.55rem + 1.6vw, 3rem);",
-          "startLine": 28,
-          "endLine": 28
+          "signature": "--step-3: clamp(1.9rem, 1.55rem + 1.6vw, 2.196rem);",
+          "startLine": 35,
+          "endLine": 35
         },
         {
           "name": "--step-4",
           "kind": "css-token",
           "exported": true,
-          "signature": "--step-4: clamp(2.25rem, 1.8rem + 2.2vw, 3.75rem);",
-          "startLine": 29,
-          "endLine": 29
+          "signature": "--step-4: clamp(2.25rem, 1.8rem + 2.2vw, 2.745rem);",
+          "startLine": 36,
+          "endLine": 36
         },
         {
           "name": "--space-xs",
           "kind": "css-token",
           "exported": true,
           "signature": "--space-xs: clamp(0.5rem, 0.45rem + 0.25vw, 0.75rem);",
-          "startLine": 30,
-          "endLine": 30
+          "startLine": 37,
+          "endLine": 37
         },
         {
           "name": "--space-s",
           "kind": "css-token",
           "exported": true,
           "signature": "--space-s: clamp(0.75rem, 0.65rem + 0.5vw, 1.125rem);",
-          "startLine": 31,
-          "endLine": 31
+          "startLine": 38,
+          "endLine": 38
         },
         {
           "name": "--space-m",
           "kind": "css-token",
           "exported": true,
           "signature": "--space-m: clamp(1rem, 0.85rem + 0.75vw, 1.5rem);",
-          "startLine": 32,
-          "endLine": 32
+          "startLine": 39,
+          "endLine": 39
         },
         {
           "name": "--space-l",
           "kind": "css-token",
           "exported": true,
           "signature": "--space-l: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);",
-          "startLine": 33,
-          "endLine": 33
+          "startLine": 40,
+          "endLine": 40
         },
         {
           "name": "--space-xl",
           "kind": "css-token",
           "exported": true,
           "signature": "--space-xl: clamp(2.25rem, 1.6rem + 3vw, 4.5rem);",
-          "startLine": 34,
-          "endLine": 34
+          "startLine": 41,
+          "endLine": 41
         },
         {
           "name": "--radius-card",
           "kind": "css-token",
           "exported": true,
           "signature": "--radius-card: 18px;",
-          "startLine": 35,
-          "endLine": 35
+          "startLine": 42,
+          "endLine": 42
         },
         {
           "name": "--radius-pill",
           "kind": "css-token",
           "exported": true,
           "signature": "--radius-pill: 9999px;",
-          "startLine": 36,
-          "endLine": 36
+          "startLine": 43,
+          "endLine": 43
         },
         {
           "name": "--ease-spring-snappy",
           "kind": "css-token",
           "exported": true,
           "signature": "--ease-spring-snappy: linear(0, 0.3566 9.6%, 0.7852 21.1%, 1.0156 32.2%, 1.0738 41.3%, 1.0468 53.6%,",
-          "startLine": 37,
-          "endLine": 37
+          "startLine": 44,
+          "endLine": 44
         },
         {
           "name": "--ease-spring-gentle",
           "kind": "css-token",
           "exported": true,
           "signature": "--ease-spring-gentle: linear(0, 0.245 8.5%, 0.642 19.8%, 0.916 31.4%, 1.021 43.2%, 1.018 59.1%, 1);",
-          "startLine": 38,
-          "endLine": 38
+          "startLine": 45,
+          "endLine": 45
         },
         {
           "name": "--ease-cinematic-out",
           "kind": "css-token",
           "exported": true,
           "signature": "--ease-cinematic-out: cubic-bezier(0.22, 1, 0.36, 1);",
-          "startLine": 39,
-          "endLine": 39
+          "startLine": 46,
+          "endLine": 46
         },
         {
           "name": "--ease-cinematic-inout",
           "kind": "css-token",
           "exported": true,
           "signature": "--ease-cinematic-inout: cubic-bezier(0.65, 0, 0.35, 1);",
-          "startLine": 40,
-          "endLine": 40
+          "startLine": 47,
+          "endLine": 47
         },
         {
           "name": "--duration-fast",
           "kind": "css-token",
           "exported": true,
           "signature": "--duration-fast: 160ms;",
-          "startLine": 41,
-          "endLine": 41
+          "startLine": 48,
+          "endLine": 48
         },
         {
           "name": "--duration-normal",
           "kind": "css-token",
           "exported": true,
           "signature": "--duration-normal: 280ms;",
-          "startLine": 42,
-          "endLine": 42
+          "startLine": 49,
+          "endLine": 49
         },
         {
           "name": "--duration-slow",
           "kind": "css-token",
           "exported": true,
           "signature": "--duration-slow: 520ms;",
-          "startLine": 43,
-          "endLine": 43
+          "startLine": 50,
+          "endLine": 50
         },
         {
           "name": "--audio-feedback",
           "kind": "css-token",
           "exported": true,
           "signature": "--audio-feedback: false;",
-          "startLine": 44,
-          "endLine": 44
+          "startLine": 51,
+          "endLine": 51
         },
         {
           "name": "scrollRevealCard",
           "kind": "css-keyframes",
           "exported": true,
           "signature": "@keyframes scrollRevealCard",
-          "startLine": 349,
-          "endLine": 352
+          "startLine": 356,
+          "endLine": 359
         }
       ],
-      "mtimeMs": 1793198666578.6008,
-      "size": 9076
+      "mtimeMs": 1793295929976.51,
+      "size": 9362
     },
     {
       "path": "projects/agencia-alfa/site/css/mobile-ergonomics.css",
@@ -675,8 +805,8 @@
     {
       "path": "projects/agencia-alfa/site/css/ui-primitives.css",
       "ext": ".css",
-      "sha256": "970e5a77b1010d44",
-      "lineCount": 172,
+      "sha256": "c45a001bd2aca0a5",
+      "lineCount": 404,
       "exports": [
         "fx-beam-spin",
         "fx-shimmer-sweep"
@@ -700,10 +830,58 @@
           "signature": "@keyframes fx-shimmer-sweep",
           "startLine": 16,
           "endLine": 19
+        },
+        {
+          "name": "--wf-morphology-radius-outer",
+          "kind": "css-token",
+          "exported": true,
+          "signature": "--wf-morphology-radius-outer: 14px;",
+          "startLine": 377,
+          "endLine": 377
+        },
+        {
+          "name": "--wf-morphology-radius-inner",
+          "kind": "css-token",
+          "exported": true,
+          "signature": "--wf-morphology-radius-inner: 6px;",
+          "startLine": 378,
+          "endLine": 378
+        },
+        {
+          "name": "--wf-morphology-card-padding",
+          "kind": "css-token",
+          "exported": true,
+          "signature": "--wf-morphology-card-padding: 8px;",
+          "startLine": 379,
+          "endLine": 379
+        },
+        {
+          "name": "--wf-morphology-clip-path",
+          "kind": "css-token",
+          "exported": true,
+          "signature": "--wf-morphology-clip-path: none;",
+          "startLine": 380,
+          "endLine": 380
+        },
+        {
+          "name": "--wf-morphology-surface-bg",
+          "kind": "css-token",
+          "exported": true,
+          "signature": "--wf-morphology-surface-bg: oklch(0.15 0.016 258);",
+          "startLine": 381,
+          "endLine": 381
+        },
+        {
+          "name": "--wf-morphology-surface-border",
+          "kind": "css-token",
+          "exported": true,
+          "signature": "--wf-morphology-surface-border: 1px solid oklch(0.92 0.01 258 / 0.10);",
+          "startLine": 382,
+          "endLine": 382
         }
       ],
-      "mtimeMs": 1793287252190.7737,
-      "size": 5007
+      "mtimeMs": 1793295930269.1926,
+      "size": 13091
     },
     {
       "path": "projects/agencia-alfa/site/js/app.js",
@@ -774,6 +952,88 @@
       "size": 10030
     },
     {
+      "path": "projects/agencia-alfa/site/js/brand-intro-player.js",
+      "ext": ".js",
+      "sha256": "7d7cd6d3721e7e80",
+      "lineCount": 142,
+      "exports": [
+        "BRAND_INTRO_PLAYER_CONFIG",
+        "mountBrandIntroPlayer"
+      ],
+      "imports": [],
+      "importedBy": [],
+      "calls": [
+        "oklch",
+        "querySelector",
+        "matchMedia",
+        "createElement",
+        "setAttribute",
+        "prepend",
+        "now",
+        "getContext",
+        "clearRect",
+        "fillRect",
+        "createRadialGradient",
+        "addColorStop",
+        "rgba",
+        "sin",
+        "toFixed",
+        "save",
+        "translate",
+        "min",
+        "scale",
+        "setLineDash",
+        "beginPath",
+        "moveTo",
+        "lineTo",
+        "stroke",
+        "restore",
+        "renderFrame",
+        "max",
+        "requestAnimationFrame",
+        "addEventListener",
+        "cancelAnimationFrame",
+        "skip",
+        "mountBrandIntroPlayer"
+      ],
+      "symbols": [
+        {
+          "name": "BRAND_INTRO_PLAYER_CONFIG",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const BRAND_INTRO_PLAYER_CONFIG",
+          "startLine": 6,
+          "endLine": 24
+        },
+        {
+          "name": "mountBrandIntroPlayer",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function mountBrandIntroPlayer(stageSelector = '.wf-brand-intro-stage')",
+          "startLine": 26,
+          "endLine": 133
+        },
+        {
+          "name": "renderFrame",
+          "kind": "function",
+          "exported": false,
+          "signature": "function renderFrame(progress)",
+          "startLine": 52,
+          "endLine": 94
+        },
+        {
+          "name": "step",
+          "kind": "function",
+          "exported": false,
+          "signature": "function step(now)",
+          "startLine": 102,
+          "endLine": 112
+        }
+      ],
+      "mtimeMs": 1793295896790.2917,
+      "size": 4414
+    },
+    {
       "path": "projects/agencia-alfa/site/js/fx3d/diorama-hero-3d.css",
       "ext": ".css",
       "sha256": "bc2edc8109724724",
@@ -837,6 +1097,33 @@
       ],
       "mtimeMs": 1793142772513.0317,
       "size": 2359
+    },
+    {
+      "path": "projects/agencia-alfa/site/js/industry-interactive.js",
+      "ext": ".js",
+      "sha256": "80904b4c8d321a3a",
+      "lineCount": 84,
+      "exports": [],
+      "imports": [],
+      "importedBy": [],
+      "calls": [
+        "initIndustryInteractiveModule",
+        "addEventListener",
+        "closest",
+        "hasAttribute",
+        "parseInt",
+        "getAttribute",
+        "getElementById",
+        "toFixed",
+        "USD",
+        "iniciado",
+        "BigInt",
+        "querySelectorAll",
+        "forEach"
+      ],
+      "symbols": [],
+      "mtimeMs": 1793295930273.3862,
+      "size": 3538
     },
     {
       "path": "projects/agencia-alfa/site/js/mobile-native-bridge.ts",
@@ -1160,18 +1447,23 @@
     {
       "path": "projects/agencia-alfa/tokens/ThemeTokens.ts",
       "ext": ".ts",
-      "sha256": "d10284f7080fd66c",
-      "lineCount": 231,
+      "sha256": "bab61a329aef71dd",
+      "lineCount": 245,
       "exports": [
         "ThemeTokens"
       ],
       "imports": [],
       "importedBy": [],
       "calls": [
-        "mjs",
         "oklch",
-        "UIColor",
-        "CGFloat"
+        "surface",
+        "text",
+        "copy",
+        "captions",
+        "clamp",
+        "linear",
+        "bezier",
+        "feedback"
       ],
       "symbols": [
         {
@@ -1179,12 +1471,12 @@
           "kind": "constant",
           "exported": true,
           "signature": "export const ThemeTokens",
-          "startLine": 6,
-          "endLine": 225
+          "startLine": 1,
+          "endLine": 244
         }
       ],
-      "mtimeMs": 1793212810798.693,
-      "size": 5963
+      "mtimeMs": 1793295929980.403,
+      "size": 8546
     },
     {
       "path": "projects/agencia-alfa/tokens/tokens.css",
@@ -2716,8 +3008,8 @@
     {
       "path": "templates/astro-edge/src/styles/ui-primitives.css",
       "ext": ".css",
-      "sha256": "d2f25bb5591f1a8e",
-      "lineCount": 99,
+      "sha256": "f365f6b3c0208d82",
+      "lineCount": 374,
       "exports": [
         "fx-beam-spin",
         "fx-shimmer-sweep"
@@ -2743,8 +3035,8 @@
           "endLine": 19
         }
       ],
-      "mtimeMs": 1792975029384.8782,
-      "size": 2721
+      "mtimeMs": 1793295930271.142,
+      "size": 12275
     },
     {
       "path": "templates/astro-edge/worker/index.js",
@@ -4438,8 +4730,8 @@
     {
       "path": "templates/vanilla-edge/site/css/ui-primitives.css",
       "ext": ".css",
-      "sha256": "d2f25bb5591f1a8e",
-      "lineCount": 99,
+      "sha256": "f365f6b3c0208d82",
+      "lineCount": 374,
       "exports": [
         "fx-beam-spin",
         "fx-shimmer-sweep"
@@ -4465,8 +4757,8 @@
           "endLine": 19
         }
       ],
-      "mtimeMs": 1792975029383.8833,
-      "size": 2721
+      "mtimeMs": 1793295930270.1375,
+      "size": 12275
     },
     {
       "path": "templates/vanilla-edge/site/js/app.js",
@@ -5435,8 +5727,8 @@
     {
       "path": "tools/audit/floor_and_aeo_guard.mjs",
       "ext": ".mjs",
-      "sha256": "61177a23819aa78b",
-      "lineCount": 161,
+      "sha256": "5645d92e28d8c6af",
+      "lineCount": 170,
       "exports": [],
       "imports": [
         "node:fs",
@@ -5487,8 +5779,8 @@
           "endLine": 24
         }
       ],
-      "mtimeMs": 1792971693937.2434,
-      "size": 6680
+      "mtimeMs": 1793295039475.3633,
+      "size": 7213
     },
     {
       "path": "tools/audit/git_remote_sync_check.mjs",
@@ -5963,8 +6255,8 @@
     {
       "path": "tools/audit/ryux_design_gate.mjs",
       "ext": ".mjs",
-      "sha256": "5b4e79bf96a84956",
-      "lineCount": 478,
+      "sha256": "80c834f7a364fd35",
+      "lineCount": 481,
       "exports": [
         "runRyuxDesignGate",
         "runAutonomousAestheticRepairLoop"
@@ -6005,6 +6297,8 @@
         "Primitives",
         "Accessibility",
         "Guard",
+        "resolve",
+        "dirname",
         "parse",
         "Geometry",
         "CLS",
@@ -6014,8 +6308,6 @@
         "generateProductAndDesignMd",
         "lintDesignMd",
         "Axioms",
-        "resolve",
-        "dirname",
         "floor",
         "readdirSync",
         "trim",
@@ -6048,19 +6340,19 @@
           "exported": true,
           "signature": "export function runRyuxDesignGate()",
           "startLine": 45,
-          "endLine": 380
+          "endLine": 383
         },
         {
           "name": "runAutonomousAestheticRepairLoop",
           "kind": "function",
           "exported": true,
           "signature": "export async function runAutonomousAestheticRepairLoop(options = {})",
-          "startLine": 387,
-          "endLine": 387
+          "startLine": 390,
+          "endLine": 390
         }
       ],
-      "mtimeMs": 1793287327099.9304,
-      "size": 21488
+      "mtimeMs": 1793294725909.0603,
+      "size": 21788
     },
     {
       "path": "tools/audit/security_and_motion_audit.mjs",
@@ -6429,8 +6721,8 @@
     {
       "path": "tools/audit/visual_audit.mjs",
       "ext": ".mjs",
-      "sha256": "5eb01cb131cce310",
-      "lineCount": 823,
+      "sha256": "216f4345e4ec980a",
+      "lineCount": 962,
       "exports": [
         "inspectVisualHarmonyAndMotionKeyframes"
       ],
@@ -6517,16 +6809,16 @@
           "endLine": 372
         },
         {
-          "name": "tick",
+          "name": "samplePostLoadFps",
           "kind": "function",
           "exported": false,
-          "signature": "function tick(now)",
-          "startLine": 564,
-          "endLine": 573
+          "signature": "function samplePostLoadFps(now)",
+          "startLine": 674,
+          "endLine": 688
         }
       ],
-      "mtimeMs": 1793287144989.376,
-      "size": 36813
+      "mtimeMs": 1793295842762.1094,
+      "size": 43341
     },
     {
       "path": "tools/audit/visual_regression.mjs",
@@ -6698,8 +6990,8 @@
     {
       "path": "tools/build_dist.mjs",
       "ext": ".mjs",
-      "sha256": "74eec05c8bf4f196",
-      "lineCount": 624,
+      "sha256": "37c65389f21c2cec",
+      "lineCount": 794,
       "exports": [
         "createZipArchiveFromDir",
         "exportStandaloneDeliverable"
@@ -6712,9 +7004,14 @@
         "node:url",
         "./lib/project_loader.mjs",
         "./design/og_image_generator.mjs",
+        "./design/build_vanilla_primitives.mjs",
+        "./media/sonic_and_music_forge.mjs",
+        "./design/shader_and_3d_forge.mjs",
+        "./media/programmatic_video_forge.mjs",
         "oxc-minify",
         "lightningcss",
-        "file:///"
+        "file:///",
+        "./fx3d/${forged3d.primitiveId}.mjs"
       ],
       "importedBy": [],
       "calls": [
@@ -6722,6 +7019,9 @@
         "join",
         "log",
         "PAYLOAD",
+        "applyBespokeMorphologyToProjectDom",
+        "Morphology",
+        "warn",
         "existsSync",
         "statSync",
         "isDirectory",
@@ -6752,17 +7052,14 @@
         "optimizeSvg",
         "SVGs",
         "toFixed",
-        "minifyDistAssets",
-        "now",
-        "injectHtmlCacheBusters",
-        "generateOpenGraphSvgCard",
-        "Card",
         "parse",
+        "synthesizeProceduralSoundFromDesignCriteria",
         "stringify",
-        "Config",
-        "walk",
-        "dirMetrics",
-        "has"
+        "includes",
+        "forge3dSceneOrEffect",
+        "Loader",
+        "nif",
+        "generateBrandIntroVideo"
       ],
       "symbols": [
         {
@@ -6770,68 +7067,68 @@
           "kind": "function",
           "exported": false,
           "signature": "function copyRecursive(src, dest)",
-          "startLine": 15,
-          "endLine": 27
+          "startLine": 29,
+          "endLine": 41
         },
         {
           "name": "minifyDistAssets",
           "kind": "function",
           "exported": false,
           "signature": "async function minifyDistAssets()",
-          "startLine": 109,
-          "endLine": 239
+          "startLine": 123,
+          "endLine": 253
         },
         {
           "name": "injectHtmlCacheBusters",
           "kind": "function",
           "exported": false,
           "signature": "function injectHtmlCacheBusters(dirPath)",
-          "startLine": 245,
-          "endLine": 260
+          "startLine": 447,
+          "endLine": 462
         },
         {
           "name": "dirMetrics",
           "kind": "function",
           "exported": false,
           "signature": "function dirMetrics(dirPath)",
-          "startLine": 341,
-          "endLine": 354
+          "startLine": 511,
+          "endLine": 524
         },
         {
           "name": "walk",
           "kind": "function",
           "exported": false,
           "signature": "function walk(p)",
-          "startLine": 344,
-          "endLine": 351
+          "startLine": 514,
+          "endLine": 521
         },
         {
           "name": "createZipArchiveFromDir",
           "kind": "function",
           "exported": true,
           "signature": "export function createZipArchiveFromDir(sourceDir, outZipPath, skipFileNames = new Set()",
-          "startLine": 364,
-          "endLine": 445
+          "startLine": 534,
+          "endLine": 615
         },
         {
           "name": "collect",
           "kind": "function",
           "exported": false,
           "signature": "function collect(currentDir)",
-          "startLine": 366,
-          "endLine": 377
+          "startLine": 536,
+          "endLine": 547
         },
         {
           "name": "exportStandaloneDeliverable",
           "kind": "function",
           "exported": true,
           "signature": "export function exportStandaloneDeliverable(cfg = projectConfig)",
-          "startLine": 451,
-          "endLine": 615
+          "startLine": 621,
+          "endLine": 785
         }
       ],
-      "mtimeMs": 1793234407145.1892,
-      "size": 26437
+      "mtimeMs": 1793295420364.7415,
+      "size": 34370
     },
     {
       "path": "tools/chaos_monkey_test.mjs",
@@ -7257,8 +7554,8 @@
     {
       "path": "tools/cto_command_center.mjs",
       "ext": ".mjs",
-      "sha256": "50b80b7b88eeb852",
-      "lineCount": 1596,
+      "sha256": "bb7b386058c39ce1",
+      "lineCount": 1602,
       "exports": [
         "evaluateCybersecurityTrafficLight",
         "handleAterrizar"
@@ -7290,6 +7587,8 @@
         "./orchestrator/humanlayer_rpi_gate.mjs",
         "./lib/project_loader.mjs",
         "./audit/security_gate.mjs",
+        "./design/build_vanilla_primitives.mjs",
+        "./intelligence/jev_semantic_gate.mjs",
         "./intelligence/textgrad_skill_optimizer.mjs",
         "./intelligence/self_evolving_pipeline.mjs",
         "./design/design_extractor.mjs",
@@ -7420,251 +7719,251 @@
           "exported": false,
           "signature": "async function handleConstruir()",
           "startLine": 395,
-          "endLine": 466
+          "endLine": 472
         },
         {
           "name": "generateExecutiveDecisionBrief",
           "kind": "function",
           "exported": false,
           "signature": "async function generateExecutiveDecisionBrief(boltRes = null, axRes = null)",
-          "startLine": 468,
-          "endLine": 600
+          "startLine": 474,
+          "endLine": 606
         },
         {
           "name": "handleRevisar",
           "kind": "function",
           "exported": false,
           "signature": "async function handleRevisar(args)",
-          "startLine": 602,
-          "endLine": 626
+          "startLine": 608,
+          "endLine": 632
         },
         {
           "name": "handleEmpaquetar",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEmpaquetar(args = [])",
-          "startLine": 628,
-          "endLine": 661
+          "startLine": 634,
+          "endLine": 667
         },
         {
           "name": "handleAprobar",
           "kind": "function",
           "exported": false,
           "signature": "async function handleAprobar(args = [])",
-          "startLine": 663,
-          "endLine": 694
+          "startLine": 669,
+          "endLine": 700
         },
         {
           "name": "handleFeedback",
           "kind": "function",
           "exported": false,
           "signature": "async function handleFeedback(args)",
-          "startLine": 696,
-          "endLine": 730
+          "startLine": 702,
+          "endLine": 736
         },
         {
           "name": "handleAprender",
           "kind": "function",
           "exported": false,
           "signature": "async function handleAprender(args)",
-          "startLine": 732,
-          "endLine": 749
+          "startLine": 738,
+          "endLine": 755
         },
         {
           "name": "handleEvolucionar",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEvolucionar(args)",
-          "startLine": 751,
-          "endLine": 760
+          "startLine": 757,
+          "endLine": 766
         },
         {
           "name": "handleExtraerDiseno",
           "kind": "function",
           "exported": false,
           "signature": "async function handleExtraerDiseno(args)",
-          "startLine": 762,
-          "endLine": 774
+          "startLine": 768,
+          "endLine": 780
         },
         {
           "name": "handleIngerirLibros",
           "kind": "function",
           "exported": false,
           "signature": "async function handleIngerirLibros(args)",
-          "startLine": 776,
-          "endLine": 792
+          "startLine": 782,
+          "endLine": 798
         },
         {
           "name": "handleActualizacionSemanal",
           "kind": "function",
           "exported": false,
           "signature": "async function handleActualizacionSemanal(args)",
-          "startLine": 794,
-          "endLine": 806
+          "startLine": 800,
+          "endLine": 812
         },
         {
           "name": "handleEfecto3d",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEfecto3d(args)",
-          "startLine": 808,
-          "endLine": 823
+          "startLine": 814,
+          "endLine": 829
         },
         {
           "name": "handleOptimizar3d",
           "kind": "function",
           "exported": false,
           "signature": "async function handleOptimizar3d(args)",
-          "startLine": 825,
-          "endLine": 841
+          "startLine": 831,
+          "endLine": 847
         },
         {
           "name": "handleGcpStatus",
           "kind": "function",
           "exported": false,
           "signature": "async function handleGcpStatus()",
-          "startLine": 843,
-          "endLine": 859
+          "startLine": 849,
+          "endLine": 865
         },
         {
           "name": "handleBenchmark",
           "kind": "function",
           "exported": false,
           "signature": "async function handleBenchmark()",
-          "startLine": 861,
-          "endLine": 867
+          "startLine": 867,
+          "endLine": 873
         },
         {
           "name": "handleMcpStatus",
           "kind": "function",
           "exported": false,
           "signature": "async function handleMcpStatus()",
-          "startLine": 869,
-          "endLine": 912
+          "startLine": 875,
+          "endLine": 918
         },
         {
           "name": "handleArquitecturaDb",
           "kind": "function",
           "exported": false,
           "signature": "async function handleArquitecturaDb(rest = [])",
-          "startLine": 914,
-          "endLine": 943
+          "startLine": 920,
+          "endLine": 949
         },
         {
           "name": "handleDestilarCurso",
           "kind": "function",
           "exported": false,
           "signature": "async function handleDestilarCurso(rest = [])",
-          "startLine": 945,
-          "endLine": 967
+          "startLine": 951,
+          "endLine": 973
         },
         {
           "name": "handleCosecharDocs",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCosecharDocs()",
-          "startLine": 969,
-          "endLine": 984
+          "startLine": 975,
+          "endLine": 990
         },
         {
           "name": "handleArquetipo",
           "kind": "function",
           "exported": false,
           "signature": "async function handleArquetipo(rest = [])",
-          "startLine": 986,
-          "endLine": 1010
+          "startLine": 992,
+          "endLine": 1016
         },
         {
           "name": "handleCrearMovil",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCrearMovil(rest = [])",
-          "startLine": 1012,
-          "endLine": 1036
+          "startLine": 1018,
+          "endLine": 1042
         },
         {
           "name": "handleEstado",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEstado()",
-          "startLine": 1038,
-          "endLine": 1086
+          "startLine": 1044,
+          "endLine": 1092
         },
         {
           "name": "handleInvestigarReferencia",
           "kind": "function",
           "exported": false,
           "signature": "async function handleInvestigarReferencia(args = [])",
-          "startLine": 1088,
-          "endLine": 1101
+          "startLine": 1094,
+          "endLine": 1107
         },
         {
           "name": "handleFeedbackCliente",
           "kind": "function",
           "exported": false,
           "signature": "async function handleFeedbackCliente(args = [])",
-          "startLine": 1103,
-          "endLine": 1135
+          "startLine": 1109,
+          "endLine": 1141
         },
         {
           "name": "handleAprobarTicket",
           "kind": "function",
           "exported": false,
           "signature": "async function handleAprobarTicket(args = [])",
-          "startLine": 1137,
-          "endLine": 1167
+          "startLine": 1143,
+          "endLine": 1173
         },
         {
           "name": "handleCambioIncremental",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCambioIncremental(args = [])",
-          "startLine": 1169,
-          "endLine": 1235
+          "startLine": 1175,
+          "endLine": 1241
         },
         {
           "name": "handleAuditarHarness",
           "kind": "function",
           "exported": false,
           "signature": "async function handleAuditarHarness(args = [])",
-          "startLine": 1237,
-          "endLine": 1245
+          "startLine": 1243,
+          "endLine": 1251
         },
         {
           "name": "handleCrearIntroVideo",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCrearIntroVideo(args = [])",
-          "startLine": 1247,
-          "endLine": 1274
+          "startLine": 1253,
+          "endLine": 1280
         },
         {
           "name": "handleCrearAudio",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCrearAudio(args = [])",
-          "startLine": 1276,
-          "endLine": 1335
+          "startLine": 1282,
+          "endLine": 1341
         },
         {
           "name": "handleAterrizar",
           "kind": "function",
           "exported": true,
           "signature": "export async function handleAterrizar(args = [])",
-          "startLine": 1345,
-          "endLine": 1485
+          "startLine": 1351,
+          "endLine": 1491
         },
         {
           "name": "main",
           "kind": "function",
           "exported": false,
           "signature": "async function main()",
-          "startLine": 1487,
-          "endLine": 1590
+          "startLine": 1493,
+          "endLine": 1596
         }
       ],
-      "mtimeMs": 1793285412387.0508,
-      "size": 86351
+      "mtimeMs": 1793295157368.198,
+      "size": 86747
     },
     {
       "path": "tools/db/dual_database_forge.mjs",
@@ -8032,14 +8331,17 @@
     {
       "path": "tools/design/build_vanilla_primitives.mjs",
       "ext": ".mjs",
-      "sha256": "793207d265d9b363",
-      "lineCount": 452,
+      "sha256": "a773e64dc8f63000",
+      "lineCount": 1170,
       "exports": [
         "NAVIGATION_MORPHOLOGY_VARIANTS",
         "CORNER_GEOMETRY_VARIANTS",
         "SURFACE_MATERIAL_PHYSICS",
         "UNIVERSAL_UI_PRIMITIVES_CSS",
-        "buildVanillaPrimitives"
+        "HERO_ARCHITECTURE_DESCRIPTORS",
+        "buildInteractiveIndustryModule",
+        "buildVanillaPrimitives",
+        "applyBespokeMorphologyToProjectDom"
       ],
       "imports": [
         "node:fs",
@@ -8047,7 +8349,10 @@
         "node:url",
         "../lib/project_loader.mjs"
       ],
-      "importedBy": [],
+      "importedBy": [
+        "tools/build_dist.mjs",
+        "tools/cto_command_center.mjs"
+      ],
       "calls": [
         "fileURLToPath",
         "R_outer",
@@ -8062,29 +8367,38 @@
         "gradient",
         "var",
         "compileComponentMorphologyPrimitives",
-        "clamp",
         "trim",
         "Beam",
         "Variants",
+        "clamp",
         "bezier",
         "Morphologies",
-        "CTA",
+        "Topologies",
         "repeat",
         "minmax",
         "min",
+        "Editorial",
+        "Stage",
+        "Monolith",
+        "Data",
+        "Narrative",
+        "Matrix",
+        "child",
+        "Spread",
+        "Canvas",
+        "spans",
+        "not",
+        "media",
+        "env",
         "translate3d",
         "scale",
-        "loadProjectConfig",
-        "join",
-        "push",
-        "mkdirSync",
-        "dirname",
-        "writeFileSync",
-        "map",
-        "resolve",
-        "buildVanillaPrimitives",
-        "log",
-        "relative"
+        "profunda",
+        "toLowerCase",
+        "test",
+        "enteros",
+        "USD",
+        "Institucional",
+        "Tenant"
       ],
       "symbols": [
         {
@@ -8116,20 +8430,44 @@
           "kind": "constant",
           "exported": true,
           "signature": "export const UNIVERSAL_UI_PRIMITIVES_CSS",
-          "startLine": 234,
-          "endLine": 234
+          "startLine": 233,
+          "endLine": 233
+        },
+        {
+          "name": "HERO_ARCHITECTURE_DESCRIPTORS",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const HERO_ARCHITECTURE_DESCRIPTORS",
+          "startLine": 608,
+          "endLine": 649
+        },
+        {
+          "name": "buildInteractiveIndustryModule",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function buildInteractiveIndustryModule(industryInput = 'saas', brandName = 'Agencia Alfa')",
+          "startLine": 655,
+          "endLine": 953
         },
         {
           "name": "buildVanillaPrimitives",
           "kind": "function",
           "exported": true,
           "signature": "export function buildVanillaPrimitives(projectInput = '', morphologyOptions = null)",
-          "startLine": 407,
-          "endLine": 443
+          "startLine": 955,
+          "endLine": 1002
+        },
+        {
+          "name": "applyBespokeMorphologyToProjectDom",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function applyBespokeMorphologyToProjectDom(projectInput = '', customOptions = {})",
+          "startLine": 1010,
+          "endLine": 1010
         }
       ],
-      "mtimeMs": 1793286450465.3125,
-      "size": 15780
+      "mtimeMs": 1793295917741.2898,
+      "size": 47913
     },
     {
       "path": "tools/design/design_extractor.mjs",
@@ -8534,6 +8872,7 @@
       ],
       "importedBy": [
         "tools/audit/harness_doctor_audit.mjs",
+        "tools/build_dist.mjs",
         "tools/cto_command_center.mjs",
         "tools/design/bespoke_morphology_composer.mjs",
         "tools/intelligence/agent_benchmark_harness.mjs",
@@ -8724,13 +9063,12 @@
     {
       "path": "tools/design/token_compiler.mjs",
       "ext": ".mjs",
-      "sha256": "6d373e51842d170e",
-      "lineCount": 987,
+      "sha256": "af94384f6653b5d5",
+      "lineCount": 1166,
       "exports": [
         "OKLCH_GAMUT_MASKS",
         "applyOklchGamutMask",
         "getStyleCatalog",
-        "buildDtcgTokensObject",
         "resolveDtcgAliases",
         "renderDesignTokensCss",
         "compileDesignTokens",
@@ -8771,6 +9109,7 @@
         "map",
         "sort",
         "keys",
+        "buildDtcgTokensObject",
         "applyOklchGamutMask",
         "CTA",
         "surface",
@@ -8798,8 +9137,7 @@
         "scale",
         "Grid",
         "repeat",
-        "minmax",
-        "Accordion"
+        "minmax"
       ],
       "symbols": [
         {
@@ -8835,88 +9173,80 @@
           "endLine": 178
         },
         {
-          "name": "buildDtcgTokensObject",
-          "kind": "function",
-          "exported": true,
-          "signature": "export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento', brandLock = null, gamutMaskType = 'atmospheric-analogous')",
-          "startLine": 180,
-          "endLine": 338
-        },
-        {
           "name": "resolveDtcgAliases",
           "kind": "function",
           "exported": true,
           "signature": "export function resolveDtcgAliases(dtcgRoot)",
-          "startLine": 343,
-          "endLine": 388
+          "startLine": 485,
+          "endLine": 530
         },
         {
           "name": "lookupPath",
           "kind": "function",
           "exported": false,
           "signature": "function lookupPath(pathStr)",
-          "startLine": 344,
-          "endLine": 352
+          "startLine": 486,
+          "endLine": 494
         },
         {
           "name": "resolveValue",
           "kind": "function",
           "exported": false,
           "signature": "function resolveValue(val, visited = new Set()",
-          "startLine": 354,
-          "endLine": 366
+          "startLine": 496,
+          "endLine": 508
         },
         {
           "name": "walk",
           "kind": "function",
           "exported": false,
           "signature": "function walk(node, prefix = [])",
-          "startLine": 369,
-          "endLine": 385
+          "startLine": 511,
+          "endLine": 527
         },
         {
           "name": "renderDesignTokensCss",
           "kind": "function",
           "exported": true,
           "signature": "export function renderDesignTokensCss(dtcg)",
-          "startLine": 390,
-          "endLine": 404
+          "startLine": 532,
+          "endLine": 546
         },
         {
           "name": "compileDesignTokens",
           "kind": "function",
           "exported": true,
           "signature": "export function compileDesignTokens(options = {})",
-          "startLine": 785,
-          "endLine": 785
+          "startLine": 927,
+          "endLine": 927
         },
         {
           "name": "compileMultiTargetMobileTokensSync",
           "kind": "function",
           "exported": false,
           "signature": "function compileMultiTargetMobileTokensSync(rootDir, dtcg, writtenFiles = [])",
-          "startLine": 903,
-          "endLine": 927
+          "startLine": 1082,
+          "endLine": 1106
         },
         {
           "name": "extractOklchPaletteFromBrandImage",
           "kind": "function",
           "exported": true,
           "signature": "export function extractOklchPaletteFromBrandImage(imagePathOrBuffer = 'brand-reference.png')",
-          "startLine": 933,
-          "endLine": 966
+          "startLine": 1112,
+          "endLine": 1145
         },
         {
           "name": "runTokenCompilerCli",
           "kind": "function",
           "exported": true,
           "signature": "export function runTokenCompilerCli()",
-          "startLine": 968,
-          "endLine": 982
+          "startLine": 1147,
+          "endLine": 1161
         }
       ],
-      "mtimeMs": 1793286495740.4006,
-      "size": 36303
+      "mtimeMs": 1793294077727.5083,
+      "size": 42845
     },
     {
       "path": "tools/factory.mjs",
@@ -9023,8 +9353,8 @@
     {
       "path": "tools/feedback/client_feedback_triage_agent.mjs",
       "ext": ".mjs",
-      "sha256": "a8b0501128728ef1",
-      "lineCount": 987,
+      "sha256": "5e1facd31a1f8a0d",
+      "lineCount": 1066,
       "exports": [
         "FACTORY_ROOT",
         "FEEDBACK_LEDGER_PATH",
@@ -9036,7 +9366,7 @@
         "resetClientRateLimitBuckets",
         "sanitizeAndValidateClientTicket",
         "classifyClientTicketIntent",
-        "classifyCommercialAndTechnicalScope",
+        "loadProjectExplicitNonGoals",
         "diagnoseAstRootCauseReadOnly",
         "analyzeTicketAndProposeSpec",
         "executeApprovedTicketFix",
@@ -9091,19 +9421,19 @@
         "redactTicketPii",
         "isArray",
         "toLowerCase",
+        "getActiveProjectSnapshot",
         "existsSync",
         "parse",
         "readFileSync",
+        "match",
+        "matchAll",
+        "classifyCommercialAndTechnicalScope",
+        "loadProjectExplicitNonGoals",
+        "split",
+        "has",
+        "includes",
         "keys",
-        "buildSlackBlockKitTriageCard",
-        "Sanitizado",
-        "Objetivo",
-        "mkdirSync",
-        "writeFileSync",
-        "stringify",
-        "sanitizeAndValidateClientTicket",
-        "getActiveProjectSnapshot",
-        "randomUUID"
+        "buildSlackBlockKitTriageCard"
       ],
       "symbols": [
         {
@@ -9187,168 +9517,72 @@
           "endLine": 215
         },
         {
-          "name": "classifyCommercialAndTechnicalScope",
+          "name": "loadProjectExplicitNonGoals",
           "kind": "function",
           "exported": true,
-          "signature": "export function classifyCommercialAndTechnicalScope(sanitizedMessage = '', consoleErrors = [])",
-          "startLine": 223,
-          "endLine": 251
+          "signature": "export function loadProjectExplicitNonGoals(projectSlug = '')",
+          "startLine": 220,
+          "endLine": 250
         },
         {
           "name": "diagnoseAstRootCauseReadOnly",
           "kind": "function",
           "exported": true,
           "signature": "export function diagnoseAstRootCauseReadOnly(projectSlug = 'agencia-alfa', sectionSelector = '#hero', message = '')",
-          "startLine": 257,
-          "endLine": 293
+          "startLine": 323,
+          "endLine": 359
         },
         {
           "name": "readFeedbackLedger",
           "kind": "function",
           "exported": false,
           "signature": "function readFeedbackLedger()",
-          "startLine": 368,
-          "endLine": 376
+          "startLine": 434,
+          "endLine": 442
         },
         {
           "name": "writeFeedbackLedger",
           "kind": "function",
           "exported": false,
           "signature": "function writeFeedbackLedger(ledger)",
-          "startLine": 378,
-          "endLine": 382
+          "startLine": 444,
+          "endLine": 448
         },
         {
           "name": "analyzeTicketAndProposeSpec",
           "kind": "function",
           "exported": true,
           "signature": "export async function analyzeTicketAndProposeSpec(ticketInput = {}, options = {})",
-          "startLine": 390,
-          "endLine": 390
+          "startLine": 456,
+          "endLine": 456
         },
         {
           "name": "executeApprovedTicketFix",
           "kind": "function",
           "exported": true,
           "signature": "export async function executeApprovedTicketFix(ticketId, options = {})",
-          "startLine": 637,
-          "endLine": 637
+          "startLine": 703,
+          "endLine": 703
         },
         {
           "name": "triageClientFeedbackTicket",
           "kind": "function",
           "exported": true,
           "signature": "export async function triageClientFeedbackTicket(ticketInput = {}, options = {})",
-          "startLine": 795,
-          "endLine": 795
+          "startLine": 861,
+          "endLine": 861
         },
         {
           "name": "runClientFeedbackTriageSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export async function runClientFeedbackTriageSelfTest()",
-          "startLine": 809,
-          "endLine": 942
+          "startLine": 875,
+          "endLine": 1021
         }
       ],
-      "mtimeMs": 1793239688353.1765,
-      "size": 41326
-    },
-    {
-      "path": "tools/guardrails/check-console-log.js",
-      "ext": ".js",
-      "sha256": "72019b018a52cc0d",
-      "lineCount": 86,
-      "exports": [],
-      "imports": [
-        "fs",
-        "path"
-      ],
-      "importedBy": [],
-      "calls": [
-        "cwd",
-        "existsSync",
-        "join",
-        "dirname",
-        "getWorkspaceRoot",
-        "resolve",
-        "readdirSync",
-        "isDirectory",
-        "scanDir",
-        "isFile",
-        "test",
-        "some",
-        "readFileSync",
-        "split",
-        "forEach",
-        "trim",
-        "startsWith",
-        "push",
-        "relative",
-        "log",
-        "statement",
-        "slice",
-        "exit"
-      ],
-      "symbols": [
-        {
-          "name": "getWorkspaceRoot",
-          "kind": "function",
-          "exported": false,
-          "signature": "function getWorkspaceRoot()",
-          "startLine": 11,
-          "endLine": 22
-        },
-        {
-          "name": "scanDir",
-          "kind": "function",
-          "exported": false,
-          "signature": "function scanDir(dir)",
-          "startLine": 40,
-          "endLine": 67
-        }
-      ],
-      "mtimeMs": 1792269970111.566,
-      "size": 2231
-    },
-    {
-      "path": "tools/guardrails/config-protection.js",
-      "ext": ".js",
-      "sha256": "197b977f9536316a",
-      "lineCount": 81,
-      "exports": [],
-      "imports": [
-        "fs",
-        "path"
-      ],
-      "importedBy": [],
-      "calls": [
-        "cwd",
-        "existsSync",
-        "join",
-        "dirname",
-        "getWorkspaceRoot",
-        "parse",
-        "includes",
-        "log",
-        "resolve",
-        "error",
-        "readFileSync",
-        "validator",
-        "exit"
-      ],
-      "symbols": [
-        {
-          "name": "getWorkspaceRoot",
-          "kind": "function",
-          "exported": false,
-          "signature": "function getWorkspaceRoot()",
-          "startLine": 11,
-          "endLine": 22
-        }
-      ],
-      "mtimeMs": 1793053000577.8708,
-      "size": 2116
+      "mtimeMs": 1793295418916.2317,
+      "size": 44732
     },
     {
       "path": "tools/intelligence/agent_benchmark_harness.mjs",
@@ -9736,8 +9970,8 @@
     {
       "path": "tools/intelligence/agent_squad.mjs",
       "ext": ".mjs",
-      "sha256": "59a25a105ef7eb25",
-      "lineCount": 1070,
+      "sha256": "cf5454b9a707c83b",
+      "lineCount": 1086,
       "exports": [
         "recordAndCheckAstDiffOscillation",
         "RUNS_ARTIFACTS_DIR",
@@ -9935,28 +10169,28 @@
           "kind": "function",
           "exported": true,
           "signature": "export async function runBestOfNSpeculative(candidates = ['bento-oklch-v1', 'linear-dark-v2'], taskName = 'hero-ui-component')",
-          "startLine": 889,
-          "endLine": 953
+          "startLine": 905,
+          "endLine": 969
         },
         {
           "name": "runCouncilDeliberation",
           "kind": "function",
           "exported": true,
           "signature": "export function runCouncilDeliberation(decisionTopic = 'Architecture & UI Strategy')",
-          "startLine": 960,
-          "endLine": 992
+          "startLine": 976,
+          "endLine": 1008
         },
         {
           "name": "runArenaTournament",
           "kind": "function",
           "exported": true,
           "signature": "export function runArenaTournament(taskPrompt = 'High-converting Hero & Bento Grid', candidateCards = [])",
-          "startLine": 1000,
-          "endLine": 1028
+          "startLine": 1016,
+          "endLine": 1044
         }
       ],
-      "mtimeMs": 1793285448302.0498,
-      "size": 41546
+      "mtimeMs": 1793294855462.506,
+      "size": 42399
     },
     {
       "path": "tools/intelligence/ast_guard.mjs",
@@ -10077,127 +10311,6 @@
       ],
       "mtimeMs": 1793281283604.63,
       "size": 20288
-    },
-    {
-      "path": "tools/intelligence/audiovisual_psychoacoustics_corpus_builder.mjs",
-      "ext": ".mjs",
-      "sha256": "ede121d79b8b6bf2",
-      "lineCount": 460,
-      "exports": [
-        "CANON_PSYCHOACOUSTICS_PATH",
-        "OFFICIAL_AUDIOVISUAL_DSP_URLS",
-        "harvestOfficialAudiovisualDspSources",
-        "buildPsychoacousticsCanonMarkdown",
-        "buildAndIndexAudiovisualPsychoacousticsCorpus"
-      ],
-      "imports": [
-        "node:fs",
-        "node:path",
-        "node:url",
-        "./official_docs_harvester.mjs",
-        "./course_and_paper_distiller.mjs",
-        "./rag_pipeline.mjs"
-      ],
-      "importedBy": [],
-      "calls": [
-        "fileURLToPath",
-        "dirname",
-        "resolve",
-        "Cookbook",
-        "formulas",
-        "loudness",
-        "Documentation",
-        "Notation",
-        "Docs",
-        "replace",
-        "trim",
-        "set",
-        "inspectVaultRepository",
-        "all",
-        "map",
-        "async",
-        "get",
-        "fetch",
-        "timeout",
-        "text",
-        "slice",
-        "stripHtmlToCleanText",
-        "convertPdfToMarkdownMarkItDown",
-        "filter",
-        "from",
-        "values",
-        "join",
-        "Synchresis",
-        "SYNCHRESIS",
-        "sonido",
-        "FPS",
-        "Local",
-        "Oficiales",
-        "Sonido",
-        "Ataque",
-        "left",
-        "Industrial",
-        "impares",
-        "Salud",
-        "pura",
-        "Temperatura",
-        "Espectral",
-        "f_c",
-        "Oscuras",
-        "medio"
-      ],
-      "symbols": [
-        {
-          "name": "CANON_PSYCHOACOUSTICS_PATH",
-          "kind": "constant",
-          "exported": true,
-          "signature": "export const CANON_PSYCHOACOUSTICS_PATH",
-          "startLine": 26,
-          "endLine": 26
-        },
-        {
-          "name": "OFFICIAL_AUDIOVISUAL_DSP_URLS",
-          "kind": "constant",
-          "exported": true,
-          "signature": "export const OFFICIAL_AUDIOVISUAL_DSP_URLS",
-          "startLine": 33,
-          "endLine": 33
-        },
-        {
-          "name": "stripHtmlToCleanText",
-          "kind": "function",
-          "exported": false,
-          "signature": "function stripHtmlToCleanText(html = '')",
-          "startLine": 139,
-          "endLine": 155
-        },
-        {
-          "name": "harvestOfficialAudiovisualDspSources",
-          "kind": "function",
-          "exported": true,
-          "signature": "export async function harvestOfficialAudiovisualDspSources(options = {})",
-          "startLine": 161,
-          "endLine": 161
-        },
-        {
-          "name": "buildPsychoacousticsCanonMarkdown",
-          "kind": "function",
-          "exported": true,
-          "signature": "export function buildPsychoacousticsCanonMarkdown(harvestSummary)",
-          "startLine": 241,
-          "endLine": 409
-        },
-        {
-          "name": "buildAndIndexAudiovisualPsychoacousticsCorpus",
-          "kind": "function",
-          "exported": true,
-          "signature": "export async function buildAndIndexAudiovisualPsychoacousticsCorpus(options = {})",
-          "startLine": 415,
-          "endLine": 415
-        }
-      ],
-      "mtimeMs": 1793234077461.4705,
-      "size": 26298
     },
     {
       "path": "tools/intelligence/book_pdf_ingester.mjs",
@@ -10684,8 +10797,8 @@
     {
       "path": "tools/intelligence/context_budget.mjs",
       "ext": ".mjs",
-      "sha256": "701fc5d060581916",
-      "lineCount": 699,
+      "sha256": "d1ea744c0fe0a384",
+      "lineCount": 891,
       "exports": [
         "HEADROOM_CCR_DIR",
         "compressWithCavemanAndPonytail",
@@ -10701,7 +10814,9 @@
         "selectActiveRole",
         "assembleThreeTierContext",
         "repairAndValidateJsonPayload",
-        "foldStackTraceAndNodeModulesNoise"
+        "foldStackTraceAndNodeModulesNoise",
+        "serializeToToonFormat",
+        "parseFromToonFormat"
       ],
       "imports": [
         "node:fs",
@@ -10890,10 +11005,50 @@
           "signature": "export function foldStackTraceAndNodeModulesNoise(rawErrorOrTrace = '')",
           "startLine": 601,
           "endLine": 661
+        },
+        {
+          "name": "escapeToonCell",
+          "kind": "function",
+          "exported": false,
+          "signature": "function escapeToonCell(val)",
+          "startLine": 668,
+          "endLine": 681
+        },
+        {
+          "name": "unescapeToonCell",
+          "kind": "function",
+          "exported": false,
+          "signature": "function unescapeToonCell(cell)",
+          "startLine": 683,
+          "endLine": 707
+        },
+        {
+          "name": "splitEscapedPipeRow",
+          "kind": "function",
+          "exported": false,
+          "signature": "function splitEscapedPipeRow(line)",
+          "startLine": 709,
+          "endLine": 725
+        },
+        {
+          "name": "serializeToToonFormat",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function serializeToToonFormat(obj)",
+          "startLine": 727,
+          "endLine": 767
+        },
+        {
+          "name": "parseFromToonFormat",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function parseFromToonFormat(toonInput)",
+          "startLine": 769,
+          "endLine": 835
         }
       ],
-      "mtimeMs": 1793281092021.9355,
-      "size": 26420
+      "mtimeMs": 1793295262363.5188,
+      "size": 32791
     },
     {
       "path": "tools/intelligence/course_and_paper_distiller.mjs",
@@ -10922,9 +11077,7 @@
         "node:url",
         "node:sqlite"
       ],
-      "importedBy": [
-        "tools/intelligence/audiovisual_psychoacoustics_corpus_builder.mjs"
-      ],
+      "importedBy": [],
       "calls": [
         "fileURLToPath",
         "dirname",
@@ -11663,6 +11816,7 @@
         "./skill_quality_ledger.mjs"
       ],
       "importedBy": [
+        "tools/cto_command_center.mjs",
         "tools/intelligence/agent_squad.mjs",
         "tools/intelligence/ast_guard.mjs",
         "tools/intelligence/eval_matrix.mjs",
@@ -11875,8 +12029,8 @@
     {
       "path": "tools/intelligence/mcp_omni_rag_server.mjs",
       "ext": ".mjs",
-      "sha256": "b221f3b8e06d40f5",
-      "lineCount": 1094,
+      "sha256": "2bba3345d1c253c4",
+      "lineCount": 1267,
       "exports": [
         "SERVER_INFO",
         "TOOLS",
@@ -11885,6 +12039,8 @@
         "discoverToolsByIntent",
         "listToolsDeferredCompact",
         "hydrateDeferredToolSchema",
+        "expandChunkToParentMarkdownSection",
+        "executeRagFusionRrfAndCrag",
         "validateMcpRequestSecurity",
         "startMcpServer"
       ],
@@ -11955,7 +12111,7 @@
         "find",
         "map",
         "split",
-        "generateCsprngSessionId"
+        "isAbsolute"
       ],
       "symbols": [
         {
@@ -12015,48 +12171,64 @@
           "endLine": 610
         },
         {
+          "name": "expandChunkToParentMarkdownSection",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function expandChunkToParentMarkdownSection(chunk = {}, maxChars = 2200)",
+          "startLine": 616,
+          "endLine": 616
+        },
+        {
+          "name": "executeRagFusionRrfAndCrag",
+          "kind": "function",
+          "exported": true,
+          "signature": "export async function executeRagFusionRrfAndCrag(query = '', options = {})",
+          "startLine": 647,
+          "endLine": 647
+        },
+        {
           "name": "validateMcpRequestSecurity",
           "kind": "function",
           "exported": true,
           "signature": "export function validateMcpRequestSecurity(req = {})",
-          "startLine": 620,
-          "endLine": 620
+          "startLine": 767,
+          "endLine": 767
         },
         {
           "name": "executeSingleMcpTool",
           "kind": "function",
           "exported": false,
           "signature": "async function executeSingleMcpTool(toolName, args = {}, traceId = generateCsprngSessionId()",
-          "startLine": 703,
-          "endLine": 703
+          "startLine": 850,
+          "endLine": 850
         },
         {
           "name": "sendResponse",
           "kind": "function",
           "exported": false,
           "signature": "function sendResponse(id, result)",
-          "startLine": 991,
-          "endLine": 993
+          "startLine": 1150,
+          "endLine": 1152
         },
         {
           "name": "sendError",
           "kind": "function",
           "exported": false,
           "signature": "function sendError(id, code, message)",
-          "startLine": 995,
-          "endLine": 997
+          "startLine": 1154,
+          "endLine": 1156
         },
         {
           "name": "startMcpServer",
           "kind": "function",
           "exported": true,
           "signature": "export function startMcpServer()",
-          "startLine": 999,
-          "endLine": 1089
+          "startLine": 1158,
+          "endLine": 1248
         }
       ],
-      "mtimeMs": 1793281473043.4866,
-      "size": 41631
+      "mtimeMs": 1793295323502.0032,
+      "size": 48593
     },
     {
       "path": "tools/intelligence/memory_reflector.mjs",
@@ -12207,7 +12379,6 @@
         "three/tsl"
       ],
       "importedBy": [
-        "tools/intelligence/audiovisual_psychoacoustics_corpus_builder.mjs",
         "tools/intelligence/weekly_cron_evolver.mjs"
       ],
       "calls": [
@@ -12469,7 +12640,6 @@
         "tools/audit/harness_doctor_audit.mjs",
         "tools/intelligence/mcp_omni_rag_server.mjs",
         "tools/intelligence/rag_pipeline.mjs",
-        "tools/intelligence/software_factory_curriculum_ingester.mjs",
         "tools/intelligence/weekly_cron_evolver.mjs"
       ],
       "calls": [
@@ -12747,11 +12917,12 @@
     {
       "path": "tools/intelligence/rag_pipeline.mjs",
       "ext": ".mjs",
-      "sha256": "c95aa6531785e2ee",
-      "lineCount": 1338,
+      "sha256": "30886e429fab03ac",
+      "lineCount": 1405,
       "exports": [
         "expandQueryBilingual",
         "invalidateIndexCache",
+        "deduplicateAndVacuumSqliteFts5",
         "getOrBuildMiniSearchIndex",
         "reciprocalRankFusion",
         "queryKnowledge",
@@ -12772,7 +12943,6 @@
       ],
       "importedBy": [
         "tools/intelligence/agent_benchmark_harness.mjs",
-        "tools/intelligence/audiovisual_psychoacoustics_corpus_builder.mjs",
         "tools/intelligence/eval_matrix.mjs",
         "tools/intelligence/mcp_omni_rag_server.mjs",
         "tools/intelligence/weekly_cron_evolver.mjs"
@@ -12816,13 +12986,13 @@
         "set",
         "includes",
         "addTokensToInvertedMap",
-        "mkdirSync",
+        "statSync",
+        "toFixed",
         "DatabaseSyncClass",
         "prepare",
-        "count",
-        "floor",
+        "COUNT",
         "exec",
-        "chunks_fts"
+        "MIN"
       ],
       "symbols": [
         {
@@ -12898,112 +13068,120 @@
           "endLine": 483
         },
         {
+          "name": "deduplicateAndVacuumSqliteFts5",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function deduplicateAndVacuumSqliteFts5()",
+          "startLine": 489,
+          "endLine": 530
+        },
+        {
           "name": "buildOrOpenSqliteFts5Index",
           "kind": "function",
           "exported": false,
           "signature": "function buildOrOpenSqliteFts5Index(chunks, forceRebuild = false)",
-          "startLine": 488,
-          "endLine": 554
+          "startLine": 536,
+          "endLine": 621
         },
         {
           "name": "querySqliteFts5",
           "kind": "function",
           "exported": false,
           "signature": "function querySqliteFts5(sqliteDb, chunkMap, terms, limit = 20)",
-          "startLine": 564,
-          "endLine": 613
+          "startLine": 631,
+          "endLine": 680
         },
         {
           "name": "buildMiniSearchInstance",
           "kind": "function",
           "exported": false,
           "signature": "function buildMiniSearchInstance(chunks)",
-          "startLine": 615,
-          "endLine": 633
+          "startLine": 682,
+          "endLine": 700
         },
         {
           "name": "buildChunkMap",
           "kind": "function",
           "exported": false,
           "signature": "function buildChunkMap(chunks)",
-          "startLine": 635,
-          "endLine": 641
+          "startLine": 702,
+          "endLine": 708
         },
         {
           "name": "getOrBuildMiniSearchIndex",
           "kind": "function",
           "exported": true,
           "signature": "export function getOrBuildMiniSearchIndex(force = false)",
-          "startLine": 646,
-          "endLine": 709
+          "startLine": 713,
+          "endLine": 776
         },
         {
           "name": "capResultsPerFile",
           "kind": "function",
           "exported": false,
           "signature": "function capResultsPerFile(items, maxPerFile = 2, limit = 20)",
-          "startLine": 714,
-          "endLine": 728
+          "startLine": 781,
+          "endLine": 795
         },
         {
           "name": "runLocalSemanticVectorRanker",
           "kind": "function",
           "exported": false,
           "signature": "function runLocalSemanticVectorRanker(chunks, queryString, limit = 20)",
-          "startLine": 734,
-          "endLine": 861
+          "startLine": 801,
+          "endLine": 928
         },
         {
           "name": "runLocalOnnxCrossEncoderRerank",
           "kind": "function",
           "exported": false,
           "signature": "async function runLocalOnnxCrossEncoderRerank(query, candidates, limit = 8)",
-          "startLine": 868,
-          "endLine": 915
+          "startLine": 935,
+          "endLine": 982
         },
         {
           "name": "reciprocalRankFusion",
           "kind": "function",
           "exported": true,
           "signature": "export function reciprocalRankFusion(rankedLists, k = 60, maxPerFile = 2)",
-          "startLine": 921,
-          "endLine": 956
+          "startLine": 988,
+          "endLine": 1023
         },
         {
           "name": "queryKnowledge",
           "kind": "function",
           "exported": true,
           "signature": "export async function queryKnowledge(query, limit = 8, options = {})",
-          "startLine": 967,
-          "endLine": 967
+          "startLine": 1034,
+          "endLine": 1034
         },
         {
           "name": "queryCodeGraph",
           "kind": "function",
           "exported": true,
           "signature": "export function queryCodeGraph(symbolOrFileQuery, limit = 8)",
-          "startLine": 1160,
-          "endLine": 1185
+          "startLine": 1227,
+          "endLine": 1252
         },
         {
           "name": "synthesizeAnswer",
           "kind": "function",
           "exported": true,
           "signature": "export async function synthesizeAnswer(question, knowledgeList = [])",
-          "startLine": 1190,
-          "endLine": 1252
+          "startLine": 1257,
+          "endLine": 1319
         },
         {
           "name": "getClusterStats",
           "kind": "function",
           "exported": true,
           "signature": "export async function getClusterStats()",
-          "startLine": 1254,
-          "endLine": 1287
+          "startLine": 1321,
+          "endLine": 1354
         }
       ],
-      "mtimeMs": 1793282128041.8943,
-      "size": 56837
+      "mtimeMs": 1793294384248.5298,
+      "size": 59357
     },
     {
       "path": "tools/intelligence/rea_reverse_engineering_bridge.mjs",
@@ -13498,182 +13676,6 @@
       ],
       "mtimeMs": 1793149357525.8384,
       "size": 15156
-    },
-    {
-      "path": "tools/intelligence/software_factory_curriculum_ingester.mjs",
-      "ext": ".mjs",
-      "sha256": "d2d3e444c21b2481",
-      "lineCount": 1126,
-      "exports": [
-        "ROOT",
-        "LOCAL_VAULT_REGISTRY_PATH",
-        "CANON_OUTPUT_PATH",
-        "CANON_JEV_BAML_OUTPUT_PATH",
-        "SQLITE_FTS5_PATH",
-        "CONTEXT_AND_HARNESS_VAULT_REPOS",
-        "OFFICIAL_ACADEMIC_COURSE_REPOS",
-        "OFFICIAL_YOUTUBE_FACTORY_TALKS_URLS",
-        "ensureAcademicCourseReposAndRegisterVault",
-        "ensureContextAndHarnessReposAndRegisterVault",
-        "indexCanonInSqliteFts5",
-        "runSoftwareFactoryCurriculumIngestion"
-      ],
-      "imports": [
-        "node:fs",
-        "node:path",
-        "node:child_process",
-        "node:url",
-        "./qdrant_rag.mjs",
-        "node:sqlite"
-      ],
-      "importedBy": [],
-      "calls": [
-        "fileURLToPath",
-        "dirname",
-        "Parsing",
-        "JEV",
-        "TypeScript",
-        "Developer",
-        "scratch",
-        "modes",
-        "checkpoints",
-        "review",
-        "Action",
-        "Advanced",
-        "Beginners",
-        "Horthy",
-        "rot",
-        "gate",
-        "Implement",
-        "Discussion",
-        "Research",
-        "buildUntaintedResearchPackage",
-        "discipline",
-        "tasks",
-        "architecture",
-        "classifyAdaptiveDepthLane",
-        "Zakariasson",
-        "Venting",
-        "tool",
-        "logAgentHarnessFriction",
-        "Semanal",
-        "Validator",
-        "Palmie",
-        "test",
-        "regression",
-        "verifyF2pAndP2pGate",
-        "triage",
-        "Venta",
-        "Lloyd",
-        "floor",
-        "Knox",
-        "specifications",
-        "traceability",
-        "verifySpecKittyTraceabilityMatrix",
-        "Cooke",
-        "Doctor",
-        "Katz"
-      ],
-      "symbols": [
-        {
-          "name": "ROOT",
-          "kind": "constant",
-          "exported": true,
-          "signature": "export const ROOT",
-          "startLine": 58,
-          "endLine": 58
-        },
-        {
-          "name": "LOCAL_VAULT_REGISTRY_PATH",
-          "kind": "constant",
-          "exported": true,
-          "signature": "export const LOCAL_VAULT_REGISTRY_PATH",
-          "startLine": 64,
-          "endLine": 64
-        },
-        {
-          "name": "CANON_OUTPUT_PATH",
-          "kind": "constant",
-          "exported": true,
-          "signature": "export const CANON_OUTPUT_PATH",
-          "startLine": 65,
-          "endLine": 65
-        },
-        {
-          "name": "CANON_JEV_BAML_OUTPUT_PATH",
-          "kind": "constant",
-          "exported": true,
-          "signature": "export const CANON_JEV_BAML_OUTPUT_PATH",
-          "startLine": 71,
-          "endLine": 71
-        },
-        {
-          "name": "SQLITE_FTS5_PATH",
-          "kind": "constant",
-          "exported": true,
-          "signature": "export const SQLITE_FTS5_PATH",
-          "startLine": 77,
-          "endLine": 77
-        },
-        {
-          "name": "CONTEXT_AND_HARNESS_VAULT_REPOS",
-          "kind": "constant",
-          "exported": true,
-          "signature": "export const CONTEXT_AND_HARNESS_VAULT_REPOS",
-          "startLine": 79,
-          "endLine": 79
-        },
-        {
-          "name": "OFFICIAL_ACADEMIC_COURSE_REPOS",
-          "kind": "constant",
-          "exported": true,
-          "signature": "export const OFFICIAL_ACADEMIC_COURSE_REPOS",
-          "startLine": 100,
-          "endLine": 100
-        },
-        {
-          "name": "OFFICIAL_YOUTUBE_FACTORY_TALKS_URLS",
-          "kind": "constant",
-          "exported": true,
-          "signature": "export const OFFICIAL_YOUTUBE_FACTORY_TALKS_URLS",
-          "startLine": 151,
-          "endLine": 151
-        },
-        {
-          "name": "ensureAcademicCourseReposAndRegisterVault",
-          "kind": "function",
-          "exported": true,
-          "signature": "export function ensureAcademicCourseReposAndRegisterVault()",
-          "startLine": 558,
-          "endLine": 644
-        },
-        {
-          "name": "ensureContextAndHarnessReposAndRegisterVault",
-          "kind": "function",
-          "exported": true,
-          "signature": "export function ensureContextAndHarnessReposAndRegisterVault()",
-          "startLine": 651,
-          "endLine": 749
-        },
-        {
-          "name": "indexCanonInSqliteFts5",
-          "kind": "function",
-          "exported": true,
-          "signature": "export function indexCanonInSqliteFts5(markdownContent = '', extraCanonFiles = [])",
-          "startLine": 896,
-          "endLine": 966
-        },
-        {
-          "name": "runSoftwareFactoryCurriculumIngestion",
-          "kind": "function",
-          "exported": true,
-          "signature": "export function runSoftwareFactoryCurriculumIngestion()",
-          "startLine": 971,
-          "endLine": 1106
-        }
-      ],
-      "mtimeMs": 1793280825367.0742,
-      "size": 60441
     },
     {
       "path": "tools/intelligence/spec_generator.mjs",
@@ -14797,130 +14799,6 @@
       "size": 80689
     },
     {
-      "path": "tools/intelligence/visual_science_corpus_builder.mjs",
-      "ext": ".mjs",
-      "sha256": "eb2e6347e019a94a",
-      "lineCount": 365,
-      "exports": [
-        "ROOT",
-        "INIGO_QUILEZ_COSINE_PALETTES",
-        "buildVisualScienceCorpus"
-      ],
-      "imports": [
-        "node:fs",
-        "node:path",
-        "node:url"
-      ],
-      "importedBy": [],
-      "calls": [
-        "fileURLToPath",
-        "dirname",
-        "Light",
-        "Processing",
-        "Color",
-        "Algorithm",
-        "Model",
-        "Response",
-        "blue",
-        "yellow",
-        "green",
-        "Coordinates",
-        "oklch",
-        "Area",
-        "Lightness",
-        "Chroma",
-        "Canvas",
-        "Container",
-        "CTA",
-        "Shadow",
-        "Surfaces",
-        "grays",
-        "spectrum",
-        "cards",
-        "hue",
-        "bigl",
-        "Matrix",
-        "Copy",
-        "Prose",
-        "paragraphs",
-        "Motion",
-        "Rendering",
-        "Burley",
-        "Disney",
-        "Simon",
-        "Interfaces",
-        "BRDF",
-        "truth",
-        "values",
-        "Roughness",
-        "Mapping",
-        "Rig",
-        "Lens",
-        "backlight",
-        "backdrop"
-      ],
-      "symbols": [
-        {
-          "name": "ROOT",
-          "kind": "constant",
-          "exported": true,
-          "signature": "export const ROOT",
-          "startLine": 19,
-          "endLine": 19
-        },
-        {
-          "name": "INIGO_QUILEZ_COSINE_PALETTES",
-          "kind": "constant",
-          "exported": true,
-          "signature": "export const INIGO_QUILEZ_COSINE_PALETTES",
-          "startLine": 21,
-          "endLine": 78
-        },
-        {
-          "name": "buildColorimetryTreatise",
-          "kind": "function",
-          "exported": false,
-          "signature": "function buildColorimetryTreatise()",
-          "startLine": 80,
-          "endLine": 160
-        },
-        {
-          "name": "buildPbrAndMotionTreatise",
-          "kind": "function",
-          "exported": false,
-          "signature": "function buildPbrAndMotionTreatise()",
-          "startLine": 162,
-          "endLine": 214
-        },
-        {
-          "name": "buildTufteAndTypographyTreatise",
-          "kind": "function",
-          "exported": false,
-          "signature": "function buildTufteAndTypographyTreatise()",
-          "startLine": 216,
-          "endLine": 261
-        },
-        {
-          "name": "buildMobileHigM3Treatise",
-          "kind": "function",
-          "exported": false,
-          "signature": "function buildMobileHigM3Treatise()",
-          "startLine": 263,
-          "endLine": 309
-        },
-        {
-          "name": "buildVisualScienceCorpus",
-          "kind": "function",
-          "exported": true,
-          "signature": "export function buildVisualScienceCorpus()",
-          "startLine": 311,
-          "endLine": 350
-        }
-      ],
-      "mtimeMs": 1793213292183.371,
-      "size": 20933
-    },
-    {
       "path": "tools/intelligence/weekly_cron_evolver.mjs",
       "ext": ".mjs",
       "sha256": "308b1b04c9fb95c4",
@@ -15269,6 +15147,7 @@
         "tools/media/programmatic_video_forge.mjs",
         "tools/media/sonic_and_music_forge.mjs",
         "tools/orchestrator/adaptive_depth_router.mjs",
+        "tools/seo_smoke.mjs",
         "tools/serve_site.mjs"
       ],
       "calls": [
@@ -15547,8 +15426,8 @@
     {
       "path": "tools/media/programmatic_video_forge.mjs",
       "ext": ".mjs",
-      "sha256": "f727590406f46203",
-      "lineCount": 581,
+      "sha256": "6d990a189b264bd1",
+      "lineCount": 786,
       "exports": [
         "ROOT",
         "MAX_VIDEO_BUDGET_BYTES",
@@ -15557,6 +15436,8 @@
         "generateParametricIntroChoreography",
         "extractOklchPaletteFromDesignMd",
         "ensureProjectVectorLogoSvg",
+        "BRAND_INTRO_PLAYER_CONFIG",
+        "mountBrandIntroPlayer",
         "BRAND_INTRO_SCENE_CONFIG",
         "runProgrammaticVideoForgeSelfTest"
       ],
@@ -15572,6 +15453,7 @@
         "../audit/ryux_design_gate.mjs"
       ],
       "importedBy": [
+        "tools/build_dist.mjs",
         "tools/cto_command_center.mjs"
       ],
       "calls": [
@@ -15604,22 +15486,22 @@
         "mkdirSync",
         "url",
         "writeFileSync",
-        "writeDualVideoAndPosterContainers",
-        "from",
-        "concat",
-        "alloc",
-        "write",
-        "writeUInt32LE",
-        "generateBrandIntroVideo",
-        "getActiveProject",
-        "resolveBrandIntroTemplate",
-        "resolveIndustryArchetype",
-        "extractOklchPaletteFromDesignMd",
-        "ensureProjectVectorLogoSvg",
-        "masterAudioToLufsAndOpus",
-        "getStyleCatalog",
-        "basename",
-        "forgeProgrammaticBrandIntroWithGcp"
+        "buildProceduralBrandIntroPlayerJs",
+        "querySelector",
+        "matchMedia",
+        "createElement",
+        "setAttribute",
+        "prepend",
+        "now",
+        "getContext",
+        "clearRect",
+        "fillRect",
+        "createRadialGradient",
+        "addColorStop",
+        "rgba",
+        "sin",
+        "save",
+        "translate"
       ],
       "symbols": [
         {
@@ -15679,24 +15561,56 @@
           "endLine": 223
         },
         {
+          "name": "BRAND_INTRO_PLAYER_CONFIG",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const BRAND_INTRO_PLAYER_CONFIG",
+          "startLine": 260,
+          "endLine": 276
+        },
+        {
+          "name": "mountBrandIntroPlayer",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function mountBrandIntroPlayer(stageSelector = '.wf-brand-intro-stage')",
+          "startLine": 278,
+          "endLine": 385
+        },
+        {
+          "name": "renderFrame",
+          "kind": "function",
+          "exported": false,
+          "signature": "function renderFrame(progress)",
+          "startLine": 304,
+          "endLine": 346
+        },
+        {
+          "name": "step",
+          "kind": "function",
+          "exported": false,
+          "signature": "function step(now)",
+          "startLine": 354,
+          "endLine": 364
+        },
+        {
           "name": "BRAND_INTRO_SCENE_CONFIG",
           "kind": "constant",
           "exported": true,
           "signature": "export const BRAND_INTRO_SCENE_CONFIG",
-          "startLine": 372,
-          "endLine": 385
+          "startLine": 564,
+          "endLine": 578
         },
         {
           "name": "runProgrammaticVideoForgeSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export async function runProgrammaticVideoForgeSelfTest()",
-          "startLine": 500,
-          "endLine": 547
+          "startLine": 705,
+          "endLine": 752
         }
       ],
-      "mtimeMs": 1793286581671.135,
-      "size": 23393
+      "mtimeMs": 1793294839085.0813,
+      "size": 30606
     },
     {
       "path": "tools/media/sonic_and_music_forge.mjs",
@@ -15720,6 +15634,7 @@
         "../design/industry_archetype_matrix.mjs"
       ],
       "importedBy": [
+        "tools/build_dist.mjs",
         "tools/cto_command_center.mjs",
         "tools/media/programmatic_video_forge.mjs"
       ],
@@ -15826,8 +15741,8 @@
     {
       "path": "tools/mobile/mobile_target_forge.mjs",
       "ext": ".mjs",
-      "sha256": "f4adff1ca0d9a9ff",
-      "lineCount": 604,
+      "sha256": "a23fb1d086565f97",
+      "lineCount": 627,
       "exports": [
         "FACTORY_ROOT",
         "SUPPORTED_TARGET_PLATFORMS",
@@ -16019,12 +15934,12 @@
           "kind": "function",
           "exported": true,
           "signature": "export function runMobileTargetForgeSelfTest()",
-          "startLine": 523,
-          "endLine": 581
+          "startLine": 546,
+          "endLine": 604
         }
       ],
-      "mtimeMs": 1793212680940.2668,
-      "size": 22181
+      "mtimeMs": 1793294324190.2263,
+      "size": 23364
     },
     {
       "path": "tools/orchestrator/adaptive_depth_router.mjs",
@@ -16199,14 +16114,15 @@
     {
       "path": "tools/orchestrator/client_interview_gate.mjs",
       "ext": ".mjs",
-      "sha256": "4be4beeb40c6cc29",
-      "lineCount": 1140,
+      "sha256": "fc8c806602f9a066",
+      "lineCount": 1391,
       "exports": [
         "ROOT",
         "renderInterviewMarkdown",
         "initClientInterviewFiles",
         "verifyClientInterviewGate",
         "verifyDualInterviewGates",
+        "parseEditedSpecMarkdownIntoState",
         "compileSpecFromInterview",
         "runClientInterviewGateSelfTest"
       ],
@@ -16316,24 +16232,32 @@
           "endLine": 608
         },
         {
+          "name": "parseEditedSpecMarkdownIntoState",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function parseEditedSpecMarkdownIntoState(mdContent = '', currentState = {})",
+          "startLine": 615,
+          "endLine": 615
+        },
+        {
           "name": "compileSpecFromInterview",
           "kind": "function",
           "exported": true,
           "signature": "export function compileSpecFromInterview(slug = 'agencia-alfa', options = {})",
-          "startLine": 617,
-          "endLine": 617
+          "startLine": 814,
+          "endLine": 814
         },
         {
           "name": "runClientInterviewGateSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export function runClientInterviewGateSelfTest()",
-          "startLine": 949,
-          "endLine": 1076
+          "startLine": 1191,
+          "endLine": 1327
         }
       ],
-      "mtimeMs": 1793287050058.8276,
-      "size": 60378
+      "mtimeMs": 1793293974828.282,
+      "size": 71333
     },
     {
       "path": "tools/orchestrator/humanlayer_rpi_gate.mjs",
@@ -16563,8 +16487,8 @@
     {
       "path": "tools/orchestrator/lean_prd_architect.mjs",
       "ext": ".mjs",
-      "sha256": "28a8c4eaf2e92242",
-      "lineCount": 869,
+      "sha256": "98e63432c2234b24",
+      "lineCount": 1076,
       "exports": [
         "ROOT",
         "VALID_BRAND_IDENTITY_MODES",
@@ -16573,6 +16497,7 @@
         "initPrdInterviewFiles",
         "validatePrdBlocksCompleteness",
         "verifyPrdInterviewGate",
+        "parseEditedPrdMarkdownIntoState",
         "compilePrdLeanAndBrandLock",
         "runLeanPrdArchitectSelfTest"
       ],
@@ -16691,24 +16616,32 @@
           "endLine": 546
         },
         {
+          "name": "parseEditedPrdMarkdownIntoState",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function parseEditedPrdMarkdownIntoState(mdContent = '', currentState = {})",
+          "startLine": 553,
+          "endLine": 553
+        },
+        {
           "name": "compilePrdLeanAndBrandLock",
           "kind": "function",
           "exported": true,
           "signature": "export function compilePrdLeanAndBrandLock(slug = 'agencia-alfa', options = {})",
-          "startLine": 552,
-          "endLine": 552
+          "startLine": 737,
+          "endLine": 737
         },
         {
           "name": "runLeanPrdArchitectSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export function runLeanPrdArchitectSelfTest()",
-          "startLine": 739,
-          "endLine": 821
+          "startLine": 931,
+          "endLine": 1028
         }
       ],
-      "mtimeMs": 1793285155797.4778,
-      "size": 41695
+      "mtimeMs": 1793293859602.8247,
+      "size": 51076
     },
     {
       "path": "tools/project_loader.mjs",
@@ -17047,6 +16980,52 @@
       "size": 1270
     },
     {
+      "path": "tools/seo_smoke.mjs",
+      "ext": ".mjs",
+      "sha256": "9df810b52507fb53",
+      "lineCount": 61,
+      "exports": [
+        "runSeoAndLlmsSmokeAudit"
+      ],
+      "imports": [
+        "node:fs",
+        "node:path",
+        "node:url",
+        "./lib/project_loader.mjs"
+      ],
+      "importedBy": [],
+      "calls": [
+        "fileURLToPath",
+        "loadProjectConfig",
+        "join",
+        "find",
+        "existsSync",
+        "findFirst",
+        "readFileSync",
+        "startsWith",
+        "includes",
+        "values",
+        "every",
+        "resolve",
+        "runSeoAndLlmsSmokeAudit",
+        "log",
+        "stringify",
+        "exit"
+      ],
+      "symbols": [
+        {
+          "name": "runSeoAndLlmsSmokeAudit",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function runSeoAndLlmsSmokeAudit(projectInput = '')",
+          "startLine": 18,
+          "endLine": 54
+        }
+      ],
+      "mtimeMs": 1793295041354.8684,
+      "size": 2144
+    },
+    {
       "path": "tools/serve_site.mjs",
       "ext": ".mjs",
       "sha256": "71102b498c692654",
@@ -17186,35 +17165,238 @@
           "kind": "constant",
           "signature": "export const BRAND_INTRO_SCENE_CONFIG",
           "startLine": 7,
-          "endLine": 26
+          "endLine": 27
         },
         {
           "file": "projects/agencia-alfa/public/assets/video/agencia-alfa-intro-minimal.motion-canvas.ts",
           "kind": "constant",
           "signature": "export const BRAND_INTRO_SCENE_CONFIG",
           "startLine": 7,
-          "endLine": 26
+          "endLine": 27
         },
         {
           "file": "projects/agencia-alfa/public/assets/video/agencia-alfa-intro-shader-hud.motion-canvas.ts",
           "kind": "constant",
           "signature": "export const BRAND_INTRO_SCENE_CONFIG",
           "startLine": 7,
-          "endLine": 26
+          "endLine": 27
         },
         {
           "file": "projects/agencia-alfa/public/assets/video/agencia-alfa-intro-vertex-veo-hybrid.motion-canvas.ts",
           "kind": "constant",
           "signature": "export const BRAND_INTRO_SCENE_CONFIG",
           "startLine": 7,
-          "endLine": 26
+          "endLine": 27
         },
         {
           "file": "tools/media/programmatic_video_forge.mjs",
           "kind": "constant",
           "signature": "export const BRAND_INTRO_SCENE_CONFIG",
-          "startLine": 372,
+          "startLine": 564,
+          "endLine": 578
+        }
+      ],
+      "calledByFiles": []
+    },
+    "BRAND_INTRO_PLAYER_CONFIG": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/public/assets/video/brand-intro-player.js",
+          "kind": "constant",
+          "signature": "export const BRAND_INTRO_PLAYER_CONFIG",
+          "startLine": 6,
+          "endLine": 24
+        },
+        {
+          "file": "projects/agencia-alfa/site/js/brand-intro-player.js",
+          "kind": "constant",
+          "signature": "export const BRAND_INTRO_PLAYER_CONFIG",
+          "startLine": 6,
+          "endLine": 24
+        },
+        {
+          "file": "tools/media/programmatic_video_forge.mjs",
+          "kind": "constant",
+          "signature": "export const BRAND_INTRO_PLAYER_CONFIG",
+          "startLine": 260,
+          "endLine": 276
+        }
+      ],
+      "calledByFiles": []
+    },
+    "mountBrandIntroPlayer": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/public/assets/video/brand-intro-player.js",
+          "kind": "function",
+          "signature": "export function mountBrandIntroPlayer(stageSelector = '.wf-brand-intro-stage')",
+          "startLine": 26,
+          "endLine": 133
+        },
+        {
+          "file": "projects/agencia-alfa/site/js/brand-intro-player.js",
+          "kind": "function",
+          "signature": "export function mountBrandIntroPlayer(stageSelector = '.wf-brand-intro-stage')",
+          "startLine": 26,
+          "endLine": 133
+        },
+        {
+          "file": "tools/media/programmatic_video_forge.mjs",
+          "kind": "function",
+          "signature": "export function mountBrandIntroPlayer(stageSelector = '.wf-brand-intro-stage')",
+          "startLine": 278,
           "endLine": 385
+        }
+      ],
+      "calledByFiles": [
+        "projects/agencia-alfa/public/assets/video/brand-intro-player.js",
+        "projects/agencia-alfa/site/js/brand-intro-player.js"
+      ]
+    },
+    "renderFrame": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/public/assets/video/brand-intro-player.js",
+          "kind": "function",
+          "signature": "function renderFrame(progress)",
+          "startLine": 52,
+          "endLine": 94
+        },
+        {
+          "file": "projects/agencia-alfa/site/js/brand-intro-player.js",
+          "kind": "function",
+          "signature": "function renderFrame(progress)",
+          "startLine": 52,
+          "endLine": 94
+        },
+        {
+          "file": "tools/media/programmatic_video_forge.mjs",
+          "kind": "function",
+          "signature": "function renderFrame(progress)",
+          "startLine": 304,
+          "endLine": 346
+        }
+      ],
+      "calledByFiles": [
+        "projects/agencia-alfa/public/assets/video/brand-intro-player.js",
+        "projects/agencia-alfa/site/js/brand-intro-player.js"
+      ]
+    },
+    "step": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/public/assets/video/brand-intro-player.js",
+          "kind": "function",
+          "signature": "function step(now)",
+          "startLine": 102,
+          "endLine": 112
+        },
+        {
+          "file": "projects/agencia-alfa/site/js/brand-intro-player.js",
+          "kind": "function",
+          "signature": "function step(now)",
+          "startLine": 102,
+          "endLine": 112
+        },
+        {
+          "file": "tools/media/programmatic_video_forge.mjs",
+          "kind": "function",
+          "signature": "function step(now)",
+          "startLine": 354,
+          "endLine": 364
+        }
+      ],
+      "calledByFiles": []
+    },
+    "--color-primary": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/site/css/design-tokens.css",
+          "kind": "css-token",
+          "signature": "--color-primary: oklch(0.78 0.187 234);",
+          "startLine": 10,
+          "endLine": 10
+        },
+        {
+          "file": "projects/agencia-alfa/tokens/tokens.css",
+          "kind": "css-token",
+          "signature": "--color-primary: oklch(65% 0.16 250);",
+          "startLine": 6,
+          "endLine": 6
+        }
+      ],
+      "calledByFiles": []
+    },
+    "--color-secondary": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/site/css/design-tokens.css",
+          "kind": "css-token",
+          "signature": "--color-secondary: oklch(0.42 0.094 258);",
+          "startLine": 11,
+          "endLine": 11
+        },
+        {
+          "file": "projects/agencia-alfa/tokens/tokens.css",
+          "kind": "css-token",
+          "signature": "--color-secondary: oklch(72% 0.12 190);",
+          "startLine": 7,
+          "endLine": 7
+        }
+      ],
+      "calledByFiles": []
+    },
+    "--color-accent": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/site/css/design-tokens.css",
+          "kind": "css-token",
+          "signature": "--color-accent: oklch(0.74 0.156 286);",
+          "startLine": 12,
+          "endLine": 12
+        }
+      ],
+      "calledByFiles": []
+    },
+    "--color-surface": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/site/css/design-tokens.css",
+          "kind": "css-token",
+          "signature": "--color-surface: oklch(0.13 0.0127 258);",
+          "startLine": 13,
+          "endLine": 13
+        },
+        {
+          "file": "projects/agencia-alfa/tokens/tokens.css",
+          "kind": "css-token",
+          "signature": "--color-surface: oklch(10% 0.01 255);",
+          "startLine": 9,
+          "endLine": 9
+        }
+      ],
+      "calledByFiles": []
+    },
+    "--brand-logo-primary": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/site/css/design-tokens.css",
+          "kind": "css-token",
+          "signature": "--brand-logo-primary: \"public/assets/brand/logo-primary.svg\";",
+          "startLine": 14,
+          "endLine": 14
+        }
+      ],
+      "calledByFiles": []
+    },
+    "--brand-logo-isotipo": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/site/css/design-tokens.css",
+          "kind": "css-token",
+          "signature": "--brand-logo-isotipo: \"public/assets/brand/isotipo.svg\";",
+          "startLine": 15,
+          "endLine": 15
         }
       ],
       "calledByFiles": []
@@ -17224,9 +17406,9 @@
         {
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
-          "signature": "--surface-canvas: oklch(0.13 0.015 258);",
-          "startLine": 9,
-          "endLine": 9
+          "signature": "--surface-canvas: oklch(0.13 0.0127 258);",
+          "startLine": 16,
+          "endLine": 16
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -17264,9 +17446,9 @@
         {
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
-          "signature": "--surface-elevated: oklch(0.18 0.018 258);",
-          "startLine": 10,
-          "endLine": 10
+          "signature": "--surface-elevated: oklch(0.18 0.0146 258);",
+          "startLine": 17,
+          "endLine": 17
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -17305,8 +17487,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--surface-interactive: oklch(0.22 0.022 258);",
-          "startLine": 11,
-          "endLine": 11
+          "startLine": 18,
+          "endLine": 18
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -17345,8 +17527,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--surface-glass: oklch(0.20 0.02 258 / 0.76);",
-          "startLine": 12,
-          "endLine": 12
+          "startLine": 19,
+          "endLine": 19
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -17385,8 +17567,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--text-primary: oklch(0.96 0.008 258);",
-          "startLine": 13,
-          "endLine": 13
+          "startLine": 20,
+          "endLine": 20
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -17425,8 +17607,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--text-secondary: oklch(0.76 0.015 258);",
-          "startLine": 14,
-          "endLine": 14
+          "startLine": 21,
+          "endLine": 21
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -17465,8 +17647,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--text-muted: oklch(0.62 0.015 258);",
-          "startLine": 15,
-          "endLine": 15
+          "startLine": 22,
+          "endLine": 22
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -17504,9 +17686,9 @@
         {
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
-          "signature": "--brand-accent: oklch(0.74 0.17 162);",
-          "startLine": 16,
-          "endLine": 16
+          "signature": "--brand-accent: oklch(0.74 0.156 286);",
+          "startLine": 23,
+          "endLine": 23
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -17544,9 +17726,9 @@
         {
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
-          "signature": "--brand-cta: oklch(0.82 0.18 85);",
-          "startLine": 17,
-          "endLine": 17
+          "signature": "--brand-cta: oklch(0.78 0.187 234);",
+          "startLine": 24,
+          "endLine": 24
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -17585,8 +17767,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--brand-cta-ink: oklch(0.14 0.02 258);",
-          "startLine": 18,
-          "endLine": 18
+          "startLine": 25,
+          "endLine": 25
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -17625,8 +17807,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--border-subtle: oklch(1 0 0 / 0.08);",
-          "startLine": 19,
-          "endLine": 19
+          "startLine": 26,
+          "endLine": 26
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -17665,8 +17847,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--border-highlight: oklch(1 0 0 / 0.18);",
-          "startLine": 20,
-          "endLine": 20
+          "startLine": 27,
+          "endLine": 27
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -17704,9 +17886,9 @@
         {
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
-          "signature": "--font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;",
-          "startLine": 21,
-          "endLine": 21
+          "signature": "--font-sans: 'Rubik', system-ui, sans-serif;",
+          "startLine": 28,
+          "endLine": 28
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -17744,9 +17926,9 @@
         {
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
-          "signature": "--font-display: 'Inter', system-ui, -apple-system, sans-serif;",
-          "startLine": 22,
-          "endLine": 22
+          "signature": "--font-display: 'Spectral', Georgia, serif;",
+          "startLine": 29,
+          "endLine": 29
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -17784,9 +17966,9 @@
         {
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
-          "signature": "--font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;",
-          "startLine": 23,
-          "endLine": 23
+          "signature": "--font-mono: 'Source Code Pro', monospace;",
+          "startLine": 30,
+          "endLine": 30
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -17825,8 +18007,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--step--1: clamp(0.82rem, 0.78rem + 0.2vw, 0.92rem);",
-          "startLine": 24,
-          "endLine": 24
+          "startLine": 31,
+          "endLine": 31
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -17865,8 +18047,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--step-0: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);",
-          "startLine": 25,
-          "endLine": 25
+          "startLine": 32,
+          "endLine": 32
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -17904,9 +18086,9 @@
         {
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
-          "signature": "--step-1: clamp(1.22rem, 1.12rem + 0.5vw, 1.5rem);",
-          "startLine": 26,
-          "endLine": 26
+          "signature": "--step-1: clamp(1.22rem, 1.12rem + 0.5vw, 1.406rem);",
+          "startLine": 33,
+          "endLine": 33
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -17944,9 +18126,9 @@
         {
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
-          "signature": "--step-2: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);",
-          "startLine": 27,
-          "endLine": 27
+          "signature": "--step-2: clamp(1.5rem, 1.3rem + 1vw, 1.757rem);",
+          "startLine": 34,
+          "endLine": 34
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -17984,9 +18166,9 @@
         {
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
-          "signature": "--step-3: clamp(1.9rem, 1.55rem + 1.6vw, 3rem);",
-          "startLine": 28,
-          "endLine": 28
+          "signature": "--step-3: clamp(1.9rem, 1.55rem + 1.6vw, 2.196rem);",
+          "startLine": 35,
+          "endLine": 35
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -18024,9 +18206,9 @@
         {
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
-          "signature": "--step-4: clamp(2.25rem, 1.8rem + 2.2vw, 3.75rem);",
-          "startLine": 29,
-          "endLine": 29
+          "signature": "--step-4: clamp(2.25rem, 1.8rem + 2.2vw, 2.745rem);",
+          "startLine": 36,
+          "endLine": 36
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -18065,8 +18247,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--space-xs: clamp(0.5rem, 0.45rem + 0.25vw, 0.75rem);",
-          "startLine": 30,
-          "endLine": 30
+          "startLine": 37,
+          "endLine": 37
         },
         {
           "file": "projects/agencia-alfa/tokens/tokens.css",
@@ -18112,8 +18294,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--space-s: clamp(0.75rem, 0.65rem + 0.5vw, 1.125rem);",
-          "startLine": 31,
-          "endLine": 31
+          "startLine": 38,
+          "endLine": 38
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -18152,8 +18334,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--space-m: clamp(1rem, 0.85rem + 0.75vw, 1.5rem);",
-          "startLine": 32,
-          "endLine": 32
+          "startLine": 39,
+          "endLine": 39
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -18192,8 +18374,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--space-l: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);",
-          "startLine": 33,
-          "endLine": 33
+          "startLine": 40,
+          "endLine": 40
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -18232,8 +18414,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--space-xl: clamp(2.25rem, 1.6rem + 3vw, 4.5rem);",
-          "startLine": 34,
-          "endLine": 34
+          "startLine": 41,
+          "endLine": 41
         },
         {
           "file": "projects/agencia-alfa/tokens/tokens.css",
@@ -18279,8 +18461,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--radius-card: 18px;",
-          "startLine": 35,
-          "endLine": 35
+          "startLine": 42,
+          "endLine": 42
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -18319,8 +18501,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--radius-pill: 9999px;",
-          "startLine": 36,
-          "endLine": 36
+          "startLine": 43,
+          "endLine": 43
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -18359,8 +18541,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--ease-spring-snappy: linear(0, 0.3566 9.6%, 0.7852 21.1%, 1.0156 32.2%, 1.0738 41.3%, 1.0468 53.6%,",
-          "startLine": 37,
-          "endLine": 37
+          "startLine": 44,
+          "endLine": 44
         },
         {
           "file": "projects/agencia-alfa/site/css/motion-engine.css",
@@ -18448,8 +18630,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--ease-spring-gentle: linear(0, 0.245 8.5%, 0.642 19.8%, 0.916 31.4%, 1.021 43.2%, 1.018 59.1%, 1);",
-          "startLine": 38,
-          "endLine": 38
+          "startLine": 45,
+          "endLine": 45
         },
         {
           "file": "projects/agencia-alfa/site/css/motion-engine.css",
@@ -18537,8 +18719,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--ease-cinematic-out: cubic-bezier(0.22, 1, 0.36, 1);",
-          "startLine": 39,
-          "endLine": 39
+          "startLine": 46,
+          "endLine": 46
         },
         {
           "file": "projects/agencia-alfa/site/css/motion-engine.css",
@@ -18626,8 +18808,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--ease-cinematic-inout: cubic-bezier(0.65, 0, 0.35, 1);",
-          "startLine": 40,
-          "endLine": 40
+          "startLine": 47,
+          "endLine": 47
         },
         {
           "file": "projects/agencia-alfa/site/css/motion-engine.css",
@@ -18715,8 +18897,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--duration-fast: 160ms;",
-          "startLine": 41,
-          "endLine": 41
+          "startLine": 48,
+          "endLine": 48
         },
         {
           "file": "projects/agencia-alfa/site/css/motion-engine.css",
@@ -18804,8 +18986,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--duration-normal: 280ms;",
-          "startLine": 42,
-          "endLine": 42
+          "startLine": 49,
+          "endLine": 49
         },
         {
           "file": "projects/agencia-alfa/site/css/motion-engine.css",
@@ -18893,8 +19075,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--duration-slow: 520ms;",
-          "startLine": 43,
-          "endLine": 43
+          "startLine": 50,
+          "endLine": 50
         },
         {
           "file": "projects/agencia-alfa/site/css/motion-engine.css",
@@ -18982,8 +19164,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-token",
           "signature": "--audio-feedback: false;",
-          "startLine": 44,
-          "endLine": 44
+          "startLine": 51,
+          "endLine": 51
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -19022,8 +19204,8 @@
           "file": "projects/agencia-alfa/site/css/design-tokens.css",
           "kind": "css-keyframes",
           "signature": "@keyframes scrollRevealCard",
-          "startLine": 349,
-          "endLine": 352
+          "startLine": 356,
+          "endLine": 359
         },
         {
           "file": "templates/astro-edge/public/styles/design-tokens.css",
@@ -19668,6 +19850,78 @@
       ],
       "calledByFiles": []
     },
+    "--wf-morphology-radius-outer": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/site/css/ui-primitives.css",
+          "kind": "css-token",
+          "signature": "--wf-morphology-radius-outer: 14px;",
+          "startLine": 377,
+          "endLine": 377
+        }
+      ],
+      "calledByFiles": []
+    },
+    "--wf-morphology-radius-inner": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/site/css/ui-primitives.css",
+          "kind": "css-token",
+          "signature": "--wf-morphology-radius-inner: 6px;",
+          "startLine": 378,
+          "endLine": 378
+        }
+      ],
+      "calledByFiles": []
+    },
+    "--wf-morphology-card-padding": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/site/css/ui-primitives.css",
+          "kind": "css-token",
+          "signature": "--wf-morphology-card-padding: 8px;",
+          "startLine": 379,
+          "endLine": 379
+        }
+      ],
+      "calledByFiles": []
+    },
+    "--wf-morphology-clip-path": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/site/css/ui-primitives.css",
+          "kind": "css-token",
+          "signature": "--wf-morphology-clip-path: none;",
+          "startLine": 380,
+          "endLine": 380
+        }
+      ],
+      "calledByFiles": []
+    },
+    "--wf-morphology-surface-bg": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/site/css/ui-primitives.css",
+          "kind": "css-token",
+          "signature": "--wf-morphology-surface-bg: oklch(0.15 0.016 258);",
+          "startLine": 381,
+          "endLine": 381
+        }
+      ],
+      "calledByFiles": []
+    },
+    "--wf-morphology-surface-border": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/site/css/ui-primitives.css",
+          "kind": "css-token",
+          "signature": "--wf-morphology-surface-border: 1px solid oklch(0.92 0.01 258 / 0.10);",
+          "startLine": 382,
+          "endLine": 382
+        }
+      ],
+      "calledByFiles": []
+    },
     "AppController": {
       "definitions": [
         {
@@ -20006,8 +20260,8 @@
           "file": "projects/agencia-alfa/tokens/ThemeTokens.ts",
           "kind": "constant",
           "signature": "export const ThemeTokens",
-          "startLine": 6,
-          "endLine": 225
+          "startLine": 1,
+          "endLine": 244
         },
         {
           "file": "tools/mobile/mobile_target_forge.mjs",
@@ -20015,30 +20269,6 @@
           "signature": "export const ThemeTokens",
           "startLine": 217,
           "endLine": 217
-        }
-      ],
-      "calledByFiles": []
-    },
-    "--color-primary": {
-      "definitions": [
-        {
-          "file": "projects/agencia-alfa/tokens/tokens.css",
-          "kind": "css-token",
-          "signature": "--color-primary: oklch(65% 0.16 250);",
-          "startLine": 6,
-          "endLine": 6
-        }
-      ],
-      "calledByFiles": []
-    },
-    "--color-secondary": {
-      "definitions": [
-        {
-          "file": "projects/agencia-alfa/tokens/tokens.css",
-          "kind": "css-token",
-          "signature": "--color-secondary: oklch(72% 0.12 190);",
-          "startLine": 7,
-          "endLine": 7
         }
       ],
       "calledByFiles": []
@@ -20051,18 +20281,6 @@
           "signature": "--color-tertiary: oklch(78% 0.15 82);",
           "startLine": 8,
           "endLine": 8
-        }
-      ],
-      "calledByFiles": []
-    },
-    "--color-surface": {
-      "definitions": [
-        {
-          "file": "projects/agencia-alfa/tokens/tokens.css",
-          "kind": "css-token",
-          "signature": "--color-surface: oklch(10% 0.01 255);",
-          "startLine": 9,
-          "endLine": 9
         }
       ],
       "calledByFiles": []
@@ -20929,7 +21147,9 @@
           "endLine": 396
         }
       ],
-      "calledByFiles": []
+      "calledByFiles": [
+        "tools/build_dist.mjs"
+      ]
     },
     "computeOrganicMicroVariation": {
       "definitions": [
@@ -21518,20 +21738,6 @@
           "endLine": 23
         },
         {
-          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
-          "kind": "constant",
-          "signature": "export const ROOT",
-          "startLine": 58,
-          "endLine": 58
-        },
-        {
-          "file": "tools/intelligence/visual_science_corpus_builder.mjs",
-          "kind": "constant",
-          "signature": "export const ROOT",
-          "startLine": 19,
-          "endLine": 19
-        },
-        {
           "file": "tools/media/programmatic_video_forge.mjs",
           "kind": "constant",
           "signature": "export const ROOT",
@@ -21712,7 +21918,7 @@
           "kind": "function",
           "signature": "export function runRyuxDesignGate()",
           "startLine": 45,
-          "endLine": 380
+          "endLine": 383
         }
       ],
       "calledByFiles": [
@@ -21728,8 +21934,8 @@
           "file": "tools/audit/ryux_design_gate.mjs",
           "kind": "function",
           "signature": "export async function runAutonomousAestheticRepairLoop(options = {})",
-          "startLine": 387,
-          "endLine": 387
+          "startLine": 390,
+          "endLine": 390
         }
       ],
       "calledByFiles": []
@@ -22034,14 +22240,14 @@
       ],
       "calledByFiles": []
     },
-    "tick": {
+    "samplePostLoadFps": {
       "definitions": [
         {
           "file": "tools/audit/visual_audit.mjs",
           "kind": "function",
-          "signature": "function tick(now)",
-          "startLine": 564,
-          "endLine": 573
+          "signature": "function samplePostLoadFps(now)",
+          "startLine": 674,
+          "endLine": 688
         }
       ],
       "calledByFiles": []
@@ -22121,8 +22327,8 @@
           "file": "tools/build_dist.mjs",
           "kind": "function",
           "signature": "function copyRecursive(src, dest)",
-          "startLine": 15,
-          "endLine": 27
+          "startLine": 29,
+          "endLine": 41
         }
       ],
       "calledByFiles": [
@@ -22135,13 +22341,11 @@
           "file": "tools/build_dist.mjs",
           "kind": "function",
           "signature": "async function minifyDistAssets()",
-          "startLine": 109,
-          "endLine": 239
+          "startLine": 123,
+          "endLine": 253
         }
       ],
-      "calledByFiles": [
-        "tools/build_dist.mjs"
-      ]
+      "calledByFiles": []
     },
     "injectHtmlCacheBusters": {
       "definitions": [
@@ -22149,13 +22353,11 @@
           "file": "tools/build_dist.mjs",
           "kind": "function",
           "signature": "function injectHtmlCacheBusters(dirPath)",
-          "startLine": 245,
-          "endLine": 260
+          "startLine": 447,
+          "endLine": 462
         }
       ],
-      "calledByFiles": [
-        "tools/build_dist.mjs"
-      ]
+      "calledByFiles": []
     },
     "dirMetrics": {
       "definitions": [
@@ -22163,13 +22365,11 @@
           "file": "tools/build_dist.mjs",
           "kind": "function",
           "signature": "function dirMetrics(dirPath)",
-          "startLine": 341,
-          "endLine": 354
+          "startLine": 511,
+          "endLine": 524
         }
       ],
-      "calledByFiles": [
-        "tools/build_dist.mjs"
-      ]
+      "calledByFiles": []
     },
     "walk": {
       "definitions": [
@@ -22177,15 +22377,15 @@
           "file": "tools/build_dist.mjs",
           "kind": "function",
           "signature": "function walk(p)",
-          "startLine": 344,
-          "endLine": 351
+          "startLine": 514,
+          "endLine": 521
         },
         {
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "function walk(node, prefix = [])",
-          "startLine": 369,
-          "endLine": 385
+          "startLine": 511,
+          "endLine": 527
         },
         {
           "file": "tools/intelligence/qdrant_rag.mjs",
@@ -22204,7 +22404,6 @@
       ],
       "calledByFiles": [
         "tools/audit/security_gate.mjs",
-        "tools/build_dist.mjs",
         "tools/design/token_compiler.mjs",
         "tools/intelligence/codebase_ast_indexer.mjs",
         "tools/intelligence/qdrant_rag.mjs",
@@ -22218,8 +22417,8 @@
           "file": "tools/build_dist.mjs",
           "kind": "function",
           "signature": "export function createZipArchiveFromDir(sourceDir, outZipPath, skipFileNames = new Set()",
-          "startLine": 364,
-          "endLine": 445
+          "startLine": 534,
+          "endLine": 615
         }
       ],
       "calledByFiles": []
@@ -22230,8 +22429,8 @@
           "file": "tools/build_dist.mjs",
           "kind": "function",
           "signature": "function collect(currentDir)",
-          "startLine": 366,
-          "endLine": 377
+          "startLine": 536,
+          "endLine": 547
         }
       ],
       "calledByFiles": []
@@ -22242,8 +22441,8 @@
           "file": "tools/build_dist.mjs",
           "kind": "function",
           "signature": "export function exportStandaloneDeliverable(cfg = projectConfig)",
-          "startLine": 451,
-          "endLine": 615
+          "startLine": 621,
+          "endLine": 785
         }
       ],
       "calledByFiles": []
@@ -22692,7 +22891,7 @@
           "kind": "function",
           "signature": "async function handleConstruir()",
           "startLine": 395,
-          "endLine": 466
+          "endLine": 472
         }
       ],
       "calledByFiles": []
@@ -22703,8 +22902,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function generateExecutiveDecisionBrief(boltRes = null, axRes = null)",
-          "startLine": 468,
-          "endLine": 600
+          "startLine": 474,
+          "endLine": 606
         }
       ],
       "calledByFiles": []
@@ -22715,8 +22914,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleRevisar(args)",
-          "startLine": 602,
-          "endLine": 626
+          "startLine": 608,
+          "endLine": 632
         }
       ],
       "calledByFiles": []
@@ -22727,8 +22926,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEmpaquetar(args = [])",
-          "startLine": 628,
-          "endLine": 661
+          "startLine": 634,
+          "endLine": 667
         }
       ],
       "calledByFiles": []
@@ -22739,8 +22938,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleAprobar(args = [])",
-          "startLine": 663,
-          "endLine": 694
+          "startLine": 669,
+          "endLine": 700
         }
       ],
       "calledByFiles": []
@@ -22751,8 +22950,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleFeedback(args)",
-          "startLine": 696,
-          "endLine": 730
+          "startLine": 702,
+          "endLine": 736
         }
       ],
       "calledByFiles": []
@@ -22763,8 +22962,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleAprender(args)",
-          "startLine": 732,
-          "endLine": 749
+          "startLine": 738,
+          "endLine": 755
         }
       ],
       "calledByFiles": []
@@ -22775,8 +22974,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEvolucionar(args)",
-          "startLine": 751,
-          "endLine": 760
+          "startLine": 757,
+          "endLine": 766
         }
       ],
       "calledByFiles": []
@@ -22787,8 +22986,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleExtraerDiseno(args)",
-          "startLine": 762,
-          "endLine": 774
+          "startLine": 768,
+          "endLine": 780
         }
       ],
       "calledByFiles": []
@@ -22799,8 +22998,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleIngerirLibros(args)",
-          "startLine": 776,
-          "endLine": 792
+          "startLine": 782,
+          "endLine": 798
         }
       ],
       "calledByFiles": []
@@ -22811,8 +23010,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleActualizacionSemanal(args)",
-          "startLine": 794,
-          "endLine": 806
+          "startLine": 800,
+          "endLine": 812
         }
       ],
       "calledByFiles": []
@@ -22823,8 +23022,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEfecto3d(args)",
-          "startLine": 808,
-          "endLine": 823
+          "startLine": 814,
+          "endLine": 829
         }
       ],
       "calledByFiles": []
@@ -22835,8 +23034,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleOptimizar3d(args)",
-          "startLine": 825,
-          "endLine": 841
+          "startLine": 831,
+          "endLine": 847
         }
       ],
       "calledByFiles": []
@@ -22847,8 +23046,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleGcpStatus()",
-          "startLine": 843,
-          "endLine": 859
+          "startLine": 849,
+          "endLine": 865
         }
       ],
       "calledByFiles": []
@@ -22859,8 +23058,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleBenchmark()",
-          "startLine": 861,
-          "endLine": 867
+          "startLine": 867,
+          "endLine": 873
         }
       ],
       "calledByFiles": []
@@ -22871,8 +23070,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleMcpStatus()",
-          "startLine": 869,
-          "endLine": 912
+          "startLine": 875,
+          "endLine": 918
         }
       ],
       "calledByFiles": []
@@ -22883,8 +23082,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleArquitecturaDb(rest = [])",
-          "startLine": 914,
-          "endLine": 943
+          "startLine": 920,
+          "endLine": 949
         }
       ],
       "calledByFiles": []
@@ -22895,8 +23094,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleDestilarCurso(rest = [])",
-          "startLine": 945,
-          "endLine": 967
+          "startLine": 951,
+          "endLine": 973
         }
       ],
       "calledByFiles": []
@@ -22907,8 +23106,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCosecharDocs()",
-          "startLine": 969,
-          "endLine": 984
+          "startLine": 975,
+          "endLine": 990
         }
       ],
       "calledByFiles": []
@@ -22919,8 +23118,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleArquetipo(rest = [])",
-          "startLine": 986,
-          "endLine": 1010
+          "startLine": 992,
+          "endLine": 1016
         }
       ],
       "calledByFiles": []
@@ -22931,8 +23130,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCrearMovil(rest = [])",
-          "startLine": 1012,
-          "endLine": 1036
+          "startLine": 1018,
+          "endLine": 1042
         }
       ],
       "calledByFiles": []
@@ -22943,8 +23142,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEstado()",
-          "startLine": 1038,
-          "endLine": 1086
+          "startLine": 1044,
+          "endLine": 1092
         }
       ],
       "calledByFiles": []
@@ -22955,8 +23154,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleInvestigarReferencia(args = [])",
-          "startLine": 1088,
-          "endLine": 1101
+          "startLine": 1094,
+          "endLine": 1107
         }
       ],
       "calledByFiles": []
@@ -22967,8 +23166,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleFeedbackCliente(args = [])",
-          "startLine": 1103,
-          "endLine": 1135
+          "startLine": 1109,
+          "endLine": 1141
         }
       ],
       "calledByFiles": []
@@ -22979,8 +23178,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleAprobarTicket(args = [])",
-          "startLine": 1137,
-          "endLine": 1167
+          "startLine": 1143,
+          "endLine": 1173
         }
       ],
       "calledByFiles": []
@@ -22991,8 +23190,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCambioIncremental(args = [])",
-          "startLine": 1169,
-          "endLine": 1235
+          "startLine": 1175,
+          "endLine": 1241
         }
       ],
       "calledByFiles": []
@@ -23003,8 +23202,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleAuditarHarness(args = [])",
-          "startLine": 1237,
-          "endLine": 1245
+          "startLine": 1243,
+          "endLine": 1251
         }
       ],
       "calledByFiles": []
@@ -23015,8 +23214,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCrearIntroVideo(args = [])",
-          "startLine": 1247,
-          "endLine": 1274
+          "startLine": 1253,
+          "endLine": 1280
         }
       ],
       "calledByFiles": []
@@ -23027,8 +23226,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCrearAudio(args = [])",
-          "startLine": 1276,
-          "endLine": 1335
+          "startLine": 1282,
+          "endLine": 1341
         }
       ],
       "calledByFiles": []
@@ -23039,8 +23238,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "export async function handleAterrizar(args = [])",
-          "startLine": 1345,
-          "endLine": 1485
+          "startLine": 1351,
+          "endLine": 1491
         }
       ],
       "calledByFiles": []
@@ -23051,8 +23250,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function main()",
-          "startLine": 1487,
-          "endLine": 1590
+          "startLine": 1493,
+          "endLine": 1596
         },
         {
           "file": "tools/factory.mjs",
@@ -23411,8 +23610,32 @@
           "file": "tools/design/build_vanilla_primitives.mjs",
           "kind": "constant",
           "signature": "export const UNIVERSAL_UI_PRIMITIVES_CSS",
-          "startLine": 234,
-          "endLine": 234
+          "startLine": 233,
+          "endLine": 233
+        }
+      ],
+      "calledByFiles": []
+    },
+    "HERO_ARCHITECTURE_DESCRIPTORS": {
+      "definitions": [
+        {
+          "file": "tools/design/build_vanilla_primitives.mjs",
+          "kind": "constant",
+          "signature": "export const HERO_ARCHITECTURE_DESCRIPTORS",
+          "startLine": 608,
+          "endLine": 649
+        }
+      ],
+      "calledByFiles": []
+    },
+    "buildInteractiveIndustryModule": {
+      "definitions": [
+        {
+          "file": "tools/design/build_vanilla_primitives.mjs",
+          "kind": "function",
+          "signature": "export function buildInteractiveIndustryModule(industryInput = 'saas', brandName = 'Agencia Alfa')",
+          "startLine": 655,
+          "endLine": 953
         }
       ],
       "calledByFiles": []
@@ -23423,12 +23646,24 @@
           "file": "tools/design/build_vanilla_primitives.mjs",
           "kind": "function",
           "signature": "export function buildVanillaPrimitives(projectInput = '', morphologyOptions = null)",
-          "startLine": 407,
-          "endLine": 443
+          "startLine": 955,
+          "endLine": 1002
+        }
+      ],
+      "calledByFiles": []
+    },
+    "applyBespokeMorphologyToProjectDom": {
+      "definitions": [
+        {
+          "file": "tools/design/build_vanilla_primitives.mjs",
+          "kind": "function",
+          "signature": "export function applyBespokeMorphologyToProjectDom(projectInput = '', customOptions = {})",
+          "startLine": 1010,
+          "endLine": 1010
         }
       ],
       "calledByFiles": [
-        "tools/design/build_vanilla_primitives.mjs"
+        "tools/build_dist.mjs"
       ]
     },
     "extractDesignFromUrl": {
@@ -23570,7 +23805,6 @@
       "calledByFiles": [
         "tools/design/bespoke_morphology_composer.mjs",
         "tools/design/industry_archetype_matrix.mjs",
-        "tools/media/programmatic_video_forge.mjs",
         "tools/media/sonic_and_music_forge.mjs",
         "tools/mobile/mobile_target_forge.mjs",
         "tools/orchestrator/client_interview_gate.mjs",
@@ -23693,7 +23927,6 @@
         }
       ],
       "calledByFiles": [
-        "tools/build_dist.mjs",
         "tools/design/og_image_generator.mjs"
       ]
     },
@@ -23781,7 +24014,9 @@
           "endLine": 284
         }
       ],
-      "calledByFiles": []
+      "calledByFiles": [
+        "tools/build_dist.mjs"
+      ]
     },
     "optimizeGlbAsset": {
       "definitions": [
@@ -23915,20 +24150,6 @@
           "endLine": 178
         }
       ],
-      "calledByFiles": [
-        "tools/media/programmatic_video_forge.mjs"
-      ]
-    },
-    "buildDtcgTokensObject": {
-      "definitions": [
-        {
-          "file": "tools/design/token_compiler.mjs",
-          "kind": "function",
-          "signature": "export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento', brandLock = null, gamutMaskType = 'atmospheric-analogous')",
-          "startLine": 180,
-          "endLine": 338
-        }
-      ],
       "calledByFiles": []
     },
     "resolveDtcgAliases": {
@@ -23937,8 +24158,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "export function resolveDtcgAliases(dtcgRoot)",
-          "startLine": 343,
-          "endLine": 388
+          "startLine": 485,
+          "endLine": 530
         }
       ],
       "calledByFiles": [
@@ -23951,8 +24172,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "function lookupPath(pathStr)",
-          "startLine": 344,
-          "endLine": 352
+          "startLine": 486,
+          "endLine": 494
         }
       ],
       "calledByFiles": [
@@ -23965,8 +24186,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "function resolveValue(val, visited = new Set()",
-          "startLine": 354,
-          "endLine": 366
+          "startLine": 496,
+          "endLine": 508
         }
       ],
       "calledByFiles": [
@@ -23979,8 +24200,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "export function renderDesignTokensCss(dtcg)",
-          "startLine": 390,
-          "endLine": 404
+          "startLine": 532,
+          "endLine": 546
         }
       ],
       "calledByFiles": []
@@ -23991,8 +24212,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "export function compileDesignTokens(options = {})",
-          "startLine": 785,
-          "endLine": 785
+          "startLine": 927,
+          "endLine": 927
         }
       ],
       "calledByFiles": [
@@ -24006,8 +24227,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "function compileMultiTargetMobileTokensSync(rootDir, dtcg, writtenFiles = [])",
-          "startLine": 903,
-          "endLine": 927
+          "startLine": 1082,
+          "endLine": 1106
         }
       ],
       "calledByFiles": []
@@ -24018,8 +24239,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "export function extractOklchPaletteFromBrandImage(imagePathOrBuffer = 'brand-reference.png')",
-          "startLine": 933,
-          "endLine": 966
+          "startLine": 1112,
+          "endLine": 1145
         }
       ],
       "calledByFiles": []
@@ -24030,8 +24251,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "export function runTokenCompilerCli()",
-          "startLine": 968,
-          "endLine": 982
+          "startLine": 1147,
+          "endLine": 1161
         }
       ],
       "calledByFiles": [
@@ -24171,9 +24392,7 @@
           "endLine": 147
         }
       ],
-      "calledByFiles": [
-        "tools/feedback/client_feedback_triage_agent.mjs"
-      ]
+      "calledByFiles": []
     },
     "classifyClientTicketIntent": {
       "definitions": [
@@ -24187,17 +24406,19 @@
       ],
       "calledByFiles": []
     },
-    "classifyCommercialAndTechnicalScope": {
+    "loadProjectExplicitNonGoals": {
       "definitions": [
         {
           "file": "tools/feedback/client_feedback_triage_agent.mjs",
           "kind": "function",
-          "signature": "export function classifyCommercialAndTechnicalScope(sanitizedMessage = '', consoleErrors = [])",
-          "startLine": 223,
-          "endLine": 251
+          "signature": "export function loadProjectExplicitNonGoals(projectSlug = '')",
+          "startLine": 220,
+          "endLine": 250
         }
       ],
-      "calledByFiles": []
+      "calledByFiles": [
+        "tools/feedback/client_feedback_triage_agent.mjs"
+      ]
     },
     "diagnoseAstRootCauseReadOnly": {
       "definitions": [
@@ -24205,8 +24426,8 @@
           "file": "tools/feedback/client_feedback_triage_agent.mjs",
           "kind": "function",
           "signature": "export function diagnoseAstRootCauseReadOnly(projectSlug = 'agencia-alfa', sectionSelector = '#hero', message = '')",
-          "startLine": 257,
-          "endLine": 293
+          "startLine": 323,
+          "endLine": 359
         }
       ],
       "calledByFiles": []
@@ -24217,8 +24438,8 @@
           "file": "tools/feedback/client_feedback_triage_agent.mjs",
           "kind": "function",
           "signature": "function readFeedbackLedger()",
-          "startLine": 368,
-          "endLine": 376
+          "startLine": 434,
+          "endLine": 442
         }
       ],
       "calledByFiles": []
@@ -24229,8 +24450,8 @@
           "file": "tools/feedback/client_feedback_triage_agent.mjs",
           "kind": "function",
           "signature": "function writeFeedbackLedger(ledger)",
-          "startLine": 378,
-          "endLine": 382
+          "startLine": 444,
+          "endLine": 448
         }
       ],
       "calledByFiles": []
@@ -24241,8 +24462,8 @@
           "file": "tools/feedback/client_feedback_triage_agent.mjs",
           "kind": "function",
           "signature": "export async function analyzeTicketAndProposeSpec(ticketInput = {}, options = {})",
-          "startLine": 390,
-          "endLine": 390
+          "startLine": 456,
+          "endLine": 456
         }
       ],
       "calledByFiles": []
@@ -24253,8 +24474,8 @@
           "file": "tools/feedback/client_feedback_triage_agent.mjs",
           "kind": "function",
           "signature": "export async function executeApprovedTicketFix(ticketId, options = {})",
-          "startLine": 637,
-          "endLine": 637
+          "startLine": 703,
+          "endLine": 703
         }
       ],
       "calledByFiles": []
@@ -24265,8 +24486,8 @@
           "file": "tools/feedback/client_feedback_triage_agent.mjs",
           "kind": "function",
           "signature": "export async function triageClientFeedbackTicket(ticketInput = {}, options = {})",
-          "startLine": 795,
-          "endLine": 795
+          "startLine": 861,
+          "endLine": 861
         }
       ],
       "calledByFiles": []
@@ -24277,47 +24498,11 @@
           "file": "tools/feedback/client_feedback_triage_agent.mjs",
           "kind": "function",
           "signature": "export async function runClientFeedbackTriageSelfTest()",
-          "startLine": 809,
-          "endLine": 942
+          "startLine": 875,
+          "endLine": 1021
         }
       ],
       "calledByFiles": []
-    },
-    "getWorkspaceRoot": {
-      "definitions": [
-        {
-          "file": "tools/guardrails/check-console-log.js",
-          "kind": "function",
-          "signature": "function getWorkspaceRoot()",
-          "startLine": 11,
-          "endLine": 22
-        },
-        {
-          "file": "tools/guardrails/config-protection.js",
-          "kind": "function",
-          "signature": "function getWorkspaceRoot()",
-          "startLine": 11,
-          "endLine": 22
-        }
-      ],
-      "calledByFiles": [
-        "tools/guardrails/check-console-log.js",
-        "tools/guardrails/config-protection.js"
-      ]
-    },
-    "scanDir": {
-      "definitions": [
-        {
-          "file": "tools/guardrails/check-console-log.js",
-          "kind": "function",
-          "signature": "function scanDir(dir)",
-          "startLine": 40,
-          "endLine": 67
-        }
-      ],
-      "calledByFiles": [
-        "tools/guardrails/check-console-log.js"
-      ]
     },
     "BENCHMARK_HISTORY_PATH": {
       "definitions": [
@@ -24805,8 +24990,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export async function runBestOfNSpeculative(candidates = ['bento-oklch-v1', 'linear-dark-v2'], taskName = 'hero-ui-component')",
-          "startLine": 889,
-          "endLine": 953
+          "startLine": 905,
+          "endLine": 969
         }
       ],
       "calledByFiles": [
@@ -24819,8 +25004,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export function runCouncilDeliberation(decisionTopic = 'Architecture & UI Strategy')",
-          "startLine": 960,
-          "endLine": 992
+          "startLine": 976,
+          "endLine": 1008
         }
       ],
       "calledByFiles": []
@@ -24831,8 +25016,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export function runArenaTournament(taskPrompt = 'High-converting Hero & Bento Grid', candidateCards = [])",
-          "startLine": 1000,
-          "endLine": 1028
+          "startLine": 1016,
+          "endLine": 1044
         }
       ],
       "calledByFiles": []
@@ -24899,80 +25084,6 @@
           "signature": "export function runNegativeSelfTest()",
           "startLine": 376,
           "endLine": 430
-        }
-      ],
-      "calledByFiles": []
-    },
-    "CANON_PSYCHOACOUSTICS_PATH": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/audiovisual_psychoacoustics_corpus_builder.mjs",
-          "kind": "constant",
-          "signature": "export const CANON_PSYCHOACOUSTICS_PATH",
-          "startLine": 26,
-          "endLine": 26
-        }
-      ],
-      "calledByFiles": []
-    },
-    "OFFICIAL_AUDIOVISUAL_DSP_URLS": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/audiovisual_psychoacoustics_corpus_builder.mjs",
-          "kind": "constant",
-          "signature": "export const OFFICIAL_AUDIOVISUAL_DSP_URLS",
-          "startLine": 33,
-          "endLine": 33
-        }
-      ],
-      "calledByFiles": []
-    },
-    "stripHtmlToCleanText": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/audiovisual_psychoacoustics_corpus_builder.mjs",
-          "kind": "function",
-          "signature": "function stripHtmlToCleanText(html = '')",
-          "startLine": 139,
-          "endLine": 155
-        }
-      ],
-      "calledByFiles": [
-        "tools/intelligence/audiovisual_psychoacoustics_corpus_builder.mjs"
-      ]
-    },
-    "harvestOfficialAudiovisualDspSources": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/audiovisual_psychoacoustics_corpus_builder.mjs",
-          "kind": "function",
-          "signature": "export async function harvestOfficialAudiovisualDspSources(options = {})",
-          "startLine": 161,
-          "endLine": 161
-        }
-      ],
-      "calledByFiles": []
-    },
-    "buildPsychoacousticsCanonMarkdown": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/audiovisual_psychoacoustics_corpus_builder.mjs",
-          "kind": "function",
-          "signature": "export function buildPsychoacousticsCanonMarkdown(harvestSummary)",
-          "startLine": 241,
-          "endLine": 409
-        }
-      ],
-      "calledByFiles": []
-    },
-    "buildAndIndexAudiovisualPsychoacousticsCorpus": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/audiovisual_psychoacoustics_corpus_builder.mjs",
-          "kind": "function",
-          "signature": "export async function buildAndIndexAudiovisualPsychoacousticsCorpus(options = {})",
-          "startLine": 415,
-          "endLine": 415
         }
       ],
       "calledByFiles": []
@@ -25495,6 +25606,66 @@
       ],
       "calledByFiles": []
     },
+    "escapeToonCell": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/context_budget.mjs",
+          "kind": "function",
+          "signature": "function escapeToonCell(val)",
+          "startLine": 668,
+          "endLine": 681
+        }
+      ],
+      "calledByFiles": []
+    },
+    "unescapeToonCell": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/context_budget.mjs",
+          "kind": "function",
+          "signature": "function unescapeToonCell(cell)",
+          "startLine": 683,
+          "endLine": 707
+        }
+      ],
+      "calledByFiles": []
+    },
+    "splitEscapedPipeRow": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/context_budget.mjs",
+          "kind": "function",
+          "signature": "function splitEscapedPipeRow(line)",
+          "startLine": 709,
+          "endLine": 725
+        }
+      ],
+      "calledByFiles": []
+    },
+    "serializeToToonFormat": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/context_budget.mjs",
+          "kind": "function",
+          "signature": "export function serializeToToonFormat(obj)",
+          "startLine": 727,
+          "endLine": 767
+        }
+      ],
+      "calledByFiles": []
+    },
+    "parseFromToonFormat": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/context_budget.mjs",
+          "kind": "function",
+          "signature": "export function parseFromToonFormat(toonInput)",
+          "startLine": 769,
+          "endLine": 835
+        }
+      ],
+      "calledByFiles": []
+    },
     "INBOX_COURSES_DIR": {
       "definitions": [
         {
@@ -25605,9 +25776,7 @@
           "endLine": 273
         }
       ],
-      "calledByFiles": [
-        "tools/intelligence/audiovisual_psychoacoustics_corpus_builder.mjs"
-      ]
+      "calledByFiles": []
     },
     "parseLocalSubtitleFileOpenSubs": {
       "definitions": [
@@ -26321,8 +26490,7 @@
         }
       ],
       "calledByFiles": [
-        "tools/audit/mcp_security_auditor.mjs",
-        "tools/intelligence/mcp_omni_rag_server.mjs"
+        "tools/audit/mcp_security_auditor.mjs"
       ]
     },
     "sanitizeMcpRetrievedFragment": {
@@ -26373,14 +26541,38 @@
       ],
       "calledByFiles": []
     },
+    "expandChunkToParentMarkdownSection": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/mcp_omni_rag_server.mjs",
+          "kind": "function",
+          "signature": "export function expandChunkToParentMarkdownSection(chunk = {}, maxChars = 2200)",
+          "startLine": 616,
+          "endLine": 616
+        }
+      ],
+      "calledByFiles": []
+    },
+    "executeRagFusionRrfAndCrag": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/mcp_omni_rag_server.mjs",
+          "kind": "function",
+          "signature": "export async function executeRagFusionRrfAndCrag(query = '', options = {})",
+          "startLine": 647,
+          "endLine": 647
+        }
+      ],
+      "calledByFiles": []
+    },
     "validateMcpRequestSecurity": {
       "definitions": [
         {
           "file": "tools/intelligence/mcp_omni_rag_server.mjs",
           "kind": "function",
           "signature": "export function validateMcpRequestSecurity(req = {})",
-          "startLine": 620,
-          "endLine": 620
+          "startLine": 767,
+          "endLine": 767
         }
       ],
       "calledByFiles": []
@@ -26391,8 +26583,8 @@
           "file": "tools/intelligence/mcp_omni_rag_server.mjs",
           "kind": "function",
           "signature": "async function executeSingleMcpTool(toolName, args = {}, traceId = generateCsprngSessionId()",
-          "startLine": 703,
-          "endLine": 703
+          "startLine": 850,
+          "endLine": 850
         }
       ],
       "calledByFiles": []
@@ -26403,8 +26595,8 @@
           "file": "tools/intelligence/mcp_omni_rag_server.mjs",
           "kind": "function",
           "signature": "function sendResponse(id, result)",
-          "startLine": 991,
-          "endLine": 993
+          "startLine": 1150,
+          "endLine": 1152
         }
       ],
       "calledByFiles": []
@@ -26415,8 +26607,8 @@
           "file": "tools/intelligence/mcp_omni_rag_server.mjs",
           "kind": "function",
           "signature": "function sendError(id, code, message)",
-          "startLine": 995,
-          "endLine": 997
+          "startLine": 1154,
+          "endLine": 1156
         }
       ],
       "calledByFiles": []
@@ -26427,8 +26619,8 @@
           "file": "tools/intelligence/mcp_omni_rag_server.mjs",
           "kind": "function",
           "signature": "export function startMcpServer()",
-          "startLine": 999,
-          "endLine": 1089
+          "startLine": 1158,
+          "endLine": 1248
         }
       ],
       "calledByFiles": [
@@ -26551,9 +26743,7 @@
           "endLine": 120
         }
       ],
-      "calledByFiles": [
-        "tools/intelligence/audiovisual_psychoacoustics_corpus_builder.mjs"
-      ]
+      "calledByFiles": []
     },
     "buildMotion3dCanonMarkdown": {
       "definitions": [
@@ -27139,14 +27329,26 @@
       ],
       "calledByFiles": []
     },
+    "deduplicateAndVacuumSqliteFts5": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/rag_pipeline.mjs",
+          "kind": "function",
+          "signature": "export function deduplicateAndVacuumSqliteFts5()",
+          "startLine": 489,
+          "endLine": 530
+        }
+      ],
+      "calledByFiles": []
+    },
     "buildOrOpenSqliteFts5Index": {
       "definitions": [
         {
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function buildOrOpenSqliteFts5Index(chunks, forceRebuild = false)",
-          "startLine": 488,
-          "endLine": 554
+          "startLine": 536,
+          "endLine": 621
         }
       ],
       "calledByFiles": []
@@ -27157,8 +27359,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function querySqliteFts5(sqliteDb, chunkMap, terms, limit = 20)",
-          "startLine": 564,
-          "endLine": 613
+          "startLine": 631,
+          "endLine": 680
         }
       ],
       "calledByFiles": []
@@ -27169,8 +27371,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function buildMiniSearchInstance(chunks)",
-          "startLine": 615,
-          "endLine": 633
+          "startLine": 682,
+          "endLine": 700
         }
       ],
       "calledByFiles": []
@@ -27181,8 +27383,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function buildChunkMap(chunks)",
-          "startLine": 635,
-          "endLine": 641
+          "startLine": 702,
+          "endLine": 708
         }
       ],
       "calledByFiles": []
@@ -27193,8 +27395,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function getOrBuildMiniSearchIndex(force = false)",
-          "startLine": 646,
-          "endLine": 709
+          "startLine": 713,
+          "endLine": 776
         }
       ],
       "calledByFiles": [
@@ -27208,8 +27410,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function capResultsPerFile(items, maxPerFile = 2, limit = 20)",
-          "startLine": 714,
-          "endLine": 728
+          "startLine": 781,
+          "endLine": 795
         }
       ],
       "calledByFiles": []
@@ -27220,8 +27422,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function runLocalSemanticVectorRanker(chunks, queryString, limit = 20)",
-          "startLine": 734,
-          "endLine": 861
+          "startLine": 801,
+          "endLine": 928
         }
       ],
       "calledByFiles": []
@@ -27232,8 +27434,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "async function runLocalOnnxCrossEncoderRerank(query, candidates, limit = 8)",
-          "startLine": 868,
-          "endLine": 915
+          "startLine": 935,
+          "endLine": 982
         }
       ],
       "calledByFiles": []
@@ -27244,8 +27446,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function reciprocalRankFusion(rankedLists, k = 60, maxPerFile = 2)",
-          "startLine": 921,
-          "endLine": 956
+          "startLine": 988,
+          "endLine": 1023
         }
       ],
       "calledByFiles": []
@@ -27256,8 +27458,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export async function queryKnowledge(query, limit = 8, options = {})",
-          "startLine": 967,
-          "endLine": 967
+          "startLine": 1034,
+          "endLine": 1034
         }
       ],
       "calledByFiles": [
@@ -27271,8 +27473,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function queryCodeGraph(symbolOrFileQuery, limit = 8)",
-          "startLine": 1160,
-          "endLine": 1185
+          "startLine": 1227,
+          "endLine": 1252
         }
       ],
       "calledByFiles": []
@@ -27283,8 +27485,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export async function synthesizeAnswer(question, knowledgeList = [])",
-          "startLine": 1190,
-          "endLine": 1252
+          "startLine": 1257,
+          "endLine": 1319
         }
       ],
       "calledByFiles": []
@@ -27295,8 +27497,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export async function getClusterStats()",
-          "startLine": 1254,
-          "endLine": 1287
+          "startLine": 1321,
+          "endLine": 1354
         }
       ],
       "calledByFiles": []
@@ -27321,13 +27523,6 @@
           "signature": "export const LOCAL_VAULT_REGISTRY_PATH",
           "startLine": 29,
           "endLine": 29
-        },
-        {
-          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
-          "kind": "constant",
-          "signature": "export const LOCAL_VAULT_REGISTRY_PATH",
-          "startLine": 64,
-          "endLine": 64
         }
       ],
       "calledByFiles": []
@@ -27585,126 +27780,6 @@
           "signature": "export function getSkillQualitySummary()",
           "startLine": 388,
           "endLine": 416
-        }
-      ],
-      "calledByFiles": []
-    },
-    "CANON_OUTPUT_PATH": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
-          "kind": "constant",
-          "signature": "export const CANON_OUTPUT_PATH",
-          "startLine": 65,
-          "endLine": 65
-        }
-      ],
-      "calledByFiles": []
-    },
-    "CANON_JEV_BAML_OUTPUT_PATH": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
-          "kind": "constant",
-          "signature": "export const CANON_JEV_BAML_OUTPUT_PATH",
-          "startLine": 71,
-          "endLine": 71
-        }
-      ],
-      "calledByFiles": []
-    },
-    "SQLITE_FTS5_PATH": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
-          "kind": "constant",
-          "signature": "export const SQLITE_FTS5_PATH",
-          "startLine": 77,
-          "endLine": 77
-        }
-      ],
-      "calledByFiles": []
-    },
-    "CONTEXT_AND_HARNESS_VAULT_REPOS": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
-          "kind": "constant",
-          "signature": "export const CONTEXT_AND_HARNESS_VAULT_REPOS",
-          "startLine": 79,
-          "endLine": 79
-        }
-      ],
-      "calledByFiles": []
-    },
-    "OFFICIAL_ACADEMIC_COURSE_REPOS": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
-          "kind": "constant",
-          "signature": "export const OFFICIAL_ACADEMIC_COURSE_REPOS",
-          "startLine": 100,
-          "endLine": 100
-        }
-      ],
-      "calledByFiles": []
-    },
-    "OFFICIAL_YOUTUBE_FACTORY_TALKS_URLS": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
-          "kind": "constant",
-          "signature": "export const OFFICIAL_YOUTUBE_FACTORY_TALKS_URLS",
-          "startLine": 151,
-          "endLine": 151
-        }
-      ],
-      "calledByFiles": []
-    },
-    "ensureAcademicCourseReposAndRegisterVault": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
-          "kind": "function",
-          "signature": "export function ensureAcademicCourseReposAndRegisterVault()",
-          "startLine": 558,
-          "endLine": 644
-        }
-      ],
-      "calledByFiles": []
-    },
-    "ensureContextAndHarnessReposAndRegisterVault": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
-          "kind": "function",
-          "signature": "export function ensureContextAndHarnessReposAndRegisterVault()",
-          "startLine": 651,
-          "endLine": 749
-        }
-      ],
-      "calledByFiles": []
-    },
-    "indexCanonInSqliteFts5": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
-          "kind": "function",
-          "signature": "export function indexCanonInSqliteFts5(markdownContent = '', extraCanonFiles = [])",
-          "startLine": 896,
-          "endLine": 966
-        }
-      ],
-      "calledByFiles": []
-    },
-    "runSoftwareFactoryCurriculumIngestion": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
-          "kind": "function",
-          "signature": "export function runSoftwareFactoryCurriculumIngestion()",
-          "startLine": 971,
-          "endLine": 1106
         }
       ],
       "calledByFiles": []
@@ -28619,78 +28694,6 @@
         "tools/media/sonic_and_music_forge.mjs"
       ]
     },
-    "INIGO_QUILEZ_COSINE_PALETTES": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/visual_science_corpus_builder.mjs",
-          "kind": "constant",
-          "signature": "export const INIGO_QUILEZ_COSINE_PALETTES",
-          "startLine": 21,
-          "endLine": 78
-        }
-      ],
-      "calledByFiles": []
-    },
-    "buildColorimetryTreatise": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/visual_science_corpus_builder.mjs",
-          "kind": "function",
-          "signature": "function buildColorimetryTreatise()",
-          "startLine": 80,
-          "endLine": 160
-        }
-      ],
-      "calledByFiles": []
-    },
-    "buildPbrAndMotionTreatise": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/visual_science_corpus_builder.mjs",
-          "kind": "function",
-          "signature": "function buildPbrAndMotionTreatise()",
-          "startLine": 162,
-          "endLine": 214
-        }
-      ],
-      "calledByFiles": []
-    },
-    "buildTufteAndTypographyTreatise": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/visual_science_corpus_builder.mjs",
-          "kind": "function",
-          "signature": "function buildTufteAndTypographyTreatise()",
-          "startLine": 216,
-          "endLine": 261
-        }
-      ],
-      "calledByFiles": []
-    },
-    "buildMobileHigM3Treatise": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/visual_science_corpus_builder.mjs",
-          "kind": "function",
-          "signature": "function buildMobileHigM3Treatise()",
-          "startLine": 263,
-          "endLine": 309
-        }
-      ],
-      "calledByFiles": []
-    },
-    "buildVisualScienceCorpus": {
-      "definitions": [
-        {
-          "file": "tools/intelligence/visual_science_corpus_builder.mjs",
-          "kind": "function",
-          "signature": "export function buildVisualScienceCorpus()",
-          "startLine": 311,
-          "endLine": 350
-        }
-      ],
-      "calledByFiles": []
-    },
     "TRUSTED_PRIMARY_SOURCES": {
       "definitions": [
         {
@@ -28940,7 +28943,6 @@
       "calledByFiles": [
         "tools/intelligence/codebase_ast_indexer.mjs",
         "tools/lib/project_loader.mjs",
-        "tools/media/programmatic_video_forge.mjs",
         "tools/media/sonic_and_music_forge.mjs"
       ]
     },
@@ -29037,7 +29039,6 @@
         "tools/audit/visual_audit.mjs",
         "tools/audit/visual_regression.mjs",
         "tools/build_dist.mjs",
-        "tools/design/build_vanilla_primitives.mjs",
         "tools/design/og_image_generator.mjs",
         "tools/design/shader_and_3d_forge.mjs",
         "tools/factory.mjs",
@@ -29045,6 +29046,7 @@
         "tools/intelligence/eval_matrix.mjs",
         "tools/intelligence/spec_generator.mjs",
         "tools/project_loader.mjs",
+        "tools/seo_smoke.mjs",
         "tools/serve_site.mjs"
       ]
     },
@@ -29071,7 +29073,6 @@
         }
       ],
       "calledByFiles": [
-        "tools/intelligence/software_factory_curriculum_ingester.mjs",
         "tools/orchestrator/adaptive_depth_router.mjs"
       ]
     },
@@ -29180,9 +29181,7 @@
           "endLine": 116
         }
       ],
-      "calledByFiles": [
-        "tools/media/programmatic_video_forge.mjs"
-      ]
+      "calledByFiles": []
     },
     "generateParametricIntroChoreography": {
       "definitions": [
@@ -29208,9 +29207,7 @@
           "endLine": 218
         }
       ],
-      "calledByFiles": [
-        "tools/media/programmatic_video_forge.mjs"
-      ]
+      "calledByFiles": []
     },
     "ensureProjectVectorLogoSvg": {
       "definitions": [
@@ -29222,9 +29219,7 @@
           "endLine": 223
         }
       ],
-      "calledByFiles": [
-        "tools/media/programmatic_video_forge.mjs"
-      ]
+      "calledByFiles": []
     },
     "runProgrammaticVideoForgeSelfTest": {
       "definitions": [
@@ -29232,8 +29227,8 @@
           "file": "tools/media/programmatic_video_forge.mjs",
           "kind": "function",
           "signature": "export async function runProgrammaticVideoForgeSelfTest()",
-          "startLine": 500,
-          "endLine": 547
+          "startLine": 705,
+          "endLine": 752
         }
       ],
       "calledByFiles": []
@@ -29408,8 +29403,8 @@
           "file": "tools/mobile/mobile_target_forge.mjs",
           "kind": "function",
           "signature": "export function runMobileTargetForgeSelfTest()",
-          "startLine": 523,
-          "endLine": 581
+          "startLine": 546,
+          "endLine": 604
         }
       ],
       "calledByFiles": []
@@ -29438,7 +29433,6 @@
       ],
       "calledByFiles": [
         "tools/audit/harness_doctor_audit.mjs",
-        "tools/intelligence/software_factory_curriculum_ingester.mjs",
         "tools/orchestrator/adaptive_depth_router.mjs"
       ]
     },
@@ -29561,14 +29555,26 @@
       ],
       "calledByFiles": []
     },
+    "parseEditedSpecMarkdownIntoState": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/client_interview_gate.mjs",
+          "kind": "function",
+          "signature": "export function parseEditedSpecMarkdownIntoState(mdContent = '', currentState = {})",
+          "startLine": 615,
+          "endLine": 615
+        }
+      ],
+      "calledByFiles": []
+    },
     "compileSpecFromInterview": {
       "definitions": [
         {
           "file": "tools/orchestrator/client_interview_gate.mjs",
           "kind": "function",
           "signature": "export function compileSpecFromInterview(slug = 'agencia-alfa', options = {})",
-          "startLine": 617,
-          "endLine": 617
+          "startLine": 814,
+          "endLine": 814
         }
       ],
       "calledByFiles": []
@@ -29579,8 +29585,8 @@
           "file": "tools/orchestrator/client_interview_gate.mjs",
           "kind": "function",
           "signature": "export function runClientInterviewGateSelfTest()",
-          "startLine": 949,
-          "endLine": 1076
+          "startLine": 1191,
+          "endLine": 1327
         }
       ],
       "calledByFiles": []
@@ -29734,7 +29740,6 @@
         }
       ],
       "calledByFiles": [
-        "tools/intelligence/software_factory_curriculum_ingester.mjs",
         "tools/orchestrator/humanlayer_rpi_gate.mjs"
       ]
     },
@@ -29867,14 +29872,26 @@
       ],
       "calledByFiles": []
     },
+    "parseEditedPrdMarkdownIntoState": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/lean_prd_architect.mjs",
+          "kind": "function",
+          "signature": "export function parseEditedPrdMarkdownIntoState(mdContent = '', currentState = {})",
+          "startLine": 553,
+          "endLine": 553
+        }
+      ],
+      "calledByFiles": []
+    },
     "compilePrdLeanAndBrandLock": {
       "definitions": [
         {
           "file": "tools/orchestrator/lean_prd_architect.mjs",
           "kind": "function",
           "signature": "export function compilePrdLeanAndBrandLock(slug = 'agencia-alfa', options = {})",
-          "startLine": 552,
-          "endLine": 552
+          "startLine": 737,
+          "endLine": 737
         }
       ],
       "calledByFiles": [
@@ -29887,8 +29904,8 @@
           "file": "tools/orchestrator/lean_prd_architect.mjs",
           "kind": "function",
           "signature": "export function runLeanPrdArchitectSelfTest()",
-          "startLine": 739,
-          "endLine": 821
+          "startLine": 931,
+          "endLine": 1028
         }
       ],
       "calledByFiles": []
@@ -30096,6 +30113,20 @@
         }
       ],
       "calledByFiles": []
+    },
+    "runSeoAndLlmsSmokeAudit": {
+      "definitions": [
+        {
+          "file": "tools/seo_smoke.mjs",
+          "kind": "function",
+          "signature": "export function runSeoAndLlmsSmokeAudit(projectInput = '')",
+          "startLine": 18,
+          "endLine": 54
+        }
+      ],
+      "calledByFiles": [
+        "tools/seo_smoke.mjs"
+      ]
     }
   }
 }

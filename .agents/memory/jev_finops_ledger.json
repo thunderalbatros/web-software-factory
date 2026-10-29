@@ -5,14 +5,194 @@
   "currentDate": "2026-10-29",
   "dailySpendUsd": 0,
   "totalHistoricalSpendUsd": 0,
-  "totalApiCalls": 10,
-  "totalCacheHits": 2,
-  "totalCacheSavedUsd": 0.003,
+  "totalApiCalls": 25,
+  "totalCacheHits": 5,
+  "totalCacheSavedUsd": 0.0075,
   "lastProviderMode": "LOCAL_FALLBACK_NO_JEV_API_KEY",
   "jevApiBaseUrl": "https://api.boundaryml.com/v1/jev/evaluate",
   "jevModel": "jev-judge-2026-v1",
-  "updatedAt": "2026-10-29T13:51:57.557Z",
+  "updatedAt": "2026-10-29T17:45:59.660Z",
   "recentEvents": [
+    {
+      "timestamp": "2026-10-29T17:45:59.660Z",
+      "predicateId": "jev-cross-trace-friction-miner",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 4.324,
+      "tokensUsed": 139,
+      "costUsd": 0,
+      "choice": "FRICTION_CLUSTER_IDENTIFIED"
+    },
+    {
+      "timestamp": "2026-10-29T17:45:59.652Z",
+      "predicateId": "jev-redundant-test-detector",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 2.357,
+      "tokensUsed": 117,
+      "costUsd": 0,
+      "choice": "REDUNDANT_TAUTOLOGICAL_TEST"
+    },
+    {
+      "timestamp": "2026-10-29T17:45:59.647Z",
+      "predicateId": "jev-spec-business-invariant-alignment",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 2.464,
+      "tokensUsed": 138,
+      "costUsd": 0,
+      "choice": "ALIGNED_WITH_SPEC"
+    },
+    {
+      "timestamp": "2026-10-29T17:45:59.641Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 3.034,
+      "tokensUsed": 98,
+      "costUsd": 0,
+      "choice": "NOUL"
+    },
+    {
+      "timestamp": "2026-10-29T17:45:59.632Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": true,
+      "latencyMs": 0.142,
+      "tokensUsed": 0,
+      "costUsd": 0,
+      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
+    },
+    {
+      "timestamp": "2026-10-29T17:45:59.628Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 8.008,
+      "tokensUsed": 134,
+      "costUsd": 0,
+      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
+    },
+    {
+      "timestamp": "2026-10-29T17:38:16.811Z",
+      "predicateId": "jev-cross-trace-friction-miner",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 4.316,
+      "tokensUsed": 139,
+      "costUsd": 0,
+      "choice": "FRICTION_CLUSTER_IDENTIFIED"
+    },
+    {
+      "timestamp": "2026-10-29T17:38:16.801Z",
+      "predicateId": "jev-redundant-test-detector",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 4.437,
+      "tokensUsed": 117,
+      "costUsd": 0,
+      "choice": "REDUNDANT_TAUTOLOGICAL_TEST"
+    },
+    {
+      "timestamp": "2026-10-29T17:38:16.790Z",
+      "predicateId": "jev-spec-business-invariant-alignment",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 3.121,
+      "tokensUsed": 138,
+      "costUsd": 0,
+      "choice": "ALIGNED_WITH_SPEC"
+    },
+    {
+      "timestamp": "2026-10-29T17:38:16.781Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 3.872,
+      "tokensUsed": 98,
+      "costUsd": 0,
+      "choice": "NOUL"
+    },
+    {
+      "timestamp": "2026-10-29T17:38:16.771Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": true,
+      "latencyMs": 0.203,
+      "tokensUsed": 0,
+      "costUsd": 0,
+      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
+    },
+    {
+      "timestamp": "2026-10-29T17:38:16.765Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 11.195,
+      "tokensUsed": 134,
+      "costUsd": 0,
+      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
+    },
+    {
+      "timestamp": "2026-10-29T15:48:23.540Z",
+      "predicateId": "jev-cross-trace-friction-miner",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 2.609,
+      "tokensUsed": 139,
+      "costUsd": 0,
+      "choice": "FRICTION_CLUSTER_IDENTIFIED"
+    },
+    {
+      "timestamp": "2026-10-29T15:48:23.534Z",
+      "predicateId": "jev-redundant-test-detector",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 2.095,
+      "tokensUsed": 117,
+      "costUsd": 0,
+      "choice": "REDUNDANT_TAUTOLOGICAL_TEST"
+    },
+    {
+      "timestamp": "2026-10-29T15:48:23.527Z",
+      "predicateId": "jev-spec-business-invariant-alignment",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 2.253,
+      "tokensUsed": 138,
+      "costUsd": 0,
+      "choice": "ALIGNED_WITH_SPEC"
+    },
+    {
+      "timestamp": "2026-10-29T15:48:23.522Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 2.361,
+      "tokensUsed": 98,
+      "costUsd": 0,
+      "choice": "NOUL"
+    },
+    {
+      "timestamp": "2026-10-29T15:48:23.515Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": true,
+      "latencyMs": 0.124,
+      "tokensUsed": 0,
+      "costUsd": 0,
+      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
+    },
+    {
+      "timestamp": "2026-10-29T15:48:23.511Z",
+      "predicateId": "jev-persisted-state-and-env-owner-gate",
+      "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
+      "cacheHit": false,
+      "latencyMs": 5.89,
+      "tokensUsed": 134,
+      "costUsd": 0,
+      "choice": "REQUIRES_HUMAN_CODE_OWNER_REVIEW"
+    },
     {
       "timestamp": "2026-10-29T13:51:57.557Z",
       "predicateId": "jev-cross-trace-friction-miner",

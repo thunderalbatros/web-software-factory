@@ -608,6 +608,203 @@ export function verifyDualInterviewGates(slug = 'agencia-alfa', industryFallback
 }
 
 /**
+ * Bidirectional Markdown -> JSON parser (`parseEditedSpecMarkdownIntoState`):
+ * Reads any manual edits made by the CTO directly in `ENTREVISTA_2_SPEC_TECNICO.md`
+ * across all 10 technical blocks and synchronizes them into `CLIENT_BRIEF_INTERVIEW.json`.
+ */
+export function parseEditedSpecMarkdownIntoState(mdContent = '', currentState = {}) {
+  if (!mdContent || typeof mdContent !== 'string' || !currentState?.blocks) {
+    return currentState;
+  }
+  const next = JSON.parse(JSON.stringify(currentState));
+  const b = next.blocks;
+  const stripTicks = (val) => String(val || '').trim().replace(/^`+|`+$/g, '').trim();
+  const matchField = (labelPattern) => {
+    const rx = new RegExp(`-\\s+\\*\\*${labelPattern}:\\*\\*\\s*(.+)`, 'i');
+    const m = mdContent.match(rx);
+    return m ? m[1].trim() : null;
+  };
+
+  // Bloque 1
+  const pagesLine = matchField('Mapa de Vistas');
+  if (pagesLine) {
+    const pages = pagesLine
+      .split(/\s*(?:→|->|,)\s*/)
+      .map((p) => stripTicks(p))
+      .filter(Boolean);
+    if (pages.length > 0) {
+      if (b.block1_pages_and_dom_architecture) b.block1_pages_and_dom_architecture.pages = pages;
+      if (b.block3_sitemap_and_flows) b.block3_sitemap_and_flows.pages = pages;
+    }
+  }
+  const domComponentsMatch = mdContent.match(
+    /Desglose de Componentes DOM Requeridos:\*\*\s*\r?\n((?:\s+-\s+.+\r?\n?)+)/i
+  );
+  if (domComponentsMatch) {
+    const comps = domComponentsMatch[1]
+      .split(/\r?\n/)
+      .map((l) => l.replace(/^\s*-\s+/, '').trim())
+      .filter(Boolean);
+    if (comps.length > 0 && b.block1_pages_and_dom_architecture) {
+      b.block1_pages_and_dom_architecture.domSectionsAndComponents = comps;
+    }
+  }
+
+  // Bloque 2
+  const ctaLine = matchField('Primary CTA Conectado');
+  if (ctaLine) {
+    const mCta = ctaLine.match(/^`?([^`()]+)`?\s*(?:\(([^)]+)\))?/);
+    if (mCta) {
+      const ctaVal = stripTicks(mCta[1]);
+      const chVal = mCta[2] ? mCta[2].trim() : null;
+      if (b.block2_functional_contracts_and_valibot) {
+        b.block2_functional_contracts_and_valibot.primaryCta = ctaVal;
+        if (chVal) b.block2_functional_contracts_and_valibot.primaryCtaChannel = chVal;
+      }
+      if (b.block2_target_audience_cro) {
+        b.block2_target_audience_cro.primaryCta = ctaVal;
+        if (chVal) b.block2_target_audience_cro.primaryCtaChannel = chVal;
+      }
+    }
+  }
+
+  // Bloque 3
+  const gridVal = matchField('Topolog[íi]a de Grilla \\(`gridTopology`\\)');
+  if (gridVal && b.block3_grid_topology_and_morphology) {
+    b.block3_grid_topology_and_morphology.gridTopology = stripTicks(gridVal);
+  }
+  const heroVal = matchField('Arquitectura de Hero \\(`heroArchitecture`\\)');
+  if (heroVal && b.block3_grid_topology_and_morphology) {
+    b.block3_grid_topology_and_morphology.heroArchitecture = stripTicks(heroVal);
+  }
+  const matLine = matchField('Materialidad de Superficie');
+  if (matLine) {
+    const mMat = matLine.match(/^`?([^`()\s]+)`?/);
+    if (mMat) {
+      const matVal = stripTicks(mMat[1]);
+      if (b.block3_grid_topology_and_morphology) b.block3_grid_topology_and_morphology.surfaceMateriality = matVal;
+      if (b.block6_sonic_music_video) b.block6_sonic_music_video.material = matVal;
+      if (b.block7_sonic_ui_sfx_music_and_reaper_rpp) b.block7_sonic_ui_sfx_music_and_reaper_rpp.material = matVal;
+    }
+  }
+
+  // Bloque 4
+  const surfaceLine = matchField('Modo de Superficie');
+  if (surfaceLine) {
+    const mSurf = surfaceLine.match(/^`?([^`|\s]+)`?/);
+    if (mSurf) {
+      const surfVal = stripTicks(mSurf[1]);
+      if (b.block4_palette_apca_and_typography_scales) b.block4_palette_apca_and_typography_scales.surfaceMode = surfVal;
+      if (b.block4_aesthetic_oklch_typography) b.block4_aesthetic_oklch_typography.surfaceMode = surfVal;
+    }
+  }
+
+  // Bloque 5
+  const tensionVal = matchField('Eje de Tensi[óo]n de Personalidad \\(`brandPersonalityTension`\\)');
+  if (tensionVal && b.block5_motion_physics_and_scroll_60fps) {
+    b.block5_motion_physics_and_scroll_60fps.brandPersonalityTension = stripTicks(tensionVal);
+  }
+  const morphModeLine = matchField('Modo de Selecci[óo]n Morfol[óo]gica \\(`morphologySelectionMode`\\)');
+  if (morphModeLine && b.block5_motion_physics_and_scroll_60fps) {
+    const mMode = morphModeLine.match(/^`?([^`()\s]+)`?/);
+    if (mMode) b.block5_motion_physics_and_scroll_60fps.morphologySelectionMode = stripTicks(mMode[1]);
+  }
+  const animLine = matchField('Nivel de Animaci[óo]n');
+  if (animLine) {
+    const mAnim = animLine.match(/^`?([^`()\s]+)`?/);
+    if (mAnim) {
+      const animVal = stripTicks(mAnim[1]);
+      if (b.block5_motion_physics_and_scroll_60fps) b.block5_motion_physics_and_scroll_60fps.animationLevel = animVal;
+      if (b.block5_motion_webgpu_shaders) b.block5_motion_webgpu_shaders.animationLevel = animVal;
+    }
+  }
+
+  // Bloque 6
+  const forge3dVal = matchField('Modo 3D \\/ Shader[^*]*');
+  if (forge3dVal && b.block6_webgpu_3d_glb_and_shaders) {
+    b.block6_webgpu_3d_glb_and_shaders.forge3dMode = stripTicks(forge3dVal);
+  }
+
+  // Bloque 7
+  const sonicLine = matchField('Modo Sonoro[^*]*');
+  if (sonicLine) {
+    const mSonic = sonicLine.match(/^`?([^`()\s]+)`?(?:.*uiSfxMode:\s*([^,)]+))?(?:.*material\s*`?([^`)]+)`?)?/i);
+    if (mSonic) {
+      if (b.block7_sonic_ui_sfx_music_and_reaper_rpp) {
+        b.block7_sonic_ui_sfx_music_and_reaper_rpp.sonicForgeMode = stripTicks(mSonic[1]);
+      }
+      if (mSonic[2]) {
+        const sfx = stripTicks(mSonic[2]);
+        if (b.block7_sonic_ui_sfx_music_and_reaper_rpp) b.block7_sonic_ui_sfx_music_and_reaper_rpp.uiSfxMode = sfx;
+        if (b.block6_sonic_music_video) b.block6_sonic_music_video.uiSfxMode = sfx;
+      }
+      if (mSonic[3]) {
+        const mat = stripTicks(mSonic[3]);
+        if (b.block7_sonic_ui_sfx_music_and_reaper_rpp) b.block7_sonic_ui_sfx_music_and_reaper_rpp.material = mat;
+        if (b.block6_sonic_music_video) b.block6_sonic_music_video.material = mat;
+      }
+    }
+  }
+  const musicLine = matchField('M[úu]sica de Fondo');
+  if (musicLine) {
+    const mMus = musicLine.match(/^`?([^`|\s]+)`?/);
+    if (mMus) {
+      const musVal = stripTicks(mMus[1]);
+      if (b.block7_sonic_ui_sfx_music_and_reaper_rpp) b.block7_sonic_ui_sfx_music_and_reaper_rpp.backgroundMusic = musVal;
+      if (b.block6_sonic_music_video) b.block6_sonic_music_video.backgroundMusic = musVal;
+    }
+  }
+
+  // Bloque 8
+  const videoLine = matchField('Modo de Video Intro[^*]*');
+  if (videoLine) {
+    const mVid = videoLine.match(/^`?([^`()\s]+)`?\s*(?:\(`?([^`)]+)`?\))?/);
+    if (mVid) {
+      const vfMode = stripTicks(mVid[1]);
+      const ivMode = mVid[2] ? stripTicks(mVid[2]) : vfMode;
+      if (b.block8_programmatic_video_intro_and_voiceover) {
+        b.block8_programmatic_video_intro_and_voiceover.videoForgeMode = vfMode;
+        b.block8_programmatic_video_intro_and_voiceover.introVideoMode = ivMode;
+      }
+      if (b.block6_sonic_music_video) {
+        b.block6_sonic_music_video.introVideoMode = ivMode;
+      }
+    }
+  }
+
+  // Bloque 9
+  const dbLine = matchField('Motor de Datos[^*]*');
+  if (dbLine) {
+    const mDb = dbLine.match(/^`?([^`()\s]+)`?\s*(?:\(([^)]+)\))?/);
+    if (mDb && b.block9_database_payments_auth_and_edge_worker) {
+      b.block9_database_payments_auth_and_edge_worker.databaseTier = stripTicks(mDb[1]);
+      if (mDb[2]) b.block9_database_payments_auth_and_edge_worker.databaseEngine = mDb[2].trim();
+    }
+  }
+  const payLine = matchField('Pasarela de Pagos');
+  if (payLine) {
+    const mPay = payLine.match(/^`?([^`|]+)`?/);
+    if (mPay) {
+      const payVal = stripTicks(mPay[1]);
+      if (b.block9_database_payments_auth_and_edge_worker) b.block9_database_payments_auth_and_edge_worker.paymentGateway = payVal;
+      if (b.block8_technical_backend_integrations) b.block8_technical_backend_integrations.paymentGateway = payVal;
+    }
+  }
+
+  // Bloque 10
+  const mobLine = matchField('Target M[óo]vil `Capacitor 8`');
+  if (mobLine && b.block10_mobile_capacitor_feedback_and_f2p_matrix) {
+    const mMob = mobLine.match(/^`?(true|false)`?/i);
+    if (mMob) {
+      b.block10_mobile_capacitor_feedback_and_f2p_matrix.enableCapacitor8MobileTarget =
+        mMob[1].toLowerCase() === 'true';
+    }
+  }
+
+  return next;
+}
+
+/**
  * Compiles `CLIENT_BRIEF_INTERVIEW.json` + `PRD_LEAN.md` + `BRAND_IDENTITY_LOCK.json` into:
  *   1. `projects/<slug>/SPEC.md` (`[REQ-01]` to `[REQ-12]` mapped 1:1 from `[INV-01]..[INV-07]` + Playwright matrix)
  *   2. `projects/<slug>/PRODUCT.md` (synchronized with `PRD_LEAN.md`)
@@ -626,6 +823,14 @@ export function compileSpecFromInterview(slug = 'agencia-alfa', options = {}) {
   const mdPath = path.join(projectDir, 'ENTREVISTA_CLIENTE.md');
   const specMdInterviewPath = path.join(projectDir, 'ENTREVISTA_2_SPEC_TECNICO.md');
 
+  // Preserve any manual Markdown edits made by the CTO on disk BEFORE any refresh/init
+  const hadExistingSpecMd = fs.existsSync(specMdInterviewPath) || fs.existsSync(mdPath);
+  const existingSpecMdContent = fs.existsSync(specMdInterviewPath)
+    ? fs.readFileSync(specMdInterviewPath, 'utf8')
+    : fs.existsSync(mdPath)
+    ? fs.readFileSync(mdPath, 'utf8')
+    : '';
+
   if (!fs.existsSync(jsonPath) || options.refreshFromPrd) {
     initClientInterviewFiles(slug, options.industry || 'saas', {
       autoApprove: Boolean(options.approve),
@@ -633,7 +838,10 @@ export function compileSpecFromInterview(slug = 'agencia-alfa', options = {}) {
     });
   }
 
-  const interview = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+  let interview = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+  if (hadExistingSpecMd && existingSpecMdContent) {
+    interview = parseEditedSpecMarkdownIntoState(existingSpecMdContent, interview);
+  }
   const { brandLock, prdState } = loadBrandLockAndPrdState(slug);
 
   // Sync latest brand identity lock fields into interview
@@ -693,6 +901,7 @@ export function compileSpecFromInterview(slug = 'agencia-alfa', options = {}) {
   };
 
   // Synthesize unique 7-Axis Brand DNA Vector & verify Birkhoff Harmony (>= 0.85) + Intra-Category Divergence (>= 0.70)
+  const t3Block = interview.blocks.block3_grid_topology_and_morphology || {};
   const t5Block = interview.blocks.block5_motion_physics_and_scroll_60fps || {};
   const bespokeDna = synthesizeUniqueBrandDna({
     projectSlug: slug,
@@ -700,6 +909,13 @@ export function compileSpecFromInterview(slug = 'agencia-alfa', options = {}) {
     brandPersonalityTension:
       t5Block.brandPersonalityTension || 'minimalismo-silencioso vs expresividad-cinetica',
     morphologyMode: t5Block.morphologySelectionMode || 'auto-bespoke-criteria',
+    manualOverrides:
+      t5Block.morphologySelectionMode === 'manual-cto-override'
+        ? {
+            gridTopology: t3Block.gridTopology,
+            heroArchitecture: t3Block.heroArchitecture
+          }
+        : undefined,
     baseHue: b4.oklchPrimary?.H || 255,
     persistInLedger: !slug.startsWith('_test')
   });
@@ -715,6 +931,32 @@ export function compileSpecFromInterview(slug = 'agencia-alfa', options = {}) {
     elementHeightPx: 48,
     spring: b5.springPhysics
   });
+
+  // Persist synthesized bespokeDna and sonicPatch back into CLIENT_BRIEF_INTERVIEW.json so downstream compilers consume the exact DNA
+  interview.bespokeDna = {
+    morphologyMode: bespokeDna.morphologyMode,
+    brandPersonalityTension: bespokeDna.brandPersonalityTension,
+    gridTopology: bespokeDna.gridTopology,
+    heroArchitecture: bespokeDna.heroArchitecture,
+    componentMorphology: bespokeDna.componentMorphology,
+    gamutMaskType: bespokeDna.gamutMaskType,
+    fontPairingProfile: bespokeDna.fontPairingProfile,
+    fontPairingDetails: bespokeDna.fontPairingDetails,
+    motionPhysicsCriteria: bespokeDna.motionPhysicsCriteria,
+    introChoreographyId: bespokeDna.introChoreographyId,
+    introAnd3dDecision: bespokeDna.introAnd3dDecision,
+    morphologicalDivergenceScore: bespokeDna.morphologicalDivergenceScore,
+    aestheticHarmonyScore: bespokeDna.aestheticHarmonyScore
+  };
+  interview.sonicPatch = sonicPatch;
+  if (interview.blocks.block3_grid_topology_and_morphology) {
+    interview.blocks.block3_grid_topology_and_morphology.gridTopology = bespokeDna.gridTopology;
+    interview.blocks.block3_grid_topology_and_morphology.heroArchitecture = bespokeDna.heroArchitecture;
+  }
+  const updatedInterviewMd = renderInterviewMarkdown(interview);
+  fs.writeFileSync(jsonPath, JSON.stringify(interview, null, 2) + '\n', 'utf8');
+  fs.writeFileSync(mdPath, updatedInterviewMd, 'utf8');
+  fs.writeFileSync(specMdInterviewPath, updatedInterviewMd, 'utf8');
 
   // 1. Write SPEC.md mapping 1:1 [INV-01]..[INV-07] from PRD_LEAN.md to [REQ-01]..[REQ-12] + Bespoke Morphology Justification
   const specPath = path.join(projectDir, 'SPEC.md');
@@ -1016,7 +1258,15 @@ export function runClientInterviewGateSelfTest() {
     gate2AfterGate1Approved.passed === false &&
     gate2AfterGate1Approved.code === 'HARD_STOP_SPEC_INTERVIEW_REQUIRED';
 
-  // (d) Complete and approve Gate #2 -> compiles SPEC.md ([REQ-01]..[REQ-12]) + DESIGN.md and unlocks `cto:construir`
+  // (d) Edit ENTREVISTA_2_SPEC_TECNICO.md on disk (bidirectional MD -> JSON test) and approve Gate #2
+  const specMdFile = path.join(testDir, 'ENTREVISTA_2_SPEC_TECNICO.md');
+  let specMdRaw = fs.readFileSync(specMdFile, 'utf8');
+  specMdRaw = specMdRaw.replace(
+    /- \*\*Primary CTA Conectado:\*\* .*/,
+    '- **Primary CTA Conectado:** `Reservar Visita Privada en Ginebra` (Private Concierge)'
+  );
+  fs.writeFileSync(specMdFile, specMdRaw, 'utf8');
+
   const compiledAfterApproval = compileSpecFromInterview(testSlug, {
     approve: true,
     industry: 'lujo',
@@ -1030,6 +1280,7 @@ export function runClientInterviewGateSelfTest() {
     specText.includes('[REQ-01]') &&
     specText.includes('[REQ-12]') &&
     specText.includes('[INV-03]') &&
+    specText.includes('Reservar Visita Privada en Ginebra') &&
     specText.includes('#D4AF37');
   const sonicAndBrandLockInDesign =
     designText.includes('## Brand Identity Lock') &&
@@ -1069,7 +1320,7 @@ export function runClientInterviewGateSelfTest() {
       scenarioB_gate2RefusesToAdvanceUntilGate1Approved: scenarioB_Gate2BlockedUntilGate1Approved,
       scenarioC_strictExistingBrandSealsPrdLeanAndBrandLockJson:
         scenarioC_StrictBrandSealedAndGate2NowAwaitingItsOwnApproval,
-      scenarioD_gate2ApprovalCompilesSpecAndDesignAndUnlocksConstruir:
+      scenarioD_gate2ApprovalAndBidirectionalMdSyncCompilesSpecAndUnlocksConstruir:
         scenarioD_Gate2ApprovalCompilesSpecAndUnlocksBuild
     }
   };

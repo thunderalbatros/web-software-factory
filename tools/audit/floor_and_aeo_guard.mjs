@@ -78,9 +78,16 @@ const robotsCandidates = [
   path.join(root, 'templates', 'vanilla-edge', 'robots.txt')
 ];
 const llmsCandidates = [
+  path.join(root, projectConfig.paths.distDir || 'dist', 'llms.txt'),
   path.join(root, 'llms.txt'),
   path.join(root, 'public', 'llms.txt'),
   path.join(root, 'templates', 'vanilla-edge', 'llms.txt')
+];
+const llmsFullCandidates = [
+  path.join(root, projectConfig.paths.distDir || 'dist', 'llms-full.txt'),
+  path.join(root, 'llms-full.txt'),
+  path.join(root, 'public', 'llms-full.txt'),
+  path.join(root, 'templates', 'vanilla-edge', 'llms-full.txt')
 ];
 const htmlCandidates = [
   path.join(root, projectConfig.paths.entryHtml),
@@ -91,10 +98,12 @@ const htmlCandidates = [
 
 const robotsPath = robotsCandidates.find(p => fs.existsSync(p));
 const llmsPath = llmsCandidates.find(p => fs.existsSync(p));
+const llmsFullPath = llmsFullCandidates.find(p => fs.existsSync(p));
 const htmlPath = htmlCandidates.find(p => fs.existsSync(p));
 
 const robotsTxt = robotsPath ? fs.readFileSync(robotsPath, 'utf8') : '';
 const llmsTxt = llmsPath ? fs.readFileSync(llmsPath, 'utf8') : '';
+const llmsFullTxt = llmsFullPath ? fs.readFileSync(llmsFullPath, 'utf8') : '';
 let indexHtml = htmlPath ? fs.readFileSync(htmlPath, 'utf8') : '';
 const baseLayoutPath = path.join(root, 'src', 'layouts', 'BaseLayout.astro');
 if (htmlPath && htmlPath.endsWith('.astro') && fs.existsSync(baseLayoutPath) && htmlPath !== baseLayoutPath) {
@@ -103,12 +112,12 @@ if (htmlPath && htmlPath.endsWith('.astro') && fs.existsSync(baseLayoutPath) && 
 
 if (robotsTxt.includes('User-agent: *') && robotsTxt.includes('Allow: /')) aeoScore += 25;
 const expectedLlmsHeaders = projectConfig.aeo.requiredLlmsHeaders || ['# '];
-if (llmsTxt.length > 40 && expectedLlmsHeaders.every(h => llmsTxt.includes(h))) aeoScore += 25;
+if (llmsTxt.length > 40 && expectedLlmsHeaders.every(h => llmsTxt.includes(h)) && (!llmsFullPath || llmsFullTxt.length > 60)) aeoScore += 25;
 if (fs.existsSync(agentsPath)) aeoScore += 25;
 if (indexHtml.includes('<meta name="description"') && indexHtml.includes('application/ld+json')) aeoScore += 25;
 
 if (aeoScore === 100) {
-  pass(`[Agentic SEO] AEO Score: ${aeoScore}/100 (robots.txt + llms.txt + AGENTS.md + JSON-LD + semantic meta).`);
+  pass(`[Agentic SEO] AEO Score: ${aeoScore}/100 (robots.txt + llms.txt + llms-full.txt + AGENTS.md + JSON-LD + semantic meta).`);
 } else {
   fail(`[Agentic SEO] AEO Score below 100: ${aeoScore}/100.`);
 }

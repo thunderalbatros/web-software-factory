@@ -1,230 +1,244 @@
-/**
- * ThemeTokens.ts — Auto-Generated Multi-Platform Design Tokens (Capacitor 8 / iOS / Android / Expo)
- * Source: DESIGN.md (b2b-saas-platform — Mode: Persuade)
- */
-
 export const ThemeTokens = {
   "$schema": "https://tr.designtokens.org/format/2025.10/style-dictionary-multi-target.json",
   "meta": {
-    "generator": "tools/mobile/mobile_target_forge.mjs (Style Dictionary v4 Multi-Target)",
-    "archetype": "b2b-saas-platform",
-    "surfaceMode": "Persuade",
-    "apcaContrastFloor": 85,
-    "requiresTabularNums": true,
+    "archetype": "saas-b2b",
+    "styleSkill": "bento",
     "minTouchTargetDp": 48
   },
-  "colors": {
-    "primary": {
-      "oklch": "oklch(65% 0.16 250)",
-      "hex": "#3093EC",
-      "alpha": 1,
-      "iosUIColor": "UIColor(red: 0.188, green: 0.576, blue: 0.925, alpha: 1.00)",
-      "androidHex": "#FF3093EC"
+  "tokens": {
+    "color.surface.canvas": {
+      "$type": "color",
+      "$value": "oklch(0.13 0.0127 258)",
+      "rawValue": "oklch(0.13 0.0127 258)",
+      "$description": "90% Primary background canvas"
     },
-    "secondary": {
-      "oklch": "oklch(72% 0.12 190)",
-      "hex": "#1DBCB5",
-      "alpha": 1,
-      "iosUIColor": "UIColor(red: 0.114, green: 0.737, blue: 0.710, alpha: 1.00)",
-      "androidHex": "#FF1DBCB5"
+    "color.surface.elevated": {
+      "$type": "color",
+      "$value": "oklch(0.18 0.0146 258)",
+      "rawValue": "oklch(0.18 0.0146 258)",
+      "$description": "Elevated card surface (+5% L)"
     },
-    "tertiary": {
-      "oklch": "oklch(78% 0.15 82)",
-      "hex": "#E7AC2A",
-      "alpha": 1,
-      "iosUIColor": "UIColor(red: 0.906, green: 0.675, blue: 0.165, alpha: 1.00)",
-      "androidHex": "#FFE7AC2A"
+    "color.surface.interactive": {
+      "$type": "color",
+      "$value": "oklch(0.22 0.022 258)",
+      "rawValue": "oklch(0.22 0.022 258)",
+      "$description": "Interactive hover surface (+9% L)"
     },
-    "surface": {
-      "oklch": "oklch(10% 0.01 255)",
-      "hex": "#020306",
-      "alpha": 1,
-      "iosUIColor": "UIColor(red: 0.008, green: 0.012, blue: 0.024, alpha: 1.00)",
-      "androidHex": "#FF020306"
+    "color.surface.glass": {
+      "$type": "color",
+      "$value": "oklch(0.20 0.02 258 / 0.76)",
+      "rawValue": "oklch(0.20 0.02 258 / 0.76)",
+      "$description": "Glassmorphic sticky header surface"
     },
-    "surface-raised": {
-      "oklch": "oklch(14% 0.012 255)",
-      "hex": "#06090E",
-      "alpha": 1,
-      "iosUIColor": "UIColor(red: 0.024, green: 0.035, blue: 0.055, alpha: 1.00)",
-      "androidHex": "#FF06090E"
+    "color.text.primary": {
+      "$type": "color",
+      "$value": "oklch(0.96 0.008 258)",
+      "rawValue": "oklch(0.96 0.008 258)",
+      "$description": "Primary headline & body text (APCA Lc >= 90)"
     },
-    "surface-deep": {
-      "oklch": "oklch(7% 0.008 255)",
-      "hex": "#010102",
-      "alpha": 1,
-      "iosUIColor": "UIColor(red: 0.004, green: 0.004, blue: 0.008, alpha: 1.00)",
-      "androidHex": "#FF010102"
+    "color.text.secondary": {
+      "$type": "color",
+      "$value": "oklch(0.76 0.015 258)",
+      "rawValue": "oklch(0.76 0.015 258)",
+      "$description": "Supporting copy (APCA Lc >= 65)"
     },
-    "text-primary": {
-      "oklch": "oklch(95% 0.006 255)",
-      "hex": "#ECEFF2",
-      "alpha": 1,
-      "iosUIColor": "UIColor(red: 0.925, green: 0.937, blue: 0.949, alpha: 1.00)",
-      "androidHex": "#FFECEFF2"
+    "color.text.muted": {
+      "$type": "color",
+      "$value": "oklch(0.62 0.015 258)",
+      "rawValue": "oklch(0.62 0.015 258)",
+      "$description": "Metadata & captions (APCA Lc >= 50)"
     },
-    "text-secondary": {
-      "oklch": "oklch(74% 0.012 255)",
-      "hex": "#A6ABB2",
-      "alpha": 1,
-      "iosUIColor": "UIColor(red: 0.651, green: 0.671, blue: 0.698, alpha: 1.00)",
-      "androidHex": "#FFA6ABB2"
+    "color.brand.primary": {
+      "$type": "color",
+      "$value": "oklch(0.78 0.187 234)",
+      "rawValue": "oklch(0.78 0.187 234)",
+      "$description": "Locked primary client brand color"
     },
-    "border-hairline": {
-      "oklch": "oklch(85% 0.015 255 / 0.14)",
-      "hex": "#C7CED8",
-      "alpha": 0.14,
-      "iosUIColor": "UIColor(red: 0.780, green: 0.808, blue: 0.847, alpha: 0.14)",
-      "androidHex": "#24C7CED8"
+    "color.brand.secondary": {
+      "$type": "color",
+      "$value": "oklch(0.42 0.094 258)",
+      "rawValue": "oklch(0.42 0.094 258)",
+      "$description": "Locked secondary client brand color"
     },
-    "success": {
-      "oklch": "oklch(68% 0.16 150)",
-      "hex": "#3BB360",
-      "alpha": 1,
-      "iosUIColor": "UIColor(red: 0.231, green: 0.702, blue: 0.376, alpha: 1.00)",
-      "androidHex": "#FF3BB360"
+    "color.brand.accent": {
+      "$type": "color",
+      "$value": "oklch(0.74 0.156 286)",
+      "rawValue": "oklch(0.74 0.156 286)",
+      "$description": "8% Supporting brand accent"
     },
-    "warning": {
-      "oklch": "oklch(76% 0.15 80)",
-      "hex": "#E2A520",
-      "alpha": 1,
-      "iosUIColor": "UIColor(red: 0.886, green: 0.647, blue: 0.125, alpha: 1.00)",
-      "androidHex": "#FFE2A520"
+    "color.brand.cta": {
+      "$type": "color",
+      "$value": "oklch(0.78 0.187 234)",
+      "rawValue": "oklch(0.78 0.187 234)",
+      "$description": "2% High-conversion focal CTA"
     },
-    "danger": {
-      "oklch": "oklch(62% 0.19 25)",
-      "hex": "#E24947",
-      "alpha": 1,
-      "iosUIColor": "UIColor(red: 0.886, green: 0.286, blue: 0.278, alpha: 1.00)",
-      "androidHex": "#FFE24947"
-    }
-  },
-  "spacing": {
-    "xs": {
-      "raw": "8px",
-      "pt": 8,
-      "dp": 8,
-      "iosSwift": "CGFloat(8)",
-      "androidXml": "8dp"
+    "color.brand.ctaInk": {
+      "$type": "color",
+      "$value": "oklch(0.14 0.02 258)",
+      "rawValue": "oklch(0.14 0.02 258)",
+      "$description": "High-contrast ink on CTA button"
     },
-    "sm": {
-      "raw": "16px",
-      "pt": 16,
-      "dp": 16,
-      "iosSwift": "CGFloat(16)",
-      "androidXml": "16dp"
+    "color.border.subtle": {
+      "$type": "color",
+      "$value": "oklch(1 0 0 / 0.08)",
+      "rawValue": "oklch(1 0 0 / 0.08)",
+      "$description": "1px subtle hairline border"
     },
-    "md": {
-      "raw": "24px",
-      "pt": 24,
-      "dp": 24,
-      "iosSwift": "CGFloat(24)",
-      "androidXml": "24dp"
+    "color.border.highlight": {
+      "$type": "color",
+      "$value": "oklch(1 0 0 / 0.18)",
+      "rawValue": "oklch(1 0 0 / 0.18)",
+      "$description": "Interactive hover hairline"
     },
-    "lg": {
-      "raw": "40px",
-      "pt": 40,
-      "dp": 40,
-      "iosSwift": "CGFloat(40)",
-      "androidXml": "40dp"
+    "typography.fontFamily.sans": {
+      "$type": "fontFamily",
+      "$value": "'Rubik', system-ui, sans-serif",
+      "rawValue": "'Rubik', system-ui, sans-serif",
+      "$description": ""
     },
-    "xl": {
-      "raw": "64px",
-      "pt": 64,
-      "dp": 64,
-      "iosSwift": "CGFloat(64)",
-      "androidXml": "64dp"
+    "typography.fontFamily.display": {
+      "$type": "fontFamily",
+      "$value": "'Spectral', Georgia, serif",
+      "rawValue": "'Spectral', Georgia, serif",
+      "$description": ""
     },
-    "2xl": {
-      "raw": "104px",
-      "pt": 104,
-      "dp": 104,
-      "iosSwift": "CGFloat(104)",
-      "androidXml": "104dp"
-    }
-  },
-  "radius": {
-    "none": {
-      "raw": "0px",
-      "pt": 0,
-      "dp": 0,
-      "iosSwift": "CGFloat(0)",
-      "androidXml": "0dp"
+    "typography.fontFamily.mono": {
+      "$type": "fontFamily",
+      "$value": "'Source Code Pro', monospace",
+      "rawValue": "'Source Code Pro', monospace",
+      "$description": ""
     },
-    "xs": {
-      "raw": "4px",
-      "pt": 4,
-      "dp": 4,
-      "iosSwift": "CGFloat(4)",
-      "androidXml": "4dp"
+    "typography.scale.stepMinus1": {
+      "$type": "dimension",
+      "$value": "clamp(0.82rem, 0.78rem + 0.2vw, 0.92rem)",
+      "rawValue": "clamp(0.82rem, 0.78rem + 0.2vw, 0.92rem)",
+      "$description": ""
     },
-    "sm": {
-      "raw": "6px",
-      "pt": 6,
-      "dp": 6,
-      "iosSwift": "CGFloat(6)",
-      "androidXml": "6dp"
+    "typography.scale.step0": {
+      "$type": "dimension",
+      "$value": "clamp(1rem, 0.95rem + 0.25vw, 1.125rem)",
+      "rawValue": "clamp(1rem, 0.95rem + 0.25vw, 1.125rem)",
+      "$description": ""
     },
-    "md": {
-      "raw": "10px",
-      "pt": 10,
-      "dp": 10,
-      "iosSwift": "CGFloat(10)",
-      "androidXml": "10dp"
+    "typography.scale.step1": {
+      "$type": "dimension",
+      "$value": "clamp(1.22rem, 1.12rem + 0.5vw, 1.406rem)",
+      "rawValue": "clamp(1.22rem, 1.12rem + 0.5vw, 1.406rem)",
+      "$description": ""
     },
-    "lg": {
-      "raw": "12px",
-      "pt": 12,
-      "dp": 12,
-      "iosSwift": "CGFloat(12)",
-      "androidXml": "12dp"
-    }
-  },
-  "typography": {
-    "display": {
-      "fontFamily": "Geist",
-      "fontSizePt": 40,
-      "fontSizeDp": 40,
-      "fontWeight": "600",
-      "lineHeightMultiplier": 1.05,
-      "tabularNums": true
+    "typography.scale.step2": {
+      "$type": "dimension",
+      "$value": "clamp(1.5rem, 1.3rem + 1vw, 1.757rem)",
+      "rawValue": "clamp(1.5rem, 1.3rem + 1vw, 1.757rem)",
+      "$description": ""
     },
-    "h1": {
-      "fontFamily": "Geist",
-      "fontSizePt": 32,
-      "fontSizeDp": 32,
-      "fontWeight": "600",
-      "lineHeightMultiplier": 1.1,
-      "tabularNums": true
+    "typography.scale.step3": {
+      "$type": "dimension",
+      "$value": "clamp(1.9rem, 1.55rem + 1.6vw, 2.196rem)",
+      "rawValue": "clamp(1.9rem, 1.55rem + 1.6vw, 2.196rem)",
+      "$description": ""
     },
-    "h2": {
-      "fontFamily": "Geist",
-      "fontSizePt": 22.4,
-      "fontSizeDp": 22.4,
-      "fontWeight": "600",
-      "lineHeightMultiplier": 1.2,
-      "tabularNums": true
+    "typography.scale.step4": {
+      "$type": "dimension",
+      "$value": "clamp(2.25rem, 1.8rem + 2.2vw, 2.745rem)",
+      "rawValue": "clamp(2.25rem, 1.8rem + 2.2vw, 2.745rem)",
+      "$description": ""
     },
-    "body": {
-      "fontFamily": "Geist",
-      "fontSizePt": 16,
-      "fontSizeDp": 16,
-      "fontWeight": "400",
-      "lineHeightMultiplier": 1.65,
-      "tabularNums": true
+    "radius.card": {
+      "$type": "dimension",
+      "$value": "18px",
+      "rawValue": "18px",
+      "$description": "Primary card border radius"
     },
-    "mono": {
-      "fontFamily": "Geist Mono",
-      "fontSizePt": 13,
-      "fontSizeDp": 13,
-      "fontWeight": "500",
-      "lineHeightMultiplier": 1.45,
-      "tabularNums": true
+    "radius.pill": {
+      "$type": "dimension",
+      "$value": "9999px",
+      "rawValue": "9999px",
+      "$description": "Full pill button border radius"
+    },
+    "motion.easing.springSnappy": {
+      "$type": "cubicBezier",
+      "$value": "linear(0, 0.3566 9.6%, 0.7852 21.1%, 1.0156 32.2%, 1.0738 41.3%, 1.0468 53.6%, 1.0062 69.8%, 1)",
+      "rawValue": "linear(0, 0.3566 9.6%, 0.7852 21.1%, 1.0156 32.2%, 1.0738 41.3%, 1.0468 53.6%, 1.0062 69.8%, 1)",
+      "$description": "Real spring physics curve via CSS linear() for buttons & micro-interactions"
+    },
+    "motion.easing.springGentle": {
+      "$type": "cubicBezier",
+      "$value": "linear(0, 0.245 8.5%, 0.642 19.8%, 0.916 31.4%, 1.021 43.2%, 1.018 59.1%, 1)",
+      "rawValue": "linear(0, 0.245 8.5%, 0.642 19.8%, 0.916 31.4%, 1.021 43.2%, 1.018 59.1%, 1)",
+      "$description": "Gentle spring physics curve for cards & dialogs"
+    },
+    "motion.easing.cinematicOut": {
+      "$type": "cubicBezier",
+      "$value": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "rawValue": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "$description": "Cinematic deceleration curve"
+    },
+    "motion.easing.cinematicInOut": {
+      "$type": "cubicBezier",
+      "$value": "cubic-bezier(0.65, 0, 0.35, 1)",
+      "rawValue": "cubic-bezier(0.65, 0, 0.35, 1)",
+      "$description": "Symmetric cinematic curve for morphs"
+    },
+    "motion.duration.fast": {
+      "$type": "duration",
+      "$value": "160ms",
+      "rawValue": "160ms",
+      "$description": "Micro-interaction duration"
+    },
+    "motion.duration.normal": {
+      "$type": "duration",
+      "$value": "280ms",
+      "rawValue": "280ms",
+      "$description": "Standard surface & modal transition"
+    },
+    "motion.duration.slow": {
+      "$type": "duration",
+      "$value": "520ms",
+      "rawValue": "520ms",
+      "$description": "Hero & view-transition morph duration"
+    },
+    "audio.feedback": {
+      "$type": "boolean",
+      "$value": false,
+      "rawValue": false,
+      "$description": "Procedural ZzFX 1KB UI micro-audio feedback (disabled by default; set true to enable)"
+    },
+    "semantic.pageBackground": {
+      "$type": "color",
+      "$value": "oklch(0.13 0.0127 258)",
+      "rawValue": "{color.surface.canvas}",
+      "$description": "Alias to primary 90% neutral surface canvas"
+    },
+    "semantic.cardBackground": {
+      "$type": "color",
+      "$value": "oklch(0.18 0.0146 258)",
+      "rawValue": "{color.surface.elevated}",
+      "$description": "Alias to elevated surface"
+    },
+    "semantic.primaryActionBg": {
+      "$type": "color",
+      "$value": "oklch(0.78 0.187 234)",
+      "rawValue": "{color.brand.cta}",
+      "$description": "Alias to 2% focal CTA color"
+    },
+    "semantic.primaryActionInk": {
+      "$type": "color",
+      "$value": "oklch(0.14 0.02 258)",
+      "rawValue": "{color.brand.ctaInk}",
+      "$description": "Alias to high-contrast CTA text"
+    },
+    "semantic.headingFont": {
+      "$type": "fontFamily",
+      "$value": "'Spectral', Georgia, serif",
+      "rawValue": "{typography.fontFamily.display}",
+      "$description": "Alias to display typography"
+    },
+    "semantic.defaultSpringEasing": {
+      "$type": "cubicBezier",
+      "$value": "linear(0, 0.3566 9.6%, 0.7852 21.1%, 1.0156 32.2%, 1.0738 41.3%, 1.0468 53.6%, 1.0062 69.8%, 1)",
+      "rawValue": "{motion.easing.springSnappy}",
+      "$description": "Alias to primary linear() spring"
     }
   }
 } as const;
-
-export type ThemeColorKey = keyof typeof ThemeTokens.colors;
-export type ThemeSpacingKey = keyof typeof ThemeTokens.spacing;
-export type ThemeRadiusKey = keyof typeof ThemeTokens.radius;
-export type ThemeTypographyRole = keyof typeof ThemeTokens.typography;

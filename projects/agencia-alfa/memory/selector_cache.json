@@ -6,10 +6,15 @@
         {
           "id": "main-content-landmark",
           "primary_selector": "#main-content",
-          "fallback_selectors": ["main"]
+          "fallback_selectors": [
+            "main"
+          ],
+          "verified_selector": "#main-content",
+          "status": "VERIFIED"
         }
       ]
     },
     "overlays": []
-  }
+  },
+  "last_verified": "2026-10-29T17:44:14.735Z"
 }

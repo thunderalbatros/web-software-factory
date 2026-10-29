@@ -1,11 +1,11 @@
 {
   "schema": "jev-sha256-decision-cache-v2026.10",
-  "updatedAt": "2026-10-29T13:51:57.554Z",
-  "totalHits": 2,
+  "updatedAt": "2026-10-29T17:45:59.657Z",
+  "totalHits": 5,
   "totalEntries": 5,
   "entries": {
     "1bdfdd1080ca8c727b4e53a181d1a6fa3bc9c94cde8eb9974e6566f763e0b41b": {
-      "cachedAt": "2026-10-29T13:51:57.528Z",
+      "cachedAt": "2026-10-29T17:45:59.623Z",
       "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
       "bamlSchemaCompression": {
         "verboseTokens": 482,
@@ -27,7 +27,7 @@
       }
     },
     "2d9b759d2d65955de69ff9606c61e0cc9f72a2e868394bef8c0ce8ebbfc2f7ab": {
-      "cachedAt": "2026-10-29T13:51:57.538Z",
+      "cachedAt": "2026-10-29T17:45:59.636Z",
       "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
       "bamlSchemaCompression": {
         "verboseTokens": 482,
@@ -48,7 +48,7 @@
       }
     },
     "c70948c4886a88c2c404c6f92e7171763003f2b4dbb93dce720e34599a187b1f": {
-      "cachedAt": "2026-10-29T13:51:57.543Z",
+      "cachedAt": "2026-10-29T17:45:59.644Z",
       "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
       "bamlSchemaCompression": {
         "verboseTokens": 479,
@@ -69,7 +69,7 @@
       }
     },
     "40743a3bd48f3d8c908e44ab4e7d0b77d5bd457d365c80ea145d1fd9bee54be6": {
-      "cachedAt": "2026-10-29T13:51:57.548Z",
+      "cachedAt": "2026-10-29T17:45:59.650Z",
       "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
       "bamlSchemaCompression": {
         "verboseTokens": 479,
@@ -90,7 +90,7 @@
       }
     },
     "026cd220911ca0f81f415cc4a64aed910f8958b780260b4abe5ba1dc94682a9d": {
-      "cachedAt": "2026-10-29T13:51:57.554Z",
+      "cachedAt": "2026-10-29T17:45:59.657Z",
       "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
       "bamlSchemaCompression": {
         "verboseTokens": 479,

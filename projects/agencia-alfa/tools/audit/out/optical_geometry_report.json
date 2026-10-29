@@ -1,0 +1,96 @@
+{
+  "timestamp": "2026-10-29T17:44:12.475Z",
+  "viewportsVerified": [
+    1440,
+    768,
+    375
+  ],
+  "zeroHorizontalScroll": true,
+  "zeroClippingOrOverlap": true,
+  "fitts44pxMobileVerified": true,
+  "perceptualContrastVerified": true,
+  "temporal4StagesVerified": true,
+  "canvas3dHistogramHealthy": true,
+  "clsScore": 0,
+  "fpsMeasured": 58,
+  "visualHarmonyAndMotion": {
+    "passed": true,
+    "motionKeyframeStrip": {
+      "frames": [
+        {
+          "frameId": "T0_initial",
+          "progressPct": 0,
+          "status": "VERIFIED",
+          "foucDetected": false,
+          "brokenOpacityCount": 0,
+          "textLegible": true
+        },
+        {
+          "frameId": "T1_mid_motion_33pct",
+          "progressPct": 33,
+          "status": "VERIFIED",
+          "activeAnimationsSampled": 2,
+          "abruptCutDetected": false,
+          "brokenOpacityCount": 0,
+          "textLegible": true
+        },
+        {
+          "frameId": "T2_transition_66pct",
+          "progressPct": 66,
+          "status": "VERIFIED",
+          "abruptCutDetected": false,
+          "shaderOr3dFrameActive": true,
+          "brokenOpacityCount": 0,
+          "textLegible": true
+        },
+        {
+          "frameId": "T3_settled_and_hover",
+          "progressPct": 100,
+          "status": "VERIFIED",
+          "settledOpacityOne": true,
+          "hoverMicroInteractionVerified": true,
+          "textLegible": true
+        }
+      ],
+      "all4KeyframesVerified": true,
+      "zeroAbruptCuts": true,
+      "zeroBrokenOpacities": true,
+      "midTransitionTextLegible": true
+    },
+    "opticalHarmonyMetrics": {
+      "whitespaceRatio": 0.623,
+      "whitespaceBounds": [
+        0.35,
+        0.68
+      ],
+      "whitespaceBalanced": true,
+      "axialAlignmentScore": 1,
+      "axialAlignmentFloor": 0.9,
+      "axialAlignmentPassed": true,
+      "geometricRhythmConsistency": 1,
+      "geometricRhythmFloor": 0.9,
+      "concentricRadiiFormula": "R_outer = R_inner + Padding",
+      "concentricRadiiVerified": true,
+      "verticalRhythmHarmonic": true,
+      "geometricRhythmPassed": true
+    }
+  },
+  "cdpPerformanceAndA11y": {
+    "jsHeapUsedBytes": 3402680,
+    "jsHeapUsedMB": 3.25,
+    "layoutDurationMs": 114.06,
+    "recalcStyleDurationMs": 30.29,
+    "a11yTreeHealthy": true
+  },
+  "impeccableBoundedPasses": {
+    "maxPasses": 2,
+    "batchedViewports": [
+      1440,
+      768,
+      375
+    ],
+    "industryArchetype": "b2b-saas-platform",
+    "surfaceMode": "Persuade"
+  },
+  "blockers": 0
+}

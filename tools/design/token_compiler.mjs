@@ -177,11 +177,118 @@ export function getStyleCatalog() {
   };
 }
 
-export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento', brandLock = null, gamutMaskType = 'atmospheric-analogous') {
+const FONT_PAIRING_PROFILES = {
+  'editorial-authority-instrument-newsreader': {
+    displayFont: "'Instrument Serif', Georgia, serif",
+    sansFont: "'Plus Jakarta Sans', system-ui, sans-serif",
+    monoFont: "'JetBrains Mono', monospace",
+    typeScaleRatio: 1.333
+  },
+  'swiss-kinetic-cabinet-satoshi': {
+    displayFont: "'Cabinet Grotesk', 'Space Grotesk', system-ui, sans-serif",
+    sansFont: "'Satoshi', 'Inter', system-ui, sans-serif",
+    monoFont: "'Geist Mono', 'JetBrains Mono', monospace",
+    typeScaleRatio: 1.333
+  },
+  'technical-precision-space-geist': {
+    displayFont: "'Space Grotesk', system-ui, sans-serif",
+    sansFont: "'Geist', 'Inter', system-ui, sans-serif",
+    monoFont: "'Geist Mono', monospace",
+    typeScaleRatio: 1.25
+  },
+  'brutalist-monolith-clash-general': {
+    displayFont: "'Clash Display', 'Syne', system-ui, sans-serif",
+    sansFont: "'General Sans', system-ui, sans-serif",
+    monoFont: "'Space Mono', monospace",
+    typeScaleRatio: 1.414
+  },
+  'luxury-maison-cormorant-manrope': {
+    displayFont: "'Cormorant Garamond', Georgia, serif",
+    sansFont: "'Manrope', system-ui, sans-serif",
+    monoFont: "'Fira Code', monospace",
+    typeScaleRatio: 1.414
+  },
+  'institutional-ledger-fraunces-switzer': {
+    displayFont: "'Fraunces', Georgia, serif",
+    sansFont: "'Switzer', 'Plus Jakarta Sans', sans-serif",
+    monoFont: "'Berkeley Mono', 'JetBrains Mono', monospace",
+    typeScaleRatio: 1.25
+  },
+  'tactical-hud-chakra-azeret': {
+    displayFont: "'Chakra Petch', 'Space Grotesk', sans-serif",
+    sansFont: "'Plus Jakarta Sans', system-ui, sans-serif",
+    monoFont: "'Azeret Mono', monospace",
+    typeScaleRatio: 1.414
+  },
+  'biophilic-clinical-lora-atkinson': {
+    displayFont: "'Lora', Georgia, serif",
+    sansFont: "'Atkinson Hyperlegible', 'Public Sans', sans-serif",
+    monoFont: "'IBM Plex Mono', monospace",
+    typeScaleRatio: 1.25
+  },
+  'zurich-international-archivo-inter': {
+    displayFont: "'Archivo', system-ui, sans-serif",
+    sansFont: "'Inter', system-ui, sans-serif",
+    monoFont: "'Roboto Mono', monospace",
+    typeScaleRatio: 1.2
+  },
+  'atelier-flagship-playfair-outfit': {
+    displayFont: "'Playfair Display', Georgia, serif",
+    sansFont: "'Outfit', system-ui, sans-serif",
+    monoFont: "'JetBrains Mono', monospace",
+    typeScaleRatio: 1.333
+  },
+  'hyper-saas-bricolage-hanken': {
+    displayFont: "'Bricolage Grotesque', system-ui, sans-serif",
+    sansFont: "'Hanken Grotesk', system-ui, sans-serif",
+    monoFont: "'Geist Mono', monospace",
+    typeScaleRatio: 1.333
+  },
+  'sovereign-legal-ebgaramond-work': {
+    displayFont: "'EB Garamond', Georgia, serif",
+    sansFont: "'Work Sans', system-ui, sans-serif",
+    monoFont: "'Inconsolata', monospace",
+    typeScaleRatio: 1.25
+  },
+  'quant-terminal-soehne-mono': {
+    displayFont: "'Schibsted Grotesk', system-ui, sans-serif",
+    sansFont: "'Schibsted Grotesk', system-ui, sans-serif",
+    monoFont: "'Martian Mono', 'JetBrains Mono', monospace",
+    typeScaleRatio: 1.2
+  },
+  'avant-garde-syne-epilogue': {
+    displayFont: "'Syne', system-ui, sans-serif",
+    sansFont: "'Epilogue', system-ui, sans-serif",
+    monoFont: "'Space Mono', monospace",
+    typeScaleRatio: 1.414
+  },
+  'nordic-minimal-Onest-Fragment': {
+    displayFont: "'Onest', system-ui, sans-serif",
+    sansFont: "'Onest', system-ui, sans-serif",
+    monoFont: "'Fragment Mono', monospace",
+    typeScaleRatio: 1.25
+  },
+  'editorial-serif-garamond-dm': {
+    displayFont: "'Cormorant Garamond', Georgia, serif",
+    sansFont: "'DM Sans', system-ui, sans-serif",
+    monoFont: "'IBM Plex Mono', monospace",
+    typeScaleRatio: 1.333
+  }
+};
+
+export function buildDtcgTokensObject(
+  archetype = 'saas-b2b',
+  styleName = 'bento',
+  brandLock = null,
+  gamutMaskType = 'atmospheric-analogous',
+  fontPairingProfile = null
+) {
   const base = ARCHETYPE_PRESETS[archetype] || ARCHETYPE_PRESETS['saas-b2b'];
   const ov = STYLE_OVERRIDES[styleName] || {};
   const cfg = { ...base, ...ov };
-  const masked = applyOklchGamutMask(cfg.hueCanvas, gamutMaskType, {
+  const resolvedMaskType =
+    gamutMaskType || brandLock?.gamutMaskType || 'atmospheric-analogous';
+  const masked = applyOklchGamutMask(cfg.hueCanvas, resolvedMaskType, {
     lightnessCanvas: cfg.lightnessCanvas,
     chromaAccent: cfg.chromaAccent,
     polarity: brandLock?.atmospherePreference === 'light-only' ? 'light' : 'dark'
@@ -197,23 +304,24 @@ export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento
   const clientLogos = brandLock?.logoAssets || {};
   const isLightOnly = brandLock?.atmospherePreference === 'light-only';
 
+  // When isLockedPalette === false (GREENFIELD_NEW_BRAND or PARTIAL_BRAND_EVOLUTION), populate from masked.tokens!
   const surfaceCanvasVal = isLockedPalette
     ? (isLightOnly
         ? clientPal.surfaceLightColor || masked.tokens.surfaceCanvas
         : clientPal.surfaceDarkColor || masked.tokens.surfaceCanvas)
-    : `oklch(${cfg.lightnessCanvas} 0.015 ${cfg.hueCanvas})`;
+    : masked.tokens.surfaceCanvas;
 
   const primaryColorVal = isLockedPalette
-    ? clientPal.primaryBrandColor || `oklch(0.82 0.18 ${cfg.hueCta})`
-    : `oklch(0.82 0.18 ${cfg.hueCta})`;
+    ? clientPal.primaryBrandColor || masked.tokens.brandPrimary
+    : masked.tokens.brandPrimary;
 
   const secondaryColorVal = isLockedPalette
-    ? clientPal.secondaryBrandColor || `oklch(${(cfg.lightnessCanvas + 0.05).toFixed(2)} 0.018 ${cfg.hueCanvas})`
-    : `oklch(${(cfg.lightnessCanvas + 0.05).toFixed(2)} 0.018 ${cfg.hueCanvas})`;
+    ? clientPal.secondaryBrandColor || masked.tokens.brandSecondary
+    : masked.tokens.brandSecondary;
 
   const accentColorVal = isLockedPalette
-    ? clientPal.accentBrandColor || `oklch(0.74 ${cfg.chromaAccent} ${cfg.hueAccent})`
-    : `oklch(0.74 ${cfg.chromaAccent} ${cfg.hueAccent})`;
+    ? clientPal.accentBrandColor || masked.tokens.brandAccent
+    : masked.tokens.brandAccent;
 
   const textPrimaryVal = isLightOnly
     ? `oklch(0.14 0.012 ${cfg.hueCanvas})`
@@ -225,6 +333,38 @@ export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento
     ? `oklch(0.45 0.015 ${cfg.hueCanvas})`
     : `oklch(0.62 0.015 ${cfg.hueCanvas})`;
 
+  const resolvedPairingKey =
+    typeof fontPairingProfile === 'string'
+      ? fontPairingProfile
+      : fontPairingProfile?.id || brandLock?.fontPairingProfile || null;
+  const pairingCfg =
+    typeof fontPairingProfile === 'object' && fontPairingProfile !== null
+      ? fontPairingProfile
+      : resolvedPairingKey && FONT_PAIRING_PROFILES[resolvedPairingKey]
+      ? FONT_PAIRING_PROFILES[resolvedPairingKey]
+      : null;
+  const allowFactoryPairing =
+    !isLockedPalette || clientTypo.allowFactoryTypographyPairing !== false;
+
+  const resolvedSans =
+    isLockedPalette && clientTypo.sansFont && !allowFactoryPairing
+      ? clientTypo.sansFont
+      : pairingCfg?.sansFont || clientTypo.sansFont || cfg.fontSans;
+  const resolvedDisplay =
+    isLockedPalette && clientTypo.displayFont && !allowFactoryPairing
+      ? clientTypo.displayFont
+      : pairingCfg?.displayFont || clientTypo.displayFont || cfg.fontDisplay;
+  const resolvedMono =
+    isLockedPalette && clientTypo.monoFont && !allowFactoryPairing
+      ? clientTypo.monoFont
+      : pairingCfg?.monoFont || clientTypo.monoFont || cfg.fontMono;
+
+  const scaleRatio = Number(pairingCfg?.typeScaleRatio || pairingCfg?.utopiaRatio || 1.25);
+  const s1Max = Number((1.125 * scaleRatio).toFixed(3));
+  const s2Max = Number((s1Max * scaleRatio).toFixed(3));
+  const s3Max = Number((s2Max * scaleRatio).toFixed(3));
+  const s4Max = Number((s3Max * scaleRatio).toFixed(3));
+
   return {
     $schema: 'https://tr.designtokens.org/format/2025.10/',
     meta: {
@@ -233,6 +373,8 @@ export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento
       styleSkill: styleName || 'bento',
       gamutMaskType: masked.gamutMaskType,
       gamutMaskedTokens: masked.tokens,
+      fontPairingProfile: resolvedPairingKey || 'default-archetype-pairing',
+      typeScaleRatio: scaleRatio,
       chromaticRule: '90% Neutral Surface / 8% Supporting Accent / 2% High-Chroma CTA (OKLCH + APCA)',
       brandIdentityLock: brandLock
         ? {
@@ -250,7 +392,7 @@ export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento
     color: {
       surface: {
         canvas: { $type: 'color', $value: surfaceCanvasVal, $description: '90% Primary background canvas' },
-        elevated: { $type: 'color', $value: `oklch(${(cfg.lightnessCanvas + 0.05).toFixed(2)} 0.018 ${cfg.hueCanvas})`, $description: 'Elevated card surface (+5% L)' },
+        elevated: { $type: 'color', $value: masked.tokens.surfaceElevated || `oklch(${(cfg.lightnessCanvas + 0.05).toFixed(2)} 0.018 ${cfg.hueCanvas})`, $description: 'Elevated card surface (+5% L)' },
         interactive: { $type: 'color', $value: `oklch(${(cfg.lightnessCanvas + 0.09).toFixed(2)} 0.022 ${cfg.hueCanvas})`, $description: 'Interactive hover surface (+9% L)' },
         glass: { $type: 'color', $value: `oklch(${(cfg.lightnessCanvas + 0.07).toFixed(2)} 0.02 ${cfg.hueCanvas} / 0.76)`, $description: 'Glassmorphic sticky header surface' }
       },
@@ -273,17 +415,17 @@ export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento
     },
     typography: {
       fontFamily: {
-        sans: { $type: 'fontFamily', $value: isLockedPalette && clientTypo.sansFont ? clientTypo.sansFont : cfg.fontSans },
-        display: { $type: 'fontFamily', $value: isLockedPalette && clientTypo.displayFont ? clientTypo.displayFont : cfg.fontDisplay },
-        mono: { $type: 'fontFamily', $value: isLockedPalette && clientTypo.monoFont ? clientTypo.monoFont : cfg.fontMono }
+        sans: { $type: 'fontFamily', $value: resolvedSans },
+        display: { $type: 'fontFamily', $value: resolvedDisplay },
+        mono: { $type: 'fontFamily', $value: resolvedMono }
       },
       scale: {
         stepMinus1: { $type: 'dimension', $value: 'clamp(0.82rem, 0.78rem + 0.2vw, 0.92rem)' },
         step0: { $type: 'dimension', $value: 'clamp(1rem, 0.95rem + 0.25vw, 1.125rem)' },
-        step1: { $type: 'dimension', $value: 'clamp(1.22rem, 1.12rem + 0.5vw, 1.5rem)' },
-        step2: { $type: 'dimension', $value: 'clamp(1.5rem, 1.3rem + 1vw, 2.25rem)' },
-        step3: { $type: 'dimension', $value: 'clamp(1.9rem, 1.55rem + 1.6vw, 3rem)' },
-        step4: { $type: 'dimension', $value: 'clamp(2.25rem, 1.8rem + 2.2vw, 3.75rem)' }
+        step1: { $type: 'dimension', $value: `clamp(1.22rem, 1.12rem + 0.5vw, ${s1Max}rem)` },
+        step2: { $type: 'dimension', $value: `clamp(1.5rem, 1.3rem + 1vw, ${s2Max}rem)` },
+        step3: { $type: 'dimension', $value: `clamp(1.9rem, 1.55rem + 1.6vw, ${s3Max}rem)` },
+        step4: { $type: 'dimension', $value: `clamp(2.25rem, 1.8rem + 2.2vw, ${s4Max}rem)` }
       }
     },
     radius: {
@@ -793,16 +935,53 @@ export function compileDesignTokens(options = {}) {
   const styleName = options.style || parseFlag(argv, '--style', projectCfg.design?.styleSkill || 'bento');
 
   let brandLock = options.brandLock || null;
-  if (!brandLock && !isStudioRoot) {
-    const brandLockPath = path.join(rootDir, 'BRAND_IDENTITY_LOCK.json');
-    if (fs.existsSync(brandLockPath)) {
+  let gamutMaskType = options.gamutMaskType || null;
+  let fontPairingProfile = options.fontPairingProfile || null;
+
+  if (!isStudioRoot) {
+    if (!brandLock) {
+      const brandLockPath = path.join(rootDir, 'BRAND_IDENTITY_LOCK.json');
+      if (fs.existsSync(brandLockPath)) {
+        try {
+          brandLock = JSON.parse(fs.readFileSync(brandLockPath, 'utf8'));
+        } catch (_) {}
+      }
+    }
+    const interviewPath = path.join(rootDir, 'CLIENT_BRIEF_INTERVIEW.json');
+    if (fs.existsSync(interviewPath)) {
       try {
-        brandLock = JSON.parse(fs.readFileSync(brandLockPath, 'utf8'));
+        const interview = JSON.parse(fs.readFileSync(interviewPath, 'utf8'));
+        if (interview.bespokeDna) {
+          gamutMaskType = gamutMaskType || interview.bespokeDna.gamutMaskType;
+          fontPairingProfile =
+            fontPairingProfile ||
+            interview.bespokeDna.fontPairingDetails ||
+            interview.bespokeDna.fontPairingProfile;
+        }
       } catch (_) {}
+    }
+    if (!gamutMaskType || !fontPairingProfile) {
+      const dnaLedgerPath = path.join(FACTORY_ROOT, '.agents', 'memory', 'project_dna_fingerprints.json');
+      if (fs.existsSync(dnaLedgerPath)) {
+        try {
+          const ledger = JSON.parse(fs.readFileSync(dnaLedgerPath, 'utf8'));
+          const entry = (ledger.projects || []).find((p) => p.projectSlug === projectCfg.id);
+          if (entry?.vector) {
+            gamutMaskType = gamutMaskType || entry.vector.gamutMaskType;
+            fontPairingProfile = fontPairingProfile || entry.vector.fontPairingProfile;
+          }
+        } catch (_) {}
+      }
     }
   }
 
-  const dtcg = buildDtcgTokensObject(archetype, styleName, brandLock);
+  const dtcg = buildDtcgTokensObject(
+    archetype,
+    styleName,
+    brandLock,
+    gamutMaskType || 'atmospheric-analogous',
+    fontPairingProfile
+  );
   const cssContent = renderDesignTokensCss(dtcg);
 
   const writtenFiles = [];

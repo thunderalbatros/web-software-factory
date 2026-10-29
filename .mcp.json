@@ -11,12 +11,18 @@
   "mcpServers": {
     "omni-rag-ast": {
       "command": "node",
-      "args": ["./tools/mcp/mcp_omni_rag_server.mjs"],
+      "args": ["./tools/intelligence/mcp_omni_rag_server.mjs"],
+      "env": {
+        "OMNI_RAG_SQLITE_PATH": "./.cache/omni_rag_fts5.sqlite"
+      },
       "disabled": false
     },
     "web-factory-omni-rag": {
       "command": "node",
-      "args": ["./tools/mcp/mcp_omni_rag_server.mjs"],
+      "args": ["./tools/intelligence/mcp_omni_rag_server.mjs"],
+      "env": {
+        "OMNI_RAG_SQLITE_PATH": "./.cache/omni_rag_fts5.sqlite"
+      },
       "disabled": false
     },
     "context7": {

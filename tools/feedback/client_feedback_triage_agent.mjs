@@ -215,12 +215,52 @@ export function classifyClientTicketIntent(sanitizedMessage = '', consoleErrors 
 }
 
 /**
- * Classifies Commercial & Technical Scope of a Case B ticket against `SPEC.md`:
+ * Loads dynamic Explicit Non-Goals from `projects/<slug>/PRD_INTERVIEW_STATE.json` and `projects/<slug>/PRD_LEAN.md`.
+ */
+export function loadProjectExplicitNonGoals(projectSlug = '') {
+  const slug = String(projectSlug || getActiveProjectSnapshot()?.projectSlug || 'agencia-alfa').trim();
+  const projDir = path.join(FACTORY_ROOT, 'projects', slug);
+  const nonGoals = [];
+
+  try {
+    const statePath = path.join(projDir, 'PRD_INTERVIEW_STATE.json');
+    if (fs.existsSync(statePath)) {
+      const state = JSON.parse(fs.readFileSync(statePath, 'utf8'));
+      const b7 = state?.blocks?.block7_explicit_non_goals_and_success_metrics || {};
+      const b4 = state?.blocks?.block4_explicit_non_goals || {};
+      if (Array.isArray(b7.explicitNonGoals)) nonGoals.push(...b7.explicitNonGoals);
+      if (Array.isArray(b4.outOfScopeItems)) nonGoals.push(...b4.outOfScopeItems);
+      if (Array.isArray(b4.phase2DeferredItems)) nonGoals.push(...b4.phase2DeferredItems);
+    }
+  } catch (_) {}
+
+  try {
+    const prdPath = path.join(projDir, 'PRD_LEAN.md');
+    if (fs.existsSync(prdPath)) {
+      const md = fs.readFileSync(prdPath, 'utf8');
+      const secMatch = md.match(/##[^\r\n]*Explicit Non-Goals[\s\S]*?(?=\n##\s|\n---\s|$)/i);
+      if (secMatch) {
+        const bullets = [...secMatch[0].matchAll(/^\s*-\s*([^\r\n]+)/gm)].map((m) => m[1].trim());
+        nonGoals.push(...bullets);
+      }
+    }
+  } catch (_) {}
+
+  return [...new Set(nonGoals.filter(Boolean))];
+}
+
+/**
+ * Classifies Commercial & Technical Scope of a Case B ticket against `SPEC.md` and `PRD_LEAN.md` Explicit Non-Goals:
  *   - `BUG_GARANTIA` (defect on original `SPEC.md` — $0 warranty coverage)
  *   - `AJUSTE_MENOR` (fast visual/copy tweak — included in maintenance lane)
- *   - `NUEVA_FEATURE_COBRABLE` (out of original `SPEC.md` scope — triggers commercial quote alert)
+ *   - `NUEVA_FEATURE_COBRABLE` (out of original `SPEC.md` / matches `Explicit Non-Goals` — triggers commercial quote alert)
  */
-export function classifyCommercialAndTechnicalScope(sanitizedMessage = '', consoleErrors = []) {
+export function classifyCommercialAndTechnicalScope(
+  sanitizedMessage = '',
+  consoleErrors = [],
+  projectSlug = '',
+  customNonGoals = []
+) {
   const lower = String(sanitizedMessage || '').toLowerCase();
   if (
     consoleErrors.length > 0 ||
@@ -232,8 +272,34 @@ export function classifyCommercialAndTechnicalScope(sanitizedMessage = '', conso
       billingPolicy: 'Cubierto por Garantía Técnica sobre SPEC.md ($0 costo adicional para el cliente)'
     };
   }
+
+  // Check dynamic Explicit Non-Goals from PRD_INTERVIEW_STATE.json & PRD_LEAN.md
+  const dynamicNonGoals = [
+    ...loadProjectExplicitNonGoals(projectSlug),
+    ...(Array.isArray(customNonGoals) ? customNonGoals : [])
+  ];
+  const stopWords = new Set(['con', 'sin', 'del', 'las', 'los', 'una', 'uno', 'para', 'por', 'que', 'the', 'and', 'for']);
+  for (const ng of dynamicNonGoals) {
+    const cleanNg = String(ng)
+      .toLowerCase()
+      .replace(/^\[fase\s*2\]\s*/i, '')
+      .trim();
+    const keywords = cleanNg
+      .split(/[^a-záéíóúñ0-9]+/i)
+      .filter((w) => w.length >= 4 && !stopWords.has(w));
+    const matchedKeywords = keywords.filter((kw) => lower.includes(kw));
+    if (matchedKeywords.length >= 2 || (keywords.length === 1 && matchedKeywords.length === 1)) {
+      return {
+        commercialScope: 'NUEVA_FEATURE_COBRABLE',
+        technicalCategory: 'NEW_FEATURE_REQUEST',
+        matchedNonGoal: ng,
+        billingPolicy: `⚠️ ALERTA COMERCIAL: Solicitud coincide con Explicit Non-Goal de PRD_LEAN.md ("${ng}") — Cotizar como Adicional`
+      };
+    }
+  }
+
   if (
-    /\b(nueva secci[oó]n|nuevo m[oó]dulo|pasarela de pago|stripe|mercadopago|login|autenticaci[oó]n|dashboard|panel|base de datos|carrito|multi-idioma|ecommerce|integraci[oó]n crm)\b/i.test(
+    /\b(nueva secci[oó]n|nuevo m[oó]dulo|pasarela de pago|stripe|mercadopago|login|autenticaci[oó]n|dashboard|panel|base de datos|carrito|multi-idioma|ecommerce|integraci[oó]n crm|facturaci[oó]n afip|app nativa)\b/i.test(
       lower
     )
   ) {
@@ -423,7 +489,7 @@ export async function analyzeTicketAndProposeSpec(ticketInput = {}, options = {}
   }
 
   // Case B Stage 1: 100% Read-Only Diagnosis + OpenSpec Delta + CTO Triage Report + Slack Block Kit
-  const scopeInfo = classifyCommercialAndTechnicalScope(validation.sanitizedMessage, validation.consoleErrors);
+  const scopeInfo = classifyCommercialAndTechnicalScope(validation.sanitizedMessage, validation.consoleErrors, projectSlug);
   const astDiagnosis = diagnoseAstRootCauseReadOnly(projectSlug, validation.sectionSelector, validation.sanitizedMessage);
   const laneDecision = classifyAdaptiveDepthLane(validation.sanitizedMessage, {
     filesCount: astDiagnosis.fileLocks.length
@@ -933,9 +999,22 @@ export async function runClientFeedbackTriageSelfTest() {
     `  [${blockedAtSix ? 'PASS' : 'FAIL'}] (e) Sliding-Window Rate Limiter (Max 5 tickets/hour per client enforced)`
   );
 
-  const allPassed = testAOk && testBOk && testCOk && testDOk && blockedAtSix;
+  // Case (f): Dynamic Explicit Non-Goals from PRD_INTERVIEW_STATE.json / PRD_LEAN.md trigger NUEVA_FEATURE_COBRABLE
+  const nonGoalScope = classifyCommercialAndTechnicalScope(
+    'Necesitamos agregar portal de autogestión con login de usuarios y facturación electrónica AFIP/ARCA en tiempo real',
+    [],
+    'agencia-alfa'
+  );
+  const nonGoalCheckOk =
+    nonGoalScope.commercialScope === 'NUEVA_FEATURE_COBRABLE' &&
+    Boolean(nonGoalScope.matchedNonGoal);
+  console.log(
+    `  [${nonGoalCheckOk ? 'PASS' : 'FAIL'}] (f) Dynamic Explicit Non-Goals from PRD_LEAN.md matched ("${nonGoalScope.matchedNonGoal || ''}") -> NUEVA_FEATURE_COBRABLE`
+  );
+
+  const allPassed = testAOk && testBOk && testCOk && testDOk && blockedAtSix && nonGoalCheckOk;
   console.log('--------------------------------------------------------------------');
-  console.log(`🏆 CLIENT FEEDBACK TRIAGE SELF-TEST: ${allPassed ? 'PASSED (5/5 Checks Green)' : 'FAILED'}`);
+  console.log(`🏆 CLIENT FEEDBACK TRIAGE SELF-TEST: ${allPassed ? 'PASSED (6/6 Checks Green)' : 'FAILED'}`);
   console.log('====================================================================\n');
 
   return { passed: allPassed };

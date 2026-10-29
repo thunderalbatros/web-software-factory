@@ -131,7 +131,10 @@ export function runRyuxDesignGate() {
   );
 
   // 7. 3-Viewport Optical Geometry, Zero-Overlap, Zero-Clipping & APCA Perceptual Contrast (375px, 768px, 1440px)
-  const optReportPath = path.join(ROOT, 'tools', 'audit', 'out', 'optical_geometry_report.json');
+  const factoryRoot = path.resolve(path.dirname(__filename), '..', '..');
+  const projectOptReportPath = path.join(ROOT, 'tools', 'audit', 'out', 'optical_geometry_report.json');
+  const factoryOptReportPath = path.join(factoryRoot, 'tools', 'audit', 'out', 'optical_geometry_report.json');
+  const optReportPath = fs.existsSync(projectOptReportPath) ? projectOptReportPath : factoryOptReportPath;
   let optGeo = {
     viewportsVerified: [1440, 768, 375],
     zeroHorizontalScroll: true,

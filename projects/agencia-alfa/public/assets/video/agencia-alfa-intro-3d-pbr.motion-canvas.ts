@@ -8,6 +8,7 @@ export const BRAND_INTRO_SCENE_CONFIG = {
   slug: "agencia-alfa",
   templateId: "3d-pbr",
   archetype: "luxury-architecture-and-real-estate",
+  choreographyId: "intro-isometric-chamfered-18e2df",
   fps: 60,
   durationSeconds: 4,
   totalFrames: 240,

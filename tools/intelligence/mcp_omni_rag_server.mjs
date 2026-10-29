@@ -610,6 +610,153 @@ export function hydrateDeferredToolSchema(toolName = '') {
 }
 
 /**
+ * Expands a retrieved chunk to its Parent Markdown Section (up to `maxChars`, default 2200)
+ * when the underlying `knowledge/` or repo file exists on disk (Parent Document Retriever pattern).
+ */
+export function expandChunkToParentMarkdownSection(chunk = {}, maxChars = 2200) {
+  const rawSource = String(chunk.source || chunk.id || '').replace(/^local:\/\//, '').split('#')[0];
+  const snippet = String(chunk.text || chunk.snippet || '');
+  if (!rawSource) return snippet.slice(0, maxChars);
+
+  const absPath = path.isAbsolute(rawSource) ? rawSource : path.join(ROOT, rawSource);
+  if (!fs.existsSync(absPath) || !fs.statSync(absPath).isFile()) {
+    return snippet.slice(0, maxChars);
+  }
+
+  try {
+    const fileContent = fs.readFileSync(absPath, 'utf8');
+    const anchorProbe = snippet.trim().slice(0, 80);
+    const pos = anchorProbe ? fileContent.indexOf(anchorProbe) : -1;
+    if (pos === -1) return snippet.slice(0, maxChars);
+
+    // Find start of enclosing Markdown heading (## or #)
+    const before = fileContent.slice(0, pos);
+    const headingMatches = [...before.matchAll(/^#{1,3}\s+[^\r\n]+/gm)];
+    const sectionStart =
+      headingMatches.length > 0 ? headingMatches[headingMatches.length - 1].index : Math.max(0, pos - 300);
+    return fileContent.slice(sectionStart, sectionStart + maxChars).trim();
+  } catch (_) {
+    return snippet.slice(0, maxChars);
+  }
+}
+
+/**
+ * Multi-Query RAG Fusion (Reciprocal Rank Fusion `RRF(d) = sum(1 / (60 + rank))`)
+ * + Parent Document Section Expansion + CRAG (Corrective RAG) Sufficiency Evaluator.
+ */
+export async function executeRagFusionRrfAndCrag(query = '', options = {}) {
+  const baseQuery = String(query || '').trim();
+  const limit = Math.max(1, Number(options.limit || 5));
+  const useRerank = Boolean(options.useOnnxRerank);
+
+  const coreTokens = baseQuery
+    .toLowerCase()
+    .split(/[^a-záéíóúñ0-9_-]+/i)
+    .filter((t) => t.length >= 3);
+
+  // 1. Generate 3 complementary query reformulations (Exact, Conceptual/Architectural, API/Code)
+  const queryVariants = [
+    { id: 'exact', query: baseQuery },
+    {
+      id: 'conceptual',
+      query: `${baseQuery} architecture design principles best practices 2026`
+    },
+    {
+      id: 'api_implementation',
+      query: `${coreTokens.slice(0, 6).join(' ')} implementation patterns tokens code`
+    }
+  ];
+
+  // 2. Execute retrieval across all 3 query reformulations and fuse with RRF(d) = sum(1 / (60 + rank))
+  const rrfMap = new Map();
+  for (const variant of queryVariants) {
+    const hits = await queryKnowledge(variant.query, limit * 2, {
+      fastLocalOnly: true,
+      useOnnxRerank: useRerank
+    });
+    hits.forEach((hit, idx) => {
+      const rank = idx + 1;
+      const docKey = String(hit.id || hit.source || `${variant.id}-${idx}`);
+      const rrfDelta = 1 / (60 + rank);
+      const existing = rrfMap.get(docKey);
+      if (existing) {
+        existing.rrfScore = Number((existing.rrfScore + rrfDelta).toFixed(6));
+        existing.matchedVariants.push(variant.id);
+      } else {
+        rrfMap.set(docKey, {
+          ...hit,
+          rrfScore: Number(rrfDelta.toFixed(6)),
+          matchedVariants: [variant.id]
+        });
+      }
+    });
+  }
+
+  let fusedResults = [...rrfMap.values()].sort((a, b) => b.rrfScore - a.rrfScore);
+
+  // 3. CRAG (Corrective RAG) Sufficiency Check: verify lexical/semantic coverage of core query tokens
+  const evaluateSufficiency = (items) => {
+    if (!items.length || !coreTokens.length) return { sufficient: items.length > 0, coverageRatio: 1 };
+    const combinedText = items
+      .slice(0, limit)
+      .map((it) => `${it.source || ''} ${it.title || ''} ${it.text || it.snippet || ''}`.toLowerCase())
+      .join(' ');
+    const matched = coreTokens.filter((tok) => combinedText.includes(tok));
+    const ratio = Number((matched.length / coreTokens.length).toFixed(2));
+    return {
+      sufficient: ratio >= 0.4,
+      coverageRatio: ratio
+    };
+  };
+
+  let cragEval = evaluateSufficiency(fusedResults);
+  let cragRewrittenQuery = null;
+
+  if (!cragEval.sufficient && coreTokens.length > 0) {
+    cragRewrittenQuery = coreTokens.slice(0, 4).join(' ');
+    const correctiveHits = await queryKnowledge(cragRewrittenQuery, limit * 2, {
+      fastLocalOnly: true,
+      useOnnxRerank: true
+    });
+    correctiveHits.forEach((hit, idx) => {
+      const docKey = String(hit.id || hit.source || `crag-${idx}`);
+      const rrfDelta = 1 / (60 + idx + 1);
+      const existing = rrfMap.get(docKey);
+      if (existing) {
+        existing.rrfScore = Number((existing.rrfScore + rrfDelta).toFixed(6));
+        if (!existing.matchedVariants.includes('crag_rewrite')) existing.matchedVariants.push('crag_rewrite');
+      } else {
+        rrfMap.set(docKey, {
+          ...hit,
+          rrfScore: Number(rrfDelta.toFixed(6)),
+          matchedVariants: ['crag_rewrite']
+        });
+      }
+    });
+    fusedResults = [...rrfMap.values()].sort((a, b) => b.rrfScore - a.rrfScore);
+    cragEval = evaluateSufficiency(fusedResults);
+  }
+
+  // 4. Parent Document Section Expansion on top results
+  const topExpanded = fusedResults.slice(0, limit).map((item) => ({
+    ...item,
+    parentExpandedText: expandChunkToParentMarkdownSection(item, 2200)
+  }));
+
+  return {
+    queryVariants: queryVariants.map((v) => v.query),
+    rrfFormula: 'sum(1 / (60 + rank))',
+    cragEvaluation: {
+      sufficient: cragEval.sufficient,
+      coverageRatio: cragEval.coverageRatio,
+      correctiveRewriteTriggered: Boolean(cragRewrittenQuery),
+      cragRewrittenQuery
+    },
+    results: topExpanded
+  };
+}
+
+/**
  * Validates incoming MCP request security (`MCP01:2025–MCP10:2025` + `ASI01–ASI10`):
  *   - Generates CSPRNG trace/session ID (`generateCsprngSessionId()`)
  *   - Rejects unauthorized `x-mcp-header` / `x-mcp-untrusted` headers
@@ -860,7 +1007,8 @@ async function executeSingleMcpTool(toolName, args = {}, traceId = generateCsprn
     const route = routeQueryToSquads(q);
     const contextBudget = assembleThreeTierContext(q);
     const localVaultMatches = lookupInLocalVault(q);
-    const rawHits = await queryKnowledge(q, lim * 2, { fastLocalOnly: true, useOnnxRerank: useRerank });
+    const ragFusion = await executeRagFusionRrfAndCrag(q, { limit: lim * 2, useOnnxRerank: useRerank });
+    const rawHits = ragFusion.results;
     const hits = rawHits
       .filter((h) => {
         const cleanPath = String(h.source || h.id || '').replace(/^local:\/\//, '').split('#')[0];
@@ -877,8 +1025,12 @@ async function executeSingleMcpTool(toolName, args = {}, traceId = generateCsprn
             authorityBoost: h.authorityBoost || (h.epistemicTier === 'TIER_1_SOTA_2026' ? 1.35 : 1.15),
             epistemicRole: h.epistemicRole
           }
-        : classifyEpistemicTier(cleanPath, h.text || h.snippet || '');
-      const guardMeta = inspectAndGuardLegacyFragment(h.text || h.snippet || '', tierMeta.epistemicTier, cleanPath);
+        : classifyEpistemicTier(cleanPath, h.parentExpandedText || h.text || h.snippet || '');
+      const guardMeta = inspectAndGuardLegacyFragment(
+        h.parentExpandedText || h.text || h.snippet || '',
+        tierMeta.epistemicTier,
+        cleanPath
+      );
       const isClassicBook = tierMeta.epistemicTier === 'TIER_2_TIMELESS_PRINCIPLES';
       let rawText = sanitizeMcpRetrievedFragment(guardMeta.guardedText);
       if (isClassicBook && !rawText.includes('[TRANSLATION_RULE:')) {
@@ -887,6 +1039,8 @@ async function executeSingleMcpTool(toolName, args = {}, traceId = generateCsprn
       const text = rawText.slice(0, 2200);
       return {
         ...h,
+        rrfScore: h.rrfScore,
+        matchedVariants: h.matchedVariants,
         epistemicTier: tierMeta.epistemicTier,
         authorityBoost: tierMeta.authorityBoost,
         epistemicRole: tierMeta.epistemicRole,
@@ -911,6 +1065,11 @@ async function executeSingleMcpTool(toolName, args = {}, traceId = generateCsprn
       squadRoute: route.primarySquad,
       epistemicIntent: rrfFallback.epistemicIntent,
       activeTranslationRule: TRANSLATION_RULE_WARNING,
+      ragFusionRrfAndCrag: {
+        rrfFormula: ragFusion.rrfFormula,
+        queryVariants: ragFusion.queryVariants,
+        cragEvaluation: ragFusion.cragEvaluation
+      },
       complementaryPairs: rrfFallback.complementaryPairs || [],
       localVaultMatches,
       headroomCcr: {
@@ -1089,5 +1248,19 @@ export function startMcpServer() {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
-  startMcpServer();
+  if (process.argv.includes('--self-test')) {
+    executeRagFusionRrfAndCrag('OKLCH W3C DTCG 2025.10 tokens and APCA contrast', { limit: 4 }).then((res) => {
+      console.log('====================================================================');
+      console.log('🧠 OMNI-RAG MCP SERVER v5.4 — RAG FUSION RRF + CRAG SELF-TEST');
+      console.log('====================================================================');
+      console.log(`  • RRF Formula       : ${res.rrfFormula}`);
+      console.log(`  • Query Variants    : ${res.queryVariants.length}`);
+      console.log(`  • CRAG Sufficient   : ${res.cragEvaluation.sufficient} (coverage=${res.cragEvaluation.coverageRatio})`);
+      console.log(`  • Top Fused Results : ${res.results.length} (Top RRF=${res.results[0]?.rrfScore || 0})`);
+      console.log('====================================================================\n');
+      process.exit(res.results.length > 0 && res.cragEvaluation.sufficient ? 0 : 1);
+    });
+  } else {
+    startMcpServer();
+  }
 }

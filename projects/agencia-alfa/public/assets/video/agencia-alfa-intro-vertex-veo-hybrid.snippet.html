@@ -1,4 +1,5 @@
-<figure class="wf-brand-intro-stage" data-intro-template="vertex-veo-hybrid" data-fps="60" data-max-budget-mb="1.8">
+<figure class="wf-brand-intro-stage" data-intro-template="vertex-veo-hybrid" data-choreography="intro-low-golden-bc2bdc" data-fps="60" data-max-budget-mb="1.8">
+  <canvas class="wf-brand-intro-canvas" width="960" height="540" aria-label="Animación de introducción de marca a 60 FPS"></canvas>
   <video
     class="wf-brand-intro-video"
     width="1920"
@@ -13,13 +14,24 @@
     <source src="/assets/video/agencia-alfa-intro-vertex-veo-hybrid.webm" type="video/webm; codecs=av01.0.05M.08,opus" />
     <source src="/assets/video/agencia-alfa-intro-vertex-veo-hybrid.mp4" type="video/mp4" />
   </video>
-  <button
-    type="button"
-    class="wf-audio-mute-toggle"
-    data-audio-mute-toggle
-    aria-pressed="true"
-    aria-label="Activar sonido del sitio"
-  >
-    <span aria-hidden="true">🔇</span> Sonido
-  </button>
+  <div class="wf-brand-intro-controls">
+    <button
+      type="button"
+      class="wf-skip-intro-btn"
+      data-skip-intro
+      aria-label="Saltar introducción"
+    >
+      Saltar Intro
+    </button>
+    <button
+      type="button"
+      class="wf-audio-mute-toggle"
+      data-audio-mute-toggle
+      aria-pressed="true"
+      aria-label="Activar sonido del sitio"
+    >
+      <span aria-hidden="true">🔇</span> Sonido
+    </button>
+  </div>
+  <script type="module" src="/site/js/brand-intro-player.js" defer></script>
 </figure>

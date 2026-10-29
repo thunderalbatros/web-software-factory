@@ -7,7 +7,8 @@
 export const BRAND_INTRO_SCENE_CONFIG = {
   slug: "agencia-alfa",
   templateId: "vertex-veo-hybrid",
-  archetype: "b2b-saas-platform",
+  archetype: "fintech-and-banking",
+  choreographyId: "intro-low-golden-bc2bdc",
   fps: 60,
   durationSeconds: 3.5,
   totalFrames: 210,

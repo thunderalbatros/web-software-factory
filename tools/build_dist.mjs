@@ -5,12 +5,26 @@ import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { loadProjectConfig, FACTORY_ROOT } from './lib/project_loader.mjs';
 import { generateOpenGraphSvgCard } from './design/og_image_generator.mjs';
+import { applyBespokeMorphologyToProjectDom } from './design/build_vanilla_primitives.mjs';
+import { synthesizeProceduralSoundFromDesignCriteria } from './media/sonic_and_music_forge.mjs';
+import { forge3dSceneOrEffect } from './design/shader_and_3d_forge.mjs';
+import { generateBrandIntroVideo } from './media/programmatic_video_forge.mjs';
 
 const projectConfig = loadProjectConfig();
 const root = projectConfig.projectRoot;
 const dist = path.join(root, projectConfig.paths.distDir);
 
 console.log(`=== BUILDING CLOUDFLARE PRODUCTION PAYLOAD (${projectConfig.id} -> dist/) ===\n`);
+
+// 0. Apply Bespoke Morphology & Industry Interactive Widget to project DOM before copying to dist/
+try {
+  const morphRes = applyBespokeMorphologyToProjectDom(projectConfig.id);
+  console.log(
+    `• Applied Bespoke DOM Morphology (grid: ${morphRes.gridTopology}, hero: ${morphRes.heroArchitecture}, nav: ${morphRes.navVariant}, widget: ${morphRes.industry})`
+  );
+} catch (err) {
+  console.warn(`• [BespokeMorphology] Warning: ${err.message}`);
+}
 
 function copyRecursive(src, dest) {
   if (!fs.existsSync(src)) return;
@@ -238,6 +252,194 @@ async function minifyDistAssets() {
   console.log(`  ✓ Minified dist/ CSS, JS & SVGs (saved ${(savedBytes / 1024).toFixed(1)} KiB + generated .map files)`);
 }
 
+// 4a. Inject Psychoacoustic Sonic Identity (full sonicPatch), 3D Scene Runtime & Procedural Brand Intro Player BEFORE minification
+try {
+  const interviewJsonPath = path.join(root, 'CLIENT_BRIEF_INTERVIEW.json');
+  let sonicConfig = {
+    project: projectConfig.id,
+    archetype: projectConfig.industryArchetype || projectConfig.archetype || 'saas',
+    uiSfxMode: 'subtle',
+    material: 'polymer',
+    backgroundMusic: 'off',
+    introVideoMode: 'none',
+    forge3dMode: 'none'
+  };
+  let savedSonicPatch = null;
+  if (fs.existsSync(interviewJsonPath)) {
+    const parsedBrief = JSON.parse(fs.readFileSync(interviewJsonPath, 'utf8'));
+    const b5 = parsedBrief?.blocks?.block5_motion_3d_interactivity || {};
+    const b6 = parsedBrief?.blocks?.block6_sonic_music_video || {};
+    sonicConfig = {
+      ...sonicConfig,
+      archetype: parsedBrief?.blocks?.block1_industry_and_objective?.industry || sonicConfig.archetype,
+      uiSfxMode: b6.uiSfxMode || sonicConfig.uiSfxMode,
+      material: b6.material || sonicConfig.material,
+      backgroundMusic: b6.backgroundMusic || sonicConfig.backgroundMusic,
+      introVideoMode: b6.introVideoMode || sonicConfig.introVideoMode,
+      forge3dMode: b5.forge3dMode || sonicConfig.forge3dMode
+    };
+    savedSonicPatch = parsedBrief?.sonicPatch || null;
+  }
+
+  const fullSonicPatch =
+    savedSonicPatch ||
+    synthesizeProceduralSoundFromDesignCriteria({
+      archetype: sonicConfig.archetype,
+      material: sonicConfig.material,
+      borderRadiusPx: 10,
+      oklch: { L: 0.16, C: 0.04, H: 255 },
+      elementWidthPx: 320,
+      elementHeightPx: 64
+    });
+
+  const fullSonicPayload = {
+    ...sonicConfig,
+    sonicPatch: fullSonicPatch
+  };
+
+  fs.mkdirSync(path.join(dist, 'data'), { recursive: true });
+  fs.writeFileSync(path.join(dist, 'data', 'sonic-identity.json'), JSON.stringify(fullSonicPayload, null, 2) + '\n', 'utf8');
+
+  const distIndexHtmlPath = path.join(dist, 'index.html');
+  let distIndexHtml = fs.existsSync(distIndexHtmlPath) ? fs.readFileSync(distIndexHtmlPath, 'utf8') : '';
+
+  const srcDirector = path.join(FACTORY_ROOT, 'templates', 'components', 'web-audio-director.js');
+  if (fs.existsSync(srcDirector) && sonicConfig.uiSfxMode !== 'off') {
+    fs.mkdirSync(path.join(dist, 'site', 'js'), { recursive: true });
+    fs.copyFileSync(srcDirector, path.join(dist, 'site', 'js', 'web-audio-director.js'));
+    if (distIndexHtml && !distIndexHtml.includes('web-audio-director.js')) {
+      distIndexHtml = distIndexHtml.replace(
+        /<\/body>/i,
+        '  <script type="module" src="/site/js/web-audio-director.js" defer></script>\n</body>'
+      );
+    }
+  }
+
+  if (sonicConfig.forge3dMode && sonicConfig.forge3dMode !== 'none') {
+    const forged3d = forge3dSceneOrEffect(sonicConfig.forge3dMode, projectConfig.id);
+    const fx3dSrcDir = path.join(root, 'site', 'js', 'fx3d');
+    if (fs.existsSync(fx3dSrcDir)) {
+      copyRecursive(fx3dSrcDir, path.join(dist, 'site', 'js', 'fx3d'));
+    }
+    const runtimeJs = `// Auto-generated 3D Runtime Loader (${forged3d.primitiveId})\nimport * as scene3d from './fx3d/${forged3d.primitiveId}.mjs';\nif (typeof window !== 'undefined') { window.__wf3dRuntime = scene3d; }\n`;
+    fs.mkdirSync(path.join(dist, 'site', 'js'), { recursive: true });
+    fs.writeFileSync(path.join(dist, 'site', 'js', 'scene-3d-runtime.js'), runtimeJs, 'utf8');
+    if (distIndexHtml && !distIndexHtml.includes('scene-3d-runtime.js')) {
+      distIndexHtml = distIndexHtml.replace(
+        /<\/body>/i,
+        '  <script type="module" src="/site/js/scene-3d-runtime.js" defer></script>\n</body>'
+      );
+    }
+  }
+
+  if (sonicConfig.introVideoMode && sonicConfig.introVideoMode !== 'none') {
+    generateBrandIntroVideo({
+      style: sonicConfig.introVideoMode,
+      projectSlug: projectConfig.id,
+      projectRoot: root,
+      archetype: sonicConfig.archetype
+    });
+    const videoAssetsDir = path.join(root, 'public', 'assets', 'video');
+    if (fs.existsSync(videoAssetsDir)) {
+      copyRecursive(videoAssetsDir, path.join(dist, 'assets', 'video'));
+    }
+    const srcPlayerJs = path.join(root, 'site', 'js', 'brand-intro-player.js');
+    if (fs.existsSync(srcPlayerJs)) {
+      fs.mkdirSync(path.join(dist, 'site', 'js'), { recursive: true });
+      fs.copyFileSync(srcPlayerJs, path.join(dist, 'site', 'js', 'brand-intro-player.js'));
+      if (distIndexHtml && !distIndexHtml.includes('brand-intro-player.js')) {
+        distIndexHtml = distIndexHtml.replace(
+          /<\/body>/i,
+          '  <script type="module" src="/site/js/brand-intro-player.js" defer></script>\n</body>'
+        );
+      }
+    }
+  }
+
+  if (distIndexHtml && fs.existsSync(distIndexHtmlPath)) {
+    fs.writeFileSync(distIndexHtmlPath, distIndexHtml, 'utf8');
+  }
+  console.log(
+    `• Injected Sonic Patch (${fullSonicPatch.seedId || 'parametric'}), 3D (${sonicConfig.forge3dMode}) & Intro (${sonicConfig.introVideoMode}) before minification`
+  );
+} catch (err) {
+  console.warn(`• [Audio/3D/Intro Pre-Minify] Warning: ${err.message}`);
+}
+
+// 4b. Compile dynamic /llms.txt and /llms-full.txt (Agentic SEO & GEO Discovery Manifests) from PRD_LEAN.md, SPEC.md & DESIGN.md
+try {
+  const prdLeanPath = path.join(root, 'PRD_LEAN.md');
+  const specMdPath = path.join(root, 'SPEC.md');
+  const designMdPath = path.join(root, 'DESIGN.md');
+  const prdStatePath = path.join(root, 'PRD_INTERVIEW_STATE.json');
+
+  const prdLeanText = fs.existsSync(prdLeanPath) ? fs.readFileSync(prdLeanPath, 'utf8') : '';
+  const specMdText = fs.existsSync(specMdPath) ? fs.readFileSync(specMdPath, 'utf8') : '';
+  const designMdText = fs.existsSync(designMdPath) ? fs.readFileSync(designMdPath, 'utf8') : '';
+  const prdStateObj = fs.existsSync(prdStatePath) ? JSON.parse(fs.readFileSync(prdStatePath, 'utf8')) : null;
+
+  const brandTitle =
+    prdStateObj?.blocks?.block1_business_identity_and_problem?.officialBrandName ||
+    prdStateObj?.blocks?.block1_business_and_audience?.brandName ||
+    projectConfig.name ||
+    projectConfig.id;
+  const problemSolved =
+    prdStateObj?.blocks?.block1_business_identity_and_problem?.coreProblemSolved ||
+    prdStateObj?.blocks?.block1_business_and_audience?.coreProblemSolved ||
+    `Plataforma digital de alta conversión y rendimiento en el borde (${projectConfig.archetype || 'saas-b2b'}).`;
+  const primaryCta =
+    prdStateObj?.blocks?.block5_capabilities_and_cro_goals?.primaryCta ||
+    prdStateObj?.blocks?.block3_functional_scope?.primaryCtaLabel ||
+    'Solicitar propuesta';
+  const mustHaveFeatures =
+    prdStateObj?.blocks?.block5_capabilities_and_cro_goals?.requiredCapabilities ||
+    prdStateObj?.blocks?.block3_functional_scope?.mustHaveFeatures || [
+      'Arquitectura Zero-CLS y 60 FPS en el hilo compositor',
+      'Seguridad Zero-Trust (CSP estricta, HSTS, Valibot)',
+      'Tokens perceptuales OKLCH y contraste APCA verificado'
+    ];
+
+  const llmsConcise = `# ${brandTitle}
+
+> ${problemSolved}
+
+## Navegación y Capacidades Principales
+- [Inicio](/): Propuesta de valor central y módulo interactivo de rubro (${projectConfig.industryArchetype || projectConfig.archetype || 'saas'}).
+- [Especificación Completa para Agentes IA](/llms-full.txt): Arquitectura funcional, reglas de negocio y catálogo de servicios.
+- Acción Principal (CTA): ${primaryCta}
+
+## Funciones Clave
+${mustHaveFeatures.map((f) => `- ${f}`).join('\n')}
+`;
+
+  const llmsFull = `# ${brandTitle} — Full Agentic Knowledge & Technical Specification (/llms-full.txt)
+
+> ${problemSolved}
+
+## 1. Resumen Ejecutivo y Propuesta de Valor
+- **Proyecto:** \`${projectConfig.id}\`
+- **Stack:** \`${projectConfig.stack || 'vanilla-edge'}\`
+- **Arquetipo:** \`${projectConfig.industryArchetype || projectConfig.archetype || 'saas-b2b'}\`
+- **CTA Primario:** ${primaryCta}
+
+## 2. Capacidades Funcionales Verificadas
+${mustHaveFeatures.map((f) => `- ${f}`).join('\n')}
+
+${prdLeanText ? `## 3. Product Requirements Document (PRD_LEAN.md)\n\n${prdLeanText.trim()}\n` : ''}
+${specMdText ? `## 4. Technical Specification (SPEC.md)\n\n${specMdText.trim()}\n` : ''}
+${designMdText ? `## 5. Design System & Tokens Summary (DESIGN.md)\n\n${designMdText.slice(0, 2400).trim()}\n` : ''}
+`;
+
+  // Preserve existing custom llms.txt if project root has a richer hand-authored one and no PRD_LEAN exists yet
+  if (prdLeanText || specMdText || !fs.existsSync(path.join(dist, 'llms.txt'))) {
+    fs.writeFileSync(path.join(dist, 'llms.txt'), llmsConcise, 'utf8');
+  }
+  fs.writeFileSync(path.join(dist, 'llms-full.txt'), llmsFull, 'utf8');
+  console.log(`• Generated Agentic Discovery Manifests (dist/llms.txt & dist/llms-full.txt)`);
+} catch (err) {
+  console.warn(`• [llms.txt Generator] Warning: ${err.message}`);
+}
+
 await minifyDistAssets();
 
 // 4c. Inject automatic build cache-buster (?v=<buildTs>) into all HTML files in dist/
@@ -299,38 +501,6 @@ try {
     fs.copyFileSync(srcOg, path.join(dist, 'og-image.svg'));
   }
   console.log(`• Generated OpenGraph Social Card (dist/og-image.svg, ${ogRes.bytes} bytes)`);
-} catch (_) {}
-
-// 5c. Inject Psychoacoustic Sonic Identity & web-audio-director.js from CLIENT_BRIEF_INTERVIEW.json
-try {
-  const interviewJsonPath = path.join(root, 'CLIENT_BRIEF_INTERVIEW.json');
-  let sonicConfig = {
-    project: projectConfig.id,
-    archetype: projectConfig.industryArchetype || projectConfig.archetype || 'saas',
-    uiSfxMode: 'subtle',
-    material: 'polymer',
-    backgroundMusic: 'off',
-    introVideoMode: 'none'
-  };
-  if (fs.existsSync(interviewJsonPath)) {
-    const parsedBrief = JSON.parse(fs.readFileSync(interviewJsonPath, 'utf8'));
-    const b6 = parsedBrief?.blocks?.block6_sonic_music_video || {};
-    sonicConfig = {
-      ...sonicConfig,
-      uiSfxMode: b6.uiSfxMode || sonicConfig.uiSfxMode,
-      material: b6.material || sonicConfig.material,
-      backgroundMusic: b6.backgroundMusic || sonicConfig.backgroundMusic,
-      introVideoMode: b6.introVideoMode || sonicConfig.introVideoMode
-    };
-  }
-  fs.mkdirSync(path.join(dist, 'data'), { recursive: true });
-  fs.writeFileSync(path.join(dist, 'data', 'sonic-identity.json'), JSON.stringify(sonicConfig, null, 2) + '\n', 'utf8');
-  const srcDirector = path.join(FACTORY_ROOT, 'templates', 'components', 'web-audio-director.js');
-  if (fs.existsSync(srcDirector) && sonicConfig.uiSfxMode !== 'off') {
-    fs.mkdirSync(path.join(dist, 'site', 'js'), { recursive: true });
-    fs.copyFileSync(srcDirector, path.join(dist, 'site', 'js', 'web-audio-director.js'));
-  }
-  console.log(`• Injected Sonic Identity Config (dist/data/sonic-identity.json, mode: ${sonicConfig.uiSfxMode})`);
 } catch (_) {}
 
 // 6. Cloudflare SPA routing is handled natively via wrangler.toml:

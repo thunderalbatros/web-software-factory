@@ -423,6 +423,8 @@ async function handleConstruir() {
   const { runLocalFullstackAndComponentHarness } = await import(
     './audit/local_fullstack_and_component_harness.mjs'
   );
+  const { applyBespokeMorphologyToProjectDom } = await import('./design/build_vanilla_primitives.mjs');
+  const { evaluateFullJevOuterAndMetaGate } = await import('./intelligence/jev_semantic_gate.mjs');
 
   const laneDecision = classifyAdaptiveDepthLane(`Construcción Ejecutiva del CTO (${projectCfg.id})`, { filesCount: 4 });
   runHumanLayerRpiPipeline({
@@ -434,8 +436,9 @@ async function handleConstruir() {
   verifySpecKittyTraceabilityMatrix(projectCfg.id);
   verifyF2pAndP2pGate({ f2pTestPassed: true, p2pSuitePassed: true, evidences: [`Build ${projectCfg.id}`] });
 
-  // 1. Compile Tokens (respecting BRAND_IDENTITY_LOCK.json) & Build Production Dist for the active project
+  // 1. Compile Tokens (respecting BRAND_IDENTITY_LOCK.json), Apply Bespoke Morphology to DOM, & Build Production Dist
   compileDesignTokens({ projectDir: projectCfg.projectRoot });
+  applyBespokeMorphologyToProjectDom(projectCfg.id);
   execSync(`node "${path.join(ROOT, 'tools', 'build_dist.mjs')}" --project "${projectCfg.projectRoot}"`, { cwd: ROOT, stdio: 'inherit' });
 
   // 2. Execute Parallel DAG Bolt (Wave 1 CRISP Outline -> Wave 2A Tracer-Bullet -> Wave 2B Fill-In -> Wave 3 Visual/Security/JEV Audit)
@@ -447,8 +450,11 @@ async function handleConstruir() {
     forceLane: laneDecision.lane
   });
 
-  // 2b. Run Security Quarantine Gate & Local Fullstack + Pure Component 5-State Harness automatically
+  // 2b. Run Security Quarantine Gate, JEV Outer/Meta Gate & Local Fullstack + Pure Component 5-State Harness automatically
   runSecurityQuarantineGate();
+  await evaluateFullJevOuterAndMetaGate({
+    specPath: path.join(projectCfg.projectRoot, 'SPEC.md')
+  });
   runLocalFullstackAndComponentHarness({ projectRoot: projectCfg.projectRoot });
 
   // 3. Capture Pruned DOM + AX Tree + Stagehand Self-Healing Snapshot

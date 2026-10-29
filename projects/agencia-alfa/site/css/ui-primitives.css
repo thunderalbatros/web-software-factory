@@ -129,22 +129,224 @@
   border: 1px solid oklch(0.85 0.15 165 / 0.28);
 }
 
-/* 4. 8 Grid Topologies & Touch-Safe Primary CTA (Fitts's Law >= 44x44px) */
-.bento-grid,
-[data-grid-topology="golden-ratio-bento-matrix"],
-[data-grid-topology="swiss-asymmetric-editorial"],
-[data-grid-topology="kinetic-scrollytelling-stage"],
-[data-grid-topology="architectural-brutalist-monolith"],
-[data-grid-topology="tufte-high-density-data"],
-[data-grid-topology="split-screen-sticky-narrative"],
-[data-grid-topology="editorial-magazine-spread"],
-[data-grid-topology="interactive-webgl-spatial-canvas"] {
+/* 4. 8 Structurally Distinct CSS Grid Topologies (Phase 37 Bespoke Morphology) */
+.bento-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: var(--space-m, clamp(1rem, 0.85rem + 0.75vw, 1.5rem));
   width: 100%;
   max-width: 1280px;
   margin-inline: auto;
+}
+
+/* (1) Swiss Asymmetric Editorial (1 : 2.618 Golden Split + 1px Exposed Hairlines) */
+[data-grid-topology="swiss-asymmetric-editorial"] .bento-grid,
+.bento-grid[data-grid-topology="swiss-asymmetric-editorial"] {
+  display: grid;
+  grid-template-columns: minmax(min(100%, 240px), 1fr) minmax(min(100%, 320px), 2.618fr);
+  gap: 0;
+  border: 1px solid var(--border-subtle, oklch(1 0 0 / 0.12));
+}
+[data-grid-topology="swiss-asymmetric-editorial"] .bento-card {
+  border-radius: 0;
+  border: 1px solid var(--border-subtle, oklch(1 0 0 / 0.10));
+}
+
+/* (2) Kinetic Scrollytelling Stage (Narrative Stack + Scroll-Snap Proximity) */
+[data-grid-topology="kinetic-scrollytelling-stage"] {
+  scroll-snap-type: y proximity;
+}
+[data-grid-topology="kinetic-scrollytelling-stage"] .bento-grid,
+.bento-grid[data-grid-topology="kinetic-scrollytelling-stage"] {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+}
+[data-grid-topology="kinetic-scrollytelling-stage"] .section-block {
+  scroll-snap-align: start;
+}
+
+/* (3) Architectural Brutalist Monolith (0px Radius + 2px Structural Hairlines + High Negative Space) */
+[data-grid-topology="architectural-brutalist-monolith"] .bento-grid,
+.bento-grid[data-grid-topology="architectural-brutalist-monolith"] {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 1.5rem;
+}
+[data-grid-topology="architectural-brutalist-monolith"] .bento-card,
+[data-grid-topology="architectural-brutalist-monolith"] .pricing-card {
+  border-radius: 0;
+  border: 2px solid oklch(1 0 0 / 0.22);
+}
+
+/* (4) Tufte High-Density Data (Analytical Multi-Column + Tabular Numerals) */
+[data-grid-topology="tufte-high-density-data"] .bento-grid,
+.bento-grid[data-grid-topology="tufte-high-density-data"] {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* (5) Split-Screen Sticky Narrative (40% Sticky Index + 60% Scrollable Content on Desktop) */
+[data-grid-topology="split-screen-sticky-narrative"] .bento-grid,
+.bento-grid[data-grid-topology="split-screen-sticky-narrative"] {
+  display: grid;
+  grid-template-columns: minmax(min(100%, 260px), 2fr) minmax(min(100%, 320px), 3fr);
+  gap: clamp(1.25rem, 2vw, 2rem);
+  align-items: start;
+}
+
+/* (6) Golden Ratio Bento Matrix (12-Column 7:5 Golden Asymmetric Spans on Desktop) */
+[data-grid-topology="golden-ratio-bento-matrix"] .bento-grid,
+.bento-grid[data-grid-topology="golden-ratio-bento-matrix"] {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1rem, 1.5vw, 1.5rem);
+}
+[data-grid-topology="golden-ratio-bento-matrix"] .bento-card:nth-child(odd),
+.bento-grid[data-grid-topology="golden-ratio-bento-matrix"] > *:nth-child(odd) {
+  grid-column: span 7;
+}
+[data-grid-topology="golden-ratio-bento-matrix"] .bento-card:nth-child(even),
+.bento-grid[data-grid-topology="golden-ratio-bento-matrix"] > *:nth-child(even) {
+  grid-column: span 5;
+}
+
+/* (7) Editorial Magazine Spread (65ch Authority Measure + Drop Cap) */
+[data-grid-topology="editorial-magazine-spread"] .bento-grid,
+.bento-grid[data-grid-topology="editorial-magazine-spread"] {
+  display: grid;
+  grid-template-columns: minmax(0, 65ch);
+  justify-content: center;
+  gap: 1.75rem;
+}
+[data-grid-topology="editorial-magazine-spread"] .hero-lead::first-letter {
+  font-size: 1.35em;
+  font-weight: 700;
+}
+
+/* (8) Interactive WebGL Spatial Canvas (Floating Glassmorphic Cards over Spatial Stage) */
+[data-grid-topology="interactive-webgl-spatial-canvas"] .bento-grid,
+.bento-grid[data-grid-topology="interactive-webgl-spatial-canvas"] {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+[data-grid-topology="interactive-webgl-spatial-canvas"] .bento-card {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Reset legacy 12-col spans (.bento-card / .bento-span-8 / .bento-span-4) when using non-12-col topologies */
+[data-grid-topology]:not([data-grid-topology="golden-ratio-bento-matrix"]) .bento-card,
+[data-grid-topology]:not([data-grid-topology="golden-ratio-bento-matrix"]) .bento-span-8,
+[data-grid-topology]:not([data-grid-topology="golden-ratio-bento-matrix"]) .bento-span-4,
+.bento-grid[data-grid-topology]:not([data-grid-topology="golden-ratio-bento-matrix"]) > .bento-card,
+.bento-grid[data-grid-topology]:not([data-grid-topology="golden-ratio-bento-matrix"]) > .bento-span-8,
+.bento-grid[data-grid-topology]:not([data-grid-topology="golden-ratio-bento-matrix"]) > .bento-span-4 {
+  grid-column: auto;
+}
+
+@media (max-width: 860px) {
+  [data-grid-topology] .bento-grid,
+  .bento-grid[data-grid-topology] {
+    grid-template-columns: 1fr;
+  }
+  [data-grid-topology] .bento-card,
+  [data-grid-topology] .bento-span-8,
+  [data-grid-topology] .bento-span-4,
+  [data-grid-topology="golden-ratio-bento-matrix"] .bento-card:nth-child(odd),
+  [data-grid-topology="golden-ratio-bento-matrix"] .bento-card:nth-child(even),
+  .bento-grid[data-grid-topology="golden-ratio-bento-matrix"] > *:nth-child(odd),
+  .bento-grid[data-grid-topology="golden-ratio-bento-matrix"] > *:nth-child(even) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* 5. 10 Hero Architectures & Industry Interactive Widget Primitives */
+.hero-section[data-hero-architecture="typographic-manifesto-fullbleed"] {
+  text-align: left;
+  border-block-end: 1px solid oklch(1 0 0 / 0.12);
+}
+.hero-section[data-hero-architecture="asymmetric-editorial-split-60-40"] {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 2rem;
+  align-items: center;
+}
+.hero-section[data-hero-architecture="live-interactive-product-sandbox"],
+.hero-section[data-hero-architecture="command-center-telemetry-hud"] {
+  border: 1px solid oklch(1 0 0 / 0.14);
+  border-radius: var(--wf-morphology-radius-outer, 18px);
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+.wf-industry-widget {
+  margin-block: clamp(2rem, 4vw, 3.5rem);
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border-radius: var(--wf-morphology-radius-outer, 16px);
+  border: 1px solid oklch(1 0 0 / 0.14);
+  background: oklch(0.18 0.02 260 / 0.72);
+}
+.wf-widget-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 1rem;
+  margin-block-start: 1rem;
+}
+.wf-widget-card {
+  padding: 1rem;
+  border-radius: var(--wf-morphology-radius-inner, 10px);
+  border: 1px solid oklch(1 0 0 / 0.10);
+  background: oklch(0.14 0.015 260 / 0.85);
+}
+.wf-widget-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  min-width: 48px;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--wf-morphology-radius-inner, 10px);
+  border: 1px solid oklch(1 0 0 / 0.22);
+  background: oklch(0.24 0.03 260);
+  color: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Native Capacitor 8 Bottom Tab Bar */
+.wf-mobile-bottom-tab-bar {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 60;
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 56px;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: oklch(0.14 0.02 260 / 0.92);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid oklch(1 0 0 / 0.14);
+}
+[data-capacitor-mobile="true"] .wf-mobile-bottom-tab-bar {
+  display: flex;
+}
+.wf-mobile-tab-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  min-width: 48px;
+  padding: 0.25rem 0.75rem;
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.78rem;
 }
 
 .btn-primary, [data-cta="primary"] {
@@ -168,4 +370,34 @@
 
 .btn-primary:active, [data-cta="primary"]:active {
   transform: translate3d(0, 0, 0) scale(0.98);
+}
+
+/* Bespoke Morphology Primitives — Grid: tufte-high-density-data | Hero: live-interactive-product-sandbox */
+:root {
+  --wf-morphology-radius-outer: 14px;
+  --wf-morphology-radius-inner: 6px;
+  --wf-morphology-card-padding: 8px;
+  --wf-morphology-clip-path: none;
+  --wf-morphology-surface-bg: oklch(0.15 0.016 258);
+  --wf-morphology-surface-border: 1px solid oklch(0.92 0.01 258 / 0.10);
+}
+
+.bento-grid[data-grid-topology="tufte-high-density-data"] {
+  display: grid;
+  width: 100%;
+  max-width: 1320px;
+  margin-inline: auto;
+}
+
+[data-surface-material="deep-obsidian-specular"], .wf-bespoke-card {
+  background: oklch(0.15 0.016 258);
+  border: 1px solid oklch(0.92 0.01 258 / 0.10);
+  border-radius: 14px;
+  
+  
+  border-top: 1px solid oklch(1 0 0 / 0.12);
+}
+
+.wf-bespoke-card-inner {
+  border-radius: 6px;
 }

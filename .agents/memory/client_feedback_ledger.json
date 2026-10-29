@@ -3,8 +3,8 @@
     {
       "ticketId": "tkt-selftest01",
       "projectSlug": "agencia-alfa",
-      "createdAt": "2026-10-29T02:12:51.708Z",
-      "updatedAt": "2026-10-29T02:12:52.361Z",
+      "createdAt": "2026-10-29T17:45:35.294Z",
+      "updatedAt": "2026-10-29T17:45:35.790Z",
       "stage": "STAGE_2_APPROVED_SANDBOX_IMPLEMENTATION",
       "status": "READY_FOR_MERGE_PREVIEW",
       "approvedByCto": true,
@@ -30,7 +30,7 @@
           "applyDesignTokens",
           "initInteractiveMicroHandlers"
         ],
-        "astNodesIndexed": 136,
+        "astNodesIndexed": 141,
         "specVerifiedReadOnly": true,
         "designVerifiedReadOnly": true
       },
@@ -140,8 +140,8 @@
         "evalScore": 100,
         "braintrustScore": 100
       },
-      "approvedAt": "2026-10-29T02:12:52.361Z",
-      "snapshotId": "snap-tkt-selftest01-1793239971755",
+      "approvedAt": "2026-10-29T17:45:35.790Z",
+      "snapshotId": "snap-tkt-selftest01-1793295935309",
       "sandboxMode": "local-worktree",
       "astGuardPassed": true,
       "evalMatrixScore": 100,

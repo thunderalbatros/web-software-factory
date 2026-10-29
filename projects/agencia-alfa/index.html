@@ -68,7 +68,7 @@
   }
   </script>
 </head>
-<body>
+<body data-grid-topology="tufte-high-density-data" data-hero-architecture="minimalist-high-trust-authority" data-surface-material="deep-obsidian-specular" data-nav-morphology="floating-island-bar">
   <div class="scroll-progress-bar" aria-hidden="true"></div>
   <header class="site-header glass-surface" aria-label="Navegación principal">
     <nav class="container site-nav" aria-label="Menú principal">
@@ -82,7 +82,7 @@
   </header>
 
   <main id="main-content" class="container" aria-label="Contenido principal">
-    <section class="hero-section" aria-label="Propuesta de valor principal" data-scroll-reveal>
+    <section class="hero-section" aria-label="Propuesta de valor principal" data-scroll-reveal data-hero-architecture="minimalist-high-trust-authority">
       <span class="hero-badge">W3C DTCG 2025.10 • OKLCH • Cloudflare Edge</span>
       <h1>Agencia Alfa</h1>
       <p class="hero-lead">Arquitectura web de alta conversión diseñada con tokens perceptuales OKLCH 90/8/2, escalas fluidas Utopia, animaciones nativas a 60 FPS y despliegue global en Cloudflare Workers Static Assets.</p>
@@ -97,7 +97,7 @@
         <h2>Ingeniería Visual y Rendimiento Determinista</h2>
         <p>Primitivas CSS Baseline 2026 sin sobrecarga de frameworks pesados en el hilo principal.</p>
       </div>
-      <div class="bento-grid">
+      <div class="bento-grid" data-grid-topology="tufte-high-density-data">
         <article class="bento-card bento-span-8 spotlight-card holo-glare" data-tilt-3d aria-label="Rendimiento Core Web Vitals">
           <div>
             <h3>Velocidad Instantánea en el Borde</h3>
@@ -111,6 +111,26 @@
             <p>Jerarquía de superficie 90/8/2 con contraste APCA verificado y tipografía fluida sin saltos de layout.</p>
           </div>
           <p class="metric-value tabular-nums" data-count-to="60">60</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="industry-interactive-module" class="section-block wf-industry-widget" data-industry-widget="saas" aria-label="Calculadora Interactiva de ROI SaaS">
+      <div class="section-header">
+        <h2>Calculadora de Impacto Operativo &amp; Conversión</h2>
+        <p>Métricas auditables en tiempo real para Agencia Alfa.</p>
+      </div>
+      <div class="wf-widget-grid">
+        <article class="wf-widget-card">
+          <h3>Escala de Tráfico Mensual</h3>
+          <div class="hero-actions">
+            <button type="button" class="wf-widget-btn" data-saas-tier="growth" aria-label="Escala Growth 100k visitas">100k req/mes</button>
+            <button type="button" class="wf-widget-btn" data-saas-tier="enterprise" aria-label="Escala Enterprise 1M visitas">1M req/mes</button>
+          </div>
+        </article>
+        <article class="wf-widget-card" aria-live="polite">
+          <h3>Impacto Estimado</h3>
+          <p class="tabular-nums" id="wf-saas-roi-summary">Latencia P99: 14ms | Incremento CRO estimado: +24.5%</p>
         </article>
       </div>
     </section>
@@ -177,5 +197,6 @@
   </footer>
 
   <script src="/site/js/app.js" defer></script>
+  <script src="/site/js/industry-interactive.js" defer></script>
 </body>
 </html>

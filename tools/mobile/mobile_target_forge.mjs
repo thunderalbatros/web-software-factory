@@ -479,6 +479,28 @@ export function forgeMobileTarget(projectRoot, options = {}) {
     fs.writeFileSync(mobileErgonomicsCssPath, mobileErgonomicsContent, 'utf8');
     fs.writeFileSync(mobileNativeBridgeTsPath, mobileBridgeContent, 'utf8');
 
+    const bottomTabBarJsPath = path.join(jsDir, 'mobile-bottom-tab-bar.js');
+    const bottomTabBarJsContent = `/**
+ * mobile-bottom-tab-bar.js — Native HIG/M3 Bottom Tab Bar Controller (Capacitor 8)
+ */
+(function initMobileBottomTabBar() {
+  if (typeof document === 'undefined') return;
+  if (!document.querySelector('.wf-mobile-bottom-tab-bar') && document.body && document.body.hasAttribute('data-capacitor-mobile')) {
+    const nav = document.createElement('nav');
+    nav.className = 'wf-mobile-bottom-tab-bar';
+    nav.setAttribute('aria-label', 'Navegación inferior móvil');
+    nav.innerHTML = [
+      '<a href="#main-content" class="wf-mobile-tab-item" aria-label="Inicio">Inicio</a>',
+      '<a href="#features" class="wf-mobile-tab-item" aria-label="Capacidades">Módulos</a>',
+      '<a href="#industry-interactive-module" class="wf-mobile-tab-item" aria-label="Consola Interactiva">Operar</a>',
+      '<a href="#pricing" class="wf-mobile-tab-item" aria-label="Planes y Contacto">Cuenta</a>'
+    ].join('');
+    document.body.appendChild(nav);
+  }
+})();
+`;
+    fs.writeFileSync(bottomTabBarJsPath, bottomTabBarJsContent, 'utf8');
+
     if (fs.existsSync(manifestPath)) {
       manifest.targetPlatform = targetPlatform;
       manifest.mobile = {
@@ -488,6 +510,7 @@ export function forgeMobileTarget(projectRoot, options = {}) {
         platforms: ['ios', 'android'],
         safeAreaInsetsEnabled: true,
         minTouchTargetPx: 48,
+        bottomTabBarInjected: true,
         nativeBridges: ['webauthn-passkeys', 'camera', 'push-notifications', 'haptics'],
         tokensMobilePath: 'tokens/tokens.mobile.json',
         themeTokensTsPath: 'tokens/ThemeTokens.ts'

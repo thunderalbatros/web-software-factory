@@ -546,6 +546,191 @@ export function verifyPrdInterviewGate(slug = 'agencia-alfa', industryFallback =
 }
 
 /**
+ * Bidirectional Markdown -> JSON parser (`parseEditedPrdMarkdownIntoState`):
+ * Reads any manual edits made by the CTO directly in `ENTREVISTA_1_PRD_Y_MARCA.md`
+ * and synchronizes them into the `PRD_INTERVIEW_STATE.json` structure before compilation.
+ */
+export function parseEditedPrdMarkdownIntoState(mdContent = '', currentState = {}) {
+  if (!mdContent || typeof mdContent !== 'string' || !currentState?.blocks) {
+    return currentState;
+  }
+  const next = JSON.parse(JSON.stringify(currentState));
+  const b1 = next.blocks.block1_business_identity_and_problem || {};
+  const b2 = next.blocks.block2_target_audience_and_objections || {};
+  const b3 = next.blocks.block3_existing_brand_identity_lock || {};
+  const b4 = next.blocks.block4_aesthetic_style_and_references || {};
+  const b5 = next.blocks.block5_capabilities_and_cro_goals || {};
+  const b6 = next.blocks.block6_real_assets_social_proof_and_legal || {};
+  const b7 = next.blocks.block7_explicit_non_goals_and_success_metrics || {};
+
+  const stripTicks = (val) => String(val || '').trim().replace(/^`+|`+$/g, '').trim();
+  const matchField = (labelPattern) => {
+    const rx = new RegExp(`-\\s+\\*\\*${labelPattern}:\\*\\*\\s*(.+)`, 'i');
+    const m = mdContent.match(rx);
+    return m ? m[1].trim() : null;
+  };
+  const matchCodeField = (keyName) => {
+    const rx = new RegExp(`-\\s+\`${keyName}\`:\\s*\`?([^\\n\`]+)\`?`, 'i');
+    const m = mdContent.match(rx);
+    return m ? stripTicks(m[1]) : null;
+  };
+
+  // Bloque 1
+  const brandName = matchField('Nombre Oficial de la Empresa \\/ Marca \\/ Proyecto');
+  if (brandName) b1.officialBrandName = stripTicks(brandName);
+  const tagline = matchField('Eslogan \\(`Tagline`\\)');
+  if (tagline) b1.brandTagline = stripTicks(tagline);
+  const industry = matchField('Rubro \\/ Categor[íi]a Industrial[^*]*');
+  if (industry) b1.industryCategory = stripTicks(industry);
+  const offering = matchField('[¿?]?Qu[ée] vende u ofrece exactamente\\??');
+  if (offering) b1.coreOffering = stripTicks(offering);
+  const problem = matchField('[¿?]?Qu[ée] necesidad, dolor o problema concreto[^*]*');
+  if (problem) b1.coreProblemSolved = stripTicks(problem);
+
+  // Bloque 2
+  const demoLine = matchField('Perfil del P[úu]blico Objetivo');
+  if (demoLine) {
+    const mDemo = demoLine.match(/^(.*?)\s*\(([^()]+)\)\s*$/);
+    if (mDemo) {
+      b2.targetDemographic = mDemo[1].trim();
+      b2.businessModelType = mDemo[2].trim();
+    } else {
+      b2.targetDemographic = demoLine;
+    }
+  }
+  const visitCtx = matchField('Contexto de Visita \\(Urgencia M[óo]vil vs\\. An[áa]lisis en Desktop\\)');
+  if (visitCtx) b2.visitContextMobileVsDesktop = visitCtx;
+
+  const objSectionMatch = mdContent.match(
+    /Las 3 Principales Dudas u Objeciones antes de comprar o contratar:\*\*\s*\r?\n((?:\s+\d+\.\s+.+\r?\n?)+)/i
+  );
+  if (objSectionMatch) {
+    const parsedObjs = objSectionMatch[1]
+      .split(/\r?\n/)
+      .map((line) => line.replace(/^\s*\d+\.\s+/, '').trim())
+      .filter(Boolean);
+    if (parsedObjs.length >= 3) {
+      b2.topThreeBuyerObjections = parsedObjs;
+    }
+  }
+  const uvp = matchField('Propuesta [ÚU]nica de Valor[^*]*');
+  if (uvp) b2.uniqueValueProposition = uvp;
+
+  // Bloque 3
+  const modeVal = matchField('Estado de Identidad de Marca \\(`brandIdentityMode`\\)');
+  if (modeVal && VALID_BRAND_IDENTITY_MODES.includes(stripTicks(modeVal))) {
+    b3.brandIdentityMode = stripTicks(modeVal);
+  }
+  const lockVal = matchField('Bloqueo Inmutable de Paleta del Cliente \\(`lockClientPalette`\\)');
+  if (lockVal !== null) {
+    b3.lockClientPalette = stripTicks(lockVal).toLowerCase() === 'true';
+  }
+  b3.logoAssets = b3.logoAssets || {};
+  const primaryLogo = matchField('Logotipo Principal \\(`\\.svg`\\/`\\.png`\\)');
+  if (primaryLogo) b3.logoAssets.primaryLogoPath = stripTicks(primaryLogo);
+  const isotipo = matchField('Isotipo \\/ Icono Independiente');
+  if (isotipo) b3.logoAssets.isotipoPath = stripTicks(isotipo);
+  const darkLogo = matchField('Variante para Fondo Oscuro');
+  if (darkLogo) b3.logoAssets.darkVariantLogoPath = stripTicks(darkLogo);
+  const lightLogo = matchField('Variante para Fondo Claro');
+  if (lightLogo) b3.logoAssets.lightVariantLogoPath = stripTicks(lightLogo);
+  const usageRules = matchField('Reglas de Uso');
+  if (usageRules) b3.logoAssets.usageRules = usageRules;
+
+  b3.officialPalette = b3.officialPalette || {};
+  for (const colorKey of [
+    'primaryBrandColor',
+    'secondaryBrandColor',
+    'accentBrandColor',
+    'surfaceLightColor',
+    'surfaceDarkColor'
+  ]) {
+    const val = matchCodeField(colorKey);
+    if (val) b3.officialPalette[colorKey] = val;
+  }
+
+  b3.officialTypography = b3.officialTypography || {};
+  const dispFont = matchField('T[íi]tulos \\(`displayFont`\\)');
+  if (dispFont) b3.officialTypography.displayFont = stripTicks(dispFont);
+  const sansFont = matchField('Cuerpo \\(`sansFont`\\)');
+  if (sansFont) b3.officialTypography.sansFont = stripTicks(sansFont);
+  const monoFont = matchField('Datos Num[ée]ricos \\/ C[óo]digo \\(`monoFont`\\)');
+  if (monoFont) b3.officialTypography.monoFont = stripTicks(monoFont);
+  const allowPairing = matchField('Permitir Sugerencia de Par Tipogr[áa]fico de F[áa]brica');
+  if (allowPairing !== null) {
+    b3.officialTypography.allowFactoryTypographyPairing = stripTicks(allowPairing).toLowerCase() === 'true';
+  }
+
+  // Bloque 4
+  const styleVal = matchField('Estilo y Est[ée]tica Deseada');
+  if (styleVal) b4.desiredAestheticStyle = styleVal;
+  const atmoVal = matchField('Preferencia de Atm[óo]sfera[^*]*');
+  if (atmoVal) b4.atmospherePreference = stripTicks(atmoVal);
+
+  // Bloque 5
+  const cta1Line = matchField('Objetivo de Conversi[óo]n #1 \\(`Primary CTA`\\)');
+  if (cta1Line) {
+    const mCta = cta1Line.match(/^`?([^`()]+)`?\s*(?:\(Canal:\s*([^)]+)\))?/i);
+    if (mCta) {
+      b5.primaryCta = stripTicks(mCta[1]);
+      if (mCta[2]) b5.primaryCtaChannel = mCta[2].trim();
+    }
+  }
+  const cta2Line = matchField('Objetivo de Conversi[óo]n #2 \\(`Secondary CTA`\\)');
+  if (cta2Line) b5.secondaryCta = stripTicks(cta2Line);
+
+  const capsMatch = mdContent.match(
+    /Listado de Funciones y Capacidades Operativas Requeridas:\*\*\s*\r?\n((?:\s+-\s+.+\r?\n?)+)/i
+  );
+  if (capsMatch) {
+    const parsedCaps = capsMatch[1]
+      .split(/\r?\n/)
+      .map((l) => l.replace(/^\s*-\s+/, '').trim())
+      .filter(Boolean);
+    if (parsedCaps.length > 0) b5.requiredCapabilities = parsedCaps;
+  }
+
+  // Bloque 6
+  const toneVal = matchField('Idioma y Tono de Comunicaci[óo]n');
+  if (toneVal) b6.languageAndTone = toneVal;
+  b6.mandatoryOperationalData = b6.mandatoryOperationalData || {};
+  const addr = matchField('Direcci[óo]n');
+  if (addr) b6.mandatoryOperationalData.address = addr;
+  const phone = matchField('Tel[ée]fono');
+  if (phone) b6.mandatoryOperationalData.phone = phone;
+  const wa = matchField('WhatsApp');
+  if (wa) b6.mandatoryOperationalData.whatsapp = wa;
+  const hours = matchField('Horarios de Atenci[óo]n');
+  if (hours) b6.mandatoryOperationalData.businessHours = hours;
+  const legal = matchField('Raz[óo]n Social \\/ Textos Legales');
+  if (legal) b6.mandatoryOperationalData.legalEntityName = legal;
+
+  // Bloque 7
+  const nonGoalsMatch = mdContent.match(
+    /Explicit Non-Goals`[^*]*\*\*:\s*\r?\n((?:\s+-\s+.+\r?\n?)+)/i
+  );
+  if (nonGoalsMatch) {
+    const parsedNg = nonGoalsMatch[1]
+      .split(/\r?\n/)
+      .map((l) => l.replace(/^\s*-\s+/, '').trim())
+      .filter(Boolean);
+    if (parsedNg.length > 0) b7.explicitNonGoals = parsedNg;
+  }
+  const metricsMatch = mdContent.match(
+    /M[ée]tricas de [Éé]xito Esperadas por el Cliente:\*\*\s*\r?\n((?:\s+-\s+.+\r?\n?)+)/i
+  );
+  if (metricsMatch) {
+    const parsedMetrics = metricsMatch[1]
+      .split(/\r?\n/)
+      .map((l) => l.replace(/^\s*-\s+/, '').trim())
+      .filter(Boolean);
+    if (parsedMetrics.length > 0) b7.expectedSuccessMetrics = parsedMetrics;
+  }
+
+  return next;
+}
+
+/**
  * Compiles `PRD_LEAN.md` (synchronized with `PRODUCT.md`) and `BRAND_IDENTITY_LOCK.json`
  * once the CTO completes and approves Gate #1 (`ENTREVISTA_1_PRD_Y_MARCA.md`).
  */
@@ -556,6 +741,9 @@ export function compilePrdLeanAndBrandLock(slug = 'agencia-alfa', options = {}) 
   const prdLeanPath = path.join(projectDir, 'PRD_LEAN.md');
   const productPath = path.join(projectDir, 'PRODUCT.md');
   const brandLockPath = path.join(projectDir, 'BRAND_IDENTITY_LOCK.json');
+
+  const hadExistingMd = fs.existsSync(mdPath);
+  const existingMdContent = hadExistingMd ? fs.readFileSync(mdPath, 'utf8') : '';
 
   if (!fs.existsSync(stateJsonPath)) {
     initPrdInterviewFiles(slug, options.industry || 'saas', {
@@ -570,7 +758,11 @@ export function compilePrdLeanAndBrandLock(slug = 'agencia-alfa', options = {}) 
     });
   }
 
-  const prdState = JSON.parse(fs.readFileSync(stateJsonPath, 'utf8'));
+  let prdState = JSON.parse(fs.readFileSync(stateJsonPath, 'utf8'));
+  // Bidirectional sync: if CTO edited ENTREVISTA_1_PRD_Y_MARCA.md on disk and no programmatic customOverrides forced a reset, sync MD -> JSON first
+  if (hadExistingMd && !options.customOverrides) {
+    prdState = parseEditedPrdMarkdownIntoState(existingMdContent, prdState);
+  }
   const completeness = validatePrdBlocksCompleteness(prdState);
   if (!completeness.valid) {
     throw new Error(
@@ -755,32 +947,44 @@ export function runLeanPrdArchitectSelfTest() {
     blockedGate.code === 'HARD_STOP_PRD_INTERVIEW_REQUIRED' &&
     blockedGate.prdInterviewStatus === 'PENDING_CTO_PRD_INPUT';
 
-  // 2. Inject STRICT_EXISTING_BRAND with exact client palette & logo paths and approve
-  const strictOverrides = {
-    officialBrandName: 'Estudio Jurídico Valdés & Asociados',
-    brandTagline: 'Defensa Corporativa y Litigios Complejos',
-    brandIdentityMode: 'STRICT_EXISTING_BRAND',
-    lockClientPalette: true,
-    logoAssets: {
-      primaryLogoPath: 'public/assets/brand/valdes-logo.svg',
-      isotipoPath: 'public/assets/brand/valdes-isotipo.svg',
-      darkVariantLogoPath: 'public/assets/brand/valdes-logo-dark.svg',
-      lightVariantLogoPath: 'public/assets/brand/valdes-logo-light.svg',
-      usageRules: 'Respetar escudo dorado y azul marino institucional sin alteración.'
-    },
-    officialPalette: {
-      primaryBrandColor: '#1B365D',
-      secondaryBrandColor: '#0F1E36',
-      accentBrandColor: '#C59B27',
-      surfaceLightColor: '#FAF8F5',
-      surfaceDarkColor: '#0A111F'
-    }
-  };
+  // 2. Test Bidirectional Markdown -> JSON sync: edit ENTREVISTA_1_PRD_Y_MARCA.md directly on disk and approve without customOverrides
+  const mdFile = path.join(testDir, 'ENTREVISTA_1_PRD_Y_MARCA.md');
+  let mdRaw = fs.readFileSync(mdFile, 'utf8');
+  mdRaw = mdRaw
+    .replace(
+      /- \*\*Nombre Oficial de la Empresa \/ Marca \/ Proyecto:\*\* .*/,
+      '- **Nombre Oficial de la Empresa / Marca / Proyecto:** Estudio Jurídico Valdés & Asociados'
+    )
+    .replace(
+      /- \*\*Eslogan \(`Tagline`\):\*\* .*/,
+      '- **Eslogan (`Tagline`):** Defensa Corporativa y Litigios Complejos'
+    )
+    .replace(
+      /- \*\*Estado de Identidad de Marca \(`brandIdentityMode`\):\*\* .*/,
+      '- **Estado de Identidad de Marca (`brandIdentityMode`):** `STRICT_EXISTING_BRAND`'
+    )
+    .replace(
+      /- \*\*Bloqueo Inmutable de Paleta del Cliente \(`lockClientPalette`\):\*\* .*/,
+      '- **Bloqueo Inmutable de Paleta del Cliente (`lockClientPalette`):** `true`'
+    )
+    .replace(
+      /- \*\*Logotipo Principal \(`\.svg`\/`\.png`\):\*\* .*/,
+      '- **Logotipo Principal (`.svg`/`.png`):** `public/assets/brand/valdes-logo.svg`'
+    )
+    .replace(
+      /- \*\*Isotipo \/ Icono Independiente:\*\* .*/,
+      '- **Isotipo / Icono Independiente:** `public/assets/brand/valdes-isotipo.svg`'
+    )
+    .replace(/- `primaryBrandColor`: .*/, '- `primaryBrandColor`: `#1B365D`')
+    .replace(/- `secondaryBrandColor`: .*/, '- `secondaryBrandColor`: `#0F1E36`')
+    .replace(/- `accentBrandColor`: .*/, '- `accentBrandColor`: `#C59B27`')
+    .replace(/- `surfaceLightColor`: .*/, '- `surfaceLightColor`: `#FAF8F5`')
+    .replace(/- `surfaceDarkColor`: .*/, '- `surfaceDarkColor`: `#0A111F`');
+  fs.writeFileSync(mdFile, mdRaw, 'utf8');
 
   const compiled = compilePrdLeanAndBrandLock(testSlug, {
     approve: true,
-    industry: 'abogacia',
-    customOverrides: strictOverrides
+    industry: 'abogacia'
   });
   const unlockedGate = verifyPrdInterviewGate(testSlug, 'abogacia');
   const prdText = fs.readFileSync(compiled.prdLeanPath, 'utf8');
@@ -789,9 +993,11 @@ export function runLeanPrdArchitectSelfTest() {
   const prdInvariantsAndNonGoalsOk =
     prdText.includes('[INV-01]') &&
     prdText.includes('[INV-07]') &&
+    prdText.includes('Estudio Jurídico Valdés & Asociados') &&
     prdText.includes('## 7. Explicit Non-Goals');
 
   const brandIdentityLockedOk =
+    brandLock.brandName === 'Estudio Jurídico Valdés & Asociados' &&
     brandLock.brandIdentityMode === 'STRICT_EXISTING_BRAND' &&
     brandLock.lockClientPalette === true &&
     brandLock.officialPalette.primaryBrandColor === '#1B365D' &&
@@ -814,6 +1020,7 @@ export function runLeanPrdArchitectSelfTest() {
     checks: {
       agenciaAlfaReferencePrdApproved: alfaGate.passed,
       newProjectStartsPendingAndBlocksGate1: startsPendingAndBlocked,
+      bidirectionalMarkdownToJsonSyncPreservesManualEdits: brandIdentityLockedOk,
       strictExistingBrandLocksExactColorsAndLogos: brandIdentityLockedOk,
       prdLeanAndInvariantsCompiledOnApproval: unlockedGate.passed && prdInvariantsAndNonGoalsOk
     }

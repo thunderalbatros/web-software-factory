@@ -7,7 +7,8 @@
 export const BRAND_INTRO_SCENE_CONFIG = {
   slug: "agencia-alfa",
   templateId: "minimal",
-  archetype: "law-firm-and-advisory",
+  archetype: "b2b-saas-platform",
+  choreographyId: "intro-low-anisotropic-dd5b3f",
   fps: 60,
   durationSeconds: 2.8,
   totalFrames: 168,

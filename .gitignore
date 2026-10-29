@@ -22,17 +22,13 @@ node_modules/
 core/node_modules/
 tools/audit/node_modules/
 
-# Local Streamer.bot Runtime & Binaries (Isolated in Streamer.bot-App/)
-Streamer.bot-App/
+# Local Binaries & Legacy Archives
 legacy/
 *.dll
 *.exe
 *.exe.config
 *.zip
-*.sb
 eng.traineddata
-Streamer.bot.exe.WebView2/
-AudioDevices/
 
 # Local SQLite databases, caches & logs
 *.log

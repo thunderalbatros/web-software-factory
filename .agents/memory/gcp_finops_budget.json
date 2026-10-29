@@ -114,17 +114,15 @@
     }
   },
   "telemetrySummary": {
-    "lastUpdatedAt": "2026-10-29T00:48:27.126Z",
+    "lastUpdatedAt": "2026-10-29T17:37:11.396Z",
     "todaySpendUsd": 0,
     "remainingDailyBudgetUsd": 1.5,
     "remainingCreditUsd": 90,
     "lastMultimediaOperation": {
-      "operation": "sonic_and_music_forge_self_test",
-      "tiersVerified": [
-        "TIER_0_ZERO_COST",
-        "TIER_1_GCP_CLOUD_RUN_SERVERLESS_GPU",
-        "TIER_2_VERTEX_AI_NATIVE_PREMIUM"
-      ]
+      "operation": "programmatic_video_forge_shader-hud",
+      "tierId": "TIER_1_GCP_CLOUD_RUN_SERVERLESS_GPU",
+      "engine": "stable-audio-open",
+      "webmBytes": 527
     }
   }
 }

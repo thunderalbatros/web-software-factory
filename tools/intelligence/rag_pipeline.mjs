@@ -483,7 +483,55 @@ function prepareChunksForFastSearch(chunks) {
 }
 
 /**
+ * Deduplicates `chunks_fts` in `.cache/omni_rag_fts5.sqlite` so `totalRows === uniqueIds`,
+ * runs FTS5 `optimize`, `VACUUM`, and `PRAGMA wal_checkpoint(TRUNCATE);`.
+ */
+export function deduplicateAndVacuumSqliteFts5() {
+  if (!DatabaseSyncClass || !fs.existsSync(SQLITE_FTS_FILE)) {
+    return { passed: false, reason: 'SQLITE_NOT_AVAILABLE_OR_FILE_MISSING' };
+  }
+  if (cachedSqliteDb) {
+    try { cachedSqliteDb.close(); } catch (_) {}
+    cachedSqliteDb = null;
+  }
+  const sizeBeforeMb = Number((fs.statSync(SQLITE_FTS_FILE).size / (1024 * 1024)).toFixed(3));
+  const db = new DatabaseSyncClass(SQLITE_FTS_FILE);
+  const beforeStats = db
+    .prepare('SELECT COUNT(*) AS totalRows, COUNT(DISTINCT id) AS uniqueIds FROM chunks_fts')
+    .get();
+
+  if (beforeStats.totalRows > beforeStats.uniqueIds) {
+    db.exec(`
+      DELETE FROM chunks_fts
+      WHERE rowid NOT IN (
+        SELECT MIN(rowid) FROM chunks_fts GROUP BY id
+      );
+    `);
+  }
+  try { db.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');"); } catch (_) {}
+  try { db.exec('VACUUM;'); } catch (_) {}
+  try { db.exec('PRAGMA wal_checkpoint(TRUNCATE);'); } catch (_) {}
+
+  const afterStats = db
+    .prepare('SELECT COUNT(*) AS totalRows, COUNT(DISTINCT id) AS uniqueIds, COUNT(DISTINCT source) AS uniqueDocs FROM chunks_fts')
+    .get();
+  db.close();
+
+  const sizeAfterMb = Number((fs.statSync(SQLITE_FTS_FILE).size / (1024 * 1024)).toFixed(3));
+  return {
+    passed: afterStats.totalRows === afterStats.uniqueIds,
+    beforeRows: beforeStats.totalRows,
+    afterRows: afterStats.totalRows,
+    uniqueIds: afterStats.uniqueIds,
+    uniqueDocs: afterStats.uniqueDocs,
+    sizeBeforeMb,
+    sizeAfterMb
+  };
+}
+
+/**
  * Engine A1 Builder: Builds Persistent Native C-Compiled SQLite FTS5 Index over 100% of all chunks
+ * with strict deduplication guard (`DELETE FROM chunks_fts` before bulk rebuild or `DELETE WHERE source = ?`).
  */
 function buildOrOpenSqliteFts5Index(chunks, forceRebuild = false) {
   if (!DatabaseSyncClass) return null;
@@ -495,8 +543,20 @@ function buildOrOpenSqliteFts5Index(chunks, forceRebuild = false) {
     if (!forceRebuild && dbExists) {
       if (cachedSqliteDb) return cachedSqliteDb;
       const db = new DatabaseSyncClass(SQLITE_FTS_FILE);
-      const row = db.prepare('SELECT count(*) AS cnt FROM chunks_fts').get();
-      if (row && row.cnt >= Math.floor(chunks.length * 0.95)) {
+      const row = db
+        .prepare('SELECT COUNT(*) AS cnt, COUNT(DISTINCT id) AS uniq FROM chunks_fts')
+        .get();
+      if (row && row.cnt > row.uniq) {
+        db.exec(`
+          DELETE FROM chunks_fts
+          WHERE rowid NOT IN (
+            SELECT MIN(rowid) FROM chunks_fts GROUP BY id
+          );
+        `);
+        try { db.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');"); } catch (_) {}
+      }
+      const cleanCnt = row ? Math.min(row.cnt, row.uniq) : 0;
+      if (cleanCnt >= Math.floor(chunks.length * 0.95)) {
         try { db.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');"); } catch (_) {}
         cachedSqliteDb = db;
         return db;
@@ -527,14 +587,21 @@ function buildOrOpenSqliteFts5Index(chunks, forceRebuild = false) {
       );
     `);
 
+    // Anti-duplication guard: even if unlinkSync failed on Windows due to a file handle, wipe existing rows before bulk insert
+    db.exec('DELETE FROM chunks_fts;');
+
     const insertStmt = db.prepare(
       'INSERT INTO chunks_fts (id, source, category, snippet, title, section, text) VALUES (?, ?, ?, ?, ?, ?, ?)'
     );
+    const seenChunkIds = new Set();
     db.exec('BEGIN IMMEDIATE');
     for (let i = 0; i < chunks.length; i++) {
       const c = chunks[i];
+      const cid = String(c.id || '');
+      if (seenChunkIds.has(cid)) continue;
+      seenChunkIds.add(cid);
       insertStmt.run(
-        String(c.id || ''),
+        cid,
         String(c.source || ''),
         String(c.category || 'general'),
         String(c.snippet || ''),

@@ -23,8 +23,8 @@
 - **Esquemas `Valibot` Activos:** LeadCaptureFormSchema (nombre, email, telefono, mensaje, csrfToken) | InteractiveCalculatorOrFilterSchema (categoria, presupuesto, urgencia)
 
 ## Bloque 3 — Topología de Grilla y Morfología de Componentes (`bespoke_morphology_composer.mjs`)
-- **Topología de Grilla (`gridTopology`):** `bento-modular-kinetic-grid`
-- **Arquitectura de Hero (`heroArchitecture`):** `focal-centered-interactive-stage`
+- **Topología de Grilla (`gridTopology`):** `tufte-high-density-data`
+- **Arquitectura de Hero (`heroArchitecture`):** `minimalist-high-trust-authority`
 - **Materialidad de Superficie:** `polymer` (Divergencia intra-categoría `>= 70%`)
 
 ## Bloque 4 — Aplicación de Paleta, Contraste `APCA` y Escalas Tipográficas (`token_compiler.mjs`)

@@ -7,8 +7,8 @@
   "prdReferenceStatus": "COMPLETED_BY_CTO",
   "brandIdentityMode": "PARTIAL_BRAND_EVOLUTION",
   "lockClientPalette": false,
-  "createdAt": "2026-10-29T15:20:52.490Z",
-  "approvedAt": "2026-10-29T15:20:52.490Z",
+  "createdAt": "2026-10-29T17:45:29.706Z",
+  "approvedAt": "2026-10-29T17:45:29.706Z",
   "approvedBy": "CTO_HITL_APPROVED",
   "blocks": {
     "block1_pages_and_dom_architecture": {
@@ -47,8 +47,8 @@
       ]
     },
     "block3_grid_topology_and_morphology": {
-      "gridTopology": "bento-modular-kinetic-grid",
-      "heroArchitecture": "focal-centered-interactive-stage",
+      "gridTopology": "tufte-high-density-data",
+      "heroArchitecture": "minimalist-high-trust-authority",
       "surfaceMateriality": "polymer",
       "intraCategoryDivergenceFloorPct": 70,
       "respectBrandIdentityLock": true
@@ -221,7 +221,7 @@
     },
     "block8_technical_backend_integrations": {
       "leadCaptureForm": true,
-      "paymentGateway": "None (Consultation Flow)",
+      "paymentGateway": "none",
       "authMode": "OAuth 2.1 PKCE / Session Guard",
       "databaseEngine": "Cloudflare D1 SQLite + Enterprise PostgreSQL FORCE RLS Ready",
       "externalIntegrations": [
@@ -254,5 +254,200 @@
         "100% de requisitos [REQ-01]..[REQ-12] verificados con Playwright"
       ]
     }
+  },
+  "bespokeDna": {
+    "morphologyMode": "auto-bespoke-criteria",
+    "brandPersonalityTension": "minimalismo-silencioso vs expresividad-cinetica",
+    "gridTopology": "tufte-high-density-data",
+    "heroArchitecture": "minimalist-high-trust-authority",
+    "componentMorphology": {
+      "nav": "floating-island-bar",
+      "corner": "6px-tecnico",
+      "material": "deep-obsidian-specular"
+    },
+    "gamutMaskType": "atmospheric-analogous",
+    "fontPairingProfile": "literary-salon-spectral-rubik",
+    "fontPairingDetails": {
+      "id": "literary-salon-spectral-rubik",
+      "displayFont": "'Spectral', Georgia, serif",
+      "sansFont": "'Rubik', system-ui, sans-serif",
+      "monoFont": "'Source Code Pro', monospace",
+      "utopiaRatio": 1.25,
+      "utopiaScaleName": "1.250 Major Third",
+      "constellationFamily": "editorial-authority"
+    },
+    "motionPhysicsCriteria": {
+      "transitionPhysics": "crisp-editorial-snap",
+      "dampingRatioZeta": 1,
+      "stiffness": 380,
+      "damping": 39,
+      "durationMs": 150,
+      "easingCss": "cubic-bezier(0.22, 1, 0.36, 1)",
+      "scrollChoreography": "vector-mask-reveal"
+    },
+    "introChoreographyId": "intro-split-circle-881e0a",
+    "introAnd3dDecision": {
+      "recommendIntroVideo": false,
+      "deliveryStrategy": "micro-vector-signature-reveal",
+      "blocksInitialNavigation": false,
+      "rationale": "Prioridad en velocidad transaccional y claridad operativa (saas / Persuade): se omite preloader bloqueante y se emplea revelado vectorial instantáneo (intro-split-circle-881e0a).",
+      "introChoreographyId": "intro-split-circle-881e0a",
+      "parametricIntroChoreography": {
+        "choreographyId": "intro-split-circle-881e0a",
+        "isParametric": true,
+        "cameraPath": "split-diopter-axial-convergence",
+        "cameraAngleDeg": 18,
+        "sdfRevealMask": "sdf-circle-iris-smoothstep",
+        "lightingRig": "rembrandt-45deg-warm-key",
+        "cutRhythm": "fibonacci-3-beat-crescendo",
+        "durationSeconds": 3.8,
+        "fps": 60,
+        "totalFrames": 228,
+        "audioSyncFrame": 44,
+        "logoSvgGeometry": {
+          "viewBox": "0 0 512 512",
+          "pathCount": 3,
+          "vectorIntegrityLocked": true
+        }
+      },
+      "uses3dOrShaderInHero": false,
+      "forged3dMode": "orthographic-2d-clean",
+      "parametric3dShaderConfig": {
+        "parametricId": "sdf3d-fa51bf37",
+        "isParametric": true,
+        "sdfMathFunction": "sdOctahedron(p, s) + opTwist(p, k)",
+        "sdfSmoothBlendK": 0.06,
+        "logoSvgAdaptation": {
+          "aspectRatio": 1,
+          "extrudeDepth": 0.12,
+          "bevelSegments": 7
+        },
+        "cameraRig": {
+          "fovDeg": 1,
+          "elevationDeg": -11,
+          "azimuthDeg": -64,
+          "toneMapping": "THREE.AgXToneMapping"
+        },
+        "lightingRig3Point": {
+          "keyAngleDeg": 19,
+          "fillRatio": 0.12,
+          "rimIntensity": 0.97
+        },
+        "fpsWatchdogEnforced": true
+      }
+    },
+    "morphologicalDivergenceScore": 1,
+    "aestheticHarmonyScore": 0.99
+  },
+  "sonicPatch": {
+    "seedId": "linear-minimal-tick",
+    "archetype": "saas",
+    "uiSfxMode": "subtle",
+    "silentByClientPreference": false,
+    "material": "polymer",
+    "materialLabel": "Polímero / Acrílico Mate",
+    "excitationType": "short-impulse-modal",
+    "waveform": "triangle",
+    "borderRadiusPx": 8,
+    "boubaKikiProfile": "balanced",
+    "oddHarmonicRichness": 0.368,
+    "oklch": {
+      "L": 0.15,
+      "C": 0.03,
+      "H": 260
+    },
+    "spectralCentroidHz": 903,
+    "elementAreaPx2": 8640,
+    "f0Hz": 699.39,
+    "attackMs": 15.72,
+    "decayMs": 6,
+    "Q": 4.5,
+    "modalBank": [
+      {
+        "modeIndex": 1,
+        "ratio": 1,
+        "freqHz": 699.39,
+        "Q": 4.5,
+        "relativeGain": 1,
+        "biquadCoeffs": {
+          "type": "bandpass",
+          "freqHz": 699.39,
+          "Q": 4.5,
+          "b0": 0.045251,
+          "b1": 0,
+          "b2": -0.045251,
+          "a0": 1,
+          "a1": -1.971597,
+          "a2": 0.979888
+        }
+      },
+      {
+        "modeIndex": 2,
+        "ratio": 1.84,
+        "freqHz": 1286.88,
+        "Q": 5.17,
+        "relativeGain": 0.451,
+        "biquadCoeffs": {
+          "type": "bandpass",
+          "freqHz": 1286.88,
+          "Q": 5.17,
+          "b0": 0.082491,
+          "b1": 0,
+          "b2": -0.082491,
+          "a0": 1,
+          "a1": -1.940231,
+          "a2": 0.968089
+        }
+      },
+      {
+        "modeIndex": 3,
+        "ratio": 2.92,
+        "freqHz": 2042.22,
+        "Q": 5.85,
+        "relativeGain": 0.283,
+        "biquadCoeffs": {
+          "type": "bandpass",
+          "freqHz": 2042.22,
+          "Q": 5.85,
+          "b0": 0.129161,
+          "b1": 0,
+          "b2": -0.129161,
+          "a0": 1,
+          "a1": -1.886372,
+          "a2": 0.955843
+        }
+      }
+    ],
+    "synchresis60Fps": {
+      "springStiffness": 280,
+      "springDamping": 24,
+      "peakVelocityOffsetMs": 66.12,
+      "audioTransientOffsetMs": 66.12,
+      "syncDeviationMs": 0,
+      "withinSingleFrame60Fps": true,
+      "maxAllowedDeviationMs": 16.67
+    },
+    "gainPeak": 0.065,
+    "gainPeakDbfs": -23.74,
+    "maxCeilingDbfs": -18,
+    "releaseFloorLinear": 0.0001,
+    "highPassFilterHz": 30,
+    "iso226NotchFilter": {
+      "enabled": true,
+      "bandHz": [
+        2500,
+        4200
+      ],
+      "centerHz": 3250,
+      "Q": 1.4,
+      "attenuationDb": -5,
+      "inSensitiveBand": false
+    },
+    "maxPolyphony": 4,
+    "voiceStealingMode": "oldest-voice-4ms-exponential-fade",
+    "autoplaySuspendedUntilGesture": true,
+    "respectsPrefersReducedMotion": true,
+    "requiresMuteToggleSelector": "[data-audio-mute-toggle]",
+    "safetyVerified": true
   }
 }

@@ -58,6 +58,7 @@
     "factory:tom-swe": "node tools/intelligence/tom_swe_engine.mjs",
     "rag:rebuild": "node tools/intelligence/rag_pipeline.mjs --rebuild",
     "audit:ryux": "node tools/audit/ryux_design_gate.mjs",
+    "audit:security": "node tools/security_gate.mjs",
     "audit:diff-ui": "node tools/audit/diff_ui_adversarial.mjs",
     "audit:visual-regression": "node tools/audit/visual_regression.mjs",
     "audit:a11y-snapshot": "node tools/audit/a11y_tree_snapshot.mjs",

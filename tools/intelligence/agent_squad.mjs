@@ -22,7 +22,7 @@ import { runPreFlightChecks } from './instincts_engine.mjs';
 import { verifyConstitutionLock } from './constitution_guard.mjs';
 import { recordSkillExecutionEvidence } from './skill_quality_ledger.mjs';
 import { runSecurityQuarantineGate } from '../audit/security_gate.mjs';
-import { FORGE_3D_PRIMITIVES } from '../design/shader_and_3d_forge.mjs';
+import { FORGE_3D_PRIMITIVES, forge3dSceneOrEffect } from '../design/shader_and_3d_forge.mjs';
 import {
   INDUSTRY_VISUAL_ARCHETYPES,
   resolveIndustryArchetype,
@@ -655,11 +655,27 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
           run: async () => {
             const t0 = performance.now();
             const primitiveCount = Object.keys(FORGE_3D_PRIMITIVES || {}).length;
+            let forged3dResult = null;
+            try {
+              const targetRoot = project && fs.existsSync(path.join(ROOT, 'projects', project))
+                ? path.join(ROOT, 'projects', project)
+                : ROOT;
+              const briefPath = path.join(targetRoot, 'CLIENT_BRIEF_INTERVIEW.json');
+              let forge3dMode = 'diorama-3d';
+              if (fs.existsSync(briefPath)) {
+                const parsedBrief = JSON.parse(fs.readFileSync(briefPath, 'utf8'));
+                forge3dMode = parsedBrief?.blocks?.block5_motion_3d_interactivity?.forge3dMode || 'none';
+              }
+              if (forge3dMode && forge3dMode !== 'none') {
+                forged3dResult = forge3dSceneOrEffect(forge3dMode, project || '');
+              }
+            } catch (_) {}
             return {
               id: 'webgpu_3d_primitives_fill_in',
               passed: primitiveCount >= 3,
               durationMs: Math.round(performance.now() - t0),
-              primitiveCount
+              primitiveCount,
+              forged3dResult
             };
           }
         }

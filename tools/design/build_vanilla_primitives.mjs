@@ -196,9 +196,8 @@ export function compileComponentMorphologyPrimitives({
   --wf-morphology-surface-border: ${mat.border};
 }
 
-[data-grid-topology="${gridTopology}"] {
+.bento-grid[data-grid-topology="${gridTopology}"] {
   display: grid;
-  gap: var(--space-m, clamp(1rem, 0.85rem + 0.75vw, 1.5rem));
   width: 100%;
   max-width: 1320px;
   margin-inline: auto;
@@ -362,22 +361,224 @@ export const UNIVERSAL_UI_PRIMITIVES_CSS = `/**
   border: 1px solid oklch(0.85 0.15 165 / 0.28);
 }
 
-/* 4. 8 Grid Topologies & Touch-Safe Primary CTA (Fitts's Law >= 44x44px) */
-.bento-grid,
-[data-grid-topology="golden-ratio-bento-matrix"],
-[data-grid-topology="swiss-asymmetric-editorial"],
-[data-grid-topology="kinetic-scrollytelling-stage"],
-[data-grid-topology="architectural-brutalist-monolith"],
-[data-grid-topology="tufte-high-density-data"],
-[data-grid-topology="split-screen-sticky-narrative"],
-[data-grid-topology="editorial-magazine-spread"],
-[data-grid-topology="interactive-webgl-spatial-canvas"] {
+/* 4. 8 Structurally Distinct CSS Grid Topologies (Phase 37 Bespoke Morphology) */
+.bento-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
   gap: var(--space-m, clamp(1rem, 0.85rem + 0.75vw, 1.5rem));
   width: 100%;
   max-width: 1280px;
   margin-inline: auto;
+}
+
+/* (1) Swiss Asymmetric Editorial (1 : 2.618 Golden Split + 1px Exposed Hairlines) */
+[data-grid-topology="swiss-asymmetric-editorial"] .bento-grid,
+.bento-grid[data-grid-topology="swiss-asymmetric-editorial"] {
+  display: grid;
+  grid-template-columns: minmax(min(100%, 240px), 1fr) minmax(min(100%, 320px), 2.618fr);
+  gap: 0;
+  border: 1px solid var(--border-subtle, oklch(1 0 0 / 0.12));
+}
+[data-grid-topology="swiss-asymmetric-editorial"] .bento-card {
+  border-radius: 0;
+  border: 1px solid var(--border-subtle, oklch(1 0 0 / 0.10));
+}
+
+/* (2) Kinetic Scrollytelling Stage (Narrative Stack + Scroll-Snap Proximity) */
+[data-grid-topology="kinetic-scrollytelling-stage"] {
+  scroll-snap-type: y proximity;
+}
+[data-grid-topology="kinetic-scrollytelling-stage"] .bento-grid,
+.bento-grid[data-grid-topology="kinetic-scrollytelling-stage"] {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+}
+[data-grid-topology="kinetic-scrollytelling-stage"] .section-block {
+  scroll-snap-align: start;
+}
+
+/* (3) Architectural Brutalist Monolith (0px Radius + 2px Structural Hairlines + High Negative Space) */
+[data-grid-topology="architectural-brutalist-monolith"] .bento-grid,
+.bento-grid[data-grid-topology="architectural-brutalist-monolith"] {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 1.5rem;
+}
+[data-grid-topology="architectural-brutalist-monolith"] .bento-card,
+[data-grid-topology="architectural-brutalist-monolith"] .pricing-card {
+  border-radius: 0;
+  border: 2px solid oklch(1 0 0 / 0.22);
+}
+
+/* (4) Tufte High-Density Data (Analytical Multi-Column + Tabular Numerals) */
+[data-grid-topology="tufte-high-density-data"] .bento-grid,
+.bento-grid[data-grid-topology="tufte-high-density-data"] {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 1rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* (5) Split-Screen Sticky Narrative (40% Sticky Index + 60% Scrollable Content on Desktop) */
+[data-grid-topology="split-screen-sticky-narrative"] .bento-grid,
+.bento-grid[data-grid-topology="split-screen-sticky-narrative"] {
+  display: grid;
+  grid-template-columns: minmax(min(100%, 260px), 2fr) minmax(min(100%, 320px), 3fr);
+  gap: clamp(1.25rem, 2vw, 2rem);
+  align-items: start;
+}
+
+/* (6) Golden Ratio Bento Matrix (12-Column 7:5 Golden Asymmetric Spans on Desktop) */
+[data-grid-topology="golden-ratio-bento-matrix"] .bento-grid,
+.bento-grid[data-grid-topology="golden-ratio-bento-matrix"] {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: clamp(1rem, 1.5vw, 1.5rem);
+}
+[data-grid-topology="golden-ratio-bento-matrix"] .bento-card:nth-child(odd),
+.bento-grid[data-grid-topology="golden-ratio-bento-matrix"] > *:nth-child(odd) {
+  grid-column: span 7;
+}
+[data-grid-topology="golden-ratio-bento-matrix"] .bento-card:nth-child(even),
+.bento-grid[data-grid-topology="golden-ratio-bento-matrix"] > *:nth-child(even) {
+  grid-column: span 5;
+}
+
+/* (7) Editorial Magazine Spread (65ch Authority Measure + Drop Cap) */
+[data-grid-topology="editorial-magazine-spread"] .bento-grid,
+.bento-grid[data-grid-topology="editorial-magazine-spread"] {
+  display: grid;
+  grid-template-columns: minmax(0, 65ch);
+  justify-content: center;
+  gap: 1.75rem;
+}
+[data-grid-topology="editorial-magazine-spread"] .hero-lead::first-letter {
+  font-size: 1.35em;
+  font-weight: 700;
+}
+
+/* (8) Interactive WebGL Spatial Canvas (Floating Glassmorphic Cards over Spatial Stage) */
+[data-grid-topology="interactive-webgl-spatial-canvas"] .bento-grid,
+.bento-grid[data-grid-topology="interactive-webgl-spatial-canvas"] {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+[data-grid-topology="interactive-webgl-spatial-canvas"] .bento-card {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Reset legacy 12-col spans (.bento-card / .bento-span-8 / .bento-span-4) when using non-12-col topologies */
+[data-grid-topology]:not([data-grid-topology="golden-ratio-bento-matrix"]) .bento-card,
+[data-grid-topology]:not([data-grid-topology="golden-ratio-bento-matrix"]) .bento-span-8,
+[data-grid-topology]:not([data-grid-topology="golden-ratio-bento-matrix"]) .bento-span-4,
+.bento-grid[data-grid-topology]:not([data-grid-topology="golden-ratio-bento-matrix"]) > .bento-card,
+.bento-grid[data-grid-topology]:not([data-grid-topology="golden-ratio-bento-matrix"]) > .bento-span-8,
+.bento-grid[data-grid-topology]:not([data-grid-topology="golden-ratio-bento-matrix"]) > .bento-span-4 {
+  grid-column: auto;
+}
+
+@media (max-width: 860px) {
+  [data-grid-topology] .bento-grid,
+  .bento-grid[data-grid-topology] {
+    grid-template-columns: 1fr;
+  }
+  [data-grid-topology] .bento-card,
+  [data-grid-topology] .bento-span-8,
+  [data-grid-topology] .bento-span-4,
+  [data-grid-topology="golden-ratio-bento-matrix"] .bento-card:nth-child(odd),
+  [data-grid-topology="golden-ratio-bento-matrix"] .bento-card:nth-child(even),
+  .bento-grid[data-grid-topology="golden-ratio-bento-matrix"] > *:nth-child(odd),
+  .bento-grid[data-grid-topology="golden-ratio-bento-matrix"] > *:nth-child(even) {
+    grid-column: 1 / -1;
+  }
+}
+
+/* 5. 10 Hero Architectures & Industry Interactive Widget Primitives */
+.hero-section[data-hero-architecture="typographic-manifesto-fullbleed"] {
+  text-align: left;
+  border-block-end: 1px solid oklch(1 0 0 / 0.12);
+}
+.hero-section[data-hero-architecture="asymmetric-editorial-split-60-40"] {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: 2rem;
+  align-items: center;
+}
+.hero-section[data-hero-architecture="live-interactive-product-sandbox"],
+.hero-section[data-hero-architecture="command-center-telemetry-hud"] {
+  border: 1px solid oklch(1 0 0 / 0.14);
+  border-radius: var(--wf-morphology-radius-outer, 18px);
+  padding: clamp(1.5rem, 3vw, 2.75rem);
+}
+
+.wf-industry-widget {
+  margin-block: clamp(2rem, 4vw, 3.5rem);
+  padding: clamp(1.25rem, 2.5vw, 2rem);
+  border-radius: var(--wf-morphology-radius-outer, 16px);
+  border: 1px solid oklch(1 0 0 / 0.14);
+  background: oklch(0.18 0.02 260 / 0.72);
+}
+.wf-widget-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  gap: 1rem;
+  margin-block-start: 1rem;
+}
+.wf-widget-card {
+  padding: 1rem;
+  border-radius: var(--wf-morphology-radius-inner, 10px);
+  border: 1px solid oklch(1 0 0 / 0.10);
+  background: oklch(0.14 0.015 260 / 0.85);
+}
+.wf-widget-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  min-width: 48px;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--wf-morphology-radius-inner, 10px);
+  border: 1px solid oklch(1 0 0 / 0.22);
+  background: oklch(0.24 0.03 260);
+  color: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Native Capacitor 8 Bottom Tab Bar */
+.wf-mobile-bottom-tab-bar {
+  position: fixed;
+  inset-inline: 0;
+  bottom: 0;
+  z-index: 60;
+  display: none;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 56px;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  background: oklch(0.14 0.02 260 / 0.92);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid oklch(1 0 0 / 0.14);
+}
+[data-capacitor-mobile="true"] .wf-mobile-bottom-tab-bar {
+  display: flex;
+}
+.wf-mobile-tab-item {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  min-width: 48px;
+  padding: 0.25rem 0.75rem;
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.78rem;
 }
 
 .btn-primary, [data-cta="primary"] {
@@ -403,6 +604,353 @@ export const UNIVERSAL_UI_PRIMITIVES_CSS = `/**
   transform: translate3d(0, 0, 0) scale(0.98);
 }
 `;
+
+export const HERO_ARCHITECTURE_DESCRIPTORS = {
+  'typographic-manifesto-fullbleed': {
+    badgePrefix: 'MANIFIESTO EDITORIAL',
+    layoutRole: 'Manifiesto tipográfico de ancho completo con jerarquía suiza'
+  },
+  'asymmetric-editorial-split-60-40': {
+    badgePrefix: 'COMPOSICIÓN ASIMÉTRICA 60/40',
+    layoutRole: 'División editorial 60/40 con tesis comercial y evidencia verificable'
+  },
+  'spatial-3d-diorama-stage': {
+    badgePrefix: 'ESCENARIO ESPACIAL 3D',
+    layoutRole: 'Diorama espacial interactivo a 60 FPS con iluminación física'
+  },
+  'live-interactive-product-sandbox': {
+    badgePrefix: 'SANDBOX INTERACTIVO EN VIVO',
+    layoutRole: 'Demostración operativa ejecutable en el primer viewport'
+  },
+  'kinetic-video-mask-reveal': {
+    badgePrefix: 'REVELACIÓN CINEMÁTICA',
+    layoutRole: 'Apertura cinética con máscara vectorial e identidad sonora'
+  },
+  'architectural-gallery-frame': {
+    badgePrefix: 'GALERÍA ARQUITECTÓNICA',
+    layoutRole: 'Marco de proporción áurea con curaduría visual de colección'
+  },
+  'command-center-telemetry-hud': {
+    badgePrefix: 'HUD DE TELEMETRÍA EN TIEMPO REAL',
+    layoutRole: 'Centro de comando táctico con indicadores numéricos tabulares'
+  },
+  'trust-clinical-concierge-portal': {
+    badgePrefix: 'PORTAL DE ATENCIÓN DIRECTA',
+    layoutRole: 'Portal clínico de serenidad biofílica y reserva inmediata'
+  },
+  'editorial-authority-dossier': {
+    badgePrefix: 'DOSSIER DE AUTORIDAD INSTITUCIONAL',
+    layoutRole: 'Dossier jurídico y corporativo de lectura profunda (65ch)'
+  },
+  'focal-centered-interactive-stage': {
+    badgePrefix: 'ARQUITECTURA FOCAL DE CONVERSIÓN',
+    layoutRole: 'Escenario simétrico centrado en propuesta de valor y CTA táctil'
+  }
+};
+
+/**
+ * Generates the interactive functional HTML section and companion Vanilla JS logic
+ * tailored to each of the 8 industrial archetypes (`ecommerce`, `fintech`, `erp`, `clinica`, `abogacia`, `lujo`, `streamer`, `saas`).
+ */
+export function buildInteractiveIndustryModule(industryInput = 'saas', brandName = 'Agencia Alfa') {
+  const raw = String(industryInput || 'saas').toLowerCase();
+  let key = 'saas';
+  if (/ecomm|tienda|shop|retail/.test(raw)) key = 'ecommerce';
+  else if (/fintech|bank|banca|finanz|crypto|pagos/.test(raw)) key = 'fintech';
+  else if (/erp|crm|backoffice|admin|inventario/.test(raw)) key = 'erp';
+  else if (/clinic|med|salud|odont|hospital/.test(raw)) key = 'clinica';
+  else if (/abog|legal|jurid|notar|ley/.test(raw)) key = 'abogacia';
+  else if (/lujo|luxury|joyer|reloj|arquitect|inmob/.test(raw)) key = 'lujo';
+  else if (/stream|gaming|esport|creador|vtuber/.test(raw)) key = 'streamer';
+
+  const modules = {
+    ecommerce: {
+      title: 'Catálogo Interactivo y Carrito con Cálculo Exacto en Centavos',
+      subtitle: 'Seleccioná productos para actualizar el subtotal en centavos enteros y procesar el checkout idempotente.',
+      html: `<section id="industry-interactive-module" class="section-block wf-industry-widget" data-industry-widget="ecommerce" aria-label="Catálogo y Carrito Interactivo">
+      <div class="section-header">
+        <h2>Catálogo Activo &amp; Checkout sin Fricción</h2>
+        <p>Cálculo determinista en centavos enteros (<code>BigInt</code>) conectado a <code>/api/checkout</code>.</p>
+      </div>
+      <div class="wf-widget-grid">
+        <article class="wf-widget-card">
+          <h3>Pack Edición Flagship</h3>
+          <p class="tabular-nums"><strong>$149.00 USD</strong> (<code>14900</code> centavos)</p>
+          <button type="button" class="wf-widget-btn" data-cart-add="flagship" data-price-cents="14900" aria-label="Agregar Pack Edición Flagship al carrito">Agregar al Carrito</button>
+        </article>
+        <article class="wf-widget-card">
+          <h3>Módulo Expansión Pro</h3>
+          <p class="tabular-nums"><strong>$89.00 USD</strong> (<code>8900</code> centavos)</p>
+          <button type="button" class="wf-widget-btn" data-cart-add="expansion" data-price-cents="8900" aria-label="Agregar Módulo Expansión Pro al carrito">Agregar al Carrito</button>
+        </article>
+        <article class="wf-widget-card" aria-live="polite">
+          <h3>Resumen de Carrito</h3>
+          <p class="tabular-nums" id="wf-cart-summary">Ítems: 1 | Total: $149.00 USD (14900 cts)</p>
+          <button type="button" class="btn-primary" id="wf-cart-checkout-btn" aria-label="Iniciar Checkout Seguro">Iniciar Checkout Seguro</button>
+        </article>
+      </div>
+    </section>`
+    },
+    fintech: {
+      title: 'Simulador Financiero de Rendimiento y Cuotas en Tiempo Real',
+      subtitle: 'Proyección matemática exacta en centavos enteros sin errores de punto flotante IEEE-754.',
+      html: `<section id="industry-interactive-module" class="section-block wf-industry-widget" data-industry-widget="fintech" aria-label="Simulador Financiero en Tiempo Real">
+      <div class="section-header">
+        <h2>Simulador de Rendimiento Institucional (TNA / Cuotas)</h2>
+        <p>Aritmética financiera exacta con tipografía numérica <code>tabular-nums</code>.</p>
+      </div>
+      <div class="wf-widget-grid">
+        <article class="wf-widget-card">
+          <h3>Capital Inicial: <span class="tabular-nums" id="wf-fintech-capital-label">$10,000 USD</span></h3>
+          <p>Plazo seleccionado: <strong class="tabular-nums" id="wf-fintech-term-label">12 meses</strong> (TNA 11.5%)</p>
+          <div class="hero-actions">
+            <button type="button" class="wf-widget-btn" data-fintech-capital="1000000" aria-label="Simular 10000 dólares">$10,000</button>
+            <button type="button" class="wf-widget-btn" data-fintech-capital="5000000" aria-label="Simular 50000 dólares">$50,000</button>
+          </div>
+        </article>
+        <article class="wf-widget-card" aria-live="polite">
+          <h3>Proyección Auditada</h3>
+          <p class="tabular-nums" id="wf-fintech-projection">Monto Final: $11,150.00 USD | Rendimiento Neto: +$1,150.00 USD</p>
+        </article>
+      </div>
+    </section>`
+    },
+    erp: {
+      title: 'Consola Operativa Multi-Tenant (Superficie Operate)',
+      subtitle: 'Filtrado instantáneo de órdenes, control de estado y aislamiento RLS verificado.',
+      html: `<section id="industry-interactive-module" class="section-block wf-industry-widget" data-industry-widget="erp" aria-label="Consola Operativa Multi-Tenant">
+      <div class="section-header">
+        <h2>Panel de Operaciones Multi-Tenant &amp; Auditoría RLS</h2>
+        <p>Superficie de alta densidad con filtro rápido de estado operativo.</p>
+      </div>
+      <div class="hero-actions" style="margin-bottom:1rem;">
+        <button type="button" class="wf-widget-btn" data-erp-filter="ALL" aria-label="Mostrar todos los registros">Todos (3)</button>
+        <button type="button" class="wf-widget-btn" data-erp-filter="ACTIVE" aria-label="Filtrar registros activos">Activos</button>
+        <button type="button" class="wf-widget-btn" data-erp-filter="SETTLED" aria-label="Filtrar registros conciliados">Conciliados</button>
+      </div>
+      <div class="wf-widget-grid" id="wf-erp-table-rows">
+        <article class="wf-widget-card" data-erp-status="ACTIVE">
+          <h3 class="tabular-nums">ORD-2026-0891 • Tenant Alpha</h3>
+          <p class="tabular-nums">Estado: <strong>ACTIVE</strong> | SLA: 99.98%</p>
+        </article>
+        <article class="wf-widget-card" data-erp-status="SETTLED">
+          <h3 class="tabular-nums">ORD-2026-0892 • Tenant Enterprise</h3>
+          <p class="tabular-nums">Estado: <strong>SETTLED</strong> | Lote Conciliado</p>
+        </article>
+      </div>
+    </section>`
+    },
+    clinica: {
+      title: 'Buscador por Especialidad Médica y Agenda de Turnos',
+      subtitle: 'Seleccioná especialidad y franja horaria para confirmar tu turno sin espera telefónica.',
+      html: `<section id="industry-interactive-module" class="section-block wf-industry-widget" data-industry-widget="clinica" aria-label="Agenda Interactiva de Turnos Médicos">
+      <div class="section-header">
+        <h2>Reserva Rápida de Turnos por Especialidad</h2>
+        <p>Atención con cobertura médica y confirmación inmediata por WhatsApp o Portal.</p>
+      </div>
+      <div class="wf-widget-grid">
+        <article class="wf-widget-card">
+          <h3>1. Especialidad</h3>
+          <div class="hero-actions">
+            <button type="button" class="wf-widget-btn" data-clinic-spec="Diagnóstico Integral" aria-label="Seleccionar Diagnóstico Integral">Diagnóstico Integral</button>
+            <button type="button" class="wf-widget-btn" data-clinic-spec="Especialidades Clínicas" aria-label="Seleccionar Especialidades Clínicas">Especialidades</button>
+          </div>
+        </article>
+        <article class="wf-widget-card" aria-live="polite">
+          <h3>2. Turno Seleccionado</h3>
+          <p id="wf-clinic-slot-summary">Especialidad: Diagnóstico Integral — Próximo turno hoy 16:30 hs</p>
+        </article>
+      </div>
+    </section>`
+    },
+    abogacia: {
+      title: 'Clasificador Confidencial de Caso Jurídico en 3 Pasos',
+      subtitle: 'Evaluación preliminar bajo secreto profesional para asignar al socio especialista.',
+      html: `<section id="industry-interactive-module" class="section-block wf-industry-widget" data-industry-widget="abogacia" aria-label="Clasificador de Consulta Jurídica">
+      <div class="section-header">
+        <h2>Pre-Evaluación Confidencial de Caso Legal</h2>
+        <p>Seleccioná el fuero o materia para priorizar tu consulta con el socio director.</p>
+      </div>
+      <div class="wf-widget-grid">
+        <article class="wf-widget-card">
+          <h3>Materia / Fuero</h3>
+          <div class="hero-actions">
+            <button type="button" class="wf-widget-btn" data-legal-area="Litigios Corporativos" aria-label="Seleccionar Litigios Corporativos">Corporativo</button>
+            <button type="button" class="wf-widget-btn" data-legal-area="Arbitraje y Contratos" aria-label="Seleccionar Arbitraje y Contratos">Arbitraje</button>
+          </div>
+        </article>
+        <article class="wf-widget-card" aria-live="polite">
+          <h3>Dictamen de Prioridad</h3>
+          <p id="wf-legal-triage-summary">Fuero: Litigios Corporativos • Asignación directa a Socio Senior en menos de 2 horas.</p>
+        </article>
+      </div>
+    </section>`
+    },
+    lujo: {
+      title: 'Visor de Colección Privada & Concierge Atelier',
+      subtitle: 'Inspeccioná acabados de alta manufactura y reservá una sesión privada.',
+      html: `<section id="industry-interactive-module" class="section-block wf-industry-widget" data-industry-widget="lujo" aria-label="Visor de Colección Atelier">
+      <div class="section-header">
+        <h2>Curaduría de Materiales &amp; Edición Numerada</h2>
+        <p>Proporción áurea <code>1.618:1</code> y trazabilidad artesanal certificada.</p>
+      </div>
+      <div class="wf-widget-grid">
+        <article class="wf-widget-card">
+          <h3>Selección de Acabado</h3>
+          <div class="hero-actions">
+            <button type="button" class="wf-widget-btn" data-luxury-finish="Oro Imperial 18k &amp; Obsidiana" aria-label="Ver acabado Oro Imperial">Oro Imperial 18k</button>
+            <button type="button" class="wf-widget-btn" data-luxury-finish="Titanio Grado 5 Cepillado" aria-label="Ver acabado Titanio Grado 5">Titanio Grado 5</button>
+          </div>
+        </article>
+        <article class="wf-widget-card" aria-live="polite">
+          <h3>Especificación de Pieza</h3>
+          <p id="wf-luxury-finish-summary">Edición: Oro Imperial 18k &amp; Obsidiana • Serie Limitada Numerada.</p>
+        </article>
+      </div>
+    </section>`
+    },
+    streamer: {
+      title: 'HUD Táctico de Telemetría a 60 FPS & Sincresis Sonora',
+      subtitle: 'Previsualizá alertas reactivas y capas de telemetría con cero bloqueo del hilo principal.',
+      html: `<section id="industry-interactive-module" class="section-block wf-industry-widget" data-industry-widget="streamer" aria-label="HUD Interactivo de Telemetría">
+      <div class="section-header">
+        <h2>HUD Reactivo de Transmisión &amp; Eventos en Tiempo Real</h2>
+        <p>Presupuesto de cuadro garantizado <code>&lt;= 16.6ms</code> con WebAudio procedural.</p>
+      </div>
+      <div class="wf-widget-grid">
+        <article class="wf-widget-card">
+          <h3>Disparador de Escena</h3>
+          <div class="hero-actions">
+            <button type="button" class="wf-widget-btn" data-stream-event="raid-hologram" aria-label="Simular evento Raid Holográfico">Simular Raid</button>
+            <button type="button" class="wf-widget-btn" data-stream-event="sub-milestone" aria-label="Simular Hito de Suscripción">Simular Hito</button>
+          </div>
+        </article>
+        <article class="wf-widget-card" aria-live="polite">
+          <h3>Estado del Bus de Eventos</h3>
+          <p class="tabular-nums" id="wf-stream-hud-status">FPS: 60.0 | Evento Activo: Ready (0ms drop)</p>
+        </article>
+      </div>
+    </section>`
+    },
+    saas: {
+      title: 'Calculadora Interactiva de ROI y Latencia en el Borde',
+      subtitle: 'Estimá el ahorro mensual en infraestructura y la mejora en conversión.',
+      html: `<section id="industry-interactive-module" class="section-block wf-industry-widget" data-industry-widget="saas" aria-label="Calculadora Interactiva de ROI SaaS">
+      <div class="section-header">
+        <h2>Calculadora de Impacto Operativo &amp; Conversión</h2>
+        <p>Métricas auditables en tiempo real para ${brandName}.</p>
+      </div>
+      <div class="wf-widget-grid">
+        <article class="wf-widget-card">
+          <h3>Escala de Tráfico Mensual</h3>
+          <div class="hero-actions">
+            <button type="button" class="wf-widget-btn" data-saas-tier="growth" aria-label="Escala Growth 100k visitas">100k req/mes</button>
+            <button type="button" class="wf-widget-btn" data-saas-tier="enterprise" aria-label="Escala Enterprise 1M visitas">1M req/mes</button>
+          </div>
+        </article>
+        <article class="wf-widget-card" aria-live="polite">
+          <h3>Impacto Estimado</h3>
+          <p class="tabular-nums" id="wf-saas-roi-summary">Latencia P99: 14ms | Incremento CRO estimado: +24.5%</p>
+        </article>
+      </div>
+    </section>`
+    }
+  };
+
+  const selected = modules[key] || modules.saas;
+  const jsCode = `/**
+ * site/js/industry-interactive.js — Deterministic Interactive Industry Module (${key})
+ */
+(function initIndustryInteractiveModule() {
+  if (typeof document === 'undefined') return;
+  let cartItems = 1;
+  let cartCents = 14900;
+
+  document.addEventListener('click', function (ev) {
+    const target = ev.target && ev.target.closest ? ev.target.closest('button') : null;
+    if (!target) return;
+
+    if (target.hasAttribute('data-cart-add')) {
+      const addCents = parseInt(target.getAttribute('data-price-cents') || '0', 10);
+      cartItems += 1;
+      cartCents += addCents;
+      const summary = document.getElementById('wf-cart-summary');
+      if (summary) {
+        summary.textContent = 'Ítems: ' + cartItems + ' | Total: $' + (cartCents / 100).toFixed(2) + ' USD (' + cartCents + ' cts)';
+      }
+    }
+
+    if (target.id === 'wf-cart-checkout-btn') {
+      const summary = document.getElementById('wf-cart-summary');
+      if (summary) {
+        summary.textContent = 'Checkout idempotente iniciado (' + cartCents + ' cts) — llave verificada.';
+      }
+    }
+
+    if (target.hasAttribute('data-fintech-capital')) {
+      const cents = BigInt(target.getAttribute('data-fintech-capital') || '1000000');
+      const netYieldCents = (cents * 115n) / 1000n;
+      const totalCents = cents + netYieldCents;
+      const proj = document.getElementById('wf-fintech-projection');
+      if (proj) {
+        proj.textContent = 'Monto Final: $' + (Number(totalCents) / 100).toFixed(2) + ' USD | Rendimiento Neto: +$' + (Number(netYieldCents) / 100).toFixed(2) + ' USD';
+      }
+    }
+
+    if (target.hasAttribute('data-erp-filter')) {
+      const filter = target.getAttribute('data-erp-filter');
+      const cards = document.querySelectorAll('[data-erp-status]');
+      cards.forEach(function (card) {
+        const st = card.getAttribute('data-erp-status');
+        card.style.display = (filter === 'ALL' || st === filter) ? '' : 'none';
+      });
+    }
+
+    if (target.hasAttribute('data-clinic-spec')) {
+      const spec = target.getAttribute('data-clinic-spec');
+      const el = document.getElementById('wf-clinic-slot-summary');
+      if (el) el.textContent = 'Especialidad: ' + spec + ' — Turno disponible confirmado.';
+    }
+
+    if (target.hasAttribute('data-legal-area')) {
+      const area = target.getAttribute('data-legal-area');
+      const el = document.getElementById('wf-legal-triage-summary');
+      if (el) el.textContent = 'Fuero: ' + area + ' • Asignación directa a Socio Senior en menos de 2 horas.';
+    }
+
+    if (target.hasAttribute('data-luxury-finish')) {
+      const finish = target.getAttribute('data-luxury-finish');
+      const el = document.getElementById('wf-luxury-finish-summary');
+      if (el) el.textContent = 'Edición: ' + finish + ' • Serie Limitada Numerada.';
+    }
+
+    if (target.hasAttribute('data-stream-event')) {
+      const evName = target.getAttribute('data-stream-event');
+      const el = document.getElementById('wf-stream-hud-status');
+      if (el) el.textContent = 'FPS: 60.0 | Evento Disparado: ' + evName + ' (0ms frame drop)';
+    }
+
+    if (target.hasAttribute('data-saas-tier')) {
+      const tier = target.getAttribute('data-saas-tier');
+      const el = document.getElementById('wf-saas-roi-summary');
+      if (el) {
+        el.textContent = tier === 'enterprise'
+          ? 'Latencia P99: 11ms | Ahorro Cloud: $1,420/mes | Incremento CRO: +31.0%'
+          : 'Latencia P99: 14ms | Ahorro Cloud: $380/mes | Incremento CRO: +24.5%';
+      }
+    }
+  });
+})();
+`;
+
+  return {
+    industryKey: key,
+    title: selected.title,
+    subtitle: selected.subtitle,
+    html: selected.html,
+    jsCode
+  };
+}
 
 export function buildVanillaPrimitives(projectInput = '', morphologyOptions = null) {
   const cfg = loadProjectConfig(projectInput);
@@ -435,10 +983,180 @@ export function buildVanillaPrimitives(projectInput = '', morphologyOptions = nu
     fs.writeFileSync(t.cssPath, (UNIVERSAL_UI_PRIMITIVES_CSS.trim() + morphBlock).trim() + '\n', 'utf8');
   }
 
+  // Always keep base templates synchronized with UNIVERSAL_UI_PRIMITIVES_CSS
+  const templatePaths = [
+    path.join(FACTORY_ROOT, 'templates', 'vanilla-edge', 'site', 'css', 'ui-primitives.css'),
+    path.join(FACTORY_ROOT, 'templates', 'astro-edge', 'src', 'styles', 'ui-primitives.css')
+  ];
+  for (const tplPath of templatePaths) {
+    if (fs.existsSync(path.dirname(tplPath))) {
+      fs.writeFileSync(tplPath, UNIVERSAL_UI_PRIMITIVES_CSS.trim() + '\n', 'utf8');
+    }
+  }
+
   return {
     passed: true,
     morphologyApplied: morphologyOptions ? compileComponentMorphologyPrimitives(morphologyOptions) : null,
     targetsBuilt: targets.map(t => ({ id: t.id, cssPath: t.cssPath }))
+  };
+}
+
+/**
+ * E2E DOM & CSS Morphology Wiring (`applyBespokeMorphologyToProjectDom`):
+ * Connects `bespoke_morphology_composer.mjs` + `CLIENT_BRIEF_INTERVIEW.json` + `PRD_INTERVIEW_STATE.json`
+ * directly into `projects/<slug>/site/css/ui-primitives.css`, `projects/<slug>/index.html`, and
+ * `projects/<slug>/site/js/industry-interactive.js`.
+ */
+export function applyBespokeMorphologyToProjectDom(projectInput = '', customOptions = {}) {
+  const cfg = loadProjectConfig(projectInput);
+  const rootDir = cfg.projectRoot;
+  if (!fs.existsSync(rootDir)) {
+    return { passed: false, reason: 'PROJECT_DIR_NOT_FOUND', rootDir };
+  }
+
+  let interview = null;
+  let prdState = null;
+  let brandLock = null;
+
+  const interviewPath = path.join(rootDir, 'CLIENT_BRIEF_INTERVIEW.json');
+  const prdStatePath = path.join(rootDir, 'PRD_INTERVIEW_STATE.json');
+  const brandLockPath = path.join(rootDir, 'BRAND_IDENTITY_LOCK.json');
+
+  if (fs.existsSync(interviewPath)) {
+    try { interview = JSON.parse(fs.readFileSync(interviewPath, 'utf8')); } catch (_) {}
+  }
+  if (fs.existsSync(prdStatePath)) {
+    try { prdState = JSON.parse(fs.readFileSync(prdStatePath, 'utf8')); } catch (_) {}
+  }
+  if (fs.existsSync(brandLockPath)) {
+    try { brandLock = JSON.parse(fs.readFileSync(brandLockPath, 'utf8')); } catch (_) {}
+  }
+
+  const dna = customOptions.bespokeDna || interview?.bespokeDna || {};
+  const gridTopology =
+    customOptions.gridTopology ||
+    dna.gridTopology ||
+    interview?.blocks?.block3_grid_topology_and_morphology?.gridTopology ||
+    'golden-ratio-bento-matrix';
+  const heroArchitecture =
+    customOptions.heroArchitecture ||
+    dna.heroArchitecture ||
+    interview?.blocks?.block3_grid_topology_and_morphology?.heroArchitecture ||
+    'focal-centered-interactive-stage';
+  const navVariant =
+    customOptions.navVariant ||
+    dna.componentMorphology?.nav ||
+    'floating-glass-pill';
+  const cornerProfile =
+    customOptions.cornerProfile ||
+    dna.componentMorphology?.corner ||
+    'organic-12px';
+  const surfaceMaterial =
+    customOptions.surfaceMaterial ||
+    dna.componentMorphology?.material ||
+    interview?.blocks?.block3_grid_topology_and_morphology?.surfaceMateriality ||
+    'polymer';
+  const industry =
+    customOptions.industry ||
+    prdState?.blocks?.block1_business_identity_and_problem?.industryCategory ||
+    interview?.blocks?.block1_commercial_identity?.industryArchetype ||
+    cfg.industryArchetype ||
+    cfg.archetype ||
+    'saas';
+  const brandName =
+    brandLock?.brandName ||
+    prdState?.blocks?.block1_business_identity_and_problem?.officialBrandName ||
+    interview?.blocks?.block1_commercial_identity?.brandName ||
+    cfg.name ||
+    'Agencia Alfa';
+  const enableCapacitorMobile = Boolean(
+    customOptions.enableCapacitorMobile ??
+      interview?.blocks?.block10_mobile_capacitor_feedback_and_f2p_matrix?.enableCapacitor8MobileTarget
+  );
+
+  // 1. Compile ui-primitives.css with the exact morphology options
+  const morphRes = buildVanillaPrimitives(projectInput, {
+    gridTopology,
+    navVariant,
+    cornerProfile,
+    surfaceMaterial
+  });
+
+  // 2. Write site/js/industry-interactive.js
+  const widget = buildInteractiveIndustryModule(industry, brandName);
+  const jsDir = path.join(rootDir, 'site', 'js');
+  fs.mkdirSync(jsDir, { recursive: true });
+  const interactiveJsPath = path.join(jsDir, 'industry-interactive.js');
+  fs.writeFileSync(interactiveJsPath, widget.jsCode, 'utf8');
+
+  // 3. Transform projects/<slug>/index.html with real morphology attributes, nav class, hero descriptor & interactive widget
+  const indexHtmlPath = path.join(rootDir, 'index.html');
+  let htmlUpdated = false;
+  if (fs.existsSync(indexHtmlPath)) {
+    let html = fs.readFileSync(indexHtmlPath, 'utf8');
+
+    // Inject data-grid-topology, data-hero-architecture, data-surface-material on <body>
+    html = html.replace(/<body([^>]*)>/i, (_m, attrs) => {
+      const cleaned = String(attrs || '')
+        .replace(/\s*data-grid-topology="[^"]*"/g, '')
+        .replace(/\s*data-hero-architecture="[^"]*"/g, '')
+        .replace(/\s*data-surface-material="[^"]*"/g, '')
+        .replace(/\s*data-nav-morphology="[^"]*"/g, '')
+        .replace(/\s*data-capacitor-mobile="[^"]*"/g, '');
+      const capAttr = enableCapacitorMobile ? ' data-capacitor-mobile="true"' : '';
+      return `<body${cleaned} data-grid-topology="${gridTopology}" data-hero-architecture="${heroArchitecture}" data-surface-material="${surfaceMaterial}" data-nav-morphology="${navVariant}"${capAttr}>`;
+    });
+
+    // Apply hero architecture attribute onto .hero-section
+    html = html.replace(/<section class="hero-section"([^>]*)>/i, (_m, attrs) => {
+      const cleaned = String(attrs || '').replace(/\s*data-hero-architecture="[^"]*"/g, '');
+      return `<section class="hero-section"${cleaned} data-hero-architecture="${heroArchitecture}">`;
+    });
+
+    // Apply grid topology attribute onto .bento-grid
+    html = html.replace(/<div class="bento-grid"([^>]*)>/i, (_m, attrs) => {
+      const cleaned = String(attrs || '').replace(/\s*data-grid-topology="[^"]*"/g, '');
+      return `<div class="bento-grid"${cleaned} data-grid-topology="${gridTopology}">`;
+    });
+
+    // Inject or replace the interactive industry module section
+    if (html.includes('id="industry-interactive-module"')) {
+      html = html.replace(
+        /<section id="industry-interactive-module"[\s\S]*?<\/section>/i,
+        widget.html
+      );
+    } else {
+      html = html.replace(
+        /(<section id="pricing")/i,
+        `${widget.html}\n\n    $1`
+      );
+    }
+
+    // Ensure industry-interactive.js is linked before </body>
+    if (!html.includes('/site/js/industry-interactive.js')) {
+      html = html.replace(
+        /<\/body>/i,
+        `  <script src="/site/js/industry-interactive.js" defer></script>\n</body>`
+      );
+    }
+
+    fs.writeFileSync(indexHtmlPath, html, 'utf8');
+    htmlUpdated = true;
+  }
+
+  return {
+    passed: true,
+    projectSlug: cfg.id,
+    gridTopology,
+    heroArchitecture,
+    navVariant,
+    cornerProfile,
+    surfaceMaterial,
+    industry: widget.industryKey,
+    industryKey: widget.industryKey,
+    htmlUpdated,
+    interactiveJsPath,
+    primitivesResult: morphRes
   };
 }
 

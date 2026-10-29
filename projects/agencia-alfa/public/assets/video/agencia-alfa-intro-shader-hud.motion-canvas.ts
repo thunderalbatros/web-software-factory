@@ -8,6 +8,7 @@ export const BRAND_INTRO_SCENE_CONFIG = {
   slug: "agencia-alfa",
   templateId: "shader-hud",
   archetype: "streamer-and-gaming-creator",
+  choreographyId: "intro-macro-signed-7a18eb",
   fps: 60,
   durationSeconds: 4.5,
   totalFrames: 270,
