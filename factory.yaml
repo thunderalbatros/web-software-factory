@@ -13,7 +13,13 @@ studio:
 
 foreman:
   primaryAgent: "cto_command_center"
-  squadCoordinator: "tools/orchestrator/agent_squad.mjs"
+  squadCoordinator: "tools/intelligence/agent_squad.mjs"
+  squadCoordinatorShim: "tools/orchestrator/agent_squad.mjs"
+  deterministicStatechart: "tools/orchestrator/deterministic_agent_statechart.mjs"
+  jevMemoryPipeline: "tools/intelligence/jev_memory_pipeline.mjs"
+  jevSemanticGateBaml: "tools/intelligence/jev_semantic_gate.mjs"
+  bespokeMorphologyComposer: "tools/design/bespoke_morphology_composer.mjs"
+  contextBudgetToon: "tools/intelligence/context_budget.mjs"
   rpiGateEngine: "tools/orchestrator/humanlayer_rpi_gate.mjs"
   adaptiveDepthRouter: "tools/orchestrator/adaptive_depth_router.mjs"
   beadsTaskGraphPath: ".agents/beads/task_graph.jsonl"

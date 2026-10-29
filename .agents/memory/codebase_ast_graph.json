@@ -1,14 +1,14 @@
 {
   "schema": "cocoindex-code-ast-graph-v1",
-  "updatedAt": "2026-10-29T20:11:05.757Z",
+  "updatedAt": "2026-10-29T21:00:45.341Z",
   "activeProject": "agencia-alfa",
-  "combinedSha256": "bd68620e29e685e7",
+  "combinedSha256": "d2f6d69d565d05ee",
   "stats": {
     "totalFilesIndexed": 143,
-    "reindexedFilesCount": 3,
-    "cachedFilesCount": 140,
-    "totalSymbols": 1214,
-    "totalExports": 718,
+    "reindexedFilesCount": 1,
+    "cachedFilesCount": 142,
+    "totalSymbols": 1215,
+    "totalExports": 719,
     "estimatedTokenSavingsPct": 72.5
   },
   "files": [
@@ -598,7 +598,7 @@
           "endLine": 359
         }
       ],
-      "mtimeMs": 1793295929976.51,
+      "mtimeMs": 1793307629169.4878,
       "size": 9362
     },
     {
@@ -1043,13 +1043,13 @@
       "importedBy": [],
       "calls": [],
       "symbols": [],
-      "mtimeMs": 1793142772513.9778,
+      "mtimeMs": 1793307630477.6738,
       "size": 751
     },
     {
       "path": "projects/agencia-alfa/site/js/fx3d/diorama-hero-3d.mjs",
       "ext": ".mjs",
-      "sha256": "7b15dfc435df1799",
+      "sha256": "6ca892547fb166a1",
       "lineCount": 72,
       "exports": [
         "attachGpuFpsWatchdog",
@@ -1095,7 +1095,7 @@
           "endLine": 71
         }
       ],
-      "mtimeMs": 1793142772513.0317,
+      "mtimeMs": 1793307630476.6692,
       "size": 2359
     },
     {
@@ -1487,7 +1487,7 @@
           "endLine": 244
         }
       ],
-      "mtimeMs": 1793295929980.403,
+      "mtimeMs": 1793307629174.5442,
       "size": 8546
     },
     {
@@ -5276,8 +5276,8 @@
     {
       "path": "tools/audit/a11y_tree_snapshot.mjs",
       "ext": ".mjs",
-      "sha256": "69603b08810c780a",
-      "lineCount": 237,
+      "sha256": "11b590b68a61a598",
+      "lineCount": 239,
       "exports": [
         "captureAccessibilitySnapshot"
       ],
@@ -5352,13 +5352,13 @@
           "name": "captureAccessibilitySnapshot",
           "kind": "function",
           "exported": true,
-          "signature": "export async function captureAccessibilitySnapshot()",
+          "signature": "export async function captureAccessibilitySnapshot(options = {})",
           "startLine": 77,
-          "endLine": 219
+          "endLine": 77
         }
       ],
-      "mtimeMs": 1793040663621.739,
-      "size": 10017
+      "mtimeMs": 1793306887334.823,
+      "size": 10170
     },
     {
       "path": "tools/audit/ast_guard.mjs",
@@ -5865,14 +5865,15 @@
     {
       "path": "tools/audit/harness_doctor_audit.mjs",
       "ext": ".mjs",
-      "sha256": "4dc4a82e2d875f77",
-      "lineCount": 738,
+      "sha256": "32e7e4aed3bacb7a",
+      "lineCount": 943,
       "exports": [
         "FACTORY_ROOT",
         "REPORT_OUTPUT_PATH",
         "resetTestArtifactsAndTelemetry",
         "auditEightHarnessLayers",
         "runEndToEndDryRunSimulation",
+        "auditStageToGearAlignmentMatrix",
         "generateHarnessReadinessReport",
         "runHarnessDoctorAudit"
       ],
@@ -5883,7 +5884,6 @@
         "node:child_process",
         "node:url",
         "../sandbox.mjs",
-        "../intelligence/context_budget.mjs",
         "../intelligence/qdrant_rag.mjs",
         "../intelligence/agent_governance_kernel.mjs",
         "./mcp_security_auditor.mjs",
@@ -5896,7 +5896,9 @@
         "../db/dual_database_forge.mjs",
         "../mobile/mobile_target_forge.mjs",
         "../design/token_compiler.mjs",
-        "../lib/project_loader.mjs"
+        "../lib/project_loader.mjs",
+        "../orchestrator/deterministic_agent_statechart.mjs",
+        "../design/build_vanilla_primitives.mjs"
       ],
       "importedBy": [
         "tools/cto_command_center.mjs"
@@ -5954,68 +5956,76 @@
           "kind": "constant",
           "exported": true,
           "signature": "export const FACTORY_ROOT",
-          "startLine": 50,
-          "endLine": 50
+          "startLine": 71,
+          "endLine": 71
         },
         {
           "name": "REPORT_OUTPUT_PATH",
           "kind": "constant",
           "exported": true,
           "signature": "export const REPORT_OUTPUT_PATH",
-          "startLine": 51,
-          "endLine": 51
+          "startLine": 72,
+          "endLine": 72
         },
         {
           "name": "checkNodeSyntax",
           "kind": "function",
           "exported": false,
           "signature": "function checkNodeSyntax(relPath)",
-          "startLine": 56,
-          "endLine": 70
+          "startLine": 77,
+          "endLine": 91
         },
         {
           "name": "resetTestArtifactsAndTelemetry",
           "kind": "function",
           "exported": true,
           "signature": "export function resetTestArtifactsAndTelemetry()",
-          "startLine": 77,
-          "endLine": 147
+          "startLine": 98,
+          "endLine": 168
         },
         {
           "name": "auditEightHarnessLayers",
           "kind": "function",
           "exported": true,
           "signature": "export async function auditEightHarnessLayers()",
-          "startLine": 152,
-          "endLine": 501
+          "startLine": 173,
+          "endLine": 522
         },
         {
           "name": "runEndToEndDryRunSimulation",
           "kind": "function",
           "exported": true,
           "signature": "export async function runEndToEndDryRunSimulation()",
-          "startLine": 507,
-          "endLine": 607
+          "startLine": 528,
+          "endLine": 628
+        },
+        {
+          "name": "auditStageToGearAlignmentMatrix",
+          "kind": "function",
+          "exported": true,
+          "signature": "export async function auditStageToGearAlignmentMatrix()",
+          "startLine": 635,
+          "endLine": 787
         },
         {
           "name": "generateHarnessReadinessReport",
           "kind": "function",
           "exported": true,
-          "signature": "export function generateHarnessReadinessReport({ layersResult, e2eResult, resetResult })",
-          "startLine": 612,
-          "endLine": 612
+          "signature": "export function generateHarnessReadinessReport({ layersResult, gearsResult, e2eResult, resetResult })",
+          "startLine": 792,
+          "endLine": 792
         },
         {
           "name": "runHarnessDoctorAudit",
           "kind": "function",
           "exported": true,
           "signature": "export async function runHarnessDoctorAudit(options = {})",
-          "startLine": 683,
-          "endLine": 683
+          "startLine": 877,
+          "endLine": 877
         }
       ],
-      "mtimeMs": 1793222406285.343,
-      "size": 32899
+      "mtimeMs": 1793307587794.5254,
+      "size": 43254
     },
     {
       "path": "tools/audit/local_fullstack_and_component_harness.mjs",
@@ -7566,8 +7576,8 @@
     {
       "path": "tools/cto_command_center.mjs",
       "ext": ".mjs",
-      "sha256": "188699c13a7849c0",
-      "lineCount": 1648,
+      "sha256": "b36b96857e655d98",
+      "lineCount": 1670,
       "exports": [
         "evaluateCybersecurityTrafficLight",
         "handleAterrizar"
@@ -7629,6 +7639,8 @@
         "dirname",
         "resolve",
         "join",
+        "loadProjectConfig",
+        "filter",
         "existsSync",
         "readFileSync",
         "includes",
@@ -7665,318 +7677,316 @@
         "exit",
         "comandos",
         "listProjectsCatalog",
-        "padEnd",
-        "Web",
-        "repeat"
+        "padEnd"
       ],
       "symbols": [
         {
           "name": "evaluateCybersecurityTrafficLight",
           "kind": "function",
           "exported": true,
-          "signature": "export function evaluateCybersecurityTrafficLight()",
+          "signature": "export function evaluateCybersecurityTrafficLight(projectCfgInput = null)",
           "startLine": 62,
-          "endLine": 167
+          "endLine": 183
         },
         {
           "name": "askQuestionCli",
           "kind": "function",
           "exported": false,
           "signature": "function askQuestionCli(rl, promptText, defaultVal)",
-          "startLine": 169,
-          "endLine": 180
+          "startLine": 185,
+          "endLine": 196
         },
         {
           "name": "parseCliFlag",
           "kind": "function",
           "exported": false,
           "signature": "function parseCliFlag(args, flagName, defaultVal = '')",
-          "startLine": 182,
-          "endLine": 188
+          "startLine": 198,
+          "endLine": 204
         },
         {
           "name": "handleNuevo",
           "kind": "function",
           "exported": false,
           "signature": "async function handleNuevo(args)",
-          "startLine": 190,
-          "endLine": 270
+          "startLine": 206,
+          "endLine": 286
         },
         {
           "name": "handleProyectos",
           "kind": "function",
           "exported": false,
           "signature": "async function handleProyectos(args)",
-          "startLine": 272,
-          "endLine": 315
+          "startLine": 288,
+          "endLine": 331
         },
         {
           "name": "handleEntrevistaPrd",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEntrevistaPrd(args)",
-          "startLine": 317,
-          "endLine": 353
+          "startLine": 333,
+          "endLine": 369
         },
         {
           "name": "handleEntrevista",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEntrevista(args)",
-          "startLine": 355,
-          "endLine": 398
+          "startLine": 371,
+          "endLine": 414
         },
         {
           "name": "handleConstruir",
           "kind": "function",
           "exported": false,
           "signature": "async function handleConstruir()",
-          "startLine": 400,
-          "endLine": 484
+          "startLine": 416,
+          "endLine": 500
         },
         {
           "name": "generateExecutiveDecisionBrief",
           "kind": "function",
           "exported": false,
           "signature": "async function generateExecutiveDecisionBrief(boltRes = null, axRes = null)",
-          "startLine": 486,
-          "endLine": 618
+          "startLine": 502,
+          "endLine": 639
         },
         {
           "name": "handleRevisar",
           "kind": "function",
           "exported": false,
           "signature": "async function handleRevisar(args)",
-          "startLine": 620,
-          "endLine": 644
+          "startLine": 641,
+          "endLine": 666
         },
         {
           "name": "handleEmpaquetar",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEmpaquetar(args = [])",
-          "startLine": 646,
-          "endLine": 679
+          "startLine": 668,
+          "endLine": 701
         },
         {
           "name": "handleAprobar",
           "kind": "function",
           "exported": false,
           "signature": "async function handleAprobar(args = [])",
-          "startLine": 681,
-          "endLine": 712
+          "startLine": 703,
+          "endLine": 734
         },
         {
           "name": "handleFeedback",
           "kind": "function",
           "exported": false,
           "signature": "async function handleFeedback(args)",
-          "startLine": 714,
-          "endLine": 757
+          "startLine": 736,
+          "endLine": 779
         },
         {
           "name": "handleAprender",
           "kind": "function",
           "exported": false,
           "signature": "async function handleAprender(args)",
-          "startLine": 759,
-          "endLine": 776
+          "startLine": 781,
+          "endLine": 798
         },
         {
           "name": "handleEvolucionar",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEvolucionar(args)",
-          "startLine": 778,
-          "endLine": 787
+          "startLine": 800,
+          "endLine": 809
         },
         {
           "name": "handleExtraerDiseno",
           "kind": "function",
           "exported": false,
           "signature": "async function handleExtraerDiseno(args)",
-          "startLine": 789,
-          "endLine": 801
+          "startLine": 811,
+          "endLine": 823
         },
         {
           "name": "handleIngerirLibros",
           "kind": "function",
           "exported": false,
           "signature": "async function handleIngerirLibros(args)",
-          "startLine": 803,
-          "endLine": 819
+          "startLine": 825,
+          "endLine": 841
         },
         {
           "name": "handleActualizacionSemanal",
           "kind": "function",
           "exported": false,
           "signature": "async function handleActualizacionSemanal(args)",
-          "startLine": 821,
-          "endLine": 833
+          "startLine": 843,
+          "endLine": 855
         },
         {
           "name": "handleEfecto3d",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEfecto3d(args)",
-          "startLine": 835,
-          "endLine": 850
+          "startLine": 857,
+          "endLine": 872
         },
         {
           "name": "handleOptimizar3d",
           "kind": "function",
           "exported": false,
           "signature": "async function handleOptimizar3d(args)",
-          "startLine": 852,
-          "endLine": 868
+          "startLine": 874,
+          "endLine": 890
         },
         {
           "name": "handleGcpStatus",
           "kind": "function",
           "exported": false,
           "signature": "async function handleGcpStatus()",
-          "startLine": 870,
-          "endLine": 886
+          "startLine": 892,
+          "endLine": 908
         },
         {
           "name": "handleBenchmark",
           "kind": "function",
           "exported": false,
           "signature": "async function handleBenchmark()",
-          "startLine": 888,
-          "endLine": 894
+          "startLine": 910,
+          "endLine": 916
         },
         {
           "name": "handleMcpStatus",
           "kind": "function",
           "exported": false,
           "signature": "async function handleMcpStatus()",
-          "startLine": 896,
-          "endLine": 939
+          "startLine": 918,
+          "endLine": 961
         },
         {
           "name": "handleArquitecturaDb",
           "kind": "function",
           "exported": false,
           "signature": "async function handleArquitecturaDb(rest = [])",
-          "startLine": 941,
-          "endLine": 970
+          "startLine": 963,
+          "endLine": 992
         },
         {
           "name": "handleDestilarCurso",
           "kind": "function",
           "exported": false,
           "signature": "async function handleDestilarCurso(rest = [])",
-          "startLine": 972,
-          "endLine": 994
+          "startLine": 994,
+          "endLine": 1016
         },
         {
           "name": "handleCosecharDocs",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCosecharDocs()",
-          "startLine": 996,
-          "endLine": 1011
+          "startLine": 1018,
+          "endLine": 1033
         },
         {
           "name": "handleArquetipo",
           "kind": "function",
           "exported": false,
           "signature": "async function handleArquetipo(rest = [])",
-          "startLine": 1013,
-          "endLine": 1037
+          "startLine": 1035,
+          "endLine": 1059
         },
         {
           "name": "handleCrearMovil",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCrearMovil(rest = [])",
-          "startLine": 1039,
-          "endLine": 1063
+          "startLine": 1061,
+          "endLine": 1085
         },
         {
           "name": "handleEstado",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEstado()",
-          "startLine": 1065,
-          "endLine": 1113
+          "startLine": 1087,
+          "endLine": 1135
         },
         {
           "name": "handleInvestigarReferencia",
           "kind": "function",
           "exported": false,
           "signature": "async function handleInvestigarReferencia(args = [])",
-          "startLine": 1115,
-          "endLine": 1128
+          "startLine": 1137,
+          "endLine": 1150
         },
         {
           "name": "handleFeedbackCliente",
           "kind": "function",
           "exported": false,
           "signature": "async function handleFeedbackCliente(args = [])",
-          "startLine": 1130,
-          "endLine": 1162
+          "startLine": 1152,
+          "endLine": 1184
         },
         {
           "name": "handleAprobarTicket",
           "kind": "function",
           "exported": false,
           "signature": "async function handleAprobarTicket(args = [])",
-          "startLine": 1164,
-          "endLine": 1194
+          "startLine": 1186,
+          "endLine": 1216
         },
         {
           "name": "handleCambioIncremental",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCambioIncremental(args = [])",
-          "startLine": 1196,
-          "endLine": 1262
+          "startLine": 1218,
+          "endLine": 1284
         },
         {
           "name": "handleAuditarHarness",
           "kind": "function",
           "exported": false,
           "signature": "async function handleAuditarHarness(args = [])",
-          "startLine": 1264,
-          "endLine": 1272
+          "startLine": 1286,
+          "endLine": 1294
         },
         {
           "name": "handleCrearIntroVideo",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCrearIntroVideo(args = [])",
-          "startLine": 1274,
-          "endLine": 1301
+          "startLine": 1296,
+          "endLine": 1323
         },
         {
           "name": "handleCrearAudio",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCrearAudio(args = [])",
-          "startLine": 1303,
-          "endLine": 1362
+          "startLine": 1325,
+          "endLine": 1384
         },
         {
           "name": "handleAterrizar",
           "kind": "function",
           "exported": true,
           "signature": "export async function handleAterrizar(args = [])",
-          "startLine": 1372,
-          "endLine": 1525
+          "startLine": 1394,
+          "endLine": 1547
         },
         {
           "name": "main",
           "kind": "function",
           "exported": false,
           "signature": "async function main()",
-          "startLine": 1527,
-          "endLine": 1642
+          "startLine": 1549,
+          "endLine": 1664
         }
       ],
-      "mtimeMs": 1793300105919.9504,
-      "size": 89188
+      "mtimeMs": 1793306975506.2217,
+      "size": 90283
     },
     {
       "path": "tools/db/dual_database_forge.mjs",
@@ -8004,6 +8014,7 @@
       "importedBy": [
         "tools/audit/harness_doctor_audit.mjs",
         "tools/cto_command_center.mjs",
+        "tools/factory.mjs",
         "tools/intelligence/mcp_omni_rag_server.mjs"
       ],
       "calls": [
@@ -8363,6 +8374,7 @@
         "../lib/project_loader.mjs"
       ],
       "importedBy": [
+        "tools/audit/harness_doctor_audit.mjs",
         "tools/build_dist.mjs",
         "tools/cto_command_center.mjs"
       ],
@@ -8584,6 +8596,7 @@
       ],
       "importedBy": [
         "tools/cto_command_center.mjs",
+        "tools/factory.mjs",
         "tools/intelligence/vertex_ai_bridge.mjs",
         "tools/media/programmatic_video_forge.mjs",
         "tools/media/sonic_and_music_forge.mjs",
@@ -9272,8 +9285,8 @@
     {
       "path": "tools/factory.mjs",
       "ext": ".mjs",
-      "sha256": "22855aceec609e74",
-      "lineCount": 507,
+      "sha256": "e66d24dd6b8ad83b",
+      "lineCount": 545,
       "exports": [],
       "imports": [
         "node:fs",
@@ -9284,6 +9297,11 @@
         "./audit/diff_ui_adversarial.mjs",
         "./intelligence/constitution_guard.mjs",
         "./design/token_compiler.mjs",
+        "./design/industry_archetype_matrix.mjs",
+        "./db/dual_database_forge.mjs",
+        "./orchestrator/lean_prd_architect.mjs",
+        "./orchestrator/client_interview_gate.mjs",
+        "./orchestrator/deterministic_agent_statechart.mjs",
         "./intelligence/agent_squad.mjs"
       ],
       "importedBy": [],
@@ -9329,10 +9347,10 @@
         "stringify",
         "warn",
         "compileDesignTokens",
-        "setActiveProject",
-        "recordProjectAuditScore",
-        "includes",
-        "execSync"
+        "generateProductAndDesignMd",
+        "forgeDatabaseArchitecture",
+        "initPrdInterviewFiles",
+        "initClientInterviewFiles"
       ],
       "symbols": [
         {
@@ -9368,8 +9386,8 @@
           "endLine": 78
         }
       ],
-      "mtimeMs": 1793138512887.2144,
-      "size": 27110
+      "mtimeMs": 1793306909797.2622,
+      "size": 29333
     },
     {
       "path": "tools/feedback/client_feedback_triage_agent.mjs",
@@ -9991,8 +10009,8 @@
     {
       "path": "tools/intelligence/agent_squad.mjs",
       "ext": ".mjs",
-      "sha256": "cf5454b9a707c83b",
-      "lineCount": 1086,
+      "sha256": "07a3d7944560f453",
+      "lineCount": 1148,
       "exports": [
         "recordAndCheckAstDiffOscillation",
         "RUNS_ARTIFACTS_DIR",
@@ -10025,6 +10043,8 @@
         "../audit/security_gate.mjs",
         "../design/shader_and_3d_forge.mjs",
         "../cockpit/live_telemetry_bus.mjs",
+        "./context_budget.mjs",
+        "../orchestrator/deterministic_agent_statechart.mjs",
         "../audit/local_fullstack_and_component_harness.mjs",
         "./jev_semantic_gate.mjs"
       ],
@@ -10086,132 +10106,132 @@
           "kind": "function",
           "exported": true,
           "signature": "export function recordAndCheckAstDiffOscillation(runId = 'default-run', astStructuralHash = '')",
-          "startLine": 70,
-          "endLine": 75
+          "startLine": 76,
+          "endLine": 81
         },
         {
           "name": "RUNS_ARTIFACTS_DIR",
           "kind": "constant",
           "exported": true,
           "signature": "export const RUNS_ARTIFACTS_DIR",
-          "startLine": 109,
-          "endLine": 109
+          "startLine": 115,
+          "endLine": 115
         },
         {
           "name": "WaveHandoffArtifactSchema",
           "kind": "constant",
           "exported": true,
           "signature": "export const WaveHandoffArtifactSchema",
-          "startLine": 114,
-          "endLine": 126
+          "startLine": 120,
+          "endLine": 132
         },
         {
           "name": "runTracerBulletStopHook",
           "kind": "function",
           "exported": true,
           "signature": "export function runTracerBulletStopHook()",
-          "startLine": 182,
-          "endLine": 198
+          "startLine": 188,
+          "endLine": 204
         },
         {
           "name": "MAX_SELF_HEALING_RETRY_ROUNDS",
           "kind": "constant",
           "exported": true,
           "signature": "export const MAX_SELF_HEALING_RETRY_ROUNDS",
-          "startLine": 205,
-          "endLine": 205
+          "startLine": 211,
+          "endLine": 211
         },
         {
           "name": "runSelfHealingLoop",
           "kind": "function",
           "exported": true,
           "signature": "export async function runSelfHealingLoop(taskFn, options = {})",
-          "startLine": 207,
-          "endLine": 207
+          "startLine": 213,
+          "endLine": 213
         },
         {
           "name": "SQUADS",
           "kind": "constant",
           "exported": true,
           "signature": "export const SQUADS",
-          "startLine": 275,
-          "endLine": 332
+          "startLine": 281,
+          "endLine": 338
         },
         {
           "name": "verifySquadAlignment",
           "kind": "function",
           "exported": true,
           "signature": "export function verifySquadAlignment()",
-          "startLine": 334,
-          "endLine": 361
+          "startLine": 340,
+          "endLine": 367
         },
         {
           "name": "verifySquadMcpRoleRouting",
           "kind": "function",
           "exported": true,
           "signature": "export function verifySquadMcpRoleRouting()",
-          "startLine": 367,
-          "endLine": 400
+          "startLine": 373,
+          "endLine": 406
         },
         {
           "name": "loadBoltCheckpoint",
           "kind": "function",
           "exported": true,
           "signature": "export function loadBoltCheckpoint()",
-          "startLine": 402,
-          "endLine": 409
+          "startLine": 408,
+          "endLine": 415
         },
         {
           "name": "saveBoltCheckpoint",
           "kind": "function",
           "exported": true,
           "signature": "export function saveBoltCheckpoint(state)",
-          "startLine": 411,
-          "endLine": 419
+          "startLine": 417,
+          "endLine": 425
         },
         {
           "name": "runNodeScriptAsync",
           "kind": "function",
           "exported": false,
           "signature": "function runNodeScriptAsync(scriptRelPath, args = [])",
-          "startLine": 421,
-          "endLine": 445
+          "startLine": 427,
+          "endLine": 451
         },
         {
           "name": "runSquadMission",
           "kind": "function",
           "exported": true,
           "signature": "export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipeline', options = {})",
-          "startLine": 450,
-          "endLine": 450
+          "startLine": 456,
+          "endLine": 456
         },
         {
           "name": "runBestOfNSpeculative",
           "kind": "function",
           "exported": true,
           "signature": "export async function runBestOfNSpeculative(candidates = ['bento-oklch-v1', 'linear-dark-v2'], taskName = 'hero-ui-component')",
-          "startLine": 905,
-          "endLine": 969
+          "startLine": 967,
+          "endLine": 1031
         },
         {
           "name": "runCouncilDeliberation",
           "kind": "function",
           "exported": true,
           "signature": "export function runCouncilDeliberation(decisionTopic = 'Architecture & UI Strategy')",
-          "startLine": 976,
-          "endLine": 1008
+          "startLine": 1038,
+          "endLine": 1070
         },
         {
           "name": "runArenaTournament",
           "kind": "function",
           "exported": true,
           "signature": "export function runArenaTournament(taskPrompt = 'High-converting Hero & Bento Grid', candidateCards = [])",
-          "startLine": 1016,
-          "endLine": 1044
+          "startLine": 1078,
+          "endLine": 1106
         }
       ],
-      "mtimeMs": 1793294855462.506,
-      "size": 42399
+      "mtimeMs": 1793307585254.3364,
+      "size": 45281
     },
     {
       "path": "tools/intelligence/ast_guard.mjs",
@@ -10849,7 +10869,7 @@
         "./skill_quality_ledger.mjs"
       ],
       "importedBy": [
-        "tools/audit/harness_doctor_audit.mjs",
+        "tools/intelligence/agent_squad.mjs",
         "tools/intelligence/squad_semantic_router.mjs",
         "tools/intelligence/textgrad_skill_optimizer.mjs"
       ],
@@ -16382,7 +16402,8 @@
         "../design/industry_archetype_matrix.mjs"
       ],
       "importedBy": [
-        "tools/cto_command_center.mjs"
+        "tools/cto_command_center.mjs",
+        "tools/factory.mjs"
       ],
       "calls": [
         "fileURLToPath",
@@ -16534,7 +16555,10 @@
         "../lib/project_loader.mjs"
       ],
       "importedBy": [
-        "tools/cto_command_center.mjs"
+        "tools/audit/harness_doctor_audit.mjs",
+        "tools/cto_command_center.mjs",
+        "tools/factory.mjs",
+        "tools/intelligence/agent_squad.mjs"
       ],
       "calls": [
         "fileURLToPath",
@@ -16930,7 +16954,8 @@
         "../../templates/components/web-audio-director.js"
       ],
       "importedBy": [
-        "tools/cto_command_center.mjs"
+        "tools/cto_command_center.mjs",
+        "tools/factory.mjs"
       ],
       "calls": [
         "fileURLToPath",
@@ -21757,9 +21782,9 @@
         {
           "file": "tools/audit/a11y_tree_snapshot.mjs",
           "kind": "function",
-          "signature": "export async function captureAccessibilitySnapshot()",
+          "signature": "export async function captureAccessibilitySnapshot(options = {})",
           "startLine": 77,
-          "endLine": 219
+          "endLine": 77
         }
       ],
       "calledByFiles": []
@@ -22001,8 +22026,8 @@
           "file": "tools/audit/harness_doctor_audit.mjs",
           "kind": "constant",
           "signature": "export const FACTORY_ROOT",
-          "startLine": 50,
-          "endLine": 50
+          "startLine": 71,
+          "endLine": 71
         },
         {
           "file": "tools/cockpit/live_telemetry_bus.mjs",
@@ -22083,8 +22108,8 @@
           "file": "tools/audit/harness_doctor_audit.mjs",
           "kind": "constant",
           "signature": "export const REPORT_OUTPUT_PATH",
-          "startLine": 51,
-          "endLine": 51
+          "startLine": 72,
+          "endLine": 72
         }
       ],
       "calledByFiles": []
@@ -22095,8 +22120,8 @@
           "file": "tools/audit/harness_doctor_audit.mjs",
           "kind": "function",
           "signature": "function checkNodeSyntax(relPath)",
-          "startLine": 56,
-          "endLine": 70
+          "startLine": 77,
+          "endLine": 91
         }
       ],
       "calledByFiles": [
@@ -22109,8 +22134,8 @@
           "file": "tools/audit/harness_doctor_audit.mjs",
           "kind": "function",
           "signature": "export function resetTestArtifactsAndTelemetry()",
-          "startLine": 77,
-          "endLine": 147
+          "startLine": 98,
+          "endLine": 168
         }
       ],
       "calledByFiles": []
@@ -22121,8 +22146,8 @@
           "file": "tools/audit/harness_doctor_audit.mjs",
           "kind": "function",
           "signature": "export async function auditEightHarnessLayers()",
-          "startLine": 152,
-          "endLine": 501
+          "startLine": 173,
+          "endLine": 522
         }
       ],
       "calledByFiles": []
@@ -22133,8 +22158,20 @@
           "file": "tools/audit/harness_doctor_audit.mjs",
           "kind": "function",
           "signature": "export async function runEndToEndDryRunSimulation()",
-          "startLine": 507,
-          "endLine": 607
+          "startLine": 528,
+          "endLine": 628
+        }
+      ],
+      "calledByFiles": []
+    },
+    "auditStageToGearAlignmentMatrix": {
+      "definitions": [
+        {
+          "file": "tools/audit/harness_doctor_audit.mjs",
+          "kind": "function",
+          "signature": "export async function auditStageToGearAlignmentMatrix()",
+          "startLine": 635,
+          "endLine": 787
         }
       ],
       "calledByFiles": []
@@ -22144,9 +22181,9 @@
         {
           "file": "tools/audit/harness_doctor_audit.mjs",
           "kind": "function",
-          "signature": "export function generateHarnessReadinessReport({ layersResult, e2eResult, resetResult })",
-          "startLine": 612,
-          "endLine": 612
+          "signature": "export function generateHarnessReadinessReport({ layersResult, gearsResult, e2eResult, resetResult })",
+          "startLine": 792,
+          "endLine": 792
         }
       ],
       "calledByFiles": []
@@ -22157,8 +22194,8 @@
           "file": "tools/audit/harness_doctor_audit.mjs",
           "kind": "function",
           "signature": "export async function runHarnessDoctorAudit(options = {})",
-          "startLine": 683,
-          "endLine": 683
+          "startLine": 877,
+          "endLine": 877
         }
       ],
       "calledByFiles": []
@@ -23264,9 +23301,9 @@
         {
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
-          "signature": "export function evaluateCybersecurityTrafficLight()",
+          "signature": "export function evaluateCybersecurityTrafficLight(projectCfgInput = null)",
           "startLine": 62,
-          "endLine": 167
+          "endLine": 183
         }
       ],
       "calledByFiles": []
@@ -23277,8 +23314,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "function askQuestionCli(rl, promptText, defaultVal)",
-          "startLine": 169,
-          "endLine": 180
+          "startLine": 185,
+          "endLine": 196
         }
       ],
       "calledByFiles": [
@@ -23291,8 +23328,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "function parseCliFlag(args, flagName, defaultVal = '')",
-          "startLine": 182,
-          "endLine": 188
+          "startLine": 198,
+          "endLine": 204
         }
       ],
       "calledByFiles": [
@@ -23305,8 +23342,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleNuevo(args)",
-          "startLine": 190,
-          "endLine": 270
+          "startLine": 206,
+          "endLine": 286
         }
       ],
       "calledByFiles": []
@@ -23317,8 +23354,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleProyectos(args)",
-          "startLine": 272,
-          "endLine": 315
+          "startLine": 288,
+          "endLine": 331
         }
       ],
       "calledByFiles": []
@@ -23329,8 +23366,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEntrevistaPrd(args)",
-          "startLine": 317,
-          "endLine": 353
+          "startLine": 333,
+          "endLine": 369
         }
       ],
       "calledByFiles": []
@@ -23341,8 +23378,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEntrevista(args)",
-          "startLine": 355,
-          "endLine": 398
+          "startLine": 371,
+          "endLine": 414
         }
       ],
       "calledByFiles": []
@@ -23353,8 +23390,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleConstruir()",
-          "startLine": 400,
-          "endLine": 484
+          "startLine": 416,
+          "endLine": 500
         }
       ],
       "calledByFiles": []
@@ -23365,8 +23402,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function generateExecutiveDecisionBrief(boltRes = null, axRes = null)",
-          "startLine": 486,
-          "endLine": 618
+          "startLine": 502,
+          "endLine": 639
         }
       ],
       "calledByFiles": []
@@ -23377,8 +23414,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleRevisar(args)",
-          "startLine": 620,
-          "endLine": 644
+          "startLine": 641,
+          "endLine": 666
         }
       ],
       "calledByFiles": []
@@ -23389,8 +23426,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEmpaquetar(args = [])",
-          "startLine": 646,
-          "endLine": 679
+          "startLine": 668,
+          "endLine": 701
         }
       ],
       "calledByFiles": []
@@ -23401,8 +23438,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleAprobar(args = [])",
-          "startLine": 681,
-          "endLine": 712
+          "startLine": 703,
+          "endLine": 734
         }
       ],
       "calledByFiles": []
@@ -23413,8 +23450,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleFeedback(args)",
-          "startLine": 714,
-          "endLine": 757
+          "startLine": 736,
+          "endLine": 779
         }
       ],
       "calledByFiles": []
@@ -23425,8 +23462,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleAprender(args)",
-          "startLine": 759,
-          "endLine": 776
+          "startLine": 781,
+          "endLine": 798
         }
       ],
       "calledByFiles": []
@@ -23437,8 +23474,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEvolucionar(args)",
-          "startLine": 778,
-          "endLine": 787
+          "startLine": 800,
+          "endLine": 809
         }
       ],
       "calledByFiles": []
@@ -23449,8 +23486,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleExtraerDiseno(args)",
-          "startLine": 789,
-          "endLine": 801
+          "startLine": 811,
+          "endLine": 823
         }
       ],
       "calledByFiles": []
@@ -23461,8 +23498,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleIngerirLibros(args)",
-          "startLine": 803,
-          "endLine": 819
+          "startLine": 825,
+          "endLine": 841
         }
       ],
       "calledByFiles": []
@@ -23473,8 +23510,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleActualizacionSemanal(args)",
-          "startLine": 821,
-          "endLine": 833
+          "startLine": 843,
+          "endLine": 855
         }
       ],
       "calledByFiles": []
@@ -23485,8 +23522,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEfecto3d(args)",
-          "startLine": 835,
-          "endLine": 850
+          "startLine": 857,
+          "endLine": 872
         }
       ],
       "calledByFiles": []
@@ -23497,8 +23534,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleOptimizar3d(args)",
-          "startLine": 852,
-          "endLine": 868
+          "startLine": 874,
+          "endLine": 890
         }
       ],
       "calledByFiles": []
@@ -23509,8 +23546,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleGcpStatus()",
-          "startLine": 870,
-          "endLine": 886
+          "startLine": 892,
+          "endLine": 908
         }
       ],
       "calledByFiles": []
@@ -23521,8 +23558,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleBenchmark()",
-          "startLine": 888,
-          "endLine": 894
+          "startLine": 910,
+          "endLine": 916
         }
       ],
       "calledByFiles": []
@@ -23533,8 +23570,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleMcpStatus()",
-          "startLine": 896,
-          "endLine": 939
+          "startLine": 918,
+          "endLine": 961
         }
       ],
       "calledByFiles": []
@@ -23545,8 +23582,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleArquitecturaDb(rest = [])",
-          "startLine": 941,
-          "endLine": 970
+          "startLine": 963,
+          "endLine": 992
         }
       ],
       "calledByFiles": []
@@ -23557,8 +23594,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleDestilarCurso(rest = [])",
-          "startLine": 972,
-          "endLine": 994
+          "startLine": 994,
+          "endLine": 1016
         }
       ],
       "calledByFiles": []
@@ -23569,8 +23606,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCosecharDocs()",
-          "startLine": 996,
-          "endLine": 1011
+          "startLine": 1018,
+          "endLine": 1033
         }
       ],
       "calledByFiles": []
@@ -23581,8 +23618,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleArquetipo(rest = [])",
-          "startLine": 1013,
-          "endLine": 1037
+          "startLine": 1035,
+          "endLine": 1059
         }
       ],
       "calledByFiles": []
@@ -23593,8 +23630,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCrearMovil(rest = [])",
-          "startLine": 1039,
-          "endLine": 1063
+          "startLine": 1061,
+          "endLine": 1085
         }
       ],
       "calledByFiles": []
@@ -23605,8 +23642,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEstado()",
-          "startLine": 1065,
-          "endLine": 1113
+          "startLine": 1087,
+          "endLine": 1135
         }
       ],
       "calledByFiles": []
@@ -23617,8 +23654,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleInvestigarReferencia(args = [])",
-          "startLine": 1115,
-          "endLine": 1128
+          "startLine": 1137,
+          "endLine": 1150
         }
       ],
       "calledByFiles": []
@@ -23629,8 +23666,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleFeedbackCliente(args = [])",
-          "startLine": 1130,
-          "endLine": 1162
+          "startLine": 1152,
+          "endLine": 1184
         }
       ],
       "calledByFiles": []
@@ -23641,8 +23678,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleAprobarTicket(args = [])",
-          "startLine": 1164,
-          "endLine": 1194
+          "startLine": 1186,
+          "endLine": 1216
         }
       ],
       "calledByFiles": []
@@ -23653,8 +23690,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCambioIncremental(args = [])",
-          "startLine": 1196,
-          "endLine": 1262
+          "startLine": 1218,
+          "endLine": 1284
         }
       ],
       "calledByFiles": []
@@ -23665,8 +23702,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleAuditarHarness(args = [])",
-          "startLine": 1264,
-          "endLine": 1272
+          "startLine": 1286,
+          "endLine": 1294
         }
       ],
       "calledByFiles": []
@@ -23677,8 +23714,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCrearIntroVideo(args = [])",
-          "startLine": 1274,
-          "endLine": 1301
+          "startLine": 1296,
+          "endLine": 1323
         }
       ],
       "calledByFiles": []
@@ -23689,8 +23726,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCrearAudio(args = [])",
-          "startLine": 1303,
-          "endLine": 1362
+          "startLine": 1325,
+          "endLine": 1384
         }
       ],
       "calledByFiles": []
@@ -23701,8 +23738,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "export async function handleAterrizar(args = [])",
-          "startLine": 1372,
-          "endLine": 1525
+          "startLine": 1394,
+          "endLine": 1547
         }
       ],
       "calledByFiles": []
@@ -23713,8 +23750,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function main()",
-          "startLine": 1527,
-          "endLine": 1642
+          "startLine": 1549,
+          "endLine": 1664
         },
         {
           "file": "tools/factory.mjs",
@@ -23834,7 +23871,8 @@
         }
       ],
       "calledByFiles": [
-        "tools/cto_command_center.mjs"
+        "tools/cto_command_center.mjs",
+        "tools/factory.mjs"
       ]
     },
     "runDualDatabaseForgeSelfTest": {
@@ -24349,6 +24387,7 @@
       "calledByFiles": [
         "tools/audit/ryux_design_gate.mjs",
         "tools/cto_command_center.mjs",
+        "tools/factory.mjs",
         "tools/media/programmatic_video_forge.mjs",
         "tools/mobile/mobile_target_forge.mjs"
       ]
@@ -25293,8 +25332,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export function recordAndCheckAstDiffOscillation(runId = 'default-run', astStructuralHash = '')",
-          "startLine": 70,
-          "endLine": 75
+          "startLine": 76,
+          "endLine": 81
         }
       ],
       "calledByFiles": []
@@ -25305,8 +25344,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "constant",
           "signature": "export const RUNS_ARTIFACTS_DIR",
-          "startLine": 109,
-          "endLine": 109
+          "startLine": 115,
+          "endLine": 115
         }
       ],
       "calledByFiles": []
@@ -25317,8 +25356,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "constant",
           "signature": "export const WaveHandoffArtifactSchema",
-          "startLine": 114,
-          "endLine": 126
+          "startLine": 120,
+          "endLine": 132
         }
       ],
       "calledByFiles": []
@@ -25329,8 +25368,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export function runTracerBulletStopHook()",
-          "startLine": 182,
-          "endLine": 198
+          "startLine": 188,
+          "endLine": 204
         }
       ],
       "calledByFiles": []
@@ -25341,8 +25380,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "constant",
           "signature": "export const MAX_SELF_HEALING_RETRY_ROUNDS",
-          "startLine": 205,
-          "endLine": 205
+          "startLine": 211,
+          "endLine": 211
         }
       ],
       "calledByFiles": []
@@ -25353,8 +25392,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export async function runSelfHealingLoop(taskFn, options = {})",
-          "startLine": 207,
-          "endLine": 207
+          "startLine": 213,
+          "endLine": 213
         }
       ],
       "calledByFiles": []
@@ -25365,8 +25404,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "constant",
           "signature": "export const SQUADS",
-          "startLine": 275,
-          "endLine": 332
+          "startLine": 281,
+          "endLine": 338
         }
       ],
       "calledByFiles": []
@@ -25377,8 +25416,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export function verifySquadAlignment()",
-          "startLine": 334,
-          "endLine": 361
+          "startLine": 340,
+          "endLine": 367
         }
       ],
       "calledByFiles": [
@@ -25391,8 +25430,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export function verifySquadMcpRoleRouting()",
-          "startLine": 367,
-          "endLine": 400
+          "startLine": 373,
+          "endLine": 406
         }
       ],
       "calledByFiles": []
@@ -25403,8 +25442,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export function loadBoltCheckpoint()",
-          "startLine": 402,
-          "endLine": 409
+          "startLine": 408,
+          "endLine": 415
         }
       ],
       "calledByFiles": []
@@ -25415,8 +25454,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export function saveBoltCheckpoint(state)",
-          "startLine": 411,
-          "endLine": 419
+          "startLine": 417,
+          "endLine": 425
         }
       ],
       "calledByFiles": []
@@ -25427,8 +25466,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "function runNodeScriptAsync(scriptRelPath, args = [])",
-          "startLine": 421,
-          "endLine": 445
+          "startLine": 427,
+          "endLine": 451
         }
       ],
       "calledByFiles": []
@@ -25439,8 +25478,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipeline', options = {})",
-          "startLine": 450,
-          "endLine": 450
+          "startLine": 456,
+          "endLine": 456
         }
       ],
       "calledByFiles": [
@@ -25453,8 +25492,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export async function runBestOfNSpeculative(candidates = ['bento-oklch-v1', 'linear-dark-v2'], taskName = 'hero-ui-component')",
-          "startLine": 905,
-          "endLine": 969
+          "startLine": 967,
+          "endLine": 1031
         }
       ],
       "calledByFiles": [
@@ -25467,8 +25506,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export function runCouncilDeliberation(decisionTopic = 'Architecture & UI Strategy')",
-          "startLine": 976,
-          "endLine": 1008
+          "startLine": 1038,
+          "endLine": 1070
         }
       ],
       "calledByFiles": []
@@ -25479,8 +25518,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export function runArenaTournament(taskPrompt = 'High-converting Hero & Bento Grid', candidateCards = [])",
-          "startLine": 1016,
-          "endLine": 1044
+          "startLine": 1078,
+          "endLine": 1106
         }
       ],
       "calledByFiles": []
@@ -29637,8 +29676,7 @@
         }
       ],
       "calledByFiles": [
-        "tools/cto_command_center.mjs",
-        "tools/factory.mjs"
+        "tools/cto_command_center.mjs"
       ]
     },
     "recordProjectAuditScore": {
@@ -29652,8 +29690,7 @@
         }
       ],
       "calledByFiles": [
-        "tools/cto_command_center.mjs",
-        "tools/factory.mjs"
+        "tools/cto_command_center.mjs"
       ]
     },
     "listProjectsCatalog": {
@@ -29719,6 +29756,7 @@
         "tools/audit/visual_audit.mjs",
         "tools/audit/visual_regression.mjs",
         "tools/build_dist.mjs",
+        "tools/cto_command_center.mjs",
         "tools/design/og_image_generator.mjs",
         "tools/design/shader_and_3d_forge.mjs",
         "tools/factory.mjs",
@@ -29727,8 +29765,7 @@
         "tools/intelligence/spec_generator.mjs",
         "tools/orchestrator/deterministic_agent_statechart.mjs",
         "tools/project_loader.mjs",
-        "tools/seo_smoke.mjs",
-        "tools/serve_site.mjs"
+        "tools/seo_smoke.mjs"
       ]
     },
     "mergeApprovedDeltaIntoCanonicalSpec": {
@@ -30209,7 +30246,8 @@
         }
       ],
       "calledByFiles": [
-        "tools/cto_command_center.mjs"
+        "tools/cto_command_center.mjs",
+        "tools/factory.mjs"
       ]
     },
     "verifyClientInterviewGate": {
@@ -30654,6 +30692,7 @@
       ],
       "calledByFiles": [
         "tools/cto_command_center.mjs",
+        "tools/factory.mjs",
         "tools/orchestrator/lean_prd_architect.mjs"
       ]
     },

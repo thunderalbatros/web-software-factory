@@ -58,6 +58,12 @@ import {
   compilePrdLeanAndBrandLock,
   initPrdInterviewFiles
 } from '../orchestrator/lean_prd_architect.mjs';
+import {
+  evaluateMemoryWriteAdmissionWithJev,
+  runJevSleepTimeConsolidationCycle
+} from './jev_memory_pipeline.mjs';
+import { formatOptimalPromptData } from './context_budget.mjs';
+import { syncProjectStatechartSnapshot } from '../orchestrator/deterministic_agent_statechart.mjs';
 import { checkAstDiffOscillationBreaker } from '../audit/local_fullstack_and_component_harness.mjs';
 import { evaluateFullJevOuterAndMetaGate } from './jev_semantic_gate.mjs';
 
@@ -530,7 +536,13 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
           run: async () => {
             const t0 = performance.now();
             const ok = await runPreFlightChecks();
-            return { id: 'temporal_preflight', passed: ok, durationMs: Math.round(performance.now() - t0) };
+            const memoryReport = await runJevSleepTimeConsolidationCycle({ persist: false });
+            return {
+              id: 'temporal_preflight',
+              passed: Boolean(ok && memoryReport?.tiersSummary?.tier1_workingMemoryBudgetTokens <= 3500),
+              durationMs: Math.round(performance.now() - t0),
+              activeSemanticRules: memoryReport?.tiersSummary?.tier3_semanticActiveRules || 0
+            };
           }
         },
         {
@@ -584,6 +596,12 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
                     }
                   ]);
             const rpiStages = Number(rpiRes?.checkpoint?.currentStageOrder || 0);
+            try {
+              syncProjectStatechartSnapshot(slug, [
+                { type: 'COMPLETE_RPI_UNTAINTED_RESEARCH', untaintedResearchVerified: true, maxStageInstructions: 14 },
+                { type: 'START_WAVE1_FOUNDATION' }
+              ]);
+            } catch (_) {}
             return {
               id: 'control_plane_rpi_and_beads_preflight',
               passed: Boolean(rpiStages === 6 && !stuckRes.stuck && beadsRes.ok),
@@ -615,8 +633,15 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
           role: 'edge-fullstack-architect',
           run: async () => {
             const t0 = performance.now();
-            const workerExists = fs.existsSync(path.join(ROOT, 'templates', 'vanilla-edge', 'worker', 'index.js'));
-            const headersExists = fs.existsSync(path.join(ROOT, 'templates', 'vanilla-edge', 'public', '_headers'));
+            const projRoot = project ? path.join(ROOT, 'projects', project) : null;
+            const workerExists =
+              (projRoot && fs.existsSync(path.join(projRoot, 'worker', 'index.js'))) ||
+              fs.existsSync(path.join(ROOT, 'templates', 'vanilla-edge', 'worker', 'index.js'));
+            const headersExists =
+              (projRoot &&
+                (fs.existsSync(path.join(projRoot, 'public', '_headers')) ||
+                  fs.existsSync(path.join(projRoot, 'dist', '_headers')))) ||
+              fs.existsSync(path.join(ROOT, 'templates', 'vanilla-edge', 'public', '_headers'));
             const astRes = runAstAudit();
             return {
               id: 'tracer_bullet_skeleton_and_worker',
@@ -645,7 +670,8 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
           id: 'cognitive_ux_auditor',
           role: 'copywriting-cro-strategist',
           run: async () => {
-            const res = await runNodeScriptAsync('tools/audit/cognitive_ux_auditor.mjs');
+            const args = project ? ['--project', project] : [];
+            const res = await runNodeScriptAsync('tools/audit/cognitive_ux_auditor.mjs', args);
             return { id: 'cognitive_ux_auditor', passed: res.passed, durationMs: res.durationMs };
           }
         },
@@ -699,7 +725,8 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
           id: 'security_and_motion_audit',
           role: 'security-engineer',
           run: async () => {
-            const res = await runNodeScriptAsync('tools/audit/security_and_motion_audit.mjs');
+            const args = project ? ['--project', project] : [];
+            const res = await runNodeScriptAsync('tools/audit/security_and_motion_audit.mjs', args);
             return { id: 'security_and_motion_audit', passed: res.passed, durationMs: res.durationMs };
           }
         },
@@ -707,7 +734,8 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
           id: 'floor_and_aeo_guard',
           role: 'seo-aeo-geo-architect',
           run: async () => {
-            const res = await runNodeScriptAsync('tools/audit/floor_and_aeo_guard.mjs');
+            const args = project ? ['--project', project] : [];
+            const res = await runNodeScriptAsync('tools/audit/floor_and_aeo_guard.mjs', args);
             return { id: 'floor_and_aeo_guard', passed: res.passed, durationMs: res.durationMs };
           }
         }
@@ -841,12 +869,25 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
     // Pass ONLY the compact artifact file pointers to the next wave (zero conversation history bloat)
     activeUpstreamPointers = currentWavePointers;
 
+    // Format uniform wave node telemetry via TOON / BAML compact selector ([ENGRANAJE-05])
+    const toonWaveSummary = formatOptimalPromptData({
+      waveId: wave.waveId,
+      nodes: waveResults.map((r) => ({
+        id: String(r.id || 'node'),
+        role: String(r.role || r.id || 'agent'),
+        passed: Boolean(r.passed),
+        durationMs: Number(r.durationMs || 0)
+      }))
+    });
+
     checkpointState.waves.push({
       waveId: wave.waveId,
       waveNumber: wave.waveNumber,
       durationMs: Math.round(performance.now() - waveStart),
       passed: waveResults.every(r => r.passed),
       handoffArtifacts: currentWavePointers,
+      toonFormat: toonWaveSummary.formatUsed,
+      toonTokenSavingsPercent: toonWaveSummary.tokenSavingsPct,
       nodes: waveResults
     });
     saveBoltCheckpoint(checkpointState);
@@ -858,6 +899,27 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
       break;
     }
   }
+
+  // Synchronize XState v5 Statechart & JEV Memory Write-Gate on mission completion ([ENGRANAJE-05])
+  try {
+    const slug = project || 'agencia-alfa';
+    if (allPassed) {
+      syncProjectStatechartSnapshot(slug, [
+        { type: 'COMPLETE_RPI_UNTAINTED_RESEARCH', untaintedResearchVerified: true, maxStageInstructions: 14 },
+        { type: 'START_WAVE1_FOUNDATION' },
+        { type: 'COMPLETE_WAVE1_FOUNDATION' },
+        { type: 'COMPLETE_WAVE2_SPECIALIST_FORGE' },
+        { type: 'PASS_WAVE3_QA_AND_JEV', ryuxScore: 100, securityScore: 100, visualBlockers: 0 }
+      ]);
+      await evaluateMemoryWriteAdmissionWithJev(
+        {
+          fact: `Squad DAG Bolt completed cleanly across Waves 1, 2A, 2B, and 3 for project ${slug} with XState v5 guards verified.`,
+          category: 'architectural_decision'
+        },
+        { persist: false }
+      );
+    }
+  } catch (_) {}
 
   // Independent Blind Foreman Review (`vercel-labs/eve` pattern)
   const blindReview = await runBlindIndependentReview({

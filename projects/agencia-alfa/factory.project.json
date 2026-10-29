@@ -62,7 +62,7 @@
     "envelopeEncryption": "AES-256-GCM (GCP Cloud KMS CMK + 90d rotation)",
     "updatedAt": "2026-10-28T16:10:09.252Z"
   },
-  "industryArchetype": "saas",
+  "industryArchetype": "b2b-saas-platform",
   "surfaceMode": "Persuade",
   "targetPlatform": "web-and-mobile-capacitor",
   "mobile": {

@@ -1,5 +1,5 @@
 /**
- * Auto-forged by tools/design/shader_and_3d_forge.mjs (2026-10-27T23:12:52.513Z)
+ * Auto-forged by tools/design/shader_and_3d_forge.mjs (2026-10-29T21:00:30.475Z)
  * Primitive: Diorama Hero 3D (Three.js r186 WebGPURenderer + AgX + N8AO + Scroll Camera)
  * Vault Sources: blendi-remade/dioramas, Roboticela/Animator, donmccurdy/glTF-Transform
  */

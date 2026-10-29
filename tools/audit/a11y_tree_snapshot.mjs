@@ -74,7 +74,9 @@ function startStaticServer(rootDir, entryRel) {
   });
 }
 
-export async function captureAccessibilitySnapshot() {
+export async function captureAccessibilitySnapshot(options = {}) {
+  const activeCfg = loadProjectConfig(options.projectDir || options.project || '');
+  const targetRoot = activeCfg.projectRoot || ROOT;
   const chromeExecutable = CHROME_PATHS.find(p => fs.existsSync(p));
   if (!chromeExecutable) {
     return { passed: false, error: 'NO_BROWSER_FOUND' };
@@ -91,7 +93,7 @@ export async function captureAccessibilitySnapshot() {
     } catch (_) {}
   }
 
-  const { server, url } = await startStaticServer(ROOT, projectCfg.paths?.entryHtml || 'index.html');
+  const { server, url } = await startStaticServer(targetRoot, activeCfg.paths?.entryHtml || 'index.html');
   let browser = null;
 
   try {

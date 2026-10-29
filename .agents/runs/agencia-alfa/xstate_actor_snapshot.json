@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2026.10-xstate-v5-actor-snapshot",
   "projectSlug": "agencia-alfa",
-  "updatedAt": "2026-10-29T20:11:31.236Z",
+  "updatedAt": "2026-10-29T21:00:48.774Z",
   "activeState": "packaged_and_landed",
   "status": "done",
   "context": {
@@ -25,7 +25,7 @@
       {
         "event": "INIT_PROJECT",
         "to": "gate1_prd_pending",
-        "ts": "2026-10-29T20:11:31.233Z",
+        "ts": "2026-10-29T21:00:48.773Z",
         "reads": [],
         "writes": [
           "gate1Status",
@@ -36,7 +36,7 @@
         "event": "APPROVE_GATE1_PRD",
         "to": "gate1_prd_approved",
         "actor": "human",
-        "ts": "2026-10-29T20:11:31.233Z",
+        "ts": "2026-10-29T21:00:48.773Z",
         "reads": [
           "gate1Status"
         ],
@@ -48,7 +48,7 @@
       {
         "event": "OPEN_GATE2_INTERVIEW",
         "to": "gate2_spec_pending",
-        "ts": "2026-10-29T20:11:31.233Z",
+        "ts": "2026-10-29T21:00:48.773Z",
         "reads": [
           "gate1Status"
         ],
@@ -60,7 +60,7 @@
         "event": "APPROVE_GATE2_SPEC",
         "to": "gate2_spec_approved",
         "actor": "human",
-        "ts": "2026-10-29T20:11:31.233Z",
+        "ts": "2026-10-29T21:00:48.774Z",
         "reads": [
           "gate1Status",
           "gate2Status"
@@ -73,7 +73,7 @@
       {
         "event": "COMPLETE_RPI_UNTAINTED_RESEARCH",
         "to": "rpi_research_untainted",
-        "ts": "2026-10-29T20:11:31.234Z",
+        "ts": "2026-10-29T21:00:48.774Z",
         "reads": [
           "gate2Status"
         ],
@@ -85,7 +85,7 @@
       {
         "event": "START_WAVE1_FOUNDATION",
         "to": "wave1_foundation",
-        "ts": "2026-10-29T20:11:31.234Z",
+        "ts": "2026-10-29T21:00:48.774Z",
         "reads": [
           "untaintedResearchVerified"
         ],
@@ -97,7 +97,7 @@
       {
         "event": "COMPLETE_WAVE1_FOUNDATION",
         "to": "wave2_specialist_forge",
-        "ts": "2026-10-29T20:11:31.234Z",
+        "ts": "2026-10-29T21:00:48.774Z",
         "reads": [
           "tokensCompiled"
         ],
@@ -108,7 +108,7 @@
       {
         "event": "COMPLETE_WAVE2_SPECIALIST_FORGE",
         "to": "wave3_qa_and_jev_verification",
-        "ts": "2026-10-29T20:11:31.234Z",
+        "ts": "2026-10-29T21:00:48.774Z",
         "reads": [
           "wave2Complete"
         ],
@@ -121,7 +121,7 @@
       {
         "event": "PASS_WAVE3_QA_AND_JEV",
         "to": "hitl_review_ready",
-        "ts": "2026-10-29T20:11:31.235Z",
+        "ts": "2026-10-29T21:00:48.774Z",
         "reads": [
           "ryuxScore",
           "securityScore",
@@ -135,7 +135,7 @@
         "event": "APPROVE_HITL_DELIVERY",
         "to": "packaged_and_landed",
         "actor": "human",
-        "ts": "2026-10-29T20:11:31.235Z",
+        "ts": "2026-10-29T21:00:48.774Z",
         "reads": [
           "ryuxScore",
           "securityScore"
@@ -172,7 +172,7 @@
         {
           "event": "INIT_PROJECT",
           "to": "gate1_prd_pending",
-          "ts": "2026-10-29T20:11:31.233Z",
+          "ts": "2026-10-29T21:00:48.773Z",
           "reads": [],
           "writes": [
             "gate1Status",
@@ -183,7 +183,7 @@
           "event": "APPROVE_GATE1_PRD",
           "to": "gate1_prd_approved",
           "actor": "human",
-          "ts": "2026-10-29T20:11:31.233Z",
+          "ts": "2026-10-29T21:00:48.773Z",
           "reads": [
             "gate1Status"
           ],
@@ -195,7 +195,7 @@
         {
           "event": "OPEN_GATE2_INTERVIEW",
           "to": "gate2_spec_pending",
-          "ts": "2026-10-29T20:11:31.233Z",
+          "ts": "2026-10-29T21:00:48.773Z",
           "reads": [
             "gate1Status"
           ],
@@ -207,7 +207,7 @@
           "event": "APPROVE_GATE2_SPEC",
           "to": "gate2_spec_approved",
           "actor": "human",
-          "ts": "2026-10-29T20:11:31.233Z",
+          "ts": "2026-10-29T21:00:48.774Z",
           "reads": [
             "gate1Status",
             "gate2Status"
@@ -220,7 +220,7 @@
         {
           "event": "COMPLETE_RPI_UNTAINTED_RESEARCH",
           "to": "rpi_research_untainted",
-          "ts": "2026-10-29T20:11:31.234Z",
+          "ts": "2026-10-29T21:00:48.774Z",
           "reads": [
             "gate2Status"
           ],
@@ -232,7 +232,7 @@
         {
           "event": "START_WAVE1_FOUNDATION",
           "to": "wave1_foundation",
-          "ts": "2026-10-29T20:11:31.234Z",
+          "ts": "2026-10-29T21:00:48.774Z",
           "reads": [
             "untaintedResearchVerified"
           ],
@@ -244,7 +244,7 @@
         {
           "event": "COMPLETE_WAVE1_FOUNDATION",
           "to": "wave2_specialist_forge",
-          "ts": "2026-10-29T20:11:31.234Z",
+          "ts": "2026-10-29T21:00:48.774Z",
           "reads": [
             "tokensCompiled"
           ],
@@ -255,7 +255,7 @@
         {
           "event": "COMPLETE_WAVE2_SPECIALIST_FORGE",
           "to": "wave3_qa_and_jev_verification",
-          "ts": "2026-10-29T20:11:31.234Z",
+          "ts": "2026-10-29T21:00:48.774Z",
           "reads": [
             "wave2Complete"
           ],
@@ -268,7 +268,7 @@
         {
           "event": "PASS_WAVE3_QA_AND_JEV",
           "to": "hitl_review_ready",
-          "ts": "2026-10-29T20:11:31.235Z",
+          "ts": "2026-10-29T21:00:48.774Z",
           "reads": [
             "ryuxScore",
             "securityScore",
@@ -282,7 +282,7 @@
           "event": "APPROVE_HITL_DELIVERY",
           "to": "packaged_and_landed",
           "actor": "human",
-          "ts": "2026-10-29T20:11:31.235Z",
+          "ts": "2026-10-29T21:00:48.774Z",
           "reads": [
             "ryuxScore",
             "securityScore"

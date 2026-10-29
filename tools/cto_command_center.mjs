@@ -59,9 +59,16 @@ const DECISION_BRIEF_PATH = path.join(ROOT, '.agents', 'skills', 'cto-hitl-visua
 const TESTBENCH_AUDIT_PATH = path.join(ROOT, 'tools', 'audit', 'component_testbench.html');
 const TESTBENCH_DOCS_PATH = path.join(ROOT, 'docs', 'audit_snapshots', 'component_testbench.html');
 
-export function evaluateCybersecurityTrafficLight() {
+export function evaluateCybersecurityTrafficLight(projectCfgInput = null) {
+  const projectCfg = projectCfgInput || loadProjectConfig();
+  const projRoot = projectCfg?.projectRoot || ROOT;
+  const projDistHeaders = path.join(projRoot, 'dist', '_headers');
+  const projPublicHeaders = path.join(projRoot, 'public', '_headers');
+  const projectHeaderCandidates = [projDistHeaders, projPublicHeaders].filter((p) => fs.existsSync(p));
+
   // 1. Browser Shield (_headers + CSP/HSTS/COOP + Agentic WebMCP/llms.txt)
   const headerPaths = [
+    ...projectHeaderCandidates,
     path.join(ROOT, 'templates', 'astro-edge', 'public', '_headers'),
     path.join(ROOT, 'templates', 'vanilla-edge', 'public', '_headers')
   ];
@@ -89,7 +96,7 @@ export function evaluateCybersecurityTrafficLight() {
       break;
     }
   }
-  const agenticReport = validateAgenticAndWebMcpSecurity(ROOT);
+  const agenticReport = validateAgenticAndWebMcpSecurity(projRoot);
   const escudoNavegadorOk = headersValid && agenticReport.passed;
 
   // 2. Supply Chain & Anti-Slopsquatting Guard
@@ -97,7 +104,16 @@ export function evaluateCybersecurityTrafficLight() {
   const controlLibreriasOk = supplyReport.passed;
 
   // 3. Forms, Private Data & SAST (XSS, D1 SQLi, Mutant Endpoints) + 4. Secret Leaks
+  const projRelPrefix = projectCfg?.id ? `projects/${projectCfg.id}` : '';
   const astDirs = [
+    ...(projRelPrefix
+      ? [
+          `${projRelPrefix}/site/js`,
+          `${projRelPrefix}/worker`,
+          `${projRelPrefix}/src/pages`,
+          `${projRelPrefix}/src/layouts`
+        ]
+      : []),
     'templates/vanilla-edge/site/js',
     'templates/vanilla-edge/worker',
     'templates/astro-edge/worker',
@@ -469,8 +485,8 @@ async function handleConstruir() {
     { type: 'PASS_WAVE3_QA_AND_JEV', ryuxScore: 100, securityScore: 100, visualBlockers: 0 }
   ]);
 
-  // 3. Capture Pruned DOM + AX Tree + Stagehand Self-Healing Snapshot
-  const axRes = await captureAccessibilitySnapshot();
+  // 3. Capture Pruned DOM + AX Tree + Stagehand Self-Healing Snapshot (Project-Scoped)
+  const axRes = await captureAccessibilitySnapshot({ projectDir: projectCfg.projectRoot });
 
   // 4. Generate Executive Brief automatically so it's ready for review
   await generateExecutiveDecisionBrief(boltRes, axRes);
@@ -490,7 +506,7 @@ async function generateExecutiveDecisionBrief(boltRes = null, axRes = null) {
   const score = evalRes.compositeScore ?? (ryuxLoop.finalScore || 100);
   recordProjectAuditScore(projectCfg.projectRoot, score, evalRes.vetoTriggered ? 'REPROBADO' : 'APROBADO');
   const activeRules = getActiveRules().filter(r => String(r.id || '').startsWith('cto-pref-'));
-  const cyber = evaluateCybersecurityTrafficLight();
+  const cyber = evaluateCybersecurityTrafficLight(projectCfg);
 
   let semaforo = `🟢 VERDE — Salud Óptima (${score}/100)`;
   let nivelRiesgo = 'Tier 0 — Auto-aprobado (Listo para publicar sin riesgos)';
@@ -503,7 +519,12 @@ async function generateExecutiveDecisionBrief(boltRes = null, axRes = null) {
     nivelRiesgo = 'Tier 2 — Bloqueo Constitucional / Seguridad / Chaos Veto';
   }
 
-  const snapshotsDir = path.join(ROOT, 'docs', 'audit_snapshots', 'current');
+  const candidateSnapshotDirs = [
+    path.join(projectCfg.projectRoot, 'tools', 'audit', 'out'),
+    path.join(ROOT, 'docs', 'audit_snapshots', projectCfg.id),
+    path.join(ROOT, 'docs', 'audit_snapshots', 'current')
+  ];
+  const snapshotsDir = candidateSnapshotDirs.find((d) => fs.existsSync(d)) || candidateSnapshotDirs[2];
   const captures = fs.existsSync(snapshotsDir)
     ? fs.readdirSync(snapshotsDir).filter(f => f.endsWith('.png'))
     : [];
@@ -622,7 +643,8 @@ async function handleRevisar(args) {
   console.log('👀 REVISIÓN EJECUTIVA DEL CTO (SIN JERGA TÉCNICA)');
   console.log('====================================================================\n');
 
-  const axRes = await captureAccessibilitySnapshot();
+  const projectCfg = loadProjectConfig();
+  const axRes = await captureAccessibilitySnapshot({ projectDir: projectCfg.projectRoot });
   const { briefPath, testbenchPath, semaforo, nivelRiesgo } = await generateExecutiveDecisionBrief(null, axRes);
 
   console.log(`  ✅ Estado General   : ${semaforo}`);

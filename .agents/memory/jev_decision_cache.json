@@ -1,8 +1,8 @@
 {
   "schema": "jev-sha256-decision-cache-v2026.10",
-  "updatedAt": "2026-10-29T20:10:58.722Z",
+  "updatedAt": "2026-10-29T21:00:31.917Z",
   "totalHits": 7,
-  "totalEntries": 7,
+  "totalEntries": 8,
   "entries": {
     "1bdfdd1080ca8c727b4e53a181d1a6fa3bc9c94cde8eb9974e6566f763e0b41b": {
       "cachedAt": "2026-10-29T20:10:58.688Z",
@@ -148,6 +148,27 @@
         "noulReason": null,
         "evidence": [
           "Validated transferable engineering invariant in category \"architectural_decision\" (maxOverlap=0.0571 < 0.75, zero ASI06 poisoning)."
+        ],
+        "requiresCodeOwnerRole": "none"
+      }
+    },
+    "d1a11b6ff12a001e81d51f12ffa491df42666e0c9f60b34745b0381f88409677": {
+      "cachedAt": "2026-10-29T21:00:31.917Z",
+      "provider": "OFFICIAL_JEV_API_HTTP_FALLBACK",
+      "bamlSchemaCompression": {
+        "verboseTokens": 485,
+        "compactTokens": 128,
+        "tokenSavingsPct": 73.6
+      },
+      "verdict": {
+        "predicateId": "jev-memory-write-admission-gate",
+        "loopScope": "MEMORY_PIPELINE_WRITE_GATE",
+        "choice": "COMMIT_GLOBAL_INVARIANT",
+        "score": 98,
+        "abstained": false,
+        "noulReason": null,
+        "evidence": [
+          "Validated transferable engineering invariant in category \"architectural_decision\" (maxOverlap=0.0263 < 0.75, zero ASI06 poisoning)."
         ],
         "requiresCodeOwnerRole": "none"
       }

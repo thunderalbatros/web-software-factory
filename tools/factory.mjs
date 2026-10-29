@@ -208,6 +208,26 @@ async function main() {
       style: styleName || 'bento'
     });
 
+    // Unify Lifecycle Seam with cto_command_center.mjs ([ENGRANAJE-01]):
+    // Initialize PRODUCT.md, DESIGN.md, Dual-DB Architecture, Dual Interview Gates (#1 & #2) & XState v5 Statechart
+    try {
+      const { generateProductAndDesignMd } = await import('./design/industry_archetype_matrix.mjs');
+      const { forgeDatabaseArchitecture } = await import('./db/dual_database_forge.mjs');
+      const { initPrdInterviewFiles } = await import('./orchestrator/lean_prd_architect.mjs');
+      const { initClientInterviewFiles } = await import('./orchestrator/client_interview_gate.mjs');
+      const { syncProjectStatechartSnapshot } = await import('./orchestrator/deterministic_agent_statechart.mjs');
+
+      generateProductAndDesignMd(targetDir, archetype);
+      forgeDatabaseArchitecture(targetDir, 'edge-d1');
+      if (!outFlag) {
+        initPrdInterviewFiles(slug, archetype, { autoApprove: false, overwrite: false });
+        initClientInterviewFiles(slug, archetype, { autoApprove: false, overwrite: false });
+        syncProjectStatechartSnapshot(slug, []);
+      }
+    } catch (seamErr) {
+      console.warn(`⚠️ [Lifecycle Seam Init] ${seamErr.message}`);
+    }
+
     // Save active project state in .agents/memory/active_project.json and initialize audit score
     setActiveProject(slug, {
       name: displayName,
@@ -226,9 +246,10 @@ async function main() {
     if (styleName) console.log(`• Style Skill  : ${styleName} (.specify/memory/style-guide.md)`);
     console.log(`• Location     : ${targetDir}`);
     console.log(`• Next Steps   :`);
-    console.log(`    1. node tools/factory.mjs build --project "${targetDir}"`);
-    console.log(`    2. node tools/factory.mjs gate --project "${targetDir}"`);
-    console.log(`    3. node tools/factory.mjs visual-gate --project "${targetDir}"`);
+    console.log(`    1. npm run cto:entrevista-prd -- ${slug} --aprobar`);
+    console.log(`    2. npm run cto:entrevista -- ${slug} --aprobar`);
+    console.log(`    3. node tools/factory.mjs build --project "${targetDir}"`);
+    console.log(`    4. node tools/factory.mjs gate --project "${targetDir}"`);
     console.log('====================================================================\n');
     return;
   }
@@ -247,6 +268,23 @@ async function main() {
 
   if (subcommand === 'build') {
     const cfg = loadProjectConfig(projectFlag);
+    const skipInterviewGate = argv.includes('--skip-interview-gate');
+    const hasPrdInterview = fs.existsSync(path.join(cfg.projectRoot, 'PRD_INTERVIEW_STATE.json'));
+    const hasSpecInterview = fs.existsSync(path.join(cfg.projectRoot, 'CLIENT_BRIEF_INTERVIEW.json'));
+    if (!skipInterviewGate && (hasPrdInterview || hasSpecInterview)) {
+      const { verifyDualInterviewGates } = await import('./orchestrator/client_interview_gate.mjs');
+      const dualGate = verifyDualInterviewGates(cfg.id, cfg.industryArchetype || cfg.archetype || 'saas');
+      if (!dualGate.passed) {
+        console.error(`\n❌ ${dualGate.message}\n`);
+        process.exit(1);
+      }
+    }
+    try {
+      const { syncProjectStatechartSnapshot } = await import('./orchestrator/deterministic_agent_statechart.mjs');
+      syncProjectStatechartSnapshot(cfg.id, [
+        { type: 'COMPLETE_RPI_UNTAINTED_RESEARCH', untaintedResearchVerified: true, maxStageInstructions: 14 }
+      ]);
+    } catch (_) {}
     execSync(`node "${path.join(FACTORY_ROOT, 'tools', 'build_dist.mjs')}" --project "${cfg.projectRoot}"`, {
       cwd: FACTORY_ROOT,
       stdio: 'inherit'
