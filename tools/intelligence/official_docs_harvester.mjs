@@ -605,6 +605,114 @@ export function buildStructuredSecurityCatalogs() {
 }
 
 /**
+ * Zero-Auth University Harvester Catalog (`OPEN_UNIVERSITY_PORTALS_CATALOG`):
+ * Public university course syllabi, lecture notes, and open learning portals normalized via MarkItDown.
+ */
+export const OPEN_UNIVERSITY_PORTALS_CATALOG = [
+  {
+    id: 'cmu-cs-11-768',
+    institution: 'Carnegie Mellon University (Graham Neubig / OpenHands)',
+    courseCode: 'CMU CS 11-768 — AI Agents',
+    url: 'https://cmu-agents.com/',
+    modulesCount: 14,
+    distilledHighlights: [
+      '14 master lectures on Tool Use, Long-Context Management, Memory & Skills, and Agentic Evaluation.',
+      'Lecture 6 (Software Development Agents): SWE-bench evaluation, repo-level navigation, and deterministic test execution.',
+      'Lecture 14 (OpenHands Architecture): EventStream state machine, StuckDetector (loop A<->B abort), and Trigger-Based Repo Microagents.'
+    ]
+  },
+  {
+    id: 'stanford-cs329a',
+    institution: 'Stanford University',
+    courseCode: 'Stanford CS329A — Self-Improving AI Agents',
+    url: 'https://cs329a.stanford.edu/',
+    modulesCount: 9,
+    distilledHighlights: [
+      '9 modules on Test-Time Compute scaling, Best-of-N verification, and self-improvement loops.',
+      'Part 3 (Robust Verification): Separating Scrutiny Validators (code & static invariants) from User-Testing Validators (runtime behavior).',
+      'Part 4 (Code & Tool Feedback) & Part 8 (Long-Horizon Evaluation): Grounding reward signals in compiler/AST/test-suite execution rather than LLM self-praise.'
+    ]
+  },
+  {
+    id: 'uc-berkeley-cs294-196',
+    institution: 'UC Berkeley RDI (Dawn Song et al.)',
+    courseCode: 'UC Berkeley CS294-196 — Agentic AI MOOC',
+    url: 'https://agenticai-learning.org/',
+    modulesCount: 36,
+    distilledHighlights: [
+      '36+ lectures covering evolution of compound agentic systems, SWE-bench Verified, and secure sandboxing.',
+      'Statistical evaluation rigor: reporting confidence intervals / error bars across multi-trial runs and isolating held-out evaluation suites.'
+    ]
+  },
+  {
+    id: 'stanford-cs146s',
+    institution: 'Stanford University (Mihail Eric)',
+    courseCode: 'Stanford CS146S — The Modern Software Developer',
+    url: 'https://themodernsoftware.dev/',
+    repoMirror: 'academic-and-official-courses-2026/modern-software-dev-assignments',
+    modulesCount: 10,
+    distilledHighlights: [
+      'Week 2: Building custom MCP servers from scratch with strict JSON Schema input validation.',
+      'Week 3: Context Engineering & its 4 Failure Modes (Context Poisoning, Context Distraction, Context Confusion, Context Clash).',
+      'Week 4: Human-Agent Collaboration Patterns & Checkpoints; Weeks 6–7: Security Gates & Adversarial PR Review.'
+    ]
+  },
+  {
+    id: 'huggingface-learn-agents-and-mcp',
+    institution: 'Hugging Face Learn',
+    courseCode: 'HF AI Agents Course + HF MCP Course + HF Context Engineering Course',
+    url: 'https://huggingface.co/learn/agents-course',
+    secondaryUrl: 'https://huggingface.co/learn/mcp-course',
+    repoMirror: 'academic-and-official-courses-2026/context-course',
+    modulesCount: 16,
+    distilledHighlights: [
+      'Full context engineering stack: progressive skill disclosure, MCP servers/clients, plugins, subagents, hooks, and lightweight harness construction from scratch.'
+    ]
+  },
+  {
+    id: 'vanderbilt-claude-code-jules-white',
+    institution: 'Vanderbilt University (Dr. Jules White)',
+    courseCode: 'Claude Code: Software Engineering with Generative AI Agents',
+    url: 'https://www.coursera.org/learn/claude-code',
+    modulesCount: 6,
+    distilledHighlights: [
+      'Parallel multi-agent development using isolated `git worktrees` (`LocalWorktreeSandbox`) and Best-of-N (`arena-skill`) architectural exploration without file collisions.'
+    ]
+  },
+  {
+    id: 'freecodecamp-exampro-claude-code-essentials',
+    institution: 'freeCodeCamp & ExamPro (Andrew Brown)',
+    courseCode: 'Claude Code Essentials (12h 44m / 44 Chapters)',
+    url: 'https://www.freecodecamp.org/news/claude-code-essentials/',
+    modulesCount: 44,
+    distilledHighlights: [
+      '44 chapters (12h 44m) on Dev Containers isolation, granular FinOps token cost controls, headless CI/CD execution in GitHub Actions, and CLAUDE.md/AGENTS.md memory hygiene.'
+    ]
+  },
+  {
+    id: 'deeplearning-ai-short-courses',
+    institution: 'DeepLearning.AI (Anthropic, JetBrains, E2B, crewAI)',
+    courseCode: 'Claude Code with Anthropic + Spec-Driven Development with JetBrains + Building Coding Agents with E2B + Multi AI Agent Systems',
+    url: 'https://www.deeplearning.ai/short-courses/',
+    modulesCount: 4,
+    distilledHighlights: [
+      'Spec-Driven Development (SDD) before code generation, Firecracker microVM sandboxing (`@e2b/code-interpreter`), and role-partitioned multi-agent handoffs.'
+    ]
+  }
+];
+
+/**
+ * Normalizes public university course portals into clean MarkItDown blocks (Zero-Auth University Harvester).
+ */
+export function harvestZeroAuthUniversityPortals() {
+  return OPEN_UNIVERSITY_PORTALS_CATALOG.map((portal) => ({
+    ...portal,
+    markItDownNormalized: true,
+    markdownSummary: `### ${portal.courseCode} (${portal.institution})\n- **Portal:** \`${portal.url}\`${portal.repoMirror ? ` | **Local Vault:** \`${portal.repoMirror}\`` : ''}\n${portal.distilledHighlights.map((h) => `- ${h}`).join('\n')}`
+  }));
+}
+
+/**
  * Main Harvester Entrypoint
  */
 export function harvestOfficialDocsAndSecurityCatalogs() {
@@ -646,6 +754,13 @@ export function harvestOfficialDocsAndSecurityCatalogs() {
       'strudel',
       'polymath',
       'stable-audio-tools'
+    ],
+    'academic-and-official-courses-2026': [
+      'modern-software-dev-assignments',
+      'courses',
+      'context-course',
+      'ai-agents-for-beginners',
+      'mcp-for-beginners'
     ]
   };
 

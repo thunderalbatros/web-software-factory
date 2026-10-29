@@ -301,7 +301,73 @@ export function scanSecurityAndPerformance(filePath) {
     }
   }
 
+  // 10. Boolean-Soup Detector (Boundary / SlopCodeBench Data-Structure Guard):
+  // Warns when an interface or state object defines >= 3 lifecycle boolean flags (isLoading, isSuccess, isError, isHeld, isSold)
+  const lifecycleFlags = ['isLoading', 'isSuccess', 'isError', 'isHeld', 'isSold'];
+  const matchedLifecycleFlags = lifecycleFlags.filter((flag) =>
+    new RegExp(`\\b${flag}\\s*[:=]`).test(content)
+  );
+  if (matchedLifecycleFlags.length >= 3) {
+    findings.push({
+      type: 'DATA_STRUCTURE_WARNING',
+      rule: 'boolean-soup-state',
+      line: 1,
+      snippet: matchedLifecycleFlags.join(', '),
+      msg: `Boolean-Soup anti-pattern detected (${matchedLifecycleFlags.length} lifecycle boolean flags: ${matchedLifecycleFlags.join(', ')}). Replace with a discriminated union 'status' field.`
+    });
+  }
+
+  // 11. Pure vs. Wired Component Separation Check (Boundary / Karpathy):
+  // Warns when a Pure UI component (`function Pure...` or `const Pure...` or `class Pure...`) directly invokes network/storage side-effects
+  const declaresPureComponent = /\b(?:function|class|const)\s+Pure[A-Z][A-Za-z0-9_]*/.test(content);
+  if (declaresPureComponent && /\b(?:fetch\s*\(|localStorage\.|sessionStorage\.)/.test(content)) {
+    findings.push({
+      type: 'DATA_STRUCTURE_WARNING',
+      rule: 'pure-vs-wired-violation',
+      line: 1,
+      snippet: path.basename(filePath),
+      msg: 'Pure vs. Wired Component violation: Pure* UI component mixes props rendering with direct fetch()/storage side-effects.'
+    });
+  }
+
   return findings;
+}
+
+/**
+ * High-Risk File Owner Trigger (Boundary / BloomText / SpaceX Governance):
+ * Evaluates whether a diff or file touches `process.env`, SQL migrations, or auth/payment schemas,
+ * requiring mandatory `security-engineer` / HITL owner review.
+ */
+export function evaluateHighRiskFileOwnerTrigger(diffOrContent = '', filePath = '') {
+  const text = String(diffOrContent || '');
+  const normPath = String(filePath || '').replace(/\\/g, '/');
+  const matchedVectors = [];
+
+  if (/\bprocess\.env\b/.test(text) || /(?:^|\/)\.env(?:\.|$)/i.test(normPath)) {
+    matchedVectors.push('ENV_SECRETS_OR_PROCESS_ENV');
+  }
+  if (
+    /\b(?:ALTER\s+TABLE|DROP\s+TABLE|CREATE\s+POLICY|ENABLE\s+ROW\s+LEVEL\s+SECURITY|FORCE\s+ROW\s+LEVEL\s+SECURITY|MIGRATION)\b/i.test(
+      text
+    ) ||
+    /\.sql$/i.test(normPath)
+  ) {
+    matchedVectors.push('SQL_MIGRATION_OR_RLS_POLICY');
+  }
+  if (
+    /\b(?:stripe|mercadopago|kratos|keto|zanzibar|argon2id|kms|envelope_encryption|oauth|pkce)\b/i.test(
+      text
+    )
+  ) {
+    matchedVectors.push('AUTH_OR_PAYMENT_SCHEMA');
+  }
+
+  return {
+    highRiskTriggered: matchedVectors.length > 0,
+    matchedVectors,
+    requiredOwnerRole: matchedVectors.length > 0 ? 'security-engineer' : null,
+    filePath: normPath
+  };
 }
 
 export function runNegativeSelfTest() {
@@ -313,8 +379,13 @@ export function runNegativeSelfTest() {
     '    document.body.innerHTML = userInput;',
     '    const q = `SELECT * FROM users WHERE email = ${userInput}`;',
     '    const leaked = process.env.PUBLIC_SECRET_TOKEN;',
-    '    return q + leaked;',
+    '    const stateSoup = { isLoading: true, isSuccess: false, isError: true, isHeld: true, isSold: false };',
+    '    return q + leaked + JSON.stringify(stateSoup);',
     '  }',
+    '}',
+    'function PurePriceBadge(props) {',
+    '  fetch("/api/mutate-price");',
+    '  return props.label;',
     '}'
   ].join('\n');
   const tmpFile = path.join(ROOT, '.cache', '__ast_negative_fixture__.js');
@@ -323,6 +394,10 @@ export function runNegativeSelfTest() {
   try {
     const cls = scanClassMethods(tmpFile);
     const sec = scanSecurityAndPerformance(tmpFile);
+    const riskTrigger = evaluateHighRiskFileOwnerTrigger(
+      `${syntheticCode}\nALTER TABLE orders ENABLE ROW LEVEL SECURITY; // stripe payment`,
+      tmpFile
+    );
     const caughtMissing = cls.length === 1 && cls[0].missingMethods.includes('missingGhostMethod');
     const caughtEval = sec.some(s => s.type === 'SECURITY_BLOCKER' && s.rule === 'no-eval');
     const caughtXss = sec.some(s => s.type === 'SECURITY_BLOCKER' && s.rule === 'untrusted-xss-sink');
@@ -330,7 +405,22 @@ export function runNegativeSelfTest() {
     const caughtPublicSecret = sec.some(
       s => s.type === 'SECURITY_BLOCKER' && s.rule === 'exposed-public-env-secret'
     );
-    return caughtMissing && caughtEval && caughtXss && caughtSqli && caughtPublicSecret;
+    const caughtBooleanSoup = sec.some(s => s.rule === 'boolean-soup-state');
+    const caughtPureWired = sec.some(s => s.rule === 'pure-vs-wired-violation');
+    const caughtHighRisk =
+      riskTrigger.highRiskTriggered &&
+      riskTrigger.matchedVectors.length === 3 &&
+      riskTrigger.requiredOwnerRole === 'security-engineer';
+    return (
+      caughtMissing &&
+      caughtEval &&
+      caughtXss &&
+      caughtSqli &&
+      caughtPublicSecret &&
+      caughtBooleanSoup &&
+      caughtPureWired &&
+      caughtHighRisk
+    );
   } finally {
     try { fs.unlinkSync(tmpFile); } catch (_) {}
   }

@@ -1,14 +1,14 @@
 {
   "schema": "cocoindex-code-ast-graph-v1",
-  "updatedAt": "2026-10-29T02:30:31.197Z",
+  "updatedAt": "2026-10-29T02:58:20.631Z",
   "activeProject": "agencia-alfa",
-  "combinedSha256": "c754eccd11c2dde5",
+  "combinedSha256": "db3085617e14d910",
   "stats": {
-    "totalFilesIndexed": 136,
-    "reindexedFilesCount": 3,
-    "cachedFilesCount": 133,
-    "totalSymbols": 1064,
-    "totalExports": 590,
+    "totalFilesIndexed": 137,
+    "reindexedFilesCount": 10,
+    "cachedFilesCount": 127,
+    "totalSymbols": 1087,
+    "totalExports": 611,
     "estimatedTokenSavingsPct": 72.5
   },
   "files": [
@@ -5939,8 +5939,8 @@
     {
       "path": "tools/audit/security_gate.mjs",
       "ext": ".mjs",
-      "sha256": "bb62cccc6defcd72",
-      "lineCount": 530,
+      "sha256": "0b1992fea576afab",
+      "lineCount": 540,
       "exports": [
         "GITLEAKS_SECRET_PATTERNS",
         "computeShannonEntropy",
@@ -5960,7 +5960,6 @@
         "./supply_chain_guard.mjs",
         "./ast_guard.mjs",
         "./workflow_security_linter.mjs",
-        "../intelligence/agent_governance_kernel.mjs",
         "./mcp_security_auditor.mjs"
       ],
       "importedBy": [
@@ -6024,84 +6023,84 @@
           "kind": "constant",
           "exported": true,
           "signature": "export const GITLEAKS_SECRET_PATTERNS",
-          "startLine": 58,
-          "endLine": 58
+          "startLine": 64,
+          "endLine": 64
         },
         {
           "name": "computeShannonEntropy",
           "kind": "function",
           "exported": true,
           "signature": "export function computeShannonEntropy(str = '')",
-          "startLine": 70,
-          "endLine": 85
+          "startLine": 76,
+          "endLine": 91
         },
         {
           "name": "redactPiiEntities",
           "kind": "function",
           "exported": true,
           "signature": "export function redactPiiEntities(input = '')",
-          "startLine": 91,
-          "endLine": 107
+          "startLine": 97,
+          "endLine": 113
         },
         {
           "name": "verifyPiiRedactorSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export function verifyPiiRedactorSelfTest()",
-          "startLine": 112,
-          "endLine": 124
+          "startLine": 118,
+          "endLine": 130
         },
         {
           "name": "auditEdgeWorkersAndDist",
           "kind": "function",
           "exported": true,
           "signature": "export function auditEdgeWorkersAndDist(rootDir = ROOT)",
-          "startLine": 136,
-          "endLine": 199
+          "startLine": 142,
+          "endLine": 205
         },
         {
           "name": "scanSecretsAndEntropy",
           "kind": "function",
           "exported": true,
           "signature": "export function scanSecretsAndEntropy(rootDir = ROOT)",
-          "startLine": 205,
-          "endLine": 257
+          "startLine": 211,
+          "endLine": 263
         },
         {
           "name": "auditEnterpriseDatabaseAndIdentity",
           "kind": "function",
           "exported": true,
           "signature": "export function auditEnterpriseDatabaseAndIdentity(rootDir = ROOT)",
-          "startLine": 263,
-          "endLine": 336
+          "startLine": 269,
+          "endLine": 342
         },
         {
           "name": "runAgentShieldHarnessAudit",
           "kind": "function",
           "exported": true,
           "signature": "export function runAgentShieldHarnessAudit(rootDir = ROOT)",
-          "startLine": 343,
-          "endLine": 411
+          "startLine": 349,
+          "endLine": 417
         },
         {
           "name": "runSecurityQuarantineGate",
           "kind": "function",
           "exported": true,
           "signature": "export function runSecurityQuarantineGate(options = {})",
-          "startLine": 413,
-          "endLine": 413
+          "startLine": 419,
+          "endLine": 419
         },
         {
           "name": "runSecurityGate",
           "kind": "constant",
           "exported": true,
           "signature": "export const runSecurityGate",
-          "startLine": 518,
-          "endLine": 518
+          "startLine": 528,
+          "endLine": 528
         }
       ],
-      "mtimeMs": 1793220716137.7886,
-      "size": 22685
+      "mtimeMs": 1793242570987.967,
+      "size": 22929
     },
     {
       "path": "tools/audit/supply_chain_guard.mjs",
@@ -7081,10 +7080,11 @@
     {
       "path": "tools/cto_command_center.mjs",
       "ext": ".mjs",
-      "sha256": "8a9035b0a8785121",
-      "lineCount": 1377,
+      "sha256": "35c8e1e9e5c95467",
+      "lineCount": 1528,
       "exports": [
-        "evaluateCybersecurityTrafficLight"
+        "evaluateCybersecurityTrafficLight",
+        "handleAterrizar"
       ],
       "imports": [
         "node:fs",
@@ -7127,7 +7127,8 @@
         "./intelligence/factory_dora_metrics.mjs",
         "./audit/harness_doctor_audit.mjs",
         "./media/programmatic_video_forge.mjs",
-        "./media/sonic_and_music_forge.mjs"
+        "./media/sonic_and_music_forge.mjs",
+        "node:sqlite"
       ],
       "importedBy": [],
       "calls": [
@@ -7459,16 +7460,24 @@
           "endLine": 1274
         },
         {
+          "name": "handleAterrizar",
+          "kind": "function",
+          "exported": true,
+          "signature": "export async function handleAterrizar(args = [])",
+          "startLine": 1284,
+          "endLine": 1424
+        },
+        {
           "name": "main",
           "kind": "function",
           "exported": false,
           "signature": "async function main()",
-          "startLine": 1276,
-          "endLine": 1371
+          "startLine": 1426,
+          "endLine": 1522
         }
       ],
-      "mtimeMs": 1793239837111.392,
-      "size": 75384
+      "mtimeMs": 1793242624554.896,
+      "size": 82005
     },
     {
       "path": "tools/db/dual_database_forge.mjs",
@@ -8961,8 +8970,8 @@
     {
       "path": "tools/intelligence/agent_governance_kernel.mjs",
       "ext": ".mjs",
-      "sha256": "0a6fd2476c5e443c",
-      "lineCount": 724,
+      "sha256": "8d4984fec7f2c6dc",
+      "lineCount": 908,
       "exports": [
         "MCP_ROLE_REGISTRY_PATH",
         "SECURITY_REPORTS_DIR",
@@ -8977,6 +8986,11 @@
         "checkAndRecordCircuitBreaker",
         "resetCircuitBreaker",
         "evaluateGovernancePolicy",
+        "AGENT_VENT_LOG_PATH",
+        "SHIM_TELEMETRY_PATH",
+        "agent_vent_friction",
+        "recordShimRuleUsage",
+        "getShimRegistryTelemetry",
         "runAntigravityGovernanceCliAdapter",
         "verifyAgentGovernanceKernelSelfTest"
       ],
@@ -8988,7 +9002,6 @@
       ],
       "importedBy": [
         "tools/audit/harness_doctor_audit.mjs",
-        "tools/audit/security_gate.mjs",
         "tools/cto_command_center.mjs"
       ],
       "calls": [
@@ -9144,24 +9157,64 @@
           "endLine": 436
         },
         {
+          "name": "AGENT_VENT_LOG_PATH",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const AGENT_VENT_LOG_PATH",
+          "startLine": 601,
+          "endLine": 601
+        },
+        {
+          "name": "SHIM_TELEMETRY_PATH",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const SHIM_TELEMETRY_PATH",
+          "startLine": 602,
+          "endLine": 602
+        },
+        {
+          "name": "agent_vent_friction",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const agent_vent_friction",
+          "startLine": 686,
+          "endLine": 686
+        },
+        {
+          "name": "recordShimRuleUsage",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function recordShimRuleUsage(shimId = 'CRISP_UNTAINTED_RESEARCH_SHIM', metadata = {})",
+          "startLine": 693,
+          "endLine": 693
+        },
+        {
+          "name": "getShimRegistryTelemetry",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function getShimRegistryTelemetry()",
+          "startLine": 729,
+          "endLine": 736
+        },
+        {
           "name": "runAntigravityGovernanceCliAdapter",
           "kind": "function",
           "exported": true,
           "signature": "export function runAntigravityGovernanceCliAdapter(hookEvent = {})",
-          "startLine": 589,
-          "endLine": 589
+          "startLine": 742,
+          "endLine": 742
         },
         {
           "name": "verifyAgentGovernanceKernelSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export function verifyAgentGovernanceKernelSelfTest()",
-          "startLine": 603,
-          "endLine": 709
+          "startLine": 756,
+          "endLine": 893
         }
       ],
-      "mtimeMs": 1793221914463.975,
-      "size": 28954
+      "mtimeMs": 1793242546528.1797,
+      "size": 35906
     },
     {
       "path": "tools/intelligence/agent_squad.mjs",
@@ -9380,12 +9433,13 @@
     {
       "path": "tools/intelligence/ast_guard.mjs",
       "ext": ".mjs",
-      "sha256": "7bff4c3bccb3dbd9",
-      "lineCount": 445,
+      "sha256": "1c3906420e5eb31e",
+      "lineCount": 535,
       "exports": [
         "runOxlintFastPass",
         "scanClassMethods",
         "scanSecurityAndPerformance",
+        "evaluateHighRiskFileOwnerTrigger",
         "runNegativeSelfTest"
       ],
       "imports": [
@@ -9438,16 +9492,16 @@
         "bind",
         "BEGIN",
         "basename",
+        "detected",
+        "fetch",
+        "env",
         "run",
         "missingGhostMethod",
         "alert",
+        "stringify",
+        "PurePriceBadge",
         "mkdirSync",
-        "writeFileSync",
-        "scanClassMethods",
-        "scanSecurityAndPerformance",
-        "some",
-        "unlinkSync",
-        "runAstAudit"
+        "writeFileSync"
       ],
       "symbols": [
         {
@@ -9475,16 +9529,24 @@
           "endLine": 283
         },
         {
+          "name": "evaluateHighRiskFileOwnerTrigger",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function evaluateHighRiskFileOwnerTrigger(diffOrContent = '', filePath = '')",
+          "startLine": 341,
+          "endLine": 371
+        },
+        {
           "name": "runNegativeSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export function runNegativeSelfTest()",
-          "startLine": 307,
-          "endLine": 337
+          "startLine": 373,
+          "endLine": 427
         }
       ],
-      "mtimeMs": 1793199876338.0986,
-      "size": 16496
+      "mtimeMs": 1793242471791.5676,
+      "size": 20156
     },
     {
       "path": "tools/intelligence/audiovisual_psychoacoustics_corpus_builder.mjs",
@@ -10297,8 +10359,8 @@
     {
       "path": "tools/intelligence/course_and_paper_distiller.mjs",
       "ext": ".mjs",
-      "sha256": "a29c8f703ebcc600",
-      "lineCount": 518,
+      "sha256": "05097240886b0d97",
+      "lineCount": 845,
       "exports": [
         "INBOX_COURSES_DIR",
         "PROCESSED_COURSES_DIR",
@@ -10317,7 +10379,9 @@
       "imports": [
         "node:fs",
         "node:path",
-        "node:url"
+        "node:child_process",
+        "node:url",
+        "node:sqlite"
       ],
       "importedBy": [
         "tools/intelligence/audiovisual_psychoacoustics_corpus_builder.mjs"
@@ -10375,108 +10439,124 @@
           "kind": "constant",
           "exported": true,
           "signature": "export const INBOX_COURSES_DIR",
-          "startLine": 31,
-          "endLine": 31
+          "startLine": 40,
+          "endLine": 40
         },
         {
           "name": "PROCESSED_COURSES_DIR",
           "kind": "constant",
           "exported": true,
           "signature": "export const PROCESSED_COURSES_DIR",
-          "startLine": 32,
-          "endLine": 32
+          "startLine": 41,
+          "endLine": 41
         },
         {
           "name": "stripConversationalTranscriptFiller",
           "kind": "function",
           "exported": true,
           "signature": "export function stripConversationalTranscriptFiller(rawText = '')",
-          "startLine": 48,
-          "endLine": 95
+          "startLine": 57,
+          "endLine": 104
         },
         {
           "name": "inferCourseDomainAndSkill",
           "kind": "function",
           "exported": true,
           "signature": "export function inferCourseDomainAndSkill(titleOrSlug = '', content = '')",
-          "startLine": 100,
-          "endLine": 130
+          "startLine": 109,
+          "endLine": 139
         },
         {
           "name": "extractStructuredCourseBlocks",
           "kind": "function",
           "exported": true,
           "signature": "export function extractStructuredCourseBlocks(cleanedText = '', title = 'Technical Course Distillation')",
-          "startLine": 139,
-          "endLine": 187
+          "startLine": 148,
+          "endLine": 196
         },
         {
           "name": "enforceDistilledCourseInvariant",
           "kind": "function",
           "exported": true,
           "signature": "export function enforceDistilledCourseInvariant(config = {})",
-          "startLine": 169,
-          "endLine": 169
+          "startLine": 178,
+          "endLine": 178
         },
         {
           "name": "buildAudiovisualAxiomsToDspTable",
           "kind": "function",
           "exported": true,
           "signature": "export function buildAudiovisualAxiomsToDspTable(title = 'Psychoacoustic & Audiovisual Distillation')",
-          "startLine": 194,
-          "endLine": 203
+          "startLine": 203,
+          "endLine": 212
         },
         {
           "name": "buildVisualAxiomsToCodeTable",
           "kind": "function",
           "exported": true,
           "signature": "export function buildVisualAxiomsToCodeTable(title = 'Visual Science Distillation')",
-          "startLine": 210,
-          "endLine": 219
+          "startLine": 219,
+          "endLine": 228
         },
         {
           "name": "convertPdfToMarkdownMarkItDown",
           "kind": "function",
           "exported": true,
           "signature": "export function convertPdfToMarkdownMarkItDown(rawText = '', title = 'Document')",
-          "startLine": 226,
-          "endLine": 264
+          "startLine": 235,
+          "endLine": 273
         },
         {
           "name": "parseLocalSubtitleFileOpenSubs",
           "kind": "function",
           "exported": true,
           "signature": "export function parseLocalSubtitleFileOpenSubs(rawSubtitleText = '', extension = '.srt')",
-          "startLine": 270,
-          "endLine": 287
+          "startLine": 279,
+          "endLine": 296
         },
         {
           "name": "distillCourseOrPaperFile",
           "kind": "function",
           "exported": true,
           "signature": "export function distillCourseOrPaperFile(filePath, options = {})",
-          "startLine": 302,
-          "endLine": 302
+          "startLine": 311,
+          "endLine": 311
         },
         {
           "name": "distillCoursesInbox",
           "kind": "function",
           "exported": true,
           "signature": "export function distillCoursesInbox()",
-          "startLine": 414,
-          "endLine": 444
+          "startLine": 423,
+          "endLine": 453
+        },
+        {
+          "name": "formatSecondsToHhMmSs",
+          "kind": "function",
+          "exported": false,
+          "signature": "function formatSecondsToHhMmSs(totalSeconds = 0)",
+          "startLine": 458,
+          "endLine": 464
+        },
+        {
+          "name": "parseTimestampToSeconds",
+          "kind": "function",
+          "exported": false,
+          "signature": "function parseTimestampToSeconds(tsStr = '')",
+          "startLine": 469,
+          "endLine": 473
         },
         {
           "name": "runCourseAndPaperDistillerSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export function runCourseAndPaperDistillerSelfTest()",
-          "startLine": 449,
-          "endLine": 495
+          "startLine": 738,
+          "endLine": 822
         }
       ],
-      "mtimeMs": 1793234110009.3525,
-      "size": 22531
+      "mtimeMs": 1793242114908.9033,
+      "size": 35802
     },
     {
       "path": "tools/intelligence/eval_matrix.mjs",
@@ -11288,8 +11368,8 @@
     {
       "path": "tools/intelligence/official_docs_harvester.mjs",
       "ext": ".mjs",
-      "sha256": "ba03aa69068fa285",
-      "lineCount": 702,
+      "sha256": "fb28a5d7ba051bff",
+      "lineCount": 817,
       "exports": [
         "CANON_PATHS",
         "SECURITY_CATALOGS_DIR",
@@ -11301,6 +11381,8 @@
         "buildSoftwareFactoryCanonMarkdown",
         "buildCybersecurityCanonMarkdown",
         "buildStructuredSecurityCatalogs",
+        "OPEN_UNIVERSITY_PORTALS_CATALOG",
+        "harvestZeroAuthUniversityPortals",
         "harvestOfficialDocsAndSecurityCatalogs"
       ],
       "imports": [
@@ -11443,16 +11525,32 @@
           "endLine": 605
         },
         {
+          "name": "OPEN_UNIVERSITY_PORTALS_CATALOG",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const OPEN_UNIVERSITY_PORTALS_CATALOG",
+          "startLine": 611,
+          "endLine": 611
+        },
+        {
+          "name": "harvestZeroAuthUniversityPortals",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function harvestZeroAuthUniversityPortals()",
+          "startLine": 707,
+          "endLine": 713
+        },
+        {
           "name": "harvestOfficialDocsAndSecurityCatalogs",
           "kind": "function",
           "exported": true,
           "signature": "export function harvestOfficialDocsAndSecurityCatalogs()",
-          "startLine": 610,
-          "endLine": 682
+          "startLine": 718,
+          "endLine": 797
         }
       ],
-      "mtimeMs": 1793234127959.8877,
-      "size": 39622
+      "mtimeMs": 1793242156464.2312,
+      "size": 45177
     },
     {
       "path": "tools/intelligence/qdrant_rag.mjs",
@@ -11762,8 +11860,8 @@
     {
       "path": "tools/intelligence/rag_pipeline.mjs",
       "ext": ".mjs",
-      "sha256": "c6fdfd290fe11838",
-      "lineCount": 1324,
+      "sha256": "a0ef2a8963a652af",
+      "lineCount": 1325,
       "exports": [
         "expandQueryBilingual",
         "invalidateIndexCache",
@@ -11886,139 +11984,139 @@
           "exported": false,
           "signature": "function createDocumentChunks(filePath)",
           "startLine": 239,
-          "endLine": 395
+          "endLine": 396
         },
         {
           "name": "invalidateIndexCache",
           "kind": "function",
           "exported": true,
           "signature": "export function invalidateIndexCache()",
-          "startLine": 397,
-          "endLine": 404
+          "startLine": 398,
+          "endLine": 405
         },
         {
           "name": "addTokensToInvertedMap",
           "kind": "function",
           "exported": false,
           "signature": "function addTokensToInvertedMap(invMap, str, chunkIdx)",
-          "startLine": 414,
-          "endLine": 444
+          "startLine": 415,
+          "endLine": 445
         },
         {
           "name": "prepareChunksForFastSearch",
           "kind": "function",
           "exported": false,
           "signature": "function prepareChunksForFastSearch(chunks)",
-          "startLine": 446,
-          "endLine": 473
+          "startLine": 447,
+          "endLine": 474
         },
         {
           "name": "buildOrOpenSqliteFts5Index",
           "kind": "function",
           "exported": false,
           "signature": "function buildOrOpenSqliteFts5Index(chunks, forceRebuild = false)",
-          "startLine": 478,
-          "endLine": 544
+          "startLine": 479,
+          "endLine": 545
         },
         {
           "name": "querySqliteFts5",
           "kind": "function",
           "exported": false,
           "signature": "function querySqliteFts5(sqliteDb, chunkMap, terms, limit = 20)",
-          "startLine": 554,
-          "endLine": 603
+          "startLine": 555,
+          "endLine": 604
         },
         {
           "name": "buildMiniSearchInstance",
           "kind": "function",
           "exported": false,
           "signature": "function buildMiniSearchInstance(chunks)",
-          "startLine": 605,
-          "endLine": 623
+          "startLine": 606,
+          "endLine": 624
         },
         {
           "name": "buildChunkMap",
           "kind": "function",
           "exported": false,
           "signature": "function buildChunkMap(chunks)",
-          "startLine": 625,
-          "endLine": 631
+          "startLine": 626,
+          "endLine": 632
         },
         {
           "name": "getOrBuildMiniSearchIndex",
           "kind": "function",
           "exported": true,
           "signature": "export function getOrBuildMiniSearchIndex(force = false)",
-          "startLine": 636,
-          "endLine": 695
+          "startLine": 637,
+          "endLine": 696
         },
         {
           "name": "capResultsPerFile",
           "kind": "function",
           "exported": false,
           "signature": "function capResultsPerFile(items, maxPerFile = 2, limit = 20)",
-          "startLine": 700,
-          "endLine": 714
+          "startLine": 701,
+          "endLine": 715
         },
         {
           "name": "runLocalSemanticVectorRanker",
           "kind": "function",
           "exported": false,
           "signature": "function runLocalSemanticVectorRanker(chunks, queryString, limit = 20)",
-          "startLine": 720,
-          "endLine": 847
+          "startLine": 721,
+          "endLine": 848
         },
         {
           "name": "runLocalOnnxCrossEncoderRerank",
           "kind": "function",
           "exported": false,
           "signature": "async function runLocalOnnxCrossEncoderRerank(query, candidates, limit = 8)",
-          "startLine": 854,
-          "endLine": 901
+          "startLine": 855,
+          "endLine": 902
         },
         {
           "name": "reciprocalRankFusion",
           "kind": "function",
           "exported": true,
           "signature": "export function reciprocalRankFusion(rankedLists, k = 60, maxPerFile = 2)",
-          "startLine": 907,
-          "endLine": 942
+          "startLine": 908,
+          "endLine": 943
         },
         {
           "name": "queryKnowledge",
           "kind": "function",
           "exported": true,
           "signature": "export async function queryKnowledge(query, limit = 8, options = {})",
-          "startLine": 953,
-          "endLine": 953
+          "startLine": 954,
+          "endLine": 954
         },
         {
           "name": "queryCodeGraph",
           "kind": "function",
           "exported": true,
           "signature": "export function queryCodeGraph(symbolOrFileQuery, limit = 8)",
-          "startLine": 1146,
-          "endLine": 1171
+          "startLine": 1147,
+          "endLine": 1172
         },
         {
           "name": "synthesizeAnswer",
           "kind": "function",
           "exported": true,
           "signature": "export async function synthesizeAnswer(question, knowledgeList = [])",
-          "startLine": 1176,
-          "endLine": 1238
+          "startLine": 1177,
+          "endLine": 1239
         },
         {
           "name": "getClusterStats",
           "kind": "function",
           "exported": true,
           "signature": "export async function getClusterStats()",
-          "startLine": 1240,
-          "endLine": 1273
+          "startLine": 1241,
+          "endLine": 1274
         }
       ],
-      "mtimeMs": 1793234153123.5823,
-      "size": 55009
+      "mtimeMs": 1793242182482.8057,
+      "size": 55202
     },
     {
       "path": "tools/intelligence/rea_reverse_engineering_bridge.mjs",
@@ -12512,6 +12610,154 @@
       ],
       "mtimeMs": 1793149357525.8384,
       "size": 15156
+    },
+    {
+      "path": "tools/intelligence/software_factory_curriculum_ingester.mjs",
+      "ext": ".mjs",
+      "sha256": "e81ee40b49e94386",
+      "lineCount": 883,
+      "exports": [
+        "ROOT",
+        "LOCAL_VAULT_REGISTRY_PATH",
+        "CANON_OUTPUT_PATH",
+        "SQLITE_FTS5_PATH",
+        "OFFICIAL_ACADEMIC_COURSE_REPOS",
+        "OFFICIAL_YOUTUBE_FACTORY_TALKS_URLS",
+        "ensureAcademicCourseReposAndRegisterVault",
+        "indexCanonInSqliteFts5",
+        "runSoftwareFactoryCurriculumIngestion"
+      ],
+      "imports": [
+        "node:fs",
+        "node:path",
+        "node:child_process",
+        "node:url",
+        "node:sqlite"
+      ],
+      "importedBy": [],
+      "calls": [
+        "fileURLToPath",
+        "dirname",
+        "Developer",
+        "scratch",
+        "modes",
+        "checkpoints",
+        "review",
+        "Action",
+        "Advanced",
+        "Beginners",
+        "Horthy",
+        "rot",
+        "gate",
+        "Implement",
+        "Discussion",
+        "Research",
+        "buildUntaintedResearchPackage",
+        "discipline",
+        "tasks",
+        "architecture",
+        "classifyAdaptiveDepthLane",
+        "Zakariasson",
+        "Venting",
+        "tool",
+        "logAgentHarnessFriction",
+        "Semanal",
+        "Validator",
+        "Palmie",
+        "test",
+        "regression",
+        "verifyF2pAndP2pGate",
+        "triage",
+        "Venta",
+        "Lloyd",
+        "floor",
+        "Knox",
+        "specifications",
+        "traceability",
+        "verifySpecKittyTraceabilityMatrix",
+        "Cooke",
+        "Doctor",
+        "Katz",
+        "recordShimRuleUsage",
+        "Kumar",
+        "conditions"
+      ],
+      "symbols": [
+        {
+          "name": "ROOT",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const ROOT",
+          "startLine": 45,
+          "endLine": 45
+        },
+        {
+          "name": "LOCAL_VAULT_REGISTRY_PATH",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const LOCAL_VAULT_REGISTRY_PATH",
+          "startLine": 49,
+          "endLine": 49
+        },
+        {
+          "name": "CANON_OUTPUT_PATH",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const CANON_OUTPUT_PATH",
+          "startLine": 50,
+          "endLine": 50
+        },
+        {
+          "name": "SQLITE_FTS5_PATH",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const SQLITE_FTS5_PATH",
+          "startLine": 56,
+          "endLine": 56
+        },
+        {
+          "name": "OFFICIAL_ACADEMIC_COURSE_REPOS",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const OFFICIAL_ACADEMIC_COURSE_REPOS",
+          "startLine": 58,
+          "endLine": 58
+        },
+        {
+          "name": "OFFICIAL_YOUTUBE_FACTORY_TALKS_URLS",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const OFFICIAL_YOUTUBE_FACTORY_TALKS_URLS",
+          "startLine": 109,
+          "endLine": 109
+        },
+        {
+          "name": "ensureAcademicCourseReposAndRegisterVault",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function ensureAcademicCourseReposAndRegisterVault()",
+          "startLine": 516,
+          "endLine": 602
+        },
+        {
+          "name": "indexCanonInSqliteFts5",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function indexCanonInSqliteFts5(markdownContent = '')",
+          "startLine": 733,
+          "endLine": 792
+        },
+        {
+          "name": "runSoftwareFactoryCurriculumIngestion",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function runSoftwareFactoryCurriculumIngestion()",
+          "startLine": 797,
+          "endLine": 867
+        }
+      ],
+      "mtimeMs": 1793242343846.0479,
+      "size": 50282
     },
     {
       "path": "tools/intelligence/spec_generator.mjs",
@@ -15143,8 +15389,8 @@
     {
       "path": "tools/orchestrator/humanlayer_rpi_gate.mjs",
       "ext": ".mjs",
-      "sha256": "9b29457a5679ca6c",
-      "lineCount": 713,
+      "sha256": "a78b41a3fc4103cb",
+      "lineCount": 850,
       "exports": [
         "FACTORY_ROOT",
         "FACTORY_YAML_PATH",
@@ -15156,6 +15402,9 @@
         "getRpiCheckpointPath",
         "loadRpiCheckpoint",
         "saveRpiCheckpoint",
+        "MAX_STAGE_INSTRUCTIONS",
+        "enforceStageInstructionBudget",
+        "buildUntaintedResearchPackage",
         "advanceRpiStage",
         "runHumanLayerRpiPipeline",
         "runOpenHandsStuckDetector",
@@ -15211,15 +15460,15 @@
         "mkdirSync",
         "writeFileSync",
         "stringify",
-        "find",
+        "filter",
+        "split",
         "map",
+        "test",
+        "slice",
+        "enforceStageInstructionBudget",
+        "find",
         "loadRpiCheckpoint",
-        "resolveKnowledgeTriggersForPaths",
-        "saveRpiCheckpoint",
-        "emitFactoryTelemetryEvent",
-        "completada",
-        "unlinkSync",
-        "json"
+        "buildUntaintedResearchPackage"
       ],
       "symbols": [
         {
@@ -15303,40 +15552,64 @@
           "endLine": 296
         },
         {
+          "name": "MAX_STAGE_INSTRUCTIONS",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const MAX_STAGE_INSTRUCTIONS",
+          "startLine": 298,
+          "endLine": 298
+        },
+        {
+          "name": "enforceStageInstructionBudget",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function enforceStageInstructionBudget(stageId = 'Research', instructionsInput = [])",
+          "startLine": 304,
+          "endLine": 321
+        },
+        {
+          "name": "buildUntaintedResearchPackage",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function buildUntaintedResearchPackage(questionsArtifact = {})",
+          "startLine": 328,
+          "endLine": 328
+        },
+        {
           "name": "advanceRpiStage",
           "kind": "function",
           "exported": true,
           "signature": "export function advanceRpiStage(slug, stageId, artifactPayload = {}, touchedPaths = [])",
-          "startLine": 302,
-          "endLine": 302
+          "startLine": 369,
+          "endLine": 369
         },
         {
           "name": "runHumanLayerRpiPipeline",
           "kind": "function",
           "exported": true,
           "signature": "export function runHumanLayerRpiPipeline(slug = 'agencia-alfa', options = {})",
-          "startLine": 371,
-          "endLine": 371
+          "startLine": 483,
+          "endLine": 483
         },
         {
           "name": "runOpenHandsStuckDetector",
           "kind": "function",
           "exported": true,
           "signature": "export function runOpenHandsStuckDetector(actionHistory = [], options = {})",
-          "startLine": 434,
-          "endLine": 434
+          "startLine": 546,
+          "endLine": 546
         },
         {
           "name": "runHumanLayerRpiSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export function runHumanLayerRpiSelfTest()",
-          "startLine": 615,
-          "endLine": 706
+          "startLine": 727,
+          "endLine": 843
         }
       ],
-      "mtimeMs": 1793240773182.3867,
-      "size": 28110
+      "mtimeMs": 1793242426295.3264,
+      "size": 34165
     },
     {
       "path": "tools/project_loader.mjs",
@@ -15639,8 +15912,8 @@
     {
       "path": "tools/security_gate.mjs",
       "ext": ".mjs",
-      "sha256": "534811aeda778998",
-      "lineCount": 63,
+      "sha256": "54c53c565d97cde0",
+      "lineCount": 71,
       "exports": [],
       "imports": [
         "node:path",
@@ -15660,8 +15933,8 @@
         "exit"
       ],
       "symbols": [],
-      "mtimeMs": 1793220743651.936,
-      "size": 3004
+      "mtimeMs": 1793242573574.4385,
+      "size": 3246
     },
     {
       "path": "tools/serve_site.mjs",
@@ -20184,8 +20457,8 @@
           "file": "tools/audit/security_gate.mjs",
           "kind": "constant",
           "signature": "export const GITLEAKS_SECRET_PATTERNS",
-          "startLine": 58,
-          "endLine": 58
+          "startLine": 64,
+          "endLine": 64
         }
       ],
       "calledByFiles": []
@@ -20196,8 +20469,8 @@
           "file": "tools/audit/security_gate.mjs",
           "kind": "function",
           "signature": "export function computeShannonEntropy(str = '')",
-          "startLine": 70,
-          "endLine": 85
+          "startLine": 76,
+          "endLine": 91
         }
       ],
       "calledByFiles": [
@@ -20210,8 +20483,8 @@
           "file": "tools/audit/security_gate.mjs",
           "kind": "function",
           "signature": "export function redactPiiEntities(input = '')",
-          "startLine": 91,
-          "endLine": 107
+          "startLine": 97,
+          "endLine": 113
         }
       ],
       "calledByFiles": [
@@ -20225,8 +20498,8 @@
           "file": "tools/audit/security_gate.mjs",
           "kind": "function",
           "signature": "export function verifyPiiRedactorSelfTest()",
-          "startLine": 112,
-          "endLine": 124
+          "startLine": 118,
+          "endLine": 130
         }
       ],
       "calledByFiles": [
@@ -20239,8 +20512,8 @@
           "file": "tools/audit/security_gate.mjs",
           "kind": "function",
           "signature": "export function auditEdgeWorkersAndDist(rootDir = ROOT)",
-          "startLine": 136,
-          "endLine": 199
+          "startLine": 142,
+          "endLine": 205
         }
       ],
       "calledByFiles": [
@@ -20253,8 +20526,8 @@
           "file": "tools/audit/security_gate.mjs",
           "kind": "function",
           "signature": "export function scanSecretsAndEntropy(rootDir = ROOT)",
-          "startLine": 205,
-          "endLine": 257
+          "startLine": 211,
+          "endLine": 263
         }
       ],
       "calledByFiles": [
@@ -20267,8 +20540,8 @@
           "file": "tools/audit/security_gate.mjs",
           "kind": "function",
           "signature": "export function auditEnterpriseDatabaseAndIdentity(rootDir = ROOT)",
-          "startLine": 263,
-          "endLine": 336
+          "startLine": 269,
+          "endLine": 342
         }
       ],
       "calledByFiles": []
@@ -20279,8 +20552,8 @@
           "file": "tools/audit/security_gate.mjs",
           "kind": "function",
           "signature": "export function runAgentShieldHarnessAudit(rootDir = ROOT)",
-          "startLine": 343,
-          "endLine": 411
+          "startLine": 349,
+          "endLine": 417
         }
       ],
       "calledByFiles": []
@@ -20291,8 +20564,8 @@
           "file": "tools/audit/security_gate.mjs",
           "kind": "function",
           "signature": "export function runSecurityQuarantineGate(options = {})",
-          "startLine": 413,
-          "endLine": 413
+          "startLine": 419,
+          "endLine": 419
         }
       ],
       "calledByFiles": [
@@ -20307,8 +20580,8 @@
           "file": "tools/audit/security_gate.mjs",
           "kind": "constant",
           "signature": "export const runSecurityGate",
-          "startLine": 518,
-          "endLine": 518
+          "startLine": 528,
+          "endLine": 528
         }
       ],
       "calledByFiles": [
@@ -21009,8 +21282,7 @@
       ],
       "calledByFiles": [
         "tools/intelligence/agent_squad.mjs",
-        "tools/orchestrator/adaptive_depth_router.mjs",
-        "tools/orchestrator/humanlayer_rpi_gate.mjs"
+        "tools/orchestrator/adaptive_depth_router.mjs"
       ]
     },
     "runLiveDemoWalkthroughSequence": {
@@ -21449,14 +21721,26 @@
       ],
       "calledByFiles": []
     },
+    "handleAterrizar": {
+      "definitions": [
+        {
+          "file": "tools/cto_command_center.mjs",
+          "kind": "function",
+          "signature": "export async function handleAterrizar(args = [])",
+          "startLine": 1284,
+          "endLine": 1424
+        }
+      ],
+      "calledByFiles": []
+    },
     "main": {
       "definitions": [
         {
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function main()",
-          "startLine": 1276,
-          "endLine": 1371
+          "startLine": 1426,
+          "endLine": 1522
         },
         {
           "file": "tools/factory.mjs",
@@ -22636,14 +22920,76 @@
         "tools/intelligence/mcp_omni_rag_server.mjs"
       ]
     },
+    "AGENT_VENT_LOG_PATH": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/agent_governance_kernel.mjs",
+          "kind": "constant",
+          "signature": "export const AGENT_VENT_LOG_PATH",
+          "startLine": 601,
+          "endLine": 601
+        }
+      ],
+      "calledByFiles": []
+    },
+    "SHIM_TELEMETRY_PATH": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/agent_governance_kernel.mjs",
+          "kind": "constant",
+          "signature": "export const SHIM_TELEMETRY_PATH",
+          "startLine": 602,
+          "endLine": 602
+        }
+      ],
+      "calledByFiles": []
+    },
+    "agent_vent_friction": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/agent_governance_kernel.mjs",
+          "kind": "constant",
+          "signature": "export const agent_vent_friction",
+          "startLine": 686,
+          "endLine": 686
+        }
+      ],
+      "calledByFiles": []
+    },
+    "recordShimRuleUsage": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/agent_governance_kernel.mjs",
+          "kind": "function",
+          "signature": "export function recordShimRuleUsage(shimId = 'CRISP_UNTAINTED_RESEARCH_SHIM', metadata = {})",
+          "startLine": 693,
+          "endLine": 693
+        }
+      ],
+      "calledByFiles": [
+        "tools/intelligence/software_factory_curriculum_ingester.mjs"
+      ]
+    },
+    "getShimRegistryTelemetry": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/agent_governance_kernel.mjs",
+          "kind": "function",
+          "signature": "export function getShimRegistryTelemetry()",
+          "startLine": 729,
+          "endLine": 736
+        }
+      ],
+      "calledByFiles": []
+    },
     "runAntigravityGovernanceCliAdapter": {
       "definitions": [
         {
           "file": "tools/intelligence/agent_governance_kernel.mjs",
           "kind": "function",
           "signature": "export function runAntigravityGovernanceCliAdapter(hookEvent = {})",
-          "startLine": 589,
-          "endLine": 589
+          "startLine": 742,
+          "endLine": 742
         }
       ],
       "calledByFiles": []
@@ -22654,8 +23000,8 @@
           "file": "tools/intelligence/agent_governance_kernel.mjs",
           "kind": "function",
           "signature": "export function verifyAgentGovernanceKernelSelfTest()",
-          "startLine": 603,
-          "endLine": 709
+          "startLine": 756,
+          "endLine": 893
         }
       ],
       "calledByFiles": []
@@ -22871,9 +23217,7 @@
           "endLine": 76
         }
       ],
-      "calledByFiles": [
-        "tools/intelligence/ast_guard.mjs"
-      ]
+      "calledByFiles": []
     },
     "scanSecurityAndPerformance": {
       "definitions": [
@@ -22887,9 +23231,20 @@
       ],
       "calledByFiles": [
         "tools/cto_command_center.mjs",
-        "tools/intelligence/ast_guard.mjs",
         "tools/orchestrator/adaptive_depth_router.mjs"
       ]
+    },
+    "evaluateHighRiskFileOwnerTrigger": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/ast_guard.mjs",
+          "kind": "function",
+          "signature": "export function evaluateHighRiskFileOwnerTrigger(diffOrContent = '', filePath = '')",
+          "startLine": 341,
+          "endLine": 371
+        }
+      ],
+      "calledByFiles": []
     },
     "runNegativeSelfTest": {
       "definitions": [
@@ -22897,8 +23252,8 @@
           "file": "tools/intelligence/ast_guard.mjs",
           "kind": "function",
           "signature": "export function runNegativeSelfTest()",
-          "startLine": 307,
-          "endLine": 337
+          "startLine": 373,
+          "endLine": 427
         }
       ],
       "calledByFiles": []
@@ -23492,8 +23847,8 @@
           "file": "tools/intelligence/course_and_paper_distiller.mjs",
           "kind": "constant",
           "signature": "export const INBOX_COURSES_DIR",
-          "startLine": 31,
-          "endLine": 31
+          "startLine": 40,
+          "endLine": 40
         }
       ],
       "calledByFiles": []
@@ -23504,8 +23859,8 @@
           "file": "tools/intelligence/course_and_paper_distiller.mjs",
           "kind": "constant",
           "signature": "export const PROCESSED_COURSES_DIR",
-          "startLine": 32,
-          "endLine": 32
+          "startLine": 41,
+          "endLine": 41
         }
       ],
       "calledByFiles": []
@@ -23516,8 +23871,8 @@
           "file": "tools/intelligence/course_and_paper_distiller.mjs",
           "kind": "function",
           "signature": "export function stripConversationalTranscriptFiller(rawText = '')",
-          "startLine": 48,
-          "endLine": 95
+          "startLine": 57,
+          "endLine": 104
         }
       ],
       "calledByFiles": []
@@ -23528,8 +23883,8 @@
           "file": "tools/intelligence/course_and_paper_distiller.mjs",
           "kind": "function",
           "signature": "export function inferCourseDomainAndSkill(titleOrSlug = '', content = '')",
-          "startLine": 100,
-          "endLine": 130
+          "startLine": 109,
+          "endLine": 139
         }
       ],
       "calledByFiles": []
@@ -23540,8 +23895,8 @@
           "file": "tools/intelligence/course_and_paper_distiller.mjs",
           "kind": "function",
           "signature": "export function extractStructuredCourseBlocks(cleanedText = '', title = 'Technical Course Distillation')",
-          "startLine": 139,
-          "endLine": 187
+          "startLine": 148,
+          "endLine": 196
         }
       ],
       "calledByFiles": []
@@ -23552,8 +23907,8 @@
           "file": "tools/intelligence/course_and_paper_distiller.mjs",
           "kind": "function",
           "signature": "export function enforceDistilledCourseInvariant(config = {})",
-          "startLine": 169,
-          "endLine": 169
+          "startLine": 178,
+          "endLine": 178
         }
       ],
       "calledByFiles": []
@@ -23564,8 +23919,8 @@
           "file": "tools/intelligence/course_and_paper_distiller.mjs",
           "kind": "function",
           "signature": "export function buildAudiovisualAxiomsToDspTable(title = 'Psychoacoustic & Audiovisual Distillation')",
-          "startLine": 194,
-          "endLine": 203
+          "startLine": 203,
+          "endLine": 212
         }
       ],
       "calledByFiles": [
@@ -23578,8 +23933,8 @@
           "file": "tools/intelligence/course_and_paper_distiller.mjs",
           "kind": "function",
           "signature": "export function buildVisualAxiomsToCodeTable(title = 'Visual Science Distillation')",
-          "startLine": 210,
-          "endLine": 219
+          "startLine": 219,
+          "endLine": 228
         }
       ],
       "calledByFiles": [
@@ -23592,8 +23947,8 @@
           "file": "tools/intelligence/course_and_paper_distiller.mjs",
           "kind": "function",
           "signature": "export function convertPdfToMarkdownMarkItDown(rawText = '', title = 'Document')",
-          "startLine": 226,
-          "endLine": 264
+          "startLine": 235,
+          "endLine": 273
         }
       ],
       "calledByFiles": [
@@ -23606,8 +23961,8 @@
           "file": "tools/intelligence/course_and_paper_distiller.mjs",
           "kind": "function",
           "signature": "export function parseLocalSubtitleFileOpenSubs(rawSubtitleText = '', extension = '.srt')",
-          "startLine": 270,
-          "endLine": 287
+          "startLine": 279,
+          "endLine": 296
         }
       ],
       "calledByFiles": []
@@ -23618,8 +23973,8 @@
           "file": "tools/intelligence/course_and_paper_distiller.mjs",
           "kind": "function",
           "signature": "export function distillCourseOrPaperFile(filePath, options = {})",
-          "startLine": 302,
-          "endLine": 302
+          "startLine": 311,
+          "endLine": 311
         }
       ],
       "calledByFiles": []
@@ -23630,8 +23985,32 @@
           "file": "tools/intelligence/course_and_paper_distiller.mjs",
           "kind": "function",
           "signature": "export function distillCoursesInbox()",
-          "startLine": 414,
-          "endLine": 444
+          "startLine": 423,
+          "endLine": 453
+        }
+      ],
+      "calledByFiles": []
+    },
+    "formatSecondsToHhMmSs": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/course_and_paper_distiller.mjs",
+          "kind": "function",
+          "signature": "function formatSecondsToHhMmSs(totalSeconds = 0)",
+          "startLine": 458,
+          "endLine": 464
+        }
+      ],
+      "calledByFiles": []
+    },
+    "parseTimestampToSeconds": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/course_and_paper_distiller.mjs",
+          "kind": "function",
+          "signature": "function parseTimestampToSeconds(tsStr = '')",
+          "startLine": 469,
+          "endLine": 473
         }
       ],
       "calledByFiles": []
@@ -23642,8 +24021,8 @@
           "file": "tools/intelligence/course_and_paper_distiller.mjs",
           "kind": "function",
           "signature": "export function runCourseAndPaperDistillerSelfTest()",
-          "startLine": 449,
-          "endLine": 495
+          "startLine": 738,
+          "endLine": 822
         }
       ],
       "calledByFiles": []
@@ -24354,14 +24733,38 @@
       ],
       "calledByFiles": []
     },
+    "OPEN_UNIVERSITY_PORTALS_CATALOG": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/official_docs_harvester.mjs",
+          "kind": "constant",
+          "signature": "export const OPEN_UNIVERSITY_PORTALS_CATALOG",
+          "startLine": 611,
+          "endLine": 611
+        }
+      ],
+      "calledByFiles": []
+    },
+    "harvestZeroAuthUniversityPortals": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/official_docs_harvester.mjs",
+          "kind": "function",
+          "signature": "export function harvestZeroAuthUniversityPortals()",
+          "startLine": 707,
+          "endLine": 713
+        }
+      ],
+      "calledByFiles": []
+    },
     "harvestOfficialDocsAndSecurityCatalogs": {
       "definitions": [
         {
           "file": "tools/intelligence/official_docs_harvester.mjs",
           "kind": "function",
           "signature": "export function harvestOfficialDocsAndSecurityCatalogs()",
-          "startLine": 610,
-          "endLine": 682
+          "startLine": 718,
+          "endLine": 797
         }
       ],
       "calledByFiles": [
@@ -24691,7 +25094,7 @@
           "kind": "function",
           "signature": "function createDocumentChunks(filePath)",
           "startLine": 239,
-          "endLine": 395
+          "endLine": 396
         }
       ],
       "calledByFiles": []
@@ -24702,8 +25105,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function invalidateIndexCache()",
-          "startLine": 397,
-          "endLine": 404
+          "startLine": 398,
+          "endLine": 405
         }
       ],
       "calledByFiles": []
@@ -24714,8 +25117,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function addTokensToInvertedMap(invMap, str, chunkIdx)",
-          "startLine": 414,
-          "endLine": 444
+          "startLine": 415,
+          "endLine": 445
         }
       ],
       "calledByFiles": [
@@ -24728,8 +25131,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function prepareChunksForFastSearch(chunks)",
-          "startLine": 446,
-          "endLine": 473
+          "startLine": 447,
+          "endLine": 474
         }
       ],
       "calledByFiles": []
@@ -24740,8 +25143,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function buildOrOpenSqliteFts5Index(chunks, forceRebuild = false)",
-          "startLine": 478,
-          "endLine": 544
+          "startLine": 479,
+          "endLine": 545
         }
       ],
       "calledByFiles": []
@@ -24752,8 +25155,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function querySqliteFts5(sqliteDb, chunkMap, terms, limit = 20)",
-          "startLine": 554,
-          "endLine": 603
+          "startLine": 555,
+          "endLine": 604
         }
       ],
       "calledByFiles": []
@@ -24764,8 +25167,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function buildMiniSearchInstance(chunks)",
-          "startLine": 605,
-          "endLine": 623
+          "startLine": 606,
+          "endLine": 624
         }
       ],
       "calledByFiles": []
@@ -24776,8 +25179,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function buildChunkMap(chunks)",
-          "startLine": 625,
-          "endLine": 631
+          "startLine": 626,
+          "endLine": 632
         }
       ],
       "calledByFiles": []
@@ -24788,8 +25191,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function getOrBuildMiniSearchIndex(force = false)",
-          "startLine": 636,
-          "endLine": 695
+          "startLine": 637,
+          "endLine": 696
         }
       ],
       "calledByFiles": [
@@ -24803,8 +25206,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function capResultsPerFile(items, maxPerFile = 2, limit = 20)",
-          "startLine": 700,
-          "endLine": 714
+          "startLine": 701,
+          "endLine": 715
         }
       ],
       "calledByFiles": []
@@ -24815,8 +25218,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function runLocalSemanticVectorRanker(chunks, queryString, limit = 20)",
-          "startLine": 720,
-          "endLine": 847
+          "startLine": 721,
+          "endLine": 848
         }
       ],
       "calledByFiles": []
@@ -24827,8 +25230,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "async function runLocalOnnxCrossEncoderRerank(query, candidates, limit = 8)",
-          "startLine": 854,
-          "endLine": 901
+          "startLine": 855,
+          "endLine": 902
         }
       ],
       "calledByFiles": []
@@ -24839,8 +25242,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function reciprocalRankFusion(rankedLists, k = 60, maxPerFile = 2)",
-          "startLine": 907,
-          "endLine": 942
+          "startLine": 908,
+          "endLine": 943
         }
       ],
       "calledByFiles": []
@@ -24851,8 +25254,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export async function queryKnowledge(query, limit = 8, options = {})",
-          "startLine": 953,
-          "endLine": 953
+          "startLine": 954,
+          "endLine": 954
         }
       ],
       "calledByFiles": [
@@ -24866,8 +25269,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function queryCodeGraph(symbolOrFileQuery, limit = 8)",
-          "startLine": 1146,
-          "endLine": 1171
+          "startLine": 1147,
+          "endLine": 1172
         }
       ],
       "calledByFiles": []
@@ -24878,8 +25281,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export async function synthesizeAnswer(question, knowledgeList = [])",
-          "startLine": 1176,
-          "endLine": 1238
+          "startLine": 1177,
+          "endLine": 1239
         }
       ],
       "calledByFiles": []
@@ -24890,8 +25293,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export async function getClusterStats()",
-          "startLine": 1240,
-          "endLine": 1273
+          "startLine": 1241,
+          "endLine": 1274
         }
       ],
       "calledByFiles": []
@@ -24916,6 +25319,13 @@
           "signature": "export const LOCAL_VAULT_REGISTRY_PATH",
           "startLine": 29,
           "endLine": 29
+        },
+        {
+          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
+          "kind": "constant",
+          "signature": "export const LOCAL_VAULT_REGISTRY_PATH",
+          "startLine": 49,
+          "endLine": 49
         }
       ],
       "calledByFiles": []
@@ -25068,6 +25478,13 @@
           "endLine": 23
         },
         {
+          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
+          "kind": "constant",
+          "signature": "export const ROOT",
+          "startLine": 45,
+          "endLine": 45
+        },
+        {
           "file": "tools/intelligence/visual_science_corpus_builder.mjs",
           "kind": "constant",
           "signature": "export const ROOT",
@@ -25213,6 +25630,90 @@
           "signature": "export function getSkillQualitySummary()",
           "startLine": 388,
           "endLine": 416
+        }
+      ],
+      "calledByFiles": []
+    },
+    "CANON_OUTPUT_PATH": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
+          "kind": "constant",
+          "signature": "export const CANON_OUTPUT_PATH",
+          "startLine": 50,
+          "endLine": 50
+        }
+      ],
+      "calledByFiles": []
+    },
+    "SQLITE_FTS5_PATH": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
+          "kind": "constant",
+          "signature": "export const SQLITE_FTS5_PATH",
+          "startLine": 56,
+          "endLine": 56
+        }
+      ],
+      "calledByFiles": []
+    },
+    "OFFICIAL_ACADEMIC_COURSE_REPOS": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
+          "kind": "constant",
+          "signature": "export const OFFICIAL_ACADEMIC_COURSE_REPOS",
+          "startLine": 58,
+          "endLine": 58
+        }
+      ],
+      "calledByFiles": []
+    },
+    "OFFICIAL_YOUTUBE_FACTORY_TALKS_URLS": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
+          "kind": "constant",
+          "signature": "export const OFFICIAL_YOUTUBE_FACTORY_TALKS_URLS",
+          "startLine": 109,
+          "endLine": 109
+        }
+      ],
+      "calledByFiles": []
+    },
+    "ensureAcademicCourseReposAndRegisterVault": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
+          "kind": "function",
+          "signature": "export function ensureAcademicCourseReposAndRegisterVault()",
+          "startLine": 516,
+          "endLine": 602
+        }
+      ],
+      "calledByFiles": []
+    },
+    "indexCanonInSqliteFts5": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
+          "kind": "function",
+          "signature": "export function indexCanonInSqliteFts5(markdownContent = '')",
+          "startLine": 733,
+          "endLine": 792
+        }
+      ],
+      "calledByFiles": []
+    },
+    "runSoftwareFactoryCurriculumIngestion": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/software_factory_curriculum_ingester.mjs",
+          "kind": "function",
+          "signature": "export function runSoftwareFactoryCurriculumIngestion()",
+          "startLine": 797,
+          "endLine": 867
         }
       ],
       "calledByFiles": []
@@ -26568,6 +27069,7 @@
         }
       ],
       "calledByFiles": [
+        "tools/intelligence/software_factory_curriculum_ingester.mjs",
         "tools/orchestrator/adaptive_depth_router.mjs"
       ]
     },
@@ -26920,6 +27422,7 @@
       ],
       "calledByFiles": [
         "tools/audit/harness_doctor_audit.mjs",
+        "tools/intelligence/software_factory_curriculum_ingester.mjs",
         "tools/orchestrator/adaptive_depth_router.mjs"
       ]
     },
@@ -27125,9 +27628,7 @@
           "endLine": 246
         }
       ],
-      "calledByFiles": [
-        "tools/orchestrator/humanlayer_rpi_gate.mjs"
-      ]
+      "calledByFiles": []
     },
     "getRpiCheckpointPath": {
       "definitions": [
@@ -27167,7 +27668,46 @@
           "endLine": 296
         }
       ],
+      "calledByFiles": []
+    },
+    "MAX_STAGE_INSTRUCTIONS": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/humanlayer_rpi_gate.mjs",
+          "kind": "constant",
+          "signature": "export const MAX_STAGE_INSTRUCTIONS",
+          "startLine": 298,
+          "endLine": 298
+        }
+      ],
+      "calledByFiles": []
+    },
+    "enforceStageInstructionBudget": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/humanlayer_rpi_gate.mjs",
+          "kind": "function",
+          "signature": "export function enforceStageInstructionBudget(stageId = 'Research', instructionsInput = [])",
+          "startLine": 304,
+          "endLine": 321
+        }
+      ],
       "calledByFiles": [
+        "tools/orchestrator/humanlayer_rpi_gate.mjs"
+      ]
+    },
+    "buildUntaintedResearchPackage": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/humanlayer_rpi_gate.mjs",
+          "kind": "function",
+          "signature": "export function buildUntaintedResearchPackage(questionsArtifact = {})",
+          "startLine": 328,
+          "endLine": 328
+        }
+      ],
+      "calledByFiles": [
+        "tools/intelligence/software_factory_curriculum_ingester.mjs",
         "tools/orchestrator/humanlayer_rpi_gate.mjs"
       ]
     },
@@ -27177,8 +27717,8 @@
           "file": "tools/orchestrator/humanlayer_rpi_gate.mjs",
           "kind": "function",
           "signature": "export function advanceRpiStage(slug, stageId, artifactPayload = {}, touchedPaths = [])",
-          "startLine": 302,
-          "endLine": 302
+          "startLine": 369,
+          "endLine": 369
         }
       ],
       "calledByFiles": []
@@ -27189,8 +27729,8 @@
           "file": "tools/orchestrator/humanlayer_rpi_gate.mjs",
           "kind": "function",
           "signature": "export function runHumanLayerRpiPipeline(slug = 'agencia-alfa', options = {})",
-          "startLine": 371,
-          "endLine": 371
+          "startLine": 483,
+          "endLine": 483
         }
       ],
       "calledByFiles": [
@@ -27203,8 +27743,8 @@
           "file": "tools/orchestrator/humanlayer_rpi_gate.mjs",
           "kind": "function",
           "signature": "export function runOpenHandsStuckDetector(actionHistory = [], options = {})",
-          "startLine": 434,
-          "endLine": 434
+          "startLine": 546,
+          "endLine": 546
         }
       ],
       "calledByFiles": [
@@ -27217,8 +27757,8 @@
           "file": "tools/orchestrator/humanlayer_rpi_gate.mjs",
           "kind": "function",
           "signature": "export function runHumanLayerRpiSelfTest()",
-          "startLine": 615,
-          "endLine": 706
+          "startLine": 727,
+          "endLine": 843
         }
       ],
       "calledByFiles": []

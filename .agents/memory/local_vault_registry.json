@@ -971,6 +971,73 @@
         "origin": "https://github.com/latent-spaces/brag.git",
         "description": "**You built it. Now brag.** > **Want a video without running `/brag` yourself?** Paste your site's link at [letsbrag.app](https://letsbrag.app)."
       }
+    ],
+    "academic_and_official_courses_2026": [
+      {
+        "id": "modern-software-dev-assignments",
+        "category": "academic_and_official_courses_2026",
+        "aliases": [
+          "modern-software-dev-assignments",
+          "mihail911/modern-software-dev-assignments",
+          "modern-software-dev-assignments"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\academic-and-official-courses-2026\\modern-software-dev-assignments",
+        "existsOnDisk": true,
+        "origin": "https://github.com/mihail911/modern-software-dev-assignments.git",
+        "description": "Stanford CS146S assignments: building MCP servers from scratch (Week 2), Context Engineering & its 4 failure modes (Week 3), human-agent collaboration patterns & checkpoints (Week 4), and security gates & adversarial PR review (Weeks 6-7)."
+      },
+      {
+        "id": "anthropic-courses",
+        "category": "academic_and_official_courses_2026",
+        "aliases": [
+          "anthropic-courses",
+          "anthropics/courses",
+          "courses"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\academic-and-official-courses-2026\\courses",
+        "existsOnDisk": true,
+        "origin": "https://github.com/anthropics/courses.git",
+        "description": "Anthropic official courses: Prompt Evaluations, Tool Use, Claude Code in Action (21 lessons), Introduction to MCP + MCP Advanced (21 lessons), and Introduction to Agent Skills."
+      },
+      {
+        "id": "huggingface-context-course",
+        "category": "academic_and_official_courses_2026",
+        "aliases": [
+          "huggingface-context-course",
+          "huggingface/context-course",
+          "context-course"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\academic-and-official-courses-2026\\context-course",
+        "existsOnDisk": true,
+        "origin": "https://github.com/huggingface/context-course.git",
+        "description": "Complete Context Engineering stack: progressive skills, MCP servers/clients, plugins, subagents, deterministic hooks, and building lightweight agent harnesses from scratch."
+      },
+      {
+        "id": "microsoft-ai-agents-for-beginners",
+        "category": "academic_and_official_courses_2026",
+        "aliases": [
+          "microsoft-ai-agents-for-beginners",
+          "microsoft/ai-agents-for-beginners",
+          "ai-agents-for-beginners"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\academic-and-official-courses-2026\\ai-agents-for-beginners",
+        "existsOnDisk": true,
+        "origin": "https://github.com/microsoft/ai-agents-for-beginners.git",
+        "description": "18 lessons on production AI agents: production guardrails, multi-agent design, metacognition, model routing, caching, smoke tests, Context Engineering, local/offline agents, and agentic security."
+      },
+      {
+        "id": "microsoft-mcp-for-beginners",
+        "category": "academic_and_official_courses_2026",
+        "aliases": [
+          "microsoft-mcp-for-beginners",
+          "microsoft/mcp-for-beginners",
+          "mcp-for-beginners"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\academic-and-official-courses-2026\\mcp-for-beginners",
+        "existsOnDisk": true,
+        "origin": "https://github.com/microsoft/mcp-for-beginners.git",
+        "description": "13 modules on Model Context Protocol architecture, OAuth 2.1 PKCE authorization, zero-trust tool schemas, prompt-injection containment, and enterprise MCP deployment."
+      }
     ]
   },
   "engines": {

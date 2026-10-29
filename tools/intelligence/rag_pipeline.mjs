@@ -119,7 +119,7 @@ const BILINGUAL_THESAURUS = [
   { match: /\b(animacion|animaciones|animación|fluidez|60fps|60-fps|escala|modal|kowalski|spring|gpu|game\s*feel|bezier|swink|kirupa|view\s*transitions|scroll-driven)\b/i, expand: 'CANON_EMIL_KOWALSKI_ANIMATIONS_ON_THE_WEB CANON_VISUAL_SOTA_HUNT_2026-10-24 CANON_BOOK_DESIGNING_FOR_PERFORMANCE_LARA_HOGAN modal entrance scale 0.95 composite transform opacity waapi view-transition creating_web_animations_kirupa book_game_feel_steve_swink' },
   { match: /\b(shader|shaders|glsl|holografico|holográfico|3d|tilt|audio|webaudio|zzfx|webgl|webgpu|psicoacustica|psicoacústica|modal|biquad|lufs|ebu|r128|synchresis|sincresis|tonejs|strudel|bouba|kiki)\b/i, expand: 'CANON_ATOMIC_PSYCHOACOUSTICS_PROCEDURAL_DSP_AND_AUDIOVISUAL_SYNCHRESIS_2026 CANON_2D_3D_GRAPHICS_SHADERS_AND_AESTHETICS_2026 CANON_OPEN_BOOKS_SHADERS_SDF_AND_WEB_ANIMATION_MASTERY_2026 glsl sdf dynamicscompressor zzfx biquadfilternode lufs iso 226 CANON_3D_PBR_AND_CINEMATOGRAPHY_GUIDE' },
   { match: /\b(ciberseguridad|seguridad|vulnerabilidad|vulnerabilidades|xss|csp|dompurify|trustedtypes|oauth|pkce|fraude|bot|criptografia|criptografía|owasp)\b/i, expand: 'CANON_CYBERSECURITY_DEVSECOPS_2026 CYBERSECURITY_MASTER_PROTOCOL ANTI_BOT_STEALTH_GUIDE owasp asvs xss dompurify trustedtypes csp oauth 2.1 pkce thumbmarkjs turnstile CANON_REAL_WORLD_CRYPTOGRAPHY_DAVID_WONG' },
-  { match: /\b(libro|libros|curso|cursos|documentacion|documentación|catalogo|catálogo|fuentes)\b/i, expand: 'CURATED_MASTER_BOOKS_COURSES_AND_DOCS_CATALOG_2026 CANON_SOFTWARE_FACTORY_CURRICULUM_BOOKS_PAPERS_AND_VIDEO_COURSES_2026 CANON_BOOKS_SOFTWARE_FACTORIES_AND_AI_ENGINEERING' },
+  { match: /\b(libro|libros|curso|cursos|documentacion|documentación|catalogo|catálogo|fuentes|universidad|cmu|stanford|berkeley|crisp|untainted|trifecta|beads|land\s*the\s*plane)\b/i, expand: 'CANON_UNIVERSITY_COURSES_AND_28_FACTORY_TALKS_2026 CURATED_MASTER_BOOKS_COURSES_AND_DOCS_CATALOG_2026 CANON_SOFTWARE_FACTORY_CURRICULUM_BOOKS_PAPERS_AND_VIDEO_COURSES_2026 CANON_BOOKS_SOFTWARE_FACTORIES_AND_AI_ENGINEERING' },
   { match: /\b(suiza|proporcion|proporción|aurea|áurea|bringhurst|tipografia|tipografía)\b/i, expand: 'book_elements_of_typographic_style_bringhurst CANON_CLEAN_ROOM_SWISS_TYPOGRAPHY_COLOR_LIGHT_AND_CSS_SECRETS_2026 CANON_OPEN_BOOKS_TYPOGRAPHY_COLOR_GRIDS_AND_WEB_PERF_2026' },
   { match: /\b(chromium|grigorik|hpbn|butterick|renderingng)\b/i, expand: 'CANON_OPEN_BOOKS_TYPOGRAPHY_COLOR_GRIDS_AND_WEB_PERF_2026 renderingng' },
   { match: /\b(validacion|validación|esquemas|valibot|zod)\b/i, expand: 'CANON_50_REPOS_AGENTIC_SOFTWARE_FACTORY_TOM_SWE_STAGEHAND_AND_OXC_2026 CANON_TYPESCRIPT_RAUSCHMAYER_ZOD_VALIBOT_AND_DATA_ORIENTED_2026 CANON_WEB_SOFTWARE_FACTORY_MCP_DTCG_AND_LIGHTNINGCSS_2026' },
@@ -248,6 +248,7 @@ function createDocumentChunks(filePath) {
   if (!cleanText) return [];
 
   const CORE_PROJECT_TREATISES = new Set([
+    'CANON_UNIVERSITY_COURSES_AND_28_FACTORY_TALKS_2026',
     'CANON_AGENTIC_HARNESS_ENGINEERING_ACI_EDD_BOOKS_AND_COURSES_2026',
     'CANON_WEB_SOFTWARE_FACTORY_MCP_DTCG_AND_LIGHTNINGCSS_2026',
     'CANON_BOOKS_SOFTWARE_FACTORIES_AND_AI_ENGINEERING',

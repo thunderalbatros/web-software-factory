@@ -244,3 +244,14 @@ Activa la compuerta pre-construcción (`HARD_STOP_INTERVIEW_REQUIRED`) que garan
 - Genera `projects/<slug>/ENTREVISTA_CLIENTE.md` y `projects/<slug>/CLIENT_BRIEF_INTERVIEW.json` con los **10 Bloques Maestros** (1. Identidad/Rubro, 2. Audiencia/CRO/Primary CTA, 3. Sitemap, 4. Estética OKLCH/Tipografía, 5. Movimiento/3D WebGPU, 6. Identidad Sonora/Música/Video Intro `off | subtle | tactile | immersive-3d` + material físico `paper | polymer | wood | glass | metal | cyber-hud`, 7. Activos del Cliente vs IA, 8. Backend/D1/Postgres RLS, 9. SEO/GEO/Seguridad y 10. Presupuesto FinOps/DoD).
 - Al ejecutar `--aprobar`, auto-compila `SPEC.md` (`[REQ-01]..[REQ-12]`), `PRODUCT.md`, `DESIGN.md` (con síntesis psicoacústica calculada por `synthesizeProceduralSoundFromDesignCriteria()`) y `.agents/beads/task_graph.jsonl`.
 
+### 31. Aterrizar la Sesión sin Pérdida de Memoria — Protocolo *"Land the Plane"* (`npm run cto:aterrizar`)
+```powershell
+npm run cto:aterrizar
+```
+Ejecuta el protocolo de cierre determinista de sesión inspirado en **Steve Yegge (*Beads & Gas Town*)**:
+1. Consolida el archivo WAL del índice neuronal SQLite FTS5 (`PRAGMA wal_checkpoint(TRUNCATE);`).
+2. Sincroniza `.agents/beads/task_graph.jsonl` elevando la prioridad (`P0_RECENT_HANDOFF`) de los issues recientes.
+3. Limpia worktrees y sandboxes temporales huérfanos (`git worktree prune`).
+4. Verifica el estado de Git (`git status --short`) y genera en **`.agents/runs/NEXT_SESSION_HANDOFF.md`** el prompt exacto listo para copiar y pegar al comenzar la próxima sesión con **0% pérdida de memoria**.
+
+

@@ -21,7 +21,13 @@ import { fileURLToPath } from 'node:url';
 import { runSupplyChainGuard } from './supply_chain_guard.mjs';
 import { runAstAudit } from './ast_guard.mjs';
 import { runWorkflowSecurityLinter, lintWorkflowYamlContent } from './workflow_security_linter.mjs';
-import { verifyAgentGovernanceKernelSelfTest } from '../intelligence/agent_governance_kernel.mjs';
+import {
+  verifyAgentGovernanceKernelSelfTest,
+  enforceSimonWillisonLethalTrifectaGuard,
+  logAgentHarnessFriction,
+  recordShimRuleUsage,
+  getShimRegistryTelemetry
+} from '../intelligence/agent_governance_kernel.mjs';
 import { runMcpSecurityAudit } from './mcp_security_auditor.mjs';
 import {
   generateEnterprisePostgresRlsSchema,
@@ -513,7 +519,11 @@ export function runSecurityQuarantineGate(options = {}) {
 export {
   lintWorkflowYamlContent,
   runWorkflowSecurityLinter,
-  runMcpSecurityAudit
+  runMcpSecurityAudit,
+  enforceSimonWillisonLethalTrifectaGuard,
+  logAgentHarnessFriction,
+  recordShimRuleUsage,
+  getShimRegistryTelemetry
 };
 export const runSecurityGate = runSecurityQuarantineGate;
 

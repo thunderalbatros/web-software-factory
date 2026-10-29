@@ -37,6 +37,7 @@
     "cto:crear-intro-video": "node tools/cto_command_center.mjs crear-intro-video",
     "cto:crear-audio": "node tools/cto_command_center.mjs crear-audio",
     "cto:entrevista": "node tools/orchestrator/client_interview_gate.mjs",
+    "cto:aterrizar": "node tools/cto_command_center.mjs aterrizar",
     "factory": "node tools/factory.mjs",
     "factory:status": "node tools/factory.mjs status",
     "factory:styles": "node tools/factory.mjs styles",

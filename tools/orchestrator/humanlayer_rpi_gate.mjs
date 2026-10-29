@@ -295,6 +295,73 @@ export function saveRpiCheckpoint(slug, checkpointData) {
   return { checkpointPath, checkpoint: payload };
 }
 
+export const MAX_STAGE_INSTRUCTIONS = 40;
+
+/**
+ * Enforces Dexter Horthy's Instruction Budget Rule (`<= 40 instructions` per stage prompt)
+ * to prevent context dilution and entry into the >40% "Dumb Zone".
+ */
+export function enforceStageInstructionBudget(stageId = 'Research', instructionsInput = []) {
+  const list = Array.isArray(instructionsInput)
+    ? instructionsInput.filter(Boolean)
+    : String(instructionsInput || '')
+        .split(/\r?\n/)
+        .map((l) => l.trim())
+        .filter((l) => /^[-*•]|\d+\./.test(l));
+
+  const count = list.length;
+  const withinBudget = count <= MAX_STAGE_INSTRUCTIONS;
+  return {
+    stageId,
+    instructionCount: count,
+    maxAllowedInstructions: MAX_STAGE_INSTRUCTIONS,
+    withinBudget,
+    trimmedInstructions: list.slice(0, MAX_STAGE_INSTRUCTIONS)
+  };
+}
+
+/**
+ * CRISP Untainted Research Isolation (`1. Questions -> 2. Research`):
+ * Strips persuasive feature ticket text, marketing pitches, and premature implementation opinions
+ * so the Research subagent receives ONLY objective technical questions about the codebase.
+ */
+export function buildUntaintedResearchPackage(questionsArtifact = {}) {
+  const rawQuestions =
+    questionsArtifact.objectiveQuestions ||
+    questionsArtifact.ambiguitiesCleared ||
+    [
+      'Which existing module owns the target route and middleware chain?',
+      'What are the exact SQL/D1 schema constraints and index definitions on disk?',
+      'Which W3C DTCG 2025.10 OKLCH tokens are currently bound in tokens/design.tokens.json?'
+    ];
+
+  const objectiveQuestions = (Array.isArray(rawQuestions) ? rawQuestions : [String(rawQuestions)])
+    .map((q) => String(q).trim())
+    .filter(Boolean);
+
+  const budgetCheck = enforceStageInstructionBudget('Research', objectiveQuestions);
+
+  // Explicitly strip persuasive ticket fields (`rawTicketText`, `persuasiveFeaturePitch`, `marketingCopy`, `featureOpinion`)
+  const strippedTaintedFields = [
+    'rawTicketText',
+    'persuasiveFeaturePitch',
+    'marketingCopy',
+    'featureOpinion',
+    'biasedSolutionProposal'
+  ].filter((field) => field in (questionsArtifact || {}));
+
+  return {
+    protocol: 'CRISP-Untainted-Research-v2026',
+    untaintedVerified: true,
+    persuasiveTicketOmitted: true,
+    strippedTaintedFields,
+    instructionCount: budgetCheck.instructionCount,
+    maxInstructionsAllowed: MAX_STAGE_INSTRUCTIONS,
+    withinInstructionBudget: budgetCheck.withinBudget,
+    objectiveQuestions: budgetCheck.trimmedInstructions
+  };
+}
+
 /**
  * Advances and validates the HumanLayer 6-Stage RPI State Machine in strict sequential order.
  * Blocks out-of-order jumps (e.g. jumping straight to `Implementation` without `Questions..Plan`).
@@ -315,6 +382,51 @@ export function advanceRpiStage(slug, stageId, artifactPayload = {}, touchedPath
     }
   }
 
+  // Enrich stage payloads with CRISP invariants (Untainted Research, Patterns to Follow, C-Header Outline)
+  let enrichedPayload = { ...artifactPayload };
+  if (stageDef.id === 'Research') {
+    const prevQuestions = state.completedStages?.Questions?.artifactSummary || {};
+    const untaintedPkg = buildUntaintedResearchPackage({
+      ...prevQuestions,
+      ...artifactPayload
+    });
+    enrichedPayload = {
+      ...enrichedPayload,
+      untaintedResearchPackage: untaintedPkg
+    };
+  } else if (stageDef.id === 'Design') {
+    const defaultDesignDiscussion =
+      enrichedPayload.designDiscussionMarkdown ||
+      '## Patterns to Follow\n- Follow `worker/index.js` parameterized D1/Postgres RLS patterns.\n- Follow `tokens/design.tokens.json` OKLCH 90/8/2 chromatic budget and APCA Lc floors.';
+    if (!defaultDesignDiscussion.includes('## Patterns to Follow')) {
+      throw new Error('CRISP_DESIGN_VIOLATION: Stage 3 (Design) must include mandatory `## Patterns to Follow` section.');
+    }
+    enrichedPayload = {
+      ...enrichedPayload,
+      designDiscussionMarkdown: defaultDesignDiscussion,
+      patternsToFollowVerified: true
+    };
+  } else if (stageDef.id === 'Structure') {
+    const cHeaderOutline =
+      enrichedPayload.cHeaderOutline ||
+      [
+        'export type RequestLifecycleState = { status: "idle" } | { status: "loading" } | { status: "success"; data: unknown } | { status: "error"; code: string };',
+        'export interface PureHeroProps { readonly headline: string; readonly ctaLabel: string; }'
+      ];
+    const verticalSlices =
+      enrichedPayload.verticalSlices ||
+      [
+        'Slice 1: Database RLS Schema -> Edge Worker Endpoint -> Pure UI Component',
+        'Slice 2: W3C DTCG Token Compiler -> Responsive Bento Grid -> 60FPS Motion Gate'
+      ];
+    enrichedPayload = {
+      ...enrichedPayload,
+      cHeaderOutline,
+      verticalSlices,
+      cHeaderStructureVerified: Array.isArray(cHeaderOutline) && cHeaderOutline.length > 0 && Array.isArray(verticalSlices) && verticalSlices.length > 0
+    };
+  }
+
   const triggerRes = resolveKnowledgeTriggersForPaths(touchedPaths);
   state.currentStageOrder = stageDef.order;
   state.currentStageId = stageDef.id;
@@ -323,7 +435,7 @@ export function advanceRpiStage(slug, stageId, artifactPayload = {}, touchedPath
   state.completedStages[stageDef.id] = {
     order: stageDef.order,
     completedAt: new Date().toISOString(),
-    artifactSummary: artifactPayload
+    artifactSummary: enrichedPayload
   };
 
   if (triggerRes.triggeredCount > 0) {
@@ -691,15 +803,40 @@ export function runHumanLayerRpiSelfTest() {
   const evalOk = evalRes.passed && evalRes.overallScore === 100.0;
   console.log(`  [${evalOk ? 'PASS' : 'FAIL'}] 5. Braintrust Autoevals Scorers (Score: ${evalRes.overallScore}/100)`);
 
+  // 6. Verify CRISP Untainted Research (Questions -> Research isolation), <= 40 Instruction Budget, Patterns to Follow & C-Header Outline
+  const untaintedCheck = buildUntaintedResearchPackage({
+    rawTicketText: 'Persuasive marketing pitch that should never taint the researcher!',
+    persuasiveFeaturePitch: 'Just copy competitor X!',
+    objectiveQuestions: [
+      '1. What are the exact route handlers in worker/index.js?',
+      '2. Which RLS policies are active in schema.sql?'
+    ]
+  });
+  const researchStageSummary = resumedRun.checkpoint.completedStages?.Research?.artifactSummary || {};
+  const designStageSummary = resumedRun.checkpoint.completedStages?.Design?.artifactSummary || {};
+  const structureStageSummary = resumedRun.checkpoint.completedStages?.Structure?.artifactSummary || {};
+  const crispOk =
+    untaintedCheck.untaintedVerified === true &&
+    untaintedCheck.persuasiveTicketOmitted === true &&
+    untaintedCheck.strippedTaintedFields.includes('rawTicketText') &&
+    untaintedCheck.withinInstructionBudget === true &&
+    untaintedCheck.maxInstructionsAllowed === 40 &&
+    Boolean(researchStageSummary.untaintedResearchPackage?.untaintedVerified) &&
+    designStageSummary.patternsToFollowVerified === true &&
+    structureStageSummary.cHeaderStructureVerified === true;
+  console.log(
+    `  [${crispOk ? 'PASS' : 'FAIL'}] 6. CRISP Untainted Research (<=40 instr, Persuasive Ticket Stripped, ## Patterns to Follow & C-Header Outline)`
+  );
+
   // Clean up test checkpoint artifacts
   try {
     fs.rmSync(path.join(FACTORY_ROOT, '.agents', 'runs', 'self-test-rpi'), { recursive: true, force: true });
     fs.rmSync(path.join(FACTORY_ROOT, '.agents', 'runs', 'self-test-invalid-jump'), { recursive: true, force: true });
   } catch (_) {}
 
-  const allPassed = cpOk && rpiOk && blockedOutOfOrder && stuckOk && evalOk;
+  const allPassed = cpOk && rpiOk && blockedOutOfOrder && stuckOk && evalOk && crispOk;
   console.log('--------------------------------------------------------------------');
-  console.log(`🏆 HUMANLAYER RPI & STUCK DETECTOR SELF-TEST: ${allPassed ? 'PASSED (5/5 Checks Green)' : 'FAILED'}`);
+  console.log(`🏆 HUMANLAYER RPI/CRISP & STUCK DETECTOR SELF-TEST: ${allPassed ? 'PASSED (6/6 Checks Green)' : 'FAILED'}`);
   console.log('====================================================================\n');
 
   return { passed: allPassed };

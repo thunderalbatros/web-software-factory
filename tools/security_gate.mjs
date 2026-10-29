@@ -29,6 +29,10 @@ import {
   runMcpSecurityAudit,
   auditEnterpriseDatabaseAndIdentity,
   runAgentShieldHarnessAudit,
+  enforceSimonWillisonLethalTrifectaGuard,
+  logAgentHarnessFriction,
+  recordShimRuleUsage,
+  getShimRegistryTelemetry,
   GITLEAKS_SECRET_PATTERNS
 } from './audit/security_gate.mjs';
 
@@ -45,6 +49,10 @@ export {
   runMcpSecurityAudit,
   auditEnterpriseDatabaseAndIdentity,
   runAgentShieldHarnessAudit,
+  enforceSimonWillisonLethalTrifectaGuard,
+  logAgentHarnessFriction,
+  recordShimRuleUsage,
+  getShimRegistryTelemetry,
   GITLEAKS_SECRET_PATTERNS
 };
 

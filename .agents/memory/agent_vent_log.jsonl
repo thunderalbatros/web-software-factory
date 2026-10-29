@@ -1,0 +1,2 @@
+{"id":"vent-1793242700857-5cn0t","timestamp":"2026-10-29T02:58:20.857Z","roleId":"senior-coder","toolName":"ast_guard","frictionCategory":"SELF_TEST_PROBE","detail":"Verified agent_vent_friction JSONL persistence","suggestedHarnessFix":"None needed (self-test verification)"}
+{"id":"vent-1793242709471-twy5f","timestamp":"2026-10-29T02:58:29.471Z","roleId":"senior-coder","toolName":"ast_guard","frictionCategory":"SELF_TEST_PROBE","detail":"Verified agent_vent_friction JSONL persistence","suggestedHarnessFix":"None needed (self-test verification)"}

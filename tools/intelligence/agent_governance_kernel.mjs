@@ -564,6 +564,21 @@ export function evaluateGovernancePolicy(context = {}) {
     });
   }
 
+  // Simon Willison / Geoffrey Huntley Lethal Trifecta Kernel Guard
+  const trifectaCheck = enforceSimonWillisonLethalTrifectaGuard({
+    hasPrivateDataAccess: Boolean(context.hasPrivateDataAccess),
+    hasUntrustedInput: Boolean(context.hasUntrustedInput),
+    hasExternalEgress: Boolean(context.hasExternalEgress),
+    hitlApproved: Boolean(context.hitlConfirmed || context.hitlApproved)
+  });
+  if (!trifectaCheck.allowed) {
+    violations.push({
+      code: 'ASI_LETHAL_TRIFECTA',
+      title: 'Simon Willison Lethal Trifecta Blocked',
+      detail: trifectaCheck.reason
+    });
+  }
+
   const latencyMs = Number((performance.now() - t0).toFixed(4));
   const allowed = violations.length === 0;
 
@@ -575,11 +590,149 @@ export function evaluateGovernancePolicy(context = {}) {
     roleId,
     privilegeRing: ring.ringName,
     circuitBreaker: cbStatus,
+    lethalTrifectaGuard: trifectaCheck,
     piiRedactionsCount: redactionRes.redactionsCount,
     sanitizedPayload: redactionRes.sanitizedText,
     violations,
-    owaspCoverage: '10/10 (ASI01-ASI10)'
+    owaspCoverage: '10/10 (ASI01-ASI10) + Lethal Trifecta Guard'
   };
+}
+
+export const AGENT_VENT_LOG_PATH = path.join(ROOT, '.agents', 'memory', 'agent_vent_log.jsonl');
+export const SHIM_TELEMETRY_PATH = path.join(ROOT, '.agents', 'memory', 'shim_telemetry.json');
+
+/**
+ * Simon Willison / Geoffrey Huntley "Lethal Trifecta" Kernel Enforcer:
+ * Blocks any agent turn that simultaneously combines:
+ *   (a) Access to private data / secrets (`hasPrivateDataAccess`)
+ *   (b) Ingestion of untrusted external inputs (`hasUntrustedInput`)
+ *   (c) Unfettered external network egress / communication (`hasExternalEgress`)
+ * without an explicit intermediate Human-in-the-Loop (`hitlApproved`) approval gate.
+ */
+export function enforceSimonWillisonLethalTrifectaGuard({
+  hasPrivateDataAccess = false,
+  hasUntrustedInput = false,
+  hasExternalEgress = false,
+  hitlApproved = false,
+  contextLabel = 'agent-turn'
+} = {}) {
+  const vectorsActive = [
+    hasPrivateDataAccess ? 'PRIVATE_DATA_ACCESS' : null,
+    hasUntrustedInput ? 'UNTRUSTED_EXTERNAL_INPUT' : null,
+    hasExternalEgress ? 'EXTERNAL_NETWORK_EGRESS' : null
+  ].filter(Boolean);
+
+  const isTrifectaActive =
+    Boolean(hasPrivateDataAccess) && Boolean(hasUntrustedInput) && Boolean(hasExternalEgress);
+
+  if (isTrifectaActive && !hitlApproved) {
+    return {
+      allowed: false,
+      decision: 'DENY',
+      code: 'ASI_LETHAL_TRIFECTA_BLOCKED',
+      trifectaDetected: true,
+      vectorsActive,
+      hitlApproved: false,
+      contextLabel,
+      reason:
+        'Blocked by Simon Willison Lethal Trifecta Guard: cannot combine (a) Private Data Access, (b) Untrusted External Input, and (c) External Network Egress in the same turn without intermediate HITL approval.'
+    };
+  }
+
+  return {
+    allowed: true,
+    decision: 'ALLOW',
+    code: 'OK',
+    trifectaDetected: isTrifectaActive,
+    vectorsActive,
+    hitlApproved: Boolean(hitlApproved),
+    contextLabel,
+    reason: isTrifectaActive
+      ? 'Lethal Trifecta vectors mitigated by explicit intermediate HITL approval.'
+      : 'Safe vector combination (< 3 Lethal Trifecta vectors active).'
+  };
+}
+
+/**
+ * Cursor / SpaceX Agent Venting Tool (`logAgentHarnessFriction` / `agent_vent_friction`):
+ * Persists structured harness/tool friction events to `.agents/memory/agent_vent_log.jsonl`
+ * so the weekly Meta-Loop can repair broken CLI flags, flaky tools, or ambiguous prompts.
+ */
+export function logAgentHarnessFriction({
+  roleId = 'senior-coder',
+  toolName = 'cli-tool',
+  frictionCategory = 'TOOL_ERGONOMICS',
+  detail = 'Observed friction during execution',
+  suggestedHarnessFix = 'Add deterministic flag or clearer schema message'
+} = {}) {
+  fs.mkdirSync(path.dirname(AGENT_VENT_LOG_PATH), { recursive: true });
+  const entry = {
+    id: `vent-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+    timestamp: new Date().toISOString(),
+    roleId,
+    toolName,
+    frictionCategory,
+    detail: String(detail || '').slice(0, 500),
+    suggestedHarnessFix: String(suggestedHarnessFix || '').slice(0, 500)
+  };
+  fs.appendFileSync(AGENT_VENT_LOG_PATH, JSON.stringify(entry) + '\n', 'utf8');
+  return {
+    logged: true,
+    logPath: '.agents/memory/agent_vent_log.jsonl',
+    entry
+  };
+}
+
+export const agent_vent_friction = logAgentHarnessFriction;
+
+/**
+ * SpaceX / xAI Shim Registry Telemetry (`recordShimRuleUsage` & `getShimRegistryTelemetry`):
+ * Tracks usage counts of harness rules/shims in `.agents/memory/shim_telemetry.json` so obsolete
+ * model workarounds can be systematically pruned during Meta-Loop evolution.
+ */
+export function recordShimRuleUsage(shimId = 'CRISP_UNTAINTED_RESEARCH_SHIM', metadata = {}) {
+  fs.mkdirSync(path.dirname(SHIM_TELEMETRY_PATH), { recursive: true });
+  let store = {
+    schema: 'spacex-xai-shim-registry-telemetry-2026',
+    updatedAt: new Date().toISOString(),
+    shims: {}
+  };
+  if (fs.existsSync(SHIM_TELEMETRY_PATH)) {
+    try {
+      store = JSON.parse(fs.readFileSync(SHIM_TELEMETRY_PATH, 'utf8'));
+      store.shims = store.shims || {};
+    } catch (_) {}
+  }
+
+  const current = store.shims[shimId] || {
+    shimId,
+    description: metadata.description || 'Deterministic harness rule / model workaround shim',
+    invocationsCount: 0,
+    firstSeenAt: new Date().toISOString(),
+    lastTriggeredAt: null,
+    status: 'ACTIVE'
+  };
+  current.invocationsCount += 1;
+  current.lastTriggeredAt = new Date().toISOString();
+  if (metadata.description) current.description = metadata.description;
+  store.shims[shimId] = current;
+  store.updatedAt = new Date().toISOString();
+
+  fs.writeFileSync(SHIM_TELEMETRY_PATH, JSON.stringify(store, null, 2) + '\n', 'utf8');
+  return {
+    recorded: true,
+    telemetryPath: '.agents/memory/shim_telemetry.json',
+    shim: current
+  };
+}
+
+export function getShimRegistryTelemetry() {
+  if (!fs.existsSync(SHIM_TELEMETRY_PATH)) {
+    recordShimRuleUsage('CRISP_UNTAINTED_RESEARCH_SHIM', {
+      description: 'Strips persuasive feature tickets from Research context package'
+    });
+  }
+  return JSON.parse(fs.readFileSync(SHIM_TELEMETRY_PATH, 'utf8'));
 }
 
 /**
@@ -657,6 +810,30 @@ export function verifyAgentGovernanceKernelSelfTest() {
     handoffSender: 'unverified:rogue-node'
   });
 
+  // 5. Simon Willison Lethal Trifecta Guard + Agent Vent Log + Shim Telemetry Check
+  const trifectaBlocked = enforceSimonWillisonLethalTrifectaGuard({
+    hasPrivateDataAccess: true,
+    hasUntrustedInput: true,
+    hasExternalEgress: true,
+    hitlApproved: false
+  });
+  const trifectaHitlAllowed = enforceSimonWillisonLethalTrifectaGuard({
+    hasPrivateDataAccess: true,
+    hasUntrustedInput: true,
+    hasExternalEgress: true,
+    hitlApproved: true
+  });
+  const ventRes = logAgentHarnessFriction({
+    roleId: 'senior-coder',
+    toolName: 'ast_guard',
+    frictionCategory: 'SELF_TEST_PROBE',
+    detail: 'Verified agent_vent_friction JSONL persistence',
+    suggestedHarnessFix: 'None needed (self-test verification)'
+  });
+  const shimRes = recordShimRuleUsage('SIMON_WILLISON_LETHAL_TRIFECTA_GUARD', {
+    description: 'Blocks simultaneous Private Data + Untrusted Input + External Egress without HITL'
+  });
+
   // Benchmark 100 iterations to measure average stateless latency (< 0.1ms target)
   const benchStart = performance.now();
   const iterations = 100;
@@ -691,6 +868,11 @@ export function verifyAgentGovernanceKernelSelfTest() {
     caughtCodes.has('ASI08') &&
     caughtCodes.has('ASI10') &&
     adversarialCheck.piiRedactionsCount >= 2 &&
+    trifectaBlocked.allowed === false &&
+    trifectaBlocked.code === 'ASI_LETHAL_TRIFECTA_BLOCKED' &&
+    trifectaHitlAllowed.allowed === true &&
+    ventRes.logged === true &&
+    shimRes.recorded === true &&
     avgLatencyMs < 0.5;
 
   return {
@@ -702,6 +884,8 @@ export function verifyAgentGovernanceKernelSelfTest() {
     creatorVerifierSplitVerified:
       !wave1Denied.allowed && !wave2SealedDenied.allowed && !wave3aSqlDenied.allowed && wave3bAllowed.allowed,
     spilloverVerified: spilloverCheck.spilledToDisk && spilloverCheck.under300TokensVerified,
+    lethalTrifectaVerified: !trifectaBlocked.allowed && trifectaHitlAllowed.allowed,
+    agentVentAndShimVerified: ventRes.logged && shimRes.recorded,
     adversarialBlocked: !adversarialCheck.allowed,
     adversarialViolationsCaught: [...caughtCodes],
     piiRedactionsVerified: adversarialCheck.piiRedactionsCount >= 2
