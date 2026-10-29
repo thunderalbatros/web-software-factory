@@ -1,14 +1,14 @@
 {
   "schema": "cocoindex-code-ast-graph-v1",
-  "updatedAt": "2026-10-29T17:45:39.830Z",
+  "updatedAt": "2026-10-29T19:02:39.084Z",
   "activeProject": "agencia-alfa",
-  "combinedSha256": "552b93ac5e637321",
+  "combinedSha256": "98b5135652c4c1f2",
   "stats": {
-    "totalFilesIndexed": 141,
-    "reindexedFilesCount": 5,
-    "cachedFilesCount": 136,
-    "totalSymbols": 1182,
-    "totalExports": 691,
+    "totalFilesIndexed": 143,
+    "reindexedFilesCount": 10,
+    "cachedFilesCount": 133,
+    "totalSymbols": 1206,
+    "totalExports": 711,
     "estimatedTokenSavingsPct": 72.5
   },
   "files": [
@@ -104,7 +104,7 @@
           "endLine": 27
         }
       ],
-      "mtimeMs": 1793295896793.1426,
+      "mtimeMs": 1793300542759.4224,
       "size": 922
     },
     {
@@ -238,7 +238,7 @@
           "endLine": 112
         }
       ],
-      "mtimeMs": 1793295896789.1455,
+      "mtimeMs": 1793300542753.4216,
       "size": 4414
     },
     {
@@ -880,7 +880,7 @@
           "endLine": 382
         }
       ],
-      "mtimeMs": 1793295930269.1926,
+      "mtimeMs": 1793300542538.4846,
       "size": 13091
     },
     {
@@ -1030,7 +1030,7 @@
           "endLine": 112
         }
       ],
-      "mtimeMs": 1793295896790.2917,
+      "mtimeMs": 1793300542754.4219,
       "size": 4414
     },
     {
@@ -1101,19 +1101,22 @@
     {
       "path": "projects/agencia-alfa/site/js/industry-interactive.js",
       "ext": ".js",
-      "sha256": "80904b4c8d321a3a",
-      "lineCount": 84,
+      "sha256": "9593d729f0675974",
+      "lineCount": 121,
       "exports": [],
       "imports": [],
       "importedBy": [],
       "calls": [
         "initIndustryInteractiveModule",
+        "setAttribute",
+        "getElementById",
+        "createUiStateMachine",
         "addEventListener",
         "closest",
+        "send",
         "hasAttribute",
         "parseInt",
         "getAttribute",
-        "getElementById",
         "toFixed",
         "USD",
         "iniciado",
@@ -1121,9 +1124,18 @@
         "querySelectorAll",
         "forEach"
       ],
-      "symbols": [],
-      "mtimeMs": 1793295930273.3862,
-      "size": 3538
+      "symbols": [
+        {
+          "name": "createUiStateMachine",
+          "kind": "function",
+          "exported": false,
+          "signature": "function createUiStateMachine(config)",
+          "startLine": 10,
+          "endLine": 29
+        }
+      ],
+      "mtimeMs": 1793300542543.4612,
+      "size": 5083
     },
     {
       "path": "projects/agencia-alfa/site/js/mobile-native-bridge.ts",
@@ -3035,7 +3047,7 @@
           "endLine": 19
         }
       ],
-      "mtimeMs": 1793295930271.142,
+      "mtimeMs": 1793300542540.4602,
       "size": 12275
     },
     {
@@ -4757,7 +4769,7 @@
           "endLine": 19
         }
       ],
-      "mtimeMs": 1793295930270.1375,
+      "mtimeMs": 1793300542539.46,
       "size": 12275
     },
     {
@@ -6563,8 +6575,8 @@
     {
       "path": "tools/audit/supply_chain_guard.mjs",
       "ext": ".mjs",
-      "sha256": "682ded9adda39f05",
-      "lineCount": 520,
+      "sha256": "3918ed25632ddc48",
+      "lineCount": 521,
       "exports": [
         "SBOM_CYCLONEDX_PATH",
         "scanHtmlContentForSri",
@@ -6647,76 +6659,76 @@
           "kind": "function",
           "exported": false,
           "signature": "function collectFiles(dir, predicate, out = [])",
-          "startLine": 36,
-          "endLine": 48
+          "startLine": 37,
+          "endLine": 49
         },
         {
           "name": "checkPackageAllowlist",
           "kind": "function",
           "exported": false,
           "signature": "function checkPackageAllowlist(rootDir = ROOT)",
-          "startLine": 53,
-          "endLine": 150
+          "startLine": 54,
+          "endLine": 151
         },
         {
           "name": "checkLockfileAndVulnerabilities",
           "kind": "function",
           "exported": false,
           "signature": "function checkLockfileAndVulnerabilities(rootDir = ROOT, skipNetworkAudit = false)",
-          "startLine": 155,
-          "endLine": 169
+          "startLine": 156,
+          "endLine": 170
         },
         {
           "name": "scanHtmlContentForSri",
           "kind": "function",
           "exported": true,
           "signature": "export function scanHtmlContentForSri(content, relFile = \"inline.html\")",
-          "startLine": 268,
-          "endLine": 328
+          "startLine": 269,
+          "endLine": 329
         },
         {
           "name": "checkSubresourceIntegrity",
           "kind": "function",
           "exported": false,
           "signature": "function checkSubresourceIntegrity(rootDir = ROOT)",
-          "startLine": 330,
-          "endLine": 354
+          "startLine": 331,
+          "endLine": 355
         },
         {
           "name": "verifyPackageAllowlist",
           "kind": "constant",
           "exported": true,
           "signature": "export const verifyPackageAllowlist",
-          "startLine": 356,
-          "endLine": 356
+          "startLine": 357,
+          "endLine": 357
         },
         {
           "name": "checkRetireJsClientSignatures",
           "kind": "function",
           "exported": true,
           "signature": "export function checkRetireJsClientSignatures(rootDir = ROOT)",
-          "startLine": 361,
-          "endLine": 386
+          "startLine": 362,
+          "endLine": 387
         },
         {
           "name": "generateCycloneDxSbom",
           "kind": "function",
           "exported": true,
           "signature": "export function generateCycloneDxSbom(rootDir = ROOT)",
-          "startLine": 388,
-          "endLine": 461
+          "startLine": 389,
+          "endLine": 462
         },
         {
           "name": "runSupplyChainGuard",
           "kind": "function",
           "exported": true,
           "signature": "export function runSupplyChainGuard(options = {})",
-          "startLine": 463,
-          "endLine": 463
+          "startLine": 464,
+          "endLine": 464
         }
       ],
-      "mtimeMs": 1793195904253.5884,
-      "size": 17780
+      "mtimeMs": 1793300011093.4714,
+      "size": 17792
     },
     {
       "path": "tools/audit/visual_audit.mjs",
@@ -7554,8 +7566,8 @@
     {
       "path": "tools/cto_command_center.mjs",
       "ext": ".mjs",
-      "sha256": "bb7b386058c39ce1",
-      "lineCount": 1602,
+      "sha256": "188699c13a7849c0",
+      "lineCount": 1648,
       "exports": [
         "evaluateCybersecurityTrafficLight",
         "handleAterrizar"
@@ -7578,6 +7590,7 @@
         "./audit/ast_guard.mjs",
         "./intelligence/eval_matrix.mjs",
         "./audit/git_remote_sync_check.mjs",
+        "./orchestrator/deterministic_agent_statechart.mjs",
         "node:module",
         "./design/industry_archetype_matrix.mjs",
         "./db/dual_database_forge.mjs",
@@ -7662,308 +7675,308 @@
           "kind": "function",
           "exported": true,
           "signature": "export function evaluateCybersecurityTrafficLight()",
-          "startLine": 57,
-          "endLine": 162
+          "startLine": 62,
+          "endLine": 167
         },
         {
           "name": "askQuestionCli",
           "kind": "function",
           "exported": false,
           "signature": "function askQuestionCli(rl, promptText, defaultVal)",
-          "startLine": 164,
-          "endLine": 175
+          "startLine": 169,
+          "endLine": 180
         },
         {
           "name": "parseCliFlag",
           "kind": "function",
           "exported": false,
           "signature": "function parseCliFlag(args, flagName, defaultVal = '')",
-          "startLine": 177,
-          "endLine": 183
+          "startLine": 182,
+          "endLine": 188
         },
         {
           "name": "handleNuevo",
           "kind": "function",
           "exported": false,
           "signature": "async function handleNuevo(args)",
-          "startLine": 185,
-          "endLine": 265
+          "startLine": 190,
+          "endLine": 270
         },
         {
           "name": "handleProyectos",
           "kind": "function",
           "exported": false,
           "signature": "async function handleProyectos(args)",
-          "startLine": 267,
-          "endLine": 310
+          "startLine": 272,
+          "endLine": 315
         },
         {
           "name": "handleEntrevistaPrd",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEntrevistaPrd(args)",
-          "startLine": 312,
-          "endLine": 348
+          "startLine": 317,
+          "endLine": 353
         },
         {
           "name": "handleEntrevista",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEntrevista(args)",
-          "startLine": 350,
-          "endLine": 393
+          "startLine": 355,
+          "endLine": 398
         },
         {
           "name": "handleConstruir",
           "kind": "function",
           "exported": false,
           "signature": "async function handleConstruir()",
-          "startLine": 395,
-          "endLine": 472
+          "startLine": 400,
+          "endLine": 484
         },
         {
           "name": "generateExecutiveDecisionBrief",
           "kind": "function",
           "exported": false,
           "signature": "async function generateExecutiveDecisionBrief(boltRes = null, axRes = null)",
-          "startLine": 474,
-          "endLine": 606
+          "startLine": 486,
+          "endLine": 618
         },
         {
           "name": "handleRevisar",
           "kind": "function",
           "exported": false,
           "signature": "async function handleRevisar(args)",
-          "startLine": 608,
-          "endLine": 632
+          "startLine": 620,
+          "endLine": 644
         },
         {
           "name": "handleEmpaquetar",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEmpaquetar(args = [])",
-          "startLine": 634,
-          "endLine": 667
+          "startLine": 646,
+          "endLine": 679
         },
         {
           "name": "handleAprobar",
           "kind": "function",
           "exported": false,
           "signature": "async function handleAprobar(args = [])",
-          "startLine": 669,
-          "endLine": 700
+          "startLine": 681,
+          "endLine": 712
         },
         {
           "name": "handleFeedback",
           "kind": "function",
           "exported": false,
           "signature": "async function handleFeedback(args)",
-          "startLine": 702,
-          "endLine": 736
+          "startLine": 714,
+          "endLine": 757
         },
         {
           "name": "handleAprender",
           "kind": "function",
           "exported": false,
           "signature": "async function handleAprender(args)",
-          "startLine": 738,
-          "endLine": 755
+          "startLine": 759,
+          "endLine": 776
         },
         {
           "name": "handleEvolucionar",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEvolucionar(args)",
-          "startLine": 757,
-          "endLine": 766
+          "startLine": 778,
+          "endLine": 787
         },
         {
           "name": "handleExtraerDiseno",
           "kind": "function",
           "exported": false,
           "signature": "async function handleExtraerDiseno(args)",
-          "startLine": 768,
-          "endLine": 780
+          "startLine": 789,
+          "endLine": 801
         },
         {
           "name": "handleIngerirLibros",
           "kind": "function",
           "exported": false,
           "signature": "async function handleIngerirLibros(args)",
-          "startLine": 782,
-          "endLine": 798
+          "startLine": 803,
+          "endLine": 819
         },
         {
           "name": "handleActualizacionSemanal",
           "kind": "function",
           "exported": false,
           "signature": "async function handleActualizacionSemanal(args)",
-          "startLine": 800,
-          "endLine": 812
+          "startLine": 821,
+          "endLine": 833
         },
         {
           "name": "handleEfecto3d",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEfecto3d(args)",
-          "startLine": 814,
-          "endLine": 829
+          "startLine": 835,
+          "endLine": 850
         },
         {
           "name": "handleOptimizar3d",
           "kind": "function",
           "exported": false,
           "signature": "async function handleOptimizar3d(args)",
-          "startLine": 831,
-          "endLine": 847
+          "startLine": 852,
+          "endLine": 868
         },
         {
           "name": "handleGcpStatus",
           "kind": "function",
           "exported": false,
           "signature": "async function handleGcpStatus()",
-          "startLine": 849,
-          "endLine": 865
+          "startLine": 870,
+          "endLine": 886
         },
         {
           "name": "handleBenchmark",
           "kind": "function",
           "exported": false,
           "signature": "async function handleBenchmark()",
-          "startLine": 867,
-          "endLine": 873
+          "startLine": 888,
+          "endLine": 894
         },
         {
           "name": "handleMcpStatus",
           "kind": "function",
           "exported": false,
           "signature": "async function handleMcpStatus()",
-          "startLine": 875,
-          "endLine": 918
+          "startLine": 896,
+          "endLine": 939
         },
         {
           "name": "handleArquitecturaDb",
           "kind": "function",
           "exported": false,
           "signature": "async function handleArquitecturaDb(rest = [])",
-          "startLine": 920,
-          "endLine": 949
+          "startLine": 941,
+          "endLine": 970
         },
         {
           "name": "handleDestilarCurso",
           "kind": "function",
           "exported": false,
           "signature": "async function handleDestilarCurso(rest = [])",
-          "startLine": 951,
-          "endLine": 973
+          "startLine": 972,
+          "endLine": 994
         },
         {
           "name": "handleCosecharDocs",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCosecharDocs()",
-          "startLine": 975,
-          "endLine": 990
+          "startLine": 996,
+          "endLine": 1011
         },
         {
           "name": "handleArquetipo",
           "kind": "function",
           "exported": false,
           "signature": "async function handleArquetipo(rest = [])",
-          "startLine": 992,
-          "endLine": 1016
+          "startLine": 1013,
+          "endLine": 1037
         },
         {
           "name": "handleCrearMovil",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCrearMovil(rest = [])",
-          "startLine": 1018,
-          "endLine": 1042
+          "startLine": 1039,
+          "endLine": 1063
         },
         {
           "name": "handleEstado",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEstado()",
-          "startLine": 1044,
-          "endLine": 1092
+          "startLine": 1065,
+          "endLine": 1113
         },
         {
           "name": "handleInvestigarReferencia",
           "kind": "function",
           "exported": false,
           "signature": "async function handleInvestigarReferencia(args = [])",
-          "startLine": 1094,
-          "endLine": 1107
+          "startLine": 1115,
+          "endLine": 1128
         },
         {
           "name": "handleFeedbackCliente",
           "kind": "function",
           "exported": false,
           "signature": "async function handleFeedbackCliente(args = [])",
-          "startLine": 1109,
-          "endLine": 1141
+          "startLine": 1130,
+          "endLine": 1162
         },
         {
           "name": "handleAprobarTicket",
           "kind": "function",
           "exported": false,
           "signature": "async function handleAprobarTicket(args = [])",
-          "startLine": 1143,
-          "endLine": 1173
+          "startLine": 1164,
+          "endLine": 1194
         },
         {
           "name": "handleCambioIncremental",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCambioIncremental(args = [])",
-          "startLine": 1175,
-          "endLine": 1241
+          "startLine": 1196,
+          "endLine": 1262
         },
         {
           "name": "handleAuditarHarness",
           "kind": "function",
           "exported": false,
           "signature": "async function handleAuditarHarness(args = [])",
-          "startLine": 1243,
-          "endLine": 1251
+          "startLine": 1264,
+          "endLine": 1272
         },
         {
           "name": "handleCrearIntroVideo",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCrearIntroVideo(args = [])",
-          "startLine": 1253,
-          "endLine": 1280
+          "startLine": 1274,
+          "endLine": 1301
         },
         {
           "name": "handleCrearAudio",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCrearAudio(args = [])",
-          "startLine": 1282,
-          "endLine": 1341
+          "startLine": 1303,
+          "endLine": 1362
         },
         {
           "name": "handleAterrizar",
           "kind": "function",
           "exported": true,
           "signature": "export async function handleAterrizar(args = [])",
-          "startLine": 1351,
-          "endLine": 1491
+          "startLine": 1372,
+          "endLine": 1525
         },
         {
           "name": "main",
           "kind": "function",
           "exported": false,
           "signature": "async function main()",
-          "startLine": 1493,
-          "endLine": 1596
+          "startLine": 1527,
+          "endLine": 1642
         }
       ],
-      "mtimeMs": 1793295157368.198,
-      "size": 86747
+      "mtimeMs": 1793300105919.9504,
+      "size": 89188
     },
     {
       "path": "tools/db/dual_database_forge.mjs",
@@ -8331,8 +8344,8 @@
     {
       "path": "tools/design/build_vanilla_primitives.mjs",
       "ext": ".mjs",
-      "sha256": "a773e64dc8f63000",
-      "lineCount": 1170,
+      "sha256": "46d1d962f7038e17",
+      "lineCount": 1207,
       "exports": [
         "NAVIGATION_MORPHOLOGY_VARIANTS",
         "CORNER_GEOMETRY_VARIANTS",
@@ -8447,27 +8460,35 @@
           "exported": true,
           "signature": "export function buildInteractiveIndustryModule(industryInput = 'saas', brandName = 'Agencia Alfa')",
           "startLine": 655,
-          "endLine": 953
+          "endLine": 990
+        },
+        {
+          "name": "createUiStateMachine",
+          "kind": "function",
+          "exported": false,
+          "signature": "function createUiStateMachine(config)",
+          "startLine": 870,
+          "endLine": 889
         },
         {
           "name": "buildVanillaPrimitives",
           "kind": "function",
           "exported": true,
           "signature": "export function buildVanillaPrimitives(projectInput = '', morphologyOptions = null)",
-          "startLine": 955,
-          "endLine": 1002
+          "startLine": 992,
+          "endLine": 1039
         },
         {
           "name": "applyBespokeMorphologyToProjectDom",
           "kind": "function",
           "exported": true,
           "signature": "export function applyBespokeMorphologyToProjectDom(projectInput = '', customOptions = {})",
-          "startLine": 1010,
-          "endLine": 1010
+          "startLine": 1047,
+          "endLine": 1047
         }
       ],
-      "mtimeMs": 1793295917741.2898,
-      "size": 47913
+      "mtimeMs": 1793299953696.2004,
+      "size": 49458
     },
     {
       "path": "tools/design/design_extractor.mjs",
@@ -11781,10 +11802,156 @@
       "size": 21378
     },
     {
+      "path": "tools/intelligence/jev_memory_pipeline.mjs",
+      "ext": ".mjs",
+      "sha256": "b258771e92eb3747",
+      "lineCount": 647,
+      "exports": [
+        "ROOT",
+        "MEMORY_PIPELINE_REPORT_PATH",
+        "COLD_ARCHIVE_LEDGER_PATH",
+        "MEMORY_WRITE_CHOICES",
+        "computeFactSimilarity",
+        "evaluateMemoryWriteAdmissionWithJev",
+        "runJevSleepTimeConsolidationCycle",
+        "runJevMemoryPipelineSelfTest"
+      ],
+      "imports": [
+        "node:fs",
+        "node:path",
+        "node:crypto",
+        "node:url"
+      ],
+      "importedBy": [],
+      "calls": [
+        "fileURLToPath",
+        "dirname",
+        "join",
+        "toLowerCase",
+        "replace",
+        "split",
+        "filter",
+        "test",
+        "tokenizeFact",
+        "has",
+        "max",
+        "toFixed",
+        "computeActRBaseLevelUtility",
+        "log",
+        "pow",
+        "now",
+        "trim",
+        "compileCompactBamlTypePrompt",
+        "stringify",
+        "parseWithSchemaAlignedRecovery",
+        "validateAgentMemoryGuard",
+        "isProjectSpecificAestheticSignal",
+        "existsSync",
+        "loadTomModel",
+        "some",
+        "computeFactSimilarity",
+        "push",
+        "toISOString",
+        "writeFileSync",
+        "mkdirSync",
+        "getTemporalLedger",
+        "inferFactCategory",
+        "createHash",
+        "update",
+        "digest",
+        "slice",
+        "saveTemporalLedger",
+        "json",
+        "callOfficialJevApi",
+        "readFileSync",
+        "parse",
+        "set",
+        "get",
+        "values",
+        "saveInstinctCard"
+      ],
+      "symbols": [
+        {
+          "name": "ROOT",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const ROOT",
+          "startLine": 55,
+          "endLine": 55
+        },
+        {
+          "name": "MEMORY_PIPELINE_REPORT_PATH",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const MEMORY_PIPELINE_REPORT_PATH",
+          "startLine": 57,
+          "endLine": 57
+        },
+        {
+          "name": "COLD_ARCHIVE_LEDGER_PATH",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const COLD_ARCHIVE_LEDGER_PATH",
+          "startLine": 58,
+          "endLine": 58
+        },
+        {
+          "name": "MEMORY_WRITE_CHOICES",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const MEMORY_WRITE_CHOICES",
+          "startLine": 63,
+          "endLine": 63
+        },
+        {
+          "name": "tokenizeFact",
+          "kind": "function",
+          "exported": false,
+          "signature": "function tokenizeFact(text = '')",
+          "startLine": 75,
+          "endLine": 81
+        },
+        {
+          "name": "computeFactSimilarity",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function computeFactSimilarity(factA = '', factB = '')",
+          "startLine": 86,
+          "endLine": 96
+        },
+        {
+          "name": "evaluateMemoryWriteAdmissionWithJev",
+          "kind": "function",
+          "exported": true,
+          "signature": "export async function evaluateMemoryWriteAdmissionWithJev(candidateInput = {}, options = {})",
+          "startLine": 117,
+          "endLine": 117
+        },
+        {
+          "name": "runJevSleepTimeConsolidationCycle",
+          "kind": "function",
+          "exported": true,
+          "signature": "export async function runJevSleepTimeConsolidationCycle(options = {})",
+          "startLine": 402,
+          "endLine": 402
+        },
+        {
+          "name": "runJevMemoryPipelineSelfTest",
+          "kind": "function",
+          "exported": true,
+          "signature": "export async function runJevMemoryPipelineSelfTest()",
+          "startLine": 545,
+          "endLine": 613
+        }
+      ],
+      "mtimeMs": 1793299834189.5537,
+      "size": 27435
+    },
+    {
       "path": "tools/intelligence/jev_semantic_gate.mjs",
       "ext": ".mjs",
-      "sha256": "c9bfd9d2747f5743",
-      "lineCount": 1104,
+      "sha256": "5a9581c31890092b",
+      "lineCount": 1121,
       "exports": [
         "ROOT",
         "JEV_DECISION_CACHE_PATH",
@@ -11924,113 +12091,113 @@
           "exported": true,
           "signature": "export const JevVerdictValibotSchema",
           "startLine": 87,
-          "endLine": 107
+          "endLine": 112
         },
         {
           "name": "compileCompactBamlTypePrompt",
           "kind": "function",
           "exported": true,
           "signature": "export function compileCompactBamlTypePrompt(predicateId = 'jev-persisted-state-and-env-owner-gate', allowedChoices = [])",
-          "startLine": 113,
-          "endLine": 171
+          "startLine": 118,
+          "endLine": 176
         },
         {
           "name": "parseWithSchemaAlignedRecovery",
           "kind": "function",
           "exported": true,
           "signature": "export function parseWithSchemaAlignedRecovery(rawInput, defaultPredicateId = 'jev-persisted-state-and-env-owner-gate')",
-          "startLine": 186,
-          "endLine": 273
+          "startLine": 191,
+          "endLine": 278
         },
         {
           "name": "loadJevDecisionCache",
           "kind": "function",
           "exported": true,
           "signature": "export function loadJevDecisionCache()",
-          "startLine": 323,
-          "endLine": 342
+          "startLine": 331,
+          "endLine": 350
         },
         {
           "name": "saveJevDecisionCache",
           "kind": "function",
           "exported": true,
           "signature": "export function saveJevDecisionCache(store)",
-          "startLine": 347,
-          "endLine": 353
+          "startLine": 355,
+          "endLine": 361
         },
         {
           "name": "computeJevPayloadHash",
           "kind": "function",
           "exported": true,
           "signature": "export function computeJevPayloadHash(predicateId = '', payloadText = '', specContext = '')",
-          "startLine": 358,
-          "endLine": 361
+          "startLine": 366,
+          "endLine": 369
         },
         {
           "name": "loadJevFinOpsLedger",
           "kind": "function",
           "exported": true,
           "signature": "export function loadJevFinOpsLedger()",
-          "startLine": 366,
-          "endLine": 404
+          "startLine": 374,
+          "endLine": 412
         },
         {
           "name": "evaluatePersistedStateAndEnvOwnerGate",
           "kind": "function",
           "exported": true,
           "signature": "export async function evaluatePersistedStateAndEnvOwnerGate(diffText = '', options = {})",
-          "startLine": 803,
-          "endLine": 803
+          "startLine": 820,
+          "endLine": 820
         },
         {
           "name": "evaluateSpecBusinessInvariantAlignment",
           "kind": "function",
           "exported": true,
           "signature": "export async function evaluateSpecBusinessInvariantAlignment(diffText = '', specText = '', options = {})",
-          "startLine": 815,
-          "endLine": 815
+          "startLine": 832,
+          "endLine": 832
         },
         {
           "name": "evaluateRedundantTestDetector",
           "kind": "function",
           "exported": true,
           "signature": "export async function evaluateRedundantTestDetector(diffText = '', options = {})",
-          "startLine": 828,
-          "endLine": 828
+          "startLine": 845,
+          "endLine": 845
         },
         {
           "name": "evaluateCrossTraceFrictionMiner",
           "kind": "function",
           "exported": true,
           "signature": "export async function evaluateCrossTraceFrictionMiner(customTracesText = '', options = {})",
-          "startLine": 842,
-          "endLine": 842
+          "startLine": 859,
+          "endLine": 859
         },
         {
           "name": "getJevFinOpsStatus",
           "kind": "function",
           "exported": true,
           "signature": "export function getJevFinOpsStatus()",
-          "startLine": 965,
-          "endLine": 985
+          "startLine": 982,
+          "endLine": 1002
         },
         {
           "name": "runJevSemanticGateSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export async function runJevSemanticGateSelfTest()",
-          "startLine": 990,
-          "endLine": 1004
+          "startLine": 1007,
+          "endLine": 1021
         }
       ],
-      "mtimeMs": 1793281832872.0063,
-      "size": 43989
+      "mtimeMs": 1793300515940.4133,
+      "size": 44764
     },
     {
       "path": "tools/intelligence/mcp_omni_rag_server.mjs",
       "ext": ".mjs",
-      "sha256": "2bba3345d1c253c4",
-      "lineCount": 1267,
+      "sha256": "b9c5f493f6701e24",
+      "lineCount": 1337,
       "exports": [
         "SERVER_INFO",
         "TOOLS",
@@ -12054,6 +12221,7 @@
         "./squad_semantic_router.mjs",
         "./qdrant_rag.mjs",
         "./jev_semantic_gate.mjs",
+        "xstate",
         "../audit/local_fullstack_and_component_harness.mjs",
         "./ast_guard.mjs",
         "../design/token_compiler.mjs",
@@ -12099,6 +12267,11 @@
         "auditor",
         "branch",
         "Identity",
+        "JEV",
+        "isolation",
+        "Statechart",
+        "can",
+        "agent",
         "randomUUID",
         "randomBytes",
         "toString",
@@ -12106,12 +12279,7 @@
         "inspectMcpToolResponseForPoisoning",
         "toLowerCase",
         "verifyRoleMcpPermission",
-        "test",
-        "slice",
-        "find",
-        "map",
-        "split",
-        "isAbsolute"
+        "test"
       ],
       "symbols": [
         {
@@ -12119,116 +12287,116 @@
           "kind": "constant",
           "exported": true,
           "signature": "export const SERVER_INFO",
-          "startLine": 69,
-          "endLine": 74
+          "startLine": 79,
+          "endLine": 84
         },
         {
           "name": "TOOLS",
           "kind": "constant",
           "exported": true,
           "signature": "export const TOOLS",
-          "startLine": 76,
-          "endLine": 76
+          "startLine": 86,
+          "endLine": 86
         },
         {
           "name": "generateCsprngSessionId",
           "kind": "function",
           "exported": true,
           "signature": "export function generateCsprngSessionId()",
-          "startLine": 522,
-          "endLine": 524
+          "startLine": 567,
+          "endLine": 569
         },
         {
           "name": "sanitizeMcpRetrievedFragment",
           "kind": "function",
           "exported": true,
           "signature": "export function sanitizeMcpRetrievedFragment(rawText = '')",
-          "startLine": 529,
-          "endLine": 536
+          "startLine": 574,
+          "endLine": 581
         },
         {
           "name": "discoverToolsByIntent",
           "kind": "function",
           "exported": true,
           "signature": "export function discoverToolsByIntent({ intent = '', domain = '', role = 'orchestrator' } = {})",
-          "startLine": 543,
-          "endLine": 543
+          "startLine": 588,
+          "endLine": 588
         },
         {
           "name": "listToolsDeferredCompact",
           "kind": "function",
           "exported": true,
           "signature": "export function listToolsDeferredCompact()",
-          "startLine": 589,
-          "endLine": 597
+          "startLine": 634,
+          "endLine": 642
         },
         {
           "name": "hydrateDeferredToolSchema",
           "kind": "function",
           "exported": true,
           "signature": "export function hydrateDeferredToolSchema(toolName = '')",
-          "startLine": 599,
-          "endLine": 610
+          "startLine": 644,
+          "endLine": 655
         },
         {
           "name": "expandChunkToParentMarkdownSection",
           "kind": "function",
           "exported": true,
           "signature": "export function expandChunkToParentMarkdownSection(chunk = {}, maxChars = 2200)",
-          "startLine": 616,
-          "endLine": 616
+          "startLine": 661,
+          "endLine": 661
         },
         {
           "name": "executeRagFusionRrfAndCrag",
           "kind": "function",
           "exported": true,
           "signature": "export async function executeRagFusionRrfAndCrag(query = '', options = {})",
-          "startLine": 647,
-          "endLine": 647
+          "startLine": 692,
+          "endLine": 692
         },
         {
           "name": "validateMcpRequestSecurity",
           "kind": "function",
           "exported": true,
           "signature": "export function validateMcpRequestSecurity(req = {})",
-          "startLine": 767,
-          "endLine": 767
+          "startLine": 812,
+          "endLine": 812
         },
         {
           "name": "executeSingleMcpTool",
           "kind": "function",
           "exported": false,
           "signature": "async function executeSingleMcpTool(toolName, args = {}, traceId = generateCsprngSessionId()",
-          "startLine": 850,
-          "endLine": 850
+          "startLine": 895,
+          "endLine": 895
         },
         {
           "name": "sendResponse",
           "kind": "function",
           "exported": false,
           "signature": "function sendResponse(id, result)",
-          "startLine": 1150,
-          "endLine": 1152
+          "startLine": 1220,
+          "endLine": 1222
         },
         {
           "name": "sendError",
           "kind": "function",
           "exported": false,
           "signature": "function sendError(id, code, message)",
-          "startLine": 1154,
-          "endLine": 1156
+          "startLine": 1224,
+          "endLine": 1226
         },
         {
           "name": "startMcpServer",
           "kind": "function",
           "exported": true,
           "signature": "export function startMcpServer()",
-          "startLine": 1158,
-          "endLine": 1248
+          "startLine": 1228,
+          "endLine": 1318
         }
       ],
-      "mtimeMs": 1793295323502.0032,
-      "size": 48593
+      "mtimeMs": 1793300183385.7546,
+      "size": 51636
     },
     {
       "path": "tools/intelligence/memory_reflector.mjs",
@@ -12917,12 +13085,13 @@
     {
       "path": "tools/intelligence/rag_pipeline.mjs",
       "ext": ".mjs",
-      "sha256": "30886e429fab03ac",
-      "lineCount": 1405,
+      "sha256": "88e9b36274569212",
+      "lineCount": 1472,
       "exports": [
         "expandQueryBilingual",
         "invalidateIndexCache",
         "deduplicateAndVacuumSqliteFts5",
+        "ingestMarkdownFilesIntoSqliteFts5",
         "getOrBuildMiniSearchIndex",
         "reciprocalRankFusion",
         "queryKnowledge",
@@ -13016,172 +13185,180 @@
           "kind": "function",
           "exported": true,
           "signature": "export function expandQueryBilingual(query)",
-          "startLine": 133,
-          "endLine": 141
+          "startLine": 134,
+          "endLine": 142
         },
         {
           "name": "scanKnowledgeFiles",
           "kind": "function",
           "exported": false,
           "signature": "function scanKnowledgeFiles(dir, maxDepth = 4, depth = 0, mode = 'full')",
-          "startLine": 159,
-          "endLine": 188
+          "startLine": 160,
+          "endLine": 189
         },
         {
           "name": "splitLongBlock",
           "kind": "function",
           "exported": false,
           "signature": "function splitLongBlock(text, maxChars = 1900, overlapChars = 180)",
-          "startLine": 194,
-          "endLine": 235
+          "startLine": 195,
+          "endLine": 236
         },
         {
           "name": "createDocumentChunks",
           "kind": "function",
           "exported": false,
           "signature": "function createDocumentChunks(filePath)",
-          "startLine": 240,
-          "endLine": 405
+          "startLine": 241,
+          "endLine": 408
         },
         {
           "name": "invalidateIndexCache",
           "kind": "function",
           "exported": true,
           "signature": "export function invalidateIndexCache()",
-          "startLine": 407,
-          "endLine": 414
+          "startLine": 410,
+          "endLine": 417
         },
         {
           "name": "addTokensToInvertedMap",
           "kind": "function",
           "exported": false,
           "signature": "function addTokensToInvertedMap(invMap, str, chunkIdx)",
-          "startLine": 424,
-          "endLine": 454
+          "startLine": 427,
+          "endLine": 457
         },
         {
           "name": "prepareChunksForFastSearch",
           "kind": "function",
           "exported": false,
           "signature": "function prepareChunksForFastSearch(chunks)",
-          "startLine": 456,
-          "endLine": 483
+          "startLine": 459,
+          "endLine": 486
         },
         {
           "name": "deduplicateAndVacuumSqliteFts5",
           "kind": "function",
           "exported": true,
           "signature": "export function deduplicateAndVacuumSqliteFts5()",
-          "startLine": 489,
-          "endLine": 530
+          "startLine": 492,
+          "endLine": 533
+        },
+        {
+          "name": "ingestMarkdownFilesIntoSqliteFts5",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function ingestMarkdownFilesIntoSqliteFts5(filePaths = [])",
+          "startLine": 539,
+          "endLine": 597
         },
         {
           "name": "buildOrOpenSqliteFts5Index",
           "kind": "function",
           "exported": false,
           "signature": "function buildOrOpenSqliteFts5Index(chunks, forceRebuild = false)",
-          "startLine": 536,
-          "endLine": 621
+          "startLine": 603,
+          "endLine": 688
         },
         {
           "name": "querySqliteFts5",
           "kind": "function",
           "exported": false,
           "signature": "function querySqliteFts5(sqliteDb, chunkMap, terms, limit = 20)",
-          "startLine": 631,
-          "endLine": 680
+          "startLine": 698,
+          "endLine": 747
         },
         {
           "name": "buildMiniSearchInstance",
           "kind": "function",
           "exported": false,
           "signature": "function buildMiniSearchInstance(chunks)",
-          "startLine": 682,
-          "endLine": 700
+          "startLine": 749,
+          "endLine": 767
         },
         {
           "name": "buildChunkMap",
           "kind": "function",
           "exported": false,
           "signature": "function buildChunkMap(chunks)",
-          "startLine": 702,
-          "endLine": 708
+          "startLine": 769,
+          "endLine": 775
         },
         {
           "name": "getOrBuildMiniSearchIndex",
           "kind": "function",
           "exported": true,
           "signature": "export function getOrBuildMiniSearchIndex(force = false)",
-          "startLine": 713,
-          "endLine": 776
+          "startLine": 780,
+          "endLine": 843
         },
         {
           "name": "capResultsPerFile",
           "kind": "function",
           "exported": false,
           "signature": "function capResultsPerFile(items, maxPerFile = 2, limit = 20)",
-          "startLine": 781,
-          "endLine": 795
+          "startLine": 848,
+          "endLine": 862
         },
         {
           "name": "runLocalSemanticVectorRanker",
           "kind": "function",
           "exported": false,
           "signature": "function runLocalSemanticVectorRanker(chunks, queryString, limit = 20)",
-          "startLine": 801,
-          "endLine": 928
+          "startLine": 868,
+          "endLine": 995
         },
         {
           "name": "runLocalOnnxCrossEncoderRerank",
           "kind": "function",
           "exported": false,
           "signature": "async function runLocalOnnxCrossEncoderRerank(query, candidates, limit = 8)",
-          "startLine": 935,
-          "endLine": 982
+          "startLine": 1002,
+          "endLine": 1049
         },
         {
           "name": "reciprocalRankFusion",
           "kind": "function",
           "exported": true,
           "signature": "export function reciprocalRankFusion(rankedLists, k = 60, maxPerFile = 2)",
-          "startLine": 988,
-          "endLine": 1023
+          "startLine": 1055,
+          "endLine": 1090
         },
         {
           "name": "queryKnowledge",
           "kind": "function",
           "exported": true,
           "signature": "export async function queryKnowledge(query, limit = 8, options = {})",
-          "startLine": 1034,
-          "endLine": 1034
+          "startLine": 1101,
+          "endLine": 1101
         },
         {
           "name": "queryCodeGraph",
           "kind": "function",
           "exported": true,
           "signature": "export function queryCodeGraph(symbolOrFileQuery, limit = 8)",
-          "startLine": 1227,
-          "endLine": 1252
+          "startLine": 1294,
+          "endLine": 1319
         },
         {
           "name": "synthesizeAnswer",
           "kind": "function",
           "exported": true,
           "signature": "export async function synthesizeAnswer(question, knowledgeList = [])",
-          "startLine": 1257,
-          "endLine": 1319
+          "startLine": 1324,
+          "endLine": 1386
         },
         {
           "name": "getClusterStats",
           "kind": "function",
           "exported": true,
           "signature": "export async function getClusterStats()",
-          "startLine": 1321,
-          "endLine": 1354
+          "startLine": 1388,
+          "endLine": 1421
         }
       ],
-      "mtimeMs": 1793294384248.5298,
-      "size": 59357
+      "mtimeMs": 1793300398156.0923,
+      "size": 62232
     },
     {
       "path": "tools/intelligence/rea_reverse_engineering_bridge.mjs",
@@ -15147,6 +15324,7 @@
         "tools/media/programmatic_video_forge.mjs",
         "tools/media/sonic_and_music_forge.mjs",
         "tools/orchestrator/adaptive_depth_router.mjs",
+        "tools/orchestrator/deterministic_agent_statechart.mjs",
         "tools/seo_smoke.mjs",
         "tools/serve_site.mjs"
       ],
@@ -15426,8 +15604,8 @@
     {
       "path": "tools/media/programmatic_video_forge.mjs",
       "ext": ".mjs",
-      "sha256": "6d990a189b264bd1",
-      "lineCount": 786,
+      "sha256": "536feced35ce0e11",
+      "lineCount": 796,
       "exports": [
         "ROOT",
         "MAX_VIDEO_BUDGET_BYTES",
@@ -15597,20 +15775,20 @@
           "kind": "constant",
           "exported": true,
           "signature": "export const BRAND_INTRO_SCENE_CONFIG",
-          "startLine": 564,
-          "endLine": 578
+          "startLine": 574,
+          "endLine": 588
         },
         {
           "name": "runProgrammaticVideoForgeSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export async function runProgrammaticVideoForgeSelfTest()",
-          "startLine": 705,
-          "endLine": 752
+          "startLine": 715,
+          "endLine": 762
         }
       ],
-      "mtimeMs": 1793294839085.0813,
-      "size": 30606
+      "mtimeMs": 1793296055854.3362,
+      "size": 30845
     },
     {
       "path": "tools/media/sonic_and_music_forge.mjs",
@@ -16258,6 +16436,178 @@
       ],
       "mtimeMs": 1793293974828.282,
       "size": 71333
+    },
+    {
+      "path": "tools/orchestrator/deterministic_agent_statechart.mjs",
+      "ext": ".mjs",
+      "sha256": "64f3dff9e1a48bc1",
+      "lineCount": 705,
+      "exports": [
+        "ROOT",
+        "MAX_SELF_HEALING_ATTEMPTS",
+        "FACTORY_EVENT_VOCABULARY",
+        "HUMAN_ONLY_EVENTS",
+        "factoryEnvironmentGuards",
+        "factoryLifecycleMachine",
+        "validateAgentPolicyProposal",
+        "syncProjectStatechartSnapshot",
+        "generateDeterministicClientUiFsmRuntime",
+        "renderFactoryStatechartMermaid",
+        "runDeterministicStatechartSelfTest"
+      ],
+      "imports": [
+        "node:fs",
+        "node:path",
+        "node:url",
+        "xstate",
+        "../lib/project_loader.mjs"
+      ],
+      "importedBy": [
+        "tools/cto_command_center.mjs"
+      ],
+      "calls": [
+        "fileURLToPath",
+        "dirname",
+        "assign",
+        "toISOString",
+        "createMachine",
+        "isArray",
+        "trim",
+        "includes",
+        "has",
+        "can",
+        "getNextSnapshot",
+        "loadProjectConfig",
+        "existsSync",
+        "join",
+        "parse",
+        "readFileSync",
+        "createActor",
+        "start",
+        "send",
+        "getSnapshot",
+        "getPersistedSnapshot",
+        "stop",
+        "mkdirSync",
+        "writeFileSync",
+        "stringify",
+        "setAttribute",
+        "onTransition",
+        "APPROVE_HITL_DELIVERY",
+        "validateAgentPolicyProposal",
+        "startsWith",
+        "syncProjectStatechartSnapshot",
+        "generateDeterministicClientUiFsmRuntime",
+        "values",
+        "every",
+        "resolve",
+        "slice",
+        "runDeterministicStatechartSelfTest",
+        "log",
+        "entries",
+        "Project",
+        "exit"
+      ],
+      "symbols": [
+        {
+          "name": "ROOT",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const ROOT",
+          "startLine": 31,
+          "endLine": 31
+        },
+        {
+          "name": "MAX_SELF_HEALING_ATTEMPTS",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const MAX_SELF_HEALING_ATTEMPTS",
+          "startLine": 33,
+          "endLine": 33
+        },
+        {
+          "name": "FACTORY_EVENT_VOCABULARY",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const FACTORY_EVENT_VOCABULARY",
+          "startLine": 39,
+          "endLine": 39
+        },
+        {
+          "name": "HUMAN_ONLY_EVENTS",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const HUMAN_ONLY_EVENTS",
+          "startLine": 56,
+          "endLine": 56
+        },
+        {
+          "name": "factoryEnvironmentGuards",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const factoryEnvironmentGuards",
+          "startLine": 65,
+          "endLine": 99
+        },
+        {
+          "name": "factoryLifecycleMachine",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const factoryLifecycleMachine",
+          "startLine": 104,
+          "endLine": 192
+        },
+        {
+          "name": "validateAgentPolicyProposal",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function validateAgentPolicyProposal(snapshot, proposedEvent, options = {})",
+          "startLine": 396,
+          "endLine": 396
+        },
+        {
+          "name": "syncProjectStatechartSnapshot",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function syncProjectStatechartSnapshot(projectInput = '', eventSequence = [])",
+          "startLine": 444,
+          "endLine": 521
+        },
+        {
+          "name": "generateDeterministicClientUiFsmRuntime",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function generateDeterministicClientUiFsmRuntime()",
+          "startLine": 528,
+          "endLine": 554
+        },
+        {
+          "name": "createUiStateMachine",
+          "kind": "function",
+          "exported": false,
+          "signature": "function createUiStateMachine(config)",
+          "startLine": 531,
+          "endLine": 553
+        },
+        {
+          "name": "renderFactoryStatechartMermaid",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function renderFactoryStatechartMermaid()",
+          "startLine": 559,
+          "endLine": 577
+        },
+        {
+          "name": "runDeterministicStatechartSelfTest",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function runDeterministicStatechartSelfTest()",
+          "startLine": 582,
+          "endLine": 677
+        }
+      ],
+      "mtimeMs": 1793299917049.84,
+      "size": 29858
     },
     {
       "path": "tools/orchestrator/humanlayer_rpi_gate.mjs",
@@ -17192,8 +17542,8 @@
           "file": "tools/media/programmatic_video_forge.mjs",
           "kind": "constant",
           "signature": "export const BRAND_INTRO_SCENE_CONFIG",
-          "startLine": 564,
-          "endLine": 578
+          "startLine": 574,
+          "endLine": 588
         }
       ],
       "calledByFiles": []
@@ -20005,6 +20355,34 @@
       ],
       "calledByFiles": []
     },
+    "createUiStateMachine": {
+      "definitions": [
+        {
+          "file": "projects/agencia-alfa/site/js/industry-interactive.js",
+          "kind": "function",
+          "signature": "function createUiStateMachine(config)",
+          "startLine": 10,
+          "endLine": 29
+        },
+        {
+          "file": "tools/design/build_vanilla_primitives.mjs",
+          "kind": "function",
+          "signature": "function createUiStateMachine(config)",
+          "startLine": 870,
+          "endLine": 889
+        },
+        {
+          "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
+          "kind": "function",
+          "signature": "function createUiStateMachine(config)",
+          "startLine": 531,
+          "endLine": 553
+        }
+      ],
+      "calledByFiles": [
+        "projects/agencia-alfa/site/js/industry-interactive.js"
+      ]
+    },
     "authenticateWithBiometricsOrPasskey": {
       "definitions": [
         {
@@ -21414,8 +21792,8 @@
           "file": "tools/audit/supply_chain_guard.mjs",
           "kind": "function",
           "signature": "function collectFiles(dir, predicate, out = [])",
-          "startLine": 36,
-          "endLine": 48
+          "startLine": 37,
+          "endLine": 49
         }
       ],
       "calledByFiles": [
@@ -21724,6 +22102,13 @@
           "endLine": 39
         },
         {
+          "file": "tools/intelligence/jev_memory_pipeline.mjs",
+          "kind": "constant",
+          "signature": "export const ROOT",
+          "startLine": 55,
+          "endLine": 55
+        },
+        {
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "constant",
           "signature": "export const ROOT",
@@ -21757,6 +22142,13 @@
           "signature": "export const ROOT",
           "startLine": 46,
           "endLine": 46
+        },
+        {
+          "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
+          "kind": "constant",
+          "signature": "export const ROOT",
+          "startLine": 31,
+          "endLine": 31
         },
         {
           "file": "tools/orchestrator/lean_prd_architect.mjs",
@@ -22101,8 +22493,8 @@
           "file": "tools/audit/supply_chain_guard.mjs",
           "kind": "function",
           "signature": "function checkPackageAllowlist(rootDir = ROOT)",
-          "startLine": 53,
-          "endLine": 150
+          "startLine": 54,
+          "endLine": 151
         }
       ],
       "calledByFiles": [
@@ -22115,8 +22507,8 @@
           "file": "tools/audit/supply_chain_guard.mjs",
           "kind": "function",
           "signature": "function checkLockfileAndVulnerabilities(rootDir = ROOT, skipNetworkAudit = false)",
-          "startLine": 155,
-          "endLine": 169
+          "startLine": 156,
+          "endLine": 170
         }
       ],
       "calledByFiles": [
@@ -22129,8 +22521,8 @@
           "file": "tools/audit/supply_chain_guard.mjs",
           "kind": "function",
           "signature": "export function scanHtmlContentForSri(content, relFile = \"inline.html\")",
-          "startLine": 268,
-          "endLine": 328
+          "startLine": 269,
+          "endLine": 329
         }
       ],
       "calledByFiles": [
@@ -22143,8 +22535,8 @@
           "file": "tools/audit/supply_chain_guard.mjs",
           "kind": "function",
           "signature": "function checkSubresourceIntegrity(rootDir = ROOT)",
-          "startLine": 330,
-          "endLine": 354
+          "startLine": 331,
+          "endLine": 355
         }
       ],
       "calledByFiles": [
@@ -22157,8 +22549,8 @@
           "file": "tools/audit/supply_chain_guard.mjs",
           "kind": "constant",
           "signature": "export const verifyPackageAllowlist",
-          "startLine": 356,
-          "endLine": 356
+          "startLine": 357,
+          "endLine": 357
         }
       ],
       "calledByFiles": []
@@ -22169,8 +22561,8 @@
           "file": "tools/audit/supply_chain_guard.mjs",
           "kind": "function",
           "signature": "export function checkRetireJsClientSignatures(rootDir = ROOT)",
-          "startLine": 361,
-          "endLine": 386
+          "startLine": 362,
+          "endLine": 387
         }
       ],
       "calledByFiles": []
@@ -22181,8 +22573,8 @@
           "file": "tools/audit/supply_chain_guard.mjs",
           "kind": "function",
           "signature": "export function generateCycloneDxSbom(rootDir = ROOT)",
-          "startLine": 388,
-          "endLine": 461
+          "startLine": 389,
+          "endLine": 462
         }
       ],
       "calledByFiles": []
@@ -22193,8 +22585,8 @@
           "file": "tools/audit/supply_chain_guard.mjs",
           "kind": "function",
           "signature": "export function runSupplyChainGuard(options = {})",
-          "startLine": 463,
-          "endLine": 463
+          "startLine": 464,
+          "endLine": 464
         }
       ],
       "calledByFiles": [
@@ -22802,8 +23194,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "export function evaluateCybersecurityTrafficLight()",
-          "startLine": 57,
-          "endLine": 162
+          "startLine": 62,
+          "endLine": 167
         }
       ],
       "calledByFiles": []
@@ -22814,8 +23206,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "function askQuestionCli(rl, promptText, defaultVal)",
-          "startLine": 164,
-          "endLine": 175
+          "startLine": 169,
+          "endLine": 180
         }
       ],
       "calledByFiles": [
@@ -22828,8 +23220,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "function parseCliFlag(args, flagName, defaultVal = '')",
-          "startLine": 177,
-          "endLine": 183
+          "startLine": 182,
+          "endLine": 188
         }
       ],
       "calledByFiles": [
@@ -22842,8 +23234,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleNuevo(args)",
-          "startLine": 185,
-          "endLine": 265
+          "startLine": 190,
+          "endLine": 270
         }
       ],
       "calledByFiles": []
@@ -22854,8 +23246,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleProyectos(args)",
-          "startLine": 267,
-          "endLine": 310
+          "startLine": 272,
+          "endLine": 315
         }
       ],
       "calledByFiles": []
@@ -22866,8 +23258,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEntrevistaPrd(args)",
-          "startLine": 312,
-          "endLine": 348
+          "startLine": 317,
+          "endLine": 353
         }
       ],
       "calledByFiles": []
@@ -22878,8 +23270,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEntrevista(args)",
-          "startLine": 350,
-          "endLine": 393
+          "startLine": 355,
+          "endLine": 398
         }
       ],
       "calledByFiles": []
@@ -22890,8 +23282,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleConstruir()",
-          "startLine": 395,
-          "endLine": 472
+          "startLine": 400,
+          "endLine": 484
         }
       ],
       "calledByFiles": []
@@ -22902,8 +23294,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function generateExecutiveDecisionBrief(boltRes = null, axRes = null)",
-          "startLine": 474,
-          "endLine": 606
+          "startLine": 486,
+          "endLine": 618
         }
       ],
       "calledByFiles": []
@@ -22914,8 +23306,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleRevisar(args)",
-          "startLine": 608,
-          "endLine": 632
+          "startLine": 620,
+          "endLine": 644
         }
       ],
       "calledByFiles": []
@@ -22926,8 +23318,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEmpaquetar(args = [])",
-          "startLine": 634,
-          "endLine": 667
+          "startLine": 646,
+          "endLine": 679
         }
       ],
       "calledByFiles": []
@@ -22938,8 +23330,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleAprobar(args = [])",
-          "startLine": 669,
-          "endLine": 700
+          "startLine": 681,
+          "endLine": 712
         }
       ],
       "calledByFiles": []
@@ -22950,8 +23342,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleFeedback(args)",
-          "startLine": 702,
-          "endLine": 736
+          "startLine": 714,
+          "endLine": 757
         }
       ],
       "calledByFiles": []
@@ -22962,8 +23354,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleAprender(args)",
-          "startLine": 738,
-          "endLine": 755
+          "startLine": 759,
+          "endLine": 776
         }
       ],
       "calledByFiles": []
@@ -22974,8 +23366,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEvolucionar(args)",
-          "startLine": 757,
-          "endLine": 766
+          "startLine": 778,
+          "endLine": 787
         }
       ],
       "calledByFiles": []
@@ -22986,8 +23378,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleExtraerDiseno(args)",
-          "startLine": 768,
-          "endLine": 780
+          "startLine": 789,
+          "endLine": 801
         }
       ],
       "calledByFiles": []
@@ -22998,8 +23390,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleIngerirLibros(args)",
-          "startLine": 782,
-          "endLine": 798
+          "startLine": 803,
+          "endLine": 819
         }
       ],
       "calledByFiles": []
@@ -23010,8 +23402,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleActualizacionSemanal(args)",
-          "startLine": 800,
-          "endLine": 812
+          "startLine": 821,
+          "endLine": 833
         }
       ],
       "calledByFiles": []
@@ -23022,8 +23414,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEfecto3d(args)",
-          "startLine": 814,
-          "endLine": 829
+          "startLine": 835,
+          "endLine": 850
         }
       ],
       "calledByFiles": []
@@ -23034,8 +23426,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleOptimizar3d(args)",
-          "startLine": 831,
-          "endLine": 847
+          "startLine": 852,
+          "endLine": 868
         }
       ],
       "calledByFiles": []
@@ -23046,8 +23438,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleGcpStatus()",
-          "startLine": 849,
-          "endLine": 865
+          "startLine": 870,
+          "endLine": 886
         }
       ],
       "calledByFiles": []
@@ -23058,8 +23450,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleBenchmark()",
-          "startLine": 867,
-          "endLine": 873
+          "startLine": 888,
+          "endLine": 894
         }
       ],
       "calledByFiles": []
@@ -23070,8 +23462,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleMcpStatus()",
-          "startLine": 875,
-          "endLine": 918
+          "startLine": 896,
+          "endLine": 939
         }
       ],
       "calledByFiles": []
@@ -23082,8 +23474,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleArquitecturaDb(rest = [])",
-          "startLine": 920,
-          "endLine": 949
+          "startLine": 941,
+          "endLine": 970
         }
       ],
       "calledByFiles": []
@@ -23094,8 +23486,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleDestilarCurso(rest = [])",
-          "startLine": 951,
-          "endLine": 973
+          "startLine": 972,
+          "endLine": 994
         }
       ],
       "calledByFiles": []
@@ -23106,8 +23498,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCosecharDocs()",
-          "startLine": 975,
-          "endLine": 990
+          "startLine": 996,
+          "endLine": 1011
         }
       ],
       "calledByFiles": []
@@ -23118,8 +23510,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleArquetipo(rest = [])",
-          "startLine": 992,
-          "endLine": 1016
+          "startLine": 1013,
+          "endLine": 1037
         }
       ],
       "calledByFiles": []
@@ -23130,8 +23522,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCrearMovil(rest = [])",
-          "startLine": 1018,
-          "endLine": 1042
+          "startLine": 1039,
+          "endLine": 1063
         }
       ],
       "calledByFiles": []
@@ -23142,8 +23534,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEstado()",
-          "startLine": 1044,
-          "endLine": 1092
+          "startLine": 1065,
+          "endLine": 1113
         }
       ],
       "calledByFiles": []
@@ -23154,8 +23546,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleInvestigarReferencia(args = [])",
-          "startLine": 1094,
-          "endLine": 1107
+          "startLine": 1115,
+          "endLine": 1128
         }
       ],
       "calledByFiles": []
@@ -23166,8 +23558,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleFeedbackCliente(args = [])",
-          "startLine": 1109,
-          "endLine": 1141
+          "startLine": 1130,
+          "endLine": 1162
         }
       ],
       "calledByFiles": []
@@ -23178,8 +23570,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleAprobarTicket(args = [])",
-          "startLine": 1143,
-          "endLine": 1173
+          "startLine": 1164,
+          "endLine": 1194
         }
       ],
       "calledByFiles": []
@@ -23190,8 +23582,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCambioIncremental(args = [])",
-          "startLine": 1175,
-          "endLine": 1241
+          "startLine": 1196,
+          "endLine": 1262
         }
       ],
       "calledByFiles": []
@@ -23202,8 +23594,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleAuditarHarness(args = [])",
-          "startLine": 1243,
-          "endLine": 1251
+          "startLine": 1264,
+          "endLine": 1272
         }
       ],
       "calledByFiles": []
@@ -23214,8 +23606,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCrearIntroVideo(args = [])",
-          "startLine": 1253,
-          "endLine": 1280
+          "startLine": 1274,
+          "endLine": 1301
         }
       ],
       "calledByFiles": []
@@ -23226,8 +23618,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCrearAudio(args = [])",
-          "startLine": 1282,
-          "endLine": 1341
+          "startLine": 1303,
+          "endLine": 1362
         }
       ],
       "calledByFiles": []
@@ -23238,8 +23630,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "export async function handleAterrizar(args = [])",
-          "startLine": 1351,
-          "endLine": 1491
+          "startLine": 1372,
+          "endLine": 1525
         }
       ],
       "calledByFiles": []
@@ -23250,8 +23642,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function main()",
-          "startLine": 1493,
-          "endLine": 1596
+          "startLine": 1527,
+          "endLine": 1642
         },
         {
           "file": "tools/factory.mjs",
@@ -23635,7 +24027,7 @@
           "kind": "function",
           "signature": "export function buildInteractiveIndustryModule(industryInput = 'saas', brandName = 'Agencia Alfa')",
           "startLine": 655,
-          "endLine": 953
+          "endLine": 990
         }
       ],
       "calledByFiles": []
@@ -23646,8 +24038,8 @@
           "file": "tools/design/build_vanilla_primitives.mjs",
           "kind": "function",
           "signature": "export function buildVanillaPrimitives(projectInput = '', morphologyOptions = null)",
-          "startLine": 955,
-          "endLine": 1002
+          "startLine": 992,
+          "endLine": 1039
         }
       ],
       "calledByFiles": []
@@ -23658,8 +24050,8 @@
           "file": "tools/design/build_vanilla_primitives.mjs",
           "kind": "function",
           "signature": "export function applyBespokeMorphologyToProjectDom(projectInput = '', customOptions = {})",
-          "startLine": 1010,
-          "endLine": 1010
+          "startLine": 1047,
+          "endLine": 1047
         }
       ],
       "calledByFiles": [
@@ -26056,6 +26448,7 @@
       ],
       "calledByFiles": [
         "tools/intelligence/instincts_engine.mjs",
+        "tools/intelligence/jev_memory_pipeline.mjs",
         "tools/intelligence/memory_reflector.mjs"
       ]
     },
@@ -26085,6 +26478,7 @@
       ],
       "calledByFiles": [
         "tools/intelligence/instincts_engine.mjs",
+        "tools/intelligence/jev_memory_pipeline.mjs",
         "tools/intelligence/memory_reflector.mjs"
       ]
     },
@@ -26100,6 +26494,7 @@
       ],
       "calledByFiles": [
         "tools/intelligence/instincts_engine.mjs",
+        "tools/intelligence/jev_memory_pipeline.mjs",
         "tools/intelligence/memory_reflector.mjs"
       ]
     },
@@ -26239,6 +26634,106 @@
       ],
       "calledByFiles": []
     },
+    "MEMORY_PIPELINE_REPORT_PATH": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/jev_memory_pipeline.mjs",
+          "kind": "constant",
+          "signature": "export const MEMORY_PIPELINE_REPORT_PATH",
+          "startLine": 57,
+          "endLine": 57
+        }
+      ],
+      "calledByFiles": []
+    },
+    "COLD_ARCHIVE_LEDGER_PATH": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/jev_memory_pipeline.mjs",
+          "kind": "constant",
+          "signature": "export const COLD_ARCHIVE_LEDGER_PATH",
+          "startLine": 58,
+          "endLine": 58
+        }
+      ],
+      "calledByFiles": []
+    },
+    "MEMORY_WRITE_CHOICES": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/jev_memory_pipeline.mjs",
+          "kind": "constant",
+          "signature": "export const MEMORY_WRITE_CHOICES",
+          "startLine": 63,
+          "endLine": 63
+        }
+      ],
+      "calledByFiles": []
+    },
+    "tokenizeFact": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/jev_memory_pipeline.mjs",
+          "kind": "function",
+          "signature": "function tokenizeFact(text = '')",
+          "startLine": 75,
+          "endLine": 81
+        }
+      ],
+      "calledByFiles": [
+        "tools/intelligence/jev_memory_pipeline.mjs"
+      ]
+    },
+    "computeFactSimilarity": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/jev_memory_pipeline.mjs",
+          "kind": "function",
+          "signature": "export function computeFactSimilarity(factA = '', factB = '')",
+          "startLine": 86,
+          "endLine": 96
+        }
+      ],
+      "calledByFiles": [
+        "tools/intelligence/jev_memory_pipeline.mjs"
+      ]
+    },
+    "evaluateMemoryWriteAdmissionWithJev": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/jev_memory_pipeline.mjs",
+          "kind": "function",
+          "signature": "export async function evaluateMemoryWriteAdmissionWithJev(candidateInput = {}, options = {})",
+          "startLine": 117,
+          "endLine": 117
+        }
+      ],
+      "calledByFiles": []
+    },
+    "runJevSleepTimeConsolidationCycle": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/jev_memory_pipeline.mjs",
+          "kind": "function",
+          "signature": "export async function runJevSleepTimeConsolidationCycle(options = {})",
+          "startLine": 402,
+          "endLine": 402
+        }
+      ],
+      "calledByFiles": []
+    },
+    "runJevMemoryPipelineSelfTest": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/jev_memory_pipeline.mjs",
+          "kind": "function",
+          "signature": "export async function runJevMemoryPipelineSelfTest()",
+          "startLine": 545,
+          "endLine": 613
+        }
+      ],
+      "calledByFiles": []
+    },
     "JEV_DECISION_CACHE_PATH": {
       "definitions": [
         {
@@ -26306,7 +26801,7 @@
           "kind": "constant",
           "signature": "export const JevVerdictValibotSchema",
           "startLine": 87,
-          "endLine": 107
+          "endLine": 112
         }
       ],
       "calledByFiles": []
@@ -26317,11 +26812,13 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function compileCompactBamlTypePrompt(predicateId = 'jev-persisted-state-and-env-owner-gate', allowedChoices = [])",
-          "startLine": 113,
-          "endLine": 171
+          "startLine": 118,
+          "endLine": 176
         }
       ],
-      "calledByFiles": []
+      "calledByFiles": [
+        "tools/intelligence/jev_memory_pipeline.mjs"
+      ]
     },
     "parseWithSchemaAlignedRecovery": {
       "definitions": [
@@ -26329,11 +26826,13 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function parseWithSchemaAlignedRecovery(rawInput, defaultPredicateId = 'jev-persisted-state-and-env-owner-gate')",
-          "startLine": 186,
-          "endLine": 273
+          "startLine": 191,
+          "endLine": 278
         }
       ],
-      "calledByFiles": []
+      "calledByFiles": [
+        "tools/intelligence/jev_memory_pipeline.mjs"
+      ]
     },
     "loadJevDecisionCache": {
       "definitions": [
@@ -26341,8 +26840,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function loadJevDecisionCache()",
-          "startLine": 323,
-          "endLine": 342
+          "startLine": 331,
+          "endLine": 350
         }
       ],
       "calledByFiles": []
@@ -26353,8 +26852,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function saveJevDecisionCache(store)",
-          "startLine": 347,
-          "endLine": 353
+          "startLine": 355,
+          "endLine": 361
         }
       ],
       "calledByFiles": []
@@ -26365,8 +26864,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function computeJevPayloadHash(predicateId = '', payloadText = '', specContext = '')",
-          "startLine": 358,
-          "endLine": 361
+          "startLine": 366,
+          "endLine": 369
         }
       ],
       "calledByFiles": []
@@ -26377,8 +26876,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function loadJevFinOpsLedger()",
-          "startLine": 366,
-          "endLine": 404
+          "startLine": 374,
+          "endLine": 412
         }
       ],
       "calledByFiles": []
@@ -26389,8 +26888,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export async function evaluatePersistedStateAndEnvOwnerGate(diffText = '', options = {})",
-          "startLine": 803,
-          "endLine": 803
+          "startLine": 820,
+          "endLine": 820
         }
       ],
       "calledByFiles": []
@@ -26401,8 +26900,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export async function evaluateSpecBusinessInvariantAlignment(diffText = '', specText = '', options = {})",
-          "startLine": 815,
-          "endLine": 815
+          "startLine": 832,
+          "endLine": 832
         }
       ],
       "calledByFiles": []
@@ -26413,8 +26912,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export async function evaluateRedundantTestDetector(diffText = '', options = {})",
-          "startLine": 828,
-          "endLine": 828
+          "startLine": 845,
+          "endLine": 845
         }
       ],
       "calledByFiles": []
@@ -26425,8 +26924,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export async function evaluateCrossTraceFrictionMiner(customTracesText = '', options = {})",
-          "startLine": 842,
-          "endLine": 842
+          "startLine": 859,
+          "endLine": 859
         }
       ],
       "calledByFiles": []
@@ -26437,8 +26936,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function getJevFinOpsStatus()",
-          "startLine": 965,
-          "endLine": 985
+          "startLine": 982,
+          "endLine": 1002
         }
       ],
       "calledByFiles": []
@@ -26449,8 +26948,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export async function runJevSemanticGateSelfTest()",
-          "startLine": 990,
-          "endLine": 1004
+          "startLine": 1007,
+          "endLine": 1021
         }
       ],
       "calledByFiles": []
@@ -26461,8 +26960,8 @@
           "file": "tools/intelligence/mcp_omni_rag_server.mjs",
           "kind": "constant",
           "signature": "export const SERVER_INFO",
-          "startLine": 69,
-          "endLine": 74
+          "startLine": 79,
+          "endLine": 84
         }
       ],
       "calledByFiles": []
@@ -26473,8 +26972,8 @@
           "file": "tools/intelligence/mcp_omni_rag_server.mjs",
           "kind": "constant",
           "signature": "export const TOOLS",
-          "startLine": 76,
-          "endLine": 76
+          "startLine": 86,
+          "endLine": 86
         }
       ],
       "calledByFiles": []
@@ -26485,8 +26984,8 @@
           "file": "tools/intelligence/mcp_omni_rag_server.mjs",
           "kind": "function",
           "signature": "export function generateCsprngSessionId()",
-          "startLine": 522,
-          "endLine": 524
+          "startLine": 567,
+          "endLine": 569
         }
       ],
       "calledByFiles": [
@@ -26499,8 +26998,8 @@
           "file": "tools/intelligence/mcp_omni_rag_server.mjs",
           "kind": "function",
           "signature": "export function sanitizeMcpRetrievedFragment(rawText = '')",
-          "startLine": 529,
-          "endLine": 536
+          "startLine": 574,
+          "endLine": 581
         }
       ],
       "calledByFiles": []
@@ -26511,8 +27010,8 @@
           "file": "tools/intelligence/mcp_omni_rag_server.mjs",
           "kind": "function",
           "signature": "export function discoverToolsByIntent({ intent = '', domain = '', role = 'orchestrator' } = {})",
-          "startLine": 543,
-          "endLine": 543
+          "startLine": 588,
+          "endLine": 588
         }
       ],
       "calledByFiles": []
@@ -26523,8 +27022,8 @@
           "file": "tools/intelligence/mcp_omni_rag_server.mjs",
           "kind": "function",
           "signature": "export function listToolsDeferredCompact()",
-          "startLine": 589,
-          "endLine": 597
+          "startLine": 634,
+          "endLine": 642
         }
       ],
       "calledByFiles": []
@@ -26535,8 +27034,8 @@
           "file": "tools/intelligence/mcp_omni_rag_server.mjs",
           "kind": "function",
           "signature": "export function hydrateDeferredToolSchema(toolName = '')",
-          "startLine": 599,
-          "endLine": 610
+          "startLine": 644,
+          "endLine": 655
         }
       ],
       "calledByFiles": []
@@ -26547,8 +27046,8 @@
           "file": "tools/intelligence/mcp_omni_rag_server.mjs",
           "kind": "function",
           "signature": "export function expandChunkToParentMarkdownSection(chunk = {}, maxChars = 2200)",
-          "startLine": 616,
-          "endLine": 616
+          "startLine": 661,
+          "endLine": 661
         }
       ],
       "calledByFiles": []
@@ -26559,8 +27058,8 @@
           "file": "tools/intelligence/mcp_omni_rag_server.mjs",
           "kind": "function",
           "signature": "export async function executeRagFusionRrfAndCrag(query = '', options = {})",
-          "startLine": 647,
-          "endLine": 647
+          "startLine": 692,
+          "endLine": 692
         }
       ],
       "calledByFiles": []
@@ -26571,8 +27070,8 @@
           "file": "tools/intelligence/mcp_omni_rag_server.mjs",
           "kind": "function",
           "signature": "export function validateMcpRequestSecurity(req = {})",
-          "startLine": 767,
-          "endLine": 767
+          "startLine": 812,
+          "endLine": 812
         }
       ],
       "calledByFiles": []
@@ -26583,8 +27082,8 @@
           "file": "tools/intelligence/mcp_omni_rag_server.mjs",
           "kind": "function",
           "signature": "async function executeSingleMcpTool(toolName, args = {}, traceId = generateCsprngSessionId()",
-          "startLine": 850,
-          "endLine": 850
+          "startLine": 895,
+          "endLine": 895
         }
       ],
       "calledByFiles": []
@@ -26595,8 +27094,8 @@
           "file": "tools/intelligence/mcp_omni_rag_server.mjs",
           "kind": "function",
           "signature": "function sendResponse(id, result)",
-          "startLine": 1150,
-          "endLine": 1152
+          "startLine": 1220,
+          "endLine": 1222
         }
       ],
       "calledByFiles": []
@@ -26607,8 +27106,8 @@
           "file": "tools/intelligence/mcp_omni_rag_server.mjs",
           "kind": "function",
           "signature": "function sendError(id, code, message)",
-          "startLine": 1154,
-          "endLine": 1156
+          "startLine": 1224,
+          "endLine": 1226
         }
       ],
       "calledByFiles": []
@@ -26619,8 +27118,8 @@
           "file": "tools/intelligence/mcp_omni_rag_server.mjs",
           "kind": "function",
           "signature": "export function startMcpServer()",
-          "startLine": 1158,
-          "endLine": 1248
+          "startLine": 1228,
+          "endLine": 1318
         }
       ],
       "calledByFiles": [
@@ -26638,6 +27137,7 @@
         }
       ],
       "calledByFiles": [
+        "tools/intelligence/jev_memory_pipeline.mjs",
         "tools/intelligence/memory_reflector.mjs"
       ]
     },
@@ -26652,6 +27152,7 @@
         }
       ],
       "calledByFiles": [
+        "tools/intelligence/jev_memory_pipeline.mjs",
         "tools/intelligence/memory_reflector.mjs"
       ]
     },
@@ -27245,8 +27746,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function expandQueryBilingual(query)",
-          "startLine": 133,
-          "endLine": 141
+          "startLine": 134,
+          "endLine": 142
         }
       ],
       "calledByFiles": []
@@ -27257,8 +27758,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function scanKnowledgeFiles(dir, maxDepth = 4, depth = 0, mode = 'full')",
-          "startLine": 159,
-          "endLine": 188
+          "startLine": 160,
+          "endLine": 189
         }
       ],
       "calledByFiles": [
@@ -27271,8 +27772,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function splitLongBlock(text, maxChars = 1900, overlapChars = 180)",
-          "startLine": 194,
-          "endLine": 235
+          "startLine": 195,
+          "endLine": 236
         }
       ],
       "calledByFiles": [
@@ -27285,8 +27786,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function createDocumentChunks(filePath)",
-          "startLine": 240,
-          "endLine": 405
+          "startLine": 241,
+          "endLine": 408
         }
       ],
       "calledByFiles": []
@@ -27297,8 +27798,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function invalidateIndexCache()",
-          "startLine": 407,
-          "endLine": 414
+          "startLine": 410,
+          "endLine": 417
         }
       ],
       "calledByFiles": []
@@ -27309,8 +27810,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function addTokensToInvertedMap(invMap, str, chunkIdx)",
-          "startLine": 424,
-          "endLine": 454
+          "startLine": 427,
+          "endLine": 457
         }
       ],
       "calledByFiles": [
@@ -27323,8 +27824,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function prepareChunksForFastSearch(chunks)",
-          "startLine": 456,
-          "endLine": 483
+          "startLine": 459,
+          "endLine": 486
         }
       ],
       "calledByFiles": []
@@ -27335,8 +27836,20 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function deduplicateAndVacuumSqliteFts5()",
-          "startLine": 489,
-          "endLine": 530
+          "startLine": 492,
+          "endLine": 533
+        }
+      ],
+      "calledByFiles": []
+    },
+    "ingestMarkdownFilesIntoSqliteFts5": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/rag_pipeline.mjs",
+          "kind": "function",
+          "signature": "export function ingestMarkdownFilesIntoSqliteFts5(filePaths = [])",
+          "startLine": 539,
+          "endLine": 597
         }
       ],
       "calledByFiles": []
@@ -27347,8 +27860,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function buildOrOpenSqliteFts5Index(chunks, forceRebuild = false)",
-          "startLine": 536,
-          "endLine": 621
+          "startLine": 603,
+          "endLine": 688
         }
       ],
       "calledByFiles": []
@@ -27359,8 +27872,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function querySqliteFts5(sqliteDb, chunkMap, terms, limit = 20)",
-          "startLine": 631,
-          "endLine": 680
+          "startLine": 698,
+          "endLine": 747
         }
       ],
       "calledByFiles": []
@@ -27371,8 +27884,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function buildMiniSearchInstance(chunks)",
-          "startLine": 682,
-          "endLine": 700
+          "startLine": 749,
+          "endLine": 767
         }
       ],
       "calledByFiles": []
@@ -27383,8 +27896,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function buildChunkMap(chunks)",
-          "startLine": 702,
-          "endLine": 708
+          "startLine": 769,
+          "endLine": 775
         }
       ],
       "calledByFiles": []
@@ -27395,8 +27908,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function getOrBuildMiniSearchIndex(force = false)",
-          "startLine": 713,
-          "endLine": 776
+          "startLine": 780,
+          "endLine": 843
         }
       ],
       "calledByFiles": [
@@ -27410,8 +27923,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function capResultsPerFile(items, maxPerFile = 2, limit = 20)",
-          "startLine": 781,
-          "endLine": 795
+          "startLine": 848,
+          "endLine": 862
         }
       ],
       "calledByFiles": []
@@ -27422,8 +27935,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function runLocalSemanticVectorRanker(chunks, queryString, limit = 20)",
-          "startLine": 801,
-          "endLine": 928
+          "startLine": 868,
+          "endLine": 995
         }
       ],
       "calledByFiles": []
@@ -27434,8 +27947,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "async function runLocalOnnxCrossEncoderRerank(query, candidates, limit = 8)",
-          "startLine": 935,
-          "endLine": 982
+          "startLine": 1002,
+          "endLine": 1049
         }
       ],
       "calledByFiles": []
@@ -27446,8 +27959,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function reciprocalRankFusion(rankedLists, k = 60, maxPerFile = 2)",
-          "startLine": 988,
-          "endLine": 1023
+          "startLine": 1055,
+          "endLine": 1090
         }
       ],
       "calledByFiles": []
@@ -27458,8 +27971,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export async function queryKnowledge(query, limit = 8, options = {})",
-          "startLine": 1034,
-          "endLine": 1034
+          "startLine": 1101,
+          "endLine": 1101
         }
       ],
       "calledByFiles": [
@@ -27473,8 +27986,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function queryCodeGraph(symbolOrFileQuery, limit = 8)",
-          "startLine": 1227,
-          "endLine": 1252
+          "startLine": 1294,
+          "endLine": 1319
         }
       ],
       "calledByFiles": []
@@ -27485,8 +27998,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export async function synthesizeAnswer(question, knowledgeList = [])",
-          "startLine": 1257,
-          "endLine": 1319
+          "startLine": 1324,
+          "endLine": 1386
         }
       ],
       "calledByFiles": []
@@ -27497,8 +28010,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export async function getClusterStats()",
-          "startLine": 1321,
-          "endLine": 1354
+          "startLine": 1388,
+          "endLine": 1421
         }
       ],
       "calledByFiles": []
@@ -28208,6 +28721,7 @@
         }
       ],
       "calledByFiles": [
+        "tools/intelligence/jev_memory_pipeline.mjs",
         "tools/intelligence/tom_swe_engine.mjs"
       ]
     },
@@ -28222,6 +28736,7 @@
         }
       ],
       "calledByFiles": [
+        "tools/intelligence/jev_memory_pipeline.mjs",
         "tools/intelligence/tom_swe_engine.mjs"
       ]
     },
@@ -29045,6 +29560,7 @@
         "tools/intelligence/agent_benchmark_harness.mjs",
         "tools/intelligence/eval_matrix.mjs",
         "tools/intelligence/spec_generator.mjs",
+        "tools/orchestrator/deterministic_agent_statechart.mjs",
         "tools/project_loader.mjs",
         "tools/seo_smoke.mjs",
         "tools/serve_site.mjs"
@@ -29227,8 +29743,8 @@
           "file": "tools/media/programmatic_video_forge.mjs",
           "kind": "function",
           "signature": "export async function runProgrammaticVideoForgeSelfTest()",
-          "startLine": 705,
-          "endLine": 752
+          "startLine": 715,
+          "endLine": 762
         }
       ],
       "calledByFiles": []
@@ -29590,6 +30106,134 @@
         }
       ],
       "calledByFiles": []
+    },
+    "MAX_SELF_HEALING_ATTEMPTS": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
+          "kind": "constant",
+          "signature": "export const MAX_SELF_HEALING_ATTEMPTS",
+          "startLine": 33,
+          "endLine": 33
+        }
+      ],
+      "calledByFiles": []
+    },
+    "FACTORY_EVENT_VOCABULARY": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
+          "kind": "constant",
+          "signature": "export const FACTORY_EVENT_VOCABULARY",
+          "startLine": 39,
+          "endLine": 39
+        }
+      ],
+      "calledByFiles": []
+    },
+    "HUMAN_ONLY_EVENTS": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
+          "kind": "constant",
+          "signature": "export const HUMAN_ONLY_EVENTS",
+          "startLine": 56,
+          "endLine": 56
+        }
+      ],
+      "calledByFiles": []
+    },
+    "factoryEnvironmentGuards": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
+          "kind": "constant",
+          "signature": "export const factoryEnvironmentGuards",
+          "startLine": 65,
+          "endLine": 99
+        }
+      ],
+      "calledByFiles": []
+    },
+    "factoryLifecycleMachine": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
+          "kind": "constant",
+          "signature": "export const factoryLifecycleMachine",
+          "startLine": 104,
+          "endLine": 192
+        }
+      ],
+      "calledByFiles": []
+    },
+    "validateAgentPolicyProposal": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
+          "kind": "function",
+          "signature": "export function validateAgentPolicyProposal(snapshot, proposedEvent, options = {})",
+          "startLine": 396,
+          "endLine": 396
+        }
+      ],
+      "calledByFiles": [
+        "tools/orchestrator/deterministic_agent_statechart.mjs"
+      ]
+    },
+    "syncProjectStatechartSnapshot": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
+          "kind": "function",
+          "signature": "export function syncProjectStatechartSnapshot(projectInput = '', eventSequence = [])",
+          "startLine": 444,
+          "endLine": 521
+        }
+      ],
+      "calledByFiles": [
+        "tools/orchestrator/deterministic_agent_statechart.mjs"
+      ]
+    },
+    "generateDeterministicClientUiFsmRuntime": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
+          "kind": "function",
+          "signature": "export function generateDeterministicClientUiFsmRuntime()",
+          "startLine": 528,
+          "endLine": 554
+        }
+      ],
+      "calledByFiles": [
+        "tools/orchestrator/deterministic_agent_statechart.mjs"
+      ]
+    },
+    "renderFactoryStatechartMermaid": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
+          "kind": "function",
+          "signature": "export function renderFactoryStatechartMermaid()",
+          "startLine": 559,
+          "endLine": 577
+        }
+      ],
+      "calledByFiles": []
+    },
+    "runDeterministicStatechartSelfTest": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/deterministic_agent_statechart.mjs",
+          "kind": "function",
+          "signature": "export function runDeterministicStatechartSelfTest()",
+          "startLine": 582,
+          "endLine": 677
+        }
+      ],
+      "calledByFiles": [
+        "tools/orchestrator/deterministic_agent_statechart.mjs"
+      ]
     },
     "FACTORY_YAML_PATH": {
       "definitions": [

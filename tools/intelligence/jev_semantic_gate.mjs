@@ -86,7 +86,7 @@ export function loadJevEnvConfig(customEnv = null) {
  */
 export const JevVerdictValibotSchema = v.strictObject({
   predicateId: v.pipe(v.string(), v.minLength(3)),
-  loopScope: v.picklist(['OUTER_LOOP_PRE_MERGE', 'META_LOOP_TRACE_MINING']),
+  loopScope: v.picklist(['OUTER_LOOP_PRE_MERGE', 'META_LOOP_TRACE_MINING', 'MEMORY_PIPELINE_WRITE_GATE']),
   choice: v.picklist([
     'SAFE_INTERNAL_CHANGE',
     'REQUIRES_HUMAN_CODE_OWNER_REVIEW',
@@ -96,6 +96,11 @@ export const JevVerdictValibotSchema = v.strictObject({
     'REDUNDANT_TAUTOLOGICAL_TEST',
     'FRICTION_CLUSTER_IDENTIFIED',
     'CLEAN_EXECUTION_TRACE',
+    'COMMIT_GLOBAL_INVARIANT',
+    'ISOLATE_TO_PROJECT_SCOPE',
+    'SUPERSEDE_CONFLICTING_FACT',
+    'DROP_TRANSIENT_NOISE',
+    'QUARANTINE_POISONING_RISK',
     'NOUL',
     'ABSTAIN_INSUFFICIENT_EVIDENCE'
   ]),
@@ -283,6 +288,8 @@ export function parseWithSchemaAlignedRecovery(rawInput, defaultPredicateId = 'j
     loopScope:
       candidateObj.loopScope === 'META_LOOP_TRACE_MINING'
         ? 'META_LOOP_TRACE_MINING'
+        : candidateObj.loopScope === 'MEMORY_PIPELINE_WRITE_GATE'
+        ? 'MEMORY_PIPELINE_WRITE_GATE'
         : 'OUTER_LOOP_PRE_MERGE',
     choice: rawChoice,
     score: alignedScore,
@@ -313,7 +320,8 @@ export function parseWithSchemaAlignedRecovery(rawInput, defaultPredicateId = 'j
     under1msVerified: elapsedMs < 5,
     costUsd: 0,
     engine: 'BAML-SAP+Valibot-v2026',
-    data: validated
+    data: validated,
+    verdict: validated
   };
 }
 
@@ -630,12 +638,15 @@ export async function callOfficialJevApi({
   diffText = '',
   specText = '',
   tracesText = '',
+  payload = null,
+  localFallbackEvaluator = null,
   customEnv = null,
   bypassCache = false
 } = {}) {
   const startNs = process.hrtime.bigint();
   const envCfg = loadJevEnvConfig(customEnv);
-  const payloadHash = computeJevPayloadHash(predicateId, diffText || tracesText, specText);
+  const payloadStr = diffText || tracesText || (payload ? JSON.stringify(payload) : '');
+  const payloadHash = computeJevPayloadHash(predicateId, payloadStr, specText);
   const cacheStore = loadJevDecisionCache();
 
   // 1. Sub-0.5ms Deterministic SHA-256 Cache Lookup
@@ -725,30 +736,36 @@ export async function callOfficialJevApi({
         costUsd = Number((tokensUsed * 0.0000004).toFixed(6));
       } else {
         providerUsed = 'OFFICIAL_JEV_API_HTTP_FALLBACK';
-        rawResponsePayload = evaluatePredicateDeterministicLocalFallback({
+        rawResponsePayload = typeof localFallbackEvaluator === 'function'
+          ? localFallbackEvaluator()
+          : evaluatePredicateDeterministicLocalFallback({
+              predicateId,
+              diffText,
+              specText,
+              tracesText
+            });
+      }
+    } catch (_) {
+      providerUsed = 'OFFICIAL_JEV_API_OFFLINE_FALLBACK';
+      rawResponsePayload = typeof localFallbackEvaluator === 'function'
+        ? localFallbackEvaluator()
+        : evaluatePredicateDeterministicLocalFallback({
+            predicateId,
+            diffText,
+            specText,
+            tracesText
+          });
+    }
+  } else {
+    providerUsed = 'LOCAL_FALLBACK_NO_JEV_API_KEY';
+    rawResponsePayload = typeof localFallbackEvaluator === 'function'
+      ? localFallbackEvaluator()
+      : evaluatePredicateDeterministicLocalFallback({
           predicateId,
           diffText,
           specText,
           tracesText
         });
-      }
-    } catch (_) {
-      providerUsed = 'OFFICIAL_JEV_API_OFFLINE_FALLBACK';
-      rawResponsePayload = evaluatePredicateDeterministicLocalFallback({
-        predicateId,
-        diffText,
-        specText,
-        tracesText
-      });
-    }
-  } else {
-    providerUsed = 'LOCAL_FALLBACK_NO_JEV_API_KEY';
-    rawResponsePayload = evaluatePredicateDeterministicLocalFallback({
-      predicateId,
-      diffText,
-      specText,
-      tracesText
-    });
   }
 
   // 4. Parse & Validate through BAML Schema-Aligned Parser (SAP) + Valibot

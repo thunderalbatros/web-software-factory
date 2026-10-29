@@ -1,11 +1,11 @@
 {
   "schema": "jev-sha256-decision-cache-v2026.10",
-  "updatedAt": "2026-10-29T17:45:59.657Z",
-  "totalHits": 5,
-  "totalEntries": 5,
+  "updatedAt": "2026-10-29T19:02:06.622Z",
+  "totalHits": 6,
+  "totalEntries": 7,
   "entries": {
     "1bdfdd1080ca8c727b4e53a181d1a6fa3bc9c94cde8eb9974e6566f763e0b41b": {
-      "cachedAt": "2026-10-29T17:45:59.623Z",
+      "cachedAt": "2026-10-29T19:02:06.551Z",
       "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
       "bamlSchemaCompression": {
         "verboseTokens": 482,
@@ -27,7 +27,7 @@
       }
     },
     "2d9b759d2d65955de69ff9606c61e0cc9f72a2e868394bef8c0ce8ebbfc2f7ab": {
-      "cachedAt": "2026-10-29T17:45:59.636Z",
+      "cachedAt": "2026-10-29T19:02:06.585Z",
       "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
       "bamlSchemaCompression": {
         "verboseTokens": 482,
@@ -48,7 +48,7 @@
       }
     },
     "c70948c4886a88c2c404c6f92e7171763003f2b4dbb93dce720e34599a187b1f": {
-      "cachedAt": "2026-10-29T17:45:59.644Z",
+      "cachedAt": "2026-10-29T19:02:06.598Z",
       "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
       "bamlSchemaCompression": {
         "verboseTokens": 479,
@@ -69,7 +69,7 @@
       }
     },
     "40743a3bd48f3d8c908e44ab4e7d0b77d5bd457d365c80ea145d1fd9bee54be6": {
-      "cachedAt": "2026-10-29T17:45:59.650Z",
+      "cachedAt": "2026-10-29T19:02:06.612Z",
       "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
       "bamlSchemaCompression": {
         "verboseTokens": 479,
@@ -90,7 +90,7 @@
       }
     },
     "026cd220911ca0f81f415cc4a64aed910f8958b780260b4abe5ba1dc94682a9d": {
-      "cachedAt": "2026-10-29T17:45:59.657Z",
+      "cachedAt": "2026-10-29T19:02:06.622Z",
       "provider": "LOCAL_FALLBACK_NO_JEV_API_KEY",
       "bamlSchemaCompression": {
         "verboseTokens": 479,
@@ -108,6 +108,48 @@
           "Repeated cross-trace friction on 'd1_migration_apply' (2 occurrences)"
         ],
         "requiresCodeOwnerRole": "qa-auditor"
+      }
+    },
+    "0f250c8ba364a74c849156e9416ab7c2566fd3a24e42a53e8e3bd410879f2fd7": {
+      "cachedAt": "2026-10-29T19:00:42.118Z",
+      "provider": "OFFICIAL_JEV_API_HTTP_FALLBACK",
+      "bamlSchemaCompression": {
+        "verboseTokens": 480,
+        "compactTokens": 95,
+        "tokenSavingsPct": 80.2
+      },
+      "verdict": {
+        "predicateId": "jev-memory-write-admission-gate",
+        "loopScope": "OUTER_LOOP_PRE_MERGE",
+        "choice": "NOUL",
+        "score": 0,
+        "abstained": true,
+        "noulReason": "ABSTAIN_INSUFFICIENT_EVIDENCE: git diff is empty or shorter than 12 characters.",
+        "evidence": [
+          "Diff length < 12 chars; refusing to hallucinate verdict."
+        ],
+        "requiresCodeOwnerRole": "none"
+      }
+    },
+    "09ff158664ac63c563fab1ca9592ed5f9768341fe7163aaf37f3ac879ae3e02a": {
+      "cachedAt": "2026-10-29T19:02:06.195Z",
+      "provider": "OFFICIAL_JEV_API_HTTP_FALLBACK",
+      "bamlSchemaCompression": {
+        "verboseTokens": 480,
+        "compactTokens": 95,
+        "tokenSavingsPct": 80.2
+      },
+      "verdict": {
+        "predicateId": "jev-memory-write-admission-gate",
+        "loopScope": "MEMORY_PIPELINE_WRITE_GATE",
+        "choice": "COMMIT_GLOBAL_INVARIANT",
+        "score": 98,
+        "abstained": false,
+        "noulReason": null,
+        "evidence": [
+          "Validated transferable engineering invariant in category \"architectural_decision\" (maxOverlap=0.0571 < 0.75, zero ASI06 poisoning)."
+        ],
+        "requiresCodeOwnerRole": "none"
       }
     }
   }

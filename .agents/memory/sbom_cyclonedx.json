@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:74239dae-70a1-4e58-bee7-4780e556cb6e",
+  "serialNumber": "urn:uuid:5479070f-46bc-49f4-8a6e-725f40fb4b81",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-29T17:45:59.274Z",
+    "timestamp": "2026-10-29T19:02:45.479Z",
     "tools": [
       {
         "vendor": "Web Software Factory Studio",
@@ -277,6 +277,26 @@
         {
           "alg": "SHA-512",
           "content": "9e297a0243f64c28562f8dd9e6e27a193c57d3509403e83c2d650cf8dfeb07d3416e450c694b22f4f50dce550f8282804a09b1f5fede18e629274e3f7d26ba15"
+        }
+      ]
+    },
+    {
+      "type": "library",
+      "bom-ref": "pkg:npm/xstate@5.33.3",
+      "name": "xstate",
+      "version": "5.33.3",
+      "purl": "pkg:npm/xstate@5.33.3",
+      "licenses": [
+        {
+          "license": {
+            "id": "MIT"
+          }
+        }
+      ],
+      "hashes": [
+        {
+          "alg": "SHA-512",
+          "content": "0270d18d2fc6c8a1e66c0d4fca1542601a98b00ec419edca1a0783d21b77345b17ce8cfb95e5ff1d00c55fd4251c527f96d2c73ec8028496303f346f07fd1be2"
         }
       ]
     }

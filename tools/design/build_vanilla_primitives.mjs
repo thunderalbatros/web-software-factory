@@ -860,15 +860,51 @@ export function buildInteractiveIndustryModule(industryInput = 'saas', brandName
   const selected = modules[key] || modules.saas;
   const jsCode = `/**
  * site/js/industry-interactive.js — Deterministic Interactive Industry Module (${key})
+ * Governed by Harel/Horrocks/XState v5 Deterministic UI State Machine (Zero Impossible States)
  */
 (function initIndustryInteractiveModule() {
   if (typeof document === 'undefined') return;
   let cartItems = 1;
   let cartCents = 14900;
 
+  function createUiStateMachine(config) {
+    let currentState = config.initial || 'idle';
+    const rootEl = config.element || null;
+    if (rootEl) rootEl.setAttribute('data-ui-state', currentState);
+    return {
+      getState: function () { return currentState; },
+      can: function (eventType) {
+        const stateDef = (config.states && config.states[currentState]) || {};
+        return Boolean(stateDef.on && stateDef.on[eventType]);
+      },
+      send: function (eventType) {
+        const stateDef = (config.states && config.states[currentState]) || {};
+        const nextTarget = stateDef.on && stateDef.on[eventType];
+        if (!nextTarget) return currentState;
+        currentState = typeof nextTarget === 'string' ? nextTarget : nextTarget.target;
+        if (rootEl) rootEl.setAttribute('data-ui-state', currentState);
+        return currentState;
+      }
+    };
+  }
+
+  const moduleEl = document.getElementById('industry-interactive-module');
+  const uiMachine = createUiStateMachine({
+    initial: 'idle',
+    element: moduleEl,
+    states: {
+      idle: { on: { INTERACT: 'computing' } },
+      computing: { on: { SETTLE: 'settled', ERROR: 'error' } },
+      settled: { on: { INTERACT: 'computing', RESET: 'idle' } },
+      error: { on: { INTERACT: 'computing', RESET: 'idle' } }
+    }
+  });
+  if (typeof window !== 'undefined') window.__wfUiMachine = uiMachine;
+
   document.addEventListener('click', function (ev) {
     const target = ev.target && ev.target.closest ? ev.target.closest('button') : null;
     if (!target) return;
+    uiMachine.send('INTERACT');
 
     if (target.hasAttribute('data-cart-add')) {
       const addCents = parseInt(target.getAttribute('data-price-cents') || '0', 10);
@@ -939,6 +975,7 @@ export function buildInteractiveIndustryModule(industryInput = 'saas', brandName
           : 'Latencia P99: 14ms | Ahorro Cloud: $380/mes | Incremento CRO: +24.5%';
       }
     }
+    uiMachine.send('SETTLE');
   });
 })();
 `;

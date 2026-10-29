@@ -13,7 +13,8 @@
       "claude-council",
       "arena-skill",
       "caveman",
-      "jev-context-and-harness-engineering"
+      "jev-context-and-harness-engineering",
+      "deterministic-xstate-and-jev-memory"
     ],
     "product-spec-architect": [
       "modularity",
@@ -61,7 +62,8 @@
       "animate",
       "layout-primitives-architect",
       "threejs-r186-tsl-and-gsap-free",
-      "jev-context-and-harness-engineering"
+      "jev-context-and-harness-engineering",
+      "deterministic-xstate-and-jev-memory"
     ],
     "edge-fullstack-architect": [
       "workers-best-practices",
@@ -107,7 +109,8 @@
       "kb-writing",
       "self-evolving-factory",
       "agent-self-evaluation",
-      "continuous-learning-instincts"
+      "continuous-learning-instincts",
+      "deterministic-xstate-and-jev-memory"
     ]
   },
   "archetypes": {

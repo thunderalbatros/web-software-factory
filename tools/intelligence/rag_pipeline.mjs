@@ -120,7 +120,8 @@ const BILINGUAL_THESAURUS = [
   { match: /\b(shader|shaders|glsl|holografico|holográfico|3d|tilt|audio|webaudio|zzfx|webgl|webgpu|psicoacustica|psicoacústica|modal|biquad|lufs|ebu|r128|synchresis|sincresis|tonejs|strudel|bouba|kiki)\b/i, expand: 'CANON_ATOMIC_PSYCHOACOUSTICS_PROCEDURAL_DSP_AND_AUDIOVISUAL_SYNCHRESIS_2026 CANON_2D_3D_GRAPHICS_SHADERS_AND_AESTHETICS_2026 CANON_OPEN_BOOKS_SHADERS_SDF_AND_WEB_ANIMATION_MASTERY_2026 glsl sdf dynamicscompressor zzfx biquadfilternode lufs iso 226 CANON_3D_PBR_AND_CINEMATOGRAPHY_GUIDE' },
   { match: /\b(ciberseguridad|seguridad|vulnerabilidad|vulnerabilidades|xss|csp|dompurify|trustedtypes|oauth|pkce|fraude|bot|criptografia|criptografía|owasp)\b/i, expand: 'CANON_CYBERSECURITY_DEVSECOPS_2026 CYBERSECURITY_MASTER_PROTOCOL ANTI_BOT_STEALTH_GUIDE owasp asvs xss dompurify trustedtypes csp oauth 2.1 pkce thumbmarkjs turnstile CANON_REAL_WORLD_CRYPTOGRAPHY_DAVID_WONG' },
   { match: /\b(libro|libros|curso|cursos|documentacion|documentación|catalogo|catálogo|fuentes|universidad|cmu|stanford|berkeley|crisp|untainted|trifecta|beads|land\s*the\s*plane|15-445|pavlo|mvcc|6\.5840|6\.102|ousterhout|15-462|keenan\s*crane|cs253|feross|ccrma|220a|baymard|web\.dev)\b/i, expand: 'CANON_UNIVERSITY_COURSES_AND_28_FACTORY_TALKS_2026 CANON_DOMAIN_CMU_15445_MVCC_BTREE_WAL_AND_ATOMIC_TX_2026 CANON_DOMAIN_MIT_65840_DISTRIBUTED_IDEMPOTENCY_AND_DURABLE_OBJECTS_2026 CANON_DOMAIN_MIT_6102_OUSTERHOUT_DEEP_MODULES_AND_REP_INVARIANTS_2026 CANON_DOMAIN_CMU_15462_KEENAN_CRANE_AND_WEBGPU_SHADERS_60FPS_2026 CANON_DOMAIN_STANFORD_CS253_WEB_SECURITY_SOP_CSP_AND_WEBAUTHN_2026 CANON_DOMAIN_GOOGLE_WEBDEV_CWV_BLINK_V8_A11Y_AND_MODERN_CSS_2026 CANON_DOMAIN_STANFORD_CCRMA_220A_MODAL_SYNTHESIS_AND_PROCEDURAL_AUDIO_2026 CANON_DOMAIN_BAYMARD_AND_LAWS_OF_UX_CHECKOUT_CRO_2026 CURATED_MASTER_BOOKS_COURSES_AND_DOCS_CATALOG_2026' },
-  { match: /\b(jev|baml|sap|repomap|pagerank|fast-check|harness\s*engineering|context\s*engineering|noul|schema-aligned|pure\s*component|slicer)\b/i, expand: 'CANON_JEV_BAML_SAP_CONTEXT_REPOMAP_AND_HARNESS_ENGINEERING_2026 skill_jev-context-and-harness-engineering JEV_API_KEY JEV_API_BASE_URL parseWithSchemaAlignedRecovery buildPageRankRepoMap sliceTargetFunctionAndCallSites runStatelessComponentStressHarness runLocalEnterpriseAndCommerceSimulator' },
+  { match: /\b(jev|baml|sap|repomap|pagerank|fast-check|harness\s*engineering|context\s*engineering|noul|schema-aligned|pure\s*component|slicer|memory\s*pipeline|act-r|memgpt|letta|graphiti|zep|sleep-time)\b/i, expand: 'jev_and_cognitive_memory_pipelines_master_treatise_2026 CANON_JEV_BAML_SAP_CONTEXT_REPOMAP_AND_HARNESS_ENGINEERING_2026 skill_jev-context-and-harness-engineering skill_deterministic-xstate-and-jev-memory JEV_API_KEY JEV_API_BASE_URL parseWithSchemaAlignedRecovery evaluateMemoryWriteAdmissionWithJev runJevSleepTimeConsolidationCycle' },
+  { match: /\b(xstate|stately|statechart|statecharts|determinism|determinismo|harel|khourshid|burr|fsm|state\s*machine|sentinel|sentinels)\b/i, expand: 'deterministic_agentic_ai_xstate_stately_and_statecharts_treatise_2026 skill_deterministic-xstate-and-jev-memory factoryLifecycleMachine validateAgentPolicyProposal createUiStateMachine David Khourshid Harel Statecharts' },
   { match: /\b(suiza|proporcion|proporción|aurea|áurea|bringhurst|tipografia|tipografía)\b/i, expand: 'book_elements_of_typographic_style_bringhurst CANON_CLEAN_ROOM_SWISS_TYPOGRAPHY_COLOR_LIGHT_AND_CSS_SECRETS_2026 CANON_OPEN_BOOKS_TYPOGRAPHY_COLOR_GRIDS_AND_WEB_PERF_2026' },
   { match: /\b(chromium|grigorik|hpbn|butterick|renderingng)\b/i, expand: 'CANON_OPEN_BOOKS_TYPOGRAPHY_COLOR_GRIDS_AND_WEB_PERF_2026 renderingng' },
   { match: /\b(validacion|validación|esquemas|valibot|zod)\b/i, expand: 'CANON_50_REPOS_AGENTIC_SOFTWARE_FACTORY_TOM_SWE_STAGEHAND_AND_OXC_2026 CANON_TYPESCRIPT_RAUSCHMAYER_ZOD_VALIBOT_AND_DATA_ORIENTED_2026 CANON_WEB_SOFTWARE_FACTORY_MCP_DTCG_AND_LIGHTNINGCSS_2026' },
@@ -292,6 +293,8 @@ function createDocumentChunks(filePath) {
     'ANTI_BOT_STEALTH_GUIDE',
     'LIBRARY_INGEST_02_MOTION_SHADERS_GAME_ENGINE_AND_AUDIO_25_BOOKS_2026',
     'book_game_feel_steve_swink',
+    'jev_and_cognitive_memory_pipelines_master_treatise_2026',
+    'deterministic_agentic_ai_xstate_stately_and_statecharts_treatise_2026',
     'INDEX'
   ]);
   const isHighPriorityCanon = rel.startsWith('knowledge/') && CORE_PROJECT_TREATISES.has(fileName);
@@ -526,6 +529,70 @@ export function deduplicateAndVacuumSqliteFts5() {
     uniqueDocs: afterStats.uniqueDocs,
     sizeBeforeMb,
     sizeAfterMb
+  };
+}
+
+/**
+ * Surgically ingests or updates specific Markdown files into `.cache/omni_rag_fts5.sqlite`
+ * with strict `DELETE FROM chunks_fts WHERE source = ?` deduplication (`1.00x` ratio preserved).
+ */
+export function ingestMarkdownFilesIntoSqliteFts5(filePaths = []) {
+  if (!DatabaseSyncClass || !fs.existsSync(SQLITE_FTS_FILE)) {
+    return { passed: false, reason: 'SQLITE_UNAVAILABLE' };
+  }
+  invalidateIndexCache();
+  const db = new DatabaseSyncClass(SQLITE_FTS_FILE);
+  db.exec('PRAGMA journal_mode = WAL; PRAGMA synchronous = NORMAL;');
+
+  const delSourceStmt = db.prepare('DELETE FROM chunks_fts WHERE source = ?');
+  const delIdStmt = db.prepare('DELETE FROM chunks_fts WHERE id = ?');
+  const insertStmt = db.prepare(
+    'INSERT INTO chunks_fts (id, source, category, snippet, title, section, text) VALUES (?, ?, ?, ?, ?, ?, ?)'
+  );
+
+  let filesIngested = 0;
+  let chunksInserted = 0;
+
+  db.exec('BEGIN IMMEDIATE');
+  for (const fp of filePaths) {
+    const absPath = path.isAbsolute(fp) ? fp : path.join(ROOT, fp);
+    if (!fs.existsSync(absPath)) continue;
+    const chunks = createDocumentChunks(absPath);
+    if (!chunks.length) continue;
+    const sourceUri = chunks[0].source;
+    delSourceStmt.run(sourceUri);
+    for (const c of chunks) {
+      delIdStmt.run(c.id);
+      insertStmt.run(
+        String(c.id || ''),
+        String(c.source || ''),
+        String(c.category || 'canon-treatise'),
+        String(c.snippet || ''),
+        String(c.title || ''),
+        String(c.section || ''),
+        String(c.text || '')
+      );
+      chunksInserted++;
+    }
+    filesIngested++;
+  }
+  db.exec('COMMIT');
+  try { db.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');"); } catch (_) {}
+  try { db.exec('PRAGMA wal_checkpoint(TRUNCATE);'); } catch (_) {}
+
+  const stats = db
+    .prepare('SELECT COUNT(*) AS totalRows, COUNT(DISTINCT id) AS uniqueIds, COUNT(DISTINCT source) AS uniqueDocs FROM chunks_fts')
+    .get();
+  db.close();
+
+  return {
+    passed: stats.totalRows === stats.uniqueIds,
+    filesIngested,
+    chunksInserted,
+    totalRows: stats.totalRows,
+    uniqueIds: stats.uniqueIds,
+    uniqueDocs: stats.uniqueDocs,
+    duplicationRatio: Number((stats.totalRows / Math.max(1, stats.uniqueIds)).toFixed(2))
   };
 }
 

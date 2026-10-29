@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-29T17:44:12.475Z",
+  "timestamp": "2026-10-29T19:03:14.098Z",
   "viewportsVerified": [
     1440,
     768,
@@ -76,10 +76,10 @@
     }
   },
   "cdpPerformanceAndA11y": {
-    "jsHeapUsedBytes": 3402680,
+    "jsHeapUsedBytes": 3406676,
     "jsHeapUsedMB": 3.25,
-    "layoutDurationMs": 114.06,
-    "recalcStyleDurationMs": 30.29,
+    "layoutDurationMs": 130.3,
+    "recalcStyleDurationMs": 38.58,
     "a11yTreeHealthy": true
   },
   "impeccableBoundedPasses": {
@@ -89,7 +89,7 @@
       768,
       375
     ],
-    "industryArchetype": "b2b-saas-platform",
+    "industryArchetype": "saas",
     "surfaceMode": "Persuade"
   },
   "blockers": 0

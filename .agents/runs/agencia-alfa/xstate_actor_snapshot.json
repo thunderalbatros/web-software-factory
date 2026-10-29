@@ -1,0 +1,299 @@
+{
+  "schemaVersion": "2026.10-xstate-v5-actor-snapshot",
+  "projectSlug": "agencia-alfa",
+  "updatedAt": "2026-10-29T19:04:01.502Z",
+  "activeState": "packaged_and_landed",
+  "status": "done",
+  "context": {
+    "projectSlug": "agencia-alfa",
+    "gate1Status": "COMPLETED_BY_CTO",
+    "gate2Status": "COMPLETED_BY_CTO",
+    "hasBrandIdentityLock": true,
+    "hasSpecAndDesign": true,
+    "untaintedResearchVerified": true,
+    "maxStageInstructions": 14,
+    "tokensCompiled": true,
+    "morphologyApplied": true,
+    "wave2Complete": true,
+    "ryuxScore": 100,
+    "securityScore": 100,
+    "visualBlockers": 0,
+    "jevVerdict": "ALIGNED_WITH_SPEC",
+    "repairAttempts": 0,
+    "hitlApprovedByCto": true,
+    "transitionLog": [
+      {
+        "event": "INIT_PROJECT",
+        "to": "gate1_prd_pending",
+        "ts": "2026-10-29T19:04:01.497Z",
+        "reads": [],
+        "writes": [
+          "gate1Status",
+          "gate2Status"
+        ]
+      },
+      {
+        "event": "APPROVE_GATE1_PRD",
+        "to": "gate1_prd_approved",
+        "actor": "human",
+        "ts": "2026-10-29T19:04:01.497Z",
+        "reads": [
+          "gate1Status"
+        ],
+        "writes": [
+          "gate1Status",
+          "hasBrandIdentityLock"
+        ]
+      },
+      {
+        "event": "OPEN_GATE2_INTERVIEW",
+        "to": "gate2_spec_pending",
+        "ts": "2026-10-29T19:04:01.497Z",
+        "reads": [
+          "gate1Status"
+        ],
+        "writes": [
+          "gate2Status"
+        ]
+      },
+      {
+        "event": "APPROVE_GATE2_SPEC",
+        "to": "gate2_spec_approved",
+        "actor": "human",
+        "ts": "2026-10-29T19:04:01.498Z",
+        "reads": [
+          "gate1Status",
+          "gate2Status"
+        ],
+        "writes": [
+          "gate2Status",
+          "hasSpecAndDesign"
+        ]
+      },
+      {
+        "event": "COMPLETE_RPI_UNTAINTED_RESEARCH",
+        "to": "rpi_research_untainted",
+        "ts": "2026-10-29T19:04:01.498Z",
+        "reads": [
+          "gate2Status"
+        ],
+        "writes": [
+          "untaintedResearchVerified",
+          "maxStageInstructions"
+        ]
+      },
+      {
+        "event": "START_WAVE1_FOUNDATION",
+        "to": "wave1_foundation",
+        "ts": "2026-10-29T19:04:01.498Z",
+        "reads": [
+          "untaintedResearchVerified"
+        ],
+        "writes": [
+          "tokensCompiled",
+          "morphologyApplied"
+        ]
+      },
+      {
+        "event": "COMPLETE_WAVE1_FOUNDATION",
+        "to": "wave2_specialist_forge",
+        "ts": "2026-10-29T19:04:01.499Z",
+        "reads": [
+          "tokensCompiled"
+        ],
+        "writes": [
+          "wave2Complete"
+        ]
+      },
+      {
+        "event": "COMPLETE_WAVE2_SPECIALIST_FORGE",
+        "to": "wave3_qa_and_jev_verification",
+        "ts": "2026-10-29T19:04:01.499Z",
+        "reads": [
+          "wave2Complete"
+        ],
+        "writes": [
+          "ryuxScore",
+          "securityScore",
+          "visualBlockers"
+        ]
+      },
+      {
+        "event": "PASS_WAVE3_QA_AND_JEV",
+        "to": "hitl_review_ready",
+        "ts": "2026-10-29T19:04:01.500Z",
+        "reads": [
+          "ryuxScore",
+          "securityScore",
+          "visualBlockers"
+        ],
+        "writes": [
+          "hitlReady"
+        ]
+      },
+      {
+        "event": "APPROVE_HITL_DELIVERY",
+        "to": "packaged_and_landed",
+        "actor": "human",
+        "ts": "2026-10-29T19:04:01.500Z",
+        "reads": [
+          "ryuxScore",
+          "securityScore"
+        ],
+        "writes": [
+          "hitlApprovedByCto"
+        ]
+      }
+    ],
+    "rejectedPolicyProposals": []
+  },
+  "persistedSnapshot": {
+    "status": "done",
+    "value": "packaged_and_landed",
+    "historyValue": {},
+    "context": {
+      "projectSlug": "agencia-alfa",
+      "gate1Status": "COMPLETED_BY_CTO",
+      "gate2Status": "COMPLETED_BY_CTO",
+      "hasBrandIdentityLock": true,
+      "hasSpecAndDesign": true,
+      "untaintedResearchVerified": true,
+      "maxStageInstructions": 14,
+      "tokensCompiled": true,
+      "morphologyApplied": true,
+      "wave2Complete": true,
+      "ryuxScore": 100,
+      "securityScore": 100,
+      "visualBlockers": 0,
+      "jevVerdict": "ALIGNED_WITH_SPEC",
+      "repairAttempts": 0,
+      "hitlApprovedByCto": true,
+      "transitionLog": [
+        {
+          "event": "INIT_PROJECT",
+          "to": "gate1_prd_pending",
+          "ts": "2026-10-29T19:04:01.497Z",
+          "reads": [],
+          "writes": [
+            "gate1Status",
+            "gate2Status"
+          ]
+        },
+        {
+          "event": "APPROVE_GATE1_PRD",
+          "to": "gate1_prd_approved",
+          "actor": "human",
+          "ts": "2026-10-29T19:04:01.497Z",
+          "reads": [
+            "gate1Status"
+          ],
+          "writes": [
+            "gate1Status",
+            "hasBrandIdentityLock"
+          ]
+        },
+        {
+          "event": "OPEN_GATE2_INTERVIEW",
+          "to": "gate2_spec_pending",
+          "ts": "2026-10-29T19:04:01.497Z",
+          "reads": [
+            "gate1Status"
+          ],
+          "writes": [
+            "gate2Status"
+          ]
+        },
+        {
+          "event": "APPROVE_GATE2_SPEC",
+          "to": "gate2_spec_approved",
+          "actor": "human",
+          "ts": "2026-10-29T19:04:01.498Z",
+          "reads": [
+            "gate1Status",
+            "gate2Status"
+          ],
+          "writes": [
+            "gate2Status",
+            "hasSpecAndDesign"
+          ]
+        },
+        {
+          "event": "COMPLETE_RPI_UNTAINTED_RESEARCH",
+          "to": "rpi_research_untainted",
+          "ts": "2026-10-29T19:04:01.498Z",
+          "reads": [
+            "gate2Status"
+          ],
+          "writes": [
+            "untaintedResearchVerified",
+            "maxStageInstructions"
+          ]
+        },
+        {
+          "event": "START_WAVE1_FOUNDATION",
+          "to": "wave1_foundation",
+          "ts": "2026-10-29T19:04:01.498Z",
+          "reads": [
+            "untaintedResearchVerified"
+          ],
+          "writes": [
+            "tokensCompiled",
+            "morphologyApplied"
+          ]
+        },
+        {
+          "event": "COMPLETE_WAVE1_FOUNDATION",
+          "to": "wave2_specialist_forge",
+          "ts": "2026-10-29T19:04:01.499Z",
+          "reads": [
+            "tokensCompiled"
+          ],
+          "writes": [
+            "wave2Complete"
+          ]
+        },
+        {
+          "event": "COMPLETE_WAVE2_SPECIALIST_FORGE",
+          "to": "wave3_qa_and_jev_verification",
+          "ts": "2026-10-29T19:04:01.499Z",
+          "reads": [
+            "wave2Complete"
+          ],
+          "writes": [
+            "ryuxScore",
+            "securityScore",
+            "visualBlockers"
+          ]
+        },
+        {
+          "event": "PASS_WAVE3_QA_AND_JEV",
+          "to": "hitl_review_ready",
+          "ts": "2026-10-29T19:04:01.500Z",
+          "reads": [
+            "ryuxScore",
+            "securityScore",
+            "visualBlockers"
+          ],
+          "writes": [
+            "hitlReady"
+          ]
+        },
+        {
+          "event": "APPROVE_HITL_DELIVERY",
+          "to": "packaged_and_landed",
+          "actor": "human",
+          "ts": "2026-10-29T19:04:01.500Z",
+          "reads": [
+            "ryuxScore",
+            "securityScore"
+          ],
+          "writes": [
+            "hitlApprovedByCto"
+          ]
+        }
+      ],
+      "rejectedPolicyProposals": []
+    },
+    "children": {}
+  }
+}

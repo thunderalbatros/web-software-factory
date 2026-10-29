@@ -26,6 +26,7 @@ export const SBOM_CYCLONEDX_PATH = path.join(ROOT, ".agents", "memory", "sbom_cy
 const IGNORED_DIRS = new Set([
   "node_modules",
   ".git",
+  ".cache",
   "references",
   "dist",
   ".agents",

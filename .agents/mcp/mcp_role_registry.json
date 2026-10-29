@@ -51,7 +51,9 @@
         "factory_repomap_pagerank",
         "factory_ast_slice_function",
         "factory_jev_evaluate_diff",
-        "factory_run_local_commerce_rls_harness"
+        "factory_run_local_commerce_rls_harness",
+        "jev_memory_pipeline_gate",
+        "xstate_validate_transition"
       ]
     },
     "context7": {

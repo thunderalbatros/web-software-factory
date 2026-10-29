@@ -47,6 +47,16 @@ import {
   sliceTargetFunctionAndCallSites
 } from './codebase_ast_indexer.mjs';
 import { evaluateFullJevOuterAndMetaGate } from './jev_semantic_gate.mjs';
+import {
+  evaluateMemoryWriteAdmissionWithJev,
+  runJevSleepTimeConsolidationCycle
+} from './jev_memory_pipeline.mjs';
+import {
+  syncProjectStatechartSnapshot,
+  factoryLifecycleMachine,
+  validateAgentPolicyProposal
+} from '../orchestrator/deterministic_agent_statechart.mjs';
+import { createActor } from 'xstate';
 import { runFullLocalHarnessSuite } from '../audit/local_fullstack_and_component_harness.mjs';
 import {
   evaluateGovernancePolicy,
@@ -503,6 +513,41 @@ export const TOOLS = [
         hitlConfirmed: { type: 'boolean', description: 'Mandatory human confirmation gate.' }
       },
       required: ['branchName', 'title', 'hitlConfirmed'],
+      additionalProperties: false
+    }
+  },
+  {
+    name: 'jev_memory_pipeline_gate',
+    domain: 'memory',
+    mcpServer: 'omni-rag-ast',
+    readOnly: false,
+    description:
+      'Evaluates a candidate memory write through the 5-Tier Cognitive Memory Pipeline governed by JEV (COMMIT_GLOBAL_INVARIANT | ISOLATE_TO_PROJECT_SCOPE | SUPERSEDE_CONFLICTING_FACT | DROP_TRANSIENT_NOISE | QUARANTINE_POISONING_RISK | NOUL), or triggers a Sleep-Time consolidation cycle.',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        fact: { type: 'string', description: 'Candidate memory fact or rule to evaluate.' },
+        projectSlug: { type: 'string', description: 'Project slug for aesthetic isolation (default agencia-alfa).' },
+        runSleepTimeConsolidation: { type: 'boolean', description: 'If true, runs JEV Sleep-Time consolidation cycle.' }
+      },
+      additionalProperties: false
+    }
+  },
+  {
+    name: 'xstate_validate_transition',
+    domain: 'orchestration',
+    mcpServer: 'omni-rag-ast',
+    readOnly: true,
+    description:
+      'Validates an agent policy event proposal against the XState v5 Factory Lifecycle Statechart (@statelyai/agent Environment-vs-Policy split: vocabulary check, human-only actor guard, and snapshot.can(event)).',
+    inputSchema: {
+      type: 'object',
+      properties: {
+        projectSlug: { type: 'string', description: 'Target project slug (default agencia-alfa).' },
+        proposedEvent: { type: 'string', description: 'Event type proposed by the agent (e.g. START_WAVE1_FOUNDATION).' },
+        actorRole: { type: 'string', description: 'Caller role: "agent" or "human" (default "agent").' }
+      },
+      required: ['proposedEvent'],
       additionalProperties: false
     }
   }
@@ -1143,6 +1188,31 @@ async function executeSingleMcpTool(toolName, args = {}, traceId = generateCsprn
   if (toolName === 'factory_run_local_commerce_rls_harness') {
     const res = await runFullLocalHarnessSuite();
     return { traceId, ...res };
+  }
+  if (toolName === 'jev_memory_pipeline_gate') {
+    if (args.runSleepTimeConsolidation) {
+      const report = await runJevSleepTimeConsolidationCycle({ persist: true });
+      return { traceId, mode: 'SLEEP_TIME_CONSOLIDATION', report };
+    }
+    const res = await evaluateMemoryWriteAdmissionWithJev(
+      { fact: args.fact || '', projectSlug: args.projectSlug || 'agencia-alfa' },
+      { persist: false }
+    );
+    return { traceId, mode: 'WRITE_GATE_EVALUATION', ...res };
+  }
+  if (toolName === 'xstate_validate_transition') {
+    const syncSnap = syncProjectStatechartSnapshot(args.projectSlug || 'agencia-alfa');
+    const actor = createActor(factoryLifecycleMachine, {
+      snapshot: syncSnap.persistedSnapshot
+    });
+    actor.start();
+    const validation = validateAgentPolicyProposal(
+      actor.getSnapshot(),
+      { type: args.proposedEvent },
+      { actorRole: args.actorRole || 'agent' }
+    );
+    actor.stop();
+    return { traceId, projectSlug: syncSnap.projectSlug, ...validation };
   }
   throw new Error(`Unknown tool: ${toolName}`);
 }
