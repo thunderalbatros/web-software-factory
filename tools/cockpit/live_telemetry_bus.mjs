@@ -27,6 +27,9 @@ export const DORA_LEDGER_PATH = path.join(FACTORY_ROOT, '.agents', 'memory', 'fa
 export const ACTIVE_PROJECT_PATH = path.join(FACTORY_ROOT, '.agents', 'memory', 'active_project.json');
 export const MCP_ROLE_REGISTRY_PATH = path.join(FACTORY_ROOT, '.agents', 'mcp', 'mcp_role_registry.json');
 export const SKILL_QUALITY_PATH = path.join(FACTORY_ROOT, '.agents', 'memory', 'skill_quality_records.json');
+export const GCP_FINOPS_BUDGET_PATH = path.join(FACTORY_ROOT, '.agents', 'memory', 'gcp_finops_budget.json');
+export const JEV_MEMORY_REPORT_PATH = path.join(FACTORY_ROOT, '.agents', 'memory', 'jev_memory_pipeline_report.json');
+export const JEV_FINOPS_LEDGER_PATH = path.join(FACTORY_ROOT, '.agents', 'memory', 'jev_finops_ledger.json');
 
 export const telemetryEmitter = new EventEmitter();
 telemetryEmitter.setMaxListeners(50);
@@ -284,7 +287,7 @@ function readJsonSafe(filePath, fallback) {
 }
 
 /**
- * Loads the active project metadata without throwing.
+ * Loads the active project metadata without throwing, including Dual Interview Gate (#1 & #2) status.
  */
 export function getActiveProjectSnapshot() {
   const active = readJsonSafe(ACTIVE_PROJECT_PATH, {
@@ -295,15 +298,103 @@ export function getActiveProjectSnapshot() {
     style: 'bento'
   });
   const slug = active.activeSlug || 'agencia-alfa';
-  const manifestPath = path.join(FACTORY_ROOT, 'projects', slug, 'factory.project.json');
+  const projDir = path.join(FACTORY_ROOT, 'projects', slug);
+  const manifestPath = path.join(projDir, 'factory.project.json');
   const manifest = readJsonSafe(manifestPath, {});
+
+  const prdInterviewState = readJsonSafe(path.join(projDir, 'PRD_INTERVIEW_STATE.json'), {});
+  const specInterviewState = readJsonSafe(path.join(projDir, 'CLIENT_BRIEF_INTERVIEW.json'), {});
+  const prdInterviewStatus = prdInterviewState.prdInterviewStatus || 'PENDING_CTO_PRD_INPUT';
+  const brandIdentityMode =
+    prdInterviewState.block4_existing_brand_identity?.brandIdentityMode ||
+    prdInterviewState.brandIdentityMode ||
+    'PARTIAL_BRAND_EVOLUTION';
+  const specInterviewStatus = specInterviewState.specInterviewStatus || 'PENDING_CTO_SPEC_INPUT';
+
   return {
     projectSlug: slug,
     name: manifest.name || active.name || slug,
     stack: manifest.stack || active.stack || 'vanilla-edge',
     archetype: manifest.archetype || active.archetype || 'saas-b2b',
     style: manifest.style || active.style || 'bento',
-    dbTier: manifest.dbTier || 'edge-d1'
+    dbTier: manifest.dbTier || 'edge-d1',
+    prdInterviewStatus,
+    brandIdentityMode,
+    specInterviewStatus,
+    dualInterviewsApproved:
+      prdInterviewStatus === 'COMPLETED_BY_CTO' && specInterviewStatus === 'COMPLETED_BY_CTO'
+  };
+}
+
+/**
+ * Loads the deterministic XState v5 actor snapshot & Burr hash chain for the given project.
+ */
+export function getXStateSnapshotForProject(slugInput) {
+  const slug = slugInput || getActiveProjectSnapshot().projectSlug || 'agencia-alfa';
+  const xstatePath = path.join(FACTORY_ROOT, '.agents', 'runs', slug, 'xstate_actor_snapshot.json');
+  const snap = readJsonSafe(xstatePath, null);
+  if (!snap) {
+    return {
+      projectSlug: slug,
+      currentState: 'uninitialized',
+      activeState: 'uninitialized',
+      chainHash: 'GENESIS_0000',
+      burrActionLog: [],
+      updatedAt: null
+    };
+  }
+  const currentState = snap.currentState || snap.activeState || 'uninitialized';
+  const burrActionLog = Array.isArray(snap.burrActionLog)
+    ? snap.burrActionLog
+    : Array.isArray(snap.context?.transitionLog)
+    ? snap.context.transitionLog
+    : Array.isArray(snap.context?.actionLog)
+    ? snap.context.actionLog
+    : [];
+  const chainHash =
+    snap.chainHash && snap.chainHash !== 'GENESIS_0000'
+      ? snap.chainHash
+      : snap.context?.lastActionHash || (burrActionLog.length > 0 ? `burr_${burrActionLog.length}steps` : 'GENESIS_0000');
+  return {
+    projectSlug: slug,
+    currentState,
+    activeState: currentState,
+    chainHash,
+    burrActionLog,
+    updatedAt: snap.updatedAt || null
+  };
+}
+
+/**
+ * Loads FinOps + JEV 5-Tier Cognitive Memory Pipeline + JEV Ledger telemetry.
+ */
+export function getFinOpsSnapshot() {
+  const gcpBudget = readJsonSafe(GCP_FINOPS_BUDGET_PATH, {
+    totalCreditsUsd: 300000,
+    remainingCreditsUsd: 299990.51,
+    spentUsd: 9.49
+  });
+  const jevMemoryReport = readJsonSafe(JEV_MEMORY_REPORT_PATH, {
+    schemaVersion: '2026.10-jev-memory-pipeline-v38',
+    consolidatedAt: null,
+    tiersSummary: {
+      tier1_workingMemoryBudgetTokens: 3500,
+      tier2_episodicFailureClustersPhi: 0,
+      tier3_semanticActiveRules: 12,
+      tier3_semanticSupersededRules: 0,
+      tier4_proceduralSkillsTracked: 70,
+      tier5_prospectiveBeadsNodes: 12
+    }
+  });
+  const jevFinopsLedger = readJsonSafe(JEV_FINOPS_LEDGER_PATH, {
+    totalApiCalls: 0,
+    totalCacheHits: 0,
+    dailySpendUsd: 0
+  });
+  return {
+    gcpBudget,
+    jevMemoryReport,
+    jevFinopsLedger
   };
 }
 
@@ -312,6 +403,8 @@ export function getActiveProjectSnapshot() {
  */
 export function buildDefaultFactoryState() {
   const proj = getActiveProjectSnapshot();
+  const xstateSnapshot = getXStateSnapshotForProject(proj.projectSlug);
+  const finopsSnapshot = getFinOpsSnapshot();
   const beadsLines = fs.existsSync(BEADS_GRAPH_PATH)
     ? fs
         .readFileSync(BEADS_GRAPH_PATH, 'utf8')
@@ -367,6 +460,10 @@ export function buildDefaultFactoryState() {
     timestamp: new Date().toISOString(),
     projectSlug: proj.projectSlug,
     projectMeta: proj,
+    xstateSnapshot,
+    finopsSnapshot,
+    jevMemoryPipeline: finopsSnapshot.jevMemoryReport,
+    jevFinopsLedger: finopsSnapshot.jevFinopsLedger,
     activeLane: 'LANE_2_STANDARD_BUILD',
     rpiStage: 'Implementation',
     rpiStageOrder: 6,
@@ -410,8 +507,14 @@ export function loadCurrentFactoryState() {
   const existing = readJsonSafe(CURRENT_STATE_JSON_PATH, null);
   if (existing && Array.isArray(existing.agents) && existing.agents.length === 11) {
     const proj = getActiveProjectSnapshot();
+    const xstateSnapshot = getXStateSnapshotForProject(proj.projectSlug);
+    const finopsSnapshot = getFinOpsSnapshot();
     existing.projectSlug = proj.projectSlug;
     existing.projectMeta = proj;
+    existing.xstateSnapshot = xstateSnapshot;
+    existing.finopsSnapshot = finopsSnapshot;
+    existing.jevMemoryPipeline = finopsSnapshot.jevMemoryReport;
+    existing.jevFinopsLedger = finopsSnapshot.jevFinopsLedger;
     return existing;
   }
   const initial = buildDefaultFactoryState();
@@ -429,6 +532,12 @@ export function emitFactoryTelemetryEvent(event = {}) {
   const nowIso = new Date().toISOString();
 
   if (event.projectSlug) state.projectSlug = event.projectSlug;
+  if (event.xstateSnapshot && typeof event.xstateSnapshot === 'object') {
+    state.xstateSnapshot = { ...state.xstateSnapshot, ...event.xstateSnapshot };
+  }
+  if (event.jevMemoryPipeline && typeof event.jevMemoryPipeline === 'object') {
+    state.jevMemoryPipeline = { ...state.jevMemoryPipeline, ...event.jevMemoryPipeline };
+  }
   if (event.activeLane) state.activeLane = event.activeLane;
   if (event.rpiStage) state.rpiStage = event.rpiStage;
   if (typeof event.rpiStageOrder === 'number') state.rpiStageOrder = event.rpiStageOrder;

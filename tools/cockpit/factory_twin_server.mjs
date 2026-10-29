@@ -590,6 +590,8 @@ export function renderCockpitHtml() {
 
     <div class="hud-pills">
       <div class="hud-pill">Sitio Activo: <strong id="hudProject">agencia-alfa</strong></div>
+      <div class="hud-pill">Entrevistas #1/#2: <strong id="hudInterviews">APROBADAS</strong></div>
+      <div class="hud-pill">XState v5: <strong id="hudXState">packaged_and_landed</strong></div>
       <div class="hud-pill">Carril SWE-AF: <strong id="hudLane">LANE_2_STANDARD_BUILD</strong></div>
       <div class="hud-pill">Etapa RPI: <strong id="hudRpi">Implementation (6/6)</strong></div>
       <div class="hud-pill">Score: <strong id="hudScore">100.0 / 100.0</strong></div>
@@ -699,6 +701,11 @@ export function renderCockpitHtml() {
         <div class="metric-row"><span>Proyecto Activo:</span><strong id="xrProject">agencia-alfa</strong></div>
         <div class="metric-row"><span>Arquetipo Visual (DESIGN.md):</span><strong id="xrArchetype">saas-b2b</strong></div>
         <div class="metric-row"><span>Motor de Base de Datos Dual:</span><strong id="xrDbTier">edge-d1</strong></div>
+        <div class="metric-row"><span>Entrevista #1 (PRD & Marca):</span><strong id="xrInterview1" style="color:var(--accent-emerald)">COMPLETED_BY_CTO</strong></div>
+        <div class="metric-row"><span>Modo de Identidad de Marca:</span><strong id="xrBrandMode">PARTIAL_BRAND_EVOLUTION</strong></div>
+        <div class="metric-row"><span>Entrevista #2 (SPEC Técnico):</span><strong id="xrInterview2" style="color:var(--accent-emerald)">COMPLETED_BY_CTO</strong></div>
+        <div class="metric-row"><span>Nodo Activo XState v5 (10 Estados):</span><strong id="xrXStateNode" style="color:var(--accent-cyan)">packaged_and_landed</strong></div>
+        <div class="metric-row"><span>Cadena Hash Burr (Inmutable):</span><strong id="xrBurrHash" style="font-family:var(--font-mono)">GENESIS_0000</strong></div>
         <div class="metric-row"><span>Carril Adaptativo (SWE-AF):</span><strong id="xrLane">LANE_2_STANDARD_BUILD</strong></div>
         <div class="metric-row"><span>Etapa HumanLayer RPI (6 Etapas):</span><strong id="xrRpi">Implementation (6/6)</strong></div>
       </div>
@@ -714,10 +721,12 @@ export function renderCockpitHtml() {
       </div>
 
       <div class="xray-card">
-        <div class="xray-title">💰 Presupuesto FinOps & Compuerta F2P/P2P</div>
+        <div class="xray-title">💰 Presupuesto FinOps & Memoria Cognitiva JEV</div>
         <div class="metric-row"><span>Gasto Acumulado Hoy:</span><strong id="xrSpent">$0.042 USD</strong></div>
         <div class="metric-row"><span>Tope Diario Estricto (factory.yaml):</span><strong id="xrCap">$1.50 USD</strong></div>
         <div class="progress-track"><div class="progress-fill" id="xrBudgetBar" style="width:3%"></div></div>
+        <div class="metric-row"><span>JEV 5-Tier Memory (Reglas Activas):</span><strong id="xrJevRules" style="color:var(--accent-emerald)">12 activas (ACT-R)</strong></div>
+        <div class="metric-row"><span>JEV FinOps Ledger (Evaluaciones/Caché):</span><strong id="xrJevLedger" style="color:var(--accent-cyan)">0 evals ($0.00)</strong></div>
         <div class="metric-row"><span>Compuerta F2P (Fail-to-Pass):</span><strong style="color:var(--accent-emerald)">VERIFICADO (PASS)</strong></div>
         <div class="metric-row"><span>Compuerta P2P (Pass-to-Pass Regresión):</span><strong style="color:var(--accent-emerald)">100% INTACTO</strong></div>
         <div class="metric-row"><span>Sobrecarga de Tokens del Cockpit:</span><strong style="color:var(--accent-cyan)">0 TOKENS (Local SSE)</strong></div>
@@ -823,6 +832,13 @@ export function renderCockpitHtml() {
       syncAgentTargets(state);
 
       document.getElementById('hudProject').textContent = state.projectSlug;
+      const meta = state.projectMeta || {};
+      const xstate = state.xstateSnapshot || {};
+      const jevMem = state.jevMemoryPipeline || state.finopsSnapshot?.jevMemoryReport || {};
+      const jevLedger = state.jevFinopsLedger || state.finopsSnapshot?.jevFinopsLedger || {};
+      const dualOk = meta.dualInterviewsApproved || (meta.prdInterviewStatus === 'COMPLETED_BY_CTO' && meta.specInterviewStatus === 'COMPLETED_BY_CTO');
+      document.getElementById('hudInterviews').textContent = dualOk ? '1&2 APROBADAS' : (meta.prdInterviewStatus === 'COMPLETED_BY_CTO' ? '#1 OK / #2 PEND' : 'PENDIENTES');
+      document.getElementById('hudXState').textContent = xstate.currentState || xstate.activeState || 'uninitialized';
       document.getElementById('hudLane').textContent = state.activeLane;
       document.getElementById('hudRpi').textContent = state.rpiStage + ' (' + (state.rpiStageOrder || 6) + '/6)';
       document.getElementById('hudScore').textContent = Number(state.scores?.composite || 100).toFixed(1) + ' / 100.0';
@@ -908,8 +924,13 @@ export function renderCockpitHtml() {
 
       // Tab 3 X-Ray
       document.getElementById('xrProject').textContent = state.projectSlug;
-      document.getElementById('xrArchetype').textContent = state.archetype || 'saas-b2b';
-      document.getElementById('xrDbTier').textContent = state.dbTier || 'edge-d1';
+      document.getElementById('xrArchetype').textContent = meta.archetype || state.archetype || 'saas-b2b';
+      document.getElementById('xrDbTier').textContent = meta.dbTier || state.dbTier || 'edge-d1';
+      document.getElementById('xrInterview1').textContent = meta.prdInterviewStatus || 'PENDING_CTO_PRD_INPUT';
+      document.getElementById('xrBrandMode').textContent = meta.brandIdentityMode || 'PARTIAL_BRAND_EVOLUTION';
+      document.getElementById('xrInterview2').textContent = meta.specInterviewStatus || 'PENDING_CTO_SPEC_INPUT';
+      document.getElementById('xrXStateNode').textContent = xstate.currentState || xstate.activeState || 'uninitialized';
+      document.getElementById('xrBurrHash').textContent = String(xstate.chainHash || 'GENESIS_0000').slice(0, 16) + ' (' + (Array.isArray(xstate.burrActionLog) ? xstate.burrActionLog.length : 0) + ' acts)';
       document.getElementById('xrLane').textContent = state.activeLane;
       document.getElementById('xrRpi').textContent = state.rpiStage + ' (' + (state.rpiStageOrder || 6) + '/6)';
       const comp = Number(state.scores?.composite || 100);
@@ -921,6 +942,12 @@ export function renderCockpitHtml() {
       document.getElementById('xrB4').textContent = (state.scores?.block4_ryux_visual ?? 25) + ' / 25 pts';
       document.getElementById('xrSpent').textContent = '$' + Number(state.budgetSpentUsd || 0.042).toFixed(3) + ' USD';
       document.getElementById('xrCap').textContent = '$' + Number(state.budgetDailyCapUsd || 1.5).toFixed(2) + ' USD';
+      const activeJevRules = jevMem?.tiersSummary?.tier3_semanticActiveRules ?? 12;
+      const trackedSkills = jevMem?.tiersSummary?.tier4_proceduralSkillsTracked ?? 70;
+      document.getElementById('xrJevRules').textContent = activeJevRules + ' reglas / ' + trackedSkills + ' skills (ACT-R)';
+      const totalJevEvals = jevLedger?.totalApiCalls ?? jevLedger?.totalEvaluations ?? jevLedger?.totalCalls ?? 0;
+      const cacheJevHits = jevLedger?.totalCacheHits ?? jevLedger?.cacheHits ?? 0;
+      document.getElementById('xrJevLedger').textContent = totalJevEvals + ' evals / ' + cacheJevHits + ' cache hits ($0.00)';
       const pctBudget = Math.min(100, ((state.budgetSpentUsd || 0.042) / (state.budgetDailyCapUsd || 1.5)) * 100);
       document.getElementById('xrBudgetBar').style.width = pctBudget.toFixed(1) + '%';
     }

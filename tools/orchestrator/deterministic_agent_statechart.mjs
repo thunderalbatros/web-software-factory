@@ -22,9 +22,11 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
+import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { setup, createActor, assign, getNextSnapshot } from 'xstate';
 import { loadProjectConfig } from '../lib/project_loader.mjs';
+import { emitFactoryTelemetryEvent } from '../cockpit/live_telemetry_bus.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -507,16 +509,63 @@ export function syncProjectStatechartSnapshot(projectInput = '', eventSequence =
 
   const outFile = path.join(ROOT, '.agents', 'runs', slug, 'xstate_actor_snapshot.json');
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
+  const burrActionLog = Array.isArray(liveSnap.context?.transitionLog)
+    ? liveSnap.context.transitionLog
+    : Array.isArray(liveSnap.context?.actionLog)
+    ? liveSnap.context.actionLog
+    : [];
+  const chainHash =
+    burrActionLog.length > 0
+      ? `burr_${crypto
+          .createHash('sha256')
+          .update(
+            JSON.stringify(
+              burrActionLog.map((t) => ({
+                event: t.event,
+                to: t.to,
+                reads: t.reads,
+                writes: t.writes
+              }))
+            ),
+            'utf8'
+          )
+          .digest('hex')
+          .slice(0, 12)}`
+      : 'GENESIS_0000';
   const payload = {
     schemaVersion: '2026.10-xstate-v5-actor-snapshot',
     projectSlug: slug,
     updatedAt: new Date().toISOString(),
+    currentState: liveSnap.value,
     activeState: liveSnap.value,
+    chainHash,
+    burrActionLog,
     status: liveSnap.status,
     context: liveSnap.context,
     persistedSnapshot: persisted
   };
   fs.writeFileSync(outFile, JSON.stringify(payload, null, 2), 'utf8');
+
+  try {
+    emitFactoryTelemetryEvent({
+      eventType: 'XSTATE_V5_TRANSITION',
+      projectSlug: slug,
+      agentId: 'foreman',
+      stationId: 'SALA_1_RECEPCION_TRIAJE',
+      status: 'working',
+      lastAction: `XState v5 -> [${liveSnap.value}] (Burr Chain: ${chainHash.slice(0, 12)})`,
+      forensicWhy: `Transición determinista XState v5 en [${slug}] hacia nodo "${liveSnap.value}" (${burrActionLog.length} acciones Burr).`,
+      xstateSnapshot: {
+        projectSlug: slug,
+        currentState: liveSnap.value,
+        activeState: liveSnap.value,
+        chainHash,
+        burrActionLog,
+        updatedAt: payload.updatedAt
+      }
+    });
+  } catch (_) {}
+
   return payload;
 }
 

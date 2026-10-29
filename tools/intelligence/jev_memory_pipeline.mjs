@@ -49,6 +49,7 @@ import {
   loadSkillQualityRecords,
   FAILURE_EVENTS_JSONL_PATH
 } from './skill_quality_ledger.mjs';
+import { emitFactoryTelemetryEvent } from '../cockpit/live_telemetry_bus.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -381,6 +382,17 @@ export async function evaluateMemoryWriteAdmissionWithJev(candidateInput = {}, o
       evidence: candidateInput.evidence || 'JEV Write-Gate Approved Global Invariant'
     });
     saveTemporalLedger(ledger);
+    try {
+      emitFactoryTelemetryEvent({
+        eventType: 'JEV_MEMORY_WRITE_ADMISSION',
+        projectSlug,
+        agentId: 'foreman',
+        stationId: 'SALA_2_LABORATORIO_PLANOS_RAG',
+        status: 'passed',
+        lastAction: `JEV Memory Write-Gate: ${apiRes.verdict.choice} (${newRuleId})`,
+        forensicWhy: `Admisión JEV 5-Tier Memory Pipeline [${apiRes.verdict.choice}] para regla "${newRuleId}" (${ledger.rules.length} reglas activas).`
+      });
+    } catch (_) {}
   }
 
   return {
@@ -534,6 +546,17 @@ export async function runJevSleepTimeConsolidationCycle(options = {}) {
   if (persist) {
     fs.mkdirSync(path.dirname(MEMORY_PIPELINE_REPORT_PATH), { recursive: true });
     fs.writeFileSync(MEMORY_PIPELINE_REPORT_PATH, JSON.stringify(report, null, 2), 'utf8');
+    try {
+      emitFactoryTelemetryEvent({
+        eventType: 'JEV_SLEEP_CONSOLIDATION_COMPLETED',
+        agentId: 'foreman',
+        stationId: 'SALA_2_LABORATORIO_PLANOS_RAG',
+        status: 'passed',
+        lastAction: `JEV Sleep Consolidation (${activeRules.length} reglas activas, ${instinctsSynthesized.length} instincts nuevos)`,
+        forensicWhy: `Consolidación JEV 5-Tier Memory Pipeline completada en ${report.latencyMs}ms (${activeRules.length} reglas semánticas activas).`,
+        jevMemoryPipeline: report
+      });
+    } catch (_) {}
   }
 
   return report;
