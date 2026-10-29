@@ -48,3 +48,6 @@ UPDATE zone_confidential.inventory_items
  WHERE tenant_id = $1 AND sku_id = $2 AND available_units >= $3;
 COMMIT;
 ```
+
+---
+**Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_CYBERSECURITY_DEVSECOPS_2026]] · [[CYBERSECURITY_MASTER_PROTOCOL]] · [[ANTI_BOT_STEALTH_GUIDE]] · [[CANON_IDENTITY_AND_OAUTH_CYBERSECURITY_AUDIT_2026]] · #cybersecurity

@@ -26,6 +26,89 @@ const ROOT = path.resolve(__dirname, '..', '..');
 const DEFAULT_OUT_DIR = path.join(ROOT, 'knowledge', 'architecture_and_books');
 
 export function parseEpubFile(filePath) {
+  const tmpJson = path.join(os.tmpdir(), `epub_py_${Date.now()}_${Math.random().toString(36).slice(2)}.json`);
+  try {
+    const pyScript = [
+      'import sys, json, struct, zlib, io, re, asyncio',
+      'fp = sys.argv[1]',
+      'out_path = sys.argv[2]',
+      'full_txt = ""',
+      'num_pages = 1',
+      'try:',
+      '    import pymupdf',
+      '    doc = pymupdf.open(fp)',
+      '    num_pages = len(doc)',
+      '    full_txt = "\\n\\n".join([p.get_text() for p in doc])',
+      '    doc.close()',
+      'except Exception:',
+      '    pass',
+      'if len(full_txt.strip()) < 1500:',
+      '    data = open(fp, "rb").read()',
+      '    pos = 0',
+      '    xhtmls = []',
+      '    jpgs = []',
+      '    while True:',
+      '        idx = data.find(b"PK\\x03\\x04", pos)',
+      '        if idx == -1 or idx + 30 > len(data): break',
+      '        ver, flag, method, mtime, mdate, crc, csize, usize, fnlen, exlen = struct.unpack("<HHHHHIIIHH", data[idx+4:idx+30])',
+      '        fn = data[idx+30:idx+30+fnlen].decode("utf-8", "ignore")',
+      '        ds = idx + 30 + fnlen + exlen',
+      '        ni = data.find(b"PK\\x03\\x04", ds)',
+      '        raw = data[ds:ds+csize] if csize > 0 else data[ds:ni]',
+      '        low = fn.lower()',
+      '        if low.endswith((".xhtml", ".html", ".htm")):',
+      '            try:',
+      '                dec = (zlib.decompressobj(-15).decompress(raw) if method == 8 else raw).decode("utf-8", "ignore")',
+      '                txt = re.sub(r"<style[\\s\\S]*?</style>|<script[\\s\\S]*?</script>", " ", dec, flags=re.I)',
+      '                txt = re.sub(r"<[^>]+>", " ", txt)',
+      '                xhtmls.append((fn, " ".join(txt.split())))',
+      '            except Exception: pass',
+      '        elif low.endswith((".jpg", ".jpeg", ".png")):',
+      '            try:',
+      '                b = zlib.decompressobj(-15).decompress(raw) if method == 8 else raw',
+      '                jpgs.append((fn, b))',
+      '            except Exception: pass',
+      '        pos = ni if ni != -1 else len(data)',
+      '    xhtmls.sort(key=lambda x: x[0])',
+      '    xhtml_txt = "\\n\\n".join(x[1] for x in xhtmls if len(x[1]) > 40)',
+      '    if len(xhtml_txt) > 25000 or not jpgs:',
+      '        full_txt = xhtml_txt',
+      '        num_pages = max(1, len(xhtmls))',
+      '    else:',
+      '        import winocr',
+      '        from PIL import Image',
+      '        jpgs.sort(key=lambda x: x[0])',
+      '        async def ocr_all():',
+      '            sem = asyncio.Semaphore(8)',
+      '            async def ocr_one(item):',
+      '                async with sem:',
+      '                    try:',
+      '                        img = Image.open(io.BytesIO(item[1])).convert("RGB")',
+      '                        res = await winocr.to_coroutine(winocr.recognize_pil(img, "es"))',
+      '                        return res.text or ""',
+      '                    except Exception:',
+      '                        return ""',
+      '            return await asyncio.gather(*(ocr_one(it) for it in jpgs))',
+      '        ocr_txts = asyncio.run(ocr_all())',
+      '        full_txt = xhtml_txt + "\\n\\n" + "\\n\\n".join(t for t in ocr_txts if t.strip())',
+      '        num_pages = max(1, len(jpgs))',
+      'open(out_path, "w", encoding="utf-8").write(json.dumps({"numPages": num_pages, "text": full_txt}))'
+    ].join('\n');
+    execFileSync('python', ['-c', pyScript, filePath, tmpJson], { stdio: 'ignore', timeout: 300000 });
+    if (fs.existsSync(tmpJson)) {
+      const parsed = JSON.parse(fs.readFileSync(tmpJson, 'utf8'));
+      try { fs.unlinkSync(tmpJson); } catch (_) {}
+      if (parsed && typeof parsed.text === 'string' && parsed.text.trim().length > 400) {
+        return {
+          text: parsed.text,
+          numPages: parsed.numPages || 1
+        };
+      }
+    }
+  } catch (_) {
+    try { if (fs.existsSync(tmpJson)) fs.unlinkSync(tmpJson); } catch (_) {}
+  }
+
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'epub_ingest_'));
   try {
     execFileSync('tar', ['-xf', filePath, '-C', tmpDir], { stdio: 'ignore' });
@@ -263,18 +346,25 @@ export async function parsePdfFile(filePath) {
       'if n > 0 and (len(full_txt.strip()) / max(1, n)) < 120:',
       '    import winocr',
       '    from PIL import Image',
-      '    ocr_pages = []',
-      '    for i in range(n):',
-      '        pix = doc[i].get_pixmap(dpi=115)',
-      '        img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)',
-      '        res = winocr.recognize_pil_sync(img, "es")',
-      '        ocr_pages.append(res.get("text", ""))',
+      '    async def ocr_all():',
+      '        sem = asyncio.Semaphore(8)',
+      '        async def ocr_page(idx):',
+      '            async with sem:',
+      '                try:',
+      '                    pix = doc[idx].get_pixmap(dpi=108)',
+      '                    img = Image.frombytes("RGB", [pix.width, pix.height], pix.samples)',
+      '                    res = await winocr.to_coroutine(winocr.recognize_pil(img, "es"))',
+      '                    return res.text or ""',
+      '                except Exception:',
+      '                    return ""',
+      '        return await asyncio.gather(*(ocr_page(i) for i in range(n)))',
+      '    ocr_pages = asyncio.run(ocr_all())',
       '    full_txt = "\\n\\n".join(ocr_pages)',
       'out = {"numPages": n, "text": full_txt}',
       'open(sys.argv[2], "w", encoding="utf-8").write(json.dumps(out))',
       'doc.close()'
     ].join('\n');
-    execFileSync('python', ['-c', pyScript, filePath, tmpTxt], { stdio: 'ignore' });
+    execFileSync('python', ['-c', pyScript, filePath, tmpTxt], { stdio: 'ignore', timeout: 300000 });
     if (fs.existsSync(tmpTxt)) {
       const parsed = JSON.parse(fs.readFileSync(tmpTxt, 'utf8'));
       try { fs.unlinkSync(tmpTxt); } catch (_) {}
@@ -431,13 +521,13 @@ export async function ingestBookToMarkdown({
 
 export function classifyBookCategory(fileName, sampleText = '') {
   const combined = `${fileName} ${sampleText.slice(0, 4000)}`.toLowerCase();
-  if (/(owasp|security|secure_and_reliable|secure-apis|secure_apis|seguridad|pentest|penetration|hacker|hacking|tangled_web|attacking_network|exploit|xss|csrf|oauth|cryptography|vulnerabilit|cyber|api_stronghold|bug_bounty|bug-bounty|bug bounty|thecodebook|zseano)/.test(combined)) {
+  if (/(owasp|security|secure_and_reliable|secure-apis|secure_apis|seguridad|pentest|penetration|hacker|hacking|tangled_web|attacking_network|exploit|xss|csrf|oauth|cryptography|vulnerabilit|cyber|api_stronghold|bug_bounty|bug-bounty|bug bounty|thecodebook|zseano|privacidad|aepd|5g)/.test(combined)) {
     return 'cybersecurity';
   }
-  if (/(gsap|three\.js|webgl|shader|lenis|canvas|animation|animator|survival[\s_-]?kit|richard[\s_-]?williams|\bmotion\b|spring|scroll-driven|lottie)/.test(combined)) {
+  if (/(gsap|three\.js|webgl|shader|lenis|canvas|animation|animator|animating|survival[\s_-]?kit|richard[\s_-]?williams|\bmotion\b|spring|scroll-driven|lottie|audiovision|chion|cinematography|blain[\s_-]?brown|nature[\s_-]?of[\s_-]?code|shiffman|elemental[\s_-]?magic|gilland|201a3624fd357bc7752e096a729563b4|audio[\s_-]?effect[\s_-]?plugins|pirkle|sonic[\s_-]?interaction|franinovic|serafin|mastering[\s_-]?audio|bob[\s_-]?katz|06a35419c2479717|mixing[\s_-]?secrets|mike[\s_-]?senior|musimathics|gareth[\s_-]?loy|audio[\s_-]?programming|boulanger|lazzarini|designing[\s_-]?sound|farnell|game[\s_-]?audio|zdanowicz|illusion[\s_-]?of[\s_-]?life|frank[\s_-]?thomas|ollie[\s_-]?johnston|microsound|curtis[\s_-]?roads|parpadeo|walter[\s_-]?murch|psychoacoustics|zwicker|fastl)/.test(combined)) {
     return 'motion_and_animation';
   }
-  if (/(\bui\b|\bux\b|ui_design|ui_pedia|lean_ux|refactoring ui|practical ui|design system|design_system|laying the foundations|couldwell|hoober|berkman|mobile interfaces|tufte|visual display of quantitative|gurney|color_and_light|\+color|kholmatova|kahneman|hormozi|schwartz|copywriting|\bcro\b|typography|color|oklch|figma|css|html|grid|stylin|software_pricing|landing_pages|art_of_game_design|never_split_the_difference|weinschenk|web-design|web_design|atomic design|atomic_design|designing interfaces|user interfaces|malewicz|dont make me think|usability|steve krug|emotional design|everyday things|don norman|principles of design|lidwell)/.test(combined)) {
+  if (/(\bui\b|\bux\b|ui_design|ui_pedia|lean_ux|refactoring ui|practical ui|design system|design_system|laying the foundations|couldwell|hoober|berkman|mobile interfaces|tufte|visual display of quantitative|gurney|color_and_light|\+color|kholmatova|kahneman|hormozi|schwartz|copywriting|\bcro\b|typography|color|oklch|figma|css|html|grid|stylin|software_pricing|landing_pages|art_of_game_design|fundamentals[\s_-]?of[\s_-]?game[\s_-]?design|ernest[\s_-]?adams|brand[\s_-]?identity|alina[\s_-]?wheeler|visual[\s_-]?story|bruce[\s_-]?block|vktiyzoobmwwq6fbc9kq9xbg7e450l|never_split_the_difference|weinschenk|web-design|web_design|atomic design|atomic_design|designing interfaces|user interfaces|malewicz|dont make me think|usability|steve krug|emotional design|everyday things|don norman|principles of design|lidwell)/.test(combined)) {
     return 'ui_ux_design';
   }
   if (/(seo|json-ld|analytics|posthog|plausible|n8n|webhook|playwright|testing|ui_testing|test_driven|unit_testing|k6_guideline|accelerate|modern_software_engineering|crime_scene|effective_engineer|pro_git|devops_handbook|github_actions|site reliability|\bsre\b|astro|cloudflare|factory|plain_javascript|optimization_web_performance|root_cause_analysis|edge_caching|getting_real|information_retrieval)/.test(combined)) {
@@ -461,8 +551,139 @@ export function inferBookMetadataFromFileName(baseName, category) {
 
   let author = 'Technical Author';
   let domain = 'Web Software Factory, UI/UX, Architecture & Interactive Systems';
+  let slug = rawName.toLowerCase().startsWith('book_') ? rawName.toLowerCase().replace(/[^a-z0-9_]/g, '_') : undefined;
 
-  if (/gurney/i.test(lower)) {
+  if (/mastering_audio|bob_katz|06a35419c2479717/i.test(lower)) {
+    cleanedTitle = 'Mastering Audio: The Art and the Science';
+    author = 'Bob Katz';
+    domain = 'Audio Mastering, K-System Metering, Loudness Perception, Dithering, Equalization & Dynamic Range Control';
+    slug = 'book_mastering_audio_the_art_and_the_science_bob_katz';
+  } else if (/elemental_magic|gilland|201a3624fd357bc7752e096a729563b4/i.test(lower)) {
+    cleanedTitle = 'Elemental Magic, Volume II: The Technique of Special Effects Animation';
+    author = 'Joseph Gilland';
+    domain = 'Special Effects Animation, Fluid/Fire/Smoke/Wave Dynamics, Organic Energy Physics & 60FPS Motion Choreography';
+    slug = 'book_elemental_magic_vol_2_special_effects_animation_joseph_gilland';
+  } else if (/visual_story|bruce_block|vktiyzoobmwwq6fbc9kq9xbg7e450l/i.test(lower)) {
+    cleanedTitle = 'The Visual Story: Creating the Visual Structure of Film, TV and Digital Media (2nd Edition)';
+    author = 'Bruce Block';
+    domain = 'Visual Structure, Principle of Contrast & Affinity, Deep/Flat Space, Line, Shape, Tone, Color & Visual Rhythm';
+    slug = 'book_the_visual_story_visual_structure_film_digital_media_bruce_block';
+  } else if (/audiovision|chion/i.test(lower)) {
+    cleanedTitle = 'La Audiovisión: Introducción a un Análisis Conjunto de la Imagen y el Sonido';
+    author = 'Michel Chion';
+    domain = 'Audiovisual Contract, Synchresis (Síncresis), Added Value, Acousmatic Sound & Temporal Vectorization';
+    slug = 'book_la_audiovision_imagen_y_sonido_michel_chion';
+  } else if (/cinematography.*theory|blain_brown/i.test(lower)) {
+    cleanedTitle = 'Cinematography: Theory and Practice — Image Making for Cinematographers and Directors (3rd Edition)';
+    author = 'Blain Brown';
+    domain = 'Cinematographic Optics, Lens Focal Length, PBR Lighting Ratios, Color Temperature & Camera Movement';
+    slug = 'book_cinematography_theory_and_practice_3rd_edition_blain_brown';
+  } else if (/nature[-_\s]of[-_\s]code|shiffman/i.test(lower)) {
+    cleanedTitle = 'The Nature of Code: Simulating Natural Systems with Processing';
+    author = 'Daniel Shiffman';
+    domain = 'Physics Simulation, Vectors, Forces, Harmonic Oscillation, Particle Systems, Autonomous Steering Agents & Fractals';
+    slug = 'book_the_nature_of_code_simulating_natural_systems_daniel_shiffman';
+  } else if (/philosophy[-_\s]of[-_\s]software[-_\s]design|ousterhout/i.test(lower)) {
+    cleanedTitle = 'A Philosophy of Software Design (2nd Edition)';
+    author = 'John K. Ousterhout';
+    domain = 'Software Complexity Management, Deep vs. Shallow Modules, Information Hiding & Define Errors Out of Existence';
+    slug = 'book_a_philosophy_of_software_design_2nd_edition_john_ousterhout';
+  } else if (/animating[-_\s]short[-_\s]stories|cheryl_briggs|briggs/i.test(lower)) {
+    cleanedTitle = 'Animating Short Stories: Narrative Techniques and Visual Design';
+    author = 'Cheryl Briggs';
+    domain = 'Visual Storytelling, Storyboarding, Character Staging, Color Scripts & Narrative Pacing in Animation';
+    slug = 'book_animating_short_stories_narrative_and_visual_design_cheryl_briggs';
+  } else if (/design[-_\s]for[-_\s]motion|austin_shaw/i.test(lower)) {
+    cleanedTitle = 'Design for Motion: Fundamentals and Techniques of Motion Design (2nd Edition)';
+    author = 'Austin Shaw';
+    domain = 'Motion Design Systems, Styleframes, Design Boards, Kinetic Typography & Visual Transitions';
+    slug = 'book_design_for_motion_fundamentals_and_techniques_2nd_ed_austin_shaw';
+  } else if (/design[-_\s]in[-_\s]motion|penny_hilton/i.test(lower)) {
+    cleanedTitle = 'Design in Motion: Applying Design Principles to Filmmaking';
+    author = 'Penny Hilton';
+    domain = 'Filmmaking Design Principles, Mise-en-Scène, Production Design, Visual Metaphor & Frame Composition';
+    slug = 'book_design_in_motion_applying_design_principles_to_filmmaking_penny_hilton';
+  } else if (/audio[-_\s]effect[-_\s]plugins|pirkle/i.test(lower)) {
+    cleanedTitle = 'Designing Audio Effect Plugins in C++: For AAX, AU, and VST3 with DSP Theory (2nd Edition)';
+    author = 'Will C. Pirkle';
+    domain = 'Real-Time Audio DSP, Biquad Z-Transform Filters, Delay Lines, Algorithmic Reverb, Dynamics Processors & Modulated Effects';
+    slug = 'book_designing_audio_effect_plugins_in_cpp_dsp_theory_will_pirkle';
+  } else if (/designing[-_\s]brand[-_\s]identity|alina_wheeler/i.test(lower)) {
+    cleanedTitle = 'Designing Brand Identity: A Comprehensive Guide to the World of Brands and Branding (6th Edition)';
+    author = 'Alina Wheeler & Rob Meyerson';
+    domain = 'Brand Architecture, Visual Identity Systems, Touchpoint Ergonomics, Typography, Color Systems & Brand Governance';
+    slug = 'book_designing_brand_identity_6th_edition_alina_wheeler_rob_meyerson';
+  } else if (/fundamentals[-_\s]of[-_\s]game[-_\s]design|ernest_adams/i.test(lower)) {
+    cleanedTitle = 'Fundamentals of Game Design (3rd Edition)';
+    author = 'Ernest Adams';
+    domain = 'Interactive Systems Design, Core Mechanics, Internal Economy Balancing, Progression Curves & HUD/UI Ergonomics';
+    slug = 'book_fundamentals_of_game_design_3rd_edition_ernest_adams';
+  } else if (/sonic[-_\s]interaction[-_\s]design|franinovic|serafin/i.test(lower)) {
+    cleanedTitle = 'Sonic Interaction Design';
+    author = 'Karmen Franinović & Stefania Serafin (MIT Press)';
+    domain = 'Sonic Interaction Design, Auditory Affordances, Continuous Multisensory Feedback, Embodied Sound & Product Acoustics';
+    slug = 'book_sonic_interaction_design_karmen_franinovic_stefania_serafin';
+  } else if (/5g|aepd|protecci.*datos/i.test(lower)) {
+    cleanedTitle = 'Introducción a las Tecnologías 5G y sus Riesgos para la Privacidad';
+    author = 'Agencia Española de Protección de Datos (AEPD)';
+    domain = '5G Network Architecture, Edge Computing Privacy Risks, IMSI Catchers, Network Slicing Isolation & GDPR Privacy-by-Design';
+    slug = 'book_introduccion_tecnologias_5g_y_riesgos_privacidad_aepd';
+  } else if (/mixing[-_\s]secrets|mike_senior/i.test(lower)) {
+    cleanedTitle = 'Mixing Secrets for the Small Studio';
+    author = 'Mike Senior';
+    domain = 'Studio Mixing Engineering, Acoustic Monitoring, Frequency Unmasking, Subgrouping, Compression, EQ & Stereo Depth';
+    slug = 'book_mixing_secrets_for_the_small_studio_mike_senior';
+  } else if (/musimathics|gareth_loy/i.test(lower)) {
+    cleanedTitle = 'Musimathics: The Mathematical Foundations of Music, Volume 1';
+    author = 'Gareth Loy (MIT Press)';
+    domain = 'Mathematical Acoustics, Vibrating Systems, Psychoacoustic Pitch/Loudness Scales, Tuning Temperaments & Algorithmic Composition';
+    slug = 'book_musimathics_vol_1_mathematical_foundations_of_music_gareth_loy';
+  } else if (/audio[-_\s]programming|boulanger|lazzarini/i.test(lower)) {
+    cleanedTitle = 'The Audio Programming Book';
+    author = 'Richard Boulanger & Victor Lazzarini (MIT Press)';
+    domain = 'Real-Time Audio DSP Programming, Wavetable/FM/Additive Synthesis, Digital Filters, FFT Phase Vocoder & Delay Waveguides';
+    slug = 'book_the_audio_programming_book_richard_boulanger_victor_lazzarini';
+  } else if (/designing[-_\s]sound|farnell/i.test(lower)) {
+    cleanedTitle = 'Designing Sound';
+    author = 'Andy Farnell (MIT Press)';
+    domain = 'Procedural Audio Synthesis, Physical Sound Modeling (Impacts, Friction, Fluids, Wind, Fire, Machines) & Real-Time Sound Design';
+    slug = 'book_designing_sound_procedural_audio_andy_farnell';
+  } else if (/game[-_\s]audio[-_\s]strategy|zdanowicz/i.test(lower)) {
+    cleanedTitle = 'The Game Audio Strategy Guide: A Practical Course';
+    author = 'Gina Zdanowicz & Spencer Bambrick';
+    domain = 'Interactive Game Audio Architecture, Adaptive Music (Horizontal Re-sequencing & Vertical Layering), Soundscapes & Voice/SFX Buses';
+    slug = 'book_the_game_audio_strategy_guide_gina_zdanowicz_spencer_bambrick';
+  } else if (/illusion[-_\s]of[-_\s]life|frank_thomas|ollie_johnston/i.test(lower)) {
+    cleanedTitle = 'The Illusion of Life: Disney Animation';
+    author = 'Frank Thomas & Ollie Johnston';
+    domain = 'The 12 Principles of Animation (Squash & Stretch, Anticipation, Staging, Slow In/Slow Out, Arcs, Secondary Action, Timing & Appeal)';
+    slug = 'book_the_illusion_of_life_disney_animation_frank_thomas_ollie_johnston';
+  } else if (/refactoring.*improving.*design|martin_fowler/i.test(lower)) {
+    cleanedTitle = 'Refactoring: Improving the Design of Existing Code (2nd Edition)';
+    author = 'Martin Fowler (with Kent Beck)';
+    domain = 'Code Smells Eradication, Behavior-Preserving Transformations, Composing Methods, Encapsulation & Evolutionary Architecture';
+    slug = 'book_refactoring_improving_the_design_of_existing_code_2nd_edition_martin_fowler';
+  } else if (/microsound|curtis_roads/i.test(lower)) {
+    cleanedTitle = 'Microsound';
+    author = 'Curtis Roads (MIT Press)';
+    domain = 'Microtemporal Acoustic Scales, Granular Synthesis, Gabor Acoustic Quanta, Pulsar Synthesis, Windowing Envelopes & Cloud Textures';
+    slug = 'book_microsound_granular_and_particle_synthesis_curtis_roads';
+  } else if (/pragmatic[-_\s]programmer|thomas_hunt/i.test(lower)) {
+    cleanedTitle = 'The Pragmatic Programmer: Your Journey to Mastery (20th Anniversary Edition, 2nd Edition)';
+    author = 'David Thomas & Andrew Hunt';
+    domain = 'Orthogonality, DRY Principle, Design by Contract, Tracer Bullets, Reversibility, Property-Based Testing & Pragmatic Automation';
+    slug = 'book_the_pragmatic_programmer_20th_anniversary_2nd_edition_thomas_hunt';
+  } else if (/parpadeo|walter[-_\s]murch/i.test(lower)) {
+    cleanedTitle = 'En el Momento del Parpadeo: Un Punto de Vista sobre el Montaje Cinematográfico (In the Blink of an Eye)';
+    author = 'Walter Murch';
+    domain = 'Cinematic Editing Choreography, Rule of Six (Emotion 51%, Story 23%, Rhythm 10%, Eye-Trace 7%, 2D Plane 5%, 3D Space 4%) & Blink Cut Sync';
+    slug = 'book_en_el_momento_del_parpadeo_montaje_cinematografico_walter_murch';
+  } else if (/zwicker|fastl|psychoacoustics/i.test(lower)) {
+    cleanedTitle = 'Psychoacoustics: Facts and Models (3rd Edition)';
+    author = 'Hugo Fastl & Eberhard Zwicker';
+    domain = 'Psychoacoustic Hearing Thresholds, Bark Critical Band Rate, Simultaneous/Temporal Masking, Zwicker Loudness (Sones), Sharpness & Roughness';
+    slug = 'book_psychoacoustics_facts_and_models_hugo_fastl_eberhard_zwicker';
+  } else if (/gurney/i.test(lower)) {
     cleanedTitle = 'Color and Light: A Guide for the Realist Painter';
     author = 'James Gurney';
     domain = 'Optical Colorimetry, Pictorial Lighting, Thermal Shadow Rotation & PBR Realism';
@@ -492,7 +713,7 @@ export function inferBookMetadataFromFileName(baseName, category) {
     domain = 'UI/UX Design Systems, Perceptual Colorimetry, Typography & Conversion Architecture';
   }
 
-  return { title: cleanedTitle, author, domain };
+  return { title: cleanedTitle, author, domain, slug };
 }
 
 export async function ingestInboxDirectory({
@@ -522,8 +743,10 @@ export async function ingestInboxDirectory({
   for (const filePath of bookFiles) {
     const baseName = path.basename(filePath);
     const category = classifyBookCategory(baseName);
-    const { title, author, domain } = inferBookMetadataFromFileName(baseName, category);
+    const { title, author, domain, slug } = inferBookMetadataFromFileName(baseName, category);
     const outDir = path.join(ROOT, 'knowledge', category);
+    const ext = path.extname(filePath).toLowerCase();
+    const canonicalSourceName = slug ? `${slug}${ext}` : baseName;
 
     try {
       const res = await ingestBookToMarkdown({
@@ -531,12 +754,14 @@ export async function ingestInboxDirectory({
         title,
         author,
         domain,
+        slug,
         outDir
       });
 
-      const destProcessed = path.join(processedDir, baseName);
+      const destProcessed = path.join(processedDir, canonicalSourceName);
+      if (fs.existsSync(destProcessed)) fs.unlinkSync(destProcessed);
       fs.renameSync(filePath, destProcessed);
-      results.push({ ...res, title, author, domain, category, sourceFile: baseName, archivedTo: destProcessed });
+      results.push({ ...res, title, author, domain, category, sourceFile: baseName, renamedTo: canonicalSourceName, archivedTo: destProcessed });
     } catch (err) {
       console.warn(`⚠️  [${baseName}] Skipped: ${err.message}`);
       errors.push({ sourceFile: baseName, error: err.message });

@@ -41,3 +41,6 @@ linkedHarnessModule: "tools/audit/ryux_design_gate.mjs"
 .hero-media { aspect-ratio: 16 / 9; width: 100%; height: auto; content-visibility: auto; }
 .interactive-card { will-change: transform, opacity; transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1); }
 ```
+
+---
+**Conexiones del Grafo (Obsidian):** [[INDEX]] · [[DESIGN_MASTERY_2026]] · [[AGENT_CREATIVE_AND_VISUAL_AWARENESS_2026]] · [[CANON_REFACTORING_UI_WATHAN_SCHOGER]] · [[CANON_PRACTICAL_UI_ADHAM_DANNAWAY]] · #ui_ux_design
