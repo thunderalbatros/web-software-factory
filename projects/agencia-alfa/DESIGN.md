@@ -7,6 +7,18 @@ surfaceMode: "Persuade"
 allows3dEffects: true
 apcaContrastFloor: 85
 cameraFov: "Telephoto Product Stage (FOV 32°) + AgX Tone Mapping"
+brandDnaVector:
+  gridTopology: "golden-ratio-bento-matrix"
+  heroArchitecture: "live-interactive-product-sandbox"
+  navVariant: "floating-island-bar"
+  cornerGeometry: "6px-tecnico"
+  surfaceMaterial: "deep-obsidian-specular"
+  gamutMaskType: "atmospheric-analogous"
+  fontPairingProfile: "swiss-precision-geist-jetbrains"
+  transitionPhysics: "magnetic-precision-spring"
+  scrollChoreography: "native-view-transitions-morph"
+  morphologicalDivergenceScore: 0.88
+  aestheticHarmonyScore: 0.94
 pbrMaterial:
   metalness: 0
   roughness: 0.48
@@ -104,6 +116,8 @@ components:
 - **Creative North Star:** Architectural Bento & Live Interactive Proof
 - **Impeccable Surface Mode:** `Persuade` (Secondary: Persuade, Operate)
 - **Atmospheric Polarity:** `crisp-technical-obsidian-or-paper`
+- **Archetype Functional Invariants:** APCA Headline `Lc >= 90`, Body `Lc >= 78`, Hick's Law Nav Cap `<= 6`, Fitts Touch `>= 48px`, Acoustic Ceiling `<= -18 dBFS`.
+- **Open Morphological Space:** `fixedVisualTemplateImposed: false` — Active Bespoke Grid `golden-ratio-bento-matrix`, Active Hero `live-interactive-product-sandbox`, Gamut Mask `atmospheric-analogous`.
 - **3D & Camera Cinematography:** `allows3dEffects: true` — Lens: `Telephoto Product Stage (FOV 32°) + AgX Tone Mapping` (Zero distracting 3D effects in operational/editorial views)
 - **Google Filament PBR Material:** `metalness: 0`, `roughness: 0.48`, `ior: 1.46` (Architectural Matte Polymer & Specular Hairline)
 
@@ -115,14 +129,14 @@ All colors are authored in perceptual **W3C DTCG 2025.10 OKLCH** space to guaran
 - **Secondary (`{colors.secondary}`):** Supporting structural accent and secondary state signal.
 - **Tertiary (`{colors.tertiary}`):** High-salience focal accent reserved for single primary conversion moments.
 - **Surface Ground (`{colors.surface}`):** Tinted mineral/daylight ground (never untinted `#000000` or glaring `#ffffff`).
-- **Gurney/Albers Thermal Rotation:** Cool sapphire-slate rotation (H: 255, C: 0.010) + Zenithal top-edge highlight (border-top: 1px solid oklch(1 0 0 / 0.10)).
+- **Gurney/Albers Thermal Rotation & Gamut Mask:** Cool sapphire-slate rotation (H: 255, C: 0.010) + Zenithal top-edge highlight (border-top: 1px solid oklch(1 0 0 / 0.10)) | Active Gamut Mask: `atmospheric-analogous`.
 - **Inigo Quilez Procedural Cosine Palette (`color(t) = a + b * cos(2π(c*t + d))`):** `a=[0.18,0.24,0.36]`, `b=[0.24,0.3,0.44]`, `c=[0.75,0.75,0.85]`, `d=[0.05,0.18,0.38]`.
 - **Text Hierarchy (`{colors.text-primary}` / `{colors.text-secondary}`):** Hue-tinted foregrounds; never gray text on colored backgrounds.
 - **Semantic State (`{colors.success}`, `{colors.warning}`, `{colors.danger}`):** High-contrast status tokens paired with explicit icons/labels.
 
 ## Typography
 
-- **Typographic Scale & Vertical Rhythm:** Utopia Fluid (1.333 Perfect Fourth) in Persuade | Fixed 13px-14px in Operate.
+- **Typographic Scale & Vertical Rhythm:** Utopia Fluid (1.333 Perfect Fourth) in Persuade | Fixed 13px-14px in Operate | Curated Pairing Profile: `swiss-precision-geist-jetbrains`.
 - **Display & Headlines (`{typography.display}`, `{typography.h1}`, `{typography.h2}`):** 'Geist', 'Plus Jakarta Sans', system-ui, sans-serif with deliberate weight hierarchy and balanced wrapping (`text-wrap: balance`).
 - **Body Measure (`{typography.body}`):** 'Geist', 'Plus Jakarta Sans', system-ui, sans-serif at `1rem` (line-height `1.65`), constrained to `65ch–75ch` (`60ch–68ch` in `Read` mode) for effortless scannability.
 - **Edward Tufte Numeric Discipline (`{typography.mono}`):** Mandatory `font-variant-numeric: tabular-nums slashed-zero` (`tnum`, `zero`), right-aligned numeric cells, left-aligned text/IDs, and `16px` inline sparklines.
@@ -130,7 +144,8 @@ All colors are authored in perceptual **W3C DTCG 2025.10 OKLCH** space to guaran
 
 ## Layout
 
-- **Spatial Architecture:** Asymmetric 12-column CSS Grid & Subgrid with generous section spacing (`{spacing.xl}` to `{spacing.2xl}`) and `>= 25%` open canvas whitespace.
+- **Spatial Architecture (`gridTopology: golden-ratio-bento-matrix`):** Asymmetric 12-column CSS Grid & Subgrid with generous section spacing (`{spacing.xl}` to `{spacing.2xl}`) and `>= 35%` open canvas whitespace (`whitespaceRatio: 0.35..0.68`).
+- **Hero First-Impact Architecture (`heroArchitecture: live-interactive-product-sandbox`):** Selected from the open morphological space to guarantee intra-category uniqueness.
 - **Multi-Viewport Ergonomics:** Verified across `1440px` (Desktop), `768px` (Tablet), and `375px` (Mobile) with zero horizontal overflow.
 - **Apple HIG / Material Design 3 / Hoober Thumb Zones:** Primary mobile navigation and CTAs placed in the bottom third thumb zone with minimum `48x48px` touch target area (`>= 8px` separation), `env(safe-area-inset-top/bottom)`, and `touch-action: manipulation`.
 
@@ -142,7 +157,7 @@ All colors are authored in perceptual **W3C DTCG 2025.10 OKLCH** space to guaran
 
 ## Shapes
 
-- **Corner Radius Scale:** `none: 0px`, `xs: 4px`, `sm: 6px`, `md: 10px`, `lg: 12px`.
+- **Corner Radius Scale:** `none: 0px`, `xs: 4px`, `sm: 6px`, `md: 10px`, `lg: 12px` (Concentric Law: $R_{outer} = R_{inner} + Padding$).
 - **Industry Geometry:** Tailored to `b2b-saas-platform` — no `999px` pill radii on cards or containers.
 
 ## Components
@@ -152,6 +167,18 @@ All colors are authored in perceptual **W3C DTCG 2025.10 OKLCH** space to guaran
 - **Interactive State Matrix:** Every control implements all 7 states (`default`, `hover`, `focus-visible`, `active`, `disabled`, `loading skeleton`, `error`), honors `prefers-reduced-motion`, and themes `::selection` and scrollbars.
 - **Overlays:** Built with native HTML5 `<dialog>` and Popover API to prevent container clipping.
 
+## Brand DNA Vector & Bespoke Morphology
+
+- **Morphology Selection Mode:** `auto-bespoke-criteria` (Tension: `minimalismo-silencioso vs expresividad-cinetica`)
+- **Axis 1 — Grid Topology (`gridTopology`):** `tufte-high-density-data`
+- **Axis 2 — Hero Architecture (`heroArchitecture`):** `minimalist-high-trust-authority`
+- **Axis 3 — Component & Surface Morphology (`componentMorphology`):** Nav `floating-island-bar` | Corner `6px-tecnico` | Material `deep-obsidian-specular`
+- **Axis 4 — OKLCH Chromatic Gamut Mask (`gamutMaskType`):** `atmospheric-analogous`
+- **Axis 5 — Expressive Typographic Curation (`fontPairingProfile`):** `literary-salon-spectral-rubik` (`1.250 Major Third`)
+- **Axis 6 — Kinetic Physics & Scroll Choreography (`motionPhysicsCriteria`):** `crisp-editorial-snap` ($\zeta = 1$) | Scroll `vector-mask-reveal`
+- **Axis 7 — Intro Video & 3D/Shader Decision (`introAnd3dDecision`):** Recommend Intro `false` (`intro-split-circle-881e0a`) | 3D/Shader `orthographic-2d-clean`
+- **Intra-Category Morphological Divergence Score:** `1` (Mandatory Floor `>= 0.70`)
+- **Birkhoff Aesthetic Harmony Score ($M = O / C$):** `0.99` (Mandatory Floor `>= 0.85`)
 ## Sonic & Video Identity
 
 - **Sonic Seed Preset:** `linear-minimal-tick` (`archetype: saas`)

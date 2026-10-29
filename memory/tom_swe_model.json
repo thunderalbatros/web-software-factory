@@ -134,6 +134,8 @@
     {
       "id": "cto-pref-button-radius-v1",
       "signal_id": "cto-pref-button-radius-v1",
+      "projectSlug": "agencia-alfa",
+      "scope": "projectSpecificAestheticChoices",
       "fact": "Usar botones primarios con bordes redondeados suaves de 12px",
       "rule": "Usar botones primarios con bordes redondeados suaves de 12px",
       "category": "aesthetic_and_ui_preference",
@@ -146,6 +148,8 @@
     {
       "id": "cto-pref-button-radius-v2",
       "signal_id": "cto-pref-button-radius-v2",
+      "projectSlug": "agencia-alfa",
+      "scope": "projectSpecificAestheticChoices",
       "fact": "Usar botones primarios tipo píldora (9999px) con alto contraste OKLCH",
       "rule": "Usar botones primarios tipo píldora (9999px) con alto contraste OKLCH",
       "category": "aesthetic_and_ui_preference",
@@ -158,6 +162,8 @@
     {
       "id": "cto-pref-prefiero-botones-principales-tipo-pí-g5qy",
       "signal_id": "cto-pref-prefiero-botones-principales-tipo-pí-g5qy",
+      "projectSlug": "agencia-alfa",
+      "scope": "projectSpecificAestheticChoices",
       "fact": "Prefiero botones principales tipo píldora con alto contraste OKLCH y animaciones suaves de 60 FPS",
       "rule": "Prefiero botones principales tipo píldora con alto contraste OKLCH y animaciones suaves de 60 FPS",
       "category": "aesthetic_and_ui_preference",
@@ -167,5 +173,21 @@
       "confidence": 0.99,
       "enforced_by": "CTO HITL Feedback Loop"
     }
-  ]
+  ],
+  "engineeringAndQualityPreferences": [
+    "Mandatory 5-Gate Visual & Security Verification (RYUX 14/14 + Oxc + Playwright 4-Viewport + odiff SIMD + A11y Snapshot) before HITL",
+    "W3C DTCG 2025.10 OKLCH 90/8/2 Chromatic Budget + APCA Contrast Floor (Lc >= 60/75/90) + Utopia clamp() Fluid Scales",
+    "Zero-Cost Permanent Architecture (USD 0.00 baseline, Zero Docker on HP 250 G8, 60-FPS GPU Compositor Motion)",
+    "Cross-Project Aesthetic Isolation: Never force or leak visual morphology (grid, hero, corner radius, palette, font pair) from an old client project onto a new client project"
+  ],
+  "projectSpecificAestheticChoices": {
+    "agencia-alfa": [
+      {
+        "signal_id": "cto-pref-prefiero-botones-principales-tipo-pí-g5qy",
+        "projectSlug": "agencia-alfa",
+        "rule": "Prefiero botones principales tipo píldora con alto contraste OKLCH y animaciones suaves de 60 FPS",
+        "isolatedToProject": true
+      }
+    ]
+  }
 }

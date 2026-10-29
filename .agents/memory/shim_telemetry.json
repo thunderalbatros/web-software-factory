@@ -1,13 +1,13 @@
 {
   "schema": "spacex-xai-shim-registry-telemetry-2026",
-  "updatedAt": "2026-10-29T14:54:58.639Z",
+  "updatedAt": "2026-10-29T15:22:46.415Z",
   "shims": {
     "SIMON_WILLISON_LETHAL_TRIFECTA_GUARD": {
       "shimId": "SIMON_WILLISON_LETHAL_TRIFECTA_GUARD",
       "description": "Blocks simultaneous Private Data + Untrusted Input + External Egress without HITL",
-      "invocationsCount": 11,
+      "invocationsCount": 13,
       "firstSeenAt": "2026-10-29T02:58:20.858Z",
-      "lastTriggeredAt": "2026-10-29T14:54:58.639Z",
+      "lastTriggeredAt": "2026-10-29T15:22:46.415Z",
       "status": "ACTIVE"
     }
   }

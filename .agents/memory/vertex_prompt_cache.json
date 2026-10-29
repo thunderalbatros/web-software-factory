@@ -1,16 +1,16 @@
 {
   "schema": "vertex-prompt-cache-v3-headroom-aligned",
-  "cacheKey": "2e020111653e5b3152e50f137a411da4d70e43e993fd06a45f55d4daef88d256",
-  "alignedPrefixHash": "2bf519c5ca90578e",
-  "updatedAt": "2026-10-29T14:54:05.988Z",
+  "cacheKey": "241371ce44570a99e6889d0b38f7925e35015ae27177ad975f2b2a0f390c1e52",
+  "alignedPrefixHash": "c14053f6765cd227",
+  "updatedAt": "2026-10-29T15:22:43.523Z",
   "ttlSeconds": 86400,
   "hotContextFiles": [
     {
       "path": ".agents/memory/tom_swe_model.json",
-      "rawTokens": 2554,
+      "rawTokens": 2858,
       "tokens": 420,
-      "ccrHash": "abf5cc506820e9d7",
-      "sha256": "abf5cc506820e9d7"
+      "ccrHash": "da65ca14e53c3e87",
+      "sha256": "da65ca14e53c3e87"
     },
     {
       "path": "AGENTS.md",
@@ -37,8 +37,8 @@
   "totalHotTokens": 1898,
   "cacheAligner": {
     "alignerVersion": "headroom-cache-aligner-2026.10",
-    "prefixHash": "2bf519c5ca90578e",
-    "hotPrefixDigest": "27c5c943196cc615",
+    "prefixHash": "c14053f6765cd227",
+    "hotPrefixDigest": "ab0f727a11711e43",
     "orderedSegments": [
       {
         "tier": "1_HOT_STATIC_PREFIX",

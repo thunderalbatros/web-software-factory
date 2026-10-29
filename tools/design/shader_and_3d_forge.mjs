@@ -662,6 +662,70 @@ export function buildSeamlessPbrTextureSpec(materialPreset = 'obsidian-anisotrop
   };
 }
 
+/**
+ * Axis 7 — Parametric 3D & Shader Choreography Generator (`generateParametric3dShaderConfig`):
+ * Replaces fixed 4-template rigidity with a continuous parametric generator that adapts camera
+ * angles, SDF mathematical functions, 3-point lighting ratios, and cut/scroll rhythm to the `.svg`
+ * logo geometry and the project's unique `Brand DNA Vector`.
+ */
+export function generateParametric3dShaderConfig(brandDnaVector = {}, logoGeometry = {}) {
+  const seedStr = JSON.stringify({
+    slug: brandDnaVector.projectSlug || 'default',
+    grid: brandDnaVector.gridTopology || 'golden-ratio-bento-matrix',
+    hero: brandDnaVector.heroArchitecture || 'asymmetric-split-3d-diorama',
+    mask: brandDnaVector.gamutMaskType || 'atmospheric-analogous',
+    material: brandDnaVector.componentMorphology?.material || 'deep-obsidian-specular'
+  });
+
+  let hash = 2166136261;
+  for (let i = 0; i < seedStr.length; i++) {
+    hash ^= seedStr.charCodeAt(i);
+    hash = Math.imul(hash, 16777619) >>> 0;
+  }
+
+  const sdfFunctions = [
+    'sdRoundBox(p, b, r) + opSmoothUnion(d1, d2, k)',
+    'sdOctahedron(p, s) + opTwist(p, k)',
+    'sdTorus(p, t) + opSmoothSubtraction(d1, d2, k)',
+    'sdCappedCylinder(p, h, r) + fbmDomainWarp(p)',
+    'sdGyroidLattice(p, scale, thickness)',
+    'sdHexPrism(p, h) + opRepLim(p, c, l)'
+  ];
+  const sdfMathFunction = sdfFunctions[hash % sdfFunctions.length];
+  const sdfSmoothBlendK = Number((0.12 + ((hash >> 4) % 35) * 0.01).toFixed(2));
+  const cameraElevationDeg = 12 + ((hash >> 8) % 34); // 12°..45°
+  const cameraAzimuthDeg = -35 + ((hash >> 12) % 70); // -35°..+35°
+  const cameraFovDeg = 28 + ((hash >> 16) % 28); // 28°..55°
+  const keyLightAngleDeg = 30 + ((hash >> 6) % 35);
+  const fillLightRatio = Number((0.25 + ((hash >> 10) % 30) * 0.01).toFixed(2));
+  const rimLightIntensity = Number((1.1 + ((hash >> 14) % 45) * 0.01).toFixed(2));
+  const aspectRatio = Number(logoGeometry.aspectRatio || 1.0);
+
+  return {
+    parametricId: `sdf3d-${(hash >>> 0).toString(16).slice(0, 8)}`,
+    isParametric: true,
+    sdfMathFunction,
+    sdfSmoothBlendK,
+    logoSvgAdaptation: {
+      aspectRatio,
+      extrudeDepth: Number((0.12 / Math.max(0.5, aspectRatio)).toFixed(3)),
+      bevelSegments: 4 + (hash % 4)
+    },
+    cameraRig: {
+      fovDeg: cameraFovDeg,
+      elevationDeg: cameraElevationDeg,
+      azimuthDeg: cameraAzimuthDeg,
+      toneMapping: 'THREE.AgXToneMapping'
+    },
+    lightingRig3Point: {
+      keyAngleDeg: keyLightAngleDeg,
+      fillRatio: fillLightRatio,
+      rimIntensity: rimLightIntensity
+    },
+    fpsWatchdogEnforced: true
+  };
+}
+
 if (process.argv[1] && path.resolve(process.argv[1]) === path.resolve(__filename)) {
   const args = process.argv.slice(2);
   if (args.includes('--self-test')) {

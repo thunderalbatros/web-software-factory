@@ -88,6 +88,81 @@ function parseFlag(argv, flagName, defaultValue = '') {
   return defaultValue;
 }
 
+export const OKLCH_GAMUT_MASKS = Object.freeze({
+  'split-complementary': {
+    id: 'split-complementary',
+    label: 'James Gurney Split-Complementary Polygon Mask (H, H+150°, H+210°)',
+    hueOffsets: [0, 150, 210],
+    surfaceChromaScale: 0.75,
+    accentChromaScale: 1.05,
+    ctaChromaScale: 1.12
+  },
+  'atmospheric-analogous': {
+    id: 'atmospheric-analogous',
+    label: 'Atmospheric Analogous Chord Mask (H, H+28°, H-24°)',
+    hueOffsets: [0, 28, 336],
+    surfaceChromaScale: 0.85,
+    accentChromaScale: 0.92,
+    ctaChromaScale: 1.04
+  },
+  'achromatic-with-hyper-accent': {
+    id: 'achromatic-with-hyper-accent',
+    label: 'Near-Achromatic Mineral Ground + Single Hyper-Chroma Focal Accent',
+    hueOffsets: [0, 0, 180],
+    surfaceChromaScale: 0.25,
+    accentChromaScale: 0.35,
+    ctaChromaScale: 1.25
+  },
+  'warm-cool-duotone': {
+    id: 'warm-cool-duotone',
+    label: 'Albers Warm-Cool Thermal Polarity Duotone (H, H+180°)',
+    hueOffsets: [0, 180, 165],
+    surfaceChromaScale: 0.65,
+    accentChromaScale: 0.95,
+    ctaChromaScale: 1.08
+  },
+  'triadic-muted-earth': {
+    id: 'triadic-muted-earth',
+    label: 'Muted Triadic Mineral & Earth Gamut Mask (H, H+115°, H+245°)',
+    hueOffsets: [0, 115, 245],
+    surfaceChromaScale: 0.55,
+    accentChromaScale: 0.72,
+    ctaChromaScale: 0.88
+  }
+});
+
+/**
+ * Applies James Gurney's Gamut Masking laws in perceptual OKLCH space so two websites
+ * sharing the exact same base hue produce radically different, yet mathematically harmonic, palettes.
+ */
+export function applyOklchGamutMask(baseHue = 255, gamutMaskType = 'atmospheric-analogous', options = {}) {
+  const mask = OKLCH_GAMUT_MASKS[gamutMaskType] || OKLCH_GAMUT_MASKS['atmospheric-analogous'];
+  const h0 = ((Number(baseHue) || 255) % 360 + 360) % 360;
+  const hSurface = (h0 + mask.hueOffsets[0]) % 360;
+  const hAccent = (h0 + mask.hueOffsets[1]) % 360;
+  const hCta = (h0 + mask.hueOffsets[2]) % 360;
+
+  const isLight = options.polarity === 'light';
+  const baseL = isLight ? 0.97 : Number(options.lightnessCanvas ?? 0.13);
+  const surfaceC = Number((0.015 * mask.surfaceChromaScale).toFixed(4));
+  const accentC = Number(Math.min(0.24, (options.chromaAccent ?? 0.17) * mask.accentChromaScale).toFixed(3));
+  const ctaC = Number(Math.min(0.26, 0.18 * mask.ctaChromaScale).toFixed(3));
+
+  return {
+    gamutMaskType: mask.id,
+    label: mask.label,
+    baseHue: h0,
+    maskedHues: { surface: hSurface, accent: hAccent, cta: hCta },
+    tokens: {
+      surfaceCanvas: `oklch(${baseL} ${surfaceC} ${hSurface})`,
+      surfaceElevated: `oklch(${(isLight ? baseL - 0.03 : baseL + 0.05).toFixed(2)} ${(surfaceC * 1.15).toFixed(4)} ${hSurface})`,
+      brandPrimary: `oklch(0.78 ${ctaC} ${hCta})`,
+      brandSecondary: `oklch(${(isLight ? 0.34 : 0.42).toFixed(2)} ${(accentC * 0.6).toFixed(3)} ${hSurface})`,
+      brandAccent: `oklch(0.74 ${accentC} ${hAccent})`
+    }
+  };
+}
+
 export function getStyleCatalog() {
   const stylesDir = path.join(FACTORY_ROOT, 'references', 'hunt-2026-10', 'awesome-design-skills', 'skills');
   const styleNames = fs.existsSync(stylesDir)
@@ -97,14 +172,20 @@ export function getStyleCatalog() {
     totalStyles: styleNames.length,
     archetypes: Object.keys(ARCHETYPE_PRESETS),
     featuredOverrides: Object.keys(STYLE_OVERRIDES),
+    gamutMasks: Object.keys(OKLCH_GAMUT_MASKS),
     styles: styleNames
   };
 }
 
-export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento', brandLock = null) {
+export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento', brandLock = null, gamutMaskType = 'atmospheric-analogous') {
   const base = ARCHETYPE_PRESETS[archetype] || ARCHETYPE_PRESETS['saas-b2b'];
   const ov = STYLE_OVERRIDES[styleName] || {};
   const cfg = { ...base, ...ov };
+  const masked = applyOklchGamutMask(cfg.hueCanvas, gamutMaskType, {
+    lightnessCanvas: cfg.lightnessCanvas,
+    chromaAccent: cfg.chromaAccent,
+    polarity: brandLock?.atmospherePreference === 'light-only' ? 'light' : 'dark'
+  });
 
   const isLockedPalette = Boolean(
     brandLock &&
@@ -118,8 +199,8 @@ export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento
 
   const surfaceCanvasVal = isLockedPalette
     ? (isLightOnly
-        ? clientPal.surfaceLightColor || `oklch(0.98 0.008 ${cfg.hueCanvas})`
-        : clientPal.surfaceDarkColor || `oklch(${cfg.lightnessCanvas} 0.015 ${cfg.hueCanvas})`)
+        ? clientPal.surfaceLightColor || masked.tokens.surfaceCanvas
+        : clientPal.surfaceDarkColor || masked.tokens.surfaceCanvas)
     : `oklch(${cfg.lightnessCanvas} 0.015 ${cfg.hueCanvas})`;
 
   const primaryColorVal = isLockedPalette
@@ -150,6 +231,8 @@ export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento
       standard: 'W3C DTCG 2025.10',
       archetype,
       styleSkill: styleName || 'bento',
+      gamutMaskType: masked.gamutMaskType,
+      gamutMaskedTokens: masked.tokens,
       chromaticRule: '90% Neutral Surface / 8% Supporting Accent / 2% High-Chroma CTA (OKLCH + APCA)',
       brandIdentityLock: brandLock
         ? {

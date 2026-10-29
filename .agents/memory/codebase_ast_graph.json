@@ -1,14 +1,14 @@
 {
   "schema": "cocoindex-code-ast-graph-v1",
-  "updatedAt": "2026-10-29T14:54:58.475Z",
+  "updatedAt": "2026-10-29T15:22:40.718Z",
   "activeProject": "agencia-alfa",
-  "combinedSha256": "dbd9746d076ba017",
+  "combinedSha256": "11db9bb7c9b32b1c",
   "stats": {
-    "totalFilesIndexed": 140,
-    "reindexedFilesCount": 1,
-    "cachedFilesCount": 139,
-    "totalSymbols": 1145,
-    "totalExports": 667,
+    "totalFilesIndexed": 142,
+    "reindexedFilesCount": 12,
+    "cachedFilesCount": 130,
+    "totalSymbols": 1173,
+    "totalExports": 695,
     "estimatedTokenSavingsPct": 72.5
   },
   "files": [
@@ -675,8 +675,8 @@
     {
       "path": "projects/agencia-alfa/site/css/ui-primitives.css",
       "ext": ".css",
-      "sha256": "d2f25bb5591f1a8e",
-      "lineCount": 99,
+      "sha256": "970e5a77b1010d44",
+      "lineCount": 172,
       "exports": [
         "fx-beam-spin",
         "fx-shimmer-sweep"
@@ -702,8 +702,8 @@
           "endLine": 19
         }
       ],
-      "mtimeMs": 1793138955985.2788,
-      "size": 2721
+      "mtimeMs": 1793287252190.7737,
+      "size": 5007
     },
     {
       "path": "projects/agencia-alfa/site/js/app.js",
@@ -5963,8 +5963,8 @@
     {
       "path": "tools/audit/ryux_design_gate.mjs",
       "ext": ".mjs",
-      "sha256": "1f7d0cb4dd6eb664",
-      "lineCount": 419,
+      "sha256": "5b4e79bf96a84956",
+      "lineCount": 478,
       "exports": [
         "runRyuxDesignGate",
         "runAutonomousAestheticRepairLoop"
@@ -6022,16 +6022,16 @@
         "toLowerCase",
         "basename",
         "Lock",
+        "synthesizeUniqueBrandDna",
+        "Uniqueness",
+        "Harmony",
         "filter",
         "round",
         "toISOString",
         "min",
         "runRyuxDesignGate",
         "runCognitiveUxAudit",
-        "evaluateVisualArchetypeWithVlm",
-        "map",
-        "tokens",
-        "compileDesignTokens"
+        "evaluateVisualArchetypeWithVlm"
       ],
       "symbols": [
         {
@@ -6039,28 +6039,28 @@
           "kind": "function",
           "exported": false,
           "signature": "function readFirstExisting(candidates)",
-          "startLine": 29,
-          "endLine": 38
+          "startLine": 34,
+          "endLine": 43
         },
         {
           "name": "runRyuxDesignGate",
           "kind": "function",
           "exported": true,
           "signature": "export function runRyuxDesignGate()",
-          "startLine": 40,
-          "endLine": 321
+          "startLine": 45,
+          "endLine": 380
         },
         {
           "name": "runAutonomousAestheticRepairLoop",
           "kind": "function",
           "exported": true,
           "signature": "export async function runAutonomousAestheticRepairLoop(options = {})",
-          "startLine": 328,
-          "endLine": 328
+          "startLine": 387,
+          "endLine": 387
         }
       ],
-      "mtimeMs": 1793285527107.7903,
-      "size": 18807
+      "mtimeMs": 1793287327099.9304,
+      "size": 21488
     },
     {
       "path": "tools/audit/security_and_motion_audit.mjs",
@@ -6429,9 +6429,11 @@
     {
       "path": "tools/audit/visual_audit.mjs",
       "ext": ".mjs",
-      "sha256": "ec616b8b0dcc123d",
-      "lineCount": 653,
-      "exports": [],
+      "sha256": "5eb01cb131cce310",
+      "lineCount": 823,
+      "exports": [
+        "inspectVisualHarmonyAndMotionKeyframes"
+      ],
       "imports": [
         "playwright-core",
         "node:fs",
@@ -6507,16 +6509,24 @@
           "endLine": 359
         },
         {
+          "name": "inspectVisualHarmonyAndMotionKeyframes",
+          "kind": "function",
+          "exported": true,
+          "signature": "export async function inspectVisualHarmonyAndMotionKeyframes(options = {})",
+          "startLine": 372,
+          "endLine": 372
+        },
+        {
           "name": "tick",
           "kind": "function",
           "exported": false,
           "signature": "function tick(now)",
-          "startLine": 402,
-          "endLine": 411
+          "startLine": 564,
+          "endLine": 573
         }
       ],
-      "mtimeMs": 1793281233403.0232,
-      "size": 30504
+      "mtimeMs": 1793287144989.376,
+      "size": 36813
     },
     {
       "path": "tools/audit/visual_regression.mjs",
@@ -7817,11 +7827,217 @@
       "size": 24658
     },
     {
+      "path": "tools/design/bespoke_morphology_composer.mjs",
+      "ext": ".mjs",
+      "sha256": "303a77524f5a8b18",
+      "lineCount": 1053,
+      "exports": [
+        "LEDGER_PATH",
+        "MIN_DIVERGENCE_THRESHOLD",
+        "MIN_HARMONY_SCORE",
+        "MAX_SIMULTANEOUS_HIGH_COMPLEXITY_AXES",
+        "GRID_TOPOLOGY_CATALOG",
+        "HERO_ARCHITECTURE_CATALOG",
+        "FONT_PAIRING_PROFILES",
+        "MOTION_PHYSICS_PROFILES",
+        "SCROLL_CHOREOGRAPHY_VARIANTS",
+        "BRAND_PERSONALITY_TENSIONS",
+        "validateHarmonicAxisCoherence",
+        "loadProjectDnaLedger",
+        "saveProjectDnaLedger",
+        "computeMorphologicalDivergenceScore",
+        "runBespokeMorphologyComposerSelfTest"
+      ],
+      "imports": [
+        "node:fs",
+        "node:path",
+        "node:url",
+        "./token_compiler.mjs",
+        "./shader_and_3d_forge.mjs",
+        "./programmatic_video_forge.mjs"
+      ],
+      "importedBy": [],
+      "calls": [
+        "fileURLToPath",
+        "bezier",
+        "snap",
+        "linear",
+        "settle",
+        "inertia",
+        "evaluateIntroAnd3dNecessity",
+        "resolveIndustryArchetype",
+        "includes",
+        "generateParametricIntroChoreography",
+        "generateParametric3dShaderConfig",
+        "visual",
+        "operativa",
+        "neo",
+        "find",
+        "push",
+        "editorial",
+        "cruda",
+        "blanda",
+        "HUD",
+        "contenida",
+        "excedido",
+        "join",
+        "max",
+        "toFixed",
+        "min",
+        "existsSync",
+        "toISOString",
+        "parse",
+        "readFileSync",
+        "mkdirSync",
+        "dirname",
+        "writeFileSync",
+        "stringify",
+        "filter",
+        "from",
+        "synthesizeUniqueBrandDna",
+        "getOpenMorphologicalSpaceForArchetype",
+        "getArchetypeFunctionalInvariants",
+        "loadProjectDnaLedger",
+        "values",
+        "charCodeAt",
+        "imul",
+        "keys",
+        "applyOklchGamutMask"
+      ],
+      "symbols": [
+        {
+          "name": "LEDGER_PATH",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const LEDGER_PATH",
+          "startLine": 38,
+          "endLine": 38
+        },
+        {
+          "name": "MIN_DIVERGENCE_THRESHOLD",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const MIN_DIVERGENCE_THRESHOLD",
+          "startLine": 39,
+          "endLine": 39
+        },
+        {
+          "name": "MIN_HARMONY_SCORE",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const MIN_HARMONY_SCORE",
+          "startLine": 40,
+          "endLine": 40
+        },
+        {
+          "name": "MAX_SIMULTANEOUS_HIGH_COMPLEXITY_AXES",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const MAX_SIMULTANEOUS_HIGH_COMPLEXITY_AXES",
+          "startLine": 41,
+          "endLine": 41
+        },
+        {
+          "name": "GRID_TOPOLOGY_CATALOG",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const GRID_TOPOLOGY_CATALOG",
+          "startLine": 46,
+          "endLine": 46
+        },
+        {
+          "name": "HERO_ARCHITECTURE_CATALOG",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const HERO_ARCHITECTURE_CATALOG",
+          "startLine": 60,
+          "endLine": 60
+        },
+        {
+          "name": "FONT_PAIRING_PROFILES",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const FONT_PAIRING_PROFILES",
+          "startLine": 77,
+          "endLine": 77
+        },
+        {
+          "name": "MOTION_PHYSICS_PROFILES",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const MOTION_PHYSICS_PROFILES",
+          "startLine": 263,
+          "endLine": 291
+        },
+        {
+          "name": "SCROLL_CHOREOGRAPHY_VARIANTS",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const SCROLL_CHOREOGRAPHY_VARIANTS",
+          "startLine": 293,
+          "endLine": 293
+        },
+        {
+          "name": "BRAND_PERSONALITY_TENSIONS",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const BRAND_PERSONALITY_TENSIONS",
+          "startLine": 303,
+          "endLine": 303
+        },
+        {
+          "name": "validateHarmonicAxisCoherence",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function validateHarmonicAxisCoherence(dnaVector = {})",
+          "startLine": 395,
+          "endLine": 395
+        },
+        {
+          "name": "loadProjectDnaLedger",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function loadProjectDnaLedger(customLedgerPath = LEDGER_PATH)",
+          "startLine": 537,
+          "endLine": 558
+        },
+        {
+          "name": "saveProjectDnaLedger",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function saveProjectDnaLedger(ledger, customLedgerPath = LEDGER_PATH)",
+          "startLine": 560,
+          "endLine": 565
+        },
+        {
+          "name": "computeMorphologicalDivergenceScore",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function computeMorphologicalDivergenceScore(candidateDna, existingCategoryEntries = [])",
+          "startLine": 571,
+          "endLine": 679
+        },
+        {
+          "name": "runBespokeMorphologyComposerSelfTest",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function runBespokeMorphologyComposerSelfTest()",
+          "startLine": 906,
+          "endLine": 1021
+        }
+      ],
+      "mtimeMs": 1793286749085.7878,
+      "size": 41666
+    },
+    {
       "path": "tools/design/build_vanilla_primitives.mjs",
       "ext": ".mjs",
-      "sha256": "46522f514cb0984a",
-      "lineCount": 164,
+      "sha256": "793207d265d9b363",
+      "lineCount": 452,
       "exports": [
+        "NAVIGATION_MORPHOLOGY_VARIANTS",
+        "CORNER_GEOMETRY_VARIANTS",
+        "SURFACE_MATERIAL_PHYSICS",
         "UNIVERSAL_UI_PRIMITIVES_CSS",
         "buildVanillaPrimitives"
       ],
@@ -7834,14 +8050,24 @@
       "importedBy": [],
       "calls": [
         "fileURLToPath",
-        "Beam",
+        "R_outer",
+        "R_inner",
+        "Padding",
+        "polygon",
+        "calc",
+        "Bevel",
+        "oklch",
+        "blur",
+        "saturate",
         "gradient",
         "var",
-        "oklch",
-        "Hierarchy",
+        "compileComponentMorphologyPrimitives",
         "clamp",
+        "trim",
+        "Beam",
+        "Variants",
         "bezier",
-        "blur",
+        "Morphologies",
         "CTA",
         "repeat",
         "minmax",
@@ -7854,32 +8080,56 @@
         "mkdirSync",
         "dirname",
         "writeFileSync",
-        "trim",
         "map",
         "resolve",
         "buildVanillaPrimitives",
-        "log"
+        "log",
+        "relative"
       ],
       "symbols": [
+        {
+          "name": "NAVIGATION_MORPHOLOGY_VARIANTS",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const NAVIGATION_MORPHOLOGY_VARIANTS",
+          "startLine": 25,
+          "endLine": 74
+        },
+        {
+          "name": "CORNER_GEOMETRY_VARIANTS",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const CORNER_GEOMETRY_VARIANTS",
+          "startLine": 76,
+          "endLine": 109
+        },
+        {
+          "name": "SURFACE_MATERIAL_PHYSICS",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const SURFACE_MATERIAL_PHYSICS",
+          "startLine": 111,
+          "endLine": 172
+        },
         {
           "name": "UNIVERSAL_UI_PRIMITIVES_CSS",
           "kind": "constant",
           "exported": true,
           "signature": "export const UNIVERSAL_UI_PRIMITIVES_CSS",
-          "startLine": 24,
-          "endLine": 24
+          "startLine": 234,
+          "endLine": 234
         },
         {
           "name": "buildVanillaPrimitives",
           "kind": "function",
           "exported": true,
-          "signature": "export function buildVanillaPrimitives(projectInput = '')",
-          "startLine": 124,
-          "endLine": 155
+          "signature": "export function buildVanillaPrimitives(projectInput = '', morphologyOptions = null)",
+          "startLine": 407,
+          "endLine": 443
         }
       ],
-      "mtimeMs": 1792971223614.4434,
-      "size": 5231
+      "mtimeMs": 1793286450465.3125,
+      "size": 15780
     },
     {
       "path": "tools/design/design_extractor.mjs",
@@ -7947,8 +8197,8 @@
     {
       "path": "tools/design/industry_archetype_matrix.mjs",
       "ext": ".mjs",
-      "sha256": "be760f1e02aba012",
-      "lineCount": 1631,
+      "sha256": "b58b9d8bab6cff9e",
+      "lineCount": 2234,
       "exports": [
         "FACTORY_ROOT",
         "GOOGLE_LABS_DESIGN_MD_SECTIONS",
@@ -7956,6 +8206,10 @@
         "ARCHETYPE_CLI_ALIASES",
         "INDUSTRY_VISUAL_ARCHETYPES",
         "IMPECCABLE_62_ANTI_SLOP_RULES",
+        "ARCHETYPE_FUNCTIONAL_INVARIANTS",
+        "OPEN_MORPHOLOGICAL_DESIGN_SPACE",
+        "getArchetypeFunctionalInvariants",
+        "getOpenMorphologicalSpaceForArchetype",
         "resolveIndustryArchetype",
         "compileProductMdContent",
         "getVisualScienceParametersForArchetype",
@@ -8014,15 +8268,15 @@
         "every",
         "join",
         "Mode",
-        "trim",
-        "toLowerCase",
-        "map",
-        "ergonomics",
-        "Orthographic",
-        "gray",
-        "bezier",
-        "damped",
-        "minimal"
+        "clarity",
+        "ratio",
+        "agreement",
+        "presentation",
+        "privacy",
+        "handling",
+        "tiers",
+        "resolveIndustryArchetype",
+        "trim"
       ],
       "symbols": [
         {
@@ -8074,72 +8328,104 @@
           "endLine": 890
         },
         {
+          "name": "ARCHETYPE_FUNCTIONAL_INVARIANTS",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const ARCHETYPE_FUNCTIONAL_INVARIANTS",
+          "startLine": 975,
+          "endLine": 1192
+        },
+        {
+          "name": "OPEN_MORPHOLOGICAL_DESIGN_SPACE",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const OPEN_MORPHOLOGICAL_DESIGN_SPACE",
+          "startLine": 1202,
+          "endLine": 1490
+        },
+        {
+          "name": "getArchetypeFunctionalInvariants",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function getArchetypeFunctionalInvariants(input = 'saas')",
+          "startLine": 1495,
+          "endLine": 1498
+        },
+        {
+          "name": "getOpenMorphologicalSpaceForArchetype",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function getOpenMorphologicalSpaceForArchetype(input = 'saas')",
+          "startLine": 1503,
+          "endLine": 1506
+        },
+        {
           "name": "resolveIndustryArchetype",
           "kind": "function",
           "exported": true,
           "signature": "export function resolveIndustryArchetype(input = 'saas')",
-          "startLine": 967,
-          "endLine": 971
+          "startLine": 1512,
+          "endLine": 1521
         },
         {
           "name": "compileProductMdContent",
           "kind": "function",
           "exported": true,
           "signature": "export function compileProductMdContent(archetypeObj, projectMeta = {})",
-          "startLine": 976,
-          "endLine": 976
+          "startLine": 1526,
+          "endLine": 1526
         },
         {
           "name": "getVisualScienceParametersForArchetype",
           "kind": "function",
           "exported": true,
           "signature": "export function getVisualScienceParametersForArchetype(archetypeId = 'b2b-saas-platform')",
-          "startLine": 1034,
-          "endLine": 1150
+          "startLine": 1584,
+          "endLine": 1700
         },
         {
           "name": "compileDesignMdContent",
           "kind": "function",
           "exported": true,
           "signature": "export function compileDesignMdContent(archetypeObj, projectMeta = {})",
-          "startLine": 1156,
-          "endLine": 1156
+          "startLine": 1706,
+          "endLine": 1706
         },
         {
           "name": "parseDesignMdFrontMatter",
           "kind": "function",
           "exported": false,
           "signature": "function parseDesignMdFrontMatter(markdownContent)",
-          "startLine": 1319,
-          "endLine": 1374
+          "startLine": 1922,
+          "endLine": 1977
         },
         {
           "name": "lintDesignMd",
           "kind": "function",
           "exported": true,
           "signature": "export function lintDesignMd(filePathOrContent, options = {})",
-          "startLine": 1381,
-          "endLine": 1381
+          "startLine": 1984,
+          "endLine": 1984
         },
         {
           "name": "generateProductAndDesignMd",
           "kind": "function",
           "exported": true,
           "signature": "export function generateProductAndDesignMd(projectRoot, archetypeInput = 'saas', options = {})",
-          "startLine": 1472,
-          "endLine": 1472
+          "startLine": 2075,
+          "endLine": 2075
         },
         {
           "name": "runIndustryArchetypeSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export function runIndustryArchetypeSelfTest()",
-          "startLine": 1540,
-          "endLine": 1605
+          "startLine": 2143,
+          "endLine": 2208
         }
       ],
-      "mtimeMs": 1793226169849.414,
-      "size": 79564
+      "mtimeMs": 1793286346534.612,
+      "size": 107703
     },
     {
       "path": "tools/design/og_image_generator.mjs",
@@ -8203,10 +8489,25 @@
       "size": 5243
     },
     {
+      "path": "tools/design/programmatic_video_forge.mjs",
+      "ext": ".mjs",
+      "sha256": "e6dfe9b5ac58ba43",
+      "lineCount": 6,
+      "exports": [],
+      "imports": [],
+      "importedBy": [
+        "tools/design/bespoke_morphology_composer.mjs"
+      ],
+      "calls": [],
+      "symbols": [],
+      "mtimeMs": 1793286599589.2253,
+      "size": 185
+    },
+    {
       "path": "tools/design/shader_and_3d_forge.mjs",
       "ext": ".mjs",
-      "sha256": "1bdff63a4dc0cb99",
-      "lineCount": 692,
+      "sha256": "192702076a2d979a",
+      "lineCount": 756,
       "exports": [
         "GPU_FPS_WATCHDOG_SCRIPT",
         "attachGpuFpsWatchdog",
@@ -8221,7 +8522,8 @@
         "mountRapierBitEcsScene",
         "runShaderAnd3dForgeSelfTest",
         "extrude2dLogoTo3dGeometrySpec",
-        "buildSeamlessPbrTextureSpec"
+        "buildSeamlessPbrTextureSpec",
+        "generateParametric3dShaderConfig"
       ],
       "imports": [
         "node:fs",
@@ -8233,6 +8535,7 @@
       "importedBy": [
         "tools/audit/harness_doctor_audit.mjs",
         "tools/cto_command_center.mjs",
+        "tools/design/bespoke_morphology_composer.mjs",
         "tools/intelligence/agent_benchmark_harness.mjs",
         "tools/intelligence/agent_squad.mjs",
         "tools/intelligence/vertex_ai_bridge.mjs",
@@ -8405,17 +8708,27 @@
           "signature": "export function buildSeamlessPbrTextureSpec(materialPreset = 'obsidian-anisotropic')",
           "startLine": 649,
           "endLine": 663
+        },
+        {
+          "name": "generateParametric3dShaderConfig",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function generateParametric3dShaderConfig(brandDnaVector = {}, logoGeometry = {})",
+          "startLine": 671,
+          "endLine": 671
         }
       ],
-      "mtimeMs": 1793220975404.3213,
-      "size": 29872
+      "mtimeMs": 1793286545824.986,
+      "size": 32479
     },
     {
       "path": "tools/design/token_compiler.mjs",
       "ext": ".mjs",
-      "sha256": "b2657ab670ec47fe",
-      "lineCount": 904,
+      "sha256": "6d373e51842d170e",
+      "lineCount": 987,
       "exports": [
+        "OKLCH_GAMUT_MASKS",
+        "applyOklchGamutMask",
         "getStyleCatalog",
         "buildDtcgTokensObject",
         "resolveDtcgAliases",
@@ -8434,6 +8747,7 @@
         "tools/audit/harness_doctor_audit.mjs",
         "tools/audit/ryux_design_gate.mjs",
         "tools/cto_command_center.mjs",
+        "tools/design/bespoke_morphology_composer.mjs",
         "tools/factory.mjs",
         "tools/intelligence/factory_sweep.mjs",
         "tools/intelligence/mcp_omni_rag_server.mjs",
@@ -8444,6 +8758,11 @@
         "fileURLToPath",
         "startsWith",
         "slice",
+        "Mask",
+        "Duotone",
+        "toFixed",
+        "min",
+        "oklch",
         "join",
         "existsSync",
         "readdirSync",
@@ -8452,8 +8771,7 @@
         "map",
         "sort",
         "keys",
-        "oklch",
-        "toFixed",
+        "applyOklchGamutMask",
         "CTA",
         "surface",
         "text",
@@ -8474,7 +8792,6 @@
         "walk",
         "resolveDtcgAliases",
         "var",
-        "min",
         "blur",
         "Buttons",
         "translate3d",
@@ -8482,10 +8799,7 @@
         "Grid",
         "repeat",
         "minmax",
-        "Accordion",
-        "calc",
-        "old",
-        "supports"
+        "Accordion"
       ],
       "symbols": [
         {
@@ -8497,96 +8811,112 @@
           "endLine": 89
         },
         {
+          "name": "OKLCH_GAMUT_MASKS",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const OKLCH_GAMUT_MASKS",
+          "startLine": 91,
+          "endLine": 132
+        },
+        {
+          "name": "applyOklchGamutMask",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function applyOklchGamutMask(baseHue = 255, gamutMaskType = 'atmospheric-analogous', options = {})",
+          "startLine": 138,
+          "endLine": 138
+        },
+        {
           "name": "getStyleCatalog",
           "kind": "function",
           "exported": true,
           "signature": "export function getStyleCatalog()",
-          "startLine": 91,
-          "endLine": 102
+          "startLine": 166,
+          "endLine": 178
         },
         {
           "name": "buildDtcgTokensObject",
           "kind": "function",
           "exported": true,
-          "signature": "export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento', brandLock = null)",
-          "startLine": 104,
-          "endLine": 255
+          "signature": "export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento', brandLock = null, gamutMaskType = 'atmospheric-analogous')",
+          "startLine": 180,
+          "endLine": 338
         },
         {
           "name": "resolveDtcgAliases",
           "kind": "function",
           "exported": true,
           "signature": "export function resolveDtcgAliases(dtcgRoot)",
-          "startLine": 260,
-          "endLine": 305
+          "startLine": 343,
+          "endLine": 388
         },
         {
           "name": "lookupPath",
           "kind": "function",
           "exported": false,
           "signature": "function lookupPath(pathStr)",
-          "startLine": 261,
-          "endLine": 269
+          "startLine": 344,
+          "endLine": 352
         },
         {
           "name": "resolveValue",
           "kind": "function",
           "exported": false,
           "signature": "function resolveValue(val, visited = new Set()",
-          "startLine": 271,
-          "endLine": 283
+          "startLine": 354,
+          "endLine": 366
         },
         {
           "name": "walk",
           "kind": "function",
           "exported": false,
           "signature": "function walk(node, prefix = [])",
-          "startLine": 286,
-          "endLine": 302
+          "startLine": 369,
+          "endLine": 385
         },
         {
           "name": "renderDesignTokensCss",
           "kind": "function",
           "exported": true,
           "signature": "export function renderDesignTokensCss(dtcg)",
-          "startLine": 307,
-          "endLine": 321
+          "startLine": 390,
+          "endLine": 404
         },
         {
           "name": "compileDesignTokens",
           "kind": "function",
           "exported": true,
           "signature": "export function compileDesignTokens(options = {})",
-          "startLine": 702,
-          "endLine": 702
+          "startLine": 785,
+          "endLine": 785
         },
         {
           "name": "compileMultiTargetMobileTokensSync",
           "kind": "function",
           "exported": false,
           "signature": "function compileMultiTargetMobileTokensSync(rootDir, dtcg, writtenFiles = [])",
-          "startLine": 820,
-          "endLine": 844
+          "startLine": 903,
+          "endLine": 927
         },
         {
           "name": "extractOklchPaletteFromBrandImage",
           "kind": "function",
           "exported": true,
           "signature": "export function extractOklchPaletteFromBrandImage(imagePathOrBuffer = 'brand-reference.png')",
-          "startLine": 850,
-          "endLine": 883
+          "startLine": 933,
+          "endLine": 966
         },
         {
           "name": "runTokenCompilerCli",
           "kind": "function",
           "exported": true,
           "signature": "export function runTokenCompilerCli()",
-          "startLine": 885,
-          "endLine": 899
+          "startLine": 968,
+          "endLine": 982
         }
       ],
-      "mtimeMs": 1793285504551.6729,
-      "size": 33016
+      "mtimeMs": 1793286495740.4006,
+      "size": 36303
     },
     {
       "path": "tools/factory.mjs",
@@ -13904,10 +14234,11 @@
     {
       "path": "tools/intelligence/tom_swe_engine.mjs",
       "ext": ".mjs",
-      "sha256": "e5210c44aeaf2a90",
-      "lineCount": 136,
+      "sha256": "bf3198ae3286e4c0",
+      "lineCount": 227,
       "exports": [
         "loadTomModel",
+        "isProjectSpecificAestheticSignal",
         "consultTomSwe",
         "runSleeptimeCompute"
       ],
@@ -13928,23 +14259,30 @@
         "existsSync",
         "parse",
         "readFileSync",
+        "isArray",
+        "Verification",
+        "Floor",
+        "clamp",
+        "Architecture",
+        "test",
         "loadTomModel",
+        "filter",
+        "isProjectSpecificAestheticSignal",
         "toLowerCase",
         "split",
-        "filter",
         "some",
         "includes",
-        "test",
         "trim",
         "slice",
         "push",
         "toISOString",
         "writeFileSync",
         "stringify",
-        "isArray",
+        "keys",
         "runSleeptimeCompute",
         "consultTomSwe",
         "log",
+        "Check",
         "toFixed"
       ],
       "symbols": [
@@ -13953,28 +14291,36 @@
           "kind": "function",
           "exported": true,
           "signature": "export function loadTomModel()",
-          "startLine": 24,
-          "endLine": 29
+          "startLine": 30,
+          "endLine": 47
+        },
+        {
+          "name": "isProjectSpecificAestheticSignal",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function isProjectSpecificAestheticSignal(signalOrRule = '')",
+          "startLine": 53,
+          "endLine": 63
         },
         {
           "name": "consultTomSwe",
           "kind": "function",
           "exported": true,
-          "signature": "export function consultTomSwe(queryContext = '')",
-          "startLine": 35,
-          "endLine": 82
+          "signature": "export function consultTomSwe(queryContext = '', options = {})",
+          "startLine": 69,
+          "endLine": 69
         },
         {
           "name": "runSleeptimeCompute",
           "kind": "function",
           "exported": true,
-          "signature": "export function runSleeptimeCompute(newSignal = null)",
-          "startLine": 88,
-          "endLine": 128
+          "signature": "export function runSleeptimeCompute(newSignal = null, options = {})",
+          "startLine": 143,
+          "endLine": 143
         }
       ],
-      "mtimeMs": 1792971595025.308,
-      "size": 6058
+      "mtimeMs": 1793286853169.3125,
+      "size": 10605
     },
     {
       "path": "tools/intelligence/vault_indexer.mjs",
@@ -15201,13 +15547,14 @@
     {
       "path": "tools/media/programmatic_video_forge.mjs",
       "ext": ".mjs",
-      "sha256": "e598a5383127ddd6",
-      "lineCount": 502,
+      "sha256": "f727590406f46203",
+      "lineCount": 581,
       "exports": [
         "ROOT",
         "MAX_VIDEO_BUDGET_BYTES",
         "BRAND_INTRO_TEMPLATES",
         "resolveBrandIntroTemplate",
+        "generateParametricIntroChoreography",
         "extractOklchPaletteFromDesignMd",
         "ensureProjectVectorLogoSvg",
         "BRAND_INTRO_SCENE_CONFIG",
@@ -15239,6 +15586,14 @@
         "toLowerCase",
         "values",
         "includes",
+        "stringify",
+        "charCodeAt",
+        "imul",
+        "toFixed",
+        "split",
+        "toString",
+        "slice",
+        "round",
         "join",
         "existsSync",
         "generateProductAndDesignMd",
@@ -15250,7 +15605,6 @@
         "url",
         "writeFileSync",
         "writeDualVideoAndPosterContainers",
-        "stringify",
         "from",
         "concat",
         "alloc",
@@ -15265,14 +15619,7 @@
         "masterAudioToLufsAndOpus",
         "getStyleCatalog",
         "basename",
-        "forgeProgrammaticBrandIntroWithGcp",
-        "routeMultimediaGeneration",
-        "generateVisualAssetWithImagen3",
-        "syncFinOpsBudgetJsonSummary",
-        "push",
-        "every",
-        "runRyuxDesignGate",
-        "find"
+        "forgeProgrammaticBrandIntroWithGcp"
       ],
       "symbols": [
         {
@@ -15308,40 +15655,48 @@
           "endLine": 116
         },
         {
+          "name": "generateParametricIntroChoreography",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function generateParametricIntroChoreography(brandDnaVector = {}, logoSvgGeometry = {})",
+          "startLine": 124,
+          "endLine": 124
+        },
+        {
           "name": "extractOklchPaletteFromDesignMd",
           "kind": "function",
           "exported": true,
           "signature": "export function extractOklchPaletteFromDesignMd(projectRoot = ROOT, archetype = 'saas')",
-          "startLine": 121,
-          "endLine": 139
+          "startLine": 200,
+          "endLine": 218
         },
         {
           "name": "ensureProjectVectorLogoSvg",
           "kind": "function",
           "exported": true,
           "signature": "export function ensureProjectVectorLogoSvg(projectRoot = ROOT, slug = 'agencia-alfa', oklchPalette = {})",
-          "startLine": 144,
-          "endLine": 144
+          "startLine": 223,
+          "endLine": 223
         },
         {
           "name": "BRAND_INTRO_SCENE_CONFIG",
           "kind": "constant",
           "exported": true,
           "signature": "export const BRAND_INTRO_SCENE_CONFIG",
-          "startLine": 293,
-          "endLine": 306
+          "startLine": 372,
+          "endLine": 385
         },
         {
           "name": "runProgrammaticVideoForgeSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export async function runProgrammaticVideoForgeSelfTest()",
-          "startLine": 421,
-          "endLine": 468
+          "startLine": 500,
+          "endLine": 547
         }
       ],
-      "mtimeMs": 1793226241518.6174,
-      "size": 20432
+      "mtimeMs": 1793286581671.135,
+      "size": 23393
     },
     {
       "path": "tools/media/sonic_and_music_forge.mjs",
@@ -15844,8 +16199,8 @@
     {
       "path": "tools/orchestrator/client_interview_gate.mjs",
       "ext": ".mjs",
-      "sha256": "a7d272048035773d",
-      "lineCount": 1102,
+      "sha256": "4be4beeb40c6cc29",
+      "lineCount": 1140,
       "exports": [
         "ROOT",
         "renderInterviewMarkdown",
@@ -15897,6 +16252,8 @@
         "Grilla",
         "Hero",
         "ficas",
+        "Personalidad",
+        "gica",
         "Shaders",
         "Shader",
         "Reaper",
@@ -15907,9 +16264,7 @@
         "Pass",
         "mkdirSync",
         "renderInterviewMarkdown",
-        "writeFileSync",
-        "stringify",
-        "verifyPrdInterviewGate"
+        "writeFileSync"
       ],
       "symbols": [
         {
@@ -15917,68 +16272,68 @@
           "kind": "constant",
           "exported": true,
           "signature": "export const ROOT",
-          "startLine": 42,
-          "endLine": 42
+          "startLine": 46,
+          "endLine": 46
         },
         {
           "name": "loadBrandLockAndPrdState",
           "kind": "function",
           "exported": false,
           "signature": "function loadBrandLockAndPrdState(slug = 'agencia-alfa')",
-          "startLine": 47,
-          "endLine": 64
+          "startLine": 51,
+          "endLine": 68
         },
         {
           "name": "renderInterviewMarkdown",
           "kind": "function",
           "exported": true,
           "signature": "export function renderInterviewMarkdown(interviewData)",
-          "startLine": 348,
-          "endLine": 416
+          "startLine": 357,
+          "endLine": 427
         },
         {
           "name": "initClientInterviewFiles",
           "kind": "function",
           "exported": true,
           "signature": "export function initClientInterviewFiles(slug = 'agencia-alfa', industryInput = 'saas', options = {})",
-          "startLine": 421,
-          "endLine": 421
+          "startLine": 432,
+          "endLine": 432
         },
         {
           "name": "verifyClientInterviewGate",
           "kind": "function",
           "exported": true,
           "signature": "export function verifyClientInterviewGate(slug = 'agencia-alfa', industryFallback = 'saas')",
-          "startLine": 478,
-          "endLine": 559
+          "startLine": 489,
+          "endLine": 570
         },
         {
           "name": "verifyDualInterviewGates",
           "kind": "function",
           "exported": true,
           "signature": "export function verifyDualInterviewGates(slug = 'agencia-alfa', industryFallback = 'saas')",
-          "startLine": 566,
-          "endLine": 597
+          "startLine": 577,
+          "endLine": 608
         },
         {
           "name": "compileSpecFromInterview",
           "kind": "function",
           "exported": true,
           "signature": "export function compileSpecFromInterview(slug = 'agencia-alfa', options = {})",
-          "startLine": 606,
-          "endLine": 606
+          "startLine": 617,
+          "endLine": 617
         },
         {
           "name": "runClientInterviewGateSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export function runClientInterviewGateSelfTest()",
-          "startLine": 911,
-          "endLine": 1038
+          "startLine": 949,
+          "endLine": 1076
         }
       ],
-      "mtimeMs": 1793285342930.5117,
-      "size": 56671
+      "mtimeMs": 1793287050058.8276,
+      "size": 60378
     },
     {
       "path": "tools/orchestrator/humanlayer_rpi_gate.mjs",
@@ -16858,8 +17213,8 @@
           "file": "tools/media/programmatic_video_forge.mjs",
           "kind": "constant",
           "signature": "export const BRAND_INTRO_SCENE_CONFIG",
-          "startLine": 293,
-          "endLine": 306
+          "startLine": 372,
+          "endLine": 385
         }
       ],
       "calledByFiles": []
@@ -21194,8 +21549,8 @@
           "file": "tools/orchestrator/client_interview_gate.mjs",
           "kind": "constant",
           "signature": "export const ROOT",
-          "startLine": 42,
-          "endLine": 42
+          "startLine": 46,
+          "endLine": 46
         },
         {
           "file": "tools/orchestrator/lean_prd_architect.mjs",
@@ -21342,8 +21697,8 @@
           "file": "tools/audit/ryux_design_gate.mjs",
           "kind": "function",
           "signature": "function readFirstExisting(candidates)",
-          "startLine": 29,
-          "endLine": 38
+          "startLine": 34,
+          "endLine": 43
         }
       ],
       "calledByFiles": [
@@ -21356,16 +21711,15 @@
           "file": "tools/audit/ryux_design_gate.mjs",
           "kind": "function",
           "signature": "export function runRyuxDesignGate()",
-          "startLine": 40,
-          "endLine": 321
+          "startLine": 45,
+          "endLine": 380
         }
       ],
       "calledByFiles": [
         "tools/audit/ryux_design_gate.mjs",
         "tools/intelligence/agent_benchmark_harness.mjs",
         "tools/intelligence/eval_matrix.mjs",
-        "tools/intelligence/factory_sweep.mjs",
-        "tools/media/programmatic_video_forge.mjs"
+        "tools/intelligence/factory_sweep.mjs"
       ]
     },
     "runAutonomousAestheticRepairLoop": {
@@ -21374,8 +21728,8 @@
           "file": "tools/audit/ryux_design_gate.mjs",
           "kind": "function",
           "signature": "export async function runAutonomousAestheticRepairLoop(options = {})",
-          "startLine": 328,
-          "endLine": 328
+          "startLine": 387,
+          "endLine": 387
         }
       ],
       "calledByFiles": []
@@ -21668,14 +22022,26 @@
       ],
       "calledByFiles": []
     },
+    "inspectVisualHarmonyAndMotionKeyframes": {
+      "definitions": [
+        {
+          "file": "tools/audit/visual_audit.mjs",
+          "kind": "function",
+          "signature": "export async function inspectVisualHarmonyAndMotionKeyframes(options = {})",
+          "startLine": 372,
+          "endLine": 372
+        }
+      ],
+      "calledByFiles": []
+    },
     "tick": {
       "definitions": [
         {
           "file": "tools/audit/visual_audit.mjs",
           "kind": "function",
           "signature": "function tick(now)",
-          "startLine": 402,
-          "endLine": 411
+          "startLine": 564,
+          "endLine": 573
         }
       ],
       "calledByFiles": []
@@ -21818,8 +22184,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "function walk(node, prefix = [])",
-          "startLine": 286,
-          "endLine": 302
+          "startLine": 369,
+          "endLine": 385
         },
         {
           "file": "tools/intelligence/qdrant_rag.mjs",
@@ -22821,14 +23187,232 @@
       ],
       "calledByFiles": []
     },
+    "LEDGER_PATH": {
+      "definitions": [
+        {
+          "file": "tools/design/bespoke_morphology_composer.mjs",
+          "kind": "constant",
+          "signature": "export const LEDGER_PATH",
+          "startLine": 38,
+          "endLine": 38
+        }
+      ],
+      "calledByFiles": []
+    },
+    "MIN_DIVERGENCE_THRESHOLD": {
+      "definitions": [
+        {
+          "file": "tools/design/bespoke_morphology_composer.mjs",
+          "kind": "constant",
+          "signature": "export const MIN_DIVERGENCE_THRESHOLD",
+          "startLine": 39,
+          "endLine": 39
+        }
+      ],
+      "calledByFiles": []
+    },
+    "MIN_HARMONY_SCORE": {
+      "definitions": [
+        {
+          "file": "tools/design/bespoke_morphology_composer.mjs",
+          "kind": "constant",
+          "signature": "export const MIN_HARMONY_SCORE",
+          "startLine": 40,
+          "endLine": 40
+        }
+      ],
+      "calledByFiles": []
+    },
+    "MAX_SIMULTANEOUS_HIGH_COMPLEXITY_AXES": {
+      "definitions": [
+        {
+          "file": "tools/design/bespoke_morphology_composer.mjs",
+          "kind": "constant",
+          "signature": "export const MAX_SIMULTANEOUS_HIGH_COMPLEXITY_AXES",
+          "startLine": 41,
+          "endLine": 41
+        }
+      ],
+      "calledByFiles": []
+    },
+    "GRID_TOPOLOGY_CATALOG": {
+      "definitions": [
+        {
+          "file": "tools/design/bespoke_morphology_composer.mjs",
+          "kind": "constant",
+          "signature": "export const GRID_TOPOLOGY_CATALOG",
+          "startLine": 46,
+          "endLine": 46
+        }
+      ],
+      "calledByFiles": []
+    },
+    "HERO_ARCHITECTURE_CATALOG": {
+      "definitions": [
+        {
+          "file": "tools/design/bespoke_morphology_composer.mjs",
+          "kind": "constant",
+          "signature": "export const HERO_ARCHITECTURE_CATALOG",
+          "startLine": 60,
+          "endLine": 60
+        }
+      ],
+      "calledByFiles": []
+    },
+    "FONT_PAIRING_PROFILES": {
+      "definitions": [
+        {
+          "file": "tools/design/bespoke_morphology_composer.mjs",
+          "kind": "constant",
+          "signature": "export const FONT_PAIRING_PROFILES",
+          "startLine": 77,
+          "endLine": 77
+        }
+      ],
+      "calledByFiles": []
+    },
+    "MOTION_PHYSICS_PROFILES": {
+      "definitions": [
+        {
+          "file": "tools/design/bespoke_morphology_composer.mjs",
+          "kind": "constant",
+          "signature": "export const MOTION_PHYSICS_PROFILES",
+          "startLine": 263,
+          "endLine": 291
+        }
+      ],
+      "calledByFiles": []
+    },
+    "SCROLL_CHOREOGRAPHY_VARIANTS": {
+      "definitions": [
+        {
+          "file": "tools/design/bespoke_morphology_composer.mjs",
+          "kind": "constant",
+          "signature": "export const SCROLL_CHOREOGRAPHY_VARIANTS",
+          "startLine": 293,
+          "endLine": 293
+        }
+      ],
+      "calledByFiles": []
+    },
+    "BRAND_PERSONALITY_TENSIONS": {
+      "definitions": [
+        {
+          "file": "tools/design/bespoke_morphology_composer.mjs",
+          "kind": "constant",
+          "signature": "export const BRAND_PERSONALITY_TENSIONS",
+          "startLine": 303,
+          "endLine": 303
+        }
+      ],
+      "calledByFiles": []
+    },
+    "validateHarmonicAxisCoherence": {
+      "definitions": [
+        {
+          "file": "tools/design/bespoke_morphology_composer.mjs",
+          "kind": "function",
+          "signature": "export function validateHarmonicAxisCoherence(dnaVector = {})",
+          "startLine": 395,
+          "endLine": 395
+        }
+      ],
+      "calledByFiles": []
+    },
+    "loadProjectDnaLedger": {
+      "definitions": [
+        {
+          "file": "tools/design/bespoke_morphology_composer.mjs",
+          "kind": "function",
+          "signature": "export function loadProjectDnaLedger(customLedgerPath = LEDGER_PATH)",
+          "startLine": 537,
+          "endLine": 558
+        }
+      ],
+      "calledByFiles": [
+        "tools/design/bespoke_morphology_composer.mjs"
+      ]
+    },
+    "saveProjectDnaLedger": {
+      "definitions": [
+        {
+          "file": "tools/design/bespoke_morphology_composer.mjs",
+          "kind": "function",
+          "signature": "export function saveProjectDnaLedger(ledger, customLedgerPath = LEDGER_PATH)",
+          "startLine": 560,
+          "endLine": 565
+        }
+      ],
+      "calledByFiles": []
+    },
+    "computeMorphologicalDivergenceScore": {
+      "definitions": [
+        {
+          "file": "tools/design/bespoke_morphology_composer.mjs",
+          "kind": "function",
+          "signature": "export function computeMorphologicalDivergenceScore(candidateDna, existingCategoryEntries = [])",
+          "startLine": 571,
+          "endLine": 679
+        }
+      ],
+      "calledByFiles": []
+    },
+    "runBespokeMorphologyComposerSelfTest": {
+      "definitions": [
+        {
+          "file": "tools/design/bespoke_morphology_composer.mjs",
+          "kind": "function",
+          "signature": "export function runBespokeMorphologyComposerSelfTest()",
+          "startLine": 906,
+          "endLine": 1021
+        }
+      ],
+      "calledByFiles": []
+    },
+    "NAVIGATION_MORPHOLOGY_VARIANTS": {
+      "definitions": [
+        {
+          "file": "tools/design/build_vanilla_primitives.mjs",
+          "kind": "constant",
+          "signature": "export const NAVIGATION_MORPHOLOGY_VARIANTS",
+          "startLine": 25,
+          "endLine": 74
+        }
+      ],
+      "calledByFiles": []
+    },
+    "CORNER_GEOMETRY_VARIANTS": {
+      "definitions": [
+        {
+          "file": "tools/design/build_vanilla_primitives.mjs",
+          "kind": "constant",
+          "signature": "export const CORNER_GEOMETRY_VARIANTS",
+          "startLine": 76,
+          "endLine": 109
+        }
+      ],
+      "calledByFiles": []
+    },
+    "SURFACE_MATERIAL_PHYSICS": {
+      "definitions": [
+        {
+          "file": "tools/design/build_vanilla_primitives.mjs",
+          "kind": "constant",
+          "signature": "export const SURFACE_MATERIAL_PHYSICS",
+          "startLine": 111,
+          "endLine": 172
+        }
+      ],
+      "calledByFiles": []
+    },
     "UNIVERSAL_UI_PRIMITIVES_CSS": {
       "definitions": [
         {
           "file": "tools/design/build_vanilla_primitives.mjs",
           "kind": "constant",
           "signature": "export const UNIVERSAL_UI_PRIMITIVES_CSS",
-          "startLine": 24,
-          "endLine": 24
+          "startLine": 234,
+          "endLine": 234
         }
       ],
       "calledByFiles": []
@@ -22838,9 +23422,9 @@
         {
           "file": "tools/design/build_vanilla_primitives.mjs",
           "kind": "function",
-          "signature": "export function buildVanillaPrimitives(projectInput = '')",
-          "startLine": 124,
-          "endLine": 155
+          "signature": "export function buildVanillaPrimitives(projectInput = '', morphologyOptions = null)",
+          "startLine": 407,
+          "endLine": 443
         }
       ],
       "calledByFiles": [
@@ -22921,17 +23505,71 @@
       ],
       "calledByFiles": []
     },
+    "ARCHETYPE_FUNCTIONAL_INVARIANTS": {
+      "definitions": [
+        {
+          "file": "tools/design/industry_archetype_matrix.mjs",
+          "kind": "constant",
+          "signature": "export const ARCHETYPE_FUNCTIONAL_INVARIANTS",
+          "startLine": 975,
+          "endLine": 1192
+        }
+      ],
+      "calledByFiles": []
+    },
+    "OPEN_MORPHOLOGICAL_DESIGN_SPACE": {
+      "definitions": [
+        {
+          "file": "tools/design/industry_archetype_matrix.mjs",
+          "kind": "constant",
+          "signature": "export const OPEN_MORPHOLOGICAL_DESIGN_SPACE",
+          "startLine": 1202,
+          "endLine": 1490
+        }
+      ],
+      "calledByFiles": []
+    },
+    "getArchetypeFunctionalInvariants": {
+      "definitions": [
+        {
+          "file": "tools/design/industry_archetype_matrix.mjs",
+          "kind": "function",
+          "signature": "export function getArchetypeFunctionalInvariants(input = 'saas')",
+          "startLine": 1495,
+          "endLine": 1498
+        }
+      ],
+      "calledByFiles": [
+        "tools/design/bespoke_morphology_composer.mjs"
+      ]
+    },
+    "getOpenMorphologicalSpaceForArchetype": {
+      "definitions": [
+        {
+          "file": "tools/design/industry_archetype_matrix.mjs",
+          "kind": "function",
+          "signature": "export function getOpenMorphologicalSpaceForArchetype(input = 'saas')",
+          "startLine": 1503,
+          "endLine": 1506
+        }
+      ],
+      "calledByFiles": [
+        "tools/design/bespoke_morphology_composer.mjs"
+      ]
+    },
     "resolveIndustryArchetype": {
       "definitions": [
         {
           "file": "tools/design/industry_archetype_matrix.mjs",
           "kind": "function",
           "signature": "export function resolveIndustryArchetype(input = 'saas')",
-          "startLine": 967,
-          "endLine": 971
+          "startLine": 1512,
+          "endLine": 1521
         }
       ],
       "calledByFiles": [
+        "tools/design/bespoke_morphology_composer.mjs",
+        "tools/design/industry_archetype_matrix.mjs",
         "tools/media/programmatic_video_forge.mjs",
         "tools/media/sonic_and_music_forge.mjs",
         "tools/mobile/mobile_target_forge.mjs",
@@ -22945,8 +23583,8 @@
           "file": "tools/design/industry_archetype_matrix.mjs",
           "kind": "function",
           "signature": "export function compileProductMdContent(archetypeObj, projectMeta = {})",
-          "startLine": 976,
-          "endLine": 976
+          "startLine": 1526,
+          "endLine": 1526
         }
       ],
       "calledByFiles": []
@@ -22957,8 +23595,8 @@
           "file": "tools/design/industry_archetype_matrix.mjs",
           "kind": "function",
           "signature": "export function getVisualScienceParametersForArchetype(archetypeId = 'b2b-saas-platform')",
-          "startLine": 1034,
-          "endLine": 1150
+          "startLine": 1584,
+          "endLine": 1700
         }
       ],
       "calledByFiles": []
@@ -22969,8 +23607,8 @@
           "file": "tools/design/industry_archetype_matrix.mjs",
           "kind": "function",
           "signature": "export function compileDesignMdContent(archetypeObj, projectMeta = {})",
-          "startLine": 1156,
-          "endLine": 1156
+          "startLine": 1706,
+          "endLine": 1706
         }
       ],
       "calledByFiles": []
@@ -22981,8 +23619,8 @@
           "file": "tools/design/industry_archetype_matrix.mjs",
           "kind": "function",
           "signature": "function parseDesignMdFrontMatter(markdownContent)",
-          "startLine": 1319,
-          "endLine": 1374
+          "startLine": 1922,
+          "endLine": 1977
         }
       ],
       "calledByFiles": []
@@ -22993,8 +23631,8 @@
           "file": "tools/design/industry_archetype_matrix.mjs",
           "kind": "function",
           "signature": "export function lintDesignMd(filePathOrContent, options = {})",
-          "startLine": 1381,
-          "endLine": 1381
+          "startLine": 1984,
+          "endLine": 1984
         }
       ],
       "calledByFiles": [
@@ -23007,8 +23645,8 @@
           "file": "tools/design/industry_archetype_matrix.mjs",
           "kind": "function",
           "signature": "export function generateProductAndDesignMd(projectRoot, archetypeInput = 'saas', options = {})",
-          "startLine": 1472,
-          "endLine": 1472
+          "startLine": 2075,
+          "endLine": 2075
         }
       ],
       "calledByFiles": [
@@ -23024,8 +23662,8 @@
           "file": "tools/design/industry_archetype_matrix.mjs",
           "kind": "function",
           "signature": "export function runIndustryArchetypeSelfTest()",
-          "startLine": 1540,
-          "endLine": 1605
+          "startLine": 2143,
+          "endLine": 2208
         }
       ],
       "calledByFiles": []
@@ -23205,6 +23843,20 @@
       ],
       "calledByFiles": []
     },
+    "generateParametric3dShaderConfig": {
+      "definitions": [
+        {
+          "file": "tools/design/shader_and_3d_forge.mjs",
+          "kind": "function",
+          "signature": "export function generateParametric3dShaderConfig(brandDnaVector = {}, logoGeometry = {})",
+          "startLine": 671,
+          "endLine": 671
+        }
+      ],
+      "calledByFiles": [
+        "tools/design/bespoke_morphology_composer.mjs"
+      ]
+    },
     "parseFlag": {
       "definitions": [
         {
@@ -23226,14 +23878,41 @@
         "tools/factory.mjs"
       ]
     },
+    "OKLCH_GAMUT_MASKS": {
+      "definitions": [
+        {
+          "file": "tools/design/token_compiler.mjs",
+          "kind": "constant",
+          "signature": "export const OKLCH_GAMUT_MASKS",
+          "startLine": 91,
+          "endLine": 132
+        }
+      ],
+      "calledByFiles": []
+    },
+    "applyOklchGamutMask": {
+      "definitions": [
+        {
+          "file": "tools/design/token_compiler.mjs",
+          "kind": "function",
+          "signature": "export function applyOklchGamutMask(baseHue = 255, gamutMaskType = 'atmospheric-analogous', options = {})",
+          "startLine": 138,
+          "endLine": 138
+        }
+      ],
+      "calledByFiles": [
+        "tools/design/bespoke_morphology_composer.mjs",
+        "tools/design/token_compiler.mjs"
+      ]
+    },
     "getStyleCatalog": {
       "definitions": [
         {
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "export function getStyleCatalog()",
-          "startLine": 91,
-          "endLine": 102
+          "startLine": 166,
+          "endLine": 178
         }
       ],
       "calledByFiles": [
@@ -23245,9 +23924,9 @@
         {
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
-          "signature": "export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento', brandLock = null)",
-          "startLine": 104,
-          "endLine": 255
+          "signature": "export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento', brandLock = null, gamutMaskType = 'atmospheric-analogous')",
+          "startLine": 180,
+          "endLine": 338
         }
       ],
       "calledByFiles": []
@@ -23258,8 +23937,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "export function resolveDtcgAliases(dtcgRoot)",
-          "startLine": 260,
-          "endLine": 305
+          "startLine": 343,
+          "endLine": 388
         }
       ],
       "calledByFiles": [
@@ -23272,8 +23951,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "function lookupPath(pathStr)",
-          "startLine": 261,
-          "endLine": 269
+          "startLine": 344,
+          "endLine": 352
         }
       ],
       "calledByFiles": [
@@ -23286,8 +23965,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "function resolveValue(val, visited = new Set()",
-          "startLine": 271,
-          "endLine": 283
+          "startLine": 354,
+          "endLine": 366
         }
       ],
       "calledByFiles": [
@@ -23300,8 +23979,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "export function renderDesignTokensCss(dtcg)",
-          "startLine": 307,
-          "endLine": 321
+          "startLine": 390,
+          "endLine": 404
         }
       ],
       "calledByFiles": []
@@ -23312,12 +23991,11 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "export function compileDesignTokens(options = {})",
-          "startLine": 702,
-          "endLine": 702
+          "startLine": 785,
+          "endLine": 785
         }
       ],
       "calledByFiles": [
-        "tools/audit/ryux_design_gate.mjs",
         "tools/factory.mjs",
         "tools/intelligence/factory_sweep.mjs"
       ]
@@ -23328,8 +24006,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "function compileMultiTargetMobileTokensSync(rootDir, dtcg, writtenFiles = [])",
-          "startLine": 820,
-          "endLine": 844
+          "startLine": 903,
+          "endLine": 927
         }
       ],
       "calledByFiles": []
@@ -23340,8 +24018,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "export function extractOklchPaletteFromBrandImage(imagePathOrBuffer = 'brand-reference.png')",
-          "startLine": 850,
-          "endLine": 883
+          "startLine": 933,
+          "endLine": 966
         }
       ],
       "calledByFiles": []
@@ -23352,8 +24030,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "export function runTokenCompilerCli()",
-          "startLine": 885,
-          "endLine": 899
+          "startLine": 968,
+          "endLine": 982
         }
       ],
       "calledByFiles": [
@@ -27450,8 +28128,22 @@
           "file": "tools/intelligence/tom_swe_engine.mjs",
           "kind": "function",
           "signature": "export function loadTomModel()",
-          "startLine": 24,
-          "endLine": 29
+          "startLine": 30,
+          "endLine": 47
+        }
+      ],
+      "calledByFiles": [
+        "tools/intelligence/tom_swe_engine.mjs"
+      ]
+    },
+    "isProjectSpecificAestheticSignal": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/tom_swe_engine.mjs",
+          "kind": "function",
+          "signature": "export function isProjectSpecificAestheticSignal(signalOrRule = '')",
+          "startLine": 53,
+          "endLine": 63
         }
       ],
       "calledByFiles": [
@@ -27463,9 +28155,9 @@
         {
           "file": "tools/intelligence/tom_swe_engine.mjs",
           "kind": "function",
-          "signature": "export function consultTomSwe(queryContext = '')",
-          "startLine": 35,
-          "endLine": 82
+          "signature": "export function consultTomSwe(queryContext = '', options = {})",
+          "startLine": 69,
+          "endLine": 69
         }
       ],
       "calledByFiles": [
@@ -27478,9 +28170,9 @@
         {
           "file": "tools/intelligence/tom_swe_engine.mjs",
           "kind": "function",
-          "signature": "export function runSleeptimeCompute(newSignal = null)",
-          "startLine": 88,
-          "endLine": 128
+          "signature": "export function runSleeptimeCompute(newSignal = null, options = {})",
+          "startLine": 143,
+          "endLine": 143
         }
       ],
       "calledByFiles": [
@@ -27899,9 +28591,7 @@
           "endLine": 1816
         }
       ],
-      "calledByFiles": [
-        "tools/media/programmatic_video_forge.mjs"
-      ]
+      "calledByFiles": []
     },
     "resolveMultimediaTierAndEngine": {
       "definitions": [
@@ -28494,14 +29184,28 @@
         "tools/media/programmatic_video_forge.mjs"
       ]
     },
+    "generateParametricIntroChoreography": {
+      "definitions": [
+        {
+          "file": "tools/media/programmatic_video_forge.mjs",
+          "kind": "function",
+          "signature": "export function generateParametricIntroChoreography(brandDnaVector = {}, logoSvgGeometry = {})",
+          "startLine": 124,
+          "endLine": 124
+        }
+      ],
+      "calledByFiles": [
+        "tools/design/bespoke_morphology_composer.mjs"
+      ]
+    },
     "extractOklchPaletteFromDesignMd": {
       "definitions": [
         {
           "file": "tools/media/programmatic_video_forge.mjs",
           "kind": "function",
           "signature": "export function extractOklchPaletteFromDesignMd(projectRoot = ROOT, archetype = 'saas')",
-          "startLine": 121,
-          "endLine": 139
+          "startLine": 200,
+          "endLine": 218
         }
       ],
       "calledByFiles": [
@@ -28514,8 +29218,8 @@
           "file": "tools/media/programmatic_video_forge.mjs",
           "kind": "function",
           "signature": "export function ensureProjectVectorLogoSvg(projectRoot = ROOT, slug = 'agencia-alfa', oklchPalette = {})",
-          "startLine": 144,
-          "endLine": 144
+          "startLine": 223,
+          "endLine": 223
         }
       ],
       "calledByFiles": [
@@ -28528,8 +29232,8 @@
           "file": "tools/media/programmatic_video_forge.mjs",
           "kind": "function",
           "signature": "export async function runProgrammaticVideoForgeSelfTest()",
-          "startLine": 421,
-          "endLine": 468
+          "startLine": 500,
+          "endLine": 547
         }
       ],
       "calledByFiles": []
@@ -28797,8 +29501,8 @@
           "file": "tools/orchestrator/client_interview_gate.mjs",
           "kind": "function",
           "signature": "function loadBrandLockAndPrdState(slug = 'agencia-alfa')",
-          "startLine": 47,
-          "endLine": 64
+          "startLine": 51,
+          "endLine": 68
         }
       ],
       "calledByFiles": [
@@ -28811,8 +29515,8 @@
           "file": "tools/orchestrator/client_interview_gate.mjs",
           "kind": "function",
           "signature": "export function renderInterviewMarkdown(interviewData)",
-          "startLine": 348,
-          "endLine": 416
+          "startLine": 357,
+          "endLine": 427
         }
       ],
       "calledByFiles": [
@@ -28825,8 +29529,8 @@
           "file": "tools/orchestrator/client_interview_gate.mjs",
           "kind": "function",
           "signature": "export function initClientInterviewFiles(slug = 'agencia-alfa', industryInput = 'saas', options = {})",
-          "startLine": 421,
-          "endLine": 421
+          "startLine": 432,
+          "endLine": 432
         }
       ],
       "calledByFiles": [
@@ -28839,8 +29543,8 @@
           "file": "tools/orchestrator/client_interview_gate.mjs",
           "kind": "function",
           "signature": "export function verifyClientInterviewGate(slug = 'agencia-alfa', industryFallback = 'saas')",
-          "startLine": 478,
-          "endLine": 559
+          "startLine": 489,
+          "endLine": 570
         }
       ],
       "calledByFiles": []
@@ -28851,8 +29555,8 @@
           "file": "tools/orchestrator/client_interview_gate.mjs",
           "kind": "function",
           "signature": "export function verifyDualInterviewGates(slug = 'agencia-alfa', industryFallback = 'saas')",
-          "startLine": 566,
-          "endLine": 597
+          "startLine": 577,
+          "endLine": 608
         }
       ],
       "calledByFiles": []
@@ -28863,8 +29567,8 @@
           "file": "tools/orchestrator/client_interview_gate.mjs",
           "kind": "function",
           "signature": "export function compileSpecFromInterview(slug = 'agencia-alfa', options = {})",
-          "startLine": 606,
-          "endLine": 606
+          "startLine": 617,
+          "endLine": 617
         }
       ],
       "calledByFiles": []
@@ -28875,8 +29579,8 @@
           "file": "tools/orchestrator/client_interview_gate.mjs",
           "kind": "function",
           "signature": "export function runClientInterviewGateSelfTest()",
-          "startLine": 911,
-          "endLine": 1038
+          "startLine": 949,
+          "endLine": 1076
         }
       ],
       "calledByFiles": []
@@ -29161,9 +29865,7 @@
           "endLine": 546
         }
       ],
-      "calledByFiles": [
-        "tools/orchestrator/client_interview_gate.mjs"
-      ]
+      "calledByFiles": []
     },
     "compilePrdLeanAndBrandLock": {
       "definitions": [

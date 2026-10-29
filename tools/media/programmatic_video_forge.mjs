@@ -116,6 +116,85 @@ export function resolveBrandIntroTemplate(styleOrArchetype = 'minimal') {
 }
 
 /**
+ * Axis 7 — Parametric Intro Choreography Generator (`generateParametricIntroChoreography`):
+ * Replaces the rigidity of fixed templates with a parametric choreography solver that adapts
+ * camera angles, SDF mathematical reveal masks, lighting sweep azimuth, and cut rhythm to the
+ * `.svg` logo geometry and the site's `Brand DNA Vector`.
+ */
+export function generateParametricIntroChoreography(brandDnaVector = {}, logoSvgGeometry = {}) {
+  const seedInput = JSON.stringify({
+    slug: brandDnaVector.projectSlug || 'default',
+    grid: brandDnaVector.gridTopology || 'golden-ratio-bento-matrix',
+    hero: brandDnaVector.heroArchitecture || 'live-interactive-product-sandbox',
+    font: brandDnaVector.fontPairingProfile || 'swiss-precision',
+    motion: brandDnaVector.motionPhysicsCriteria?.transitionPhysics || 'magnetic-precision-spring',
+    gamut: brandDnaVector.gamutMaskType || 'atmospheric-analogous'
+  });
+
+  let hash = 2166136261;
+  for (let i = 0; i < seedInput.length; i++) {
+    hash ^= seedInput.charCodeAt(i);
+    hash = Math.imul(hash, 16777619) >>> 0;
+  }
+
+  const cameraPaths = [
+    'orthographic-z-dolly-in',
+    'isometric-35deg-orbital-arc',
+    'low-angle-monumental-tilt',
+    'macro-grazing-vector-tracking',
+    'split-diopter-axial-convergence',
+    'telephoto-parallax-compression'
+  ];
+  const sdfMasks = [
+    'sdf-circle-iris-smoothstep',
+    'sdf-chamfered-polygon-wipe',
+    'sdf-anisotropic-voronoi-fracture',
+    'sdf-golden-spiral-aperture',
+    'sdf-bilateral-curtain-split',
+    'sdf-signed-stroke-distance-field'
+  ];
+  const lightingRigs = [
+    'rembrandt-45deg-warm-key',
+    'zenithal-top-edge-specular',
+    'split-warm-cool-duotone-rim',
+    'soft-limestone-grazing-daylight',
+    'anodized-conductor-3point-studio'
+  ];
+  const cutRhythms = [
+    'single-continuous-long-take-60fps',
+    'fibonacci-3-beat-crescendo',
+    'syncopated-2-cut-match-dissolve',
+    'editorial-hard-cut-to-stillness'
+  ];
+
+  const cameraPath = cameraPaths[hash % cameraPaths.length];
+  const sdfRevealMask = sdfMasks[(hash >>> 3) % sdfMasks.length];
+  const lightingRig = lightingRigs[(hash >>> 6) % lightingRigs.length];
+  const cutRhythm = cutRhythms[(hash >>> 9) % cutRhythms.length];
+  const durationSeconds = Number((2.6 + ((hash >>> 12) % 22) * 0.1).toFixed(1)); // 2.6s .. 4.7s
+  const audioSyncFrame = 30 + ((hash >>> 15) % 42); // Frame #30 .. #71 @ 60 FPS
+
+  return {
+    choreographyId: `intro-${cameraPath.split('-')[0]}-${sdfRevealMask.split('-')[1]}-${(hash >>> 0).toString(16).slice(0, 6)}`,
+    isParametric: true,
+    cameraPath,
+    cameraAngleDeg: 15 + ((hash >>> 4) % 45),
+    sdfRevealMask,
+    lightingRig,
+    cutRhythm,
+    durationSeconds,
+    fps: 60,
+    totalFrames: Math.round(durationSeconds * 60),
+    audioSyncFrame,
+    logoSvgGeometry: {
+      viewBox: logoSvgGeometry.viewBox || '0 0 512 512',
+      pathCount: logoSvgGeometry.pathCount || 2,
+      vectorIntegrityLocked: true
+    }
+  };
+}
+
+/**
  * Extracts OKLCH color tokens from `DESIGN.md` (or generates `DESIGN.md` if missing).
  */
 export function extractOklchPaletteFromDesignMd(projectRoot = ROOT, archetype = 'saas') {

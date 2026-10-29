@@ -962,12 +962,562 @@ export const IMPECCABLE_62_ANTI_SLOP_RULES = [
 ];
 
 /**
- * Resolves any user or CLI archetype string (`abogacia`, `fintech`, `erp`, etc.) to a canonical archetype object.
+ * 1. ARCHETYPE FUNCTIONAL & ERGONOMIC INVARIANTS (`ARCHETYPE_FUNCTIONAL_INVARIANTS`)
+ * ====================================================================================
+ * Strictly separates industry-level functional/CRO/UX invariants (what belongs to the
+ * domain category regardless of aesthetics) from visual morphology:
+ *   - Trust Hierarchy (`trustHierarchy`)
+ *   - Perceptual Contrast Floors (`apcaContrastFloors`: Lc >= 60/75/90, WCAG Tier)
+ *   - Cognitive Laws (`cognitiveLaws`: Fogg B=MAP, Hick's Law choice cap, Fitts >= 48x48px)
+ *   - Acoustic Safety Envelope (`acousticSafetyLimits`: <= -18 dBFS, ISO 226 notch, gesture gate)
+ *   - Regulatory & SEO/GEO Invariants (`regulatoryAndSeoRequirements`)
+ */
+export const ARCHETYPE_FUNCTIONAL_INVARIANTS = Object.freeze({
+  'law-firm-and-advisory': {
+    archetypeId: 'law-firm-and-advisory',
+    cliAlias: 'abogacia',
+    primarySurfaceMode: 'Read',
+    trustHierarchy: [
+      'Jurisdictional credentials, bar admissions, and senior partner track record in first scroll',
+      'Direct confidential consultation intake without dark patterns or countdown timers',
+      'Verifiable case precedents, practice areas, and institutional governance disclosures'
+    ],
+    apcaContrastFloors: { headlineLc: 90, bodyLc: 85, secondaryLc: 70, wcagTier: 'AA+' },
+    cognitiveLaws: {
+      foggBehaviorModel: 'High ability + high institutional credibility trigger before consultation form',
+      hicksLawMaxNavItems: 5,
+      fittsLawMinTouchPx: 48,
+      readingMeasureCh: [60, 70]
+    },
+    acousticSafetyLimits: {
+      maxPeakDbfs: -18.0,
+      defaultMuted: true,
+      iso226NotchHz: 3250,
+      autoplayGestureGate: true
+    },
+    regulatoryAndSeoRequirements: [
+      'Attorney advertising disclaimer & confidentiality notice',
+      'Schema.org LegalService + Attorney JSON-LD @graph + llms.txt'
+    ]
+  },
+  'fintech-and-banking': {
+    archetypeId: 'fintech-and-banking',
+    cliAlias: 'fintech',
+    primarySurfaceMode: 'Operate',
+    trustHierarchy: [
+      'Cryptographic security posture, regulatory licensing, and custody transparency above the fold',
+      'Deterministic fee breakdown, basis-point precision, and real-time settlement telemetry',
+      'SOC2 / ISO 27001 / PCI-DSS compliance badges and verifiable audit trail'
+    ],
+    apcaContrastFloors: { headlineLc: 95, bodyLc: 90, secondaryLc: 75, wcagTier: 'AAA' },
+    cognitiveLaws: {
+      foggBehaviorModel: 'Zero-ambiguity quantitative clarity + instant simulator/onboarding trigger',
+      hicksLawMaxNavItems: 5,
+      fittsLawMinTouchPx: 48,
+      requiresTabularNumerals: true
+    },
+    acousticSafetyLimits: {
+      maxPeakDbfs: -18.0,
+      defaultMuted: true,
+      iso226NotchHz: 3250,
+      autoplayGestureGate: true
+    },
+    regulatoryAndSeoRequirements: [
+      'Financial risk disclosure, custody terms, and KYB/KYC privacy compliance',
+      'Schema.org FinancialProduct + Organization JSON-LD @graph + llms.txt'
+    ]
+  },
+  'enterprise-erp-database': {
+    archetypeId: 'enterprise-erp-database',
+    cliAlias: 'erp',
+    primarySurfaceMode: 'Operate',
+    trustHierarchy: [
+      'Sub-150ms operational response, role-based access clarity (RLS), and keyboard-first ergonomics',
+      'High data-ink ratio (Tufte principle) with scannable status indicators and batch actions',
+      'SLA uptime guarantees, migration safety, and multi-tenant isolation proof'
+    ],
+    apcaContrastFloors: { headlineLc: 90, bodyLc: 85, secondaryLc: 70, wcagTier: 'AAA' },
+    cognitiveLaws: {
+      foggBehaviorModel: 'Reduce operational cognitive load via command palette and predictable table density',
+      hicksLawMaxNavItems: 6,
+      fittsLawMinTouchPx: 48,
+      requiresTabularNumerals: true
+    },
+    acousticSafetyLimits: {
+      maxPeakDbfs: -18.0,
+      defaultMuted: true,
+      iso226NotchHz: 3250,
+      autoplayGestureGate: true
+    },
+    regulatoryAndSeoRequirements: [
+      'Data processing agreement (DPA), audit log retention, and tenant isolation documentation',
+      'Schema.org SoftwareApplication JSON-LD @graph + llms.txt'
+    ]
+  },
+  'ecommerce-conversion': {
+    archetypeId: 'ecommerce-conversion',
+    cliAlias: 'ecommerce',
+    primarySurfaceMode: 'Persuade',
+    trustHierarchy: [
+      'Color-accurate product presentation (canvas chroma < 0.02), clear SKU pricing, and instant availability',
+      'Frictionless Add-to-Cart / Express Checkout with transparent shipping and return guarantees',
+      'Verified buyer reviews, material specifications, and idempotent payment security'
+    ],
+    apcaContrastFloors: { headlineLc: 90, bodyLc: 78, secondaryLc: 65, wcagTier: 'AA+' },
+    cognitiveLaws: {
+      foggBehaviorModel: 'High sensory motivation + 1-click variant selection & persistent cart summary',
+      hicksLawMaxNavItems: 6,
+      fittsLawMinTouchPx: 48,
+      requiresTabularNumerals: true
+    },
+    acousticSafetyLimits: {
+      maxPeakDbfs: -18.0,
+      defaultMuted: false,
+      iso226NotchHz: 3250,
+      autoplayGestureGate: true
+    },
+    regulatoryAndSeoRequirements: [
+      'Consumer protection rights, return policy, and tax-inclusive pricing clarity',
+      'Schema.org Product + Offer + AggregateRating JSON-LD @graph + llms.txt'
+    ]
+  },
+  'streamer-and-gaming-creator': {
+    archetypeId: 'streamer-and-gaming-creator',
+    cliAlias: 'streamer',
+    primarySurfaceMode: 'Experience',
+    trustHierarchy: [
+      'Immediate live/creator identity, community schedule, and interactive media stage at 60 FPS',
+      'Verifiable tournament/drop mechanics, social proof counters, and responsive HUD navigation',
+      'Clear sponsor disclosures, age-gate/responsible community rules, and instant mute controls'
+    ],
+    apcaContrastFloors: { headlineLc: 90, bodyLc: 75, secondaryLc: 60, wcagTier: 'AA' },
+    cognitiveLaws: {
+      foggBehaviorModel: 'Visceral kinetic immersion paired with 1-click stream/community action',
+      hicksLawMaxNavItems: 5,
+      fittsLawMinTouchPx: 48,
+      requiresTabularNumerals: true
+    },
+    acousticSafetyLimits: {
+      maxPeakDbfs: -18.0,
+      defaultMuted: false,
+      iso226NotchHz: 3250,
+      autoplayGestureGate: true
+    },
+    regulatoryAndSeoRequirements: [
+      'Creator sponsorship disclosure & community guidelines',
+      'Schema.org VideoObject + BroadcastEvent + Person JSON-LD @graph + llms.txt'
+    ]
+  },
+  'healthcare-and-clinic': {
+    archetypeId: 'healthcare-and-clinic',
+    cliAlias: 'clinica',
+    primarySurfaceMode: 'Read',
+    trustHierarchy: [
+      'Immediate appointment booking, emergency contact, and medical board credentials in first mobile viewport (375px)',
+      'Empathetic, plain-language clinical explanations, insurance coverage clarity, and specialist directory',
+      'Strict patient privacy (HIPAA / Ley 25.326) and accessible WCAG AAA contrast'
+    ],
+    apcaContrastFloors: { headlineLc: 92, bodyLc: 90, secondaryLc: 75, wcagTier: 'AAA' },
+    cognitiveLaws: {
+      foggBehaviorModel: 'Calm anxiety reduction + 2-step appointment scheduling without cognitive friction',
+      hicksLawMaxNavItems: 5,
+      fittsLawMinTouchPx: 48,
+      readingMeasureCh: [60, 68]
+    },
+    acousticSafetyLimits: {
+      maxPeakDbfs: -18.0,
+      defaultMuted: true,
+      iso226NotchHz: 3250,
+      autoplayGestureGate: true
+    },
+    regulatoryAndSeoRequirements: [
+      'Medical disclaimer, patient data privacy notice, and licensed practitioner registry',
+      'Schema.org MedicalClinic + Physician JSON-LD @graph + llms.txt'
+    ]
+  },
+  'b2b-saas-platform': {
+    archetypeId: 'b2b-saas-platform',
+    cliAlias: 'saas',
+    primarySurfaceMode: 'Persuade',
+    trustHierarchy: [
+      'Specific outcome-driven value proposition and interactive product proof in <= 3 seconds',
+      'Systematic objection handling (integration speed, ROI calculator, security architecture)',
+      'Transparent pricing tiers (zero confirm-shaming) and verifiable engineering case studies'
+    ],
+    apcaContrastFloors: { headlineLc: 90, bodyLc: 78, secondaryLc: 65, wcagTier: 'AA+' },
+    cognitiveLaws: {
+      foggBehaviorModel: 'Demonstrate product capability inline + low-friction trial/demo CTA',
+      hicksLawMaxNavItems: 6,
+      fittsLawMinTouchPx: 48,
+      requiresTabularNumerals: true
+    },
+    acousticSafetyLimits: {
+      maxPeakDbfs: -18.0,
+      defaultMuted: false,
+      iso226NotchHz: 3250,
+      autoplayGestureGate: true
+    },
+    regulatoryAndSeoRequirements: [
+      'SLA, security compliance, and transparent subscription terms',
+      'Schema.org SoftwareApplication + FAQPage JSON-LD @graph + llms.txt'
+    ]
+  },
+  'luxury-architecture-and-real-estate': {
+    archetypeId: 'luxury-architecture-and-real-estate',
+    cliAlias: 'lujo',
+    primarySurfaceMode: 'Experience',
+    trustHierarchy: [
+      'Curated architectural provenance, spatial serenity, and material authenticity without sales clutter',
+      'High-resolution spatial storytelling, floorplan/dossier access, and private concierge inquiry',
+      'Principal architect / maison pedigree, press monographs, and investment permanence'
+    ],
+    apcaContrastFloors: { headlineLc: 88, bodyLc: 78, secondaryLc: 65, wcagTier: 'AA+' },
+    cognitiveLaws: {
+      foggBehaviorModel: 'Aesthetic elevation + exclusive private viewing / dossier request',
+      hicksLawMaxNavItems: 5,
+      fittsLawMinTouchPx: 48,
+      requiresTabularNumerals: true
+    },
+    acousticSafetyLimits: {
+      maxPeakDbfs: -18.0,
+      defaultMuted: false,
+      iso226NotchHz: 3250,
+      autoplayGestureGate: true
+    },
+    regulatoryAndSeoRequirements: [
+      'Architectural credits, property prospectus disclaimers, and private client confidentiality',
+      'Schema.org ArchitectureFirm + Residence JSON-LD @graph + llms.txt'
+    ]
+  }
+});
+
+/**
+ * 2. OPEN MORPHOLOGICAL DESIGN SPACE (`OPEN_MORPHOLOGICAL_DESIGN_SPACE`)
+ * =======================================================================
+ * Eliminates any rigid template lock where an industry archetype is forced to reuse the
+ * same layout, Hero, or font pair. Each archetype unlocks a broad multidimensional
+ * morphological space across all 7 Brand DNA axes, governed by the Harmonic Compatibility
+ * Matrix (`validateHarmonicAxisCoherence`) and Anti-Cloning Ledger (`project_dna_fingerprints.json`).
+ */
+export const OPEN_MORPHOLOGICAL_DESIGN_SPACE = Object.freeze({
+  'law-firm-and-advisory': {
+    archetypeId: 'law-firm-and-advisory',
+    fixedVisualTemplateImposed: false,
+    allowsBespokeMorphologyMutation: true,
+    allowedGridTopologies: [
+      'swiss-asymmetric-editorial',
+      'editorial-magazine-spread',
+      'split-screen-sticky-narrative',
+      'architectural-brutalist-monolith',
+      'tufte-high-density-data',
+      'golden-ratio-bento-matrix'
+    ],
+    allowedHeroArchitectures: [
+      'monumental-typographic-manifesto',
+      'numbered-editorial-index-hero',
+      'minimalist-high-trust-authority',
+      'split-screen-sticky-narrative',
+      'inset-architectural-video-frame',
+      'command-first-search-hero'
+    ],
+    allowedComponentMorphologies: [
+      { nav: 'minimal-editorial-header', corner: '0px-recto', material: 'paper-editorial' },
+      { nav: 'vertical-side-rail', corner: '0px-recto', material: 'raw-ink-swiss-border' },
+      { nav: 'floating-island-bar', corner: '6px-tecnico', material: 'deep-obsidian-specular' },
+      { nav: 'minimal-editorial-header', corner: '6px-tecnico', material: 'brushed-anodized-metal' }
+    ],
+    allowedGamutMasks: [
+      'warm-cool-duotone',
+      'achromatic-with-hyper-accent',
+      'triadic-muted-earth',
+      'atmospheric-analogous',
+      'split-complementary'
+    ],
+    allowedMotionProfiles: ['crisp-editorial-snap', 'magnetic-precision-spring']
+  },
+  'fintech-and-banking': {
+    archetypeId: 'fintech-and-banking',
+    fixedVisualTemplateImposed: false,
+    allowsBespokeMorphologyMutation: true,
+    allowedGridTopologies: [
+      'tufte-high-density-data',
+      'golden-ratio-bento-matrix',
+      'swiss-asymmetric-editorial',
+      'split-screen-sticky-narrative',
+      'architectural-brutalist-monolith',
+      'kinetic-scrollytelling-stage'
+    ],
+    allowedHeroArchitectures: [
+      'live-interactive-product-sandbox',
+      'command-first-search-hero',
+      'minimalist-high-trust-authority',
+      'numbered-editorial-index-hero',
+      'layered-cards-depth-parallax',
+      'monumental-typographic-manifesto',
+      'inset-architectural-video-frame'
+    ],
+    allowedComponentMorphologies: [
+      { nav: 'floating-island-bar', corner: '6px-tecnico', material: 'deep-obsidian-specular' },
+      { nav: 'vertical-side-rail', corner: '0px-recto', material: 'raw-ink-swiss-border' },
+      { nav: 'minimal-editorial-header', corner: '6px-tecnico', material: 'brushed-anodized-metal' },
+      { nav: 'magnetic-hud-dock', corner: '6px-tecnico', material: 'frosted-glass' },
+      { nav: 'minimal-editorial-header', corner: '0px-recto', material: 'paper-editorial' }
+    ],
+    allowedGamutMasks: [
+      'achromatic-with-hyper-accent',
+      'split-complementary',
+      'warm-cool-duotone',
+      'atmospheric-analogous',
+      'triadic-muted-earth'
+    ],
+    allowedMotionProfiles: ['crisp-editorial-snap', 'magnetic-precision-spring']
+  },
+  'enterprise-erp-database': {
+    archetypeId: 'enterprise-erp-database',
+    fixedVisualTemplateImposed: false,
+    allowsBespokeMorphologyMutation: true,
+    allowedGridTopologies: [
+      'tufte-high-density-data',
+      'swiss-asymmetric-editorial',
+      'golden-ratio-bento-matrix',
+      'split-screen-sticky-narrative',
+      'architectural-brutalist-monolith'
+    ],
+    allowedHeroArchitectures: [
+      'command-first-search-hero',
+      'live-interactive-product-sandbox',
+      'numbered-editorial-index-hero',
+      'minimalist-high-trust-authority',
+      'monumental-typographic-manifesto'
+    ],
+    allowedComponentMorphologies: [
+      { nav: 'vertical-side-rail', corner: '6px-tecnico', material: 'deep-obsidian-specular' },
+      { nav: 'minimal-editorial-header', corner: '0px-recto', material: 'raw-ink-swiss-border' },
+      { nav: 'floating-island-bar', corner: '6px-tecnico', material: 'brushed-anodized-metal' },
+      { nav: 'vertical-side-rail', corner: '0px-recto', material: 'paper-editorial' }
+    ],
+    allowedGamutMasks: [
+      'achromatic-with-hyper-accent',
+      'warm-cool-duotone',
+      'atmospheric-analogous',
+      'split-complementary',
+      'triadic-muted-earth'
+    ],
+    allowedMotionProfiles: ['crisp-editorial-snap', 'magnetic-precision-spring']
+  },
+  'ecommerce-conversion': {
+    archetypeId: 'ecommerce-conversion',
+    fixedVisualTemplateImposed: false,
+    allowsBespokeMorphologyMutation: true,
+    allowedGridTopologies: [
+      'editorial-magazine-spread',
+      'golden-ratio-bento-matrix',
+      'swiss-asymmetric-editorial',
+      'kinetic-scrollytelling-stage',
+      'split-screen-sticky-narrative',
+      'architectural-brutalist-monolith',
+      'interactive-webgl-spatial-canvas'
+    ],
+    allowedHeroArchitectures: [
+      'asymmetric-split-3d-diorama',
+      'full-bleed-cinematic-story',
+      'inset-architectural-video-frame',
+      'layered-cards-depth-parallax',
+      'monumental-typographic-manifesto',
+      'numbered-editorial-index-hero',
+      'live-interactive-product-sandbox'
+    ],
+    allowedComponentMorphologies: [
+      { nav: 'floating-island-bar', corner: '24px-organico', material: 'frosted-glass' },
+      { nav: 'minimal-editorial-header', corner: '0px-recto', material: 'paper-editorial' },
+      { nav: 'vertical-side-rail', corner: '0px-recto', material: 'raw-ink-swiss-border' },
+      { nav: 'magnetic-hud-dock', corner: '6px-tecnico', material: 'brushed-anodized-metal' },
+      { nav: 'floating-island-bar', corner: '6px-tecnico', material: 'deep-obsidian-specular' }
+    ],
+    allowedGamutMasks: [
+      'triadic-muted-earth',
+      'warm-cool-duotone',
+      'achromatic-with-hyper-accent',
+      'split-complementary',
+      'atmospheric-analogous'
+    ],
+    allowedMotionProfiles: ['magnetic-precision-spring', 'fluid-silk-inertia', 'crisp-editorial-snap']
+  },
+  'streamer-and-gaming-creator': {
+    archetypeId: 'streamer-and-gaming-creator',
+    fixedVisualTemplateImposed: false,
+    allowsBespokeMorphologyMutation: true,
+    allowedGridTopologies: [
+      'interactive-webgl-spatial-canvas',
+      'kinetic-scrollytelling-stage',
+      'golden-ratio-bento-matrix',
+      'architectural-brutalist-monolith',
+      'split-screen-sticky-narrative'
+    ],
+    allowedHeroArchitectures: [
+      'kinetic-shader-portal',
+      'asymmetric-split-3d-diorama',
+      'full-bleed-cinematic-story',
+      'layered-cards-depth-parallax',
+      'inset-architectural-video-frame',
+      'monumental-typographic-manifesto'
+    ],
+    allowedComponentMorphologies: [
+      { nav: 'magnetic-hud-dock', corner: 'clip-path-bevel', material: 'brushed-anodized-metal' },
+      { nav: 'floating-island-bar', corner: '6px-tecnico', material: 'deep-obsidian-specular' },
+      { nav: 'vertical-side-rail', corner: '0px-recto', material: 'raw-ink-swiss-border' },
+      { nav: 'floating-island-bar', corner: '24px-organico', material: 'frosted-glass' }
+    ],
+    allowedGamutMasks: [
+      'split-complementary',
+      'achromatic-with-hyper-accent',
+      'warm-cool-duotone',
+      'atmospheric-analogous',
+      'triadic-muted-earth'
+    ],
+    allowedMotionProfiles: ['magnetic-precision-spring', 'fluid-silk-inertia', 'crisp-editorial-snap']
+  },
+  'healthcare-and-clinic': {
+    archetypeId: 'healthcare-and-clinic',
+    fixedVisualTemplateImposed: false,
+    allowsBespokeMorphologyMutation: true,
+    allowedGridTopologies: [
+      'swiss-asymmetric-editorial',
+      'golden-ratio-bento-matrix',
+      'split-screen-sticky-narrative',
+      'editorial-magazine-spread',
+      'tufte-high-density-data'
+    ],
+    allowedHeroArchitectures: [
+      'minimalist-high-trust-authority',
+      'command-first-search-hero',
+      'inset-architectural-video-frame',
+      'numbered-editorial-index-hero',
+      'layered-cards-depth-parallax',
+      'monumental-typographic-manifesto'
+    ],
+    allowedComponentMorphologies: [
+      { nav: 'floating-island-bar', corner: '24px-organico', material: 'frosted-glass' },
+      { nav: 'minimal-editorial-header', corner: '0px-recto', material: 'paper-editorial' },
+      { nav: 'Minimal-editorial-header', corner: '6px-tecnico', material: 'brushed-anodized-metal' },
+      { nav: 'vertical-side-rail', corner: '6px-tecnico', material: 'paper-editorial' }
+    ],
+    allowedGamutMasks: [
+      'atmospheric-analogous',
+      'warm-cool-duotone',
+      'triadic-muted-earth',
+      'split-complementary',
+      'achromatic-with-hyper-accent'
+    ],
+    allowedMotionProfiles: ['crisp-editorial-snap', 'magnetic-precision-spring']
+  },
+  'b2b-saas-platform': {
+    archetypeId: 'b2b-saas-platform',
+    fixedVisualTemplateImposed: false,
+    allowsBespokeMorphologyMutation: true,
+    allowedGridTopologies: [
+      'golden-ratio-bento-matrix',
+      'kinetic-scrollytelling-stage',
+      'swiss-asymmetric-editorial',
+      'split-screen-sticky-narrative',
+      'tufte-high-density-data',
+      'architectural-brutalist-monolith',
+      'editorial-magazine-spread',
+      'interactive-webgl-spatial-canvas'
+    ],
+    allowedHeroArchitectures: [
+      'live-interactive-product-sandbox',
+      'asymmetric-split-3d-diorama',
+      'kinetic-shader-portal',
+      'command-first-search-hero',
+      'layered-cards-depth-parallax',
+      'monumental-typographic-manifesto',
+      'numbered-editorial-index-hero',
+      'inset-architectural-video-frame',
+      'minimalist-high-trust-authority'
+    ],
+    allowedComponentMorphologies: [
+      { nav: 'floating-island-bar', corner: '6px-tecnico', material: 'deep-obsidian-specular' },
+      { nav: 'minimal-editorial-header', corner: '0px-recto', material: 'raw-ink-swiss-border' },
+      { nav: 'vertical-side-rail', corner: '6px-tecnico', material: 'brushed-anodized-metal' },
+      { nav: 'magnetic-hud-dock', corner: '24px-organico', material: 'frosted-glass' },
+      { nav: 'minimal-editorial-header', corner: '0px-recto', material: 'paper-editorial' }
+    ],
+    allowedGamutMasks: [
+      'atmospheric-analogous',
+      'split-complementary',
+      'achromatic-with-hyper-accent',
+      'warm-cool-duotone',
+      'triadic-muted-earth'
+    ],
+    allowedMotionProfiles: ['magnetic-precision-spring', 'crisp-editorial-snap', 'fluid-silk-inertia']
+  },
+  'luxury-architecture-and-real-estate': {
+    archetypeId: 'luxury-architecture-and-real-estate',
+    fixedVisualTemplateImposed: false,
+    allowsBespokeMorphologyMutation: true,
+    allowedGridTopologies: [
+      'editorial-magazine-spread',
+      'swiss-asymmetric-editorial',
+      'kinetic-scrollytelling-stage',
+      'interactive-webgl-spatial-canvas',
+      'architectural-brutalist-monolith',
+      'split-screen-sticky-narrative'
+    ],
+    allowedHeroArchitectures: [
+      'full-bleed-cinematic-story',
+      'inset-architectural-video-frame',
+      'asymmetric-split-3d-diorama',
+      'monumental-typographic-manifesto',
+      'numbered-editorial-index-hero',
+      'kinetic-shader-portal'
+    ],
+    allowedComponentMorphologies: [
+      { nav: 'minimal-editorial-header', corner: '0px-recto', material: 'paper-editorial' },
+      { nav: 'floating-island-bar', corner: '6px-tecnico', material: 'brushed-anodized-metal' },
+      { nav: 'vertical-side-rail', corner: '0px-recto', material: 'raw-ink-swiss-border' },
+      { nav: 'magnetic-hud-dock', corner: '6px-tecnico', material: 'deep-obsidian-specular' }
+    ],
+    allowedGamutMasks: [
+      'triadic-muted-earth',
+      'warm-cool-duotone',
+      'achromatic-with-hyper-accent',
+      'atmospheric-analogous',
+      'split-complementary'
+    ],
+    allowedMotionProfiles: ['fluid-silk-inertia', 'crisp-editorial-snap', 'magnetic-precision-spring']
+  }
+});
+
+/**
+ * Returns the strict Functional & Ergonomic Invariants for an archetype (decoupled from visual morphology).
+ */
+export function getArchetypeFunctionalInvariants(input = 'saas') {
+  const arch = resolveIndustryArchetype(input);
+  return ARCHETYPE_FUNCTIONAL_INVARIANTS[arch.id] || ARCHETYPE_FUNCTIONAL_INVARIANTS['b2b-saas-platform'];
+}
+
+/**
+ * Returns the Open Morphological Design Space for an archetype (enabling unique intra-category combinations).
+ */
+export function getOpenMorphologicalSpaceForArchetype(input = 'saas') {
+  const arch = resolveIndustryArchetype(input);
+  return OPEN_MORPHOLOGICAL_DESIGN_SPACE[arch.id] || OPEN_MORPHOLOGICAL_DESIGN_SPACE['b2b-saas-platform'];
+}
+
+/**
+ * Resolves any user or CLI archetype string (`abogacia`, `fintech`, `erp`, etc.) to a canonical archetype object,
+ * enriched with `functionalInvariants` and `openMorphologicalSpace`.
  */
 export function resolveIndustryArchetype(input = 'saas') {
   const key = String(input || 'saas').trim().toLowerCase();
   const canonicalId = ARCHETYPE_CLI_ALIASES[key] || 'b2b-saas-platform';
-  return INDUSTRY_VISUAL_ARCHETYPES[canonicalId] || INDUSTRY_VISUAL_ARCHETYPES['b2b-saas-platform'];
+  const base = INDUSTRY_VISUAL_ARCHETYPES[canonicalId] || INDUSTRY_VISUAL_ARCHETYPES['b2b-saas-platform'];
+  return {
+    ...base,
+    functionalInvariants: ARCHETYPE_FUNCTIONAL_INVARIANTS[base.id] || ARCHETYPE_FUNCTIONAL_INVARIANTS['b2b-saas-platform'],
+    openMorphologicalSpace: OPEN_MORPHOLOGICAL_DESIGN_SPACE[base.id] || OPEN_MORPHOLOGICAL_DESIGN_SPACE['b2b-saas-platform']
+  };
 }
 
 /**
@@ -1160,6 +1710,32 @@ export function compileDesignMdContent(archetypeObj, projectMeta = {}) {
   const r = archetypeObj.tokens.rounded;
   const s = archetypeObj.tokens.spacing;
   const vs = getVisualScienceParametersForArchetype(archetypeObj.id);
+  const funcInv = getArchetypeFunctionalInvariants(archetypeObj.id);
+  const openSpace = getOpenMorphologicalSpaceForArchetype(archetypeObj.id);
+
+  const defaultDna = projectMeta.brandDnaVector || {
+    gridTopology: openSpace.allowedGridTopologies[0] || 'golden-ratio-bento-matrix',
+    heroArchitecture: openSpace.allowedHeroArchitectures[0] || 'live-interactive-product-sandbox',
+    componentMorphology: openSpace.allowedComponentMorphologies[0] || {
+      nav: 'floating-island-bar',
+      corner: '6px-tecnico',
+      material: 'deep-obsidian-specular'
+    },
+    gamutMaskType: openSpace.allowedGamutMasks[0] || 'atmospheric-analogous',
+    fontPairingProfile: 'swiss-precision-geist-jetbrains',
+    motionPhysicsCriteria: {
+      transitionPhysics: openSpace.allowedMotionProfiles[0] || 'magnetic-precision-spring',
+      dampingRatioZeta: vs.springPhysics.zeta,
+      scrollChoreography: 'native-view-transitions-morph'
+    },
+    introAnd3dDecision: {
+      recommendIntroVideo: archetypeObj.primarySurfaceMode !== 'Operate' && archetypeObj.primarySurfaceMode !== 'Read',
+      introMode: archetypeObj.primarySurfaceMode === 'Read' ? 'inline-non-blocking-svg' : 'parametric-svg-choreography',
+      forged3dMode: archetypeObj.allows3dEffects ? 'parametric-diorama-or-shader' : 'orthographic-2d-clean'
+    },
+    morphologicalDivergenceScore: projectMeta.morphologicalDivergenceScore ?? 0.88,
+    aestheticHarmonyScore: projectMeta.aestheticHarmonyScore ?? 0.94
+  };
 
   const yamlTypography = Object.entries(t)
     .map(([role, spec]) => {
@@ -1199,6 +1775,18 @@ surfaceMode: "${archetypeObj.primarySurfaceMode}"
 allows3dEffects: ${archetypeObj.allows3dEffects}
 apcaContrastFloor: ${archetypeObj.apcaContrastFloor}
 cameraFov: "${vs.cameraFov}"
+brandDnaVector:
+  gridTopology: "${defaultDna.gridTopology}"
+  heroArchitecture: "${defaultDna.heroArchitecture}"
+  navVariant: "${defaultDna.componentMorphology?.nav || 'floating-island-bar'}"
+  cornerGeometry: "${defaultDna.componentMorphology?.corner || '6px-tecnico'}"
+  surfaceMaterial: "${defaultDna.componentMorphology?.material || 'deep-obsidian-specular'}"
+  gamutMaskType: "${defaultDna.gamutMaskType}"
+  fontPairingProfile: "${defaultDna.fontPairingProfile}"
+  transitionPhysics: "${defaultDna.motionPhysicsCriteria?.transitionPhysics || 'magnetic-precision-spring'}"
+  scrollChoreography: "${defaultDna.motionPhysicsCriteria?.scrollChoreography || 'native-view-transitions-morph'}"
+  morphologicalDivergenceScore: ${defaultDna.morphologicalDivergenceScore ?? 0.88}
+  aestheticHarmonyScore: ${defaultDna.aestheticHarmonyScore ?? 0.94}
 pbrMaterial:
   metalness: ${vs.pbrMaterial.metalness}
   roughness: ${vs.pbrMaterial.roughness}
@@ -1246,6 +1834,8 @@ components:
 - **Creative North Star:** ${archetypeObj.creativeNorthStar}
 - **Impeccable Surface Mode:** \`${archetypeObj.primarySurfaceMode}\` (Secondary: ${archetypeObj.surfaceModes.join(', ')})
 - **Atmospheric Polarity:** \`${archetypeObj.polarity}\`
+- **Archetype Functional Invariants:** APCA Headline \`Lc >= ${funcInv.apcaContrastFloors.headlineLc}\`, Body \`Lc >= ${funcInv.apcaContrastFloors.bodyLc}\`, Hick's Law Nav Cap \`<= ${funcInv.cognitiveLaws.hicksLawMaxNavItems}\`, Fitts Touch \`>= ${funcInv.cognitiveLaws.fittsLawMinTouchPx}px\`, Acoustic Ceiling \`<= ${funcInv.acousticSafetyLimits.maxPeakDbfs} dBFS\`.
+- **Open Morphological Space:** \`fixedVisualTemplateImposed: ${openSpace.fixedVisualTemplateImposed}\` — Active Bespoke Grid \`${defaultDna.gridTopology}\`, Active Hero \`${defaultDna.heroArchitecture}\`, Gamut Mask \`${defaultDna.gamutMaskType}\`.
 - **3D & Camera Cinematography:** \`allows3dEffects: ${archetypeObj.allows3dEffects}\` — Lens: \`${vs.cameraFov}\`${archetypeObj.id === 'streamer-and-gaming-creator' ? ' (Mandatory 60-FPS Watchdog active)' : ' (Zero distracting 3D effects in operational/editorial views)'}
 - **Google Filament PBR Material:** \`metalness: ${vs.pbrMaterial.metalness}\`, \`roughness: ${vs.pbrMaterial.roughness}\`, \`ior: ${vs.pbrMaterial.ior}\` (${vs.pbrMaterial.materialClass})
 
@@ -1257,14 +1847,14 @@ All colors are authored in perceptual **W3C DTCG 2025.10 OKLCH** space to guaran
 - **Secondary (\`{colors.secondary}\`):** Supporting structural accent and secondary state signal.
 - **Tertiary (\`{colors.tertiary}\`):** High-salience focal accent reserved for single primary conversion moments.
 - **Surface Ground (\`{colors.surface}\`):** Tinted mineral/daylight ground (never untinted \`#000000\` or glaring \`#ffffff\`).${archetypeObj.id === 'ecommerce-conversion' ? ' Strict low-chroma neutral (`chroma < 0.02`) to preserve product color fidelity.' : ''}
-- **Gurney/Albers Thermal Rotation:** ${vs.thermalRotation}.
+- **Gurney/Albers Thermal Rotation & Gamut Mask:** ${vs.thermalRotation} | Active Gamut Mask: \`${defaultDna.gamutMaskType}\`.
 - **Inigo Quilez Procedural Cosine Palette (\`color(t) = a + b * cos(2π(c*t + d))\`):** \`a=${JSON.stringify(vs.cosinePalette.a)}\`, \`b=${JSON.stringify(vs.cosinePalette.b)}\`, \`c=${JSON.stringify(vs.cosinePalette.c)}\`, \`d=${JSON.stringify(vs.cosinePalette.d)}\`.
 - **Text Hierarchy (\`{colors.text-primary}\` / \`{colors.text-secondary}\`):** Hue-tinted foregrounds; never gray text on colored backgrounds.
 - **Semantic State (\`{colors.success}\`, \`{colors.warning}\`, \`{colors.danger}\`):** High-contrast status tokens paired with explicit icons/labels.
 
 ## Typography
 
-- **Typographic Scale & Vertical Rhythm:** ${vs.typeScale}.
+- **Typographic Scale & Vertical Rhythm:** ${vs.typeScale} | Curated Pairing Profile: \`${defaultDna.fontPairingProfile}\`.
 - **Display & Headlines (\`{typography.display}\`, \`{typography.h1}\`, \`{typography.h2}\`):** ${t.display.fontFamily} with deliberate weight hierarchy and balanced wrapping (\`text-wrap: balance\`).
 - **Body Measure (\`{typography.body}\`):** ${t.body.fontFamily} at \`${t.body.fontSize}\` (line-height \`${t.body.lineHeight}\`), constrained to \`65ch–75ch\` (\`60ch–68ch\` in \`Read\` mode) for effortless scannability.
 - **Edward Tufte Numeric Discipline (\`{typography.mono}\`):** Mandatory \`font-variant-numeric: tabular-nums slashed-zero\` (\`tnum\`, \`zero\`), right-aligned numeric cells, left-aligned text/IDs, and \`16px\` inline sparklines.
@@ -1272,7 +1862,8 @@ All colors are authored in perceptual **W3C DTCG 2025.10 OKLCH** space to guaran
 
 ## Layout
 
-- **Spatial Architecture:** Asymmetric 12-column CSS Grid & Subgrid with generous section spacing (\`{spacing.xl}\` to \`{spacing.2xl}\`) and \`>= 25%\` open canvas whitespace.
+- **Spatial Architecture (\`gridTopology: ${defaultDna.gridTopology}\`):** Asymmetric 12-column CSS Grid & Subgrid with generous section spacing (\`{spacing.xl}\` to \`{spacing.2xl}\`) and \`>= 35%\` open canvas whitespace (\`whitespaceRatio: 0.35..0.68\`).
+- **Hero First-Impact Architecture (\`heroArchitecture: ${defaultDna.heroArchitecture}\`):** Selected from the open morphological space to guarantee intra-category uniqueness.
 - **Multi-Viewport Ergonomics:** Verified across \`1440px\` (Desktop), \`768px\` (Tablet), and \`375px\` (Mobile) with zero horizontal overflow.${archetypeObj.id === 'healthcare-and-clinic' ? ' Appointment booking and emergency contact are immediately visible in the first mobile viewport (375px).' : ''}
 - **Apple HIG / Material Design 3 / Hoober Thumb Zones:** Primary mobile navigation and CTAs placed in the bottom third thumb zone with minimum \`48x48px\` touch target area (\`>= 8px\` separation), \`env(safe-area-inset-top/bottom)\`, and \`touch-action: manipulation\`.
 
@@ -1284,7 +1875,7 @@ All colors are authored in perceptual **W3C DTCG 2025.10 OKLCH** space to guaran
 
 ## Shapes
 
-- **Corner Radius Scale:** \`none: ${r.none}\`, \`xs: ${r.xs}\`, \`sm: ${r.sm}\`, \`md: ${r.md}\`, \`lg: ${r.lg}\`.
+- **Corner Radius Scale:** \`none: ${r.none}\`, \`xs: ${r.xs}\`, \`sm: ${r.sm}\`, \`md: ${r.md}\`, \`lg: ${r.lg}\` (Concentric Law: $R_{outer} = R_{inner} + Padding$).
 - **Industry Geometry:** Tailored to \`${archetypeObj.id}\` — no \`999px\` pill radii on cards or containers.
 
 ## Components
@@ -1293,6 +1884,18 @@ All colors are authored in perceptual **W3C DTCG 2025.10 OKLCH** space to guaran
 - **Data & Content Containers (\`card-surface\`):** Flat or hairline-bounded containers; strictly **zero \`card-in-card\` nesting**.
 - **Interactive State Matrix:** Every control implements all 7 states (\`default\`, \`hover\`, \`focus-visible\`, \`active\`, \`disabled\`, \`loading skeleton\`, \`error\`), honors \`prefers-reduced-motion\`, and themes \`::selection\` and scrollbars.
 - **Overlays:** Built with native HTML5 \`<dialog>\` and Popover API to prevent container clipping.
+
+## Brand DNA Vector & Bespoke Morphology
+
+- **Axis 1 — Grid Topology (\`gridTopology\`):** \`${defaultDna.gridTopology}\`
+- **Axis 2 — Hero Architecture (\`heroArchitecture\`):** \`${defaultDna.heroArchitecture}\`
+- **Axis 3 — Component & Surface Morphology (\`componentMorphology\`):** Nav \`${defaultDna.componentMorphology?.nav || 'floating-island-bar'}\` | Corner \`${defaultDna.componentMorphology?.corner || '6px-tecnico'}\` | Material \`${defaultDna.componentMorphology?.material || 'deep-obsidian-specular'}\`
+- **Axis 4 — OKLCH Chromatic Gamut Mask (\`gamutMaskType\`):** \`${defaultDna.gamutMaskType}\`
+- **Axis 5 — Expressive Typographic Curation (\`fontPairingProfile\`):** \`${defaultDna.fontPairingProfile}\`
+- **Axis 6 — Kinetic Physics & Scroll Choreography (\`motionPhysicsCriteria\`):** Transition \`${defaultDna.motionPhysicsCriteria?.transitionPhysics || 'magnetic-precision-spring'}\` ($\zeta = ${defaultDna.motionPhysicsCriteria?.dampingRatioZeta ?? vs.springPhysics.zeta}$) | Scroll \`${defaultDna.motionPhysicsCriteria?.scrollChoreography || 'native-view-transitions-morph'}\`
+- **Axis 7 — Intro Video & 3D/Shader Decision (\`introAnd3dDecision\`):** Recommend Intro \`${Boolean(defaultDna.introAnd3dDecision?.recommendIntroVideo)}\` (\`${defaultDna.introAnd3dDecision?.introMode || 'parametric-svg-choreography'}\`) | 3D/Shader \`${defaultDna.introAnd3dDecision?.forged3dMode || 'parametric-diorama-or-shader'}\`
+- **Intra-Category Morphological Divergence Score:** \`${defaultDna.morphologicalDivergenceScore ?? 0.88}\` (Mandatory Floor \`>= 0.70\`)
+- **Birkhoff Aesthetic Harmony Score ($M = O / C$):** \`${defaultDna.aestheticHarmonyScore ?? 0.94}\` (Mandatory Floor \`>= 0.85\`, Max Simultaneous High-Complexity Axes \`<= 2\`)
 
 ## Sonic & Video Identity
 

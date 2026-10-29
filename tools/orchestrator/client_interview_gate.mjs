@@ -28,6 +28,10 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { resolveIndustryArchetype } from '../design/industry_archetype_matrix.mjs';
 import {
+  synthesizeUniqueBrandDna,
+  BRAND_PERSONALITY_TENSIONS
+} from '../design/bespoke_morphology_composer.mjs';
+import {
   resolveSonicArchetypePreset,
   synthesizeProceduralSoundFromDesignCriteria
 } from '../../templates/components/web-audio-director.js';
@@ -181,8 +185,13 @@ export function buildDefaultInterviewPayload(
           brandLock?.officialTypography?.displayFont ||
           (isLawOrRead ? 'Editorial Serif + Swiss Sans' : 'Swiss Geometric Sans + Tabular Mono')
       },
-      // Bloque 5: Física de Animaciones, Scroll y Micro-Interacciones a 60 FPS
+      // Bloque 5: Dirección Estética, Personalidad Diferenciadora y Física Cinética a 60 FPS
       block5_motion_physics_and_scroll_60fps: {
+        brandPersonalityTension: isLawOrRead
+          ? 'clasico-atemporal vs vanguardista-disruptivo'
+          : 'minimalismo-silencioso vs expresividad-cinetica',
+        availablePersonalityTensions: BRAND_PERSONALITY_TENSIONS,
+        morphologySelectionMode: 'auto-bespoke-criteria',
         animationLevel: isLawOrRead ? 'minimal-editorial' : 'spring-fluid-60fps',
         dampingRatioZeta: isLawOrRead ? 1.0 : 0.78,
         springPhysics: { stiffness: 280, damping: 24 },
@@ -388,7 +397,9 @@ ${(t1.domSectionsAndComponents || []).map((s) => `  - ${s}`).join('\n')}
 - **Semilla de Colores del Cliente:** Primario \`${t4.lockedClientPalette?.primaryBrandColor || '#2563EB'}\`, Secundario \`${t4.lockedClientPalette?.secondaryBrandColor || '#0F172A'}\`, Acento \`${t4.lockedClientPalette?.accentBrandColor || '#10B981'}\`
 - **Piso de Contraste \`APCA\`:** ${t4.apcaContrastFloors || 'Lc >= 75'} | **Tipografía:** ${t4.typographyPersonality || 'Swiss Sans'}
 
-## Bloque 5 — Física de Animaciones, Scroll y Micro-Interacciones a 60 FPS
+## Bloque 5 — Dirección Estética, Personalidad Diferenciadora y Física Cinética a 60 FPS
+- **Eje de Tensión de Personalidad (\`brandPersonalityTension\`):** \`${t5.brandPersonalityTension || 'minimalismo-silencioso vs expresividad-cinetica'}\`
+- **Modo de Selección Morfológica (\`morphologySelectionMode\`):** \`${t5.morphologySelectionMode || 'auto-bespoke-criteria'}\` (Garantía de 0 repetición intra-categoría frente a proyectos previos)
 - **Nivel de Animación:** \`${t5.animationLevel || 'spring-fluid-60fps'}\` ($\zeta = ${t5.dampingRatioZeta ?? 0.78}$, \`stiffness: ${t5.springPhysics?.stiffness ?? 280}, damping: ${t5.springPhysics?.damping ?? 24}\`)
 - **Scroll-Driven CSS & View Transitions API:** \`scroll=${Boolean(t5.useScrollDrivenAnimationsCss)}\`, \`viewTransitions=${Boolean(t5.useViewTransitionsApi)}\`, \`reducedMotion=${Boolean(t5.respectReducedMotion)}\`
 
@@ -681,6 +692,18 @@ export function compileSpecFromInterview(slug = 'agencia-alfa', options = {}) {
     isotipoPath: 'public/assets/brand/isotipo.svg'
   };
 
+  // Synthesize unique 7-Axis Brand DNA Vector & verify Birkhoff Harmony (>= 0.85) + Intra-Category Divergence (>= 0.70)
+  const t5Block = interview.blocks.block5_motion_physics_and_scroll_60fps || {};
+  const bespokeDna = synthesizeUniqueBrandDna({
+    projectSlug: slug,
+    industryCategory: b1.industryArchetype,
+    brandPersonalityTension:
+      t5Block.brandPersonalityTension || 'minimalismo-silencioso vs expresividad-cinetica',
+    morphologyMode: t5Block.morphologySelectionMode || 'auto-bespoke-criteria',
+    baseHue: b4.oklchPrimary?.H || 255,
+    persistInLedger: !slug.startsWith('_test')
+  });
+
   // Synthesize exact psychoacoustic patch from the visual and material criteria
   const sonicPatch = synthesizeProceduralSoundFromDesignCriteria({
     archetype: b1.industryArchetype,
@@ -693,41 +716,31 @@ export function compileSpecFromInterview(slug = 'agencia-alfa', options = {}) {
     spring: b5.springPhysics
   });
 
-  // 1. Write SPEC.md mapping 1:1 [INV-01]..[INV-07] from PRD_LEAN.md to [REQ-01]..[REQ-12]
+  // 1. Write SPEC.md mapping 1:1 [INV-01]..[INV-07] from PRD_LEAN.md to [REQ-01]..[REQ-12] + Bespoke Morphology Justification
   const specPath = path.join(projectDir, 'SPEC.md');
   const specContent = `# SPEC.md — Especificación Técnica Ejecutable Compilada desde Doble Entrevista (\`${slug}\`)
 
 > **Estado Compuerta #1 (\`PRD_LEAN.md\`):** \`COMPLETED_BY_CTO\` | **Estado Compuerta #2 (\`SPEC.md\`):** \`${interview.specInterviewStatus}\`  
 > **Modo de Identidad de Marca:** \`${brandMode}\` (\`lockClientPalette: ${lockPalette}\`) | **Arquetipo:** \`${b1.industryArchetype}\` | **Modo de Superficie:** \`${b4.surfaceMode}\`  
+> **Dirección Morfológica (\`${bespokeDna.morphologyMode}\`):** Grid \`${bespokeDna.gridTopology}\` | Hero \`${bespokeDna.heroArchitecture}\` | Divergencia \`${bespokeDna.morphologicalDivergenceScore}\` (\`>= 0.70\`) | Armonía Birkhoff \`${bespokeDna.aestheticHarmonyScore}\` (\`>= 0.85\`)  
 > **Compilado Determinísticamente por:** \`tools/orchestrator/client_interview_gate.mjs\` (\`compileSpecFromInterview\`)
 
 ---
 
 ## 1. Trazabilidad 1:1 desde \`PRD_LEAN.md\` (\`[INV-01..07]\`) hacia Requisitos Técnicos (\`[REQ-01]\` a \`[REQ-12]\`)
 
-- **[REQ-01] (Trazable a \`[INV-01]\`) Identidad y Propuesta de Valor en Hero:** Renderizar en el primer viewport el titular de \`${brandLock?.brandName || b1.brandName}\` (*"${b1.valuePropositionOneLiner}"*) con claridad en \`<= 3 segundos\`.
+- **[REQ-01] (Trazable a \`[INV-01]\`) Identidad y Propuesta de Valor en Hero:** Renderizar en el primer viewport el titular de \`${brandLock?.brandName || b1.brandName}\` (*"${b1.valuePropositionOneLiner}"*) con arquitectura de Hero \`${bespokeDna.heroArchitecture}\` y claridad en \`<= 3 segundos\`.
 - **[REQ-02] (Trazable a \`[INV-05]\`) Acción Primaria Única (\`Primary CTA\`):** Implementar el CTA primario **\`${b2.primaryCta}\`** conectado a \`${b2.primaryCtaChannel}\` con área táctil Fitts \`>= 48x48px\`.
-- **[REQ-03] (Trazable a \`[INV-02]\`) Arquitectura Sitemap y Derribo de las 3 Objeciones:** Proveer navegación semántica para \`${b3.pages.join(', ')}\` y renderizar las secciones obligatorias: ${b3.mandatorySections.join('; ')}.
-- **[REQ-04] (Trazable a \`[INV-03]\`) Contrato de Marca \`BRAND_IDENTITY_LOCK.json\`, Colorimetría \`OKLCH\` y \`APCA\`:** Respetar \`brandIdentityMode: "${brandMode}"\` (\`lockClientPalette: ${lockPalette}\`, primario \`${pal.primaryBrandColor}\`, secundario \`${pal.secondaryBrandColor}\`, acento \`${pal.accentBrandColor}\`, logo \`${logos.primaryLogoPath}\`), tokens \`OKLCH\` (\`L=${b4.oklchPrimary.L}, C=${b4.oklchPrimary.C}, H=${b4.oklchPrimary.H}\`) y contraste \`${b9.accessibilityFloor}\`.
-- **[REQ-05] (Trazable a \`[INV-04]\`) Escala Tipográfica Fluida \`Utopia clamp()\`:** Garantizar tipografía fluida sin saltos bruscos entre \`320px\` y \`2560px\` con personalidad \`${b4.typographyPersonality}\` y radio de borde \`${b4.borderRadiusPx}px\`.
-- **[REQ-06] (Trazable a \`[INV-04]\`) Coreografía de Movimiento a 60 FPS:** Ejecutar animaciones nivel \`${b5.animationLevel}\` con física de resorte (\`stiffness: ${b5.springPhysics.stiffness}, damping: ${b5.springPhysics.damping}\`) respetando \`prefers-reduced-motion: reduce\`.
-- **[REQ-07] Identidad Sonora Psicoacústica y Video Intro con Logo Bloqueado:** Configurar \`uiSfxMode: "${b6.uiSfxMode}"\`, material modal \`${b6.material}\` (\`f0=${sonicPatch.f0Hz}Hz, cutoff=${sonicPatch.spectralCentroidHz}Hz, attack=${sonicPatch.attackMs}ms, pico=${sonicPatch.gainPeakDbfs}dBFS <= -18dBFS\`), música \`${b6.backgroundMusic}\` e intro \`${b6.introVideoMode}\` usando \`${logos.primaryLogoPath}\`.
+- **[REQ-03] (Trazable a \`[INV-02]\`) Arquitectura Sitemap, Topología de Grilla y Derribo de las 3 Objeciones:** Proveer navegación semántica (\`${bespokeDna.componentMorphology.nav}\`) para \`${b3.pages.join(', ')}\` sobre topología \`${bespokeDna.gridTopology}\` y renderizar las secciones obligatorias: ${b3.mandatorySections.join('; ')}.
+- **[REQ-04] (Trazable a \`[INV-03]\`) Contrato de Marca \`BRAND_IDENTITY_LOCK.json\`, Máscara Cromática \`OKLCH\` y \`APCA\`:** Respetar \`brandIdentityMode: "${brandMode}"\` (\`lockClientPalette: ${lockPalette}\`, primario \`${pal.primaryBrandColor}\`, secundario \`${pal.secondaryBrandColor}\`, acento \`${pal.accentBrandColor}\`, logo \`${logos.primaryLogoPath}\`), máscara de gama Gurney \`${bespokeDna.gamutMaskType}\`, tokens \`OKLCH\` (\`L=${b4.oklchPrimary.L}, C=${b4.oklchPrimary.C}, H=${b4.oklchPrimary.H}\`) y contraste \`${b9.accessibilityFloor}\`.
+- **[REQ-05] (Trazable a \`[INV-04]\`) Curaduría Tipográfica Expresiva y Escala Fluida \`Utopia clamp()\`:** Garantizar tipografía fluida sin saltos bruscos entre \`320px\` y \`2560px\` con par curado \`${bespokeDna.fontPairingProfile}\` (\`${bespokeDna.fontPairingDetails.utopiaScaleName}\`), personalidad \`${b4.typographyPersonality}\` y geometría concéntrica \`${bespokeDna.componentMorphology.corner}\` (\`border-radius: ${b4.borderRadiusPx}px\`).
+- **[REQ-06] (Trazable a \`[INV-04]\`) Coreografía de Movimiento a 60 FPS:** Ejecutar animaciones nivel \`${b5.animationLevel}\` (\`${bespokeDna.motionPhysicsCriteria.transitionPhysics}\`, $\\zeta = ${bespokeDna.motionPhysicsCriteria.dampingRatioZeta}$, scroll \`${bespokeDna.motionPhysicsCriteria.scrollChoreography}\`) con física de resorte (\`stiffness: ${b5.springPhysics.stiffness}, damping: ${b5.springPhysics.damping}\`) respetando \`prefers-reduced-motion: reduce\`.
+- **[REQ-07] Identidad Sonora Psicoacústica y Video Intro Paramétrica con Logo Bloqueado:** Configurar \`uiSfxMode: "${b6.uiSfxMode}"\`, material modal \`${b6.material}\` (\`f0=${sonicPatch.f0Hz}Hz, cutoff=${sonicPatch.spectralCentroidHz}Hz, attack=${sonicPatch.attackMs}ms, pico=${sonicPatch.gainPeakDbfs}dBFS <= -18dBFS\`), música \`${b6.backgroundMusic}\` e intro \`${b6.introVideoMode}\` (\`${bespokeDna.introChoreographyId}\`) usando \`${logos.primaryLogoPath}\`.
 - **[REQ-08] (Trazable a \`[INV-06]\`) Activos Reales del Cliente, Prueba Social y OpenGraph:** Integrar activos reales (${b7.clientProvidedAssets.join(', ')}) y generar \`dist/og-image.svg\` (\`1200x630\`) automáticamente.
 - **[REQ-09] (Trazable a \`[INV-05]\`) Captura de Leads \`Valibot\`, Pagos Idempotentes y Multi-Tenant RLS:** Habilitar formulario validado con \`Valibot\`, pasarela \`${b8.paymentGateway}\` e idempotencia compatible con \`${b8.databaseEngine}\`.
 - **[REQ-10] SEO Técnico y Visibilidad IA (\`GEO / llms.txt\`):** Emitir \`llms.txt\`, \`robots.txt\`, \`sitemap.xml\` y \`Schema.org JSON-LD @graph\` para \`${b9.primaryKeywords.join(', ')}\` (\`${b9.geoTarget}\`).
 - **[REQ-11] Blindaje DevSecOps (\`OWASP ASVS v5.0\`) y Pure Component 5-State Harness:** Compilar cabeceras \`_headers\` con \`${b9.securityLevel}\`, \`0\` source maps y superar los 5 estados del arnés de componentes puros (\`empty, loading, error-state, extreme-long-text-250chars, dark-mode\`).
 - **[REQ-12] (Trazable a \`[INV-07]\`) Frontera \`Explicit Non-Goals\`, Presupuesto FinOps y \`DoD\`:** Mantener el gasto cloud \`<= $${b10.maxCloudApiBudgetUsd} USD\`, bloquear todo pedido listado en \`Explicit Non-Goals\` de \`PRD_LEAN.md\` y cumplir: ${b10.successMetricsDod.join(' | ')}.
-
----
-
-## 2. Matriz de Verificación Determinista (Playwright + RYUX Gate + Local Fullstack Harness)
-
-| ID Requisito | Aserción Automatizada | Herramienta / Gate | Umbral de Aprobación |
-| :--- | :--- | :--- | :--- |
-| \`[REQ-01..03]\` | Presencia de \`<h1>\`, Primary CTA \`>= 48x48px\` y secciones del Sitemap | \`tools/verify_all.mjs\` | \`PASS (0 errores DOM)\` |
-| \`[REQ-04..06]\` | \`BRAND_IDENTITY_LOCK.json\`, \`OKLCH\`, \`Utopia clamp()\`, \`CLS == 0.00\` y 60 FPS | \`tools/audit/ryux_design_gate.mjs\` | \`Score >= 95/100\` |
-| \`[REQ-07]\` | Techo \`<= -18 dBFS\`, notch ISO 226 \`2.5-4.2kHz\`, \`[data-audio-mute-toggle]\` | \`ryux-audio-video-ergonomics-and-budget\` | \`PASS (Safety Verified)\` |
-| \`[REQ-08..12]\` | \`dist/og-image.svg\`, \`llms.txt\`, \`_headers\` CSP, 5-State Component & RLS Harness | \`tools/audit/local_fullstack_and_component_harness.mjs\` | \`PASS (>= 95/100)\` |
 `;
   fs.writeFileSync(specPath, specContent, 'utf8');
 
@@ -748,8 +761,22 @@ export function compileSpecFromInterview(slug = 'agencia-alfa', options = {}) {
     fs.writeFileSync(productPath, productContent, 'utf8');
   }
 
-  // 3. Update or create DESIGN.md integrating BRAND_IDENTITY_LOCK.json and `## Sonic & Video Identity`
+  // 3. Update or create DESIGN.md integrating BRAND_IDENTITY_LOCK.json, Brand DNA Vector, and `## Sonic & Video Identity`
   const designPath = path.join(projectDir, 'DESIGN.md');
+  const brandDnaSectionMarkdown = `## Brand DNA Vector & Bespoke Morphology
+
+- **Morphology Selection Mode:** \`${bespokeDna.morphologyMode}\` (Tension: \`${bespokeDna.brandPersonalityTension}\`)
+- **Axis 1 — Grid Topology (\`gridTopology\`):** \`${bespokeDna.gridTopology}\`
+- **Axis 2 — Hero Architecture (\`heroArchitecture\`):** \`${bespokeDna.heroArchitecture}\`
+- **Axis 3 — Component & Surface Morphology (\`componentMorphology\`):** Nav \`${bespokeDna.componentMorphology.nav}\` | Corner \`${bespokeDna.componentMorphology.corner}\` | Material \`${bespokeDna.componentMorphology.material}\`
+- **Axis 4 — OKLCH Chromatic Gamut Mask (\`gamutMaskType\`):** \`${bespokeDna.gamutMaskType}\`
+- **Axis 5 — Expressive Typographic Curation (\`fontPairingProfile\`):** \`${bespokeDna.fontPairingProfile}\` (\`${bespokeDna.fontPairingDetails.utopiaScaleName}\`)
+- **Axis 6 — Kinetic Physics & Scroll Choreography (\`motionPhysicsCriteria\`):** \`${bespokeDna.motionPhysicsCriteria.transitionPhysics}\` ($\\zeta = ${bespokeDna.motionPhysicsCriteria.dampingRatioZeta}$) | Scroll \`${bespokeDna.motionPhysicsCriteria.scrollChoreography}\`
+- **Axis 7 — Intro Video & 3D/Shader Decision (\`introAnd3dDecision\`):** Recommend Intro \`${Boolean(bespokeDna.introAnd3dDecision.recommendIntroVideo)}\` (\`${bespokeDna.introChoreographyId}\`) | 3D/Shader \`${bespokeDna.introAnd3dDecision.forged3dMode}\`
+- **Intra-Category Morphological Divergence Score:** \`${bespokeDna.morphologicalDivergenceScore}\` (Mandatory Floor \`>= 0.70\`)
+- **Birkhoff Aesthetic Harmony Score ($M = O / C$):** \`${bespokeDna.aestheticHarmonyScore}\` (Mandatory Floor \`>= 0.85\`)
+`;
+
   const brandLockSectionMarkdown = `## Brand Identity Lock (\`BRAND_IDENTITY_LOCK.json\`)
 
 - **Brand Identity Mode:** \`${brandMode}\` (\`lockClientPalette: ${lockPalette}\`)
@@ -781,6 +808,14 @@ export function compileSpecFromInterview(slug = 'agencia-alfa', options = {}) {
 
   if (fs.existsSync(designPath)) {
     let existingDesign = fs.readFileSync(designPath, 'utf8');
+    if (existingDesign.includes('## Brand DNA Vector & Bespoke Morphology')) {
+      existingDesign = existingDesign.replace(
+        /## Brand DNA Vector & Bespoke Morphology[\s\S]*?(?=\n## |\s*$)/,
+        brandDnaSectionMarkdown.trim()
+      );
+    } else {
+      existingDesign = existingDesign.trimEnd() + '\n\n' + brandDnaSectionMarkdown;
+    }
     if (existingDesign.includes('## Brand Identity Lock')) {
       existingDesign = existingDesign.replace(
         /## Brand Identity Lock[\s\S]*?(?=\n## |\s*$)/,
@@ -806,6 +841,8 @@ industryArchetype: "${b1.industryArchetype}"
 brandIdentityMode: "${brandMode}"
 lockClientPalette: ${lockPalette}
 borderRadiusPx: ${b4.borderRadiusPx}
+morphologicalDivergenceScore: ${bespokeDna.morphologicalDivergenceScore}
+aestheticHarmonyScore: ${bespokeDna.aestheticHarmonyScore}
 ---
 
 # DESIGN.md — Sistema Visual y Psicoacústico (\`${slug}\`)
@@ -819,6 +856,7 @@ borderRadiusPx: ${b4.borderRadiusPx}
 - **Personality:** ${b4.typographyPersonality}
 - **Fluid Scale:** \`clamp(1rem, 0.92rem + 0.4vw, 1.25rem)\`
 
+${brandDnaSectionMarkdown}
 ${brandLockSectionMarkdown}
 ${sonicSectionMarkdown}`;
     fs.writeFileSync(designPath, freshDesign, 'utf8');

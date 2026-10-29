@@ -1,0 +1,37 @@
+{
+  "schemaVersion": "2026.36.2",
+  "minDivergenceThreshold": 0.7,
+  "minHarmonyScore": 0.85,
+  "updatedAt": "2026-10-29T15:22:18.602Z",
+  "projects": {
+    "agencia-alfa": {
+      "projectSlug": "agencia-alfa",
+      "industryCategory": "saas",
+      "archetypeId": "b2b-saas-platform",
+      "registeredAt": "2026-10-29T15:22:18.601Z",
+      "morphologicalDivergenceScore": 1,
+      "aestheticHarmonyScore": 0.99,
+      "brandDnaVector": {
+        "gridTopology": "tufte-high-density-data",
+        "heroArchitecture": "minimalist-high-trust-authority",
+        "componentMorphology": {
+          "nav": "floating-island-bar",
+          "corner": "6px-tecnico",
+          "material": "deep-obsidian-specular"
+        },
+        "gamutMaskType": "atmospheric-analogous",
+        "fontPairingProfile": "literary-salon-spectral-rubik",
+        "motionPhysicsCriteria": {
+          "transitionPhysics": "crisp-editorial-snap",
+          "dampingRatioZeta": 1,
+          "stiffness": 380,
+          "damping": 39,
+          "durationMs": 150,
+          "easingCss": "cubic-bezier(0.22, 1, 0.36, 1)",
+          "scrollChoreography": "vector-mask-reveal"
+        },
+        "introChoreographyId": "intro-split-circle-881e0a"
+      }
+    }
+  }
+}

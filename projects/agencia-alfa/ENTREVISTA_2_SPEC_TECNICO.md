@@ -32,7 +32,9 @@
 - **Semilla de Colores del Cliente:** Primario `#2563EB`, Secundario `#0F172A`, Acento `#10B981`
 - **Piso de Contraste `APCA`:** Lc >= 90 (Hero/Headline), Lc >= 75 (Body), Lc >= 60 (Secondary) | **Tipografía:** 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif
 
-## Bloque 5 — Física de Animaciones, Scroll y Micro-Interacciones a 60 FPS
+## Bloque 5 — Dirección Estética, Personalidad Diferenciadora y Física Cinética a 60 FPS
+- **Eje de Tensión de Personalidad (`brandPersonalityTension`):** `minimalismo-silencioso vs expresividad-cinetica`
+- **Modo de Selección Morfológica (`morphologySelectionMode`):** `auto-bespoke-criteria` (Garantía de 0 repetición intra-categoría frente a proyectos previos)
 - **Nivel de Animación:** `spring-fluid-60fps` ($zeta = 0.78$, `stiffness: 280, damping: 24`)
 - **Scroll-Driven CSS & View Transitions API:** `scroll=true`, `viewTransitions=true`, `reducedMotion=true`
 

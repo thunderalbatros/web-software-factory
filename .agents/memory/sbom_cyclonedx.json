@@ -1,10 +1,10 @@
 {
   "bomFormat": "CycloneDX",
   "specVersion": "1.5",
-  "serialNumber": "urn:uuid:4a4bfdd0-95f9-460b-b544-e759ec8e1110",
+  "serialNumber": "urn:uuid:b30499a5-2cc6-4249-99ae-bd9cd0e1b22f",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-10-29T14:54:58.375Z",
+    "timestamp": "2026-10-29T15:22:46.133Z",
     "tools": [
       {
         "vendor": "Web Software Factory Studio",
