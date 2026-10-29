@@ -1,0 +1,21 @@
+{
+  "schema": "subagent-stop-handoff-v2026.10",
+  "runId": "run-mvs86q95",
+  "waveNumber": "2A",
+  "role": "ux-designer",
+  "status": "PASS",
+  "timestamp": "2026-10-28T14:44:26.629Z",
+  "summary": "Wave 2A (ux-designer -> dtcg_token_compiler): PASS in 123ms",
+  "durationMs": 123,
+  "retryRoundsUsed": 0,
+  "upstreamPointers": [
+    ".agents/runs/run-mvs86q95/wave-1-orchestrator.json",
+    ".agents/runs/run-mvs86q95/wave-1-product-spec-architect.json",
+    ".agents/runs/run-mvs86q95/wave-1-tech-scout.json"
+  ],
+  "metrics": {
+    "passed": true,
+    "durationMs": 123,
+    "retryRoundsUsed": 0
+  }
+}

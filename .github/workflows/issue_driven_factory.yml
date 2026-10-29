@@ -1,0 +1,316 @@
+name: Issue-Driven Remote Factory (Stripe Minions Pattern & NHI Bot)
+
+# OWASP GitHub Actions Security Cheat Sheet & Zizmor Hardened Workflow:
+# - Triggered by Issue Labels (`ready-to-spec` / `ready-to-implement`) or manual `workflow_dispatch`
+# - Enforces `persist-credentials: false` on every `actions/checkout`
+# - Explicit least-privilege `permissions:` per job
+# - Passes all untrusted Issue fields exclusively via `env:` (Zero `${{ ... }}` injection in `run:`)
+# - Enforces hard ceiling of maximum 2 autonomous retry rounds (`MAX_SELF_HEALING_RETRY_ROUNDS = 2`)
+# - Non-Human Identity (NHI) opens PR on `factory/<slug>` without auto-merge
+on:
+  issues:
+    types:
+      - labeled
+  workflow_dispatch:
+    inputs:
+      action_mode:
+        description: 'Execution stage: ready-to-spec or ready-to-implement'
+        required: true
+        default: 'ready-to-spec'
+        type: choice
+        options:
+          - ready-to-spec
+          - ready-to-implement
+      project_slug:
+        description: 'Project slug (e.g. saas-nexus)'
+        required: true
+        default: 'agencia-alfa'
+        type: string
+      issue_title:
+        description: 'Project title (when triggered manually)'
+        required: false
+        default: 'Sitio Web SaaS B2B de Alta Conversión'
+        type: string
+      issue_body:
+        description: 'Project specification details (when triggered manually)'
+        required: false
+        default: 'Landing page B2B con tokens OKLCH, Bento Grid y Cloudflare Workers.'
+        type: string
+
+permissions: {}
+
+jobs:
+  spec-from-issue:
+    name: Stage 1 (ready-to-spec) — Scaffold Project & Generate Spec-Kit Blueprint
+    if: >-
+      (github.event_name == 'issues' && github.event.label.name == 'ready-to-spec') ||
+      (github.event_name == 'workflow_dispatch' && inputs.action_mode == 'ready-to-spec')
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - name: 1. Checkout Repository (Zero Credential Persistence)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: 2. Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: 3. Install Dependencies
+        run: |
+          npm ci
+
+      - name: 4. Sanitize Issue Context, Scaffold Project & Generate SPEC.md
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number || '' }}
+          RAW_ISSUE_TITLE: ${{ github.event.issue.title || inputs.issue_title }}
+          RAW_ISSUE_BODY: ${{ github.event.issue.body || inputs.issue_body }}
+          MANUAL_SLUG: ${{ inputs.project_slug || '' }}
+        run: |
+          node -e '
+            const fs = require("node:fs");
+            const path = require("node:path");
+            const { execFileSync } = require("node:child_process");
+
+            const rawTitle = String(process.env.RAW_ISSUE_TITLE || "").trim();
+            const rawBody = String(process.env.RAW_ISSUE_BODY || "").trim();
+            const manualSlug = String(process.env.MANUAL_SLUG || "").trim();
+
+            const slugBase = manualSlug || rawTitle;
+            const slug = slugBase
+              .toLowerCase()
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")
+              .replace(/[^a-z0-9]+/g, "-")
+              .replace(/(^-|-$)/g, "")
+              .slice(0, 36) || "proyecto-issue";
+
+            const hasEnoughContext = rawTitle.length >= 4 && rawBody.length >= 12;
+            if (!hasEnoughContext) {
+              fs.writeFileSync(".agents/memory/issue_spec_status.json", JSON.stringify({
+                slug,
+                nextLabel: "needs-info",
+                commentBody: "⚠️ **Falta contexto crítico (`needs-info`):** Por favor detallá el objetivo comercial, público objetivo y estilo visual deseado en la descripción del Issue antes de volver a aplicar `ready-to-spec`."
+              }, null, 2));
+              process.exit(0);
+            }
+
+            const projDir = path.join("projects", slug);
+            if (!fs.existsSync(projDir)) {
+              execFileSync(process.execPath, [
+                "tools/factory.mjs",
+                "new",
+                slug,
+                "--stack",
+                "vanilla-edge",
+                "--archetype",
+                "saas-b2b",
+                "--style",
+                "linear-style"
+              ], { stdio: "inherit" });
+            }
+
+            execFileSync(process.execPath, [
+              "tools/factory.mjs",
+              "spec",
+              rawTitle.slice(0, 120),
+              rawBody.slice(0, 1000),
+              "--project",
+              slug
+            ], { stdio: "inherit" });
+
+            const specPath = path.join(projDir, ".specify", "SPEC.md");
+            const specPreview = fs.existsSync(specPath)
+              ? fs.readFileSync(specPath, "utf8").slice(0, 1800)
+              : "SPEC.md generado correctamente.";
+
+            fs.writeFileSync(".agents/memory/issue_spec_status.json", JSON.stringify({
+              slug,
+              nextLabel: "wait-to-implement",
+              commentBody: `✅ **Plano Técnico Generado (\`projects/${slug}/.specify/SPEC.md\`)**\n\nEstado actualizado a \`wait-to-implement\`. Cuando apruebes este plano, aplicá la etiqueta **\`ready-to-implement\`** para que el equipo de agentes construya el sitio y abra el Pull Request.\n\n---\n\n${specPreview}`
+            }, null, 2));
+          '
+
+      - name: 5. Comment Blueprint & Transition Issue Labels
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number || '' }}
+        run: |
+          node -e '
+            const fs = require("node:fs");
+            const { execFileSync } = require("node:child_process");
+            const status = JSON.parse(fs.readFileSync(".agents/memory/issue_spec_status.json", "utf8"));
+            if (process.env.GITHUB_STEP_SUMMARY) {
+              fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, status.commentBody + "\n", "utf8");
+            }
+            const issueNum = String(process.env.ISSUE_NUMBER || "").trim();
+            if (issueNum && /^\d+$/.test(issueNum)) {
+              try {
+                execFileSync("gh", ["issue", "comment", issueNum, "--body", status.commentBody], { stdio: "inherit" });
+                execFileSync("gh", ["issue", "edit", issueNum, "--remove-label", "ready-to-spec", "--add-label", status.nextLabel], { stdio: "inherit" });
+              } catch (err) {
+                console.warn("Label update warning:", err.message);
+              }
+            }
+          '
+
+  implement-from-issue:
+    name: Stage 2 (ready-to-implement) — Stripe Minions Build (Max 2 Retries) & NHI PR
+    if: >-
+      (github.event_name == 'issues' && github.event.label.name == 'ready-to-implement') ||
+      (github.event_name == 'workflow_dispatch' && inputs.action_mode == 'ready-to-implement')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+
+    steps:
+      - name: 1. Checkout Repository (Zero Credential Persistence)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: 2. Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+
+      - name: 3. Install Dependencies & Playwright Chromium
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+
+      - name: 4. Execute Agent Squad with Deterministic 2-Retry Ceiling (Stripe Minions Pattern)
+        env:
+          RAW_ISSUE_TITLE: ${{ github.event.issue.title || inputs.issue_title }}
+          MANUAL_SLUG: ${{ inputs.project_slug || '' }}
+        run: |
+          node -e '
+            const fs = require("node:fs");
+            const path = require("node:path");
+            const { execFileSync } = require("node:child_process");
+
+            const manualSlug = String(process.env.MANUAL_SLUG || "").trim();
+            const rawTitle = String(process.env.RAW_ISSUE_TITLE || "").trim();
+            let slug = (manualSlug || rawTitle)
+              .toLowerCase()
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")
+              .replace(/[^a-z0-9]+/g, "-")
+              .replace(/(^-|-$)/g, "")
+              .slice(0, 36) || "agencia-alfa";
+
+            if (!fs.existsSync(path.join("projects", slug))) {
+              slug = "agencia-alfa";
+            }
+
+            const MAX_RETRIES = 2;
+            let attempt = 0;
+            let passed = false;
+            let lastError = "";
+
+            while (attempt <= MAX_RETRIES) {
+              try {
+                execFileSync(process.execPath, ["tools/factory.mjs", "build", "--project", slug], { stdio: "inherit" });
+                execFileSync(process.execPath, ["tools/orchestrator/agent_squad.mjs"], { stdio: "inherit" });
+                execFileSync(process.execPath, ["tools/security_gate.mjs"], { stdio: "inherit" });
+                execFileSync(process.execPath, ["tools/intelligence/eval_matrix.mjs"], { stdio: "inherit" });
+                passed = true;
+                break;
+              } catch (err) {
+                lastError = err.message || String(err);
+                attempt += 1;
+              }
+            }
+
+            const classification = passed
+              ? "success"
+              : attempt > MAX_RETRIES
+              ? "blocked"
+              : "defective";
+
+            const outcome = {
+              slug,
+              passed,
+              classification,
+              allowedClassifications: ["success", "defective", "blocked", "manual"],
+              retriesUsed: Math.min(attempt, MAX_RETRIES),
+              maxRetryCeiling: MAX_RETRIES,
+              score: passed ? 100.0 : 0.0,
+              lastError
+            };
+
+            fs.writeFileSync(".agents/memory/minion_issue_verdict.json", JSON.stringify(outcome, null, 2));
+            console.log("[STRIPE-MINIONS-VERDICT]", JSON.stringify(outcome));
+            if (!passed) {
+              process.exit(1);
+            }
+          '
+
+      - name: 5. Open Non-Human Identity (NHI) Pull Request Without Auto-Merge
+        if: always()
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_NUMBER: ${{ github.event.issue.number || '' }}
+        run: |
+          node -e '
+            const fs = require("node:fs");
+            const { execFileSync } = require("node:child_process");
+            if (!fs.existsSync(".agents/memory/minion_issue_verdict.json")) process.exit(0);
+            const verdict = JSON.parse(fs.readFileSync(".agents/memory/minion_issue_verdict.json", "utf8"));
+            const summaryMd = [
+              `## 🤖 Reporte NHI Stripe Minions — Proyecto \`${verdict.slug}\``,
+              `- **Clasificación Final:** \`${verdict.classification}\` (Permitidos: \`success | defective | blocked | manual\`)`,
+              `- **Puntaje Hard-Gated:** \`${verdict.score.toFixed(1)} / 100.0\``,
+              `- **Rondas de Auto-Reparación Usadas:** \`${verdict.retriesUsed} / ${verdict.maxRetryCeiling}\``,
+              `- **Política de Gobernanza:** Aprobación exclusiva del CTO requerida (Auto-Merge bloqueado).`
+            ].join("\n");
+
+            if (process.env.GITHUB_STEP_SUMMARY) {
+              fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, summaryMd + "\n", "utf8");
+            }
+
+            if (verdict.classification === "success" && verdict.score === 100) {
+              const branchName = `factory/${verdict.slug}`;
+              execFileSync("git", ["config", "user.name", "WebFactory Minion NHI Bot"], { stdio: "inherit" });
+              execFileSync("git", ["config", "user.email", "nhi-bot@webfactory.local"], { stdio: "inherit" });
+              execFileSync("git", ["checkout", "-B", branchName], { stdio: "inherit" });
+              execFileSync("git", ["add", `projects/${verdict.slug}`, ".agents/memory/"], { stdio: "inherit" });
+              try {
+                execFileSync("git", ["commit", "-m", `feat(${verdict.slug}): entrega verificada 100/100 por NHI Minion`], { stdio: "inherit" });
+                const repo = process.env.GITHUB_REPOSITORY;
+                const token = process.env.GITHUB_TOKEN;
+                if (repo && token) {
+                  execFileSync("git", ["push", "-f", `https://x-access-token:${token}@github.com/${repo}.git`, branchName], { stdio: "inherit" });
+                  execFileSync("gh", [
+                    "pr",
+                    "create",
+                    "--base",
+                    "main",
+                    "--head",
+                    branchName,
+                    "--title",
+                    `[NHI Factory] Entrega 100/100: ${verdict.slug}`,
+                    "--body",
+                    summaryMd
+                  ], { stdio: "inherit" });
+                }
+              } catch (e) {
+                console.log("No new diff to push or PR already exists:", e.message);
+              }
+            }
+          '

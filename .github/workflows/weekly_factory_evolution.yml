@@ -1,5 +1,10 @@
 name: Weekly Factory Autonomous Evolution (Monday 08:00 AM Argentina)
 
+# OWASP GitHub Actions Security Cheat Sheet & Zizmor Hardened Workflow:
+# - Strictly prohibits `pull_request_target`, `workflow_run` and `secrets: inherit`
+# - Enforces `persist-credentials: false` on checkout
+# - Enforces explicit minimal `permissions:` on workflow and job
+# - Zero `${{ ... }}` expression interpolation inside `run:` blocks
 on:
   schedule:
     # 11:00 UTC every Monday = 08:00 AM UTC-3 (America/Argentina/Buenos_Aires)
@@ -12,20 +17,22 @@ on:
         default: 'true'
         type: string
 
-permissions:
-  contents: write
+permissions: {}
 
 jobs:
   weekly-evolution-and-cto-briefing:
     name: SOTA Evolution, Hard-Gated 100/100 QA & CTO Email Dispatch
     runs-on: ubuntu-latest
     timeout-minutes: 25
+    permissions:
+      contents: write
 
     steps:
-      - name: 1. Checkout Repository
+      - name: 1. Checkout Repository (Zero Credential Persistence)
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       - name: 2. Setup Node.js 24 (ESM + Built-in SQLite)
         uses: actions/setup-node@v4
@@ -42,10 +49,17 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CTO_EMAIL_TO: ${{ secrets.CTO_EMAIL_TO || 'tomasbermudez777@gmail.com' }}
+          FULL_RAG_REBUILD_INPUT: ${{ inputs.full_rag_rebuild || 'false' }}
         run: |
           node tools/intelligence/weekly_cron_evolver.mjs --no-email
 
-      - name: 5. Dispatch Weekly Executive Report to tomasbermudez777@gmail.com
+      - name: 5. Enforce Security Gate & Held-In Regression Tasks Verification
+        run: |
+          node tools/audit/workflow_security_linter.mjs
+          node tools/security_gate.mjs
+          node -e "const fs = require('node:fs'); const data = JSON.parse(fs.readFileSync('.agents/memory/held_in_regression_tasks.json', 'utf8')); if (!Array.isArray(data.tasks) || data.tasks.length === 0 || !data.tasks.every(t => t.status === 'ACTIVE' && t.lastVerifiedStatus === 'PASS')) { console.error('Regression task check failed in held_in_regression_tasks.json'); process.exit(1); }"
+
+      - name: 6. Dispatch Weekly Executive Report to tomasbermudez777@gmail.com
         env:
           CTO_EMAIL_TO: ${{ secrets.CTO_EMAIL_TO || 'tomasbermudez777@gmail.com' }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
@@ -55,8 +69,10 @@ jobs:
         run: |
           node tools/intelligence/weekly_email_notifier.mjs
 
-      - name: 6. Commit & Push Verified Knowledge, Memory & Weekly Report
+      - name: 7. Commit & Push Verified Knowledge, Memory & Weekly Report
         if: success()
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "WebFactory Autonomous Evolver"
           git config user.email "tomasbermudez777@gmail.com"
@@ -65,5 +81,5 @@ jobs:
             echo "No changes to commit."
           else
             git commit -m "chore(weekly-evolution): actualización automática SOTA y reporte CTO [skip ci]"
-            git push
+            git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:${GITHUB_REF_NAME}
           fi

@@ -117,7 +117,7 @@ const BILINGUAL_THESAURUS = [
   { match: /\b(marketing|conversion|conversión|cro|copywriting|copy|titular|cta|persuasion|persuasión|aversion|pérdida|nudge|fogg|psicologia|psicología)\b/i, expand: 'CANON_GAMIFICATION_PSYCHOLOGY_CRO_AND_STREAM_MARKETING_2026 nudge_thaler_sunstein cialdini social proof scarcity loss aversion endowed progress book_fogg_behavior_model_bj_fogg CANON_PREDICTABLY_IRRATIONAL_ARIELY_TRAMPAS_DESEO' },
   { match: /\b(seo|aeo|geo|llms\.txt|llms-full|schema\.org|json-ld|sitemap|indexacion|indexación|speculation\s*rules|prerender|cwv|lcp|inp|cls|agentic\s*seo)\b/i, expand: 'skill_ai-seo-and-geo CANON_SOTA_AGENT_TEAM_TOPOLOGY_AND_2026_WEB_STACK_AUDIT CANON_MULTI_BRAND_DESIGN_SYSTEMS_DTCG_STYLE_DICTIONARY_AND_ARCHETYPES_2026 llms.txt llms-full.txt speculationrules json-ld lcp inp cls web-quality-skills' },
   { match: /\b(animacion|animaciones|animación|fluidez|60fps|60-fps|escala|modal|kowalski|spring|gpu|game\s*feel|bezier|swink|kirupa|view\s*transitions|scroll-driven)\b/i, expand: 'CANON_EMIL_KOWALSKI_ANIMATIONS_ON_THE_WEB CANON_VISUAL_SOTA_HUNT_2026-10-24 CANON_BOOK_DESIGNING_FOR_PERFORMANCE_LARA_HOGAN modal entrance scale 0.95 composite transform opacity waapi view-transition creating_web_animations_kirupa book_game_feel_steve_swink' },
-  { match: /\b(shader|shaders|glsl|holografico|holográfico|3d|tilt|audio|webaudio|zzfx|webgl|webgpu)\b/i, expand: 'CANON_2D_3D_GRAPHICS_SHADERS_AND_AESTHETICS_2026 CANON_OPEN_BOOKS_SHADERS_SDF_AND_WEB_ANIMATION_MASTERY_2026 glsl sdf dynamicscompressor zzfx CANON_3D_PBR_AND_CINEMATOGRAPHY_GUIDE' },
+  { match: /\b(shader|shaders|glsl|holografico|holográfico|3d|tilt|audio|webaudio|zzfx|webgl|webgpu|psicoacustica|psicoacústica|modal|biquad|lufs|ebu|r128|synchresis|sincresis|tonejs|strudel|bouba|kiki)\b/i, expand: 'CANON_ATOMIC_PSYCHOACOUSTICS_PROCEDURAL_DSP_AND_AUDIOVISUAL_SYNCHRESIS_2026 CANON_2D_3D_GRAPHICS_SHADERS_AND_AESTHETICS_2026 CANON_OPEN_BOOKS_SHADERS_SDF_AND_WEB_ANIMATION_MASTERY_2026 glsl sdf dynamicscompressor zzfx biquadfilternode lufs iso 226 CANON_3D_PBR_AND_CINEMATOGRAPHY_GUIDE' },
   { match: /\b(ciberseguridad|seguridad|vulnerabilidad|vulnerabilidades|xss|csp|dompurify|trustedtypes|oauth|pkce|fraude|bot|criptografia|criptografía|owasp)\b/i, expand: 'CANON_CYBERSECURITY_DEVSECOPS_2026 CYBERSECURITY_MASTER_PROTOCOL ANTI_BOT_STEALTH_GUIDE owasp asvs xss dompurify trustedtypes csp oauth 2.1 pkce thumbmarkjs turnstile CANON_REAL_WORLD_CRYPTOGRAPHY_DAVID_WONG' },
   { match: /\b(libro|libros|curso|cursos|documentacion|documentación|catalogo|catálogo|fuentes)\b/i, expand: 'CURATED_MASTER_BOOKS_COURSES_AND_DOCS_CATALOG_2026 CANON_SOFTWARE_FACTORY_CURRICULUM_BOOKS_PAPERS_AND_VIDEO_COURSES_2026 CANON_BOOKS_SOFTWARE_FACTORIES_AND_AI_ENGINEERING' },
   { match: /\b(suiza|proporcion|proporción|aurea|áurea|bringhurst|tipografia|tipografía)\b/i, expand: 'book_elements_of_typographic_style_bringhurst CANON_CLEAN_ROOM_SWISS_TYPOGRAPHY_COLOR_LIGHT_AND_CSS_SECRETS_2026 CANON_OPEN_BOOKS_TYPOGRAPHY_COLOR_GRIDS_AND_WEB_PERF_2026' },
@@ -267,6 +267,10 @@ function createDocumentChunks(filePath) {
     'CANON_EMIL_KOWALSKI_ANIMATIONS_ON_THE_WEB',
     'CANON_2D_3D_GRAPHICS_SHADERS_AND_AESTHETICS_2026',
     'CANON_HOLO_SHADERS_3D_PACK_CHOREOGRAPHY_AND_WEBAUDIO_SFX_2026',
+    'CANON_ATOMIC_PSYCHOACOUSTICS_PROCEDURAL_DSP_AND_AUDIOVISUAL_SYNCHRESIS_2026',
+    'CANON_OFFICIAL_DOCS_THREE_R186_SPARK_DIORAMAS_BLENDER_MCP_AND_GLTF_2026',
+    'CANON_OFFICIAL_DOCS_HARNESS2_GEPA_OPENSPACE_HEADROOM_COCOINDEX_AND_CODEMODE_2026',
+    'CANON_OFFICIAL_DOCS_POSTGRES_RLS_CIS_ORY_ZANZIBAR_GCP_KMS_AND_ZIZMOR_2026',
     'CANON_EVERY_LAYOUT_CSS_ALGORITHMS',
     'CANON_UX_HUMAN_EXPERIENCE_ACCESSIBILITY_2026',
     'CANON_CYBERSECURITY_DEVSECOPS_2026',
@@ -531,6 +535,7 @@ function buildOrOpenSqliteFts5Index(chunks, forceRebuild = false) {
     }
     db.exec('COMMIT');
     try { db.exec("INSERT INTO chunks_fts(chunks_fts) VALUES('optimize');"); } catch (_) {}
+    try { db.exec('PRAGMA wal_checkpoint(TRUNCATE);'); } catch (_) {}
     cachedSqliteDb = db;
     return db;
   } catch (_) {
@@ -634,17 +639,22 @@ export function getOrBuildMiniSearchIndex(force = false) {
     return cachedIndex;
   }
 
-  if (!force && fs.existsSync(CACHE_FILE)) {
+  // Clean up legacy duplicate 248MB JSON cache if present (Priority 4 Forensic Audit)
+  if (fs.existsSync(CACHE_FILE)) {
+    try { fs.unlinkSync(CACHE_FILE); } catch (_) {}
+  }
+
+  if (!force && DatabaseSyncClass && fs.existsSync(SQLITE_FTS_FILE)) {
     try {
-      const stats = fs.statSync(CACHE_FILE);
+      const stats = fs.statSync(SQLITE_FTS_FILE);
       if (now - stats.mtimeMs < 30 * 24 * 3_600_000) {
-        const raw = fs.readFileSync(CACHE_FILE, 'utf8');
-        const chunks = JSON.parse(raw);
-        if (Array.isArray(chunks) && chunks.length > 0 && chunks.length < 150000) {
-          const mini = buildMiniSearchInstance(chunks);
-          const sqliteDb = buildOrOpenSqliteFts5Index(chunks, false);
-          const chunkMap = buildChunkMap(chunks);
-          cachedIndex = { mini, sqliteDb, chunks, chunkMap };
+        const sqliteDb = cachedSqliteDb || new DatabaseSyncClass(SQLITE_FTS_FILE);
+        const rows = sqliteDb.prepare('SELECT id, source, category, snippet, title, section, text FROM chunks_fts').all();
+        if (Array.isArray(rows) && rows.length > 0 && rows.length < 150000) {
+          cachedSqliteDb = sqliteDb;
+          const mini = buildMiniSearchInstance(rows);
+          const chunkMap = buildChunkMap(rows);
+          cachedIndex = { mini, sqliteDb, chunks: rows, chunkMap };
           lastIndexTime = now;
           return cachedIndex;
         }
@@ -674,13 +684,6 @@ export function getOrBuildMiniSearchIndex(force = false) {
       } catch (_) {}
     }
   }
-
-  try {
-    if (!fs.existsSync(CACHE_DIR)) {
-      fs.mkdirSync(CACHE_DIR, { recursive: true });
-    }
-    fs.writeFileSync(CACHE_FILE, JSON.stringify(allChunks), 'utf8');
-  } catch (_) {}
 
   const mini = buildMiniSearchInstance(allChunks);
   const sqliteDb = buildOrOpenSqliteFts5Index(allChunks, true);

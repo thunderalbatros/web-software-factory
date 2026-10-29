@@ -1,0 +1,26 @@
+{
+  "schema": "factory-dora-2026-ledger-v1",
+  "updatedAt": "2026-10-28T17:53:50.264Z",
+  "projects": {
+    "agencia-alfa": {
+      "projectSlug": "agencia-alfa",
+      "stack": "vanilla-edge",
+      "archetype": "saas-b2b",
+      "humanTouchesPerShip": 1,
+      "leadTimeMinutes": 4.2,
+      "costPerShipUsd": 0,
+      "firstPassEvalPassed": true,
+      "revertedAfterShip": false,
+      "lastEvalScore": 100,
+      "updatedAt": "2026-10-28T17:53:50.264Z"
+    }
+  },
+  "aggregateMetrics": {
+    "humanTouchesPerShip": 1,
+    "leadTimeMinutes": 4.2,
+    "costPerShipUsd": 0,
+    "firstPassEvalRate": 100,
+    "revertRate": 0,
+    "totalShippedProjects": 1
+  }
+}

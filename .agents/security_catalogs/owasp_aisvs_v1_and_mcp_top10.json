@@ -1,0 +1,171 @@
+{
+  "schema": "owasp-aisvs-v1.0-and-mcp-top10-catalog",
+  "version": "2026.10",
+  "epistemicTier": "TIER_1_SOTA_2026",
+  "aisvsChapters": [
+    {
+      "chapter": "C1",
+      "title": "Training & RAG Data Governance",
+      "requirement": "Classify RAG corpus into Epistemic Tiers (TIER_1_SOTA_2026 x1.35, TIER_2_TIMELESS_PRINCIPLES x1.15, TIER_3_LEGACY_SYNTAX_GUARD) and sanitize ingested documents."
+    },
+    {
+      "chapter": "C2",
+      "title": "Prompt & Context Boundary Isolation",
+      "requirement": "Separate trusted system instructions from untrusted external data fragments using strict structural delimiters and indirect prompt-override filters (Greshake et al. defense)."
+    },
+    {
+      "chapter": "C3",
+      "title": "Model & Agent Access Control",
+      "requirement": "Enforce sub-millisecond (<0.1ms) Creator-Verifier role separation across Wave 1 (Spec), Wave 2 (Builders), Wave 3A (Read-Only Verifier), and Wave 3B (DevSecOps)."
+    },
+    {
+      "chapter": "C4",
+      "title": "Input & Schema Validation",
+      "requirement": "Require additionalProperties: false on every MCP tool inputSchema and reject unauthorized x-mcp-header metadata."
+    },
+    {
+      "chapter": "C5",
+      "title": "Output Handling & Sanitization",
+      "requirement": "Encode and validate model outputs before DOM rendering or shell/SQL invocation; block raw eval or unparameterized queries."
+    },
+    {
+      "chapter": "C6",
+      "title": "Memory & State Integrity (ASI06)",
+      "requirement": "Scan RAG chunks and temporal memory ledgers for poisoning patterns before context assembly; isolate sealed-envelope evals."
+    },
+    {
+      "chapter": "C7",
+      "title": "Tool & Plugin Security",
+      "requirement": "Verify cryptographic tool schemas, enforce Audience Validation (urn:web-software-factory:mcp-gateway:2026), and block unregistered Shadow MCP servers."
+    },
+    {
+      "chapter": "C8",
+      "title": "Human-in-the-Loop (HITL) Governance",
+      "requirement": "Mandate explicit HITL confirmation before production deployments, D1/Postgres schema drops, or secret rotations."
+    },
+    {
+      "chapter": "C9",
+      "title": "Supply Chain & Model Provenance",
+      "requirement": "Pin exact dependency versions in approved_packages.json, generate CycloneDX SBOMs, and sign agent snapshots with Ed25519 (agentvcs)."
+    },
+    {
+      "chapter": "C10",
+      "title": "Autonomous Loop & FinOps Containment",
+      "requirement": "Cap self-healing retries at 2 rounds (Stripe Minions circuit breaker) and enforce the $1.50 USD/day FinOps shield."
+    },
+    {
+      "chapter": "C11",
+      "title": "Privacy & PII Protection (ASI09)",
+      "requirement": "Apply Presidio-pattern PII redaction on all outbound prompts, logs, and MCP responses."
+    },
+    {
+      "chapter": "C12",
+      "title": "Adversarial Evaluation & Red Teaming",
+      "requirement": "Continuously verify agents against held-out sealed-envelope suites and 18/18 SARIF v2.1.0 MCP protocol audits."
+    }
+  ],
+  "llmTop10": [
+    {
+      "id": "LLM01:2025",
+      "name": "Prompt Override & Goal Manipulation",
+      "mitigation": "Semantic boundary sanitization + Blind Independent Foreman review (vercel-labs/eve pattern)."
+    },
+    {
+      "id": "LLM02:2025",
+      "name": "Sensitive Information Disclosure",
+      "mitigation": "Presidio PII redactor + EnvelopeEncryptionEngine AES-256-GCM + .agents/sealed_envelope_evals/ block."
+    },
+    {
+      "id": "LLM03:2025",
+      "name": "Supply Chain Vulnerabilities",
+      "mitigation": "approved_packages.json allowlist + anti-slopsquatting guard + CycloneDX SBOM."
+    },
+    {
+      "id": "LLM04:2025",
+      "name": "Data and Model Poisoning",
+      "mitigation": "Forensic RAG sanitizer + epistemic authority weighting + memory poisoning detector (ASI06)."
+    },
+    {
+      "id": "LLM05:2025",
+      "name": "Improper Output Handling",
+      "mitigation": "Symbolic AST Guard (<500ms) + parameterized SQL ($1, $2) + strict CSP."
+    },
+    {
+      "id": "LLM06:2025",
+      "name": "Excessive Agency",
+      "mitigation": "Creator-Verifier Wave split + Read-Only Git/SQL connectors for qa-auditor + mandatory HITL gate."
+    },
+    {
+      "id": "LLM07:2025",
+      "name": "System Prompt Leakage",
+      "mitigation": "Immutable SHA-256 Constitution Guard + outbound token/prompt redaction."
+    },
+    {
+      "id": "LLM08:2025",
+      "name": "Vector and Embedding Weaknesses",
+      "mitigation": "Project-scoped RAG quarantine filter + RRF hybrid lexical/semantic verification."
+    },
+    {
+      "id": "LLM09:2025",
+      "name": "Misinformation & Hallucination",
+      "mitigation": "Context7 live versioned docs + official_docs_harvester.mjs TIER_1 canons + CoVe verification."
+    },
+    {
+      "id": "LLM10:2025",
+      "name": "Unbounded Consumption",
+      "mitigation": "Headroom CCR reversible compression + >1,200 token disk spillover + $1.50 USD/day FinOps cap."
+    }
+  ],
+  "mcpTop10": [
+    {
+      "id": "MCP01:2025",
+      "name": "Insecure Tool Schema & Parameter Pollution",
+      "ruleRef": "MCP-01 / MCP-03"
+    },
+    {
+      "id": "MCP02:2025",
+      "name": "Header Spoofing & Audience Confusion",
+      "ruleRef": "MCP-02 / MCP-05 / MCP-17"
+    },
+    {
+      "id": "MCP03:2025",
+      "name": "Predictable Session Identifiers",
+      "ruleRef": "MCP-04 (CSPRNG crypto.randomUUID / randomBytes)"
+    },
+    {
+      "id": "MCP04:2025",
+      "name": "Shadow MCP Servers & Tool Poisoning",
+      "ruleRef": "MCP-06 / MCP-16"
+    },
+    {
+      "id": "MCP05:2025",
+      "name": "Unapproved Infrastructure Mutation",
+      "ruleRef": "MCP-07 (Mandatory HITL Gate)"
+    },
+    {
+      "id": "MCP06:2025",
+      "name": "Creator-Verifier Privilege Escalation",
+      "ruleRef": "MCP-08 / MCP-09 (Sealed-Envelope Isolation)"
+    },
+    {
+      "id": "MCP07:2025",
+      "name": "Unrestricted Database & VCS Mutation",
+      "ruleRef": "MCP-10 (Read-Only Git & SQLite/Postgres Verifier)"
+    },
+    {
+      "id": "MCP08:2025",
+      "name": "Missing Regression Rule Synthesis",
+      "ruleRef": "MCP-11 / MCP-12 (semgrep-mcp & delta-security-scanner)"
+    },
+    {
+      "id": "MCP09:2025",
+      "name": "Unscoped DAST & Unverified NHI Commits",
+      "ruleRef": "MCP-13 / MCP-14"
+    },
+    {
+      "id": "MCP10:2025",
+      "name": "Context Window Exhaustion & Runaway Loops",
+      "ruleRef": "MCP-15 (>1,200 token spillover) / MCP-18 (2-retry circuit breaker)"
+    }
+  ]
+}

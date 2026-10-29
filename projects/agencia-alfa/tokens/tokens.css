@@ -1,0 +1,50 @@
+/**
+ * Multi-Target W3C DTCG 2025.10 + Style Dictionary v4 Compiled CSS Tokens
+ * Industry Archetype: b2b-saas-platform | Surface Mode: Persuade
+ */
+:root {
+  --color-primary: oklch(65% 0.16 250);
+  --color-secondary: oklch(72% 0.12 190);
+  --color-tertiary: oklch(78% 0.15 82);
+  --color-surface: oklch(10% 0.01 255);
+  --color-surface-raised: oklch(14% 0.012 255);
+  --color-surface-deep: oklch(7% 0.008 255);
+  --color-text-primary: oklch(95% 0.006 255);
+  --color-text-secondary: oklch(74% 0.012 255);
+  --color-border-hairline: oklch(85% 0.015 255 / 0.14);
+  --color-success: oklch(68% 0.16 150);
+  --color-warning: oklch(76% 0.15 80);
+  --color-danger: oklch(62% 0.19 25);
+  --space-xs: 8px;
+  --space-sm: 16px;
+  --space-md: 24px;
+  --space-lg: 40px;
+  --space-xl: 64px;
+  --space-2xl: 104px;
+  --radius-none: 0px;
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 12px;
+  --font-display-family: 'Geist', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-display-size: clamp(2.5rem, 4.6vw, 4.4rem);
+  --font-display-weight: 600;
+  --font-display-line-height: 1.05;
+  --font-h1-family: 'Geist', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-h1-size: clamp(2rem, 3.5vw, 3.2rem);
+  --font-h1-weight: 600;
+  --font-h1-line-height: 1.1;
+  --font-h2-family: 'Geist', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-h2-size: clamp(1.4rem, 2.4vw, 2.1rem);
+  --font-h2-weight: 600;
+  --font-h2-line-height: 1.2;
+  --font-body-family: 'Geist', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body-size: 1rem;
+  --font-body-weight: 400;
+  --font-body-line-height: 1.65;
+  --font-mono-family: 'Geist Mono', 'JetBrains Mono', monospace;
+  --font-mono-size: 0.8125rem;
+  --font-mono-weight: 500;
+  --font-mono-line-height: 1.45;
+  --touch-target-min: 48px;
+}

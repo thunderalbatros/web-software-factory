@@ -17,6 +17,7 @@ import {
   TRANSLATION_RULE_WARNING,
   LEGACY_TECH_REPLACEMENT_TABLE
 } from './rag_library_sanitizer.mjs';
+import { loadProjectConfig } from '../lib/project_loader.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -280,19 +281,108 @@ export function classifyQueryEpistemicIntent(query = '') {
 }
 
 /**
- * 3-Way Reciprocal Rank Fusion (RRF, k=60) + `rerank-ts` Epistemic Authority Reranker:
- *   1. Exact Lexical BM25/TF-IDF rank (technical identifiers, CSS tokens, function symbols)
- *   2. Semantic / Concept Density rank (character n-gram + domain thesaurus overlap)
- *   3. 128-Dim Dense Vector Cosine Similarity (`LocalSqliteVecEngine` Zero-Docker)
- *   4. Epistemic Authority & Recency Reranking (`TIER_1_SOTA_2026` x1.35, `TIER_2_TIMELESS_PRINCIPLES` x1.15)
- *      + `TIER_3_LEGACY_SYNTAX_GUARD` mandatory translation filter.
+ * Scoped RAG Routing & Theoretical Noise Quarantine (`projectScopeFilter` — Oct 2026 SOTA):
+ *   - Commercial Web Archetypes (`landing`, `saas`, `saas-b2b`, `ecommerce`, `marketing`, `portfolio`, `local-business`)
+ *     receive a `1.4x` boost on `software_factory/`, `ui_ux_design/`, `motion_and_animation/`, `cybersecurity/`,
+ *     `architecture_and_edge/` and Web/TS engineering treatises in `architecture_and_books/`.
+ *   - Off-purpose theoretical books (`modelling_extremal_events`, `artificial_intelligence_a_modern_approach`,
+ *     `streaming_and_overlays`) are placed in Silent Quarantine (`domainQuarantine: true` by default) unless
+ *     the project's `.specify/SPEC.md` or the explicit query requests that domain.
  */
-export async function hybridRrfSearch(query, limit = 5) {
+export const COMMERCIAL_WEB_ARCHETYPES = new Set([
+  'landing',
+  'saas',
+  'saas-b2b',
+  'ecommerce',
+  'marketing',
+  'portfolio',
+  'local-business'
+]);
+
+export const WEB_PRIORITY_FOLDER_PREFIXES = [
+  'knowledge/software_factory/',
+  'knowledge/ui_ux_design/',
+  'knowledge/motion_and_animation/',
+  'knowledge/cybersecurity/',
+  'knowledge/architecture_and_edge/'
+];
+
+export const QUARANTINED_OFF_DOMAIN_PATTERNS = [
+  /modelling_extremal_events/i,
+  /artificial_intelligence_a_modern_approach/i,
+  /^knowledge\/streaming_and_overlays\//i
+];
+
+export function projectScopeFilter(query = '', options = {}) {
+  let cfg;
+  try {
+    cfg = loadProjectConfig(options.project || '');
+  } catch (_) {
+    cfg = { id: 'agencia-alfa', archetype: 'saas-b2b', projectRoot: ROOT };
+  }
+
+  const archetype = String(options.archetype || cfg.archetype || 'saas-b2b').toLowerCase();
+  const isCommercialWeb = COMMERCIAL_WEB_ARCHETYPES.has(archetype);
+  const domainQuarantine = options.domainQuarantine !== undefined ? Boolean(options.domainQuarantine) : isCommercialWeb;
+
+  let specText = '';
+  try {
+    const specCandidate = path.join(cfg.projectRoot || ROOT, '.specify', 'SPEC.md');
+    if (fs.existsSync(specCandidate)) {
+      specText = fs.readFileSync(specCandidate, 'utf8').toLowerCase();
+    }
+  } catch (_) {}
+
+  const combinedIntentText = `${String(query || '').toLowerCase()} ${specText}`;
+  const explicitOffDomainRequest =
+    /\b(?:extremal\s+events|actuarial|seguros|reinsurance|aima|norvig|russell|streaming_and_overlays|obs\s+overlay|twitch\s+overlay|sorteo\s+stream)\b/i.test(
+      combinedIntentText
+    );
+
+  return {
+    projectId: cfg.id || 'agencia-alfa',
+    archetype,
+    isCommercialWeb,
+    domainQuarantine,
+    webDomainMultiplier: isCommercialWeb ? 1.4 : 1.0,
+    explicitOffDomainRequest,
+    evaluateChunk(fileRelPath = '') {
+      const norm = String(fileRelPath || '').replace(/\\/g, '/');
+      const isOffDomain = QUARANTINED_OFF_DOMAIN_PATTERNS.some((rx) => rx.test(norm));
+      if (isOffDomain && domainQuarantine && !explicitOffDomainRequest) {
+        return { quarantined: true, multiplier: 0, reason: 'SILENT_DOMAIN_QUARANTINE' };
+      }
+
+      if (!isCommercialWeb) {
+        return { quarantined: false, multiplier: 1.0, reason: 'NON_WEB_DEFAULT' };
+      }
+
+      const isPriorityFolder = WEB_PRIORITY_FOLDER_PREFIXES.some((prefix) => norm.startsWith(prefix));
+      const isWebTreatiseInArchBooks =
+        norm.startsWith('knowledge/architecture_and_books/') &&
+        !isOffDomain;
+
+      if (isPriorityFolder || isWebTreatiseInArchBooks) {
+        return { quarantined: false, multiplier: 1.4, reason: 'COMMERCIAL_WEB_1.4X_BOOST' };
+      }
+
+      return { quarantined: false, multiplier: 1.0, reason: 'STANDARD_SCOPE' };
+    }
+  };
+}
+
+/**
+ * 3-Way Reciprocal Rank Fusion (RRF, k=60) + `rerank-ts` Epistemic Authority Reranker
+ * + Scoped RAG Domain Routing (`projectScopeFilter` 1.4x boost & Silent Quarantine):
+ */
+export async function hybridRrfSearch(query, limit = 5, options = {}) {
   const startMs = performance.now();
   const qLower = String(query || '').toLowerCase();
   const qTokens = qLower.split(/[^a-z0-9áéíóúñü_.-]+/).filter(t => t.length >= 2);
   const queryVec = computeDenseFeatureVector(qLower, 128);
   const epistemicIntent = classifyQueryEpistemicIntent(query);
+  const scopeFilter = projectScopeFilter(query, options);
+  let quarantinedChunksCount = 0;
 
   // Attempt remote Qdrant first only if QDRANT_HOST is configured and reachable
   let remoteResults = [];
@@ -311,6 +401,12 @@ export async function hybridRrfSearch(query, limit = 5) {
 
   for (let idx = 0; idx < localIdx.chunks.length; idx++) {
     const ch = localIdx.chunks[idx];
+    const scopeEval = scopeFilter.evaluateChunk(ch.file);
+    if (scopeEval.quarantined) {
+      quarantinedChunksCount++;
+      continue;
+    }
+    const domainMult = scopeEval.multiplier;
     const headerLower = ch.header.toLowerCase();
     const fileLower = ch.file.toLowerCase();
     const bodyLower = ch.excerpt.toLowerCase();
@@ -322,7 +418,7 @@ export async function hybridRrfSearch(query, limit = 5) {
       if (fileLower.includes(tok)) bm25 += 3.5;
       if (bodyLower.includes(tok)) bm25 += 1.5;
     }
-    if (bm25 > 0) lexicalScored.push({ idx, score: bm25 });
+    if (bm25 > 0) lexicalScored.push({ idx, score: bm25 * domainMult });
 
     // 2. Semantic Concept & Bigram Overlap Score
     let sem = 0;
@@ -335,13 +431,13 @@ export async function hybridRrfSearch(query, limit = 5) {
       }
     }
     if (fileLower.includes('canon_')) sem *= 1.15;
-    if (sem > 0) semanticScored.push({ idx, score: sem });
+    if (sem > 0) semanticScored.push({ idx, score: sem * domainMult });
 
     // 3. 128-Dim Dense Vector Cosine Score (Zero-Docker Embedded Vector Rank)
     if (bm25 > 0 || sem > 0) {
       const chunkVec = computeDenseFeatureVector(`${headerLower} ${bodyLower.slice(0, 600)}`, 128);
       const cos = cosineSimilarity(queryVec, chunkVec);
-      if (cos > 0.05) denseVectorScored.push({ idx, score: cos });
+      if (cos > 0.05) denseVectorScored.push({ idx, score: cos * domainMult });
     }
   }
 
@@ -383,7 +479,8 @@ export async function hybridRrfSearch(query, limit = 5) {
       finalExcerpt = `${TRANSLATION_RULE_WARNING}\n${finalExcerpt}`;
     }
 
-    const boostedRrf = rawRrfScore * tierMeta.authorityBoost;
+    const scopeEval = scopeFilter.evaluateChunk(ch.file);
+    const boostedRrf = rawRrfScore * tierMeta.authorityBoost * scopeEval.multiplier;
     return {
       citation: ch.citation,
       file: ch.file,
@@ -392,6 +489,7 @@ export async function hybridRrfSearch(query, limit = 5) {
       header: ch.header,
       epistemicTier: tierMeta.epistemicTier,
       authorityBoost: tierMeta.authorityBoost,
+      domainMultiplier: scopeEval.multiplier,
       epistemicRole: tierMeta.epistemicRole,
       legacySyntaxGuard: guardMeta.legacySyntaxGuard || (isClassicBook ? 'TIER_3_LEGACY_SYNTAX_GUARD' : null),
       translationRule: activeTranslationRule,
@@ -519,6 +617,13 @@ export async function hybridRrfSearch(query, limit = 5) {
     source: remoteResults.length > 0 ? 'qdrant-cloud+rrf+rerank-ts' : 'local-knowledge-index-rrf+rerank-ts',
     latencyMs: Math.round(performance.now() - startMs),
     maxTokensPerChunk: 600,
+    projectScopeFilter: {
+      projectId: scopeFilter.projectId,
+      archetype: scopeFilter.archetype,
+      domainQuarantine: scopeFilter.domainQuarantine,
+      webDomainMultiplier: scopeFilter.webDomainMultiplier,
+      quarantinedChunksSkipped: quarantinedChunksCount
+    },
     epistemicIntent,
     activeTranslationRule: TRANSLATION_RULE_WARNING,
     technologyReplacementTable: LEGACY_TECH_REPLACEMENT_TABLE.map(r => ({

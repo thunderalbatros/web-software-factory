@@ -1,0 +1,7 @@
+{
+  "tool": "trivy-iac-cis",
+  "status": "PASS",
+  "benchmark": "CIS-2026",
+  "findings": 0,
+  "updatedAt": "2026-10-28T15:40:05.316Z"
+}

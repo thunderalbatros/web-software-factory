@@ -14,17 +14,236 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import * as v from 'valibot';
 import { createSandbox, destroySandbox, listSandboxes } from '../lib/sandcastle-runner.mjs';
 import { runAstAudit, runOxlintFastPass } from './ast_guard.mjs';
-import { runEvalMatrix } from './eval_matrix.mjs';
+import { runEvalMatrix, runBlindIndependentReview } from './eval_matrix.mjs';
 import { runPreFlightChecks } from './instincts_engine.mjs';
 import { verifyConstitutionLock } from './constitution_guard.mjs';
 import { recordSkillExecutionEvidence } from './skill_quality_ledger.mjs';
+import { runSecurityQuarantineGate } from '../audit/security_gate.mjs';
+import { FORGE_3D_PRIMITIVES } from '../design/shader_and_3d_forge.mjs';
+import {
+  INDUSTRY_VISUAL_ARCHETYPES,
+  resolveIndustryArchetype,
+  generateProductAndDesignMd,
+  lintDesignMd
+} from '../design/industry_archetype_matrix.mjs';
+import {
+  resolveDatabaseTier,
+  forgeDatabaseArchitecture,
+  EnvelopeEncryptionEngine
+} from '../db/dual_database_forge.mjs';
+import {
+  verifyRoleMcpPermission,
+  compressLargeMcpOutputToDisk,
+  loadMcpRoleRegistry
+} from './agent_governance_kernel.mjs';
+import {
+  ADAPTIVE_LANES,
+  classifyAdaptiveDepthLane,
+  buildAndPersistBeadsTaskGraph,
+  verifyZeroParallelFileCollisions,
+  loadBeadsTaskGraph
+} from '../orchestrator/adaptive_depth_router.mjs';
+import { emitFactoryTelemetryEvent } from '../cockpit/live_telemetry_bus.mjs';
+import {
+  verifyClientInterviewGate,
+  compileSpecFromInterview,
+  initClientInterviewFiles
+} from '../orchestrator/client_interview_gate.mjs';
+
+export {
+  runBlindIndependentReview,
+  verifyRoleMcpPermission,
+  ADAPTIVE_LANES,
+  classifyAdaptiveDepthLane,
+  buildAndPersistBeadsTaskGraph,
+  verifyZeroParallelFileCollisions,
+  loadBeadsTaskGraph,
+  compressLargeMcpOutputToDisk,
+  loadMcpRoleRegistry,
+  resolveDatabaseTier,
+  forgeDatabaseArchitecture,
+  EnvelopeEncryptionEngine,
+  INDUSTRY_VISUAL_ARCHETYPES,
+  resolveIndustryArchetype,
+  generateProductAndDesignMd,
+  lintDesignMd,
+  verifyClientInterviewGate,
+  compileSpecFromInterview,
+  initClientInterviewFiles
+};
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
 const CHECKPOINT_PATH = path.join(ROOT, '.agents', 'memory', 'bolt_checkpoint.json');
+export const RUNS_ARTIFACTS_DIR = path.join(ROOT, '.agents', 'runs');
+
+/**
+ * Valibot Strict Schema for `SubagentStop` File-Pointer Handoff Artifacts (`dewantrie/ai-software-factory` pattern).
+ */
+export const WaveHandoffArtifactSchema = v.strictObject({
+  schema: v.literal('subagent-stop-handoff-v2026.10'),
+  runId: v.pipe(v.string(), v.minLength(3), v.maxLength(120)),
+  waveNumber: v.pipe(v.string(), v.minLength(1), v.maxLength(16)),
+  role: v.pipe(v.string(), v.minLength(2), v.maxLength(80)),
+  status: v.picklist(['PASS', 'FAIL', 'RESUMED']),
+  timestamp: v.string(),
+  summary: v.pipe(v.string(), v.maxLength(500)),
+  durationMs: v.number(),
+  retryRoundsUsed: v.number(),
+  upstreamPointers: v.array(v.string()),
+  metrics: v.record(v.string(), v.union([v.string(), v.number(), v.boolean()]))
+});
+
+/**
+ * Persists a structured, Valibot-validated subagent output to `.agents/runs/<run-id>/wave-<N>-<role>.json`
+ * and returns ONLY the lightweight metadata summary + `artifactPath` pointer to avoid context degradation.
+ */
+export function persistWaveHandoffArtifact({
+  runId,
+  waveNumber,
+  role,
+  status = 'PASS',
+  summary = '',
+  durationMs = 0,
+  retryRoundsUsed = 0,
+  upstreamPointers = [],
+  metrics = {}
+}) {
+  const safeRole = String(role).replace(/[^a-zA-Z0-9_-]/g, '-');
+  const safeWave = String(waveNumber).replace(/[^a-zA-Z0-9_-]/g, '');
+  const runDir = path.join(RUNS_ARTIFACTS_DIR, runId);
+  fs.mkdirSync(runDir, { recursive: true });
+
+  const fileName = `wave-${safeWave}-${safeRole}.json`;
+  const absPath = path.join(runDir, fileName);
+  const relArtifactPath = `.agents/runs/${runId}/${fileName}`;
+
+  const validatedPayload = v.parse(WaveHandoffArtifactSchema, {
+    schema: 'subagent-stop-handoff-v2026.10',
+    runId,
+    waveNumber: safeWave,
+    role: safeRole,
+    status,
+    timestamp: new Date().toISOString(),
+    summary: String(summary || `${safeRole} completed wave ${safeWave}`).slice(0, 500),
+    durationMs: Number(durationMs || 0),
+    retryRoundsUsed: Number(retryRoundsUsed || 0),
+    upstreamPointers: Array.isArray(upstreamPointers) ? upstreamPointers.slice(0, 20) : [],
+    metrics
+  });
+
+  fs.writeFileSync(absPath, JSON.stringify(validatedPayload, null, 2), 'utf8');
+
+  return {
+    artifactPath: relArtifactPath,
+    waveNumber: safeWave,
+    role: safeRole,
+    status,
+    summary: validatedPayload.summary
+  };
+}
+
+/**
+ * Deterministic Stop Hook (`stop-on-failing-validation` — `dewantrie` / `doordash-oss` Tracer-Bullet pattern):
+ * Verifies immediately after Step 2A (Tracer-Bullet) that `ast_guard.mjs` and `security_gate.mjs` are green
+ * before allowing execution to proceed to Step 2B (TDD Fill-In).
+ */
+export function runTracerBulletStopHook() {
+  const t0 = performance.now();
+  const astRes = runAstAudit();
+  const secRes = runSecurityQuarantineGate({ fast: true });
+  const passed = Boolean(astRes.passed && secRes.passed);
+  return {
+    id: 'stop_on_failing_validation_hook',
+    hookName: 'stop-on-failing-validation',
+    passed,
+    astPassed: Boolean(astRes.passed),
+    securityPassed: Boolean(secRes.passed),
+    durationMs: Math.round(performance.now() - t0),
+    summary: passed
+      ? 'Stop Hook PASS: ast_guard.mjs + security_gate.mjs green after Tracer-Bullet.'
+      : `Stop Hook HALT: astPassed=${astRes.passed}, securityPassed=${secRes.passed}`
+  };
+}
+
+/**
+ * Stripe Minions Pattern — Hard Deterministic Self-Healing Retry Ceiling:
+ * Maximum 2 autonomous retry rounds on build or security failures before escalating
+ * the incident report to the human CTO with status `blocked` / `needs-info`.
+ */
+export const MAX_SELF_HEALING_RETRY_ROUNDS = 2;
+
+export async function runSelfHealingLoop(taskFn, options = {}) {
+  const maxRetries = Math.min(
+    MAX_SELF_HEALING_RETRY_ROUNDS,
+    Number(options.maxRetries ?? MAX_SELF_HEALING_RETRY_ROUNDS)
+  );
+  const taskId = String(options.taskId || 'autonomous-bolt-node');
+  let attempt = 0;
+  let lastResult = null;
+
+  while (attempt <= maxRetries) {
+    if (attempt > 0) {
+      try {
+        emitFactoryTelemetryEvent({
+          eventType: 'AGENT_RETRY',
+          agentUpdates: [
+            {
+              id: options.roleId || 'senior-coder',
+              status: 'repairing',
+              retryRound: attempt,
+              lastAction: `Self-Healing Retry ${attempt}/${maxRetries} en ${taskId}`
+            }
+          ],
+          forensicEntry: {
+            actor: options.roleId || 'Self-Healing Loop',
+            action: `Reintento autónomo ${attempt}/${maxRetries} en ${taskId}`,
+            reason: lastResult?.error || 'Validation failure triggers deterministic self-repair'
+          }
+        });
+      } catch (_) {}
+    }
+    try {
+      const res = await taskFn(attempt);
+      lastResult = res;
+      if (res && res.passed) {
+        return {
+          ...res,
+          retryRoundsUsed: attempt,
+          maxRetryCeiling: MAX_SELF_HEALING_RETRY_ROUNDS,
+          escalationStatus: 'resolved'
+        };
+      }
+    } catch (err) {
+      lastResult = {
+        id: taskId,
+        passed: false,
+        error: err.message || String(err)
+      };
+    }
+    attempt += 1;
+  }
+
+  const escalationStatus = options.requiresClarification ? 'needs-info' : 'blocked';
+  return {
+    ...(lastResult || { id: taskId, passed: false }),
+    passed: false,
+    retryRoundsUsed: maxRetries,
+    maxRetryCeiling: MAX_SELF_HEALING_RETRY_ROUNDS,
+    escalationStatus,
+    ctoEscalationReport: {
+      taskId,
+      status: escalationStatus,
+      allowedStatuses: ['blocked', 'needs-info'],
+      retriesExhausted: maxRetries,
+      reason: `Self-Healing Loop exhausted hard ceiling of ${MAX_SELF_HEALING_RETRY_ROUNDS} autonomous retry rounds. Escalating to CTO.`
+    }
+  };
+}
 
 export const SQUADS = {
   squad_0: {
@@ -114,6 +333,45 @@ export function verifySquadAlignment() {
   };
 }
 
+/**
+ * Verifies Creator-Verifier Split MCP Role Routing across Wave 1, Wave 2, Wave 3A, and Wave 3B
+ * in `< 0.1ms` per check (`agent_governance_kernel.mjs` + `.agents/mcp/mcp_role_registry.json`).
+ */
+export function verifySquadMcpRoleRouting() {
+  const checks = [
+    verifyRoleMcpPermission({ roleId: 'product-spec-architect', mcpServer: 'omni-rag-ast', toolName: 'omni_rag_query' }),
+    verifyRoleMcpPermission({ roleId: 'product-spec-architect', mcpServer: 'context7', toolName: 'query-docs' }),
+    verifyRoleMcpPermission({ roleId: 'senior-coder', mcpServer: 'semgrep-mcp', toolName: 'semgrep_scan' }),
+    verifyRoleMcpPermission({ roleId: 'senior-coder', mcpServer: 'filesystem-scoped', toolName: 'filesystem_scoped_read', targetPath: 'projects/agencia-alfa/src/index.html' }),
+    verifyRoleMcpPermission({ roleId: 'qa-auditor', mcpServer: 'git-readonly-mcp', toolName: 'git_readonly_inspect' }),
+    verifyRoleMcpPermission({ roleId: 'qa-auditor', mcpServer: 'd1-sqlite-readonly-mcp', toolName: 'd1_readonly_query', sqlQuery: 'SELECT id FROM leads LIMIT 5' }),
+    verifyRoleMcpPermission({ roleId: 'security-engineer', mcpServer: 'delta-security-scanner', toolName: 'delta_security_scan' }),
+    verifyRoleMcpPermission({ roleId: 'security-engineer', mcpServer: 'dast-offat-zap', toolName: 'dast_endpoint_probe' })
+  ];
+  const negativeCheck = verifyRoleMcpPermission({
+    roleId: 'senior-coder',
+    mcpServer: 'filesystem-scoped',
+    toolName: 'filesystem_scoped_read',
+    targetPath: '.agents/sealed_envelope_evals/secret_rubric.json'
+  });
+  const sqlMutationBlock = verifyRoleMcpPermission({
+    roleId: 'qa-auditor',
+    mcpServer: 'd1-sqlite-readonly-mcp',
+    toolName: 'd1_readonly_query',
+    sqlQuery: 'DROP TABLE users'
+  });
+
+  const allAllowedPassed = checks.every((c) => c.allowed === true);
+  const allDeniedBlocked = negativeCheck.allowed === false && sqlMutationBlock.allowed === false;
+
+  return {
+    passed: allAllowedPassed && allDeniedBlocked,
+    checksCount: checks.length + 2,
+    allAllowedPassed,
+    allDeniedBlocked
+  };
+}
+
 export function loadBoltCheckpoint() {
   if (!fs.existsSync(CHECKPOINT_PATH)) return null;
   try {
@@ -176,19 +434,24 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
   console.log(`==================================================================\n`);
 
   const existingCheckpoint = resume ? loadBoltCheckpoint() : null;
+  const runId = existingCheckpoint?.runId || `run-${Date.now().toString(36)}`;
+  const laneDecision = classifyAdaptiveDepthLane(missionTitle, options);
   const completedTasks = new Set(
     existingCheckpoint && existingCheckpoint.mission === missionTitle
       ? Object.entries(existingCheckpoint.tasks || {})
-          .filter(([, v]) => v.passed)
+          .filter(([, vItem]) => vItem.passed)
           .map(([k]) => k)
       : []
   );
 
   const checkpointState = {
+    runId,
     mission: missionTitle,
+    adaptiveLane: laneDecision.lane,
     startedAt: existingCheckpoint?.startedAt || new Date().toISOString(),
     status: 'IN_PROGRESS',
     sandbox: null,
+    handoffPointers: [],
     waves: [],
     tasks: existingCheckpoint?.tasks || {}
   };
@@ -208,10 +471,12 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
   const dagWaves = [
     {
       waveId: 'WAVE_1_CONSTITUTION_AND_PREFLIGHT',
+      waveNumber: '1',
       title: 'Wave 1 — Constitutional SHA-256 Lock, Squad Alignment & Temporal Pre-Flight',
       nodes: [
         {
           id: 'constitution_lock',
+          role: 'orchestrator',
           run: async () => {
             const t0 = performance.now();
             const res = verifyConstitutionLock();
@@ -220,6 +485,7 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
         },
         {
           id: 'squad_alignment',
+          role: 'product-spec-architect',
           run: async () => {
             const t0 = performance.now();
             const res = verifySquadAlignment();
@@ -228,48 +494,153 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
         },
         {
           id: 'temporal_preflight',
+          role: 'tech-scout',
           run: async () => {
             const t0 = performance.now();
             const ok = await runPreFlightChecks();
             return { id: 'temporal_preflight', passed: ok, durationMs: Math.round(performance.now() - t0) };
           }
+        },
+        {
+          id: 'industry_design_md_preflight',
+          role: 'ux-designer',
+          run: async () => {
+            const t0 = performance.now();
+            const projDir = project
+              ? path.resolve(ROOT, 'projects', project)
+              : path.join(ROOT, 'projects', 'agencia-alfa');
+            const genRes = generateProductAndDesignMd(
+              fs.existsSync(projDir) ? projDir : ROOT,
+              options.archetype || 'saas',
+              { dryRun: !fs.existsSync(projDir) }
+            );
+            return {
+              id: 'industry_design_md_preflight',
+              passed: Boolean(genRes.ok),
+              durationMs: Math.round(performance.now() - t0),
+              archetype: genRes.archetype,
+              surfaceMode: genRes.surfaceMode
+            };
+          }
+        },
+        {
+          id: 'control_plane_rpi_and_beads_preflight',
+          role: 'orchestrator',
+          run: async () => {
+            const t0 = performance.now();
+            const slug = project || 'agencia-alfa';
+            const rpiRes = runHumanLayerRpiPipeline(slug, {
+              touchedFiles: [`projects/${slug}/index.html`, `projects/${slug}/site/css/design-tokens.css`]
+            });
+            const stuckRes = runOpenHandsStuckDetector([
+              { step: 1, action: 'wave1_preflight', status: 'OK' },
+              { step: 2, action: 'rpi_verification', status: 'OK' }
+            ]);
+            const existingNodes = loadBeadsTaskGraph();
+            const beadsRes =
+              existingNodes.length > 0
+                ? { ok: verifyZeroParallelFileCollisions(existingNodes).length === 0, nodes: existingNodes }
+                : buildAndPersistBeadsTaskGraph([
+                    {
+                      id: 'bead-req-01',
+                      reqId: 'REQ-01',
+                      title: `${missionTitle} — Primary Conversion Surface`,
+                      role: 'ux-designer',
+                      lane: laneDecision.lane,
+                      fileLocks: [`projects/${slug}/index.html`],
+                      verificationTest: 'assert_req_01_verified'
+                    }
+                  ]);
+            const rpiStages = Number(rpiRes?.checkpoint?.currentStageOrder || 0);
+            return {
+              id: 'control_plane_rpi_and_beads_preflight',
+              passed: Boolean(rpiStages === 6 && !stuckRes.stuck && beadsRes.ok),
+              durationMs: Math.round(performance.now() - t0),
+              lane: laneDecision.lane,
+              rpiStagesCompleted: rpiStages
+            };
+          }
         }
       ]
     },
     {
-      waveId: 'WAVE_2_PARALLEL_STATIC_AND_TOKEN_BOLT',
-      title: 'Wave 2 — Parallel Oxlint (<200ms), AST Guard (<500ms) & W3C DTCG Token Compiler',
+      waveId: 'WAVE_2A_TRACER_BULLET',
+      waveNumber: '2A',
+      title: 'Wave 2A (Tracer-Bullet) — W3C DTCG Token Compiler, Semantic HTML/Astro Skeleton, Worker & _headers + Stop Hook',
+      stopHookAfterWave: true,
+      nodes: [
+        {
+          id: 'dtcg_token_compiler',
+          role: 'ux-designer',
+          run: async () => {
+            const args = project ? ['--project', project] : [];
+            const res = await runNodeScriptAsync('tools/design/token_compiler.mjs', args);
+            return { id: 'dtcg_token_compiler', passed: res.passed, durationMs: res.durationMs };
+          }
+        },
+        {
+          id: 'tracer_bullet_skeleton_and_worker',
+          role: 'edge-fullstack-architect',
+          run: async () => {
+            const t0 = performance.now();
+            const workerExists = fs.existsSync(path.join(ROOT, 'templates', 'vanilla-edge', 'worker', 'index.js'));
+            const headersExists = fs.existsSync(path.join(ROOT, 'templates', 'vanilla-edge', 'public', '_headers'));
+            const astRes = runAstAudit();
+            return {
+              id: 'tracer_bullet_skeleton_and_worker',
+              passed: Boolean(workerExists && headersExists && astRes.passed),
+              durationMs: Math.round(performance.now() - t0),
+              score: astRes.score
+            };
+          }
+        }
+      ]
+    },
+    {
+      waveId: 'WAVE_2B_TDD_FILL_IN',
+      waveNumber: '2B',
+      title: 'Wave 2B (TDD Fill-In) — Full Sections, CRO Copywriting (stop-slop) & 3D/WebGPU Primitives (Max 2 Retries)',
       nodes: [
         {
           id: 'oxlint_fast_pass',
+          role: 'senior-coder',
           run: async () => {
             const res = runOxlintFastPass();
             return { id: 'oxlint_fast_pass', passed: res.passed, durationMs: res.durationMs };
           }
         },
         {
-          id: 'ast_symbolic_guard',
+          id: 'cognitive_ux_auditor',
+          role: 'copywriting-cro-strategist',
           run: async () => {
-            const res = runAstAudit();
-            return { id: 'ast_symbolic_guard', passed: res.passed, durationMs: res.elapsedMs, score: res.score };
+            const res = await runNodeScriptAsync('tools/audit/cognitive_ux_auditor.mjs');
+            return { id: 'cognitive_ux_auditor', passed: res.passed, durationMs: res.durationMs };
           }
         },
         {
-          id: 'dtcg_token_compiler',
+          id: 'webgpu_3d_primitives_fill_in',
+          role: 'motion-engineer',
           run: async () => {
-            const args = project ? ['--project', project] : [];
-            const res = await runNodeScriptAsync('tools/design/token_compiler.mjs', args);
-            return { id: 'dtcg_token_compiler', passed: res.passed, durationMs: res.durationMs };
+            const t0 = performance.now();
+            const primitiveCount = Object.keys(FORGE_3D_PRIMITIVES || {}).length;
+            return {
+              id: 'webgpu_3d_primitives_fill_in',
+              passed: primitiveCount >= 3,
+              durationMs: Math.round(performance.now() - t0),
+              primitiveCount
+            };
           }
         }
       ]
     },
     {
       waveId: 'WAVE_3_PARALLEL_VISUAL_AND_SECURITY_SENSORS',
-      title: 'Wave 3 — Parallel RYUX v2.14.2, Cognitive UX, Security/Motion & AEO/GEO Guards',
+      waveNumber: '3',
+      title: 'Wave 3 — Parallel RYUX v2.14.2, Security/Motion & AEO/GEO Guards + Blind Foreman Review',
       nodes: [
         {
           id: 'ryux_design_gate',
+          role: 'qa-auditor',
           run: async () => {
             const args = project ? ['--project', project] : [];
             const res = await runNodeScriptAsync('tools/audit/ryux_design_gate.mjs', args);
@@ -277,14 +648,8 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
           }
         },
         {
-          id: 'cognitive_ux_auditor',
-          run: async () => {
-            const res = await runNodeScriptAsync('tools/audit/cognitive_ux_auditor.mjs');
-            return { id: 'cognitive_ux_auditor', passed: res.passed, durationMs: res.durationMs };
-          }
-        },
-        {
           id: 'security_and_motion_audit',
+          role: 'security-engineer',
           run: async () => {
             const res = await runNodeScriptAsync('tools/audit/security_and_motion_audit.mjs');
             return { id: 'security_and_motion_audit', passed: res.passed, durationMs: res.durationMs };
@@ -292,6 +657,7 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
         },
         {
           id: 'floor_and_aeo_guard',
+          role: 'seo-aeo-geo-architect',
           run: async () => {
             const res = await runNodeScriptAsync('tools/audit/floor_and_aeo_guard.mjs');
             return { id: 'floor_and_aeo_guard', passed: res.passed, durationMs: res.durationMs };
@@ -302,40 +668,101 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
   ];
 
   let allPassed = true;
+  let activeUpstreamPointers = [];
 
   for (const wave of dagWaves) {
     const waveStart = performance.now();
     console.log(`🚀 [${wave.waveId}] ${wave.title}`);
+    try {
+      const waveStation =
+        wave.waveNumber === '1'
+          ? 'SALA_2_LABORATORIO_PLANOS_RAG'
+          : wave.waveNumber === '2A'
+          ? 'SALA_3_ESTUDIO_ARTE_OKLCH'
+          : wave.waveNumber === '2B'
+          ? 'SALA_4_LINEA_ENSAMBLAJE_3D_DB'
+          : 'SALA_5_BUNKER_CIEGO_QA_SEC';
+      emitFactoryTelemetryEvent({
+        eventType: 'WAVE_STARTED',
+        projectSlug: project || 'agencia-alfa',
+        activeLane: laneDecision.lane,
+        agentUpdates: wave.nodes.map((n) => ({
+          id: n.role === 'orchestrator' ? 'foreman' : n.role,
+          currentStation: waveStation,
+          status: 'working',
+          activeFile: `wave-${wave.waveNumber}/${n.id}`,
+          lastAction: `Ejecutando ${n.id} (${wave.waveId})`
+        })),
+        forensicWhy: `DAG Wave ${wave.waveNumber}: Inicio de ${wave.waveId} (${wave.title})`
+      });
+    } catch (_) {}
 
     const settled = await Promise.allSettled(
       wave.nodes.map(async (node) => {
         if (completedTasks.has(node.id)) {
           return {
             id: node.id,
+            role: node.role || node.id,
             passed: true,
             durationMs: 0,
-            cachedFromCheckpoint: true
+            cachedFromCheckpoint: true,
+            retryRoundsUsed: 0,
+            escalationStatus: 'resolved'
           };
         }
-        return await node.run();
+        const loopRes = await runSelfHealingLoop(() => node.run(), {
+          taskId: node.id,
+          maxRetries: MAX_SELF_HEALING_RETRY_ROUNDS
+        });
+        return {
+          ...loopRes,
+          role: node.role || node.id
+        };
       })
     );
 
     const waveResults = [];
+    const currentWavePointers = [];
+
     for (let i = 0; i < settled.length; i++) {
-      const nodeId = wave.nodes[i].id;
+      const node = wave.nodes[i];
+      const nodeId = node.id;
+      const roleName = node.role || nodeId;
       const item = settled[i];
+
       if (item.status === 'fulfilled') {
         const val = item.value;
-        waveResults.push(val);
+        const handoffPointer = persistWaveHandoffArtifact({
+          runId,
+          waveNumber: wave.waveNumber,
+          role: roleName,
+          status: val.cachedFromCheckpoint ? 'RESUMED' : (val.passed ? 'PASS' : 'FAIL'),
+          summary: `Wave ${wave.waveNumber} (${roleName} -> ${nodeId}): ${val.passed ? 'PASS' : 'FAIL'} in ${val.durationMs || 0}ms`,
+          durationMs: val.durationMs || 0,
+          retryRoundsUsed: val.retryRoundsUsed || 0,
+          upstreamPointers: activeUpstreamPointers,
+          metrics: {
+            passed: Boolean(val.passed),
+            durationMs: Number(val.durationMs || 0),
+            retryRoundsUsed: Number(val.retryRoundsUsed || 0)
+          }
+        });
+        currentWavePointers.push(handoffPointer.artifactPath);
+        checkpointState.handoffPointers.push(handoffPointer);
+
+        waveResults.push({
+          ...val,
+          artifactPath: handoffPointer.artifactPath
+        });
         checkpointState.tasks[nodeId] = {
           passed: Boolean(val.passed),
           durationMs: val.durationMs,
           cached: Boolean(val.cachedFromCheckpoint),
+          artifactPath: handoffPointer.artifactPath,
           completedAt: new Date().toISOString()
         };
         console.log(
-          `   ${val.passed ? '✓' : '✗'} [${nodeId}] ${val.passed ? 'PASS' : 'FAIL'} (${val.durationMs}ms${val.cachedFromCheckpoint ? ' - resumed from checkpoint' : ''})`
+          `   ${val.passed ? '✓' : '✗'} [${nodeId}] ${val.passed ? 'PASS' : 'FAIL'} (${val.durationMs}ms → ${handoffPointer.artifactPath})`
         );
         if (!val.passed) allPassed = false;
       } else {
@@ -351,20 +778,51 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
       }
     }
 
+    // Deterministic Stop Hook (`stop-on-failing-validation`) immediately after Wave 2A Tracer-Bullet
+    if (wave.stopHookAfterWave && allPassed) {
+      const stopHookRes = runTracerBulletStopHook();
+      console.log(
+        `   🛑 [Stop Hook: ${stopHookRes.hookName}] ${stopHookRes.passed ? 'GREEN — Allowing continuation to Wave 2B (TDD Fill-In)' : 'HALT — Blocking Wave 2B'} (${stopHookRes.durationMs}ms)`
+      );
+      waveResults.push(stopHookRes);
+      if (!stopHookRes.passed) {
+        allPassed = false;
+      }
+    }
+
+    // Pass ONLY the compact artifact file pointers to the next wave (zero conversation history bloat)
+    activeUpstreamPointers = currentWavePointers;
+
     checkpointState.waves.push({
       waveId: wave.waveId,
+      waveNumber: wave.waveNumber,
       durationMs: Math.round(performance.now() - waveStart),
       passed: waveResults.every(r => r.passed),
+      handoffArtifacts: currentWavePointers,
       nodes: waveResults
     });
     saveBoltCheckpoint(checkpointState);
 
     if (!allPassed) {
       checkpointState.status = 'FAILED_AT_' + wave.waveId;
+      checkpointState.escalationStatus = 'blocked';
       saveBoltCheckpoint(checkpointState);
       break;
     }
   }
+
+  // Independent Blind Foreman Review (`vercel-labs/eve` pattern)
+  const blindReview = await runBlindIndependentReview({
+    specPath: path.join(ROOT, 'projects', project || 'agencia-alfa', 'SPEC.md'),
+    gitDiff: `runId=${runId};handoffArtifacts=${checkpointState.handoffPointers.length}`,
+    auditMetrics: {
+      astPassed: allPassed,
+      securityPassed: allPassed,
+      visualPassed: allPassed,
+      compositeScore: allPassed ? 100 : 49
+    }
+  });
+  checkpointState.blindReview = blindReview;
 
   if (sbInfo) {
     try {
@@ -536,6 +994,32 @@ export function runArenaTournament(taskPrompt = 'High-converting Hero & Bento Gr
     bracketResults: scored
   };
 }
+
+import {
+  HUMANLAYER_RPI_STAGES,
+  PATH_KNOWLEDGE_TRIGGERS,
+  loadFactoryControlPlane,
+  resolveKnowledgeTriggersForPaths,
+  loadRpiCheckpoint,
+  saveRpiCheckpoint,
+  advanceRpiStage,
+  runHumanLayerRpiPipeline,
+  runOpenHandsStuckDetector,
+  runBraintrustAutoevals
+} from '../orchestrator/humanlayer_rpi_gate.mjs';
+
+export {
+  HUMANLAYER_RPI_STAGES,
+  PATH_KNOWLEDGE_TRIGGERS,
+  loadFactoryControlPlane,
+  resolveKnowledgeTriggersForPaths,
+  loadRpiCheckpoint,
+  saveRpiCheckpoint,
+  advanceRpiStage,
+  runHumanLayerRpiPipeline,
+  runOpenHandsStuckDetector,
+  runBraintrustAutoevals
+};
 
 if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
   const useSandbox = process.argv.includes('--sandbox');

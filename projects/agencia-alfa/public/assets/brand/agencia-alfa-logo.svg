@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512" data-vector-integrity="locked">
+  <defs>
+    <linearGradient id="oklchBrandGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="oklch(65% 0.16 250)" />
+      <stop offset="100%" stop-color="oklch(78% 0.15 82)" />
+    </linearGradient>
+  </defs>
+  <rect x="32" y="32" width="448" height="448" rx="64" fill="oklch(10% 0.01 255)" stroke="url(#oklchBrandGrad)" stroke-width="6"/>
+  <path id="brand-vector-glyph" d="M144 352 L256 128 L368 352 M188 272 L324 272" fill="none" stroke="url(#oklchBrandGrad)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="900" stroke-dashoffset="0"/>
+</svg>

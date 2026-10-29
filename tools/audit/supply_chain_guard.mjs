@@ -14,12 +14,14 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import crypto from "node:crypto";
 import { execSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, "../..");
 const ALLOWLIST_PATH = path.join(ROOT, ".agents", "governance", "approved_packages.json");
+export const SBOM_CYCLONEDX_PATH = path.join(ROOT, ".agents", "memory", "sbom_cyclonedx.json");
 
 const IGNORED_DIRS = new Set([
   "node_modules",
@@ -383,6 +385,81 @@ export function checkRetireJsClientSignatures(rootDir = ROOT) {
   return { passed: issues.length === 0, scannedFiles: jsFiles.length, issues };
 }
 
+export function generateCycloneDxSbom(rootDir = ROOT) {
+  const pkgPath = path.join(rootDir, "package.json");
+  const lockPath = path.join(rootDir, "package-lock.json");
+  let pkg = { name: "web-software-factory-studio", version: "2.2.0", dependencies: {}, devDependencies: {} };
+  try {
+    if (fs.existsSync(pkgPath)) {
+      pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8").replace(/^\uFEFF/, ""));
+    }
+  } catch (_) {}
+
+  let lockPackages = {};
+  try {
+    if (fs.existsSync(lockPath)) {
+      const lockObj = JSON.parse(fs.readFileSync(lockPath, "utf8").replace(/^\uFEFF/, ""));
+      lockPackages = lockObj.packages || {};
+    }
+  } catch (_) {}
+
+  const allDeps = { ...(pkg.dependencies || {}), ...(pkg.devDependencies || {}) };
+  const components = Object.entries(allDeps).map(([depName, specVer]) => {
+    const lockEntry = lockPackages[`node_modules/${depName}`] || {};
+    const resolvedVersion = String(lockEntry.version || String(specVer).replace(/^[\^~]/, ""));
+    const licenseId = lockEntry.license || "MIT";
+    const integrity = lockEntry.integrity || "";
+    return {
+      type: "library",
+      "bom-ref": `pkg:npm/${depName}@${resolvedVersion}`,
+      name: depName,
+      version: resolvedVersion,
+      purl: `pkg:npm/${depName}@${resolvedVersion}`,
+      licenses: [{ license: { id: String(licenseId) } }],
+      hashes: integrity
+        ? [
+            {
+              alg: integrity.startsWith("sha512-") ? "SHA-512" : "SHA-256",
+              content: Buffer.from(integrity.replace(/^sha\d+-/, ""), "base64").toString("hex")
+            }
+          ]
+        : []
+    };
+  });
+
+  const sbomPayload = {
+    bomFormat: "CycloneDX",
+    specVersion: "1.5",
+    serialNumber: `urn:uuid:${crypto.randomUUID()}`,
+    version: 1,
+    metadata: {
+      timestamp: new Date().toISOString(),
+      tools: [
+        {
+          vendor: "Web Software Factory Studio",
+          name: "supply_chain_guard.mjs",
+          version: "2026.10"
+        }
+      ],
+      component: {
+        type: "application",
+        "bom-ref": `pkg:npm/${pkg.name || "web-software-factory-studio"}@${pkg.version || "2.2.0"}`,
+        name: pkg.name || "web-software-factory-studio",
+        version: pkg.version || "2.2.0"
+      }
+    },
+    components
+  };
+
+  const outFile = path.join(rootDir, ".agents", "memory", "sbom_cyclonedx.json");
+  fs.mkdirSync(path.dirname(outFile), { recursive: true });
+  fs.writeFileSync(outFile, JSON.stringify(sbomPayload, null, 2) + "\n", "utf8");
+  return {
+    path: outFile,
+    componentCount: components.length
+  };
+}
+
 export function runSupplyChainGuard(options = {}) {
   const rootDir = options.rootDir || ROOT;
   const skipNetworkAudit = Boolean(options.skipNetworkAudit);
@@ -392,6 +469,7 @@ export function runSupplyChainGuard(options = {}) {
   const lockfileCheck = checkLockfileAndVulnerabilities(rootDir, skipNetworkAudit);
   const sriCheck = checkSubresourceIntegrity(rootDir);
   const retireCheck = checkRetireJsClientSignatures(rootDir);
+  const sbom = generateCycloneDxSbom(rootDir);
 
   const allIssues = [
     ...allowlistCheck.issues,
@@ -410,6 +488,7 @@ export function runSupplyChainGuard(options = {}) {
     allowlist: allowlistCheck,
     lockfile: lockfileCheck,
     sri: sriCheck,
+    sbom,
     issues: allIssues
   };
 }

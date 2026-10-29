@@ -1,0 +1,378 @@
+{
+  "schema": "mcp-zero-trust-role-registry-2026.10",
+  "version": "1.0.0",
+  "securityStandard": "OWASP-MCP-Top-10-2025 (MCP01-MCP10) + OWASP-Agentic-Top-10 (ASI01-ASI10)",
+  "globalPolicies": {
+    "additionalPropertiesFalseRequired": true,
+    "forbidSensitiveHeaders": ["x-mcp-header", "x-mcp-untrusted", "x-api-key-raw", "authorization-Forward"],
+    "sessionIdGenerator": "CSPRNG (crypto.randomUUID / crypto.randomBytes)",
+    "audienceValidationRequired": true,
+    "expectedAudience": "urn:web-software-factory:mcp-gateway:2026",
+    "forbidShadowMcpServers": true,
+    "hitlConfirmationRequiredFor": [
+      "production-deploy",
+      "d1-schema-drop",
+      "git-force-push",
+      "secret-rotation"
+    ],
+    "maxInlineResponseTokens": 1200,
+    "overflowReportDirectories": {
+      "root": ".agents/security_reports",
+      "semgrep": ".agents/security_reports/.semgrep",
+      "trivy": ".agents/security_reports/.trivy",
+      "sbom": ".agents/security_reports/.sbom",
+      "headroomCcr": ".cache/headroom_ccr"
+    }
+  },
+  "servers": {
+    "omni-rag-ast": {
+      "id": "omni-rag-ast",
+      "aliasIds": ["web-factory-omni-rag"],
+      "category": "knowledge_and_documentation",
+      "command": "node",
+      "args": ["tools/mcp/mcp_omni_rag_server.mjs"],
+      "audience": "urn:web-software-factory:mcp:omni-rag-ast",
+      "readOnly": true,
+      "csprngSession": true,
+      "additionalPropertiesFalse": true,
+      "hitlGate": false,
+      "description": "RAG híbrido (SQLite FTS5 + MiniSearch), search_codebase_ast (cocoindex-code) y discover_tools (MCP-Zero).",
+      "tools": [
+        "discover_tools",
+        "headroom_retrieve",
+        "search_codebase_ast",
+        "codemode_execute_batch",
+        "omni_rag_query",
+        "code_graph_query",
+        "omni_rag_stats",
+        "factory_style_catalog",
+        "factory_compile_tokens",
+        "factory_run_audit"
+      ]
+    },
+    "context7": {
+      "id": "context7",
+      "category": "knowledge_and_documentation",
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"],
+      "audience": "urn:web-software-factory:mcp:context7",
+      "readOnly": true,
+      "csprngSession": true,
+      "additionalPropertiesFalse": true,
+      "hitlGate": false,
+      "description": "Documentación oficial en vivo por versión exacta (Upstash Context7 / ctx7).",
+      "tools": ["resolve-library-id", "query-docs"]
+    },
+    "chrome-devtools": {
+      "id": "chrome-devtools",
+      "category": "visual_inspection_and_60fps",
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--headless",
+        "--isolated",
+        "--no-usage-statistics",
+        "--user-data-dir=./.cache/chrome-devtools-mcp"
+      ],
+      "audience": "urn:web-software-factory:mcp:chrome-devtools",
+      "readOnly": true,
+      "csprngSession": true,
+      "additionalPropertiesFalse": true,
+      "hitlGate": false,
+      "description": "Trazas CDP de GPU/CPU, JSHeapUsedSize, LayoutDuration y árbol completo de accesibilidad (FullAXTree).",
+      "tools": ["performance_get_metrics", "accessibility_get_full_ax_tree", "evaluate_script", "take_snapshot"]
+    },
+    "playwright": {
+      "id": "playwright",
+      "category": "visual_inspection_and_60fps",
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest", "--headless"],
+      "audience": "urn:web-software-factory:mcp:playwright",
+      "readOnly": true,
+      "csprngSession": true,
+      "additionalPropertiesFalse": true,
+      "hitlGate": false,
+      "description": "Automatización multi-viewport determinista (1440px, 768px, 375px) y capturas AX.",
+      "tools": ["browser_navigate", "browser_snapshot", "browser_take_screenshot", "browser_resize"]
+    },
+    "semgrep-mcp": {
+      "id": "semgrep-mcp",
+      "category": "devsecops_sast_sbom_dast",
+      "command": "node",
+      "args": ["tools/mcp/mcp_omni_rag_server.mjs", "--profile=semgrep-mcp"],
+      "upstreamContainer": "ghcr.io/semgrep/mcp",
+      "audience": "urn:web-software-factory:mcp:semgrep-mcp",
+      "readOnly": false,
+      "csprngSession": true,
+      "additionalPropertiesFalse": true,
+      "hitlGate": false,
+      "description": "SAST simbólico y generador de reglas de regresión permanentes (security_check, semgrep_scan, get_abstract_syntax_tree, write_custom_semgrep_rule).",
+      "tools": [
+        "security_check",
+        "semgrep_scan",
+        "get_abstract_syntax_tree",
+        "write_custom_semgrep_rule"
+      ]
+    },
+    "delta-security-scanner": {
+      "id": "delta-security-scanner",
+      "category": "devsecops_sast_sbom_dast",
+      "command": "node",
+      "args": ["tools/mcp/mcp_omni_rag_server.mjs", "--profile=delta-security-scanner"],
+      "patternOrigin": "aws-samples/sample-mcp-security-scanner",
+      "audience": "urn:web-software-factory:mcp:delta-security-scanner",
+      "readOnly": true,
+      "csprngSession": true,
+      "additionalPropertiesFalse": true,
+      "hitlGate": false,
+      "maxSummaryTokens": 300,
+      "reportOutputs": {
+        "semgrepDir": ".agents/security_reports/.semgrep",
+        "trivyDir": ".agents/security_reports/.trivy",
+        "sbomDir": ".agents/security_reports/.sbom"
+      },
+      "description": "Escaneos delta paralelos (SAST, IaC CIS Benchmarks y SBOM CycloneDX) guardando reportes en .agents/security_reports/ y devolviendo resumen ejecutivo < 300 tokens.",
+      "tools": ["delta_security_scan"]
+    },
+    "dast-offat-zap": {
+      "id": "dast-offat-zap",
+      "category": "devsecops_sast_sbom_dast",
+      "command": "node",
+      "args": ["tools/mcp/mcp_omni_rag_server.mjs", "--profile=dast-offat-zap"],
+      "patternOrigin": "cyproxio/mcp-for-security + OWASP ZAP / OFFAT",
+      "audience": "urn:web-software-factory:mcp:dast-offat-zap",
+      "readOnly": true,
+      "csprngSession": true,
+      "additionalPropertiesFalse": true,
+      "hitlGate": false,
+      "allowedTargetHosts": ["127.0.0.1", "localhost"],
+      "description": "Validación dinámica DAST de endpoints HTTP, cabeceras Sec-Fetch-*, CORS, CSRF y contratos API en staging local aislado.",
+      "tools": ["dast_endpoint_probe"]
+    },
+    "filesystem-scoped": {
+      "id": "filesystem-scoped",
+      "category": "vcs_fs_db_edge",
+      "command": "node",
+      "args": ["tools/mcp/mcp_omni_rag_server.mjs", "--profile=filesystem-scoped"],
+      "audience": "urn:web-software-factory:mcp:filesystem-scoped",
+      "readOnly": false,
+      "csprngSession": true,
+      "additionalPropertiesFalse": true,
+      "hitlGate": false,
+      "allowedPaths": ["projects/<active-slug>/", "templates/", "tokens/"],
+      "blockedPaths": [".agents/sealed_envelope_evals/", ".git/config", ".env"],
+      "description": "Acceso a archivos restringido por lista blanca (projects/<active-slug>/), bloqueando explícitamente .agents/sealed_envelope_evals/ para los implementadores.",
+      "tools": ["filesystem_scoped_read", "filesystem_scoped_write"]
+    },
+    "git-readonly-mcp": {
+      "id": "git-readonly-mcp",
+      "category": "vcs_fs_db_edge",
+      "command": "node",
+      "args": ["tools/mcp/mcp_omni_rag_server.mjs", "--profile=git-readonly-mcp"],
+      "audience": "urn:web-software-factory:mcp:git-readonly-mcp",
+      "readOnly": true,
+      "csprngSession": true,
+      "additionalPropertiesFalse": true,
+      "hitlGate": false,
+      "blockedGitSubcommands": ["commit", "push", "reset", "rebase", "merge", "checkout -B", "branch -D"],
+      "description": "Conector Git estrictamente Read-Only (status, diff, log) para el Agente Verificador de Cobertura (qa-auditor).",
+      "tools": ["git_readonly_inspect"]
+    },
+    "d1-sqlite-readonly-mcp": {
+      "id": "d1-sqlite-readonly-mcp",
+      "category": "vcs_fs_db_edge",
+      "command": "node",
+      "args": ["tools/mcp/mcp_omni_rag_server.mjs", "--profile=d1-sqlite-readonly-mcp"],
+      "audience": "urn:web-software-factory:mcp:d1-sqlite-readonly-mcp",
+      "readOnly": true,
+      "csprngSession": true,
+      "additionalPropertiesFalse": true,
+      "hitlGate": false,
+      "blockedSqlKeywords": ["INSERT", "UPDATE", "DELETE", "DROP", "ALTER", "TRUNCATE", "REPLACE", "ATTACH", "PRAGMA writable_schema"],
+      "description": "Conector D1/SQLite estrictamente Read-Only (solo SELECT/EXPLAIN) para qa-auditor, bloqueando mutaciones SQL.",
+      "tools": ["d1_readonly_query"]
+    },
+    "github-mcp": {
+      "id": "github-mcp",
+      "category": "vcs_fs_db_edge",
+      "command": "node",
+      "args": ["tools/mcp/mcp_omni_rag_server.mjs", "--profile=github-mcp"],
+      "upstreamPackage": "@modelcontextprotocol/server-github",
+      "audience": "urn:web-software-factory:mcp:github-mcp",
+      "readOnly": false,
+      "csprngSession": true,
+      "additionalPropertiesFalse": true,
+      "hitlGate": true,
+      "preCommitSecretScan": true,
+      "respectPushProtection": true,
+      "nhiIdentity": "webfactory-nhi-bot",
+      "autoMergeAllowed": false,
+      "description": "Escaneo de secretos pre-commit respetando push protection y apertura de PRs por Identidad No Humana (NHI) con bloqueo de auto-merge.",
+      "tools": ["github_precommit_secret_scan", "github_nhi_open_pr"]
+    },
+    "cloudflare-edge-mcp": {
+      "id": "cloudflare-edge-mcp",
+      "category": "vcs_fs_db_edge",
+      "command": "npx",
+      "args": ["-y", "@cloudflare/mcp-server-cloudflare"],
+      "audience": "urn:web-software-factory:mcp:cloudflare-edge-mcp",
+      "readOnly": true,
+      "csprngSession": true,
+      "additionalPropertiesFalse": true,
+      "hitlGate": true,
+      "description": "Inspección y preview de Cloudflare Workers, D1 y Pages con confirmación humana obligatoria (HITL) antes de despliegues a producción.",
+      "tools": ["cloudflare_edge_inspect_preview"]
+    },
+    "blender-mcp": {
+      "id": "blender-mcp",
+      "category": "visual_inspection_and_60fps",
+      "command": "node",
+      "args": ["tools/mcp/mcp_omni_rag_server.mjs", "--profile=blender-mcp"],
+      "patternOrigin": "ahujasid/blender-mcp",
+      "vaultPath": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\webgpu-3d-2026\\blender-mcp",
+      "audience": "urn:web-software-factory:mcp:blender-mcp",
+      "readOnly": false,
+      "csprngSession": true,
+      "additionalPropertiesFalse": true,
+      "hitlGate": false,
+      "description": "Generación 3D paramétrica headless con Python bpy, materiales PBR, iluminación de estudio y exportación .glb optimizada para motion-engineer.",
+      "tools": ["blender_generate_bpy_scene", "trellis_image_to_3d_glb"]
+    },
+    "rea-agents": {
+      "id": "rea-agents",
+      "category": "knowledge_and_documentation",
+      "command": "node",
+      "args": ["tools/intelligence/rea_reverse_engineering_bridge.mjs", "--mcp"],
+      "patternOrigin": "morluto/rea",
+      "vaultPath": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\rea",
+      "env": {
+        "REA_MCP_INPUT_SCHEMA_PROFILE": "compact",
+        "REA_MCP_OUTPUT_SCHEMA_PROFILE": "compact"
+      },
+      "audience": "urn:web-software-factory:mcp:rea-agents",
+      "readOnly": true,
+      "csprngSession": true,
+      "additionalPropertiesFalse": true,
+      "hitlGate": false,
+      "description": "Ingeniería inversa ética basada en evidencia (morluto/rea Clean-Room Reconstruction): inspección DOM/HAR/JS/WASM hacia RECONSTRUCTED_SPEC.md, inspección SQLite/D1 WAL y auditoría de paquetes móviles .apk (Capacitor 8).",
+      "tools": [
+        "analyze-reference-web-or-bundle",
+        "inspect-sqlite-wal-snapshot",
+        "audit-mobile-apk-package"
+      ]
+    }
+  },
+  "waves": {
+    "wave_1_spec": {
+      "waveName": "Ola 1 — Descubrimiento y Especificación (Spec-Kit)",
+      "roles": ["product-spec-architect", "tech-scout"],
+      "allowedServers": ["omni-rag-ast", "context7", "rea-agents"],
+      "writeCodeAllowed": false
+    },
+    "wave_2_builders": {
+      "waveName": "Ola 2 — Roles Constructores (Implementación Creador)",
+      "roles": [
+        "senior-coder",
+        "ux-designer",
+        "motion-engineer",
+        "copywriting-cro-strategist",
+        "edge-fullstack-architect",
+        "seo-aeo-geo-architect"
+      ],
+      "allowedServers": ["filesystem-scoped", "semgrep-mcp", "omni-rag-ast", "context7", "blender-mcp"],
+      "blockedPaths": [".agents/sealed_envelope_evals/"],
+      "writeCodeAllowed": true
+    },
+    "wave_3a_coverage_verifier": {
+      "waveName": "Ola 3A — Rol Verificador de Cobertura (100% Read-Only)",
+      "roles": ["qa-auditor"],
+      "allowedServers": ["git-readonly-mcp", "d1-sqlite-readonly-mcp", "chrome-devtools", "playwright"],
+      "writeCodeAllowed": false
+    },
+    "wave_3b_devsecops_auditor": {
+      "waveName": "Ola 3B — Rol Auditor DevSecOps (SAST/SBOM/DAST/Edge)",
+      "roles": ["security-engineer"],
+      "allowedServers": ["delta-security-scanner", "dast-offat-zap", "github-mcp", "cloudflare-edge-mcp"],
+      "writeCodeAllowed": false
+    }
+  },
+  "rolePermissions": {
+    "product-spec-architect": {
+      "wave": "wave_1_spec",
+      "allowedServers": ["omni-rag-ast", "context7", "rea-agents"],
+      "mode": "READ_SPEC_ONLY"
+    },
+    "tech-scout": {
+      "wave": "wave_1_spec",
+      "allowedServers": ["omni-rag-ast", "context7", "rea-agents"],
+      "mode": "READ_SPEC_ONLY"
+    },
+    "senior-coder": {
+      "wave": "wave_2_builders",
+      "allowedServers": ["filesystem-scoped", "semgrep-mcp", "omni-rag-ast", "context7"],
+      "blockedPaths": [".agents/sealed_envelope_evals/"],
+      "mode": "SCOPED_BUILDER"
+    },
+    "ux-designer": {
+      "wave": "wave_2_builders",
+      "allowedServers": ["filesystem-scoped", "semgrep-mcp", "omni-rag-ast", "context7", "blender-mcp"],
+      "blockedPaths": [".agents/sealed_envelope_evals/"],
+      "mode": "SCOPED_BUILDER"
+    },
+    "motion-engineer": {
+      "wave": "wave_2_builders",
+      "allowedServers": ["filesystem-scoped", "semgrep-mcp", "omni-rag-ast", "context7", "blender-mcp"],
+      "blockedPaths": [".agents/sealed_envelope_evals/"],
+      "mode": "SCOPED_3D_MOTION_BUILDER"
+    },
+    "copywriting-cro-strategist": {
+      "wave": "wave_2_builders",
+      "allowedServers": ["filesystem-scoped", "semgrep-mcp", "omni-rag-ast", "context7"],
+      "blockedPaths": [".agents/sealed_envelope_evals/"],
+      "mode": "SCOPED_BUILDER"
+    },
+    "edge-fullstack-architect": {
+      "wave": "wave_2_builders",
+      "allowedServers": ["filesystem-scoped", "semgrep-mcp", "omni-rag-ast", "context7"],
+      "blockedPaths": [".agents/sealed_envelope_evals/"],
+      "mode": "SCOPED_BUILDER"
+    },
+    "seo-aeo-geo-architect": {
+      "wave": "wave_2_builders",
+      "allowedServers": ["filesystem-scoped", "semgrep-mcp", "omni-rag-ast", "context7"],
+      "blockedPaths": [".agents/sealed_envelope_evals/"],
+      "mode": "SCOPED_BUILDER"
+    },
+    "qa-auditor": {
+      "wave": "wave_3a_coverage_verifier",
+      "allowedServers": ["git-readonly-mcp", "d1-sqlite-readonly-mcp", "chrome-devtools", "playwright"],
+      "mode": "STRICT_READONLY_VERIFIER"
+    },
+    "security-engineer": {
+      "wave": "wave_3b_devsecops_auditor",
+      "allowedServers": ["delta-security-scanner", "dast-offat-zap", "github-mcp", "cloudflare-edge-mcp"],
+      "mode": "DEVSECOPS_AUDITOR"
+    },
+    "orchestrator": {
+      "wave": "wave_0_governance",
+      "allowedServers": [
+        "omni-rag-ast",
+        "context7",
+        "chrome-devtools",
+        "playwright",
+        "semgrep-mcp",
+        "delta-security-scanner",
+        "dast-offat-zap",
+        "filesystem-scoped",
+        "git-readonly-mcp",
+        "d1-sqlite-readonly-mcp",
+        "github-mcp",
+        "cloudflare-edge-mcp",
+        "blender-mcp",
+        "rea-agents"
+      ],
+      "mode": "GOVERNANCE_SUPERVISOR"
+    }
+  }
+}

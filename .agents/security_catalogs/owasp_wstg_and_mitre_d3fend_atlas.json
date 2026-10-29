@@ -1,0 +1,62 @@
+{
+  "schema": "owasp-wstg-opencre-oscal-mitre-atlas-d3fend-catalog",
+  "version": "2026.10",
+  "epistemicTier": "TIER_1_SOTA_2026",
+  "oscalVersion": "1.2.2",
+  "testCasesAndCountermeasures": [
+    {
+      "wstgId": "WSTG-ATHN-04",
+      "legacyOtgId": "OTG-AUTHN-004",
+      "openCreId": "CRE:633-428",
+      "oscalControlId": "IA-2(1)",
+      "mitreAttackOrAtlasId": "T1078 / AML.T0054",
+      "mitreD3fendId": "D3-MFA / D3-CSEP",
+      "verificationRule": "Verify WebAuthn/FIDO2 Passkey flow, Argon2id hashing parameters, and asymmetric ES256/RS256 JWT signatures."
+    },
+    {
+      "wstgId": "WSTG-ATHZ-04",
+      "legacyOtgId": "OTG-AUTHZ-004",
+      "openCreId": "CRE:724-770",
+      "oscalControlId": "AC-3 / AC-4",
+      "mitreAttackOrAtlasId": "T1213 (IDOR / BOLA)",
+      "mitreD3fendId": "D3-AAC",
+      "verificationRule": "Probe dynamic API routes with sequential integers and cross-tenant UUIDs; verify HTTP 400/403 rejection via Ory Keto Zanzibar and PostgreSQL FORCE ROW LEVEL SECURITY."
+    },
+    {
+      "wstgId": "WSTG-INPV-05",
+      "legacyOtgId": "OTG-INPVAL-005",
+      "openCreId": "CRE:161-451",
+      "oscalControlId": "SI-10",
+      "mitreAttackOrAtlasId": "T1190 (SQLi / Parameter Pollution)",
+      "mitreD3fendId": "D3-IVV",
+      "verificationRule": "Verify 100% parameterized queries ($1, $2 / EXECUTE USING) and read-only SQL mutation blocking on d1-sqlite-readonly-mcp."
+    },
+    {
+      "wstgId": "WSTG-CRYP-03",
+      "legacyOtgId": "OTG-CRYPST-003",
+      "openCreId": "CRE:223-780",
+      "oscalControlId": "SC-28(1)",
+      "mitreAttackOrAtlasId": "T1530 (Cloud Storage / DB Exfiltration)",
+      "mitreD3fendId": "D3-DENCR",
+      "verificationRule": "Verify column-level AES-256-GCM Envelope Encryption with AAD tenant binding and GCP Cloud KMS HSM 90-day key rotation."
+    },
+    {
+      "wstgId": "WSTG-BUSL-09",
+      "legacyOtgId": "OTG-BUSLOGIC-009",
+      "openCreId": "CRE:812-304",
+      "oscalControlId": "SI-16",
+      "mitreAttackOrAtlasId": "T1499 (Concurrent Race Condition / Double Spend)",
+      "mitreD3fendId": "D3-TL",
+      "verificationRule": "Execute 25 parallel checkout requests against 5 stock units via AtomicDurableStockLock and replay Stripe/MercadoPago webhooks via IdempotentWebhookLedger."
+    },
+    {
+      "wstgId": "WSTG-AIML-01",
+      "legacyOtgId": "OTG-AGENT-001",
+      "openCreId": "CRE:910-101",
+      "oscalControlId": "SA-11(AI)",
+      "mitreAttackOrAtlasId": "AML.T0051 (Indirect Prompt & Memory Manipulation)",
+      "mitreD3fendId": "D3-AISAN / D3-MCPG",
+      "verificationRule": "Audit all 18 MCP Zero-Trust rules (SARIF v2.1.0), verify <0.1ms Agent Governance Kernel, and enforce Sealed-Envelope Eval isolation."
+    }
+  ]
+}

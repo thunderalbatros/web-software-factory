@@ -1,0 +1,17 @@
+{
+  "schema": "subagent-stop-handoff-v2026.10",
+  "runId": "run-mvs86q95",
+  "waveNumber": "1",
+  "role": "orchestrator",
+  "status": "PASS",
+  "timestamp": "2026-10-28T14:44:26.498Z",
+  "summary": "Wave 1 (orchestrator -> constitution_lock): PASS in 7ms",
+  "durationMs": 7,
+  "retryRoundsUsed": 0,
+  "upstreamPointers": [],
+  "metrics": {
+    "passed": true,
+    "durationMs": 7,
+    "retryRoundsUsed": 0
+  }
+}

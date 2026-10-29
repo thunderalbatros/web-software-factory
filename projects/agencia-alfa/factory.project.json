@@ -48,6 +48,48 @@
   },
   "design": {
     "styleSkill": "bento",
-    "styleGuidePath": ".specify/memory/style-guide.md"
-  }
+    "styleGuidePath": ".specify/memory/style-guide.md",
+    "industryArchetype": "b2b-saas-platform",
+    "surfaceMode": "Persuade",
+    "creativeNorthStar": "Architectural Bento & Live Interactive Proof",
+    "apcaContrastFloor": 85,
+    "requiresTabularNums": true
+  },
+  "dbTier": "edge-d1",
+  "database": {
+    "dbTier": "edge-d1",
+    "engine": "Cloudflare D1 (SQLite Edge $0.00)",
+    "envelopeEncryption": "AES-256-GCM (GCP Cloud KMS CMK + 90d rotation)",
+    "updatedAt": "2026-10-28T16:10:09.252Z"
+  },
+  "industryArchetype": "saas",
+  "surfaceMode": "Persuade",
+  "targetPlatform": "web-and-mobile-capacitor",
+  "mobile": {
+    "engine": "capacitor-8",
+    "appId": "com.webfactory.agenciaalfa",
+    "appName": "Agencia Alfa",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "safeAreaInsetsEnabled": true,
+    "minTouchTargetPx": 48,
+    "nativeBridges": [
+      "webauthn-passkeys",
+      "camera",
+      "push-notifications",
+      "haptics"
+    ],
+    "tokensMobilePath": "tokens/tokens.mobile.json",
+    "themeTokensTsPath": "tokens/ThemeTokens.ts"
+  },
+  "sonicIdentity": {
+    "seedId": "linear-minimal-tick",
+    "uiSfxMode": "subtle",
+    "material": "polymer",
+    "backgroundMusic": "off",
+    "introVideoMode": "vector-svg-reveal-3s"
+  },
+  "interviewStatus": "COMPLETED_BY_CTO"
 }

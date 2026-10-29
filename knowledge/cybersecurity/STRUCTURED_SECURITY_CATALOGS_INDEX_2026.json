@@ -1,0 +1,26 @@
+{
+  "schema": "structured-security-catalogs-index-2026.10",
+  "epistemicTier": "TIER_1_SOTA_2026",
+  "authorityBoost": 1.35,
+  "updatedAt": "2026-10-28T17:51:44.830Z",
+  "catalogs": [
+    {
+      "id": "owasp_asvs_v5_atomic",
+      "path": ".agents/security_catalogs/owasp_asvs_v5_atomic.json",
+      "standard": "OWASP ASVS v5.0.0 (Levels 1, 2, 3)",
+      "entriesCount": 14
+    },
+    {
+      "id": "owasp_aisvs_v1_and_mcp_top10",
+      "path": ".agents/security_catalogs/owasp_aisvs_v1_and_mcp_top10.json",
+      "standard": "OWASP AISVS v1.0 (12 Chapters) + LLM Top 10 + MCP Top 10 (2025)",
+      "entriesCount": 32
+    },
+    {
+      "id": "owasp_wstg_and_mitre_d3fend_atlas",
+      "path": ".agents/security_catalogs/owasp_wstg_and_mitre_d3fend_atlas.json",
+      "standard": "OWASP WSTG (OTG-*) + OpenCRE + NIST OSCAL v1.2.2 + MITRE ATT&CK / ATLAS / D3FEND",
+      "entriesCount": 6
+    }
+  ]
+}

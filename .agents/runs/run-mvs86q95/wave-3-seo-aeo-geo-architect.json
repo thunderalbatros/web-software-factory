@@ -1,0 +1,21 @@
+{
+  "schema": "subagent-stop-handoff-v2026.10",
+  "runId": "run-mvs86q95",
+  "waveNumber": "3",
+  "role": "seo-aeo-geo-architect",
+  "status": "PASS",
+  "timestamp": "2026-10-28T14:44:28.470Z",
+  "summary": "Wave 3 (seo-aeo-geo-architect -> floor_and_aeo_guard): PASS in 174ms",
+  "durationMs": 174,
+  "retryRoundsUsed": 0,
+  "upstreamPointers": [
+    ".agents/runs/run-mvs86q95/wave-2B-senior-coder.json",
+    ".agents/runs/run-mvs86q95/wave-2B-copywriting-cro-strategist.json",
+    ".agents/runs/run-mvs86q95/wave-2B-motion-engineer.json"
+  ],
+  "metrics": {
+    "passed": true,
+    "durationMs": 174,
+    "retryRoundsUsed": 0
+  }
+}

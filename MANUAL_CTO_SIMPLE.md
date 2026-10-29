@@ -120,3 +120,121 @@ Muestra cuánto crédito tenés disponible de tus **$90.00 USD en Google Cloud /
 npm run cto:benchmark
 ```
 Evalúa a los 9 roles de tu equipo contra las **5 Golden Benchmark Tasks** reales (1. UX & Tokens OKLCH/APCA, 2. Motion 60FPS & 3D, 3. Clean Code & AST < 500ms, 4. Zero-Trust AppSec y 5. Eficiencia de Tokens HOT/WARM/COLD), verifica las trazas de las 3 olas (`MASEval`), el servidor MCP y los splits `held-in`/`held-out` (`self-harness`), registra la calidad de tus skills (`OpenSpace v2`) y firma criptográficamente el snapshot con `Ed25519` (`agentvcs`) en `.agents/memory/agentvcs_snapshots.json`.
+
+### 17. Ver el estado de tus Servidores MCP Zero-Trust y Enrutamiento por Rol (`npm run cto:mcp-status`)
+```powershell
+npm run cto:mcp-status
+```
+Muestra en español simple la tabla completa de los **13 servidores MCP instalados** (incluyendo `blender-mcp`), qué rol y ola del equipo tiene permiso para usar cada uno (**Separación Creador-Verificador** en `< 0.1ms`: Ola 1 Spec, Ola 2 Constructores, Ola 3A Verificador `100% Read-Only` y Ola 3B Auditor DevSecOps), confirma que las respuestas mayores a `1.200 tokens` se comprimen en disco devolviendo solo un resumen ejecutivo (`< 300 tokens`), y verifica el resultado **`18/18 SARIF Pass`** (`OWASP MCP Top 10`) en `.agents/security_reports/mcp_audit.sarif.json`.
+
+### 18. Alternar el Motor de Base de Datos del Proyecto Activo (`npm run cto:arquitectura-db`)
+```powershell
+# Modo ligero $0.00 en Cloudflare D1 (SQLite en el Edge):
+npm run cto:arquitectura-db -- "edge-d1"
+
+# Modo empresarial SaaS/Fintech en PostgreSQL v14+ (Hyperdrive + Drizzle ORM + RLS + 3 Zonas + KMS):
+npm run cto:arquitectura-db -- "enterprise-postgres"
+```
+Conmuta con un solo comando la arquitectura de datos de tu sitio activo entre **`edge-d1`** (por defecto para landings y catálogos ligeros a `$0.00`) y **`enterprise-postgres`** (generando automáticamente en `projects/<slug>/db/` el esquema Serverless PostgreSQL con `ENABLE / FORCE ROW LEVEL SECURITY`, las 3 zonas `zone_restricted` / `zone_confidential` / `zone_audit_worm` inmutable, y el cifrado de columnas PII con `AES-256-GCM` + `GCP Cloud KMS`).
+
+### 19. Destilar Cursos en Video, Conferencias o Papers a Reglas Atómicas (`npm run cto:destilar-curso`)
+```powershell
+# Procesar todas las transcripciones pendientes (.srt, .vtt, .txt, .md) en knowledge/_inbox_courses/:
+npm run cto:destilar-curso
+
+# O destilar un archivo específico:
+npm run cto:destilar-curso -- "ruta/a/transcripcion.srt"
+```
+Elimina automáticamente el **80%+ del relleno conversacional** (saludos, muletillas, marcas de tiempo) y extrae exclusivamente comandos de configuración, código listo para producción traducido al stack SOTA 2026, reglas verificables y tabla de errores frecuentes (*Gotchas*), guardando una salida dual en `knowledge/` (`TIER_1_SOTA_2026`) y `.agents/skills/`.
+
+### 20. Cosechar Documentación Oficial, `/llms.txt` y Catálogos de Seguridad (`npm run cto:cosechar-docs`)
+```powershell
+npm run cto:cosechar-docs
+```
+Recorre los repositorios oficiales de tu bóveda local (`sota-2026/webgpu-3d-2026`, `self-evolving-2026`, `final-frontier-2026`) y regenera los **3 manuales canónicos `CANON_OFFICIAL_DOCS_*_2026.md`** libres de relleno más los **3 catálogos estructurados JSON** (`OWASP ASVS v5.0`, `AISVS v1.0 + MCP Top 10`, `WSTG + OpenCRE + MITRE ATLAS/D3FEND`) en `.agents/security_catalogs/`.
+
+### 21. Configurar Dirección de Arte por Industria (`npm run cto:arquetipo`)
+```powershell
+npm run cto:arquetipo -- "<ecommerce | fintech | erp | streamer | abogacia | clinica | saas | lujo>"
+```
+Genera automáticamente `PRODUCT.md` y `DESIGN.md` en el proyecto activo siguiendo la especificación oficial de **Google Labs (`google-labs-code/design.md`)** y **Paul Bakaus Impeccable v4.6 (`pbakaus/impeccable`)**, configurando el modo de superficie (`Persuade`, `Operate`, `Read`, `Experience`), los tokens OKLCH específicos del rubro y validando las **62 reglas deterministas Anti-Slop**.
+
+### 22. Empaquetar Proyecto como App Móvil Nativa iOS/Android (`npm run cto:crear-movil`)
+```powershell
+npm run cto:crear-movil
+```
+Activa el brazo móvil de la fábrica (`Capacitor 8` + `Style Dictionary v4 Multi-Target`), compilando simultáneamente `tokens/tokens.css`, `tokens/tokens.mobile.json` y `tokens/ThemeTokens.ts` (escalas `pt`/`dp` para iOS Swift, Android XML y Expo/React Native), además de generar `capacitor.config.ts`, `mobile-ergonomics.css` (`safe-area-inset-*` para Dynamic Island/Notch y áreas táctiles `>= 48x48px`) y `mobile-native-bridge.ts` (biometría `WebAuthn/Passkeys`, cámara y notificaciones push).
+
+### 23. Investigar Referencia con Ingeniería Inversa de Sala Limpia (`morluto/rea`)
+```bash
+npm run cto:investigar-referencia -- "<ruta-o-url>"
+```
+Usa el puente de ingeniería inversa ética basada en evidencia (`rea_reverse_engineering_bridge.mjs`) para analizar la estructura DOM, contratos de red (`.har`), módulos JS/TS (*Wakaru*) y artefactos `.wasm` de una aplicación de referencia y generar una especificación funcional y matemática limpia (`RECONSTRUCTED_SPEC.md`) sin copiar código propietario ni marcas registradas.
+
+### 24. Simular o Procesar Feedback Post-Venta de Cliente (`Web Widget / Slack -> Draft PR`)
+```bash
+npm run cto:feedback-cliente -- "<mensaje-del-ticket>"
+```
+Procesa un ticket entrante del panel interactivo de cliente o de Slack a través del circuito seguro Zero-Trust (`Filtro Anti-Prompt-Injection + Redacción PII -> HybridAgentSandbox -> Braintrust Autoevals -> Rama feedback/<ticket-id> + Preview URL + Notificación de 1 clic al CTO`).
+
+### 25. Aplicar un Cambio Incremental con Especificación Delta y Enrutamiento Adaptativo (`npm run cto:cambio-incremental`)
+```powershell
+npm run cto:cambio-incremental -- "Cambiar el color del CTA principal y actualizar el título del Hero"
+```
+Aplica una modificación sobre el proyecto activo sin reescribir toda la especificación ni despertar agentes innecesarios:
+1. **Especificación Delta (`OpenSpec`)**: Crea un archivo ligero en `projects/<slug>/deltas/<YYYY-MM-DD-cambio>.delta.md` con bloques `ADDED / MODIFIED / REMOVED` y lo fusiona en el `SPEC.md` canónico solo cuando pasan todos los tests.
+2. **3 Carriles Automáticos de Velocidad (`SWE-AF` + `Elastic Loop`)**:
+   - **Carril 1 (`LANE_1_FAST_PATH < 15s`)**: Para cambios visuales, copy, colores OKLCH o CSS puntual. Activa **1 solo agente** (`ux-designer` o `senior-coder`) + linter AST `Oxc` (`<= 1.200 tokens`).
+   - **Carril 2 (`LANE_2_STANDARD_BUILD`)**: Para nuevas secciones UI, endpoints o componentes 3D. Activa `Spec Delta -> 2 Constructores -> Verificador Read-Only`.
+   - **Carril 3 (`LANE_3_DEEP_ARCHITECTURE`)**: Para esquemas de base de datos (`PostgreSQL RLS`), autenticación (`Kratos/Keto`), cifrado `KMS` o migración móvil (`Capacitor 8`). Activa el flujo completo de 6 etapas + las 3 olas completas.
+3. **Memoria en Grafo Git (`Beads`) y Compuerta `Fail-to-Pass (F2P) / Pass-to-Pass (P2P)`**: Registra cada subtarea con bloqueo explícito de archivos (`fileLocks` en `.agents/beads/task_graph.jsonl`) y verifica que el cambio supere tanto el test nuevo (`f2pVerified: true`) como toda la suite existente (`p2pVerified: true`).
+
+### 26. Auditar y Certificar el Harness Completo Pre-Vuelo (`npm run cto:auditar-harness`)
+```powershell
+npm run cto:auditar-harness
+```
+Ejecuta el **Doctor Integral del Harness (`tools/audit/harness_doctor_audit.mjs`)**:
+- Audita y califica (`0–100 puntos`) las **8 Capas Operativas del Harness** (Fases 1 a 31), verificando que no existan scripts desconectados en la ruta crítica (`cto:nuevo -> cto:arquetipo -> cto:construir -> cto:empaquetar`), que el presupuesto de arranque `HOT + WARM` sea **`<= 3.500 tokens`**, que los libros fuera del dominio web estén en cuarentena y que la firma criptográfica `Ed25519` (`agentvcs_snapshots.json`) sea 100% válida.
+- Limpia residuos de pruebas (`--reset-test-artifacts`), corre un **Simulacro End-to-End de 5 pasos en seco** dentro de una cápsula temporal aislada y genera en la raíz el informe ejecutivo **`HARNESS_READINESS_REPORT.md`** con el veredicto **`LISTO PARA EL PRIMER SITIO REAL: SÍ / NO`**.
+
+### 27. Abrir el Gemelo Digital en Vivo "Factory Twin Cockpit" (`npm run cto:cockpit`)
+```powershell
+# Levantar el panel web en tiempo real en http://localhost:4400 (0 consumo de tokens):
+npm run cto:cockpit
+
+# Simular recorrido en vivo de los 11 personajes por las 6 salas desde consola:
+node tools/cockpit/factory_twin_server.mjs --demo-walkthrough
+```
+Levanta en `http://localhost:4400` un panel interactivo en español con **0 consumo de tokens** (Server-Sent Events `SSE` sobre `.agents/runs/current_factory_state.json`, `.agents/beads/task_graph.jsonl` y `factory_dora_ledger.json`) con **3 pestañas en tiempo real**:
+1. **🎮 Pestaña 1 — Mapa 2D de la Fábrica en Vivo ("Factory Game Floor" en HTML5 Canvas a 60 FPS)**: Muestra las **6 Salas iluminadas** y a los **11 personajes en miniatura** (`1 Capataz + 10 Agentes`) caminando con animación suave (`lerp`), barra de estado sobre la cabeza, globo de diálogo en vivo y ficha lateral al hacer clic (función exacta, herramientas MCP, permisos de Lectura/Escritura e historial `OpenSpace Skill Quality`). Incluye el botón **"▶️ Simular Recorrido de los 10 Agentes en Vivo"**.
+2. **📋 Pestaña 2 — Tablero Kanban & Compuertas HITL (`KaibanJS` / `Pragor`)**: Muestra las 5 columnas en vivo y permite ejecutar con 1 clic **"✅ Aprobar Paso HITL"**, **"💬 Enviar Feedback Rápido"** y **"🚀 Empaquetar .ZIP"**, junto con la **Bitácora Forense en Vivo** (*Quién hizo qué, cuándo y por qué*).
+3. **📊 Pestaña 3 — Radiografía del Sitio Activo & FinOps**: Muestra el proyecto activo, el arquetipo visual, el modo de base de datos (`edge-d1` vs `enterprise-postgres`), el carril de velocidad (`LANE 1/2/3`), el termómetro de los 4 bloques de `eval_matrix.mjs` (`100.0 / 100.0`) y el gasto diario frente al tope de `$1.50 USD`.
+
+### 28. Crear Intro de Video Animada a 60 FPS con el Logo de la Marca (`npm run cto:crear-intro-video`)
+```powershell
+npm run cto:crear-intro-video -- "<estilo: minimal | 3d-pbr | vertex-veo-hybrid | shader-hud>"
+# Ejemplo:
+npm run cto:crear-intro-video -- "vertex-veo-hybrid"
+```
+Genera la intro de video programática a **60 FPS** (`2.5s` a `5.0s`) usando el archivo `.svg` del logo y los tokens `OKLCH` del `DESIGN.md` del proyecto activo (prohibiendo que la IA deforme el vector o la tipografía del logo), sincronizada con su diseño sonoro a **`-14 LUFS`** y el escalón de GCP elegido (`Motion Canvas` + `Three.js r186` + lienzo B-Roll opcional con `Vertex AI Veo` / `Imagen 3`). Empaqueta automáticamente el video en formato dual **`AV1/WebM` + `MP4` (`< 1.8 MB`)** junto con su `poster.webp` instantáneo (`LCP < 1.2s`, `CLS: 0.00`).
+
+### 29. Configurar Diseño Sonoro Procedural, Música Adaptativa/CC0 y Sesión Reaper `.RPP` (`npm run cto:crear-audio`)
+```powershell
+npm run cto:crear-audio -- "<modo: sfx-ui | vertex-musiclm | cloudrun-stable-audio | musica-adaptativa | libreria-cc0 | exportar-rpp>"
+# Ejemplo:
+npm run cto:crear-audio -- "sfx-ui"
+```
+Configura el motor de efectos de sonido en tiempo real (`templates/components/web-audio-director.js` con **`0 KB` de archivos externos**, 6 presets táctiles, micro-variación orgánica de `±20 cents` en pitch y `±8%` en filtro paso-bajo, audio espacial 3D `HRTF` sincronizado con `Three.js r186` y botón accesible de *Mute*), genera o selecciona la música de fondo normalizada a **`-18 LUFS`** (con *Sidechain Ducking* automático de `-6 dB` en `300 Hz – 3.5 kHz` cuando hay locución de Google Cloud TTS), registra el costo en `.agents/memory/gcp_finops_budget.json` y exporta la sesión completa compatible con **Reaper DAW (`projects/<slug>/audio_session/<slug>.rpp`) + pistas MIDI (`.mid`)**.
+
+### 30. Completar y Aprobar la Entrevista Inicial Obligatoria de 10 Bloques (`npm run cto:entrevista`)
+```powershell
+# Generar o revisar el estado de la entrevista del proyecto:
+npm run cto:entrevista -- "<slug>" "<rubro>"
+
+# Aprobar la entrevista y auto-compilar SPEC.md + PRODUCT.md + DESIGN.md (con identidad sonora a medida):
+npm run cto:entrevista -- "<slug>" --aprobar
+```
+Activa la compuerta pre-construcción (`HARD_STOP_INTERVIEW_REQUIRED`) que garantiza que ningún agente construya a ciegas:
+- Genera `projects/<slug>/ENTREVISTA_CLIENTE.md` y `projects/<slug>/CLIENT_BRIEF_INTERVIEW.json` con los **10 Bloques Maestros** (1. Identidad/Rubro, 2. Audiencia/CRO/Primary CTA, 3. Sitemap, 4. Estética OKLCH/Tipografía, 5. Movimiento/3D WebGPU, 6. Identidad Sonora/Música/Video Intro `off | subtle | tactile | immersive-3d` + material físico `paper | polymer | wood | glass | metal | cyber-hud`, 7. Activos del Cliente vs IA, 8. Backend/D1/Postgres RLS, 9. SEO/GEO/Seguridad y 10. Presupuesto FinOps/DoD).
+- Al ejecutar `--aprobar`, auto-compila `SPEC.md` (`[REQ-01]..[REQ-12]`), `PRODUCT.md`, `DESIGN.md` (con síntesis psicoacústica calculada por `synthesizeProceduralSoundFromDesignCriteria()`) y `.agents/beads/task_graph.jsonl`.
+

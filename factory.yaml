@@ -1,0 +1,169 @@
+# ==============================================================================
+# factory.yaml — Warp Factories Declarative Control Plane (SOTA 2026)
+# ==============================================================================
+# Single Source of Truth for Agentic Infrastructure, HumanLayer 12-Factor Agents,
+# OpenHands StuckDetector, E2B Hybrid Sandbox, Braintrust Autoevals & Post-Sale Triage.
+# ==============================================================================
+
+version: "2.6.0-warp-humanlayer-rea"
+studio:
+  id: "web-software-factory"
+  standard: "ISO/IEC 26550 Multi-Project Domain Engineering Studio"
+  ownerEmail: "tomasbermudez777@gmail.com"
+
+foreman:
+  primaryAgent: "cto_command_center"
+  squadCoordinator: "tools/orchestrator/agent_squad.mjs"
+  rpiGateEngine: "tools/orchestrator/humanlayer_rpi_gate.mjs"
+  adaptiveDepthRouter: "tools/orchestrator/adaptive_depth_router.mjs"
+  beadsTaskGraphPath: ".agents/beads/task_graph.jsonl"
+  reverseEngineeringBridge: "tools/intelligence/rea_reverse_engineering_bridge.mjs"
+  feedbackTriageAgent: "tools/feedback/client_feedback_triage_agent.mjs"
+
+adaptiveDepthLanes:
+  LANE_1_FAST_PATH:
+    targetLatencySeconds: 15
+    maxTokensBudget: 6000
+    maxTurns: 4
+    skipMultiAgentDebate: true
+  LANE_2_STANDARD_BUILD:
+    targetLatencySeconds: 45
+    maxTokensBudget: 20000
+    maxTurns: 10
+    skipMultiAgentDebate: false
+  LANE_3_DEEP_ARCHITECTURE:
+    targetLatencySeconds: 120
+    maxTokensBudget: 48000
+    maxTurns: 20
+    skipMultiAgentDebate: false
+
+intakeSources:
+  - id: "cli"
+    driver: "tools/cto_command_center.mjs"
+    trusted: true
+  - id: "github_issues"
+    driver: "tools/mcp/mcp_omni_rag_server.mjs --profile=github-mcp"
+    zeroTrustSanitizer: true
+  - id: "slack_webhook"
+    driver: "tools/feedback/client_feedback_triage_agent.mjs"
+    zeroTrustSanitizer: true
+    rateLimitPerHour: 5
+  - id: "client_feedback_widget"
+    driver: "templates/components/client-feedback-widget.js"
+    endpoint: "/api/client-feedback"
+    zeroTrustSanitizer: true
+    rateLimitPerHour: 5
+
+budgets:
+  maxTokensPerRun: 48000
+  maxInlineMcpTokens: 1200
+  maxVertexUsdPerRun: 0.50
+  maxAutonomousRetries: 2
+  astLatencyCeilingMs: 500
+  maxDuplicationPercent: 4.0
+
+twelveFactorAgents:
+  factor_01_natural_language_to_tool_calls: true
+  factor_02_own_your_prompts: true
+  factor_03_own_your_context_window: true
+  factor_04_tools_are_structured_outputs: true
+  factor_05_unify_execution_and_business_state: true
+  factor_06_launch_pause_resume_with_simple_apis: true
+  factor_07_contact_humans_with_tool_calls: true
+  factor_08_own_your_control_flow: true
+  factor_09_compact_errors_into_context_window: true
+  factor_10_small_focused_agents: true
+  factor_11_trigger_from_anywhere_meet_users_where_they_are: true
+  factor_12_make_your_agent_a_stateless_reducer: true
+
+humanLayerRpiPipeline:
+  checkpointPattern: ".agents/runs/<slug>/rpi_checkpoint.json"
+  stages:
+    - order: 1
+      id: "Questions"
+      description: "Clarificación de ambigüedades de negocio, alcance y restricciones antes de tocar código."
+    - order: 2
+      id: "Research"
+      description: "Evidencia verificable vía Omni-RAG v5, CocoIndex AST y morluto/rea Clean-Room."
+    - order: 3
+      id: "Design"
+      description: "Compilación de DESIGN.md (Google Labs + Impeccable 62 Anti-Slop Rules + Ciencia Visual OKLCH/APCA)."
+    - order: 4
+      id: "Structure"
+      description: "Esqueleto modular, esquemas SQL/D1/Postgres RLS y contratos tipados."
+    - order: 5
+      id: "Plan"
+      description: "Tracer-Bullet Roadmap determinista con criterios de aceptación verificables."
+    - order: 6
+      id: "Implementation"
+      description: "Fill-In & Verification sobre HybridAgentSandbox + 5-Gate QA + Braintrust Autoevals."
+
+knowledgeTriggers:
+  - pathPattern: "worker/index.js"
+    invariants:
+      - "Strict Content-Security-Policy (CSP), HSTS, X-Frame-Options: DENY, Referrer-Policy."
+      - "Zero raw SQL string concatenation; parameterized prepared statements only."
+      - "Zero-Trust input sanitization and rate-limiting on /api/client-feedback and public POST routes."
+  - pathPattern: "schema.sql"
+    invariants:
+      - "In enterprise-postgres mode, enforce tenant_id UUID NOT NULL + ENABLE/FORCE ROW LEVEL SECURITY."
+      - "In edge-d1 mode, enforce strict foreign keys, composite indexes, and append-only audit logs."
+  - pathPattern: "wrangler.toml"
+    invariants:
+      - "Never commit plaintext secrets in [vars]; use wrangler secret put or KMS envelope encryption."
+      - "Maintain explicit compatibility_date >= 2025-10-01 and static assets binding."
+  - pathPattern: "tokens.json"
+    invariants:
+      - "W3C DTCG 2025.10 format with perceptual OKLCH values and APCA contrast floors (Lc >= 60/75/90)."
+      - "Gurney/Albers thermal rotation in dark surfaces (ban dead achromatic gray C == 0)."
+  - pathPattern: "capacitor.config.ts"
+    invariants:
+      - "Enforce HTTPS scheme on iOS/Android, safe-area-inset ergonomics, >= 48x48px touch targets, and zero hardcoded API keys."
+
+openHandsStuckDetector:
+  enabled: true
+  maxIdenticalCommandErrors: 2
+  detectOscillatoryFileEdits: true
+  maxProtectedPathAttempts: 2
+  protectedPaths:
+    - "AGENTS.md"
+    - "CONSTRAINTS.md"
+
+sandbox:
+  engine: "HybridAgentSandbox"
+  cloudDriver: "e2b-microvm"
+  cloudPackages:
+    - "@e2b/code-interpreter"
+    - "@e2b/desktop"
+  bootBudgetMs: 150
+  localFallbackDriver: "local-worktree"
+  memoryLimitMb: 2048
+  hardTimeoutMs: 30000
+
+scorers:
+  braintrustAutoevals:
+    - id: "Factuality"
+      minScore: 0.95
+      description: "Verifies empirical evidence tags and zero hallucinated symbols/APIs."
+    - id: "JSONDiff"
+      minScore: 1.00
+      description: "Structural parity on schema contracts, W3C DTCG tokens, and MCP payloads."
+    - id: "Levenshtein"
+      minScore: 0.90
+      description: "Deterministic similarity against canonical security & optical baselines."
+    - id: "Security"
+      minScore: 1.00
+      description: "Zero XSS, SQLi, prompt injection, or hardcoded secrets."
+    - id: "ZeroRedundantTests"
+      minScore: 1.00
+      description: "Warp/Stryker semantic mutation check blocking tautological or fake tests."
+
+safeOutputsContract:
+  pattern: "github/gh-aw"
+  allowedOutputs:
+    - "diagnostic_comments"
+    - "scoped_artifacts_in_.agents/runs/"
+    - "scoped_draft_pr_on_feedback_branch"
+  forbidDirectProductionPush: true
+  forbidWildcardPermissions: true
+

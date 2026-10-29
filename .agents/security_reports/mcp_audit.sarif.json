@@ -1,0 +1,529 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "WebFactory-MCP-Security-Auditor",
+          "informationUri": "https://owasp.org/www-project-mcp-top-10/",
+          "version": "2026.10.0",
+          "rules": [
+            {
+              "id": "MCP-01",
+              "name": "StrictInputSchemaAdditionalPropertiesFalse",
+              "shortDescription": {
+                "text": "All MCP tool inputSchema objects enforce \"additionalProperties\": false."
+              },
+              "properties": {
+                "owaspMcpTop10": "OWASP-MCP01:2025",
+                "status": "PASS"
+              }
+            },
+            {
+              "id": "MCP-02",
+              "name": "NoExposedSensitiveMcpHeaders",
+              "shortDescription": {
+                "text": "Forbids sensitive x-mcp-header exposure across MCP server definitions."
+              },
+              "properties": {
+                "owaspMcpTop10": "OWASP-MCP02:2025",
+                "status": "PASS"
+              }
+            },
+            {
+              "id": "MCP-03",
+              "name": "NoPlaintextStaticCredentials",
+              "shortDescription": {
+                "text": "Prohibits plaintext static credentials or API keys in .mcp.json and role registry."
+              },
+              "properties": {
+                "owaspMcpTop10": "OWASP-MCP01:2025",
+                "status": "PASS"
+              }
+            },
+            {
+              "id": "MCP-04",
+              "name": "CsprngSessionIdGeneration",
+              "shortDescription": {
+                "text": "Generates MCP session IDs exclusively via CSPRNG (crypto.randomUUID / crypto.randomBytes), forbidding Math.random()."
+              },
+              "properties": {
+                "owaspMcpTop10": "OWASP-MCP03:2025",
+                "status": "PASS"
+              }
+            },
+            {
+              "id": "MCP-05",
+              "name": "TokenAudienceValidation",
+              "shortDescription": {
+                "text": "Enforces strict token Audience Validation (urn:web-software-factory:mcp-gateway:2026) before tool dispatch."
+              },
+              "properties": {
+                "owaspMcpTop10": "OWASP-MCP02:2025",
+                "status": "PASS"
+              }
+            },
+            {
+              "id": "MCP-06",
+              "name": "ShadowMcpServerBlock",
+              "shortDescription": {
+                "text": "Blocks unregistered Shadow MCP Servers at both configuration and runtime enforcement layers."
+              },
+              "properties": {
+                "owaspMcpTop10": "OWASP-MCP04:2025",
+                "status": "PASS"
+              }
+            },
+            {
+              "id": "MCP-07",
+              "name": "HitlGateForProductionMutations",
+              "shortDescription": {
+                "text": "Requires mandatory Human-in-the-Loop (HITL) approval gate for infrastructure or production deployment mutations."
+              },
+              "properties": {
+                "owaspMcpTop10": "OWASP-MCP05:2025",
+                "status": "PASS"
+              }
+            },
+            {
+              "id": "MCP-08",
+              "name": "CreatorVerifierRoleWaveSplit",
+              "shortDescription": {
+                "text": "Enforces sub-millisecond (<0.1ms) Creator-Verifier role partitioning across Wave 1, Wave 2, Wave 3A, and Wave 3B."
+              },
+              "properties": {
+                "owaspMcpTop10": "OWASP-MCP06:2025",
+                "status": "PASS"
+              }
+            },
+            {
+              "id": "MCP-09",
+              "name": "SealedEnvelopeEvalIsolation",
+              "shortDescription": {
+                "text": "Blocks Wave 2 builder agents from reading .agents/sealed_envelope_evals/ via filesystem-scoped."
+              },
+              "properties": {
+                "owaspMcpTop10": "OWASP-MCP06:2025",
+                "status": "PASS"
+              }
+            },
+            {
+              "id": "MCP-10",
+              "name": "ReadOnlyGitAndD1SqliteForVerifier",
+              "shortDescription": {
+                "text": "Restricts Wave 3A qa-auditor to 100% Read-Only Git and SQLite/D1 queries (blocking INSERT, UPDATE, DELETE, DROP)."
+              },
+              "properties": {
+                "owaspMcpTop10": "OWASP-MCP07:2025",
+                "status": "PASS"
+              }
+            },
+            {
+              "id": "MCP-11",
+              "name": "SemgrepMcpRegressionRuleBridge",
+              "shortDescription": {
+                "text": "Exposes security_check, semgrep_scan, get_abstract_syntax_tree, and write_custom_semgrep_rule in semgrep-mcp."
+              },
+              "properties": {
+                "owaspMcpTop10": "OWASP-MCP08:2025",
+                "status": "PASS"
+              }
+            },
+            {
+              "id": "MCP-12",
+              "name": "DeltaSecurityScannerExecutiveCompression",
+              "shortDescription": {
+                "text": "Persists SAST, IaC CIS, and CycloneDX SBOM reports to .agents/security_reports/{.semgrep,.trivy,.sbom} with <300 token summary."
+              },
+              "properties": {
+                "owaspMcpTop10": "OWASP-MCP08:2025",
+                "status": "PASS"
+              }
+            },
+            {
+              "id": "MCP-13",
+              "name": "DastOffatZapIsolatedStagingScope",
+              "shortDescription": {
+                "text": "Confines DAST OWASP ZAP / OFFAT dynamic API & Sec-Fetch/CORS/CSRF probes to isolated localhost staging."
+              },
+              "properties": {
+                "owaspMcpTop10": "OWASP-MCP09:2025",
+                "status": "PASS"
+              }
+            },
+            {
+              "id": "MCP-14",
+              "name": "GithubNhiPushProtectionAndNoAutoMerge",
+              "shortDescription": {
+                "text": "Enforces pre-commit secret scanning with push protection and Non-Human Identity (NHI) PRs with auto-merge blocked."
+              },
+              "properties": {
+                "owaspMcpTop10": "OWASP-MCP09:2025",
+                "status": "PASS"
+              }
+            },
+            {
+              "id": "MCP-15",
+              "name": "McpOutputSpilloverCompressor1200Tokens",
+              "shortDescription": {
+                "text": "Automatically offloads any MCP tool response > 1,200 tokens to disk and returns a lightweight executive pointer."
+              },
+              "properties": {
+                "owaspMcpTop10": "OWASP-MCP10:2025",
+                "status": "PASS"
+              }
+            },
+            {
+              "id": "MCP-16",
+              "name": "ToolAndMemoryPoisoningGuard",
+              "shortDescription": {
+                "text": "Inspects MCP tool schemas and RAG memory chunks against Tool Poisoning and Memory Poisoning vectors."
+              },
+              "properties": {
+                "owaspMcpTop10": "OWASP-MCP04:2025",
+                "status": "PASS"
+              }
+            },
+            {
+              "id": "MCP-17",
+              "name": "OutboundPiiAndTokenRedaction",
+              "shortDescription": {
+                "text": "Redacts outbound PII and sensitive bearer tokens before any external MCP payload transmission."
+              },
+              "properties": {
+                "owaspMcpTop10": "OWASP-MCP02:2025",
+                "status": "PASS"
+              }
+            },
+            {
+              "id": "MCP-18",
+              "name": "DeterministicCircuitBreakerCeiling",
+              "shortDescription": {
+                "text": "Halts runaway MCP tool loops via a deterministic 2-retry circuit breaker in agent_governance_kernel.mjs."
+              },
+              "properties": {
+                "owaspMcpTop10": "OWASP-MCP10:2025",
+                "status": "PASS"
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "MCP-01",
+          "level": "note",
+          "kind": "pass",
+          "message": {
+            "text": "[OWASP-MCP01:2025] StrictInputSchemaAdditionalPropertiesFalse: PASS — All MCP tool inputSchema objects enforce \"additionalProperties\": false."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".agents/mcp/mcp_role_registry.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MCP-02",
+          "level": "note",
+          "kind": "pass",
+          "message": {
+            "text": "[OWASP-MCP02:2025] NoExposedSensitiveMcpHeaders: PASS — Forbids sensitive x-mcp-header exposure across MCP server definitions."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".agents/mcp/mcp_role_registry.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MCP-03",
+          "level": "note",
+          "kind": "pass",
+          "message": {
+            "text": "[OWASP-MCP01:2025] NoPlaintextStaticCredentials: PASS — Prohibits plaintext static credentials or API keys in .mcp.json and role registry."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".agents/mcp/mcp_role_registry.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MCP-04",
+          "level": "note",
+          "kind": "pass",
+          "message": {
+            "text": "[OWASP-MCP03:2025] CsprngSessionIdGeneration: PASS — Generates MCP session IDs exclusively via CSPRNG (crypto.randomUUID / crypto.randomBytes), forbidding Math.random()."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".agents/mcp/mcp_role_registry.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MCP-05",
+          "level": "note",
+          "kind": "pass",
+          "message": {
+            "text": "[OWASP-MCP02:2025] TokenAudienceValidation: PASS — Enforces strict token Audience Validation (urn:web-software-factory:mcp-gateway:2026) before tool dispatch."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".agents/mcp/mcp_role_registry.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MCP-06",
+          "level": "note",
+          "kind": "pass",
+          "message": {
+            "text": "[OWASP-MCP04:2025] ShadowMcpServerBlock: PASS — Blocks unregistered Shadow MCP Servers at both configuration and runtime enforcement layers."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".agents/mcp/mcp_role_registry.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MCP-07",
+          "level": "note",
+          "kind": "pass",
+          "message": {
+            "text": "[OWASP-MCP05:2025] HitlGateForProductionMutations: PASS — Requires mandatory Human-in-the-Loop (HITL) approval gate for infrastructure or production deployment mutations."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".agents/mcp/mcp_role_registry.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MCP-08",
+          "level": "note",
+          "kind": "pass",
+          "message": {
+            "text": "[OWASP-MCP06:2025] CreatorVerifierRoleWaveSplit: PASS — Enforces sub-millisecond (<0.1ms) Creator-Verifier role partitioning across Wave 1, Wave 2, Wave 3A, and Wave 3B."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".agents/mcp/mcp_role_registry.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MCP-09",
+          "level": "note",
+          "kind": "pass",
+          "message": {
+            "text": "[OWASP-MCP06:2025] SealedEnvelopeEvalIsolation: PASS — Blocks Wave 2 builder agents from reading .agents/sealed_envelope_evals/ via filesystem-scoped."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".agents/mcp/mcp_role_registry.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MCP-10",
+          "level": "note",
+          "kind": "pass",
+          "message": {
+            "text": "[OWASP-MCP07:2025] ReadOnlyGitAndD1SqliteForVerifier: PASS — Restricts Wave 3A qa-auditor to 100% Read-Only Git and SQLite/D1 queries (blocking INSERT, UPDATE, DELETE, DROP)."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".agents/mcp/mcp_role_registry.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MCP-11",
+          "level": "note",
+          "kind": "pass",
+          "message": {
+            "text": "[OWASP-MCP08:2025] SemgrepMcpRegressionRuleBridge: PASS — Exposes security_check, semgrep_scan, get_abstract_syntax_tree, and write_custom_semgrep_rule in semgrep-mcp."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".agents/mcp/mcp_role_registry.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MCP-12",
+          "level": "note",
+          "kind": "pass",
+          "message": {
+            "text": "[OWASP-MCP08:2025] DeltaSecurityScannerExecutiveCompression: PASS — Persists SAST, IaC CIS, and CycloneDX SBOM reports to .agents/security_reports/{.semgrep,.trivy,.sbom} with <300 token summary."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".agents/mcp/mcp_role_registry.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MCP-13",
+          "level": "note",
+          "kind": "pass",
+          "message": {
+            "text": "[OWASP-MCP09:2025] DastOffatZapIsolatedStagingScope: PASS — Confines DAST OWASP ZAP / OFFAT dynamic API & Sec-Fetch/CORS/CSRF probes to isolated localhost staging."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".agents/mcp/mcp_role_registry.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MCP-14",
+          "level": "note",
+          "kind": "pass",
+          "message": {
+            "text": "[OWASP-MCP09:2025] GithubNhiPushProtectionAndNoAutoMerge: PASS — Enforces pre-commit secret scanning with push protection and Non-Human Identity (NHI) PRs with auto-merge blocked."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".agents/mcp/mcp_role_registry.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MCP-15",
+          "level": "note",
+          "kind": "pass",
+          "message": {
+            "text": "[OWASP-MCP10:2025] McpOutputSpilloverCompressor1200Tokens: PASS — Automatically offloads any MCP tool response > 1,200 tokens to disk and returns a lightweight executive pointer."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".agents/mcp/mcp_role_registry.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MCP-16",
+          "level": "note",
+          "kind": "pass",
+          "message": {
+            "text": "[OWASP-MCP04:2025] ToolAndMemoryPoisoningGuard: PASS — Inspects MCP tool schemas and RAG memory chunks against Tool Poisoning and Memory Poisoning vectors."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".agents/mcp/mcp_role_registry.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MCP-17",
+          "level": "note",
+          "kind": "pass",
+          "message": {
+            "text": "[OWASP-MCP02:2025] OutboundPiiAndTokenRedaction: PASS — Redacts outbound PII and sensitive bearer tokens before any external MCP payload transmission."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".agents/mcp/mcp_role_registry.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "MCP-18",
+          "level": "note",
+          "kind": "pass",
+          "message": {
+            "text": "[OWASP-MCP10:2025] DeterministicCircuitBreakerCeiling: PASS — Halts runaway MCP tool loops via a deterministic 2-retry circuit breaker in agent_governance_kernel.mjs."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": ".agents/mcp/mcp_role_registry.json"
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "endTimeUtc": "2026-10-29T00:48:59.402Z"
+        }
+      ]
+    }
+  ]
+}

@@ -26,10 +26,38 @@ const ROOT = path.resolve(__dirname, '..', '..');
 const MEMORY_DIR = path.join(ROOT, '.agents', 'memory');
 const LEDGER_FILE = path.join(MEMORY_DIR, 'temporal_ledger.json');
 export const REGRESSION_ASSERTIONS_FILE = path.join(MEMORY_DIR, 'regression_assertions.json');
+export const EXPERIENCE_FILE = path.join(MEMORY_DIR, 'EXPERIENCE.md');
 const SKILLS_DIR = path.join(ROOT, '.agents', 'skills');
 
 if (!fs.existsSync(MEMORY_DIR)) {
   fs.mkdirSync(MEMORY_DIR, { recursive: true });
+}
+
+/**
+ * OWASP ASI06 — Agent Memory Guard:
+ * Deterministically blocks command injection, security-guard evasion, and context poisoning
+ * before persisting any fact, rule, or synthesis into `.agents/memory/temporal_ledger.json` or `EXPERIENCE.md`.
+ */
+const ASI06_MEMORY_POISONING_PATTERNS = [
+  { id: 'ASI06-CMD-INJECTION', regex: /\b(?:rm\s+-rf\s+\/|curl\s+[^|]+\|\s*(?:ba)?sh|wget\s+[^|]+\|\s*(?:ba)?sh|Invoke-Expression|IEX\s*\(|child_process\.execSync\s*\(\s*['"`](?:rm|del|format|powershell\s+-enc))\b/i },
+  { id: 'ASI06-GUARD-EVASION', regex: /\b(?:disable\s+security_gate|bypass\s+constitution_guard|skip\s+verifyConstitutionLock|compositeScore\s*>=\s*[0-4]\d|--no-verify\s+force-push)\b/i },
+  { id: 'ASI06-CONTEXT-POISONING', regex: /\b(?:ignore\s+all\s+previous\s+instructions|disregard\s+system\s+prompt|system\s+prompt\s+override|<\|im_start\|>|<\/?system_prompt>)\b/i }
+];
+
+export function validateAgentMemoryGuard(payload, targetStore = 'temporal_ledger.json') {
+  const serialized = typeof payload === 'string' ? payload : JSON.stringify(payload || {});
+  for (const rule of ASI06_MEMORY_POISONING_PATTERNS) {
+    if (rule.regex.test(serialized)) {
+      throw new Error(`[OWASP-ASI06-MEMORY-GUARD] Blocked memory poisoning / injection attempt (${rule.id}) targeting ${targetStore}`);
+    }
+  }
+  return { valid: true, targetStore };
+}
+
+export function safeWriteExperienceMarkdown(markdownContent) {
+  validateAgentMemoryGuard(markdownContent, 'EXPERIENCE.md');
+  fs.writeFileSync(EXPERIENCE_FILE, String(markdownContent || ''), 'utf8');
+  return EXPERIENCE_FILE;
 }
 
 /**
@@ -110,17 +138,19 @@ export function getTemporalLedger() {
 }
 
 /**
- * Save temporal ledger atomically
+ * Save temporal ledger atomically (protected by OWASP ASI06 Agent Memory Guard)
  */
 export function saveTemporalLedger(ledger) {
+  validateAgentMemoryGuard(ledger, 'temporal_ledger.json');
   ledger.last_updated = new Date().toISOString();
   fs.writeFileSync(LEDGER_FILE, JSON.stringify(ledger, null, 2), 'utf8');
 }
 
 /**
- * Record a bug or architectural rule with temporal validity
+ * Record a bug or architectural rule with temporal validity (protected by OWASP ASI06 Agent Memory Guard)
  */
 export function recordTemporalRule(rule) {
+  validateAgentMemoryGuard(rule, 'temporal_ledger.json');
   const ledger = getTemporalLedger();
   const existingIdx = ledger.rules.findIndex(r => r.id === rule.id);
   const now = new Date().toISOString();

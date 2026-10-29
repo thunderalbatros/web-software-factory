@@ -1,0 +1,145 @@
+{
+  "schema": "owasp-asvs-v5.0.0-atomic-catalog",
+  "version": "5.0.0",
+  "epistemicTier": "TIER_1_SOTA_2026",
+  "levels": {
+    "L1": "Baseline Application Security (All Websites & Landings)",
+    "L2": "Multi-Tenant SaaS & Commercial E-Commerce Standard",
+    "L3": "High-Assurance Fintech, Healthcare & Critical Infrastructure"
+  },
+  "requirements": [
+    {
+      "id": "v5.0.0-V1.2.1",
+      "chapter": "V1 Architecture",
+      "level": [
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "control": "Enforce opaque UUIDv4 or ULID identifiers on all public routes; forbid sequential integer IDs (Anti-IDOR)."
+    },
+    {
+      "id": "v5.0.0-V1.4.2",
+      "chapter": "V1 Architecture",
+      "level": [
+        "L2",
+        "L3"
+      ],
+      "control": "Isolate multi-tenant data at the database engine layer via PostgreSQL ENABLE and FORCE ROW LEVEL SECURITY."
+    },
+    {
+      "id": "v5.0.0-V2.1.1",
+      "chapter": "V2 Authentication",
+      "level": [
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "control": "Hash passwords exclusively with Argon2id (min 64 MB RAM, 3 iterations, parallelism 4) or support WebAuthn/FIDO2 Passkeys."
+    },
+    {
+      "id": "v5.0.0-V3.2.3",
+      "chapter": "V3 Session Management",
+      "level": [
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "control": "Bind session cookies with __Host- prefix and Secure; HttpOnly; SameSite=Strict attributes."
+    },
+    {
+      "id": "v5.0.0-V3.5.2",
+      "chapter": "V3 Session Management",
+      "level": [
+        "L2",
+        "L3"
+      ],
+      "control": "Sign JWT access tokens exclusively with asymmetric ES256 or RS256 (15-60 min TTL); reject alg=none and symmetric HS256."
+    },
+    {
+      "id": "v5.0.0-V4.1.3",
+      "chapter": "V4 Access Control",
+      "level": [
+        "L2",
+        "L3"
+      ],
+      "control": "Evaluate fine-grained resource access via Google Zanzibar relation tuples (Ory Keto ReBAC) with default-deny policy."
+    },
+    {
+      "id": "v5.0.0-V5.1.1",
+      "chapter": "V5 Validation & Sanitization",
+      "level": [
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "control": "Validate all HTTP inputs with strict schema validators (Valibot strictObject / additionalProperties: false) and MAX_BODY_BYTES <= 64 KB."
+    },
+    {
+      "id": "v5.0.0-V6.2.1",
+      "chapter": "V6 Stored Cryptography",
+      "level": [
+        "L2",
+        "L3"
+      ],
+      "control": "Encrypt zone_restricted PII columns using AES-256-GCM Envelope Encryption with ephemeral DEKs wrapped by HSM-backed GCP Cloud KMS CMKs (90-day rotation)."
+    },
+    {
+      "id": "v5.0.0-V6.4.3",
+      "chapter": "V6 Stored Cryptography",
+      "level": [
+        "L2",
+        "L3"
+      ],
+      "control": "Forbid storing raw 13-19 digit payment card PANs; store only opaque PCI DSS v4.0 payment tokens in zone_confidential."
+    },
+    {
+      "id": "v5.0.0-V7.1.2",
+      "chapter": "V7 Error Handling & Logging",
+      "level": [
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "control": "Redact PII entities (emails, PANs, phones, bearer tokens) via Presidio-pattern filters before writing logs or AI telemetry; never leak err.stack in HTTP responses."
+    },
+    {
+      "id": "v5.0.0-V7.3.4",
+      "chapter": "V7 Error Handling & Logging",
+      "level": [
+        "L3"
+      ],
+      "control": "Persist security audit trails in Write-Once-Read-Many (WORM) zone_audit_worm tables blocking UPDATE and DELETE via database triggers."
+    },
+    {
+      "id": "v5.0.0-V9.1.1",
+      "chapter": "V9 Communication",
+      "level": [
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "control": "Enforce TLS 1.3 (hostssl + scram-sha-256 for Postgres) and HSTS max-age=63072000; includeSubDomains; preload."
+    },
+    {
+      "id": "v5.0.0-V13.2.5",
+      "chapter": "V13 API & Web Service",
+      "level": [
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "control": "Validate Fetch Metadata headers (Sec-Fetch-Site, Sec-Fetch-Mode, Sec-Fetch-Dest) and HMAC-SHA256 webhook signatures with a 300s anti-replay window."
+    },
+    {
+      "id": "v5.0.0-V14.4.1",
+      "chapter": "V14 Configuration",
+      "level": [
+        "L1",
+        "L2",
+        "L3"
+      ],
+      "control": "Enforce Content-Security-Policy with frame-ancestors none, object-src none, base-uri self, and suppress Server/X-Powered-By headers."
+    }
+  ]
+}

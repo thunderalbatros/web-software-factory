@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-10-28T01:10:06.035Z",
+  "timestamp": "2026-10-28T14:45:20.096Z",
   "dimensions": {
     "rag": {
       "score": 100,
@@ -9,7 +9,7 @@
       "mrr": 0.708,
       "contextPrecisionAt3": 0.956,
       "faithfulness": 0.981,
-      "totalLatencyMs": 276
+      "totalLatencyMs": 186
     },
     "ast": {
       "score": 100,
@@ -19,7 +19,7 @@
     },
     "performance": {
       "score": 100,
-      "distMb": "0.08",
+      "distMb": "0.04",
       "passed": true
     },
     "compliance": {
@@ -67,6 +67,57 @@
     }
   },
   "passed": true,
+  "sealedEnvelopeEvals": {
+    "schema": "sealed-envelope-acceptance-suite-v2026.10",
+    "accessControlVerified": true,
+    "passed": true,
+    "score": 100,
+    "totalInvariants": 4,
+    "checks": [
+      {
+        "id": "SEALED-UX-01",
+        "domain": "UX & Perceptual Hierarchy",
+        "rule": "OKLCH_90_8_2_AND_UTOPIA_CLAMP",
+        "passed": true,
+        "weight": 20
+      },
+      {
+        "id": "SEALED-A11Y-02",
+        "domain": "Accessibility & Semantic Landmarks",
+        "rule": "APCA_CONTRAST_AND_SEMANTIC_HTML5",
+        "passed": true,
+        "weight": 20
+      },
+      {
+        "id": "SEALED-SEC-03",
+        "domain": "OWASP Top 10:2025 & ASVS v5.0",
+        "rule": "ZERO_SEQUENTIAL_IDS_FETCH_METADATA_AND_ZERO_SOURCEMAPS",
+        "passed": true,
+        "weight": 30
+      },
+      {
+        "id": "SEALED-PERF-04",
+        "domain": "60-FPS Compositor & Zero-CLS",
+        "rule": "COMPOSITOR_60FPS_AND_DIST_UNDER_50MB",
+        "passed": true,
+        "weight": 30
+      }
+    ]
+  },
+  "blindReview": {
+    "pattern": "vercel-labs/eve-blind-foreman",
+    "blindWallEnforced": true,
+    "ignoredConstructorReasoning": false,
+    "verifierBackend": "deterministic-blind-foreman-v2026",
+    "verifierModel": "gemini-2.5-flash-verifier-offline-guard",
+    "inputsInspected": {
+      "specLoaded": true,
+      "cleanGitDiffBytes": 34,
+      "constructorReasoningRead": false
+    },
+    "passed": true,
+    "verdict": "APPROVED_BLIND_VERIFICATION"
+  },
   "vetoTriggered": false,
   "vetoReasons": [],
   "vetoInvariantVerified": true,
@@ -89,7 +140,7 @@
     "rageClick": {
       "testedButtons": 3,
       "clicksPerButton": 5,
-      "burstElapsedMs": 30,
+      "burstElapsedMs": 37,
       "within200ms": true,
       "mainIntact": true
     },

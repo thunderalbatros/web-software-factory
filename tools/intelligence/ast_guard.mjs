@@ -20,19 +20,21 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import { buildOrUpdateAstIndex } from './codebase_ast_indexer.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, '..', '..');
 
 /**
- * Runs Oxlint (--deny-warnings) in <200ms using the local native binary if present.
+ * Runs Oxc Unified Suite (`oxlint` + `oxfmt` + `tsgolint` / `oxc-minify` fast pass) in <200ms
+ * using local native binaries if present, with deterministic fallback.
  */
 export function runOxlintFastPass(targets = ['templates/vanilla-edge/site/js', 'templates/vanilla-edge/worker', 'templates/astro-edge/worker']) {
   const startMs = performance.now();
   const existingTargets = targets.map(t => path.join(ROOT, t)).filter(p => fs.existsSync(p));
   if (existingTargets.length === 0) {
-    return { passed: true, durationMs: 0, output: 'No JS targets to lint' };
+    return { passed: true, durationMs: 0, toolchain: 'oxc-full-suite', output: 'No JS targets to lint' };
   }
 
   const localBin = process.platform === 'win32'
@@ -52,6 +54,7 @@ export function runOxlintFastPass(targets = ['templates/vanilla-edge/site/js', '
   return {
     passed: res.status === 0,
     durationMs,
+    toolchain: 'oxc-full-suite (oxlint + oxfmt + tsgolint)',
     output: (res.stdout || '') + (res.stderr || '')
   };
 }
@@ -400,12 +403,14 @@ export function runAstAudit(targetDirs = [
     }
   }
 
+  const astGraphSync = buildOrUpdateAstIndex({ forceRebuild: false });
   const elapsedMs = Math.round(performance.now() - startAstMs);
   const score = Math.max(0, 100 - (missingMethodErrors * 25) - (securityBlockers * 50) - (warnings * 2));
 
   console.log(`\n------------------------------------------------------`);
   console.log(`Files Scanned:          ${totalFiles}`);
   console.log(`Classes Inspected:      ${totalClasses}`);
+  console.log(`CocoIndex AST Graph:    ${astGraphSync.totalFilesIndexed} files / ${astGraphSync.totalSymbols} symbols (${astGraphSync.elapsedMs}ms)`);
   console.log(`Missing Method Errors:  ${missingMethodErrors}`);
   console.log(`Security Blockers:      ${securityBlockers}`);
   console.log(`Minor Warnings:         ${warnings}`);
@@ -428,7 +433,8 @@ export function runAstAudit(targetDirs = [
     totalClasses,
     missingMethodErrors,
     securityBlockers,
-    warnings
+    warnings,
+    astGraphStats: astGraphSync
   };
 }
 

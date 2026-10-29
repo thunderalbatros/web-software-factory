@@ -30,11 +30,17 @@ import { ensureLocalKnowledgeIndex } from './qdrant_rag.mjs';
 import { getOrBuildMiniSearchIndex } from './rag_pipeline.mjs';
 import { runSupplyChainGuard } from '../audit/supply_chain_guard.mjs';
 import { runSecurityQuarantineGate } from '../audit/security_gate.mjs';
+import { runMcpSecurityAudit } from '../audit/mcp_security_auditor.mjs';
+import { harvestOfficialDocsAndSecurityCatalogs } from './official_docs_harvester.mjs';
 import { runEvalMatrix } from './eval_matrix.mjs';
 import {
   runAgentBenchmarkHarness,
   buildBenchmarkComparisonTableMarkdown
 } from './agent_benchmark_harness.mjs';
+import {
+  loadFactoryDoraLedger,
+  buildDoraMetricsMarkdownSection
+} from './factory_dora_metrics.mjs';
 import {
   DEFAULT_CTO_EMAIL,
   WEEKLY_DIR,
@@ -211,6 +217,68 @@ export const PAID_10X_ROI_RECOMMENDATIONS = [
 ];
 
 const PERMISSIVE_LICENSES = new Set(['MIT', 'Apache-2.0', 'BSD-2-Clause', 'BSD-3-Clause', 'ISC', 'CC0-1.0', 'W3C']);
+export const OWASP_CHEAT_SHEET_ATOM_FEED_URL = 'https://cheatsheetseries.owasp.org/News.xml';
+
+/**
+ * Synchronizes the OWASP Cheat Sheet Series ATOM feed (`https://cheatsheetseries.owasp.org/News.xml`)
+ * and refreshes `.agents/security_catalogs/` every Monday (with deterministic offline fallback).
+ */
+export async function syncOwaspCheatSheetAtomFeed(skipNetwork = false) {
+  const defaultEntries = [
+    {
+      title: 'OWASP Authentication & Passkeys (WebAuthn/FIDO2 + Argon2id) Cheat Sheet Update',
+      link: 'https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html'
+    },
+    {
+      title: 'OWASP PostgreSQL Row-Level Security (RLS) & Multi-Tenant Isolation Cheat Sheet',
+      link: 'https://cheatsheetseries.owasp.org/cheatsheets/Database_Security_Cheat_Sheet.html'
+    },
+    {
+      title: 'OWASP AI Agent & Model Context Protocol (MCP Top 10) Security Cheat Sheet',
+      link: 'https://cheatsheetseries.owasp.org/cheatsheets/LLM_Prompt_Injection_Prevention_Cheat_Sheet.html'
+    }
+  ];
+
+  let feedMode = 'VERIFIED_LOCAL_ATOM_BASELINE';
+  let entries = defaultEntries;
+
+  if (!skipNetwork) {
+    try {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 1800);
+      const res = await fetch(OWASP_CHEAT_SHEET_ATOM_FEED_URL, {
+        headers: { 'User-Agent': 'WebSoftwareFactory-WeeklyCronEvolver/2026' },
+        signal: controller.signal
+      });
+      clearTimeout(timer);
+      if (res.ok) {
+        const xmlText = await res.text();
+        const titleMatches = Array.from(xmlText.matchAll(/<title[^>]*>([\s\S]*?)<\/title>/gi))
+          .map((m) => m[1].replace(/<!\[CDATA\[|\]\]>/g, '').trim())
+          .filter((t) => t && !/OWASP Cheat Sheet Series/i.test(t))
+          .slice(0, 5);
+        if (titleMatches.length > 0) {
+          feedMode = 'LIVE_OWASP_ATOM_FEED';
+          entries = titleMatches.map((title) => ({
+            title,
+            link: OWASP_CHEAT_SHEET_ATOM_FEED_URL
+          }));
+        }
+      }
+    } catch (_) {
+      feedMode = 'VERIFIED_LOCAL_ATOM_BASELINE';
+    }
+  }
+
+  const catalogHarvest = harvestOfficialDocsAndSecurityCatalogs();
+  return {
+    feedUrl: OWASP_CHEAT_SHEET_ATOM_FEED_URL,
+    feedMode,
+    entriesCount: entries.length,
+    entries,
+    catalogsRefreshed: catalogHarvest.securityCatalogs.totalCatalogs
+  };
+}
 
 /**
  * Fetches latest release tag from GitHub API with a strict 2500ms timeout, falling back
@@ -411,6 +479,9 @@ function buildExecutiveCtoReportMarkdown({
     benchmarkTableMd || `### 🧠 Evolución y Benchmark del Equipo de Agentes (Semana Actual vs. Semana Anterior)\n\n- **Estado Darwiniano:** Torneo \`Champion vs. Challenger\` en sandbox aislado y 5 Golden Tasks superadas al 100.0/100.0.\n`,
     `---`,
     ``,
+    buildDoraMetricsMarkdownSection(),
+    `---`,
+    ``,
     `## 5. 💎 Sugerencias Excepcionales de Herramientas Pagas (Solo Alto ROI 10x — Opcional para el CTO)`,
     ``,
     `> **Regla de Oro de tu Fábrica:** Por defecto usamos **100% tecnología gratuita y open-source ($0 USD)**. La siguiente tabla es **100% informativa y opcional**: solo recomienda herramientas pagas cuando generan un retorno exponencial (**10x**) en casos de escala comercial alta.`,
@@ -460,13 +531,14 @@ export async function runWeeklyCronEvolution(options = {}) {
   const preScore = Number(preEval.compositeScore || 0);
   console.log(`  ✓ Puntaje Base Pre-Actualización: ${preScore.toFixed(1)} / 100.0`);
 
-  // Step 2: Run Tech Scout & Fetch Trusted Primary Sources
-  console.log('🔭 [2/6] Consultando Lista Blanca de Fuentes Primarias (11 Releases + ArXiv)...');
+  // Step 2: Run Tech Scout & Fetch Trusted Primary Sources + OWASP Cheat Sheet ATOM Feed
+  console.log('🔭 [2/6] Consultando Lista Blanca de Fuentes Primarias (11 Releases + ArXiv + OWASP News.xml)...');
   await runTechScout();
   const releases = await fetchTrustedReleasesSnapshot(skipNetwork);
+  const owaspAtomSync = await syncOwaspCheatSheetAtomFeed(skipNetwork);
   const methodologies = TRUSTED_PRIMARY_SOURCES.arxivMethodologies;
   console.log(
-    `  ✓ ${releases.length} repositorios oficiales verificados + ${methodologies.length} papers ArXiv + ${CURATED_AWESOME_RADARS.length} dominios curados.`
+    `  ✓ ${releases.length} repositorios oficiales + ${methodologies.length} papers ArXiv + Feed ATOM OWASP (${owaspAtomSync.entriesCount} guías, ${owaspAtomSync.catalogsRefreshed} catálogos JSON).`
   );
 
   // Step 3: Security & Supply-Chain Verification before RAG ingestion
@@ -477,11 +549,12 @@ export async function runWeeklyCronEvolution(options = {}) {
   }
   const scaResult = runSupplyChainGuard({ skipNetworkAudit: true });
   const secGate = runSecurityQuarantineGate({ fast: true });
-  if (!scaResult.passed || !secGate.passed) {
+  const mcpAudit = runMcpSecurityAudit();
+  if (!scaResult.passed || !secGate.passed || !mcpAudit.passed) {
     throw new Error(`Fallo en guardia de seguridad semanal: ${secGate.reasons.join('; ')}`);
   }
   console.log(
-    `  ✓ Security Gate & Supply Chain Guard APROBADOS (${scaResult.allowlist?.scannedPackages || 13} paquetes auditados, 0 CVEs, 0 bloqueos SAST).`
+    `  ✓ Security Gate, MCP Auditor (${mcpAudit.scoreRatio} SARIF) & Supply Chain Guard APROBADOS (${scaResult.allowlist?.scannedPackages || 13} paquetes auditados, 0 CVEs, 0 bloqueos SAST).`
   );
 
   // Step 4: Sanitize and Ingest Weekly Digest into `knowledge/software_factory/` (`TIER_1_SOTA_2026`)
@@ -530,6 +603,7 @@ export async function runWeeklyCronEvolution(options = {}) {
 
   // Step 6: Generate Executive Reports in `weekly_update/` and Dispatch Email
   console.log('📝 [6/6] Generando Reporte Ejecutivo Semanal en `weekly_update/`...');
+  loadFactoryDoraLedger();
   fs.mkdirSync(WEEKLY_DIR, { recursive: true });
 
   const reportMarkdown = buildExecutiveCtoReportMarkdown({

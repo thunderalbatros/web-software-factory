@@ -29,7 +29,7 @@ function addFinding(severity, category, file, line, message, fixHint) {
 function collectFiles(dir, exts, result = []) {
   if (!fs.existsSync(dir)) return result;
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (entry.name === 'node_modules' || entry.name === '.git' || entry.name === 'dist' || entry.name === 'references' || entry.name === 'vendor' || entry.name === 'PartnerBrand-games') continue;
+    if (entry.name === 'node_modules' || entry.name === '.git' || entry.name === 'dist' || entry.name === 'references' || entry.name === 'vendor' || entry.name === 'PartnerBrand-games' || entry.name === '_legacy_archive') continue;
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) {
       collectFiles(full, exts, result);
@@ -40,13 +40,18 @@ function collectFiles(dir, exts, result = []) {
   return result;
 }
 
-console.log('==================================================================');
-console.log(`🧠 WEB SOFTWARE FACTORY — CLEAN CODE, AST & 60-FPS AUDITOR [${projectConfig.id}]`);
-console.log('==================================================================\n');
+const isMainAudit = process.argv[1] && path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
+if (isMainAudit) {
+  console.log('==================================================================');
+  console.log(`🧠 WEB SOFTWARE FACTORY — CLEAN CODE, AST & 60-FPS AUDITOR [${projectConfig.id}]`);
+  console.log('==================================================================\n');
+}
 
 // 0. Stage 0 Ultra-Fast Rust Oxlint Static Pass (--deny-warnings)
 const oxlintRes = runOxlintFastPass();
-console.log(`⚡ [Stage 0] Rust Oxlint (--deny-warnings): ${oxlintRes.passed ? 'PASS' : 'FAIL'} in ${oxlintRes.durationMs}ms`);
+if (isMainAudit) {
+  console.log(`⚡ [Stage 0] Rust Oxlint (--deny-warnings): ${oxlintRes.passed ? 'PASS' : 'FAIL'} in ${oxlintRes.durationMs}ms`);
+}
 if (!oxlintRes.passed) {
   addFinding('BLOCKER', 'oxlint-deny-warnings', 'project', 1, `Oxlint static analysis failed: ${oxlintRes.output.slice(0, 180)}`, 'Resolve Oxlint warnings/errors.');
 }
@@ -184,7 +189,7 @@ for (const fullPath of [...jsFiles, ...cssFiles]) {
   const baseName = path.basename(fullPath);
   const relPath = path.relative(rootDir, fullPath).replace(/\\/g, '/');
   // Entry points & standard template assets are always referenced
-  if (['app.js', 'index.js', 'design-tokens.css', 'ui-primitives.css', 'motion-engine.css'].includes(baseName)) {
+  if (['app.js', 'index.js', 'design-tokens.css', 'ui-primitives.css', 'motion-engine.css', 'mobile-ergonomics.css', 'diorama-hero-3d.css'].includes(baseName)) {
     continue;
   }
   const stem = baseName.replace(/\.[^.]+$/, '');
@@ -194,7 +199,75 @@ for (const fullPath of [...jsFiles, ...cssFiles]) {
     addFinding('MINOR', 'knip-orphan-file', relPath, 1, `Orphan asset or unreferenced module detected (${relPath}).`, 'Import/link the file or prune dead asset (knip rule).');
   }
 }
-console.log(`🧹 [Stage 5] Knip Dead-Code & Orphan Asset Pass: ${orphanFilesCount} orphan files, ${unusedExportsCount} dead exports`);
+
+/**
+ * Deterministic Copy-Paste Duplication Detector (`morluto/rea` `.jscpd.json` pattern, `maxDuplicationPercent = 4.0`).
+ * Scans normalized 8-line sliding windows across code blocks and fails if duplicated lines exceed `4.0%`.
+ */
+export function computeCodeDuplicationMetrics(fileEntries = [], maxDuplicationPercent = 4.0, windowSize = 8) {
+  let totalMeaningfulLines = 0;
+  let duplicatedLinesCount = 0;
+  const seenWindows = new Map();
+  const duplicateClones = [];
+
+  for (const item of fileEntries) {
+    const fileLabel = item.file || 'inline';
+    const rawLines = String(item.content || '')
+      .split(/\r?\n/)
+      .map((l) => l.replace(/\/\/.*$/, '').trim())
+      .filter((l) => l.length > 12 && !/^[{}();,]+$/.test(l));
+
+    totalMeaningfulLines += rawLines.length;
+    if (rawLines.length < windowSize) continue;
+
+    const duplicatedLineIndexes = new Set();
+    for (let i = 0; i <= rawLines.length - windowSize; i++) {
+      const blockSig = rawLines.slice(i, i + windowSize).join('\n');
+      if (seenWindows.has(blockSig)) {
+        for (let k = i; k < i + windowSize; k++) duplicatedLineIndexes.add(k);
+        duplicateClones.push({
+          file: fileLabel,
+          firstSeenIn: seenWindows.get(blockSig),
+          lineOffset: i + 1
+        });
+      } else {
+        seenWindows.set(blockSig, fileLabel);
+      }
+    }
+    duplicatedLinesCount += duplicatedLineIndexes.size;
+  }
+
+  const duplicationPercent =
+    totalMeaningfulLines > 0
+      ? Number(((duplicatedLinesCount / totalMeaningfulLines) * 100).toFixed(2))
+      : 0.0;
+
+  return {
+    passed: duplicationPercent <= maxDuplicationPercent,
+    duplicationPercent,
+    maxDuplicationPercent,
+    totalMeaningfulLines,
+    duplicatedLinesCount,
+    clonesFound: duplicateClones.length,
+    clones: duplicateClones.slice(0, 10)
+  };
+}
+
+const duplicationEntries = [...jsFiles, ...cssFiles].map((fp) => ({
+  file: path.relative(rootDir, fp).replace(/\\/g, '/'),
+  content: fs.readFileSync(fp, 'utf8')
+}));
+const duplicationRes = computeCodeDuplicationMetrics(duplicationEntries, 4.0);
+if (!duplicationRes.passed) {
+  addFinding(
+    'BLOCKER',
+    'jscpd-duplication-threshold',
+    duplicationRes.clones[0]?.file || 'project',
+    duplicationRes.clones[0]?.lineOffset || 1,
+    `Code duplication is ${duplicationRes.duplicationPercent}% (exceeds maxDuplicationPercent: 4.0%).`,
+    'Refactor duplicated blocks into shared modular utilities.'
+  );
+}
 
 const blockers = findings.filter(f => f.severity === 'BLOCKER').length;
 const majors = findings.filter(f => f.severity === 'MAJOR').length;
@@ -204,10 +277,13 @@ const score = Math.max(0, 100 - (blockers * 25) - (majors * 8) - (minors * 2));
 const report = {
   generatedAt: new Date().toISOString(),
   score,
+  duplication: duplicationRes,
   summary: {
     filesChecked,
     jsFilesChecked,
     cssFilesChecked,
+    duplicationPercent: duplicationRes.duplicationPercent,
+    maxDuplicationPercent: duplicationRes.maxDuplicationPercent,
     blockers,
     majors,
     minors
@@ -217,15 +293,27 @@ const report = {
 
 fs.writeFileSync(path.join(outDir, 'clean-code-report.json'), JSON.stringify(report, null, 2));
 
-console.log(`✅ Audited ${filesChecked} files (${jsFilesChecked} JS controllers/overlays, ${cssFilesChecked} CSS stylesheets + index.html)`);
-console.log(`📊 Clean Code & 60-FPS Architecture Score: ${score}/100 (Blockers: ${blockers}, Majors: ${majors}, Minors: ${minors})`);
-if (findings.length > 0) {
-  console.log('\nFindings:');
-  for (const f of findings) {
-    console.log(`  [${f.severity}] ${f.file}:${f.line} (${f.category}) -> ${f.message}`);
-  }
-} else {
-  console.log('🎉 ZERO clean-code, AST, security, or 60-FPS motion anti-patterns detected!');
+export function runCodeCleanAudit() {
+  return {
+    passed: blockers === 0 && duplicationRes.passed,
+    score,
+    duplicationPercent: duplicationRes.duplicationPercent,
+    report
+  };
 }
 
-process.exit(blockers > 0 ? 1 : 0);
+if (isMainAudit) {
+  console.log(`🧹 [Stage 5] Knip Dead-Code & Orphan Asset Pass: ${orphanFilesCount} orphan files, ${unusedExportsCount} dead exports`);
+  console.log(`🧬 [Stage 6] Anti-Copy-Paste Duplication Guard (< 4.0%): ${duplicationRes.duplicationPercent}% (${duplicationRes.passed ? 'PASS' : 'FAIL'})`);
+  console.log(`✅ Audited ${filesChecked} files (${jsFilesChecked} JS controllers/overlays, ${cssFilesChecked} CSS stylesheets + index.html)`);
+  console.log(`📊 Clean Code & 60-FPS Architecture Score: ${score}/100 (Blockers: ${blockers}, Majors: ${majors}, Minors: ${minors})`);
+  if (findings.length > 0) {
+    console.log('\nFindings:');
+    for (const f of findings) {
+      console.log(`  [${f.severity}] ${f.file}:${f.line} (${f.category}) -> ${f.message}`);
+    }
+  } else {
+    console.log('🎉 ZERO clean-code, AST, duplication, security, or 60-FPS motion anti-patterns detected!');
+  }
+  process.exit(blockers > 0 ? 1 : 0);
+}

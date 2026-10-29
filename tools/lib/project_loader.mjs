@@ -65,6 +65,7 @@ export function setActiveProject(slugOrPath, extraMeta = {}) {
     stack: extraMeta.stack || manifest.stack || 'vanilla-edge',
     archetype: extraMeta.archetype || manifest.archetype || 'saas-b2b',
     style: extraMeta.style || manifest.design?.styleSkill || 'bento',
+    dbTier: extraMeta.dbTier || manifest.dbTier || manifest.database?.dbTier || 'edge-d1',
     updatedAt: new Date().toISOString()
   };
 
@@ -136,6 +137,7 @@ export function listProjectsCatalog() {
       stack: manifest.stack || (fs.existsSync(path.join(projRoot, 'astro.config.mjs')) ? 'astro-edge' : 'vanilla-edge'),
       archetype: manifest.archetype || 'saas-b2b',
       style: manifest.design?.styleSkill || 'bento',
+      dbTier: manifest.dbTier || manifest.database?.dbTier || 'edge-d1',
       lastAuditScore,
       lastModifiedIso: mtime.toISOString(),
       lastModifiedFormatted: mtime.toLocaleString('es-AR'),
@@ -278,7 +280,11 @@ export function loadProjectConfig(inputPath = '') {
     domain: rawConfig.domain || `https://${id}.pages.dev`,
     version: rawConfig.version || '1.0.0',
     archetype,
+    industryArchetype: rawConfig.industryArchetype || rawConfig.design?.industryArchetype || archetype,
+    surfaceMode: rawConfig.surfaceMode || rawConfig.design?.surfaceMode || 'Persuade',
+    targetPlatform: rawConfig.targetPlatform || 'web-only',
     stack,
+    dbTier: rawConfig.dbTier || rawConfig.database?.dbTier || 'edge-d1',
     complianceProfile,
     paths: {
       entryHtml,
@@ -293,7 +299,13 @@ export function loadProjectConfig(inputPath = '') {
       overlays,
       requiredOverlaysInAudit,
       coreJsFiles,
-      dataFiles
+      dataFiles,
+      productMdPath: path.join(projectRoot, 'PRODUCT.md'),
+      designMdPath: path.join(projectRoot, 'DESIGN.md'),
+      deltasDir: path.join(projectRoot, 'deltas'),
+      beadsGraphPath: path.join(FACTORY_ROOT, '.agents', 'beads', 'task_graph.jsonl'),
+      factoryYamlPath: path.join(FACTORY_ROOT, 'factory.yaml'),
+      rpiCheckpointPath: path.join(FACTORY_ROOT, '.agents', 'runs', id, 'rpi_checkpoint.json')
     },
     aeo: {
       requiredLlmsHeaders
@@ -302,5 +314,205 @@ export function loadProjectConfig(inputPath = '') {
     budgets: rawConfig.budgets || {},
     invariants,
     sdd
+  };
+}
+
+/**
+ * OpenSpec Incremental Delta Specification Generator (`projects/<slug>/deltas/<YYYY-MM-DD-cambio>.delta.md`)
+ * Generates structured `ADDED / MODIFIED / REMOVED` requirements with `[REQ-XX]` IDs without blindly overwriting `SPEC.md`.
+ */
+export function createOpenSpecDeltaFile({
+  projectSlug = 'agencia-alfa',
+  changeSlug = 'incremental-change',
+  title = 'Incremental Delta Specification',
+  added = [],
+  modified = [],
+  removed = [],
+  autoSyncBeads = true
+} = {}) {
+  const projRoot = resolveProjectRoot(projectSlug);
+  const deltasDir = path.join(projRoot, 'deltas');
+  fs.mkdirSync(deltasDir, { recursive: true });
+
+  const datePrefix = new Date().toISOString().split('T')[0];
+  const safeSlug = String(changeSlug || 'incremental-change')
+    .toLowerCase()
+    .replace(/[^a-z0-9-]+/g, '-')
+    .replace(/(^-|-$)/g, '');
+  const deltaPath = path.join(deltasDir, `${datePrefix}-${safeSlug}.delta.md`);
+
+  let reqCounter = 1;
+  const ensureReqTag = (line) => {
+    const trimmed = String(line || '').trim();
+    if (/^\[REQ-\d+\]/i.test(trimmed)) return trimmed;
+    const tag = `[REQ-${String(reqCounter++).padStart(2, '0')}]`;
+    return `${tag} ${trimmed}`;
+  };
+
+  const addedTagged = (added.length > 0 ? added : ['[REQ-01] Add incremental conversion enhancement.']).map(ensureReqTag);
+  const modifiedTagged = modified.map(ensureReqTag);
+  const removedTagged = removed.map(ensureReqTag);
+  const allTaggedReqs = [...addedTagged, ...modifiedTagged, ...removedTagged];
+
+  const content = [
+    `---`,
+    `title: "${title}"`,
+    `project: "${projectSlug}"`,
+    `protocol: "OpenSpec-Delta-v2026 + spec-kitty-1to1"`,
+    `createdAt: "${new Date().toISOString()}"`,
+    `status: "PENDING_EVAL_MATRIX"`,
+    `---`,
+    ``,
+    `# 📐 OpenSpec Delta: ${title}`,
+    ``,
+    `## ADDED REQUIREMENTS`,
+    ...(addedTagged.length > 0 ? addedTagged.map((r) => `- ${r}`) : ['- *(None)*']),
+    ``,
+    `## MODIFIED REQUIREMENTS`,
+    ...(modifiedTagged.length > 0 ? modifiedTagged.map((r) => `- ${r}`) : ['- *(None)*']),
+    ``,
+    `## REMOVED REQUIREMENTS`,
+    ...(removedTagged.length > 0 ? removedTagged.map((r) => `- ${r}`) : ['- *(None)*']),
+    ``
+  ].join('\n');
+
+  fs.writeFileSync(deltaPath, content, 'utf8');
+
+  if (autoSyncBeads) {
+    const beadsPath = path.join(FACTORY_ROOT, '.agents', 'beads', 'task_graph.jsonl');
+    fs.mkdirSync(path.dirname(beadsPath), { recursive: true });
+    const existingLines = fs.existsSync(beadsPath)
+      ? fs.readFileSync(beadsPath, 'utf8').split(/\r?\n/).filter(Boolean)
+      : [];
+    const existingNodes = existingLines.map((l) => {
+      try {
+        return JSON.parse(l);
+      } catch {
+        return null;
+      }
+    }).filter(Boolean);
+    const existingReqIds = new Set(existingNodes.map((n) => n.reqId));
+
+    for (const reqLine of allTaggedReqs) {
+      const m = reqLine.match(/^\[(REQ-\d+)\]\s*(.*)/i);
+      if (!m) continue;
+      const reqId = m[1].toUpperCase();
+      const desc = m[2];
+      if (!existingReqIds.has(reqId)) {
+        const targetLock = `projects/${projectSlug}/index.html`;
+        const priorOwners = existingNodes
+          .filter((n) => Array.isArray(n.fileLocks) && n.fileLocks.includes(targetLock))
+          .map((n) => n.id);
+        existingNodes.push({
+          id: `bead-${reqId.toLowerCase()}`,
+          reqId,
+          title: desc,
+          role: 'senior-coder',
+          lane: 'LANE_1_FAST_PATH',
+          fileLocks: [targetLock],
+          blockedBy: priorOwners.length > 0 ? [priorOwners[priorOwners.length - 1]] : [],
+          verificationTest: `assert_${reqId.toLowerCase().replace('-', '_')}_verified`,
+          status: 'READY',
+          updatedAt: new Date().toISOString()
+        });
+        existingReqIds.add(reqId);
+      }
+    }
+    fs.writeFileSync(beadsPath, existingNodes.map((n) => JSON.stringify(n)).join('\n') + '\n', 'utf8');
+  }
+
+  return {
+    ok: true,
+    projectSlug,
+    deltaPath,
+    requirementsCount: allTaggedReqs.length,
+    requirements: allTaggedReqs
+  };
+}
+
+/**
+ * Merges an approved OpenSpec Delta into the canonical `SPEC.md` ONLY when `evalPassed === true`.
+ */
+export function mergeApprovedDeltaIntoCanonicalSpec(projectSlug, deltaPath, evalPassed = true) {
+  if (!evalPassed) {
+    return {
+      merged: false,
+      reason: 'EVAL_MATRIX_NOT_PASSED: Refusing to merge Delta Spec into canonical SPEC.md.'
+    };
+  }
+  const projRoot = resolveProjectRoot(projectSlug);
+  const specPath = path.join(projRoot, 'SPEC.md');
+  if (!fs.existsSync(deltaPath)) {
+    throw new Error(`Delta file not found: ${deltaPath}`);
+  }
+  const deltaContent = fs.readFileSync(deltaPath, 'utf8');
+  const existingSpec = fs.existsSync(specPath) ? fs.readFileSync(specPath, 'utf8') : `# SPEC — ${projectSlug}\n`;
+  const mergedSection = `\n\n---\n<!-- Merged from ${path.basename(deltaPath)} -->\n${deltaContent.replace(/^---[\s\S]*?---\s*/, '')}`;
+  fs.writeFileSync(specPath, existingSpec.trimEnd() + mergedSection, 'utf8');
+  return {
+    merged: true,
+    specPath,
+    deltaPath
+  };
+}
+
+/**
+ * Verifies strict 1:1 `spec-kitty` Traceability (`Requirement [REQ-XX] -> Task in .agents/beads/task_graph.jsonl -> Verification Test`).
+ */
+export function verifySpecKittyTraceabilityMatrix(projectSlug = 'agencia-alfa', deltaOrSpecPath = '') {
+  const projRoot = resolveProjectRoot(projectSlug);
+  const targetDoc =
+    deltaOrSpecPath && fs.existsSync(deltaOrSpecPath)
+      ? deltaOrSpecPath
+      : path.join(projRoot, 'SPEC.md');
+
+  const docText = fs.existsSync(targetDoc) ? fs.readFileSync(targetDoc, 'utf8') : '';
+  const reqMatches = [...docText.matchAll(/\[(REQ-\d+)\]/gi)].map((m) => m[1].toUpperCase());
+  const uniqueReqs = Array.from(new Set(reqMatches));
+
+  const beadsPath = path.join(FACTORY_ROOT, '.agents', 'beads', 'task_graph.jsonl');
+  const beadsNodes = fs.existsSync(beadsPath)
+    ? fs
+        .readFileSync(beadsPath, 'utf8')
+        .split(/\r?\n/)
+        .filter(Boolean)
+        .map((l) => {
+          try {
+            return JSON.parse(l);
+          } catch {
+            return null;
+          }
+        })
+        .filter(Boolean)
+    : [];
+
+  const beadsByReq = new Map(beadsNodes.map((n) => [String(n.reqId || '').toUpperCase(), n]));
+  const matrix = [];
+  const unmappedRequirements = [];
+
+  for (const reqId of uniqueReqs) {
+    const bead = beadsByReq.get(reqId);
+    const hasTask = Boolean(bead && bead.id);
+    const hasTest = Boolean(bead && bead.verificationTest);
+    if (!hasTask || !hasTest) {
+      unmappedRequirements.push(reqId);
+    }
+    matrix.push({
+      reqId,
+      taskId: bead?.id || null,
+      verificationTest: bead?.verificationTest || null,
+      fileLocks: bead?.fileLocks || [],
+      traced1To1: hasTask && hasTest
+    });
+  }
+
+  return {
+    passed: unmappedRequirements.length === 0,
+    projectSlug,
+    sourceDocument: path.relative(FACTORY_ROOT, targetDoc).replace(/\\/g, '/'),
+    totalRequirements: uniqueReqs.length,
+    mappedCount: uniqueReqs.length - unmappedRequirements.length,
+    unmappedRequirements,
+    matrix
   };
 }

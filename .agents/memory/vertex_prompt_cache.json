@@ -1,30 +1,75 @@
 {
-  "schema": "vertex-prompt-cache-v2-hot-prefix",
-  "cacheKey": "cc4c66140c6471fb2b12d524786a9184d886f74807dfaa10fcde2de340ca865a",
-  "updatedAt": "2026-10-26T22:22:46.559Z",
+  "schema": "vertex-prompt-cache-v3-headroom-aligned",
+  "cacheKey": "2e020111653e5b3152e50f137a411da4d70e43e993fd06a45f55d4daef88d256",
+  "alignedPrefixHash": "2bf519c5ca90578e",
+  "updatedAt": "2026-10-29T00:48:49.547Z",
   "ttlSeconds": 86400,
   "hotContextFiles": [
     {
+      "path": ".agents/memory/tom_swe_model.json",
+      "rawTokens": 2554,
+      "tokens": 420,
+      "ccrHash": "abf5cc506820e9d7",
+      "sha256": "abf5cc506820e9d7"
+    },
+    {
       "path": "AGENTS.md",
-      "tokens": 461,
+      "rawTokens": 461,
+      "tokens": 458,
+      "ccrHash": null,
       "sha256": "4fbedbe124839a0a"
     },
     {
       "path": "CONSTRAINTS.md",
+      "rawTokens": 600,
       "tokens": 600,
+      "ccrHash": null,
       "sha256": "ebb2d873c455fb62"
     },
     {
       "path": "tokens/design.tokens.json",
-      "tokens": 1553,
+      "rawTokens": 1553,
+      "tokens": 420,
+      "ccrHash": "0862af92fde40d51",
       "sha256": "0862af92fde40d51"
-    },
-    {
-      "path": ".agents/memory/tom_swe_model.json",
-      "tokens": 2554,
-      "sha256": "e02e5110e8832103"
     }
   ],
-  "totalHotTokens": 5168,
-  "policy": "100% static cacheable prefix; zero bulk knowledge/ injection allowed."
+  "totalHotTokens": 1898,
+  "cacheAligner": {
+    "alignerVersion": "headroom-cache-aligner-2026.10",
+    "prefixHash": "2bf519c5ca90578e",
+    "hotPrefixDigest": "27c5c943196cc615",
+    "orderedSegments": [
+      {
+        "tier": "1_HOT_STATIC_PREFIX",
+        "cacheable": true,
+        "items": [
+          ".agents/memory/tom_swe_model.json",
+          "AGENTS.md",
+          "CONSTRAINTS.md",
+          "tokens/design.tokens.json"
+        ]
+      },
+      {
+        "tier": "2_WARM_ROLE_AND_SKILLS",
+        "cacheable": true,
+        "items": [
+          ".agents/agency/roles/ux-designer.md",
+          ".agents/skills/vanilla-motion-choreography/SKILL.md",
+          ".agents/skills/21st-ui/SKILL.md"
+        ]
+      },
+      {
+        "tier": "3_DYNAMIC_TAIL_UNCAHCED",
+        "cacheable": false,
+        "dynamicKeys": [
+          "query",
+          "timestamp"
+        ],
+        "timestampIsolatedAtEnd": true
+      }
+    ],
+    "estimatedKvCacheHitRatePct": 94.5
+  },
+  "policy": "100% static cacheable prefix via Headroom CacheAligner; dynamic variables isolated at tail."
 }

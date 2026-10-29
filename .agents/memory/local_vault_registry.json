@@ -5,10 +5,10 @@
   "primaryVaultRoot": "C:\\Users\\tomas\\Desktop\\streamerbot\\references",
   "secondaryVaultRoot": "C:\\Users\\tomas\\Desktop\\web-software-factory\\references",
   "stats": {
-    "totalSystemReposDocumented": 260,
-    "uniqueDeduplicatedReposVerified": 225,
-    "strategicEnginesTargeted": 58,
-    "strategicEnginesVerifiedOnDisk": 58
+    "totalSystemReposDocumented": 267,
+    "uniqueDeduplicatedReposVerified": 232,
+    "strategicEnginesTargeted": 65,
+    "strategicEnginesVerifiedOnDisk": 65
   },
   "categories": {
     "skills_and_directives": [
@@ -164,6 +164,133 @@
         "existsOnDisk": true,
         "origin": "local-vault",
         "description": "SOTA local vault engine (gepa)"
+      },
+      {
+        "id": "headroom",
+        "category": "skills_and_directives",
+        "aliases": [
+          "headroom",
+          "headroom-ai",
+          "headroomlabs-ai/headroom",
+          "headroom-ccr",
+          "smartcrusher",
+          "cachealigner"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\headroom",
+        "existsOnDisk": true,
+        "origin": "https://github.com/headroomlabs-ai/headroom.git",
+        "description": "Compresión reversible de contexto (CCR), SmartCrusher (JSON), CodeCompressor (AST) y CacheAligner (KV Cache hit optimization)."
+      },
+      {
+        "id": "cocoindex-code",
+        "category": "skills_and_directives",
+        "aliases": [
+          "cocoindex-code",
+          "cocoindex-io/cocoindex-code",
+          "ast-indexer",
+          "call-graph"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\cocoindex-code",
+        "existsOnDisk": true,
+        "origin": "https://github.com/cocoindex-io/cocoindex-code.git",
+        "description": "Indexador semántico incremental de código fuente basado en AST (Tree-sitter + sqlite-vec) con grafos de llamadas (call graphs)."
+      },
+      {
+        "id": "chrome-devtools-mcp",
+        "category": "skills_and_directives",
+        "aliases": [
+          "chrome-devtools-mcp",
+          "chromedevtools/chrome-devtools-mcp",
+          "cdp-mcp",
+          "a11y-debugging"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\chrome-devtools-mcp",
+        "existsOnDisk": true,
+        "origin": "https://github.com/ChromeDevTools/chrome-devtools-mcp.git",
+        "description": "Servidor MCP y CLI oficial de Google Chrome DevTools con trazas de rendimiento GPU/CPU y a11y-debugging."
+      },
+      {
+        "id": "agent-governance-toolkit",
+        "category": "skills_and_directives",
+        "aliases": [
+          "agent-governance-toolkit",
+          "microsoft/agent-governance-toolkit",
+          "agent-os",
+          "agent-governance-antigravity-cli",
+          "owasp-agentic-top-10"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\agent-governance-toolkit",
+        "existsOnDisk": true,
+        "origin": "https://github.com/microsoft/agent-governance-toolkit.git",
+        "description": "Kernel de gobernanza sub-milisegundo (<0.1ms), MCP Security Gateway (10/10 OWASP Agentic Top 10) y adaptador agent-governance-antigravity-cli."
+      },
+      {
+        "id": "context7",
+        "category": "skills_and_directives",
+        "aliases": [
+          "context7",
+          "upstash/context7",
+          "ctx7"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\context7",
+        "existsOnDisk": true,
+        "origin": "https://github.com/upstash/context7.git",
+        "description": "Servidor MCP y CLI (ctx7) de documentación viva específica por versión."
+      },
+      {
+        "id": "cloudflare-agents",
+        "category": "skills_and_directives",
+        "aliases": [
+          "cloudflare-agents",
+          "cloudflare/agents",
+          "@cloudflare/codemode",
+          "codemode"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\agents",
+        "existsOnDisk": true,
+        "origin": "https://github.com/cloudflare/agents.git",
+        "description": "SDK oficial de agentes stateful en Cloudflare Workers/Durable Objects y @cloudflare/codemode (ejecución programática de herramientas en código tipado)."
+      },
+      {
+        "id": "zizmor",
+        "category": "skills_and_directives",
+        "aliases": [
+          "zizmor",
+          "zizmorcore/zizmor",
+          "github-actions-sast"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\zizmor",
+        "existsOnDisk": true,
+        "origin": "https://github.com/zizmorcore/zizmor.git",
+        "description": "Analizador estático en Rust para seguridad de workflows de GitHub Actions (v1.30 Octubre 2026)."
+      },
+      {
+        "id": "design.md",
+        "category": "skills_and_directives",
+        "aliases": [
+          "design.md",
+          "google-labs-code/design.md",
+          "@google/design.md",
+          "designmd"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\design-intelligence-2026\\design.md",
+        "existsOnDisk": true,
+        "origin": "https://github.com/google-labs-code/design.md.git",
+        "description": "Especificación oficial de Google Labs para sistemas de diseño legibles por agentes (YAML Front Matter de tokens + 8 secciones Markdown de reglas y Do's and Don'ts)."
+      },
+      {
+        "id": "impeccable",
+        "category": "skills_and_directives",
+        "aliases": [
+          "impeccable",
+          "pbakaus/impeccable",
+          "impeccable-and-design-md-director",
+          "62-anti-slop-rules"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\design-intelligence-2026\\impeccable",
+        "existsOnDisk": true,
+        "origin": "https://github.com/pbakaus/impeccable.git",
+        "description": "Framework de dirección de diseño con separación PRODUCT.md / DESIGN.md, los 4 Modos de Superficie (Persuade, Operate, Read, Experience), 24 comandos de refinamiento y 62 reglas deterministas detectoras de AI Slop."
       }
     ],
     "audit_security_testing": [
@@ -306,6 +433,19 @@
         "existsOnDisk": true,
         "origin": "local-vault",
         "description": "SOTA local vault engine (evolving-agents)"
+      },
+      {
+        "id": "blender-mcp",
+        "category": "visual_motion_audio_perf",
+        "aliases": [
+          "blender-mcp",
+          "ahujasid/blender-mcp",
+          "bpy-headless-3d"
+        ],
+        "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\webgpu-3d-2026\\blender-mcp",
+        "existsOnDisk": true,
+        "origin": "https://github.com/ahujasid/blender-mcp.git",
+        "description": "Blender Model Context Protocol (MCP) integration for autonomous 3D parametric geometry, PBR materials, studio lighting, and .glb export via Python bpy."
       }
     ],
     "rag_and_search": [
@@ -3070,6 +3210,208 @@
       "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\factory-expansion\\visuals-audio\\zzfxm",
       "origin": "https://github.com/KilledByAPixel/ZzFXM.git",
       "description": "Rastreador y reproductor de música chiptune procedural ultraliviano para ZzFX.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "headroom",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\headroom",
+      "origin": "https://github.com/headroomlabs-ai/headroom.git",
+      "description": "Compresión reversible de contexto (CCR), SmartCrusher (JSON), CodeCompressor (AST) y CacheAligner (KV Cache hit optimization).",
+      "existsOnDisk": true
+    },
+    {
+      "id": "cocoindex-code",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\cocoindex-code",
+      "origin": "https://github.com/cocoindex-io/cocoindex-code.git",
+      "description": "Indexador semántico incremental de código fuente basado en AST (Tree-sitter + sqlite-vec) con grafos de llamadas (call graphs).",
+      "existsOnDisk": true
+    },
+    {
+      "id": "chrome-devtools-mcp",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\chrome-devtools-mcp",
+      "origin": "https://github.com/ChromeDevTools/chrome-devtools-mcp.git",
+      "description": "Servidor MCP y CLI oficial de Google Chrome DevTools con trazas de rendimiento GPU/CPU y a11y-debugging.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "agent-governance-toolkit",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\agent-governance-toolkit",
+      "origin": "https://github.com/microsoft/agent-governance-toolkit.git",
+      "description": "Kernel de gobernanza sub-milisegundo (<0.1ms), MCP Security Gateway (10/10 OWASP Agentic Top 10) y adaptador agent-governance-antigravity-cli.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "context7",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\context7",
+      "origin": "https://github.com/upstash/context7.git",
+      "description": "Servidor MCP y CLI (ctx7) de documentación viva específica por versión.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "cloudflare-agents",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\agents",
+      "origin": "https://github.com/cloudflare/agents.git",
+      "description": "SDK oficial de agentes stateful en Cloudflare Workers/Durable Objects y @cloudflare/codemode (ejecución programática de herramientas en código tipado).",
+      "existsOnDisk": true
+    },
+    {
+      "id": "zizmor",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\zizmor",
+      "origin": "https://github.com/zizmorcore/zizmor.git",
+      "description": "Analizador estático en Rust para seguridad de workflows de GitHub Actions (v1.30 Octubre 2026).",
+      "existsOnDisk": true
+    },
+    {
+      "id": "design.md",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\design-intelligence-2026\\design.md",
+      "origin": "https://github.com/google-labs-code/design.md.git",
+      "description": "Especificación oficial de Google Labs para sistemas de diseño legibles por agentes (YAML Front Matter de tokens + 8 secciones Markdown de reglas y Do's and Don'ts).",
+      "existsOnDisk": true
+    },
+    {
+      "id": "impeccable",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\design-intelligence-2026\\impeccable",
+      "origin": "https://github.com/pbakaus/impeccable.git",
+      "description": "Framework de dirección de diseño con separación PRODUCT.md / DESIGN.md, los 4 Modos de Superficie (Persuade, Operate, Read, Experience), 24 comandos de refinamiento y 62 reglas deterministas detectoras de AI Slop.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "rea",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\rea",
+      "origin": "https://github.com/morluto/rea.git",
+      "description": "Ingeniería inversa basada en evidencia (rea-agents) para sitios web, bundles JS (Wakaru), .wasm, .har, SQLite y paquetes móviles .apk.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "e2b-code-interpreter",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\code-interpreter",
+      "origin": "https://github.com/e2b-dev/code-interpreter.git",
+      "description": "SDK oficial de aislamiento en microVMs Firecracker (@e2b/code-interpreter / @e2b/desktop).",
+      "existsOnDisk": true
+    },
+    {
+      "id": "OpenHands",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\OpenHands",
+      "origin": "https://github.com/All-Hands-AI/OpenHands.git",
+      "description": "Arquitectura EventStream, StuckDetector (detección de bucles A<->B) y Trigger-Based Repo Microagents.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "12-factor-agents",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\12-factor-agents",
+      "origin": "https://github.com/humanlayer/12-factor-agents.git",
+      "description": "Los 12 factores de ingeniería agéntica, flujo RPI de 6 etapas y aprobaciones HITL como función.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "humanlayer",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\humanlayer",
+      "origin": "https://github.com/humanlayer/humanlayer.git",
+      "description": "SDK y protocolo HumanLayer para aprobaciones Human-in-the-Loop (HITL) deterministas en Slack, Email y CLI.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "autoevals",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\final-frontier-2026\\autoevals",
+      "origin": "https://github.com/braintrustdata/autoevals.git",
+      "description": "Evaluadores deterministas y heurísticos (Factuality, JSONDiff, Levenshtein, Security) para control de calidad C-Level.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "OpenSpec",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\factory-optimization-2026\\OpenSpec",
+      "origin": "https://github.com/Fission-AI/OpenSpec.git",
+      "description": "Especificaciones Delta (ADDED / MODIFIED / REMOVED) para cambios incrementales sin sobrescribir SPEC.md a ciegas.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "spec-kitty",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\factory-optimization-2026\\spec-kitty",
+      "origin": "https://github.com/spec-kitty/spec-kitty.git",
+      "description": "Trazabilidad estricta 1:1 Requisito -> Tarea -> Test para sistemas de especificación agéntica.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "SWE-AF",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\factory-optimization-2026\\SWE-AF",
+      "origin": "https://github.com/Agent-Field/SWE-AF.git",
+      "description": "Enrutamiento de profundidad adaptativa según dificultad del ticket y planificación paralela consciente de dependencias en git worktrees.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "beads",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\factory-optimization-2026\\beads",
+      "origin": "https://github.com/steveyegge/beads.git",
+      "description": "Grafo de memoria de tareas y bloqueos respaldado en Git mediante archivos JSONL ultraligeros (.agents/beads/task_graph.jsonl).",
+      "existsOnDisk": true
+    },
+    {
+      "id": "agentshield",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\factory-optimization-2026\\agentshield",
+      "origin": "https://github.com/affaan-m/agentshield.git",
+      "description": "Escáner de seguridad específico para configuraciones de agentes, hooks, skills, permisos MCP y workflows.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "everything-claude-code",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\factory-optimization-2026\\everything-claude-code",
+      "origin": "https://github.com/affaan-m/everything-claude-code.git",
+      "description": "Colección de patrones de ingeniería agéntica, hooks deterministas, disciplinas de revisión y presupuestos de contexto.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "Building-the-Agentic-Software-Factory",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\factory-optimization-2026\\Building-the-Agentic-Software-Factory",
+      "origin": "https://github.com/PacktPublishing/Building-the-Agentic-Software-Factory.git",
+      "description": "Patrón Elastic Loop, AI-TDD y modelo de madurez AEMM para fábricas de software autónomas.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "motion-canvas",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\audio-and-video-2026\\motion-canvas",
+      "origin": "https://github.com/motion-canvas/motion-canvas.git",
+      "license": "MIT",
+      "description": "Motor de animación y video programático en TypeScript/Canvas para crear Intros de Marca exactas a partir de vectores SVG y tokens OKLCH.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "Tone.js",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\audio-and-video-2026\\Tone.js",
+      "origin": "https://github.com/Tonejs/Tone.js.git",
+      "license": "MIT",
+      "description": "Framework de síntesis DSP en tiempo real y composición musical interactiva sobre Web Audio API.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "ZzFX",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\audio-and-video-2026\\ZzFX",
+      "origin": "https://github.com/KilledByAPixel/ZzFX.git",
+      "license": "MIT",
+      "description": "Micro-generador procedural de efectos de sonido (< 1 KB) sobre Web Audio API con 0 KB de overhead de red.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "strudel",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\audio-and-video-2026\\strudel",
+      "origin": "https://github.com/uzu/strudel.git",
+      "license": "AGPL-3.0-or-later",
+      "description": "Patrones de composición algorítmica (TidalCycles en JS) y música generativa adaptativa en el navegador.",
+      "existsOnDisk": true
+    },
+    {
+      "id": "polymath",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\audio-and-video-2026\\polymath",
+      "origin": "https://github.com/samim23/polymath.git",
+      "license": "MIT",
+      "description": "Análisis de librerías musicales por ML (separación de stems de batería/bajo/melodía, cuantización de tempo, pitch y extracción MIDI).",
+      "existsOnDisk": true
+    },
+    {
+      "id": "stable-audio-tools",
+      "path": "C:\\Users\\tomas\\Desktop\\streamerbot\\references\\sota-2026\\audio-and-video-2026\\stable-audio-tools",
+      "origin": "https://github.com/Stability-AI/stable-audio-tools.git",
+      "license": "MIT",
+      "description": "Arquitectura de generación de efectos de sonido cinemáticos, foley y música de estudio con modelos de difusión latente.",
       "existsOnDisk": true
     }
   ]

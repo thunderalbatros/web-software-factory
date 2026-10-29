@@ -4,6 +4,7 @@ import zlib from 'node:zlib';
 import { execSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { loadProjectConfig, FACTORY_ROOT } from './lib/project_loader.mjs';
+import { generateOpenGraphSvgCard } from './design/og_image_generator.mjs';
 
 const projectConfig = loadProjectConfig();
 const root = projectConfig.projectRoot;
@@ -104,8 +105,14 @@ if (projectConfig.stack === 'astro-edge' && fs.existsSync(path.join(root, 'astro
   }
 }
 
-// 4.5 Minify CSS & JS in dist/ via LightningCSS (Rust) & esbuild
+// 4.5 Minify CSS & JS in dist/ via Oxc (`oxc-minify` / `oxfmt`) + LightningCSS (Rust) & esbuild fallback
 async function minifyDistAssets() {
+  let oxcMinify = null;
+  try {
+    const oxcMod = await import('oxc-minify');
+    oxcMinify = oxcMod.minify || oxcMod.default?.minify || null;
+  } catch (_) {}
+
   let lightningTransform = null;
   try {
     const lcss = await import('lightningcss');
@@ -138,22 +145,20 @@ async function minifyDistAssets() {
               filename: file,
               code: Buffer.from(raw, 'utf8'),
               minify: true,
-              sourceMap: true
+              sourceMap: false
             });
-            const outCode = res.code.toString('utf8') + `\n/*# sourceMappingURL=${file}.map */\n`;
+            const outCode = res.code.toString('utf8');
             fs.writeFileSync(fullPath, outCode, 'utf8');
-            if (res.map) fs.writeFileSync(fullPath + '.map', res.map.toString('utf8'), 'utf8');
             savedBytes += Math.max(0, Buffer.byteLength(raw) - Buffer.byteLength(outCode));
           } else if (esbuild) {
             const res = await esbuild.transform(raw, {
               loader: 'css',
               minify: true,
-              sourcemap: 'external',
+              sourcemap: false,
               sourcefile: file
             });
-            const outCode = res.code + `\n/*# sourceMappingURL=${file}.map */\n`;
+            const outCode = res.code;
             fs.writeFileSync(fullPath, outCode, 'utf8');
-            if (res.map) fs.writeFileSync(fullPath + '.map', res.map, 'utf8');
             savedBytes += Math.max(0, Buffer.byteLength(raw) - Buffer.byteLength(outCode));
           }
         } catch (_) {}
@@ -161,14 +166,7 @@ async function minifyDistAssets() {
     }
   }
 
-  if (!esbuild) {
-    if (savedBytes > 0) {
-      console.log(`  ✓ LightningCSS saved ${(savedBytes / 1024).toFixed(2)} KB across production CSS bundles.`);
-    }
-    return;
-  }
-
-  console.log('• Minifying JS in dist/ with esbuild + generating source maps...');
+  console.log(`• Minifying JS in dist/ via ${oxcMinify ? 'Oxc (oxc-minify Rust)' : esbuild ? 'esbuild (Oxc fallback)' : 'Native JS Minifier'} (0 source maps — OWASP A10:2025)...`);
 
   const jsDirs = [path.join(dist, 'site', 'js'), path.join(dist, 'data')];
   for (const dir of jsDirs) {
@@ -179,18 +177,32 @@ async function minifyDistAssets() {
       if (fs.statSync(fullPath).isDirectory()) continue;
       const raw = fs.readFileSync(fullPath, 'utf8');
       try {
-        const res = await esbuild.transform(raw, {
-          loader: 'js',
-          minifyWhitespace: true,
-          minifySyntax: true,
-          minifyIdentifiers: false,
-          sourcemap: 'external',
-          sourcefile: file
-        });
-        const outCode = res.code + `\n//# sourceMappingURL=${file}.map\n`;
-        fs.writeFileSync(fullPath, outCode, 'utf8');
-        if (res.map) fs.writeFileSync(fullPath + '.map', res.map, 'utf8');
-        savedBytes += Math.max(0, Buffer.byteLength(raw) - Buffer.byteLength(outCode));
+        if (oxcMinify) {
+          const res = oxcMinify(file, raw, { compress: true, mangle: false, sourcemap: false });
+          const outCode = res.code || raw;
+          fs.writeFileSync(fullPath, outCode, 'utf8');
+          savedBytes += Math.max(0, Buffer.byteLength(raw) - Buffer.byteLength(outCode));
+        } else if (esbuild) {
+          const res = await esbuild.transform(raw, {
+            loader: 'js',
+            minifyWhitespace: true,
+            minifySyntax: true,
+            minifyIdentifiers: false,
+            sourcemap: false,
+            sourcefile: file
+          });
+          const outCode = res.code;
+          fs.writeFileSync(fullPath, outCode, 'utf8');
+          savedBytes += Math.max(0, Buffer.byteLength(raw) - Buffer.byteLength(outCode));
+        } else {
+          const outCode = raw
+            .replace(/\/\*[\s\S]*?\*\//g, '')
+            .replace(/^\s*\/\/.*$/gm, '')
+            .replace(/\n{2,}/g, '\n')
+            .trim();
+          fs.writeFileSync(fullPath, outCode, 'utf8');
+          savedBytes += Math.max(0, Buffer.byteLength(raw) - Buffer.byteLength(outCode));
+        }
       } catch (_) {}
     }
   }
@@ -278,6 +290,48 @@ const headersContent = `/*
   Cache-Control: public, max-age=31536000, immutable
 `;
 fs.writeFileSync(path.join(dist, '_headers'), headersContent.trim() + '\n', 'utf8');
+
+// 5b. Generate Dynamic OpenGraph Social Preview Card (og-image.svg) in dist/
+try {
+  const ogRes = generateOpenGraphSvgCard({ project: projectConfig.id });
+  const srcOg = path.join(FACTORY_ROOT, 'templates', 'vanilla-edge', 'public', 'og-image.svg');
+  if (fs.existsSync(srcOg)) {
+    fs.copyFileSync(srcOg, path.join(dist, 'og-image.svg'));
+  }
+  console.log(`• Generated OpenGraph Social Card (dist/og-image.svg, ${ogRes.bytes} bytes)`);
+} catch (_) {}
+
+// 5c. Inject Psychoacoustic Sonic Identity & web-audio-director.js from CLIENT_BRIEF_INTERVIEW.json
+try {
+  const interviewJsonPath = path.join(root, 'CLIENT_BRIEF_INTERVIEW.json');
+  let sonicConfig = {
+    project: projectConfig.id,
+    archetype: projectConfig.industryArchetype || projectConfig.archetype || 'saas',
+    uiSfxMode: 'subtle',
+    material: 'polymer',
+    backgroundMusic: 'off',
+    introVideoMode: 'none'
+  };
+  if (fs.existsSync(interviewJsonPath)) {
+    const parsedBrief = JSON.parse(fs.readFileSync(interviewJsonPath, 'utf8'));
+    const b6 = parsedBrief?.blocks?.block6_sonic_music_video || {};
+    sonicConfig = {
+      ...sonicConfig,
+      uiSfxMode: b6.uiSfxMode || sonicConfig.uiSfxMode,
+      material: b6.material || sonicConfig.material,
+      backgroundMusic: b6.backgroundMusic || sonicConfig.backgroundMusic,
+      introVideoMode: b6.introVideoMode || sonicConfig.introVideoMode
+    };
+  }
+  fs.mkdirSync(path.join(dist, 'data'), { recursive: true });
+  fs.writeFileSync(path.join(dist, 'data', 'sonic-identity.json'), JSON.stringify(sonicConfig, null, 2) + '\n', 'utf8');
+  const srcDirector = path.join(FACTORY_ROOT, 'templates', 'components', 'web-audio-director.js');
+  if (fs.existsSync(srcDirector) && sonicConfig.uiSfxMode !== 'off') {
+    fs.mkdirSync(path.join(dist, 'site', 'js'), { recursive: true });
+    fs.copyFileSync(srcDirector, path.join(dist, 'site', 'js', 'web-audio-director.js'));
+  }
+  console.log(`• Injected Sonic Identity Config (dist/data/sonic-identity.json, mode: ${sonicConfig.uiSfxMode})`);
+} catch (_) {}
 
 // 6. Cloudflare SPA routing is handled natively via wrangler.toml:
 // not_found_handling = "single-page-application" (avoids infinite loops with .html stripping)
@@ -521,15 +575,31 @@ Abrí una consola dentro de esta carpeta y ejecutá cualquiera de estos dos coma
 `;
   fs.writeFileSync(path.join(localDeliverableDir, 'COMO_PUBLICAR_ESTE_SITIO.md'), guiaPublicacion, 'utf8');
 
+  // 6b. Copy Capacitor 8 & Multi-Target Mobile Artifacts if present (capacitor.config.ts, PRODUCT.md, DESIGN.md, tokens/)
+  for (const extraRel of ['capacitor.config.ts', 'PRODUCT.md', 'DESIGN.md']) {
+    const srcExtra = path.join(root, extraRel);
+    if (fs.existsSync(srcExtra)) {
+      fs.copyFileSync(srcExtra, path.join(localDeliverableDir, extraRel));
+    }
+  }
+  const srcTokensDir = path.join(root, 'tokens');
+  if (fs.existsSync(srcTokensDir) && fs.statSync(srcTokensDir).isDirectory()) {
+    copyRecursive(srcTokensDir, path.join(localDeliverableDir, 'tokens'));
+  }
+
   // 7. Create <slug>-produccion.zip inside deliverables/<slug>/
   const localZipPath = path.join(localDeliverableDir, zipFileName);
   const zipStats = createZipArchiveFromDir(localDeliverableDir, localZipPath, new Set([zipFileName]));
 
-  // 8. Mirror complete standalone package to Desktop: C:\Users\tomas\Desktop\Sitios_Entregables\<slug>\
-  if (fs.existsSync(desktopDeliverableDir)) {
-    fs.rmSync(desktopDeliverableDir, { recursive: true, force: true });
+  // 8. Mirror complete standalone package to Desktop on Windows: C:\Users\tomas\Desktop\Sitios_Entregables\<slug>\
+  if (process.platform === 'win32') {
+    try {
+      if (fs.existsSync(desktopDeliverableDir)) {
+        fs.rmSync(desktopDeliverableDir, { recursive: true, force: true });
+      }
+      copyRecursive(localDeliverableDir, desktopDeliverableDir);
+    } catch (_) {}
   }
-  copyRecursive(localDeliverableDir, desktopDeliverableDir);
 
   return {
     slug,

@@ -1,8 +1,22 @@
 {
+  "mcpRoleRegistry": "./.agents/mcp/mcp_role_registry.json",
+  "securityPolicy": {
+    "owaspMcpTop10": "2025-verified",
+    "csprngSessionIds": true,
+    "forbidXmcpHeader": true,
+    "audienceValidation": "urn:web-software-factory:mcp-gateway:2026",
+    "hitlRequiredForDestructive": true,
+    "maxInlineTokens": 1200
+  },
   "mcpServers": {
+    "omni-rag-ast": {
+      "command": "node",
+      "args": ["./tools/mcp/mcp_omni_rag_server.mjs"],
+      "disabled": false
+    },
     "web-factory-omni-rag": {
       "command": "node",
-      "args": ["./tools/intelligence/mcp_omni_rag_server.mjs"],
+      "args": ["./tools/mcp/mcp_omni_rag_server.mjs"],
       "disabled": false
     },
     "context7": {
@@ -10,9 +24,75 @@
       "args": ["-y", "@upstash/context7-mcp@latest"],
       "disabled": false
     },
+    "chrome-devtools": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--headless",
+        "--isolated",
+        "--no-usage-statistics",
+        "--user-data-dir=./.cache/chrome-devtools-mcp"
+      ],
+      "disabled": false
+    },
     "playwright": {
       "command": "npx",
       "args": ["-y", "@playwright/mcp@latest", "--headless"],
+      "disabled": false
+    },
+    "semgrep-mcp": {
+      "command": "node",
+      "args": ["./tools/mcp/mcp_omni_rag_server.mjs", "--profile=semgrep-mcp"],
+      "disabled": false
+    },
+    "delta-security-scanner": {
+      "command": "node",
+      "args": ["./tools/mcp/mcp_omni_rag_server.mjs", "--profile=delta-security-scanner"],
+      "disabled": false
+    },
+    "dast-offat-zap": {
+      "command": "node",
+      "args": ["./tools/mcp/mcp_omni_rag_server.mjs", "--profile=dast-offat-zap"],
+      "disabled": false
+    },
+    "filesystem-scoped": {
+      "command": "node",
+      "args": ["./tools/mcp/mcp_omni_rag_server.mjs", "--profile=filesystem-scoped"],
+      "disabled": false
+    },
+    "git-readonly-mcp": {
+      "command": "node",
+      "args": ["./tools/mcp/mcp_omni_rag_server.mjs", "--profile=git-readonly-mcp"],
+      "disabled": false
+    },
+    "d1-sqlite-readonly-mcp": {
+      "command": "node",
+      "args": ["./tools/mcp/mcp_omni_rag_server.mjs", "--profile=d1-sqlite-readonly-mcp"],
+      "disabled": false
+    },
+    "github-mcp": {
+      "command": "node",
+      "args": ["./tools/mcp/mcp_omni_rag_server.mjs", "--profile=github-mcp"],
+      "disabled": false
+    },
+    "cloudflare-edge-mcp": {
+      "command": "npx",
+      "args": ["-y", "@cloudflare/mcp-server-cloudflare"],
+      "disabled": false
+    },
+    "blender-mcp": {
+      "command": "node",
+      "args": ["./tools/mcp/mcp_omni_rag_server.mjs", "--profile=blender-mcp"],
+      "disabled": false
+    },
+    "rea-agents": {
+      "command": "node",
+      "args": ["./tools/intelligence/rea_reverse_engineering_bridge.mjs", "--mcp"],
+      "env": {
+        "REA_MCP_INPUT_SCHEMA_PROFILE": "compact",
+        "REA_MCP_OUTPUT_SCHEMA_PROFILE": "compact"
+      },
       "disabled": false
     }
   }

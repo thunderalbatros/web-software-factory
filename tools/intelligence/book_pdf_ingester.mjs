@@ -372,16 +372,32 @@ export async function ingestBookToMarkdown({
     : 0.5;
 
   const header = [
+    `---`,
+    `title: "${bookTitle}"`,
+    `author: "${author}"`,
+    `domain: "${domain}"`,
+    `epistemicTier: "TIER_2_TIMELESS_PRINCIPLES"`,
+    `---`,
+    ``,
     `# 📚 Libro Completo: ${bookTitle}`,
     ``,
-    `**Alcance:** Fuente bibliográfica completa sobre ${domain} (${bookTitle} — ${author}). Aplicable a ${projectScopeLabel}. NO sustituye las reglas inmutables en \`CANON_*\`.`,
+    `**Alcance:** Fuente bibliográfica completa (\`TIER_2_TIMELESS_PRINCIPLES\`) sobre ${domain} (${bookTitle} — ${author}). Aplicable a ${projectScopeLabel}. NO sustituye las reglas inmutables en \`CANON_*\`.`,
     ``,
     `> **Autor:** ${author}  `,
-    `> **Dominio:** ${domain}  `,
+    `> **Dominio:** ${domain} (\`TIER_2_TIMELESS_PRINCIPLES\`)  `,
     `> **Archivo Fuente:** \`${path.basename(filePath)}\`  `,
     `> **Páginas Originales:** ${numPages} (100% Ingerido, Cero Truncamiento)  `,
     `> **Secciones Técnicas Extraídas:** ${sections.length} (Entropía Técnica Media: ${avgEntropy})  `,
     `> **Fecha de Ingesta:** ${new Date().toISOString().split('T')[0]}  `,
+    ``,
+    `## 🎨 Axiomas Visuales Traducidos a Código 2026 (\`Axiom -> Formula -> CSS/WebGPU Token\`)`,
+    ``,
+    `| Axioma Estético / Pictórico | Fórmula Matemática / Óptica | Token CSS / WebGPU SOTA 2026 |`,
+    `| :--- | :--- | :--- |`,
+    `| **Ley de Área de Itten (OKLCH)** | $\\text{Área} > 60\\% \\implies C \\le 0.02$; $\\text{CTA} < 3\\% \\implies C \\in [0.14, 0.22]$ | \`--surface: oklch(11% 0.012 255); --cta: oklch(65% 0.18 250);\` |`,
+    `| **Rotación Térmica (Gurney/Albers)** | $C_{\\text{dark}} > 0$, $H \\in [240^\\circ, 265^\\circ]$ + Luz Cenital Especular | \`border-top: 1px solid oklch(100% 0 0 / 0.10);\` |`,
+    `| **Contraste Perceptual APCA** | $L_c \\ge 90$ (\`Operate\`), $L_c \\ge 75$ (\`Read\`), $L_c \\ge 60$ (\`Persuade\`) | \`font-variant-numeric: tabular-nums slashed-zero;\` |`,
+    `| **Física PBR & Resortes WWDC** | $r = r_{\\text{perceptual}}^2$, $\\zeta = 1.0$ (Operate) vs $\\zeta = 0.78$ (Persuade) | \`cubic-bezier(0.22, 1, 0.36, 1)\` / \`THREE.AgXToneMapping\` |`,
     ``,
     `---`,
     ``
@@ -418,16 +434,65 @@ export function classifyBookCategory(fileName, sampleText = '') {
   if (/(owasp|security|secure_and_reliable|secure-apis|secure_apis|seguridad|pentest|penetration|hacker|hacking|tangled_web|attacking_network|exploit|xss|csrf|oauth|cryptography|vulnerabilit|cyber|api_stronghold|bug_bounty|bug-bounty|bug bounty|thecodebook|zseano)/.test(combined)) {
     return 'cybersecurity';
   }
-  if (/(gsap|three\.js|webgl|shader|lenis|canvas|animation|\bmotion\b|spring|scroll-driven|lottie)/.test(combined)) {
+  if (/(gsap|three\.js|webgl|shader|lenis|canvas|animation|animator|survival[\s_-]?kit|richard[\s_-]?williams|\bmotion\b|spring|scroll-driven|lottie)/.test(combined)) {
     return 'motion_and_animation';
   }
-  if (/(\bui\b|\bux\b|ui_design|ui_pedia|lean_ux|refactoring ui|practical ui|design system|design_system|kholmatova|kahneman|hormozi|schwartz|copywriting|\bcro\b|typography|color|oklch|figma|css|html|grid|stylin|software_pricing|landing_pages|art_of_game_design|never_split_the_difference|weinschenk|web-design|web_design|atomic design|atomic_design|designing interfaces|user interfaces|malewicz|dont make me think|usability|steve krug|emotional design|everyday things|don norman|principles of design|lidwell)/.test(combined)) {
+  if (/(\bui\b|\bux\b|ui_design|ui_pedia|lean_ux|refactoring ui|practical ui|design system|design_system|laying the foundations|couldwell|hoober|berkman|mobile interfaces|tufte|visual display of quantitative|gurney|color_and_light|\+color|kholmatova|kahneman|hormozi|schwartz|copywriting|\bcro\b|typography|color|oklch|figma|css|html|grid|stylin|software_pricing|landing_pages|art_of_game_design|never_split_the_difference|weinschenk|web-design|web_design|atomic design|atomic_design|designing interfaces|user interfaces|malewicz|dont make me think|usability|steve krug|emotional design|everyday things|don norman|principles of design|lidwell)/.test(combined)) {
     return 'ui_ux_design';
   }
   if (/(seo|json-ld|analytics|posthog|plausible|n8n|webhook|playwright|testing|ui_testing|test_driven|unit_testing|k6_guideline|accelerate|modern_software_engineering|crime_scene|effective_engineer|pro_git|devops_handbook|github_actions|site reliability|\bsre\b|astro|cloudflare|factory|plain_javascript|optimization_web_performance|root_cause_analysis|edge_caching|getting_real|information_retrieval)/.test(combined)) {
     return 'software_factory';
   }
   return 'architecture_and_books';
+}
+
+export function inferBookMetadataFromFileName(baseName, category) {
+  const rawName = path.basename(baseName, path.extname(baseName));
+  const lower = rawName.toLowerCase();
+
+  let cleanedTitle = rawName
+    .replace(/^book[_-\s]+/i, '')
+    .replace(/^\[[^\]]+\]\s*/g, '')
+    .replace(/\((?:z-library|1lib|z-lib)[^)]*\)/gi, '')
+    .replace(/^\+/, 'Plus ')
+    .replace(/[_-]+/g, ' ')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+
+  let author = 'Technical Author';
+  let domain = 'Web Software Factory, UI/UX, Architecture & Interactive Systems';
+
+  if (/gurney/i.test(lower)) {
+    cleanedTitle = 'Color and Light: A Guide for the Realist Painter';
+    author = 'James Gurney';
+    domain = 'Optical Colorimetry, Pictorial Lighting, Thermal Shadow Rotation & PBR Realism';
+  } else if (/hoober|mobile interfaces/i.test(lower)) {
+    cleanedTitle = 'Designing Mobile Interfaces';
+    author = 'Steven Hoober & Eric Berkman (O\'Reilly)';
+    domain = 'Mobile UI/UX Ergonomics, Thumb Zones, Touch Targets & Cross-Platform Patterns';
+  } else if (/laying the foundations|couldwell/i.test(lower)) {
+    cleanedTitle = 'Laying the Foundations: A Book About Design Systems';
+    author = 'Andrew Couldwell';
+    domain = 'Design Systems Architecture, Design Tokens, Component Governance & Multi-Brand UI';
+  } else if (/animator.*survival.*kit|richard.*williams/i.test(lower)) {
+    cleanedTitle = 'The Animator\'s Survival Kit';
+    author = 'Richard Williams';
+    domain = '60FPS Motion Choreography, Timing, Spacing, Anticipation & Physics Curves';
+  } else if (/visual display of quantitative|tufte|tec tuf/i.test(lower)) {
+    cleanedTitle = 'The Visual Display of Quantitative Information';
+    author = 'Edward R. Tufte';
+    domain = 'Data-Ink Ratio, High-Density Financial/Analytical Tables, Sparklines & Zero Chartjunk';
+  } else if (/^\+color$/i.test(rawName.trim())) {
+    cleanedTitle = 'Plus Color: Color Theory, Harmony & Chromatic Systems';
+    author = 'Color Theory & Design Reference';
+    domain = 'Chromatic Harmony, Perceptual Contrast, Proportional Area Law & Surface Palettes';
+  } else if (category === 'motion_and_animation') {
+    domain = '60FPS Motion Choreography, Shaders, WebGPU & Interactive Animation';
+  } else if (category === 'ui_ux_design') {
+    domain = 'UI/UX Design Systems, Perceptual Colorimetry, Typography & Conversion Architecture';
+  }
+
+  return { title: cleanedTitle, author, domain };
 }
 
 export async function ingestInboxDirectory({
@@ -456,20 +521,22 @@ export async function ingestInboxDirectory({
   const errors = [];
   for (const filePath of bookFiles) {
     const baseName = path.basename(filePath);
-    const title = path.basename(filePath, path.extname(filePath)).replace(/^book[_-\s]+/i, '').replace(/[_-]+/g, ' ');
     const category = classifyBookCategory(baseName);
+    const { title, author, domain } = inferBookMetadataFromFileName(baseName, category);
     const outDir = path.join(ROOT, 'knowledge', category);
 
     try {
       const res = await ingestBookToMarkdown({
         filePath,
         title,
+        author,
+        domain,
         outDir
       });
 
       const destProcessed = path.join(processedDir, baseName);
       fs.renameSync(filePath, destProcessed);
-      results.push({ ...res, category, sourceFile: baseName, archivedTo: destProcessed });
+      results.push({ ...res, title, author, domain, category, sourceFile: baseName, archivedTo: destProcessed });
     } catch (err) {
       console.warn(`⚠️  [${baseName}] Skipped: ${err.message}`);
       errors.push({ sourceFile: baseName, error: err.message });

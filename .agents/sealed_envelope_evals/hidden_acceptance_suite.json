@@ -1,0 +1,45 @@
+{
+  "schema": "sealed-envelope-acceptance-suite-v2026.10",
+  "patternOrigin": "dark-factory (Sealed-Envelope Evals) + vercel-labs/eve (Blind Foreman Review)",
+  "accessControl": {
+    "forbiddenDuringWaves": ["WAVE_1_CONSTITUTION_AND_PREFLIGHT", "WAVE_2A_TRACER_BULLET", "WAVE_2B_TDD_FILL_IN"],
+    "forbiddenConstructorRoles": [
+      "senior-coder",
+      "edge-fullstack-architect",
+      "ux-designer",
+      "copywriting-cro-strategist",
+      "seo-aeo-geo-architect"
+    ],
+    "authorizedEvaluator": "tools/intelligence/eval_matrix.mjs"
+  },
+  "hiddenInvariants": [
+    {
+      "id": "SEALED-UX-01",
+      "domain": "UX & Perceptual Hierarchy",
+      "rule": "OKLCH_90_8_2_AND_UTOPIA_CLAMP",
+      "description": "Design tokens and compiled CSS must enforce perceptual OKLCH 90/8/2 hierarchy and Utopia fluid clamp() typography without hard-boxed slop.",
+      "weight": 20
+    },
+    {
+      "id": "SEALED-A11Y-02",
+      "domain": "Accessibility & Semantic Landmarks",
+      "rule": "APCA_CONTRAST_AND_SEMANTIC_HTML5",
+      "description": "Entry HTML must contain lang attribute, charset/title metadata, semantic main/header/footer landmarks, and APCA contrast compliance.",
+      "weight": 20
+    },
+    {
+      "id": "SEALED-SEC-03",
+      "domain": "OWASP Top 10:2025 & ASVS v5.0",
+      "rule": "ZERO_SEQUENTIAL_IDS_FETCH_METADATA_AND_ZERO_SOURCEMAPS",
+      "description": "Worker and production dist must enforce Sec-Fetch-Site/Mode/Dest CSRF defense, Valibot strict schema validation, opaque UUIDv4/ULID identifiers, generic error responses, and 0 .map source maps.",
+      "weight": 30
+    },
+    {
+      "id": "SEALED-PERF-04",
+      "domain": "60-FPS Compositor & Zero-CLS",
+      "rule": "COMPOSITOR_60FPS_AND_DIST_UNDER_50MB",
+      "description": "Visual gate must confirm >= 55 FPS, 0 horizontal scroll, 0 geometric collisions, and production dist size strictly under 50 MB.",
+      "weight": 30
+    }
+  ]
+}

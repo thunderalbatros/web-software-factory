@@ -33,3 +33,6 @@ verifiedDate: "2026-10-28"
 - **Tokens Perceptuales:** W3C DTCG 2025.10 en espacio `oklch()` con contraste APCA `Lc >= 75`.
 - **Tipografía y Layout:** Escalas fluidas Utopia `clamp()` + CSS Subgrid + `@starting-style`.
 - **Validación y Seguridad Edge:** `valibot` (<1.2 KB) + CSP `frame-ancestors 'none'` + HSTS Preload + `approved_packages.json`.
+
+---
+**Conexiones del Grafo (Obsidian):** [[INDEX]] · [[CANON_SPLE_ISO26550_AND_SOFTWARE_FACTORIES_ARCHITECTURE_2026]] · [[CANON_ASTRO5_CLOUDFLARE_WORKERS_AND_MODERN_WEB_TEMPLATES_2026]] · [[CANON_MULTI_BRAND_DESIGN_SYSTEMS_DTCG_STYLE_DICTIONARY_AND_ARCHETYPES_2026]] · [[CANON_SOTA_AGENT_TEAM_TOPOLOGY_AND_2026_WEB_STACK_AUDIT]] · #software_factory

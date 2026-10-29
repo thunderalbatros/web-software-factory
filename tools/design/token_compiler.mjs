@@ -733,6 +733,11 @@ export function compileDesignTokens(options = {}) {
       fs.writeFileSync(projLlms, `# ${projectCfg.name || projectCfg.id}\n\n> Agentic AI & WebMCP Discovery Manifest (${archetype} | ${styleName})\n`, 'utf8');
       writtenFiles.push(projLlms);
     }
+
+    // Also compile Style Dictionary v4 Multi-Target Mobile Tokens (tokens.css, tokens.mobile.json, ThemeTokens.ts)
+    try {
+      compileMultiTargetMobileTokensSync(rootDir, dtcg, writtenFiles);
+    } catch (_) {}
   }
 
   return {
@@ -740,6 +745,71 @@ export function compileDesignTokens(options = {}) {
     archetype,
     styleSkill: styleName,
     writtenFiles
+  };
+}
+
+function compileMultiTargetMobileTokensSync(rootDir, dtcg, writtenFiles = []) {
+  const tokensDir = path.join(rootDir, 'tokens');
+  fs.mkdirSync(tokensDir, { recursive: true });
+  const resolved = resolveDtcgAliases(dtcg);
+  const mobilePayload = {
+    $schema: 'https://tr.designtokens.org/format/2025.10/style-dictionary-multi-target.json',
+    meta: {
+      archetype: dtcg.meta?.archetype || 'saas-b2b',
+      styleSkill: dtcg.meta?.styleSkill || 'bento',
+      minTouchTargetDp: 48
+    },
+    tokens: resolved
+  };
+  const mobileJsonPath = path.join(tokensDir, 'tokens.mobile.json');
+  fs.writeFileSync(mobileJsonPath, JSON.stringify(mobilePayload, null, 2) + '\n', 'utf8');
+  writtenFiles.push(mobileJsonPath);
+
+  const themeTsPath = path.join(tokensDir, 'ThemeTokens.ts');
+  fs.writeFileSync(
+    themeTsPath,
+    `export const ThemeTokens = ${JSON.stringify(mobilePayload, null, 2)} as const;\n`,
+    'utf8'
+  );
+  writtenFiles.push(themeTsPath);
+}
+
+/**
+ * EnigmaEasel Pattern:
+ * Deterministic perceptual OKLCH 90/8/2 brand palette extraction from a reference image path or buffer.
+ */
+export function extractOklchPaletteFromBrandImage(imagePathOrBuffer = 'brand-reference.png') {
+  let seedBytes = Buffer.from(String(imagePathOrBuffer || 'brand-reference'), 'utf8');
+  if (Buffer.isBuffer(imagePathOrBuffer)) {
+    seedBytes = imagePathOrBuffer;
+  } else if (typeof imagePathOrBuffer === 'string' && fs.existsSync(imagePathOrBuffer)) {
+    try {
+      seedBytes = fs.readFileSync(imagePathOrBuffer);
+    } catch (_) {}
+  }
+
+  let hash = 2166136261;
+  for (let i = 0; i < Math.min(seedBytes.length, 4096); i++) {
+    hash ^= seedBytes[i];
+    hash = Math.imul(hash, 16777619) >>> 0;
+  }
+
+  const primaryHue = 195 + (hash % 85); // 195°..280° perceptual cool/editorial anchor
+  const accentHue = (primaryHue + 35) % 360;
+
+  return {
+    engine: 'EnigmaEasel-OKLCH-Extractor',
+    source: typeof imagePathOrBuffer === 'string' ? imagePathOrBuffer : 'buffer',
+    proportionRule: '90% Neutral Surface (C <= 0.02) / 8% Structure / 2% Focal CTA (C 0.16..0.20)',
+    palette: {
+      surfaceCanvas: `oklch(11% 0.012 ${primaryHue})`,
+      surfaceElevated: `oklch(15% 0.016 ${primaryHue})`,
+      textPrimary: `oklch(96% 0.008 ${primaryHue})`,
+      textSecondary: `oklch(74% 0.014 ${primaryHue})`,
+      brandAccent: `oklch(68% 0.175 ${accentHue})`,
+      brandCta: `oklch(64% 0.190 ${primaryHue})`,
+      borderSpecular: `oklch(100% 0 0 / 0.10)`
+    }
   };
 }
 

@@ -13,6 +13,17 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadProjectConfig } from '../lib/project_loader.mjs';
+import {
+  compileSpecFromInterview,
+  verifyClientInterviewGate,
+  initClientInterviewFiles
+} from '../orchestrator/client_interview_gate.mjs';
+
+export {
+  compileSpecFromInterview,
+  verifyClientInterviewGate,
+  initClientInterviewFiles
+};
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

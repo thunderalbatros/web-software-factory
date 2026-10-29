@@ -1,0 +1,122 @@
+{
+  "schemaVersion": "2026.34.1",
+  "projectSlug": "agencia-alfa",
+  "status": "COMPLETED_BY_CTO",
+  "createdAt": "2026-10-29T00:44:46.532Z",
+  "approvedAt": "2026-10-29T00:44:46.532Z",
+  "approvedBy": "CTO_HITL_APPROVED",
+  "blocks": {
+    "block1_commercial_identity": {
+      "brandName": "Agencia Alfa",
+      "industryArchetype": "saas",
+      "resolvedArchetypeId": "b2b-saas-platform",
+      "valuePropositionOneLiner": "Plataforma digital de alta conversión para agencia-alfa con arquitectura edge y diseño de precisión.",
+      "referenceCompetitors": [
+        "Linear.app",
+        "Stripe.com",
+        "Vercel.com"
+      ]
+    },
+    "block2_target_audience_cro": {
+      "segment": "B2B / High-Intent Decision Makers",
+      "ageRange": "28-55",
+      "purchasingPower": "High / Enterprise & Professional",
+      "primaryObjection": "Tiempo de implementación y retorno de inversión verificable",
+      "primaryCta": "Solicitar Auditoría / Demo Ejecutiva",
+      "primaryCtaChannel": "Calendly + WhatsApp Business + Lead Form"
+    },
+    "block3_sitemap_and_flows": {
+      "pages": [
+        "Home",
+        "Soluciones",
+        "Casos de Éxito",
+        "Precios",
+        "Contacto"
+      ],
+      "mandatorySections": [
+        "Hero con Propuesta de Valor y Primary CTA",
+        "Bento Grid de Capacidades Core",
+        "Prueba Social y Métricas Verificadas",
+        "Tabla Comparativa / Precios Transparentes",
+        "Formulario de Captura sin Fricción + FAQ"
+      ]
+    },
+    "block4_aesthetic_oklch_typography": {
+      "surfaceMode": "Persuade",
+      "colorTheme": "High-Craft Adaptive OKLCH",
+      "oklchPrimary": {
+        "L": 0.15,
+        "C": 0.03,
+        "H": 260
+      },
+      "borderRadiusPx": 8,
+      "typographyPersonality": "Swiss Geometric Sans + Tabular Mono"
+    },
+    "block5_motion_webgpu_shaders": {
+      "animationLevel": "spring-fluid-60fps",
+      "use3dTiltCards": true,
+      "useWebGpuDiorama": false,
+      "useViewTransitionsApi": true,
+      "springPhysics": {
+        "stiffness": 280,
+        "damping": 24
+      }
+    },
+    "block6_sonic_music_video": {
+      "uiSfxMode": "subtle",
+      "material": "polymer",
+      "backgroundMusic": "off",
+      "introVideoMode": "vector-svg-reveal-3s",
+      "sonicSeedId": "linear-minimal-tick",
+      "requiresVisibleMuteButton": true,
+      "autoplayBlockedUntilGesture": true
+    },
+    "block7_client_assets_vs_ai": {
+      "clientProvidedAssets": [
+        "Logo Vectorial (.svg)",
+        "Textos Comerciales Base",
+        "Datos de Contacto"
+      ],
+      "factoryAiGeneratedAssets": [
+        "OpenGraph Social Card (og-image.svg)",
+        "Copywriting CRO Optimizado",
+        "Keyframes / Ilustración SOTA"
+      ]
+    },
+    "block8_technical_backend_integrations": {
+      "leadCaptureForm": true,
+      "paymentGateway": "None (Consultation Flow)",
+      "authMode": "OAuth 2.1 PKCE / Session Guard",
+      "databaseEngine": "Cloudflare D1 SQLite + Enterprise PostgreSQL FORCE RLS Ready",
+      "externalIntegrations": [
+        "WhatsApp Direct",
+        "CRM Webhook",
+        "Privacy-First Analytics"
+      ]
+    },
+    "block9_seo_geo_legal_security": {
+      "primaryKeywords": [
+        "agencia alfa",
+        "saas",
+        "alta conversión",
+        "software"
+      ],
+      "geoTarget": "es-AR / LATAM / Global",
+      "generateLlmsTxt": true,
+      "accessibilityFloor": "WCAG 2.2 AA+ / APCA Lc >= 75",
+      "securityLevel": "OWASP ASVS v5.0 L2 + Strict CSP + HSTS"
+    },
+    "block10_finops_budget_and_dod": {
+      "locales": [
+        "es-AR"
+      ],
+      "maxCloudApiBudgetUsd": 0.25,
+      "totalGcpCreditPoolUsd": 90,
+      "successMetricsDod": [
+        "RYUX Visual & Sonic Gate >= 95/100",
+        "LCP <= 1.8s & 60 FPS en 4 viewports",
+        "100% de requisitos [REQ-01]..[REQ-12] verificados con Playwright"
+      ]
+    }
+  }
+}

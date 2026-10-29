@@ -20,12 +20,18 @@ const SECURITY_HEADERS = Object.freeze({
   "X-Frame-Options": "DENY"
 });
 
+const MAX_BODY_BYTES = 65536; // 64 KB hard payload ceiling
+const MAX_WEBHOOK_BYTES = 262144; // 256 KB signed webhook ceiling
+const ALLOWED_LEAD_KEYS = new Set(["fullName", "email", "message", "source", "cf-turnstile-response"]);
+
 const RATE_LIMIT_BUCKETS = new Map();
 const RATE_LIMIT_WINDOW_MS = 60000;
 const RATE_LIMIT_MAX_REQUESTS = 30;
 
 export function withSecurityHeaders(response, extraHeaders = {}) {
   const headers = new Headers(response.headers);
+  headers.delete("Server");
+  headers.delete("X-Powered-By");
   for (const [key, value] of Object.entries(SECURITY_HEADERS)) {
     headers.set(key, value);
   }
@@ -37,6 +43,27 @@ export function withSecurityHeaders(response, extraHeaders = {}) {
     statusText: response.statusText,
     headers
   });
+}
+
+export function validateFetchMetadata(request) {
+  const secSite = (request.headers.get("Sec-Fetch-Site") || "").toLowerCase();
+  const secMode = (request.headers.get("Sec-Fetch-Mode") || "").toLowerCase();
+  const secDest = (request.headers.get("Sec-Fetch-Dest") || "").toLowerCase();
+
+  if (secSite && !["same-origin", "same-site", "none"].includes(secSite)) {
+    return { allowed: false, reason: "CROSS_SITE_FETCH_REJECTED" };
+  }
+  if (secMode && secMode === "navigate" && request.method.toUpperCase() !== "GET") {
+    return { allowed: false, reason: "INVALID_FETCH_MODE_FOR_MUTATION" };
+  }
+  if (secDest && !["empty", "document", ""].includes(secDest)) {
+    return { allowed: false, reason: "INVALID_FETCH_DEST" };
+  }
+  return { allowed: true };
+}
+
+export function hasSequentialNumericIdInPath(pathname) {
+  return /\/api\/[a-z0-9_-]+\/\d+(?:\/|$)/i.test(String(pathname || ""));
 }
 
 function checkRateLimit(clientIp) {
@@ -164,7 +191,7 @@ export class SaasRealtimeRoom {
     return new Response(null, { status: 101, webSocket: client });
   }
 
-  async webSocketMessage(ws, message) {
+  async webSocketMessage(_ws, message) {
     const safeText = String(message || "").slice(0, 512);
     for (const peer of this.state.getWebSockets()) {
       try {
@@ -192,177 +219,263 @@ export class SaasOnboardingWorkflow {
 
 export default {
   async fetch(request, env) {
-    const url = new URL(request.url);
-    const method = request.method.toUpperCase();
-    const repo = createD1Repository(env ? env.DB : null);
+    try {
+      const url = new URL(request.url);
+      const method = request.method.toUpperCase();
 
-    // 1. Health & RPC Capabilities Manifest
-    if (url.pathname === "/api/health" && method === "GET") {
-      return withSecurityHeaders(
-        new Response(
-          JSON.stringify({
-            ok: true,
-            project: "{{PROJECT_ID}}",
-            stack: "fullstack-saas-edge",
-            capabilities: ["hono-rpc", "better-auth", "drizzle-d1", "polar-stripe-mercadopago", "partyserver-do", "cloudflare-workflows", "n8n-hmac"],
-            ts: Date.now()
-          }),
-          { headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" } }
-        )
-      );
-    }
-
-    // 2. Better-Auth Session Endpoint (/api/auth/session)
-    if (url.pathname === "/api/auth/session" && method === "GET") {
-      const session = await verifyAuthSession(request, env);
-      return withSecurityHeaders(
-        new Response(JSON.stringify({ ok: true, ...session }), {
-          status: 200,
-          headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" }
-        })
-      );
-    }
-
-    // 3. State-Mutating Endpoints (Rate-Limited)
-    if (["POST", "PUT", "DELETE"].includes(method)) {
-      const clientIp = request.headers.get("CF-Connecting-IP") || "127.0.0.1";
-      const rate = checkRateLimit(clientIp);
-      const rateHeaders = {
-        "RateLimit-Limit": String(RATE_LIMIT_MAX_REQUESTS),
-        "RateLimit-Remaining": String(rate.remaining)
-      };
-
-      if (!rate.allowed) {
+      if (hasSequentialNumericIdInPath(url.pathname)) {
         return withSecurityHeaders(
-          new Response(JSON.stringify({ ok: false, error: "RATE_LIMIT_EXCEEDED" }), {
-            status: 429,
+          new Response(JSON.stringify({ ok: false, error: "OPAQUE_UUID_OR_ULID_REQUIRED" }), {
+            status: 400,
             headers: { "Content-Type": "application/json; charset=utf-8" }
-          }),
-          rateHeaders
+          })
         );
       }
 
-      // 3A. Idempotent Payment Webhook (Stripe / MercadoPago / Polar.sh)
-      if (url.pathname === "/api/webhooks/payment" && method === "POST") {
-        const rawBody = await request.text();
-        const provider = (request.headers.get("x-payment-provider") || "polar").toLowerCase();
-        const signatureHeader =
-          request.headers.get("x-signature-256") ||
-          request.headers.get("webhook-signature") ||
-          request.headers.get("x-hub-signature-256") ||
-          "";
+      const session = await verifyAuthSession(request, env);
+      const verifiedTenantId = session.authenticated && session.user ? session.user.org_id : null;
+      const repo = createD1Repository(env ? env.DB : null, verifiedTenantId);
 
-        const webhookSecret = env && env.PAYMENT_WEBHOOK_SECRET ? String(env.PAYMENT_WEBHOOK_SECRET) : "";
-        if (webhookSecret) {
-          const expectedHex = await computeHmacSha256Hex(webhookSecret, rawBody);
-          const cleanProvided = signatureHeader.replace(/^sha256=/, "").trim();
-          if (!timingSafeEqualHex(expectedHex, cleanProvided)) {
+      // 1. Health & RPC Capabilities Manifest
+      if (url.pathname === "/api/health" && method === "GET") {
+        return withSecurityHeaders(
+          new Response(
+            JSON.stringify({
+              ok: true,
+              project: "{{PROJECT_ID}}",
+              stack: "fullstack-saas-edge",
+              capabilities: ["hono-rpc", "better-auth", "drizzle-d1", "polar-stripe-mercadopago", "partyserver-do", "cloudflare-workflows", "n8n-hmac"],
+              ts: Date.now()
+            }),
+            { headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" } }
+          )
+        );
+      }
+
+      // 2. Better-Auth Session Endpoint (/api/auth/session)
+      if (url.pathname === "/api/auth/session" && method === "GET") {
+        return withSecurityHeaders(
+          new Response(JSON.stringify({ ok: true, ...session }), {
+            status: 200,
+            headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" }
+          })
+        );
+      }
+
+      // 3. State-Mutating Endpoints (Rate-Limited + Fetch Metadata Guard)
+      if (["POST", "PUT", "DELETE"].includes(method)) {
+        if (url.pathname !== "/api/webhooks/payment") {
+          const fetchMeta = validateFetchMetadata(request);
+          if (!fetchMeta.allowed) {
             return withSecurityHeaders(
-              new Response(JSON.stringify({ ok: false, error: "INVALID_WEBHOOK_SIGNATURE" }), {
-                status: 401,
+              new Response(JSON.stringify({ ok: false, error: fetchMeta.reason }), {
+                status: 403,
+                headers: { "Content-Type": "application/json; charset=utf-8" }
+              })
+            );
+          }
+        }
+
+        const declaredLength = Number(request.headers.get("Content-Length") || 0);
+        const bodyLimit = url.pathname === "/api/webhooks/payment" ? MAX_WEBHOOK_BYTES : MAX_BODY_BYTES;
+        if (declaredLength > bodyLimit) {
+          return withSecurityHeaders(
+            new Response(JSON.stringify({ ok: false, error: "PAYLOAD_TOO_LARGE" }), {
+              status: 413,
+              headers: { "Content-Type": "application/json; charset=utf-8" }
+            })
+          );
+        }
+
+        const clientIp = request.headers.get("CF-Connecting-IP") || "127.0.0.1";
+        const rate = checkRateLimit(clientIp);
+        const rateHeaders = {
+          "RateLimit-Limit": String(RATE_LIMIT_MAX_REQUESTS),
+          "RateLimit-Remaining": String(rate.remaining)
+        };
+
+        if (!rate.allowed) {
+          return withSecurityHeaders(
+            new Response(JSON.stringify({ ok: false, error: "RATE_LIMIT_EXCEEDED" }), {
+              status: 429,
+              headers: { "Content-Type": "application/json; charset=utf-8" }
+            }),
+            rateHeaders
+          );
+        }
+
+        // 3A. Idempotent Payment Webhook (Stripe / MercadoPago / Polar.sh)
+        if (url.pathname === "/api/webhooks/payment" && method === "POST") {
+          const rawBody = await request.text();
+          if (rawBody.length > MAX_WEBHOOK_BYTES) {
+            return withSecurityHeaders(
+              new Response(JSON.stringify({ ok: false, error: "PAYLOAD_TOO_LARGE" }), {
+                status: 413,
                 headers: { "Content-Type": "application/json; charset=utf-8" }
               }),
               rateHeaders
             );
           }
-        }
+          const provider = (request.headers.get("x-payment-provider") || "polar").toLowerCase();
+          const signatureHeader =
+            request.headers.get("x-signature-256") ||
+            request.headers.get("webhook-signature") ||
+            request.headers.get("x-hub-signature-256") ||
+            "";
 
-        let eventObj = null;
-        try {
-          eventObj = JSON.parse(rawBody);
-        } catch {
+          const webhookSecret = env && env.PAYMENT_WEBHOOK_SECRET ? String(env.PAYMENT_WEBHOOK_SECRET) : "";
+          if (webhookSecret) {
+            const expectedHex = await computeHmacSha256Hex(webhookSecret, rawBody);
+            const cleanProvided = signatureHeader.replace(/^sha256=/, "").trim();
+            if (!timingSafeEqualHex(expectedHex, cleanProvided)) {
+              return withSecurityHeaders(
+                new Response(JSON.stringify({ ok: false, error: "INVALID_WEBHOOK_SIGNATURE" }), {
+                  status: 401,
+                  headers: { "Content-Type": "application/json; charset=utf-8" }
+                }),
+                rateHeaders
+              );
+            }
+          }
+
+          let eventObj = null;
+          try {
+            eventObj = JSON.parse(rawBody);
+          } catch {
+            return withSecurityHeaders(
+              new Response(JSON.stringify({ ok: false, error: "INVALID_JSON" }), {
+                status: 400,
+                headers: { "Content-Type": "application/json; charset=utf-8" }
+              }),
+              rateHeaders
+            );
+          }
+
+          const eventId = String(eventObj.id || eventObj.event_id || `evt_${crypto.randomUUID()}`).slice(0, 120);
+          const eventType = String(eventObj.type || eventObj.action || "subscription.updated").slice(0, 80);
+          const payloadHash = await computeHmacSha256Hex("payload-fingerprint", rawBody);
+
+          const d1Res = await repo.recordIdempotentPaymentEvent({
+            eventId,
+            provider,
+            eventType,
+            payloadHash,
+            orgId: eventObj.orgId || eventObj.data?.orgId || null,
+            extSubId: eventObj.subscriptionId || eventObj.data?.id || null,
+            planId: eventObj.planId || eventObj.data?.plan || "pro",
+            status: eventObj.status || "active",
+            periodEnd: eventObj.currentPeriodEnd || new Date(Date.now() + 30 * 86400000).toISOString()
+          });
+
+          if (!d1Res.duplicate) {
+            await dispatchN8nWebhook(env, `payment.${eventType}`, { eventId, provider, eventType });
+          }
+
           return withSecurityHeaders(
-            new Response(JSON.stringify({ ok: false, error: "INVALID_JSON" }), {
-              status: 400,
+            new Response(JSON.stringify({ ok: true, idempotent: true, ...d1Res }), {
+              status: 200,
               headers: { "Content-Type": "application/json; charset=utf-8" }
             }),
             rateHeaders
           );
         }
 
-        const eventId = String(eventObj.id || eventObj.event_id || `evt_${Date.now()}`).slice(0, 120);
-        const eventType = String(eventObj.type || eventObj.action || "subscription.updated").slice(0, 80);
-        const payloadHash = await computeHmacSha256Hex("payload-fingerprint", rawBody);
+        // 3B. Lead & Trial Signup Endpoint (/api/lead)
+        if (url.pathname === "/api/lead" && method === "POST") {
+          const rawBodyText = await request.text();
+          if (rawBodyText.length > MAX_BODY_BYTES) {
+            return withSecurityHeaders(
+              new Response(JSON.stringify({ ok: false, error: "PAYLOAD_TOO_LARGE" }), {
+                status: 413,
+                headers: { "Content-Type": "application/json; charset=utf-8" }
+              }),
+              rateHeaders
+            );
+          }
 
-        const d1Res = await repo.recordIdempotentPaymentEvent({
-          eventId,
-          provider,
-          eventType,
-          payloadHash,
-          orgId: eventObj.orgId || eventObj.data?.orgId || null,
-          extSubId: eventObj.subscriptionId || eventObj.data?.id || null,
-          planId: eventObj.planId || eventObj.data?.plan || "pro",
-          status: eventObj.status || "active",
-          periodEnd: eventObj.currentPeriodEnd || new Date(Date.now() + 30 * 86400000).toISOString()
-        });
+          let body = null;
+          try {
+            body = JSON.parse(rawBodyText);
+          } catch {
+            return withSecurityHeaders(
+              new Response(JSON.stringify({ ok: false, error: "INVALID_JSON" }), {
+                status: 400,
+                headers: { "Content-Type": "application/json; charset=utf-8" }
+              }),
+              rateHeaders
+            );
+          }
 
-        if (!d1Res.duplicate) {
-          await dispatchN8nWebhook(env, `payment.${eventType}`, { eventId, provider, eventType });
+          if (!body || typeof body !== "object" || Array.isArray(body)) {
+            return withSecurityHeaders(
+              new Response(JSON.stringify({ ok: false, error: "INVALID_PAYLOAD_OBJECT" }), {
+                status: 422,
+                headers: { "Content-Type": "application/json; charset=utf-8" }
+              }),
+              rateHeaders
+            );
+          }
+
+          for (const key of Object.keys(body)) {
+            if (!ALLOWED_LEAD_KEYS.has(key)) {
+              return withSecurityHeaders(
+                new Response(JSON.stringify({ ok: false, error: "UNDECLARED_PROPERTY_REJECTED" }), {
+                  status: 422,
+                  headers: { "Content-Type": "application/json; charset=utf-8" }
+                }),
+                rateHeaders
+              );
+            }
+          }
+
+          const fullName = typeof body?.fullName === "string" ? body.fullName.replace(/[<>]/g, "").trim().slice(0, 120) : "";
+          const email = typeof body?.email === "string" ? body.email.trim() : "";
+          const message = typeof body?.message === "string" ? body.message.replace(/[<>]/g, "").trim().slice(0, 2000) : "";
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+          if (!emailRegex.test(email) || email.length > 180) {
+            return withSecurityHeaders(
+              new Response(JSON.stringify({ ok: false, error: "INVALID_EMAIL" }), {
+                status: 422,
+                headers: { "Content-Type": "application/json; charset=utf-8" }
+              }),
+              rateHeaders
+            );
+          }
+
+          if (env && env.DB && typeof env.DB.prepare === "function") {
+            const leadId = crypto.randomUUID();
+            await env.DB.prepare(
+              "INSERT INTO leads (id, full_name, email, message, source, created_at) VALUES (?1, ?2, ?3, ?4, ?5, ?6)"
+            )
+              .bind(leadId, fullName, email, message, "fullstack-saas-edge", new Date().toISOString())
+              .run();
+          }
+
+          const n8nStatus = await dispatchN8nWebhook(env, "lead.submitted", { fullName, email, message });
+          return withSecurityHeaders(
+            new Response(JSON.stringify({ ok: true, status: "accepted", n8n: n8nStatus.dispatched }), {
+              status: 201,
+              headers: { "Content-Type": "application/json; charset=utf-8" }
+            }),
+            rateHeaders
+          );
         }
-
-        return withSecurityHeaders(
-          new Response(JSON.stringify({ ok: true, idempotent: true, ...d1Res }), {
-            status: 200,
-            headers: { "Content-Type": "application/json; charset=utf-8" }
-          }),
-          rateHeaders
-        );
       }
 
-      // 3B. Lead & Trial Signup Endpoint (/api/lead)
-      if (url.pathname === "/api/lead" && method === "POST") {
-        let body = null;
-        try {
-          body = await request.json();
-        } catch {
-          return withSecurityHeaders(
-            new Response(JSON.stringify({ ok: false, error: "INVALID_JSON" }), {
-              status: 400,
-              headers: { "Content-Type": "application/json; charset=utf-8" }
-            }),
-            rateHeaders
-          );
-        }
-
-        const fullName = typeof body?.fullName === "string" ? body.fullName.replace(/[<>]/g, "").trim().slice(0, 120) : "";
-        const email = typeof body?.email === "string" ? body.email.trim() : "";
-        const message = typeof body?.message === "string" ? body.message.replace(/[<>]/g, "").trim().slice(0, 2000) : "";
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-
-        if (!emailRegex.test(email) || email.length > 180) {
-          return withSecurityHeaders(
-            new Response(JSON.stringify({ ok: false, error: "INVALID_EMAIL" }), {
-              status: 422,
-              headers: { "Content-Type": "application/json; charset=utf-8" }
-            }),
-            rateHeaders
-          );
-        }
-
-        if (env && env.DB && typeof env.DB.prepare === "function") {
-          await env.DB.prepare(
-            "INSERT INTO leads (full_name, email, message, source, created_at) VALUES (?1, ?2, ?3, ?4, ?5)"
-          )
-            .bind(fullName, email, message, "fullstack-saas-edge", new Date().toISOString())
-            .run();
-        }
-
-        const n8nStatus = await dispatchN8nWebhook(env, "lead.submitted", { fullName, email, message });
-        return withSecurityHeaders(
-          new Response(JSON.stringify({ ok: true, status: "accepted", n8n: n8nStatus.dispatched }), {
-            status: 201,
-            headers: { "Content-Type": "application/json; charset=utf-8" }
-          }),
-          rateHeaders
-        );
+      if (env && env.ASSETS) {
+        const assetResponse = await env.ASSETS.fetch(request);
+        return withSecurityHeaders(assetResponse);
       }
-    }
 
-    if (env && env.ASSETS) {
-      const assetResponse = await env.ASSETS.fetch(request);
-      return withSecurityHeaders(assetResponse);
+      return withSecurityHeaders(new Response("Not Found", { status: 404 }));
+    } catch {
+      return withSecurityHeaders(
+        new Response(JSON.stringify({ ok: false, error: "INTERNAL_EDGE_ERROR" }), {
+          status: 500,
+          headers: { "Content-Type": "application/json; charset=utf-8", "Cache-Control": "no-store" }
+        })
+      );
     }
-
-    return withSecurityHeaders(new Response("Not Found", { status: 404 }));
   }
 };

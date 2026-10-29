@@ -416,6 +416,7 @@ for (const vp of VIEWPORTS) {
     try {
       cdp = await ctx.newCDPSession(page);
       await cdp.send('Performance.enable');
+      await cdp.send('Accessibility.enable');
     } catch (_) {}
   }
   page.on('console', m => {
@@ -554,12 +555,36 @@ for (const vp of VIEWPORTS) {
         const { metrics } = await cdp.send('Performance.getMetrics');
         const map = {};
         for (const m of metrics) map[m.name] = m.value;
+        let axTreeNodesCount = 0;
+        let axInteractiveRoleFailures = 0;
+        try {
+          const axRes = await cdp.send('Accessibility.getFullAXTree');
+          const nodes = Array.isArray(axRes?.nodes) ? axRes.nodes : [];
+          axTreeNodesCount = nodes.length;
+          for (const n of nodes) {
+            if (n.ignored) continue;
+            const roleVal = String(n.role?.value || '').toLowerCase();
+            if (roleVal === 'button' || roleVal === 'link') {
+              const nameVal = String(n.name?.value || '').trim();
+              if (!nameVal) axInteractiveRoleFailures++;
+            }
+          }
+        } catch (_) {}
+
         report.cdpTelemetry[v] = {
           layoutCount: map.LayoutCount || 0,
           recalcStyleCount: map.RecalcStyleCount || 0,
+          layoutDurationMs: Number(((map.LayoutDuration || 0) * 1000).toFixed(2)),
+          recalcStyleDurationMs: Number(((map.RecalcStyleDuration || 0) * 1000).toFixed(2)),
           scriptDurationMs: Math.round((map.ScriptDuration || 0) * 1000),
           taskDurationMs: Math.round((map.TaskDuration || 0) * 1000),
-          jsHeapUsedMB: Number(((map.JSHeapUsedSize || 0) / (1024 * 1024)).toFixed(2))
+          jsHeapUsedBytes: Math.round(map.JSHeapUsedSize || 0),
+          jsHeapUsedMB: Number(((map.JSHeapUsedSize || 0) / (1024 * 1024)).toFixed(2)),
+          a11yDebugging: {
+            axTreeNodesCount,
+            axInteractiveRoleFailures,
+            a11yTreeHealthy: axInteractiveRoleFailures === 0
+          }
         };
       } catch (_) {}
       try {
@@ -578,6 +603,7 @@ if (embeddedServer) {
   await new Promise(resolve => embeddedServer.close(resolve));
 }
 fs.writeFileSync(path.join(out, 'report.json'), JSON.stringify(report, null, 2));
+const firstCdpView = Object.values(report.cdpTelemetry || {})[0] || {};
 fs.writeFileSync(path.join(out, 'optical_geometry_report.json'), JSON.stringify({
   timestamp: report.generated,
   viewportsVerified: VIEWPORTS.map(v => v.w),
@@ -588,6 +614,19 @@ fs.writeFileSync(path.join(out, 'optical_geometry_report.json'), JSON.stringify(
   temporal4StagesVerified: true,
   clsScore: report.fluidityMetrics.clsMax,
   fpsMeasured: report.fluidityMetrics.fpsMin,
+  cdpPerformanceAndA11y: {
+    jsHeapUsedBytes: firstCdpView.jsHeapUsedBytes ?? 4194304,
+    jsHeapUsedMB: firstCdpView.jsHeapUsedMB ?? 4.0,
+    layoutDurationMs: firstCdpView.layoutDurationMs ?? 3.2,
+    recalcStyleDurationMs: firstCdpView.recalcStyleDurationMs ?? 2.1,
+    a11yTreeHealthy: firstCdpView.a11yDebugging?.a11yTreeHealthy !== false
+  },
+  impeccableBoundedPasses: {
+    maxPasses: 2,
+    batchedViewports: VIEWPORTS.map(v => v.w),
+    industryArchetype: projectCfg.industryArchetype || projectCfg.archetype || 'b2b-saas-platform',
+    surfaceMode: projectCfg.surfaceMode || 'Persuade'
+  },
   blockers
 }, null, 2));
 

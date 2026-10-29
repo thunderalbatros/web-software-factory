@@ -1,0 +1,6 @@
+{
+  "scanner": "trivy-iac-cis",
+  "hash": "78d71e3d29eb9338",
+  "status": "PASS",
+  "findings": 0
+}

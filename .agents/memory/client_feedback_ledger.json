@@ -1,0 +1,32 @@
+{
+  "tickets": [
+    {
+      "ticketId": "tkt-da435d66",
+      "createdAt": "2026-10-28T20:32:44.540Z",
+      "clientId": "client-alfa-001",
+      "sourceChannel": "client_feedback_widget",
+      "sectionSelector": "#hero-cta",
+      "pageUrl": "https://agencia-alfa.pages.dev/",
+      "viewport": "1440x900",
+      "sanitizedMessage": "Por favor cambiar el texto del botón principal del hero a \"Agendar Auditoría Ejecutiva\" con mi tarjeta [REDACTED_CARD_PAN].",
+      "intent": "CASE_B_DRAFT_PR_AND_PREVIEW",
+      "branchName": "feedback/tkt-da435d66",
+      "previewUrl": "https://preview-tkt-da435d66.agencia-alfa.pages.dev",
+      "snapshotId": "snap-tkt-da435d66-1793219563994",
+      "sandboxMode": "local-worktree",
+      "evalMatrixScore": 100,
+      "braintrustScore": 100,
+      "productionModified": false,
+      "ctoNotification": {
+        "toEmail": "tomasbermudez777@gmail.com",
+        "slackChannel": "#factory-client-triage",
+        "subject": "[Draft PR Ready] Ticket tkt-da435d66 en #hero-cta",
+        "previewUrl": "https://preview-tkt-da435d66.agencia-alfa.pages.dev",
+        "branchName": "feedback/tkt-da435d66",
+        "oneClickApproveAction": "npm run cto:aprobar -- --branch feedback/tkt-da435d66",
+        "evalScore": 100,
+        "braintrustScore": 100
+      }
+    }
+  ]
+}

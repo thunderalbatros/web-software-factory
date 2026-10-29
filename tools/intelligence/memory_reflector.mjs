@@ -22,7 +22,10 @@ import {
   saveTemporalLedger,
   recordTemporalRule,
   recordRegressionAssertion,
-  syncPostMortemRegressionAssertions
+  syncPostMortemRegressionAssertions,
+  validateAgentMemoryGuard,
+  safeWriteExperienceMarkdown,
+  EXPERIENCE_FILE
 } from './instincts_engine.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -54,6 +57,7 @@ export function inferFactCategory(text = '') {
 }
 
 export function saveInstinctCard(instinct) {
+  validateAgentMemoryGuard(instinct, `instincts/${instinct.id}.md`);
   const fileName = `${instinct.id}.md`;
   const filePath = path.join(INSTINCTS_DIR, fileName);
 
@@ -137,6 +141,7 @@ export function normalizeTemporalStores() {
  *      and writes a permanent instinct card in .agents/memory/instincts/.
  */
 export function applyCtoFeedbackAndInvalidate(feedbackText, options = {}) {
+  validateAgentMemoryGuard(feedbackText, 'temporal_ledger.json');
   normalizeTemporalStores();
   const now = new Date().toISOString();
   const category = options.category || inferFactCategory(feedbackText);
@@ -332,6 +337,11 @@ export function reflectAndConsolidate() {
     const cardPath = saveInstinctCard(instinct);
     console.log(`  ✓ Consolidated Temporal Fact: ${instinct.id} [valid_until: ${instinct.valid_until}] -> ${path.basename(cardPath)}`);
     consolidatedCount++;
+  }
+
+  if (fs.existsSync(EXPERIENCE_FILE)) {
+    const expContent = fs.readFileSync(EXPERIENCE_FILE, 'utf8');
+    safeWriteExperienceMarkdown(expContent);
   }
 
   const regSync = syncPostMortemRegressionAssertions();
