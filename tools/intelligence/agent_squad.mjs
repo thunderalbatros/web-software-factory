@@ -49,9 +49,15 @@ import {
 import { emitFactoryTelemetryEvent } from '../cockpit/live_telemetry_bus.mjs';
 import {
   verifyClientInterviewGate,
+  verifyDualInterviewGates,
   compileSpecFromInterview,
   initClientInterviewFiles
 } from '../orchestrator/client_interview_gate.mjs';
+import {
+  verifyPrdInterviewGate,
+  compilePrdLeanAndBrandLock,
+  initPrdInterviewFiles
+} from '../orchestrator/lean_prd_architect.mjs';
 import { checkAstDiffOscillationBreaker } from '../audit/local_fullstack_and_component_harness.mjs';
 import { evaluateFullJevOuterAndMetaGate } from './jev_semantic_gate.mjs';
 
@@ -87,7 +93,11 @@ export {
   resolveIndustryArchetype,
   generateProductAndDesignMd,
   lintDesignMd,
+  verifyPrdInterviewGate,
+  compilePrdLeanAndBrandLock,
+  initPrdInterviewFiles,
   verifyClientInterviewGate,
+  verifyDualInterviewGates,
   compileSpecFromInterview,
   initClientInterviewFiles
 };
@@ -445,6 +455,11 @@ export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipelin
   } = options;
 
   const startMs = performance.now();
+  const targetProjectSlug = project || 'agencia-alfa';
+  const dualGateCheck = verifyDualInterviewGates(targetProjectSlug, options.archetype || 'saas');
+  if (!dualGateCheck.passed) {
+    throw new Error(dualGateCheck.message);
+  }
   console.log(`\n==================================================================`);
   console.log(`⚡ DAG BOLT ORCHESTRATOR — PARALLEL EXECUTION ENGINE`);
   console.log(`Mission: "${missionTitle}" | Resume: ${resume} | Worktree: ${useSandbox}`);

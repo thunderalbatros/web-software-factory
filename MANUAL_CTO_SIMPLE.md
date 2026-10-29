@@ -232,17 +232,19 @@ npm run cto:crear-audio -- "sfx-ui"
 ```
 Configura el motor de efectos de sonido en tiempo real (`templates/components/web-audio-director.js` con **`0 KB` de archivos externos**, 6 presets táctiles, micro-variación orgánica de `±20 cents` en pitch y `±8%` en filtro paso-bajo, audio espacial 3D `HRTF` sincronizado con `Three.js r186` y botón accesible de *Mute*), genera o selecciona la música de fondo normalizada a **`-18 LUFS`** (con *Sidechain Ducking* automático de `-6 dB` en `300 Hz – 3.5 kHz` cuando hay locución de Google Cloud TTS), registra el costo en `.agents/memory/gcp_finops_budget.json` y exporta la sesión completa compatible con **Reaper DAW (`projects/<slug>/audio_session/<slug>.rpp`) + pistas MIDI (`.mid`)**.
 
-### 30. Completar y Aprobar la Entrevista Inicial Obligatoria de 10 Bloques (`npm run cto:entrevista`)
+### 30. Sistema de Doble Entrevista Manual y Secuencial (`npm run cto:entrevista-prd` -> `npm run cto:entrevista`)
 ```powershell
-# Generar o revisar el estado de la entrevista del proyecto:
-npm run cto:entrevista -- "<slug>" "<rubro>"
+# PASO 1 — Entrevista #1 (Producto, Negocio e Identidad de Marca Actual):
+npm run cto:entrevista-prd -- "<slug>" "<rubro>"
+npm run cto:entrevista-prd -- "<slug>" --aprobar
 
-# Aprobar la entrevista y auto-compilar SPEC.md + PRODUCT.md + DESIGN.md (con identidad sonora a medida):
+# PASO 2 — Entrevista #2 (Especificación Técnica de 10 Bloques para SPEC.md):
+npm run cto:entrevista -- "<slug>" "<rubro>"
 npm run cto:entrevista -- "<slug>" --aprobar
 ```
-Activa la compuerta pre-construcción (`HARD_STOP_INTERVIEW_REQUIRED`) que garantiza que ningún agente construya a ciegas:
-- Genera `projects/<slug>/ENTREVISTA_CLIENTE.md` y `projects/<slug>/CLIENT_BRIEF_INTERVIEW.json` con los **10 Bloques Maestros** (1. Identidad/Rubro, 2. Audiencia/CRO/Primary CTA, 3. Sitemap, 4. Estética OKLCH/Tipografía, 5. Movimiento/3D WebGPU, 6. Identidad Sonora/Música/Video Intro `off | subtle | tactile | immersive-3d` + material físico `paper | polymer | wood | glass | metal | cyber-hud`, 7. Activos del Cliente vs IA, 8. Backend/D1/Postgres RLS, 9. SEO/GEO/Seguridad y 10. Presupuesto FinOps/DoD).
-- Al ejecutar `--aprobar`, auto-compila `SPEC.md` (`[REQ-01]..[REQ-12]`), `PRODUCT.md`, `DESIGN.md` (con síntesis psicoacústica calculada por `synthesizeProceduralSoundFromDesignCriteria()`) y `.agents/beads/task_graph.jsonl`.
+Activa el protocolo de **Doble Llave Pre-Construcción** donde ninguna entrevista se autocompleta ni se adivina:
+- **Entrevista #1 (`tools/orchestrator/lean_prd_architect.mjs` — `HARD_STOP_PRD_INTERVIEW_REQUIRED`):** Genera `projects/<slug>/ENTREVISTA_1_PRD_Y_MARCA.md` + `PRD_INTERVIEW_STATE.json` con los **7 Bloques Estratégicos y de Identidad Visual** (1. Negocio y dolor resuelto, 2. Público objetivo, 3 objeciones y UVP, 3. Identidad Visual actual `STRICT_EXISTING_BRAND | PARTIAL_BRAND_EVOLUTION | GREENFIELD_NEW_BRAND`, logotipo/isotipo, paleta exacta con `lockClientPalette` y tipografía, 4. Estilo, atmósfera y referencias, 5. Funciones operativas y CRO, 6. Activos reales, prueba social y datos legales, 7. `Explicit Non-Goals` y éxito). Al ejecutar `--aprobar`, sella `PRD_LEAN.md` (`[INV-01]..[INV-07]`) y `BRAND_IDENTITY_LOCK.json`.
+- **Entrevista #2 (`tools/orchestrator/client_interview_gate.mjs` — `HARD_STOP_SPEC_INTERVIEW_REQUIRED`):** Exige que la Entrevista #1 esté aprobada y presenta `projects/<slug>/ENTREVISTA_2_SPEC_TECNICO.md` + `CLIENT_BRIEF_INTERVIEW.json` con los **10 Bloques Técnicos**. Al ejecutar `--aprobar`, compila `SPEC.md` (`[REQ-01]..[REQ-12]`), `PRODUCT.md`, `DESIGN.md` y `.agents/beads/task_graph.jsonl`, desbloqueando la ejecución 100% automatizada de `npm run cto:construir` hasta el primer testeo.
 
 ### 31. Aterrizar la Sesión sin Pérdida de Memoria — Protocolo *"Land the Plane"* (`npm run cto:aterrizar`)
 ```powershell

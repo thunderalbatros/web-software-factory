@@ -1,0 +1,33 @@
+{
+  "schemaVersion": "2026.36.1",
+  "projectSlug": "agencia-alfa",
+  "lockedAt": "2026-10-29T14:54:58.865Z",
+  "lockedBy": "CTO_HITL_APPROVED",
+  "brandName": "Agencia Alfa",
+  "brandTagline": "Soluciones profesionales de alto impacto en saas",
+  "industryCategory": "saas",
+  "brandIdentityMode": "PARTIAL_BRAND_EVOLUTION",
+  "lockClientPalette": false,
+  "atmospherePreference": "dual-theme-toggle",
+  "desiredAestheticStyle": "Ingeniería visual moderna de alto contraste y precisión táctil",
+  "logoAssets": {
+    "primaryLogoPath": "public/assets/brand/logo-primary.svg",
+    "isotipoPath": "public/assets/brand/isotipo.svg",
+    "darkVariantLogoPath": "public/assets/brand/logo-dark.svg",
+    "lightVariantLogoPath": "public/assets/brand/logo-light.svg",
+    "usageRules": "Respetar área de aislamiento mínima de 16px, prohibido deformar proporciones o alterar colores institucionales."
+  },
+  "officialPalette": {
+    "primaryBrandColor": "#2563EB",
+    "secondaryBrandColor": "#0F172A",
+    "accentBrandColor": "#10B981",
+    "surfaceLightColor": "#F8FAFC",
+    "surfaceDarkColor": "#0B0F19"
+  },
+  "officialTypography": {
+    "displayFont": "'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
+    "sansFont": "'Inter', system-ui, -apple-system, sans-serif",
+    "monoFont": "'JetBrains Mono', ui-monospace, monospace",
+    "allowFactoryTypographyPairing": true
+  }
+}

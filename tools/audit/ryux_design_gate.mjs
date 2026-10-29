@@ -253,6 +253,52 @@ export function runRyuxDesignGate() {
     `NoUnmutedAutoplay=${!hasUnmutedAudioAutoplay && !hasUnmutedVideoAutoplay}, MuteToggle=${hasMuteControlSupport}, VideoMaxKB=${(maxObservedVideoBytes / 1024).toFixed(1)}KB (<1843.2KB), SonicIdentitySection=${hasSonicVideoSection}`
   );
 
+  // 13. Client Brand Identity Lock Verification (BRAND_IDENTITY_LOCK.json -> STRICT_EXISTING_BRAND)
+  const brandLockPath = path.join(ROOT, 'BRAND_IDENTITY_LOCK.json');
+  let brandLockPassed = true;
+  let brandLockEvidence = 'BrandIdentityLock=NONE_OR_FLEXIBLE';
+  if (fs.existsSync(brandLockPath)) {
+    try {
+      const brandLock = JSON.parse(fs.readFileSync(brandLockPath, 'utf8'));
+      const mode = brandLock.brandIdentityMode || 'PARTIAL_BRAND_EVOLUTION';
+      if (mode === 'STRICT_EXISTING_BRAND' || brandLock.lockClientPalette === true) {
+        const distCss = readFirstExisting([
+          'dist/css/style.css',
+          'dist/css/design-tokens.css',
+          'site/css/design-tokens.css',
+          'src/styles/design-tokens.css'
+        ]);
+        const distHtml = readFirstExisting(['dist/index.html', 'index.html', 'site/index.html']);
+        const combinedCssAndHtml = `${css}\n${distCss}\n${html}\n${distHtml}\n${designMdRaw}`;
+        const primaryExpected = String(brandLock.officialPalette?.primaryBrandColor || '').trim();
+        const accentExpected = String(brandLock.officialPalette?.accentBrandColor || '').trim();
+        const logoExpected = String(brandLock.logoAssets?.primaryLogoPath || '').trim();
+        const isotipoExpected = String(brandLock.logoAssets?.isotipoPath || '').trim();
+
+        const paletteMatched =
+          (!primaryExpected || combinedCssAndHtml.toLowerCase().includes(primaryExpected.toLowerCase())) &&
+          (!accentExpected || combinedCssAndHtml.toLowerCase().includes(accentExpected.toLowerCase()));
+        const logoMatched =
+          (!logoExpected || combinedCssAndHtml.includes(logoExpected) || combinedCssAndHtml.includes(path.basename(logoExpected))) &&
+          (!isotipoExpected || combinedCssAndHtml.includes(isotipoExpected) || combinedCssAndHtml.includes(path.basename(isotipoExpected)));
+
+        brandLockPassed = Boolean(paletteMatched && logoMatched);
+        brandLockEvidence = `Mode=${mode}, LockPalette=${Boolean(brandLock.lockClientPalette)}, PaletteMatched=${paletteMatched} (${primaryExpected}), LogoMatched=${logoMatched}`;
+      } else {
+        brandLockEvidence = `Mode=${mode}, LockPalette=${Boolean(brandLock.lockClientPalette)} (Verified)`;
+      }
+    } catch (err) {
+      brandLockPassed = false;
+      brandLockEvidence = `Invalid BRAND_IDENTITY_LOCK.json: ${err.message}`;
+    }
+  }
+  addCheck(
+    'ryux-brand-identity-lock',
+    'Client Brand Identity Lock (BRAND_IDENTITY_LOCK.json Palette & Logo/Isotipo Fidelity)',
+    brandLockPassed,
+    brandLockEvidence
+  );
+
   const passedCount = checks.filter(c => c.passed).length;
   const score = Math.round((passedCount / checks.length) * 100);
   const passed = passedCount === checks.length;

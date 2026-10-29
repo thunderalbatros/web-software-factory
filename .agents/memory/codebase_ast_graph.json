@@ -1,14 +1,14 @@
 {
   "schema": "cocoindex-code-ast-graph-v1",
-  "updatedAt": "2026-10-29T13:55:30.904Z",
+  "updatedAt": "2026-10-29T14:54:58.475Z",
   "activeProject": "agencia-alfa",
-  "combinedSha256": "f11d33b8629b4f06",
+  "combinedSha256": "dbd9746d076ba017",
   "stats": {
-    "totalFilesIndexed": 139,
+    "totalFilesIndexed": 140,
     "reindexedFilesCount": 1,
-    "cachedFilesCount": 138,
-    "totalSymbols": 1133,
-    "totalExports": 656,
+    "cachedFilesCount": 139,
+    "totalSymbols": 1145,
+    "totalExports": 667,
     "estimatedTokenSavingsPct": 72.5
   },
   "files": [
@@ -2948,7 +2948,9 @@
         "mountAccessibleAudioControls"
       ],
       "imports": [],
-      "importedBy": [],
+      "importedBy": [
+        "tools/orchestrator/lean_prd_architect.mjs"
+      ],
       "calls": [
         "cuero",
         "silencioso",
@@ -5961,8 +5963,8 @@
     {
       "path": "tools/audit/ryux_design_gate.mjs",
       "ext": ".mjs",
-      "sha256": "683b2ec7bd740a6a",
-      "lineCount": 373,
+      "sha256": "1f7d0cb4dd6eb664",
+      "lineCount": 419,
       "exports": [
         "runRyuxDesignGate",
         "runAutonomousAestheticRepairLoop"
@@ -6016,6 +6018,10 @@
         "dirname",
         "floor",
         "readdirSync",
+        "trim",
+        "toLowerCase",
+        "basename",
+        "Lock",
         "filter",
         "round",
         "toISOString",
@@ -6025,11 +6031,7 @@
         "evaluateVisualArchetypeWithVlm",
         "map",
         "tokens",
-        "compileDesignTokens",
-        "runAutonomousAestheticRepairLoop",
-        "then",
-        "log",
-        "exit"
+        "compileDesignTokens"
       ],
       "symbols": [
         {
@@ -6046,19 +6048,19 @@
           "exported": true,
           "signature": "export function runRyuxDesignGate()",
           "startLine": 40,
-          "endLine": 275
+          "endLine": 321
         },
         {
           "name": "runAutonomousAestheticRepairLoop",
           "kind": "function",
           "exported": true,
           "signature": "export async function runAutonomousAestheticRepairLoop(options = {})",
-          "startLine": 282,
-          "endLine": 282
+          "startLine": 328,
+          "endLine": 328
         }
       ],
-      "mtimeMs": 1793226212358.2644,
-      "size": 16231
+      "mtimeMs": 1793285527107.7903,
+      "size": 18807
     },
     {
       "path": "tools/audit/security_and_motion_audit.mjs",
@@ -6126,11 +6128,13 @@
       ],
       "importedBy": [
         "tools/audit/harness_doctor_audit.mjs",
+        "tools/cto_command_center.mjs",
         "tools/intelligence/agent_benchmark_harness.mjs",
         "tools/intelligence/agent_squad.mjs",
         "tools/intelligence/eval_matrix.mjs",
         "tools/intelligence/self_evolving_pipeline.mjs",
-        "tools/intelligence/weekly_cron_evolver.mjs"
+        "tools/intelligence/weekly_cron_evolver.mjs",
+        "tools/security_gate.mjs"
       ],
       "calls": [
         "fileURLToPath",
@@ -6849,8 +6853,8 @@
     {
       "path": "tools/cockpit/factory_twin_server.mjs",
       "ext": ".mjs",
-      "sha256": "bea59cc1bb47321c",
-      "lineCount": 1460,
+      "sha256": "98ba8ee988dde6b9",
+      "lineCount": 1466,
       "exports": [
         "DEFAULT_COCKPIT_PORT",
         "renderCockpitHtml",
@@ -6917,68 +6921,68 @@
           "kind": "constant",
           "exported": true,
           "signature": "export const DEFAULT_COCKPIT_PORT",
-          "startLine": 44,
-          "endLine": 44
+          "startLine": 49,
+          "endLine": 49
         },
         {
           "name": "renderCockpitHtml",
           "kind": "function",
           "exported": true,
           "signature": "export function renderCockpitHtml()",
-          "startLine": 49,
-          "endLine": 63
+          "startLine": 54,
+          "endLine": 68
         },
         {
           "name": "computeStationRect",
           "kind": "function",
           "exported": false,
           "signature": "function computeStationRect(station, canvasW, canvasH)",
-          "startLine": 769,
-          "endLine": 779
+          "startLine": 774,
+          "endLine": 784
         },
         {
           "name": "syncAgentTargets",
           "kind": "function",
           "exported": false,
           "signature": "function syncAgentTargets(state)",
-          "startLine": 781,
-          "endLine": 814
+          "startLine": 786,
+          "endLine": 819
         },
         {
           "name": "updateDomFromState",
           "kind": "function",
           "exported": false,
           "signature": "function updateDomFromState(state)",
-          "startLine": 816,
-          "endLine": 921
+          "startLine": 821,
+          "endLine": 926
         },
         {
           "name": "renderFloor60Fps",
           "kind": "function",
           "exported": false,
           "signature": "function renderFloor60Fps()",
-          "startLine": 947,
-          "endLine": 1101
+          "startLine": 952,
+          "endLine": 1106
         },
         {
           "name": "createFactoryTwinServer",
           "kind": "function",
           "exported": true,
           "signature": "export function createFactoryTwinServer()",
-          "startLine": 1128,
-          "endLine": 1339
+          "startLine": 1133,
+          "endLine": 1345
         },
         {
           "name": "runCockpitSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export async function runCockpitSelfTest()",
-          "startLine": 1350,
-          "endLine": 1426
+          "startLine": 1356,
+          "endLine": 1432
         }
       ],
-      "mtimeMs": 1793239902293.8752,
-      "size": 52233
+      "mtimeMs": 1793285452242.8699,
+      "size": 52532
     },
     {
       "path": "tools/cockpit/live_telemetry_bus.mjs",
@@ -7243,8 +7247,8 @@
     {
       "path": "tools/cto_command_center.mjs",
       "ext": ".mjs",
-      "sha256": "ccee18295b58246a",
-      "lineCount": 1534,
+      "sha256": "50b80b7b88eeb852",
+      "lineCount": 1596,
       "exports": [
         "evaluateCybersecurityTrafficLight",
         "handleAterrizar"
@@ -7270,10 +7274,12 @@
         "node:module",
         "./design/industry_archetype_matrix.mjs",
         "./db/dual_database_forge.mjs",
+        "./orchestrator/lean_prd_architect.mjs",
         "./orchestrator/client_interview_gate.mjs",
         "./orchestrator/adaptive_depth_router.mjs",
         "./orchestrator/humanlayer_rpi_gate.mjs",
         "./lib/project_loader.mjs",
+        "./audit/security_gate.mjs",
         "./intelligence/textgrad_skill_optimizer.mjs",
         "./intelligence/self_evolving_pipeline.mjs",
         "./design/design_extractor.mjs",
@@ -7328,8 +7334,10 @@
         "setActiveProject",
         "generateProductAndDesignMd",
         "forgeDatabaseArchitecture",
+        "initPrdInterviewFiles",
         "initClientInterviewFiles",
         "recordProjectAuditScore",
+        "obligatorio",
         "close",
         "error",
         "exit",
@@ -7337,9 +7345,7 @@
         "listProjectsCatalog",
         "padEnd",
         "Web",
-        "repeat",
-        "loadProjectConfig",
-        "filter"
+        "repeat"
       ],
       "symbols": [
         {
@@ -7372,275 +7378,283 @@
           "exported": false,
           "signature": "async function handleNuevo(args)",
           "startLine": 185,
-          "endLine": 261
+          "endLine": 265
         },
         {
           "name": "handleProyectos",
           "kind": "function",
           "exported": false,
           "signature": "async function handleProyectos(args)",
-          "startLine": 263,
-          "endLine": 306
+          "startLine": 267,
+          "endLine": 310
+        },
+        {
+          "name": "handleEntrevistaPrd",
+          "kind": "function",
+          "exported": false,
+          "signature": "async function handleEntrevistaPrd(args)",
+          "startLine": 312,
+          "endLine": 348
         },
         {
           "name": "handleEntrevista",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEntrevista(args)",
-          "startLine": 308,
-          "endLine": 342
+          "startLine": 350,
+          "endLine": 393
         },
         {
           "name": "handleConstruir",
           "kind": "function",
           "exported": false,
           "signature": "async function handleConstruir()",
-          "startLine": 344,
-          "endLine": 405
+          "startLine": 395,
+          "endLine": 466
         },
         {
           "name": "generateExecutiveDecisionBrief",
           "kind": "function",
           "exported": false,
           "signature": "async function generateExecutiveDecisionBrief(boltRes = null, axRes = null)",
-          "startLine": 407,
-          "endLine": 539
+          "startLine": 468,
+          "endLine": 600
         },
         {
           "name": "handleRevisar",
           "kind": "function",
           "exported": false,
           "signature": "async function handleRevisar(args)",
-          "startLine": 541,
-          "endLine": 565
+          "startLine": 602,
+          "endLine": 626
         },
         {
           "name": "handleEmpaquetar",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEmpaquetar(args = [])",
-          "startLine": 567,
-          "endLine": 600
+          "startLine": 628,
+          "endLine": 661
         },
         {
           "name": "handleAprobar",
           "kind": "function",
           "exported": false,
           "signature": "async function handleAprobar(args = [])",
-          "startLine": 602,
-          "endLine": 633
+          "startLine": 663,
+          "endLine": 694
         },
         {
           "name": "handleFeedback",
           "kind": "function",
           "exported": false,
           "signature": "async function handleFeedback(args)",
-          "startLine": 635,
-          "endLine": 669
+          "startLine": 696,
+          "endLine": 730
         },
         {
           "name": "handleAprender",
           "kind": "function",
           "exported": false,
           "signature": "async function handleAprender(args)",
-          "startLine": 671,
-          "endLine": 688
+          "startLine": 732,
+          "endLine": 749
         },
         {
           "name": "handleEvolucionar",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEvolucionar(args)",
-          "startLine": 690,
-          "endLine": 699
+          "startLine": 751,
+          "endLine": 760
         },
         {
           "name": "handleExtraerDiseno",
           "kind": "function",
           "exported": false,
           "signature": "async function handleExtraerDiseno(args)",
-          "startLine": 701,
-          "endLine": 713
+          "startLine": 762,
+          "endLine": 774
         },
         {
           "name": "handleIngerirLibros",
           "kind": "function",
           "exported": false,
           "signature": "async function handleIngerirLibros(args)",
-          "startLine": 715,
-          "endLine": 731
+          "startLine": 776,
+          "endLine": 792
         },
         {
           "name": "handleActualizacionSemanal",
           "kind": "function",
           "exported": false,
           "signature": "async function handleActualizacionSemanal(args)",
-          "startLine": 733,
-          "endLine": 745
+          "startLine": 794,
+          "endLine": 806
         },
         {
           "name": "handleEfecto3d",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEfecto3d(args)",
-          "startLine": 747,
-          "endLine": 762
+          "startLine": 808,
+          "endLine": 823
         },
         {
           "name": "handleOptimizar3d",
           "kind": "function",
           "exported": false,
           "signature": "async function handleOptimizar3d(args)",
-          "startLine": 764,
-          "endLine": 780
+          "startLine": 825,
+          "endLine": 841
         },
         {
           "name": "handleGcpStatus",
           "kind": "function",
           "exported": false,
           "signature": "async function handleGcpStatus()",
-          "startLine": 782,
-          "endLine": 798
+          "startLine": 843,
+          "endLine": 859
         },
         {
           "name": "handleBenchmark",
           "kind": "function",
           "exported": false,
           "signature": "async function handleBenchmark()",
-          "startLine": 800,
-          "endLine": 806
+          "startLine": 861,
+          "endLine": 867
         },
         {
           "name": "handleMcpStatus",
           "kind": "function",
           "exported": false,
           "signature": "async function handleMcpStatus()",
-          "startLine": 808,
-          "endLine": 851
+          "startLine": 869,
+          "endLine": 912
         },
         {
           "name": "handleArquitecturaDb",
           "kind": "function",
           "exported": false,
           "signature": "async function handleArquitecturaDb(rest = [])",
-          "startLine": 853,
-          "endLine": 882
+          "startLine": 914,
+          "endLine": 943
         },
         {
           "name": "handleDestilarCurso",
           "kind": "function",
           "exported": false,
           "signature": "async function handleDestilarCurso(rest = [])",
-          "startLine": 884,
-          "endLine": 906
+          "startLine": 945,
+          "endLine": 967
         },
         {
           "name": "handleCosecharDocs",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCosecharDocs()",
-          "startLine": 908,
-          "endLine": 923
+          "startLine": 969,
+          "endLine": 984
         },
         {
           "name": "handleArquetipo",
           "kind": "function",
           "exported": false,
           "signature": "async function handleArquetipo(rest = [])",
-          "startLine": 925,
-          "endLine": 949
+          "startLine": 986,
+          "endLine": 1010
         },
         {
           "name": "handleCrearMovil",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCrearMovil(rest = [])",
-          "startLine": 951,
-          "endLine": 975
+          "startLine": 1012,
+          "endLine": 1036
         },
         {
           "name": "handleEstado",
           "kind": "function",
           "exported": false,
           "signature": "async function handleEstado()",
-          "startLine": 977,
-          "endLine": 1025
+          "startLine": 1038,
+          "endLine": 1086
         },
         {
           "name": "handleInvestigarReferencia",
           "kind": "function",
           "exported": false,
           "signature": "async function handleInvestigarReferencia(args = [])",
-          "startLine": 1027,
-          "endLine": 1040
+          "startLine": 1088,
+          "endLine": 1101
         },
         {
           "name": "handleFeedbackCliente",
           "kind": "function",
           "exported": false,
           "signature": "async function handleFeedbackCliente(args = [])",
-          "startLine": 1042,
-          "endLine": 1074
+          "startLine": 1103,
+          "endLine": 1135
         },
         {
           "name": "handleAprobarTicket",
           "kind": "function",
           "exported": false,
           "signature": "async function handleAprobarTicket(args = [])",
-          "startLine": 1076,
-          "endLine": 1106
+          "startLine": 1137,
+          "endLine": 1167
         },
         {
           "name": "handleCambioIncremental",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCambioIncremental(args = [])",
-          "startLine": 1108,
-          "endLine": 1174
+          "startLine": 1169,
+          "endLine": 1235
         },
         {
           "name": "handleAuditarHarness",
           "kind": "function",
           "exported": false,
           "signature": "async function handleAuditarHarness(args = [])",
-          "startLine": 1176,
-          "endLine": 1184
+          "startLine": 1237,
+          "endLine": 1245
         },
         {
           "name": "handleCrearIntroVideo",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCrearIntroVideo(args = [])",
-          "startLine": 1186,
-          "endLine": 1213
+          "startLine": 1247,
+          "endLine": 1274
         },
         {
           "name": "handleCrearAudio",
           "kind": "function",
           "exported": false,
           "signature": "async function handleCrearAudio(args = [])",
-          "startLine": 1215,
-          "endLine": 1274
+          "startLine": 1276,
+          "endLine": 1335
         },
         {
           "name": "handleAterrizar",
           "kind": "function",
           "exported": true,
           "signature": "export async function handleAterrizar(args = [])",
-          "startLine": 1284,
-          "endLine": 1424
+          "startLine": 1345,
+          "endLine": 1485
         },
         {
           "name": "main",
           "kind": "function",
           "exported": false,
           "signature": "async function main()",
-          "startLine": 1426,
-          "endLine": 1528
+          "startLine": 1487,
+          "endLine": 1590
         }
       ],
-      "mtimeMs": 1793281529057.8533,
-      "size": 82207
+      "mtimeMs": 1793285412387.0508,
+      "size": 86351
     },
     {
       "path": "tools/db/dual_database_forge.mjs",
@@ -7960,7 +7974,8 @@
         "tools/intelligence/vertex_ai_bridge.mjs",
         "tools/media/programmatic_video_forge.mjs",
         "tools/media/sonic_and_music_forge.mjs",
-        "tools/orchestrator/client_interview_gate.mjs"
+        "tools/orchestrator/client_interview_gate.mjs",
+        "tools/orchestrator/lean_prd_architect.mjs"
       ],
       "calls": [
         "fileURLToPath",
@@ -8398,8 +8413,8 @@
     {
       "path": "tools/design/token_compiler.mjs",
       "ext": ".mjs",
-      "sha256": "0de51bdb34b72711",
-      "lineCount": 835,
+      "sha256": "b2657ab670ec47fe",
+      "lineCount": 904,
       "exports": [
         "getStyleCatalog",
         "buildDtcgTokensObject",
@@ -8437,9 +8452,9 @@
         "map",
         "sort",
         "keys",
-        "CTA",
         "oklch",
         "toFixed",
+        "CTA",
         "surface",
         "text",
         "copy",
@@ -8493,85 +8508,85 @@
           "name": "buildDtcgTokensObject",
           "kind": "function",
           "exported": true,
-          "signature": "export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento')",
+          "signature": "export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento', brandLock = null)",
           "startLine": 104,
-          "endLine": 203
+          "endLine": 255
         },
         {
           "name": "resolveDtcgAliases",
           "kind": "function",
           "exported": true,
           "signature": "export function resolveDtcgAliases(dtcgRoot)",
-          "startLine": 208,
-          "endLine": 253
+          "startLine": 260,
+          "endLine": 305
         },
         {
           "name": "lookupPath",
           "kind": "function",
           "exported": false,
           "signature": "function lookupPath(pathStr)",
-          "startLine": 209,
-          "endLine": 217
+          "startLine": 261,
+          "endLine": 269
         },
         {
           "name": "resolveValue",
           "kind": "function",
           "exported": false,
           "signature": "function resolveValue(val, visited = new Set()",
-          "startLine": 219,
-          "endLine": 231
+          "startLine": 271,
+          "endLine": 283
         },
         {
           "name": "walk",
           "kind": "function",
           "exported": false,
           "signature": "function walk(node, prefix = [])",
-          "startLine": 234,
-          "endLine": 250
+          "startLine": 286,
+          "endLine": 302
         },
         {
           "name": "renderDesignTokensCss",
           "kind": "function",
           "exported": true,
           "signature": "export function renderDesignTokensCss(dtcg)",
-          "startLine": 255,
-          "endLine": 269
+          "startLine": 307,
+          "endLine": 321
         },
         {
           "name": "compileDesignTokens",
           "kind": "function",
           "exported": true,
           "signature": "export function compileDesignTokens(options = {})",
-          "startLine": 643,
-          "endLine": 643
+          "startLine": 702,
+          "endLine": 702
         },
         {
           "name": "compileMultiTargetMobileTokensSync",
           "kind": "function",
           "exported": false,
           "signature": "function compileMultiTargetMobileTokensSync(rootDir, dtcg, writtenFiles = [])",
-          "startLine": 751,
-          "endLine": 775
+          "startLine": 820,
+          "endLine": 844
         },
         {
           "name": "extractOklchPaletteFromBrandImage",
           "kind": "function",
           "exported": true,
           "signature": "export function extractOklchPaletteFromBrandImage(imagePathOrBuffer = 'brand-reference.png')",
-          "startLine": 781,
-          "endLine": 814
+          "startLine": 850,
+          "endLine": 883
         },
         {
           "name": "runTokenCompilerCli",
           "kind": "function",
           "exported": true,
           "signature": "export function runTokenCompilerCli()",
-          "startLine": 816,
-          "endLine": 830
+          "startLine": 885,
+          "endLine": 899
         }
       ],
-      "mtimeMs": 1793220973882.5842,
-      "size": 29474
+      "mtimeMs": 1793285504551.6729,
+      "size": 33016
     },
     {
       "path": "tools/factory.mjs",
@@ -9391,8 +9406,8 @@
     {
       "path": "tools/intelligence/agent_squad.mjs",
       "ext": ".mjs",
-      "sha256": "24e31a42df6df8d6",
-      "lineCount": 1055,
+      "sha256": "59a25a105ef7eb25",
+      "lineCount": 1070,
       "exports": [
         "recordAndCheckAstDiffOscillation",
         "RUNS_ARTIFACTS_DIR",
@@ -9486,132 +9501,132 @@
           "kind": "function",
           "exported": true,
           "signature": "export function recordAndCheckAstDiffOscillation(runId = 'default-run', astStructuralHash = '')",
-          "startLine": 64,
-          "endLine": 69
+          "startLine": 70,
+          "endLine": 75
         },
         {
           "name": "RUNS_ARTIFACTS_DIR",
           "kind": "constant",
           "exported": true,
           "signature": "export const RUNS_ARTIFACTS_DIR",
-          "startLine": 99,
-          "endLine": 99
+          "startLine": 109,
+          "endLine": 109
         },
         {
           "name": "WaveHandoffArtifactSchema",
           "kind": "constant",
           "exported": true,
           "signature": "export const WaveHandoffArtifactSchema",
-          "startLine": 104,
-          "endLine": 116
+          "startLine": 114,
+          "endLine": 126
         },
         {
           "name": "runTracerBulletStopHook",
           "kind": "function",
           "exported": true,
           "signature": "export function runTracerBulletStopHook()",
-          "startLine": 172,
-          "endLine": 188
+          "startLine": 182,
+          "endLine": 198
         },
         {
           "name": "MAX_SELF_HEALING_RETRY_ROUNDS",
           "kind": "constant",
           "exported": true,
           "signature": "export const MAX_SELF_HEALING_RETRY_ROUNDS",
-          "startLine": 195,
-          "endLine": 195
+          "startLine": 205,
+          "endLine": 205
         },
         {
           "name": "runSelfHealingLoop",
           "kind": "function",
           "exported": true,
           "signature": "export async function runSelfHealingLoop(taskFn, options = {})",
-          "startLine": 197,
-          "endLine": 197
+          "startLine": 207,
+          "endLine": 207
         },
         {
           "name": "SQUADS",
           "kind": "constant",
           "exported": true,
           "signature": "export const SQUADS",
-          "startLine": 265,
-          "endLine": 322
+          "startLine": 275,
+          "endLine": 332
         },
         {
           "name": "verifySquadAlignment",
           "kind": "function",
           "exported": true,
           "signature": "export function verifySquadAlignment()",
-          "startLine": 324,
-          "endLine": 351
+          "startLine": 334,
+          "endLine": 361
         },
         {
           "name": "verifySquadMcpRoleRouting",
           "kind": "function",
           "exported": true,
           "signature": "export function verifySquadMcpRoleRouting()",
-          "startLine": 357,
-          "endLine": 390
+          "startLine": 367,
+          "endLine": 400
         },
         {
           "name": "loadBoltCheckpoint",
           "kind": "function",
           "exported": true,
           "signature": "export function loadBoltCheckpoint()",
-          "startLine": 392,
-          "endLine": 399
+          "startLine": 402,
+          "endLine": 409
         },
         {
           "name": "saveBoltCheckpoint",
           "kind": "function",
           "exported": true,
           "signature": "export function saveBoltCheckpoint(state)",
-          "startLine": 401,
-          "endLine": 409
+          "startLine": 411,
+          "endLine": 419
         },
         {
           "name": "runNodeScriptAsync",
           "kind": "function",
           "exported": false,
           "signature": "function runNodeScriptAsync(scriptRelPath, args = [])",
-          "startLine": 411,
-          "endLine": 435
+          "startLine": 421,
+          "endLine": 445
         },
         {
           "name": "runSquadMission",
           "kind": "function",
           "exported": true,
           "signature": "export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipeline', options = {})",
-          "startLine": 440,
-          "endLine": 440
+          "startLine": 450,
+          "endLine": 450
         },
         {
           "name": "runBestOfNSpeculative",
           "kind": "function",
           "exported": true,
           "signature": "export async function runBestOfNSpeculative(candidates = ['bento-oklch-v1', 'linear-dark-v2'], taskName = 'hero-ui-component')",
-          "startLine": 874,
-          "endLine": 938
+          "startLine": 889,
+          "endLine": 953
         },
         {
           "name": "runCouncilDeliberation",
           "kind": "function",
           "exported": true,
           "signature": "export function runCouncilDeliberation(decisionTopic = 'Architecture & UI Strategy')",
-          "startLine": 945,
-          "endLine": 977
+          "startLine": 960,
+          "endLine": 992
         },
         {
           "name": "runArenaTournament",
           "kind": "function",
           "exported": true,
           "signature": "export function runArenaTournament(taskPrompt = 'High-converting Hero & Bento Grid', candidateCards = [])",
-          "startLine": 985,
-          "endLine": 1013
+          "startLine": 1000,
+          "endLine": 1028
         }
       ],
-      "mtimeMs": 1793281285666.0151,
-      "size": 41039
+      "mtimeMs": 1793285448302.0498,
+      "size": 41546
     },
     {
       "path": "tools/intelligence/ast_guard.mjs",
@@ -15829,14 +15844,14 @@
     {
       "path": "tools/orchestrator/client_interview_gate.mjs",
       "ext": ".mjs",
-      "sha256": "2639e930464724c5",
-      "lineCount": 623,
+      "sha256": "a7d272048035773d",
+      "lineCount": 1102,
       "exports": [
         "ROOT",
-        "buildDefaultInterviewPayload",
         "renderInterviewMarkdown",
         "initClientInterviewFiles",
         "verifyClientInterviewGate",
+        "verifyDualInterviewGates",
         "compileSpecFromInterview",
         "runClientInterviewGateSelfTest"
       ],
@@ -15852,49 +15867,49 @@
       "calls": [
         "fileURLToPath",
         "dirname",
+        "join",
+        "existsSync",
+        "parse",
+        "readFileSync",
+        "buildDefaultInterviewPayload",
+        "loadBrandLockAndPrdState",
         "resolveIndustryArchetype",
         "resolveSonicArchetypePreset",
-        "toISOString",
         "split",
         "map",
         "charAt",
         "toUpperCase",
         "slice",
-        "join",
-        "Vectorial",
+        "toISOString",
+        "Principal",
+        "CTA",
+        "LeadCaptureFormSchema",
+        "InteractiveCalculatorOrFilterSchema",
+        "Passkeys",
+        "BRAND_IDENTITY_LOCK",
         "Card",
         "None",
         "replace",
-        "bloqueado",
-        "Arquetipo",
-        "nica",
-        "Flujos",
-        "Superficie",
-        "Bordes",
+        "CNICA",
+        "DOM",
+        "Puros",
+        "Componentes",
+        "Grilla",
+        "Hero",
+        "ficas",
+        "Shaders",
+        "Shader",
+        "Reaper",
+        "Sonoro",
         "Intro",
-        "Effects",
-        "Dominante",
-        "Fondo",
-        "Logo",
-        "Cliente",
-        "brica",
-        "GEO",
-        "Final",
-        "xito",
+        "Worker",
+        "Datos",
+        "Pass",
         "mkdirSync",
-        "existsSync",
-        "parse",
-        "readFileSync",
-        "writeFileSync",
         "renderInterviewMarkdown",
-        "buildDefaultInterviewPayload",
+        "writeFileSync",
         "stringify",
-        "initClientInterviewFiles",
-        "synthesizeProceduralSoundFromDesignCriteria",
-        "Entrevista",
-        "Numerados",
-        "clamp",
-        "resorte"
+        "verifyPrdInterviewGate"
       ],
       "symbols": [
         {
@@ -15902,60 +15917,68 @@
           "kind": "constant",
           "exported": true,
           "signature": "export const ROOT",
-          "startLine": 34,
-          "endLine": 34
+          "startLine": 42,
+          "endLine": 42
         },
         {
-          "name": "buildDefaultInterviewPayload",
+          "name": "loadBrandLockAndPrdState",
           "kind": "function",
-          "exported": true,
-          "signature": "export function buildDefaultInterviewPayload(slug = 'agencia-alfa', industryInput = 'saas', status = 'PENDING_CTO_ANSWERS')",
-          "startLine": 39,
-          "endLine": 133
+          "exported": false,
+          "signature": "function loadBrandLockAndPrdState(slug = 'agencia-alfa')",
+          "startLine": 47,
+          "endLine": 64
         },
         {
           "name": "renderInterviewMarkdown",
           "kind": "function",
           "exported": true,
           "signature": "export function renderInterviewMarkdown(interviewData)",
-          "startLine": 138,
-          "endLine": 203
+          "startLine": 348,
+          "endLine": 416
         },
         {
           "name": "initClientInterviewFiles",
           "kind": "function",
           "exported": true,
           "signature": "export function initClientInterviewFiles(slug = 'agencia-alfa', industryInput = 'saas', options = {})",
-          "startLine": 208,
-          "endLine": 208
+          "startLine": 421,
+          "endLine": 421
         },
         {
           "name": "verifyClientInterviewGate",
           "kind": "function",
           "exported": true,
           "signature": "export function verifyClientInterviewGate(slug = 'agencia-alfa', industryFallback = 'saas')",
-          "startLine": 249,
-          "endLine": 301
+          "startLine": 478,
+          "endLine": 559
+        },
+        {
+          "name": "verifyDualInterviewGates",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function verifyDualInterviewGates(slug = 'agencia-alfa', industryFallback = 'saas')",
+          "startLine": 566,
+          "endLine": 597
         },
         {
           "name": "compileSpecFromInterview",
           "kind": "function",
           "exported": true,
           "signature": "export function compileSpecFromInterview(slug = 'agencia-alfa', options = {})",
-          "startLine": 311,
-          "endLine": 311
+          "startLine": 606,
+          "endLine": 606
         },
         {
           "name": "runClientInterviewGateSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export function runClientInterviewGateSelfTest()",
-          "startLine": 530,
-          "endLine": 578
+          "startLine": 911,
+          "endLine": 1038
         }
       ],
-      "mtimeMs": 1793234544552.844,
-      "size": 33345
+      "mtimeMs": 1793285342930.5117,
+      "size": 56671
     },
     {
       "path": "tools/orchestrator/humanlayer_rpi_gate.mjs",
@@ -16181,6 +16204,156 @@
       ],
       "mtimeMs": 1793242426295.3264,
       "size": 34165
+    },
+    {
+      "path": "tools/orchestrator/lean_prd_architect.mjs",
+      "ext": ".mjs",
+      "sha256": "28a8c4eaf2e92242",
+      "lineCount": 869,
+      "exports": [
+        "ROOT",
+        "VALID_BRAND_IDENTITY_MODES",
+        "VALID_ATMOSPHERE_MODES",
+        "renderPrdInterviewMarkdown",
+        "initPrdInterviewFiles",
+        "validatePrdBlocksCompleteness",
+        "verifyPrdInterviewGate",
+        "compilePrdLeanAndBrandLock",
+        "runLeanPrdArchitectSelfTest"
+      ],
+      "imports": [
+        "node:fs",
+        "node:path",
+        "node:url",
+        "../design/industry_archetype_matrix.mjs",
+        "../../templates/components/web-audio-director.js"
+      ],
+      "importedBy": [
+        "tools/cto_command_center.mjs"
+      ],
+      "calls": [
+        "fileURLToPath",
+        "dirname",
+        "buildDefaultPrdInterviewPayload",
+        "resolveIndustryArchetype",
+        "resolveSonicArchetypePreset",
+        "split",
+        "filter",
+        "map",
+        "charAt",
+        "toUpperCase",
+        "slice",
+        "join",
+        "vil",
+        "desktop",
+        "rioplatense",
+        "grano",
+        "segundos",
+        "toISOString",
+        "PRODUCTO",
+        "Eslogan",
+        "Industrial",
+        "Visita",
+        "Valor",
+        "Cliente",
+        "Marca",
+        "Principal",
+        "tulos",
+        "Cuerpo",
+        "digo",
+        "sfera",
+        "Alcance",
+        "mkdirSync",
+        "existsSync",
+        "parse",
+        "readFileSync",
+        "writeFileSync",
+        "stringify",
+        "renderPrdInterviewMarkdown",
+        "push",
+        "trim",
+        "isArray",
+        "includes",
+        "lido",
+        "compilePrdLeanAndBrandLock",
+        "initPrdInterviewFiles"
+      ],
+      "symbols": [
+        {
+          "name": "ROOT",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const ROOT",
+          "startLine": 39,
+          "endLine": 39
+        },
+        {
+          "name": "VALID_BRAND_IDENTITY_MODES",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const VALID_BRAND_IDENTITY_MODES",
+          "startLine": 41,
+          "endLine": 41
+        },
+        {
+          "name": "VALID_ATMOSPHERE_MODES",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const VALID_ATMOSPHERE_MODES",
+          "startLine": 47,
+          "endLine": 47
+        },
+        {
+          "name": "renderPrdInterviewMarkdown",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function renderPrdInterviewMarkdown(prdState)",
+          "startLine": 241,
+          "endLine": 336
+        },
+        {
+          "name": "initPrdInterviewFiles",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function initPrdInterviewFiles(slug = 'agencia-alfa', industryInput = 'saas', options = {})",
+          "startLine": 342,
+          "endLine": 342
+        },
+        {
+          "name": "validatePrdBlocksCompleteness",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function validatePrdBlocksCompleteness(prdState)",
+          "startLine": 405,
+          "endLine": 465
+        },
+        {
+          "name": "verifyPrdInterviewGate",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function verifyPrdInterviewGate(slug = 'agencia-alfa', industryFallback = 'saas')",
+          "startLine": 471,
+          "endLine": 546
+        },
+        {
+          "name": "compilePrdLeanAndBrandLock",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function compilePrdLeanAndBrandLock(slug = 'agencia-alfa', options = {})",
+          "startLine": 552,
+          "endLine": 552
+        },
+        {
+          "name": "runLeanPrdArchitectSelfTest",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function runLeanPrdArchitectSelfTest()",
+          "startLine": 739,
+          "endLine": 821
+        }
+      ],
+      "mtimeMs": 1793285155797.4778,
+      "size": 41695
     },
     {
       "path": "tools/project_loader.mjs",
@@ -16483,12 +16656,16 @@
     {
       "path": "tools/security_gate.mjs",
       "ext": ".mjs",
-      "sha256": "54c53c565d97cde0",
-      "lineCount": 71,
-      "exports": [],
+      "sha256": "0ba6d297f3db0d20",
+      "lineCount": 20,
+      "exports": [
+        "runSecurityQuarantineGate",
+        "runSecurityGate"
+      ],
       "imports": [
         "node:path",
-        "node:url"
+        "node:url",
+        "./audit/security_gate.mjs"
       ],
       "importedBy": [],
       "calls": [
@@ -16499,13 +16676,20 @@
         "log",
         "toFixed",
         "Kernel",
-        "error",
-        "redactPiiEntities",
         "exit"
       ],
-      "symbols": [],
-      "mtimeMs": 1793242573574.4385,
-      "size": 3246
+      "symbols": [
+        {
+          "name": "runSecurityGate",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const runSecurityGate",
+          "startLine": 10,
+          "endLine": 10
+        }
+      ],
+      "mtimeMs": 1793285693951.3262,
+      "size": 1270
     },
     {
       "path": "tools/serve_site.mjs",
@@ -20362,7 +20546,8 @@
       ],
       "calledByFiles": [
         "templates/components/web-audio-director.js",
-        "tools/orchestrator/client_interview_gate.mjs"
+        "tools/orchestrator/client_interview_gate.mjs",
+        "tools/orchestrator/lean_prd_architect.mjs"
       ]
     },
     "enforceAcousticSafetyEnvelope": {
@@ -20389,9 +20574,7 @@
           "endLine": 396
         }
       ],
-      "calledByFiles": [
-        "tools/orchestrator/client_interview_gate.mjs"
-      ]
+      "calledByFiles": []
     },
     "computeOrganicMicroVariation": {
       "definitions": [
@@ -21011,8 +21194,15 @@
           "file": "tools/orchestrator/client_interview_gate.mjs",
           "kind": "constant",
           "signature": "export const ROOT",
-          "startLine": 34,
-          "endLine": 34
+          "startLine": 42,
+          "endLine": 42
+        },
+        {
+          "file": "tools/orchestrator/lean_prd_architect.mjs",
+          "kind": "constant",
+          "signature": "export const ROOT",
+          "startLine": 39,
+          "endLine": 39
         }
       ],
       "calledByFiles": []
@@ -21167,7 +21357,7 @@
           "kind": "function",
           "signature": "export function runRyuxDesignGate()",
           "startLine": 40,
-          "endLine": 275
+          "endLine": 321
         }
       ],
       "calledByFiles": [
@@ -21184,13 +21374,11 @@
           "file": "tools/audit/ryux_design_gate.mjs",
           "kind": "function",
           "signature": "export async function runAutonomousAestheticRepairLoop(options = {})",
-          "startLine": 282,
-          "endLine": 282
+          "startLine": 328,
+          "endLine": 328
         }
       ],
-      "calledByFiles": [
-        "tools/audit/ryux_design_gate.mjs"
-      ]
+      "calledByFiles": []
     },
     "GITLEAKS_SECRET_PATTERNS": {
       "definitions": [
@@ -21229,8 +21417,7 @@
         }
       ],
       "calledByFiles": [
-        "tools/audit/security_gate.mjs",
-        "tools/security_gate.mjs"
+        "tools/audit/security_gate.mjs"
       ]
     },
     "verifyPiiRedactorSelfTest": {
@@ -21323,6 +21510,13 @@
           "signature": "export const runSecurityGate",
           "startLine": 528,
           "endLine": 528
+        },
+        {
+          "file": "tools/security_gate.mjs",
+          "kind": "constant",
+          "signature": "export const runSecurityGate",
+          "startLine": 10,
+          "endLine": 10
         }
       ],
       "calledByFiles": [
@@ -21624,8 +21818,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "function walk(node, prefix = [])",
-          "startLine": 234,
-          "endLine": 250
+          "startLine": 286,
+          "endLine": 302
         },
         {
           "file": "tools/intelligence/qdrant_rag.mjs",
@@ -21694,8 +21888,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "constant",
           "signature": "export const DEFAULT_COCKPIT_PORT",
-          "startLine": 44,
-          "endLine": 44
+          "startLine": 49,
+          "endLine": 49
         }
       ],
       "calledByFiles": []
@@ -21706,8 +21900,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "export function renderCockpitHtml()",
-          "startLine": 49,
-          "endLine": 63
+          "startLine": 54,
+          "endLine": 68
         }
       ],
       "calledByFiles": []
@@ -21718,8 +21912,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "function computeStationRect(station, canvasW, canvasH)",
-          "startLine": 769,
-          "endLine": 779
+          "startLine": 774,
+          "endLine": 784
         }
       ],
       "calledByFiles": [
@@ -21732,8 +21926,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "function syncAgentTargets(state)",
-          "startLine": 781,
-          "endLine": 814
+          "startLine": 786,
+          "endLine": 819
         }
       ],
       "calledByFiles": []
@@ -21744,8 +21938,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "function updateDomFromState(state)",
-          "startLine": 816,
-          "endLine": 921
+          "startLine": 821,
+          "endLine": 926
         }
       ],
       "calledByFiles": []
@@ -21756,8 +21950,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "function renderFloor60Fps()",
-          "startLine": 947,
-          "endLine": 1101
+          "startLine": 952,
+          "endLine": 1106
         }
       ],
       "calledByFiles": []
@@ -21768,8 +21962,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "export function createFactoryTwinServer()",
-          "startLine": 1128,
-          "endLine": 1339
+          "startLine": 1133,
+          "endLine": 1345
         }
       ],
       "calledByFiles": []
@@ -21780,8 +21974,8 @@
           "file": "tools/cockpit/factory_twin_server.mjs",
           "kind": "function",
           "signature": "export async function runCockpitSelfTest()",
-          "startLine": 1350,
-          "endLine": 1426
+          "startLine": 1356,
+          "endLine": 1432
         }
       ],
       "calledByFiles": []
@@ -22084,7 +22278,7 @@
           "kind": "function",
           "signature": "async function handleNuevo(args)",
           "startLine": 185,
-          "endLine": 261
+          "endLine": 265
         }
       ],
       "calledByFiles": []
@@ -22095,8 +22289,20 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleProyectos(args)",
-          "startLine": 263,
-          "endLine": 306
+          "startLine": 267,
+          "endLine": 310
+        }
+      ],
+      "calledByFiles": []
+    },
+    "handleEntrevistaPrd": {
+      "definitions": [
+        {
+          "file": "tools/cto_command_center.mjs",
+          "kind": "function",
+          "signature": "async function handleEntrevistaPrd(args)",
+          "startLine": 312,
+          "endLine": 348
         }
       ],
       "calledByFiles": []
@@ -22107,8 +22313,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEntrevista(args)",
-          "startLine": 308,
-          "endLine": 342
+          "startLine": 350,
+          "endLine": 393
         }
       ],
       "calledByFiles": []
@@ -22119,8 +22325,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleConstruir()",
-          "startLine": 344,
-          "endLine": 405
+          "startLine": 395,
+          "endLine": 466
         }
       ],
       "calledByFiles": []
@@ -22131,8 +22337,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function generateExecutiveDecisionBrief(boltRes = null, axRes = null)",
-          "startLine": 407,
-          "endLine": 539
+          "startLine": 468,
+          "endLine": 600
         }
       ],
       "calledByFiles": []
@@ -22143,8 +22349,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleRevisar(args)",
-          "startLine": 541,
-          "endLine": 565
+          "startLine": 602,
+          "endLine": 626
         }
       ],
       "calledByFiles": []
@@ -22155,8 +22361,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEmpaquetar(args = [])",
-          "startLine": 567,
-          "endLine": 600
+          "startLine": 628,
+          "endLine": 661
         }
       ],
       "calledByFiles": []
@@ -22167,8 +22373,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleAprobar(args = [])",
-          "startLine": 602,
-          "endLine": 633
+          "startLine": 663,
+          "endLine": 694
         }
       ],
       "calledByFiles": []
@@ -22179,8 +22385,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleFeedback(args)",
-          "startLine": 635,
-          "endLine": 669
+          "startLine": 696,
+          "endLine": 730
         }
       ],
       "calledByFiles": []
@@ -22191,8 +22397,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleAprender(args)",
-          "startLine": 671,
-          "endLine": 688
+          "startLine": 732,
+          "endLine": 749
         }
       ],
       "calledByFiles": []
@@ -22203,8 +22409,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEvolucionar(args)",
-          "startLine": 690,
-          "endLine": 699
+          "startLine": 751,
+          "endLine": 760
         }
       ],
       "calledByFiles": []
@@ -22215,8 +22421,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleExtraerDiseno(args)",
-          "startLine": 701,
-          "endLine": 713
+          "startLine": 762,
+          "endLine": 774
         }
       ],
       "calledByFiles": []
@@ -22227,8 +22433,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleIngerirLibros(args)",
-          "startLine": 715,
-          "endLine": 731
+          "startLine": 776,
+          "endLine": 792
         }
       ],
       "calledByFiles": []
@@ -22239,8 +22445,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleActualizacionSemanal(args)",
-          "startLine": 733,
-          "endLine": 745
+          "startLine": 794,
+          "endLine": 806
         }
       ],
       "calledByFiles": []
@@ -22251,8 +22457,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEfecto3d(args)",
-          "startLine": 747,
-          "endLine": 762
+          "startLine": 808,
+          "endLine": 823
         }
       ],
       "calledByFiles": []
@@ -22263,8 +22469,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleOptimizar3d(args)",
-          "startLine": 764,
-          "endLine": 780
+          "startLine": 825,
+          "endLine": 841
         }
       ],
       "calledByFiles": []
@@ -22275,8 +22481,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleGcpStatus()",
-          "startLine": 782,
-          "endLine": 798
+          "startLine": 843,
+          "endLine": 859
         }
       ],
       "calledByFiles": []
@@ -22287,8 +22493,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleBenchmark()",
-          "startLine": 800,
-          "endLine": 806
+          "startLine": 861,
+          "endLine": 867
         }
       ],
       "calledByFiles": []
@@ -22299,8 +22505,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleMcpStatus()",
-          "startLine": 808,
-          "endLine": 851
+          "startLine": 869,
+          "endLine": 912
         }
       ],
       "calledByFiles": []
@@ -22311,8 +22517,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleArquitecturaDb(rest = [])",
-          "startLine": 853,
-          "endLine": 882
+          "startLine": 914,
+          "endLine": 943
         }
       ],
       "calledByFiles": []
@@ -22323,8 +22529,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleDestilarCurso(rest = [])",
-          "startLine": 884,
-          "endLine": 906
+          "startLine": 945,
+          "endLine": 967
         }
       ],
       "calledByFiles": []
@@ -22335,8 +22541,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCosecharDocs()",
-          "startLine": 908,
-          "endLine": 923
+          "startLine": 969,
+          "endLine": 984
         }
       ],
       "calledByFiles": []
@@ -22347,8 +22553,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleArquetipo(rest = [])",
-          "startLine": 925,
-          "endLine": 949
+          "startLine": 986,
+          "endLine": 1010
         }
       ],
       "calledByFiles": []
@@ -22359,8 +22565,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCrearMovil(rest = [])",
-          "startLine": 951,
-          "endLine": 975
+          "startLine": 1012,
+          "endLine": 1036
         }
       ],
       "calledByFiles": []
@@ -22371,8 +22577,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleEstado()",
-          "startLine": 977,
-          "endLine": 1025
+          "startLine": 1038,
+          "endLine": 1086
         }
       ],
       "calledByFiles": []
@@ -22383,8 +22589,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleInvestigarReferencia(args = [])",
-          "startLine": 1027,
-          "endLine": 1040
+          "startLine": 1088,
+          "endLine": 1101
         }
       ],
       "calledByFiles": []
@@ -22395,8 +22601,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleFeedbackCliente(args = [])",
-          "startLine": 1042,
-          "endLine": 1074
+          "startLine": 1103,
+          "endLine": 1135
         }
       ],
       "calledByFiles": []
@@ -22407,8 +22613,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleAprobarTicket(args = [])",
-          "startLine": 1076,
-          "endLine": 1106
+          "startLine": 1137,
+          "endLine": 1167
         }
       ],
       "calledByFiles": []
@@ -22419,8 +22625,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCambioIncremental(args = [])",
-          "startLine": 1108,
-          "endLine": 1174
+          "startLine": 1169,
+          "endLine": 1235
         }
       ],
       "calledByFiles": []
@@ -22431,8 +22637,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleAuditarHarness(args = [])",
-          "startLine": 1176,
-          "endLine": 1184
+          "startLine": 1237,
+          "endLine": 1245
         }
       ],
       "calledByFiles": []
@@ -22443,8 +22649,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCrearIntroVideo(args = [])",
-          "startLine": 1186,
-          "endLine": 1213
+          "startLine": 1247,
+          "endLine": 1274
         }
       ],
       "calledByFiles": []
@@ -22455,8 +22661,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function handleCrearAudio(args = [])",
-          "startLine": 1215,
-          "endLine": 1274
+          "startLine": 1276,
+          "endLine": 1335
         }
       ],
       "calledByFiles": []
@@ -22467,8 +22673,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "export async function handleAterrizar(args = [])",
-          "startLine": 1284,
-          "endLine": 1424
+          "startLine": 1345,
+          "endLine": 1485
         }
       ],
       "calledByFiles": []
@@ -22479,8 +22685,8 @@
           "file": "tools/cto_command_center.mjs",
           "kind": "function",
           "signature": "async function main()",
-          "startLine": 1426,
-          "endLine": 1528
+          "startLine": 1487,
+          "endLine": 1590
         },
         {
           "file": "tools/factory.mjs",
@@ -22729,7 +22935,8 @@
         "tools/media/programmatic_video_forge.mjs",
         "tools/media/sonic_and_music_forge.mjs",
         "tools/mobile/mobile_target_forge.mjs",
-        "tools/orchestrator/client_interview_gate.mjs"
+        "tools/orchestrator/client_interview_gate.mjs",
+        "tools/orchestrator/lean_prd_architect.mjs"
       ]
     },
     "compileProductMdContent": {
@@ -23038,9 +23245,9 @@
         {
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
-          "signature": "export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento')",
+          "signature": "export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento', brandLock = null)",
           "startLine": 104,
-          "endLine": 203
+          "endLine": 255
         }
       ],
       "calledByFiles": []
@@ -23051,8 +23258,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "export function resolveDtcgAliases(dtcgRoot)",
-          "startLine": 208,
-          "endLine": 253
+          "startLine": 260,
+          "endLine": 305
         }
       ],
       "calledByFiles": [
@@ -23065,8 +23272,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "function lookupPath(pathStr)",
-          "startLine": 209,
-          "endLine": 217
+          "startLine": 261,
+          "endLine": 269
         }
       ],
       "calledByFiles": [
@@ -23079,8 +23286,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "function resolveValue(val, visited = new Set()",
-          "startLine": 219,
-          "endLine": 231
+          "startLine": 271,
+          "endLine": 283
         }
       ],
       "calledByFiles": [
@@ -23093,8 +23300,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "export function renderDesignTokensCss(dtcg)",
-          "startLine": 255,
-          "endLine": 269
+          "startLine": 307,
+          "endLine": 321
         }
       ],
       "calledByFiles": []
@@ -23105,8 +23312,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "export function compileDesignTokens(options = {})",
-          "startLine": 643,
-          "endLine": 643
+          "startLine": 702,
+          "endLine": 702
         }
       ],
       "calledByFiles": [
@@ -23121,8 +23328,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "function compileMultiTargetMobileTokensSync(rootDir, dtcg, writtenFiles = [])",
-          "startLine": 751,
-          "endLine": 775
+          "startLine": 820,
+          "endLine": 844
         }
       ],
       "calledByFiles": []
@@ -23133,8 +23340,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "export function extractOklchPaletteFromBrandImage(imagePathOrBuffer = 'brand-reference.png')",
-          "startLine": 781,
-          "endLine": 814
+          "startLine": 850,
+          "endLine": 883
         }
       ],
       "calledByFiles": []
@@ -23145,8 +23352,8 @@
           "file": "tools/design/token_compiler.mjs",
           "kind": "function",
           "signature": "export function runTokenCompilerCli()",
-          "startLine": 816,
-          "endLine": 830
+          "startLine": 885,
+          "endLine": 899
         }
       ],
       "calledByFiles": [
@@ -23760,8 +23967,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export function recordAndCheckAstDiffOscillation(runId = 'default-run', astStructuralHash = '')",
-          "startLine": 64,
-          "endLine": 69
+          "startLine": 70,
+          "endLine": 75
         }
       ],
       "calledByFiles": []
@@ -23772,8 +23979,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "constant",
           "signature": "export const RUNS_ARTIFACTS_DIR",
-          "startLine": 99,
-          "endLine": 99
+          "startLine": 109,
+          "endLine": 109
         }
       ],
       "calledByFiles": []
@@ -23784,8 +23991,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "constant",
           "signature": "export const WaveHandoffArtifactSchema",
-          "startLine": 104,
-          "endLine": 116
+          "startLine": 114,
+          "endLine": 126
         }
       ],
       "calledByFiles": []
@@ -23796,8 +24003,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export function runTracerBulletStopHook()",
-          "startLine": 172,
-          "endLine": 188
+          "startLine": 182,
+          "endLine": 198
         }
       ],
       "calledByFiles": []
@@ -23808,8 +24015,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "constant",
           "signature": "export const MAX_SELF_HEALING_RETRY_ROUNDS",
-          "startLine": 195,
-          "endLine": 195
+          "startLine": 205,
+          "endLine": 205
         }
       ],
       "calledByFiles": []
@@ -23820,8 +24027,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export async function runSelfHealingLoop(taskFn, options = {})",
-          "startLine": 197,
-          "endLine": 197
+          "startLine": 207,
+          "endLine": 207
         }
       ],
       "calledByFiles": []
@@ -23832,8 +24039,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "constant",
           "signature": "export const SQUADS",
-          "startLine": 265,
-          "endLine": 322
+          "startLine": 275,
+          "endLine": 332
         }
       ],
       "calledByFiles": []
@@ -23844,8 +24051,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export function verifySquadAlignment()",
-          "startLine": 324,
-          "endLine": 351
+          "startLine": 334,
+          "endLine": 361
         }
       ],
       "calledByFiles": [
@@ -23858,8 +24065,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export function verifySquadMcpRoleRouting()",
-          "startLine": 357,
-          "endLine": 390
+          "startLine": 367,
+          "endLine": 400
         }
       ],
       "calledByFiles": []
@@ -23870,8 +24077,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export function loadBoltCheckpoint()",
-          "startLine": 392,
-          "endLine": 399
+          "startLine": 402,
+          "endLine": 409
         }
       ],
       "calledByFiles": []
@@ -23882,8 +24089,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export function saveBoltCheckpoint(state)",
-          "startLine": 401,
-          "endLine": 409
+          "startLine": 411,
+          "endLine": 419
         }
       ],
       "calledByFiles": []
@@ -23894,8 +24101,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "function runNodeScriptAsync(scriptRelPath, args = [])",
-          "startLine": 411,
-          "endLine": 435
+          "startLine": 421,
+          "endLine": 445
         }
       ],
       "calledByFiles": []
@@ -23906,8 +24113,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export async function runSquadMission(missionTitle = 'Standard SOTA Bolt Pipeline', options = {})",
-          "startLine": 440,
-          "endLine": 440
+          "startLine": 450,
+          "endLine": 450
         }
       ],
       "calledByFiles": [
@@ -23920,8 +24127,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export async function runBestOfNSpeculative(candidates = ['bento-oklch-v1', 'linear-dark-v2'], taskName = 'hero-ui-component')",
-          "startLine": 874,
-          "endLine": 938
+          "startLine": 889,
+          "endLine": 953
         }
       ],
       "calledByFiles": [
@@ -23934,8 +24141,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export function runCouncilDeliberation(decisionTopic = 'Architecture & UI Strategy')",
-          "startLine": 945,
-          "endLine": 977
+          "startLine": 960,
+          "endLine": 992
         }
       ],
       "calledByFiles": []
@@ -23946,8 +24153,8 @@
           "file": "tools/intelligence/agent_squad.mjs",
           "kind": "function",
           "signature": "export function runArenaTournament(taskPrompt = 'High-converting Hero & Bento Grid', candidateCards = [])",
-          "startLine": 985,
-          "endLine": 1013
+          "startLine": 1000,
+          "endLine": 1028
         }
       ],
       "calledByFiles": []
@@ -28140,7 +28347,6 @@
         "tools/audit/visual_audit.mjs",
         "tools/audit/visual_regression.mjs",
         "tools/build_dist.mjs",
-        "tools/cto_command_center.mjs",
         "tools/design/build_vanilla_primitives.mjs",
         "tools/design/og_image_generator.mjs",
         "tools/design/shader_and_3d_forge.mjs",
@@ -28585,14 +28791,14 @@
       ],
       "calledByFiles": []
     },
-    "buildDefaultInterviewPayload": {
+    "loadBrandLockAndPrdState": {
       "definitions": [
         {
           "file": "tools/orchestrator/client_interview_gate.mjs",
           "kind": "function",
-          "signature": "export function buildDefaultInterviewPayload(slug = 'agencia-alfa', industryInput = 'saas', status = 'PENDING_CTO_ANSWERS')",
-          "startLine": 39,
-          "endLine": 133
+          "signature": "function loadBrandLockAndPrdState(slug = 'agencia-alfa')",
+          "startLine": 47,
+          "endLine": 64
         }
       ],
       "calledByFiles": [
@@ -28605,8 +28811,8 @@
           "file": "tools/orchestrator/client_interview_gate.mjs",
           "kind": "function",
           "signature": "export function renderInterviewMarkdown(interviewData)",
-          "startLine": 138,
-          "endLine": 203
+          "startLine": 348,
+          "endLine": 416
         }
       ],
       "calledByFiles": [
@@ -28619,13 +28825,12 @@
           "file": "tools/orchestrator/client_interview_gate.mjs",
           "kind": "function",
           "signature": "export function initClientInterviewFiles(slug = 'agencia-alfa', industryInput = 'saas', options = {})",
-          "startLine": 208,
-          "endLine": 208
+          "startLine": 421,
+          "endLine": 421
         }
       ],
       "calledByFiles": [
-        "tools/cto_command_center.mjs",
-        "tools/orchestrator/client_interview_gate.mjs"
+        "tools/cto_command_center.mjs"
       ]
     },
     "verifyClientInterviewGate": {
@@ -28634,8 +28839,20 @@
           "file": "tools/orchestrator/client_interview_gate.mjs",
           "kind": "function",
           "signature": "export function verifyClientInterviewGate(slug = 'agencia-alfa', industryFallback = 'saas')",
-          "startLine": 249,
-          "endLine": 301
+          "startLine": 478,
+          "endLine": 559
+        }
+      ],
+      "calledByFiles": []
+    },
+    "verifyDualInterviewGates": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/client_interview_gate.mjs",
+          "kind": "function",
+          "signature": "export function verifyDualInterviewGates(slug = 'agencia-alfa', industryFallback = 'saas')",
+          "startLine": 566,
+          "endLine": 597
         }
       ],
       "calledByFiles": []
@@ -28646,8 +28863,8 @@
           "file": "tools/orchestrator/client_interview_gate.mjs",
           "kind": "function",
           "signature": "export function compileSpecFromInterview(slug = 'agencia-alfa', options = {})",
-          "startLine": 311,
-          "endLine": 311
+          "startLine": 606,
+          "endLine": 606
         }
       ],
       "calledByFiles": []
@@ -28658,8 +28875,8 @@
           "file": "tools/orchestrator/client_interview_gate.mjs",
           "kind": "function",
           "signature": "export function runClientInterviewGateSelfTest()",
-          "startLine": 530,
-          "endLine": 578
+          "startLine": 911,
+          "endLine": 1038
         }
       ],
       "calledByFiles": []
@@ -28865,6 +29082,111 @@
           "signature": "export function runHumanLayerRpiSelfTest()",
           "startLine": 727,
           "endLine": 843
+        }
+      ],
+      "calledByFiles": []
+    },
+    "VALID_BRAND_IDENTITY_MODES": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/lean_prd_architect.mjs",
+          "kind": "constant",
+          "signature": "export const VALID_BRAND_IDENTITY_MODES",
+          "startLine": 41,
+          "endLine": 41
+        }
+      ],
+      "calledByFiles": []
+    },
+    "VALID_ATMOSPHERE_MODES": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/lean_prd_architect.mjs",
+          "kind": "constant",
+          "signature": "export const VALID_ATMOSPHERE_MODES",
+          "startLine": 47,
+          "endLine": 47
+        }
+      ],
+      "calledByFiles": []
+    },
+    "renderPrdInterviewMarkdown": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/lean_prd_architect.mjs",
+          "kind": "function",
+          "signature": "export function renderPrdInterviewMarkdown(prdState)",
+          "startLine": 241,
+          "endLine": 336
+        }
+      ],
+      "calledByFiles": [
+        "tools/orchestrator/lean_prd_architect.mjs"
+      ]
+    },
+    "initPrdInterviewFiles": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/lean_prd_architect.mjs",
+          "kind": "function",
+          "signature": "export function initPrdInterviewFiles(slug = 'agencia-alfa', industryInput = 'saas', options = {})",
+          "startLine": 342,
+          "endLine": 342
+        }
+      ],
+      "calledByFiles": [
+        "tools/cto_command_center.mjs",
+        "tools/orchestrator/lean_prd_architect.mjs"
+      ]
+    },
+    "validatePrdBlocksCompleteness": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/lean_prd_architect.mjs",
+          "kind": "function",
+          "signature": "export function validatePrdBlocksCompleteness(prdState)",
+          "startLine": 405,
+          "endLine": 465
+        }
+      ],
+      "calledByFiles": []
+    },
+    "verifyPrdInterviewGate": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/lean_prd_architect.mjs",
+          "kind": "function",
+          "signature": "export function verifyPrdInterviewGate(slug = 'agencia-alfa', industryFallback = 'saas')",
+          "startLine": 471,
+          "endLine": 546
+        }
+      ],
+      "calledByFiles": [
+        "tools/orchestrator/client_interview_gate.mjs"
+      ]
+    },
+    "compilePrdLeanAndBrandLock": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/lean_prd_architect.mjs",
+          "kind": "function",
+          "signature": "export function compilePrdLeanAndBrandLock(slug = 'agencia-alfa', options = {})",
+          "startLine": 552,
+          "endLine": 552
+        }
+      ],
+      "calledByFiles": [
+        "tools/orchestrator/lean_prd_architect.mjs"
+      ]
+    },
+    "runLeanPrdArchitectSelfTest": {
+      "definitions": [
+        {
+          "file": "tools/orchestrator/lean_prd_architect.mjs",
+          "kind": "function",
+          "signature": "export function runLeanPrdArchitectSelfTest()",
+          "startLine": 739,
+          "endLine": 821
         }
       ],
       "calledByFiles": []

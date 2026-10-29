@@ -241,19 +241,23 @@ async function handleNuevo(args) {
     });
     const { generateProductAndDesignMd } = await import('./design/industry_archetype_matrix.mjs');
     const { forgeDatabaseArchitecture } = await import('./db/dual_database_forge.mjs');
+    const { initPrdInterviewFiles } = await import('./orchestrator/lean_prd_architect.mjs');
     const { initClientInterviewFiles } = await import('./orchestrator/client_interview_gate.mjs');
     generateProductAndDesignMd(projDir, rubro);
     forgeDatabaseArchitecture(projDir, 'edge-d1');
-    const interviewInit = initClientInterviewFiles(slug, rubro, { autoApprove: false });
+    const prdInit = initPrdInterviewFiles(slug, rubro, { autoApprove: false, overwrite: true });
+    const interviewInit = initClientInterviewFiles(slug, rubro, { autoApprove: false, overwrite: true });
     recordProjectAuditScore(projDir, 100, 'APROBADO');
 
-    console.log('\n✅ ¡Listo! El sitio fue creado de forma 100% aislada sin tocar las plantillas maestras:');
-    console.log(`   • Carpeta del sitio    : projects/${slug}/`);
-    console.log(`   • Entrevista 10 Bloques: projects/${slug}/ENTREVISTA_CLIENTE.md (${interviewInit.status})`);
-    console.log(`   • Especificación       : projects/${slug}/SPEC.md + PRODUCT.md + DESIGN.md`);
-    console.log(`   • Tokens de diseño     : projects/${slug}/design.tokens.json`);
-    console.log(`   • Proyecto activo      : [${activeState.activeSlug}] (guardado en .agents/memory/active_project.json)`);
-    console.log(`👉 Siguiente paso obligatorio: completá/revisá projects/${slug}/ENTREVISTA_CLIENTE.md y aprobala con:`);
+    console.log('\n✅ ¡Listo! El sitio fue creado de forma 100% aislada con Doble Compuerta Manual:');
+    console.log(`   • Carpeta del sitio             : projects/${slug}/`);
+    console.log(`   • Entrevista #1 (PRD y Marca)   : projects/${slug}/ENTREVISTA_1_PRD_Y_MARCA.md (${prdInit.prdInterviewStatus})`);
+    console.log(`   • Entrevista #2 (SPEC Técnico)  : projects/${slug}/ENTREVISTA_2_SPEC_TECNICO.md (${interviewInit.specInterviewStatus})`);
+    console.log(`   • Tokens de diseño              : projects/${slug}/design.tokens.json`);
+    console.log(`   • Proyecto activo               : [${activeState.activeSlug}] (guardado en .agents/memory/active_project.json)`);
+    console.log(`👉 Paso 1 obligatorio (Producto e Identidad de Marca): completá projects/${slug}/ENTREVISTA_1_PRD_Y_MARCA.md y aprobala con:`);
+    console.log(`   npm run cto:entrevista-prd -- ${slug} --aprobar`);
+    console.log(`👉 Paso 2 obligatorio (Especificación Técnica SPEC.md): completá projects/${slug}/ENTREVISTA_2_SPEC_TECNICO.md y aprobala con:`);
     console.log(`   npm run cto:entrevista -- ${slug} --aprobar\n`);
   } finally {
     rl.close();
@@ -305,7 +309,46 @@ async function handleProyectos(args) {
   console.log('💡 Para crear un sitio nuevo   : npm run cto:nuevo -- "<nombre-del-sitio>"\n');
 }
 
+async function handleEntrevistaPrd(args) {
+  const {
+    initPrdInterviewFiles,
+    compilePrdLeanAndBrandLock,
+    verifyPrdInterviewGate
+  } = await import('./orchestrator/lean_prd_architect.mjs');
+  const projectCfg = loadProjectConfig();
+  const nonFlags = args.filter((a) => !a.startsWith('--'));
+  const slug = nonFlags[0] || projectCfg.id || 'agencia-alfa';
+  const industry = nonFlags[1] || projectCfg.industryArchetype || projectCfg.archetype || 'saas';
+  const shouldApprove = args.includes('--aprobar') || args.includes('--approve');
+
+  initPrdInterviewFiles(slug, industry, { autoApprove: shouldApprove });
+  if (shouldApprove) {
+    const compiled = compilePrdLeanAndBrandLock(slug, { approve: true, industry });
+    console.log('\n====================================================================');
+    console.log(`✅ ENTREVISTA #1 (PRD_LEAN.MD + BRAND_IDENTITY_LOCK.JSON) APROBADA [${slug}]`);
+    console.log('====================================================================');
+    console.log(`  • Estado Compuerta #1     : ${compiled.prdInterviewStatus}`);
+    console.log(`  • PRD_LEAN.md             : projects/${slug}/PRD_LEAN.md ([INV-01]..[INV-07] + Explicit Non-Goals)`);
+    console.log(`  • BRAND_IDENTITY_LOCK.json: projects/${slug}/BRAND_IDENTITY_LOCK.json (Modo: ${compiled.brandLock.brandIdentityMode}, LockPalette: ${compiled.brandLock.lockClientPalette})`);
+    console.log(`👉 Siguiente paso obligatorio: completá la Entrevista #2 (SPEC.md Técnico) ejecutando:`);
+    console.log(`   npm run cto:entrevista -- ${slug}\n`);
+  } else {
+    const gate = verifyPrdInterviewGate(slug, industry);
+    console.log('\n====================================================================');
+    console.log(`🏛️  ENTREVISTA #1 (PRODUCTO E IDENTIDAD DE MARCA) [${slug}] — ESTADO: ${gate.prdInterviewStatus}`);
+    console.log('====================================================================');
+    console.log(`  • Cuestionario 7 Bloques : projects/${slug}/ENTREVISTA_1_PRD_Y_MARCA.md`);
+    console.log(`  • Estado JSON            : projects/${slug}/PRD_INTERVIEW_STATE.json`);
+    if (!gate.passed) {
+      console.log(`  ⚠️  ${gate.message}\n`);
+    } else {
+      console.log(`  ✅ Entrevista #1 aprobada. Ya podés pasar a la Entrevista #2: npm run cto:entrevista -- ${slug}\n`);
+    }
+  }
+}
+
 async function handleEntrevista(args) {
+  const { verifyPrdInterviewGate } = await import('./orchestrator/lean_prd_architect.mjs');
   const { initClientInterviewFiles, compileSpecFromInterview, verifyClientInterviewGate } = await import(
     './orchestrator/client_interview_gate.mjs'
   );
@@ -315,28 +358,36 @@ async function handleEntrevista(args) {
   const industry = nonFlags[1] || projectCfg.industryArchetype || projectCfg.archetype || 'saas';
   const shouldApprove = args.includes('--aprobar') || args.includes('--approve');
 
+  // Gate #1 Prerequisite Check
+  const prdGate = verifyPrdInterviewGate(slug, industry);
+  if (!prdGate.passed) {
+    console.error(`\n❌ ${prdGate.message}\n`);
+    process.exit(1);
+  }
+
   initClientInterviewFiles(slug, industry, { autoApprove: shouldApprove });
   if (shouldApprove) {
-    const compiled = compileSpecFromInterview(slug, { approve: true, industry });
+    const compiled = compileSpecFromInterview(slug, { approve: true, industry, refreshFromPrd: true });
     console.log('\n====================================================================');
-    console.log(`✅ ENTREVISTA DE 10 BLOQUES APROBADA Y SPEC.MD COMPILADO [${slug}]`);
+    console.log(`✅ ENTREVISTA #2 DE 10 BLOQUES TÉCNICOS APROBADA Y SPEC.MD COMPILADO [${slug}]`);
     console.log('====================================================================');
-    console.log(`  • Estado          : ${compiled.interviewStatus}`);
-    console.log(`  • SPEC.md         : projects/${slug}/SPEC.md ([REQ-01]..[REQ-12])`);
-    console.log(`  • PRODUCT.md      : projects/${slug}/PRODUCT.md`);
-    console.log(`  • DESIGN.md       : projects/${slug}/DESIGN.md (Seed Sonora: ${compiled.sonicPatch.seedId})`);
-    console.log('👉 Ya podés ejecutar `npm run cto:construir`.\n');
+    console.log(`  • Estado Compuerta #1 : ${compiled.prdInterviewStatus}`);
+    console.log(`  • Estado Compuerta #2 : ${compiled.specInterviewStatus}`);
+    console.log(`  • SPEC.md             : projects/${slug}/SPEC.md ([REQ-01]..[REQ-12])`);
+    console.log(`  • PRODUCT.md          : projects/${slug}/PRODUCT.md (Sincronizado con PRD_LEAN.md)`);
+    console.log(`  • DESIGN.md           : projects/${slug}/DESIGN.md (Modo Marca: ${compiled.brandIdentityMode}, Seed Sonora: ${compiled.sonicPatch.seedId})`);
+    console.log('👉 Ambas entrevistas están aprobadas. Ya podés ejecutar `npm run cto:construir`.\n');
   } else {
     const gate = verifyClientInterviewGate(slug, industry);
     console.log('\n====================================================================');
-    console.log(`📋 ENTREVISTA INICIAL DE 10 BLOQUES [${slug}] — ESTADO: ${gate.status}`);
+    console.log(`⚙️  ENTREVISTA #2 DE 10 BLOQUES TÉCNICOS [${slug}] — ESTADO: ${gate.specInterviewStatus}`);
     console.log('====================================================================');
-    console.log(`  • Cuestionario Markdown : projects/${slug}/ENTREVISTA_CLIENTE.md`);
-    console.log(`  • Respuestas JSON       : projects/${slug}/CLIENT_BRIEF_INTERVIEW.json`);
+    console.log(`  • Cuestionario Técnico : projects/${slug}/ENTREVISTA_2_SPEC_TECNICO.md`);
+    console.log(`  • Respuestas JSON      : projects/${slug}/CLIENT_BRIEF_INTERVIEW.json`);
     if (!gate.passed) {
       console.log(`  ⚠️  ${gate.message}\n`);
     } else {
-      console.log('  ✅ Entrevista aprobada. Podés recompilar SPEC.md con `--aprobar`.\n');
+      console.log('  ✅ Entrevista #2 aprobada. Podés recompilar SPEC.md con `--aprobar`.\n');
     }
   }
 }
@@ -347,16 +398,18 @@ async function handleConstruir() {
   console.log(`🏗️  CONSTRUYENDO Y AUDITANDO TU SITIO WEB [${projectCfg.id}] (MODO AUTOMÁTICO)`);
   console.log('====================================================================\n');
 
-  // 0a. Pre-Construction Hard Gate: 10-Block Client Interview (`HARD_STOP_INTERVIEW_REQUIRED`)
-  const { verifyClientInterviewGate, compileSpecFromInterview } = await import(
+  // 0a. Pre-Construction Dual-Key Hard Gate:
+  //     Key #1: PRD_INTERVIEW_STATE.json (`prdInterviewStatus === "COMPLETED_BY_CTO"`)
+  //     Key #2: CLIENT_BRIEF_INTERVIEW.json (`specInterviewStatus === "COMPLETED_BY_CTO"`)
+  const { verifyDualInterviewGates, compileSpecFromInterview } = await import(
     './orchestrator/client_interview_gate.mjs'
   );
-  const interviewGate = verifyClientInterviewGate(
+  const dualGate = verifyDualInterviewGates(
     projectCfg.id,
     projectCfg.industryArchetype || projectCfg.archetype || 'saas'
   );
-  if (!interviewGate.passed) {
-    console.error(`\n❌ ${interviewGate.message}\n`);
+  if (!dualGate.passed) {
+    console.error(`\n❌ ${dualGate.message}\n`);
     process.exit(1);
   }
   compileSpecFromInterview(projectCfg.id);
@@ -366,6 +419,10 @@ async function handleConstruir() {
   const { runHumanLayerRpiPipeline, runOpenHandsStuckDetector } = await import('./orchestrator/humanlayer_rpi_gate.mjs');
   const { verifySpecKittyTraceabilityMatrix } = await import('./lib/project_loader.mjs');
   const { verifyF2pAndP2pGate } = await import('./intelligence/eval_matrix.mjs');
+  const { runSecurityQuarantineGate } = await import('./audit/security_gate.mjs');
+  const { runLocalFullstackAndComponentHarness } = await import(
+    './audit/local_fullstack_and_component_harness.mjs'
+  );
 
   const laneDecision = classifyAdaptiveDepthLane(`Construcción Ejecutiva del CTO (${projectCfg.id})`, { filesCount: 4 });
   runHumanLayerRpiPipeline({
@@ -377,11 +434,11 @@ async function handleConstruir() {
   verifySpecKittyTraceabilityMatrix(projectCfg.id);
   verifyF2pAndP2pGate({ f2pTestPassed: true, p2pSuitePassed: true, evidences: [`Build ${projectCfg.id}`] });
 
-  // 1. Compile Tokens & Build Production Dist for the active project
+  // 1. Compile Tokens (respecting BRAND_IDENTITY_LOCK.json) & Build Production Dist for the active project
   compileDesignTokens({ projectDir: projectCfg.projectRoot });
   execSync(`node "${path.join(ROOT, 'tools', 'build_dist.mjs')}" --project "${projectCfg.projectRoot}"`, { cwd: ROOT, stdio: 'inherit' });
 
-  // 2. Execute Parallel DAG Bolt (Constitution + Oxlint/AST <500ms + RYUX + Security + AEO)
+  // 2. Execute Parallel DAG Bolt (Wave 1 CRISP Outline -> Wave 2A Tracer-Bullet -> Wave 2B Fill-In -> Wave 3 Visual/Security/JEV Audit)
   const boltRes = await runSquadMission(`Construcción Ejecutiva del CTO (${projectCfg.id})`, {
     useSandbox: false,
     resume: false,
@@ -389,6 +446,10 @@ async function handleConstruir() {
     archetype: projectCfg.archetype || 'saas',
     forceLane: laneDecision.lane
   });
+
+  // 2b. Run Security Quarantine Gate & Local Fullstack + Pure Component 5-State Harness automatically
+  runSecurityQuarantineGate();
+  runLocalFullstackAndComponentHarness({ projectRoot: projectCfg.projectRoot });
 
   // 3. Capture Pruned DOM + AX Tree + Stagehand Self-Healing Snapshot
   const axRes = await captureAccessibilitySnapshot();
@@ -1458,6 +1519,7 @@ async function main() {
   else if (cmd === 'auditar-harness') await handleAuditarHarness(rest);
   else if (cmd === 'crear-intro-video') await handleCrearIntroVideo(rest);
   else if (cmd === 'crear-audio') await handleCrearAudio(rest);
+  else if (cmd === 'entrevista-prd') await handleEntrevistaPrd(rest);
   else if (cmd === 'entrevista') await handleEntrevista(rest);
   else if (cmd === 'aterrizar') await handleAterrizar(rest);
   else if (cmd === 'auditar-jev') {

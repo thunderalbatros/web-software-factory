@@ -168,7 +168,7 @@ All colors are authored in perceptual **W3C DTCG 2025.10 OKLCH** space to guaran
   - Spring `stiffness: 280, damping: 24` -> Peak Velocity at `66.12ms` (Deviation `<= 16.6ms`)
 - **Background Music & Video Intro:**
   - Music Mode: `off` (`-18 LUFS` integrated target, `-6 dB` voiceover sidechain ducking)
-  - Brand Intro Video: `vector-svg-reveal-3s` (`-14 LUFS` integrated target, `-1.0 dBTP` True Peak, `AV1/WebM 60 FPS <= 1.8 MB`)
+  - Brand Intro Video: `vector-svg-reveal-3s` (`-14 LUFS` integrated target, `-1.0 dBTP` True Peak, `AV1/WebM 60 FPS <= 1.8 MB`, Logo: `public/assets/brand/logo-primary.svg`)
 ## Do's and Don'ts
 
 ### Do
@@ -182,3 +182,12 @@ All colors are authored in perceptual **W3C DTCG 2025.10 OKLCH** space to guaran
 - Never nest cards inside cards (card-in-card slop).
 - Never fabricate unverified customer logos or vanity hero-metric counters.
 - Never violate any of the **62 deterministic Anti-Slop rules** of `pbakaus/impeccable`.
+
+## Brand Identity Lock (`BRAND_IDENTITY_LOCK.json`)
+
+- **Brand Identity Mode:** `PARTIAL_BRAND_EVOLUTION` (`lockClientPalette: false`)
+- **Locked Primary Brand Color (`--color-primary`):** `#2563EB`
+- **Locked Secondary Brand Color (`--color-secondary`):** `#0F172A`
+- **Locked Accent Brand Color (`--color-accent`):** `#10B981`
+- **Locked Surface Colors:** Light `#F8FAFC` | Dark `#0B0F19`
+- **Official Logo & Isotipo:** `public/assets/brand/logo-primary.svg` | `public/assets/brand/isotipo.svg`

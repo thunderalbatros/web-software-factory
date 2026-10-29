@@ -101,10 +101,48 @@ export function getStyleCatalog() {
   };
 }
 
-export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento') {
+export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento', brandLock = null) {
   const base = ARCHETYPE_PRESETS[archetype] || ARCHETYPE_PRESETS['saas-b2b'];
   const ov = STYLE_OVERRIDES[styleName] || {};
   const cfg = { ...base, ...ov };
+
+  const isLockedPalette = Boolean(
+    brandLock &&
+      (brandLock.lockClientPalette === true ||
+        brandLock.brandIdentityMode === 'STRICT_EXISTING_BRAND')
+  );
+  const clientPal = brandLock?.officialPalette || {};
+  const clientTypo = brandLock?.officialTypography || {};
+  const clientLogos = brandLock?.logoAssets || {};
+  const isLightOnly = brandLock?.atmospherePreference === 'light-only';
+
+  const surfaceCanvasVal = isLockedPalette
+    ? (isLightOnly
+        ? clientPal.surfaceLightColor || `oklch(0.98 0.008 ${cfg.hueCanvas})`
+        : clientPal.surfaceDarkColor || `oklch(${cfg.lightnessCanvas} 0.015 ${cfg.hueCanvas})`)
+    : `oklch(${cfg.lightnessCanvas} 0.015 ${cfg.hueCanvas})`;
+
+  const primaryColorVal = isLockedPalette
+    ? clientPal.primaryBrandColor || `oklch(0.82 0.18 ${cfg.hueCta})`
+    : `oklch(0.82 0.18 ${cfg.hueCta})`;
+
+  const secondaryColorVal = isLockedPalette
+    ? clientPal.secondaryBrandColor || `oklch(${(cfg.lightnessCanvas + 0.05).toFixed(2)} 0.018 ${cfg.hueCanvas})`
+    : `oklch(${(cfg.lightnessCanvas + 0.05).toFixed(2)} 0.018 ${cfg.hueCanvas})`;
+
+  const accentColorVal = isLockedPalette
+    ? clientPal.accentBrandColor || `oklch(0.74 ${cfg.chromaAccent} ${cfg.hueAccent})`
+    : `oklch(0.74 ${cfg.chromaAccent} ${cfg.hueAccent})`;
+
+  const textPrimaryVal = isLightOnly
+    ? `oklch(0.14 0.012 ${cfg.hueCanvas})`
+    : `oklch(0.96 0.008 ${cfg.hueCanvas})`;
+  const textSecondaryVal = isLightOnly
+    ? `oklch(0.32 0.015 ${cfg.hueCanvas})`
+    : `oklch(0.76 0.015 ${cfg.hueCanvas})`;
+  const textMutedVal = isLightOnly
+    ? `oklch(0.45 0.015 ${cfg.hueCanvas})`
+    : `oklch(0.62 0.015 ${cfg.hueCanvas})`;
 
   return {
     $schema: 'https://tr.designtokens.org/format/2025.10/',
@@ -112,23 +150,37 @@ export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento
       standard: 'W3C DTCG 2025.10',
       archetype,
       styleSkill: styleName || 'bento',
-      chromaticRule: '90% Neutral Surface / 8% Supporting Accent / 2% High-Chroma CTA (OKLCH + APCA)'
+      chromaticRule: '90% Neutral Surface / 8% Supporting Accent / 2% High-Chroma CTA (OKLCH + APCA)',
+      brandIdentityLock: brandLock
+        ? {
+            brandIdentityMode: brandLock.brandIdentityMode || 'PARTIAL_BRAND_EVOLUTION',
+            lockClientPalette: isLockedPalette,
+            primaryBrandColor: primaryColorVal,
+            secondaryBrandColor: secondaryColorVal,
+            accentBrandColor: accentColorVal,
+            surfaceColor: surfaceCanvasVal,
+            primaryLogoPath: clientLogos.primaryLogoPath || 'public/assets/brand/logo-primary.svg',
+            isotipoPath: clientLogos.isotipoPath || 'public/assets/brand/isotipo.svg'
+          }
+        : null
     },
     color: {
       surface: {
-        canvas: { $type: 'color', $value: `oklch(${cfg.lightnessCanvas} 0.015 ${cfg.hueCanvas})`, $description: '90% Primary background canvas' },
+        canvas: { $type: 'color', $value: surfaceCanvasVal, $description: '90% Primary background canvas' },
         elevated: { $type: 'color', $value: `oklch(${(cfg.lightnessCanvas + 0.05).toFixed(2)} 0.018 ${cfg.hueCanvas})`, $description: 'Elevated card surface (+5% L)' },
         interactive: { $type: 'color', $value: `oklch(${(cfg.lightnessCanvas + 0.09).toFixed(2)} 0.022 ${cfg.hueCanvas})`, $description: 'Interactive hover surface (+9% L)' },
         glass: { $type: 'color', $value: `oklch(${(cfg.lightnessCanvas + 0.07).toFixed(2)} 0.02 ${cfg.hueCanvas} / 0.76)`, $description: 'Glassmorphic sticky header surface' }
       },
       text: {
-        primary: { $type: 'color', $value: `oklch(0.96 0.008 ${cfg.hueCanvas})`, $description: 'Primary headline & body text (APCA Lc >= 90)' },
-        secondary: { $type: 'color', $value: `oklch(0.76 0.015 ${cfg.hueCanvas})`, $description: 'Supporting copy (APCA Lc >= 65)' },
-        muted: { $type: 'color', $value: `oklch(0.62 0.015 ${cfg.hueCanvas})`, $description: 'Metadata & captions (APCA Lc >= 50)' }
+        primary: { $type: 'color', $value: textPrimaryVal, $description: 'Primary headline & body text (APCA Lc >= 90)' },
+        secondary: { $type: 'color', $value: textSecondaryVal, $description: 'Supporting copy (APCA Lc >= 65)' },
+        muted: { $type: 'color', $value: textMutedVal, $description: 'Metadata & captions (APCA Lc >= 50)' }
       },
       brand: {
-        accent: { $type: 'color', $value: `oklch(0.74 ${cfg.chromaAccent} ${cfg.hueAccent})`, $description: '8% Supporting brand accent' },
-        cta: { $type: 'color', $value: `oklch(0.82 0.18 ${cfg.hueCta})`, $description: '2% High-conversion focal CTA' },
+        primary: { $type: 'color', $value: primaryColorVal, $description: 'Locked primary client brand color' },
+        secondary: { $type: 'color', $value: secondaryColorVal, $description: 'Locked secondary client brand color' },
+        accent: { $type: 'color', $value: accentColorVal, $description: '8% Supporting brand accent' },
+        cta: { $type: 'color', $value: primaryColorVal, $description: '2% High-conversion focal CTA' },
         ctaInk: { $type: 'color', $value: `oklch(0.14 0.02 ${cfg.hueCanvas})`, $description: 'High-contrast ink on CTA button' }
       },
       border: {
@@ -138,9 +190,9 @@ export function buildDtcgTokensObject(archetype = 'saas-b2b', styleName = 'bento
     },
     typography: {
       fontFamily: {
-        sans: { $type: 'fontFamily', $value: cfg.fontSans },
-        display: { $type: 'fontFamily', $value: cfg.fontDisplay },
-        mono: { $type: 'fontFamily', $value: cfg.fontMono }
+        sans: { $type: 'fontFamily', $value: isLockedPalette && clientTypo.sansFont ? clientTypo.sansFont : cfg.fontSans },
+        display: { $type: 'fontFamily', $value: isLockedPalette && clientTypo.displayFont ? clientTypo.displayFont : cfg.fontDisplay },
+        mono: { $type: 'fontFamily', $value: isLockedPalette && clientTypo.monoFont ? clientTypo.monoFont : cfg.fontMono }
       },
       scale: {
         stepMinus1: { $type: 'dimension', $value: 'clamp(0.82rem, 0.78rem + 0.2vw, 0.92rem)' },
@@ -261,11 +313,18 @@ export function renderDesignTokensCss(dtcg) {
   return `/**
  * W3C DTCG 1.0 / 2025.10 Compiled Design Tokens & Structural Layout CSS
  * Archetype: ${dtcg.meta.archetype} | Style: ${dtcg.meta.styleSkill}
+ * Brand Identity Mode: ${dtcg.meta.brandIdentityLock?.brandIdentityMode || 'DEFAULT_OKLCH'} (lockClientPalette: ${Boolean(dtcg.meta.brandIdentityLock?.lockClientPalette)})
  * Resolved Aliases: ${Object.keys(resolved).length} tokens verified
  * Generated by tools/token_compiler.mjs
  */
 :root {
   interpolate-size: allow-keywords;
+  --color-primary: ${c.brand.primary?.$value || c.brand.cta.$value};
+  --color-secondary: ${c.brand.secondary?.$value || c.surface.elevated.$value};
+  --color-accent: ${c.brand.accent.$value};
+  --color-surface: ${resolved['semantic.pageBackground']?.$value || c.surface.canvas.$value};
+  --brand-logo-primary: "${dtcg.meta.brandIdentityLock?.primaryLogoPath || 'public/assets/brand/logo-primary.svg'}";
+  --brand-logo-isotipo: "${dtcg.meta.brandIdentityLock?.isotipoPath || 'public/assets/brand/isotipo.svg'}";
   --surface-canvas: ${resolved['semantic.pageBackground']?.$value || c.surface.canvas.$value};
   --surface-elevated: ${resolved['semantic.cardBackground']?.$value || c.surface.elevated.$value};
   --surface-interactive: ${c.surface.interactive.$value};
@@ -650,7 +709,17 @@ export function compileDesignTokens(options = {}) {
   const archetype = options.archetype || parseFlag(argv, '--archetype', projectCfg.archetype || 'saas-b2b');
   const styleName = options.style || parseFlag(argv, '--style', projectCfg.design?.styleSkill || 'bento');
 
-  const dtcg = buildDtcgTokensObject(archetype, styleName);
+  let brandLock = options.brandLock || null;
+  if (!brandLock && !isStudioRoot) {
+    const brandLockPath = path.join(rootDir, 'BRAND_IDENTITY_LOCK.json');
+    if (fs.existsSync(brandLockPath)) {
+      try {
+        brandLock = JSON.parse(fs.readFileSync(brandLockPath, 'utf8'));
+      } catch (_) {}
+    }
+  }
+
+  const dtcg = buildDtcgTokensObject(archetype, styleName, brandLock);
   const cssContent = renderDesignTokensCss(dtcg);
 
   const writtenFiles = [];

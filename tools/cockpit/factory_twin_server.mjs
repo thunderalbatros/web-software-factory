@@ -32,8 +32,13 @@ import {
 } from './live_telemetry_bus.mjs';
 import {
   verifyClientInterviewGate,
+  verifyDualInterviewGates,
   compileSpecFromInterview
 } from '../orchestrator/client_interview_gate.mjs';
+import {
+  verifyPrdInterviewGate,
+  compilePrdLeanAndBrandLock
+} from '../orchestrator/lean_prd_architect.mjs';
 import {
   executeApprovedTicketFix,
   FEEDBACK_LEDGER_PATH
@@ -1222,9 +1227,10 @@ export function createFactoryTwinServer() {
 
         let updatedState;
         let approvedTicketResult = null;
-        if (action === 'approve_hitl' || action === 'approve_interview' || action === 'approve_ticket') {
+        if (action === 'approve_hitl' || action === 'approve_interview' || action === 'approve_prd_interview' || action === 'approve_ticket') {
           try {
-            compileSpecFromInterview(current.projectSlug || 'agencia-alfa', { approve: true });
+            compilePrdLeanAndBrandLock(current.projectSlug || 'agencia-alfa', { approve: true });
+            compileSpecFromInterview(current.projectSlug || 'agencia-alfa', { approve: true, refreshFromPrd: true });
           } catch (_) {}
           try {
             let pendingTicketId = body.ticketId || '';

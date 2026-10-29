@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "2026.36.1",
+  "gateId": "GATE_1_PRD_AND_BRAND_IDENTITY",
+  "projectSlug": "agencia-alfa",
+  "prdInterviewStatus": "COMPLETED_BY_CTO",
+  "createdAt": "2026-10-29T14:53:43.389Z",
+  "approvedAt": "2026-10-29T14:53:43.389Z",
+  "approvedBy": "CTO_HITL_APPROVED",
+  "blocks": {
+    "block1_business_identity_and_problem": {
+      "officialBrandName": "Agencia Alfa",
+      "brandTagline": "Soluciones profesionales de alto impacto en saas",
+      "industryCategory": "saas",
+      "resolvedArchetypeId": "b2b-saas-platform",
+      "coreOffering": "Servicios y productos especializados de Agencia Alfa para clientes exigentes en el rubro saas.",
+      "coreProblemSolved": "Elimina la fricción, incertidumbre de precios y demoras operativas ofreciendo respuesta inmediata, autoridad verificable y conversión directa."
+    },
+    "block2_target_audience_and_objections": {
+      "targetDemographic": "Decisores B2B y compradores calificados de 28 a 58 años en Argentina y LATAM",
+      "businessModelType": "B2B / B2C High-Intent",
+      "visitContextMobileVsDesktop": "65% móvil (consulta rápida y contacto directo por WhatsApp/turno) y 35% desktop (evaluación comparativa detallada)",
+      "topThreeBuyerObjections": [
+        "¿Tienen experiencia comprobable y respaldo real en casos similares al mío?",
+        "¿Cuál es el costo transparente, plazo de entrega y garantía sin letra chica?",
+        "¿Qué tan rápido recibo atención humana o solución si surge una urgencia?"
+      ],
+      "uniqueValueProposition": "Agencia Alfa combina atención experta inmediata, resultados auditables y una experiencia digital sin fricción superior a los competidores tradicionales."
+    },
+    "block3_existing_brand_identity_lock": {
+      "brandIdentityMode": "PARTIAL_BRAND_EVOLUTION",
+      "lockClientPalette": false,
+      "logoAssets": {
+        "primaryLogoPath": "public/assets/brand/logo-primary.svg",
+        "isotipoPath": "public/assets/brand/isotipo.svg",
+        "darkVariantLogoPath": "public/assets/brand/logo-dark.svg",
+        "lightVariantLogoPath": "public/assets/brand/logo-light.svg",
+        "usageRules": "Respetar área de aislamiento mínima de 16px, prohibido deformar proporciones o alterar colores institucionales."
+      },
+      "officialPalette": {
+        "primaryBrandColor": "#2563EB",
+        "secondaryBrandColor": "#0F172A",
+        "accentBrandColor": "#10B981",
+        "surfaceLightColor": "#F8FAFC",
+        "surfaceDarkColor": "#0B0F19"
+      },
+      "officialTypography": {
+        "displayFont": "'Plus Jakarta Sans', 'Inter', system-ui, sans-serif",
+        "sansFont": "'Inter', system-ui, -apple-system, sans-serif",
+        "monoFont": "'JetBrains Mono', ui-monospace, monospace",
+        "allowFactoryTypographyPairing": true
+      }
+    },
+    "block4_aesthetic_style_and_references": {
+      "desiredAestheticStyle": "Ingeniería visual moderna de alto contraste y precisión táctil",
+      "atmospherePreference": "dual-theme-toggle",
+      "referenceSites": [
+        {
+          "url": "https://stripe.com",
+          "rescueAspect": "Claridad de jerarquía tipográfica, micro-interacciones limpias y confianza comercial"
+        },
+        {
+          "url": "https://linear.app",
+          "rescueAspect": "Orden espacial de grillas Bento y velocidad percibida instantánea"
+        }
+      ]
+    },
+    "block5_capabilities_and_cro_goals": {
+      "primaryCta": "Solicitar Presupuesto / Agendar Consulta Ahora",
+      "primaryCtaChannel": "Formulario Calificado + WhatsApp Directo",
+      "secondaryCta": "Ver Casos de Éxito y Preguntas Frecuentes",
+      "requiredCapabilities": [
+        "Hero de respuesta directa con Propuesta Única de Valor y CTA primario visible sin scroll",
+        "Catálogo / Grilla interactiva de servicios o productos con desglose claro de beneficios",
+        "Bloque de derribo de las 3 objeciones principales y prueba social verificada",
+        "Formulario de contacto validado con integración directa a WhatsApp / CRM"
+      ]
+    },
+    "block6_real_assets_social_proof_and_legal": {
+      "realMediaAssetsPaths": [
+        "public/assets/brand/logo-primary.svg",
+        "public/assets/brand/isotipo.svg",
+        "public/assets/media/hero-showcase.webp"
+      ],
+      "realSocialProof": [
+        "+150 clientes atendidos con 98% de satisfacción verificada",
+        "Testimonios reales con nombre, cargo y resultados medibles",
+        "Certificaciones profesionales y respaldo institucional verificable"
+      ],
+      "languageAndTone": "Español rioplatense (es-AR) profesional, claro, empático y directo al grano (cero relleno genérico)",
+      "mandatoryOperationalData": {
+        "address": "Av. del Libertador 1000, CABA, Argentina",
+        "phone": "+54 11 4000-0000",
+        "whatsapp": "+54 9 11 5000-0000",
+        "businessHours": "Lunes a Viernes de 09:00 a 18:30 hs",
+        "socialLinks": [
+          "https://linkedin.com",
+          "https://instagram.com"
+        ],
+        "legalEntityName": "Agencia Alfa S.R.L. — Todos los derechos reservados"
+      }
+    },
+    "block7_explicit_non_goals_and_success_metrics": {
+      "explicitNonGoals": [
+        "No incluye sistema de facturación AFIP/ARCA embebido en esta fase inicial",
+        "No incluye foro comunitario ni chat en vivo con operadores 24/7 no pactado",
+        "No incluye integraciones con ERPs legados fuera de los endpoints definidos en el alcance"
+      ],
+      "expectedSuccessMetrics": [
+        "Claridad de propuesta de valor en menos de 3 segundos (5-Second Test)",
+        "LCP < 1.2s, CLS = 0.00, 60 FPS constantes y puntaje RYUX >= 95/100",
+        "Incremento medible en consultas calificadas / conversiones desde móvil y desktop"
+      ]
+    }
+  }
+}

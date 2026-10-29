@@ -1,16 +1,145 @@
 {
-  "schemaVersion": "2026.34.1",
+  "schemaVersion": "2026.36.1",
+  "gateId": "GATE_2_TECHNICAL_SPEC_AND_DESIGN",
   "projectSlug": "agencia-alfa",
   "status": "COMPLETED_BY_CTO",
-  "createdAt": "2026-10-29T00:44:46.532Z",
-  "approvedAt": "2026-10-29T00:44:46.532Z",
+  "specInterviewStatus": "COMPLETED_BY_CTO",
+  "prdReferenceStatus": "COMPLETED_BY_CTO",
+  "brandIdentityMode": "PARTIAL_BRAND_EVOLUTION",
+  "lockClientPalette": false,
+  "createdAt": "2026-10-29T14:54:58.874Z",
+  "approvedAt": "2026-10-29T14:54:58.874Z",
   "approvedBy": "CTO_HITL_APPROVED",
   "blocks": {
+    "block1_pages_and_dom_architecture": {
+      "brandName": "Agencia Alfa",
+      "industryArchetype": "saas",
+      "resolvedArchetypeId": "b2b-saas-platform",
+      "pages": [
+        "Home",
+        "Soluciones",
+        "Casos de Éxito",
+        "Precios",
+        "Contacto"
+      ],
+      "domSectionsAndComponents": [
+        "Header Semántico con Navegación Accesible + Mute Toggle + Selector de Tema",
+        "Hero Principal (Agencia Alfa) con Propuesta de Valor [INV-01] y Primary CTA (Solicitar Presupuesto / Agendar Consulta Ahora)",
+        "Sección de Capacidades Operativas y Derribo de las 3 Objeciones del Comprador [INV-02]",
+        "Bento Grid / Catálogo Filtrable con Prueba Social Verificable [INV-06]",
+        "Formulario de Conversión Validado con Valibot + Footer Legal y Datos Operativos"
+      ]
+    },
+    "block2_functional_contracts_and_valibot": {
+      "primaryCta": "Solicitar Presupuesto / Agendar Consulta Ahora",
+      "primaryCtaChannel": "Formulario Calificado + WhatsApp Directo",
+      "pureComponentsArchitecture": true,
+      "stressHarness5StatesRequired": [
+        "empty",
+        "loading",
+        "error-state",
+        "extreme-long-text-250chars",
+        "dark-mode"
+      ],
+      "valibotSchemas": [
+        "LeadCaptureFormSchema (nombre, email, telefono, mensaje, csrfToken)",
+        "InteractiveCalculatorOrFilterSchema (categoria, presupuesto, urgencia)"
+      ]
+    },
+    "block3_grid_topology_and_morphology": {
+      "gridTopology": "bento-modular-kinetic-grid",
+      "heroArchitecture": "focal-centered-interactive-stage",
+      "surfaceMateriality": "polymer",
+      "intraCategoryDivergenceFloorPct": 70,
+      "respectBrandIdentityLock": true
+    },
+    "block4_palette_apca_and_typography_scales": {
+      "surfaceMode": "Persuade",
+      "brandIdentityMode": "PARTIAL_BRAND_EVOLUTION",
+      "lockClientPalette": false,
+      "lockedClientPalette": {
+        "primaryBrandColor": "#2563EB",
+        "secondaryBrandColor": "#0F172A",
+        "accentBrandColor": "#10B981",
+        "surfaceLightColor": "#F8FAFC",
+        "surfaceDarkColor": "#0B0F19"
+      },
+      "oklchPrimary": {
+        "L": 0.15,
+        "C": 0.03,
+        "H": 260
+      },
+      "borderRadiusPx": 8,
+      "apcaContrastFloors": "Lc >= 90 (Hero/Headline), Lc >= 75 (Body), Lc >= 60 (Secondary)",
+      "typographyPersonality": "'Plus Jakarta Sans', 'Inter', system-ui, sans-serif"
+    },
+    "block5_motion_physics_and_scroll_60fps": {
+      "animationLevel": "spring-fluid-60fps",
+      "dampingRatioZeta": 0.78,
+      "springPhysics": {
+        "stiffness": 280,
+        "damping": 24
+      },
+      "useScrollDrivenAnimationsCss": true,
+      "useViewTransitionsApi": true,
+      "respectReducedMotion": true
+    },
+    "block6_webgpu_3d_glb_and_shaders": {
+      "forge3dMode": "shader-hero",
+      "use3dTiltCards": true,
+      "useWebGpuDiorama": false,
+      "canvas3TimestampHistogramWatchdog": true
+    },
+    "block7_sonic_ui_sfx_music_and_reaper_rpp": {
+      "sonicForgeMode": "generative-criteria",
+      "uiSfxMode": "subtle",
+      "material": "polymer",
+      "backgroundMusic": "off",
+      "exportReaperRppSession": true,
+      "sonicSeedId": "linear-minimal-tick",
+      "requiresVisibleMuteButton": true,
+      "autoplayBlockedUntilGesture": true
+    },
+    "block8_programmatic_video_intro_and_voiceover": {
+      "videoForgeMode": "minimal",
+      "introVideoMode": "vector-svg-reveal-3s",
+      "lockedLogoSvgPath": "public/assets/brand/logo-primary.svg",
+      "lockedIsotipoSvgPath": "public/assets/brand/isotipo.svg",
+      "useLockedClientPaletteInVideo": true,
+      "maxVideoBudgetMb": 1.8
+    },
+    "block9_database_payments_auth_and_edge_worker": {
+      "databaseTier": "edge-d1",
+      "databaseEngine": "Cloudflare D1 SQLite + Enterprise PostgreSQL FORCE RLS Ready",
+      "paymentGateway": "none",
+      "authMode": "Ory/Passkeys (OAuth 2.1 PKCE)",
+      "workerEndpoints": [
+        "POST /api/leads",
+        "POST /api/webhooks/payments",
+        "GET /api/health"
+      ],
+      "enforceWebhookIdempotencyAndRls": true
+    },
+    "block10_mobile_capacitor_feedback_and_f2p_matrix": {
+      "enableCapacitor8MobileTarget": false,
+      "enablePostSaleFeedbackWidget": true,
+      "locales": [
+        "es-AR"
+      ],
+      "maxCloudApiBudgetUsd": 0.25,
+      "totalGcpCreditPoolUsd": 90,
+      "f2pAcceptanceCriteria": [
+        "[REQ-01..03] Identidad PRD_LEAN, Primary CTA >= 48x48px y derribo de 3 objeciones",
+        "[REQ-04..06] BRAND_IDENTITY_LOCK (lockClientPalette), APCA Lc >= 75 y 60 FPS",
+        "[REQ-07..09] Audio/Video <= -18dBFS, Valibot, Idempotencia Webhooks y RLS Multi-Tenant",
+        "[REQ-10..12] SEO/GEO llms.txt, CSP/ASVS v5.0 y Pure Component 5-State Harness >= 95/100"
+      ]
+    },
     "block1_commercial_identity": {
       "brandName": "Agencia Alfa",
       "industryArchetype": "saas",
       "resolvedArchetypeId": "b2b-saas-platform",
-      "valuePropositionOneLiner": "Plataforma digital de alta conversión para agencia-alfa con arquitectura edge y diseño de precisión.",
+      "valuePropositionOneLiner": "Agencia Alfa combina atención experta inmediata, resultados auditables y una experiencia digital sin fricción superior a los competidores tradicionales.",
       "referenceCompetitors": [
         "Linear.app",
         "Stripe.com",
@@ -18,12 +147,12 @@
       ]
     },
     "block2_target_audience_cro": {
-      "segment": "B2B / High-Intent Decision Makers",
+      "segment": "Decisores B2B y compradores calificados de 28 a 58 años en Argentina y LATAM",
       "ageRange": "28-55",
       "purchasingPower": "High / Enterprise & Professional",
-      "primaryObjection": "Tiempo de implementación y retorno de inversión verificable",
-      "primaryCta": "Solicitar Auditoría / Demo Ejecutiva",
-      "primaryCtaChannel": "Calendly + WhatsApp Business + Lead Form"
+      "primaryObjection": "¿Tienen experiencia comprobable y respaldo real en casos similares al mío?",
+      "primaryCta": "Solicitar Presupuesto / Agendar Consulta Ahora",
+      "primaryCtaChannel": "Formulario Calificado + WhatsApp Directo"
     },
     "block3_sitemap_and_flows": {
       "pages": [
@@ -73,9 +202,9 @@
     },
     "block7_client_assets_vs_ai": {
       "clientProvidedAssets": [
-        "Logo Vectorial (.svg)",
-        "Textos Comerciales Base",
-        "Datos de Contacto"
+        "public/assets/brand/logo-primary.svg",
+        "public/assets/brand/isotipo.svg",
+        "Textos Comerciales PRD_LEAN.md"
       ],
       "factoryAiGeneratedAssets": [
         "OpenGraph Social Card (og-image.svg)",

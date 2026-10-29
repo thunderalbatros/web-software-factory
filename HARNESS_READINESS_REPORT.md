@@ -1,9 +1,9 @@
 # 🩺 HARNESS READINESS REPORT — Certificación Pre-Vuelo de la Software Factory (Fases 1 a 31)
 
-> **Fecha de Certificación:** 2026-10-29T13:51:16.273Z  
+> **Fecha de Certificación:** 2026-10-29T14:54:10.118Z  
 > **Puntaje Global del Harness:** **`100.0 / 100.0`** (`8/8 Capas Operativas en Verde`)  
 > **Simulacro End-to-End (5 Pasos):** **`5/5 PASOS APROBADOS`**  
-> **Firma Criptográfica `Ed25519` (`agentvcs`):** **`VERIFICADA (100% ÍNTEGRA)`** (`avcs_mvsnb3uo`)  
+> **Firma Criptográfica `Ed25519` (`agentvcs`):** **`VERIFICADA (100% ÍNTEGRA)`** (`avcs_mvtlvuz8`)  
 > **VEREDICTO FINAL:** **`LISTO PARA EL PRIMER SITIO REAL: SÍ`**
 
 ---
@@ -19,7 +19,7 @@
 | **Capa 5** | **Creator-Verifier Split & Evaluation (Blind Review + F2P/P2P)** | **`12.5 / 12.5`** | `PASS` | `BlindReview=true | HiddenSuite=true | F2P=true | P2P=true` |
 | **Capa 6** | **Deterministic Code & AppSec Gates (Oxc, <4% Dup, AgentShield, Zizmor)** | **`12.5 / 12.5`** | `PASS` | `AST=100/100 (undefinedms) | Dup=0% | AgentShield=true | Zizmor=4 WF | SecGate=100/100` |
 | **Capa 7** | **Visual Archetypes, 3D, Dual-DB & Mobile (DESIGN.md, Capacitor 8, KMS/RLS)** | **`12.5 / 12.5`** | `PASS` | `Archetypes=8/8 | 3DPrimitives=4 | KMS_AES256GCM=Verified | CTO_Wired=true` |
-| **Capa 8** | **Self-Evolution & Cryptographic Freeze (Ed25519 agentvcs)** | **`12.5 / 12.5`** | `PASS` | `Ed25519SignatureVerified=true | Commit=avcs_mvsnb3uo | KeyFingerprint=f80c006e4ada886b` |
+| **Capa 8** | **Self-Evolution & Cryptographic Freeze (Ed25519 agentvcs)** | **`12.5 / 12.5`** | `PASS` | `Ed25519SignatureVerified=true | Commit=avcs_mvtlvuz8 | KeyFingerprint=f80c006e4ada886b` |
 | **TOTAL** | **Salud Integral del Harness (Fases 1–31)** | **`100.0 / 100.0`** | **`CERTIFICADO`** | **Cero scripts huérfanos, cero colisiones de archivo, 100% acoplado** |
 
 ---
@@ -39,11 +39,11 @@ Se ejecutó un simulacro completo en una cápsula temporal aislada (eliminada au
 
 | Paso | Etapa del Flujo Real del CTO | Duración | Estado | Detalle |
 |:---:|:---|:---:|:---:|:---|
-| **Paso 1** | Creación de Cápsula de Proyecto Aislada (project_loader + template) | `4ms` | `PASS` | Verificado |
-| **Paso 2** | Dirección de Arte por Industria (PRODUCT.md + DESIGN.md + 62 reglas Impeccable) | `10ms` | `PASS` | fintech-and-banking (62/62 reglas) |
-| **Paso 3** | Enrutamiento Adaptativo SWE-AF + Compuerta HumanLayer 6-Stage RPI | `39ms` | `PASS` | LANE_2_STANDARD_BUILD | RPI 6/6 etapas |
-| **Paso 4** | Compilación W3C DTCG OKLCH + Guardias AST / Security / F2P-P2P / Traceability | `67ms` | `PASS` | Tokens OK | AST 100/100 | F2P/P2P=true | Traceability 1:1 |
-| **Paso 5** | Empaquetado Limpio de Producción (build_dist.mjs -> dist/) | `6141ms` | `PASS` | dist/index.html generado (Exit Code 0) |
+| **Paso 1** | Creación de Cápsula de Proyecto Aislada (project_loader + template) | `3ms` | `PASS` | Verificado |
+| **Paso 2** | Dirección de Arte por Industria (PRODUCT.md + DESIGN.md + 62 reglas Impeccable) | `9ms` | `PASS` | fintech-and-banking (62/62 reglas) |
+| **Paso 3** | Enrutamiento Adaptativo SWE-AF + Compuerta HumanLayer 6-Stage RPI | `40ms` | `PASS` | LANE_2_STANDARD_BUILD | RPI 6/6 etapas |
+| **Paso 4** | Compilación W3C DTCG OKLCH + Guardias AST / Security / F2P-P2P / Traceability | `72ms` | `PASS` | Tokens OK | AST 100/100 | F2P/P2P=true | Traceability 1:1 |
+| **Paso 5** | Empaquetado Limpio de Producción (build_dist.mjs -> dist/) | `811ms` | `PASS` | dist/index.html generado (Exit Code 0) |
 
 ---
 

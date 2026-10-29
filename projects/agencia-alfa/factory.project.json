@@ -91,5 +91,9 @@
     "backgroundMusic": "off",
     "introVideoMode": "vector-svg-reveal-3s"
   },
-  "interviewStatus": "COMPLETED_BY_CTO"
+  "interviewStatus": "COMPLETED_BY_CTO",
+  "brandIdentityMode": "PARTIAL_BRAND_EVOLUTION",
+  "lockClientPalette": false,
+  "prdInterviewStatus": "COMPLETED_BY_CTO",
+  "specInterviewStatus": "COMPLETED_BY_CTO"
 }
