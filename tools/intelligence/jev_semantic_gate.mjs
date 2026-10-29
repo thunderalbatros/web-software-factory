@@ -112,10 +112,163 @@ export const JevVerdictValibotSchema = v.strictObject({
 });
 
 /**
- * Compresses a verbose JSON Schema definition into a compact BAML/TypeScript type grammar
- * saving 60%–75% of schema tokens in prompts sent to JEV.
+ * Exact Coercion Penalty Weights from BoundaryML's Rust engine (`engine/baml-lib/jsonish/src/deserializer/score.rs`).
+ * Lower score is better (`WithScore` trait).
  */
-export function compileCompactBamlTypePrompt(predicateId = 'jev-persisted-state-and-env-owner-gate', allowedChoices = []) {
+export const BAML_JSONISH_FLAG_SCORES = Object.freeze({
+  InferedObject: 0,
+  ObjectFromFixedJson: 0,
+  UnionMatch: 0,
+  ConstraintResults: 0,
+  Incomplete: 0,
+  Pending: 0,
+  OptionalDefaultFromNoValue: 1,
+  ObjectToMap: 1,
+  ExtraKey: 1,
+  SingleToArray: 1,
+  FirstMatch: 1,
+  StringToBool: 1,
+  StringToNull: 1,
+  StringToChar: 1,
+  StringToFloat: 1,
+  FloatToInt: 1,
+  NoFields: 1,
+  DefaultButHadUnparseableValue: 2,
+  ObjectToString: 2,
+  ObjectToPrimitive: 2,
+  SubstringMatch: 2,
+  ImpliedKey: 2,
+  JsonToString: 2,
+  StrippedNonAlphaNumeric: 3,
+  DefaultFromNoValue: 100,
+  DefaultButHadValue: 110
+});
+
+/**
+ * BAML Dynamic Runtime TypeBuilder (`@@dynamic` — `fern/01-guide/05-baml-advanced/dynamic-types.mdx`).
+ * Allows adding runtime enum values, aliases, descriptions, and class properties without recompiling schemas.
+ */
+export class BamlTypeBuilder {
+  constructor() {
+    this.dynamicEnums = new Map();
+    this.dynamicClasses = new Map();
+  }
+
+  addEnumValue(enumName, value, { alias = null, description = null } = {}) {
+    if (!this.dynamicEnums.has(enumName)) {
+      this.dynamicEnums.set(enumName, []);
+    }
+    const list = this.dynamicEnums.get(enumName);
+    const entry = { value: String(value), alias, description };
+    if (!list.some((x) => x.value === entry.value)) {
+      list.push(entry);
+    }
+    return entry;
+  }
+
+  addClassField(className, fieldName, typeExpr = 'string', { description = null } = {}) {
+    if (!this.dynamicClasses.has(className)) {
+      this.dynamicClasses.set(className, []);
+    }
+    const fields = this.dynamicClasses.get(className);
+    const entry = { fieldName: String(fieldName), typeExpr: String(typeExpr), description };
+    if (!fields.some((f) => f.fieldName === entry.fieldName)) {
+      fields.push(entry);
+    }
+    return entry;
+  }
+
+  getEnumValues(enumName = 'JevChoice') {
+    return this.dynamicEnums.get(enumName) || [];
+  }
+
+  getClassFields(className = 'JevVerdict') {
+    return this.dynamicClasses.get(className) || [];
+  }
+}
+
+export function createBamlTypeBuilder() {
+  return new BamlTypeBuilder();
+}
+
+/**
+ * BAML Collector (`fern/01-guide/05-baml-advanced/collector.mdx`).
+ * Inspects internal state of BAML function calls: raw LLM responses, usage metrics, coercion flags, and checks.
+ */
+export class BamlCollector {
+  constructor(name = 'default-jev-collector') {
+    this.name = name;
+    this.logs = [];
+  }
+
+  recordCall(entry = {}) {
+    const logItem = {
+      id: entry.id || `baml-call-${Date.now()}-${this.logs.length + 1}`,
+      timestamp: new Date().toISOString(),
+      predicateId: entry.predicateId || 'unknown',
+      provider: entry.provider || 'LOCAL_FALLBACK_NO_JEV_API_KEY',
+      rawLlmResponse: entry.rawLlmResponse ?? null,
+      coercionScore: Number(entry.coercionScore ?? 0),
+      coercionFlags: Array.isArray(entry.coercionFlags) ? entry.coercionFlags : [],
+      checks: entry.checks || {},
+      usage: {
+        inputTokens: Number(entry.usage?.inputTokens || 0),
+        outputTokens: Number(entry.usage?.outputTokens || 0)
+      },
+      latencyMs: Number(entry.latencyMs || 0),
+      httpResponse: entry.httpResponse || { status: 200 }
+    };
+    this.logs.push(logItem);
+    return logItem;
+  }
+
+  get last() {
+    return this.logs.length > 0 ? this.logs[this.logs.length - 1] : null;
+  }
+
+  usage() {
+    return this.logs.reduce(
+      (acc, item) => ({
+        inputTokens: acc.inputTokens + (item.usage?.inputTokens || 0),
+        outputTokens: acc.outputTokens + (item.usage?.outputTokens || 0),
+        totalCalls: acc.totalCalls + 1
+      }),
+      { inputTokens: 0, outputTokens: 0, totalCalls: 0 }
+    );
+  }
+}
+
+/**
+ * Compresses a verbose JSON Schema definition into a compact BAML/TypeScript type grammar
+ * saving 60%–80% of schema tokens in prompts sent to JEV, with support for:
+ *   - Symbol Tuning (`@alias("k1")` — `symbol-tuning.mdx`)
+ *   - Dynamic `BamlTypeBuilder` (`@@dynamic` — `dynamic-types.mdx`)
+ */
+export function compileCompactBamlTypePrompt(
+  predicateId = 'jev-persisted-state-and-env-owner-gate',
+  allowedChoices = [],
+  options = {}
+) {
+  const tb = options.typeBuilder instanceof BamlTypeBuilder ? options.typeBuilder : null;
+  const dynamicEnumEntries = tb ? tb.getEnumValues('JevChoice') : [];
+  const mergedChoices = [
+    ...new Set([
+      ...allowedChoices,
+      ...dynamicEnumEntries.map((e) => e.value),
+      'NOUL'
+    ])
+  ];
+
+  const useSymbolTuning = Boolean(options.useSymbolTuning);
+  const symbolAliasMap = {};
+  const reverseAliasMap = {};
+  mergedChoices.forEach((choiceVal, idx) => {
+    const customDyn = dynamicEnumEntries.find((e) => e.value === choiceVal);
+    const aliasKey = customDyn?.alias || `k${idx + 1}`;
+    symbolAliasMap[aliasKey] = choiceVal;
+    reverseAliasMap[choiceVal] = aliasKey;
+  });
+
   const verboseJsonSchema = JSON.stringify(
     {
       $schema: 'https://json-schema.org/draft/2020-12/schema',
@@ -135,8 +288,8 @@ export function compileCompactBamlTypePrompt(predicateId = 'jev-persisted-state-
       ],
       properties: {
         predicateId: { type: 'string', description: 'Canonical identifier of the JEV bounded predicate being evaluated.' },
-        loopScope: { type: 'string', enum: ['OUTER_LOOP_PRE_MERGE', 'META_LOOP_TRACE_MINING'], description: 'Execution loop boundary.' },
-        choice: { type: 'string', enum: [...allowedChoices, 'NOUL', 'ABSTAIN_INSUFFICIENT_EVIDENCE'], description: 'Bounded categorical decision.' },
+        loopScope: { type: 'string', enum: ['OUTER_LOOP_PRE_MERGE', 'META_LOOP_TRACE_MINING', 'MEMORY_PIPELINE_WRITE_GATE'], description: 'Execution loop boundary.' },
+        choice: { type: 'string', enum: [...mergedChoices, 'ABSTAIN_INSUFFICIENT_EVIDENCE'], description: 'Bounded categorical decision.' },
         score: { type: 'integer', minimum: 0, maximum: 100, description: 'Normalized confidence or alignment score from 0 to 100.' },
         abstained: { type: 'boolean', description: 'True when choice is NOUL / ABSTAIN_INSUFFICIENT_EVIDENCE.' },
         noulReason: { type: ['string', 'null'], description: 'Explanation if abstained is true, otherwise null.' },
@@ -148,17 +301,24 @@ export function compileCompactBamlTypePrompt(predicateId = 'jev-persisted-state-
     2
   );
 
-  const choicesUnion = [...new Set([...allowedChoices, 'NOUL'])].map((c) => `"${c}"`).join('|');
+  const choicesUnion = useSymbolTuning
+    ? mergedChoices.map((c) => `"${reverseAliasMap[c]}" /* ${c} */`).join('|')
+    : mergedChoices.map((c) => `"${c}"`).join('|');
+  const dynamicClassFields = tb
+    ? tb.getClassFields('JevVerdict').map((f) => `  ${f.fieldName}: ${f.typeExpr}`)
+    : [];
+
   const compactBamlGrammar = [
     `type JevVerdict {`,
     `  predicateId: "${predicateId}"`,
-    `  loopScope: "OUTER_LOOP_PRE_MERGE"|"META_LOOP_TRACE_MINING"`,
+    `  loopScope: "OUTER_LOOP_PRE_MERGE"|"META_LOOP_TRACE_MINING"|"MEMORY_PIPELINE_WRITE_GATE"`,
     `  choice: ${choicesUnion}`,
-    `  score: int(0..100)`,
+    `  score: int(0..100) @assert(valid_score, {{ this >= 0 and this <= 100 }})`,
     `  abstained: bool`,
     `  noulReason: string?`,
-    `  evidence: string[]`,
+    `  evidence: string[] @check(non_empty_evidence, {{ this|length > 0 }})`,
     `  requiresCodeOwnerRole: "security-engineer"|"edge-fullstack-architect"|"qa-auditor"|"none"`,
+    ...dynamicClassFields,
     `}`
   ].join('\n');
 
@@ -171,114 +331,294 @@ export function compileCompactBamlTypePrompt(predicateId = 'jev-persisted-state-
     compactBamlGrammar,
     verboseTokens,
     compactTokens,
-    tokenSavingsPct
+    tokenSavingsPct,
+    symbolAliasMap,
+    reverseAliasMap
   };
 }
 
 /**
- * BAML Schema-Aligned Parser (SAP) Engine (`parseWithSchemaAlignedRecovery`):
- * Repairs malformed LLM/JEV outputs in `< 1ms` at `$0.00` cost before validating with `Valibot`.
- * Handles:
- *   - Conversational preambles and postambles outside `{ ... }`
- *   - Markdown code fences (```json, ```baml, ```)
- *   - Single-line (`//`) and block (`/* ... *\/`) comments
- *   - Unquoted object keys (`{ predicateId: "x", score: 95, }`)
- *   - Single-quoted keys and string values
- *   - Trailing commas before `}` or `]`
- *   - Truncated closing brackets/braces
- *   - Schema-aligned type coercion (`"95"` -> `95`, `ABSTAIN_INSUFFICIENT_EVIDENCE` -> `abstained: true`)
+ * Extracts all balanced or truncated `{ ... }` JSONish object substrings from a raw LLM response
+ * (so Chain-of-Thought reasoning with earlier `{ example }` blocks does not corrupt the final answer).
  */
-export function parseWithSchemaAlignedRecovery(rawInput, defaultPredicateId = 'jev-persisted-state-and-env-owner-gate') {
+export function extractJsonishCandidates(rawText = '') {
+  const candidates = [];
+  const src = String(rawText || '');
+  let depth = 0;
+  let startIdx = -1;
+  let inString = false;
+  let stringQuote = '"';
+  let escaped = false;
+
+  for (let i = 0; i < src.length; i++) {
+    const ch = src[i];
+    if (inString) {
+      if (escaped) {
+        escaped = false;
+      } else if (ch === '\\') {
+        escaped = true;
+      } else if (ch === stringQuote) {
+        inString = false;
+      }
+      continue;
+    }
+
+    if (depth > 0 && (ch === '"' || ch === "'")) {
+      inString = true;
+      stringQuote = ch;
+      continue;
+    }
+
+    if (ch === '{') {
+      if (depth === 0) startIdx = i;
+      depth++;
+    } else if (ch === '}') {
+      if (depth > 0) {
+        depth--;
+        if (depth === 0 && startIdx !== -1) {
+          candidates.push({ rawBlock: src.slice(startIdx, i + 1), truncated: false });
+          startIdx = -1;
+        }
+      }
+    }
+  }
+
+  // Handle truncated trailing JSON block (`depth > 0` at end of string)
+  if (depth > 0 && startIdx !== -1) {
+    candidates.push({ rawBlock: src.slice(startIdx), truncated: true });
+  }
+  return candidates;
+}
+
+/**
+ * Evaluates BAML `@assert` (strict) and `@check` (non-exception-raising `ResponseCheck`) constraints
+ * (`fern/01-guide/05-baml-advanced/checks-and-asserts.mdx`).
+ */
+export function evaluateBamlChecksAndAsserts(verdict) {
+  const checks = {
+    non_empty_evidence: {
+      name: 'non_empty_evidence',
+      expression: 'this.evidence|length > 0',
+      status: Array.isArray(verdict.evidence) && verdict.evidence.length > 0 ? 'succeeded' : 'failed'
+    },
+    score_confidence_floor: {
+      name: 'score_confidence_floor',
+      expression: 'this.abstained or this.score >= 70',
+      status: verdict.abstained || Number(verdict.score) >= 70 ? 'succeeded' : 'failed'
+    },
+    owner_role_assigned_on_risk: {
+      name: 'owner_role_assigned_on_risk',
+      expression: 'this.choice != "REQUIRES_HUMAN_CODE_OWNER_REVIEW" or this.requiresCodeOwnerRole != "none"',
+      status:
+        verdict.choice !== 'REQUIRES_HUMAN_CODE_OWNER_REVIEW' || verdict.requiresCodeOwnerRole !== 'none'
+          ? 'succeeded'
+          : 'failed'
+    }
+  };
+  return checks;
+}
+
+/**
+ * Repairs a single raw JSONish block and parses it into a candidate JS object alongside repair flags.
+ */
+function repairSingleJsonishBlock(rawBlock = '') {
+  let text = String(rawBlock || '').trim();
+  const flags = [];
+  const repairSteps = [];
+
+  // Remove inline comments outside strings
+  const withoutComments = text
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/(^|[\s,{[\r\n])\/\/[^\r\n]*/g, '$1');
+  if (withoutComments !== text) {
+    text = withoutComments;
+    repairSteps.push('strip_comments');
+    flags.push('ObjectFromFixedJson');
+  }
+
+  // Quote unquoted object keys: `{ choice: ...` or `, score: ...`
+  const withQuotedKeys = text.replace(/([{,]\s*)([A-Za-z_][A-Za-z0-9_]*)(\s*:)/g, '$1"$2"$3');
+  if (withQuotedKeys !== text) {
+    text = withQuotedKeys;
+    repairSteps.push('quote_unquoted_keys');
+    flags.push('ObjectFromFixedJson');
+  }
+
+  // Convert single-quoted string values to double-quoted values
+  const withDoubleQuotes = text.replace(/([:[,]\s*)'([^'\\]*(?:\\.[^'\\]*)*)'/g, '$1"$2"');
+  if (withDoubleQuotes !== text) {
+    text = withDoubleQuotes;
+    repairSteps.push('normalize_single_quotes');
+    flags.push('ObjectFromFixedJson');
+  }
+
+  // Balance truncated braces/brackets if necessary
+  const openBrackets = (text.match(/\[/g) || []).length - (text.match(/\]/g) || []).length;
+  const openBraces = (text.match(/\{/g) || []).length - (text.match(/\}/g) || []).length;
+  if (openBrackets > 0 || openBraces > 0) {
+    if (openBrackets > 0) text += ']'.repeat(openBrackets);
+    if (openBraces > 0) text += '}'.repeat(openBraces);
+    repairSteps.push('balance_delimiters');
+    flags.push('ObjectFromFixedJson');
+  }
+
+  // Remove trailing commas before `}` or `]`
+  const withoutTrailingCommas = text.replace(/,\s*([}\]])/g, '$1');
+  if (withoutTrailingCommas !== text) {
+    text = withoutTrailingCommas;
+    repairSteps.push('remove_trailing_commas');
+    flags.push('ObjectFromFixedJson');
+  }
+
+  const parsed = JSON.parse(text);
+  return { parsed, flags, repairSteps };
+}
+
+/**
+ * BAML Schema-Aligned Parser (SAP) Engine (`parseWithSchemaAlignedRecovery`):
+ * Implements the Rust `engine/baml-lib/jsonish` algorithm in pure JS:
+ *   - Multi-candidate extraction across Chain-of-Thought responses (`extractJsonishCandidates`)
+ *   - Least-cost coercion scoring (`WithScore` via `BAML_JSONISH_FLAG_SCORES`)
+ *   - Symbol Tuning `@alias("k1")` resolution (`options.symbolAliasMap`)
+ *   - `StrippedNonAlphaNumeric` enum normalization & `SingleToArray` wrapping
+ *   - Graduated `@assert` and `@check` evaluation (`evaluateBamlChecksAndAsserts`)
+ */
+export function parseWithSchemaAlignedRecovery(
+  rawInput,
+  defaultPredicateId = 'jev-persisted-state-and-env-owner-gate',
+  options = {}
+) {
   const t0 = performance.now();
   let repaired = false;
   const repairSteps = [];
+  const symbolAliasMap = options.symbolAliasMap || {};
 
-  let candidateObj = null;
+  const ALLOWED_CHOICES = [
+    'SAFE_INTERNAL_CHANGE',
+    'REQUIRES_HUMAN_CODE_OWNER_REVIEW',
+    'ALIGNED_WITH_SPEC',
+    'INVARIANT_DRIFT_DETECTED',
+    'MEANINGFUL_BRANCH_COVERAGE',
+    'REDUNDANT_TAUTOLOGICAL_TEST',
+    'FRICTION_CLUSTER_IDENTIFIED',
+    'CLEAN_EXECUTION_TRACE',
+    'COMMIT_GLOBAL_INVARIANT',
+    'ISOLATE_TO_PROJECT_SCOPE',
+    'SUPERSEDE_CONFLICTING_FACT',
+    'DROP_TRANSIENT_NOISE',
+    'QUARANTINE_POISONING_RISK',
+    'NOUL',
+    'ABSTAIN_INSUFFICIENT_EVIDENCE'
+  ];
+
+  let candidateList = [];
   if (rawInput && typeof rawInput === 'object') {
-    candidateObj = { ...rawInput };
+    candidateList = [{ parsed: { ...rawInput }, flags: [], repairSteps: [] }];
   } else {
     let text = String(rawInput || '').trim();
-
-    // 1. Strip Markdown code fences
     if (text.includes('```')) {
-      const fenceMatch = text.match(/```(?:json|baml|ts|javascript)?\s*([\s\S]*?)```/i);
-      if (fenceMatch) {
-        text = fenceMatch[1].trim();
-        repaired = true;
-        repairSteps.push('strip_markdown_fence');
-      } else {
-        text = text.replace(/```[a-z]*\s*/gi, '').replace(/```/g, '').trim();
-        repaired = true;
-        repairSteps.push('strip_unclosed_fence');
-      }
+      repaired = true;
+      repairSteps.push('strip_markdown_fence');
+      text = text.replace(/```[a-z]*\s*/gi, '').replace(/```/g, '').trim();
     }
-
-    // 2. Strip conversational preamble before first `{` and after last `}`
-    const firstBrace = text.indexOf('{');
-    const lastBrace = text.lastIndexOf('}');
-    if (firstBrace > 0) {
-      text = text.slice(firstBrace);
+    const rawBlocks = extractJsonishCandidates(text);
+    if (rawBlocks.length > 1) {
+      repaired = true;
+      repairSteps.push('multi_candidate_cot_disambiguation');
+    } else if (text.indexOf('{') > 0) {
       repaired = true;
       repairSteps.push('strip_conversational_preamble');
     }
-    if (lastBrace !== -1 && lastBrace < text.length - 1 && firstBrace !== -1) {
-      const latestLast = text.lastIndexOf('}');
-      if (latestLast !== -1 && latestLast < text.length - 1) {
-        text = text.slice(0, latestLast + 1);
-        repaired = true;
-        repairSteps.push('strip_postamble');
+
+    rawBlocks.forEach((blk, idx) => {
+      try {
+        const rep = repairSingleJsonishBlock(blk.rawBlock);
+        if (idx < rawBlocks.length - 1) {
+          rep.flags.push('FirstMatch');
+        }
+        candidateList.push(rep);
+      } catch (_) {}
+    });
+  }
+
+  if (candidateList.length === 0) {
+    throw new Error('BamlValidationError: Unable to extract any valid JSONish object from input.');
+  }
+
+  // Score each candidate with `WithScore` (`engine/baml-lib/jsonish/src/deserializer/score.rs`)
+  let bestCandidate = null;
+  for (const cand of candidateList) {
+    const obj = cand.parsed || {};
+    const flags = [...cand.flags];
+    const steps = [...cand.repairSteps];
+
+    // Resolve choice via Symbol Tuning alias (`k1` -> `SAFE_INTERNAL_CHANGE`) or `StrippedNonAlphaNumeric`
+    let rawChoiceStr = String(obj.choice || '').trim();
+    if (!rawChoiceStr) {
+      flags.push('DefaultFromNoValue');
+      rawChoiceStr = 'NOUL';
+    } else if (symbolAliasMap[rawChoiceStr]) {
+      rawChoiceStr = symbolAliasMap[rawChoiceStr];
+      steps.push('resolve_symbol_tuning_alias');
+    } else if (symbolAliasMap[rawChoiceStr.toLowerCase()]) {
+      rawChoiceStr = symbolAliasMap[rawChoiceStr.toLowerCase()];
+      steps.push('resolve_symbol_tuning_alias');
+    } else {
+      const upper = rawChoiceStr.toUpperCase();
+      if (!ALLOWED_CHOICES.includes(upper)) {
+        const stripped = upper.replace(/[^A-Z0-9_]/g, '');
+        if (ALLOWED_CHOICES.includes(stripped)) {
+          rawChoiceStr = stripped;
+          flags.push('StrippedNonAlphaNumeric');
+          steps.push('strip_non_alphanumeric_enum');
+        } else {
+          const subMatch = ALLOWED_CHOICES.find((c) => upper.includes(c) || c.includes(upper));
+          if (subMatch) {
+            rawChoiceStr = subMatch;
+            flags.push('SubstringMatch');
+            steps.push('substring_enum_match');
+          } else {
+            flags.push('DefaultButHadValue');
+            rawChoiceStr = 'NOUL';
+          }
+        }
+      } else {
+        rawChoiceStr = upper;
       }
     }
 
-    // 3. Remove inline comments outside strings
-    const withoutComments = text
-      .replace(/\/\*[\s\S]*?\*\//g, '')
-      .replace(/(^|[\s,{[\r\n])\/\/[^\r\n]*/g, '$1');
-    if (withoutComments !== text) {
-      text = withoutComments;
-      repaired = true;
-      repairSteps.push('strip_comments');
+    if (obj.score === undefined || obj.score === null) {
+      flags.push('OptionalDefaultFromNoValue');
+    } else if (typeof obj.score === 'string') {
+      flags.push('StringToFloat');
     }
 
-    // 4. Quote unquoted object keys: `{ choice: ...` or `, score: ...`
-    const withQuotedKeys = text.replace(/([{,]\s*)([A-Za-z_][A-Za-z0-9_]*)(\s*:)/g, '$1"$2"$3');
-    if (withQuotedKeys !== text) {
-      text = withQuotedKeys;
-      repaired = true;
-      repairSteps.push('quote_unquoted_keys');
+    if (obj.evidence !== undefined && !Array.isArray(obj.evidence)) {
+      flags.push('SingleToArray');
+      steps.push('coerce_single_to_array');
     }
 
-    // 5. Convert single-quoted string values (after `:`, `[`, or `,`) to double-quoted values
-    const withDoubleQuotes = text.replace(/([:[,]\s*)'([^'\\]*(?:\\.[^'\\]*)*)'/g, '$1"$2"');
-    if (withDoubleQuotes !== text) {
-      text = withDoubleQuotes;
-      repaired = true;
-      repairSteps.push('normalize_single_quotes');
+    const score = flags.reduce((sum, f) => sum + (BAML_JSONISH_FLAG_SCORES[f] ?? 1), 0);
+    if (!bestCandidate || score < bestCandidate.coercionScore) {
+      bestCandidate = {
+        obj,
+        resolvedChoice: rawChoiceStr,
+        flags,
+        steps,
+        coercionScore: score
+      };
     }
-
-    // 6. Balance truncated braces/brackets if necessary
-    const openBrackets = (text.match(/\[/g) || []).length - (text.match(/\]/g) || []).length;
-    const openBraces = (text.match(/\{/g) || []).length - (text.match(/\}/g) || []).length;
-    if (openBrackets > 0 || openBraces > 0) {
-      if (openBrackets > 0) text += ']'.repeat(openBrackets);
-      if (openBraces > 0) text += '}'.repeat(openBraces);
-      repaired = true;
-      repairSteps.push('balance_delimiters');
-    }
-
-    // 7. Remove trailing commas before `}` or `]` (including after delimiter balancing)
-    const withoutTrailingCommas = text.replace(/,\s*([}\]])/g, '$1');
-    if (withoutTrailingCommas !== text) {
-      text = withoutTrailingCommas;
-      repaired = true;
-      repairSteps.push('remove_trailing_commas');
-    }
-
-    candidateObj = JSON.parse(text);
   }
 
-  // 8. Schema-Aligned Coercion before strict Valibot validation
-  const rawChoice = String(candidateObj.choice || 'NOUL').trim().toUpperCase();
+  const candidateObj = bestCandidate.obj;
+  if (bestCandidate.steps.length > 0) {
+    repaired = true;
+    for (const s of bestCandidate.steps) {
+      if (!repairSteps.includes(s)) repairSteps.push(s);
+    }
+  }
+
+  const rawChoice = bestCandidate.resolvedChoice;
   const isNoul = rawChoice === 'NOUL' || rawChoice === 'ABSTAIN_INSUFFICIENT_EVIDENCE';
   const rawScore = Number(candidateObj.score);
   const alignedScore = Number.isFinite(rawScore) ? Math.max(0, Math.min(100, Math.round(rawScore))) : (isNoul ? 0 : 85);
@@ -310,12 +650,28 @@ export function parseWithSchemaAlignedRecovery(rawInput, defaultPredicateId = 'j
   };
 
   const validated = v.parse(JevVerdictValibotSchema, alignedPayload);
+  const checks = evaluateBamlChecksAndAsserts(validated);
   const elapsedMs = Number((performance.now() - t0).toFixed(3));
+
+  if (options.collector instanceof BamlCollector) {
+    options.collector.recordCall({
+      predicateId: validated.predicateId,
+      rawLlmResponse: typeof rawInput === 'string' ? rawInput : JSON.stringify(rawInput),
+      coercionScore: bestCandidate.coercionScore,
+      coercionFlags: bestCandidate.flags,
+      checks,
+      latencyMs: elapsedMs
+    });
+  }
 
   return {
     ok: true,
     repaired,
     repairSteps,
+    coercionScore: bestCandidate.coercionScore,
+    coercionFlags: bestCandidate.flags,
+    candidatesEvaluated: candidateList.length,
+    checks,
     elapsedMs,
     under1msVerified: elapsedMs < 5,
     costUsd: 0,
@@ -324,6 +680,39 @@ export function parseWithSchemaAlignedRecovery(rawInput, defaultPredicateId = 'j
     verdict: validated
   };
 }
+
+/**
+ * BAML Modular API (`bamlModularApi.request` & `bamlModularApi.parse` — `fern/01-guide/05-baml-advanced/modular-api.mdx`).
+ * Exposes raw HTTP request construction and offline SAP parsing without locking callers to an opaque transport.
+ */
+export const bamlModularApi = Object.freeze({
+  request(predicateId, inputPayload = {}, options = {}) {
+    const envCfg = loadJevEnvConfig(options.customEnv);
+    const grammar = compileCompactBamlTypePrompt(predicateId, options.allowedChoices || ['SAFE_INTERNAL_CHANGE', 'NOUL'], {
+      useSymbolTuning: options.useSymbolTuning ?? true,
+      typeBuilder: options.typeBuilder || null
+    });
+    return {
+      url: envCfg.jevApiBaseUrl,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: envCfg.hasOfficialApiKey ? `Bearer ${envCfg.jevApiKey}` : 'Bearer LOCAL_OFFLINE_MODE',
+        'X-JEV-Model': envCfg.jevModel
+      },
+      body: {
+        model: envCfg.jevModel,
+        predicateId,
+        bamlSchema: grammar.compactBamlGrammar,
+        input: inputPayload
+      },
+      bamlGrammar: grammar
+    };
+  },
+  parse(predicateId, rawLlmResponse, options = {}) {
+    return parseWithSchemaAlignedRecovery(rawLlmResponse, predicateId, options);
+  }
+});
 
 /**
  * Loads or initializes `.agents/memory/jev_decision_cache.json`.
@@ -1009,6 +1398,25 @@ export async function runJevSemanticGateSelfTest() {
   const malformedPayload = `Sure! Here is my JEV evaluation:\n\`\`\`json\n{\n  // unquoted keys and trailing commas\n  predicateId: 'jev-persisted-state-and-env-owner-gate',\n  loopScope: 'OUTER_LOOP_PRE_MERGE',\n  choice: 'REQUIRES_HUMAN_CODE_OWNER_REVIEW',\n  score: "96",\n  abstained: false,\n  noulReason: null,\n  evidence: ['Detected ALTER TABLE & process.env.STRIPE_SECRET mutation',],\n  requiresCodeOwnerRole: 'security-engineer',\n`;
   const sapRes = parseWithSchemaAlignedRecovery(malformedPayload);
 
+  // 1b. Test Multi-Candidate Chain-of-Thought Disambiguation (`WithScore` from `score.rs`) + Symbol Tuning (`@alias`) + Collector
+  const tb = createBamlTypeBuilder();
+  tb.addEnumValue('JevChoice', 'REQUIRES_HUMAN_CODE_OWNER_REVIEW', { alias: 'k2', description: 'Needs human review' });
+  const collector = new BamlCollector('self-test-collector');
+  const modReq = bamlModularApi.request(
+    'jev-persisted-state-and-env-owner-gate',
+    { diff: 'ALTER TABLE orders' },
+    {
+      allowedChoices: ['SAFE_INTERNAL_CHANGE', 'REQUIRES_HUMAN_CODE_OWNER_REVIEW'],
+      useSymbolTuning: true,
+      typeBuilder: tb
+    }
+  );
+  const cotMultiBlockResponse = `Let's think step by step. A naive model might output an incomplete example like { choice: "INVALID_EXAMPLE" } while reasoning. Therefore, the final structured verdict is: { predicateId: "jev-persisted-state-and-env-owner-gate", choice: "k2", score: "97", evidence: "Single string coerced to array via SingleToArray", requiresCodeOwnerRole: "security-engineer",`;
+  const cotParsed = bamlModularApi.parse('jev-persisted-state-and-env-owner-gate', cotMultiBlockResponse, {
+    symbolAliasMap: modReq.bamlGrammar.symbolAliasMap,
+    collector
+  });
+
   // 2. Test BAML Compact Type Grammar Compression (60%–75% savings)
   const bamlGrammar = compileCompactBamlTypePrompt('jev-persisted-state-and-env-owner-gate', [
     'SAFE_INTERNAL_CHANGE',
@@ -1048,6 +1456,10 @@ export async function runJevSemanticGateSelfTest() {
     sapRes.ok === true &&
     sapRes.repaired === true &&
     sapRes.data.choice === 'REQUIRES_HUMAN_CODE_OWNER_REVIEW' &&
+    cotParsed.candidatesEvaluated === 2 &&
+    cotParsed.verdict.choice === 'REQUIRES_HUMAN_CODE_OWNER_REVIEW' &&
+    cotParsed.checks.non_empty_evidence.status === 'succeeded' &&
+    collector.last?.coercionScore < 100 &&
     bamlGrammar.tokenSavingsPct >= 55 &&
     firstCall.verdict.choice === 'REQUIRES_HUMAN_CODE_OWNER_REVIEW' &&
     cachedCall.cacheHit === true &&
@@ -1066,6 +1478,13 @@ export async function runJevSemanticGateSelfTest() {
     sapRecoveryMs: sapRes.elapsedMs,
     bamlTokenSavingsPct: bamlGrammar.tokenSavingsPct,
     cacheHitLatencyMs: cachedCall.latencyMs,
+    bamlAdvancedVerified: {
+      cotCandidatesDisambiguated: cotParsed.candidatesEvaluated,
+      withScoreCoercionScore: cotParsed.coercionScore,
+      symbolTuningResolved: cotParsed.verdict.choice,
+      checksPassed: cotParsed.checks.non_empty_evidence.status === 'succeeded',
+      collectorLoggedCalls: collector.logs.length
+    },
     predicatesVerified: {
       persistedStateOwnerGate: firstCall.verdict.choice,
       noulAbstentionVerified: emptyDiffCall.verdict.choice === 'NOUL',

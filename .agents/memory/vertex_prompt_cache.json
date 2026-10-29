@@ -1,8 +1,8 @@
 {
   "schema": "vertex-prompt-cache-v3-headroom-aligned",
   "cacheKey": "241371ce44570a99e6889d0b38f7925e35015ae27177ad975f2b2a0f390c1e52",
-  "alignedPrefixHash": "c14053f6765cd227",
-  "updatedAt": "2026-10-29T19:02:41.777Z",
+  "alignedPrefixHash": "87244aa1ebf6b29e",
+  "updatedAt": "2026-10-29T20:10:58.888Z",
   "ttlSeconds": 86400,
   "hotContextFiles": [
     {
@@ -37,7 +37,7 @@
   "totalHotTokens": 1898,
   "cacheAligner": {
     "alignerVersion": "headroom-cache-aligner-2026.10",
-    "prefixHash": "c14053f6765cd227",
+    "prefixHash": "87244aa1ebf6b29e",
     "hotPrefixDigest": "ab0f727a11711e43",
     "orderedSegments": [
       {
@@ -55,8 +55,8 @@
         "cacheable": true,
         "items": [
           ".agents/agency/roles/ux-designer.md",
-          ".agents/skills/vanilla-motion-choreography/SKILL.md",
-          ".agents/skills/21st-ui/SKILL.md"
+          ".agents/skills/utopia-fluid-ergonomics/SKILL.md",
+          ".agents/skills/impeccable-and-design-md-director/SKILL.md"
         ]
       },
       {

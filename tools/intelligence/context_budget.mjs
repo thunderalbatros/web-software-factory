@@ -724,6 +724,87 @@ function splitEscapedPipeRow(line) {
   return cells;
 }
 
+/**
+ * Computes BAML's Official Tabular Eligibility Ratio (`0%..100%`)
+ * (`fern/01-guide/06-prompt-engineering/token-optimization.mdx`):
+ *   - High eligibility (80-100%): Uniform arrays of flat objects sharing the same keys -> TOON excels
+ *   - Low eligibility (0-20%): Deeply nested objects without uniform arrays -> JSON-compact is better
+ */
+export function computeToonTabularEligibility(data) {
+  let candidateArrays = [];
+  if (Array.isArray(data)) {
+    candidateArrays.push(data);
+  } else if (data && typeof data === 'object') {
+    for (const v of Object.values(data)) {
+      if (Array.isArray(v) && v.length > 0) {
+        candidateArrays.push(v);
+      }
+    }
+  }
+
+  if (candidateArrays.length === 0) {
+    return {
+      eligibilityPct: 0,
+      band: 'LOW_0_20',
+      recommendedFormat: 'json-compact'
+    };
+  }
+
+  let totalCells = 0;
+  let uniformFlatCells = 0;
+  for (const arr of candidateArrays) {
+    const objRows = arr.filter((r) => r && typeof r === 'object' && !Array.isArray(r));
+    if (objRows.length < 2) continue;
+    const allKeys = [...new Set(objRows.flatMap((r) => Object.keys(r)))];
+    for (const row of objRows) {
+      for (const k of allKeys) {
+        totalCells++;
+        if (Object.prototype.hasOwnProperty.call(row, k)) {
+          const val = row[k];
+          const isFlatScalar = val === null || typeof val !== 'object';
+          if (isFlatScalar) uniformFlatCells++;
+        }
+      }
+    }
+  }
+
+  const eligibilityPct = totalCells > 0 ? Number(((uniformFlatCells / totalCells) * 100).toFixed(1)) : 0;
+  const band = eligibilityPct >= 80 ? 'HIGH_80_100' : eligibilityPct >= 40 ? 'MEDIUM_40_60' : 'LOW_0_20';
+  return {
+    eligibilityPct,
+    band,
+    recommendedFormat: eligibilityPct >= 80 ? 'toon' : 'json-compact'
+  };
+}
+
+/**
+ * Automatically selects between `TOON` (`>= 80%` tabular eligibility) and `JSON-compact` (`< 80%`)
+ * per BoundaryML's `token-optimization.mdx` specification.
+ */
+export function formatOptimalPromptData(data, { thresholdPct = 80 } = {}) {
+  const elig = computeToonTabularEligibility(data);
+  if (elig.eligibilityPct >= thresholdPct) {
+    const toon = serializeToToonFormat(data);
+    return {
+      formatUsed: 'toon',
+      eligibilityPct: elig.eligibilityPct,
+      band: elig.band,
+      output: toon.toonString,
+      tokenSavingsPct: toon.tokenSavingsPct
+    };
+  }
+  const compactJson = JSON.stringify(data);
+  const prettyTokens = estimateTokens(JSON.stringify(data, null, 2));
+  const compactTokens = estimateTokens(compactJson);
+  return {
+    formatUsed: 'json-compact',
+    eligibilityPct: elig.eligibilityPct,
+    band: elig.band,
+    output: compactJson,
+    tokenSavingsPct: prettyTokens > 0 ? Number((((prettyTokens - compactTokens) / prettyTokens) * 100).toFixed(1)) : 0
+  };
+}
+
 export function serializeToToonFormat(obj) {
   const jsonBaseline = JSON.stringify(obj, null, 2);
   const lines = ['#TOON/1.0'];
@@ -873,6 +954,8 @@ if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
   const toonEncoded = serializeToToonFormat(sampleToonInput);
   const toonDecoded = parseFromToonFormat(toonEncoded.toonString);
   const toonRoundTripOk = JSON.stringify(toonDecoded) === JSON.stringify(sampleToonInput);
+  const highElig = formatOptimalPromptData(sampleToonInput);
+  const lowElig = formatOptimalPromptData({ server: { host: 'localhost', db: { pool: { min: 5, max: 20 } } } });
 
   console.log('==================================================================');
   console.log('🧊🔥 3-TIER CONTEXT + HEADROOM CCR + CACHEALIGNER + TOON VERIFICATION');
@@ -882,9 +965,17 @@ if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
   console.log(`  🧊 [COLD CONTEXT]  Mode: ${ctx.cold.mode} | Discovery: ${ctx.cold.activeToolDiscovery}`);
   console.log(`  🗜️  [HEADROOM CCR]  Hash: ${sampleCcr.hash} | Reduction: -${sampleCcr.reductionPct}% | Lossless Retrieve: ${retrieved.found ? 'OK' : 'FAIL'}`);
   console.log(`  🧹 [TRACE FOLDING] Reduction: -${sampleTraceFold.tokenSavingsPct}% | CCR Hash: ${sampleTraceFold.headroomCcrHash}`);
-  console.log(`  📊 [TOON FORMAT]   JSON: ${toonEncoded.jsonTokens} tok -> TOON: ${toonEncoded.toonTokens} tok (-${toonEncoded.tokenSavingsPct}%) | RoundTrip: ${toonRoundTripOk ? 'OK' : 'FAIL'}`);
+  console.log(`  📊 [TOON FORMAT]   JSON: ${toonEncoded.jsonTokens} tok -> TOON: ${toonEncoded.toonTokens} tok (-${toonEncoded.tokenSavingsPct}%) | Elig: ${highElig.eligibilityPct}% (${highElig.formatUsed}) / Nested: ${lowElig.eligibilityPct}% (${lowElig.formatUsed}) | RoundTrip: ${toonRoundTripOk ? 'OK' : 'FAIL'}`);
   console.log('==================================================================\n');
   if (process.argv.includes('--self-test')) {
-    process.exit(retrieved.found && toonRoundTripOk && toonEncoded.tokenSavingsPct >= 25 ? 0 : 1);
+    process.exit(
+      retrieved.found &&
+        toonRoundTripOk &&
+        toonEncoded.tokenSavingsPct >= 25 &&
+        highElig.formatUsed === 'toon' &&
+        lowElig.formatUsed === 'json-compact'
+        ? 0
+        : 1
+    );
   }
 }

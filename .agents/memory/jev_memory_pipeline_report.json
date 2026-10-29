@@ -1,7 +1,7 @@
 {
   "schemaVersion": "2026.10-jev-memory-pipeline-v38",
-  "consolidatedAt": "2026-10-29T19:04:01.485Z",
-  "latencyMs": 11.827,
+  "consolidatedAt": "2026-10-29T20:11:31.221Z",
+  "latencyMs": 13.401,
   "tiersSummary": {
     "tier1_workingMemoryBudgetTokens": 3500,
     "tier2_episodicFailureClustersPhi": 2,

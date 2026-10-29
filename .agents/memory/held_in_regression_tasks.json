@@ -1,6 +1,6 @@
 {
   "schemaVersion": "1.0.0-self-harness",
-  "updatedAt": "2026-10-29T19:02:06.630Z",
+  "updatedAt": "2026-10-29T20:10:58.726Z",
   "split": "held-in",
   "tasks": [
     {
@@ -72,7 +72,7 @@
       "description": "Repeated cross-trace friction on 'd1_migration_apply' (2 occurrences)",
       "status": "ACTIVE",
       "derivedAt": "2026-10-29T13:50:34.705Z",
-      "updatedAt": "2026-10-29T19:02:06.630Z",
+      "updatedAt": "2026-10-29T20:10:58.726Z",
       "lastVerifiedStatus": "PASS"
     }
   ]

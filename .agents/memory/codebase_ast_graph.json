@@ -1,14 +1,14 @@
 {
   "schema": "cocoindex-code-ast-graph-v1",
-  "updatedAt": "2026-10-29T19:02:39.084Z",
+  "updatedAt": "2026-10-29T20:11:05.757Z",
   "activeProject": "agencia-alfa",
-  "combinedSha256": "98b5135652c4c1f2",
+  "combinedSha256": "bd68620e29e685e7",
   "stats": {
     "totalFilesIndexed": 143,
-    "reindexedFilesCount": 10,
-    "cachedFilesCount": 133,
-    "totalSymbols": 1206,
-    "totalExports": 711,
+    "reindexedFilesCount": 3,
+    "cachedFilesCount": 140,
+    "totalSymbols": 1214,
+    "totalExports": 718,
     "estimatedTokenSavingsPct": 72.5
   },
   "files": [
@@ -10818,8 +10818,8 @@
     {
       "path": "tools/intelligence/context_budget.mjs",
       "ext": ".mjs",
-      "sha256": "d1ea744c0fe0a384",
-      "lineCount": 891,
+      "sha256": "1c34e5f46b96f0db",
+      "lineCount": 982,
       "exports": [
         "HEADROOM_CCR_DIR",
         "compressWithCavemanAndPonytail",
@@ -10836,6 +10836,8 @@
         "assembleThreeTierContext",
         "repairAndValidateJsonPayload",
         "foldStackTraceAndNodeModulesNoise",
+        "computeToonTabularEligibility",
+        "formatOptimalPromptData",
         "serializeToToonFormat",
         "parseFromToonFormat"
       ],
@@ -11052,24 +11054,40 @@
           "endLine": 725
         },
         {
+          "name": "computeToonTabularEligibility",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function computeToonTabularEligibility(data)",
+          "startLine": 733,
+          "endLine": 778
+        },
+        {
+          "name": "formatOptimalPromptData",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function formatOptimalPromptData(data, { thresholdPct = 80 } = {})",
+          "startLine": 784,
+          "endLine": 784
+        },
+        {
           "name": "serializeToToonFormat",
           "kind": "function",
           "exported": true,
           "signature": "export function serializeToToonFormat(obj)",
-          "startLine": 727,
-          "endLine": 767
+          "startLine": 808,
+          "endLine": 848
         },
         {
           "name": "parseFromToonFormat",
           "kind": "function",
           "exported": true,
           "signature": "export function parseFromToonFormat(toonInput)",
-          "startLine": 769,
-          "endLine": 835
+          "startLine": 850,
+          "endLine": 916
         }
       ],
-      "mtimeMs": 1793295262363.5188,
-      "size": 32791
+      "mtimeMs": 1793304622138.5024,
+      "size": 36004
     },
     {
       "path": "tools/intelligence/course_and_paper_distiller.mjs",
@@ -11950,8 +11968,8 @@
     {
       "path": "tools/intelligence/jev_semantic_gate.mjs",
       "ext": ".mjs",
-      "sha256": "5a9581c31890092b",
-      "lineCount": 1121,
+      "sha256": "deda8bcd92d75edc",
+      "lineCount": 1540,
       "exports": [
         "ROOT",
         "JEV_DECISION_CACHE_PATH",
@@ -11960,8 +11978,13 @@
         "LIVE_FACTORY_STREAM_PATH",
         "loadJevEnvConfig",
         "JevVerdictValibotSchema",
-        "compileCompactBamlTypePrompt",
-        "parseWithSchemaAlignedRecovery",
+        "BAML_JSONISH_FLAG_SCORES",
+        "BamlTypeBuilder",
+        "createBamlTypeBuilder",
+        "BamlCollector",
+        "extractJsonishCandidates",
+        "evaluateBamlChecksAndAsserts",
+        "bamlModularApi",
         "loadJevDecisionCache",
         "saveJevDecisionCache",
         "computeJevPayloadHash",
@@ -12010,31 +12033,31 @@
         "boolean",
         "nullable",
         "array",
-        "stringify",
-        "map",
-        "int",
-        "ceil",
-        "toFixed",
-        "now",
-        "includes",
+        "constructor",
+        "addEnumValue",
+        "has",
+        "set",
+        "get",
+        "some",
         "push",
-        "indexOf",
-        "lastIndexOf",
-        "slice",
-        "repeat",
-        "parse",
-        "toUpperCase",
-        "isFinite",
-        "max",
-        "min",
-        "round",
-        "evidence",
-        "isArray",
+        "addClassField",
+        "getEnumValues",
+        "getClassFields",
+        "BamlTypeBuilder",
+        "recordCall",
+        "now",
         "toISOString",
-        "keys",
-        "mkdirSync",
-        "writeFileSync",
-        "createHash"
+        "isArray",
+        "last",
+        "usage",
+        "reduce",
+        "compileCompactBamlTypePrompt",
+        "map",
+        "forEach",
+        "find",
+        "stringify",
+        "int",
+        "assert"
       ],
       "symbols": [
         {
@@ -12094,104 +12117,152 @@
           "endLine": 112
         },
         {
-          "name": "compileCompactBamlTypePrompt",
-          "kind": "function",
+          "name": "BAML_JSONISH_FLAG_SCORES",
+          "kind": "constant",
           "exported": true,
-          "signature": "export function compileCompactBamlTypePrompt(predicateId = 'jev-persisted-state-and-env-owner-gate', allowedChoices = [])",
+          "signature": "export const BAML_JSONISH_FLAG_SCORES",
           "startLine": 118,
-          "endLine": 176
+          "endLine": 145
         },
         {
-          "name": "parseWithSchemaAlignedRecovery",
+          "name": "BamlTypeBuilder",
+          "kind": "class",
+          "exported": true,
+          "signature": "export class BamlTypeBuilder",
+          "startLine": 151,
+          "endLine": 188
+        },
+        {
+          "name": "createBamlTypeBuilder",
           "kind": "function",
           "exported": true,
-          "signature": "export function parseWithSchemaAlignedRecovery(rawInput, defaultPredicateId = 'jev-persisted-state-and-env-owner-gate')",
-          "startLine": 191,
-          "endLine": 278
+          "signature": "export function createBamlTypeBuilder()",
+          "startLine": 190,
+          "endLine": 192
+        },
+        {
+          "name": "BamlCollector",
+          "kind": "class",
+          "exported": true,
+          "signature": "export class BamlCollector",
+          "startLine": 198,
+          "endLine": 239
+        },
+        {
+          "name": "extractJsonishCandidates",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function extractJsonishCandidates(rawText = '')",
+          "startLine": 344,
+          "endLine": 391
+        },
+        {
+          "name": "evaluateBamlChecksAndAsserts",
+          "kind": "function",
+          "exported": true,
+          "signature": "export function evaluateBamlChecksAndAsserts(verdict)",
+          "startLine": 397,
+          "endLine": 419
+        },
+        {
+          "name": "repairSingleJsonishBlock",
+          "kind": "function",
+          "exported": false,
+          "signature": "function repairSingleJsonishBlock(rawBlock = '')",
+          "startLine": 424,
+          "endLine": 475
+        },
+        {
+          "name": "bamlModularApi",
+          "kind": "constant",
+          "exported": true,
+          "signature": "export const bamlModularApi",
+          "startLine": 688,
+          "endLine": 715
         },
         {
           "name": "loadJevDecisionCache",
           "kind": "function",
           "exported": true,
           "signature": "export function loadJevDecisionCache()",
-          "startLine": 331,
-          "endLine": 350
+          "startLine": 720,
+          "endLine": 739
         },
         {
           "name": "saveJevDecisionCache",
           "kind": "function",
           "exported": true,
           "signature": "export function saveJevDecisionCache(store)",
-          "startLine": 355,
-          "endLine": 361
+          "startLine": 744,
+          "endLine": 750
         },
         {
           "name": "computeJevPayloadHash",
           "kind": "function",
           "exported": true,
           "signature": "export function computeJevPayloadHash(predicateId = '', payloadText = '', specContext = '')",
-          "startLine": 366,
-          "endLine": 369
+          "startLine": 755,
+          "endLine": 758
         },
         {
           "name": "loadJevFinOpsLedger",
           "kind": "function",
           "exported": true,
           "signature": "export function loadJevFinOpsLedger()",
-          "startLine": 374,
-          "endLine": 412
+          "startLine": 763,
+          "endLine": 801
         },
         {
           "name": "evaluatePersistedStateAndEnvOwnerGate",
           "kind": "function",
           "exported": true,
           "signature": "export async function evaluatePersistedStateAndEnvOwnerGate(diffText = '', options = {})",
-          "startLine": 820,
-          "endLine": 820
+          "startLine": 1209,
+          "endLine": 1209
         },
         {
           "name": "evaluateSpecBusinessInvariantAlignment",
           "kind": "function",
           "exported": true,
           "signature": "export async function evaluateSpecBusinessInvariantAlignment(diffText = '', specText = '', options = {})",
-          "startLine": 832,
-          "endLine": 832
+          "startLine": 1221,
+          "endLine": 1221
         },
         {
           "name": "evaluateRedundantTestDetector",
           "kind": "function",
           "exported": true,
           "signature": "export async function evaluateRedundantTestDetector(diffText = '', options = {})",
-          "startLine": 845,
-          "endLine": 845
+          "startLine": 1234,
+          "endLine": 1234
         },
         {
           "name": "evaluateCrossTraceFrictionMiner",
           "kind": "function",
           "exported": true,
           "signature": "export async function evaluateCrossTraceFrictionMiner(customTracesText = '', options = {})",
-          "startLine": 859,
-          "endLine": 859
+          "startLine": 1248,
+          "endLine": 1248
         },
         {
           "name": "getJevFinOpsStatus",
           "kind": "function",
           "exported": true,
           "signature": "export function getJevFinOpsStatus()",
-          "startLine": 982,
-          "endLine": 1002
+          "startLine": 1371,
+          "endLine": 1391
         },
         {
           "name": "runJevSemanticGateSelfTest",
           "kind": "function",
           "exported": true,
           "signature": "export async function runJevSemanticGateSelfTest()",
-          "startLine": 1007,
-          "endLine": 1021
+          "startLine": 1396,
+          "endLine": 1410
         }
       ],
-      "mtimeMs": 1793300515940.4133,
-      "size": 44764
+      "mtimeMs": 1793304646261.448,
+      "size": 58878
     },
     {
       "path": "tools/intelligence/mcp_omni_rag_server.mjs",
@@ -13085,8 +13156,8 @@
     {
       "path": "tools/intelligence/rag_pipeline.mjs",
       "ext": ".mjs",
-      "sha256": "88e9b36274569212",
-      "lineCount": 1472,
+      "sha256": "2dbbac4953415e0c",
+      "lineCount": 1473,
       "exports": [
         "expandQueryBilingual",
         "invalidateIndexCache",
@@ -13210,155 +13281,155 @@
           "exported": false,
           "signature": "function createDocumentChunks(filePath)",
           "startLine": 241,
-          "endLine": 408
+          "endLine": 409
         },
         {
           "name": "invalidateIndexCache",
           "kind": "function",
           "exported": true,
           "signature": "export function invalidateIndexCache()",
-          "startLine": 410,
-          "endLine": 417
+          "startLine": 411,
+          "endLine": 418
         },
         {
           "name": "addTokensToInvertedMap",
           "kind": "function",
           "exported": false,
           "signature": "function addTokensToInvertedMap(invMap, str, chunkIdx)",
-          "startLine": 427,
-          "endLine": 457
+          "startLine": 428,
+          "endLine": 458
         },
         {
           "name": "prepareChunksForFastSearch",
           "kind": "function",
           "exported": false,
           "signature": "function prepareChunksForFastSearch(chunks)",
-          "startLine": 459,
-          "endLine": 486
+          "startLine": 460,
+          "endLine": 487
         },
         {
           "name": "deduplicateAndVacuumSqliteFts5",
           "kind": "function",
           "exported": true,
           "signature": "export function deduplicateAndVacuumSqliteFts5()",
-          "startLine": 492,
-          "endLine": 533
+          "startLine": 493,
+          "endLine": 534
         },
         {
           "name": "ingestMarkdownFilesIntoSqliteFts5",
           "kind": "function",
           "exported": true,
           "signature": "export function ingestMarkdownFilesIntoSqliteFts5(filePaths = [])",
-          "startLine": 539,
-          "endLine": 597
+          "startLine": 540,
+          "endLine": 598
         },
         {
           "name": "buildOrOpenSqliteFts5Index",
           "kind": "function",
           "exported": false,
           "signature": "function buildOrOpenSqliteFts5Index(chunks, forceRebuild = false)",
-          "startLine": 603,
-          "endLine": 688
+          "startLine": 604,
+          "endLine": 689
         },
         {
           "name": "querySqliteFts5",
           "kind": "function",
           "exported": false,
           "signature": "function querySqliteFts5(sqliteDb, chunkMap, terms, limit = 20)",
-          "startLine": 698,
-          "endLine": 747
+          "startLine": 699,
+          "endLine": 748
         },
         {
           "name": "buildMiniSearchInstance",
           "kind": "function",
           "exported": false,
           "signature": "function buildMiniSearchInstance(chunks)",
-          "startLine": 749,
-          "endLine": 767
+          "startLine": 750,
+          "endLine": 768
         },
         {
           "name": "buildChunkMap",
           "kind": "function",
           "exported": false,
           "signature": "function buildChunkMap(chunks)",
-          "startLine": 769,
-          "endLine": 775
+          "startLine": 770,
+          "endLine": 776
         },
         {
           "name": "getOrBuildMiniSearchIndex",
           "kind": "function",
           "exported": true,
           "signature": "export function getOrBuildMiniSearchIndex(force = false)",
-          "startLine": 780,
-          "endLine": 843
+          "startLine": 781,
+          "endLine": 844
         },
         {
           "name": "capResultsPerFile",
           "kind": "function",
           "exported": false,
           "signature": "function capResultsPerFile(items, maxPerFile = 2, limit = 20)",
-          "startLine": 848,
-          "endLine": 862
+          "startLine": 849,
+          "endLine": 863
         },
         {
           "name": "runLocalSemanticVectorRanker",
           "kind": "function",
           "exported": false,
           "signature": "function runLocalSemanticVectorRanker(chunks, queryString, limit = 20)",
-          "startLine": 868,
-          "endLine": 995
+          "startLine": 869,
+          "endLine": 996
         },
         {
           "name": "runLocalOnnxCrossEncoderRerank",
           "kind": "function",
           "exported": false,
           "signature": "async function runLocalOnnxCrossEncoderRerank(query, candidates, limit = 8)",
-          "startLine": 1002,
-          "endLine": 1049
+          "startLine": 1003,
+          "endLine": 1050
         },
         {
           "name": "reciprocalRankFusion",
           "kind": "function",
           "exported": true,
           "signature": "export function reciprocalRankFusion(rankedLists, k = 60, maxPerFile = 2)",
-          "startLine": 1055,
-          "endLine": 1090
+          "startLine": 1056,
+          "endLine": 1091
         },
         {
           "name": "queryKnowledge",
           "kind": "function",
           "exported": true,
           "signature": "export async function queryKnowledge(query, limit = 8, options = {})",
-          "startLine": 1101,
-          "endLine": 1101
+          "startLine": 1102,
+          "endLine": 1102
         },
         {
           "name": "queryCodeGraph",
           "kind": "function",
           "exported": true,
           "signature": "export function queryCodeGraph(symbolOrFileQuery, limit = 8)",
-          "startLine": 1294,
-          "endLine": 1319
+          "startLine": 1295,
+          "endLine": 1320
         },
         {
           "name": "synthesizeAnswer",
           "kind": "function",
           "exported": true,
           "signature": "export async function synthesizeAnswer(question, knowledgeList = [])",
-          "startLine": 1324,
-          "endLine": 1386
+          "startLine": 1325,
+          "endLine": 1387
         },
         {
           "name": "getClusterStats",
           "kind": "function",
           "exported": true,
           "signature": "export async function getClusterStats()",
-          "startLine": 1388,
-          "endLine": 1421
+          "startLine": 1389,
+          "endLine": 1422
         }
       ],
-      "mtimeMs": 1793300398156.0923,
-      "size": 62232
+      "mtimeMs": 1793304043405.8967,
+      "size": 62516
     },
     {
       "path": "tools/intelligence/rea_reverse_engineering_bridge.mjs",
@@ -26034,14 +26105,38 @@
       ],
       "calledByFiles": []
     },
+    "computeToonTabularEligibility": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/context_budget.mjs",
+          "kind": "function",
+          "signature": "export function computeToonTabularEligibility(data)",
+          "startLine": 733,
+          "endLine": 778
+        }
+      ],
+      "calledByFiles": []
+    },
+    "formatOptimalPromptData": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/context_budget.mjs",
+          "kind": "function",
+          "signature": "export function formatOptimalPromptData(data, { thresholdPct = 80 } = {})",
+          "startLine": 784,
+          "endLine": 784
+        }
+      ],
+      "calledByFiles": []
+    },
     "serializeToToonFormat": {
       "definitions": [
         {
           "file": "tools/intelligence/context_budget.mjs",
           "kind": "function",
           "signature": "export function serializeToToonFormat(obj)",
-          "startLine": 727,
-          "endLine": 767
+          "startLine": 808,
+          "endLine": 848
         }
       ],
       "calledByFiles": []
@@ -26052,8 +26147,8 @@
           "file": "tools/intelligence/context_budget.mjs",
           "kind": "function",
           "signature": "export function parseFromToonFormat(toonInput)",
-          "startLine": 769,
-          "endLine": 835
+          "startLine": 850,
+          "endLine": 916
         }
       ],
       "calledByFiles": []
@@ -26806,33 +26901,103 @@
       ],
       "calledByFiles": []
     },
-    "compileCompactBamlTypePrompt": {
+    "BAML_JSONISH_FLAG_SCORES": {
       "definitions": [
         {
           "file": "tools/intelligence/jev_semantic_gate.mjs",
-          "kind": "function",
-          "signature": "export function compileCompactBamlTypePrompt(predicateId = 'jev-persisted-state-and-env-owner-gate', allowedChoices = [])",
+          "kind": "constant",
+          "signature": "export const BAML_JSONISH_FLAG_SCORES",
           "startLine": 118,
-          "endLine": 176
+          "endLine": 145
+        }
+      ],
+      "calledByFiles": []
+    },
+    "BamlTypeBuilder": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/jev_semantic_gate.mjs",
+          "kind": "class",
+          "signature": "export class BamlTypeBuilder",
+          "startLine": 151,
+          "endLine": 188
         }
       ],
       "calledByFiles": [
-        "tools/intelligence/jev_memory_pipeline.mjs"
+        "tools/intelligence/jev_semantic_gate.mjs"
       ]
     },
-    "parseWithSchemaAlignedRecovery": {
+    "createBamlTypeBuilder": {
       "definitions": [
         {
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
-          "signature": "export function parseWithSchemaAlignedRecovery(rawInput, defaultPredicateId = 'jev-persisted-state-and-env-owner-gate')",
-          "startLine": 191,
-          "endLine": 278
+          "signature": "export function createBamlTypeBuilder()",
+          "startLine": 190,
+          "endLine": 192
         }
       ],
-      "calledByFiles": [
-        "tools/intelligence/jev_memory_pipeline.mjs"
-      ]
+      "calledByFiles": []
+    },
+    "BamlCollector": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/jev_semantic_gate.mjs",
+          "kind": "class",
+          "signature": "export class BamlCollector",
+          "startLine": 198,
+          "endLine": 239
+        }
+      ],
+      "calledByFiles": []
+    },
+    "extractJsonishCandidates": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/jev_semantic_gate.mjs",
+          "kind": "function",
+          "signature": "export function extractJsonishCandidates(rawText = '')",
+          "startLine": 344,
+          "endLine": 391
+        }
+      ],
+      "calledByFiles": []
+    },
+    "evaluateBamlChecksAndAsserts": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/jev_semantic_gate.mjs",
+          "kind": "function",
+          "signature": "export function evaluateBamlChecksAndAsserts(verdict)",
+          "startLine": 397,
+          "endLine": 419
+        }
+      ],
+      "calledByFiles": []
+    },
+    "repairSingleJsonishBlock": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/jev_semantic_gate.mjs",
+          "kind": "function",
+          "signature": "function repairSingleJsonishBlock(rawBlock = '')",
+          "startLine": 424,
+          "endLine": 475
+        }
+      ],
+      "calledByFiles": []
+    },
+    "bamlModularApi": {
+      "definitions": [
+        {
+          "file": "tools/intelligence/jev_semantic_gate.mjs",
+          "kind": "constant",
+          "signature": "export const bamlModularApi",
+          "startLine": 688,
+          "endLine": 715
+        }
+      ],
+      "calledByFiles": []
     },
     "loadJevDecisionCache": {
       "definitions": [
@@ -26840,8 +27005,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function loadJevDecisionCache()",
-          "startLine": 331,
-          "endLine": 350
+          "startLine": 720,
+          "endLine": 739
         }
       ],
       "calledByFiles": []
@@ -26852,8 +27017,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function saveJevDecisionCache(store)",
-          "startLine": 355,
-          "endLine": 361
+          "startLine": 744,
+          "endLine": 750
         }
       ],
       "calledByFiles": []
@@ -26864,8 +27029,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function computeJevPayloadHash(predicateId = '', payloadText = '', specContext = '')",
-          "startLine": 366,
-          "endLine": 369
+          "startLine": 755,
+          "endLine": 758
         }
       ],
       "calledByFiles": []
@@ -26876,8 +27041,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function loadJevFinOpsLedger()",
-          "startLine": 374,
-          "endLine": 412
+          "startLine": 763,
+          "endLine": 801
         }
       ],
       "calledByFiles": []
@@ -26888,8 +27053,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export async function evaluatePersistedStateAndEnvOwnerGate(diffText = '', options = {})",
-          "startLine": 820,
-          "endLine": 820
+          "startLine": 1209,
+          "endLine": 1209
         }
       ],
       "calledByFiles": []
@@ -26900,8 +27065,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export async function evaluateSpecBusinessInvariantAlignment(diffText = '', specText = '', options = {})",
-          "startLine": 832,
-          "endLine": 832
+          "startLine": 1221,
+          "endLine": 1221
         }
       ],
       "calledByFiles": []
@@ -26912,8 +27077,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export async function evaluateRedundantTestDetector(diffText = '', options = {})",
-          "startLine": 845,
-          "endLine": 845
+          "startLine": 1234,
+          "endLine": 1234
         }
       ],
       "calledByFiles": []
@@ -26924,8 +27089,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export async function evaluateCrossTraceFrictionMiner(customTracesText = '', options = {})",
-          "startLine": 859,
-          "endLine": 859
+          "startLine": 1248,
+          "endLine": 1248
         }
       ],
       "calledByFiles": []
@@ -26936,8 +27101,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export function getJevFinOpsStatus()",
-          "startLine": 982,
-          "endLine": 1002
+          "startLine": 1371,
+          "endLine": 1391
         }
       ],
       "calledByFiles": []
@@ -26948,8 +27113,8 @@
           "file": "tools/intelligence/jev_semantic_gate.mjs",
           "kind": "function",
           "signature": "export async function runJevSemanticGateSelfTest()",
-          "startLine": 1007,
-          "endLine": 1021
+          "startLine": 1396,
+          "endLine": 1410
         }
       ],
       "calledByFiles": []
@@ -27787,7 +27952,7 @@
           "kind": "function",
           "signature": "function createDocumentChunks(filePath)",
           "startLine": 241,
-          "endLine": 408
+          "endLine": 409
         }
       ],
       "calledByFiles": []
@@ -27798,8 +27963,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function invalidateIndexCache()",
-          "startLine": 410,
-          "endLine": 417
+          "startLine": 411,
+          "endLine": 418
         }
       ],
       "calledByFiles": []
@@ -27810,8 +27975,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function addTokensToInvertedMap(invMap, str, chunkIdx)",
-          "startLine": 427,
-          "endLine": 457
+          "startLine": 428,
+          "endLine": 458
         }
       ],
       "calledByFiles": [
@@ -27824,8 +27989,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function prepareChunksForFastSearch(chunks)",
-          "startLine": 459,
-          "endLine": 486
+          "startLine": 460,
+          "endLine": 487
         }
       ],
       "calledByFiles": []
@@ -27836,8 +28001,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function deduplicateAndVacuumSqliteFts5()",
-          "startLine": 492,
-          "endLine": 533
+          "startLine": 493,
+          "endLine": 534
         }
       ],
       "calledByFiles": []
@@ -27848,8 +28013,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function ingestMarkdownFilesIntoSqliteFts5(filePaths = [])",
-          "startLine": 539,
-          "endLine": 597
+          "startLine": 540,
+          "endLine": 598
         }
       ],
       "calledByFiles": []
@@ -27860,8 +28025,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function buildOrOpenSqliteFts5Index(chunks, forceRebuild = false)",
-          "startLine": 603,
-          "endLine": 688
+          "startLine": 604,
+          "endLine": 689
         }
       ],
       "calledByFiles": []
@@ -27872,8 +28037,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function querySqliteFts5(sqliteDb, chunkMap, terms, limit = 20)",
-          "startLine": 698,
-          "endLine": 747
+          "startLine": 699,
+          "endLine": 748
         }
       ],
       "calledByFiles": []
@@ -27884,8 +28049,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function buildMiniSearchInstance(chunks)",
-          "startLine": 749,
-          "endLine": 767
+          "startLine": 750,
+          "endLine": 768
         }
       ],
       "calledByFiles": []
@@ -27896,8 +28061,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function buildChunkMap(chunks)",
-          "startLine": 769,
-          "endLine": 775
+          "startLine": 770,
+          "endLine": 776
         }
       ],
       "calledByFiles": []
@@ -27908,8 +28073,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function getOrBuildMiniSearchIndex(force = false)",
-          "startLine": 780,
-          "endLine": 843
+          "startLine": 781,
+          "endLine": 844
         }
       ],
       "calledByFiles": [
@@ -27923,8 +28088,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function capResultsPerFile(items, maxPerFile = 2, limit = 20)",
-          "startLine": 848,
-          "endLine": 862
+          "startLine": 849,
+          "endLine": 863
         }
       ],
       "calledByFiles": []
@@ -27935,8 +28100,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "function runLocalSemanticVectorRanker(chunks, queryString, limit = 20)",
-          "startLine": 868,
-          "endLine": 995
+          "startLine": 869,
+          "endLine": 996
         }
       ],
       "calledByFiles": []
@@ -27947,8 +28112,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "async function runLocalOnnxCrossEncoderRerank(query, candidates, limit = 8)",
-          "startLine": 1002,
-          "endLine": 1049
+          "startLine": 1003,
+          "endLine": 1050
         }
       ],
       "calledByFiles": []
@@ -27959,8 +28124,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function reciprocalRankFusion(rankedLists, k = 60, maxPerFile = 2)",
-          "startLine": 1055,
-          "endLine": 1090
+          "startLine": 1056,
+          "endLine": 1091
         }
       ],
       "calledByFiles": []
@@ -27971,8 +28136,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export async function queryKnowledge(query, limit = 8, options = {})",
-          "startLine": 1101,
-          "endLine": 1101
+          "startLine": 1102,
+          "endLine": 1102
         }
       ],
       "calledByFiles": [
@@ -27986,8 +28151,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export function queryCodeGraph(symbolOrFileQuery, limit = 8)",
-          "startLine": 1294,
-          "endLine": 1319
+          "startLine": 1295,
+          "endLine": 1320
         }
       ],
       "calledByFiles": []
@@ -27998,8 +28163,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export async function synthesizeAnswer(question, knowledgeList = [])",
-          "startLine": 1324,
-          "endLine": 1386
+          "startLine": 1325,
+          "endLine": 1387
         }
       ],
       "calledByFiles": []
@@ -28010,8 +28175,8 @@
           "file": "tools/intelligence/rag_pipeline.mjs",
           "kind": "function",
           "signature": "export async function getClusterStats()",
-          "startLine": 1388,
-          "endLine": 1421
+          "startLine": 1389,
+          "endLine": 1422
         }
       ],
       "calledByFiles": []
